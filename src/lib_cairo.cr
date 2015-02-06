@@ -2,34 +2,6 @@
 lib Libcairo
 
   ###########################################
-  ##   Declarations
-  ###########################################
-
-  struct Context; end; # struct
-  struct Surface; end; # struct
-  struct Matrix; end; # struct
-  struct Pattern; end; # struct
-  struct Region; end; # struct
-  struct FontOptions; end; # struct
-  struct FontType; end; # struct
-  struct FontFace; end; # struct
-  struct ScaledFont; end; # struct
-  struct Path; end; # struct
-  struct RectangleInt; end; # struct
-
-  ###########################################
-  ##    Enums
-  ###########################################
-
-  enum Content
-    ZERO_NONE = 0
-    COLOR = 4096
-    ALPHA = 8192
-    COLOR_ALPHA = 12288
-  end
-
-
-  ###########################################
   ##    Structs
   ###########################################
 
@@ -68,6 +40,18 @@ lib Libcairo
     y : Int32
     width : Int32
     height : Int32
+  end
+
+
+  ###########################################
+  ##    Enums
+  ###########################################
+
+  enum Content
+    ZERO_NONE = 0
+    COLOR = 4096
+    ALPHA = 8192
+    COLOR_ALPHA = 12288
   end
 
 

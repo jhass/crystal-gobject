@@ -4,46 +4,556 @@ require "./lib_g_object"
 lib LibAtk
 
   ###########################################
-  ##   Declarations
+  ##    Interfaces
   ###########################################
 
-  struct Action; end # interface
-  struct Component; end # interface
-  struct Document; end # interface
-  struct EditableText; end # interface
-  struct HyperlinkImpl; end # interface
-  struct Hypertext; end # interface
-  struct Image; end # interface
-  struct ImplementorIface; end # interface
-  struct Selection; end # interface
-  struct StreamableContent; end # interface
-  struct Table; end # interface
-  struct TableCell; end # interface
-  struct Text; end # interface
-  struct Value; end # interface
-  struct Window; end # interface
-  struct Attribute; end; # struct
-  struct Implementor; end; # struct
-  struct KeyEventStruct; end; # struct
-  struct PropertyValues; end; # struct
-  struct Range; end; # struct
-  struct Rectangle; end; # struct
-  struct TextRange; end; # struct
-  struct TextRectangle; end; # struct
-  struct GObjectAccessible; end # object
-  struct Hyperlink; end # object
-  struct Misc; end # object
-  struct NoOpObject; end # object
-  struct NoOpObjectFactory; end # object
-  struct Object; end # object
-  struct ObjectFactory; end # object
-  struct Plug; end # object
-  struct Registry; end # object
-  struct Relation; end # object
-  struct RelationSet; end # object
-  struct Socket; end # object
-  struct StateSet; end # object
-  struct Util; end # object
+  struct Action # interface
+  parent : LibGObject::TypeInterface
+  do_action : -> Void
+  get_n_actions : -> Void
+  get_description : -> Void
+  get_name : -> Void
+  get_keybinding : -> Void
+  set_description : -> Void
+  get_localized_name : -> Void
+    # Virtual function do_action
+    # Virtual function get_description
+    # Virtual function get_keybinding
+    # Virtual function get_localized_name
+    # Virtual function get_n_actions
+    # Virtual function get_name
+    # Virtual function set_description
+  end
+  fun action_do_action = atk_action_do_action(this : Action*, i : Int32) : Bool
+  fun action_get_description = atk_action_get_description(this : Action*, i : Int32) : UInt8*
+  fun action_get_keybinding = atk_action_get_keybinding(this : Action*, i : Int32) : UInt8*
+  fun action_get_localized_name = atk_action_get_localized_name(this : Action*, i : Int32) : UInt8*
+  fun action_get_n_actions = atk_action_get_n_actions(this : Action*) : Int32
+  fun action_get_name = atk_action_get_name(this : Action*, i : Int32) : UInt8*
+  fun action_set_description = atk_action_set_description(this : Action*, i : Int32, desc : UInt8*) : Bool
+
+  struct Component # interface
+  parent : LibGObject::TypeInterface
+  add_focus_handler : Void*
+  contains : -> Void
+  ref_accessible_at_point : -> Void
+  get_extents : -> Void
+  get_position : -> Void
+  get_size : -> Void
+  grab_focus : -> Void
+  remove_focus_handler : -> Void
+  set_extents : -> Void
+  set_position : -> Void
+  set_size : -> Void
+  get_layer : -> Void
+  get_mdi_zorder : -> Void
+  bounds_changed : -> Void
+  get_alpha : -> Void
+    # Signal bounds-changed
+    # Virtual function bounds_changed
+    # Virtual function contains
+    # Virtual function get_alpha
+    # Virtual function get_extents
+    # Virtual function get_layer
+    # Virtual function get_mdi_zorder
+    # Virtual function get_position
+    # Virtual function get_size
+    # Virtual function grab_focus
+    # Virtual function ref_accessible_at_point
+    # Virtual function remove_focus_handler
+    # Virtual function set_extents
+    # Virtual function set_position
+    # Virtual function set_size
+  end
+  fun component_contains = atk_component_contains(this : Component*, x : Int32, y : Int32, coord_type : LibAtk::CoordType) : Bool
+  fun component_get_alpha = atk_component_get_alpha(this : Component*) : Float64
+  fun component_get_extents = atk_component_get_extents(this : Component*, x : Int32*, y : Int32*, width : Int32*, height : Int32*, coord_type : LibAtk::CoordType) : Void
+  fun component_get_layer = atk_component_get_layer(this : Component*) : LibAtk::Layer
+  fun component_get_mdi_zorder = atk_component_get_mdi_zorder(this : Component*) : Int32
+  fun component_get_position = atk_component_get_position(this : Component*, x : Int32*, y : Int32*, coord_type : LibAtk::CoordType) : Void
+  fun component_get_size = atk_component_get_size(this : Component*, width : Int32*, height : Int32*) : Void
+  fun component_grab_focus = atk_component_grab_focus(this : Component*) : Bool
+  fun component_ref_accessible_at_point = atk_component_ref_accessible_at_point(this : Component*, x : Int32, y : Int32, coord_type : LibAtk::CoordType) : LibAtk::Object*
+  fun component_remove_focus_handler = atk_component_remove_focus_handler(this : Component*, handler_id : UInt32) : Void
+  fun component_set_extents = atk_component_set_extents(this : Component*, x : Int32, y : Int32, width : Int32, height : Int32, coord_type : LibAtk::CoordType) : Bool
+  fun component_set_position = atk_component_set_position(this : Component*, x : Int32, y : Int32, coord_type : LibAtk::CoordType) : Bool
+  fun component_set_size = atk_component_set_size(this : Component*, width : Int32, height : Int32) : Bool
+
+  struct Document # interface
+  parent : LibGObject::TypeInterface
+  get_document_type : -> Void
+  get_document : -> Void
+  get_document_locale : -> Void
+  get_document_attributes : Void*
+  get_document_attribute_value : -> Void
+  set_document_attribute : -> Void
+  get_current_page_number : -> Void
+  get_page_count : -> Void
+    # Signal load-complete
+    # Signal load-stopped
+    # Signal page-changed
+    # Signal reload
+    # Virtual function get_current_page_number
+    # Virtual function get_document
+    # Virtual function get_document_attribute_value
+    # Virtual function get_document_locale
+    # Virtual function get_document_type
+    # Virtual function get_page_count
+    # Virtual function set_document_attribute
+  end
+  fun document_get_attribute_value = atk_document_get_attribute_value(this : Document*, attribute_name : UInt8*) : UInt8*
+  fun document_get_attributes = atk_document_get_attributes(this : Document*) : Void**
+  fun document_get_current_page_number = atk_document_get_current_page_number(this : Document*) : Int32
+  fun document_get_document = atk_document_get_document(this : Document*) : Void*
+  fun document_get_document_type = atk_document_get_document_type(this : Document*) : UInt8*
+  fun document_get_locale = atk_document_get_locale(this : Document*) : UInt8*
+  fun document_get_page_count = atk_document_get_page_count(this : Document*) : Int32
+  fun document_set_attribute_value = atk_document_set_attribute_value(this : Document*, attribute_name : UInt8*, attribute_value : UInt8*) : Bool
+
+  struct EditableText # interface
+  parent_interface : LibGObject::TypeInterface
+  set_run_attributes : -> Void
+  set_text_contents : -> Void
+  insert_text : -> Void
+  copy_text : -> Void
+  cut_text : -> Void
+  delete_text : -> Void
+  paste_text : -> Void
+    # Virtual function copy_text
+    # Virtual function cut_text
+    # Virtual function delete_text
+    # Virtual function insert_text
+    # Virtual function paste_text
+    # Virtual function set_run_attributes
+    # Virtual function set_text_contents
+  end
+  fun editable_text_copy_text = atk_editable_text_copy_text(this : EditableText*, start_pos : Int32, end_pos : Int32) : Void
+  fun editable_text_cut_text = atk_editable_text_cut_text(this : EditableText*, start_pos : Int32, end_pos : Int32) : Void
+  fun editable_text_delete_text = atk_editable_text_delete_text(this : EditableText*, start_pos : Int32, end_pos : Int32) : Void
+  fun editable_text_insert_text = atk_editable_text_insert_text(this : EditableText*, string : UInt8*, length : Int32, position : Int32*) : Void
+  fun editable_text_paste_text = atk_editable_text_paste_text(this : EditableText*, position : Int32) : Void
+  fun editable_text_set_run_attributes = atk_editable_text_set_run_attributes(this : EditableText*, attrib_set : Void**, start_offset : Int32, end_offset : Int32) : Bool
+  fun editable_text_set_text_contents = atk_editable_text_set_text_contents(this : EditableText*, string : UInt8*) : Void
+
+  struct HyperlinkImpl # interface
+  parent : LibGObject::TypeInterface
+  get_hyperlink : -> Void
+    # Virtual function get_hyperlink
+  end
+  fun hyperlink_impl_get_hyperlink = atk_hyperlink_impl_get_hyperlink(this : HyperlinkImpl*) : LibAtk::Hyperlink*
+
+  struct Hypertext # interface
+  parent : LibGObject::TypeInterface
+  get_link : -> Void
+  get_n_links : -> Void
+  get_link_index : -> Void
+  link_selected : -> Void
+    # Signal link-selected
+    # Virtual function get_link
+    # Virtual function get_link_index
+    # Virtual function get_n_links
+    # Virtual function link_selected
+  end
+  fun hypertext_get_link = atk_hypertext_get_link(this : Hypertext*, link_index : Int32) : LibAtk::Hyperlink*
+  fun hypertext_get_link_index = atk_hypertext_get_link_index(this : Hypertext*, char_index : Int32) : Int32
+  fun hypertext_get_n_links = atk_hypertext_get_n_links(this : Hypertext*) : Int32
+
+  struct Image # interface
+  parent : LibGObject::TypeInterface
+  get_image_position : -> Void
+  get_image_description : -> Void
+  get_image_size : -> Void
+  set_image_description : -> Void
+  get_image_locale : -> Void
+    # Virtual function get_image_description
+    # Virtual function get_image_locale
+    # Virtual function get_image_position
+    # Virtual function get_image_size
+    # Virtual function set_image_description
+  end
+  fun image_get_image_description = atk_image_get_image_description(this : Image*) : UInt8*
+  fun image_get_image_locale = atk_image_get_image_locale(this : Image*) : UInt8*
+  fun image_get_image_position = atk_image_get_image_position(this : Image*, x : Int32*, y : Int32*, coord_type : LibAtk::CoordType) : Void
+  fun image_get_image_size = atk_image_get_image_size(this : Image*, width : Int32*, height : Int32*) : Void
+  fun image_set_image_description = atk_image_set_image_description(this : Image*, description : UInt8*) : Bool
+
+  struct ImplementorIface # interface
+  end
+
+  struct Selection # interface
+  parent : LibGObject::TypeInterface
+  add_selection : -> Void
+  clear_selection : -> Void
+  ref_selection : -> Void
+  get_selection_count : -> Void
+  is_child_selected : -> Void
+  remove_selection : -> Void
+  select_all_selection : -> Void
+  selection_changed : -> Void
+    # Signal selection-changed
+    # Virtual function add_selection
+    # Virtual function clear_selection
+    # Virtual function get_selection_count
+    # Virtual function is_child_selected
+    # Virtual function ref_selection
+    # Virtual function remove_selection
+    # Virtual function select_all_selection
+    # Virtual function selection_changed
+  end
+  fun selection_add_selection = atk_selection_add_selection(this : Selection*, i : Int32) : Bool
+  fun selection_clear_selection = atk_selection_clear_selection(this : Selection*) : Bool
+  fun selection_get_selection_count = atk_selection_get_selection_count(this : Selection*) : Int32
+  fun selection_is_child_selected = atk_selection_is_child_selected(this : Selection*, i : Int32) : Bool
+  fun selection_ref_selection = atk_selection_ref_selection(this : Selection*, i : Int32) : LibAtk::Object*
+  fun selection_remove_selection = atk_selection_remove_selection(this : Selection*, i : Int32) : Bool
+  fun selection_select_all_selection = atk_selection_select_all_selection(this : Selection*) : Bool
+
+  struct StreamableContent # interface
+  parent : LibGObject::TypeInterface
+  get_n_mime_types : -> Void
+  get_mime_type : -> Void
+  get_stream : -> Void
+  get_uri : -> Void
+  pad1 : -> Void
+  pad2 : -> Void
+  pad3 : -> Void
+    # Virtual function get_mime_type
+    # Virtual function get_n_mime_types
+    # Virtual function get_stream
+    # Virtual function get_uri
+  end
+  fun streamable_content_get_mime_type = atk_streamable_content_get_mime_type(this : StreamableContent*, i : Int32) : UInt8*
+  fun streamable_content_get_n_mime_types = atk_streamable_content_get_n_mime_types(this : StreamableContent*) : Int32
+  fun streamable_content_get_stream = atk_streamable_content_get_stream(this : StreamableContent*, mime_type : UInt8*) : LibGLib::IOChannel*
+  fun streamable_content_get_uri = atk_streamable_content_get_uri(this : StreamableContent*, mime_type : UInt8*) : UInt8*
+
+  struct Table # interface
+  parent : LibGObject::TypeInterface
+  ref_at : -> Void
+  get_index_at : -> Void
+  get_column_at_index : -> Void
+  get_row_at_index : -> Void
+  get_n_columns : -> Void
+  get_n_rows : -> Void
+  get_column_extent_at : -> Void
+  get_row_extent_at : -> Void
+  get_caption : -> Void
+  get_column_description : -> Void
+  get_column_header : -> Void
+  get_row_description : -> Void
+  get_row_header : -> Void
+  get_summary : -> Void
+  set_caption : -> Void
+  set_column_description : -> Void
+  set_column_header : -> Void
+  set_row_description : -> Void
+  set_row_header : -> Void
+  set_summary : -> Void
+  get_selected_columns : -> Void
+  get_selected_rows : -> Void
+  is_column_selected : -> Void
+  is_row_selected : -> Void
+  is_selected : -> Void
+  add_row_selection : -> Void
+  remove_row_selection : -> Void
+  add_column_selection : -> Void
+  remove_column_selection : -> Void
+  row_inserted : -> Void
+  column_inserted : -> Void
+  row_deleted : -> Void
+  column_deleted : -> Void
+  row_reordered : -> Void
+  column_reordered : -> Void
+  model_changed : -> Void
+    # Signal column-deleted
+    # Signal column-inserted
+    # Signal column-reordered
+    # Signal model-changed
+    # Signal row-deleted
+    # Signal row-inserted
+    # Signal row-reordered
+    # Virtual function add_column_selection
+    # Virtual function add_row_selection
+    # Virtual function column_deleted
+    # Virtual function column_inserted
+    # Virtual function column_reordered
+    # Virtual function get_caption
+    # Virtual function get_column_at_index
+    # Virtual function get_column_description
+    # Virtual function get_column_extent_at
+    # Virtual function get_column_header
+    # Virtual function get_index_at
+    # Virtual function get_n_columns
+    # Virtual function get_n_rows
+    # Virtual function get_row_at_index
+    # Virtual function get_row_description
+    # Virtual function get_row_extent_at
+    # Virtual function get_row_header
+    # Virtual function get_selected_columns
+    # Virtual function get_selected_rows
+    # Virtual function get_summary
+    # Virtual function is_column_selected
+    # Virtual function is_row_selected
+    # Virtual function is_selected
+    # Virtual function model_changed
+    # Virtual function ref_at
+    # Virtual function remove_column_selection
+    # Virtual function remove_row_selection
+    # Virtual function row_deleted
+    # Virtual function row_inserted
+    # Virtual function row_reordered
+    # Virtual function set_caption
+    # Virtual function set_column_description
+    # Virtual function set_column_header
+    # Virtual function set_row_description
+    # Virtual function set_row_header
+    # Virtual function set_summary
+  end
+  fun table_add_column_selection = atk_table_add_column_selection(this : Table*, column : Int32) : Bool
+  fun table_add_row_selection = atk_table_add_row_selection(this : Table*, row : Int32) : Bool
+  fun table_get_caption = atk_table_get_caption(this : Table*) : LibAtk::Object*
+  fun table_get_column_at_index = atk_table_get_column_at_index(this : Table*, index_ : Int32) : Int32
+  fun table_get_column_description = atk_table_get_column_description(this : Table*, column : Int32) : UInt8*
+  fun table_get_column_extent_at = atk_table_get_column_extent_at(this : Table*, row : Int32, column : Int32) : Int32
+  fun table_get_column_header = atk_table_get_column_header(this : Table*, column : Int32) : LibAtk::Object*
+  fun table_get_index_at = atk_table_get_index_at(this : Table*, row : Int32, column : Int32) : Int32
+  fun table_get_n_columns = atk_table_get_n_columns(this : Table*) : Int32
+  fun table_get_n_rows = atk_table_get_n_rows(this : Table*) : Int32
+  fun table_get_row_at_index = atk_table_get_row_at_index(this : Table*, index_ : Int32) : Int32
+  fun table_get_row_description = atk_table_get_row_description(this : Table*, row : Int32) : UInt8*
+  fun table_get_row_extent_at = atk_table_get_row_extent_at(this : Table*, row : Int32, column : Int32) : Int32
+  fun table_get_row_header = atk_table_get_row_header(this : Table*, row : Int32) : LibAtk::Object*
+  fun table_get_selected_columns = atk_table_get_selected_columns(this : Table*, selected : Int32*) : Int32
+  fun table_get_selected_rows = atk_table_get_selected_rows(this : Table*, selected : Int32*) : Int32
+  fun table_get_summary = atk_table_get_summary(this : Table*) : LibAtk::Object*
+  fun table_is_column_selected = atk_table_is_column_selected(this : Table*, column : Int32) : Bool
+  fun table_is_row_selected = atk_table_is_row_selected(this : Table*, row : Int32) : Bool
+  fun table_is_selected = atk_table_is_selected(this : Table*, row : Int32, column : Int32) : Bool
+  fun table_ref_at = atk_table_ref_at(this : Table*, row : Int32, column : Int32) : LibAtk::Object*
+  fun table_remove_column_selection = atk_table_remove_column_selection(this : Table*, column : Int32) : Bool
+  fun table_remove_row_selection = atk_table_remove_row_selection(this : Table*, row : Int32) : Bool
+  fun table_set_caption = atk_table_set_caption(this : Table*, caption : LibAtk::Object*) : Void
+  fun table_set_column_description = atk_table_set_column_description(this : Table*, column : Int32, description : UInt8*) : Void
+  fun table_set_column_header = atk_table_set_column_header(this : Table*, column : Int32, header : LibAtk::Object*) : Void
+  fun table_set_row_description = atk_table_set_row_description(this : Table*, row : Int32, description : UInt8*) : Void
+  fun table_set_row_header = atk_table_set_row_header(this : Table*, row : Int32, header : LibAtk::Object*) : Void
+  fun table_set_summary = atk_table_set_summary(this : Table*, accessible : LibAtk::Object*) : Void
+
+  struct TableCell # interface
+  parent : LibGObject::TypeInterface
+  get_column_span : -> Void
+  get_column_header_cells : -> Void
+  get_position : -> Void
+  get_row_span : -> Void
+  get_row_header_cells : -> Void
+  get_row_column_span : -> Void
+  get_table : -> Void
+  # Requires Object
+    # Virtual function get_column_header_cells
+    # Virtual function get_column_span
+    # Virtual function get_position
+    # Virtual function get_row_column_span
+    # Virtual function get_row_header_cells
+    # Virtual function get_row_span
+    # Virtual function get_table
+  end
+  fun table_cell_get_column_header_cells = atk_table_cell_get_column_header_cells(this : TableCell*) : Void**
+  fun table_cell_get_column_span = atk_table_cell_get_column_span(this : TableCell*) : Int32
+  fun table_cell_get_position = atk_table_cell_get_position(this : TableCell*, row : Int32*, column : Int32*) : Bool
+  fun table_cell_get_row_column_span = atk_table_cell_get_row_column_span(this : TableCell*, row : Int32*, column : Int32*, row_span : Int32*, column_span : Int32*) : Bool
+  fun table_cell_get_row_header_cells = atk_table_cell_get_row_header_cells(this : TableCell*) : Void**
+  fun table_cell_get_row_span = atk_table_cell_get_row_span(this : TableCell*) : Int32
+  fun table_cell_get_table = atk_table_cell_get_table(this : TableCell*) : LibAtk::Object*
+
+  struct Text # interface
+  parent : LibGObject::TypeInterface
+  get_text : -> Void
+  get_text_after_offset : -> Void
+  get_text_at_offset : -> Void
+  get_character_at_offset : -> Void
+  get_text_before_offset : -> Void
+  get_caret_offset : -> Void
+  get_run_attributes : -> Void
+  get_default_attributes : -> Void
+  get_character_extents : -> Void
+  get_character_count : -> Void
+  get_offset_at_point : -> Void
+  get_n_selections : -> Void
+  get_selection : -> Void
+  add_selection : -> Void
+  remove_selection : -> Void
+  set_selection : -> Void
+  set_caret_offset : -> Void
+  text_changed : -> Void
+  text_caret_moved : -> Void
+  text_selection_changed : -> Void
+  text_attributes_changed : -> Void
+  get_range_extents : -> Void
+  get_bounded_ranges : -> Void
+  get_string_at_offset : -> Void
+    # Signal text-attributes-changed
+    # Signal text-caret-moved
+    # Signal text-changed
+    # Signal text-insert
+    # Signal text-remove
+    # Signal text-selection-changed
+    # Virtual function add_selection
+    # Virtual function get_bounded_ranges
+    # Virtual function get_caret_offset
+    # Virtual function get_character_at_offset
+    # Virtual function get_character_count
+    # Virtual function get_character_extents
+    # Virtual function get_default_attributes
+    # Virtual function get_n_selections
+    # Virtual function get_offset_at_point
+    # Virtual function get_range_extents
+    # Virtual function get_run_attributes
+    # Virtual function get_selection
+    # Virtual function get_string_at_offset
+    # Virtual function get_text
+    # Virtual function get_text_after_offset
+    # Virtual function get_text_at_offset
+    # Virtual function get_text_before_offset
+    # Virtual function remove_selection
+    # Virtual function set_caret_offset
+    # Virtual function set_selection
+    # Virtual function text_attributes_changed
+    # Virtual function text_caret_moved
+    # Virtual function text_changed
+    # Virtual function text_selection_changed
+  end
+  fun text_free_ranges = atk_text_free_ranges(ranges : LibAtk::TextRange**) : Void
+  fun text_add_selection = atk_text_add_selection(this : Text*, start_offset : Int32, end_offset : Int32) : Bool
+  fun text_get_bounded_ranges = atk_text_get_bounded_ranges(this : Text*, rect : LibAtk::TextRectangle*, coord_type : LibAtk::CoordType, x_clip_type : LibAtk::TextClipType, y_clip_type : LibAtk::TextClipType) : LibAtk::TextRange**
+  fun text_get_caret_offset = atk_text_get_caret_offset(this : Text*) : Int32
+  fun text_get_character_at_offset = atk_text_get_character_at_offset(this : Text*, offset : Int32) : UInt8
+  fun text_get_character_count = atk_text_get_character_count(this : Text*) : Int32
+  fun text_get_character_extents = atk_text_get_character_extents(this : Text*, offset : Int32, x : Int32*, y : Int32*, width : Int32*, height : Int32*, coords : LibAtk::CoordType) : Void
+  fun text_get_default_attributes = atk_text_get_default_attributes(this : Text*) : Void**
+  fun text_get_n_selections = atk_text_get_n_selections(this : Text*) : Int32
+  fun text_get_offset_at_point = atk_text_get_offset_at_point(this : Text*, x : Int32, y : Int32, coords : LibAtk::CoordType) : Int32
+  fun text_get_range_extents = atk_text_get_range_extents(this : Text*, start_offset : Int32, end_offset : Int32, coord_type : LibAtk::CoordType, rect : LibAtk::TextRectangle*) : Void
+  fun text_get_run_attributes = atk_text_get_run_attributes(this : Text*, offset : Int32, start_offset : Int32*, end_offset : Int32*) : Void**
+  fun text_get_selection = atk_text_get_selection(this : Text*, selection_num : Int32, start_offset : Int32*, end_offset : Int32*) : UInt8*
+  fun text_get_string_at_offset = atk_text_get_string_at_offset(this : Text*, offset : Int32, granularity : LibAtk::TextGranularity, start_offset : Int32*, end_offset : Int32*) : UInt8*
+  fun text_get_text = atk_text_get_text(this : Text*, start_offset : Int32, end_offset : Int32) : UInt8*
+  fun text_get_text_after_offset = atk_text_get_text_after_offset(this : Text*, offset : Int32, boundary_type : LibAtk::TextBoundary, start_offset : Int32*, end_offset : Int32*) : UInt8*
+  fun text_get_text_at_offset = atk_text_get_text_at_offset(this : Text*, offset : Int32, boundary_type : LibAtk::TextBoundary, start_offset : Int32*, end_offset : Int32*) : UInt8*
+  fun text_get_text_before_offset = atk_text_get_text_before_offset(this : Text*, offset : Int32, boundary_type : LibAtk::TextBoundary, start_offset : Int32*, end_offset : Int32*) : UInt8*
+  fun text_remove_selection = atk_text_remove_selection(this : Text*, selection_num : Int32) : Bool
+  fun text_set_caret_offset = atk_text_set_caret_offset(this : Text*, offset : Int32) : Bool
+  fun text_set_selection = atk_text_set_selection(this : Text*, selection_num : Int32, start_offset : Int32, end_offset : Int32) : Bool
+
+  struct Value # interface
+  parent : LibGObject::TypeInterface
+  get_current_value : -> Void
+  get_maximum_value : -> Void
+  get_minimum_value : -> Void
+  set_current_value : -> Void
+  get_minimum_increment : -> Void
+  get_value_and_text : -> Void
+  get_range : -> Void
+  get_increment : -> Void
+  get_sub_ranges : -> Void
+  set_value : -> Void
+    # Signal value-changed
+    # Virtual function get_current_value
+    # Virtual function get_increment
+    # Virtual function get_maximum_value
+    # Virtual function get_minimum_increment
+    # Virtual function get_minimum_value
+    # Virtual function get_range
+    # Virtual function get_sub_ranges
+    # Virtual function get_value_and_text
+    # Virtual function set_current_value
+    # Virtual function set_value
+  end
+  fun value_get_current_value = atk_value_get_current_value(this : Value*, value : LibGObject::Value*) : Void
+  fun value_get_increment = atk_value_get_increment(this : Value*) : Float64
+  fun value_get_maximum_value = atk_value_get_maximum_value(this : Value*, value : LibGObject::Value*) : Void
+  fun value_get_minimum_increment = atk_value_get_minimum_increment(this : Value*, value : LibGObject::Value*) : Void
+  fun value_get_minimum_value = atk_value_get_minimum_value(this : Value*, value : LibGObject::Value*) : Void
+  fun value_get_range = atk_value_get_range(this : Value*) : LibAtk::Range*
+  fun value_get_sub_ranges = atk_value_get_sub_ranges(this : Value*) : Void**
+  fun value_get_value_and_text = atk_value_get_value_and_text(this : Value*, value : Float64*, text : UInt8**) : Void
+  fun value_set_current_value = atk_value_set_current_value(this : Value*, value : LibGObject::Value*) : Bool
+  fun value_set_value = atk_value_set_value(this : Value*, new_value : Float64) : Void
+
+  struct Window # interface
+  parent : LibGObject::TypeInterface
+  # Requires Object
+    # Signal activate
+    # Signal create
+    # Signal deactivate
+    # Signal destroy
+    # Signal maximize
+    # Signal minimize
+    # Signal move
+    # Signal resize
+    # Signal restore
+  end
+
+
+  ###########################################
+  ##    Structs
+  ###########################################
+
+  struct Attribute # struct
+    name : UInt8*
+    value : UInt8*
+  end
+  fun attribute_set_free = atk_attribute_set_free(attrib_set : Void**) : Void
+
+  struct Implementor # struct
+  end
+  fun implementor_ref_accessible = atk_implementor_ref_accessible(this : Implementor*) : LibAtk::Object*
+
+  struct KeyEventStruct # struct
+    type : Int32
+    state : UInt32
+    keyval : UInt32
+    length : Int32
+    string : UInt8*
+    keycode : UInt16
+    timestamp : UInt32
+  end
+
+  struct PropertyValues # struct
+    property_name : UInt8*
+    old_value : LibGObject::Value
+    new_value : LibGObject::Value
+  end
+
+  struct Range # struct
+  end
+  fun range_new = atk_range_new(lower_limit : Float64, upper_limit : Float64, description : UInt8*) : LibAtk::Range*
+  fun range_copy = atk_range_copy(this : Range*) : LibAtk::Range*
+  fun range_free = atk_range_free(this : Range*) : Void
+  fun range_get_description = atk_range_get_description(this : Range*) : UInt8*
+  fun range_get_lower_limit = atk_range_get_lower_limit(this : Range*) : Float64
+  fun range_get_upper_limit = atk_range_get_upper_limit(this : Range*) : Float64
+
+  struct Rectangle # struct
+    x : Int32
+    y : Int32
+    width : Int32
+    height : Int32
+  end
+
+  struct TextRange # struct
+    bounds : LibAtk::TextRectangle
+    start_offset : Int32
+    end_offset : Int32
+    content : UInt8*
+  end
+
+  struct TextRectangle # struct
+    x : Int32
+    y : Int32
+    width : Int32
+    height : Int32
+  end
+
 
   ###########################################
   ##    Constants
@@ -374,568 +884,6 @@ lib LibAtk
 
 
   ###########################################
-  ##    Flags
-  ###########################################
-
-  enum HyperlinkStateFlags
-    ZERO_NONE = 0
-    INLINE = 1
-  end
-
-
-  ###########################################
-  ##    Interfaces
-  ###########################################
-
-  struct Action # interface
-  parent : LibGObject::TypeInterface
-  do_action : Void*
-  get_n_actions : Void*
-  get_description : Void*
-  get_name : Void*
-  get_keybinding : Void*
-  set_description : Void*
-  get_localized_name : Void*
-    # Virtual function do_action
-    # Virtual function get_description
-    # Virtual function get_keybinding
-    # Virtual function get_localized_name
-    # Virtual function get_n_actions
-    # Virtual function get_name
-    # Virtual function set_description
-  end
-  fun action_do_action = atk_action_do_action(this : Action*, i : Int32) : Bool
-  fun action_get_description = atk_action_get_description(this : Action*, i : Int32) : UInt8*
-  fun action_get_keybinding = atk_action_get_keybinding(this : Action*, i : Int32) : UInt8*
-  fun action_get_localized_name = atk_action_get_localized_name(this : Action*, i : Int32) : UInt8*
-  fun action_get_n_actions = atk_action_get_n_actions(this : Action*) : Int32
-  fun action_get_name = atk_action_get_name(this : Action*, i : Int32) : UInt8*
-  fun action_set_description = atk_action_set_description(this : Action*, i : Int32, desc : UInt8*) : Bool
-
-  struct Component # interface
-  parent : LibGObject::TypeInterface
-  add_focus_handler : Void*
-  contains : Void*
-  ref_accessible_at_point : Void*
-  get_extents : Void*
-  get_position : Void*
-  get_size : Void*
-  grab_focus : Void*
-  remove_focus_handler : Void*
-  set_extents : Void*
-  set_position : Void*
-  set_size : Void*
-  get_layer : Void*
-  get_mdi_zorder : Void*
-  bounds_changed : Void*
-  get_alpha : Void*
-    # Signal bounds-changed
-    # Virtual function bounds_changed
-    # Virtual function contains
-    # Virtual function get_alpha
-    # Virtual function get_extents
-    # Virtual function get_layer
-    # Virtual function get_mdi_zorder
-    # Virtual function get_position
-    # Virtual function get_size
-    # Virtual function grab_focus
-    # Virtual function ref_accessible_at_point
-    # Virtual function remove_focus_handler
-    # Virtual function set_extents
-    # Virtual function set_position
-    # Virtual function set_size
-  end
-  fun component_contains = atk_component_contains(this : Component*, x : Int32, y : Int32, coord_type : LibAtk::CoordType) : Bool
-  fun component_get_alpha = atk_component_get_alpha(this : Component*) : Float64
-  fun component_get_extents = atk_component_get_extents(this : Component*, x : Int32*, y : Int32*, width : Int32*, height : Int32*, coord_type : LibAtk::CoordType) : Void
-  fun component_get_layer = atk_component_get_layer(this : Component*) : LibAtk::Layer
-  fun component_get_mdi_zorder = atk_component_get_mdi_zorder(this : Component*) : Int32
-  fun component_get_position = atk_component_get_position(this : Component*, x : Int32*, y : Int32*, coord_type : LibAtk::CoordType) : Void
-  fun component_get_size = atk_component_get_size(this : Component*, width : Int32*, height : Int32*) : Void
-  fun component_grab_focus = atk_component_grab_focus(this : Component*) : Bool
-  fun component_ref_accessible_at_point = atk_component_ref_accessible_at_point(this : Component*, x : Int32, y : Int32, coord_type : LibAtk::CoordType) : LibAtk::Object*
-  fun component_remove_focus_handler = atk_component_remove_focus_handler(this : Component*, handler_id : UInt32) : Void
-  fun component_set_extents = atk_component_set_extents(this : Component*, x : Int32, y : Int32, width : Int32, height : Int32, coord_type : LibAtk::CoordType) : Bool
-  fun component_set_position = atk_component_set_position(this : Component*, x : Int32, y : Int32, coord_type : LibAtk::CoordType) : Bool
-  fun component_set_size = atk_component_set_size(this : Component*, width : Int32, height : Int32) : Bool
-
-  struct Document # interface
-  parent : LibGObject::TypeInterface
-  get_document_type : Void*
-  get_document : Void*
-  get_document_locale : Void*
-  get_document_attributes : Void*
-  get_document_attribute_value : Void*
-  set_document_attribute : Void*
-  get_current_page_number : Void*
-  get_page_count : Void*
-    # Signal load-complete
-    # Signal load-stopped
-    # Signal page-changed
-    # Signal reload
-    # Virtual function get_current_page_number
-    # Virtual function get_document
-    # Virtual function get_document_attribute_value
-    # Virtual function get_document_locale
-    # Virtual function get_document_type
-    # Virtual function get_page_count
-    # Virtual function set_document_attribute
-  end
-  fun document_get_attribute_value = atk_document_get_attribute_value(this : Document*, attribute_name : UInt8*) : UInt8*
-  fun document_get_attributes = atk_document_get_attributes(this : Document*) : Void**
-  fun document_get_current_page_number = atk_document_get_current_page_number(this : Document*) : Int32
-  fun document_get_document = atk_document_get_document(this : Document*) : Void*
-  fun document_get_document_type = atk_document_get_document_type(this : Document*) : UInt8*
-  fun document_get_locale = atk_document_get_locale(this : Document*) : UInt8*
-  fun document_get_page_count = atk_document_get_page_count(this : Document*) : Int32
-  fun document_set_attribute_value = atk_document_set_attribute_value(this : Document*, attribute_name : UInt8*, attribute_value : UInt8*) : Bool
-
-  struct EditableText # interface
-  parent_interface : LibGObject::TypeInterface
-  set_run_attributes : Void*
-  set_text_contents : Void*
-  insert_text : Void*
-  copy_text : Void*
-  cut_text : Void*
-  delete_text : Void*
-  paste_text : Void*
-    # Virtual function copy_text
-    # Virtual function cut_text
-    # Virtual function delete_text
-    # Virtual function insert_text
-    # Virtual function paste_text
-    # Virtual function set_run_attributes
-    # Virtual function set_text_contents
-  end
-  fun editable_text_copy_text = atk_editable_text_copy_text(this : EditableText*, start_pos : Int32, end_pos : Int32) : Void
-  fun editable_text_cut_text = atk_editable_text_cut_text(this : EditableText*, start_pos : Int32, end_pos : Int32) : Void
-  fun editable_text_delete_text = atk_editable_text_delete_text(this : EditableText*, start_pos : Int32, end_pos : Int32) : Void
-  fun editable_text_insert_text = atk_editable_text_insert_text(this : EditableText*, string : UInt8*, length : Int32, position : Int32*) : Void
-  fun editable_text_paste_text = atk_editable_text_paste_text(this : EditableText*, position : Int32) : Void
-  fun editable_text_set_run_attributes = atk_editable_text_set_run_attributes(this : EditableText*, attrib_set : Void**, start_offset : Int32, end_offset : Int32) : Bool
-  fun editable_text_set_text_contents = atk_editable_text_set_text_contents(this : EditableText*, string : UInt8*) : Void
-
-  struct HyperlinkImpl # interface
-  parent : LibGObject::TypeInterface
-  get_hyperlink : Void*
-    # Virtual function get_hyperlink
-  end
-  fun hyperlink_impl_get_hyperlink = atk_hyperlink_impl_get_hyperlink(this : HyperlinkImpl*) : LibAtk::Hyperlink*
-
-  struct Hypertext # interface
-  parent : LibGObject::TypeInterface
-  get_link : Void*
-  get_n_links : Void*
-  get_link_index : Void*
-  link_selected : Void*
-    # Signal link-selected
-    # Virtual function get_link
-    # Virtual function get_link_index
-    # Virtual function get_n_links
-    # Virtual function link_selected
-  end
-  fun hypertext_get_link = atk_hypertext_get_link(this : Hypertext*, link_index : Int32) : LibAtk::Hyperlink*
-  fun hypertext_get_link_index = atk_hypertext_get_link_index(this : Hypertext*, char_index : Int32) : Int32
-  fun hypertext_get_n_links = atk_hypertext_get_n_links(this : Hypertext*) : Int32
-
-  struct Image # interface
-  parent : LibGObject::TypeInterface
-  get_image_position : Void*
-  get_image_description : Void*
-  get_image_size : Void*
-  set_image_description : Void*
-  get_image_locale : Void*
-    # Virtual function get_image_description
-    # Virtual function get_image_locale
-    # Virtual function get_image_position
-    # Virtual function get_image_size
-    # Virtual function set_image_description
-  end
-  fun image_get_image_description = atk_image_get_image_description(this : Image*) : UInt8*
-  fun image_get_image_locale = atk_image_get_image_locale(this : Image*) : UInt8*
-  fun image_get_image_position = atk_image_get_image_position(this : Image*, x : Int32*, y : Int32*, coord_type : LibAtk::CoordType) : Void
-  fun image_get_image_size = atk_image_get_image_size(this : Image*, width : Int32*, height : Int32*) : Void
-  fun image_set_image_description = atk_image_set_image_description(this : Image*, description : UInt8*) : Bool
-
-  struct ImplementorIface # interface
-  end
-
-  struct Selection # interface
-  parent : LibGObject::TypeInterface
-  add_selection : Void*
-  clear_selection : Void*
-  ref_selection : Void*
-  get_selection_count : Void*
-  is_child_selected : Void*
-  remove_selection : Void*
-  select_all_selection : Void*
-  selection_changed : Void*
-    # Signal selection-changed
-    # Virtual function add_selection
-    # Virtual function clear_selection
-    # Virtual function get_selection_count
-    # Virtual function is_child_selected
-    # Virtual function ref_selection
-    # Virtual function remove_selection
-    # Virtual function select_all_selection
-    # Virtual function selection_changed
-  end
-  fun selection_add_selection = atk_selection_add_selection(this : Selection*, i : Int32) : Bool
-  fun selection_clear_selection = atk_selection_clear_selection(this : Selection*) : Bool
-  fun selection_get_selection_count = atk_selection_get_selection_count(this : Selection*) : Int32
-  fun selection_is_child_selected = atk_selection_is_child_selected(this : Selection*, i : Int32) : Bool
-  fun selection_ref_selection = atk_selection_ref_selection(this : Selection*, i : Int32) : LibAtk::Object*
-  fun selection_remove_selection = atk_selection_remove_selection(this : Selection*, i : Int32) : Bool
-  fun selection_select_all_selection = atk_selection_select_all_selection(this : Selection*) : Bool
-
-  struct StreamableContent # interface
-  parent : LibGObject::TypeInterface
-  get_n_mime_types : Void*
-  get_mime_type : Void*
-  get_stream : Void*
-  get_uri : Void*
-  pad1 : Void*
-  pad2 : Void*
-  pad3 : Void*
-    # Virtual function get_mime_type
-    # Virtual function get_n_mime_types
-    # Virtual function get_stream
-    # Virtual function get_uri
-  end
-  fun streamable_content_get_mime_type = atk_streamable_content_get_mime_type(this : StreamableContent*, i : Int32) : UInt8*
-  fun streamable_content_get_n_mime_types = atk_streamable_content_get_n_mime_types(this : StreamableContent*) : Int32
-  fun streamable_content_get_stream = atk_streamable_content_get_stream(this : StreamableContent*, mime_type : UInt8*) : LibGLib::IOChannel*
-  fun streamable_content_get_uri = atk_streamable_content_get_uri(this : StreamableContent*, mime_type : UInt8*) : UInt8*
-
-  struct Table # interface
-  parent : LibGObject::TypeInterface
-  ref_at : Void*
-  get_index_at : Void*
-  get_column_at_index : Void*
-  get_row_at_index : Void*
-  get_n_columns : Void*
-  get_n_rows : Void*
-  get_column_extent_at : Void*
-  get_row_extent_at : Void*
-  get_caption : Void*
-  get_column_description : Void*
-  get_column_header : Void*
-  get_row_description : Void*
-  get_row_header : Void*
-  get_summary : Void*
-  set_caption : Void*
-  set_column_description : Void*
-  set_column_header : Void*
-  set_row_description : Void*
-  set_row_header : Void*
-  set_summary : Void*
-  get_selected_columns : Void*
-  get_selected_rows : Void*
-  is_column_selected : Void*
-  is_row_selected : Void*
-  is_selected : Void*
-  add_row_selection : Void*
-  remove_row_selection : Void*
-  add_column_selection : Void*
-  remove_column_selection : Void*
-  row_inserted : Void*
-  column_inserted : Void*
-  row_deleted : Void*
-  column_deleted : Void*
-  row_reordered : Void*
-  column_reordered : Void*
-  model_changed : Void*
-    # Signal column-deleted
-    # Signal column-inserted
-    # Signal column-reordered
-    # Signal model-changed
-    # Signal row-deleted
-    # Signal row-inserted
-    # Signal row-reordered
-    # Virtual function add_column_selection
-    # Virtual function add_row_selection
-    # Virtual function column_deleted
-    # Virtual function column_inserted
-    # Virtual function column_reordered
-    # Virtual function get_caption
-    # Virtual function get_column_at_index
-    # Virtual function get_column_description
-    # Virtual function get_column_extent_at
-    # Virtual function get_column_header
-    # Virtual function get_index_at
-    # Virtual function get_n_columns
-    # Virtual function get_n_rows
-    # Virtual function get_row_at_index
-    # Virtual function get_row_description
-    # Virtual function get_row_extent_at
-    # Virtual function get_row_header
-    # Virtual function get_selected_columns
-    # Virtual function get_selected_rows
-    # Virtual function get_summary
-    # Virtual function is_column_selected
-    # Virtual function is_row_selected
-    # Virtual function is_selected
-    # Virtual function model_changed
-    # Virtual function ref_at
-    # Virtual function remove_column_selection
-    # Virtual function remove_row_selection
-    # Virtual function row_deleted
-    # Virtual function row_inserted
-    # Virtual function row_reordered
-    # Virtual function set_caption
-    # Virtual function set_column_description
-    # Virtual function set_column_header
-    # Virtual function set_row_description
-    # Virtual function set_row_header
-    # Virtual function set_summary
-  end
-  fun table_add_column_selection = atk_table_add_column_selection(this : Table*, column : Int32) : Bool
-  fun table_add_row_selection = atk_table_add_row_selection(this : Table*, row : Int32) : Bool
-  fun table_get_caption = atk_table_get_caption(this : Table*) : LibAtk::Object*
-  fun table_get_column_at_index = atk_table_get_column_at_index(this : Table*, index_ : Int32) : Int32
-  fun table_get_column_description = atk_table_get_column_description(this : Table*, column : Int32) : UInt8*
-  fun table_get_column_extent_at = atk_table_get_column_extent_at(this : Table*, row : Int32, column : Int32) : Int32
-  fun table_get_column_header = atk_table_get_column_header(this : Table*, column : Int32) : LibAtk::Object*
-  fun table_get_index_at = atk_table_get_index_at(this : Table*, row : Int32, column : Int32) : Int32
-  fun table_get_n_columns = atk_table_get_n_columns(this : Table*) : Int32
-  fun table_get_n_rows = atk_table_get_n_rows(this : Table*) : Int32
-  fun table_get_row_at_index = atk_table_get_row_at_index(this : Table*, index_ : Int32) : Int32
-  fun table_get_row_description = atk_table_get_row_description(this : Table*, row : Int32) : UInt8*
-  fun table_get_row_extent_at = atk_table_get_row_extent_at(this : Table*, row : Int32, column : Int32) : Int32
-  fun table_get_row_header = atk_table_get_row_header(this : Table*, row : Int32) : LibAtk::Object*
-  fun table_get_selected_columns = atk_table_get_selected_columns(this : Table*, selected : Int32*) : Int32
-  fun table_get_selected_rows = atk_table_get_selected_rows(this : Table*, selected : Int32*) : Int32
-  fun table_get_summary = atk_table_get_summary(this : Table*) : LibAtk::Object*
-  fun table_is_column_selected = atk_table_is_column_selected(this : Table*, column : Int32) : Bool
-  fun table_is_row_selected = atk_table_is_row_selected(this : Table*, row : Int32) : Bool
-  fun table_is_selected = atk_table_is_selected(this : Table*, row : Int32, column : Int32) : Bool
-  fun table_ref_at = atk_table_ref_at(this : Table*, row : Int32, column : Int32) : LibAtk::Object*
-  fun table_remove_column_selection = atk_table_remove_column_selection(this : Table*, column : Int32) : Bool
-  fun table_remove_row_selection = atk_table_remove_row_selection(this : Table*, row : Int32) : Bool
-  fun table_set_caption = atk_table_set_caption(this : Table*, caption : LibAtk::Object*) : Void
-  fun table_set_column_description = atk_table_set_column_description(this : Table*, column : Int32, description : UInt8*) : Void
-  fun table_set_column_header = atk_table_set_column_header(this : Table*, column : Int32, header : LibAtk::Object*) : Void
-  fun table_set_row_description = atk_table_set_row_description(this : Table*, row : Int32, description : UInt8*) : Void
-  fun table_set_row_header = atk_table_set_row_header(this : Table*, row : Int32, header : LibAtk::Object*) : Void
-  fun table_set_summary = atk_table_set_summary(this : Table*, accessible : LibAtk::Object*) : Void
-
-  struct TableCell # interface
-  parent : LibGObject::TypeInterface
-  get_column_span : Void*
-  get_column_header_cells : Void*
-  get_position : Void*
-  get_row_span : Void*
-  get_row_header_cells : Void*
-  get_row_column_span : Void*
-  get_table : Void*
-  # Requires Object
-    # Virtual function get_column_header_cells
-    # Virtual function get_column_span
-    # Virtual function get_position
-    # Virtual function get_row_column_span
-    # Virtual function get_row_header_cells
-    # Virtual function get_row_span
-    # Virtual function get_table
-  end
-  fun table_cell_get_column_header_cells = atk_table_cell_get_column_header_cells(this : TableCell*) : Void**
-  fun table_cell_get_column_span = atk_table_cell_get_column_span(this : TableCell*) : Int32
-  fun table_cell_get_position = atk_table_cell_get_position(this : TableCell*, row : Int32*, column : Int32*) : Bool
-  fun table_cell_get_row_column_span = atk_table_cell_get_row_column_span(this : TableCell*, row : Int32*, column : Int32*, row_span : Int32*, column_span : Int32*) : Bool
-  fun table_cell_get_row_header_cells = atk_table_cell_get_row_header_cells(this : TableCell*) : Void**
-  fun table_cell_get_row_span = atk_table_cell_get_row_span(this : TableCell*) : Int32
-  fun table_cell_get_table = atk_table_cell_get_table(this : TableCell*) : LibAtk::Object*
-
-  struct Text # interface
-  parent : LibGObject::TypeInterface
-  get_text : Void*
-  get_text_after_offset : Void*
-  get_text_at_offset : Void*
-  get_character_at_offset : Void*
-  get_text_before_offset : Void*
-  get_caret_offset : Void*
-  get_run_attributes : Void*
-  get_default_attributes : Void*
-  get_character_extents : Void*
-  get_character_count : Void*
-  get_offset_at_point : Void*
-  get_n_selections : Void*
-  get_selection : Void*
-  add_selection : Void*
-  remove_selection : Void*
-  set_selection : Void*
-  set_caret_offset : Void*
-  text_changed : Void*
-  text_caret_moved : Void*
-  text_selection_changed : Void*
-  text_attributes_changed : Void*
-  get_range_extents : Void*
-  get_bounded_ranges : Void*
-  get_string_at_offset : Void*
-    # Signal text-attributes-changed
-    # Signal text-caret-moved
-    # Signal text-changed
-    # Signal text-insert
-    # Signal text-remove
-    # Signal text-selection-changed
-    # Virtual function add_selection
-    # Virtual function get_bounded_ranges
-    # Virtual function get_caret_offset
-    # Virtual function get_character_at_offset
-    # Virtual function get_character_count
-    # Virtual function get_character_extents
-    # Virtual function get_default_attributes
-    # Virtual function get_n_selections
-    # Virtual function get_offset_at_point
-    # Virtual function get_range_extents
-    # Virtual function get_run_attributes
-    # Virtual function get_selection
-    # Virtual function get_string_at_offset
-    # Virtual function get_text
-    # Virtual function get_text_after_offset
-    # Virtual function get_text_at_offset
-    # Virtual function get_text_before_offset
-    # Virtual function remove_selection
-    # Virtual function set_caret_offset
-    # Virtual function set_selection
-    # Virtual function text_attributes_changed
-    # Virtual function text_caret_moved
-    # Virtual function text_changed
-    # Virtual function text_selection_changed
-  end
-  fun text_free_ranges = atk_text_free_ranges(ranges : LibAtk::TextRange**) : Void
-  fun text_add_selection = atk_text_add_selection(this : Text*, start_offset : Int32, end_offset : Int32) : Bool
-  fun text_get_bounded_ranges = atk_text_get_bounded_ranges(this : Text*, rect : LibAtk::TextRectangle*, coord_type : LibAtk::CoordType, x_clip_type : LibAtk::TextClipType, y_clip_type : LibAtk::TextClipType) : LibAtk::TextRange**
-  fun text_get_caret_offset = atk_text_get_caret_offset(this : Text*) : Int32
-  fun text_get_character_at_offset = atk_text_get_character_at_offset(this : Text*, offset : Int32) : UInt8
-  fun text_get_character_count = atk_text_get_character_count(this : Text*) : Int32
-  fun text_get_character_extents = atk_text_get_character_extents(this : Text*, offset : Int32, x : Int32*, y : Int32*, width : Int32*, height : Int32*, coords : LibAtk::CoordType) : Void
-  fun text_get_default_attributes = atk_text_get_default_attributes(this : Text*) : Void**
-  fun text_get_n_selections = atk_text_get_n_selections(this : Text*) : Int32
-  fun text_get_offset_at_point = atk_text_get_offset_at_point(this : Text*, x : Int32, y : Int32, coords : LibAtk::CoordType) : Int32
-  fun text_get_range_extents = atk_text_get_range_extents(this : Text*, start_offset : Int32, end_offset : Int32, coord_type : LibAtk::CoordType, rect : LibAtk::TextRectangle*) : Void
-  fun text_get_run_attributes = atk_text_get_run_attributes(this : Text*, offset : Int32, start_offset : Int32*, end_offset : Int32*) : Void**
-  fun text_get_selection = atk_text_get_selection(this : Text*, selection_num : Int32, start_offset : Int32*, end_offset : Int32*) : UInt8*
-  fun text_get_string_at_offset = atk_text_get_string_at_offset(this : Text*, offset : Int32, granularity : LibAtk::TextGranularity, start_offset : Int32*, end_offset : Int32*) : UInt8*
-  fun text_get_text = atk_text_get_text(this : Text*, start_offset : Int32, end_offset : Int32) : UInt8*
-  fun text_get_text_after_offset = atk_text_get_text_after_offset(this : Text*, offset : Int32, boundary_type : LibAtk::TextBoundary, start_offset : Int32*, end_offset : Int32*) : UInt8*
-  fun text_get_text_at_offset = atk_text_get_text_at_offset(this : Text*, offset : Int32, boundary_type : LibAtk::TextBoundary, start_offset : Int32*, end_offset : Int32*) : UInt8*
-  fun text_get_text_before_offset = atk_text_get_text_before_offset(this : Text*, offset : Int32, boundary_type : LibAtk::TextBoundary, start_offset : Int32*, end_offset : Int32*) : UInt8*
-  fun text_remove_selection = atk_text_remove_selection(this : Text*, selection_num : Int32) : Bool
-  fun text_set_caret_offset = atk_text_set_caret_offset(this : Text*, offset : Int32) : Bool
-  fun text_set_selection = atk_text_set_selection(this : Text*, selection_num : Int32, start_offset : Int32, end_offset : Int32) : Bool
-
-  struct Value # interface
-  parent : LibGObject::TypeInterface
-  get_current_value : Void*
-  get_maximum_value : Void*
-  get_minimum_value : Void*
-  set_current_value : Void*
-  get_minimum_increment : Void*
-  get_value_and_text : Void*
-  get_range : Void*
-  get_increment : Void*
-  get_sub_ranges : Void*
-  set_value : Void*
-    # Signal value-changed
-    # Virtual function get_current_value
-    # Virtual function get_increment
-    # Virtual function get_maximum_value
-    # Virtual function get_minimum_increment
-    # Virtual function get_minimum_value
-    # Virtual function get_range
-    # Virtual function get_sub_ranges
-    # Virtual function get_value_and_text
-    # Virtual function set_current_value
-    # Virtual function set_value
-  end
-  fun value_get_current_value = atk_value_get_current_value(this : Value*, value : LibGObject::Value*) : Void
-  fun value_get_increment = atk_value_get_increment(this : Value*) : Float64
-  fun value_get_maximum_value = atk_value_get_maximum_value(this : Value*, value : LibGObject::Value*) : Void
-  fun value_get_minimum_increment = atk_value_get_minimum_increment(this : Value*, value : LibGObject::Value*) : Void
-  fun value_get_minimum_value = atk_value_get_minimum_value(this : Value*, value : LibGObject::Value*) : Void
-  fun value_get_range = atk_value_get_range(this : Value*) : LibAtk::Range*
-  fun value_get_sub_ranges = atk_value_get_sub_ranges(this : Value*) : Void**
-  fun value_get_value_and_text = atk_value_get_value_and_text(this : Value*, value : Float64*, text : UInt8**) : Void
-  fun value_set_current_value = atk_value_set_current_value(this : Value*, value : LibGObject::Value*) : Bool
-  fun value_set_value = atk_value_set_value(this : Value*, new_value : Float64) : Void
-
-  struct Window # interface
-  parent : LibGObject::TypeInterface
-  # Requires Object
-    # Signal activate
-    # Signal create
-    # Signal deactivate
-    # Signal destroy
-    # Signal maximize
-    # Signal minimize
-    # Signal move
-    # Signal resize
-    # Signal restore
-  end
-
-
-  ###########################################
-  ##    Structs
-  ###########################################
-
-  struct Attribute # struct
-    name : UInt8*
-    value : UInt8*
-  end
-  fun attribute_set_free = atk_attribute_set_free(attrib_set : Void**) : Void
-
-  struct Implementor # struct
-  end
-  fun implementor_ref_accessible = atk_implementor_ref_accessible(this : Implementor*) : LibAtk::Object*
-
-  struct KeyEventStruct # struct
-    type : Int32
-    state : UInt32
-    keyval : UInt32
-    length : Int32
-    string : UInt8*
-    keycode : UInt16
-    timestamp : UInt32
-  end
-
-  struct PropertyValues # struct
-    property_name : UInt8*
-    old_value : LibGObject::Value
-    new_value : LibGObject::Value
-  end
-
-  struct Range # struct
-  end
-  fun range_new = atk_range_new(lower_limit : Float64, upper_limit : Float64, description : UInt8*) : LibAtk::Range*
-  fun range_copy = atk_range_copy(this : Range*) : LibAtk::Range*
-  fun range_free = atk_range_free(this : Range*) : Void
-  fun range_get_description = atk_range_get_description(this : Range*) : UInt8*
-  fun range_get_lower_limit = atk_range_get_lower_limit(this : Range*) : Float64
-  fun range_get_upper_limit = atk_range_get_upper_limit(this : Range*) : Float64
-
-  struct Rectangle # struct
-    x : Int32
-    y : Int32
-    width : Int32
-    height : Int32
-  end
-
-  struct TextRange # struct
-    bounds : LibAtk::TextRectangle
-    start_offset : Int32
-    end_offset : Int32
-    content : UInt8*
-  end
-
-  struct TextRectangle # struct
-    x : Int32
-    y : Int32
-    width : Int32
-    height : Int32
-  end
-
-
-  ###########################################
   ##    Callbacks
   ###########################################
 
@@ -957,7 +905,7 @@ lib LibAtk
   fun g_object_accessible_get_object = atk_gobject_accessible_get_object(this : GObjectAccessible*) : LibGObject::Object*
 
   struct Hyperlink # object
-  # Implements Action
+    # Implements Action
     parent : LibGObject::Object
     # Property end-index : Int32
     # Property number-of-anchors : Int32
@@ -993,18 +941,18 @@ lib LibAtk
   fun misc_threads_leave = atk_misc_threads_leave(this : Misc*) : Void
 
   struct NoOpObject # object
-  # Implements Action
-  # Implements Component
-  # Implements Document
-  # Implements EditableText
-  # Implements Hypertext
-  # Implements Image
-  # Implements Selection
-  # Implements Table
-  # Implements TableCell
-  # Implements Text
-  # Implements Value
-  # Implements Window
+    # Implements Action
+    # Implements Component
+    # Implements Document
+    # Implements EditableText
+    # Implements Hypertext
+    # Implements Image
+    # Implements Selection
+    # Implements Table
+    # Implements TableCell
+    # Implements Text
+    # Implements Value
+    # Implements Window
     parent : LibAtk::Object
   end
   fun no_op_object_new = atk_no_op_object_new(obj : LibGObject::Object*) : LibAtk::Object*
@@ -1101,7 +1049,7 @@ lib LibAtk
   fun object_factory_invalidate = atk_object_factory_invalidate(this : ObjectFactory*) : Void
 
   struct Plug # object
-  # Implements Component
+    # Implements Component
     parent : LibAtk::Object
     # Virtual function get_object_id
   end
@@ -1145,7 +1093,7 @@ lib LibAtk
   fun relation_set_remove = atk_relation_set_remove(this : RelationSet*, relation : LibAtk::Relation*) : Void
 
   struct Socket # object
-  # Implements Component
+    # Implements Component
     parent : LibAtk::Object
     embedded_plug_id : UInt8*
     # Virtual function embed
@@ -1171,6 +1119,16 @@ lib LibAtk
 
   struct Util # object
     parent : LibGObject::Object
+  end
+
+
+  ###########################################
+  ##    Flags
+  ###########################################
+
+  enum HyperlinkStateFlags
+    ZERO_NONE = 0
+    INLINE = 1
   end
 
 

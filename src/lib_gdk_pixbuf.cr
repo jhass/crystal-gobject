@@ -5,19 +5,6 @@ require "./lib_g_module"
 lib LibGdkPixbuf
 
   ###########################################
-  ##   Declarations
-  ###########################################
-
-  struct Pixbuf; end # object
-  struct PixbufAnimation; end # object
-  struct PixbufAnimationIter; end # object
-  struct PixbufLoader; end # object
-  struct PixbufSimpleAnim; end # object
-  struct PixbufSimpleAnimIter; end # object
-  struct PixbufFormat; end; # struct
-  struct Pixdata; end; # struct
-
-  ###########################################
   ##    Enums
   ###########################################
 
@@ -73,41 +60,12 @@ lib LibGdkPixbuf
   PIXDATA_HEADER_LENGTH = 24 # : Int32
 
   ###########################################
-  ##    Flags
-  ###########################################
-
-  enum PixdataDumpType
-    ZERO_NONE = 0
-    PIXDATA_STREAM = 0
-    PIXDATA_STRUCT = 1
-    MACROS = 2
-    GTYPES = 0
-    CTYPES = 256
-    STATIC = 512
-    CONST = 1024
-    RLE_DECODER = 65536
-  end
-
-  enum PixdataType
-    ZERO_NONE = 0
-    COLOR_TYPE_RGB = 1
-    COLOR_TYPE_RGBA = 2
-    COLOR_TYPE_MASK = 255
-    SAMPLE_WIDTH_8 = 65536
-    SAMPLE_WIDTH_MASK = 983040
-    ENCODING_RAW = 16777216
-    ENCODING_RLE = 33554432
-    ENCODING_MASK = 251658240
-  end
-
-
-  ###########################################
   ##    Objects
   ###########################################
 
   struct Pixbuf # object
-  # Implements Icon
-  # Implements LoadableIcon
+    # Implements Icon
+    # Implements LoadableIcon
     # Property bits-per-sample : Int32
     # Property colorspace : LibGdkPixbuf::Colorspace
     # Property has-alpha : Bool
@@ -120,7 +78,7 @@ lib LibGdkPixbuf
   end
   fun pixbuf_new = gdk_pixbuf_new(colorspace : LibGdkPixbuf::Colorspace, has_alpha : Bool, bits_per_sample : Int32, width : Int32, height : Int32) : LibGdkPixbuf::Pixbuf*
   fun pixbuf_new_from_bytes = gdk_pixbuf_new_from_bytes(data : LibGLib::Bytes*, colorspace : LibGdkPixbuf::Colorspace, has_alpha : Bool, bits_per_sample : Int32, width : Int32, height : Int32, rowstride : Int32) : LibGdkPixbuf::Pixbuf*
-  fun pixbuf_new_from_data = gdk_pixbuf_new_from_data(data : UInt8*, colorspace : LibGdkPixbuf::Colorspace, has_alpha : Bool, bits_per_sample : Int32, width : Int32, height : Int32, rowstride : Int32, destroy_fn : Void*, destroy_fn_data : Void*) : LibGdkPixbuf::Pixbuf*
+  fun pixbuf_new_from_data = gdk_pixbuf_new_from_data(data : UInt8*, colorspace : LibGdkPixbuf::Colorspace, has_alpha : Bool, bits_per_sample : Int32, width : Int32, height : Int32, rowstride : Int32, destroy_fn : -> Void, destroy_fn_data : Void*) : LibGdkPixbuf::Pixbuf*
   fun pixbuf_new_from_file = gdk_pixbuf_new_from_file(filename : UInt8*, error : LibGLib::Error**) : LibGdkPixbuf::Pixbuf*
   fun pixbuf_new_from_file_at_scale = gdk_pixbuf_new_from_file_at_scale(filename : UInt8*, width : Int32, height : Int32, preserve_aspect_ratio : Bool, error : LibGLib::Error**) : LibGdkPixbuf::Pixbuf*
   fun pixbuf_new_from_file_at_size = gdk_pixbuf_new_from_file_at_size(filename : UInt8*, width : Int32, height : Int32, error : LibGLib::Error**) : LibGdkPixbuf::Pixbuf*
@@ -133,12 +91,12 @@ lib LibGdkPixbuf
   fun pixbuf_new_from_xpm_data = gdk_pixbuf_new_from_xpm_data(data : UInt8**) : LibGdkPixbuf::Pixbuf*
   fun pixbuf_from_pixdata = gdk_pixbuf_from_pixdata(pixdata : LibGdkPixbuf::Pixdata*, copy_pixels : Bool, error : LibGLib::Error**) : LibGdkPixbuf::Pixbuf*
   fun pixbuf_get_file_info = gdk_pixbuf_get_file_info(filename : UInt8*, width : Int32*, height : Int32*) : LibGdkPixbuf::PixbufFormat*
-  fun pixbuf_get_file_info_async = gdk_pixbuf_get_file_info_async(filename : UInt8*, cancellable : LibGio::Cancellable*, callback : Void*, user_data : Void*) : Void
+  fun pixbuf_get_file_info_async = gdk_pixbuf_get_file_info_async(filename : UInt8*, cancellable : LibGio::Cancellable*, callback : -> Void, user_data : Void*) : Void
   fun pixbuf_get_file_info_finish = gdk_pixbuf_get_file_info_finish(async_result : LibGio::AsyncResult*, width : Int32*, height : Int32*, error : LibGLib::Error**) : LibGdkPixbuf::PixbufFormat*
   fun pixbuf_get_formats = gdk_pixbuf_get_formats() : Void**
   fun pixbuf_gettext = gdk_pixbuf_gettext(msgid : UInt8*) : UInt8*
-  fun pixbuf_new_from_stream_async = gdk_pixbuf_new_from_stream_async(stream : LibGio::InputStream*, cancellable : LibGio::Cancellable*, callback : Void*, user_data : Void*) : Void
-  fun pixbuf_new_from_stream_at_scale_async = gdk_pixbuf_new_from_stream_at_scale_async(stream : LibGio::InputStream*, width : Int32, height : Int32, preserve_aspect_ratio : Bool, cancellable : LibGio::Cancellable*, callback : Void*, user_data : Void*) : Void
+  fun pixbuf_new_from_stream_async = gdk_pixbuf_new_from_stream_async(stream : LibGio::InputStream*, cancellable : LibGio::Cancellable*, callback : -> Void, user_data : Void*) : Void
+  fun pixbuf_new_from_stream_at_scale_async = gdk_pixbuf_new_from_stream_at_scale_async(stream : LibGio::InputStream*, width : Int32, height : Int32, preserve_aspect_ratio : Bool, cancellable : LibGio::Cancellable*, callback : -> Void, user_data : Void*) : Void
   fun pixbuf_save_to_stream_finish = gdk_pixbuf_save_to_stream_finish(async_result : LibGio::AsyncResult*, error : LibGLib::Error**) : Bool
   fun pixbuf_add_alpha = gdk_pixbuf_add_alpha(this : Pixbuf*, substitute_color : Bool, r : UInt8, g : UInt8, b : UInt8) : LibGdkPixbuf::Pixbuf*
   fun pixbuf_apply_embedded_orientation = gdk_pixbuf_apply_embedded_orientation(this : Pixbuf*) : LibGdkPixbuf::Pixbuf*
@@ -165,7 +123,7 @@ lib LibGdkPixbuf
   fun pixbuf_rotate_simple = gdk_pixbuf_rotate_simple(this : Pixbuf*, angle : LibGdkPixbuf::PixbufRotation) : LibGdkPixbuf::Pixbuf*
   fun pixbuf_saturate_and_pixelate = gdk_pixbuf_saturate_and_pixelate(this : Pixbuf*, dest : LibGdkPixbuf::Pixbuf*, saturation : Float32, pixelate : Bool) : Void
   fun pixbuf_save_to_bufferv = gdk_pixbuf_save_to_bufferv(this : Pixbuf*, buffer : UInt8**, buffer_size : UInt64*, type : UInt8*, option_keys : UInt8**, option_values : UInt8**, error : LibGLib::Error**) : Bool
-  fun pixbuf_save_to_callbackv = gdk_pixbuf_save_to_callbackv(this : Pixbuf*, save_func : Void*, user_data : Void*, type : UInt8*, option_keys : UInt8**, option_values : UInt8**, error : LibGLib::Error**) : Bool
+  fun pixbuf_save_to_callbackv = gdk_pixbuf_save_to_callbackv(this : Pixbuf*, save_func : -> Void, user_data : Void*, type : UInt8*, option_keys : UInt8**, option_values : UInt8**, error : LibGLib::Error**) : Bool
   fun pixbuf_savev = gdk_pixbuf_savev(this : Pixbuf*, filename : UInt8*, type : UInt8*, option_keys : UInt8**, option_values : UInt8**, error : LibGLib::Error**) : Bool
   fun pixbuf_scale = gdk_pixbuf_scale(this : Pixbuf*, dest : LibGdkPixbuf::Pixbuf*, dest_x : Int32, dest_y : Int32, dest_width : Int32, dest_height : Int32, offset_x : Float64, offset_y : Float64, scale_x : Float64, scale_y : Float64, interp_type : LibGdkPixbuf::InterpType) : Void
   fun pixbuf_scale_simple = gdk_pixbuf_scale_simple(this : Pixbuf*, dest_width : Int32, dest_height : Int32, interp_type : LibGdkPixbuf::InterpType) : LibGdkPixbuf::Pixbuf*
@@ -176,7 +134,7 @@ lib LibGdkPixbuf
   fun pixbuf_animation_new_from_resource = gdk_pixbuf_animation_new_from_resource(resource_path : UInt8*, error : LibGLib::Error**) : LibGdkPixbuf::PixbufAnimation*
   fun pixbuf_animation_new_from_stream = gdk_pixbuf_animation_new_from_stream(stream : LibGio::InputStream*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : LibGdkPixbuf::PixbufAnimation*
   fun pixbuf_animation_new_from_stream_finish = gdk_pixbuf_animation_new_from_stream_finish(async_result : LibGio::AsyncResult*, error : LibGLib::Error**) : LibGdkPixbuf::PixbufAnimation*
-  fun pixbuf_animation_new_from_stream_async = gdk_pixbuf_animation_new_from_stream_async(stream : LibGio::InputStream*, cancellable : LibGio::Cancellable*, callback : Void*, user_data : Void*) : Void
+  fun pixbuf_animation_new_from_stream_async = gdk_pixbuf_animation_new_from_stream_async(stream : LibGio::InputStream*, cancellable : LibGio::Cancellable*, callback : -> Void, user_data : Void*) : Void
   fun pixbuf_animation_get_height = gdk_pixbuf_animation_get_height(this : PixbufAnimation*) : Int32
   fun pixbuf_animation_get_iter = gdk_pixbuf_animation_get_iter(this : PixbufAnimation*, start_time : LibGLib::TimeVal*) : LibGdkPixbuf::PixbufAnimationIter*
   fun pixbuf_animation_get_static_image = gdk_pixbuf_animation_get_static_image(this : PixbufAnimation*) : LibGdkPixbuf::Pixbuf*
@@ -262,6 +220,35 @@ lib LibGdkPixbuf
   fun pixdata_deserialize = gdk_pixdata_deserialize(this : Pixdata*, stream_length : UInt32, stream : UInt8*, error : LibGLib::Error**) : Bool
   fun pixdata_serialize = gdk_pixdata_serialize(this : Pixdata*, stream_length_p : UInt32*) : UInt8*
   fun pixdata_to_csource = gdk_pixdata_to_csource(this : Pixdata*, name : UInt8*, dump_type : LibGdkPixbuf::PixdataDumpType) : LibGLib::String*
+
+
+  ###########################################
+  ##    Flags
+  ###########################################
+
+  enum PixdataDumpType
+    ZERO_NONE = 0
+    PIXDATA_STREAM = 0
+    PIXDATA_STRUCT = 1
+    MACROS = 2
+    GTYPES = 0
+    CTYPES = 256
+    STATIC = 512
+    CONST = 1024
+    RLE_DECODER = 65536
+  end
+
+  enum PixdataType
+    ZERO_NONE = 0
+    COLOR_TYPE_RGB = 1
+    COLOR_TYPE_RGBA = 2
+    COLOR_TYPE_MASK = 255
+    SAMPLE_WIDTH_8 = 65536
+    SAMPLE_WIDTH_MASK = 983040
+    ENCODING_RAW = 16777216
+    ENCODING_RLE = 33554432
+    ENCODING_MASK = 251658240
+  end
 
 
   ###########################################

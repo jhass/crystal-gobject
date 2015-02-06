@@ -11,8 +11,8 @@ lib LibGtk
   ###########################################
 
   struct AboutDialog # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     parent_instance : LibGtk::Dialog
     priv : LibGtk::AboutDialogPrivate*
     # Property artists : UInt8**
@@ -82,7 +82,7 @@ lib LibGtk
   fun accel_group_connect_by_path = gtk_accel_group_connect_by_path(this : AccelGroup*, accel_path : UInt8*, closure : LibGObject::Closure*) : Void
   fun accel_group_disconnect = gtk_accel_group_disconnect(this : AccelGroup*, closure : LibGObject::Closure*) : Bool
   fun accel_group_disconnect_key = gtk_accel_group_disconnect_key(this : AccelGroup*, accel_key : UInt32, accel_mods : LibGdk::ModifierType) : Bool
-  fun accel_group_find = gtk_accel_group_find(this : AccelGroup*, find_func : Void*, data : Void*) : LibGtk::AccelKey*
+  fun accel_group_find = gtk_accel_group_find(this : AccelGroup*, find_func : -> Void, data : Void*) : LibGtk::AccelKey*
   fun accel_group_get_is_locked = gtk_accel_group_get_is_locked(this : AccelGroup*) : Bool
   fun accel_group_get_modifier_mask = gtk_accel_group_get_modifier_mask(this : AccelGroup*) : LibGdk::ModifierType
   fun accel_group_lock = gtk_accel_group_lock(this : AccelGroup*) : Void
@@ -90,8 +90,8 @@ lib LibGtk
   fun accel_group_unlock = gtk_accel_group_unlock(this : AccelGroup*) : Void
 
   struct AccelLabel # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     label : LibGtk::Label
     priv : LibGtk::AccelLabelPrivate*
     # Property accel-closure : LibGObject::Closure
@@ -112,8 +112,8 @@ lib LibGtk
   fun accel_map_add_entry = gtk_accel_map_add_entry(accel_path : UInt8*, accel_key : UInt32, accel_mods : LibGdk::ModifierType) : Void
   fun accel_map_add_filter = gtk_accel_map_add_filter(filter_pattern : UInt8*) : Void
   fun accel_map_change_entry = gtk_accel_map_change_entry(accel_path : UInt8*, accel_key : UInt32, accel_mods : LibGdk::ModifierType, replace : Bool) : Bool
-  fun accel_map_foreach = gtk_accel_map_foreach(data : Void*, foreach_func : Void*) : Void
-  fun accel_map_foreach_unfiltered = gtk_accel_map_foreach_unfiltered(data : Void*, foreach_func : Void*) : Void
+  fun accel_map_foreach = gtk_accel_map_foreach(data : Void*, foreach_func : -> Void) : Void
+  fun accel_map_foreach_unfiltered = gtk_accel_map_foreach_unfiltered(data : Void*, foreach_func : -> Void) : Void
   fun accel_map_get = gtk_accel_map_get() : LibGtk::AccelMap*
   fun accel_map_load = gtk_accel_map_load(file_name : UInt8*) : Void
   fun accel_map_load_fd = gtk_accel_map_load_fd(fd : Int32) : Void
@@ -137,7 +137,7 @@ lib LibGtk
   fun accessible_set_widget = gtk_accessible_set_widget(this : Accessible*, widget : LibGtk::Widget*) : Void
 
   struct Action # object
-  # Implements Buildable
+    # Implements Buildable
     object : LibGObject::Object
     private_data : LibGtk::ActionPrivate*
     # Property action-group : LibGtk::ActionGroup
@@ -208,8 +208,8 @@ lib LibGtk
   fun action_unblock_activate = gtk_action_unblock_activate(this : Action*) : Void
 
   struct ActionBar # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     bin : LibGtk::Bin
   end
   fun action_bar_new = gtk_action_bar_new() : LibGtk::Widget*
@@ -219,7 +219,7 @@ lib LibGtk
   fun action_bar_set_center_widget = gtk_action_bar_set_center_widget(this : ActionBar*, center_widget : LibGtk::Widget*) : Void
 
   struct ActionGroup # object
-  # Implements Buildable
+    # Implements Buildable
     parent : LibGObject::Object
     priv : LibGtk::ActionGroupPrivate*
     # Property accel-group : LibGtk::AccelGroup
@@ -244,7 +244,7 @@ lib LibGtk
   fun action_group_remove_action = gtk_action_group_remove_action(this : ActionGroup*, action : LibGtk::Action*) : Void
   fun action_group_set_accel_group = gtk_action_group_set_accel_group(this : ActionGroup*, accel_group : LibGtk::AccelGroup*) : Void
   fun action_group_set_sensitive = gtk_action_group_set_sensitive(this : ActionGroup*, sensitive : Bool) : Void
-  fun action_group_set_translate_func = gtk_action_group_set_translate_func(this : ActionGroup*, func : Void*, data : Void*, notify : Void*) : Void
+  fun action_group_set_translate_func = gtk_action_group_set_translate_func(this : ActionGroup*, func : -> Void, data : Void*, notify : -> Void) : Void
   fun action_group_set_translation_domain = gtk_action_group_set_translation_domain(this : ActionGroup*, domain : UInt8*) : Void
   fun action_group_set_visible = gtk_action_group_set_visible(this : ActionGroup*, visible : Bool) : Void
   fun action_group_translate_string = gtk_action_group_translate_string(this : ActionGroup*, string : UInt8*) : UInt8*
@@ -283,8 +283,8 @@ lib LibGtk
   fun adjustment_value_changed = gtk_adjustment_value_changed(this : Adjustment*) : Void
 
   struct Alignment # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     bin : LibGtk::Bin
     priv : LibGtk::AlignmentPrivate*
     # Property bottom-padding : UInt32
@@ -302,11 +302,11 @@ lib LibGtk
   fun alignment_set_padding = gtk_alignment_set_padding(this : Alignment*, padding_top : UInt32, padding_bottom : UInt32, padding_left : UInt32, padding_right : UInt32) : Void
 
   struct AppChooserButton # object
-  # Implements ImplementorIface
-  # Implements AppChooser
-  # Implements Buildable
-  # Implements CellEditable
-  # Implements CellLayout
+    # Implements ImplementorIface
+    # Implements AppChooser
+    # Implements Buildable
+    # Implements CellEditable
+    # Implements CellLayout
     parent : LibGtk::ComboBox
     priv : LibGtk::AppChooserButtonPrivate*
     # Property heading : UInt8*
@@ -327,9 +327,9 @@ lib LibGtk
   fun app_chooser_button_set_show_dialog_item = gtk_app_chooser_button_set_show_dialog_item(this : AppChooserButton*, setting : Bool) : Void
 
   struct AppChooserDialog # object
-  # Implements ImplementorIface
-  # Implements AppChooser
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements AppChooser
+    # Implements Buildable
     parent : LibGtk::Dialog
     priv : LibGtk::AppChooserDialogPrivate*
     # Property gfile : LibGio::File
@@ -342,10 +342,10 @@ lib LibGtk
   fun app_chooser_dialog_set_heading = gtk_app_chooser_dialog_set_heading(this : AppChooserDialog*, heading : UInt8*) : Void
 
   struct AppChooserWidget # object
-  # Implements ImplementorIface
-  # Implements AppChooser
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements AppChooser
+    # Implements Buildable
+    # Implements Orientable
     parent : LibGtk::Box
     priv : LibGtk::AppChooserWidgetPrivate*
     # Property default-text : UInt8*
@@ -376,8 +376,8 @@ lib LibGtk
   fun app_chooser_widget_set_show_recommended = gtk_app_chooser_widget_set_show_recommended(this : AppChooserWidget*, setting : Bool) : Void
 
   struct Application # object
-  # Implements ActionGroup
-  # Implements ActionMap
+    # Implements ActionGroup
+    # Implements ActionMap
     parent : LibGio::Application
     priv : LibGtk::ApplicationPrivate*
     # Property active-window : LibGtk::Window
@@ -412,10 +412,10 @@ lib LibGtk
   fun application_uninhibit = gtk_application_uninhibit(this : Application*, cookie : UInt32) : Void
 
   struct ApplicationWindow # object
-  # Implements ImplementorIface
-  # Implements ActionGroup
-  # Implements ActionMap
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements ActionGroup
+    # Implements ActionMap
+    # Implements Buildable
     parent_instance : LibGtk::Window
     priv : LibGtk::ApplicationWindowPrivate*
     # Property show-menubar : Bool
@@ -426,8 +426,8 @@ lib LibGtk
   fun application_window_set_show_menubar = gtk_application_window_set_show_menubar(this : ApplicationWindow*, show_menubar : Bool) : Void
 
   struct Arrow # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     misc : LibGtk::Misc
     priv : LibGtk::ArrowPrivate*
     # Property arrow-type : LibGtk::ArrowType
@@ -437,15 +437,15 @@ lib LibGtk
   fun arrow_set = gtk_arrow_set(this : Arrow*, arrow_type : LibGtk::ArrowType, shadow_type : LibGtk::ShadowType) : Void
 
   struct ArrowAccessible # object
-  # Implements Component
-  # Implements Image
+    # Implements Component
+    # Implements Image
     parent : LibGtk::WidgetAccessible
     priv : LibGtk::ArrowAccessiblePrivate*
   end
 
   struct AspectFrame # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     frame : LibGtk::Frame
     priv : LibGtk::AspectFramePrivate*
     # Property obey-child : Bool
@@ -457,8 +457,8 @@ lib LibGtk
   fun aspect_frame_set = gtk_aspect_frame_set(this : AspectFrame*, xalign : Float32, yalign : Float32, ratio : Float32, obey_child : Bool) : Void
 
   struct Assistant # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     parent : LibGtk::Window
     priv : LibGtk::AssistantPrivate*
     # Property use-header-bar : Int32
@@ -491,7 +491,7 @@ lib LibGtk
   fun assistant_remove_action_widget = gtk_assistant_remove_action_widget(this : Assistant*, child : LibGtk::Widget*) : Void
   fun assistant_remove_page = gtk_assistant_remove_page(this : Assistant*, page_num : Int32) : Void
   fun assistant_set_current_page = gtk_assistant_set_current_page(this : Assistant*, page_num : Int32) : Void
-  fun assistant_set_forward_page_func = gtk_assistant_set_forward_page_func(this : Assistant*, page_func : Void*, data : Void*, destroy : Void*) : Void
+  fun assistant_set_forward_page_func = gtk_assistant_set_forward_page_func(this : Assistant*, page_func : -> Void, data : Void*, destroy : -> Void) : Void
   fun assistant_set_page_complete = gtk_assistant_set_page_complete(this : Assistant*, page : LibGtk::Widget*, complete : Bool) : Void
   fun assistant_set_page_header_image = gtk_assistant_set_page_header_image(this : Assistant*, page : LibGtk::Widget*, pixbuf : LibGdkPixbuf::Pixbuf*) : Void
   fun assistant_set_page_side_image = gtk_assistant_set_page_side_image(this : Assistant*, page : LibGtk::Widget*, pixbuf : LibGdkPixbuf::Pixbuf*) : Void
@@ -500,24 +500,24 @@ lib LibGtk
   fun assistant_update_buttons_state = gtk_assistant_update_buttons_state(this : Assistant*) : Void
 
   struct Bin # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     container : LibGtk::Container
     priv : LibGtk::BinPrivate*
   end
   fun bin_get_child = gtk_bin_get_child(this : Bin*) : LibGtk::Widget*
 
   struct BooleanCellAccessible # object
-  # Implements Action
-  # Implements Component
+    # Implements Action
+    # Implements Component
     parent : LibGtk::RendererCellAccessible
     priv : LibGtk::BooleanCellAccessiblePrivate*
   end
 
   struct Box # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     container : LibGtk::Container
     priv : LibGtk::BoxPrivate*
     # Property baseline-position : LibGtk::BaselinePosition
@@ -549,7 +549,7 @@ lib LibGtk
   fun builder_new_from_file = gtk_builder_new_from_file(filename : UInt8*) : LibGtk::Builder*
   fun builder_new_from_resource = gtk_builder_new_from_resource(resource_path : UInt8*) : LibGtk::Builder*
   fun builder_new_from_string = gtk_builder_new_from_string(string : UInt8*, length : Int64) : LibGtk::Builder*
-  fun builder_add_callback_symbol = gtk_builder_add_callback_symbol(this : Builder*, callback_name : UInt8*, callback_symbol : Void*) : Void
+  fun builder_add_callback_symbol = gtk_builder_add_callback_symbol(this : Builder*, callback_name : UInt8*, callback_symbol : -> Void) : Void
   fun builder_add_from_file = gtk_builder_add_from_file(this : Builder*, filename : UInt8*, error : LibGLib::Error**) : UInt32
   fun builder_add_from_resource = gtk_builder_add_from_resource(this : Builder*, resource_path : UInt8*, error : LibGLib::Error**) : UInt32
   fun builder_add_from_string = gtk_builder_add_from_string(this : Builder*, buffer : UInt8*, length : UInt64, error : LibGLib::Error**) : UInt32
@@ -557,7 +557,7 @@ lib LibGtk
   fun builder_add_objects_from_resource = gtk_builder_add_objects_from_resource(this : Builder*, resource_path : UInt8*, object_ids : UInt8**, error : LibGLib::Error**) : UInt32
   fun builder_add_objects_from_string = gtk_builder_add_objects_from_string(this : Builder*, buffer : UInt8*, length : UInt64, object_ids : UInt8**, error : LibGLib::Error**) : UInt32
   fun builder_connect_signals = gtk_builder_connect_signals(this : Builder*, user_data : Void*) : Void
-  fun builder_connect_signals_full = gtk_builder_connect_signals_full(this : Builder*, func : Void*, user_data : Void*) : Void
+  fun builder_connect_signals_full = gtk_builder_connect_signals_full(this : Builder*, func : -> Void, user_data : Void*) : Void
   fun builder_expose_object = gtk_builder_expose_object(this : Builder*, name : UInt8*, object : LibGObject::Object*) : Void
   fun builder_get_application = gtk_builder_get_application(this : Builder*) : LibGtk::Application*
   fun builder_get_object = gtk_builder_get_object(this : Builder*, name : UInt8*) : LibGObject::Object*
@@ -570,10 +570,10 @@ lib LibGtk
   fun builder_value_from_string_type = gtk_builder_value_from_string_type(this : Builder*, type : UInt64, string : UInt8*, value : LibGObject::Value*, error : LibGLib::Error**) : Bool
 
   struct Button # object
-  # Implements ImplementorIface
-  # Implements Actionable
-  # Implements Activatable
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Actionable
+    # Implements Activatable
+    # Implements Buildable
     bin : LibGtk::Bin
     priv : LibGtk::ButtonPrivate*
     # Property always-show-image : Bool
@@ -630,17 +630,17 @@ lib LibGtk
   fun button_set_use_underline = gtk_button_set_use_underline(this : Button*, use_underline : Bool) : Void
 
   struct ButtonAccessible # object
-  # Implements Action
-  # Implements Component
-  # Implements Image
+    # Implements Action
+    # Implements Component
+    # Implements Image
     parent : LibGtk::ContainerAccessible
     priv : LibGtk::ButtonAccessiblePrivate*
   end
 
   struct ButtonBox # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     box : LibGtk::Box
     priv : LibGtk::ButtonBoxPrivate*
     # Property layout-style : LibGtk::ButtonBoxStyle
@@ -654,8 +654,8 @@ lib LibGtk
   fun button_box_set_layout = gtk_button_box_set_layout(this : ButtonBox*, layout_style : LibGtk::ButtonBoxStyle) : Void
 
   struct Calendar # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     widget : LibGtk::Widget
     priv : LibGtk::CalendarPrivate*
     # Property day : Int32
@@ -693,23 +693,23 @@ lib LibGtk
   fun calendar_mark_day = gtk_calendar_mark_day(this : Calendar*, day : UInt32) : Void
   fun calendar_select_day = gtk_calendar_select_day(this : Calendar*, day : UInt32) : Void
   fun calendar_select_month = gtk_calendar_select_month(this : Calendar*, month : UInt32, year : UInt32) : Void
-  fun calendar_set_detail_func = gtk_calendar_set_detail_func(this : Calendar*, func : Void*, data : Void*, destroy : Void*) : Void
+  fun calendar_set_detail_func = gtk_calendar_set_detail_func(this : Calendar*, func : -> Void, data : Void*, destroy : -> Void) : Void
   fun calendar_set_detail_height_rows = gtk_calendar_set_detail_height_rows(this : Calendar*, rows : Int32) : Void
   fun calendar_set_detail_width_chars = gtk_calendar_set_detail_width_chars(this : Calendar*, chars : Int32) : Void
   fun calendar_set_display_options = gtk_calendar_set_display_options(this : Calendar*, flags : LibGtk::CalendarDisplayOptions) : Void
   fun calendar_unmark_day = gtk_calendar_unmark_day(this : Calendar*, day : UInt32) : Void
 
   struct CellAccessible # object
-  # Implements Action
-  # Implements Component
+    # Implements Action
+    # Implements Component
     parent : LibGtk::Accessible
     priv : LibGtk::CellAccessiblePrivate*
     # Virtual function update_cache
   end
 
   struct CellArea # object
-  # Implements Buildable
-  # Implements CellLayout
+    # Implements Buildable
+    # Implements CellLayout
     parent_instance : LibGObject::InitiallyUnowned
     priv : LibGtk::CellAreaPrivate*
     # Property edit-widget : LibGtk::CellEditable
@@ -753,8 +753,8 @@ lib LibGtk
   fun cell_area_create_context = gtk_cell_area_create_context(this : CellArea*) : LibGtk::CellAreaContext*
   fun cell_area_event = gtk_cell_area_event(this : CellArea*, context : LibGtk::CellAreaContext*, widget : LibGtk::Widget*, event : LibGdk::Event*, cell_area : Libcairo::RectangleInt*, flags : LibGtk::CellRendererState) : Int32
   fun cell_area_focus = gtk_cell_area_focus(this : CellArea*, direction : LibGtk::DirectionType) : Bool
-  fun cell_area_foreach = gtk_cell_area_foreach(this : CellArea*, callback : Void*, callback_data : Void*) : Void
-  fun cell_area_foreach_alloc = gtk_cell_area_foreach_alloc(this : CellArea*, context : LibGtk::CellAreaContext*, widget : LibGtk::Widget*, cell_area : Libcairo::RectangleInt*, background_area : Libcairo::RectangleInt*, callback : Void*, callback_data : Void*) : Void
+  fun cell_area_foreach = gtk_cell_area_foreach(this : CellArea*, callback : -> Void, callback_data : Void*) : Void
+  fun cell_area_foreach_alloc = gtk_cell_area_foreach_alloc(this : CellArea*, context : LibGtk::CellAreaContext*, widget : LibGtk::Widget*, cell_area : Libcairo::RectangleInt*, background_area : Libcairo::RectangleInt*, callback : -> Void, callback_data : Void*) : Void
   fun cell_area_get_cell_allocation = gtk_cell_area_get_cell_allocation(this : CellArea*, context : LibGtk::CellAreaContext*, widget : LibGtk::Widget*, renderer : LibGtk::CellRenderer*, cell_area : Libcairo::RectangleInt*, allocation : Libcairo::RectangleInt*) : Void
   fun cell_area_get_cell_at_position = gtk_cell_area_get_cell_at_position(this : CellArea*, context : LibGtk::CellAreaContext*, widget : LibGtk::Widget*, cell_area : Libcairo::RectangleInt*, x : Int32, y : Int32, alloc_area : Libcairo::RectangleInt*) : LibGtk::CellRenderer*
   fun cell_area_get_current_path_string = gtk_cell_area_get_current_path_string(this : CellArea*) : UInt8*
@@ -780,9 +780,9 @@ lib LibGtk
   fun cell_area_stop_editing = gtk_cell_area_stop_editing(this : CellArea*, canceled : Bool) : Void
 
   struct CellAreaBox # object
-  # Implements Buildable
-  # Implements CellLayout
-  # Implements Orientable
+    # Implements Buildable
+    # Implements CellLayout
+    # Implements Orientable
     parent_instance : LibGtk::CellArea
     priv : LibGtk::CellAreaBoxPrivate*
     # Property spacing : Int32
@@ -917,7 +917,7 @@ lib LibGtk
   fun cell_renderer_pixbuf_new = gtk_cell_renderer_pixbuf_new() : LibGtk::CellRenderer*
 
   struct CellRendererProgress # object
-  # Implements Orientable
+    # Implements Orientable
     parent_instance : LibGtk::CellRenderer
     priv : LibGtk::CellRendererProgressPrivate*
     # Property inverted : Bool
@@ -1024,10 +1024,10 @@ lib LibGtk
   fun cell_renderer_toggle_set_radio = gtk_cell_renderer_toggle_set_radio(this : CellRendererToggle*, radio : Bool) : Void
 
   struct CellView # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements CellLayout
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements CellLayout
+    # Implements Orientable
     parent_instance : LibGtk::Widget
     priv : LibGtk::CellViewPrivate*
     # Property background : UInt8*
@@ -1058,10 +1058,10 @@ lib LibGtk
   fun cell_view_set_model = gtk_cell_view_set_model(this : CellView*, model : LibGtk::TreeModel*) : Void
 
   struct CheckButton # object
-  # Implements ImplementorIface
-  # Implements Actionable
-  # Implements Activatable
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Actionable
+    # Implements Activatable
+    # Implements Buildable
     toggle_button : LibGtk::ToggleButton
     # Virtual function draw_indicator
   end
@@ -1070,10 +1070,10 @@ lib LibGtk
   fun check_button_new_with_mnemonic = gtk_check_button_new_with_mnemonic(label : UInt8*) : LibGtk::Widget*
 
   struct CheckMenuItem # object
-  # Implements ImplementorIface
-  # Implements Actionable
-  # Implements Activatable
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Actionable
+    # Implements Activatable
+    # Implements Buildable
     menu_item : LibGtk::MenuItem
     priv : LibGtk::CheckMenuItemPrivate*
     # Property active : Bool
@@ -1095,9 +1095,9 @@ lib LibGtk
   fun check_menu_item_toggled = gtk_check_menu_item_toggled(this : CheckMenuItem*) : Void
 
   struct CheckMenuItemAccessible # object
-  # Implements Action
-  # Implements Component
-  # Implements Selection
+    # Implements Action
+    # Implements Component
+    # Implements Selection
     parent : LibGtk::MenuItemAccessible
     priv : LibGtk::CheckMenuItemAccessiblePrivate*
   end
@@ -1110,12 +1110,12 @@ lib LibGtk
   fun clipboard_clear = gtk_clipboard_clear(this : Clipboard*) : Void
   fun clipboard_get_display = gtk_clipboard_get_display(this : Clipboard*) : LibGdk::Display*
   fun clipboard_get_owner = gtk_clipboard_get_owner(this : Clipboard*) : LibGObject::Object*
-  fun clipboard_request_contents = gtk_clipboard_request_contents(this : Clipboard*, target : LibGdk::Atom*, callback : Void*, user_data : Void*) : Void
-  fun clipboard_request_image = gtk_clipboard_request_image(this : Clipboard*, callback : Void*, user_data : Void*) : Void
-  fun clipboard_request_rich_text = gtk_clipboard_request_rich_text(this : Clipboard*, buffer : LibGtk::TextBuffer*, callback : Void*, user_data : Void*) : Void
-  fun clipboard_request_targets = gtk_clipboard_request_targets(this : Clipboard*, callback : Void*, user_data : Void*) : Void
-  fun clipboard_request_text = gtk_clipboard_request_text(this : Clipboard*, callback : Void*, user_data : Void*) : Void
-  fun clipboard_request_uris = gtk_clipboard_request_uris(this : Clipboard*, callback : Void*, user_data : Void*) : Void
+  fun clipboard_request_contents = gtk_clipboard_request_contents(this : Clipboard*, target : LibGdk::Atom*, callback : -> Void, user_data : Void*) : Void
+  fun clipboard_request_image = gtk_clipboard_request_image(this : Clipboard*, callback : -> Void, user_data : Void*) : Void
+  fun clipboard_request_rich_text = gtk_clipboard_request_rich_text(this : Clipboard*, buffer : LibGtk::TextBuffer*, callback : -> Void, user_data : Void*) : Void
+  fun clipboard_request_targets = gtk_clipboard_request_targets(this : Clipboard*, callback : -> Void, user_data : Void*) : Void
+  fun clipboard_request_text = gtk_clipboard_request_text(this : Clipboard*, callback : -> Void, user_data : Void*) : Void
+  fun clipboard_request_uris = gtk_clipboard_request_uris(this : Clipboard*, callback : -> Void, user_data : Void*) : Void
   fun clipboard_set_can_store = gtk_clipboard_set_can_store(this : Clipboard*, targets : LibGtk::TargetEntry*, n_targets : Int32) : Void
   fun clipboard_set_image = gtk_clipboard_set_image(this : Clipboard*, pixbuf : LibGdkPixbuf::Pixbuf*) : Void
   fun clipboard_set_text = gtk_clipboard_set_text(this : Clipboard*, text : UInt8*, len : Int32) : Void
@@ -1133,11 +1133,11 @@ lib LibGtk
   fun clipboard_wait_is_uris_available = gtk_clipboard_wait_is_uris_available(this : Clipboard*) : Bool
 
   struct ColorButton # object
-  # Implements ImplementorIface
-  # Implements Actionable
-  # Implements Activatable
-  # Implements Buildable
-  # Implements ColorChooser
+    # Implements ImplementorIface
+    # Implements Actionable
+    # Implements Activatable
+    # Implements Buildable
+    # Implements ColorChooser
     button : LibGtk::Button
     priv : LibGtk::ColorButtonPrivate*
     # Property alpha : UInt32
@@ -1161,9 +1161,9 @@ lib LibGtk
   fun color_button_set_use_alpha = gtk_color_button_set_use_alpha(this : ColorButton*, use_alpha : Bool) : Void
 
   struct ColorChooserDialog # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements ColorChooser
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements ColorChooser
     parent_instance : LibGtk::Dialog
     priv : LibGtk::ColorChooserDialogPrivate*
     # Property show-editor : Bool
@@ -1171,10 +1171,10 @@ lib LibGtk
   fun color_chooser_dialog_new = gtk_color_chooser_dialog_new(title : UInt8*, parent : LibGtk::Window*) : LibGtk::Widget*
 
   struct ColorChooserWidget # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements ColorChooser
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements ColorChooser
+    # Implements Orientable
     parent_instance : LibGtk::Box
     priv : LibGtk::ColorChooserWidgetPrivate*
     # Property show-editor : Bool
@@ -1182,9 +1182,9 @@ lib LibGtk
   fun color_chooser_widget_new = gtk_color_chooser_widget_new() : LibGtk::Widget*
 
   struct ColorSelection # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     parent_instance : LibGtk::Box
     private_data : LibGtk::ColorSelectionPrivate*
     # Property current-alpha : UInt32
@@ -1217,8 +1217,8 @@ lib LibGtk
   fun color_selection_set_previous_rgba = gtk_color_selection_set_previous_rgba(this : ColorSelection*, rgba : LibGdk::RGBA*) : Void
 
   struct ColorSelectionDialog # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     parent_instance : LibGtk::Dialog
     priv : LibGtk::ColorSelectionDialogPrivate*
     # Property cancel-button : LibGtk::Widget
@@ -1230,10 +1230,10 @@ lib LibGtk
   fun color_selection_dialog_get_color_selection = gtk_color_selection_dialog_get_color_selection(this : ColorSelectionDialog*) : LibGtk::Widget*
 
   struct ComboBox # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements CellEditable
-  # Implements CellLayout
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements CellEditable
+    # Implements CellLayout
     parent_instance : LibGtk::Bin
     priv : LibGtk::ComboBoxPrivate*
     # Property active : Int32
@@ -1297,24 +1297,24 @@ lib LibGtk
   fun combo_box_set_id_column = gtk_combo_box_set_id_column(this : ComboBox*, id_column : Int32) : Void
   fun combo_box_set_model = gtk_combo_box_set_model(this : ComboBox*, model : LibGtk::TreeModel*) : Void
   fun combo_box_set_popup_fixed_width = gtk_combo_box_set_popup_fixed_width(this : ComboBox*, fixed : Bool) : Void
-  fun combo_box_set_row_separator_func = gtk_combo_box_set_row_separator_func(this : ComboBox*, func : Void*, data : Void*, destroy : Void*) : Void
+  fun combo_box_set_row_separator_func = gtk_combo_box_set_row_separator_func(this : ComboBox*, func : -> Void, data : Void*, destroy : -> Void) : Void
   fun combo_box_set_row_span_column = gtk_combo_box_set_row_span_column(this : ComboBox*, row_span : Int32) : Void
   fun combo_box_set_title = gtk_combo_box_set_title(this : ComboBox*, title : UInt8*) : Void
   fun combo_box_set_wrap_width = gtk_combo_box_set_wrap_width(this : ComboBox*, width : Int32) : Void
 
   struct ComboBoxAccessible # object
-  # Implements Action
-  # Implements Component
-  # Implements Selection
+    # Implements Action
+    # Implements Component
+    # Implements Selection
     parent : LibGtk::ContainerAccessible
     priv : LibGtk::ComboBoxAccessiblePrivate*
   end
 
   struct ComboBoxText # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements CellEditable
-  # Implements CellLayout
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements CellEditable
+    # Implements CellLayout
     parent_instance : LibGtk::ComboBox
     priv : LibGtk::ComboBoxTextPrivate*
   end
@@ -1331,8 +1331,8 @@ lib LibGtk
   fun combo_box_text_remove_all = gtk_combo_box_text_remove_all(this : ComboBoxText*) : Void
 
   struct Container # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     widget : LibGtk::Widget
     priv : LibGtk::ContainerPrivate*
     # Property border-width : UInt32
@@ -1359,8 +1359,8 @@ lib LibGtk
   fun container_child_notify = gtk_container_child_notify(this : Container*, child : LibGtk::Widget*, child_property : UInt8*) : Void
   fun container_child_set_property = gtk_container_child_set_property(this : Container*, child : LibGtk::Widget*, property_name : UInt8*, value : LibGObject::Value*) : Void
   fun container_child_type = gtk_container_child_type(this : Container*) : UInt64
-  fun container_forall = gtk_container_forall(this : Container*, callback : Void*, callback_data : Void*) : Void
-  fun container_foreach = gtk_container_foreach(this : Container*, callback : Void*, callback_data : Void*) : Void
+  fun container_forall = gtk_container_forall(this : Container*, callback : -> Void, callback_data : Void*) : Void
+  fun container_foreach = gtk_container_foreach(this : Container*, callback : -> Void, callback_data : Void*) : Void
   fun container_get_border_width = gtk_container_get_border_width(this : Container*) : UInt32
   fun container_get_children = gtk_container_get_children(this : Container*) : Void**
   fun container_get_focus_chain = gtk_container_get_focus_chain(this : Container*, focusable_widgets : Void***) : Bool
@@ -1382,14 +1382,14 @@ lib LibGtk
   fun container_unset_focus_chain = gtk_container_unset_focus_chain(this : Container*) : Void
 
   struct ContainerAccessible # object
-  # Implements Component
+    # Implements Component
     parent : LibGtk::WidgetAccessible
     priv : LibGtk::ContainerAccessiblePrivate*
   end
 
   struct ContainerCellAccessible # object
-  # Implements Action
-  # Implements Component
+    # Implements Action
+    # Implements Component
     parent : LibGtk::CellAccessible
     priv : LibGtk::ContainerCellAccessiblePrivate*
   end
@@ -1399,7 +1399,7 @@ lib LibGtk
   fun container_cell_accessible_remove_child = gtk_container_cell_accessible_remove_child(this : ContainerCellAccessible*, child : LibGtk::CellAccessible*) : Void
 
   struct CssProvider # object
-  # Implements StyleProvider
+    # Implements StyleProvider
     parent_instance : LibGObject::Object
     priv : LibGtk::CssProviderPrivate*
     # Signal parsing-error
@@ -1414,8 +1414,8 @@ lib LibGtk
   fun css_provider_to_string = gtk_css_provider_to_string(this : CssProvider*) : UInt8*
 
   struct Dialog # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     window : LibGtk::Window
     priv : LibGtk::DialogPrivate*
     # Property use-header-bar : Int32
@@ -1439,18 +1439,18 @@ lib LibGtk
   fun dialog_set_response_sensitive = gtk_dialog_set_response_sensitive(this : Dialog*, response_id : Int32, setting : Bool) : Void
 
   struct DrawingArea # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     widget : LibGtk::Widget
     dummy : Void*
   end
   fun drawing_area_new = gtk_drawing_area_new() : LibGtk::Widget*
 
   struct Entry # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements CellEditable
-  # Implements Editable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements CellEditable
+    # Implements Editable
     parent_instance : LibGtk::Widget
     priv : LibGtk::EntryPrivate*
     # Property activates-default : Bool
@@ -1605,10 +1605,10 @@ lib LibGtk
   fun entry_unset_invisible_char = gtk_entry_unset_invisible_char(this : Entry*) : Void
 
   struct EntryAccessible # object
-  # Implements Action
-  # Implements Component
-  # Implements EditableText
-  # Implements Text
+    # Implements Action
+    # Implements Component
+    # Implements EditableText
+    # Implements Text
     parent : LibGtk::WidgetAccessible
     priv : LibGtk::EntryAccessiblePrivate*
   end
@@ -1641,8 +1641,8 @@ lib LibGtk
   fun entry_buffer_set_text = gtk_entry_buffer_set_text(this : EntryBuffer*, chars : UInt8*, n_chars : Int32) : Void
 
   struct EntryCompletion # object
-  # Implements Buildable
-  # Implements CellLayout
+    # Implements Buildable
+    # Implements CellLayout
     parent_instance : LibGObject::Object
     priv : LibGtk::EntryCompletionPrivate*
     # Property cell-area : LibGtk::CellArea
@@ -1685,7 +1685,7 @@ lib LibGtk
   fun entry_completion_insert_prefix = gtk_entry_completion_insert_prefix(this : EntryCompletion*) : Void
   fun entry_completion_set_inline_completion = gtk_entry_completion_set_inline_completion(this : EntryCompletion*, inline_completion : Bool) : Void
   fun entry_completion_set_inline_selection = gtk_entry_completion_set_inline_selection(this : EntryCompletion*, inline_selection : Bool) : Void
-  fun entry_completion_set_match_func = gtk_entry_completion_set_match_func(this : EntryCompletion*, func : Void*, func_data : Void*, func_notify : Void*) : Void
+  fun entry_completion_set_match_func = gtk_entry_completion_set_match_func(this : EntryCompletion*, func : -> Void, func_data : Void*, func_notify : -> Void) : Void
   fun entry_completion_set_minimum_key_length = gtk_entry_completion_set_minimum_key_length(this : EntryCompletion*, length : Int32) : Void
   fun entry_completion_set_model = gtk_entry_completion_set_model(this : EntryCompletion*, model : LibGtk::TreeModel*) : Void
   fun entry_completion_set_popup_completion = gtk_entry_completion_set_popup_completion(this : EntryCompletion*, popup_completion : Bool) : Void
@@ -1694,13 +1694,13 @@ lib LibGtk
   fun entry_completion_set_text_column = gtk_entry_completion_set_text_column(this : EntryCompletion*, column : Int32) : Void
 
   struct EntryIconAccessible # object
-  # Implements Action
-  # Implements Component
+    # Implements Action
+    # Implements Component
   end
 
   struct EventBox # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     bin : LibGtk::Bin
     priv : LibGtk::EventBoxPrivate*
     # Property above-child : Bool
@@ -1723,8 +1723,8 @@ lib LibGtk
   fun event_controller_set_propagation_phase = gtk_event_controller_set_propagation_phase(this : EventController*, phase : LibGtk::PropagationPhase) : Void
 
   struct Expander # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     bin : LibGtk::Bin
     priv : LibGtk::ExpanderPrivate*
     # Property expanded : Bool
@@ -1758,17 +1758,17 @@ lib LibGtk
   fun expander_set_use_underline = gtk_expander_set_use_underline(this : Expander*, use_underline : Bool) : Void
 
   struct ExpanderAccessible # object
-  # Implements Action
-  # Implements Component
+    # Implements Action
+    # Implements Component
     parent : LibGtk::ContainerAccessible
     priv : LibGtk::ExpanderAccessiblePrivate*
   end
 
   struct FileChooserButton # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements FileChooser
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements FileChooser
+    # Implements Orientable
     parent : LibGtk::Box
     priv : LibGtk::FileChooserButtonPrivate*
     # Property dialog : LibGtk::FileChooser
@@ -1788,18 +1788,18 @@ lib LibGtk
   fun file_chooser_button_set_width_chars = gtk_file_chooser_button_set_width_chars(this : FileChooserButton*, n_chars : Int32) : Void
 
   struct FileChooserDialog # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements FileChooser
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements FileChooser
     parent_instance : LibGtk::Dialog
     priv : LibGtk::FileChooserDialogPrivate*
   end
 
   struct FileChooserWidget # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements FileChooser
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements FileChooser
+    # Implements Orientable
     parent_instance : LibGtk::Box
     priv : LibGtk::FileChooserWidgetPrivate*
     # Signal desktop-folder
@@ -1817,10 +1817,10 @@ lib LibGtk
   fun file_chooser_widget_new = gtk_file_chooser_widget_new(action : LibGtk::FileChooserAction) : LibGtk::Widget*
 
   struct FileFilter # object
-  # Implements Buildable
+    # Implements Buildable
   end
   fun file_filter_new = gtk_file_filter_new() : LibGtk::FileFilter*
-  fun file_filter_add_custom = gtk_file_filter_add_custom(this : FileFilter*, needed : LibGtk::FileFilterFlags, func : Void*, data : Void*, notify : Void*) : Void
+  fun file_filter_add_custom = gtk_file_filter_add_custom(this : FileFilter*, needed : LibGtk::FileFilterFlags, func : -> Void, data : Void*, notify : -> Void) : Void
   fun file_filter_add_mime_type = gtk_file_filter_add_mime_type(this : FileFilter*, mime_type : UInt8*) : Void
   fun file_filter_add_pattern = gtk_file_filter_add_pattern(this : FileFilter*, pattern : UInt8*) : Void
   fun file_filter_add_pixbuf_formats = gtk_file_filter_add_pixbuf_formats(this : FileFilter*) : Void
@@ -1830,8 +1830,8 @@ lib LibGtk
   fun file_filter_set_name = gtk_file_filter_set_name(this : FileFilter*, name : UInt8*) : Void
 
   struct Fixed # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     container : LibGtk::Container
     priv : LibGtk::FixedPrivate*
   end
@@ -1840,9 +1840,9 @@ lib LibGtk
   fun fixed_put = gtk_fixed_put(this : Fixed*, widget : LibGtk::Widget*, x : Int32, y : Int32) : Void
 
   struct FlowBox # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     container : LibGtk::Container
     # Property activate-on-single-click : Bool
     # Property column-spacing : UInt32
@@ -1881,31 +1881,31 @@ lib LibGtk
   fun flow_box_invalidate_sort = gtk_flow_box_invalidate_sort(this : FlowBox*) : Void
   fun flow_box_select_all = gtk_flow_box_select_all(this : FlowBox*) : Void
   fun flow_box_select_child = gtk_flow_box_select_child(this : FlowBox*, child : LibGtk::FlowBoxChild*) : Void
-  fun flow_box_selected_foreach = gtk_flow_box_selected_foreach(this : FlowBox*, func : Void*, data : Void*) : Void
+  fun flow_box_selected_foreach = gtk_flow_box_selected_foreach(this : FlowBox*, func : -> Void, data : Void*) : Void
   fun flow_box_set_activate_on_single_click = gtk_flow_box_set_activate_on_single_click(this : FlowBox*, single : Bool) : Void
   fun flow_box_set_column_spacing = gtk_flow_box_set_column_spacing(this : FlowBox*, spacing : UInt32) : Void
-  fun flow_box_set_filter_func = gtk_flow_box_set_filter_func(this : FlowBox*, filter_func : Void*, user_data : Void*, destroy : Void*) : Void
+  fun flow_box_set_filter_func = gtk_flow_box_set_filter_func(this : FlowBox*, filter_func : -> Void, user_data : Void*, destroy : -> Void) : Void
   fun flow_box_set_hadjustment = gtk_flow_box_set_hadjustment(this : FlowBox*, adjustment : LibGtk::Adjustment*) : Void
   fun flow_box_set_homogeneous = gtk_flow_box_set_homogeneous(this : FlowBox*, homogeneous : Bool) : Void
   fun flow_box_set_max_children_per_line = gtk_flow_box_set_max_children_per_line(this : FlowBox*, n_children : UInt32) : Void
   fun flow_box_set_min_children_per_line = gtk_flow_box_set_min_children_per_line(this : FlowBox*, n_children : UInt32) : Void
   fun flow_box_set_row_spacing = gtk_flow_box_set_row_spacing(this : FlowBox*, spacing : UInt32) : Void
   fun flow_box_set_selection_mode = gtk_flow_box_set_selection_mode(this : FlowBox*, mode : LibGtk::SelectionMode) : Void
-  fun flow_box_set_sort_func = gtk_flow_box_set_sort_func(this : FlowBox*, sort_func : Void*, user_data : Void*, destroy : Void*) : Void
+  fun flow_box_set_sort_func = gtk_flow_box_set_sort_func(this : FlowBox*, sort_func : -> Void, user_data : Void*, destroy : -> Void) : Void
   fun flow_box_set_vadjustment = gtk_flow_box_set_vadjustment(this : FlowBox*, adjustment : LibGtk::Adjustment*) : Void
   fun flow_box_unselect_all = gtk_flow_box_unselect_all(this : FlowBox*) : Void
   fun flow_box_unselect_child = gtk_flow_box_unselect_child(this : FlowBox*, child : LibGtk::FlowBoxChild*) : Void
 
   struct FlowBoxAccessible # object
-  # Implements Component
-  # Implements Selection
+    # Implements Component
+    # Implements Selection
     parent : LibGtk::ContainerAccessible
     priv : LibGtk::FlowBoxAccessiblePrivate*
   end
 
   struct FlowBoxChild # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     parent_instance : LibGtk::Bin
     # Signal activate
     # Virtual function activate
@@ -1916,16 +1916,16 @@ lib LibGtk
   fun flow_box_child_is_selected = gtk_flow_box_child_is_selected(this : FlowBoxChild*) : Bool
 
   struct FlowBoxChildAccessible # object
-  # Implements Component
+    # Implements Component
     parent : LibGtk::ContainerAccessible
   end
 
   struct FontButton # object
-  # Implements ImplementorIface
-  # Implements Actionable
-  # Implements Activatable
-  # Implements Buildable
-  # Implements FontChooser
+    # Implements ImplementorIface
+    # Implements Actionable
+    # Implements Activatable
+    # Implements Buildable
+    # Implements FontChooser
     button : LibGtk::Button
     priv : LibGtk::FontButtonPrivate*
     # Property font-name : UInt8*
@@ -1953,28 +1953,28 @@ lib LibGtk
   fun font_button_set_use_size = gtk_font_button_set_use_size(this : FontButton*, use_size : Bool) : Void
 
   struct FontChooserDialog # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements FontChooser
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements FontChooser
     parent_instance : LibGtk::Dialog
     priv : LibGtk::FontChooserDialogPrivate*
   end
   fun font_chooser_dialog_new = gtk_font_chooser_dialog_new(title : UInt8*, parent : LibGtk::Window*) : LibGtk::Widget*
 
   struct FontChooserWidget # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements FontChooser
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements FontChooser
+    # Implements Orientable
     parent_instance : LibGtk::Box
     priv : LibGtk::FontChooserWidgetPrivate*
   end
   fun font_chooser_widget_new = gtk_font_chooser_widget_new() : LibGtk::Widget*
 
   struct FontSelection # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     parent_instance : LibGtk::Box
     priv : LibGtk::FontSelectionPrivate*
     # Property font-name : UInt8*
@@ -1995,8 +1995,8 @@ lib LibGtk
   fun font_selection_set_preview_text = gtk_font_selection_set_preview_text(this : FontSelection*, text : UInt8*) : Void
 
   struct FontSelectionDialog # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     parent_instance : LibGtk::Dialog
     priv : LibGtk::FontSelectionDialogPrivate*
   end
@@ -2010,8 +2010,8 @@ lib LibGtk
   fun font_selection_dialog_set_preview_text = gtk_font_selection_dialog_set_preview_text(this : FontSelectionDialog*, text : UInt8*) : Void
 
   struct Frame # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     bin : LibGtk::Bin
     priv : LibGtk::FramePrivate*
     # Property label : UInt8*
@@ -2032,7 +2032,7 @@ lib LibGtk
   fun frame_set_shadow_type = gtk_frame_set_shadow_type(this : Frame*, type : LibGtk::ShadowType) : Void
 
   struct FrameAccessible # object
-  # Implements Component
+    # Implements Component
     parent : LibGtk::ContainerAccessible
     priv : LibGtk::FrameAccessiblePrivate*
   end
@@ -2131,9 +2131,9 @@ lib LibGtk
   fun gesture_zoom_get_scale_delta = gtk_gesture_zoom_get_scale_delta(this : GestureZoom*) : Float64
 
   struct Grid # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     container : LibGtk::Container
     priv : LibGtk::GridPrivate*
     # Property baseline-row : Int32
@@ -2165,32 +2165,32 @@ lib LibGtk
   fun grid_set_row_spacing = gtk_grid_set_row_spacing(this : Grid*, spacing : UInt32) : Void
 
   struct HBox # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     box : LibGtk::Box
   end
   fun h_box_new = gtk_hbox_new(homogeneous : Bool, spacing : Int32) : LibGtk::Widget*
 
   struct HButtonBox # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     button_box : LibGtk::ButtonBox
   end
   fun h_button_box_new = gtk_hbutton_box_new() : LibGtk::Widget*
 
   struct HPaned # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     paned : LibGtk::Paned
   end
   fun h_paned_new = gtk_hpaned_new() : LibGtk::Widget*
 
   struct HSV # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     parent_instance : LibGtk::Widget
     priv : LibGtk::HSVPrivate*
     # Signal changed
@@ -2207,33 +2207,33 @@ lib LibGtk
   fun h_s_v_set_metrics = gtk_hsv_set_metrics(this : HSV*, size : Int32, ring_width : Int32) : Void
 
   struct HScale # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     scale : LibGtk::Scale
   end
   fun h_scale_new = gtk_hscale_new(adjustment : LibGtk::Adjustment*) : LibGtk::Widget*
   fun h_scale_new_with_range = gtk_hscale_new_with_range(min : Float64, max : Float64, step : Float64) : LibGtk::Widget*
 
   struct HScrollbar # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     scrollbar : LibGtk::Scrollbar
   end
   fun h_scrollbar_new = gtk_hscrollbar_new(adjustment : LibGtk::Adjustment*) : LibGtk::Widget*
 
   struct HSeparator # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     separator : LibGtk::Separator
   end
   fun h_separator_new = gtk_hseparator_new() : LibGtk::Widget*
 
   struct HandleBox # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     bin : LibGtk::Bin
     priv : LibGtk::HandleBoxPrivate*
     # Property child-detached : Bool
@@ -2256,8 +2256,8 @@ lib LibGtk
   fun handle_box_set_snap_edge = gtk_handle_box_set_snap_edge(this : HandleBox*, edge : LibGtk::PositionType) : Void
 
   struct HeaderBar # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     container : LibGtk::Container
     # Property custom-title : LibGtk::Widget
     # Property decoration-layout : UInt8*
@@ -2339,7 +2339,7 @@ lib LibGtk
   fun i_m_multicontext_set_context_id = gtk_im_multicontext_set_context_id(this : IMMulticontext*, context_id : UInt8*) : Void
 
   struct IconFactory # object
-  # Implements Buildable
+    # Implements Buildable
     parent_instance : LibGObject::Object
     priv : LibGtk::IconFactoryPrivate*
   end
@@ -2362,14 +2362,14 @@ lib LibGtk
   fun icon_info_get_filename = gtk_icon_info_get_filename(this : IconInfo*) : UInt8*
   fun icon_info_is_symbolic = gtk_icon_info_is_symbolic(this : IconInfo*) : Bool
   fun icon_info_load_icon = gtk_icon_info_load_icon(this : IconInfo*, error : LibGLib::Error**) : LibGdkPixbuf::Pixbuf*
-  fun icon_info_load_icon_async = gtk_icon_info_load_icon_async(this : IconInfo*, cancellable : LibGio::Cancellable*, callback : Void*, user_data : Void*) : Void
+  fun icon_info_load_icon_async = gtk_icon_info_load_icon_async(this : IconInfo*, cancellable : LibGio::Cancellable*, callback : -> Void, user_data : Void*) : Void
   fun icon_info_load_icon_finish = gtk_icon_info_load_icon_finish(this : IconInfo*, res : LibGio::AsyncResult*, error : LibGLib::Error**) : LibGdkPixbuf::Pixbuf*
   fun icon_info_load_surface = gtk_icon_info_load_surface(this : IconInfo*, for_window : LibGdk::Window*, error : LibGLib::Error**) : Libcairo::Surface*
   fun icon_info_load_symbolic = gtk_icon_info_load_symbolic(this : IconInfo*, fg : LibGdk::RGBA*, success_color : LibGdk::RGBA*, warning_color : LibGdk::RGBA*, error_color : LibGdk::RGBA*, was_symbolic : Bool*, error : LibGLib::Error**) : LibGdkPixbuf::Pixbuf*
-  fun icon_info_load_symbolic_async = gtk_icon_info_load_symbolic_async(this : IconInfo*, fg : LibGdk::RGBA*, success_color : LibGdk::RGBA*, warning_color : LibGdk::RGBA*, error_color : LibGdk::RGBA*, cancellable : LibGio::Cancellable*, callback : Void*, user_data : Void*) : Void
+  fun icon_info_load_symbolic_async = gtk_icon_info_load_symbolic_async(this : IconInfo*, fg : LibGdk::RGBA*, success_color : LibGdk::RGBA*, warning_color : LibGdk::RGBA*, error_color : LibGdk::RGBA*, cancellable : LibGio::Cancellable*, callback : -> Void, user_data : Void*) : Void
   fun icon_info_load_symbolic_finish = gtk_icon_info_load_symbolic_finish(this : IconInfo*, res : LibGio::AsyncResult*, was_symbolic : Bool*, error : LibGLib::Error**) : LibGdkPixbuf::Pixbuf*
   fun icon_info_load_symbolic_for_context = gtk_icon_info_load_symbolic_for_context(this : IconInfo*, context : LibGtk::StyleContext*, was_symbolic : Bool*, error : LibGLib::Error**) : LibGdkPixbuf::Pixbuf*
-  fun icon_info_load_symbolic_for_context_async = gtk_icon_info_load_symbolic_for_context_async(this : IconInfo*, context : LibGtk::StyleContext*, cancellable : LibGio::Cancellable*, callback : Void*, user_data : Void*) : Void
+  fun icon_info_load_symbolic_for_context_async = gtk_icon_info_load_symbolic_for_context_async(this : IconInfo*, context : LibGtk::StyleContext*, cancellable : LibGio::Cancellable*, callback : -> Void, user_data : Void*) : Void
   fun icon_info_load_symbolic_for_context_finish = gtk_icon_info_load_symbolic_for_context_finish(this : IconInfo*, res : LibGio::AsyncResult*, was_symbolic : Bool*, error : LibGLib::Error**) : LibGdkPixbuf::Pixbuf*
   fun icon_info_load_symbolic_for_style = gtk_icon_info_load_symbolic_for_style(this : IconInfo*, style : LibGtk::Style*, state : LibGtk::StateType, was_symbolic : Bool*, error : LibGLib::Error**) : LibGdkPixbuf::Pixbuf*
   fun icon_info_set_raw_coordinates = gtk_icon_info_set_raw_coordinates(this : IconInfo*, raw_coordinates : Bool) : Void
@@ -2408,10 +2408,10 @@ lib LibGtk
   fun icon_theme_set_search_path = gtk_icon_theme_set_search_path(this : IconTheme*, path : UInt8**, n_elements : Int32) : Void
 
   struct IconView # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements CellLayout
-  # Implements Scrollable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements CellLayout
+    # Implements Scrollable
     parent : LibGtk::Container
     priv : LibGtk::IconViewPrivate*
     # Property activate-on-single-click : Bool
@@ -2487,7 +2487,7 @@ lib LibGtk
   fun icon_view_scroll_to_path = gtk_icon_view_scroll_to_path(this : IconView*, path : LibGtk::TreePath*, use_align : Bool, row_align : Float32, col_align : Float32) : Void
   fun icon_view_select_all = gtk_icon_view_select_all(this : IconView*) : Void
   fun icon_view_select_path = gtk_icon_view_select_path(this : IconView*, path : LibGtk::TreePath*) : Void
-  fun icon_view_selected_foreach = gtk_icon_view_selected_foreach(this : IconView*, func : Void*, data : Void*) : Void
+  fun icon_view_selected_foreach = gtk_icon_view_selected_foreach(this : IconView*, func : -> Void, data : Void*) : Void
   fun icon_view_set_activate_on_single_click = gtk_icon_view_set_activate_on_single_click(this : IconView*, single : Bool) : Void
   fun icon_view_set_column_spacing = gtk_icon_view_set_column_spacing(this : IconView*, column_spacing : Int32) : Void
   fun icon_view_set_columns = gtk_icon_view_set_columns(this : IconView*, columns : Int32) : Void
@@ -2514,15 +2514,15 @@ lib LibGtk
   fun icon_view_unset_model_drag_source = gtk_icon_view_unset_model_drag_source(this : IconView*) : Void
 
   struct IconViewAccessible # object
-  # Implements Component
-  # Implements Selection
+    # Implements Component
+    # Implements Selection
     parent : LibGtk::ContainerAccessible
     priv : LibGtk::IconViewAccessiblePrivate*
   end
 
   struct Image # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     misc : LibGtk::Misc
     priv : LibGtk::ImagePrivate*
     # Property file : UInt8*
@@ -2570,25 +2570,25 @@ lib LibGtk
   fun image_set_pixel_size = gtk_image_set_pixel_size(this : Image*, pixel_size : Int32) : Void
 
   struct ImageAccessible # object
-  # Implements Component
-  # Implements Image
+    # Implements Component
+    # Implements Image
     parent : LibGtk::WidgetAccessible
     priv : LibGtk::ImageAccessiblePrivate*
   end
 
   struct ImageCellAccessible # object
-  # Implements Action
-  # Implements Component
-  # Implements Image
+    # Implements Action
+    # Implements Component
+    # Implements Image
     parent : LibGtk::RendererCellAccessible
     priv : LibGtk::ImageCellAccessiblePrivate*
   end
 
   struct ImageMenuItem # object
-  # Implements ImplementorIface
-  # Implements Actionable
-  # Implements Activatable
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Actionable
+    # Implements Activatable
+    # Implements Buildable
     menu_item : LibGtk::MenuItem
     priv : LibGtk::ImageMenuItemPrivate*
     # Property accel-group : LibGtk::AccelGroup
@@ -2609,9 +2609,9 @@ lib LibGtk
   fun image_menu_item_set_use_stock = gtk_image_menu_item_set_use_stock(this : ImageMenuItem*, use_stock : Bool) : Void
 
   struct InfoBar # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     parent : LibGtk::Box
     priv : LibGtk::InfoBarPrivate*
     # Property message-type : LibGtk::MessageType
@@ -2635,8 +2635,8 @@ lib LibGtk
   fun info_bar_set_show_close_button = gtk_info_bar_set_show_close_button(this : InfoBar*, setting : Bool) : Void
 
   struct Invisible # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     widget : LibGtk::Widget
     priv : LibGtk::InvisiblePrivate*
     # Property screen : LibGdk::Screen
@@ -2647,8 +2647,8 @@ lib LibGtk
   fun invisible_set_screen = gtk_invisible_set_screen(this : Invisible*, screen : LibGdk::Screen*) : Void
 
   struct Label # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     misc : LibGtk::Misc
     priv : LibGtk::LabelPrivate*
     # Property angle : Float64
@@ -2729,17 +2729,17 @@ lib LibGtk
   fun label_set_width_chars = gtk_label_set_width_chars(this : Label*, n_chars : Int32) : Void
 
   struct LabelAccessible # object
-  # Implements Component
-  # Implements Hypertext
-  # Implements Text
+    # Implements Component
+    # Implements Hypertext
+    # Implements Text
     parent : LibGtk::WidgetAccessible
     priv : LibGtk::LabelAccessiblePrivate*
   end
 
   struct Layout # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Scrollable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Scrollable
     container : LibGtk::Container
     priv : LibGtk::LayoutPrivate*
     # Property height : UInt32
@@ -2757,9 +2757,9 @@ lib LibGtk
   fun layout_set_vadjustment = gtk_layout_set_vadjustment(this : Layout*, adjustment : LibGtk::Adjustment*) : Void
 
   struct LevelBar # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     parent : LibGtk::Widget
     priv : LibGtk::LevelBarPrivate*
     # Property inverted : Bool
@@ -2787,17 +2787,17 @@ lib LibGtk
   fun level_bar_set_value = gtk_level_bar_set_value(this : LevelBar*, value : Float64) : Void
 
   struct LevelBarAccessible # object
-  # Implements Component
-  # Implements Value
+    # Implements Component
+    # Implements Value
     parent : LibGtk::WidgetAccessible
     priv : LibGtk::LevelBarAccessiblePrivate*
   end
 
   struct LinkButton # object
-  # Implements ImplementorIface
-  # Implements Actionable
-  # Implements Activatable
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Actionable
+    # Implements Activatable
+    # Implements Buildable
     parent_instance : LibGtk::Button
     priv : LibGtk::LinkButtonPrivate*
     # Property uri : UInt8*
@@ -2813,17 +2813,17 @@ lib LibGtk
   fun link_button_set_visited = gtk_link_button_set_visited(this : LinkButton*, visited : Bool) : Void
 
   struct LinkButtonAccessible # object
-  # Implements Action
-  # Implements Component
-  # Implements HyperlinkImpl
-  # Implements Image
+    # Implements Action
+    # Implements Component
+    # Implements HyperlinkImpl
+    # Implements Image
     parent : LibGtk::ButtonAccessible
     priv : LibGtk::LinkButtonAccessiblePrivate*
   end
 
   struct ListBox # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     parent_instance : LibGtk::Container
     # Property activate-on-single-click : Bool
     # Property selection-mode : LibGtk::SelectionMode
@@ -2861,27 +2861,27 @@ lib LibGtk
   fun list_box_prepend = gtk_list_box_prepend(this : ListBox*, child : LibGtk::Widget*) : Void
   fun list_box_select_all = gtk_list_box_select_all(this : ListBox*) : Void
   fun list_box_select_row = gtk_list_box_select_row(this : ListBox*, row : LibGtk::ListBoxRow*) : Void
-  fun list_box_selected_foreach = gtk_list_box_selected_foreach(this : ListBox*, func : Void*, data : Void*) : Void
+  fun list_box_selected_foreach = gtk_list_box_selected_foreach(this : ListBox*, func : -> Void, data : Void*) : Void
   fun list_box_set_activate_on_single_click = gtk_list_box_set_activate_on_single_click(this : ListBox*, single : Bool) : Void
   fun list_box_set_adjustment = gtk_list_box_set_adjustment(this : ListBox*, adjustment : LibGtk::Adjustment*) : Void
-  fun list_box_set_filter_func = gtk_list_box_set_filter_func(this : ListBox*, filter_func : Void*, user_data : Void*, destroy : Void*) : Void
-  fun list_box_set_header_func = gtk_list_box_set_header_func(this : ListBox*, update_header : Void*, user_data : Void*, destroy : Void*) : Void
+  fun list_box_set_filter_func = gtk_list_box_set_filter_func(this : ListBox*, filter_func : -> Void, user_data : Void*, destroy : -> Void) : Void
+  fun list_box_set_header_func = gtk_list_box_set_header_func(this : ListBox*, update_header : -> Void, user_data : Void*, destroy : -> Void) : Void
   fun list_box_set_placeholder = gtk_list_box_set_placeholder(this : ListBox*, placeholder : LibGtk::Widget*) : Void
   fun list_box_set_selection_mode = gtk_list_box_set_selection_mode(this : ListBox*, mode : LibGtk::SelectionMode) : Void
-  fun list_box_set_sort_func = gtk_list_box_set_sort_func(this : ListBox*, sort_func : Void*, user_data : Void*, destroy : Void*) : Void
+  fun list_box_set_sort_func = gtk_list_box_set_sort_func(this : ListBox*, sort_func : -> Void, user_data : Void*, destroy : -> Void) : Void
   fun list_box_unselect_all = gtk_list_box_unselect_all(this : ListBox*) : Void
   fun list_box_unselect_row = gtk_list_box_unselect_row(this : ListBox*, row : LibGtk::ListBoxRow*) : Void
 
   struct ListBoxAccessible # object
-  # Implements Component
-  # Implements Selection
+    # Implements Component
+    # Implements Selection
     parent : LibGtk::ContainerAccessible
     priv : LibGtk::ListBoxAccessiblePrivate*
   end
 
   struct ListBoxRow # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     parent_instance : LibGtk::Bin
     # Property activatable : Bool
     # Property selectable : Bool
@@ -2900,16 +2900,16 @@ lib LibGtk
   fun list_box_row_set_selectable = gtk_list_box_row_set_selectable(this : ListBoxRow*, selectable : Bool) : Void
 
   struct ListBoxRowAccessible # object
-  # Implements Component
+    # Implements Component
     parent : LibGtk::ContainerAccessible
   end
 
   struct ListStore # object
-  # Implements Buildable
-  # Implements TreeDragDest
-  # Implements TreeDragSource
-  # Implements TreeModel
-  # Implements TreeSortable
+    # Implements Buildable
+    # Implements TreeDragDest
+    # Implements TreeDragSource
+    # Implements TreeModel
+    # Implements TreeSortable
     parent : LibGObject::Object
     priv : LibGtk::ListStorePrivate*
   end
@@ -2932,10 +2932,10 @@ lib LibGtk
   fun list_store_swap = gtk_list_store_swap(this : ListStore*, a : LibGtk::TreeIter*, b : LibGtk::TreeIter*) : Void
 
   struct LockButton # object
-  # Implements ImplementorIface
-  # Implements Actionable
-  # Implements Activatable
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Actionable
+    # Implements Activatable
+    # Implements Buildable
     parent : LibGtk::Button
     priv : LibGtk::LockButtonPrivate*
     # Property permission : LibGio::Permission
@@ -2950,16 +2950,16 @@ lib LibGtk
   fun lock_button_set_permission = gtk_lock_button_set_permission(this : LockButton*, permission : LibGio::Permission*) : Void
 
   struct LockButtonAccessible # object
-  # Implements Action
-  # Implements Component
-  # Implements Image
+    # Implements Action
+    # Implements Component
+    # Implements Image
     parent : LibGtk::ButtonAccessible
     priv : LibGtk::LockButtonAccessiblePrivate*
   end
 
   struct Menu # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     menu_shell : LibGtk::MenuShell
     priv : LibGtk::MenuPrivate*
     # Property accel-group : LibGtk::AccelGroup
@@ -2976,7 +2976,7 @@ lib LibGtk
   fun menu_new_from_model = gtk_menu_new_from_model(model : LibGio::MenuModel*) : LibGtk::Widget*
   fun menu_get_for_attach_widget = gtk_menu_get_for_attach_widget(widget : LibGtk::Widget*) : Void**
   fun menu_attach = gtk_menu_attach(this : Menu*, child : LibGtk::Widget*, left_attach : UInt32, right_attach : UInt32, top_attach : UInt32, bottom_attach : UInt32) : Void
-  fun menu_attach_to_widget = gtk_menu_attach_to_widget(this : Menu*, attach_widget : LibGtk::Widget*, detacher : Void*) : Void
+  fun menu_attach_to_widget = gtk_menu_attach_to_widget(this : Menu*, attach_widget : LibGtk::Widget*, detacher : -> Void) : Void
   fun menu_detach = gtk_menu_detach(this : Menu*) : Void
   fun menu_get_accel_group = gtk_menu_get_accel_group(this : Menu*) : LibGtk::AccelGroup*
   fun menu_get_accel_path = gtk_menu_get_accel_path(this : Menu*) : UInt8*
@@ -2987,8 +2987,8 @@ lib LibGtk
   fun menu_get_tearoff_state = gtk_menu_get_tearoff_state(this : Menu*) : Bool
   fun menu_get_title = gtk_menu_get_title(this : Menu*) : UInt8*
   fun menu_popdown = gtk_menu_popdown(this : Menu*) : Void
-  fun menu_popup = gtk_menu_popup(this : Menu*, parent_menu_shell : LibGtk::Widget*, parent_menu_item : LibGtk::Widget*, func : Void*, data : Void*, button : UInt32, activate_time : UInt32) : Void
-  fun menu_popup_for_device = gtk_menu_popup_for_device(this : Menu*, device : LibGdk::Device*, parent_menu_shell : LibGtk::Widget*, parent_menu_item : LibGtk::Widget*, func : Void*, data : Void*, destroy : Void*, button : UInt32, activate_time : UInt32) : Void
+  fun menu_popup = gtk_menu_popup(this : Menu*, parent_menu_shell : LibGtk::Widget*, parent_menu_item : LibGtk::Widget*, func : -> Void, data : Void*, button : UInt32, activate_time : UInt32) : Void
+  fun menu_popup_for_device = gtk_menu_popup_for_device(this : Menu*, device : LibGdk::Device*, parent_menu_shell : LibGtk::Widget*, parent_menu_item : LibGtk::Widget*, func : -> Void, data : Void*, destroy : -> Void, button : UInt32, activate_time : UInt32) : Void
   fun menu_reorder_child = gtk_menu_reorder_child(this : Menu*, child : LibGtk::Widget*, position : Int32) : Void
   fun menu_reposition = gtk_menu_reposition(this : Menu*) : Void
   fun menu_set_accel_group = gtk_menu_set_accel_group(this : Menu*, accel_group : LibGtk::AccelGroup*) : Void
@@ -3001,15 +3001,15 @@ lib LibGtk
   fun menu_set_title = gtk_menu_set_title(this : Menu*, title : UInt8*) : Void
 
   struct MenuAccessible # object
-  # Implements Component
-  # Implements Selection
+    # Implements Component
+    # Implements Selection
     parent : LibGtk::MenuShellAccessible
     priv : LibGtk::MenuAccessiblePrivate*
   end
 
   struct MenuBar # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     menu_shell : LibGtk::MenuShell
     priv : LibGtk::MenuBarPrivate*
     # Property child-pack-direction : LibGtk::PackDirection
@@ -3023,10 +3023,10 @@ lib LibGtk
   fun menu_bar_set_pack_direction = gtk_menu_bar_set_pack_direction(this : MenuBar*, pack_dir : LibGtk::PackDirection) : Void
 
   struct MenuButton # object
-  # Implements ImplementorIface
-  # Implements Actionable
-  # Implements Activatable
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Actionable
+    # Implements Activatable
+    # Implements Buildable
     parent : LibGtk::ToggleButton
     priv : LibGtk::MenuButtonPrivate*
     # Property align-widget : LibGtk::Container
@@ -3051,18 +3051,18 @@ lib LibGtk
   fun menu_button_set_use_popover = gtk_menu_button_set_use_popover(this : MenuButton*, use_popover : Bool) : Void
 
   struct MenuButtonAccessible # object
-  # Implements Action
-  # Implements Component
-  # Implements Image
+    # Implements Action
+    # Implements Component
+    # Implements Image
     parent : LibGtk::ToggleButtonAccessible
     priv : LibGtk::MenuButtonAccessiblePrivate*
   end
 
   struct MenuItem # object
-  # Implements ImplementorIface
-  # Implements Actionable
-  # Implements Activatable
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Actionable
+    # Implements Activatable
+    # Implements Buildable
     bin : LibGtk::Bin
     priv : LibGtk::MenuItemPrivate*
     # Property accel-path : UInt8*
@@ -3107,16 +3107,16 @@ lib LibGtk
   fun menu_item_toggle_size_request = gtk_menu_item_toggle_size_request(this : MenuItem*, requisition : Int32*) : Void
 
   struct MenuItemAccessible # object
-  # Implements Action
-  # Implements Component
-  # Implements Selection
+    # Implements Action
+    # Implements Component
+    # Implements Selection
     parent : LibGtk::ContainerAccessible
     priv : LibGtk::MenuItemAccessiblePrivate*
   end
 
   struct MenuShell # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     container : LibGtk::Container
     priv : LibGtk::MenuShellPrivate*
     # Property take-focus : Bool
@@ -3154,17 +3154,17 @@ lib LibGtk
   fun menu_shell_set_take_focus = gtk_menu_shell_set_take_focus(this : MenuShell*, take_focus : Bool) : Void
 
   struct MenuShellAccessible # object
-  # Implements Component
-  # Implements Selection
+    # Implements Component
+    # Implements Selection
     parent : LibGtk::ContainerAccessible
     priv : LibGtk::MenuShellAccessiblePrivate*
   end
 
   struct MenuToolButton # object
-  # Implements ImplementorIface
-  # Implements Actionable
-  # Implements Activatable
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Actionable
+    # Implements Activatable
+    # Implements Buildable
     parent : LibGtk::ToolButton
     priv : LibGtk::MenuToolButtonPrivate*
     # Property menu : LibGtk::Menu
@@ -3179,8 +3179,8 @@ lib LibGtk
   fun menu_tool_button_set_menu = gtk_menu_tool_button_set_menu(this : MenuToolButton*, menu : LibGtk::Widget*) : Void
 
   struct MessageDialog # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     parent_instance : LibGtk::Dialog
     priv : LibGtk::MessageDialogPrivate*
     # Property buttons : LibGtk::ButtonsType
@@ -3198,8 +3198,8 @@ lib LibGtk
   fun message_dialog_set_markup = gtk_message_dialog_set_markup(this : MessageDialog*, str : UInt8*) : Void
 
   struct Misc # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     widget : LibGtk::Widget
     priv : LibGtk::MiscPrivate*
     # Property xalign : Float32
@@ -3227,8 +3227,8 @@ lib LibGtk
   fun mount_operation_set_screen = gtk_mount_operation_set_screen(this : MountOperation*, screen : LibGdk::Screen*) : Void
 
   struct Notebook # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     container : LibGtk::Container
     priv : LibGtk::NotebookPrivate*
     # Property enable-popup : Bool
@@ -3305,14 +3305,14 @@ lib LibGtk
   fun notebook_set_tab_reorderable = gtk_notebook_set_tab_reorderable(this : Notebook*, child : LibGtk::Widget*, reorderable : Bool) : Void
 
   struct NotebookAccessible # object
-  # Implements Component
-  # Implements Selection
+    # Implements Component
+    # Implements Selection
     parent : LibGtk::ContainerAccessible
     priv : LibGtk::NotebookAccessiblePrivate*
   end
 
   struct NotebookPageAccessible # object
-  # Implements Component
+    # Implements Component
     parent : LibAtk::Object
     priv : LibGtk::NotebookPageAccessiblePrivate*
   end
@@ -3320,7 +3320,7 @@ lib LibGtk
   fun notebook_page_accessible_invalidate = gtk_notebook_page_accessible_invalidate(this : NotebookPageAccessible*) : Void
 
   struct NumerableIcon # object
-  # Implements Icon
+    # Implements Icon
     parent : LibGio::EmblemedIcon
     priv : LibGtk::NumerableIconPrivate*
     # Property background-icon : LibGio::Icon
@@ -3343,8 +3343,8 @@ lib LibGtk
   fun numerable_icon_set_style_context = gtk_numerable_icon_set_style_context(this : NumerableIcon*, style : LibGtk::StyleContext*) : Void
 
   struct OffscreenWindow # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     parent_object : LibGtk::Window
   end
   fun offscreen_window_new = gtk_offscreen_window_new() : LibGtk::Widget*
@@ -3352,8 +3352,8 @@ lib LibGtk
   fun offscreen_window_get_surface = gtk_offscreen_window_get_surface(this : OffscreenWindow*) : Libcairo::Surface*
 
   struct Overlay # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     parent : LibGtk::Bin
     priv : LibGtk::OverlayPrivate*
     # Signal get-child-position
@@ -3391,9 +3391,9 @@ lib LibGtk
   fun page_setup_to_key_file = gtk_page_setup_to_key_file(this : PageSetup*, key_file : LibGLib::KeyFile*, group_name : UInt8*) : Void
 
   struct Paned # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     container : LibGtk::Container
     priv : LibGtk::PanedPrivate*
     # Property max-position : Int32
@@ -3425,15 +3425,15 @@ lib LibGtk
   fun paned_set_position = gtk_paned_set_position(this : Paned*, position : Int32) : Void
 
   struct PanedAccessible # object
-  # Implements Component
-  # Implements Value
+    # Implements Component
+    # Implements Value
     parent : LibGtk::ContainerAccessible
     priv : LibGtk::PanedAccessiblePrivate*
   end
 
   struct PlacesSidebar # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     # Property local-only : Bool
     # Property location : LibGio::File
     # Property open-flags : LibGtk::PlacesOpenFlags
@@ -3468,8 +3468,8 @@ lib LibGtk
   fun places_sidebar_set_show_enter_location = gtk_places_sidebar_set_show_enter_location(this : PlacesSidebar*, show_enter_location : Bool) : Void
 
   struct Plug # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     window : LibGtk::Window
     priv : LibGtk::PlugPrivate*
     # Property embedded : Bool
@@ -3486,8 +3486,8 @@ lib LibGtk
   fun plug_get_socket_window = gtk_plug_get_socket_window(this : Plug*) : LibGdk::Window*
 
   struct Popover # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     parent_instance : LibGtk::Bin
     priv : LibGtk::PopoverPrivate*
     # Property modal : Bool
@@ -3510,7 +3510,7 @@ lib LibGtk
   fun popover_set_relative_to = gtk_popover_set_relative_to(this : Popover*, relative_to : LibGtk::Widget*) : Void
 
   struct PopoverAccessible # object
-  # Implements Component
+    # Implements Component
     parent : LibGtk::ContainerAccessible
   end
 
@@ -3529,7 +3529,7 @@ lib LibGtk
   fun print_context_set_cairo_context = gtk_print_context_set_cairo_context(this : PrintContext*, cr : Libcairo::Context*, dpi_x : Float64, dpi_y : Float64) : Void
 
   struct PrintOperation # object
-  # Implements PrintOperationPreview
+    # Implements PrintOperationPreview
     parent_instance : LibGObject::Object
     priv : LibGtk::PrintOperationPrivate*
     # Property allow-async : Bool
@@ -3609,7 +3609,7 @@ lib LibGtk
   fun print_settings_new_from_file = gtk_print_settings_new_from_file(file_name : UInt8*, error : LibGLib::Error**) : LibGtk::PrintSettings*
   fun print_settings_new_from_key_file = gtk_print_settings_new_from_key_file(key_file : LibGLib::KeyFile*, group_name : UInt8*, error : LibGLib::Error**) : LibGtk::PrintSettings*
   fun print_settings_copy = gtk_print_settings_copy(this : PrintSettings*) : LibGtk::PrintSettings*
-  fun print_settings_foreach = gtk_print_settings_foreach(this : PrintSettings*, func : Void*, user_data : Void*) : Void
+  fun print_settings_foreach = gtk_print_settings_foreach(this : PrintSettings*, func : -> Void, user_data : Void*) : Void
   fun print_settings_get = gtk_print_settings_get(this : PrintSettings*, key : UInt8*) : UInt8*
   fun print_settings_get_bool = gtk_print_settings_get_bool(this : PrintSettings*, key : UInt8*) : Bool
   fun print_settings_get_collate = gtk_print_settings_get_collate(this : PrintSettings*) : Bool
@@ -3681,9 +3681,9 @@ lib LibGtk
   fun print_settings_unset = gtk_print_settings_unset(this : PrintSettings*, key : UInt8*) : Void
 
   struct ProgressBar # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     parent : LibGtk::Widget
     priv : LibGtk::ProgressBarPrivate*
     # Property ellipsize : LibPango::EllipsizeMode
@@ -3709,14 +3709,14 @@ lib LibGtk
   fun progress_bar_set_text = gtk_progress_bar_set_text(this : ProgressBar*, text : UInt8*) : Void
 
   struct ProgressBarAccessible # object
-  # Implements Component
-  # Implements Value
+    # Implements Component
+    # Implements Value
     parent : LibGtk::WidgetAccessible
     priv : LibGtk::ProgressBarAccessiblePrivate*
   end
 
   struct RadioAction # object
-  # Implements Buildable
+    # Implements Buildable
     parent : LibGtk::ToggleAction
     private_data : LibGtk::RadioActionPrivate*
     # Property current-value : Int32
@@ -3733,10 +3733,10 @@ lib LibGtk
   fun radio_action_set_group = gtk_radio_action_set_group(this : RadioAction*, group : Void**) : Void
 
   struct RadioButton # object
-  # Implements ImplementorIface
-  # Implements Actionable
-  # Implements Activatable
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Actionable
+    # Implements Activatable
+    # Implements Buildable
     check_button : LibGtk::CheckButton
     priv : LibGtk::RadioButtonPrivate*
     # Property group : LibGtk::RadioButton
@@ -3754,18 +3754,18 @@ lib LibGtk
   fun radio_button_set_group = gtk_radio_button_set_group(this : RadioButton*, group : Void**) : Void
 
   struct RadioButtonAccessible # object
-  # Implements Action
-  # Implements Component
-  # Implements Image
+    # Implements Action
+    # Implements Component
+    # Implements Image
     parent : LibGtk::ToggleButtonAccessible
     priv : LibGtk::RadioButtonAccessiblePrivate*
   end
 
   struct RadioMenuItem # object
-  # Implements ImplementorIface
-  # Implements Actionable
-  # Implements Activatable
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Actionable
+    # Implements Activatable
+    # Implements Buildable
     check_menu_item : LibGtk::CheckMenuItem
     priv : LibGtk::RadioMenuItemPrivate*
     # Property group : LibGtk::RadioMenuItem
@@ -3782,18 +3782,18 @@ lib LibGtk
   fun radio_menu_item_set_group = gtk_radio_menu_item_set_group(this : RadioMenuItem*, group : Void**) : Void
 
   struct RadioMenuItemAccessible # object
-  # Implements Action
-  # Implements Component
-  # Implements Selection
+    # Implements Action
+    # Implements Component
+    # Implements Selection
     parent : LibGtk::CheckMenuItemAccessible
     priv : LibGtk::RadioMenuItemAccessiblePrivate*
   end
 
   struct RadioToolButton # object
-  # Implements ImplementorIface
-  # Implements Actionable
-  # Implements Activatable
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Actionable
+    # Implements Activatable
+    # Implements Buildable
     parent : LibGtk::ToggleToolButton
     # Property group : LibGtk::RadioToolButton
   end
@@ -3805,9 +3805,9 @@ lib LibGtk
   fun radio_tool_button_set_group = gtk_radio_tool_button_set_group(this : RadioToolButton*, group : Void**) : Void
 
   struct Range # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     widget : LibGtk::Widget
     priv : LibGtk::RangePrivate*
     # Property adjustment : LibGtk::Adjustment
@@ -3858,8 +3858,8 @@ lib LibGtk
   fun range_set_value = gtk_range_set_value(this : Range*, value : Float64) : Void
 
   struct RangeAccessible # object
-  # Implements Component
-  # Implements Value
+    # Implements Component
+    # Implements Value
     parent : LibGtk::WidgetAccessible
     priv : LibGtk::RangeAccessiblePrivate*
   end
@@ -3887,8 +3887,8 @@ lib LibGtk
   fun rc_style_copy = gtk_rc_style_copy(this : RcStyle*) : LibGtk::RcStyle*
 
   struct RecentAction # object
-  # Implements Buildable
-  # Implements RecentChooser
+    # Implements Buildable
+    # Implements RecentChooser
     parent_instance : LibGtk::Action
     priv : LibGtk::RecentActionPrivate*
     # Property show-numbers : Bool
@@ -3899,18 +3899,18 @@ lib LibGtk
   fun recent_action_set_show_numbers = gtk_recent_action_set_show_numbers(this : RecentAction*, show_numbers : Bool) : Void
 
   struct RecentChooserDialog # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements RecentChooser
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements RecentChooser
     parent_instance : LibGtk::Dialog
     priv : LibGtk::RecentChooserDialogPrivate*
   end
 
   struct RecentChooserMenu # object
-  # Implements ImplementorIface
-  # Implements Activatable
-  # Implements Buildable
-  # Implements RecentChooser
+    # Implements ImplementorIface
+    # Implements Activatable
+    # Implements Buildable
+    # Implements RecentChooser
     parent_instance : LibGtk::Menu
     priv : LibGtk::RecentChooserMenuPrivate*
     # Property show-numbers : Bool
@@ -3921,10 +3921,10 @@ lib LibGtk
   fun recent_chooser_menu_set_show_numbers = gtk_recent_chooser_menu_set_show_numbers(this : RecentChooserMenu*, show_numbers : Bool) : Void
 
   struct RecentChooserWidget # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
-  # Implements RecentChooser
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
+    # Implements RecentChooser
     parent_instance : LibGtk::Box
     priv : LibGtk::RecentChooserWidgetPrivate*
   end
@@ -3932,12 +3932,12 @@ lib LibGtk
   fun recent_chooser_widget_new_for_manager = gtk_recent_chooser_widget_new_for_manager(manager : LibGtk::RecentManager*) : LibGtk::Widget*
 
   struct RecentFilter # object
-  # Implements Buildable
+    # Implements Buildable
   end
   fun recent_filter_new = gtk_recent_filter_new() : LibGtk::RecentFilter*
   fun recent_filter_add_age = gtk_recent_filter_add_age(this : RecentFilter*, days : Int32) : Void
   fun recent_filter_add_application = gtk_recent_filter_add_application(this : RecentFilter*, application : UInt8*) : Void
-  fun recent_filter_add_custom = gtk_recent_filter_add_custom(this : RecentFilter*, needed : LibGtk::RecentFilterFlags, func : Void*, data : Void*, data_destroy : Void*) : Void
+  fun recent_filter_add_custom = gtk_recent_filter_add_custom(this : RecentFilter*, needed : LibGtk::RecentFilterFlags, func : -> Void, data : Void*, data_destroy : -> Void) : Void
   fun recent_filter_add_group = gtk_recent_filter_add_group(this : RecentFilter*, group : UInt8*) : Void
   fun recent_filter_add_mime_type = gtk_recent_filter_add_mime_type(this : RecentFilter*, mime_type : UInt8*) : Void
   fun recent_filter_add_pattern = gtk_recent_filter_add_pattern(this : RecentFilter*, pattern : UInt8*) : Void
@@ -3967,8 +3967,8 @@ lib LibGtk
   fun recent_manager_remove_item = gtk_recent_manager_remove_item(this : RecentManager*, uri : UInt8*, error : LibGLib::Error**) : Bool
 
   struct RendererCellAccessible # object
-  # Implements Action
-  # Implements Component
+    # Implements Action
+    # Implements Component
     parent : LibGtk::CellAccessible
     priv : LibGtk::RendererCellAccessiblePrivate*
     # Property renderer : LibGtk::CellRenderer
@@ -3976,8 +3976,8 @@ lib LibGtk
   fun renderer_cell_accessible_new = gtk_renderer_cell_accessible_new(renderer : LibGtk::CellRenderer*) : LibAtk::Object*
 
   struct Revealer # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     parent_instance : LibGtk::Bin
     # Property child-revealed : Bool
     # Property reveal-child : Bool
@@ -3994,9 +3994,9 @@ lib LibGtk
   fun revealer_set_transition_type = gtk_revealer_set_transition_type(this : Revealer*, transition : LibGtk::RevealerTransitionType) : Void
 
   struct Scale # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     range : LibGtk::Range
     priv : LibGtk::ScalePrivate*
     # Property digits : Int32
@@ -4024,18 +4024,18 @@ lib LibGtk
   fun scale_set_value_pos = gtk_scale_set_value_pos(this : Scale*, pos : LibGtk::PositionType) : Void
 
   struct ScaleAccessible # object
-  # Implements Component
-  # Implements Value
+    # Implements Component
+    # Implements Value
     parent : LibGtk::RangeAccessible
     priv : LibGtk::ScaleAccessiblePrivate*
   end
 
   struct ScaleButton # object
-  # Implements ImplementorIface
-  # Implements Actionable
-  # Implements Activatable
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Actionable
+    # Implements Activatable
+    # Implements Buildable
+    # Implements Orientable
     parent : LibGtk::Button
     priv : LibGtk::ScaleButtonPrivate*
     # Property adjustment : LibGtk::Adjustment
@@ -4058,25 +4058,25 @@ lib LibGtk
   fun scale_button_set_value = gtk_scale_button_set_value(this : ScaleButton*, value : Float64) : Void
 
   struct ScaleButtonAccessible # object
-  # Implements Action
-  # Implements Component
-  # Implements Image
-  # Implements Value
+    # Implements Action
+    # Implements Component
+    # Implements Image
+    # Implements Value
     parent : LibGtk::ButtonAccessible
     priv : LibGtk::ScaleButtonAccessiblePrivate*
   end
 
   struct Scrollbar # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     range : LibGtk::Range
   end
   fun scrollbar_new = gtk_scrollbar_new(orientation : LibGtk::Orientation, adjustment : LibGtk::Adjustment*) : LibGtk::Widget*
 
   struct ScrolledWindow # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     container : LibGtk::Bin
     priv : LibGtk::ScrolledWindowPrivate*
     # Property hadjustment : LibGtk::Adjustment
@@ -4119,14 +4119,14 @@ lib LibGtk
   fun scrolled_window_unset_placement = gtk_scrolled_window_unset_placement(this : ScrolledWindow*) : Void
 
   struct ScrolledWindowAccessible # object
-  # Implements Component
+    # Implements Component
     parent : LibGtk::ContainerAccessible
     priv : LibGtk::ScrolledWindowAccessiblePrivate*
   end
 
   struct SearchBar # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     parent : LibGtk::Bin
     # Property search-mode-enabled : Bool
     # Property show-close-button : Bool
@@ -4140,10 +4140,10 @@ lib LibGtk
   fun search_bar_set_show_close_button = gtk_search_bar_set_show_close_button(this : SearchBar*, visible : Bool) : Void
 
   struct SearchEntry # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements CellEditable
-  # Implements Editable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements CellEditable
+    # Implements Editable
     parent : LibGtk::Entry
     # Signal search-changed
     # Virtual function search_changed
@@ -4151,27 +4151,27 @@ lib LibGtk
   fun search_entry_new = gtk_search_entry_new() : LibGtk::Widget*
 
   struct Separator # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     widget : LibGtk::Widget
     priv : LibGtk::SeparatorPrivate*
   end
   fun separator_new = gtk_separator_new(orientation : LibGtk::Orientation) : LibGtk::Widget*
 
   struct SeparatorMenuItem # object
-  # Implements ImplementorIface
-  # Implements Actionable
-  # Implements Activatable
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Actionable
+    # Implements Activatable
+    # Implements Buildable
     menu_item : LibGtk::MenuItem
   end
   fun separator_menu_item_new = gtk_separator_menu_item_new() : LibGtk::Widget*
 
   struct SeparatorToolItem # object
-  # Implements ImplementorIface
-  # Implements Activatable
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Activatable
+    # Implements Buildable
     parent : LibGtk::ToolItem
     priv : LibGtk::SeparatorToolItemPrivate*
     # Property draw : Bool
@@ -4181,7 +4181,7 @@ lib LibGtk
   fun separator_tool_item_set_draw = gtk_separator_tool_item_set_draw(this : SeparatorToolItem*, draw : Bool) : Void
 
   struct Settings # object
-  # Implements StyleProvider
+    # Implements StyleProvider
     parent_instance : LibGObject::Object
     priv : LibGtk::SettingsPrivate*
     # Property color-hash : Void**
@@ -4270,14 +4270,14 @@ lib LibGtk
   fun settings_get_default = gtk_settings_get_default() : LibGtk::Settings*
   fun settings_get_for_screen = gtk_settings_get_for_screen(screen : LibGdk::Screen*) : LibGtk::Settings*
   fun settings_install_property = gtk_settings_install_property(pspec : LibGObject::ParamSpec*) : Void
-  fun settings_install_property_parser = gtk_settings_install_property_parser(pspec : LibGObject::ParamSpec*, parser : Void*) : Void
+  fun settings_install_property_parser = gtk_settings_install_property_parser(pspec : LibGObject::ParamSpec*, parser : -> Void) : Void
   fun settings_set_double_property = gtk_settings_set_double_property(this : Settings*, name : UInt8*, v_double : Float64, origin : UInt8*) : Void
   fun settings_set_long_property = gtk_settings_set_long_property(this : Settings*, name : UInt8*, v_long : Int64, origin : UInt8*) : Void
   fun settings_set_property_value = gtk_settings_set_property_value(this : Settings*, name : UInt8*, svalue : LibGtk::SettingsValue*) : Void
   fun settings_set_string_property = gtk_settings_set_string_property(this : Settings*, name : UInt8*, v_string : UInt8*, origin : UInt8*) : Void
 
   struct SizeGroup # object
-  # Implements Buildable
+    # Implements Buildable
     parent_instance : LibGObject::Object
     priv : LibGtk::SizeGroupPrivate*
     # Property ignore-hidden : Bool
@@ -4293,8 +4293,8 @@ lib LibGtk
   fun size_group_set_mode = gtk_size_group_set_mode(this : SizeGroup*, mode : LibGtk::SizeGroupMode) : Void
 
   struct Socket # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     container : LibGtk::Container
     priv : LibGtk::SocketPrivate*
     # Signal plug-added
@@ -4308,11 +4308,11 @@ lib LibGtk
   fun socket_get_plug_window = gtk_socket_get_plug_window(this : Socket*) : LibGdk::Window*
 
   struct SpinButton # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements CellEditable
-  # Implements Editable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements CellEditable
+    # Implements Editable
+    # Implements Orientable
     entry : LibGtk::Entry
     priv : LibGtk::SpinButtonPrivate*
     # Property adjustment : LibGtk::Adjustment
@@ -4360,18 +4360,18 @@ lib LibGtk
   fun spin_button_update = gtk_spin_button_update(this : SpinButton*) : Void
 
   struct SpinButtonAccessible # object
-  # Implements Action
-  # Implements Component
-  # Implements EditableText
-  # Implements Text
-  # Implements Value
+    # Implements Action
+    # Implements Component
+    # Implements EditableText
+    # Implements Text
+    # Implements Value
     parent : LibGtk::EntryAccessible
     priv : LibGtk::SpinButtonAccessiblePrivate*
   end
 
   struct Spinner # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     parent : LibGtk::Widget
     priv : LibGtk::SpinnerPrivate*
     # Property active : Bool
@@ -4381,15 +4381,15 @@ lib LibGtk
   fun spinner_stop = gtk_spinner_stop(this : Spinner*) : Void
 
   struct SpinnerAccessible # object
-  # Implements Component
-  # Implements Image
+    # Implements Component
+    # Implements Image
     parent : LibGtk::WidgetAccessible
     priv : LibGtk::SpinnerAccessiblePrivate*
   end
 
   struct Stack # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     parent_instance : LibGtk::Container
     # Property homogeneous : Bool
     # Property transition-duration : UInt32
@@ -4416,9 +4416,9 @@ lib LibGtk
   fun stack_set_visible_child_name = gtk_stack_set_visible_child_name(this : Stack*, name : UInt8*) : Void
 
   struct StackSwitcher # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     widget : LibGtk::Box
     # Property stack : LibGtk::Stack
   end
@@ -4495,9 +4495,9 @@ lib LibGtk
   fun status_icon_set_visible = gtk_status_icon_set_visible(this : StatusIcon*, visible : Bool) : Void
 
   struct Statusbar # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     parent_widget : LibGtk::Box
     priv : LibGtk::StatusbarPrivate*
     # Signal text-popped
@@ -4514,7 +4514,7 @@ lib LibGtk
   fun statusbar_remove_all = gtk_statusbar_remove_all(this : Statusbar*, context_id : UInt32) : Void
 
   struct StatusbarAccessible # object
-  # Implements Component
+    # Implements Component
     parent : LibGtk::ContainerAccessible
     priv : LibGtk::StatusbarAccessiblePrivate*
   end
@@ -4647,7 +4647,7 @@ lib LibGtk
   fun style_context_state_is_running = gtk_style_context_state_is_running(this : StyleContext*, state : LibGtk::StateType, progress : Float64*) : Bool
 
   struct StyleProperties # object
-  # Implements StyleProvider
+    # Implements StyleProvider
     parent_object : LibGObject::Object
     priv : LibGtk::StylePropertiesPrivate*
   end
@@ -4661,10 +4661,10 @@ lib LibGtk
   fun style_properties_unset_property = gtk_style_properties_unset_property(this : StyleProperties*, property : UInt8*, state : LibGtk::StateFlags) : Void
 
   struct Switch # object
-  # Implements ImplementorIface
-  # Implements Actionable
-  # Implements Activatable
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Actionable
+    # Implements Activatable
+    # Implements Buildable
     parent_instance : LibGtk::Widget
     priv : LibGtk::SwitchPrivate*
     # Property active : Bool
@@ -4681,15 +4681,15 @@ lib LibGtk
   fun switch_set_state = gtk_switch_set_state(this : Switch*, state : Bool) : Void
 
   struct SwitchAccessible # object
-  # Implements Action
-  # Implements Component
+    # Implements Action
+    # Implements Component
     parent : LibGtk::WidgetAccessible
     priv : LibGtk::SwitchAccessiblePrivate*
   end
 
   struct Table # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     container : LibGtk::Container
     priv : LibGtk::TablePrivate*
     # Property column-spacing : UInt32
@@ -4715,10 +4715,10 @@ lib LibGtk
   fun table_set_row_spacings = gtk_table_set_row_spacings(this : Table*, spacing : UInt32) : Void
 
   struct TearoffMenuItem # object
-  # Implements ImplementorIface
-  # Implements Actionable
-  # Implements Activatable
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Actionable
+    # Implements Activatable
+    # Implements Buildable
     menu_item : LibGtk::MenuItem
     priv : LibGtk::TearoffMenuItemPrivate*
   end
@@ -4816,9 +4816,9 @@ lib LibGtk
   fun text_buffer_move_mark_by_name = gtk_text_buffer_move_mark_by_name(this : TextBuffer*, name : UInt8*, where : LibGtk::TextIter*) : Void
   fun text_buffer_paste_clipboard = gtk_text_buffer_paste_clipboard(this : TextBuffer*, clipboard : LibGtk::Clipboard*, override_location : LibGtk::TextIter*, default_editable : Bool) : Void
   fun text_buffer_place_cursor = gtk_text_buffer_place_cursor(this : TextBuffer*, where : LibGtk::TextIter*) : Void
-  fun text_buffer_register_deserialize_format = gtk_text_buffer_register_deserialize_format(this : TextBuffer*, mime_type : UInt8*, function : Void*, user_data : Void*, user_data_destroy : Void*) : LibGdk::Atom*
+  fun text_buffer_register_deserialize_format = gtk_text_buffer_register_deserialize_format(this : TextBuffer*, mime_type : UInt8*, function : -> Void, user_data : Void*, user_data_destroy : -> Void) : LibGdk::Atom*
   fun text_buffer_register_deserialize_tagset = gtk_text_buffer_register_deserialize_tagset(this : TextBuffer*, tagset_name : UInt8*) : LibGdk::Atom*
-  fun text_buffer_register_serialize_format = gtk_text_buffer_register_serialize_format(this : TextBuffer*, mime_type : UInt8*, function : Void*, user_data : Void*, user_data_destroy : Void*) : LibGdk::Atom*
+  fun text_buffer_register_serialize_format = gtk_text_buffer_register_serialize_format(this : TextBuffer*, mime_type : UInt8*, function : -> Void, user_data : Void*, user_data_destroy : -> Void) : LibGdk::Atom*
   fun text_buffer_register_serialize_tagset = gtk_text_buffer_register_serialize_tagset(this : TextBuffer*, tagset_name : UInt8*) : LibGdk::Atom*
   fun text_buffer_remove_all_tags = gtk_text_buffer_remove_all_tags(this : TextBuffer*, start : LibGtk::TextIter*, end : LibGtk::TextIter*) : Void
   fun text_buffer_remove_selection_clipboard = gtk_text_buffer_remove_selection_clipboard(this : TextBuffer*, clipboard : LibGtk::Clipboard*) : Void
@@ -4832,9 +4832,9 @@ lib LibGtk
   fun text_buffer_unregister_serialize_format = gtk_text_buffer_unregister_serialize_format(this : TextBuffer*, format : LibGdk::Atom*) : Void
 
   struct TextCellAccessible # object
-  # Implements Action
-  # Implements Component
-  # Implements Text
+    # Implements Action
+    # Implements Component
+    # Implements Text
     parent : LibGtk::RendererCellAccessible
     priv : LibGtk::TextCellAccessiblePrivate*
   end
@@ -4937,7 +4937,7 @@ lib LibGtk
   fun text_tag_set_priority = gtk_text_tag_set_priority(this : TextTag*, priority : Int32) : Void
 
   struct TextTagTable # object
-  # Implements Buildable
+    # Implements Buildable
     parent_instance : LibGObject::Object
     priv : LibGtk::TextTagTablePrivate*
     # Signal tag-added
@@ -4949,15 +4949,15 @@ lib LibGtk
   end
   fun text_tag_table_new = gtk_text_tag_table_new() : LibGtk::TextTagTable*
   fun text_tag_table_add = gtk_text_tag_table_add(this : TextTagTable*, tag : LibGtk::TextTag*) : Bool
-  fun text_tag_table_foreach = gtk_text_tag_table_foreach(this : TextTagTable*, func : Void*, data : Void*) : Void
+  fun text_tag_table_foreach = gtk_text_tag_table_foreach(this : TextTagTable*, func : -> Void, data : Void*) : Void
   fun text_tag_table_get_size = gtk_text_tag_table_get_size(this : TextTagTable*) : Int32
   fun text_tag_table_lookup = gtk_text_tag_table_lookup(this : TextTagTable*, name : UInt8*) : LibGtk::TextTag*
   fun text_tag_table_remove = gtk_text_tag_table_remove(this : TextTagTable*, tag : LibGtk::TextTag*) : Void
 
   struct TextView # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Scrollable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Scrollable
     parent_instance : LibGtk::Container
     priv : LibGtk::TextViewPrivate*
     # Property accepts-tab : Bool
@@ -5072,10 +5072,10 @@ lib LibGtk
   fun text_view_window_to_buffer_coords = gtk_text_view_window_to_buffer_coords(this : TextView*, win : LibGtk::TextWindowType, window_x : Int32, window_y : Int32, buffer_x : Int32*, buffer_y : Int32*) : Void
 
   struct TextViewAccessible # object
-  # Implements Component
-  # Implements EditableText
-  # Implements StreamableContent
-  # Implements Text
+    # Implements Component
+    # Implements EditableText
+    # Implements StreamableContent
+    # Implements Text
     parent : LibGtk::ContainerAccessible
     priv : LibGtk::TextViewAccessiblePrivate*
   end
@@ -5122,7 +5122,7 @@ lib LibGtk
   fun theming_engine_state_is_running = gtk_theming_engine_state_is_running(this : ThemingEngine*, state : LibGtk::StateType, progress : Float64*) : Bool
 
   struct ToggleAction # object
-  # Implements Buildable
+    # Implements Buildable
     parent : LibGtk::Action
     private_data : LibGtk::ToggleActionPrivate*
     # Property active : Bool
@@ -5138,10 +5138,10 @@ lib LibGtk
   fun toggle_action_toggled = gtk_toggle_action_toggled(this : ToggleAction*) : Void
 
   struct ToggleButton # object
-  # Implements ImplementorIface
-  # Implements Actionable
-  # Implements Activatable
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Actionable
+    # Implements Activatable
+    # Implements Buildable
     button : LibGtk::Button
     priv : LibGtk::ToggleButtonPrivate*
     # Property active : Bool
@@ -5162,18 +5162,18 @@ lib LibGtk
   fun toggle_button_toggled = gtk_toggle_button_toggled(this : ToggleButton*) : Void
 
   struct ToggleButtonAccessible # object
-  # Implements Action
-  # Implements Component
-  # Implements Image
+    # Implements Action
+    # Implements Component
+    # Implements Image
     parent : LibGtk::ButtonAccessible
     priv : LibGtk::ToggleButtonAccessiblePrivate*
   end
 
   struct ToggleToolButton # object
-  # Implements ImplementorIface
-  # Implements Actionable
-  # Implements Activatable
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Actionable
+    # Implements Activatable
+    # Implements Buildable
     parent : LibGtk::ToolButton
     priv : LibGtk::ToggleToolButtonPrivate*
     # Property active : Bool
@@ -5186,10 +5186,10 @@ lib LibGtk
   fun toggle_tool_button_set_active = gtk_toggle_tool_button_set_active(this : ToggleToolButton*, is_active : Bool) : Void
 
   struct ToolButton # object
-  # Implements ImplementorIface
-  # Implements Actionable
-  # Implements Activatable
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Actionable
+    # Implements Activatable
+    # Implements Buildable
     parent : LibGtk::ToolItem
     priv : LibGtk::ToolButtonPrivate*
     # Property icon-name : UInt8*
@@ -5217,9 +5217,9 @@ lib LibGtk
   fun tool_button_set_use_underline = gtk_tool_button_set_use_underline(this : ToolButton*, use_underline : Bool) : Void
 
   struct ToolItem # object
-  # Implements ImplementorIface
-  # Implements Activatable
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Activatable
+    # Implements Buildable
     parent : LibGtk::Bin
     priv : LibGtk::ToolItemPrivate*
     # Property is-important : Bool
@@ -5260,9 +5260,9 @@ lib LibGtk
   fun tool_item_toolbar_reconfigured = gtk_tool_item_toolbar_reconfigured(this : ToolItem*) : Void
 
   struct ToolItemGroup # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements ToolShell
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements ToolShell
     parent_instance : LibGtk::Container
     priv : LibGtk::ToolItemGroupPrivate*
     # Property collapsed : Bool
@@ -5290,10 +5290,10 @@ lib LibGtk
   fun tool_item_group_set_label_widget = gtk_tool_item_group_set_label_widget(this : ToolItemGroup*, label_widget : LibGtk::Widget*) : Void
 
   struct ToolPalette # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
-  # Implements Scrollable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
+    # Implements Scrollable
     parent_instance : LibGtk::Container
     priv : LibGtk::ToolPalettePrivate*
     # Property icon-size : LibGtk::IconSize
@@ -5324,10 +5324,10 @@ lib LibGtk
   fun tool_palette_unset_style = gtk_tool_palette_unset_style(this : ToolPalette*) : Void
 
   struct Toolbar # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
-  # Implements ToolShell
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
+    # Implements ToolShell
     container : LibGtk::Container
     priv : LibGtk::ToolbarPrivate*
     # Property icon-size : LibGtk::IconSize
@@ -5378,8 +5378,8 @@ lib LibGtk
   fun toplevel_accessible_get_children = gtk_toplevel_accessible_get_children(this : ToplevelAccessible*) : Void**
 
   struct TreeModelFilter # object
-  # Implements TreeDragSource
-  # Implements TreeModel
+    # Implements TreeDragSource
+    # Implements TreeModel
     parent : LibGObject::Object
     priv : LibGtk::TreeModelFilterPrivate*
     # Property child-model : LibGtk::TreeModel
@@ -5394,14 +5394,14 @@ lib LibGtk
   fun tree_model_filter_convert_path_to_child_path = gtk_tree_model_filter_convert_path_to_child_path(this : TreeModelFilter*, filter_path : LibGtk::TreePath*) : LibGtk::TreePath*
   fun tree_model_filter_get_model = gtk_tree_model_filter_get_model(this : TreeModelFilter*) : LibGtk::TreeModel*
   fun tree_model_filter_refilter = gtk_tree_model_filter_refilter(this : TreeModelFilter*) : Void
-  fun tree_model_filter_set_modify_func = gtk_tree_model_filter_set_modify_func(this : TreeModelFilter*, n_columns : Int32, types : UInt64*, func : Void*, data : Void*, destroy : Void*) : Void
+  fun tree_model_filter_set_modify_func = gtk_tree_model_filter_set_modify_func(this : TreeModelFilter*, n_columns : Int32, types : UInt64*, func : -> Void, data : Void*, destroy : -> Void) : Void
   fun tree_model_filter_set_visible_column = gtk_tree_model_filter_set_visible_column(this : TreeModelFilter*, column : Int32) : Void
-  fun tree_model_filter_set_visible_func = gtk_tree_model_filter_set_visible_func(this : TreeModelFilter*, func : Void*, data : Void*, destroy : Void*) : Void
+  fun tree_model_filter_set_visible_func = gtk_tree_model_filter_set_visible_func(this : TreeModelFilter*, func : -> Void, data : Void*, destroy : -> Void) : Void
 
   struct TreeModelSort # object
-  # Implements TreeDragSource
-  # Implements TreeModel
-  # Implements TreeSortable
+    # Implements TreeDragSource
+    # Implements TreeModel
+    # Implements TreeSortable
     parent : LibGObject::Object
     priv : LibGtk::TreeModelSortPrivate*
     # Property model : LibGtk::TreeModel
@@ -5433,20 +5433,20 @@ lib LibGtk
   fun tree_selection_select_iter = gtk_tree_selection_select_iter(this : TreeSelection*, iter : LibGtk::TreeIter*) : Void
   fun tree_selection_select_path = gtk_tree_selection_select_path(this : TreeSelection*, path : LibGtk::TreePath*) : Void
   fun tree_selection_select_range = gtk_tree_selection_select_range(this : TreeSelection*, start_path : LibGtk::TreePath*, end_path : LibGtk::TreePath*) : Void
-  fun tree_selection_selected_foreach = gtk_tree_selection_selected_foreach(this : TreeSelection*, func : Void*, data : Void*) : Void
+  fun tree_selection_selected_foreach = gtk_tree_selection_selected_foreach(this : TreeSelection*, func : -> Void, data : Void*) : Void
   fun tree_selection_set_mode = gtk_tree_selection_set_mode(this : TreeSelection*, type : LibGtk::SelectionMode) : Void
-  fun tree_selection_set_select_function = gtk_tree_selection_set_select_function(this : TreeSelection*, func : Void*, data : Void*, destroy : Void*) : Void
+  fun tree_selection_set_select_function = gtk_tree_selection_set_select_function(this : TreeSelection*, func : -> Void, data : Void*, destroy : -> Void) : Void
   fun tree_selection_unselect_all = gtk_tree_selection_unselect_all(this : TreeSelection*) : Void
   fun tree_selection_unselect_iter = gtk_tree_selection_unselect_iter(this : TreeSelection*, iter : LibGtk::TreeIter*) : Void
   fun tree_selection_unselect_path = gtk_tree_selection_unselect_path(this : TreeSelection*, path : LibGtk::TreePath*) : Void
   fun tree_selection_unselect_range = gtk_tree_selection_unselect_range(this : TreeSelection*, start_path : LibGtk::TreePath*, end_path : LibGtk::TreePath*) : Void
 
   struct TreeStore # object
-  # Implements Buildable
-  # Implements TreeDragDest
-  # Implements TreeDragSource
-  # Implements TreeModel
-  # Implements TreeSortable
+    # Implements Buildable
+    # Implements TreeDragDest
+    # Implements TreeDragSource
+    # Implements TreeModel
+    # Implements TreeSortable
     parent : LibGObject::Object
     priv : LibGtk::TreeStorePrivate*
   end
@@ -5470,9 +5470,9 @@ lib LibGtk
   fun tree_store_swap = gtk_tree_store_swap(this : TreeStore*, a : LibGtk::TreeIter*, b : LibGtk::TreeIter*) : Void
 
   struct TreeView # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Scrollable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Scrollable
     parent : LibGtk::Container
     priv : LibGtk::TreeViewPrivate*
     # Property activate-on-single-click : Bool
@@ -5578,10 +5578,10 @@ lib LibGtk
   fun tree_view_get_visible_range = gtk_tree_view_get_visible_range(this : TreeView*, start_path : LibGtk::TreePath**, end_path : LibGtk::TreePath**) : Bool
   fun tree_view_get_visible_rect = gtk_tree_view_get_visible_rect(this : TreeView*, visible_rect : Libcairo::RectangleInt*) : Void
   fun tree_view_insert_column = gtk_tree_view_insert_column(this : TreeView*, column : LibGtk::TreeViewColumn*, position : Int32) : Int32
-  fun tree_view_insert_column_with_data_func = gtk_tree_view_insert_column_with_data_func(this : TreeView*, position : Int32, title : UInt8*, cell : LibGtk::CellRenderer*, func : Void*, data : Void*, dnotify : Void*) : Int32
+  fun tree_view_insert_column_with_data_func = gtk_tree_view_insert_column_with_data_func(this : TreeView*, position : Int32, title : UInt8*, cell : LibGtk::CellRenderer*, func : -> Void, data : Void*, dnotify : -> Void) : Int32
   fun tree_view_is_blank_at_pos = gtk_tree_view_is_blank_at_pos(this : TreeView*, x : Int32, y : Int32, path : LibGtk::TreePath**, column : LibGtk::TreeViewColumn**, cell_x : Int32*, cell_y : Int32*) : Bool
   fun tree_view_is_rubber_banding_active = gtk_tree_view_is_rubber_banding_active(this : TreeView*) : Bool
-  fun tree_view_map_expanded_rows = gtk_tree_view_map_expanded_rows(this : TreeView*, func : Void*, data : Void*) : Void
+  fun tree_view_map_expanded_rows = gtk_tree_view_map_expanded_rows(this : TreeView*, func : -> Void, data : Void*) : Void
   fun tree_view_move_column_after = gtk_tree_view_move_column_after(this : TreeView*, column : LibGtk::TreeViewColumn*, base_column : LibGtk::TreeViewColumn*) : Void
   fun tree_view_remove_column = gtk_tree_view_remove_column(this : TreeView*, column : LibGtk::TreeViewColumn*) : Int32
   fun tree_view_row_activated = gtk_tree_view_row_activated(this : TreeView*, path : LibGtk::TreePath*, column : LibGtk::TreeViewColumn*) : Void
@@ -5589,10 +5589,10 @@ lib LibGtk
   fun tree_view_scroll_to_cell = gtk_tree_view_scroll_to_cell(this : TreeView*, path : LibGtk::TreePath*, column : LibGtk::TreeViewColumn*, use_align : Bool, row_align : Float32, col_align : Float32) : Void
   fun tree_view_scroll_to_point = gtk_tree_view_scroll_to_point(this : TreeView*, tree_x : Int32, tree_y : Int32) : Void
   fun tree_view_set_activate_on_single_click = gtk_tree_view_set_activate_on_single_click(this : TreeView*, single : Bool) : Void
-  fun tree_view_set_column_drag_function = gtk_tree_view_set_column_drag_function(this : TreeView*, func : Void*, user_data : Void*, destroy : Void*) : Void
+  fun tree_view_set_column_drag_function = gtk_tree_view_set_column_drag_function(this : TreeView*, func : -> Void, user_data : Void*, destroy : -> Void) : Void
   fun tree_view_set_cursor = gtk_tree_view_set_cursor(this : TreeView*, path : LibGtk::TreePath*, focus_column : LibGtk::TreeViewColumn*, start_editing : Bool) : Void
   fun tree_view_set_cursor_on_cell = gtk_tree_view_set_cursor_on_cell(this : TreeView*, path : LibGtk::TreePath*, focus_column : LibGtk::TreeViewColumn*, focus_cell : LibGtk::CellRenderer*, start_editing : Bool) : Void
-  fun tree_view_set_destroy_count_func = gtk_tree_view_set_destroy_count_func(this : TreeView*, func : Void*, data : Void*, destroy : Void*) : Void
+  fun tree_view_set_destroy_count_func = gtk_tree_view_set_destroy_count_func(this : TreeView*, func : -> Void, data : Void*, destroy : -> Void) : Void
   fun tree_view_set_drag_dest_row = gtk_tree_view_set_drag_dest_row(this : TreeView*, path : LibGtk::TreePath*, pos : LibGtk::TreeViewDropPosition) : Void
   fun tree_view_set_enable_search = gtk_tree_view_set_enable_search(this : TreeView*, enable_search : Bool) : Void
   fun tree_view_set_enable_tree_lines = gtk_tree_view_set_enable_tree_lines(this : TreeView*, enabled : Bool) : Void
@@ -5607,13 +5607,13 @@ lib LibGtk
   fun tree_view_set_level_indentation = gtk_tree_view_set_level_indentation(this : TreeView*, indentation : Int32) : Void
   fun tree_view_set_model = gtk_tree_view_set_model(this : TreeView*, model : LibGtk::TreeModel*) : Void
   fun tree_view_set_reorderable = gtk_tree_view_set_reorderable(this : TreeView*, reorderable : Bool) : Void
-  fun tree_view_set_row_separator_func = gtk_tree_view_set_row_separator_func(this : TreeView*, func : Void*, data : Void*, destroy : Void*) : Void
+  fun tree_view_set_row_separator_func = gtk_tree_view_set_row_separator_func(this : TreeView*, func : -> Void, data : Void*, destroy : -> Void) : Void
   fun tree_view_set_rubber_banding = gtk_tree_view_set_rubber_banding(this : TreeView*, enable : Bool) : Void
   fun tree_view_set_rules_hint = gtk_tree_view_set_rules_hint(this : TreeView*, setting : Bool) : Void
   fun tree_view_set_search_column = gtk_tree_view_set_search_column(this : TreeView*, column : Int32) : Void
   fun tree_view_set_search_entry = gtk_tree_view_set_search_entry(this : TreeView*, entry : LibGtk::Entry*) : Void
-  fun tree_view_set_search_equal_func = gtk_tree_view_set_search_equal_func(this : TreeView*, search_equal_func : Void*, search_user_data : Void*, search_destroy : Void*) : Void
-  fun tree_view_set_search_position_func = gtk_tree_view_set_search_position_func(this : TreeView*, func : Void*, data : Void*, destroy : Void*) : Void
+  fun tree_view_set_search_equal_func = gtk_tree_view_set_search_equal_func(this : TreeView*, search_equal_func : -> Void, search_user_data : Void*, search_destroy : -> Void) : Void
+  fun tree_view_set_search_position_func = gtk_tree_view_set_search_position_func(this : TreeView*, func : -> Void, data : Void*, destroy : -> Void) : Void
   fun tree_view_set_show_expanders = gtk_tree_view_set_show_expanders(this : TreeView*, enabled : Bool) : Void
   fun tree_view_set_tooltip_cell = gtk_tree_view_set_tooltip_cell(this : TreeView*, tooltip : LibGtk::Tooltip*, path : LibGtk::TreePath*, column : LibGtk::TreeViewColumn*, cell : LibGtk::CellRenderer*) : Void
   fun tree_view_set_tooltip_column = gtk_tree_view_set_tooltip_column(this : TreeView*, column : Int32) : Void
@@ -5623,17 +5623,17 @@ lib LibGtk
   fun tree_view_unset_rows_drag_source = gtk_tree_view_unset_rows_drag_source(this : TreeView*) : Void
 
   struct TreeViewAccessible # object
-  # Implements Component
-  # Implements Selection
-  # Implements Table
-  # Implements CellAccessibleParent
+    # Implements Component
+    # Implements Selection
+    # Implements Table
+    # Implements CellAccessibleParent
     parent : LibGtk::ContainerAccessible
     priv : LibGtk::TreeViewAccessiblePrivate*
   end
 
   struct TreeViewColumn # object
-  # Implements Buildable
-  # Implements CellLayout
+    # Implements Buildable
+    # Implements CellLayout
     parent_instance : LibGObject::InitiallyUnowned
     priv : LibGtk::TreeViewColumnPrivate*
     # Property alignment : Float32
@@ -5693,7 +5693,7 @@ lib LibGtk
   fun tree_view_column_pack_start = gtk_tree_view_column_pack_start(this : TreeViewColumn*, cell : LibGtk::CellRenderer*, expand : Bool) : Void
   fun tree_view_column_queue_resize = gtk_tree_view_column_queue_resize(this : TreeViewColumn*) : Void
   fun tree_view_column_set_alignment = gtk_tree_view_column_set_alignment(this : TreeViewColumn*, xalign : Float32) : Void
-  fun tree_view_column_set_cell_data_func = gtk_tree_view_column_set_cell_data_func(this : TreeViewColumn*, cell_renderer : LibGtk::CellRenderer*, func : Void*, func_data : Void*, destroy : Void*) : Void
+  fun tree_view_column_set_cell_data_func = gtk_tree_view_column_set_cell_data_func(this : TreeViewColumn*, cell_renderer : LibGtk::CellRenderer*, func : -> Void, func_data : Void*, destroy : -> Void) : Void
   fun tree_view_column_set_clickable = gtk_tree_view_column_set_clickable(this : TreeViewColumn*, clickable : Bool) : Void
   fun tree_view_column_set_expand = gtk_tree_view_column_set_expand(this : TreeViewColumn*, expand : Bool) : Void
   fun tree_view_column_set_fixed_width = gtk_tree_view_column_set_fixed_width(this : TreeViewColumn*, fixed_width : Int32) : Void
@@ -5711,7 +5711,7 @@ lib LibGtk
   fun tree_view_column_set_widget = gtk_tree_view_column_set_widget(this : TreeViewColumn*, widget : LibGtk::Widget*) : Void
 
   struct UIManager # object
-  # Implements Buildable
+    # Implements Buildable
     parent : LibGObject::Object
     private_data : LibGtk::UIManagerPrivate*
     # Property add-tearoffs : Bool
@@ -5751,58 +5751,58 @@ lib LibGtk
   fun u_i_manager_set_add_tearoffs = gtk_ui_manager_set_add_tearoffs(this : UIManager*, add_tearoffs : Bool) : Void
 
   struct VBox # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     box : LibGtk::Box
   end
   fun v_box_new = gtk_vbox_new(homogeneous : Bool, spacing : Int32) : LibGtk::Widget*
 
   struct VButtonBox # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     button_box : LibGtk::ButtonBox
   end
   fun v_button_box_new = gtk_vbutton_box_new() : LibGtk::Widget*
 
   struct VPaned # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     paned : LibGtk::Paned
   end
   fun v_paned_new = gtk_vpaned_new() : LibGtk::Widget*
 
   struct VScale # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     scale : LibGtk::Scale
   end
   fun v_scale_new = gtk_vscale_new(adjustment : LibGtk::Adjustment*) : LibGtk::Widget*
   fun v_scale_new_with_range = gtk_vscale_new_with_range(min : Float64, max : Float64, step : Float64) : LibGtk::Widget*
 
   struct VScrollbar # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     scrollbar : LibGtk::Scrollbar
   end
   fun v_scrollbar_new = gtk_vscrollbar_new(adjustment : LibGtk::Adjustment*) : LibGtk::Widget*
 
   struct VSeparator # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Orientable
     separator : LibGtk::Separator
   end
   fun v_separator_new = gtk_vseparator_new() : LibGtk::Widget*
 
   struct Viewport # object
-  # Implements ImplementorIface
-  # Implements Buildable
-  # Implements Scrollable
+    # Implements ImplementorIface
+    # Implements Buildable
+    # Implements Scrollable
     bin : LibGtk::Bin
     priv : LibGtk::ViewportPrivate*
     # Property shadow-type : LibGtk::ShadowType
@@ -5818,19 +5818,19 @@ lib LibGtk
   fun viewport_set_vadjustment = gtk_viewport_set_vadjustment(this : Viewport*, adjustment : LibGtk::Adjustment*) : Void
 
   struct VolumeButton # object
-  # Implements ImplementorIface
-  # Implements Actionable
-  # Implements Activatable
-  # Implements Buildable
-  # Implements Orientable
+    # Implements ImplementorIface
+    # Implements Actionable
+    # Implements Activatable
+    # Implements Buildable
+    # Implements Orientable
     parent : LibGtk::ScaleButton
     # Property use-symbolic : Bool
   end
   fun volume_button_new = gtk_volume_button_new() : LibGtk::Widget*
 
   struct Widget # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     parent_instance : LibGObject::InitiallyUnowned
     priv : LibGtk::WidgetPrivate*
     # Property app-paintable : Bool
@@ -6033,7 +6033,7 @@ lib LibGtk
   fun widget_add_device_events = gtk_widget_add_device_events(this : Widget*, device : LibGdk::Device*, events : LibGdk::EventMask) : Void
   fun widget_add_events = gtk_widget_add_events(this : Widget*, events : Int32) : Void
   fun widget_add_mnemonic_label = gtk_widget_add_mnemonic_label(this : Widget*, label : LibGtk::Widget*) : Void
-  fun widget_add_tick_callback = gtk_widget_add_tick_callback(this : Widget*, callback : Void*, user_data : Void*, notify : Void*) : UInt32
+  fun widget_add_tick_callback = gtk_widget_add_tick_callback(this : Widget*, callback : -> Void, user_data : Void*, notify : -> Void) : UInt32
   fun widget_can_activate_accel = gtk_widget_can_activate_accel(this : Widget*, signal_id : UInt32) : Bool
   fun widget_child_focus = gtk_widget_child_focus(this : Widget*, direction : LibGtk::DirectionType) : Bool
   fun widget_child_notify = gtk_widget_child_notify(this : Widget*, child_property : UInt8*) : Void
@@ -6281,14 +6281,14 @@ lib LibGtk
   fun widget_unset_state_flags = gtk_widget_unset_state_flags(this : Widget*, flags : LibGtk::StateFlags) : Void
 
   struct WidgetAccessible # object
-  # Implements Component
+    # Implements Component
     parent : LibGtk::Accessible
     priv : LibGtk::WidgetAccessiblePrivate*
   end
 
   struct Window # object
-  # Implements ImplementorIface
-  # Implements Buildable
+    # Implements ImplementorIface
+    # Implements Buildable
     bin : LibGtk::Bin
     priv : LibGtk::WindowPrivate*
     # Property accept-focus : Bool
@@ -6454,8 +6454,8 @@ lib LibGtk
   fun window_unstick = gtk_window_unstick(this : Window*) : Void
 
   struct WindowAccessible # object
-  # Implements Component
-  # Implements Window
+    # Implements Component
+    # Implements Window
     parent : LibGtk::ContainerAccessible
     priv : LibGtk::WindowAccessiblePrivate*
   end
@@ -6509,7 +6509,7 @@ lib LibGtk
     label : UInt8*
     accelerator : UInt8*
     tooltip : UInt8*
-    callback : Void*
+    callback : -> Void
   end
 
   struct ActionGroupPrivate # struct
@@ -7417,7 +7417,7 @@ lib LibGtk
   fun text_iter_backward_chars = gtk_text_iter_backward_chars(this : TextIter*, count : Int32) : Bool
   fun text_iter_backward_cursor_position = gtk_text_iter_backward_cursor_position(this : TextIter*) : Bool
   fun text_iter_backward_cursor_positions = gtk_text_iter_backward_cursor_positions(this : TextIter*, count : Int32) : Bool
-  fun text_iter_backward_find_char = gtk_text_iter_backward_find_char(this : TextIter*, pred : Void*, user_data : Void*, limit : LibGtk::TextIter*) : Bool
+  fun text_iter_backward_find_char = gtk_text_iter_backward_find_char(this : TextIter*, pred : -> Void, user_data : Void*, limit : LibGtk::TextIter*) : Bool
   fun text_iter_backward_line = gtk_text_iter_backward_line(this : TextIter*) : Bool
   fun text_iter_backward_lines = gtk_text_iter_backward_lines(this : TextIter*, count : Int32) : Bool
   fun text_iter_backward_search = gtk_text_iter_backward_search(this : TextIter*, str : UInt8*, flags : LibGtk::TextSearchFlags, match_start : LibGtk::TextIter*, match_end : LibGtk::TextIter*, limit : LibGtk::TextIter*) : Bool
@@ -7446,7 +7446,7 @@ lib LibGtk
   fun text_iter_forward_chars = gtk_text_iter_forward_chars(this : TextIter*, count : Int32) : Bool
   fun text_iter_forward_cursor_position = gtk_text_iter_forward_cursor_position(this : TextIter*) : Bool
   fun text_iter_forward_cursor_positions = gtk_text_iter_forward_cursor_positions(this : TextIter*, count : Int32) : Bool
-  fun text_iter_forward_find_char = gtk_text_iter_forward_find_char(this : TextIter*, pred : Void*, user_data : Void*, limit : LibGtk::TextIter*) : Bool
+  fun text_iter_forward_find_char = gtk_text_iter_forward_find_char(this : TextIter*, pred : -> Void, user_data : Void*, limit : LibGtk::TextIter*) : Bool
   fun text_iter_forward_line = gtk_text_iter_forward_line(this : TextIter*) : Bool
   fun text_iter_forward_lines = gtk_text_iter_forward_lines(this : TextIter*, count : Int32) : Bool
   fun text_iter_forward_search = gtk_text_iter_forward_search(this : TextIter*, str : UInt8*, flags : LibGtk::TextSearchFlags, match_start : LibGtk::TextIter*, match_end : LibGtk::TextIter*, limit : LibGtk::TextIter*) : Bool
@@ -7528,7 +7528,7 @@ lib LibGtk
     label : UInt8*
     accelerator : UInt8*
     tooltip : UInt8*
-    callback : Void*
+    callback : -> Void
     is_active : Bool
   end
 
@@ -7999,10 +7999,10 @@ lib LibGtk
 
   struct Actionable # interface
   g_iface : LibGObject::TypeInterface
-  get_action_name : Void*
-  set_action_name : Void*
-  get_action_target_value : Void*
-  set_action_target_value : Void*
+  get_action_name : -> Void
+  set_action_name : -> Void
+  get_action_target_value : -> Void
+  set_action_target_value : -> Void
   # Requires Widget
     # Property action-name : UInt8*
     # Property action-target : LibGLib::Variant
@@ -8019,8 +8019,8 @@ lib LibGtk
 
   struct Activatable # interface
   g_iface : LibGObject::TypeInterface
-  update : Void*
-  sync_action_properties : Void*
+  update : -> Void
+  sync_action_properties : -> Void
     # Property related-action : LibGtk::Action
     # Property use-action-appearance : Bool
     # Virtual function sync_action_properties
@@ -8043,16 +8043,16 @@ lib LibGtk
 
   struct Buildable # interface
   g_iface : LibGObject::TypeInterface
-  set_name : Void*
-  get_name : Void*
-  add_child : Void*
-  set_buildable_property : Void*
-  construct_child : Void*
-  custom_tag_start : Void*
-  custom_tag_end : Void*
-  custom_finished : Void*
-  parser_finished : Void*
-  get_internal_child : Void*
+  set_name : -> Void
+  get_name : -> Void
+  add_child : -> Void
+  set_buildable_property : -> Void
+  construct_child : -> Void
+  custom_tag_start : -> Void
+  custom_tag_end : -> Void
+  custom_finished : -> Void
+  parser_finished : -> Void
+  get_internal_child : -> Void
     # Virtual function add_child
     # Virtual function construct_child
     # Virtual function custom_finished
@@ -8077,15 +8077,15 @@ lib LibGtk
 
   struct CellAccessibleParent # interface
   parent : LibGObject::TypeInterface
-  get_cell_extents : Void*
-  get_cell_area : Void*
-  grab_focus : Void*
-  get_child_index : Void*
-  get_renderer_state : Void*
-  expand_collapse : Void*
-  activate : Void*
-  edit : Void*
-  update_relationset : Void*
+  get_cell_extents : -> Void
+  get_cell_area : -> Void
+  grab_focus : -> Void
+  get_child_index : -> Void
+  get_renderer_state : -> Void
+  expand_collapse : -> Void
+  activate : -> Void
+  edit : -> Void
+  update_relationset : -> Void
     # Virtual function activate
     # Virtual function edit
     # Virtual function expand_collapse
@@ -8108,9 +8108,9 @@ lib LibGtk
 
   struct CellEditable # interface
   g_iface : LibGObject::TypeInterface
-  editing_done : Void*
-  remove_widget : Void*
-  start_editing : Void*
+  editing_done : -> Void
+  remove_widget : -> Void
+  start_editing : -> Void
   # Requires Widget
     # Property editing-canceled : Bool
     # Signal editing-done
@@ -8125,15 +8125,15 @@ lib LibGtk
 
   struct CellLayout # interface
   g_iface : LibGObject::TypeInterface
-  pack_start : Void*
-  pack_end : Void*
-  clear : Void*
-  add_attribute : Void*
-  set_cell_data_func : Void*
-  clear_attributes : Void*
-  reorder : Void*
-  get_cells : Void*
-  get_area : Void*
+  pack_start : -> Void
+  pack_end : -> Void
+  clear : -> Void
+  add_attribute : -> Void
+  set_cell_data_func : -> Void
+  clear_attributes : -> Void
+  reorder : -> Void
+  get_cells : -> Void
+  get_area : -> Void
     # Virtual function add_attribute
     # Virtual function clear
     # Virtual function clear_attributes
@@ -8152,14 +8152,14 @@ lib LibGtk
   fun cell_layout_pack_end = gtk_cell_layout_pack_end(this : CellLayout*, cell : LibGtk::CellRenderer*, expand : Bool) : Void
   fun cell_layout_pack_start = gtk_cell_layout_pack_start(this : CellLayout*, cell : LibGtk::CellRenderer*, expand : Bool) : Void
   fun cell_layout_reorder = gtk_cell_layout_reorder(this : CellLayout*, cell : LibGtk::CellRenderer*, position : Int32) : Void
-  fun cell_layout_set_cell_data_func = gtk_cell_layout_set_cell_data_func(this : CellLayout*, cell : LibGtk::CellRenderer*, func : Void*, func_data : Void*, destroy : Void*) : Void
+  fun cell_layout_set_cell_data_func = gtk_cell_layout_set_cell_data_func(this : CellLayout*, cell : LibGtk::CellRenderer*, func : -> Void, func_data : Void*, destroy : -> Void) : Void
 
   struct ColorChooser # interface
   base_interface : LibGObject::TypeInterface
-  get_rgba : Void*
-  set_rgba : Void*
-  add_palette : Void*
-  color_activated : Void*
+  get_rgba : -> Void
+  set_rgba : -> Void
+  add_palette : -> Void
+  color_activated : -> Void
   padding : Void*
     # Property rgba : LibGdk::RGBA
     # Property use-alpha : Bool
@@ -8177,16 +8177,16 @@ lib LibGtk
 
   struct Editable # interface
   base_iface : LibGObject::TypeInterface
-  insert_text : Void*
-  delete_text : Void*
-  changed : Void*
-  do_insert_text : Void*
-  do_delete_text : Void*
-  get_chars : Void*
-  set_selection_bounds : Void*
-  get_selection_bounds : Void*
-  set_position : Void*
-  get_position : Void*
+  insert_text : -> Void
+  delete_text : -> Void
+  changed : -> Void
+  do_insert_text : -> Void
+  do_delete_text : -> Void
+  get_chars : -> Void
+  set_selection_bounds : -> Void
+  get_selection_bounds : -> Void
+  set_position : -> Void
+  get_position : -> Void
     # Signal changed
     # Signal delete-text
     # Signal insert-text
@@ -8296,11 +8296,11 @@ lib LibGtk
 
   struct FontChooser # interface
   base_iface : LibGObject::TypeInterface
-  get_font_family : Void*
-  get_font_face : Void*
-  get_font_size : Void*
-  set_filter_func : Void*
-  font_activated : Void*
+  get_font_family : -> Void
+  get_font_face : -> Void
+  get_font_size : -> Void
+  set_filter_func : -> Void
+  font_activated : -> Void
   padding : Void*
     # Property font : UInt8*
     # Property font-desc : LibPango::FontDescription
@@ -8320,7 +8320,7 @@ lib LibGtk
   fun font_chooser_get_font_size = gtk_font_chooser_get_font_size(this : FontChooser*) : Int32
   fun font_chooser_get_preview_text = gtk_font_chooser_get_preview_text(this : FontChooser*) : UInt8*
   fun font_chooser_get_show_preview_entry = gtk_font_chooser_get_show_preview_entry(this : FontChooser*) : Bool
-  fun font_chooser_set_filter_func = gtk_font_chooser_set_filter_func(this : FontChooser*, filter : Void*, user_data : Void*, destroy : Void*) : Void
+  fun font_chooser_set_filter_func = gtk_font_chooser_set_filter_func(this : FontChooser*, filter : -> Void, user_data : Void*, destroy : -> Void) : Void
   fun font_chooser_set_font = gtk_font_chooser_set_font(this : FontChooser*, fontname : UInt8*) : Void
   fun font_chooser_set_font_desc = gtk_font_chooser_set_font_desc(this : FontChooser*, font_desc : LibPango::FontDescription*) : Void
   fun font_chooser_set_preview_text = gtk_font_chooser_set_preview_text(this : FontChooser*, text : UInt8*) : Void
@@ -8335,11 +8335,11 @@ lib LibGtk
 
   struct PrintOperationPreview # interface
   g_iface : LibGObject::TypeInterface
-  ready : Void*
-  got_page_size : Void*
-  render_page : Void*
-  is_selected : Void*
-  end_preview : Void*
+  ready : -> Void
+  got_page_size : -> Void
+  render_page : -> Void
+  is_selected : -> Void
+  end_preview : -> Void
   _gtk_reserved1 : Void*
   _gtk_reserved2 : Void*
   _gtk_reserved3 : Void*
@@ -8362,20 +8362,20 @@ lib LibGtk
 
   struct RecentChooser # interface
   base_iface : LibGObject::TypeInterface
-  set_current_uri : Void*
-  get_current_uri : Void*
-  select_uri : Void*
-  unselect_uri : Void*
-  select_all : Void*
-  unselect_all : Void*
-  get_items : Void*
+  set_current_uri : -> Void
+  get_current_uri : -> Void
+  select_uri : -> Void
+  unselect_uri : -> Void
+  select_all : -> Void
+  unselect_all : -> Void
+  get_items : -> Void
   get_recent_manager : Void*
-  add_filter : Void*
-  remove_filter : Void*
-  list_filters : Void*
-  set_sort_func : Void*
-  item_activated : Void*
-  selection_changed : Void*
+  add_filter : -> Void
+  remove_filter : -> Void
+  list_filters : -> Void
+  set_sort_func : -> Void
+  item_activated : -> Void
+  selection_changed : -> Void
     # Property filter : LibGtk::RecentFilter
     # Property limit : Int32
     # Property local-only : Bool
@@ -8429,7 +8429,7 @@ lib LibGtk
   fun recent_chooser_set_show_not_found = gtk_recent_chooser_set_show_not_found(this : RecentChooser*, show_not_found : Bool) : Void
   fun recent_chooser_set_show_private = gtk_recent_chooser_set_show_private(this : RecentChooser*, show_private : Bool) : Void
   fun recent_chooser_set_show_tips = gtk_recent_chooser_set_show_tips(this : RecentChooser*, show_tips : Bool) : Void
-  fun recent_chooser_set_sort_func = gtk_recent_chooser_set_sort_func(this : RecentChooser*, sort_func : Void*, sort_data : Void*, data_destroy : Void*) : Void
+  fun recent_chooser_set_sort_func = gtk_recent_chooser_set_sort_func(this : RecentChooser*, sort_func : -> Void, sort_data : Void*, data_destroy : -> Void) : Void
   fun recent_chooser_set_sort_type = gtk_recent_chooser_set_sort_type(this : RecentChooser*, sort_type : LibGtk::RecentSortType) : Void
   fun recent_chooser_unselect_all = gtk_recent_chooser_unselect_all(this : RecentChooser*) : Void
   fun recent_chooser_unselect_uri = gtk_recent_chooser_unselect_uri(this : RecentChooser*, uri : UInt8*) : Void
@@ -8452,9 +8452,9 @@ lib LibGtk
 
   struct StyleProvider # interface
   g_iface : LibGObject::TypeInterface
-  get_style : Void*
-  get_style_property : Void*
-  get_icon_factory : Void*
+  get_style : -> Void
+  get_style_property : -> Void
+  get_icon_factory : -> Void
     # Virtual function get_icon_factory
     # Virtual function get_style
     # Virtual function get_style_property
@@ -8465,15 +8465,15 @@ lib LibGtk
 
   struct ToolShell # interface
   g_iface : LibGObject::TypeInterface
-  get_icon_size : Void*
-  get_orientation : Void*
-  get_style : Void*
-  get_relief_style : Void*
-  rebuild_menu : Void*
-  get_text_orientation : Void*
-  get_text_alignment : Void*
-  get_ellipsize_mode : Void*
-  get_text_size_group : Void*
+  get_icon_size : -> Void
+  get_orientation : -> Void
+  get_style : -> Void
+  get_relief_style : -> Void
+  rebuild_menu : -> Void
+  get_text_orientation : -> Void
+  get_text_alignment : -> Void
+  get_ellipsize_mode : -> Void
+  get_text_size_group : -> Void
   # Requires Widget
     # Virtual function get_ellipsize_mode
     # Virtual function get_icon_size
@@ -8497,8 +8497,8 @@ lib LibGtk
 
   struct TreeDragDest # interface
   g_iface : LibGObject::TypeInterface
-  drag_data_received : Void*
-  row_drop_possible : Void*
+  drag_data_received : -> Void
+  row_drop_possible : -> Void
     # Virtual function drag_data_received
     # Virtual function row_drop_possible
   end
@@ -8507,9 +8507,9 @@ lib LibGtk
 
   struct TreeDragSource # interface
   g_iface : LibGObject::TypeInterface
-  row_draggable : Void*
-  drag_data_get : Void*
-  drag_data_delete : Void*
+  row_draggable : -> Void
+  drag_data_get : -> Void
+  drag_data_delete : -> Void
     # Virtual function drag_data_delete
     # Virtual function drag_data_get
     # Virtual function row_draggable
@@ -8520,26 +8520,26 @@ lib LibGtk
 
   struct TreeModel # interface
   g_iface : LibGObject::TypeInterface
-  row_changed : Void*
-  row_inserted : Void*
-  row_has_child_toggled : Void*
-  row_deleted : Void*
-  rows_reordered : Void*
-  get_flags : Void*
-  get_n_columns : Void*
-  get_column_type : Void*
-  get_iter : Void*
-  get_path : Void*
-  get_value : Void*
-  iter_next : Void*
-  iter_previous : Void*
-  iter_children : Void*
-  iter_has_child : Void*
-  iter_n_children : Void*
-  iter_nth_child : Void*
-  iter_parent : Void*
-  ref_node : Void*
-  unref_node : Void*
+  row_changed : -> Void
+  row_inserted : -> Void
+  row_has_child_toggled : -> Void
+  row_deleted : -> Void
+  rows_reordered : -> Void
+  get_flags : -> Void
+  get_n_columns : -> Void
+  get_column_type : -> Void
+  get_iter : -> Void
+  get_path : -> Void
+  get_value : -> Void
+  iter_next : -> Void
+  iter_previous : -> Void
+  iter_children : -> Void
+  iter_has_child : -> Void
+  iter_n_children : -> Void
+  iter_nth_child : -> Void
+  iter_parent : -> Void
+  ref_node : -> Void
+  unref_node : -> Void
     # Signal row-changed
     # Signal row-deleted
     # Signal row-has-child-toggled
@@ -8565,7 +8565,7 @@ lib LibGtk
     # Virtual function unref_node
   end
   fun tree_model_filter_new = gtk_tree_model_filter_new(this : TreeModel*, root : LibGtk::TreePath*) : LibGtk::TreeModel*
-  fun tree_model_foreach = gtk_tree_model_foreach(this : TreeModel*, func : Void*, user_data : Void*) : Void
+  fun tree_model_foreach = gtk_tree_model_foreach(this : TreeModel*, func : -> Void, user_data : Void*) : Void
   fun tree_model_get_column_type = gtk_tree_model_get_column_type(this : TreeModel*, index_ : Int32) : UInt64
   fun tree_model_get_flags = gtk_tree_model_get_flags(this : TreeModel*) : LibGtk::TreeModelFlags
   fun tree_model_get_iter = gtk_tree_model_get_iter(this : TreeModel*, iter : LibGtk::TreeIter*, path : LibGtk::TreePath*) : Bool
@@ -8593,12 +8593,12 @@ lib LibGtk
 
   struct TreeSortable # interface
   g_iface : LibGObject::TypeInterface
-  sort_column_changed : Void*
-  get_sort_column_id : Void*
-  set_sort_column_id : Void*
-  set_sort_func : Void*
-  set_default_sort_func : Void*
-  has_default_sort_func : Void*
+  sort_column_changed : -> Void
+  get_sort_column_id : -> Void
+  set_sort_column_id : -> Void
+  set_sort_func : -> Void
+  set_default_sort_func : -> Void
+  has_default_sort_func : -> Void
   # Requires TreeModel
     # Signal sort-column-changed
     # Virtual function get_sort_column_id
@@ -8610,9 +8610,9 @@ lib LibGtk
   end
   fun tree_sortable_get_sort_column_id = gtk_tree_sortable_get_sort_column_id(this : TreeSortable*, sort_column_id : Int32*, order : LibGtk::SortType*) : Bool
   fun tree_sortable_has_default_sort_func = gtk_tree_sortable_has_default_sort_func(this : TreeSortable*) : Bool
-  fun tree_sortable_set_default_sort_func = gtk_tree_sortable_set_default_sort_func(this : TreeSortable*, sort_func : Void*, user_data : Void*, destroy : Void*) : Void
+  fun tree_sortable_set_default_sort_func = gtk_tree_sortable_set_default_sort_func(this : TreeSortable*, sort_func : -> Void, user_data : Void*, destroy : -> Void) : Void
   fun tree_sortable_set_sort_column_id = gtk_tree_sortable_set_sort_column_id(this : TreeSortable*, sort_column_id : Int32, order : LibGtk::SortType) : Void
-  fun tree_sortable_set_sort_func = gtk_tree_sortable_set_sort_func(this : TreeSortable*, sort_column_id : Int32, sort_func : Void*, user_data : Void*, destroy : Void*) : Void
+  fun tree_sortable_set_sort_func = gtk_tree_sortable_set_sort_func(this : TreeSortable*, sort_column_id : Int32, sort_func : -> Void, user_data : Void*, destroy : -> Void) : Void
   fun tree_sortable_sort_column_changed = gtk_tree_sortable_sort_column_changed(this : TreeSortable*) : Void
 
 
@@ -9843,7 +9843,7 @@ lib LibGtk
   fun parse_args = gtk_parse_args(argc : Int32*, argv : UInt8***) : Bool
   fun print_error_quark = gtk_print_error_quark() : UInt32
   fun print_run_page_setup_dialog = gtk_print_run_page_setup_dialog(parent : LibGtk::Window*, page_setup : LibGtk::PageSetup*, settings : LibGtk::PrintSettings*) : LibGtk::PageSetup*
-  fun print_run_page_setup_dialog_async = gtk_print_run_page_setup_dialog_async(parent : LibGtk::Window*, page_setup : LibGtk::PageSetup*, settings : LibGtk::PrintSettings*, done_cb : Void*, data : Void*) : Void
+  fun print_run_page_setup_dialog_async = gtk_print_run_page_setup_dialog_async(parent : LibGtk::Window*, page_setup : LibGtk::PageSetup*, settings : LibGtk::PrintSettings*, done_cb : -> Void, data : Void*) : Void
   fun propagate_event = gtk_propagate_event(widget : LibGtk::Widget*, event : LibGdk::Event*) : Void
   fun rc_add_default_file = gtk_rc_add_default_file(filename : UInt8*) : Void
   fun rc_find_module_in_path = gtk_rc_find_module_in_path(module_file : UInt8*) : UInt8*
@@ -9904,7 +9904,7 @@ lib LibGtk
   fun stock_add_static = gtk_stock_add_static(items : LibGtk::StockItem*, n_items : UInt32) : Void
   fun stock_list_ids = gtk_stock_list_ids() : Void**
   fun stock_lookup = gtk_stock_lookup(stock_id : UInt8*, item : LibGtk::StockItem*) : Bool
-  fun stock_set_translate_func = gtk_stock_set_translate_func(domain : UInt8*, func : Void*, data : Void*, notify : Void*) : Void
+  fun stock_set_translate_func = gtk_stock_set_translate_func(domain : UInt8*, func : -> Void, data : Void*, notify : -> Void) : Void
   fun target_table_free = gtk_target_table_free(targets : LibGtk::TargetEntry*, n_targets : Int32) : Void
   fun target_table_new_from_list = gtk_target_table_new_from_list(list : LibGtk::TargetList*, n_targets : Int32*) : LibGtk::TargetEntry*
   fun targets_include_image = gtk_targets_include_image(targets : LibGdk::Atom**, n_targets : Int32, writable : Bool) : Bool

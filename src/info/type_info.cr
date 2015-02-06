@@ -39,8 +39,8 @@ class TypeInfo < BaseInfo
       when LibGIRepository::TypeTag::INTERFACE # Now this is everything but an interface :(
         interface = BaseInfo.wrap LibGIRepository.type_info_get_interface(self)
         case interface
-        when CallbackInfo # Weird stuff, just Void* it for the moment
-          "Void*"
+        when CallbackInfo
+          "-> Void" # Why couldn't that just be another tag ...
         else
           if BLACKLIST.includes? interface.name # More weird stuff
             "Void*"

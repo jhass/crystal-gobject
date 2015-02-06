@@ -4,24 +4,6 @@ require "./lib_g_lib"
 lib LibGModule
 
   ###########################################
-  ##   Declarations
-  ###########################################
-
-  struct Module; end; # struct
-
-  ###########################################
-  ##    Flags
-  ###########################################
-
-  enum ModuleFlags
-    ZERO_NONE = 0
-    LAZY = 1
-    LOCAL = 2
-    MASK = 3
-  end
-
-
-  ###########################################
   ##    Structs
   ###########################################
 
@@ -42,6 +24,18 @@ lib LibGModule
 
   # Callback: ModuleCheckInit(module : LibGModule::Module*) : UInt8*
   # Callback: ModuleUnload(module : LibGModule::Module*) : Void
+
+  ###########################################
+  ##    Flags
+  ###########################################
+
+  enum ModuleFlags
+    ZERO_NONE = 0
+    LAZY = 1
+    LOCAL = 2
+    MASK = 3
+  end
+
 
   ###########################################
   ##    Functions

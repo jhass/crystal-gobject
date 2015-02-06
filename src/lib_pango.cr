@@ -318,8 +318,8 @@ lib LibPango
   struct AttrClass # struct
     type : LibPango::AttrType
     copy : Void*
-    destroy : Void*
-    equal : Void*
+    destroy : -> Void
+    equal : -> Void
   end
 
   struct AttrColor # struct
@@ -360,7 +360,7 @@ lib LibPango
   fun attr_list_new = pango_attr_list_new() : LibPango::AttrList*
   fun attr_list_change = pango_attr_list_change(this : AttrList*, attr : LibPango::Attribute*) : Void
   fun attr_list_copy = pango_attr_list_copy(this : AttrList*) : LibPango::AttrList*
-  fun attr_list_filter = pango_attr_list_filter(this : AttrList*, func : Void*, data : Void*) : LibPango::AttrList*
+  fun attr_list_filter = pango_attr_list_filter(this : AttrList*, func : -> Void, data : Void*) : LibPango::AttrList*
   fun attr_list_insert = pango_attr_list_insert(this : AttrList*, attr : LibPango::Attribute*) : Void
   fun attr_list_insert_before = pango_attr_list_insert_before(this : AttrList*, attr : LibPango::Attribute*) : Void
   fun attr_list_ref = pango_attr_list_ref(this : AttrList*) : LibPango::AttrList*
@@ -373,7 +373,7 @@ lib LibPango
     logical_rect : LibPango::Rectangle
     data : Void*
     copy_func : Void*
-    destroy_func : Void*
+    destroy_func : -> Void
   end
 
   struct AttrSize # struct
@@ -546,9 +546,9 @@ lib LibPango
   end
 
   struct IncludedModule # struct
-    list : Void*
-    init : Void*
-    exit : Void*
+    list : -> Void
+    init : -> Void
+    exit : -> Void
     create : Void*
   end
 
@@ -648,10 +648,10 @@ lib LibPango
   fun matrix_get_font_scale_factor = pango_matrix_get_font_scale_factor(this : Matrix*) : Float64
   fun matrix_rotate = pango_matrix_rotate(this : Matrix*, degrees : Float64) : Void
   fun matrix_scale = pango_matrix_scale(this : Matrix*, scale_x : Float64, scale_y : Float64) : Void
-  fun matrix_transform_distance = pango_matrix_transform_distance(this : Matrix*, dx : Float64, dy : Float64) : Void
-  fun matrix_transform_pixel_rectangle = pango_matrix_transform_pixel_rectangle(this : Matrix*, rect : LibPango::Rectangle) : Void
-  fun matrix_transform_point = pango_matrix_transform_point(this : Matrix*, x : Float64, y : Float64) : Void
-  fun matrix_transform_rectangle = pango_matrix_transform_rectangle(this : Matrix*, rect : LibPango::Rectangle) : Void
+  fun matrix_transform_distance = pango_matrix_transform_distance(this : Matrix*, dx : Float64*, dy : Float64*) : Void
+  fun matrix_transform_pixel_rectangle = pango_matrix_transform_pixel_rectangle(this : Matrix*, rect : LibPango::Rectangle*) : Void
+  fun matrix_transform_point = pango_matrix_transform_point(this : Matrix*, x : Float64*, y : Float64*) : Void
+  fun matrix_transform_rectangle = pango_matrix_transform_rectangle(this : Matrix*, rect : LibPango::Rectangle*) : Void
   fun matrix_translate = pango_matrix_translate(this : Matrix*, tx : Float64, ty : Float64) : Void
 
   struct Rectangle # struct
@@ -799,7 +799,7 @@ lib LibPango
     # Virtual function get_language
     # Virtual function get_metrics
   end
-  fun fontset_foreach = pango_fontset_foreach(this : Fontset*, func : Void*, data : Void*) : Void
+  fun fontset_foreach = pango_fontset_foreach(this : Fontset*, func : -> Void, data : Void*) : Void
   fun fontset_get_font = pango_fontset_get_font(this : Fontset*, wc : UInt32) : LibPango::Font*
   fun fontset_get_metrics = pango_fontset_get_metrics(this : Fontset*) : LibPango::FontMetrics*
 
@@ -962,17 +962,17 @@ lib LibPango
   fun parse_style = pango_parse_style(str : UInt8*, style : LibPango::Style*, warn : Bool) : Bool
   fun parse_variant = pango_parse_variant(str : UInt8*, variant : LibPango::Variant*, warn : Bool) : Bool
   fun parse_weight = pango_parse_weight(str : UInt8*, weight : LibPango::Weight*, warn : Bool) : Bool
-  fun quantize_line_geometry = pango_quantize_line_geometry(thickness : Int32, position : Int32) : Void
+  fun quantize_line_geometry = pango_quantize_line_geometry(thickness : Int32*, position : Int32*) : Void
   fun read_line = pango_read_line(stream : Void*, str : LibGLib::String*) : Int32
   fun reorder_items = pango_reorder_items(logical_items : Void**) : Void**
-  fun scan_int = pango_scan_int(pos : UInt8*, out : Int32*) : Bool
-  fun scan_string = pango_scan_string(pos : UInt8*, out : LibGLib::String*) : Bool
-  fun scan_word = pango_scan_word(pos : UInt8*, out : LibGLib::String*) : Bool
+  fun scan_int = pango_scan_int(pos : UInt8**, out : Int32*) : Bool
+  fun scan_string = pango_scan_string(pos : UInt8**, out : LibGLib::String*) : Bool
+  fun scan_word = pango_scan_word(pos : UInt8**, out : LibGLib::String*) : Bool
   fun script_for_unichar = pango_script_for_unichar(ch : UInt8) : LibPango::Script
   fun script_get_sample_language = pango_script_get_sample_language(script : LibPango::Script) : LibPango::Language*
   fun shape = pango_shape(text : UInt8*, length : Int32, analysis : LibPango::Analysis*, glyphs : LibPango::GlyphString*) : Void
   fun shape_full = pango_shape_full(item_text : UInt8*, item_length : Int32, paragraph_text : UInt8*, paragraph_length : Int32, analysis : LibPango::Analysis*, glyphs : LibPango::GlyphString*) : Void
-  fun skip_space = pango_skip_space(pos : UInt8*) : Bool
+  fun skip_space = pango_skip_space(pos : UInt8**) : Bool
   fun split_file_list = pango_split_file_list(str : UInt8*) : UInt8**
   fun trim_string = pango_trim_string(str : UInt8*) : UInt8*
   fun unichar_direction = pango_unichar_direction(ch : UInt8) : LibPango::Direction

@@ -88,8 +88,8 @@ lib LibGObject
   fun object_notify_by_pspec = g_object_notify_by_pspec(this : Object*, pspec : LibGObject::ParamSpec*) : Void
   fun object_ref = g_object_ref(this : Object*) : LibGObject::Object*
   fun object_ref_sink = g_object_ref_sink(this : Object*) : LibGObject::Object*
-  fun object_replace_data = g_object_replace_data(this : Object*, key : UInt8*, oldval : Void*, newval : Void*, destroy : Void*, old_destroy : Void**) : Bool
-  fun object_replace_qdata = g_object_replace_qdata(this : Object*, quark : UInt32, oldval : Void*, newval : Void*, destroy : Void*, old_destroy : Void**) : Bool
+  fun object_replace_data = g_object_replace_data(this : Object*, key : UInt8*, oldval : Void*, newval : Void*, destroy : -> Void, old_destroy : -> Void*) : Bool
+  fun object_replace_qdata = g_object_replace_qdata(this : Object*, quark : UInt32, oldval : Void*, newval : Void*, destroy : -> Void, old_destroy : -> Void*) : Bool
   fun object_run_dispose = g_object_run_dispose(this : Object*) : Void
   fun object_set_data = g_object_set_data(this : Object*, key : UInt8*, data : Void*) : Void
   fun object_set_property = g_object_set_property(this : Object*, property_name : UInt8*, value : LibGObject::Value*) : Void
@@ -410,7 +410,7 @@ lib LibGObject
     derivative_flag : UInt32
     in_marshal : UInt32
     is_invalid : UInt32
-    marshal : Void*
+    marshal : -> Void
     data : Void*
     notifiers : LibGObject::ClosureNotifyData*
   end
@@ -424,7 +424,7 @@ lib LibGObject
 
   struct ClosureNotifyData # struct
     data : Void*
-    notify : Void*
+    notify : -> Void
   end
 
   struct EnumClass # struct
@@ -455,8 +455,8 @@ lib LibGObject
   end
 
   struct InterfaceInfo # struct
-    interface_init : Void*
-    interface_finalize : Void*
+    interface_init : -> Void
+    interface_finalize : -> Void
     interface_data : Void*
   end
 
@@ -477,12 +477,12 @@ lib LibGObject
   struct ParamSpecTypeInfo # struct
     instance_size : UInt16
     n_preallocs : UInt16
-    instance_init : Void*
+    instance_init : -> Void
     value_type : UInt64
-    finalize : Void*
-    value_set_default : Void*
-    value_validate : Void*
-    values_cmp : Void*
+    finalize : -> Void
+    value_set_default : -> Void
+    value_validate : -> Void
+    values_cmp : -> Void
   end
 
   struct Parameter # struct
@@ -523,14 +523,14 @@ lib LibGObject
 
   struct TypeInfo # struct
     class_size : UInt16
-    base_init : Void*
-    base_finalize : Void*
-    class_init : Void*
-    class_finalize : Void*
+    base_init : -> Void
+    base_finalize : -> Void
+    class_init : -> Void
+    class_finalize : -> Void
     class_data : Void*
     instance_size : UInt16
     n_preallocs : UInt16
-    instance_init : Void*
+    instance_init : -> Void
     value_table : LibGObject::TypeValueTable*
   end
 
@@ -550,10 +550,10 @@ lib LibGObject
 
   struct TypePluginClass # struct
     base_iface : LibGObject::TypeInterface
-    use_plugin : Void*
-    unuse_plugin : Void*
-    complete_type_info : Void*
-    complete_interface_info : Void*
+    use_plugin : -> Void
+    unuse_plugin : -> Void
+    complete_type_info : -> Void
+    complete_interface_info : -> Void
   end
 
   struct TypeQuery # struct
@@ -564,14 +564,14 @@ lib LibGObject
   end
 
   struct TypeValueTable # struct
-    value_init : Void*
-    value_free : Void*
-    value_copy : Void*
+    value_init : -> Void
+    value_free : -> Void
+    value_copy : -> Void
     value_peek_pointer : Void*
     collect_format : UInt8*
-    collect_value : Void*
+    collect_value : -> Void
     lcopy_format : UInt8*
-    lcopy_value : Void*
+    lcopy_value : -> Void
   end
 
   struct Value # struct
@@ -655,7 +655,7 @@ lib LibGObject
   fun value_array_insert = g_value_array_insert(this : ValueArray*, index_ : UInt32, value : LibGObject::Value*) : LibGObject::ValueArray*
   fun value_array_prepend = g_value_array_prepend(this : ValueArray*, value : LibGObject::Value*) : LibGObject::ValueArray*
   fun value_array_remove = g_value_array_remove(this : ValueArray*, index_ : UInt32) : LibGObject::ValueArray*
-  fun value_array_sort = g_value_array_sort_with_data(this : ValueArray*, compare_func : Void*, user_data : Void*) : LibGObject::ValueArray*
+  fun value_array_sort = g_value_array_sort_with_data(this : ValueArray*, compare_func : -> Void, user_data : Void*) : LibGObject::ValueArray*
 
   struct WeakRef # struct
   end
@@ -789,7 +789,7 @@ lib LibGObject
   fun pointer_type_register_static = g_pointer_type_register_static(name : UInt8*) : UInt64
   fun signal_accumulator_first_wins = g_signal_accumulator_first_wins(ihint : LibGObject::SignalInvocationHint*, return_accu : LibGObject::Value*, handler_return : LibGObject::Value*, dummy : Void*) : Bool
   fun signal_accumulator_true_handled = g_signal_accumulator_true_handled(ihint : LibGObject::SignalInvocationHint*, return_accu : LibGObject::Value*, handler_return : LibGObject::Value*, dummy : Void*) : Bool
-  fun signal_add_emission_hook = g_signal_add_emission_hook(signal_id : UInt32, detail : UInt32, hook_func : Void*, hook_data : Void*, data_destroy : Void*) : UInt64
+  fun signal_add_emission_hook = g_signal_add_emission_hook(signal_id : UInt32, detail : UInt32, hook_func : -> Void, hook_data : Void*, data_destroy : -> Void) : UInt64
   fun signal_chain_from_overridden = g_signal_chain_from_overridden(instance_and_params : LibGObject::Value*, return_value : LibGObject::Value*) : Void
   fun signal_connect_closure = g_signal_connect_closure(instance : LibGObject::Object*, detailed_signal : UInt8*, closure : LibGObject::Closure*, after : Bool) : UInt64
   fun signal_connect_closure_by_id = g_signal_connect_closure_by_id(instance : LibGObject::Object*, signal_id : UInt32, detail : UInt32, closure : LibGObject::Closure*, after : Bool) : UInt64
