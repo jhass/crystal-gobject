@@ -14,7 +14,7 @@ class ObjectInfo < BaseInfo
       io.puts "  struct #{name} # object"
 
       each_interface do |interface|
-        io.puts "  # Implements #{interface.name}"
+        io.puts "    # Implements #{interface.name}"
       end
 
       each_constant do |constant|

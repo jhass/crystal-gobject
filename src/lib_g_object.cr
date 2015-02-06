@@ -4,167 +4,6 @@ require "./lib_g_lib"
 lib LibGObject
 
   ###########################################
-  ##   Declarations
-  ###########################################
-
-  struct Binding; end # object
-  struct InitiallyUnowned; end # object
-  struct Object; end # object
-  struct ParamSpec; end # object
-  struct ParamSpecBoolean; end # object
-  struct ParamSpecBoxed; end # object
-  struct ParamSpecChar; end # object
-  struct ParamSpecDouble; end # object
-  struct ParamSpecEnum; end # object
-  struct ParamSpecFlags; end # object
-  struct ParamSpecFloat; end # object
-  struct ParamSpecGType; end # object
-  struct ParamSpecInt; end # object
-  struct ParamSpecInt64; end # object
-  struct ParamSpecLong; end # object
-  struct ParamSpecObject; end # object
-  struct ParamSpecOverride; end # object
-  struct ParamSpecParam; end # object
-  struct ParamSpecPointer; end # object
-  struct ParamSpecString; end # object
-  struct ParamSpecUChar; end # object
-  struct ParamSpecUInt; end # object
-  struct ParamSpecUInt64; end # object
-  struct ParamSpecULong; end # object
-  struct ParamSpecUnichar; end # object
-  struct ParamSpecValueArray; end # object
-  struct ParamSpecVariant; end # object
-  struct TypeModule; end # object
-  struct CClosure; end; # struct
-  struct Closure; end; # struct
-  struct ClosureNotifyData; end; # struct
-  struct EnumClass; end; # struct
-  struct EnumValue; end; # struct
-  struct FlagsClass; end; # struct
-  struct FlagsValue; end; # struct
-  struct InterfaceInfo; end; # struct
-  struct ObjectConstructParam; end; # struct
-  struct ParamSpecPool; end; # struct
-  struct ParamSpecTypeInfo; end; # struct
-  struct Parameter; end; # struct
-  struct SignalInvocationHint; end; # struct
-  struct SignalQuery; end; # struct
-  struct TypeClass; end; # struct
-  struct TypeFundamentalInfo; end; # struct
-  struct TypeInfo; end; # struct
-  struct TypeInstance; end; # struct
-  struct TypeInterface; end; # struct
-  struct TypePluginClass; end; # struct
-  struct TypeQuery; end; # struct
-  struct TypeValueTable; end; # struct
-  struct Value; end; # struct
-  struct ValueArray; end; # struct
-  struct WeakRef; end; # struct
-  union TypeCValue; end
-  union G_Value__data__union; end
-  struct TypePlugin; end # interface
-
-  ###########################################
-  ##    Flags
-  ###########################################
-
-  enum BindingFlags
-    ZERO_NONE = 0
-    DEFAULT = 0
-    BIDIRECTIONAL = 1
-    SYNC_CREATE = 2
-    INVERT_BOOLEAN = 4
-  end
-
-  enum ConnectFlags
-    ZERO_NONE = 0
-    AFTER = 1
-    SWAPPED = 2
-  end
-
-  enum ParamFlags
-    ZERO_NONE = 0
-    READABLE = 1
-    WRITABLE = 2
-    READWRITE = 3
-    CONSTRUCT = 4
-    CONSTRUCT_ONLY = 8
-    LAX_VALIDATION = 16
-    STATIC_NAME = 32
-    PRIVATE = 32
-    STATIC_NICK = 64
-    STATIC_BLURB = 128
-    EXPLICIT_NOTIFY = 1073741824
-    DEPRECATED = 2147483648
-  end
-
-  enum SignalFlags
-    ZERO_NONE = 0
-    RUN_FIRST = 1
-    RUN_LAST = 2
-    RUN_CLEANUP = 4
-    NO_RECURSE = 8
-    DETAILED = 16
-    ACTION = 32
-    NO_HOOKS = 64
-    MUST_COLLECT = 128
-    DEPRECATED = 256
-  end
-
-  enum SignalMatchType
-    ZERO_NONE = 0
-    ID = 1
-    DETAIL = 2
-    CLOSURE = 4
-    FUNC = 8
-    DATA = 16
-    UNBLOCKED = 32
-  end
-
-  enum TypeDebugFlags
-    ZERO_NONE = 0
-    NONE = 0
-    OBJECTS = 1
-    SIGNALS = 2
-    MASK = 3
-  end
-
-  enum TypeFlags
-    ZERO_NONE = 0
-    ABSTRACT = 16
-    VALUE_ABSTRACT = 32
-  end
-
-  enum TypeFundamentalFlags
-    ZERO_NONE = 0
-    CLASSED = 1
-    INSTANTIATABLE = 2
-    DERIVABLE = 4
-    DEEP_DERIVABLE = 8
-  end
-
-
-  ###########################################
-  ##    Constants
-  ###########################################
-
-  PARAM_MASK = 255 # : Int32
-  PARAM_STATIC_STRINGS = 0 # : Int32
-  PARAM_USER_SHIFT = 8 # : Int32
-  SIGNAL_FLAGS_MASK = 511 # : Int32
-  SIGNAL_MATCH_MASK = 63 # : Int32
-  TYPE_FLAG_RESERVED_ID_BIT = 1 # : UInt64
-  TYPE_FUNDAMENTAL_MAX = 255 # : Int32
-  TYPE_FUNDAMENTAL_SHIFT = 2 # : Int32
-  TYPE_RESERVED_BSE_FIRST = 32 # : Int32
-  TYPE_RESERVED_BSE_LAST = 48 # : Int32
-  TYPE_RESERVED_GLIB_FIRST = 22 # : Int32
-  TYPE_RESERVED_GLIB_LAST = 31 # : Int32
-  TYPE_RESERVED_USER_FIRST = 49 # : Int32
-  VALUE_COLLECT_FORMAT_MAX_LENGTH = 8 # : Int32
-  VALUE_NOCOPY_CONTENTS = 134217728 # : Int32
-
-  ###########################################
   ##    Callbacks
   ###########################################
 
@@ -224,13 +63,13 @@ lib LibGObject
     ref_count : UInt32
     qdata : LibGLib::Data*
     # Signal notify
-   # Virtual function constructed
-   # Virtual function dispatch_properties_changed
-   # Virtual function dispose
-   # Virtual function finalize
-   # Virtual function get_property
-   # Virtual function notify
-   # Virtual function set_property
+    # Virtual function constructed
+    # Virtual function dispatch_properties_changed
+    # Virtual function dispose
+    # Virtual function finalize
+    # Virtual function get_property
+    # Virtual function notify
+    # Virtual function set_property
   end
   fun object_new = g_object_newv(object_type : UInt64, n_parameters : UInt32, parameters : LibGObject::Parameter*) : LibGObject::Object*
   fun object_compat_control = g_object_compat_control(what : UInt64, data : Void*) : UInt64
@@ -271,10 +110,10 @@ lib LibGObject
     qdata : LibGLib::Data*
     ref_count : UInt32
     param_id : UInt32
-   # Virtual function finalize
-   # Virtual function value_set_default
-   # Virtual function value_validate
-   # Virtual function values_cmp
+    # Virtual function finalize
+    # Virtual function value_set_default
+    # Virtual function value_validate
+    # Virtual function values_cmp
   end
   fun param_spec_get_blurb = g_param_spec_get_blurb(this : ParamSpec*) : UInt8*
   fun param_spec_get_default_value = g_param_spec_get_default_value(this : ParamSpec*) : LibGObject::Value*
@@ -430,14 +269,14 @@ lib LibGObject
   end
 
   struct TypeModule # object
-  # Implements TypePlugin
+    # Implements TypePlugin
     parent_instance : LibGObject::Object
     use_count : UInt32
     type_infos : Void**
     interface_infos : Void**
     name : UInt8*
-   # Virtual function load
-   # Virtual function unload
+    # Virtual function load
+    # Virtual function unload
   end
   fun type_module_add_interface = g_type_module_add_interface(this : TypeModule*, instance_type : UInt64, interface_type : UInt64, interface_info : LibGObject::InterfaceInfo*) : Void
   fun type_module_register_enum = g_type_module_register_enum(this : TypeModule*, name : UInt8*, const_static_values : LibGObject::EnumValue*) : UInt64
@@ -446,6 +285,86 @@ lib LibGObject
   fun type_module_set_name = g_type_module_set_name(this : TypeModule*, name : UInt8*) : Void
   fun type_module_unuse = g_type_module_unuse(this : TypeModule*) : Void
   fun type_module_use = g_type_module_use(this : TypeModule*) : Bool
+
+
+  ###########################################
+  ##    Flags
+  ###########################################
+
+  enum BindingFlags
+    ZERO_NONE = 0
+    DEFAULT = 0
+    BIDIRECTIONAL = 1
+    SYNC_CREATE = 2
+    INVERT_BOOLEAN = 4
+  end
+
+  enum ConnectFlags
+    ZERO_NONE = 0
+    AFTER = 1
+    SWAPPED = 2
+  end
+
+  enum ParamFlags
+    ZERO_NONE = 0
+    READABLE = 1
+    WRITABLE = 2
+    READWRITE = 3
+    CONSTRUCT = 4
+    CONSTRUCT_ONLY = 8
+    LAX_VALIDATION = 16
+    STATIC_NAME = 32
+    PRIVATE = 32
+    STATIC_NICK = 64
+    STATIC_BLURB = 128
+    EXPLICIT_NOTIFY = 1073741824
+    DEPRECATED = 2147483648
+  end
+
+  enum SignalFlags
+    ZERO_NONE = 0
+    RUN_FIRST = 1
+    RUN_LAST = 2
+    RUN_CLEANUP = 4
+    NO_RECURSE = 8
+    DETAILED = 16
+    ACTION = 32
+    NO_HOOKS = 64
+    MUST_COLLECT = 128
+    DEPRECATED = 256
+  end
+
+  enum SignalMatchType
+    ZERO_NONE = 0
+    ID = 1
+    DETAIL = 2
+    CLOSURE = 4
+    FUNC = 8
+    DATA = 16
+    UNBLOCKED = 32
+  end
+
+  enum TypeDebugFlags
+    ZERO_NONE = 0
+    NONE = 0
+    OBJECTS = 1
+    SIGNALS = 2
+    MASK = 3
+  end
+
+  enum TypeFlags
+    ZERO_NONE = 0
+    ABSTRACT = 16
+    VALUE_ABSTRACT = 32
+  end
+
+  enum TypeFundamentalFlags
+    ZERO_NONE = 0
+    CLASSED = 1
+    INSTANTIATABLE = 2
+    DERIVABLE = 4
+    DEEP_DERIVABLE = 8
+  end
 
 
   ###########################################
@@ -741,6 +660,26 @@ lib LibGObject
   struct WeakRef # struct
   end
 
+
+  ###########################################
+  ##    Constants
+  ###########################################
+
+  PARAM_MASK = 255 # : Int32
+  PARAM_STATIC_STRINGS = 0 # : Int32
+  PARAM_USER_SHIFT = 8 # : Int32
+  SIGNAL_FLAGS_MASK = 511 # : Int32
+  SIGNAL_MATCH_MASK = 63 # : Int32
+  TYPE_FLAG_RESERVED_ID_BIT = 1 # : UInt64
+  TYPE_FUNDAMENTAL_MAX = 255 # : Int32
+  TYPE_FUNDAMENTAL_SHIFT = 2 # : Int32
+  TYPE_RESERVED_BSE_FIRST = 32 # : Int32
+  TYPE_RESERVED_BSE_LAST = 48 # : Int32
+  TYPE_RESERVED_GLIB_FIRST = 22 # : Int32
+  TYPE_RESERVED_GLIB_LAST = 31 # : Int32
+  TYPE_RESERVED_USER_FIRST = 49 # : Int32
+  VALUE_COLLECT_FORMAT_MAX_LENGTH = 8 # : Int32
+  VALUE_NOCOPY_CONTENTS = 134217728 # : Int32
 
   ###########################################
   ##    Unions

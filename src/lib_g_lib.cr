@@ -3,87 +3,6 @@
 lib LibGLib
 
   ###########################################
-  ##   Declarations
-  ###########################################
-
-  struct Array; end; # struct
-  struct AsyncQueue; end; # struct
-  struct BookmarkFile; end; # struct
-  struct ByteArray; end; # struct
-  struct Bytes; end; # struct
-  struct Checksum; end; # struct
-  struct Cond; end; # struct
-  struct Data; end; # struct
-  struct Date; end; # struct
-  struct DateTime; end; # struct
-  struct DebugKey; end; # struct
-  struct Dir; end; # struct
-  struct Error; end; # struct
-  struct HashTable; end; # struct
-  struct HashTableIter; end; # struct
-  struct Hmac; end; # struct
-  struct Hook; end; # struct
-  struct HookList; end; # struct
-  struct IConv; end; # struct
-  struct IOChannel; end; # struct
-  struct IOFuncs; end; # struct
-  struct KeyFile; end; # struct
-  struct List; end; # struct
-  struct MainContext; end; # struct
-  struct MainLoop; end; # struct
-  struct MappedFile; end; # struct
-  struct MarkupParseContext; end; # struct
-  struct MarkupParser; end; # struct
-  struct MatchInfo; end; # struct
-  struct MemVTable; end; # struct
-  struct Node; end; # struct
-  struct Once; end; # struct
-  struct OptionContext; end; # struct
-  struct OptionEntry; end; # struct
-  struct OptionGroup; end; # struct
-  struct PatternSpec; end; # struct
-  struct PollFD; end; # struct
-  struct Private; end; # struct
-  struct PtrArray; end; # struct
-  struct Queue; end; # struct
-  struct RWLock; end; # struct
-  struct Rand; end; # struct
-  struct RecMutex; end; # struct
-  struct Regex; end; # struct
-  struct SList; end; # struct
-  struct Scanner; end; # struct
-  struct ScannerConfig; end; # struct
-  struct Sequence; end; # struct
-  struct SequenceIter; end; # struct
-  struct Source; end; # struct
-  struct SourceCallbackFuncs; end; # struct
-  struct SourceFuncs; end; # struct
-  struct SourcePrivate; end; # struct
-  struct StatBuf; end; # struct
-  struct String; end; # struct
-  struct StringChunk; end; # struct
-  struct TestCase; end; # struct
-  struct TestConfig; end; # struct
-  struct TestLogBuffer; end; # struct
-  struct TestLogMsg; end; # struct
-  struct TestSuite; end; # struct
-  struct Thread; end; # struct
-  struct ThreadPool; end; # struct
-  struct TimeVal; end; # struct
-  struct TimeZone; end; # struct
-  struct Timer; end; # struct
-  struct TrashStack; end; # struct
-  struct Tree; end; # struct
-  struct Variant; end; # struct
-  struct VariantBuilder; end; # struct
-  struct VariantDict; end; # struct
-  struct VariantType; end; # struct
-  union DoubleIEEE754; end
-  union FloatIEEE754; end
-  union Mutex; end
-  union TokenValue; end
-
-  ###########################################
   ##    Constants
   ###########################################
 
@@ -217,6 +136,1152 @@ lib LibGLib
   VA_COPY_AS_ARRAY = 1 # : Int32
   VERSION_MIN_REQUIRED = 2 # : Int32
   WIN32_MSG_HANDLE = 19981206 # : Int32
+
+  ###########################################
+  ##    Structs
+  ###########################################
+
+  struct Array # struct
+    data : UInt8*
+    len : UInt32
+  end
+
+  struct AsyncQueue # struct
+  end
+  fun async_queue_length = g_async_queue_length(this : AsyncQueue*) : Int32
+  fun async_queue_length_unlocked = g_async_queue_length_unlocked(this : AsyncQueue*) : Int32
+  fun async_queue_lock = g_async_queue_lock(this : AsyncQueue*) : Void
+  fun async_queue_push = g_async_queue_push(this : AsyncQueue*, data : Void*) : Void
+  fun async_queue_push_unlocked = g_async_queue_push_unlocked(this : AsyncQueue*, data : Void*) : Void
+  fun async_queue_ref_unlocked = g_async_queue_ref_unlocked(this : AsyncQueue*) : Void
+  fun async_queue_unlock = g_async_queue_unlock(this : AsyncQueue*) : Void
+  fun async_queue_unref = g_async_queue_unref(this : AsyncQueue*) : Void
+  fun async_queue_unref_and_unlock = g_async_queue_unref_and_unlock(this : AsyncQueue*) : Void
+
+  struct BookmarkFile # struct
+  end
+  fun bookmark_file_add_application = g_bookmark_file_add_application(this : BookmarkFile*, uri : UInt8*, name : UInt8*, exec : UInt8*) : Void
+  fun bookmark_file_add_group = g_bookmark_file_add_group(this : BookmarkFile*, uri : UInt8*, group : UInt8*) : Void
+  fun bookmark_file_free = g_bookmark_file_free(this : BookmarkFile*) : Void
+  fun bookmark_file_get_added = g_bookmark_file_get_added(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : Int64
+  fun bookmark_file_get_app_info = g_bookmark_file_get_app_info(this : BookmarkFile*, uri : UInt8*, name : UInt8*, exec : UInt8**, count : UInt32*, stamp : Int64*, error : LibGLib::Error**) : Bool
+  fun bookmark_file_get_applications = g_bookmark_file_get_applications(this : BookmarkFile*, uri : UInt8*, length : UInt64*, error : LibGLib::Error**) : UInt8**
+  fun bookmark_file_get_description = g_bookmark_file_get_description(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : UInt8*
+  fun bookmark_file_get_groups = g_bookmark_file_get_groups(this : BookmarkFile*, uri : UInt8*, length : UInt64*, error : LibGLib::Error**) : UInt8**
+  fun bookmark_file_get_icon = g_bookmark_file_get_icon(this : BookmarkFile*, uri : UInt8*, href : UInt8**, mime_type : UInt8**, error : LibGLib::Error**) : Bool
+  fun bookmark_file_get_is_private = g_bookmark_file_get_is_private(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : Bool
+  fun bookmark_file_get_mime_type = g_bookmark_file_get_mime_type(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : UInt8*
+  fun bookmark_file_get_modified = g_bookmark_file_get_modified(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : Int64
+  fun bookmark_file_get_size = g_bookmark_file_get_size(this : BookmarkFile*) : Int32
+  fun bookmark_file_get_title = g_bookmark_file_get_title(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : UInt8*
+  fun bookmark_file_get_uris = g_bookmark_file_get_uris(this : BookmarkFile*, length : UInt64*) : UInt8**
+  fun bookmark_file_get_visited = g_bookmark_file_get_visited(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : Int64
+  fun bookmark_file_has_application = g_bookmark_file_has_application(this : BookmarkFile*, uri : UInt8*, name : UInt8*, error : LibGLib::Error**) : Bool
+  fun bookmark_file_has_group = g_bookmark_file_has_group(this : BookmarkFile*, uri : UInt8*, group : UInt8*, error : LibGLib::Error**) : Bool
+  fun bookmark_file_has_item = g_bookmark_file_has_item(this : BookmarkFile*, uri : UInt8*) : Bool
+  fun bookmark_file_load_from_data = g_bookmark_file_load_from_data(this : BookmarkFile*, data : UInt8*, length : UInt64, error : LibGLib::Error**) : Bool
+  fun bookmark_file_load_from_data_dirs = g_bookmark_file_load_from_data_dirs(this : BookmarkFile*, file : UInt8*, full_path : UInt8*, error : LibGLib::Error**) : Bool
+  fun bookmark_file_load_from_file = g_bookmark_file_load_from_file(this : BookmarkFile*, filename : UInt8*, error : LibGLib::Error**) : Bool
+  fun bookmark_file_move_item = g_bookmark_file_move_item(this : BookmarkFile*, old_uri : UInt8*, new_uri : UInt8*, error : LibGLib::Error**) : Bool
+  fun bookmark_file_remove_application = g_bookmark_file_remove_application(this : BookmarkFile*, uri : UInt8*, name : UInt8*, error : LibGLib::Error**) : Bool
+  fun bookmark_file_remove_group = g_bookmark_file_remove_group(this : BookmarkFile*, uri : UInt8*, group : UInt8*, error : LibGLib::Error**) : Bool
+  fun bookmark_file_remove_item = g_bookmark_file_remove_item(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : Bool
+  fun bookmark_file_set_added = g_bookmark_file_set_added(this : BookmarkFile*, uri : UInt8*, added : Int64) : Void
+  fun bookmark_file_set_app_info = g_bookmark_file_set_app_info(this : BookmarkFile*, uri : UInt8*, name : UInt8*, exec : UInt8*, count : Int32, stamp : Int64, error : LibGLib::Error**) : Bool
+  fun bookmark_file_set_description = g_bookmark_file_set_description(this : BookmarkFile*, uri : UInt8*, description : UInt8*) : Void
+  fun bookmark_file_set_groups = g_bookmark_file_set_groups(this : BookmarkFile*, uri : UInt8*, groups : UInt8*, length : UInt64) : Void
+  fun bookmark_file_set_icon = g_bookmark_file_set_icon(this : BookmarkFile*, uri : UInt8*, href : UInt8*, mime_type : UInt8*) : Void
+  fun bookmark_file_set_is_private = g_bookmark_file_set_is_private(this : BookmarkFile*, uri : UInt8*, is_private : Bool) : Void
+  fun bookmark_file_set_mime_type = g_bookmark_file_set_mime_type(this : BookmarkFile*, uri : UInt8*, mime_type : UInt8*) : Void
+  fun bookmark_file_set_modified = g_bookmark_file_set_modified(this : BookmarkFile*, uri : UInt8*, modified : Int64) : Void
+  fun bookmark_file_set_title = g_bookmark_file_set_title(this : BookmarkFile*, uri : UInt8*, title : UInt8*) : Void
+  fun bookmark_file_set_visited = g_bookmark_file_set_visited(this : BookmarkFile*, uri : UInt8*, visited : Int64) : Void
+  fun bookmark_file_to_data = g_bookmark_file_to_data(this : BookmarkFile*, length : UInt64*, error : LibGLib::Error**) : UInt8*
+  fun bookmark_file_to_file = g_bookmark_file_to_file(this : BookmarkFile*, filename : UInt8*, error : LibGLib::Error**) : Bool
+  fun bookmark_file_error_quark = g_bookmark_file_error_quark() : UInt32
+
+  struct ByteArray # struct
+    data : UInt8*
+    len : UInt32
+  end
+  fun byte_array_free = g_byte_array_free(array : Void**, free_segment : Bool) : UInt8*
+  fun byte_array_free_to_bytes = g_byte_array_free_to_bytes(array : Void**) : LibGLib::Bytes*
+  fun byte_array_new = g_byte_array_new() : Void**
+  fun byte_array_new_take = g_byte_array_new_take(data : UInt8*, len : UInt64) : Void**
+  fun byte_array_unref = g_byte_array_unref(array : Void**) : Void
+
+  struct Bytes # struct
+  end
+  fun bytes_new = g_bytes_new(data : UInt8*, size : UInt64) : LibGLib::Bytes*
+  fun bytes_new_take = g_bytes_new_take(data : UInt8*, size : UInt64) : LibGLib::Bytes*
+  fun bytes_compare = g_bytes_compare(this : Bytes*, bytes2 : LibGLib::Bytes*) : Int32
+  fun bytes_equal = g_bytes_equal(this : Bytes*, bytes2 : LibGLib::Bytes*) : Bool
+  fun bytes_get_data = g_bytes_get_data(this : Bytes*, size : UInt64*) : UInt8**
+  fun bytes_get_size = g_bytes_get_size(this : Bytes*) : UInt64
+  fun bytes_hash = g_bytes_hash(this : Bytes*) : UInt32
+  fun bytes_new_from_bytes = g_bytes_new_from_bytes(this : Bytes*, offset : UInt64, length : UInt64) : LibGLib::Bytes*
+  fun bytes_ref = g_bytes_ref(this : Bytes*) : LibGLib::Bytes*
+  fun bytes_unref = g_bytes_unref(this : Bytes*) : Void
+  fun bytes_unref_to_array = g_bytes_unref_to_array(this : Bytes*) : Void**
+  fun bytes_unref_to_data = g_bytes_unref_to_data(this : Bytes*, size : UInt64*) : Void*
+
+  struct Checksum # struct
+  end
+  fun checksum_new = g_checksum_new(checksum_type : LibGLib::ChecksumType) : LibGLib::Checksum*
+  fun checksum_copy = g_checksum_copy(this : Checksum*) : LibGLib::Checksum*
+  fun checksum_free = g_checksum_free(this : Checksum*) : Void
+  fun checksum_get_string = g_checksum_get_string(this : Checksum*) : UInt8*
+  fun checksum_reset = g_checksum_reset(this : Checksum*) : Void
+  fun checksum_update = g_checksum_update(this : Checksum*, data : UInt8*, length : Int64) : Void
+  fun checksum_type_get_length = g_checksum_type_get_length(checksum_type : LibGLib::ChecksumType) : Int64
+
+  struct Cond # struct
+    p : Void*
+    i : UInt32
+  end
+  fun cond_broadcast = g_cond_broadcast(this : Cond*) : Void
+  fun cond_clear = g_cond_clear(this : Cond*) : Void
+  fun cond_init = g_cond_init(this : Cond*) : Void
+  fun cond_signal = g_cond_signal(this : Cond*) : Void
+  fun cond_wait = g_cond_wait(this : Cond*, mutex : LibGLib::Mutex*) : Void
+  fun cond_wait_until = g_cond_wait_until(this : Cond*, mutex : LibGLib::Mutex*, end_time : Int64) : Bool
+
+  struct Data # struct
+  end
+
+  struct Date # struct
+    julian_days : UInt32
+    julian : UInt32
+    dmy : UInt32
+    day : UInt32
+    month : UInt32
+    year : UInt32
+  end
+  fun date_new = g_date_new() : LibGLib::Date*
+  fun date_new_dmy = g_date_new_dmy(day : UInt8, month : LibGLib::DateMonth, year : UInt16) : LibGLib::Date*
+  fun date_new_julian = g_date_new_julian(julian_day : UInt32) : LibGLib::Date*
+  fun date_add_days = g_date_add_days(this : Date*, n_days : UInt32) : Void
+  fun date_add_months = g_date_add_months(this : Date*, n_months : UInt32) : Void
+  fun date_add_years = g_date_add_years(this : Date*, n_years : UInt32) : Void
+  fun date_clamp = g_date_clamp(this : Date*, min_date : LibGLib::Date*, max_date : LibGLib::Date*) : Void
+  fun date_clear = g_date_clear(this : Date*, n_dates : UInt32) : Void
+  fun date_compare = g_date_compare(this : Date*, rhs : LibGLib::Date*) : Int32
+  fun date_days_between = g_date_days_between(this : Date*, date2 : LibGLib::Date*) : Int32
+  fun date_free = g_date_free(this : Date*) : Void
+  fun date_get_day = g_date_get_day(this : Date*) : UInt8
+  fun date_get_day_of_year = g_date_get_day_of_year(this : Date*) : UInt32
+  fun date_get_iso8601_week_of_year = g_date_get_iso8601_week_of_year(this : Date*) : UInt32
+  fun date_get_julian = g_date_get_julian(this : Date*) : UInt32
+  fun date_get_monday_week_of_year = g_date_get_monday_week_of_year(this : Date*) : UInt32
+  fun date_get_month = g_date_get_month(this : Date*) : LibGLib::DateMonth
+  fun date_get_sunday_week_of_year = g_date_get_sunday_week_of_year(this : Date*) : UInt32
+  fun date_get_weekday = g_date_get_weekday(this : Date*) : LibGLib::DateWeekday
+  fun date_get_year = g_date_get_year(this : Date*) : UInt16
+  fun date_is_first_of_month = g_date_is_first_of_month(this : Date*) : Bool
+  fun date_is_last_of_month = g_date_is_last_of_month(this : Date*) : Bool
+  fun date_order = g_date_order(this : Date*, date2 : LibGLib::Date*) : Void
+  fun date_set_day = g_date_set_day(this : Date*, day : UInt8) : Void
+  fun date_set_dmy = g_date_set_dmy(this : Date*, day : UInt8, month : LibGLib::DateMonth, y : UInt16) : Void
+  fun date_set_julian = g_date_set_julian(this : Date*, julian_date : UInt32) : Void
+  fun date_set_month = g_date_set_month(this : Date*, month : LibGLib::DateMonth) : Void
+  fun date_set_parse = g_date_set_parse(this : Date*, str : UInt8*) : Void
+  fun date_set_time = g_date_set_time(this : Date*, time_ : Int32) : Void
+  fun date_set_time_t = g_date_set_time_t(this : Date*, timet : Int64) : Void
+  fun date_set_time_val = g_date_set_time_val(this : Date*, timeval : LibGLib::TimeVal*) : Void
+  fun date_set_year = g_date_set_year(this : Date*, year : UInt16) : Void
+  fun date_subtract_days = g_date_subtract_days(this : Date*, n_days : UInt32) : Void
+  fun date_subtract_months = g_date_subtract_months(this : Date*, n_months : UInt32) : Void
+  fun date_subtract_years = g_date_subtract_years(this : Date*, n_years : UInt32) : Void
+  fun date_to_struct_tm = g_date_to_struct_tm(this : Date*, tm : Void*) : Void
+  fun date_valid = g_date_valid(this : Date*) : Bool
+  fun date_get_days_in_month = g_date_get_days_in_month(month : LibGLib::DateMonth, year : UInt16) : UInt8
+  fun date_get_monday_weeks_in_year = g_date_get_monday_weeks_in_year(year : UInt16) : UInt8
+  fun date_get_sunday_weeks_in_year = g_date_get_sunday_weeks_in_year(year : UInt16) : UInt8
+  fun date_is_leap_year = g_date_is_leap_year(year : UInt16) : Bool
+  fun date_strftime = g_date_strftime(s : UInt8*, slen : UInt64, format : UInt8*, date : LibGLib::Date*) : UInt64
+  fun date_valid_day = g_date_valid_day(day : UInt8) : Bool
+  fun date_valid_dmy = g_date_valid_dmy(day : UInt8, month : LibGLib::DateMonth, year : UInt16) : Bool
+  fun date_valid_julian = g_date_valid_julian(julian_date : UInt32) : Bool
+  fun date_valid_month = g_date_valid_month(month : LibGLib::DateMonth) : Bool
+  fun date_valid_weekday = g_date_valid_weekday(weekday : LibGLib::DateWeekday) : Bool
+  fun date_valid_year = g_date_valid_year(year : UInt16) : Bool
+
+  struct DateTime # struct
+  end
+  fun date_time_new = g_date_time_new(tz : LibGLib::TimeZone*, year : Int32, month : Int32, day : Int32, hour : Int32, minute : Int32, seconds : Float64) : LibGLib::DateTime*
+  fun date_time_new_from_timeval_local = g_date_time_new_from_timeval_local(tv : LibGLib::TimeVal*) : LibGLib::DateTime*
+  fun date_time_new_from_timeval_utc = g_date_time_new_from_timeval_utc(tv : LibGLib::TimeVal*) : LibGLib::DateTime*
+  fun date_time_new_from_unix_local = g_date_time_new_from_unix_local(t : Int64) : LibGLib::DateTime*
+  fun date_time_new_from_unix_utc = g_date_time_new_from_unix_utc(t : Int64) : LibGLib::DateTime*
+  fun date_time_new_local = g_date_time_new_local(year : Int32, month : Int32, day : Int32, hour : Int32, minute : Int32, seconds : Float64) : LibGLib::DateTime*
+  fun date_time_new_now = g_date_time_new_now(tz : LibGLib::TimeZone*) : LibGLib::DateTime*
+  fun date_time_new_now_local = g_date_time_new_now_local() : LibGLib::DateTime*
+  fun date_time_new_now_utc = g_date_time_new_now_utc() : LibGLib::DateTime*
+  fun date_time_new_utc = g_date_time_new_utc(year : Int32, month : Int32, day : Int32, hour : Int32, minute : Int32, seconds : Float64) : LibGLib::DateTime*
+  fun date_time_add = g_date_time_add(this : DateTime*, timespan : Int64) : LibGLib::DateTime*
+  fun date_time_add_days = g_date_time_add_days(this : DateTime*, days : Int32) : LibGLib::DateTime*
+  fun date_time_add_full = g_date_time_add_full(this : DateTime*, years : Int32, months : Int32, days : Int32, hours : Int32, minutes : Int32, seconds : Float64) : LibGLib::DateTime*
+  fun date_time_add_hours = g_date_time_add_hours(this : DateTime*, hours : Int32) : LibGLib::DateTime*
+  fun date_time_add_minutes = g_date_time_add_minutes(this : DateTime*, minutes : Int32) : LibGLib::DateTime*
+  fun date_time_add_months = g_date_time_add_months(this : DateTime*, months : Int32) : LibGLib::DateTime*
+  fun date_time_add_seconds = g_date_time_add_seconds(this : DateTime*, seconds : Float64) : LibGLib::DateTime*
+  fun date_time_add_weeks = g_date_time_add_weeks(this : DateTime*, weeks : Int32) : LibGLib::DateTime*
+  fun date_time_add_years = g_date_time_add_years(this : DateTime*, years : Int32) : LibGLib::DateTime*
+  fun date_time_difference = g_date_time_difference(this : DateTime*, begin : LibGLib::DateTime*) : Int64
+  fun date_time_format = g_date_time_format(this : DateTime*, format : UInt8*) : UInt8*
+  fun date_time_get_day_of_month = g_date_time_get_day_of_month(this : DateTime*) : Int32
+  fun date_time_get_day_of_week = g_date_time_get_day_of_week(this : DateTime*) : Int32
+  fun date_time_get_day_of_year = g_date_time_get_day_of_year(this : DateTime*) : Int32
+  fun date_time_get_hour = g_date_time_get_hour(this : DateTime*) : Int32
+  fun date_time_get_microsecond = g_date_time_get_microsecond(this : DateTime*) : Int32
+  fun date_time_get_minute = g_date_time_get_minute(this : DateTime*) : Int32
+  fun date_time_get_month = g_date_time_get_month(this : DateTime*) : Int32
+  fun date_time_get_second = g_date_time_get_second(this : DateTime*) : Int32
+  fun date_time_get_seconds = g_date_time_get_seconds(this : DateTime*) : Float64
+  fun date_time_get_timezone_abbreviation = g_date_time_get_timezone_abbreviation(this : DateTime*) : UInt8*
+  fun date_time_get_utc_offset = g_date_time_get_utc_offset(this : DateTime*) : Int64
+  fun date_time_get_week_numbering_year = g_date_time_get_week_numbering_year(this : DateTime*) : Int32
+  fun date_time_get_week_of_year = g_date_time_get_week_of_year(this : DateTime*) : Int32
+  fun date_time_get_year = g_date_time_get_year(this : DateTime*) : Int32
+  fun date_time_get_ymd = g_date_time_get_ymd(this : DateTime*, year : Int32*, month : Int32*, day : Int32*) : Void
+  fun date_time_is_daylight_savings = g_date_time_is_daylight_savings(this : DateTime*) : Bool
+  fun date_time_ref = g_date_time_ref(this : DateTime*) : LibGLib::DateTime*
+  fun date_time_to_local = g_date_time_to_local(this : DateTime*) : LibGLib::DateTime*
+  fun date_time_to_timeval = g_date_time_to_timeval(this : DateTime*, tv : LibGLib::TimeVal*) : Bool
+  fun date_time_to_timezone = g_date_time_to_timezone(this : DateTime*, tz : LibGLib::TimeZone*) : LibGLib::DateTime*
+  fun date_time_to_unix = g_date_time_to_unix(this : DateTime*) : Int64
+  fun date_time_to_utc = g_date_time_to_utc(this : DateTime*) : LibGLib::DateTime*
+  fun date_time_unref = g_date_time_unref(this : DateTime*) : Void
+  fun date_time_compare = g_date_time_compare(dt1 : Void*, dt2 : Void*) : Int32
+  fun date_time_equal = g_date_time_equal(dt1 : Void*, dt2 : Void*) : Bool
+  fun date_time_hash = g_date_time_hash(datetime : Void*) : UInt32
+
+  struct DebugKey # struct
+    key : UInt8*
+    value : UInt32
+  end
+
+  struct Dir # struct
+  end
+  fun dir_close = g_dir_close(this : Dir*) : Void
+  fun dir_read_name = g_dir_read_name(this : Dir*) : UInt8*
+  fun dir_rewind = g_dir_rewind(this : Dir*) : Void
+  fun dir_make_tmp = g_dir_make_tmp(tmpl : UInt8*, error : LibGLib::Error**) : UInt8*
+
+  struct Error # struct
+    domain : UInt32
+    code : Int32
+    message : UInt8*
+  end
+  fun error_new_literal = g_error_new_literal(domain : UInt32, code : Int32, message : UInt8*) : LibGLib::Error**
+  fun error_copy = g_error_copy(this : Error*) : LibGLib::Error**
+  fun error_free = g_error_free(this : Error*) : Void
+  fun error_matches = g_error_matches(this : Error*, domain : UInt32, code : Int32) : Bool
+
+  struct HashTable # struct
+  end
+  fun hash_table_add = g_hash_table_add(hash_table : Void**, key : Void*) : Bool
+  fun hash_table_contains = g_hash_table_contains(hash_table : Void**, key : Void*) : Bool
+  fun hash_table_destroy = g_hash_table_destroy(hash_table : Void**) : Void
+  fun hash_table_insert = g_hash_table_insert(hash_table : Void**, key : Void*, value : Void*) : Bool
+  fun hash_table_lookup_extended = g_hash_table_lookup_extended(hash_table : Void**, lookup_key : Void*, orig_key : Void*, value : Void*) : Bool
+  fun hash_table_remove = g_hash_table_remove(hash_table : Void**, key : Void*) : Bool
+  fun hash_table_remove_all = g_hash_table_remove_all(hash_table : Void**) : Void
+  fun hash_table_replace = g_hash_table_replace(hash_table : Void**, key : Void*, value : Void*) : Bool
+  fun hash_table_size = g_hash_table_size(hash_table : Void**) : UInt32
+  fun hash_table_steal = g_hash_table_steal(hash_table : Void**, key : Void*) : Bool
+  fun hash_table_steal_all = g_hash_table_steal_all(hash_table : Void**) : Void
+  fun hash_table_unref = g_hash_table_unref(hash_table : Void**) : Void
+
+  struct HashTableIter # struct
+    dummy1 : Void*
+    dummy2 : Void*
+    dummy3 : Void*
+    dummy4 : Int32
+    dummy5 : Bool
+    dummy6 : Void*
+  end
+  fun hash_table_iter_init = g_hash_table_iter_init(this : HashTableIter*, hash_table : Void**) : Void
+  fun hash_table_iter_next = g_hash_table_iter_next(this : HashTableIter*, key : Void*, value : Void*) : Bool
+  fun hash_table_iter_remove = g_hash_table_iter_remove(this : HashTableIter*) : Void
+  fun hash_table_iter_replace = g_hash_table_iter_replace(this : HashTableIter*, value : Void*) : Void
+  fun hash_table_iter_steal = g_hash_table_iter_steal(this : HashTableIter*) : Void
+
+  struct Hmac # struct
+  end
+  fun hmac_get_digest = g_hmac_get_digest(this : Hmac*, buffer : UInt8*, digest_len : UInt64*) : Void
+  fun hmac_get_string = g_hmac_get_string(this : Hmac*) : UInt8*
+  fun hmac_unref = g_hmac_unref(this : Hmac*) : Void
+  fun hmac_update = g_hmac_update(this : Hmac*, data : UInt8*, length : Int64) : Void
+
+  struct Hook # struct
+    data : Void*
+    next : LibGLib::Hook*
+    prev : LibGLib::Hook*
+    ref_count : UInt32
+    hook_id : UInt64
+    flags : UInt32
+    func : Void*
+    destroy : Void*
+  end
+  fun hook_compare_ids = g_hook_compare_ids(this : Hook*, sibling : LibGLib::Hook*) : Int32
+  fun hook_destroy = g_hook_destroy(hook_list : LibGLib::HookList*, hook_id : UInt64) : Bool
+  fun hook_destroy_link = g_hook_destroy_link(hook_list : LibGLib::HookList*, hook : LibGLib::Hook*) : Void
+  fun hook_free = g_hook_free(hook_list : LibGLib::HookList*, hook : LibGLib::Hook*) : Void
+  fun hook_insert_before = g_hook_insert_before(hook_list : LibGLib::HookList*, sibling : LibGLib::Hook*, hook : LibGLib::Hook*) : Void
+  fun hook_prepend = g_hook_prepend(hook_list : LibGLib::HookList*, hook : LibGLib::Hook*) : Void
+  fun hook_unref = g_hook_unref(hook_list : LibGLib::HookList*, hook : LibGLib::Hook*) : Void
+
+  struct HookList # struct
+    seq_id : UInt64
+    hook_size : UInt32
+    is_setup : UInt32
+    hooks : LibGLib::Hook*
+    dummy3 : Void*
+    finalize_hook : Void*
+    dummy : Void*
+  end
+  fun hook_list_clear = g_hook_list_clear(this : HookList*) : Void
+  fun hook_list_init = g_hook_list_init(this : HookList*, hook_size : UInt32) : Void
+  fun hook_list_invoke = g_hook_list_invoke(this : HookList*, may_recurse : Bool) : Void
+  fun hook_list_invoke_check = g_hook_list_invoke_check(this : HookList*, may_recurse : Bool) : Void
+
+  struct IConv # struct
+  end
+  fun i_conv_ = g_iconv(this : IConv*, inbuf : UInt8*, inbytes_left : UInt64*, outbuf : UInt8*, outbytes_left : UInt64*) : UInt64
+  fun i_conv_close = g_iconv_close(this : IConv*) : Int32
+
+  struct IOChannel # struct
+    ref_count : Int32
+    funcs : LibGLib::IOFuncs*
+    encoding : UInt8*
+    read_cd : LibGLib::IConv*
+    write_cd : LibGLib::IConv*
+    line_term : UInt8*
+    line_term_len : UInt32
+    buf_size : UInt64
+    read_buf : LibGLib::String*
+    encoded_read_buf : LibGLib::String*
+    write_buf : LibGLib::String*
+    partial_write_buf : Int8
+    use_buffer : UInt32
+    do_encode : UInt32
+    close_on_unref : UInt32
+    is_readable : UInt32
+    is_writeable : UInt32
+    is_seekable : UInt32
+    reserved1 : Void*
+    reserved2 : Void*
+  end
+  fun i_o_channel_new_file = g_io_channel_new_file(filename : UInt8*, mode : UInt8*, error : LibGLib::Error**) : LibGLib::IOChannel*
+  fun i_o_channel_unix_new = g_io_channel_unix_new(fd : Int32) : LibGLib::IOChannel*
+  fun i_o_channel_close = g_io_channel_close(this : IOChannel*) : Void
+  fun i_o_channel_flush = g_io_channel_flush(this : IOChannel*, error : LibGLib::Error**) : LibGLib::IOStatus
+  fun i_o_channel_get_buffer_condition = g_io_channel_get_buffer_condition(this : IOChannel*) : LibGLib::IOCondition
+  fun i_o_channel_get_buffer_size = g_io_channel_get_buffer_size(this : IOChannel*) : UInt64
+  fun i_o_channel_get_buffered = g_io_channel_get_buffered(this : IOChannel*) : Bool
+  fun i_o_channel_get_close_on_unref = g_io_channel_get_close_on_unref(this : IOChannel*) : Bool
+  fun i_o_channel_get_encoding = g_io_channel_get_encoding(this : IOChannel*) : UInt8*
+  fun i_o_channel_get_flags = g_io_channel_get_flags(this : IOChannel*) : LibGLib::IOFlags
+  fun i_o_channel_get_line_term = g_io_channel_get_line_term(this : IOChannel*, length : Int32*) : UInt8*
+  fun i_o_channel_init = g_io_channel_init(this : IOChannel*) : Void
+  fun i_o_channel_read = g_io_channel_read(this : IOChannel*, buf : UInt8*, count : UInt64, bytes_read : UInt64*) : LibGLib::IOError
+  fun i_o_channel_read_chars = g_io_channel_read_chars(this : IOChannel*, buf : UInt8**, count : UInt64, bytes_read : UInt64*, error : LibGLib::Error**) : LibGLib::IOStatus
+  fun i_o_channel_read_line = g_io_channel_read_line(this : IOChannel*, str_return : UInt8**, length : UInt64*, terminator_pos : UInt64*, error : LibGLib::Error**) : LibGLib::IOStatus
+  fun i_o_channel_read_line_string = g_io_channel_read_line_string(this : IOChannel*, buffer : LibGLib::String*, terminator_pos : UInt64*, error : LibGLib::Error**) : LibGLib::IOStatus
+  fun i_o_channel_read_to_end = g_io_channel_read_to_end(this : IOChannel*, str_return : UInt8**, length : UInt64*, error : LibGLib::Error**) : LibGLib::IOStatus
+  fun i_o_channel_read_unichar = g_io_channel_read_unichar(this : IOChannel*, thechar : UInt8*, error : LibGLib::Error**) : LibGLib::IOStatus
+  fun i_o_channel_ref = g_io_channel_ref(this : IOChannel*) : LibGLib::IOChannel*
+  fun i_o_channel_seek = g_io_channel_seek(this : IOChannel*, offset : Int64, type : LibGLib::SeekType) : LibGLib::IOError
+  fun i_o_channel_seek_position = g_io_channel_seek_position(this : IOChannel*, offset : Int64, type : LibGLib::SeekType, error : LibGLib::Error**) : LibGLib::IOStatus
+  fun i_o_channel_set_buffer_size = g_io_channel_set_buffer_size(this : IOChannel*, size : UInt64) : Void
+  fun i_o_channel_set_buffered = g_io_channel_set_buffered(this : IOChannel*, buffered : Bool) : Void
+  fun i_o_channel_set_close_on_unref = g_io_channel_set_close_on_unref(this : IOChannel*, do_close : Bool) : Void
+  fun i_o_channel_set_encoding = g_io_channel_set_encoding(this : IOChannel*, encoding : UInt8*, error : LibGLib::Error**) : LibGLib::IOStatus
+  fun i_o_channel_set_flags = g_io_channel_set_flags(this : IOChannel*, flags : LibGLib::IOFlags, error : LibGLib::Error**) : LibGLib::IOStatus
+  fun i_o_channel_set_line_term = g_io_channel_set_line_term(this : IOChannel*, line_term : UInt8*, length : Int32) : Void
+  fun i_o_channel_shutdown = g_io_channel_shutdown(this : IOChannel*, flush : Bool, error : LibGLib::Error**) : LibGLib::IOStatus
+  fun i_o_channel_unix_get_fd = g_io_channel_unix_get_fd(this : IOChannel*) : Int32
+  fun i_o_channel_unref = g_io_channel_unref(this : IOChannel*) : Void
+  fun i_o_channel_write = g_io_channel_write(this : IOChannel*, buf : UInt8*, count : UInt64, bytes_written : UInt64*) : LibGLib::IOError
+  fun i_o_channel_write_chars = g_io_channel_write_chars(this : IOChannel*, buf : UInt8*, count : Int64, bytes_written : UInt64*, error : LibGLib::Error**) : LibGLib::IOStatus
+  fun i_o_channel_write_unichar = g_io_channel_write_unichar(this : IOChannel*, thechar : UInt8, error : LibGLib::Error**) : LibGLib::IOStatus
+  fun i_o_channel_error_from_errno = g_io_channel_error_from_errno(en : Int32) : LibGLib::IOChannelError
+  fun i_o_channel_error_quark = g_io_channel_error_quark() : UInt32
+
+  struct IOFuncs # struct
+    io_read : Void*
+    io_write : Void*
+    io_seek : Void*
+    io_close : Void*
+    io_create_watch : Void*
+    io_free : Void*
+    io_set_flags : Void*
+    io_get_flags : Void*
+  end
+
+  struct KeyFile # struct
+  end
+  fun key_file_new = g_key_file_new() : LibGLib::KeyFile*
+  fun key_file_get_boolean = g_key_file_get_boolean(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : Bool
+  fun key_file_get_boolean_list = g_key_file_get_boolean_list(this : KeyFile*, group_name : UInt8*, key : UInt8*, length : UInt64*, error : LibGLib::Error**) : Bool*
+  fun key_file_get_comment = g_key_file_get_comment(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : UInt8*
+  fun key_file_get_double = g_key_file_get_double(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : Float64
+  fun key_file_get_double_list = g_key_file_get_double_list(this : KeyFile*, group_name : UInt8*, key : UInt8*, length : UInt64*, error : LibGLib::Error**) : Float64*
+  fun key_file_get_groups = g_key_file_get_groups(this : KeyFile*, length : UInt64*) : UInt8**
+  fun key_file_get_int64 = g_key_file_get_int64(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : Int64
+  fun key_file_get_integer = g_key_file_get_integer(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : Int32
+  fun key_file_get_integer_list = g_key_file_get_integer_list(this : KeyFile*, group_name : UInt8*, key : UInt8*, length : UInt64*, error : LibGLib::Error**) : Int32*
+  fun key_file_get_keys = g_key_file_get_keys(this : KeyFile*, group_name : UInt8*, length : UInt64*, error : LibGLib::Error**) : UInt8**
+  fun key_file_get_locale_string = g_key_file_get_locale_string(this : KeyFile*, group_name : UInt8*, key : UInt8*, locale : UInt8*, error : LibGLib::Error**) : UInt8*
+  fun key_file_get_locale_string_list = g_key_file_get_locale_string_list(this : KeyFile*, group_name : UInt8*, key : UInt8*, locale : UInt8*, length : UInt64*, error : LibGLib::Error**) : UInt8**
+  fun key_file_get_start_group = g_key_file_get_start_group(this : KeyFile*) : UInt8*
+  fun key_file_get_string = g_key_file_get_string(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : UInt8*
+  fun key_file_get_string_list = g_key_file_get_string_list(this : KeyFile*, group_name : UInt8*, key : UInt8*, length : UInt64*, error : LibGLib::Error**) : UInt8**
+  fun key_file_get_uint64 = g_key_file_get_uint64(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : UInt64
+  fun key_file_get_value = g_key_file_get_value(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : UInt8*
+  fun key_file_has_group = g_key_file_has_group(this : KeyFile*, group_name : UInt8*) : Bool
+  fun key_file_load_from_data = g_key_file_load_from_data(this : KeyFile*, data : UInt8*, length : UInt64, flags : LibGLib::KeyFileFlags, error : LibGLib::Error**) : Bool
+  fun key_file_load_from_data_dirs = g_key_file_load_from_data_dirs(this : KeyFile*, file : UInt8*, full_path : UInt8**, flags : LibGLib::KeyFileFlags, error : LibGLib::Error**) : Bool
+  fun key_file_load_from_dirs = g_key_file_load_from_dirs(this : KeyFile*, file : UInt8*, search_dirs : UInt8**, full_path : UInt8**, flags : LibGLib::KeyFileFlags, error : LibGLib::Error**) : Bool
+  fun key_file_load_from_file = g_key_file_load_from_file(this : KeyFile*, file : UInt8*, flags : LibGLib::KeyFileFlags, error : LibGLib::Error**) : Bool
+  fun key_file_remove_comment = g_key_file_remove_comment(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : Bool
+  fun key_file_remove_group = g_key_file_remove_group(this : KeyFile*, group_name : UInt8*, error : LibGLib::Error**) : Bool
+  fun key_file_remove_key = g_key_file_remove_key(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : Bool
+  fun key_file_save_to_file = g_key_file_save_to_file(this : KeyFile*, filename : UInt8*, error : LibGLib::Error**) : Bool
+  fun key_file_set_boolean = g_key_file_set_boolean(this : KeyFile*, group_name : UInt8*, key : UInt8*, value : Bool) : Void
+  fun key_file_set_boolean_list = g_key_file_set_boolean_list(this : KeyFile*, group_name : UInt8*, key : UInt8*, list : Bool*, length : UInt64) : Void
+  fun key_file_set_comment = g_key_file_set_comment(this : KeyFile*, group_name : UInt8*, key : UInt8*, comment : UInt8*, error : LibGLib::Error**) : Bool
+  fun key_file_set_double = g_key_file_set_double(this : KeyFile*, group_name : UInt8*, key : UInt8*, value : Float64) : Void
+  fun key_file_set_double_list = g_key_file_set_double_list(this : KeyFile*, group_name : UInt8*, key : UInt8*, list : Float64*, length : UInt64) : Void
+  fun key_file_set_int64 = g_key_file_set_int64(this : KeyFile*, group_name : UInt8*, key : UInt8*, value : Int64) : Void
+  fun key_file_set_integer = g_key_file_set_integer(this : KeyFile*, group_name : UInt8*, key : UInt8*, value : Int32) : Void
+  fun key_file_set_integer_list = g_key_file_set_integer_list(this : KeyFile*, group_name : UInt8*, key : UInt8*, list : Int32*, length : UInt64) : Void
+  fun key_file_set_list_separator = g_key_file_set_list_separator(this : KeyFile*, separator : Int8) : Void
+  fun key_file_set_locale_string = g_key_file_set_locale_string(this : KeyFile*, group_name : UInt8*, key : UInt8*, locale : UInt8*, string : UInt8*) : Void
+  fun key_file_set_locale_string_list = g_key_file_set_locale_string_list(this : KeyFile*, group_name : UInt8*, key : UInt8*, locale : UInt8*, list : UInt8**, length : UInt64) : Void
+  fun key_file_set_string = g_key_file_set_string(this : KeyFile*, group_name : UInt8*, key : UInt8*, string : UInt8*) : Void
+  fun key_file_set_string_list = g_key_file_set_string_list(this : KeyFile*, group_name : UInt8*, key : UInt8*, list : UInt8**, length : UInt64) : Void
+  fun key_file_set_uint64 = g_key_file_set_uint64(this : KeyFile*, group_name : UInt8*, key : UInt8*, value : UInt64) : Void
+  fun key_file_set_value = g_key_file_set_value(this : KeyFile*, group_name : UInt8*, key : UInt8*, value : UInt8*) : Void
+  fun key_file_to_data = g_key_file_to_data(this : KeyFile*, length : UInt64*, error : LibGLib::Error**) : UInt8*
+  fun key_file_unref = g_key_file_unref(this : KeyFile*) : Void
+  fun key_file_error_quark = g_key_file_error_quark() : UInt32
+
+  struct List # struct
+    data : Void*
+    next : Void**
+    prev : Void**
+  end
+
+  struct MainContext # struct
+  end
+  fun main_context_new = g_main_context_new() : LibGLib::MainContext*
+  fun main_context_acquire = g_main_context_acquire(this : MainContext*) : Bool
+  fun main_context_add_poll = g_main_context_add_poll(this : MainContext*, fd : LibGLib::PollFD*, priority : Int32) : Void
+  fun main_context_check = g_main_context_check(this : MainContext*, max_priority : Int32, fds : LibGLib::PollFD*, n_fds : Int32) : Int32
+  fun main_context_dispatch = g_main_context_dispatch(this : MainContext*) : Void
+  fun main_context_find_source_by_funcs_user_data = g_main_context_find_source_by_funcs_user_data(this : MainContext*, funcs : LibGLib::SourceFuncs*, user_data : Void*) : LibGLib::Source*
+  fun main_context_find_source_by_id = g_main_context_find_source_by_id(this : MainContext*, source_id : UInt32) : LibGLib::Source*
+  fun main_context_find_source_by_user_data = g_main_context_find_source_by_user_data(this : MainContext*, user_data : Void*) : LibGLib::Source*
+  fun main_context_invoke_full = g_main_context_invoke_full(this : MainContext*, priority : Int32, function : Void*, data : Void*, notify : Void*) : Void
+  fun main_context_is_owner = g_main_context_is_owner(this : MainContext*) : Bool
+  fun main_context_iteration = g_main_context_iteration(this : MainContext*, may_block : Bool) : Bool
+  fun main_context_pending = g_main_context_pending(this : MainContext*) : Bool
+  fun main_context_pop_thread_default = g_main_context_pop_thread_default(this : MainContext*) : Void
+  fun main_context_prepare = g_main_context_prepare(this : MainContext*, priority : Int32*) : Bool
+  fun main_context_push_thread_default = g_main_context_push_thread_default(this : MainContext*) : Void
+  fun main_context_query = g_main_context_query(this : MainContext*, max_priority : Int32, timeout_ : Int32*, fds : LibGLib::PollFD**, n_fds : Int32*) : Int32
+  fun main_context_ref = g_main_context_ref(this : MainContext*) : LibGLib::MainContext*
+  fun main_context_release = g_main_context_release(this : MainContext*) : Void
+  fun main_context_remove_poll = g_main_context_remove_poll(this : MainContext*, fd : LibGLib::PollFD*) : Void
+  fun main_context_unref = g_main_context_unref(this : MainContext*) : Void
+  fun main_context_wait = g_main_context_wait(this : MainContext*, cond : LibGLib::Cond*, mutex : LibGLib::Mutex*) : Bool
+  fun main_context_wakeup = g_main_context_wakeup(this : MainContext*) : Void
+  fun main_context_default = g_main_context_default() : LibGLib::MainContext*
+  fun main_context_get_thread_default = g_main_context_get_thread_default() : LibGLib::MainContext*
+  fun main_context_ref_thread_default = g_main_context_ref_thread_default() : LibGLib::MainContext*
+
+  struct MainLoop # struct
+  end
+  fun main_loop_new = g_main_loop_new(context : LibGLib::MainContext*, is_running : Bool) : LibGLib::MainLoop*
+  fun main_loop_get_context = g_main_loop_get_context(this : MainLoop*) : LibGLib::MainContext*
+  fun main_loop_is_running = g_main_loop_is_running(this : MainLoop*) : Bool
+  fun main_loop_quit = g_main_loop_quit(this : MainLoop*) : Void
+  fun main_loop_ref = g_main_loop_ref(this : MainLoop*) : LibGLib::MainLoop*
+  fun main_loop_run = g_main_loop_run(this : MainLoop*) : Void
+  fun main_loop_unref = g_main_loop_unref(this : MainLoop*) : Void
+
+  struct MappedFile # struct
+  end
+  fun mapped_file_new = g_mapped_file_new(filename : UInt8*, writable : Bool, error : LibGLib::Error**) : LibGLib::MappedFile*
+  fun mapped_file_new_from_fd = g_mapped_file_new_from_fd(fd : Int32, writable : Bool, error : LibGLib::Error**) : LibGLib::MappedFile*
+  fun mapped_file_free = g_mapped_file_free(this : MappedFile*) : Void
+  fun mapped_file_get_bytes = g_mapped_file_get_bytes(this : MappedFile*) : LibGLib::Bytes*
+  fun mapped_file_get_contents = g_mapped_file_get_contents(this : MappedFile*) : UInt8*
+  fun mapped_file_get_length = g_mapped_file_get_length(this : MappedFile*) : UInt64
+  fun mapped_file_ref = g_mapped_file_ref(this : MappedFile*) : LibGLib::MappedFile*
+  fun mapped_file_unref = g_mapped_file_unref(this : MappedFile*) : Void
+
+  struct MarkupParseContext # struct
+  end
+  fun markup_parse_context_new = g_markup_parse_context_new(parser : LibGLib::MarkupParser*, flags : LibGLib::MarkupParseFlags, user_data : Void*, user_data_dnotify : Void*) : LibGLib::MarkupParseContext*
+  fun markup_parse_context_end_parse = g_markup_parse_context_end_parse(this : MarkupParseContext*, error : LibGLib::Error**) : Bool
+  fun markup_parse_context_free = g_markup_parse_context_free(this : MarkupParseContext*) : Void
+  fun markup_parse_context_get_element = g_markup_parse_context_get_element(this : MarkupParseContext*) : UInt8*
+  fun markup_parse_context_get_position = g_markup_parse_context_get_position(this : MarkupParseContext*, line_number : Int32*, char_number : Int32*) : Void
+  fun markup_parse_context_parse = g_markup_parse_context_parse(this : MarkupParseContext*, text : UInt8*, text_len : Int64, error : LibGLib::Error**) : Bool
+  fun markup_parse_context_push = g_markup_parse_context_push(this : MarkupParseContext*, parser : LibGLib::MarkupParser*, user_data : Void*) : Void
+  fun markup_parse_context_ref = g_markup_parse_context_ref(this : MarkupParseContext*) : LibGLib::MarkupParseContext*
+  fun markup_parse_context_unref = g_markup_parse_context_unref(this : MarkupParseContext*) : Void
+
+  struct MarkupParser # struct
+    start_element : Void*
+    end_element : Void*
+    text : Void*
+    passthrough : Void*
+    error : Void*
+  end
+
+  struct MatchInfo # struct
+  end
+  fun match_info_expand_references = g_match_info_expand_references(this : MatchInfo*, string_to_expand : UInt8*, error : LibGLib::Error**) : UInt8*
+  fun match_info_fetch = g_match_info_fetch(this : MatchInfo*, match_num : Int32) : UInt8*
+  fun match_info_fetch_all = g_match_info_fetch_all(this : MatchInfo*) : UInt8**
+  fun match_info_fetch_named = g_match_info_fetch_named(this : MatchInfo*, name : UInt8*) : UInt8*
+  fun match_info_fetch_named_pos = g_match_info_fetch_named_pos(this : MatchInfo*, name : UInt8*, start_pos : Int32*, end_pos : Int32*) : Bool
+  fun match_info_fetch_pos = g_match_info_fetch_pos(this : MatchInfo*, match_num : Int32, start_pos : Int32*, end_pos : Int32*) : Bool
+  fun match_info_free = g_match_info_free(this : MatchInfo*) : Void
+  fun match_info_get_match_count = g_match_info_get_match_count(this : MatchInfo*) : Int32
+  fun match_info_get_regex = g_match_info_get_regex(this : MatchInfo*) : LibGLib::Regex*
+  fun match_info_get_string = g_match_info_get_string(this : MatchInfo*) : UInt8*
+  fun match_info_is_partial_match = g_match_info_is_partial_match(this : MatchInfo*) : Bool
+  fun match_info_matches = g_match_info_matches(this : MatchInfo*) : Bool
+  fun match_info_next = g_match_info_next(this : MatchInfo*, error : LibGLib::Error**) : Bool
+  fun match_info_ref = g_match_info_ref(this : MatchInfo*) : LibGLib::MatchInfo*
+  fun match_info_unref = g_match_info_unref(this : MatchInfo*) : Void
+
+  struct MemVTable # struct
+    malloc : Void*
+    realloc : Void*
+    free : Void*
+    calloc : Void*
+    try_malloc : Void*
+    try_realloc : Void*
+  end
+
+  struct Node # struct
+    data : Void*
+    next : LibGLib::Node*
+    prev : LibGLib::Node*
+    parent : LibGLib::Node*
+    children : LibGLib::Node*
+  end
+  fun node_child_index = g_node_child_index(this : Node*, data : Void*) : Int32
+  fun node_child_position = g_node_child_position(this : Node*, child : LibGLib::Node*) : Int32
+  fun node_depth = g_node_depth(this : Node*) : UInt32
+  fun node_destroy = g_node_destroy(this : Node*) : Void
+  fun node_is_ancestor = g_node_is_ancestor(this : Node*, descendant : LibGLib::Node*) : Bool
+  fun node_max_height = g_node_max_height(this : Node*) : UInt32
+  fun node_n_children = g_node_n_children(this : Node*) : UInt32
+  fun node_n_nodes = g_node_n_nodes(this : Node*, flags : LibGLib::TraverseFlags) : UInt32
+  fun node_reverse_children = g_node_reverse_children(this : Node*) : Void
+  fun node_unlink = g_node_unlink(this : Node*) : Void
+
+  struct Once # struct
+    status : LibGLib::OnceStatus
+    retval : Void*
+  end
+  fun once_init_enter = g_once_init_enter(location : Void*) : Bool
+  fun once_init_leave = g_once_init_leave(location : Void*, result : UInt64) : Void
+
+  struct OptionContext # struct
+  end
+  fun option_context_add_group = g_option_context_add_group(this : OptionContext*, group : LibGLib::OptionGroup*) : Void
+  fun option_context_add_main_entries = g_option_context_add_main_entries(this : OptionContext*, entries : LibGLib::OptionEntry*, translation_domain : UInt8*) : Void
+  fun option_context_free = g_option_context_free(this : OptionContext*) : Void
+  fun option_context_get_description = g_option_context_get_description(this : OptionContext*) : UInt8*
+  fun option_context_get_help = g_option_context_get_help(this : OptionContext*, main_help : Bool, group : LibGLib::OptionGroup*) : UInt8*
+  fun option_context_get_help_enabled = g_option_context_get_help_enabled(this : OptionContext*) : Bool
+  fun option_context_get_ignore_unknown_options = g_option_context_get_ignore_unknown_options(this : OptionContext*) : Bool
+  fun option_context_get_summary = g_option_context_get_summary(this : OptionContext*) : UInt8*
+  fun option_context_parse = g_option_context_parse(this : OptionContext*, argc : Int32*, argv : UInt8***, error : LibGLib::Error**) : Bool
+  fun option_context_parse_strv = g_option_context_parse_strv(this : OptionContext*, arguments : UInt8***, error : LibGLib::Error**) : Bool
+  fun option_context_set_description = g_option_context_set_description(this : OptionContext*, description : UInt8*) : Void
+  fun option_context_set_help_enabled = g_option_context_set_help_enabled(this : OptionContext*, help_enabled : Bool) : Void
+  fun option_context_set_ignore_unknown_options = g_option_context_set_ignore_unknown_options(this : OptionContext*, ignore_unknown : Bool) : Void
+  fun option_context_set_main_group = g_option_context_set_main_group(this : OptionContext*, group : LibGLib::OptionGroup*) : Void
+  fun option_context_set_summary = g_option_context_set_summary(this : OptionContext*, summary : UInt8*) : Void
+  fun option_context_set_translate_func = g_option_context_set_translate_func(this : OptionContext*, func : Void*, data : Void*, destroy_notify : Void*) : Void
+  fun option_context_set_translation_domain = g_option_context_set_translation_domain(this : OptionContext*, domain : UInt8*) : Void
+
+  struct OptionEntry # struct
+    long_name : UInt8*
+    short_name : Int8
+    flags : Int32
+    arg : LibGLib::OptionArg
+    arg_data : Void*
+    description : UInt8*
+    arg_description : UInt8*
+  end
+
+  struct OptionGroup # struct
+  end
+  fun option_group_add_entries = g_option_group_add_entries(this : OptionGroup*, entries : LibGLib::OptionEntry*) : Void
+  fun option_group_free = g_option_group_free(this : OptionGroup*) : Void
+  fun option_group_set_translate_func = g_option_group_set_translate_func(this : OptionGroup*, func : Void*, data : Void*, destroy_notify : Void*) : Void
+  fun option_group_set_translation_domain = g_option_group_set_translation_domain(this : OptionGroup*, domain : UInt8*) : Void
+
+  struct PatternSpec # struct
+  end
+  fun pattern_spec_equal = g_pattern_spec_equal(this : PatternSpec*, pspec2 : LibGLib::PatternSpec*) : Bool
+  fun pattern_spec_free = g_pattern_spec_free(this : PatternSpec*) : Void
+
+  struct PollFD # struct
+    fd : Int32
+    events : UInt16
+    revents : UInt16
+  end
+
+  struct Private # struct
+    p : Void*
+    notify : Void*
+    future : Void*
+  end
+  fun private_replace = g_private_replace(this : Private*, value : Void*) : Void
+  fun private_set = g_private_set(this : Private*, value : Void*) : Void
+
+  struct PtrArray # struct
+    pdata : Void*
+    len : UInt32
+  end
+
+  struct Queue # struct
+    head : Void**
+    tail : Void**
+    length : UInt32
+  end
+  fun queue_clear = g_queue_clear(this : Queue*) : Void
+  fun queue_free = g_queue_free(this : Queue*) : Void
+  fun queue_free_full = g_queue_free_full(this : Queue*, free_func : Void*) : Void
+  fun queue_get_length = g_queue_get_length(this : Queue*) : UInt32
+  fun queue_index = g_queue_index(this : Queue*, data : Void*) : Int32
+  fun queue_init = g_queue_init(this : Queue*) : Void
+  fun queue_is_empty = g_queue_is_empty(this : Queue*) : Bool
+  fun queue_push_head = g_queue_push_head(this : Queue*, data : Void*) : Void
+  fun queue_push_nth = g_queue_push_nth(this : Queue*, data : Void*, n : Int32) : Void
+  fun queue_push_tail = g_queue_push_tail(this : Queue*, data : Void*) : Void
+  fun queue_remove = g_queue_remove(this : Queue*, data : Void*) : Bool
+  fun queue_remove_all = g_queue_remove_all(this : Queue*, data : Void*) : UInt32
+  fun queue_reverse = g_queue_reverse(this : Queue*) : Void
+
+  struct RWLock # struct
+    p : Void*
+    i : UInt32
+  end
+  fun r_w_lock_clear = g_rw_lock_clear(this : RWLock*) : Void
+  fun r_w_lock_init = g_rw_lock_init(this : RWLock*) : Void
+  fun r_w_lock_reader_lock = g_rw_lock_reader_lock(this : RWLock*) : Void
+  fun r_w_lock_reader_trylock = g_rw_lock_reader_trylock(this : RWLock*) : Bool
+  fun r_w_lock_reader_unlock = g_rw_lock_reader_unlock(this : RWLock*) : Void
+  fun r_w_lock_writer_lock = g_rw_lock_writer_lock(this : RWLock*) : Void
+  fun r_w_lock_writer_trylock = g_rw_lock_writer_trylock(this : RWLock*) : Bool
+  fun r_w_lock_writer_unlock = g_rw_lock_writer_unlock(this : RWLock*) : Void
+
+  struct Rand # struct
+  end
+  fun rand_double = g_rand_double(this : Rand*) : Float64
+  fun rand_double_range = g_rand_double_range(this : Rand*, begin : Float64, end : Float64) : Float64
+  fun rand_free = g_rand_free(this : Rand*) : Void
+  fun rand_int = g_rand_int(this : Rand*) : UInt32
+  fun rand_int_range = g_rand_int_range(this : Rand*, begin : Int32, end : Int32) : Int32
+  fun rand_set_seed = g_rand_set_seed(this : Rand*, seed : UInt32) : Void
+  fun rand_set_seed_array = g_rand_set_seed_array(this : Rand*, seed : UInt32*, seed_length : UInt32) : Void
+
+  struct RecMutex # struct
+    p : Void*
+    i : UInt32
+  end
+  fun rec_mutex_clear = g_rec_mutex_clear(this : RecMutex*) : Void
+  fun rec_mutex_init = g_rec_mutex_init(this : RecMutex*) : Void
+  fun rec_mutex_lock = g_rec_mutex_lock(this : RecMutex*) : Void
+  fun rec_mutex_trylock = g_rec_mutex_trylock(this : RecMutex*) : Bool
+  fun rec_mutex_unlock = g_rec_mutex_unlock(this : RecMutex*) : Void
+
+  struct Regex # struct
+  end
+  fun regex_new = g_regex_new(pattern : UInt8*, compile_options : LibGLib::RegexCompileFlags, match_options : LibGLib::RegexMatchFlags, error : LibGLib::Error**) : LibGLib::Regex*
+  fun regex_get_capture_count = g_regex_get_capture_count(this : Regex*) : Int32
+  fun regex_get_compile_flags = g_regex_get_compile_flags(this : Regex*) : LibGLib::RegexCompileFlags
+  fun regex_get_has_cr_or_lf = g_regex_get_has_cr_or_lf(this : Regex*) : Bool
+  fun regex_get_match_flags = g_regex_get_match_flags(this : Regex*) : LibGLib::RegexMatchFlags
+  fun regex_get_max_backref = g_regex_get_max_backref(this : Regex*) : Int32
+  fun regex_get_max_lookbehind = g_regex_get_max_lookbehind(this : Regex*) : Int32
+  fun regex_get_pattern = g_regex_get_pattern(this : Regex*) : UInt8*
+  fun regex_get_string_number = g_regex_get_string_number(this : Regex*, name : UInt8*) : Int32
+  fun regex_match = g_regex_match(this : Regex*, string : UInt8*, match_options : LibGLib::RegexMatchFlags, match_info : LibGLib::MatchInfo**) : Bool
+  fun regex_match_all = g_regex_match_all(this : Regex*, string : UInt8*, match_options : LibGLib::RegexMatchFlags, match_info : LibGLib::MatchInfo**) : Bool
+  fun regex_match_all_full = g_regex_match_all_full(this : Regex*, string : UInt8**, string_len : Int64, start_position : Int32, match_options : LibGLib::RegexMatchFlags, match_info : LibGLib::MatchInfo**, error : LibGLib::Error**) : Bool
+  fun regex_match_full = g_regex_match_full(this : Regex*, string : UInt8**, string_len : Int64, start_position : Int32, match_options : LibGLib::RegexMatchFlags, match_info : LibGLib::MatchInfo**, error : LibGLib::Error**) : Bool
+  fun regex_ref = g_regex_ref(this : Regex*) : LibGLib::Regex*
+  fun regex_replace = g_regex_replace(this : Regex*, string : UInt8**, string_len : Int64, start_position : Int32, replacement : UInt8*, match_options : LibGLib::RegexMatchFlags, error : LibGLib::Error**) : UInt8*
+  fun regex_replace_literal = g_regex_replace_literal(this : Regex*, string : UInt8**, string_len : Int64, start_position : Int32, replacement : UInt8*, match_options : LibGLib::RegexMatchFlags, error : LibGLib::Error**) : UInt8*
+  fun regex_split = g_regex_split(this : Regex*, string : UInt8*, match_options : LibGLib::RegexMatchFlags) : UInt8**
+  fun regex_split_full = g_regex_split_full(this : Regex*, string : UInt8**, string_len : Int64, start_position : Int32, match_options : LibGLib::RegexMatchFlags, max_tokens : Int32, error : LibGLib::Error**) : UInt8**
+  fun regex_unref = g_regex_unref(this : Regex*) : Void
+  fun regex_check_replacement = g_regex_check_replacement(replacement : UInt8*, has_references : Bool*, error : LibGLib::Error**) : Bool
+  fun regex_error_quark = g_regex_error_quark() : UInt32
+  fun regex_escape_nul = g_regex_escape_nul(string : UInt8*, length : Int32) : UInt8*
+  fun regex_escape_string = g_regex_escape_string(string : UInt8**, length : Int32) : UInt8*
+  fun regex_match_simple = g_regex_match_simple(pattern : UInt8*, string : UInt8*, compile_options : LibGLib::RegexCompileFlags, match_options : LibGLib::RegexMatchFlags) : Bool
+  fun regex_split_simple = g_regex_split_simple(pattern : UInt8*, string : UInt8*, compile_options : LibGLib::RegexCompileFlags, match_options : LibGLib::RegexMatchFlags) : UInt8**
+
+  struct SList # struct
+    data : Void*
+    next : Void**
+  end
+
+  struct Scanner # struct
+    user_data : Void*
+    max_parse_errors : UInt32
+    parse_errors : UInt32
+    input_name : UInt8*
+    qdata : LibGLib::Data*
+    config : LibGLib::ScannerConfig*
+    token : LibGLib::TokenType
+    value : LibGLib::TokenValue
+    line : UInt32
+    position : UInt32
+    next_token : LibGLib::TokenType
+    next_value : LibGLib::TokenValue
+    next_line : UInt32
+    next_position : UInt32
+    symbol_table : Void**
+    input_fd : Int32
+    text : UInt8*
+    text_end : UInt8*
+    buffer : UInt8*
+    scope_id : UInt32
+    msg_handler : Void*
+  end
+  fun scanner_cur_line = g_scanner_cur_line(this : Scanner*) : UInt32
+  fun scanner_cur_position = g_scanner_cur_position(this : Scanner*) : UInt32
+  fun scanner_cur_token = g_scanner_cur_token(this : Scanner*) : LibGLib::TokenType
+  fun scanner_destroy = g_scanner_destroy(this : Scanner*) : Void
+  fun scanner_eof = g_scanner_eof(this : Scanner*) : Bool
+  fun scanner_get_next_token = g_scanner_get_next_token(this : Scanner*) : LibGLib::TokenType
+  fun scanner_input_file = g_scanner_input_file(this : Scanner*, input_fd : Int32) : Void
+  fun scanner_input_text = g_scanner_input_text(this : Scanner*, text : UInt8*, text_len : UInt32) : Void
+  fun scanner_peek_next_token = g_scanner_peek_next_token(this : Scanner*) : LibGLib::TokenType
+  fun scanner_scope_add_symbol = g_scanner_scope_add_symbol(this : Scanner*, scope_id : UInt32, symbol : UInt8*, value : Void*) : Void
+  fun scanner_scope_remove_symbol = g_scanner_scope_remove_symbol(this : Scanner*, scope_id : UInt32, symbol : UInt8*) : Void
+  fun scanner_set_scope = g_scanner_set_scope(this : Scanner*, scope_id : UInt32) : UInt32
+  fun scanner_sync_file_offset = g_scanner_sync_file_offset(this : Scanner*) : Void
+  fun scanner_unexp_token = g_scanner_unexp_token(this : Scanner*, expected_token : LibGLib::TokenType, identifier_spec : UInt8*, symbol_spec : UInt8*, symbol_name : UInt8*, message : UInt8*, is_error : Int32) : Void
+
+  struct ScannerConfig # struct
+    cset_skip_characters : UInt8*
+    cset_identifier_first : UInt8*
+    cset_identifier_nth : UInt8*
+    cpair_comment_single : UInt8*
+    case_sensitive : UInt32
+    skip_comment_multi : UInt32
+    skip_comment_single : UInt32
+    scan_comment_multi : UInt32
+    scan_identifier : UInt32
+    scan_identifier_1char : UInt32
+    scan_identifier_NULL : UInt32
+    scan_symbols : UInt32
+    scan_binary : UInt32
+    scan_octal : UInt32
+    scan_float : UInt32
+    scan_hex : UInt32
+    scan_hex_dollar : UInt32
+    scan_string_sq : UInt32
+    scan_string_dq : UInt32
+    numbers_2_int : UInt32
+    int_2_float : UInt32
+    identifier_2_string : UInt32
+    char_2_token : UInt32
+    symbol_2_token : UInt32
+    scope_0_fallback : UInt32
+    store_int64 : UInt32
+    padding_dummy : UInt32
+  end
+
+  struct Sequence # struct
+  end
+  fun sequence_free = g_sequence_free(this : Sequence*) : Void
+  fun sequence_get_length = g_sequence_get_length(this : Sequence*) : Int32
+  fun sequence_move = g_sequence_move(src : LibGLib::SequenceIter*, dest : LibGLib::SequenceIter*) : Void
+  fun sequence_move_range = g_sequence_move_range(dest : LibGLib::SequenceIter*, begin : LibGLib::SequenceIter*, end : LibGLib::SequenceIter*) : Void
+  fun sequence_remove = g_sequence_remove(iter : LibGLib::SequenceIter*) : Void
+  fun sequence_remove_range = g_sequence_remove_range(begin : LibGLib::SequenceIter*, end : LibGLib::SequenceIter*) : Void
+  fun sequence_set = g_sequence_set(iter : LibGLib::SequenceIter*, data : Void*) : Void
+  fun sequence_swap = g_sequence_swap(a : LibGLib::SequenceIter*, b : LibGLib::SequenceIter*) : Void
+
+  struct SequenceIter # struct
+  end
+  fun sequence_iter_compare = g_sequence_iter_compare(this : SequenceIter*, b : LibGLib::SequenceIter*) : Int32
+  fun sequence_iter_get_position = g_sequence_iter_get_position(this : SequenceIter*) : Int32
+  fun sequence_iter_is_begin = g_sequence_iter_is_begin(this : SequenceIter*) : Bool
+  fun sequence_iter_is_end = g_sequence_iter_is_end(this : SequenceIter*) : Bool
+
+  struct Source # struct
+    callback_data : Void*
+    callback_funcs : LibGLib::SourceCallbackFuncs*
+    source_funcs : LibGLib::SourceFuncs*
+    ref_count : UInt32
+    context : LibGLib::MainContext*
+    priority : Int32
+    flags : UInt32
+    source_id : UInt32
+    poll_fds : Void**
+    prev : LibGLib::Source*
+    next : LibGLib::Source*
+    name : UInt8*
+    priv : LibGLib::SourcePrivate*
+  end
+  fun source_new = g_source_new(source_funcs : LibGLib::SourceFuncs*, struct_size : UInt32) : LibGLib::Source*
+  fun source_add_child_source = g_source_add_child_source(this : Source*, child_source : LibGLib::Source*) : Void
+  fun source_add_poll = g_source_add_poll(this : Source*, fd : LibGLib::PollFD*) : Void
+  fun source_attach = g_source_attach(this : Source*, context : LibGLib::MainContext*) : UInt32
+  fun source_destroy = g_source_destroy(this : Source*) : Void
+  fun source_get_can_recurse = g_source_get_can_recurse(this : Source*) : Bool
+  fun source_get_context = g_source_get_context(this : Source*) : LibGLib::MainContext*
+  fun source_get_current_time = g_source_get_current_time(this : Source*, timeval : LibGLib::TimeVal*) : Void
+  fun source_get_id = g_source_get_id(this : Source*) : UInt32
+  fun source_get_name = g_source_get_name(this : Source*) : UInt8*
+  fun source_get_priority = g_source_get_priority(this : Source*) : Int32
+  fun source_get_ready_time = g_source_get_ready_time(this : Source*) : Int64
+  fun source_get_time = g_source_get_time(this : Source*) : Int64
+  fun source_is_destroyed = g_source_is_destroyed(this : Source*) : Bool
+  fun source_modify_unix_fd = g_source_modify_unix_fd(this : Source*, tag : Void*, new_events : LibGLib::IOCondition) : Void
+  fun source_query_unix_fd = g_source_query_unix_fd(this : Source*, tag : Void*) : LibGLib::IOCondition
+  fun source_ref = g_source_ref(this : Source*) : LibGLib::Source*
+  fun source_remove_child_source = g_source_remove_child_source(this : Source*, child_source : LibGLib::Source*) : Void
+  fun source_remove_poll = g_source_remove_poll(this : Source*, fd : LibGLib::PollFD*) : Void
+  fun source_remove_unix_fd = g_source_remove_unix_fd(this : Source*, tag : Void*) : Void
+  fun source_set_callback = g_source_set_callback(this : Source*, func : Void*, data : Void*, notify : Void*) : Void
+  fun source_set_callback_indirect = g_source_set_callback_indirect(this : Source*, callback_data : Void*, callback_funcs : LibGLib::SourceCallbackFuncs*) : Void
+  fun source_set_can_recurse = g_source_set_can_recurse(this : Source*, can_recurse : Bool) : Void
+  fun source_set_funcs = g_source_set_funcs(this : Source*, funcs : LibGLib::SourceFuncs*) : Void
+  fun source_set_name = g_source_set_name(this : Source*, name : UInt8*) : Void
+  fun source_set_priority = g_source_set_priority(this : Source*, priority : Int32) : Void
+  fun source_set_ready_time = g_source_set_ready_time(this : Source*, ready_time : Int64) : Void
+  fun source_unref = g_source_unref(this : Source*) : Void
+  fun source_remove = g_source_remove(tag : UInt32) : Bool
+  fun source_remove_by_funcs_user_data = g_source_remove_by_funcs_user_data(funcs : LibGLib::SourceFuncs*, user_data : Void*) : Bool
+  fun source_remove_by_user_data = g_source_remove_by_user_data(user_data : Void*) : Bool
+  fun source_set_name_by_id = g_source_set_name_by_id(tag : UInt32, name : UInt8*) : Void
+
+  struct SourceCallbackFuncs # struct
+    ref : Void*
+    unref : Void*
+    get : Void*
+  end
+
+  struct SourceFuncs # struct
+    prepare : Void*
+    check : Void*
+    dispatch : Void*
+    finalize : Void*
+    closure_callback : Void*
+    closure_marshal : Void*
+  end
+
+  struct SourcePrivate # struct
+  end
+
+  struct StatBuf # struct
+  end
+
+  struct String # struct
+    str : UInt8*
+    len : UInt64
+    allocated_len : UInt64
+  end
+  fun string_append = g_string_append(this : String*, val : UInt8*) : LibGLib::String*
+  fun string_append_c = g_string_append_c(this : String*, c : Int8) : LibGLib::String*
+  fun string_append_len = g_string_append_len(this : String*, val : UInt8*, len : Int64) : LibGLib::String*
+  fun string_append_unichar = g_string_append_unichar(this : String*, wc : UInt8) : LibGLib::String*
+  fun string_append_uri_escaped = g_string_append_uri_escaped(this : String*, unescaped : UInt8*, reserved_chars_allowed : UInt8*, allow_utf8 : Bool) : LibGLib::String*
+  fun string_ascii_down = g_string_ascii_down(this : String*) : LibGLib::String*
+  fun string_ascii_up = g_string_ascii_up(this : String*) : LibGLib::String*
+  fun string_assign = g_string_assign(this : String*, rval : UInt8*) : LibGLib::String*
+  fun string_down = g_string_down(this : String*) : LibGLib::String*
+  fun string_equal = g_string_equal(this : String*, v2 : LibGLib::String*) : Bool
+  fun string_erase = g_string_erase(this : String*, pos : Int64, len : Int64) : LibGLib::String*
+  fun string_free = g_string_free(this : String*, free_segment : Bool) : UInt8*
+  fun string_free_to_bytes = g_string_free_to_bytes(this : String*) : LibGLib::Bytes*
+  fun string_hash = g_string_hash(this : String*) : UInt32
+  fun string_insert = g_string_insert(this : String*, pos : Int64, val : UInt8*) : LibGLib::String*
+  fun string_insert_c = g_string_insert_c(this : String*, pos : Int64, c : Int8) : LibGLib::String*
+  fun string_insert_len = g_string_insert_len(this : String*, pos : Int64, val : UInt8*, len : Int64) : LibGLib::String*
+  fun string_insert_unichar = g_string_insert_unichar(this : String*, pos : Int64, wc : UInt8) : LibGLib::String*
+  fun string_overwrite = g_string_overwrite(this : String*, pos : UInt64, val : UInt8*) : LibGLib::String*
+  fun string_overwrite_len = g_string_overwrite_len(this : String*, pos : UInt64, val : UInt8*, len : Int64) : LibGLib::String*
+  fun string_prepend = g_string_prepend(this : String*, val : UInt8*) : LibGLib::String*
+  fun string_prepend_c = g_string_prepend_c(this : String*, c : Int8) : LibGLib::String*
+  fun string_prepend_len = g_string_prepend_len(this : String*, val : UInt8*, len : Int64) : LibGLib::String*
+  fun string_prepend_unichar = g_string_prepend_unichar(this : String*, wc : UInt8) : LibGLib::String*
+  fun string_set_size = g_string_set_size(this : String*, len : UInt64) : LibGLib::String*
+  fun string_truncate = g_string_truncate(this : String*, len : UInt64) : LibGLib::String*
+  fun string_up = g_string_up(this : String*) : LibGLib::String*
+
+  struct StringChunk # struct
+  end
+  fun string_chunk_clear = g_string_chunk_clear(this : StringChunk*) : Void
+  fun string_chunk_free = g_string_chunk_free(this : StringChunk*) : Void
+  fun string_chunk_insert = g_string_chunk_insert(this : StringChunk*, string : UInt8*) : UInt8*
+  fun string_chunk_insert_const = g_string_chunk_insert_const(this : StringChunk*, string : UInt8*) : UInt8*
+  fun string_chunk_insert_len = g_string_chunk_insert_len(this : StringChunk*, string : UInt8*, len : Int64) : UInt8*
+
+  struct TestCase # struct
+  end
+
+  struct TestConfig # struct
+    test_initialized : Bool
+    test_quick : Bool
+    test_perf : Bool
+    test_verbose : Bool
+    test_quiet : Bool
+    test_undefined : Bool
+  end
+
+  struct TestLogBuffer # struct
+    data : LibGLib::String*
+    msgs : Void**
+  end
+  fun test_log_buffer_free = g_test_log_buffer_free(this : TestLogBuffer*) : Void
+  fun test_log_buffer_push = g_test_log_buffer_push(this : TestLogBuffer*, n_bytes : UInt32, bytes : UInt8*) : Void
+
+  struct TestLogMsg # struct
+    log_type : LibGLib::TestLogType
+    n_strings : UInt32
+    strings : UInt8*
+    n_nums : UInt32
+    nums : Int64*
+  end
+  fun test_log_msg_free = g_test_log_msg_free(this : TestLogMsg*) : Void
+
+  struct TestSuite # struct
+  end
+  fun test_suite_add = g_test_suite_add(this : TestSuite*, test_case : LibGLib::TestCase*) : Void
+  fun test_suite_add_suite = g_test_suite_add_suite(this : TestSuite*, nestedsuite : LibGLib::TestSuite*) : Void
+
+  struct Thread # struct
+  end
+  fun thread_ref = g_thread_ref(this : Thread*) : LibGLib::Thread*
+  fun thread_unref = g_thread_unref(this : Thread*) : Void
+  fun thread_error_quark = g_thread_error_quark() : UInt32
+  fun thread_exit = g_thread_exit(retval : Void*) : Void
+  fun thread_self = g_thread_self() : LibGLib::Thread*
+  fun thread_yield = g_thread_yield() : Void
+
+  struct ThreadPool # struct
+    func : Void*
+    user_data : Void*
+    exclusive : Bool
+  end
+  fun thread_pool_free = g_thread_pool_free(this : ThreadPool*, immediate : Bool, wait_ : Bool) : Void
+  fun thread_pool_get_max_threads = g_thread_pool_get_max_threads(this : ThreadPool*) : Int32
+  fun thread_pool_get_num_threads = g_thread_pool_get_num_threads(this : ThreadPool*) : UInt32
+  fun thread_pool_push = g_thread_pool_push(this : ThreadPool*, data : Void*, error : LibGLib::Error**) : Bool
+  fun thread_pool_set_max_threads = g_thread_pool_set_max_threads(this : ThreadPool*, max_threads : Int32, error : LibGLib::Error**) : Bool
+  fun thread_pool_unprocessed = g_thread_pool_unprocessed(this : ThreadPool*) : UInt32
+  fun thread_pool_get_max_idle_time = g_thread_pool_get_max_idle_time() : UInt32
+  fun thread_pool_get_max_unused_threads = g_thread_pool_get_max_unused_threads() : Int32
+  fun thread_pool_get_num_unused_threads = g_thread_pool_get_num_unused_threads() : UInt32
+  fun thread_pool_set_max_idle_time = g_thread_pool_set_max_idle_time(interval : UInt32) : Void
+  fun thread_pool_set_max_unused_threads = g_thread_pool_set_max_unused_threads(max_threads : Int32) : Void
+  fun thread_pool_stop_unused_threads = g_thread_pool_stop_unused_threads() : Void
+
+  struct TimeVal # struct
+    tv_sec : Int64
+    tv_usec : Int64
+  end
+  fun time_val_add = g_time_val_add(this : TimeVal*, microseconds : Int64) : Void
+  fun time_val_to_iso8601 = g_time_val_to_iso8601(this : TimeVal*) : UInt8*
+  fun time_val_from_iso8601 = g_time_val_from_iso8601(iso_date : UInt8*, time_ : LibGLib::TimeVal*) : Bool
+
+  struct TimeZone # struct
+  end
+  fun time_zone_new = g_time_zone_new(identifier : UInt8*) : LibGLib::TimeZone*
+  fun time_zone_new_local = g_time_zone_new_local() : LibGLib::TimeZone*
+  fun time_zone_new_utc = g_time_zone_new_utc() : LibGLib::TimeZone*
+  fun time_zone_adjust_time = g_time_zone_adjust_time(this : TimeZone*, type : LibGLib::TimeType, time_ : Int64*) : Int32
+  fun time_zone_find_interval = g_time_zone_find_interval(this : TimeZone*, type : LibGLib::TimeType, time_ : Int64) : Int32
+  fun time_zone_get_abbreviation = g_time_zone_get_abbreviation(this : TimeZone*, interval : Int32) : UInt8*
+  fun time_zone_get_offset = g_time_zone_get_offset(this : TimeZone*, interval : Int32) : Int32
+  fun time_zone_is_dst = g_time_zone_is_dst(this : TimeZone*, interval : Int32) : Bool
+  fun time_zone_ref = g_time_zone_ref(this : TimeZone*) : LibGLib::TimeZone*
+  fun time_zone_unref = g_time_zone_unref(this : TimeZone*) : Void
+
+  struct Timer # struct
+  end
+  fun timer_continue = g_timer_continue(this : Timer*) : Void
+  fun timer_destroy = g_timer_destroy(this : Timer*) : Void
+  fun timer_elapsed = g_timer_elapsed(this : Timer*, microseconds : UInt64*) : Float64
+  fun timer_reset = g_timer_reset(this : Timer*) : Void
+  fun timer_start = g_timer_start(this : Timer*) : Void
+  fun timer_stop = g_timer_stop(this : Timer*) : Void
+
+  struct TrashStack # struct
+    next : LibGLib::TrashStack*
+  end
+  fun trash_stack_height = g_trash_stack_height(stack_p : LibGLib::TrashStack*) : UInt32
+  fun trash_stack_push = g_trash_stack_push(stack_p : LibGLib::TrashStack*, data_p : Void*) : Void
+
+  struct Tree # struct
+  end
+  fun tree_destroy = g_tree_destroy(this : Tree*) : Void
+  fun tree_height = g_tree_height(this : Tree*) : Int32
+  fun tree_insert = g_tree_insert(this : Tree*, key : Void*, value : Void*) : Void
+  fun tree_lookup_extended = g_tree_lookup_extended(this : Tree*, lookup_key : Void*, orig_key : Void*, value : Void*) : Bool
+  fun tree_nnodes = g_tree_nnodes(this : Tree*) : Int32
+  fun tree_remove = g_tree_remove(this : Tree*, key : Void*) : Bool
+  fun tree_replace = g_tree_replace(this : Tree*, key : Void*, value : Void*) : Void
+  fun tree_steal = g_tree_steal(this : Tree*, key : Void*) : Bool
+  fun tree_unref = g_tree_unref(this : Tree*) : Void
+
+  struct Variant # struct
+  end
+  fun variant_new_array = g_variant_new_array(child_type : LibGLib::VariantType*, children : LibGLib::Variant**, n_children : UInt64) : LibGLib::Variant*
+  fun variant_new_boolean = g_variant_new_boolean(value : Bool) : LibGLib::Variant*
+  fun variant_new_byte = g_variant_new_byte(value : UInt8) : LibGLib::Variant*
+  fun variant_new_bytestring = g_variant_new_bytestring(string : UInt8*) : LibGLib::Variant*
+  fun variant_new_bytestring_array = g_variant_new_bytestring_array(strv : UInt8**, length : Int64) : LibGLib::Variant*
+  fun variant_new_dict_entry = g_variant_new_dict_entry(key : LibGLib::Variant*, value : LibGLib::Variant*) : LibGLib::Variant*
+  fun variant_new_double = g_variant_new_double(value : Float64) : LibGLib::Variant*
+  fun variant_new_fixed_array = g_variant_new_fixed_array(element_type : LibGLib::VariantType*, elements : Void*, n_elements : UInt64, element_size : UInt64) : LibGLib::Variant*
+  fun variant_new_from_bytes = g_variant_new_from_bytes(type : LibGLib::VariantType*, bytes : LibGLib::Bytes*, trusted : Bool) : LibGLib::Variant*
+  fun variant_new_from_data = g_variant_new_from_data(type : LibGLib::VariantType*, data : UInt8*, size : UInt64, trusted : Bool, notify : Void*, user_data : Void*) : LibGLib::Variant*
+  fun variant_new_handle = g_variant_new_handle(value : Int32) : LibGLib::Variant*
+  fun variant_new_int16 = g_variant_new_int16(value : Int16) : LibGLib::Variant*
+  fun variant_new_int32 = g_variant_new_int32(value : Int32) : LibGLib::Variant*
+  fun variant_new_int64 = g_variant_new_int64(value : Int64) : LibGLib::Variant*
+  fun variant_new_maybe = g_variant_new_maybe(child_type : LibGLib::VariantType*, child : LibGLib::Variant*) : LibGLib::Variant*
+  fun variant_new_object_path = g_variant_new_object_path(object_path : UInt8*) : LibGLib::Variant*
+  fun variant_new_objv = g_variant_new_objv(strv : UInt8**, length : Int64) : LibGLib::Variant*
+  fun variant_new_signature = g_variant_new_signature(signature : UInt8*) : LibGLib::Variant*
+  fun variant_new_string = g_variant_new_string(string : UInt8*) : LibGLib::Variant*
+  fun variant_new_strv = g_variant_new_strv(strv : UInt8**, length : Int64) : LibGLib::Variant*
+  fun variant_new_tuple = g_variant_new_tuple(children : LibGLib::Variant**, n_children : UInt64) : LibGLib::Variant*
+  fun variant_new_uint16 = g_variant_new_uint16(value : UInt16) : LibGLib::Variant*
+  fun variant_new_uint32 = g_variant_new_uint32(value : UInt32) : LibGLib::Variant*
+  fun variant_new_uint64 = g_variant_new_uint64(value : UInt64) : LibGLib::Variant*
+  fun variant_new_variant = g_variant_new_variant(value : LibGLib::Variant*) : LibGLib::Variant*
+  fun variant_byteswap = g_variant_byteswap(this : Variant*) : LibGLib::Variant*
+  fun variant_check_format_string = g_variant_check_format_string(this : Variant*, format_string : UInt8*, copy_only : Bool) : Bool
+  fun variant_classify = g_variant_classify(this : Variant*) : LibGLib::VariantClass
+  fun variant_compare = g_variant_compare(this : Variant*, two : LibGLib::Variant*) : Int32
+  fun variant_dup_bytestring = g_variant_dup_bytestring(this : Variant*, length : UInt64*) : UInt8*
+  fun variant_dup_bytestring_array = g_variant_dup_bytestring_array(this : Variant*, length : UInt64*) : UInt8**
+  fun variant_dup_objv = g_variant_dup_objv(this : Variant*, length : UInt64*) : UInt8**
+  fun variant_dup_string = g_variant_dup_string(this : Variant*, length : UInt64*) : UInt8*
+  fun variant_dup_strv = g_variant_dup_strv(this : Variant*, length : UInt64*) : UInt8**
+  fun variant_equal = g_variant_equal(this : Variant*, two : LibGLib::Variant*) : Bool
+  fun variant_get_boolean = g_variant_get_boolean(this : Variant*) : Bool
+  fun variant_get_byte = g_variant_get_byte(this : Variant*) : UInt8
+  fun variant_get_bytestring = g_variant_get_bytestring(this : Variant*) : UInt8*
+  fun variant_get_bytestring_array = g_variant_get_bytestring_array(this : Variant*, length : UInt64*) : UInt8**
+  fun variant_get_child_value = g_variant_get_child_value(this : Variant*, index_ : UInt64) : LibGLib::Variant*
+  fun variant_get_data = g_variant_get_data(this : Variant*) : Void*
+  fun variant_get_data_as_bytes = g_variant_get_data_as_bytes(this : Variant*) : LibGLib::Bytes*
+  fun variant_get_double = g_variant_get_double(this : Variant*) : Float64
+  fun variant_get_handle = g_variant_get_handle(this : Variant*) : Int32
+  fun variant_get_int16 = g_variant_get_int16(this : Variant*) : Int16
+  fun variant_get_int32 = g_variant_get_int32(this : Variant*) : Int32
+  fun variant_get_int64 = g_variant_get_int64(this : Variant*) : Int64
+  fun variant_get_maybe = g_variant_get_maybe(this : Variant*) : LibGLib::Variant*
+  fun variant_get_normal_form = g_variant_get_normal_form(this : Variant*) : LibGLib::Variant*
+  fun variant_get_objv = g_variant_get_objv(this : Variant*, length : UInt64*) : UInt8**
+  fun variant_get_size = g_variant_get_size(this : Variant*) : UInt64
+  fun variant_get_string = g_variant_get_string(this : Variant*, length : UInt64*) : UInt8*
+  fun variant_get_strv = g_variant_get_strv(this : Variant*, length : UInt64*) : UInt8**
+  fun variant_get_type = g_variant_get_type(this : Variant*) : LibGLib::VariantType*
+  fun variant_get_type_string = g_variant_get_type_string(this : Variant*) : UInt8*
+  fun variant_get_uint16 = g_variant_get_uint16(this : Variant*) : UInt16
+  fun variant_get_uint32 = g_variant_get_uint32(this : Variant*) : UInt32
+  fun variant_get_uint64 = g_variant_get_uint64(this : Variant*) : UInt64
+  fun variant_get_variant = g_variant_get_variant(this : Variant*) : LibGLib::Variant*
+  fun variant_hash = g_variant_hash(this : Variant*) : UInt32
+  fun variant_is_container = g_variant_is_container(this : Variant*) : Bool
+  fun variant_is_floating = g_variant_is_floating(this : Variant*) : Bool
+  fun variant_is_normal_form = g_variant_is_normal_form(this : Variant*) : Bool
+  fun variant_is_of_type = g_variant_is_of_type(this : Variant*, type : LibGLib::VariantType*) : Bool
+  fun variant_lookup_value = g_variant_lookup_value(this : Variant*, key : UInt8*, expected_type : LibGLib::VariantType*) : LibGLib::Variant*
+  fun variant_n_children = g_variant_n_children(this : Variant*) : UInt64
+  fun variant_print = g_variant_print(this : Variant*, type_annotate : Bool) : UInt8*
+  fun variant_ref = g_variant_ref(this : Variant*) : LibGLib::Variant*
+  fun variant_ref_sink = g_variant_ref_sink(this : Variant*) : LibGLib::Variant*
+  fun variant_store = g_variant_store(this : Variant*, data : Void*) : Void
+  fun variant_take_ref = g_variant_take_ref(this : Variant*) : LibGLib::Variant*
+  fun variant_unref = g_variant_unref(this : Variant*) : Void
+  fun variant_is_object_path = g_variant_is_object_path(string : UInt8*) : Bool
+  fun variant_is_signature = g_variant_is_signature(string : UInt8*) : Bool
+  fun variant_parse = g_variant_parse(type : LibGLib::VariantType*, text : UInt8*, limit : UInt8*, endptr : UInt8*, error : LibGLib::Error**) : LibGLib::Variant*
+  fun variant_parse_error_print_context = g_variant_parse_error_print_context(error : LibGLib::Error**, source_str : UInt8*) : UInt8*
+  fun variant_parse_error_quark = g_variant_parse_error_quark() : UInt32
+  fun variant_parser_get_error_quark = g_variant_parser_get_error_quark() : UInt32
+
+  struct VariantBuilder # struct
+    x : UInt64
+  end
+  fun variant_builder_new = g_variant_builder_new(type : LibGLib::VariantType*) : LibGLib::VariantBuilder*
+  fun variant_builder_add_value = g_variant_builder_add_value(this : VariantBuilder*, value : LibGLib::Variant*) : Void
+  fun variant_builder_close = g_variant_builder_close(this : VariantBuilder*) : Void
+  fun variant_builder_end = g_variant_builder_end(this : VariantBuilder*) : LibGLib::Variant*
+  fun variant_builder_open = g_variant_builder_open(this : VariantBuilder*, type : LibGLib::VariantType*) : Void
+  fun variant_builder_ref = g_variant_builder_ref(this : VariantBuilder*) : LibGLib::VariantBuilder*
+  fun variant_builder_unref = g_variant_builder_unref(this : VariantBuilder*) : Void
+
+  struct VariantDict # struct
+    x : UInt64
+  end
+  fun variant_dict_new = g_variant_dict_new(from_asv : LibGLib::Variant*) : LibGLib::VariantDict*
+  fun variant_dict_clear = g_variant_dict_clear(this : VariantDict*) : Void
+  fun variant_dict_contains = g_variant_dict_contains(this : VariantDict*, key : UInt8*) : Bool
+  fun variant_dict_end = g_variant_dict_end(this : VariantDict*) : LibGLib::Variant*
+  fun variant_dict_insert_value = g_variant_dict_insert_value(this : VariantDict*, key : UInt8*, value : LibGLib::Variant*) : Void
+  fun variant_dict_lookup_value = g_variant_dict_lookup_value(this : VariantDict*, key : UInt8*, expected_type : LibGLib::VariantType*) : LibGLib::Variant*
+  fun variant_dict_ref = g_variant_dict_ref(this : VariantDict*) : LibGLib::VariantDict*
+  fun variant_dict_remove = g_variant_dict_remove(this : VariantDict*, key : UInt8*) : Bool
+  fun variant_dict_unref = g_variant_dict_unref(this : VariantDict*) : Void
+
+  struct VariantType # struct
+  end
+  fun variant_type_new = g_variant_type_new(type_string : UInt8*) : LibGLib::VariantType*
+  fun variant_type_new_array = g_variant_type_new_array(element : LibGLib::VariantType*) : LibGLib::VariantType*
+  fun variant_type_new_dict_entry = g_variant_type_new_dict_entry(key : LibGLib::VariantType*, value : LibGLib::VariantType*) : LibGLib::VariantType*
+  fun variant_type_new_maybe = g_variant_type_new_maybe(element : LibGLib::VariantType*) : LibGLib::VariantType*
+  fun variant_type_new_tuple = g_variant_type_new_tuple(items : LibGLib::VariantType**, length : Int32) : LibGLib::VariantType*
+  fun variant_type_copy = g_variant_type_copy(this : VariantType*) : LibGLib::VariantType*
+  fun variant_type_dup_string = g_variant_type_dup_string(this : VariantType*) : UInt8*
+  fun variant_type_element = g_variant_type_element(this : VariantType*) : LibGLib::VariantType*
+  fun variant_type_equal = g_variant_type_equal(this : VariantType*, type2 : LibGLib::VariantType*) : Bool
+  fun variant_type_first = g_variant_type_first(this : VariantType*) : LibGLib::VariantType*
+  fun variant_type_free = g_variant_type_free(this : VariantType*) : Void
+  fun variant_type_get_string_length = g_variant_type_get_string_length(this : VariantType*) : UInt64
+  fun variant_type_hash = g_variant_type_hash(this : VariantType*) : UInt32
+  fun variant_type_is_array = g_variant_type_is_array(this : VariantType*) : Bool
+  fun variant_type_is_basic = g_variant_type_is_basic(this : VariantType*) : Bool
+  fun variant_type_is_container = g_variant_type_is_container(this : VariantType*) : Bool
+  fun variant_type_is_definite = g_variant_type_is_definite(this : VariantType*) : Bool
+  fun variant_type_is_dict_entry = g_variant_type_is_dict_entry(this : VariantType*) : Bool
+  fun variant_type_is_maybe = g_variant_type_is_maybe(this : VariantType*) : Bool
+  fun variant_type_is_subtype_of = g_variant_type_is_subtype_of(this : VariantType*, supertype : LibGLib::VariantType*) : Bool
+  fun variant_type_is_tuple = g_variant_type_is_tuple(this : VariantType*) : Bool
+  fun variant_type_is_variant = g_variant_type_is_variant(this : VariantType*) : Bool
+  fun variant_type_key = g_variant_type_key(this : VariantType*) : LibGLib::VariantType*
+  fun variant_type_n_items = g_variant_type_n_items(this : VariantType*) : UInt64
+  fun variant_type_next = g_variant_type_next(this : VariantType*) : LibGLib::VariantType*
+  fun variant_type_value = g_variant_type_value(this : VariantType*) : LibGLib::VariantType*
+  fun variant_type_checked_ = g_variant_type_checked_(arg0 : UInt8*) : LibGLib::VariantType*
+  fun variant_type_string_is_valid = g_variant_type_string_is_valid(type_string : UInt8*) : Bool
+  fun variant_type_string_scan = g_variant_type_string_scan(string : UInt8*, limit : UInt8*, endptr : UInt8**) : Bool
+
 
   ###########################################
   ##    Flags
@@ -1061,1152 +2126,6 @@ lib LibGLib
 
 
   ###########################################
-  ##    Structs
-  ###########################################
-
-  struct Array # struct
-    data : UInt8*
-    len : UInt32
-  end
-
-  struct AsyncQueue # struct
-  end
-  fun async_queue_length = g_async_queue_length(this : AsyncQueue*) : Int32
-  fun async_queue_length_unlocked = g_async_queue_length_unlocked(this : AsyncQueue*) : Int32
-  fun async_queue_lock = g_async_queue_lock(this : AsyncQueue*) : Void
-  fun async_queue_push = g_async_queue_push(this : AsyncQueue*, data : Void*) : Void
-  fun async_queue_push_unlocked = g_async_queue_push_unlocked(this : AsyncQueue*, data : Void*) : Void
-  fun async_queue_ref_unlocked = g_async_queue_ref_unlocked(this : AsyncQueue*) : Void
-  fun async_queue_unlock = g_async_queue_unlock(this : AsyncQueue*) : Void
-  fun async_queue_unref = g_async_queue_unref(this : AsyncQueue*) : Void
-  fun async_queue_unref_and_unlock = g_async_queue_unref_and_unlock(this : AsyncQueue*) : Void
-
-  struct BookmarkFile # struct
-  end
-  fun bookmark_file_add_application = g_bookmark_file_add_application(this : BookmarkFile*, uri : UInt8*, name : UInt8*, exec : UInt8*) : Void
-  fun bookmark_file_add_group = g_bookmark_file_add_group(this : BookmarkFile*, uri : UInt8*, group : UInt8*) : Void
-  fun bookmark_file_free = g_bookmark_file_free(this : BookmarkFile*) : Void
-  fun bookmark_file_get_added = g_bookmark_file_get_added(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : Int64
-  fun bookmark_file_get_app_info = g_bookmark_file_get_app_info(this : BookmarkFile*, uri : UInt8*, name : UInt8*, exec : UInt8**, count : UInt32*, stamp : Int64*, error : LibGLib::Error**) : Bool
-  fun bookmark_file_get_applications = g_bookmark_file_get_applications(this : BookmarkFile*, uri : UInt8*, length : UInt64*, error : LibGLib::Error**) : UInt8**
-  fun bookmark_file_get_description = g_bookmark_file_get_description(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : UInt8*
-  fun bookmark_file_get_groups = g_bookmark_file_get_groups(this : BookmarkFile*, uri : UInt8*, length : UInt64*, error : LibGLib::Error**) : UInt8**
-  fun bookmark_file_get_icon = g_bookmark_file_get_icon(this : BookmarkFile*, uri : UInt8*, href : UInt8**, mime_type : UInt8**, error : LibGLib::Error**) : Bool
-  fun bookmark_file_get_is_private = g_bookmark_file_get_is_private(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : Bool
-  fun bookmark_file_get_mime_type = g_bookmark_file_get_mime_type(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : UInt8*
-  fun bookmark_file_get_modified = g_bookmark_file_get_modified(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : Int64
-  fun bookmark_file_get_size = g_bookmark_file_get_size(this : BookmarkFile*) : Int32
-  fun bookmark_file_get_title = g_bookmark_file_get_title(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : UInt8*
-  fun bookmark_file_get_uris = g_bookmark_file_get_uris(this : BookmarkFile*, length : UInt64*) : UInt8**
-  fun bookmark_file_get_visited = g_bookmark_file_get_visited(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : Int64
-  fun bookmark_file_has_application = g_bookmark_file_has_application(this : BookmarkFile*, uri : UInt8*, name : UInt8*, error : LibGLib::Error**) : Bool
-  fun bookmark_file_has_group = g_bookmark_file_has_group(this : BookmarkFile*, uri : UInt8*, group : UInt8*, error : LibGLib::Error**) : Bool
-  fun bookmark_file_has_item = g_bookmark_file_has_item(this : BookmarkFile*, uri : UInt8*) : Bool
-  fun bookmark_file_load_from_data = g_bookmark_file_load_from_data(this : BookmarkFile*, data : UInt8*, length : UInt64, error : LibGLib::Error**) : Bool
-  fun bookmark_file_load_from_data_dirs = g_bookmark_file_load_from_data_dirs(this : BookmarkFile*, file : UInt8*, full_path : UInt8*, error : LibGLib::Error**) : Bool
-  fun bookmark_file_load_from_file = g_bookmark_file_load_from_file(this : BookmarkFile*, filename : UInt8*, error : LibGLib::Error**) : Bool
-  fun bookmark_file_move_item = g_bookmark_file_move_item(this : BookmarkFile*, old_uri : UInt8*, new_uri : UInt8*, error : LibGLib::Error**) : Bool
-  fun bookmark_file_remove_application = g_bookmark_file_remove_application(this : BookmarkFile*, uri : UInt8*, name : UInt8*, error : LibGLib::Error**) : Bool
-  fun bookmark_file_remove_group = g_bookmark_file_remove_group(this : BookmarkFile*, uri : UInt8*, group : UInt8*, error : LibGLib::Error**) : Bool
-  fun bookmark_file_remove_item = g_bookmark_file_remove_item(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : Bool
-  fun bookmark_file_set_added = g_bookmark_file_set_added(this : BookmarkFile*, uri : UInt8*, added : Int64) : Void
-  fun bookmark_file_set_app_info = g_bookmark_file_set_app_info(this : BookmarkFile*, uri : UInt8*, name : UInt8*, exec : UInt8*, count : Int32, stamp : Int64, error : LibGLib::Error**) : Bool
-  fun bookmark_file_set_description = g_bookmark_file_set_description(this : BookmarkFile*, uri : UInt8*, description : UInt8*) : Void
-  fun bookmark_file_set_groups = g_bookmark_file_set_groups(this : BookmarkFile*, uri : UInt8*, groups : UInt8*, length : UInt64) : Void
-  fun bookmark_file_set_icon = g_bookmark_file_set_icon(this : BookmarkFile*, uri : UInt8*, href : UInt8*, mime_type : UInt8*) : Void
-  fun bookmark_file_set_is_private = g_bookmark_file_set_is_private(this : BookmarkFile*, uri : UInt8*, is_private : Bool) : Void
-  fun bookmark_file_set_mime_type = g_bookmark_file_set_mime_type(this : BookmarkFile*, uri : UInt8*, mime_type : UInt8*) : Void
-  fun bookmark_file_set_modified = g_bookmark_file_set_modified(this : BookmarkFile*, uri : UInt8*, modified : Int64) : Void
-  fun bookmark_file_set_title = g_bookmark_file_set_title(this : BookmarkFile*, uri : UInt8*, title : UInt8*) : Void
-  fun bookmark_file_set_visited = g_bookmark_file_set_visited(this : BookmarkFile*, uri : UInt8*, visited : Int64) : Void
-  fun bookmark_file_to_data = g_bookmark_file_to_data(this : BookmarkFile*, length : UInt64*, error : LibGLib::Error**) : UInt8*
-  fun bookmark_file_to_file = g_bookmark_file_to_file(this : BookmarkFile*, filename : UInt8*, error : LibGLib::Error**) : Bool
-  fun bookmark_file_error_quark = g_bookmark_file_error_quark() : UInt32
-
-  struct ByteArray # struct
-    data : UInt8*
-    len : UInt32
-  end
-  fun byte_array_free = g_byte_array_free(array : Void**, free_segment : Bool) : UInt8*
-  fun byte_array_free_to_bytes = g_byte_array_free_to_bytes(array : Void**) : LibGLib::Bytes*
-  fun byte_array_new = g_byte_array_new() : Void**
-  fun byte_array_new_take = g_byte_array_new_take(data : UInt8*, len : UInt64) : Void**
-  fun byte_array_unref = g_byte_array_unref(array : Void**) : Void
-
-  struct Bytes # struct
-  end
-  fun bytes_new = g_bytes_new(data : UInt8*, size : UInt64) : LibGLib::Bytes*
-  fun bytes_new_take = g_bytes_new_take(data : UInt8*, size : UInt64) : LibGLib::Bytes*
-  fun bytes_compare = g_bytes_compare(this : Bytes*, bytes2 : LibGLib::Bytes*) : Int32
-  fun bytes_equal = g_bytes_equal(this : Bytes*, bytes2 : LibGLib::Bytes*) : Bool
-  fun bytes_get_data = g_bytes_get_data(this : Bytes*, size : UInt64*) : UInt8**
-  fun bytes_get_size = g_bytes_get_size(this : Bytes*) : UInt64
-  fun bytes_hash = g_bytes_hash(this : Bytes*) : UInt32
-  fun bytes_new_from_bytes = g_bytes_new_from_bytes(this : Bytes*, offset : UInt64, length : UInt64) : LibGLib::Bytes*
-  fun bytes_ref = g_bytes_ref(this : Bytes*) : LibGLib::Bytes*
-  fun bytes_unref = g_bytes_unref(this : Bytes*) : Void
-  fun bytes_unref_to_array = g_bytes_unref_to_array(this : Bytes*) : Void**
-  fun bytes_unref_to_data = g_bytes_unref_to_data(this : Bytes*, size : UInt64*) : Void*
-
-  struct Checksum # struct
-  end
-  fun checksum_new = g_checksum_new(checksum_type : LibGLib::ChecksumType) : LibGLib::Checksum*
-  fun checksum_copy = g_checksum_copy(this : Checksum*) : LibGLib::Checksum*
-  fun checksum_free = g_checksum_free(this : Checksum*) : Void
-  fun checksum_get_string = g_checksum_get_string(this : Checksum*) : UInt8*
-  fun checksum_reset = g_checksum_reset(this : Checksum*) : Void
-  fun checksum_update = g_checksum_update(this : Checksum*, data : UInt8*, length : Int64) : Void
-  fun checksum_type_get_length = g_checksum_type_get_length(checksum_type : LibGLib::ChecksumType) : Int64
-
-  struct Cond # struct
-    p : Void*
-    i : UInt32
-  end
-  fun cond_broadcast = g_cond_broadcast(this : Cond*) : Void
-  fun cond_clear = g_cond_clear(this : Cond*) : Void
-  fun cond_init = g_cond_init(this : Cond*) : Void
-  fun cond_signal = g_cond_signal(this : Cond*) : Void
-  fun cond_wait = g_cond_wait(this : Cond*, mutex : LibGLib::Mutex*) : Void
-  fun cond_wait_until = g_cond_wait_until(this : Cond*, mutex : LibGLib::Mutex*, end_time : Int64) : Bool
-
-  struct Data # struct
-  end
-
-  struct Date # struct
-    julian_days : UInt32
-    julian : UInt32
-    dmy : UInt32
-    day : UInt32
-    month : UInt32
-    year : UInt32
-  end
-  fun date_new = g_date_new() : LibGLib::Date*
-  fun date_new_dmy = g_date_new_dmy(day : UInt8, month : LibGLib::DateMonth, year : UInt16) : LibGLib::Date*
-  fun date_new_julian = g_date_new_julian(julian_day : UInt32) : LibGLib::Date*
-  fun date_add_days = g_date_add_days(this : Date*, n_days : UInt32) : Void
-  fun date_add_months = g_date_add_months(this : Date*, n_months : UInt32) : Void
-  fun date_add_years = g_date_add_years(this : Date*, n_years : UInt32) : Void
-  fun date_clamp = g_date_clamp(this : Date*, min_date : LibGLib::Date*, max_date : LibGLib::Date*) : Void
-  fun date_clear = g_date_clear(this : Date*, n_dates : UInt32) : Void
-  fun date_compare = g_date_compare(this : Date*, rhs : LibGLib::Date*) : Int32
-  fun date_days_between = g_date_days_between(this : Date*, date2 : LibGLib::Date*) : Int32
-  fun date_free = g_date_free(this : Date*) : Void
-  fun date_get_day = g_date_get_day(this : Date*) : UInt8
-  fun date_get_day_of_year = g_date_get_day_of_year(this : Date*) : UInt32
-  fun date_get_iso8601_week_of_year = g_date_get_iso8601_week_of_year(this : Date*) : UInt32
-  fun date_get_julian = g_date_get_julian(this : Date*) : UInt32
-  fun date_get_monday_week_of_year = g_date_get_monday_week_of_year(this : Date*) : UInt32
-  fun date_get_month = g_date_get_month(this : Date*) : LibGLib::DateMonth
-  fun date_get_sunday_week_of_year = g_date_get_sunday_week_of_year(this : Date*) : UInt32
-  fun date_get_weekday = g_date_get_weekday(this : Date*) : LibGLib::DateWeekday
-  fun date_get_year = g_date_get_year(this : Date*) : UInt16
-  fun date_is_first_of_month = g_date_is_first_of_month(this : Date*) : Bool
-  fun date_is_last_of_month = g_date_is_last_of_month(this : Date*) : Bool
-  fun date_order = g_date_order(this : Date*, date2 : LibGLib::Date*) : Void
-  fun date_set_day = g_date_set_day(this : Date*, day : UInt8) : Void
-  fun date_set_dmy = g_date_set_dmy(this : Date*, day : UInt8, month : LibGLib::DateMonth, y : UInt16) : Void
-  fun date_set_julian = g_date_set_julian(this : Date*, julian_date : UInt32) : Void
-  fun date_set_month = g_date_set_month(this : Date*, month : LibGLib::DateMonth) : Void
-  fun date_set_parse = g_date_set_parse(this : Date*, str : UInt8*) : Void
-  fun date_set_time = g_date_set_time(this : Date*, time_ : Int32) : Void
-  fun date_set_time_t = g_date_set_time_t(this : Date*, timet : Int64) : Void
-  fun date_set_time_val = g_date_set_time_val(this : Date*, timeval : LibGLib::TimeVal*) : Void
-  fun date_set_year = g_date_set_year(this : Date*, year : UInt16) : Void
-  fun date_subtract_days = g_date_subtract_days(this : Date*, n_days : UInt32) : Void
-  fun date_subtract_months = g_date_subtract_months(this : Date*, n_months : UInt32) : Void
-  fun date_subtract_years = g_date_subtract_years(this : Date*, n_years : UInt32) : Void
-  fun date_to_struct_tm = g_date_to_struct_tm(this : Date*, tm : Void*) : Void
-  fun date_valid = g_date_valid(this : Date*) : Bool
-  fun date_get_days_in_month = g_date_get_days_in_month(month : LibGLib::DateMonth, year : UInt16) : UInt8
-  fun date_get_monday_weeks_in_year = g_date_get_monday_weeks_in_year(year : UInt16) : UInt8
-  fun date_get_sunday_weeks_in_year = g_date_get_sunday_weeks_in_year(year : UInt16) : UInt8
-  fun date_is_leap_year = g_date_is_leap_year(year : UInt16) : Bool
-  fun date_strftime = g_date_strftime(s : UInt8*, slen : UInt64, format : UInt8*, date : LibGLib::Date*) : UInt64
-  fun date_valid_day = g_date_valid_day(day : UInt8) : Bool
-  fun date_valid_dmy = g_date_valid_dmy(day : UInt8, month : LibGLib::DateMonth, year : UInt16) : Bool
-  fun date_valid_julian = g_date_valid_julian(julian_date : UInt32) : Bool
-  fun date_valid_month = g_date_valid_month(month : LibGLib::DateMonth) : Bool
-  fun date_valid_weekday = g_date_valid_weekday(weekday : LibGLib::DateWeekday) : Bool
-  fun date_valid_year = g_date_valid_year(year : UInt16) : Bool
-
-  struct DateTime # struct
-  end
-  fun date_time_new = g_date_time_new(tz : LibGLib::TimeZone*, year : Int32, month : Int32, day : Int32, hour : Int32, minute : Int32, seconds : Float64) : LibGLib::DateTime*
-  fun date_time_new_from_timeval_local = g_date_time_new_from_timeval_local(tv : LibGLib::TimeVal*) : LibGLib::DateTime*
-  fun date_time_new_from_timeval_utc = g_date_time_new_from_timeval_utc(tv : LibGLib::TimeVal*) : LibGLib::DateTime*
-  fun date_time_new_from_unix_local = g_date_time_new_from_unix_local(t : Int64) : LibGLib::DateTime*
-  fun date_time_new_from_unix_utc = g_date_time_new_from_unix_utc(t : Int64) : LibGLib::DateTime*
-  fun date_time_new_local = g_date_time_new_local(year : Int32, month : Int32, day : Int32, hour : Int32, minute : Int32, seconds : Float64) : LibGLib::DateTime*
-  fun date_time_new_now = g_date_time_new_now(tz : LibGLib::TimeZone*) : LibGLib::DateTime*
-  fun date_time_new_now_local = g_date_time_new_now_local() : LibGLib::DateTime*
-  fun date_time_new_now_utc = g_date_time_new_now_utc() : LibGLib::DateTime*
-  fun date_time_new_utc = g_date_time_new_utc(year : Int32, month : Int32, day : Int32, hour : Int32, minute : Int32, seconds : Float64) : LibGLib::DateTime*
-  fun date_time_add = g_date_time_add(this : DateTime*, timespan : Int64) : LibGLib::DateTime*
-  fun date_time_add_days = g_date_time_add_days(this : DateTime*, days : Int32) : LibGLib::DateTime*
-  fun date_time_add_full = g_date_time_add_full(this : DateTime*, years : Int32, months : Int32, days : Int32, hours : Int32, minutes : Int32, seconds : Float64) : LibGLib::DateTime*
-  fun date_time_add_hours = g_date_time_add_hours(this : DateTime*, hours : Int32) : LibGLib::DateTime*
-  fun date_time_add_minutes = g_date_time_add_minutes(this : DateTime*, minutes : Int32) : LibGLib::DateTime*
-  fun date_time_add_months = g_date_time_add_months(this : DateTime*, months : Int32) : LibGLib::DateTime*
-  fun date_time_add_seconds = g_date_time_add_seconds(this : DateTime*, seconds : Float64) : LibGLib::DateTime*
-  fun date_time_add_weeks = g_date_time_add_weeks(this : DateTime*, weeks : Int32) : LibGLib::DateTime*
-  fun date_time_add_years = g_date_time_add_years(this : DateTime*, years : Int32) : LibGLib::DateTime*
-  fun date_time_difference = g_date_time_difference(this : DateTime*, begin : LibGLib::DateTime*) : Int64
-  fun date_time_format = g_date_time_format(this : DateTime*, format : UInt8*) : UInt8*
-  fun date_time_get_day_of_month = g_date_time_get_day_of_month(this : DateTime*) : Int32
-  fun date_time_get_day_of_week = g_date_time_get_day_of_week(this : DateTime*) : Int32
-  fun date_time_get_day_of_year = g_date_time_get_day_of_year(this : DateTime*) : Int32
-  fun date_time_get_hour = g_date_time_get_hour(this : DateTime*) : Int32
-  fun date_time_get_microsecond = g_date_time_get_microsecond(this : DateTime*) : Int32
-  fun date_time_get_minute = g_date_time_get_minute(this : DateTime*) : Int32
-  fun date_time_get_month = g_date_time_get_month(this : DateTime*) : Int32
-  fun date_time_get_second = g_date_time_get_second(this : DateTime*) : Int32
-  fun date_time_get_seconds = g_date_time_get_seconds(this : DateTime*) : Float64
-  fun date_time_get_timezone_abbreviation = g_date_time_get_timezone_abbreviation(this : DateTime*) : UInt8*
-  fun date_time_get_utc_offset = g_date_time_get_utc_offset(this : DateTime*) : Int64
-  fun date_time_get_week_numbering_year = g_date_time_get_week_numbering_year(this : DateTime*) : Int32
-  fun date_time_get_week_of_year = g_date_time_get_week_of_year(this : DateTime*) : Int32
-  fun date_time_get_year = g_date_time_get_year(this : DateTime*) : Int32
-  fun date_time_get_ymd = g_date_time_get_ymd(this : DateTime*, year : Int32*, month : Int32*, day : Int32*) : Void
-  fun date_time_is_daylight_savings = g_date_time_is_daylight_savings(this : DateTime*) : Bool
-  fun date_time_ref = g_date_time_ref(this : DateTime*) : LibGLib::DateTime*
-  fun date_time_to_local = g_date_time_to_local(this : DateTime*) : LibGLib::DateTime*
-  fun date_time_to_timeval = g_date_time_to_timeval(this : DateTime*, tv : LibGLib::TimeVal*) : Bool
-  fun date_time_to_timezone = g_date_time_to_timezone(this : DateTime*, tz : LibGLib::TimeZone*) : LibGLib::DateTime*
-  fun date_time_to_unix = g_date_time_to_unix(this : DateTime*) : Int64
-  fun date_time_to_utc = g_date_time_to_utc(this : DateTime*) : LibGLib::DateTime*
-  fun date_time_unref = g_date_time_unref(this : DateTime*) : Void
-  fun date_time_compare = g_date_time_compare(dt1 : Void*, dt2 : Void*) : Int32
-  fun date_time_equal = g_date_time_equal(dt1 : Void*, dt2 : Void*) : Bool
-  fun date_time_hash = g_date_time_hash(datetime : Void*) : UInt32
-
-  struct DebugKey # struct
-    key : UInt8*
-    value : UInt32
-  end
-
-  struct Dir # struct
-  end
-  fun dir_close = g_dir_close(this : Dir*) : Void
-  fun dir_read_name = g_dir_read_name(this : Dir*) : UInt8*
-  fun dir_rewind = g_dir_rewind(this : Dir*) : Void
-  fun dir_make_tmp = g_dir_make_tmp(tmpl : UInt8*, error : LibGLib::Error**) : UInt8*
-
-  struct Error # struct
-    domain : UInt32
-    code : Int32
-    message : UInt8*
-  end
-  fun error_new_literal = g_error_new_literal(domain : UInt32, code : Int32, message : UInt8*) : LibGLib::Error**
-  fun error_copy = g_error_copy(this : Error*) : LibGLib::Error**
-  fun error_free = g_error_free(this : Error*) : Void
-  fun error_matches = g_error_matches(this : Error*, domain : UInt32, code : Int32) : Bool
-
-  struct HashTable # struct
-  end
-  fun hash_table_add = g_hash_table_add(hash_table : Void**, key : Void*) : Bool
-  fun hash_table_contains = g_hash_table_contains(hash_table : Void**, key : Void*) : Bool
-  fun hash_table_destroy = g_hash_table_destroy(hash_table : Void**) : Void
-  fun hash_table_insert = g_hash_table_insert(hash_table : Void**, key : Void*, value : Void*) : Bool
-  fun hash_table_lookup_extended = g_hash_table_lookup_extended(hash_table : Void**, lookup_key : Void*, orig_key : Void*, value : Void*) : Bool
-  fun hash_table_remove = g_hash_table_remove(hash_table : Void**, key : Void*) : Bool
-  fun hash_table_remove_all = g_hash_table_remove_all(hash_table : Void**) : Void
-  fun hash_table_replace = g_hash_table_replace(hash_table : Void**, key : Void*, value : Void*) : Bool
-  fun hash_table_size = g_hash_table_size(hash_table : Void**) : UInt32
-  fun hash_table_steal = g_hash_table_steal(hash_table : Void**, key : Void*) : Bool
-  fun hash_table_steal_all = g_hash_table_steal_all(hash_table : Void**) : Void
-  fun hash_table_unref = g_hash_table_unref(hash_table : Void**) : Void
-
-  struct HashTableIter # struct
-    dummy1 : Void*
-    dummy2 : Void*
-    dummy3 : Void*
-    dummy4 : Int32
-    dummy5 : Bool
-    dummy6 : Void*
-  end
-  fun hash_table_iter_init = g_hash_table_iter_init(this : HashTableIter*, hash_table : Void**) : Void
-  fun hash_table_iter_next = g_hash_table_iter_next(this : HashTableIter*, key : Void*, value : Void*) : Bool
-  fun hash_table_iter_remove = g_hash_table_iter_remove(this : HashTableIter*) : Void
-  fun hash_table_iter_replace = g_hash_table_iter_replace(this : HashTableIter*, value : Void*) : Void
-  fun hash_table_iter_steal = g_hash_table_iter_steal(this : HashTableIter*) : Void
-
-  struct Hmac # struct
-  end
-  fun hmac_get_digest = g_hmac_get_digest(this : Hmac*, buffer : UInt8*, digest_len : UInt64*) : Void
-  fun hmac_get_string = g_hmac_get_string(this : Hmac*) : UInt8*
-  fun hmac_unref = g_hmac_unref(this : Hmac*) : Void
-  fun hmac_update = g_hmac_update(this : Hmac*, data : UInt8*, length : Int64) : Void
-
-  struct Hook # struct
-    data : Void*
-    next : LibGLib::Hook*
-    prev : LibGLib::Hook*
-    ref_count : UInt32
-    hook_id : UInt64
-    flags : UInt32
-    func : Void*
-    destroy : Void*
-  end
-  fun hook_compare_ids = g_hook_compare_ids(this : Hook*, sibling : LibGLib::Hook*) : Int32
-  fun hook_destroy = g_hook_destroy(hook_list : LibGLib::HookList*, hook_id : UInt64) : Bool
-  fun hook_destroy_link = g_hook_destroy_link(hook_list : LibGLib::HookList*, hook : LibGLib::Hook*) : Void
-  fun hook_free = g_hook_free(hook_list : LibGLib::HookList*, hook : LibGLib::Hook*) : Void
-  fun hook_insert_before = g_hook_insert_before(hook_list : LibGLib::HookList*, sibling : LibGLib::Hook*, hook : LibGLib::Hook*) : Void
-  fun hook_prepend = g_hook_prepend(hook_list : LibGLib::HookList*, hook : LibGLib::Hook*) : Void
-  fun hook_unref = g_hook_unref(hook_list : LibGLib::HookList*, hook : LibGLib::Hook*) : Void
-
-  struct HookList # struct
-    seq_id : UInt64
-    hook_size : UInt32
-    is_setup : UInt32
-    hooks : LibGLib::Hook*
-    dummy3 : Void*
-    finalize_hook : Void*
-    dummy : Void*
-  end
-  fun hook_list_clear = g_hook_list_clear(this : HookList*) : Void
-  fun hook_list_init = g_hook_list_init(this : HookList*, hook_size : UInt32) : Void
-  fun hook_list_invoke = g_hook_list_invoke(this : HookList*, may_recurse : Bool) : Void
-  fun hook_list_invoke_check = g_hook_list_invoke_check(this : HookList*, may_recurse : Bool) : Void
-
-  struct IConv # struct
-  end
-  fun i_conv_ = g_iconv(this : IConv*, inbuf : UInt8*, inbytes_left : UInt64*, outbuf : UInt8*, outbytes_left : UInt64*) : UInt64
-  fun i_conv_close = g_iconv_close(this : IConv*) : Int32
-
-  struct IOChannel # struct
-    ref_count : Int32
-    funcs : LibGLib::IOFuncs*
-    encoding : UInt8*
-    read_cd : LibGLib::IConv*
-    write_cd : LibGLib::IConv*
-    line_term : UInt8*
-    line_term_len : UInt32
-    buf_size : UInt64
-    read_buf : LibGLib::String*
-    encoded_read_buf : LibGLib::String*
-    write_buf : LibGLib::String*
-    partial_write_buf : Int8
-    use_buffer : UInt32
-    do_encode : UInt32
-    close_on_unref : UInt32
-    is_readable : UInt32
-    is_writeable : UInt32
-    is_seekable : UInt32
-    reserved1 : Void*
-    reserved2 : Void*
-  end
-  fun i_o_channel_new_file = g_io_channel_new_file(filename : UInt8*, mode : UInt8*, error : LibGLib::Error**) : LibGLib::IOChannel*
-  fun i_o_channel_unix_new = g_io_channel_unix_new(fd : Int32) : LibGLib::IOChannel*
-  fun i_o_channel_close = g_io_channel_close(this : IOChannel*) : Void
-  fun i_o_channel_flush = g_io_channel_flush(this : IOChannel*, error : LibGLib::Error**) : LibGLib::IOStatus
-  fun i_o_channel_get_buffer_condition = g_io_channel_get_buffer_condition(this : IOChannel*) : LibGLib::IOCondition
-  fun i_o_channel_get_buffer_size = g_io_channel_get_buffer_size(this : IOChannel*) : UInt64
-  fun i_o_channel_get_buffered = g_io_channel_get_buffered(this : IOChannel*) : Bool
-  fun i_o_channel_get_close_on_unref = g_io_channel_get_close_on_unref(this : IOChannel*) : Bool
-  fun i_o_channel_get_encoding = g_io_channel_get_encoding(this : IOChannel*) : UInt8*
-  fun i_o_channel_get_flags = g_io_channel_get_flags(this : IOChannel*) : LibGLib::IOFlags
-  fun i_o_channel_get_line_term = g_io_channel_get_line_term(this : IOChannel*, length : Int32*) : UInt8*
-  fun i_o_channel_init = g_io_channel_init(this : IOChannel*) : Void
-  fun i_o_channel_read = g_io_channel_read(this : IOChannel*, buf : UInt8*, count : UInt64, bytes_read : UInt64*) : LibGLib::IOError
-  fun i_o_channel_read_chars = g_io_channel_read_chars(this : IOChannel*, buf : UInt8**, count : UInt64, bytes_read : UInt64*, error : LibGLib::Error**) : LibGLib::IOStatus
-  fun i_o_channel_read_line = g_io_channel_read_line(this : IOChannel*, str_return : UInt8**, length : UInt64*, terminator_pos : UInt64*, error : LibGLib::Error**) : LibGLib::IOStatus
-  fun i_o_channel_read_line_string = g_io_channel_read_line_string(this : IOChannel*, buffer : LibGLib::String*, terminator_pos : UInt64*, error : LibGLib::Error**) : LibGLib::IOStatus
-  fun i_o_channel_read_to_end = g_io_channel_read_to_end(this : IOChannel*, str_return : UInt8**, length : UInt64*, error : LibGLib::Error**) : LibGLib::IOStatus
-  fun i_o_channel_read_unichar = g_io_channel_read_unichar(this : IOChannel*, thechar : UInt8*, error : LibGLib::Error**) : LibGLib::IOStatus
-  fun i_o_channel_ref = g_io_channel_ref(this : IOChannel*) : LibGLib::IOChannel*
-  fun i_o_channel_seek = g_io_channel_seek(this : IOChannel*, offset : Int64, type : LibGLib::SeekType) : LibGLib::IOError
-  fun i_o_channel_seek_position = g_io_channel_seek_position(this : IOChannel*, offset : Int64, type : LibGLib::SeekType, error : LibGLib::Error**) : LibGLib::IOStatus
-  fun i_o_channel_set_buffer_size = g_io_channel_set_buffer_size(this : IOChannel*, size : UInt64) : Void
-  fun i_o_channel_set_buffered = g_io_channel_set_buffered(this : IOChannel*, buffered : Bool) : Void
-  fun i_o_channel_set_close_on_unref = g_io_channel_set_close_on_unref(this : IOChannel*, do_close : Bool) : Void
-  fun i_o_channel_set_encoding = g_io_channel_set_encoding(this : IOChannel*, encoding : UInt8*, error : LibGLib::Error**) : LibGLib::IOStatus
-  fun i_o_channel_set_flags = g_io_channel_set_flags(this : IOChannel*, flags : LibGLib::IOFlags, error : LibGLib::Error**) : LibGLib::IOStatus
-  fun i_o_channel_set_line_term = g_io_channel_set_line_term(this : IOChannel*, line_term : UInt8*, length : Int32) : Void
-  fun i_o_channel_shutdown = g_io_channel_shutdown(this : IOChannel*, flush : Bool, error : LibGLib::Error**) : LibGLib::IOStatus
-  fun i_o_channel_unix_get_fd = g_io_channel_unix_get_fd(this : IOChannel*) : Int32
-  fun i_o_channel_unref = g_io_channel_unref(this : IOChannel*) : Void
-  fun i_o_channel_write = g_io_channel_write(this : IOChannel*, buf : UInt8*, count : UInt64, bytes_written : UInt64*) : LibGLib::IOError
-  fun i_o_channel_write_chars = g_io_channel_write_chars(this : IOChannel*, buf : UInt8*, count : Int64, bytes_written : UInt64*, error : LibGLib::Error**) : LibGLib::IOStatus
-  fun i_o_channel_write_unichar = g_io_channel_write_unichar(this : IOChannel*, thechar : UInt8, error : LibGLib::Error**) : LibGLib::IOStatus
-  fun i_o_channel_error_from_errno = g_io_channel_error_from_errno(en : Int32) : LibGLib::IOChannelError
-  fun i_o_channel_error_quark = g_io_channel_error_quark() : UInt32
-
-  struct IOFuncs # struct
-    io_read : Void*
-    io_write : Void*
-    io_seek : Void*
-    io_close : Void*
-    io_create_watch : Void*
-    io_free : Void*
-    io_set_flags : Void*
-    io_get_flags : Void*
-  end
-
-  struct KeyFile # struct
-  end
-  fun key_file_new = g_key_file_new() : LibGLib::KeyFile*
-  fun key_file_get_boolean = g_key_file_get_boolean(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : Bool
-  fun key_file_get_boolean_list = g_key_file_get_boolean_list(this : KeyFile*, group_name : UInt8*, key : UInt8*, length : UInt64*, error : LibGLib::Error**) : Bool*
-  fun key_file_get_comment = g_key_file_get_comment(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : UInt8*
-  fun key_file_get_double = g_key_file_get_double(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : Float64
-  fun key_file_get_double_list = g_key_file_get_double_list(this : KeyFile*, group_name : UInt8*, key : UInt8*, length : UInt64*, error : LibGLib::Error**) : Float64*
-  fun key_file_get_groups = g_key_file_get_groups(this : KeyFile*, length : UInt64*) : UInt8**
-  fun key_file_get_int64 = g_key_file_get_int64(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : Int64
-  fun key_file_get_integer = g_key_file_get_integer(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : Int32
-  fun key_file_get_integer_list = g_key_file_get_integer_list(this : KeyFile*, group_name : UInt8*, key : UInt8*, length : UInt64*, error : LibGLib::Error**) : Int32*
-  fun key_file_get_keys = g_key_file_get_keys(this : KeyFile*, group_name : UInt8*, length : UInt64*, error : LibGLib::Error**) : UInt8**
-  fun key_file_get_locale_string = g_key_file_get_locale_string(this : KeyFile*, group_name : UInt8*, key : UInt8*, locale : UInt8*, error : LibGLib::Error**) : UInt8*
-  fun key_file_get_locale_string_list = g_key_file_get_locale_string_list(this : KeyFile*, group_name : UInt8*, key : UInt8*, locale : UInt8*, length : UInt64*, error : LibGLib::Error**) : UInt8**
-  fun key_file_get_start_group = g_key_file_get_start_group(this : KeyFile*) : UInt8*
-  fun key_file_get_string = g_key_file_get_string(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : UInt8*
-  fun key_file_get_string_list = g_key_file_get_string_list(this : KeyFile*, group_name : UInt8*, key : UInt8*, length : UInt64*, error : LibGLib::Error**) : UInt8**
-  fun key_file_get_uint64 = g_key_file_get_uint64(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : UInt64
-  fun key_file_get_value = g_key_file_get_value(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : UInt8*
-  fun key_file_has_group = g_key_file_has_group(this : KeyFile*, group_name : UInt8*) : Bool
-  fun key_file_load_from_data = g_key_file_load_from_data(this : KeyFile*, data : UInt8*, length : UInt64, flags : LibGLib::KeyFileFlags, error : LibGLib::Error**) : Bool
-  fun key_file_load_from_data_dirs = g_key_file_load_from_data_dirs(this : KeyFile*, file : UInt8*, full_path : UInt8**, flags : LibGLib::KeyFileFlags, error : LibGLib::Error**) : Bool
-  fun key_file_load_from_dirs = g_key_file_load_from_dirs(this : KeyFile*, file : UInt8*, search_dirs : UInt8**, full_path : UInt8**, flags : LibGLib::KeyFileFlags, error : LibGLib::Error**) : Bool
-  fun key_file_load_from_file = g_key_file_load_from_file(this : KeyFile*, file : UInt8*, flags : LibGLib::KeyFileFlags, error : LibGLib::Error**) : Bool
-  fun key_file_remove_comment = g_key_file_remove_comment(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : Bool
-  fun key_file_remove_group = g_key_file_remove_group(this : KeyFile*, group_name : UInt8*, error : LibGLib::Error**) : Bool
-  fun key_file_remove_key = g_key_file_remove_key(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : Bool
-  fun key_file_save_to_file = g_key_file_save_to_file(this : KeyFile*, filename : UInt8*, error : LibGLib::Error**) : Bool
-  fun key_file_set_boolean = g_key_file_set_boolean(this : KeyFile*, group_name : UInt8*, key : UInt8*, value : Bool) : Void
-  fun key_file_set_boolean_list = g_key_file_set_boolean_list(this : KeyFile*, group_name : UInt8*, key : UInt8*, list : Bool*, length : UInt64) : Void
-  fun key_file_set_comment = g_key_file_set_comment(this : KeyFile*, group_name : UInt8*, key : UInt8*, comment : UInt8*, error : LibGLib::Error**) : Bool
-  fun key_file_set_double = g_key_file_set_double(this : KeyFile*, group_name : UInt8*, key : UInt8*, value : Float64) : Void
-  fun key_file_set_double_list = g_key_file_set_double_list(this : KeyFile*, group_name : UInt8*, key : UInt8*, list : Float64*, length : UInt64) : Void
-  fun key_file_set_int64 = g_key_file_set_int64(this : KeyFile*, group_name : UInt8*, key : UInt8*, value : Int64) : Void
-  fun key_file_set_integer = g_key_file_set_integer(this : KeyFile*, group_name : UInt8*, key : UInt8*, value : Int32) : Void
-  fun key_file_set_integer_list = g_key_file_set_integer_list(this : KeyFile*, group_name : UInt8*, key : UInt8*, list : Int32*, length : UInt64) : Void
-  fun key_file_set_list_separator = g_key_file_set_list_separator(this : KeyFile*, separator : Int8) : Void
-  fun key_file_set_locale_string = g_key_file_set_locale_string(this : KeyFile*, group_name : UInt8*, key : UInt8*, locale : UInt8*, string : UInt8*) : Void
-  fun key_file_set_locale_string_list = g_key_file_set_locale_string_list(this : KeyFile*, group_name : UInt8*, key : UInt8*, locale : UInt8*, list : UInt8**, length : UInt64) : Void
-  fun key_file_set_string = g_key_file_set_string(this : KeyFile*, group_name : UInt8*, key : UInt8*, string : UInt8*) : Void
-  fun key_file_set_string_list = g_key_file_set_string_list(this : KeyFile*, group_name : UInt8*, key : UInt8*, list : UInt8**, length : UInt64) : Void
-  fun key_file_set_uint64 = g_key_file_set_uint64(this : KeyFile*, group_name : UInt8*, key : UInt8*, value : UInt64) : Void
-  fun key_file_set_value = g_key_file_set_value(this : KeyFile*, group_name : UInt8*, key : UInt8*, value : UInt8*) : Void
-  fun key_file_to_data = g_key_file_to_data(this : KeyFile*, length : UInt64*, error : LibGLib::Error**) : UInt8*
-  fun key_file_unref = g_key_file_unref(this : KeyFile*) : Void
-  fun key_file_error_quark = g_key_file_error_quark() : UInt32
-
-  struct List # struct
-    data : Void*
-    next : Void**
-    prev : Void**
-  end
-
-  struct MainContext # struct
-  end
-  fun main_context_new = g_main_context_new() : LibGLib::MainContext*
-  fun main_context_acquire = g_main_context_acquire(this : MainContext*) : Bool
-  fun main_context_add_poll = g_main_context_add_poll(this : MainContext*, fd : LibGLib::PollFD*, priority : Int32) : Void
-  fun main_context_check = g_main_context_check(this : MainContext*, max_priority : Int32, fds : LibGLib::PollFD*, n_fds : Int32) : Int32
-  fun main_context_dispatch = g_main_context_dispatch(this : MainContext*) : Void
-  fun main_context_find_source_by_funcs_user_data = g_main_context_find_source_by_funcs_user_data(this : MainContext*, funcs : LibGLib::SourceFuncs*, user_data : Void*) : LibGLib::Source*
-  fun main_context_find_source_by_id = g_main_context_find_source_by_id(this : MainContext*, source_id : UInt32) : LibGLib::Source*
-  fun main_context_find_source_by_user_data = g_main_context_find_source_by_user_data(this : MainContext*, user_data : Void*) : LibGLib::Source*
-  fun main_context_invoke_full = g_main_context_invoke_full(this : MainContext*, priority : Int32, function : Void*, data : Void*, notify : Void*) : Void
-  fun main_context_is_owner = g_main_context_is_owner(this : MainContext*) : Bool
-  fun main_context_iteration = g_main_context_iteration(this : MainContext*, may_block : Bool) : Bool
-  fun main_context_pending = g_main_context_pending(this : MainContext*) : Bool
-  fun main_context_pop_thread_default = g_main_context_pop_thread_default(this : MainContext*) : Void
-  fun main_context_prepare = g_main_context_prepare(this : MainContext*, priority : Int32*) : Bool
-  fun main_context_push_thread_default = g_main_context_push_thread_default(this : MainContext*) : Void
-  fun main_context_query = g_main_context_query(this : MainContext*, max_priority : Int32, timeout_ : Int32*, fds : LibGLib::PollFD**, n_fds : Int32*) : Int32
-  fun main_context_ref = g_main_context_ref(this : MainContext*) : LibGLib::MainContext*
-  fun main_context_release = g_main_context_release(this : MainContext*) : Void
-  fun main_context_remove_poll = g_main_context_remove_poll(this : MainContext*, fd : LibGLib::PollFD*) : Void
-  fun main_context_unref = g_main_context_unref(this : MainContext*) : Void
-  fun main_context_wait = g_main_context_wait(this : MainContext*, cond : LibGLib::Cond*, mutex : LibGLib::Mutex*) : Bool
-  fun main_context_wakeup = g_main_context_wakeup(this : MainContext*) : Void
-  fun main_context_default = g_main_context_default() : LibGLib::MainContext*
-  fun main_context_get_thread_default = g_main_context_get_thread_default() : LibGLib::MainContext*
-  fun main_context_ref_thread_default = g_main_context_ref_thread_default() : LibGLib::MainContext*
-
-  struct MainLoop # struct
-  end
-  fun main_loop_new = g_main_loop_new(context : LibGLib::MainContext*, is_running : Bool) : LibGLib::MainLoop*
-  fun main_loop_get_context = g_main_loop_get_context(this : MainLoop*) : LibGLib::MainContext*
-  fun main_loop_is_running = g_main_loop_is_running(this : MainLoop*) : Bool
-  fun main_loop_quit = g_main_loop_quit(this : MainLoop*) : Void
-  fun main_loop_ref = g_main_loop_ref(this : MainLoop*) : LibGLib::MainLoop*
-  fun main_loop_run = g_main_loop_run(this : MainLoop*) : Void
-  fun main_loop_unref = g_main_loop_unref(this : MainLoop*) : Void
-
-  struct MappedFile # struct
-  end
-  fun mapped_file_new = g_mapped_file_new(filename : UInt8*, writable : Bool, error : LibGLib::Error**) : LibGLib::MappedFile*
-  fun mapped_file_new_from_fd = g_mapped_file_new_from_fd(fd : Int32, writable : Bool, error : LibGLib::Error**) : LibGLib::MappedFile*
-  fun mapped_file_free = g_mapped_file_free(this : MappedFile*) : Void
-  fun mapped_file_get_bytes = g_mapped_file_get_bytes(this : MappedFile*) : LibGLib::Bytes*
-  fun mapped_file_get_contents = g_mapped_file_get_contents(this : MappedFile*) : UInt8*
-  fun mapped_file_get_length = g_mapped_file_get_length(this : MappedFile*) : UInt64
-  fun mapped_file_ref = g_mapped_file_ref(this : MappedFile*) : LibGLib::MappedFile*
-  fun mapped_file_unref = g_mapped_file_unref(this : MappedFile*) : Void
-
-  struct MarkupParseContext # struct
-  end
-  fun markup_parse_context_new = g_markup_parse_context_new(parser : LibGLib::MarkupParser*, flags : LibGLib::MarkupParseFlags, user_data : Void*, user_data_dnotify : Void*) : LibGLib::MarkupParseContext*
-  fun markup_parse_context_end_parse = g_markup_parse_context_end_parse(this : MarkupParseContext*, error : LibGLib::Error**) : Bool
-  fun markup_parse_context_free = g_markup_parse_context_free(this : MarkupParseContext*) : Void
-  fun markup_parse_context_get_element = g_markup_parse_context_get_element(this : MarkupParseContext*) : UInt8*
-  fun markup_parse_context_get_position = g_markup_parse_context_get_position(this : MarkupParseContext*, line_number : Int32*, char_number : Int32*) : Void
-  fun markup_parse_context_parse = g_markup_parse_context_parse(this : MarkupParseContext*, text : UInt8*, text_len : Int64, error : LibGLib::Error**) : Bool
-  fun markup_parse_context_push = g_markup_parse_context_push(this : MarkupParseContext*, parser : LibGLib::MarkupParser*, user_data : Void*) : Void
-  fun markup_parse_context_ref = g_markup_parse_context_ref(this : MarkupParseContext*) : LibGLib::MarkupParseContext*
-  fun markup_parse_context_unref = g_markup_parse_context_unref(this : MarkupParseContext*) : Void
-
-  struct MarkupParser # struct
-    start_element : Void*
-    end_element : Void*
-    text : Void*
-    passthrough : Void*
-    error : Void*
-  end
-
-  struct MatchInfo # struct
-  end
-  fun match_info_expand_references = g_match_info_expand_references(this : MatchInfo*, string_to_expand : UInt8*, error : LibGLib::Error**) : UInt8*
-  fun match_info_fetch = g_match_info_fetch(this : MatchInfo*, match_num : Int32) : UInt8*
-  fun match_info_fetch_all = g_match_info_fetch_all(this : MatchInfo*) : UInt8**
-  fun match_info_fetch_named = g_match_info_fetch_named(this : MatchInfo*, name : UInt8*) : UInt8*
-  fun match_info_fetch_named_pos = g_match_info_fetch_named_pos(this : MatchInfo*, name : UInt8*, start_pos : Int32*, end_pos : Int32*) : Bool
-  fun match_info_fetch_pos = g_match_info_fetch_pos(this : MatchInfo*, match_num : Int32, start_pos : Int32*, end_pos : Int32*) : Bool
-  fun match_info_free = g_match_info_free(this : MatchInfo*) : Void
-  fun match_info_get_match_count = g_match_info_get_match_count(this : MatchInfo*) : Int32
-  fun match_info_get_regex = g_match_info_get_regex(this : MatchInfo*) : LibGLib::Regex*
-  fun match_info_get_string = g_match_info_get_string(this : MatchInfo*) : UInt8*
-  fun match_info_is_partial_match = g_match_info_is_partial_match(this : MatchInfo*) : Bool
-  fun match_info_matches = g_match_info_matches(this : MatchInfo*) : Bool
-  fun match_info_next = g_match_info_next(this : MatchInfo*, error : LibGLib::Error**) : Bool
-  fun match_info_ref = g_match_info_ref(this : MatchInfo*) : LibGLib::MatchInfo*
-  fun match_info_unref = g_match_info_unref(this : MatchInfo*) : Void
-
-  struct MemVTable # struct
-    malloc : Void*
-    realloc : Void*
-    free : Void*
-    calloc : Void*
-    try_malloc : Void*
-    try_realloc : Void*
-  end
-
-  struct Node # struct
-    data : Void*
-    next : LibGLib::Node*
-    prev : LibGLib::Node*
-    parent : LibGLib::Node*
-    children : LibGLib::Node*
-  end
-  fun node_child_index = g_node_child_index(this : Node*, data : Void*) : Int32
-  fun node_child_position = g_node_child_position(this : Node*, child : LibGLib::Node*) : Int32
-  fun node_depth = g_node_depth(this : Node*) : UInt32
-  fun node_destroy = g_node_destroy(this : Node*) : Void
-  fun node_is_ancestor = g_node_is_ancestor(this : Node*, descendant : LibGLib::Node*) : Bool
-  fun node_max_height = g_node_max_height(this : Node*) : UInt32
-  fun node_n_children = g_node_n_children(this : Node*) : UInt32
-  fun node_n_nodes = g_node_n_nodes(this : Node*, flags : LibGLib::TraverseFlags) : UInt32
-  fun node_reverse_children = g_node_reverse_children(this : Node*) : Void
-  fun node_unlink = g_node_unlink(this : Node*) : Void
-
-  struct Once # struct
-    status : LibGLib::OnceStatus
-    retval : Void*
-  end
-  fun once_init_enter = g_once_init_enter(location : Void*) : Bool
-  fun once_init_leave = g_once_init_leave(location : Void*, result : UInt64) : Void
-
-  struct OptionContext # struct
-  end
-  fun option_context_add_group = g_option_context_add_group(this : OptionContext*, group : LibGLib::OptionGroup*) : Void
-  fun option_context_add_main_entries = g_option_context_add_main_entries(this : OptionContext*, entries : LibGLib::OptionEntry*, translation_domain : UInt8*) : Void
-  fun option_context_free = g_option_context_free(this : OptionContext*) : Void
-  fun option_context_get_description = g_option_context_get_description(this : OptionContext*) : UInt8*
-  fun option_context_get_help = g_option_context_get_help(this : OptionContext*, main_help : Bool, group : LibGLib::OptionGroup*) : UInt8*
-  fun option_context_get_help_enabled = g_option_context_get_help_enabled(this : OptionContext*) : Bool
-  fun option_context_get_ignore_unknown_options = g_option_context_get_ignore_unknown_options(this : OptionContext*) : Bool
-  fun option_context_get_summary = g_option_context_get_summary(this : OptionContext*) : UInt8*
-  fun option_context_parse = g_option_context_parse(this : OptionContext*, argc : Int32, argv : UInt8**, error : LibGLib::Error**) : Bool
-  fun option_context_parse_strv = g_option_context_parse_strv(this : OptionContext*, arguments : UInt8**, error : LibGLib::Error**) : Bool
-  fun option_context_set_description = g_option_context_set_description(this : OptionContext*, description : UInt8*) : Void
-  fun option_context_set_help_enabled = g_option_context_set_help_enabled(this : OptionContext*, help_enabled : Bool) : Void
-  fun option_context_set_ignore_unknown_options = g_option_context_set_ignore_unknown_options(this : OptionContext*, ignore_unknown : Bool) : Void
-  fun option_context_set_main_group = g_option_context_set_main_group(this : OptionContext*, group : LibGLib::OptionGroup*) : Void
-  fun option_context_set_summary = g_option_context_set_summary(this : OptionContext*, summary : UInt8*) : Void
-  fun option_context_set_translate_func = g_option_context_set_translate_func(this : OptionContext*, func : Void*, data : Void*, destroy_notify : Void*) : Void
-  fun option_context_set_translation_domain = g_option_context_set_translation_domain(this : OptionContext*, domain : UInt8*) : Void
-
-  struct OptionEntry # struct
-    long_name : UInt8*
-    short_name : Int8
-    flags : Int32
-    arg : LibGLib::OptionArg
-    arg_data : Void*
-    description : UInt8*
-    arg_description : UInt8*
-  end
-
-  struct OptionGroup # struct
-  end
-  fun option_group_add_entries = g_option_group_add_entries(this : OptionGroup*, entries : LibGLib::OptionEntry*) : Void
-  fun option_group_free = g_option_group_free(this : OptionGroup*) : Void
-  fun option_group_set_translate_func = g_option_group_set_translate_func(this : OptionGroup*, func : Void*, data : Void*, destroy_notify : Void*) : Void
-  fun option_group_set_translation_domain = g_option_group_set_translation_domain(this : OptionGroup*, domain : UInt8*) : Void
-
-  struct PatternSpec # struct
-  end
-  fun pattern_spec_equal = g_pattern_spec_equal(this : PatternSpec*, pspec2 : LibGLib::PatternSpec*) : Bool
-  fun pattern_spec_free = g_pattern_spec_free(this : PatternSpec*) : Void
-
-  struct PollFD # struct
-    fd : Int32
-    events : UInt16
-    revents : UInt16
-  end
-
-  struct Private # struct
-    p : Void*
-    notify : Void*
-    future : Void*
-  end
-  fun private_replace = g_private_replace(this : Private*, value : Void*) : Void
-  fun private_set = g_private_set(this : Private*, value : Void*) : Void
-
-  struct PtrArray # struct
-    pdata : Void*
-    len : UInt32
-  end
-
-  struct Queue # struct
-    head : Void**
-    tail : Void**
-    length : UInt32
-  end
-  fun queue_clear = g_queue_clear(this : Queue*) : Void
-  fun queue_free = g_queue_free(this : Queue*) : Void
-  fun queue_free_full = g_queue_free_full(this : Queue*, free_func : Void*) : Void
-  fun queue_get_length = g_queue_get_length(this : Queue*) : UInt32
-  fun queue_index = g_queue_index(this : Queue*, data : Void*) : Int32
-  fun queue_init = g_queue_init(this : Queue*) : Void
-  fun queue_is_empty = g_queue_is_empty(this : Queue*) : Bool
-  fun queue_push_head = g_queue_push_head(this : Queue*, data : Void*) : Void
-  fun queue_push_nth = g_queue_push_nth(this : Queue*, data : Void*, n : Int32) : Void
-  fun queue_push_tail = g_queue_push_tail(this : Queue*, data : Void*) : Void
-  fun queue_remove = g_queue_remove(this : Queue*, data : Void*) : Bool
-  fun queue_remove_all = g_queue_remove_all(this : Queue*, data : Void*) : UInt32
-  fun queue_reverse = g_queue_reverse(this : Queue*) : Void
-
-  struct RWLock # struct
-    p : Void*
-    i : UInt32
-  end
-  fun r_w_lock_clear = g_rw_lock_clear(this : RWLock*) : Void
-  fun r_w_lock_init = g_rw_lock_init(this : RWLock*) : Void
-  fun r_w_lock_reader_lock = g_rw_lock_reader_lock(this : RWLock*) : Void
-  fun r_w_lock_reader_trylock = g_rw_lock_reader_trylock(this : RWLock*) : Bool
-  fun r_w_lock_reader_unlock = g_rw_lock_reader_unlock(this : RWLock*) : Void
-  fun r_w_lock_writer_lock = g_rw_lock_writer_lock(this : RWLock*) : Void
-  fun r_w_lock_writer_trylock = g_rw_lock_writer_trylock(this : RWLock*) : Bool
-  fun r_w_lock_writer_unlock = g_rw_lock_writer_unlock(this : RWLock*) : Void
-
-  struct Rand # struct
-  end
-  fun rand_double = g_rand_double(this : Rand*) : Float64
-  fun rand_double_range = g_rand_double_range(this : Rand*, begin : Float64, end : Float64) : Float64
-  fun rand_free = g_rand_free(this : Rand*) : Void
-  fun rand_int = g_rand_int(this : Rand*) : UInt32
-  fun rand_int_range = g_rand_int_range(this : Rand*, begin : Int32, end : Int32) : Int32
-  fun rand_set_seed = g_rand_set_seed(this : Rand*, seed : UInt32) : Void
-  fun rand_set_seed_array = g_rand_set_seed_array(this : Rand*, seed : UInt32*, seed_length : UInt32) : Void
-
-  struct RecMutex # struct
-    p : Void*
-    i : UInt32
-  end
-  fun rec_mutex_clear = g_rec_mutex_clear(this : RecMutex*) : Void
-  fun rec_mutex_init = g_rec_mutex_init(this : RecMutex*) : Void
-  fun rec_mutex_lock = g_rec_mutex_lock(this : RecMutex*) : Void
-  fun rec_mutex_trylock = g_rec_mutex_trylock(this : RecMutex*) : Bool
-  fun rec_mutex_unlock = g_rec_mutex_unlock(this : RecMutex*) : Void
-
-  struct Regex # struct
-  end
-  fun regex_new = g_regex_new(pattern : UInt8*, compile_options : LibGLib::RegexCompileFlags, match_options : LibGLib::RegexMatchFlags, error : LibGLib::Error**) : LibGLib::Regex*
-  fun regex_get_capture_count = g_regex_get_capture_count(this : Regex*) : Int32
-  fun regex_get_compile_flags = g_regex_get_compile_flags(this : Regex*) : LibGLib::RegexCompileFlags
-  fun regex_get_has_cr_or_lf = g_regex_get_has_cr_or_lf(this : Regex*) : Bool
-  fun regex_get_match_flags = g_regex_get_match_flags(this : Regex*) : LibGLib::RegexMatchFlags
-  fun regex_get_max_backref = g_regex_get_max_backref(this : Regex*) : Int32
-  fun regex_get_max_lookbehind = g_regex_get_max_lookbehind(this : Regex*) : Int32
-  fun regex_get_pattern = g_regex_get_pattern(this : Regex*) : UInt8*
-  fun regex_get_string_number = g_regex_get_string_number(this : Regex*, name : UInt8*) : Int32
-  fun regex_match = g_regex_match(this : Regex*, string : UInt8*, match_options : LibGLib::RegexMatchFlags, match_info : LibGLib::MatchInfo**) : Bool
-  fun regex_match_all = g_regex_match_all(this : Regex*, string : UInt8*, match_options : LibGLib::RegexMatchFlags, match_info : LibGLib::MatchInfo**) : Bool
-  fun regex_match_all_full = g_regex_match_all_full(this : Regex*, string : UInt8**, string_len : Int64, start_position : Int32, match_options : LibGLib::RegexMatchFlags, match_info : LibGLib::MatchInfo**, error : LibGLib::Error**) : Bool
-  fun regex_match_full = g_regex_match_full(this : Regex*, string : UInt8**, string_len : Int64, start_position : Int32, match_options : LibGLib::RegexMatchFlags, match_info : LibGLib::MatchInfo**, error : LibGLib::Error**) : Bool
-  fun regex_ref = g_regex_ref(this : Regex*) : LibGLib::Regex*
-  fun regex_replace = g_regex_replace(this : Regex*, string : UInt8**, string_len : Int64, start_position : Int32, replacement : UInt8*, match_options : LibGLib::RegexMatchFlags, error : LibGLib::Error**) : UInt8*
-  fun regex_replace_literal = g_regex_replace_literal(this : Regex*, string : UInt8**, string_len : Int64, start_position : Int32, replacement : UInt8*, match_options : LibGLib::RegexMatchFlags, error : LibGLib::Error**) : UInt8*
-  fun regex_split = g_regex_split(this : Regex*, string : UInt8*, match_options : LibGLib::RegexMatchFlags) : UInt8**
-  fun regex_split_full = g_regex_split_full(this : Regex*, string : UInt8**, string_len : Int64, start_position : Int32, match_options : LibGLib::RegexMatchFlags, max_tokens : Int32, error : LibGLib::Error**) : UInt8**
-  fun regex_unref = g_regex_unref(this : Regex*) : Void
-  fun regex_check_replacement = g_regex_check_replacement(replacement : UInt8*, has_references : Bool*, error : LibGLib::Error**) : Bool
-  fun regex_error_quark = g_regex_error_quark() : UInt32
-  fun regex_escape_nul = g_regex_escape_nul(string : UInt8*, length : Int32) : UInt8*
-  fun regex_escape_string = g_regex_escape_string(string : UInt8**, length : Int32) : UInt8*
-  fun regex_match_simple = g_regex_match_simple(pattern : UInt8*, string : UInt8*, compile_options : LibGLib::RegexCompileFlags, match_options : LibGLib::RegexMatchFlags) : Bool
-  fun regex_split_simple = g_regex_split_simple(pattern : UInt8*, string : UInt8*, compile_options : LibGLib::RegexCompileFlags, match_options : LibGLib::RegexMatchFlags) : UInt8**
-
-  struct SList # struct
-    data : Void*
-    next : Void**
-  end
-
-  struct Scanner # struct
-    user_data : Void*
-    max_parse_errors : UInt32
-    parse_errors : UInt32
-    input_name : UInt8*
-    qdata : LibGLib::Data*
-    config : LibGLib::ScannerConfig*
-    token : LibGLib::TokenType
-    value : LibGLib::TokenValue
-    line : UInt32
-    position : UInt32
-    next_token : LibGLib::TokenType
-    next_value : LibGLib::TokenValue
-    next_line : UInt32
-    next_position : UInt32
-    symbol_table : Void**
-    input_fd : Int32
-    text : UInt8*
-    text_end : UInt8*
-    buffer : UInt8*
-    scope_id : UInt32
-    msg_handler : Void*
-  end
-  fun scanner_cur_line = g_scanner_cur_line(this : Scanner*) : UInt32
-  fun scanner_cur_position = g_scanner_cur_position(this : Scanner*) : UInt32
-  fun scanner_cur_token = g_scanner_cur_token(this : Scanner*) : LibGLib::TokenType
-  fun scanner_destroy = g_scanner_destroy(this : Scanner*) : Void
-  fun scanner_eof = g_scanner_eof(this : Scanner*) : Bool
-  fun scanner_get_next_token = g_scanner_get_next_token(this : Scanner*) : LibGLib::TokenType
-  fun scanner_input_file = g_scanner_input_file(this : Scanner*, input_fd : Int32) : Void
-  fun scanner_input_text = g_scanner_input_text(this : Scanner*, text : UInt8*, text_len : UInt32) : Void
-  fun scanner_peek_next_token = g_scanner_peek_next_token(this : Scanner*) : LibGLib::TokenType
-  fun scanner_scope_add_symbol = g_scanner_scope_add_symbol(this : Scanner*, scope_id : UInt32, symbol : UInt8*, value : Void*) : Void
-  fun scanner_scope_remove_symbol = g_scanner_scope_remove_symbol(this : Scanner*, scope_id : UInt32, symbol : UInt8*) : Void
-  fun scanner_set_scope = g_scanner_set_scope(this : Scanner*, scope_id : UInt32) : UInt32
-  fun scanner_sync_file_offset = g_scanner_sync_file_offset(this : Scanner*) : Void
-  fun scanner_unexp_token = g_scanner_unexp_token(this : Scanner*, expected_token : LibGLib::TokenType, identifier_spec : UInt8*, symbol_spec : UInt8*, symbol_name : UInt8*, message : UInt8*, is_error : Int32) : Void
-
-  struct ScannerConfig # struct
-    cset_skip_characters : UInt8*
-    cset_identifier_first : UInt8*
-    cset_identifier_nth : UInt8*
-    cpair_comment_single : UInt8*
-    case_sensitive : UInt32
-    skip_comment_multi : UInt32
-    skip_comment_single : UInt32
-    scan_comment_multi : UInt32
-    scan_identifier : UInt32
-    scan_identifier_1char : UInt32
-    scan_identifier_NULL : UInt32
-    scan_symbols : UInt32
-    scan_binary : UInt32
-    scan_octal : UInt32
-    scan_float : UInt32
-    scan_hex : UInt32
-    scan_hex_dollar : UInt32
-    scan_string_sq : UInt32
-    scan_string_dq : UInt32
-    numbers_2_int : UInt32
-    int_2_float : UInt32
-    identifier_2_string : UInt32
-    char_2_token : UInt32
-    symbol_2_token : UInt32
-    scope_0_fallback : UInt32
-    store_int64 : UInt32
-    padding_dummy : UInt32
-  end
-
-  struct Sequence # struct
-  end
-  fun sequence_free = g_sequence_free(this : Sequence*) : Void
-  fun sequence_get_length = g_sequence_get_length(this : Sequence*) : Int32
-  fun sequence_move = g_sequence_move(src : LibGLib::SequenceIter*, dest : LibGLib::SequenceIter*) : Void
-  fun sequence_move_range = g_sequence_move_range(dest : LibGLib::SequenceIter*, begin : LibGLib::SequenceIter*, end : LibGLib::SequenceIter*) : Void
-  fun sequence_remove = g_sequence_remove(iter : LibGLib::SequenceIter*) : Void
-  fun sequence_remove_range = g_sequence_remove_range(begin : LibGLib::SequenceIter*, end : LibGLib::SequenceIter*) : Void
-  fun sequence_set = g_sequence_set(iter : LibGLib::SequenceIter*, data : Void*) : Void
-  fun sequence_swap = g_sequence_swap(a : LibGLib::SequenceIter*, b : LibGLib::SequenceIter*) : Void
-
-  struct SequenceIter # struct
-  end
-  fun sequence_iter_compare = g_sequence_iter_compare(this : SequenceIter*, b : LibGLib::SequenceIter*) : Int32
-  fun sequence_iter_get_position = g_sequence_iter_get_position(this : SequenceIter*) : Int32
-  fun sequence_iter_is_begin = g_sequence_iter_is_begin(this : SequenceIter*) : Bool
-  fun sequence_iter_is_end = g_sequence_iter_is_end(this : SequenceIter*) : Bool
-
-  struct Source # struct
-    callback_data : Void*
-    callback_funcs : LibGLib::SourceCallbackFuncs*
-    source_funcs : LibGLib::SourceFuncs*
-    ref_count : UInt32
-    context : LibGLib::MainContext*
-    priority : Int32
-    flags : UInt32
-    source_id : UInt32
-    poll_fds : Void**
-    prev : LibGLib::Source*
-    next : LibGLib::Source*
-    name : UInt8*
-    priv : LibGLib::SourcePrivate*
-  end
-  fun source_new = g_source_new(source_funcs : LibGLib::SourceFuncs*, struct_size : UInt32) : LibGLib::Source*
-  fun source_add_child_source = g_source_add_child_source(this : Source*, child_source : LibGLib::Source*) : Void
-  fun source_add_poll = g_source_add_poll(this : Source*, fd : LibGLib::PollFD*) : Void
-  fun source_attach = g_source_attach(this : Source*, context : LibGLib::MainContext*) : UInt32
-  fun source_destroy = g_source_destroy(this : Source*) : Void
-  fun source_get_can_recurse = g_source_get_can_recurse(this : Source*) : Bool
-  fun source_get_context = g_source_get_context(this : Source*) : LibGLib::MainContext*
-  fun source_get_current_time = g_source_get_current_time(this : Source*, timeval : LibGLib::TimeVal*) : Void
-  fun source_get_id = g_source_get_id(this : Source*) : UInt32
-  fun source_get_name = g_source_get_name(this : Source*) : UInt8*
-  fun source_get_priority = g_source_get_priority(this : Source*) : Int32
-  fun source_get_ready_time = g_source_get_ready_time(this : Source*) : Int64
-  fun source_get_time = g_source_get_time(this : Source*) : Int64
-  fun source_is_destroyed = g_source_is_destroyed(this : Source*) : Bool
-  fun source_modify_unix_fd = g_source_modify_unix_fd(this : Source*, tag : Void*, new_events : LibGLib::IOCondition) : Void
-  fun source_query_unix_fd = g_source_query_unix_fd(this : Source*, tag : Void*) : LibGLib::IOCondition
-  fun source_ref = g_source_ref(this : Source*) : LibGLib::Source*
-  fun source_remove_child_source = g_source_remove_child_source(this : Source*, child_source : LibGLib::Source*) : Void
-  fun source_remove_poll = g_source_remove_poll(this : Source*, fd : LibGLib::PollFD*) : Void
-  fun source_remove_unix_fd = g_source_remove_unix_fd(this : Source*, tag : Void*) : Void
-  fun source_set_callback = g_source_set_callback(this : Source*, func : Void*, data : Void*, notify : Void*) : Void
-  fun source_set_callback_indirect = g_source_set_callback_indirect(this : Source*, callback_data : Void*, callback_funcs : LibGLib::SourceCallbackFuncs*) : Void
-  fun source_set_can_recurse = g_source_set_can_recurse(this : Source*, can_recurse : Bool) : Void
-  fun source_set_funcs = g_source_set_funcs(this : Source*, funcs : LibGLib::SourceFuncs*) : Void
-  fun source_set_name = g_source_set_name(this : Source*, name : UInt8*) : Void
-  fun source_set_priority = g_source_set_priority(this : Source*, priority : Int32) : Void
-  fun source_set_ready_time = g_source_set_ready_time(this : Source*, ready_time : Int64) : Void
-  fun source_unref = g_source_unref(this : Source*) : Void
-  fun source_remove = g_source_remove(tag : UInt32) : Bool
-  fun source_remove_by_funcs_user_data = g_source_remove_by_funcs_user_data(funcs : LibGLib::SourceFuncs*, user_data : Void*) : Bool
-  fun source_remove_by_user_data = g_source_remove_by_user_data(user_data : Void*) : Bool
-  fun source_set_name_by_id = g_source_set_name_by_id(tag : UInt32, name : UInt8*) : Void
-
-  struct SourceCallbackFuncs # struct
-    ref : Void*
-    unref : Void*
-    get : Void*
-  end
-
-  struct SourceFuncs # struct
-    prepare : Void*
-    check : Void*
-    dispatch : Void*
-    finalize : Void*
-    closure_callback : Void*
-    closure_marshal : Void*
-  end
-
-  struct SourcePrivate # struct
-  end
-
-  struct StatBuf # struct
-  end
-
-  struct String # struct
-    str : UInt8*
-    len : UInt64
-    allocated_len : UInt64
-  end
-  fun string_append = g_string_append(this : String*, val : UInt8*) : LibGLib::String*
-  fun string_append_c = g_string_append_c(this : String*, c : Int8) : LibGLib::String*
-  fun string_append_len = g_string_append_len(this : String*, val : UInt8*, len : Int64) : LibGLib::String*
-  fun string_append_unichar = g_string_append_unichar(this : String*, wc : UInt8) : LibGLib::String*
-  fun string_append_uri_escaped = g_string_append_uri_escaped(this : String*, unescaped : UInt8*, reserved_chars_allowed : UInt8*, allow_utf8 : Bool) : LibGLib::String*
-  fun string_ascii_down = g_string_ascii_down(this : String*) : LibGLib::String*
-  fun string_ascii_up = g_string_ascii_up(this : String*) : LibGLib::String*
-  fun string_assign = g_string_assign(this : String*, rval : UInt8*) : LibGLib::String*
-  fun string_down = g_string_down(this : String*) : LibGLib::String*
-  fun string_equal = g_string_equal(this : String*, v2 : LibGLib::String*) : Bool
-  fun string_erase = g_string_erase(this : String*, pos : Int64, len : Int64) : LibGLib::String*
-  fun string_free = g_string_free(this : String*, free_segment : Bool) : UInt8*
-  fun string_free_to_bytes = g_string_free_to_bytes(this : String*) : LibGLib::Bytes*
-  fun string_hash = g_string_hash(this : String*) : UInt32
-  fun string_insert = g_string_insert(this : String*, pos : Int64, val : UInt8*) : LibGLib::String*
-  fun string_insert_c = g_string_insert_c(this : String*, pos : Int64, c : Int8) : LibGLib::String*
-  fun string_insert_len = g_string_insert_len(this : String*, pos : Int64, val : UInt8*, len : Int64) : LibGLib::String*
-  fun string_insert_unichar = g_string_insert_unichar(this : String*, pos : Int64, wc : UInt8) : LibGLib::String*
-  fun string_overwrite = g_string_overwrite(this : String*, pos : UInt64, val : UInt8*) : LibGLib::String*
-  fun string_overwrite_len = g_string_overwrite_len(this : String*, pos : UInt64, val : UInt8*, len : Int64) : LibGLib::String*
-  fun string_prepend = g_string_prepend(this : String*, val : UInt8*) : LibGLib::String*
-  fun string_prepend_c = g_string_prepend_c(this : String*, c : Int8) : LibGLib::String*
-  fun string_prepend_len = g_string_prepend_len(this : String*, val : UInt8*, len : Int64) : LibGLib::String*
-  fun string_prepend_unichar = g_string_prepend_unichar(this : String*, wc : UInt8) : LibGLib::String*
-  fun string_set_size = g_string_set_size(this : String*, len : UInt64) : LibGLib::String*
-  fun string_truncate = g_string_truncate(this : String*, len : UInt64) : LibGLib::String*
-  fun string_up = g_string_up(this : String*) : LibGLib::String*
-
-  struct StringChunk # struct
-  end
-  fun string_chunk_clear = g_string_chunk_clear(this : StringChunk*) : Void
-  fun string_chunk_free = g_string_chunk_free(this : StringChunk*) : Void
-  fun string_chunk_insert = g_string_chunk_insert(this : StringChunk*, string : UInt8*) : UInt8*
-  fun string_chunk_insert_const = g_string_chunk_insert_const(this : StringChunk*, string : UInt8*) : UInt8*
-  fun string_chunk_insert_len = g_string_chunk_insert_len(this : StringChunk*, string : UInt8*, len : Int64) : UInt8*
-
-  struct TestCase # struct
-  end
-
-  struct TestConfig # struct
-    test_initialized : Bool
-    test_quick : Bool
-    test_perf : Bool
-    test_verbose : Bool
-    test_quiet : Bool
-    test_undefined : Bool
-  end
-
-  struct TestLogBuffer # struct
-    data : LibGLib::String*
-    msgs : Void**
-  end
-  fun test_log_buffer_free = g_test_log_buffer_free(this : TestLogBuffer*) : Void
-  fun test_log_buffer_push = g_test_log_buffer_push(this : TestLogBuffer*, n_bytes : UInt32, bytes : UInt8*) : Void
-
-  struct TestLogMsg # struct
-    log_type : LibGLib::TestLogType
-    n_strings : UInt32
-    strings : UInt8*
-    n_nums : UInt32
-    nums : Int64*
-  end
-  fun test_log_msg_free = g_test_log_msg_free(this : TestLogMsg*) : Void
-
-  struct TestSuite # struct
-  end
-  fun test_suite_add = g_test_suite_add(this : TestSuite*, test_case : LibGLib::TestCase*) : Void
-  fun test_suite_add_suite = g_test_suite_add_suite(this : TestSuite*, nestedsuite : LibGLib::TestSuite*) : Void
-
-  struct Thread # struct
-  end
-  fun thread_ref = g_thread_ref(this : Thread*) : LibGLib::Thread*
-  fun thread_unref = g_thread_unref(this : Thread*) : Void
-  fun thread_error_quark = g_thread_error_quark() : UInt32
-  fun thread_exit = g_thread_exit(retval : Void*) : Void
-  fun thread_self = g_thread_self() : LibGLib::Thread*
-  fun thread_yield = g_thread_yield() : Void
-
-  struct ThreadPool # struct
-    func : Void*
-    user_data : Void*
-    exclusive : Bool
-  end
-  fun thread_pool_free = g_thread_pool_free(this : ThreadPool*, immediate : Bool, wait_ : Bool) : Void
-  fun thread_pool_get_max_threads = g_thread_pool_get_max_threads(this : ThreadPool*) : Int32
-  fun thread_pool_get_num_threads = g_thread_pool_get_num_threads(this : ThreadPool*) : UInt32
-  fun thread_pool_push = g_thread_pool_push(this : ThreadPool*, data : Void*, error : LibGLib::Error**) : Bool
-  fun thread_pool_set_max_threads = g_thread_pool_set_max_threads(this : ThreadPool*, max_threads : Int32, error : LibGLib::Error**) : Bool
-  fun thread_pool_unprocessed = g_thread_pool_unprocessed(this : ThreadPool*) : UInt32
-  fun thread_pool_get_max_idle_time = g_thread_pool_get_max_idle_time() : UInt32
-  fun thread_pool_get_max_unused_threads = g_thread_pool_get_max_unused_threads() : Int32
-  fun thread_pool_get_num_unused_threads = g_thread_pool_get_num_unused_threads() : UInt32
-  fun thread_pool_set_max_idle_time = g_thread_pool_set_max_idle_time(interval : UInt32) : Void
-  fun thread_pool_set_max_unused_threads = g_thread_pool_set_max_unused_threads(max_threads : Int32) : Void
-  fun thread_pool_stop_unused_threads = g_thread_pool_stop_unused_threads() : Void
-
-  struct TimeVal # struct
-    tv_sec : Int64
-    tv_usec : Int64
-  end
-  fun time_val_add = g_time_val_add(this : TimeVal*, microseconds : Int64) : Void
-  fun time_val_to_iso8601 = g_time_val_to_iso8601(this : TimeVal*) : UInt8*
-  fun time_val_from_iso8601 = g_time_val_from_iso8601(iso_date : UInt8*, time_ : LibGLib::TimeVal*) : Bool
-
-  struct TimeZone # struct
-  end
-  fun time_zone_new = g_time_zone_new(identifier : UInt8*) : LibGLib::TimeZone*
-  fun time_zone_new_local = g_time_zone_new_local() : LibGLib::TimeZone*
-  fun time_zone_new_utc = g_time_zone_new_utc() : LibGLib::TimeZone*
-  fun time_zone_adjust_time = g_time_zone_adjust_time(this : TimeZone*, type : LibGLib::TimeType, time_ : Int64*) : Int32
-  fun time_zone_find_interval = g_time_zone_find_interval(this : TimeZone*, type : LibGLib::TimeType, time_ : Int64) : Int32
-  fun time_zone_get_abbreviation = g_time_zone_get_abbreviation(this : TimeZone*, interval : Int32) : UInt8*
-  fun time_zone_get_offset = g_time_zone_get_offset(this : TimeZone*, interval : Int32) : Int32
-  fun time_zone_is_dst = g_time_zone_is_dst(this : TimeZone*, interval : Int32) : Bool
-  fun time_zone_ref = g_time_zone_ref(this : TimeZone*) : LibGLib::TimeZone*
-  fun time_zone_unref = g_time_zone_unref(this : TimeZone*) : Void
-
-  struct Timer # struct
-  end
-  fun timer_continue = g_timer_continue(this : Timer*) : Void
-  fun timer_destroy = g_timer_destroy(this : Timer*) : Void
-  fun timer_elapsed = g_timer_elapsed(this : Timer*, microseconds : UInt64*) : Float64
-  fun timer_reset = g_timer_reset(this : Timer*) : Void
-  fun timer_start = g_timer_start(this : Timer*) : Void
-  fun timer_stop = g_timer_stop(this : Timer*) : Void
-
-  struct TrashStack # struct
-    next : LibGLib::TrashStack*
-  end
-  fun trash_stack_height = g_trash_stack_height(stack_p : LibGLib::TrashStack*) : UInt32
-  fun trash_stack_push = g_trash_stack_push(stack_p : LibGLib::TrashStack*, data_p : Void*) : Void
-
-  struct Tree # struct
-  end
-  fun tree_destroy = g_tree_destroy(this : Tree*) : Void
-  fun tree_height = g_tree_height(this : Tree*) : Int32
-  fun tree_insert = g_tree_insert(this : Tree*, key : Void*, value : Void*) : Void
-  fun tree_lookup_extended = g_tree_lookup_extended(this : Tree*, lookup_key : Void*, orig_key : Void*, value : Void*) : Bool
-  fun tree_nnodes = g_tree_nnodes(this : Tree*) : Int32
-  fun tree_remove = g_tree_remove(this : Tree*, key : Void*) : Bool
-  fun tree_replace = g_tree_replace(this : Tree*, key : Void*, value : Void*) : Void
-  fun tree_steal = g_tree_steal(this : Tree*, key : Void*) : Bool
-  fun tree_unref = g_tree_unref(this : Tree*) : Void
-
-  struct Variant # struct
-  end
-  fun variant_new_array = g_variant_new_array(child_type : LibGLib::VariantType*, children : LibGLib::Variant**, n_children : UInt64) : LibGLib::Variant*
-  fun variant_new_boolean = g_variant_new_boolean(value : Bool) : LibGLib::Variant*
-  fun variant_new_byte = g_variant_new_byte(value : UInt8) : LibGLib::Variant*
-  fun variant_new_bytestring = g_variant_new_bytestring(string : UInt8*) : LibGLib::Variant*
-  fun variant_new_bytestring_array = g_variant_new_bytestring_array(strv : UInt8**, length : Int64) : LibGLib::Variant*
-  fun variant_new_dict_entry = g_variant_new_dict_entry(key : LibGLib::Variant*, value : LibGLib::Variant*) : LibGLib::Variant*
-  fun variant_new_double = g_variant_new_double(value : Float64) : LibGLib::Variant*
-  fun variant_new_fixed_array = g_variant_new_fixed_array(element_type : LibGLib::VariantType*, elements : Void*, n_elements : UInt64, element_size : UInt64) : LibGLib::Variant*
-  fun variant_new_from_bytes = g_variant_new_from_bytes(type : LibGLib::VariantType*, bytes : LibGLib::Bytes*, trusted : Bool) : LibGLib::Variant*
-  fun variant_new_from_data = g_variant_new_from_data(type : LibGLib::VariantType*, data : UInt8*, size : UInt64, trusted : Bool, notify : Void*, user_data : Void*) : LibGLib::Variant*
-  fun variant_new_handle = g_variant_new_handle(value : Int32) : LibGLib::Variant*
-  fun variant_new_int16 = g_variant_new_int16(value : Int16) : LibGLib::Variant*
-  fun variant_new_int32 = g_variant_new_int32(value : Int32) : LibGLib::Variant*
-  fun variant_new_int64 = g_variant_new_int64(value : Int64) : LibGLib::Variant*
-  fun variant_new_maybe = g_variant_new_maybe(child_type : LibGLib::VariantType*, child : LibGLib::Variant*) : LibGLib::Variant*
-  fun variant_new_object_path = g_variant_new_object_path(object_path : UInt8*) : LibGLib::Variant*
-  fun variant_new_objv = g_variant_new_objv(strv : UInt8**, length : Int64) : LibGLib::Variant*
-  fun variant_new_signature = g_variant_new_signature(signature : UInt8*) : LibGLib::Variant*
-  fun variant_new_string = g_variant_new_string(string : UInt8*) : LibGLib::Variant*
-  fun variant_new_strv = g_variant_new_strv(strv : UInt8**, length : Int64) : LibGLib::Variant*
-  fun variant_new_tuple = g_variant_new_tuple(children : LibGLib::Variant**, n_children : UInt64) : LibGLib::Variant*
-  fun variant_new_uint16 = g_variant_new_uint16(value : UInt16) : LibGLib::Variant*
-  fun variant_new_uint32 = g_variant_new_uint32(value : UInt32) : LibGLib::Variant*
-  fun variant_new_uint64 = g_variant_new_uint64(value : UInt64) : LibGLib::Variant*
-  fun variant_new_variant = g_variant_new_variant(value : LibGLib::Variant*) : LibGLib::Variant*
-  fun variant_byteswap = g_variant_byteswap(this : Variant*) : LibGLib::Variant*
-  fun variant_check_format_string = g_variant_check_format_string(this : Variant*, format_string : UInt8*, copy_only : Bool) : Bool
-  fun variant_classify = g_variant_classify(this : Variant*) : LibGLib::VariantClass
-  fun variant_compare = g_variant_compare(this : Variant*, two : LibGLib::Variant*) : Int32
-  fun variant_dup_bytestring = g_variant_dup_bytestring(this : Variant*, length : UInt64*) : UInt8*
-  fun variant_dup_bytestring_array = g_variant_dup_bytestring_array(this : Variant*, length : UInt64*) : UInt8**
-  fun variant_dup_objv = g_variant_dup_objv(this : Variant*, length : UInt64*) : UInt8**
-  fun variant_dup_string = g_variant_dup_string(this : Variant*, length : UInt64*) : UInt8*
-  fun variant_dup_strv = g_variant_dup_strv(this : Variant*, length : UInt64*) : UInt8**
-  fun variant_equal = g_variant_equal(this : Variant*, two : LibGLib::Variant*) : Bool
-  fun variant_get_boolean = g_variant_get_boolean(this : Variant*) : Bool
-  fun variant_get_byte = g_variant_get_byte(this : Variant*) : UInt8
-  fun variant_get_bytestring = g_variant_get_bytestring(this : Variant*) : UInt8*
-  fun variant_get_bytestring_array = g_variant_get_bytestring_array(this : Variant*, length : UInt64*) : UInt8**
-  fun variant_get_child_value = g_variant_get_child_value(this : Variant*, index_ : UInt64) : LibGLib::Variant*
-  fun variant_get_data = g_variant_get_data(this : Variant*) : Void*
-  fun variant_get_data_as_bytes = g_variant_get_data_as_bytes(this : Variant*) : LibGLib::Bytes*
-  fun variant_get_double = g_variant_get_double(this : Variant*) : Float64
-  fun variant_get_handle = g_variant_get_handle(this : Variant*) : Int32
-  fun variant_get_int16 = g_variant_get_int16(this : Variant*) : Int16
-  fun variant_get_int32 = g_variant_get_int32(this : Variant*) : Int32
-  fun variant_get_int64 = g_variant_get_int64(this : Variant*) : Int64
-  fun variant_get_maybe = g_variant_get_maybe(this : Variant*) : LibGLib::Variant*
-  fun variant_get_normal_form = g_variant_get_normal_form(this : Variant*) : LibGLib::Variant*
-  fun variant_get_objv = g_variant_get_objv(this : Variant*, length : UInt64*) : UInt8**
-  fun variant_get_size = g_variant_get_size(this : Variant*) : UInt64
-  fun variant_get_string = g_variant_get_string(this : Variant*, length : UInt64*) : UInt8*
-  fun variant_get_strv = g_variant_get_strv(this : Variant*, length : UInt64*) : UInt8**
-  fun variant_get_type = g_variant_get_type(this : Variant*) : LibGLib::VariantType*
-  fun variant_get_type_string = g_variant_get_type_string(this : Variant*) : UInt8*
-  fun variant_get_uint16 = g_variant_get_uint16(this : Variant*) : UInt16
-  fun variant_get_uint32 = g_variant_get_uint32(this : Variant*) : UInt32
-  fun variant_get_uint64 = g_variant_get_uint64(this : Variant*) : UInt64
-  fun variant_get_variant = g_variant_get_variant(this : Variant*) : LibGLib::Variant*
-  fun variant_hash = g_variant_hash(this : Variant*) : UInt32
-  fun variant_is_container = g_variant_is_container(this : Variant*) : Bool
-  fun variant_is_floating = g_variant_is_floating(this : Variant*) : Bool
-  fun variant_is_normal_form = g_variant_is_normal_form(this : Variant*) : Bool
-  fun variant_is_of_type = g_variant_is_of_type(this : Variant*, type : LibGLib::VariantType*) : Bool
-  fun variant_lookup_value = g_variant_lookup_value(this : Variant*, key : UInt8*, expected_type : LibGLib::VariantType*) : LibGLib::Variant*
-  fun variant_n_children = g_variant_n_children(this : Variant*) : UInt64
-  fun variant_print = g_variant_print(this : Variant*, type_annotate : Bool) : UInt8*
-  fun variant_ref = g_variant_ref(this : Variant*) : LibGLib::Variant*
-  fun variant_ref_sink = g_variant_ref_sink(this : Variant*) : LibGLib::Variant*
-  fun variant_store = g_variant_store(this : Variant*, data : Void*) : Void
-  fun variant_take_ref = g_variant_take_ref(this : Variant*) : LibGLib::Variant*
-  fun variant_unref = g_variant_unref(this : Variant*) : Void
-  fun variant_is_object_path = g_variant_is_object_path(string : UInt8*) : Bool
-  fun variant_is_signature = g_variant_is_signature(string : UInt8*) : Bool
-  fun variant_parse = g_variant_parse(type : LibGLib::VariantType*, text : UInt8*, limit : UInt8*, endptr : UInt8*, error : LibGLib::Error**) : LibGLib::Variant*
-  fun variant_parse_error_print_context = g_variant_parse_error_print_context(error : LibGLib::Error**, source_str : UInt8*) : UInt8*
-  fun variant_parse_error_quark = g_variant_parse_error_quark() : UInt32
-  fun variant_parser_get_error_quark = g_variant_parser_get_error_quark() : UInt32
-
-  struct VariantBuilder # struct
-    x : UInt64
-  end
-  fun variant_builder_new = g_variant_builder_new(type : LibGLib::VariantType*) : LibGLib::VariantBuilder*
-  fun variant_builder_add_value = g_variant_builder_add_value(this : VariantBuilder*, value : LibGLib::Variant*) : Void
-  fun variant_builder_close = g_variant_builder_close(this : VariantBuilder*) : Void
-  fun variant_builder_end = g_variant_builder_end(this : VariantBuilder*) : LibGLib::Variant*
-  fun variant_builder_open = g_variant_builder_open(this : VariantBuilder*, type : LibGLib::VariantType*) : Void
-  fun variant_builder_ref = g_variant_builder_ref(this : VariantBuilder*) : LibGLib::VariantBuilder*
-  fun variant_builder_unref = g_variant_builder_unref(this : VariantBuilder*) : Void
-
-  struct VariantDict # struct
-    x : UInt64
-  end
-  fun variant_dict_new = g_variant_dict_new(from_asv : LibGLib::Variant*) : LibGLib::VariantDict*
-  fun variant_dict_clear = g_variant_dict_clear(this : VariantDict*) : Void
-  fun variant_dict_contains = g_variant_dict_contains(this : VariantDict*, key : UInt8*) : Bool
-  fun variant_dict_end = g_variant_dict_end(this : VariantDict*) : LibGLib::Variant*
-  fun variant_dict_insert_value = g_variant_dict_insert_value(this : VariantDict*, key : UInt8*, value : LibGLib::Variant*) : Void
-  fun variant_dict_lookup_value = g_variant_dict_lookup_value(this : VariantDict*, key : UInt8*, expected_type : LibGLib::VariantType*) : LibGLib::Variant*
-  fun variant_dict_ref = g_variant_dict_ref(this : VariantDict*) : LibGLib::VariantDict*
-  fun variant_dict_remove = g_variant_dict_remove(this : VariantDict*, key : UInt8*) : Bool
-  fun variant_dict_unref = g_variant_dict_unref(this : VariantDict*) : Void
-
-  struct VariantType # struct
-  end
-  fun variant_type_new = g_variant_type_new(type_string : UInt8*) : LibGLib::VariantType*
-  fun variant_type_new_array = g_variant_type_new_array(element : LibGLib::VariantType*) : LibGLib::VariantType*
-  fun variant_type_new_dict_entry = g_variant_type_new_dict_entry(key : LibGLib::VariantType*, value : LibGLib::VariantType*) : LibGLib::VariantType*
-  fun variant_type_new_maybe = g_variant_type_new_maybe(element : LibGLib::VariantType*) : LibGLib::VariantType*
-  fun variant_type_new_tuple = g_variant_type_new_tuple(items : LibGLib::VariantType**, length : Int32) : LibGLib::VariantType*
-  fun variant_type_copy = g_variant_type_copy(this : VariantType*) : LibGLib::VariantType*
-  fun variant_type_dup_string = g_variant_type_dup_string(this : VariantType*) : UInt8*
-  fun variant_type_element = g_variant_type_element(this : VariantType*) : LibGLib::VariantType*
-  fun variant_type_equal = g_variant_type_equal(this : VariantType*, type2 : LibGLib::VariantType*) : Bool
-  fun variant_type_first = g_variant_type_first(this : VariantType*) : LibGLib::VariantType*
-  fun variant_type_free = g_variant_type_free(this : VariantType*) : Void
-  fun variant_type_get_string_length = g_variant_type_get_string_length(this : VariantType*) : UInt64
-  fun variant_type_hash = g_variant_type_hash(this : VariantType*) : UInt32
-  fun variant_type_is_array = g_variant_type_is_array(this : VariantType*) : Bool
-  fun variant_type_is_basic = g_variant_type_is_basic(this : VariantType*) : Bool
-  fun variant_type_is_container = g_variant_type_is_container(this : VariantType*) : Bool
-  fun variant_type_is_definite = g_variant_type_is_definite(this : VariantType*) : Bool
-  fun variant_type_is_dict_entry = g_variant_type_is_dict_entry(this : VariantType*) : Bool
-  fun variant_type_is_maybe = g_variant_type_is_maybe(this : VariantType*) : Bool
-  fun variant_type_is_subtype_of = g_variant_type_is_subtype_of(this : VariantType*, supertype : LibGLib::VariantType*) : Bool
-  fun variant_type_is_tuple = g_variant_type_is_tuple(this : VariantType*) : Bool
-  fun variant_type_is_variant = g_variant_type_is_variant(this : VariantType*) : Bool
-  fun variant_type_key = g_variant_type_key(this : VariantType*) : LibGLib::VariantType*
-  fun variant_type_n_items = g_variant_type_n_items(this : VariantType*) : UInt64
-  fun variant_type_next = g_variant_type_next(this : VariantType*) : LibGLib::VariantType*
-  fun variant_type_value = g_variant_type_value(this : VariantType*) : LibGLib::VariantType*
-  fun variant_type_checked_ = g_variant_type_checked_(arg0 : UInt8*) : LibGLib::VariantType*
-  fun variant_type_string_is_valid = g_variant_type_string_is_valid(type_string : UInt8*) : Bool
-  fun variant_type_string_scan = g_variant_type_string_scan(string : UInt8*, limit : UInt8*, endptr : UInt8**) : Bool
-
-
-  ###########################################
   ##    Callbacks
   ###########################################
 
@@ -2331,11 +2250,11 @@ lib LibGLib
   fun atomic_pointer_set = g_atomic_pointer_set(atomic : Void*, newval : Void*) : Void
   fun atomic_pointer_xor = g_atomic_pointer_xor(atomic : Void*, val : UInt64) : UInt64
   fun base64_decode = g_base64_decode(text : UInt8*, out_len : UInt64*) : UInt8*
-  fun base64_decode_inplace = g_base64_decode_inplace(text : UInt8*, out_len : UInt64) : UInt8*
-  fun base64_decode_step = g_base64_decode_step(in : UInt8*, len : UInt64, out : UInt8**, state : Int32, save : UInt32) : UInt64
+  fun base64_decode_inplace = g_base64_decode_inplace(text : UInt8**, out_len : UInt64*) : UInt8*
+  fun base64_decode_step = g_base64_decode_step(in : UInt8*, len : UInt64, out : UInt8**, state : Int32*, save : UInt32*) : UInt64
   fun base64_encode = g_base64_encode(data : UInt8*, len : UInt64) : UInt8*
-  fun base64_encode_close = g_base64_encode_close(break_lines : Bool, out : UInt8**, state : Int32, save : Int32) : UInt64
-  fun base64_encode_step = g_base64_encode_step(in : UInt8*, len : UInt64, break_lines : Bool, out : UInt8**, state : Int32, save : Int32) : UInt64
+  fun base64_encode_close = g_base64_encode_close(break_lines : Bool, out : UInt8**, state : Int32*, save : Int32*) : UInt64
+  fun base64_encode_step = g_base64_encode_step(in : UInt8*, len : UInt64, break_lines : Bool, out : UInt8**, state : Int32*, save : Int32*) : UInt64
   fun basename = g_basename(file_name : UInt8*) : UInt8*
   fun bit_lock = g_bit_lock(address : Int32*, lock_bit : Int32) : Void
   fun bit_nth_lsf = g_bit_nth_lsf(mask : UInt64, nth_bit : Int32) : Int32
