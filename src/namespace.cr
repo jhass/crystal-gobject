@@ -54,61 +54,18 @@ class Namespace
 
     io.puts "lib Lib#{@namespace}"
 
-    grouped_infos = Repository.instance.all_infos(@namespace).group_by(&.info_type)
-
-    # First pass, forward declare structs
-    io.puts
-    io.puts "  ###########################################"
-    io.puts "  ##   Declarations"
-    io.puts "  ###########################################"
-    io.puts
-    grouped_infos.each do |type, infos|
+    Repository.instance.all_infos(@namespace).group_by(&.info_type).each do |type, infos|
+      heading = type.to_s.capitalize
+      heading += 's' unless heading.ends_with? 's'
+      io.puts
+      io.puts "  ###########################################"
+      io.puts "  ##    #{heading}"
+      io.puts "  ###########################################"
+      io.puts
       infos.each do |info|
         case info
         when EnumInfo
           next unless 'A' <= info.name[0] <= 'Z' # Bug in typelib?
-        when StructInfo
-          next if info.gtype? # Hide them
-        end
-        declaration = info.declaration
-        io.puts declaration if declaration && !declaration.empty?
-      end
-    end
-
-    # Second pass, enums, flags & constants
-    grouped_infos.each do |type, infos|
-      next unless type == LibGIRepository::InfoType::ENUM ||
-                  type == LibGIRepository::InfoType::FLAGS ||
-                  type == LibGIRepository::InfoType::CONSTANT
-
-      heading = type.to_s.capitalize
-      heading += 's' unless heading.ends_with? 's'
-      io.puts
-      io.puts "  ###########################################"
-      io.puts "  ##    #{heading}"
-      io.puts "  ###########################################"
-      io.puts
-      infos.each do |info|
-        next unless 'A' <= info.name[0] <= 'Z' # Bug in typelib?
-        io.puts info.definition
-      end
-    end
-
-    # Third pass, everything except enums, flags & constants
-    grouped_infos.each do |type, infos|
-      next if type == LibGIRepository::InfoType::ENUM ||
-              type == LibGIRepository::InfoType::FLAGS ||
-              type == LibGIRepository::InfoType::CONSTANT
-
-      heading = type.to_s.capitalize
-      heading += 's' unless heading.ends_with? 's'
-      io.puts
-      io.puts "  ###########################################"
-      io.puts "  ##    #{heading}"
-      io.puts "  ###########################################"
-      io.puts
-      infos.each do |info|
-        case info
         when StructInfo
           next if info.gtype? # Hide them
         end

@@ -4,16 +4,33 @@ require "./lib_g_object"
 lib LibGIRepository
 
   ###########################################
-  ##   Declarations
+  ##    Unions
   ###########################################
 
-  union Argument; end
-  struct AttributeIter; end; # struct
-  struct BaseInfo; end; # struct
-  struct RepositoryPrivate; end; # struct
-  struct Typelib; end; # struct
-  struct UnresolvedInfo; end; # struct
-  struct Repository; end # object
+  union Argument
+    v_boolean : Bool
+    v_int8 : Int8
+    v_uint8 : UInt8
+    v_int16 : Int16
+    v_uint16 : UInt16
+    v_int32 : Int32
+    v_uint32 : UInt32
+    v_int64 : Int64
+    v_uint64 : UInt64
+    v_float : Float32
+    v_double : Float64
+    v_short : Int16
+    v_ushort : UInt16
+    v_int : Int32
+    v_uint : UInt32
+    v_long : Int64
+    v_ulong : UInt64
+    v_ssize : Int64
+    v_size : UInt64
+    v_string : UInt8*
+    v_pointer : Void*
+  end
+
 
   ###########################################
   ##    Enums
@@ -109,69 +126,6 @@ lib LibGIRepository
 
 
   ###########################################
-  ##    Flags
-  ###########################################
-
-  enum FieldInfoFlags
-    ZERO_NONE = 0
-    READABLE = 1
-    WRITABLE = 2
-  end
-
-  enum FunctionInfoFlags
-    ZERO_NONE = 0
-    IS_METHOD = 1
-    IS_CONSTRUCTOR = 2
-    IS_GETTER = 4
-    IS_SETTER = 8
-    WRAPS_VFUNC = 16
-    THROWS = 32
-  end
-
-  enum RepositoryLoadFlags
-    ZERO_NONE = 0
-    IREPOSITORY_LOAD_FLAG_LAZY = 1
-  end
-
-  enum VFuncInfoFlags
-    ZERO_NONE = 0
-    MUST_CHAIN_UP = 1
-    MUST_OVERRIDE = 2
-    MUST_NOT_OVERRIDE = 4
-    THROWS = 8
-  end
-
-
-  ###########################################
-  ##    Unions
-  ###########################################
-
-  union Argument
-    v_boolean : Bool
-    v_int8 : Int8
-    v_uint8 : UInt8
-    v_int16 : Int16
-    v_uint16 : UInt16
-    v_int32 : Int32
-    v_uint32 : UInt32
-    v_int64 : Int64
-    v_uint64 : UInt64
-    v_float : Float32
-    v_double : Float64
-    v_short : Int16
-    v_ushort : UInt16
-    v_int : Int32
-    v_uint : UInt32
-    v_long : Int64
-    v_ulong : UInt64
-    v_ssize : Int64
-    v_size : UInt64
-    v_string : UInt8*
-    v_pointer : Void*
-  end
-
-
-  ###########################################
   ##    Structs
   ###########################################
 
@@ -212,6 +166,40 @@ lib LibGIRepository
   fun typelib_symbol = g_typelib_symbol(this : Typelib*, symbol_name : UInt8*, symbol : Void*) : Bool
 
   struct UnresolvedInfo # struct
+  end
+
+
+  ###########################################
+  ##    Flags
+  ###########################################
+
+  enum FieldInfoFlags
+    ZERO_NONE = 0
+    READABLE = 1
+    WRITABLE = 2
+  end
+
+  enum FunctionInfoFlags
+    ZERO_NONE = 0
+    IS_METHOD = 1
+    IS_CONSTRUCTOR = 2
+    IS_GETTER = 4
+    IS_SETTER = 8
+    WRAPS_VFUNC = 16
+    THROWS = 32
+  end
+
+  enum RepositoryLoadFlags
+    ZERO_NONE = 0
+    IREPOSITORY_LOAD_FLAG_LAZY = 1
+  end
+
+  enum VFuncInfoFlags
+    ZERO_NONE = 0
+    MUST_CHAIN_UP = 1
+    MUST_OVERRIDE = 2
+    MUST_NOT_OVERRIDE = 4
+    THROWS = 8
   end
 
 

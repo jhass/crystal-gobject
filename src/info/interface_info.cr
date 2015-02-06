@@ -52,9 +52,4 @@ class InterfaceInfo < BaseInfo
       io.puts
     end
   end
-
-
-  def declaration
-    "  struct #{name}; end # interface"
-  end
 end

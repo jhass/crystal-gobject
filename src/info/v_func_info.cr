@@ -2,6 +2,6 @@ require "./base_info"
 
 class VFuncInfo < BaseInfo
   def definition
-    " # Virtual function #{name}"
+    "  # Virtual function #{name}"
   end
 end

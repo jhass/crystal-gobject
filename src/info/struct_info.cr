@@ -28,8 +28,4 @@ class StructInfo < BaseInfo
       io.puts
     end
   end
-
-  def declaration
-    "  struct #{name}; end; # struct"
-  end
 end

@@ -53,7 +53,9 @@ class Repository
   end
 
   def shared_library namespace
-    String.new(LibGIRepository.repository_get_shared_library(self, namespace))
+    ptr = LibGIRepository.repository_get_shared_library(self, namespace)
+    raise "No library at all for #{namespace}" unless ptr
+    String.new ptr
   end
 
   def to_unsafe

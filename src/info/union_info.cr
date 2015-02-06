@@ -24,8 +24,4 @@ class UnionInfo < BaseInfo
       io.puts
     end
   end
-
-  def declaration
-    "  union #{name}; end"
-  end
 end

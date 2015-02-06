@@ -3,21 +3,27 @@ require "./error"
 require "./info/*"
 require "./namespace"
 
-namespace = "GIRepository"
+namespace = ARGV[0]
+# namespace = "GIRepository"
 # namespace = "GLib"
 # namespace = "Gio"
 # namespace = "GObject"
-
-# Repository.instance.version namespace
-# Repository.instance.typelib_path namespace
+# namespace = "Gtk"
+# namespace = "xlib"
 
 Repository.instance.require namespace
-Repository.instance.loaded_namespaces.each do |name|
-  print "Generate #{name}... "
-  Namespace.new(name).write "src/"
-  puts "done."
-end
+
+# puts Repository.instance.version namespace
+# puts Repository.instance.typelib_path namespace
+# puts Repository.instance.c_prefix(namespace)
+# puts Repository.instance.loaded_namespaces
 
 # puts Namespace.new(namespace).definition
-# puts Repository.instance.c_prefix(namespace)
 
+Namespace.new(namespace).write "src/"
+
+# Repository.instance.loaded_namespaces.each do |name|
+  # print "Generate #{name}... "
+  # Namespace.new(name).write "src/"
+  # puts "done."
+# end

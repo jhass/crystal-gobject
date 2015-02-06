@@ -64,9 +64,6 @@ class BaseInfo
     "  # Bug: #{name} : #{info_type}"
   end
 
-  def declaration
-  end
-
   def to_s io
     io << name << '(' << info_type << ')'
   end
