@@ -8,15 +8,15 @@ lib LibGio
   ###########################################
 
   struct Action # interface
-  g_iface : LibGObject::TypeInterface
-  get_name : -> Void
-  get_parameter_type : -> Void
-  get_state_type : -> Void
-  get_state_hint : -> Void
-  get_enabled : -> Void
-  get_state : -> Void
-  change_state : -> Void
-  activate : -> Void
+    g_iface : LibGObject::TypeInterface
+    get_name : -> Void
+    get_parameter_type : -> Void
+    get_state_type : -> Void
+    get_state_hint : -> Void
+    get_enabled : -> Void
+    get_state : -> Void
+    change_state : -> Void
+    activate : -> Void
     # Property enabled : Bool
     # Property name : UInt8*
     # Property parameter-type : LibGLib::VariantType
@@ -44,21 +44,21 @@ lib LibGio
   fun action_get_state_type = g_action_get_state_type(this : Action*) : LibGLib::VariantType*
 
   struct ActionGroup # interface
-  g_iface : LibGObject::TypeInterface
-  has_action : -> Void
-  list_actions : -> Void
-  get_action_enabled : -> Void
-  get_action_parameter_type : -> Void
-  get_action_state_type : -> Void
-  get_action_state_hint : -> Void
-  get_action_state : -> Void
-  change_action_state : -> Void
-  activate_action : -> Void
-  action_added : -> Void
-  action_removed : -> Void
-  action_enabled_changed : -> Void
-  action_state_changed : -> Void
-  query_action : -> Void
+    g_iface : LibGObject::TypeInterface
+    has_action : -> Void
+    list_actions : -> Void
+    get_action_enabled : -> Void
+    get_action_parameter_type : -> Void
+    get_action_state_type : -> Void
+    get_action_state_hint : -> Void
+    get_action_state : -> Void
+    change_action_state : -> Void
+    activate_action : -> Void
+    action_added : -> Void
+    action_removed : -> Void
+    action_enabled_changed : -> Void
+    action_state_changed : -> Void
+    query_action : -> Void
     # Signal action-added
     # Signal action-enabled-changed
     # Signal action-removed
@@ -94,10 +94,10 @@ lib LibGio
   fun action_group_query_action = g_action_group_query_action(this : ActionGroup*, action_name : UInt8*, enabled : Bool*, parameter_type : LibGLib::VariantType**, state_type : LibGLib::VariantType**, state_hint : LibGLib::Variant**, state : LibGLib::Variant**) : Bool
 
   struct ActionMap # interface
-  g_iface : LibGObject::TypeInterface
-  lookup_action : -> Void
-  add_action : -> Void
-  remove_action : -> Void
+    g_iface : LibGObject::TypeInterface
+    lookup_action : -> Void
+    add_action : -> Void
+    remove_action : -> Void
     # Virtual function add_action
     # Virtual function lookup_action
     # Virtual function remove_action
@@ -108,30 +108,30 @@ lib LibGio
   fun action_map_remove_action = g_action_map_remove_action(this : ActionMap*, action_name : UInt8*) : Void
 
   struct AppInfo # interface
-  g_iface : LibGObject::TypeInterface
-  dup : -> Void
-  equal : -> Void
-  get_id : -> Void
-  get_name : -> Void
-  get_description : -> Void
-  get_executable : -> Void
-  get_icon : -> Void
-  launch : -> Void
-  supports_uris : -> Void
-  supports_files : -> Void
-  launch_uris : -> Void
-  should_show : -> Void
-  set_as_default_for_type : -> Void
-  set_as_default_for_extension : -> Void
-  add_supports_type : -> Void
-  can_remove_supports_type : -> Void
-  remove_supports_type : -> Void
-  can_delete : -> Void
-  do_delete : -> Void
-  get_commandline : -> Void
-  get_display_name : -> Void
-  set_as_last_used_for_type : -> Void
-  get_supported_types : -> Void
+    g_iface : LibGObject::TypeInterface
+    dup : -> Void
+    equal : -> Void
+    get_id : -> Void
+    get_name : -> Void
+    get_description : -> Void
+    get_executable : -> Void
+    get_icon : -> Void
+    launch : -> Void
+    supports_uris : -> Void
+    supports_files : -> Void
+    launch_uris : -> Void
+    should_show : -> Void
+    set_as_default_for_type : -> Void
+    set_as_default_for_extension : -> Void
+    add_supports_type : -> Void
+    can_remove_supports_type : -> Void
+    remove_supports_type : -> Void
+    can_delete : -> Void
+    do_delete : -> Void
+    get_commandline : -> Void
+    get_display_name : -> Void
+    set_as_last_used_for_type : -> Void
+    get_supported_types : -> Void
     # Virtual function add_supports_type
     # Virtual function can_delete
     # Virtual function can_remove_supports_type
@@ -190,9 +190,9 @@ lib LibGio
   fun app_info_supports_uris = g_app_info_supports_uris(this : AppInfo*) : Bool
 
   struct AsyncInitable # interface
-  g_iface : LibGObject::TypeInterface
-  init_async : -> Void
-  init_finish : -> Void
+    g_iface : LibGObject::TypeInterface
+    init_async : -> Void
+    init_finish : -> Void
     # Virtual function init_async
     # Virtual function init_finish
   end
@@ -202,10 +202,10 @@ lib LibGio
   fun async_initable_new_finish = g_async_initable_new_finish(this : AsyncInitable*, res : LibGio::AsyncResult*, error : LibGLib::Error**) : LibGObject::Object*
 
   struct AsyncResult # interface
-  g_iface : LibGObject::TypeInterface
-  get_user_data : -> Void
-  get_source_object : -> Void
-  is_tagged : -> Void
+    g_iface : LibGObject::TypeInterface
+    get_user_data : -> Void
+    get_source_object : -> Void
+    is_tagged : -> Void
     # Virtual function get_source_object
     # Virtual function get_user_data
     # Virtual function is_tagged
@@ -216,9 +216,9 @@ lib LibGio
   fun async_result_legacy_propagate_error = g_async_result_legacy_propagate_error(this : AsyncResult*, error : LibGLib::Error**) : Bool
 
   struct Converter # interface
-  g_iface : LibGObject::TypeInterface
-  convert : -> Void
-  reset : -> Void
+    g_iface : LibGObject::TypeInterface
+    convert : -> Void
+    reset : -> Void
     # Virtual function convert
     # Virtual function reset
   end
@@ -226,11 +226,11 @@ lib LibGio
   fun converter_reset = g_converter_reset(this : Converter*) : Void
 
   struct DBusInterface # interface
-  parent_iface : LibGObject::TypeInterface
-  get_info : -> Void
-  get_object : -> Void
-  set_object : -> Void
-  dup_object : -> Void
+    parent_iface : LibGObject::TypeInterface
+    get_info : -> Void
+    get_object : -> Void
+    set_object : -> Void
+    dup_object : -> Void
     # Virtual function dup_object
     # Virtual function get_info
     # Virtual function set_object
@@ -240,12 +240,12 @@ lib LibGio
   fun d_bus_interface_set_object = g_dbus_interface_set_object(this : DBusInterface*, object : LibGio::DBusObject*) : Void
 
   struct DBusObject # interface
-  parent_iface : LibGObject::TypeInterface
-  get_object_path : -> Void
-  get_interfaces : -> Void
-  get_interface : -> Void
-  interface_added : -> Void
-  interface_removed : -> Void
+    parent_iface : LibGObject::TypeInterface
+    get_object_path : -> Void
+    get_interfaces : -> Void
+    get_interface : -> Void
+    interface_added : -> Void
+    interface_removed : -> Void
     # Signal interface-added
     # Signal interface-removed
     # Virtual function get_interface
@@ -259,15 +259,15 @@ lib LibGio
   fun d_bus_object_get_object_path = g_dbus_object_get_object_path(this : DBusObject*) : UInt8*
 
   struct DBusObjectManager # interface
-  parent_iface : LibGObject::TypeInterface
-  get_object_path : -> Void
-  get_objects : -> Void
-  get_object : -> Void
-  get_interface : -> Void
-  object_added : -> Void
-  object_removed : -> Void
-  interface_added : -> Void
-  interface_removed : -> Void
+    parent_iface : LibGObject::TypeInterface
+    get_object_path : -> Void
+    get_objects : -> Void
+    get_object : -> Void
+    get_interface : -> Void
+    object_added : -> Void
+    object_removed : -> Void
+    interface_added : -> Void
+    interface_removed : -> Void
     # Signal interface-added
     # Signal interface-removed
     # Signal object-added
@@ -287,45 +287,45 @@ lib LibGio
   fun d_bus_object_manager_get_objects = g_dbus_object_manager_get_objects(this : DBusObjectManager*) : Void**
 
   struct DesktopAppInfoLookup # interface
-  g_iface : LibGObject::TypeInterface
-  get_default_for_uri_scheme : -> Void
+    g_iface : LibGObject::TypeInterface
+    get_default_for_uri_scheme : -> Void
     # Virtual function get_default_for_uri_scheme
   end
   fun desktop_app_info_lookup_get_default_for_uri_scheme = g_desktop_app_info_lookup_get_default_for_uri_scheme(this : DesktopAppInfoLookup*, uri_scheme : UInt8*) : LibGio::AppInfo*
 
   struct Drive # interface
-  g_iface : LibGObject::TypeInterface
-  changed : -> Void
-  disconnected : -> Void
-  eject_button : -> Void
-  get_name : -> Void
-  get_icon : -> Void
-  has_volumes : -> Void
-  get_volumes : -> Void
-  is_media_removable : -> Void
-  has_media : -> Void
-  is_media_check_automatic : -> Void
-  can_eject : -> Void
-  can_poll_for_media : -> Void
-  eject : -> Void
-  eject_finish : -> Void
-  poll_for_media : -> Void
-  poll_for_media_finish : -> Void
-  get_identifier : -> Void
-  enumerate_identifiers : -> Void
-  get_start_stop_type : -> Void
-  can_start : -> Void
-  can_start_degraded : -> Void
-  start : -> Void
-  start_finish : -> Void
-  can_stop : -> Void
-  stop : -> Void
-  stop_finish : -> Void
-  stop_button : -> Void
-  eject_with_operation : -> Void
-  eject_with_operation_finish : -> Void
-  get_sort_key : -> Void
-  get_symbolic_icon : -> Void
+    g_iface : LibGObject::TypeInterface
+    changed : -> Void
+    disconnected : -> Void
+    eject_button : -> Void
+    get_name : -> Void
+    get_icon : -> Void
+    has_volumes : -> Void
+    get_volumes : -> Void
+    is_media_removable : -> Void
+    has_media : -> Void
+    is_media_check_automatic : -> Void
+    can_eject : -> Void
+    can_poll_for_media : -> Void
+    eject : -> Void
+    eject_finish : -> Void
+    poll_for_media : -> Void
+    poll_for_media_finish : -> Void
+    get_identifier : -> Void
+    enumerate_identifiers : -> Void
+    get_start_stop_type : -> Void
+    can_start : -> Void
+    can_start_degraded : -> Void
+    start : -> Void
+    start_finish : -> Void
+    can_stop : -> Void
+    stop : -> Void
+    stop_finish : -> Void
+    stop_button : -> Void
+    eject_with_operation : -> Void
+    eject_with_operation_finish : -> Void
+    get_sort_key : -> Void
+    get_symbolic_icon : -> Void
     # Signal changed
     # Signal disconnected
     # Signal eject-button
@@ -391,110 +391,110 @@ lib LibGio
   fun drive_stop_finish = g_drive_stop_finish(this : Drive*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : Bool
 
   struct File # interface
-  g_iface : LibGObject::TypeInterface
-  dup : -> Void
-  hash : -> Void
-  equal : -> Void
-  is_native : -> Void
-  has_uri_scheme : -> Void
-  get_uri_scheme : -> Void
-  get_basename : -> Void
-  get_path : -> Void
-  get_uri : -> Void
-  get_parse_name : -> Void
-  get_parent : -> Void
-  prefix_matches : -> Void
-  get_relative_path : -> Void
-  resolve_relative_path : -> Void
-  get_child_for_display_name : -> Void
-  enumerate_children : -> Void
-  enumerate_children_async : -> Void
-  enumerate_children_finish : -> Void
-  query_info : -> Void
-  query_info_async : -> Void
-  query_info_finish : -> Void
-  query_filesystem_info : -> Void
-  query_filesystem_info_async : -> Void
-  query_filesystem_info_finish : -> Void
-  find_enclosing_mount : -> Void
-  find_enclosing_mount_async : -> Void
-  find_enclosing_mount_finish : -> Void
-  set_display_name : -> Void
-  set_display_name_async : -> Void
-  set_display_name_finish : -> Void
-  query_settable_attributes : -> Void
-  _query_settable_attributes_async : Void*
-  _query_settable_attributes_finish : Void*
-  query_writable_namespaces : -> Void
-  _query_writable_namespaces_async : Void*
-  _query_writable_namespaces_finish : Void*
-  set_attribute : -> Void
-  set_attributes_from_info : -> Void
-  set_attributes_async : -> Void
-  set_attributes_finish : -> Void
-  read_fn : -> Void
-  read_async : -> Void
-  read_finish : -> Void
-  append_to : -> Void
-  append_to_async : -> Void
-  append_to_finish : -> Void
-  create : -> Void
-  create_async : -> Void
-  create_finish : -> Void
-  replace : -> Void
-  replace_async : -> Void
-  replace_finish : -> Void
-  delete_file : -> Void
-  delete_file_async : -> Void
-  delete_file_finish : -> Void
-  trash : -> Void
-  trash_async : -> Void
-  trash_finish : -> Void
-  make_directory : -> Void
-  make_directory_async : -> Void
-  make_directory_finish : -> Void
-  make_symbolic_link : -> Void
-  _make_symbolic_link_async : Void*
-  _make_symbolic_link_finish : Void*
-  copy : -> Void
-  copy_async : Void*
-  copy_finish : -> Void
-  move : -> Void
-  _move_async : Void*
-  _move_finish : Void*
-  mount_mountable : -> Void
-  mount_mountable_finish : -> Void
-  unmount_mountable : -> Void
-  unmount_mountable_finish : -> Void
-  eject_mountable : -> Void
-  eject_mountable_finish : -> Void
-  mount_enclosing_volume : -> Void
-  mount_enclosing_volume_finish : -> Void
-  monitor_dir : -> Void
-  monitor_file : -> Void
-  open_readwrite : -> Void
-  open_readwrite_async : -> Void
-  open_readwrite_finish : -> Void
-  create_readwrite : -> Void
-  create_readwrite_async : -> Void
-  create_readwrite_finish : -> Void
-  replace_readwrite : -> Void
-  replace_readwrite_async : -> Void
-  replace_readwrite_finish : -> Void
-  start_mountable : -> Void
-  start_mountable_finish : -> Void
-  stop_mountable : -> Void
-  stop_mountable_finish : -> Void
-  supports_thread_contexts : Bool
-  unmount_mountable_with_operation : -> Void
-  unmount_mountable_with_operation_finish : -> Void
-  eject_mountable_with_operation : -> Void
-  eject_mountable_with_operation_finish : -> Void
-  poll_mountable : -> Void
-  poll_mountable_finish : -> Void
-  measure_disk_usage : Void*
-  measure_disk_usage_async : Void*
-  measure_disk_usage_finish : -> Void
+    g_iface : LibGObject::TypeInterface
+    dup : -> Void
+    hash : -> Void
+    equal : -> Void
+    is_native : -> Void
+    has_uri_scheme : -> Void
+    get_uri_scheme : -> Void
+    get_basename : -> Void
+    get_path : -> Void
+    get_uri : -> Void
+    get_parse_name : -> Void
+    get_parent : -> Void
+    prefix_matches : -> Void
+    get_relative_path : -> Void
+    resolve_relative_path : -> Void
+    get_child_for_display_name : -> Void
+    enumerate_children : -> Void
+    enumerate_children_async : -> Void
+    enumerate_children_finish : -> Void
+    query_info : -> Void
+    query_info_async : -> Void
+    query_info_finish : -> Void
+    query_filesystem_info : -> Void
+    query_filesystem_info_async : -> Void
+    query_filesystem_info_finish : -> Void
+    find_enclosing_mount : -> Void
+    find_enclosing_mount_async : -> Void
+    find_enclosing_mount_finish : -> Void
+    set_display_name : -> Void
+    set_display_name_async : -> Void
+    set_display_name_finish : -> Void
+    query_settable_attributes : -> Void
+    _query_settable_attributes_async : Void*
+    _query_settable_attributes_finish : Void*
+    query_writable_namespaces : -> Void
+    _query_writable_namespaces_async : Void*
+    _query_writable_namespaces_finish : Void*
+    set_attribute : -> Void
+    set_attributes_from_info : -> Void
+    set_attributes_async : -> Void
+    set_attributes_finish : -> Void
+    read_fn : -> Void
+    read_async : -> Void
+    read_finish : -> Void
+    append_to : -> Void
+    append_to_async : -> Void
+    append_to_finish : -> Void
+    create : -> Void
+    create_async : -> Void
+    create_finish : -> Void
+    replace : -> Void
+    replace_async : -> Void
+    replace_finish : -> Void
+    delete_file : -> Void
+    delete_file_async : -> Void
+    delete_file_finish : -> Void
+    trash : -> Void
+    trash_async : -> Void
+    trash_finish : -> Void
+    make_directory : -> Void
+    make_directory_async : -> Void
+    make_directory_finish : -> Void
+    make_symbolic_link : -> Void
+    _make_symbolic_link_async : Void*
+    _make_symbolic_link_finish : Void*
+    copy : -> Void
+    copy_async : Void*
+    copy_finish : -> Void
+    move : -> Void
+    _move_async : Void*
+    _move_finish : Void*
+    mount_mountable : -> Void
+    mount_mountable_finish : -> Void
+    unmount_mountable : -> Void
+    unmount_mountable_finish : -> Void
+    eject_mountable : -> Void
+    eject_mountable_finish : -> Void
+    mount_enclosing_volume : -> Void
+    mount_enclosing_volume_finish : -> Void
+    monitor_dir : -> Void
+    monitor_file : -> Void
+    open_readwrite : -> Void
+    open_readwrite_async : -> Void
+    open_readwrite_finish : -> Void
+    create_readwrite : -> Void
+    create_readwrite_async : -> Void
+    create_readwrite_finish : -> Void
+    replace_readwrite : -> Void
+    replace_readwrite_async : -> Void
+    replace_readwrite_finish : -> Void
+    start_mountable : -> Void
+    start_mountable_finish : -> Void
+    stop_mountable : -> Void
+    stop_mountable_finish : -> Void
+    supports_thread_contexts : Bool
+    unmount_mountable_with_operation : -> Void
+    unmount_mountable_with_operation_finish : -> Void
+    eject_mountable_with_operation : -> Void
+    eject_mountable_with_operation_finish : -> Void
+    poll_mountable : -> Void
+    poll_mountable_finish : -> Void
+    measure_disk_usage : Void*
+    measure_disk_usage_async : Void*
+    measure_disk_usage_finish : -> Void
     # Virtual function append_to
     # Virtual function append_to_async
     # Virtual function append_to_finish
@@ -709,19 +709,19 @@ lib LibGio
   fun file_unmount_mountable_with_operation_finish = g_file_unmount_mountable_with_operation_finish(this : File*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : Bool
 
   struct FileDescriptorBased # interface
-  g_iface : LibGObject::TypeInterface
-  get_fd : -> Void
+    g_iface : LibGObject::TypeInterface
+    get_fd : -> Void
     # Virtual function get_fd
   end
   fun file_descriptor_based_get_fd = g_file_descriptor_based_get_fd(this : FileDescriptorBased*) : Int32
 
   struct Icon # interface
-  g_iface : LibGObject::TypeInterface
-  hash : -> Void
-  equal : -> Void
-  to_tokens : Void*
-  from_tokens : Void*
-  serialize : -> Void
+    g_iface : LibGObject::TypeInterface
+    hash : -> Void
+    equal : -> Void
+    to_tokens : Void*
+    from_tokens : Void*
+    serialize : -> Void
     # Virtual function equal
     # Virtual function hash
     # Virtual function serialize
@@ -734,18 +734,18 @@ lib LibGio
   fun icon_to_string = g_icon_to_string(this : Icon*) : UInt8*
 
   struct Initable # interface
-  g_iface : LibGObject::TypeInterface
-  init : -> Void
+    g_iface : LibGObject::TypeInterface
+    init : -> Void
     # Virtual function init
   end
   fun initable_newv = g_initable_newv(object_type : UInt64, n_parameters : UInt32, parameters : LibGObject::Parameter*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : LibGObject::Object*
   fun initable_init = g_initable_init(this : Initable*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Bool
 
   struct LoadableIcon # interface
-  g_iface : LibGObject::TypeInterface
-  load : -> Void
-  load_async : -> Void
-  load_finish : -> Void
+    g_iface : LibGObject::TypeInterface
+    load : -> Void
+    load_async : -> Void
+    load_finish : -> Void
   # Requires Icon
     # Virtual function load
     # Virtual function load_async
@@ -756,34 +756,34 @@ lib LibGio
   fun loadable_icon_load_finish = g_loadable_icon_load_finish(this : LoadableIcon*, res : LibGio::AsyncResult*, type : UInt8**, error : LibGLib::Error**) : LibGio::InputStream*
 
   struct Mount # interface
-  g_iface : LibGObject::TypeInterface
-  changed : -> Void
-  unmounted : -> Void
-  get_root : -> Void
-  get_name : -> Void
-  get_icon : -> Void
-  get_uuid : -> Void
-  get_volume : -> Void
-  get_drive : -> Void
-  can_unmount : -> Void
-  can_eject : -> Void
-  unmount : -> Void
-  unmount_finish : -> Void
-  eject : -> Void
-  eject_finish : -> Void
-  remount : -> Void
-  remount_finish : -> Void
-  guess_content_type : -> Void
-  guess_content_type_finish : -> Void
-  guess_content_type_sync : -> Void
-  pre_unmount : -> Void
-  unmount_with_operation : -> Void
-  unmount_with_operation_finish : -> Void
-  eject_with_operation : -> Void
-  eject_with_operation_finish : -> Void
-  get_default_location : -> Void
-  get_sort_key : -> Void
-  get_symbolic_icon : -> Void
+    g_iface : LibGObject::TypeInterface
+    changed : -> Void
+    unmounted : -> Void
+    get_root : -> Void
+    get_name : -> Void
+    get_icon : -> Void
+    get_uuid : -> Void
+    get_volume : -> Void
+    get_drive : -> Void
+    can_unmount : -> Void
+    can_eject : -> Void
+    unmount : -> Void
+    unmount_finish : -> Void
+    eject : -> Void
+    eject_finish : -> Void
+    remount : -> Void
+    remount_finish : -> Void
+    guess_content_type : -> Void
+    guess_content_type_finish : -> Void
+    guess_content_type_sync : -> Void
+    pre_unmount : -> Void
+    unmount_with_operation : -> Void
+    unmount_with_operation_finish : -> Void
+    eject_with_operation : -> Void
+    eject_with_operation_finish : -> Void
+    get_default_location : -> Void
+    get_sort_key : -> Void
+    get_symbolic_icon : -> Void
     # Signal changed
     # Signal pre-unmount
     # Signal unmounted
@@ -844,11 +844,11 @@ lib LibGio
   fun mount_unshadow = g_mount_unshadow(this : Mount*) : Void
 
   struct NetworkMonitor # interface
-  g_iface : LibGObject::TypeInterface
-  network_changed : -> Void
-  can_reach : -> Void
-  can_reach_async : -> Void
-  can_reach_finish : -> Void
+    g_iface : LibGObject::TypeInterface
+    network_changed : -> Void
+    can_reach : -> Void
+    can_reach_async : -> Void
+    can_reach_finish : -> Void
   # Requires Initable
     # Property network-available : Bool
     # Signal network-changed
@@ -864,11 +864,11 @@ lib LibGio
   fun network_monitor_get_network_available = g_network_monitor_get_network_available(this : NetworkMonitor*) : Bool
 
   struct PollableInputStream # interface
-  g_iface : LibGObject::TypeInterface
-  can_poll : -> Void
-  is_readable : -> Void
-  create_source : -> Void
-  read_nonblocking : -> Void
+    g_iface : LibGObject::TypeInterface
+    can_poll : -> Void
+    is_readable : -> Void
+    create_source : -> Void
+    read_nonblocking : -> Void
   # Requires InputStream
     # Virtual function can_poll
     # Virtual function create_source
@@ -881,11 +881,11 @@ lib LibGio
   fun pollable_input_stream_read_nonblocking = g_pollable_input_stream_read_nonblocking(this : PollableInputStream*, buffer : UInt8*, count : UInt64, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int64
 
   struct PollableOutputStream # interface
-  g_iface : LibGObject::TypeInterface
-  can_poll : -> Void
-  is_writable : -> Void
-  create_source : -> Void
-  write_nonblocking : -> Void
+    g_iface : LibGObject::TypeInterface
+    can_poll : -> Void
+    is_writable : -> Void
+    create_source : -> Void
+    write_nonblocking : -> Void
   # Requires OutputStream
     # Virtual function can_poll
     # Virtual function create_source
@@ -898,11 +898,11 @@ lib LibGio
   fun pollable_output_stream_write_nonblocking = g_pollable_output_stream_write_nonblocking(this : PollableOutputStream*, buffer : UInt8*, count : UInt64, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int64
 
   struct Proxy # interface
-  g_iface : LibGObject::TypeInterface
-  connect : -> Void
-  connect_async : -> Void
-  connect_finish : -> Void
-  supports_hostname : -> Void
+    g_iface : LibGObject::TypeInterface
+    connect : -> Void
+    connect_async : -> Void
+    connect_finish : -> Void
+    supports_hostname : -> Void
     # Virtual function connect
     # Virtual function connect_async
     # Virtual function connect_finish
@@ -915,11 +915,11 @@ lib LibGio
   fun proxy_supports_hostname = g_proxy_supports_hostname(this : Proxy*) : Bool
 
   struct ProxyResolver # interface
-  g_iface : LibGObject::TypeInterface
-  is_supported : -> Void
-  lookup : -> Void
-  lookup_async : -> Void
-  lookup_finish : -> Void
+    g_iface : LibGObject::TypeInterface
+    is_supported : -> Void
+    lookup : -> Void
+    lookup_async : -> Void
+    lookup_finish : -> Void
     # Virtual function is_supported
     # Virtual function lookup
     # Virtual function lookup_async
@@ -932,9 +932,9 @@ lib LibGio
   fun proxy_resolver_lookup_finish = g_proxy_resolver_lookup_finish(this : ProxyResolver*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : UInt8**
 
   struct RemoteActionGroup # interface
-  g_iface : LibGObject::TypeInterface
-  activate_action_full : -> Void
-  change_action_state_full : -> Void
+    g_iface : LibGObject::TypeInterface
+    activate_action_full : -> Void
+    change_action_state_full : -> Void
   # Requires ActionGroup
     # Virtual function activate_action_full
     # Virtual function change_action_state_full
@@ -943,12 +943,12 @@ lib LibGio
   fun remote_action_group_change_action_state_full = g_remote_action_group_change_action_state_full(this : RemoteActionGroup*, action_name : UInt8*, value : LibGLib::Variant*, platform_data : LibGLib::Variant*) : Void
 
   struct Seekable # interface
-  g_iface : LibGObject::TypeInterface
-  tell : -> Void
-  can_seek : -> Void
-  seek : -> Void
-  can_truncate : -> Void
-  truncate_fn : -> Void
+    g_iface : LibGObject::TypeInterface
+    tell : -> Void
+    can_seek : -> Void
+    seek : -> Void
+    can_truncate : -> Void
+    truncate_fn : -> Void
     # Virtual function can_seek
     # Virtual function can_truncate
     # Virtual function seek
@@ -962,9 +962,9 @@ lib LibGio
   fun seekable_truncate = g_seekable_truncate(this : Seekable*, offset : Int64, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Bool
 
   struct SocketConnectable # interface
-  g_iface : LibGObject::TypeInterface
-  enumerate : -> Void
-  proxy_enumerate : -> Void
+    g_iface : LibGObject::TypeInterface
+    enumerate : -> Void
+    proxy_enumerate : -> Void
     # Virtual function enumerate
     # Virtual function proxy_enumerate
   end
@@ -972,13 +972,13 @@ lib LibGio
   fun socket_connectable_proxy_enumerate = g_socket_connectable_proxy_enumerate(this : SocketConnectable*) : LibGio::SocketAddressEnumerator*
 
   struct TlsBackend # interface
-  g_iface : LibGObject::TypeInterface
-  supports_tls : -> Void
-  get_certificate_type : -> Void
-  get_client_connection_type : -> Void
-  get_server_connection_type : -> Void
-  get_file_database_type : -> Void
-  get_default_database : -> Void
+    g_iface : LibGObject::TypeInterface
+    supports_tls : -> Void
+    get_certificate_type : -> Void
+    get_client_connection_type : -> Void
+    get_server_connection_type : -> Void
+    get_file_database_type : -> Void
+    get_default_database : -> Void
     # Virtual function get_default_database
     # Virtual function supports_tls
   end
@@ -991,7 +991,7 @@ lib LibGio
   fun tls_backend_supports_tls = g_tls_backend_supports_tls(this : TlsBackend*) : Bool
 
   struct TlsClientConnection # interface
-  g_iface : LibGObject::TypeInterface
+    g_iface : LibGObject::TypeInterface
   # Requires TlsConnection
     # Property accepted-cas : Void**
     # Property server-identity : LibGio::SocketConnectable
@@ -1008,43 +1008,43 @@ lib LibGio
   fun tls_client_connection_set_validation_flags = g_tls_client_connection_set_validation_flags(this : TlsClientConnection*, flags : LibGio::TlsCertificateFlags) : Void
 
   struct TlsFileDatabase # interface
-  g_iface : LibGObject::TypeInterface
-  padding : Void*
+    g_iface : LibGObject::TypeInterface
+    padding : Void*
   # Requires TlsDatabase
     # Property anchors : UInt8*
   end
   fun tls_file_database_new = g_tls_file_database_new(anchors : UInt8*, error : LibGLib::Error**) : LibGio::TlsFileDatabase*
 
   struct TlsServerConnection # interface
-  g_iface : LibGObject::TypeInterface
+    g_iface : LibGObject::TypeInterface
   # Requires TlsConnection
     # Property authentication-mode : LibGio::TlsAuthenticationMode
   end
   fun tls_server_connection_new = g_tls_server_connection_new(base_io_stream : LibGio::IOStream*, certificate : LibGio::TlsCertificate*, error : LibGLib::Error**) : LibGio::TlsServerConnection*
 
   struct Volume # interface
-  g_iface : LibGObject::TypeInterface
-  changed : -> Void
-  removed : -> Void
-  get_name : -> Void
-  get_icon : -> Void
-  get_uuid : -> Void
-  get_drive : -> Void
-  get_mount : -> Void
-  can_mount : -> Void
-  can_eject : -> Void
-  mount_fn : -> Void
-  mount_finish : -> Void
-  eject : -> Void
-  eject_finish : -> Void
-  get_identifier : -> Void
-  enumerate_identifiers : -> Void
-  should_automount : -> Void
-  get_activation_root : -> Void
-  eject_with_operation : -> Void
-  eject_with_operation_finish : -> Void
-  get_sort_key : -> Void
-  get_symbolic_icon : -> Void
+    g_iface : LibGObject::TypeInterface
+    changed : -> Void
+    removed : -> Void
+    get_name : -> Void
+    get_icon : -> Void
+    get_uuid : -> Void
+    get_drive : -> Void
+    get_mount : -> Void
+    can_mount : -> Void
+    can_eject : -> Void
+    mount_fn : -> Void
+    mount_finish : -> Void
+    eject : -> Void
+    eject_finish : -> Void
+    get_identifier : -> Void
+    enumerate_identifiers : -> Void
+    should_automount : -> Void
+    get_activation_root : -> Void
+    eject_with_operation : -> Void
+    eject_with_operation_finish : -> Void
+    get_sort_key : -> Void
+    get_symbolic_icon : -> Void
     # Signal changed
     # Signal removed
     # Virtual function can_eject

@@ -20,7 +20,7 @@ class InterfaceInfo < BaseInfo
       iface_struct = self.iface_struct
       if iface_struct
         iface_struct.each_field do |field|
-          io.puts "#{field.definition}"
+          io.puts "  #{field.definition}"
         end
       end
 

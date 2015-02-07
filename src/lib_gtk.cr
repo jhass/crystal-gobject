@@ -7998,11 +7998,11 @@ lib LibGtk
   ###########################################
 
   struct Actionable # interface
-  g_iface : LibGObject::TypeInterface
-  get_action_name : -> Void
-  set_action_name : -> Void
-  get_action_target_value : -> Void
-  set_action_target_value : -> Void
+    g_iface : LibGObject::TypeInterface
+    get_action_name : -> Void
+    set_action_name : -> Void
+    get_action_target_value : -> Void
+    set_action_target_value : -> Void
   # Requires Widget
     # Property action-name : UInt8*
     # Property action-target : LibGLib::Variant
@@ -8018,9 +8018,9 @@ lib LibGtk
   fun actionable_set_detailed_action_name = gtk_actionable_set_detailed_action_name(this : Actionable*, detailed_action_name : UInt8*) : Void
 
   struct Activatable # interface
-  g_iface : LibGObject::TypeInterface
-  update : -> Void
-  sync_action_properties : -> Void
+    g_iface : LibGObject::TypeInterface
+    update : -> Void
+    sync_action_properties : -> Void
     # Property related-action : LibGtk::Action
     # Property use-action-appearance : Bool
     # Virtual function sync_action_properties
@@ -8042,17 +8042,17 @@ lib LibGtk
   fun app_chooser_refresh = gtk_app_chooser_refresh(this : AppChooser*) : Void
 
   struct Buildable # interface
-  g_iface : LibGObject::TypeInterface
-  set_name : -> Void
-  get_name : -> Void
-  add_child : -> Void
-  set_buildable_property : -> Void
-  construct_child : -> Void
-  custom_tag_start : -> Void
-  custom_tag_end : -> Void
-  custom_finished : -> Void
-  parser_finished : -> Void
-  get_internal_child : -> Void
+    g_iface : LibGObject::TypeInterface
+    set_name : -> Void
+    get_name : -> Void
+    add_child : -> Void
+    set_buildable_property : -> Void
+    construct_child : -> Void
+    custom_tag_start : -> Void
+    custom_tag_end : -> Void
+    custom_finished : -> Void
+    parser_finished : -> Void
+    get_internal_child : -> Void
     # Virtual function add_child
     # Virtual function construct_child
     # Virtual function custom_finished
@@ -8076,16 +8076,16 @@ lib LibGtk
   fun buildable_set_name = gtk_buildable_set_name(this : Buildable*, name : UInt8*) : Void
 
   struct CellAccessibleParent # interface
-  parent : LibGObject::TypeInterface
-  get_cell_extents : -> Void
-  get_cell_area : -> Void
-  grab_focus : -> Void
-  get_child_index : -> Void
-  get_renderer_state : -> Void
-  expand_collapse : -> Void
-  activate : -> Void
-  edit : -> Void
-  update_relationset : -> Void
+    parent : LibGObject::TypeInterface
+    get_cell_extents : -> Void
+    get_cell_area : -> Void
+    grab_focus : -> Void
+    get_child_index : -> Void
+    get_renderer_state : -> Void
+    expand_collapse : -> Void
+    activate : -> Void
+    edit : -> Void
+    update_relationset : -> Void
     # Virtual function activate
     # Virtual function edit
     # Virtual function expand_collapse
@@ -8107,10 +8107,10 @@ lib LibGtk
   fun cell_accessible_parent_update_relationset = gtk_cell_accessible_parent_update_relationset(this : CellAccessibleParent*, cell : LibGtk::CellAccessible*, relationset : LibAtk::RelationSet*) : Void
 
   struct CellEditable # interface
-  g_iface : LibGObject::TypeInterface
-  editing_done : -> Void
-  remove_widget : -> Void
-  start_editing : -> Void
+    g_iface : LibGObject::TypeInterface
+    editing_done : -> Void
+    remove_widget : -> Void
+    start_editing : -> Void
   # Requires Widget
     # Property editing-canceled : Bool
     # Signal editing-done
@@ -8124,16 +8124,16 @@ lib LibGtk
   fun cell_editable_start_editing = gtk_cell_editable_start_editing(this : CellEditable*, event : LibGdk::Event*) : Void
 
   struct CellLayout # interface
-  g_iface : LibGObject::TypeInterface
-  pack_start : -> Void
-  pack_end : -> Void
-  clear : -> Void
-  add_attribute : -> Void
-  set_cell_data_func : -> Void
-  clear_attributes : -> Void
-  reorder : -> Void
-  get_cells : -> Void
-  get_area : -> Void
+    g_iface : LibGObject::TypeInterface
+    pack_start : -> Void
+    pack_end : -> Void
+    clear : -> Void
+    add_attribute : -> Void
+    set_cell_data_func : -> Void
+    clear_attributes : -> Void
+    reorder : -> Void
+    get_cells : -> Void
+    get_area : -> Void
     # Virtual function add_attribute
     # Virtual function clear
     # Virtual function clear_attributes
@@ -8155,12 +8155,12 @@ lib LibGtk
   fun cell_layout_set_cell_data_func = gtk_cell_layout_set_cell_data_func(this : CellLayout*, cell : LibGtk::CellRenderer*, func : -> Void, func_data : Void*, destroy : -> Void) : Void
 
   struct ColorChooser # interface
-  base_interface : LibGObject::TypeInterface
-  get_rgba : -> Void
-  set_rgba : -> Void
-  add_palette : -> Void
-  color_activated : -> Void
-  padding : Void*
+    base_interface : LibGObject::TypeInterface
+    get_rgba : -> Void
+    set_rgba : -> Void
+    add_palette : -> Void
+    color_activated : -> Void
+    padding : Void*
     # Property rgba : LibGdk::RGBA
     # Property use-alpha : Bool
     # Signal color-activated
@@ -8176,17 +8176,17 @@ lib LibGtk
   fun color_chooser_set_use_alpha = gtk_color_chooser_set_use_alpha(this : ColorChooser*, use_alpha : Bool) : Void
 
   struct Editable # interface
-  base_iface : LibGObject::TypeInterface
-  insert_text : -> Void
-  delete_text : -> Void
-  changed : -> Void
-  do_insert_text : -> Void
-  do_delete_text : -> Void
-  get_chars : -> Void
-  set_selection_bounds : -> Void
-  get_selection_bounds : -> Void
-  set_position : -> Void
-  get_position : -> Void
+    base_iface : LibGObject::TypeInterface
+    insert_text : -> Void
+    delete_text : -> Void
+    changed : -> Void
+    do_insert_text : -> Void
+    do_delete_text : -> Void
+    get_chars : -> Void
+    set_selection_bounds : -> Void
+    get_selection_bounds : -> Void
+    set_position : -> Void
+    get_position : -> Void
     # Signal changed
     # Signal delete-text
     # Signal insert-text
@@ -8295,13 +8295,13 @@ lib LibGtk
   fun file_chooser_unselect_uri = gtk_file_chooser_unselect_uri(this : FileChooser*, uri : UInt8*) : Void
 
   struct FontChooser # interface
-  base_iface : LibGObject::TypeInterface
-  get_font_family : -> Void
-  get_font_face : -> Void
-  get_font_size : -> Void
-  set_filter_func : -> Void
-  font_activated : -> Void
-  padding : Void*
+    base_iface : LibGObject::TypeInterface
+    get_font_family : -> Void
+    get_font_face : -> Void
+    get_font_size : -> Void
+    set_filter_func : -> Void
+    font_activated : -> Void
+    padding : Void*
     # Property font : UInt8*
     # Property font-desc : LibPango::FontDescription
     # Property preview-text : UInt8*
@@ -8327,27 +8327,27 @@ lib LibGtk
   fun font_chooser_set_show_preview_entry = gtk_font_chooser_set_show_preview_entry(this : FontChooser*, show_preview_entry : Bool) : Void
 
   struct Orientable # interface
-  base_iface : LibGObject::TypeInterface
+    base_iface : LibGObject::TypeInterface
     # Property orientation : LibGtk::Orientation
   end
   fun orientable_get_orientation = gtk_orientable_get_orientation(this : Orientable*) : LibGtk::Orientation
   fun orientable_set_orientation = gtk_orientable_set_orientation(this : Orientable*, orientation : LibGtk::Orientation) : Void
 
   struct PrintOperationPreview # interface
-  g_iface : LibGObject::TypeInterface
-  ready : -> Void
-  got_page_size : -> Void
-  render_page : -> Void
-  is_selected : -> Void
-  end_preview : -> Void
-  _gtk_reserved1 : Void*
-  _gtk_reserved2 : Void*
-  _gtk_reserved3 : Void*
-  _gtk_reserved4 : Void*
-  _gtk_reserved5 : Void*
-  _gtk_reserved6 : Void*
-  _gtk_reserved7 : Void*
-  _gtk_reserved8 : Void*
+    g_iface : LibGObject::TypeInterface
+    ready : -> Void
+    got_page_size : -> Void
+    render_page : -> Void
+    is_selected : -> Void
+    end_preview : -> Void
+    _gtk_reserved1 : Void*
+    _gtk_reserved2 : Void*
+    _gtk_reserved3 : Void*
+    _gtk_reserved4 : Void*
+    _gtk_reserved5 : Void*
+    _gtk_reserved6 : Void*
+    _gtk_reserved7 : Void*
+    _gtk_reserved8 : Void*
     # Signal got-page-size
     # Signal ready
     # Virtual function end_preview
@@ -8361,21 +8361,21 @@ lib LibGtk
   fun print_operation_preview_render_page = gtk_print_operation_preview_render_page(this : PrintOperationPreview*, page_nr : Int32) : Void
 
   struct RecentChooser # interface
-  base_iface : LibGObject::TypeInterface
-  set_current_uri : -> Void
-  get_current_uri : -> Void
-  select_uri : -> Void
-  unselect_uri : -> Void
-  select_all : -> Void
-  unselect_all : -> Void
-  get_items : -> Void
-  get_recent_manager : Void*
-  add_filter : -> Void
-  remove_filter : -> Void
-  list_filters : -> Void
-  set_sort_func : -> Void
-  item_activated : -> Void
-  selection_changed : -> Void
+    base_iface : LibGObject::TypeInterface
+    set_current_uri : -> Void
+    get_current_uri : -> Void
+    select_uri : -> Void
+    unselect_uri : -> Void
+    select_all : -> Void
+    unselect_all : -> Void
+    get_items : -> Void
+    get_recent_manager : Void*
+    add_filter : -> Void
+    remove_filter : -> Void
+    list_filters : -> Void
+    set_sort_func : -> Void
+    item_activated : -> Void
+    selection_changed : -> Void
     # Property filter : LibGtk::RecentFilter
     # Property limit : Int32
     # Property local-only : Bool
@@ -8435,7 +8435,7 @@ lib LibGtk
   fun recent_chooser_unselect_uri = gtk_recent_chooser_unselect_uri(this : RecentChooser*, uri : UInt8*) : Void
 
   struct Scrollable # interface
-  base_iface : LibGObject::TypeInterface
+    base_iface : LibGObject::TypeInterface
     # Property hadjustment : LibGtk::Adjustment
     # Property hscroll-policy : LibGtk::ScrollablePolicy
     # Property vadjustment : LibGtk::Adjustment
@@ -8451,10 +8451,10 @@ lib LibGtk
   fun scrollable_set_vscroll_policy = gtk_scrollable_set_vscroll_policy(this : Scrollable*, policy : LibGtk::ScrollablePolicy) : Void
 
   struct StyleProvider # interface
-  g_iface : LibGObject::TypeInterface
-  get_style : -> Void
-  get_style_property : -> Void
-  get_icon_factory : -> Void
+    g_iface : LibGObject::TypeInterface
+    get_style : -> Void
+    get_style_property : -> Void
+    get_icon_factory : -> Void
     # Virtual function get_icon_factory
     # Virtual function get_style
     # Virtual function get_style_property
@@ -8464,16 +8464,16 @@ lib LibGtk
   fun style_provider_get_style_property = gtk_style_provider_get_style_property(this : StyleProvider*, path : LibGtk::WidgetPath*, state : LibGtk::StateFlags, pspec : LibGObject::ParamSpec*, value : LibGObject::Value*) : Bool
 
   struct ToolShell # interface
-  g_iface : LibGObject::TypeInterface
-  get_icon_size : -> Void
-  get_orientation : -> Void
-  get_style : -> Void
-  get_relief_style : -> Void
-  rebuild_menu : -> Void
-  get_text_orientation : -> Void
-  get_text_alignment : -> Void
-  get_ellipsize_mode : -> Void
-  get_text_size_group : -> Void
+    g_iface : LibGObject::TypeInterface
+    get_icon_size : -> Void
+    get_orientation : -> Void
+    get_style : -> Void
+    get_relief_style : -> Void
+    rebuild_menu : -> Void
+    get_text_orientation : -> Void
+    get_text_alignment : -> Void
+    get_ellipsize_mode : -> Void
+    get_text_size_group : -> Void
   # Requires Widget
     # Virtual function get_ellipsize_mode
     # Virtual function get_icon_size
@@ -8496,9 +8496,9 @@ lib LibGtk
   fun tool_shell_rebuild_menu = gtk_tool_shell_rebuild_menu(this : ToolShell*) : Void
 
   struct TreeDragDest # interface
-  g_iface : LibGObject::TypeInterface
-  drag_data_received : -> Void
-  row_drop_possible : -> Void
+    g_iface : LibGObject::TypeInterface
+    drag_data_received : -> Void
+    row_drop_possible : -> Void
     # Virtual function drag_data_received
     # Virtual function row_drop_possible
   end
@@ -8506,10 +8506,10 @@ lib LibGtk
   fun tree_drag_dest_row_drop_possible = gtk_tree_drag_dest_row_drop_possible(this : TreeDragDest*, dest_path : LibGtk::TreePath*, selection_data : LibGtk::SelectionData*) : Bool
 
   struct TreeDragSource # interface
-  g_iface : LibGObject::TypeInterface
-  row_draggable : -> Void
-  drag_data_get : -> Void
-  drag_data_delete : -> Void
+    g_iface : LibGObject::TypeInterface
+    row_draggable : -> Void
+    drag_data_get : -> Void
+    drag_data_delete : -> Void
     # Virtual function drag_data_delete
     # Virtual function drag_data_get
     # Virtual function row_draggable
@@ -8519,27 +8519,27 @@ lib LibGtk
   fun tree_drag_source_row_draggable = gtk_tree_drag_source_row_draggable(this : TreeDragSource*, path : LibGtk::TreePath*) : Bool
 
   struct TreeModel # interface
-  g_iface : LibGObject::TypeInterface
-  row_changed : -> Void
-  row_inserted : -> Void
-  row_has_child_toggled : -> Void
-  row_deleted : -> Void
-  rows_reordered : -> Void
-  get_flags : -> Void
-  get_n_columns : -> Void
-  get_column_type : -> Void
-  get_iter : -> Void
-  get_path : -> Void
-  get_value : -> Void
-  iter_next : -> Void
-  iter_previous : -> Void
-  iter_children : -> Void
-  iter_has_child : -> Void
-  iter_n_children : -> Void
-  iter_nth_child : -> Void
-  iter_parent : -> Void
-  ref_node : -> Void
-  unref_node : -> Void
+    g_iface : LibGObject::TypeInterface
+    row_changed : -> Void
+    row_inserted : -> Void
+    row_has_child_toggled : -> Void
+    row_deleted : -> Void
+    rows_reordered : -> Void
+    get_flags : -> Void
+    get_n_columns : -> Void
+    get_column_type : -> Void
+    get_iter : -> Void
+    get_path : -> Void
+    get_value : -> Void
+    iter_next : -> Void
+    iter_previous : -> Void
+    iter_children : -> Void
+    iter_has_child : -> Void
+    iter_n_children : -> Void
+    iter_nth_child : -> Void
+    iter_parent : -> Void
+    ref_node : -> Void
+    unref_node : -> Void
     # Signal row-changed
     # Signal row-deleted
     # Signal row-has-child-toggled
@@ -8592,13 +8592,13 @@ lib LibGtk
   fun tree_model_unref_node = gtk_tree_model_unref_node(this : TreeModel*, iter : LibGtk::TreeIter*) : Void
 
   struct TreeSortable # interface
-  g_iface : LibGObject::TypeInterface
-  sort_column_changed : -> Void
-  get_sort_column_id : -> Void
-  set_sort_column_id : -> Void
-  set_sort_func : -> Void
-  set_default_sort_func : -> Void
-  has_default_sort_func : -> Void
+    g_iface : LibGObject::TypeInterface
+    sort_column_changed : -> Void
+    get_sort_column_id : -> Void
+    set_sort_column_id : -> Void
+    set_sort_func : -> Void
+    set_default_sort_func : -> Void
+    has_default_sort_func : -> Void
   # Requires TreeModel
     # Signal sort-column-changed
     # Virtual function get_sort_column_id

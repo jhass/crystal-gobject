@@ -8,14 +8,14 @@ lib LibAtk
   ###########################################
 
   struct Action # interface
-  parent : LibGObject::TypeInterface
-  do_action : -> Void
-  get_n_actions : -> Void
-  get_description : -> Void
-  get_name : -> Void
-  get_keybinding : -> Void
-  set_description : -> Void
-  get_localized_name : -> Void
+    parent : LibGObject::TypeInterface
+    do_action : -> Void
+    get_n_actions : -> Void
+    get_description : -> Void
+    get_name : -> Void
+    get_keybinding : -> Void
+    set_description : -> Void
+    get_localized_name : -> Void
     # Virtual function do_action
     # Virtual function get_description
     # Virtual function get_keybinding
@@ -33,22 +33,22 @@ lib LibAtk
   fun action_set_description = atk_action_set_description(this : Action*, i : Int32, desc : UInt8*) : Bool
 
   struct Component # interface
-  parent : LibGObject::TypeInterface
-  add_focus_handler : Void*
-  contains : -> Void
-  ref_accessible_at_point : -> Void
-  get_extents : -> Void
-  get_position : -> Void
-  get_size : -> Void
-  grab_focus : -> Void
-  remove_focus_handler : -> Void
-  set_extents : -> Void
-  set_position : -> Void
-  set_size : -> Void
-  get_layer : -> Void
-  get_mdi_zorder : -> Void
-  bounds_changed : -> Void
-  get_alpha : -> Void
+    parent : LibGObject::TypeInterface
+    add_focus_handler : Void*
+    contains : -> Void
+    ref_accessible_at_point : -> Void
+    get_extents : -> Void
+    get_position : -> Void
+    get_size : -> Void
+    grab_focus : -> Void
+    remove_focus_handler : -> Void
+    set_extents : -> Void
+    set_position : -> Void
+    set_size : -> Void
+    get_layer : -> Void
+    get_mdi_zorder : -> Void
+    bounds_changed : -> Void
+    get_alpha : -> Void
     # Signal bounds-changed
     # Virtual function bounds_changed
     # Virtual function contains
@@ -80,15 +80,15 @@ lib LibAtk
   fun component_set_size = atk_component_set_size(this : Component*, width : Int32, height : Int32) : Bool
 
   struct Document # interface
-  parent : LibGObject::TypeInterface
-  get_document_type : -> Void
-  get_document : -> Void
-  get_document_locale : -> Void
-  get_document_attributes : Void*
-  get_document_attribute_value : -> Void
-  set_document_attribute : -> Void
-  get_current_page_number : -> Void
-  get_page_count : -> Void
+    parent : LibGObject::TypeInterface
+    get_document_type : -> Void
+    get_document : -> Void
+    get_document_locale : -> Void
+    get_document_attributes : Void*
+    get_document_attribute_value : -> Void
+    set_document_attribute : -> Void
+    get_current_page_number : -> Void
+    get_page_count : -> Void
     # Signal load-complete
     # Signal load-stopped
     # Signal page-changed
@@ -111,14 +111,14 @@ lib LibAtk
   fun document_set_attribute_value = atk_document_set_attribute_value(this : Document*, attribute_name : UInt8*, attribute_value : UInt8*) : Bool
 
   struct EditableText # interface
-  parent_interface : LibGObject::TypeInterface
-  set_run_attributes : -> Void
-  set_text_contents : -> Void
-  insert_text : -> Void
-  copy_text : -> Void
-  cut_text : -> Void
-  delete_text : -> Void
-  paste_text : -> Void
+    parent_interface : LibGObject::TypeInterface
+    set_run_attributes : -> Void
+    set_text_contents : -> Void
+    insert_text : -> Void
+    copy_text : -> Void
+    cut_text : -> Void
+    delete_text : -> Void
+    paste_text : -> Void
     # Virtual function copy_text
     # Virtual function cut_text
     # Virtual function delete_text
@@ -136,18 +136,18 @@ lib LibAtk
   fun editable_text_set_text_contents = atk_editable_text_set_text_contents(this : EditableText*, string : UInt8*) : Void
 
   struct HyperlinkImpl # interface
-  parent : LibGObject::TypeInterface
-  get_hyperlink : -> Void
+    parent : LibGObject::TypeInterface
+    get_hyperlink : -> Void
     # Virtual function get_hyperlink
   end
   fun hyperlink_impl_get_hyperlink = atk_hyperlink_impl_get_hyperlink(this : HyperlinkImpl*) : LibAtk::Hyperlink*
 
   struct Hypertext # interface
-  parent : LibGObject::TypeInterface
-  get_link : -> Void
-  get_n_links : -> Void
-  get_link_index : -> Void
-  link_selected : -> Void
+    parent : LibGObject::TypeInterface
+    get_link : -> Void
+    get_n_links : -> Void
+    get_link_index : -> Void
+    link_selected : -> Void
     # Signal link-selected
     # Virtual function get_link
     # Virtual function get_link_index
@@ -159,12 +159,12 @@ lib LibAtk
   fun hypertext_get_n_links = atk_hypertext_get_n_links(this : Hypertext*) : Int32
 
   struct Image # interface
-  parent : LibGObject::TypeInterface
-  get_image_position : -> Void
-  get_image_description : -> Void
-  get_image_size : -> Void
-  set_image_description : -> Void
-  get_image_locale : -> Void
+    parent : LibGObject::TypeInterface
+    get_image_position : -> Void
+    get_image_description : -> Void
+    get_image_size : -> Void
+    set_image_description : -> Void
+    get_image_locale : -> Void
     # Virtual function get_image_description
     # Virtual function get_image_locale
     # Virtual function get_image_position
@@ -181,15 +181,15 @@ lib LibAtk
   end
 
   struct Selection # interface
-  parent : LibGObject::TypeInterface
-  add_selection : -> Void
-  clear_selection : -> Void
-  ref_selection : -> Void
-  get_selection_count : -> Void
-  is_child_selected : -> Void
-  remove_selection : -> Void
-  select_all_selection : -> Void
-  selection_changed : -> Void
+    parent : LibGObject::TypeInterface
+    add_selection : -> Void
+    clear_selection : -> Void
+    ref_selection : -> Void
+    get_selection_count : -> Void
+    is_child_selected : -> Void
+    remove_selection : -> Void
+    select_all_selection : -> Void
+    selection_changed : -> Void
     # Signal selection-changed
     # Virtual function add_selection
     # Virtual function clear_selection
@@ -209,14 +209,14 @@ lib LibAtk
   fun selection_select_all_selection = atk_selection_select_all_selection(this : Selection*) : Bool
 
   struct StreamableContent # interface
-  parent : LibGObject::TypeInterface
-  get_n_mime_types : -> Void
-  get_mime_type : -> Void
-  get_stream : -> Void
-  get_uri : -> Void
-  pad1 : -> Void
-  pad2 : -> Void
-  pad3 : -> Void
+    parent : LibGObject::TypeInterface
+    get_n_mime_types : -> Void
+    get_mime_type : -> Void
+    get_stream : -> Void
+    get_uri : -> Void
+    pad1 : -> Void
+    pad2 : -> Void
+    pad3 : -> Void
     # Virtual function get_mime_type
     # Virtual function get_n_mime_types
     # Virtual function get_stream
@@ -228,43 +228,43 @@ lib LibAtk
   fun streamable_content_get_uri = atk_streamable_content_get_uri(this : StreamableContent*, mime_type : UInt8*) : UInt8*
 
   struct Table # interface
-  parent : LibGObject::TypeInterface
-  ref_at : -> Void
-  get_index_at : -> Void
-  get_column_at_index : -> Void
-  get_row_at_index : -> Void
-  get_n_columns : -> Void
-  get_n_rows : -> Void
-  get_column_extent_at : -> Void
-  get_row_extent_at : -> Void
-  get_caption : -> Void
-  get_column_description : -> Void
-  get_column_header : -> Void
-  get_row_description : -> Void
-  get_row_header : -> Void
-  get_summary : -> Void
-  set_caption : -> Void
-  set_column_description : -> Void
-  set_column_header : -> Void
-  set_row_description : -> Void
-  set_row_header : -> Void
-  set_summary : -> Void
-  get_selected_columns : -> Void
-  get_selected_rows : -> Void
-  is_column_selected : -> Void
-  is_row_selected : -> Void
-  is_selected : -> Void
-  add_row_selection : -> Void
-  remove_row_selection : -> Void
-  add_column_selection : -> Void
-  remove_column_selection : -> Void
-  row_inserted : -> Void
-  column_inserted : -> Void
-  row_deleted : -> Void
-  column_deleted : -> Void
-  row_reordered : -> Void
-  column_reordered : -> Void
-  model_changed : -> Void
+    parent : LibGObject::TypeInterface
+    ref_at : -> Void
+    get_index_at : -> Void
+    get_column_at_index : -> Void
+    get_row_at_index : -> Void
+    get_n_columns : -> Void
+    get_n_rows : -> Void
+    get_column_extent_at : -> Void
+    get_row_extent_at : -> Void
+    get_caption : -> Void
+    get_column_description : -> Void
+    get_column_header : -> Void
+    get_row_description : -> Void
+    get_row_header : -> Void
+    get_summary : -> Void
+    set_caption : -> Void
+    set_column_description : -> Void
+    set_column_header : -> Void
+    set_row_description : -> Void
+    set_row_header : -> Void
+    set_summary : -> Void
+    get_selected_columns : -> Void
+    get_selected_rows : -> Void
+    is_column_selected : -> Void
+    is_row_selected : -> Void
+    is_selected : -> Void
+    add_row_selection : -> Void
+    remove_row_selection : -> Void
+    add_column_selection : -> Void
+    remove_column_selection : -> Void
+    row_inserted : -> Void
+    column_inserted : -> Void
+    row_deleted : -> Void
+    column_deleted : -> Void
+    row_reordered : -> Void
+    column_reordered : -> Void
+    model_changed : -> Void
     # Signal column-deleted
     # Signal column-inserted
     # Signal column-reordered
@@ -340,14 +340,14 @@ lib LibAtk
   fun table_set_summary = atk_table_set_summary(this : Table*, accessible : LibAtk::Object*) : Void
 
   struct TableCell # interface
-  parent : LibGObject::TypeInterface
-  get_column_span : -> Void
-  get_column_header_cells : -> Void
-  get_position : -> Void
-  get_row_span : -> Void
-  get_row_header_cells : -> Void
-  get_row_column_span : -> Void
-  get_table : -> Void
+    parent : LibGObject::TypeInterface
+    get_column_span : -> Void
+    get_column_header_cells : -> Void
+    get_position : -> Void
+    get_row_span : -> Void
+    get_row_header_cells : -> Void
+    get_row_column_span : -> Void
+    get_table : -> Void
   # Requires Object
     # Virtual function get_column_header_cells
     # Virtual function get_column_span
@@ -366,31 +366,31 @@ lib LibAtk
   fun table_cell_get_table = atk_table_cell_get_table(this : TableCell*) : LibAtk::Object*
 
   struct Text # interface
-  parent : LibGObject::TypeInterface
-  get_text : -> Void
-  get_text_after_offset : -> Void
-  get_text_at_offset : -> Void
-  get_character_at_offset : -> Void
-  get_text_before_offset : -> Void
-  get_caret_offset : -> Void
-  get_run_attributes : -> Void
-  get_default_attributes : -> Void
-  get_character_extents : -> Void
-  get_character_count : -> Void
-  get_offset_at_point : -> Void
-  get_n_selections : -> Void
-  get_selection : -> Void
-  add_selection : -> Void
-  remove_selection : -> Void
-  set_selection : -> Void
-  set_caret_offset : -> Void
-  text_changed : -> Void
-  text_caret_moved : -> Void
-  text_selection_changed : -> Void
-  text_attributes_changed : -> Void
-  get_range_extents : -> Void
-  get_bounded_ranges : -> Void
-  get_string_at_offset : -> Void
+    parent : LibGObject::TypeInterface
+    get_text : -> Void
+    get_text_after_offset : -> Void
+    get_text_at_offset : -> Void
+    get_character_at_offset : -> Void
+    get_text_before_offset : -> Void
+    get_caret_offset : -> Void
+    get_run_attributes : -> Void
+    get_default_attributes : -> Void
+    get_character_extents : -> Void
+    get_character_count : -> Void
+    get_offset_at_point : -> Void
+    get_n_selections : -> Void
+    get_selection : -> Void
+    add_selection : -> Void
+    remove_selection : -> Void
+    set_selection : -> Void
+    set_caret_offset : -> Void
+    text_changed : -> Void
+    text_caret_moved : -> Void
+    text_selection_changed : -> Void
+    text_attributes_changed : -> Void
+    get_range_extents : -> Void
+    get_bounded_ranges : -> Void
+    get_string_at_offset : -> Void
     # Signal text-attributes-changed
     # Signal text-caret-moved
     # Signal text-changed
@@ -445,17 +445,17 @@ lib LibAtk
   fun text_set_selection = atk_text_set_selection(this : Text*, selection_num : Int32, start_offset : Int32, end_offset : Int32) : Bool
 
   struct Value # interface
-  parent : LibGObject::TypeInterface
-  get_current_value : -> Void
-  get_maximum_value : -> Void
-  get_minimum_value : -> Void
-  set_current_value : -> Void
-  get_minimum_increment : -> Void
-  get_value_and_text : -> Void
-  get_range : -> Void
-  get_increment : -> Void
-  get_sub_ranges : -> Void
-  set_value : -> Void
+    parent : LibGObject::TypeInterface
+    get_current_value : -> Void
+    get_maximum_value : -> Void
+    get_minimum_value : -> Void
+    set_current_value : -> Void
+    get_minimum_increment : -> Void
+    get_value_and_text : -> Void
+    get_range : -> Void
+    get_increment : -> Void
+    get_sub_ranges : -> Void
+    set_value : -> Void
     # Signal value-changed
     # Virtual function get_current_value
     # Virtual function get_increment
@@ -480,7 +480,7 @@ lib LibAtk
   fun value_set_value = atk_value_set_value(this : Value*, new_value : Float64) : Void
 
   struct Window # interface
-  parent : LibGObject::TypeInterface
+    parent : LibGObject::TypeInterface
   # Requires Object
     # Signal activate
     # Signal create
