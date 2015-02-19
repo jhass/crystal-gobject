@@ -2,7 +2,7 @@ require "../src/gtk"
 
 window = Gtk::Window.new
 window.title = "Hello World!"
-window.connect "destroy", &->Gtk.quit
+window.connect "destroy", &->Gtk.main_quit
 window.border_width = 10
 button = Gtk::Button.new_with_label "Hello World!"
 button.connect "clicked" do

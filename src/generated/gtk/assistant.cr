@@ -1,0 +1,147 @@
+require "./window"
+
+module Gtk
+  class Assistant < Window
+    def initialize @gtk_assistant
+    end
+
+    def to_unsafe
+      @gtk_assistant.not_nil!
+    end
+
+    # Implements ImplementorIface
+    # Implements Buildable
+
+    def self.new_internal
+      __return_value = LibGtk.assistant_new
+      Gtk::Widget.new(__return_value)
+    end
+
+    def add_action_widget(child)
+      __return_value = LibGtk.assistant_add_action_widget((to_unsafe as LibGtk::Assistant*), (child.to_unsafe as LibGtk::Widget*))
+      __return_value
+    end
+
+    def append_page(page)
+      __return_value = LibGtk.assistant_append_page((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*))
+      __return_value
+    end
+
+    def commit
+      __return_value = LibGtk.assistant_commit((to_unsafe as LibGtk::Assistant*))
+      __return_value
+    end
+
+    def current_page
+      __return_value = LibGtk.assistant_get_current_page((to_unsafe as LibGtk::Assistant*))
+      __return_value
+    end
+
+    def n_pages
+      __return_value = LibGtk.assistant_get_n_pages((to_unsafe as LibGtk::Assistant*))
+      __return_value
+    end
+
+    def nth_page(page_num)
+      __return_value = LibGtk.assistant_get_nth_page((to_unsafe as LibGtk::Assistant*), Int32.cast(page_num))
+      Gtk::Widget.new(__return_value)
+    end
+
+    def page_complete(page)
+      __return_value = LibGtk.assistant_get_page_complete((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*))
+      __return_value
+    end
+
+    def page_header_image(page)
+      __return_value = LibGtk.assistant_get_page_header_image((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*))
+      GdkPixbuf::Pixbuf.new(__return_value)
+    end
+
+    def page_side_image(page)
+      __return_value = LibGtk.assistant_get_page_side_image((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*))
+      GdkPixbuf::Pixbuf.new(__return_value)
+    end
+
+    def page_title(page)
+      __return_value = LibGtk.assistant_get_page_title((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*))
+      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    end
+
+    def page_type(page)
+      __return_value = LibGtk.assistant_get_page_type((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*))
+      __return_value
+    end
+
+    def insert_page(page, position)
+      __return_value = LibGtk.assistant_insert_page((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*), Int32.cast(position))
+      __return_value
+    end
+
+    def next_page
+      __return_value = LibGtk.assistant_next_page((to_unsafe as LibGtk::Assistant*))
+      __return_value
+    end
+
+    def prepend_page(page)
+      __return_value = LibGtk.assistant_prepend_page((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*))
+      __return_value
+    end
+
+    def previous_page
+      __return_value = LibGtk.assistant_previous_page((to_unsafe as LibGtk::Assistant*))
+      __return_value
+    end
+
+    def remove_action_widget(child)
+      __return_value = LibGtk.assistant_remove_action_widget((to_unsafe as LibGtk::Assistant*), (child.to_unsafe as LibGtk::Widget*))
+      __return_value
+    end
+
+    def remove_page(page_num)
+      __return_value = LibGtk.assistant_remove_page((to_unsafe as LibGtk::Assistant*), Int32.cast(page_num))
+      __return_value
+    end
+
+    def current_page=(page_num)
+      __return_value = LibGtk.assistant_set_current_page((to_unsafe as LibGtk::Assistant*), Int32.cast(page_num))
+      __return_value
+    end
+
+    def forward_page_func=(page_func, data, destroy)
+      __return_value = LibGtk.assistant_set_forward_page_func((to_unsafe as LibGtk::Assistant*), page_func, data, destroy)
+      __return_value
+    end
+
+    def page_complete=(page, complete)
+      __return_value = LibGtk.assistant_set_page_complete((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*), Bool.cast(complete))
+      __return_value
+    end
+
+    def page_header_image=(page, pixbuf)
+      __return_value = LibGtk.assistant_set_page_header_image((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*), (pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*))
+      __return_value
+    end
+
+    def page_side_image=(page, pixbuf)
+      __return_value = LibGtk.assistant_set_page_side_image((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*), (pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*))
+      __return_value
+    end
+
+    def page_title=(page, title)
+      __return_value = LibGtk.assistant_set_page_title((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*), title)
+      __return_value
+    end
+
+    def page_type=(page, type)
+      __return_value = LibGtk.assistant_set_page_type((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*), type)
+      __return_value
+    end
+
+    def update_buttons_state
+      __return_value = LibGtk.assistant_update_buttons_state((to_unsafe as LibGtk::Assistant*))
+      __return_value
+    end
+
+  end
+end
+

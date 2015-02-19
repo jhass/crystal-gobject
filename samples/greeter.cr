@@ -1,11 +1,11 @@
 require "../src/gtk"
 
-builder = Gtk::Builder.from_file "#{__DIR__}/greeter.glade"
+builder = Gtk::Builder.new_from_file "#{__DIR__}/greeter.glade"
 builder.connect_signals
 
-info = Gtk::Window.ensure builder["info"]
-info_text = Gtk::Label.ensure builder["text"]
-name = Gtk::Entry.ensure builder["name"]
+info = Gtk::Window.cast builder["info"]
+info_text = Gtk::Label.cast builder["text"]
+name = Gtk::Entry.cast builder["name"]
 
 def greet info, info_text, name
   text = name.text
@@ -18,12 +18,12 @@ name.connect "activate" do
   greet(info, info_text, name)
 end
 
-Gtk::Button.ensure(builder["greet"]).connect "clicked" do
+Gtk::Button.cast(builder["greet"]).connect "clicked" do
   greet(info, info_text, name)
 end
 
-Gtk::Button.ensure(builder["ok"]).connect "clicked", &->info.hide
+Gtk::Button.cast(builder["ok"]).connect "clicked", &->info.hide
 
 
-window = Gtk::Window.ensure builder["window"]
+window = Gtk::Window.cast builder["window"]
 window.show_all

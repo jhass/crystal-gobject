@@ -1,0 +1,66 @@
+require "./gesture"
+
+module Gtk
+  class GestureSingle < Gesture
+    def initialize @gtk_gesture_single
+    end
+
+    def to_unsafe
+      @gtk_gesture_single.not_nil!
+    end
+
+    def button=(__value)
+      LibGtk.gesture_single_set_button((to_unsafe as LibGtk::GestureSingle*), UInt32.cast(__value))
+    end
+
+    def exclusive=(__value)
+      LibGtk.gesture_single_set_exclusive((to_unsafe as LibGtk::GestureSingle*), Bool.cast(__value))
+    end
+
+    def touch_only=(__value)
+      LibGtk.gesture_single_set_touch_only((to_unsafe as LibGtk::GestureSingle*), Bool.cast(__value))
+    end
+
+    def button
+      __return_value = LibGtk.gesture_single_get_button((to_unsafe as LibGtk::GestureSingle*))
+      __return_value
+    end
+
+    def current_button
+      __return_value = LibGtk.gesture_single_get_current_button((to_unsafe as LibGtk::GestureSingle*))
+      __return_value
+    end
+
+    def current_sequence
+      __return_value = LibGtk.gesture_single_get_current_sequence((to_unsafe as LibGtk::GestureSingle*))
+      Gdk::EventSequence.new(__return_value)
+    end
+
+    def exclusive
+      __return_value = LibGtk.gesture_single_get_exclusive((to_unsafe as LibGtk::GestureSingle*))
+      __return_value
+    end
+
+    def touch_only
+      __return_value = LibGtk.gesture_single_get_touch_only((to_unsafe as LibGtk::GestureSingle*))
+      __return_value
+    end
+
+    def button=(button)
+      __return_value = LibGtk.gesture_single_set_button((to_unsafe as LibGtk::GestureSingle*), UInt32.cast(button))
+      __return_value
+    end
+
+    def exclusive=(exclusive)
+      __return_value = LibGtk.gesture_single_set_exclusive((to_unsafe as LibGtk::GestureSingle*), Bool.cast(exclusive))
+      __return_value
+    end
+
+    def touch_only=(touch_only)
+      __return_value = LibGtk.gesture_single_set_touch_only((to_unsafe as LibGtk::GestureSingle*), Bool.cast(touch_only))
+      __return_value
+    end
+
+  end
+end
+

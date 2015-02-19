@@ -10,9 +10,9 @@ generally useful progress, pull requests are welcome!
 * Generates bindings that parse, but are probably not complete or bug free.
 * Generates bindings for gobject-introspection that are useable by the glue & generation
   code that generates them.
-* Generates bindings for Gtk that, together with a thin hand-written wrapper
-  can show a blank window.
-* Should generate not only the lib code, but also the boilerplate for the glue code.
+* Generates bindings and wrappers for Gtk that, together with some hand-written glue code
+  can show a blank window and load a glade file.
+* Generates not only the lib code, but also the boilerplate for the glue code (WIP, not complete)
 * Should figure out dependencies the smart way, that is only generate bindings
   for dependencies that are actually used in the binding.
 * Should figure out link flags for when gi_repository_get_shared_library

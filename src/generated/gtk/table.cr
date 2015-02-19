@@ -1,0 +1,111 @@
+require "./container"
+
+module Gtk
+  class Table < Container
+    def initialize @gtk_table
+    end
+
+    def to_unsafe
+      @gtk_table.not_nil!
+    end
+
+    # Implements ImplementorIface
+    # Implements Buildable
+    def column_spacing=(__value)
+      LibGtk.table_set_column_spacing((to_unsafe as LibGtk::Table*), UInt32.cast(__value))
+    end
+
+    def homogeneous=(__value)
+      LibGtk.table_set_homogeneous((to_unsafe as LibGtk::Table*), Bool.cast(__value))
+    end
+
+    def n_columns=(__value)
+      LibGtk.table_set_n_columns((to_unsafe as LibGtk::Table*), UInt32.cast(__value))
+    end
+
+    def n_rows=(__value)
+      LibGtk.table_set_n_rows((to_unsafe as LibGtk::Table*), UInt32.cast(__value))
+    end
+
+    def row_spacing=(__value)
+      LibGtk.table_set_row_spacing((to_unsafe as LibGtk::Table*), UInt32.cast(__value))
+    end
+
+    def self.new_internal(rows, columns, homogeneous)
+      __return_value = LibGtk.table_new(UInt32.cast(rows), UInt32.cast(columns), Bool.cast(homogeneous))
+      Gtk::Widget.new(__return_value)
+    end
+
+    def attach(child, left_attach, right_attach, top_attach, bottom_attach, xoptions, yoptions, xpadding, ypadding)
+      __return_value = LibGtk.table_attach((to_unsafe as LibGtk::Table*), (child.to_unsafe as LibGtk::Widget*), UInt32.cast(left_attach), UInt32.cast(right_attach), UInt32.cast(top_attach), UInt32.cast(bottom_attach), xoptions, yoptions, UInt32.cast(xpadding), UInt32.cast(ypadding))
+      __return_value
+    end
+
+    def attach_defaults(widget, left_attach, right_attach, top_attach, bottom_attach)
+      __return_value = LibGtk.table_attach_defaults((to_unsafe as LibGtk::Table*), (widget.to_unsafe as LibGtk::Widget*), UInt32.cast(left_attach), UInt32.cast(right_attach), UInt32.cast(top_attach), UInt32.cast(bottom_attach))
+      __return_value
+    end
+
+    def col_spacing(column)
+      __return_value = LibGtk.table_get_col_spacing((to_unsafe as LibGtk::Table*), UInt32.cast(column))
+      __return_value
+    end
+
+    def default_col_spacing
+      __return_value = LibGtk.table_get_default_col_spacing((to_unsafe as LibGtk::Table*))
+      __return_value
+    end
+
+    def default_row_spacing
+      __return_value = LibGtk.table_get_default_row_spacing((to_unsafe as LibGtk::Table*))
+      __return_value
+    end
+
+    def homogeneous
+      __return_value = LibGtk.table_get_homogeneous((to_unsafe as LibGtk::Table*))
+      __return_value
+    end
+
+    def row_spacing(row)
+      __return_value = LibGtk.table_get_row_spacing((to_unsafe as LibGtk::Table*), UInt32.cast(row))
+      __return_value
+    end
+
+    def size(rows, columns)
+      __return_value = LibGtk.table_get_size((to_unsafe as LibGtk::Table*), UInt32.cast(rows), UInt32.cast(columns))
+      __return_value
+    end
+
+    def resize(rows, columns)
+      __return_value = LibGtk.table_resize((to_unsafe as LibGtk::Table*), UInt32.cast(rows), UInt32.cast(columns))
+      __return_value
+    end
+
+    def col_spacing=(column, spacing)
+      __return_value = LibGtk.table_set_col_spacing((to_unsafe as LibGtk::Table*), UInt32.cast(column), UInt32.cast(spacing))
+      __return_value
+    end
+
+    def col_spacings=(spacing)
+      __return_value = LibGtk.table_set_col_spacings((to_unsafe as LibGtk::Table*), UInt32.cast(spacing))
+      __return_value
+    end
+
+    def homogeneous=(homogeneous)
+      __return_value = LibGtk.table_set_homogeneous((to_unsafe as LibGtk::Table*), Bool.cast(homogeneous))
+      __return_value
+    end
+
+    def row_spacing=(row, spacing)
+      __return_value = LibGtk.table_set_row_spacing((to_unsafe as LibGtk::Table*), UInt32.cast(row), UInt32.cast(spacing))
+      __return_value
+    end
+
+    def row_spacings=(spacing)
+      __return_value = LibGtk.table_set_row_spacings((to_unsafe as LibGtk::Table*), UInt32.cast(spacing))
+      __return_value
+    end
+
+  end
+end
+
