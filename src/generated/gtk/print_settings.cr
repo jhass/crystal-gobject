@@ -21,7 +21,7 @@ module Gtk
 
     def self.new_from_key_file(key_file, group_name)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.print_settings_new_from_key_file((key_file.to_unsafe as LibGLib::KeyFile*), group_name, pointerof(__error))
+      __return_value = LibGtk.print_settings_new_from_key_file((key_file.to_unsafe as LibGLib::KeyFile*), group_name && group_name, pointerof(__error))
       GLib::Error.assert __error
       Gtk::PrintSettings.new(__return_value)
     end
@@ -128,7 +128,7 @@ module Gtk
 
     def page_ranges(num_ranges)
       __return_value = LibGtk.print_settings_get_page_ranges((to_unsafe as LibGtk::PrintSettings*), Int32.cast(num_ranges))
-      PointerIterator.new(__return_value) {|__item_25| Gtk::PageRange.new(__item_25) }
+      PointerIterator.new(__return_value) {|__item_51| Gtk::PageRange.new(__item_51) }
     end
 
     def page_set
@@ -215,17 +215,17 @@ module Gtk
 
     def load_key_file(key_file, group_name)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.print_settings_load_key_file((to_unsafe as LibGtk::PrintSettings*), (key_file.to_unsafe as LibGLib::KeyFile*), group_name, pointerof(__error))
+      __return_value = LibGtk.print_settings_load_key_file((to_unsafe as LibGtk::PrintSettings*), (key_file.to_unsafe as LibGLib::KeyFile*), group_name && group_name, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def set(key, value)
-      __return_value = LibGtk.print_settings_set((to_unsafe as LibGtk::PrintSettings*), key, value)
+      __return_value = LibGtk.print_settings_set((to_unsafe as LibGtk::PrintSettings*), key, value && value)
       __return_value
     end
 
-    def bool=(key, value)
+    def set_bool(key, value)
       __return_value = LibGtk.print_settings_set_bool((to_unsafe as LibGtk::PrintSettings*), key, Bool.cast(value))
       __return_value
     end
@@ -245,7 +245,7 @@ module Gtk
       __return_value
     end
 
-    def double=(key, value)
+    def set_double(key, value)
       __return_value = LibGtk.print_settings_set_double((to_unsafe as LibGtk::PrintSettings*), key, Float64.cast(value))
       __return_value
     end
@@ -260,12 +260,12 @@ module Gtk
       __return_value
     end
 
-    def int=(key, value)
+    def set_int(key, value)
       __return_value = LibGtk.print_settings_set_int((to_unsafe as LibGtk::PrintSettings*), key, Int32.cast(value))
       __return_value
     end
 
-    def length=(key, value, unit)
+    def set_length(key, value, unit)
       __return_value = LibGtk.print_settings_set_length((to_unsafe as LibGtk::PrintSettings*), key, Float64.cast(value), unit)
       __return_value
     end
@@ -300,7 +300,7 @@ module Gtk
       __return_value
     end
 
-    def page_ranges=(page_ranges, num_ranges)
+    def set_page_ranges(page_ranges, num_ranges)
       __return_value = LibGtk.print_settings_set_page_ranges((to_unsafe as LibGtk::PrintSettings*), page_ranges, Int32.cast(num_ranges))
       __return_value
     end
@@ -310,7 +310,7 @@ module Gtk
       __return_value
     end
 
-    def paper_height=(height, unit)
+    def set_paper_height(height, unit)
       __return_value = LibGtk.print_settings_set_paper_height((to_unsafe as LibGtk::PrintSettings*), Float64.cast(height), unit)
       __return_value
     end
@@ -320,7 +320,7 @@ module Gtk
       __return_value
     end
 
-    def paper_width=(width, unit)
+    def set_paper_width(width, unit)
       __return_value = LibGtk.print_settings_set_paper_width((to_unsafe as LibGtk::PrintSettings*), Float64.cast(width), unit)
       __return_value
     end
@@ -350,7 +350,7 @@ module Gtk
       __return_value
     end
 
-    def resolution_xy=(resolution_x, resolution_y)
+    def set_resolution_xy(resolution_x, resolution_y)
       __return_value = LibGtk.print_settings_set_resolution_xy((to_unsafe as LibGtk::PrintSettings*), Int32.cast(resolution_x), Int32.cast(resolution_y))
       __return_value
     end

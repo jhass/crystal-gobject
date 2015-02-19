@@ -11,29 +11,11 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
-    def local_only=(__value)
-      LibGtk.places_sidebar_set_local_only((to_unsafe as LibGtk::PlacesSidebar*), Bool.cast(__value))
-    end
 
-    def location=(__value)
-      LibGtk.places_sidebar_set_location((to_unsafe as LibGtk::PlacesSidebar*), __value)
-    end
 
-    def open_flags=(__value)
-      LibGtk.places_sidebar_set_open_flags((to_unsafe as LibGtk::PlacesSidebar*), __value)
-    end
 
-    def show_connect_to_server=(__value)
-      LibGtk.places_sidebar_set_show_connect_to_server((to_unsafe as LibGtk::PlacesSidebar*), Bool.cast(__value))
-    end
 
-    def show_desktop=(__value)
-      LibGtk.places_sidebar_set_show_desktop((to_unsafe as LibGtk::PlacesSidebar*), Bool.cast(__value))
-    end
 
-    def show_enter_location=(__value)
-      LibGtk.places_sidebar_set_show_enter_location((to_unsafe as LibGtk::PlacesSidebar*), Bool.cast(__value))
-    end
 
     def self.new_internal
       __return_value = LibGtk.places_sidebar_new
@@ -96,7 +78,7 @@ module Gtk
     end
 
     def location=(location)
-      __return_value = LibGtk.places_sidebar_set_location((to_unsafe as LibGtk::PlacesSidebar*), (location.to_unsafe as LibGio::File*))
+      __return_value = LibGtk.places_sidebar_set_location((to_unsafe as LibGtk::PlacesSidebar*), location && (location.to_unsafe as LibGio::File*))
       __return_value
     end
 

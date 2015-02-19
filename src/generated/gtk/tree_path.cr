@@ -1,6 +1,7 @@
 module Gtk
   class TreePath
     include GObject::WrappedType
+
     def initialize @gtk_tree_path
     end
 
@@ -60,7 +61,7 @@ module Gtk
 
     def indices(depth)
       __return_value = LibGtk.tree_path_get_indices((to_unsafe as LibGtk::TreePath*), Int32.cast(depth))
-      PointerIterator.new(__return_value) {|__item_63| __item_63 }
+      PointerIterator.new(__return_value) {|__item_14| __item_14 }
     end
 
     def is_ancestor(descendant)

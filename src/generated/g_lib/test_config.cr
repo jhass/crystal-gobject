@@ -1,6 +1,7 @@
 module GLib
   class TestConfig
     include GObject::WrappedType
+
     def initialize @g_lib_test_config
     end
 

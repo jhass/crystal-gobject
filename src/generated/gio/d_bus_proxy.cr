@@ -14,9 +14,6 @@ module Gio
 
 
 
-    def g_interface_info=(__value)
-      LibGio.d_bus_proxy_set_g_interface_info((to_unsafe as LibGio::DBusProxy*), __value)
-    end
 
 
 
@@ -38,30 +35,30 @@ module Gio
 
     def self.new_for_bus_sync(bus_type, flags, info, name, object_path, interface_name, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.d_bus_proxy_new_for_bus_sync(bus_type, flags, (info.to_unsafe as LibGio::DBusInterfaceInfo*), name, object_path, interface_name, (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.d_bus_proxy_new_for_bus_sync(bus_type, flags, info && (info.to_unsafe as LibGio::DBusInterfaceInfo*), name, object_path, interface_name, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       Gio::DBusProxy.new(__return_value)
     end
 
     def self.new_sync(connection, flags, info, name, object_path, interface_name, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.d_bus_proxy_new_sync((connection.to_unsafe as LibGio::DBusConnection*), flags, (info.to_unsafe as LibGio::DBusInterfaceInfo*), name, object_path, interface_name, (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.d_bus_proxy_new_sync((connection.to_unsafe as LibGio::DBusConnection*), flags, info && (info.to_unsafe as LibGio::DBusInterfaceInfo*), name && name, object_path, interface_name, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       Gio::DBusProxy.new(__return_value)
     end
 
     def self.new_internal(connection, flags, info, name, object_path, interface_name, cancellable, callback, user_data)
-      __return_value = LibGio.d_bus_proxy_new((connection.to_unsafe as LibGio::DBusConnection*), flags, (info.to_unsafe as LibGio::DBusInterfaceInfo*), name, object_path, interface_name, (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGio.d_bus_proxy_new((connection.to_unsafe as LibGio::DBusConnection*), flags, info && (info.to_unsafe as LibGio::DBusInterfaceInfo*), name && name, object_path, interface_name, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
     def self.new_for_bus(bus_type, flags, info, name, object_path, interface_name, cancellable, callback, user_data)
-      __return_value = LibGio.d_bus_proxy_new_for_bus(bus_type, flags, (info.to_unsafe as LibGio::DBusInterfaceInfo*), name, object_path, interface_name, (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGio.d_bus_proxy_new_for_bus(bus_type, flags, info && (info.to_unsafe as LibGio::DBusInterfaceInfo*), name, object_path, interface_name, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
     def call(method_name, parameters, flags, timeout_msec, cancellable, callback, user_data)
-      __return_value = LibGio.d_bus_proxy_call((to_unsafe as LibGio::DBusProxy*), method_name, (parameters.to_unsafe as LibGLib::Variant*), flags, Int32.cast(timeout_msec), (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGio.d_bus_proxy_call((to_unsafe as LibGio::DBusProxy*), method_name, parameters && (parameters.to_unsafe as LibGLib::Variant*), flags, Int32.cast(timeout_msec), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -74,13 +71,13 @@ module Gio
 
     def call_sync(method_name, parameters, flags, timeout_msec, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.d_bus_proxy_call_sync((to_unsafe as LibGio::DBusProxy*), method_name, (parameters.to_unsafe as LibGLib::Variant*), flags, Int32.cast(timeout_msec), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.d_bus_proxy_call_sync((to_unsafe as LibGio::DBusProxy*), method_name, parameters && (parameters.to_unsafe as LibGLib::Variant*), flags, Int32.cast(timeout_msec), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       GLib::Variant.new(__return_value)
     end
 
     def call_with_unix_fd_list(method_name, parameters, flags, timeout_msec, fd_list, cancellable, callback, user_data)
-      __return_value = LibGio.d_bus_proxy_call_with_unix_fd_list((to_unsafe as LibGio::DBusProxy*), method_name, (parameters.to_unsafe as LibGLib::Variant*), flags, Int32.cast(timeout_msec), (fd_list.to_unsafe as LibGio::UnixFDList*), (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGio.d_bus_proxy_call_with_unix_fd_list((to_unsafe as LibGio::DBusProxy*), method_name, parameters && (parameters.to_unsafe as LibGLib::Variant*), flags, Int32.cast(timeout_msec), fd_list && (fd_list.to_unsafe as LibGio::UnixFDList*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -93,7 +90,7 @@ module Gio
 
     def call_with_unix_fd_list_sync(method_name, parameters, flags, timeout_msec, fd_list, out_fd_list, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.d_bus_proxy_call_with_unix_fd_list_sync((to_unsafe as LibGio::DBusProxy*), method_name, (parameters.to_unsafe as LibGLib::Variant*), flags, Int32.cast(timeout_msec), (fd_list.to_unsafe as LibGio::UnixFDList*), (out_fd_list.to_unsafe as LibGio::UnixFDList*), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.d_bus_proxy_call_with_unix_fd_list_sync((to_unsafe as LibGio::DBusProxy*), method_name, parameters && (parameters.to_unsafe as LibGLib::Variant*), flags, Int32.cast(timeout_msec), fd_list && (fd_list.to_unsafe as LibGio::UnixFDList*), (out_fd_list.to_unsafe as LibGio::UnixFDList*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       GLib::Variant.new(__return_value)
     end
@@ -105,7 +102,7 @@ module Gio
 
     def cached_property_names
       __return_value = LibGio.d_bus_proxy_get_cached_property_names((to_unsafe as LibGio::DBusProxy*))
-      PointerIterator.new(__return_value) {|__item_6| raise "Expected string but got null" unless __item_6; String.new(__item_6) }
+      PointerIterator.new(__return_value) {|__item_68| raise "Expected string but got null" unless __item_68; String.new(__item_68) }
     end
 
     def connection
@@ -148,8 +145,8 @@ module Gio
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 
-    def cached_property=(property_name, value)
-      __return_value = LibGio.d_bus_proxy_set_cached_property((to_unsafe as LibGio::DBusProxy*), property_name, (value.to_unsafe as LibGLib::Variant*))
+    def set_cached_property(property_name, value)
+      __return_value = LibGio.d_bus_proxy_set_cached_property((to_unsafe as LibGio::DBusProxy*), property_name, value && (value.to_unsafe as LibGLib::Variant*))
       __return_value
     end
 
@@ -159,7 +156,7 @@ module Gio
     end
 
     def interface_info=(info)
-      __return_value = LibGio.d_bus_proxy_set_interface_info((to_unsafe as LibGio::DBusProxy*), (info.to_unsafe as LibGio::DBusInterfaceInfo*))
+      __return_value = LibGio.d_bus_proxy_set_interface_info((to_unsafe as LibGio::DBusProxy*), info && (info.to_unsafe as LibGio::DBusInterfaceInfo*))
       __return_value
     end
 

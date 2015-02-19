@@ -48,7 +48,7 @@ module GdkPixbuf
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 
-    def size=(width, height)
+    def set_size(width, height)
       __return_value = LibGdkPixbuf.pixbuf_loader_set_size((to_unsafe as LibGdkPixbuf::PixbufLoader*), Int32.cast(width), Int32.cast(height))
       __return_value
     end

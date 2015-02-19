@@ -14,25 +14,10 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
     # Implements ColorChooser
-    def alpha=(__value)
-      LibGtk.color_button_set_alpha((to_unsafe as LibGtk::ColorButton*), UInt32.cast(__value))
-    end
 
-    def color=(__value)
-      LibGtk.color_button_set_color((to_unsafe as LibGtk::ColorButton*), __value)
-    end
 
-    def rgba=(__value)
-      LibGtk.color_button_set_rgba((to_unsafe as LibGtk::ColorButton*), __value)
-    end
 
-    def title=(__value)
-      LibGtk.color_button_set_title((to_unsafe as LibGtk::ColorButton*), __value)
-    end
 
-    def use_alpha=(__value)
-      LibGtk.color_button_set_use_alpha((to_unsafe as LibGtk::ColorButton*), Bool.cast(__value))
-    end
 
     def self.new_internal
       __return_value = LibGtk.color_button_new

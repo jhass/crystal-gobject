@@ -1,6 +1,7 @@
 module Gio
   class TlsDatabasePrivate
     include GObject::WrappedType
+
     def initialize @gio_tls_database_private
     end
 

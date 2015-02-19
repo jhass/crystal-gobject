@@ -1,6 +1,7 @@
 module Gtk
   class ScalePrivate
     include GObject::WrappedType
+
     def initialize @gtk_scale_private
     end
 

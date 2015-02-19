@@ -13,12 +13,9 @@ module Gtk
     # Implements Actionable
     # Implements Activatable
     # Implements Buildable
-    def group=(__value)
-      LibGtk.radio_menu_item_set_group((to_unsafe as LibGtk::RadioMenuItem*), __value)
-    end
 
     def self.new_internal(group)
-      __return_value = LibGtk.radio_menu_item_new(group)
+      __return_value = LibGtk.radio_menu_item_new(group && group)
       Gtk::Widget.new(__return_value)
     end
 
@@ -28,7 +25,7 @@ module Gtk
     end
 
     def self.new_with_label(group, label)
-      __return_value = LibGtk.radio_menu_item_new_with_label(group, label)
+      __return_value = LibGtk.radio_menu_item_new_with_label(group && group, label)
       Gtk::Widget.new(__return_value)
     end
 
@@ -38,7 +35,7 @@ module Gtk
     end
 
     def self.new_with_mnemonic(group, label)
-      __return_value = LibGtk.radio_menu_item_new_with_mnemonic(group, label)
+      __return_value = LibGtk.radio_menu_item_new_with_mnemonic(group && group, label)
       Gtk::Widget.new(__return_value)
     end
 
@@ -53,7 +50,7 @@ module Gtk
     end
 
     def group=(group)
-      __return_value = LibGtk.radio_menu_item_set_group((to_unsafe as LibGtk::RadioMenuItem*), group)
+      __return_value = LibGtk.radio_menu_item_set_group((to_unsafe as LibGtk::RadioMenuItem*), group && group)
       __return_value
     end
 

@@ -1,6 +1,7 @@
 module Gdk
   class Color
     include GObject::WrappedType
+
     def initialize @gdk_color
     end
 

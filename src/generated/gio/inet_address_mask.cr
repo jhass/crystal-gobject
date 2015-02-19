@@ -8,14 +8,8 @@ module Gio
     end
 
     # Implements Initable
-    def address=(__value)
-      LibGio.inet_address_mask_set_address((to_unsafe as LibGio::InetAddressMask*), __value)
-    end
 
 
-    def length=(__value)
-      LibGio.inet_address_mask_set_length((to_unsafe as LibGio::InetAddressMask*), UInt32.cast(__value))
-    end
 
     def self.new_internal(addr, length)
       __error = Pointer(LibGLib::Error).null

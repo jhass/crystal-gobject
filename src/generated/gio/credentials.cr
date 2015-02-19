@@ -33,12 +33,12 @@ module Gio
       __return_value
     end
 
-    def native=(native_type, native)
+    def set_native(native_type, native)
       __return_value = LibGio.credentials_set_native((to_unsafe as LibGio::Credentials*), native_type, native)
       __return_value
     end
 
-    def unix_user=(uid)
+    def set_unix_user(uid)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.credentials_set_unix_user((to_unsafe as LibGio::Credentials*), UInt32.cast(uid), pointerof(__error))
       GLib::Error.assert __error

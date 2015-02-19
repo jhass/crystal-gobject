@@ -1,6 +1,7 @@
 module Gtk
   class AssistantPrivate
     include GObject::WrappedType
+
     def initialize @gtk_assistant_private
     end
 

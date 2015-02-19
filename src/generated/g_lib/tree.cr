@@ -1,6 +1,7 @@
 module GLib
   class Tree
     include GObject::WrappedType
+
     def initialize @g_lib_tree
     end
 

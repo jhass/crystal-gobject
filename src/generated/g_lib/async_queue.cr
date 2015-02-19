@@ -1,6 +1,7 @@
 module GLib
   class AsyncQueue
     include GObject::WrappedType
+
     def initialize @g_lib_async_queue
     end
 

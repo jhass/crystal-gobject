@@ -1,6 +1,7 @@
 module GObject
   class InterfaceInfo
     include GObject::WrappedType
+
     def initialize @g_object_interface_info
     end
 

@@ -10,13 +10,7 @@ module Gio
     end
 
     # Implements Seekable
-    def byte_order=(__value)
-      LibGio.data_input_stream_set_byte_order((to_unsafe as LibGio::DataInputStream*), __value)
-    end
 
-    def newline_type=(__value)
-      LibGio.data_input_stream_set_newline_type((to_unsafe as LibGio::DataInputStream*), __value)
-    end
 
     def self.new_internal(base_stream)
       __return_value = LibGio.data_input_stream_new((base_stream.to_unsafe as LibGio::InputStream*))
@@ -35,41 +29,41 @@ module Gio
 
     def read_byte(cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.data_input_stream_read_byte((to_unsafe as LibGio::DataInputStream*), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.data_input_stream_read_byte((to_unsafe as LibGio::DataInputStream*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def read_int16(cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.data_input_stream_read_int16((to_unsafe as LibGio::DataInputStream*), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.data_input_stream_read_int16((to_unsafe as LibGio::DataInputStream*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def read_int32(cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.data_input_stream_read_int32((to_unsafe as LibGio::DataInputStream*), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.data_input_stream_read_int32((to_unsafe as LibGio::DataInputStream*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def read_int64(cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.data_input_stream_read_int64((to_unsafe as LibGio::DataInputStream*), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.data_input_stream_read_int64((to_unsafe as LibGio::DataInputStream*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def read_line(length, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.data_input_stream_read_line((to_unsafe as LibGio::DataInputStream*), UInt64.cast(length), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.data_input_stream_read_line((to_unsafe as LibGio::DataInputStream*), UInt64.cast(length), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_67| __item_67 } if __return_value
+      PointerIterator.new(__return_value) {|__item_3| __item_3 } if __return_value
     end
 
     def read_line_async(io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.data_input_stream_read_line_async((to_unsafe as LibGio::DataInputStream*), Int32.cast(io_priority), (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGio.data_input_stream_read_line_async((to_unsafe as LibGio::DataInputStream*), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -77,7 +71,7 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.data_input_stream_read_line_finish((to_unsafe as LibGio::DataInputStream*), (result.to_unsafe as LibGio::AsyncResult*), UInt64.cast(length), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_20| __item_20 } if __return_value
+      PointerIterator.new(__return_value) {|__item_76| __item_76 } if __return_value
     end
 
     def read_line_finish_utf8(result, length)
@@ -89,41 +83,41 @@ module Gio
 
     def read_line_utf8(length, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.data_input_stream_read_line_utf8((to_unsafe as LibGio::DataInputStream*), UInt64.cast(length), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.data_input_stream_read_line_utf8((to_unsafe as LibGio::DataInputStream*), UInt64.cast(length), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
     end
 
     def read_uint16(cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.data_input_stream_read_uint16((to_unsafe as LibGio::DataInputStream*), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.data_input_stream_read_uint16((to_unsafe as LibGio::DataInputStream*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def read_uint32(cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.data_input_stream_read_uint32((to_unsafe as LibGio::DataInputStream*), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.data_input_stream_read_uint32((to_unsafe as LibGio::DataInputStream*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def read_uint64(cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.data_input_stream_read_uint64((to_unsafe as LibGio::DataInputStream*), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.data_input_stream_read_uint64((to_unsafe as LibGio::DataInputStream*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def read_until(stop_chars, length, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.data_input_stream_read_until((to_unsafe as LibGio::DataInputStream*), stop_chars, UInt64.cast(length), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.data_input_stream_read_until((to_unsafe as LibGio::DataInputStream*), stop_chars, UInt64.cast(length), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 
     def read_until_async(stop_chars, io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.data_input_stream_read_until_async((to_unsafe as LibGio::DataInputStream*), stop_chars, Int32.cast(io_priority), (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGio.data_input_stream_read_until_async((to_unsafe as LibGio::DataInputStream*), stop_chars, Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -136,13 +130,13 @@ module Gio
 
     def read_upto(stop_chars, stop_chars_len, length, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.data_input_stream_read_upto((to_unsafe as LibGio::DataInputStream*), stop_chars, Int64.cast(stop_chars_len), UInt64.cast(length), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.data_input_stream_read_upto((to_unsafe as LibGio::DataInputStream*), stop_chars, Int64.cast(stop_chars_len), UInt64.cast(length), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 
     def read_upto_async(stop_chars, stop_chars_len, io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.data_input_stream_read_upto_async((to_unsafe as LibGio::DataInputStream*), stop_chars, Int64.cast(stop_chars_len), Int32.cast(io_priority), (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGio.data_input_stream_read_upto_async((to_unsafe as LibGio::DataInputStream*), stop_chars, Int64.cast(stop_chars_len), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 

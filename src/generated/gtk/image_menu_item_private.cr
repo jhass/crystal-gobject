@@ -1,6 +1,7 @@
 module Gtk
   class ImageMenuItemPrivate
     include GObject::WrappedType
+
     def initialize @gtk_image_menu_item_private
     end
 

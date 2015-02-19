@@ -1,6 +1,7 @@
 module Gdk
   class EventExpose
     include GObject::WrappedType
+
     def initialize @gdk_event_expose
     end
 

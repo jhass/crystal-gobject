@@ -8,13 +8,7 @@ module Gtk
     end
 
     # Implements Buildable
-    def ignore_hidden=(__value)
-      LibGtk.size_group_set_ignore_hidden((to_unsafe as LibGtk::SizeGroup*), Bool.cast(__value))
-    end
 
-    def mode=(__value)
-      LibGtk.size_group_set_mode((to_unsafe as LibGtk::SizeGroup*), __value)
-    end
 
     def self.new_internal(mode)
       __return_value = LibGtk.size_group_new(mode)

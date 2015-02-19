@@ -1,6 +1,7 @@
 module Gdk
   class Geometry
     include GObject::WrappedType
+
     def initialize @gdk_geometry
     end
 

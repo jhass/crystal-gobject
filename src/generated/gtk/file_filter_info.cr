@@ -1,6 +1,7 @@
 module Gtk
   class FileFilterInfo
     include GObject::WrappedType
+
     def initialize @gtk_file_filter_info
     end
 

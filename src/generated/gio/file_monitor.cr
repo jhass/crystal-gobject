@@ -9,9 +9,6 @@ module Gio
 
 
 
-    def rate_limit=(__value)
-      LibGio.file_monitor_set_rate_limit((to_unsafe as LibGio::FileMonitor*), Int32.cast(__value))
-    end
 
     def cancel
       __return_value = LibGio.file_monitor_cancel((to_unsafe as LibGio::FileMonitor*))

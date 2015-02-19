@@ -1,6 +1,7 @@
 module Gtk
   class Border
     include GObject::WrappedType
+
     def initialize @gtk_border
     end
 

@@ -1,6 +1,7 @@
 module Cairo
   class Context
     include GObject::WrappedType
+
     def initialize @cairo_context
     end
 

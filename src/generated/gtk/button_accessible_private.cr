@@ -1,6 +1,7 @@
 module Gtk
   class ButtonAccessiblePrivate
     include GObject::WrappedType
+
     def initialize @gtk_button_accessible_private
     end
 

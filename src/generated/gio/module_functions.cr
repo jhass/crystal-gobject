@@ -12,13 +12,13 @@ module Gio
   end
 
   def self.action_print_detailed_name(action_name, target_value)
-    __return_value = LibGio.action_print_detailed_name(action_name, (target_value.to_unsafe as LibGLib::Variant*))
+    __return_value = LibGio.action_print_detailed_name(action_name, target_value && (target_value.to_unsafe as LibGLib::Variant*))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.app_info_create_from_commandline(commandline, application_name, flags)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGio.app_info_create_from_commandline(commandline, application_name, flags, pointerof(__error))
+    __return_value = LibGio.app_info_create_from_commandline(commandline, application_name && application_name, flags, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -55,7 +55,7 @@ module Gio
 
   def self.app_info_launch_default_for_uri(uri, launch_context)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGio.app_info_launch_default_for_uri(uri, (launch_context.to_unsafe as LibGio::AppLaunchContext*), pointerof(__error))
+    __return_value = LibGio.app_info_launch_default_for_uri(uri, launch_context && (launch_context.to_unsafe as LibGio::AppLaunchContext*), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -66,12 +66,12 @@ module Gio
   end
 
   def self.async_initable_newv_async(object_type, n_parameters, parameters, io_priority, cancellable, callback, user_data)
-    __return_value = LibGio.async_initable_newv_async(UInt64.cast(object_type), UInt32.cast(n_parameters), (parameters.to_unsafe as LibGObject::Parameter*), Int32.cast(io_priority), (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+    __return_value = LibGio.async_initable_newv_async(UInt64.cast(object_type), UInt32.cast(n_parameters), (parameters.to_unsafe as LibGObject::Parameter*), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
     __return_value
   end
 
   def self.bus_get(bus_type, cancellable, callback, user_data)
-    __return_value = LibGio.bus_get(bus_type, (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+    __return_value = LibGio.bus_get(bus_type, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
     __return_value
   end
 
@@ -84,18 +84,18 @@ module Gio
 
   def self.bus_get_sync(bus_type, cancellable)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGio.bus_get_sync(bus_type, (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+    __return_value = LibGio.bus_get_sync(bus_type, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
     GLib::Error.assert __error
     Gio::DBusConnection.new(__return_value)
   end
 
   def self.bus_own_name_on_connection(connection, name, flags, name_acquired_closure, name_lost_closure)
-    __return_value = LibGio.bus_own_name_on_connection((connection.to_unsafe as LibGio::DBusConnection*), name, flags, (name_acquired_closure.to_unsafe as LibGObject::Closure*), (name_lost_closure.to_unsafe as LibGObject::Closure*))
+    __return_value = LibGio.bus_own_name_on_connection((connection.to_unsafe as LibGio::DBusConnection*), name, flags, name_acquired_closure && (name_acquired_closure.to_unsafe as LibGObject::Closure*), name_lost_closure && (name_lost_closure.to_unsafe as LibGObject::Closure*))
     __return_value
   end
 
   def self.bus_own_name(bus_type, name, flags, bus_acquired_closure, name_acquired_closure, name_lost_closure)
-    __return_value = LibGio.bus_own_name(bus_type, name, flags, (bus_acquired_closure.to_unsafe as LibGObject::Closure*), (name_acquired_closure.to_unsafe as LibGObject::Closure*), (name_lost_closure.to_unsafe as LibGObject::Closure*))
+    __return_value = LibGio.bus_own_name(bus_type, name, flags, bus_acquired_closure && (bus_acquired_closure.to_unsafe as LibGObject::Closure*), name_acquired_closure && (name_acquired_closure.to_unsafe as LibGObject::Closure*), name_lost_closure && (name_lost_closure.to_unsafe as LibGObject::Closure*))
     __return_value
   end
 
@@ -110,12 +110,12 @@ module Gio
   end
 
   def self.bus_watch_name_on_connection(connection, name, flags, name_appeared_closure, name_vanished_closure)
-    __return_value = LibGio.bus_watch_name_on_connection((connection.to_unsafe as LibGio::DBusConnection*), name, flags, (name_appeared_closure.to_unsafe as LibGObject::Closure*), (name_vanished_closure.to_unsafe as LibGObject::Closure*))
+    __return_value = LibGio.bus_watch_name_on_connection((connection.to_unsafe as LibGio::DBusConnection*), name, flags, name_appeared_closure && (name_appeared_closure.to_unsafe as LibGObject::Closure*), name_vanished_closure && (name_vanished_closure.to_unsafe as LibGObject::Closure*))
     __return_value
   end
 
   def self.bus_watch_name(bus_type, name, flags, name_appeared_closure, name_vanished_closure)
-    __return_value = LibGio.bus_watch_name(bus_type, name, flags, (name_appeared_closure.to_unsafe as LibGObject::Closure*), (name_vanished_closure.to_unsafe as LibGObject::Closure*))
+    __return_value = LibGio.bus_watch_name(bus_type, name, flags, name_appeared_closure && (name_appeared_closure.to_unsafe as LibGObject::Closure*), name_vanished_closure && (name_vanished_closure.to_unsafe as LibGObject::Closure*))
     __return_value
   end
 
@@ -160,13 +160,13 @@ module Gio
   end
 
   def self.content_type_guess(filename, data, data_size, result_uncertain)
-    __return_value = LibGio.content_type_guess(filename, data, UInt64.cast(data_size), Bool.cast(result_uncertain))
+    __return_value = LibGio.content_type_guess(filename && filename, data && data, UInt64.cast(data_size), Bool.cast(result_uncertain))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.content_type_guess_for_tree(root)
     __return_value = LibGio.content_type_guess_for_tree((root.to_unsafe as LibGio::File*))
-    PointerIterator.new(__return_value) {|__item_67| raise "Expected string but got null" unless __item_67; String.new(__item_67) }
+    PointerIterator.new(__return_value) {|__item_95| raise "Expected string but got null" unless __item_95; String.new(__item_95) }
   end
 
   def self.content_type_is_a(type, supertype)
@@ -191,13 +191,13 @@ module Gio
 
   def self.dbus_address_get_for_bus_sync(bus_type, cancellable)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGio.dbus_address_get_for_bus_sync(bus_type, (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+    __return_value = LibGio.dbus_address_get_for_bus_sync(bus_type, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
     GLib::Error.assert __error
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.dbus_address_get_stream(address, cancellable, callback, user_data)
-    __return_value = LibGio.dbus_address_get_stream(address, (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+    __return_value = LibGio.dbus_address_get_stream(address, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
     __return_value
   end
 
@@ -210,13 +210,13 @@ module Gio
 
   def self.dbus_address_get_stream_sync(address, out_guid, cancellable)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGio.dbus_address_get_stream_sync(address, out_guid, (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+    __return_value = LibGio.dbus_address_get_stream_sync(address, out_guid, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
     GLib::Error.assert __error
     Gio::IOStream.new(__return_value)
   end
 
   def self.dbus_annotation_info_lookup(annotations, name)
-    __return_value = LibGio.dbus_annotation_info_lookup(annotations, name)
+    __return_value = LibGio.dbus_annotation_info_lookup(annotations && annotations, name)
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
@@ -339,7 +339,7 @@ module Gio
 
   def self.file_new_tmp(tmpl, iostream)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGio.file_new_tmp(tmpl, (iostream.to_unsafe as LibGio::FileIOStream*), pointerof(__error))
+    __return_value = LibGio.file_new_tmp(tmpl && tmpl, (iostream.to_unsafe as LibGio::FileIOStream*), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -368,7 +368,7 @@ module Gio
 
   def self.initable_newv(object_type, n_parameters, parameters, cancellable)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGio.initable_newv(UInt64.cast(object_type), UInt32.cast(n_parameters), parameters, (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+    __return_value = LibGio.initable_newv(UInt64.cast(object_type), UInt32.cast(n_parameters), parameters, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
     GLib::Error.assert __error
     GObject::Object.new(__return_value)
   end
@@ -424,7 +424,7 @@ module Gio
   end
 
   def self.io_scheduler_push_job(job_func, user_data, notify, io_priority, cancellable)
-    __return_value = LibGio.io_scheduler_push_job(job_func, user_data, notify, Int32.cast(io_priority), (cancellable.to_unsafe as LibGio::Cancellable*))
+    __return_value = LibGio.io_scheduler_push_job(job_func, user_data, notify && notify, Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*))
     __return_value
   end
 
@@ -444,27 +444,27 @@ module Gio
   end
 
   def self.pollable_source_new_full(pollable_stream, child_source, cancellable)
-    __return_value = LibGio.pollable_source_new_full((pollable_stream.to_unsafe as LibGObject::Object*), (child_source.to_unsafe as LibGLib::Source*), (cancellable.to_unsafe as LibGio::Cancellable*))
+    __return_value = LibGio.pollable_source_new_full((pollable_stream.to_unsafe as LibGObject::Object*), child_source && (child_source.to_unsafe as LibGLib::Source*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*))
     GLib::Source.new(__return_value)
   end
 
   def self.pollable_stream_read(stream, buffer, count, blocking, cancellable)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGio.pollable_stream_read((stream.to_unsafe as LibGio::InputStream*), buffer, UInt64.cast(count), Bool.cast(blocking), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+    __return_value = LibGio.pollable_stream_read((stream.to_unsafe as LibGio::InputStream*), buffer, UInt64.cast(count), Bool.cast(blocking), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
   def self.pollable_stream_write(stream, buffer, count, blocking, cancellable)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGio.pollable_stream_write((stream.to_unsafe as LibGio::OutputStream*), buffer, UInt64.cast(count), Bool.cast(blocking), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+    __return_value = LibGio.pollable_stream_write((stream.to_unsafe as LibGio::OutputStream*), buffer, UInt64.cast(count), Bool.cast(blocking), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
   def self.pollable_stream_write_all(stream, buffer, count, blocking, bytes_written, cancellable)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGio.pollable_stream_write_all((stream.to_unsafe as LibGio::OutputStream*), buffer, UInt64.cast(count), Bool.cast(blocking), UInt64.cast(bytes_written), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+    __return_value = LibGio.pollable_stream_write_all((stream.to_unsafe as LibGio::OutputStream*), buffer, UInt64.cast(count), Bool.cast(blocking), UInt64.cast(bytes_written), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -500,7 +500,7 @@ module Gio
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGio.resources_enumerate_children(path, lookup_flags, pointerof(__error))
     GLib::Error.assert __error
-    PointerIterator.new(__return_value) {|__item_91| raise "Expected string but got null" unless __item_91; String.new(__item_91) }
+    PointerIterator.new(__return_value) {|__item_78| raise "Expected string but got null" unless __item_78; String.new(__item_78) }
   end
 
   def self.resources_get_info(path, lookup_flags, size, flags)
@@ -540,7 +540,7 @@ module Gio
   end
 
   def self.simple_async_report_gerror_in_idle(object, callback, user_data, error)
-    __return_value = LibGio.simple_async_report_gerror_in_idle((object.to_unsafe as LibGObject::Object*), callback, user_data, error)
+    __return_value = LibGio.simple_async_report_gerror_in_idle(object && (object.to_unsafe as LibGObject::Object*), callback && callback, user_data, error)
     __return_value
   end
 
@@ -551,7 +551,7 @@ module Gio
 
   def self.tls_client_connection_new(base_io_stream, server_identity)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGio.tls_client_connection_new((base_io_stream.to_unsafe as LibGio::IOStream*), (server_identity.to_unsafe as LibGio::SocketConnectable*), pointerof(__error))
+    __return_value = LibGio.tls_client_connection_new((base_io_stream.to_unsafe as LibGio::IOStream*), server_identity && (server_identity.to_unsafe as LibGio::SocketConnectable*), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -570,7 +570,7 @@ module Gio
 
   def self.tls_server_connection_new(base_io_stream, certificate)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGio.tls_server_connection_new((base_io_stream.to_unsafe as LibGio::IOStream*), (certificate.to_unsafe as LibGio::TlsCertificate*), pointerof(__error))
+    __return_value = LibGio.tls_server_connection_new((base_io_stream.to_unsafe as LibGio::IOStream*), certificate && (certificate.to_unsafe as LibGio::TlsCertificate*), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end

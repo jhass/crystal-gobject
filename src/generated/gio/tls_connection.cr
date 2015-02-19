@@ -10,17 +10,8 @@ module Gio
     end
 
 
-    def certificate=(__value)
-      LibGio.tls_connection_set_certificate((to_unsafe as LibGio::TlsConnection*), __value)
-    end
 
-    def database=(__value)
-      LibGio.tls_connection_set_database((to_unsafe as LibGio::TlsConnection*), __value)
-    end
 
-    def interaction=(__value)
-      LibGio.tls_connection_set_interaction((to_unsafe as LibGio::TlsConnection*), __value)
-    end
 
 
 
@@ -74,13 +65,13 @@ module Gio
 
     def handshake(cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.tls_connection_handshake((to_unsafe as LibGio::TlsConnection*), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.tls_connection_handshake((to_unsafe as LibGio::TlsConnection*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def handshake_async(io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.tls_connection_handshake_async((to_unsafe as LibGio::TlsConnection*), Int32.cast(io_priority), (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGio.tls_connection_handshake_async((to_unsafe as LibGio::TlsConnection*), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -102,7 +93,7 @@ module Gio
     end
 
     def interaction=(interaction)
-      __return_value = LibGio.tls_connection_set_interaction((to_unsafe as LibGio::TlsConnection*), (interaction.to_unsafe as LibGio::TlsInteraction*))
+      __return_value = LibGio.tls_connection_set_interaction((to_unsafe as LibGio::TlsConnection*), interaction && (interaction.to_unsafe as LibGio::TlsInteraction*))
       __return_value
     end
 

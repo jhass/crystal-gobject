@@ -14,9 +14,6 @@ module Gtk
     # Implements Buildable
     # Implements CellEditable
     # Implements CellLayout
-    def heading=(__value)
-      LibGtk.app_chooser_button_set_heading((to_unsafe as LibGtk::AppChooserButton*), __value)
-    end
 
 
 

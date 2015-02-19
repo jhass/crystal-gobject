@@ -12,27 +12,12 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
 
-    def image=(__value)
-      LibGtk.message_dialog_set_image((to_unsafe as LibGtk::MessageDialog*), __value)
-    end
 
 
 
-    def secondary_text=(__value)
-      LibGtk.message_dialog_set_secondary_text((to_unsafe as LibGtk::MessageDialog*), __value)
-    end
 
-    def secondary_use_markup=(__value)
-      LibGtk.message_dialog_set_secondary_use_markup((to_unsafe as LibGtk::MessageDialog*), Bool.cast(__value))
-    end
 
-    def text=(__value)
-      LibGtk.message_dialog_set_text((to_unsafe as LibGtk::MessageDialog*), __value)
-    end
 
-    def use_markup=(__value)
-      LibGtk.message_dialog_set_use_markup((to_unsafe as LibGtk::MessageDialog*), Bool.cast(__value))
-    end
 
     def image
       __return_value = LibGtk.message_dialog_get_image((to_unsafe as LibGtk::MessageDialog*))

@@ -24,12 +24,12 @@ module Gdk
     end
 
     def icon=(icon)
-      __return_value = LibGdk.app_launch_context_set_icon((to_unsafe as LibGdk::AppLaunchContext*), (icon.to_unsafe as LibGio::Icon*))
+      __return_value = LibGdk.app_launch_context_set_icon((to_unsafe as LibGdk::AppLaunchContext*), icon && (icon.to_unsafe as LibGio::Icon*))
       __return_value
     end
 
     def icon_name=(icon_name)
-      __return_value = LibGdk.app_launch_context_set_icon_name((to_unsafe as LibGdk::AppLaunchContext*), icon_name)
+      __return_value = LibGdk.app_launch_context_set_icon_name((to_unsafe as LibGdk::AppLaunchContext*), icon_name && icon_name)
       __return_value
     end
 

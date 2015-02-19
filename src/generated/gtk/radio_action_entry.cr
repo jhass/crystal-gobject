@@ -1,6 +1,7 @@
 module Gtk
   class RadioActionEntry
     include GObject::WrappedType
+
     def initialize @gtk_radio_action_entry
     end
 

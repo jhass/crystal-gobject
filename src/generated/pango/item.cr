@@ -1,6 +1,7 @@
 module Pango
   class Item
     include GObject::WrappedType
+
     def initialize @pango_item
     end
 

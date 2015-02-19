@@ -1,6 +1,7 @@
 module Gtk
   class ListStorePrivate
     include GObject::WrappedType
+
     def initialize @gtk_list_store_private
     end
 

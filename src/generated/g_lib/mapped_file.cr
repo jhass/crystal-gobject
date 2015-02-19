@@ -1,6 +1,7 @@
 module GLib
   class MappedFile
     include GObject::WrappedType
+
     def initialize @g_lib_mapped_file
     end
 

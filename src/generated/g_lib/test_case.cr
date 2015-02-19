@@ -1,6 +1,7 @@
 module GLib
   class TestCase
     include GObject::WrappedType
+
     def initialize @g_lib_test_case
     end
 

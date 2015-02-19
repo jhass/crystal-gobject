@@ -13,13 +13,7 @@ module Gtk
     # Implements Actionable
     # Implements Activatable
     # Implements Buildable
-    def uri=(__value)
-      LibGtk.link_button_set_uri((to_unsafe as LibGtk::LinkButton*), __value)
-    end
 
-    def visited=(__value)
-      LibGtk.link_button_set_visited((to_unsafe as LibGtk::LinkButton*), Bool.cast(__value))
-    end
 
     def self.new_internal(uri)
       __return_value = LibGtk.link_button_new(uri)
@@ -27,7 +21,7 @@ module Gtk
     end
 
     def self.new_with_label(uri, label)
-      __return_value = LibGtk.link_button_new_with_label(uri, label)
+      __return_value = LibGtk.link_button_new_with_label(uri, label && label)
       Gtk::Widget.new(__return_value)
     end
 

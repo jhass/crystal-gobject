@@ -12,25 +12,10 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements ToolShell
-    def collapsed=(__value)
-      LibGtk.tool_item_group_set_collapsed((to_unsafe as LibGtk::ToolItemGroup*), Bool.cast(__value))
-    end
 
-    def ellipsize=(__value)
-      LibGtk.tool_item_group_set_ellipsize((to_unsafe as LibGtk::ToolItemGroup*), __value)
-    end
 
-    def header_relief=(__value)
-      LibGtk.tool_item_group_set_header_relief((to_unsafe as LibGtk::ToolItemGroup*), __value)
-    end
 
-    def label=(__value)
-      LibGtk.tool_item_group_set_label((to_unsafe as LibGtk::ToolItemGroup*), __value)
-    end
 
-    def label_widget=(__value)
-      LibGtk.tool_item_group_set_label_widget((to_unsafe as LibGtk::ToolItemGroup*), __value)
-    end
 
     def self.new_internal(label)
       __return_value = LibGtk.tool_item_group_new(label)
@@ -102,7 +87,7 @@ module Gtk
       __return_value
     end
 
-    def item_position=(item, position)
+    def set_item_position(item, position)
       __return_value = LibGtk.tool_item_group_set_item_position((to_unsafe as LibGtk::ToolItemGroup*), (item.to_unsafe as LibGtk::ToolItem*), Int32.cast(position))
       __return_value
     end

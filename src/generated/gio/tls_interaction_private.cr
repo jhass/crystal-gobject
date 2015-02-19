@@ -1,6 +1,7 @@
 module Gio
   class TlsInteractionPrivate
     include GObject::WrappedType
+
     def initialize @gio_tls_interaction_private
     end
 

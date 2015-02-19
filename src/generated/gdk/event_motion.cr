@@ -1,6 +1,7 @@
 module Gdk
   class EventMotion
     include GObject::WrappedType
+
     def initialize @gdk_event_motion
     end
 

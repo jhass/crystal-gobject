@@ -8,66 +8,24 @@ module Gtk
     end
 
     # Implements Buildable
-    def action_group=(__value)
-      LibGtk.action_set_action_group((to_unsafe as LibGtk::Action*), __value)
-    end
 
 
-    def gicon=(__value)
-      LibGtk.action_set_gicon((to_unsafe as LibGtk::Action*), __value)
-    end
-
-    def hide_if_empty=(__value)
-      LibGtk.action_set_hide_if_empty((to_unsafe as LibGtk::Action*), Bool.cast(__value))
-    end
-
-    def icon_name=(__value)
-      LibGtk.action_set_icon_name((to_unsafe as LibGtk::Action*), __value)
-    end
-
-    def is_important=(__value)
-      LibGtk.action_set_is_important((to_unsafe as LibGtk::Action*), Bool.cast(__value))
-    end
-
-    def label=(__value)
-      LibGtk.action_set_label((to_unsafe as LibGtk::Action*), __value)
-    end
 
 
-    def sensitive=(__value)
-      LibGtk.action_set_sensitive((to_unsafe as LibGtk::Action*), Bool.cast(__value))
-    end
 
-    def short_label=(__value)
-      LibGtk.action_set_short_label((to_unsafe as LibGtk::Action*), __value)
-    end
 
-    def stock_id=(__value)
-      LibGtk.action_set_stock_id((to_unsafe as LibGtk::Action*), __value)
-    end
 
-    def tooltip=(__value)
-      LibGtk.action_set_tooltip((to_unsafe as LibGtk::Action*), __value)
-    end
 
-    def visible=(__value)
-      LibGtk.action_set_visible((to_unsafe as LibGtk::Action*), Bool.cast(__value))
-    end
 
-    def visible_horizontal=(__value)
-      LibGtk.action_set_visible_horizontal((to_unsafe as LibGtk::Action*), Bool.cast(__value))
-    end
 
-    def visible_overflown=(__value)
-      LibGtk.action_set_visible_overflown((to_unsafe as LibGtk::Action*), Bool.cast(__value))
-    end
 
-    def visible_vertical=(__value)
-      LibGtk.action_set_visible_vertical((to_unsafe as LibGtk::Action*), Bool.cast(__value))
-    end
+
+
+
+
 
     def self.new_internal(name, label, tooltip, stock_id)
-      __return_value = LibGtk.action_new(name, label, tooltip, stock_id)
+      __return_value = LibGtk.action_new(name, label && label, tooltip && tooltip, stock_id && stock_id)
       Gtk::Action.new(__return_value)
     end
 
@@ -202,7 +160,7 @@ module Gtk
     end
 
     def accel_group=(accel_group)
-      __return_value = LibGtk.action_set_accel_group((to_unsafe as LibGtk::Action*), (accel_group.to_unsafe as LibGtk::AccelGroup*))
+      __return_value = LibGtk.action_set_accel_group((to_unsafe as LibGtk::Action*), accel_group && (accel_group.to_unsafe as LibGtk::AccelGroup*))
       __return_value
     end
 

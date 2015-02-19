@@ -1,6 +1,7 @@
 module GObject
   class Closure
     include GObject::WrappedType
+
     def initialize @g_object_closure
     end
 
@@ -24,7 +25,7 @@ module GObject
     end
 
     def invoke(return_value, n_param_values, param_values, invocation_hint)
-      __return_value = LibGObject.closure_invoke((to_unsafe as LibGObject::Closure*), (return_value.to_unsafe as LibGObject::Value*), UInt32.cast(n_param_values), param_values, invocation_hint)
+      __return_value = LibGObject.closure_invoke((to_unsafe as LibGObject::Closure*), return_value && (return_value.to_unsafe as LibGObject::Value*), UInt32.cast(n_param_values), param_values, invocation_hint && invocation_hint)
       __return_value
     end
 

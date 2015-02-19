@@ -13,29 +13,11 @@ module Gtk
     # Implements Actionable
     # Implements Activatable
     # Implements Buildable
-    def align_widget=(__value)
-      LibGtk.menu_button_set_align_widget((to_unsafe as LibGtk::MenuButton*), __value)
-    end
 
-    def direction=(__value)
-      LibGtk.menu_button_set_direction((to_unsafe as LibGtk::MenuButton*), __value)
-    end
 
-    def menu_model=(__value)
-      LibGtk.menu_button_set_menu_model((to_unsafe as LibGtk::MenuButton*), __value)
-    end
 
-    def popover=(__value)
-      LibGtk.menu_button_set_popover((to_unsafe as LibGtk::MenuButton*), __value)
-    end
 
-    def popup=(__value)
-      LibGtk.menu_button_set_popup((to_unsafe as LibGtk::MenuButton*), __value)
-    end
 
-    def use_popover=(__value)
-      LibGtk.menu_button_set_use_popover((to_unsafe as LibGtk::MenuButton*), Bool.cast(__value))
-    end
 
     def self.new_internal
       __return_value = LibGtk.menu_button_new
@@ -73,7 +55,7 @@ module Gtk
     end
 
     def align_widget=(align_widget)
-      __return_value = LibGtk.menu_button_set_align_widget((to_unsafe as LibGtk::MenuButton*), (align_widget.to_unsafe as LibGtk::Widget*))
+      __return_value = LibGtk.menu_button_set_align_widget((to_unsafe as LibGtk::MenuButton*), align_widget && (align_widget.to_unsafe as LibGtk::Widget*))
       __return_value
     end
 
@@ -83,17 +65,17 @@ module Gtk
     end
 
     def menu_model=(menu_model)
-      __return_value = LibGtk.menu_button_set_menu_model((to_unsafe as LibGtk::MenuButton*), (menu_model.to_unsafe as LibGio::MenuModel*))
+      __return_value = LibGtk.menu_button_set_menu_model((to_unsafe as LibGtk::MenuButton*), menu_model && (menu_model.to_unsafe as LibGio::MenuModel*))
       __return_value
     end
 
     def popover=(popover)
-      __return_value = LibGtk.menu_button_set_popover((to_unsafe as LibGtk::MenuButton*), (popover.to_unsafe as LibGtk::Widget*))
+      __return_value = LibGtk.menu_button_set_popover((to_unsafe as LibGtk::MenuButton*), popover && (popover.to_unsafe as LibGtk::Widget*))
       __return_value
     end
 
     def popup=(menu)
-      __return_value = LibGtk.menu_button_set_popup((to_unsafe as LibGtk::MenuButton*), (menu.to_unsafe as LibGtk::Widget*))
+      __return_value = LibGtk.menu_button_set_popup((to_unsafe as LibGtk::MenuButton*), menu && (menu.to_unsafe as LibGtk::Widget*))
       __return_value
     end
 

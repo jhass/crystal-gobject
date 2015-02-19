@@ -1,6 +1,7 @@
 module GLib
   class Hook
     include GObject::WrappedType
+
     def initialize @g_lib_hook
     end
 

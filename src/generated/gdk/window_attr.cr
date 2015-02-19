@@ -1,6 +1,7 @@
 module Gdk
   class WindowAttr
     include GObject::WrappedType
+
     def initialize @gdk_window_attr
     end
 

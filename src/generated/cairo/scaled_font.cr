@@ -1,6 +1,7 @@
 module Cairo
   class ScaledFont
     include GObject::WrappedType
+
     def initialize @cairo_scaled_font
     end
 

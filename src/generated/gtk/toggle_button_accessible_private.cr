@@ -1,6 +1,7 @@
 module Gtk
   class ToggleButtonAccessiblePrivate
     include GObject::WrappedType
+
     def initialize @gtk_toggle_button_accessible_private
     end
 

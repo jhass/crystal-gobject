@@ -1,6 +1,7 @@
 module Gio
   class FileEnumeratorPrivate
     include GObject::WrappedType
+
     def initialize @gio_file_enumerator_private
     end
 

@@ -14,13 +14,7 @@ module Gtk
     # Implements Orientable
 
 
-    def position=(__value)
-      LibGtk.paned_set_position((to_unsafe as LibGtk::Paned*), Int32.cast(__value))
-    end
 
-    def position_set=(__value)
-      LibGtk.paned_set_position_set((to_unsafe as LibGtk::Paned*), Bool.cast(__value))
-    end
 
     def self.new_internal(orientation)
       __return_value = LibGtk.paned_new(orientation)

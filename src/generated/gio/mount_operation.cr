@@ -7,29 +7,11 @@ module Gio
       @gio_mount_operation.not_nil!
     end
 
-    def anonymous=(__value)
-      LibGio.mount_operation_set_anonymous((to_unsafe as LibGio::MountOperation*), Bool.cast(__value))
-    end
 
-    def choice=(__value)
-      LibGio.mount_operation_set_choice((to_unsafe as LibGio::MountOperation*), Int32.cast(__value))
-    end
 
-    def domain=(__value)
-      LibGio.mount_operation_set_domain((to_unsafe as LibGio::MountOperation*), __value)
-    end
 
-    def password=(__value)
-      LibGio.mount_operation_set_password((to_unsafe as LibGio::MountOperation*), __value)
-    end
 
-    def password_save=(__value)
-      LibGio.mount_operation_set_password_save((to_unsafe as LibGio::MountOperation*), __value)
-    end
 
-    def username=(__value)
-      LibGio.mount_operation_set_username((to_unsafe as LibGio::MountOperation*), __value)
-    end
 
     def self.new_internal
       __return_value = LibGio.mount_operation_new

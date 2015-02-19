@@ -1,6 +1,7 @@
 module Cairo
   class FontFace
     include GObject::WrappedType
+
     def initialize @cairo_font_face
     end
 

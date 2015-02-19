@@ -7,21 +7,9 @@ module Gtk
       @gtk_style_context.not_nil!
     end
 
-    def direction=(__value)
-      LibGtk.style_context_set_direction((to_unsafe as LibGtk::StyleContext*), __value)
-    end
 
-    def paint_clock=(__value)
-      LibGtk.style_context_set_paint_clock((to_unsafe as LibGtk::StyleContext*), __value)
-    end
 
-    def parent=(__value)
-      LibGtk.style_context_set_parent((to_unsafe as LibGtk::StyleContext*), __value)
-    end
 
-    def screen=(__value)
-      LibGtk.style_context_set_screen((to_unsafe as LibGtk::StyleContext*), __value)
-    end
 
     def self.new_internal
       __return_value = LibGtk.style_context_new
@@ -59,7 +47,7 @@ module Gtk
     end
 
     def cancel_animations(region_id)
-      __return_value = LibGtk.style_context_cancel_animations((to_unsafe as LibGtk::StyleContext*), region_id)
+      __return_value = LibGtk.style_context_cancel_animations((to_unsafe as LibGtk::StyleContext*), region_id && region_id)
       __return_value
     end
 
@@ -189,7 +177,7 @@ module Gtk
     end
 
     def notify_state_change(window, region_id, state, state_value)
-      __return_value = LibGtk.style_context_notify_state_change((to_unsafe as LibGtk::StyleContext*), (window.to_unsafe as LibGdk::Window*), region_id, state, Bool.cast(state_value))
+      __return_value = LibGtk.style_context_notify_state_change((to_unsafe as LibGtk::StyleContext*), (window.to_unsafe as LibGdk::Window*), region_id && region_id, state, Bool.cast(state_value))
       __return_value
     end
 
@@ -254,7 +242,7 @@ module Gtk
     end
 
     def parent=(parent)
-      __return_value = LibGtk.style_context_set_parent((to_unsafe as LibGtk::StyleContext*), (parent.to_unsafe as LibGtk::StyleContext*))
+      __return_value = LibGtk.style_context_set_parent((to_unsafe as LibGtk::StyleContext*), parent && (parent.to_unsafe as LibGtk::StyleContext*))
       __return_value
     end
 

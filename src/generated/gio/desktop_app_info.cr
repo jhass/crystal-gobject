@@ -31,10 +31,10 @@ module Gio
 
     def self.search(search_string)
       __return_value = LibGio.desktop_app_info_search(search_string)
-      PointerIterator.new(__return_value) {|__item_87| PointerIterator.new(__item_87) {|__item_15| raise "Expected string but got null" unless __item_15; String.new(__item_15) } }
+      PointerIterator.new(__return_value) {|__item_34| PointerIterator.new(__item_34) {|__item_97| raise "Expected string but got null" unless __item_97; String.new(__item_97) } }
     end
 
-    def self.desktop_env=(desktop_env)
+    def self.set_desktop_env(desktop_env)
       __return_value = LibGio.desktop_app_info_set_desktop_env(desktop_env)
       __return_value
     end
@@ -71,7 +71,7 @@ module Gio
 
     def keywords
       __return_value = LibGio.desktop_app_info_get_keywords((to_unsafe as LibGio::DesktopAppInfo*))
-      PointerIterator.new(__return_value) {|__item_67| raise "Expected string but got null" unless __item_67; String.new(__item_67) }
+      PointerIterator.new(__return_value) {|__item_17| raise "Expected string but got null" unless __item_17; String.new(__item_17) }
     end
 
     def nodisplay
@@ -80,7 +80,7 @@ module Gio
     end
 
     def show_in(desktop_env)
-      __return_value = LibGio.desktop_app_info_get_show_in((to_unsafe as LibGio::DesktopAppInfo*), desktop_env)
+      __return_value = LibGio.desktop_app_info_get_show_in((to_unsafe as LibGio::DesktopAppInfo*), desktop_env && desktop_env)
       __return_value
     end
 
@@ -100,20 +100,20 @@ module Gio
     end
 
     def launch_action(action_name, launch_context)
-      __return_value = LibGio.desktop_app_info_launch_action((to_unsafe as LibGio::DesktopAppInfo*), action_name, (launch_context.to_unsafe as LibGio::AppLaunchContext*))
+      __return_value = LibGio.desktop_app_info_launch_action((to_unsafe as LibGio::DesktopAppInfo*), action_name, launch_context && (launch_context.to_unsafe as LibGio::AppLaunchContext*))
       __return_value
     end
 
     def launch_uris_as_manager(uris, launch_context, spawn_flags, user_setup, user_setup_data, pid_callback, pid_callback_data)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.desktop_app_info_launch_uris_as_manager((to_unsafe as LibGio::DesktopAppInfo*), uris, (launch_context.to_unsafe as LibGio::AppLaunchContext*), spawn_flags, user_setup, user_setup_data, pid_callback, pid_callback_data, pointerof(__error))
+      __return_value = LibGio.desktop_app_info_launch_uris_as_manager((to_unsafe as LibGio::DesktopAppInfo*), uris, launch_context && (launch_context.to_unsafe as LibGio::AppLaunchContext*), spawn_flags, user_setup && user_setup, user_setup_data && user_setup_data, pid_callback && pid_callback, pid_callback_data && pid_callback_data, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def list_actions
       __return_value = LibGio.desktop_app_info_list_actions((to_unsafe as LibGio::DesktopAppInfo*))
-      PointerIterator.new(__return_value) {|__item_38| raise "Expected string but got null" unless __item_38; String.new(__item_38) }
+      PointerIterator.new(__return_value) {|__item_11| raise "Expected string but got null" unless __item_11; String.new(__item_11) }
     end
 
   end

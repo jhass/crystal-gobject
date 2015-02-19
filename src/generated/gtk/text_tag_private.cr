@@ -1,6 +1,7 @@
 module Gtk
   class TextTagPrivate
     include GObject::WrappedType
+
     def initialize @gtk_text_tag_private
     end
 

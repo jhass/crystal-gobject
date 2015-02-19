@@ -1,6 +1,7 @@
 module Gtk
   class TreeViewColumnPrivate
     include GObject::WrappedType
+
     def initialize @gtk_tree_view_column_private
     end
 

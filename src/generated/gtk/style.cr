@@ -49,11 +49,11 @@ module Gtk
     end
 
     def render_icon(source, direction, state, size, widget, detail)
-      __return_value = LibGtk.style_render_icon((to_unsafe as LibGtk::Style*), (source.to_unsafe as LibGtk::IconSource*), direction, state, Int32.cast(size), (widget.to_unsafe as LibGtk::Widget*), detail)
+      __return_value = LibGtk.style_render_icon((to_unsafe as LibGtk::Style*), (source.to_unsafe as LibGtk::IconSource*), direction, state, Int32.cast(size), widget && (widget.to_unsafe as LibGtk::Widget*), detail && detail)
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 
-    def background=(window, state_type)
+    def set_background(window, state_type)
       __return_value = LibGtk.style_set_background((to_unsafe as LibGtk::Style*), (window.to_unsafe as LibGdk::Window*), state_type)
       __return_value
     end

@@ -1,6 +1,7 @@
 module Gtk
   class TreeStorePrivate
     include GObject::WrappedType
+
     def initialize @gtk_tree_store_private
     end
 

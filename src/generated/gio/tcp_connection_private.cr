@@ -1,6 +1,7 @@
 module Gio
   class TcpConnectionPrivate
     include GObject::WrappedType
+
     def initialize @gio_tcp_connection_private
     end
 

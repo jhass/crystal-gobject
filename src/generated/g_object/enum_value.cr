@@ -1,6 +1,7 @@
 module GObject
   class EnumValue
     include GObject::WrappedType
+
     def initialize @g_object_enum_value
     end
 

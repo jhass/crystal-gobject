@@ -1,6 +1,7 @@
 module Gio
   class SocketClientPrivate
     include GObject::WrappedType
+
     def initialize @gio_socket_client_private
     end
 

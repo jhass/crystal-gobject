@@ -1,6 +1,7 @@
 module Pango
   class AttrFloat
     include GObject::WrappedType
+
     def initialize @pango_attr_float
     end
 

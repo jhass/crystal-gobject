@@ -1,6 +1,7 @@
 module Gtk
   class SizeGroupPrivate
     include GObject::WrappedType
+
     def initialize @gtk_size_group_private
     end
 

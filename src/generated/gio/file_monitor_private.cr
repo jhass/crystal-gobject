@@ -1,6 +1,7 @@
 module Gio
   class FileMonitorPrivate
     include GObject::WrappedType
+
     def initialize @gio_file_monitor_private
     end
 

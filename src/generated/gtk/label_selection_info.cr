@@ -1,6 +1,7 @@
 module Gtk
   class LabelSelectionInfo
     include GObject::WrappedType
+
     def initialize @gtk_label_selection_info
     end
 

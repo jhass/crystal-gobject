@@ -1,6 +1,7 @@
 module Gtk
   class CellRendererTogglePrivate
     include GObject::WrappedType
+
     def initialize @gtk_cell_renderer_toggle_private
     end
 

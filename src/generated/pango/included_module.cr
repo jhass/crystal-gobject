@@ -1,6 +1,7 @@
 module Pango
   class IncludedModule
     include GObject::WrappedType
+
     def initialize @pango_included_module
     end
 

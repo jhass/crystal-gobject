@@ -1,6 +1,7 @@
 module Gtk
   class ToolbarPrivate
     include GObject::WrappedType
+
     def initialize @gtk_toolbar_private
     end
 

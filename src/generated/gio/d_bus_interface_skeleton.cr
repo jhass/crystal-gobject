@@ -8,9 +8,6 @@ module Gio
     end
 
     # Implements DBusInterface
-    def g_flags=(__value)
-      LibGio.d_bus_interface_skeleton_set_g_flags((to_unsafe as LibGio::DBusInterfaceSkeleton*), __value)
-    end
 
     def export(connection, object_path)
       __error = Pointer(LibGLib::Error).null

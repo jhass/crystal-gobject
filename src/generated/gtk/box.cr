@@ -12,17 +12,8 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
-    def baseline_position=(__value)
-      LibGtk.box_set_baseline_position((to_unsafe as LibGtk::Box*), __value)
-    end
 
-    def homogeneous=(__value)
-      LibGtk.box_set_homogeneous((to_unsafe as LibGtk::Box*), Bool.cast(__value))
-    end
 
-    def spacing=(__value)
-      LibGtk.box_set_spacing((to_unsafe as LibGtk::Box*), Int32.cast(__value))
-    end
 
     def self.new_internal(orientation, spacing)
       __return_value = LibGtk.box_new(orientation, Int32.cast(spacing))
@@ -75,11 +66,11 @@ module Gtk
     end
 
     def center_widget=(widget)
-      __return_value = LibGtk.box_set_center_widget((to_unsafe as LibGtk::Box*), (widget.to_unsafe as LibGtk::Widget*))
+      __return_value = LibGtk.box_set_center_widget((to_unsafe as LibGtk::Box*), widget && (widget.to_unsafe as LibGtk::Widget*))
       __return_value
     end
 
-    def child_packing=(child, expand, fill, padding, pack_type)
+    def set_child_packing(child, expand, fill, padding, pack_type)
       __return_value = LibGtk.box_set_child_packing((to_unsafe as LibGtk::Box*), (child.to_unsafe as LibGtk::Widget*), Bool.cast(expand), Bool.cast(fill), UInt32.cast(padding), pack_type)
       __return_value
     end

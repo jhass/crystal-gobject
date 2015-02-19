@@ -1,6 +1,7 @@
 module Gtk
   class FileChooserWidgetPrivate
     include GObject::WrappedType
+
     def initialize @gtk_file_chooser_widget_private
     end
 

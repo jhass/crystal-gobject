@@ -1,6 +1,7 @@
 module GLib
   class Once
     include GObject::WrappedType
+
     def initialize @g_lib_once
     end
 

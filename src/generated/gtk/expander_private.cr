@@ -1,6 +1,7 @@
 module Gtk
   class ExpanderPrivate
     include GObject::WrappedType
+
     def initialize @gtk_expander_private
     end
 

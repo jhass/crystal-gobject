@@ -1,6 +1,7 @@
 module Gdk
   class Point
     include GObject::WrappedType
+
     def initialize @gdk_point
     end
 

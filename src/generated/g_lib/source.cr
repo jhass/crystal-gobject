@@ -1,6 +1,7 @@
 module GLib
   class Source
     include GObject::WrappedType
+
     def initialize @g_lib_source
     end
 
@@ -24,7 +25,7 @@ module GLib
     end
 
     def attach(context)
-      __return_value = LibGLib.source_attach((to_unsafe as LibGLib::Source*), (context.to_unsafe as LibGLib::MainContext*))
+      __return_value = LibGLib.source_attach((to_unsafe as LibGLib::Source*), context && (context.to_unsafe as LibGLib::MainContext*))
       __return_value
     end
 
@@ -108,12 +109,12 @@ module GLib
       __return_value
     end
 
-    def callback=(func, data, notify)
-      __return_value = LibGLib.source_set_callback((to_unsafe as LibGLib::Source*), func, data, notify)
+    def set_callback(func, data, notify)
+      __return_value = LibGLib.source_set_callback((to_unsafe as LibGLib::Source*), func, data, notify && notify)
       __return_value
     end
 
-    def callback_indirect=(callback_data, callback_funcs)
+    def set_callback_indirect(callback_data, callback_funcs)
       __return_value = LibGLib.source_set_callback_indirect((to_unsafe as LibGLib::Source*), callback_data, (callback_funcs.to_unsafe as LibGLib::SourceCallbackFuncs*))
       __return_value
     end

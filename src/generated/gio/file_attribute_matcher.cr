@@ -1,6 +1,7 @@
 module Gio
   class FileAttributeMatcher
     include GObject::WrappedType
+
     def initialize @gio_file_attribute_matcher
     end
 

@@ -8,16 +8,10 @@ module Gtk
     end
 
 
-    def parent=(__value)
-      LibGtk.mount_operation_set_parent((to_unsafe as LibGtk::MountOperation*), __value)
-    end
 
-    def screen=(__value)
-      LibGtk.mount_operation_set_screen((to_unsafe as LibGtk::MountOperation*), __value)
-    end
 
     def self.new_internal(parent)
-      __return_value = LibGtk.mount_operation_new((parent.to_unsafe as LibGtk::Window*))
+      __return_value = LibGtk.mount_operation_new(parent && (parent.to_unsafe as LibGtk::Window*))
       Gio::MountOperation.new(__return_value)
     end
 
@@ -37,7 +31,7 @@ module Gtk
     end
 
     def parent=(parent)
-      __return_value = LibGtk.mount_operation_set_parent((to_unsafe as LibGtk::MountOperation*), (parent.to_unsafe as LibGtk::Window*))
+      __return_value = LibGtk.mount_operation_set_parent((to_unsafe as LibGtk::MountOperation*), parent && (parent.to_unsafe as LibGtk::Window*))
       __return_value
     end
 

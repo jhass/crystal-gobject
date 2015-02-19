@@ -1,6 +1,7 @@
 module Gtk
   class Gradient
     include GObject::WrappedType
+
     def initialize @gtk_gradient
     end
 

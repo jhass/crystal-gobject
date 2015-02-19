@@ -1,6 +1,7 @@
 module GLib
   class VariantType
     include GObject::WrappedType
+
     def initialize @g_lib_variant_type
     end
 
@@ -149,7 +150,7 @@ module GLib
     end
 
     def self.string_scan(string, limit, endptr)
-      __return_value = LibGLib.variant_type_string_scan(string, limit, endptr)
+      __return_value = LibGLib.variant_type_string_scan(string, limit && limit, endptr)
       __return_value
     end
 

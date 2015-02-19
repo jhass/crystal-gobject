@@ -1,6 +1,7 @@
 module Gdk
   class FrameTimings
     include GObject::WrappedType
+
     def initialize @gdk_frame_timings
     end
 

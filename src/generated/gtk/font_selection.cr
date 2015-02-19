@@ -12,13 +12,7 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
-    def font_name=(__value)
-      LibGtk.font_selection_set_font_name((to_unsafe as LibGtk::FontSelection*), __value)
-    end
 
-    def preview_text=(__value)
-      LibGtk.font_selection_set_preview_text((to_unsafe as LibGtk::FontSelection*), __value)
-    end
 
     def self.new_internal
       __return_value = LibGtk.font_selection_new

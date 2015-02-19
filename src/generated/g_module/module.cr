@@ -1,6 +1,7 @@
 module GModule
   class Module
     include GObject::WrappedType
+
     def initialize @g_module_module
     end
 
@@ -29,7 +30,7 @@ module GModule
     end
 
     def self.build_path(directory, module_name)
-      __return_value = LibGModule.module_build_path(directory, module_name)
+      __return_value = LibGModule.module_build_path(directory && directory, module_name)
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 

@@ -1,6 +1,7 @@
 module Pango
   class TabArray
     include GObject::WrappedType
+
     def initialize @pango_tab_array
     end
 
@@ -48,7 +49,7 @@ module Pango
       __return_value
     end
 
-    def tab=(tab_index, alignment, location)
+    def set_tab(tab_index, alignment, location)
       __return_value = LibPango.tab_array_set_tab((to_unsafe as LibPango::TabArray*), Int32.cast(tab_index), alignment, Int32.cast(location))
       __return_value
     end

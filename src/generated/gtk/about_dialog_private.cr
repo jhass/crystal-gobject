@@ -1,6 +1,7 @@
 module Gtk
   class AboutDialogPrivate
     include GObject::WrappedType
+
     def initialize @gtk_about_dialog_private
     end
 

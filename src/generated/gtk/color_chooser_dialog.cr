@@ -12,12 +12,9 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements ColorChooser
-    def show_editor=(__value)
-      LibGtk.color_chooser_dialog_set_show_editor((to_unsafe as LibGtk::ColorChooserDialog*), Bool.cast(__value))
-    end
 
     def self.new_internal(title, parent)
-      __return_value = LibGtk.color_chooser_dialog_new(title, (parent.to_unsafe as LibGtk::Window*))
+      __return_value = LibGtk.color_chooser_dialog_new(title && title, parent && (parent.to_unsafe as LibGtk::Window*))
       Gtk::Widget.new(__return_value)
     end
 

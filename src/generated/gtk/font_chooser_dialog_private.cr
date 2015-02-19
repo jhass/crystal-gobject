@@ -1,6 +1,7 @@
 module Gtk
   class FontChooserDialogPrivate
     include GObject::WrappedType
+
     def initialize @gtk_font_chooser_dialog_private
     end
 

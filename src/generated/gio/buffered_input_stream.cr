@@ -23,13 +23,13 @@ module Gio
 
     def fill(count, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.buffered_input_stream_fill((to_unsafe as LibGio::BufferedInputStream*), Int64.cast(count), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.buffered_input_stream_fill((to_unsafe as LibGio::BufferedInputStream*), Int64.cast(count), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def fill_async(count, io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.buffered_input_stream_fill_async((to_unsafe as LibGio::BufferedInputStream*), Int64.cast(count), Int32.cast(io_priority), (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGio.buffered_input_stream_fill_async((to_unsafe as LibGio::BufferedInputStream*), Int64.cast(count), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -57,12 +57,12 @@ module Gio
 
     def peek_buffer(count)
       __return_value = LibGio.buffered_input_stream_peek_buffer((to_unsafe as LibGio::BufferedInputStream*), UInt64.cast(count))
-      PointerIterator.new(__return_value) {|__item_19| __item_19 }
+      PointerIterator.new(__return_value) {|__item_81| __item_81 }
     end
 
     def read_byte(cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.buffered_input_stream_read_byte((to_unsafe as LibGio::BufferedInputStream*), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.buffered_input_stream_read_byte((to_unsafe as LibGio::BufferedInputStream*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

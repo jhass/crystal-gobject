@@ -35,7 +35,7 @@ module Gtk
     end
 
     def disconnect(closure)
-      __return_value = LibGtk.accel_group_disconnect((to_unsafe as LibGtk::AccelGroup*), (closure.to_unsafe as LibGObject::Closure*))
+      __return_value = LibGtk.accel_group_disconnect((to_unsafe as LibGtk::AccelGroup*), closure && (closure.to_unsafe as LibGObject::Closure*))
       __return_value
     end
 
@@ -66,7 +66,7 @@ module Gtk
 
     def query(accel_key, accel_mods, n_entries)
       __return_value = LibGtk.accel_group_query((to_unsafe as LibGtk::AccelGroup*), UInt32.cast(accel_key), accel_mods, UInt32.cast(n_entries))
-      PointerIterator.new(__return_value) {|__item_44| Gtk::AccelGroupEntry.new(__item_44) }
+      PointerIterator.new(__return_value) {|__item_3| Gtk::AccelGroupEntry.new(__item_3) }
     end
 
     def unlock

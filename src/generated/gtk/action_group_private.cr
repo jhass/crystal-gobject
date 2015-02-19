@@ -1,6 +1,7 @@
 module Gtk
   class ActionGroupPrivate
     include GObject::WrappedType
+
     def initialize @gtk_action_group_private
     end
 

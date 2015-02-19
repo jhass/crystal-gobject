@@ -10,7 +10,7 @@ module Gio
     # Implements Icon
 
     def self.new_internal(icon, emblem)
-      __return_value = LibGio.emblemed_icon_new((icon.to_unsafe as LibGio::Icon*), (emblem.to_unsafe as LibGio::Emblem*))
+      __return_value = LibGio.emblemed_icon_new((icon.to_unsafe as LibGio::Icon*), emblem && (emblem.to_unsafe as LibGio::Emblem*))
       Gio::EmblemedIcon.new(__return_value)
     end
 

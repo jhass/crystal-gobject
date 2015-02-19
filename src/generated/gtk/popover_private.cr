@@ -1,6 +1,7 @@
 module Gtk
   class PopoverPrivate
     include GObject::WrappedType
+
     def initialize @gtk_popover_private
     end
 

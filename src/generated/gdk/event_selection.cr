@@ -1,6 +1,7 @@
 module Gdk
   class EventSelection
     include GObject::WrappedType
+
     def initialize @gdk_event_selection
     end
 

@@ -1,6 +1,7 @@
 module Pango
   class AttrInt
     include GObject::WrappedType
+
     def initialize @pango_attr_int
     end
 

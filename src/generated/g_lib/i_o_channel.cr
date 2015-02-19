@@ -1,6 +1,7 @@
 module GLib
   class IOChannel
     include GObject::WrappedType
+
     def initialize @g_lib_i_o_channel
     end
 
@@ -93,7 +94,7 @@ module GLib
 
     def read_line_string(buffer, terminator_pos)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.i_o_channel_read_line_string((to_unsafe as LibGLib::IOChannel*), (buffer.to_unsafe as LibGLib::String*), terminator_pos, pointerof(__error))
+      __return_value = LibGLib.i_o_channel_read_line_string((to_unsafe as LibGLib::IOChannel*), (buffer.to_unsafe as LibGLib::String*), terminator_pos && terminator_pos, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -144,22 +145,22 @@ module GLib
       __return_value
     end
 
-    def encoding=(encoding)
+    def set_encoding(encoding)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.i_o_channel_set_encoding((to_unsafe as LibGLib::IOChannel*), encoding, pointerof(__error))
+      __return_value = LibGLib.i_o_channel_set_encoding((to_unsafe as LibGLib::IOChannel*), encoding && encoding, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def flags=(flags)
+    def set_flags(flags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.i_o_channel_set_flags((to_unsafe as LibGLib::IOChannel*), flags, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def line_term=(line_term, length)
-      __return_value = LibGLib.i_o_channel_set_line_term((to_unsafe as LibGLib::IOChannel*), line_term, Int32.cast(length))
+    def set_line_term(line_term, length)
+      __return_value = LibGLib.i_o_channel_set_line_term((to_unsafe as LibGLib::IOChannel*), line_term && line_term, Int32.cast(length))
       __return_value
     end
 

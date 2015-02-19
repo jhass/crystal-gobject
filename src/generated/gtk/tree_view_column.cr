@@ -9,70 +9,22 @@ module Gtk
 
     # Implements Buildable
     # Implements CellLayout
-    def alignment=(__value)
-      LibGtk.tree_view_column_set_alignment((to_unsafe as LibGtk::TreeViewColumn*), Float32.cast(__value))
-    end
 
 
-    def clickable=(__value)
-      LibGtk.tree_view_column_set_clickable((to_unsafe as LibGtk::TreeViewColumn*), Bool.cast(__value))
-    end
 
-    def expand=(__value)
-      LibGtk.tree_view_column_set_expand((to_unsafe as LibGtk::TreeViewColumn*), Bool.cast(__value))
-    end
 
-    def fixed_width=(__value)
-      LibGtk.tree_view_column_set_fixed_width((to_unsafe as LibGtk::TreeViewColumn*), Int32.cast(__value))
-    end
 
-    def max_width=(__value)
-      LibGtk.tree_view_column_set_max_width((to_unsafe as LibGtk::TreeViewColumn*), Int32.cast(__value))
-    end
 
-    def min_width=(__value)
-      LibGtk.tree_view_column_set_min_width((to_unsafe as LibGtk::TreeViewColumn*), Int32.cast(__value))
-    end
 
-    def reorderable=(__value)
-      LibGtk.tree_view_column_set_reorderable((to_unsafe as LibGtk::TreeViewColumn*), Bool.cast(__value))
-    end
 
-    def resizable=(__value)
-      LibGtk.tree_view_column_set_resizable((to_unsafe as LibGtk::TreeViewColumn*), Bool.cast(__value))
-    end
 
-    def sizing=(__value)
-      LibGtk.tree_view_column_set_sizing((to_unsafe as LibGtk::TreeViewColumn*), __value)
-    end
 
-    def sort_column_id=(__value)
-      LibGtk.tree_view_column_set_sort_column_id((to_unsafe as LibGtk::TreeViewColumn*), Int32.cast(__value))
-    end
 
-    def sort_indicator=(__value)
-      LibGtk.tree_view_column_set_sort_indicator((to_unsafe as LibGtk::TreeViewColumn*), Bool.cast(__value))
-    end
 
-    def sort_order=(__value)
-      LibGtk.tree_view_column_set_sort_order((to_unsafe as LibGtk::TreeViewColumn*), __value)
-    end
 
-    def spacing=(__value)
-      LibGtk.tree_view_column_set_spacing((to_unsafe as LibGtk::TreeViewColumn*), Int32.cast(__value))
-    end
 
-    def title=(__value)
-      LibGtk.tree_view_column_set_title((to_unsafe as LibGtk::TreeViewColumn*), __value)
-    end
 
-    def visible=(__value)
-      LibGtk.tree_view_column_set_visible((to_unsafe as LibGtk::TreeViewColumn*), Bool.cast(__value))
-    end
 
-    def widget=(__value)
-      LibGtk.tree_view_column_set_widget((to_unsafe as LibGtk::TreeViewColumn*), __value)
-    end
 
 
 
@@ -97,7 +49,7 @@ module Gtk
     end
 
     def cell_get_size(cell_area, x_offset, y_offset, width, height)
-      __return_value = LibGtk.tree_view_column_cell_get_size((to_unsafe as LibGtk::TreeViewColumn*), (cell_area.to_unsafe as LibCairo::RectangleInt*), Int32.cast(x_offset), Int32.cast(y_offset), Int32.cast(width), Int32.cast(height))
+      __return_value = LibGtk.tree_view_column_cell_get_size((to_unsafe as LibGtk::TreeViewColumn*), cell_area && (cell_area.to_unsafe as LibCairo::RectangleInt*), Int32.cast(x_offset), Int32.cast(y_offset), Int32.cast(width), Int32.cast(height))
       __return_value
     end
 
@@ -251,8 +203,8 @@ module Gtk
       __return_value
     end
 
-    def cell_data_func=(cell_renderer, func, func_data, destroy)
-      __return_value = LibGtk.tree_view_column_set_cell_data_func((to_unsafe as LibGtk::TreeViewColumn*), (cell_renderer.to_unsafe as LibGtk::CellRenderer*), func, func_data, destroy)
+    def set_cell_data_func(cell_renderer, func, func_data, destroy)
+      __return_value = LibGtk.tree_view_column_set_cell_data_func((to_unsafe as LibGtk::TreeViewColumn*), (cell_renderer.to_unsafe as LibGtk::CellRenderer*), func && func, func_data, destroy)
       __return_value
     end
 
@@ -327,7 +279,7 @@ module Gtk
     end
 
     def widget=(widget)
-      __return_value = LibGtk.tree_view_column_set_widget((to_unsafe as LibGtk::TreeViewColumn*), (widget.to_unsafe as LibGtk::Widget*))
+      __return_value = LibGtk.tree_view_column_set_widget((to_unsafe as LibGtk::TreeViewColumn*), widget && (widget.to_unsafe as LibGtk::Widget*))
       __return_value
     end
 

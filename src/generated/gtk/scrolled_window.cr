@@ -12,41 +12,17 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
 
-    def hscrollbar_policy=(__value)
-      LibGtk.scrolled_window_set_hscrollbar_policy((to_unsafe as LibGtk::ScrolledWindow*), __value)
-    end
-
-    def kinetic_scrolling=(__value)
-      LibGtk.scrolled_window_set_kinetic_scrolling((to_unsafe as LibGtk::ScrolledWindow*), Bool.cast(__value))
-    end
-
-    def min_content_height=(__value)
-      LibGtk.scrolled_window_set_min_content_height((to_unsafe as LibGtk::ScrolledWindow*), Int32.cast(__value))
-    end
-
-    def min_content_width=(__value)
-      LibGtk.scrolled_window_set_min_content_width((to_unsafe as LibGtk::ScrolledWindow*), Int32.cast(__value))
-    end
-
-    def shadow_type=(__value)
-      LibGtk.scrolled_window_set_shadow_type((to_unsafe as LibGtk::ScrolledWindow*), __value)
-    end
 
 
-    def vscrollbar_policy=(__value)
-      LibGtk.scrolled_window_set_vscrollbar_policy((to_unsafe as LibGtk::ScrolledWindow*), __value)
-    end
 
-    def window_placement=(__value)
-      LibGtk.scrolled_window_set_window_placement((to_unsafe as LibGtk::ScrolledWindow*), __value)
-    end
 
-    def window_placement_set=(__value)
-      LibGtk.scrolled_window_set_window_placement_set((to_unsafe as LibGtk::ScrolledWindow*), Bool.cast(__value))
-    end
+
+
+
+
 
     def self.new_internal(hadjustment, vadjustment)
-      __return_value = LibGtk.scrolled_window_new((hadjustment.to_unsafe as LibGtk::Adjustment*), (vadjustment.to_unsafe as LibGtk::Adjustment*))
+      __return_value = LibGtk.scrolled_window_new(hadjustment && (hadjustment.to_unsafe as LibGtk::Adjustment*), vadjustment && (vadjustment.to_unsafe as LibGtk::Adjustment*))
       Gtk::Widget.new(__return_value)
     end
 
@@ -140,7 +116,7 @@ module Gtk
       __return_value
     end
 
-    def policy=(hscrollbar_policy, vscrollbar_policy)
+    def set_policy(hscrollbar_policy, vscrollbar_policy)
       __return_value = LibGtk.scrolled_window_set_policy((to_unsafe as LibGtk::ScrolledWindow*), hscrollbar_policy, vscrollbar_policy)
       __return_value
     end

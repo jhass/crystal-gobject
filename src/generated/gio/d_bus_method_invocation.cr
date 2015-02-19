@@ -68,12 +68,12 @@ module Gio
     end
 
     def return_value(parameters)
-      __return_value = LibGio.d_bus_method_invocation_return_value((to_unsafe as LibGio::DBusMethodInvocation*), (parameters.to_unsafe as LibGLib::Variant*))
+      __return_value = LibGio.d_bus_method_invocation_return_value((to_unsafe as LibGio::DBusMethodInvocation*), parameters && (parameters.to_unsafe as LibGLib::Variant*))
       __return_value
     end
 
     def return_value_with_unix_fd_list(parameters, fd_list)
-      __return_value = LibGio.d_bus_method_invocation_return_value_with_unix_fd_list((to_unsafe as LibGio::DBusMethodInvocation*), (parameters.to_unsafe as LibGLib::Variant*), (fd_list.to_unsafe as LibGio::UnixFDList*))
+      __return_value = LibGio.d_bus_method_invocation_return_value_with_unix_fd_list((to_unsafe as LibGio::DBusMethodInvocation*), parameters && (parameters.to_unsafe as LibGLib::Variant*), fd_list && (fd_list.to_unsafe as LibGio::UnixFDList*))
       __return_value
     end
 

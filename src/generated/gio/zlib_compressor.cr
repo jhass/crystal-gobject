@@ -8,9 +8,6 @@ module Gio
     end
 
     # Implements Converter
-    def file_info=(__value)
-      LibGio.zlib_compressor_set_file_info((to_unsafe as LibGio::ZlibCompressor*), __value)
-    end
 
 
 
@@ -25,7 +22,7 @@ module Gio
     end
 
     def file_info=(file_info)
-      __return_value = LibGio.zlib_compressor_set_file_info((to_unsafe as LibGio::ZlibCompressor*), (file_info.to_unsafe as LibGio::FileInfo*))
+      __return_value = LibGio.zlib_compressor_set_file_info((to_unsafe as LibGio::ZlibCompressor*), file_info && (file_info.to_unsafe as LibGio::FileInfo*))
       __return_value
     end
 

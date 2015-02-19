@@ -1,6 +1,7 @@
 module Gtk
   class NumerableIconPrivate
     include GObject::WrappedType
+
     def initialize @gtk_numerable_icon_private
     end
 

@@ -1,6 +1,7 @@
 module GObject
   class ObjectConstructParam
     include GObject::WrappedType
+
     def initialize @g_object_object_construct_param
     end
 

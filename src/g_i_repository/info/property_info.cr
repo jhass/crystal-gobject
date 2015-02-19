@@ -15,18 +15,17 @@ module GIRepository
     end
 
     def getter?
-      flags == LibGObject::ParamFlags::READABLE || flags == LibGObject::ParamFlags::READWRITE
+      (flags.value & LibGObject::ParamFlags::READABLE.value) == 1
     end
 
     def setter?
-      flags == LibGObject::ParamFlags::WRITABLE || flags == LibGObject::ParamFlags::READWRITE
+      (flags.value & LibGObject::ParamFlags::WRITABLE.value) == 1
     end
 
     def lib_definition
       "  # Property #{name} : #{type.lib_definition}"
     end
 
-    # Use gobject_get/set_property instead
     def wrapper_definition libname, indent=""
       String.build do |io|
         this = "(to_unsafe as #{libname}::#{container.name}*)"

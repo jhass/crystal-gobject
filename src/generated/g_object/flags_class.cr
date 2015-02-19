@@ -1,6 +1,7 @@
 module GObject
   class FlagsClass
     include GObject::WrappedType
+
     def initialize @g_object_flags_class
     end
 

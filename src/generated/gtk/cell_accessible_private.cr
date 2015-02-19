@@ -1,6 +1,7 @@
 module Gtk
   class CellAccessiblePrivate
     include GObject::WrappedType
+
     def initialize @gtk_cell_accessible_private
     end
 

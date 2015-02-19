@@ -1,6 +1,7 @@
 module Gio
   class SrvTarget
     include GObject::WrappedType
+
     def initialize @gio_srv_target
     end
 

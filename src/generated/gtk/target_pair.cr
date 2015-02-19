@@ -1,6 +1,7 @@
 module Gtk
   class TargetPair
     include GObject::WrappedType
+
     def initialize @gtk_target_pair
     end
 

@@ -15,13 +15,7 @@ module Gtk
 
 
 
-    def visible_child=(__value)
-      LibGtk.stack_set_visible_child((to_unsafe as LibGtk::Stack*), __value)
-    end
 
-    def visible_child_name=(__value)
-      LibGtk.stack_set_visible_child_name((to_unsafe as LibGtk::Stack*), __value)
-    end
 
     def self.new_internal
       __return_value = LibGtk.stack_new
@@ -93,7 +87,7 @@ module Gtk
       __return_value
     end
 
-    def visible_child_full=(name, transition)
+    def set_visible_child_full(name, transition)
       __return_value = LibGtk.stack_set_visible_child_full((to_unsafe as LibGtk::Stack*), name, transition)
       __return_value
     end

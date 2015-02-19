@@ -1,6 +1,7 @@
 module Gtk
   class BinPrivate
     include GObject::WrappedType
+
     def initialize @gtk_bin_private
     end
 

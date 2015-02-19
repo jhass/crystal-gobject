@@ -1,6 +1,7 @@
 module GObject
   class TypeClass
     include GObject::WrappedType
+
     def initialize @g_object_type_class
     end
 

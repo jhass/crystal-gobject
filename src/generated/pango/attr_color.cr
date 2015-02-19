@@ -1,6 +1,7 @@
 module Pango
   class AttrColor
     include GObject::WrappedType
+
     def initialize @pango_attr_color
     end
 

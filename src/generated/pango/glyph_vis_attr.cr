@@ -1,6 +1,7 @@
 module Pango
   class GlyphVisAttr
     include GObject::WrappedType
+
     def initialize @pango_glyph_vis_attr
     end
 

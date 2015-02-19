@@ -120,22 +120,22 @@ module Atk
       __return_value
     end
 
-    def column_description=(column, description)
+    def set_column_description(column, description)
       __return_value = LibAtk.table_set_column_description((to_unsafe as LibAtk::Table*), Int32.cast(column), description)
       __return_value
     end
 
-    def column_header=(column, header)
+    def set_column_header(column, header)
       __return_value = LibAtk.table_set_column_header((to_unsafe as LibAtk::Table*), Int32.cast(column), (header.to_unsafe as LibAtk::Object*))
       __return_value
     end
 
-    def row_description=(row, description)
+    def set_row_description(row, description)
       __return_value = LibAtk.table_set_row_description((to_unsafe as LibAtk::Table*), Int32.cast(row), description)
       __return_value
     end
 
-    def row_header=(row, header)
+    def set_row_header(row, header)
       __return_value = LibAtk.table_set_row_header((to_unsafe as LibAtk::Table*), Int32.cast(row), (header.to_unsafe as LibAtk::Object*))
       __return_value
     end

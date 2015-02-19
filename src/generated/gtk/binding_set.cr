@@ -1,6 +1,7 @@
 module Gtk
   class BindingSet
     include GObject::WrappedType
+
     def initialize @gtk_binding_set
     end
 

@@ -18,7 +18,7 @@ module Gio
     end
 
     def equal(icon2)
-      __return_value = LibGio.icon_equal((to_unsafe as LibGio::Icon*), (icon2.to_unsafe as LibGio::Icon*))
+      __return_value = LibGio.icon_equal((to_unsafe as LibGio::Icon*), icon2 && (icon2.to_unsafe as LibGio::Icon*))
       __return_value
     end
 

@@ -11,45 +11,15 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
-    def day=(__value)
-      LibGtk.calendar_set_day((to_unsafe as LibGtk::Calendar*), Int32.cast(__value))
-    end
 
-    def detail_height_rows=(__value)
-      LibGtk.calendar_set_detail_height_rows((to_unsafe as LibGtk::Calendar*), Int32.cast(__value))
-    end
 
-    def detail_width_chars=(__value)
-      LibGtk.calendar_set_detail_width_chars((to_unsafe as LibGtk::Calendar*), Int32.cast(__value))
-    end
 
-    def month=(__value)
-      LibGtk.calendar_set_month((to_unsafe as LibGtk::Calendar*), Int32.cast(__value))
-    end
 
-    def no_month_change=(__value)
-      LibGtk.calendar_set_no_month_change((to_unsafe as LibGtk::Calendar*), Bool.cast(__value))
-    end
 
-    def show_day_names=(__value)
-      LibGtk.calendar_set_show_day_names((to_unsafe as LibGtk::Calendar*), Bool.cast(__value))
-    end
 
-    def show_details=(__value)
-      LibGtk.calendar_set_show_details((to_unsafe as LibGtk::Calendar*), Bool.cast(__value))
-    end
 
-    def show_heading=(__value)
-      LibGtk.calendar_set_show_heading((to_unsafe as LibGtk::Calendar*), Bool.cast(__value))
-    end
 
-    def show_week_numbers=(__value)
-      LibGtk.calendar_set_show_week_numbers((to_unsafe as LibGtk::Calendar*), Bool.cast(__value))
-    end
 
-    def year=(__value)
-      LibGtk.calendar_set_year((to_unsafe as LibGtk::Calendar*), Int32.cast(__value))
-    end
 
     def self.new_internal
       __return_value = LibGtk.calendar_new
@@ -101,7 +71,7 @@ module Gtk
       __return_value
     end
 
-    def detail_func=(func, data, destroy)
+    def set_detail_func(func, data, destroy)
       __return_value = LibGtk.calendar_set_detail_func((to_unsafe as LibGtk::Calendar*), func, data, destroy)
       __return_value
     end

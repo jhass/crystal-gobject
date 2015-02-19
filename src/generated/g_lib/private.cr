@@ -1,6 +1,7 @@
 module GLib
   class Private
     include GObject::WrappedType
+
     def initialize @g_lib_private
     end
 

@@ -1,6 +1,7 @@
 module Gdk
   class EventAny
     include GObject::WrappedType
+
     def initialize @gdk_event_any
     end
 

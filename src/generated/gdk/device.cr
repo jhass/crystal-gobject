@@ -11,9 +11,6 @@ module Gdk
 
 
 
-    def input_mode=(__value)
-      LibGdk.device_set_input_mode((to_unsafe as LibGdk::Device*), __value)
-    end
 
 
 
@@ -105,7 +102,7 @@ module Gdk
     end
 
     def grab(window, grab_ownership, owner_events, event_mask, cursor, time)
-      __return_value = LibGdk.device_grab((to_unsafe as LibGdk::Device*), (window.to_unsafe as LibGdk::Window*), grab_ownership, Bool.cast(owner_events), event_mask, (cursor.to_unsafe as LibGdk::Cursor*), UInt32.cast(time))
+      __return_value = LibGdk.device_grab((to_unsafe as LibGdk::Device*), (window.to_unsafe as LibGdk::Window*), grab_ownership, Bool.cast(owner_events), event_mask, cursor && (cursor.to_unsafe as LibGdk::Cursor*), UInt32.cast(time))
       __return_value
     end
 
@@ -119,12 +116,12 @@ module Gdk
       __return_value if __return_value
     end
 
-    def axis_use=(index, use)
+    def set_axis_use(index, use)
       __return_value = LibGdk.device_set_axis_use((to_unsafe as LibGdk::Device*), UInt32.cast(index), use)
       __return_value
     end
 
-    def key=(index, keyval, modifiers)
+    def set_key(index, keyval, modifiers)
       __return_value = LibGdk.device_set_key((to_unsafe as LibGdk::Device*), UInt32.cast(index), UInt32.cast(keyval), modifiers)
       __return_value
     end

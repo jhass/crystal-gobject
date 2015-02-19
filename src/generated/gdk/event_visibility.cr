@@ -1,6 +1,7 @@
 module Gdk
   class EventVisibility
     include GObject::WrappedType
+
     def initialize @gdk_event_visibility
     end
 

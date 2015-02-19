@@ -2,7 +2,7 @@ module Gio
   module TlsClientConnection
     def self.new_internal(base_io_stream, server_identity)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.tls_client_connection_new((base_io_stream.to_unsafe as LibGio::IOStream*), (server_identity.to_unsafe as LibGio::SocketConnectable*), pointerof(__error))
+      __return_value = LibGio.tls_client_connection_new((base_io_stream.to_unsafe as LibGio::IOStream*), server_identity && (server_identity.to_unsafe as LibGio::SocketConnectable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

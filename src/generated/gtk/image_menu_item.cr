@@ -13,14 +13,8 @@ module Gtk
     # Implements Actionable
     # Implements Activatable
     # Implements Buildable
-    def accel_group=(__value)
-      LibGtk.image_menu_item_set_accel_group((to_unsafe as LibGtk::ImageMenuItem*), __value)
-    end
 
 
-    def image=(__value)
-      LibGtk.image_menu_item_set_image((to_unsafe as LibGtk::ImageMenuItem*), __value)
-    end
 
 
     def self.new_internal
@@ -29,7 +23,7 @@ module Gtk
     end
 
     def self.new_from_stock(stock_id, accel_group)
-      __return_value = LibGtk.image_menu_item_new_from_stock(stock_id, (accel_group.to_unsafe as LibGtk::AccelGroup*))
+      __return_value = LibGtk.image_menu_item_new_from_stock(stock_id, accel_group && (accel_group.to_unsafe as LibGtk::AccelGroup*))
       Gtk::Widget.new(__return_value)
     end
 
@@ -69,7 +63,7 @@ module Gtk
     end
 
     def image=(image)
-      __return_value = LibGtk.image_menu_item_set_image((to_unsafe as LibGtk::ImageMenuItem*), (image.to_unsafe as LibGtk::Widget*))
+      __return_value = LibGtk.image_menu_item_set_image((to_unsafe as LibGtk::ImageMenuItem*), image && (image.to_unsafe as LibGtk::Widget*))
       __return_value
     end
 

@@ -11,7 +11,7 @@ module Gtk
     end
 
     def start_editing(event)
-      __return_value = LibGtk.cell_editable_start_editing((to_unsafe as LibGtk::CellEditable*), (event.to_unsafe as LibGdk::Event*))
+      __return_value = LibGtk.cell_editable_start_editing((to_unsafe as LibGtk::CellEditable*), event && (event.to_unsafe as LibGdk::Event*))
       __return_value
     end
 

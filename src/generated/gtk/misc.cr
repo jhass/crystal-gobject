@@ -11,21 +11,9 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
-    def xalign=(__value)
-      LibGtk.misc_set_xalign((to_unsafe as LibGtk::Misc*), Float32.cast(__value))
-    end
 
-    def xpad=(__value)
-      LibGtk.misc_set_xpad((to_unsafe as LibGtk::Misc*), Int32.cast(__value))
-    end
 
-    def yalign=(__value)
-      LibGtk.misc_set_yalign((to_unsafe as LibGtk::Misc*), Float32.cast(__value))
-    end
 
-    def ypad=(__value)
-      LibGtk.misc_set_ypad((to_unsafe as LibGtk::Misc*), Int32.cast(__value))
-    end
 
     def alignment(xalign, yalign)
       __return_value = LibGtk.misc_get_alignment((to_unsafe as LibGtk::Misc*), Float32.cast(xalign), Float32.cast(yalign))
@@ -37,12 +25,12 @@ module Gtk
       __return_value
     end
 
-    def alignment=(xalign, yalign)
+    def set_alignment(xalign, yalign)
       __return_value = LibGtk.misc_set_alignment((to_unsafe as LibGtk::Misc*), Float32.cast(xalign), Float32.cast(yalign))
       __return_value
     end
 
-    def padding=(xpad, ypad)
+    def set_padding(xpad, ypad)
       __return_value = LibGtk.misc_set_padding((to_unsafe as LibGtk::Misc*), Int32.cast(xpad), Int32.cast(ypad))
       __return_value
     end

@@ -1,6 +1,7 @@
 module GLib
   class List
     include GObject::WrappedType
+
     def initialize @g_lib_list
     end
 

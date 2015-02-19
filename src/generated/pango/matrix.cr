@@ -1,6 +1,7 @@
 module Pango
   class Matrix
     include GObject::WrappedType
+
     def initialize @pango_matrix
     end
 
@@ -44,7 +45,7 @@ module Pango
     end
 
     def transform_pixel_rectangle(rect)
-      __return_value = LibPango.matrix_transform_pixel_rectangle((to_unsafe as LibPango::Matrix*), rect)
+      __return_value = LibPango.matrix_transform_pixel_rectangle((to_unsafe as LibPango::Matrix*), rect && rect)
       __return_value
     end
 
@@ -54,7 +55,7 @@ module Pango
     end
 
     def transform_rectangle(rect)
-      __return_value = LibPango.matrix_transform_rectangle((to_unsafe as LibPango::Matrix*), rect)
+      __return_value = LibPango.matrix_transform_rectangle((to_unsafe as LibPango::Matrix*), rect && rect)
       __return_value
     end
 

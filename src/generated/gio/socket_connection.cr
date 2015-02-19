@@ -22,13 +22,13 @@ module Gio
 
     def connect(address, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.socket_connection_connect((to_unsafe as LibGio::SocketConnection*), (address.to_unsafe as LibGio::SocketAddress*), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.socket_connection_connect((to_unsafe as LibGio::SocketConnection*), (address.to_unsafe as LibGio::SocketAddress*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def connect_async(address, cancellable, callback, user_data)
-      __return_value = LibGio.socket_connection_connect_async((to_unsafe as LibGio::SocketConnection*), (address.to_unsafe as LibGio::SocketAddress*), (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGio.socket_connection_connect_async((to_unsafe as LibGio::SocketConnection*), (address.to_unsafe as LibGio::SocketAddress*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 

@@ -1,6 +1,7 @@
 module Gtk
   class AppChooserButtonPrivate
     include GObject::WrappedType
+
     def initialize @gtk_app_chooser_button_private
     end
 

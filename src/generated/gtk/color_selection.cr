@@ -12,25 +12,10 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
-    def current_alpha=(__value)
-      LibGtk.color_selection_set_current_alpha((to_unsafe as LibGtk::ColorSelection*), UInt32.cast(__value))
-    end
 
-    def current_color=(__value)
-      LibGtk.color_selection_set_current_color((to_unsafe as LibGtk::ColorSelection*), __value)
-    end
 
-    def current_rgba=(__value)
-      LibGtk.color_selection_set_current_rgba((to_unsafe as LibGtk::ColorSelection*), __value)
-    end
 
-    def has_opacity_control=(__value)
-      LibGtk.color_selection_set_has_opacity_control((to_unsafe as LibGtk::ColorSelection*), Bool.cast(__value))
-    end
 
-    def has_palette=(__value)
-      LibGtk.color_selection_set_has_palette((to_unsafe as LibGtk::ColorSelection*), Bool.cast(__value))
-    end
 
     def self.new_internal
       __return_value = LibGtk.color_selection_new

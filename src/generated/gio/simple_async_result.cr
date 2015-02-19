@@ -9,17 +9,17 @@ module Gio
 
     # Implements AsyncResult
     def self.new_internal(source_object, callback, user_data, source_tag)
-      __return_value = LibGio.simple_async_result_new((source_object.to_unsafe as LibGObject::Object*), callback, user_data, source_tag)
+      __return_value = LibGio.simple_async_result_new(source_object && (source_object.to_unsafe as LibGObject::Object*), callback && callback, user_data, source_tag)
       Gio::SimpleAsyncResult.new(__return_value)
     end
 
     def self.new_from_error(source_object, callback, user_data, error)
-      __return_value = LibGio.simple_async_result_new_from_error((source_object.to_unsafe as LibGObject::Object*), callback, user_data, error)
+      __return_value = LibGio.simple_async_result_new_from_error(source_object && (source_object.to_unsafe as LibGObject::Object*), callback && callback, user_data, error)
       Gio::SimpleAsyncResult.new(__return_value)
     end
 
     def self.is_valid(result, source, source_tag)
-      __return_value = LibGio.simple_async_result_is_valid((result.to_unsafe as LibGio::AsyncResult*), (source.to_unsafe as LibGObject::Object*), source_tag)
+      __return_value = LibGio.simple_async_result_is_valid((result.to_unsafe as LibGio::AsyncResult*), source && (source.to_unsafe as LibGObject::Object*), source_tag && source_tag)
       __return_value
     end
 
@@ -51,7 +51,7 @@ module Gio
     end
 
     def check_cancellable=(check_cancellable)
-      __return_value = LibGio.simple_async_result_set_check_cancellable((to_unsafe as LibGio::SimpleAsyncResult*), (check_cancellable.to_unsafe as LibGio::Cancellable*))
+      __return_value = LibGio.simple_async_result_set_check_cancellable((to_unsafe as LibGio::SimpleAsyncResult*), check_cancellable && (check_cancellable.to_unsafe as LibGio::Cancellable*))
       __return_value
     end
 

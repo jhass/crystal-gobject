@@ -13,9 +13,6 @@ module Gtk
     # Implements AppChooser
     # Implements Buildable
     # Implements Orientable
-    def default_text=(__value)
-      LibGtk.app_chooser_widget_set_default_text((to_unsafe as LibGtk::AppChooserWidget*), __value)
-    end
 
 
 

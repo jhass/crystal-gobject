@@ -1,6 +1,7 @@
 module GLib
   class SourceFuncs
     include GObject::WrappedType
+
     def initialize @g_lib_source_funcs
     end
 

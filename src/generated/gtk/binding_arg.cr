@@ -1,6 +1,7 @@
 module Gtk
   class BindingArg
     include GObject::WrappedType
+
     def initialize @gtk_binding_arg
     end
 

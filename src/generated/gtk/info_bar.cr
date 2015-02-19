@@ -64,7 +64,7 @@ module Gtk
       __return_value
     end
 
-    def response_sensitive=(response_id, setting)
+    def set_response_sensitive(response_id, setting)
       __return_value = LibGtk.info_bar_set_response_sensitive((to_unsafe as LibGtk::InfoBar*), Int32.cast(response_id), Bool.cast(setting))
       __return_value
     end

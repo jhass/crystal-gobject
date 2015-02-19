@@ -1,6 +1,7 @@
 module Gtk
   class ThemeEngine
     include GObject::WrappedType
+
     def initialize @gtk_theme_engine
     end
 

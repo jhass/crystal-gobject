@@ -11,37 +11,13 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
-    def accel_group=(__value)
-      LibGtk.menu_set_accel_group((to_unsafe as LibGtk::Menu*), __value)
-    end
 
-    def accel_path=(__value)
-      LibGtk.menu_set_accel_path((to_unsafe as LibGtk::Menu*), __value)
-    end
 
-    def active=(__value)
-      LibGtk.menu_set_active((to_unsafe as LibGtk::Menu*), Int32.cast(__value))
-    end
 
-    def attach_widget=(__value)
-      LibGtk.menu_set_attach_widget((to_unsafe as LibGtk::Menu*), __value)
-    end
 
-    def monitor=(__value)
-      LibGtk.menu_set_monitor((to_unsafe as LibGtk::Menu*), Int32.cast(__value))
-    end
 
-    def reserve_toggle_size=(__value)
-      LibGtk.menu_set_reserve_toggle_size((to_unsafe as LibGtk::Menu*), Bool.cast(__value))
-    end
 
-    def tearoff_state=(__value)
-      LibGtk.menu_set_tearoff_state((to_unsafe as LibGtk::Menu*), Bool.cast(__value))
-    end
 
-    def tearoff_title=(__value)
-      LibGtk.menu_set_tearoff_title((to_unsafe as LibGtk::Menu*), __value)
-    end
 
     def self.new_internal
       __return_value = LibGtk.menu_new
@@ -64,7 +40,7 @@ module Gtk
     end
 
     def attach_to_widget(attach_widget, detacher)
-      __return_value = LibGtk.menu_attach_to_widget((to_unsafe as LibGtk::Menu*), (attach_widget.to_unsafe as LibGtk::Widget*), detacher)
+      __return_value = LibGtk.menu_attach_to_widget((to_unsafe as LibGtk::Menu*), (attach_widget.to_unsafe as LibGtk::Widget*), detacher && detacher)
       __return_value
     end
 
@@ -119,12 +95,12 @@ module Gtk
     end
 
     def popup(parent_menu_shell, parent_menu_item, func, data, button, activate_time)
-      __return_value = LibGtk.menu_popup((to_unsafe as LibGtk::Menu*), (parent_menu_shell.to_unsafe as LibGtk::Widget*), (parent_menu_item.to_unsafe as LibGtk::Widget*), func, data, UInt32.cast(button), UInt32.cast(activate_time))
+      __return_value = LibGtk.menu_popup((to_unsafe as LibGtk::Menu*), parent_menu_shell && (parent_menu_shell.to_unsafe as LibGtk::Widget*), parent_menu_item && (parent_menu_item.to_unsafe as LibGtk::Widget*), func && func, data, UInt32.cast(button), UInt32.cast(activate_time))
       __return_value
     end
 
     def popup_for_device(device, parent_menu_shell, parent_menu_item, func, data, destroy, button, activate_time)
-      __return_value = LibGtk.menu_popup_for_device((to_unsafe as LibGtk::Menu*), (device.to_unsafe as LibGdk::Device*), (parent_menu_shell.to_unsafe as LibGtk::Widget*), (parent_menu_item.to_unsafe as LibGtk::Widget*), func, data, destroy, UInt32.cast(button), UInt32.cast(activate_time))
+      __return_value = LibGtk.menu_popup_for_device((to_unsafe as LibGtk::Menu*), device && (device.to_unsafe as LibGdk::Device*), parent_menu_shell && (parent_menu_shell.to_unsafe as LibGtk::Widget*), parent_menu_item && (parent_menu_item.to_unsafe as LibGtk::Widget*), func && func, data && data, destroy && destroy, UInt32.cast(button), UInt32.cast(activate_time))
       __return_value
     end
 
@@ -139,12 +115,12 @@ module Gtk
     end
 
     def accel_group=(accel_group)
-      __return_value = LibGtk.menu_set_accel_group((to_unsafe as LibGtk::Menu*), (accel_group.to_unsafe as LibGtk::AccelGroup*))
+      __return_value = LibGtk.menu_set_accel_group((to_unsafe as LibGtk::Menu*), accel_group && (accel_group.to_unsafe as LibGtk::AccelGroup*))
       __return_value
     end
 
     def accel_path=(accel_path)
-      __return_value = LibGtk.menu_set_accel_path((to_unsafe as LibGtk::Menu*), accel_path)
+      __return_value = LibGtk.menu_set_accel_path((to_unsafe as LibGtk::Menu*), accel_path && accel_path)
       __return_value
     end
 
@@ -164,7 +140,7 @@ module Gtk
     end
 
     def screen=(screen)
-      __return_value = LibGtk.menu_set_screen((to_unsafe as LibGtk::Menu*), (screen.to_unsafe as LibGdk::Screen*))
+      __return_value = LibGtk.menu_set_screen((to_unsafe as LibGtk::Menu*), screen && (screen.to_unsafe as LibGdk::Screen*))
       __return_value
     end
 

@@ -62,8 +62,8 @@ module Gtk
       __return_value
     end
 
-    def can_store=(targets, n_targets)
-      __return_value = LibGtk.clipboard_set_can_store((to_unsafe as LibGtk::Clipboard*), targets, Int32.cast(n_targets))
+    def set_can_store(targets, n_targets)
+      __return_value = LibGtk.clipboard_set_can_store((to_unsafe as LibGtk::Clipboard*), targets && targets, Int32.cast(n_targets))
       __return_value
     end
 
@@ -72,7 +72,7 @@ module Gtk
       __return_value
     end
 
-    def text=(text, len)
+    def set_text(text, len)
       __return_value = LibGtk.clipboard_set_text((to_unsafe as LibGtk::Clipboard*), text, Int32.cast(len))
       __return_value
     end
@@ -94,7 +94,7 @@ module Gtk
 
     def wait_for_rich_text(buffer, format, length)
       __return_value = LibGtk.clipboard_wait_for_rich_text((to_unsafe as LibGtk::Clipboard*), (buffer.to_unsafe as LibGtk::TextBuffer*), (format.to_unsafe as LibGdk::Atom*), UInt64.cast(length))
-      PointerIterator.new(__return_value) {|__item_23| __item_23 } if __return_value
+      PointerIterator.new(__return_value) {|__item_93| __item_93 } if __return_value
     end
 
     def wait_for_targets(targets, n_targets)
@@ -109,7 +109,7 @@ module Gtk
 
     def wait_for_uris
       __return_value = LibGtk.clipboard_wait_for_uris((to_unsafe as LibGtk::Clipboard*))
-      PointerIterator.new(__return_value) {|__item_40| raise "Expected string but got null" unless __item_40; String.new(__item_40) } if __return_value
+      PointerIterator.new(__return_value) {|__item_6| raise "Expected string but got null" unless __item_6; String.new(__item_6) } if __return_value
     end
 
     def wait_is_image_available

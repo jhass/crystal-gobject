@@ -1,6 +1,7 @@
 module Gtk
   class ToolPalettePrivate
     include GObject::WrappedType
+
     def initialize @gtk_tool_palette_private
     end
 

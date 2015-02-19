@@ -107,32 +107,32 @@ module Gtk
       __return_value
     end
 
-    def forward_page_func=(page_func, data, destroy)
-      __return_value = LibGtk.assistant_set_forward_page_func((to_unsafe as LibGtk::Assistant*), page_func, data, destroy)
+    def set_forward_page_func(page_func, data, destroy)
+      __return_value = LibGtk.assistant_set_forward_page_func((to_unsafe as LibGtk::Assistant*), page_func && page_func, data, destroy)
       __return_value
     end
 
-    def page_complete=(page, complete)
+    def set_page_complete(page, complete)
       __return_value = LibGtk.assistant_set_page_complete((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*), Bool.cast(complete))
       __return_value
     end
 
-    def page_header_image=(page, pixbuf)
-      __return_value = LibGtk.assistant_set_page_header_image((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*), (pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*))
+    def set_page_header_image(page, pixbuf)
+      __return_value = LibGtk.assistant_set_page_header_image((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*), pixbuf && (pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*))
       __return_value
     end
 
-    def page_side_image=(page, pixbuf)
-      __return_value = LibGtk.assistant_set_page_side_image((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*), (pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*))
+    def set_page_side_image(page, pixbuf)
+      __return_value = LibGtk.assistant_set_page_side_image((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*), pixbuf && (pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*))
       __return_value
     end
 
-    def page_title=(page, title)
+    def set_page_title(page, title)
       __return_value = LibGtk.assistant_set_page_title((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*), title)
       __return_value
     end
 
-    def page_type=(page, type)
+    def set_page_type(page, type)
       __return_value = LibGtk.assistant_set_page_type((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*), type)
       __return_value
     end

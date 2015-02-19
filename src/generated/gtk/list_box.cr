@@ -11,13 +11,7 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
-    def activate_on_single_click=(__value)
-      LibGtk.list_box_set_activate_on_single_click((to_unsafe as LibGtk::ListBox*), Bool.cast(__value))
-    end
 
-    def selection_mode=(__value)
-      LibGtk.list_box_set_selection_mode((to_unsafe as LibGtk::ListBox*), __value)
-    end
 
     def self.new_internal
       __return_value = LibGtk.list_box_new
@@ -100,7 +94,7 @@ module Gtk
     end
 
     def select_row(row)
-      __return_value = LibGtk.list_box_select_row((to_unsafe as LibGtk::ListBox*), (row.to_unsafe as LibGtk::ListBoxRow*))
+      __return_value = LibGtk.list_box_select_row((to_unsafe as LibGtk::ListBox*), row && (row.to_unsafe as LibGtk::ListBoxRow*))
       __return_value
     end
 
@@ -115,22 +109,22 @@ module Gtk
     end
 
     def adjustment=(adjustment)
-      __return_value = LibGtk.list_box_set_adjustment((to_unsafe as LibGtk::ListBox*), (adjustment.to_unsafe as LibGtk::Adjustment*))
+      __return_value = LibGtk.list_box_set_adjustment((to_unsafe as LibGtk::ListBox*), adjustment && (adjustment.to_unsafe as LibGtk::Adjustment*))
       __return_value
     end
 
-    def filter_func=(filter_func, user_data, destroy)
-      __return_value = LibGtk.list_box_set_filter_func((to_unsafe as LibGtk::ListBox*), filter_func, user_data, destroy)
+    def set_filter_func(filter_func, user_data, destroy)
+      __return_value = LibGtk.list_box_set_filter_func((to_unsafe as LibGtk::ListBox*), filter_func && filter_func, user_data, destroy)
       __return_value
     end
 
-    def header_func=(update_header, user_data, destroy)
-      __return_value = LibGtk.list_box_set_header_func((to_unsafe as LibGtk::ListBox*), update_header, user_data, destroy)
+    def set_header_func(update_header, user_data, destroy)
+      __return_value = LibGtk.list_box_set_header_func((to_unsafe as LibGtk::ListBox*), update_header && update_header, user_data, destroy)
       __return_value
     end
 
     def placeholder=(placeholder)
-      __return_value = LibGtk.list_box_set_placeholder((to_unsafe as LibGtk::ListBox*), (placeholder.to_unsafe as LibGtk::Widget*))
+      __return_value = LibGtk.list_box_set_placeholder((to_unsafe as LibGtk::ListBox*), placeholder && (placeholder.to_unsafe as LibGtk::Widget*))
       __return_value
     end
 
@@ -139,8 +133,8 @@ module Gtk
       __return_value
     end
 
-    def sort_func=(sort_func, user_data, destroy)
-      __return_value = LibGtk.list_box_set_sort_func((to_unsafe as LibGtk::ListBox*), sort_func, user_data, destroy)
+    def set_sort_func(sort_func, user_data, destroy)
+      __return_value = LibGtk.list_box_set_sort_func((to_unsafe as LibGtk::ListBox*), sort_func && sort_func, user_data, destroy)
       __return_value
     end
 

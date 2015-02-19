@@ -7,13 +7,7 @@ module Gtk
       @gtk_i_m_context.not_nil!
     end
 
-    def input_hints=(__value)
-      LibGtk.i_m_context_set_input_hints((to_unsafe as LibGtk::IMContext*), __value)
-    end
 
-    def input_purpose=(__value)
-      LibGtk.i_m_context_set_input_purpose((to_unsafe as LibGtk::IMContext*), __value)
-    end
 
     def delete_surrounding(offset, n_chars)
       __return_value = LibGtk.i_m_context_delete_surrounding((to_unsafe as LibGtk::IMContext*), Int32.cast(offset), Int32.cast(n_chars))
@@ -51,7 +45,7 @@ module Gtk
     end
 
     def client_window=(window)
-      __return_value = LibGtk.i_m_context_set_client_window((to_unsafe as LibGtk::IMContext*), (window.to_unsafe as LibGdk::Window*))
+      __return_value = LibGtk.i_m_context_set_client_window((to_unsafe as LibGtk::IMContext*), window && (window.to_unsafe as LibGdk::Window*))
       __return_value
     end
 
@@ -60,7 +54,7 @@ module Gtk
       __return_value
     end
 
-    def surrounding=(text, len, cursor_index)
+    def set_surrounding(text, len, cursor_index)
       __return_value = LibGtk.i_m_context_set_surrounding((to_unsafe as LibGtk::IMContext*), text, Int32.cast(len), Int32.cast(cursor_index))
       __return_value
     end

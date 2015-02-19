@@ -9,9 +9,6 @@ module GdkPixbuf
       @gdk_pixbuf_pixbuf_simple_anim.not_nil!
     end
 
-    def loop=(__value)
-      LibGdkPixbuf.pixbuf_simple_anim_set_loop((to_unsafe as LibGdkPixbuf::PixbufSimpleAnim*), Bool.cast(__value))
-    end
 
     def self.new_internal(width, height, rate)
       __return_value = LibGdkPixbuf.pixbuf_simple_anim_new(Int32.cast(width), Int32.cast(height), Float32.cast(rate))

@@ -14,13 +14,13 @@ module Gio
 
     def lookup_certificate_for_handle(handle, interaction, flags, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.tls_database_lookup_certificate_for_handle((to_unsafe as LibGio::TlsDatabase*), handle, (interaction.to_unsafe as LibGio::TlsInteraction*), flags, (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.tls_database_lookup_certificate_for_handle((to_unsafe as LibGio::TlsDatabase*), handle, interaction && (interaction.to_unsafe as LibGio::TlsInteraction*), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       Gio::TlsCertificate.new(__return_value)
     end
 
     def lookup_certificate_for_handle_async(handle, interaction, flags, cancellable, callback, user_data)
-      __return_value = LibGio.tls_database_lookup_certificate_for_handle_async((to_unsafe as LibGio::TlsDatabase*), handle, (interaction.to_unsafe as LibGio::TlsInteraction*), flags, (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGio.tls_database_lookup_certificate_for_handle_async((to_unsafe as LibGio::TlsDatabase*), handle, interaction && (interaction.to_unsafe as LibGio::TlsInteraction*), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -33,13 +33,13 @@ module Gio
 
     def lookup_certificate_issuer(certificate, interaction, flags, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.tls_database_lookup_certificate_issuer((to_unsafe as LibGio::TlsDatabase*), (certificate.to_unsafe as LibGio::TlsCertificate*), (interaction.to_unsafe as LibGio::TlsInteraction*), flags, (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.tls_database_lookup_certificate_issuer((to_unsafe as LibGio::TlsDatabase*), (certificate.to_unsafe as LibGio::TlsCertificate*), interaction && (interaction.to_unsafe as LibGio::TlsInteraction*), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       Gio::TlsCertificate.new(__return_value)
     end
 
     def lookup_certificate_issuer_async(certificate, interaction, flags, cancellable, callback, user_data)
-      __return_value = LibGio.tls_database_lookup_certificate_issuer_async((to_unsafe as LibGio::TlsDatabase*), (certificate.to_unsafe as LibGio::TlsCertificate*), (interaction.to_unsafe as LibGio::TlsInteraction*), flags, (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGio.tls_database_lookup_certificate_issuer_async((to_unsafe as LibGio::TlsDatabase*), (certificate.to_unsafe as LibGio::TlsCertificate*), interaction && (interaction.to_unsafe as LibGio::TlsInteraction*), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -52,13 +52,13 @@ module Gio
 
     def lookup_certificates_issued_by(issuer_raw_dn, interaction, flags, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.tls_database_lookup_certificates_issued_by((to_unsafe as LibGio::TlsDatabase*), issuer_raw_dn, (interaction.to_unsafe as LibGio::TlsInteraction*), flags, (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.tls_database_lookup_certificates_issued_by((to_unsafe as LibGio::TlsDatabase*), issuer_raw_dn, interaction && (interaction.to_unsafe as LibGio::TlsInteraction*), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def lookup_certificates_issued_by_async(issuer_raw_dn, interaction, flags, cancellable, callback, user_data)
-      __return_value = LibGio.tls_database_lookup_certificates_issued_by_async((to_unsafe as LibGio::TlsDatabase*), issuer_raw_dn, (interaction.to_unsafe as LibGio::TlsInteraction*), flags, (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGio.tls_database_lookup_certificates_issued_by_async((to_unsafe as LibGio::TlsDatabase*), issuer_raw_dn, interaction && (interaction.to_unsafe as LibGio::TlsInteraction*), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -71,13 +71,13 @@ module Gio
 
     def verify_chain(chain, purpose, identity, interaction, flags, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.tls_database_verify_chain((to_unsafe as LibGio::TlsDatabase*), (chain.to_unsafe as LibGio::TlsCertificate*), purpose, (identity.to_unsafe as LibGio::SocketConnectable*), (interaction.to_unsafe as LibGio::TlsInteraction*), flags, (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.tls_database_verify_chain((to_unsafe as LibGio::TlsDatabase*), (chain.to_unsafe as LibGio::TlsCertificate*), purpose, identity && (identity.to_unsafe as LibGio::SocketConnectable*), interaction && (interaction.to_unsafe as LibGio::TlsInteraction*), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def verify_chain_async(chain, purpose, identity, interaction, flags, cancellable, callback, user_data)
-      __return_value = LibGio.tls_database_verify_chain_async((to_unsafe as LibGio::TlsDatabase*), (chain.to_unsafe as LibGio::TlsCertificate*), purpose, (identity.to_unsafe as LibGio::SocketConnectable*), (interaction.to_unsafe as LibGio::TlsInteraction*), flags, (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGio.tls_database_verify_chain_async((to_unsafe as LibGio::TlsDatabase*), (chain.to_unsafe as LibGio::TlsCertificate*), purpose, identity && (identity.to_unsafe as LibGio::SocketConnectable*), interaction && (interaction.to_unsafe as LibGio::TlsInteraction*), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 

@@ -11,9 +11,6 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
-    def screen=(__value)
-      LibGtk.invisible_set_screen((to_unsafe as LibGtk::Invisible*), __value)
-    end
 
     def self.new_internal
       __return_value = LibGtk.invisible_new

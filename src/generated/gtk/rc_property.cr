@@ -1,6 +1,7 @@
 module Gtk
   class RcProperty
     include GObject::WrappedType
+
     def initialize @gtk_rc_property
     end
 

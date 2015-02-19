@@ -1,6 +1,7 @@
 module GLib
   class TimeVal
     include GObject::WrappedType
+
     def initialize @g_lib_time_val
     end
 

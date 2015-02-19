@@ -1,6 +1,7 @@
 module GObject
   class TypeInterface
     include GObject::WrappedType
+
     def initialize @g_object_type_interface
     end
 
@@ -30,7 +31,7 @@ module GObject
 
     def self.prerequisites(interface_type, n_prerequisites)
       __return_value = LibGObject.type_interface_prerequisites(UInt64.cast(interface_type), UInt32.cast(n_prerequisites))
-      PointerIterator.new(__return_value) {|__item_83| __item_83 }
+      PointerIterator.new(__return_value) {|__item_78| __item_78 }
     end
 
   end

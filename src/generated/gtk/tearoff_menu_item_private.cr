@@ -1,6 +1,7 @@
 module Gtk
   class TearoffMenuItemPrivate
     include GObject::WrappedType
+
     def initialize @gtk_tearoff_menu_item_private
     end
 

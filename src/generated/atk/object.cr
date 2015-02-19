@@ -9,54 +9,18 @@ module Atk
 
 
 
-    def accessible_description=(__value)
-      LibAtk.object_set_accessible_description((to_unsafe as LibAtk::Object*), __value)
-    end
 
 
-    def accessible_name=(__value)
-      LibAtk.object_set_accessible_name((to_unsafe as LibAtk::Object*), __value)
-    end
 
-    def accessible_parent=(__value)
-      LibAtk.object_set_accessible_parent((to_unsafe as LibAtk::Object*), __value)
-    end
 
-    def accessible_role=(__value)
-      LibAtk.object_set_accessible_role((to_unsafe as LibAtk::Object*), Int32.cast(__value))
-    end
 
-    def accessible_table_caption=(__value)
-      LibAtk.object_set_accessible_table_caption((to_unsafe as LibAtk::Object*), __value)
-    end
 
-    def accessible_table_caption_object=(__value)
-      LibAtk.object_set_accessible_table_caption_object((to_unsafe as LibAtk::Object*), __value)
-    end
 
-    def accessible_table_column_description=(__value)
-      LibAtk.object_set_accessible_table_column_description((to_unsafe as LibAtk::Object*), __value)
-    end
 
-    def accessible_table_column_header=(__value)
-      LibAtk.object_set_accessible_table_column_header((to_unsafe as LibAtk::Object*), __value)
-    end
 
-    def accessible_table_row_description=(__value)
-      LibAtk.object_set_accessible_table_row_description((to_unsafe as LibAtk::Object*), __value)
-    end
 
-    def accessible_table_row_header=(__value)
-      LibAtk.object_set_accessible_table_row_header((to_unsafe as LibAtk::Object*), __value)
-    end
 
-    def accessible_table_summary=(__value)
-      LibAtk.object_set_accessible_table_summary((to_unsafe as LibAtk::Object*), __value)
-    end
 
-    def accessible_value=(__value)
-      LibAtk.object_set_accessible_value((to_unsafe as LibAtk::Object*), Float64.cast(__value))
-    end
 
     def add_relationship(relationship, target)
       __return_value = LibAtk.object_add_relationship((to_unsafe as LibAtk::Object*), relationship, (target.to_unsafe as LibAtk::Object*))

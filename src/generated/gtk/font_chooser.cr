@@ -35,8 +35,8 @@ module Gtk
       __return_value
     end
 
-    def filter_func=(filter, user_data, destroy)
-      __return_value = LibGtk.font_chooser_set_filter_func((to_unsafe as LibGtk::FontChooser*), filter, user_data, destroy)
+    def set_filter_func(filter, user_data, destroy)
+      __return_value = LibGtk.font_chooser_set_filter_func((to_unsafe as LibGtk::FontChooser*), filter && filter, user_data, destroy)
       __return_value
     end
 

@@ -21,7 +21,7 @@ module Gio
     end
 
     def self.new_method_call(name, path, interface, method)
-      __return_value = LibGio.d_bus_message_new_method_call(name, path, interface, method)
+      __return_value = LibGio.d_bus_message_new_method_call(name && name, path, interface && interface, method)
       Gio::DBusMessage.new(__return_value)
     end
 
@@ -81,7 +81,7 @@ module Gio
 
     def header_fields
       __return_value = LibGio.d_bus_message_get_header_fields((to_unsafe as LibGio::DBusMessage*))
-      PointerIterator.new(__return_value) {|__item_10| __item_10 }
+      PointerIterator.new(__return_value) {|__item_47| __item_47 }
     end
 
     def interface
@@ -184,8 +184,8 @@ module Gio
       __return_value
     end
 
-    def header=(header_field, value)
-      __return_value = LibGio.d_bus_message_set_header((to_unsafe as LibGio::DBusMessage*), header_field, (value.to_unsafe as LibGLib::Variant*))
+    def set_header(header_field, value)
+      __return_value = LibGio.d_bus_message_set_header((to_unsafe as LibGio::DBusMessage*), header_field, value && (value.to_unsafe as LibGLib::Variant*))
       __return_value
     end
 
@@ -235,7 +235,7 @@ module Gio
     end
 
     def unix_fd_list=(fd_list)
-      __return_value = LibGio.d_bus_message_set_unix_fd_list((to_unsafe as LibGio::DBusMessage*), (fd_list.to_unsafe as LibGio::UnixFDList*))
+      __return_value = LibGio.d_bus_message_set_unix_fd_list((to_unsafe as LibGio::DBusMessage*), fd_list && (fd_list.to_unsafe as LibGio::UnixFDList*))
       __return_value
     end
 
@@ -243,7 +243,7 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_message_to_blob((to_unsafe as LibGio::DBusMessage*), UInt64.cast(out_size), capabilities, pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_35| __item_35 }
+      PointerIterator.new(__return_value) {|__item_18| __item_18 }
     end
 
     def to_gerror

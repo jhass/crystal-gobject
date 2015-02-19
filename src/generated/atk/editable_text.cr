@@ -25,7 +25,7 @@ module Atk
       __return_value
     end
 
-    def run_attributes=(attrib_set, start_offset, end_offset)
+    def set_run_attributes(attrib_set, start_offset, end_offset)
       __return_value = LibAtk.editable_text_set_run_attributes((to_unsafe as LibAtk::EditableText*), attrib_set, Int32.cast(start_offset), Int32.cast(end_offset))
       __return_value
     end

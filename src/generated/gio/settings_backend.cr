@@ -1,6 +1,7 @@
 module Gio
   class SettingsBackend
     include GObject::WrappedType
+
     def initialize @gio_settings_backend
     end
 

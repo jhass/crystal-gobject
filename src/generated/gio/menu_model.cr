@@ -8,7 +8,7 @@ module Gio
     end
 
     def item_attribute_value(item_index, attribute, expected_type)
-      __return_value = LibGio.menu_model_get_item_attribute_value((to_unsafe as LibGio::MenuModel*), Int32.cast(item_index), attribute, (expected_type.to_unsafe as LibGLib::VariantType*))
+      __return_value = LibGio.menu_model_get_item_attribute_value((to_unsafe as LibGio::MenuModel*), Int32.cast(item_index), attribute, expected_type && (expected_type.to_unsafe as LibGLib::VariantType*))
       GLib::Variant.new(__return_value)
     end
 

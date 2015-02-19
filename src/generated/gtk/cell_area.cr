@@ -11,9 +11,6 @@ module Gtk
     # Implements CellLayout
 
 
-    def focus_cell=(__value)
-      LibGtk.cell_area_set_focus_cell((to_unsafe as LibGtk::CellArea*), __value)
-    end
 
     def activate(context, widget, cell_area, flags, edit_only)
       __return_value = LibGtk.cell_area_activate((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (cell_area.to_unsafe as LibCairo::RectangleInt*), flags, Bool.cast(edit_only))

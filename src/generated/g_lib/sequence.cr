@@ -1,6 +1,7 @@
 module GLib
   class Sequence
     include GObject::WrappedType
+
     def initialize @g_lib_sequence
     end
 

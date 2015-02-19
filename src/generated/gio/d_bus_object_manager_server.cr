@@ -8,9 +8,6 @@ module Gio
     end
 
     # Implements DBusObjectManager
-    def connection=(__value)
-      LibGio.d_bus_object_manager_server_set_connection((to_unsafe as LibGio::DBusObjectManagerServer*), __value)
-    end
 
 
     def self.new_internal(object_path)
@@ -39,7 +36,7 @@ module Gio
     end
 
     def connection=(connection)
-      __return_value = LibGio.d_bus_object_manager_server_set_connection((to_unsafe as LibGio::DBusObjectManagerServer*), (connection.to_unsafe as LibGio::DBusConnection*))
+      __return_value = LibGio.d_bus_object_manager_server_set_connection((to_unsafe as LibGio::DBusObjectManagerServer*), connection && (connection.to_unsafe as LibGio::DBusConnection*))
       __return_value
     end
 

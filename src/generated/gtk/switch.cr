@@ -13,13 +13,7 @@ module Gtk
     # Implements Actionable
     # Implements Activatable
     # Implements Buildable
-    def active=(__value)
-      LibGtk.switch_set_active((to_unsafe as LibGtk::Switch*), Bool.cast(__value))
-    end
 
-    def state=(__value)
-      LibGtk.switch_set_state((to_unsafe as LibGtk::Switch*), Bool.cast(__value))
-    end
 
     def self.new_internal
       __return_value = LibGtk.switch_new

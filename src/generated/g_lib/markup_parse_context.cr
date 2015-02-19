@@ -1,6 +1,7 @@
 module GLib
   class MarkupParseContext
     include GObject::WrappedType
+
     def initialize @g_lib_markup_parse_context
     end
 
@@ -31,7 +32,7 @@ module GLib
     end
 
     def position(line_number, char_number)
-      __return_value = LibGLib.markup_parse_context_get_position((to_unsafe as LibGLib::MarkupParseContext*), line_number, char_number)
+      __return_value = LibGLib.markup_parse_context_get_position((to_unsafe as LibGLib::MarkupParseContext*), line_number && line_number, char_number && char_number)
       __return_value
     end
 

@@ -18,7 +18,7 @@ module Gio
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 
-    def child_setup=(child_setup, user_data, destroy_notify)
+    def set_child_setup(child_setup, user_data, destroy_notify)
       __return_value = LibGio.subprocess_launcher_set_child_setup((to_unsafe as LibGio::SubprocessLauncher*), child_setup, user_data, destroy_notify)
       __return_value
     end

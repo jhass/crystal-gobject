@@ -1,6 +1,7 @@
 module Gtk
   class ThemingEnginePrivate
     include GObject::WrappedType
+
     def initialize @gtk_theming_engine_private
     end
 

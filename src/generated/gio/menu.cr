@@ -15,7 +15,7 @@ module Gio
     end
 
     def append(label, detailed_action)
-      __return_value = LibGio.menu_append((to_unsafe as LibGio::Menu*), label, detailed_action)
+      __return_value = LibGio.menu_append((to_unsafe as LibGio::Menu*), label && label, detailed_action && detailed_action)
       __return_value
     end
 
@@ -25,12 +25,12 @@ module Gio
     end
 
     def append_section(label, section)
-      __return_value = LibGio.menu_append_section((to_unsafe as LibGio::Menu*), label, (section.to_unsafe as LibGio::MenuModel*))
+      __return_value = LibGio.menu_append_section((to_unsafe as LibGio::Menu*), label && label, (section.to_unsafe as LibGio::MenuModel*))
       __return_value
     end
 
     def append_submenu(label, submenu)
-      __return_value = LibGio.menu_append_submenu((to_unsafe as LibGio::Menu*), label, (submenu.to_unsafe as LibGio::MenuModel*))
+      __return_value = LibGio.menu_append_submenu((to_unsafe as LibGio::Menu*), label && label, (submenu.to_unsafe as LibGio::MenuModel*))
       __return_value
     end
 
@@ -40,7 +40,7 @@ module Gio
     end
 
     def insert(position, label, detailed_action)
-      __return_value = LibGio.menu_insert((to_unsafe as LibGio::Menu*), Int32.cast(position), label, detailed_action)
+      __return_value = LibGio.menu_insert((to_unsafe as LibGio::Menu*), Int32.cast(position), label && label, detailed_action && detailed_action)
       __return_value
     end
 
@@ -50,17 +50,17 @@ module Gio
     end
 
     def insert_section(position, label, section)
-      __return_value = LibGio.menu_insert_section((to_unsafe as LibGio::Menu*), Int32.cast(position), label, (section.to_unsafe as LibGio::MenuModel*))
+      __return_value = LibGio.menu_insert_section((to_unsafe as LibGio::Menu*), Int32.cast(position), label && label, (section.to_unsafe as LibGio::MenuModel*))
       __return_value
     end
 
     def insert_submenu(position, label, submenu)
-      __return_value = LibGio.menu_insert_submenu((to_unsafe as LibGio::Menu*), Int32.cast(position), label, (submenu.to_unsafe as LibGio::MenuModel*))
+      __return_value = LibGio.menu_insert_submenu((to_unsafe as LibGio::Menu*), Int32.cast(position), label && label, (submenu.to_unsafe as LibGio::MenuModel*))
       __return_value
     end
 
     def prepend(label, detailed_action)
-      __return_value = LibGio.menu_prepend((to_unsafe as LibGio::Menu*), label, detailed_action)
+      __return_value = LibGio.menu_prepend((to_unsafe as LibGio::Menu*), label && label, detailed_action && detailed_action)
       __return_value
     end
 
@@ -70,12 +70,12 @@ module Gio
     end
 
     def prepend_section(label, section)
-      __return_value = LibGio.menu_prepend_section((to_unsafe as LibGio::Menu*), label, (section.to_unsafe as LibGio::MenuModel*))
+      __return_value = LibGio.menu_prepend_section((to_unsafe as LibGio::Menu*), label && label, (section.to_unsafe as LibGio::MenuModel*))
       __return_value
     end
 
     def prepend_submenu(label, submenu)
-      __return_value = LibGio.menu_prepend_submenu((to_unsafe as LibGio::Menu*), label, (submenu.to_unsafe as LibGio::MenuModel*))
+      __return_value = LibGio.menu_prepend_submenu((to_unsafe as LibGio::Menu*), label && label, (submenu.to_unsafe as LibGio::MenuModel*))
       __return_value
     end
 

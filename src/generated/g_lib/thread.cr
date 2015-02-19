@@ -1,6 +1,7 @@
 module GLib
   class Thread
     include GObject::WrappedType
+
     def initialize @g_lib_thread
     end
 

@@ -1,6 +1,7 @@
 module Gio
   class SettingsPrivate
     include GObject::WrappedType
+
     def initialize @gio_settings_private
     end
 

@@ -1,6 +1,7 @@
 module Gio
   class FileAttributeInfoList
     include GObject::WrappedType
+
     def initialize @gio_file_attribute_info_list
     end
 

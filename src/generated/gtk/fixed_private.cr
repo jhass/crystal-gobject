@@ -1,6 +1,7 @@
 module Gtk
   class FixedPrivate
     include GObject::WrappedType
+
     def initialize @gtk_fixed_private
     end
 

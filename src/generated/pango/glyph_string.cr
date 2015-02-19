@@ -1,6 +1,7 @@
 module Pango
   class GlyphString
     include GObject::WrappedType
+
     def initialize @pango_glyph_string
     end
 

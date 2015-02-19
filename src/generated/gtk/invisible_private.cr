@@ -1,6 +1,7 @@
 module Gtk
   class InvisiblePrivate
     include GObject::WrappedType
+
     def initialize @gtk_invisible_private
     end
 

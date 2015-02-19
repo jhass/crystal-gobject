@@ -34,6 +34,7 @@ module GIRepository
       String.build do |io|
         io.puts "#{indent}class #{name}"
         io.puts "#{indent}  include GObject::WrappedType"
+        io.puts
 
         ptr = "@#{GIRepository.filename(full_constant)}"
         io.puts "#{indent}  def initialize #{ptr}"
@@ -43,6 +44,7 @@ module GIRepository
         io.puts "#{indent}    #{ptr}.not_nil!"
         io.puts "#{indent}  end"
         io.puts
+
         each_method do |method|
           io.puts method.wrapper_definition libname, indent+"  "
           io.puts

@@ -13,17 +13,8 @@ module Gtk
     # Implements Actionable
     # Implements Activatable
     # Implements Buildable
-    def active=(__value)
-      LibGtk.toggle_button_set_active((to_unsafe as LibGtk::ToggleButton*), Bool.cast(__value))
-    end
 
-    def draw_indicator=(__value)
-      LibGtk.toggle_button_set_draw_indicator((to_unsafe as LibGtk::ToggleButton*), Bool.cast(__value))
-    end
 
-    def inconsistent=(__value)
-      LibGtk.toggle_button_set_inconsistent((to_unsafe as LibGtk::ToggleButton*), Bool.cast(__value))
-    end
 
     def self.new_internal
       __return_value = LibGtk.toggle_button_new

@@ -62,7 +62,7 @@ module Gtk
       __return_value
     end
 
-    def alternative_button_order_from_array=(n_params, new_order)
+    def set_alternative_button_order_from_array(n_params, new_order)
       __return_value = LibGtk.dialog_set_alternative_button_order_from_array((to_unsafe as LibGtk::Dialog*), Int32.cast(n_params), new_order)
       __return_value
     end
@@ -72,7 +72,7 @@ module Gtk
       __return_value
     end
 
-    def response_sensitive=(response_id, setting)
+    def set_response_sensitive(response_id, setting)
       __return_value = LibGtk.dialog_set_response_sensitive((to_unsafe as LibGtk::Dialog*), Int32.cast(response_id), Bool.cast(setting))
       __return_value
     end

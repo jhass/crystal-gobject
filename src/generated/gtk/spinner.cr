@@ -11,9 +11,6 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
-    def active=(__value)
-      LibGtk.spinner_set_active((to_unsafe as LibGtk::Spinner*), Bool.cast(__value))
-    end
 
     def self.new_internal
       __return_value = LibGtk.spinner_new

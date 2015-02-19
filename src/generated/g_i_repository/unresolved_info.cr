@@ -1,6 +1,7 @@
 module GIRepository
   class UnresolvedInfo
     include GObject::WrappedType
+
     def initialize @g_i_repository_unresolved_info
     end
 

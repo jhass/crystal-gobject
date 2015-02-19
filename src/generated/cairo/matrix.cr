@@ -1,6 +1,7 @@
 module Cairo
   class Matrix
     include GObject::WrappedType
+
     def initialize @cairo_matrix
     end
 

@@ -26,7 +26,7 @@ module Gtk
     end
 
     def sync_action_properties(action)
-      __return_value = LibGtk.activatable_sync_action_properties((to_unsafe as LibGtk::Activatable*), (action.to_unsafe as LibGtk::Action*))
+      __return_value = LibGtk.activatable_sync_action_properties((to_unsafe as LibGtk::Activatable*), action && (action.to_unsafe as LibGtk::Action*))
       __return_value
     end
 

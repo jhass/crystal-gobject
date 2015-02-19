@@ -1,7 +1,7 @@
 module Gtk
   module ColorChooser
     def add_palette(orientation, colors_per_line, n_colors, colors)
-      __return_value = LibGtk.color_chooser_add_palette((to_unsafe as LibGtk::ColorChooser*), orientation, Int32.cast(colors_per_line), Int32.cast(n_colors), colors)
+      __return_value = LibGtk.color_chooser_add_palette((to_unsafe as LibGtk::ColorChooser*), orientation, Int32.cast(colors_per_line), Int32.cast(n_colors), colors && colors)
       __return_value
     end
 

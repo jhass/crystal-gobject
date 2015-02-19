@@ -1,6 +1,7 @@
 module GLib
   class OptionGroup
     include GObject::WrappedType
+
     def initialize @g_lib_option_group
     end
 
@@ -18,8 +19,8 @@ module GLib
       __return_value
     end
 
-    def translate_func=(func, data, destroy_notify)
-      __return_value = LibGLib.option_group_set_translate_func((to_unsafe as LibGLib::OptionGroup*), func, data, destroy_notify)
+    def set_translate_func(func, data, destroy_notify)
+      __return_value = LibGLib.option_group_set_translate_func((to_unsafe as LibGLib::OptionGroup*), func && func, data && data, destroy_notify && destroy_notify)
       __return_value
     end
 

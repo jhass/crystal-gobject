@@ -54,7 +54,7 @@ module Gtk
 
     def icon_sizes(icon_name)
       __return_value = LibGtk.icon_theme_get_icon_sizes((to_unsafe as LibGtk::IconTheme*), icon_name)
-      PointerIterator.new(__return_value) {|__item_20| __item_20 }
+      PointerIterator.new(__return_value) {|__item_19| __item_19 }
     end
 
     def search_path(path, n_elements)
@@ -73,7 +73,7 @@ module Gtk
     end
 
     def list_icons(context)
-      __return_value = LibGtk.icon_theme_list_icons((to_unsafe as LibGtk::IconTheme*), context)
+      __return_value = LibGtk.icon_theme_list_icons((to_unsafe as LibGtk::IconTheme*), context && context)
       __return_value
     end
 
@@ -93,7 +93,7 @@ module Gtk
 
     def load_surface(icon_name, size, scale, for_window, flags)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.icon_theme_load_surface((to_unsafe as LibGtk::IconTheme*), icon_name, Int32.cast(size), Int32.cast(scale), (for_window.to_unsafe as LibGdk::Window*), flags, pointerof(__error))
+      __return_value = LibGtk.icon_theme_load_surface((to_unsafe as LibGtk::IconTheme*), icon_name, Int32.cast(size), Int32.cast(scale), for_window && (for_window.to_unsafe as LibGdk::Window*), flags, pointerof(__error))
       GLib::Error.assert __error
       Cairo::Surface.new(__return_value) if __return_value
     end
@@ -129,7 +129,7 @@ module Gtk
     end
 
     def custom_theme=(theme_name)
-      __return_value = LibGtk.icon_theme_set_custom_theme((to_unsafe as LibGtk::IconTheme*), theme_name)
+      __return_value = LibGtk.icon_theme_set_custom_theme((to_unsafe as LibGtk::IconTheme*), theme_name && theme_name)
       __return_value
     end
 
@@ -138,7 +138,7 @@ module Gtk
       __return_value
     end
 
-    def search_path=(path, n_elements)
+    def set_search_path(path, n_elements)
       __return_value = LibGtk.icon_theme_set_search_path((to_unsafe as LibGtk::IconTheme*), path, Int32.cast(n_elements))
       __return_value
     end

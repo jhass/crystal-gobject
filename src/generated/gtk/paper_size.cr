@@ -1,6 +1,7 @@
 module Gtk
   class PaperSize
     include GObject::WrappedType
+
     def initialize @gtk_paper_size
     end
 
@@ -9,7 +10,7 @@ module Gtk
     end
 
     def self.new_internal(name)
-      __return_value = LibGtk.paper_size_new(name)
+      __return_value = LibGtk.paper_size_new(name && name)
       Gtk::PaperSize.new(__return_value)
     end
 
@@ -95,7 +96,7 @@ module Gtk
       __return_value
     end
 
-    def size=(width, height, unit)
+    def set_size(width, height, unit)
       __return_value = LibGtk.paper_size_set_size((to_unsafe as LibGtk::PaperSize*), Float64.cast(width), Float64.cast(height), unit)
       __return_value
     end

@@ -1,6 +1,7 @@
 module Gtk
   class WidgetAccessiblePrivate
     include GObject::WrappedType
+
     def initialize @gtk_widget_accessible_private
     end
 

@@ -1,6 +1,7 @@
 module Gtk
   class Requisition
     include GObject::WrappedType
+
     def initialize @gtk_requisition
     end
 

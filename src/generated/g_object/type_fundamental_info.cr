@@ -1,6 +1,7 @@
 module GObject
   class TypeFundamentalInfo
     include GObject::WrappedType
+
     def initialize @g_object_type_fundamental_info
     end
 

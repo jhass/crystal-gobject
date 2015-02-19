@@ -1,6 +1,7 @@
 module Gtk
   class RecentFilterInfo
     include GObject::WrappedType
+
     def initialize @gtk_recent_filter_info
     end
 

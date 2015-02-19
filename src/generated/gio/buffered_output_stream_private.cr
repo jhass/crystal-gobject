@@ -1,6 +1,7 @@
 module Gio
   class BufferedOutputStreamPrivate
     include GObject::WrappedType
+
     def initialize @gio_buffered_output_stream_private
     end
 

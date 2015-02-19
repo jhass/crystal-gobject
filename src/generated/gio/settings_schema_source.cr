@@ -1,6 +1,7 @@
 module Gio
   class SettingsSchemaSource
     include GObject::WrappedType
+
     def initialize @gio_settings_schema_source
     end
 
@@ -10,7 +11,7 @@ module Gio
 
     def self.new_from_directory(directory, parent, trusted)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.settings_schema_source_new_from_directory(directory, (parent.to_unsafe as LibGio::SettingsSchemaSource*), Bool.cast(trusted), pointerof(__error))
+      __return_value = LibGio.settings_schema_source_new_from_directory(directory, parent && (parent.to_unsafe as LibGio::SettingsSchemaSource*), Bool.cast(trusted), pointerof(__error))
       GLib::Error.assert __error
       Gio::SettingsSchemaSource.new(__return_value)
     end

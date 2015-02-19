@@ -67,7 +67,7 @@ module Gtk
 
     def uris(length)
       __return_value = LibGtk.recent_chooser_get_uris((to_unsafe as LibGtk::RecentChooser*), UInt64.cast(length))
-      PointerIterator.new(__return_value) {|__item_4| raise "Expected string but got null" unless __item_4; String.new(__item_4) }
+      PointerIterator.new(__return_value) {|__item_88| raise "Expected string but got null" unless __item_88; String.new(__item_88) }
     end
 
     def list_filters
@@ -92,7 +92,7 @@ module Gtk
       __return_value
     end
 
-    def current_uri=(uri)
+    def set_current_uri(uri)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.recent_chooser_set_current_uri((to_unsafe as LibGtk::RecentChooser*), uri, pointerof(__error))
       GLib::Error.assert __error
@@ -100,7 +100,7 @@ module Gtk
     end
 
     def filter=(filter)
-      __return_value = LibGtk.recent_chooser_set_filter((to_unsafe as LibGtk::RecentChooser*), (filter.to_unsafe as LibGtk::RecentFilter*))
+      __return_value = LibGtk.recent_chooser_set_filter((to_unsafe as LibGtk::RecentChooser*), filter && (filter.to_unsafe as LibGtk::RecentFilter*))
       __return_value
     end
 
@@ -139,8 +139,8 @@ module Gtk
       __return_value
     end
 
-    def sort_func=(sort_func, sort_data, data_destroy)
-      __return_value = LibGtk.recent_chooser_set_sort_func((to_unsafe as LibGtk::RecentChooser*), sort_func, sort_data, data_destroy)
+    def set_sort_func(sort_func, sort_data, data_destroy)
+      __return_value = LibGtk.recent_chooser_set_sort_func((to_unsafe as LibGtk::RecentChooser*), sort_func, sort_data && sort_data, data_destroy && data_destroy)
       __return_value
     end
 

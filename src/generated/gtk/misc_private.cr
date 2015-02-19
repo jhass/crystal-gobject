@@ -1,6 +1,7 @@
 module Gtk
   class MiscPrivate
     include GObject::WrappedType
+
     def initialize @gtk_misc_private
     end
 

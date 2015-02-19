@@ -1,6 +1,7 @@
 module Gio
   class InputVector
     include GObject::WrappedType
+
     def initialize @gio_input_vector
     end
 

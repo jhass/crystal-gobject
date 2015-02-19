@@ -1,6 +1,7 @@
 module Gio
   class NetworkServicePrivate
     include GObject::WrappedType
+
     def initialize @gio_network_service_private
     end
 

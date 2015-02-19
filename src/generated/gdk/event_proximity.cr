@@ -1,6 +1,7 @@
 module Gdk
   class EventProximity
     include GObject::WrappedType
+
     def initialize @gdk_event_proximity
     end
 

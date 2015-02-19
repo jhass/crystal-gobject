@@ -1,6 +1,7 @@
 module Cairo
   class Path
     include GObject::WrappedType
+
     def initialize @cairo_path
     end
 

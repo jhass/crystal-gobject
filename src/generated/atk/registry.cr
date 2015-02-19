@@ -17,7 +17,7 @@ module Atk
       __return_value
     end
 
-    def factory_type=(type, factory_type)
+    def set_factory_type(type, factory_type)
       __return_value = LibAtk.registry_set_factory_type((to_unsafe as LibAtk::Registry*), UInt64.cast(type), UInt64.cast(factory_type))
       __return_value
     end

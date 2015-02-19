@@ -65,7 +65,7 @@ module Gdk
   end
 
   def self.cairo_surface_create_from_pixbuf(pixbuf, scale, for_window)
-    __return_value = LibGdk.cairo_surface_create_from_pixbuf((pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*), Int32.cast(scale), (for_window.to_unsafe as LibGdk::Window*))
+    __return_value = LibGdk.cairo_surface_create_from_pixbuf((pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*), Int32.cast(scale), for_window && (for_window.to_unsafe as LibGdk::Window*))
     Cairo::Surface.new(__return_value)
   end
 
@@ -335,7 +335,7 @@ module Gdk
   end
 
   def self.pointer_grab(window, owner_events, event_mask, confine_to, cursor, time)
-    __return_value = LibGdk.pointer_grab((window.to_unsafe as LibGdk::Window*), Bool.cast(owner_events), event_mask, (confine_to.to_unsafe as LibGdk::Window*), (cursor.to_unsafe as LibGdk::Cursor*), UInt32.cast(time))
+    __return_value = LibGdk.pointer_grab((window.to_unsafe as LibGdk::Window*), Bool.cast(owner_events), event_mask, confine_to && (confine_to.to_unsafe as LibGdk::Window*), cursor && (cursor.to_unsafe as LibGdk::Cursor*), UInt32.cast(time))
     __return_value
   end
 
@@ -405,12 +405,12 @@ module Gdk
   end
 
   def self.selection_owner_set(owner, selection, time, send_event)
-    __return_value = LibGdk.selection_owner_set((owner.to_unsafe as LibGdk::Window*), (selection.to_unsafe as LibGdk::Atom*), UInt32.cast(time), Bool.cast(send_event))
+    __return_value = LibGdk.selection_owner_set(owner && (owner.to_unsafe as LibGdk::Window*), (selection.to_unsafe as LibGdk::Atom*), UInt32.cast(time), Bool.cast(send_event))
     __return_value
   end
 
   def self.selection_owner_set_for_display(display, owner, selection, time, send_event)
-    __return_value = LibGdk.selection_owner_set_for_display((display.to_unsafe as LibGdk::Display*), (owner.to_unsafe as LibGdk::Window*), (selection.to_unsafe as LibGdk::Atom*), UInt32.cast(time), Bool.cast(send_event))
+    __return_value = LibGdk.selection_owner_set_for_display((display.to_unsafe as LibGdk::Display*), owner && (owner.to_unsafe as LibGdk::Window*), (selection.to_unsafe as LibGdk::Atom*), UInt32.cast(time), Bool.cast(send_event))
     __return_value
   end
 
@@ -424,22 +424,22 @@ module Gdk
     __return_value
   end
 
-  def self.allowed_backends=(backends)
+  def self.set_allowed_backends(backends)
     __return_value = LibGdk.set_allowed_backends(backends)
     __return_value
   end
 
-  def self.double_click_time=(msec)
+  def self.set_double_click_time(msec)
     __return_value = LibGdk.set_double_click_time(UInt32.cast(msec))
     __return_value
   end
 
-  def self.program_class=(program_class)
+  def self.set_program_class(program_class)
     __return_value = LibGdk.set_program_class(program_class)
     __return_value
   end
 
-  def self.show_events=(show_events)
+  def self.set_show_events(show_events)
     __return_value = LibGdk.set_show_events(Bool.cast(show_events))
     __return_value
   end
@@ -475,17 +475,17 @@ module Gdk
   end
 
   def self.threads_add_idle(priority, function, data, notify)
-    __return_value = LibGdk.threads_add_idle(Int32.cast(priority), function, data, notify)
+    __return_value = LibGdk.threads_add_idle(Int32.cast(priority), function, data, notify && notify)
     __return_value
   end
 
   def self.threads_add_timeout(priority, interval, function, data, notify)
-    __return_value = LibGdk.threads_add_timeout(Int32.cast(priority), UInt32.cast(interval), function, data, notify)
+    __return_value = LibGdk.threads_add_timeout(Int32.cast(priority), UInt32.cast(interval), function, data, notify && notify)
     __return_value
   end
 
   def self.threads_add_timeout_seconds(priority, interval, function, data, notify)
-    __return_value = LibGdk.threads_add_timeout_seconds(Int32.cast(priority), UInt32.cast(interval), function, data, notify)
+    __return_value = LibGdk.threads_add_timeout_seconds(Int32.cast(priority), UInt32.cast(interval), function, data, notify && notify)
     __return_value
   end
 

@@ -1,6 +1,7 @@
 module Pango
   class ScriptIter
     include GObject::WrappedType
+
     def initialize @pango_script_iter
     end
 

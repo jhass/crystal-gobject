@@ -1,6 +1,7 @@
 module Gtk
   class ProgressBarPrivate
     include GObject::WrappedType
+
     def initialize @gtk_progress_bar_private
     end
 

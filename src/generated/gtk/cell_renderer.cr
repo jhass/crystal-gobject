@@ -7,66 +7,21 @@ module Gtk
       @gtk_cell_renderer.not_nil!
     end
 
-    def cell_background=(__value)
-      LibGtk.cell_renderer_set_cell_background((to_unsafe as LibGtk::CellRenderer*), __value)
-    end
-
-    def cell_background_gdk=(__value)
-      LibGtk.cell_renderer_set_cell_background_gdk((to_unsafe as LibGtk::CellRenderer*), __value)
-    end
-
-    def cell_background_rgba=(__value)
-      LibGtk.cell_renderer_set_cell_background_rgba((to_unsafe as LibGtk::CellRenderer*), __value)
-    end
-
-    def cell_background_set=(__value)
-      LibGtk.cell_renderer_set_cell_background_set((to_unsafe as LibGtk::CellRenderer*), Bool.cast(__value))
-    end
 
 
-    def height=(__value)
-      LibGtk.cell_renderer_set_height((to_unsafe as LibGtk::CellRenderer*), Int32.cast(__value))
-    end
 
-    def is_expanded=(__value)
-      LibGtk.cell_renderer_set_is_expanded((to_unsafe as LibGtk::CellRenderer*), Bool.cast(__value))
-    end
 
-    def is_expander=(__value)
-      LibGtk.cell_renderer_set_is_expander((to_unsafe as LibGtk::CellRenderer*), Bool.cast(__value))
-    end
 
-    def mode=(__value)
-      LibGtk.cell_renderer_set_mode((to_unsafe as LibGtk::CellRenderer*), __value)
-    end
 
-    def sensitive=(__value)
-      LibGtk.cell_renderer_set_sensitive((to_unsafe as LibGtk::CellRenderer*), Bool.cast(__value))
-    end
 
-    def visible=(__value)
-      LibGtk.cell_renderer_set_visible((to_unsafe as LibGtk::CellRenderer*), Bool.cast(__value))
-    end
 
-    def width=(__value)
-      LibGtk.cell_renderer_set_width((to_unsafe as LibGtk::CellRenderer*), Int32.cast(__value))
-    end
 
-    def xalign=(__value)
-      LibGtk.cell_renderer_set_xalign((to_unsafe as LibGtk::CellRenderer*), Float32.cast(__value))
-    end
 
-    def xpad=(__value)
-      LibGtk.cell_renderer_set_xpad((to_unsafe as LibGtk::CellRenderer*), UInt32.cast(__value))
-    end
 
-    def yalign=(__value)
-      LibGtk.cell_renderer_set_yalign((to_unsafe as LibGtk::CellRenderer*), Float32.cast(__value))
-    end
 
-    def ypad=(__value)
-      LibGtk.cell_renderer_set_ypad((to_unsafe as LibGtk::CellRenderer*), UInt32.cast(__value))
-    end
+
+
+
 
     def activate(event, widget, path, background_area, cell_area, flags)
       __return_value = LibGtk.cell_renderer_activate((to_unsafe as LibGtk::CellRenderer*), (event.to_unsafe as LibGdk::Event*), (widget.to_unsafe as LibGtk::Widget*), path, (background_area.to_unsafe as LibCairo::RectangleInt*), (cell_area.to_unsafe as LibCairo::RectangleInt*), flags)
@@ -129,7 +84,7 @@ module Gtk
     end
 
     def size(widget, cell_area, x_offset, y_offset, width, height)
-      __return_value = LibGtk.cell_renderer_get_size((to_unsafe as LibGtk::CellRenderer*), (widget.to_unsafe as LibGtk::Widget*), (cell_area.to_unsafe as LibCairo::RectangleInt*), Int32.cast(x_offset), Int32.cast(y_offset), Int32.cast(width), Int32.cast(height))
+      __return_value = LibGtk.cell_renderer_get_size((to_unsafe as LibGtk::CellRenderer*), (widget.to_unsafe as LibGtk::Widget*), cell_area && (cell_area.to_unsafe as LibCairo::RectangleInt*), Int32.cast(x_offset), Int32.cast(y_offset), Int32.cast(width), Int32.cast(height))
       __return_value
     end
 
@@ -153,17 +108,17 @@ module Gtk
       __return_value
     end
 
-    def alignment=(xalign, yalign)
+    def set_alignment(xalign, yalign)
       __return_value = LibGtk.cell_renderer_set_alignment((to_unsafe as LibGtk::CellRenderer*), Float32.cast(xalign), Float32.cast(yalign))
       __return_value
     end
 
-    def fixed_size=(width, height)
+    def set_fixed_size(width, height)
       __return_value = LibGtk.cell_renderer_set_fixed_size((to_unsafe as LibGtk::CellRenderer*), Int32.cast(width), Int32.cast(height))
       __return_value
     end
 
-    def padding=(xpad, ypad)
+    def set_padding(xpad, ypad)
       __return_value = LibGtk.cell_renderer_set_padding((to_unsafe as LibGtk::CellRenderer*), Int32.cast(xpad), Int32.cast(ypad))
       __return_value
     end

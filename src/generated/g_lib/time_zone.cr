@@ -1,6 +1,7 @@
 module GLib
   class TimeZone
     include GObject::WrappedType
+
     def initialize @g_lib_time_zone
     end
 
@@ -9,7 +10,7 @@ module GLib
     end
 
     def self.new_internal(identifier)
-      __return_value = LibGLib.time_zone_new(identifier)
+      __return_value = LibGLib.time_zone_new(identifier && identifier)
       GLib::TimeZone.new(__return_value)
     end
 

@@ -1,6 +1,7 @@
 module Gtk
   class BindingEntry
     include GObject::WrappedType
+
     def initialize @gtk_binding_entry
     end
 

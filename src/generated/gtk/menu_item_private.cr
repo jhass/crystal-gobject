@@ -1,6 +1,7 @@
 module Gtk
   class MenuItemPrivate
     include GObject::WrappedType
+
     def initialize @gtk_menu_item_private
     end
 

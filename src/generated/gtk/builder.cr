@@ -7,9 +7,6 @@ module Gtk
       @gtk_builder.not_nil!
     end
 
-    def translation_domain=(__value)
-      LibGtk.builder_set_translation_domain((to_unsafe as LibGtk::Builder*), __value)
-    end
 
     def self.new_internal
       __return_value = LibGtk.builder_new
@@ -124,7 +121,7 @@ module Gtk
     end
 
     def translation_domain=(domain)
-      __return_value = LibGtk.builder_set_translation_domain((to_unsafe as LibGtk::Builder*), domain)
+      __return_value = LibGtk.builder_set_translation_domain((to_unsafe as LibGtk::Builder*), domain && domain)
       __return_value
     end
 

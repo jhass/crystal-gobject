@@ -7,9 +7,6 @@ module Gdk
       @gdk_display_manager.not_nil!
     end
 
-    def default_display=(__value)
-      LibGdk.display_manager_set_default_display((to_unsafe as LibGdk::DisplayManager*), __value)
-    end
 
     def self.get
       __return_value = LibGdk.display_manager_get

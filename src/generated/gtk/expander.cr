@@ -14,17 +14,8 @@ module Gtk
 
 
 
-    def label_widget=(__value)
-      LibGtk.expander_set_label_widget((to_unsafe as LibGtk::Expander*), __value)
-    end
 
-    def resize_toplevel=(__value)
-      LibGtk.expander_set_resize_toplevel((to_unsafe as LibGtk::Expander*), Bool.cast(__value))
-    end
 
-    def spacing=(__value)
-      LibGtk.expander_set_spacing((to_unsafe as LibGtk::Expander*), Int32.cast(__value))
-    end
 
 
 
@@ -34,7 +25,7 @@ module Gtk
     end
 
     def self.new_with_mnemonic(label)
-      __return_value = LibGtk.expander_new_with_mnemonic(label)
+      __return_value = LibGtk.expander_new_with_mnemonic(label && label)
       Gtk::Widget.new(__return_value)
     end
 
@@ -84,7 +75,7 @@ module Gtk
     end
 
     def label=(label)
-      __return_value = LibGtk.expander_set_label((to_unsafe as LibGtk::Expander*), label)
+      __return_value = LibGtk.expander_set_label((to_unsafe as LibGtk::Expander*), label && label)
       __return_value
     end
 
@@ -94,7 +85,7 @@ module Gtk
     end
 
     def label_widget=(label_widget)
-      __return_value = LibGtk.expander_set_label_widget((to_unsafe as LibGtk::Expander*), (label_widget.to_unsafe as LibGtk::Widget*))
+      __return_value = LibGtk.expander_set_label_widget((to_unsafe as LibGtk::Expander*), label_widget && (label_widget.to_unsafe as LibGtk::Widget*))
       __return_value
     end
 

@@ -12,24 +12,12 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
-    def digits=(__value)
-      LibGtk.scale_set_digits((to_unsafe as LibGtk::Scale*), Int32.cast(__value))
-    end
 
-    def draw_value=(__value)
-      LibGtk.scale_set_draw_value((to_unsafe as LibGtk::Scale*), Bool.cast(__value))
-    end
 
-    def has_origin=(__value)
-      LibGtk.scale_set_has_origin((to_unsafe as LibGtk::Scale*), Bool.cast(__value))
-    end
 
-    def value_pos=(__value)
-      LibGtk.scale_set_value_pos((to_unsafe as LibGtk::Scale*), __value)
-    end
 
     def self.new_internal(orientation, adjustment)
-      __return_value = LibGtk.scale_new(orientation, (adjustment.to_unsafe as LibGtk::Adjustment*))
+      __return_value = LibGtk.scale_new(orientation, adjustment && (adjustment.to_unsafe as LibGtk::Adjustment*))
       Gtk::Widget.new(__return_value)
     end
 
@@ -39,7 +27,7 @@ module Gtk
     end
 
     def add_mark(value, position, markup)
-      __return_value = LibGtk.scale_add_mark((to_unsafe as LibGtk::Scale*), Float64.cast(value), position, markup)
+      __return_value = LibGtk.scale_add_mark((to_unsafe as LibGtk::Scale*), Float64.cast(value), position, markup && markup)
       __return_value
     end
 

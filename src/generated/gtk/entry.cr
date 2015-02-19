@@ -13,180 +13,54 @@ module Gtk
     # Implements Buildable
     # Implements CellEditable
     # Implements Editable
-    def activates_default=(__value)
-      LibGtk.entry_set_activates_default((to_unsafe as LibGtk::Entry*), Bool.cast(__value))
-    end
-
-    def attributes=(__value)
-      LibGtk.entry_set_attributes((to_unsafe as LibGtk::Entry*), __value)
-    end
 
 
-    def caps_lock_warning=(__value)
-      LibGtk.entry_set_caps_lock_warning((to_unsafe as LibGtk::Entry*), Bool.cast(__value))
-    end
-
-    def completion=(__value)
-      LibGtk.entry_set_completion((to_unsafe as LibGtk::Entry*), __value)
-    end
 
 
-    def editable=(__value)
-      LibGtk.entry_set_editable((to_unsafe as LibGtk::Entry*), Bool.cast(__value))
-    end
-
-    def has_frame=(__value)
-      LibGtk.entry_set_has_frame((to_unsafe as LibGtk::Entry*), Bool.cast(__value))
-    end
-
-    def im_module=(__value)
-      LibGtk.entry_set_im_module((to_unsafe as LibGtk::Entry*), __value)
-    end
-
-    def inner_border=(__value)
-      LibGtk.entry_set_inner_border((to_unsafe as LibGtk::Entry*), __value)
-    end
-
-    def input_hints=(__value)
-      LibGtk.entry_set_input_hints((to_unsafe as LibGtk::Entry*), __value)
-    end
-
-    def input_purpose=(__value)
-      LibGtk.entry_set_input_purpose((to_unsafe as LibGtk::Entry*), __value)
-    end
-
-    def invisible_char=(__value)
-      LibGtk.entry_set_invisible_char((to_unsafe as LibGtk::Entry*), UInt32.cast(__value))
-    end
-
-    def invisible_char_set=(__value)
-      LibGtk.entry_set_invisible_char_set((to_unsafe as LibGtk::Entry*), Bool.cast(__value))
-    end
-
-    def max_length=(__value)
-      LibGtk.entry_set_max_length((to_unsafe as LibGtk::Entry*), Int32.cast(__value))
-    end
-
-    def max_width_chars=(__value)
-      LibGtk.entry_set_max_width_chars((to_unsafe as LibGtk::Entry*), Int32.cast(__value))
-    end
-
-    def overwrite_mode=(__value)
-      LibGtk.entry_set_overwrite_mode((to_unsafe as LibGtk::Entry*), Bool.cast(__value))
-    end
-
-    def placeholder_text=(__value)
-      LibGtk.entry_set_placeholder_text((to_unsafe as LibGtk::Entry*), __value)
-    end
-
-    def populate_all=(__value)
-      LibGtk.entry_set_populate_all((to_unsafe as LibGtk::Entry*), Bool.cast(__value))
-    end
-
-    def primary_icon_activatable=(__value)
-      LibGtk.entry_set_primary_icon_activatable((to_unsafe as LibGtk::Entry*), Bool.cast(__value))
-    end
-
-    def primary_icon_gicon=(__value)
-      LibGtk.entry_set_primary_icon_gicon((to_unsafe as LibGtk::Entry*), __value)
-    end
-
-    def primary_icon_name=(__value)
-      LibGtk.entry_set_primary_icon_name((to_unsafe as LibGtk::Entry*), __value)
-    end
-
-    def primary_icon_pixbuf=(__value)
-      LibGtk.entry_set_primary_icon_pixbuf((to_unsafe as LibGtk::Entry*), __value)
-    end
-
-    def primary_icon_sensitive=(__value)
-      LibGtk.entry_set_primary_icon_sensitive((to_unsafe as LibGtk::Entry*), Bool.cast(__value))
-    end
-
-    def primary_icon_stock=(__value)
-      LibGtk.entry_set_primary_icon_stock((to_unsafe as LibGtk::Entry*), __value)
-    end
 
 
-    def primary_icon_tooltip_markup=(__value)
-      LibGtk.entry_set_primary_icon_tooltip_markup((to_unsafe as LibGtk::Entry*), __value)
-    end
-
-    def primary_icon_tooltip_text=(__value)
-      LibGtk.entry_set_primary_icon_tooltip_text((to_unsafe as LibGtk::Entry*), __value)
-    end
-
-    def progress_fraction=(__value)
-      LibGtk.entry_set_progress_fraction((to_unsafe as LibGtk::Entry*), Float64.cast(__value))
-    end
-
-    def progress_pulse_step=(__value)
-      LibGtk.entry_set_progress_pulse_step((to_unsafe as LibGtk::Entry*), Float64.cast(__value))
-    end
 
 
-    def secondary_icon_activatable=(__value)
-      LibGtk.entry_set_secondary_icon_activatable((to_unsafe as LibGtk::Entry*), Bool.cast(__value))
-    end
-
-    def secondary_icon_gicon=(__value)
-      LibGtk.entry_set_secondary_icon_gicon((to_unsafe as LibGtk::Entry*), __value)
-    end
-
-    def secondary_icon_name=(__value)
-      LibGtk.entry_set_secondary_icon_name((to_unsafe as LibGtk::Entry*), __value)
-    end
-
-    def secondary_icon_pixbuf=(__value)
-      LibGtk.entry_set_secondary_icon_pixbuf((to_unsafe as LibGtk::Entry*), __value)
-    end
-
-    def secondary_icon_sensitive=(__value)
-      LibGtk.entry_set_secondary_icon_sensitive((to_unsafe as LibGtk::Entry*), Bool.cast(__value))
-    end
-
-    def secondary_icon_stock=(__value)
-      LibGtk.entry_set_secondary_icon_stock((to_unsafe as LibGtk::Entry*), __value)
-    end
 
 
-    def secondary_icon_tooltip_markup=(__value)
-      LibGtk.entry_set_secondary_icon_tooltip_markup((to_unsafe as LibGtk::Entry*), __value)
-    end
-
-    def secondary_icon_tooltip_text=(__value)
-      LibGtk.entry_set_secondary_icon_tooltip_text((to_unsafe as LibGtk::Entry*), __value)
-    end
 
 
-    def shadow_type=(__value)
-      LibGtk.entry_set_shadow_type((to_unsafe as LibGtk::Entry*), __value)
-    end
-
-    def tabs=(__value)
-      LibGtk.entry_set_tabs((to_unsafe as LibGtk::Entry*), __value)
-    end
-
-    def text=(__value)
-      LibGtk.entry_set_text((to_unsafe as LibGtk::Entry*), __value)
-    end
 
 
-    def truncate_multiline=(__value)
-      LibGtk.entry_set_truncate_multiline((to_unsafe as LibGtk::Entry*), Bool.cast(__value))
-    end
 
-    def visibility=(__value)
-      LibGtk.entry_set_visibility((to_unsafe as LibGtk::Entry*), Bool.cast(__value))
-    end
 
-    def width_chars=(__value)
-      LibGtk.entry_set_width_chars((to_unsafe as LibGtk::Entry*), Int32.cast(__value))
-    end
 
-    def xalign=(__value)
-      LibGtk.entry_set_xalign((to_unsafe as LibGtk::Entry*), Float32.cast(__value))
-    end
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
     def self.new_internal
       __return_value = LibGtk.entry_new
@@ -424,7 +298,7 @@ module Gtk
     end
 
     def completion=(completion)
-      __return_value = LibGtk.entry_set_completion((to_unsafe as LibGtk::Entry*), (completion.to_unsafe as LibGtk::EntryCompletion*))
+      __return_value = LibGtk.entry_set_completion((to_unsafe as LibGtk::Entry*), completion && (completion.to_unsafe as LibGtk::EntryCompletion*))
       __return_value
     end
 
@@ -438,53 +312,53 @@ module Gtk
       __return_value
     end
 
-    def icon_activatable=(icon_pos, activatable)
+    def set_icon_activatable(icon_pos, activatable)
       __return_value = LibGtk.entry_set_icon_activatable((to_unsafe as LibGtk::Entry*), icon_pos, Bool.cast(activatable))
       __return_value
     end
 
-    def icon_drag_source=(icon_pos, target_list, actions)
+    def set_icon_drag_source(icon_pos, target_list, actions)
       __return_value = LibGtk.entry_set_icon_drag_source((to_unsafe as LibGtk::Entry*), icon_pos, (target_list.to_unsafe as LibGtk::TargetList*), actions)
       __return_value
     end
 
-    def icon_from_gicon=(icon_pos, icon)
-      __return_value = LibGtk.entry_set_icon_from_gicon((to_unsafe as LibGtk::Entry*), icon_pos, (icon.to_unsafe as LibGio::Icon*))
+    def set_icon_from_gicon(icon_pos, icon)
+      __return_value = LibGtk.entry_set_icon_from_gicon((to_unsafe as LibGtk::Entry*), icon_pos, icon && (icon.to_unsafe as LibGio::Icon*))
       __return_value
     end
 
-    def icon_from_icon_name=(icon_pos, icon_name)
-      __return_value = LibGtk.entry_set_icon_from_icon_name((to_unsafe as LibGtk::Entry*), icon_pos, icon_name)
+    def set_icon_from_icon_name(icon_pos, icon_name)
+      __return_value = LibGtk.entry_set_icon_from_icon_name((to_unsafe as LibGtk::Entry*), icon_pos, icon_name && icon_name)
       __return_value
     end
 
-    def icon_from_pixbuf=(icon_pos, pixbuf)
-      __return_value = LibGtk.entry_set_icon_from_pixbuf((to_unsafe as LibGtk::Entry*), icon_pos, (pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*))
+    def set_icon_from_pixbuf(icon_pos, pixbuf)
+      __return_value = LibGtk.entry_set_icon_from_pixbuf((to_unsafe as LibGtk::Entry*), icon_pos, pixbuf && (pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*))
       __return_value
     end
 
-    def icon_from_stock=(icon_pos, stock_id)
-      __return_value = LibGtk.entry_set_icon_from_stock((to_unsafe as LibGtk::Entry*), icon_pos, stock_id)
+    def set_icon_from_stock(icon_pos, stock_id)
+      __return_value = LibGtk.entry_set_icon_from_stock((to_unsafe as LibGtk::Entry*), icon_pos, stock_id && stock_id)
       __return_value
     end
 
-    def icon_sensitive=(icon_pos, sensitive)
+    def set_icon_sensitive(icon_pos, sensitive)
       __return_value = LibGtk.entry_set_icon_sensitive((to_unsafe as LibGtk::Entry*), icon_pos, Bool.cast(sensitive))
       __return_value
     end
 
-    def icon_tooltip_markup=(icon_pos, tooltip)
-      __return_value = LibGtk.entry_set_icon_tooltip_markup((to_unsafe as LibGtk::Entry*), icon_pos, tooltip)
+    def set_icon_tooltip_markup(icon_pos, tooltip)
+      __return_value = LibGtk.entry_set_icon_tooltip_markup((to_unsafe as LibGtk::Entry*), icon_pos, tooltip && tooltip)
       __return_value
     end
 
-    def icon_tooltip_text=(icon_pos, tooltip)
-      __return_value = LibGtk.entry_set_icon_tooltip_text((to_unsafe as LibGtk::Entry*), icon_pos, tooltip)
+    def set_icon_tooltip_text(icon_pos, tooltip)
+      __return_value = LibGtk.entry_set_icon_tooltip_text((to_unsafe as LibGtk::Entry*), icon_pos, tooltip && tooltip)
       __return_value
     end
 
     def inner_border=(border)
-      __return_value = LibGtk.entry_set_inner_border((to_unsafe as LibGtk::Entry*), (border.to_unsafe as LibGtk::Border*))
+      __return_value = LibGtk.entry_set_inner_border((to_unsafe as LibGtk::Entry*), border && (border.to_unsafe as LibGtk::Border*))
       __return_value
     end
 

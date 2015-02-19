@@ -1,6 +1,7 @@
 module GLib
   class DebugKey
     include GObject::WrappedType
+
     def initialize @g_lib_debug_key
     end
 

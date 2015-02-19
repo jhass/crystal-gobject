@@ -1,6 +1,7 @@
 module Gtk
   class CssSection
     include GObject::WrappedType
+
     def initialize @gtk_css_section
     end
 

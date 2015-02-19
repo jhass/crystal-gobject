@@ -1,6 +1,7 @@
 module GLib
   class StatBuf
     include GObject::WrappedType
+
     def initialize @g_lib_stat_buf
     end
 

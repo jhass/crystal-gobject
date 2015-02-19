@@ -1,6 +1,7 @@
 module Gio
   class UnixSocketAddressPrivate
     include GObject::WrappedType
+
     def initialize @gio_unix_socket_address_private
     end
 

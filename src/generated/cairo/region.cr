@@ -1,6 +1,7 @@
 module Cairo
   class Region
     include GObject::WrappedType
+
     def initialize @cairo_region
     end
 

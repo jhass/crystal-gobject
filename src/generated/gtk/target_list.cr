@@ -1,6 +1,7 @@
 module Gtk
   class TargetList
     include GObject::WrappedType
+
     def initialize @gtk_target_list
     end
 
@@ -9,7 +10,7 @@ module Gtk
     end
 
     def self.new_internal(targets, ntargets)
-      __return_value = LibGtk.target_list_new(targets, UInt32.cast(ntargets))
+      __return_value = LibGtk.target_list_new(targets && targets, UInt32.cast(ntargets))
       Gtk::TargetList.new(__return_value)
     end
 

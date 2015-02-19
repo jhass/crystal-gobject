@@ -1,6 +1,7 @@
 module Gio
   class ConverterInputStreamPrivate
     include GObject::WrappedType
+
     def initialize @gio_converter_input_stream_private
     end
 

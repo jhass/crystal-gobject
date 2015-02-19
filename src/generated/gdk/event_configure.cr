@@ -1,6 +1,7 @@
 module Gdk
   class EventConfigure
     include GObject::WrappedType
+
     def initialize @gdk_event_configure
     end
 

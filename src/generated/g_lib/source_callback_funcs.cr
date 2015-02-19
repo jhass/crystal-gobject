@@ -1,6 +1,7 @@
 module GLib
   class SourceCallbackFuncs
     include GObject::WrappedType
+
     def initialize @g_lib_source_callback_funcs
     end
 

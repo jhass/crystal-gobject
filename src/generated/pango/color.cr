@@ -1,6 +1,7 @@
 module Pango
   class Color
     include GObject::WrappedType
+
     def initialize @pango_color
     end
 

@@ -1,6 +1,7 @@
 module Gio
   class DBusErrorEntry
     include GObject::WrappedType
+
     def initialize @gio_d_bus_error_entry
     end
 

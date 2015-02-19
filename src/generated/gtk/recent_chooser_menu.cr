@@ -13,9 +13,6 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
     # Implements RecentChooser
-    def show_numbers=(__value)
-      LibGtk.recent_chooser_menu_set_show_numbers((to_unsafe as LibGtk::RecentChooserMenu*), Bool.cast(__value))
-    end
 
     def self.new_internal
       __return_value = LibGtk.recent_chooser_menu_new

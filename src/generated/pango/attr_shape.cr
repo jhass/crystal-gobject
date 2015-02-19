@@ -1,6 +1,7 @@
 module Pango
   class AttrShape
     include GObject::WrappedType
+
     def initialize @pango_attr_shape
     end
 

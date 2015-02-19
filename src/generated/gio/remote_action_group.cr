@@ -1,7 +1,7 @@
 module Gio
   module RemoteActionGroup
     def activate_action_full(action_name, parameter, platform_data)
-      __return_value = LibGio.remote_action_group_activate_action_full((to_unsafe as LibGio::RemoteActionGroup*), action_name, (parameter.to_unsafe as LibGLib::Variant*), (platform_data.to_unsafe as LibGLib::Variant*))
+      __return_value = LibGio.remote_action_group_activate_action_full((to_unsafe as LibGio::RemoteActionGroup*), action_name, parameter && (parameter.to_unsafe as LibGLib::Variant*), (platform_data.to_unsafe as LibGLib::Variant*))
       __return_value
     end
 

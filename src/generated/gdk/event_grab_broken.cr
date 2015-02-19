@@ -1,6 +1,7 @@
 module Gdk
   class EventGrabBroken
     include GObject::WrappedType
+
     def initialize @gdk_event_grab_broken
     end
 

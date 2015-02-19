@@ -19,13 +19,13 @@ module Gio
 
     def communicate(stdin_buf, cancellable, stdout_buf, stderr_buf)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.subprocess_communicate((to_unsafe as LibGio::Subprocess*), (stdin_buf.to_unsafe as LibGLib::Bytes*), (cancellable.to_unsafe as LibGio::Cancellable*), (stdout_buf.to_unsafe as LibGLib::Bytes*), (stderr_buf.to_unsafe as LibGLib::Bytes*), pointerof(__error))
+      __return_value = LibGio.subprocess_communicate((to_unsafe as LibGio::Subprocess*), stdin_buf && (stdin_buf.to_unsafe as LibGLib::Bytes*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), (stdout_buf.to_unsafe as LibGLib::Bytes*), (stderr_buf.to_unsafe as LibGLib::Bytes*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def communicate_async(stdin_buf, cancellable, callback, user_data)
-      __return_value = LibGio.subprocess_communicate_async((to_unsafe as LibGio::Subprocess*), (stdin_buf.to_unsafe as LibGLib::Bytes*), (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGio.subprocess_communicate_async((to_unsafe as LibGio::Subprocess*), stdin_buf && (stdin_buf.to_unsafe as LibGLib::Bytes*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -38,13 +38,13 @@ module Gio
 
     def communicate_utf8(stdin_buf, cancellable, stdout_buf, stderr_buf)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.subprocess_communicate_utf8((to_unsafe as LibGio::Subprocess*), stdin_buf, (cancellable.to_unsafe as LibGio::Cancellable*), stdout_buf, stderr_buf, pointerof(__error))
+      __return_value = LibGio.subprocess_communicate_utf8((to_unsafe as LibGio::Subprocess*), stdin_buf && stdin_buf, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), stdout_buf, stderr_buf, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def communicate_utf8_async(stdin_buf, cancellable, callback, user_data)
-      __return_value = LibGio.subprocess_communicate_utf8_async((to_unsafe as LibGio::Subprocess*), stdin_buf, (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGio.subprocess_communicate_utf8_async((to_unsafe as LibGio::Subprocess*), stdin_buf && stdin_buf, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -117,25 +117,25 @@ module Gio
 
     def wait(cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.subprocess_wait((to_unsafe as LibGio::Subprocess*), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.subprocess_wait((to_unsafe as LibGio::Subprocess*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def wait_async(cancellable, callback, user_data)
-      __return_value = LibGio.subprocess_wait_async((to_unsafe as LibGio::Subprocess*), (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGio.subprocess_wait_async((to_unsafe as LibGio::Subprocess*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
     def wait_check(cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.subprocess_wait_check((to_unsafe as LibGio::Subprocess*), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.subprocess_wait_check((to_unsafe as LibGio::Subprocess*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def wait_check_async(cancellable, callback, user_data)
-      __return_value = LibGio.subprocess_wait_check_async((to_unsafe as LibGio::Subprocess*), (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGio.subprocess_wait_check_async((to_unsafe as LibGio::Subprocess*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 

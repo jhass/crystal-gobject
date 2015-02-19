@@ -1,6 +1,7 @@
 module GIRepository
   class RepositoryPrivate
     include GObject::WrappedType
+
     def initialize @g_i_repository_repository_private
     end
 

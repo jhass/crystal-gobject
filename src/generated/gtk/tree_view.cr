@@ -12,77 +12,23 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Scrollable
-    def activate_on_single_click=(__value)
-      LibGtk.tree_view_set_activate_on_single_click((to_unsafe as LibGtk::TreeView*), Bool.cast(__value))
-    end
 
-    def enable_grid_lines=(__value)
-      LibGtk.tree_view_set_enable_grid_lines((to_unsafe as LibGtk::TreeView*), __value)
-    end
 
-    def enable_search=(__value)
-      LibGtk.tree_view_set_enable_search((to_unsafe as LibGtk::TreeView*), Bool.cast(__value))
-    end
 
-    def enable_tree_lines=(__value)
-      LibGtk.tree_view_set_enable_tree_lines((to_unsafe as LibGtk::TreeView*), Bool.cast(__value))
-    end
 
-    def expander_column=(__value)
-      LibGtk.tree_view_set_expander_column((to_unsafe as LibGtk::TreeView*), __value)
-    end
 
-    def fixed_height_mode=(__value)
-      LibGtk.tree_view_set_fixed_height_mode((to_unsafe as LibGtk::TreeView*), Bool.cast(__value))
-    end
 
-    def headers_clickable=(__value)
-      LibGtk.tree_view_set_headers_clickable((to_unsafe as LibGtk::TreeView*), Bool.cast(__value))
-    end
 
-    def headers_visible=(__value)
-      LibGtk.tree_view_set_headers_visible((to_unsafe as LibGtk::TreeView*), Bool.cast(__value))
-    end
 
-    def hover_expand=(__value)
-      LibGtk.tree_view_set_hover_expand((to_unsafe as LibGtk::TreeView*), Bool.cast(__value))
-    end
 
-    def hover_selection=(__value)
-      LibGtk.tree_view_set_hover_selection((to_unsafe as LibGtk::TreeView*), Bool.cast(__value))
-    end
 
-    def level_indentation=(__value)
-      LibGtk.tree_view_set_level_indentation((to_unsafe as LibGtk::TreeView*), Int32.cast(__value))
-    end
 
-    def model=(__value)
-      LibGtk.tree_view_set_model((to_unsafe as LibGtk::TreeView*), __value)
-    end
 
-    def reorderable=(__value)
-      LibGtk.tree_view_set_reorderable((to_unsafe as LibGtk::TreeView*), Bool.cast(__value))
-    end
 
-    def rubber_banding=(__value)
-      LibGtk.tree_view_set_rubber_banding((to_unsafe as LibGtk::TreeView*), Bool.cast(__value))
-    end
 
-    def rules_hint=(__value)
-      LibGtk.tree_view_set_rules_hint((to_unsafe as LibGtk::TreeView*), Bool.cast(__value))
-    end
 
-    def search_column=(__value)
-      LibGtk.tree_view_set_search_column((to_unsafe as LibGtk::TreeView*), Int32.cast(__value))
-    end
 
-    def show_expanders=(__value)
-      LibGtk.tree_view_set_show_expanders((to_unsafe as LibGtk::TreeView*), Bool.cast(__value))
-    end
 
-    def tooltip_column=(__value)
-      LibGtk.tree_view_set_tooltip_column((to_unsafe as LibGtk::TreeView*), Int32.cast(__value))
-    end
 
     def self.new_internal
       __return_value = LibGtk.tree_view_new
@@ -180,7 +126,7 @@ module Gtk
     end
 
     def background_area(path, column, rect)
-      __return_value = LibGtk.tree_view_get_background_area((to_unsafe as LibGtk::TreeView*), (path.to_unsafe as LibGtk::TreePath*), (column.to_unsafe as LibGtk::TreeViewColumn*), rect)
+      __return_value = LibGtk.tree_view_get_background_area((to_unsafe as LibGtk::TreeView*), path && (path.to_unsafe as LibGtk::TreePath*), column && (column.to_unsafe as LibGtk::TreeViewColumn*), rect)
       __return_value
     end
 
@@ -190,7 +136,7 @@ module Gtk
     end
 
     def cell_area(path, column, rect)
-      __return_value = LibGtk.tree_view_get_cell_area((to_unsafe as LibGtk::TreeView*), (path.to_unsafe as LibGtk::TreePath*), (column.to_unsafe as LibGtk::TreeViewColumn*), rect)
+      __return_value = LibGtk.tree_view_get_cell_area((to_unsafe as LibGtk::TreeView*), path && (path.to_unsafe as LibGtk::TreePath*), column && (column.to_unsafe as LibGtk::TreeViewColumn*), rect)
       __return_value
     end
 
@@ -205,17 +151,17 @@ module Gtk
     end
 
     def cursor(path, focus_column)
-      __return_value = LibGtk.tree_view_get_cursor((to_unsafe as LibGtk::TreeView*), (path.to_unsafe as LibGtk::TreePath*), (focus_column.to_unsafe as LibGtk::TreeViewColumn*))
+      __return_value = LibGtk.tree_view_get_cursor((to_unsafe as LibGtk::TreeView*), path && (path.to_unsafe as LibGtk::TreePath*), focus_column && (focus_column.to_unsafe as LibGtk::TreeViewColumn*))
       __return_value
     end
 
     def dest_row_at_pos(drag_x, drag_y, path, pos)
-      __return_value = LibGtk.tree_view_get_dest_row_at_pos((to_unsafe as LibGtk::TreeView*), Int32.cast(drag_x), Int32.cast(drag_y), (path.to_unsafe as LibGtk::TreePath*), pos)
+      __return_value = LibGtk.tree_view_get_dest_row_at_pos((to_unsafe as LibGtk::TreeView*), Int32.cast(drag_x), Int32.cast(drag_y), path && (path.to_unsafe as LibGtk::TreePath*), pos)
       __return_value
     end
 
     def drag_dest_row(path, pos)
-      __return_value = LibGtk.tree_view_get_drag_dest_row((to_unsafe as LibGtk::TreeView*), (path.to_unsafe as LibGtk::TreePath*), pos)
+      __return_value = LibGtk.tree_view_get_drag_dest_row((to_unsafe as LibGtk::TreeView*), path && (path.to_unsafe as LibGtk::TreePath*), pos)
       __return_value
     end
 
@@ -285,7 +231,7 @@ module Gtk
     end
 
     def path_at_pos(x, y, path, column, cell_x, cell_y)
-      __return_value = LibGtk.tree_view_get_path_at_pos((to_unsafe as LibGtk::TreeView*), Int32.cast(x), Int32.cast(y), (path.to_unsafe as LibGtk::TreePath*), (column.to_unsafe as LibGtk::TreeViewColumn*), Int32.cast(cell_x), Int32.cast(cell_y))
+      __return_value = LibGtk.tree_view_get_path_at_pos((to_unsafe as LibGtk::TreeView*), Int32.cast(x), Int32.cast(y), path && (path.to_unsafe as LibGtk::TreePath*), column && (column.to_unsafe as LibGtk::TreeViewColumn*), Int32.cast(cell_x), Int32.cast(cell_y))
       __return_value
     end
 
@@ -330,7 +276,7 @@ module Gtk
     end
 
     def tooltip_context(x, y, keyboard_tip, model, path, iter)
-      __return_value = LibGtk.tree_view_get_tooltip_context((to_unsafe as LibGtk::TreeView*), Int32.cast(x), Int32.cast(y), Bool.cast(keyboard_tip), (model.to_unsafe as LibGtk::TreeModel*), (path.to_unsafe as LibGtk::TreePath*), iter)
+      __return_value = LibGtk.tree_view_get_tooltip_context((to_unsafe as LibGtk::TreeView*), Int32.cast(x), Int32.cast(y), Bool.cast(keyboard_tip), model && (model.to_unsafe as LibGtk::TreeModel*), (path.to_unsafe as LibGtk::TreePath*), iter)
       __return_value
     end
 
@@ -375,7 +321,7 @@ module Gtk
     end
 
     def move_column_after(column, base_column)
-      __return_value = LibGtk.tree_view_move_column_after((to_unsafe as LibGtk::TreeView*), (column.to_unsafe as LibGtk::TreeViewColumn*), (base_column.to_unsafe as LibGtk::TreeViewColumn*))
+      __return_value = LibGtk.tree_view_move_column_after((to_unsafe as LibGtk::TreeView*), (column.to_unsafe as LibGtk::TreeViewColumn*), base_column && (base_column.to_unsafe as LibGtk::TreeViewColumn*))
       __return_value
     end
 
@@ -395,7 +341,7 @@ module Gtk
     end
 
     def scroll_to_cell(path, column, use_align, row_align, col_align)
-      __return_value = LibGtk.tree_view_scroll_to_cell((to_unsafe as LibGtk::TreeView*), (path.to_unsafe as LibGtk::TreePath*), (column.to_unsafe as LibGtk::TreeViewColumn*), Bool.cast(use_align), Float32.cast(row_align), Float32.cast(col_align))
+      __return_value = LibGtk.tree_view_scroll_to_cell((to_unsafe as LibGtk::TreeView*), path && (path.to_unsafe as LibGtk::TreePath*), column && (column.to_unsafe as LibGtk::TreeViewColumn*), Bool.cast(use_align), Float32.cast(row_align), Float32.cast(col_align))
       __return_value
     end
 
@@ -409,28 +355,28 @@ module Gtk
       __return_value
     end
 
-    def column_drag_function=(func, user_data, destroy)
-      __return_value = LibGtk.tree_view_set_column_drag_function((to_unsafe as LibGtk::TreeView*), func, user_data, destroy)
+    def set_column_drag_function(func, user_data, destroy)
+      __return_value = LibGtk.tree_view_set_column_drag_function((to_unsafe as LibGtk::TreeView*), func && func, user_data && user_data, destroy && destroy)
       __return_value
     end
 
-    def cursor=(path, focus_column, start_editing)
-      __return_value = LibGtk.tree_view_set_cursor((to_unsafe as LibGtk::TreeView*), (path.to_unsafe as LibGtk::TreePath*), (focus_column.to_unsafe as LibGtk::TreeViewColumn*), Bool.cast(start_editing))
+    def set_cursor(path, focus_column, start_editing)
+      __return_value = LibGtk.tree_view_set_cursor((to_unsafe as LibGtk::TreeView*), (path.to_unsafe as LibGtk::TreePath*), focus_column && (focus_column.to_unsafe as LibGtk::TreeViewColumn*), Bool.cast(start_editing))
       __return_value
     end
 
-    def cursor_on_cell=(path, focus_column, focus_cell, start_editing)
-      __return_value = LibGtk.tree_view_set_cursor_on_cell((to_unsafe as LibGtk::TreeView*), (path.to_unsafe as LibGtk::TreePath*), (focus_column.to_unsafe as LibGtk::TreeViewColumn*), (focus_cell.to_unsafe as LibGtk::CellRenderer*), Bool.cast(start_editing))
+    def set_cursor_on_cell(path, focus_column, focus_cell, start_editing)
+      __return_value = LibGtk.tree_view_set_cursor_on_cell((to_unsafe as LibGtk::TreeView*), (path.to_unsafe as LibGtk::TreePath*), focus_column && (focus_column.to_unsafe as LibGtk::TreeViewColumn*), focus_cell && (focus_cell.to_unsafe as LibGtk::CellRenderer*), Bool.cast(start_editing))
       __return_value
     end
 
-    def destroy_count_func=(func, data, destroy)
-      __return_value = LibGtk.tree_view_set_destroy_count_func((to_unsafe as LibGtk::TreeView*), func, data, destroy)
+    def set_destroy_count_func(func, data, destroy)
+      __return_value = LibGtk.tree_view_set_destroy_count_func((to_unsafe as LibGtk::TreeView*), func && func, data && data, destroy && destroy)
       __return_value
     end
 
-    def drag_dest_row=(path, pos)
-      __return_value = LibGtk.tree_view_set_drag_dest_row((to_unsafe as LibGtk::TreeView*), (path.to_unsafe as LibGtk::TreePath*), pos)
+    def set_drag_dest_row(path, pos)
+      __return_value = LibGtk.tree_view_set_drag_dest_row((to_unsafe as LibGtk::TreeView*), path && (path.to_unsafe as LibGtk::TreePath*), pos)
       __return_value
     end
 
@@ -460,7 +406,7 @@ module Gtk
     end
 
     def hadjustment=(adjustment)
-      __return_value = LibGtk.tree_view_set_hadjustment((to_unsafe as LibGtk::TreeView*), (adjustment.to_unsafe as LibGtk::Adjustment*))
+      __return_value = LibGtk.tree_view_set_hadjustment((to_unsafe as LibGtk::TreeView*), adjustment && (adjustment.to_unsafe as LibGtk::Adjustment*))
       __return_value
     end
 
@@ -490,7 +436,7 @@ module Gtk
     end
 
     def model=(model)
-      __return_value = LibGtk.tree_view_set_model((to_unsafe as LibGtk::TreeView*), (model.to_unsafe as LibGtk::TreeModel*))
+      __return_value = LibGtk.tree_view_set_model((to_unsafe as LibGtk::TreeView*), model && (model.to_unsafe as LibGtk::TreeModel*))
       __return_value
     end
 
@@ -499,8 +445,8 @@ module Gtk
       __return_value
     end
 
-    def row_separator_func=(func, data, destroy)
-      __return_value = LibGtk.tree_view_set_row_separator_func((to_unsafe as LibGtk::TreeView*), func, data, destroy)
+    def set_row_separator_func(func, data, destroy)
+      __return_value = LibGtk.tree_view_set_row_separator_func((to_unsafe as LibGtk::TreeView*), func && func, data && data, destroy && destroy)
       __return_value
     end
 
@@ -520,17 +466,17 @@ module Gtk
     end
 
     def search_entry=(entry)
-      __return_value = LibGtk.tree_view_set_search_entry((to_unsafe as LibGtk::TreeView*), (entry.to_unsafe as LibGtk::Entry*))
+      __return_value = LibGtk.tree_view_set_search_entry((to_unsafe as LibGtk::TreeView*), entry && (entry.to_unsafe as LibGtk::Entry*))
       __return_value
     end
 
-    def search_equal_func=(search_equal_func, search_user_data, search_destroy)
-      __return_value = LibGtk.tree_view_set_search_equal_func((to_unsafe as LibGtk::TreeView*), search_equal_func, search_user_data, search_destroy)
+    def set_search_equal_func(search_equal_func, search_user_data, search_destroy)
+      __return_value = LibGtk.tree_view_set_search_equal_func((to_unsafe as LibGtk::TreeView*), search_equal_func, search_user_data && search_user_data, search_destroy && search_destroy)
       __return_value
     end
 
-    def search_position_func=(func, data, destroy)
-      __return_value = LibGtk.tree_view_set_search_position_func((to_unsafe as LibGtk::TreeView*), func, data, destroy)
+    def set_search_position_func(func, data, destroy)
+      __return_value = LibGtk.tree_view_set_search_position_func((to_unsafe as LibGtk::TreeView*), func && func, data && data, destroy && destroy)
       __return_value
     end
 
@@ -539,8 +485,8 @@ module Gtk
       __return_value
     end
 
-    def tooltip_cell=(tooltip, path, column, cell)
-      __return_value = LibGtk.tree_view_set_tooltip_cell((to_unsafe as LibGtk::TreeView*), (tooltip.to_unsafe as LibGtk::Tooltip*), (path.to_unsafe as LibGtk::TreePath*), (column.to_unsafe as LibGtk::TreeViewColumn*), (cell.to_unsafe as LibGtk::CellRenderer*))
+    def set_tooltip_cell(tooltip, path, column, cell)
+      __return_value = LibGtk.tree_view_set_tooltip_cell((to_unsafe as LibGtk::TreeView*), (tooltip.to_unsafe as LibGtk::Tooltip*), path && (path.to_unsafe as LibGtk::TreePath*), column && (column.to_unsafe as LibGtk::TreeViewColumn*), cell && (cell.to_unsafe as LibGtk::CellRenderer*))
       __return_value
     end
 
@@ -549,13 +495,13 @@ module Gtk
       __return_value
     end
 
-    def tooltip_row=(tooltip, path)
+    def set_tooltip_row(tooltip, path)
       __return_value = LibGtk.tree_view_set_tooltip_row((to_unsafe as LibGtk::TreeView*), (tooltip.to_unsafe as LibGtk::Tooltip*), (path.to_unsafe as LibGtk::TreePath*))
       __return_value
     end
 
     def vadjustment=(adjustment)
-      __return_value = LibGtk.tree_view_set_vadjustment((to_unsafe as LibGtk::TreeView*), (adjustment.to_unsafe as LibGtk::Adjustment*))
+      __return_value = LibGtk.tree_view_set_vadjustment((to_unsafe as LibGtk::TreeView*), adjustment && (adjustment.to_unsafe as LibGtk::Adjustment*))
       __return_value
     end
 

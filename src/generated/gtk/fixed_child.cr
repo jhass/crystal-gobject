@@ -1,6 +1,7 @@
 module Gtk
   class FixedChild
     include GObject::WrappedType
+
     def initialize @gtk_fixed_child
     end
 

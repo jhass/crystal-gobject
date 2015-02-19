@@ -24,10 +24,10 @@ module GIRepository
 
     def wrapper_definition libname, indent=""
       method_name = name
-      if method_name.starts_with?("get_") || method_name.starts_with?("set_")
-        new_method_name = method_name[4..-1]
-        new_method_name = "#{new_method_name}="  if method_name.starts_with?("set_")
-        method_name = new_method_name
+      if method_name.starts_with?("get_")
+        method_name = method_name[4..-1]
+      elsif method_name.starts_with?("set_") && args.size == 2
+        method_name = "#{method_name[4..-1]}="
       end
 
       if !method? && method_name == "new"

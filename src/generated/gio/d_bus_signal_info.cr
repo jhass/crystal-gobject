@@ -1,6 +1,7 @@
 module Gio
   class DBusSignalInfo
     include GObject::WrappedType
+
     def initialize @gio_d_bus_signal_info
     end
 

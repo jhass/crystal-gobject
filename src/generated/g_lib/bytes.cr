@@ -1,6 +1,7 @@
 module GLib
   class Bytes
     include GObject::WrappedType
+
     def initialize @g_lib_bytes
     end
 
@@ -9,12 +10,12 @@ module GLib
     end
 
     def self.new_internal(data, size)
-      __return_value = LibGLib.bytes_new(data, UInt64.cast(size))
+      __return_value = LibGLib.bytes_new(data && data, UInt64.cast(size))
       GLib::Bytes.new(__return_value)
     end
 
     def self.new_take(data, size)
-      __return_value = LibGLib.bytes_new_take(data, UInt64.cast(size))
+      __return_value = LibGLib.bytes_new_take(data && data, UInt64.cast(size))
       GLib::Bytes.new(__return_value)
     end
 
@@ -30,7 +31,7 @@ module GLib
 
     def data(size)
       __return_value = LibGLib.bytes_get_data((to_unsafe as LibGLib::Bytes*), UInt64.cast(size))
-      PointerIterator.new(__return_value) {|__item_75| __item_75 }
+      PointerIterator.new(__return_value) {|__item_7| __item_7 }
     end
 
     def size

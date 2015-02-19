@@ -23,7 +23,7 @@ module Gtk
     end
 
     def self.foreach(data, foreach_func)
-      __return_value = LibGtk.accel_map_foreach(data, foreach_func)
+      __return_value = LibGtk.accel_map_foreach(data && data, foreach_func)
       __return_value
     end
 

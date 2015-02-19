@@ -1,6 +1,7 @@
 module Cairo
   class RectangleInt
     include GObject::WrappedType
+
     def initialize @cairo_rectangle_int
     end
 

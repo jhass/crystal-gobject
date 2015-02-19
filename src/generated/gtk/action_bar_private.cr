@@ -1,6 +1,7 @@
 module Gtk
   class ActionBarPrivate
     include GObject::WrappedType
+
     def initialize @gtk_action_bar_private
     end
 

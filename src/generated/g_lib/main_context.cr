@@ -1,6 +1,7 @@
 module GLib
   class MainContext
     include GObject::WrappedType
+
     def initialize @g_lib_main_context
     end
 
@@ -49,7 +50,7 @@ module GLib
     end
 
     def invoke_full(priority, function, data, notify)
-      __return_value = LibGLib.main_context_invoke_full((to_unsafe as LibGLib::MainContext*), Int32.cast(priority), function, data, notify)
+      __return_value = LibGLib.main_context_invoke_full((to_unsafe as LibGLib::MainContext*), Int32.cast(priority), function, data, notify && notify)
       __return_value
     end
 

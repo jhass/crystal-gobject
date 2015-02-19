@@ -1,6 +1,7 @@
 module Gdk
   class EventFocus
     include GObject::WrappedType
+
     def initialize @gdk_event_focus
     end
 

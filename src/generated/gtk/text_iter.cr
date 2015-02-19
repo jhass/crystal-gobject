@@ -1,6 +1,7 @@
 module Gtk
   class TextIter
     include GObject::WrappedType
+
     def initialize @gtk_text_iter
     end
 
@@ -34,7 +35,7 @@ module Gtk
     end
 
     def backward_find_char(pred, user_data, limit)
-      __return_value = LibGtk.text_iter_backward_find_char((to_unsafe as LibGtk::TextIter*), pred, user_data, (limit.to_unsafe as LibGtk::TextIter*))
+      __return_value = LibGtk.text_iter_backward_find_char((to_unsafe as LibGtk::TextIter*), pred, user_data, limit && (limit.to_unsafe as LibGtk::TextIter*))
       __return_value
     end
 
@@ -49,7 +50,7 @@ module Gtk
     end
 
     def backward_search(str, flags, match_start, match_end, limit)
-      __return_value = LibGtk.text_iter_backward_search((to_unsafe as LibGtk::TextIter*), str, flags, match_start, match_end, (limit.to_unsafe as LibGtk::TextIter*))
+      __return_value = LibGtk.text_iter_backward_search((to_unsafe as LibGtk::TextIter*), str, flags, match_start, match_end, limit && (limit.to_unsafe as LibGtk::TextIter*))
       __return_value
     end
 
@@ -64,7 +65,7 @@ module Gtk
     end
 
     def backward_to_tag_toggle(tag)
-      __return_value = LibGtk.text_iter_backward_to_tag_toggle((to_unsafe as LibGtk::TextIter*), (tag.to_unsafe as LibGtk::TextTag*))
+      __return_value = LibGtk.text_iter_backward_to_tag_toggle((to_unsafe as LibGtk::TextIter*), tag && (tag.to_unsafe as LibGtk::TextTag*))
       __return_value
     end
 
@@ -109,7 +110,7 @@ module Gtk
     end
 
     def begins_tag(tag)
-      __return_value = LibGtk.text_iter_begins_tag((to_unsafe as LibGtk::TextIter*), (tag.to_unsafe as LibGtk::TextTag*))
+      __return_value = LibGtk.text_iter_begins_tag((to_unsafe as LibGtk::TextIter*), tag && (tag.to_unsafe as LibGtk::TextTag*))
       __return_value
     end
 
@@ -144,7 +145,7 @@ module Gtk
     end
 
     def ends_tag(tag)
-      __return_value = LibGtk.text_iter_ends_tag((to_unsafe as LibGtk::TextIter*), (tag.to_unsafe as LibGtk::TextTag*))
+      __return_value = LibGtk.text_iter_ends_tag((to_unsafe as LibGtk::TextIter*), tag && (tag.to_unsafe as LibGtk::TextTag*))
       __return_value
     end
 
@@ -179,7 +180,7 @@ module Gtk
     end
 
     def forward_find_char(pred, user_data, limit)
-      __return_value = LibGtk.text_iter_forward_find_char((to_unsafe as LibGtk::TextIter*), pred, user_data, (limit.to_unsafe as LibGtk::TextIter*))
+      __return_value = LibGtk.text_iter_forward_find_char((to_unsafe as LibGtk::TextIter*), pred, user_data, limit && (limit.to_unsafe as LibGtk::TextIter*))
       __return_value
     end
 
@@ -194,7 +195,7 @@ module Gtk
     end
 
     def forward_search(str, flags, match_start, match_end, limit)
-      __return_value = LibGtk.text_iter_forward_search((to_unsafe as LibGtk::TextIter*), str, flags, match_start, match_end, (limit.to_unsafe as LibGtk::TextIter*))
+      __return_value = LibGtk.text_iter_forward_search((to_unsafe as LibGtk::TextIter*), str, flags, match_start, match_end, limit && (limit.to_unsafe as LibGtk::TextIter*))
       __return_value
     end
 
@@ -219,7 +220,7 @@ module Gtk
     end
 
     def forward_to_tag_toggle(tag)
-      __return_value = LibGtk.text_iter_forward_to_tag_toggle((to_unsafe as LibGtk::TextIter*), (tag.to_unsafe as LibGtk::TextTag*))
+      __return_value = LibGtk.text_iter_forward_to_tag_toggle((to_unsafe as LibGtk::TextIter*), tag && (tag.to_unsafe as LibGtk::TextTag*))
       __return_value
     end
 
@@ -459,7 +460,7 @@ module Gtk
     end
 
     def toggles_tag(tag)
-      __return_value = LibGtk.text_iter_toggles_tag((to_unsafe as LibGtk::TextIter*), (tag.to_unsafe as LibGtk::TextTag*))
+      __return_value = LibGtk.text_iter_toggles_tag((to_unsafe as LibGtk::TextIter*), tag && (tag.to_unsafe as LibGtk::TextTag*))
       __return_value
     end
 

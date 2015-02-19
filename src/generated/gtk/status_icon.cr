@@ -8,52 +8,19 @@ module Gtk
     end
 
 
-    def file=(__value)
-      LibGtk.status_icon_set_file((to_unsafe as LibGtk::StatusIcon*), __value)
-    end
-
-    def gicon=(__value)
-      LibGtk.status_icon_set_gicon((to_unsafe as LibGtk::StatusIcon*), __value)
-    end
-
-    def has_tooltip=(__value)
-      LibGtk.status_icon_set_has_tooltip((to_unsafe as LibGtk::StatusIcon*), Bool.cast(__value))
-    end
-
-    def icon_name=(__value)
-      LibGtk.status_icon_set_icon_name((to_unsafe as LibGtk::StatusIcon*), __value)
-    end
 
 
-    def pixbuf=(__value)
-      LibGtk.status_icon_set_pixbuf((to_unsafe as LibGtk::StatusIcon*), __value)
-    end
-
-    def screen=(__value)
-      LibGtk.status_icon_set_screen((to_unsafe as LibGtk::StatusIcon*), __value)
-    end
 
 
-    def stock=(__value)
-      LibGtk.status_icon_set_stock((to_unsafe as LibGtk::StatusIcon*), __value)
-    end
 
 
-    def title=(__value)
-      LibGtk.status_icon_set_title((to_unsafe as LibGtk::StatusIcon*), __value)
-    end
 
-    def tooltip_markup=(__value)
-      LibGtk.status_icon_set_tooltip_markup((to_unsafe as LibGtk::StatusIcon*), __value)
-    end
 
-    def tooltip_text=(__value)
-      LibGtk.status_icon_set_tooltip_text((to_unsafe as LibGtk::StatusIcon*), __value)
-    end
 
-    def visible=(__value)
-      LibGtk.status_icon_set_visible((to_unsafe as LibGtk::StatusIcon*), Bool.cast(__value))
-    end
+
+
+
+
 
     def self.new_internal
       __return_value = LibGtk.status_icon_new
@@ -181,7 +148,7 @@ module Gtk
     end
 
     def from_pixbuf=(pixbuf)
-      __return_value = LibGtk.status_icon_set_from_pixbuf((to_unsafe as LibGtk::StatusIcon*), (pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*))
+      __return_value = LibGtk.status_icon_set_from_pixbuf((to_unsafe as LibGtk::StatusIcon*), pixbuf && (pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*))
       __return_value
     end
 
@@ -211,7 +178,7 @@ module Gtk
     end
 
     def tooltip_markup=(markup)
-      __return_value = LibGtk.status_icon_set_tooltip_markup((to_unsafe as LibGtk::StatusIcon*), markup)
+      __return_value = LibGtk.status_icon_set_tooltip_markup((to_unsafe as LibGtk::StatusIcon*), markup && markup)
       __return_value
     end
 

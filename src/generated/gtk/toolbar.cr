@@ -13,21 +13,9 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
     # Implements ToolShell
-    def icon_size=(__value)
-      LibGtk.toolbar_set_icon_size((to_unsafe as LibGtk::Toolbar*), __value)
-    end
 
-    def icon_size_set=(__value)
-      LibGtk.toolbar_set_icon_size_set((to_unsafe as LibGtk::Toolbar*), Bool.cast(__value))
-    end
 
-    def show_arrow=(__value)
-      LibGtk.toolbar_set_show_arrow((to_unsafe as LibGtk::Toolbar*), Bool.cast(__value))
-    end
 
-    def toolbar_style=(__value)
-      LibGtk.toolbar_set_toolbar_style((to_unsafe as LibGtk::Toolbar*), __value)
-    end
 
     def self.new_internal
       __return_value = LibGtk.toolbar_new
@@ -79,8 +67,8 @@ module Gtk
       __return_value
     end
 
-    def drop_highlight_item=(tool_item, index)
-      __return_value = LibGtk.toolbar_set_drop_highlight_item((to_unsafe as LibGtk::Toolbar*), (tool_item.to_unsafe as LibGtk::ToolItem*), Int32.cast(index))
+    def set_drop_highlight_item(tool_item, index)
+      __return_value = LibGtk.toolbar_set_drop_highlight_item((to_unsafe as LibGtk::Toolbar*), tool_item && (tool_item.to_unsafe as LibGtk::ToolItem*), Int32.cast(index))
       __return_value
     end
 

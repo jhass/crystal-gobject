@@ -1,6 +1,7 @@
 module Gtk
   class ScaleButtonPrivate
     include GObject::WrappedType
+
     def initialize @gtk_scale_button_private
     end
 

@@ -1,6 +1,7 @@
 module Gtk
   class StatusbarPrivate
     include GObject::WrappedType
+
     def initialize @gtk_statusbar_private
     end
 

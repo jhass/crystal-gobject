@@ -1,6 +1,7 @@
 module GObject
   class ClosureNotifyData
     include GObject::WrappedType
+
     def initialize @g_object_closure_notify_data
     end
 

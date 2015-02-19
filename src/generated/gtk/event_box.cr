@@ -11,13 +11,7 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
-    def above_child=(__value)
-      LibGtk.event_box_set_above_child((to_unsafe as LibGtk::EventBox*), Bool.cast(__value))
-    end
 
-    def visible_window=(__value)
-      LibGtk.event_box_set_visible_window((to_unsafe as LibGtk::EventBox*), Bool.cast(__value))
-    end
 
     def self.new_internal
       __return_value = LibGtk.event_box_new

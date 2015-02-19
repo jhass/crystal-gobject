@@ -1,6 +1,7 @@
 module Gtk
   class RangePrivate
     include GObject::WrappedType
+
     def initialize @gtk_range_private
     end
 

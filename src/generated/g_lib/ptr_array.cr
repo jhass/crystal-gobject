@@ -1,6 +1,7 @@
 module GLib
   class PtrArray
     include GObject::WrappedType
+
     def initialize @g_lib_ptr_array
     end
 

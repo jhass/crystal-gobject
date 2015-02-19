@@ -1,6 +1,7 @@
 module Gio
   class SettingsSchema
     include GObject::WrappedType
+
     def initialize @gio_settings_schema
     end
 

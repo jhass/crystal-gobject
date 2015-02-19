@@ -1,6 +1,7 @@
 module Gtk
   class UIManagerPrivate
     include GObject::WrappedType
+
     def initialize @gtk_u_i_manager_private
     end
 

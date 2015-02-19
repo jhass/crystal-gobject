@@ -1,6 +1,7 @@
 module Gdk
   class TimeCoord
     include GObject::WrappedType
+
     def initialize @gdk_time_coord
     end
 

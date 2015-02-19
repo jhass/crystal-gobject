@@ -1,6 +1,7 @@
 module GLib
   class ThreadPool
     include GObject::WrappedType
+
     def initialize @g_lib_thread_pool
     end
 
@@ -30,7 +31,7 @@ module GLib
       __return_value
     end
 
-    def max_threads=(max_threads)
+    def set_max_threads(max_threads)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.thread_pool_set_max_threads((to_unsafe as LibGLib::ThreadPool*), Int32.cast(max_threads), pointerof(__error))
       GLib::Error.assert __error
@@ -57,12 +58,12 @@ module GLib
       __return_value
     end
 
-    def self.max_idle_time=(interval)
+    def self.set_max_idle_time(interval)
       __return_value = LibGLib.thread_pool_set_max_idle_time(UInt32.cast(interval))
       __return_value
     end
 
-    def self.max_unused_threads=(max_threads)
+    def self.set_max_unused_threads(max_threads)
       __return_value = LibGLib.thread_pool_set_max_unused_threads(Int32.cast(max_threads))
       __return_value
     end

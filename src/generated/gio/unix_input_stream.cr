@@ -11,9 +11,6 @@ module Gio
 
     # Implements FileDescriptorBased
     # Implements PollableInputStream
-    def close_fd=(__value)
-      LibGio.unix_input_stream_set_close_fd((to_unsafe as LibGio::UnixInputStream*), Bool.cast(__value))
-    end
 
 
     def self.new_internal(fd, close_fd)

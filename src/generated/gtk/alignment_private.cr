@@ -1,6 +1,7 @@
 module Gtk
   class AlignmentPrivate
     include GObject::WrappedType
+
     def initialize @gtk_alignment_private
     end
 

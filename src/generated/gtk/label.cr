@@ -11,84 +11,33 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
-    def angle=(__value)
-      LibGtk.label_set_angle((to_unsafe as LibGtk::Label*), Float64.cast(__value))
-    end
-
-    def attributes=(__value)
-      LibGtk.label_set_attributes((to_unsafe as LibGtk::Label*), __value)
-    end
 
 
-    def ellipsize=(__value)
-      LibGtk.label_set_ellipsize((to_unsafe as LibGtk::Label*), __value)
-    end
-
-    def justify=(__value)
-      LibGtk.label_set_justify((to_unsafe as LibGtk::Label*), __value)
-    end
-
-    def label=(__value)
-      LibGtk.label_set_label((to_unsafe as LibGtk::Label*), __value)
-    end
-
-    def lines=(__value)
-      LibGtk.label_set_lines((to_unsafe as LibGtk::Label*), Int32.cast(__value))
-    end
-
-    def max_width_chars=(__value)
-      LibGtk.label_set_max_width_chars((to_unsafe as LibGtk::Label*), Int32.cast(__value))
-    end
 
 
-    def mnemonic_widget=(__value)
-      LibGtk.label_set_mnemonic_widget((to_unsafe as LibGtk::Label*), __value)
-    end
-
-    def pattern=(__value)
-      LibGtk.label_set_pattern((to_unsafe as LibGtk::Label*), __value)
-    end
-
-    def selectable=(__value)
-      LibGtk.label_set_selectable((to_unsafe as LibGtk::Label*), Bool.cast(__value))
-    end
 
 
-    def single_line_mode=(__value)
-      LibGtk.label_set_single_line_mode((to_unsafe as LibGtk::Label*), Bool.cast(__value))
-    end
 
-    def track_visited_links=(__value)
-      LibGtk.label_set_track_visited_links((to_unsafe as LibGtk::Label*), Bool.cast(__value))
-    end
 
-    def use_markup=(__value)
-      LibGtk.label_set_use_markup((to_unsafe as LibGtk::Label*), Bool.cast(__value))
-    end
 
-    def use_underline=(__value)
-      LibGtk.label_set_use_underline((to_unsafe as LibGtk::Label*), Bool.cast(__value))
-    end
 
-    def width_chars=(__value)
-      LibGtk.label_set_width_chars((to_unsafe as LibGtk::Label*), Int32.cast(__value))
-    end
 
-    def wrap=(__value)
-      LibGtk.label_set_wrap((to_unsafe as LibGtk::Label*), Bool.cast(__value))
-    end
 
-    def wrap_mode=(__value)
-      LibGtk.label_set_wrap_mode((to_unsafe as LibGtk::Label*), __value)
-    end
+
+
+
+
+
+
+
 
     def self.new_internal(str)
-      __return_value = LibGtk.label_new(str)
+      __return_value = LibGtk.label_new(str && str)
       Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_mnemonic(str)
-      __return_value = LibGtk.label_new_with_mnemonic(str)
+      __return_value = LibGtk.label_new_with_mnemonic(str && str)
       Gtk::Widget.new(__return_value)
     end
 
@@ -263,7 +212,7 @@ module Gtk
     end
 
     def mnemonic_widget=(widget)
-      __return_value = LibGtk.label_set_mnemonic_widget((to_unsafe as LibGtk::Label*), (widget.to_unsafe as LibGtk::Widget*))
+      __return_value = LibGtk.label_set_mnemonic_widget((to_unsafe as LibGtk::Label*), widget && (widget.to_unsafe as LibGtk::Widget*))
       __return_value
     end
 

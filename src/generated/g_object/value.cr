@@ -1,6 +1,7 @@
 module GObject
   class Value
     include GObject::WrappedType
+
     def initialize @g_object_value
     end
 
@@ -164,12 +165,12 @@ module GObject
     end
 
     def boxed=(v_boxed)
-      __return_value = LibGObject.value_set_boxed((to_unsafe as LibGObject::Value*), v_boxed)
+      __return_value = LibGObject.value_set_boxed((to_unsafe as LibGObject::Value*), v_boxed && v_boxed)
       __return_value
     end
 
     def boxed_take_ownership=(v_boxed)
-      __return_value = LibGObject.value_set_boxed_take_ownership((to_unsafe as LibGObject::Value*), v_boxed)
+      __return_value = LibGObject.value_set_boxed_take_ownership((to_unsafe as LibGObject::Value*), v_boxed && v_boxed)
       __return_value
     end
 
@@ -204,7 +205,7 @@ module GObject
     end
 
     def instance=(instance)
-      __return_value = LibGObject.value_set_instance((to_unsafe as LibGObject::Value*), instance)
+      __return_value = LibGObject.value_set_instance((to_unsafe as LibGObject::Value*), instance && instance)
       __return_value
     end
 
@@ -224,12 +225,12 @@ module GObject
     end
 
     def object=(v_object)
-      __return_value = LibGObject.value_set_object((to_unsafe as LibGObject::Value*), (v_object.to_unsafe as LibGObject::Object*))
+      __return_value = LibGObject.value_set_object((to_unsafe as LibGObject::Value*), v_object && (v_object.to_unsafe as LibGObject::Object*))
       __return_value
     end
 
     def param=(param)
-      __return_value = LibGObject.value_set_param((to_unsafe as LibGObject::Value*), (param.to_unsafe as LibGObject::ParamSpec*))
+      __return_value = LibGObject.value_set_param((to_unsafe as LibGObject::Value*), param && (param.to_unsafe as LibGObject::ParamSpec*))
       __return_value
     end
 
@@ -244,22 +245,22 @@ module GObject
     end
 
     def static_boxed=(v_boxed)
-      __return_value = LibGObject.value_set_static_boxed((to_unsafe as LibGObject::Value*), v_boxed)
+      __return_value = LibGObject.value_set_static_boxed((to_unsafe as LibGObject::Value*), v_boxed && v_boxed)
       __return_value
     end
 
     def static_string=(v_string)
-      __return_value = LibGObject.value_set_static_string((to_unsafe as LibGObject::Value*), v_string)
+      __return_value = LibGObject.value_set_static_string((to_unsafe as LibGObject::Value*), v_string && v_string)
       __return_value
     end
 
     def string=(v_string)
-      __return_value = LibGObject.value_set_string((to_unsafe as LibGObject::Value*), v_string)
+      __return_value = LibGObject.value_set_string((to_unsafe as LibGObject::Value*), v_string && v_string)
       __return_value
     end
 
     def string_take_ownership=(v_string)
-      __return_value = LibGObject.value_set_string_take_ownership((to_unsafe as LibGObject::Value*), v_string)
+      __return_value = LibGObject.value_set_string_take_ownership((to_unsafe as LibGObject::Value*), v_string && v_string)
       __return_value
     end
 
@@ -284,22 +285,22 @@ module GObject
     end
 
     def variant=(variant)
-      __return_value = LibGObject.value_set_variant((to_unsafe as LibGObject::Value*), (variant.to_unsafe as LibGLib::Variant*))
+      __return_value = LibGObject.value_set_variant((to_unsafe as LibGObject::Value*), variant && (variant.to_unsafe as LibGLib::Variant*))
       __return_value
     end
 
     def take_boxed(v_boxed)
-      __return_value = LibGObject.value_take_boxed((to_unsafe as LibGObject::Value*), v_boxed)
+      __return_value = LibGObject.value_take_boxed((to_unsafe as LibGObject::Value*), v_boxed && v_boxed)
       __return_value
     end
 
     def take_string(v_string)
-      __return_value = LibGObject.value_take_string((to_unsafe as LibGObject::Value*), v_string)
+      __return_value = LibGObject.value_take_string((to_unsafe as LibGObject::Value*), v_string && v_string)
       __return_value
     end
 
     def take_variant(variant)
-      __return_value = LibGObject.value_take_variant((to_unsafe as LibGObject::Value*), (variant.to_unsafe as LibGLib::Variant*))
+      __return_value = LibGObject.value_take_variant((to_unsafe as LibGObject::Value*), variant && (variant.to_unsafe as LibGLib::Variant*))
       __return_value
     end
 

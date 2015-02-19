@@ -1,6 +1,7 @@
 module Gio
   class DBusSubtreeVTable
     include GObject::WrappedType
+
     def initialize @gio_d_bus_subtree_v_table
     end
 

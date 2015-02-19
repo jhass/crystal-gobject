@@ -1,6 +1,7 @@
 module Gtk
   class LayoutPrivate
     include GObject::WrappedType
+
     def initialize @gtk_layout_private
     end
 

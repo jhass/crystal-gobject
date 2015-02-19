@@ -9,27 +9,15 @@ module Gio
 
     # Implements ActionGroup
     # Implements ActionMap
-    def action_group=(__value)
-      LibGio.application_set_action_group((to_unsafe as LibGio::Application*), __value)
-    end
-
-
-    def flags=(__value)
-      LibGio.application_set_flags((to_unsafe as LibGio::Application*), __value)
-    end
-
-    def inactivity_timeout=(__value)
-      LibGio.application_set_inactivity_timeout((to_unsafe as LibGio::Application*), UInt32.cast(__value))
-    end
 
 
 
-    def resource_base_path=(__value)
-      LibGio.application_set_resource_base_path((to_unsafe as LibGio::Application*), __value)
-    end
+
+
+
 
     def self.new_internal(application_id, flags)
-      __return_value = LibGio.application_new(application_id, flags)
+      __return_value = LibGio.application_new(application_id && application_id, flags)
       Gio::Application.new(__return_value)
     end
 
@@ -49,7 +37,7 @@ module Gio
     end
 
     def add_main_option(long_name, short_name, flags, arg, description, arg_description)
-      __return_value = LibGio.application_add_main_option((to_unsafe as LibGio::Application*), long_name, Int8.cast(short_name), flags, arg, description, arg_description)
+      __return_value = LibGio.application_add_main_option((to_unsafe as LibGio::Application*), long_name, Int8.cast(short_name), flags, arg, description, arg_description && arg_description)
       __return_value
     end
 
@@ -125,7 +113,7 @@ module Gio
 
     def register(cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.application_register((to_unsafe as LibGio::Application*), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.application_register((to_unsafe as LibGio::Application*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -136,26 +124,26 @@ module Gio
     end
 
     def run(argc, argv)
-      __return_value = LibGio.application_run((to_unsafe as LibGio::Application*), Int32.cast(argc), argv)
+      __return_value = LibGio.application_run((to_unsafe as LibGio::Application*), Int32.cast(argc), argv && argv)
       __return_value
     end
 
     def send_notification(id, notification)
-      __return_value = LibGio.application_send_notification((to_unsafe as LibGio::Application*), id, (notification.to_unsafe as LibGio::Notification*))
+      __return_value = LibGio.application_send_notification((to_unsafe as LibGio::Application*), id && id, (notification.to_unsafe as LibGio::Notification*))
       __return_value
     end
 
     def action_group=(action_group)
-      __return_value = LibGio.application_set_action_group((to_unsafe as LibGio::Application*), (action_group.to_unsafe as LibGio::ActionGroup*))
+      __return_value = LibGio.application_set_action_group((to_unsafe as LibGio::Application*), action_group && (action_group.to_unsafe as LibGio::ActionGroup*))
       __return_value
     end
 
     def application_id=(application_id)
-      __return_value = LibGio.application_set_application_id((to_unsafe as LibGio::Application*), application_id)
+      __return_value = LibGio.application_set_application_id((to_unsafe as LibGio::Application*), application_id && application_id)
       __return_value
     end
 
-    def default=
+    def set_default
       __return_value = LibGio.application_set_default((to_unsafe as LibGio::Application*))
       __return_value
     end
@@ -171,7 +159,7 @@ module Gio
     end
 
     def resource_base_path=(resource_path)
-      __return_value = LibGio.application_set_resource_base_path((to_unsafe as LibGio::Application*), resource_path)
+      __return_value = LibGio.application_set_resource_base_path((to_unsafe as LibGio::Application*), resource_path && resource_path)
       __return_value
     end
 

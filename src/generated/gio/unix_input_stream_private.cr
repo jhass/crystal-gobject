@@ -1,6 +1,7 @@
 module Gio
   class UnixInputStreamPrivate
     include GObject::WrappedType
+
     def initialize @gio_unix_input_stream_private
     end
 

@@ -1,6 +1,7 @@
 module Pango
   class LogAttr
     include GObject::WrappedType
+
     def initialize @pango_log_attr
     end
 

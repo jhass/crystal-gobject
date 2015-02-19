@@ -1,6 +1,7 @@
 module Gtk
   class ColorSelectionDialogPrivate
     include GObject::WrappedType
+
     def initialize @gtk_color_selection_dialog_private
     end
 

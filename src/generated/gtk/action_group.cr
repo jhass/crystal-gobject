@@ -8,18 +8,9 @@ module Gtk
     end
 
     # Implements Buildable
-    def accel_group=(__value)
-      LibGtk.action_group_set_accel_group((to_unsafe as LibGtk::ActionGroup*), __value)
-    end
 
 
-    def sensitive=(__value)
-      LibGtk.action_group_set_sensitive((to_unsafe as LibGtk::ActionGroup*), Bool.cast(__value))
-    end
 
-    def visible=(__value)
-      LibGtk.action_group_set_visible((to_unsafe as LibGtk::ActionGroup*), Bool.cast(__value))
-    end
 
     def self.new_internal(name)
       __return_value = LibGtk.action_group_new(name)
@@ -32,7 +23,7 @@ module Gtk
     end
 
     def add_action_with_accel(action, accelerator)
-      __return_value = LibGtk.action_group_add_action_with_accel((to_unsafe as LibGtk::ActionGroup*), (action.to_unsafe as LibGtk::Action*), accelerator)
+      __return_value = LibGtk.action_group_add_action_with_accel((to_unsafe as LibGtk::ActionGroup*), (action.to_unsafe as LibGtk::Action*), accelerator && accelerator)
       __return_value
     end
 
@@ -72,7 +63,7 @@ module Gtk
     end
 
     def accel_group=(accel_group)
-      __return_value = LibGtk.action_group_set_accel_group((to_unsafe as LibGtk::ActionGroup*), (accel_group.to_unsafe as LibGtk::AccelGroup*))
+      __return_value = LibGtk.action_group_set_accel_group((to_unsafe as LibGtk::ActionGroup*), accel_group && (accel_group.to_unsafe as LibGtk::AccelGroup*))
       __return_value
     end
 
@@ -81,13 +72,13 @@ module Gtk
       __return_value
     end
 
-    def translate_func=(func, data, notify)
+    def set_translate_func(func, data, notify)
       __return_value = LibGtk.action_group_set_translate_func((to_unsafe as LibGtk::ActionGroup*), func, data, notify)
       __return_value
     end
 
     def translation_domain=(domain)
-      __return_value = LibGtk.action_group_set_translation_domain((to_unsafe as LibGtk::ActionGroup*), domain)
+      __return_value = LibGtk.action_group_set_translation_domain((to_unsafe as LibGtk::ActionGroup*), domain && domain)
       __return_value
     end
 

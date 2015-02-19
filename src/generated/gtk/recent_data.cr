@@ -1,6 +1,7 @@
 module Gtk
   class RecentData
     include GObject::WrappedType
+
     def initialize @gtk_recent_data
     end
 

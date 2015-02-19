@@ -10,16 +10,10 @@ module Gtk
     end
 
     # Implements Buildable
-    def active=(__value)
-      LibGtk.toggle_action_set_active((to_unsafe as LibGtk::ToggleAction*), Bool.cast(__value))
-    end
 
-    def draw_as_radio=(__value)
-      LibGtk.toggle_action_set_draw_as_radio((to_unsafe as LibGtk::ToggleAction*), Bool.cast(__value))
-    end
 
     def self.new_internal(name, label, tooltip, stock_id)
-      __return_value = LibGtk.toggle_action_new(name, label, tooltip, stock_id)
+      __return_value = LibGtk.toggle_action_new(name, label && label, tooltip && tooltip, stock_id && stock_id)
       Gtk::ToggleAction.new(__return_value)
     end
 

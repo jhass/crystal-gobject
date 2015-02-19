@@ -1,6 +1,7 @@
 module GLib
   class MarkupParser
     include GObject::WrappedType
+
     def initialize @g_lib_markup_parser
     end
 

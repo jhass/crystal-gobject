@@ -1,7 +1,7 @@
 module Gtk
   module Buildable
     def add_child(builder, child, type)
-      __return_value = LibGtk.buildable_add_child((to_unsafe as LibGtk::Buildable*), (builder.to_unsafe as LibGtk::Builder*), (child.to_unsafe as LibGObject::Object*), type)
+      __return_value = LibGtk.buildable_add_child((to_unsafe as LibGtk::Buildable*), (builder.to_unsafe as LibGtk::Builder*), (child.to_unsafe as LibGObject::Object*), type && type)
       __return_value
     end
 
@@ -11,17 +11,17 @@ module Gtk
     end
 
     def custom_finished(builder, child, tagname, data)
-      __return_value = LibGtk.buildable_custom_finished((to_unsafe as LibGtk::Buildable*), (builder.to_unsafe as LibGtk::Builder*), (child.to_unsafe as LibGObject::Object*), tagname, data)
+      __return_value = LibGtk.buildable_custom_finished((to_unsafe as LibGtk::Buildable*), (builder.to_unsafe as LibGtk::Builder*), child && (child.to_unsafe as LibGObject::Object*), tagname, data)
       __return_value
     end
 
     def custom_tag_end(builder, child, tagname, data)
-      __return_value = LibGtk.buildable_custom_tag_end((to_unsafe as LibGtk::Buildable*), (builder.to_unsafe as LibGtk::Builder*), (child.to_unsafe as LibGObject::Object*), tagname, data)
+      __return_value = LibGtk.buildable_custom_tag_end((to_unsafe as LibGtk::Buildable*), (builder.to_unsafe as LibGtk::Builder*), child && (child.to_unsafe as LibGObject::Object*), tagname, data)
       __return_value
     end
 
     def custom_tag_start(builder, child, tagname, parser, data)
-      __return_value = LibGtk.buildable_custom_tag_start((to_unsafe as LibGtk::Buildable*), (builder.to_unsafe as LibGtk::Builder*), (child.to_unsafe as LibGObject::Object*), tagname, parser, data)
+      __return_value = LibGtk.buildable_custom_tag_start((to_unsafe as LibGtk::Buildable*), (builder.to_unsafe as LibGtk::Builder*), child && (child.to_unsafe as LibGObject::Object*), tagname, parser, data)
       __return_value
     end
 
@@ -40,7 +40,7 @@ module Gtk
       __return_value
     end
 
-    def buildable_property=(builder, name, value)
+    def set_buildable_property(builder, name, value)
       __return_value = LibGtk.buildable_set_buildable_property((to_unsafe as LibGtk::Buildable*), (builder.to_unsafe as LibGtk::Builder*), name, (value.to_unsafe as LibGObject::Value*))
       __return_value
     end

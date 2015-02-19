@@ -1,6 +1,7 @@
 module Gtk
   class CellRendererPrivate
     include GObject::WrappedType
+
     def initialize @gtk_cell_renderer_private
     end
 

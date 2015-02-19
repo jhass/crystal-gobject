@@ -12,33 +12,12 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
-    def activate_on_single_click=(__value)
-      LibGtk.flow_box_set_activate_on_single_click((to_unsafe as LibGtk::FlowBox*), Bool.cast(__value))
-    end
 
-    def column_spacing=(__value)
-      LibGtk.flow_box_set_column_spacing((to_unsafe as LibGtk::FlowBox*), UInt32.cast(__value))
-    end
 
-    def homogeneous=(__value)
-      LibGtk.flow_box_set_homogeneous((to_unsafe as LibGtk::FlowBox*), Bool.cast(__value))
-    end
 
-    def max_children_per_line=(__value)
-      LibGtk.flow_box_set_max_children_per_line((to_unsafe as LibGtk::FlowBox*), UInt32.cast(__value))
-    end
 
-    def min_children_per_line=(__value)
-      LibGtk.flow_box_set_min_children_per_line((to_unsafe as LibGtk::FlowBox*), UInt32.cast(__value))
-    end
 
-    def row_spacing=(__value)
-      LibGtk.flow_box_set_row_spacing((to_unsafe as LibGtk::FlowBox*), UInt32.cast(__value))
-    end
 
-    def selection_mode=(__value)
-      LibGtk.flow_box_set_selection_mode((to_unsafe as LibGtk::FlowBox*), __value)
-    end
 
     def self.new_internal
       __return_value = LibGtk.flow_box_new
@@ -130,8 +109,8 @@ module Gtk
       __return_value
     end
 
-    def filter_func=(filter_func, user_data, destroy)
-      __return_value = LibGtk.flow_box_set_filter_func((to_unsafe as LibGtk::FlowBox*), filter_func, user_data, destroy)
+    def set_filter_func(filter_func, user_data, destroy)
+      __return_value = LibGtk.flow_box_set_filter_func((to_unsafe as LibGtk::FlowBox*), filter_func && filter_func, user_data, destroy)
       __return_value
     end
 
@@ -165,8 +144,8 @@ module Gtk
       __return_value
     end
 
-    def sort_func=(sort_func, user_data, destroy)
-      __return_value = LibGtk.flow_box_set_sort_func((to_unsafe as LibGtk::FlowBox*), sort_func, user_data, destroy)
+    def set_sort_func(sort_func, user_data, destroy)
+      __return_value = LibGtk.flow_box_set_sort_func((to_unsafe as LibGtk::FlowBox*), sort_func && sort_func, user_data, destroy)
       __return_value
     end
 

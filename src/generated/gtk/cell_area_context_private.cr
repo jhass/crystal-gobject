@@ -1,6 +1,7 @@
 module Gtk
   class CellAreaContextPrivate
     include GObject::WrappedType
+
     def initialize @gtk_cell_area_context_private
     end
 

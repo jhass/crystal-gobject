@@ -1,6 +1,7 @@
 module GLib
   class HashTableIter
     include GObject::WrappedType
+
     def initialize @g_lib_hash_table_iter
     end
 
@@ -14,7 +15,7 @@ module GLib
     end
 
     def next(key, value)
-      __return_value = LibGLib.hash_table_iter_next((to_unsafe as LibGLib::HashTableIter*), key, value)
+      __return_value = LibGLib.hash_table_iter_next((to_unsafe as LibGLib::HashTableIter*), key && key, value && value)
       __return_value
     end
 

@@ -40,8 +40,8 @@ module Gtk
       __return_value
     end
 
-    def cell_data_func=(cell, func, func_data, destroy)
-      __return_value = LibGtk.cell_layout_set_cell_data_func((to_unsafe as LibGtk::CellLayout*), (cell.to_unsafe as LibGtk::CellRenderer*), func, func_data, destroy)
+    def set_cell_data_func(cell, func, func_data, destroy)
+      __return_value = LibGtk.cell_layout_set_cell_data_func((to_unsafe as LibGtk::CellLayout*), (cell.to_unsafe as LibGtk::CellRenderer*), func && func, func_data, destroy)
       __return_value
     end
 

@@ -1,6 +1,7 @@
 module GLib
   class String
     include GObject::WrappedType
+
     def initialize @g_lib_string
     end
 

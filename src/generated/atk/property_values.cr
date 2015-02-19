@@ -1,6 +1,7 @@
 module Atk
   class PropertyValues
     include GObject::WrappedType
+
     def initialize @atk_property_values
     end
 

@@ -1,6 +1,7 @@
 module Gio
   class DBusObjectManagerClientPrivate
     include GObject::WrappedType
+
     def initialize @gio_d_bus_object_manager_client_private
     end
 

@@ -7,29 +7,11 @@ module Gtk
       @gtk_adjustment.not_nil!
     end
 
-    def lower=(__value)
-      LibGtk.adjustment_set_lower((to_unsafe as LibGtk::Adjustment*), Float64.cast(__value))
-    end
 
-    def page_increment=(__value)
-      LibGtk.adjustment_set_page_increment((to_unsafe as LibGtk::Adjustment*), Float64.cast(__value))
-    end
 
-    def page_size=(__value)
-      LibGtk.adjustment_set_page_size((to_unsafe as LibGtk::Adjustment*), Float64.cast(__value))
-    end
 
-    def step_increment=(__value)
-      LibGtk.adjustment_set_step_increment((to_unsafe as LibGtk::Adjustment*), Float64.cast(__value))
-    end
 
-    def upper=(__value)
-      LibGtk.adjustment_set_upper((to_unsafe as LibGtk::Adjustment*), Float64.cast(__value))
-    end
 
-    def value=(__value)
-      LibGtk.adjustment_set_value((to_unsafe as LibGtk::Adjustment*), Float64.cast(__value))
-    end
 
     def self.new_internal(value, lower, upper, step_increment, page_increment, page_size)
       __return_value = LibGtk.adjustment_new(Float64.cast(value), Float64.cast(lower), Float64.cast(upper), Float64.cast(step_increment), Float64.cast(page_increment), Float64.cast(page_size))

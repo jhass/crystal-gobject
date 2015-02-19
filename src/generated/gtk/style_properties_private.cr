@@ -1,6 +1,7 @@
 module Gtk
   class StylePropertiesPrivate
     include GObject::WrappedType
+
     def initialize @gtk_style_properties_private
     end
 

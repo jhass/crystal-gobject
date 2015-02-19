@@ -1,6 +1,7 @@
 module Gtk
   class RecentInfo
     include GObject::WrappedType
+
     def initialize @gtk_recent_info
     end
 
@@ -10,7 +11,7 @@ module Gtk
 
     def create_app_info(app_name)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.recent_info_create_app_info((to_unsafe as LibGtk::RecentInfo*), app_name, pointerof(__error))
+      __return_value = LibGtk.recent_info_create_app_info((to_unsafe as LibGtk::RecentInfo*), app_name && app_name, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -37,7 +38,7 @@ module Gtk
 
     def applications(length)
       __return_value = LibGtk.recent_info_get_applications((to_unsafe as LibGtk::RecentInfo*), UInt64.cast(length))
-      PointerIterator.new(__return_value) {|__item_99| raise "Expected string but got null" unless __item_99; String.new(__item_99) }
+      PointerIterator.new(__return_value) {|__item_15| raise "Expected string but got null" unless __item_15; String.new(__item_15) }
     end
 
     def description
@@ -57,7 +58,7 @@ module Gtk
 
     def groups(length)
       __return_value = LibGtk.recent_info_get_groups((to_unsafe as LibGtk::RecentInfo*), UInt64.cast(length))
-      PointerIterator.new(__return_value) {|__item_63| raise "Expected string but got null" unless __item_63; String.new(__item_63) }
+      PointerIterator.new(__return_value) {|__item_40| raise "Expected string but got null" unless __item_40; String.new(__item_40) }
     end
 
     def icon(size)

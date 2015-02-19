@@ -74,7 +74,7 @@ module Gio
 
     def attribute_stringv(attribute)
       __return_value = LibGio.file_info_get_attribute_stringv((to_unsafe as LibGio::FileInfo*), attribute)
-      PointerIterator.new(__return_value) {|__item_2| raise "Expected string but got null" unless __item_2; String.new(__item_2) }
+      PointerIterator.new(__return_value) {|__item_33| raise "Expected string but got null" unless __item_33; String.new(__item_33) }
     end
 
     def attribute_type(attribute)
@@ -184,7 +184,7 @@ module Gio
 
     def list_attributes(name_space)
       __return_value = LibGio.file_info_list_attributes((to_unsafe as LibGio::FileInfo*), name_space)
-      PointerIterator.new(__return_value) {|__item_60| raise "Expected string but got null" unless __item_60; String.new(__item_60) } if __return_value
+      PointerIterator.new(__return_value) {|__item_14| raise "Expected string but got null" unless __item_14; String.new(__item_14) } if __return_value
     end
 
     def remove_attribute(attribute)
@@ -192,27 +192,27 @@ module Gio
       __return_value
     end
 
-    def attribute=(attribute, type, value_p)
+    def set_attribute(attribute, type, value_p)
       __return_value = LibGio.file_info_set_attribute((to_unsafe as LibGio::FileInfo*), attribute, type, value_p)
       __return_value
     end
 
-    def attribute_boolean=(attribute, attr_value)
+    def set_attribute_boolean(attribute, attr_value)
       __return_value = LibGio.file_info_set_attribute_boolean((to_unsafe as LibGio::FileInfo*), attribute, Bool.cast(attr_value))
       __return_value
     end
 
-    def attribute_byte_string=(attribute, attr_value)
+    def set_attribute_byte_string(attribute, attr_value)
       __return_value = LibGio.file_info_set_attribute_byte_string((to_unsafe as LibGio::FileInfo*), attribute, attr_value)
       __return_value
     end
 
-    def attribute_int32=(attribute, attr_value)
+    def set_attribute_int32(attribute, attr_value)
       __return_value = LibGio.file_info_set_attribute_int32((to_unsafe as LibGio::FileInfo*), attribute, Int32.cast(attr_value))
       __return_value
     end
 
-    def attribute_int64=(attribute, attr_value)
+    def set_attribute_int64(attribute, attr_value)
       __return_value = LibGio.file_info_set_attribute_int64((to_unsafe as LibGio::FileInfo*), attribute, Int64.cast(attr_value))
       __return_value
     end
@@ -222,32 +222,32 @@ module Gio
       __return_value
     end
 
-    def attribute_object=(attribute, attr_value)
+    def set_attribute_object(attribute, attr_value)
       __return_value = LibGio.file_info_set_attribute_object((to_unsafe as LibGio::FileInfo*), attribute, (attr_value.to_unsafe as LibGObject::Object*))
       __return_value
     end
 
-    def attribute_status=(attribute, status)
+    def set_attribute_status(attribute, status)
       __return_value = LibGio.file_info_set_attribute_status((to_unsafe as LibGio::FileInfo*), attribute, status)
       __return_value
     end
 
-    def attribute_string=(attribute, attr_value)
+    def set_attribute_string(attribute, attr_value)
       __return_value = LibGio.file_info_set_attribute_string((to_unsafe as LibGio::FileInfo*), attribute, attr_value)
       __return_value
     end
 
-    def attribute_stringv=(attribute, attr_value)
+    def set_attribute_stringv(attribute, attr_value)
       __return_value = LibGio.file_info_set_attribute_stringv((to_unsafe as LibGio::FileInfo*), attribute, attr_value)
       __return_value
     end
 
-    def attribute_uint32=(attribute, attr_value)
+    def set_attribute_uint32(attribute, attr_value)
       __return_value = LibGio.file_info_set_attribute_uint32((to_unsafe as LibGio::FileInfo*), attribute, UInt32.cast(attr_value))
       __return_value
     end
 
-    def attribute_uint64=(attribute, attr_value)
+    def set_attribute_uint64(attribute, attr_value)
       __return_value = LibGio.file_info_set_attribute_uint64((to_unsafe as LibGio::FileInfo*), attribute, UInt64.cast(attr_value))
       __return_value
     end

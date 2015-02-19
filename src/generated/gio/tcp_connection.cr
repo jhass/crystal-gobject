@@ -9,9 +9,6 @@ module Gio
       @gio_tcp_connection.not_nil!
     end
 
-    def graceful_disconnect=(__value)
-      LibGio.tcp_connection_set_graceful_disconnect((to_unsafe as LibGio::TcpConnection*), Bool.cast(__value))
-    end
 
     def graceful_disconnect
       __return_value = LibGio.tcp_connection_get_graceful_disconnect((to_unsafe as LibGio::TcpConnection*))

@@ -11,17 +11,8 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
-    def border_width=(__value)
-      LibGtk.container_set_border_width((to_unsafe as LibGtk::Container*), UInt32.cast(__value))
-    end
 
-    def child=(__value)
-      LibGtk.container_set_child((to_unsafe as LibGtk::Container*), __value)
-    end
 
-    def resize_mode=(__value)
-      LibGtk.container_set_resize_mode((to_unsafe as LibGtk::Container*), __value)
-    end
 
     def add(widget)
       __return_value = LibGtk.container_add((to_unsafe as LibGtk::Container*), (widget.to_unsafe as LibGtk::Widget*))
@@ -129,7 +120,7 @@ module Gtk
     end
 
     def focus_child=(child)
-      __return_value = LibGtk.container_set_focus_child((to_unsafe as LibGtk::Container*), (child.to_unsafe as LibGtk::Widget*))
+      __return_value = LibGtk.container_set_focus_child((to_unsafe as LibGtk::Container*), child && (child.to_unsafe as LibGtk::Widget*))
       __return_value
     end
 

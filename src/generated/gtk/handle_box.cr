@@ -12,21 +12,9 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
 
-    def handle_position=(__value)
-      LibGtk.handle_box_set_handle_position((to_unsafe as LibGtk::HandleBox*), __value)
-    end
 
-    def shadow_type=(__value)
-      LibGtk.handle_box_set_shadow_type((to_unsafe as LibGtk::HandleBox*), __value)
-    end
 
-    def snap_edge=(__value)
-      LibGtk.handle_box_set_snap_edge((to_unsafe as LibGtk::HandleBox*), __value)
-    end
 
-    def snap_edge_set=(__value)
-      LibGtk.handle_box_set_snap_edge_set((to_unsafe as LibGtk::HandleBox*), Bool.cast(__value))
-    end
 
     def self.new_internal
       __return_value = LibGtk.handle_box_new

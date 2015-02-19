@@ -13,70 +13,22 @@ module Gtk
     # Implements Buildable
     # Implements CellLayout
     # Implements Scrollable
-    def activate_on_single_click=(__value)
-      LibGtk.icon_view_set_activate_on_single_click((to_unsafe as LibGtk::IconView*), Bool.cast(__value))
-    end
 
 
-    def column_spacing=(__value)
-      LibGtk.icon_view_set_column_spacing((to_unsafe as LibGtk::IconView*), Int32.cast(__value))
-    end
 
-    def columns=(__value)
-      LibGtk.icon_view_set_columns((to_unsafe as LibGtk::IconView*), Int32.cast(__value))
-    end
 
-    def item_orientation=(__value)
-      LibGtk.icon_view_set_item_orientation((to_unsafe as LibGtk::IconView*), __value)
-    end
 
-    def item_padding=(__value)
-      LibGtk.icon_view_set_item_padding((to_unsafe as LibGtk::IconView*), Int32.cast(__value))
-    end
 
-    def item_width=(__value)
-      LibGtk.icon_view_set_item_width((to_unsafe as LibGtk::IconView*), Int32.cast(__value))
-    end
 
-    def margin=(__value)
-      LibGtk.icon_view_set_margin((to_unsafe as LibGtk::IconView*), Int32.cast(__value))
-    end
 
-    def markup_column=(__value)
-      LibGtk.icon_view_set_markup_column((to_unsafe as LibGtk::IconView*), Int32.cast(__value))
-    end
 
-    def model=(__value)
-      LibGtk.icon_view_set_model((to_unsafe as LibGtk::IconView*), __value)
-    end
 
-    def pixbuf_column=(__value)
-      LibGtk.icon_view_set_pixbuf_column((to_unsafe as LibGtk::IconView*), Int32.cast(__value))
-    end
 
-    def reorderable=(__value)
-      LibGtk.icon_view_set_reorderable((to_unsafe as LibGtk::IconView*), Bool.cast(__value))
-    end
 
-    def row_spacing=(__value)
-      LibGtk.icon_view_set_row_spacing((to_unsafe as LibGtk::IconView*), Int32.cast(__value))
-    end
 
-    def selection_mode=(__value)
-      LibGtk.icon_view_set_selection_mode((to_unsafe as LibGtk::IconView*), __value)
-    end
 
-    def spacing=(__value)
-      LibGtk.icon_view_set_spacing((to_unsafe as LibGtk::IconView*), Int32.cast(__value))
-    end
 
-    def text_column=(__value)
-      LibGtk.icon_view_set_text_column((to_unsafe as LibGtk::IconView*), Int32.cast(__value))
-    end
 
-    def tooltip_column=(__value)
-      LibGtk.icon_view_set_tooltip_column((to_unsafe as LibGtk::IconView*), Int32.cast(__value))
-    end
 
     def self.new_internal
       __return_value = LibGtk.icon_view_new
@@ -119,7 +71,7 @@ module Gtk
     end
 
     def cell_rect(path, cell, rect)
-      __return_value = LibGtk.icon_view_get_cell_rect((to_unsafe as LibGtk::IconView*), (path.to_unsafe as LibGtk::TreePath*), (cell.to_unsafe as LibGtk::CellRenderer*), rect)
+      __return_value = LibGtk.icon_view_get_cell_rect((to_unsafe as LibGtk::IconView*), (path.to_unsafe as LibGtk::TreePath*), cell && (cell.to_unsafe as LibGtk::CellRenderer*), rect)
       __return_value
     end
 
@@ -293,13 +245,13 @@ module Gtk
       __return_value
     end
 
-    def cursor=(path, cell, start_editing)
-      __return_value = LibGtk.icon_view_set_cursor((to_unsafe as LibGtk::IconView*), (path.to_unsafe as LibGtk::TreePath*), (cell.to_unsafe as LibGtk::CellRenderer*), Bool.cast(start_editing))
+    def set_cursor(path, cell, start_editing)
+      __return_value = LibGtk.icon_view_set_cursor((to_unsafe as LibGtk::IconView*), (path.to_unsafe as LibGtk::TreePath*), cell && (cell.to_unsafe as LibGtk::CellRenderer*), Bool.cast(start_editing))
       __return_value
     end
 
-    def drag_dest_item=(path, pos)
-      __return_value = LibGtk.icon_view_set_drag_dest_item((to_unsafe as LibGtk::IconView*), (path.to_unsafe as LibGtk::TreePath*), pos)
+    def set_drag_dest_item(path, pos)
+      __return_value = LibGtk.icon_view_set_drag_dest_item((to_unsafe as LibGtk::IconView*), path && (path.to_unsafe as LibGtk::TreePath*), pos)
       __return_value
     end
 
@@ -329,7 +281,7 @@ module Gtk
     end
 
     def model=(model)
-      __return_value = LibGtk.icon_view_set_model((to_unsafe as LibGtk::IconView*), (model.to_unsafe as LibGtk::TreeModel*))
+      __return_value = LibGtk.icon_view_set_model((to_unsafe as LibGtk::IconView*), model && (model.to_unsafe as LibGtk::TreeModel*))
       __return_value
     end
 
@@ -363,8 +315,8 @@ module Gtk
       __return_value
     end
 
-    def tooltip_cell=(tooltip, path, cell)
-      __return_value = LibGtk.icon_view_set_tooltip_cell((to_unsafe as LibGtk::IconView*), (tooltip.to_unsafe as LibGtk::Tooltip*), (path.to_unsafe as LibGtk::TreePath*), (cell.to_unsafe as LibGtk::CellRenderer*))
+    def set_tooltip_cell(tooltip, path, cell)
+      __return_value = LibGtk.icon_view_set_tooltip_cell((to_unsafe as LibGtk::IconView*), (tooltip.to_unsafe as LibGtk::Tooltip*), (path.to_unsafe as LibGtk::TreePath*), cell && (cell.to_unsafe as LibGtk::CellRenderer*))
       __return_value
     end
 
@@ -373,7 +325,7 @@ module Gtk
       __return_value
     end
 
-    def tooltip_item=(tooltip, path)
+    def set_tooltip_item(tooltip, path)
       __return_value = LibGtk.icon_view_set_tooltip_item((to_unsafe as LibGtk::IconView*), (tooltip.to_unsafe as LibGtk::Tooltip*), (path.to_unsafe as LibGtk::TreePath*))
       __return_value
     end

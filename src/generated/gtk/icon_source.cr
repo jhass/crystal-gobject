@@ -1,6 +1,7 @@
 module Gtk
   class IconSource
     include GObject::WrappedType
+
     def initialize @gtk_icon_source
     end
 
@@ -84,7 +85,7 @@ module Gtk
     end
 
     def icon_name=(icon_name)
-      __return_value = LibGtk.icon_source_set_icon_name((to_unsafe as LibGtk::IconSource*), icon_name)
+      __return_value = LibGtk.icon_source_set_icon_name((to_unsafe as LibGtk::IconSource*), icon_name && icon_name)
       __return_value
     end
 

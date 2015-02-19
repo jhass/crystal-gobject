@@ -1,6 +1,7 @@
 module GLib
   class Array
     include GObject::WrappedType
+
     def initialize @g_lib_array
     end
 

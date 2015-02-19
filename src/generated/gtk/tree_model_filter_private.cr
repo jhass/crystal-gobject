@@ -1,6 +1,7 @@
 module Gtk
   class TreeModelFilterPrivate
     include GObject::WrappedType
+
     def initialize @gtk_tree_model_filter_private
     end
 

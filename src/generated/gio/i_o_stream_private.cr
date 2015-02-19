@@ -1,6 +1,7 @@
 module Gio
   class IOStreamPrivate
     include GObject::WrappedType
+
     def initialize @gio_i_o_stream_private
     end
 

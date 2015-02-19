@@ -12,16 +12,10 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Scrollable
-    def height=(__value)
-      LibGtk.layout_set_height((to_unsafe as LibGtk::Layout*), UInt32.cast(__value))
-    end
 
-    def width=(__value)
-      LibGtk.layout_set_width((to_unsafe as LibGtk::Layout*), UInt32.cast(__value))
-    end
 
     def self.new_internal(hadjustment, vadjustment)
-      __return_value = LibGtk.layout_new((hadjustment.to_unsafe as LibGtk::Adjustment*), (vadjustment.to_unsafe as LibGtk::Adjustment*))
+      __return_value = LibGtk.layout_new(hadjustment && (hadjustment.to_unsafe as LibGtk::Adjustment*), vadjustment && (vadjustment.to_unsafe as LibGtk::Adjustment*))
       Gtk::Widget.new(__return_value)
     end
 
@@ -56,17 +50,17 @@ module Gtk
     end
 
     def hadjustment=(adjustment)
-      __return_value = LibGtk.layout_set_hadjustment((to_unsafe as LibGtk::Layout*), (adjustment.to_unsafe as LibGtk::Adjustment*))
+      __return_value = LibGtk.layout_set_hadjustment((to_unsafe as LibGtk::Layout*), adjustment && (adjustment.to_unsafe as LibGtk::Adjustment*))
       __return_value
     end
 
-    def size=(width, height)
+    def set_size(width, height)
       __return_value = LibGtk.layout_set_size((to_unsafe as LibGtk::Layout*), UInt32.cast(width), UInt32.cast(height))
       __return_value
     end
 
     def vadjustment=(adjustment)
-      __return_value = LibGtk.layout_set_vadjustment((to_unsafe as LibGtk::Layout*), (adjustment.to_unsafe as LibGtk::Adjustment*))
+      __return_value = LibGtk.layout_set_vadjustment((to_unsafe as LibGtk::Layout*), adjustment && (adjustment.to_unsafe as LibGtk::Adjustment*))
       __return_value
     end
 

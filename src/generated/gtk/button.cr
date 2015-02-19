@@ -14,32 +14,14 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
 
-    def focus_on_click=(__value)
-      LibGtk.button_set_focus_on_click((to_unsafe as LibGtk::Button*), Bool.cast(__value))
-    end
-
-    def image=(__value)
-      LibGtk.button_set_image((to_unsafe as LibGtk::Button*), __value)
-    end
-
-    def image_position=(__value)
-      LibGtk.button_set_image_position((to_unsafe as LibGtk::Button*), __value)
-    end
-
-
-    def relief=(__value)
-      LibGtk.button_set_relief((to_unsafe as LibGtk::Button*), __value)
-    end
 
 
 
-    def xalign=(__value)
-      LibGtk.button_set_xalign((to_unsafe as LibGtk::Button*), Float32.cast(__value))
-    end
 
-    def yalign=(__value)
-      LibGtk.button_set_yalign((to_unsafe as LibGtk::Button*), Float32.cast(__value))
-    end
+
+
+
+
 
     def self.new_internal
       __return_value = LibGtk.button_new
@@ -141,7 +123,7 @@ module Gtk
       __return_value
     end
 
-    def alignment=(xalign, yalign)
+    def set_alignment(xalign, yalign)
       __return_value = LibGtk.button_set_alignment((to_unsafe as LibGtk::Button*), Float32.cast(xalign), Float32.cast(yalign))
       __return_value
     end

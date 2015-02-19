@@ -1,6 +1,7 @@
 module Gtk
   class RcContext
     include GObject::WrappedType
+
     def initialize @gtk_rc_context
     end
 

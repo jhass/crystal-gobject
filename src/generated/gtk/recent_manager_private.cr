@@ -1,6 +1,7 @@
 module Gtk
   class RecentManagerPrivate
     include GObject::WrappedType
+
     def initialize @gtk_recent_manager_private
     end
 

@@ -1,6 +1,7 @@
 module GLib
   class TestLogBuffer
     include GObject::WrappedType
+
     def initialize @g_lib_test_log_buffer
     end
 

@@ -1,6 +1,7 @@
 module Pango
   class AttrFontDesc
     include GObject::WrappedType
+
     def initialize @pango_attr_font_desc
     end
 

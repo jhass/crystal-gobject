@@ -1,6 +1,7 @@
 module Gio
   class ApplicationPrivate
     include GObject::WrappedType
+
     def initialize @gio_application_private
     end
 

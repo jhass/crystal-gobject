@@ -1,6 +1,7 @@
 module Gdk
   class EventKey
     include GObject::WrappedType
+
     def initialize @gdk_event_key
     end
 

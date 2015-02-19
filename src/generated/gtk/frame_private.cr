@@ -1,6 +1,7 @@
 module Gtk
   class FramePrivate
     include GObject::WrappedType
+
     def initialize @gtk_frame_private
     end
 

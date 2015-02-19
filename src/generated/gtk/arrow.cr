@@ -11,13 +11,7 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
-    def arrow_type=(__value)
-      LibGtk.arrow_set_arrow_type((to_unsafe as LibGtk::Arrow*), __value)
-    end
 
-    def shadow_type=(__value)
-      LibGtk.arrow_set_shadow_type((to_unsafe as LibGtk::Arrow*), __value)
-    end
 
     def self.new_internal(arrow_type, shadow_type)
       __return_value = LibGtk.arrow_new(arrow_type, shadow_type)

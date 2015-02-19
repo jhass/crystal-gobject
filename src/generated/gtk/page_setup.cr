@@ -21,7 +21,7 @@ module Gtk
 
     def self.new_from_key_file(key_file, group_name)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.page_setup_new_from_key_file((key_file.to_unsafe as LibGLib::KeyFile*), group_name, pointerof(__error))
+      __return_value = LibGtk.page_setup_new_from_key_file((key_file.to_unsafe as LibGLib::KeyFile*), group_name && group_name, pointerof(__error))
       GLib::Error.assert __error
       Gtk::PageSetup.new(__return_value)
     end
@@ -90,17 +90,17 @@ module Gtk
 
     def load_key_file(key_file, group_name)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.page_setup_load_key_file((to_unsafe as LibGtk::PageSetup*), (key_file.to_unsafe as LibGLib::KeyFile*), group_name, pointerof(__error))
+      __return_value = LibGtk.page_setup_load_key_file((to_unsafe as LibGtk::PageSetup*), (key_file.to_unsafe as LibGLib::KeyFile*), group_name && group_name, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def bottom_margin=(margin, unit)
+    def set_bottom_margin(margin, unit)
       __return_value = LibGtk.page_setup_set_bottom_margin((to_unsafe as LibGtk::PageSetup*), Float64.cast(margin), unit)
       __return_value
     end
 
-    def left_margin=(margin, unit)
+    def set_left_margin(margin, unit)
       __return_value = LibGtk.page_setup_set_left_margin((to_unsafe as LibGtk::PageSetup*), Float64.cast(margin), unit)
       __return_value
     end
@@ -120,12 +120,12 @@ module Gtk
       __return_value
     end
 
-    def right_margin=(margin, unit)
+    def set_right_margin(margin, unit)
       __return_value = LibGtk.page_setup_set_right_margin((to_unsafe as LibGtk::PageSetup*), Float64.cast(margin), unit)
       __return_value
     end
 
-    def top_margin=(margin, unit)
+    def set_top_margin(margin, unit)
       __return_value = LibGtk.page_setup_set_top_margin((to_unsafe as LibGtk::PageSetup*), Float64.cast(margin), unit)
       __return_value
     end

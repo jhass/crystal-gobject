@@ -1,6 +1,7 @@
 module Gtk
   class RadioButtonAccessiblePrivate
     include GObject::WrappedType
+
     def initialize @gtk_radio_button_accessible_private
     end
 

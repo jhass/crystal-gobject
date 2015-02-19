@@ -7,12 +7,9 @@ module Gdk
       @gdk_window.not_nil!
     end
 
-    def cursor=(__value)
-      LibGdk.window_set_cursor((to_unsafe as LibGdk::Window*), __value)
-    end
 
     def self.new_internal(parent, attributes, attributes_mask)
-      __return_value = LibGdk.window_new((parent.to_unsafe as LibGdk::Window*), (attributes.to_unsafe as LibGdk::WindowAttr*), attributes_mask)
+      __return_value = LibGdk.window_new(parent && (parent.to_unsafe as LibGdk::Window*), (attributes.to_unsafe as LibGdk::WindowAttr*), attributes_mask)
       Gdk::Window.new(__return_value)
     end
 
@@ -31,7 +28,7 @@ module Gdk
       __return_value
     end
 
-    def self.debug_updates=(setting)
+    def self.set_debug_updates(setting)
       __return_value = LibGdk.window_set_debug_updates(Bool.cast(setting))
       __return_value
     end
@@ -402,12 +399,12 @@ module Gdk
     end
 
     def invalidate_maybe_recurse(region, child_func, user_data)
-      __return_value = LibGdk.window_invalidate_maybe_recurse((to_unsafe as LibGdk::Window*), (region.to_unsafe as LibCairo::Region*), child_func, user_data)
+      __return_value = LibGdk.window_invalidate_maybe_recurse((to_unsafe as LibGdk::Window*), (region.to_unsafe as LibCairo::Region*), child_func && child_func, user_data)
       __return_value
     end
 
     def invalidate_rect(rect, invalidate_children)
-      __return_value = LibGdk.window_invalidate_rect((to_unsafe as LibGdk::Window*), (rect.to_unsafe as LibCairo::RectangleInt*), Bool.cast(invalidate_children))
+      __return_value = LibGdk.window_invalidate_rect((to_unsafe as LibGdk::Window*), rect && (rect.to_unsafe as LibCairo::RectangleInt*), Bool.cast(invalidate_children))
       __return_value
     end
 
@@ -507,7 +504,7 @@ module Gdk
     end
 
     def restack(sibling, above)
-      __return_value = LibGdk.window_restack((to_unsafe as LibGdk::Window*), (sibling.to_unsafe as LibGdk::Window*), Bool.cast(above))
+      __return_value = LibGdk.window_restack((to_unsafe as LibGdk::Window*), sibling && (sibling.to_unsafe as LibGdk::Window*), Bool.cast(above))
       __return_value
     end
 
@@ -527,7 +524,7 @@ module Gdk
     end
 
     def background_pattern=(pattern)
-      __return_value = LibGdk.window_set_background_pattern((to_unsafe as LibGdk::Window*), (pattern.to_unsafe as LibCairo::Pattern*))
+      __return_value = LibGdk.window_set_background_pattern((to_unsafe as LibGdk::Window*), pattern && (pattern.to_unsafe as LibCairo::Pattern*))
       __return_value
     end
 
@@ -536,12 +533,12 @@ module Gdk
       __return_value
     end
 
-    def child_input_shapes=
+    def set_child_input_shapes
       __return_value = LibGdk.window_set_child_input_shapes((to_unsafe as LibGdk::Window*))
       __return_value
     end
 
-    def child_shapes=
+    def set_child_shapes
       __return_value = LibGdk.window_set_child_shapes((to_unsafe as LibGdk::Window*))
       __return_value
     end
@@ -552,7 +549,7 @@ module Gdk
     end
 
     def cursor=(cursor)
-      __return_value = LibGdk.window_set_cursor((to_unsafe as LibGdk::Window*), (cursor.to_unsafe as LibGdk::Cursor*))
+      __return_value = LibGdk.window_set_cursor((to_unsafe as LibGdk::Window*), cursor && (cursor.to_unsafe as LibGdk::Cursor*))
       __return_value
     end
 
@@ -561,12 +558,12 @@ module Gdk
       __return_value
     end
 
-    def device_cursor=(device, cursor)
+    def set_device_cursor(device, cursor)
       __return_value = LibGdk.window_set_device_cursor((to_unsafe as LibGdk::Window*), (device.to_unsafe as LibGdk::Device*), (cursor.to_unsafe as LibGdk::Cursor*))
       __return_value
     end
 
-    def device_events=(device, event_mask)
+    def set_device_events(device, event_mask)
       __return_value = LibGdk.window_set_device_events((to_unsafe as LibGdk::Window*), (device.to_unsafe as LibGdk::Device*), event_mask)
       __return_value
     end
@@ -596,13 +593,13 @@ module Gdk
       __return_value
     end
 
-    def geometry_hints=(geometry, geom_mask)
+    def set_geometry_hints(geometry, geom_mask)
       __return_value = LibGdk.window_set_geometry_hints((to_unsafe as LibGdk::Window*), (geometry.to_unsafe as LibGdk::Geometry*), geom_mask)
       __return_value
     end
 
     def group=(leader)
-      __return_value = LibGdk.window_set_group((to_unsafe as LibGdk::Window*), (leader.to_unsafe as LibGdk::Window*))
+      __return_value = LibGdk.window_set_group((to_unsafe as LibGdk::Window*), leader && (leader.to_unsafe as LibGdk::Window*))
       __return_value
     end
 
@@ -612,7 +609,7 @@ module Gdk
     end
 
     def icon_name=(name)
-      __return_value = LibGdk.window_set_icon_name((to_unsafe as LibGdk::Window*), name)
+      __return_value = LibGdk.window_set_icon_name((to_unsafe as LibGdk::Window*), name && name)
       __return_value
     end
 
@@ -651,7 +648,7 @@ module Gdk
       __return_value
     end
 
-    def shadow_width=(left, right, top, bottom)
+    def set_shadow_width(left, right, top, bottom)
       __return_value = LibGdk.window_set_shadow_width((to_unsafe as LibGdk::Window*), Int32.cast(left), Int32.cast(right), Int32.cast(top), Int32.cast(bottom))
       __return_value
     end
@@ -666,7 +663,7 @@ module Gdk
       __return_value
     end
 
-    def source_events=(source, event_mask)
+    def set_source_events(source, event_mask)
       __return_value = LibGdk.window_set_source_events((to_unsafe as LibGdk::Window*), source, event_mask)
       __return_value
     end
@@ -707,12 +704,12 @@ module Gdk
     end
 
     def user_data=(user_data)
-      __return_value = LibGdk.window_set_user_data((to_unsafe as LibGdk::Window*), (user_data.to_unsafe as LibGObject::Object*))
+      __return_value = LibGdk.window_set_user_data((to_unsafe as LibGdk::Window*), user_data && (user_data.to_unsafe as LibGObject::Object*))
       __return_value
     end
 
     def shape_combine_region(shape_region, offset_x, offset_y)
-      __return_value = LibGdk.window_shape_combine_region((to_unsafe as LibGdk::Window*), (shape_region.to_unsafe as LibCairo::Region*), Int32.cast(offset_x), Int32.cast(offset_y))
+      __return_value = LibGdk.window_shape_combine_region((to_unsafe as LibGdk::Window*), shape_region && (shape_region.to_unsafe as LibCairo::Region*), Int32.cast(offset_x), Int32.cast(offset_y))
       __return_value
     end
 

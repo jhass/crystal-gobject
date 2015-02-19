@@ -1,6 +1,7 @@
 module GLib
   class HashTable
     include GObject::WrappedType
+
     def initialize @g_lib_hash_table
     end
 
@@ -29,7 +30,7 @@ module GLib
     end
 
     def self.lookup_extended(hash_table, lookup_key, orig_key, value)
-      __return_value = LibGLib.hash_table_lookup_extended(hash_table, lookup_key, orig_key, value)
+      __return_value = LibGLib.hash_table_lookup_extended(hash_table, lookup_key, orig_key && orig_key, value && value)
       __return_value
     end
 

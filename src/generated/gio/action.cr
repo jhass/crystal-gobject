@@ -13,12 +13,12 @@ module Gio
     end
 
     def self.print_detailed_name(action_name, target_value)
-      __return_value = LibGio.action_print_detailed_name(action_name, (target_value.to_unsafe as LibGLib::Variant*))
+      __return_value = LibGio.action_print_detailed_name(action_name, target_value && (target_value.to_unsafe as LibGLib::Variant*))
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 
     def activate(parameter)
-      __return_value = LibGio.action_activate((to_unsafe as LibGio::Action*), (parameter.to_unsafe as LibGLib::Variant*))
+      __return_value = LibGio.action_activate((to_unsafe as LibGio::Action*), parameter && (parameter.to_unsafe as LibGLib::Variant*))
       __return_value
     end
 

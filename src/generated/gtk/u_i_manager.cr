@@ -8,9 +8,6 @@ module Gtk
     end
 
     # Implements Buildable
-    def add_tearoffs=(__value)
-      LibGtk.u_i_manager_set_add_tearoffs((to_unsafe as LibGtk::UIManager*), Bool.cast(__value))
-    end
 
 
     def self.new_internal
@@ -19,7 +16,7 @@ module Gtk
     end
 
     def add_ui(merge_id, path, name, action, type, top)
-      __return_value = LibGtk.u_i_manager_add_ui((to_unsafe as LibGtk::UIManager*), UInt32.cast(merge_id), path, name, action, type, Bool.cast(top))
+      __return_value = LibGtk.u_i_manager_add_ui((to_unsafe as LibGtk::UIManager*), UInt32.cast(merge_id), path, name, action && action, type, Bool.cast(top))
       __return_value
     end
 

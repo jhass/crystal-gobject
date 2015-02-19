@@ -1,6 +1,7 @@
 module Gtk
   class ColorChooserWidgetPrivate
     include GObject::WrappedType
+
     def initialize @gtk_color_chooser_widget_private
     end
 

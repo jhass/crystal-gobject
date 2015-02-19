@@ -49,7 +49,7 @@ module Gtk
     end
 
     def name=(name)
-      __return_value = LibGtk.file_filter_set_name((to_unsafe as LibGtk::FileFilter*), name)
+      __return_value = LibGtk.file_filter_set_name((to_unsafe as LibGtk::FileFilter*), name && name)
       __return_value
     end
 

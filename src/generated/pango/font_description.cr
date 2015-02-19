@@ -1,6 +1,7 @@
 module Pango
   class FontDescription
     include GObject::WrappedType
+
     def initialize @pango_font_description
     end
 
@@ -14,7 +15,7 @@ module Pango
     end
 
     def better_match(old_match, new_match)
-      __return_value = LibPango.font_description_better_match((to_unsafe as LibPango::FontDescription*), (old_match.to_unsafe as LibPango::FontDescription*), (new_match.to_unsafe as LibPango::FontDescription*))
+      __return_value = LibPango.font_description_better_match((to_unsafe as LibPango::FontDescription*), old_match && (old_match.to_unsafe as LibPango::FontDescription*), (new_match.to_unsafe as LibPango::FontDescription*))
       __return_value
     end
 
@@ -89,7 +90,7 @@ module Pango
     end
 
     def merge(desc_to_merge, replace_existing)
-      __return_value = LibPango.font_description_merge((to_unsafe as LibPango::FontDescription*), (desc_to_merge.to_unsafe as LibPango::FontDescription*), Bool.cast(replace_existing))
+      __return_value = LibPango.font_description_merge((to_unsafe as LibPango::FontDescription*), desc_to_merge && (desc_to_merge.to_unsafe as LibPango::FontDescription*), Bool.cast(replace_existing))
       __return_value
     end
 

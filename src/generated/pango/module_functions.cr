@@ -35,7 +35,7 @@ module Pango
   end
 
   def self.extents_to_pixels(inclusive, nearest)
-    __return_value = LibPango.extents_to_pixels((inclusive.to_unsafe as LibPango::Rectangle*), (nearest.to_unsafe as LibPango::Rectangle*))
+    __return_value = LibPango.extents_to_pixels(inclusive && (inclusive.to_unsafe as LibPango::Rectangle*), nearest && (nearest.to_unsafe as LibPango::Rectangle*))
     __return_value
   end
 
@@ -100,17 +100,17 @@ module Pango
   end
 
   def self.itemize(context, text, start_index, length, attrs, cached_iter)
-    __return_value = LibPango.itemize((context.to_unsafe as LibPango::Context*), text, Int32.cast(start_index), Int32.cast(length), (attrs.to_unsafe as LibPango::AttrList*), (cached_iter.to_unsafe as LibPango::AttrIterator*))
+    __return_value = LibPango.itemize((context.to_unsafe as LibPango::Context*), text, Int32.cast(start_index), Int32.cast(length), (attrs.to_unsafe as LibPango::AttrList*), cached_iter && (cached_iter.to_unsafe as LibPango::AttrIterator*))
     __return_value
   end
 
   def self.itemize_with_base_dir(context, base_dir, text, start_index, length, attrs, cached_iter)
-    __return_value = LibPango.itemize_with_base_dir((context.to_unsafe as LibPango::Context*), base_dir, text, Int32.cast(start_index), Int32.cast(length), (attrs.to_unsafe as LibPango::AttrList*), (cached_iter.to_unsafe as LibPango::AttrIterator*))
+    __return_value = LibPango.itemize_with_base_dir((context.to_unsafe as LibPango::Context*), base_dir, text, Int32.cast(start_index), Int32.cast(length), (attrs.to_unsafe as LibPango::AttrList*), cached_iter && (cached_iter.to_unsafe as LibPango::AttrIterator*))
     __return_value
   end
 
   def self.language_from_string(language)
-    __return_value = LibPango.language_from_string(language)
+    __return_value = LibPango.language_from_string(language && language)
     Pango::Language.new(__return_value)
   end
 
@@ -147,7 +147,7 @@ module Pango
   end
 
   def self.parse_enum(type, str, value, warn, possible_values)
-    __return_value = LibPango.parse_enum(UInt64.cast(type), str, Int32.cast(value), Bool.cast(warn), possible_values)
+    __return_value = LibPango.parse_enum(UInt64.cast(type), str && str, Int32.cast(value), Bool.cast(warn), possible_values)
     __return_value
   end
 
@@ -224,7 +224,7 @@ module Pango
   end
 
   def self.shape_full(item_text, item_length, paragraph_text, paragraph_length, analysis, glyphs)
-    __return_value = LibPango.shape_full(item_text, Int32.cast(item_length), paragraph_text, Int32.cast(paragraph_length), (analysis.to_unsafe as LibPango::Analysis*), (glyphs.to_unsafe as LibPango::GlyphString*))
+    __return_value = LibPango.shape_full(item_text, Int32.cast(item_length), paragraph_text && paragraph_text, Int32.cast(paragraph_length), (analysis.to_unsafe as LibPango::Analysis*), (glyphs.to_unsafe as LibPango::GlyphString*))
     __return_value
   end
 
@@ -235,7 +235,7 @@ module Pango
 
   def self.split_file_list(str)
     __return_value = LibPango.split_file_list(str)
-    PointerIterator.new(__return_value) {|__item_71| raise "Expected string but got null" unless __item_71; String.new(__item_71) }
+    PointerIterator.new(__return_value) {|__item_18| raise "Expected string but got null" unless __item_18; String.new(__item_18) }
   end
 
   def self.trim_string(str)

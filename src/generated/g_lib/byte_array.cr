@@ -1,6 +1,7 @@
 module GLib
   class ByteArray
     include GObject::WrappedType
+
     def initialize @g_lib_byte_array
     end
 

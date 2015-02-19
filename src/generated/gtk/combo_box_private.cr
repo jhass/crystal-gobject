@@ -1,6 +1,7 @@
 module Gtk
   class ComboBoxPrivate
     include GObject::WrappedType
+
     def initialize @gtk_combo_box_private
     end
 

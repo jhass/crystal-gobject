@@ -1,0 +1,2 @@
+require "../generated/notify"
+require "./*"

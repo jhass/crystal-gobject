@@ -1,6 +1,7 @@
 module GObject
   class ValueArray
     include GObject::WrappedType
+
     def initialize @g_object_value_array
     end
 
@@ -14,7 +15,7 @@ module GObject
     end
 
     def append(value)
-      __return_value = LibGObject.value_array_append((to_unsafe as LibGObject::ValueArray*), (value.to_unsafe as LibGObject::Value*))
+      __return_value = LibGObject.value_array_append((to_unsafe as LibGObject::ValueArray*), value && (value.to_unsafe as LibGObject::Value*))
       GObject::ValueArray.new(__return_value)
     end
 
@@ -34,12 +35,12 @@ module GObject
     end
 
     def insert(index, value)
-      __return_value = LibGObject.value_array_insert((to_unsafe as LibGObject::ValueArray*), UInt32.cast(index), (value.to_unsafe as LibGObject::Value*))
+      __return_value = LibGObject.value_array_insert((to_unsafe as LibGObject::ValueArray*), UInt32.cast(index), value && (value.to_unsafe as LibGObject::Value*))
       GObject::ValueArray.new(__return_value)
     end
 
     def prepend(value)
-      __return_value = LibGObject.value_array_prepend((to_unsafe as LibGObject::ValueArray*), (value.to_unsafe as LibGObject::Value*))
+      __return_value = LibGObject.value_array_prepend((to_unsafe as LibGObject::ValueArray*), value && (value.to_unsafe as LibGObject::Value*))
       GObject::ValueArray.new(__return_value)
     end
 

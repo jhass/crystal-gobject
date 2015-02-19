@@ -13,17 +13,14 @@ module Gtk
     # Implements AppChooser
     # Implements Buildable
 
-    def heading=(__value)
-      LibGtk.app_chooser_dialog_set_heading((to_unsafe as LibGtk::AppChooserDialog*), __value)
-    end
 
     def self.new_internal(parent, flags, file)
-      __return_value = LibGtk.app_chooser_dialog_new((parent.to_unsafe as LibGtk::Window*), flags, (file.to_unsafe as LibGio::File*))
+      __return_value = LibGtk.app_chooser_dialog_new(parent && (parent.to_unsafe as LibGtk::Window*), flags, (file.to_unsafe as LibGio::File*))
       Gtk::Widget.new(__return_value)
     end
 
     def self.new_for_content_type(parent, flags, content_type)
-      __return_value = LibGtk.app_chooser_dialog_new_for_content_type((parent.to_unsafe as LibGtk::Window*), flags, content_type)
+      __return_value = LibGtk.app_chooser_dialog_new_for_content_type(parent && (parent.to_unsafe as LibGtk::Window*), flags, content_type)
       Gtk::Widget.new(__return_value)
     end
 

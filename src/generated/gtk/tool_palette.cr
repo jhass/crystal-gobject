@@ -13,17 +13,8 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
     # Implements Scrollable
-    def icon_size=(__value)
-      LibGtk.tool_palette_set_icon_size((to_unsafe as LibGtk::ToolPalette*), __value)
-    end
 
-    def icon_size_set=(__value)
-      LibGtk.tool_palette_set_icon_size_set((to_unsafe as LibGtk::ToolPalette*), Bool.cast(__value))
-    end
 
-    def toolbar_style=(__value)
-      LibGtk.tool_palette_set_toolbar_style((to_unsafe as LibGtk::ToolPalette*), __value)
-    end
 
     def self.new_internal
       __return_value = LibGtk.tool_palette_new
@@ -100,17 +91,17 @@ module Gtk
       __return_value
     end
 
-    def exclusive=(group, exclusive)
+    def set_exclusive(group, exclusive)
       __return_value = LibGtk.tool_palette_set_exclusive((to_unsafe as LibGtk::ToolPalette*), (group.to_unsafe as LibGtk::ToolItemGroup*), Bool.cast(exclusive))
       __return_value
     end
 
-    def expand=(group, expand)
+    def set_expand(group, expand)
       __return_value = LibGtk.tool_palette_set_expand((to_unsafe as LibGtk::ToolPalette*), (group.to_unsafe as LibGtk::ToolItemGroup*), Bool.cast(expand))
       __return_value
     end
 
-    def group_position=(group, position)
+    def set_group_position(group, position)
       __return_value = LibGtk.tool_palette_set_group_position((to_unsafe as LibGtk::ToolPalette*), (group.to_unsafe as LibGtk::ToolItemGroup*), Int32.cast(position))
       __return_value
     end

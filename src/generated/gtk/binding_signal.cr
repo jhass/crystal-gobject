@@ -1,6 +1,7 @@
 module Gtk
   class BindingSignal
     include GObject::WrappedType
+
     def initialize @gtk_binding_signal
     end
 

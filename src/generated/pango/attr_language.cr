@@ -1,6 +1,7 @@
 module Pango
   class AttrLanguage
     include GObject::WrappedType
+
     def initialize @pango_attr_language
     end
 

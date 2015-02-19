@@ -1,6 +1,7 @@
 module Gio
   class MemoryInputStreamPrivate
     include GObject::WrappedType
+
     def initialize @gio_memory_input_stream_private
     end
 

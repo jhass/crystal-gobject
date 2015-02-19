@@ -1,6 +1,7 @@
 module Gtk
   class TreeModelSortPrivate
     include GObject::WrappedType
+
     def initialize @gtk_tree_model_sort_private
     end
 

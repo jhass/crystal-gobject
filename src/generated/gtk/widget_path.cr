@@ -1,6 +1,7 @@
 module Gtk
   class WidgetPath
     include GObject::WrappedType
+
     def initialize @gtk_widget_path
     end
 

@@ -12,25 +12,10 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
-    def inverted=(__value)
-      LibGtk.level_bar_set_inverted((to_unsafe as LibGtk::LevelBar*), Bool.cast(__value))
-    end
 
-    def max_value=(__value)
-      LibGtk.level_bar_set_max_value((to_unsafe as LibGtk::LevelBar*), Float64.cast(__value))
-    end
 
-    def min_value=(__value)
-      LibGtk.level_bar_set_min_value((to_unsafe as LibGtk::LevelBar*), Float64.cast(__value))
-    end
 
-    def mode=(__value)
-      LibGtk.level_bar_set_mode((to_unsafe as LibGtk::LevelBar*), __value)
-    end
 
-    def value=(__value)
-      LibGtk.level_bar_set_value((to_unsafe as LibGtk::LevelBar*), Float64.cast(__value))
-    end
 
     def self.new_internal
       __return_value = LibGtk.level_bar_new
@@ -68,7 +53,7 @@ module Gtk
     end
 
     def offset_value(name, value)
-      __return_value = LibGtk.level_bar_get_offset_value((to_unsafe as LibGtk::LevelBar*), name, Float64.cast(value))
+      __return_value = LibGtk.level_bar_get_offset_value((to_unsafe as LibGtk::LevelBar*), name && name, Float64.cast(value))
       __return_value
     end
 
@@ -78,7 +63,7 @@ module Gtk
     end
 
     def remove_offset_value(name)
-      __return_value = LibGtk.level_bar_remove_offset_value((to_unsafe as LibGtk::LevelBar*), name)
+      __return_value = LibGtk.level_bar_remove_offset_value((to_unsafe as LibGtk::LevelBar*), name && name)
       __return_value
     end
 

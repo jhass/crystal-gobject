@@ -1,6 +1,7 @@
 module Gtk
   class AspectFramePrivate
     include GObject::WrappedType
+
     def initialize @gtk_aspect_frame_private
     end
 

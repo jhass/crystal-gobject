@@ -23,7 +23,7 @@ module GdkPixbuf
 
     def self.new_from_stream(stream, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGdkPixbuf.pixbuf_animation_new_from_stream((stream.to_unsafe as LibGio::InputStream*), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGdkPixbuf.pixbuf_animation_new_from_stream((stream.to_unsafe as LibGio::InputStream*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       GdkPixbuf::PixbufAnimation.new(__return_value)
     end
@@ -36,7 +36,7 @@ module GdkPixbuf
     end
 
     def self.new_from_stream_async(stream, cancellable, callback, user_data)
-      __return_value = LibGdkPixbuf.pixbuf_animation_new_from_stream_async((stream.to_unsafe as LibGio::InputStream*), (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGdkPixbuf.pixbuf_animation_new_from_stream_async((stream.to_unsafe as LibGio::InputStream*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -46,7 +46,7 @@ module GdkPixbuf
     end
 
     def iter(start_time)
-      __return_value = LibGdkPixbuf.pixbuf_animation_get_iter((to_unsafe as LibGdkPixbuf::PixbufAnimation*), (start_time.to_unsafe as LibGLib::TimeVal*))
+      __return_value = LibGdkPixbuf.pixbuf_animation_get_iter((to_unsafe as LibGdkPixbuf::PixbufAnimation*), start_time && (start_time.to_unsafe as LibGLib::TimeVal*))
       GdkPixbuf::PixbufAnimationIter.new(__return_value)
     end
 

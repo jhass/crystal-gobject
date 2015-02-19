@@ -14,17 +14,8 @@ module Gtk
     # Implements FileChooser
     # Implements Orientable
 
-    def focus_on_click=(__value)
-      LibGtk.file_chooser_button_set_focus_on_click((to_unsafe as LibGtk::FileChooserButton*), Bool.cast(__value))
-    end
 
-    def title=(__value)
-      LibGtk.file_chooser_button_set_title((to_unsafe as LibGtk::FileChooserButton*), __value)
-    end
 
-    def width_chars=(__value)
-      LibGtk.file_chooser_button_set_width_chars((to_unsafe as LibGtk::FileChooserButton*), Int32.cast(__value))
-    end
 
     def self.new_internal(title, action)
       __return_value = LibGtk.file_chooser_button_new(title, action)

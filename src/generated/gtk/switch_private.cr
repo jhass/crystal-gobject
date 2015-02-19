@@ -1,6 +1,7 @@
 module Gtk
   class SwitchPrivate
     include GObject::WrappedType
+
     def initialize @gtk_switch_private
     end
 

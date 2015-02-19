@@ -11,13 +11,7 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
-    def accel_closure=(__value)
-      LibGtk.accel_label_set_accel_closure((to_unsafe as LibGtk::AccelLabel*), __value)
-    end
 
-    def accel_widget=(__value)
-      LibGtk.accel_label_set_accel_widget((to_unsafe as LibGtk::AccelLabel*), __value)
-    end
 
     def self.new_internal(string)
       __return_value = LibGtk.accel_label_new(string)
@@ -44,7 +38,7 @@ module Gtk
       __return_value
     end
 
-    def accel=(accelerator_key, accelerator_mods)
+    def set_accel(accelerator_key, accelerator_mods)
       __return_value = LibGtk.accel_label_set_accel((to_unsafe as LibGtk::AccelLabel*), UInt32.cast(accelerator_key), accelerator_mods)
       __return_value
     end

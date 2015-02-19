@@ -1,6 +1,7 @@
 module Pango
   class Coverage
     include GObject::WrappedType
+
     def initialize @pango_coverage
     end
 

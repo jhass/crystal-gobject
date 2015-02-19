@@ -1,6 +1,7 @@
 module Gtk
   class ToggleActionPrivate
     include GObject::WrappedType
+
     def initialize @gtk_toggle_action_private
     end
 

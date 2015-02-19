@@ -51,7 +51,7 @@ module Gio
     end
 
     def verify(identity, trusted_ca)
-      __return_value = LibGio.tls_certificate_verify((to_unsafe as LibGio::TlsCertificate*), (identity.to_unsafe as LibGio::SocketConnectable*), (trusted_ca.to_unsafe as LibGio::TlsCertificate*))
+      __return_value = LibGio.tls_certificate_verify((to_unsafe as LibGio::TlsCertificate*), identity && (identity.to_unsafe as LibGio::SocketConnectable*), trusted_ca && (trusted_ca.to_unsafe as LibGio::TlsCertificate*))
       __return_value
     end
 

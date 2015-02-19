@@ -1,6 +1,7 @@
 module Pango
   class RendererPrivate
     include GObject::WrappedType
+
     def initialize @pango_renderer_private
     end
 

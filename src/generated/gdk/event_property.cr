@@ -1,6 +1,7 @@
 module Gdk
   class EventProperty
     include GObject::WrappedType
+
     def initialize @gdk_event_property
     end
 

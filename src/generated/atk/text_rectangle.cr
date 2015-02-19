@@ -1,6 +1,7 @@
 module Atk
   class TextRectangle
     include GObject::WrappedType
+
     def initialize @atk_text_rectangle
     end
 

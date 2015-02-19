@@ -10,9 +10,6 @@ module Gio
     # Implements SocketConnectable
 
 
-    def scheme=(__value)
-      LibGio.network_service_set_scheme((to_unsafe as LibGio::NetworkService*), __value)
-    end
 
 
     def self.new_internal(service, protocol, domain)

@@ -1,6 +1,7 @@
 module Pango
   class Language
     include GObject::WrappedType
+
     def initialize @pango_language
     end
 
@@ -15,7 +16,7 @@ module Pango
 
     def scripts(num_scripts)
       __return_value = LibPango.language_get_scripts((to_unsafe as LibPango::Language*), Int32.cast(num_scripts))
-      PointerIterator.new(__return_value) {|__item_43| __item_43 }
+      PointerIterator.new(__return_value) {|__item_28| __item_28 }
     end
 
     def includes_script(script)
@@ -34,7 +35,7 @@ module Pango
     end
 
     def self.from_string(language)
-      __return_value = LibPango.language_from_string(language)
+      __return_value = LibPango.language_from_string(language && language)
       Pango::Language.new(__return_value)
     end
 

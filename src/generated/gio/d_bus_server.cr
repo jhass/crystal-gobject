@@ -16,7 +16,7 @@ module Gio
 
     def self.new_sync(address, flags, guid, observer, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.d_bus_server_new_sync(address, flags, guid, (observer.to_unsafe as LibGio::DBusAuthObserver*), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.d_bus_server_new_sync(address, flags, guid, observer && (observer.to_unsafe as LibGio::DBusAuthObserver*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       Gio::DBusServer.new(__return_value)
     end

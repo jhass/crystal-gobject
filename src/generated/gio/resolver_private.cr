@@ -1,6 +1,7 @@
 module Gio
   class ResolverPrivate
     include GObject::WrappedType
+
     def initialize @gio_resolver_private
     end
 

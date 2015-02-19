@@ -1,6 +1,7 @@
 module Gtk
   class SeparatorPrivate
     include GObject::WrappedType
+
     def initialize @gtk_separator_private
     end
 

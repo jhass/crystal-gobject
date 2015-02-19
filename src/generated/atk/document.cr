@@ -35,7 +35,7 @@ module Atk
       __return_value
     end
 
-    def attribute_value=(attribute_name, attribute_value)
+    def set_attribute_value(attribute_name, attribute_value)
       __return_value = LibAtk.document_set_attribute_value((to_unsafe as LibAtk::Document*), attribute_name, attribute_value)
       __return_value
     end

@@ -13,9 +13,6 @@ module Gtk
     # Implements Buildable
     # Implements ColorChooser
     # Implements Orientable
-    def show_editor=(__value)
-      LibGtk.color_chooser_widget_set_show_editor((to_unsafe as LibGtk::ColorChooserWidget*), Bool.cast(__value))
-    end
 
     def self.new_internal
       __return_value = LibGtk.color_chooser_widget_new

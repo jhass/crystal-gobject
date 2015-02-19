@@ -8,16 +8,10 @@ module Gtk
     end
 
 
-    def max_length=(__value)
-      LibGtk.entry_buffer_set_max_length((to_unsafe as LibGtk::EntryBuffer*), Int32.cast(__value))
-    end
 
-    def text=(__value)
-      LibGtk.entry_buffer_set_text((to_unsafe as LibGtk::EntryBuffer*), __value)
-    end
 
     def self.new_internal(initial_chars, n_initial_chars)
-      __return_value = LibGtk.entry_buffer_new(initial_chars, Int32.cast(n_initial_chars))
+      __return_value = LibGtk.entry_buffer_new(initial_chars && initial_chars, Int32.cast(n_initial_chars))
       Gtk::EntryBuffer.new(__return_value)
     end
 
@@ -66,7 +60,7 @@ module Gtk
       __return_value
     end
 
-    def text=(chars, n_chars)
+    def set_text(chars, n_chars)
       __return_value = LibGtk.entry_buffer_set_text((to_unsafe as LibGtk::EntryBuffer*), chars, Int32.cast(n_chars))
       __return_value
     end

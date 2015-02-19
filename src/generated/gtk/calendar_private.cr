@@ -1,6 +1,7 @@
 module Gtk
   class CalendarPrivate
     include GObject::WrappedType
+
     def initialize @gtk_calendar_private
     end
 

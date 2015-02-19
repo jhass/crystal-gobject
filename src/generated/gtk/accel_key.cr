@@ -1,6 +1,7 @@
 module Gtk
   class AccelKey
     include GObject::WrappedType
+
     def initialize @gtk_accel_key
     end
 

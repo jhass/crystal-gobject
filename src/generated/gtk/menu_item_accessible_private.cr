@@ -1,6 +1,7 @@
 module Gtk
   class MenuItemAccessiblePrivate
     include GObject::WrappedType
+
     def initialize @gtk_menu_item_accessible_private
     end
 

@@ -1,6 +1,7 @@
 module GLib
   class DateTime
     include GObject::WrappedType
+
     def initialize @g_lib_date_time
     end
 

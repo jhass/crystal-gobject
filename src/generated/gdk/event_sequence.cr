@@ -1,6 +1,7 @@
 module Gdk
   class EventSequence
     include GObject::WrappedType
+
     def initialize @gdk_event_sequence
     end
 

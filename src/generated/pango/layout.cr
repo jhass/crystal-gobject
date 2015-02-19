@@ -124,7 +124,7 @@ module Pango
 
     def log_attrs_readonly(n_attrs)
       __return_value = LibPango.layout_get_log_attrs_readonly((to_unsafe as LibPango::Layout*), Int32.cast(n_attrs))
-      PointerIterator.new(__return_value) {|__item_14| Pango::LogAttr.new(__item_14) }
+      PointerIterator.new(__return_value) {|__item_45| Pango::LogAttr.new(__item_45) }
     end
 
     def pixel_extents(ink_rect, logical_rect)
@@ -213,7 +213,7 @@ module Pango
     end
 
     def attributes=(attrs)
-      __return_value = LibPango.layout_set_attributes((to_unsafe as LibPango::Layout*), (attrs.to_unsafe as LibPango::AttrList*))
+      __return_value = LibPango.layout_set_attributes((to_unsafe as LibPango::Layout*), attrs && (attrs.to_unsafe as LibPango::AttrList*))
       __return_value
     end
 
@@ -228,7 +228,7 @@ module Pango
     end
 
     def font_description=(desc)
-      __return_value = LibPango.layout_set_font_description((to_unsafe as LibPango::Layout*), (desc.to_unsafe as LibPango::FontDescription*))
+      __return_value = LibPango.layout_set_font_description((to_unsafe as LibPango::Layout*), desc && (desc.to_unsafe as LibPango::FontDescription*))
       __return_value
     end
 
@@ -247,12 +247,12 @@ module Pango
       __return_value
     end
 
-    def markup=(markup, length)
+    def set_markup(markup, length)
       __return_value = LibPango.layout_set_markup((to_unsafe as LibPango::Layout*), markup, Int32.cast(length))
       __return_value
     end
 
-    def markup_with_accel=(markup, length, accel_marker, accel_char)
+    def set_markup_with_accel(markup, length, accel_marker, accel_char)
       __return_value = LibPango.layout_set_markup_with_accel((to_unsafe as LibPango::Layout*), markup, Int32.cast(length), UInt8.cast(accel_marker), UInt8.cast(accel_char))
       __return_value
     end
@@ -268,11 +268,11 @@ module Pango
     end
 
     def tabs=(tabs)
-      __return_value = LibPango.layout_set_tabs((to_unsafe as LibPango::Layout*), (tabs.to_unsafe as LibPango::TabArray*))
+      __return_value = LibPango.layout_set_tabs((to_unsafe as LibPango::Layout*), tabs && (tabs.to_unsafe as LibPango::TabArray*))
       __return_value
     end
 
-    def text=(text, length)
+    def set_text(text, length)
       __return_value = LibPango.layout_set_text((to_unsafe as LibPango::Layout*), text, Int32.cast(length))
       __return_value
     end

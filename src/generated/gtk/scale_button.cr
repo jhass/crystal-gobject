@@ -14,24 +14,12 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
     # Implements Orientable
-    def adjustment=(__value)
-      LibGtk.scale_button_set_adjustment((to_unsafe as LibGtk::ScaleButton*), __value)
-    end
 
-    def icons=(__value)
-      LibGtk.scale_button_set_icons((to_unsafe as LibGtk::ScaleButton*), __value)
-    end
 
-    def size=(__value)
-      LibGtk.scale_button_set_size((to_unsafe as LibGtk::ScaleButton*), __value)
-    end
 
-    def value=(__value)
-      LibGtk.scale_button_set_value((to_unsafe as LibGtk::ScaleButton*), Float64.cast(__value))
-    end
 
     def self.new_internal(size, min, max, step, icons)
-      __return_value = LibGtk.scale_button_new(Int32.cast(size), Float64.cast(min), Float64.cast(max), Float64.cast(step), icons)
+      __return_value = LibGtk.scale_button_new(Int32.cast(size), Float64.cast(min), Float64.cast(max), Float64.cast(step), icons && icons)
       Gtk::Widget.new(__return_value)
     end
 

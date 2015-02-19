@@ -1,6 +1,7 @@
 module Gio
   class IOExtension
     include GObject::WrappedType
+
     def initialize @gio_i_o_extension
     end
 

@@ -7,9 +7,6 @@ module Notify
       @notify_notification.not_nil!
     end
 
-    def app_name=(__value)
-      LibNotify.notification_set_app_name((to_unsafe as LibNotify::Notification*), __value)
-    end
 
 
 
@@ -17,7 +14,7 @@ module Notify
 
 
     def self.new_internal(summary, body, icon)
-      __return_value = LibNotify.notification_new(summary, body, icon)
+      __return_value = LibNotify.notification_new(summary, body && body, icon && icon)
       Notify::Notification.new(__return_value)
     end
 
@@ -58,37 +55,37 @@ module Notify
       __return_value
     end
 
-    def hint=(key, value)
-      __return_value = LibNotify.notification_set_hint((to_unsafe as LibNotify::Notification*), key, (value.to_unsafe as LibGLib::Variant*))
+    def set_hint(key, value)
+      __return_value = LibNotify.notification_set_hint((to_unsafe as LibNotify::Notification*), key, value && (value.to_unsafe as LibGLib::Variant*))
       __return_value
     end
 
-    def hint_byte=(key, value)
+    def set_hint_byte(key, value)
       __return_value = LibNotify.notification_set_hint_byte((to_unsafe as LibNotify::Notification*), key, UInt8.cast(value))
       __return_value
     end
 
-    def hint_byte_array=(key, value, len)
+    def set_hint_byte_array(key, value, len)
       __return_value = LibNotify.notification_set_hint_byte_array((to_unsafe as LibNotify::Notification*), key, value, UInt64.cast(len))
       __return_value
     end
 
-    def hint_double=(key, value)
+    def set_hint_double(key, value)
       __return_value = LibNotify.notification_set_hint_double((to_unsafe as LibNotify::Notification*), key, Float64.cast(value))
       __return_value
     end
 
-    def hint_int32=(key, value)
+    def set_hint_int32(key, value)
       __return_value = LibNotify.notification_set_hint_int32((to_unsafe as LibNotify::Notification*), key, Int32.cast(value))
       __return_value
     end
 
-    def hint_string=(key, value)
+    def set_hint_string(key, value)
       __return_value = LibNotify.notification_set_hint_string((to_unsafe as LibNotify::Notification*), key, value)
       __return_value
     end
 
-    def hint_uint32=(key, value)
+    def set_hint_uint32(key, value)
       __return_value = LibNotify.notification_set_hint_uint32((to_unsafe as LibNotify::Notification*), key, UInt32.cast(value))
       __return_value
     end
@@ -121,7 +118,7 @@ module Notify
     end
 
     def update(summary, body, icon)
-      __return_value = LibNotify.notification_update((to_unsafe as LibNotify::Notification*), summary, body, icon)
+      __return_value = LibNotify.notification_update((to_unsafe as LibNotify::Notification*), summary, body && body, icon && icon)
       __return_value
     end
 

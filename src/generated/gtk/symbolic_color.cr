@@ -1,6 +1,7 @@
 module Gtk
   class SymbolicColor
     include GObject::WrappedType
+
     def initialize @gtk_symbolic_color
     end
 
@@ -44,7 +45,7 @@ module Gtk
     end
 
     def resolve(props, resolved_color)
-      __return_value = LibGtk.symbolic_color_resolve((to_unsafe as LibGtk::SymbolicColor*), (props.to_unsafe as LibGtk::StyleProperties*), resolved_color)
+      __return_value = LibGtk.symbolic_color_resolve((to_unsafe as LibGtk::SymbolicColor*), props && (props.to_unsafe as LibGtk::StyleProperties*), resolved_color)
       __return_value
     end
 

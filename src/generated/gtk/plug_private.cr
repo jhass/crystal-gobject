@@ -1,6 +1,7 @@
 module Gtk
   class PlugPrivate
     include GObject::WrappedType
+
     def initialize @gtk_plug_private
     end
 

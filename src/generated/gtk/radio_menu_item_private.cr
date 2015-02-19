@@ -1,6 +1,7 @@
 module Gtk
   class RadioMenuItemPrivate
     include GObject::WrappedType
+
     def initialize @gtk_radio_menu_item_private
     end
 

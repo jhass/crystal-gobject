@@ -50,17 +50,17 @@ module Atk
       __return_value
     end
 
-    def extents=(x, y, width, height, coord_type)
+    def set_extents(x, y, width, height, coord_type)
       __return_value = LibAtk.component_set_extents((to_unsafe as LibAtk::Component*), Int32.cast(x), Int32.cast(y), Int32.cast(width), Int32.cast(height), coord_type)
       __return_value
     end
 
-    def position=(x, y, coord_type)
+    def set_position(x, y, coord_type)
       __return_value = LibAtk.component_set_position((to_unsafe as LibAtk::Component*), Int32.cast(x), Int32.cast(y), coord_type)
       __return_value
     end
 
-    def size=(width, height)
+    def set_size(width, height)
       __return_value = LibAtk.component_set_size((to_unsafe as LibAtk::Component*), Int32.cast(width), Int32.cast(height))
       __return_value
     end

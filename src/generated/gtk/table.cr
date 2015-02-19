@@ -11,25 +11,10 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
-    def column_spacing=(__value)
-      LibGtk.table_set_column_spacing((to_unsafe as LibGtk::Table*), UInt32.cast(__value))
-    end
 
-    def homogeneous=(__value)
-      LibGtk.table_set_homogeneous((to_unsafe as LibGtk::Table*), Bool.cast(__value))
-    end
 
-    def n_columns=(__value)
-      LibGtk.table_set_n_columns((to_unsafe as LibGtk::Table*), UInt32.cast(__value))
-    end
 
-    def n_rows=(__value)
-      LibGtk.table_set_n_rows((to_unsafe as LibGtk::Table*), UInt32.cast(__value))
-    end
 
-    def row_spacing=(__value)
-      LibGtk.table_set_row_spacing((to_unsafe as LibGtk::Table*), UInt32.cast(__value))
-    end
 
     def self.new_internal(rows, columns, homogeneous)
       __return_value = LibGtk.table_new(UInt32.cast(rows), UInt32.cast(columns), Bool.cast(homogeneous))
@@ -81,7 +66,7 @@ module Gtk
       __return_value
     end
 
-    def col_spacing=(column, spacing)
+    def set_col_spacing(column, spacing)
       __return_value = LibGtk.table_set_col_spacing((to_unsafe as LibGtk::Table*), UInt32.cast(column), UInt32.cast(spacing))
       __return_value
     end
@@ -96,7 +81,7 @@ module Gtk
       __return_value
     end
 
-    def row_spacing=(row, spacing)
+    def set_row_spacing(row, spacing)
       __return_value = LibGtk.table_set_row_spacing((to_unsafe as LibGtk::Table*), UInt32.cast(row), UInt32.cast(spacing))
       __return_value
     end

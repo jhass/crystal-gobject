@@ -12,25 +12,10 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
-    def baseline_row=(__value)
-      LibGtk.grid_set_baseline_row((to_unsafe as LibGtk::Grid*), Int32.cast(__value))
-    end
 
-    def column_homogeneous=(__value)
-      LibGtk.grid_set_column_homogeneous((to_unsafe as LibGtk::Grid*), Bool.cast(__value))
-    end
 
-    def column_spacing=(__value)
-      LibGtk.grid_set_column_spacing((to_unsafe as LibGtk::Grid*), Int32.cast(__value))
-    end
 
-    def row_homogeneous=(__value)
-      LibGtk.grid_set_row_homogeneous((to_unsafe as LibGtk::Grid*), Bool.cast(__value))
-    end
 
-    def row_spacing=(__value)
-      LibGtk.grid_set_row_spacing((to_unsafe as LibGtk::Grid*), Int32.cast(__value))
-    end
 
     def self.new_internal
       __return_value = LibGtk.grid_new
@@ -43,7 +28,7 @@ module Gtk
     end
 
     def attach_next_to(child, sibling, side, width, height)
-      __return_value = LibGtk.grid_attach_next_to((to_unsafe as LibGtk::Grid*), (child.to_unsafe as LibGtk::Widget*), (sibling.to_unsafe as LibGtk::Widget*), side, Int32.cast(width), Int32.cast(height))
+      __return_value = LibGtk.grid_attach_next_to((to_unsafe as LibGtk::Grid*), (child.to_unsafe as LibGtk::Widget*), sibling && (sibling.to_unsafe as LibGtk::Widget*), side, Int32.cast(width), Int32.cast(height))
       __return_value
     end
 
@@ -122,7 +107,7 @@ module Gtk
       __return_value
     end
 
-    def row_baseline_position=(row, pos)
+    def set_row_baseline_position(row, pos)
       __return_value = LibGtk.grid_set_row_baseline_position((to_unsafe as LibGtk::Grid*), Int32.cast(row), pos)
       __return_value
     end

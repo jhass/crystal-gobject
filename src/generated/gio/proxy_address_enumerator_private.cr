@@ -1,6 +1,7 @@
 module Gio
   class ProxyAddressEnumeratorPrivate
     include GObject::WrappedType
+
     def initialize @gio_proxy_address_enumerator_private
     end
 

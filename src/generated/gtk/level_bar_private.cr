@@ -1,6 +1,7 @@
 module Gtk
   class LevelBarPrivate
     include GObject::WrappedType
+
     def initialize @gtk_level_bar_private
     end
 

@@ -7,9 +7,6 @@ module Gtk
       @gtk_tree_selection.not_nil!
     end
 
-    def mode=(__value)
-      LibGtk.tree_selection_set_mode((to_unsafe as LibGtk::TreeSelection*), __value)
-    end
 
     def count_selected_rows
       __return_value = LibGtk.tree_selection_count_selected_rows((to_unsafe as LibGtk::TreeSelection*))
@@ -76,7 +73,7 @@ module Gtk
       __return_value
     end
 
-    def select_function=(func, data, destroy)
+    def set_select_function(func, data, destroy)
       __return_value = LibGtk.tree_selection_set_select_function((to_unsafe as LibGtk::TreeSelection*), func, data, destroy)
       __return_value
     end

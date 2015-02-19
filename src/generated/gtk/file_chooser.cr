@@ -210,7 +210,7 @@ module Gtk
       __return_value
     end
 
-    def current_folder_file=(file)
+    def set_current_folder_file(file)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.file_chooser_set_current_folder_file((to_unsafe as LibGtk::FileChooser*), (file.to_unsafe as LibGio::File*), pointerof(__error))
       GLib::Error.assert __error
@@ -237,7 +237,7 @@ module Gtk
       __return_value
     end
 
-    def file=(file)
+    def set_file(file)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.file_chooser_set_file((to_unsafe as LibGtk::FileChooser*), (file.to_unsafe as LibGio::File*), pointerof(__error))
       GLib::Error.assert __error

@@ -1,6 +1,7 @@
 module Gtk
   class ViewportPrivate
     include GObject::WrappedType
+
     def initialize @gtk_viewport_private
     end
 

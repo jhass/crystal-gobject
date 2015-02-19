@@ -13,9 +13,6 @@ module Gtk
     # Implements Actionable
     # Implements Activatable
     # Implements Buildable
-    def permission=(__value)
-      LibGtk.lock_button_set_permission((to_unsafe as LibGtk::LockButton*), __value)
-    end
 
 
 
@@ -23,7 +20,7 @@ module Gtk
 
 
     def self.new_internal(permission)
-      __return_value = LibGtk.lock_button_new((permission.to_unsafe as LibGio::Permission*))
+      __return_value = LibGtk.lock_button_new(permission && (permission.to_unsafe as LibGio::Permission*))
       Gtk::Widget.new(__return_value)
     end
 
@@ -33,7 +30,7 @@ module Gtk
     end
 
     def permission=(permission)
-      __return_value = LibGtk.lock_button_set_permission((to_unsafe as LibGtk::LockButton*), (permission.to_unsafe as LibGio::Permission*))
+      __return_value = LibGtk.lock_button_set_permission((to_unsafe as LibGtk::LockButton*), permission && (permission.to_unsafe as LibGio::Permission*))
       __return_value
     end
 

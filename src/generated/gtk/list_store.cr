@@ -33,12 +33,12 @@ module Gtk
     end
 
     def insert_after(iter, sibling)
-      __return_value = LibGtk.list_store_insert_after((to_unsafe as LibGtk::ListStore*), iter, (sibling.to_unsafe as LibGtk::TreeIter*))
+      __return_value = LibGtk.list_store_insert_after((to_unsafe as LibGtk::ListStore*), iter, sibling && (sibling.to_unsafe as LibGtk::TreeIter*))
       __return_value
     end
 
     def insert_before(iter, sibling)
-      __return_value = LibGtk.list_store_insert_before((to_unsafe as LibGtk::ListStore*), iter, (sibling.to_unsafe as LibGtk::TreeIter*))
+      __return_value = LibGtk.list_store_insert_before((to_unsafe as LibGtk::ListStore*), iter, sibling && (sibling.to_unsafe as LibGtk::TreeIter*))
       __return_value
     end
 
@@ -53,12 +53,12 @@ module Gtk
     end
 
     def move_after(iter, position)
-      __return_value = LibGtk.list_store_move_after((to_unsafe as LibGtk::ListStore*), (iter.to_unsafe as LibGtk::TreeIter*), (position.to_unsafe as LibGtk::TreeIter*))
+      __return_value = LibGtk.list_store_move_after((to_unsafe as LibGtk::ListStore*), (iter.to_unsafe as LibGtk::TreeIter*), position && (position.to_unsafe as LibGtk::TreeIter*))
       __return_value
     end
 
     def move_before(iter, position)
-      __return_value = LibGtk.list_store_move_before((to_unsafe as LibGtk::ListStore*), (iter.to_unsafe as LibGtk::TreeIter*), (position.to_unsafe as LibGtk::TreeIter*))
+      __return_value = LibGtk.list_store_move_before((to_unsafe as LibGtk::ListStore*), (iter.to_unsafe as LibGtk::TreeIter*), position && (position.to_unsafe as LibGtk::TreeIter*))
       __return_value
     end
 
@@ -77,12 +77,12 @@ module Gtk
       __return_value
     end
 
-    def column_types=(n_columns, types)
+    def set_column_types(n_columns, types)
       __return_value = LibGtk.list_store_set_column_types((to_unsafe as LibGtk::ListStore*), Int32.cast(n_columns), types)
       __return_value
     end
 
-    def value=(iter, column, value)
+    def set_value(iter, column, value)
       __return_value = LibGtk.list_store_set_value((to_unsafe as LibGtk::ListStore*), (iter.to_unsafe as LibGtk::TreeIter*), Int32.cast(column), (value.to_unsafe as LibGObject::Value*))
       __return_value
     end

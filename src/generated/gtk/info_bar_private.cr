@@ -1,6 +1,7 @@
 module Gtk
   class InfoBarPrivate
     include GObject::WrappedType
+
     def initialize @gtk_info_bar_private
     end
 

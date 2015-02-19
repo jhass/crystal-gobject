@@ -1,6 +1,7 @@
 module Pango
   class Analysis
     include GObject::WrappedType
+
     def initialize @pango_analysis
     end
 

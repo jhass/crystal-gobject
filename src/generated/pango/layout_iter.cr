@@ -1,6 +1,7 @@
 module Pango
   class LayoutIter
     include GObject::WrappedType
+
     def initialize @pango_layout_iter
     end
 

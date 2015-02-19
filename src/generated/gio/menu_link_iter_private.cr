@@ -1,6 +1,7 @@
 module Gio
   class MenuLinkIterPrivate
     include GObject::WrappedType
+
     def initialize @gio_menu_link_iter_private
     end
 

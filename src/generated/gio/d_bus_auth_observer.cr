@@ -18,7 +18,7 @@ module Gio
     end
 
     def authorize_authenticated_peer(stream, credentials)
-      __return_value = LibGio.d_bus_auth_observer_authorize_authenticated_peer((to_unsafe as LibGio::DBusAuthObserver*), (stream.to_unsafe as LibGio::IOStream*), (credentials.to_unsafe as LibGio::Credentials*))
+      __return_value = LibGio.d_bus_auth_observer_authorize_authenticated_peer((to_unsafe as LibGio::DBusAuthObserver*), (stream.to_unsafe as LibGio::IOStream*), credentials && (credentials.to_unsafe as LibGio::Credentials*))
       __return_value
     end
 

@@ -1,6 +1,7 @@
 module Gdk
   class EventWindowState
     include GObject::WrappedType
+
     def initialize @gdk_event_window_state
     end
 

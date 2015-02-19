@@ -1,6 +1,7 @@
 module Gtk
   class ButtonBoxPrivate
     include GObject::WrappedType
+
     def initialize @gtk_button_box_private
     end
 

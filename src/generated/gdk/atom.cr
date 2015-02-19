@@ -1,6 +1,7 @@
 module Gdk
   class Atom
     include GObject::WrappedType
+
     def initialize @gdk_atom
     end
 

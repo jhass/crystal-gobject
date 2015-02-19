@@ -1,6 +1,7 @@
 module Gtk
   class ApplicationWindowPrivate
     include GObject::WrappedType
+
     def initialize @gtk_application_window_private
     end
 

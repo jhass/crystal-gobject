@@ -1,6 +1,7 @@
 module Gtk
   class EntryPrivate
     include GObject::WrappedType
+
     def initialize @gtk_entry_private
     end
 

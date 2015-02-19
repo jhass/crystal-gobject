@@ -1,6 +1,7 @@
 module Pango
   class LayoutLine
     include GObject::WrappedType
+
     def initialize @pango_layout_line
     end
 

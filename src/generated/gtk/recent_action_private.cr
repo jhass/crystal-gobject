@@ -1,6 +1,7 @@
 module Gtk
   class RecentActionPrivate
     include GObject::WrappedType
+
     def initialize @gtk_recent_action_private
     end
 

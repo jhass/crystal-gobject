@@ -30,7 +30,7 @@ module Atk
       raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
     end
 
-    def description=(i, desc)
+    def set_description(i, desc)
       __return_value = LibAtk.action_set_description((to_unsafe as LibAtk::Action*), Int32.cast(i), desc)
       __return_value
     end

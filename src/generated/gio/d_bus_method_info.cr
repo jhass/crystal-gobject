@@ -1,6 +1,7 @@
 module Gio
   class DBusMethodInfo
     include GObject::WrappedType
+
     def initialize @gio_d_bus_method_info
     end
 

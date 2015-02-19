@@ -1,6 +1,7 @@
 module Atk
   class Attribute
     include GObject::WrappedType
+
     def initialize @atk_attribute
     end
 
@@ -8,7 +9,7 @@ module Atk
       @atk_attribute.not_nil!
     end
 
-    def self.free=(attrib_set)
+    def self.set_free(attrib_set)
       __return_value = LibAtk.attribute_set_free(attrib_set)
       __return_value
     end

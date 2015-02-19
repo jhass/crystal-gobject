@@ -1,6 +1,7 @@
 module Gio
   class DBusNodeInfo
     include GObject::WrappedType
+
     def initialize @gio_d_bus_node_info
     end
 

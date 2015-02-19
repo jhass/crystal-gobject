@@ -1,6 +1,7 @@
 module Gtk
   class NotebookAccessiblePrivate
     include GObject::WrappedType
+
     def initialize @gtk_notebook_accessible_private
     end
 

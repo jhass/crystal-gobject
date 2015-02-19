@@ -1,7 +1,7 @@
 module Gtk
   module TreeModel
     def filter_new(root)
-      __return_value = LibGtk.tree_model_filter_new((to_unsafe as LibGtk::TreeModel*), (root.to_unsafe as LibGtk::TreePath*))
+      __return_value = LibGtk.tree_model_filter_new((to_unsafe as LibGtk::TreeModel*), root && (root.to_unsafe as LibGtk::TreePath*))
       __return_value
     end
 
@@ -56,7 +56,7 @@ module Gtk
     end
 
     def iter_children(iter, parent)
-      __return_value = LibGtk.tree_model_iter_children((to_unsafe as LibGtk::TreeModel*), iter, (parent.to_unsafe as LibGtk::TreeIter*))
+      __return_value = LibGtk.tree_model_iter_children((to_unsafe as LibGtk::TreeModel*), iter, parent && (parent.to_unsafe as LibGtk::TreeIter*))
       __return_value
     end
 
@@ -66,7 +66,7 @@ module Gtk
     end
 
     def iter_n_children(iter)
-      __return_value = LibGtk.tree_model_iter_n_children((to_unsafe as LibGtk::TreeModel*), (iter.to_unsafe as LibGtk::TreeIter*))
+      __return_value = LibGtk.tree_model_iter_n_children((to_unsafe as LibGtk::TreeModel*), iter && (iter.to_unsafe as LibGtk::TreeIter*))
       __return_value
     end
 
@@ -76,7 +76,7 @@ module Gtk
     end
 
     def iter_nth_child(iter, parent, n)
-      __return_value = LibGtk.tree_model_iter_nth_child((to_unsafe as LibGtk::TreeModel*), iter, (parent.to_unsafe as LibGtk::TreeIter*), Int32.cast(n))
+      __return_value = LibGtk.tree_model_iter_nth_child((to_unsafe as LibGtk::TreeModel*), iter, parent && (parent.to_unsafe as LibGtk::TreeIter*), Int32.cast(n))
       __return_value
     end
 
@@ -116,7 +116,7 @@ module Gtk
     end
 
     def rows_reordered(path, iter, new_order, length)
-      __return_value = LibGtk.tree_model_rows_reordered((to_unsafe as LibGtk::TreeModel*), (path.to_unsafe as LibGtk::TreePath*), (iter.to_unsafe as LibGtk::TreeIter*), new_order, Int32.cast(length))
+      __return_value = LibGtk.tree_model_rows_reordered((to_unsafe as LibGtk::TreeModel*), (path.to_unsafe as LibGtk::TreePath*), iter && (iter.to_unsafe as LibGtk::TreeIter*), new_order, Int32.cast(length))
       __return_value
     end
 

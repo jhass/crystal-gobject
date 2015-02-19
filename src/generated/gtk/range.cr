@@ -13,33 +13,12 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
 
-    def fill_level=(__value)
-      LibGtk.range_set_fill_level((to_unsafe as LibGtk::Range*), Float64.cast(__value))
-    end
 
-    def inverted=(__value)
-      LibGtk.range_set_inverted((to_unsafe as LibGtk::Range*), Bool.cast(__value))
-    end
 
-    def lower_stepper_sensitivity=(__value)
-      LibGtk.range_set_lower_stepper_sensitivity((to_unsafe as LibGtk::Range*), __value)
-    end
 
-    def restrict_to_fill_level=(__value)
-      LibGtk.range_set_restrict_to_fill_level((to_unsafe as LibGtk::Range*), Bool.cast(__value))
-    end
 
-    def round_digits=(__value)
-      LibGtk.range_set_round_digits((to_unsafe as LibGtk::Range*), Int32.cast(__value))
-    end
 
-    def show_fill_level=(__value)
-      LibGtk.range_set_show_fill_level((to_unsafe as LibGtk::Range*), Bool.cast(__value))
-    end
 
-    def upper_stepper_sensitivity=(__value)
-      LibGtk.range_set_upper_stepper_sensitivity((to_unsafe as LibGtk::Range*), __value)
-    end
 
     def adjustment
       __return_value = LibGtk.range_get_adjustment((to_unsafe as LibGtk::Range*))
@@ -126,7 +105,7 @@ module Gtk
       __return_value
     end
 
-    def increments=(step, page)
+    def set_increments(step, page)
       __return_value = LibGtk.range_set_increments((to_unsafe as LibGtk::Range*), Float64.cast(step), Float64.cast(page))
       __return_value
     end
@@ -146,7 +125,7 @@ module Gtk
       __return_value
     end
 
-    def range=(min, max)
+    def set_range(min, max)
       __return_value = LibGtk.range_set_range((to_unsafe as LibGtk::Range*), Float64.cast(min), Float64.cast(max))
       __return_value
     end

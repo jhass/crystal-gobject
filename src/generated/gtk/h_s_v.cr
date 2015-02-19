@@ -36,12 +36,12 @@ module Gtk
       __return_value
     end
 
-    def color=(h, s, v)
+    def set_color(h, s, v)
       __return_value = LibGtk.h_s_v_set_color((to_unsafe as LibGtk::HSV*), Float64.cast(h), Float64.cast(s), Float64.cast(v))
       __return_value
     end
 
-    def metrics=(size, ring_width)
+    def set_metrics(size, ring_width)
       __return_value = LibGtk.h_s_v_set_metrics((to_unsafe as LibGtk::HSV*), Int32.cast(size), Int32.cast(ring_width))
       __return_value
     end

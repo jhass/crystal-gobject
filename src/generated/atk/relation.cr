@@ -7,13 +7,7 @@ module Atk
       @atk_relation.not_nil!
     end
 
-    def relation_type=(__value)
-      LibAtk.relation_set_relation_type((to_unsafe as LibAtk::Relation*), __value)
-    end
 
-    def target=(__value)
-      LibAtk.relation_set_target((to_unsafe as LibAtk::Relation*), __value)
-    end
 
     def self.new_internal(targets, n_targets, relationship)
       __return_value = LibAtk.relation_new(targets, Int32.cast(n_targets), relationship)

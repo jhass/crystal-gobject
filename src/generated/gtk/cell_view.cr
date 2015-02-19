@@ -13,35 +13,14 @@ module Gtk
     # Implements Buildable
     # Implements CellLayout
     # Implements Orientable
-    def background=(__value)
-      LibGtk.cell_view_set_background((to_unsafe as LibGtk::CellView*), __value)
-    end
-
-    def background_gdk=(__value)
-      LibGtk.cell_view_set_background_gdk((to_unsafe as LibGtk::CellView*), __value)
-    end
-
-    def background_rgba=(__value)
-      LibGtk.cell_view_set_background_rgba((to_unsafe as LibGtk::CellView*), __value)
-    end
-
-    def background_set=(__value)
-      LibGtk.cell_view_set_background_set((to_unsafe as LibGtk::CellView*), Bool.cast(__value))
-    end
 
 
 
-    def draw_sensitive=(__value)
-      LibGtk.cell_view_set_draw_sensitive((to_unsafe as LibGtk::CellView*), Bool.cast(__value))
-    end
 
-    def fit_model=(__value)
-      LibGtk.cell_view_set_fit_model((to_unsafe as LibGtk::CellView*), Bool.cast(__value))
-    end
 
-    def model=(__value)
-      LibGtk.cell_view_set_model((to_unsafe as LibGtk::CellView*), __value)
-    end
+
+
+
 
     def self.new_internal
       __return_value = LibGtk.cell_view_new
@@ -104,7 +83,7 @@ module Gtk
     end
 
     def displayed_row=(path)
-      __return_value = LibGtk.cell_view_set_displayed_row((to_unsafe as LibGtk::CellView*), (path.to_unsafe as LibGtk::TreePath*))
+      __return_value = LibGtk.cell_view_set_displayed_row((to_unsafe as LibGtk::CellView*), path && (path.to_unsafe as LibGtk::TreePath*))
       __return_value
     end
 
@@ -119,7 +98,7 @@ module Gtk
     end
 
     def model=(model)
-      __return_value = LibGtk.cell_view_set_model((to_unsafe as LibGtk::CellView*), (model.to_unsafe as LibGtk::TreeModel*))
+      __return_value = LibGtk.cell_view_set_model((to_unsafe as LibGtk::CellView*), model && (model.to_unsafe as LibGtk::TreeModel*))
       __return_value
     end
 

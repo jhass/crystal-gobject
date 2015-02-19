@@ -1,6 +1,7 @@
 module Gio
   class DataOutputStreamPrivate
     include GObject::WrappedType
+
     def initialize @gio_data_output_stream_private
     end
 

@@ -48,7 +48,7 @@ module Gtk
 
     def move_item(uri, new_uri)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.recent_manager_move_item((to_unsafe as LibGtk::RecentManager*), uri, new_uri, pointerof(__error))
+      __return_value = LibGtk.recent_manager_move_item((to_unsafe as LibGtk::RecentManager*), uri, new_uri && new_uri, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

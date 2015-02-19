@@ -1,6 +1,7 @@
 module Atk
   class Range
     include GObject::WrappedType
+
     def initialize @atk_range
     end
 

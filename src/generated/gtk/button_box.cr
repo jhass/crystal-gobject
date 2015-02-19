@@ -12,9 +12,6 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
-    def layout_style=(__value)
-      LibGtk.button_box_set_layout_style((to_unsafe as LibGtk::ButtonBox*), __value)
-    end
 
     def self.new_internal(orientation)
       __return_value = LibGtk.button_box_new(orientation)
@@ -36,12 +33,12 @@ module Gtk
       __return_value
     end
 
-    def child_non_homogeneous=(child, non_homogeneous)
+    def set_child_non_homogeneous(child, non_homogeneous)
       __return_value = LibGtk.button_box_set_child_non_homogeneous((to_unsafe as LibGtk::ButtonBox*), (child.to_unsafe as LibGtk::Widget*), Bool.cast(non_homogeneous))
       __return_value
     end
 
-    def child_secondary=(child, is_secondary)
+    def set_child_secondary(child, is_secondary)
       __return_value = LibGtk.button_box_set_child_secondary((to_unsafe as LibGtk::ButtonBox*), (child.to_unsafe as LibGtk::Widget*), Bool.cast(is_secondary))
       __return_value
     end

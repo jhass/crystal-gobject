@@ -1,6 +1,7 @@
 module GLib
   class Rand
     include GObject::WrappedType
+
     def initialize @g_lib_rand
     end
 
@@ -38,7 +39,7 @@ module GLib
       __return_value
     end
 
-    def seed_array=(seed, seed_length)
+    def set_seed_array(seed, seed_length)
       __return_value = LibGLib.rand_set_seed_array((to_unsafe as LibGLib::Rand*), seed, UInt32.cast(seed_length))
       __return_value
     end

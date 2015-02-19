@@ -1,6 +1,7 @@
 module Gtk
   class HandleBoxPrivate
     include GObject::WrappedType
+
     def initialize @gtk_handle_box_private
     end
 

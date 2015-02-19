@@ -14,29 +14,11 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
     # Implements FontChooser
-    def font_name=(__value)
-      LibGtk.font_button_set_font_name((to_unsafe as LibGtk::FontButton*), __value)
-    end
 
-    def show_size=(__value)
-      LibGtk.font_button_set_show_size((to_unsafe as LibGtk::FontButton*), Bool.cast(__value))
-    end
 
-    def show_style=(__value)
-      LibGtk.font_button_set_show_style((to_unsafe as LibGtk::FontButton*), Bool.cast(__value))
-    end
 
-    def title=(__value)
-      LibGtk.font_button_set_title((to_unsafe as LibGtk::FontButton*), __value)
-    end
 
-    def use_font=(__value)
-      LibGtk.font_button_set_use_font((to_unsafe as LibGtk::FontButton*), Bool.cast(__value))
-    end
 
-    def use_size=(__value)
-      LibGtk.font_button_set_use_size((to_unsafe as LibGtk::FontButton*), Bool.cast(__value))
-    end
 
     def self.new_internal
       __return_value = LibGtk.font_button_new

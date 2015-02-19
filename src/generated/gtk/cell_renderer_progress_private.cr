@@ -1,6 +1,7 @@
 module Gtk
   class CellRendererProgressPrivate
     include GObject::WrappedType
+
     def initialize @gtk_cell_renderer_progress_private
     end
 

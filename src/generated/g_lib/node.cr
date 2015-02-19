@@ -1,6 +1,7 @@
 module GLib
   class Node
     include GObject::WrappedType
+
     def initialize @g_lib_node
     end
 

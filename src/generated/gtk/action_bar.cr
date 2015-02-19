@@ -32,7 +32,7 @@ module Gtk
     end
 
     def center_widget=(center_widget)
-      __return_value = LibGtk.action_bar_set_center_widget((to_unsafe as LibGtk::ActionBar*), (center_widget.to_unsafe as LibGtk::Widget*))
+      __return_value = LibGtk.action_bar_set_center_widget((to_unsafe as LibGtk::ActionBar*), center_widget && (center_widget.to_unsafe as LibGtk::Widget*))
       __return_value
     end
 

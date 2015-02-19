@@ -1,6 +1,7 @@
 module Gio
   class ActionEntry
     include GObject::WrappedType
+
     def initialize @gio_action_entry
     end
 

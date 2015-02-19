@@ -1,6 +1,7 @@
 module GLib
   class OptionContext
     include GObject::WrappedType
+
     def initialize @g_lib_option_context
     end
 
@@ -14,7 +15,7 @@ module GLib
     end
 
     def add_main_entries(entries, translation_domain)
-      __return_value = LibGLib.option_context_add_main_entries((to_unsafe as LibGLib::OptionContext*), (entries.to_unsafe as LibGLib::OptionEntry*), translation_domain)
+      __return_value = LibGLib.option_context_add_main_entries((to_unsafe as LibGLib::OptionContext*), (entries.to_unsafe as LibGLib::OptionEntry*), translation_domain && translation_domain)
       __return_value
     end
 
@@ -29,7 +30,7 @@ module GLib
     end
 
     def help(main_help, group)
-      __return_value = LibGLib.option_context_get_help((to_unsafe as LibGLib::OptionContext*), Bool.cast(main_help), (group.to_unsafe as LibGLib::OptionGroup*))
+      __return_value = LibGLib.option_context_get_help((to_unsafe as LibGLib::OptionContext*), Bool.cast(main_help), group && (group.to_unsafe as LibGLib::OptionGroup*))
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 
@@ -50,7 +51,7 @@ module GLib
 
     def parse(argc, argv)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.option_context_parse((to_unsafe as LibGLib::OptionContext*), Int32.cast(argc), argv, pointerof(__error))
+      __return_value = LibGLib.option_context_parse((to_unsafe as LibGLib::OptionContext*), argc && Int32.cast(argc), argv && argv, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -63,7 +64,7 @@ module GLib
     end
 
     def description=(description)
-      __return_value = LibGLib.option_context_set_description((to_unsafe as LibGLib::OptionContext*), description)
+      __return_value = LibGLib.option_context_set_description((to_unsafe as LibGLib::OptionContext*), description && description)
       __return_value
     end
 
@@ -83,12 +84,12 @@ module GLib
     end
 
     def summary=(summary)
-      __return_value = LibGLib.option_context_set_summary((to_unsafe as LibGLib::OptionContext*), summary)
+      __return_value = LibGLib.option_context_set_summary((to_unsafe as LibGLib::OptionContext*), summary && summary)
       __return_value
     end
 
-    def translate_func=(func, data, destroy_notify)
-      __return_value = LibGLib.option_context_set_translate_func((to_unsafe as LibGLib::OptionContext*), func, data, destroy_notify)
+    def set_translate_func(func, data, destroy_notify)
+      __return_value = LibGLib.option_context_set_translate_func((to_unsafe as LibGLib::OptionContext*), func && func, data && data, destroy_notify && destroy_notify)
       __return_value
     end
 

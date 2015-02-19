@@ -1,6 +1,7 @@
 module Gtk
   class IconSet
     include GObject::WrappedType
+
     def initialize @gtk_icon_set
     end
 
@@ -39,7 +40,7 @@ module Gtk
     end
 
     def render_icon(style, direction, state, size, widget, detail)
-      __return_value = LibGtk.icon_set_render_icon((to_unsafe as LibGtk::IconSet*), (style.to_unsafe as LibGtk::Style*), direction, state, Int32.cast(size), (widget.to_unsafe as LibGtk::Widget*), detail)
+      __return_value = LibGtk.icon_set_render_icon((to_unsafe as LibGtk::IconSet*), style && (style.to_unsafe as LibGtk::Style*), direction, state, Int32.cast(size), widget && (widget.to_unsafe as LibGtk::Widget*), detail && detail)
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 
@@ -49,7 +50,7 @@ module Gtk
     end
 
     def render_icon_surface(context, size, scale, for_window)
-      __return_value = LibGtk.icon_set_render_icon_surface((to_unsafe as LibGtk::IconSet*), (context.to_unsafe as LibGtk::StyleContext*), Int32.cast(size), Int32.cast(scale), (for_window.to_unsafe as LibGdk::Window*))
+      __return_value = LibGtk.icon_set_render_icon_surface((to_unsafe as LibGtk::IconSet*), (context.to_unsafe as LibGtk::StyleContext*), Int32.cast(size), Int32.cast(scale), for_window && (for_window.to_unsafe as LibGdk::Window*))
       Cairo::Surface.new(__return_value)
     end
 

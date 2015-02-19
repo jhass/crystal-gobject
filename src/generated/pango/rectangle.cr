@@ -1,6 +1,7 @@
 module Pango
   class Rectangle
     include GObject::WrappedType
+
     def initialize @pango_rectangle
     end
 

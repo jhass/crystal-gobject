@@ -1,6 +1,7 @@
 module Gtk
   class TextBufferPrivate
     include GObject::WrappedType
+
     def initialize @gtk_text_buffer_private
     end
 

@@ -1,6 +1,7 @@
 module Gtk
   class PanedPrivate
     include GObject::WrappedType
+
     def initialize @gtk_paned_private
     end
 

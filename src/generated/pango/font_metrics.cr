@@ -1,6 +1,7 @@
 module Pango
   class FontMetrics
     include GObject::WrappedType
+
     def initialize @pango_font_metrics
     end
 

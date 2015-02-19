@@ -13,64 +13,22 @@ module Gtk
     # Implements Buildable
     # Implements CellEditable
     # Implements CellLayout
-    def active=(__value)
-      LibGtk.combo_box_set_active((to_unsafe as LibGtk::ComboBox*), Int32.cast(__value))
-    end
-
-    def active_id=(__value)
-      LibGtk.combo_box_set_active_id((to_unsafe as LibGtk::ComboBox*), __value)
-    end
-
-    def add_tearoffs=(__value)
-      LibGtk.combo_box_set_add_tearoffs((to_unsafe as LibGtk::ComboBox*), Bool.cast(__value))
-    end
-
-    def button_sensitivity=(__value)
-      LibGtk.combo_box_set_button_sensitivity((to_unsafe as LibGtk::ComboBox*), __value)
-    end
 
 
-    def column_span_column=(__value)
-      LibGtk.combo_box_set_column_span_column((to_unsafe as LibGtk::ComboBox*), Int32.cast(__value))
-    end
-
-    def entry_text_column=(__value)
-      LibGtk.combo_box_set_entry_text_column((to_unsafe as LibGtk::ComboBox*), Int32.cast(__value))
-    end
-
-    def focus_on_click=(__value)
-      LibGtk.combo_box_set_focus_on_click((to_unsafe as LibGtk::ComboBox*), Bool.cast(__value))
-    end
 
 
-    def has_frame=(__value)
-      LibGtk.combo_box_set_has_frame((to_unsafe as LibGtk::ComboBox*), Bool.cast(__value))
-    end
-
-    def id_column=(__value)
-      LibGtk.combo_box_set_id_column((to_unsafe as LibGtk::ComboBox*), Int32.cast(__value))
-    end
-
-    def model=(__value)
-      LibGtk.combo_box_set_model((to_unsafe as LibGtk::ComboBox*), __value)
-    end
-
-    def popup_fixed_width=(__value)
-      LibGtk.combo_box_set_popup_fixed_width((to_unsafe as LibGtk::ComboBox*), Bool.cast(__value))
-    end
 
 
-    def row_span_column=(__value)
-      LibGtk.combo_box_set_row_span_column((to_unsafe as LibGtk::ComboBox*), Int32.cast(__value))
-    end
 
-    def tearoff_title=(__value)
-      LibGtk.combo_box_set_tearoff_title((to_unsafe as LibGtk::ComboBox*), __value)
-    end
 
-    def wrap_width=(__value)
-      LibGtk.combo_box_set_wrap_width((to_unsafe as LibGtk::ComboBox*), Int32.cast(__value))
-    end
+
+
+
+
+
+
+
+
 
     def self.new_internal
       __return_value = LibGtk.combo_box_new
@@ -203,12 +161,12 @@ module Gtk
     end
 
     def active_id=(active_id)
-      __return_value = LibGtk.combo_box_set_active_id((to_unsafe as LibGtk::ComboBox*), active_id)
+      __return_value = LibGtk.combo_box_set_active_id((to_unsafe as LibGtk::ComboBox*), active_id && active_id)
       __return_value
     end
 
     def active_iter=(iter)
-      __return_value = LibGtk.combo_box_set_active_iter((to_unsafe as LibGtk::ComboBox*), (iter.to_unsafe as LibGtk::TreeIter*))
+      __return_value = LibGtk.combo_box_set_active_iter((to_unsafe as LibGtk::ComboBox*), iter && (iter.to_unsafe as LibGtk::TreeIter*))
       __return_value
     end
 
@@ -243,7 +201,7 @@ module Gtk
     end
 
     def model=(model)
-      __return_value = LibGtk.combo_box_set_model((to_unsafe as LibGtk::ComboBox*), (model.to_unsafe as LibGtk::TreeModel*))
+      __return_value = LibGtk.combo_box_set_model((to_unsafe as LibGtk::ComboBox*), model && (model.to_unsafe as LibGtk::TreeModel*))
       __return_value
     end
 
@@ -252,8 +210,8 @@ module Gtk
       __return_value
     end
 
-    def row_separator_func=(func, data, destroy)
-      __return_value = LibGtk.combo_box_set_row_separator_func((to_unsafe as LibGtk::ComboBox*), func, data, destroy)
+    def set_row_separator_func(func, data, destroy)
+      __return_value = LibGtk.combo_box_set_row_separator_func((to_unsafe as LibGtk::ComboBox*), func, data && data, destroy && destroy)
       __return_value
     end
 

@@ -1,6 +1,7 @@
 module Gio
   class DBusObjectProxyPrivate
     include GObject::WrappedType
+
     def initialize @gio_d_bus_object_proxy_private
     end
 

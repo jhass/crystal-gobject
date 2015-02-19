@@ -1,6 +1,7 @@
 module GLib
   class IConv
     include GObject::WrappedType
+
     def initialize @g_lib_i_conv
     end
 

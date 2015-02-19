@@ -38,7 +38,7 @@ module Gtk
       __return_value
     end
 
-    def property=(property, state, value)
+    def set_property(property, state, value)
       __return_value = LibGtk.style_properties_set_property((to_unsafe as LibGtk::StyleProperties*), property, state, (value.to_unsafe as LibGObject::Value*))
       __return_value
     end

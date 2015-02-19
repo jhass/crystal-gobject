@@ -8,68 +8,23 @@ module Gtk
     end
 
     # Implements PrintOperationPreview
-    def allow_async=(__value)
-      LibGtk.print_operation_set_allow_async((to_unsafe as LibGtk::PrintOperation*), Bool.cast(__value))
-    end
-
-    def current_page=(__value)
-      LibGtk.print_operation_set_current_page((to_unsafe as LibGtk::PrintOperation*), Int32.cast(__value))
-    end
-
-    def custom_tab_label=(__value)
-      LibGtk.print_operation_set_custom_tab_label((to_unsafe as LibGtk::PrintOperation*), __value)
-    end
-
-    def default_page_setup=(__value)
-      LibGtk.print_operation_set_default_page_setup((to_unsafe as LibGtk::PrintOperation*), __value)
-    end
-
-    def embed_page_setup=(__value)
-      LibGtk.print_operation_set_embed_page_setup((to_unsafe as LibGtk::PrintOperation*), Bool.cast(__value))
-    end
-
-    def export_filename=(__value)
-      LibGtk.print_operation_set_export_filename((to_unsafe as LibGtk::PrintOperation*), __value)
-    end
-
-    def has_selection=(__value)
-      LibGtk.print_operation_set_has_selection((to_unsafe as LibGtk::PrintOperation*), Bool.cast(__value))
-    end
-
-    def job_name=(__value)
-      LibGtk.print_operation_set_job_name((to_unsafe as LibGtk::PrintOperation*), __value)
-    end
-
-    def n_pages=(__value)
-      LibGtk.print_operation_set_n_pages((to_unsafe as LibGtk::PrintOperation*), Int32.cast(__value))
-    end
-
-
-    def print_settings=(__value)
-      LibGtk.print_operation_set_print_settings((to_unsafe as LibGtk::PrintOperation*), __value)
-    end
-
-    def show_progress=(__value)
-      LibGtk.print_operation_set_show_progress((to_unsafe as LibGtk::PrintOperation*), Bool.cast(__value))
-    end
 
 
 
-    def support_selection=(__value)
-      LibGtk.print_operation_set_support_selection((to_unsafe as LibGtk::PrintOperation*), Bool.cast(__value))
-    end
 
-    def track_print_status=(__value)
-      LibGtk.print_operation_set_track_print_status((to_unsafe as LibGtk::PrintOperation*), Bool.cast(__value))
-    end
 
-    def unit=(__value)
-      LibGtk.print_operation_set_unit((to_unsafe as LibGtk::PrintOperation*), __value)
-    end
 
-    def use_full_page=(__value)
-      LibGtk.print_operation_set_use_full_page((to_unsafe as LibGtk::PrintOperation*), Bool.cast(__value))
-    end
+
+
+
+
+
+
+
+
+
+
+
 
     def self.new_internal
       __return_value = LibGtk.print_operation_new
@@ -140,7 +95,7 @@ module Gtk
 
     def run(action, parent)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.print_operation_run((to_unsafe as LibGtk::PrintOperation*), action, (parent.to_unsafe as LibGtk::Window*), pointerof(__error))
+      __return_value = LibGtk.print_operation_run((to_unsafe as LibGtk::PrintOperation*), action, parent && (parent.to_unsafe as LibGtk::Window*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -156,16 +111,16 @@ module Gtk
     end
 
     def custom_tab_label=(label)
-      __return_value = LibGtk.print_operation_set_custom_tab_label((to_unsafe as LibGtk::PrintOperation*), label)
+      __return_value = LibGtk.print_operation_set_custom_tab_label((to_unsafe as LibGtk::PrintOperation*), label && label)
       __return_value
     end
 
     def default_page_setup=(default_page_setup)
-      __return_value = LibGtk.print_operation_set_default_page_setup((to_unsafe as LibGtk::PrintOperation*), (default_page_setup.to_unsafe as LibGtk::PageSetup*))
+      __return_value = LibGtk.print_operation_set_default_page_setup((to_unsafe as LibGtk::PrintOperation*), default_page_setup && (default_page_setup.to_unsafe as LibGtk::PageSetup*))
       __return_value
     end
 
-    def defer_drawing=
+    def set_defer_drawing
       __return_value = LibGtk.print_operation_set_defer_drawing((to_unsafe as LibGtk::PrintOperation*))
       __return_value
     end
@@ -196,7 +151,7 @@ module Gtk
     end
 
     def print_settings=(print_settings)
-      __return_value = LibGtk.print_operation_set_print_settings((to_unsafe as LibGtk::PrintOperation*), (print_settings.to_unsafe as LibGtk::PrintSettings*))
+      __return_value = LibGtk.print_operation_set_print_settings((to_unsafe as LibGtk::PrintOperation*), print_settings && (print_settings.to_unsafe as LibGtk::PrintSettings*))
       __return_value
     end
 

@@ -1,6 +1,7 @@
 module GLib
   class Date
     include GObject::WrappedType
+
     def initialize @g_lib_date
     end
 
@@ -128,7 +129,7 @@ module GLib
       __return_value
     end
 
-    def dmy=(day, month, y)
+    def set_dmy(day, month, y)
       __return_value = LibGLib.date_set_dmy((to_unsafe as LibGLib::Date*), UInt8.cast(day), month, UInt16.cast(y))
       __return_value
     end

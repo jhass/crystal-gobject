@@ -13,25 +13,10 @@ module Gtk
     # Implements Actionable
     # Implements Activatable
     # Implements Buildable
-    def accel_path=(__value)
-      LibGtk.menu_item_set_accel_path((to_unsafe as LibGtk::MenuItem*), __value)
-    end
 
-    def label=(__value)
-      LibGtk.menu_item_set_label((to_unsafe as LibGtk::MenuItem*), __value)
-    end
 
-    def right_justified=(__value)
-      LibGtk.menu_item_set_right_justified((to_unsafe as LibGtk::MenuItem*), Bool.cast(__value))
-    end
 
-    def submenu=(__value)
-      LibGtk.menu_item_set_submenu((to_unsafe as LibGtk::MenuItem*), __value)
-    end
 
-    def use_underline=(__value)
-      LibGtk.menu_item_set_use_underline((to_unsafe as LibGtk::MenuItem*), Bool.cast(__value))
-    end
 
     def self.new_internal
       __return_value = LibGtk.menu_item_new
@@ -94,7 +79,7 @@ module Gtk
     end
 
     def accel_path=(accel_path)
-      __return_value = LibGtk.menu_item_set_accel_path((to_unsafe as LibGtk::MenuItem*), accel_path)
+      __return_value = LibGtk.menu_item_set_accel_path((to_unsafe as LibGtk::MenuItem*), accel_path && accel_path)
       __return_value
     end
 
@@ -114,7 +99,7 @@ module Gtk
     end
 
     def submenu=(submenu)
-      __return_value = LibGtk.menu_item_set_submenu((to_unsafe as LibGtk::MenuItem*), (submenu.to_unsafe as LibGtk::Menu*))
+      __return_value = LibGtk.menu_item_set_submenu((to_unsafe as LibGtk::MenuItem*), submenu && (submenu.to_unsafe as LibGtk::Menu*))
       __return_value
     end
 

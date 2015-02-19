@@ -10,7 +10,7 @@ module Gtk
 
 
     def self.new_internal(name, left_gravity)
-      __return_value = LibGtk.text_mark_new(name, Bool.cast(left_gravity))
+      __return_value = LibGtk.text_mark_new(name && name, Bool.cast(left_gravity))
       Gtk::TextMark.new(__return_value)
     end
 

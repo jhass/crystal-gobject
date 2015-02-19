@@ -11,9 +11,6 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
-    def take_focus=(__value)
-      LibGtk.menu_shell_set_take_focus((to_unsafe as LibGtk::MenuShell*), Bool.cast(__value))
-    end
 
     def activate_item(menu_item, force_deactivate)
       __return_value = LibGtk.menu_shell_activate_item((to_unsafe as LibGtk::MenuShell*), (menu_item.to_unsafe as LibGtk::Widget*), Bool.cast(force_deactivate))
@@ -26,7 +23,7 @@ module Gtk
     end
 
     def bind_model(model, action_namespace, with_separators)
-      __return_value = LibGtk.menu_shell_bind_model((to_unsafe as LibGtk::MenuShell*), (model.to_unsafe as LibGio::MenuModel*), action_namespace, Bool.cast(with_separators))
+      __return_value = LibGtk.menu_shell_bind_model((to_unsafe as LibGtk::MenuShell*), model && (model.to_unsafe as LibGio::MenuModel*), action_namespace && action_namespace, Bool.cast(with_separators))
       __return_value
     end
 

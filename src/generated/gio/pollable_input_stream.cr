@@ -6,7 +6,7 @@ module Gio
     end
 
     def create_source(cancellable)
-      __return_value = LibGio.pollable_input_stream_create_source((to_unsafe as LibGio::PollableInputStream*), (cancellable.to_unsafe as LibGio::Cancellable*))
+      __return_value = LibGio.pollable_input_stream_create_source((to_unsafe as LibGio::PollableInputStream*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*))
       GLib::Source.new(__return_value)
     end
 
@@ -17,7 +17,7 @@ module Gio
 
     def read_nonblocking(buffer, count, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.pollable_input_stream_read_nonblocking((to_unsafe as LibGio::PollableInputStream*), buffer, UInt64.cast(count), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.pollable_input_stream_read_nonblocking((to_unsafe as LibGio::PollableInputStream*), buffer, UInt64.cast(count), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

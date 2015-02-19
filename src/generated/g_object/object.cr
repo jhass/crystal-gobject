@@ -31,7 +31,7 @@ module GObject
 
     def self.interface_list_properties(g_iface, n_properties_p)
       __return_value = LibGObject.object_interface_list_properties(g_iface, UInt32.cast(n_properties_p))
-      PointerIterator.new(__return_value) {|__item_97| GObject::ParamSpec.new(__item_97) }
+      PointerIterator.new(__return_value) {|__item_84| GObject::ParamSpec.new(__item_84) }
     end
 
     def bind_property(source_property, target, target_property, flags)
@@ -95,12 +95,12 @@ module GObject
     end
 
     def replace_data(key, oldval, newval, destroy, old_destroy)
-      __return_value = LibGObject.object_replace_data((to_unsafe as LibGObject::Object*), key, oldval, newval, destroy, (old_destroy.to_unsafe as LibGLib::DestroyNotify*))
+      __return_value = LibGObject.object_replace_data((to_unsafe as LibGObject::Object*), key, oldval && oldval, newval && newval, destroy && destroy, old_destroy && (old_destroy.to_unsafe as LibGLib::DestroyNotify*))
       __return_value
     end
 
     def replace_qdata(quark, oldval, newval, destroy, old_destroy)
-      __return_value = LibGObject.object_replace_qdata((to_unsafe as LibGObject::Object*), UInt32.cast(quark), oldval, newval, destroy, (old_destroy.to_unsafe as LibGLib::DestroyNotify*))
+      __return_value = LibGObject.object_replace_qdata((to_unsafe as LibGObject::Object*), UInt32.cast(quark), oldval && oldval, newval && newval, destroy && destroy, old_destroy && (old_destroy.to_unsafe as LibGLib::DestroyNotify*))
       __return_value
     end
 
@@ -109,12 +109,12 @@ module GObject
       __return_value
     end
 
-    def data=(key, data)
+    def set_data(key, data)
       __return_value = LibGObject.object_set_data((to_unsafe as LibGObject::Object*), key, data)
       __return_value
     end
 
-    def property=(property_name, value)
+    def set_property(property_name, value)
       __return_value = LibGObject.object_set_property((to_unsafe as LibGObject::Object*), property_name, (value.to_unsafe as LibGObject::Value*))
       __return_value
     end

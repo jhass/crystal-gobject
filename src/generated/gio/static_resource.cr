@@ -1,6 +1,7 @@
 module Gio
   class StaticResource
     include GObject::WrappedType
+
     def initialize @gio_static_resource
     end
 

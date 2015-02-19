@@ -285,7 +285,7 @@ module GObject
   end
 
   def self.param_spec_variant(name, nick, blurb, type, default_value, flags)
-    __return_value = LibGObject.param_spec_variant(name, nick, blurb, (type.to_unsafe as LibGLib::VariantType*), (default_value.to_unsafe as LibGLib::Variant*), flags)
+    __return_value = LibGObject.param_spec_variant(name, nick, blurb, (type.to_unsafe as LibGLib::VariantType*), default_value && (default_value.to_unsafe as LibGLib::Variant*), flags)
     GObject::ParamSpec.new(__return_value)
   end
 
@@ -375,7 +375,7 @@ module GObject
   end
 
   def self.signal_handler_find(instance, mask, signal_id, detail, closure, func, data)
-    __return_value = LibGObject.signal_handler_find((instance.to_unsafe as LibGObject::Object*), mask, UInt32.cast(signal_id), UInt32.cast(detail), (closure.to_unsafe as LibGObject::Closure*), func, data)
+    __return_value = LibGObject.signal_handler_find((instance.to_unsafe as LibGObject::Object*), mask, UInt32.cast(signal_id), UInt32.cast(detail), closure && (closure.to_unsafe as LibGObject::Closure*), func, data)
     __return_value
   end
 
@@ -390,7 +390,7 @@ module GObject
   end
 
   def self.signal_handlers_block_matched(instance, mask, signal_id, detail, closure, func, data)
-    __return_value = LibGObject.signal_handlers_block_matched((instance.to_unsafe as LibGObject::Object*), mask, UInt32.cast(signal_id), UInt32.cast(detail), (closure.to_unsafe as LibGObject::Closure*), func, data)
+    __return_value = LibGObject.signal_handlers_block_matched((instance.to_unsafe as LibGObject::Object*), mask, UInt32.cast(signal_id), UInt32.cast(detail), closure && (closure.to_unsafe as LibGObject::Closure*), func, data)
     __return_value
   end
 
@@ -400,12 +400,12 @@ module GObject
   end
 
   def self.signal_handlers_disconnect_matched(instance, mask, signal_id, detail, closure, func, data)
-    __return_value = LibGObject.signal_handlers_disconnect_matched((instance.to_unsafe as LibGObject::Object*), mask, UInt32.cast(signal_id), UInt32.cast(detail), (closure.to_unsafe as LibGObject::Closure*), func, data)
+    __return_value = LibGObject.signal_handlers_disconnect_matched((instance.to_unsafe as LibGObject::Object*), mask, UInt32.cast(signal_id), UInt32.cast(detail), closure && (closure.to_unsafe as LibGObject::Closure*), func, data)
     __return_value
   end
 
   def self.signal_handlers_unblock_matched(instance, mask, signal_id, detail, closure, func, data)
-    __return_value = LibGObject.signal_handlers_unblock_matched((instance.to_unsafe as LibGObject::Object*), mask, UInt32.cast(signal_id), UInt32.cast(detail), (closure.to_unsafe as LibGObject::Closure*), func, data)
+    __return_value = LibGObject.signal_handlers_unblock_matched((instance.to_unsafe as LibGObject::Object*), mask, UInt32.cast(signal_id), UInt32.cast(detail), closure && (closure.to_unsafe as LibGObject::Closure*), func, data)
     __return_value
   end
 
@@ -416,7 +416,7 @@ module GObject
 
   def self.signal_list_ids(itype, n_ids)
     __return_value = LibGObject.signal_list_ids(UInt64.cast(itype), UInt32.cast(n_ids))
-    PointerIterator.new(__return_value) {|__item_50| __item_50 }
+    PointerIterator.new(__return_value) {|__item_83| __item_83 }
   end
 
   def self.signal_lookup(name, itype)
@@ -541,7 +541,7 @@ module GObject
 
   def self.type_children(type, n_children)
     __return_value = LibGObject.type_children(UInt64.cast(type), UInt32.cast(n_children))
-    PointerIterator.new(__return_value) {|__item_50| __item_50 }
+    PointerIterator.new(__return_value) {|__item_19| __item_19 }
   end
 
   def self.type_class_add_private(g_class, private_size)
@@ -656,12 +656,12 @@ module GObject
 
   def self.type_interface_prerequisites(interface_type, n_prerequisites)
     __return_value = LibGObject.type_interface_prerequisites(UInt64.cast(interface_type), UInt32.cast(n_prerequisites))
-    PointerIterator.new(__return_value) {|__item_24| __item_24 }
+    PointerIterator.new(__return_value) {|__item_73| __item_73 }
   end
 
   def self.type_interfaces(type, n_interfaces)
     __return_value = LibGObject.type_interfaces(UInt64.cast(type), UInt32.cast(n_interfaces))
-    PointerIterator.new(__return_value) {|__item_27| __item_27 }
+    PointerIterator.new(__return_value) {|__item_25| __item_25 }
   end
 
   def self.type_is_a(type, is_a_type)

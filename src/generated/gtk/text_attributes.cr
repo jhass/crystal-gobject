@@ -1,6 +1,7 @@
 module Gtk
   class TextAttributes
     include GObject::WrappedType
+
     def initialize @gtk_text_attributes
     end
 

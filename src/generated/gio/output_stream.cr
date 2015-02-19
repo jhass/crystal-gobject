@@ -14,13 +14,13 @@ module Gio
 
     def close(cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.output_stream_close((to_unsafe as LibGio::OutputStream*), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.output_stream_close((to_unsafe as LibGio::OutputStream*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def close_async(io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.output_stream_close_async((to_unsafe as LibGio::OutputStream*), Int32.cast(io_priority), (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGio.output_stream_close_async((to_unsafe as LibGio::OutputStream*), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -33,13 +33,13 @@ module Gio
 
     def flush(cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.output_stream_flush((to_unsafe as LibGio::OutputStream*), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.output_stream_flush((to_unsafe as LibGio::OutputStream*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def flush_async(io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.output_stream_flush_async((to_unsafe as LibGio::OutputStream*), Int32.cast(io_priority), (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGio.output_stream_flush_async((to_unsafe as LibGio::OutputStream*), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -74,13 +74,13 @@ module Gio
 
     def splice(source, flags, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.output_stream_splice((to_unsafe as LibGio::OutputStream*), (source.to_unsafe as LibGio::InputStream*), flags, (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.output_stream_splice((to_unsafe as LibGio::OutputStream*), (source.to_unsafe as LibGio::InputStream*), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def splice_async(source, flags, io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.output_stream_splice_async((to_unsafe as LibGio::OutputStream*), (source.to_unsafe as LibGio::InputStream*), flags, Int32.cast(io_priority), (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGio.output_stream_splice_async((to_unsafe as LibGio::OutputStream*), (source.to_unsafe as LibGio::InputStream*), flags, Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -93,32 +93,32 @@ module Gio
 
     def write(buffer, count, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.output_stream_write((to_unsafe as LibGio::OutputStream*), buffer, UInt64.cast(count), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.output_stream_write((to_unsafe as LibGio::OutputStream*), buffer, UInt64.cast(count), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def write_all(buffer, count, bytes_written, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.output_stream_write_all((to_unsafe as LibGio::OutputStream*), buffer, UInt64.cast(count), UInt64.cast(bytes_written), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.output_stream_write_all((to_unsafe as LibGio::OutputStream*), buffer, UInt64.cast(count), UInt64.cast(bytes_written), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def write_async(buffer, count, io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.output_stream_write_async((to_unsafe as LibGio::OutputStream*), buffer, UInt64.cast(count), Int32.cast(io_priority), (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGio.output_stream_write_async((to_unsafe as LibGio::OutputStream*), buffer, UInt64.cast(count), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
     def write_bytes(bytes, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.output_stream_write_bytes((to_unsafe as LibGio::OutputStream*), (bytes.to_unsafe as LibGLib::Bytes*), (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.output_stream_write_bytes((to_unsafe as LibGio::OutputStream*), (bytes.to_unsafe as LibGLib::Bytes*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def write_bytes_async(bytes, io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.output_stream_write_bytes_async((to_unsafe as LibGio::OutputStream*), (bytes.to_unsafe as LibGLib::Bytes*), Int32.cast(io_priority), (cancellable.to_unsafe as LibGio::Cancellable*), callback, user_data)
+      __return_value = LibGio.output_stream_write_bytes_async((to_unsafe as LibGio::OutputStream*), (bytes.to_unsafe as LibGLib::Bytes*), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 

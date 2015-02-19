@@ -12,17 +12,8 @@ module Gtk
     # Implements ImplementorIface
     # Implements Activatable
     # Implements Buildable
-    def is_important=(__value)
-      LibGtk.tool_item_set_is_important((to_unsafe as LibGtk::ToolItem*), Bool.cast(__value))
-    end
 
-    def visible_horizontal=(__value)
-      LibGtk.tool_item_set_visible_horizontal((to_unsafe as LibGtk::ToolItem*), Bool.cast(__value))
-    end
 
-    def visible_vertical=(__value)
-      LibGtk.tool_item_set_visible_vertical((to_unsafe as LibGtk::ToolItem*), Bool.cast(__value))
-    end
 
     def self.new_internal
       __return_value = LibGtk.tool_item_new
@@ -129,7 +120,7 @@ module Gtk
       __return_value
     end
 
-    def proxy_menu_item=(menu_item_id, menu_item)
+    def set_proxy_menu_item(menu_item_id, menu_item)
       __return_value = LibGtk.tool_item_set_proxy_menu_item((to_unsafe as LibGtk::ToolItem*), menu_item_id, (menu_item.to_unsafe as LibGtk::Widget*))
       __return_value
     end

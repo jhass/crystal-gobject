@@ -7,9 +7,6 @@ module Gtk
       @gtk_event_controller.not_nil!
     end
 
-    def propagation_phase=(__value)
-      LibGtk.event_controller_set_propagation_phase((to_unsafe as LibGtk::EventController*), __value)
-    end
 
 
     def propagation_phase

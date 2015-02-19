@@ -19,7 +19,7 @@ module Gtk
     end
 
     def self.named(name, variant)
-      __return_value = LibGtk.css_provider_get_named(name, variant)
+      __return_value = LibGtk.css_provider_get_named(name, variant && variant)
       Gtk::CssProvider.new(__return_value)
     end
 

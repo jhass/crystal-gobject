@@ -1,6 +1,7 @@
 module Atk
   class Implementor
     include GObject::WrappedType
+
     def initialize @atk_implementor
     end
 

@@ -1,6 +1,7 @@
 module Gio
   class AppLaunchContextPrivate
     include GObject::WrappedType
+
     def initialize @gio_app_launch_context_private
     end
 

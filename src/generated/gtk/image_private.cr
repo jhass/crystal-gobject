@@ -1,6 +1,7 @@
 module Gtk
   class ImagePrivate
     include GObject::WrappedType
+
     def initialize @gtk_image_private
     end
 

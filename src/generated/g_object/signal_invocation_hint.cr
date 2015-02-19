@@ -1,6 +1,7 @@
 module GObject
   class SignalInvocationHint
     include GObject::WrappedType
+
     def initialize @g_object_signal_invocation_hint
     end
 

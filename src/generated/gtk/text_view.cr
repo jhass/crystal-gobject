@@ -12,77 +12,23 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Scrollable
-    def accepts_tab=(__value)
-      LibGtk.text_view_set_accepts_tab((to_unsafe as LibGtk::TextView*), Bool.cast(__value))
-    end
 
-    def buffer=(__value)
-      LibGtk.text_view_set_buffer((to_unsafe as LibGtk::TextView*), __value)
-    end
 
-    def cursor_visible=(__value)
-      LibGtk.text_view_set_cursor_visible((to_unsafe as LibGtk::TextView*), Bool.cast(__value))
-    end
 
-    def editable=(__value)
-      LibGtk.text_view_set_editable((to_unsafe as LibGtk::TextView*), Bool.cast(__value))
-    end
 
-    def im_module=(__value)
-      LibGtk.text_view_set_im_module((to_unsafe as LibGtk::TextView*), __value)
-    end
 
-    def indent=(__value)
-      LibGtk.text_view_set_indent((to_unsafe as LibGtk::TextView*), Int32.cast(__value))
-    end
 
-    def input_hints=(__value)
-      LibGtk.text_view_set_input_hints((to_unsafe as LibGtk::TextView*), __value)
-    end
 
-    def input_purpose=(__value)
-      LibGtk.text_view_set_input_purpose((to_unsafe as LibGtk::TextView*), __value)
-    end
 
-    def justification=(__value)
-      LibGtk.text_view_set_justification((to_unsafe as LibGtk::TextView*), __value)
-    end
 
-    def left_margin=(__value)
-      LibGtk.text_view_set_left_margin((to_unsafe as LibGtk::TextView*), Int32.cast(__value))
-    end
 
-    def overwrite=(__value)
-      LibGtk.text_view_set_overwrite((to_unsafe as LibGtk::TextView*), Bool.cast(__value))
-    end
 
-    def pixels_above_lines=(__value)
-      LibGtk.text_view_set_pixels_above_lines((to_unsafe as LibGtk::TextView*), Int32.cast(__value))
-    end
 
-    def pixels_below_lines=(__value)
-      LibGtk.text_view_set_pixels_below_lines((to_unsafe as LibGtk::TextView*), Int32.cast(__value))
-    end
 
-    def pixels_inside_wrap=(__value)
-      LibGtk.text_view_set_pixels_inside_wrap((to_unsafe as LibGtk::TextView*), Int32.cast(__value))
-    end
 
-    def populate_all=(__value)
-      LibGtk.text_view_set_populate_all((to_unsafe as LibGtk::TextView*), Bool.cast(__value))
-    end
 
-    def right_margin=(__value)
-      LibGtk.text_view_set_right_margin((to_unsafe as LibGtk::TextView*), Int32.cast(__value))
-    end
 
-    def tabs=(__value)
-      LibGtk.text_view_set_tabs((to_unsafe as LibGtk::TextView*), __value)
-    end
 
-    def wrap_mode=(__value)
-      LibGtk.text_view_set_wrap_mode((to_unsafe as LibGtk::TextView*), __value)
-    end
 
     def self.new_internal
       __return_value = LibGtk.text_view_new
@@ -145,7 +91,7 @@ module Gtk
     end
 
     def cursor_locations(iter, strong, weak)
-      __return_value = LibGtk.text_view_get_cursor_locations((to_unsafe as LibGtk::TextView*), (iter.to_unsafe as LibGtk::TextIter*), strong, weak)
+      __return_value = LibGtk.text_view_get_cursor_locations((to_unsafe as LibGtk::TextView*), iter && (iter.to_unsafe as LibGtk::TextIter*), strong, weak)
       __return_value
     end
 
@@ -324,13 +270,13 @@ module Gtk
       __return_value
     end
 
-    def border_window_size=(type, size)
+    def set_border_window_size(type, size)
       __return_value = LibGtk.text_view_set_border_window_size((to_unsafe as LibGtk::TextView*), type, Int32.cast(size))
       __return_value
     end
 
     def buffer=(buffer)
-      __return_value = LibGtk.text_view_set_buffer((to_unsafe as LibGtk::TextView*), (buffer.to_unsafe as LibGtk::TextBuffer*))
+      __return_value = LibGtk.text_view_set_buffer((to_unsafe as LibGtk::TextView*), buffer && (buffer.to_unsafe as LibGtk::TextBuffer*))
       __return_value
     end
 

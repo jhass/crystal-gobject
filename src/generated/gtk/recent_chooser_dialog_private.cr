@@ -1,6 +1,7 @@
 module Gtk
   class RecentChooserDialogPrivate
     include GObject::WrappedType
+
     def initialize @gtk_recent_chooser_dialog_private
     end
 

@@ -13,12 +13,9 @@ module Gtk
     # Implements Actionable
     # Implements Activatable
     # Implements Buildable
-    def menu=(__value)
-      LibGtk.menu_tool_button_set_menu((to_unsafe as LibGtk::MenuToolButton*), __value)
-    end
 
     def self.new_internal(icon_widget, label)
-      __return_value = LibGtk.menu_tool_button_new((icon_widget.to_unsafe as LibGtk::Widget*), label)
+      __return_value = LibGtk.menu_tool_button_new(icon_widget && (icon_widget.to_unsafe as LibGtk::Widget*), label && label)
       Gtk::ToolItem.new(__return_value)
     end
 

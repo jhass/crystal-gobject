@@ -1,6 +1,7 @@
 module Gtk
   class FontSelectionPrivate
     include GObject::WrappedType
+
     def initialize @gtk_font_selection_private
     end
 

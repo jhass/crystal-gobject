@@ -11,9 +11,6 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
-    def search_mode_enabled=(__value)
-      LibGtk.search_bar_set_search_mode_enabled((to_unsafe as LibGtk::SearchBar*), Bool.cast(__value))
-    end
 
 
     def self.new_internal

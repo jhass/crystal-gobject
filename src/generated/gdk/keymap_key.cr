@@ -1,6 +1,7 @@
 module Gdk
   class KeymapKey
     include GObject::WrappedType
+
     def initialize @gdk_keymap_key
     end
 
