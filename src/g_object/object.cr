@@ -7,5 +7,25 @@ module GObject
     def connect signal, &callback
       LibGObject.signal_connect_data (to_unsafe as LibGObject::Object*), signal, LibGObject::Callback.new(callback.pointer, Pointer(Void).null), callback.closure_data, nil, LibGObject::ConnectFlags::SWAPPED
     end
+
+
+    macro property_getter name, type
+      def {{name.id.split("-").join("_").id}}
+        value = {{type.id}}.new_gvalue
+        LibGObject.object_get_property(self.to_unsafe as LibGObject::Object*, "{{name.id}}", value)
+        {{type.id}}.from_gvalue value
+      end
+    end
+
+    macro property_setter name, type
+      def {{name.id.split("-").join("_").id}}= value : {{type.id}}
+        LibGObject.object_set_property self.to_unsafe as LibGObject::Object*, "{{name.id}}", value.to_gvalue
+      end
+     end
+
+    macro property_property name, type
+      property_getter {{name}}, {{type}}
+      property_setter {{name}}, {{type}}
+    end
   end
 end
