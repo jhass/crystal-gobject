@@ -40,12 +40,12 @@ module Gio
 
     def self.list_relocatable_schemas
       __return_value = LibGio.settings_list_relocatable_schemas
-      PointerIterator.new(__return_value) {|__item_36| raise "Expected string but got null" unless __item_36; String.new(__item_36) }
+      PointerIterator.new(__return_value) {|__item_84| raise "Expected string but got null" unless __item_84; String.new(__item_84) }
     end
 
     def self.list_schemas
       __return_value = LibGio.settings_list_schemas
-      PointerIterator.new(__return_value) {|__item_81| raise "Expected string but got null" unless __item_81; String.new(__item_81) }
+      PointerIterator.new(__return_value) {|__item_32| raise "Expected string but got null" unless __item_32; String.new(__item_32) }
     end
 
     def self.sync
@@ -123,7 +123,7 @@ module Gio
       __return_value
     end
 
-    def mapped(key, mapping, user_data)
+    def mapped(key, mapping : LibGio::SettingsGetMapping, user_data)
       __return_value = LibGio.settings_get_mapped((to_unsafe as LibGio::Settings*), key, mapping, user_data)
       __return_value
     end
@@ -140,7 +140,7 @@ module Gio
 
     def strv(key)
       __return_value = LibGio.settings_get_strv((to_unsafe as LibGio::Settings*), key)
-      PointerIterator.new(__return_value) {|__item_53| raise "Expected string but got null" unless __item_53; String.new(__item_53) }
+      PointerIterator.new(__return_value) {|__item_25| raise "Expected string but got null" unless __item_25; String.new(__item_25) }
     end
 
     def uint(key)
@@ -165,12 +165,12 @@ module Gio
 
     def list_children
       __return_value = LibGio.settings_list_children((to_unsafe as LibGio::Settings*))
-      PointerIterator.new(__return_value) {|__item_70| raise "Expected string but got null" unless __item_70; String.new(__item_70) }
+      PointerIterator.new(__return_value) {|__item_59| raise "Expected string but got null" unless __item_59; String.new(__item_59) }
     end
 
     def list_keys
       __return_value = LibGio.settings_list_keys((to_unsafe as LibGio::Settings*))
-      PointerIterator.new(__return_value) {|__item_73| raise "Expected string but got null" unless __item_73; String.new(__item_73) }
+      PointerIterator.new(__return_value) {|__item_2| raise "Expected string but got null" unless __item_2; String.new(__item_2) }
     end
 
     def range_check(key, value)

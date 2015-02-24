@@ -31,7 +31,7 @@ module GObject
 
     def self.interface_list_properties(g_iface, n_properties_p)
       __return_value = LibGObject.object_interface_list_properties(g_iface, UInt32.cast(n_properties_p))
-      PointerIterator.new(__return_value) {|__item_84| GObject::ParamSpec.new(__item_84) }
+      PointerIterator.new(__return_value) {|__item_29| GObject::ParamSpec.new(__item_29) }
     end
 
     def bind_property(source_property, target, target_property, flags)
@@ -94,12 +94,12 @@ module GObject
       GObject::Object.new(__return_value)
     end
 
-    def replace_data(key, oldval, newval, destroy, old_destroy)
+    def replace_data(key, oldval, newval, destroy : LibGLib::DestroyNotify?, old_destroy : LibGLib::DestroyNotify*?)
       __return_value = LibGObject.object_replace_data((to_unsafe as LibGObject::Object*), key, oldval && oldval, newval && newval, destroy && destroy, old_destroy && (old_destroy.to_unsafe as LibGLib::DestroyNotify*))
       __return_value
     end
 
-    def replace_qdata(quark, oldval, newval, destroy, old_destroy)
+    def replace_qdata(quark, oldval, newval, destroy : LibGLib::DestroyNotify?, old_destroy : LibGLib::DestroyNotify*?)
       __return_value = LibGObject.object_replace_qdata((to_unsafe as LibGObject::Object*), UInt32.cast(quark), oldval && oldval, newval && newval, destroy && destroy, old_destroy && (old_destroy.to_unsafe as LibGLib::DestroyNotify*))
       __return_value
     end

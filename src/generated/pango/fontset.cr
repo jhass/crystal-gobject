@@ -7,7 +7,7 @@ module Pango
       @pango_fontset.not_nil!
     end
 
-    def foreach(func, data)
+    def foreach(func : LibPango::FontsetForeachFunc, data)
       __return_value = LibPango.fontset_foreach((to_unsafe as LibPango::Fontset*), func, data)
       __return_value
     end

@@ -10,7 +10,7 @@ module Gio
       __return_value
     end
 
-    def eject(flags, cancellable, callback, user_data)
+    def eject(flags, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.volume_eject((to_unsafe as LibGio::Volume*), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
@@ -22,7 +22,7 @@ module Gio
       __return_value
     end
 
-    def eject_with_operation(flags, mount_operation, cancellable, callback, user_data)
+    def eject_with_operation(flags, mount_operation, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.volume_eject_with_operation((to_unsafe as LibGio::Volume*), flags, mount_operation && (mount_operation.to_unsafe as LibGio::MountOperation*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
@@ -36,7 +36,7 @@ module Gio
 
     def enumerate_identifiers
       __return_value = LibGio.volume_enumerate_identifiers((to_unsafe as LibGio::Volume*))
-      PointerIterator.new(__return_value) {|__item_24| raise "Expected string but got null" unless __item_24; String.new(__item_24) }
+      PointerIterator.new(__return_value) {|__item_43| raise "Expected string but got null" unless __item_43; String.new(__item_43) }
     end
 
     def activation_root
@@ -84,7 +84,7 @@ module Gio
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 
-    def mount(flags, mount_operation, cancellable, callback, user_data)
+    def mount(flags, mount_operation, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.volume_mount((to_unsafe as LibGio::Volume*), flags, mount_operation && (mount_operation.to_unsafe as LibGio::MountOperation*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end

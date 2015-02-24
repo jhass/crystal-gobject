@@ -25,7 +25,7 @@ module Gio
       __return_value
     end
 
-    def eject(flags, cancellable, callback, user_data)
+    def eject(flags, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.drive_eject((to_unsafe as LibGio::Drive*), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
@@ -37,7 +37,7 @@ module Gio
       __return_value
     end
 
-    def eject_with_operation(flags, mount_operation, cancellable, callback, user_data)
+    def eject_with_operation(flags, mount_operation, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.drive_eject_with_operation((to_unsafe as LibGio::Drive*), flags, mount_operation && (mount_operation.to_unsafe as LibGio::MountOperation*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
@@ -51,7 +51,7 @@ module Gio
 
     def enumerate_identifiers
       __return_value = LibGio.drive_enumerate_identifiers((to_unsafe as LibGio::Drive*))
-      PointerIterator.new(__return_value) {|__item_60| raise "Expected string but got null" unless __item_60; String.new(__item_60) }
+      PointerIterator.new(__return_value) {|__item_77| raise "Expected string but got null" unless __item_77; String.new(__item_77) }
     end
 
     def icon
@@ -109,7 +109,7 @@ module Gio
       __return_value
     end
 
-    def poll_for_media(cancellable, callback, user_data)
+    def poll_for_media(cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.drive_poll_for_media((to_unsafe as LibGio::Drive*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
@@ -121,7 +121,7 @@ module Gio
       __return_value
     end
 
-    def start(flags, mount_operation, cancellable, callback, user_data)
+    def start(flags, mount_operation, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.drive_start((to_unsafe as LibGio::Drive*), flags, mount_operation && (mount_operation.to_unsafe as LibGio::MountOperation*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
@@ -133,7 +133,7 @@ module Gio
       __return_value
     end
 
-    def stop(flags, mount_operation, cancellable, callback, user_data)
+    def stop(flags, mount_operation, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.drive_stop((to_unsafe as LibGio::Drive*), flags, mount_operation && (mount_operation.to_unsafe as LibGio::MountOperation*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end

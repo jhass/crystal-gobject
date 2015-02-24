@@ -23,7 +23,7 @@ module Gtk
       __return_value
     end
 
-    def add_custom(needed, func, data, data_destroy)
+    def add_custom(needed, func : LibGtk::RecentFilterFunc, data, data_destroy : LibGLib::DestroyNotify)
       __return_value = LibGtk.recent_filter_add_custom((to_unsafe as LibGtk::RecentFilter*), needed, func, data, data_destroy)
       __return_value
     end

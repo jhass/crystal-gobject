@@ -82,12 +82,12 @@ module Gtk
       __return_value
     end
 
-    def foreach(callback, callback_data)
+    def foreach(callback : LibGtk::CellCallback, callback_data)
       __return_value = LibGtk.cell_area_foreach((to_unsafe as LibGtk::CellArea*), callback, callback_data)
       __return_value
     end
 
-    def foreach_alloc(context, widget, cell_area, background_area, callback, callback_data)
+    def foreach_alloc(context, widget, cell_area, background_area, callback : LibGtk::CellAllocCallback, callback_data)
       __return_value = LibGtk.cell_area_foreach_alloc((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (cell_area.to_unsafe as LibCairo::RectangleInt*), (background_area.to_unsafe as LibCairo::RectangleInt*), callback, callback_data)
       __return_value
     end

@@ -7,7 +7,7 @@ module Gio
       Gio::InputStream.new(__return_value)
     end
 
-    def load_async(size, cancellable, callback, user_data)
+    def load_async(size, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.loadable_icon_load_async((to_unsafe as LibGio::LoadableIcon*), Int32.cast(size), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end

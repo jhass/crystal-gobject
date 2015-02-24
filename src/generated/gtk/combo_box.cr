@@ -210,7 +210,7 @@ module Gtk
       __return_value
     end
 
-    def set_row_separator_func(func, data, destroy)
+    def set_row_separator_func(func : LibGtk::TreeViewRowSeparatorFunc, data, destroy : LibGLib::DestroyNotify?)
       __return_value = LibGtk.combo_box_set_row_separator_func((to_unsafe as LibGtk::ComboBox*), func, data && data, destroy && destroy)
       __return_value
     end

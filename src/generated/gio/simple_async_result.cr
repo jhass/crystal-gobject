@@ -8,12 +8,12 @@ module Gio
     end
 
     # Implements AsyncResult
-    def self.new_internal(source_object, callback, user_data, source_tag)
+    def self.new_internal(source_object, callback : LibGio::AsyncReadyCallback?, user_data, source_tag)
       __return_value = LibGio.simple_async_result_new(source_object && (source_object.to_unsafe as LibGObject::Object*), callback && callback, user_data, source_tag)
       Gio::SimpleAsyncResult.new(__return_value)
     end
 
-    def self.new_from_error(source_object, callback, user_data, error)
+    def self.new_from_error(source_object, callback : LibGio::AsyncReadyCallback?, user_data, error)
       __return_value = LibGio.simple_async_result_new_from_error(source_object && (source_object.to_unsafe as LibGObject::Object*), callback && callback, user_data, error)
       Gio::SimpleAsyncResult.new(__return_value)
     end

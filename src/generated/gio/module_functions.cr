@@ -65,12 +65,12 @@ module Gio
     __return_value
   end
 
-  def self.async_initable_newv_async(object_type, n_parameters, parameters, io_priority, cancellable, callback, user_data)
+  def self.async_initable_newv_async(object_type, n_parameters, parameters, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
     __return_value = LibGio.async_initable_newv_async(UInt64.cast(object_type), UInt32.cast(n_parameters), (parameters.to_unsafe as LibGObject::Parameter*), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
     __return_value
   end
 
-  def self.bus_get(bus_type, cancellable, callback, user_data)
+  def self.bus_get(bus_type, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
     __return_value = LibGio.bus_get(bus_type, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
     __return_value
   end
@@ -166,7 +166,7 @@ module Gio
 
   def self.content_type_guess_for_tree(root)
     __return_value = LibGio.content_type_guess_for_tree((root.to_unsafe as LibGio::File*))
-    PointerIterator.new(__return_value) {|__item_95| raise "Expected string but got null" unless __item_95; String.new(__item_95) }
+    PointerIterator.new(__return_value) {|__item_82| raise "Expected string but got null" unless __item_82; String.new(__item_82) }
   end
 
   def self.content_type_is_a(type, supertype)
@@ -196,7 +196,7 @@ module Gio
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
-  def self.dbus_address_get_stream(address, cancellable, callback, user_data)
+  def self.dbus_address_get_stream(address, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
     __return_value = LibGio.dbus_address_get_stream(address, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
     __return_value
   end
@@ -423,7 +423,7 @@ module Gio
     __return_value
   end
 
-  def self.io_scheduler_push_job(job_func, user_data, notify, io_priority, cancellable)
+  def self.io_scheduler_push_job(job_func : LibGio::IOSchedulerJobFunc, user_data, notify : LibGLib::DestroyNotify?, io_priority, cancellable)
     __return_value = LibGio.io_scheduler_push_job(job_func, user_data, notify && notify, Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*))
     __return_value
   end
@@ -500,7 +500,7 @@ module Gio
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGio.resources_enumerate_children(path, lookup_flags, pointerof(__error))
     GLib::Error.assert __error
-    PointerIterator.new(__return_value) {|__item_78| raise "Expected string but got null" unless __item_78; String.new(__item_78) }
+    PointerIterator.new(__return_value) {|__item_70| raise "Expected string but got null" unless __item_70; String.new(__item_70) }
   end
 
   def self.resources_get_info(path, lookup_flags, size, flags)
@@ -539,7 +539,7 @@ module Gio
     Gio::SettingsSchemaSource.new(__return_value)
   end
 
-  def self.simple_async_report_gerror_in_idle(object, callback, user_data, error)
+  def self.simple_async_report_gerror_in_idle(object, callback : LibGio::AsyncReadyCallback?, user_data, error)
     __return_value = LibGio.simple_async_report_gerror_in_idle(object && (object.to_unsafe as LibGObject::Object*), callback && callback, user_data, error)
     __return_value
   end

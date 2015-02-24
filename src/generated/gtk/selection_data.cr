@@ -26,7 +26,7 @@ module Gtk
 
     def data(length)
       __return_value = LibGtk.selection_data_get_data((to_unsafe as LibGtk::SelectionData*), Int32.cast(length))
-      PointerIterator.new(__return_value) {|__item_98| __item_98 }
+      PointerIterator.new(__return_value) {|__item_51| __item_51 }
     end
 
     def display
@@ -71,7 +71,7 @@ module Gtk
 
     def uris
       __return_value = LibGtk.selection_data_get_uris((to_unsafe as LibGtk::SelectionData*))
-      PointerIterator.new(__return_value) {|__item_82| raise "Expected string but got null" unless __item_82; String.new(__item_82) }
+      PointerIterator.new(__return_value) {|__item_43| raise "Expected string but got null" unless __item_43; String.new(__item_43) }
     end
 
     def set(type, format, data, length)

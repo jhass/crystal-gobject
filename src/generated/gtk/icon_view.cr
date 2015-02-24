@@ -225,7 +225,7 @@ module Gtk
       __return_value
     end
 
-    def selected_foreach(func, data)
+    def selected_foreach(func : LibGtk::IconViewForeachFunc, data)
       __return_value = LibGtk.icon_view_selected_foreach((to_unsafe as LibGtk::IconView*), func, data)
       __return_value
     end

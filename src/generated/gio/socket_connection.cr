@@ -27,7 +27,7 @@ module Gio
       __return_value
     end
 
-    def connect_async(address, cancellable, callback, user_data)
+    def connect_async(address, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.socket_connection_connect_async((to_unsafe as LibGio::SocketConnection*), (address.to_unsafe as LibGio::SocketAddress*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end

@@ -203,7 +203,7 @@ module Gtk
       __return_value
     end
 
-    def set_cell_data_func(cell_renderer, func, func_data, destroy)
+    def set_cell_data_func(cell_renderer, func : LibGtk::TreeCellDataFunc?, func_data, destroy : LibGLib::DestroyNotify)
       __return_value = LibGtk.tree_view_column_set_cell_data_func((to_unsafe as LibGtk::TreeViewColumn*), (cell_renderer.to_unsafe as LibGtk::CellRenderer*), func && func, func_data, destroy)
       __return_value
     end

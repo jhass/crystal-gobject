@@ -31,7 +31,7 @@ module Gtk
       Gtk::PrintSettings.new(__return_value)
     end
 
-    def foreach(func, user_data)
+    def foreach(func : LibGtk::PrintSettingsFunc, user_data)
       __return_value = LibGtk.print_settings_foreach((to_unsafe as LibGtk::PrintSettings*), func, user_data)
       __return_value
     end
@@ -128,7 +128,7 @@ module Gtk
 
     def page_ranges(num_ranges)
       __return_value = LibGtk.print_settings_get_page_ranges((to_unsafe as LibGtk::PrintSettings*), Int32.cast(num_ranges))
-      PointerIterator.new(__return_value) {|__item_51| Gtk::PageRange.new(__item_51) }
+      PointerIterator.new(__return_value) {|__item_47| Gtk::PageRange.new(__item_47) }
     end
 
     def page_set

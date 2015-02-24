@@ -154,7 +154,7 @@ module Gdk
     __return_value if __return_value
   end
 
-  def self.event_handler_set(func, data, notify)
+  def self.event_handler_set(func : LibGdk::EventFunc, data, notify : LibGLib::DestroyNotify)
     __return_value = LibGdk.event_handler_set(func, data, notify)
     __return_value
   end
@@ -474,17 +474,17 @@ module Gdk
     __return_value
   end
 
-  def self.threads_add_idle(priority, function, data, notify)
+  def self.threads_add_idle(priority, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
     __return_value = LibGdk.threads_add_idle(Int32.cast(priority), function, data, notify && notify)
     __return_value
   end
 
-  def self.threads_add_timeout(priority, interval, function, data, notify)
+  def self.threads_add_timeout(priority, interval, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
     __return_value = LibGdk.threads_add_timeout(Int32.cast(priority), UInt32.cast(interval), function, data, notify && notify)
     __return_value
   end
 
-  def self.threads_add_timeout_seconds(priority, interval, function, data, notify)
+  def self.threads_add_timeout_seconds(priority, interval, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
     __return_value = LibGdk.threads_add_timeout_seconds(Int32.cast(priority), UInt32.cast(interval), function, data, notify && notify)
     __return_value
   end

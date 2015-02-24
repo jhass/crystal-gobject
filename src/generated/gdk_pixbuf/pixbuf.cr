@@ -28,7 +28,7 @@ module GdkPixbuf
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 
-    def self.new_from_data(data, colorspace, has_alpha, bits_per_sample, width, height, rowstride, destroy_fn, destroy_fn_data)
+    def self.new_from_data(data, colorspace, has_alpha, bits_per_sample, width, height, rowstride, destroy_fn : LibGdkPixbuf::PixbufDestroyNotify?, destroy_fn_data)
       __return_value = LibGdkPixbuf.pixbuf_new_from_data(data, colorspace, Bool.cast(has_alpha), Int32.cast(bits_per_sample), Int32.cast(width), Int32.cast(height), Int32.cast(rowstride), destroy_fn && destroy_fn, destroy_fn_data)
       GdkPixbuf::Pixbuf.new(__return_value)
     end
@@ -113,7 +113,7 @@ module GdkPixbuf
       GdkPixbuf::PixbufFormat.new(__return_value) if __return_value
     end
 
-    def self.file_info_async(filename, cancellable, callback, user_data)
+    def self.file_info_async(filename, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGdkPixbuf.pixbuf_get_file_info_async(filename, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
@@ -135,12 +135,12 @@ module GdkPixbuf
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 
-    def self.new_from_stream_async(stream, cancellable, callback, user_data)
+    def self.new_from_stream_async(stream, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGdkPixbuf.pixbuf_new_from_stream_async((stream.to_unsafe as LibGio::InputStream*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
-    def self.new_from_stream_at_scale_async(stream, width, height, preserve_aspect_ratio, cancellable, callback, user_data)
+    def self.new_from_stream_at_scale_async(stream, width, height, preserve_aspect_ratio, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGdkPixbuf.pixbuf_new_from_stream_at_scale_async((stream.to_unsafe as LibGio::InputStream*), Int32.cast(width), Int32.cast(height), Bool.cast(preserve_aspect_ratio), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
@@ -234,7 +234,7 @@ module GdkPixbuf
 
     def pixels(length)
       __return_value = LibGdkPixbuf.pixbuf_get_pixels((to_unsafe as LibGdkPixbuf::Pixbuf*), UInt32.cast(length))
-      PointerIterator.new(__return_value) {|__item_94| __item_94 }
+      PointerIterator.new(__return_value) {|__item_11| __item_11 }
     end
 
     def rowstride
@@ -279,7 +279,7 @@ module GdkPixbuf
       __return_value
     end
 
-    def save_to_callbackv(save_func, user_data, type, option_keys, option_values)
+    def save_to_callbackv(save_func : LibGdkPixbuf::PixbufSaveFunc, user_data, type, option_keys, option_values)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixbuf_save_to_callbackv((to_unsafe as LibGdkPixbuf::Pixbuf*), save_func, user_data, type, option_keys, option_values, pointerof(__error))
       GLib::Error.assert __error

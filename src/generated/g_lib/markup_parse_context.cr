@@ -9,7 +9,7 @@ module GLib
       @g_lib_markup_parse_context.not_nil!
     end
 
-    def self.new_internal(parser, flags, user_data, user_data_dnotify)
+    def self.new_internal(parser, flags, user_data, user_data_dnotify : LibGLib::DestroyNotify)
       __return_value = LibGLib.markup_parse_context_new((parser.to_unsafe as LibGLib::MarkupParser*), flags, user_data, user_data_dnotify)
       GLib::MarkupParseContext.new(__return_value)
     end

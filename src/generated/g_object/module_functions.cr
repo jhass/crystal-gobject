@@ -334,7 +334,7 @@ module GObject
     __return_value
   end
 
-  def self.signal_add_emission_hook(signal_id, detail, hook_func, hook_data, data_destroy)
+  def self.signal_add_emission_hook(signal_id, detail, hook_func : LibGObject::SignalEmissionHook, hook_data, data_destroy : LibGLib::DestroyNotify)
     __return_value = LibGObject.signal_add_emission_hook(UInt32.cast(signal_id), UInt32.cast(detail), hook_func, hook_data, data_destroy)
     __return_value
   end
@@ -416,7 +416,7 @@ module GObject
 
   def self.signal_list_ids(itype, n_ids)
     __return_value = LibGObject.signal_list_ids(UInt64.cast(itype), UInt32.cast(n_ids))
-    PointerIterator.new(__return_value) {|__item_83| __item_83 }
+    PointerIterator.new(__return_value) {|__item_80| __item_80 }
   end
 
   def self.signal_lookup(name, itype)
@@ -541,7 +541,7 @@ module GObject
 
   def self.type_children(type, n_children)
     __return_value = LibGObject.type_children(UInt64.cast(type), UInt32.cast(n_children))
-    PointerIterator.new(__return_value) {|__item_19| __item_19 }
+    PointerIterator.new(__return_value) {|__item_83| __item_83 }
   end
 
   def self.type_class_add_private(g_class, private_size)
@@ -656,12 +656,12 @@ module GObject
 
   def self.type_interface_prerequisites(interface_type, n_prerequisites)
     __return_value = LibGObject.type_interface_prerequisites(UInt64.cast(interface_type), UInt32.cast(n_prerequisites))
-    PointerIterator.new(__return_value) {|__item_73| __item_73 }
+    PointerIterator.new(__return_value) {|__item_65| __item_65 }
   end
 
   def self.type_interfaces(type, n_interfaces)
     __return_value = LibGObject.type_interfaces(UInt64.cast(type), UInt32.cast(n_interfaces))
-    PointerIterator.new(__return_value) {|__item_25| __item_25 }
+    PointerIterator.new(__return_value) {|__item_29| __item_29 }
   end
 
   def self.type_is_a(type, is_a_type)

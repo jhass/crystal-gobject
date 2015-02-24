@@ -44,7 +44,7 @@ module Gtk
       __return_value
     end
 
-    def find(find_func, data)
+    def find(find_func : LibGtk::AccelGroupFindFunc, data)
       __return_value = LibGtk.accel_group_find((to_unsafe as LibGtk::AccelGroup*), find_func, data)
       Gtk::AccelKey.new(__return_value)
     end
@@ -66,7 +66,7 @@ module Gtk
 
     def query(accel_key, accel_mods, n_entries)
       __return_value = LibGtk.accel_group_query((to_unsafe as LibGtk::AccelGroup*), UInt32.cast(accel_key), accel_mods, UInt32.cast(n_entries))
-      PointerIterator.new(__return_value) {|__item_3| Gtk::AccelGroupEntry.new(__item_3) }
+      PointerIterator.new(__return_value) {|__item_39| Gtk::AccelGroupEntry.new(__item_39) }
     end
 
     def unlock

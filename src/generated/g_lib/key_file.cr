@@ -25,7 +25,7 @@ module GLib
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.key_file_get_boolean_list((to_unsafe as LibGLib::KeyFile*), group_name, key, UInt64.cast(length), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_77| __item_77 }
+      PointerIterator.new(__return_value) {|__item_2| __item_2 }
     end
 
     def comment(group_name, key)
@@ -46,12 +46,12 @@ module GLib
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.key_file_get_double_list((to_unsafe as LibGLib::KeyFile*), group_name, key, UInt64.cast(length), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_6| __item_6 }
+      PointerIterator.new(__return_value) {|__item_88| __item_88 }
     end
 
     def groups(length)
       __return_value = LibGLib.key_file_get_groups((to_unsafe as LibGLib::KeyFile*), UInt64.cast(length))
-      PointerIterator.new(__return_value) {|__item_83| raise "Expected string but got null" unless __item_83; String.new(__item_83) }
+      PointerIterator.new(__return_value) {|__item_82| raise "Expected string but got null" unless __item_82; String.new(__item_82) }
     end
 
     def int64(group_name, key)
@@ -72,14 +72,14 @@ module GLib
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.key_file_get_integer_list((to_unsafe as LibGLib::KeyFile*), group_name, key, UInt64.cast(length), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_92| __item_92 }
+      PointerIterator.new(__return_value) {|__item_90| __item_90 }
     end
 
     def keys(group_name, length)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.key_file_get_keys((to_unsafe as LibGLib::KeyFile*), group_name, UInt64.cast(length), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_15| raise "Expected string but got null" unless __item_15; String.new(__item_15) }
+      PointerIterator.new(__return_value) {|__item_58| raise "Expected string but got null" unless __item_58; String.new(__item_58) }
     end
 
     def locale_string(group_name, key, locale)
@@ -93,7 +93,7 @@ module GLib
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.key_file_get_locale_string_list((to_unsafe as LibGLib::KeyFile*), group_name, key, locale && locale, UInt64.cast(length), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_60| raise "Expected string but got null" unless __item_60; String.new(__item_60) }
+      PointerIterator.new(__return_value) {|__item_29| raise "Expected string but got null" unless __item_29; String.new(__item_29) }
     end
 
     def start_group
@@ -112,7 +112,7 @@ module GLib
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.key_file_get_string_list((to_unsafe as LibGLib::KeyFile*), group_name, key, UInt64.cast(length), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_34| raise "Expected string but got null" unless __item_34; String.new(__item_34) }
+      PointerIterator.new(__return_value) {|__item_28| raise "Expected string but got null" unless __item_28; String.new(__item_28) }
     end
 
     def uint64(group_name, key)

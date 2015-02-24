@@ -15,7 +15,7 @@ module Gio
 
     def self.query
       __return_value = LibGio.i_o_module_query
-      PointerIterator.new(__return_value) {|__item_11| raise "Expected string but got null" unless __item_11; String.new(__item_11) }
+      PointerIterator.new(__return_value) {|__item_31| raise "Expected string but got null" unless __item_31; String.new(__item_31) }
     end
 
     def load

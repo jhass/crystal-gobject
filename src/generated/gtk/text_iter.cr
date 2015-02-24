@@ -34,7 +34,7 @@ module Gtk
       __return_value
     end
 
-    def backward_find_char(pred, user_data, limit)
+    def backward_find_char(pred : LibGtk::TextCharPredicate, user_data, limit)
       __return_value = LibGtk.text_iter_backward_find_char((to_unsafe as LibGtk::TextIter*), pred, user_data, limit && (limit.to_unsafe as LibGtk::TextIter*))
       __return_value
     end
@@ -179,7 +179,7 @@ module Gtk
       __return_value
     end
 
-    def forward_find_char(pred, user_data, limit)
+    def forward_find_char(pred : LibGtk::TextCharPredicate, user_data, limit)
       __return_value = LibGtk.text_iter_forward_find_char((to_unsafe as LibGtk::TextIter*), pred, user_data, limit && (limit.to_unsafe as LibGtk::TextIter*))
       __return_value
     end

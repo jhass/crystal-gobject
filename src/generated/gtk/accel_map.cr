@@ -22,12 +22,12 @@ module Gtk
       __return_value
     end
 
-    def self.foreach(data, foreach_func)
+    def self.foreach(data, foreach_func : LibGtk::AccelMapForeach)
       __return_value = LibGtk.accel_map_foreach(data && data, foreach_func)
       __return_value
     end
 
-    def self.foreach_unfiltered(data, foreach_func)
+    def self.foreach_unfiltered(data, foreach_func : LibGtk::AccelMapForeach)
       __return_value = LibGtk.accel_map_foreach_unfiltered(data, foreach_func)
       __return_value
     end

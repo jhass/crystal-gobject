@@ -40,21 +40,6 @@ module Notify
 
     alias ActionCallback = String ->
 
-    class Action
-      def initialize notification, name, label, @block : ActionCallback
-        @data = {@block.pointer, @block.closure_data}
-        data = pointerof(@data) as Void*
-        LibNotify.notification_add_action notification, name, label, ->Action.handler, data, nil
-      end
-
-      def self.handler notification, action, cb
-        action = String.new(action as UInt8*)
-
-        cb = (cb as Pointer({Void*, Void*})).value
-        ActionCallback.new(cb[0], cb[1]).call action
-      end
-    end
-
     property_property body, String
     property_property "icon-name", String
     property_property id, Int32
@@ -86,7 +71,19 @@ module Notify
     end
 
     def action name, label, &block : ActionCallback
-       Action.new self, name, label, block
+      LibNotify.notification_add_action(
+        self,
+        name,
+        label,
+        ->Notification.handle_action,
+        ClosureDataManager.register(Box.box(block)),
+        ->ClosureDataManager.deregister
+      )
+    end
+
+    def self.handle_action notification, action, callback
+      action = String.new(action)
+      Box(ActionCallback).unbox(callback).call action
     end
 
     def set_hint name, value

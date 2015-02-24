@@ -94,7 +94,7 @@ module Gtk
       __return_value
     end
 
-    def selected_foreach(func, data)
+    def selected_foreach(func : LibGtk::FlowBoxForeachFunc, data)
       __return_value = LibGtk.flow_box_selected_foreach((to_unsafe as LibGtk::FlowBox*), func, data)
       __return_value
     end
@@ -109,7 +109,7 @@ module Gtk
       __return_value
     end
 
-    def set_filter_func(filter_func, user_data, destroy)
+    def set_filter_func(filter_func : LibGtk::FlowBoxFilterFunc?, user_data, destroy : LibGLib::DestroyNotify)
       __return_value = LibGtk.flow_box_set_filter_func((to_unsafe as LibGtk::FlowBox*), filter_func && filter_func, user_data, destroy)
       __return_value
     end
@@ -144,7 +144,7 @@ module Gtk
       __return_value
     end
 
-    def set_sort_func(sort_func, user_data, destroy)
+    def set_sort_func(sort_func : LibGtk::FlowBoxSortFunc?, user_data, destroy : LibGLib::DestroyNotify)
       __return_value = LibGtk.flow_box_set_sort_func((to_unsafe as LibGtk::FlowBox*), sort_func && sort_func, user_data, destroy)
       __return_value
     end

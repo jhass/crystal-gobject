@@ -49,7 +49,7 @@ module GLib
       GLib::Source.new(__return_value)
     end
 
-    def invoke_full(priority, function, data, notify)
+    def invoke_full(priority, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
       __return_value = LibGLib.main_context_invoke_full((to_unsafe as LibGLib::MainContext*), Int32.cast(priority), function, data, notify && notify)
       __return_value
     end

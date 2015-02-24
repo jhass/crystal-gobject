@@ -94,7 +94,7 @@ module GLib
     __return_value
   end
 
-  def self.atexit(func)
+  def self.atexit(func : LibGLib::VoidFunc)
     __return_value = LibGLib.atexit(func)
     __return_value
   end
@@ -181,7 +181,7 @@ module GLib
 
   def self.base64_decode(text, out_len)
     __return_value = LibGLib.base64_decode(text, UInt64.cast(out_len))
-    PointerIterator.new(__return_value) {|__item_80| __item_80 }
+    PointerIterator.new(__return_value) {|__item_94| __item_94 }
   end
 
   def self.base64_decode_inplace(text, out_len)
@@ -299,7 +299,7 @@ module GLib
     __return_value
   end
 
-  def self.child_watch_add(priority, pid, function, data, notify)
+  def self.child_watch_add(priority, pid, function : LibGLib::ChildWatchFunc, data, notify : LibGLib::DestroyNotify?)
     __return_value = LibGLib.child_watch_add(Int32.cast(priority), Int32.cast(pid), function, data, notify && notify)
     __return_value
   end
@@ -384,12 +384,12 @@ module GLib
     __return_value
   end
 
-  def self.datalist_id_replace_data(datalist, key_id, oldval, newval, destroy, old_destroy)
+  def self.datalist_id_replace_data(datalist, key_id, oldval, newval, destroy : LibGLib::DestroyNotify?, old_destroy : LibGLib::DestroyNotify*?)
     __return_value = LibGLib.datalist_id_replace_data((datalist.to_unsafe as LibGLib::Data*), UInt32.cast(key_id), oldval && oldval, newval && newval, destroy && destroy, old_destroy && (old_destroy.to_unsafe as LibGLib::DestroyNotify*))
     __return_value
   end
 
-  def self.datalist_id_set_data_full(datalist, key_id, data, destroy_func)
+  def self.datalist_id_set_data_full(datalist, key_id, data, destroy_func : LibGLib::DestroyNotify)
     __return_value = LibGLib.datalist_id_set_data_full((datalist.to_unsafe as LibGLib::Data*), UInt32.cast(key_id), data && data, destroy_func)
     __return_value
   end
@@ -414,7 +414,7 @@ module GLib
     __return_value
   end
 
-  def self.dataset_id_set_data_full(dataset_location, key_id, data, destroy_func)
+  def self.dataset_id_set_data_full(dataset_location, key_id, data, destroy_func : LibGLib::DestroyNotify)
     __return_value = LibGLib.dataset_id_set_data_full(dataset_location, UInt32.cast(key_id), data, destroy_func)
     __return_value
   end
@@ -548,12 +548,12 @@ module GLib
 
   def self.environ_setenv(envp, variable, value, overwrite)
     __return_value = LibGLib.environ_setenv(envp && envp, variable, value, Bool.cast(overwrite))
-    PointerIterator.new(__return_value) {|__item_75| raise "Expected string but got null" unless __item_75; String.new(__item_75) }
+    PointerIterator.new(__return_value) {|__item_21| raise "Expected string but got null" unless __item_21; String.new(__item_21) }
   end
 
   def self.environ_unsetenv(envp, variable)
     __return_value = LibGLib.environ_unsetenv(envp && envp, variable)
-    PointerIterator.new(__return_value) {|__item_45| raise "Expected string but got null" unless __item_45; String.new(__item_45) }
+    PointerIterator.new(__return_value) {|__item_0| raise "Expected string but got null" unless __item_0; String.new(__item_0) }
   end
 
   def self.file_error_from_errno(err_no)
@@ -620,7 +620,7 @@ module GLib
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.filename_from_utf8(utf8string, Int64.cast(len), UInt64.cast(bytes_read), UInt64.cast(bytes_written), pointerof(__error))
     GLib::Error.assert __error
-    PointerIterator.new(__return_value) {|__item_71| __item_71 }
+    PointerIterator.new(__return_value) {|__item_73| __item_73 }
   end
 
   def self.filename_to_uri(filename, hostname)
@@ -689,7 +689,7 @@ module GLib
 
   def self.environ
     __return_value = LibGLib.get_environ
-    PointerIterator.new(__return_value) {|__item_91| raise "Expected string but got null" unless __item_91; String.new(__item_91) }
+    PointerIterator.new(__return_value) {|__item_29| raise "Expected string but got null" unless __item_29; String.new(__item_29) }
   end
 
   def self.filename_charsets(charsets)
@@ -709,12 +709,12 @@ module GLib
 
   def self.language_names
     __return_value = LibGLib.get_language_names
-    PointerIterator.new(__return_value) {|__item_74| raise "Expected string but got null" unless __item_74; String.new(__item_74) }
+    PointerIterator.new(__return_value) {|__item_81| raise "Expected string but got null" unless __item_81; String.new(__item_81) }
   end
 
   def self.locale_variants(locale)
     __return_value = LibGLib.get_locale_variants(locale)
-    PointerIterator.new(__return_value) {|__item_32| raise "Expected string but got null" unless __item_32; String.new(__item_32) }
+    PointerIterator.new(__return_value) {|__item_71| raise "Expected string but got null" unless __item_71; String.new(__item_71) }
   end
 
   def self.monotonic_time
@@ -744,12 +744,12 @@ module GLib
 
   def self.system_config_dirs
     __return_value = LibGLib.get_system_config_dirs
-    PointerIterator.new(__return_value) {|__item_10| raise "Expected string but got null" unless __item_10; String.new(__item_10) }
+    PointerIterator.new(__return_value) {|__item_62| raise "Expected string but got null" unless __item_62; String.new(__item_62) }
   end
 
   def self.system_data_dirs
     __return_value = LibGLib.get_system_data_dirs
-    PointerIterator.new(__return_value) {|__item_49| raise "Expected string but got null" unless __item_49; String.new(__item_49) }
+    PointerIterator.new(__return_value) {|__item_93| raise "Expected string but got null" unless __item_93; String.new(__item_93) }
   end
 
   def self.tmp_dir
@@ -912,7 +912,7 @@ module GLib
     __return_value
   end
 
-  def self.idle_add(priority, function, data, notify)
+  def self.idle_add(priority, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
     __return_value = LibGLib.idle_add(Int32.cast(priority), function, data, notify && notify)
     __return_value
   end
@@ -957,7 +957,7 @@ module GLib
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
-  def self.io_add_watch(channel, priority, condition, func, user_data, notify)
+  def self.io_add_watch(channel, priority, condition, func : LibGLib::IOFunc, user_data, notify : LibGLib::DestroyNotify)
     __return_value = LibGLib.io_add_watch((channel.to_unsafe as LibGLib::IOChannel*), Int32.cast(priority), condition, func, user_data, notify)
     __return_value
   end
@@ -984,7 +984,7 @@ module GLib
 
   def self.listenv
     __return_value = LibGLib.listenv
-    PointerIterator.new(__return_value) {|__item_41| raise "Expected string but got null" unless __item_41; String.new(__item_41) }
+    PointerIterator.new(__return_value) {|__item_94| raise "Expected string but got null" unless __item_94; String.new(__item_94) }
   end
 
   def self.locale_from_utf8(utf8string, len, bytes_read, bytes_written)
@@ -1265,7 +1265,7 @@ module GLib
 
   def self.regex_split_simple(pattern, string, compile_options, match_options)
     __return_value = LibGLib.regex_split_simple(pattern, string, compile_options, match_options)
-    PointerIterator.new(__return_value) {|__item_7| raise "Expected string but got null" unless __item_7; String.new(__item_7) }
+    PointerIterator.new(__return_value) {|__item_11| raise "Expected string but got null" unless __item_11; String.new(__item_11) }
   end
 
   def self.reload_user_special_dirs_cache
@@ -1407,14 +1407,14 @@ module GLib
     __return_value
   end
 
-  def self.spawn_async(working_directory, argv, envp, flags, child_setup, user_data, child_pid)
+  def self.spawn_async(working_directory, argv, envp, flags, child_setup : LibGLib::SpawnChildSetupFunc?, user_data, child_pid)
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.spawn_async(working_directory && working_directory, argv, envp && envp, flags, child_setup && child_setup, user_data, Int32.cast(child_pid), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
-  def self.spawn_async_with_pipes(working_directory, argv, envp, flags, child_setup, user_data, child_pid, standard_input, standard_output, standard_error)
+  def self.spawn_async_with_pipes(working_directory, argv, envp, flags, child_setup : LibGLib::SpawnChildSetupFunc?, user_data, child_pid, standard_input, standard_output, standard_error)
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.spawn_async_with_pipes(working_directory && working_directory, argv, envp && envp, flags, child_setup && child_setup, user_data, Int32.cast(child_pid), Int32.cast(standard_input), Int32.cast(standard_output), Int32.cast(standard_error), pointerof(__error))
     GLib::Error.assert __error
@@ -1457,7 +1457,7 @@ module GLib
     __return_value
   end
 
-  def self.spawn_sync(working_directory, argv, envp, flags, child_setup, user_data, standard_output, standard_error, exit_status)
+  def self.spawn_sync(working_directory, argv, envp, flags, child_setup : LibGLib::SpawnChildSetupFunc?, user_data, standard_output, standard_error, exit_status)
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.spawn_sync(working_directory && working_directory, argv, envp && envp, flags, child_setup && child_setup, user_data, standard_output, standard_error, Int32.cast(exit_status), pointerof(__error))
     GLib::Error.assert __error
@@ -1506,7 +1506,7 @@ module GLib
 
   def self.str_tokenize_and_fold(string, translit_locale, ascii_alternates)
     __return_value = LibGLib.str_tokenize_and_fold(string, translit_locale && translit_locale, ascii_alternates)
-    PointerIterator.new(__return_value) {|__item_80| raise "Expected string but got null" unless __item_80; String.new(__item_80) }
+    PointerIterator.new(__return_value) {|__item_27| raise "Expected string but got null" unless __item_27; String.new(__item_27) }
   end
 
   def self.strcanon(string, valid_chars, substitutor)
@@ -1664,7 +1664,7 @@ module GLib
     __return_value
   end
 
-  def self.test_add_data_func_full(testpath, test_data, test_func, data_free_func)
+  def self.test_add_data_func_full(testpath, test_data, test_func : LibGLib::TestDataFunc, data_free_func : LibGLib::DestroyNotify)
     __return_value = LibGLib.test_add_data_func_full(testpath, test_data, test_func, data_free_func)
     __return_value
   end
@@ -1714,7 +1714,7 @@ module GLib
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
-  def self.test_queue_destroy(destroy_func, destroy_data)
+  def self.test_queue_destroy(destroy_func : LibGLib::DestroyNotify, destroy_data)
     __return_value = LibGLib.test_queue_destroy(destroy_func, destroy_data)
     __return_value
   end
@@ -1864,12 +1864,12 @@ module GLib
     __return_value
   end
 
-  def self.timeout_add(priority, interval, function, data, notify)
+  def self.timeout_add(priority, interval, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
     __return_value = LibGLib.timeout_add(Int32.cast(priority), UInt32.cast(interval), function, data, notify && notify)
     __return_value
   end
 
-  def self.timeout_add_seconds(priority, interval, function, data, notify)
+  def self.timeout_add_seconds(priority, interval, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
     __return_value = LibGLib.timeout_add_seconds(Int32.cast(priority), UInt32.cast(interval), function, data, notify && notify)
     __return_value
   end
@@ -2093,7 +2093,7 @@ module GLib
     __return_value
   end
 
-  def self.unix_fd_add_full(priority, fd, condition, function, user_data, notify)
+  def self.unix_fd_add_full(priority, fd, condition, function : LibGLib::UnixFDSourceFunc, user_data, notify : LibGLib::DestroyNotify)
     __return_value = LibGLib.unix_fd_add_full(Int32.cast(priority), Int32.cast(fd), condition, function, user_data, notify)
     __return_value
   end
@@ -2117,7 +2117,7 @@ module GLib
     __return_value
   end
 
-  def self.unix_signal_add(priority, signum, handler, user_data, notify)
+  def self.unix_signal_add(priority, signum, handler : LibGLib::SourceFunc, user_data, notify : LibGLib::DestroyNotify)
     __return_value = LibGLib.unix_signal_add(Int32.cast(priority), Int32.cast(signum), handler, user_data, notify)
     __return_value
   end
@@ -2144,7 +2144,7 @@ module GLib
 
   def self.uri_list_extract_uris(uri_list)
     __return_value = LibGLib.uri_list_extract_uris(uri_list)
-    PointerIterator.new(__return_value) {|__item_76| raise "Expected string but got null" unless __item_76; String.new(__item_76) }
+    PointerIterator.new(__return_value) {|__item_68| raise "Expected string but got null" unless __item_68; String.new(__item_68) }
   end
 
   def self.uri_parse_scheme(uri)

@@ -28,7 +28,7 @@ module Gtk
       Gtk::Builder.new(__return_value)
     end
 
-    def add_callback_symbol(callback_name, callback_symbol)
+    def add_callback_symbol(callback_name, callback_symbol : LibGObject::Callback)
       __return_value = LibGtk.builder_add_callback_symbol((to_unsafe as LibGtk::Builder*), callback_name, callback_symbol)
       __return_value
     end
@@ -80,7 +80,7 @@ module Gtk
       __return_value
     end
 
-    def connect_signals_full(func, user_data)
+    def connect_signals_full(func : LibGtk::BuilderConnectFunc, user_data)
       __return_value = LibGtk.builder_connect_signals_full((to_unsafe as LibGtk::Builder*), func, user_data)
       __return_value
     end

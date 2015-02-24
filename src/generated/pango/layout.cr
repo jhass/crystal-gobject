@@ -124,7 +124,7 @@ module Pango
 
     def log_attrs_readonly(n_attrs)
       __return_value = LibPango.layout_get_log_attrs_readonly((to_unsafe as LibPango::Layout*), Int32.cast(n_attrs))
-      PointerIterator.new(__return_value) {|__item_45| Pango::LogAttr.new(__item_45) }
+      PointerIterator.new(__return_value) {|__item_90| Pango::LogAttr.new(__item_90) }
     end
 
     def pixel_extents(ink_rect, logical_rect)

@@ -67,7 +67,7 @@ module Gtk
 
     def uris(length)
       __return_value = LibGtk.recent_chooser_get_uris((to_unsafe as LibGtk::RecentChooser*), UInt64.cast(length))
-      PointerIterator.new(__return_value) {|__item_88| raise "Expected string but got null" unless __item_88; String.new(__item_88) }
+      PointerIterator.new(__return_value) {|__item_29| raise "Expected string but got null" unless __item_29; String.new(__item_29) }
     end
 
     def list_filters
@@ -139,7 +139,7 @@ module Gtk
       __return_value
     end
 
-    def set_sort_func(sort_func, sort_data, data_destroy)
+    def set_sort_func(sort_func : LibGtk::RecentSortFunc, sort_data, data_destroy : LibGLib::DestroyNotify?)
       __return_value = LibGtk.recent_chooser_set_sort_func((to_unsafe as LibGtk::RecentChooser*), sort_func, sort_data && sort_data, data_destroy && data_destroy)
       __return_value
     end

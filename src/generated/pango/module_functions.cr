@@ -235,7 +235,7 @@ module Pango
 
   def self.split_file_list(str)
     __return_value = LibPango.split_file_list(str)
-    PointerIterator.new(__return_value) {|__item_18| raise "Expected string but got null" unless __item_18; String.new(__item_18) }
+    PointerIterator.new(__return_value) {|__item_69| raise "Expected string but got null" unless __item_69; String.new(__item_69) }
   end
 
   def self.trim_string(str)

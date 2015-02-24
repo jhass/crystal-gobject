@@ -24,7 +24,7 @@ module Pango
       Pango::AttrList.new(__return_value)
     end
 
-    def filter(func, data)
+    def filter(func : LibPango::AttrFilterFunc, data)
       __return_value = LibPango.attr_list_filter((to_unsafe as LibPango::AttrList*), func, data)
       Pango::AttrList.new(__return_value)
     end

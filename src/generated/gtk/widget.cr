@@ -97,7 +97,7 @@ module Gtk
       __return_value
     end
 
-    def add_tick_callback(callback, user_data, notify)
+    def add_tick_callback(callback : LibGtk::TickCallback, user_data, notify : LibGLib::DestroyNotify)
       __return_value = LibGtk.widget_add_tick_callback((to_unsafe as LibGtk::Widget*), callback, user_data, notify)
       __return_value
     end

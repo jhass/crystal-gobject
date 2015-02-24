@@ -15,7 +15,7 @@ module Gio
       __return_value
     end
 
-    def close_async(io_priority, cancellable, callback, user_data)
+    def close_async(io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.file_enumerator_close_async((to_unsafe as LibGio::FileEnumerator*), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
@@ -54,7 +54,7 @@ module Gio
       Gio::FileInfo.new(__return_value) if __return_value
     end
 
-    def next_files_async(num_files, io_priority, cancellable, callback, user_data)
+    def next_files_async(num_files, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.file_enumerator_next_files_async((to_unsafe as LibGio::FileEnumerator*), Int32.cast(num_files), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end

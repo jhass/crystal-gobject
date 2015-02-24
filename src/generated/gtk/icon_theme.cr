@@ -54,7 +54,7 @@ module Gtk
 
     def icon_sizes(icon_name)
       __return_value = LibGtk.icon_theme_get_icon_sizes((to_unsafe as LibGtk::IconTheme*), icon_name)
-      PointerIterator.new(__return_value) {|__item_19| __item_19 }
+      PointerIterator.new(__return_value) {|__item_94| __item_94 }
     end
 
     def search_path(path, n_elements)

@@ -31,7 +31,7 @@ module Gio
 
     def self.search(search_string)
       __return_value = LibGio.desktop_app_info_search(search_string)
-      PointerIterator.new(__return_value) {|__item_34| PointerIterator.new(__item_34) {|__item_97| raise "Expected string but got null" unless __item_97; String.new(__item_97) } }
+      PointerIterator.new(__return_value) {|__item_28| PointerIterator.new(__item_28) {|__item_7| raise "Expected string but got null" unless __item_7; String.new(__item_7) } }
     end
 
     def self.set_desktop_env(desktop_env)
@@ -71,7 +71,7 @@ module Gio
 
     def keywords
       __return_value = LibGio.desktop_app_info_get_keywords((to_unsafe as LibGio::DesktopAppInfo*))
-      PointerIterator.new(__return_value) {|__item_17| raise "Expected string but got null" unless __item_17; String.new(__item_17) }
+      PointerIterator.new(__return_value) {|__item_71| raise "Expected string but got null" unless __item_71; String.new(__item_71) }
     end
 
     def nodisplay
@@ -104,7 +104,7 @@ module Gio
       __return_value
     end
 
-    def launch_uris_as_manager(uris, launch_context, spawn_flags, user_setup, user_setup_data, pid_callback, pid_callback_data)
+    def launch_uris_as_manager(uris, launch_context, spawn_flags, user_setup : LibGLib::SpawnChildSetupFunc?, user_setup_data, pid_callback : LibGio::DesktopAppLaunchCallback?, pid_callback_data)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.desktop_app_info_launch_uris_as_manager((to_unsafe as LibGio::DesktopAppInfo*), uris, launch_context && (launch_context.to_unsafe as LibGio::AppLaunchContext*), spawn_flags, user_setup && user_setup, user_setup_data && user_setup_data, pid_callback && pid_callback, pid_callback_data && pid_callback_data, pointerof(__error))
       GLib::Error.assert __error
@@ -113,7 +113,7 @@ module Gio
 
     def list_actions
       __return_value = LibGio.desktop_app_info_list_actions((to_unsafe as LibGio::DesktopAppInfo*))
-      PointerIterator.new(__return_value) {|__item_11| raise "Expected string but got null" unless __item_11; String.new(__item_11) }
+      PointerIterator.new(__return_value) {|__item_58| raise "Expected string but got null" unless __item_58; String.new(__item_58) }
     end
 
   end

@@ -19,7 +19,7 @@ module Gio
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 
-    def lookup_by_address_async(address, cancellable, callback, user_data)
+    def lookup_by_address_async(address, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.resolver_lookup_by_address_async((to_unsafe as LibGio::Resolver*), (address.to_unsafe as LibGio::InetAddress*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
@@ -38,7 +38,7 @@ module Gio
       __return_value
     end
 
-    def lookup_by_name_async(hostname, cancellable, callback, user_data)
+    def lookup_by_name_async(hostname, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.resolver_lookup_by_name_async((to_unsafe as LibGio::Resolver*), hostname, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
@@ -57,7 +57,7 @@ module Gio
       __return_value
     end
 
-    def lookup_records_async(rrname, record_type, cancellable, callback, user_data)
+    def lookup_records_async(rrname, record_type, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.resolver_lookup_records_async((to_unsafe as LibGio::Resolver*), rrname, record_type, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
@@ -76,7 +76,7 @@ module Gio
       __return_value
     end
 
-    def lookup_service_async(service, protocol, domain, cancellable, callback, user_data)
+    def lookup_service_async(service, protocol, domain, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.resolver_lookup_service_async((to_unsafe as LibGio::Resolver*), service, protocol, domain, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end

@@ -8,7 +8,7 @@ module Gio
     end
 
     # Implements AsyncResult
-    def self.new_internal(source_object, cancellable, callback, callback_data)
+    def self.new_internal(source_object, cancellable, callback : LibGio::AsyncReadyCallback?, callback_data)
       __return_value = LibGio.task_new(source_object && (source_object.to_unsafe as LibGObject::Object*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, callback_data)
       Gio::Task.new(__return_value)
     end
@@ -18,7 +18,7 @@ module Gio
       __return_value
     end
 
-    def self.report_error(source_object, callback, callback_data, source_tag, error)
+    def self.report_error(source_object, callback : LibGio::AsyncReadyCallback?, callback_data, source_tag, error)
       __return_value = LibGio.task_report_error(source_object && (source_object.to_unsafe as LibGObject::Object*), callback && callback, callback_data, source_tag, error)
       __return_value
     end
@@ -109,7 +109,7 @@ module Gio
       __return_value
     end
 
-    def return_pointer(result, result_destroy)
+    def return_pointer(result, result_destroy : LibGLib::DestroyNotify?)
       __return_value = LibGio.task_return_pointer((to_unsafe as LibGio::Task*), result && result, result_destroy && result_destroy)
       __return_value
     end
@@ -134,7 +134,7 @@ module Gio
       __return_value
     end
 
-    def set_task_data(task_data, task_data_destroy)
+    def set_task_data(task_data, task_data_destroy : LibGLib::DestroyNotify?)
       __return_value = LibGio.task_set_task_data((to_unsafe as LibGio::Task*), task_data && task_data, task_data_destroy && task_data_destroy)
       __return_value
     end

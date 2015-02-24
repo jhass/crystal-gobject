@@ -46,22 +46,22 @@ module Gio
       Gio::DBusConnection.new(__return_value)
     end
 
-    def self.new_internal(stream, guid, flags, observer, cancellable, callback, user_data)
+    def self.new_internal(stream, guid, flags, observer, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.d_bus_connection_new((stream.to_unsafe as LibGio::IOStream*), guid && guid, flags, observer && (observer.to_unsafe as LibGio::DBusAuthObserver*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
-    def self.new_for_address(address, flags, observer, cancellable, callback, user_data)
+    def self.new_for_address(address, flags, observer, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.d_bus_connection_new_for_address(address, flags, observer && (observer.to_unsafe as LibGio::DBusAuthObserver*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
-    def add_filter(filter_function, user_data, user_data_free_func)
+    def add_filter(filter_function : LibGio::DBusMessageFilterFunction, user_data, user_data_free_func : LibGLib::DestroyNotify)
       __return_value = LibGio.d_bus_connection_add_filter((to_unsafe as LibGio::DBusConnection*), filter_function, user_data, user_data_free_func)
       __return_value
     end
 
-    def call(bus_name, object_path, interface_name, method_name, parameters, reply_type, flags, timeout_msec, cancellable, callback, user_data)
+    def call(bus_name, object_path, interface_name, method_name, parameters, reply_type, flags, timeout_msec, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.d_bus_connection_call((to_unsafe as LibGio::DBusConnection*), bus_name && bus_name, object_path, interface_name, method_name, parameters && (parameters.to_unsafe as LibGLib::Variant*), reply_type && (reply_type.to_unsafe as LibGLib::VariantType*), flags, Int32.cast(timeout_msec), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
@@ -80,7 +80,7 @@ module Gio
       GLib::Variant.new(__return_value)
     end
 
-    def call_with_unix_fd_list(bus_name, object_path, interface_name, method_name, parameters, reply_type, flags, timeout_msec, fd_list, cancellable, callback, user_data)
+    def call_with_unix_fd_list(bus_name, object_path, interface_name, method_name, parameters, reply_type, flags, timeout_msec, fd_list, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.d_bus_connection_call_with_unix_fd_list((to_unsafe as LibGio::DBusConnection*), bus_name && bus_name, object_path, interface_name, method_name, parameters && (parameters.to_unsafe as LibGLib::Variant*), reply_type && (reply_type.to_unsafe as LibGLib::VariantType*), flags, Int32.cast(timeout_msec), fd_list && (fd_list.to_unsafe as LibGio::UnixFDList*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
@@ -99,7 +99,7 @@ module Gio
       GLib::Variant.new(__return_value)
     end
 
-    def close(cancellable, callback, user_data)
+    def close(cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.d_bus_connection_close((to_unsafe as LibGio::DBusConnection*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
@@ -139,7 +139,7 @@ module Gio
       __return_value
     end
 
-    def flush(cancellable, callback, user_data)
+    def flush(cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.d_bus_connection_flush((to_unsafe as LibGio::DBusConnection*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
@@ -198,14 +198,14 @@ module Gio
       __return_value
     end
 
-    def register_object(object_path, interface_info, vtable, user_data, user_data_free_func)
+    def register_object(object_path, interface_info, vtable, user_data, user_data_free_func : LibGLib::DestroyNotify)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_connection_register_object((to_unsafe as LibGio::DBusConnection*), object_path, (interface_info.to_unsafe as LibGio::DBusInterfaceInfo*), vtable && (vtable.to_unsafe as LibGio::DBusInterfaceVTable*), user_data && user_data, user_data_free_func, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def register_subtree(object_path, vtable, flags, user_data, user_data_free_func)
+    def register_subtree(object_path, vtable, flags, user_data, user_data_free_func : LibGLib::DestroyNotify)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_connection_register_subtree((to_unsafe as LibGio::DBusConnection*), object_path, (vtable.to_unsafe as LibGio::DBusSubtreeVTable*), flags, user_data, user_data_free_func, pointerof(__error))
       GLib::Error.assert __error
@@ -224,7 +224,7 @@ module Gio
       __return_value
     end
 
-    def send_message_with_reply(message, flags, timeout_msec, out_serial, cancellable, callback, user_data)
+    def send_message_with_reply(message, flags, timeout_msec, out_serial, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.d_bus_connection_send_message_with_reply((to_unsafe as LibGio::DBusConnection*), (message.to_unsafe as LibGio::DBusMessage*), flags, Int32.cast(timeout_msec), UInt32.cast(out_serial), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
@@ -248,7 +248,7 @@ module Gio
       __return_value
     end
 
-    def signal_subscribe(sender, interface_name, member, object_path, arg0, flags, callback, user_data, user_data_free_func)
+    def signal_subscribe(sender, interface_name, member, object_path, arg0, flags, callback : LibGio::DBusSignalCallback, user_data, user_data_free_func : LibGLib::DestroyNotify?)
       __return_value = LibGio.d_bus_connection_signal_subscribe((to_unsafe as LibGio::DBusConnection*), sender && sender, interface_name && interface_name, member && member, object_path && object_path, arg0 && arg0, flags, callback, user_data, user_data_free_func && user_data_free_func)
       __return_value
     end

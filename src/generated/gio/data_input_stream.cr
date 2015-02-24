@@ -59,10 +59,10 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.data_input_stream_read_line((to_unsafe as LibGio::DataInputStream*), UInt64.cast(length), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_3| __item_3 } if __return_value
+      PointerIterator.new(__return_value) {|__item_23| __item_23 } if __return_value
     end
 
-    def read_line_async(io_priority, cancellable, callback, user_data)
+    def read_line_async(io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.data_input_stream_read_line_async((to_unsafe as LibGio::DataInputStream*), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
@@ -71,7 +71,7 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.data_input_stream_read_line_finish((to_unsafe as LibGio::DataInputStream*), (result.to_unsafe as LibGio::AsyncResult*), UInt64.cast(length), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_76| __item_76 } if __return_value
+      PointerIterator.new(__return_value) {|__item_25| __item_25 } if __return_value
     end
 
     def read_line_finish_utf8(result, length)
@@ -116,7 +116,7 @@ module Gio
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 
-    def read_until_async(stop_chars, io_priority, cancellable, callback, user_data)
+    def read_until_async(stop_chars, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.data_input_stream_read_until_async((to_unsafe as LibGio::DataInputStream*), stop_chars, Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
@@ -135,7 +135,7 @@ module Gio
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 
-    def read_upto_async(stop_chars, stop_chars_len, io_priority, cancellable, callback, user_data)
+    def read_upto_async(stop_chars, stop_chars_len, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.data_input_stream_read_upto_async((to_unsafe as LibGio::DataInputStream*), stop_chars, Int64.cast(stop_chars_len), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end

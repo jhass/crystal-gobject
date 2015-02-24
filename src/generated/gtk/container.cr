@@ -44,12 +44,12 @@ module Gtk
       __return_value
     end
 
-    def forall(callback, callback_data)
+    def forall(callback : LibGtk::Callback, callback_data)
       __return_value = LibGtk.container_forall((to_unsafe as LibGtk::Container*), callback, callback_data)
       __return_value
     end
 
-    def foreach(callback, callback_data)
+    def foreach(callback : LibGtk::Callback, callback_data)
       __return_value = LibGtk.container_foreach((to_unsafe as LibGtk::Container*), callback, callback_data)
       __return_value
     end

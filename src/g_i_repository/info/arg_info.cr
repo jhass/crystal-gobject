@@ -42,7 +42,11 @@ module GIRepository
     end
 
     def for_wrapper_definition libname
-      name
+      if type.tag == LibGIRepository::TypeTag::INTERFACE && type.interface.is_a? CallbackInfo
+        "#{name} : #{type.lib_definition}#{"?" if nullable?}"
+      else
+        name
+      end
     end
 
     def for_wrapper_pass libname

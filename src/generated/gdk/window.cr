@@ -398,7 +398,7 @@ module Gdk
       __return_value
     end
 
-    def invalidate_maybe_recurse(region, child_func, user_data)
+    def invalidate_maybe_recurse(region, child_func : LibGdk::WindowChildFunc?, user_data)
       __return_value = LibGdk.window_invalidate_maybe_recurse((to_unsafe as LibGdk::Window*), (region.to_unsafe as LibCairo::Region*), child_func && child_func, user_data)
       __return_value
     end

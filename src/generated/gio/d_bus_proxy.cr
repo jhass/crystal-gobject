@@ -47,17 +47,17 @@ module Gio
       Gio::DBusProxy.new(__return_value)
     end
 
-    def self.new_internal(connection, flags, info, name, object_path, interface_name, cancellable, callback, user_data)
+    def self.new_internal(connection, flags, info, name, object_path, interface_name, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.d_bus_proxy_new((connection.to_unsafe as LibGio::DBusConnection*), flags, info && (info.to_unsafe as LibGio::DBusInterfaceInfo*), name && name, object_path, interface_name, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
-    def self.new_for_bus(bus_type, flags, info, name, object_path, interface_name, cancellable, callback, user_data)
+    def self.new_for_bus(bus_type, flags, info, name, object_path, interface_name, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.d_bus_proxy_new_for_bus(bus_type, flags, info && (info.to_unsafe as LibGio::DBusInterfaceInfo*), name, object_path, interface_name, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
-    def call(method_name, parameters, flags, timeout_msec, cancellable, callback, user_data)
+    def call(method_name, parameters, flags, timeout_msec, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.d_bus_proxy_call((to_unsafe as LibGio::DBusProxy*), method_name, parameters && (parameters.to_unsafe as LibGLib::Variant*), flags, Int32.cast(timeout_msec), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
@@ -76,7 +76,7 @@ module Gio
       GLib::Variant.new(__return_value)
     end
 
-    def call_with_unix_fd_list(method_name, parameters, flags, timeout_msec, fd_list, cancellable, callback, user_data)
+    def call_with_unix_fd_list(method_name, parameters, flags, timeout_msec, fd_list, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.d_bus_proxy_call_with_unix_fd_list((to_unsafe as LibGio::DBusProxy*), method_name, parameters && (parameters.to_unsafe as LibGLib::Variant*), flags, Int32.cast(timeout_msec), fd_list && (fd_list.to_unsafe as LibGio::UnixFDList*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
@@ -102,7 +102,7 @@ module Gio
 
     def cached_property_names
       __return_value = LibGio.d_bus_proxy_get_cached_property_names((to_unsafe as LibGio::DBusProxy*))
-      PointerIterator.new(__return_value) {|__item_68| raise "Expected string but got null" unless __item_68; String.new(__item_68) }
+      PointerIterator.new(__return_value) {|__item_1| raise "Expected string but got null" unless __item_1; String.new(__item_1) }
     end
 
     def connection

@@ -107,7 +107,7 @@ module Gtk
       __return_value
     end
 
-    def set_forward_page_func(page_func, data, destroy)
+    def set_forward_page_func(page_func : LibGtk::AssistantPageFunc?, data, destroy : LibGLib::DestroyNotify)
       __return_value = LibGtk.assistant_set_forward_page_func((to_unsafe as LibGtk::Assistant*), page_func && page_func, data, destroy)
       __return_value
     end

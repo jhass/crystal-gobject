@@ -486,7 +486,7 @@ module Gtk
     Gtk::PageSetup.new(__return_value)
   end
 
-  def self.print_run_page_setup_dialog_async(parent, page_setup, settings, done_cb, data)
+  def self.print_run_page_setup_dialog_async(parent, page_setup, settings, done_cb : LibGtk::PageSetupDoneFunc, data)
     __return_value = LibGtk.print_run_page_setup_dialog_async(parent && (parent.to_unsafe as LibGtk::Window*), page_setup && (page_setup.to_unsafe as LibGtk::PageSetup*), (settings.to_unsafe as LibGtk::PrintSettings*), done_cb, data)
     __return_value
   end
@@ -513,7 +513,7 @@ module Gtk
 
   def self.rc_get_default_files
     __return_value = LibGtk.rc_get_default_files
-    PointerIterator.new(__return_value) {|__item_76| raise "Expected string but got null" unless __item_76; String.new(__item_76) }
+    PointerIterator.new(__return_value) {|__item_91| raise "Expected string but got null" unless __item_91; String.new(__item_91) }
   end
 
   def self.rc_get_im_module_file
@@ -793,7 +793,7 @@ module Gtk
     __return_value
   end
 
-  def self.stock_set_translate_func(domain, func, data, notify)
+  def self.stock_set_translate_func(domain, func : LibGtk::TranslateFunc, data, notify : LibGLib::DestroyNotify)
     __return_value = LibGtk.stock_set_translate_func(domain, func, data, notify)
     __return_value
   end
@@ -805,7 +805,7 @@ module Gtk
 
   def self.target_table_new_from_list(list, n_targets)
     __return_value = LibGtk.target_table_new_from_list((list.to_unsafe as LibGtk::TargetList*), Int32.cast(n_targets))
-    PointerIterator.new(__return_value) {|__item_55| Gtk::TargetEntry.new(__item_55) }
+    PointerIterator.new(__return_value) {|__item_5| Gtk::TargetEntry.new(__item_5) }
   end
 
   def self.targets_include_image(targets, n_targets, writable)
@@ -850,7 +850,7 @@ module Gtk
 
   def self.test_list_all_types(n_types)
     __return_value = LibGtk.test_list_all_types(UInt32.cast(n_types))
-    PointerIterator.new(__return_value) {|__item_52| __item_52 }
+    PointerIterator.new(__return_value) {|__item_51| __item_51 }
   end
 
   def self.test_register_all_types

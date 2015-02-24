@@ -16,7 +16,7 @@ module Pango
 
     def scripts(num_scripts)
       __return_value = LibPango.language_get_scripts((to_unsafe as LibPango::Language*), Int32.cast(num_scripts))
-      PointerIterator.new(__return_value) {|__item_28| __item_28 }
+      PointerIterator.new(__return_value) {|__item_31| __item_31 }
     end
 
     def includes_script(script)

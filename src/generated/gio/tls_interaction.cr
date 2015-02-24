@@ -14,7 +14,7 @@ module Gio
       __return_value
     end
 
-    def ask_password_async(password, cancellable, callback, user_data)
+    def ask_password_async(password, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.tls_interaction_ask_password_async((to_unsafe as LibGio::TlsInteraction*), (password.to_unsafe as LibGio::TlsPassword*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
@@ -47,7 +47,7 @@ module Gio
       __return_value
     end
 
-    def request_certificate_async(connection, flags, cancellable, callback, user_data)
+    def request_certificate_async(connection, flags, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.tls_interaction_request_certificate_async((to_unsafe as LibGio::TlsInteraction*), (connection.to_unsafe as LibGio::TlsConnection*), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end

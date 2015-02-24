@@ -109,7 +109,7 @@ module GLib
       __return_value
     end
 
-    def set_callback(func, data, notify)
+    def set_callback(func : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
       __return_value = LibGLib.source_set_callback((to_unsafe as LibGLib::Source*), func, data, notify && notify)
       __return_value
     end

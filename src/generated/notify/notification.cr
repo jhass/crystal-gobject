@@ -18,7 +18,7 @@ module Notify
       Notify::Notification.new(__return_value)
     end
 
-    def add_action(action, label, callback, user_data, free_func)
+    def add_action(action, label, callback : LibNotify::ActionCallback, user_data, free_func : LibGLib::DestroyNotify)
       __return_value = LibNotify.notification_add_action((to_unsafe as LibNotify::Notification*), action, label, callback, user_data, free_func)
       __return_value
     end
