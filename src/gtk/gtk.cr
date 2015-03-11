@@ -34,4 +34,5 @@ end
 
 Signal.trap(Signal::INT) do
   Gtk.main_quit
+  exit
 end
