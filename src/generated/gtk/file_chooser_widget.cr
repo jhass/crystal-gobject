@@ -13,6 +13,7 @@ module Gtk
     # Implements Buildable
     # Implements FileChooser
     # Implements Orientable
+
     def self.new_internal(action)
       __return_value = LibGtk.file_chooser_widget_new(action)
       Gtk::Widget.new(__return_value)

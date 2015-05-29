@@ -105,6 +105,18 @@ module Gio
       __return_value
     end
 
+    def write_all_async(buffer, count, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+      __return_value = LibGio.output_stream_write_all_async((to_unsafe as LibGio::OutputStream*), buffer, UInt64.cast(count), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value
+    end
+
+    def write_all_finish(result, bytes_written)
+      __error = Pointer(LibGLib::Error).null
+      __return_value = LibGio.output_stream_write_all_finish((to_unsafe as LibGio::OutputStream*), (result.to_unsafe as LibGio::AsyncResult*), UInt64.cast(bytes_written), pointerof(__error))
+      GLib::Error.assert __error
+      __return_value
+    end
+
     def write_async(buffer, count, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.output_stream_write_async((to_unsafe as LibGio::OutputStream*), buffer, UInt64.cast(count), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value

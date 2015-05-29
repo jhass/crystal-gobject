@@ -36,7 +36,7 @@ module Gtk
 
     def path
       __return_value = LibGtk.tree_row_reference_get_path((to_unsafe as LibGtk::TreeRowReference*))
-      Gtk::TreePath.new(__return_value)
+      Gtk::TreePath.new(__return_value) if __return_value
     end
 
     def valid

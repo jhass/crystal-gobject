@@ -16,6 +16,11 @@ module Gio
       Gio::NetworkAddress.new(__return_value)
     end
 
+    def self.new_loopback(port)
+      __return_value = LibGio.network_address_new_loopback(UInt16.cast(port))
+      Gio::NetworkAddress.new(__return_value)
+    end
+
     def self.parse(host_and_port, default_port)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.network_address_parse(host_and_port, UInt16.cast(default_port), pointerof(__error))

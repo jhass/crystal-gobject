@@ -1,5 +1,10 @@
 module Gtk
   module Scrollable
+    def border(border)
+      __return_value = LibGtk.scrollable_get_border((to_unsafe as LibGtk::Scrollable*), (border.to_unsafe as LibGtk::Border*))
+      __return_value
+    end
+
     def hadjustment
       __return_value = LibGtk.scrollable_get_hadjustment((to_unsafe as LibGtk::Scrollable*))
       Gtk::Adjustment.new(__return_value)

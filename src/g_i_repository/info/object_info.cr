@@ -26,6 +26,7 @@ module GIRepository
         each_field do |field|
           io.puts "  #{field.lib_definition}"
         end
+        io.puts "    _data : UInt8[0]" if fields_size == 0
 
         each_signal do |signal|
           io.puts "  #{signal.lib_definition}"

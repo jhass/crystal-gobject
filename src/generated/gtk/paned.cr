@@ -16,6 +16,7 @@ module Gtk
 
 
 
+
     def self.new_internal(orientation)
       __return_value = LibGtk.paned_new(orientation)
       Gtk::Widget.new(__return_value)
@@ -51,6 +52,11 @@ module Gtk
       __return_value
     end
 
+    def wide_handle
+      __return_value = LibGtk.paned_get_wide_handle((to_unsafe as LibGtk::Paned*))
+      __return_value
+    end
+
     def pack1(child, resize, shrink)
       __return_value = LibGtk.paned_pack1((to_unsafe as LibGtk::Paned*), (child.to_unsafe as LibGtk::Widget*), Bool.cast(resize), Bool.cast(shrink))
       __return_value
@@ -63,6 +69,11 @@ module Gtk
 
     def position=(position)
       __return_value = LibGtk.paned_set_position((to_unsafe as LibGtk::Paned*), Int32.cast(position))
+      __return_value
+    end
+
+    def wide_handle=(wide)
+      __return_value = LibGtk.paned_set_wide_handle((to_unsafe as LibGtk::Paned*), Bool.cast(wide))
       __return_value
     end
 

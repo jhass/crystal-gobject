@@ -21,6 +21,7 @@ module Gtk
 
 
 
+
     def self.new_internal(hadjustment, vadjustment)
       __return_value = LibGtk.scrolled_window_new(hadjustment && (hadjustment.to_unsafe as LibGtk::Adjustment*), vadjustment && (vadjustment.to_unsafe as LibGtk::Adjustment*))
       Gtk::Widget.new(__return_value)
@@ -58,6 +59,11 @@ module Gtk
 
     def min_content_width
       __return_value = LibGtk.scrolled_window_get_min_content_width((to_unsafe as LibGtk::ScrolledWindow*))
+      __return_value
+    end
+
+    def overlay_scrolling
+      __return_value = LibGtk.scrolled_window_get_overlay_scrolling((to_unsafe as LibGtk::ScrolledWindow*))
       __return_value
     end
 
@@ -108,6 +114,11 @@ module Gtk
 
     def min_content_width=(width)
       __return_value = LibGtk.scrolled_window_set_min_content_width((to_unsafe as LibGtk::ScrolledWindow*), Int32.cast(width))
+      __return_value
+    end
+
+    def overlay_scrolling=(overlay_scrolling)
+      __return_value = LibGtk.scrolled_window_set_overlay_scrolling((to_unsafe as LibGtk::ScrolledWindow*), Bool.cast(overlay_scrolling))
       __return_value
     end
 

@@ -1,5 +1,8 @@
-require "./lib_gdk_pixbuf"
 require "./lib_g_lib"
+require "./lib_gdk_pixbuf"
+require "./lib_gio"
+require "./lib_g_module"
+require "./lib_g_object"
 
 @[Link("notify")]
 lib LibNotify
@@ -52,6 +55,7 @@ lib LibNotify
   ###########################################
 
   struct NotificationPrivate # struct
+    _data : UInt8[0]
   end
 
 
@@ -59,7 +63,7 @@ lib LibNotify
   ##    Enums
   ###########################################
 
-  enum Urgency
+  enum Urgency : UInt32
     ZERO_NONE = 0
     LOW = 0
     NORMAL = 1

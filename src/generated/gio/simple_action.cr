@@ -33,6 +33,11 @@ module Gio
       __return_value
     end
 
+    def state_hint=(state_hint)
+      __return_value = LibGio.simple_action_set_state_hint((to_unsafe as LibGio::SimpleAction*), state_hint && (state_hint.to_unsafe as LibGLib::Variant*))
+      __return_value
+    end
+
   end
 end
 

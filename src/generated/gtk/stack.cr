@@ -17,6 +17,8 @@ module Gtk
 
 
 
+
+
     def self.new_internal
       __return_value = LibGtk.stack_new
       Gtk::Widget.new(__return_value)
@@ -35,6 +37,11 @@ module Gtk
     def child_by_name(name)
       __return_value = LibGtk.stack_get_child_by_name((to_unsafe as LibGtk::Stack*), name)
       Gtk::Widget.new(__return_value)
+    end
+
+    def hhomogeneous
+      __return_value = LibGtk.stack_get_hhomogeneous((to_unsafe as LibGtk::Stack*))
+      __return_value
     end
 
     def homogeneous
@@ -57,6 +64,11 @@ module Gtk
       __return_value
     end
 
+    def vhomogeneous
+      __return_value = LibGtk.stack_get_vhomogeneous((to_unsafe as LibGtk::Stack*))
+      __return_value
+    end
+
     def visible_child
       __return_value = LibGtk.stack_get_visible_child((to_unsafe as LibGtk::Stack*))
       Gtk::Widget.new(__return_value)
@@ -65,6 +77,11 @@ module Gtk
     def visible_child_name
       __return_value = LibGtk.stack_get_visible_child_name((to_unsafe as LibGtk::Stack*))
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    end
+
+    def hhomogeneous=(hhomogeneous)
+      __return_value = LibGtk.stack_set_hhomogeneous((to_unsafe as LibGtk::Stack*), Bool.cast(hhomogeneous))
+      __return_value
     end
 
     def homogeneous=(homogeneous)
@@ -79,6 +96,11 @@ module Gtk
 
     def transition_type=(transition)
       __return_value = LibGtk.stack_set_transition_type((to_unsafe as LibGtk::Stack*), transition)
+      __return_value
+    end
+
+    def vhomogeneous=(vhomogeneous)
+      __return_value = LibGtk.stack_set_vhomogeneous((to_unsafe as LibGtk::Stack*), Bool.cast(vhomogeneous))
       __return_value
     end
 

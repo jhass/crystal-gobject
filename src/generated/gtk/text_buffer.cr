@@ -132,7 +132,7 @@ module Gtk
 
     def deserialize_formats(n_formats)
       __return_value = LibGtk.text_buffer_get_deserialize_formats((to_unsafe as LibGtk::TextBuffer*), Int32.cast(n_formats))
-      PointerIterator.new(__return_value) {|__item_74| Gdk::Atom.new(__item_74) }
+      PointerIterator.new(__return_value) {|__item_62| Gdk::Atom.new(__item_62) }
     end
 
     def end_iter(iter)
@@ -212,7 +212,7 @@ module Gtk
 
     def serialize_formats(n_formats)
       __return_value = LibGtk.text_buffer_get_serialize_formats((to_unsafe as LibGtk::TextBuffer*), Int32.cast(n_formats))
-      PointerIterator.new(__return_value) {|__item_3| Gdk::Atom.new(__item_3) }
+      PointerIterator.new(__return_value) {|__item_91| Gdk::Atom.new(__item_91) }
     end
 
     def slice(start, end, include_hidden_chars)
@@ -257,6 +257,11 @@ module Gtk
 
     def insert_interactive_at_cursor(text, len, default_editable)
       __return_value = LibGtk.text_buffer_insert_interactive_at_cursor((to_unsafe as LibGtk::TextBuffer*), text, Int32.cast(len), Bool.cast(default_editable))
+      __return_value
+    end
+
+    def insert_markup(iter, markup, len)
+      __return_value = LibGtk.text_buffer_insert_markup((to_unsafe as LibGtk::TextBuffer*), (iter.to_unsafe as LibGtk::TextIter*), markup, Int32.cast(len))
       __return_value
     end
 
@@ -342,7 +347,7 @@ module Gtk
 
     def serialize(content_buffer, format, start, end, length)
       __return_value = LibGtk.text_buffer_serialize((to_unsafe as LibGtk::TextBuffer*), (content_buffer.to_unsafe as LibGtk::TextBuffer*), (format.to_unsafe as LibGdk::Atom*), (start.to_unsafe as LibGtk::TextIter*), (end.to_unsafe as LibGtk::TextIter*), UInt64.cast(length))
-      PointerIterator.new(__return_value) {|__item_89| __item_89 }
+      PointerIterator.new(__return_value) {|__item_14| __item_14 }
     end
 
     def modified=(setting)

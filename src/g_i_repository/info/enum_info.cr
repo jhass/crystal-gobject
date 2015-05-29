@@ -1,13 +1,19 @@
 require "./base_info"
+require "./type_info"
 
 module GIRepository
   class EnumInfo < BaseInfo
     each_converted enum_info, value, ValueInfo
     each_converted enum_info, method, FunctionInfo
 
+    def type
+      tag = LibGIRepository.enum_info_get_storage_type(self)
+      TypeInfo::TAG_MAP[tag]
+    end
+
     def lib_definition
       String.build do |io|
-        io.puts "  enum #{name}"
+        io.puts "  enum #{name} : #{type}"
         io.puts "    ZERO_NONE = 0"
         each_value do |value|
           io.puts "  #{value.lib_definition}"

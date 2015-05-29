@@ -8,6 +8,7 @@ lib LibGModule
   ###########################################
 
   struct Module # struct
+    _data : UInt8[0]
   end
   fun module_close = g_module_close(this : Module*) : Bool
   fun module_make_resident = g_module_make_resident(this : Module*) : Void
@@ -22,7 +23,7 @@ lib LibGModule
   ##    Flags
   ###########################################
 
-  enum ModuleFlags
+  enum ModuleFlags : UInt32
     ZERO_NONE = 0
     LAZY = 1
     LOCAL = 2

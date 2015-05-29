@@ -20,9 +20,9 @@ module GIRepository
 
         iface_struct = self.iface_struct
         if iface_struct
-          iface_struct.each_field do |field|
-            io.puts "  #{field.lib_definition}"
-          end
+          iface_struct.field_definition(io)
+        else
+          io.puts "    _data : UInt8[0]"
         end
 
         each_constant do |constant|

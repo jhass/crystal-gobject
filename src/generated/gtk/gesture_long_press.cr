@@ -9,6 +9,7 @@ module Gtk
       @gtk_gesture_long_press.not_nil!
     end
 
+
     def self.new_internal(widget)
       __return_value = LibGtk.gesture_long_press_new((widget.to_unsafe as LibGtk::Widget*))
       Gtk::Gesture.new(__return_value)

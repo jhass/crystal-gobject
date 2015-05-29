@@ -20,7 +20,7 @@ module Gtk
     end
 
     def self.new_from_widget(group)
-      __return_value = LibGtk.radio_menu_item_new_from_widget((group.to_unsafe as LibGtk::RadioMenuItem*))
+      __return_value = LibGtk.radio_menu_item_new_from_widget(group && (group.to_unsafe as LibGtk::RadioMenuItem*))
       Gtk::Widget.new(__return_value)
     end
 
@@ -30,7 +30,7 @@ module Gtk
     end
 
     def self.new_with_label_from_widget(group, label)
-      __return_value = LibGtk.radio_menu_item_new_with_label_from_widget((group.to_unsafe as LibGtk::RadioMenuItem*), label)
+      __return_value = LibGtk.radio_menu_item_new_with_label_from_widget(group && (group.to_unsafe as LibGtk::RadioMenuItem*), label && label)
       Gtk::Widget.new(__return_value)
     end
 
@@ -40,7 +40,7 @@ module Gtk
     end
 
     def self.new_with_mnemonic_from_widget(group, label)
-      __return_value = LibGtk.radio_menu_item_new_with_mnemonic_from_widget((group.to_unsafe as LibGtk::RadioMenuItem*), label)
+      __return_value = LibGtk.radio_menu_item_new_with_mnemonic_from_widget(group && (group.to_unsafe as LibGtk::RadioMenuItem*), label && label)
       Gtk::Widget.new(__return_value)
     end
 

@@ -139,6 +139,11 @@ module Gtk
     __return_value
   end
 
+  def self.drag_cancel(context)
+    __return_value = LibGtk.drag_cancel((context.to_unsafe as LibGdk::DragContext*))
+    __return_value
+  end
+
   def self.drag_finish(context, success, del, time)
     __return_value = LibGtk.drag_finish((context.to_unsafe as LibGdk::DragContext*), Bool.cast(success), Bool.cast(del), UInt32.cast(time))
     __return_value
@@ -267,6 +272,11 @@ module Gtk
   def self.minor_version
     __return_value = LibGtk.get_minor_version
     __return_value
+  end
+
+  def self.option_group(open_default_display)
+    __return_value = LibGtk.get_option_group(Bool.cast(open_default_display))
+    GLib::OptionGroup.new(__return_value)
   end
 
   def self.grab_get_current
@@ -513,7 +523,7 @@ module Gtk
 
   def self.rc_get_default_files
     __return_value = LibGtk.rc_get_default_files
-    PointerIterator.new(__return_value) {|__item_91| raise "Expected string but got null" unless __item_91; String.new(__item_91) }
+    PointerIterator.new(__return_value) {|__item_26| raise "Expected string but got null" unless __item_26; String.new(__item_26) }
   end
 
   def self.rc_get_im_module_file
@@ -805,7 +815,7 @@ module Gtk
 
   def self.target_table_new_from_list(list, n_targets)
     __return_value = LibGtk.target_table_new_from_list((list.to_unsafe as LibGtk::TargetList*), Int32.cast(n_targets))
-    PointerIterator.new(__return_value) {|__item_5| Gtk::TargetEntry.new(__item_5) }
+    PointerIterator.new(__return_value) {|__item_18| Gtk::TargetEntry.new(__item_18) }
   end
 
   def self.targets_include_image(targets, n_targets, writable)
@@ -850,7 +860,7 @@ module Gtk
 
   def self.test_list_all_types(n_types)
     __return_value = LibGtk.test_list_all_types(UInt32.cast(n_types))
-    PointerIterator.new(__return_value) {|__item_51| __item_51 }
+    PointerIterator.new(__return_value) {|__item_73| __item_73 }
   end
 
   def self.test_register_all_types
@@ -899,7 +909,7 @@ module Gtk
   end
 
   def self.tree_get_row_drag_data(selection_data, tree_model, path)
-    __return_value = LibGtk.tree_get_row_drag_data((selection_data.to_unsafe as LibGtk::SelectionData*), (tree_model.to_unsafe as LibGtk::TreeModel*), (path.to_unsafe as LibGtk::TreePath*))
+    __return_value = LibGtk.tree_get_row_drag_data((selection_data.to_unsafe as LibGtk::SelectionData*), tree_model && (tree_model.to_unsafe as LibGtk::TreeModel*), path && (path.to_unsafe as LibGtk::TreePath*))
     __return_value
   end
 

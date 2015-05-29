@@ -322,6 +322,11 @@ module Gtk
       Atk::Object.new(__return_value)
     end
 
+    def action_group(prefix)
+      __return_value = LibGtk.widget_get_action_group((to_unsafe as LibGtk::Widget*), prefix)
+      __return_value if __return_value
+    end
+
     def allocated_baseline
       __return_value = LibGtk.widget_get_allocated_baseline((to_unsafe as LibGtk::Widget*))
       __return_value
@@ -827,6 +832,11 @@ module Gtk
       __return_value
     end
 
+    def list_action_prefixes
+      __return_value = LibGtk.widget_list_action_prefixes((to_unsafe as LibGtk::Widget*))
+      PointerIterator.new(__return_value) {|__item_77| raise "Expected string but got null" unless __item_77; String.new(__item_77) }
+    end
+
     def list_mnemonic_labels
       __return_value = LibGtk.widget_list_mnemonic_labels((to_unsafe as LibGtk::Widget*))
       __return_value
@@ -1233,7 +1243,7 @@ module Gtk
     end
 
     def visual=(visual)
-      __return_value = LibGtk.widget_set_visual((to_unsafe as LibGtk::Widget*), (visual.to_unsafe as LibGdk::Visual*))
+      __return_value = LibGtk.widget_set_visual((to_unsafe as LibGtk::Widget*), visual && (visual.to_unsafe as LibGdk::Visual*))
       __return_value
     end
 

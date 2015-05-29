@@ -10,8 +10,12 @@ end
 
 #module GIRepository
   macro each_converted(prefix, basename, type, plural=nil)
-    def each_{{basename.id}}
+    def {{plural ? plural.id : "#{basename}s".id}}_size
       n = LibGIRepository.{{prefix.id}}_get_n_{{plural ? plural.id : "#{basename}s".id}}(self)
+    end
+
+    def each_{{basename.id}}
+      n = {{plural ? plural.id : "#{basename}s".id}}_size
       0.upto(n-1) do |index|
         yield {{type.id}}.new LibGIRepository.{{prefix.id}}_get_{{basename.id}}(self, index)
       end

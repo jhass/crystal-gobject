@@ -130,11 +130,6 @@ module GdkPixbuf
       __return_value
     end
 
-    def self.gettext(msgid)
-      __return_value = LibGdkPixbuf.pixbuf_gettext(msgid)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
-    end
-
     def self.new_from_stream_async(stream, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGdkPixbuf.pixbuf_new_from_stream_async((stream.to_unsafe as LibGio::InputStream*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
@@ -232,9 +227,14 @@ module GdkPixbuf
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 
+    def options
+      __return_value = LibGdkPixbuf.pixbuf_get_options((to_unsafe as LibGdkPixbuf::Pixbuf*))
+      __return_value
+    end
+
     def pixels(length)
       __return_value = LibGdkPixbuf.pixbuf_get_pixels((to_unsafe as LibGdkPixbuf::Pixbuf*), UInt32.cast(length))
-      PointerIterator.new(__return_value) {|__item_11| __item_11 }
+      PointerIterator.new(__return_value) {|__item_59| __item_59 }
     end
 
     def rowstride

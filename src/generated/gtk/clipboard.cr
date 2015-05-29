@@ -12,6 +12,11 @@ module Gtk
       Gtk::Clipboard.new(__return_value)
     end
 
+    def self.default(display)
+      __return_value = LibGtk.clipboard_get_default((display.to_unsafe as LibGdk::Display*))
+      Gtk::Clipboard.new(__return_value)
+    end
+
     def self.for_display(display, selection)
       __return_value = LibGtk.clipboard_get_for_display((display.to_unsafe as LibGdk::Display*), (selection.to_unsafe as LibGdk::Atom*))
       Gtk::Clipboard.new(__return_value)
@@ -94,7 +99,7 @@ module Gtk
 
     def wait_for_rich_text(buffer, format, length)
       __return_value = LibGtk.clipboard_wait_for_rich_text((to_unsafe as LibGtk::Clipboard*), (buffer.to_unsafe as LibGtk::TextBuffer*), (format.to_unsafe as LibGdk::Atom*), UInt64.cast(length))
-      PointerIterator.new(__return_value) {|__item_62| __item_62 } if __return_value
+      PointerIterator.new(__return_value) {|__item_47| __item_47 } if __return_value
     end
 
     def wait_for_targets(targets, n_targets)
@@ -109,7 +114,7 @@ module Gtk
 
     def wait_for_uris
       __return_value = LibGtk.clipboard_wait_for_uris((to_unsafe as LibGtk::Clipboard*))
-      PointerIterator.new(__return_value) {|__item_38| raise "Expected string but got null" unless __item_38; String.new(__item_38) } if __return_value
+      PointerIterator.new(__return_value) {|__item_16| raise "Expected string but got null" unless __item_16; String.new(__item_16) } if __return_value
     end
 
     def wait_is_image_available

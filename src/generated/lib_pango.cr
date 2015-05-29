@@ -1,4 +1,5 @@
 require "./lib_cairo"
+require "./lib_g_lib"
 require "./lib_g_object"
 
 @[Link("pango-1.0")]
@@ -25,14 +26,14 @@ lib LibPango
   ##    Enums
   ###########################################
 
-  enum Alignment
+  enum Alignment : UInt32
     ZERO_NONE = 0
     LEFT = 0
     CENTER = 1
     RIGHT = 2
   end
 
-  enum AttrType
+  enum AttrType : UInt32
     ZERO_NONE = 0
     INVALID = 0
     LANGUAGE = 1
@@ -61,7 +62,7 @@ lib LibPango
   fun attr_type_get_name = pango_attr_type_get_name(type : LibPango::AttrType) : UInt8*
   fun attr_type_register = pango_attr_type_register(name : UInt8*) : LibPango::AttrType
 
-  enum BidiType
+  enum BidiType : UInt32
     ZERO_NONE = 0
     L = 0
     LRE = 1
@@ -85,7 +86,7 @@ lib LibPango
   end
   fun bidi_type_for_unichar = pango_bidi_type_for_unichar(ch : UInt8) : LibPango::BidiType
 
-  enum CoverageLevel
+  enum CoverageLevel : UInt32
     ZERO_NONE = 0
     NONE = 0
     FALLBACK = 1
@@ -93,7 +94,7 @@ lib LibPango
     EXACT = 3
   end
 
-  enum Direction
+  enum Direction : UInt32
     ZERO_NONE = 0
     LTR = 0
     RTL = 1
@@ -104,7 +105,7 @@ lib LibPango
     NEUTRAL = 6
   end
 
-  enum EllipsizeMode
+  enum EllipsizeMode : UInt32
     ZERO_NONE = 0
     NONE = 0
     START = 1
@@ -112,7 +113,7 @@ lib LibPango
     END = 3
   end
 
-  enum Gravity
+  enum Gravity : UInt32
     ZERO_NONE = 0
     SOUTH = 0
     EAST = 1
@@ -125,14 +126,14 @@ lib LibPango
   fun gravity_get_for_script_and_width = pango_gravity_get_for_script_and_width(script : LibPango::Script, wide : Bool, base_gravity : LibPango::Gravity, hint : LibPango::GravityHint) : LibPango::Gravity
   fun gravity_to_rotation = pango_gravity_to_rotation(gravity : LibPango::Gravity) : Float64
 
-  enum GravityHint
+  enum GravityHint : UInt32
     ZERO_NONE = 0
     NATURAL = 0
     STRONG = 1
     LINE = 2
   end
 
-  enum RenderPart
+  enum RenderPart : UInt32
     ZERO_NONE = 0
     FOREGROUND = 0
     BACKGROUND = 1
@@ -140,7 +141,7 @@ lib LibPango
     STRIKETHROUGH = 3
   end
 
-  enum Script
+  enum Script : Int32
     ZERO_NONE = 0
     INVALID_CODE = -1
     COMMON = 0
@@ -235,7 +236,7 @@ lib LibPango
   fun script_for_unichar = pango_script_for_unichar(ch : UInt8) : LibPango::Script
   fun script_get_sample_language = pango_script_get_sample_language(script : LibPango::Script) : LibPango::Language*
 
-  enum Stretch
+  enum Stretch : UInt32
     ZERO_NONE = 0
     ULTRA_CONDENSED = 0
     EXTRA_CONDENSED = 1
@@ -248,19 +249,19 @@ lib LibPango
     ULTRA_EXPANDED = 8
   end
 
-  enum Style
+  enum Style : UInt32
     ZERO_NONE = 0
     NORMAL = 0
     OBLIQUE = 1
     ITALIC = 2
   end
 
-  enum TabAlign
+  enum TabAlign : UInt32
     ZERO_NONE = 0
     LEFT = 0
   end
 
-  enum Underline
+  enum Underline : UInt32
     ZERO_NONE = 0
     NONE = 0
     SINGLE = 1
@@ -269,13 +270,13 @@ lib LibPango
     ERROR = 4
   end
 
-  enum Variant
+  enum Variant : UInt32
     ZERO_NONE = 0
     NORMAL = 0
     SMALL_CAPS = 1
   end
 
-  enum Weight
+  enum Weight : UInt32
     ZERO_NONE = 0
     THIN = 100
     ULTRALIGHT = 200
@@ -291,7 +292,7 @@ lib LibPango
     ULTRAHEAVY = 1000
   end
 
-  enum WrapMode
+  enum WrapMode : UInt32
     ZERO_NONE = 0
     WORD = 0
     CHAR = 1
@@ -343,6 +344,7 @@ lib LibPango
   end
 
   struct AttrIterator # struct
+    _data : UInt8[0]
   end
   fun attr_iterator_destroy = pango_attr_iterator_destroy(this : AttrIterator*) : Void
   fun attr_iterator_get_attrs = pango_attr_iterator_get_attrs(this : AttrIterator*) : Void**
@@ -356,6 +358,7 @@ lib LibPango
   end
 
   struct AttrList # struct
+    _data : UInt8[0]
   end
   fun attr_list_new = pango_attr_list_new() : LibPango::AttrList*
   fun attr_list_change = pango_attr_list_change(this : AttrList*, attr : LibPango::Attribute*) : Void
@@ -407,6 +410,7 @@ lib LibPango
   fun color_to_string = pango_color_to_string(this : Color*) : UInt8*
 
   struct Coverage # struct
+    _data : UInt8[0]
   end
   fun coverage_get = pango_coverage_get(this : Coverage*, index : Int32) : LibPango::CoverageLevel
   fun coverage_max = pango_coverage_max(this : Coverage*, other : LibPango::Coverage*) : Void
@@ -428,6 +432,7 @@ lib LibPango
   end
 
   struct FontDescription # struct
+    _data : UInt8[0]
   end
   fun font_description_new = pango_font_description_new() : LibPango::FontDescription*
   fun font_description_better_match = pango_font_description_better_match(this : FontDescription*, old_match : LibPango::FontDescription*, new_match : LibPango::FontDescription*) : Bool
@@ -564,6 +569,7 @@ lib LibPango
   fun item_split = pango_item_split(this : Item*, split_index : Int32, split_offset : Int32) : LibPango::Item*
 
   struct Language # struct
+    _data : UInt8[0]
   end
   fun language_get_sample_string = pango_language_get_sample_string(this : Language*) : UInt8*
   fun language_get_scripts = pango_language_get_scripts(this : Language*, num_scripts : Int32*) : LibPango::Script*
@@ -574,6 +580,7 @@ lib LibPango
   fun language_get_default = pango_language_get_default() : LibPango::Language*
 
   struct LayoutIter # struct
+    _data : UInt8[0]
   end
   fun layout_iter_at_last_line = pango_layout_iter_at_last_line(this : LayoutIter*) : Bool
   fun layout_iter_copy = pango_layout_iter_copy(this : LayoutIter*) : LibPango::LayoutIter*
@@ -629,9 +636,11 @@ lib LibPango
   end
 
   struct Map # struct
+    _data : UInt8[0]
   end
 
   struct MapEntry # struct
+    _data : UInt8[0]
   end
 
   struct Matrix # struct
@@ -662,6 +671,7 @@ lib LibPango
   end
 
   struct RendererPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ScriptForLang # struct
@@ -670,12 +680,14 @@ lib LibPango
   end
 
   struct ScriptIter # struct
+    _data : UInt8[0]
   end
   fun script_iter_free = pango_script_iter_free(this : ScriptIter*) : Void
   fun script_iter_get_range = pango_script_iter_get_range(this : ScriptIter*, start : UInt8**, end : UInt8**, script : LibPango::Script*) : Void
   fun script_iter_next = pango_script_iter_next(this : ScriptIter*) : Bool
 
   struct TabArray # struct
+    _data : UInt8[0]
   end
   fun tab_array_new = pango_tab_array_new(initial_size : Int32, positions_in_pixels : Bool) : LibPango::TabArray*
   fun tab_array_copy = pango_tab_array_copy(this : TabArray*) : LibPango::TabArray*
@@ -693,6 +705,7 @@ lib LibPango
   ###########################################
 
   struct Context # object
+    _data : UInt8[0]
   end
   fun context_new = pango_context_new() : LibPango::Context*
   fun context_changed = pango_context_changed(this : Context*) : Void
@@ -797,12 +810,14 @@ lib LibPango
   fun fontset_get_metrics = pango_fontset_get_metrics(this : Fontset*) : LibPango::FontMetrics*
 
   struct FontsetSimple # object
+    _data : UInt8[0]
   end
   fun fontset_simple_new = pango_fontset_simple_new(language : LibPango::Language*) : LibPango::FontsetSimple*
   fun fontset_simple_append = pango_fontset_simple_append(this : FontsetSimple*, font : LibPango::Font*) : Void
   fun fontset_simple_size = pango_fontset_simple_size(this : FontsetSimple*) : Int32
 
   struct Layout # object
+    _data : UInt8[0]
   end
   fun layout_new = pango_layout_new(context : LibPango::Context*) : LibPango::Layout*
   fun layout_context_changed = pango_layout_context_changed(this : Layout*) : Void
@@ -904,7 +919,7 @@ lib LibPango
   ##    Flags
   ###########################################
 
-  enum FontMask
+  enum FontMask : UInt32
     ZERO_NONE = 0
     FAMILY = 1
     STYLE = 2

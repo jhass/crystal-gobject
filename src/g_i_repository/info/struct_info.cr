@@ -14,12 +14,14 @@ module GIRepository
       'A' <= name[0] <= 'Z' ? name : "#{namespace}#{name}"
     end
 
+    def size
+      LibGIRepository.struct_info_get_size(self)
+    end
+
     def lib_definition
       String.build do |io|
         io.puts "  struct #{name} # struct"
-        each_field do |field|
-          io.puts "  #{field.lib_definition}"
-        end
+        field_definition(io)
         io.puts "  end"
 
         each_method do |method|
@@ -28,6 +30,13 @@ module GIRepository
 
         io.puts
       end
+    end
+
+    def field_definition(io)
+      each_field do |field|
+        io.puts "  #{field.lib_definition}"
+      end
+      io.puts "    _data : UInt8[#{size}]" if fields_size == 0
     end
 
     def wrapper_definition libname, indent=""

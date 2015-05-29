@@ -18,6 +18,11 @@ module Gtk
       Gtk::Widget.new(__return_value)
     end
 
+    def handle_event(event)
+      __return_value = LibGtk.search_entry_handle_event((to_unsafe as LibGtk::SearchEntry*), (event.to_unsafe as LibGdk::Event*))
+      __return_value
+    end
+
   end
 end
 

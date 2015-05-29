@@ -31,7 +31,7 @@ module GObject
 
     def self.prerequisites(interface_type, n_prerequisites)
       __return_value = LibGObject.type_interface_prerequisites(UInt64.cast(interface_type), UInt32.cast(n_prerequisites))
-      PointerIterator.new(__return_value) {|__item_45| __item_45 }
+      PointerIterator.new(__return_value) {|__item_50| __item_50 }
     end
 
   end

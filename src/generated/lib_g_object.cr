@@ -8,6 +8,7 @@ lib LibGObject
   ###########################################
 
   struct Binding # object
+    _data : UInt8[0]
   end
   fun binding_get_flags = g_binding_get_flags(this : Binding*) : LibGObject::BindingFlags
   fun binding_get_source = g_binding_get_source(this : Binding*) : LibGObject::Object*
@@ -254,7 +255,7 @@ lib LibGObject
   ##    Flags
   ###########################################
 
-  enum BindingFlags
+  enum BindingFlags : UInt32
     ZERO_NONE = 0
     DEFAULT = 0
     BIDIRECTIONAL = 1
@@ -262,13 +263,13 @@ lib LibGObject
     INVERT_BOOLEAN = 4
   end
 
-  enum ConnectFlags
+  enum ConnectFlags : UInt32
     ZERO_NONE = 0
     AFTER = 1
     SWAPPED = 2
   end
 
-  enum ParamFlags
+  enum ParamFlags : UInt32
     ZERO_NONE = 0
     READABLE = 1
     WRITABLE = 2
@@ -284,7 +285,7 @@ lib LibGObject
     DEPRECATED = 2147483648
   end
 
-  enum SignalFlags
+  enum SignalFlags : UInt32
     ZERO_NONE = 0
     RUN_FIRST = 1
     RUN_LAST = 2
@@ -297,7 +298,7 @@ lib LibGObject
     DEPRECATED = 256
   end
 
-  enum SignalMatchType
+  enum SignalMatchType : UInt32
     ZERO_NONE = 0
     ID = 1
     DETAIL = 2
@@ -307,21 +308,22 @@ lib LibGObject
     UNBLOCKED = 32
   end
 
-  enum TypeDebugFlags
+  enum TypeDebugFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     OBJECTS = 1
     SIGNALS = 2
-    MASK = 3
+    INSTANCE_COUNT = 4
+    MASK = 7
   end
 
-  enum TypeFlags
+  enum TypeFlags : UInt32
     ZERO_NONE = 0
     ABSTRACT = 16
     VALUE_ABSTRACT = 32
   end
 
-  enum TypeFundamentalFlags
+  enum TypeFundamentalFlags : UInt32
     ZERO_NONE = 0
     CLASSED = 1
     INSTANTIATABLE = 2
@@ -429,6 +431,7 @@ lib LibGObject
   end
 
   struct ParamSpecPool # struct
+    _data : UInt8[0]
   end
   fun param_spec_pool_insert = g_param_spec_pool_insert(this : ParamSpecPool*, pspec : LibGObject::ParamSpec*, owner_type : UInt64) : Void
   fun param_spec_pool_list = g_param_spec_pool_list(this : ParamSpecPool*, owner_type : UInt64, n_pspecs_p : UInt32*) : LibGObject::ParamSpec**
@@ -621,6 +624,7 @@ lib LibGObject
   fun value_array_sort = g_value_array_sort_with_data(this : ValueArray*, compare_func : LibGLib::CompareDataFunc, user_data : Void*) : LibGObject::ValueArray*
 
   struct WeakRef # struct
+    _data : UInt8[0]
   end
 
 
@@ -674,6 +678,7 @@ lib LibGObject
   ###########################################
 
   struct TypePlugin # interface
+    _data : UInt8[0]
   end
   fun type_plugin_complete_interface_info = g_type_plugin_complete_interface_info(this : TypePlugin*, instance_type : UInt64, interface_type : UInt64, info : LibGObject::InterfaceInfo*) : Void
   fun type_plugin_complete_type_info = g_type_plugin_complete_type_info(this : TypePlugin*, g_type : UInt64, info : LibGObject::TypeInfo*, value_table : LibGObject::TypeValueTable*) : Void
@@ -808,6 +813,7 @@ lib LibGObject
   fun type_from_name = g_type_from_name(name : UInt8*) : UInt64
   fun type_fundamental = g_type_fundamental(type_id : UInt64) : UInt64
   fun type_fundamental_next = g_type_fundamental_next() : UInt64
+  fun type_get_instance_count = g_type_get_instance_count(type : UInt64) : Int32
   fun type_get_plugin = g_type_get_plugin(type : UInt64) : LibGObject::TypePlugin*
   fun type_get_qdata = g_type_get_qdata(type : UInt64, quark : UInt32) : Void*
   fun type_get_type_registration_serial = g_type_get_type_registration_serial() : UInt32

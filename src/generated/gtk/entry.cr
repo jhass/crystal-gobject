@@ -257,6 +257,11 @@ module Gtk
       __return_value
     end
 
+    def grab_focus_without_selecting
+      __return_value = LibGtk.entry_grab_focus_without_selecting((to_unsafe as LibGtk::Entry*))
+      __return_value
+    end
+
     def im_context_filter_keypress(event)
       __return_value = LibGtk.entry_im_context_filter_keypress((to_unsafe as LibGtk::Entry*), (event.to_unsafe as LibGdk::EventKey*))
       __return_value

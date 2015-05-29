@@ -18,6 +18,11 @@ module Gtk
       Gtk::Widget.new(__return_value)
     end
 
+    def bind_model(model, create_widget_func : LibGtk::ListBoxCreateWidgetFunc, user_data, user_data_free_func : LibGLib::DestroyNotify)
+      __return_value = LibGtk.list_box_bind_model((to_unsafe as LibGtk::ListBox*), model && (model.to_unsafe as LibGio::ListModel*), create_widget_func, user_data, user_data_free_func)
+      __return_value
+    end
+
     def drag_highlight_row(row)
       __return_value = LibGtk.list_box_drag_highlight_row((to_unsafe as LibGtk::ListBox*), (row.to_unsafe as LibGtk::ListBoxRow*))
       __return_value

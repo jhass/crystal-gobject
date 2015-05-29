@@ -1,3 +1,4 @@
+require "./lib_g_lib"
 require "./lib_g_object"
 
 @[Link("atk-1.0")]
@@ -178,6 +179,7 @@ lib LibAtk
   fun image_set_image_description = atk_image_set_image_description(this : Image*, description : UInt8*) : Bool
 
   struct ImplementorIface # interface
+    _data : UInt8[0]
   end
 
   struct Selection # interface
@@ -505,6 +507,7 @@ lib LibAtk
   fun attribute_set_free = atk_attribute_set_free(attrib_set : Void**) : Void
 
   struct Implementor # struct
+    _data : UInt8[0]
   end
   fun implementor_ref_accessible = atk_implementor_ref_accessible(this : Implementor*) : LibAtk::Object*
 
@@ -525,6 +528,7 @@ lib LibAtk
   end
 
   struct Range # struct
+    _data : UInt8[0]
   end
   fun range_new = atk_range_new(lower_limit : Float64, upper_limit : Float64, description : UInt8*) : LibAtk::Range*
   fun range_copy = atk_range_copy(this : Range*) : LibAtk::Range*
@@ -559,31 +563,31 @@ lib LibAtk
   ##    Constants
   ###########################################
 
-  BINARY_AGE = 21410 # : Int32
+  BINARY_AGE = 21610 # : Int32
   INTERFACE_AGE = 1 # : Int32
   MAJOR_VERSION = 2 # : Int32
   MICRO_VERSION = 0 # : Int32
-  MINOR_VERSION = 14 # : Int32
+  MINOR_VERSION = 16 # : Int32
   VERSION_MIN_REQUIRED = 2 # : Int32
 
   ###########################################
   ##    Enums
   ###########################################
 
-  enum CoordType
+  enum CoordType : UInt32
     ZERO_NONE = 0
     SCREEN = 0
     WINDOW = 1
   end
 
-  enum KeyEventType
+  enum KeyEventType : UInt32
     ZERO_NONE = 0
     PRESS = 0
     RELEASE = 1
     LAST_DEFINED = 2
   end
 
-  enum Layer
+  enum Layer : UInt32
     ZERO_NONE = 0
     INVALID = 0
     BACKGROUND = 1
@@ -595,7 +599,7 @@ lib LibAtk
     WINDOW = 7
   end
 
-  enum RelationType
+  enum RelationType : UInt32
     ZERO_NONE = 0
     NULL = 0
     CONTROLLED_BY = 1
@@ -620,7 +624,7 @@ lib LibAtk
   fun relation_type_get_name = atk_relation_type_get_name(type : LibAtk::RelationType) : UInt8*
   fun relation_type_register = atk_relation_type_register(name : UInt8*) : LibAtk::RelationType
 
-  enum Role
+  enum Role : UInt32
     ZERO_NONE = 0
     INVALID = 0
     ACCELERATOR_LABEL = 1
@@ -739,14 +743,19 @@ lib LibAtk
     DESCRIPTION_LIST = 114
     DESCRIPTION_TERM = 115
     DESCRIPTION_VALUE = 116
-    LAST_DEFINED = 117
+    STATIC = 117
+    MATH_FRACTION = 118
+    MATH_ROOT = 119
+    SUBSCRIPT = 120
+    SUPERSCRIPT = 121
+    LAST_DEFINED = 122
   end
   fun role_for_name = atk_role_for_name(name : UInt8*) : LibAtk::Role
   fun role_get_localized_name = atk_role_get_localized_name(role : LibAtk::Role) : UInt8*
   fun role_get_name = atk_role_get_name(role : LibAtk::Role) : UInt8*
   fun role_register = atk_role_register(name : UInt8*) : LibAtk::Role
 
-  enum StateType
+  enum StateType : UInt32
     ZERO_NONE = 0
     INVALID = 0
     ACTIVE = 1
@@ -789,13 +798,15 @@ lib LibAtk
     VISITED = 38
     CHECKABLE = 39
     HAS_POPUP = 40
-    LAST_DEFINED = 41
+    HAS_TOOLTIP = 41
+    READ_ONLY = 42
+    LAST_DEFINED = 43
   end
   fun state_type_for_name = atk_state_type_for_name(name : UInt8*) : LibAtk::StateType
   fun state_type_get_name = atk_state_type_get_name(type : LibAtk::StateType) : UInt8*
   fun state_type_register = atk_state_type_register(name : UInt8*) : LibAtk::StateType
 
-  enum TextAttribute
+  enum TextAttribute : UInt32
     ZERO_NONE = 0
     INVALID = 0
     LEFT_MARGIN = 1
@@ -832,7 +843,7 @@ lib LibAtk
   fun text_attribute_get_value = atk_text_attribute_get_value(attr : LibAtk::TextAttribute, index : Int32) : UInt8*
   fun text_attribute_register = atk_text_attribute_register(name : UInt8*) : LibAtk::TextAttribute
 
-  enum TextBoundary
+  enum TextBoundary : UInt32
     ZERO_NONE = 0
     CHAR = 0
     WORD_START = 1
@@ -843,7 +854,7 @@ lib LibAtk
     LINE_END = 6
   end
 
-  enum TextClipType
+  enum TextClipType : UInt32
     ZERO_NONE = 0
     NONE = 0
     MIN = 1
@@ -851,7 +862,7 @@ lib LibAtk
     BOTH = 3
   end
 
-  enum TextGranularity
+  enum TextGranularity : UInt32
     ZERO_NONE = 0
     CHAR = 0
     WORD = 1
@@ -860,7 +871,7 @@ lib LibAtk
     PARAGRAPH = 4
   end
 
-  enum ValueType
+  enum ValueType : UInt32
     ZERO_NONE = 0
     VERY_WEAK = 0
     WEAK = 1
@@ -1079,7 +1090,7 @@ lib LibAtk
   ##    Flags
   ###########################################
 
-  enum HyperlinkStateFlags
+  enum HyperlinkStateFlags : UInt32
     ZERO_NONE = 0
     INLINE = 1
   end

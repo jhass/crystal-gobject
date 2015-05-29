@@ -30,6 +30,7 @@ module Gtk
 
 
 
+
     def self.new_internal
       __return_value = LibGtk.text_view_new
       Gtk::Widget.new(__return_value)
@@ -162,6 +163,11 @@ module Gtk
 
     def line_yrange(iter, y, height)
       __return_value = LibGtk.text_view_get_line_yrange((to_unsafe as LibGtk::TextView*), (iter.to_unsafe as LibGtk::TextIter*), Int32.cast(y), Int32.cast(height))
+      __return_value
+    end
+
+    def monospace
+      __return_value = LibGtk.text_view_get_monospace((to_unsafe as LibGtk::TextView*))
       __return_value
     end
 
@@ -312,6 +318,11 @@ module Gtk
 
     def left_margin=(left_margin)
       __return_value = LibGtk.text_view_set_left_margin((to_unsafe as LibGtk::TextView*), Int32.cast(left_margin))
+      __return_value
+    end
+
+    def monospace=(monospace)
+      __return_value = LibGtk.text_view_set_monospace((to_unsafe as LibGtk::TextView*), Bool.cast(monospace))
       __return_value
     end
 

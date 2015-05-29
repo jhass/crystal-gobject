@@ -38,7 +38,7 @@ module Gtk
 
     def applications(length)
       __return_value = LibGtk.recent_info_get_applications((to_unsafe as LibGtk::RecentInfo*), UInt64.cast(length))
-      PointerIterator.new(__return_value) {|__item_37| raise "Expected string but got null" unless __item_37; String.new(__item_37) }
+      PointerIterator.new(__return_value) {|__item_13| raise "Expected string but got null" unless __item_13; String.new(__item_13) }
     end
 
     def description
@@ -58,7 +58,7 @@ module Gtk
 
     def groups(length)
       __return_value = LibGtk.recent_info_get_groups((to_unsafe as LibGtk::RecentInfo*), UInt64.cast(length))
-      PointerIterator.new(__return_value) {|__item_77| raise "Expected string but got null" unless __item_77; String.new(__item_77) }
+      PointerIterator.new(__return_value) {|__item_65| raise "Expected string but got null" unless __item_65; String.new(__item_65) }
     end
 
     def icon(size)

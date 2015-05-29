@@ -261,6 +261,13 @@ module Gio
       __return_value
     end
 
+    def send_messages(messages, num_messages, flags, cancellable)
+      __error = Pointer(LibGLib::Error).null
+      __return_value = LibGio.socket_send_messages((to_unsafe as LibGio::Socket*), messages, UInt32.cast(num_messages), Int32.cast(flags), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      GLib::Error.assert __error
+      __return_value
+    end
+
     def send_to(address, buffer, size, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_send_to((to_unsafe as LibGio::Socket*), address && (address.to_unsafe as LibGio::SocketAddress*), buffer, UInt64.cast(size), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))

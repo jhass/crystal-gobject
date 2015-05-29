@@ -1,6 +1,13 @@
+require "./lib_pango"
+require "./lib_g_object"
 require "./lib_xlib"
+require "./lib_cairo"
 require "./lib_gdk"
+require "./lib_gio"
 require "./lib_atk"
+require "./lib_gdk_pixbuf"
+require "./lib_g_module"
+require "./lib_g_lib"
 
 @[Link("gtk-3")]
 @[Link("gdk-3")]
@@ -84,6 +91,7 @@ lib LibGtk
   fun accel_label_set_accel_widget = gtk_accel_label_set_accel_widget(this : AccelLabel*, accel_widget : LibGtk::Widget*) : Void
 
   struct AccelMap # object
+    _data : UInt8[0]
     # Signal changed
   end
   fun accel_map_add_entry = gtk_accel_map_add_entry(accel_path : UInt8*, accel_key : UInt32, accel_mods : LibGdk::ModifierType) : Void
@@ -804,9 +812,11 @@ lib LibGtk
   end
 
   struct Clipboard # object
+    _data : UInt8[0]
     # Signal owner-change
   end
   fun clipboard_get = gtk_clipboard_get(selection : LibGdk::Atom*) : LibGtk::Clipboard*
+  fun clipboard_get_default = gtk_clipboard_get_default(display : LibGdk::Display*) : LibGtk::Clipboard*
   fun clipboard_get_for_display = gtk_clipboard_get_for_display(display : LibGdk::Display*, selection : LibGdk::Atom*) : LibGtk::Clipboard*
   fun clipboard_clear = gtk_clipboard_clear(this : Clipboard*) : Void
   fun clipboard_get_display = gtk_clipboard_get_display(this : Clipboard*) : LibGdk::Display*
@@ -1042,6 +1052,7 @@ lib LibGtk
   fun css_provider_load_from_data = gtk_css_provider_load_from_data(this : CssProvider*, data : UInt8*, length : Int64, error : LibGLib::Error**) : Bool
   fun css_provider_load_from_file = gtk_css_provider_load_from_file(this : CssProvider*, file : LibGio::File*, error : LibGLib::Error**) : Bool
   fun css_provider_load_from_path = gtk_css_provider_load_from_path(this : CssProvider*, path : UInt8*, error : LibGLib::Error**) : Bool
+  fun css_provider_load_from_resource = gtk_css_provider_load_from_resource(this : CssProvider*, resource_path : UInt8*) : Void
   fun css_provider_to_string = gtk_css_provider_to_string(this : CssProvider*) : UInt8*
 
   struct Dialog # object
@@ -1140,6 +1151,7 @@ lib LibGtk
   fun entry_get_text_length = gtk_entry_get_text_length(this : Entry*) : UInt16
   fun entry_get_visibility = gtk_entry_get_visibility(this : Entry*) : Bool
   fun entry_get_width_chars = gtk_entry_get_width_chars(this : Entry*) : Int32
+  fun entry_grab_focus_without_selecting = gtk_entry_grab_focus_without_selecting(this : Entry*) : Void
   fun entry_im_context_filter_keypress = gtk_entry_im_context_filter_keypress(this : Entry*, event : LibGdk::EventKey*) : Bool
   fun entry_layout_index_to_text_index = gtk_entry_layout_index_to_text_index(this : Entry*, layout_index : Int32) : Int32
   fun entry_progress_pulse = gtk_entry_progress_pulse(this : Entry*) : Void
@@ -1249,6 +1261,7 @@ lib LibGtk
   fun entry_completion_set_text_column = gtk_entry_completion_set_text_column(this : EntryCompletion*, column : Int32) : Void
 
   struct EntryIconAccessible # object
+    _data : UInt8[0]
   end
 
   struct EventBox # object
@@ -1262,6 +1275,7 @@ lib LibGtk
   fun event_box_set_visible_window = gtk_event_box_set_visible_window(this : EventBox*, visible_window : Bool) : Void
 
   struct EventController # object
+    _data : UInt8[0]
   end
   fun event_controller_get_propagation_phase = gtk_event_controller_get_propagation_phase(this : EventController*) : LibGtk::PropagationPhase
   fun event_controller_get_widget = gtk_event_controller_get_widget(this : EventController*) : LibGtk::Widget*
@@ -1337,6 +1351,7 @@ lib LibGtk
   fun file_chooser_widget_new = gtk_file_chooser_widget_new(action : LibGtk::FileChooserAction) : LibGtk::Widget*
 
   struct FileFilter # object
+    _data : UInt8[0]
   end
   fun file_filter_new = gtk_file_filter_new() : LibGtk::FileFilter*
   fun file_filter_add_custom = gtk_file_filter_add_custom(this : FileFilter*, needed : LibGtk::FileFilterFlags, func : LibGtk::FileFilterFunc, data : Void*, notify : LibGLib::DestroyNotify) : Void
@@ -1506,7 +1521,34 @@ lib LibGtk
     priv : LibGtk::FrameAccessiblePrivate*
   end
 
+  struct GLArea # object
+    parent_instance : LibGtk::Widget
+    # Signal create-context
+    # Signal render
+    # Signal resize
+    # Virtual function render
+    # Virtual function resize
+  end
+  fun g_l_area_new = gtk_gl_area_new() : LibGtk::Widget*
+  fun g_l_area_attach_buffers = gtk_gl_area_attach_buffers(this : GLArea*) : Void
+  fun g_l_area_get_auto_render = gtk_gl_area_get_auto_render(this : GLArea*) : Bool
+  fun g_l_area_get_context = gtk_gl_area_get_context(this : GLArea*) : LibGdk::GLContext*
+  fun g_l_area_get_error = gtk_gl_area_get_error(this : GLArea*) : LibGLib::Error**
+  fun g_l_area_get_has_alpha = gtk_gl_area_get_has_alpha(this : GLArea*) : Bool
+  fun g_l_area_get_has_depth_buffer = gtk_gl_area_get_has_depth_buffer(this : GLArea*) : Bool
+  fun g_l_area_get_has_stencil_buffer = gtk_gl_area_get_has_stencil_buffer(this : GLArea*) : Bool
+  fun g_l_area_get_required_version = gtk_gl_area_get_required_version(this : GLArea*, major : Int32*, minor : Int32*) : Void
+  fun g_l_area_make_current = gtk_gl_area_make_current(this : GLArea*) : Void
+  fun g_l_area_queue_render = gtk_gl_area_queue_render(this : GLArea*) : Void
+  fun g_l_area_set_auto_render = gtk_gl_area_set_auto_render(this : GLArea*, auto_render : Bool) : Void
+  fun g_l_area_set_error = gtk_gl_area_set_error(this : GLArea*, error : LibGLib::Error**) : Void
+  fun g_l_area_set_has_alpha = gtk_gl_area_set_has_alpha(this : GLArea*, has_alpha : Bool) : Void
+  fun g_l_area_set_has_depth_buffer = gtk_gl_area_set_has_depth_buffer(this : GLArea*, has_depth_buffer : Bool) : Void
+  fun g_l_area_set_has_stencil_buffer = gtk_gl_area_set_has_stencil_buffer(this : GLArea*, has_stencil_buffer : Bool) : Void
+  fun g_l_area_set_required_version = gtk_gl_area_set_required_version(this : GLArea*, major : Int32, minor : Int32) : Void
+
   struct Gesture # object
+    _data : UInt8[0]
     # Signal begin
     # Signal cancel
     # Signal end
@@ -1534,6 +1576,7 @@ lib LibGtk
   fun gesture_ungroup = gtk_gesture_ungroup(this : Gesture*) : Void
 
   struct GestureDrag # object
+    _data : UInt8[0]
     # Signal drag-begin
     # Signal drag-end
     # Signal drag-update
@@ -1543,12 +1586,14 @@ lib LibGtk
   fun gesture_drag_get_start_point = gtk_gesture_drag_get_start_point(this : GestureDrag*, x : Float64*, y : Float64*) : Bool
 
   struct GestureLongPress # object
+    _data : UInt8[0]
     # Signal cancelled
     # Signal pressed
   end
   fun gesture_long_press_new = gtk_gesture_long_press_new(widget : LibGtk::Widget*) : LibGtk::Gesture*
 
   struct GestureMultiPress # object
+    _data : UInt8[0]
     # Signal pressed
     # Signal released
     # Signal stopped
@@ -1558,6 +1603,7 @@ lib LibGtk
   fun gesture_multi_press_set_area = gtk_gesture_multi_press_set_area(this : GestureMultiPress*, rect : Libcairo::RectangleInt*) : Void
 
   struct GesturePan # object
+    _data : UInt8[0]
     # Signal pan
   end
   fun gesture_pan_new = gtk_gesture_pan_new(widget : LibGtk::Widget*, orientation : LibGtk::Orientation) : LibGtk::Gesture*
@@ -1565,12 +1611,14 @@ lib LibGtk
   fun gesture_pan_set_orientation = gtk_gesture_pan_set_orientation(this : GesturePan*, orientation : LibGtk::Orientation) : Void
 
   struct GestureRotate # object
+    _data : UInt8[0]
     # Signal angle-changed
   end
   fun gesture_rotate_new = gtk_gesture_rotate_new(widget : LibGtk::Widget*) : LibGtk::Gesture*
   fun gesture_rotate_get_angle_delta = gtk_gesture_rotate_get_angle_delta(this : GestureRotate*) : Float64
 
   struct GestureSingle # object
+    _data : UInt8[0]
   end
   fun gesture_single_get_button = gtk_gesture_single_get_button(this : GestureSingle*) : UInt32
   fun gesture_single_get_current_button = gtk_gesture_single_get_current_button(this : GestureSingle*) : UInt32
@@ -1582,12 +1630,14 @@ lib LibGtk
   fun gesture_single_set_touch_only = gtk_gesture_single_set_touch_only(this : GestureSingle*, touch_only : Bool) : Void
 
   struct GestureSwipe # object
+    _data : UInt8[0]
     # Signal swipe
   end
   fun gesture_swipe_new = gtk_gesture_swipe_new(widget : LibGtk::Widget*) : LibGtk::Gesture*
   fun gesture_swipe_get_velocity = gtk_gesture_swipe_get_velocity(this : GestureSwipe*, velocity_x : Float64*, velocity_y : Float64*) : Bool
 
   struct GestureZoom # object
+    _data : UInt8[0]
     # Signal scale-changed
   end
   fun gesture_zoom_new = gtk_gesture_zoom_new(widget : LibGtk::Widget*) : LibGtk::Gesture*
@@ -1766,6 +1816,7 @@ lib LibGtk
   fun icon_factory_remove_default = gtk_icon_factory_remove_default(this : IconFactory*) : Void
 
   struct IconInfo # object
+    _data : UInt8[0]
   end
   fun icon_info_new_for_pixbuf = gtk_icon_info_new_for_pixbuf(icon_theme : LibGtk::IconTheme*, pixbuf : LibGdkPixbuf::Pixbuf*) : LibGtk::IconInfo*
   fun icon_info_get_attach_points = gtk_icon_info_get_attach_points(this : IconInfo*, points : LibGdk::Point**, n_points : Int32*) : Bool
@@ -2039,6 +2090,8 @@ lib LibGtk
   fun label_get_use_markup = gtk_label_get_use_markup(this : Label*) : Bool
   fun label_get_use_underline = gtk_label_get_use_underline(this : Label*) : Bool
   fun label_get_width_chars = gtk_label_get_width_chars(this : Label*) : Int32
+  fun label_get_xalign = gtk_label_get_xalign(this : Label*) : Float32
+  fun label_get_yalign = gtk_label_get_yalign(this : Label*) : Float32
   fun label_select_region = gtk_label_select_region(this : Label*, start_offset : Int32, end_offset : Int32) : Void
   fun label_set_angle = gtk_label_set_angle(this : Label*, angle : Float64) : Void
   fun label_set_attributes = gtk_label_set_attributes(this : Label*, attrs : LibPango::AttrList*) : Void
@@ -2061,6 +2114,8 @@ lib LibGtk
   fun label_set_use_markup = gtk_label_set_use_markup(this : Label*, setting : Bool) : Void
   fun label_set_use_underline = gtk_label_set_use_underline(this : Label*, setting : Bool) : Void
   fun label_set_width_chars = gtk_label_set_width_chars(this : Label*, n_chars : Int32) : Void
+  fun label_set_xalign = gtk_label_set_xalign(this : Label*, xalign : Float32) : Void
+  fun label_set_yalign = gtk_label_set_yalign(this : Label*, yalign : Float32) : Void
 
   struct LabelAccessible # object
     parent : LibGtk::WidgetAccessible
@@ -2147,6 +2202,7 @@ lib LibGtk
     # Virtual function unselect_all
   end
   fun list_box_new = gtk_list_box_new() : LibGtk::Widget*
+  fun list_box_bind_model = gtk_list_box_bind_model(this : ListBox*, model : LibGio::ListModel*, create_widget_func : LibGtk::ListBoxCreateWidgetFunc, user_data : Void*, user_data_free_func : LibGLib::DestroyNotify) : Void
   fun list_box_drag_highlight_row = gtk_list_box_drag_highlight_row(this : ListBox*, row : LibGtk::ListBoxRow*) : Void
   fun list_box_drag_unhighlight_row = gtk_list_box_drag_unhighlight_row(this : ListBox*) : Void
   fun list_box_get_activate_on_single_click = gtk_list_box_get_activate_on_single_click(this : ListBox*) : Bool
@@ -2422,6 +2478,11 @@ lib LibGtk
   fun misc_set_alignment = gtk_misc_set_alignment(this : Misc*, xalign : Float32, yalign : Float32) : Void
   fun misc_set_padding = gtk_misc_set_padding(this : Misc*, xpad : Int32, ypad : Int32) : Void
 
+  struct ModelButton # object
+    _data : UInt8[0]
+  end
+  fun model_button_new = gtk_model_button_new() : LibGtk::Widget*
+
   struct MountOperation # object
     parent_instance : LibGio::MountOperation
     priv : LibGtk::MountOperationPrivate*
@@ -2460,6 +2521,7 @@ lib LibGtk
   fun notebook_new = gtk_notebook_new() : LibGtk::Widget*
   fun notebook_append_page = gtk_notebook_append_page(this : Notebook*, child : LibGtk::Widget*, tab_label : LibGtk::Widget*) : Int32
   fun notebook_append_page_menu = gtk_notebook_append_page_menu(this : Notebook*, child : LibGtk::Widget*, tab_label : LibGtk::Widget*, menu_label : LibGtk::Widget*) : Int32
+  fun notebook_detach_tab = gtk_notebook_detach_tab(this : Notebook*, child : LibGtk::Widget*) : Void
   fun notebook_get_action_widget = gtk_notebook_get_action_widget(this : Notebook*, pack_type : LibGtk::PackType) : LibGtk::Widget*
   fun notebook_get_current_page = gtk_notebook_get_current_page(this : Notebook*) : Int32
   fun notebook_get_group_name = gtk_notebook_get_group_name(this : Notebook*) : UInt8*
@@ -2548,6 +2610,7 @@ lib LibGtk
   fun overlay_add_overlay = gtk_overlay_add_overlay(this : Overlay*, widget : LibGtk::Widget*) : Void
 
   struct PageSetup # object
+    _data : UInt8[0]
   end
   fun page_setup_new = gtk_page_setup_new() : LibGtk::PageSetup*
   fun page_setup_new_from_file = gtk_page_setup_new_from_file(file_name : UInt8*, error : LibGLib::Error**) : LibGtk::PageSetup*
@@ -2598,9 +2661,11 @@ lib LibGtk
   fun paned_get_child2 = gtk_paned_get_child2(this : Paned*) : LibGtk::Widget*
   fun paned_get_handle_window = gtk_paned_get_handle_window(this : Paned*) : LibGdk::Window*
   fun paned_get_position = gtk_paned_get_position(this : Paned*) : Int32
+  fun paned_get_wide_handle = gtk_paned_get_wide_handle(this : Paned*) : Bool
   fun paned_pack1 = gtk_paned_pack1(this : Paned*, child : LibGtk::Widget*, resize : Bool, shrink : Bool) : Void
   fun paned_pack2 = gtk_paned_pack2(this : Paned*, child : LibGtk::Widget*, resize : Bool, shrink : Bool) : Void
   fun paned_set_position = gtk_paned_set_position(this : Paned*, position : Int32) : Void
+  fun paned_set_wide_handle = gtk_paned_set_wide_handle(this : Paned*, wide : Bool) : Void
 
   struct PanedAccessible # object
     parent : LibGtk::ContainerAccessible
@@ -2608,6 +2673,7 @@ lib LibGtk
   end
 
   struct PlacesSidebar # object
+    _data : UInt8[0]
     # Signal drag-action-ask
     # Signal drag-action-requested
     # Signal drag-perform-drop
@@ -2662,16 +2728,25 @@ lib LibGtk
   fun popover_get_pointing_to = gtk_popover_get_pointing_to(this : Popover*, rect : Libcairo::RectangleInt*) : Bool
   fun popover_get_position = gtk_popover_get_position(this : Popover*) : LibGtk::PositionType
   fun popover_get_relative_to = gtk_popover_get_relative_to(this : Popover*) : LibGtk::Widget*
+  fun popover_get_transitions_enabled = gtk_popover_get_transitions_enabled(this : Popover*) : Bool
   fun popover_set_modal = gtk_popover_set_modal(this : Popover*, modal : Bool) : Void
   fun popover_set_pointing_to = gtk_popover_set_pointing_to(this : Popover*, rect : Libcairo::RectangleInt*) : Void
   fun popover_set_position = gtk_popover_set_position(this : Popover*, position : LibGtk::PositionType) : Void
   fun popover_set_relative_to = gtk_popover_set_relative_to(this : Popover*, relative_to : LibGtk::Widget*) : Void
+  fun popover_set_transitions_enabled = gtk_popover_set_transitions_enabled(this : Popover*, transitions_enabled : Bool) : Void
 
   struct PopoverAccessible # object
     parent : LibGtk::ContainerAccessible
   end
 
+  struct PopoverMenu # object
+    _data : UInt8[0]
+  end
+  fun popover_menu_new = gtk_popover_menu_new() : LibGtk::Widget*
+  fun popover_menu_open_submenu = gtk_popover_menu_open_submenu(this : PopoverMenu*, name : UInt8*) : Void
+
   struct PrintContext # object
+    _data : UInt8[0]
   end
   fun print_context_create_pango_context = gtk_print_context_create_pango_context(this : PrintContext*) : LibPango::Context*
   fun print_context_create_pango_layout = gtk_print_context_create_pango_layout(this : PrintContext*) : LibPango::Layout*
@@ -2742,6 +2817,7 @@ lib LibGtk
   fun print_operation_set_use_full_page = gtk_print_operation_set_use_full_page(this : PrintOperation*, full_page : Bool) : Void
 
   struct PrintSettings # object
+    _data : UInt8[0]
   end
   fun print_settings_new = gtk_print_settings_new() : LibGtk::PrintSettings*
   fun print_settings_new_from_file = gtk_print_settings_new_from_file(file_name : UInt8*, error : LibGLib::Error**) : LibGtk::PrintSettings*
@@ -3006,6 +3082,7 @@ lib LibGtk
   fun recent_chooser_widget_new_for_manager = gtk_recent_chooser_widget_new_for_manager(manager : LibGtk::RecentManager*) : LibGtk::Widget*
 
   struct RecentFilter # object
+    _data : UInt8[0]
   end
   fun recent_filter_new = gtk_recent_filter_new() : LibGtk::RecentFilter*
   fun recent_filter_add_age = gtk_recent_filter_add_age(this : RecentFilter*, days : Int32) : Void
@@ -3114,6 +3191,8 @@ lib LibGtk
   struct ScrolledWindow # object
     container : LibGtk::Bin
     priv : LibGtk::ScrolledWindowPrivate*
+    # Signal edge-overshot
+    # Signal edge-reached
     # Signal move-focus-out
     # Signal scroll-child
     # Virtual function move_focus_out
@@ -3127,6 +3206,7 @@ lib LibGtk
   fun scrolled_window_get_kinetic_scrolling = gtk_scrolled_window_get_kinetic_scrolling(this : ScrolledWindow*) : Bool
   fun scrolled_window_get_min_content_height = gtk_scrolled_window_get_min_content_height(this : ScrolledWindow*) : Int32
   fun scrolled_window_get_min_content_width = gtk_scrolled_window_get_min_content_width(this : ScrolledWindow*) : Int32
+  fun scrolled_window_get_overlay_scrolling = gtk_scrolled_window_get_overlay_scrolling(this : ScrolledWindow*) : Bool
   fun scrolled_window_get_placement = gtk_scrolled_window_get_placement(this : ScrolledWindow*) : LibGtk::CornerType
   fun scrolled_window_get_policy = gtk_scrolled_window_get_policy(this : ScrolledWindow*, hscrollbar_policy : LibGtk::PolicyType*, vscrollbar_policy : LibGtk::PolicyType*) : Void
   fun scrolled_window_get_shadow_type = gtk_scrolled_window_get_shadow_type(this : ScrolledWindow*) : LibGtk::ShadowType
@@ -3137,6 +3217,7 @@ lib LibGtk
   fun scrolled_window_set_kinetic_scrolling = gtk_scrolled_window_set_kinetic_scrolling(this : ScrolledWindow*, kinetic_scrolling : Bool) : Void
   fun scrolled_window_set_min_content_height = gtk_scrolled_window_set_min_content_height(this : ScrolledWindow*, height : Int32) : Void
   fun scrolled_window_set_min_content_width = gtk_scrolled_window_set_min_content_width(this : ScrolledWindow*, width : Int32) : Void
+  fun scrolled_window_set_overlay_scrolling = gtk_scrolled_window_set_overlay_scrolling(this : ScrolledWindow*, overlay_scrolling : Bool) : Void
   fun scrolled_window_set_placement = gtk_scrolled_window_set_placement(this : ScrolledWindow*, window_placement : LibGtk::CornerType) : Void
   fun scrolled_window_set_policy = gtk_scrolled_window_set_policy(this : ScrolledWindow*, hscrollbar_policy : LibGtk::PolicyType, vscrollbar_policy : LibGtk::PolicyType) : Void
   fun scrolled_window_set_shadow_type = gtk_scrolled_window_set_shadow_type(this : ScrolledWindow*, type : LibGtk::ShadowType) : Void
@@ -3161,10 +3242,17 @@ lib LibGtk
 
   struct SearchEntry # object
     parent : LibGtk::Entry
+    # Signal next-match
+    # Signal previous-match
     # Signal search-changed
+    # Signal stop-search
+    # Virtual function next_match
+    # Virtual function previous_match
     # Virtual function search_changed
+    # Virtual function stop_search
   end
   fun search_entry_new = gtk_search_entry_new() : LibGtk::Widget*
+  fun search_entry_handle_event = gtk_search_entry_handle_event(this : SearchEntry*, event : LibGdk::Event*) : Bool
 
   struct Separator # object
     widget : LibGtk::Widget
@@ -3288,18 +3376,29 @@ lib LibGtk
   fun stack_add_named = gtk_stack_add_named(this : Stack*, child : LibGtk::Widget*, name : UInt8*) : Void
   fun stack_add_titled = gtk_stack_add_titled(this : Stack*, child : LibGtk::Widget*, name : UInt8*, title : UInt8*) : Void
   fun stack_get_child_by_name = gtk_stack_get_child_by_name(this : Stack*, name : UInt8*) : LibGtk::Widget*
+  fun stack_get_hhomogeneous = gtk_stack_get_hhomogeneous(this : Stack*) : Bool
   fun stack_get_homogeneous = gtk_stack_get_homogeneous(this : Stack*) : Bool
   fun stack_get_transition_duration = gtk_stack_get_transition_duration(this : Stack*) : UInt32
   fun stack_get_transition_running = gtk_stack_get_transition_running(this : Stack*) : Bool
   fun stack_get_transition_type = gtk_stack_get_transition_type(this : Stack*) : LibGtk::StackTransitionType
+  fun stack_get_vhomogeneous = gtk_stack_get_vhomogeneous(this : Stack*) : Bool
   fun stack_get_visible_child = gtk_stack_get_visible_child(this : Stack*) : LibGtk::Widget*
   fun stack_get_visible_child_name = gtk_stack_get_visible_child_name(this : Stack*) : UInt8*
+  fun stack_set_hhomogeneous = gtk_stack_set_hhomogeneous(this : Stack*, hhomogeneous : Bool) : Void
   fun stack_set_homogeneous = gtk_stack_set_homogeneous(this : Stack*, homogeneous : Bool) : Void
   fun stack_set_transition_duration = gtk_stack_set_transition_duration(this : Stack*, duration : UInt32) : Void
   fun stack_set_transition_type = gtk_stack_set_transition_type(this : Stack*, transition : LibGtk::StackTransitionType) : Void
+  fun stack_set_vhomogeneous = gtk_stack_set_vhomogeneous(this : Stack*, vhomogeneous : Bool) : Void
   fun stack_set_visible_child = gtk_stack_set_visible_child(this : Stack*, child : LibGtk::Widget*) : Void
   fun stack_set_visible_child_full = gtk_stack_set_visible_child_full(this : Stack*, name : UInt8*, transition : LibGtk::StackTransitionType) : Void
   fun stack_set_visible_child_name = gtk_stack_set_visible_child_name(this : Stack*, name : UInt8*) : Void
+
+  struct StackSidebar # object
+    parent : LibGtk::Bin
+  end
+  fun stack_sidebar_new = gtk_stack_sidebar_new() : LibGtk::Widget*
+  fun stack_sidebar_get_stack = gtk_stack_sidebar_get_stack(this : StackSidebar*) : LibGtk::Stack*
+  fun stack_sidebar_set_stack = gtk_stack_sidebar_set_stack(this : StackSidebar*, stack : LibGtk::Stack*) : Void
 
   struct StackSwitcher # object
     widget : LibGtk::Box
@@ -3641,6 +3740,7 @@ lib LibGtk
   fun text_buffer_insert_child_anchor = gtk_text_buffer_insert_child_anchor(this : TextBuffer*, iter : LibGtk::TextIter*, anchor : LibGtk::TextChildAnchor*) : Void
   fun text_buffer_insert_interactive = gtk_text_buffer_insert_interactive(this : TextBuffer*, iter : LibGtk::TextIter*, text : UInt8*, len : Int32, default_editable : Bool) : Bool
   fun text_buffer_insert_interactive_at_cursor = gtk_text_buffer_insert_interactive_at_cursor(this : TextBuffer*, text : UInt8*, len : Int32, default_editable : Bool) : Bool
+  fun text_buffer_insert_markup = gtk_text_buffer_insert_markup(this : TextBuffer*, iter : LibGtk::TextIter*, markup : UInt8*, len : Int32) : Void
   fun text_buffer_insert_pixbuf = gtk_text_buffer_insert_pixbuf(this : TextBuffer*, iter : LibGtk::TextIter*, pixbuf : LibGdkPixbuf::Pixbuf*) : Void
   fun text_buffer_insert_range = gtk_text_buffer_insert_range(this : TextBuffer*, iter : LibGtk::TextIter*, start : LibGtk::TextIter*, end : LibGtk::TextIter*) : Void
   fun text_buffer_insert_range_interactive = gtk_text_buffer_insert_range_interactive(this : TextBuffer*, iter : LibGtk::TextIter*, start : LibGtk::TextIter*, end : LibGtk::TextIter*, default_editable : Bool) : Bool
@@ -3723,6 +3823,7 @@ lib LibGtk
     # Signal copy-clipboard
     # Signal cut-clipboard
     # Signal delete-from-cursor
+    # Signal extend-selection
     # Signal insert-at-cursor
     # Signal move-cursor
     # Signal move-viewport
@@ -3738,6 +3839,7 @@ lib LibGtk
     # Virtual function cut_clipboard
     # Virtual function delete_from_cursor
     # Virtual function draw_layer
+    # Virtual function extend_selection
     # Virtual function insert_at_cursor
     # Virtual function move_cursor
     # Virtual function paste_clipboard
@@ -3772,6 +3874,7 @@ lib LibGtk
   fun text_view_get_left_margin = gtk_text_view_get_left_margin(this : TextView*) : Int32
   fun text_view_get_line_at_y = gtk_text_view_get_line_at_y(this : TextView*, target_iter : LibGtk::TextIter*, y : Int32, line_top : Int32*) : Void
   fun text_view_get_line_yrange = gtk_text_view_get_line_yrange(this : TextView*, iter : LibGtk::TextIter*, y : Int32*, height : Int32*) : Void
+  fun text_view_get_monospace = gtk_text_view_get_monospace(this : TextView*) : Bool
   fun text_view_get_overwrite = gtk_text_view_get_overwrite(this : TextView*) : Bool
   fun text_view_get_pixels_above_lines = gtk_text_view_get_pixels_above_lines(this : TextView*) : Int32
   fun text_view_get_pixels_below_lines = gtk_text_view_get_pixels_below_lines(this : TextView*) : Int32
@@ -3802,6 +3905,7 @@ lib LibGtk
   fun text_view_set_input_purpose = gtk_text_view_set_input_purpose(this : TextView*, purpose : LibGtk::InputPurpose) : Void
   fun text_view_set_justification = gtk_text_view_set_justification(this : TextView*, justification : LibGtk::Justification) : Void
   fun text_view_set_left_margin = gtk_text_view_set_left_margin(this : TextView*, left_margin : Int32) : Void
+  fun text_view_set_monospace = gtk_text_view_set_monospace(this : TextView*, monospace : Bool) : Void
   fun text_view_set_overwrite = gtk_text_view_set_overwrite(this : TextView*, overwrite : Bool) : Void
   fun text_view_set_pixels_above_lines = gtk_text_view_set_pixels_above_lines(this : TextView*, pixels_above_lines : Int32) : Void
   fun text_view_set_pixels_below_lines = gtk_text_view_set_pixels_below_lines(this : TextView*, pixels_below_lines : Int32) : Void
@@ -4039,6 +4143,7 @@ lib LibGtk
   fun toolbar_unset_style = gtk_toolbar_unset_style(this : Toolbar*) : Void
 
   struct Tooltip # object
+    _data : UInt8[0]
   end
   fun tooltip_trigger_tooltip_query = gtk_tooltip_trigger_tooltip_query(display : LibGdk::Display*) : Void
   fun tooltip_set_custom = gtk_tooltip_set_custom(this : Tooltip*, custom_widget : LibGtk::Widget*) : Void
@@ -4626,6 +4731,7 @@ lib LibGtk
   fun widget_event = gtk_widget_event(this : Widget*, event : LibGdk::Event*) : Bool
   fun widget_freeze_child_notify = gtk_widget_freeze_child_notify(this : Widget*) : Void
   fun widget_get_accessible = gtk_widget_get_accessible(this : Widget*) : LibAtk::Object*
+  fun widget_get_action_group = gtk_widget_get_action_group(this : Widget*, prefix : UInt8*) : LibGio::ActionGroup*
   fun widget_get_allocated_baseline = gtk_widget_get_allocated_baseline(this : Widget*) : Int32
   fun widget_get_allocated_height = gtk_widget_get_allocated_height(this : Widget*) : Int32
   fun widget_get_allocated_width = gtk_widget_get_allocated_width(this : Widget*) : Int32
@@ -4727,6 +4833,7 @@ lib LibGtk
   fun widget_is_visible = gtk_widget_is_visible(this : Widget*) : Bool
   fun widget_keynav_failed = gtk_widget_keynav_failed(this : Widget*, direction : LibGtk::DirectionType) : Bool
   fun widget_list_accel_closures = gtk_widget_list_accel_closures(this : Widget*) : Void**
+  fun widget_list_action_prefixes = gtk_widget_list_action_prefixes(this : Widget*) : UInt8**
   fun widget_list_mnemonic_labels = gtk_widget_list_mnemonic_labels(this : Widget*) : Void**
   fun widget_map = gtk_widget_map(this : Widget*) : Void
   fun widget_mnemonic_activate = gtk_widget_mnemonic_activate(this : Widget*, group_cycling : Bool) : Bool
@@ -4898,6 +5005,7 @@ lib LibGtk
   fun window_get_skip_pager_hint = gtk_window_get_skip_pager_hint(this : Window*) : Bool
   fun window_get_skip_taskbar_hint = gtk_window_get_skip_taskbar_hint(this : Window*) : Bool
   fun window_get_title = gtk_window_get_title(this : Window*) : UInt8*
+  fun window_get_titlebar = gtk_window_get_titlebar(this : Window*) : LibGtk::Widget*
   fun window_get_transient_for = gtk_window_get_transient_for(this : Window*) : LibGtk::Window*
   fun window_get_type_hint = gtk_window_get_type_hint(this : Window*) : LibGdk::WindowTypeHint
   fun window_get_urgency_hint = gtk_window_get_urgency_hint(this : Window*) : Bool
@@ -4987,6 +5095,7 @@ lib LibGtk
   ###########################################
 
   struct AboutDialogPrivate # struct
+    _data : UInt8[0]
   end
 
   struct AccelGroupEntry # struct
@@ -4996,6 +5105,7 @@ lib LibGtk
   end
 
   struct AccelGroupPrivate # struct
+    _data : UInt8[0]
   end
 
   struct AccelKey # struct
@@ -5005,12 +5115,15 @@ lib LibGtk
   end
 
   struct AccelLabelPrivate # struct
+    _data : UInt8[0]
   end
 
   struct AccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct ActionBarPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ActionEntry # struct
@@ -5023,45 +5136,59 @@ lib LibGtk
   end
 
   struct ActionGroupPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ActionPrivate # struct
+    _data : UInt8[0]
   end
 
   struct AdjustmentPrivate # struct
+    _data : UInt8[0]
   end
 
   struct AlignmentPrivate # struct
+    _data : UInt8[0]
   end
 
   struct AppChooserButtonPrivate # struct
+    _data : UInt8[0]
   end
 
   struct AppChooserDialogPrivate # struct
+    _data : UInt8[0]
   end
 
   struct AppChooserWidgetPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ApplicationPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ApplicationWindowPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ArrowAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct ArrowPrivate # struct
+    _data : UInt8[0]
   end
 
   struct AspectFramePrivate # struct
+    _data : UInt8[0]
   end
 
   struct AssistantPrivate # struct
+    _data : UInt8[0]
   end
 
   struct BinPrivate # struct
+    _data : UInt8[0]
   end
 
   struct BindingArg # struct
@@ -5106,6 +5233,7 @@ lib LibGtk
   end
 
   struct BooleanCellAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct Border # struct
@@ -5119,111 +5247,147 @@ lib LibGtk
   fun border_free = gtk_border_free(this : Border*) : Void
 
   struct BoxPrivate # struct
+    _data : UInt8[0]
   end
 
   struct BuilderPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ButtonAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct ButtonBoxPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ButtonPrivate # struct
+    _data : UInt8[0]
   end
 
   struct CalendarPrivate # struct
+    _data : UInt8[0]
   end
 
   struct CellAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct CellAreaBoxPrivate # struct
+    _data : UInt8[0]
   end
 
   struct CellAreaContextPrivate # struct
+    _data : UInt8[0]
   end
 
   struct CellAreaPrivate # struct
+    _data : UInt8[0]
   end
 
   struct CellRendererAccelPrivate # struct
+    _data : UInt8[0]
   end
 
   struct CellRendererClassPrivate # struct
+    _data : UInt8[0]
   end
 
   struct CellRendererComboPrivate # struct
+    _data : UInt8[0]
   end
 
   struct CellRendererPixbufPrivate # struct
+    _data : UInt8[0]
   end
 
   struct CellRendererPrivate # struct
+    _data : UInt8[0]
   end
 
   struct CellRendererProgressPrivate # struct
+    _data : UInt8[0]
   end
 
   struct CellRendererSpinPrivate # struct
+    _data : UInt8[0]
   end
 
   struct CellRendererSpinnerPrivate # struct
+    _data : UInt8[0]
   end
 
   struct CellRendererTextPrivate # struct
+    _data : UInt8[0]
   end
 
   struct CellRendererTogglePrivate # struct
+    _data : UInt8[0]
   end
 
   struct CellViewPrivate # struct
+    _data : UInt8[0]
   end
 
   struct CheckMenuItemAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct CheckMenuItemPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ColorButtonPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ColorChooserDialogPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ColorChooserWidgetPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ColorSelectionDialogPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ColorSelectionPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ComboBoxAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct ComboBoxPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ComboBoxTextPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ContainerAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct ContainerCellAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct ContainerPrivate # struct
+    _data : UInt8[0]
   end
 
   struct CssProviderPrivate # struct
+    _data : UInt8[0]
   end
 
   struct CssSection # struct
+    _data : UInt8[0]
   end
   fun css_section_get_end_line = gtk_css_section_get_end_line(this : CssSection*) : UInt32
   fun css_section_get_end_position = gtk_css_section_get_end_position(this : CssSection*) : UInt32
@@ -5236,36 +5400,47 @@ lib LibGtk
   fun css_section_unref = gtk_css_section_unref(this : CssSection*) : Void
 
   struct DialogPrivate # struct
+    _data : UInt8[0]
   end
 
   struct EntryAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct EntryBufferPrivate # struct
+    _data : UInt8[0]
   end
 
   struct EntryCompletionPrivate # struct
+    _data : UInt8[0]
   end
 
   struct EntryPrivate # struct
+    _data : UInt8[0]
   end
 
   struct EventBoxPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ExpanderAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct ExpanderPrivate # struct
+    _data : UInt8[0]
   end
 
   struct FileChooserButtonPrivate # struct
+    _data : UInt8[0]
   end
 
   struct FileChooserDialogPrivate # struct
+    _data : UInt8[0]
   end
 
   struct FileChooserWidgetPrivate # struct
+    _data : UInt8[0]
   end
 
   struct FileFilterInfo # struct
@@ -5283,33 +5458,43 @@ lib LibGtk
   end
 
   struct FixedPrivate # struct
+    _data : UInt8[0]
   end
 
   struct FlowBoxAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct FontButtonPrivate # struct
+    _data : UInt8[0]
   end
 
   struct FontChooserDialogPrivate # struct
+    _data : UInt8[0]
   end
 
   struct FontChooserWidgetPrivate # struct
+    _data : UInt8[0]
   end
 
   struct FontSelectionDialogPrivate # struct
+    _data : UInt8[0]
   end
 
   struct FontSelectionPrivate # struct
+    _data : UInt8[0]
   end
 
   struct FrameAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct FramePrivate # struct
+    _data : UInt8[0]
   end
 
   struct Gradient # struct
+    _data : UInt8[0]
   end
   fun gradient_new_linear = gtk_gradient_new_linear(x0 : Float64, y0 : Float64, x1 : Float64, y1 : Float64) : LibGtk::Gradient*
   fun gradient_new_radial = gtk_gradient_new_radial(x0 : Float64, y0 : Float64, radius0 : Float64, x1 : Float64, y1 : Float64, radius1 : Float64) : LibGtk::Gradient*
@@ -5321,15 +5506,19 @@ lib LibGtk
   fun gradient_unref = gtk_gradient_unref(this : Gradient*) : Void
 
   struct GridPrivate # struct
+    _data : UInt8[0]
   end
 
   struct HSVPrivate # struct
+    _data : UInt8[0]
   end
 
   struct HandleBoxPrivate # struct
+    _data : UInt8[0]
   end
 
   struct HeaderBarPrivate # struct
+    _data : UInt8[0]
   end
 
   struct IMContextInfo # struct
@@ -5341,15 +5530,19 @@ lib LibGtk
   end
 
   struct IMContextSimplePrivate # struct
+    _data : UInt8[0]
   end
 
   struct IMMulticontextPrivate # struct
+    _data : UInt8[0]
   end
 
   struct IconFactoryPrivate # struct
+    _data : UInt8[0]
   end
 
   struct IconSet # struct
+    _data : UInt8[0]
   end
   fun icon_set_new = gtk_icon_set_new() : LibGtk::IconSet*
   fun icon_set_new_from_pixbuf = gtk_icon_set_new_from_pixbuf(pixbuf : LibGdkPixbuf::Pixbuf*) : LibGtk::IconSet*
@@ -5363,6 +5556,7 @@ lib LibGtk
   fun icon_set_unref = gtk_icon_set_unref(this : IconSet*) : Void
 
   struct IconSource # struct
+    _data : UInt8[0]
   end
   fun icon_source_new = gtk_icon_source_new() : LibGtk::IconSource*
   fun icon_source_copy = gtk_icon_source_copy(this : IconSource*) : LibGtk::IconSource*
@@ -5387,120 +5581,159 @@ lib LibGtk
   fun icon_source_set_state_wildcarded = gtk_icon_source_set_state_wildcarded(this : IconSource*, setting : Bool) : Void
 
   struct IconThemePrivate # struct
+    _data : UInt8[0]
   end
 
   struct IconViewAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct IconViewPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ImageAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct ImageCellAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct ImageMenuItemPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ImagePrivate # struct
+    _data : UInt8[0]
   end
 
   struct InfoBarPrivate # struct
+    _data : UInt8[0]
   end
 
   struct InvisiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct LabelAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct LabelPrivate # struct
+    _data : UInt8[0]
   end
 
   struct LabelSelectionInfo # struct
+    _data : UInt8[0]
   end
 
   struct LayoutPrivate # struct
+    _data : UInt8[0]
   end
 
   struct LevelBarAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct LevelBarPrivate # struct
+    _data : UInt8[0]
   end
 
   struct LinkButtonAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct LinkButtonPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ListBoxAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct ListStorePrivate # struct
+    _data : UInt8[0]
   end
 
   struct LockButtonAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct LockButtonPrivate # struct
+    _data : UInt8[0]
   end
 
   struct MenuAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct MenuBarPrivate # struct
+    _data : UInt8[0]
   end
 
   struct MenuButtonAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct MenuButtonPrivate # struct
+    _data : UInt8[0]
   end
 
   struct MenuItemAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct MenuItemPrivate # struct
+    _data : UInt8[0]
   end
 
   struct MenuPrivate # struct
+    _data : UInt8[0]
   end
 
   struct MenuShellAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct MenuShellPrivate # struct
+    _data : UInt8[0]
   end
 
   struct MenuToolButtonPrivate # struct
+    _data : UInt8[0]
   end
 
   struct MessageDialogPrivate # struct
+    _data : UInt8[0]
   end
 
   struct MiscPrivate # struct
+    _data : UInt8[0]
   end
 
   struct MountOperationPrivate # struct
+    _data : UInt8[0]
   end
 
   struct NotebookAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct NotebookPageAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct NotebookPrivate # struct
+    _data : UInt8[0]
   end
 
   struct NumerableIconPrivate # struct
+    _data : UInt8[0]
   end
 
   struct OverlayPrivate # struct
+    _data : UInt8[0]
   end
 
   struct PageRange # struct
@@ -5509,15 +5742,19 @@ lib LibGtk
   end
 
   struct PanedAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct PanedPrivate # struct
+    _data : UInt8[0]
   end
 
   struct PaperSize # struct
+    _data : UInt8[0]
   end
   fun paper_size_new = gtk_paper_size_new(name : UInt8*) : LibGtk::PaperSize*
   fun paper_size_new_custom = gtk_paper_size_new_custom(name : UInt8*, display_name : UInt8*, width : Float64, height : Float64, unit : LibGtk::Unit) : LibGtk::PaperSize*
+  fun paper_size_new_from_ipp = gtk_paper_size_new_from_ipp(ipp_name : UInt8*, width : Float64, height : Float64) : LibGtk::PaperSize*
   fun paper_size_new_from_key_file = gtk_paper_size_new_from_key_file(key_file : LibGLib::KeyFile*, group_name : UInt8*, error : LibGLib::Error**) : LibGtk::PaperSize*
   fun paper_size_new_from_ppd = gtk_paper_size_new_from_ppd(ppd_name : UInt8*, ppd_display_name : UInt8*, width : Float64, height : Float64) : LibGtk::PaperSize*
   fun paper_size_copy = gtk_paper_size_copy(this : PaperSize*) : LibGtk::PaperSize*
@@ -5533,24 +5770,30 @@ lib LibGtk
   fun paper_size_get_width = gtk_paper_size_get_width(this : PaperSize*, unit : LibGtk::Unit) : Float64
   fun paper_size_is_custom = gtk_paper_size_is_custom(this : PaperSize*) : Bool
   fun paper_size_is_equal = gtk_paper_size_is_equal(this : PaperSize*, size2 : LibGtk::PaperSize*) : Bool
+  fun paper_size_is_ipp = gtk_paper_size_is_ipp(this : PaperSize*) : Bool
   fun paper_size_set_size = gtk_paper_size_set_size(this : PaperSize*, width : Float64, height : Float64, unit : LibGtk::Unit) : Void
   fun paper_size_to_key_file = gtk_paper_size_to_key_file(this : PaperSize*, key_file : LibGLib::KeyFile*, group_name : UInt8*) : Void
   fun paper_size_get_default = gtk_paper_size_get_default() : UInt8*
   fun paper_size_get_paper_sizes = gtk_paper_size_get_paper_sizes(include_custom : Bool) : Void**
 
   struct PlugPrivate # struct
+    _data : UInt8[0]
   end
 
   struct PopoverPrivate # struct
+    _data : UInt8[0]
   end
 
   struct PrintOperationPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ProgressBarAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct ProgressBarPrivate # struct
+    _data : UInt8[0]
   end
 
   struct RadioActionEntry # struct
@@ -5563,27 +5806,35 @@ lib LibGtk
   end
 
   struct RadioActionPrivate # struct
+    _data : UInt8[0]
   end
 
   struct RadioButtonAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct RadioButtonPrivate # struct
+    _data : UInt8[0]
   end
 
   struct RadioMenuItemAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct RadioMenuItemPrivate # struct
+    _data : UInt8[0]
   end
 
   struct RangeAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct RangePrivate # struct
+    _data : UInt8[0]
   end
 
   struct RcContext # struct
+    _data : UInt8[0]
   end
 
   struct RcProperty # struct
@@ -5599,15 +5850,19 @@ lib LibGtk
   fun rc_property_parse_requisition = gtk_rc_property_parse_requisition(pspec : LibGObject::ParamSpec*, gstring : LibGLib::String*, property_value : LibGObject::Value*) : Bool
 
   struct RecentActionPrivate # struct
+    _data : UInt8[0]
   end
 
   struct RecentChooserDialogPrivate # struct
+    _data : UInt8[0]
   end
 
   struct RecentChooserMenuPrivate # struct
+    _data : UInt8[0]
   end
 
   struct RecentChooserWidgetPrivate # struct
+    _data : UInt8[0]
   end
 
   struct RecentData # struct
@@ -5631,6 +5886,7 @@ lib LibGtk
   end
 
   struct RecentInfo # struct
+    _data : UInt8[0]
   end
   fun recent_info_create_app_info = gtk_recent_info_create_app_info(this : RecentInfo*, app_name : UInt8*, error : LibGLib::Error**) : LibGio::AppInfo*
   fun recent_info_exists = gtk_recent_info_exists(this : RecentInfo*) : Bool
@@ -5659,9 +5915,11 @@ lib LibGtk
   fun recent_info_unref = gtk_recent_info_unref(this : RecentInfo*) : Void
 
   struct RecentManagerPrivate # struct
+    _data : UInt8[0]
   end
 
   struct RendererCellAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct RequestedSize # struct
@@ -5679,24 +5937,31 @@ lib LibGtk
   fun requisition_free = gtk_requisition_free(this : Requisition*) : Void
 
   struct ScaleAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct ScaleButtonAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct ScaleButtonPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ScalePrivate # struct
+    _data : UInt8[0]
   end
 
   struct ScrolledWindowAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct ScrolledWindowPrivate # struct
+    _data : UInt8[0]
   end
 
   struct SelectionData # struct
+    _data : UInt8[0]
   end
   fun selection_data_copy = gtk_selection_data_copy(this : SelectionData*) : LibGtk::SelectionData*
   fun selection_data_free = gtk_selection_data_free(this : SelectionData*) : Void
@@ -5721,12 +5986,15 @@ lib LibGtk
   fun selection_data_targets_include_uri = gtk_selection_data_targets_include_uri(this : SelectionData*) : Bool
 
   struct SeparatorPrivate # struct
+    _data : UInt8[0]
   end
 
   struct SeparatorToolItemPrivate # struct
+    _data : UInt8[0]
   end
 
   struct SettingsPrivate # struct
+    _data : UInt8[0]
   end
 
   struct SettingsValue # struct
@@ -5735,30 +6003,43 @@ lib LibGtk
   end
 
   struct SizeGroupPrivate # struct
+    _data : UInt8[0]
   end
 
   struct SocketPrivate # struct
+    _data : UInt8[0]
   end
 
   struct SpinButtonAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct SpinButtonPrivate # struct
+    _data : UInt8[0]
   end
 
   struct SpinnerAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct SpinnerPrivate # struct
+    _data : UInt8[0]
+  end
+
+  struct StackSidebarPrivate # struct
+    _data : UInt8[0]
   end
 
   struct StatusIconPrivate # struct
+    _data : UInt8[0]
   end
 
   struct StatusbarAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct StatusbarPrivate # struct
+    _data : UInt8[0]
   end
 
   struct StockItem # struct
@@ -5771,18 +6052,23 @@ lib LibGtk
   fun stock_item_free = gtk_stock_item_free(this : StockItem*) : Void
 
   struct StyleContextPrivate # struct
+    _data : UInt8[0]
   end
 
   struct StylePropertiesPrivate # struct
+    _data : UInt8[0]
   end
 
   struct SwitchAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct SwitchPrivate # struct
+    _data : UInt8[0]
   end
 
   struct SymbolicColor # struct
+    _data : UInt8[0]
   end
   fun symbolic_color_new_alpha = gtk_symbolic_color_new_alpha(color : LibGtk::SymbolicColor*, factor : Float64) : LibGtk::SymbolicColor*
   fun symbolic_color_new_literal = gtk_symbolic_color_new_literal(color : LibGdk::RGBA*) : LibGtk::SymbolicColor*
@@ -5812,6 +6098,7 @@ lib LibGtk
   end
 
   struct TablePrivate # struct
+    _data : UInt8[0]
   end
 
   struct TableRowCol # struct
@@ -5835,6 +6122,7 @@ lib LibGtk
   fun target_entry_free = gtk_target_entry_free(this : TargetEntry*) : Void
 
   struct TargetList # struct
+    _data : UInt8[0]
   end
   fun target_list_new = gtk_target_list_new(targets : LibGtk::TargetEntry*, ntargets : UInt32) : LibGtk::TargetList*
   fun target_list_add = gtk_target_list_add(this : TargetList*, target : LibGdk::Atom*, flags : UInt32, info : UInt32) : Void
@@ -5855,6 +6143,7 @@ lib LibGtk
   end
 
   struct TearoffMenuItemPrivate # struct
+    _data : UInt8[0]
   end
 
   struct TextAppearance # struct
@@ -5888,7 +6177,9 @@ lib LibGtk
     invisible : UInt32
     bg_full_height : UInt32
     editable : UInt32
+    no_fallback : UInt32
     pg_bg_rgba : LibGdk::RGBA*
+    letter_spacing : Int32
     padding : UInt32
   end
   fun text_attributes_new = gtk_text_attributes_new() : LibGtk::TextAttributes*
@@ -5898,12 +6189,15 @@ lib LibGtk
   fun text_attributes_unref = gtk_text_attributes_unref(this : TextAttributes*) : Void
 
   struct TextBTree # struct
+    _data : UInt8[0]
   end
 
   struct TextBufferPrivate # struct
+    _data : UInt8[0]
   end
 
   struct TextCellAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct TextIter # struct
@@ -6015,21 +6309,27 @@ lib LibGtk
   fun text_iter_toggles_tag = gtk_text_iter_toggles_tag(this : TextIter*, tag : LibGtk::TextTag*) : Bool
 
   struct TextTagPrivate # struct
+    _data : UInt8[0]
   end
 
   struct TextTagTablePrivate # struct
+    _data : UInt8[0]
   end
 
   struct TextViewAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct TextViewPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ThemeEngine # struct
+    _data : UInt8[0]
   end
 
   struct ThemingEnginePrivate # struct
+    _data : UInt8[0]
   end
 
   struct ToggleActionEntry # struct
@@ -6043,33 +6343,43 @@ lib LibGtk
   end
 
   struct ToggleActionPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ToggleButtonAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct ToggleButtonPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ToggleToolButtonPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ToolButtonPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ToolItemGroupPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ToolItemPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ToolPalettePrivate # struct
+    _data : UInt8[0]
   end
 
   struct ToolbarPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ToplevelAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct TreeIter # struct
@@ -6082,12 +6392,15 @@ lib LibGtk
   fun tree_iter_free = gtk_tree_iter_free(this : TreeIter*) : Void
 
   struct TreeModelFilterPrivate # struct
+    _data : UInt8[0]
   end
 
   struct TreeModelSortPrivate # struct
+    _data : UInt8[0]
   end
 
   struct TreePath # struct
+    _data : UInt8[0]
   end
   fun tree_path_new = gtk_tree_path_new() : LibGtk::TreePath*
   fun tree_path_new_first = gtk_tree_path_new_first() : LibGtk::TreePath*
@@ -6109,6 +6422,7 @@ lib LibGtk
   fun tree_path_up = gtk_tree_path_up(this : TreePath*) : Bool
 
   struct TreeRowReference # struct
+    _data : UInt8[0]
   end
   fun tree_row_reference_new = gtk_tree_row_reference_new(model : LibGtk::TreeModel*, path : LibGtk::TreePath*) : LibGtk::TreeRowReference*
   fun tree_row_reference_new_proxy = gtk_tree_row_reference_new_proxy(proxy : LibGObject::Object*, model : LibGtk::TreeModel*, path : LibGtk::TreePath*) : LibGtk::TreeRowReference*
@@ -6121,27 +6435,35 @@ lib LibGtk
   fun tree_row_reference_inserted = gtk_tree_row_reference_inserted(proxy : LibGObject::Object*, path : LibGtk::TreePath*) : Void
 
   struct TreeSelectionPrivate # struct
+    _data : UInt8[0]
   end
 
   struct TreeStorePrivate # struct
+    _data : UInt8[0]
   end
 
   struct TreeViewAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct TreeViewColumnPrivate # struct
+    _data : UInt8[0]
   end
 
   struct TreeViewPrivate # struct
+    _data : UInt8[0]
   end
 
   struct UIManagerPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ViewportPrivate # struct
+    _data : UInt8[0]
   end
 
   struct WidgetAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct WidgetAuxInfo # struct
@@ -6153,9 +6475,11 @@ lib LibGtk
   end
 
   struct WidgetClassPrivate # struct
+    _data : UInt8[0]
   end
 
   struct WidgetPath # struct
+    _data : UInt8[0]
   end
   fun widget_path_new = gtk_widget_path_new() : LibGtk::WidgetPath*
   fun widget_path_append_for_widget = gtk_widget_path_append_for_widget(this : WidgetPath*, widget : LibGtk::Widget*) : Int32
@@ -6195,18 +6519,23 @@ lib LibGtk
   fun widget_path_unref = gtk_widget_path_unref(this : WidgetPath*) : Void
 
   struct WidgetPrivate # struct
+    _data : UInt8[0]
   end
 
   struct WindowAccessiblePrivate # struct
+    _data : UInt8[0]
   end
 
   struct WindowGeometryInfo # struct
+    _data : UInt8[0]
   end
 
   struct WindowGroupPrivate # struct
+    _data : UInt8[0]
   end
 
   struct WindowPrivate # struct
+    _data : UInt8[0]
   end
 
 
@@ -6214,14 +6543,14 @@ lib LibGtk
   ##    Flags
   ###########################################
 
-  enum AccelFlags
+  enum AccelFlags : UInt32
     ZERO_NONE = 0
     VISIBLE = 1
     LOCKED = 2
     MASK = 7
   end
 
-  enum ApplicationInhibitFlags
+  enum ApplicationInhibitFlags : UInt32
     ZERO_NONE = 0
     LOGOUT = 1
     SWITCH = 2
@@ -6229,14 +6558,14 @@ lib LibGtk
     IDLE = 8
   end
 
-  enum AttachOptions
+  enum AttachOptions : UInt32
     ZERO_NONE = 0
     EXPAND = 1
     SHRINK = 2
     FILL = 4
   end
 
-  enum CalendarDisplayOptions
+  enum CalendarDisplayOptions : UInt32
     ZERO_NONE = 0
     SHOW_HEADING = 1
     SHOW_DAY_NAMES = 2
@@ -6245,7 +6574,7 @@ lib LibGtk
     SHOW_DETAILS = 32
   end
 
-  enum CellRendererState
+  enum CellRendererState : UInt32
     ZERO_NONE = 0
     SELECTED = 1
     PRELIT = 2
@@ -6256,7 +6585,7 @@ lib LibGtk
     EXPANDED = 64
   end
 
-  enum DebugFlag
+  enum DebugFlag : UInt32
     ZERO_NONE = 0
     MISC = 1
     PLUGSOCKET = 2
@@ -6280,7 +6609,7 @@ lib LibGtk
     ACTIONS = 524288
   end
 
-  enum DestDefaults
+  enum DestDefaults : UInt32
     ZERO_NONE = 0
     MOTION = 1
     HIGHLIGHT = 2
@@ -6288,14 +6617,14 @@ lib LibGtk
     ALL = 7
   end
 
-  enum DialogFlags
+  enum DialogFlags : UInt32
     ZERO_NONE = 0
     MODAL = 1
     DESTROY_WITH_PARENT = 2
     USE_HEADER_BAR = 4
   end
 
-  enum FileFilterFlags
+  enum FileFilterFlags : UInt32
     ZERO_NONE = 0
     FILENAME = 1
     URI = 2
@@ -6303,7 +6632,7 @@ lib LibGtk
     MIME_TYPE = 8
   end
 
-  enum IconLookupFlags
+  enum IconLookupFlags : UInt32
     ZERO_NONE = 0
     NO_SVG = 1
     FORCE_SVG = 2
@@ -6316,7 +6645,7 @@ lib LibGtk
     DIR_RTL = 256
   end
 
-  enum InputHints
+  enum InputHints : UInt32
     ZERO_NONE = 0
     NONE = 0
     SPELLCHECK = 1
@@ -6329,7 +6658,7 @@ lib LibGtk
     INHIBIT_OSK = 128
   end
 
-  enum JunctionSides
+  enum JunctionSides : UInt32
     ZERO_NONE = 0
     NONE = 0
     CORNER_TOPLEFT = 1
@@ -6342,14 +6671,14 @@ lib LibGtk
     RIGHT = 10
   end
 
-  enum PlacesOpenFlags
+  enum PlacesOpenFlags : UInt32
     ZERO_NONE = 0
     NORMAL = 1
     NEW_TAB = 2
     NEW_WINDOW = 4
   end
 
-  enum RcFlags
+  enum RcFlags : UInt32
     ZERO_NONE = 0
     FG = 1
     BG = 2
@@ -6357,7 +6686,7 @@ lib LibGtk
     BASE = 8
   end
 
-  enum RecentFilterFlags
+  enum RecentFilterFlags : UInt32
     ZERO_NONE = 0
     URI = 1
     DISPLAY_NAME = 2
@@ -6367,7 +6696,7 @@ lib LibGtk
     AGE = 32
   end
 
-  enum RegionFlags
+  enum RegionFlags : UInt32
     ZERO_NONE = 0
     EVEN = 1
     ODD = 2
@@ -6377,7 +6706,7 @@ lib LibGtk
     SORTED = 32
   end
 
-  enum StateFlags
+  enum StateFlags : UInt32
     ZERO_NONE = 0
     NORMAL = 0
     ACTIVE = 1
@@ -6394,7 +6723,7 @@ lib LibGtk
     CHECKED = 2048
   end
 
-  enum TargetFlags
+  enum TargetFlags : UInt32
     ZERO_NONE = 0
     SAME_APP = 1
     SAME_WIDGET = 2
@@ -6402,26 +6731,26 @@ lib LibGtk
     OTHER_WIDGET = 8
   end
 
-  enum TextSearchFlags
+  enum TextSearchFlags : UInt32
     ZERO_NONE = 0
     VISIBLE_ONLY = 1
     TEXT_ONLY = 2
     CASE_INSENSITIVE = 4
   end
 
-  enum ToolPaletteDragTargets
+  enum ToolPaletteDragTargets : UInt32
     ZERO_NONE = 0
     ITEMS = 1
     GROUPS = 2
   end
 
-  enum TreeModelFlags
+  enum TreeModelFlags : UInt32
     ZERO_NONE = 0
     ITERS_PERSIST = 1
     LIST_ONLY = 2
   end
 
-  enum UIManagerItemType
+  enum UIManagerItemType : UInt32
     ZERO_NONE = 0
     AUTO = 0
     MENUBAR = 1
@@ -6478,6 +6807,7 @@ lib LibGtk
   fun activatable_sync_action_properties = gtk_activatable_sync_action_properties(this : Activatable*, action : LibGtk::Action*) : Void
 
   struct AppChooser # interface
+    _data : UInt8[0]
   # Requires Widget
     # Property content_type : UInt8*
   end
@@ -6660,6 +6990,7 @@ lib LibGtk
   fun editable_set_position = gtk_editable_set_position(this : Editable*, position : Int32) : Void
 
   struct FileChooser # interface
+    _data : UInt8[0]
   # Requires Widget
     # Property action : LibGtk::FileChooserAction
     # Property create_folders : Bool
@@ -6880,11 +7211,14 @@ lib LibGtk
 
   struct Scrollable # interface
     base_iface : LibGObject::TypeInterface
+    get_border : -> Void
     # Property hadjustment : LibGtk::Adjustment
     # Property hscroll_policy : LibGtk::ScrollablePolicy
     # Property vadjustment : LibGtk::Adjustment
     # Property vscroll_policy : LibGtk::ScrollablePolicy
+    # Virtual function get_border
   end
+  fun scrollable_get_border = gtk_scrollable_get_border(this : Scrollable*, border : LibGtk::Border*) : Bool
   fun scrollable_get_hadjustment = gtk_scrollable_get_hadjustment(this : Scrollable*) : LibGtk::Adjustment*
   fun scrollable_get_hscroll_policy = gtk_scrollable_get_hscroll_policy(this : Scrollable*) : LibGtk::ScrollablePolicy
   fun scrollable_get_vadjustment = gtk_scrollable_get_vadjustment(this : Scrollable*) : LibGtk::Adjustment*
@@ -7064,7 +7398,7 @@ lib LibGtk
   ##    Enums
   ###########################################
 
-  enum Align
+  enum Align : UInt32
     ZERO_NONE = 0
     FILL = 0
     START = 1
@@ -7073,14 +7407,14 @@ lib LibGtk
     BASELINE = 4
   end
 
-  enum ArrowPlacement
+  enum ArrowPlacement : UInt32
     ZERO_NONE = 0
     BOTH = 0
     START = 1
     END = 2
   end
 
-  enum ArrowType
+  enum ArrowType : UInt32
     ZERO_NONE = 0
     UP = 0
     DOWN = 1
@@ -7089,7 +7423,7 @@ lib LibGtk
     NONE = 4
   end
 
-  enum AssistantPageType
+  enum AssistantPageType : UInt32
     ZERO_NONE = 0
     CONTENT = 0
     INTRO = 1
@@ -7099,14 +7433,14 @@ lib LibGtk
     CUSTOM = 5
   end
 
-  enum BaselinePosition
+  enum BaselinePosition : UInt32
     ZERO_NONE = 0
     TOP = 0
     CENTER = 1
     BOTTOM = 2
   end
 
-  enum BorderStyle
+  enum BorderStyle : UInt32
     ZERO_NONE = 0
     NONE = 0
     SOLID = 1
@@ -7120,7 +7454,7 @@ lib LibGtk
     RIDGE = 9
   end
 
-  enum BuilderError
+  enum BuilderError : UInt32
     ZERO_NONE = 0
     INVALID_TYPE_FUNCTION = 0
     UNHANDLED_TAG = 1
@@ -7138,7 +7472,7 @@ lib LibGtk
   end
   fun builder_error_quark = gtk_builder_error_quark() : UInt32
 
-  enum ButtonBoxStyle
+  enum ButtonBoxStyle : UInt32
     ZERO_NONE = 0
     SPREAD = 1
     EDGE = 2
@@ -7148,7 +7482,14 @@ lib LibGtk
     EXPAND = 6
   end
 
-  enum ButtonsType
+  enum ButtonRole : UInt32
+    ZERO_NONE = 0
+    NORMAL = 0
+    CHECK = 1
+    RADIO = 2
+  end
+
+  enum ButtonsType : UInt32
     ZERO_NONE = 0
     NONE = 0
     OK = 1
@@ -7158,20 +7499,20 @@ lib LibGtk
     OK_CANCEL = 5
   end
 
-  enum CellRendererAccelMode
+  enum CellRendererAccelMode : UInt32
     ZERO_NONE = 0
     GTK = 0
     OTHER = 1
   end
 
-  enum CellRendererMode
+  enum CellRendererMode : UInt32
     ZERO_NONE = 0
     INERT = 0
     ACTIVATABLE = 1
     EDITABLE = 2
   end
 
-  enum CornerType
+  enum CornerType : UInt32
     ZERO_NONE = 0
     TOP_LEFT = 0
     BOTTOM_LEFT = 1
@@ -7179,7 +7520,7 @@ lib LibGtk
     BOTTOM_RIGHT = 3
   end
 
-  enum CssProviderError
+  enum CssProviderError : UInt32
     ZERO_NONE = 0
     FAILED = 0
     SYNTAX = 1
@@ -7190,7 +7531,7 @@ lib LibGtk
   end
   fun css_provider_error_quark = gtk_css_provider_error_quark() : UInt32
 
-  enum CssSectionType
+  enum CssSectionType : UInt32
     ZERO_NONE = 0
     DOCUMENT = 0
     IMPORT = 1
@@ -7203,7 +7544,7 @@ lib LibGtk
     KEYFRAMES = 8
   end
 
-  enum DeleteType
+  enum DeleteType : UInt32
     ZERO_NONE = 0
     CHARS = 0
     WORD_ENDS = 1
@@ -7215,7 +7556,7 @@ lib LibGtk
     WHITESPACE = 7
   end
 
-  enum DirectionType
+  enum DirectionType : UInt32
     ZERO_NONE = 0
     TAB_FORWARD = 0
     TAB_BACKWARD = 1
@@ -7225,7 +7566,7 @@ lib LibGtk
     RIGHT = 5
   end
 
-  enum DragResult
+  enum DragResult : UInt32
     ZERO_NONE = 0
     SUCCESS = 0
     NO_TARGET = 1
@@ -7235,20 +7576,20 @@ lib LibGtk
     ERROR = 5
   end
 
-  enum EntryIconPosition
+  enum EntryIconPosition : UInt32
     ZERO_NONE = 0
     PRIMARY = 0
     SECONDARY = 1
   end
 
-  enum EventSequenceState
+  enum EventSequenceState : UInt32
     ZERO_NONE = 0
     NONE = 0
     CLAIMED = 1
     DENIED = 2
   end
 
-  enum ExpanderStyle
+  enum ExpanderStyle : UInt32
     ZERO_NONE = 0
     COLLAPSED = 0
     SEMI_COLLAPSED = 1
@@ -7256,7 +7597,7 @@ lib LibGtk
     EXPANDED = 3
   end
 
-  enum FileChooserAction
+  enum FileChooserAction : UInt32
     ZERO_NONE = 0
     OPEN = 0
     SAVE = 1
@@ -7264,14 +7605,14 @@ lib LibGtk
     CREATE_FOLDER = 3
   end
 
-  enum FileChooserConfirmation
+  enum FileChooserConfirmation : UInt32
     ZERO_NONE = 0
     CONFIRM = 0
     ACCEPT_FILENAME = 1
     SELECT_AGAIN = 2
   end
 
-  enum FileChooserError
+  enum FileChooserError : UInt32
     ZERO_NONE = 0
     NONEXISTENT = 0
     BAD_FILENAME = 1
@@ -7280,21 +7621,21 @@ lib LibGtk
   end
   fun file_chooser_error_quark = gtk_file_chooser_error_quark() : UInt32
 
-  enum IMPreeditStyle
+  enum IMPreeditStyle : UInt32
     ZERO_NONE = 0
     NOTHING = 0
     CALLBACK = 1
     NONE = 2
   end
 
-  enum IMStatusStyle
+  enum IMStatusStyle : UInt32
     ZERO_NONE = 0
     NOTHING = 0
     CALLBACK = 1
     NONE = 2
   end
 
-  enum IconSize
+  enum IconSize : UInt32
     ZERO_NONE = 0
     INVALID = 0
     MENU = 1
@@ -7311,14 +7652,14 @@ lib LibGtk
   fun icon_size_register = gtk_icon_size_register(name : UInt8*, width : Int32, height : Int32) : Int32
   fun icon_size_register_alias = gtk_icon_size_register_alias(_alias : UInt8*, target : Int32) : Void
 
-  enum IconThemeError
+  enum IconThemeError : UInt32
     ZERO_NONE = 0
     NOT_FOUND = 0
     FAILED = 1
   end
   fun icon_theme_error_quark = gtk_icon_theme_error_quark() : UInt32
 
-  enum IconViewDropPosition
+  enum IconViewDropPosition : UInt32
     ZERO_NONE = 0
     NO_DROP = 0
     DROP_INTO = 1
@@ -7328,7 +7669,7 @@ lib LibGtk
     DROP_BELOW = 5
   end
 
-  enum ImageType
+  enum ImageType : UInt32
     ZERO_NONE = 0
     EMPTY = 0
     PIXBUF = 1
@@ -7340,7 +7681,7 @@ lib LibGtk
     SURFACE = 7
   end
 
-  enum InputPurpose
+  enum InputPurpose : UInt32
     ZERO_NONE = 0
     FREE_FORM = 0
     ALPHA = 1
@@ -7354,7 +7695,7 @@ lib LibGtk
     PIN = 9
   end
 
-  enum Justification
+  enum Justification : UInt32
     ZERO_NONE = 0
     LEFT = 0
     RIGHT = 1
@@ -7362,13 +7703,13 @@ lib LibGtk
     FILL = 3
   end
 
-  enum LevelBarMode
+  enum LevelBarMode : UInt32
     ZERO_NONE = 0
     CONTINUOUS = 0
     DISCRETE = 1
   end
 
-  enum License
+  enum License : UInt32
     ZERO_NONE = 0
     UNKNOWN = 0
     CUSTOM = 1
@@ -7385,7 +7726,7 @@ lib LibGtk
     LGPL_3_0_ONLY = 12
   end
 
-  enum MenuDirectionType
+  enum MenuDirectionType : UInt32
     ZERO_NONE = 0
     PARENT = 0
     CHILD = 1
@@ -7393,7 +7734,7 @@ lib LibGtk
     PREV = 3
   end
 
-  enum MessageType
+  enum MessageType : UInt32
     ZERO_NONE = 0
     INFO = 0
     WARNING = 1
@@ -7402,7 +7743,7 @@ lib LibGtk
     OTHER = 4
   end
 
-  enum MovementStep
+  enum MovementStep : UInt32
     ZERO_NONE = 0
     LOGICAL_POSITIONS = 0
     VISUAL_POSITIONS = 1
@@ -7416,13 +7757,13 @@ lib LibGtk
     HORIZONTAL_PAGES = 9
   end
 
-  enum NotebookTab
+  enum NotebookTab : UInt32
     ZERO_NONE = 0
     FIRST = 0
     LAST = 1
   end
 
-  enum NumberUpLayout
+  enum NumberUpLayout : UInt32
     ZERO_NONE = 0
     LRTB = 0
     LRBT = 1
@@ -7434,13 +7775,13 @@ lib LibGtk
     BTRL = 7
   end
 
-  enum Orientation
+  enum Orientation : UInt32
     ZERO_NONE = 0
     HORIZONTAL = 0
     VERTICAL = 1
   end
 
-  enum PackDirection
+  enum PackDirection : UInt32
     ZERO_NONE = 0
     LTR = 0
     RTL = 1
@@ -7448,13 +7789,13 @@ lib LibGtk
     BTT = 3
   end
 
-  enum PackType
+  enum PackType : UInt32
     ZERO_NONE = 0
     START = 0
     END = 1
   end
 
-  enum PageOrientation
+  enum PageOrientation : UInt32
     ZERO_NONE = 0
     PORTRAIT = 0
     LANDSCAPE = 1
@@ -7462,14 +7803,14 @@ lib LibGtk
     REVERSE_LANDSCAPE = 3
   end
 
-  enum PageSet
+  enum PageSet : UInt32
     ZERO_NONE = 0
     ALL = 0
     EVEN = 1
     ODD = 2
   end
 
-  enum PanDirection
+  enum PanDirection : UInt32
     ZERO_NONE = 0
     LEFT = 0
     RIGHT = 1
@@ -7477,7 +7818,7 @@ lib LibGtk
     DOWN = 3
   end
 
-  enum PathPriorityType
+  enum PathPriorityType : UInt32
     ZERO_NONE = 0
     LOWEST = 0
     GTK = 4
@@ -7487,21 +7828,22 @@ lib LibGtk
     HIGHEST = 15
   end
 
-  enum PathType
+  enum PathType : UInt32
     ZERO_NONE = 0
     WIDGET = 0
     WIDGET_CLASS = 1
     CLASS = 2
   end
 
-  enum PolicyType
+  enum PolicyType : UInt32
     ZERO_NONE = 0
     ALWAYS = 0
     AUTOMATIC = 1
     NEVER = 2
+    EXTERNAL = 3
   end
 
-  enum PositionType
+  enum PositionType : UInt32
     ZERO_NONE = 0
     LEFT = 0
     RIGHT = 1
@@ -7509,14 +7851,14 @@ lib LibGtk
     BOTTOM = 3
   end
 
-  enum PrintDuplex
+  enum PrintDuplex : UInt32
     ZERO_NONE = 0
     SIMPLEX = 0
     HORIZONTAL = 1
     VERTICAL = 2
   end
 
-  enum PrintError
+  enum PrintError : UInt32
     ZERO_NONE = 0
     GENERAL = 0
     INTERNAL_ERROR = 1
@@ -7525,7 +7867,7 @@ lib LibGtk
   end
   fun print_error_quark = gtk_print_error_quark() : UInt32
 
-  enum PrintOperationAction
+  enum PrintOperationAction : UInt32
     ZERO_NONE = 0
     PRINT_DIALOG = 0
     PRINT = 1
@@ -7533,7 +7875,7 @@ lib LibGtk
     EXPORT = 3
   end
 
-  enum PrintOperationResult
+  enum PrintOperationResult : UInt32
     ZERO_NONE = 0
     ERROR = 0
     APPLY = 1
@@ -7541,7 +7883,7 @@ lib LibGtk
     IN_PROGRESS = 3
   end
 
-  enum PrintPages
+  enum PrintPages : UInt32
     ZERO_NONE = 0
     ALL = 0
     CURRENT = 1
@@ -7549,7 +7891,7 @@ lib LibGtk
     SELECTION = 3
   end
 
-  enum PrintQuality
+  enum PrintQuality : UInt32
     ZERO_NONE = 0
     LOW = 0
     NORMAL = 1
@@ -7557,7 +7899,7 @@ lib LibGtk
     DRAFT = 3
   end
 
-  enum PrintStatus
+  enum PrintStatus : UInt32
     ZERO_NONE = 0
     INITIAL = 0
     PREPARING = 1
@@ -7570,7 +7912,7 @@ lib LibGtk
     FINISHED_ABORTED = 8
   end
 
-  enum PropagationPhase
+  enum PropagationPhase : UInt32
     ZERO_NONE = 0
     NONE = 0
     CAPTURE = 1
@@ -7578,7 +7920,7 @@ lib LibGtk
     TARGET = 3
   end
 
-  enum RcTokenType
+  enum RcTokenType : UInt32
     ZERO_NONE = 0
     INVALID = 270
     INCLUDE = 271
@@ -7622,14 +7964,14 @@ lib LibGtk
     LAST = 309
   end
 
-  enum RecentChooserError
+  enum RecentChooserError : UInt32
     ZERO_NONE = 0
     NOT_FOUND = 0
     INVALID_URI = 1
   end
   fun recent_chooser_error_quark = gtk_recent_chooser_error_quark() : UInt32
 
-  enum RecentManagerError
+  enum RecentManagerError : UInt32
     ZERO_NONE = 0
     NOT_FOUND = 0
     INVALID_URI = 1
@@ -7641,7 +7983,7 @@ lib LibGtk
   end
   fun recent_manager_error_quark = gtk_recent_manager_error_quark() : UInt32
 
-  enum RecentSortType
+  enum RecentSortType : UInt32
     ZERO_NONE = 0
     NONE = 0
     MRU = 1
@@ -7649,21 +7991,21 @@ lib LibGtk
     CUSTOM = 3
   end
 
-  enum ReliefStyle
+  enum ReliefStyle : UInt32
     ZERO_NONE = 0
     NORMAL = 0
     HALF = 1
     NONE = 2
   end
 
-  enum ResizeMode
+  enum ResizeMode : UInt32
     ZERO_NONE = 0
     PARENT = 0
     QUEUE = 1
     IMMEDIATE = 2
   end
 
-  enum ResponseType
+  enum ResponseType : Int32
     ZERO_NONE = 0
     NONE = -1
     REJECT = -2
@@ -7678,7 +8020,7 @@ lib LibGtk
     HELP = -11
   end
 
-  enum RevealerTransitionType
+  enum RevealerTransitionType : UInt32
     ZERO_NONE = 0
     NONE = 0
     CROSSFADE = 1
@@ -7688,7 +8030,7 @@ lib LibGtk
     SLIDE_DOWN = 5
   end
 
-  enum ScrollStep
+  enum ScrollStep : UInt32
     ZERO_NONE = 0
     STEPS = 0
     PAGES = 1
@@ -7698,7 +8040,7 @@ lib LibGtk
     HORIZONTAL_ENDS = 5
   end
 
-  enum ScrollType
+  enum ScrollType : UInt32
     ZERO_NONE = 0
     NONE = 0
     JUMP = 1
@@ -7718,13 +8060,13 @@ lib LibGtk
     END = 15
   end
 
-  enum ScrollablePolicy
+  enum ScrollablePolicy : UInt32
     ZERO_NONE = 0
     MINIMUM = 0
     NATURAL = 1
   end
 
-  enum SelectionMode
+  enum SelectionMode : UInt32
     ZERO_NONE = 0
     NONE = 0
     SINGLE = 1
@@ -7732,14 +8074,14 @@ lib LibGtk
     MULTIPLE = 3
   end
 
-  enum SensitivityType
+  enum SensitivityType : UInt32
     ZERO_NONE = 0
     AUTO = 0
     ON = 1
     OFF = 2
   end
 
-  enum ShadowType
+  enum ShadowType : UInt32
     ZERO_NONE = 0
     NONE = 0
     IN = 1
@@ -7748,7 +8090,7 @@ lib LibGtk
     ETCHED_OUT = 4
   end
 
-  enum SizeGroupMode
+  enum SizeGroupMode : UInt32
     ZERO_NONE = 0
     NONE = 0
     HORIZONTAL = 1
@@ -7756,26 +8098,26 @@ lib LibGtk
     BOTH = 3
   end
 
-  enum SizeRequestMode
+  enum SizeRequestMode : UInt32
     ZERO_NONE = 0
     HEIGHT_FOR_WIDTH = 0
     WIDTH_FOR_HEIGHT = 1
     CONSTANT_SIZE = 2
   end
 
-  enum SortType
+  enum SortType : UInt32
     ZERO_NONE = 0
     ASCENDING = 0
     DESCENDING = 1
   end
 
-  enum SpinButtonUpdatePolicy
+  enum SpinButtonUpdatePolicy : UInt32
     ZERO_NONE = 0
     ALWAYS = 0
     IF_VALID = 1
   end
 
-  enum SpinType
+  enum SpinType : UInt32
     ZERO_NONE = 0
     STEP_FORWARD = 0
     STEP_BACKWARD = 1
@@ -7786,7 +8128,7 @@ lib LibGtk
     USER_DEFINED = 6
   end
 
-  enum StackTransitionType
+  enum StackTransitionType : UInt32
     ZERO_NONE = 0
     NONE = 0
     CROSSFADE = 1
@@ -7810,7 +8152,7 @@ lib LibGtk
     OVER_RIGHT_LEFT = 19
   end
 
-  enum StateType
+  enum StateType : UInt32
     ZERO_NONE = 0
     NORMAL = 0
     ACTIVE = 1
@@ -7821,27 +8163,33 @@ lib LibGtk
     FOCUSED = 6
   end
 
-  enum TextBufferTargetInfo
+  enum TextBufferTargetInfo : Int32
     ZERO_NONE = 0
     BUFFER_CONTENTS = -1
     RICH_TEXT = -2
     TEXT = -3
   end
 
-  enum TextDirection
+  enum TextDirection : UInt32
     ZERO_NONE = 0
     NONE = 0
     LTR = 1
     RTL = 2
   end
 
-  enum TextViewLayer
+  enum TextExtendSelection : UInt32
+    ZERO_NONE = 0
+    WORD = 0
+    LINE = 1
+  end
+
+  enum TextViewLayer : UInt32
     ZERO_NONE = 0
     BELOW = 0
     ABOVE = 1
   end
 
-  enum TextWindowType
+  enum TextWindowType : UInt32
     ZERO_NONE = 0
     PRIVATE = 0
     WIDGET = 1
@@ -7852,13 +8200,13 @@ lib LibGtk
     BOTTOM = 6
   end
 
-  enum ToolbarSpaceStyle
+  enum ToolbarSpaceStyle : UInt32
     ZERO_NONE = 0
     EMPTY = 0
     LINE = 1
   end
 
-  enum ToolbarStyle
+  enum ToolbarStyle : UInt32
     ZERO_NONE = 0
     ICONS = 0
     TEXT = 1
@@ -7866,14 +8214,14 @@ lib LibGtk
     BOTH_HORIZ = 3
   end
 
-  enum TreeViewColumnSizing
+  enum TreeViewColumnSizing : UInt32
     ZERO_NONE = 0
     GROW_ONLY = 0
     AUTOSIZE = 1
     FIXED = 2
   end
 
-  enum TreeViewDropPosition
+  enum TreeViewDropPosition : UInt32
     ZERO_NONE = 0
     BEFORE = 0
     AFTER = 1
@@ -7881,7 +8229,7 @@ lib LibGtk
     INTO_OR_AFTER = 3
   end
 
-  enum TreeViewGridLines
+  enum TreeViewGridLines : UInt32
     ZERO_NONE = 0
     NONE = 0
     HORIZONTAL = 1
@@ -7889,7 +8237,7 @@ lib LibGtk
     BOTH = 3
   end
 
-  enum Unit
+  enum Unit : UInt32
     ZERO_NONE = 0
     NONE = 0
     POINTS = 1
@@ -7897,13 +8245,13 @@ lib LibGtk
     MM = 3
   end
 
-  enum WidgetHelpType
+  enum WidgetHelpType : UInt32
     ZERO_NONE = 0
     TOOLTIP = 0
     WHATS_THIS = 1
   end
 
-  enum WindowPosition
+  enum WindowPosition : UInt32
     ZERO_NONE = 0
     NONE = 0
     CENTER = 1
@@ -7912,13 +8260,13 @@ lib LibGtk
     CENTER_ON_PARENT = 4
   end
 
-  enum WindowType
+  enum WindowType : UInt32
     ZERO_NONE = 0
     TOPLEVEL = 0
     POPUP = 1
   end
 
-  enum WrapMode
+  enum WrapMode : UInt32
     ZERO_NONE = 0
     NONE = 0
     CHAR = 1
@@ -7931,15 +8279,15 @@ lib LibGtk
   ##    Constants
   ###########################################
 
-  BINARY_AGE = 1408 # : Int32
+  BINARY_AGE = 1603 # : Int32
   INPUT_ERROR = -1 # : Int32
-  INTERFACE_AGE = 8 # : Int32
+  INTERFACE_AGE = 3 # : Int32
   LEVEL_BAR_OFFSET_HIGH = "high" # : UInt8*
   LEVEL_BAR_OFFSET_LOW = "low" # : UInt8*
   MAJOR_VERSION = 3 # : Int32
   MAX_COMPOSE_LEN = 7 # : Int32
-  MICRO_VERSION = 8 # : Int32
-  MINOR_VERSION = 14 # : Int32
+  MICRO_VERSION = 3 # : Int32
+  MINOR_VERSION = 16 # : Int32
   PAPER_NAME_A3 = "iso_a3" # : UInt8*
   PAPER_NAME_A4 = "iso_a4" # : UInt8*
   PAPER_NAME_A5 = "iso_a5" # : UInt8*
@@ -8116,6 +8464,7 @@ lib LibGtk
   STYLE_CLASS_INFO = "info" # : UInt8*
   STYLE_CLASS_INLINE_TOOLBAR = "inline-toolbar" # : UInt8*
   STYLE_CLASS_INSERTION_CURSOR = "insertion-cursor" # : UInt8*
+  STYLE_CLASS_LABEL = "label" # : UInt8*
   STYLE_CLASS_LEFT = "left" # : UInt8*
   STYLE_CLASS_LEVEL_BAR = "level-bar" # : UInt8*
   STYLE_CLASS_LINKED = "linked" # : UInt8*
@@ -8126,11 +8475,13 @@ lib LibGtk
   STYLE_CLASS_MENUBAR = "menubar" # : UInt8*
   STYLE_CLASS_MENUITEM = "menuitem" # : UInt8*
   STYLE_CLASS_MESSAGE_DIALOG = "message-dialog" # : UInt8*
+  STYLE_CLASS_MONOSPACE = "monospace" # : UInt8*
   STYLE_CLASS_NEEDS_ATTENTION = "needs-attention" # : UInt8*
   STYLE_CLASS_NOTEBOOK = "notebook" # : UInt8*
   STYLE_CLASS_OSD = "osd" # : UInt8*
   STYLE_CLASS_OVERSHOOT = "overshoot" # : UInt8*
   STYLE_CLASS_PANE_SEPARATOR = "pane-separator" # : UInt8*
+  STYLE_CLASS_PAPER = "paper" # : UInt8*
   STYLE_CLASS_POPOVER = "popover" # : UInt8*
   STYLE_CLASS_POPUP = "popup" # : UInt8*
   STYLE_CLASS_PRIMARY_TOOLBAR = "primary-toolbar" # : UInt8*
@@ -8152,6 +8503,7 @@ lib LibGtk
   STYLE_CLASS_SLIDER = "slider" # : UInt8*
   STYLE_CLASS_SPINBUTTON = "spinbutton" # : UInt8*
   STYLE_CLASS_SPINNER = "spinner" # : UInt8*
+  STYLE_CLASS_STATUSBAR = "statusbar" # : UInt8*
   STYLE_CLASS_SUBTITLE = "subtitle" # : UInt8*
   STYLE_CLASS_SUGGESTED_ACTION = "suggested-action" # : UInt8*
   STYLE_CLASS_TITLE = "title" # : UInt8*
@@ -8159,10 +8511,13 @@ lib LibGtk
   STYLE_CLASS_TOOLBAR = "toolbar" # : UInt8*
   STYLE_CLASS_TOOLTIP = "tooltip" # : UInt8*
   STYLE_CLASS_TOP = "top" # : UInt8*
+  STYLE_CLASS_TOUCH_SELECTION = "touch-selection" # : UInt8*
   STYLE_CLASS_TROUGH = "trough" # : UInt8*
+  STYLE_CLASS_UNDERSHOOT = "undershoot" # : UInt8*
   STYLE_CLASS_VERTICAL = "vertical" # : UInt8*
   STYLE_CLASS_VIEW = "view" # : UInt8*
   STYLE_CLASS_WARNING = "warning" # : UInt8*
+  STYLE_CLASS_WIDE = "wide" # : UInt8*
   STYLE_PROPERTY_BACKGROUND_COLOR = "background-color" # : UInt8*
   STYLE_PROPERTY_BACKGROUND_IMAGE = "background-image" # : UInt8*
   STYLE_PROPERTY_BORDER_COLOR = "border-color" # : UInt8*
@@ -8218,6 +8573,7 @@ lib LibGtk
   fun device_grab_remove = gtk_device_grab_remove(widget : LibGtk::Widget*, device : LibGdk::Device*) : Void
   fun disable_setlocale = gtk_disable_setlocale() : Void
   fun distribute_natural_allocation = gtk_distribute_natural_allocation(extra_space : Int32, n_requested_sizes : UInt32, sizes : LibGtk::RequestedSize*) : Int32
+  fun drag_cancel = gtk_drag_cancel(context : LibGdk::DragContext*) : Void
   fun drag_finish = gtk_drag_finish(context : LibGdk::DragContext*, success : Bool, del : Bool, time : UInt32) : Void
   fun drag_get_source_widget = gtk_drag_get_source_widget(context : LibGdk::DragContext*) : LibGtk::Widget*
   fun drag_set_icon_default = gtk_drag_set_icon_default(context : LibGdk::DragContext*) : Void
@@ -8244,6 +8600,7 @@ lib LibGtk
   fun get_major_version = gtk_get_major_version() : UInt32
   fun get_micro_version = gtk_get_micro_version() : UInt32
   fun get_minor_version = gtk_get_minor_version() : UInt32
+  fun get_option_group = gtk_get_option_group(open_default_display : Bool) : LibGLib::OptionGroup*
   fun grab_get_current = gtk_grab_get_current() : LibGtk::Widget*
   fun icon_size_from_name = gtk_icon_size_from_name(name : UInt8*) : Int32
   fun icon_size_get_name = gtk_icon_size_get_name(size : Int32) : UInt8*
@@ -8407,6 +8764,7 @@ lib LibGtk
  alias FontFilterFunc = LibPango::FontFamily*, LibPango::FontFace*, Void* -> Bool
  alias IconViewForeachFunc = LibGtk::IconView*, LibGtk::TreePath*, Void* -> Void
  alias KeySnoopFunc = LibGtk::Widget*, LibGdk::EventKey*, Void* -> Int32
+ alias ListBoxCreateWidgetFunc = LibGObject::Object*, Void* -> LibGtk::Widget*
  alias ListBoxFilterFunc = LibGtk::ListBoxRow*, Void* -> Bool
  alias ListBoxForeachFunc = LibGtk::ListBox*, LibGtk::ListBoxRow*, Void* -> Void
  alias ListBoxSortFunc = LibGtk::ListBoxRow*, LibGtk::ListBoxRow*, Void* -> Int32

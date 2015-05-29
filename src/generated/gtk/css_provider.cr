@@ -44,6 +44,11 @@ module Gtk
       __return_value
     end
 
+    def load_from_resource(resource_path)
+      __return_value = LibGtk.css_provider_load_from_resource((to_unsafe as LibGtk::CssProvider*), resource_path)
+      __return_value
+    end
+
     def to_string
       __return_value = LibGtk.css_provider_to_string((to_unsafe as LibGtk::CssProvider*))
       raise "Expected string but got null" unless __return_value; String.new(__return_value)

@@ -1,4 +1,6 @@
+require "./lib_g_lib"
 require "./lib_gio"
+require "./lib_g_object"
 require "./lib_g_module"
 
 @[Link("gdk_pixbuf-2.0")]
@@ -8,12 +10,12 @@ lib LibGdkPixbuf
   ##    Enums
   ###########################################
 
-  enum Colorspace
+  enum Colorspace : UInt32
     ZERO_NONE = 0
     RGB = 0
   end
 
-  enum InterpType
+  enum InterpType : UInt32
     ZERO_NONE = 0
     NEAREST = 0
     TILES = 1
@@ -21,13 +23,13 @@ lib LibGdkPixbuf
     HYPER = 3
   end
 
-  enum PixbufAlphaMode
+  enum PixbufAlphaMode : UInt32
     ZERO_NONE = 0
     BILEVEL = 0
     FULL = 1
   end
 
-  enum PixbufError
+  enum PixbufError : UInt32
     ZERO_NONE = 0
     CORRUPT_IMAGE = 0
     INSUFFICIENT_MEMORY = 1
@@ -38,7 +40,7 @@ lib LibGdkPixbuf
   end
   fun pixbuf_error_quark = gdk_pixbuf_error_quark() : UInt32
 
-  enum PixbufRotation
+  enum PixbufRotation : UInt32
     ZERO_NONE = 0
     NONE = 0
     COUNTERCLOCKWISE = 90
@@ -54,9 +56,9 @@ lib LibGdkPixbuf
   PIXBUF_FEATURES_H = 1 # : Int32
   PIXBUF_MAGIC_NUMBER = 1197763408 # : Int32
   PIXBUF_MAJOR = 2 # : Int32
-  PIXBUF_MICRO = 1 # : Int32
+  PIXBUF_MICRO = 4 # : Int32
   PIXBUF_MINOR = 31 # : Int32
-  PIXBUF_VERSION = "2.31.1" # : UInt8*
+  PIXBUF_VERSION = "2.31.4" # : UInt8*
   PIXDATA_HEADER_LENGTH = 24 # : Int32
 
   ###########################################
@@ -64,6 +66,7 @@ lib LibGdkPixbuf
   ###########################################
 
   struct Pixbuf # object
+    _data : UInt8[0]
   end
   fun pixbuf_new = gdk_pixbuf_new(colorspace : LibGdkPixbuf::Colorspace, has_alpha : Bool, bits_per_sample : Int32, width : Int32, height : Int32) : LibGdkPixbuf::Pixbuf*
   fun pixbuf_new_from_bytes = gdk_pixbuf_new_from_bytes(data : LibGLib::Bytes*, colorspace : LibGdkPixbuf::Colorspace, has_alpha : Bool, bits_per_sample : Int32, width : Int32, height : Int32, rowstride : Int32) : LibGdkPixbuf::Pixbuf*
@@ -83,7 +86,6 @@ lib LibGdkPixbuf
   fun pixbuf_get_file_info_async = gdk_pixbuf_get_file_info_async(filename : UInt8*, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun pixbuf_get_file_info_finish = gdk_pixbuf_get_file_info_finish(async_result : LibGio::AsyncResult*, width : Int32*, height : Int32*, error : LibGLib::Error**) : LibGdkPixbuf::PixbufFormat*
   fun pixbuf_get_formats = gdk_pixbuf_get_formats() : Void**
-  fun pixbuf_gettext = gdk_pixbuf_gettext(msgid : UInt8*) : UInt8*
   fun pixbuf_new_from_stream_async = gdk_pixbuf_new_from_stream_async(stream : LibGio::InputStream*, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun pixbuf_new_from_stream_at_scale_async = gdk_pixbuf_new_from_stream_at_scale_async(stream : LibGio::InputStream*, width : Int32, height : Int32, preserve_aspect_ratio : Bool, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun pixbuf_save_to_stream_finish = gdk_pixbuf_save_to_stream_finish(async_result : LibGio::AsyncResult*, error : LibGLib::Error**) : Bool
@@ -103,6 +105,7 @@ lib LibGdkPixbuf
   fun pixbuf_get_height = gdk_pixbuf_get_height(this : Pixbuf*) : Int32
   fun pixbuf_get_n_channels = gdk_pixbuf_get_n_channels(this : Pixbuf*) : Int32
   fun pixbuf_get_option = gdk_pixbuf_get_option(this : Pixbuf*, key : UInt8*) : UInt8*
+  fun pixbuf_get_options = gdk_pixbuf_get_options(this : Pixbuf*) : Void**
   fun pixbuf_get_pixels = gdk_pixbuf_get_pixels_with_length(this : Pixbuf*, length : UInt32*) : UInt8*
   fun pixbuf_get_rowstride = gdk_pixbuf_get_rowstride(this : Pixbuf*) : Int32
   fun pixbuf_get_width = gdk_pixbuf_get_width(this : Pixbuf*) : Int32
@@ -118,6 +121,7 @@ lib LibGdkPixbuf
   fun pixbuf_scale_simple = gdk_pixbuf_scale_simple(this : Pixbuf*, dest_width : Int32, dest_height : Int32, interp_type : LibGdkPixbuf::InterpType) : LibGdkPixbuf::Pixbuf*
 
   struct PixbufAnimation # object
+    _data : UInt8[0]
   end
   fun pixbuf_animation_new_from_file = gdk_pixbuf_animation_new_from_file(filename : UInt8*, error : LibGLib::Error**) : LibGdkPixbuf::PixbufAnimation*
   fun pixbuf_animation_new_from_resource = gdk_pixbuf_animation_new_from_resource(resource_path : UInt8*, error : LibGLib::Error**) : LibGdkPixbuf::PixbufAnimation*
@@ -131,6 +135,7 @@ lib LibGdkPixbuf
   fun pixbuf_animation_is_static_image = gdk_pixbuf_animation_is_static_image(this : PixbufAnimation*) : Bool
 
   struct PixbufAnimationIter # object
+    _data : UInt8[0]
   end
   fun pixbuf_animation_iter_advance = gdk_pixbuf_animation_iter_advance(this : PixbufAnimationIter*, current_time : LibGLib::TimeVal*) : Bool
   fun pixbuf_animation_iter_get_delay_time = gdk_pixbuf_animation_iter_get_delay_time(this : PixbufAnimationIter*) : Int32
@@ -161,6 +166,7 @@ lib LibGdkPixbuf
   fun pixbuf_loader_write_bytes = gdk_pixbuf_loader_write_bytes(this : PixbufLoader*, buffer : LibGLib::Bytes*, error : LibGLib::Error**) : Bool
 
   struct PixbufSimpleAnim # object
+    _data : UInt8[0]
   end
   fun pixbuf_simple_anim_new = gdk_pixbuf_simple_anim_new(width : Int32, height : Int32, rate : Float32) : LibGdkPixbuf::PixbufSimpleAnim*
   fun pixbuf_simple_anim_add_frame = gdk_pixbuf_simple_anim_add_frame(this : PixbufSimpleAnim*, pixbuf : LibGdkPixbuf::Pixbuf*) : Void
@@ -168,6 +174,7 @@ lib LibGdkPixbuf
   fun pixbuf_simple_anim_set_loop = gdk_pixbuf_simple_anim_set_loop(this : PixbufSimpleAnim*, loop : Bool) : Void
 
   struct PixbufSimpleAnimIter # object
+    _data : UInt8[0]
   end
 
 
@@ -176,6 +183,7 @@ lib LibGdkPixbuf
   ###########################################
 
   struct PixbufFormat # struct
+    _data : UInt8[0]
   end
   fun pixbuf_format_copy = gdk_pixbuf_format_copy(this : PixbufFormat*) : LibGdkPixbuf::PixbufFormat*
   fun pixbuf_format_free = gdk_pixbuf_format_free(this : PixbufFormat*) : Void
@@ -207,7 +215,7 @@ lib LibGdkPixbuf
   ##    Flags
   ###########################################
 
-  enum PixdataDumpType
+  enum PixdataDumpType : UInt32
     ZERO_NONE = 0
     PIXDATA_STREAM = 0
     PIXDATA_STRUCT = 1
@@ -219,7 +227,7 @@ lib LibGdkPixbuf
     RLE_DECODER = 65536
   end
 
-  enum PixdataType
+  enum PixdataType : UInt32
     ZERO_NONE = 0
     COLOR_TYPE_RGB = 1
     COLOR_TYPE_RGBA = 2

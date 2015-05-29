@@ -19,6 +19,11 @@ module Gtk
       Gtk::PaperSize.new(__return_value)
     end
 
+    def self.new_from_ipp(ipp_name, width, height)
+      __return_value = LibGtk.paper_size_new_from_ipp(ipp_name, Float64.cast(width), Float64.cast(height))
+      Gtk::PaperSize.new(__return_value)
+    end
+
     def self.new_from_key_file(key_file, group_name)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.paper_size_new_from_key_file((key_file.to_unsafe as LibGLib::KeyFile*), group_name, pointerof(__error))
@@ -93,6 +98,11 @@ module Gtk
 
     def is_equal(size2)
       __return_value = LibGtk.paper_size_is_equal((to_unsafe as LibGtk::PaperSize*), (size2.to_unsafe as LibGtk::PaperSize*))
+      __return_value
+    end
+
+    def is_ipp
+      __return_value = LibGtk.paper_size_is_ipp((to_unsafe as LibGtk::PaperSize*))
       __return_value
     end
 

@@ -33,6 +33,11 @@ module Gtk
       __return_value
     end
 
+    def detach_tab(child)
+      __return_value = LibGtk.notebook_detach_tab((to_unsafe as LibGtk::Notebook*), (child.to_unsafe as LibGtk::Widget*))
+      __return_value
+    end
+
     def action_widget(pack_type)
       __return_value = LibGtk.notebook_get_action_widget((to_unsafe as LibGtk::Notebook*), pack_type)
       Gtk::Widget.new(__return_value)

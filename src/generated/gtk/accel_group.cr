@@ -66,7 +66,7 @@ module Gtk
 
     def query(accel_key, accel_mods, n_entries)
       __return_value = LibGtk.accel_group_query((to_unsafe as LibGtk::AccelGroup*), UInt32.cast(accel_key), accel_mods, UInt32.cast(n_entries))
-      PointerIterator.new(__return_value) {|__item_39| Gtk::AccelGroupEntry.new(__item_39) }
+      PointerIterator.new(__return_value) {|__item_37| Gtk::AccelGroupEntry.new(__item_37) }
     end
 
     def unlock

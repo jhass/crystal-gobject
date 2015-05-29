@@ -15,6 +15,7 @@ module Gtk
 
 
 
+
     def self.new_internal(relative_to)
       __return_value = LibGtk.popover_new(relative_to && (relative_to.to_unsafe as LibGtk::Widget*))
       Gtk::Widget.new(__return_value)
@@ -50,6 +51,11 @@ module Gtk
       Gtk::Widget.new(__return_value)
     end
 
+    def transitions_enabled
+      __return_value = LibGtk.popover_get_transitions_enabled((to_unsafe as LibGtk::Popover*))
+      __return_value
+    end
+
     def modal=(modal)
       __return_value = LibGtk.popover_set_modal((to_unsafe as LibGtk::Popover*), Bool.cast(modal))
       __return_value
@@ -67,6 +73,11 @@ module Gtk
 
     def relative_to=(relative_to)
       __return_value = LibGtk.popover_set_relative_to((to_unsafe as LibGtk::Popover*), relative_to && (relative_to.to_unsafe as LibGtk::Widget*))
+      __return_value
+    end
+
+    def transitions_enabled=(transitions_enabled)
+      __return_value = LibGtk.popover_set_transitions_enabled((to_unsafe as LibGtk::Popover*), Bool.cast(transitions_enabled))
       __return_value
     end
 

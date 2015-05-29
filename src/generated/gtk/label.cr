@@ -31,6 +31,8 @@ module Gtk
 
 
 
+
+
     def self.new_internal(str)
       __return_value = LibGtk.label_new(str && str)
       Gtk::Widget.new(__return_value)
@@ -151,6 +153,16 @@ module Gtk
       __return_value
     end
 
+    def xalign
+      __return_value = LibGtk.label_get_xalign((to_unsafe as LibGtk::Label*))
+      __return_value
+    end
+
+    def yalign
+      __return_value = LibGtk.label_get_yalign((to_unsafe as LibGtk::Label*))
+      __return_value
+    end
+
     def select_region(start_offset, end_offset)
       __return_value = LibGtk.label_select_region((to_unsafe as LibGtk::Label*), Int32.cast(start_offset), Int32.cast(end_offset))
       __return_value
@@ -162,7 +174,7 @@ module Gtk
     end
 
     def attributes=(attrs)
-      __return_value = LibGtk.label_set_attributes((to_unsafe as LibGtk::Label*), (attrs.to_unsafe as LibPango::AttrList*))
+      __return_value = LibGtk.label_set_attributes((to_unsafe as LibGtk::Label*), attrs && (attrs.to_unsafe as LibPango::AttrList*))
       __return_value
     end
 
@@ -258,6 +270,16 @@ module Gtk
 
     def width_chars=(n_chars)
       __return_value = LibGtk.label_set_width_chars((to_unsafe as LibGtk::Label*), Int32.cast(n_chars))
+      __return_value
+    end
+
+    def xalign=(xalign)
+      __return_value = LibGtk.label_set_xalign((to_unsafe as LibGtk::Label*), Float32.cast(xalign))
+      __return_value
+    end
+
+    def yalign=(yalign)
+      __return_value = LibGtk.label_set_yalign((to_unsafe as LibGtk::Label*), Float32.cast(yalign))
       __return_value
     end
 

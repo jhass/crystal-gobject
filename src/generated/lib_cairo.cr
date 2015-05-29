@@ -6,33 +6,43 @@ lib Libcairo
   ###########################################
 
   struct Context # struct
+    _data : UInt8[0]
   end
 
   struct Surface # struct
+    _data : UInt8[0]
   end
 
   struct Matrix # struct
+    _data : UInt8[0]
   end
 
   struct Pattern # struct
+    _data : UInt8[0]
   end
 
   struct Region # struct
+    _data : UInt8[0]
   end
 
   struct FontOptions # struct
+    _data : UInt8[0]
   end
 
   struct FontType # struct
+    _data : UInt8[0]
   end
 
   struct FontFace # struct
+    _data : UInt8[0]
   end
 
   struct ScaledFont # struct
+    _data : UInt8[0]
   end
 
   struct Path # struct
+    _data : UInt8[0]
   end
 
   struct RectangleInt # struct
@@ -47,7 +57,7 @@ lib Libcairo
   ##    Enums
   ###########################################
 
-  enum Content
+  enum Content : UInt32
     ZERO_NONE = 0
     COLOR = 4096
     ALPHA = 8192

@@ -44,6 +44,16 @@ module GLib
       __return_value
     end
 
+    def main_group
+      __return_value = LibGLib.option_context_get_main_group((to_unsafe as LibGLib::OptionContext*))
+      GLib::OptionGroup.new(__return_value)
+    end
+
+    def strict_posix
+      __return_value = LibGLib.option_context_get_strict_posix((to_unsafe as LibGLib::OptionContext*))
+      __return_value
+    end
+
     def summary
       __return_value = LibGLib.option_context_get_summary((to_unsafe as LibGLib::OptionContext*))
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
@@ -80,6 +90,11 @@ module GLib
 
     def main_group=(group)
       __return_value = LibGLib.option_context_set_main_group((to_unsafe as LibGLib::OptionContext*), (group.to_unsafe as LibGLib::OptionGroup*))
+      __return_value
+    end
+
+    def strict_posix=(strict_posix)
+      __return_value = LibGLib.option_context_set_strict_posix((to_unsafe as LibGLib::OptionContext*), Bool.cast(strict_posix))
       __return_value
     end
 

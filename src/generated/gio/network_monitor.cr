@@ -24,6 +24,11 @@ module Gio
       __return_value
     end
 
+    def connectivity
+      __return_value = LibGio.network_monitor_get_connectivity((to_unsafe as LibGio::NetworkMonitor*))
+      __return_value
+    end
+
     def network_available
       __return_value = LibGio.network_monitor_get_network_available((to_unsafe as LibGio::NetworkMonitor*))
       __return_value

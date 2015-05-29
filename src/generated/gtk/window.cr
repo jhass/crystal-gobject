@@ -301,6 +301,11 @@ module Gtk
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 
+    def titlebar
+      __return_value = LibGtk.window_get_titlebar((to_unsafe as LibGtk::Window*))
+      Gtk::Widget.new(__return_value)
+    end
+
     def transient_for
       __return_value = LibGtk.window_get_transient_for((to_unsafe as LibGtk::Window*))
       Gtk::Window.new(__return_value)

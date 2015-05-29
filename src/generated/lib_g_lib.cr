@@ -95,7 +95,7 @@ lib LibGLib
   MININT32 = -2147483648 # : Int32
   MININT64 = -9223372036854775808 # : Int64
   MININT8 = -128 # : Int8
-  MINOR_VERSION = 42 # : Int32
+  MINOR_VERSION = 44 # : Int32
   MODULE_SUFFIX = "so" # : UInt8*
   OPTION_REMAINING = "" # : UInt8*
   PDP_ENDIAN = 3412 # : Int32
@@ -147,6 +147,7 @@ lib LibGLib
   end
 
   struct AsyncQueue # struct
+    _data : UInt8[0]
   end
   fun async_queue_length = g_async_queue_length(this : AsyncQueue*) : Int32
   fun async_queue_length_unlocked = g_async_queue_length_unlocked(this : AsyncQueue*) : Int32
@@ -159,6 +160,7 @@ lib LibGLib
   fun async_queue_unref_and_unlock = g_async_queue_unref_and_unlock(this : AsyncQueue*) : Void
 
   struct BookmarkFile # struct
+    _data : UInt8[0]
   end
   fun bookmark_file_add_application = g_bookmark_file_add_application(this : BookmarkFile*, uri : UInt8*, name : UInt8*, exec : UInt8*) : Void
   fun bookmark_file_add_group = g_bookmark_file_add_group(this : BookmarkFile*, uri : UInt8*, group : UInt8*) : Void
@@ -211,6 +213,7 @@ lib LibGLib
   fun byte_array_unref = g_byte_array_unref(array : Void**) : Void
 
   struct Bytes # struct
+    _data : UInt8[0]
   end
   fun bytes_new = g_bytes_new(data : UInt8*, size : UInt64) : LibGLib::Bytes*
   fun bytes_new_take = g_bytes_new_take(data : UInt8*, size : UInt64) : LibGLib::Bytes*
@@ -226,6 +229,7 @@ lib LibGLib
   fun bytes_unref_to_data = g_bytes_unref_to_data(this : Bytes*, size : UInt64*) : Void*
 
   struct Checksum # struct
+    _data : UInt8[0]
   end
   fun checksum_new = g_checksum_new(checksum_type : LibGLib::ChecksumType) : LibGLib::Checksum*
   fun checksum_copy = g_checksum_copy(this : Checksum*) : LibGLib::Checksum*
@@ -247,6 +251,7 @@ lib LibGLib
   fun cond_wait_until = g_cond_wait_until(this : Cond*, mutex : LibGLib::Mutex*, end_time : Int64) : Bool
 
   struct Data # struct
+    _data : UInt8[0]
   end
 
   struct Date # struct
@@ -307,6 +312,7 @@ lib LibGLib
   fun date_valid_year = g_date_valid_year(year : UInt16) : Bool
 
   struct DateTime # struct
+    _data : UInt8[0]
   end
   fun date_time_new = g_date_time_new(tz : LibGLib::TimeZone*, year : Int32, month : Int32, day : Int32, hour : Int32, minute : Int32, seconds : Float64) : LibGLib::DateTime*
   fun date_time_new_from_timeval_local = g_date_time_new_from_timeval_local(tv : LibGLib::TimeVal*) : LibGLib::DateTime*
@@ -362,6 +368,7 @@ lib LibGLib
   end
 
   struct Dir # struct
+    _data : UInt8[0]
   end
   fun dir_close = g_dir_close(this : Dir*) : Void
   fun dir_read_name = g_dir_read_name(this : Dir*) : UInt8*
@@ -379,6 +386,7 @@ lib LibGLib
   fun error_matches = g_error_matches(this : Error*, domain : UInt32, code : Int32) : Bool
 
   struct HashTable # struct
+    _data : UInt8[0]
   end
   fun hash_table_add = g_hash_table_add(hash_table : Void**, key : Void*) : Bool
   fun hash_table_contains = g_hash_table_contains(hash_table : Void**, key : Void*) : Bool
@@ -408,6 +416,7 @@ lib LibGLib
   fun hash_table_iter_steal = g_hash_table_iter_steal(this : HashTableIter*) : Void
 
   struct Hmac # struct
+    _data : UInt8[0]
   end
   fun hmac_get_digest = g_hmac_get_digest(this : Hmac*, buffer : UInt8*, digest_len : UInt64*) : Void
   fun hmac_get_string = g_hmac_get_string(this : Hmac*) : UInt8*
@@ -447,6 +456,7 @@ lib LibGLib
   fun hook_list_invoke_check = g_hook_list_invoke_check(this : HookList*, may_recurse : Bool) : Void
 
   struct IConv # struct
+    _data : UInt8[0]
   end
   fun i_conv_new = g_iconv(this : IConv*, inbuf : UInt8*, inbytes_left : UInt64*, outbuf : UInt8*, outbytes_left : UInt64*) : UInt64
   fun i_conv_close = g_iconv_close(this : IConv*) : Int32
@@ -521,6 +531,7 @@ lib LibGLib
   end
 
   struct KeyFile # struct
+    _data : UInt8[0]
   end
   fun key_file_new = g_key_file_new() : LibGLib::KeyFile*
   fun key_file_get_boolean = g_key_file_get_boolean(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : Bool
@@ -575,6 +586,7 @@ lib LibGLib
   end
 
   struct MainContext # struct
+    _data : UInt8[0]
   end
   fun main_context_new = g_main_context_new() : LibGLib::MainContext*
   fun main_context_acquire = g_main_context_acquire(this : MainContext*) : Bool
@@ -603,6 +615,7 @@ lib LibGLib
   fun main_context_ref_thread_default = g_main_context_ref_thread_default() : LibGLib::MainContext*
 
   struct MainLoop # struct
+    _data : UInt8[0]
   end
   fun main_loop_new = g_main_loop_new(context : LibGLib::MainContext*, is_running : Bool) : LibGLib::MainLoop*
   fun main_loop_get_context = g_main_loop_get_context(this : MainLoop*) : LibGLib::MainContext*
@@ -613,6 +626,7 @@ lib LibGLib
   fun main_loop_unref = g_main_loop_unref(this : MainLoop*) : Void
 
   struct MappedFile # struct
+    _data : UInt8[0]
   end
   fun mapped_file_new = g_mapped_file_new(filename : UInt8*, writable : Bool, error : LibGLib::Error**) : LibGLib::MappedFile*
   fun mapped_file_new_from_fd = g_mapped_file_new_from_fd(fd : Int32, writable : Bool, error : LibGLib::Error**) : LibGLib::MappedFile*
@@ -624,6 +638,7 @@ lib LibGLib
   fun mapped_file_unref = g_mapped_file_unref(this : MappedFile*) : Void
 
   struct MarkupParseContext # struct
+    _data : UInt8[0]
   end
   fun markup_parse_context_new = g_markup_parse_context_new(parser : LibGLib::MarkupParser*, flags : LibGLib::MarkupParseFlags, user_data : Void*, user_data_dnotify : LibGLib::DestroyNotify) : LibGLib::MarkupParseContext*
   fun markup_parse_context_end_parse = g_markup_parse_context_end_parse(this : MarkupParseContext*, error : LibGLib::Error**) : Bool
@@ -644,6 +659,7 @@ lib LibGLib
   end
 
   struct MatchInfo # struct
+    _data : UInt8[0]
   end
   fun match_info_expand_references = g_match_info_expand_references(this : MatchInfo*, string_to_expand : UInt8*, error : LibGLib::Error**) : UInt8*
   fun match_info_fetch = g_match_info_fetch(this : MatchInfo*, match_num : Int32) : UInt8*
@@ -696,6 +712,7 @@ lib LibGLib
   fun once_init_leave = g_once_init_leave(location : Void*, result : UInt64) : Void
 
   struct OptionContext # struct
+    _data : UInt8[0]
   end
   fun option_context_add_group = g_option_context_add_group(this : OptionContext*, group : LibGLib::OptionGroup*) : Void
   fun option_context_add_main_entries = g_option_context_add_main_entries(this : OptionContext*, entries : LibGLib::OptionEntry*, translation_domain : UInt8*) : Void
@@ -704,6 +721,8 @@ lib LibGLib
   fun option_context_get_help = g_option_context_get_help(this : OptionContext*, main_help : Bool, group : LibGLib::OptionGroup*) : UInt8*
   fun option_context_get_help_enabled = g_option_context_get_help_enabled(this : OptionContext*) : Bool
   fun option_context_get_ignore_unknown_options = g_option_context_get_ignore_unknown_options(this : OptionContext*) : Bool
+  fun option_context_get_main_group = g_option_context_get_main_group(this : OptionContext*) : LibGLib::OptionGroup*
+  fun option_context_get_strict_posix = g_option_context_get_strict_posix(this : OptionContext*) : Bool
   fun option_context_get_summary = g_option_context_get_summary(this : OptionContext*) : UInt8*
   fun option_context_parse = g_option_context_parse(this : OptionContext*, argc : Int32*, argv : UInt8***, error : LibGLib::Error**) : Bool
   fun option_context_parse_strv = g_option_context_parse_strv(this : OptionContext*, arguments : UInt8***, error : LibGLib::Error**) : Bool
@@ -711,6 +730,7 @@ lib LibGLib
   fun option_context_set_help_enabled = g_option_context_set_help_enabled(this : OptionContext*, help_enabled : Bool) : Void
   fun option_context_set_ignore_unknown_options = g_option_context_set_ignore_unknown_options(this : OptionContext*, ignore_unknown : Bool) : Void
   fun option_context_set_main_group = g_option_context_set_main_group(this : OptionContext*, group : LibGLib::OptionGroup*) : Void
+  fun option_context_set_strict_posix = g_option_context_set_strict_posix(this : OptionContext*, strict_posix : Bool) : Void
   fun option_context_set_summary = g_option_context_set_summary(this : OptionContext*, summary : UInt8*) : Void
   fun option_context_set_translate_func = g_option_context_set_translate_func(this : OptionContext*, func : LibGLib::TranslateFunc, data : Void*, destroy_notify : LibGLib::DestroyNotify) : Void
   fun option_context_set_translation_domain = g_option_context_set_translation_domain(this : OptionContext*, domain : UInt8*) : Void
@@ -726,13 +746,18 @@ lib LibGLib
   end
 
   struct OptionGroup # struct
+    _data : UInt8[0]
   end
+  fun option_group_new = g_option_group_new(name : UInt8*, description : UInt8*, help_description : UInt8*, user_data : Void*, destroy : LibGLib::DestroyNotify) : LibGLib::OptionGroup*
   fun option_group_add_entries = g_option_group_add_entries(this : OptionGroup*, entries : LibGLib::OptionEntry*) : Void
   fun option_group_free = g_option_group_free(this : OptionGroup*) : Void
+  fun option_group_ref = g_option_group_ref(this : OptionGroup*) : LibGLib::OptionGroup*
   fun option_group_set_translate_func = g_option_group_set_translate_func(this : OptionGroup*, func : LibGLib::TranslateFunc, data : Void*, destroy_notify : LibGLib::DestroyNotify) : Void
   fun option_group_set_translation_domain = g_option_group_set_translation_domain(this : OptionGroup*, domain : UInt8*) : Void
+  fun option_group_unref = g_option_group_unref(this : OptionGroup*) : Void
 
   struct PatternSpec # struct
+    _data : UInt8[0]
   end
   fun pattern_spec_equal = g_pattern_spec_equal(this : PatternSpec*, pspec2 : LibGLib::PatternSpec*) : Bool
   fun pattern_spec_free = g_pattern_spec_free(this : PatternSpec*) : Void
@@ -789,6 +814,7 @@ lib LibGLib
   fun r_w_lock_writer_unlock = g_rw_lock_writer_unlock(this : RWLock*) : Void
 
   struct Rand # struct
+    _data : UInt8[0]
   end
   fun rand_double = g_rand_double(this : Rand*) : Float64
   fun rand_double_range = g_rand_double_range(this : Rand*, _begin : Float64, end : Float64) : Float64
@@ -809,6 +835,7 @@ lib LibGLib
   fun rec_mutex_unlock = g_rec_mutex_unlock(this : RecMutex*) : Void
 
   struct Regex # struct
+    _data : UInt8[0]
   end
   fun regex_new = g_regex_new(pattern : UInt8*, compile_options : LibGLib::RegexCompileFlags, match_options : LibGLib::RegexMatchFlags, error : LibGLib::Error**) : LibGLib::Regex*
   fun regex_get_capture_count = g_regex_get_capture_count(this : Regex*) : Int32
@@ -910,6 +937,7 @@ lib LibGLib
   end
 
   struct Sequence # struct
+    _data : UInt8[0]
   end
   fun sequence_free = g_sequence_free(this : Sequence*) : Void
   fun sequence_get_length = g_sequence_get_length(this : Sequence*) : Int32
@@ -921,6 +949,7 @@ lib LibGLib
   fun sequence_swap = g_sequence_swap(a : LibGLib::SequenceIter*, b : LibGLib::SequenceIter*) : Void
 
   struct SequenceIter # struct
+    _data : UInt8[0]
   end
   fun sequence_iter_compare = g_sequence_iter_compare(this : SequenceIter*, b : LibGLib::SequenceIter*) : Int32
   fun sequence_iter_get_position = g_sequence_iter_get_position(this : SequenceIter*) : Int32
@@ -991,9 +1020,11 @@ lib LibGLib
   end
 
   struct SourcePrivate # struct
+    _data : UInt8[0]
   end
 
   struct StatBuf # struct
+    _data : UInt8[0]
   end
 
   struct String # struct
@@ -1030,6 +1061,7 @@ lib LibGLib
   fun string_up = g_string_up(this : String*) : LibGLib::String*
 
   struct StringChunk # struct
+    _data : UInt8[0]
   end
   fun string_chunk_clear = g_string_chunk_clear(this : StringChunk*) : Void
   fun string_chunk_free = g_string_chunk_free(this : StringChunk*) : Void
@@ -1038,6 +1070,7 @@ lib LibGLib
   fun string_chunk_insert_len = g_string_chunk_insert_len(this : StringChunk*, string : UInt8*, len : Int64) : UInt8*
 
   struct TestCase # struct
+    _data : UInt8[0]
   end
 
   struct TestConfig # struct
@@ -1066,11 +1099,13 @@ lib LibGLib
   fun test_log_msg_free = g_test_log_msg_free(this : TestLogMsg*) : Void
 
   struct TestSuite # struct
+    _data : UInt8[0]
   end
   fun test_suite_add = g_test_suite_add(this : TestSuite*, test_case : LibGLib::TestCase*) : Void
   fun test_suite_add_suite = g_test_suite_add_suite(this : TestSuite*, nestedsuite : LibGLib::TestSuite*) : Void
 
   struct Thread # struct
+    _data : UInt8[0]
   end
   fun thread_ref = g_thread_ref(this : Thread*) : LibGLib::Thread*
   fun thread_unref = g_thread_unref(this : Thread*) : Void
@@ -1106,6 +1141,7 @@ lib LibGLib
   fun time_val_from_iso8601 = g_time_val_from_iso8601(iso_date : UInt8*, time : LibGLib::TimeVal*) : Bool
 
   struct TimeZone # struct
+    _data : UInt8[0]
   end
   fun time_zone_new = g_time_zone_new(identifier : UInt8*) : LibGLib::TimeZone*
   fun time_zone_new_local = g_time_zone_new_local() : LibGLib::TimeZone*
@@ -1119,6 +1155,7 @@ lib LibGLib
   fun time_zone_unref = g_time_zone_unref(this : TimeZone*) : Void
 
   struct Timer # struct
+    _data : UInt8[0]
   end
   fun timer_continue = g_timer_continue(this : Timer*) : Void
   fun timer_destroy = g_timer_destroy(this : Timer*) : Void
@@ -1134,6 +1171,7 @@ lib LibGLib
   fun trash_stack_push = g_trash_stack_push(stack_p : LibGLib::TrashStack*, data_p : Void*) : Void
 
   struct Tree # struct
+    _data : UInt8[0]
   end
   fun tree_destroy = g_tree_destroy(this : Tree*) : Void
   fun tree_height = g_tree_height(this : Tree*) : Int32
@@ -1146,6 +1184,7 @@ lib LibGLib
   fun tree_unref = g_tree_unref(this : Tree*) : Void
 
   struct Variant # struct
+    _data : UInt8[0]
   end
   fun variant_new_array = g_variant_new_array(child_type : LibGLib::VariantType*, children : LibGLib::Variant**, n_children : UInt64) : LibGLib::Variant*
   fun variant_new_boolean = g_variant_new_boolean(value : Bool) : LibGLib::Variant*
@@ -1251,6 +1290,7 @@ lib LibGLib
   fun variant_dict_unref = g_variant_dict_unref(this : VariantDict*) : Void
 
   struct VariantType # struct
+    _data : UInt8[0]
   end
   fun variant_type_new = g_variant_type_new(type_string : UInt8*) : LibGLib::VariantType*
   fun variant_type_new_array = g_variant_type_new_array(element : LibGLib::VariantType*) : LibGLib::VariantType*
@@ -1287,7 +1327,7 @@ lib LibGLib
   ##    Flags
   ###########################################
 
-  enum AsciiType
+  enum AsciiType : UInt32
     ZERO_NONE = 0
     ALNUM = 1
     ALPHA = 2
@@ -1302,7 +1342,7 @@ lib LibGLib
     XDIGIT = 1024
   end
 
-  enum FileTest
+  enum FileTest : UInt32
     ZERO_NONE = 0
     IS_REGULAR = 1
     IS_SYMLINK = 2
@@ -1311,21 +1351,21 @@ lib LibGLib
     EXISTS = 16
   end
 
-  enum FormatSizeFlags
+  enum FormatSizeFlags : UInt32
     ZERO_NONE = 0
     DEFAULT = 0
     LONG_FORMAT = 1
     IEC_UNITS = 2
   end
 
-  enum HookFlagMask
+  enum HookFlagMask : UInt32
     ZERO_NONE = 0
     ACTIVE = 1
     IN_CALL = 2
     MASK = 15
   end
 
-  enum IOCondition
+  enum IOCondition : UInt32
     ZERO_NONE = 0
     IN = 1
     OUT = 4
@@ -1335,7 +1375,7 @@ lib LibGLib
     NVAL = 32
   end
 
-  enum IOFlags
+  enum IOFlags : UInt32
     ZERO_NONE = 0
     APPEND = 1
     NONBLOCK = 2
@@ -1348,14 +1388,14 @@ lib LibGLib
     SET_MASK = 3
   end
 
-  enum KeyFileFlags
+  enum KeyFileFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     KEEP_COMMENTS = 1
     KEEP_TRANSLATIONS = 2
   end
 
-  enum LogLevelFlags
+  enum LogLevelFlags : Int32
     ZERO_NONE = 0
     FLAG_RECURSION = 1
     FLAG_FATAL = 2
@@ -1368,7 +1408,7 @@ lib LibGLib
     LEVEL_MASK = -4
   end
 
-  enum MarkupCollectType
+  enum MarkupCollectType : UInt32
     ZERO_NONE = 0
     INVALID = 0
     STRING = 1
@@ -1378,7 +1418,7 @@ lib LibGLib
     OPTIONAL = 65536
   end
 
-  enum MarkupParseFlags
+  enum MarkupParseFlags : UInt32
     ZERO_NONE = 0
     DO_NOT_USE_THIS_UNSUPPORTED_FLAG = 1
     TREAT_CDATA_AS_TEXT = 2
@@ -1386,7 +1426,7 @@ lib LibGLib
     IGNORE_QUALIFIED = 8
   end
 
-  enum OptionFlags
+  enum OptionFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     HIDDEN = 1
@@ -1398,7 +1438,7 @@ lib LibGLib
     NOALIAS = 64
   end
 
-  enum RegexCompileFlags
+  enum RegexCompileFlags : UInt32
     ZERO_NONE = 0
     CASELESS = 1
     MULTILINE = 2
@@ -1420,7 +1460,7 @@ lib LibGLib
     JAVASCRIPT_COMPAT = 33554432
   end
 
-  enum RegexMatchFlags
+  enum RegexMatchFlags : UInt32
     ZERO_NONE = 0
     ANCHORED = 16
     NOTBOL = 128
@@ -1439,7 +1479,7 @@ lib LibGLib
     NOTEMPTY_ATSTART = 268435456
   end
 
-  enum SpawnFlags
+  enum SpawnFlags : UInt32
     ZERO_NONE = 0
     DEFAULT = 0
     LEAVE_DESCRIPTORS_OPEN = 1
@@ -1453,21 +1493,21 @@ lib LibGLib
     CLOEXEC_PIPES = 256
   end
 
-  enum TestSubprocessFlags
+  enum TestSubprocessFlags : UInt32
     ZERO_NONE = 0
     STDIN = 1
     STDOUT = 2
     STDERR = 4
   end
 
-  enum TestTrapFlags
+  enum TestTrapFlags : UInt32
     ZERO_NONE = 0
     SILENCE_STDOUT = 128
     SILENCE_STDERR = 256
     INHERIT_STDIN = 512
   end
 
-  enum TraverseFlags
+  enum TraverseFlags : UInt32
     ZERO_NONE = 0
     LEAVES = 1
     NON_LEAVES = 2
@@ -1482,7 +1522,7 @@ lib LibGLib
   ##    Enums
   ###########################################
 
-  enum BookmarkFileError
+  enum BookmarkFileError : UInt32
     ZERO_NONE = 0
     INVALID_URI = 0
     INVALID_VALUE = 1
@@ -1494,7 +1534,7 @@ lib LibGLib
     FILE_NOT_FOUND = 7
   end
 
-  enum ChecksumType
+  enum ChecksumType : UInt32
     ZERO_NONE = 0
     MD5 = 0
     SHA1 = 1
@@ -1502,7 +1542,7 @@ lib LibGLib
     SHA512 = 3
   end
 
-  enum ConvertError
+  enum ConvertError : UInt32
     ZERO_NONE = 0
     NO_CONVERSION = 0
     ILLEGAL_SEQUENCE = 1
@@ -1513,14 +1553,14 @@ lib LibGLib
     NO_MEMORY = 6
   end
 
-  enum DateDMY
+  enum DateDMY : UInt32
     ZERO_NONE = 0
     DAY = 0
     MONTH = 1
     YEAR = 2
   end
 
-  enum DateMonth
+  enum DateMonth : UInt32
     ZERO_NONE = 0
     BAD_MONTH = 0
     JANUARY = 1
@@ -1537,7 +1577,7 @@ lib LibGLib
     DECEMBER = 12
   end
 
-  enum DateWeekday
+  enum DateWeekday : UInt32
     ZERO_NONE = 0
     BAD_WEEKDAY = 0
     MONDAY = 1
@@ -1549,7 +1589,7 @@ lib LibGLib
     SUNDAY = 7
   end
 
-  enum ErrorType
+  enum ErrorType : UInt32
     ZERO_NONE = 0
     UNKNOWN = 0
     UNEXP_EOF = 1
@@ -1561,7 +1601,7 @@ lib LibGLib
     FLOAT_MALFORMED = 7
   end
 
-  enum FileError
+  enum FileError : UInt32
     ZERO_NONE = 0
     EXIST = 0
     ISDIR = 1
@@ -1590,7 +1630,7 @@ lib LibGLib
     FAILED = 24
   end
 
-  enum IOChannelError
+  enum IOChannelError : UInt32
     ZERO_NONE = 0
     FBIG = 0
     INVAL = 1
@@ -1603,7 +1643,7 @@ lib LibGLib
     FAILED = 8
   end
 
-  enum IOError
+  enum IOError : UInt32
     ZERO_NONE = 0
     NONE = 0
     AGAIN = 1
@@ -1611,7 +1651,7 @@ lib LibGLib
     UNKNOWN = 3
   end
 
-  enum IOStatus
+  enum IOStatus : UInt32
     ZERO_NONE = 0
     ERROR = 0
     NORMAL = 1
@@ -1619,7 +1659,7 @@ lib LibGLib
     AGAIN = 3
   end
 
-  enum KeyFileError
+  enum KeyFileError : UInt32
     ZERO_NONE = 0
     UNKNOWN_ENCODING = 0
     PARSE = 1
@@ -1629,7 +1669,7 @@ lib LibGLib
     INVALID_VALUE = 5
   end
 
-  enum MarkupError
+  enum MarkupError : UInt32
     ZERO_NONE = 0
     BAD_UTF8 = 0
     EMPTY = 1
@@ -1640,7 +1680,7 @@ lib LibGLib
     MISSING_ATTRIBUTE = 6
   end
 
-  enum NormalizeMode
+  enum NormalizeMode : UInt32
     ZERO_NONE = 0
     DEFAULT = 0
     NFD = 0
@@ -1652,14 +1692,14 @@ lib LibGLib
     NFKC = 3
   end
 
-  enum OnceStatus
+  enum OnceStatus : UInt32
     ZERO_NONE = 0
     NOTCALLED = 0
     PROGRESS = 1
     READY = 2
   end
 
-  enum OptionArg
+  enum OptionArg : UInt32
     ZERO_NONE = 0
     NONE = 0
     STRING = 1
@@ -1672,14 +1712,14 @@ lib LibGLib
     INT64 = 8
   end
 
-  enum OptionError
+  enum OptionError : UInt32
     ZERO_NONE = 0
     UNKNOWN_OPTION = 0
     BAD_VALUE = 1
     FAILED = 2
   end
 
-  enum RegexError
+  enum RegexError : UInt32
     ZERO_NONE = 0
     COMPILE = 0
     OPTIMIZE = 1
@@ -1740,21 +1780,21 @@ lib LibGLib
     CHARACTER_VALUE_TOO_LARGE = 176
   end
 
-  enum SeekType
+  enum SeekType : UInt32
     ZERO_NONE = 0
     CUR = 0
     SET = 1
     END = 2
   end
 
-  enum ShellError
+  enum ShellError : UInt32
     ZERO_NONE = 0
     BAD_QUOTING = 0
     EMPTY_STRING = 1
     FAILED = 2
   end
 
-  enum SliceConfig
+  enum SliceConfig : UInt32
     ZERO_NONE = 0
     ALWAYS_MALLOC = 1
     BYPASS_MAGAZINES = 2
@@ -1764,7 +1804,7 @@ lib LibGLib
     CONTENTION_COUNTER = 6
   end
 
-  enum SpawnError
+  enum SpawnError : UInt32
     ZERO_NONE = 0
     FORK = 0
     READ = 1
@@ -1789,13 +1829,13 @@ lib LibGLib
     FAILED = 19
   end
 
-  enum TestFileType
+  enum TestFileType : UInt32
     ZERO_NONE = 0
     DIST = 0
     BUILT = 1
   end
 
-  enum TestLogType
+  enum TestLogType : UInt32
     ZERO_NONE = 0
     NONE = 0
     ERROR = 1
@@ -1811,19 +1851,19 @@ lib LibGLib
     STOP_SUITE = 11
   end
 
-  enum ThreadError
+  enum ThreadError : UInt32
     ZERO_NONE = 0
     THREAD_ERROR_AGAIN = 0
   end
 
-  enum TimeType
+  enum TimeType : UInt32
     ZERO_NONE = 0
     STANDARD = 0
     DAYLIGHT = 1
     UNIVERSAL = 2
   end
 
-  enum TokenType
+  enum TokenType : UInt32
     ZERO_NONE = 0
     EOF = 0
     LEFT_PAREN = 40
@@ -1850,7 +1890,7 @@ lib LibGLib
     COMMENT_MULTI = 269
   end
 
-  enum TraverseType
+  enum TraverseType : UInt32
     ZERO_NONE = 0
     IN_ORDER = 0
     PRE_ORDER = 1
@@ -1858,7 +1898,7 @@ lib LibGLib
     LEVEL_ORDER = 3
   end
 
-  enum UnicodeBreakType
+  enum UnicodeBreakType : UInt32
     ZERO_NONE = 0
     MANDATORY = 0
     CARRIAGE_RETURN = 1
@@ -1902,7 +1942,7 @@ lib LibGLib
     REGIONAL_INDICATOR = 39
   end
 
-  enum UnicodeScript
+  enum UnicodeScript : Int32
     ZERO_NONE = 0
     INVALID_CODE = -1
     COMMON = 0
@@ -2033,7 +2073,7 @@ lib LibGLib
     WARANG_CITI = 125
   end
 
-  enum UnicodeType
+  enum UnicodeType : UInt32
     ZERO_NONE = 0
     CONTROL = 0
     FORMAT = 1
@@ -2067,7 +2107,7 @@ lib LibGLib
     SPACE_SEPARATOR = 29
   end
 
-  enum UserDirectory
+  enum UserDirectory : UInt32
     ZERO_NONE = 0
     DIRECTORY_DESKTOP = 0
     DIRECTORY_DOCUMENTS = 1
@@ -2080,7 +2120,7 @@ lib LibGLib
     N_DIRECTORIES = 8
   end
 
-  enum VariantClass
+  enum VariantClass : UInt32
     ZERO_NONE = 0
     BOOLEAN = 98
     BYTE = 121
@@ -2102,7 +2142,7 @@ lib LibGLib
     DICT_ENTRY = 123
   end
 
-  enum VariantParseError
+  enum VariantParseError : UInt32
     ZERO_NONE = 0
     FAILED = 0
     BASIC_TYPE_EXPECTED = 1
@@ -2295,7 +2335,7 @@ lib LibGLib
   fun format_size_full = g_format_size_full(size : UInt64, flags : LibGLib::FormatSizeFlags) : UInt8*
   fun free = g_free(mem : Void*) : Void
   fun get_application_name = g_get_application_name() : UInt8*
-  fun get_charset = g_get_charset(charset : UInt8*) : Bool
+  fun get_charset = g_get_charset(charset : UInt8**) : Bool
   fun get_codeset = g_get_codeset() : UInt8*
   fun get_current_dir = g_get_current_dir() : UInt8*
   fun get_current_time = g_get_current_time(result : LibGLib::TimeVal*) : Void
@@ -2488,9 +2528,12 @@ lib LibGLib
   fun strstr_len = g_strstr_len(haystack : UInt8*, haystack_len : Int64, needle : UInt8*) : UInt8*
   fun strtod = g_strtod(nptr : UInt8*, endptr : UInt8*) : Float64
   fun strup = g_strup(string : UInt8*) : UInt8*
+  fun strv_contains = g_strv_contains(strv : UInt8*, str : UInt8*) : Bool
   fun strv_get_type = g_strv_get_type() : UInt64
   fun strv_length = g_strv_length(str_array : UInt8*) : UInt32
+  fun test_add_data_func = g_test_add_data_func(testpath : UInt8*, test_data : Void*, test_func : LibGLib::TestDataFunc) : Void
   fun test_add_data_func_full = g_test_add_data_func_full(testpath : UInt8*, test_data : Void*, test_func : LibGLib::TestDataFunc, data_free_func : LibGLib::DestroyNotify) : Void
+  fun test_add_func = g_test_add_func(testpath : UInt8*, test_func : LibGLib::TestFunc) : Void
   fun test_assert_expected_messages_internal = g_test_assert_expected_messages_internal(domain : UInt8*, file : UInt8*, line : Int32, func : UInt8*) : Void
   fun test_bug = g_test_bug(bug_uri_snippet : UInt8*) : Void
   fun test_bug_base = g_test_bug_base(uri_pattern : UInt8*) : Void

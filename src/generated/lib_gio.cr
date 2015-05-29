@@ -1,3 +1,4 @@
+require "./lib_g_lib"
 require "./lib_g_object"
 
 @[Link("gio-2.0")]
@@ -741,6 +742,20 @@ lib LibGio
   fun initable_newv = g_initable_newv(object_type : UInt64, n_parameters : UInt32, parameters : LibGObject::Parameter*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : LibGObject::Object*
   fun initable_init = g_initable_init(this : Initable*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Bool
 
+  struct ListModel # interface
+    g_iface : LibGObject::TypeInterface
+    get_item_type : -> Void
+    get_n_items : -> Void
+    get_item : Void*
+    # Signal items-changed
+    # Virtual function get_item_type
+    # Virtual function get_n_items
+  end
+  fun list_model_get_item_type = g_list_model_get_item_type(this : ListModel*) : UInt64
+  fun list_model_get_n_items = g_list_model_get_n_items(this : ListModel*) : UInt32
+  fun list_model_get_item = g_list_model_get_object(this : ListModel*, position : UInt32) : LibGObject::Object*
+  fun list_model_items_changed = g_list_model_items_changed(this : ListModel*, position : UInt32, removed : UInt32, added : UInt32) : Void
+
   struct LoadableIcon # interface
     g_iface : LibGObject::TypeInterface
     load : -> Void
@@ -850,6 +865,7 @@ lib LibGio
     can_reach_async : -> Void
     can_reach_finish : -> Void
   # Requires Initable
+    # Property connectivity : LibGio::NetworkConnectivity
     # Property network_available : Bool
     # Signal network-changed
     # Virtual function can_reach
@@ -861,6 +877,7 @@ lib LibGio
   fun network_monitor_can_reach = g_network_monitor_can_reach(this : NetworkMonitor*, connectable : LibGio::SocketConnectable*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Bool
   fun network_monitor_can_reach_async = g_network_monitor_can_reach_async(this : NetworkMonitor*, connectable : LibGio::SocketConnectable*, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun network_monitor_can_reach_finish = g_network_monitor_can_reach_finish(this : NetworkMonitor*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : Bool
+  fun network_monitor_get_connectivity = g_network_monitor_get_connectivity(this : NetworkMonitor*) : LibGio::NetworkConnectivity
   fun network_monitor_get_network_available = g_network_monitor_get_network_available(this : NetworkMonitor*) : Bool
 
   struct PollableInputStream # interface
@@ -1104,27 +1121,35 @@ lib LibGio
   end
 
   struct AppLaunchContextPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ApplicationCommandLinePrivate # struct
+    _data : UInt8[0]
   end
 
   struct ApplicationPrivate # struct
+    _data : UInt8[0]
   end
 
   struct BufferedInputStreamPrivate # struct
+    _data : UInt8[0]
   end
 
   struct BufferedOutputStreamPrivate # struct
+    _data : UInt8[0]
   end
 
   struct CancellablePrivate # struct
+    _data : UInt8[0]
   end
 
   struct ConverterInputStreamPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ConverterOutputStreamPrivate # struct
+    _data : UInt8[0]
   end
 
   struct DBusAnnotationInfo # struct
@@ -1169,6 +1194,7 @@ lib LibGio
   fun d_bus_interface_info_unref = g_dbus_interface_info_unref(this : DBusInterfaceInfo*) : Void
 
   struct DBusInterfaceSkeletonPrivate # struct
+    _data : UInt8[0]
   end
 
   struct DBusInterfaceVTable # struct
@@ -1202,15 +1228,19 @@ lib LibGio
   fun d_bus_node_info_unref = g_dbus_node_info_unref(this : DBusNodeInfo*) : Void
 
   struct DBusObjectManagerClientPrivate # struct
+    _data : UInt8[0]
   end
 
   struct DBusObjectManagerServerPrivate # struct
+    _data : UInt8[0]
   end
 
   struct DBusObjectProxyPrivate # struct
+    _data : UInt8[0]
   end
 
   struct DBusObjectSkeletonPrivate # struct
+    _data : UInt8[0]
   end
 
   struct DBusPropertyInfo # struct
@@ -1224,6 +1254,7 @@ lib LibGio
   fun d_bus_property_info_unref = g_dbus_property_info_unref(this : DBusPropertyInfo*) : Void
 
   struct DBusProxyPrivate # struct
+    _data : UInt8[0]
   end
 
   struct DBusSignalInfo # struct
@@ -1243,12 +1274,15 @@ lib LibGio
   end
 
   struct DataInputStreamPrivate # struct
+    _data : UInt8[0]
   end
 
   struct DataOutputStreamPrivate # struct
+    _data : UInt8[0]
   end
 
   struct EmblemedIconPrivate # struct
+    _data : UInt8[0]
   end
 
   struct FileAttributeInfo # struct
@@ -1269,6 +1303,7 @@ lib LibGio
   fun file_attribute_info_list_unref = g_file_attribute_info_list_unref(this : FileAttributeInfoList*) : Void
 
   struct FileAttributeMatcher # struct
+    _data : UInt8[0]
   end
   fun file_attribute_matcher_new = g_file_attribute_matcher_new(attributes : UInt8*) : LibGio::FileAttributeMatcher*
   fun file_attribute_matcher_enumerate_namespace = g_file_attribute_matcher_enumerate_namespace(this : FileAttributeMatcher*, ns : UInt8*) : Bool
@@ -1281,27 +1316,34 @@ lib LibGio
   fun file_attribute_matcher_unref = g_file_attribute_matcher_unref(this : FileAttributeMatcher*) : Void
 
   struct FileEnumeratorPrivate # struct
+    _data : UInt8[0]
   end
 
   struct FileIOStreamPrivate # struct
+    _data : UInt8[0]
   end
 
   struct FileInputStreamPrivate # struct
+    _data : UInt8[0]
   end
 
   struct FileMonitorPrivate # struct
+    _data : UInt8[0]
   end
 
   struct FileOutputStreamPrivate # struct
+    _data : UInt8[0]
   end
 
   struct IOExtension # struct
+    _data : UInt8[0]
   end
   fun i_o_extension_get_name = g_io_extension_get_name(this : IOExtension*) : UInt8*
   fun i_o_extension_get_priority = g_io_extension_get_priority(this : IOExtension*) : Int32
   fun i_o_extension_get_type = g_io_extension_get_type(this : IOExtension*) : UInt64
 
   struct IOExtensionPoint # struct
+    _data : UInt8[0]
   end
   fun i_o_extension_point_get_extension_by_name = g_io_extension_point_get_extension_by_name(this : IOExtensionPoint*, name : UInt8*) : LibGio::IOExtension*
   fun i_o_extension_point_get_extensions = g_io_extension_point_get_extensions(this : IOExtensionPoint*) : Void**
@@ -1312,31 +1354,39 @@ lib LibGio
   fun i_o_extension_point_register = g_io_extension_point_register(name : UInt8*) : LibGio::IOExtensionPoint*
 
   struct IOModuleScope # struct
+    _data : UInt8[0]
   end
   fun i_o_module_scope_block = g_io_module_scope_block(this : IOModuleScope*, basename : UInt8*) : Void
   fun i_o_module_scope_free = g_io_module_scope_free(this : IOModuleScope*) : Void
 
   struct IOSchedulerJob # struct
+    _data : UInt8[0]
   end
   fun i_o_scheduler_job_send_to_mainloop = g_io_scheduler_job_send_to_mainloop(this : IOSchedulerJob*, func : LibGLib::SourceFunc, user_data : Void*, notify : LibGLib::DestroyNotify) : Bool
   fun i_o_scheduler_job_send_to_mainloop_async = g_io_scheduler_job_send_to_mainloop_async(this : IOSchedulerJob*, func : LibGLib::SourceFunc, user_data : Void*, notify : LibGLib::DestroyNotify) : Void
 
   struct IOStreamAdapter # struct
+    _data : UInt8[0]
   end
 
   struct IOStreamPrivate # struct
+    _data : UInt8[0]
   end
 
   struct InetAddressMaskPrivate # struct
+    _data : UInt8[0]
   end
 
   struct InetAddressPrivate # struct
+    _data : UInt8[0]
   end
 
   struct InetSocketAddressPrivate # struct
+    _data : UInt8[0]
   end
 
   struct InputStreamPrivate # struct
+    _data : UInt8[0]
   end
 
   struct InputVector # struct
@@ -1345,30 +1395,48 @@ lib LibGio
   end
 
   struct MemoryInputStreamPrivate # struct
+    _data : UInt8[0]
   end
 
   struct MemoryOutputStreamPrivate # struct
+    _data : UInt8[0]
   end
 
   struct MenuAttributeIterPrivate # struct
+    _data : UInt8[0]
   end
 
   struct MenuLinkIterPrivate # struct
+    _data : UInt8[0]
   end
 
   struct MenuModelPrivate # struct
+    _data : UInt8[0]
   end
 
   struct MountOperationPrivate # struct
+    _data : UInt8[0]
   end
 
   struct NetworkAddressPrivate # struct
+    _data : UInt8[0]
   end
 
   struct NetworkServicePrivate # struct
+    _data : UInt8[0]
+  end
+
+  struct OutputMessage # struct
+    address : LibGio::SocketAddress*
+    vectors : LibGio::OutputVector*
+    num_vectors : UInt32
+    bytes_sent : UInt32
+    control_messages : LibGio::SocketControlMessage**
+    num_control_messages : UInt32
   end
 
   struct OutputStreamPrivate # struct
+    _data : UInt8[0]
   end
 
   struct OutputVector # struct
@@ -1377,18 +1445,23 @@ lib LibGio
   end
 
   struct PermissionPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ProxyAddressEnumeratorPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ProxyAddressPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ResolverPrivate # struct
+    _data : UInt8[0]
   end
 
   struct Resource # struct
+    _data : UInt8[0]
   end
   fun resource_new_from_data = g_resource_new_from_data(data : LibGLib::Bytes*, error : LibGLib::Error**) : LibGio::Resource*
   fun resource__register = g_resources_register(this : Resource*) : Void
@@ -1402,24 +1475,30 @@ lib LibGio
   fun resource_load = g_resource_load(filename : UInt8*, error : LibGLib::Error**) : LibGio::Resource*
 
   struct SettingsBackend # struct
+    _data : UInt8[0]
   end
 
   struct SettingsPrivate # struct
+    _data : UInt8[0]
   end
 
   struct SettingsSchema # struct
+    _data : UInt8[0]
   end
   fun settings_schema_get_id = g_settings_schema_get_id(this : SettingsSchema*) : UInt8*
   fun settings_schema_get_key = g_settings_schema_get_key(this : SettingsSchema*, name : UInt8*) : LibGio::SettingsSchemaKey*
   fun settings_schema_get_path = g_settings_schema_get_path(this : SettingsSchema*) : UInt8*
   fun settings_schema_has_key = g_settings_schema_has_key(this : SettingsSchema*, name : UInt8*) : Bool
+  fun settings_schema_list_children = g_settings_schema_list_children(this : SettingsSchema*) : UInt8**
   fun settings_schema_ref = g_settings_schema_ref(this : SettingsSchema*) : LibGio::SettingsSchema*
   fun settings_schema_unref = g_settings_schema_unref(this : SettingsSchema*) : Void
 
   struct SettingsSchemaKey # struct
+    _data : UInt8[0]
   end
   fun settings_schema_key_get_default_value = g_settings_schema_key_get_default_value(this : SettingsSchemaKey*) : LibGLib::Variant*
   fun settings_schema_key_get_description = g_settings_schema_key_get_description(this : SettingsSchemaKey*) : UInt8*
+  fun settings_schema_key_get_name = g_settings_schema_key_get_name(this : SettingsSchemaKey*) : UInt8*
   fun settings_schema_key_get_range = g_settings_schema_key_get_range(this : SettingsSchemaKey*) : LibGLib::Variant*
   fun settings_schema_key_get_summary = g_settings_schema_key_get_summary(this : SettingsSchemaKey*) : UInt8*
   fun settings_schema_key_get_value_type = g_settings_schema_key_get_value_type(this : SettingsSchemaKey*) : LibGLib::VariantType*
@@ -1428,6 +1507,7 @@ lib LibGio
   fun settings_schema_key_unref = g_settings_schema_key_unref(this : SettingsSchemaKey*) : Void
 
   struct SettingsSchemaSource # struct
+    _data : UInt8[0]
   end
   fun settings_schema_source_new_from_directory = g_settings_schema_source_new_from_directory(directory : UInt8*, parent : LibGio::SettingsSchemaSource*, trusted : Bool, error : LibGLib::Error**) : LibGio::SettingsSchemaSource*
   fun settings_schema_source_list_schemas = g_settings_schema_source_list_schemas(this : SettingsSchemaSource*, recursive : Bool, non_relocatable : UInt8***, relocatable : UInt8***) : Void
@@ -1437,30 +1517,39 @@ lib LibGio
   fun settings_schema_source_get_default = g_settings_schema_source_get_default() : LibGio::SettingsSchemaSource*
 
   struct SimpleActionGroupPrivate # struct
+    _data : UInt8[0]
   end
 
   struct SimpleProxyResolverPrivate # struct
+    _data : UInt8[0]
   end
 
   struct SocketClientPrivate # struct
+    _data : UInt8[0]
   end
 
   struct SocketConnectionPrivate # struct
+    _data : UInt8[0]
   end
 
   struct SocketControlMessagePrivate # struct
+    _data : UInt8[0]
   end
 
   struct SocketListenerPrivate # struct
+    _data : UInt8[0]
   end
 
   struct SocketPrivate # struct
+    _data : UInt8[0]
   end
 
   struct SocketServicePrivate # struct
+    _data : UInt8[0]
   end
 
   struct SrvTarget # struct
+    _data : UInt8[0]
   end
   fun srv_target_new = g_srv_target_new(hostname : UInt8*, port : UInt16, priority : UInt16, weight : UInt16) : LibGio::SrvTarget*
   fun srv_target_copy = g_srv_target_copy(this : SrvTarget*) : LibGio::SrvTarget*
@@ -1482,48 +1571,63 @@ lib LibGio
   fun static_resource_init = g_static_resource_init(this : StaticResource*) : Void
 
   struct TcpConnectionPrivate # struct
+    _data : UInt8[0]
   end
 
   struct TcpWrapperConnectionPrivate # struct
+    _data : UInt8[0]
   end
 
   struct ThreadedSocketServicePrivate # struct
+    _data : UInt8[0]
   end
 
   struct TlsCertificatePrivate # struct
+    _data : UInt8[0]
   end
 
   struct TlsConnectionPrivate # struct
+    _data : UInt8[0]
   end
 
   struct TlsDatabasePrivate # struct
+    _data : UInt8[0]
   end
 
   struct TlsInteractionPrivate # struct
+    _data : UInt8[0]
   end
 
   struct TlsPasswordPrivate # struct
+    _data : UInt8[0]
   end
 
   struct UnixConnectionPrivate # struct
+    _data : UInt8[0]
   end
 
   struct UnixCredentialsMessagePrivate # struct
+    _data : UInt8[0]
   end
 
   struct UnixFDListPrivate # struct
+    _data : UInt8[0]
   end
 
   struct UnixFDMessagePrivate # struct
+    _data : UInt8[0]
   end
 
   struct UnixInputStreamPrivate # struct
+    _data : UInt8[0]
   end
 
   struct UnixMountEntry # struct
+    _data : UInt8[0]
   end
 
   struct UnixMountPoint # struct
+    _data : UInt8[0]
   end
   fun unix_mount_point_compare = g_unix_mount_point_compare(this : UnixMountPoint*, mount2 : LibGio::UnixMountPoint*) : Int32
   fun unix_mount_point_free = g_unix_mount_point_free(this : UnixMountPoint*) : Void
@@ -1540,9 +1644,11 @@ lib LibGio
   fun unix_mount_point_is_user_mountable = g_unix_mount_point_is_user_mountable(this : UnixMountPoint*) : Bool
 
   struct UnixOutputStreamPrivate # struct
+    _data : UInt8[0]
   end
 
   struct UnixSocketAddressPrivate # struct
+    _data : UInt8[0]
   end
 
 
@@ -1550,7 +1656,7 @@ lib LibGio
   ##    Flags
   ###########################################
 
-  enum AppInfoCreateFlags
+  enum AppInfoCreateFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     NEEDS_TERMINAL = 1
@@ -1558,7 +1664,7 @@ lib LibGio
     SUPPORTS_STARTUP_NOTIFICATION = 4
   end
 
-  enum ApplicationFlags
+  enum ApplicationFlags : UInt32
     ZERO_NONE = 0
     FLAGS_NONE = 0
     IS_SERVICE = 1
@@ -1569,7 +1675,7 @@ lib LibGio
     NON_UNIQUE = 32
   end
 
-  enum AskPasswordFlags
+  enum AskPasswordFlags : UInt32
     ZERO_NONE = 0
     NEED_PASSWORD = 1
     NEED_USERNAME = 2
@@ -1578,39 +1684,39 @@ lib LibGio
     ANONYMOUS_SUPPORTED = 16
   end
 
-  enum BusNameOwnerFlags
+  enum BusNameOwnerFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     ALLOW_REPLACEMENT = 1
     REPLACE = 2
   end
 
-  enum BusNameWatcherFlags
+  enum BusNameWatcherFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     AUTO_START = 1
   end
 
-  enum ConverterFlags
+  enum ConverterFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     INPUT_AT_END = 1
     FLUSH = 2
   end
 
-  enum DBusCallFlags
+  enum DBusCallFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     NO_AUTO_START = 1
   end
 
-  enum DBusCapabilityFlags
+  enum DBusCapabilityFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     UNIX_FD_PASSING = 1
   end
 
-  enum DBusConnectionFlags
+  enum DBusConnectionFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     AUTHENTICATION_CLIENT = 1
@@ -1620,33 +1726,33 @@ lib LibGio
     DELAY_MESSAGE_PROCESSING = 16
   end
 
-  enum DBusInterfaceSkeletonFlags
+  enum DBusInterfaceSkeletonFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     HANDLE_METHOD_INVOCATIONS_IN_THREAD = 1
   end
 
-  enum DBusMessageFlags
+  enum DBusMessageFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     NO_REPLY_EXPECTED = 1
     NO_AUTO_START = 2
   end
 
-  enum DBusObjectManagerClientFlags
+  enum DBusObjectManagerClientFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     DO_NOT_AUTO_START = 1
   end
 
-  enum DBusPropertyInfoFlags
+  enum DBusPropertyInfoFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     READABLE = 1
     WRITABLE = 2
   end
 
-  enum DBusProxyFlags
+  enum DBusProxyFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     DO_NOT_LOAD_PROPERTIES = 1
@@ -1656,20 +1762,20 @@ lib LibGio
     DO_NOT_AUTO_START_AT_CONSTRUCTION = 16
   end
 
-  enum DBusSendMessageFlags
+  enum DBusSendMessageFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     PRESERVE_SERIAL = 1
   end
 
-  enum DBusServerFlags
+  enum DBusServerFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     RUN_IN_THREAD = 1
     AUTHENTICATION_ALLOW_ANONYMOUS = 2
   end
 
-  enum DBusSignalFlags
+  enum DBusSignalFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     NO_MATCH_RULE = 1
@@ -1677,25 +1783,25 @@ lib LibGio
     MATCH_ARG0_PATH = 4
   end
 
-  enum DBusSubtreeFlags
+  enum DBusSubtreeFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     DISPATCH_TO_UNENUMERATED_NODES = 1
   end
 
-  enum DriveStartFlags
+  enum DriveStartFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
   end
 
-  enum FileAttributeInfoFlags
+  enum FileAttributeInfoFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     COPY_WITH_FILE = 1
     COPY_WHEN_MOVED = 2
   end
 
-  enum FileCopyFlags
+  enum FileCopyFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     OVERWRITE = 1
@@ -1706,14 +1812,14 @@ lib LibGio
     TARGET_DEFAULT_PERMS = 32
   end
 
-  enum FileCreateFlags
+  enum FileCreateFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     PRIVATE = 1
     REPLACE_DESTINATION = 2
   end
 
-  enum FileMeasureFlags
+  enum FileMeasureFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     REPORT_ANY_ERROR = 2
@@ -1721,7 +1827,7 @@ lib LibGio
     NO_XDEV = 8
   end
 
-  enum FileMonitorFlags
+  enum FileMonitorFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     WATCH_MOUNTS = 1
@@ -1729,13 +1835,13 @@ lib LibGio
     WATCH_HARD_LINKS = 4
   end
 
-  enum FileQueryInfoFlags
+  enum FileQueryInfoFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     NOFOLLOW_SYMLINKS = 1
   end
 
-  enum IOStreamSpliceFlags
+  enum IOStreamSpliceFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     CLOSE_STREAM1 = 1
@@ -1743,36 +1849,36 @@ lib LibGio
     WAIT_FOR_BOTH = 4
   end
 
-  enum MountMountFlags
+  enum MountMountFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
   end
 
-  enum MountUnmountFlags
+  enum MountUnmountFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     FORCE = 1
   end
 
-  enum OutputStreamSpliceFlags
+  enum OutputStreamSpliceFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     CLOSE_SOURCE = 1
     CLOSE_TARGET = 2
   end
 
-  enum ResourceFlags
+  enum ResourceFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     COMPRESSED = 1
   end
 
-  enum ResourceLookupFlags
+  enum ResourceLookupFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
   end
 
-  enum SettingsBindFlags
+  enum SettingsBindFlags : UInt32
     ZERO_NONE = 0
     DEFAULT = 0
     GET = 1
@@ -1782,7 +1888,7 @@ lib LibGio
     INVERT_BOOLEAN = 16
   end
 
-  enum SocketMsgFlags
+  enum SocketMsgFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     OOB = 1
@@ -1790,7 +1896,7 @@ lib LibGio
     DONTROUTE = 4
   end
 
-  enum SubprocessFlags
+  enum SubprocessFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     STDIN_PIPE = 1
@@ -1803,12 +1909,12 @@ lib LibGio
     INHERIT_FDS = 128
   end
 
-  enum TestDBusFlags
+  enum TestDBusFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
   end
 
-  enum TlsCertificateFlags
+  enum TlsCertificateFlags : UInt32
     ZERO_NONE = 0
     UNKNOWN_CA = 1
     BAD_IDENTITY = 2
@@ -1820,12 +1926,12 @@ lib LibGio
     VALIDATE_ALL = 127
   end
 
-  enum TlsDatabaseVerifyFlags
+  enum TlsDatabaseVerifyFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
   end
 
-  enum TlsPasswordFlags
+  enum TlsPasswordFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     RETRY = 2
@@ -1839,6 +1945,7 @@ lib LibGio
   ###########################################
 
   struct AppInfoMonitor # object
+    _data : UInt8[0]
     # Signal changed
   end
   fun app_info_monitor_get = g_app_info_monitor_get() : LibGio::AppInfoMonitor*
@@ -1892,11 +1999,13 @@ lib LibGio
   fun application_add_main_option = g_application_add_main_option(this : Application*, long_name : UInt8*, short_name : Int8, flags : LibGLib::OptionFlags, arg : LibGLib::OptionArg, description : UInt8*, arg_description : UInt8*) : Void
   fun application_add_main_option_entries = g_application_add_main_option_entries(this : Application*, entries : LibGLib::OptionEntry*) : Void
   fun application_add_option_group = g_application_add_option_group(this : Application*, group : LibGLib::OptionGroup*) : Void
+  fun application_bind_busy_property = g_application_bind_busy_property(this : Application*, object : LibGObject::Object*, property : UInt8*) : Void
   fun application_get_application_id = g_application_get_application_id(this : Application*) : UInt8*
   fun application_get_dbus_connection = g_application_get_dbus_connection(this : Application*) : LibGio::DBusConnection*
   fun application_get_dbus_object_path = g_application_get_dbus_object_path(this : Application*) : UInt8*
   fun application_get_flags = g_application_get_flags(this : Application*) : LibGio::ApplicationFlags
   fun application_get_inactivity_timeout = g_application_get_inactivity_timeout(this : Application*) : UInt32
+  fun application_get_is_busy = g_application_get_is_busy(this : Application*) : Bool
   fun application_get_is_registered = g_application_get_is_registered(this : Application*) : Bool
   fun application_get_is_remote = g_application_get_is_remote(this : Application*) : Bool
   fun application_get_resource_base_path = g_application_get_resource_base_path(this : Application*) : UInt8*
@@ -1914,6 +2023,7 @@ lib LibGio
   fun application_set_flags = g_application_set_flags(this : Application*, flags : LibGio::ApplicationFlags) : Void
   fun application_set_inactivity_timeout = g_application_set_inactivity_timeout(this : Application*, inactivity_timeout : UInt32) : Void
   fun application_set_resource_base_path = g_application_set_resource_base_path(this : Application*, resource_path : UInt8*) : Void
+  fun application_unbind_busy_property = g_application_unbind_busy_property(this : Application*, object : LibGObject::Object*, property : UInt8*) : Void
   fun application_unmark_busy = g_application_unmark_busy(this : Application*) : Void
   fun application_withdraw_notification = g_application_withdraw_notification(this : Application*, id : UInt8*) : Void
 
@@ -1967,6 +2077,7 @@ lib LibGio
   fun buffered_output_stream_set_buffer_size = g_buffered_output_stream_set_buffer_size(this : BufferedOutputStream*, size : UInt64) : Void
 
   struct BytesIcon # object
+    _data : UInt8[0]
   end
   fun bytes_icon_new = g_bytes_icon_new(bytes : LibGLib::Bytes*) : LibGio::BytesIcon*
   fun bytes_icon_get_bytes = g_bytes_icon_get_bytes(this : BytesIcon*) : LibGLib::Bytes*
@@ -1992,6 +2103,7 @@ lib LibGio
   fun cancellable_set_error_if_cancelled = g_cancellable_set_error_if_cancelled(this : Cancellable*, error : LibGLib::Error**) : Bool
 
   struct CharsetConverter # object
+    _data : UInt8[0]
   end
   fun charset_converter_new = g_charset_converter_new(to_charset : UInt8*, from_charset : UInt8*, error : LibGLib::Error**) : LibGio::CharsetConverter*
   fun charset_converter_get_num_fallbacks = g_charset_converter_get_num_fallbacks(this : CharsetConverter*) : UInt32
@@ -2013,6 +2125,7 @@ lib LibGio
   fun converter_output_stream_get_converter = g_converter_output_stream_get_converter(this : ConverterOutputStream*) : LibGio::Converter*
 
   struct Credentials # object
+    _data : UInt8[0]
   end
   fun credentials_new = g_credentials_new() : LibGio::Credentials*
   fun credentials_get_unix_pid = g_credentials_get_unix_pid(this : Credentials*, error : LibGLib::Error**) : Int32
@@ -2023,10 +2136,12 @@ lib LibGio
   fun credentials_to_string = g_credentials_to_string(this : Credentials*) : UInt8*
 
   struct DBusActionGroup # object
+    _data : UInt8[0]
   end
   fun d_bus_action_group_get = g_dbus_action_group_get(connection : LibGio::DBusConnection*, bus_name : UInt8*, object_path : UInt8*) : LibGio::DBusActionGroup*
 
   struct DBusAuthObserver # object
+    _data : UInt8[0]
     # Signal allow-mechanism
     # Signal authorize-authenticated-peer
   end
@@ -2035,6 +2150,7 @@ lib LibGio
   fun d_bus_auth_observer_authorize_authenticated_peer = g_dbus_auth_observer_authorize_authenticated_peer(this : DBusAuthObserver*, stream : LibGio::IOStream*, credentials : LibGio::Credentials*) : Bool
 
   struct DBusConnection # object
+    _data : UInt8[0]
     # Signal closed
   end
   fun d_bus_connection_new_finish = g_dbus_connection_new_finish(res : LibGio::AsyncResult*, error : LibGLib::Error**) : LibGio::DBusConnection*
@@ -2106,10 +2222,12 @@ lib LibGio
   fun d_bus_interface_skeleton_unexport_from_connection = g_dbus_interface_skeleton_unexport_from_connection(this : DBusInterfaceSkeleton*, connection : LibGio::DBusConnection*) : Void
 
   struct DBusMenuModel # object
+    _data : UInt8[0]
   end
   fun d_bus_menu_model_get = g_dbus_menu_model_get(connection : LibGio::DBusConnection*, bus_name : UInt8*, object_path : UInt8*) : LibGio::DBusMenuModel*
 
   struct DBusMessage # object
+    _data : UInt8[0]
   end
   fun d_bus_message_new = g_dbus_message_new() : LibGio::DBusMessage*
   fun d_bus_message_new_from_blob = g_dbus_message_new_from_blob(blob : UInt8*, blob_len : UInt64, capabilities : LibGio::DBusCapabilityFlags, error : LibGLib::Error**) : LibGio::DBusMessage*
@@ -2160,6 +2278,7 @@ lib LibGio
   fun d_bus_message_to_gerror = g_dbus_message_to_gerror(this : DBusMessage*, error : LibGLib::Error**) : Bool
 
   struct DBusMethodInvocation # object
+    _data : UInt8[0]
   end
   fun d_bus_method_invocation_get_connection = g_dbus_method_invocation_get_connection(this : DBusMethodInvocation*) : LibGio::DBusConnection*
   fun d_bus_method_invocation_get_interface_name = g_dbus_method_invocation_get_interface_name(this : DBusMethodInvocation*) : UInt8*
@@ -2262,6 +2381,7 @@ lib LibGio
   fun d_bus_proxy_set_interface_info = g_dbus_proxy_set_interface_info(this : DBusProxy*, info : LibGio::DBusInterfaceInfo*) : Void
 
   struct DBusServer # object
+    _data : UInt8[0]
     # Signal new-connection
   end
   fun d_bus_server_new_sync = g_dbus_server_new_sync(address : UInt8*, flags : LibGio::DBusServerFlags, guid : UInt8*, observer : LibGio::DBusAuthObserver*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : LibGio::DBusServer*
@@ -2317,6 +2437,7 @@ lib LibGio
   fun data_output_stream_set_byte_order = g_data_output_stream_set_byte_order(this : DataOutputStream*, order : LibGio::DataStreamByteOrder) : Void
 
   struct DesktopAppInfo # object
+    _data : UInt8[0]
   end
   fun desktop_app_info_new = g_desktop_app_info_new(desktop_id : UInt8*) : LibGio::DesktopAppInfo*
   fun desktop_app_info_new_from_filename = g_desktop_app_info_new_from_filename(filename : UInt8*) : LibGio::DesktopAppInfo*
@@ -2341,6 +2462,7 @@ lib LibGio
   fun desktop_app_info_list_actions = g_desktop_app_info_list_actions(this : DesktopAppInfo*) : UInt8**
 
   struct Emblem # object
+    _data : UInt8[0]
   end
   fun emblem_new = g_emblem_new(icon : LibGio::Icon*) : LibGio::Emblem*
   fun emblem_new_with_origin = g_emblem_new_with_origin(icon : LibGio::Icon*, origin : LibGio::EmblemOrigin) : LibGio::Emblem*
@@ -2374,6 +2496,7 @@ lib LibGio
   fun file_enumerator_get_container = g_file_enumerator_get_container(this : FileEnumerator*) : LibGio::File*
   fun file_enumerator_has_pending = g_file_enumerator_has_pending(this : FileEnumerator*) : Bool
   fun file_enumerator_is_closed = g_file_enumerator_is_closed(this : FileEnumerator*) : Bool
+  fun file_enumerator_iterate = g_file_enumerator_iterate(this : FileEnumerator*, out_info : LibGio::FileInfo**, out_child : LibGio::File**, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Bool
   fun file_enumerator_next_file = g_file_enumerator_next_file(this : FileEnumerator*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : LibGio::FileInfo*
   fun file_enumerator_next_files_async = g_file_enumerator_next_files_async(this : FileEnumerator*, num_files : Int32, io_priority : Int32, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun file_enumerator_next_files_finish = g_file_enumerator_next_files_finish(this : FileEnumerator*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : Void**
@@ -2398,11 +2521,13 @@ lib LibGio
   fun file_i_o_stream_query_info_finish = g_file_io_stream_query_info_finish(this : FileIOStream*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : LibGio::FileInfo*
 
   struct FileIcon # object
+    _data : UInt8[0]
   end
   fun file_icon_new = g_file_icon_new(file : LibGio::File*) : LibGio::FileIcon*
   fun file_icon_get_file = g_file_icon_get_file(this : FileIcon*) : LibGio::File*
 
   struct FileInfo # object
+    _data : UInt8[0]
   end
   fun file_info_new = g_file_info_new() : LibGio::FileInfo*
   fun file_info_clear_status = g_file_info_clear_status(this : FileInfo*) : Void
@@ -2513,6 +2638,7 @@ lib LibGio
   fun file_output_stream_query_info_finish = g_file_output_stream_query_info_finish(this : FileOutputStream*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : LibGio::FileInfo*
 
   struct FilenameCompleter # object
+    _data : UInt8[0]
     # Signal got-completion-data
     # Virtual function got_completion_data
   end
@@ -2538,6 +2664,7 @@ lib LibGio
   fun filter_output_stream_set_close_base_stream = g_filter_output_stream_set_close_base_stream(this : FilterOutputStream*, close_base : Bool) : Void
 
   struct IOModule # object
+    _data : UInt8[0]
   end
   fun i_o_module_new = g_io_module_new(filename : UInt8*) : LibGio::IOModule*
   fun i_o_module_query = g_io_module_query() : UInt8**
@@ -2634,6 +2761,8 @@ lib LibGio
   fun input_stream_is_closed = g_input_stream_is_closed(this : InputStream*) : Bool
   fun input_stream_read = g_input_stream_read(this : InputStream*, buffer : UInt8*, count : UInt64, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int64
   fun input_stream_read_all = g_input_stream_read_all(this : InputStream*, buffer : UInt8*, count : UInt64, bytes_read : UInt64*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Bool
+  fun input_stream_read_all_async = g_input_stream_read_all_async(this : InputStream*, buffer : UInt8*, count : UInt64, io_priority : Int32, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
+  fun input_stream_read_all_finish = g_input_stream_read_all_finish(this : InputStream*, result : LibGio::AsyncResult*, bytes_read : UInt64*, error : LibGLib::Error**) : Bool
   fun input_stream_read_async = g_input_stream_read_async(this : InputStream*, buffer : UInt8*, count : UInt64, io_priority : Int32, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun input_stream_read_bytes = g_input_stream_read_bytes(this : InputStream*, count : UInt64, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : LibGLib::Bytes*
   fun input_stream_read_bytes_async = g_input_stream_read_bytes_async(this : InputStream*, count : UInt64, io_priority : Int32, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
@@ -2643,6 +2772,15 @@ lib LibGio
   fun input_stream_skip = g_input_stream_skip(this : InputStream*, count : UInt64, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int64
   fun input_stream_skip_async = g_input_stream_skip_async(this : InputStream*, count : UInt64, io_priority : Int32, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun input_stream_skip_finish = g_input_stream_skip_finish(this : InputStream*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : Int64
+
+  struct ListStore # object
+    _data : UInt8[0]
+  end
+  fun list_store_new = g_list_store_new(item_type : UInt64) : LibGio::ListStore*
+  fun list_store_append = g_list_store_append(this : ListStore*, item : Void*) : Void
+  fun list_store_insert = g_list_store_insert(this : ListStore*, position : UInt32, item : Void*) : Void
+  fun list_store_remove = g_list_store_remove(this : ListStore*, position : UInt32) : Void
+  fun list_store_remove_all = g_list_store_remove_all(this : ListStore*) : Void
 
   struct MemoryInputStream # object
     parent_instance : LibGio::InputStream
@@ -2666,6 +2804,7 @@ lib LibGio
   fun memory_output_stream_steal_data = g_memory_output_stream_steal_data(this : MemoryOutputStream*) : Void*
 
   struct Menu # object
+    _data : UInt8[0]
   end
   fun menu_new = g_menu_new() : LibGio::Menu*
   fun menu_append = g_menu_append(this : Menu*, label : UInt8*, detailed_action : UInt8*) : Void
@@ -2695,6 +2834,7 @@ lib LibGio
   fun menu_attribute_iter_next = g_menu_attribute_iter_next(this : MenuAttributeIter*) : Bool
 
   struct MenuItem # object
+    _data : UInt8[0]
   end
   fun menu_item_new = g_menu_item_new(label : UInt8*, detailed_action : UInt8*) : LibGio::MenuItem*
   fun menu_item_new_from_model = g_menu_item_new_from_model(model : LibGio::MenuModel*, item_index : Int32) : LibGio::MenuItem*
@@ -2781,6 +2921,7 @@ lib LibGio
     priv : LibGio::NetworkAddressPrivate*
   end
   fun network_address_new = g_network_address_new(hostname : UInt8*, port : UInt16) : LibGio::NetworkAddress*
+  fun network_address_new_loopback = g_network_address_new_loopback(port : UInt16) : LibGio::NetworkAddress*
   fun network_address_parse = g_network_address_parse(host_and_port : UInt8*, default_port : UInt16, error : LibGLib::Error**) : LibGio::SocketConnectable*
   fun network_address_parse_uri = g_network_address_parse_uri(uri : UInt8*, default_port : UInt16, error : LibGLib::Error**) : LibGio::SocketConnectable*
   fun network_address_get_hostname = g_network_address_get_hostname(this : NetworkAddress*) : UInt8*
@@ -2799,6 +2940,7 @@ lib LibGio
   fun network_service_set_scheme = g_network_service_set_scheme(this : NetworkService*, scheme : UInt8*) : Void
 
   struct Notification # object
+    _data : UInt8[0]
   end
   fun notification_new = g_notification_new(title : UInt8*) : LibGio::Notification*
   fun notification_add_button = g_notification_add_button(this : Notification*, label : UInt8*, detailed_action : UInt8*) : Void
@@ -2843,6 +2985,8 @@ lib LibGio
   fun output_stream_splice_finish = g_output_stream_splice_finish(this : OutputStream*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : Int64
   fun output_stream_write = g_output_stream_write(this : OutputStream*, buffer : UInt8*, count : UInt64, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int64
   fun output_stream_write_all = g_output_stream_write_all(this : OutputStream*, buffer : UInt8*, count : UInt64, bytes_written : UInt64*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Bool
+  fun output_stream_write_all_async = g_output_stream_write_all_async(this : OutputStream*, buffer : UInt8*, count : UInt64, io_priority : Int32, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
+  fun output_stream_write_all_finish = g_output_stream_write_all_finish(this : OutputStream*, result : LibGio::AsyncResult*, bytes_written : UInt64*, error : LibGLib::Error**) : Bool
   fun output_stream_write_async = g_output_stream_write_async(this : OutputStream*, buffer : UInt8*, count : UInt64, io_priority : Int32, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun output_stream_write_bytes = g_output_stream_write_bytes(this : OutputStream*, bytes : LibGLib::Bytes*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int64
   fun output_stream_write_bytes_async = g_output_stream_write_bytes_async(this : OutputStream*, bytes : LibGLib::Bytes*, io_priority : Int32, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
@@ -2871,8 +3015,9 @@ lib LibGio
   fun permission_release_finish = g_permission_release_finish(this : Permission*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : Bool
 
   struct PropertyAction # object
+    _data : UInt8[0]
   end
-  fun property_action_new = g_property_action_new(name : UInt8*, object : Void*, property_name : UInt8*) : LibGio::PropertyAction*
+  fun property_action_new = g_property_action_new(name : UInt8*, object : LibGObject::Object*, property_name : UInt8*) : LibGio::PropertyAction*
 
   struct ProxyAddress # object
     parent_instance : LibGio::InetSocketAddress
@@ -2944,7 +3089,7 @@ lib LibGio
   fun settings_list_relocatable_schemas = g_settings_list_relocatable_schemas() : UInt8**
   fun settings_list_schemas = g_settings_list_schemas() : UInt8**
   fun settings_sync = g_settings_sync() : Void
-  fun settings_unbind = g_settings_unbind(object : Void*, property : UInt8*) : Void
+  fun settings_unbind = g_settings_unbind(object : LibGObject::Object*, property : UInt8*) : Void
   fun settings_apply = g_settings_apply(this : Settings*) : Void
   fun settings_bind = g_settings_bind(this : Settings*, key : UInt8*, object : LibGObject::Object*, property : UInt8*, flags : LibGio::SettingsBindFlags) : Void
   fun settings_bind_writable = g_settings_bind_writable(this : Settings*, key : UInt8*, object : LibGObject::Object*, property : UInt8*, inverted : Bool) : Void
@@ -2982,6 +3127,7 @@ lib LibGio
   fun settings_set_value = g_settings_set_value(this : Settings*, key : UInt8*, value : LibGLib::Variant*) : Bool
 
   struct SimpleAction # object
+    _data : UInt8[0]
     # Signal activate
     # Signal change-state
   end
@@ -2989,6 +3135,7 @@ lib LibGio
   fun simple_action_new_stateful = g_simple_action_new_stateful(name : UInt8*, parameter_type : LibGLib::VariantType*, state : LibGLib::Variant*) : LibGio::SimpleAction*
   fun simple_action_set_enabled = g_simple_action_set_enabled(this : SimpleAction*, enabled : Bool) : Void
   fun simple_action_set_state = g_simple_action_set_state(this : SimpleAction*, value : LibGLib::Variant*) : Void
+  fun simple_action_set_state_hint = g_simple_action_set_state_hint(this : SimpleAction*, state_hint : LibGLib::Variant*) : Void
 
   struct SimpleActionGroup # object
     parent_instance : LibGObject::Object
@@ -3001,6 +3148,7 @@ lib LibGio
   fun simple_action_group_remove = g_simple_action_group_remove(this : SimpleActionGroup*, action_name : UInt8*) : Void
 
   struct SimpleAsyncResult # object
+    _data : UInt8[0]
   end
   fun simple_async_result_new = g_simple_async_result_new(source_object : LibGObject::Object*, callback : LibGio::AsyncReadyCallback, user_data : Void*, source_tag : Void*) : LibGio::SimpleAsyncResult*
   fun simple_async_result_new_from_error = g_simple_async_result_new_from_error(source_object : LibGObject::Object*, callback : LibGio::AsyncReadyCallback, user_data : Void*, error : LibGLib::Error**) : LibGio::SimpleAsyncResult*
@@ -3016,7 +3164,13 @@ lib LibGio
   fun simple_async_result_set_op_res_gboolean = g_simple_async_result_set_op_res_gboolean(this : SimpleAsyncResult*, op_res : Bool) : Void
   fun simple_async_result_set_op_res_gssize = g_simple_async_result_set_op_res_gssize(this : SimpleAsyncResult*, op_res : Int64) : Void
 
+  struct SimpleIOStream # object
+    _data : UInt8[0]
+  end
+  fun simple_i_o_stream_new = g_simple_io_stream_new(input_stream : LibGio::InputStream*, output_stream : LibGio::OutputStream*) : LibGio::IOStream*
+
   struct SimplePermission # object
+    _data : UInt8[0]
   end
   fun simple_permission_new = g_simple_permission_new(allowed : Bool) : LibGio::Permission*
 
@@ -3072,6 +3226,7 @@ lib LibGio
   fun socket_receive_with_blocking = g_socket_receive_with_blocking(this : Socket*, buffer : UInt8*, size : UInt64, blocking : Bool, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int64
   fun socket_send = g_socket_send(this : Socket*, buffer : UInt8*, size : UInt64, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int64
   fun socket_send_message = g_socket_send_message(this : Socket*, address : LibGio::SocketAddress*, vectors : LibGio::OutputVector*, num_vectors : Int32, messages : LibGio::SocketControlMessage**, num_messages : Int32, flags : Int32, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int64
+  fun socket_send_messages = g_socket_send_messages(this : Socket*, messages : LibGio::OutputMessage*, num_messages : UInt32, flags : Int32, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int32
   fun socket_send_to = g_socket_send_to(this : Socket*, address : LibGio::SocketAddress*, buffer : UInt8*, size : UInt64, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int64
   fun socket_send_with_blocking = g_socket_send_with_blocking(this : Socket*, buffer : UInt8*, size : UInt64, blocking : Bool, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int64
   fun socket_set_blocking = g_socket_set_blocking(this : Socket*, blocking : Bool) : Void
@@ -3205,6 +3360,7 @@ lib LibGio
   fun socket_service_stop = g_socket_service_stop(this : SocketService*) : Void
 
   struct Subprocess # object
+    _data : UInt8[0]
   end
   fun subprocess_new = g_subprocess_newv(argv : UInt8**, flags : LibGio::SubprocessFlags, error : LibGLib::Error**) : LibGio::Subprocess*
   fun subprocess_communicate = g_subprocess_communicate(this : Subprocess*, stdin_buf : LibGLib::Bytes*, cancellable : LibGio::Cancellable*, stdout_buf : LibGLib::Bytes**, stderr_buf : LibGLib::Bytes**, error : LibGLib::Error**) : Bool
@@ -3233,6 +3389,7 @@ lib LibGio
   fun subprocess_wait_finish = g_subprocess_wait_finish(this : Subprocess*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : Bool
 
   struct SubprocessLauncher # object
+    _data : UInt8[0]
   end
   fun subprocess_launcher_new = g_subprocess_launcher_new(flags : LibGio::SubprocessFlags) : LibGio::SubprocessLauncher*
   fun subprocess_launcher_getenv = g_subprocess_launcher_getenv(this : SubprocessLauncher*, variable : UInt8*) : UInt8*
@@ -3252,12 +3409,14 @@ lib LibGio
   fun subprocess_launcher_unsetenv = g_subprocess_launcher_unsetenv(this : SubprocessLauncher*, variable : UInt8*) : Void
 
   struct Task # object
+    _data : UInt8[0]
   end
   fun task_new = g_task_new(source_object : LibGObject::Object*, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, callback_data : Void*) : LibGio::Task*
   fun task_is_valid = g_task_is_valid(result : LibGio::AsyncResult*, source_object : LibGObject::Object*) : Bool
   fun task_report_error = g_task_report_error(source_object : LibGObject::Object*, callback : LibGio::AsyncReadyCallback, callback_data : Void*, source_tag : Void*, error : LibGLib::Error**) : Void
   fun task_get_cancellable = g_task_get_cancellable(this : Task*) : LibGio::Cancellable*
   fun task_get_check_cancellable = g_task_get_check_cancellable(this : Task*) : Bool
+  fun task_get_completed = g_task_get_completed(this : Task*) : Bool
   fun task_get_context = g_task_get_context(this : Task*) : LibGLib::MainContext*
   fun task_get_priority = g_task_get_priority(this : Task*) : Int32
   fun task_get_return_on_cancel = g_task_get_return_on_cancel(this : Task*) : Bool
@@ -3294,6 +3453,7 @@ lib LibGio
   fun tcp_wrapper_connection_get_base_io_stream = g_tcp_wrapper_connection_get_base_io_stream(this : TcpWrapperConnection*) : LibGio::IOStream*
 
   struct TestDBus # object
+    _data : UInt8[0]
   end
   fun test_d_bus_new = g_test_dbus_new(flags : LibGio::TestDBusFlags) : LibGio::TestDBus*
   fun test_d_bus_unset = g_test_dbus_unset() : Void
@@ -3305,6 +3465,7 @@ lib LibGio
   fun test_d_bus_up = g_test_dbus_up(this : TestDBus*) : Void
 
   struct ThemedIcon # object
+    _data : UInt8[0]
   end
   fun themed_icon_new = g_themed_icon_new(iconname : UInt8*) : LibGio::ThemedIcon*
   fun themed_icon_new_from_names = g_themed_icon_new_from_names(iconnames : UInt8**, len : Int32) : LibGio::ThemedIcon*
@@ -3484,10 +3645,12 @@ lib LibGio
   fun unix_input_stream_set_close_fd = g_unix_input_stream_set_close_fd(this : UnixInputStream*, close_fd : Bool) : Void
 
   struct UnixMountMonitor # object
+    _data : UInt8[0]
     # Signal mountpoints-changed
     # Signal mounts-changed
   end
   fun unix_mount_monitor_new = g_unix_mount_monitor_new() : LibGio::UnixMountMonitor*
+  fun unix_mount_monitor_get = g_unix_mount_monitor_get() : LibGio::UnixMountMonitor*
   fun unix_mount_monitor_set_rate_limit = g_unix_mount_monitor_set_rate_limit(this : UnixMountMonitor*, limit_msec : Int32) : Void
 
   struct UnixOutputStream # object
@@ -3575,12 +3738,14 @@ lib LibGio
   fun volume_monitor_get_volumes = g_volume_monitor_get_volumes(this : VolumeMonitor*) : Void**
 
   struct ZlibCompressor # object
+    _data : UInt8[0]
   end
   fun zlib_compressor_new = g_zlib_compressor_new(format : LibGio::ZlibCompressorFormat, level : Int32) : LibGio::ZlibCompressor*
   fun zlib_compressor_get_file_info = g_zlib_compressor_get_file_info(this : ZlibCompressor*) : LibGio::FileInfo*
   fun zlib_compressor_set_file_info = g_zlib_compressor_set_file_info(this : ZlibCompressor*, file_info : LibGio::FileInfo*) : Void
 
   struct ZlibDecompressor # object
+    _data : UInt8[0]
   end
   fun zlib_decompressor_new = g_zlib_decompressor_new(format : LibGio::ZlibCompressorFormat) : LibGio::ZlibDecompressor*
   fun zlib_decompressor_get_file_info = g_zlib_decompressor_get_file_info(this : ZlibDecompressor*) : LibGio::FileInfo*
@@ -3590,7 +3755,7 @@ lib LibGio
   ##    Enums
   ###########################################
 
-  enum BusType
+  enum BusType : Int32
     ZERO_NONE = 0
     STARTER = -1
     NONE = 0
@@ -3598,7 +3763,7 @@ lib LibGio
     SESSION = 2
   end
 
-  enum ConverterResult
+  enum ConverterResult : UInt32
     ZERO_NONE = 0
     ERROR = 0
     CONVERTED = 1
@@ -3606,17 +3771,17 @@ lib LibGio
     FLUSHED = 3
   end
 
-  enum CredentialsType
+  enum CredentialsType : UInt32
     ZERO_NONE = 0
     INVALID = 0
     LINUX_UCRED = 1
     FREEBSD_CMSGCRED = 2
-    NETBSD_UNPCBID = 3
-    OPENBSD_SOCKPEERCRED = 4
-    SOLARIS_UCRED = 5
+    OPENBSD_SOCKPEERCRED = 3
+    SOLARIS_UCRED = 4
+    NETBSD_UNPCBID = 5
   end
 
-  enum DBusError
+  enum DBusError : UInt32
     ZERO_NONE = 0
     FAILED = 0
     NO_MEMORY = 1
@@ -3674,13 +3839,13 @@ lib LibGio
   fun d_bus_error_strip_remote_error = g_dbus_error_strip_remote_error(error : LibGLib::Error**) : Bool
   fun d_bus_error_unregister_error = g_dbus_error_unregister_error(error_domain : UInt32, error_code : Int32, dbus_error_name : UInt8*) : Bool
 
-  enum DBusMessageByteOrder
+  enum DBusMessageByteOrder : UInt32
     ZERO_NONE = 0
     BIG_ENDIAN = 66
     LITTLE_ENDIAN = 108
   end
 
-  enum DBusMessageHeaderField
+  enum DBusMessageHeaderField : UInt32
     ZERO_NONE = 0
     INVALID = 0
     PATH = 1
@@ -3694,7 +3859,7 @@ lib LibGio
     NUM_UNIX_FDS = 9
   end
 
-  enum DBusMessageType
+  enum DBusMessageType : UInt32
     ZERO_NONE = 0
     INVALID = 0
     METHOD_CALL = 1
@@ -3703,14 +3868,14 @@ lib LibGio
     SIGNAL = 4
   end
 
-  enum DataStreamByteOrder
+  enum DataStreamByteOrder : UInt32
     ZERO_NONE = 0
     BIG_ENDIAN = 0
     LITTLE_ENDIAN = 1
     HOST_ENDIAN = 2
   end
 
-  enum DataStreamNewlineType
+  enum DataStreamNewlineType : UInt32
     ZERO_NONE = 0
     LF = 0
     CR = 1
@@ -3718,7 +3883,7 @@ lib LibGio
     ANY = 3
   end
 
-  enum DriveStartStopType
+  enum DriveStartStopType : UInt32
     ZERO_NONE = 0
     UNKNOWN = 0
     SHUTDOWN = 1
@@ -3727,7 +3892,7 @@ lib LibGio
     PASSWORD = 4
   end
 
-  enum EmblemOrigin
+  enum EmblemOrigin : UInt32
     ZERO_NONE = 0
     UNKNOWN = 0
     DEVICE = 1
@@ -3735,14 +3900,14 @@ lib LibGio
     TAG = 3
   end
 
-  enum FileAttributeStatus
+  enum FileAttributeStatus : UInt32
     ZERO_NONE = 0
     UNSET = 0
     SET = 1
     ERROR_SETTING = 2
   end
 
-  enum FileAttributeType
+  enum FileAttributeType : UInt32
     ZERO_NONE = 0
     INVALID = 0
     STRING = 1
@@ -3756,7 +3921,7 @@ lib LibGio
     STRINGV = 9
   end
 
-  enum FileMonitorEvent
+  enum FileMonitorEvent : UInt32
     ZERO_NONE = 0
     CHANGED = 0
     CHANGES_DONE_HINT = 1
@@ -3768,7 +3933,7 @@ lib LibGio
     MOVED = 7
   end
 
-  enum FileType
+  enum FileType : UInt32
     ZERO_NONE = 0
     UNKNOWN = 0
     REGULAR = 1
@@ -3779,14 +3944,14 @@ lib LibGio
     MOUNTABLE = 6
   end
 
-  enum FilesystemPreviewType
+  enum FilesystemPreviewType : UInt32
     ZERO_NONE = 0
     IF_ALWAYS = 0
     IF_LOCAL = 1
     NEVER = 2
   end
 
-  enum IOErrorEnum
+  enum IOErrorEnum : UInt32
     ZERO_NONE = 0
     FAILED = 0
     NOT_FOUND = 1
@@ -3833,22 +3998,32 @@ lib LibGio
     PROXY_NEED_AUTH = 42
     PROXY_NOT_ALLOWED = 43
     BROKEN_PIPE = 44
+    CONNECTION_CLOSED = 44
+    NOT_CONNECTED = 45
   end
 
-  enum IOModuleScopeFlags
+  enum IOModuleScopeFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     BLOCK_DUPLICATES = 1
   end
 
-  enum MountOperationResult
+  enum MountOperationResult : UInt32
     ZERO_NONE = 0
     HANDLED = 0
     ABORTED = 1
     UNHANDLED = 2
   end
 
-  enum NotificationPriority
+  enum NetworkConnectivity : UInt32
+    ZERO_NONE = 0
+    LOCAL = 1
+    LIMITED = 2
+    PORTAL = 3
+    FULL = 4
+  end
+
+  enum NotificationPriority : UInt32
     ZERO_NONE = 0
     NORMAL = 0
     LOW = 1
@@ -3856,14 +4031,14 @@ lib LibGio
     URGENT = 3
   end
 
-  enum PasswordSave
+  enum PasswordSave : UInt32
     ZERO_NONE = 0
     NEVER = 0
     FOR_SESSION = 1
     PERMANENTLY = 2
   end
 
-  enum ResolverError
+  enum ResolverError : UInt32
     ZERO_NONE = 0
     NOT_FOUND = 0
     TEMPORARY_FAILURE = 1
@@ -3871,7 +4046,7 @@ lib LibGio
   end
   fun resolver_error_quark = g_resolver_error_quark() : UInt32
 
-  enum ResolverRecordType
+  enum ResolverRecordType : UInt32
     ZERO_NONE = 0
     SRV = 1
     MX = 2
@@ -3880,14 +4055,14 @@ lib LibGio
     NS = 5
   end
 
-  enum ResourceError
+  enum ResourceError : UInt32
     ZERO_NONE = 0
     NOT_FOUND = 0
     INTERNAL = 1
   end
   fun resource_error_quark = g_resource_error_quark() : UInt32
 
-  enum SocketClientEvent
+  enum SocketClientEvent : UInt32
     ZERO_NONE = 0
     RESOLVING = 0
     RESOLVED = 1
@@ -3900,7 +4075,7 @@ lib LibGio
     COMPLETE = 8
   end
 
-  enum SocketFamily
+  enum SocketFamily : UInt32
     ZERO_NONE = 0
     INVALID = 0
     UNIX = 1
@@ -3908,7 +4083,7 @@ lib LibGio
     IPV6 = 10
   end
 
-  enum SocketProtocol
+  enum SocketProtocol : Int32
     ZERO_NONE = 0
     UNKNOWN = -1
     DEFAULT = 0
@@ -3917,7 +4092,7 @@ lib LibGio
     SCTP = 132
   end
 
-  enum SocketType
+  enum SocketType : UInt32
     ZERO_NONE = 0
     INVALID = 0
     STREAM = 1
@@ -3925,25 +4100,25 @@ lib LibGio
     SEQPACKET = 3
   end
 
-  enum TlsAuthenticationMode
+  enum TlsAuthenticationMode : UInt32
     ZERO_NONE = 0
     NONE = 0
     REQUESTED = 1
     REQUIRED = 2
   end
 
-  enum TlsCertificateRequestFlags
+  enum TlsCertificateRequestFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
   end
 
-  enum TlsDatabaseLookupFlags
+  enum TlsDatabaseLookupFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     KEYPAIR = 1
   end
 
-  enum TlsError
+  enum TlsError : UInt32
     ZERO_NONE = 0
     UNAVAILABLE = 0
     MISC = 1
@@ -3955,21 +4130,21 @@ lib LibGio
   end
   fun tls_error_quark = g_tls_error_quark() : UInt32
 
-  enum TlsInteractionResult
+  enum TlsInteractionResult : UInt32
     ZERO_NONE = 0
     UNHANDLED = 0
     HANDLED = 1
     FAILED = 2
   end
 
-  enum TlsRehandshakeMode
+  enum TlsRehandshakeMode : UInt32
     ZERO_NONE = 0
     NEVER = 0
     SAFELY = 1
     UNSAFELY = 2
   end
 
-  enum UnixSocketAddressType
+  enum UnixSocketAddressType : UInt32
     ZERO_NONE = 0
     INVALID = 0
     ANONYMOUS = 1
@@ -3978,7 +4153,7 @@ lib LibGio
     ABSTRACT_PADDED = 4
   end
 
-  enum ZlibCompressorFormat
+  enum ZlibCompressorFormat : UInt32
     ZERO_NONE = 0
     ZLIB = 0
     GZIP = 1

@@ -1,7 +1,10 @@
 require "./lib_cairo"
 require "./lib_pango"
+require "./lib_g_object"
 require "./lib_gio"
+require "./lib_g_lib"
 require "./lib_gdk_pixbuf"
+require "./lib_g_module"
 
 @[Link("gdk-3")]
 lib LibGdk
@@ -11,6 +14,7 @@ lib LibGdk
   ###########################################
 
   struct AppLaunchContext # object
+    _data : UInt8[0]
   end
   fun app_launch_context_new = gdk_app_launch_context_new() : LibGdk::AppLaunchContext*
   fun app_launch_context_set_desktop = gdk_app_launch_context_set_desktop(this : AppLaunchContext*, desktop : Int32) : Void
@@ -21,6 +25,7 @@ lib LibGdk
   fun app_launch_context_set_timestamp = gdk_app_launch_context_set_timestamp(this : AppLaunchContext*, timestamp : UInt32) : Void
 
   struct Cursor # object
+    _data : UInt8[0]
   end
   fun cursor_new = gdk_cursor_new(cursor_type : LibGdk::CursorType) : LibGdk::Cursor*
   fun cursor_new_for_display = gdk_cursor_new_for_display(display : LibGdk::Display*, cursor_type : LibGdk::CursorType) : LibGdk::Cursor*
@@ -35,6 +40,7 @@ lib LibGdk
   fun cursor_unref = gdk_cursor_unref(this : Cursor*) : Void
 
   struct Device # object
+    _data : UInt8[0]
     # Signal changed
   end
   fun device_grab_info_libgtk_only = gdk_device_grab_info_libgtk_only(display : LibGdk::Display*, device : LibGdk::Device*, grab_window : LibGdk::Window**, owner_events : Bool*) : Bool
@@ -51,7 +57,9 @@ lib LibGdk
   fun device_get_name = gdk_device_get_name(this : Device*) : UInt8*
   fun device_get_position = gdk_device_get_position(this : Device*, screen : LibGdk::Screen**, x : Int32*, y : Int32*) : Void
   fun device_get_position_double = gdk_device_get_position_double(this : Device*, screen : LibGdk::Screen**, x : Float64*, y : Float64*) : Void
+  fun device_get_product_id = gdk_device_get_product_id(this : Device*) : UInt8*
   fun device_get_source = gdk_device_get_source(this : Device*) : LibGdk::InputSource
+  fun device_get_vendor_id = gdk_device_get_vendor_id(this : Device*) : UInt8*
   fun device_get_window_at_position = gdk_device_get_window_at_position(this : Device*, win_x : Int32*, win_y : Int32*) : LibGdk::Window*
   fun device_get_window_at_position_double = gdk_device_get_window_at_position_double(this : Device*, win_x : Float64*, win_y : Float64*) : LibGdk::Window*
   fun device_grab = gdk_device_grab(this : Device*, window : LibGdk::Window*, grab_ownership : LibGdk::GrabOwnership, owner_events : Bool, event_mask : LibGdk::EventMask, cursor : LibGdk::Cursor*, time : UInt32) : LibGdk::GrabStatus
@@ -64,6 +72,7 @@ lib LibGdk
   fun device_warp = gdk_device_warp(this : Device*, screen : LibGdk::Screen*, x : Int32, y : Int32) : Void
 
   struct DeviceManager # object
+    _data : UInt8[0]
     # Signal device-added
     # Signal device-changed
     # Signal device-removed
@@ -73,6 +82,7 @@ lib LibGdk
   fun device_manager_list_devices = gdk_device_manager_list_devices(this : DeviceManager*, type : LibGdk::DeviceType) : Void**
 
   struct Display # object
+    _data : UInt8[0]
     # Signal closed
     # Signal opened
   end
@@ -119,6 +129,7 @@ lib LibGdk
   fun display_warp_pointer = gdk_display_warp_pointer(this : Display*, screen : LibGdk::Screen*, x : Int32, y : Int32) : Void
 
   struct DisplayManager # object
+    _data : UInt8[0]
     # Signal display-opened
   end
   fun display_manager_get = gdk_display_manager_get() : LibGdk::DisplayManager*
@@ -128,6 +139,7 @@ lib LibGdk
   fun display_manager_set_default_display = gdk_display_manager_set_default_display(this : DisplayManager*, display : LibGdk::Display*) : Void
 
   struct DragContext # object
+    _data : UInt8[0]
   end
   fun drag_context_get_actions = gdk_drag_context_get_actions(this : DragContext*) : LibGdk::DragAction
   fun drag_context_get_dest_window = gdk_drag_context_get_dest_window(this : DragContext*) : LibGdk::Window*
@@ -140,6 +152,7 @@ lib LibGdk
   fun drag_context_set_device = gdk_drag_context_set_device(this : DragContext*, device : LibGdk::Device*) : Void
 
   struct FrameClock # object
+    _data : UInt8[0]
     # Signal after-paint
     # Signal before-paint
     # Signal flush-events
@@ -158,7 +171,26 @@ lib LibGdk
   fun frame_clock_get_timings = gdk_frame_clock_get_timings(this : FrameClock*, frame_counter : Int64) : LibGdk::FrameTimings*
   fun frame_clock_request_phase = gdk_frame_clock_request_phase(this : FrameClock*, phase : LibGdk::FrameClockPhase) : Void
 
+  struct GLContext # object
+    _data : UInt8[0]
+  end
+  fun g_l_context_clear_current = gdk_gl_context_clear_current() : Void
+  fun g_l_context_get_current = gdk_gl_context_get_current() : LibGdk::GLContext*
+  fun g_l_context_get_debug_enabled = gdk_gl_context_get_debug_enabled(this : GLContext*) : Bool
+  fun g_l_context_get_display = gdk_gl_context_get_display(this : GLContext*) : LibGdk::Display*
+  fun g_l_context_get_forward_compatible = gdk_gl_context_get_forward_compatible(this : GLContext*) : Bool
+  fun g_l_context_get_required_version = gdk_gl_context_get_required_version(this : GLContext*, major : Int32*, minor : Int32*) : Void
+  fun g_l_context_get_shared_context = gdk_gl_context_get_shared_context(this : GLContext*) : LibGdk::GLContext*
+  fun g_l_context_get_version = gdk_gl_context_get_version(this : GLContext*, major : Int32*, minor : Int32*) : Void
+  fun g_l_context_get_window = gdk_gl_context_get_window(this : GLContext*) : LibGdk::Window*
+  fun g_l_context_make_current = gdk_gl_context_make_current(this : GLContext*) : Void
+  fun g_l_context_realize = gdk_gl_context_realize(this : GLContext*, error : LibGLib::Error**) : Bool
+  fun g_l_context_set_debug_enabled = gdk_gl_context_set_debug_enabled(this : GLContext*, enabled : Bool) : Void
+  fun g_l_context_set_forward_compatible = gdk_gl_context_set_forward_compatible(this : GLContext*, compatible : Bool) : Void
+  fun g_l_context_set_required_version = gdk_gl_context_set_required_version(this : GLContext*, major : Int32, minor : Int32) : Void
+
   struct Keymap # object
+    _data : UInt8[0]
     # Signal direction-changed
     # Signal keys-changed
     # Signal state-changed
@@ -179,6 +211,7 @@ lib LibGdk
   fun keymap_translate_keyboard_state = gdk_keymap_translate_keyboard_state(this : Keymap*, hardware_keycode : UInt32, state : LibGdk::ModifierType, group : Int32, keyval : UInt32*, effective_group : Int32*, level : Int32*, consumed_modifiers : LibGdk::ModifierType*) : Bool
 
   struct Screen # object
+    _data : UInt8[0]
     # Signal composited-changed
     # Signal monitors-changed
     # Signal size-changed
@@ -220,6 +253,7 @@ lib LibGdk
   fun screen_set_resolution = gdk_screen_set_resolution(this : Screen*, dpi : Float64) : Void
 
   struct Visual # object
+    _data : UInt8[0]
   end
   fun visual_get_best = gdk_visual_get_best() : LibGdk::Visual*
   fun visual_get_best_depth = gdk_visual_get_best_depth() : Int32
@@ -239,6 +273,7 @@ lib LibGdk
   fun visual_get_visual_type = gdk_visual_get_visual_type(this : Visual*) : LibGdk::VisualType
 
   struct Window # object
+    _data : UInt8[0]
     # Signal create-surface
     # Signal from-embedder
     # Signal pick-embedded-child
@@ -262,6 +297,7 @@ lib LibGdk
   fun window_configure_finished = gdk_window_configure_finished(this : Window*) : Void
   fun window_coords_from_parent = gdk_window_coords_from_parent(this : Window*, parent_x : Float64, parent_y : Float64, x : Float64*, y : Float64*) : Void
   fun window_coords_to_parent = gdk_window_coords_to_parent(this : Window*, x : Float64, y : Float64, parent_x : Float64*, parent_y : Float64*) : Void
+  fun window_create_gl_context = gdk_window_create_gl_context(this : Window*, error : LibGLib::Error**) : LibGdk::GLContext*
   fun window_create_similar_image_surface = gdk_window_create_similar_image_surface(this : Window*, format : Int32, width : Int32, height : Int32, scale : Int32) : Libcairo::Surface*
   fun window_create_similar_surface = gdk_window_create_similar_surface(this : Window*, content : Libcairo::Content, width : Int32, height : Int32) : Libcairo::Surface*
   fun window_deiconify = gdk_window_deiconify(this : Window*) : Void
@@ -334,6 +370,7 @@ lib LibGdk
   fun window_is_viewable = gdk_window_is_viewable(this : Window*) : Bool
   fun window_is_visible = gdk_window_is_visible(this : Window*) : Bool
   fun window_lower = gdk_window_lower(this : Window*) : Void
+  fun window_mark_paint_from_clip = gdk_window_mark_paint_from_clip(this : Window*, cr : Libcairo::Context*) : Void
   fun window_maximize = gdk_window_maximize(this : Window*) : Void
   fun window_merge_child_input_shapes = gdk_window_merge_child_input_shapes(this : Window*) : Void
   fun window_merge_child_shapes = gdk_window_merge_child_shapes(this : Window*) : Void
@@ -405,6 +442,7 @@ lib LibGdk
   ###########################################
 
   struct Atom # struct
+    _data : UInt8[0]
   end
   fun atom_name = gdk_atom_name(this : Atom*) : UInt8*
   fun atom_intern = gdk_atom_intern(atom_name : UInt8*, only_if_exists : Bool) : LibGdk::Atom*
@@ -590,6 +628,7 @@ lib LibGdk
   end
 
   struct EventSequence # struct
+    _data : UInt8[0]
   end
 
   struct EventSetting # struct
@@ -632,9 +671,11 @@ lib LibGdk
   end
 
   struct FrameClockPrivate # struct
+    _data : UInt8[0]
   end
 
   struct FrameTimings # struct
+    _data : UInt8[0]
   end
   fun frame_timings_get_complete = gdk_frame_timings_get_complete(this : FrameTimings*) : Bool
   fun frame_timings_get_frame_counter = gdk_frame_timings_get_frame_counter(this : FrameTimings*) : Int64
@@ -706,6 +747,7 @@ lib LibGdk
   end
 
   struct WindowRedirect # struct
+    _data : UInt8[0]
   end
 
 
@@ -713,7 +755,7 @@ lib LibGdk
   ##    Enums
   ###########################################
 
-  enum AxisUse
+  enum AxisUse : UInt32
     ZERO_NONE = 0
     IGNORE = 0
     X = 1
@@ -725,13 +767,13 @@ lib LibGdk
     LAST = 7
   end
 
-  enum ByteOrder
+  enum ByteOrder : UInt32
     ZERO_NONE = 0
     LSB_FIRST = 0
     MSB_FIRST = 1
   end
 
-  enum CrossingMode
+  enum CrossingMode : UInt32
     ZERO_NONE = 0
     NORMAL = 0
     GRAB = 1
@@ -744,7 +786,7 @@ lib LibGdk
     DEVICE_SWITCH = 8
   end
 
-  enum CursorType
+  enum CursorType : Int32
     ZERO_NONE = 0
     X_CURSOR = 0
     ARROW = 2
@@ -828,14 +870,14 @@ lib LibGdk
     CURSOR_IS_PIXMAP = -1
   end
 
-  enum DeviceType
+  enum DeviceType : UInt32
     ZERO_NONE = 0
     MASTER = 0
     SLAVE = 1
     FLOATING = 2
   end
 
-  enum DragProtocol
+  enum DragProtocol : UInt32
     ZERO_NONE = 0
     NONE = 0
     MOTIF = 1
@@ -847,7 +889,7 @@ lib LibGdk
     WAYLAND = 7
   end
 
-  enum EventType
+  enum EventType : Int32
     ZERO_NONE = 0
     NOTHING = -1
     DELETE = 0
@@ -895,36 +937,45 @@ lib LibGdk
     EVENT_LAST = 41
   end
 
-  enum FilterReturn
+  enum FilterReturn : UInt32
     ZERO_NONE = 0
     CONTINUE = 0
     TRANSLATE = 1
     REMOVE = 2
   end
 
-  enum FullscreenMode
+  enum FullscreenMode : UInt32
     ZERO_NONE = 0
     CURRENT_MONITOR = 0
     ALL_MONITORS = 1
   end
 
-  enum GrabOwnership
+  enum GLError : UInt32
+    ZERO_NONE = 0
+    NOT_AVAILABLE = 0
+    UNSUPPORTED_FORMAT = 1
+    UNSUPPORTED_PROFILE = 2
+  end
+  fun g_l_error_quark = gdk_gl_error_quark() : UInt32
+
+  enum GrabOwnership : UInt32
     ZERO_NONE = 0
     NONE = 0
     WINDOW = 1
     APPLICATION = 2
   end
 
-  enum GrabStatus
+  enum GrabStatus : UInt32
     ZERO_NONE = 0
     SUCCESS = 0
     ALREADY_GRABBED = 1
     INVALID_TIME = 2
     NOT_VIEWABLE = 3
     FROZEN = 4
+    FAILED = 5
   end
 
-  enum Gravity
+  enum Gravity : UInt32
     ZERO_NONE = 0
     NORTH_WEST = 1
     NORTH = 2
@@ -938,14 +989,14 @@ lib LibGdk
     STATIC = 10
   end
 
-  enum InputMode
+  enum InputMode : UInt32
     ZERO_NONE = 0
     DISABLED = 0
     SCREEN = 1
     WINDOW = 2
   end
 
-  enum InputSource
+  enum InputSource : UInt32
     ZERO_NONE = 0
     MOUSE = 0
     PEN = 1
@@ -956,7 +1007,7 @@ lib LibGdk
     TOUCHPAD = 6
   end
 
-  enum ModifierIntent
+  enum ModifierIntent : UInt32
     ZERO_NONE = 0
     PRIMARY_ACCELERATOR = 0
     CONTEXT_MENU = 1
@@ -966,7 +1017,7 @@ lib LibGdk
     SHIFT_GROUP = 5
   end
 
-  enum NotifyType
+  enum NotifyType : UInt32
     ZERO_NONE = 0
     ANCESTOR = 0
     VIRTUAL = 1
@@ -976,27 +1027,27 @@ lib LibGdk
     UNKNOWN = 5
   end
 
-  enum OwnerChange
+  enum OwnerChange : UInt32
     ZERO_NONE = 0
     NEW_OWNER = 0
     DESTROY = 1
     CLOSE = 2
   end
 
-  enum PropMode
+  enum PropMode : UInt32
     ZERO_NONE = 0
     REPLACE = 0
     PREPEND = 1
     APPEND = 2
   end
 
-  enum PropertyState
+  enum PropertyState : UInt32
     ZERO_NONE = 0
     NEW_VALUE = 0
     DELETE = 1
   end
 
-  enum ScrollDirection
+  enum ScrollDirection : UInt32
     ZERO_NONE = 0
     UP = 0
     DOWN = 1
@@ -1005,14 +1056,14 @@ lib LibGdk
     SMOOTH = 4
   end
 
-  enum SettingAction
+  enum SettingAction : UInt32
     ZERO_NONE = 0
     NEW = 0
     CHANGED = 1
     DELETED = 2
   end
 
-  enum Status
+  enum Status : Int32
     ZERO_NONE = 0
     OK = 0
     ERROR = -1
@@ -1021,14 +1072,14 @@ lib LibGdk
     ERROR_MEM = -4
   end
 
-  enum VisibilityState
+  enum VisibilityState : UInt32
     ZERO_NONE = 0
     UNOBSCURED = 0
     PARTIAL = 1
     FULLY_OBSCURED = 2
   end
 
-  enum VisualType
+  enum VisualType : UInt32
     ZERO_NONE = 0
     STATIC_GRAY = 0
     GRAYSCALE = 1
@@ -1038,7 +1089,7 @@ lib LibGdk
     DIRECT_COLOR = 5
   end
 
-  enum WindowEdge
+  enum WindowEdge : UInt32
     ZERO_NONE = 0
     NORTH_WEST = 0
     NORTH = 1
@@ -1050,7 +1101,7 @@ lib LibGdk
     SOUTH_EAST = 7
   end
 
-  enum WindowType
+  enum WindowType : UInt32
     ZERO_NONE = 0
     ROOT = 0
     TOPLEVEL = 1
@@ -1061,7 +1112,7 @@ lib LibGdk
     SUBSURFACE = 6
   end
 
-  enum WindowTypeHint
+  enum WindowTypeHint : UInt32
     ZERO_NONE = 0
     NORMAL = 0
     DIALOG = 1
@@ -1079,7 +1130,7 @@ lib LibGdk
     DND = 13
   end
 
-  enum WindowWindowClass
+  enum WindowWindowClass : UInt32
     ZERO_NONE = 0
     INPUT_OUTPUT = 0
     INPUT_ONLY = 1
@@ -3374,7 +3425,7 @@ lib LibGdk
   ##    Flags
   ###########################################
 
-  enum DragAction
+  enum DragAction : UInt32
     ZERO_NONE = 0
     DEFAULT = 1
     COPY = 2
@@ -3384,7 +3435,7 @@ lib LibGdk
     ASK = 32
   end
 
-  enum EventMask
+  enum EventMask : UInt32
     ZERO_NONE = 0
     EXPOSURE_MASK = 2
     POINTER_MOTION_MASK = 4
@@ -3412,7 +3463,7 @@ lib LibGdk
     ALL_EVENTS_MASK = 16777214
   end
 
-  enum FrameClockPhase
+  enum FrameClockPhase : UInt32
     ZERO_NONE = 0
     NONE = 0
     FLUSH_EVENTS = 1
@@ -3424,7 +3475,7 @@ lib LibGdk
     AFTER_PAINT = 64
   end
 
-  enum ModifierType
+  enum ModifierType : UInt32
     ZERO_NONE = 0
     SHIFT_MASK = 1
     LOCK_MASK = 2
@@ -3460,7 +3511,7 @@ lib LibGdk
     MODIFIER_MASK = 1543512063
   end
 
-  enum WMDecoration
+  enum WMDecoration : UInt32
     ZERO_NONE = 0
     ALL = 1
     BORDER = 2
@@ -3471,7 +3522,7 @@ lib LibGdk
     MAXIMIZE = 64
   end
 
-  enum WMFunction
+  enum WMFunction : UInt32
     ZERO_NONE = 0
     ALL = 1
     RESIZE = 2
@@ -3481,7 +3532,7 @@ lib LibGdk
     CLOSE = 32
   end
 
-  enum WindowAttributesType
+  enum WindowAttributesType : UInt32
     ZERO_NONE = 0
     TITLE = 2
     X = 4
@@ -3493,7 +3544,7 @@ lib LibGdk
     TYPE_HINT = 256
   end
 
-  enum WindowHints
+  enum WindowHints : UInt32
     ZERO_NONE = 0
     POS = 1
     MIN_SIZE = 2
@@ -3506,7 +3557,7 @@ lib LibGdk
     USER_SIZE = 256
   end
 
-  enum WindowState
+  enum WindowState : UInt32
     ZERO_NONE = 0
     WITHDRAWN = 1
     ICONIFIED = 2
@@ -3589,6 +3640,7 @@ lib LibGdk
   fun atom_intern_static_string = gdk_atom_intern_static_string(atom_name : UInt8*) : LibGdk::Atom*
   fun beep = gdk_beep() : Void
   fun cairo_create = gdk_cairo_create(window : LibGdk::Window*) : Libcairo::Context*
+  fun cairo_draw_from_gl = gdk_cairo_draw_from_gl(cr : Libcairo::Context*, window : LibGdk::Window*, source : Int32, source_type : Int32, buffer_scale : Int32, x : Int32, y : Int32, width : Int32, height : Int32) : Void
   fun cairo_get_clip_rectangle = gdk_cairo_get_clip_rectangle(cr : Libcairo::Context*, rect : Libcairo::RectangleInt*) : Bool
   fun cairo_rectangle = gdk_cairo_rectangle(cr : Libcairo::Context*, rectangle : Libcairo::RectangleInt*) : Void
   fun cairo_region = gdk_cairo_region(cr : Libcairo::Context*, region : Libcairo::Region*) : Void
@@ -3628,6 +3680,7 @@ lib LibGdk
   fun get_display_arg_name = gdk_get_display_arg_name() : UInt8*
   fun get_program_class = gdk_get_program_class() : UInt8*
   fun get_show_events = gdk_get_show_events() : Bool
+  fun gl_error_quark = gdk_gl_error_quark() : UInt32
   fun init = gdk_init(argc : Int32*, argv : UInt8***) : Void
   fun init_check = gdk_init_check(argc : Int32*, argv : UInt8***) : Bool
   fun keyboard_grab = gdk_keyboard_grab(window : LibGdk::Window*, owner_events : Bool, time : UInt32) : LibGdk::GrabStatus

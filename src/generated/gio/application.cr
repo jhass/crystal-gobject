@@ -16,6 +16,7 @@ module Gio
 
 
 
+
     def self.new_internal(application_id, flags)
       __return_value = LibGio.application_new(application_id && application_id, flags)
       Gio::Application.new(__return_value)
@@ -51,6 +52,11 @@ module Gio
       __return_value
     end
 
+    def bind_busy_property(object, property)
+      __return_value = LibGio.application_bind_busy_property((to_unsafe as LibGio::Application*), (object.to_unsafe as LibGObject::Object*), property)
+      __return_value
+    end
+
     def application_id
       __return_value = LibGio.application_get_application_id((to_unsafe as LibGio::Application*))
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
@@ -73,6 +79,11 @@ module Gio
 
     def inactivity_timeout
       __return_value = LibGio.application_get_inactivity_timeout((to_unsafe as LibGio::Application*))
+      __return_value
+    end
+
+    def is_busy
+      __return_value = LibGio.application_get_is_busy((to_unsafe as LibGio::Application*))
       __return_value
     end
 
@@ -160,6 +171,11 @@ module Gio
 
     def resource_base_path=(resource_path)
       __return_value = LibGio.application_set_resource_base_path((to_unsafe as LibGio::Application*), resource_path && resource_path)
+      __return_value
+    end
+
+    def unbind_busy_property(object, property)
+      __return_value = LibGio.application_unbind_busy_property((to_unsafe as LibGio::Application*), (object.to_unsafe as LibGObject::Object*), property)
       __return_value
     end
 

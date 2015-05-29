@@ -83,6 +83,13 @@ module Gdk
       __return_value
     end
 
+    def create_gl_context
+      __error = Pointer(LibGLib::Error).null
+      __return_value = LibGdk.window_create_gl_context((to_unsafe as LibGdk::Window*), pointerof(__error))
+      GLib::Error.assert __error
+      Gdk::GLContext.new(__return_value)
+    end
+
     def create_similar_image_surface(format, width, height, scale)
       __return_value = LibGdk.window_create_similar_image_surface((to_unsafe as LibGdk::Window*), Int32.cast(format), Int32.cast(width), Int32.cast(height), Int32.cast(scale))
       Cairo::Surface.new(__return_value)
@@ -443,6 +450,11 @@ module Gdk
       __return_value
     end
 
+    def mark_paint_from_clip(cr)
+      __return_value = LibGdk.window_mark_paint_from_clip((to_unsafe as LibGdk::Window*), (cr.to_unsafe as LibCairo::Context*))
+      __return_value
+    end
+
     def maximize
       __return_value = LibGdk.window_maximize((to_unsafe as LibGdk::Window*))
       __return_value
@@ -634,7 +646,7 @@ module Gdk
     end
 
     def opaque_region=(region)
-      __return_value = LibGdk.window_set_opaque_region((to_unsafe as LibGdk::Window*), (region.to_unsafe as LibCairo::Region*))
+      __return_value = LibGdk.window_set_opaque_region((to_unsafe as LibGdk::Window*), region && (region.to_unsafe as LibCairo::Region*))
       __return_value
     end
 

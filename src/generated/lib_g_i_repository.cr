@@ -1,3 +1,4 @@
+require "./lib_g_lib"
 require "./lib_g_object"
 
 @[Link("girepository-1.0")]
@@ -36,7 +37,7 @@ lib LibGIRepository
   ##    Enums
   ###########################################
 
-  enum ArrayType
+  enum ArrayType : UInt32
     ZERO_NONE = 0
     C = 0
     ARRAY = 1
@@ -44,14 +45,14 @@ lib LibGIRepository
     BYTE_ARRAY = 3
   end
 
-  enum Direction
+  enum Direction : UInt32
     ZERO_NONE = 0
     IN = 0
     OUT = 1
     INOUT = 2
   end
 
-  enum InfoType
+  enum InfoType : UInt32
     ZERO_NONE = 0
     INVALID = 0
     FUNCTION = 1
@@ -75,7 +76,7 @@ lib LibGIRepository
     UNRESOLVED = 19
   end
 
-  enum RepositoryError
+  enum RepositoryError : UInt32
     ZERO_NONE = 0
     TYPELIB_NOT_FOUND = 0
     NAMESPACE_MISMATCH = 1
@@ -83,7 +84,7 @@ lib LibGIRepository
     LIBRARY_NOT_FOUND = 3
   end
 
-  enum ScopeType
+  enum ScopeType : UInt32
     ZERO_NONE = 0
     INVALID = 0
     CALL = 1
@@ -91,14 +92,14 @@ lib LibGIRepository
     NOTIFIED = 3
   end
 
-  enum Transfer
+  enum Transfer : UInt32
     ZERO_NONE = 0
     NOTHING = 0
     CONTAINER = 1
     EVERYTHING = 2
   end
 
-  enum TypeTag
+  enum TypeTag : UInt32
     ZERO_NONE = 0
     VOID = 0
     BOOLEAN = 1
@@ -157,15 +158,18 @@ lib LibGIRepository
   fun base_info_iterate_attributes = g_base_info_iterate_attributes(this : BaseInfo*, iterator : LibGIRepository::AttributeIter*, name : UInt8**, value : UInt8**) : Bool
 
   struct RepositoryPrivate # struct
+    _data : UInt8[0]
   end
 
   struct Typelib # struct
+    _data : UInt8[0]
   end
   fun typelib_free = g_typelib_free(this : Typelib*) : Void
   fun typelib_get_namespace = g_typelib_get_namespace(this : Typelib*) : UInt8*
   fun typelib_symbol = g_typelib_symbol(this : Typelib*, symbol_name : UInt8*, symbol : Void*) : Bool
 
   struct UnresolvedInfo # struct
+    _data : UInt8[0]
   end
 
 
@@ -173,13 +177,13 @@ lib LibGIRepository
   ##    Flags
   ###########################################
 
-  enum FieldInfoFlags
+  enum FieldInfoFlags : UInt32
     ZERO_NONE = 0
     READABLE = 1
     WRITABLE = 2
   end
 
-  enum FunctionInfoFlags
+  enum FunctionInfoFlags : UInt32
     ZERO_NONE = 0
     IS_METHOD = 1
     IS_CONSTRUCTOR = 2
@@ -189,12 +193,12 @@ lib LibGIRepository
     THROWS = 32
   end
 
-  enum RepositoryLoadFlags
+  enum RepositoryLoadFlags : UInt32
     ZERO_NONE = 0
     IREPOSITORY_LOAD_FLAG_LAZY = 1
   end
 
-  enum VFuncInfoFlags
+  enum VFuncInfoFlags : UInt32
     ZERO_NONE = 0
     MUST_CHAIN_UP = 1
     MUST_OVERRIDE = 2
@@ -223,6 +227,7 @@ lib LibGIRepository
   fun repository_find_by_name = g_irepository_find_by_name(this : Repository*, namespace : UInt8*, name : UInt8*) : LibGIRepository::BaseInfo*
   fun repository_get_c_prefix = g_irepository_get_c_prefix(this : Repository*, namespace : UInt8*) : UInt8*
   fun repository_get_dependencies = g_irepository_get_dependencies(this : Repository*, namespace : UInt8*) : UInt8**
+  fun repository_get_immediate_dependencies = g_irepository_get_immediate_dependencies(this : Repository*, namespace : UInt8*) : UInt8**
   fun repository_get_info = g_irepository_get_info(this : Repository*, namespace : UInt8*, index : Int32) : LibGIRepository::BaseInfo*
   fun repository_get_loaded_namespaces = g_irepository_get_loaded_namespaces(this : Repository*) : UInt8**
   fun repository_get_n_infos = g_irepository_get_n_infos(this : Repository*, namespace : UInt8*) : Int32

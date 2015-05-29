@@ -24,6 +24,11 @@ module Gdk
     Cairo::Context.new(__return_value)
   end
 
+  def self.cairo_draw_from_gl(cr, window, source, source_type, buffer_scale, x, y, width, height)
+    __return_value = LibGdk.cairo_draw_from_gl((cr.to_unsafe as LibCairo::Context*), (window.to_unsafe as LibGdk::Window*), Int32.cast(source), Int32.cast(source_type), Int32.cast(buffer_scale), Int32.cast(x), Int32.cast(y), Int32.cast(width), Int32.cast(height))
+    __return_value
+  end
+
   def self.cairo_get_clip_rectangle(cr, rect)
     __return_value = LibGdk.cairo_get_clip_rectangle((cr.to_unsafe as LibCairo::Context*), rect)
     __return_value
@@ -216,6 +221,11 @@ module Gdk
 
   def self.show_events
     __return_value = LibGdk.get_show_events
+    __return_value
+  end
+
+  def self.gl_error_quark
+    __return_value = LibGdk.gl_error_quark
     __return_value
   end
 
