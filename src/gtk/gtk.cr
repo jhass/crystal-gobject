@@ -32,7 +32,7 @@ redefine_main do |main|
   LibGtk.main
 end
 
-Signal.trap(Signal::INT) do
+Signal::INT.trap do
   Gtk.main_quit
   exit
 end
