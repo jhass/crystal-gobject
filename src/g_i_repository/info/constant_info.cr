@@ -9,7 +9,7 @@ module GIRepository
 
     def with_value
       size, value = self.value
-      yield value
+      yield size, value
     ensure
       LibGIRepository.constant_info_free_value(self, pointerof(value))
     end
@@ -19,7 +19,7 @@ module GIRepository
     end
 
     def literal
-      with_value do |value|
+      with_value do |size, value|
         case type.tag
         when LibGIRepository::TypeTag::BOOLEAN
           value.v_boolean.inspect
@@ -46,6 +46,8 @@ module GIRepository
         when LibGIRepository::TypeTag::UTF8
           string = String.new(value.v_string)
           string.inspect
+        when LibGIRepository::TypeTag::INTERFACE
+          "# INTERFACE CONSTANT #{name} #{size}" # debug, should never end up being generated
         else
           raise "Bug: Unhandled constant type #{type.tag}"
         end
@@ -53,7 +55,11 @@ module GIRepository
     end
 
     def lib_definition
-      "  #{name} = #{literal} # : #{type.lib_definition}"
+      if type.tag == LibGIRepository::TypeTag::INTERFACE
+        "  # #{name} = ungeneratable value"
+      else
+        "  #{name} = #{literal} # : #{type.lib_definition}"
+      end
     end
   end
 end

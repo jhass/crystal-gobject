@@ -8,7 +8,7 @@ require "./namespace"
 # namespace = "Gtk"
 # namespace = "xlib"
 
-%w(Atk cairo GIRepository GLib GModule GObject Gdk GdkPixbuf Gio Gtk Pango Notify).each do |namespace|
+%w(Atk cairo GIRepository GLib GModule GObject Gdk GdkPixbuf Gio Gtk Pango Notify Gst).each do |namespace|
 
 GIRepository::Repository.instance.require namespace
 
