@@ -18,7 +18,7 @@ module Gio
 
     def arguments(argc)
       __return_value = LibGio.application_command_line_get_arguments((to_unsafe as LibGio::ApplicationCommandLine*), Int32.cast(argc))
-      PointerIterator.new(__return_value) {|__item_70| raise "Expected string but got null" unless __item_70; String.new(__item_70) }
+      PointerIterator.new(__return_value) {|__item_64| raise "Expected string but got null" unless __item_64; String.new(__item_64) }
     end
 
     def cwd
@@ -28,7 +28,7 @@ module Gio
 
     def environ
       __return_value = LibGio.application_command_line_get_environ((to_unsafe as LibGio::ApplicationCommandLine*))
-      PointerIterator.new(__return_value) {|__item_22| raise "Expected string but got null" unless __item_22; String.new(__item_22) }
+      PointerIterator.new(__return_value) {|__item_62| raise "Expected string but got null" unless __item_62; String.new(__item_62) }
     end
 
     def exit_status

@@ -234,7 +234,7 @@ module GdkPixbuf
 
     def pixels(length)
       __return_value = LibGdkPixbuf.pixbuf_get_pixels((to_unsafe as LibGdkPixbuf::Pixbuf*), UInt32.cast(length))
-      PointerIterator.new(__return_value) {|__item_59| __item_59 }
+      PointerIterator.new(__return_value) {|__item_40| __item_40 }
     end
 
     def rowstride

@@ -40,12 +40,12 @@ module Gio
 
     def self.list_relocatable_schemas
       __return_value = LibGio.settings_list_relocatable_schemas
-      PointerIterator.new(__return_value) {|__item_56| raise "Expected string but got null" unless __item_56; String.new(__item_56) }
+      PointerIterator.new(__return_value) {|__item_29| raise "Expected string but got null" unless __item_29; String.new(__item_29) }
     end
 
     def self.list_schemas
       __return_value = LibGio.settings_list_schemas
-      PointerIterator.new(__return_value) {|__item_10| raise "Expected string but got null" unless __item_10; String.new(__item_10) }
+      PointerIterator.new(__return_value) {|__item_43| raise "Expected string but got null" unless __item_43; String.new(__item_43) }
     end
 
     def self.sync
@@ -140,7 +140,7 @@ module Gio
 
     def strv(key)
       __return_value = LibGio.settings_get_strv((to_unsafe as LibGio::Settings*), key)
-      PointerIterator.new(__return_value) {|__item_87| raise "Expected string but got null" unless __item_87; String.new(__item_87) }
+      PointerIterator.new(__return_value) {|__item_99| raise "Expected string but got null" unless __item_99; String.new(__item_99) }
     end
 
     def uint(key)
@@ -165,12 +165,12 @@ module Gio
 
     def list_children
       __return_value = LibGio.settings_list_children((to_unsafe as LibGio::Settings*))
-      PointerIterator.new(__return_value) {|__item_47| raise "Expected string but got null" unless __item_47; String.new(__item_47) }
+      PointerIterator.new(__return_value) {|__item_52| raise "Expected string but got null" unless __item_52; String.new(__item_52) }
     end
 
     def list_keys
       __return_value = LibGio.settings_list_keys((to_unsafe as LibGio::Settings*))
-      PointerIterator.new(__return_value) {|__item_81| raise "Expected string but got null" unless __item_81; String.new(__item_81) }
+      PointerIterator.new(__return_value) {|__item_14| raise "Expected string but got null" unless __item_14; String.new(__item_14) }
     end
 
     def range_check(key, value)

@@ -30,7 +30,7 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.resource_enumerate_children((to_unsafe as LibGio::Resource*), path, lookup_flags, pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_99| raise "Expected string but got null" unless __item_99; String.new(__item_99) }
+      PointerIterator.new(__return_value) {|__item_7| raise "Expected string but got null" unless __item_7; String.new(__item_7) }
     end
 
     def info(path, lookup_flags, size, flags)

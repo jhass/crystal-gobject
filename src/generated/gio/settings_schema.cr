@@ -31,7 +31,7 @@ module Gio
 
     def list_children
       __return_value = LibGio.settings_schema_list_children((to_unsafe as LibGio::SettingsSchema*))
-      PointerIterator.new(__return_value) {|__item_87| raise "Expected string but got null" unless __item_87; String.new(__item_87) }
+      PointerIterator.new(__return_value) {|__item_20| raise "Expected string but got null" unless __item_20; String.new(__item_20) }
     end
 
     def ref

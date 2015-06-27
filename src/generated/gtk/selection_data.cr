@@ -26,7 +26,7 @@ module Gtk
 
     def data(length)
       __return_value = LibGtk.selection_data_get_data((to_unsafe as LibGtk::SelectionData*), Int32.cast(length))
-      PointerIterator.new(__return_value) {|__item_68| __item_68 }
+      PointerIterator.new(__return_value) {|__item_99| __item_99 }
     end
 
     def display

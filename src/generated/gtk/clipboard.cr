@@ -99,7 +99,7 @@ module Gtk
 
     def wait_for_rich_text(buffer, format, length)
       __return_value = LibGtk.clipboard_wait_for_rich_text((to_unsafe as LibGtk::Clipboard*), (buffer.to_unsafe as LibGtk::TextBuffer*), (format.to_unsafe as LibGdk::Atom*), UInt64.cast(length))
-      PointerIterator.new(__return_value) {|__item_47| __item_47 } if __return_value
+      PointerIterator.new(__return_value) {|__item_54| __item_54 } if __return_value
     end
 
     def wait_for_targets(targets, n_targets)
@@ -114,7 +114,7 @@ module Gtk
 
     def wait_for_uris
       __return_value = LibGtk.clipboard_wait_for_uris((to_unsafe as LibGtk::Clipboard*))
-      PointerIterator.new(__return_value) {|__item_16| raise "Expected string but got null" unless __item_16; String.new(__item_16) } if __return_value
+      PointerIterator.new(__return_value) {|__item_78| raise "Expected string but got null" unless __item_78; String.new(__item_78) } if __return_value
     end
 
     def wait_is_image_available
