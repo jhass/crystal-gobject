@@ -41,7 +41,7 @@ module Gtk
     end
 
     def ignore_hidden=(ignore_hidden)
-      __return_value = LibGtk.size_group_set_ignore_hidden((to_unsafe as LibGtk::SizeGroup*), Bool.cast(ignore_hidden))
+      __return_value = LibGtk.size_group_set_ignore_hidden((to_unsafe as LibGtk::SizeGroup*), Bool.new(ignore_hidden))
       __return_value
     end
 

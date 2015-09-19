@@ -96,7 +96,7 @@ module Gio
     end
 
     def return_boolean(result)
-      __return_value = LibGio.task_return_boolean((to_unsafe as LibGio::Task*), Bool.cast(result))
+      __return_value = LibGio.task_return_boolean((to_unsafe as LibGio::Task*), Bool.new(result))
       __return_value
     end
 
@@ -111,7 +111,7 @@ module Gio
     end
 
     def return_int(result)
-      __return_value = LibGio.task_return_int((to_unsafe as LibGio::Task*), Int64.cast(result))
+      __return_value = LibGio.task_return_int((to_unsafe as LibGio::Task*), Int64.new(result))
       __return_value
     end
 
@@ -121,17 +121,17 @@ module Gio
     end
 
     def check_cancellable=(check_cancellable)
-      __return_value = LibGio.task_set_check_cancellable((to_unsafe as LibGio::Task*), Bool.cast(check_cancellable))
+      __return_value = LibGio.task_set_check_cancellable((to_unsafe as LibGio::Task*), Bool.new(check_cancellable))
       __return_value
     end
 
     def priority=(priority)
-      __return_value = LibGio.task_set_priority((to_unsafe as LibGio::Task*), Int32.cast(priority))
+      __return_value = LibGio.task_set_priority((to_unsafe as LibGio::Task*), Int32.new(priority))
       __return_value
     end
 
     def return_on_cancel=(return_on_cancel)
-      __return_value = LibGio.task_set_return_on_cancel((to_unsafe as LibGio::Task*), Bool.cast(return_on_cancel))
+      __return_value = LibGio.task_set_return_on_cancel((to_unsafe as LibGio::Task*), Bool.new(return_on_cancel))
       __return_value
     end
 

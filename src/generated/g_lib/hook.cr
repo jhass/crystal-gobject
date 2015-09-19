@@ -15,7 +15,7 @@ module GLib
     end
 
     def self.destroy(hook_list, hook_id)
-      __return_value = LibGLib.hook_destroy((hook_list.to_unsafe as LibGLib::HookList*), UInt64.cast(hook_id))
+      __return_value = LibGLib.hook_destroy((hook_list.to_unsafe as LibGLib::HookList*), UInt64.new(hook_id))
       __return_value
     end
 

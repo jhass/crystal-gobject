@@ -10,7 +10,7 @@ module GLib
     end
 
     def self.new_literal(domain, code, message)
-      __return_value = LibGLib.error_new_literal(UInt32.cast(domain), Int32.cast(code), message)
+      __return_value = LibGLib.error_new_literal(UInt32.new(domain), Int32.new(code), message)
       __return_value
     end
 
@@ -25,7 +25,7 @@ module GLib
     end
 
     def matches(domain, code)
-      __return_value = LibGLib.error_matches((to_unsafe as LibGLib::Error*), UInt32.cast(domain), Int32.cast(code))
+      __return_value = LibGLib.error_matches((to_unsafe as LibGLib::Error*), UInt32.new(domain), Int32.new(code))
       __return_value
     end
 

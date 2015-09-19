@@ -47,17 +47,17 @@ module Gtk
     end
 
     def active=(is_active)
-      __return_value = LibGtk.check_menu_item_set_active((to_unsafe as LibGtk::CheckMenuItem*), Bool.cast(is_active))
+      __return_value = LibGtk.check_menu_item_set_active((to_unsafe as LibGtk::CheckMenuItem*), Bool.new(is_active))
       __return_value
     end
 
     def draw_as_radio=(draw_as_radio)
-      __return_value = LibGtk.check_menu_item_set_draw_as_radio((to_unsafe as LibGtk::CheckMenuItem*), Bool.cast(draw_as_radio))
+      __return_value = LibGtk.check_menu_item_set_draw_as_radio((to_unsafe as LibGtk::CheckMenuItem*), Bool.new(draw_as_radio))
       __return_value
     end
 
     def inconsistent=(setting)
-      __return_value = LibGtk.check_menu_item_set_inconsistent((to_unsafe as LibGtk::CheckMenuItem*), Bool.cast(setting))
+      __return_value = LibGtk.check_menu_item_set_inconsistent((to_unsafe as LibGtk::CheckMenuItem*), Bool.new(setting))
       __return_value
     end
 

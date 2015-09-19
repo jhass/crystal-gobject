@@ -15,7 +15,7 @@ module GLib
   def self.timeout seconds, &block : -> Bool
     LibGLib.timeout_add_seconds(
       LibGLib::PRIORITY_DEFAULT_IDLE,
-      UInt32.cast(seconds),
+      UInt32.new(seconds),
       LibGLib::SourceFunc.new(block.pointer, Pointer(Void).null),
       ClosureDataManager.register(block.closure_data),
       ->ClosureDataManager.deregister

@@ -20,7 +20,7 @@ module Gtk
     end
 
     def backward_chars(count)
-      __return_value = LibGtk.text_iter_backward_chars((to_unsafe as LibGtk::TextIter*), Int32.cast(count))
+      __return_value = LibGtk.text_iter_backward_chars((to_unsafe as LibGtk::TextIter*), Int32.new(count))
       __return_value
     end
 
@@ -30,7 +30,7 @@ module Gtk
     end
 
     def backward_cursor_positions(count)
-      __return_value = LibGtk.text_iter_backward_cursor_positions((to_unsafe as LibGtk::TextIter*), Int32.cast(count))
+      __return_value = LibGtk.text_iter_backward_cursor_positions((to_unsafe as LibGtk::TextIter*), Int32.new(count))
       __return_value
     end
 
@@ -45,7 +45,7 @@ module Gtk
     end
 
     def backward_lines(count)
-      __return_value = LibGtk.text_iter_backward_lines((to_unsafe as LibGtk::TextIter*), Int32.cast(count))
+      __return_value = LibGtk.text_iter_backward_lines((to_unsafe as LibGtk::TextIter*), Int32.new(count))
       __return_value
     end
 
@@ -60,7 +60,7 @@ module Gtk
     end
 
     def backward_sentence_starts(count)
-      __return_value = LibGtk.text_iter_backward_sentence_starts((to_unsafe as LibGtk::TextIter*), Int32.cast(count))
+      __return_value = LibGtk.text_iter_backward_sentence_starts((to_unsafe as LibGtk::TextIter*), Int32.new(count))
       __return_value
     end
 
@@ -75,7 +75,7 @@ module Gtk
     end
 
     def backward_visible_cursor_positions(count)
-      __return_value = LibGtk.text_iter_backward_visible_cursor_positions((to_unsafe as LibGtk::TextIter*), Int32.cast(count))
+      __return_value = LibGtk.text_iter_backward_visible_cursor_positions((to_unsafe as LibGtk::TextIter*), Int32.new(count))
       __return_value
     end
 
@@ -85,7 +85,7 @@ module Gtk
     end
 
     def backward_visible_lines(count)
-      __return_value = LibGtk.text_iter_backward_visible_lines((to_unsafe as LibGtk::TextIter*), Int32.cast(count))
+      __return_value = LibGtk.text_iter_backward_visible_lines((to_unsafe as LibGtk::TextIter*), Int32.new(count))
       __return_value
     end
 
@@ -95,7 +95,7 @@ module Gtk
     end
 
     def backward_visible_word_starts(count)
-      __return_value = LibGtk.text_iter_backward_visible_word_starts((to_unsafe as LibGtk::TextIter*), Int32.cast(count))
+      __return_value = LibGtk.text_iter_backward_visible_word_starts((to_unsafe as LibGtk::TextIter*), Int32.new(count))
       __return_value
     end
 
@@ -105,7 +105,7 @@ module Gtk
     end
 
     def backward_word_starts(count)
-      __return_value = LibGtk.text_iter_backward_word_starts((to_unsafe as LibGtk::TextIter*), Int32.cast(count))
+      __return_value = LibGtk.text_iter_backward_word_starts((to_unsafe as LibGtk::TextIter*), Int32.new(count))
       __return_value
     end
 
@@ -115,7 +115,7 @@ module Gtk
     end
 
     def can_insert(default_editability)
-      __return_value = LibGtk.text_iter_can_insert((to_unsafe as LibGtk::TextIter*), Bool.cast(default_editability))
+      __return_value = LibGtk.text_iter_can_insert((to_unsafe as LibGtk::TextIter*), Bool.new(default_editability))
       __return_value
     end
 
@@ -130,7 +130,7 @@ module Gtk
     end
 
     def editable(default_setting)
-      __return_value = LibGtk.text_iter_editable((to_unsafe as LibGtk::TextIter*), Bool.cast(default_setting))
+      __return_value = LibGtk.text_iter_editable((to_unsafe as LibGtk::TextIter*), Bool.new(default_setting))
       __return_value
     end
 
@@ -165,7 +165,7 @@ module Gtk
     end
 
     def forward_chars(count)
-      __return_value = LibGtk.text_iter_forward_chars((to_unsafe as LibGtk::TextIter*), Int32.cast(count))
+      __return_value = LibGtk.text_iter_forward_chars((to_unsafe as LibGtk::TextIter*), Int32.new(count))
       __return_value
     end
 
@@ -175,7 +175,7 @@ module Gtk
     end
 
     def forward_cursor_positions(count)
-      __return_value = LibGtk.text_iter_forward_cursor_positions((to_unsafe as LibGtk::TextIter*), Int32.cast(count))
+      __return_value = LibGtk.text_iter_forward_cursor_positions((to_unsafe as LibGtk::TextIter*), Int32.new(count))
       __return_value
     end
 
@@ -190,7 +190,7 @@ module Gtk
     end
 
     def forward_lines(count)
-      __return_value = LibGtk.text_iter_forward_lines((to_unsafe as LibGtk::TextIter*), Int32.cast(count))
+      __return_value = LibGtk.text_iter_forward_lines((to_unsafe as LibGtk::TextIter*), Int32.new(count))
       __return_value
     end
 
@@ -205,7 +205,7 @@ module Gtk
     end
 
     def forward_sentence_ends(count)
-      __return_value = LibGtk.text_iter_forward_sentence_ends((to_unsafe as LibGtk::TextIter*), Int32.cast(count))
+      __return_value = LibGtk.text_iter_forward_sentence_ends((to_unsafe as LibGtk::TextIter*), Int32.new(count))
       __return_value
     end
 
@@ -230,7 +230,7 @@ module Gtk
     end
 
     def forward_visible_cursor_positions(count)
-      __return_value = LibGtk.text_iter_forward_visible_cursor_positions((to_unsafe as LibGtk::TextIter*), Int32.cast(count))
+      __return_value = LibGtk.text_iter_forward_visible_cursor_positions((to_unsafe as LibGtk::TextIter*), Int32.new(count))
       __return_value
     end
 
@@ -240,7 +240,7 @@ module Gtk
     end
 
     def forward_visible_lines(count)
-      __return_value = LibGtk.text_iter_forward_visible_lines((to_unsafe as LibGtk::TextIter*), Int32.cast(count))
+      __return_value = LibGtk.text_iter_forward_visible_lines((to_unsafe as LibGtk::TextIter*), Int32.new(count))
       __return_value
     end
 
@@ -250,7 +250,7 @@ module Gtk
     end
 
     def forward_visible_word_ends(count)
-      __return_value = LibGtk.text_iter_forward_visible_word_ends((to_unsafe as LibGtk::TextIter*), Int32.cast(count))
+      __return_value = LibGtk.text_iter_forward_visible_word_ends((to_unsafe as LibGtk::TextIter*), Int32.new(count))
       __return_value
     end
 
@@ -260,7 +260,7 @@ module Gtk
     end
 
     def forward_word_ends(count)
-      __return_value = LibGtk.text_iter_forward_word_ends((to_unsafe as LibGtk::TextIter*), Int32.cast(count))
+      __return_value = LibGtk.text_iter_forward_word_ends((to_unsafe as LibGtk::TextIter*), Int32.new(count))
       __return_value
     end
 
@@ -350,7 +350,7 @@ module Gtk
     end
 
     def toggled_tags(toggled_on)
-      __return_value = LibGtk.text_iter_get_toggled_tags((to_unsafe as LibGtk::TextIter*), Bool.cast(toggled_on))
+      __return_value = LibGtk.text_iter_get_toggled_tags((to_unsafe as LibGtk::TextIter*), Bool.new(toggled_on))
       __return_value
     end
 
@@ -415,32 +415,32 @@ module Gtk
     end
 
     def line=(line_number)
-      __return_value = LibGtk.text_iter_set_line((to_unsafe as LibGtk::TextIter*), Int32.cast(line_number))
+      __return_value = LibGtk.text_iter_set_line((to_unsafe as LibGtk::TextIter*), Int32.new(line_number))
       __return_value
     end
 
     def line_index=(byte_on_line)
-      __return_value = LibGtk.text_iter_set_line_index((to_unsafe as LibGtk::TextIter*), Int32.cast(byte_on_line))
+      __return_value = LibGtk.text_iter_set_line_index((to_unsafe as LibGtk::TextIter*), Int32.new(byte_on_line))
       __return_value
     end
 
     def line_offset=(char_on_line)
-      __return_value = LibGtk.text_iter_set_line_offset((to_unsafe as LibGtk::TextIter*), Int32.cast(char_on_line))
+      __return_value = LibGtk.text_iter_set_line_offset((to_unsafe as LibGtk::TextIter*), Int32.new(char_on_line))
       __return_value
     end
 
     def offset=(char_offset)
-      __return_value = LibGtk.text_iter_set_offset((to_unsafe as LibGtk::TextIter*), Int32.cast(char_offset))
+      __return_value = LibGtk.text_iter_set_offset((to_unsafe as LibGtk::TextIter*), Int32.new(char_offset))
       __return_value
     end
 
     def visible_line_index=(byte_on_line)
-      __return_value = LibGtk.text_iter_set_visible_line_index((to_unsafe as LibGtk::TextIter*), Int32.cast(byte_on_line))
+      __return_value = LibGtk.text_iter_set_visible_line_index((to_unsafe as LibGtk::TextIter*), Int32.new(byte_on_line))
       __return_value
     end
 
     def visible_line_offset=(char_on_line)
-      __return_value = LibGtk.text_iter_set_visible_line_offset((to_unsafe as LibGtk::TextIter*), Int32.cast(char_on_line))
+      __return_value = LibGtk.text_iter_set_visible_line_offset((to_unsafe as LibGtk::TextIter*), Int32.new(char_on_line))
       __return_value
     end
 

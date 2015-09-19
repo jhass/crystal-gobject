@@ -19,7 +19,7 @@ module Gdk
 
 
     def self.grab_info_libgtk_only(display, device, grab_window, owner_events)
-      __return_value = LibGdk.device_grab_info_libgtk_only((display.to_unsafe as LibGdk::Display*), (device.to_unsafe as LibGdk::Device*), (grab_window.to_unsafe as LibGdk::Window*), Bool.cast(owner_events))
+      __return_value = LibGdk.device_grab_info_libgtk_only((display.to_unsafe as LibGdk::Display*), (device.to_unsafe as LibGdk::Device*), (grab_window.to_unsafe as LibGdk::Window*), Bool.new(owner_events))
       __return_value
     end
 
@@ -29,7 +29,7 @@ module Gdk
     end
 
     def axis_use(index)
-      __return_value = LibGdk.device_get_axis_use((to_unsafe as LibGdk::Device*), UInt32.cast(index))
+      __return_value = LibGdk.device_get_axis_use((to_unsafe as LibGdk::Device*), UInt32.new(index))
       __return_value
     end
 
@@ -49,7 +49,7 @@ module Gdk
     end
 
     def key(index, keyval, modifiers)
-      __return_value = LibGdk.device_get_key((to_unsafe as LibGdk::Device*), UInt32.cast(index), UInt32.cast(keyval), modifiers)
+      __return_value = LibGdk.device_get_key((to_unsafe as LibGdk::Device*), UInt32.new(index), UInt32.new(keyval), modifiers)
       __return_value
     end
 
@@ -79,12 +79,12 @@ module Gdk
     end
 
     def position(screen, x, y)
-      __return_value = LibGdk.device_get_position((to_unsafe as LibGdk::Device*), (screen.to_unsafe as LibGdk::Screen*), Int32.cast(x), Int32.cast(y))
+      __return_value = LibGdk.device_get_position((to_unsafe as LibGdk::Device*), (screen.to_unsafe as LibGdk::Screen*), Int32.new(x), Int32.new(y))
       __return_value
     end
 
     def position_double(screen, x, y)
-      __return_value = LibGdk.device_get_position_double((to_unsafe as LibGdk::Device*), (screen.to_unsafe as LibGdk::Screen*), Float64.cast(x), Float64.cast(y))
+      __return_value = LibGdk.device_get_position_double((to_unsafe as LibGdk::Device*), (screen.to_unsafe as LibGdk::Screen*), Float64.new(x), Float64.new(y))
       __return_value
     end
 
@@ -104,17 +104,17 @@ module Gdk
     end
 
     def window_at_position(win_x, win_y)
-      __return_value = LibGdk.device_get_window_at_position((to_unsafe as LibGdk::Device*), Int32.cast(win_x), Int32.cast(win_y))
+      __return_value = LibGdk.device_get_window_at_position((to_unsafe as LibGdk::Device*), Int32.new(win_x), Int32.new(win_y))
       Gdk::Window.new(__return_value) if __return_value
     end
 
     def window_at_position_double(win_x, win_y)
-      __return_value = LibGdk.device_get_window_at_position_double((to_unsafe as LibGdk::Device*), Float64.cast(win_x), Float64.cast(win_y))
+      __return_value = LibGdk.device_get_window_at_position_double((to_unsafe as LibGdk::Device*), Float64.new(win_x), Float64.new(win_y))
       Gdk::Window.new(__return_value) if __return_value
     end
 
     def grab(window, grab_ownership, owner_events, event_mask, cursor, time)
-      __return_value = LibGdk.device_grab((to_unsafe as LibGdk::Device*), (window.to_unsafe as LibGdk::Window*), grab_ownership, Bool.cast(owner_events), event_mask, cursor && (cursor.to_unsafe as LibGdk::Cursor*), UInt32.cast(time))
+      __return_value = LibGdk.device_grab((to_unsafe as LibGdk::Device*), (window.to_unsafe as LibGdk::Window*), grab_ownership, Bool.new(owner_events), event_mask, cursor && (cursor.to_unsafe as LibGdk::Cursor*), UInt32.new(time))
       __return_value
     end
 
@@ -129,12 +129,12 @@ module Gdk
     end
 
     def set_axis_use(index, use)
-      __return_value = LibGdk.device_set_axis_use((to_unsafe as LibGdk::Device*), UInt32.cast(index), use)
+      __return_value = LibGdk.device_set_axis_use((to_unsafe as LibGdk::Device*), UInt32.new(index), use)
       __return_value
     end
 
     def set_key(index, keyval, modifiers)
-      __return_value = LibGdk.device_set_key((to_unsafe as LibGdk::Device*), UInt32.cast(index), UInt32.cast(keyval), modifiers)
+      __return_value = LibGdk.device_set_key((to_unsafe as LibGdk::Device*), UInt32.new(index), UInt32.new(keyval), modifiers)
       __return_value
     end
 
@@ -144,12 +144,12 @@ module Gdk
     end
 
     def ungrab(time)
-      __return_value = LibGdk.device_ungrab((to_unsafe as LibGdk::Device*), UInt32.cast(time))
+      __return_value = LibGdk.device_ungrab((to_unsafe as LibGdk::Device*), UInt32.new(time))
       __return_value
     end
 
     def warp(screen, x, y)
-      __return_value = LibGdk.device_warp((to_unsafe as LibGdk::Device*), (screen.to_unsafe as LibGdk::Screen*), Int32.cast(x), Int32.cast(y))
+      __return_value = LibGdk.device_warp((to_unsafe as LibGdk::Device*), (screen.to_unsafe as LibGdk::Screen*), Int32.new(x), Int32.new(y))
       __return_value
     end
 

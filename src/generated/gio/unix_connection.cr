@@ -56,7 +56,7 @@ module Gio
 
     def send_fd(fd, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.unix_connection_send_fd((to_unsafe as LibGio::UnixConnection*), Int32.cast(fd), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.unix_connection_send_fd((to_unsafe as LibGio::UnixConnection*), Int32.new(fd), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

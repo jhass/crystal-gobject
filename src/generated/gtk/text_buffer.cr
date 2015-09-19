@@ -39,7 +39,7 @@ module Gtk
     end
 
     def backspace(iter, interactive, default_editable)
-      __return_value = LibGtk.text_buffer_backspace((to_unsafe as LibGtk::TextBuffer*), (iter.to_unsafe as LibGtk::TextIter*), Bool.cast(interactive), Bool.cast(default_editable))
+      __return_value = LibGtk.text_buffer_backspace((to_unsafe as LibGtk::TextBuffer*), (iter.to_unsafe as LibGtk::TextIter*), Bool.new(interactive), Bool.new(default_editable))
       __return_value
     end
 
@@ -59,12 +59,12 @@ module Gtk
     end
 
     def create_mark(mark_name, where, left_gravity)
-      __return_value = LibGtk.text_buffer_create_mark((to_unsafe as LibGtk::TextBuffer*), mark_name && mark_name, (where.to_unsafe as LibGtk::TextIter*), Bool.cast(left_gravity))
+      __return_value = LibGtk.text_buffer_create_mark((to_unsafe as LibGtk::TextBuffer*), mark_name && mark_name, (where.to_unsafe as LibGtk::TextIter*), Bool.new(left_gravity))
       Gtk::TextMark.new(__return_value)
     end
 
     def cut_clipboard(clipboard, default_editable)
-      __return_value = LibGtk.text_buffer_cut_clipboard((to_unsafe as LibGtk::TextBuffer*), (clipboard.to_unsafe as LibGtk::Clipboard*), Bool.cast(default_editable))
+      __return_value = LibGtk.text_buffer_cut_clipboard((to_unsafe as LibGtk::TextBuffer*), (clipboard.to_unsafe as LibGtk::Clipboard*), Bool.new(default_editable))
       __return_value
     end
 
@@ -74,7 +74,7 @@ module Gtk
     end
 
     def delete_interactive(start_iter, end_iter, default_editable)
-      __return_value = LibGtk.text_buffer_delete_interactive((to_unsafe as LibGtk::TextBuffer*), (start_iter.to_unsafe as LibGtk::TextIter*), (end_iter.to_unsafe as LibGtk::TextIter*), Bool.cast(default_editable))
+      __return_value = LibGtk.text_buffer_delete_interactive((to_unsafe as LibGtk::TextBuffer*), (start_iter.to_unsafe as LibGtk::TextIter*), (end_iter.to_unsafe as LibGtk::TextIter*), Bool.new(default_editable))
       __return_value
     end
 
@@ -89,13 +89,13 @@ module Gtk
     end
 
     def delete_selection(interactive, default_editable)
-      __return_value = LibGtk.text_buffer_delete_selection((to_unsafe as LibGtk::TextBuffer*), Bool.cast(interactive), Bool.cast(default_editable))
+      __return_value = LibGtk.text_buffer_delete_selection((to_unsafe as LibGtk::TextBuffer*), Bool.new(interactive), Bool.new(default_editable))
       __return_value
     end
 
     def deserialize(content_buffer, format, iter, data, length)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.text_buffer_deserialize((to_unsafe as LibGtk::TextBuffer*), (content_buffer.to_unsafe as LibGtk::TextBuffer*), (format.to_unsafe as LibGdk::Atom*), (iter.to_unsafe as LibGtk::TextIter*), data, UInt64.cast(length), pointerof(__error))
+      __return_value = LibGtk.text_buffer_deserialize((to_unsafe as LibGtk::TextBuffer*), (content_buffer.to_unsafe as LibGtk::TextBuffer*), (format.to_unsafe as LibGdk::Atom*), (iter.to_unsafe as LibGtk::TextIter*), data, UInt64.new(length), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -106,7 +106,7 @@ module Gtk
     end
 
     def deserialize_set_can_create_tags(format, can_create_tags)
-      __return_value = LibGtk.text_buffer_deserialize_set_can_create_tags((to_unsafe as LibGtk::TextBuffer*), (format.to_unsafe as LibGdk::Atom*), Bool.cast(can_create_tags))
+      __return_value = LibGtk.text_buffer_deserialize_set_can_create_tags((to_unsafe as LibGtk::TextBuffer*), (format.to_unsafe as LibGdk::Atom*), Bool.new(can_create_tags))
       __return_value
     end
 
@@ -131,8 +131,8 @@ module Gtk
     end
 
     def deserialize_formats(n_formats)
-      __return_value = LibGtk.text_buffer_get_deserialize_formats((to_unsafe as LibGtk::TextBuffer*), Int32.cast(n_formats))
-      PointerIterator.new(__return_value) {|__item_82| Gdk::Atom.new(__item_82) }
+      __return_value = LibGtk.text_buffer_get_deserialize_formats((to_unsafe as LibGtk::TextBuffer*), Int32.new(n_formats))
+      PointerIterator.new(__return_value) {|__item_51| Gdk::Atom.new(__item_51) }
     end
 
     def end_iter(iter)
@@ -156,17 +156,17 @@ module Gtk
     end
 
     def iter_at_line(iter, line_number)
-      __return_value = LibGtk.text_buffer_get_iter_at_line((to_unsafe as LibGtk::TextBuffer*), iter, Int32.cast(line_number))
+      __return_value = LibGtk.text_buffer_get_iter_at_line((to_unsafe as LibGtk::TextBuffer*), iter, Int32.new(line_number))
       __return_value
     end
 
     def iter_at_line_index(iter, line_number, byte_index)
-      __return_value = LibGtk.text_buffer_get_iter_at_line_index((to_unsafe as LibGtk::TextBuffer*), iter, Int32.cast(line_number), Int32.cast(byte_index))
+      __return_value = LibGtk.text_buffer_get_iter_at_line_index((to_unsafe as LibGtk::TextBuffer*), iter, Int32.new(line_number), Int32.new(byte_index))
       __return_value
     end
 
     def iter_at_line_offset(iter, line_number, char_offset)
-      __return_value = LibGtk.text_buffer_get_iter_at_line_offset((to_unsafe as LibGtk::TextBuffer*), iter, Int32.cast(line_number), Int32.cast(char_offset))
+      __return_value = LibGtk.text_buffer_get_iter_at_line_offset((to_unsafe as LibGtk::TextBuffer*), iter, Int32.new(line_number), Int32.new(char_offset))
       __return_value
     end
 
@@ -176,7 +176,7 @@ module Gtk
     end
 
     def iter_at_offset(iter, char_offset)
-      __return_value = LibGtk.text_buffer_get_iter_at_offset((to_unsafe as LibGtk::TextBuffer*), iter, Int32.cast(char_offset))
+      __return_value = LibGtk.text_buffer_get_iter_at_offset((to_unsafe as LibGtk::TextBuffer*), iter, Int32.new(char_offset))
       __return_value
     end
 
@@ -211,12 +211,12 @@ module Gtk
     end
 
     def serialize_formats(n_formats)
-      __return_value = LibGtk.text_buffer_get_serialize_formats((to_unsafe as LibGtk::TextBuffer*), Int32.cast(n_formats))
-      PointerIterator.new(__return_value) {|__item_49| Gdk::Atom.new(__item_49) }
+      __return_value = LibGtk.text_buffer_get_serialize_formats((to_unsafe as LibGtk::TextBuffer*), Int32.new(n_formats))
+      PointerIterator.new(__return_value) {|__item_17| Gdk::Atom.new(__item_17) }
     end
 
     def slice(start, end, include_hidden_chars)
-      __return_value = LibGtk.text_buffer_get_slice((to_unsafe as LibGtk::TextBuffer*), (start.to_unsafe as LibGtk::TextIter*), (end.to_unsafe as LibGtk::TextIter*), Bool.cast(include_hidden_chars))
+      __return_value = LibGtk.text_buffer_get_slice((to_unsafe as LibGtk::TextBuffer*), (start.to_unsafe as LibGtk::TextIter*), (end.to_unsafe as LibGtk::TextIter*), Bool.new(include_hidden_chars))
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 
@@ -231,17 +231,17 @@ module Gtk
     end
 
     def text(start, end, include_hidden_chars)
-      __return_value = LibGtk.text_buffer_get_text((to_unsafe as LibGtk::TextBuffer*), (start.to_unsafe as LibGtk::TextIter*), (end.to_unsafe as LibGtk::TextIter*), Bool.cast(include_hidden_chars))
+      __return_value = LibGtk.text_buffer_get_text((to_unsafe as LibGtk::TextBuffer*), (start.to_unsafe as LibGtk::TextIter*), (end.to_unsafe as LibGtk::TextIter*), Bool.new(include_hidden_chars))
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 
     def insert(iter, text, len)
-      __return_value = LibGtk.text_buffer_insert((to_unsafe as LibGtk::TextBuffer*), (iter.to_unsafe as LibGtk::TextIter*), text, Int32.cast(len))
+      __return_value = LibGtk.text_buffer_insert((to_unsafe as LibGtk::TextBuffer*), (iter.to_unsafe as LibGtk::TextIter*), text, Int32.new(len))
       __return_value
     end
 
     def insert_at_cursor(text, len)
-      __return_value = LibGtk.text_buffer_insert_at_cursor((to_unsafe as LibGtk::TextBuffer*), text, Int32.cast(len))
+      __return_value = LibGtk.text_buffer_insert_at_cursor((to_unsafe as LibGtk::TextBuffer*), text, Int32.new(len))
       __return_value
     end
 
@@ -251,17 +251,17 @@ module Gtk
     end
 
     def insert_interactive(iter, text, len, default_editable)
-      __return_value = LibGtk.text_buffer_insert_interactive((to_unsafe as LibGtk::TextBuffer*), (iter.to_unsafe as LibGtk::TextIter*), text, Int32.cast(len), Bool.cast(default_editable))
+      __return_value = LibGtk.text_buffer_insert_interactive((to_unsafe as LibGtk::TextBuffer*), (iter.to_unsafe as LibGtk::TextIter*), text, Int32.new(len), Bool.new(default_editable))
       __return_value
     end
 
     def insert_interactive_at_cursor(text, len, default_editable)
-      __return_value = LibGtk.text_buffer_insert_interactive_at_cursor((to_unsafe as LibGtk::TextBuffer*), text, Int32.cast(len), Bool.cast(default_editable))
+      __return_value = LibGtk.text_buffer_insert_interactive_at_cursor((to_unsafe as LibGtk::TextBuffer*), text, Int32.new(len), Bool.new(default_editable))
       __return_value
     end
 
     def insert_markup(iter, markup, len)
-      __return_value = LibGtk.text_buffer_insert_markup((to_unsafe as LibGtk::TextBuffer*), (iter.to_unsafe as LibGtk::TextIter*), markup, Int32.cast(len))
+      __return_value = LibGtk.text_buffer_insert_markup((to_unsafe as LibGtk::TextBuffer*), (iter.to_unsafe as LibGtk::TextIter*), markup, Int32.new(len))
       __return_value
     end
 
@@ -276,7 +276,7 @@ module Gtk
     end
 
     def insert_range_interactive(iter, start, end, default_editable)
-      __return_value = LibGtk.text_buffer_insert_range_interactive((to_unsafe as LibGtk::TextBuffer*), (iter.to_unsafe as LibGtk::TextIter*), (start.to_unsafe as LibGtk::TextIter*), (end.to_unsafe as LibGtk::TextIter*), Bool.cast(default_editable))
+      __return_value = LibGtk.text_buffer_insert_range_interactive((to_unsafe as LibGtk::TextBuffer*), (iter.to_unsafe as LibGtk::TextIter*), (start.to_unsafe as LibGtk::TextIter*), (end.to_unsafe as LibGtk::TextIter*), Bool.new(default_editable))
       __return_value
     end
 
@@ -291,7 +291,7 @@ module Gtk
     end
 
     def paste_clipboard(clipboard, override_location, default_editable)
-      __return_value = LibGtk.text_buffer_paste_clipboard((to_unsafe as LibGtk::TextBuffer*), (clipboard.to_unsafe as LibGtk::Clipboard*), override_location && (override_location.to_unsafe as LibGtk::TextIter*), Bool.cast(default_editable))
+      __return_value = LibGtk.text_buffer_paste_clipboard((to_unsafe as LibGtk::TextBuffer*), (clipboard.to_unsafe as LibGtk::Clipboard*), override_location && (override_location.to_unsafe as LibGtk::TextIter*), Bool.new(default_editable))
       __return_value
     end
 
@@ -346,17 +346,17 @@ module Gtk
     end
 
     def serialize(content_buffer, format, start, end, length)
-      __return_value = LibGtk.text_buffer_serialize((to_unsafe as LibGtk::TextBuffer*), (content_buffer.to_unsafe as LibGtk::TextBuffer*), (format.to_unsafe as LibGdk::Atom*), (start.to_unsafe as LibGtk::TextIter*), (end.to_unsafe as LibGtk::TextIter*), UInt64.cast(length))
-      PointerIterator.new(__return_value) {|__item_68| __item_68 }
+      __return_value = LibGtk.text_buffer_serialize((to_unsafe as LibGtk::TextBuffer*), (content_buffer.to_unsafe as LibGtk::TextBuffer*), (format.to_unsafe as LibGdk::Atom*), (start.to_unsafe as LibGtk::TextIter*), (end.to_unsafe as LibGtk::TextIter*), UInt64.new(length))
+      PointerIterator.new(__return_value) {|__item_32| __item_32 }
     end
 
     def modified=(setting)
-      __return_value = LibGtk.text_buffer_set_modified((to_unsafe as LibGtk::TextBuffer*), Bool.cast(setting))
+      __return_value = LibGtk.text_buffer_set_modified((to_unsafe as LibGtk::TextBuffer*), Bool.new(setting))
       __return_value
     end
 
     def set_text(text, len)
-      __return_value = LibGtk.text_buffer_set_text((to_unsafe as LibGtk::TextBuffer*), text, Int32.cast(len))
+      __return_value = LibGtk.text_buffer_set_text((to_unsafe as LibGtk::TextBuffer*), text, Int32.new(len))
       __return_value
     end
 

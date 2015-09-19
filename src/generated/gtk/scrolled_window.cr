@@ -93,7 +93,7 @@ module Gtk
     end
 
     def capture_button_press=(capture_button_press)
-      __return_value = LibGtk.scrolled_window_set_capture_button_press((to_unsafe as LibGtk::ScrolledWindow*), Bool.cast(capture_button_press))
+      __return_value = LibGtk.scrolled_window_set_capture_button_press((to_unsafe as LibGtk::ScrolledWindow*), Bool.new(capture_button_press))
       __return_value
     end
 
@@ -103,22 +103,22 @@ module Gtk
     end
 
     def kinetic_scrolling=(kinetic_scrolling)
-      __return_value = LibGtk.scrolled_window_set_kinetic_scrolling((to_unsafe as LibGtk::ScrolledWindow*), Bool.cast(kinetic_scrolling))
+      __return_value = LibGtk.scrolled_window_set_kinetic_scrolling((to_unsafe as LibGtk::ScrolledWindow*), Bool.new(kinetic_scrolling))
       __return_value
     end
 
     def min_content_height=(height)
-      __return_value = LibGtk.scrolled_window_set_min_content_height((to_unsafe as LibGtk::ScrolledWindow*), Int32.cast(height))
+      __return_value = LibGtk.scrolled_window_set_min_content_height((to_unsafe as LibGtk::ScrolledWindow*), Int32.new(height))
       __return_value
     end
 
     def min_content_width=(width)
-      __return_value = LibGtk.scrolled_window_set_min_content_width((to_unsafe as LibGtk::ScrolledWindow*), Int32.cast(width))
+      __return_value = LibGtk.scrolled_window_set_min_content_width((to_unsafe as LibGtk::ScrolledWindow*), Int32.new(width))
       __return_value
     end
 
     def overlay_scrolling=(overlay_scrolling)
-      __return_value = LibGtk.scrolled_window_set_overlay_scrolling((to_unsafe as LibGtk::ScrolledWindow*), Bool.cast(overlay_scrolling))
+      __return_value = LibGtk.scrolled_window_set_overlay_scrolling((to_unsafe as LibGtk::ScrolledWindow*), Bool.new(overlay_scrolling))
       __return_value
     end
 

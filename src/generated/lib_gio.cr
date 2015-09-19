@@ -4397,32 +4397,32 @@ lib LibGio
   ##    Callbacks
   ###########################################
 
- alias AsyncReadyCallback = LibGObject::Object*, LibGio::AsyncResult*, Void* -> Void
- alias BusAcquiredCallback = LibGio::DBusConnection*, UInt8*, Void* -> Void
- alias BusNameAcquiredCallback = LibGio::DBusConnection*, UInt8*, Void* -> Void
- alias BusNameAppearedCallback = LibGio::DBusConnection*, UInt8*, UInt8*, Void* -> Void
- alias BusNameLostCallback = LibGio::DBusConnection*, UInt8*, Void* -> Void
- alias BusNameVanishedCallback = LibGio::DBusConnection*, UInt8*, Void* -> Void
- alias CancellableSourceFunc = LibGio::Cancellable*, Void* -> Bool
- alias DBusInterfaceGetPropertyFunc = LibGio::DBusConnection*, UInt8*, UInt8*, UInt8*, UInt8*, LibGLib::Error**, Void* -> LibGLib::Variant*
- alias DBusInterfaceMethodCallFunc = LibGio::DBusConnection*, UInt8*, UInt8*, UInt8*, UInt8*, LibGLib::Variant*, LibGio::DBusMethodInvocation*, Void* -> Void
- alias DBusInterfaceSetPropertyFunc = LibGio::DBusConnection*, UInt8*, UInt8*, UInt8*, UInt8*, LibGLib::Variant*, LibGLib::Error**, Void* -> Bool
- alias DBusMessageFilterFunction = LibGio::DBusConnection*, LibGio::DBusMessage*, Bool, Void* -> LibGio::DBusMessage*
- alias DBusProxyTypeFunc = LibGio::DBusObjectManagerClient*, UInt8*, UInt8*, Void* -> UInt64
- alias DBusSignalCallback = LibGio::DBusConnection*, UInt8*, UInt8*, UInt8*, UInt8*, LibGLib::Variant*, Void* -> Void
- alias DBusSubtreeDispatchFunc = LibGio::DBusConnection*, UInt8*, UInt8*, UInt8*, UInt8*, Void*, Void* -> LibGio::DBusInterfaceVTable*
- alias DBusSubtreeIntrospectFunc = LibGio::DBusConnection*, UInt8*, UInt8*, UInt8*, Void* -> LibGio::DBusInterfaceInfo*
- alias DesktopAppLaunchCallback = LibGio::DesktopAppInfo*, Int32, Void* -> Void
- alias FileMeasureProgressCallback = Bool, UInt64, UInt64, UInt64, Void* -> Void
- alias FileProgressCallback = Int64, Int64, Void* -> Void
- alias FileReadMoreCallback = UInt8*, Int64, Void* -> Bool
- alias IOSchedulerJobFunc = LibGio::IOSchedulerJob*, LibGio::Cancellable*, Void* -> Bool
- alias PollableSourceFunc = LibGObject::Object*, Void* -> Bool
- alias SettingsBindGetMapping = LibGObject::Value*, LibGLib::Variant*, Void* -> Bool
- alias SettingsBindSetMapping = LibGObject::Value*, LibGLib::VariantType*, Void* -> LibGLib::Variant*
- alias SettingsGetMapping = LibGLib::Variant*, Void*, Void* -> Bool
- alias SimpleAsyncThreadFunc = LibGio::SimpleAsyncResult*, LibGObject::Object*, LibGio::Cancellable* -> Void
- alias SocketSourceFunc = LibGio::Socket*, LibGLib::IOCondition, Void* -> Bool
- alias TaskThreadFunc = LibGio::Task*, LibGObject::Object*, Void*, LibGio::Cancellable* -> Void
+ type AsyncReadyCallback = LibGObject::Object*, LibGio::AsyncResult*, Void* -> Void
+ type BusAcquiredCallback = LibGio::DBusConnection*, UInt8*, Void* -> Void
+ type BusNameAcquiredCallback = LibGio::DBusConnection*, UInt8*, Void* -> Void
+ type BusNameAppearedCallback = LibGio::DBusConnection*, UInt8*, UInt8*, Void* -> Void
+ type BusNameLostCallback = LibGio::DBusConnection*, UInt8*, Void* -> Void
+ type BusNameVanishedCallback = LibGio::DBusConnection*, UInt8*, Void* -> Void
+ type CancellableSourceFunc = LibGio::Cancellable*, Void* -> Bool
+ type DBusInterfaceGetPropertyFunc = LibGio::DBusConnection*, UInt8*, UInt8*, UInt8*, UInt8*, LibGLib::Error**, Void* -> LibGLib::Variant*
+ type DBusInterfaceMethodCallFunc = LibGio::DBusConnection*, UInt8*, UInt8*, UInt8*, UInt8*, LibGLib::Variant*, LibGio::DBusMethodInvocation*, Void* -> Void
+ type DBusInterfaceSetPropertyFunc = LibGio::DBusConnection*, UInt8*, UInt8*, UInt8*, UInt8*, LibGLib::Variant*, LibGLib::Error**, Void* -> Bool
+ type DBusMessageFilterFunction = LibGio::DBusConnection*, LibGio::DBusMessage*, Bool, Void* -> LibGio::DBusMessage*
+ type DBusProxyTypeFunc = LibGio::DBusObjectManagerClient*, UInt8*, UInt8*, Void* -> UInt64
+ type DBusSignalCallback = LibGio::DBusConnection*, UInt8*, UInt8*, UInt8*, UInt8*, LibGLib::Variant*, Void* -> Void
+ type DBusSubtreeDispatchFunc = LibGio::DBusConnection*, UInt8*, UInt8*, UInt8*, UInt8*, Void*, Void* -> LibGio::DBusInterfaceVTable*
+ type DBusSubtreeIntrospectFunc = LibGio::DBusConnection*, UInt8*, UInt8*, UInt8*, Void* -> LibGio::DBusInterfaceInfo*
+ type DesktopAppLaunchCallback = LibGio::DesktopAppInfo*, Int32, Void* -> Void
+ type FileMeasureProgressCallback = Bool, UInt64, UInt64, UInt64, Void* -> Void
+ type FileProgressCallback = Int64, Int64, Void* -> Void
+ type FileReadMoreCallback = UInt8*, Int64, Void* -> Bool
+ type IOSchedulerJobFunc = LibGio::IOSchedulerJob*, LibGio::Cancellable*, Void* -> Bool
+ type PollableSourceFunc = LibGObject::Object*, Void* -> Bool
+ type SettingsBindGetMapping = LibGObject::Value*, LibGLib::Variant*, Void* -> Bool
+ type SettingsBindSetMapping = LibGObject::Value*, LibGLib::VariantType*, Void* -> LibGLib::Variant*
+ type SettingsGetMapping = LibGLib::Variant*, Void*, Void* -> Bool
+ type SimpleAsyncThreadFunc = LibGio::SimpleAsyncResult*, LibGObject::Object*, LibGio::Cancellable* -> Void
+ type SocketSourceFunc = LibGio::Socket*, LibGLib::IOCondition, Void* -> Bool
+ type TaskThreadFunc = LibGio::Task*, LibGObject::Object*, Void*, LibGio::Cancellable* -> Void
 end
 

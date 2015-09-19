@@ -11,7 +11,7 @@ module GObject
 
     # Implements TypePlugin
     def add_interface(instance_type, interface_type, interface_info)
-      __return_value = LibGObject.type_module_add_interface((to_unsafe as LibGObject::TypeModule*), UInt64.cast(instance_type), UInt64.cast(interface_type), (interface_info.to_unsafe as LibGObject::InterfaceInfo*))
+      __return_value = LibGObject.type_module_add_interface((to_unsafe as LibGObject::TypeModule*), UInt64.new(instance_type), UInt64.new(interface_type), (interface_info.to_unsafe as LibGObject::InterfaceInfo*))
       __return_value
     end
 
@@ -26,7 +26,7 @@ module GObject
     end
 
     def register_type(parent_type, type_name, type_info, flags)
-      __return_value = LibGObject.type_module_register_type((to_unsafe as LibGObject::TypeModule*), UInt64.cast(parent_type), type_name, (type_info.to_unsafe as LibGObject::TypeInfo*), flags)
+      __return_value = LibGObject.type_module_register_type((to_unsafe as LibGObject::TypeModule*), UInt64.new(parent_type), type_name, (type_info.to_unsafe as LibGObject::TypeInfo*), flags)
       __return_value
     end
 

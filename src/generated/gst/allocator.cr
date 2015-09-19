@@ -20,7 +20,7 @@ module Gst
     end
 
     def alloc(size, params)
-      __return_value = LibGst.allocator_alloc((to_unsafe as LibGst::Allocator*), UInt64.cast(size), params && (params.to_unsafe as LibGst::AllocationParams*))
+      __return_value = LibGst.allocator_alloc((to_unsafe as LibGst::Allocator*), UInt64.new(size), params && (params.to_unsafe as LibGst::AllocationParams*))
       Gst::Memory.new(__return_value)
     end
 

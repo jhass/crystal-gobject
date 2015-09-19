@@ -11,7 +11,7 @@ module Gst
     end
 
     def child_by_index(index)
-      __return_value = LibGst.child_proxy_get_child_by_index((to_unsafe as LibGst::ChildProxy*), UInt32.cast(index))
+      __return_value = LibGst.child_proxy_get_child_by_index((to_unsafe as LibGst::ChildProxy*), UInt32.new(index))
       GObject::Object.new(__return_value) if __return_value
     end
 

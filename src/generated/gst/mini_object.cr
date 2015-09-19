@@ -10,7 +10,7 @@ module Gst
     end
 
     def qdata(quark)
-      __return_value = LibGst.mini_object_get_qdata((to_unsafe as LibGst::MiniObject*), UInt32.cast(quark))
+      __return_value = LibGst.mini_object_get_qdata((to_unsafe as LibGst::MiniObject*), UInt32.new(quark))
       __return_value if __return_value
     end
 
@@ -25,12 +25,12 @@ module Gst
     end
 
     def set_qdata(quark, data, destroy : LibGLib::DestroyNotify)
-      __return_value = LibGst.mini_object_set_qdata((to_unsafe as LibGst::MiniObject*), UInt32.cast(quark), data, destroy)
+      __return_value = LibGst.mini_object_set_qdata((to_unsafe as LibGst::MiniObject*), UInt32.new(quark), data, destroy)
       __return_value
     end
 
     def steal_qdata(quark)
-      __return_value = LibGst.mini_object_steal_qdata((to_unsafe as LibGst::MiniObject*), UInt32.cast(quark))
+      __return_value = LibGst.mini_object_steal_qdata((to_unsafe as LibGst::MiniObject*), UInt32.new(quark))
       __return_value if __return_value
     end
 

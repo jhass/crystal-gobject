@@ -15,7 +15,7 @@ module GLib
     end
 
     def double_range(_begin, end)
-      __return_value = LibGLib.rand_double_range((to_unsafe as LibGLib::Rand*), Float64.cast(_begin), Float64.cast(end))
+      __return_value = LibGLib.rand_double_range((to_unsafe as LibGLib::Rand*), Float64.new(_begin), Float64.new(end))
       __return_value
     end
 
@@ -30,17 +30,17 @@ module GLib
     end
 
     def int_range(_begin, end)
-      __return_value = LibGLib.rand_int_range((to_unsafe as LibGLib::Rand*), Int32.cast(_begin), Int32.cast(end))
+      __return_value = LibGLib.rand_int_range((to_unsafe as LibGLib::Rand*), Int32.new(_begin), Int32.new(end))
       __return_value
     end
 
     def seed=(seed)
-      __return_value = LibGLib.rand_set_seed((to_unsafe as LibGLib::Rand*), UInt32.cast(seed))
+      __return_value = LibGLib.rand_set_seed((to_unsafe as LibGLib::Rand*), UInt32.new(seed))
       __return_value
     end
 
     def set_seed_array(seed, seed_length)
-      __return_value = LibGLib.rand_set_seed_array((to_unsafe as LibGLib::Rand*), seed, UInt32.cast(seed_length))
+      __return_value = LibGLib.rand_set_seed_array((to_unsafe as LibGLib::Rand*), seed, UInt32.new(seed_length))
       __return_value
     end
 

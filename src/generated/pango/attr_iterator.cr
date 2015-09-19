@@ -30,7 +30,7 @@ module Pango
     end
 
     def range(start, end)
-      __return_value = LibPango.attr_iterator_range((to_unsafe as LibPango::AttrIterator*), Int32.cast(start), Int32.cast(end))
+      __return_value = LibPango.attr_iterator_range((to_unsafe as LibPango::AttrIterator*), Int32.new(start), Int32.new(end))
       __return_value
     end
 

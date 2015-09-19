@@ -18,7 +18,7 @@ module Gio
     end
 
     def rate_limit=(limit_msec)
-      __return_value = LibGio.unix_mount_monitor_set_rate_limit((to_unsafe as LibGio::UnixMountMonitor*), Int32.cast(limit_msec))
+      __return_value = LibGio.unix_mount_monitor_set_rate_limit((to_unsafe as LibGio::UnixMountMonitor*), Int32.new(limit_msec))
       __return_value
     end
 

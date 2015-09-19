@@ -45,7 +45,7 @@ module Gst
     end
 
     def g_value_array(property_name, timestamp, interval, n_values, values)
-      __return_value = LibGst.object_get_g_value_array((to_unsafe as LibGst::Object*), property_name, UInt64.cast(timestamp), UInt64.cast(interval), UInt32.cast(n_values), (values.to_unsafe as LibGObject::Value*))
+      __return_value = LibGst.object_get_g_value_array((to_unsafe as LibGst::Object*), property_name, UInt64.new(timestamp), UInt64.new(interval), UInt32.new(n_values), (values.to_unsafe as LibGObject::Value*))
       __return_value
     end
 
@@ -65,12 +65,12 @@ module Gst
     end
 
     def value(property_name, timestamp)
-      __return_value = LibGst.object_get_value((to_unsafe as LibGst::Object*), property_name, UInt64.cast(timestamp))
+      __return_value = LibGst.object_get_value((to_unsafe as LibGst::Object*), property_name, UInt64.new(timestamp))
       GObject::Value.new(__return_value) if __return_value
     end
 
     def value_array(property_name, timestamp, interval, n_values, values)
-      __return_value = LibGst.object_get_value_array((to_unsafe as LibGst::Object*), property_name, UInt64.cast(timestamp), UInt64.cast(interval), UInt32.cast(n_values), values)
+      __return_value = LibGst.object_get_value_array((to_unsafe as LibGst::Object*), property_name, UInt64.new(timestamp), UInt64.new(interval), UInt32.new(n_values), values)
       __return_value
     end
 
@@ -95,17 +95,17 @@ module Gst
     end
 
     def set_control_binding_disabled(property_name, disabled)
-      __return_value = LibGst.object_set_control_binding_disabled((to_unsafe as LibGst::Object*), property_name, Bool.cast(disabled))
+      __return_value = LibGst.object_set_control_binding_disabled((to_unsafe as LibGst::Object*), property_name, Bool.new(disabled))
       __return_value
     end
 
     def control_bindings_disabled=(disabled)
-      __return_value = LibGst.object_set_control_bindings_disabled((to_unsafe as LibGst::Object*), Bool.cast(disabled))
+      __return_value = LibGst.object_set_control_bindings_disabled((to_unsafe as LibGst::Object*), Bool.new(disabled))
       __return_value
     end
 
     def control_rate=(control_rate)
-      __return_value = LibGst.object_set_control_rate((to_unsafe as LibGst::Object*), UInt64.cast(control_rate))
+      __return_value = LibGst.object_set_control_rate((to_unsafe as LibGst::Object*), UInt64.new(control_rate))
       __return_value
     end
 
@@ -125,7 +125,7 @@ module Gst
     end
 
     def sync_values(timestamp)
-      __return_value = LibGst.object_sync_values((to_unsafe as LibGst::Object*), UInt64.cast(timestamp))
+      __return_value = LibGst.object_sync_values((to_unsafe as LibGst::Object*), UInt64.new(timestamp))
       __return_value
     end
 

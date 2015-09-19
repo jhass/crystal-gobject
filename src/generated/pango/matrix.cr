@@ -30,17 +30,17 @@ module Pango
     end
 
     def rotate(degrees)
-      __return_value = LibPango.matrix_rotate((to_unsafe as LibPango::Matrix*), Float64.cast(degrees))
+      __return_value = LibPango.matrix_rotate((to_unsafe as LibPango::Matrix*), Float64.new(degrees))
       __return_value
     end
 
     def scale(scale_x, scale_y)
-      __return_value = LibPango.matrix_scale((to_unsafe as LibPango::Matrix*), Float64.cast(scale_x), Float64.cast(scale_y))
+      __return_value = LibPango.matrix_scale((to_unsafe as LibPango::Matrix*), Float64.new(scale_x), Float64.new(scale_y))
       __return_value
     end
 
     def transform_distance(dx, dy)
-      __return_value = LibPango.matrix_transform_distance((to_unsafe as LibPango::Matrix*), Float64.cast(dx), Float64.cast(dy))
+      __return_value = LibPango.matrix_transform_distance((to_unsafe as LibPango::Matrix*), Float64.new(dx), Float64.new(dy))
       __return_value
     end
 
@@ -50,7 +50,7 @@ module Pango
     end
 
     def transform_point(x, y)
-      __return_value = LibPango.matrix_transform_point((to_unsafe as LibPango::Matrix*), Float64.cast(x), Float64.cast(y))
+      __return_value = LibPango.matrix_transform_point((to_unsafe as LibPango::Matrix*), Float64.new(x), Float64.new(y))
       __return_value
     end
 
@@ -60,7 +60,7 @@ module Pango
     end
 
     def translate(tx, ty)
-      __return_value = LibPango.matrix_translate((to_unsafe as LibPango::Matrix*), Float64.cast(tx), Float64.cast(ty))
+      __return_value = LibPango.matrix_translate((to_unsafe as LibPango::Matrix*), Float64.new(tx), Float64.new(ty))
       __return_value
     end
 

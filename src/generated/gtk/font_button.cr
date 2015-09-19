@@ -66,12 +66,12 @@ module Gtk
     end
 
     def show_size=(show_size)
-      __return_value = LibGtk.font_button_set_show_size((to_unsafe as LibGtk::FontButton*), Bool.cast(show_size))
+      __return_value = LibGtk.font_button_set_show_size((to_unsafe as LibGtk::FontButton*), Bool.new(show_size))
       __return_value
     end
 
     def show_style=(show_style)
-      __return_value = LibGtk.font_button_set_show_style((to_unsafe as LibGtk::FontButton*), Bool.cast(show_style))
+      __return_value = LibGtk.font_button_set_show_style((to_unsafe as LibGtk::FontButton*), Bool.new(show_style))
       __return_value
     end
 
@@ -81,12 +81,12 @@ module Gtk
     end
 
     def use_font=(use_font)
-      __return_value = LibGtk.font_button_set_use_font((to_unsafe as LibGtk::FontButton*), Bool.cast(use_font))
+      __return_value = LibGtk.font_button_set_use_font((to_unsafe as LibGtk::FontButton*), Bool.new(use_font))
       __return_value
     end
 
     def use_size=(use_size)
-      __return_value = LibGtk.font_button_set_use_size((to_unsafe as LibGtk::FontButton*), Bool.cast(use_size))
+      __return_value = LibGtk.font_button_set_use_size((to_unsafe as LibGtk::FontButton*), Bool.new(use_size))
       __return_value
     end
 

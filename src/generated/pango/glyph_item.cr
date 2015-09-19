@@ -30,12 +30,12 @@ module Pango
     end
 
     def letter_space(text, log_attrs, letter_spacing)
-      __return_value = LibPango.glyph_item_letter_space((to_unsafe as LibPango::GlyphItem*), text, log_attrs, Int32.cast(letter_spacing))
+      __return_value = LibPango.glyph_item_letter_space((to_unsafe as LibPango::GlyphItem*), text, log_attrs, Int32.new(letter_spacing))
       __return_value
     end
 
     def split(text, split_index)
-      __return_value = LibPango.glyph_item_split((to_unsafe as LibPango::GlyphItem*), text, Int32.cast(split_index))
+      __return_value = LibPango.glyph_item_split((to_unsafe as LibPango::GlyphItem*), text, Int32.new(split_index))
       Pango::GlyphItem.new(__return_value)
     end
 

@@ -140,7 +140,7 @@ module GObject
     end
 
     def init(g_type)
-      __return_value = LibGObject.value_init((to_unsafe as LibGObject::Value*), UInt64.cast(g_type))
+      __return_value = LibGObject.value_init((to_unsafe as LibGObject::Value*), UInt64.new(g_type))
       GObject::Value.new(__return_value)
     end
 
@@ -160,7 +160,7 @@ module GObject
     end
 
     def boolean=(v_boolean)
-      __return_value = LibGObject.value_set_boolean((to_unsafe as LibGObject::Value*), Bool.cast(v_boolean))
+      __return_value = LibGObject.value_set_boolean((to_unsafe as LibGObject::Value*), Bool.new(v_boolean))
       __return_value
     end
 
@@ -175,32 +175,32 @@ module GObject
     end
 
     def char=(v_char)
-      __return_value = LibGObject.value_set_char((to_unsafe as LibGObject::Value*), Int8.cast(v_char))
+      __return_value = LibGObject.value_set_char((to_unsafe as LibGObject::Value*), Int8.new(v_char))
       __return_value
     end
 
     def double=(v_double)
-      __return_value = LibGObject.value_set_double((to_unsafe as LibGObject::Value*), Float64.cast(v_double))
+      __return_value = LibGObject.value_set_double((to_unsafe as LibGObject::Value*), Float64.new(v_double))
       __return_value
     end
 
     def enum=(v_enum)
-      __return_value = LibGObject.value_set_enum((to_unsafe as LibGObject::Value*), Int32.cast(v_enum))
+      __return_value = LibGObject.value_set_enum((to_unsafe as LibGObject::Value*), Int32.new(v_enum))
       __return_value
     end
 
     def flags=(v_flags)
-      __return_value = LibGObject.value_set_flags((to_unsafe as LibGObject::Value*), UInt32.cast(v_flags))
+      __return_value = LibGObject.value_set_flags((to_unsafe as LibGObject::Value*), UInt32.new(v_flags))
       __return_value
     end
 
     def float=(v_float)
-      __return_value = LibGObject.value_set_float((to_unsafe as LibGObject::Value*), Float32.cast(v_float))
+      __return_value = LibGObject.value_set_float((to_unsafe as LibGObject::Value*), Float32.new(v_float))
       __return_value
     end
 
     def gtype=(v_gtype)
-      __return_value = LibGObject.value_set_gtype((to_unsafe as LibGObject::Value*), UInt64.cast(v_gtype))
+      __return_value = LibGObject.value_set_gtype((to_unsafe as LibGObject::Value*), UInt64.new(v_gtype))
       __return_value
     end
 
@@ -210,17 +210,17 @@ module GObject
     end
 
     def int=(v_int)
-      __return_value = LibGObject.value_set_int((to_unsafe as LibGObject::Value*), Int32.cast(v_int))
+      __return_value = LibGObject.value_set_int((to_unsafe as LibGObject::Value*), Int32.new(v_int))
       __return_value
     end
 
     def int64=(v_int64)
-      __return_value = LibGObject.value_set_int64((to_unsafe as LibGObject::Value*), Int64.cast(v_int64))
+      __return_value = LibGObject.value_set_int64((to_unsafe as LibGObject::Value*), Int64.new(v_int64))
       __return_value
     end
 
     def long=(v_long)
-      __return_value = LibGObject.value_set_long((to_unsafe as LibGObject::Value*), Int64.cast(v_long))
+      __return_value = LibGObject.value_set_long((to_unsafe as LibGObject::Value*), Int64.new(v_long))
       __return_value
     end
 
@@ -240,7 +240,7 @@ module GObject
     end
 
     def schar=(v_char)
-      __return_value = LibGObject.value_set_schar((to_unsafe as LibGObject::Value*), Int8.cast(v_char))
+      __return_value = LibGObject.value_set_schar((to_unsafe as LibGObject::Value*), Int8.new(v_char))
       __return_value
     end
 
@@ -265,22 +265,22 @@ module GObject
     end
 
     def uchar=(v_uchar)
-      __return_value = LibGObject.value_set_uchar((to_unsafe as LibGObject::Value*), UInt8.cast(v_uchar))
+      __return_value = LibGObject.value_set_uchar((to_unsafe as LibGObject::Value*), UInt8.new(v_uchar))
       __return_value
     end
 
     def uint=(v_uint)
-      __return_value = LibGObject.value_set_uint((to_unsafe as LibGObject::Value*), UInt32.cast(v_uint))
+      __return_value = LibGObject.value_set_uint((to_unsafe as LibGObject::Value*), UInt32.new(v_uint))
       __return_value
     end
 
     def uint64=(v_uint64)
-      __return_value = LibGObject.value_set_uint64((to_unsafe as LibGObject::Value*), UInt64.cast(v_uint64))
+      __return_value = LibGObject.value_set_uint64((to_unsafe as LibGObject::Value*), UInt64.new(v_uint64))
       __return_value
     end
 
     def ulong=(v_ulong)
-      __return_value = LibGObject.value_set_ulong((to_unsafe as LibGObject::Value*), UInt64.cast(v_ulong))
+      __return_value = LibGObject.value_set_ulong((to_unsafe as LibGObject::Value*), UInt64.new(v_ulong))
       __return_value
     end
 
@@ -315,12 +315,12 @@ module GObject
     end
 
     def self.type_compatible(src_type, dest_type)
-      __return_value = LibGObject.value_type_compatible(UInt64.cast(src_type), UInt64.cast(dest_type))
+      __return_value = LibGObject.value_type_compatible(UInt64.new(src_type), UInt64.new(dest_type))
       __return_value
     end
 
     def self.type_transformable(src_type, dest_type)
-      __return_value = LibGObject.value_type_transformable(UInt64.cast(src_type), UInt64.cast(dest_type))
+      __return_value = LibGObject.value_type_transformable(UInt64.new(src_type), UInt64.new(dest_type))
       __return_value
     end
 

@@ -14,12 +14,12 @@ module Gdk
     end
 
     def self.at_pointer(win_x, win_y)
-      __return_value = LibGdk.window_at_pointer(Int32.cast(win_x), Int32.cast(win_y))
+      __return_value = LibGdk.window_at_pointer(Int32.new(win_x), Int32.new(win_y))
       Gdk::Window.new(__return_value)
     end
 
     def self.constrain_size(geometry, flags, width, height, new_width, new_height)
-      __return_value = LibGdk.window_constrain_size((geometry.to_unsafe as LibGdk::Geometry*), flags, Int32.cast(width), Int32.cast(height), Int32.cast(new_width), Int32.cast(new_height))
+      __return_value = LibGdk.window_constrain_size((geometry.to_unsafe as LibGdk::Geometry*), flags, Int32.new(width), Int32.new(height), Int32.new(new_width), Int32.new(new_height))
       __return_value
     end
 
@@ -29,7 +29,7 @@ module Gdk
     end
 
     def self.set_debug_updates(setting)
-      __return_value = LibGdk.window_set_debug_updates(Bool.cast(setting))
+      __return_value = LibGdk.window_set_debug_updates(Bool.new(setting))
       __return_value
     end
 
@@ -39,12 +39,12 @@ module Gdk
     end
 
     def begin_move_drag(button, root_x, root_y, timestamp)
-      __return_value = LibGdk.window_begin_move_drag((to_unsafe as LibGdk::Window*), Int32.cast(button), Int32.cast(root_x), Int32.cast(root_y), UInt32.cast(timestamp))
+      __return_value = LibGdk.window_begin_move_drag((to_unsafe as LibGdk::Window*), Int32.new(button), Int32.new(root_x), Int32.new(root_y), UInt32.new(timestamp))
       __return_value
     end
 
     def begin_move_drag_for_device(device, button, root_x, root_y, timestamp)
-      __return_value = LibGdk.window_begin_move_drag_for_device((to_unsafe as LibGdk::Window*), (device.to_unsafe as LibGdk::Device*), Int32.cast(button), Int32.cast(root_x), Int32.cast(root_y), UInt32.cast(timestamp))
+      __return_value = LibGdk.window_begin_move_drag_for_device((to_unsafe as LibGdk::Window*), (device.to_unsafe as LibGdk::Device*), Int32.new(button), Int32.new(root_x), Int32.new(root_y), UInt32.new(timestamp))
       __return_value
     end
 
@@ -59,12 +59,12 @@ module Gdk
     end
 
     def begin_resize_drag(edge, button, root_x, root_y, timestamp)
-      __return_value = LibGdk.window_begin_resize_drag((to_unsafe as LibGdk::Window*), edge, Int32.cast(button), Int32.cast(root_x), Int32.cast(root_y), UInt32.cast(timestamp))
+      __return_value = LibGdk.window_begin_resize_drag((to_unsafe as LibGdk::Window*), edge, Int32.new(button), Int32.new(root_x), Int32.new(root_y), UInt32.new(timestamp))
       __return_value
     end
 
     def begin_resize_drag_for_device(edge, device, button, root_x, root_y, timestamp)
-      __return_value = LibGdk.window_begin_resize_drag_for_device((to_unsafe as LibGdk::Window*), edge, (device.to_unsafe as LibGdk::Device*), Int32.cast(button), Int32.cast(root_x), Int32.cast(root_y), UInt32.cast(timestamp))
+      __return_value = LibGdk.window_begin_resize_drag_for_device((to_unsafe as LibGdk::Window*), edge, (device.to_unsafe as LibGdk::Device*), Int32.new(button), Int32.new(root_x), Int32.new(root_y), UInt32.new(timestamp))
       __return_value
     end
 
@@ -74,12 +74,12 @@ module Gdk
     end
 
     def coords_from_parent(parent_x, parent_y, x, y)
-      __return_value = LibGdk.window_coords_from_parent((to_unsafe as LibGdk::Window*), Float64.cast(parent_x), Float64.cast(parent_y), Float64.cast(x), Float64.cast(y))
+      __return_value = LibGdk.window_coords_from_parent((to_unsafe as LibGdk::Window*), Float64.new(parent_x), Float64.new(parent_y), Float64.new(x), Float64.new(y))
       __return_value
     end
 
     def coords_to_parent(x, y, parent_x, parent_y)
-      __return_value = LibGdk.window_coords_to_parent((to_unsafe as LibGdk::Window*), Float64.cast(x), Float64.cast(y), Float64.cast(parent_x), Float64.cast(parent_y))
+      __return_value = LibGdk.window_coords_to_parent((to_unsafe as LibGdk::Window*), Float64.new(x), Float64.new(y), Float64.new(parent_x), Float64.new(parent_y))
       __return_value
     end
 
@@ -91,12 +91,12 @@ module Gdk
     end
 
     def create_similar_image_surface(format, width, height, scale)
-      __return_value = LibGdk.window_create_similar_image_surface((to_unsafe as LibGdk::Window*), Int32.cast(format), Int32.cast(width), Int32.cast(height), Int32.cast(scale))
+      __return_value = LibGdk.window_create_similar_image_surface((to_unsafe as LibGdk::Window*), Int32.new(format), Int32.new(width), Int32.new(height), Int32.new(scale))
       Cairo::Surface.new(__return_value)
     end
 
     def create_similar_surface(content, width, height)
-      __return_value = LibGdk.window_create_similar_surface((to_unsafe as LibGdk::Window*), content, Int32.cast(width), Int32.cast(height))
+      __return_value = LibGdk.window_create_similar_surface((to_unsafe as LibGdk::Window*), content, Int32.new(width), Int32.new(height))
       Cairo::Surface.new(__return_value)
     end
 
@@ -136,7 +136,7 @@ module Gdk
     end
 
     def focus(timestamp)
-      __return_value = LibGdk.window_focus((to_unsafe as LibGdk::Window*), UInt32.cast(timestamp))
+      __return_value = LibGdk.window_focus((to_unsafe as LibGdk::Window*), UInt32.new(timestamp))
       __return_value
     end
 
@@ -211,12 +211,12 @@ module Gdk
     end
 
     def device_position(device, x, y, mask)
-      __return_value = LibGdk.window_get_device_position((to_unsafe as LibGdk::Window*), (device.to_unsafe as LibGdk::Device*), Int32.cast(x), Int32.cast(y), mask)
+      __return_value = LibGdk.window_get_device_position((to_unsafe as LibGdk::Window*), (device.to_unsafe as LibGdk::Device*), Int32.new(x), Int32.new(y), mask)
       Gdk::Window.new(__return_value) if __return_value
     end
 
     def device_position_double(device, x, y, mask)
-      __return_value = LibGdk.window_get_device_position_double((to_unsafe as LibGdk::Window*), (device.to_unsafe as LibGdk::Device*), Float64.cast(x), Float64.cast(y), mask)
+      __return_value = LibGdk.window_get_device_position_double((to_unsafe as LibGdk::Window*), (device.to_unsafe as LibGdk::Device*), Float64.new(x), Float64.new(y), mask)
       Gdk::Window.new(__return_value) if __return_value
     end
 
@@ -271,7 +271,7 @@ module Gdk
     end
 
     def geometry(x, y, width, height)
-      __return_value = LibGdk.window_get_geometry((to_unsafe as LibGdk::Window*), Int32.cast(x), Int32.cast(y), Int32.cast(width), Int32.cast(height))
+      __return_value = LibGdk.window_get_geometry((to_unsafe as LibGdk::Window*), Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
       __return_value
     end
 
@@ -291,7 +291,7 @@ module Gdk
     end
 
     def origin(x, y)
-      __return_value = LibGdk.window_get_origin((to_unsafe as LibGdk::Window*), Int32.cast(x), Int32.cast(y))
+      __return_value = LibGdk.window_get_origin((to_unsafe as LibGdk::Window*), Int32.new(x), Int32.new(y))
       __return_value
     end
 
@@ -301,22 +301,22 @@ module Gdk
     end
 
     def pointer(x, y, mask)
-      __return_value = LibGdk.window_get_pointer((to_unsafe as LibGdk::Window*), Int32.cast(x), Int32.cast(y), mask)
+      __return_value = LibGdk.window_get_pointer((to_unsafe as LibGdk::Window*), Int32.new(x), Int32.new(y), mask)
       Gdk::Window.new(__return_value) if __return_value
     end
 
     def position(x, y)
-      __return_value = LibGdk.window_get_position((to_unsafe as LibGdk::Window*), Int32.cast(x), Int32.cast(y))
+      __return_value = LibGdk.window_get_position((to_unsafe as LibGdk::Window*), Int32.new(x), Int32.new(y))
       __return_value
     end
 
     def root_coords(x, y, root_x, root_y)
-      __return_value = LibGdk.window_get_root_coords((to_unsafe as LibGdk::Window*), Int32.cast(x), Int32.cast(y), Int32.cast(root_x), Int32.cast(root_y))
+      __return_value = LibGdk.window_get_root_coords((to_unsafe as LibGdk::Window*), Int32.new(x), Int32.new(y), Int32.new(root_x), Int32.new(root_y))
       __return_value
     end
 
     def root_origin(x, y)
-      __return_value = LibGdk.window_get_root_origin((to_unsafe as LibGdk::Window*), Int32.cast(x), Int32.cast(y))
+      __return_value = LibGdk.window_get_root_origin((to_unsafe as LibGdk::Window*), Int32.new(x), Int32.new(y))
       __return_value
     end
 
@@ -401,7 +401,7 @@ module Gdk
     end
 
     def input_shape_combine_region(shape_region, offset_x, offset_y)
-      __return_value = LibGdk.window_input_shape_combine_region((to_unsafe as LibGdk::Window*), (shape_region.to_unsafe as LibCairo::Region*), Int32.cast(offset_x), Int32.cast(offset_y))
+      __return_value = LibGdk.window_input_shape_combine_region((to_unsafe as LibGdk::Window*), (shape_region.to_unsafe as LibCairo::Region*), Int32.new(offset_x), Int32.new(offset_y))
       __return_value
     end
 
@@ -411,12 +411,12 @@ module Gdk
     end
 
     def invalidate_rect(rect, invalidate_children)
-      __return_value = LibGdk.window_invalidate_rect((to_unsafe as LibGdk::Window*), rect && (rect.to_unsafe as LibCairo::RectangleInt*), Bool.cast(invalidate_children))
+      __return_value = LibGdk.window_invalidate_rect((to_unsafe as LibGdk::Window*), rect && (rect.to_unsafe as LibCairo::RectangleInt*), Bool.new(invalidate_children))
       __return_value
     end
 
     def invalidate_region(region, invalidate_children)
-      __return_value = LibGdk.window_invalidate_region((to_unsafe as LibGdk::Window*), (region.to_unsafe as LibCairo::Region*), Bool.cast(invalidate_children))
+      __return_value = LibGdk.window_invalidate_region((to_unsafe as LibGdk::Window*), (region.to_unsafe as LibCairo::Region*), Bool.new(invalidate_children))
       __return_value
     end
 
@@ -471,17 +471,17 @@ module Gdk
     end
 
     def move(x, y)
-      __return_value = LibGdk.window_move((to_unsafe as LibGdk::Window*), Int32.cast(x), Int32.cast(y))
+      __return_value = LibGdk.window_move((to_unsafe as LibGdk::Window*), Int32.new(x), Int32.new(y))
       __return_value
     end
 
     def move_region(region, dx, dy)
-      __return_value = LibGdk.window_move_region((to_unsafe as LibGdk::Window*), (region.to_unsafe as LibCairo::Region*), Int32.cast(dx), Int32.cast(dy))
+      __return_value = LibGdk.window_move_region((to_unsafe as LibGdk::Window*), (region.to_unsafe as LibCairo::Region*), Int32.new(dx), Int32.new(dy))
       __return_value
     end
 
     def move_resize(x, y, width, height)
-      __return_value = LibGdk.window_move_resize((to_unsafe as LibGdk::Window*), Int32.cast(x), Int32.cast(y), Int32.cast(width), Int32.cast(height))
+      __return_value = LibGdk.window_move_resize((to_unsafe as LibGdk::Window*), Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
       __return_value
     end
 
@@ -491,7 +491,7 @@ module Gdk
     end
 
     def process_updates(update_children)
-      __return_value = LibGdk.window_process_updates((to_unsafe as LibGdk::Window*), Bool.cast(update_children))
+      __return_value = LibGdk.window_process_updates((to_unsafe as LibGdk::Window*), Bool.new(update_children))
       __return_value
     end
 
@@ -506,27 +506,27 @@ module Gdk
     end
 
     def reparent(new_parent, x, y)
-      __return_value = LibGdk.window_reparent((to_unsafe as LibGdk::Window*), (new_parent.to_unsafe as LibGdk::Window*), Int32.cast(x), Int32.cast(y))
+      __return_value = LibGdk.window_reparent((to_unsafe as LibGdk::Window*), (new_parent.to_unsafe as LibGdk::Window*), Int32.new(x), Int32.new(y))
       __return_value
     end
 
     def resize(width, height)
-      __return_value = LibGdk.window_resize((to_unsafe as LibGdk::Window*), Int32.cast(width), Int32.cast(height))
+      __return_value = LibGdk.window_resize((to_unsafe as LibGdk::Window*), Int32.new(width), Int32.new(height))
       __return_value
     end
 
     def restack(sibling, above)
-      __return_value = LibGdk.window_restack((to_unsafe as LibGdk::Window*), sibling && (sibling.to_unsafe as LibGdk::Window*), Bool.cast(above))
+      __return_value = LibGdk.window_restack((to_unsafe as LibGdk::Window*), sibling && (sibling.to_unsafe as LibGdk::Window*), Bool.new(above))
       __return_value
     end
 
     def scroll(dx, dy)
-      __return_value = LibGdk.window_scroll((to_unsafe as LibGdk::Window*), Int32.cast(dx), Int32.cast(dy))
+      __return_value = LibGdk.window_scroll((to_unsafe as LibGdk::Window*), Int32.new(dx), Int32.new(dy))
       __return_value
     end
 
     def accept_focus=(accept_focus)
-      __return_value = LibGdk.window_set_accept_focus((to_unsafe as LibGdk::Window*), Bool.cast(accept_focus))
+      __return_value = LibGdk.window_set_accept_focus((to_unsafe as LibGdk::Window*), Bool.new(accept_focus))
       __return_value
     end
 
@@ -556,7 +556,7 @@ module Gdk
     end
 
     def composited=(composited)
-      __return_value = LibGdk.window_set_composited((to_unsafe as LibGdk::Window*), Bool.cast(composited))
+      __return_value = LibGdk.window_set_composited((to_unsafe as LibGdk::Window*), Bool.new(composited))
       __return_value
     end
 
@@ -581,7 +581,7 @@ module Gdk
     end
 
     def event_compression=(event_compression)
-      __return_value = LibGdk.window_set_event_compression((to_unsafe as LibGdk::Window*), Bool.cast(event_compression))
+      __return_value = LibGdk.window_set_event_compression((to_unsafe as LibGdk::Window*), Bool.new(event_compression))
       __return_value
     end
 
@@ -591,7 +591,7 @@ module Gdk
     end
 
     def focus_on_map=(focus_on_map)
-      __return_value = LibGdk.window_set_focus_on_map((to_unsafe as LibGdk::Window*), Bool.cast(focus_on_map))
+      __return_value = LibGdk.window_set_focus_on_map((to_unsafe as LibGdk::Window*), Bool.new(focus_on_map))
       __return_value
     end
 
@@ -626,22 +626,22 @@ module Gdk
     end
 
     def keep_above=(setting)
-      __return_value = LibGdk.window_set_keep_above((to_unsafe as LibGdk::Window*), Bool.cast(setting))
+      __return_value = LibGdk.window_set_keep_above((to_unsafe as LibGdk::Window*), Bool.new(setting))
       __return_value
     end
 
     def keep_below=(setting)
-      __return_value = LibGdk.window_set_keep_below((to_unsafe as LibGdk::Window*), Bool.cast(setting))
+      __return_value = LibGdk.window_set_keep_below((to_unsafe as LibGdk::Window*), Bool.new(setting))
       __return_value
     end
 
     def modal_hint=(modal)
-      __return_value = LibGdk.window_set_modal_hint((to_unsafe as LibGdk::Window*), Bool.cast(modal))
+      __return_value = LibGdk.window_set_modal_hint((to_unsafe as LibGdk::Window*), Bool.new(modal))
       __return_value
     end
 
     def opacity=(opacity)
-      __return_value = LibGdk.window_set_opacity((to_unsafe as LibGdk::Window*), Float64.cast(opacity))
+      __return_value = LibGdk.window_set_opacity((to_unsafe as LibGdk::Window*), Float64.new(opacity))
       __return_value
     end
 
@@ -651,7 +651,7 @@ module Gdk
     end
 
     def override_redirect=(override_redirect)
-      __return_value = LibGdk.window_set_override_redirect((to_unsafe as LibGdk::Window*), Bool.cast(override_redirect))
+      __return_value = LibGdk.window_set_override_redirect((to_unsafe as LibGdk::Window*), Bool.new(override_redirect))
       __return_value
     end
 
@@ -661,17 +661,17 @@ module Gdk
     end
 
     def set_shadow_width(left, right, top, bottom)
-      __return_value = LibGdk.window_set_shadow_width((to_unsafe as LibGdk::Window*), Int32.cast(left), Int32.cast(right), Int32.cast(top), Int32.cast(bottom))
+      __return_value = LibGdk.window_set_shadow_width((to_unsafe as LibGdk::Window*), Int32.new(left), Int32.new(right), Int32.new(top), Int32.new(bottom))
       __return_value
     end
 
     def skip_pager_hint=(skips_pager)
-      __return_value = LibGdk.window_set_skip_pager_hint((to_unsafe as LibGdk::Window*), Bool.cast(skips_pager))
+      __return_value = LibGdk.window_set_skip_pager_hint((to_unsafe as LibGdk::Window*), Bool.new(skips_pager))
       __return_value
     end
 
     def skip_taskbar_hint=(skips_taskbar)
-      __return_value = LibGdk.window_set_skip_taskbar_hint((to_unsafe as LibGdk::Window*), Bool.cast(skips_taskbar))
+      __return_value = LibGdk.window_set_skip_taskbar_hint((to_unsafe as LibGdk::Window*), Bool.new(skips_taskbar))
       __return_value
     end
 
@@ -686,12 +686,12 @@ module Gdk
     end
 
     def static_gravities=(use_static)
-      __return_value = LibGdk.window_set_static_gravities((to_unsafe as LibGdk::Window*), Bool.cast(use_static))
+      __return_value = LibGdk.window_set_static_gravities((to_unsafe as LibGdk::Window*), Bool.new(use_static))
       __return_value
     end
 
     def support_multidevice=(support_multidevice)
-      __return_value = LibGdk.window_set_support_multidevice((to_unsafe as LibGdk::Window*), Bool.cast(support_multidevice))
+      __return_value = LibGdk.window_set_support_multidevice((to_unsafe as LibGdk::Window*), Bool.new(support_multidevice))
       __return_value
     end
 
@@ -711,7 +711,7 @@ module Gdk
     end
 
     def urgency_hint=(urgent)
-      __return_value = LibGdk.window_set_urgency_hint((to_unsafe as LibGdk::Window*), Bool.cast(urgent))
+      __return_value = LibGdk.window_set_urgency_hint((to_unsafe as LibGdk::Window*), Bool.new(urgent))
       __return_value
     end
 
@@ -721,7 +721,7 @@ module Gdk
     end
 
     def shape_combine_region(shape_region, offset_x, offset_y)
-      __return_value = LibGdk.window_shape_combine_region((to_unsafe as LibGdk::Window*), shape_region && (shape_region.to_unsafe as LibCairo::Region*), Int32.cast(offset_x), Int32.cast(offset_y))
+      __return_value = LibGdk.window_shape_combine_region((to_unsafe as LibGdk::Window*), shape_region && (shape_region.to_unsafe as LibCairo::Region*), Int32.new(offset_x), Int32.new(offset_y))
       __return_value
     end
 

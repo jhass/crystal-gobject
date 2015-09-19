@@ -15,27 +15,27 @@ module GLib
     end
 
     def self.new_dmy(day, month, year)
-      __return_value = LibGLib.date_new_dmy(UInt8.cast(day), month, UInt16.cast(year))
+      __return_value = LibGLib.date_new_dmy(UInt8.new(day), month, UInt16.new(year))
       GLib::Date.new(__return_value)
     end
 
     def self.new_julian(julian_day)
-      __return_value = LibGLib.date_new_julian(UInt32.cast(julian_day))
+      __return_value = LibGLib.date_new_julian(UInt32.new(julian_day))
       GLib::Date.new(__return_value)
     end
 
     def add_days(n_days)
-      __return_value = LibGLib.date_add_days((to_unsafe as LibGLib::Date*), UInt32.cast(n_days))
+      __return_value = LibGLib.date_add_days((to_unsafe as LibGLib::Date*), UInt32.new(n_days))
       __return_value
     end
 
     def add_months(n_months)
-      __return_value = LibGLib.date_add_months((to_unsafe as LibGLib::Date*), UInt32.cast(n_months))
+      __return_value = LibGLib.date_add_months((to_unsafe as LibGLib::Date*), UInt32.new(n_months))
       __return_value
     end
 
     def add_years(n_years)
-      __return_value = LibGLib.date_add_years((to_unsafe as LibGLib::Date*), UInt32.cast(n_years))
+      __return_value = LibGLib.date_add_years((to_unsafe as LibGLib::Date*), UInt32.new(n_years))
       __return_value
     end
 
@@ -45,7 +45,7 @@ module GLib
     end
 
     def clear(n_dates)
-      __return_value = LibGLib.date_clear((to_unsafe as LibGLib::Date*), UInt32.cast(n_dates))
+      __return_value = LibGLib.date_clear((to_unsafe as LibGLib::Date*), UInt32.new(n_dates))
       __return_value
     end
 
@@ -125,17 +125,17 @@ module GLib
     end
 
     def day=(day)
-      __return_value = LibGLib.date_set_day((to_unsafe as LibGLib::Date*), UInt8.cast(day))
+      __return_value = LibGLib.date_set_day((to_unsafe as LibGLib::Date*), UInt8.new(day))
       __return_value
     end
 
     def set_dmy(day, month, y)
-      __return_value = LibGLib.date_set_dmy((to_unsafe as LibGLib::Date*), UInt8.cast(day), month, UInt16.cast(y))
+      __return_value = LibGLib.date_set_dmy((to_unsafe as LibGLib::Date*), UInt8.new(day), month, UInt16.new(y))
       __return_value
     end
 
     def julian=(julian_date)
-      __return_value = LibGLib.date_set_julian((to_unsafe as LibGLib::Date*), UInt32.cast(julian_date))
+      __return_value = LibGLib.date_set_julian((to_unsafe as LibGLib::Date*), UInt32.new(julian_date))
       __return_value
     end
 
@@ -150,12 +150,12 @@ module GLib
     end
 
     def time=(time)
-      __return_value = LibGLib.date_set_time((to_unsafe as LibGLib::Date*), Int32.cast(time))
+      __return_value = LibGLib.date_set_time((to_unsafe as LibGLib::Date*), Int32.new(time))
       __return_value
     end
 
     def time_t=(timet)
-      __return_value = LibGLib.date_set_time_t((to_unsafe as LibGLib::Date*), Int64.cast(timet))
+      __return_value = LibGLib.date_set_time_t((to_unsafe as LibGLib::Date*), Int64.new(timet))
       __return_value
     end
 
@@ -165,22 +165,22 @@ module GLib
     end
 
     def year=(year)
-      __return_value = LibGLib.date_set_year((to_unsafe as LibGLib::Date*), UInt16.cast(year))
+      __return_value = LibGLib.date_set_year((to_unsafe as LibGLib::Date*), UInt16.new(year))
       __return_value
     end
 
     def subtract_days(n_days)
-      __return_value = LibGLib.date_subtract_days((to_unsafe as LibGLib::Date*), UInt32.cast(n_days))
+      __return_value = LibGLib.date_subtract_days((to_unsafe as LibGLib::Date*), UInt32.new(n_days))
       __return_value
     end
 
     def subtract_months(n_months)
-      __return_value = LibGLib.date_subtract_months((to_unsafe as LibGLib::Date*), UInt32.cast(n_months))
+      __return_value = LibGLib.date_subtract_months((to_unsafe as LibGLib::Date*), UInt32.new(n_months))
       __return_value
     end
 
     def subtract_years(n_years)
-      __return_value = LibGLib.date_subtract_years((to_unsafe as LibGLib::Date*), UInt32.cast(n_years))
+      __return_value = LibGLib.date_subtract_years((to_unsafe as LibGLib::Date*), UInt32.new(n_years))
       __return_value
     end
 
@@ -195,42 +195,42 @@ module GLib
     end
 
     def self.days_in_month(month, year)
-      __return_value = LibGLib.date_get_days_in_month(month, UInt16.cast(year))
+      __return_value = LibGLib.date_get_days_in_month(month, UInt16.new(year))
       __return_value
     end
 
     def self.monday_weeks_in_year(year)
-      __return_value = LibGLib.date_get_monday_weeks_in_year(UInt16.cast(year))
+      __return_value = LibGLib.date_get_monday_weeks_in_year(UInt16.new(year))
       __return_value
     end
 
     def self.sunday_weeks_in_year(year)
-      __return_value = LibGLib.date_get_sunday_weeks_in_year(UInt16.cast(year))
+      __return_value = LibGLib.date_get_sunday_weeks_in_year(UInt16.new(year))
       __return_value
     end
 
     def self.is_leap_year(year)
-      __return_value = LibGLib.date_is_leap_year(UInt16.cast(year))
+      __return_value = LibGLib.date_is_leap_year(UInt16.new(year))
       __return_value
     end
 
     def self.strftime(s, slen, format, date)
-      __return_value = LibGLib.date_strftime(s, UInt64.cast(slen), format, (date.to_unsafe as LibGLib::Date*))
+      __return_value = LibGLib.date_strftime(s, UInt64.new(slen), format, (date.to_unsafe as LibGLib::Date*))
       __return_value
     end
 
     def self.valid_day(day)
-      __return_value = LibGLib.date_valid_day(UInt8.cast(day))
+      __return_value = LibGLib.date_valid_day(UInt8.new(day))
       __return_value
     end
 
     def self.valid_dmy(day, month, year)
-      __return_value = LibGLib.date_valid_dmy(UInt8.cast(day), month, UInt16.cast(year))
+      __return_value = LibGLib.date_valid_dmy(UInt8.new(day), month, UInt16.new(year))
       __return_value
     end
 
     def self.valid_julian(julian_date)
-      __return_value = LibGLib.date_valid_julian(UInt32.cast(julian_date))
+      __return_value = LibGLib.date_valid_julian(UInt32.new(julian_date))
       __return_value
     end
 
@@ -245,7 +245,7 @@ module GLib
     end
 
     def self.valid_year(year)
-      __return_value = LibGLib.date_valid_year(UInt16.cast(year))
+      __return_value = LibGLib.date_valid_year(UInt16.new(year))
       __return_value
     end
 

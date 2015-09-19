@@ -28,7 +28,7 @@ module Gio
 
     def self.new_from_pem(data, length)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.tls_certificate_new_from_pem(data, Int64.cast(length), pointerof(__error))
+      __return_value = LibGio.tls_certificate_new_from_pem(data, Int64.new(length), pointerof(__error))
       GLib::Error.assert __error
       Gio::TlsCertificate.new(__return_value)
     end

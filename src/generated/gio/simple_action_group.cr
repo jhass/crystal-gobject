@@ -15,7 +15,7 @@ module Gio
     end
 
     def add_entries(entries, n_entries, user_data)
-      __return_value = LibGio.simple_action_group_add_entries((to_unsafe as LibGio::SimpleActionGroup*), entries, Int32.cast(n_entries), user_data)
+      __return_value = LibGio.simple_action_group_add_entries((to_unsafe as LibGio::SimpleActionGroup*), entries, Int32.new(n_entries), user_data)
       __return_value
     end
 

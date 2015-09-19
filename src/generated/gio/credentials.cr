@@ -40,7 +40,7 @@ module Gio
 
     def set_unix_user(uid)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.credentials_set_unix_user((to_unsafe as LibGio::Credentials*), UInt32.cast(uid), pointerof(__error))
+      __return_value = LibGio.credentials_set_unix_user((to_unsafe as LibGio::Credentials*), UInt32.new(uid), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

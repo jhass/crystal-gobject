@@ -13,7 +13,7 @@ module Gio
     end
 
     def self.new_from_model(model, item_index)
-      __return_value = LibGio.menu_item_new_from_model((model.to_unsafe as LibGio::MenuModel*), Int32.cast(item_index))
+      __return_value = LibGio.menu_item_new_from_model((model.to_unsafe as LibGio::MenuModel*), Int32.new(item_index))
       Gio::MenuItem.new(__return_value)
     end
 

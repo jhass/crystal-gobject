@@ -39,7 +39,7 @@ module Gtk
     end
 
     def delete_action(index)
-      __return_value = LibGtk.entry_completion_delete_action((to_unsafe as LibGtk::EntryCompletion*), Int32.cast(index))
+      __return_value = LibGtk.entry_completion_delete_action((to_unsafe as LibGtk::EntryCompletion*), Int32.new(index))
       __return_value
     end
 
@@ -94,12 +94,12 @@ module Gtk
     end
 
     def insert_action_markup(index, markup)
-      __return_value = LibGtk.entry_completion_insert_action_markup((to_unsafe as LibGtk::EntryCompletion*), Int32.cast(index), markup)
+      __return_value = LibGtk.entry_completion_insert_action_markup((to_unsafe as LibGtk::EntryCompletion*), Int32.new(index), markup)
       __return_value
     end
 
     def insert_action_text(index, text)
-      __return_value = LibGtk.entry_completion_insert_action_text((to_unsafe as LibGtk::EntryCompletion*), Int32.cast(index), text)
+      __return_value = LibGtk.entry_completion_insert_action_text((to_unsafe as LibGtk::EntryCompletion*), Int32.new(index), text)
       __return_value
     end
 
@@ -109,12 +109,12 @@ module Gtk
     end
 
     def inline_completion=(inline_completion)
-      __return_value = LibGtk.entry_completion_set_inline_completion((to_unsafe as LibGtk::EntryCompletion*), Bool.cast(inline_completion))
+      __return_value = LibGtk.entry_completion_set_inline_completion((to_unsafe as LibGtk::EntryCompletion*), Bool.new(inline_completion))
       __return_value
     end
 
     def inline_selection=(inline_selection)
-      __return_value = LibGtk.entry_completion_set_inline_selection((to_unsafe as LibGtk::EntryCompletion*), Bool.cast(inline_selection))
+      __return_value = LibGtk.entry_completion_set_inline_selection((to_unsafe as LibGtk::EntryCompletion*), Bool.new(inline_selection))
       __return_value
     end
 
@@ -124,7 +124,7 @@ module Gtk
     end
 
     def minimum_key_length=(length)
-      __return_value = LibGtk.entry_completion_set_minimum_key_length((to_unsafe as LibGtk::EntryCompletion*), Int32.cast(length))
+      __return_value = LibGtk.entry_completion_set_minimum_key_length((to_unsafe as LibGtk::EntryCompletion*), Int32.new(length))
       __return_value
     end
 
@@ -134,22 +134,22 @@ module Gtk
     end
 
     def popup_completion=(popup_completion)
-      __return_value = LibGtk.entry_completion_set_popup_completion((to_unsafe as LibGtk::EntryCompletion*), Bool.cast(popup_completion))
+      __return_value = LibGtk.entry_completion_set_popup_completion((to_unsafe as LibGtk::EntryCompletion*), Bool.new(popup_completion))
       __return_value
     end
 
     def popup_set_width=(popup_set_width)
-      __return_value = LibGtk.entry_completion_set_popup_set_width((to_unsafe as LibGtk::EntryCompletion*), Bool.cast(popup_set_width))
+      __return_value = LibGtk.entry_completion_set_popup_set_width((to_unsafe as LibGtk::EntryCompletion*), Bool.new(popup_set_width))
       __return_value
     end
 
     def popup_single_match=(popup_single_match)
-      __return_value = LibGtk.entry_completion_set_popup_single_match((to_unsafe as LibGtk::EntryCompletion*), Bool.cast(popup_single_match))
+      __return_value = LibGtk.entry_completion_set_popup_single_match((to_unsafe as LibGtk::EntryCompletion*), Bool.new(popup_single_match))
       __return_value
     end
 
     def text_column=(column)
-      __return_value = LibGtk.entry_completion_set_text_column((to_unsafe as LibGtk::EntryCompletion*), Int32.cast(column))
+      __return_value = LibGtk.entry_completion_set_text_column((to_unsafe as LibGtk::EntryCompletion*), Int32.new(column))
       __return_value
     end
 

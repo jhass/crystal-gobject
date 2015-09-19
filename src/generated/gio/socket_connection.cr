@@ -11,12 +11,12 @@ module Gio
 
 
     def self.factory_lookup_type(family, type, protocol_id)
-      __return_value = LibGio.socket_connection_factory_lookup_type(family, type, Int32.cast(protocol_id))
+      __return_value = LibGio.socket_connection_factory_lookup_type(family, type, Int32.new(protocol_id))
       __return_value
     end
 
     def self.factory_register_type(g_type, family, type, protocol)
-      __return_value = LibGio.socket_connection_factory_register_type(UInt64.cast(g_type), family, type, Int32.cast(protocol))
+      __return_value = LibGio.socket_connection_factory_register_type(UInt64.new(g_type), family, type, Int32.new(protocol))
       __return_value
     end
 

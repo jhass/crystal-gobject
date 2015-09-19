@@ -20,12 +20,12 @@ module GLib
     end
 
     def add_poll(fd, priority)
-      __return_value = LibGLib.main_context_add_poll((to_unsafe as LibGLib::MainContext*), (fd.to_unsafe as LibGLib::PollFD*), Int32.cast(priority))
+      __return_value = LibGLib.main_context_add_poll((to_unsafe as LibGLib::MainContext*), (fd.to_unsafe as LibGLib::PollFD*), Int32.new(priority))
       __return_value
     end
 
     def check(max_priority, fds, n_fds)
-      __return_value = LibGLib.main_context_check((to_unsafe as LibGLib::MainContext*), Int32.cast(max_priority), fds, Int32.cast(n_fds))
+      __return_value = LibGLib.main_context_check((to_unsafe as LibGLib::MainContext*), Int32.new(max_priority), fds, Int32.new(n_fds))
       __return_value
     end
 
@@ -40,7 +40,7 @@ module GLib
     end
 
     def find_source_by_id(source_id)
-      __return_value = LibGLib.main_context_find_source_by_id((to_unsafe as LibGLib::MainContext*), UInt32.cast(source_id))
+      __return_value = LibGLib.main_context_find_source_by_id((to_unsafe as LibGLib::MainContext*), UInt32.new(source_id))
       GLib::Source.new(__return_value)
     end
 
@@ -50,7 +50,7 @@ module GLib
     end
 
     def invoke_full(priority, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
-      __return_value = LibGLib.main_context_invoke_full((to_unsafe as LibGLib::MainContext*), Int32.cast(priority), function, data, notify && notify)
+      __return_value = LibGLib.main_context_invoke_full((to_unsafe as LibGLib::MainContext*), Int32.new(priority), function, data, notify && notify)
       __return_value
     end
 
@@ -60,7 +60,7 @@ module GLib
     end
 
     def iteration(may_block)
-      __return_value = LibGLib.main_context_iteration((to_unsafe as LibGLib::MainContext*), Bool.cast(may_block))
+      __return_value = LibGLib.main_context_iteration((to_unsafe as LibGLib::MainContext*), Bool.new(may_block))
       __return_value
     end
 
@@ -85,7 +85,7 @@ module GLib
     end
 
     def query(max_priority, timeout, fds, n_fds)
-      __return_value = LibGLib.main_context_query((to_unsafe as LibGLib::MainContext*), Int32.cast(max_priority), Int32.cast(timeout), fds, Int32.cast(n_fds))
+      __return_value = LibGLib.main_context_query((to_unsafe as LibGLib::MainContext*), Int32.new(max_priority), Int32.new(timeout), fds, Int32.new(n_fds))
       __return_value
     end
 

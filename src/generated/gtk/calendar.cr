@@ -32,12 +32,12 @@ module Gtk
     end
 
     def date(year, month, day)
-      __return_value = LibGtk.calendar_get_date((to_unsafe as LibGtk::Calendar*), UInt32.cast(year), UInt32.cast(month), UInt32.cast(day))
+      __return_value = LibGtk.calendar_get_date((to_unsafe as LibGtk::Calendar*), UInt32.new(year), UInt32.new(month), UInt32.new(day))
       __return_value
     end
 
     def day_is_marked(day)
-      __return_value = LibGtk.calendar_get_day_is_marked((to_unsafe as LibGtk::Calendar*), UInt32.cast(day))
+      __return_value = LibGtk.calendar_get_day_is_marked((to_unsafe as LibGtk::Calendar*), UInt32.new(day))
       __return_value
     end
 
@@ -57,17 +57,17 @@ module Gtk
     end
 
     def mark_day(day)
-      __return_value = LibGtk.calendar_mark_day((to_unsafe as LibGtk::Calendar*), UInt32.cast(day))
+      __return_value = LibGtk.calendar_mark_day((to_unsafe as LibGtk::Calendar*), UInt32.new(day))
       __return_value
     end
 
     def select_day(day)
-      __return_value = LibGtk.calendar_select_day((to_unsafe as LibGtk::Calendar*), UInt32.cast(day))
+      __return_value = LibGtk.calendar_select_day((to_unsafe as LibGtk::Calendar*), UInt32.new(day))
       __return_value
     end
 
     def select_month(month, year)
-      __return_value = LibGtk.calendar_select_month((to_unsafe as LibGtk::Calendar*), UInt32.cast(month), UInt32.cast(year))
+      __return_value = LibGtk.calendar_select_month((to_unsafe as LibGtk::Calendar*), UInt32.new(month), UInt32.new(year))
       __return_value
     end
 
@@ -77,12 +77,12 @@ module Gtk
     end
 
     def detail_height_rows=(rows)
-      __return_value = LibGtk.calendar_set_detail_height_rows((to_unsafe as LibGtk::Calendar*), Int32.cast(rows))
+      __return_value = LibGtk.calendar_set_detail_height_rows((to_unsafe as LibGtk::Calendar*), Int32.new(rows))
       __return_value
     end
 
     def detail_width_chars=(chars)
-      __return_value = LibGtk.calendar_set_detail_width_chars((to_unsafe as LibGtk::Calendar*), Int32.cast(chars))
+      __return_value = LibGtk.calendar_set_detail_width_chars((to_unsafe as LibGtk::Calendar*), Int32.new(chars))
       __return_value
     end
 
@@ -92,7 +92,7 @@ module Gtk
     end
 
     def unmark_day(day)
-      __return_value = LibGtk.calendar_unmark_day((to_unsafe as LibGtk::Calendar*), UInt32.cast(day))
+      __return_value = LibGtk.calendar_unmark_day((to_unsafe as LibGtk::Calendar*), UInt32.new(day))
       __return_value
     end
 

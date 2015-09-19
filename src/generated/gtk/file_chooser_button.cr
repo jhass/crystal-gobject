@@ -43,7 +43,7 @@ module Gtk
     end
 
     def focus_on_click=(focus_on_click)
-      __return_value = LibGtk.file_chooser_button_set_focus_on_click((to_unsafe as LibGtk::FileChooserButton*), Bool.cast(focus_on_click))
+      __return_value = LibGtk.file_chooser_button_set_focus_on_click((to_unsafe as LibGtk::FileChooserButton*), Bool.new(focus_on_click))
       __return_value
     end
 
@@ -53,7 +53,7 @@ module Gtk
     end
 
     def width_chars=(n_chars)
-      __return_value = LibGtk.file_chooser_button_set_width_chars((to_unsafe as LibGtk::FileChooserButton*), Int32.cast(n_chars))
+      __return_value = LibGtk.file_chooser_button_set_width_chars((to_unsafe as LibGtk::FileChooserButton*), Int32.new(n_chars))
       __return_value
     end
 

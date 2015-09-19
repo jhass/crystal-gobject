@@ -79,7 +79,7 @@ module Gtk
     end
 
     def layout_offsets(x, y)
-      __return_value = LibGtk.label_get_layout_offsets((to_unsafe as LibGtk::Label*), Int32.cast(x), Int32.cast(y))
+      __return_value = LibGtk.label_get_layout_offsets((to_unsafe as LibGtk::Label*), Int32.new(x), Int32.new(y))
       __return_value
     end
 
@@ -119,7 +119,7 @@ module Gtk
     end
 
     def selection_bounds(start, end)
-      __return_value = LibGtk.label_get_selection_bounds((to_unsafe as LibGtk::Label*), Int32.cast(start), Int32.cast(end))
+      __return_value = LibGtk.label_get_selection_bounds((to_unsafe as LibGtk::Label*), Int32.new(start), Int32.new(end))
       __return_value
     end
 
@@ -164,12 +164,12 @@ module Gtk
     end
 
     def select_region(start_offset, end_offset)
-      __return_value = LibGtk.label_select_region((to_unsafe as LibGtk::Label*), Int32.cast(start_offset), Int32.cast(end_offset))
+      __return_value = LibGtk.label_select_region((to_unsafe as LibGtk::Label*), Int32.new(start_offset), Int32.new(end_offset))
       __return_value
     end
 
     def angle=(angle)
-      __return_value = LibGtk.label_set_angle((to_unsafe as LibGtk::Label*), Float64.cast(angle))
+      __return_value = LibGtk.label_set_angle((to_unsafe as LibGtk::Label*), Float64.new(angle))
       __return_value
     end
 
@@ -194,7 +194,7 @@ module Gtk
     end
 
     def line_wrap=(wrap)
-      __return_value = LibGtk.label_set_line_wrap((to_unsafe as LibGtk::Label*), Bool.cast(wrap))
+      __return_value = LibGtk.label_set_line_wrap((to_unsafe as LibGtk::Label*), Bool.new(wrap))
       __return_value
     end
 
@@ -204,7 +204,7 @@ module Gtk
     end
 
     def lines=(lines)
-      __return_value = LibGtk.label_set_lines((to_unsafe as LibGtk::Label*), Int32.cast(lines))
+      __return_value = LibGtk.label_set_lines((to_unsafe as LibGtk::Label*), Int32.new(lines))
       __return_value
     end
 
@@ -219,7 +219,7 @@ module Gtk
     end
 
     def max_width_chars=(n_chars)
-      __return_value = LibGtk.label_set_max_width_chars((to_unsafe as LibGtk::Label*), Int32.cast(n_chars))
+      __return_value = LibGtk.label_set_max_width_chars((to_unsafe as LibGtk::Label*), Int32.new(n_chars))
       __return_value
     end
 
@@ -234,12 +234,12 @@ module Gtk
     end
 
     def selectable=(setting)
-      __return_value = LibGtk.label_set_selectable((to_unsafe as LibGtk::Label*), Bool.cast(setting))
+      __return_value = LibGtk.label_set_selectable((to_unsafe as LibGtk::Label*), Bool.new(setting))
       __return_value
     end
 
     def single_line_mode=(single_line_mode)
-      __return_value = LibGtk.label_set_single_line_mode((to_unsafe as LibGtk::Label*), Bool.cast(single_line_mode))
+      __return_value = LibGtk.label_set_single_line_mode((to_unsafe as LibGtk::Label*), Bool.new(single_line_mode))
       __return_value
     end
 
@@ -254,32 +254,32 @@ module Gtk
     end
 
     def track_visited_links=(track_links)
-      __return_value = LibGtk.label_set_track_visited_links((to_unsafe as LibGtk::Label*), Bool.cast(track_links))
+      __return_value = LibGtk.label_set_track_visited_links((to_unsafe as LibGtk::Label*), Bool.new(track_links))
       __return_value
     end
 
     def use_markup=(setting)
-      __return_value = LibGtk.label_set_use_markup((to_unsafe as LibGtk::Label*), Bool.cast(setting))
+      __return_value = LibGtk.label_set_use_markup((to_unsafe as LibGtk::Label*), Bool.new(setting))
       __return_value
     end
 
     def use_underline=(setting)
-      __return_value = LibGtk.label_set_use_underline((to_unsafe as LibGtk::Label*), Bool.cast(setting))
+      __return_value = LibGtk.label_set_use_underline((to_unsafe as LibGtk::Label*), Bool.new(setting))
       __return_value
     end
 
     def width_chars=(n_chars)
-      __return_value = LibGtk.label_set_width_chars((to_unsafe as LibGtk::Label*), Int32.cast(n_chars))
+      __return_value = LibGtk.label_set_width_chars((to_unsafe as LibGtk::Label*), Int32.new(n_chars))
       __return_value
     end
 
     def xalign=(xalign)
-      __return_value = LibGtk.label_set_xalign((to_unsafe as LibGtk::Label*), Float32.cast(xalign))
+      __return_value = LibGtk.label_set_xalign((to_unsafe as LibGtk::Label*), Float32.new(xalign))
       __return_value
     end
 
     def yalign=(yalign)
-      __return_value = LibGtk.label_set_yalign((to_unsafe as LibGtk::Label*), Float32.cast(yalign))
+      __return_value = LibGtk.label_set_yalign((to_unsafe as LibGtk::Label*), Float32.new(yalign))
       __return_value
     end
 

@@ -11,8 +11,9 @@ module GIRepository
       # info = new ptr
       upper = INFO_TYPES[info.info_type]?
       if upper
-        info = upper.new info.to_unsafe
         LibGIRepository.base_info_ref(info)
+        LibGIRepository.base_info_ref(info)
+        info = upper.new info.to_unsafe
       end
 
       info

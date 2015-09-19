@@ -25,7 +25,7 @@ module Gst
     end
 
     def add_id(feature)
-      __return_value = LibGst.caps_features_add_id((to_unsafe as LibGst::CapsFeatures*), UInt32.cast(feature))
+      __return_value = LibGst.caps_features_add_id((to_unsafe as LibGst::CapsFeatures*), UInt32.new(feature))
       __return_value
     end
 
@@ -35,7 +35,7 @@ module Gst
     end
 
     def contains_id(feature)
-      __return_value = LibGst.caps_features_contains_id((to_unsafe as LibGst::CapsFeatures*), UInt32.cast(feature))
+      __return_value = LibGst.caps_features_contains_id((to_unsafe as LibGst::CapsFeatures*), UInt32.new(feature))
       __return_value
     end
 
@@ -50,12 +50,12 @@ module Gst
     end
 
     def nth(i)
-      __return_value = LibGst.caps_features_get_nth((to_unsafe as LibGst::CapsFeatures*), UInt32.cast(i))
+      __return_value = LibGst.caps_features_get_nth((to_unsafe as LibGst::CapsFeatures*), UInt32.new(i))
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 
     def nth_id(i)
-      __return_value = LibGst.caps_features_get_nth_id((to_unsafe as LibGst::CapsFeatures*), UInt32.cast(i))
+      __return_value = LibGst.caps_features_get_nth_id((to_unsafe as LibGst::CapsFeatures*), UInt32.new(i))
       __return_value
     end
 
@@ -80,7 +80,7 @@ module Gst
     end
 
     def remove_id(feature)
-      __return_value = LibGst.caps_features_remove_id((to_unsafe as LibGst::CapsFeatures*), UInt32.cast(feature))
+      __return_value = LibGst.caps_features_remove_id((to_unsafe as LibGst::CapsFeatures*), UInt32.new(feature))
       __return_value
     end
 

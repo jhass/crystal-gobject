@@ -30,7 +30,7 @@ module Gst
     end
 
     def remove_filter(filter_id)
-      __return_value = LibGst.device_monitor_remove_filter((to_unsafe as LibGst::DeviceMonitor*), UInt32.cast(filter_id))
+      __return_value = LibGst.device_monitor_remove_filter((to_unsafe as LibGst::DeviceMonitor*), UInt32.new(filter_id))
       __return_value
     end
 

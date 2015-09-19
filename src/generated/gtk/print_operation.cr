@@ -101,12 +101,12 @@ module Gtk
     end
 
     def allow_async=(allow_async)
-      __return_value = LibGtk.print_operation_set_allow_async((to_unsafe as LibGtk::PrintOperation*), Bool.cast(allow_async))
+      __return_value = LibGtk.print_operation_set_allow_async((to_unsafe as LibGtk::PrintOperation*), Bool.new(allow_async))
       __return_value
     end
 
     def current_page=(current_page)
-      __return_value = LibGtk.print_operation_set_current_page((to_unsafe as LibGtk::PrintOperation*), Int32.cast(current_page))
+      __return_value = LibGtk.print_operation_set_current_page((to_unsafe as LibGtk::PrintOperation*), Int32.new(current_page))
       __return_value
     end
 
@@ -126,7 +126,7 @@ module Gtk
     end
 
     def embed_page_setup=(embed)
-      __return_value = LibGtk.print_operation_set_embed_page_setup((to_unsafe as LibGtk::PrintOperation*), Bool.cast(embed))
+      __return_value = LibGtk.print_operation_set_embed_page_setup((to_unsafe as LibGtk::PrintOperation*), Bool.new(embed))
       __return_value
     end
 
@@ -136,7 +136,7 @@ module Gtk
     end
 
     def has_selection=(has_selection)
-      __return_value = LibGtk.print_operation_set_has_selection((to_unsafe as LibGtk::PrintOperation*), Bool.cast(has_selection))
+      __return_value = LibGtk.print_operation_set_has_selection((to_unsafe as LibGtk::PrintOperation*), Bool.new(has_selection))
       __return_value
     end
 
@@ -146,7 +146,7 @@ module Gtk
     end
 
     def n_pages=(n_pages)
-      __return_value = LibGtk.print_operation_set_n_pages((to_unsafe as LibGtk::PrintOperation*), Int32.cast(n_pages))
+      __return_value = LibGtk.print_operation_set_n_pages((to_unsafe as LibGtk::PrintOperation*), Int32.new(n_pages))
       __return_value
     end
 
@@ -156,17 +156,17 @@ module Gtk
     end
 
     def show_progress=(show_progress)
-      __return_value = LibGtk.print_operation_set_show_progress((to_unsafe as LibGtk::PrintOperation*), Bool.cast(show_progress))
+      __return_value = LibGtk.print_operation_set_show_progress((to_unsafe as LibGtk::PrintOperation*), Bool.new(show_progress))
       __return_value
     end
 
     def support_selection=(support_selection)
-      __return_value = LibGtk.print_operation_set_support_selection((to_unsafe as LibGtk::PrintOperation*), Bool.cast(support_selection))
+      __return_value = LibGtk.print_operation_set_support_selection((to_unsafe as LibGtk::PrintOperation*), Bool.new(support_selection))
       __return_value
     end
 
     def track_print_status=(track_status)
-      __return_value = LibGtk.print_operation_set_track_print_status((to_unsafe as LibGtk::PrintOperation*), Bool.cast(track_status))
+      __return_value = LibGtk.print_operation_set_track_print_status((to_unsafe as LibGtk::PrintOperation*), Bool.new(track_status))
       __return_value
     end
 
@@ -176,7 +176,7 @@ module Gtk
     end
 
     def use_full_page=(full_page)
-      __return_value = LibGtk.print_operation_set_use_full_page((to_unsafe as LibGtk::PrintOperation*), Bool.cast(full_page))
+      __return_value = LibGtk.print_operation_set_use_full_page((to_unsafe as LibGtk::PrintOperation*), Bool.new(full_page))
       __return_value
     end
 

@@ -8,7 +8,7 @@ module Pango
     end
 
     def self.descriptions_free(descs, n_descs)
-      __return_value = LibPango.font_descriptions_free(descs && descs, Int32.cast(n_descs))
+      __return_value = LibPango.font_descriptions_free(descs && descs, Int32.new(n_descs))
       __return_value
     end
 
@@ -28,7 +28,7 @@ module Pango
     end
 
     def glyph_extents(glyph, ink_rect, logical_rect)
-      __return_value = LibPango.font_get_glyph_extents((to_unsafe as LibPango::Font*), UInt32.cast(glyph), ink_rect, logical_rect)
+      __return_value = LibPango.font_get_glyph_extents((to_unsafe as LibPango::Font*), UInt32.new(glyph), ink_rect, logical_rect)
       __return_value
     end
 

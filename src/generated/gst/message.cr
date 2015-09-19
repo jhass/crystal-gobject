@@ -15,7 +15,7 @@ module Gst
     end
 
     def self.new_async_done(src, running_time)
-      __return_value = LibGst.message_new_async_done((src.to_unsafe as LibGst::Object*), UInt64.cast(running_time))
+      __return_value = LibGst.message_new_async_done((src.to_unsafe as LibGst::Object*), UInt64.new(running_time))
       Gst::Message.new(__return_value)
     end
 
@@ -25,7 +25,7 @@ module Gst
     end
 
     def self.new_buffering(src, percent)
-      __return_value = LibGst.message_new_buffering((src.to_unsafe as LibGst::Object*), Int32.cast(percent))
+      __return_value = LibGst.message_new_buffering((src.to_unsafe as LibGst::Object*), Int32.new(percent))
       Gst::Message.new(__return_value)
     end
 
@@ -35,7 +35,7 @@ module Gst
     end
 
     def self.new_clock_provide(src, clock, ready)
-      __return_value = LibGst.message_new_clock_provide((src.to_unsafe as LibGst::Object*), (clock.to_unsafe as LibGst::Clock*), Bool.cast(ready))
+      __return_value = LibGst.message_new_clock_provide((src.to_unsafe as LibGst::Object*), (clock.to_unsafe as LibGst::Clock*), Bool.new(ready))
       Gst::Message.new(__return_value)
     end
 
@@ -105,7 +105,7 @@ module Gst
     end
 
     def self.new_qos(src, live, running_time, stream_time, timestamp, duration)
-      __return_value = LibGst.message_new_qos((src.to_unsafe as LibGst::Object*), Bool.cast(live), UInt64.cast(running_time), UInt64.cast(stream_time), UInt64.cast(timestamp), UInt64.cast(duration))
+      __return_value = LibGst.message_new_qos((src.to_unsafe as LibGst::Object*), Bool.new(live), UInt64.new(running_time), UInt64.new(stream_time), UInt64.new(timestamp), UInt64.new(duration))
       Gst::Message.new(__return_value)
     end
 
@@ -115,17 +115,17 @@ module Gst
     end
 
     def self.new_reset_time(src, running_time)
-      __return_value = LibGst.message_new_reset_time((src.to_unsafe as LibGst::Object*), UInt64.cast(running_time))
+      __return_value = LibGst.message_new_reset_time((src.to_unsafe as LibGst::Object*), UInt64.new(running_time))
       Gst::Message.new(__return_value)
     end
 
     def self.new_segment_done(src, format, position)
-      __return_value = LibGst.message_new_segment_done((src.to_unsafe as LibGst::Object*), format, Int64.cast(position))
+      __return_value = LibGst.message_new_segment_done((src.to_unsafe as LibGst::Object*), format, Int64.new(position))
       Gst::Message.new(__return_value)
     end
 
     def self.new_segment_start(src, format, position)
-      __return_value = LibGst.message_new_segment_start((src.to_unsafe as LibGst::Object*), format, Int64.cast(position))
+      __return_value = LibGst.message_new_segment_start((src.to_unsafe as LibGst::Object*), format, Int64.new(position))
       Gst::Message.new(__return_value)
     end
 
@@ -140,12 +140,12 @@ module Gst
     end
 
     def self.new_step_done(src, format, amount, rate, flush, intermediate, duration, eos)
-      __return_value = LibGst.message_new_step_done((src.to_unsafe as LibGst::Object*), format, UInt64.cast(amount), Float64.cast(rate), Bool.cast(flush), Bool.cast(intermediate), UInt64.cast(duration), Bool.cast(eos))
+      __return_value = LibGst.message_new_step_done((src.to_unsafe as LibGst::Object*), format, UInt64.new(amount), Float64.new(rate), Bool.new(flush), Bool.new(intermediate), UInt64.new(duration), Bool.new(eos))
       Gst::Message.new(__return_value)
     end
 
     def self.new_step_start(src, active, format, amount, rate, flush, intermediate)
-      __return_value = LibGst.message_new_step_start((src.to_unsafe as LibGst::Object*), Bool.cast(active), format, UInt64.cast(amount), Float64.cast(rate), Bool.cast(flush), Bool.cast(intermediate))
+      __return_value = LibGst.message_new_step_start((src.to_unsafe as LibGst::Object*), Bool.new(active), format, UInt64.new(amount), Float64.new(rate), Bool.new(flush), Bool.new(intermediate))
       Gst::Message.new(__return_value)
     end
 
@@ -160,7 +160,7 @@ module Gst
     end
 
     def self.new_structure_change(src, type, owner, busy)
-      __return_value = LibGst.message_new_structure_change((src.to_unsafe as LibGst::Object*), type, (owner.to_unsafe as LibGst::Element*), Bool.cast(busy))
+      __return_value = LibGst.message_new_structure_change((src.to_unsafe as LibGst::Object*), type, (owner.to_unsafe as LibGst::Element*), Bool.new(busy))
       Gst::Message.new(__return_value)
     end
 
@@ -170,7 +170,7 @@ module Gst
     end
 
     def self.new_toc(src, toc, updated)
-      __return_value = LibGst.message_new_toc((src.to_unsafe as LibGst::Object*), (toc.to_unsafe as LibGst::Toc*), Bool.cast(updated))
+      __return_value = LibGst.message_new_toc((src.to_unsafe as LibGst::Object*), (toc.to_unsafe as LibGst::Toc*), Bool.new(updated))
       Gst::Message.new(__return_value)
     end
 
@@ -200,17 +200,17 @@ module Gst
     end
 
     def parse_async_done(running_time)
-      __return_value = LibGst.message_parse_async_done((to_unsafe as LibGst::Message*), UInt64.cast(running_time))
+      __return_value = LibGst.message_parse_async_done((to_unsafe as LibGst::Message*), UInt64.new(running_time))
       __return_value
     end
 
     def parse_buffering(percent)
-      __return_value = LibGst.message_parse_buffering((to_unsafe as LibGst::Message*), Int32.cast(percent))
+      __return_value = LibGst.message_parse_buffering((to_unsafe as LibGst::Message*), Int32.new(percent))
       __return_value
     end
 
     def parse_buffering_stats(mode, avg_in, avg_out, buffering_left)
-      __return_value = LibGst.message_parse_buffering_stats((to_unsafe as LibGst::Message*), mode, Int32.cast(avg_in), Int32.cast(avg_out), Int64.cast(buffering_left))
+      __return_value = LibGst.message_parse_buffering_stats((to_unsafe as LibGst::Message*), mode, Int32.new(avg_in), Int32.new(avg_out), Int64.new(buffering_left))
       __return_value
     end
 
@@ -220,7 +220,7 @@ module Gst
     end
 
     def parse_clock_provide(clock, ready)
-      __return_value = LibGst.message_parse_clock_provide((to_unsafe as LibGst::Message*), (clock.to_unsafe as LibGst::Clock*), Bool.cast(ready))
+      __return_value = LibGst.message_parse_clock_provide((to_unsafe as LibGst::Message*), (clock.to_unsafe as LibGst::Clock*), Bool.new(ready))
       __return_value
     end
 
@@ -245,7 +245,7 @@ module Gst
     end
 
     def parse_group_id(group_id)
-      __return_value = LibGst.message_parse_group_id((to_unsafe as LibGst::Message*), UInt32.cast(group_id))
+      __return_value = LibGst.message_parse_group_id((to_unsafe as LibGst::Message*), UInt32.new(group_id))
       __return_value
     end
 
@@ -270,17 +270,17 @@ module Gst
     end
 
     def parse_qos(live, running_time, stream_time, timestamp, duration)
-      __return_value = LibGst.message_parse_qos((to_unsafe as LibGst::Message*), Bool.cast(live), UInt64.cast(running_time), UInt64.cast(stream_time), UInt64.cast(timestamp), UInt64.cast(duration))
+      __return_value = LibGst.message_parse_qos((to_unsafe as LibGst::Message*), Bool.new(live), UInt64.new(running_time), UInt64.new(stream_time), UInt64.new(timestamp), UInt64.new(duration))
       __return_value
     end
 
     def parse_qos_stats(format, processed, dropped)
-      __return_value = LibGst.message_parse_qos_stats((to_unsafe as LibGst::Message*), format, UInt64.cast(processed), UInt64.cast(dropped))
+      __return_value = LibGst.message_parse_qos_stats((to_unsafe as LibGst::Message*), format, UInt64.new(processed), UInt64.new(dropped))
       __return_value
     end
 
     def parse_qos_values(jitter, proportion, quality)
-      __return_value = LibGst.message_parse_qos_values((to_unsafe as LibGst::Message*), Int64.cast(jitter), Float64.cast(proportion), Int32.cast(quality))
+      __return_value = LibGst.message_parse_qos_values((to_unsafe as LibGst::Message*), Int64.new(jitter), Float64.new(proportion), Int32.new(quality))
       __return_value
     end
 
@@ -290,17 +290,17 @@ module Gst
     end
 
     def parse_reset_time(running_time)
-      __return_value = LibGst.message_parse_reset_time((to_unsafe as LibGst::Message*), UInt64.cast(running_time))
+      __return_value = LibGst.message_parse_reset_time((to_unsafe as LibGst::Message*), UInt64.new(running_time))
       __return_value
     end
 
     def parse_segment_done(format, position)
-      __return_value = LibGst.message_parse_segment_done((to_unsafe as LibGst::Message*), format, Int64.cast(position))
+      __return_value = LibGst.message_parse_segment_done((to_unsafe as LibGst::Message*), format, Int64.new(position))
       __return_value
     end
 
     def parse_segment_start(format, position)
-      __return_value = LibGst.message_parse_segment_start((to_unsafe as LibGst::Message*), format, Int64.cast(position))
+      __return_value = LibGst.message_parse_segment_start((to_unsafe as LibGst::Message*), format, Int64.new(position))
       __return_value
     end
 
@@ -310,12 +310,12 @@ module Gst
     end
 
     def parse_step_done(format, amount, rate, flush, intermediate, duration, eos)
-      __return_value = LibGst.message_parse_step_done((to_unsafe as LibGst::Message*), format, UInt64.cast(amount), Float64.cast(rate), Bool.cast(flush), Bool.cast(intermediate), UInt64.cast(duration), Bool.cast(eos))
+      __return_value = LibGst.message_parse_step_done((to_unsafe as LibGst::Message*), format, UInt64.new(amount), Float64.new(rate), Bool.new(flush), Bool.new(intermediate), UInt64.new(duration), Bool.new(eos))
       __return_value
     end
 
     def parse_step_start(active, format, amount, rate, flush, intermediate)
-      __return_value = LibGst.message_parse_step_start((to_unsafe as LibGst::Message*), Bool.cast(active), format, UInt64.cast(amount), Float64.cast(rate), Bool.cast(flush), Bool.cast(intermediate))
+      __return_value = LibGst.message_parse_step_start((to_unsafe as LibGst::Message*), Bool.new(active), format, UInt64.new(amount), Float64.new(rate), Bool.new(flush), Bool.new(intermediate))
       __return_value
     end
 
@@ -325,7 +325,7 @@ module Gst
     end
 
     def parse_structure_change(type, owner, busy)
-      __return_value = LibGst.message_parse_structure_change((to_unsafe as LibGst::Message*), type, (owner.to_unsafe as LibGst::Element*), Bool.cast(busy))
+      __return_value = LibGst.message_parse_structure_change((to_unsafe as LibGst::Message*), type, (owner.to_unsafe as LibGst::Element*), Bool.new(busy))
       __return_value
     end
 
@@ -335,7 +335,7 @@ module Gst
     end
 
     def parse_toc(toc, updated)
-      __return_value = LibGst.message_parse_toc((to_unsafe as LibGst::Message*), (toc.to_unsafe as LibGst::Toc*), Bool.cast(updated))
+      __return_value = LibGst.message_parse_toc((to_unsafe as LibGst::Message*), (toc.to_unsafe as LibGst::Toc*), Bool.new(updated))
       __return_value
     end
 
@@ -345,27 +345,27 @@ module Gst
     end
 
     def set_buffering_stats(mode, avg_in, avg_out, buffering_left)
-      __return_value = LibGst.message_set_buffering_stats((to_unsafe as LibGst::Message*), mode, Int32.cast(avg_in), Int32.cast(avg_out), Int64.cast(buffering_left))
+      __return_value = LibGst.message_set_buffering_stats((to_unsafe as LibGst::Message*), mode, Int32.new(avg_in), Int32.new(avg_out), Int64.new(buffering_left))
       __return_value
     end
 
     def group_id=(group_id)
-      __return_value = LibGst.message_set_group_id((to_unsafe as LibGst::Message*), UInt32.cast(group_id))
+      __return_value = LibGst.message_set_group_id((to_unsafe as LibGst::Message*), UInt32.new(group_id))
       __return_value
     end
 
     def set_qos_stats(format, processed, dropped)
-      __return_value = LibGst.message_set_qos_stats((to_unsafe as LibGst::Message*), format, UInt64.cast(processed), UInt64.cast(dropped))
+      __return_value = LibGst.message_set_qos_stats((to_unsafe as LibGst::Message*), format, UInt64.new(processed), UInt64.new(dropped))
       __return_value
     end
 
     def set_qos_values(jitter, proportion, quality)
-      __return_value = LibGst.message_set_qos_values((to_unsafe as LibGst::Message*), Int64.cast(jitter), Float64.cast(proportion), Int32.cast(quality))
+      __return_value = LibGst.message_set_qos_values((to_unsafe as LibGst::Message*), Int64.new(jitter), Float64.new(proportion), Int32.new(quality))
       __return_value
     end
 
     def seqnum=(seqnum)
-      __return_value = LibGst.message_set_seqnum((to_unsafe as LibGst::Message*), UInt32.cast(seqnum))
+      __return_value = LibGst.message_set_seqnum((to_unsafe as LibGst::Message*), UInt32.new(seqnum))
       __return_value
     end
 

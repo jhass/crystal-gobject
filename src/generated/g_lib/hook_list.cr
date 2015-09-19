@@ -15,17 +15,17 @@ module GLib
     end
 
     def init(hook_size)
-      __return_value = LibGLib.hook_list_init((to_unsafe as LibGLib::HookList*), UInt32.cast(hook_size))
+      __return_value = LibGLib.hook_list_init((to_unsafe as LibGLib::HookList*), UInt32.new(hook_size))
       __return_value
     end
 
     def invoke(may_recurse)
-      __return_value = LibGLib.hook_list_invoke((to_unsafe as LibGLib::HookList*), Bool.cast(may_recurse))
+      __return_value = LibGLib.hook_list_invoke((to_unsafe as LibGLib::HookList*), Bool.new(may_recurse))
       __return_value
     end
 
     def invoke_check(may_recurse)
-      __return_value = LibGLib.hook_list_invoke_check((to_unsafe as LibGLib::HookList*), Bool.cast(may_recurse))
+      __return_value = LibGLib.hook_list_invoke_check((to_unsafe as LibGLib::HookList*), Bool.new(may_recurse))
       __return_value
     end
 

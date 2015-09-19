@@ -11,7 +11,7 @@ module Gtk
     end
 
     def column_type(index)
-      __return_value = LibGtk.tree_model_get_column_type((to_unsafe as LibGtk::TreeModel*), Int32.cast(index))
+      __return_value = LibGtk.tree_model_get_column_type((to_unsafe as LibGtk::TreeModel*), Int32.new(index))
       __return_value
     end
 
@@ -51,7 +51,7 @@ module Gtk
     end
 
     def value(iter, column, value)
-      __return_value = LibGtk.tree_model_get_value((to_unsafe as LibGtk::TreeModel*), (iter.to_unsafe as LibGtk::TreeIter*), Int32.cast(column), value)
+      __return_value = LibGtk.tree_model_get_value((to_unsafe as LibGtk::TreeModel*), (iter.to_unsafe as LibGtk::TreeIter*), Int32.new(column), value)
       __return_value
     end
 
@@ -76,7 +76,7 @@ module Gtk
     end
 
     def iter_nth_child(iter, parent, n)
-      __return_value = LibGtk.tree_model_iter_nth_child((to_unsafe as LibGtk::TreeModel*), iter, parent && (parent.to_unsafe as LibGtk::TreeIter*), Int32.cast(n))
+      __return_value = LibGtk.tree_model_iter_nth_child((to_unsafe as LibGtk::TreeModel*), iter, parent && (parent.to_unsafe as LibGtk::TreeIter*), Int32.new(n))
       __return_value
     end
 
@@ -116,7 +116,7 @@ module Gtk
     end
 
     def rows_reordered(path, iter, new_order, length)
-      __return_value = LibGtk.tree_model_rows_reordered((to_unsafe as LibGtk::TreeModel*), (path.to_unsafe as LibGtk::TreePath*), iter && (iter.to_unsafe as LibGtk::TreeIter*), new_order, Int32.cast(length))
+      __return_value = LibGtk.tree_model_rows_reordered((to_unsafe as LibGtk::TreeModel*), (path.to_unsafe as LibGtk::TreePath*), iter && (iter.to_unsafe as LibGtk::TreeIter*), new_order, Int32.new(length))
       __return_value
     end
 

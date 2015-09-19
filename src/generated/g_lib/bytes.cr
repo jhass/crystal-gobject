@@ -10,12 +10,12 @@ module GLib
     end
 
     def self.new_internal(data, size)
-      __return_value = LibGLib.bytes_new(data && data, UInt64.cast(size))
+      __return_value = LibGLib.bytes_new(data && data, UInt64.new(size))
       GLib::Bytes.new(__return_value)
     end
 
     def self.new_take(data, size)
-      __return_value = LibGLib.bytes_new_take(data && data, UInt64.cast(size))
+      __return_value = LibGLib.bytes_new_take(data && data, UInt64.new(size))
       GLib::Bytes.new(__return_value)
     end
 
@@ -30,8 +30,8 @@ module GLib
     end
 
     def data(size)
-      __return_value = LibGLib.bytes_get_data((to_unsafe as LibGLib::Bytes*), UInt64.cast(size))
-      PointerIterator.new(__return_value) {|__item_23| __item_23 }
+      __return_value = LibGLib.bytes_get_data((to_unsafe as LibGLib::Bytes*), UInt64.new(size))
+      PointerIterator.new(__return_value) {|__item_6| __item_6 }
     end
 
     def size
@@ -45,7 +45,7 @@ module GLib
     end
 
     def new_from_bytes(offset, length)
-      __return_value = LibGLib.bytes_new_from_bytes((to_unsafe as LibGLib::Bytes*), UInt64.cast(offset), UInt64.cast(length))
+      __return_value = LibGLib.bytes_new_from_bytes((to_unsafe as LibGLib::Bytes*), UInt64.new(offset), UInt64.new(length))
       GLib::Bytes.new(__return_value)
     end
 

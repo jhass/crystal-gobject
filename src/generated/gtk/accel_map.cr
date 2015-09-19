@@ -8,7 +8,7 @@ module Gtk
     end
 
     def self.add_entry(accel_path, accel_key, accel_mods)
-      __return_value = LibGtk.accel_map_add_entry(accel_path, UInt32.cast(accel_key), accel_mods)
+      __return_value = LibGtk.accel_map_add_entry(accel_path, UInt32.new(accel_key), accel_mods)
       __return_value
     end
 
@@ -18,7 +18,7 @@ module Gtk
     end
 
     def self.change_entry(accel_path, accel_key, accel_mods, replace)
-      __return_value = LibGtk.accel_map_change_entry(accel_path, UInt32.cast(accel_key), accel_mods, Bool.cast(replace))
+      __return_value = LibGtk.accel_map_change_entry(accel_path, UInt32.new(accel_key), accel_mods, Bool.new(replace))
       __return_value
     end
 
@@ -43,7 +43,7 @@ module Gtk
     end
 
     def self.load_fd(fd)
-      __return_value = LibGtk.accel_map_load_fd(Int32.cast(fd))
+      __return_value = LibGtk.accel_map_load_fd(Int32.new(fd))
       __return_value
     end
 
@@ -68,7 +68,7 @@ module Gtk
     end
 
     def self.save_fd(fd)
-      __return_value = LibGtk.accel_map_save_fd(Int32.cast(fd))
+      __return_value = LibGtk.accel_map_save_fd(Int32.new(fd))
       __return_value
     end
 

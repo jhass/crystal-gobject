@@ -58,22 +58,22 @@ module Gtk
     end
 
     def pack1(child, resize, shrink)
-      __return_value = LibGtk.paned_pack1((to_unsafe as LibGtk::Paned*), (child.to_unsafe as LibGtk::Widget*), Bool.cast(resize), Bool.cast(shrink))
+      __return_value = LibGtk.paned_pack1((to_unsafe as LibGtk::Paned*), (child.to_unsafe as LibGtk::Widget*), Bool.new(resize), Bool.new(shrink))
       __return_value
     end
 
     def pack2(child, resize, shrink)
-      __return_value = LibGtk.paned_pack2((to_unsafe as LibGtk::Paned*), (child.to_unsafe as LibGtk::Widget*), Bool.cast(resize), Bool.cast(shrink))
+      __return_value = LibGtk.paned_pack2((to_unsafe as LibGtk::Paned*), (child.to_unsafe as LibGtk::Widget*), Bool.new(resize), Bool.new(shrink))
       __return_value
     end
 
     def position=(position)
-      __return_value = LibGtk.paned_set_position((to_unsafe as LibGtk::Paned*), Int32.cast(position))
+      __return_value = LibGtk.paned_set_position((to_unsafe as LibGtk::Paned*), Int32.new(position))
       __return_value
     end
 
     def wide_handle=(wide)
-      __return_value = LibGtk.paned_set_wide_handle((to_unsafe as LibGtk::Paned*), Bool.cast(wide))
+      __return_value = LibGtk.paned_set_wide_handle((to_unsafe as LibGtk::Paned*), Bool.new(wide))
       __return_value
     end
 

@@ -80,7 +80,7 @@ module Gtk
     end
 
     def use_popover=(use_popover)
-      __return_value = LibGtk.menu_button_set_use_popover((to_unsafe as LibGtk::MenuButton*), Bool.cast(use_popover))
+      __return_value = LibGtk.menu_button_set_use_popover((to_unsafe as LibGtk::MenuButton*), Bool.new(use_popover))
       __return_value
     end
 

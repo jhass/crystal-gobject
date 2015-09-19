@@ -69,7 +69,7 @@ module Gtk
     end
 
     def nth_page(page_num)
-      __return_value = LibGtk.notebook_get_nth_page((to_unsafe as LibGtk::Notebook*), Int32.cast(page_num))
+      __return_value = LibGtk.notebook_get_nth_page((to_unsafe as LibGtk::Notebook*), Int32.new(page_num))
       Gtk::Widget.new(__return_value)
     end
 
@@ -124,12 +124,12 @@ module Gtk
     end
 
     def insert_page(child, tab_label, position)
-      __return_value = LibGtk.notebook_insert_page((to_unsafe as LibGtk::Notebook*), (child.to_unsafe as LibGtk::Widget*), tab_label && (tab_label.to_unsafe as LibGtk::Widget*), Int32.cast(position))
+      __return_value = LibGtk.notebook_insert_page((to_unsafe as LibGtk::Notebook*), (child.to_unsafe as LibGtk::Widget*), tab_label && (tab_label.to_unsafe as LibGtk::Widget*), Int32.new(position))
       __return_value
     end
 
     def insert_page_menu(child, tab_label, menu_label, position)
-      __return_value = LibGtk.notebook_insert_page_menu((to_unsafe as LibGtk::Notebook*), (child.to_unsafe as LibGtk::Widget*), tab_label && (tab_label.to_unsafe as LibGtk::Widget*), menu_label && (menu_label.to_unsafe as LibGtk::Widget*), Int32.cast(position))
+      __return_value = LibGtk.notebook_insert_page_menu((to_unsafe as LibGtk::Notebook*), (child.to_unsafe as LibGtk::Widget*), tab_label && (tab_label.to_unsafe as LibGtk::Widget*), menu_label && (menu_label.to_unsafe as LibGtk::Widget*), Int32.new(position))
       __return_value
     end
 
@@ -169,12 +169,12 @@ module Gtk
     end
 
     def remove_page(page_num)
-      __return_value = LibGtk.notebook_remove_page((to_unsafe as LibGtk::Notebook*), Int32.cast(page_num))
+      __return_value = LibGtk.notebook_remove_page((to_unsafe as LibGtk::Notebook*), Int32.new(page_num))
       __return_value
     end
 
     def reorder_child(child, position)
-      __return_value = LibGtk.notebook_reorder_child((to_unsafe as LibGtk::Notebook*), (child.to_unsafe as LibGtk::Widget*), Int32.cast(position))
+      __return_value = LibGtk.notebook_reorder_child((to_unsafe as LibGtk::Notebook*), (child.to_unsafe as LibGtk::Widget*), Int32.new(position))
       __return_value
     end
 
@@ -184,7 +184,7 @@ module Gtk
     end
 
     def current_page=(page_num)
-      __return_value = LibGtk.notebook_set_current_page((to_unsafe as LibGtk::Notebook*), Int32.cast(page_num))
+      __return_value = LibGtk.notebook_set_current_page((to_unsafe as LibGtk::Notebook*), Int32.new(page_num))
       __return_value
     end
 
@@ -204,22 +204,22 @@ module Gtk
     end
 
     def scrollable=(scrollable)
-      __return_value = LibGtk.notebook_set_scrollable((to_unsafe as LibGtk::Notebook*), Bool.cast(scrollable))
+      __return_value = LibGtk.notebook_set_scrollable((to_unsafe as LibGtk::Notebook*), Bool.new(scrollable))
       __return_value
     end
 
     def show_border=(show_border)
-      __return_value = LibGtk.notebook_set_show_border((to_unsafe as LibGtk::Notebook*), Bool.cast(show_border))
+      __return_value = LibGtk.notebook_set_show_border((to_unsafe as LibGtk::Notebook*), Bool.new(show_border))
       __return_value
     end
 
     def show_tabs=(show_tabs)
-      __return_value = LibGtk.notebook_set_show_tabs((to_unsafe as LibGtk::Notebook*), Bool.cast(show_tabs))
+      __return_value = LibGtk.notebook_set_show_tabs((to_unsafe as LibGtk::Notebook*), Bool.new(show_tabs))
       __return_value
     end
 
     def set_tab_detachable(child, detachable)
-      __return_value = LibGtk.notebook_set_tab_detachable((to_unsafe as LibGtk::Notebook*), (child.to_unsafe as LibGtk::Widget*), Bool.cast(detachable))
+      __return_value = LibGtk.notebook_set_tab_detachable((to_unsafe as LibGtk::Notebook*), (child.to_unsafe as LibGtk::Widget*), Bool.new(detachable))
       __return_value
     end
 
@@ -239,7 +239,7 @@ module Gtk
     end
 
     def set_tab_reorderable(child, reorderable)
-      __return_value = LibGtk.notebook_set_tab_reorderable((to_unsafe as LibGtk::Notebook*), (child.to_unsafe as LibGtk::Widget*), Bool.cast(reorderable))
+      __return_value = LibGtk.notebook_set_tab_reorderable((to_unsafe as LibGtk::Notebook*), (child.to_unsafe as LibGtk::Widget*), Bool.new(reorderable))
       __return_value
     end
 

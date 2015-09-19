@@ -29,12 +29,12 @@ module Gtk
     end
 
     def above_child=(above_child)
-      __return_value = LibGtk.event_box_set_above_child((to_unsafe as LibGtk::EventBox*), Bool.cast(above_child))
+      __return_value = LibGtk.event_box_set_above_child((to_unsafe as LibGtk::EventBox*), Bool.new(above_child))
       __return_value
     end
 
     def visible_window=(visible_window)
-      __return_value = LibGtk.event_box_set_visible_window((to_unsafe as LibGtk::EventBox*), Bool.cast(visible_window))
+      __return_value = LibGtk.event_box_set_visible_window((to_unsafe as LibGtk::EventBox*), Bool.new(visible_window))
       __return_value
     end
 

@@ -10,7 +10,7 @@ module Gtk
 
 
     def delete_surrounding(offset, n_chars)
-      __return_value = LibGtk.i_m_context_delete_surrounding((to_unsafe as LibGtk::IMContext*), Int32.cast(offset), Int32.cast(n_chars))
+      __return_value = LibGtk.i_m_context_delete_surrounding((to_unsafe as LibGtk::IMContext*), Int32.new(offset), Int32.new(n_chars))
       __return_value
     end
 
@@ -30,12 +30,12 @@ module Gtk
     end
 
     def preedit_string(str, attrs, cursor_pos)
-      __return_value = LibGtk.i_m_context_get_preedit_string((to_unsafe as LibGtk::IMContext*), str, (attrs.to_unsafe as LibPango::AttrList*), Int32.cast(cursor_pos))
+      __return_value = LibGtk.i_m_context_get_preedit_string((to_unsafe as LibGtk::IMContext*), str, (attrs.to_unsafe as LibPango::AttrList*), Int32.new(cursor_pos))
       __return_value
     end
 
     def surrounding(text, cursor_index)
-      __return_value = LibGtk.i_m_context_get_surrounding((to_unsafe as LibGtk::IMContext*), text, Int32.cast(cursor_index))
+      __return_value = LibGtk.i_m_context_get_surrounding((to_unsafe as LibGtk::IMContext*), text, Int32.new(cursor_index))
       __return_value
     end
 
@@ -55,12 +55,12 @@ module Gtk
     end
 
     def set_surrounding(text, len, cursor_index)
-      __return_value = LibGtk.i_m_context_set_surrounding((to_unsafe as LibGtk::IMContext*), text, Int32.cast(len), Int32.cast(cursor_index))
+      __return_value = LibGtk.i_m_context_set_surrounding((to_unsafe as LibGtk::IMContext*), text, Int32.new(len), Int32.new(cursor_index))
       __return_value
     end
 
     def use_preedit=(use_preedit)
-      __return_value = LibGtk.i_m_context_set_use_preedit((to_unsafe as LibGtk::IMContext*), Bool.cast(use_preedit))
+      __return_value = LibGtk.i_m_context_set_use_preedit((to_unsafe as LibGtk::IMContext*), Bool.new(use_preedit))
       __return_value
     end
 

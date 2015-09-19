@@ -50,7 +50,7 @@ module GLib
     end
 
     def push_nth(data, n)
-      __return_value = LibGLib.queue_push_nth((to_unsafe as LibGLib::Queue*), data, Int32.cast(n))
+      __return_value = LibGLib.queue_push_nth((to_unsafe as LibGLib::Queue*), data, Int32.new(n))
       __return_value
     end
 

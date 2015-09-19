@@ -28,12 +28,12 @@ module Gtk
     end
 
     def active=(is_active)
-      __return_value = LibGtk.toggle_action_set_active((to_unsafe as LibGtk::ToggleAction*), Bool.cast(is_active))
+      __return_value = LibGtk.toggle_action_set_active((to_unsafe as LibGtk::ToggleAction*), Bool.new(is_active))
       __return_value
     end
 
     def draw_as_radio=(draw_as_radio)
-      __return_value = LibGtk.toggle_action_set_draw_as_radio((to_unsafe as LibGtk::ToggleAction*), Bool.cast(draw_as_radio))
+      __return_value = LibGtk.toggle_action_set_draw_as_radio((to_unsafe as LibGtk::ToggleAction*), Bool.new(draw_as_radio))
       __return_value
     end
 

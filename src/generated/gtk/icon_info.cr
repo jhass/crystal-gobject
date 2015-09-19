@@ -13,7 +13,7 @@ module Gtk
     end
 
     def attach_points(points, n_points)
-      __return_value = LibGtk.icon_info_get_attach_points((to_unsafe as LibGtk::IconInfo*), points, Int32.cast(n_points))
+      __return_value = LibGtk.icon_info_get_attach_points((to_unsafe as LibGtk::IconInfo*), points, Int32.new(n_points))
       __return_value
     end
 
@@ -80,7 +80,7 @@ module Gtk
 
     def load_symbolic(fg, success_color, warning_color, error_color, was_symbolic)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.icon_info_load_symbolic((to_unsafe as LibGtk::IconInfo*), (fg.to_unsafe as LibGdk::RGBA*), success_color && (success_color.to_unsafe as LibGdk::RGBA*), warning_color && (warning_color.to_unsafe as LibGdk::RGBA*), error_color && (error_color.to_unsafe as LibGdk::RGBA*), Bool.cast(was_symbolic), pointerof(__error))
+      __return_value = LibGtk.icon_info_load_symbolic((to_unsafe as LibGtk::IconInfo*), (fg.to_unsafe as LibGdk::RGBA*), success_color && (success_color.to_unsafe as LibGdk::RGBA*), warning_color && (warning_color.to_unsafe as LibGdk::RGBA*), error_color && (error_color.to_unsafe as LibGdk::RGBA*), Bool.new(was_symbolic), pointerof(__error))
       GLib::Error.assert __error
       GdkPixbuf::Pixbuf.new(__return_value)
     end
@@ -92,14 +92,14 @@ module Gtk
 
     def load_symbolic_finish(res, was_symbolic)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.icon_info_load_symbolic_finish((to_unsafe as LibGtk::IconInfo*), (res.to_unsafe as LibGio::AsyncResult*), Bool.cast(was_symbolic), pointerof(__error))
+      __return_value = LibGtk.icon_info_load_symbolic_finish((to_unsafe as LibGtk::IconInfo*), (res.to_unsafe as LibGio::AsyncResult*), Bool.new(was_symbolic), pointerof(__error))
       GLib::Error.assert __error
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 
     def load_symbolic_for_context(context, was_symbolic)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.icon_info_load_symbolic_for_context((to_unsafe as LibGtk::IconInfo*), (context.to_unsafe as LibGtk::StyleContext*), Bool.cast(was_symbolic), pointerof(__error))
+      __return_value = LibGtk.icon_info_load_symbolic_for_context((to_unsafe as LibGtk::IconInfo*), (context.to_unsafe as LibGtk::StyleContext*), Bool.new(was_symbolic), pointerof(__error))
       GLib::Error.assert __error
       GdkPixbuf::Pixbuf.new(__return_value)
     end
@@ -111,20 +111,20 @@ module Gtk
 
     def load_symbolic_for_context_finish(res, was_symbolic)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.icon_info_load_symbolic_for_context_finish((to_unsafe as LibGtk::IconInfo*), (res.to_unsafe as LibGio::AsyncResult*), Bool.cast(was_symbolic), pointerof(__error))
+      __return_value = LibGtk.icon_info_load_symbolic_for_context_finish((to_unsafe as LibGtk::IconInfo*), (res.to_unsafe as LibGio::AsyncResult*), Bool.new(was_symbolic), pointerof(__error))
       GLib::Error.assert __error
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 
     def load_symbolic_for_style(style, state, was_symbolic)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.icon_info_load_symbolic_for_style((to_unsafe as LibGtk::IconInfo*), (style.to_unsafe as LibGtk::Style*), state, Bool.cast(was_symbolic), pointerof(__error))
+      __return_value = LibGtk.icon_info_load_symbolic_for_style((to_unsafe as LibGtk::IconInfo*), (style.to_unsafe as LibGtk::Style*), state, Bool.new(was_symbolic), pointerof(__error))
       GLib::Error.assert __error
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 
     def raw_coordinates=(raw_coordinates)
-      __return_value = LibGtk.icon_info_set_raw_coordinates((to_unsafe as LibGtk::IconInfo*), Bool.cast(raw_coordinates))
+      __return_value = LibGtk.icon_info_set_raw_coordinates((to_unsafe as LibGtk::IconInfo*), Bool.new(raw_coordinates))
       __return_value
     end
 

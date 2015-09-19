@@ -15,7 +15,7 @@ module Gtk
     end
 
     def velocity(velocity_x, velocity_y)
-      __return_value = LibGtk.gesture_swipe_get_velocity((to_unsafe as LibGtk::GestureSwipe*), Float64.cast(velocity_x), Float64.cast(velocity_y))
+      __return_value = LibGtk.gesture_swipe_get_velocity((to_unsafe as LibGtk::GestureSwipe*), Float64.new(velocity_x), Float64.new(velocity_y))
       __return_value
     end
 

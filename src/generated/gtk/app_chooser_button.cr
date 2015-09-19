@@ -58,12 +58,12 @@ module Gtk
     end
 
     def show_default_item=(setting)
-      __return_value = LibGtk.app_chooser_button_set_show_default_item((to_unsafe as LibGtk::AppChooserButton*), Bool.cast(setting))
+      __return_value = LibGtk.app_chooser_button_set_show_default_item((to_unsafe as LibGtk::AppChooserButton*), Bool.new(setting))
       __return_value
     end
 
     def show_dialog_item=(setting)
-      __return_value = LibGtk.app_chooser_button_set_show_dialog_item((to_unsafe as LibGtk::AppChooserButton*), Bool.cast(setting))
+      __return_value = LibGtk.app_chooser_button_set_show_dialog_item((to_unsafe as LibGtk::AppChooserButton*), Bool.new(setting))
       __return_value
     end
 

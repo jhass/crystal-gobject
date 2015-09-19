@@ -30,7 +30,7 @@ module Gst
     end
 
     def check_version(min_major, min_minor, min_micro)
-      __return_value = LibGst.plugin_feature_check_version((to_unsafe as LibGst::PluginFeature*), UInt32.cast(min_major), UInt32.cast(min_minor), UInt32.cast(min_micro))
+      __return_value = LibGst.plugin_feature_check_version((to_unsafe as LibGst::PluginFeature*), UInt32.new(min_major), UInt32.new(min_minor), UInt32.new(min_micro))
       __return_value
     end
 
@@ -55,7 +55,7 @@ module Gst
     end
 
     def rank=(rank)
-      __return_value = LibGst.plugin_feature_set_rank((to_unsafe as LibGst::PluginFeature*), UInt32.cast(rank))
+      __return_value = LibGst.plugin_feature_set_rank((to_unsafe as LibGst::PluginFeature*), UInt32.new(rank))
       __return_value
     end
 

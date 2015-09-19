@@ -18,7 +18,7 @@ module Gtk
     end
 
     def self.new_with_range(min, max, step)
-      __return_value = LibGtk.v_scale_new_with_range(Float64.cast(min), Float64.cast(max), Float64.cast(step))
+      __return_value = LibGtk.v_scale_new_with_range(Float64.new(min), Float64.new(max), Float64.new(step))
       Gtk::Widget.new(__return_value)
     end
 

@@ -15,7 +15,7 @@ module Gio
 
     def self.new_from_blob(blob, blob_len, capabilities)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.d_bus_message_new_from_blob(blob, UInt64.cast(blob_len), capabilities, pointerof(__error))
+      __return_value = LibGio.d_bus_message_new_from_blob(blob, UInt64.new(blob_len), capabilities, pointerof(__error))
       GLib::Error.assert __error
       Gio::DBusMessage.new(__return_value)
     end
@@ -32,7 +32,7 @@ module Gio
 
     def self.bytes_needed(blob, blob_len)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.d_bus_message_bytes_needed(blob, UInt64.cast(blob_len), pointerof(__error))
+      __return_value = LibGio.d_bus_message_bytes_needed(blob, UInt64.new(blob_len), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -81,7 +81,7 @@ module Gio
 
     def header_fields
       __return_value = LibGio.d_bus_message_get_header_fields((to_unsafe as LibGio::DBusMessage*))
-      PointerIterator.new(__return_value) {|__item_27| __item_27 }
+      PointerIterator.new(__return_value) {|__item_59| __item_59 }
     end
 
     def interface
@@ -155,7 +155,7 @@ module Gio
     end
 
     def print(indent)
-      __return_value = LibGio.d_bus_message_print((to_unsafe as LibGio::DBusMessage*), UInt32.cast(indent))
+      __return_value = LibGio.d_bus_message_print((to_unsafe as LibGio::DBusMessage*), UInt32.new(indent))
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 
@@ -205,7 +205,7 @@ module Gio
     end
 
     def num_unix_fds=(value)
-      __return_value = LibGio.d_bus_message_set_num_unix_fds((to_unsafe as LibGio::DBusMessage*), UInt32.cast(value))
+      __return_value = LibGio.d_bus_message_set_num_unix_fds((to_unsafe as LibGio::DBusMessage*), UInt32.new(value))
       __return_value
     end
 
@@ -215,7 +215,7 @@ module Gio
     end
 
     def reply_serial=(value)
-      __return_value = LibGio.d_bus_message_set_reply_serial((to_unsafe as LibGio::DBusMessage*), UInt32.cast(value))
+      __return_value = LibGio.d_bus_message_set_reply_serial((to_unsafe as LibGio::DBusMessage*), UInt32.new(value))
       __return_value
     end
 
@@ -225,7 +225,7 @@ module Gio
     end
 
     def serial=(serial)
-      __return_value = LibGio.d_bus_message_set_serial((to_unsafe as LibGio::DBusMessage*), UInt32.cast(serial))
+      __return_value = LibGio.d_bus_message_set_serial((to_unsafe as LibGio::DBusMessage*), UInt32.new(serial))
       __return_value
     end
 
@@ -241,9 +241,9 @@ module Gio
 
     def to_blob(out_size, capabilities)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.d_bus_message_to_blob((to_unsafe as LibGio::DBusMessage*), UInt64.cast(out_size), capabilities, pointerof(__error))
+      __return_value = LibGio.d_bus_message_to_blob((to_unsafe as LibGio::DBusMessage*), UInt64.new(out_size), capabilities, pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_70| __item_70 }
+      PointerIterator.new(__return_value) {|__item_25| __item_25 }
     end
 
     def to_gerror

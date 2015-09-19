@@ -45,7 +45,7 @@ module Gtk
     end
 
     def create_icon(icon_size)
-      __return_value = LibGtk.action_create_icon((to_unsafe as LibGtk::Action*), Int32.cast(icon_size))
+      __return_value = LibGtk.action_create_icon((to_unsafe as LibGtk::Action*), Int32.new(icon_size))
       Gtk::Widget.new(__return_value)
     end
 
@@ -170,7 +170,7 @@ module Gtk
     end
 
     def always_show_image=(always_show)
-      __return_value = LibGtk.action_set_always_show_image((to_unsafe as LibGtk::Action*), Bool.cast(always_show))
+      __return_value = LibGtk.action_set_always_show_image((to_unsafe as LibGtk::Action*), Bool.new(always_show))
       __return_value
     end
 
@@ -185,7 +185,7 @@ module Gtk
     end
 
     def is_important=(is_important)
-      __return_value = LibGtk.action_set_is_important((to_unsafe as LibGtk::Action*), Bool.cast(is_important))
+      __return_value = LibGtk.action_set_is_important((to_unsafe as LibGtk::Action*), Bool.new(is_important))
       __return_value
     end
 
@@ -195,7 +195,7 @@ module Gtk
     end
 
     def sensitive=(sensitive)
-      __return_value = LibGtk.action_set_sensitive((to_unsafe as LibGtk::Action*), Bool.cast(sensitive))
+      __return_value = LibGtk.action_set_sensitive((to_unsafe as LibGtk::Action*), Bool.new(sensitive))
       __return_value
     end
 
@@ -215,17 +215,17 @@ module Gtk
     end
 
     def visible=(visible)
-      __return_value = LibGtk.action_set_visible((to_unsafe as LibGtk::Action*), Bool.cast(visible))
+      __return_value = LibGtk.action_set_visible((to_unsafe as LibGtk::Action*), Bool.new(visible))
       __return_value
     end
 
     def visible_horizontal=(visible_horizontal)
-      __return_value = LibGtk.action_set_visible_horizontal((to_unsafe as LibGtk::Action*), Bool.cast(visible_horizontal))
+      __return_value = LibGtk.action_set_visible_horizontal((to_unsafe as LibGtk::Action*), Bool.new(visible_horizontal))
       __return_value
     end
 
     def visible_vertical=(visible_vertical)
-      __return_value = LibGtk.action_set_visible_vertical((to_unsafe as LibGtk::Action*), Bool.cast(visible_vertical))
+      __return_value = LibGtk.action_set_visible_vertical((to_unsafe as LibGtk::Action*), Bool.new(visible_vertical))
       __return_value
     end
 

@@ -61,22 +61,22 @@ module Notify
     end
 
     def set_hint_byte(key, value)
-      __return_value = LibNotify.notification_set_hint_byte((to_unsafe as LibNotify::Notification*), key, UInt8.cast(value))
+      __return_value = LibNotify.notification_set_hint_byte((to_unsafe as LibNotify::Notification*), key, UInt8.new(value))
       __return_value
     end
 
     def set_hint_byte_array(key, value, len)
-      __return_value = LibNotify.notification_set_hint_byte_array((to_unsafe as LibNotify::Notification*), key, value, UInt64.cast(len))
+      __return_value = LibNotify.notification_set_hint_byte_array((to_unsafe as LibNotify::Notification*), key, value, UInt64.new(len))
       __return_value
     end
 
     def set_hint_double(key, value)
-      __return_value = LibNotify.notification_set_hint_double((to_unsafe as LibNotify::Notification*), key, Float64.cast(value))
+      __return_value = LibNotify.notification_set_hint_double((to_unsafe as LibNotify::Notification*), key, Float64.new(value))
       __return_value
     end
 
     def set_hint_int32(key, value)
-      __return_value = LibNotify.notification_set_hint_int32((to_unsafe as LibNotify::Notification*), key, Int32.cast(value))
+      __return_value = LibNotify.notification_set_hint_int32((to_unsafe as LibNotify::Notification*), key, Int32.new(value))
       __return_value
     end
 
@@ -86,7 +86,7 @@ module Notify
     end
 
     def set_hint_uint32(key, value)
-      __return_value = LibNotify.notification_set_hint_uint32((to_unsafe as LibNotify::Notification*), key, UInt32.cast(value))
+      __return_value = LibNotify.notification_set_hint_uint32((to_unsafe as LibNotify::Notification*), key, UInt32.new(value))
       __return_value
     end
 
@@ -101,7 +101,7 @@ module Notify
     end
 
     def timeout=(timeout)
-      __return_value = LibNotify.notification_set_timeout((to_unsafe as LibNotify::Notification*), Int32.cast(timeout))
+      __return_value = LibNotify.notification_set_timeout((to_unsafe as LibNotify::Notification*), Int32.new(timeout))
       __return_value
     end
 

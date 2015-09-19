@@ -27,12 +27,12 @@ module Gst
     end
 
     def self.register_static(major_version, minor_version, name, description, init_func : LibGst::PluginInitFunc, version, license, source, package, origin)
-      __return_value = LibGst.plugin_register_static(Int32.cast(major_version), Int32.cast(minor_version), name, description, init_func, version, license, source, package, origin)
+      __return_value = LibGst.plugin_register_static(Int32.new(major_version), Int32.new(minor_version), name, description, init_func, version, license, source, package, origin)
       __return_value
     end
 
     def self.register_static_full(major_version, minor_version, name, description, init_full_func : LibGst::PluginInitFullFunc, version, license, source, package, origin, user_data)
-      __return_value = LibGst.plugin_register_static_full(Int32.cast(major_version), Int32.cast(minor_version), name, description, init_full_func, version, license, source, package, origin, user_data)
+      __return_value = LibGst.plugin_register_static_full(Int32.new(major_version), Int32.new(minor_version), name, description, init_full_func, version, license, source, package, origin, user_data)
       __return_value
     end
 

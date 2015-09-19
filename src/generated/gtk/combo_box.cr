@@ -156,7 +156,7 @@ module Gtk
     end
 
     def active=(index)
-      __return_value = LibGtk.combo_box_set_active((to_unsafe as LibGtk::ComboBox*), Int32.cast(index))
+      __return_value = LibGtk.combo_box_set_active((to_unsafe as LibGtk::ComboBox*), Int32.new(index))
       __return_value
     end
 
@@ -171,7 +171,7 @@ module Gtk
     end
 
     def add_tearoffs=(add_tearoffs)
-      __return_value = LibGtk.combo_box_set_add_tearoffs((to_unsafe as LibGtk::ComboBox*), Bool.cast(add_tearoffs))
+      __return_value = LibGtk.combo_box_set_add_tearoffs((to_unsafe as LibGtk::ComboBox*), Bool.new(add_tearoffs))
       __return_value
     end
 
@@ -181,22 +181,22 @@ module Gtk
     end
 
     def column_span_column=(column_span)
-      __return_value = LibGtk.combo_box_set_column_span_column((to_unsafe as LibGtk::ComboBox*), Int32.cast(column_span))
+      __return_value = LibGtk.combo_box_set_column_span_column((to_unsafe as LibGtk::ComboBox*), Int32.new(column_span))
       __return_value
     end
 
     def entry_text_column=(text_column)
-      __return_value = LibGtk.combo_box_set_entry_text_column((to_unsafe as LibGtk::ComboBox*), Int32.cast(text_column))
+      __return_value = LibGtk.combo_box_set_entry_text_column((to_unsafe as LibGtk::ComboBox*), Int32.new(text_column))
       __return_value
     end
 
     def focus_on_click=(focus_on_click)
-      __return_value = LibGtk.combo_box_set_focus_on_click((to_unsafe as LibGtk::ComboBox*), Bool.cast(focus_on_click))
+      __return_value = LibGtk.combo_box_set_focus_on_click((to_unsafe as LibGtk::ComboBox*), Bool.new(focus_on_click))
       __return_value
     end
 
     def id_column=(id_column)
-      __return_value = LibGtk.combo_box_set_id_column((to_unsafe as LibGtk::ComboBox*), Int32.cast(id_column))
+      __return_value = LibGtk.combo_box_set_id_column((to_unsafe as LibGtk::ComboBox*), Int32.new(id_column))
       __return_value
     end
 
@@ -206,7 +206,7 @@ module Gtk
     end
 
     def popup_fixed_width=(fixed)
-      __return_value = LibGtk.combo_box_set_popup_fixed_width((to_unsafe as LibGtk::ComboBox*), Bool.cast(fixed))
+      __return_value = LibGtk.combo_box_set_popup_fixed_width((to_unsafe as LibGtk::ComboBox*), Bool.new(fixed))
       __return_value
     end
 
@@ -216,7 +216,7 @@ module Gtk
     end
 
     def row_span_column=(row_span)
-      __return_value = LibGtk.combo_box_set_row_span_column((to_unsafe as LibGtk::ComboBox*), Int32.cast(row_span))
+      __return_value = LibGtk.combo_box_set_row_span_column((to_unsafe as LibGtk::ComboBox*), Int32.new(row_span))
       __return_value
     end
 
@@ -226,7 +226,7 @@ module Gtk
     end
 
     def wrap_width=(width)
-      __return_value = LibGtk.combo_box_set_wrap_width((to_unsafe as LibGtk::ComboBox*), Int32.cast(width))
+      __return_value = LibGtk.combo_box_set_wrap_width((to_unsafe as LibGtk::ComboBox*), Int32.new(width))
       __return_value
     end
 

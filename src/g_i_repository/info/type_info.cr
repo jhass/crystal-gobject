@@ -110,7 +110,7 @@ module GIRepository
         if pointer?
           variable
         else
-          "#{TAG_MAP[tag]}.cast(#{variable})"
+          "#{TAG_MAP[tag]}.new(#{variable})"
         end
       end
     end

@@ -23,12 +23,12 @@ module Gtk
     end
 
     def self.new_for_interval(min_value, max_value)
-      __return_value = LibGtk.level_bar_new_for_interval(Float64.cast(min_value), Float64.cast(max_value))
+      __return_value = LibGtk.level_bar_new_for_interval(Float64.new(min_value), Float64.new(max_value))
       Gtk::Widget.new(__return_value)
     end
 
     def add_offset_value(name, value)
-      __return_value = LibGtk.level_bar_add_offset_value((to_unsafe as LibGtk::LevelBar*), name, Float64.cast(value))
+      __return_value = LibGtk.level_bar_add_offset_value((to_unsafe as LibGtk::LevelBar*), name, Float64.new(value))
       __return_value
     end
 
@@ -53,7 +53,7 @@ module Gtk
     end
 
     def offset_value(name, value)
-      __return_value = LibGtk.level_bar_get_offset_value((to_unsafe as LibGtk::LevelBar*), name && name, Float64.cast(value))
+      __return_value = LibGtk.level_bar_get_offset_value((to_unsafe as LibGtk::LevelBar*), name && name, Float64.new(value))
       __return_value
     end
 
@@ -68,17 +68,17 @@ module Gtk
     end
 
     def inverted=(inverted)
-      __return_value = LibGtk.level_bar_set_inverted((to_unsafe as LibGtk::LevelBar*), Bool.cast(inverted))
+      __return_value = LibGtk.level_bar_set_inverted((to_unsafe as LibGtk::LevelBar*), Bool.new(inverted))
       __return_value
     end
 
     def max_value=(value)
-      __return_value = LibGtk.level_bar_set_max_value((to_unsafe as LibGtk::LevelBar*), Float64.cast(value))
+      __return_value = LibGtk.level_bar_set_max_value((to_unsafe as LibGtk::LevelBar*), Float64.new(value))
       __return_value
     end
 
     def min_value=(value)
-      __return_value = LibGtk.level_bar_set_min_value((to_unsafe as LibGtk::LevelBar*), Float64.cast(value))
+      __return_value = LibGtk.level_bar_set_min_value((to_unsafe as LibGtk::LevelBar*), Float64.new(value))
       __return_value
     end
 
@@ -88,7 +88,7 @@ module Gtk
     end
 
     def value=(value)
-      __return_value = LibGtk.level_bar_set_value((to_unsafe as LibGtk::LevelBar*), Float64.cast(value))
+      __return_value = LibGtk.level_bar_set_value((to_unsafe as LibGtk::LevelBar*), Float64.new(value))
       __return_value
     end
 

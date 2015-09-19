@@ -38,7 +38,7 @@ module Gtk
     end
 
     def nth_bookmark(n)
-      __return_value = LibGtk.places_sidebar_get_nth_bookmark((to_unsafe as LibGtk::PlacesSidebar*), Int32.cast(n))
+      __return_value = LibGtk.places_sidebar_get_nth_bookmark((to_unsafe as LibGtk::PlacesSidebar*), Int32.new(n))
       __return_value
     end
 
@@ -73,7 +73,7 @@ module Gtk
     end
 
     def local_only=(local_only)
-      __return_value = LibGtk.places_sidebar_set_local_only((to_unsafe as LibGtk::PlacesSidebar*), Bool.cast(local_only))
+      __return_value = LibGtk.places_sidebar_set_local_only((to_unsafe as LibGtk::PlacesSidebar*), Bool.new(local_only))
       __return_value
     end
 
@@ -88,17 +88,17 @@ module Gtk
     end
 
     def show_connect_to_server=(show_connect_to_server)
-      __return_value = LibGtk.places_sidebar_set_show_connect_to_server((to_unsafe as LibGtk::PlacesSidebar*), Bool.cast(show_connect_to_server))
+      __return_value = LibGtk.places_sidebar_set_show_connect_to_server((to_unsafe as LibGtk::PlacesSidebar*), Bool.new(show_connect_to_server))
       __return_value
     end
 
     def show_desktop=(show_desktop)
-      __return_value = LibGtk.places_sidebar_set_show_desktop((to_unsafe as LibGtk::PlacesSidebar*), Bool.cast(show_desktop))
+      __return_value = LibGtk.places_sidebar_set_show_desktop((to_unsafe as LibGtk::PlacesSidebar*), Bool.new(show_desktop))
       __return_value
     end
 
     def show_enter_location=(show_enter_location)
-      __return_value = LibGtk.places_sidebar_set_show_enter_location((to_unsafe as LibGtk::PlacesSidebar*), Bool.cast(show_enter_location))
+      __return_value = LibGtk.places_sidebar_set_show_enter_location((to_unsafe as LibGtk::PlacesSidebar*), Bool.new(show_enter_location))
       __return_value
     end
 

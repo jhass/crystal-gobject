@@ -10,7 +10,7 @@ module Gtk
 
 
     def self.new_internal(name, left_gravity)
-      __return_value = LibGtk.text_mark_new(name && name, Bool.cast(left_gravity))
+      __return_value = LibGtk.text_mark_new(name && name, Bool.new(left_gravity))
       Gtk::TextMark.new(__return_value)
     end
 
@@ -40,7 +40,7 @@ module Gtk
     end
 
     def visible=(setting)
-      __return_value = LibGtk.text_mark_set_visible((to_unsafe as LibGtk::TextMark*), Bool.cast(setting))
+      __return_value = LibGtk.text_mark_set_visible((to_unsafe as LibGtk::TextMark*), Bool.new(setting))
       __return_value
     end
 

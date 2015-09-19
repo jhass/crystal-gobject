@@ -10,42 +10,42 @@ module Gtk
     end
 
     def self.new_internal(targets, ntargets)
-      __return_value = LibGtk.target_list_new(targets && targets, UInt32.cast(ntargets))
+      __return_value = LibGtk.target_list_new(targets && targets, UInt32.new(ntargets))
       Gtk::TargetList.new(__return_value)
     end
 
     def add(target, flags, info)
-      __return_value = LibGtk.target_list_add((to_unsafe as LibGtk::TargetList*), (target.to_unsafe as LibGdk::Atom*), UInt32.cast(flags), UInt32.cast(info))
+      __return_value = LibGtk.target_list_add((to_unsafe as LibGtk::TargetList*), (target.to_unsafe as LibGdk::Atom*), UInt32.new(flags), UInt32.new(info))
       __return_value
     end
 
     def add_image_targets(info, writable)
-      __return_value = LibGtk.target_list_add_image_targets((to_unsafe as LibGtk::TargetList*), UInt32.cast(info), Bool.cast(writable))
+      __return_value = LibGtk.target_list_add_image_targets((to_unsafe as LibGtk::TargetList*), UInt32.new(info), Bool.new(writable))
       __return_value
     end
 
     def add_rich_text_targets(info, deserializable, buffer)
-      __return_value = LibGtk.target_list_add_rich_text_targets((to_unsafe as LibGtk::TargetList*), UInt32.cast(info), Bool.cast(deserializable), (buffer.to_unsafe as LibGtk::TextBuffer*))
+      __return_value = LibGtk.target_list_add_rich_text_targets((to_unsafe as LibGtk::TargetList*), UInt32.new(info), Bool.new(deserializable), (buffer.to_unsafe as LibGtk::TextBuffer*))
       __return_value
     end
 
     def add_table(targets, ntargets)
-      __return_value = LibGtk.target_list_add_table((to_unsafe as LibGtk::TargetList*), targets, UInt32.cast(ntargets))
+      __return_value = LibGtk.target_list_add_table((to_unsafe as LibGtk::TargetList*), targets, UInt32.new(ntargets))
       __return_value
     end
 
     def add_text_targets(info)
-      __return_value = LibGtk.target_list_add_text_targets((to_unsafe as LibGtk::TargetList*), UInt32.cast(info))
+      __return_value = LibGtk.target_list_add_text_targets((to_unsafe as LibGtk::TargetList*), UInt32.new(info))
       __return_value
     end
 
     def add_uri_targets(info)
-      __return_value = LibGtk.target_list_add_uri_targets((to_unsafe as LibGtk::TargetList*), UInt32.cast(info))
+      __return_value = LibGtk.target_list_add_uri_targets((to_unsafe as LibGtk::TargetList*), UInt32.new(info))
       __return_value
     end
 
     def find(target, info)
-      __return_value = LibGtk.target_list_find((to_unsafe as LibGtk::TargetList*), (target.to_unsafe as LibGdk::Atom*), UInt32.cast(info))
+      __return_value = LibGtk.target_list_find((to_unsafe as LibGtk::TargetList*), (target.to_unsafe as LibGdk::Atom*), UInt32.new(info))
       __return_value
     end
 

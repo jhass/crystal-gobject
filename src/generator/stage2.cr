@@ -73,7 +73,7 @@ module GIRepository
     end
 
     def info(namespace, index)
-      __return_value = LibGIRepository.repository_get_info((to_unsafe as LibGIRepository::Repository*), namespace, Int32.cast(index))
+      __return_value = LibGIRepository.repository_get_info((to_unsafe as LibGIRepository::Repository*), namespace, Int32.new(index))
       GIRepository::BaseInfo.new(__return_value)
     end
 

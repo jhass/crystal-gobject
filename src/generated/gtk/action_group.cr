@@ -68,7 +68,7 @@ module Gtk
     end
 
     def sensitive=(sensitive)
-      __return_value = LibGtk.action_group_set_sensitive((to_unsafe as LibGtk::ActionGroup*), Bool.cast(sensitive))
+      __return_value = LibGtk.action_group_set_sensitive((to_unsafe as LibGtk::ActionGroup*), Bool.new(sensitive))
       __return_value
     end
 
@@ -83,7 +83,7 @@ module Gtk
     end
 
     def visible=(visible)
-      __return_value = LibGtk.action_group_set_visible((to_unsafe as LibGtk::ActionGroup*), Bool.cast(visible))
+      __return_value = LibGtk.action_group_set_visible((to_unsafe as LibGtk::ActionGroup*), Bool.new(visible))
       __return_value
     end
 

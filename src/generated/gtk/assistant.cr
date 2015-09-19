@@ -43,7 +43,7 @@ module Gtk
     end
 
     def nth_page(page_num)
-      __return_value = LibGtk.assistant_get_nth_page((to_unsafe as LibGtk::Assistant*), Int32.cast(page_num))
+      __return_value = LibGtk.assistant_get_nth_page((to_unsafe as LibGtk::Assistant*), Int32.new(page_num))
       Gtk::Widget.new(__return_value)
     end
 
@@ -73,7 +73,7 @@ module Gtk
     end
 
     def insert_page(page, position)
-      __return_value = LibGtk.assistant_insert_page((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*), Int32.cast(position))
+      __return_value = LibGtk.assistant_insert_page((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*), Int32.new(position))
       __return_value
     end
 
@@ -98,12 +98,12 @@ module Gtk
     end
 
     def remove_page(page_num)
-      __return_value = LibGtk.assistant_remove_page((to_unsafe as LibGtk::Assistant*), Int32.cast(page_num))
+      __return_value = LibGtk.assistant_remove_page((to_unsafe as LibGtk::Assistant*), Int32.new(page_num))
       __return_value
     end
 
     def current_page=(page_num)
-      __return_value = LibGtk.assistant_set_current_page((to_unsafe as LibGtk::Assistant*), Int32.cast(page_num))
+      __return_value = LibGtk.assistant_set_current_page((to_unsafe as LibGtk::Assistant*), Int32.new(page_num))
       __return_value
     end
 
@@ -113,7 +113,7 @@ module Gtk
     end
 
     def set_page_complete(page, complete)
-      __return_value = LibGtk.assistant_set_page_complete((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*), Bool.cast(complete))
+      __return_value = LibGtk.assistant_set_page_complete((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*), Bool.new(complete))
       __return_value
     end
 

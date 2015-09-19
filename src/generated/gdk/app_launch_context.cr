@@ -14,7 +14,7 @@ module Gdk
     end
 
     def desktop=(desktop)
-      __return_value = LibGdk.app_launch_context_set_desktop((to_unsafe as LibGdk::AppLaunchContext*), Int32.cast(desktop))
+      __return_value = LibGdk.app_launch_context_set_desktop((to_unsafe as LibGdk::AppLaunchContext*), Int32.new(desktop))
       __return_value
     end
 
@@ -39,7 +39,7 @@ module Gdk
     end
 
     def timestamp=(timestamp)
-      __return_value = LibGdk.app_launch_context_set_timestamp((to_unsafe as LibGdk::AppLaunchContext*), UInt32.cast(timestamp))
+      __return_value = LibGdk.app_launch_context_set_timestamp((to_unsafe as LibGdk::AppLaunchContext*), UInt32.new(timestamp))
       __return_value
     end
 

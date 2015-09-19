@@ -46,7 +46,7 @@ module Gtk
     end
 
     def convert_widget_to_bin_window_coords(wx, wy, bx, by)
-      __return_value = LibGtk.icon_view_convert_widget_to_bin_window_coords((to_unsafe as LibGtk::IconView*), Int32.cast(wx), Int32.cast(wy), Int32.cast(bx), Int32.cast(by))
+      __return_value = LibGtk.icon_view_convert_widget_to_bin_window_coords((to_unsafe as LibGtk::IconView*), Int32.new(wx), Int32.new(wy), Int32.new(bx), Int32.new(by))
       __return_value
     end
 
@@ -56,12 +56,12 @@ module Gtk
     end
 
     def enable_model_drag_dest(targets, n_targets, actions)
-      __return_value = LibGtk.icon_view_enable_model_drag_dest((to_unsafe as LibGtk::IconView*), targets, Int32.cast(n_targets), actions)
+      __return_value = LibGtk.icon_view_enable_model_drag_dest((to_unsafe as LibGtk::IconView*), targets, Int32.new(n_targets), actions)
       __return_value
     end
 
     def enable_model_drag_source(start_button_mask, targets, n_targets, actions)
-      __return_value = LibGtk.icon_view_enable_model_drag_source((to_unsafe as LibGtk::IconView*), start_button_mask, targets, Int32.cast(n_targets), actions)
+      __return_value = LibGtk.icon_view_enable_model_drag_source((to_unsafe as LibGtk::IconView*), start_button_mask, targets, Int32.new(n_targets), actions)
       __return_value
     end
 
@@ -91,7 +91,7 @@ module Gtk
     end
 
     def dest_item_at_pos(drag_x, drag_y, path, pos)
-      __return_value = LibGtk.icon_view_get_dest_item_at_pos((to_unsafe as LibGtk::IconView*), Int32.cast(drag_x), Int32.cast(drag_y), (path.to_unsafe as LibGtk::TreePath*), pos)
+      __return_value = LibGtk.icon_view_get_dest_item_at_pos((to_unsafe as LibGtk::IconView*), Int32.new(drag_x), Int32.new(drag_y), (path.to_unsafe as LibGtk::TreePath*), pos)
       __return_value
     end
 
@@ -101,7 +101,7 @@ module Gtk
     end
 
     def item_at_pos(x, y, path, cell)
-      __return_value = LibGtk.icon_view_get_item_at_pos((to_unsafe as LibGtk::IconView*), Int32.cast(x), Int32.cast(y), (path.to_unsafe as LibGtk::TreePath*), (cell.to_unsafe as LibGtk::CellRenderer*))
+      __return_value = LibGtk.icon_view_get_item_at_pos((to_unsafe as LibGtk::IconView*), Int32.new(x), Int32.new(y), (path.to_unsafe as LibGtk::TreePath*), (cell.to_unsafe as LibGtk::CellRenderer*))
       __return_value
     end
 
@@ -146,7 +146,7 @@ module Gtk
     end
 
     def path_at_pos(x, y)
-      __return_value = LibGtk.icon_view_get_path_at_pos((to_unsafe as LibGtk::IconView*), Int32.cast(x), Int32.cast(y))
+      __return_value = LibGtk.icon_view_get_path_at_pos((to_unsafe as LibGtk::IconView*), Int32.new(x), Int32.new(y))
       Gtk::TreePath.new(__return_value)
     end
 
@@ -191,7 +191,7 @@ module Gtk
     end
 
     def tooltip_context(x, y, keyboard_tip, model, path, iter)
-      __return_value = LibGtk.icon_view_get_tooltip_context((to_unsafe as LibGtk::IconView*), Int32.cast(x), Int32.cast(y), Bool.cast(keyboard_tip), (model.to_unsafe as LibGtk::TreeModel*), (path.to_unsafe as LibGtk::TreePath*), iter)
+      __return_value = LibGtk.icon_view_get_tooltip_context((to_unsafe as LibGtk::IconView*), Int32.new(x), Int32.new(y), Bool.new(keyboard_tip), (model.to_unsafe as LibGtk::TreeModel*), (path.to_unsafe as LibGtk::TreePath*), iter)
       __return_value
     end
 
@@ -211,7 +211,7 @@ module Gtk
     end
 
     def scroll_to_path(path, use_align, row_align, col_align)
-      __return_value = LibGtk.icon_view_scroll_to_path((to_unsafe as LibGtk::IconView*), (path.to_unsafe as LibGtk::TreePath*), Bool.cast(use_align), Float32.cast(row_align), Float32.cast(col_align))
+      __return_value = LibGtk.icon_view_scroll_to_path((to_unsafe as LibGtk::IconView*), (path.to_unsafe as LibGtk::TreePath*), Bool.new(use_align), Float32.new(row_align), Float32.new(col_align))
       __return_value
     end
 
@@ -231,22 +231,22 @@ module Gtk
     end
 
     def activate_on_single_click=(single)
-      __return_value = LibGtk.icon_view_set_activate_on_single_click((to_unsafe as LibGtk::IconView*), Bool.cast(single))
+      __return_value = LibGtk.icon_view_set_activate_on_single_click((to_unsafe as LibGtk::IconView*), Bool.new(single))
       __return_value
     end
 
     def column_spacing=(column_spacing)
-      __return_value = LibGtk.icon_view_set_column_spacing((to_unsafe as LibGtk::IconView*), Int32.cast(column_spacing))
+      __return_value = LibGtk.icon_view_set_column_spacing((to_unsafe as LibGtk::IconView*), Int32.new(column_spacing))
       __return_value
     end
 
     def columns=(columns)
-      __return_value = LibGtk.icon_view_set_columns((to_unsafe as LibGtk::IconView*), Int32.cast(columns))
+      __return_value = LibGtk.icon_view_set_columns((to_unsafe as LibGtk::IconView*), Int32.new(columns))
       __return_value
     end
 
     def set_cursor(path, cell, start_editing)
-      __return_value = LibGtk.icon_view_set_cursor((to_unsafe as LibGtk::IconView*), (path.to_unsafe as LibGtk::TreePath*), cell && (cell.to_unsafe as LibGtk::CellRenderer*), Bool.cast(start_editing))
+      __return_value = LibGtk.icon_view_set_cursor((to_unsafe as LibGtk::IconView*), (path.to_unsafe as LibGtk::TreePath*), cell && (cell.to_unsafe as LibGtk::CellRenderer*), Bool.new(start_editing))
       __return_value
     end
 
@@ -261,22 +261,22 @@ module Gtk
     end
 
     def item_padding=(item_padding)
-      __return_value = LibGtk.icon_view_set_item_padding((to_unsafe as LibGtk::IconView*), Int32.cast(item_padding))
+      __return_value = LibGtk.icon_view_set_item_padding((to_unsafe as LibGtk::IconView*), Int32.new(item_padding))
       __return_value
     end
 
     def item_width=(item_width)
-      __return_value = LibGtk.icon_view_set_item_width((to_unsafe as LibGtk::IconView*), Int32.cast(item_width))
+      __return_value = LibGtk.icon_view_set_item_width((to_unsafe as LibGtk::IconView*), Int32.new(item_width))
       __return_value
     end
 
     def margin=(margin)
-      __return_value = LibGtk.icon_view_set_margin((to_unsafe as LibGtk::IconView*), Int32.cast(margin))
+      __return_value = LibGtk.icon_view_set_margin((to_unsafe as LibGtk::IconView*), Int32.new(margin))
       __return_value
     end
 
     def markup_column=(column)
-      __return_value = LibGtk.icon_view_set_markup_column((to_unsafe as LibGtk::IconView*), Int32.cast(column))
+      __return_value = LibGtk.icon_view_set_markup_column((to_unsafe as LibGtk::IconView*), Int32.new(column))
       __return_value
     end
 
@@ -286,17 +286,17 @@ module Gtk
     end
 
     def pixbuf_column=(column)
-      __return_value = LibGtk.icon_view_set_pixbuf_column((to_unsafe as LibGtk::IconView*), Int32.cast(column))
+      __return_value = LibGtk.icon_view_set_pixbuf_column((to_unsafe as LibGtk::IconView*), Int32.new(column))
       __return_value
     end
 
     def reorderable=(reorderable)
-      __return_value = LibGtk.icon_view_set_reorderable((to_unsafe as LibGtk::IconView*), Bool.cast(reorderable))
+      __return_value = LibGtk.icon_view_set_reorderable((to_unsafe as LibGtk::IconView*), Bool.new(reorderable))
       __return_value
     end
 
     def row_spacing=(row_spacing)
-      __return_value = LibGtk.icon_view_set_row_spacing((to_unsafe as LibGtk::IconView*), Int32.cast(row_spacing))
+      __return_value = LibGtk.icon_view_set_row_spacing((to_unsafe as LibGtk::IconView*), Int32.new(row_spacing))
       __return_value
     end
 
@@ -306,12 +306,12 @@ module Gtk
     end
 
     def spacing=(spacing)
-      __return_value = LibGtk.icon_view_set_spacing((to_unsafe as LibGtk::IconView*), Int32.cast(spacing))
+      __return_value = LibGtk.icon_view_set_spacing((to_unsafe as LibGtk::IconView*), Int32.new(spacing))
       __return_value
     end
 
     def text_column=(column)
-      __return_value = LibGtk.icon_view_set_text_column((to_unsafe as LibGtk::IconView*), Int32.cast(column))
+      __return_value = LibGtk.icon_view_set_text_column((to_unsafe as LibGtk::IconView*), Int32.new(column))
       __return_value
     end
 
@@ -321,7 +321,7 @@ module Gtk
     end
 
     def tooltip_column=(column)
-      __return_value = LibGtk.icon_view_set_tooltip_column((to_unsafe as LibGtk::IconView*), Int32.cast(column))
+      __return_value = LibGtk.icon_view_set_tooltip_column((to_unsafe as LibGtk::IconView*), Int32.new(column))
       __return_value
     end
 

@@ -6,7 +6,7 @@ module Gio
     end
 
     def add_action_entries(entries, n_entries, user_data)
-      __return_value = LibGio.action_map_add_action_entries((to_unsafe as LibGio::ActionMap*), entries, Int32.cast(n_entries), user_data)
+      __return_value = LibGio.action_map_add_action_entries((to_unsafe as LibGio::ActionMap*), entries, Int32.new(n_entries), user_data)
       __return_value
     end
 

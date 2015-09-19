@@ -35,7 +35,7 @@ module GLib
     end
 
     def update(data, length)
-      __return_value = LibGLib.checksum_update((to_unsafe as LibGLib::Checksum*), data, Int64.cast(length))
+      __return_value = LibGLib.checksum_update((to_unsafe as LibGLib::Checksum*), data, Int64.new(length))
       __return_value
     end
 

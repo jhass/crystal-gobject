@@ -30,7 +30,7 @@ module Gtk
     end
 
     def size(width, height)
-      __return_value = LibGtk.layout_get_size((to_unsafe as LibGtk::Layout*), UInt32.cast(width), UInt32.cast(height))
+      __return_value = LibGtk.layout_get_size((to_unsafe as LibGtk::Layout*), UInt32.new(width), UInt32.new(height))
       __return_value
     end
 
@@ -40,12 +40,12 @@ module Gtk
     end
 
     def move(child_widget, x, y)
-      __return_value = LibGtk.layout_move((to_unsafe as LibGtk::Layout*), (child_widget.to_unsafe as LibGtk::Widget*), Int32.cast(x), Int32.cast(y))
+      __return_value = LibGtk.layout_move((to_unsafe as LibGtk::Layout*), (child_widget.to_unsafe as LibGtk::Widget*), Int32.new(x), Int32.new(y))
       __return_value
     end
 
     def put(child_widget, x, y)
-      __return_value = LibGtk.layout_put((to_unsafe as LibGtk::Layout*), (child_widget.to_unsafe as LibGtk::Widget*), Int32.cast(x), Int32.cast(y))
+      __return_value = LibGtk.layout_put((to_unsafe as LibGtk::Layout*), (child_widget.to_unsafe as LibGtk::Widget*), Int32.new(x), Int32.new(y))
       __return_value
     end
 
@@ -55,7 +55,7 @@ module Gtk
     end
 
     def set_size(width, height)
-      __return_value = LibGtk.layout_set_size((to_unsafe as LibGtk::Layout*), UInt32.cast(width), UInt32.cast(height))
+      __return_value = LibGtk.layout_set_size((to_unsafe as LibGtk::Layout*), UInt32.new(width), UInt32.new(height))
       __return_value
     end
 

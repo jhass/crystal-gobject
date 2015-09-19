@@ -10,7 +10,7 @@ module GObject
     end
 
     def self.new_internal(n_prealloced)
-      __return_value = LibGObject.value_array_new(UInt32.cast(n_prealloced))
+      __return_value = LibGObject.value_array_new(UInt32.new(n_prealloced))
       GObject::ValueArray.new(__return_value)
     end
 
@@ -30,12 +30,12 @@ module GObject
     end
 
     def nth(index)
-      __return_value = LibGObject.value_array_get_nth((to_unsafe as LibGObject::ValueArray*), UInt32.cast(index))
+      __return_value = LibGObject.value_array_get_nth((to_unsafe as LibGObject::ValueArray*), UInt32.new(index))
       GObject::Value.new(__return_value)
     end
 
     def insert(index, value)
-      __return_value = LibGObject.value_array_insert((to_unsafe as LibGObject::ValueArray*), UInt32.cast(index), value && (value.to_unsafe as LibGObject::Value*))
+      __return_value = LibGObject.value_array_insert((to_unsafe as LibGObject::ValueArray*), UInt32.new(index), value && (value.to_unsafe as LibGObject::Value*))
       GObject::ValueArray.new(__return_value)
     end
 
@@ -45,7 +45,7 @@ module GObject
     end
 
     def remove(index)
-      __return_value = LibGObject.value_array_remove((to_unsafe as LibGObject::ValueArray*), UInt32.cast(index))
+      __return_value = LibGObject.value_array_remove((to_unsafe as LibGObject::ValueArray*), UInt32.new(index))
       GObject::ValueArray.new(__return_value)
     end
 

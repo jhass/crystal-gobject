@@ -25,8 +25,8 @@ module Gtk
     end
 
     def data(length)
-      __return_value = LibGtk.selection_data_get_data((to_unsafe as LibGtk::SelectionData*), Int32.cast(length))
-      PointerIterator.new(__return_value) {|__item_99| __item_99 }
+      __return_value = LibGtk.selection_data_get_data((to_unsafe as LibGtk::SelectionData*), Int32.new(length))
+      PointerIterator.new(__return_value) {|__item_14| __item_14 }
     end
 
     def display
@@ -60,7 +60,7 @@ module Gtk
     end
 
     def targets(targets, n_atoms)
-      __return_value = LibGtk.selection_data_get_targets((to_unsafe as LibGtk::SelectionData*), targets, Int32.cast(n_atoms))
+      __return_value = LibGtk.selection_data_get_targets((to_unsafe as LibGtk::SelectionData*), targets, Int32.new(n_atoms))
       __return_value
     end
 
@@ -71,11 +71,11 @@ module Gtk
 
     def uris
       __return_value = LibGtk.selection_data_get_uris((to_unsafe as LibGtk::SelectionData*))
-      PointerIterator.new(__return_value) {|__item_0| raise "Expected string but got null" unless __item_0; String.new(__item_0) }
+      PointerIterator.new(__return_value) {|__item_26| raise "Expected string but got null" unless __item_26; String.new(__item_26) }
     end
 
     def set(type, format, data, length)
-      __return_value = LibGtk.selection_data_set((to_unsafe as LibGtk::SelectionData*), (type.to_unsafe as LibGdk::Atom*), Int32.cast(format), data, Int32.cast(length))
+      __return_value = LibGtk.selection_data_set((to_unsafe as LibGtk::SelectionData*), (type.to_unsafe as LibGdk::Atom*), Int32.new(format), data, Int32.new(length))
       __return_value
     end
 
@@ -85,7 +85,7 @@ module Gtk
     end
 
     def set_text(str, len)
-      __return_value = LibGtk.selection_data_set_text((to_unsafe as LibGtk::SelectionData*), str, Int32.cast(len))
+      __return_value = LibGtk.selection_data_set_text((to_unsafe as LibGtk::SelectionData*), str, Int32.new(len))
       __return_value
     end
 
@@ -95,7 +95,7 @@ module Gtk
     end
 
     def targets_include_image(writable)
-      __return_value = LibGtk.selection_data_targets_include_image((to_unsafe as LibGtk::SelectionData*), Bool.cast(writable))
+      __return_value = LibGtk.selection_data_targets_include_image((to_unsafe as LibGtk::SelectionData*), Bool.new(writable))
       __return_value
     end
 

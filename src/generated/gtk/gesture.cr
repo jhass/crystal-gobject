@@ -17,7 +17,7 @@ module Gtk
     end
 
     def bounding_box_center(x, y)
-      __return_value = LibGtk.gesture_get_bounding_box_center((to_unsafe as LibGtk::Gesture*), Float64.cast(x), Float64.cast(y))
+      __return_value = LibGtk.gesture_get_bounding_box_center((to_unsafe as LibGtk::Gesture*), Float64.new(x), Float64.new(y))
       __return_value
     end
 
@@ -42,7 +42,7 @@ module Gtk
     end
 
     def point(sequence, x, y)
-      __return_value = LibGtk.gesture_get_point((to_unsafe as LibGtk::Gesture*), sequence && (sequence.to_unsafe as LibGdk::EventSequence*), Float64.cast(x), Float64.cast(y))
+      __return_value = LibGtk.gesture_get_point((to_unsafe as LibGtk::Gesture*), sequence && (sequence.to_unsafe as LibGdk::EventSequence*), Float64.new(x), Float64.new(y))
       __return_value
     end
 

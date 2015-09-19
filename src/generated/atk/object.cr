@@ -83,7 +83,7 @@ module Atk
     end
 
     def notify_state_change(state, value)
-      __return_value = LibAtk.object_notify_state_change((to_unsafe as LibAtk::Object*), UInt64.cast(state), Bool.cast(value))
+      __return_value = LibAtk.object_notify_state_change((to_unsafe as LibAtk::Object*), UInt64.new(state), Bool.new(value))
       __return_value
     end
 
@@ -93,7 +93,7 @@ module Atk
     end
 
     def ref_accessible_child(i)
-      __return_value = LibAtk.object_ref_accessible_child((to_unsafe as LibAtk::Object*), Int32.cast(i))
+      __return_value = LibAtk.object_ref_accessible_child((to_unsafe as LibAtk::Object*), Int32.new(i))
       Atk::Object.new(__return_value)
     end
 
@@ -108,7 +108,7 @@ module Atk
     end
 
     def remove_property_change_handler(handler_id)
-      __return_value = LibAtk.object_remove_property_change_handler((to_unsafe as LibAtk::Object*), UInt32.cast(handler_id))
+      __return_value = LibAtk.object_remove_property_change_handler((to_unsafe as LibAtk::Object*), UInt32.new(handler_id))
       __return_value
     end
 

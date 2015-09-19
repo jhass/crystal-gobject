@@ -53,7 +53,7 @@ module Gtk
     end
 
     def self.position_menu(menu, x, y, push_in, user_data)
-      __return_value = LibGtk.status_icon_position_menu((menu.to_unsafe as LibGtk::Menu*), Int32.cast(x), Int32.cast(y), Bool.cast(push_in), (user_data.to_unsafe as LibGtk::StatusIcon*))
+      __return_value = LibGtk.status_icon_position_menu((menu.to_unsafe as LibGtk::Menu*), Int32.new(x), Int32.new(y), Bool.new(push_in), (user_data.to_unsafe as LibGtk::StatusIcon*))
       __return_value
     end
 
@@ -158,7 +158,7 @@ module Gtk
     end
 
     def has_tooltip=(has_tooltip)
-      __return_value = LibGtk.status_icon_set_has_tooltip((to_unsafe as LibGtk::StatusIcon*), Bool.cast(has_tooltip))
+      __return_value = LibGtk.status_icon_set_has_tooltip((to_unsafe as LibGtk::StatusIcon*), Bool.new(has_tooltip))
       __return_value
     end
 
@@ -188,7 +188,7 @@ module Gtk
     end
 
     def visible=(visible)
-      __return_value = LibGtk.status_icon_set_visible((to_unsafe as LibGtk::StatusIcon*), Bool.cast(visible))
+      __return_value = LibGtk.status_icon_set_visible((to_unsafe as LibGtk::StatusIcon*), Bool.new(visible))
       __return_value
     end
 

@@ -30,12 +30,12 @@ module Gtk
 
     def accels_for_action(detailed_action_name)
       __return_value = LibGtk.application_get_accels_for_action((to_unsafe as LibGtk::Application*), detailed_action_name)
-      PointerIterator.new(__return_value) {|__item_63| raise "Expected string but got null" unless __item_63; String.new(__item_63) }
+      PointerIterator.new(__return_value) {|__item_60| raise "Expected string but got null" unless __item_60; String.new(__item_60) }
     end
 
     def actions_for_accel(accel)
       __return_value = LibGtk.application_get_actions_for_accel((to_unsafe as LibGtk::Application*), accel)
-      PointerIterator.new(__return_value) {|__item_51| raise "Expected string but got null" unless __item_51; String.new(__item_51) }
+      PointerIterator.new(__return_value) {|__item_78| raise "Expected string but got null" unless __item_78; String.new(__item_78) }
     end
 
     def active_window
@@ -59,7 +59,7 @@ module Gtk
     end
 
     def window_by_id(id)
-      __return_value = LibGtk.application_get_window_by_id((to_unsafe as LibGtk::Application*), UInt32.cast(id))
+      __return_value = LibGtk.application_get_window_by_id((to_unsafe as LibGtk::Application*), UInt32.new(id))
       Gtk::Window.new(__return_value)
     end
 
@@ -80,7 +80,7 @@ module Gtk
 
     def list_action_descriptions
       __return_value = LibGtk.application_list_action_descriptions((to_unsafe as LibGtk::Application*))
-      PointerIterator.new(__return_value) {|__item_90| raise "Expected string but got null" unless __item_90; String.new(__item_90) }
+      PointerIterator.new(__return_value) {|__item_71| raise "Expected string but got null" unless __item_71; String.new(__item_71) }
     end
 
     def prefers_app_menu
@@ -114,7 +114,7 @@ module Gtk
     end
 
     def uninhibit(cookie)
-      __return_value = LibGtk.application_uninhibit((to_unsafe as LibGtk::Application*), UInt32.cast(cookie))
+      __return_value = LibGtk.application_uninhibit((to_unsafe as LibGtk::Application*), UInt32.new(cookie))
       __return_value
     end
 

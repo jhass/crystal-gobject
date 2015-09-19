@@ -29,7 +29,7 @@ module Gtk
     end
 
     def self.new_from_icon_name(icon_name, size)
-      __return_value = LibGtk.button_new_from_icon_name(icon_name, Int32.cast(size))
+      __return_value = LibGtk.button_new_from_icon_name(icon_name, Int32.new(size))
       Gtk::Widget.new(__return_value)
     end
 
@@ -59,7 +59,7 @@ module Gtk
     end
 
     def alignment(xalign, yalign)
-      __return_value = LibGtk.button_get_alignment((to_unsafe as LibGtk::Button*), Float32.cast(xalign), Float32.cast(yalign))
+      __return_value = LibGtk.button_get_alignment((to_unsafe as LibGtk::Button*), Float32.new(xalign), Float32.new(yalign))
       __return_value
     end
 
@@ -124,17 +124,17 @@ module Gtk
     end
 
     def set_alignment(xalign, yalign)
-      __return_value = LibGtk.button_set_alignment((to_unsafe as LibGtk::Button*), Float32.cast(xalign), Float32.cast(yalign))
+      __return_value = LibGtk.button_set_alignment((to_unsafe as LibGtk::Button*), Float32.new(xalign), Float32.new(yalign))
       __return_value
     end
 
     def always_show_image=(always_show)
-      __return_value = LibGtk.button_set_always_show_image((to_unsafe as LibGtk::Button*), Bool.cast(always_show))
+      __return_value = LibGtk.button_set_always_show_image((to_unsafe as LibGtk::Button*), Bool.new(always_show))
       __return_value
     end
 
     def focus_on_click=(focus_on_click)
-      __return_value = LibGtk.button_set_focus_on_click((to_unsafe as LibGtk::Button*), Bool.cast(focus_on_click))
+      __return_value = LibGtk.button_set_focus_on_click((to_unsafe as LibGtk::Button*), Bool.new(focus_on_click))
       __return_value
     end
 
@@ -159,12 +159,12 @@ module Gtk
     end
 
     def use_stock=(use_stock)
-      __return_value = LibGtk.button_set_use_stock((to_unsafe as LibGtk::Button*), Bool.cast(use_stock))
+      __return_value = LibGtk.button_set_use_stock((to_unsafe as LibGtk::Button*), Bool.new(use_stock))
       __return_value
     end
 
     def use_underline=(use_underline)
-      __return_value = LibGtk.button_set_use_underline((to_unsafe as LibGtk::Button*), Bool.cast(use_underline))
+      __return_value = LibGtk.button_set_use_underline((to_unsafe as LibGtk::Button*), Bool.new(use_underline))
       __return_value
     end
 

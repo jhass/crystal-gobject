@@ -47,17 +47,17 @@ module Gtk
     end
 
     def active=(is_active)
-      __return_value = LibGtk.toggle_button_set_active((to_unsafe as LibGtk::ToggleButton*), Bool.cast(is_active))
+      __return_value = LibGtk.toggle_button_set_active((to_unsafe as LibGtk::ToggleButton*), Bool.new(is_active))
       __return_value
     end
 
     def inconsistent=(setting)
-      __return_value = LibGtk.toggle_button_set_inconsistent((to_unsafe as LibGtk::ToggleButton*), Bool.cast(setting))
+      __return_value = LibGtk.toggle_button_set_inconsistent((to_unsafe as LibGtk::ToggleButton*), Bool.new(setting))
       __return_value
     end
 
     def mode=(draw_indicator)
-      __return_value = LibGtk.toggle_button_set_mode((to_unsafe as LibGtk::ToggleButton*), Bool.cast(draw_indicator))
+      __return_value = LibGtk.toggle_button_set_mode((to_unsafe as LibGtk::ToggleButton*), Bool.new(draw_indicator))
       __return_value
     end
 

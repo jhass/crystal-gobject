@@ -60,7 +60,7 @@ module Gdk
     end
 
     def monitor_at_point(x, y)
-      __return_value = LibGdk.screen_get_monitor_at_point((to_unsafe as LibGdk::Screen*), Int32.cast(x), Int32.cast(y))
+      __return_value = LibGdk.screen_get_monitor_at_point((to_unsafe as LibGdk::Screen*), Int32.new(x), Int32.new(y))
       __return_value
     end
 
@@ -70,32 +70,32 @@ module Gdk
     end
 
     def monitor_geometry(monitor_num, dest)
-      __return_value = LibGdk.screen_get_monitor_geometry((to_unsafe as LibGdk::Screen*), Int32.cast(monitor_num), dest)
+      __return_value = LibGdk.screen_get_monitor_geometry((to_unsafe as LibGdk::Screen*), Int32.new(monitor_num), dest)
       __return_value
     end
 
     def monitor_height_mm(monitor_num)
-      __return_value = LibGdk.screen_get_monitor_height_mm((to_unsafe as LibGdk::Screen*), Int32.cast(monitor_num))
+      __return_value = LibGdk.screen_get_monitor_height_mm((to_unsafe as LibGdk::Screen*), Int32.new(monitor_num))
       __return_value
     end
 
     def monitor_plug_name(monitor_num)
-      __return_value = LibGdk.screen_get_monitor_plug_name((to_unsafe as LibGdk::Screen*), Int32.cast(monitor_num))
+      __return_value = LibGdk.screen_get_monitor_plug_name((to_unsafe as LibGdk::Screen*), Int32.new(monitor_num))
       raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
     end
 
     def monitor_scale_factor(monitor_num)
-      __return_value = LibGdk.screen_get_monitor_scale_factor((to_unsafe as LibGdk::Screen*), Int32.cast(monitor_num))
+      __return_value = LibGdk.screen_get_monitor_scale_factor((to_unsafe as LibGdk::Screen*), Int32.new(monitor_num))
       __return_value
     end
 
     def monitor_width_mm(monitor_num)
-      __return_value = LibGdk.screen_get_monitor_width_mm((to_unsafe as LibGdk::Screen*), Int32.cast(monitor_num))
+      __return_value = LibGdk.screen_get_monitor_width_mm((to_unsafe as LibGdk::Screen*), Int32.new(monitor_num))
       __return_value
     end
 
     def monitor_workarea(monitor_num, dest)
-      __return_value = LibGdk.screen_get_monitor_workarea((to_unsafe as LibGdk::Screen*), Int32.cast(monitor_num), dest)
+      __return_value = LibGdk.screen_get_monitor_workarea((to_unsafe as LibGdk::Screen*), Int32.new(monitor_num), dest)
       __return_value
     end
 
@@ -180,7 +180,7 @@ module Gdk
     end
 
     def resolution=(dpi)
-      __return_value = LibGdk.screen_set_resolution((to_unsafe as LibGdk::Screen*), Float64.cast(dpi))
+      __return_value = LibGdk.screen_set_resolution((to_unsafe as LibGdk::Screen*), Float64.new(dpi))
       __return_value
     end
 

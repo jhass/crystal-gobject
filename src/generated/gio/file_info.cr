@@ -74,7 +74,7 @@ module Gio
 
     def attribute_stringv(attribute)
       __return_value = LibGio.file_info_get_attribute_stringv((to_unsafe as LibGio::FileInfo*), attribute)
-      PointerIterator.new(__return_value) {|__item_29| raise "Expected string but got null" unless __item_29; String.new(__item_29) }
+      PointerIterator.new(__return_value) {|__item_71| raise "Expected string but got null" unless __item_71; String.new(__item_71) }
     end
 
     def attribute_type(attribute)
@@ -184,7 +184,7 @@ module Gio
 
     def list_attributes(name_space)
       __return_value = LibGio.file_info_list_attributes((to_unsafe as LibGio::FileInfo*), name_space)
-      PointerIterator.new(__return_value) {|__item_0| raise "Expected string but got null" unless __item_0; String.new(__item_0) } if __return_value
+      PointerIterator.new(__return_value) {|__item_1| raise "Expected string but got null" unless __item_1; String.new(__item_1) } if __return_value
     end
 
     def remove_attribute(attribute)
@@ -198,7 +198,7 @@ module Gio
     end
 
     def set_attribute_boolean(attribute, attr_value)
-      __return_value = LibGio.file_info_set_attribute_boolean((to_unsafe as LibGio::FileInfo*), attribute, Bool.cast(attr_value))
+      __return_value = LibGio.file_info_set_attribute_boolean((to_unsafe as LibGio::FileInfo*), attribute, Bool.new(attr_value))
       __return_value
     end
 
@@ -208,12 +208,12 @@ module Gio
     end
 
     def set_attribute_int32(attribute, attr_value)
-      __return_value = LibGio.file_info_set_attribute_int32((to_unsafe as LibGio::FileInfo*), attribute, Int32.cast(attr_value))
+      __return_value = LibGio.file_info_set_attribute_int32((to_unsafe as LibGio::FileInfo*), attribute, Int32.new(attr_value))
       __return_value
     end
 
     def set_attribute_int64(attribute, attr_value)
-      __return_value = LibGio.file_info_set_attribute_int64((to_unsafe as LibGio::FileInfo*), attribute, Int64.cast(attr_value))
+      __return_value = LibGio.file_info_set_attribute_int64((to_unsafe as LibGio::FileInfo*), attribute, Int64.new(attr_value))
       __return_value
     end
 
@@ -243,12 +243,12 @@ module Gio
     end
 
     def set_attribute_uint32(attribute, attr_value)
-      __return_value = LibGio.file_info_set_attribute_uint32((to_unsafe as LibGio::FileInfo*), attribute, UInt32.cast(attr_value))
+      __return_value = LibGio.file_info_set_attribute_uint32((to_unsafe as LibGio::FileInfo*), attribute, UInt32.new(attr_value))
       __return_value
     end
 
     def set_attribute_uint64(attribute, attr_value)
-      __return_value = LibGio.file_info_set_attribute_uint64((to_unsafe as LibGio::FileInfo*), attribute, UInt64.cast(attr_value))
+      __return_value = LibGio.file_info_set_attribute_uint64((to_unsafe as LibGio::FileInfo*), attribute, UInt64.new(attr_value))
       __return_value
     end
 
@@ -278,12 +278,12 @@ module Gio
     end
 
     def is_hidden=(is_hidden)
-      __return_value = LibGio.file_info_set_is_hidden((to_unsafe as LibGio::FileInfo*), Bool.cast(is_hidden))
+      __return_value = LibGio.file_info_set_is_hidden((to_unsafe as LibGio::FileInfo*), Bool.new(is_hidden))
       __return_value
     end
 
     def is_symlink=(is_symlink)
-      __return_value = LibGio.file_info_set_is_symlink((to_unsafe as LibGio::FileInfo*), Bool.cast(is_symlink))
+      __return_value = LibGio.file_info_set_is_symlink((to_unsafe as LibGio::FileInfo*), Bool.new(is_symlink))
       __return_value
     end
 
@@ -298,12 +298,12 @@ module Gio
     end
 
     def size=(size)
-      __return_value = LibGio.file_info_set_size((to_unsafe as LibGio::FileInfo*), Int64.cast(size))
+      __return_value = LibGio.file_info_set_size((to_unsafe as LibGio::FileInfo*), Int64.new(size))
       __return_value
     end
 
     def sort_order=(sort_order)
-      __return_value = LibGio.file_info_set_sort_order((to_unsafe as LibGio::FileInfo*), Int32.cast(sort_order))
+      __return_value = LibGio.file_info_set_sort_order((to_unsafe as LibGio::FileInfo*), Int32.new(sort_order))
       __return_value
     end
 

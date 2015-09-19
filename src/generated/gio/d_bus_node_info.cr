@@ -17,7 +17,7 @@ module Gio
     end
 
     def generate_xml(indent, string_builder)
-      __return_value = LibGio.d_bus_node_info_generate_xml((to_unsafe as LibGio::DBusNodeInfo*), UInt32.cast(indent), string_builder)
+      __return_value = LibGio.d_bus_node_info_generate_xml((to_unsafe as LibGio::DBusNodeInfo*), UInt32.new(indent), string_builder)
       __return_value
     end
 

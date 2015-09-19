@@ -111,12 +111,12 @@ module Gtk
     end
 
     def set_double_property(name, v_double, origin)
-      __return_value = LibGtk.settings_set_double_property((to_unsafe as LibGtk::Settings*), name, Float64.cast(v_double), origin)
+      __return_value = LibGtk.settings_set_double_property((to_unsafe as LibGtk::Settings*), name, Float64.new(v_double), origin)
       __return_value
     end
 
     def set_long_property(name, v_long, origin)
-      __return_value = LibGtk.settings_set_long_property((to_unsafe as LibGtk::Settings*), name, Int64.cast(v_long), origin)
+      __return_value = LibGtk.settings_set_long_property((to_unsafe as LibGtk::Settings*), name, Int64.new(v_long), origin)
       __return_value
     end
 

@@ -10,12 +10,12 @@ module Gst
     end
 
     def self.new_wrapped(flags, data, maxsize, offset, size, user_data, notify : LibGLib::DestroyNotify?)
-      __return_value = LibGst.memory_new_wrapped(flags, data, UInt64.cast(maxsize), UInt64.cast(offset), UInt64.cast(size), user_data && user_data, notify && notify)
+      __return_value = LibGst.memory_new_wrapped(flags, data, UInt64.new(maxsize), UInt64.new(offset), UInt64.new(size), user_data && user_data, notify && notify)
       Gst::Memory.new(__return_value)
     end
 
     def copy(offset, size)
-      __return_value = LibGst.memory_copy((to_unsafe as LibGst::Memory*), Int64.cast(offset), Int64.cast(size))
+      __return_value = LibGst.memory_copy((to_unsafe as LibGst::Memory*), Int64.new(offset), Int64.new(size))
       Gst::Memory.new(__return_value)
     end
 
@@ -45,12 +45,12 @@ module Gst
     end
 
     def resize(offset, size)
-      __return_value = LibGst.memory_resize((to_unsafe as LibGst::Memory*), Int64.cast(offset), UInt64.cast(size))
+      __return_value = LibGst.memory_resize((to_unsafe as LibGst::Memory*), Int64.new(offset), UInt64.new(size))
       __return_value
     end
 
     def share(offset, size)
-      __return_value = LibGst.memory_share((to_unsafe as LibGst::Memory*), Int64.cast(offset), Int64.cast(size))
+      __return_value = LibGst.memory_share((to_unsafe as LibGst::Memory*), Int64.new(offset), Int64.new(size))
       Gst::Memory.new(__return_value)
     end
 

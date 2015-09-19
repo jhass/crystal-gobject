@@ -32,13 +32,13 @@ module Gtk
     end
 
     def application_info(app_name, app_exec, count, time)
-      __return_value = LibGtk.recent_info_get_application_info((to_unsafe as LibGtk::RecentInfo*), app_name, app_exec, UInt32.cast(count), Int64.cast(time))
+      __return_value = LibGtk.recent_info_get_application_info((to_unsafe as LibGtk::RecentInfo*), app_name, app_exec, UInt32.new(count), Int64.new(time))
       __return_value
     end
 
     def applications(length)
-      __return_value = LibGtk.recent_info_get_applications((to_unsafe as LibGtk::RecentInfo*), UInt64.cast(length))
-      PointerIterator.new(__return_value) {|__item_97| raise "Expected string but got null" unless __item_97; String.new(__item_97) }
+      __return_value = LibGtk.recent_info_get_applications((to_unsafe as LibGtk::RecentInfo*), UInt64.new(length))
+      PointerIterator.new(__return_value) {|__item_59| raise "Expected string but got null" unless __item_59; String.new(__item_59) }
     end
 
     def description
@@ -57,12 +57,12 @@ module Gtk
     end
 
     def groups(length)
-      __return_value = LibGtk.recent_info_get_groups((to_unsafe as LibGtk::RecentInfo*), UInt64.cast(length))
-      PointerIterator.new(__return_value) {|__item_49| raise "Expected string but got null" unless __item_49; String.new(__item_49) }
+      __return_value = LibGtk.recent_info_get_groups((to_unsafe as LibGtk::RecentInfo*), UInt64.new(length))
+      PointerIterator.new(__return_value) {|__item_30| raise "Expected string but got null" unless __item_30; String.new(__item_30) }
     end
 
     def icon(size)
-      __return_value = LibGtk.recent_info_get_icon((to_unsafe as LibGtk::RecentInfo*), Int32.cast(size))
+      __return_value = LibGtk.recent_info_get_icon((to_unsafe as LibGtk::RecentInfo*), Int32.new(size))
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 

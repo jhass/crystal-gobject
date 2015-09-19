@@ -111,7 +111,7 @@ module Gio
     end
 
     def send_signal(signal_num)
-      __return_value = LibGio.subprocess_send_signal((to_unsafe as LibGio::Subprocess*), Int32.cast(signal_num))
+      __return_value = LibGio.subprocess_send_signal((to_unsafe as LibGio::Subprocess*), Int32.new(signal_num))
       __return_value
     end
 

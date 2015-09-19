@@ -15,7 +15,7 @@ module Gdk
     end
 
     def self.intern(atom_name, only_if_exists)
-      __return_value = LibGdk.atom_intern(atom_name, Bool.cast(only_if_exists))
+      __return_value = LibGdk.atom_intern(atom_name, Bool.new(only_if_exists))
       Gdk::Atom.new(__return_value)
     end
 

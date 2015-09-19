@@ -30,7 +30,7 @@ module GLib
     end
 
     def help(main_help, group)
-      __return_value = LibGLib.option_context_get_help((to_unsafe as LibGLib::OptionContext*), Bool.cast(main_help), group && (group.to_unsafe as LibGLib::OptionGroup*))
+      __return_value = LibGLib.option_context_get_help((to_unsafe as LibGLib::OptionContext*), Bool.new(main_help), group && (group.to_unsafe as LibGLib::OptionGroup*))
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 
@@ -61,7 +61,7 @@ module GLib
 
     def parse(argc, argv)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.option_context_parse((to_unsafe as LibGLib::OptionContext*), argc && Int32.cast(argc), argv && argv, pointerof(__error))
+      __return_value = LibGLib.option_context_parse((to_unsafe as LibGLib::OptionContext*), argc && Int32.new(argc), argv && argv, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -79,12 +79,12 @@ module GLib
     end
 
     def help_enabled=(help_enabled)
-      __return_value = LibGLib.option_context_set_help_enabled((to_unsafe as LibGLib::OptionContext*), Bool.cast(help_enabled))
+      __return_value = LibGLib.option_context_set_help_enabled((to_unsafe as LibGLib::OptionContext*), Bool.new(help_enabled))
       __return_value
     end
 
     def ignore_unknown_options=(ignore_unknown)
-      __return_value = LibGLib.option_context_set_ignore_unknown_options((to_unsafe as LibGLib::OptionContext*), Bool.cast(ignore_unknown))
+      __return_value = LibGLib.option_context_set_ignore_unknown_options((to_unsafe as LibGLib::OptionContext*), Bool.new(ignore_unknown))
       __return_value
     end
 
@@ -94,7 +94,7 @@ module GLib
     end
 
     def strict_posix=(strict_posix)
-      __return_value = LibGLib.option_context_set_strict_posix((to_unsafe as LibGLib::OptionContext*), Bool.cast(strict_posix))
+      __return_value = LibGLib.option_context_set_strict_posix((to_unsafe as LibGLib::OptionContext*), Bool.new(strict_posix))
       __return_value
     end
 

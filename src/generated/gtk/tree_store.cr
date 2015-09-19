@@ -13,7 +13,7 @@ module Gtk
     # Implements TreeModel
     # Implements TreeSortable
     def self.new_internal(n_columns, types)
-      __return_value = LibGtk.tree_store_new(Int32.cast(n_columns), types)
+      __return_value = LibGtk.tree_store_new(Int32.new(n_columns), types)
       Gtk::TreeStore.new(__return_value)
     end
 
@@ -28,7 +28,7 @@ module Gtk
     end
 
     def insert(iter, parent, position)
-      __return_value = LibGtk.tree_store_insert((to_unsafe as LibGtk::TreeStore*), iter, parent && (parent.to_unsafe as LibGtk::TreeIter*), Int32.cast(position))
+      __return_value = LibGtk.tree_store_insert((to_unsafe as LibGtk::TreeStore*), iter, parent && (parent.to_unsafe as LibGtk::TreeIter*), Int32.new(position))
       __return_value
     end
 
@@ -43,7 +43,7 @@ module Gtk
     end
 
     def insert_with_values(iter, parent, position, columns, values, n_values)
-      __return_value = LibGtk.tree_store_insert_with_values((to_unsafe as LibGtk::TreeStore*), iter, parent && (parent.to_unsafe as LibGtk::TreeIter*), Int32.cast(position), columns, values, Int32.cast(n_values))
+      __return_value = LibGtk.tree_store_insert_with_values((to_unsafe as LibGtk::TreeStore*), iter, parent && (parent.to_unsafe as LibGtk::TreeIter*), Int32.new(position), columns, values, Int32.new(n_values))
       __return_value
     end
 
@@ -83,17 +83,17 @@ module Gtk
     end
 
     def set_column_types(n_columns, types)
-      __return_value = LibGtk.tree_store_set_column_types((to_unsafe as LibGtk::TreeStore*), Int32.cast(n_columns), types)
+      __return_value = LibGtk.tree_store_set_column_types((to_unsafe as LibGtk::TreeStore*), Int32.new(n_columns), types)
       __return_value
     end
 
     def set_value(iter, column, value)
-      __return_value = LibGtk.tree_store_set_value((to_unsafe as LibGtk::TreeStore*), (iter.to_unsafe as LibGtk::TreeIter*), Int32.cast(column), (value.to_unsafe as LibGObject::Value*))
+      __return_value = LibGtk.tree_store_set_value((to_unsafe as LibGtk::TreeStore*), (iter.to_unsafe as LibGtk::TreeIter*), Int32.new(column), (value.to_unsafe as LibGObject::Value*))
       __return_value
     end
 
     def set(iter, columns, values, n_values)
-      __return_value = LibGtk.tree_store_set((to_unsafe as LibGtk::TreeStore*), (iter.to_unsafe as LibGtk::TreeIter*), columns, values, Int32.cast(n_values))
+      __return_value = LibGtk.tree_store_set((to_unsafe as LibGtk::TreeStore*), (iter.to_unsafe as LibGtk::TreeIter*), columns, values, Int32.new(n_values))
       __return_value
     end
 

@@ -30,7 +30,7 @@ module Gst
     end
 
     def self.value(value, index)
-      __return_value = LibGst.value_list_get_value((value.to_unsafe as LibGObject::Value*), UInt32.cast(index))
+      __return_value = LibGst.value_list_get_value((value.to_unsafe as LibGObject::Value*), UInt32.new(index))
       GObject::Value.new(__return_value)
     end
 

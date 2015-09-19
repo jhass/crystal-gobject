@@ -45,7 +45,7 @@ module Gst
     end
 
     def copy_nth(nth)
-      __return_value = LibGst.caps_copy_nth((to_unsafe as LibGst::Caps*), UInt32.cast(nth))
+      __return_value = LibGst.caps_copy_nth((to_unsafe as LibGst::Caps*), UInt32.new(nth))
       Gst::Caps.new(__return_value)
     end
 
@@ -55,7 +55,7 @@ module Gst
     end
 
     def features(index)
-      __return_value = LibGst.caps_get_features((to_unsafe as LibGst::Caps*), UInt32.cast(index))
+      __return_value = LibGst.caps_get_features((to_unsafe as LibGst::Caps*), UInt32.new(index))
       Gst::CapsFeatures.new(__return_value)
     end
 
@@ -65,7 +65,7 @@ module Gst
     end
 
     def structure(index)
-      __return_value = LibGst.caps_get_structure((to_unsafe as LibGst::Caps*), UInt32.cast(index))
+      __return_value = LibGst.caps_get_structure((to_unsafe as LibGst::Caps*), UInt32.new(index))
       Gst::Structure.new(__return_value)
     end
 
@@ -150,12 +150,12 @@ module Gst
     end
 
     def remove_structure(idx)
-      __return_value = LibGst.caps_remove_structure((to_unsafe as LibGst::Caps*), UInt32.cast(idx))
+      __return_value = LibGst.caps_remove_structure((to_unsafe as LibGst::Caps*), UInt32.new(idx))
       __return_value
     end
 
     def set_features(index, features)
-      __return_value = LibGst.caps_set_features((to_unsafe as LibGst::Caps*), UInt32.cast(index), features && (features.to_unsafe as LibGst::CapsFeatures*))
+      __return_value = LibGst.caps_set_features((to_unsafe as LibGst::Caps*), UInt32.new(index), features && (features.to_unsafe as LibGst::CapsFeatures*))
       __return_value
     end
 
@@ -170,7 +170,7 @@ module Gst
     end
 
     def steal_structure(index)
-      __return_value = LibGst.caps_steal_structure((to_unsafe as LibGst::Caps*), UInt32.cast(index))
+      __return_value = LibGst.caps_steal_structure((to_unsafe as LibGst::Caps*), UInt32.new(index))
       Gst::Structure.new(__return_value)
     end
 

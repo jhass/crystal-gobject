@@ -46,12 +46,12 @@ module Gio
     end
 
     def set_value(value, length)
-      __return_value = LibGio.tls_password_set_value((to_unsafe as LibGio::TlsPassword*), value, Int64.cast(length))
+      __return_value = LibGio.tls_password_set_value((to_unsafe as LibGio::TlsPassword*), value, Int64.new(length))
       __return_value
     end
 
     def set_value_full(value, length, destroy : LibGLib::DestroyNotify?)
-      __return_value = LibGio.tls_password_set_value_full((to_unsafe as LibGio::TlsPassword*), value, Int64.cast(length), destroy && destroy)
+      __return_value = LibGio.tls_password_set_value_full((to_unsafe as LibGio::TlsPassword*), value, Int64.new(length), destroy && destroy)
       __return_value
     end
 

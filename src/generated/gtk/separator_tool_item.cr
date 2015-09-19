@@ -24,7 +24,7 @@ module Gtk
     end
 
     def draw=(draw)
-      __return_value = LibGtk.separator_tool_item_set_draw((to_unsafe as LibGtk::SeparatorToolItem*), Bool.cast(draw))
+      __return_value = LibGtk.separator_tool_item_set_draw((to_unsafe as LibGtk::SeparatorToolItem*), Bool.new(draw))
       __return_value
     end
 

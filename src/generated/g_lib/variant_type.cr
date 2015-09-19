@@ -30,7 +30,7 @@ module GLib
     end
 
     def self.new_tuple(items, length)
-      __return_value = LibGLib.variant_type_new_tuple(items, Int32.cast(length))
+      __return_value = LibGLib.variant_type_new_tuple(items, Int32.new(length))
       GLib::VariantType.new(__return_value)
     end
 

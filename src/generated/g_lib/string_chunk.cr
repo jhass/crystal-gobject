@@ -30,7 +30,7 @@ module GLib
     end
 
     def insert_len(string, len)
-      __return_value = LibGLib.string_chunk_insert_len((to_unsafe as LibGLib::StringChunk*), string, Int64.cast(len))
+      __return_value = LibGLib.string_chunk_insert_len((to_unsafe as LibGLib::StringChunk*), string, Int64.new(len))
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 

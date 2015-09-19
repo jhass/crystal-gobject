@@ -10,7 +10,7 @@ module GLib
     end
 
     def free(immediate, wait)
-      __return_value = LibGLib.thread_pool_free((to_unsafe as LibGLib::ThreadPool*), Bool.cast(immediate), Bool.cast(wait))
+      __return_value = LibGLib.thread_pool_free((to_unsafe as LibGLib::ThreadPool*), Bool.new(immediate), Bool.new(wait))
       __return_value
     end
 
@@ -33,7 +33,7 @@ module GLib
 
     def set_max_threads(max_threads)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.thread_pool_set_max_threads((to_unsafe as LibGLib::ThreadPool*), Int32.cast(max_threads), pointerof(__error))
+      __return_value = LibGLib.thread_pool_set_max_threads((to_unsafe as LibGLib::ThreadPool*), Int32.new(max_threads), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -59,12 +59,12 @@ module GLib
     end
 
     def self.set_max_idle_time(interval)
-      __return_value = LibGLib.thread_pool_set_max_idle_time(UInt32.cast(interval))
+      __return_value = LibGLib.thread_pool_set_max_idle_time(UInt32.new(interval))
       __return_value
     end
 
     def self.set_max_unused_threads(max_threads)
-      __return_value = LibGLib.thread_pool_set_max_unused_threads(Int32.cast(max_threads))
+      __return_value = LibGLib.thread_pool_set_max_unused_threads(Int32.new(max_threads))
       __return_value
     end
 

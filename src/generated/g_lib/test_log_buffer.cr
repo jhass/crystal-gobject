@@ -15,7 +15,7 @@ module GLib
     end
 
     def push(n_bytes, bytes)
-      __return_value = LibGLib.test_log_buffer_push((to_unsafe as LibGLib::TestLogBuffer*), UInt32.cast(n_bytes), bytes)
+      __return_value = LibGLib.test_log_buffer_push((to_unsafe as LibGLib::TestLogBuffer*), UInt32.new(n_bytes), bytes)
       __return_value
     end
 

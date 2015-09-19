@@ -13,7 +13,7 @@ module Pango
     end
 
     def font(wc)
-      __return_value = LibPango.fontset_get_font((to_unsafe as LibPango::Fontset*), UInt32.cast(wc))
+      __return_value = LibPango.fontset_get_font((to_unsafe as LibPango::Fontset*), UInt32.new(wc))
       Pango::Font.new(__return_value)
     end
 

@@ -10,7 +10,7 @@ module GLib
     end
 
     def self.new_internal(tz, year, month, day, hour, minute, seconds)
-      __return_value = LibGLib.date_time_new((tz.to_unsafe as LibGLib::TimeZone*), Int32.cast(year), Int32.cast(month), Int32.cast(day), Int32.cast(hour), Int32.cast(minute), Float64.cast(seconds))
+      __return_value = LibGLib.date_time_new((tz.to_unsafe as LibGLib::TimeZone*), Int32.new(year), Int32.new(month), Int32.new(day), Int32.new(hour), Int32.new(minute), Float64.new(seconds))
       GLib::DateTime.new(__return_value)
     end
 
@@ -25,17 +25,17 @@ module GLib
     end
 
     def self.new_from_unix_local(t)
-      __return_value = LibGLib.date_time_new_from_unix_local(Int64.cast(t))
+      __return_value = LibGLib.date_time_new_from_unix_local(Int64.new(t))
       GLib::DateTime.new(__return_value)
     end
 
     def self.new_from_unix_utc(t)
-      __return_value = LibGLib.date_time_new_from_unix_utc(Int64.cast(t))
+      __return_value = LibGLib.date_time_new_from_unix_utc(Int64.new(t))
       GLib::DateTime.new(__return_value)
     end
 
     def self.new_local(year, month, day, hour, minute, seconds)
-      __return_value = LibGLib.date_time_new_local(Int32.cast(year), Int32.cast(month), Int32.cast(day), Int32.cast(hour), Int32.cast(minute), Float64.cast(seconds))
+      __return_value = LibGLib.date_time_new_local(Int32.new(year), Int32.new(month), Int32.new(day), Int32.new(hour), Int32.new(minute), Float64.new(seconds))
       GLib::DateTime.new(__return_value)
     end
 
@@ -55,52 +55,52 @@ module GLib
     end
 
     def self.new_utc(year, month, day, hour, minute, seconds)
-      __return_value = LibGLib.date_time_new_utc(Int32.cast(year), Int32.cast(month), Int32.cast(day), Int32.cast(hour), Int32.cast(minute), Float64.cast(seconds))
+      __return_value = LibGLib.date_time_new_utc(Int32.new(year), Int32.new(month), Int32.new(day), Int32.new(hour), Int32.new(minute), Float64.new(seconds))
       GLib::DateTime.new(__return_value)
     end
 
     def add(timespan)
-      __return_value = LibGLib.date_time_add((to_unsafe as LibGLib::DateTime*), Int64.cast(timespan))
+      __return_value = LibGLib.date_time_add((to_unsafe as LibGLib::DateTime*), Int64.new(timespan))
       GLib::DateTime.new(__return_value)
     end
 
     def add_days(days)
-      __return_value = LibGLib.date_time_add_days((to_unsafe as LibGLib::DateTime*), Int32.cast(days))
+      __return_value = LibGLib.date_time_add_days((to_unsafe as LibGLib::DateTime*), Int32.new(days))
       GLib::DateTime.new(__return_value)
     end
 
     def add_full(years, months, days, hours, minutes, seconds)
-      __return_value = LibGLib.date_time_add_full((to_unsafe as LibGLib::DateTime*), Int32.cast(years), Int32.cast(months), Int32.cast(days), Int32.cast(hours), Int32.cast(minutes), Float64.cast(seconds))
+      __return_value = LibGLib.date_time_add_full((to_unsafe as LibGLib::DateTime*), Int32.new(years), Int32.new(months), Int32.new(days), Int32.new(hours), Int32.new(minutes), Float64.new(seconds))
       GLib::DateTime.new(__return_value)
     end
 
     def add_hours(hours)
-      __return_value = LibGLib.date_time_add_hours((to_unsafe as LibGLib::DateTime*), Int32.cast(hours))
+      __return_value = LibGLib.date_time_add_hours((to_unsafe as LibGLib::DateTime*), Int32.new(hours))
       GLib::DateTime.new(__return_value)
     end
 
     def add_minutes(minutes)
-      __return_value = LibGLib.date_time_add_minutes((to_unsafe as LibGLib::DateTime*), Int32.cast(minutes))
+      __return_value = LibGLib.date_time_add_minutes((to_unsafe as LibGLib::DateTime*), Int32.new(minutes))
       GLib::DateTime.new(__return_value)
     end
 
     def add_months(months)
-      __return_value = LibGLib.date_time_add_months((to_unsafe as LibGLib::DateTime*), Int32.cast(months))
+      __return_value = LibGLib.date_time_add_months((to_unsafe as LibGLib::DateTime*), Int32.new(months))
       GLib::DateTime.new(__return_value)
     end
 
     def add_seconds(seconds)
-      __return_value = LibGLib.date_time_add_seconds((to_unsafe as LibGLib::DateTime*), Float64.cast(seconds))
+      __return_value = LibGLib.date_time_add_seconds((to_unsafe as LibGLib::DateTime*), Float64.new(seconds))
       GLib::DateTime.new(__return_value)
     end
 
     def add_weeks(weeks)
-      __return_value = LibGLib.date_time_add_weeks((to_unsafe as LibGLib::DateTime*), Int32.cast(weeks))
+      __return_value = LibGLib.date_time_add_weeks((to_unsafe as LibGLib::DateTime*), Int32.new(weeks))
       GLib::DateTime.new(__return_value)
     end
 
     def add_years(years)
-      __return_value = LibGLib.date_time_add_years((to_unsafe as LibGLib::DateTime*), Int32.cast(years))
+      __return_value = LibGLib.date_time_add_years((to_unsafe as LibGLib::DateTime*), Int32.new(years))
       GLib::DateTime.new(__return_value)
     end
 
@@ -185,7 +185,7 @@ module GLib
     end
 
     def ymd(year, month, day)
-      __return_value = LibGLib.date_time_get_ymd((to_unsafe as LibGLib::DateTime*), Int32.cast(year), Int32.cast(month), Int32.cast(day))
+      __return_value = LibGLib.date_time_get_ymd((to_unsafe as LibGLib::DateTime*), Int32.new(year), Int32.new(month), Int32.new(day))
       __return_value
     end
 

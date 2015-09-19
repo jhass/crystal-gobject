@@ -1138,11 +1138,11 @@ lib LibAtk
   ##    Callbacks
   ###########################################
 
- alias EventListener = LibAtk::Object* -> Void
- alias EventListenerInit =  -> Void
- alias FocusHandler = LibAtk::Object*, Bool -> Void
- alias Function = Void* -> Bool
- alias KeySnoopFunc = LibAtk::KeyEventStruct*, Void* -> Int32
- alias PropertyChangeHandler = LibAtk::Object*, LibAtk::PropertyValues* -> Void
+ type EventListener = LibAtk::Object* -> Void
+ type EventListenerInit =  -> Void
+ type FocusHandler = LibAtk::Object*, Bool -> Void
+ type Function = Void* -> Bool
+ type KeySnoopFunc = LibAtk::KeyEventStruct*, Void* -> Int32
+ type PropertyChangeHandler = LibAtk::Object*, LibAtk::PropertyValues* -> Void
 end
 

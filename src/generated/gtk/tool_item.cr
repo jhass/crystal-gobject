@@ -106,17 +106,17 @@ module Gtk
     end
 
     def expand=(expand)
-      __return_value = LibGtk.tool_item_set_expand((to_unsafe as LibGtk::ToolItem*), Bool.cast(expand))
+      __return_value = LibGtk.tool_item_set_expand((to_unsafe as LibGtk::ToolItem*), Bool.new(expand))
       __return_value
     end
 
     def homogeneous=(homogeneous)
-      __return_value = LibGtk.tool_item_set_homogeneous((to_unsafe as LibGtk::ToolItem*), Bool.cast(homogeneous))
+      __return_value = LibGtk.tool_item_set_homogeneous((to_unsafe as LibGtk::ToolItem*), Bool.new(homogeneous))
       __return_value
     end
 
     def is_important=(is_important)
-      __return_value = LibGtk.tool_item_set_is_important((to_unsafe as LibGtk::ToolItem*), Bool.cast(is_important))
+      __return_value = LibGtk.tool_item_set_is_important((to_unsafe as LibGtk::ToolItem*), Bool.new(is_important))
       __return_value
     end
 
@@ -136,17 +136,17 @@ module Gtk
     end
 
     def use_drag_window=(use_drag_window)
-      __return_value = LibGtk.tool_item_set_use_drag_window((to_unsafe as LibGtk::ToolItem*), Bool.cast(use_drag_window))
+      __return_value = LibGtk.tool_item_set_use_drag_window((to_unsafe as LibGtk::ToolItem*), Bool.new(use_drag_window))
       __return_value
     end
 
     def visible_horizontal=(visible_horizontal)
-      __return_value = LibGtk.tool_item_set_visible_horizontal((to_unsafe as LibGtk::ToolItem*), Bool.cast(visible_horizontal))
+      __return_value = LibGtk.tool_item_set_visible_horizontal((to_unsafe as LibGtk::ToolItem*), Bool.new(visible_horizontal))
       __return_value
     end
 
     def visible_vertical=(visible_vertical)
-      __return_value = LibGtk.tool_item_set_visible_vertical((to_unsafe as LibGtk::ToolItem*), Bool.cast(visible_vertical))
+      __return_value = LibGtk.tool_item_set_visible_vertical((to_unsafe as LibGtk::ToolItem*), Bool.new(visible_vertical))
       __return_value
     end
 

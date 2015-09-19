@@ -85,7 +85,7 @@ module Gtk
     end
 
     def use_underline=(use_underline)
-      __return_value = LibGtk.tool_button_set_use_underline((to_unsafe as LibGtk::ToolButton*), Bool.cast(use_underline))
+      __return_value = LibGtk.tool_button_set_use_underline((to_unsafe as LibGtk::ToolButton*), Bool.new(use_underline))
       __return_value
     end
 

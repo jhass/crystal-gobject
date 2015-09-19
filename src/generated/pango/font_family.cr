@@ -18,7 +18,7 @@ module Pango
     end
 
     def list_faces(faces, n_faces)
-      __return_value = LibPango.font_family_list_faces((to_unsafe as LibPango::FontFamily*), faces, Int32.cast(n_faces))
+      __return_value = LibPango.font_family_list_faces((to_unsafe as LibPango::FontFamily*), faces, Int32.new(n_faces))
       __return_value
     end
 

@@ -33,7 +33,7 @@ module Gtk
     end
 
     def hard_margins(top, bottom, left, right)
-      __return_value = LibGtk.print_context_get_hard_margins((to_unsafe as LibGtk::PrintContext*), Float64.cast(top), Float64.cast(bottom), Float64.cast(left), Float64.cast(right))
+      __return_value = LibGtk.print_context_get_hard_margins((to_unsafe as LibGtk::PrintContext*), Float64.new(top), Float64.new(bottom), Float64.new(left), Float64.new(right))
       __return_value
     end
 
@@ -58,7 +58,7 @@ module Gtk
     end
 
     def set_cairo_context(cr, dpi_x, dpi_y)
-      __return_value = LibGtk.print_context_set_cairo_context((to_unsafe as LibGtk::PrintContext*), (cr.to_unsafe as LibCairo::Context*), Float64.cast(dpi_x), Float64.cast(dpi_y))
+      __return_value = LibGtk.print_context_set_cairo_context((to_unsafe as LibGtk::PrintContext*), (cr.to_unsafe as LibCairo::Context*), Float64.new(dpi_x), Float64.new(dpi_y))
       __return_value
     end
 

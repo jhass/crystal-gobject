@@ -75,12 +75,12 @@ module Gtk
     end
 
     def has_subtitle=(setting)
-      __return_value = LibGtk.header_bar_set_has_subtitle((to_unsafe as LibGtk::HeaderBar*), Bool.cast(setting))
+      __return_value = LibGtk.header_bar_set_has_subtitle((to_unsafe as LibGtk::HeaderBar*), Bool.new(setting))
       __return_value
     end
 
     def show_close_button=(setting)
-      __return_value = LibGtk.header_bar_set_show_close_button((to_unsafe as LibGtk::HeaderBar*), Bool.cast(setting))
+      __return_value = LibGtk.header_bar_set_show_close_button((to_unsafe as LibGtk::HeaderBar*), Bool.new(setting))
       __return_value
     end
 

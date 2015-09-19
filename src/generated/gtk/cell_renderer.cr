@@ -34,27 +34,27 @@ module Gtk
     end
 
     def alignment(xalign, yalign)
-      __return_value = LibGtk.cell_renderer_get_alignment((to_unsafe as LibGtk::CellRenderer*), Float32.cast(xalign), Float32.cast(yalign))
+      __return_value = LibGtk.cell_renderer_get_alignment((to_unsafe as LibGtk::CellRenderer*), Float32.new(xalign), Float32.new(yalign))
       __return_value
     end
 
     def fixed_size(width, height)
-      __return_value = LibGtk.cell_renderer_get_fixed_size((to_unsafe as LibGtk::CellRenderer*), Int32.cast(width), Int32.cast(height))
+      __return_value = LibGtk.cell_renderer_get_fixed_size((to_unsafe as LibGtk::CellRenderer*), Int32.new(width), Int32.new(height))
       __return_value
     end
 
     def padding(xpad, ypad)
-      __return_value = LibGtk.cell_renderer_get_padding((to_unsafe as LibGtk::CellRenderer*), Int32.cast(xpad), Int32.cast(ypad))
+      __return_value = LibGtk.cell_renderer_get_padding((to_unsafe as LibGtk::CellRenderer*), Int32.new(xpad), Int32.new(ypad))
       __return_value
     end
 
     def preferred_height(widget, minimum_size, natural_size)
-      __return_value = LibGtk.cell_renderer_get_preferred_height((to_unsafe as LibGtk::CellRenderer*), (widget.to_unsafe as LibGtk::Widget*), Int32.cast(minimum_size), Int32.cast(natural_size))
+      __return_value = LibGtk.cell_renderer_get_preferred_height((to_unsafe as LibGtk::CellRenderer*), (widget.to_unsafe as LibGtk::Widget*), Int32.new(minimum_size), Int32.new(natural_size))
       __return_value
     end
 
     def preferred_height_for_width(widget, width, minimum_height, natural_height)
-      __return_value = LibGtk.cell_renderer_get_preferred_height_for_width((to_unsafe as LibGtk::CellRenderer*), (widget.to_unsafe as LibGtk::Widget*), Int32.cast(width), Int32.cast(minimum_height), Int32.cast(natural_height))
+      __return_value = LibGtk.cell_renderer_get_preferred_height_for_width((to_unsafe as LibGtk::CellRenderer*), (widget.to_unsafe as LibGtk::Widget*), Int32.new(width), Int32.new(minimum_height), Int32.new(natural_height))
       __return_value
     end
 
@@ -64,12 +64,12 @@ module Gtk
     end
 
     def preferred_width(widget, minimum_size, natural_size)
-      __return_value = LibGtk.cell_renderer_get_preferred_width((to_unsafe as LibGtk::CellRenderer*), (widget.to_unsafe as LibGtk::Widget*), Int32.cast(minimum_size), Int32.cast(natural_size))
+      __return_value = LibGtk.cell_renderer_get_preferred_width((to_unsafe as LibGtk::CellRenderer*), (widget.to_unsafe as LibGtk::Widget*), Int32.new(minimum_size), Int32.new(natural_size))
       __return_value
     end
 
     def preferred_width_for_height(widget, height, minimum_width, natural_width)
-      __return_value = LibGtk.cell_renderer_get_preferred_width_for_height((to_unsafe as LibGtk::CellRenderer*), (widget.to_unsafe as LibGtk::Widget*), Int32.cast(height), Int32.cast(minimum_width), Int32.cast(natural_width))
+      __return_value = LibGtk.cell_renderer_get_preferred_width_for_height((to_unsafe as LibGtk::CellRenderer*), (widget.to_unsafe as LibGtk::Widget*), Int32.new(height), Int32.new(minimum_width), Int32.new(natural_width))
       __return_value
     end
 
@@ -84,7 +84,7 @@ module Gtk
     end
 
     def size(widget, cell_area, x_offset, y_offset, width, height)
-      __return_value = LibGtk.cell_renderer_get_size((to_unsafe as LibGtk::CellRenderer*), (widget.to_unsafe as LibGtk::Widget*), cell_area && (cell_area.to_unsafe as LibCairo::RectangleInt*), Int32.cast(x_offset), Int32.cast(y_offset), Int32.cast(width), Int32.cast(height))
+      __return_value = LibGtk.cell_renderer_get_size((to_unsafe as LibGtk::CellRenderer*), (widget.to_unsafe as LibGtk::Widget*), cell_area && (cell_area.to_unsafe as LibCairo::RectangleInt*), Int32.new(x_offset), Int32.new(y_offset), Int32.new(width), Int32.new(height))
       __return_value
     end
 
@@ -109,27 +109,27 @@ module Gtk
     end
 
     def set_alignment(xalign, yalign)
-      __return_value = LibGtk.cell_renderer_set_alignment((to_unsafe as LibGtk::CellRenderer*), Float32.cast(xalign), Float32.cast(yalign))
+      __return_value = LibGtk.cell_renderer_set_alignment((to_unsafe as LibGtk::CellRenderer*), Float32.new(xalign), Float32.new(yalign))
       __return_value
     end
 
     def set_fixed_size(width, height)
-      __return_value = LibGtk.cell_renderer_set_fixed_size((to_unsafe as LibGtk::CellRenderer*), Int32.cast(width), Int32.cast(height))
+      __return_value = LibGtk.cell_renderer_set_fixed_size((to_unsafe as LibGtk::CellRenderer*), Int32.new(width), Int32.new(height))
       __return_value
     end
 
     def set_padding(xpad, ypad)
-      __return_value = LibGtk.cell_renderer_set_padding((to_unsafe as LibGtk::CellRenderer*), Int32.cast(xpad), Int32.cast(ypad))
+      __return_value = LibGtk.cell_renderer_set_padding((to_unsafe as LibGtk::CellRenderer*), Int32.new(xpad), Int32.new(ypad))
       __return_value
     end
 
     def sensitive=(sensitive)
-      __return_value = LibGtk.cell_renderer_set_sensitive((to_unsafe as LibGtk::CellRenderer*), Bool.cast(sensitive))
+      __return_value = LibGtk.cell_renderer_set_sensitive((to_unsafe as LibGtk::CellRenderer*), Bool.new(sensitive))
       __return_value
     end
 
     def visible=(visible)
-      __return_value = LibGtk.cell_renderer_set_visible((to_unsafe as LibGtk::CellRenderer*), Bool.cast(visible))
+      __return_value = LibGtk.cell_renderer_set_visible((to_unsafe as LibGtk::CellRenderer*), Bool.new(visible))
       __return_value
     end
 
@@ -139,7 +139,7 @@ module Gtk
     end
 
     def stop_editing(canceled)
-      __return_value = LibGtk.cell_renderer_stop_editing((to_unsafe as LibGtk::CellRenderer*), Bool.cast(canceled))
+      __return_value = LibGtk.cell_renderer_stop_editing((to_unsafe as LibGtk::CellRenderer*), Bool.new(canceled))
       __return_value
     end
 

@@ -22,7 +22,7 @@ module Gio
     end
 
     def self.new_from_data(data, len, destroy : LibGLib::DestroyNotify?)
-      __return_value = LibGio.memory_input_stream_new_from_data(data, Int64.cast(len), destroy && destroy)
+      __return_value = LibGio.memory_input_stream_new_from_data(data, Int64.new(len), destroy && destroy)
       Gio::InputStream.new(__return_value)
     end
 
@@ -32,7 +32,7 @@ module Gio
     end
 
     def add_data(data, len, destroy : LibGLib::DestroyNotify?)
-      __return_value = LibGio.memory_input_stream_add_data((to_unsafe as LibGio::MemoryInputStream*), data, Int64.cast(len), destroy && destroy)
+      __return_value = LibGio.memory_input_stream_add_data((to_unsafe as LibGio::MemoryInputStream*), data, Int64.new(len), destroy && destroy)
       __return_value
     end
 

@@ -14,7 +14,7 @@ module Gtk
 
 
     def self.new_internal(value, lower, upper, step_increment, page_increment, page_size)
-      __return_value = LibGtk.adjustment_new(Float64.cast(value), Float64.cast(lower), Float64.cast(upper), Float64.cast(step_increment), Float64.cast(page_increment), Float64.cast(page_size))
+      __return_value = LibGtk.adjustment_new(Float64.new(value), Float64.new(lower), Float64.new(upper), Float64.new(step_increment), Float64.new(page_increment), Float64.new(page_size))
       Gtk::Adjustment.new(__return_value)
     end
 
@@ -24,12 +24,12 @@ module Gtk
     end
 
     def clamp_page(lower, upper)
-      __return_value = LibGtk.adjustment_clamp_page((to_unsafe as LibGtk::Adjustment*), Float64.cast(lower), Float64.cast(upper))
+      __return_value = LibGtk.adjustment_clamp_page((to_unsafe as LibGtk::Adjustment*), Float64.new(lower), Float64.new(upper))
       __return_value
     end
 
     def configure(value, lower, upper, step_increment, page_increment, page_size)
-      __return_value = LibGtk.adjustment_configure((to_unsafe as LibGtk::Adjustment*), Float64.cast(value), Float64.cast(lower), Float64.cast(upper), Float64.cast(step_increment), Float64.cast(page_increment), Float64.cast(page_size))
+      __return_value = LibGtk.adjustment_configure((to_unsafe as LibGtk::Adjustment*), Float64.new(value), Float64.new(lower), Float64.new(upper), Float64.new(step_increment), Float64.new(page_increment), Float64.new(page_size))
       __return_value
     end
 
@@ -69,32 +69,32 @@ module Gtk
     end
 
     def lower=(lower)
-      __return_value = LibGtk.adjustment_set_lower((to_unsafe as LibGtk::Adjustment*), Float64.cast(lower))
+      __return_value = LibGtk.adjustment_set_lower((to_unsafe as LibGtk::Adjustment*), Float64.new(lower))
       __return_value
     end
 
     def page_increment=(page_increment)
-      __return_value = LibGtk.adjustment_set_page_increment((to_unsafe as LibGtk::Adjustment*), Float64.cast(page_increment))
+      __return_value = LibGtk.adjustment_set_page_increment((to_unsafe as LibGtk::Adjustment*), Float64.new(page_increment))
       __return_value
     end
 
     def page_size=(page_size)
-      __return_value = LibGtk.adjustment_set_page_size((to_unsafe as LibGtk::Adjustment*), Float64.cast(page_size))
+      __return_value = LibGtk.adjustment_set_page_size((to_unsafe as LibGtk::Adjustment*), Float64.new(page_size))
       __return_value
     end
 
     def step_increment=(step_increment)
-      __return_value = LibGtk.adjustment_set_step_increment((to_unsafe as LibGtk::Adjustment*), Float64.cast(step_increment))
+      __return_value = LibGtk.adjustment_set_step_increment((to_unsafe as LibGtk::Adjustment*), Float64.new(step_increment))
       __return_value
     end
 
     def upper=(upper)
-      __return_value = LibGtk.adjustment_set_upper((to_unsafe as LibGtk::Adjustment*), Float64.cast(upper))
+      __return_value = LibGtk.adjustment_set_upper((to_unsafe as LibGtk::Adjustment*), Float64.new(upper))
       __return_value
     end
 
     def value=(value)
-      __return_value = LibGtk.adjustment_set_value((to_unsafe as LibGtk::Adjustment*), Float64.cast(value))
+      __return_value = LibGtk.adjustment_set_value((to_unsafe as LibGtk::Adjustment*), Float64.new(value))
       __return_value
     end
 

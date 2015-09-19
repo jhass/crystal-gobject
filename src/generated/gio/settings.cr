@@ -40,12 +40,12 @@ module Gio
 
     def self.list_relocatable_schemas
       __return_value = LibGio.settings_list_relocatable_schemas
-      PointerIterator.new(__return_value) {|__item_29| raise "Expected string but got null" unless __item_29; String.new(__item_29) }
+      PointerIterator.new(__return_value) {|__item_47| raise "Expected string but got null" unless __item_47; String.new(__item_47) }
     end
 
     def self.list_schemas
       __return_value = LibGio.settings_list_schemas
-      PointerIterator.new(__return_value) {|__item_43| raise "Expected string but got null" unless __item_43; String.new(__item_43) }
+      PointerIterator.new(__return_value) {|__item_81| raise "Expected string but got null" unless __item_81; String.new(__item_81) }
     end
 
     def self.sync
@@ -69,7 +69,7 @@ module Gio
     end
 
     def bind_writable(key, object, property, inverted)
-      __return_value = LibGio.settings_bind_writable((to_unsafe as LibGio::Settings*), key, (object.to_unsafe as LibGObject::Object*), property, Bool.cast(inverted))
+      __return_value = LibGio.settings_bind_writable((to_unsafe as LibGio::Settings*), key, (object.to_unsafe as LibGObject::Object*), property, Bool.new(inverted))
       __return_value
     end
 
@@ -140,7 +140,7 @@ module Gio
 
     def strv(key)
       __return_value = LibGio.settings_get_strv((to_unsafe as LibGio::Settings*), key)
-      PointerIterator.new(__return_value) {|__item_99| raise "Expected string but got null" unless __item_99; String.new(__item_99) }
+      PointerIterator.new(__return_value) {|__item_32| raise "Expected string but got null" unless __item_32; String.new(__item_32) }
     end
 
     def uint(key)
@@ -165,12 +165,12 @@ module Gio
 
     def list_children
       __return_value = LibGio.settings_list_children((to_unsafe as LibGio::Settings*))
-      PointerIterator.new(__return_value) {|__item_52| raise "Expected string but got null" unless __item_52; String.new(__item_52) }
+      PointerIterator.new(__return_value) {|__item_77| raise "Expected string but got null" unless __item_77; String.new(__item_77) }
     end
 
     def list_keys
       __return_value = LibGio.settings_list_keys((to_unsafe as LibGio::Settings*))
-      PointerIterator.new(__return_value) {|__item_14| raise "Expected string but got null" unless __item_14; String.new(__item_14) }
+      PointerIterator.new(__return_value) {|__item_74| raise "Expected string but got null" unless __item_74; String.new(__item_74) }
     end
 
     def range_check(key, value)
@@ -189,27 +189,27 @@ module Gio
     end
 
     def set_boolean(key, value)
-      __return_value = LibGio.settings_set_boolean((to_unsafe as LibGio::Settings*), key, Bool.cast(value))
+      __return_value = LibGio.settings_set_boolean((to_unsafe as LibGio::Settings*), key, Bool.new(value))
       __return_value
     end
 
     def set_double(key, value)
-      __return_value = LibGio.settings_set_double((to_unsafe as LibGio::Settings*), key, Float64.cast(value))
+      __return_value = LibGio.settings_set_double((to_unsafe as LibGio::Settings*), key, Float64.new(value))
       __return_value
     end
 
     def set_enum(key, value)
-      __return_value = LibGio.settings_set_enum((to_unsafe as LibGio::Settings*), key, Int32.cast(value))
+      __return_value = LibGio.settings_set_enum((to_unsafe as LibGio::Settings*), key, Int32.new(value))
       __return_value
     end
 
     def set_flags(key, value)
-      __return_value = LibGio.settings_set_flags((to_unsafe as LibGio::Settings*), key, UInt32.cast(value))
+      __return_value = LibGio.settings_set_flags((to_unsafe as LibGio::Settings*), key, UInt32.new(value))
       __return_value
     end
 
     def set_int(key, value)
-      __return_value = LibGio.settings_set_int((to_unsafe as LibGio::Settings*), key, Int32.cast(value))
+      __return_value = LibGio.settings_set_int((to_unsafe as LibGio::Settings*), key, Int32.new(value))
       __return_value
     end
 
@@ -224,7 +224,7 @@ module Gio
     end
 
     def set_uint(key, value)
-      __return_value = LibGio.settings_set_uint((to_unsafe as LibGio::Settings*), key, UInt32.cast(value))
+      __return_value = LibGio.settings_set_uint((to_unsafe as LibGio::Settings*), key, UInt32.new(value))
       __return_value
     end
 

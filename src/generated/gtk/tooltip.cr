@@ -23,17 +23,17 @@ module Gtk
     end
 
     def set_icon_from_gicon(gicon, size)
-      __return_value = LibGtk.tooltip_set_icon_from_gicon((to_unsafe as LibGtk::Tooltip*), gicon && (gicon.to_unsafe as LibGio::Icon*), Int32.cast(size))
+      __return_value = LibGtk.tooltip_set_icon_from_gicon((to_unsafe as LibGtk::Tooltip*), gicon && (gicon.to_unsafe as LibGio::Icon*), Int32.new(size))
       __return_value
     end
 
     def set_icon_from_icon_name(icon_name, size)
-      __return_value = LibGtk.tooltip_set_icon_from_icon_name((to_unsafe as LibGtk::Tooltip*), icon_name && icon_name, Int32.cast(size))
+      __return_value = LibGtk.tooltip_set_icon_from_icon_name((to_unsafe as LibGtk::Tooltip*), icon_name && icon_name, Int32.new(size))
       __return_value
     end
 
     def set_icon_from_stock(stock_id, size)
-      __return_value = LibGtk.tooltip_set_icon_from_stock((to_unsafe as LibGtk::Tooltip*), stock_id && stock_id, Int32.cast(size))
+      __return_value = LibGtk.tooltip_set_icon_from_stock((to_unsafe as LibGtk::Tooltip*), stock_id && stock_id, Int32.new(size))
       __return_value
     end
 

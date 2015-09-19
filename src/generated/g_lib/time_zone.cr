@@ -30,22 +30,22 @@ module GLib
     end
 
     def find_interval(type, time)
-      __return_value = LibGLib.time_zone_find_interval((to_unsafe as LibGLib::TimeZone*), type, Int64.cast(time))
+      __return_value = LibGLib.time_zone_find_interval((to_unsafe as LibGLib::TimeZone*), type, Int64.new(time))
       __return_value
     end
 
     def abbreviation(interval)
-      __return_value = LibGLib.time_zone_get_abbreviation((to_unsafe as LibGLib::TimeZone*), Int32.cast(interval))
+      __return_value = LibGLib.time_zone_get_abbreviation((to_unsafe as LibGLib::TimeZone*), Int32.new(interval))
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 
     def offset(interval)
-      __return_value = LibGLib.time_zone_get_offset((to_unsafe as LibGLib::TimeZone*), Int32.cast(interval))
+      __return_value = LibGLib.time_zone_get_offset((to_unsafe as LibGLib::TimeZone*), Int32.new(interval))
       __return_value
     end
 
     def is_dst(interval)
-      __return_value = LibGLib.time_zone_is_dst((to_unsafe as LibGLib::TimeZone*), Int32.cast(interval))
+      __return_value = LibGLib.time_zone_is_dst((to_unsafe as LibGLib::TimeZone*), Int32.new(interval))
       __return_value
     end
 

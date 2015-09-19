@@ -88,12 +88,12 @@ module Gtk
     end
 
     def draw_sensitive=(draw_sensitive)
-      __return_value = LibGtk.cell_view_set_draw_sensitive((to_unsafe as LibGtk::CellView*), Bool.cast(draw_sensitive))
+      __return_value = LibGtk.cell_view_set_draw_sensitive((to_unsafe as LibGtk::CellView*), Bool.new(draw_sensitive))
       __return_value
     end
 
     def fit_model=(fit_model)
-      __return_value = LibGtk.cell_view_set_fit_model((to_unsafe as LibGtk::CellView*), Bool.cast(fit_model))
+      __return_value = LibGtk.cell_view_set_fit_model((to_unsafe as LibGtk::CellView*), Bool.new(fit_model))
       __return_value
     end
 

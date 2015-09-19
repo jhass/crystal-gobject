@@ -11,12 +11,12 @@ module Atk
     end
 
     def position(row, column)
-      __return_value = LibAtk.table_cell_get_position((to_unsafe as LibAtk::TableCell*), Int32.cast(row), Int32.cast(column))
+      __return_value = LibAtk.table_cell_get_position((to_unsafe as LibAtk::TableCell*), Int32.new(row), Int32.new(column))
       __return_value
     end
 
     def row_column_span(row, column, row_span, column_span)
-      __return_value = LibAtk.table_cell_get_row_column_span((to_unsafe as LibAtk::TableCell*), Int32.cast(row), Int32.cast(column), Int32.cast(row_span), Int32.cast(column_span))
+      __return_value = LibAtk.table_cell_get_row_column_span((to_unsafe as LibAtk::TableCell*), Int32.new(row), Int32.new(column), Int32.new(row_span), Int32.new(column_span))
       __return_value
     end
 

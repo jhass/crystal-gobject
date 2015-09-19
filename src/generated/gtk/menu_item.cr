@@ -89,12 +89,12 @@ module Gtk
     end
 
     def reserve_indicator=(reserve)
-      __return_value = LibGtk.menu_item_set_reserve_indicator((to_unsafe as LibGtk::MenuItem*), Bool.cast(reserve))
+      __return_value = LibGtk.menu_item_set_reserve_indicator((to_unsafe as LibGtk::MenuItem*), Bool.new(reserve))
       __return_value
     end
 
     def right_justified=(right_justified)
-      __return_value = LibGtk.menu_item_set_right_justified((to_unsafe as LibGtk::MenuItem*), Bool.cast(right_justified))
+      __return_value = LibGtk.menu_item_set_right_justified((to_unsafe as LibGtk::MenuItem*), Bool.new(right_justified))
       __return_value
     end
 
@@ -104,17 +104,17 @@ module Gtk
     end
 
     def use_underline=(setting)
-      __return_value = LibGtk.menu_item_set_use_underline((to_unsafe as LibGtk::MenuItem*), Bool.cast(setting))
+      __return_value = LibGtk.menu_item_set_use_underline((to_unsafe as LibGtk::MenuItem*), Bool.new(setting))
       __return_value
     end
 
     def toggle_size_allocate(allocation)
-      __return_value = LibGtk.menu_item_toggle_size_allocate((to_unsafe as LibGtk::MenuItem*), Int32.cast(allocation))
+      __return_value = LibGtk.menu_item_toggle_size_allocate((to_unsafe as LibGtk::MenuItem*), Int32.new(allocation))
       __return_value
     end
 
     def toggle_size_request(requisition)
-      __return_value = LibGtk.menu_item_toggle_size_request((to_unsafe as LibGtk::MenuItem*), Int32.cast(requisition))
+      __return_value = LibGtk.menu_item_toggle_size_request((to_unsafe as LibGtk::MenuItem*), Int32.new(requisition))
       __return_value
     end
 

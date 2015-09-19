@@ -38,12 +38,12 @@ module Gdk
     end
 
     def refresh_info(base_time, refresh_interval_return, presentation_time_return)
-      __return_value = LibGdk.frame_clock_get_refresh_info((to_unsafe as LibGdk::FrameClock*), Int64.cast(base_time), refresh_interval_return, presentation_time_return)
+      __return_value = LibGdk.frame_clock_get_refresh_info((to_unsafe as LibGdk::FrameClock*), Int64.new(base_time), refresh_interval_return, presentation_time_return)
       __return_value
     end
 
     def timings(frame_counter)
-      __return_value = LibGdk.frame_clock_get_timings((to_unsafe as LibGdk::FrameClock*), Int64.cast(frame_counter))
+      __return_value = LibGdk.frame_clock_get_timings((to_unsafe as LibGdk::FrameClock*), Int64.new(frame_counter))
       Gdk::FrameTimings.new(__return_value) if __return_value
     end
 

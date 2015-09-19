@@ -23,12 +23,12 @@ module Gdk
     end
 
     def self.best_with_both(depth, visual_type)
-      __return_value = LibGdk.visual_get_best_with_both(Int32.cast(depth), visual_type)
+      __return_value = LibGdk.visual_get_best_with_both(Int32.new(depth), visual_type)
       Gdk::Visual.new(__return_value) if __return_value
     end
 
     def self.best_with_depth(depth)
-      __return_value = LibGdk.visual_get_best_with_depth(Int32.cast(depth))
+      __return_value = LibGdk.visual_get_best_with_depth(Int32.new(depth))
       Gdk::Visual.new(__return_value)
     end
 
@@ -48,7 +48,7 @@ module Gdk
     end
 
     def blue_pixel_details(mask, shift, precision)
-      __return_value = LibGdk.visual_get_blue_pixel_details((to_unsafe as LibGdk::Visual*), UInt32.cast(mask), Int32.cast(shift), Int32.cast(precision))
+      __return_value = LibGdk.visual_get_blue_pixel_details((to_unsafe as LibGdk::Visual*), UInt32.new(mask), Int32.new(shift), Int32.new(precision))
       __return_value
     end
 
@@ -68,12 +68,12 @@ module Gdk
     end
 
     def green_pixel_details(mask, shift, precision)
-      __return_value = LibGdk.visual_get_green_pixel_details((to_unsafe as LibGdk::Visual*), UInt32.cast(mask), Int32.cast(shift), Int32.cast(precision))
+      __return_value = LibGdk.visual_get_green_pixel_details((to_unsafe as LibGdk::Visual*), UInt32.new(mask), Int32.new(shift), Int32.new(precision))
       __return_value
     end
 
     def red_pixel_details(mask, shift, precision)
-      __return_value = LibGdk.visual_get_red_pixel_details((to_unsafe as LibGdk::Visual*), UInt32.cast(mask), Int32.cast(shift), Int32.cast(precision))
+      __return_value = LibGdk.visual_get_red_pixel_details((to_unsafe as LibGdk::Visual*), UInt32.new(mask), Int32.new(shift), Int32.new(precision))
       __return_value
     end
 

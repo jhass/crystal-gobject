@@ -13,7 +13,7 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
     def self.new_internal(homogeneous, spacing)
-      __return_value = LibGtk.h_box_new(Bool.cast(homogeneous), Int32.cast(spacing))
+      __return_value = LibGtk.h_box_new(Bool.new(homogeneous), Int32.new(spacing))
       Gtk::Widget.new(__return_value)
     end
 

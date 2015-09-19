@@ -45,7 +45,7 @@ module Pango
     end
 
     def splice(other, pos, len)
-      __return_value = LibPango.attr_list_splice((to_unsafe as LibPango::AttrList*), (other.to_unsafe as LibPango::AttrList*), Int32.cast(pos), Int32.cast(len))
+      __return_value = LibPango.attr_list_splice((to_unsafe as LibPango::AttrList*), (other.to_unsafe as LibPango::AttrList*), Int32.new(pos), Int32.new(len))
       __return_value
     end
 

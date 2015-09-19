@@ -23,12 +23,12 @@ module Gtk
     end
 
     def self.palette_from_string(str, colors, n_colors)
-      __return_value = LibGtk.color_selection_palette_from_string(str, colors, Int32.cast(n_colors))
+      __return_value = LibGtk.color_selection_palette_from_string(str, colors, Int32.new(n_colors))
       __return_value
     end
 
     def self.palette_to_string(colors, n_colors)
-      __return_value = LibGtk.color_selection_palette_to_string(colors, Int32.cast(n_colors))
+      __return_value = LibGtk.color_selection_palette_to_string(colors, Int32.new(n_colors))
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 
@@ -78,7 +78,7 @@ module Gtk
     end
 
     def current_alpha=(alpha)
-      __return_value = LibGtk.color_selection_set_current_alpha((to_unsafe as LibGtk::ColorSelection*), UInt16.cast(alpha))
+      __return_value = LibGtk.color_selection_set_current_alpha((to_unsafe as LibGtk::ColorSelection*), UInt16.new(alpha))
       __return_value
     end
 
@@ -93,17 +93,17 @@ module Gtk
     end
 
     def has_opacity_control=(has_opacity)
-      __return_value = LibGtk.color_selection_set_has_opacity_control((to_unsafe as LibGtk::ColorSelection*), Bool.cast(has_opacity))
+      __return_value = LibGtk.color_selection_set_has_opacity_control((to_unsafe as LibGtk::ColorSelection*), Bool.new(has_opacity))
       __return_value
     end
 
     def has_palette=(has_palette)
-      __return_value = LibGtk.color_selection_set_has_palette((to_unsafe as LibGtk::ColorSelection*), Bool.cast(has_palette))
+      __return_value = LibGtk.color_selection_set_has_palette((to_unsafe as LibGtk::ColorSelection*), Bool.new(has_palette))
       __return_value
     end
 
     def previous_alpha=(alpha)
-      __return_value = LibGtk.color_selection_set_previous_alpha((to_unsafe as LibGtk::ColorSelection*), UInt16.cast(alpha))
+      __return_value = LibGtk.color_selection_set_previous_alpha((to_unsafe as LibGtk::ColorSelection*), UInt16.new(alpha))
       __return_value
     end
 

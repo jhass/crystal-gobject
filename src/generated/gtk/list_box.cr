@@ -44,12 +44,12 @@ module Gtk
     end
 
     def row_at_index(index)
-      __return_value = LibGtk.list_box_get_row_at_index((to_unsafe as LibGtk::ListBox*), Int32.cast(index))
+      __return_value = LibGtk.list_box_get_row_at_index((to_unsafe as LibGtk::ListBox*), Int32.new(index))
       Gtk::ListBoxRow.new(__return_value)
     end
 
     def row_at_y(y)
-      __return_value = LibGtk.list_box_get_row_at_y((to_unsafe as LibGtk::ListBox*), Int32.cast(y))
+      __return_value = LibGtk.list_box_get_row_at_y((to_unsafe as LibGtk::ListBox*), Int32.new(y))
       Gtk::ListBoxRow.new(__return_value)
     end
 
@@ -69,7 +69,7 @@ module Gtk
     end
 
     def insert(child, position)
-      __return_value = LibGtk.list_box_insert((to_unsafe as LibGtk::ListBox*), (child.to_unsafe as LibGtk::Widget*), Int32.cast(position))
+      __return_value = LibGtk.list_box_insert((to_unsafe as LibGtk::ListBox*), (child.to_unsafe as LibGtk::Widget*), Int32.new(position))
       __return_value
     end
 
@@ -109,7 +109,7 @@ module Gtk
     end
 
     def activate_on_single_click=(single)
-      __return_value = LibGtk.list_box_set_activate_on_single_click((to_unsafe as LibGtk::ListBox*), Bool.cast(single))
+      __return_value = LibGtk.list_box_set_activate_on_single_click((to_unsafe as LibGtk::ListBox*), Bool.new(single))
       __return_value
     end
 

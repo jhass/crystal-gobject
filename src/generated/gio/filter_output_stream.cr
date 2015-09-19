@@ -22,7 +22,7 @@ module Gio
     end
 
     def close_base_stream=(close_base)
-      __return_value = LibGio.filter_output_stream_set_close_base_stream((to_unsafe as LibGio::FilterOutputStream*), Bool.cast(close_base))
+      __return_value = LibGio.filter_output_stream_set_close_base_stream((to_unsafe as LibGio::FilterOutputStream*), Bool.new(close_base))
       __return_value
     end
 

@@ -28,7 +28,7 @@ module Gtk
     end
 
     def show_numbers=(show_numbers)
-      __return_value = LibGtk.recent_action_set_show_numbers((to_unsafe as LibGtk::RecentAction*), Bool.cast(show_numbers))
+      __return_value = LibGtk.recent_action_set_show_numbers((to_unsafe as LibGtk::RecentAction*), Bool.new(show_numbers))
       __return_value
     end
 

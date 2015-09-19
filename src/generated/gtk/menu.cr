@@ -35,7 +35,7 @@ module Gtk
     end
 
     def attach(child, left_attach, right_attach, top_attach, bottom_attach)
-      __return_value = LibGtk.menu_attach((to_unsafe as LibGtk::Menu*), (child.to_unsafe as LibGtk::Widget*), UInt32.cast(left_attach), UInt32.cast(right_attach), UInt32.cast(top_attach), UInt32.cast(bottom_attach))
+      __return_value = LibGtk.menu_attach((to_unsafe as LibGtk::Menu*), (child.to_unsafe as LibGtk::Widget*), UInt32.new(left_attach), UInt32.new(right_attach), UInt32.new(top_attach), UInt32.new(bottom_attach))
       __return_value
     end
 
@@ -95,17 +95,17 @@ module Gtk
     end
 
     def popup(parent_menu_shell, parent_menu_item, func : LibGtk::MenuPositionFunc?, data, button, activate_time)
-      __return_value = LibGtk.menu_popup((to_unsafe as LibGtk::Menu*), parent_menu_shell && (parent_menu_shell.to_unsafe as LibGtk::Widget*), parent_menu_item && (parent_menu_item.to_unsafe as LibGtk::Widget*), func && func, data, UInt32.cast(button), UInt32.cast(activate_time))
+      __return_value = LibGtk.menu_popup((to_unsafe as LibGtk::Menu*), parent_menu_shell && (parent_menu_shell.to_unsafe as LibGtk::Widget*), parent_menu_item && (parent_menu_item.to_unsafe as LibGtk::Widget*), func && func, data, UInt32.new(button), UInt32.new(activate_time))
       __return_value
     end
 
     def popup_for_device(device, parent_menu_shell, parent_menu_item, func : LibGtk::MenuPositionFunc?, data, destroy : LibGLib::DestroyNotify?, button, activate_time)
-      __return_value = LibGtk.menu_popup_for_device((to_unsafe as LibGtk::Menu*), device && (device.to_unsafe as LibGdk::Device*), parent_menu_shell && (parent_menu_shell.to_unsafe as LibGtk::Widget*), parent_menu_item && (parent_menu_item.to_unsafe as LibGtk::Widget*), func && func, data && data, destroy && destroy, UInt32.cast(button), UInt32.cast(activate_time))
+      __return_value = LibGtk.menu_popup_for_device((to_unsafe as LibGtk::Menu*), device && (device.to_unsafe as LibGdk::Device*), parent_menu_shell && (parent_menu_shell.to_unsafe as LibGtk::Widget*), parent_menu_item && (parent_menu_item.to_unsafe as LibGtk::Widget*), func && func, data && data, destroy && destroy, UInt32.new(button), UInt32.new(activate_time))
       __return_value
     end
 
     def reorder_child(child, position)
-      __return_value = LibGtk.menu_reorder_child((to_unsafe as LibGtk::Menu*), (child.to_unsafe as LibGtk::Widget*), Int32.cast(position))
+      __return_value = LibGtk.menu_reorder_child((to_unsafe as LibGtk::Menu*), (child.to_unsafe as LibGtk::Widget*), Int32.new(position))
       __return_value
     end
 
@@ -125,17 +125,17 @@ module Gtk
     end
 
     def active=(index)
-      __return_value = LibGtk.menu_set_active((to_unsafe as LibGtk::Menu*), UInt32.cast(index))
+      __return_value = LibGtk.menu_set_active((to_unsafe as LibGtk::Menu*), UInt32.new(index))
       __return_value
     end
 
     def monitor=(monitor_num)
-      __return_value = LibGtk.menu_set_monitor((to_unsafe as LibGtk::Menu*), Int32.cast(monitor_num))
+      __return_value = LibGtk.menu_set_monitor((to_unsafe as LibGtk::Menu*), Int32.new(monitor_num))
       __return_value
     end
 
     def reserve_toggle_size=(reserve_toggle_size)
-      __return_value = LibGtk.menu_set_reserve_toggle_size((to_unsafe as LibGtk::Menu*), Bool.cast(reserve_toggle_size))
+      __return_value = LibGtk.menu_set_reserve_toggle_size((to_unsafe as LibGtk::Menu*), Bool.new(reserve_toggle_size))
       __return_value
     end
 
@@ -145,7 +145,7 @@ module Gtk
     end
 
     def tearoff_state=(torn_off)
-      __return_value = LibGtk.menu_set_tearoff_state((to_unsafe as LibGtk::Menu*), Bool.cast(torn_off))
+      __return_value = LibGtk.menu_set_tearoff_state((to_unsafe as LibGtk::Menu*), Bool.new(torn_off))
       __return_value
     end
 

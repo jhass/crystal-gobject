@@ -65,7 +65,7 @@ module Gtk
     end
 
     def self.set_auto_startup_notification(setting)
-      __return_value = LibGtk.window_set_auto_startup_notification(Bool.cast(setting))
+      __return_value = LibGtk.window_set_auto_startup_notification(Bool.new(setting))
       __return_value
     end
 
@@ -92,7 +92,7 @@ module Gtk
     end
 
     def self.set_interactive_debugging(enable)
-      __return_value = LibGtk.window_set_interactive_debugging(Bool.cast(enable))
+      __return_value = LibGtk.window_set_interactive_debugging(Bool.new(enable))
       __return_value
     end
 
@@ -117,17 +117,17 @@ module Gtk
     end
 
     def add_mnemonic(keyval, target)
-      __return_value = LibGtk.window_add_mnemonic((to_unsafe as LibGtk::Window*), UInt32.cast(keyval), (target.to_unsafe as LibGtk::Widget*))
+      __return_value = LibGtk.window_add_mnemonic((to_unsafe as LibGtk::Window*), UInt32.new(keyval), (target.to_unsafe as LibGtk::Widget*))
       __return_value
     end
 
     def begin_move_drag(button, root_x, root_y, timestamp)
-      __return_value = LibGtk.window_begin_move_drag((to_unsafe as LibGtk::Window*), Int32.cast(button), Int32.cast(root_x), Int32.cast(root_y), UInt32.cast(timestamp))
+      __return_value = LibGtk.window_begin_move_drag((to_unsafe as LibGtk::Window*), Int32.new(button), Int32.new(root_x), Int32.new(root_y), UInt32.new(timestamp))
       __return_value
     end
 
     def begin_resize_drag(edge, button, root_x, root_y, timestamp)
-      __return_value = LibGtk.window_begin_resize_drag((to_unsafe as LibGtk::Window*), edge, Int32.cast(button), Int32.cast(root_x), Int32.cast(root_y), UInt32.cast(timestamp))
+      __return_value = LibGtk.window_begin_resize_drag((to_unsafe as LibGtk::Window*), edge, Int32.new(button), Int32.new(root_x), Int32.new(root_y), UInt32.new(timestamp))
       __return_value
     end
 
@@ -167,7 +167,7 @@ module Gtk
     end
 
     def default_size(width, height)
-      __return_value = LibGtk.window_get_default_size((to_unsafe as LibGtk::Window*), Int32.cast(width), Int32.cast(height))
+      __return_value = LibGtk.window_get_default_size((to_unsafe as LibGtk::Window*), Int32.new(width), Int32.new(height))
       __return_value
     end
 
@@ -257,7 +257,7 @@ module Gtk
     end
 
     def position(root_x, root_y)
-      __return_value = LibGtk.window_get_position((to_unsafe as LibGtk::Window*), Int32.cast(root_x), Int32.cast(root_y))
+      __return_value = LibGtk.window_get_position((to_unsafe as LibGtk::Window*), Int32.new(root_x), Int32.new(root_y))
       __return_value
     end
 
@@ -282,7 +282,7 @@ module Gtk
     end
 
     def size(width, height)
-      __return_value = LibGtk.window_get_size((to_unsafe as LibGtk::Window*), Int32.cast(width), Int32.cast(height))
+      __return_value = LibGtk.window_get_size((to_unsafe as LibGtk::Window*), Int32.new(width), Int32.new(height))
       __return_value
     end
 
@@ -357,12 +357,12 @@ module Gtk
     end
 
     def mnemonic_activate(keyval, modifier)
-      __return_value = LibGtk.window_mnemonic_activate((to_unsafe as LibGtk::Window*), UInt32.cast(keyval), modifier)
+      __return_value = LibGtk.window_mnemonic_activate((to_unsafe as LibGtk::Window*), UInt32.new(keyval), modifier)
       __return_value
     end
 
     def move(x, y)
-      __return_value = LibGtk.window_move((to_unsafe as LibGtk::Window*), Int32.cast(x), Int32.cast(y))
+      __return_value = LibGtk.window_move((to_unsafe as LibGtk::Window*), Int32.new(x), Int32.new(y))
       __return_value
     end
 
@@ -377,7 +377,7 @@ module Gtk
     end
 
     def present_with_time(timestamp)
-      __return_value = LibGtk.window_present_with_time((to_unsafe as LibGtk::Window*), UInt32.cast(timestamp))
+      __return_value = LibGtk.window_present_with_time((to_unsafe as LibGtk::Window*), UInt32.new(timestamp))
       __return_value
     end
 
@@ -392,7 +392,7 @@ module Gtk
     end
 
     def remove_mnemonic(keyval, target)
-      __return_value = LibGtk.window_remove_mnemonic((to_unsafe as LibGtk::Window*), UInt32.cast(keyval), (target.to_unsafe as LibGtk::Widget*))
+      __return_value = LibGtk.window_remove_mnemonic((to_unsafe as LibGtk::Window*), UInt32.new(keyval), (target.to_unsafe as LibGtk::Widget*))
       __return_value
     end
 
@@ -402,7 +402,7 @@ module Gtk
     end
 
     def resize(width, height)
-      __return_value = LibGtk.window_resize((to_unsafe as LibGtk::Window*), Int32.cast(width), Int32.cast(height))
+      __return_value = LibGtk.window_resize((to_unsafe as LibGtk::Window*), Int32.new(width), Int32.new(height))
       __return_value
     end
 
@@ -412,12 +412,12 @@ module Gtk
     end
 
     def resize_to_geometry(width, height)
-      __return_value = LibGtk.window_resize_to_geometry((to_unsafe as LibGtk::Window*), Int32.cast(width), Int32.cast(height))
+      __return_value = LibGtk.window_resize_to_geometry((to_unsafe as LibGtk::Window*), Int32.new(width), Int32.new(height))
       __return_value
     end
 
     def accept_focus=(setting)
-      __return_value = LibGtk.window_set_accept_focus((to_unsafe as LibGtk::Window*), Bool.cast(setting))
+      __return_value = LibGtk.window_set_accept_focus((to_unsafe as LibGtk::Window*), Bool.new(setting))
       __return_value
     end
 
@@ -432,7 +432,7 @@ module Gtk
     end
 
     def decorated=(setting)
-      __return_value = LibGtk.window_set_decorated((to_unsafe as LibGtk::Window*), Bool.cast(setting))
+      __return_value = LibGtk.window_set_decorated((to_unsafe as LibGtk::Window*), Bool.new(setting))
       __return_value
     end
 
@@ -442,22 +442,22 @@ module Gtk
     end
 
     def set_default_geometry(width, height)
-      __return_value = LibGtk.window_set_default_geometry((to_unsafe as LibGtk::Window*), Int32.cast(width), Int32.cast(height))
+      __return_value = LibGtk.window_set_default_geometry((to_unsafe as LibGtk::Window*), Int32.new(width), Int32.new(height))
       __return_value
     end
 
     def set_default_size(width, height)
-      __return_value = LibGtk.window_set_default_size((to_unsafe as LibGtk::Window*), Int32.cast(width), Int32.cast(height))
+      __return_value = LibGtk.window_set_default_size((to_unsafe as LibGtk::Window*), Int32.new(width), Int32.new(height))
       __return_value
     end
 
     def deletable=(setting)
-      __return_value = LibGtk.window_set_deletable((to_unsafe as LibGtk::Window*), Bool.cast(setting))
+      __return_value = LibGtk.window_set_deletable((to_unsafe as LibGtk::Window*), Bool.new(setting))
       __return_value
     end
 
     def destroy_with_parent=(setting)
-      __return_value = LibGtk.window_set_destroy_with_parent((to_unsafe as LibGtk::Window*), Bool.cast(setting))
+      __return_value = LibGtk.window_set_destroy_with_parent((to_unsafe as LibGtk::Window*), Bool.new(setting))
       __return_value
     end
 
@@ -467,12 +467,12 @@ module Gtk
     end
 
     def focus_on_map=(setting)
-      __return_value = LibGtk.window_set_focus_on_map((to_unsafe as LibGtk::Window*), Bool.cast(setting))
+      __return_value = LibGtk.window_set_focus_on_map((to_unsafe as LibGtk::Window*), Bool.new(setting))
       __return_value
     end
 
     def focus_visible=(setting)
-      __return_value = LibGtk.window_set_focus_visible((to_unsafe as LibGtk::Window*), Bool.cast(setting))
+      __return_value = LibGtk.window_set_focus_visible((to_unsafe as LibGtk::Window*), Bool.new(setting))
       __return_value
     end
 
@@ -487,17 +487,17 @@ module Gtk
     end
 
     def has_resize_grip=(value)
-      __return_value = LibGtk.window_set_has_resize_grip((to_unsafe as LibGtk::Window*), Bool.cast(value))
+      __return_value = LibGtk.window_set_has_resize_grip((to_unsafe as LibGtk::Window*), Bool.new(value))
       __return_value
     end
 
     def has_user_ref_count=(setting)
-      __return_value = LibGtk.window_set_has_user_ref_count((to_unsafe as LibGtk::Window*), Bool.cast(setting))
+      __return_value = LibGtk.window_set_has_user_ref_count((to_unsafe as LibGtk::Window*), Bool.new(setting))
       __return_value
     end
 
     def hide_titlebar_when_maximized=(setting)
-      __return_value = LibGtk.window_set_hide_titlebar_when_maximized((to_unsafe as LibGtk::Window*), Bool.cast(setting))
+      __return_value = LibGtk.window_set_hide_titlebar_when_maximized((to_unsafe as LibGtk::Window*), Bool.new(setting))
       __return_value
     end
 
@@ -524,12 +524,12 @@ module Gtk
     end
 
     def keep_above=(setting)
-      __return_value = LibGtk.window_set_keep_above((to_unsafe as LibGtk::Window*), Bool.cast(setting))
+      __return_value = LibGtk.window_set_keep_above((to_unsafe as LibGtk::Window*), Bool.new(setting))
       __return_value
     end
 
     def keep_below=(setting)
-      __return_value = LibGtk.window_set_keep_below((to_unsafe as LibGtk::Window*), Bool.cast(setting))
+      __return_value = LibGtk.window_set_keep_below((to_unsafe as LibGtk::Window*), Bool.new(setting))
       __return_value
     end
 
@@ -539,17 +539,17 @@ module Gtk
     end
 
     def mnemonics_visible=(setting)
-      __return_value = LibGtk.window_set_mnemonics_visible((to_unsafe as LibGtk::Window*), Bool.cast(setting))
+      __return_value = LibGtk.window_set_mnemonics_visible((to_unsafe as LibGtk::Window*), Bool.new(setting))
       __return_value
     end
 
     def modal=(modal)
-      __return_value = LibGtk.window_set_modal((to_unsafe as LibGtk::Window*), Bool.cast(modal))
+      __return_value = LibGtk.window_set_modal((to_unsafe as LibGtk::Window*), Bool.new(modal))
       __return_value
     end
 
     def opacity=(opacity)
-      __return_value = LibGtk.window_set_opacity((to_unsafe as LibGtk::Window*), Float64.cast(opacity))
+      __return_value = LibGtk.window_set_opacity((to_unsafe as LibGtk::Window*), Float64.new(opacity))
       __return_value
     end
 
@@ -559,7 +559,7 @@ module Gtk
     end
 
     def resizable=(resizable)
-      __return_value = LibGtk.window_set_resizable((to_unsafe as LibGtk::Window*), Bool.cast(resizable))
+      __return_value = LibGtk.window_set_resizable((to_unsafe as LibGtk::Window*), Bool.new(resizable))
       __return_value
     end
 
@@ -574,12 +574,12 @@ module Gtk
     end
 
     def skip_pager_hint=(setting)
-      __return_value = LibGtk.window_set_skip_pager_hint((to_unsafe as LibGtk::Window*), Bool.cast(setting))
+      __return_value = LibGtk.window_set_skip_pager_hint((to_unsafe as LibGtk::Window*), Bool.new(setting))
       __return_value
     end
 
     def skip_taskbar_hint=(setting)
-      __return_value = LibGtk.window_set_skip_taskbar_hint((to_unsafe as LibGtk::Window*), Bool.cast(setting))
+      __return_value = LibGtk.window_set_skip_taskbar_hint((to_unsafe as LibGtk::Window*), Bool.new(setting))
       __return_value
     end
 
@@ -609,7 +609,7 @@ module Gtk
     end
 
     def urgency_hint=(setting)
-      __return_value = LibGtk.window_set_urgency_hint((to_unsafe as LibGtk::Window*), Bool.cast(setting))
+      __return_value = LibGtk.window_set_urgency_hint((to_unsafe as LibGtk::Window*), Bool.new(setting))
       __return_value
     end
 

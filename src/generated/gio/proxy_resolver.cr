@@ -14,7 +14,7 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.proxy_resolver_lookup((to_unsafe as LibGio::ProxyResolver*), uri, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_65| raise "Expected string but got null" unless __item_65; String.new(__item_65) }
+      PointerIterator.new(__return_value) {|__item_26| raise "Expected string but got null" unless __item_26; String.new(__item_26) }
     end
 
     def lookup_async(uri, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
@@ -26,7 +26,7 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.proxy_resolver_lookup_finish((to_unsafe as LibGio::ProxyResolver*), (result.to_unsafe as LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_30| raise "Expected string but got null" unless __item_30; String.new(__item_30) }
+      PointerIterator.new(__return_value) {|__item_20| raise "Expected string but got null" unless __item_20; String.new(__item_20) }
     end
 
   end

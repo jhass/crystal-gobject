@@ -15,12 +15,12 @@ module Gst
     end
 
     def self.list_filter(list, caps, direction, subsetonly)
-      __return_value = LibGst.element_factory_list_filter(list, (caps.to_unsafe as LibGst::Caps*), direction, Bool.cast(subsetonly))
+      __return_value = LibGst.element_factory_list_filter(list, (caps.to_unsafe as LibGst::Caps*), direction, Bool.new(subsetonly))
       __return_value
     end
 
     def self.list_get_elements(type, minrank)
-      __return_value = LibGst.element_factory_list_get_elements(UInt64.cast(type), minrank)
+      __return_value = LibGst.element_factory_list_get_elements(UInt64.new(type), minrank)
       __return_value
     end
 
@@ -66,7 +66,7 @@ module Gst
 
     def metadata_keys
       __return_value = LibGst.element_factory_get_metadata_keys((to_unsafe as LibGst::ElementFactory*))
-      PointerIterator.new(__return_value) {|__item_33| raise "Expected string but got null" unless __item_33; String.new(__item_33) } if __return_value
+      PointerIterator.new(__return_value) {|__item_87| raise "Expected string but got null" unless __item_87; String.new(__item_87) } if __return_value
     end
 
     def num_pad_templates
@@ -81,7 +81,7 @@ module Gst
 
     def uri_protocols
       __return_value = LibGst.element_factory_get_uri_protocols((to_unsafe as LibGst::ElementFactory*))
-      PointerIterator.new(__return_value) {|__item_94| raise "Expected string but got null" unless __item_94; String.new(__item_94) }
+      PointerIterator.new(__return_value) {|__item_52| raise "Expected string but got null" unless __item_52; String.new(__item_52) }
     end
 
     def uri_type
@@ -95,7 +95,7 @@ module Gst
     end
 
     def list_is_type(type)
-      __return_value = LibGst.element_factory_list_is_type((to_unsafe as LibGst::ElementFactory*), UInt64.cast(type))
+      __return_value = LibGst.element_factory_list_is_type((to_unsafe as LibGst::ElementFactory*), UInt64.new(type))
       __return_value
     end
 

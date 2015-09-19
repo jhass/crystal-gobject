@@ -56,7 +56,7 @@ module Gtk
     end
 
     def show_preview_entry=(show_preview_entry)
-      __return_value = LibGtk.font_chooser_set_show_preview_entry((to_unsafe as LibGtk::FontChooser*), Bool.cast(show_preview_entry))
+      __return_value = LibGtk.font_chooser_set_show_preview_entry((to_unsafe as LibGtk::FontChooser*), Bool.new(show_preview_entry))
       __return_value
     end
 

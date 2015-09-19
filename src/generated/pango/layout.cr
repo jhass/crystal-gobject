@@ -53,7 +53,7 @@ module Pango
     end
 
     def cursor_pos(index, strong_pos, weak_pos)
-      __return_value = LibPango.layout_get_cursor_pos((to_unsafe as LibPango::Layout*), Int32.cast(index), strong_pos, weak_pos)
+      __return_value = LibPango.layout_get_cursor_pos((to_unsafe as LibPango::Layout*), Int32.new(index), strong_pos, weak_pos)
       __return_value
     end
 
@@ -93,7 +93,7 @@ module Pango
     end
 
     def line(line)
-      __return_value = LibPango.layout_get_line((to_unsafe as LibPango::Layout*), Int32.cast(line))
+      __return_value = LibPango.layout_get_line((to_unsafe as LibPango::Layout*), Int32.new(line))
       Pango::LayoutLine.new(__return_value)
     end
 
@@ -103,7 +103,7 @@ module Pango
     end
 
     def line_readonly(line)
-      __return_value = LibPango.layout_get_line_readonly((to_unsafe as LibPango::Layout*), Int32.cast(line))
+      __return_value = LibPango.layout_get_line_readonly((to_unsafe as LibPango::Layout*), Int32.new(line))
       Pango::LayoutLine.new(__return_value)
     end
 
@@ -118,13 +118,13 @@ module Pango
     end
 
     def log_attrs(attrs, n_attrs)
-      __return_value = LibPango.layout_get_log_attrs((to_unsafe as LibPango::Layout*), attrs, Int32.cast(n_attrs))
+      __return_value = LibPango.layout_get_log_attrs((to_unsafe as LibPango::Layout*), attrs, Int32.new(n_attrs))
       __return_value
     end
 
     def log_attrs_readonly(n_attrs)
-      __return_value = LibPango.layout_get_log_attrs_readonly((to_unsafe as LibPango::Layout*), Int32.cast(n_attrs))
-      PointerIterator.new(__return_value) {|__item_46| Pango::LogAttr.new(__item_46) }
+      __return_value = LibPango.layout_get_log_attrs_readonly((to_unsafe as LibPango::Layout*), Int32.new(n_attrs))
+      PointerIterator.new(__return_value) {|__item_70| Pango::LogAttr.new(__item_70) }
     end
 
     def pixel_extents(ink_rect, logical_rect)
@@ -133,7 +133,7 @@ module Pango
     end
 
     def pixel_size(width, height)
-      __return_value = LibPango.layout_get_pixel_size((to_unsafe as LibPango::Layout*), Int32.cast(width), Int32.cast(height))
+      __return_value = LibPango.layout_get_pixel_size((to_unsafe as LibPango::Layout*), Int32.new(width), Int32.new(height))
       __return_value
     end
 
@@ -148,7 +148,7 @@ module Pango
     end
 
     def size(width, height)
-      __return_value = LibPango.layout_get_size((to_unsafe as LibPango::Layout*), Int32.cast(width), Int32.cast(height))
+      __return_value = LibPango.layout_get_size((to_unsafe as LibPango::Layout*), Int32.new(width), Int32.new(height))
       __return_value
     end
 
@@ -183,12 +183,12 @@ module Pango
     end
 
     def index_to_line_x(index, trailing, line, x_pos)
-      __return_value = LibPango.layout_index_to_line_x((to_unsafe as LibPango::Layout*), Int32.cast(index), Bool.cast(trailing), Int32.cast(line), Int32.cast(x_pos))
+      __return_value = LibPango.layout_index_to_line_x((to_unsafe as LibPango::Layout*), Int32.new(index), Bool.new(trailing), Int32.new(line), Int32.new(x_pos))
       __return_value
     end
 
     def index_to_pos(index, pos)
-      __return_value = LibPango.layout_index_to_pos((to_unsafe as LibPango::Layout*), Int32.cast(index), pos)
+      __return_value = LibPango.layout_index_to_pos((to_unsafe as LibPango::Layout*), Int32.new(index), pos)
       __return_value
     end
 
@@ -203,7 +203,7 @@ module Pango
     end
 
     def move_cursor_visually(strong, old_index, old_trailing, direction, new_index, new_trailing)
-      __return_value = LibPango.layout_move_cursor_visually((to_unsafe as LibPango::Layout*), Bool.cast(strong), Int32.cast(old_index), Int32.cast(old_trailing), Int32.cast(direction), Int32.cast(new_index), Int32.cast(new_trailing))
+      __return_value = LibPango.layout_move_cursor_visually((to_unsafe as LibPango::Layout*), Bool.new(strong), Int32.new(old_index), Int32.new(old_trailing), Int32.new(direction), Int32.new(new_index), Int32.new(new_trailing))
       __return_value
     end
 
@@ -218,7 +218,7 @@ module Pango
     end
 
     def auto_dir=(auto_dir)
-      __return_value = LibPango.layout_set_auto_dir((to_unsafe as LibPango::Layout*), Bool.cast(auto_dir))
+      __return_value = LibPango.layout_set_auto_dir((to_unsafe as LibPango::Layout*), Bool.new(auto_dir))
       __return_value
     end
 
@@ -233,37 +233,37 @@ module Pango
     end
 
     def height=(height)
-      __return_value = LibPango.layout_set_height((to_unsafe as LibPango::Layout*), Int32.cast(height))
+      __return_value = LibPango.layout_set_height((to_unsafe as LibPango::Layout*), Int32.new(height))
       __return_value
     end
 
     def indent=(indent)
-      __return_value = LibPango.layout_set_indent((to_unsafe as LibPango::Layout*), Int32.cast(indent))
+      __return_value = LibPango.layout_set_indent((to_unsafe as LibPango::Layout*), Int32.new(indent))
       __return_value
     end
 
     def justify=(justify)
-      __return_value = LibPango.layout_set_justify((to_unsafe as LibPango::Layout*), Bool.cast(justify))
+      __return_value = LibPango.layout_set_justify((to_unsafe as LibPango::Layout*), Bool.new(justify))
       __return_value
     end
 
     def set_markup(markup, length)
-      __return_value = LibPango.layout_set_markup((to_unsafe as LibPango::Layout*), markup, Int32.cast(length))
+      __return_value = LibPango.layout_set_markup((to_unsafe as LibPango::Layout*), markup, Int32.new(length))
       __return_value
     end
 
     def set_markup_with_accel(markup, length, accel_marker, accel_char)
-      __return_value = LibPango.layout_set_markup_with_accel((to_unsafe as LibPango::Layout*), markup, Int32.cast(length), UInt8.cast(accel_marker), UInt8.cast(accel_char))
+      __return_value = LibPango.layout_set_markup_with_accel((to_unsafe as LibPango::Layout*), markup, Int32.new(length), UInt8.new(accel_marker), UInt8.new(accel_char))
       __return_value
     end
 
     def single_paragraph_mode=(setting)
-      __return_value = LibPango.layout_set_single_paragraph_mode((to_unsafe as LibPango::Layout*), Bool.cast(setting))
+      __return_value = LibPango.layout_set_single_paragraph_mode((to_unsafe as LibPango::Layout*), Bool.new(setting))
       __return_value
     end
 
     def spacing=(spacing)
-      __return_value = LibPango.layout_set_spacing((to_unsafe as LibPango::Layout*), Int32.cast(spacing))
+      __return_value = LibPango.layout_set_spacing((to_unsafe as LibPango::Layout*), Int32.new(spacing))
       __return_value
     end
 
@@ -273,12 +273,12 @@ module Pango
     end
 
     def set_text(text, length)
-      __return_value = LibPango.layout_set_text((to_unsafe as LibPango::Layout*), text, Int32.cast(length))
+      __return_value = LibPango.layout_set_text((to_unsafe as LibPango::Layout*), text, Int32.new(length))
       __return_value
     end
 
     def width=(width)
-      __return_value = LibPango.layout_set_width((to_unsafe as LibPango::Layout*), Int32.cast(width))
+      __return_value = LibPango.layout_set_width((to_unsafe as LibPango::Layout*), Int32.new(width))
       __return_value
     end
 
@@ -288,7 +288,7 @@ module Pango
     end
 
     def xy_to_index(x, y, index, trailing)
-      __return_value = LibPango.layout_xy_to_index((to_unsafe as LibPango::Layout*), Int32.cast(x), Int32.cast(y), Int32.cast(index), Int32.cast(trailing))
+      __return_value = LibPango.layout_xy_to_index((to_unsafe as LibPango::Layout*), Int32.new(x), Int32.new(y), Int32.new(index), Int32.new(trailing))
       __return_value
     end
 

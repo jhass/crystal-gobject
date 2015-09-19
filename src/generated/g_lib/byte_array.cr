@@ -10,7 +10,7 @@ module GLib
     end
 
     def self.free(array, free_segment)
-      __return_value = LibGLib.byte_array_free(array, Bool.cast(free_segment))
+      __return_value = LibGLib.byte_array_free(array, Bool.new(free_segment))
       __return_value
     end
 
@@ -25,7 +25,7 @@ module GLib
     end
 
     def self.new_take(data, len)
-      __return_value = LibGLib.byte_array_new_take(data, UInt64.cast(len))
+      __return_value = LibGLib.byte_array_new_take(data, UInt64.new(len))
       __return_value
     end
 

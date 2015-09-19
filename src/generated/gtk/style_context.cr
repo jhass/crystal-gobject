@@ -17,7 +17,7 @@ module Gtk
     end
 
     def self.add_provider_for_screen(screen, provider, priority)
-      __return_value = LibGtk.style_context_add_provider_for_screen((screen.to_unsafe as LibGdk::Screen*), (provider.to_unsafe as LibGtk::StyleProvider*), UInt32.cast(priority))
+      __return_value = LibGtk.style_context_add_provider_for_screen((screen.to_unsafe as LibGdk::Screen*), (provider.to_unsafe as LibGtk::StyleProvider*), UInt32.new(priority))
       __return_value
     end
 
@@ -37,7 +37,7 @@ module Gtk
     end
 
     def add_provider(provider, priority)
-      __return_value = LibGtk.style_context_add_provider((to_unsafe as LibGtk::StyleContext*), (provider.to_unsafe as LibGtk::StyleProvider*), UInt32.cast(priority))
+      __return_value = LibGtk.style_context_add_provider((to_unsafe as LibGtk::StyleContext*), (provider.to_unsafe as LibGtk::StyleProvider*), UInt32.new(priority))
       __return_value
     end
 
@@ -177,7 +177,7 @@ module Gtk
     end
 
     def notify_state_change(window, region_id, state, state_value)
-      __return_value = LibGtk.style_context_notify_state_change((to_unsafe as LibGtk::StyleContext*), (window.to_unsafe as LibGdk::Window*), region_id && region_id, state, Bool.cast(state_value))
+      __return_value = LibGtk.style_context_notify_state_change((to_unsafe as LibGtk::StyleContext*), (window.to_unsafe as LibGdk::Window*), region_id && region_id, state, Bool.new(state_value))
       __return_value
     end
 
@@ -217,7 +217,7 @@ module Gtk
     end
 
     def scroll_animations(window, dx, dy)
-      __return_value = LibGtk.style_context_scroll_animations((to_unsafe as LibGtk::StyleContext*), (window.to_unsafe as LibGdk::Window*), Int32.cast(dx), Int32.cast(dy))
+      __return_value = LibGtk.style_context_scroll_animations((to_unsafe as LibGtk::StyleContext*), (window.to_unsafe as LibGdk::Window*), Int32.new(dx), Int32.new(dy))
       __return_value
     end
 
@@ -252,7 +252,7 @@ module Gtk
     end
 
     def scale=(scale)
-      __return_value = LibGtk.style_context_set_scale((to_unsafe as LibGtk::StyleContext*), Int32.cast(scale))
+      __return_value = LibGtk.style_context_set_scale((to_unsafe as LibGtk::StyleContext*), Int32.new(scale))
       __return_value
     end
 
@@ -267,7 +267,7 @@ module Gtk
     end
 
     def state_is_running(state, progress)
-      __return_value = LibGtk.style_context_state_is_running((to_unsafe as LibGtk::StyleContext*), state, Float64.cast(progress))
+      __return_value = LibGtk.style_context_state_is_running((to_unsafe as LibGtk::StyleContext*), state, Float64.new(progress))
       __return_value
     end
 

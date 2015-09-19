@@ -123,7 +123,7 @@ module Gtk
     end
 
     def icon_at_pos(x, y)
-      __return_value = LibGtk.entry_get_icon_at_pos((to_unsafe as LibGtk::Entry*), Int32.cast(x), Int32.cast(y))
+      __return_value = LibGtk.entry_get_icon_at_pos((to_unsafe as LibGtk::Entry*), Int32.new(x), Int32.new(y))
       __return_value
     end
 
@@ -193,7 +193,7 @@ module Gtk
     end
 
     def layout_offsets(x, y)
-      __return_value = LibGtk.entry_get_layout_offsets((to_unsafe as LibGtk::Entry*), Int32.cast(x), Int32.cast(y))
+      __return_value = LibGtk.entry_get_layout_offsets((to_unsafe as LibGtk::Entry*), Int32.new(x), Int32.new(y))
       __return_value
     end
 
@@ -268,7 +268,7 @@ module Gtk
     end
 
     def layout_index_to_text_index(layout_index)
-      __return_value = LibGtk.entry_layout_index_to_text_index((to_unsafe as LibGtk::Entry*), Int32.cast(layout_index))
+      __return_value = LibGtk.entry_layout_index_to_text_index((to_unsafe as LibGtk::Entry*), Int32.new(layout_index))
       __return_value
     end
 
@@ -283,12 +283,12 @@ module Gtk
     end
 
     def activates_default=(setting)
-      __return_value = LibGtk.entry_set_activates_default((to_unsafe as LibGtk::Entry*), Bool.cast(setting))
+      __return_value = LibGtk.entry_set_activates_default((to_unsafe as LibGtk::Entry*), Bool.new(setting))
       __return_value
     end
 
     def alignment=(xalign)
-      __return_value = LibGtk.entry_set_alignment((to_unsafe as LibGtk::Entry*), Float32.cast(xalign))
+      __return_value = LibGtk.entry_set_alignment((to_unsafe as LibGtk::Entry*), Float32.new(xalign))
       __return_value
     end
 
@@ -313,12 +313,12 @@ module Gtk
     end
 
     def has_frame=(setting)
-      __return_value = LibGtk.entry_set_has_frame((to_unsafe as LibGtk::Entry*), Bool.cast(setting))
+      __return_value = LibGtk.entry_set_has_frame((to_unsafe as LibGtk::Entry*), Bool.new(setting))
       __return_value
     end
 
     def set_icon_activatable(icon_pos, activatable)
-      __return_value = LibGtk.entry_set_icon_activatable((to_unsafe as LibGtk::Entry*), icon_pos, Bool.cast(activatable))
+      __return_value = LibGtk.entry_set_icon_activatable((to_unsafe as LibGtk::Entry*), icon_pos, Bool.new(activatable))
       __return_value
     end
 
@@ -348,7 +348,7 @@ module Gtk
     end
 
     def set_icon_sensitive(icon_pos, sensitive)
-      __return_value = LibGtk.entry_set_icon_sensitive((to_unsafe as LibGtk::Entry*), icon_pos, Bool.cast(sensitive))
+      __return_value = LibGtk.entry_set_icon_sensitive((to_unsafe as LibGtk::Entry*), icon_pos, Bool.new(sensitive))
       __return_value
     end
 
@@ -378,22 +378,22 @@ module Gtk
     end
 
     def invisible_char=(ch)
-      __return_value = LibGtk.entry_set_invisible_char((to_unsafe as LibGtk::Entry*), UInt8.cast(ch))
+      __return_value = LibGtk.entry_set_invisible_char((to_unsafe as LibGtk::Entry*), UInt8.new(ch))
       __return_value
     end
 
     def max_length=(max)
-      __return_value = LibGtk.entry_set_max_length((to_unsafe as LibGtk::Entry*), Int32.cast(max))
+      __return_value = LibGtk.entry_set_max_length((to_unsafe as LibGtk::Entry*), Int32.new(max))
       __return_value
     end
 
     def max_width_chars=(n_chars)
-      __return_value = LibGtk.entry_set_max_width_chars((to_unsafe as LibGtk::Entry*), Int32.cast(n_chars))
+      __return_value = LibGtk.entry_set_max_width_chars((to_unsafe as LibGtk::Entry*), Int32.new(n_chars))
       __return_value
     end
 
     def overwrite_mode=(overwrite)
-      __return_value = LibGtk.entry_set_overwrite_mode((to_unsafe as LibGtk::Entry*), Bool.cast(overwrite))
+      __return_value = LibGtk.entry_set_overwrite_mode((to_unsafe as LibGtk::Entry*), Bool.new(overwrite))
       __return_value
     end
 
@@ -403,12 +403,12 @@ module Gtk
     end
 
     def progress_fraction=(fraction)
-      __return_value = LibGtk.entry_set_progress_fraction((to_unsafe as LibGtk::Entry*), Float64.cast(fraction))
+      __return_value = LibGtk.entry_set_progress_fraction((to_unsafe as LibGtk::Entry*), Float64.new(fraction))
       __return_value
     end
 
     def progress_pulse_step=(fraction)
-      __return_value = LibGtk.entry_set_progress_pulse_step((to_unsafe as LibGtk::Entry*), Float64.cast(fraction))
+      __return_value = LibGtk.entry_set_progress_pulse_step((to_unsafe as LibGtk::Entry*), Float64.new(fraction))
       __return_value
     end
 
@@ -423,17 +423,17 @@ module Gtk
     end
 
     def visibility=(visible)
-      __return_value = LibGtk.entry_set_visibility((to_unsafe as LibGtk::Entry*), Bool.cast(visible))
+      __return_value = LibGtk.entry_set_visibility((to_unsafe as LibGtk::Entry*), Bool.new(visible))
       __return_value
     end
 
     def width_chars=(n_chars)
-      __return_value = LibGtk.entry_set_width_chars((to_unsafe as LibGtk::Entry*), Int32.cast(n_chars))
+      __return_value = LibGtk.entry_set_width_chars((to_unsafe as LibGtk::Entry*), Int32.new(n_chars))
       __return_value
     end
 
     def text_index_to_layout_index(text_index)
-      __return_value = LibGtk.entry_text_index_to_layout_index((to_unsafe as LibGtk::Entry*), Int32.cast(text_index))
+      __return_value = LibGtk.entry_text_index_to_layout_index((to_unsafe as LibGtk::Entry*), Int32.new(text_index))
       __return_value
     end
 

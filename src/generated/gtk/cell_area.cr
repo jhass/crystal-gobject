@@ -13,7 +13,7 @@ module Gtk
 
 
     def activate(context, widget, cell_area, flags, edit_only)
-      __return_value = LibGtk.cell_area_activate((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (cell_area.to_unsafe as LibCairo::RectangleInt*), flags, Bool.cast(edit_only))
+      __return_value = LibGtk.cell_area_activate((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (cell_area.to_unsafe as LibCairo::RectangleInt*), flags, Bool.new(edit_only))
       __return_value
     end
 
@@ -33,12 +33,12 @@ module Gtk
     end
 
     def apply_attributes(tree_model, iter, is_expander, is_expanded)
-      __return_value = LibGtk.cell_area_apply_attributes((to_unsafe as LibGtk::CellArea*), (tree_model.to_unsafe as LibGtk::TreeModel*), (iter.to_unsafe as LibGtk::TreeIter*), Bool.cast(is_expander), Bool.cast(is_expanded))
+      __return_value = LibGtk.cell_area_apply_attributes((to_unsafe as LibGtk::CellArea*), (tree_model.to_unsafe as LibGtk::TreeModel*), (iter.to_unsafe as LibGtk::TreeIter*), Bool.new(is_expander), Bool.new(is_expanded))
       __return_value
     end
 
     def attribute_connect(renderer, attribute, column)
-      __return_value = LibGtk.cell_area_attribute_connect((to_unsafe as LibGtk::CellArea*), (renderer.to_unsafe as LibGtk::CellRenderer*), attribute, Int32.cast(column))
+      __return_value = LibGtk.cell_area_attribute_connect((to_unsafe as LibGtk::CellArea*), (renderer.to_unsafe as LibGtk::CellRenderer*), attribute, Int32.new(column))
       __return_value
     end
 
@@ -98,7 +98,7 @@ module Gtk
     end
 
     def cell_at_position(context, widget, cell_area, x, y, alloc_area)
-      __return_value = LibGtk.cell_area_get_cell_at_position((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (cell_area.to_unsafe as LibCairo::RectangleInt*), Int32.cast(x), Int32.cast(y), alloc_area)
+      __return_value = LibGtk.cell_area_get_cell_at_position((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (cell_area.to_unsafe as LibCairo::RectangleInt*), Int32.new(x), Int32.new(y), alloc_area)
       Gtk::CellRenderer.new(__return_value)
     end
 
@@ -133,22 +133,22 @@ module Gtk
     end
 
     def preferred_height(context, widget, minimum_height, natural_height)
-      __return_value = LibGtk.cell_area_get_preferred_height((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), Int32.cast(minimum_height), Int32.cast(natural_height))
+      __return_value = LibGtk.cell_area_get_preferred_height((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), Int32.new(minimum_height), Int32.new(natural_height))
       __return_value
     end
 
     def preferred_height_for_width(context, widget, width, minimum_height, natural_height)
-      __return_value = LibGtk.cell_area_get_preferred_height_for_width((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), Int32.cast(width), Int32.cast(minimum_height), Int32.cast(natural_height))
+      __return_value = LibGtk.cell_area_get_preferred_height_for_width((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), Int32.new(width), Int32.new(minimum_height), Int32.new(natural_height))
       __return_value
     end
 
     def preferred_width(context, widget, minimum_width, natural_width)
-      __return_value = LibGtk.cell_area_get_preferred_width((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), Int32.cast(minimum_width), Int32.cast(natural_width))
+      __return_value = LibGtk.cell_area_get_preferred_width((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), Int32.new(minimum_width), Int32.new(natural_width))
       __return_value
     end
 
     def preferred_width_for_height(context, widget, height, minimum_width, natural_width)
-      __return_value = LibGtk.cell_area_get_preferred_width_for_height((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), Int32.cast(height), Int32.cast(minimum_width), Int32.cast(natural_width))
+      __return_value = LibGtk.cell_area_get_preferred_width_for_height((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), Int32.new(height), Int32.new(minimum_width), Int32.new(natural_width))
       __return_value
     end
 
@@ -188,12 +188,12 @@ module Gtk
     end
 
     def render(context, widget, cr, background_area, cell_area, flags, paint_focus)
-      __return_value = LibGtk.cell_area_render((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (cr.to_unsafe as LibCairo::Context*), (background_area.to_unsafe as LibCairo::RectangleInt*), (cell_area.to_unsafe as LibCairo::RectangleInt*), flags, Bool.cast(paint_focus))
+      __return_value = LibGtk.cell_area_render((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (cr.to_unsafe as LibCairo::Context*), (background_area.to_unsafe as LibCairo::RectangleInt*), (cell_area.to_unsafe as LibCairo::RectangleInt*), flags, Bool.new(paint_focus))
       __return_value
     end
 
     def request_renderer(renderer, orientation, widget, for_size, minimum_size, natural_size)
-      __return_value = LibGtk.cell_area_request_renderer((to_unsafe as LibGtk::CellArea*), (renderer.to_unsafe as LibGtk::CellRenderer*), orientation, (widget.to_unsafe as LibGtk::Widget*), Int32.cast(for_size), Int32.cast(minimum_size), Int32.cast(natural_size))
+      __return_value = LibGtk.cell_area_request_renderer((to_unsafe as LibGtk::CellArea*), (renderer.to_unsafe as LibGtk::CellRenderer*), orientation, (widget.to_unsafe as LibGtk::Widget*), Int32.new(for_size), Int32.new(minimum_size), Int32.new(natural_size))
       __return_value
     end
 
@@ -203,7 +203,7 @@ module Gtk
     end
 
     def stop_editing(canceled)
-      __return_value = LibGtk.cell_area_stop_editing((to_unsafe as LibGtk::CellArea*), Bool.cast(canceled))
+      __return_value = LibGtk.cell_area_stop_editing((to_unsafe as LibGtk::CellArea*), Bool.new(canceled))
       __return_value
     end
 

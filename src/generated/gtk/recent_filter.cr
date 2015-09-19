@@ -14,7 +14,7 @@ module Gtk
     end
 
     def add_age(days)
-      __return_value = LibGtk.recent_filter_add_age((to_unsafe as LibGtk::RecentFilter*), Int32.cast(days))
+      __return_value = LibGtk.recent_filter_add_age((to_unsafe as LibGtk::RecentFilter*), Int32.new(days))
       __return_value
     end
 

@@ -78,7 +78,7 @@ module Gtk
     end
 
     def add_accelerator(accel_signal, accel_group, accel_key, accel_mods, accel_flags)
-      __return_value = LibGtk.widget_add_accelerator((to_unsafe as LibGtk::Widget*), accel_signal, (accel_group.to_unsafe as LibGtk::AccelGroup*), UInt32.cast(accel_key), accel_mods, accel_flags)
+      __return_value = LibGtk.widget_add_accelerator((to_unsafe as LibGtk::Widget*), accel_signal, (accel_group.to_unsafe as LibGtk::AccelGroup*), UInt32.new(accel_key), accel_mods, accel_flags)
       __return_value
     end
 
@@ -88,7 +88,7 @@ module Gtk
     end
 
     def add_events(events)
-      __return_value = LibGtk.widget_add_events((to_unsafe as LibGtk::Widget*), Int32.cast(events))
+      __return_value = LibGtk.widget_add_events((to_unsafe as LibGtk::Widget*), Int32.new(events))
       __return_value
     end
 
@@ -103,7 +103,7 @@ module Gtk
     end
 
     def can_activate_accel(signal_id)
-      __return_value = LibGtk.widget_can_activate_accel((to_unsafe as LibGtk::Widget*), UInt32.cast(signal_id))
+      __return_value = LibGtk.widget_can_activate_accel((to_unsafe as LibGtk::Widget*), UInt32.new(signal_id))
       __return_value
     end
 
@@ -118,7 +118,7 @@ module Gtk
     end
 
     def class_path(path_length, path, path_reversed)
-      __return_value = LibGtk.widget_class_path((to_unsafe as LibGtk::Widget*), UInt32.cast(path_length), path, path_reversed)
+      __return_value = LibGtk.widget_class_path((to_unsafe as LibGtk::Widget*), UInt32.new(path_length), path, path_reversed)
       __return_value
     end
 
@@ -153,17 +153,17 @@ module Gtk
     end
 
     def drag_begin(targets, actions, button, event)
-      __return_value = LibGtk.widget_drag_begin((to_unsafe as LibGtk::Widget*), (targets.to_unsafe as LibGtk::TargetList*), actions, Int32.cast(button), (event.to_unsafe as LibGdk::Event*))
+      __return_value = LibGtk.widget_drag_begin((to_unsafe as LibGtk::Widget*), (targets.to_unsafe as LibGtk::TargetList*), actions, Int32.new(button), event && (event.to_unsafe as LibGdk::Event*))
       Gdk::DragContext.new(__return_value)
     end
 
     def drag_begin_with_coordinates(targets, actions, button, event, x, y)
-      __return_value = LibGtk.widget_drag_begin_with_coordinates((to_unsafe as LibGtk::Widget*), (targets.to_unsafe as LibGtk::TargetList*), actions, Int32.cast(button), (event.to_unsafe as LibGdk::Event*), Int32.cast(x), Int32.cast(y))
+      __return_value = LibGtk.widget_drag_begin_with_coordinates((to_unsafe as LibGtk::Widget*), (targets.to_unsafe as LibGtk::TargetList*), actions, Int32.new(button), event && (event.to_unsafe as LibGdk::Event*), Int32.new(x), Int32.new(y))
       Gdk::DragContext.new(__return_value)
     end
 
     def drag_check_threshold(start_x, start_y, current_x, current_y)
-      __return_value = LibGtk.widget_drag_check_threshold((to_unsafe as LibGtk::Widget*), Int32.cast(start_x), Int32.cast(start_y), Int32.cast(current_x), Int32.cast(current_y))
+      __return_value = LibGtk.widget_drag_check_threshold((to_unsafe as LibGtk::Widget*), Int32.new(start_x), Int32.new(start_y), Int32.new(current_x), Int32.new(current_y))
       __return_value
     end
 
@@ -198,12 +198,12 @@ module Gtk
     end
 
     def drag_dest_set(flags, targets, n_targets, actions)
-      __return_value = LibGtk.widget_drag_dest_set((to_unsafe as LibGtk::Widget*), flags, targets && targets, Int32.cast(n_targets), actions)
+      __return_value = LibGtk.widget_drag_dest_set((to_unsafe as LibGtk::Widget*), flags, targets && targets, Int32.new(n_targets), actions)
       __return_value
     end
 
     def drag_dest_set_proxy(proxy_window, protocol, use_coordinates)
-      __return_value = LibGtk.widget_drag_dest_set_proxy((to_unsafe as LibGtk::Widget*), (proxy_window.to_unsafe as LibGdk::Window*), protocol, Bool.cast(use_coordinates))
+      __return_value = LibGtk.widget_drag_dest_set_proxy((to_unsafe as LibGtk::Widget*), (proxy_window.to_unsafe as LibGdk::Window*), protocol, Bool.new(use_coordinates))
       __return_value
     end
 
@@ -213,7 +213,7 @@ module Gtk
     end
 
     def drag_dest_set_track_motion(track_motion)
-      __return_value = LibGtk.widget_drag_dest_set_track_motion((to_unsafe as LibGtk::Widget*), Bool.cast(track_motion))
+      __return_value = LibGtk.widget_drag_dest_set_track_motion((to_unsafe as LibGtk::Widget*), Bool.new(track_motion))
       __return_value
     end
 
@@ -223,7 +223,7 @@ module Gtk
     end
 
     def drag_get_data(context, target, time)
-      __return_value = LibGtk.widget_drag_get_data((to_unsafe as LibGtk::Widget*), (context.to_unsafe as LibGdk::DragContext*), (target.to_unsafe as LibGdk::Atom*), UInt32.cast(time))
+      __return_value = LibGtk.widget_drag_get_data((to_unsafe as LibGtk::Widget*), (context.to_unsafe as LibGdk::DragContext*), (target.to_unsafe as LibGdk::Atom*), UInt32.new(time))
       __return_value
     end
 
@@ -253,7 +253,7 @@ module Gtk
     end
 
     def drag_source_set(start_button_mask, targets, n_targets, actions)
-      __return_value = LibGtk.widget_drag_source_set((to_unsafe as LibGtk::Widget*), start_button_mask, targets && targets, Int32.cast(n_targets), actions)
+      __return_value = LibGtk.widget_drag_source_set((to_unsafe as LibGtk::Widget*), start_button_mask, targets && targets, Int32.new(n_targets), actions)
       __return_value
     end
 
@@ -348,7 +348,7 @@ module Gtk
     end
 
     def ancestor(widget_type)
-      __return_value = LibGtk.widget_get_ancestor((to_unsafe as LibGtk::Widget*), UInt64.cast(widget_type))
+      __return_value = LibGtk.widget_get_ancestor((to_unsafe as LibGtk::Widget*), UInt64.new(widget_type))
       Gtk::Widget.new(__return_value)
     end
 
@@ -533,22 +533,22 @@ module Gtk
     end
 
     def pointer(x, y)
-      __return_value = LibGtk.widget_get_pointer((to_unsafe as LibGtk::Widget*), Int32.cast(x), Int32.cast(y))
+      __return_value = LibGtk.widget_get_pointer((to_unsafe as LibGtk::Widget*), Int32.new(x), Int32.new(y))
       __return_value
     end
 
     def preferred_height(minimum_height, natural_height)
-      __return_value = LibGtk.widget_get_preferred_height((to_unsafe as LibGtk::Widget*), Int32.cast(minimum_height), Int32.cast(natural_height))
+      __return_value = LibGtk.widget_get_preferred_height((to_unsafe as LibGtk::Widget*), Int32.new(minimum_height), Int32.new(natural_height))
       __return_value
     end
 
     def preferred_height_and_baseline_for_width(width, minimum_height, natural_height, minimum_baseline, natural_baseline)
-      __return_value = LibGtk.widget_get_preferred_height_and_baseline_for_width((to_unsafe as LibGtk::Widget*), Int32.cast(width), Int32.cast(minimum_height), Int32.cast(natural_height), Int32.cast(minimum_baseline), Int32.cast(natural_baseline))
+      __return_value = LibGtk.widget_get_preferred_height_and_baseline_for_width((to_unsafe as LibGtk::Widget*), Int32.new(width), Int32.new(minimum_height), Int32.new(natural_height), Int32.new(minimum_baseline), Int32.new(natural_baseline))
       __return_value
     end
 
     def preferred_height_for_width(width, minimum_height, natural_height)
-      __return_value = LibGtk.widget_get_preferred_height_for_width((to_unsafe as LibGtk::Widget*), Int32.cast(width), Int32.cast(minimum_height), Int32.cast(natural_height))
+      __return_value = LibGtk.widget_get_preferred_height_for_width((to_unsafe as LibGtk::Widget*), Int32.new(width), Int32.new(minimum_height), Int32.new(natural_height))
       __return_value
     end
 
@@ -558,12 +558,12 @@ module Gtk
     end
 
     def preferred_width(minimum_width, natural_width)
-      __return_value = LibGtk.widget_get_preferred_width((to_unsafe as LibGtk::Widget*), Int32.cast(minimum_width), Int32.cast(natural_width))
+      __return_value = LibGtk.widget_get_preferred_width((to_unsafe as LibGtk::Widget*), Int32.new(minimum_width), Int32.new(natural_width))
       __return_value
     end
 
     def preferred_width_for_height(height, minimum_width, natural_width)
-      __return_value = LibGtk.widget_get_preferred_width_for_height((to_unsafe as LibGtk::Widget*), Int32.cast(height), Int32.cast(minimum_width), Int32.cast(natural_width))
+      __return_value = LibGtk.widget_get_preferred_width_for_height((to_unsafe as LibGtk::Widget*), Int32.new(height), Int32.new(minimum_width), Int32.new(natural_width))
       __return_value
     end
 
@@ -613,7 +613,7 @@ module Gtk
     end
 
     def size_request(width, height)
-      __return_value = LibGtk.widget_get_size_request((to_unsafe as LibGtk::Widget*), Int32.cast(width), Int32.cast(height))
+      __return_value = LibGtk.widget_get_size_request((to_unsafe as LibGtk::Widget*), Int32.new(width), Int32.new(height))
       __return_value
     end
 
@@ -643,7 +643,7 @@ module Gtk
     end
 
     def template_child(widget_type, name)
-      __return_value = LibGtk.widget_get_template_child((to_unsafe as LibGtk::Widget*), UInt64.cast(widget_type), name)
+      __return_value = LibGtk.widget_get_template_child((to_unsafe as LibGtk::Widget*), UInt64.new(widget_type), name)
       GObject::Object.new(__return_value)
     end
 
@@ -834,7 +834,7 @@ module Gtk
 
     def list_action_prefixes
       __return_value = LibGtk.widget_list_action_prefixes((to_unsafe as LibGtk::Widget*))
-      PointerIterator.new(__return_value) {|__item_71| raise "Expected string but got null" unless __item_71; String.new(__item_71) }
+      PointerIterator.new(__return_value) {|__item_90| raise "Expected string but got null" unless __item_90; String.new(__item_90) }
     end
 
     def list_mnemonic_labels
@@ -848,7 +848,7 @@ module Gtk
     end
 
     def mnemonic_activate(group_cycling)
-      __return_value = LibGtk.widget_mnemonic_activate((to_unsafe as LibGtk::Widget*), Bool.cast(group_cycling))
+      __return_value = LibGtk.widget_mnemonic_activate((to_unsafe as LibGtk::Widget*), Bool.new(group_cycling))
       __return_value
     end
 
@@ -913,7 +913,7 @@ module Gtk
     end
 
     def path(path_length, path, path_reversed)
-      __return_value = LibGtk.widget_path((to_unsafe as LibGtk::Widget*), UInt32.cast(path_length), path, path_reversed)
+      __return_value = LibGtk.widget_path((to_unsafe as LibGtk::Widget*), UInt32.new(path_length), path, path_reversed)
       __return_value
     end
 
@@ -928,7 +928,7 @@ module Gtk
     end
 
     def queue_draw_area(x, y, width, height)
-      __return_value = LibGtk.widget_queue_draw_area((to_unsafe as LibGtk::Widget*), Int32.cast(x), Int32.cast(y), Int32.cast(width), Int32.cast(height))
+      __return_value = LibGtk.widget_queue_draw_area((to_unsafe as LibGtk::Widget*), Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
       __return_value
     end
 
@@ -963,7 +963,7 @@ module Gtk
     end
 
     def remove_accelerator(accel_group, accel_key, accel_mods)
-      __return_value = LibGtk.widget_remove_accelerator((to_unsafe as LibGtk::Widget*), (accel_group.to_unsafe as LibGtk::AccelGroup*), UInt32.cast(accel_key), accel_mods)
+      __return_value = LibGtk.widget_remove_accelerator((to_unsafe as LibGtk::Widget*), (accel_group.to_unsafe as LibGtk::AccelGroup*), UInt32.new(accel_key), accel_mods)
       __return_value
     end
 
@@ -973,17 +973,17 @@ module Gtk
     end
 
     def remove_tick_callback(id)
-      __return_value = LibGtk.widget_remove_tick_callback((to_unsafe as LibGtk::Widget*), UInt32.cast(id))
+      __return_value = LibGtk.widget_remove_tick_callback((to_unsafe as LibGtk::Widget*), UInt32.new(id))
       __return_value
     end
 
     def render_icon(stock_id, size, detail)
-      __return_value = LibGtk.widget_render_icon((to_unsafe as LibGtk::Widget*), stock_id, Int32.cast(size), detail && detail)
+      __return_value = LibGtk.widget_render_icon((to_unsafe as LibGtk::Widget*), stock_id, Int32.new(size), detail && detail)
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 
     def render_icon_pixbuf(stock_id, size)
-      __return_value = LibGtk.widget_render_icon_pixbuf((to_unsafe as LibGtk::Widget*), stock_id, Int32.cast(size))
+      __return_value = LibGtk.widget_render_icon_pixbuf((to_unsafe as LibGtk::Widget*), stock_id, Int32.new(size))
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 
@@ -1023,22 +1023,22 @@ module Gtk
     end
 
     def app_paintable=(app_paintable)
-      __return_value = LibGtk.widget_set_app_paintable((to_unsafe as LibGtk::Widget*), Bool.cast(app_paintable))
+      __return_value = LibGtk.widget_set_app_paintable((to_unsafe as LibGtk::Widget*), Bool.new(app_paintable))
       __return_value
     end
 
     def can_default=(can_default)
-      __return_value = LibGtk.widget_set_can_default((to_unsafe as LibGtk::Widget*), Bool.cast(can_default))
+      __return_value = LibGtk.widget_set_can_default((to_unsafe as LibGtk::Widget*), Bool.new(can_default))
       __return_value
     end
 
     def can_focus=(can_focus)
-      __return_value = LibGtk.widget_set_can_focus((to_unsafe as LibGtk::Widget*), Bool.cast(can_focus))
+      __return_value = LibGtk.widget_set_can_focus((to_unsafe as LibGtk::Widget*), Bool.new(can_focus))
       __return_value
     end
 
     def child_visible=(is_visible)
-      __return_value = LibGtk.widget_set_child_visible((to_unsafe as LibGtk::Widget*), Bool.cast(is_visible))
+      __return_value = LibGtk.widget_set_child_visible((to_unsafe as LibGtk::Widget*), Bool.new(is_visible))
       __return_value
     end
 
@@ -1053,7 +1053,7 @@ module Gtk
     end
 
     def set_device_enabled(device, enabled)
-      __return_value = LibGtk.widget_set_device_enabled((to_unsafe as LibGtk::Widget*), (device.to_unsafe as LibGdk::Device*), Bool.cast(enabled))
+      __return_value = LibGtk.widget_set_device_enabled((to_unsafe as LibGtk::Widget*), (device.to_unsafe as LibGdk::Device*), Bool.new(enabled))
       __return_value
     end
 
@@ -1068,12 +1068,12 @@ module Gtk
     end
 
     def double_buffered=(double_buffered)
-      __return_value = LibGtk.widget_set_double_buffered((to_unsafe as LibGtk::Widget*), Bool.cast(double_buffered))
+      __return_value = LibGtk.widget_set_double_buffered((to_unsafe as LibGtk::Widget*), Bool.new(double_buffered))
       __return_value
     end
 
     def events=(events)
-      __return_value = LibGtk.widget_set_events((to_unsafe as LibGtk::Widget*), Int32.cast(events))
+      __return_value = LibGtk.widget_set_events((to_unsafe as LibGtk::Widget*), Int32.new(events))
       __return_value
     end
 
@@ -1083,57 +1083,57 @@ module Gtk
     end
 
     def has_tooltip=(has_tooltip)
-      __return_value = LibGtk.widget_set_has_tooltip((to_unsafe as LibGtk::Widget*), Bool.cast(has_tooltip))
+      __return_value = LibGtk.widget_set_has_tooltip((to_unsafe as LibGtk::Widget*), Bool.new(has_tooltip))
       __return_value
     end
 
     def has_window=(has_window)
-      __return_value = LibGtk.widget_set_has_window((to_unsafe as LibGtk::Widget*), Bool.cast(has_window))
+      __return_value = LibGtk.widget_set_has_window((to_unsafe as LibGtk::Widget*), Bool.new(has_window))
       __return_value
     end
 
     def hexpand=(expand)
-      __return_value = LibGtk.widget_set_hexpand((to_unsafe as LibGtk::Widget*), Bool.cast(expand))
+      __return_value = LibGtk.widget_set_hexpand((to_unsafe as LibGtk::Widget*), Bool.new(expand))
       __return_value
     end
 
     def hexpand_set=(set)
-      __return_value = LibGtk.widget_set_hexpand_set((to_unsafe as LibGtk::Widget*), Bool.cast(set))
+      __return_value = LibGtk.widget_set_hexpand_set((to_unsafe as LibGtk::Widget*), Bool.new(set))
       __return_value
     end
 
     def mapped=(mapped)
-      __return_value = LibGtk.widget_set_mapped((to_unsafe as LibGtk::Widget*), Bool.cast(mapped))
+      __return_value = LibGtk.widget_set_mapped((to_unsafe as LibGtk::Widget*), Bool.new(mapped))
       __return_value
     end
 
     def margin_bottom=(margin)
-      __return_value = LibGtk.widget_set_margin_bottom((to_unsafe as LibGtk::Widget*), Int32.cast(margin))
+      __return_value = LibGtk.widget_set_margin_bottom((to_unsafe as LibGtk::Widget*), Int32.new(margin))
       __return_value
     end
 
     def margin_end=(margin)
-      __return_value = LibGtk.widget_set_margin_end((to_unsafe as LibGtk::Widget*), Int32.cast(margin))
+      __return_value = LibGtk.widget_set_margin_end((to_unsafe as LibGtk::Widget*), Int32.new(margin))
       __return_value
     end
 
     def margin_left=(margin)
-      __return_value = LibGtk.widget_set_margin_left((to_unsafe as LibGtk::Widget*), Int32.cast(margin))
+      __return_value = LibGtk.widget_set_margin_left((to_unsafe as LibGtk::Widget*), Int32.new(margin))
       __return_value
     end
 
     def margin_right=(margin)
-      __return_value = LibGtk.widget_set_margin_right((to_unsafe as LibGtk::Widget*), Int32.cast(margin))
+      __return_value = LibGtk.widget_set_margin_right((to_unsafe as LibGtk::Widget*), Int32.new(margin))
       __return_value
     end
 
     def margin_start=(margin)
-      __return_value = LibGtk.widget_set_margin_start((to_unsafe as LibGtk::Widget*), Int32.cast(margin))
+      __return_value = LibGtk.widget_set_margin_start((to_unsafe as LibGtk::Widget*), Int32.new(margin))
       __return_value
     end
 
     def margin_top=(margin)
-      __return_value = LibGtk.widget_set_margin_top((to_unsafe as LibGtk::Widget*), Int32.cast(margin))
+      __return_value = LibGtk.widget_set_margin_top((to_unsafe as LibGtk::Widget*), Int32.new(margin))
       __return_value
     end
 
@@ -1143,12 +1143,12 @@ module Gtk
     end
 
     def no_show_all=(no_show_all)
-      __return_value = LibGtk.widget_set_no_show_all((to_unsafe as LibGtk::Widget*), Bool.cast(no_show_all))
+      __return_value = LibGtk.widget_set_no_show_all((to_unsafe as LibGtk::Widget*), Bool.new(no_show_all))
       __return_value
     end
 
     def opacity=(opacity)
-      __return_value = LibGtk.widget_set_opacity((to_unsafe as LibGtk::Widget*), Float64.cast(opacity))
+      __return_value = LibGtk.widget_set_opacity((to_unsafe as LibGtk::Widget*), Float64.new(opacity))
       __return_value
     end
 
@@ -1163,27 +1163,27 @@ module Gtk
     end
 
     def realized=(realized)
-      __return_value = LibGtk.widget_set_realized((to_unsafe as LibGtk::Widget*), Bool.cast(realized))
+      __return_value = LibGtk.widget_set_realized((to_unsafe as LibGtk::Widget*), Bool.new(realized))
       __return_value
     end
 
     def receives_default=(receives_default)
-      __return_value = LibGtk.widget_set_receives_default((to_unsafe as LibGtk::Widget*), Bool.cast(receives_default))
+      __return_value = LibGtk.widget_set_receives_default((to_unsafe as LibGtk::Widget*), Bool.new(receives_default))
       __return_value
     end
 
     def redraw_on_allocate=(redraw_on_allocate)
-      __return_value = LibGtk.widget_set_redraw_on_allocate((to_unsafe as LibGtk::Widget*), Bool.cast(redraw_on_allocate))
+      __return_value = LibGtk.widget_set_redraw_on_allocate((to_unsafe as LibGtk::Widget*), Bool.new(redraw_on_allocate))
       __return_value
     end
 
     def sensitive=(sensitive)
-      __return_value = LibGtk.widget_set_sensitive((to_unsafe as LibGtk::Widget*), Bool.cast(sensitive))
+      __return_value = LibGtk.widget_set_sensitive((to_unsafe as LibGtk::Widget*), Bool.new(sensitive))
       __return_value
     end
 
     def set_size_request(width, height)
-      __return_value = LibGtk.widget_set_size_request((to_unsafe as LibGtk::Widget*), Int32.cast(width), Int32.cast(height))
+      __return_value = LibGtk.widget_set_size_request((to_unsafe as LibGtk::Widget*), Int32.new(width), Int32.new(height))
       __return_value
     end
 
@@ -1193,7 +1193,7 @@ module Gtk
     end
 
     def set_state_flags(flags, clear)
-      __return_value = LibGtk.widget_set_state_flags((to_unsafe as LibGtk::Widget*), flags, Bool.cast(clear))
+      __return_value = LibGtk.widget_set_state_flags((to_unsafe as LibGtk::Widget*), flags, Bool.new(clear))
       __return_value
     end
 
@@ -1203,7 +1203,7 @@ module Gtk
     end
 
     def support_multidevice=(support_multidevice)
-      __return_value = LibGtk.widget_set_support_multidevice((to_unsafe as LibGtk::Widget*), Bool.cast(support_multidevice))
+      __return_value = LibGtk.widget_set_support_multidevice((to_unsafe as LibGtk::Widget*), Bool.new(support_multidevice))
       __return_value
     end
 
@@ -1228,17 +1228,17 @@ module Gtk
     end
 
     def vexpand=(expand)
-      __return_value = LibGtk.widget_set_vexpand((to_unsafe as LibGtk::Widget*), Bool.cast(expand))
+      __return_value = LibGtk.widget_set_vexpand((to_unsafe as LibGtk::Widget*), Bool.new(expand))
       __return_value
     end
 
     def vexpand_set=(set)
-      __return_value = LibGtk.widget_set_vexpand_set((to_unsafe as LibGtk::Widget*), Bool.cast(set))
+      __return_value = LibGtk.widget_set_vexpand_set((to_unsafe as LibGtk::Widget*), Bool.new(set))
       __return_value
     end
 
     def visible=(visible)
-      __return_value = LibGtk.widget_set_visible((to_unsafe as LibGtk::Widget*), Bool.cast(visible))
+      __return_value = LibGtk.widget_set_visible((to_unsafe as LibGtk::Widget*), Bool.new(visible))
       __return_value
     end
 
@@ -1278,7 +1278,7 @@ module Gtk
     end
 
     def size_allocate_with_baseline(allocation, baseline)
-      __return_value = LibGtk.widget_size_allocate_with_baseline((to_unsafe as LibGtk::Widget*), (allocation.to_unsafe as LibCairo::RectangleInt*), Int32.cast(baseline))
+      __return_value = LibGtk.widget_size_allocate_with_baseline((to_unsafe as LibGtk::Widget*), (allocation.to_unsafe as LibCairo::RectangleInt*), Int32.new(baseline))
       __return_value
     end
 
@@ -1303,7 +1303,7 @@ module Gtk
     end
 
     def translate_coordinates(dest_widget, src_x, src_y, dest_x, dest_y)
-      __return_value = LibGtk.widget_translate_coordinates((to_unsafe as LibGtk::Widget*), (dest_widget.to_unsafe as LibGtk::Widget*), Int32.cast(src_x), Int32.cast(src_y), Int32.cast(dest_x), Int32.cast(dest_y))
+      __return_value = LibGtk.widget_translate_coordinates((to_unsafe as LibGtk::Widget*), (dest_widget.to_unsafe as LibGtk::Widget*), Int32.new(src_x), Int32.new(src_y), Int32.new(dest_x), Int32.new(dest_y))
       __return_value
     end
 

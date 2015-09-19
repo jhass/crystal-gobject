@@ -17,13 +17,13 @@ module GLib
     end
 
     def fetch(match_num)
-      __return_value = LibGLib.match_info_fetch((to_unsafe as LibGLib::MatchInfo*), Int32.cast(match_num))
+      __return_value = LibGLib.match_info_fetch((to_unsafe as LibGLib::MatchInfo*), Int32.new(match_num))
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 
     def fetch_all
       __return_value = LibGLib.match_info_fetch_all((to_unsafe as LibGLib::MatchInfo*))
-      PointerIterator.new(__return_value) {|__item_35| raise "Expected string but got null" unless __item_35; String.new(__item_35) }
+      PointerIterator.new(__return_value) {|__item_87| raise "Expected string but got null" unless __item_87; String.new(__item_87) }
     end
 
     def fetch_named(name)
@@ -32,12 +32,12 @@ module GLib
     end
 
     def fetch_named_pos(name, start_pos, end_pos)
-      __return_value = LibGLib.match_info_fetch_named_pos((to_unsafe as LibGLib::MatchInfo*), name, Int32.cast(start_pos), Int32.cast(end_pos))
+      __return_value = LibGLib.match_info_fetch_named_pos((to_unsafe as LibGLib::MatchInfo*), name, Int32.new(start_pos), Int32.new(end_pos))
       __return_value
     end
 
     def fetch_pos(match_num, start_pos, end_pos)
-      __return_value = LibGLib.match_info_fetch_pos((to_unsafe as LibGLib::MatchInfo*), Int32.cast(match_num), Int32.cast(start_pos), Int32.cast(end_pos))
+      __return_value = LibGLib.match_info_fetch_pos((to_unsafe as LibGLib::MatchInfo*), Int32.new(match_num), Int32.new(start_pos), Int32.new(end_pos))
       __return_value
     end
 

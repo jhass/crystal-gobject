@@ -25,7 +25,7 @@ module Gst
     end
 
     def loop(loop_type, repeat_count)
-      __return_value = LibGst.toc_entry_get_loop((to_unsafe as LibGst::TocEntry*), loop_type, Int32.cast(repeat_count))
+      __return_value = LibGst.toc_entry_get_loop((to_unsafe as LibGst::TocEntry*), loop_type, Int32.new(repeat_count))
       __return_value
     end
 
@@ -35,7 +35,7 @@ module Gst
     end
 
     def start_stop_times(start, stop)
-      __return_value = LibGst.toc_entry_get_start_stop_times((to_unsafe as LibGst::TocEntry*), Int64.cast(start), Int64.cast(stop))
+      __return_value = LibGst.toc_entry_get_start_stop_times((to_unsafe as LibGst::TocEntry*), Int64.new(start), Int64.new(stop))
       __return_value
     end
 
@@ -75,12 +75,12 @@ module Gst
     end
 
     def set_loop(loop_type, repeat_count)
-      __return_value = LibGst.toc_entry_set_loop((to_unsafe as LibGst::TocEntry*), loop_type, Int32.cast(repeat_count))
+      __return_value = LibGst.toc_entry_set_loop((to_unsafe as LibGst::TocEntry*), loop_type, Int32.new(repeat_count))
       __return_value
     end
 
     def set_start_stop_times(start, stop)
-      __return_value = LibGst.toc_entry_set_start_stop_times((to_unsafe as LibGst::TocEntry*), Int64.cast(start), Int64.cast(stop))
+      __return_value = LibGst.toc_entry_set_start_stop_times((to_unsafe as LibGst::TocEntry*), Int64.new(start), Int64.new(stop))
       __return_value
     end
 

@@ -30,7 +30,7 @@ module Gtk
     end
 
     def show_menubar=(show_menubar)
-      __return_value = LibGtk.application_window_set_show_menubar((to_unsafe as LibGtk::ApplicationWindow*), Bool.cast(show_menubar))
+      __return_value = LibGtk.application_window_set_show_menubar((to_unsafe as LibGtk::ApplicationWindow*), Bool.new(show_menubar))
       __return_value
     end
 

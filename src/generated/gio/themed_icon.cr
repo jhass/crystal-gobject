@@ -17,7 +17,7 @@ module Gio
     end
 
     def self.new_from_names(iconnames, len)
-      __return_value = LibGio.themed_icon_new_from_names(iconnames, Int32.cast(len))
+      __return_value = LibGio.themed_icon_new_from_names(iconnames, Int32.new(len))
       Gio::ThemedIcon.new(__return_value)
     end
 
@@ -33,7 +33,7 @@ module Gio
 
     def names
       __return_value = LibGio.themed_icon_get_names((to_unsafe as LibGio::ThemedIcon*))
-      PointerIterator.new(__return_value) {|__item_87| raise "Expected string but got null" unless __item_87; String.new(__item_87) }
+      PointerIterator.new(__return_value) {|__item_64| raise "Expected string but got null" unless __item_64; String.new(__item_64) }
     end
 
     def prepend_name(iconname)

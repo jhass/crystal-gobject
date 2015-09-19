@@ -110,7 +110,7 @@ module Gtk
     end
 
     def border_width=(border_width)
-      __return_value = LibGtk.container_set_border_width((to_unsafe as LibGtk::Container*), UInt32.cast(border_width))
+      __return_value = LibGtk.container_set_border_width((to_unsafe as LibGtk::Container*), UInt32.new(border_width))
       __return_value
     end
 
@@ -135,7 +135,7 @@ module Gtk
     end
 
     def reallocate_redraws=(needs_redraws)
-      __return_value = LibGtk.container_set_reallocate_redraws((to_unsafe as LibGtk::Container*), Bool.cast(needs_redraws))
+      __return_value = LibGtk.container_set_reallocate_redraws((to_unsafe as LibGtk::Container*), Bool.new(needs_redraws))
       __return_value
     end
 

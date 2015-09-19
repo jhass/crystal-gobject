@@ -30,7 +30,7 @@ module Gtk
     end
 
     def child_at_index(idx)
-      __return_value = LibGtk.flow_box_get_child_at_index((to_unsafe as LibGtk::FlowBox*), Int32.cast(idx))
+      __return_value = LibGtk.flow_box_get_child_at_index((to_unsafe as LibGtk::FlowBox*), Int32.new(idx))
       Gtk::FlowBoxChild.new(__return_value)
     end
 
@@ -70,7 +70,7 @@ module Gtk
     end
 
     def insert(widget, position)
-      __return_value = LibGtk.flow_box_insert((to_unsafe as LibGtk::FlowBox*), (widget.to_unsafe as LibGtk::Widget*), Int32.cast(position))
+      __return_value = LibGtk.flow_box_insert((to_unsafe as LibGtk::FlowBox*), (widget.to_unsafe as LibGtk::Widget*), Int32.new(position))
       __return_value
     end
 
@@ -100,12 +100,12 @@ module Gtk
     end
 
     def activate_on_single_click=(single)
-      __return_value = LibGtk.flow_box_set_activate_on_single_click((to_unsafe as LibGtk::FlowBox*), Bool.cast(single))
+      __return_value = LibGtk.flow_box_set_activate_on_single_click((to_unsafe as LibGtk::FlowBox*), Bool.new(single))
       __return_value
     end
 
     def column_spacing=(spacing)
-      __return_value = LibGtk.flow_box_set_column_spacing((to_unsafe as LibGtk::FlowBox*), UInt32.cast(spacing))
+      __return_value = LibGtk.flow_box_set_column_spacing((to_unsafe as LibGtk::FlowBox*), UInt32.new(spacing))
       __return_value
     end
 
@@ -120,22 +120,22 @@ module Gtk
     end
 
     def homogeneous=(homogeneous)
-      __return_value = LibGtk.flow_box_set_homogeneous((to_unsafe as LibGtk::FlowBox*), Bool.cast(homogeneous))
+      __return_value = LibGtk.flow_box_set_homogeneous((to_unsafe as LibGtk::FlowBox*), Bool.new(homogeneous))
       __return_value
     end
 
     def max_children_per_line=(n_children)
-      __return_value = LibGtk.flow_box_set_max_children_per_line((to_unsafe as LibGtk::FlowBox*), UInt32.cast(n_children))
+      __return_value = LibGtk.flow_box_set_max_children_per_line((to_unsafe as LibGtk::FlowBox*), UInt32.new(n_children))
       __return_value
     end
 
     def min_children_per_line=(n_children)
-      __return_value = LibGtk.flow_box_set_min_children_per_line((to_unsafe as LibGtk::FlowBox*), UInt32.cast(n_children))
+      __return_value = LibGtk.flow_box_set_min_children_per_line((to_unsafe as LibGtk::FlowBox*), UInt32.new(n_children))
       __return_value
     end
 
     def row_spacing=(spacing)
-      __return_value = LibGtk.flow_box_set_row_spacing((to_unsafe as LibGtk::FlowBox*), UInt32.cast(spacing))
+      __return_value = LibGtk.flow_box_set_row_spacing((to_unsafe as LibGtk::FlowBox*), UInt32.new(spacing))
       __return_value
     end
 

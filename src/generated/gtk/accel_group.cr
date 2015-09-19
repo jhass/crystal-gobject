@@ -20,12 +20,12 @@ module Gtk
     end
 
     def activate(accel_quark, acceleratable, accel_key, accel_mods)
-      __return_value = LibGtk.accel_group_activate((to_unsafe as LibGtk::AccelGroup*), UInt32.cast(accel_quark), (acceleratable.to_unsafe as LibGObject::Object*), UInt32.cast(accel_key), accel_mods)
+      __return_value = LibGtk.accel_group_activate((to_unsafe as LibGtk::AccelGroup*), UInt32.new(accel_quark), (acceleratable.to_unsafe as LibGObject::Object*), UInt32.new(accel_key), accel_mods)
       __return_value
     end
 
     def connect(accel_key, accel_mods, accel_flags, closure)
-      __return_value = LibGtk.accel_group_connect((to_unsafe as LibGtk::AccelGroup*), UInt32.cast(accel_key), accel_mods, accel_flags, (closure.to_unsafe as LibGObject::Closure*))
+      __return_value = LibGtk.accel_group_connect((to_unsafe as LibGtk::AccelGroup*), UInt32.new(accel_key), accel_mods, accel_flags, (closure.to_unsafe as LibGObject::Closure*))
       __return_value
     end
 
@@ -40,7 +40,7 @@ module Gtk
     end
 
     def disconnect_key(accel_key, accel_mods)
-      __return_value = LibGtk.accel_group_disconnect_key((to_unsafe as LibGtk::AccelGroup*), UInt32.cast(accel_key), accel_mods)
+      __return_value = LibGtk.accel_group_disconnect_key((to_unsafe as LibGtk::AccelGroup*), UInt32.new(accel_key), accel_mods)
       __return_value
     end
 
@@ -65,8 +65,8 @@ module Gtk
     end
 
     def query(accel_key, accel_mods, n_entries)
-      __return_value = LibGtk.accel_group_query((to_unsafe as LibGtk::AccelGroup*), UInt32.cast(accel_key), accel_mods, UInt32.cast(n_entries))
-      PointerIterator.new(__return_value) {|__item_92| Gtk::AccelGroupEntry.new(__item_92) }
+      __return_value = LibGtk.accel_group_query((to_unsafe as LibGtk::AccelGroup*), UInt32.new(accel_key), accel_mods, UInt32.new(n_entries))
+      PointerIterator.new(__return_value) {|__item_60| Gtk::AccelGroupEntry.new(__item_60) }
     end
 
     def unlock

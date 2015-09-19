@@ -20,7 +20,7 @@ module Gio
     end
 
     def close_async(io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.input_stream_close_async((to_unsafe as LibGio::InputStream*), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.input_stream_close_async((to_unsafe as LibGio::InputStream*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -43,44 +43,44 @@ module Gio
 
     def read(buffer, count, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.input_stream_read((to_unsafe as LibGio::InputStream*), buffer, UInt64.cast(count), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.input_stream_read((to_unsafe as LibGio::InputStream*), buffer, UInt64.new(count), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def read_all(buffer, count, bytes_read, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.input_stream_read_all((to_unsafe as LibGio::InputStream*), buffer, UInt64.cast(count), UInt64.cast(bytes_read), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.input_stream_read_all((to_unsafe as LibGio::InputStream*), buffer, UInt64.new(count), UInt64.new(bytes_read), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def read_all_async(buffer, count, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.input_stream_read_all_async((to_unsafe as LibGio::InputStream*), buffer, UInt64.cast(count), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.input_stream_read_all_async((to_unsafe as LibGio::InputStream*), buffer, UInt64.new(count), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
     def read_all_finish(result, bytes_read)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.input_stream_read_all_finish((to_unsafe as LibGio::InputStream*), (result.to_unsafe as LibGio::AsyncResult*), UInt64.cast(bytes_read), pointerof(__error))
+      __return_value = LibGio.input_stream_read_all_finish((to_unsafe as LibGio::InputStream*), (result.to_unsafe as LibGio::AsyncResult*), UInt64.new(bytes_read), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def read_async(buffer, count, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.input_stream_read_async((to_unsafe as LibGio::InputStream*), buffer, UInt64.cast(count), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.input_stream_read_async((to_unsafe as LibGio::InputStream*), buffer, UInt64.new(count), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
     def read_bytes(count, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.input_stream_read_bytes((to_unsafe as LibGio::InputStream*), UInt64.cast(count), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.input_stream_read_bytes((to_unsafe as LibGio::InputStream*), UInt64.new(count), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       GLib::Bytes.new(__return_value)
     end
 
     def read_bytes_async(count, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.input_stream_read_bytes_async((to_unsafe as LibGio::InputStream*), UInt64.cast(count), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.input_stream_read_bytes_async((to_unsafe as LibGio::InputStream*), UInt64.new(count), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -107,13 +107,13 @@ module Gio
 
     def skip(count, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.input_stream_skip((to_unsafe as LibGio::InputStream*), UInt64.cast(count), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.input_stream_skip((to_unsafe as LibGio::InputStream*), UInt64.new(count), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def skip_async(count, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.input_stream_skip_async((to_unsafe as LibGio::InputStream*), UInt64.cast(count), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.input_stream_skip_async((to_unsafe as LibGio::InputStream*), UInt64.new(count), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 

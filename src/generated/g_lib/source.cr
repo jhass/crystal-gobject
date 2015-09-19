@@ -10,7 +10,7 @@ module GLib
     end
 
     def self.new_internal(source_funcs, struct_size)
-      __return_value = LibGLib.source_new((source_funcs.to_unsafe as LibGLib::SourceFuncs*), UInt32.cast(struct_size))
+      __return_value = LibGLib.source_new((source_funcs.to_unsafe as LibGLib::SourceFuncs*), UInt32.new(struct_size))
       GLib::Source.new(__return_value)
     end
 
@@ -120,7 +120,7 @@ module GLib
     end
 
     def can_recurse=(can_recurse)
-      __return_value = LibGLib.source_set_can_recurse((to_unsafe as LibGLib::Source*), Bool.cast(can_recurse))
+      __return_value = LibGLib.source_set_can_recurse((to_unsafe as LibGLib::Source*), Bool.new(can_recurse))
       __return_value
     end
 
@@ -135,12 +135,12 @@ module GLib
     end
 
     def priority=(priority)
-      __return_value = LibGLib.source_set_priority((to_unsafe as LibGLib::Source*), Int32.cast(priority))
+      __return_value = LibGLib.source_set_priority((to_unsafe as LibGLib::Source*), Int32.new(priority))
       __return_value
     end
 
     def ready_time=(ready_time)
-      __return_value = LibGLib.source_set_ready_time((to_unsafe as LibGLib::Source*), Int64.cast(ready_time))
+      __return_value = LibGLib.source_set_ready_time((to_unsafe as LibGLib::Source*), Int64.new(ready_time))
       __return_value
     end
 
@@ -150,7 +150,7 @@ module GLib
     end
 
     def self.remove(tag)
-      __return_value = LibGLib.source_remove(UInt32.cast(tag))
+      __return_value = LibGLib.source_remove(UInt32.new(tag))
       __return_value
     end
 
@@ -165,7 +165,7 @@ module GLib
     end
 
     def self.name_by_id=(tag, name)
-      __return_value = LibGLib.source_set_name_by_id(UInt32.cast(tag), name)
+      __return_value = LibGLib.source_set_name_by_id(UInt32.new(tag), name)
       __return_value
     end
 

@@ -33,16 +33,16 @@ module GLib
 
     def app_info(uri, name, exec, count, stamp)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.bookmark_file_get_app_info((to_unsafe as LibGLib::BookmarkFile*), uri, name, exec, UInt32.cast(count), Int64.cast(stamp), pointerof(__error))
+      __return_value = LibGLib.bookmark_file_get_app_info((to_unsafe as LibGLib::BookmarkFile*), uri, name, exec, UInt32.new(count), Int64.new(stamp), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def applications(uri, length)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.bookmark_file_get_applications((to_unsafe as LibGLib::BookmarkFile*), uri, UInt64.cast(length), pointerof(__error))
+      __return_value = LibGLib.bookmark_file_get_applications((to_unsafe as LibGLib::BookmarkFile*), uri, UInt64.new(length), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_41| raise "Expected string but got null" unless __item_41; String.new(__item_41) }
+      PointerIterator.new(__return_value) {|__item_18| raise "Expected string but got null" unless __item_18; String.new(__item_18) }
     end
 
     def description(uri)
@@ -54,9 +54,9 @@ module GLib
 
     def groups(uri, length)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.bookmark_file_get_groups((to_unsafe as LibGLib::BookmarkFile*), uri, UInt64.cast(length), pointerof(__error))
+      __return_value = LibGLib.bookmark_file_get_groups((to_unsafe as LibGLib::BookmarkFile*), uri, UInt64.new(length), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_80| raise "Expected string but got null" unless __item_80; String.new(__item_80) }
+      PointerIterator.new(__return_value) {|__item_91| raise "Expected string but got null" unless __item_91; String.new(__item_91) }
     end
 
     def icon(uri, href, mime_type)
@@ -100,8 +100,8 @@ module GLib
     end
 
     def uris(length)
-      __return_value = LibGLib.bookmark_file_get_uris((to_unsafe as LibGLib::BookmarkFile*), UInt64.cast(length))
-      PointerIterator.new(__return_value) {|__item_5| raise "Expected string but got null" unless __item_5; String.new(__item_5) }
+      __return_value = LibGLib.bookmark_file_get_uris((to_unsafe as LibGLib::BookmarkFile*), UInt64.new(length))
+      PointerIterator.new(__return_value) {|__item_33| raise "Expected string but got null" unless __item_33; String.new(__item_33) }
     end
 
     def visited(uri)
@@ -132,7 +132,7 @@ module GLib
 
     def load_from_data(data, length)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.bookmark_file_load_from_data((to_unsafe as LibGLib::BookmarkFile*), data, UInt64.cast(length), pointerof(__error))
+      __return_value = LibGLib.bookmark_file_load_from_data((to_unsafe as LibGLib::BookmarkFile*), data, UInt64.new(length), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -180,13 +180,13 @@ module GLib
     end
 
     def set_added(uri, added)
-      __return_value = LibGLib.bookmark_file_set_added((to_unsafe as LibGLib::BookmarkFile*), uri, Int64.cast(added))
+      __return_value = LibGLib.bookmark_file_set_added((to_unsafe as LibGLib::BookmarkFile*), uri, Int64.new(added))
       __return_value
     end
 
     def set_app_info(uri, name, exec, count, stamp)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.bookmark_file_set_app_info((to_unsafe as LibGLib::BookmarkFile*), uri, name, exec, Int32.cast(count), Int64.cast(stamp), pointerof(__error))
+      __return_value = LibGLib.bookmark_file_set_app_info((to_unsafe as LibGLib::BookmarkFile*), uri, name, exec, Int32.new(count), Int64.new(stamp), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -197,7 +197,7 @@ module GLib
     end
 
     def set_groups(uri, groups, length)
-      __return_value = LibGLib.bookmark_file_set_groups((to_unsafe as LibGLib::BookmarkFile*), uri, groups && groups, UInt64.cast(length))
+      __return_value = LibGLib.bookmark_file_set_groups((to_unsafe as LibGLib::BookmarkFile*), uri, groups && groups, UInt64.new(length))
       __return_value
     end
 
@@ -207,7 +207,7 @@ module GLib
     end
 
     def set_is_private(uri, is_private)
-      __return_value = LibGLib.bookmark_file_set_is_private((to_unsafe as LibGLib::BookmarkFile*), uri, Bool.cast(is_private))
+      __return_value = LibGLib.bookmark_file_set_is_private((to_unsafe as LibGLib::BookmarkFile*), uri, Bool.new(is_private))
       __return_value
     end
 
@@ -217,7 +217,7 @@ module GLib
     end
 
     def set_modified(uri, modified)
-      __return_value = LibGLib.bookmark_file_set_modified((to_unsafe as LibGLib::BookmarkFile*), uri, Int64.cast(modified))
+      __return_value = LibGLib.bookmark_file_set_modified((to_unsafe as LibGLib::BookmarkFile*), uri, Int64.new(modified))
       __return_value
     end
 
@@ -227,13 +227,13 @@ module GLib
     end
 
     def set_visited(uri, visited)
-      __return_value = LibGLib.bookmark_file_set_visited((to_unsafe as LibGLib::BookmarkFile*), uri, Int64.cast(visited))
+      __return_value = LibGLib.bookmark_file_set_visited((to_unsafe as LibGLib::BookmarkFile*), uri, Int64.new(visited))
       __return_value
     end
 
     def to_data(length)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.bookmark_file_to_data((to_unsafe as LibGLib::BookmarkFile*), UInt64.cast(length), pointerof(__error))
+      __return_value = LibGLib.bookmark_file_to_data((to_unsafe as LibGLib::BookmarkFile*), UInt64.new(length), pointerof(__error))
       GLib::Error.assert __error
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end

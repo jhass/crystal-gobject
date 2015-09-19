@@ -47,13 +47,13 @@ module Gio
 
     def connect_to_host(host_and_port, default_port, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.socket_client_connect_to_host((to_unsafe as LibGio::SocketClient*), host_and_port, UInt16.cast(default_port), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.socket_client_connect_to_host((to_unsafe as LibGio::SocketClient*), host_and_port, UInt16.new(default_port), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       Gio::SocketConnection.new(__return_value)
     end
 
     def connect_to_host_async(host_and_port, default_port, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.socket_client_connect_to_host_async((to_unsafe as LibGio::SocketClient*), host_and_port, UInt16.cast(default_port), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.socket_client_connect_to_host_async((to_unsafe as LibGio::SocketClient*), host_and_port, UInt16.new(default_port), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -85,13 +85,13 @@ module Gio
 
     def connect_to_uri(uri, default_port, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.socket_client_connect_to_uri((to_unsafe as LibGio::SocketClient*), uri, UInt16.cast(default_port), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.socket_client_connect_to_uri((to_unsafe as LibGio::SocketClient*), uri, UInt16.new(default_port), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       Gio::SocketConnection.new(__return_value)
     end
 
     def connect_to_uri_async(uri, default_port, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.socket_client_connect_to_uri_async((to_unsafe as LibGio::SocketClient*), uri, UInt16.cast(default_port), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.socket_client_connect_to_uri_async((to_unsafe as LibGio::SocketClient*), uri, UInt16.new(default_port), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -148,7 +148,7 @@ module Gio
     end
 
     def enable_proxy=(enable)
-      __return_value = LibGio.socket_client_set_enable_proxy((to_unsafe as LibGio::SocketClient*), Bool.cast(enable))
+      __return_value = LibGio.socket_client_set_enable_proxy((to_unsafe as LibGio::SocketClient*), Bool.new(enable))
       __return_value
     end
 
@@ -178,12 +178,12 @@ module Gio
     end
 
     def timeout=(timeout)
-      __return_value = LibGio.socket_client_set_timeout((to_unsafe as LibGio::SocketClient*), UInt32.cast(timeout))
+      __return_value = LibGio.socket_client_set_timeout((to_unsafe as LibGio::SocketClient*), UInt32.new(timeout))
       __return_value
     end
 
     def tls=(tls)
-      __return_value = LibGio.socket_client_set_tls((to_unsafe as LibGio::SocketClient*), Bool.cast(tls))
+      __return_value = LibGio.socket_client_set_tls((to_unsafe as LibGio::SocketClient*), Bool.new(tls))
       __return_value
     end
 

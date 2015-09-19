@@ -31,12 +31,12 @@ module Gtk
     end
 
     def active=(is_active)
-      __return_value = LibGtk.switch_set_active((to_unsafe as LibGtk::Switch*), Bool.cast(is_active))
+      __return_value = LibGtk.switch_set_active((to_unsafe as LibGtk::Switch*), Bool.new(is_active))
       __return_value
     end
 
     def state=(state)
-      __return_value = LibGtk.switch_set_state((to_unsafe as LibGtk::Switch*), Bool.cast(state))
+      __return_value = LibGtk.switch_set_state((to_unsafe as LibGtk::Switch*), Bool.new(state))
       __return_value
     end
 

@@ -35,7 +35,7 @@ module GLib
     end
 
     def wait_until(mutex, end_time)
-      __return_value = LibGLib.cond_wait_until((to_unsafe as LibGLib::Cond*), (mutex.to_unsafe as LibGLib::Mutex*), Int64.cast(end_time))
+      __return_value = LibGLib.cond_wait_until((to_unsafe as LibGLib::Cond*), (mutex.to_unsafe as LibGLib::Mutex*), Int64.new(end_time))
       __return_value
     end
 

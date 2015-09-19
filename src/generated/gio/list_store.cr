@@ -10,7 +10,7 @@ module Gio
     # Implements ListModel
 
     def self.new_internal(item_type)
-      __return_value = LibGio.list_store_new(UInt64.cast(item_type))
+      __return_value = LibGio.list_store_new(UInt64.new(item_type))
       Gio::ListStore.new(__return_value)
     end
 
@@ -20,12 +20,12 @@ module Gio
     end
 
     def insert(position, item)
-      __return_value = LibGio.list_store_insert((to_unsafe as LibGio::ListStore*), UInt32.cast(position), item)
+      __return_value = LibGio.list_store_insert((to_unsafe as LibGio::ListStore*), UInt32.new(position), item)
       __return_value
     end
 
     def remove(position)
-      __return_value = LibGio.list_store_remove((to_unsafe as LibGio::ListStore*), UInt32.cast(position))
+      __return_value = LibGio.list_store_remove((to_unsafe as LibGio::ListStore*), UInt32.new(position))
       __return_value
     end
 

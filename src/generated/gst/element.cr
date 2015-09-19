@@ -17,7 +17,7 @@ module Gst
     end
 
     def self.register(plugin, name, rank, type)
-      __return_value = LibGst.element_register(plugin && (plugin.to_unsafe as LibGst::Plugin*), name, UInt32.cast(rank), UInt64.cast(type))
+      __return_value = LibGst.element_register(plugin && (plugin.to_unsafe as LibGst::Plugin*), name, UInt32.new(rank), UInt64.new(type))
       __return_value
     end
 
@@ -97,7 +97,7 @@ module Gst
     end
 
     def state(state, pending, timeout)
-      __return_value = LibGst.element_get_state((to_unsafe as LibGst::Element*), state, pending, UInt64.cast(timeout))
+      __return_value = LibGst.element_get_state((to_unsafe as LibGst::Element*), state, pending, UInt64.new(timeout))
       __return_value
     end
 
@@ -157,7 +157,7 @@ module Gst
     end
 
     def message_full(type, domain, code, text, debug, file, function, line)
-      __return_value = LibGst.element_message_full((to_unsafe as LibGst::Element*), type, UInt32.cast(domain), Int32.cast(code), text && text, debug && debug, file, function, Int32.cast(line))
+      __return_value = LibGst.element_message_full((to_unsafe as LibGst::Element*), type, UInt32.new(domain), Int32.new(code), text && text, debug && debug, file, function, Int32.new(line))
       __return_value
     end
 
@@ -182,17 +182,17 @@ module Gst
     end
 
     def query_convert(src_format, src_val, dest_format, dest_val)
-      __return_value = LibGst.element_query_convert((to_unsafe as LibGst::Element*), src_format, Int64.cast(src_val), dest_format, Int64.cast(dest_val))
+      __return_value = LibGst.element_query_convert((to_unsafe as LibGst::Element*), src_format, Int64.new(src_val), dest_format, Int64.new(dest_val))
       __return_value
     end
 
     def query_duration(format, duration)
-      __return_value = LibGst.element_query_duration((to_unsafe as LibGst::Element*), format, Int64.cast(duration))
+      __return_value = LibGst.element_query_duration((to_unsafe as LibGst::Element*), format, Int64.new(duration))
       __return_value
     end
 
     def query_position(format, cur)
-      __return_value = LibGst.element_query_position((to_unsafe as LibGst::Element*), format, Int64.cast(cur))
+      __return_value = LibGst.element_query_position((to_unsafe as LibGst::Element*), format, Int64.new(cur))
       __return_value
     end
 
@@ -212,12 +212,12 @@ module Gst
     end
 
     def seek(rate, format, flags, start_type, start, stop_type, stop)
-      __return_value = LibGst.element_seek((to_unsafe as LibGst::Element*), Float64.cast(rate), format, flags, start_type, Int64.cast(start), stop_type, Int64.cast(stop))
+      __return_value = LibGst.element_seek((to_unsafe as LibGst::Element*), Float64.new(rate), format, flags, start_type, Int64.new(start), stop_type, Int64.new(stop))
       __return_value
     end
 
     def seek_simple(format, seek_flags, seek_pos)
-      __return_value = LibGst.element_seek_simple((to_unsafe as LibGst::Element*), format, seek_flags, Int64.cast(seek_pos))
+      __return_value = LibGst.element_seek_simple((to_unsafe as LibGst::Element*), format, seek_flags, Int64.new(seek_pos))
       __return_value
     end
 
@@ -227,7 +227,7 @@ module Gst
     end
 
     def base_time=(time)
-      __return_value = LibGst.element_set_base_time((to_unsafe as LibGst::Element*), UInt64.cast(time))
+      __return_value = LibGst.element_set_base_time((to_unsafe as LibGst::Element*), UInt64.new(time))
       __return_value
     end
 
@@ -247,12 +247,12 @@ module Gst
     end
 
     def locked_state=(locked_state)
-      __return_value = LibGst.element_set_locked_state((to_unsafe as LibGst::Element*), Bool.cast(locked_state))
+      __return_value = LibGst.element_set_locked_state((to_unsafe as LibGst::Element*), Bool.new(locked_state))
       __return_value
     end
 
     def start_time=(time)
-      __return_value = LibGst.element_set_start_time((to_unsafe as LibGst::Element*), UInt64.cast(time))
+      __return_value = LibGst.element_set_start_time((to_unsafe as LibGst::Element*), UInt64.new(time))
       __return_value
     end
 

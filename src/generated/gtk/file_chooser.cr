@@ -201,7 +201,7 @@ module Gtk
     end
 
     def create_folders=(create_folders)
-      __return_value = LibGtk.file_chooser_set_create_folders((to_unsafe as LibGtk::FileChooser*), Bool.cast(create_folders))
+      __return_value = LibGtk.file_chooser_set_create_folders((to_unsafe as LibGtk::FileChooser*), Bool.new(create_folders))
       __return_value
     end
 
@@ -228,7 +228,7 @@ module Gtk
     end
 
     def do_overwrite_confirmation=(do_overwrite_confirmation)
-      __return_value = LibGtk.file_chooser_set_do_overwrite_confirmation((to_unsafe as LibGtk::FileChooser*), Bool.cast(do_overwrite_confirmation))
+      __return_value = LibGtk.file_chooser_set_do_overwrite_confirmation((to_unsafe as LibGtk::FileChooser*), Bool.new(do_overwrite_confirmation))
       __return_value
     end
 
@@ -255,7 +255,7 @@ module Gtk
     end
 
     def local_only=(local_only)
-      __return_value = LibGtk.file_chooser_set_local_only((to_unsafe as LibGtk::FileChooser*), Bool.cast(local_only))
+      __return_value = LibGtk.file_chooser_set_local_only((to_unsafe as LibGtk::FileChooser*), Bool.new(local_only))
       __return_value
     end
 
@@ -265,17 +265,17 @@ module Gtk
     end
 
     def preview_widget_active=(active)
-      __return_value = LibGtk.file_chooser_set_preview_widget_active((to_unsafe as LibGtk::FileChooser*), Bool.cast(active))
+      __return_value = LibGtk.file_chooser_set_preview_widget_active((to_unsafe as LibGtk::FileChooser*), Bool.new(active))
       __return_value
     end
 
     def select_multiple=(select_multiple)
-      __return_value = LibGtk.file_chooser_set_select_multiple((to_unsafe as LibGtk::FileChooser*), Bool.cast(select_multiple))
+      __return_value = LibGtk.file_chooser_set_select_multiple((to_unsafe as LibGtk::FileChooser*), Bool.new(select_multiple))
       __return_value
     end
 
     def show_hidden=(show_hidden)
-      __return_value = LibGtk.file_chooser_set_show_hidden((to_unsafe as LibGtk::FileChooser*), Bool.cast(show_hidden))
+      __return_value = LibGtk.file_chooser_set_show_hidden((to_unsafe as LibGtk::FileChooser*), Bool.new(show_hidden))
       __return_value
     end
 
@@ -285,7 +285,7 @@ module Gtk
     end
 
     def use_preview_label=(use_label)
-      __return_value = LibGtk.file_chooser_set_use_preview_label((to_unsafe as LibGtk::FileChooser*), Bool.cast(use_label))
+      __return_value = LibGtk.file_chooser_set_use_preview_label((to_unsafe as LibGtk::FileChooser*), Bool.new(use_label))
       __return_value
     end
 

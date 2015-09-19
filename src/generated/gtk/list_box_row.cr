@@ -49,7 +49,7 @@ module Gtk
     end
 
     def activatable=(activatable)
-      __return_value = LibGtk.list_box_row_set_activatable((to_unsafe as LibGtk::ListBoxRow*), Bool.cast(activatable))
+      __return_value = LibGtk.list_box_row_set_activatable((to_unsafe as LibGtk::ListBoxRow*), Bool.new(activatable))
       __return_value
     end
 
@@ -59,7 +59,7 @@ module Gtk
     end
 
     def selectable=(selectable)
-      __return_value = LibGtk.list_box_row_set_selectable((to_unsafe as LibGtk::ListBoxRow*), Bool.cast(selectable))
+      __return_value = LibGtk.list_box_row_set_selectable((to_unsafe as LibGtk::ListBoxRow*), Bool.new(selectable))
       __return_value
     end
 

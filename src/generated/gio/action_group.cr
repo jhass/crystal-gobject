@@ -6,7 +6,7 @@ module Gio
     end
 
     def action_enabled_changed(action_name, enabled)
-      __return_value = LibGio.action_group_action_enabled_changed((to_unsafe as LibGio::ActionGroup*), action_name, Bool.cast(enabled))
+      __return_value = LibGio.action_group_action_enabled_changed((to_unsafe as LibGio::ActionGroup*), action_name, Bool.new(enabled))
       __return_value
     end
 
@@ -62,11 +62,11 @@ module Gio
 
     def list_actions
       __return_value = LibGio.action_group_list_actions((to_unsafe as LibGio::ActionGroup*))
-      PointerIterator.new(__return_value) {|__item_88| raise "Expected string but got null" unless __item_88; String.new(__item_88) }
+      PointerIterator.new(__return_value) {|__item_85| raise "Expected string but got null" unless __item_85; String.new(__item_85) }
     end
 
     def query_action(action_name, enabled, parameter_type, state_type, state_hint, state)
-      __return_value = LibGio.action_group_query_action((to_unsafe as LibGio::ActionGroup*), action_name, Bool.cast(enabled), (parameter_type.to_unsafe as LibGLib::VariantType*), (state_type.to_unsafe as LibGLib::VariantType*), (state_hint.to_unsafe as LibGLib::Variant*), (state.to_unsafe as LibGLib::Variant*))
+      __return_value = LibGio.action_group_query_action((to_unsafe as LibGio::ActionGroup*), action_name, Bool.new(enabled), (parameter_type.to_unsafe as LibGLib::VariantType*), (state_type.to_unsafe as LibGLib::VariantType*), (state_hint.to_unsafe as LibGLib::Variant*), (state.to_unsafe as LibGLib::Variant*))
       __return_value
     end
 

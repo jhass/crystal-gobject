@@ -68,7 +68,7 @@ module Pango
     end
 
     def list_families(families, n_families)
-      __return_value = LibPango.context_list_families((to_unsafe as LibPango::Context*), families, Int32.cast(n_families))
+      __return_value = LibPango.context_list_families((to_unsafe as LibPango::Context*), families, Int32.new(n_families))
       __return_value
     end
 

@@ -21,7 +21,7 @@ module Gtk
     end
 
     def use_action_appearance=(use_appearance)
-      __return_value = LibGtk.activatable_set_use_action_appearance((to_unsafe as LibGtk::Activatable*), Bool.cast(use_appearance))
+      __return_value = LibGtk.activatable_set_use_action_appearance((to_unsafe as LibGtk::Activatable*), Bool.new(use_appearance))
       __return_value
     end
 

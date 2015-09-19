@@ -38,7 +38,7 @@ module Gio
     end
 
     def add_main_option(long_name, short_name, flags, arg, description, arg_description)
-      __return_value = LibGio.application_add_main_option((to_unsafe as LibGio::Application*), long_name, Int8.cast(short_name), flags, arg, description, arg_description && arg_description)
+      __return_value = LibGio.application_add_main_option((to_unsafe as LibGio::Application*), long_name, Int8.new(short_name), flags, arg, description, arg_description && arg_description)
       __return_value
     end
 
@@ -113,7 +113,7 @@ module Gio
     end
 
     def open(files, n_files, hint)
-      __return_value = LibGio.application_open((to_unsafe as LibGio::Application*), files, Int32.cast(n_files), hint)
+      __return_value = LibGio.application_open((to_unsafe as LibGio::Application*), files, Int32.new(n_files), hint)
       __return_value
     end
 
@@ -135,7 +135,7 @@ module Gio
     end
 
     def run(argc, argv)
-      __return_value = LibGio.application_run((to_unsafe as LibGio::Application*), Int32.cast(argc), argv && argv)
+      __return_value = LibGio.application_run((to_unsafe as LibGio::Application*), Int32.new(argc), argv && argv)
       __return_value
     end
 
@@ -165,7 +165,7 @@ module Gio
     end
 
     def inactivity_timeout=(inactivity_timeout)
-      __return_value = LibGio.application_set_inactivity_timeout((to_unsafe as LibGio::Application*), UInt32.cast(inactivity_timeout))
+      __return_value = LibGio.application_set_inactivity_timeout((to_unsafe as LibGio::Application*), UInt32.new(inactivity_timeout))
       __return_value
     end
 

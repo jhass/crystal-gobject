@@ -35,12 +35,12 @@ module Gst
   end
 
   def self.debug_construct_term_color(colorinfo)
-    __return_value = LibGst.debug_construct_term_color(UInt32.cast(colorinfo))
+    __return_value = LibGst.debug_construct_term_color(UInt32.new(colorinfo))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.debug_construct_win_color(colorinfo)
-    __return_value = LibGst.debug_construct_win_color(UInt32.cast(colorinfo))
+    __return_value = LibGst.debug_construct_win_color(UInt32.new(colorinfo))
     __return_value
   end
 
@@ -75,7 +75,7 @@ module Gst
   end
 
   def self.debug_log_default(category, level, file, function, line, object, message, unused)
-    __return_value = LibGst.debug_log_default((category.to_unsafe as LibGst::DebugCategory*), level, file, function, Int32.cast(line), object && (object.to_unsafe as LibGObject::Object*), (message.to_unsafe as LibGst::DebugMessage*), unused)
+    __return_value = LibGst.debug_log_default((category.to_unsafe as LibGst::DebugCategory*), level, file, function, Int32.new(line), object && (object.to_unsafe as LibGObject::Object*), (message.to_unsafe as LibGst::DebugMessage*), unused)
     __return_value
   end
 
@@ -95,7 +95,7 @@ module Gst
   end
 
   def self.debug_set_active(active)
-    __return_value = LibGst.debug_set_active(Bool.cast(active))
+    __return_value = LibGst.debug_set_active(Bool.new(active))
     __return_value
   end
 
@@ -110,7 +110,7 @@ module Gst
   end
 
   def self.debug_set_colored(colored)
-    __return_value = LibGst.debug_set_colored(Bool.cast(colored))
+    __return_value = LibGst.debug_set_colored(Bool.new(colored))
     __return_value
   end
 
@@ -125,7 +125,7 @@ module Gst
   end
 
   def self.debug_set_threshold_from_string(list, reset)
-    __return_value = LibGst.debug_set_threshold_from_string(list, Bool.cast(reset))
+    __return_value = LibGst.debug_set_threshold_from_string(list, Bool.new(reset))
     __return_value
   end
 
@@ -140,7 +140,7 @@ module Gst
   end
 
   def self.error_get_message(domain, code)
-    __return_value = LibGst.error_get_message(UInt32.cast(domain), Int32.cast(code))
+    __return_value = LibGst.error_get_message(UInt32.new(domain), Int32.new(code))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
@@ -212,13 +212,13 @@ module Gst
   end
 
   def self.init(argc, argv)
-    __return_value = LibGst.init(argc && Int32.cast(argc), argv && argv)
+    __return_value = LibGst.init(argc && Int32.new(argc), argv && argv)
     __return_value
   end
 
   def self.init_check(argc, argv)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGst.init_check(argc && Int32.cast(argc), argv && argv, pointerof(__error))
+    __return_value = LibGst.init_check(argc && Int32.new(argc), argv && argv, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -249,12 +249,12 @@ module Gst
   end
 
   def self.meta_api_type_get_tags(api)
-    __return_value = LibGst.meta_api_type_get_tags(UInt64.cast(api))
-    PointerIterator.new(__return_value) {|__item_9| raise "Expected string but got null" unless __item_9; String.new(__item_9) }
+    __return_value = LibGst.meta_api_type_get_tags(UInt64.new(api))
+    PointerIterator.new(__return_value) {|__item_88| raise "Expected string but got null" unless __item_88; String.new(__item_88) }
   end
 
   def self.meta_api_type_has_tag(api, tag)
-    __return_value = LibGst.meta_api_type_has_tag(UInt64.cast(api), UInt32.cast(tag))
+    __return_value = LibGst.meta_api_type_has_tag(UInt64.new(api), UInt32.new(tag))
     __return_value
   end
 
@@ -269,7 +269,7 @@ module Gst
   end
 
   def self.meta_register(api, impl, size, init_func : LibGst::MetaInitFunction, free_func : LibGst::MetaFreeFunction, transform_func : LibGst::MetaTransformFunction)
-    __return_value = LibGst.meta_register(UInt64.cast(api), impl, UInt64.cast(size), init_func, free_func, transform_func)
+    __return_value = LibGst.meta_register(UInt64.new(api), impl, UInt64.new(size), init_func, free_func, transform_func)
     Gst::MetaInfo.new(__return_value)
   end
 
@@ -289,20 +289,20 @@ module Gst
   end
 
   def self.param_spec_fraction(name, nick, blurb, min_num, min_denom, max_num, max_denom, default_num, default_denom, flags)
-    __return_value = LibGst.param_spec_fraction(name, nick, blurb, Int32.cast(min_num), Int32.cast(min_denom), Int32.cast(max_num), Int32.cast(max_denom), Int32.cast(default_num), Int32.cast(default_denom), flags)
+    __return_value = LibGst.param_spec_fraction(name, nick, blurb, Int32.new(min_num), Int32.new(min_denom), Int32.new(max_num), Int32.new(max_denom), Int32.new(default_num), Int32.new(default_denom), flags)
     GObject::ParamSpec.new(__return_value)
   end
 
   def self.parse_bin_from_description(bin_description, ghost_unlinked_pads)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGst.parse_bin_from_description(bin_description, Bool.cast(ghost_unlinked_pads), pointerof(__error))
+    __return_value = LibGst.parse_bin_from_description(bin_description, Bool.new(ghost_unlinked_pads), pointerof(__error))
     GLib::Error.assert __error
     Gst::Bin.new(__return_value) if __return_value
   end
 
   def self.parse_bin_from_description_full(bin_description, ghost_unlinked_pads, context, flags)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGst.parse_bin_from_description_full(bin_description, Bool.cast(ghost_unlinked_pads), context && (context.to_unsafe as LibGst::ParseContext*), flags, pointerof(__error))
+    __return_value = LibGst.parse_bin_from_description_full(bin_description, Bool.new(ghost_unlinked_pads), context && (context.to_unsafe as LibGst::ParseContext*), flags, pointerof(__error))
     GLib::Error.assert __error
     Gst::Element.new(__return_value)
   end
@@ -381,7 +381,7 @@ module Gst
   end
 
   def self.segtrap_set_enabled(enabled)
-    __return_value = LibGst.segtrap_set_enabled(Bool.cast(enabled))
+    __return_value = LibGst.segtrap_set_enabled(Bool.new(enabled))
     __return_value
   end
 
@@ -461,7 +461,7 @@ module Gst
   end
 
   def self.type_find_register(plugin, name, rank, func : LibGst::TypeFindFunction, extensions, possible_caps, data, data_notify : LibGLib::DestroyNotify)
-    __return_value = LibGst.type_find_register(plugin && (plugin.to_unsafe as LibGst::Plugin*), name, UInt32.cast(rank), func, extensions && extensions, (possible_caps.to_unsafe as LibGst::Caps*), data, data_notify)
+    __return_value = LibGst.type_find_register(plugin && (plugin.to_unsafe as LibGst::Plugin*), name, UInt32.new(rank), func, extensions && extensions, (possible_caps.to_unsafe as LibGst::Caps*), data, data_notify)
     __return_value
   end
 
@@ -511,42 +511,42 @@ module Gst
   end
 
   def self.util_array_binary_search(array, num_elements, element_size, search_func : LibGLib::CompareDataFunc, mode, search_data, user_data)
-    __return_value = LibGst.util_array_binary_search(array, UInt32.cast(num_elements), UInt64.cast(element_size), search_func, mode, search_data, user_data)
+    __return_value = LibGst.util_array_binary_search(array, UInt32.new(num_elements), UInt64.new(element_size), search_func, mode, search_data, user_data)
     __return_value if __return_value
   end
 
   def self.util_double_to_fraction(src, dest_n, dest_d)
-    __return_value = LibGst.util_double_to_fraction(Float64.cast(src), Int32.cast(dest_n), Int32.cast(dest_d))
+    __return_value = LibGst.util_double_to_fraction(Float64.new(src), Int32.new(dest_n), Int32.new(dest_d))
     __return_value
   end
 
   def self.util_dump_mem(mem, size)
-    __return_value = LibGst.util_dump_mem(mem, UInt32.cast(size))
+    __return_value = LibGst.util_dump_mem(mem, UInt32.new(size))
     __return_value
   end
 
   def self.util_fraction_add(a_n, a_d, b_n, b_d, res_n, res_d)
-    __return_value = LibGst.util_fraction_add(Int32.cast(a_n), Int32.cast(a_d), Int32.cast(b_n), Int32.cast(b_d), Int32.cast(res_n), Int32.cast(res_d))
+    __return_value = LibGst.util_fraction_add(Int32.new(a_n), Int32.new(a_d), Int32.new(b_n), Int32.new(b_d), Int32.new(res_n), Int32.new(res_d))
     __return_value
   end
 
   def self.util_fraction_compare(a_n, a_d, b_n, b_d)
-    __return_value = LibGst.util_fraction_compare(Int32.cast(a_n), Int32.cast(a_d), Int32.cast(b_n), Int32.cast(b_d))
+    __return_value = LibGst.util_fraction_compare(Int32.new(a_n), Int32.new(a_d), Int32.new(b_n), Int32.new(b_d))
     __return_value
   end
 
   def self.util_fraction_multiply(a_n, a_d, b_n, b_d, res_n, res_d)
-    __return_value = LibGst.util_fraction_multiply(Int32.cast(a_n), Int32.cast(a_d), Int32.cast(b_n), Int32.cast(b_d), Int32.cast(res_n), Int32.cast(res_d))
+    __return_value = LibGst.util_fraction_multiply(Int32.new(a_n), Int32.new(a_d), Int32.new(b_n), Int32.new(b_d), Int32.new(res_n), Int32.new(res_d))
     __return_value
   end
 
   def self.util_fraction_to_double(src_n, src_d, dest)
-    __return_value = LibGst.util_fraction_to_double(Int32.cast(src_n), Int32.cast(src_d), Float64.cast(dest))
+    __return_value = LibGst.util_fraction_to_double(Int32.new(src_n), Int32.new(src_d), Float64.new(dest))
     __return_value
   end
 
   def self.util_gdouble_to_guint64(value)
-    __return_value = LibGst.util_gdouble_to_guint64(Float64.cast(value))
+    __return_value = LibGst.util_gdouble_to_guint64(Float64.new(value))
     __return_value
   end
 
@@ -556,12 +556,12 @@ module Gst
   end
 
   def self.util_greatest_common_divisor(a, b)
-    __return_value = LibGst.util_greatest_common_divisor(Int32.cast(a), Int32.cast(b))
+    __return_value = LibGst.util_greatest_common_divisor(Int32.new(a), Int32.new(b))
     __return_value
   end
 
   def self.util_greatest_common_divisor_int64(a, b)
-    __return_value = LibGst.util_greatest_common_divisor_int64(Int64.cast(a), Int64.cast(b))
+    __return_value = LibGst.util_greatest_common_divisor_int64(Int64.new(a), Int64.new(b))
     __return_value
   end
 
@@ -571,12 +571,12 @@ module Gst
   end
 
   def self.util_guint64_to_gdouble(value)
-    __return_value = LibGst.util_guint64_to_gdouble(UInt64.cast(value))
+    __return_value = LibGst.util_guint64_to_gdouble(UInt64.new(value))
     __return_value
   end
 
   def self.util_seqnum_compare(s1, s2)
-    __return_value = LibGst.util_seqnum_compare(UInt32.cast(s1), UInt32.cast(s2))
+    __return_value = LibGst.util_seqnum_compare(UInt32.new(s1), UInt32.new(s2))
     __return_value
   end
 
@@ -596,32 +596,32 @@ module Gst
   end
 
   def self.util_uint64_scale(val, num, denom)
-    __return_value = LibGst.util_uint64_scale(UInt64.cast(val), UInt64.cast(num), UInt64.cast(denom))
+    __return_value = LibGst.util_uint64_scale(UInt64.new(val), UInt64.new(num), UInt64.new(denom))
     __return_value
   end
 
   def self.util_uint64_scale_ceil(val, num, denom)
-    __return_value = LibGst.util_uint64_scale_ceil(UInt64.cast(val), UInt64.cast(num), UInt64.cast(denom))
+    __return_value = LibGst.util_uint64_scale_ceil(UInt64.new(val), UInt64.new(num), UInt64.new(denom))
     __return_value
   end
 
   def self.util_uint64_scale_int(val, num, denom)
-    __return_value = LibGst.util_uint64_scale_int(UInt64.cast(val), Int32.cast(num), Int32.cast(denom))
+    __return_value = LibGst.util_uint64_scale_int(UInt64.new(val), Int32.new(num), Int32.new(denom))
     __return_value
   end
 
   def self.util_uint64_scale_int_ceil(val, num, denom)
-    __return_value = LibGst.util_uint64_scale_int_ceil(UInt64.cast(val), Int32.cast(num), Int32.cast(denom))
+    __return_value = LibGst.util_uint64_scale_int_ceil(UInt64.new(val), Int32.new(num), Int32.new(denom))
     __return_value
   end
 
   def self.util_uint64_scale_int_round(val, num, denom)
-    __return_value = LibGst.util_uint64_scale_int_round(UInt64.cast(val), Int32.cast(num), Int32.cast(denom))
+    __return_value = LibGst.util_uint64_scale_int_round(UInt64.new(val), Int32.new(num), Int32.new(denom))
     __return_value
   end
 
   def self.util_uint64_scale_round(val, num, denom)
-    __return_value = LibGst.util_uint64_scale_round(UInt64.cast(val), UInt64.cast(num), UInt64.cast(denom))
+    __return_value = LibGst.util_uint64_scale_round(UInt64.new(val), UInt64.new(num), UInt64.new(denom))
     __return_value
   end
 
@@ -781,7 +781,7 @@ module Gst
   end
 
   def self.value_set_bitmask(value, bitmask)
-    __return_value = LibGst.value_set_bitmask((value.to_unsafe as LibGObject::Value*), UInt64.cast(bitmask))
+    __return_value = LibGst.value_set_bitmask((value.to_unsafe as LibGObject::Value*), UInt64.new(bitmask))
     __return_value
   end
 
@@ -796,12 +796,12 @@ module Gst
   end
 
   def self.value_set_double_range(value, start, end)
-    __return_value = LibGst.value_set_double_range((value.to_unsafe as LibGObject::Value*), Float64.cast(start), Float64.cast(end))
+    __return_value = LibGst.value_set_double_range((value.to_unsafe as LibGObject::Value*), Float64.new(start), Float64.new(end))
     __return_value
   end
 
   def self.value_set_fraction(value, numerator, denominator)
-    __return_value = LibGst.value_set_fraction((value.to_unsafe as LibGObject::Value*), Int32.cast(numerator), Int32.cast(denominator))
+    __return_value = LibGst.value_set_fraction((value.to_unsafe as LibGObject::Value*), Int32.new(numerator), Int32.new(denominator))
     __return_value
   end
 
@@ -811,27 +811,27 @@ module Gst
   end
 
   def self.value_set_fraction_range_full(value, numerator_start, denominator_start, numerator_end, denominator_end)
-    __return_value = LibGst.value_set_fraction_range_full((value.to_unsafe as LibGObject::Value*), Int32.cast(numerator_start), Int32.cast(denominator_start), Int32.cast(numerator_end), Int32.cast(denominator_end))
+    __return_value = LibGst.value_set_fraction_range_full((value.to_unsafe as LibGObject::Value*), Int32.new(numerator_start), Int32.new(denominator_start), Int32.new(numerator_end), Int32.new(denominator_end))
     __return_value
   end
 
   def self.value_set_int64_range(value, start, end)
-    __return_value = LibGst.value_set_int64_range((value.to_unsafe as LibGObject::Value*), Int64.cast(start), Int64.cast(end))
+    __return_value = LibGst.value_set_int64_range((value.to_unsafe as LibGObject::Value*), Int64.new(start), Int64.new(end))
     __return_value
   end
 
   def self.value_set_int64_range_step(value, start, end, step)
-    __return_value = LibGst.value_set_int64_range_step((value.to_unsafe as LibGObject::Value*), Int64.cast(start), Int64.cast(end), Int64.cast(step))
+    __return_value = LibGst.value_set_int64_range_step((value.to_unsafe as LibGObject::Value*), Int64.new(start), Int64.new(end), Int64.new(step))
     __return_value
   end
 
   def self.value_set_int_range(value, start, end)
-    __return_value = LibGst.value_set_int_range((value.to_unsafe as LibGObject::Value*), Int32.cast(start), Int32.cast(end))
+    __return_value = LibGst.value_set_int_range((value.to_unsafe as LibGObject::Value*), Int32.new(start), Int32.new(end))
     __return_value
   end
 
   def self.value_set_int_range_step(value, start, end, step)
-    __return_value = LibGst.value_set_int_range_step((value.to_unsafe as LibGObject::Value*), Int32.cast(start), Int32.cast(end), Int32.cast(step))
+    __return_value = LibGst.value_set_int_range_step((value.to_unsafe as LibGObject::Value*), Int32.new(start), Int32.new(end), Int32.new(step))
     __return_value
   end
 
@@ -851,7 +851,7 @@ module Gst
   end
 
   def self.version(major, minor, micro, nano)
-    __return_value = LibGst.version(UInt32.cast(major), UInt32.cast(minor), UInt32.cast(micro), UInt32.cast(nano))
+    __return_value = LibGst.version(UInt32.new(major), UInt32.new(minor), UInt32.new(micro), UInt32.new(nano))
     __return_value
   end
 

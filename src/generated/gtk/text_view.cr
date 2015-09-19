@@ -47,7 +47,7 @@ module Gtk
     end
 
     def add_child_in_window(child, which_window, xpos, ypos)
-      __return_value = LibGtk.text_view_add_child_in_window((to_unsafe as LibGtk::TextView*), (child.to_unsafe as LibGtk::Widget*), which_window, Int32.cast(xpos), Int32.cast(ypos))
+      __return_value = LibGtk.text_view_add_child_in_window((to_unsafe as LibGtk::TextView*), (child.to_unsafe as LibGtk::Widget*), which_window, Int32.new(xpos), Int32.new(ypos))
       __return_value
     end
 
@@ -62,7 +62,7 @@ module Gtk
     end
 
     def buffer_to_window_coords(win, buffer_x, buffer_y, window_x, window_y)
-      __return_value = LibGtk.text_view_buffer_to_window_coords((to_unsafe as LibGtk::TextView*), win, Int32.cast(buffer_x), Int32.cast(buffer_y), Int32.cast(window_x), Int32.cast(window_y))
+      __return_value = LibGtk.text_view_buffer_to_window_coords((to_unsafe as LibGtk::TextView*), win, Int32.new(buffer_x), Int32.new(buffer_y), Int32.new(window_x), Int32.new(window_y))
       __return_value
     end
 
@@ -132,12 +132,12 @@ module Gtk
     end
 
     def iter_at_location(iter, x, y)
-      __return_value = LibGtk.text_view_get_iter_at_location((to_unsafe as LibGtk::TextView*), iter, Int32.cast(x), Int32.cast(y))
+      __return_value = LibGtk.text_view_get_iter_at_location((to_unsafe as LibGtk::TextView*), iter, Int32.new(x), Int32.new(y))
       __return_value
     end
 
     def iter_at_position(iter, trailing, x, y)
-      __return_value = LibGtk.text_view_get_iter_at_position((to_unsafe as LibGtk::TextView*), iter, Int32.cast(trailing), Int32.cast(x), Int32.cast(y))
+      __return_value = LibGtk.text_view_get_iter_at_position((to_unsafe as LibGtk::TextView*), iter, Int32.new(trailing), Int32.new(x), Int32.new(y))
       __return_value
     end
 
@@ -157,12 +157,12 @@ module Gtk
     end
 
     def line_at_y(target_iter, y, line_top)
-      __return_value = LibGtk.text_view_get_line_at_y((to_unsafe as LibGtk::TextView*), target_iter, Int32.cast(y), Int32.cast(line_top))
+      __return_value = LibGtk.text_view_get_line_at_y((to_unsafe as LibGtk::TextView*), target_iter, Int32.new(y), Int32.new(line_top))
       __return_value
     end
 
     def line_yrange(iter, y, height)
-      __return_value = LibGtk.text_view_get_line_yrange((to_unsafe as LibGtk::TextView*), (iter.to_unsafe as LibGtk::TextIter*), Int32.cast(y), Int32.cast(height))
+      __return_value = LibGtk.text_view_get_line_yrange((to_unsafe as LibGtk::TextView*), (iter.to_unsafe as LibGtk::TextIter*), Int32.new(y), Int32.new(height))
       __return_value
     end
 
@@ -232,7 +232,7 @@ module Gtk
     end
 
     def move_child(child, xpos, ypos)
-      __return_value = LibGtk.text_view_move_child((to_unsafe as LibGtk::TextView*), (child.to_unsafe as LibGtk::Widget*), Int32.cast(xpos), Int32.cast(ypos))
+      __return_value = LibGtk.text_view_move_child((to_unsafe as LibGtk::TextView*), (child.to_unsafe as LibGtk::Widget*), Int32.new(xpos), Int32.new(ypos))
       __return_value
     end
 
@@ -242,7 +242,7 @@ module Gtk
     end
 
     def move_visually(iter, count)
-      __return_value = LibGtk.text_view_move_visually((to_unsafe as LibGtk::TextView*), (iter.to_unsafe as LibGtk::TextIter*), Int32.cast(count))
+      __return_value = LibGtk.text_view_move_visually((to_unsafe as LibGtk::TextView*), (iter.to_unsafe as LibGtk::TextIter*), Int32.new(count))
       __return_value
     end
 
@@ -262,22 +262,22 @@ module Gtk
     end
 
     def scroll_to_iter(iter, within_margin, use_align, xalign, yalign)
-      __return_value = LibGtk.text_view_scroll_to_iter((to_unsafe as LibGtk::TextView*), (iter.to_unsafe as LibGtk::TextIter*), Float64.cast(within_margin), Bool.cast(use_align), Float64.cast(xalign), Float64.cast(yalign))
+      __return_value = LibGtk.text_view_scroll_to_iter((to_unsafe as LibGtk::TextView*), (iter.to_unsafe as LibGtk::TextIter*), Float64.new(within_margin), Bool.new(use_align), Float64.new(xalign), Float64.new(yalign))
       __return_value
     end
 
     def scroll_to_mark(mark, within_margin, use_align, xalign, yalign)
-      __return_value = LibGtk.text_view_scroll_to_mark((to_unsafe as LibGtk::TextView*), (mark.to_unsafe as LibGtk::TextMark*), Float64.cast(within_margin), Bool.cast(use_align), Float64.cast(xalign), Float64.cast(yalign))
+      __return_value = LibGtk.text_view_scroll_to_mark((to_unsafe as LibGtk::TextView*), (mark.to_unsafe as LibGtk::TextMark*), Float64.new(within_margin), Bool.new(use_align), Float64.new(xalign), Float64.new(yalign))
       __return_value
     end
 
     def accepts_tab=(accepts_tab)
-      __return_value = LibGtk.text_view_set_accepts_tab((to_unsafe as LibGtk::TextView*), Bool.cast(accepts_tab))
+      __return_value = LibGtk.text_view_set_accepts_tab((to_unsafe as LibGtk::TextView*), Bool.new(accepts_tab))
       __return_value
     end
 
     def set_border_window_size(type, size)
-      __return_value = LibGtk.text_view_set_border_window_size((to_unsafe as LibGtk::TextView*), type, Int32.cast(size))
+      __return_value = LibGtk.text_view_set_border_window_size((to_unsafe as LibGtk::TextView*), type, Int32.new(size))
       __return_value
     end
 
@@ -287,17 +287,17 @@ module Gtk
     end
 
     def cursor_visible=(setting)
-      __return_value = LibGtk.text_view_set_cursor_visible((to_unsafe as LibGtk::TextView*), Bool.cast(setting))
+      __return_value = LibGtk.text_view_set_cursor_visible((to_unsafe as LibGtk::TextView*), Bool.new(setting))
       __return_value
     end
 
     def editable=(setting)
-      __return_value = LibGtk.text_view_set_editable((to_unsafe as LibGtk::TextView*), Bool.cast(setting))
+      __return_value = LibGtk.text_view_set_editable((to_unsafe as LibGtk::TextView*), Bool.new(setting))
       __return_value
     end
 
     def indent=(indent)
-      __return_value = LibGtk.text_view_set_indent((to_unsafe as LibGtk::TextView*), Int32.cast(indent))
+      __return_value = LibGtk.text_view_set_indent((to_unsafe as LibGtk::TextView*), Int32.new(indent))
       __return_value
     end
 
@@ -317,37 +317,37 @@ module Gtk
     end
 
     def left_margin=(left_margin)
-      __return_value = LibGtk.text_view_set_left_margin((to_unsafe as LibGtk::TextView*), Int32.cast(left_margin))
+      __return_value = LibGtk.text_view_set_left_margin((to_unsafe as LibGtk::TextView*), Int32.new(left_margin))
       __return_value
     end
 
     def monospace=(monospace)
-      __return_value = LibGtk.text_view_set_monospace((to_unsafe as LibGtk::TextView*), Bool.cast(monospace))
+      __return_value = LibGtk.text_view_set_monospace((to_unsafe as LibGtk::TextView*), Bool.new(monospace))
       __return_value
     end
 
     def overwrite=(overwrite)
-      __return_value = LibGtk.text_view_set_overwrite((to_unsafe as LibGtk::TextView*), Bool.cast(overwrite))
+      __return_value = LibGtk.text_view_set_overwrite((to_unsafe as LibGtk::TextView*), Bool.new(overwrite))
       __return_value
     end
 
     def pixels_above_lines=(pixels_above_lines)
-      __return_value = LibGtk.text_view_set_pixels_above_lines((to_unsafe as LibGtk::TextView*), Int32.cast(pixels_above_lines))
+      __return_value = LibGtk.text_view_set_pixels_above_lines((to_unsafe as LibGtk::TextView*), Int32.new(pixels_above_lines))
       __return_value
     end
 
     def pixels_below_lines=(pixels_below_lines)
-      __return_value = LibGtk.text_view_set_pixels_below_lines((to_unsafe as LibGtk::TextView*), Int32.cast(pixels_below_lines))
+      __return_value = LibGtk.text_view_set_pixels_below_lines((to_unsafe as LibGtk::TextView*), Int32.new(pixels_below_lines))
       __return_value
     end
 
     def pixels_inside_wrap=(pixels_inside_wrap)
-      __return_value = LibGtk.text_view_set_pixels_inside_wrap((to_unsafe as LibGtk::TextView*), Int32.cast(pixels_inside_wrap))
+      __return_value = LibGtk.text_view_set_pixels_inside_wrap((to_unsafe as LibGtk::TextView*), Int32.new(pixels_inside_wrap))
       __return_value
     end
 
     def right_margin=(right_margin)
-      __return_value = LibGtk.text_view_set_right_margin((to_unsafe as LibGtk::TextView*), Int32.cast(right_margin))
+      __return_value = LibGtk.text_view_set_right_margin((to_unsafe as LibGtk::TextView*), Int32.new(right_margin))
       __return_value
     end
 
@@ -367,7 +367,7 @@ module Gtk
     end
 
     def window_to_buffer_coords(win, window_x, window_y, buffer_x, buffer_y)
-      __return_value = LibGtk.text_view_window_to_buffer_coords((to_unsafe as LibGtk::TextView*), win, Int32.cast(window_x), Int32.cast(window_y), Int32.cast(buffer_x), Int32.cast(buffer_y))
+      __return_value = LibGtk.text_view_window_to_buffer_coords((to_unsafe as LibGtk::TextView*), win, Int32.new(window_x), Int32.new(window_y), Int32.new(buffer_x), Int32.new(buffer_y))
       __return_value
     end
 

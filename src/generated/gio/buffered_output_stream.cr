@@ -18,7 +18,7 @@ module Gio
     end
 
     def self.new_sized(base_stream, size)
-      __return_value = LibGio.buffered_output_stream_new_sized((base_stream.to_unsafe as LibGio::OutputStream*), UInt64.cast(size))
+      __return_value = LibGio.buffered_output_stream_new_sized((base_stream.to_unsafe as LibGio::OutputStream*), UInt64.new(size))
       Gio::OutputStream.new(__return_value)
     end
 
@@ -33,12 +33,12 @@ module Gio
     end
 
     def auto_grow=(auto_grow)
-      __return_value = LibGio.buffered_output_stream_set_auto_grow((to_unsafe as LibGio::BufferedOutputStream*), Bool.cast(auto_grow))
+      __return_value = LibGio.buffered_output_stream_set_auto_grow((to_unsafe as LibGio::BufferedOutputStream*), Bool.new(auto_grow))
       __return_value
     end
 
     def buffer_size=(size)
-      __return_value = LibGio.buffered_output_stream_set_buffer_size((to_unsafe as LibGio::BufferedOutputStream*), UInt64.cast(size))
+      __return_value = LibGio.buffered_output_stream_set_buffer_size((to_unsafe as LibGio::BufferedOutputStream*), UInt64.new(size))
       __return_value
     end
 

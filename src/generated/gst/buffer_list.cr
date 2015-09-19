@@ -15,7 +15,7 @@ module Gst
     end
 
     def self.new_sized(size)
-      __return_value = LibGst.buffer_list_new_sized(UInt32.cast(size))
+      __return_value = LibGst.buffer_list_new_sized(UInt32.new(size))
       Gst::BufferList.new(__return_value)
     end
 
@@ -25,12 +25,12 @@ module Gst
     end
 
     def get(idx)
-      __return_value = LibGst.buffer_list_get((to_unsafe as LibGst::BufferList*), UInt32.cast(idx))
+      __return_value = LibGst.buffer_list_get((to_unsafe as LibGst::BufferList*), UInt32.new(idx))
       Gst::Buffer.new(__return_value) if __return_value
     end
 
     def insert(idx, buffer)
-      __return_value = LibGst.buffer_list_insert((to_unsafe as LibGst::BufferList*), Int32.cast(idx), (buffer.to_unsafe as LibGst::Buffer*))
+      __return_value = LibGst.buffer_list_insert((to_unsafe as LibGst::BufferList*), Int32.new(idx), (buffer.to_unsafe as LibGst::Buffer*))
       __return_value
     end
 
@@ -40,7 +40,7 @@ module Gst
     end
 
     def remove(idx, length)
-      __return_value = LibGst.buffer_list_remove((to_unsafe as LibGst::BufferList*), UInt32.cast(idx), UInt32.cast(length))
+      __return_value = LibGst.buffer_list_remove((to_unsafe as LibGst::BufferList*), UInt32.new(idx), UInt32.new(length))
       __return_value
     end
 

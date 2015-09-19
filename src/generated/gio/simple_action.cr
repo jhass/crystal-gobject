@@ -24,7 +24,7 @@ module Gio
     end
 
     def enabled=(enabled)
-      __return_value = LibGio.simple_action_set_enabled((to_unsafe as LibGio::SimpleAction*), Bool.cast(enabled))
+      __return_value = LibGio.simple_action_set_enabled((to_unsafe as LibGio::SimpleAction*), Bool.new(enabled))
       __return_value
     end
 

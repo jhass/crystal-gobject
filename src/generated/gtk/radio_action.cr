@@ -14,7 +14,7 @@ module Gtk
 
 
     def self.new_internal(name, label, tooltip, stock_id, value)
-      __return_value = LibGtk.radio_action_new(name, label && label, tooltip && tooltip, stock_id && stock_id, Int32.cast(value))
+      __return_value = LibGtk.radio_action_new(name, label && label, tooltip && tooltip, stock_id && stock_id, Int32.new(value))
       Gtk::RadioAction.new(__return_value)
     end
 
@@ -34,7 +34,7 @@ module Gtk
     end
 
     def current_value=(current_value)
-      __return_value = LibGtk.radio_action_set_current_value((to_unsafe as LibGtk::RadioAction*), Int32.cast(current_value))
+      __return_value = LibGtk.radio_action_set_current_value((to_unsafe as LibGtk::RadioAction*), Int32.new(current_value))
       __return_value
     end
 

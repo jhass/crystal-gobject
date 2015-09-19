@@ -25,7 +25,7 @@ module Gtk
 
     def load_from_data(data, length)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.css_provider_load_from_data((to_unsafe as LibGtk::CssProvider*), data, Int64.cast(length), pointerof(__error))
+      __return_value = LibGtk.css_provider_load_from_data((to_unsafe as LibGtk::CssProvider*), data, Int64.new(length), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

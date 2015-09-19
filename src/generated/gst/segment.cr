@@ -15,7 +15,7 @@ module Gst
     end
 
     def clip(format, start, stop, clip_start, clip_stop)
-      __return_value = LibGst.segment_clip((to_unsafe as LibGst::Segment*), format, UInt64.cast(start), UInt64.cast(stop), UInt64.cast(clip_start), UInt64.cast(clip_stop))
+      __return_value = LibGst.segment_clip((to_unsafe as LibGst::Segment*), format, UInt64.new(start), UInt64.new(stop), UInt64.new(clip_start), UInt64.new(clip_stop))
       __return_value
     end
 
@@ -30,7 +30,7 @@ module Gst
     end
 
     def do_seek(rate, format, flags, start_type, start, stop_type, stop, update)
-      __return_value = LibGst.segment_do_seek((to_unsafe as LibGst::Segment*), Float64.cast(rate), format, flags, start_type, UInt64.cast(start), stop_type, UInt64.cast(stop), update)
+      __return_value = LibGst.segment_do_seek((to_unsafe as LibGst::Segment*), Float64.new(rate), format, flags, start_type, UInt64.new(start), stop_type, UInt64.new(stop), update)
       __return_value
     end
 
@@ -45,27 +45,27 @@ module Gst
     end
 
     def offset_running_time(format, offset)
-      __return_value = LibGst.segment_offset_running_time((to_unsafe as LibGst::Segment*), format, Int64.cast(offset))
+      __return_value = LibGst.segment_offset_running_time((to_unsafe as LibGst::Segment*), format, Int64.new(offset))
       __return_value
     end
 
     def set_running_time(format, running_time)
-      __return_value = LibGst.segment_set_running_time((to_unsafe as LibGst::Segment*), format, UInt64.cast(running_time))
+      __return_value = LibGst.segment_set_running_time((to_unsafe as LibGst::Segment*), format, UInt64.new(running_time))
       __return_value
     end
 
     def to_position(format, running_time)
-      __return_value = LibGst.segment_to_position((to_unsafe as LibGst::Segment*), format, UInt64.cast(running_time))
+      __return_value = LibGst.segment_to_position((to_unsafe as LibGst::Segment*), format, UInt64.new(running_time))
       __return_value
     end
 
     def to_running_time(format, position)
-      __return_value = LibGst.segment_to_running_time((to_unsafe as LibGst::Segment*), format, UInt64.cast(position))
+      __return_value = LibGst.segment_to_running_time((to_unsafe as LibGst::Segment*), format, UInt64.new(position))
       __return_value
     end
 
     def to_stream_time(format, position)
-      __return_value = LibGst.segment_to_stream_time((to_unsafe as LibGst::Segment*), format, UInt64.cast(position))
+      __return_value = LibGst.segment_to_stream_time((to_unsafe as LibGst::Segment*), format, UInt64.new(position))
       __return_value
     end
 

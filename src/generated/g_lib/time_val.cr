@@ -10,7 +10,7 @@ module GLib
     end
 
     def add(microseconds)
-      __return_value = LibGLib.time_val_add((to_unsafe as LibGLib::TimeVal*), Int64.cast(microseconds))
+      __return_value = LibGLib.time_val_add((to_unsafe as LibGLib::TimeVal*), Int64.new(microseconds))
       __return_value
     end
 

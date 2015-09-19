@@ -18,7 +18,7 @@ module Atk
     end
 
     def add_states(types, n_types)
-      __return_value = LibAtk.state_set_add_states((to_unsafe as LibAtk::StateSet*), types, Int32.cast(n_types))
+      __return_value = LibAtk.state_set_add_states((to_unsafe as LibAtk::StateSet*), types, Int32.new(n_types))
       __return_value
     end
 
@@ -38,7 +38,7 @@ module Atk
     end
 
     def contains_states(types, n_types)
-      __return_value = LibAtk.state_set_contains_states((to_unsafe as LibAtk::StateSet*), types, Int32.cast(n_types))
+      __return_value = LibAtk.state_set_contains_states((to_unsafe as LibAtk::StateSet*), types, Int32.new(n_types))
       __return_value
     end
 

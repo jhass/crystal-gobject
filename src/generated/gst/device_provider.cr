@@ -10,7 +10,7 @@ module Gst
     end
 
     def self.register(plugin, name, rank, type)
-      __return_value = LibGst.device_provider_register(plugin && (plugin.to_unsafe as LibGst::Plugin*), name, UInt32.cast(rank), UInt64.cast(type))
+      __return_value = LibGst.device_provider_register(plugin && (plugin.to_unsafe as LibGst::Plugin*), name, UInt32.new(rank), UInt64.new(type))
       __return_value
     end
 

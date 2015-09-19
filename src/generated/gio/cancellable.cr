@@ -28,7 +28,7 @@ module Gio
     end
 
     def disconnect(handler_id)
-      __return_value = LibGio.cancellable_disconnect((to_unsafe as LibGio::Cancellable*), UInt64.cast(handler_id))
+      __return_value = LibGio.cancellable_disconnect((to_unsafe as LibGio::Cancellable*), UInt64.new(handler_id))
       __return_value
     end
 

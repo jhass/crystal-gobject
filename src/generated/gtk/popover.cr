@@ -57,7 +57,7 @@ module Gtk
     end
 
     def modal=(modal)
-      __return_value = LibGtk.popover_set_modal((to_unsafe as LibGtk::Popover*), Bool.cast(modal))
+      __return_value = LibGtk.popover_set_modal((to_unsafe as LibGtk::Popover*), Bool.new(modal))
       __return_value
     end
 
@@ -77,7 +77,7 @@ module Gtk
     end
 
     def transitions_enabled=(transitions_enabled)
-      __return_value = LibGtk.popover_set_transitions_enabled((to_unsafe as LibGtk::Popover*), Bool.cast(transitions_enabled))
+      __return_value = LibGtk.popover_set_transitions_enabled((to_unsafe as LibGtk::Popover*), Bool.new(transitions_enabled))
       __return_value
     end
 

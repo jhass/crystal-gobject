@@ -10,7 +10,7 @@ module Gtk
     end
 
     def self.new_internal(target, flags, info)
-      __return_value = LibGtk.target_entry_new(target, UInt32.cast(flags), UInt32.cast(info))
+      __return_value = LibGtk.target_entry_new(target, UInt32.new(flags), UInt32.new(info))
       Gtk::TargetEntry.new(__return_value)
     end
 

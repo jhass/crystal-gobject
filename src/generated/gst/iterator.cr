@@ -10,7 +10,7 @@ module Gst
     end
 
     def self.new_single(type, object)
-      __return_value = LibGst.iterator_new_single(UInt64.cast(type), (object.to_unsafe as LibGObject::Value*))
+      __return_value = LibGst.iterator_new_single(UInt64.new(type), (object.to_unsafe as LibGObject::Value*))
       Gst::Iterator.new(__return_value)
     end
 

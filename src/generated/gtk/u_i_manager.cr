@@ -16,7 +16,7 @@ module Gtk
     end
 
     def add_ui(merge_id, path, name, action, type, top)
-      __return_value = LibGtk.u_i_manager_add_ui((to_unsafe as LibGtk::UIManager*), UInt32.cast(merge_id), path, name, action && action, type, Bool.cast(top))
+      __return_value = LibGtk.u_i_manager_add_ui((to_unsafe as LibGtk::UIManager*), UInt32.new(merge_id), path, name, action && action, type, Bool.new(top))
       __return_value
     end
 
@@ -36,7 +36,7 @@ module Gtk
 
     def add_ui_from_string(buffer, length)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.u_i_manager_add_ui_from_string((to_unsafe as LibGtk::UIManager*), buffer, Int64.cast(length), pointerof(__error))
+      __return_value = LibGtk.u_i_manager_add_ui_from_string((to_unsafe as LibGtk::UIManager*), buffer, Int64.new(length), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -82,7 +82,7 @@ module Gtk
     end
 
     def insert_action_group(action_group, pos)
-      __return_value = LibGtk.u_i_manager_insert_action_group((to_unsafe as LibGtk::UIManager*), (action_group.to_unsafe as LibGtk::ActionGroup*), Int32.cast(pos))
+      __return_value = LibGtk.u_i_manager_insert_action_group((to_unsafe as LibGtk::UIManager*), (action_group.to_unsafe as LibGtk::ActionGroup*), Int32.new(pos))
       __return_value
     end
 
@@ -97,12 +97,12 @@ module Gtk
     end
 
     def remove_ui(merge_id)
-      __return_value = LibGtk.u_i_manager_remove_ui((to_unsafe as LibGtk::UIManager*), UInt32.cast(merge_id))
+      __return_value = LibGtk.u_i_manager_remove_ui((to_unsafe as LibGtk::UIManager*), UInt32.new(merge_id))
       __return_value
     end
 
     def add_tearoffs=(add_tearoffs)
-      __return_value = LibGtk.u_i_manager_set_add_tearoffs((to_unsafe as LibGtk::UIManager*), Bool.cast(add_tearoffs))
+      __return_value = LibGtk.u_i_manager_set_add_tearoffs((to_unsafe as LibGtk::UIManager*), Bool.new(add_tearoffs))
       __return_value
     end
 

@@ -68,7 +68,7 @@ module Gtk
     end
 
     def set_can_store(targets, n_targets)
-      __return_value = LibGtk.clipboard_set_can_store((to_unsafe as LibGtk::Clipboard*), targets && targets, Int32.cast(n_targets))
+      __return_value = LibGtk.clipboard_set_can_store((to_unsafe as LibGtk::Clipboard*), targets && targets, Int32.new(n_targets))
       __return_value
     end
 
@@ -78,7 +78,7 @@ module Gtk
     end
 
     def set_text(text, len)
-      __return_value = LibGtk.clipboard_set_text((to_unsafe as LibGtk::Clipboard*), text, Int32.cast(len))
+      __return_value = LibGtk.clipboard_set_text((to_unsafe as LibGtk::Clipboard*), text, Int32.new(len))
       __return_value
     end
 
@@ -98,12 +98,12 @@ module Gtk
     end
 
     def wait_for_rich_text(buffer, format, length)
-      __return_value = LibGtk.clipboard_wait_for_rich_text((to_unsafe as LibGtk::Clipboard*), (buffer.to_unsafe as LibGtk::TextBuffer*), (format.to_unsafe as LibGdk::Atom*), UInt64.cast(length))
-      PointerIterator.new(__return_value) {|__item_54| __item_54 } if __return_value
+      __return_value = LibGtk.clipboard_wait_for_rich_text((to_unsafe as LibGtk::Clipboard*), (buffer.to_unsafe as LibGtk::TextBuffer*), (format.to_unsafe as LibGdk::Atom*), UInt64.new(length))
+      PointerIterator.new(__return_value) {|__item_49| __item_49 } if __return_value
     end
 
     def wait_for_targets(targets, n_targets)
-      __return_value = LibGtk.clipboard_wait_for_targets((to_unsafe as LibGtk::Clipboard*), targets, Int32.cast(n_targets))
+      __return_value = LibGtk.clipboard_wait_for_targets((to_unsafe as LibGtk::Clipboard*), targets, Int32.new(n_targets))
       __return_value
     end
 
@@ -114,7 +114,7 @@ module Gtk
 
     def wait_for_uris
       __return_value = LibGtk.clipboard_wait_for_uris((to_unsafe as LibGtk::Clipboard*))
-      PointerIterator.new(__return_value) {|__item_78| raise "Expected string but got null" unless __item_78; String.new(__item_78) } if __return_value
+      PointerIterator.new(__return_value) {|__item_0| raise "Expected string but got null" unless __item_0; String.new(__item_0) } if __return_value
     end
 
     def wait_is_image_available

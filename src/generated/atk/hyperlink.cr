@@ -23,7 +23,7 @@ module Atk
     end
 
     def object(i)
-      __return_value = LibAtk.hyperlink_get_object((to_unsafe as LibAtk::Hyperlink*), Int32.cast(i))
+      __return_value = LibAtk.hyperlink_get_object((to_unsafe as LibAtk::Hyperlink*), Int32.new(i))
       Atk::Object.new(__return_value)
     end
 
@@ -33,7 +33,7 @@ module Atk
     end
 
     def uri(i)
-      __return_value = LibAtk.hyperlink_get_uri((to_unsafe as LibAtk::Hyperlink*), Int32.cast(i))
+      __return_value = LibAtk.hyperlink_get_uri((to_unsafe as LibAtk::Hyperlink*), Int32.new(i))
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 

@@ -71,7 +71,7 @@ module Gtk
     end
 
     def slider_range(slider_start, slider_end)
-      __return_value = LibGtk.range_get_slider_range((to_unsafe as LibGtk::Range*), Int32.cast(slider_start), Int32.cast(slider_end))
+      __return_value = LibGtk.range_get_slider_range((to_unsafe as LibGtk::Range*), Int32.new(slider_start), Int32.new(slider_end))
       __return_value
     end
 
@@ -96,22 +96,22 @@ module Gtk
     end
 
     def fill_level=(fill_level)
-      __return_value = LibGtk.range_set_fill_level((to_unsafe as LibGtk::Range*), Float64.cast(fill_level))
+      __return_value = LibGtk.range_set_fill_level((to_unsafe as LibGtk::Range*), Float64.new(fill_level))
       __return_value
     end
 
     def flippable=(flippable)
-      __return_value = LibGtk.range_set_flippable((to_unsafe as LibGtk::Range*), Bool.cast(flippable))
+      __return_value = LibGtk.range_set_flippable((to_unsafe as LibGtk::Range*), Bool.new(flippable))
       __return_value
     end
 
     def set_increments(step, page)
-      __return_value = LibGtk.range_set_increments((to_unsafe as LibGtk::Range*), Float64.cast(step), Float64.cast(page))
+      __return_value = LibGtk.range_set_increments((to_unsafe as LibGtk::Range*), Float64.new(step), Float64.new(page))
       __return_value
     end
 
     def inverted=(setting)
-      __return_value = LibGtk.range_set_inverted((to_unsafe as LibGtk::Range*), Bool.cast(setting))
+      __return_value = LibGtk.range_set_inverted((to_unsafe as LibGtk::Range*), Bool.new(setting))
       __return_value
     end
 
@@ -121,32 +121,32 @@ module Gtk
     end
 
     def min_slider_size=(min_size)
-      __return_value = LibGtk.range_set_min_slider_size((to_unsafe as LibGtk::Range*), Int32.cast(min_size))
+      __return_value = LibGtk.range_set_min_slider_size((to_unsafe as LibGtk::Range*), Int32.new(min_size))
       __return_value
     end
 
     def set_range(min, max)
-      __return_value = LibGtk.range_set_range((to_unsafe as LibGtk::Range*), Float64.cast(min), Float64.cast(max))
+      __return_value = LibGtk.range_set_range((to_unsafe as LibGtk::Range*), Float64.new(min), Float64.new(max))
       __return_value
     end
 
     def restrict_to_fill_level=(restrict_to_fill_level)
-      __return_value = LibGtk.range_set_restrict_to_fill_level((to_unsafe as LibGtk::Range*), Bool.cast(restrict_to_fill_level))
+      __return_value = LibGtk.range_set_restrict_to_fill_level((to_unsafe as LibGtk::Range*), Bool.new(restrict_to_fill_level))
       __return_value
     end
 
     def round_digits=(round_digits)
-      __return_value = LibGtk.range_set_round_digits((to_unsafe as LibGtk::Range*), Int32.cast(round_digits))
+      __return_value = LibGtk.range_set_round_digits((to_unsafe as LibGtk::Range*), Int32.new(round_digits))
       __return_value
     end
 
     def show_fill_level=(show_fill_level)
-      __return_value = LibGtk.range_set_show_fill_level((to_unsafe as LibGtk::Range*), Bool.cast(show_fill_level))
+      __return_value = LibGtk.range_set_show_fill_level((to_unsafe as LibGtk::Range*), Bool.new(show_fill_level))
       __return_value
     end
 
     def slider_size_fixed=(size_fixed)
-      __return_value = LibGtk.range_set_slider_size_fixed((to_unsafe as LibGtk::Range*), Bool.cast(size_fixed))
+      __return_value = LibGtk.range_set_slider_size_fixed((to_unsafe as LibGtk::Range*), Bool.new(size_fixed))
       __return_value
     end
 
@@ -156,7 +156,7 @@ module Gtk
     end
 
     def value=(value)
-      __return_value = LibGtk.range_set_value((to_unsafe as LibGtk::Range*), Float64.cast(value))
+      __return_value = LibGtk.range_set_value((to_unsafe as LibGtk::Range*), Float64.new(value))
       __return_value
     end
 

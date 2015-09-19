@@ -27,7 +27,7 @@ module Gtk
     end
 
     def label_align(xalign, yalign)
-      __return_value = LibGtk.frame_get_label_align((to_unsafe as LibGtk::Frame*), Float32.cast(xalign), Float32.cast(yalign))
+      __return_value = LibGtk.frame_get_label_align((to_unsafe as LibGtk::Frame*), Float32.new(xalign), Float32.new(yalign))
       __return_value
     end
 
@@ -47,7 +47,7 @@ module Gtk
     end
 
     def set_label_align(xalign, yalign)
-      __return_value = LibGtk.frame_set_label_align((to_unsafe as LibGtk::Frame*), Float32.cast(xalign), Float32.cast(yalign))
+      __return_value = LibGtk.frame_set_label_align((to_unsafe as LibGtk::Frame*), Float32.new(xalign), Float32.new(yalign))
       __return_value
     end
 

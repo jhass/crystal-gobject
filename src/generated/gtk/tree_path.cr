@@ -20,7 +20,7 @@ module Gtk
     end
 
     def self.new_from_indices(indices, length)
-      __return_value = LibGtk.tree_path_new_from_indices(indices, UInt64.cast(length))
+      __return_value = LibGtk.tree_path_new_from_indices(indices, UInt64.new(length))
       Gtk::TreePath.new(__return_value)
     end
 
@@ -30,7 +30,7 @@ module Gtk
     end
 
     def append_index(index)
-      __return_value = LibGtk.tree_path_append_index((to_unsafe as LibGtk::TreePath*), Int32.cast(index))
+      __return_value = LibGtk.tree_path_append_index((to_unsafe as LibGtk::TreePath*), Int32.new(index))
       __return_value
     end
 
@@ -60,8 +60,8 @@ module Gtk
     end
 
     def indices(depth)
-      __return_value = LibGtk.tree_path_get_indices((to_unsafe as LibGtk::TreePath*), Int32.cast(depth))
-      PointerIterator.new(__return_value) {|__item_65| __item_65 }
+      __return_value = LibGtk.tree_path_get_indices((to_unsafe as LibGtk::TreePath*), Int32.new(depth))
+      PointerIterator.new(__return_value) {|__item_13| __item_13 }
     end
 
     def is_ancestor(descendant)
@@ -80,7 +80,7 @@ module Gtk
     end
 
     def prepend_index(index)
-      __return_value = LibGtk.tree_path_prepend_index((to_unsafe as LibGtk::TreePath*), Int32.cast(index))
+      __return_value = LibGtk.tree_path_prepend_index((to_unsafe as LibGtk::TreePath*), Int32.new(index))
       __return_value
     end
 

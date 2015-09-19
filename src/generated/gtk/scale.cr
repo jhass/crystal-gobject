@@ -22,12 +22,12 @@ module Gtk
     end
 
     def self.new_with_range(orientation, min, max, step)
-      __return_value = LibGtk.scale_new_with_range(orientation, Float64.cast(min), Float64.cast(max), Float64.cast(step))
+      __return_value = LibGtk.scale_new_with_range(orientation, Float64.new(min), Float64.new(max), Float64.new(step))
       Gtk::Widget.new(__return_value)
     end
 
     def add_mark(value, position, markup)
-      __return_value = LibGtk.scale_add_mark((to_unsafe as LibGtk::Scale*), Float64.cast(value), position, markup && markup)
+      __return_value = LibGtk.scale_add_mark((to_unsafe as LibGtk::Scale*), Float64.new(value), position, markup && markup)
       __return_value
     end
 
@@ -57,7 +57,7 @@ module Gtk
     end
 
     def layout_offsets(x, y)
-      __return_value = LibGtk.scale_get_layout_offsets((to_unsafe as LibGtk::Scale*), Int32.cast(x), Int32.cast(y))
+      __return_value = LibGtk.scale_get_layout_offsets((to_unsafe as LibGtk::Scale*), Int32.new(x), Int32.new(y))
       __return_value
     end
 
@@ -67,17 +67,17 @@ module Gtk
     end
 
     def digits=(digits)
-      __return_value = LibGtk.scale_set_digits((to_unsafe as LibGtk::Scale*), Int32.cast(digits))
+      __return_value = LibGtk.scale_set_digits((to_unsafe as LibGtk::Scale*), Int32.new(digits))
       __return_value
     end
 
     def draw_value=(draw_value)
-      __return_value = LibGtk.scale_set_draw_value((to_unsafe as LibGtk::Scale*), Bool.cast(draw_value))
+      __return_value = LibGtk.scale_set_draw_value((to_unsafe as LibGtk::Scale*), Bool.new(draw_value))
       __return_value
     end
 
     def has_origin=(has_origin)
-      __return_value = LibGtk.scale_set_has_origin((to_unsafe as LibGtk::Scale*), Bool.cast(has_origin))
+      __return_value = LibGtk.scale_set_has_origin((to_unsafe as LibGtk::Scale*), Bool.new(has_origin))
       __return_value
     end
 

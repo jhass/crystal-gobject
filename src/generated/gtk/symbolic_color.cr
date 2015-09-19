@@ -10,7 +10,7 @@ module Gtk
     end
 
     def self.new_alpha(color, factor)
-      __return_value = LibGtk.symbolic_color_new_alpha((color.to_unsafe as LibGtk::SymbolicColor*), Float64.cast(factor))
+      __return_value = LibGtk.symbolic_color_new_alpha((color.to_unsafe as LibGtk::SymbolicColor*), Float64.new(factor))
       Gtk::SymbolicColor.new(__return_value)
     end
 
@@ -20,7 +20,7 @@ module Gtk
     end
 
     def self.new_mix(color1, color2, factor)
-      __return_value = LibGtk.symbolic_color_new_mix((color1.to_unsafe as LibGtk::SymbolicColor*), (color2.to_unsafe as LibGtk::SymbolicColor*), Float64.cast(factor))
+      __return_value = LibGtk.symbolic_color_new_mix((color1.to_unsafe as LibGtk::SymbolicColor*), (color2.to_unsafe as LibGtk::SymbolicColor*), Float64.new(factor))
       Gtk::SymbolicColor.new(__return_value)
     end
 
@@ -30,12 +30,12 @@ module Gtk
     end
 
     def self.new_shade(color, factor)
-      __return_value = LibGtk.symbolic_color_new_shade((color.to_unsafe as LibGtk::SymbolicColor*), Float64.cast(factor))
+      __return_value = LibGtk.symbolic_color_new_shade((color.to_unsafe as LibGtk::SymbolicColor*), Float64.new(factor))
       Gtk::SymbolicColor.new(__return_value)
     end
 
     def self.new_win32(theme_class, id)
-      __return_value = LibGtk.symbolic_color_new_win32(theme_class, Int32.cast(id))
+      __return_value = LibGtk.symbolic_color_new_win32(theme_class, Int32.new(id))
       Gtk::SymbolicColor.new(__return_value)
     end
 

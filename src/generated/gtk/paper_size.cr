@@ -15,12 +15,12 @@ module Gtk
     end
 
     def self.new_custom(name, display_name, width, height, unit)
-      __return_value = LibGtk.paper_size_new_custom(name, display_name, Float64.cast(width), Float64.cast(height), unit)
+      __return_value = LibGtk.paper_size_new_custom(name, display_name, Float64.new(width), Float64.new(height), unit)
       Gtk::PaperSize.new(__return_value)
     end
 
     def self.new_from_ipp(ipp_name, width, height)
-      __return_value = LibGtk.paper_size_new_from_ipp(ipp_name, Float64.cast(width), Float64.cast(height))
+      __return_value = LibGtk.paper_size_new_from_ipp(ipp_name, Float64.new(width), Float64.new(height))
       Gtk::PaperSize.new(__return_value)
     end
 
@@ -32,7 +32,7 @@ module Gtk
     end
 
     def self.new_from_ppd(ppd_name, ppd_display_name, width, height)
-      __return_value = LibGtk.paper_size_new_from_ppd(ppd_name, ppd_display_name, Float64.cast(width), Float64.cast(height))
+      __return_value = LibGtk.paper_size_new_from_ppd(ppd_name, ppd_display_name, Float64.new(width), Float64.new(height))
       Gtk::PaperSize.new(__return_value)
     end
 
@@ -107,7 +107,7 @@ module Gtk
     end
 
     def set_size(width, height, unit)
-      __return_value = LibGtk.paper_size_set_size((to_unsafe as LibGtk::PaperSize*), Float64.cast(width), Float64.cast(height), unit)
+      __return_value = LibGtk.paper_size_set_size((to_unsafe as LibGtk::PaperSize*), Float64.new(width), Float64.new(height), unit)
       __return_value
     end
 
@@ -122,7 +122,7 @@ module Gtk
     end
 
     def self.paper_sizes(include_custom)
-      __return_value = LibGtk.paper_size_get_paper_sizes(Bool.cast(include_custom))
+      __return_value = LibGtk.paper_size_get_paper_sizes(Bool.new(include_custom))
       __return_value
     end
 

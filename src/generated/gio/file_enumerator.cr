@@ -16,7 +16,7 @@ module Gio
     end
 
     def close_async(io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_enumerator_close_async((to_unsafe as LibGio::FileEnumerator*), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_enumerator_close_async((to_unsafe as LibGio::FileEnumerator*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -62,7 +62,7 @@ module Gio
     end
 
     def next_files_async(num_files, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_enumerator_next_files_async((to_unsafe as LibGio::FileEnumerator*), Int32.cast(num_files), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_enumerator_next_files_async((to_unsafe as LibGio::FileEnumerator*), Int32.new(num_files), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -74,7 +74,7 @@ module Gio
     end
 
     def pending=(pending)
-      __return_value = LibGio.file_enumerator_set_pending((to_unsafe as LibGio::FileEnumerator*), Bool.cast(pending))
+      __return_value = LibGio.file_enumerator_set_pending((to_unsafe as LibGio::FileEnumerator*), Bool.new(pending))
       __return_value
     end
 

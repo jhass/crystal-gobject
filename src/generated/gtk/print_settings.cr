@@ -67,7 +67,7 @@ module Gtk
     end
 
     def double_with_default(key, _def)
-      __return_value = LibGtk.print_settings_get_double_with_default((to_unsafe as LibGtk::PrintSettings*), key, Float64.cast(_def))
+      __return_value = LibGtk.print_settings_get_double_with_default((to_unsafe as LibGtk::PrintSettings*), key, Float64.new(_def))
       __return_value
     end
 
@@ -87,7 +87,7 @@ module Gtk
     end
 
     def int_with_default(key, _def)
-      __return_value = LibGtk.print_settings_get_int_with_default((to_unsafe as LibGtk::PrintSettings*), key, Int32.cast(_def))
+      __return_value = LibGtk.print_settings_get_int_with_default((to_unsafe as LibGtk::PrintSettings*), key, Int32.new(_def))
       __return_value
     end
 
@@ -127,8 +127,8 @@ module Gtk
     end
 
     def page_ranges(num_ranges)
-      __return_value = LibGtk.print_settings_get_page_ranges((to_unsafe as LibGtk::PrintSettings*), Int32.cast(num_ranges))
-      PointerIterator.new(__return_value) {|__item_67| Gtk::PageRange.new(__item_67) }
+      __return_value = LibGtk.print_settings_get_page_ranges((to_unsafe as LibGtk::PrintSettings*), Int32.new(num_ranges))
+      PointerIterator.new(__return_value) {|__item_65| Gtk::PageRange.new(__item_65) }
     end
 
     def page_set
@@ -226,12 +226,12 @@ module Gtk
     end
 
     def set_bool(key, value)
-      __return_value = LibGtk.print_settings_set_bool((to_unsafe as LibGtk::PrintSettings*), key, Bool.cast(value))
+      __return_value = LibGtk.print_settings_set_bool((to_unsafe as LibGtk::PrintSettings*), key, Bool.new(value))
       __return_value
     end
 
     def collate=(collate)
-      __return_value = LibGtk.print_settings_set_collate((to_unsafe as LibGtk::PrintSettings*), Bool.cast(collate))
+      __return_value = LibGtk.print_settings_set_collate((to_unsafe as LibGtk::PrintSettings*), Bool.new(collate))
       __return_value
     end
 
@@ -246,7 +246,7 @@ module Gtk
     end
 
     def set_double(key, value)
-      __return_value = LibGtk.print_settings_set_double((to_unsafe as LibGtk::PrintSettings*), key, Float64.cast(value))
+      __return_value = LibGtk.print_settings_set_double((to_unsafe as LibGtk::PrintSettings*), key, Float64.new(value))
       __return_value
     end
 
@@ -261,12 +261,12 @@ module Gtk
     end
 
     def set_int(key, value)
-      __return_value = LibGtk.print_settings_set_int((to_unsafe as LibGtk::PrintSettings*), key, Int32.cast(value))
+      __return_value = LibGtk.print_settings_set_int((to_unsafe as LibGtk::PrintSettings*), key, Int32.new(value))
       __return_value
     end
 
     def set_length(key, value, unit)
-      __return_value = LibGtk.print_settings_set_length((to_unsafe as LibGtk::PrintSettings*), key, Float64.cast(value), unit)
+      __return_value = LibGtk.print_settings_set_length((to_unsafe as LibGtk::PrintSettings*), key, Float64.new(value), unit)
       __return_value
     end
 
@@ -276,12 +276,12 @@ module Gtk
     end
 
     def n_copies=(num_copies)
-      __return_value = LibGtk.print_settings_set_n_copies((to_unsafe as LibGtk::PrintSettings*), Int32.cast(num_copies))
+      __return_value = LibGtk.print_settings_set_n_copies((to_unsafe as LibGtk::PrintSettings*), Int32.new(num_copies))
       __return_value
     end
 
     def number_up=(number_up)
-      __return_value = LibGtk.print_settings_set_number_up((to_unsafe as LibGtk::PrintSettings*), Int32.cast(number_up))
+      __return_value = LibGtk.print_settings_set_number_up((to_unsafe as LibGtk::PrintSettings*), Int32.new(number_up))
       __return_value
     end
 
@@ -301,7 +301,7 @@ module Gtk
     end
 
     def set_page_ranges(page_ranges, num_ranges)
-      __return_value = LibGtk.print_settings_set_page_ranges((to_unsafe as LibGtk::PrintSettings*), page_ranges, Int32.cast(num_ranges))
+      __return_value = LibGtk.print_settings_set_page_ranges((to_unsafe as LibGtk::PrintSettings*), page_ranges, Int32.new(num_ranges))
       __return_value
     end
 
@@ -311,7 +311,7 @@ module Gtk
     end
 
     def set_paper_height(height, unit)
-      __return_value = LibGtk.print_settings_set_paper_height((to_unsafe as LibGtk::PrintSettings*), Float64.cast(height), unit)
+      __return_value = LibGtk.print_settings_set_paper_height((to_unsafe as LibGtk::PrintSettings*), Float64.new(height), unit)
       __return_value
     end
 
@@ -321,7 +321,7 @@ module Gtk
     end
 
     def set_paper_width(width, unit)
-      __return_value = LibGtk.print_settings_set_paper_width((to_unsafe as LibGtk::PrintSettings*), Float64.cast(width), unit)
+      __return_value = LibGtk.print_settings_set_paper_width((to_unsafe as LibGtk::PrintSettings*), Float64.new(width), unit)
       __return_value
     end
 
@@ -336,7 +336,7 @@ module Gtk
     end
 
     def printer_lpi=(lpi)
-      __return_value = LibGtk.print_settings_set_printer_lpi((to_unsafe as LibGtk::PrintSettings*), Float64.cast(lpi))
+      __return_value = LibGtk.print_settings_set_printer_lpi((to_unsafe as LibGtk::PrintSettings*), Float64.new(lpi))
       __return_value
     end
 
@@ -346,27 +346,27 @@ module Gtk
     end
 
     def resolution=(resolution)
-      __return_value = LibGtk.print_settings_set_resolution((to_unsafe as LibGtk::PrintSettings*), Int32.cast(resolution))
+      __return_value = LibGtk.print_settings_set_resolution((to_unsafe as LibGtk::PrintSettings*), Int32.new(resolution))
       __return_value
     end
 
     def set_resolution_xy(resolution_x, resolution_y)
-      __return_value = LibGtk.print_settings_set_resolution_xy((to_unsafe as LibGtk::PrintSettings*), Int32.cast(resolution_x), Int32.cast(resolution_y))
+      __return_value = LibGtk.print_settings_set_resolution_xy((to_unsafe as LibGtk::PrintSettings*), Int32.new(resolution_x), Int32.new(resolution_y))
       __return_value
     end
 
     def reverse=(reverse)
-      __return_value = LibGtk.print_settings_set_reverse((to_unsafe as LibGtk::PrintSettings*), Bool.cast(reverse))
+      __return_value = LibGtk.print_settings_set_reverse((to_unsafe as LibGtk::PrintSettings*), Bool.new(reverse))
       __return_value
     end
 
     def scale=(scale)
-      __return_value = LibGtk.print_settings_set_scale((to_unsafe as LibGtk::PrintSettings*), Float64.cast(scale))
+      __return_value = LibGtk.print_settings_set_scale((to_unsafe as LibGtk::PrintSettings*), Float64.new(scale))
       __return_value
     end
 
     def use_color=(use_color)
-      __return_value = LibGtk.print_settings_set_use_color((to_unsafe as LibGtk::PrintSettings*), Bool.cast(use_color))
+      __return_value = LibGtk.print_settings_set_use_color((to_unsafe as LibGtk::PrintSettings*), Bool.new(use_color))
       __return_value
     end
 

@@ -24,7 +24,7 @@ module Gtk
     end
 
     def self.new_from_string(string, length)
-      __return_value = LibGtk.builder_new_from_string(string, Int64.cast(length))
+      __return_value = LibGtk.builder_new_from_string(string, Int64.new(length))
       Gtk::Builder.new(__return_value)
     end
 
@@ -49,7 +49,7 @@ module Gtk
 
     def add_from_string(buffer, length)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.builder_add_from_string((to_unsafe as LibGtk::Builder*), buffer, UInt64.cast(length), pointerof(__error))
+      __return_value = LibGtk.builder_add_from_string((to_unsafe as LibGtk::Builder*), buffer, UInt64.new(length), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -70,7 +70,7 @@ module Gtk
 
     def add_objects_from_string(buffer, length, object_ids)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.builder_add_objects_from_string((to_unsafe as LibGtk::Builder*), buffer, UInt64.cast(length), object_ids, pointerof(__error))
+      __return_value = LibGtk.builder_add_objects_from_string((to_unsafe as LibGtk::Builder*), buffer, UInt64.new(length), object_ids, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -134,7 +134,7 @@ module Gtk
 
     def value_from_string_type(type, string, value)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.builder_value_from_string_type((to_unsafe as LibGtk::Builder*), UInt64.cast(type), string, value, pointerof(__error))
+      __return_value = LibGtk.builder_value_from_string_type((to_unsafe as LibGtk::Builder*), UInt64.new(type), string, value, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

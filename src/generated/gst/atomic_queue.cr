@@ -10,7 +10,7 @@ module Gst
     end
 
     def self.new_internal(initial_size)
-      __return_value = LibGst.atomic_queue_new(UInt32.cast(initial_size))
+      __return_value = LibGst.atomic_queue_new(UInt32.new(initial_size))
       Gst::AtomicQueue.new(__return_value)
     end
 

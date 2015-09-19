@@ -42,12 +42,12 @@ module Gtk
     end
 
     def drop_group(x, y)
-      __return_value = LibGtk.tool_palette_get_drop_group((to_unsafe as LibGtk::ToolPalette*), Int32.cast(x), Int32.cast(y))
+      __return_value = LibGtk.tool_palette_get_drop_group((to_unsafe as LibGtk::ToolPalette*), Int32.new(x), Int32.new(y))
       Gtk::ToolItemGroup.new(__return_value)
     end
 
     def drop_item(x, y)
-      __return_value = LibGtk.tool_palette_get_drop_item((to_unsafe as LibGtk::ToolPalette*), Int32.cast(x), Int32.cast(y))
+      __return_value = LibGtk.tool_palette_get_drop_item((to_unsafe as LibGtk::ToolPalette*), Int32.new(x), Int32.new(y))
       Gtk::ToolItem.new(__return_value)
     end
 
@@ -92,22 +92,22 @@ module Gtk
     end
 
     def set_exclusive(group, exclusive)
-      __return_value = LibGtk.tool_palette_set_exclusive((to_unsafe as LibGtk::ToolPalette*), (group.to_unsafe as LibGtk::ToolItemGroup*), Bool.cast(exclusive))
+      __return_value = LibGtk.tool_palette_set_exclusive((to_unsafe as LibGtk::ToolPalette*), (group.to_unsafe as LibGtk::ToolItemGroup*), Bool.new(exclusive))
       __return_value
     end
 
     def set_expand(group, expand)
-      __return_value = LibGtk.tool_palette_set_expand((to_unsafe as LibGtk::ToolPalette*), (group.to_unsafe as LibGtk::ToolItemGroup*), Bool.cast(expand))
+      __return_value = LibGtk.tool_palette_set_expand((to_unsafe as LibGtk::ToolPalette*), (group.to_unsafe as LibGtk::ToolItemGroup*), Bool.new(expand))
       __return_value
     end
 
     def set_group_position(group, position)
-      __return_value = LibGtk.tool_palette_set_group_position((to_unsafe as LibGtk::ToolPalette*), (group.to_unsafe as LibGtk::ToolItemGroup*), Int32.cast(position))
+      __return_value = LibGtk.tool_palette_set_group_position((to_unsafe as LibGtk::ToolPalette*), (group.to_unsafe as LibGtk::ToolItemGroup*), Int32.new(position))
       __return_value
     end
 
     def icon_size=(icon_size)
-      __return_value = LibGtk.tool_palette_set_icon_size((to_unsafe as LibGtk::ToolPalette*), Int32.cast(icon_size))
+      __return_value = LibGtk.tool_palette_set_icon_size((to_unsafe as LibGtk::ToolPalette*), Int32.new(icon_size))
       __return_value
     end
 

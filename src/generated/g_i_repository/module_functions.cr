@@ -65,7 +65,7 @@ module GIRepository
   end
 
   def self.callable_info_get_arg(info, n)
-    __return_value = LibGIRepository.callable_info_get_arg((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.cast(n))
+    __return_value = LibGIRepository.callable_info_get_arg((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.new(n))
     GIRepository::BaseInfo.new(__return_value)
   end
 
@@ -96,7 +96,7 @@ module GIRepository
 
   def self.callable_info_invoke(info, function, in_args, n_in_args, out_args, n_out_args, return_value, is_method, throws)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGIRepository.callable_info_invoke((info.to_unsafe as LibGIRepository::BaseInfo*), function, (in_args.to_unsafe as LibGIRepository::Argument*), Int32.cast(n_in_args), (out_args.to_unsafe as LibGIRepository::Argument*), Int32.cast(n_out_args), (return_value.to_unsafe as LibGIRepository::Argument*), Bool.cast(is_method), Bool.cast(throws), pointerof(__error))
+    __return_value = LibGIRepository.callable_info_invoke((info.to_unsafe as LibGIRepository::BaseInfo*), function, (in_args.to_unsafe as LibGIRepository::Argument*), Int32.new(n_in_args), (out_args.to_unsafe as LibGIRepository::Argument*), Int32.new(n_out_args), (return_value.to_unsafe as LibGIRepository::Argument*), Bool.new(is_method), Bool.new(throws), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -112,7 +112,7 @@ module GIRepository
   end
 
   def self.callable_info_load_arg(info, n, arg)
-    __return_value = LibGIRepository.callable_info_load_arg((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.cast(n), arg)
+    __return_value = LibGIRepository.callable_info_load_arg((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.new(n), arg)
     __return_value
   end
 
@@ -142,7 +142,7 @@ module GIRepository
   end
 
   def self.enum_info_get_method(info, n)
-    __return_value = LibGIRepository.enum_info_get_method((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.cast(n))
+    __return_value = LibGIRepository.enum_info_get_method((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.new(n))
     GIRepository::BaseInfo.new(__return_value)
   end
 
@@ -162,7 +162,7 @@ module GIRepository
   end
 
   def self.enum_info_get_value(info, n)
-    __return_value = LibGIRepository.enum_info_get_value((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.cast(n))
+    __return_value = LibGIRepository.enum_info_get_value((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.new(n))
     GIRepository::BaseInfo.new(__return_value)
   end
 
@@ -207,7 +207,7 @@ module GIRepository
   end
 
   def self.info_new(type, container, typelib, offset)
-    __return_value = LibGIRepository.info_new(type, (container.to_unsafe as LibGIRepository::BaseInfo*), (typelib.to_unsafe as LibGIRepository::Typelib*), UInt32.cast(offset))
+    __return_value = LibGIRepository.info_new(type, (container.to_unsafe as LibGIRepository::BaseInfo*), (typelib.to_unsafe as LibGIRepository::Typelib*), UInt32.new(offset))
     GIRepository::BaseInfo.new(__return_value)
   end
 
@@ -232,7 +232,7 @@ module GIRepository
   end
 
   def self.interface_info_get_constant(info, n)
-    __return_value = LibGIRepository.interface_info_get_constant((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.cast(n))
+    __return_value = LibGIRepository.interface_info_get_constant((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.new(n))
     GIRepository::BaseInfo.new(__return_value)
   end
 
@@ -242,7 +242,7 @@ module GIRepository
   end
 
   def self.interface_info_get_method(info, n)
-    __return_value = LibGIRepository.interface_info_get_method((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.cast(n))
+    __return_value = LibGIRepository.interface_info_get_method((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.new(n))
     GIRepository::BaseInfo.new(__return_value)
   end
 
@@ -277,22 +277,22 @@ module GIRepository
   end
 
   def self.interface_info_get_prerequisite(info, n)
-    __return_value = LibGIRepository.interface_info_get_prerequisite((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.cast(n))
+    __return_value = LibGIRepository.interface_info_get_prerequisite((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.new(n))
     GIRepository::BaseInfo.new(__return_value)
   end
 
   def self.interface_info_get_property(info, n)
-    __return_value = LibGIRepository.interface_info_get_property((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.cast(n))
+    __return_value = LibGIRepository.interface_info_get_property((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.new(n))
     GIRepository::BaseInfo.new(__return_value)
   end
 
   def self.interface_info_get_signal(info, n)
-    __return_value = LibGIRepository.interface_info_get_signal((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.cast(n))
+    __return_value = LibGIRepository.interface_info_get_signal((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.new(n))
     GIRepository::BaseInfo.new(__return_value)
   end
 
   def self.interface_info_get_vfunc(info, n)
-    __return_value = LibGIRepository.interface_info_get_vfunc((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.cast(n))
+    __return_value = LibGIRepository.interface_info_get_vfunc((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.new(n))
     GIRepository::BaseInfo.new(__return_value)
   end
 
@@ -337,12 +337,12 @@ module GIRepository
   end
 
   def self.object_info_get_constant(info, n)
-    __return_value = LibGIRepository.object_info_get_constant((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.cast(n))
+    __return_value = LibGIRepository.object_info_get_constant((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.new(n))
     GIRepository::BaseInfo.new(__return_value)
   end
 
   def self.object_info_get_field(info, n)
-    __return_value = LibGIRepository.object_info_get_field((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.cast(n))
+    __return_value = LibGIRepository.object_info_get_field((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.new(n))
     GIRepository::BaseInfo.new(__return_value)
   end
 
@@ -357,12 +357,12 @@ module GIRepository
   end
 
   def self.object_info_get_interface(info, n)
-    __return_value = LibGIRepository.object_info_get_interface((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.cast(n))
+    __return_value = LibGIRepository.object_info_get_interface((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.new(n))
     GIRepository::BaseInfo.new(__return_value)
   end
 
   def self.object_info_get_method(info, n)
-    __return_value = LibGIRepository.object_info_get_method((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.cast(n))
+    __return_value = LibGIRepository.object_info_get_method((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.new(n))
     GIRepository::BaseInfo.new(__return_value)
   end
 
@@ -407,7 +407,7 @@ module GIRepository
   end
 
   def self.object_info_get_property(info, n)
-    __return_value = LibGIRepository.object_info_get_property((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.cast(n))
+    __return_value = LibGIRepository.object_info_get_property((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.new(n))
     GIRepository::BaseInfo.new(__return_value)
   end
 
@@ -422,7 +422,7 @@ module GIRepository
   end
 
   def self.object_info_get_signal(info, n)
-    __return_value = LibGIRepository.object_info_get_signal((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.cast(n))
+    __return_value = LibGIRepository.object_info_get_signal((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.new(n))
     GIRepository::BaseInfo.new(__return_value)
   end
 
@@ -442,7 +442,7 @@ module GIRepository
   end
 
   def self.object_info_get_vfunc(info, n)
-    __return_value = LibGIRepository.object_info_get_vfunc((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.cast(n))
+    __return_value = LibGIRepository.object_info_get_vfunc((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.new(n))
     GIRepository::BaseInfo.new(__return_value)
   end
 
@@ -502,12 +502,12 @@ module GIRepository
   end
 
   def self.struct_info_get_field(info, n)
-    __return_value = LibGIRepository.struct_info_get_field((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.cast(n))
+    __return_value = LibGIRepository.struct_info_get_field((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.new(n))
     GIRepository::BaseInfo.new(__return_value)
   end
 
   def self.struct_info_get_method(info, n)
-    __return_value = LibGIRepository.struct_info_get_method((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.cast(n))
+    __return_value = LibGIRepository.struct_info_get_method((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.new(n))
     GIRepository::BaseInfo.new(__return_value)
   end
 
@@ -557,7 +557,7 @@ module GIRepository
   end
 
   def self.type_info_get_param_type(info, n)
-    __return_value = LibGIRepository.type_info_get_param_type((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.cast(n))
+    __return_value = LibGIRepository.type_info_get_param_type((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.new(n))
     GIRepository::BaseInfo.new(__return_value)
   end
 
@@ -592,7 +592,7 @@ module GIRepository
   end
 
   def self.union_info_get_discriminator(info, n)
-    __return_value = LibGIRepository.union_info_get_discriminator((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.cast(n))
+    __return_value = LibGIRepository.union_info_get_discriminator((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.new(n))
     GIRepository::BaseInfo.new(__return_value)
   end
 
@@ -607,12 +607,12 @@ module GIRepository
   end
 
   def self.union_info_get_field(info, n)
-    __return_value = LibGIRepository.union_info_get_field((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.cast(n))
+    __return_value = LibGIRepository.union_info_get_field((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.new(n))
     GIRepository::BaseInfo.new(__return_value)
   end
 
   def self.union_info_get_method(info, n)
-    __return_value = LibGIRepository.union_info_get_method((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.cast(n))
+    __return_value = LibGIRepository.union_info_get_method((info.to_unsafe as LibGIRepository::BaseInfo*), Int32.new(n))
     GIRepository::BaseInfo.new(__return_value)
   end
 

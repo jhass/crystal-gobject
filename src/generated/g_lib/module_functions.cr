@@ -1,21 +1,21 @@
 module GLib
   def self.access(filename, mode)
-    __return_value = LibGLib.access(filename, Int32.cast(mode))
+    __return_value = LibGLib.access(filename, Int32.new(mode))
     __return_value
   end
 
   def self.ascii_digit_value(c)
-    __return_value = LibGLib.ascii_digit_value(Int8.cast(c))
+    __return_value = LibGLib.ascii_digit_value(Int8.new(c))
     __return_value
   end
 
   def self.ascii_dtostr(buffer, buf_len, d)
-    __return_value = LibGLib.ascii_dtostr(buffer, Int32.cast(buf_len), Float64.cast(d))
+    __return_value = LibGLib.ascii_dtostr(buffer, Int32.new(buf_len), Float64.new(d))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.ascii_formatd(buffer, buf_len, format, d)
-    __return_value = LibGLib.ascii_formatd(buffer, Int32.cast(buf_len), format, Float64.cast(d))
+    __return_value = LibGLib.ascii_formatd(buffer, Int32.new(buf_len), format, Float64.new(d))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
@@ -25,12 +25,12 @@ module GLib
   end
 
   def self.ascii_strdown(str, len)
-    __return_value = LibGLib.ascii_strdown(str, Int64.cast(len))
+    __return_value = LibGLib.ascii_strdown(str, Int64.new(len))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.ascii_strncasecmp(s1, s2, n)
-    __return_value = LibGLib.ascii_strncasecmp(s1, s2, UInt64.cast(n))
+    __return_value = LibGLib.ascii_strncasecmp(s1, s2, UInt64.new(n))
     __return_value
   end
 
@@ -40,57 +40,57 @@ module GLib
   end
 
   def self.ascii_strtoll(nptr, endptr, base)
-    __return_value = LibGLib.ascii_strtoll(nptr, endptr, UInt32.cast(base))
+    __return_value = LibGLib.ascii_strtoll(nptr, endptr, UInt32.new(base))
     __return_value
   end
 
   def self.ascii_strtoull(nptr, endptr, base)
-    __return_value = LibGLib.ascii_strtoull(nptr, endptr, UInt32.cast(base))
+    __return_value = LibGLib.ascii_strtoull(nptr, endptr, UInt32.new(base))
     __return_value
   end
 
   def self.ascii_strup(str, len)
-    __return_value = LibGLib.ascii_strup(str, Int64.cast(len))
+    __return_value = LibGLib.ascii_strup(str, Int64.new(len))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.ascii_tolower(c)
-    __return_value = LibGLib.ascii_tolower(Int8.cast(c))
+    __return_value = LibGLib.ascii_tolower(Int8.new(c))
     __return_value
   end
 
   def self.ascii_toupper(c)
-    __return_value = LibGLib.ascii_toupper(Int8.cast(c))
+    __return_value = LibGLib.ascii_toupper(Int8.new(c))
     __return_value
   end
 
   def self.ascii_xdigit_value(c)
-    __return_value = LibGLib.ascii_xdigit_value(Int8.cast(c))
+    __return_value = LibGLib.ascii_xdigit_value(Int8.new(c))
     __return_value
   end
 
   def self.assert_warning(log_domain, file, line, pretty_function, expression)
-    __return_value = LibGLib.assert_warning(log_domain, file, Int32.cast(line), pretty_function, expression)
+    __return_value = LibGLib.assert_warning(log_domain, file, Int32.new(line), pretty_function, expression)
     __return_value
   end
 
   def self.assertion_message(domain, file, line, func, message)
-    __return_value = LibGLib.assertion_message(domain, file, Int32.cast(line), func, message)
+    __return_value = LibGLib.assertion_message(domain, file, Int32.new(line), func, message)
     __return_value
   end
 
   def self.assertion_message_cmpstr(domain, file, line, func, expr, arg1, cmp, arg2)
-    __return_value = LibGLib.assertion_message_cmpstr(domain, file, Int32.cast(line), func, expr, arg1, cmp, arg2)
+    __return_value = LibGLib.assertion_message_cmpstr(domain, file, Int32.new(line), func, expr, arg1, cmp, arg2)
     __return_value
   end
 
   def self.assertion_message_error(domain, file, line, func, expr, error, error_domain, error_code)
-    __return_value = LibGLib.assertion_message_error(domain, file, Int32.cast(line), func, expr, error, UInt32.cast(error_domain), Int32.cast(error_code))
+    __return_value = LibGLib.assertion_message_error(domain, file, Int32.new(line), func, expr, error, UInt32.new(error_domain), Int32.new(error_code))
     __return_value
   end
 
   def self.assertion_message_expr(domain, file, line, func, expr)
-    __return_value = LibGLib.assertion_message_expr(domain, file, Int32.cast(line), func, expr)
+    __return_value = LibGLib.assertion_message_expr(domain, file, Int32.new(line), func, expr)
     __return_value
   end
 
@@ -100,17 +100,17 @@ module GLib
   end
 
   def self.atomic_int_add(atomic, val)
-    __return_value = LibGLib.atomic_int_add(atomic, Int32.cast(val))
+    __return_value = LibGLib.atomic_int_add(atomic, Int32.new(val))
     __return_value
   end
 
   def self.atomic_int_and(atomic, val)
-    __return_value = LibGLib.atomic_int_and(atomic, UInt32.cast(val))
+    __return_value = LibGLib.atomic_int_and(atomic, UInt32.new(val))
     __return_value
   end
 
   def self.atomic_int_compare_and_exchange(atomic, oldval, newval)
-    __return_value = LibGLib.atomic_int_compare_and_exchange(atomic, Int32.cast(oldval), Int32.cast(newval))
+    __return_value = LibGLib.atomic_int_compare_and_exchange(atomic, Int32.new(oldval), Int32.new(newval))
     __return_value
   end
 
@@ -120,7 +120,7 @@ module GLib
   end
 
   def self.atomic_int_exchange_and_add(atomic, val)
-    __return_value = LibGLib.atomic_int_exchange_and_add(atomic, Int32.cast(val))
+    __return_value = LibGLib.atomic_int_exchange_and_add(atomic, Int32.new(val))
     __return_value
   end
 
@@ -135,27 +135,27 @@ module GLib
   end
 
   def self.atomic_int_or(atomic, val)
-    __return_value = LibGLib.atomic_int_or(atomic, UInt32.cast(val))
+    __return_value = LibGLib.atomic_int_or(atomic, UInt32.new(val))
     __return_value
   end
 
   def self.atomic_int_set(atomic, newval)
-    __return_value = LibGLib.atomic_int_set(atomic, Int32.cast(newval))
+    __return_value = LibGLib.atomic_int_set(atomic, Int32.new(newval))
     __return_value
   end
 
   def self.atomic_int_xor(atomic, val)
-    __return_value = LibGLib.atomic_int_xor(atomic, UInt32.cast(val))
+    __return_value = LibGLib.atomic_int_xor(atomic, UInt32.new(val))
     __return_value
   end
 
   def self.atomic_pointer_add(atomic, val)
-    __return_value = LibGLib.atomic_pointer_add(atomic, Int64.cast(val))
+    __return_value = LibGLib.atomic_pointer_add(atomic, Int64.new(val))
     __return_value
   end
 
   def self.atomic_pointer_and(atomic, val)
-    __return_value = LibGLib.atomic_pointer_and(atomic, UInt64.cast(val))
+    __return_value = LibGLib.atomic_pointer_and(atomic, UInt64.new(val))
     __return_value
   end
 
@@ -165,7 +165,7 @@ module GLib
   end
 
   def self.atomic_pointer_or(atomic, val)
-    __return_value = LibGLib.atomic_pointer_or(atomic, UInt64.cast(val))
+    __return_value = LibGLib.atomic_pointer_or(atomic, UInt64.new(val))
     __return_value
   end
 
@@ -175,37 +175,37 @@ module GLib
   end
 
   def self.atomic_pointer_xor(atomic, val)
-    __return_value = LibGLib.atomic_pointer_xor(atomic, UInt64.cast(val))
+    __return_value = LibGLib.atomic_pointer_xor(atomic, UInt64.new(val))
     __return_value
   end
 
   def self.base64_decode(text, out_len)
-    __return_value = LibGLib.base64_decode(text, UInt64.cast(out_len))
-    PointerIterator.new(__return_value) {|__item_95| __item_95 }
+    __return_value = LibGLib.base64_decode(text, UInt64.new(out_len))
+    PointerIterator.new(__return_value) {|__item_38| __item_38 }
   end
 
   def self.base64_decode_inplace(text, out_len)
-    __return_value = LibGLib.base64_decode_inplace(text, UInt64.cast(out_len))
+    __return_value = LibGLib.base64_decode_inplace(text, UInt64.new(out_len))
     __return_value
   end
 
   def self.base64_decode_step(in, len, _out, state, save)
-    __return_value = LibGLib.base64_decode_step(in, UInt64.cast(len), _out, Int32.cast(state), UInt32.cast(save))
+    __return_value = LibGLib.base64_decode_step(in, UInt64.new(len), _out, Int32.new(state), UInt32.new(save))
     __return_value
   end
 
   def self.base64_encode(data, len)
-    __return_value = LibGLib.base64_encode(data, UInt64.cast(len))
+    __return_value = LibGLib.base64_encode(data, UInt64.new(len))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.base64_encode_close(break_lines, _out, state, save)
-    __return_value = LibGLib.base64_encode_close(Bool.cast(break_lines), _out, Int32.cast(state), Int32.cast(save))
+    __return_value = LibGLib.base64_encode_close(Bool.new(break_lines), _out, Int32.new(state), Int32.new(save))
     __return_value
   end
 
   def self.base64_encode_step(in, len, break_lines, _out, state, save)
-    __return_value = LibGLib.base64_encode_step(in, UInt64.cast(len), Bool.cast(break_lines), _out, Int32.cast(state), Int32.cast(save))
+    __return_value = LibGLib.base64_encode_step(in, UInt64.new(len), Bool.new(break_lines), _out, Int32.new(state), Int32.new(save))
     __return_value
   end
 
@@ -215,32 +215,32 @@ module GLib
   end
 
   def self.bit_lock(address, lock_bit)
-    __return_value = LibGLib.bit_lock(address, Int32.cast(lock_bit))
+    __return_value = LibGLib.bit_lock(address, Int32.new(lock_bit))
     __return_value
   end
 
   def self.bit_nth_lsf(mask, nth_bit)
-    __return_value = LibGLib.bit_nth_lsf(UInt64.cast(mask), Int32.cast(nth_bit))
+    __return_value = LibGLib.bit_nth_lsf(UInt64.new(mask), Int32.new(nth_bit))
     __return_value
   end
 
   def self.bit_nth_msf(mask, nth_bit)
-    __return_value = LibGLib.bit_nth_msf(UInt64.cast(mask), Int32.cast(nth_bit))
+    __return_value = LibGLib.bit_nth_msf(UInt64.new(mask), Int32.new(nth_bit))
     __return_value
   end
 
   def self.bit_storage(number)
-    __return_value = LibGLib.bit_storage(UInt64.cast(number))
+    __return_value = LibGLib.bit_storage(UInt64.new(number))
     __return_value
   end
 
   def self.bit_trylock(address, lock_bit)
-    __return_value = LibGLib.bit_trylock(address, Int32.cast(lock_bit))
+    __return_value = LibGLib.bit_trylock(address, Int32.new(lock_bit))
     __return_value
   end
 
   def self.bit_unlock(address, lock_bit)
-    __return_value = LibGLib.bit_unlock(address, Int32.cast(lock_bit))
+    __return_value = LibGLib.bit_unlock(address, Int32.new(lock_bit))
     __return_value
   end
 
@@ -260,7 +260,7 @@ module GLib
   end
 
   def self.byte_array_free(array, free_segment)
-    __return_value = LibGLib.byte_array_free(array, Bool.cast(free_segment))
+    __return_value = LibGLib.byte_array_free(array, Bool.new(free_segment))
     __return_value
   end
 
@@ -275,7 +275,7 @@ module GLib
   end
 
   def self.byte_array_new_take(data, len)
-    __return_value = LibGLib.byte_array_new_take(data, UInt64.cast(len))
+    __return_value = LibGLib.byte_array_new_take(data, UInt64.new(len))
     __return_value
   end
 
@@ -290,7 +290,7 @@ module GLib
   end
 
   def self.check_version(required_major, required_minor, required_micro)
-    __return_value = LibGLib.check_version(UInt32.cast(required_major), UInt32.cast(required_minor), UInt32.cast(required_micro))
+    __return_value = LibGLib.check_version(UInt32.new(required_major), UInt32.new(required_minor), UInt32.new(required_micro))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
@@ -300,12 +300,12 @@ module GLib
   end
 
   def self.child_watch_add(priority, pid, function : LibGLib::ChildWatchFunc, data, notify : LibGLib::DestroyNotify?)
-    __return_value = LibGLib.child_watch_add(Int32.cast(priority), Int32.cast(pid), function, data, notify && notify)
+    __return_value = LibGLib.child_watch_add(Int32.new(priority), Int32.new(pid), function, data, notify && notify)
     __return_value
   end
 
   def self.child_watch_source_new(pid)
-    __return_value = LibGLib.child_watch_source_new(Int32.cast(pid))
+    __return_value = LibGLib.child_watch_source_new(Int32.new(pid))
     GLib::Source.new(__return_value)
   end
 
@@ -318,7 +318,7 @@ module GLib
 
   def self.close(fd)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.close(Int32.cast(fd), pointerof(__error))
+    __return_value = LibGLib.close(Int32.new(fd), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -329,28 +329,28 @@ module GLib
   end
 
   def self.compute_checksum_for_data(checksum_type, data, length)
-    __return_value = LibGLib.compute_checksum_for_data(checksum_type, data, UInt64.cast(length))
+    __return_value = LibGLib.compute_checksum_for_data(checksum_type, data, UInt64.new(length))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.compute_checksum_for_string(checksum_type, str, length)
-    __return_value = LibGLib.compute_checksum_for_string(checksum_type, str, Int64.cast(length))
+    __return_value = LibGLib.compute_checksum_for_string(checksum_type, str, Int64.new(length))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.compute_hmac_for_data(digest_type, key, key_len, data, length)
-    __return_value = LibGLib.compute_hmac_for_data(digest_type, key, UInt64.cast(key_len), data, UInt64.cast(length))
+    __return_value = LibGLib.compute_hmac_for_data(digest_type, key, UInt64.new(key_len), data, UInt64.new(length))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.compute_hmac_for_string(digest_type, key, key_len, str, length)
-    __return_value = LibGLib.compute_hmac_for_string(digest_type, key, UInt64.cast(key_len), str, Int64.cast(length))
+    __return_value = LibGLib.compute_hmac_for_string(digest_type, key, UInt64.new(key_len), str, Int64.new(length))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.convert(str, len, to_codeset, from_codeset, bytes_read, bytes_written)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.convert(str, Int64.cast(len), to_codeset, from_codeset, UInt64.cast(bytes_read), UInt64.cast(bytes_written), pointerof(__error))
+    __return_value = LibGLib.convert(str, Int64.new(len), to_codeset, from_codeset, UInt64.new(bytes_read), UInt64.new(bytes_written), pointerof(__error))
     GLib::Error.assert __error
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
@@ -362,14 +362,14 @@ module GLib
 
   def self.convert_with_fallback(str, len, to_codeset, from_codeset, fallback, bytes_read, bytes_written)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.convert_with_fallback(str, Int64.cast(len), to_codeset, from_codeset, fallback, bytes_read, bytes_written, pointerof(__error))
+    __return_value = LibGLib.convert_with_fallback(str, Int64.new(len), to_codeset, from_codeset, fallback, bytes_read, bytes_written, pointerof(__error))
     GLib::Error.assert __error
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.convert_with_iconv(str, len, converter, bytes_read, bytes_written)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.convert_with_iconv(str, Int64.cast(len), (converter.to_unsafe as LibGLib::IConv*), bytes_read, bytes_written, pointerof(__error))
+    __return_value = LibGLib.convert_with_iconv(str, Int64.new(len), (converter.to_unsafe as LibGLib::IConv*), bytes_read, bytes_written, pointerof(__error))
     GLib::Error.assert __error
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
@@ -385,12 +385,12 @@ module GLib
   end
 
   def self.datalist_id_replace_data(datalist, key_id, oldval, newval, destroy : LibGLib::DestroyNotify?, old_destroy : LibGLib::DestroyNotify*?)
-    __return_value = LibGLib.datalist_id_replace_data((datalist.to_unsafe as LibGLib::Data*), UInt32.cast(key_id), oldval && oldval, newval && newval, destroy && destroy, old_destroy && (old_destroy.to_unsafe as LibGLib::DestroyNotify*))
+    __return_value = LibGLib.datalist_id_replace_data((datalist.to_unsafe as LibGLib::Data*), UInt32.new(key_id), oldval && oldval, newval && newval, destroy && destroy, old_destroy && (old_destroy.to_unsafe as LibGLib::DestroyNotify*))
     __return_value
   end
 
   def self.datalist_id_set_data_full(datalist, key_id, data, destroy_func : LibGLib::DestroyNotify)
-    __return_value = LibGLib.datalist_id_set_data_full((datalist.to_unsafe as LibGLib::Data*), UInt32.cast(key_id), data && data, destroy_func)
+    __return_value = LibGLib.datalist_id_set_data_full((datalist.to_unsafe as LibGLib::Data*), UInt32.new(key_id), data && data, destroy_func)
     __return_value
   end
 
@@ -400,12 +400,12 @@ module GLib
   end
 
   def self.datalist_set_flags(datalist, flags)
-    __return_value = LibGLib.datalist_set_flags((datalist.to_unsafe as LibGLib::Data*), UInt32.cast(flags))
+    __return_value = LibGLib.datalist_set_flags((datalist.to_unsafe as LibGLib::Data*), UInt32.new(flags))
     __return_value
   end
 
   def self.datalist_unset_flags(datalist, flags)
-    __return_value = LibGLib.datalist_unset_flags((datalist.to_unsafe as LibGLib::Data*), UInt32.cast(flags))
+    __return_value = LibGLib.datalist_unset_flags((datalist.to_unsafe as LibGLib::Data*), UInt32.new(flags))
     __return_value
   end
 
@@ -415,32 +415,32 @@ module GLib
   end
 
   def self.dataset_id_set_data_full(dataset_location, key_id, data, destroy_func : LibGLib::DestroyNotify)
-    __return_value = LibGLib.dataset_id_set_data_full(dataset_location, UInt32.cast(key_id), data, destroy_func)
+    __return_value = LibGLib.dataset_id_set_data_full(dataset_location, UInt32.new(key_id), data, destroy_func)
     __return_value
   end
 
   def self.date_get_days_in_month(month, year)
-    __return_value = LibGLib.date_get_days_in_month(month, UInt16.cast(year))
+    __return_value = LibGLib.date_get_days_in_month(month, UInt16.new(year))
     __return_value
   end
 
   def self.date_get_monday_weeks_in_year(year)
-    __return_value = LibGLib.date_get_monday_weeks_in_year(UInt16.cast(year))
+    __return_value = LibGLib.date_get_monday_weeks_in_year(UInt16.new(year))
     __return_value
   end
 
   def self.date_get_sunday_weeks_in_year(year)
-    __return_value = LibGLib.date_get_sunday_weeks_in_year(UInt16.cast(year))
+    __return_value = LibGLib.date_get_sunday_weeks_in_year(UInt16.new(year))
     __return_value
   end
 
   def self.date_is_leap_year(year)
-    __return_value = LibGLib.date_is_leap_year(UInt16.cast(year))
+    __return_value = LibGLib.date_is_leap_year(UInt16.new(year))
     __return_value
   end
 
   def self.date_strftime(s, slen, format, date)
-    __return_value = LibGLib.date_strftime(s, UInt64.cast(slen), format, (date.to_unsafe as LibGLib::Date*))
+    __return_value = LibGLib.date_strftime(s, UInt64.new(slen), format, (date.to_unsafe as LibGLib::Date*))
     __return_value
   end
 
@@ -460,17 +460,17 @@ module GLib
   end
 
   def self.date_valid_day(day)
-    __return_value = LibGLib.date_valid_day(UInt8.cast(day))
+    __return_value = LibGLib.date_valid_day(UInt8.new(day))
     __return_value
   end
 
   def self.date_valid_dmy(day, month, year)
-    __return_value = LibGLib.date_valid_dmy(UInt8.cast(day), month, UInt16.cast(year))
+    __return_value = LibGLib.date_valid_dmy(UInt8.new(day), month, UInt16.new(year))
     __return_value
   end
 
   def self.date_valid_julian(julian_date)
-    __return_value = LibGLib.date_valid_julian(UInt32.cast(julian_date))
+    __return_value = LibGLib.date_valid_julian(UInt32.new(julian_date))
     __return_value
   end
 
@@ -485,12 +485,12 @@ module GLib
   end
 
   def self.date_valid_year(year)
-    __return_value = LibGLib.date_valid_year(UInt16.cast(year))
+    __return_value = LibGLib.date_valid_year(UInt16.new(year))
     __return_value
   end
 
   def self.dcgettext(domain, msgid, category)
-    __return_value = LibGLib.dcgettext(domain && domain, msgid, Int32.cast(category))
+    __return_value = LibGLib.dcgettext(domain && domain, msgid, Int32.new(category))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
@@ -517,7 +517,7 @@ module GLib
   end
 
   def self.dngettext(domain, msgid, msgid_plural, n)
-    __return_value = LibGLib.dngettext(domain && domain, msgid, msgid_plural, UInt64.cast(n))
+    __return_value = LibGLib.dngettext(domain && domain, msgid, msgid_plural, UInt64.new(n))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
@@ -532,7 +532,7 @@ module GLib
   end
 
   def self.dpgettext(domain, msgctxtid, msgidoffset)
-    __return_value = LibGLib.dpgettext(domain && domain, msgctxtid, UInt64.cast(msgidoffset))
+    __return_value = LibGLib.dpgettext(domain && domain, msgctxtid, UInt64.new(msgidoffset))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
@@ -547,17 +547,17 @@ module GLib
   end
 
   def self.environ_setenv(envp, variable, value, overwrite)
-    __return_value = LibGLib.environ_setenv(envp && envp, variable, value, Bool.cast(overwrite))
-    PointerIterator.new(__return_value) {|__item_44| raise "Expected string but got null" unless __item_44; String.new(__item_44) }
+    __return_value = LibGLib.environ_setenv(envp && envp, variable, value, Bool.new(overwrite))
+    PointerIterator.new(__return_value) {|__item_86| raise "Expected string but got null" unless __item_86; String.new(__item_86) }
   end
 
   def self.environ_unsetenv(envp, variable)
     __return_value = LibGLib.environ_unsetenv(envp && envp, variable)
-    PointerIterator.new(__return_value) {|__item_26| raise "Expected string but got null" unless __item_26; String.new(__item_26) }
+    PointerIterator.new(__return_value) {|__item_99| raise "Expected string but got null" unless __item_99; String.new(__item_99) }
   end
 
   def self.file_error_from_errno(err_no)
-    __return_value = LibGLib.file_error_from_errno(Int32.cast(err_no))
+    __return_value = LibGLib.file_error_from_errno(Int32.new(err_no))
     __return_value
   end
 
@@ -568,7 +568,7 @@ module GLib
 
   def self.file_get_contents(filename, contents, length)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.file_get_contents(filename, contents, UInt64.cast(length), pointerof(__error))
+    __return_value = LibGLib.file_get_contents(filename, contents, UInt64.new(length), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -589,7 +589,7 @@ module GLib
 
   def self.file_set_contents(filename, contents, length)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.file_set_contents(filename, contents, Int64.cast(length), pointerof(__error))
+    __return_value = LibGLib.file_set_contents(filename, contents, Int64.new(length), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -618,9 +618,9 @@ module GLib
 
   def self.filename_from_utf8(utf8string, len, bytes_read, bytes_written)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.filename_from_utf8(utf8string, Int64.cast(len), UInt64.cast(bytes_read), UInt64.cast(bytes_written), pointerof(__error))
+    __return_value = LibGLib.filename_from_utf8(utf8string, Int64.new(len), UInt64.new(bytes_read), UInt64.new(bytes_written), pointerof(__error))
     GLib::Error.assert __error
-    PointerIterator.new(__return_value) {|__item_63| __item_63 }
+    PointerIterator.new(__return_value) {|__item_0| __item_0 }
   end
 
   def self.filename_to_uri(filename, hostname)
@@ -632,7 +632,7 @@ module GLib
 
   def self.filename_to_utf8(opsysstring, len, bytes_read, bytes_written)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.filename_to_utf8(opsysstring, Int64.cast(len), bytes_read, bytes_written, pointerof(__error))
+    __return_value = LibGLib.filename_to_utf8(opsysstring, Int64.new(len), bytes_read, bytes_written, pointerof(__error))
     GLib::Error.assert __error
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
@@ -643,17 +643,17 @@ module GLib
   end
 
   def self.format_size(size)
-    __return_value = LibGLib.format_size(UInt64.cast(size))
+    __return_value = LibGLib.format_size(UInt64.new(size))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.format_size_for_display(size)
-    __return_value = LibGLib.format_size_for_display(Int64.cast(size))
+    __return_value = LibGLib.format_size_for_display(Int64.new(size))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.format_size_full(size, flags)
-    __return_value = LibGLib.format_size_full(UInt64.cast(size), flags)
+    __return_value = LibGLib.format_size_full(UInt64.new(size), flags)
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
@@ -689,7 +689,7 @@ module GLib
 
   def self.environ
     __return_value = LibGLib.get_environ
-    PointerIterator.new(__return_value) {|__item_3| raise "Expected string but got null" unless __item_3; String.new(__item_3) }
+    PointerIterator.new(__return_value) {|__item_16| raise "Expected string but got null" unless __item_16; String.new(__item_16) }
   end
 
   def self.filename_charsets(charsets)
@@ -709,12 +709,12 @@ module GLib
 
   def self.language_names
     __return_value = LibGLib.get_language_names
-    PointerIterator.new(__return_value) {|__item_58| raise "Expected string but got null" unless __item_58; String.new(__item_58) }
+    PointerIterator.new(__return_value) {|__item_80| raise "Expected string but got null" unless __item_80; String.new(__item_80) }
   end
 
   def self.locale_variants(locale)
     __return_value = LibGLib.get_locale_variants(locale)
-    PointerIterator.new(__return_value) {|__item_56| raise "Expected string but got null" unless __item_56; String.new(__item_56) }
+    PointerIterator.new(__return_value) {|__item_80| raise "Expected string but got null" unless __item_80; String.new(__item_80) }
   end
 
   def self.monotonic_time
@@ -744,12 +744,12 @@ module GLib
 
   def self.system_config_dirs
     __return_value = LibGLib.get_system_config_dirs
-    PointerIterator.new(__return_value) {|__item_19| raise "Expected string but got null" unless __item_19; String.new(__item_19) }
+    PointerIterator.new(__return_value) {|__item_44| raise "Expected string but got null" unless __item_44; String.new(__item_44) }
   end
 
   def self.system_data_dirs
     __return_value = LibGLib.get_system_data_dirs
-    PointerIterator.new(__return_value) {|__item_16| raise "Expected string but got null" unless __item_16; String.new(__item_16) }
+    PointerIterator.new(__return_value) {|__item_10| raise "Expected string but got null" unless __item_10; String.new(__item_10) }
   end
 
   def self.tmp_dir
@@ -853,7 +853,7 @@ module GLib
   end
 
   def self.hook_destroy(hook_list, hook_id)
-    __return_value = LibGLib.hook_destroy((hook_list.to_unsafe as LibGLib::HookList*), UInt64.cast(hook_id))
+    __return_value = LibGLib.hook_destroy((hook_list.to_unsafe as LibGLib::HookList*), UInt64.new(hook_id))
     __return_value
   end
 
@@ -913,7 +913,7 @@ module GLib
   end
 
   def self.idle_add(priority, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
-    __return_value = LibGLib.idle_add(Int32.cast(priority), function, data, notify && notify)
+    __return_value = LibGLib.idle_add(Int32.new(priority), function, data, notify && notify)
     __return_value
   end
 
@@ -958,12 +958,12 @@ module GLib
   end
 
   def self.io_add_watch(channel, priority, condition, func : LibGLib::IOFunc, user_data, notify : LibGLib::DestroyNotify)
-    __return_value = LibGLib.io_add_watch((channel.to_unsafe as LibGLib::IOChannel*), Int32.cast(priority), condition, func, user_data, notify)
+    __return_value = LibGLib.io_add_watch((channel.to_unsafe as LibGLib::IOChannel*), Int32.new(priority), condition, func, user_data, notify)
     __return_value
   end
 
   def self.io_channel_error_from_errno(en)
-    __return_value = LibGLib.io_channel_error_from_errno(Int32.cast(en))
+    __return_value = LibGLib.io_channel_error_from_errno(Int32.new(en))
     __return_value
   end
 
@@ -984,19 +984,19 @@ module GLib
 
   def self.listenv
     __return_value = LibGLib.listenv
-    PointerIterator.new(__return_value) {|__item_72| raise "Expected string but got null" unless __item_72; String.new(__item_72) }
+    PointerIterator.new(__return_value) {|__item_63| raise "Expected string but got null" unless __item_63; String.new(__item_63) }
   end
 
   def self.locale_from_utf8(utf8string, len, bytes_read, bytes_written)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.locale_from_utf8(utf8string, Int64.cast(len), bytes_read, bytes_written, pointerof(__error))
+    __return_value = LibGLib.locale_from_utf8(utf8string, Int64.new(len), bytes_read, bytes_written, pointerof(__error))
     GLib::Error.assert __error
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.locale_to_utf8(opsysstring, len, bytes_read, bytes_written)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.locale_to_utf8(opsysstring, Int64.cast(len), bytes_read, bytes_written, pointerof(__error))
+    __return_value = LibGLib.locale_to_utf8(opsysstring, Int64.new(len), bytes_read, bytes_written, pointerof(__error))
     GLib::Error.assert __error
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
@@ -1007,7 +1007,7 @@ module GLib
   end
 
   def self.log_remove_handler(log_domain, handler_id)
-    __return_value = LibGLib.log_remove_handler(log_domain, UInt32.cast(handler_id))
+    __return_value = LibGLib.log_remove_handler(log_domain, UInt32.new(handler_id))
     __return_value
   end
 
@@ -1052,7 +1052,7 @@ module GLib
   end
 
   def self.markup_escape_text(text, length)
-    __return_value = LibGLib.markup_escape_text(text, Int64.cast(length))
+    __return_value = LibGLib.markup_escape_text(text, Int64.new(length))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
@@ -1072,7 +1072,7 @@ module GLib
   end
 
   def self.mkdir_with_parents(pathname, mode)
-    __return_value = LibGLib.mkdir_with_parents(pathname, Int32.cast(mode))
+    __return_value = LibGLib.mkdir_with_parents(pathname, Int32.new(mode))
     __return_value
   end
 
@@ -1082,7 +1082,7 @@ module GLib
   end
 
   def self.mkdtemp_full(tmpl, mode)
-    __return_value = LibGLib.mkdtemp_full(tmpl, Int32.cast(mode))
+    __return_value = LibGLib.mkdtemp_full(tmpl, Int32.new(mode))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
@@ -1092,7 +1092,7 @@ module GLib
   end
 
   def self.mkstemp_full(tmpl, flags, mode)
-    __return_value = LibGLib.mkstemp_full(tmpl, Int32.cast(flags), Int32.cast(mode))
+    __return_value = LibGLib.mkstemp_full(tmpl, Int32.new(flags), Int32.new(mode))
     __return_value
   end
 
@@ -1117,7 +1117,7 @@ module GLib
   end
 
   def self.once_init_leave(location, result)
-    __return_value = LibGLib.once_init_leave(location, UInt64.cast(result))
+    __return_value = LibGLib.once_init_leave(location, UInt64.new(result))
     __return_value
   end
 
@@ -1127,7 +1127,7 @@ module GLib
   end
 
   def self.parse_debug_string(string, keys, nkeys)
-    __return_value = LibGLib.parse_debug_string(string && string, keys, UInt32.cast(nkeys))
+    __return_value = LibGLib.parse_debug_string(string && string, keys, UInt32.new(nkeys))
     __return_value
   end
 
@@ -1152,7 +1152,7 @@ module GLib
   end
 
   def self.pattern_match(pspec, string_length, string, string_reversed)
-    __return_value = LibGLib.pattern_match((pspec.to_unsafe as LibGLib::PatternSpec*), UInt32.cast(string_length), string, string_reversed && string_reversed)
+    __return_value = LibGLib.pattern_match((pspec.to_unsafe as LibGLib::PatternSpec*), UInt32.new(string_length), string, string_reversed && string_reversed)
     __return_value
   end
 
@@ -1167,22 +1167,22 @@ module GLib
   end
 
   def self.pointer_bit_lock(address, lock_bit)
-    __return_value = LibGLib.pointer_bit_lock(address, Int32.cast(lock_bit))
+    __return_value = LibGLib.pointer_bit_lock(address, Int32.new(lock_bit))
     __return_value
   end
 
   def self.pointer_bit_trylock(address, lock_bit)
-    __return_value = LibGLib.pointer_bit_trylock(address, Int32.cast(lock_bit))
+    __return_value = LibGLib.pointer_bit_trylock(address, Int32.new(lock_bit))
     __return_value
   end
 
   def self.pointer_bit_unlock(address, lock_bit)
-    __return_value = LibGLib.pointer_bit_unlock(address, Int32.cast(lock_bit))
+    __return_value = LibGLib.pointer_bit_unlock(address, Int32.new(lock_bit))
     __return_value
   end
 
   def self.poll(fds, nfds, timeout)
-    __return_value = LibGLib.poll((fds.to_unsafe as LibGLib::PollFD*), UInt32.cast(nfds), Int32.cast(timeout))
+    __return_value = LibGLib.poll((fds.to_unsafe as LibGLib::PollFD*), UInt32.new(nfds), Int32.new(timeout))
     __return_value
   end
 
@@ -1202,7 +1202,7 @@ module GLib
   end
 
   def self.quark_to_string(quark)
-    __return_value = LibGLib.quark_to_string(UInt32.cast(quark))
+    __return_value = LibGLib.quark_to_string(UInt32.new(quark))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
@@ -1217,7 +1217,7 @@ module GLib
   end
 
   def self.random_double_range(_begin, end)
-    __return_value = LibGLib.random_double_range(Float64.cast(_begin), Float64.cast(end))
+    __return_value = LibGLib.random_double_range(Float64.new(_begin), Float64.new(end))
     __return_value
   end
 
@@ -1227,18 +1227,18 @@ module GLib
   end
 
   def self.random_int_range(_begin, end)
-    __return_value = LibGLib.random_int_range(Int32.cast(_begin), Int32.cast(end))
+    __return_value = LibGLib.random_int_range(Int32.new(_begin), Int32.new(end))
     __return_value
   end
 
   def self.random_set_seed(seed)
-    __return_value = LibGLib.random_set_seed(UInt32.cast(seed))
+    __return_value = LibGLib.random_set_seed(UInt32.new(seed))
     __return_value
   end
 
   def self.regex_check_replacement(replacement, has_references)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.regex_check_replacement(replacement, Bool.cast(has_references), pointerof(__error))
+    __return_value = LibGLib.regex_check_replacement(replacement, Bool.new(has_references), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -1249,12 +1249,12 @@ module GLib
   end
 
   def self.regex_escape_nul(string, length)
-    __return_value = LibGLib.regex_escape_nul(string, Int32.cast(length))
+    __return_value = LibGLib.regex_escape_nul(string, Int32.new(length))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.regex_escape_string(string, length)
-    __return_value = LibGLib.regex_escape_string(string, Int32.cast(length))
+    __return_value = LibGLib.regex_escape_string(string, Int32.new(length))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
@@ -1265,7 +1265,7 @@ module GLib
 
   def self.regex_split_simple(pattern, string, compile_options, match_options)
     __return_value = LibGLib.regex_split_simple(pattern, string, compile_options, match_options)
-    PointerIterator.new(__return_value) {|__item_88| raise "Expected string but got null" unless __item_88; String.new(__item_88) }
+    PointerIterator.new(__return_value) {|__item_15| raise "Expected string but got null" unless __item_15; String.new(__item_15) }
   end
 
   def self.reload_user_special_dirs_cache
@@ -1319,7 +1319,7 @@ module GLib
   end
 
   def self.set_error_literal(err, domain, code, message)
-    __return_value = LibGLib.set_error_literal(err && err, UInt32.cast(domain), Int32.cast(code), message)
+    __return_value = LibGLib.set_error_literal(err && err, UInt32.new(domain), Int32.new(code), message)
     __return_value
   end
 
@@ -1329,7 +1329,7 @@ module GLib
   end
 
   def self.setenv(variable, value, overwrite)
-    __return_value = LibGLib.setenv(variable, value, Bool.cast(overwrite))
+    __return_value = LibGLib.setenv(variable, value, Bool.new(overwrite))
     __return_value
   end
 
@@ -1340,7 +1340,7 @@ module GLib
 
   def self.shell_parse_argv(command_line, argcp, argvp)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.shell_parse_argv(command_line, Int32.cast(argcp), argvp, pointerof(__error))
+    __return_value = LibGLib.shell_parse_argv(command_line, Int32.new(argcp), argvp, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -1358,12 +1358,12 @@ module GLib
   end
 
   def self.slice_free1(block_size, mem_block)
-    __return_value = LibGLib.slice_free1(UInt64.cast(block_size), mem_block)
+    __return_value = LibGLib.slice_free1(UInt64.new(block_size), mem_block)
     __return_value
   end
 
   def self.slice_free_chain_with_offset(block_size, mem_chain, next_offset)
-    __return_value = LibGLib.slice_free_chain_with_offset(UInt64.cast(block_size), mem_chain, UInt64.cast(next_offset))
+    __return_value = LibGLib.slice_free_chain_with_offset(UInt64.new(block_size), mem_chain, UInt64.new(next_offset))
     __return_value
   end
 
@@ -1373,17 +1373,17 @@ module GLib
   end
 
   def self.slice_get_config_state(ckey, address, n_values)
-    __return_value = LibGLib.slice_get_config_state(ckey, Int64.cast(address), n_values)
+    __return_value = LibGLib.slice_get_config_state(ckey, Int64.new(address), n_values)
     __return_value
   end
 
   def self.slice_set_config(ckey, value)
-    __return_value = LibGLib.slice_set_config(ckey, Int64.cast(value))
+    __return_value = LibGLib.slice_set_config(ckey, Int64.new(value))
     __return_value
   end
 
   def self.source_remove(tag)
-    __return_value = LibGLib.source_remove(UInt32.cast(tag))
+    __return_value = LibGLib.source_remove(UInt32.new(tag))
     __return_value
   end
 
@@ -1398,38 +1398,38 @@ module GLib
   end
 
   def self.source_set_name_by_id(tag, name)
-    __return_value = LibGLib.source_set_name_by_id(UInt32.cast(tag), name)
+    __return_value = LibGLib.source_set_name_by_id(UInt32.new(tag), name)
     __return_value
   end
 
   def self.spaced_primes_closest(num)
-    __return_value = LibGLib.spaced_primes_closest(UInt32.cast(num))
+    __return_value = LibGLib.spaced_primes_closest(UInt32.new(num))
     __return_value
   end
 
   def self.spawn_async(working_directory, argv, envp, flags, child_setup : LibGLib::SpawnChildSetupFunc?, user_data, child_pid)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.spawn_async(working_directory && working_directory, argv, envp && envp, flags, child_setup && child_setup, user_data, Int32.cast(child_pid), pointerof(__error))
+    __return_value = LibGLib.spawn_async(working_directory && working_directory, argv, envp && envp, flags, child_setup && child_setup, user_data, Int32.new(child_pid), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
   def self.spawn_async_with_pipes(working_directory, argv, envp, flags, child_setup : LibGLib::SpawnChildSetupFunc?, user_data, child_pid, standard_input, standard_output, standard_error)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.spawn_async_with_pipes(working_directory && working_directory, argv, envp && envp, flags, child_setup && child_setup, user_data, Int32.cast(child_pid), Int32.cast(standard_input), Int32.cast(standard_output), Int32.cast(standard_error), pointerof(__error))
+    __return_value = LibGLib.spawn_async_with_pipes(working_directory && working_directory, argv, envp && envp, flags, child_setup && child_setup, user_data, Int32.new(child_pid), Int32.new(standard_input), Int32.new(standard_output), Int32.new(standard_error), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
   def self.spawn_check_exit_status(exit_status)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.spawn_check_exit_status(Int32.cast(exit_status), pointerof(__error))
+    __return_value = LibGLib.spawn_check_exit_status(Int32.new(exit_status), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
   def self.spawn_close_pid(pid)
-    __return_value = LibGLib.spawn_close_pid(Int32.cast(pid))
+    __return_value = LibGLib.spawn_close_pid(Int32.new(pid))
     __return_value
   end
 
@@ -1442,7 +1442,7 @@ module GLib
 
   def self.spawn_command_line_sync(command_line, standard_output, standard_error, exit_status)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.spawn_command_line_sync(command_line, standard_output, standard_error, Int32.cast(exit_status), pointerof(__error))
+    __return_value = LibGLib.spawn_command_line_sync(command_line, standard_output, standard_error, Int32.new(exit_status), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -1459,7 +1459,7 @@ module GLib
 
   def self.spawn_sync(working_directory, argv, envp, flags, child_setup : LibGLib::SpawnChildSetupFunc?, user_data, standard_output, standard_error, exit_status)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.spawn_sync(working_directory && working_directory, argv, envp && envp, flags, child_setup && child_setup, user_data, standard_output, standard_error, Int32.cast(exit_status), pointerof(__error))
+    __return_value = LibGLib.spawn_sync(working_directory && working_directory, argv, envp && envp, flags, child_setup && child_setup, user_data, standard_output, standard_error, Int32.new(exit_status), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -1495,7 +1495,7 @@ module GLib
   end
 
   def self.str_match_string(search_term, potential_hit, accept_alternates)
-    __return_value = LibGLib.str_match_string(search_term, potential_hit, Bool.cast(accept_alternates))
+    __return_value = LibGLib.str_match_string(search_term, potential_hit, Bool.new(accept_alternates))
     __return_value
   end
 
@@ -1506,11 +1506,11 @@ module GLib
 
   def self.str_tokenize_and_fold(string, translit_locale, ascii_alternates)
     __return_value = LibGLib.str_tokenize_and_fold(string, translit_locale && translit_locale, ascii_alternates)
-    PointerIterator.new(__return_value) {|__item_44| raise "Expected string but got null" unless __item_44; String.new(__item_44) }
+    PointerIterator.new(__return_value) {|__item_45| raise "Expected string but got null" unless __item_45; String.new(__item_45) }
   end
 
   def self.strcanon(string, valid_chars, substitutor)
-    __return_value = LibGLib.strcanon(string, valid_chars, Int8.cast(substitutor))
+    __return_value = LibGLib.strcanon(string, valid_chars, Int8.new(substitutor))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
@@ -1540,7 +1540,7 @@ module GLib
   end
 
   def self.strdelimit(string, delimiters, new_delimiter)
-    __return_value = LibGLib.strdelimit(string, delimiters && delimiters, Int8.cast(new_delimiter))
+    __return_value = LibGLib.strdelimit(string, delimiters && delimiters, Int8.new(new_delimiter))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
@@ -1555,7 +1555,7 @@ module GLib
   end
 
   def self.strerror(errnum)
-    __return_value = LibGLib.strerror(Int32.cast(errnum))
+    __return_value = LibGLib.strerror(Int32.new(errnum))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
@@ -1575,12 +1575,12 @@ module GLib
   end
 
   def self.string_new_len(init, len)
-    __return_value = LibGLib.string_new_len(init, Int64.cast(len))
+    __return_value = LibGLib.string_new_len(init, Int64.new(len))
     GLib::String.new(__return_value)
   end
 
   def self.string_sized_new(dfl_size)
-    __return_value = LibGLib.string_sized_new(UInt64.cast(dfl_size))
+    __return_value = LibGLib.string_sized_new(UInt64.new(dfl_size))
     GLib::String.new(__return_value)
   end
 
@@ -1595,27 +1595,27 @@ module GLib
   end
 
   def self.strlcat(dest, src, dest_size)
-    __return_value = LibGLib.strlcat(dest, src, UInt64.cast(dest_size))
+    __return_value = LibGLib.strlcat(dest, src, UInt64.new(dest_size))
     __return_value
   end
 
   def self.strlcpy(dest, src, dest_size)
-    __return_value = LibGLib.strlcpy(dest, src, UInt64.cast(dest_size))
+    __return_value = LibGLib.strlcpy(dest, src, UInt64.new(dest_size))
     __return_value
   end
 
   def self.strncasecmp(s1, s2, n)
-    __return_value = LibGLib.strncasecmp(s1, s2, UInt32.cast(n))
+    __return_value = LibGLib.strncasecmp(s1, s2, UInt32.new(n))
     __return_value
   end
 
   def self.strndup(str, n)
-    __return_value = LibGLib.strndup(str, UInt64.cast(n))
+    __return_value = LibGLib.strndup(str, UInt64.new(n))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.strnfill(length, fill_char)
-    __return_value = LibGLib.strnfill(UInt64.cast(length), Int8.cast(fill_char))
+    __return_value = LibGLib.strnfill(UInt64.new(length), Int8.new(fill_char))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
@@ -1630,17 +1630,17 @@ module GLib
   end
 
   def self.strrstr_len(haystack, haystack_len, needle)
-    __return_value = LibGLib.strrstr_len(haystack, Int64.cast(haystack_len), needle)
+    __return_value = LibGLib.strrstr_len(haystack, Int64.new(haystack_len), needle)
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.strsignal(signum)
-    __return_value = LibGLib.strsignal(Int32.cast(signum))
+    __return_value = LibGLib.strsignal(Int32.new(signum))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.strstr_len(haystack, haystack_len, needle)
-    __return_value = LibGLib.strstr_len(haystack, Int64.cast(haystack_len), needle)
+    __return_value = LibGLib.strstr_len(haystack, Int64.new(haystack_len), needle)
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
@@ -1685,7 +1685,7 @@ module GLib
   end
 
   def self.test_assert_expected_messages_internal(domain, file, line, func)
-    __return_value = LibGLib.test_assert_expected_messages_internal(domain, file, Int32.cast(line), func)
+    __return_value = LibGLib.test_assert_expected_messages_internal(domain, file, Int32.new(line), func)
     __return_value
   end
 
@@ -1745,7 +1745,7 @@ module GLib
   end
 
   def self.test_rand_double_range(range_start, range_end)
-    __return_value = LibGLib.test_rand_double_range(Float64.cast(range_start), Float64.cast(range_end))
+    __return_value = LibGLib.test_rand_double_range(Float64.new(range_start), Float64.new(range_end))
     __return_value
   end
 
@@ -1755,7 +1755,7 @@ module GLib
   end
 
   def self.test_rand_int_range(_begin, end)
-    __return_value = LibGLib.test_rand_int_range(Int32.cast(_begin), Int32.cast(end))
+    __return_value = LibGLib.test_rand_int_range(Int32.new(_begin), Int32.new(end))
     __return_value
   end
 
@@ -1800,12 +1800,12 @@ module GLib
   end
 
   def self.test_trap_assertions(domain, file, line, func, assertion_flags, pattern)
-    __return_value = LibGLib.test_trap_assertions(domain, file, Int32.cast(line), func, UInt64.cast(assertion_flags), pattern)
+    __return_value = LibGLib.test_trap_assertions(domain, file, Int32.new(line), func, UInt64.new(assertion_flags), pattern)
     __return_value
   end
 
   def self.test_trap_fork(usec_timeout, test_trap_flags)
-    __return_value = LibGLib.test_trap_fork(UInt64.cast(usec_timeout), test_trap_flags)
+    __return_value = LibGLib.test_trap_fork(UInt64.new(usec_timeout), test_trap_flags)
     __return_value
   end
 
@@ -1820,7 +1820,7 @@ module GLib
   end
 
   def self.test_trap_subprocess(test_path, usec_timeout, test_flags)
-    __return_value = LibGLib.test_trap_subprocess(test_path && test_path, UInt64.cast(usec_timeout), test_flags)
+    __return_value = LibGLib.test_trap_subprocess(test_path && test_path, UInt64.new(usec_timeout), test_flags)
     __return_value
   end
 
@@ -1850,12 +1850,12 @@ module GLib
   end
 
   def self.thread_pool_set_max_idle_time(interval)
-    __return_value = LibGLib.thread_pool_set_max_idle_time(UInt32.cast(interval))
+    __return_value = LibGLib.thread_pool_set_max_idle_time(UInt32.new(interval))
     __return_value
   end
 
   def self.thread_pool_set_max_unused_threads(max_threads)
-    __return_value = LibGLib.thread_pool_set_max_unused_threads(Int32.cast(max_threads))
+    __return_value = LibGLib.thread_pool_set_max_unused_threads(Int32.new(max_threads))
     __return_value
   end
 
@@ -1880,22 +1880,22 @@ module GLib
   end
 
   def self.timeout_add(priority, interval, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
-    __return_value = LibGLib.timeout_add(Int32.cast(priority), UInt32.cast(interval), function, data, notify && notify)
+    __return_value = LibGLib.timeout_add(Int32.new(priority), UInt32.new(interval), function, data, notify && notify)
     __return_value
   end
 
   def self.timeout_add_seconds(priority, interval, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
-    __return_value = LibGLib.timeout_add_seconds(Int32.cast(priority), UInt32.cast(interval), function, data, notify && notify)
+    __return_value = LibGLib.timeout_add_seconds(Int32.new(priority), UInt32.new(interval), function, data, notify && notify)
     __return_value
   end
 
   def self.timeout_source_new(interval)
-    __return_value = LibGLib.timeout_source_new(UInt32.cast(interval))
+    __return_value = LibGLib.timeout_source_new(UInt32.new(interval))
     GLib::Source.new(__return_value)
   end
 
   def self.timeout_source_new_seconds(interval)
-    __return_value = LibGLib.timeout_source_new_seconds(UInt32.cast(interval))
+    __return_value = LibGLib.timeout_source_new_seconds(UInt32.new(interval))
     GLib::Source.new(__return_value)
   end
 
@@ -1911,190 +1911,190 @@ module GLib
 
   def self.ucs4_to_utf16(str, len, items_read, items_written)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.ucs4_to_utf16(str, Int64.cast(len), items_read && items_read, items_written && items_written, pointerof(__error))
+    __return_value = LibGLib.ucs4_to_utf16(str, Int64.new(len), items_read && items_read, items_written && items_written, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
   def self.ucs4_to_utf8(str, len, items_read, items_written)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.ucs4_to_utf8(str, Int64.cast(len), items_read && items_read, items_written && items_written, pointerof(__error))
+    __return_value = LibGLib.ucs4_to_utf8(str, Int64.new(len), items_read && items_read, items_written && items_written, pointerof(__error))
     GLib::Error.assert __error
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.unichar_break_type(c)
-    __return_value = LibGLib.unichar_break_type(UInt8.cast(c))
+    __return_value = LibGLib.unichar_break_type(UInt8.new(c))
     __return_value
   end
 
   def self.unichar_combining_class(uc)
-    __return_value = LibGLib.unichar_combining_class(UInt8.cast(uc))
+    __return_value = LibGLib.unichar_combining_class(UInt8.new(uc))
     __return_value
   end
 
   def self.unichar_compose(a, b, ch)
-    __return_value = LibGLib.unichar_compose(UInt8.cast(a), UInt8.cast(b), ch)
+    __return_value = LibGLib.unichar_compose(UInt8.new(a), UInt8.new(b), ch)
     __return_value
   end
 
   def self.unichar_decompose(ch, a, b)
-    __return_value = LibGLib.unichar_decompose(UInt8.cast(ch), a, b)
+    __return_value = LibGLib.unichar_decompose(UInt8.new(ch), a, b)
     __return_value
   end
 
   def self.unichar_digit_value(c)
-    __return_value = LibGLib.unichar_digit_value(UInt8.cast(c))
+    __return_value = LibGLib.unichar_digit_value(UInt8.new(c))
     __return_value
   end
 
   def self.unichar_fully_decompose(ch, compat, result, result_len)
-    __return_value = LibGLib.unichar_fully_decompose(UInt8.cast(ch), Bool.cast(compat), result && result, UInt64.cast(result_len))
+    __return_value = LibGLib.unichar_fully_decompose(UInt8.new(ch), Bool.new(compat), result && result, UInt64.new(result_len))
     __return_value
   end
 
   def self.unichar_get_mirror_char(ch, mirrored_ch)
-    __return_value = LibGLib.unichar_get_mirror_char(UInt8.cast(ch), mirrored_ch)
+    __return_value = LibGLib.unichar_get_mirror_char(UInt8.new(ch), mirrored_ch)
     __return_value
   end
 
   def self.unichar_get_script(ch)
-    __return_value = LibGLib.unichar_get_script(UInt8.cast(ch))
+    __return_value = LibGLib.unichar_get_script(UInt8.new(ch))
     __return_value
   end
 
   def self.unichar_isalnum(c)
-    __return_value = LibGLib.unichar_isalnum(UInt8.cast(c))
+    __return_value = LibGLib.unichar_isalnum(UInt8.new(c))
     __return_value
   end
 
   def self.unichar_isalpha(c)
-    __return_value = LibGLib.unichar_isalpha(UInt8.cast(c))
+    __return_value = LibGLib.unichar_isalpha(UInt8.new(c))
     __return_value
   end
 
   def self.unichar_iscntrl(c)
-    __return_value = LibGLib.unichar_iscntrl(UInt8.cast(c))
+    __return_value = LibGLib.unichar_iscntrl(UInt8.new(c))
     __return_value
   end
 
   def self.unichar_isdefined(c)
-    __return_value = LibGLib.unichar_isdefined(UInt8.cast(c))
+    __return_value = LibGLib.unichar_isdefined(UInt8.new(c))
     __return_value
   end
 
   def self.unichar_isdigit(c)
-    __return_value = LibGLib.unichar_isdigit(UInt8.cast(c))
+    __return_value = LibGLib.unichar_isdigit(UInt8.new(c))
     __return_value
   end
 
   def self.unichar_isgraph(c)
-    __return_value = LibGLib.unichar_isgraph(UInt8.cast(c))
+    __return_value = LibGLib.unichar_isgraph(UInt8.new(c))
     __return_value
   end
 
   def self.unichar_islower(c)
-    __return_value = LibGLib.unichar_islower(UInt8.cast(c))
+    __return_value = LibGLib.unichar_islower(UInt8.new(c))
     __return_value
   end
 
   def self.unichar_ismark(c)
-    __return_value = LibGLib.unichar_ismark(UInt8.cast(c))
+    __return_value = LibGLib.unichar_ismark(UInt8.new(c))
     __return_value
   end
 
   def self.unichar_isprint(c)
-    __return_value = LibGLib.unichar_isprint(UInt8.cast(c))
+    __return_value = LibGLib.unichar_isprint(UInt8.new(c))
     __return_value
   end
 
   def self.unichar_ispunct(c)
-    __return_value = LibGLib.unichar_ispunct(UInt8.cast(c))
+    __return_value = LibGLib.unichar_ispunct(UInt8.new(c))
     __return_value
   end
 
   def self.unichar_isspace(c)
-    __return_value = LibGLib.unichar_isspace(UInt8.cast(c))
+    __return_value = LibGLib.unichar_isspace(UInt8.new(c))
     __return_value
   end
 
   def self.unichar_istitle(c)
-    __return_value = LibGLib.unichar_istitle(UInt8.cast(c))
+    __return_value = LibGLib.unichar_istitle(UInt8.new(c))
     __return_value
   end
 
   def self.unichar_isupper(c)
-    __return_value = LibGLib.unichar_isupper(UInt8.cast(c))
+    __return_value = LibGLib.unichar_isupper(UInt8.new(c))
     __return_value
   end
 
   def self.unichar_iswide(c)
-    __return_value = LibGLib.unichar_iswide(UInt8.cast(c))
+    __return_value = LibGLib.unichar_iswide(UInt8.new(c))
     __return_value
   end
 
   def self.unichar_iswide_cjk(c)
-    __return_value = LibGLib.unichar_iswide_cjk(UInt8.cast(c))
+    __return_value = LibGLib.unichar_iswide_cjk(UInt8.new(c))
     __return_value
   end
 
   def self.unichar_isxdigit(c)
-    __return_value = LibGLib.unichar_isxdigit(UInt8.cast(c))
+    __return_value = LibGLib.unichar_isxdigit(UInt8.new(c))
     __return_value
   end
 
   def self.unichar_iszerowidth(c)
-    __return_value = LibGLib.unichar_iszerowidth(UInt8.cast(c))
+    __return_value = LibGLib.unichar_iszerowidth(UInt8.new(c))
     __return_value
   end
 
   def self.unichar_to_utf8(c, outbuf)
-    __return_value = LibGLib.unichar_to_utf8(UInt8.cast(c), outbuf)
+    __return_value = LibGLib.unichar_to_utf8(UInt8.new(c), outbuf)
     __return_value
   end
 
   def self.unichar_tolower(c)
-    __return_value = LibGLib.unichar_tolower(UInt8.cast(c))
+    __return_value = LibGLib.unichar_tolower(UInt8.new(c))
     __return_value
   end
 
   def self.unichar_totitle(c)
-    __return_value = LibGLib.unichar_totitle(UInt8.cast(c))
+    __return_value = LibGLib.unichar_totitle(UInt8.new(c))
     __return_value
   end
 
   def self.unichar_toupper(c)
-    __return_value = LibGLib.unichar_toupper(UInt8.cast(c))
+    __return_value = LibGLib.unichar_toupper(UInt8.new(c))
     __return_value
   end
 
   def self.unichar_type(c)
-    __return_value = LibGLib.unichar_type(UInt8.cast(c))
+    __return_value = LibGLib.unichar_type(UInt8.new(c))
     __return_value
   end
 
   def self.unichar_validate(ch)
-    __return_value = LibGLib.unichar_validate(UInt8.cast(ch))
+    __return_value = LibGLib.unichar_validate(UInt8.new(ch))
     __return_value
   end
 
   def self.unichar_xdigit_value(c)
-    __return_value = LibGLib.unichar_xdigit_value(UInt8.cast(c))
+    __return_value = LibGLib.unichar_xdigit_value(UInt8.new(c))
     __return_value
   end
 
   def self.unicode_canonical_decomposition(ch, result_len)
-    __return_value = LibGLib.unicode_canonical_decomposition(UInt8.cast(ch), result_len)
+    __return_value = LibGLib.unicode_canonical_decomposition(UInt8.new(ch), result_len)
     __return_value
   end
 
   def self.unicode_canonical_ordering(string, len)
-    __return_value = LibGLib.unicode_canonical_ordering(string, UInt64.cast(len))
+    __return_value = LibGLib.unicode_canonical_ordering(string, UInt64.new(len))
     __return_value
   end
 
   def self.unicode_script_from_iso15924(iso15924)
-    __return_value = LibGLib.unicode_script_from_iso15924(UInt32.cast(iso15924))
+    __return_value = LibGLib.unicode_script_from_iso15924(UInt32.new(iso15924))
     __return_value
   end
 
@@ -2109,36 +2109,36 @@ module GLib
   end
 
   def self.unix_fd_add_full(priority, fd, condition, function : LibGLib::UnixFDSourceFunc, user_data, notify : LibGLib::DestroyNotify)
-    __return_value = LibGLib.unix_fd_add_full(Int32.cast(priority), Int32.cast(fd), condition, function, user_data, notify)
+    __return_value = LibGLib.unix_fd_add_full(Int32.new(priority), Int32.new(fd), condition, function, user_data, notify)
     __return_value
   end
 
   def self.unix_fd_source_new(fd, condition)
-    __return_value = LibGLib.unix_fd_source_new(Int32.cast(fd), condition)
+    __return_value = LibGLib.unix_fd_source_new(Int32.new(fd), condition)
     GLib::Source.new(__return_value)
   end
 
   def self.unix_open_pipe(fds, flags)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.unix_open_pipe(fds, Int32.cast(flags), pointerof(__error))
+    __return_value = LibGLib.unix_open_pipe(fds, Int32.new(flags), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
   def self.unix_set_fd_nonblocking(fd, nonblock)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.unix_set_fd_nonblocking(Int32.cast(fd), Bool.cast(nonblock), pointerof(__error))
+    __return_value = LibGLib.unix_set_fd_nonblocking(Int32.new(fd), Bool.new(nonblock), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
   def self.unix_signal_add(priority, signum, handler : LibGLib::SourceFunc, user_data, notify : LibGLib::DestroyNotify)
-    __return_value = LibGLib.unix_signal_add(Int32.cast(priority), Int32.cast(signum), handler, user_data, notify)
+    __return_value = LibGLib.unix_signal_add(Int32.new(priority), Int32.new(signum), handler, user_data, notify)
     __return_value
   end
 
   def self.unix_signal_source_new(signum)
-    __return_value = LibGLib.unix_signal_source_new(Int32.cast(signum))
+    __return_value = LibGLib.unix_signal_source_new(Int32.new(signum))
     GLib::Source.new(__return_value)
   end
 
@@ -2153,13 +2153,13 @@ module GLib
   end
 
   def self.uri_escape_string(unescaped, reserved_chars_allowed, allow_utf8)
-    __return_value = LibGLib.uri_escape_string(unescaped, reserved_chars_allowed && reserved_chars_allowed, Bool.cast(allow_utf8))
+    __return_value = LibGLib.uri_escape_string(unescaped, reserved_chars_allowed && reserved_chars_allowed, Bool.new(allow_utf8))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.uri_list_extract_uris(uri_list)
     __return_value = LibGLib.uri_list_extract_uris(uri_list)
-    PointerIterator.new(__return_value) {|__item_72| raise "Expected string but got null" unless __item_72; String.new(__item_72) }
+    PointerIterator.new(__return_value) {|__item_68| raise "Expected string but got null" unless __item_68; String.new(__item_68) }
   end
 
   def self.uri_parse_scheme(uri)
@@ -2178,26 +2178,26 @@ module GLib
   end
 
   def self.usleep(microseconds)
-    __return_value = LibGLib.usleep(UInt64.cast(microseconds))
+    __return_value = LibGLib.usleep(UInt64.new(microseconds))
     __return_value
   end
 
   def self.utf16_to_ucs4(str, len, items_read, items_written)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.utf16_to_ucs4(str, Int64.cast(len), items_read && items_read, items_written && items_written, pointerof(__error))
+    __return_value = LibGLib.utf16_to_ucs4(str, Int64.new(len), items_read && items_read, items_written && items_written, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
   def self.utf16_to_utf8(str, len, items_read, items_written)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.utf16_to_utf8(str, Int64.cast(len), items_read && items_read, items_written && items_written, pointerof(__error))
+    __return_value = LibGLib.utf16_to_utf8(str, Int64.new(len), items_read && items_read, items_written && items_written, pointerof(__error))
     GLib::Error.assert __error
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.utf8_casefold(str, len)
-    __return_value = LibGLib.utf8_casefold(str, Int64.cast(len))
+    __return_value = LibGLib.utf8_casefold(str, Int64.new(len))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
@@ -2207,12 +2207,12 @@ module GLib
   end
 
   def self.utf8_collate_key(str, len)
-    __return_value = LibGLib.utf8_collate_key(str, Int64.cast(len))
+    __return_value = LibGLib.utf8_collate_key(str, Int64.new(len))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.utf8_collate_key_for_filename(str, len)
-    __return_value = LibGLib.utf8_collate_key_for_filename(str, Int64.cast(len))
+    __return_value = LibGLib.utf8_collate_key_for_filename(str, Int64.new(len))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
@@ -2232,17 +2232,17 @@ module GLib
   end
 
   def self.utf8_get_char_validated(p, max_len)
-    __return_value = LibGLib.utf8_get_char_validated(p, Int64.cast(max_len))
+    __return_value = LibGLib.utf8_get_char_validated(p, Int64.new(max_len))
     __return_value
   end
 
   def self.utf8_normalize(str, len, mode)
-    __return_value = LibGLib.utf8_normalize(str, Int64.cast(len), mode)
+    __return_value = LibGLib.utf8_normalize(str, Int64.new(len), mode)
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.utf8_offset_to_pointer(str, offset)
-    __return_value = LibGLib.utf8_offset_to_pointer(str, Int64.cast(offset))
+    __return_value = LibGLib.utf8_offset_to_pointer(str, Int64.new(offset))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
@@ -2257,66 +2257,66 @@ module GLib
   end
 
   def self.utf8_strchr(p, len, c)
-    __return_value = LibGLib.utf8_strchr(p, Int64.cast(len), UInt8.cast(c))
+    __return_value = LibGLib.utf8_strchr(p, Int64.new(len), UInt8.new(c))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.utf8_strdown(str, len)
-    __return_value = LibGLib.utf8_strdown(str, Int64.cast(len))
+    __return_value = LibGLib.utf8_strdown(str, Int64.new(len))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.utf8_strlen(p, max)
-    __return_value = LibGLib.utf8_strlen(p, Int64.cast(max))
+    __return_value = LibGLib.utf8_strlen(p, Int64.new(max))
     __return_value
   end
 
   def self.utf8_strncpy(dest, src, n)
-    __return_value = LibGLib.utf8_strncpy(dest, src, UInt64.cast(n))
+    __return_value = LibGLib.utf8_strncpy(dest, src, UInt64.new(n))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.utf8_strrchr(p, len, c)
-    __return_value = LibGLib.utf8_strrchr(p, Int64.cast(len), UInt8.cast(c))
+    __return_value = LibGLib.utf8_strrchr(p, Int64.new(len), UInt8.new(c))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.utf8_strreverse(str, len)
-    __return_value = LibGLib.utf8_strreverse(str, Int64.cast(len))
+    __return_value = LibGLib.utf8_strreverse(str, Int64.new(len))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.utf8_strup(str, len)
-    __return_value = LibGLib.utf8_strup(str, Int64.cast(len))
+    __return_value = LibGLib.utf8_strup(str, Int64.new(len))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.utf8_substring(str, start_pos, end_pos)
-    __return_value = LibGLib.utf8_substring(str, Int64.cast(start_pos), Int64.cast(end_pos))
+    __return_value = LibGLib.utf8_substring(str, Int64.new(start_pos), Int64.new(end_pos))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.utf8_to_ucs4(str, len, items_read, items_written)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.utf8_to_ucs4(str, Int64.cast(len), items_read && items_read, items_written && items_written, pointerof(__error))
+    __return_value = LibGLib.utf8_to_ucs4(str, Int64.new(len), items_read && items_read, items_written && items_written, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
   def self.utf8_to_ucs4_fast(str, len, items_written)
-    __return_value = LibGLib.utf8_to_ucs4_fast(str, Int64.cast(len), items_written && items_written)
+    __return_value = LibGLib.utf8_to_ucs4_fast(str, Int64.new(len), items_written && items_written)
     __return_value
   end
 
   def self.utf8_to_utf16(str, len, items_read, items_written)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.utf8_to_utf16(str, Int64.cast(len), items_read && items_read, items_written && items_written, pointerof(__error))
+    __return_value = LibGLib.utf8_to_utf16(str, Int64.new(len), items_read && items_read, items_written && items_written, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
   def self.utf8_validate(str, max_len, end)
-    __return_value = LibGLib.utf8_validate(str, Int64.cast(max_len), end)
+    __return_value = LibGLib.utf8_validate(str, Int64.new(max_len), end)
     __return_value
   end
 
@@ -2373,7 +2373,7 @@ module GLib
   end
 
   def self.warn_message(domain, file, line, func, warnexpr)
-    __return_value = LibGLib.warn_message(domain, file, Int32.cast(line), func, warnexpr)
+    __return_value = LibGLib.warn_message(domain, file, Int32.new(line), func, warnexpr)
     __return_value
   end
 end

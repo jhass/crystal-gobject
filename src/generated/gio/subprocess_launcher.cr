@@ -54,7 +54,7 @@ module Gio
     end
 
     def setenv(variable, value, overwrite)
-      __return_value = LibGio.subprocess_launcher_setenv((to_unsafe as LibGio::SubprocessLauncher*), variable, value, Bool.cast(overwrite))
+      __return_value = LibGio.subprocess_launcher_setenv((to_unsafe as LibGio::SubprocessLauncher*), variable, value, Bool.new(overwrite))
       __return_value
     end
 
@@ -66,22 +66,22 @@ module Gio
     end
 
     def take_fd(source_fd, target_fd)
-      __return_value = LibGio.subprocess_launcher_take_fd((to_unsafe as LibGio::SubprocessLauncher*), Int32.cast(source_fd), Int32.cast(target_fd))
+      __return_value = LibGio.subprocess_launcher_take_fd((to_unsafe as LibGio::SubprocessLauncher*), Int32.new(source_fd), Int32.new(target_fd))
       __return_value
     end
 
     def take_stderr_fd(fd)
-      __return_value = LibGio.subprocess_launcher_take_stderr_fd((to_unsafe as LibGio::SubprocessLauncher*), Int32.cast(fd))
+      __return_value = LibGio.subprocess_launcher_take_stderr_fd((to_unsafe as LibGio::SubprocessLauncher*), Int32.new(fd))
       __return_value
     end
 
     def take_stdin_fd(fd)
-      __return_value = LibGio.subprocess_launcher_take_stdin_fd((to_unsafe as LibGio::SubprocessLauncher*), Int32.cast(fd))
+      __return_value = LibGio.subprocess_launcher_take_stdin_fd((to_unsafe as LibGio::SubprocessLauncher*), Int32.new(fd))
       __return_value
     end
 
     def take_stdout_fd(fd)
-      __return_value = LibGio.subprocess_launcher_take_stdout_fd((to_unsafe as LibGio::SubprocessLauncher*), Int32.cast(fd))
+      __return_value = LibGio.subprocess_launcher_take_stdout_fd((to_unsafe as LibGio::SubprocessLauncher*), Int32.new(fd))
       __return_value
     end
 

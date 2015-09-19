@@ -35,17 +35,17 @@ module Gtk
     end
 
     def activatable=(setting)
-      __return_value = LibGtk.cell_renderer_toggle_set_activatable((to_unsafe as LibGtk::CellRendererToggle*), Bool.cast(setting))
+      __return_value = LibGtk.cell_renderer_toggle_set_activatable((to_unsafe as LibGtk::CellRendererToggle*), Bool.new(setting))
       __return_value
     end
 
     def active=(setting)
-      __return_value = LibGtk.cell_renderer_toggle_set_active((to_unsafe as LibGtk::CellRendererToggle*), Bool.cast(setting))
+      __return_value = LibGtk.cell_renderer_toggle_set_active((to_unsafe as LibGtk::CellRendererToggle*), Bool.new(setting))
       __return_value
     end
 
     def radio=(radio)
-      __return_value = LibGtk.cell_renderer_toggle_set_radio((to_unsafe as LibGtk::CellRendererToggle*), Bool.cast(radio))
+      __return_value = LibGtk.cell_renderer_toggle_set_radio((to_unsafe as LibGtk::CellRendererToggle*), Bool.new(radio))
       __return_value
     end
 

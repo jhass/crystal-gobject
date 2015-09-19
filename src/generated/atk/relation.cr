@@ -10,7 +10,7 @@ module Atk
 
 
     def self.new_internal(targets, n_targets, relationship)
-      __return_value = LibAtk.relation_new(targets, Int32.cast(n_targets), relationship)
+      __return_value = LibAtk.relation_new(targets, Int32.new(n_targets), relationship)
       Atk::Relation.new(__return_value)
     end
 

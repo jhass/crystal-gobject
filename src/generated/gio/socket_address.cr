@@ -10,7 +10,7 @@ module Gio
     # Implements SocketConnectable
 
     def self.new_from_native(native, len)
-      __return_value = LibGio.socket_address_new_from_native(native, UInt64.cast(len))
+      __return_value = LibGio.socket_address_new_from_native(native, UInt64.new(len))
       Gio::SocketAddress.new(__return_value)
     end
 
@@ -26,7 +26,7 @@ module Gio
 
     def to_native(dest, destlen)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.socket_address_to_native((to_unsafe as LibGio::SocketAddress*), dest, UInt64.cast(destlen), pointerof(__error))
+      __return_value = LibGio.socket_address_to_native((to_unsafe as LibGio::SocketAddress*), dest, UInt64.new(destlen), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

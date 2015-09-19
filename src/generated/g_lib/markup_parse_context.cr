@@ -38,7 +38,7 @@ module GLib
 
     def parse(text, text_len)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.markup_parse_context_parse((to_unsafe as LibGLib::MarkupParseContext*), text, Int64.cast(text_len), pointerof(__error))
+      __return_value = LibGLib.markup_parse_context_parse((to_unsafe as LibGLib::MarkupParseContext*), text, Int64.new(text_len), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

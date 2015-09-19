@@ -5,7 +5,7 @@ module Gdk
   end
 
   def self.atom_intern(atom_name, only_if_exists)
-    __return_value = LibGdk.atom_intern(atom_name, Bool.cast(only_if_exists))
+    __return_value = LibGdk.atom_intern(atom_name, Bool.new(only_if_exists))
     Gdk::Atom.new(__return_value)
   end
 
@@ -25,7 +25,7 @@ module Gdk
   end
 
   def self.cairo_draw_from_gl(cr, window, source, source_type, buffer_scale, x, y, width, height)
-    __return_value = LibGdk.cairo_draw_from_gl((cr.to_unsafe as LibCairo::Context*), (window.to_unsafe as LibGdk::Window*), Int32.cast(source), Int32.cast(source_type), Int32.cast(buffer_scale), Int32.cast(x), Int32.cast(y), Int32.cast(width), Int32.cast(height))
+    __return_value = LibGdk.cairo_draw_from_gl((cr.to_unsafe as LibCairo::Context*), (window.to_unsafe as LibGdk::Window*), Int32.new(source), Int32.new(source_type), Int32.new(buffer_scale), Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
     __return_value
   end
 
@@ -55,7 +55,7 @@ module Gdk
   end
 
   def self.cairo_set_source_pixbuf(cr, pixbuf, pixbuf_x, pixbuf_y)
-    __return_value = LibGdk.cairo_set_source_pixbuf((cr.to_unsafe as LibCairo::Context*), (pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*), Float64.cast(pixbuf_x), Float64.cast(pixbuf_y))
+    __return_value = LibGdk.cairo_set_source_pixbuf((cr.to_unsafe as LibCairo::Context*), (pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*), Float64.new(pixbuf_x), Float64.new(pixbuf_y))
     __return_value
   end
 
@@ -65,12 +65,12 @@ module Gdk
   end
 
   def self.cairo_set_source_window(cr, window, x, y)
-    __return_value = LibGdk.cairo_set_source_window((cr.to_unsafe as LibCairo::Context*), (window.to_unsafe as LibGdk::Window*), Float64.cast(x), Float64.cast(y))
+    __return_value = LibGdk.cairo_set_source_window((cr.to_unsafe as LibCairo::Context*), (window.to_unsafe as LibGdk::Window*), Float64.new(x), Float64.new(y))
     __return_value
   end
 
   def self.cairo_surface_create_from_pixbuf(pixbuf, scale, for_window)
-    __return_value = LibGdk.cairo_surface_create_from_pixbuf((pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*), Int32.cast(scale), for_window && (for_window.to_unsafe as LibGdk::Window*))
+    __return_value = LibGdk.cairo_surface_create_from_pixbuf((pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*), Int32.new(scale), for_window && (for_window.to_unsafe as LibGdk::Window*))
     Cairo::Surface.new(__return_value)
   end
 
@@ -85,7 +85,7 @@ module Gdk
   end
 
   def self.drag_abort(context, time)
-    __return_value = LibGdk.drag_abort((context.to_unsafe as LibGdk::DragContext*), UInt32.cast(time))
+    __return_value = LibGdk.drag_abort((context.to_unsafe as LibGdk::DragContext*), UInt32.new(time))
     __return_value
   end
 
@@ -100,7 +100,7 @@ module Gdk
   end
 
   def self.drag_drop(context, time)
-    __return_value = LibGdk.drag_drop((context.to_unsafe as LibGdk::DragContext*), UInt32.cast(time))
+    __return_value = LibGdk.drag_drop((context.to_unsafe as LibGdk::DragContext*), UInt32.new(time))
     __return_value
   end
 
@@ -110,7 +110,7 @@ module Gdk
   end
 
   def self.drag_find_window_for_screen(context, drag_window, screen, x_root, y_root, dest_window, protocol)
-    __return_value = LibGdk.drag_find_window_for_screen((context.to_unsafe as LibGdk::DragContext*), (drag_window.to_unsafe as LibGdk::Window*), (screen.to_unsafe as LibGdk::Screen*), Int32.cast(x_root), Int32.cast(y_root), (dest_window.to_unsafe as LibGdk::Window*), protocol)
+    __return_value = LibGdk.drag_find_window_for_screen((context.to_unsafe as LibGdk::DragContext*), (drag_window.to_unsafe as LibGdk::Window*), (screen.to_unsafe as LibGdk::Screen*), Int32.new(x_root), Int32.new(y_root), (dest_window.to_unsafe as LibGdk::Window*), protocol)
     __return_value
   end
 
@@ -120,22 +120,22 @@ module Gdk
   end
 
   def self.drag_motion(context, dest_window, protocol, x_root, y_root, suggested_action, possible_actions, time)
-    __return_value = LibGdk.drag_motion((context.to_unsafe as LibGdk::DragContext*), (dest_window.to_unsafe as LibGdk::Window*), protocol, Int32.cast(x_root), Int32.cast(y_root), suggested_action, possible_actions, UInt32.cast(time))
+    __return_value = LibGdk.drag_motion((context.to_unsafe as LibGdk::DragContext*), (dest_window.to_unsafe as LibGdk::Window*), protocol, Int32.new(x_root), Int32.new(y_root), suggested_action, possible_actions, UInt32.new(time))
     __return_value
   end
 
   def self.drag_status(context, action, time)
-    __return_value = LibGdk.drag_status((context.to_unsafe as LibGdk::DragContext*), action, UInt32.cast(time))
+    __return_value = LibGdk.drag_status((context.to_unsafe as LibGdk::DragContext*), action, UInt32.new(time))
     __return_value
   end
 
   def self.drop_finish(context, success, time)
-    __return_value = LibGdk.drop_finish((context.to_unsafe as LibGdk::DragContext*), Bool.cast(success), UInt32.cast(time))
+    __return_value = LibGdk.drop_finish((context.to_unsafe as LibGdk::DragContext*), Bool.new(success), UInt32.new(time))
     __return_value
   end
 
   def self.drop_reply(context, accepted, time)
-    __return_value = LibGdk.drop_reply((context.to_unsafe as LibGdk::DragContext*), Bool.cast(accepted), UInt32.cast(time))
+    __return_value = LibGdk.drop_reply((context.to_unsafe as LibGdk::DragContext*), Bool.new(accepted), UInt32.new(time))
     __return_value
   end
 
@@ -175,17 +175,17 @@ module Gdk
   end
 
   def self.events_get_angle(event1, event2, angle)
-    __return_value = LibGdk.events_get_angle((event1.to_unsafe as LibGdk::Event*), (event2.to_unsafe as LibGdk::Event*), Float64.cast(angle))
+    __return_value = LibGdk.events_get_angle((event1.to_unsafe as LibGdk::Event*), (event2.to_unsafe as LibGdk::Event*), Float64.new(angle))
     __return_value
   end
 
   def self.events_get_center(event1, event2, x, y)
-    __return_value = LibGdk.events_get_center((event1.to_unsafe as LibGdk::Event*), (event2.to_unsafe as LibGdk::Event*), Float64.cast(x), Float64.cast(y))
+    __return_value = LibGdk.events_get_center((event1.to_unsafe as LibGdk::Event*), (event2.to_unsafe as LibGdk::Event*), Float64.new(x), Float64.new(y))
     __return_value
   end
 
   def self.events_get_distance(event1, event2, distance)
-    __return_value = LibGdk.events_get_distance((event1.to_unsafe as LibGdk::Event*), (event2.to_unsafe as LibGdk::Event*), Float64.cast(distance))
+    __return_value = LibGdk.events_get_distance((event1.to_unsafe as LibGdk::Event*), (event2.to_unsafe as LibGdk::Event*), Float64.new(distance))
     __return_value
   end
 
@@ -230,27 +230,27 @@ module Gdk
   end
 
   def self.init(argc, argv)
-    __return_value = LibGdk.init(Int32.cast(argc), argv)
+    __return_value = LibGdk.init(Int32.new(argc), argv)
     __return_value
   end
 
   def self.init_check(argc, argv)
-    __return_value = LibGdk.init_check(Int32.cast(argc), argv)
+    __return_value = LibGdk.init_check(Int32.new(argc), argv)
     __return_value
   end
 
   def self.keyboard_grab(window, owner_events, time)
-    __return_value = LibGdk.keyboard_grab((window.to_unsafe as LibGdk::Window*), Bool.cast(owner_events), UInt32.cast(time))
+    __return_value = LibGdk.keyboard_grab((window.to_unsafe as LibGdk::Window*), Bool.new(owner_events), UInt32.new(time))
     __return_value
   end
 
   def self.keyboard_ungrab(time)
-    __return_value = LibGdk.keyboard_ungrab(UInt32.cast(time))
+    __return_value = LibGdk.keyboard_ungrab(UInt32.new(time))
     __return_value
   end
 
   def self.keyval_convert_case(symbol, lower, upper)
-    __return_value = LibGdk.keyval_convert_case(UInt32.cast(symbol), UInt32.cast(lower), UInt32.cast(upper))
+    __return_value = LibGdk.keyval_convert_case(UInt32.new(symbol), UInt32.new(lower), UInt32.new(upper))
     __return_value
   end
 
@@ -260,32 +260,32 @@ module Gdk
   end
 
   def self.keyval_is_lower(keyval)
-    __return_value = LibGdk.keyval_is_lower(UInt32.cast(keyval))
+    __return_value = LibGdk.keyval_is_lower(UInt32.new(keyval))
     __return_value
   end
 
   def self.keyval_is_upper(keyval)
-    __return_value = LibGdk.keyval_is_upper(UInt32.cast(keyval))
+    __return_value = LibGdk.keyval_is_upper(UInt32.new(keyval))
     __return_value
   end
 
   def self.keyval_name(keyval)
-    __return_value = LibGdk.keyval_name(UInt32.cast(keyval))
+    __return_value = LibGdk.keyval_name(UInt32.new(keyval))
     raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
   end
 
   def self.keyval_to_lower(keyval)
-    __return_value = LibGdk.keyval_to_lower(UInt32.cast(keyval))
+    __return_value = LibGdk.keyval_to_lower(UInt32.new(keyval))
     __return_value
   end
 
   def self.keyval_to_unicode(keyval)
-    __return_value = LibGdk.keyval_to_unicode(UInt32.cast(keyval))
+    __return_value = LibGdk.keyval_to_unicode(UInt32.new(keyval))
     __return_value
   end
 
   def self.keyval_to_upper(keyval)
-    __return_value = LibGdk.keyval_to_upper(UInt32.cast(keyval))
+    __return_value = LibGdk.keyval_to_upper(UInt32.new(keyval))
     __return_value
   end
 
@@ -330,22 +330,22 @@ module Gdk
   end
 
   def self.parse_args(argc, argv)
-    __return_value = LibGdk.parse_args(Int32.cast(argc), argv)
+    __return_value = LibGdk.parse_args(Int32.new(argc), argv)
     __return_value
   end
 
   def self.pixbuf_get_from_surface(surface, src_x, src_y, width, height)
-    __return_value = LibGdk.pixbuf_get_from_surface((surface.to_unsafe as LibCairo::Surface*), Int32.cast(src_x), Int32.cast(src_y), Int32.cast(width), Int32.cast(height))
+    __return_value = LibGdk.pixbuf_get_from_surface((surface.to_unsafe as LibCairo::Surface*), Int32.new(src_x), Int32.new(src_y), Int32.new(width), Int32.new(height))
     GdkPixbuf::Pixbuf.new(__return_value) if __return_value
   end
 
   def self.pixbuf_get_from_window(window, src_x, src_y, width, height)
-    __return_value = LibGdk.pixbuf_get_from_window((window.to_unsafe as LibGdk::Window*), Int32.cast(src_x), Int32.cast(src_y), Int32.cast(width), Int32.cast(height))
+    __return_value = LibGdk.pixbuf_get_from_window((window.to_unsafe as LibGdk::Window*), Int32.new(src_x), Int32.new(src_y), Int32.new(width), Int32.new(height))
     GdkPixbuf::Pixbuf.new(__return_value) if __return_value
   end
 
   def self.pointer_grab(window, owner_events, event_mask, confine_to, cursor, time)
-    __return_value = LibGdk.pointer_grab((window.to_unsafe as LibGdk::Window*), Bool.cast(owner_events), event_mask, confine_to && (confine_to.to_unsafe as LibGdk::Window*), cursor && (cursor.to_unsafe as LibGdk::Cursor*), UInt32.cast(time))
+    __return_value = LibGdk.pointer_grab((window.to_unsafe as LibGdk::Window*), Bool.new(owner_events), event_mask, confine_to && (confine_to.to_unsafe as LibGdk::Window*), cursor && (cursor.to_unsafe as LibGdk::Cursor*), UInt32.new(time))
     __return_value
   end
 
@@ -355,7 +355,7 @@ module Gdk
   end
 
   def self.pointer_ungrab(time)
-    __return_value = LibGdk.pointer_ungrab(UInt32.cast(time))
+    __return_value = LibGdk.pointer_ungrab(UInt32.new(time))
     __return_value
   end
 
@@ -370,17 +370,17 @@ module Gdk
   end
 
   def self.property_get(window, property, type, offset, length, pdelete, actual_property_type, actual_format, actual_length, data)
-    __return_value = LibGdk.property_get((window.to_unsafe as LibGdk::Window*), (property.to_unsafe as LibGdk::Atom*), (type.to_unsafe as LibGdk::Atom*), UInt64.cast(offset), UInt64.cast(length), Int32.cast(pdelete), (actual_property_type.to_unsafe as LibGdk::Atom*), Int32.cast(actual_format), Int32.cast(actual_length), data)
+    __return_value = LibGdk.property_get((window.to_unsafe as LibGdk::Window*), (property.to_unsafe as LibGdk::Atom*), (type.to_unsafe as LibGdk::Atom*), UInt64.new(offset), UInt64.new(length), Int32.new(pdelete), (actual_property_type.to_unsafe as LibGdk::Atom*), Int32.new(actual_format), Int32.new(actual_length), data)
     __return_value
   end
 
   def self.query_depths(depths, count)
-    __return_value = LibGdk.query_depths(depths, Int32.cast(count))
+    __return_value = LibGdk.query_depths(depths, Int32.new(count))
     __return_value
   end
 
   def self.query_visual_types(visual_types, count)
-    __return_value = LibGdk.query_visual_types(visual_types, Int32.cast(count))
+    __return_value = LibGdk.query_visual_types(visual_types, Int32.new(count))
     __return_value
   end
 
@@ -400,7 +400,7 @@ module Gdk
   end
 
   def self.selection_convert(requestor, selection, target, time)
-    __return_value = LibGdk.selection_convert((requestor.to_unsafe as LibGdk::Window*), (selection.to_unsafe as LibGdk::Atom*), (target.to_unsafe as LibGdk::Atom*), UInt32.cast(time))
+    __return_value = LibGdk.selection_convert((requestor.to_unsafe as LibGdk::Window*), (selection.to_unsafe as LibGdk::Atom*), (target.to_unsafe as LibGdk::Atom*), UInt32.new(time))
     __return_value
   end
 
@@ -415,22 +415,22 @@ module Gdk
   end
 
   def self.selection_owner_set(owner, selection, time, send_event)
-    __return_value = LibGdk.selection_owner_set(owner && (owner.to_unsafe as LibGdk::Window*), (selection.to_unsafe as LibGdk::Atom*), UInt32.cast(time), Bool.cast(send_event))
+    __return_value = LibGdk.selection_owner_set(owner && (owner.to_unsafe as LibGdk::Window*), (selection.to_unsafe as LibGdk::Atom*), UInt32.new(time), Bool.new(send_event))
     __return_value
   end
 
   def self.selection_owner_set_for_display(display, owner, selection, time, send_event)
-    __return_value = LibGdk.selection_owner_set_for_display((display.to_unsafe as LibGdk::Display*), owner && (owner.to_unsafe as LibGdk::Window*), (selection.to_unsafe as LibGdk::Atom*), UInt32.cast(time), Bool.cast(send_event))
+    __return_value = LibGdk.selection_owner_set_for_display((display.to_unsafe as LibGdk::Display*), owner && (owner.to_unsafe as LibGdk::Window*), (selection.to_unsafe as LibGdk::Atom*), UInt32.new(time), Bool.new(send_event))
     __return_value
   end
 
   def self.selection_send_notify(requestor, selection, target, property, time)
-    __return_value = LibGdk.selection_send_notify((requestor.to_unsafe as LibGdk::Window*), (selection.to_unsafe as LibGdk::Atom*), (target.to_unsafe as LibGdk::Atom*), (property.to_unsafe as LibGdk::Atom*), UInt32.cast(time))
+    __return_value = LibGdk.selection_send_notify((requestor.to_unsafe as LibGdk::Window*), (selection.to_unsafe as LibGdk::Atom*), (target.to_unsafe as LibGdk::Atom*), (property.to_unsafe as LibGdk::Atom*), UInt32.new(time))
     __return_value
   end
 
   def self.selection_send_notify_for_display(display, requestor, selection, target, property, time)
-    __return_value = LibGdk.selection_send_notify_for_display((display.to_unsafe as LibGdk::Display*), (requestor.to_unsafe as LibGdk::Window*), (selection.to_unsafe as LibGdk::Atom*), (target.to_unsafe as LibGdk::Atom*), (property.to_unsafe as LibGdk::Atom*), UInt32.cast(time))
+    __return_value = LibGdk.selection_send_notify_for_display((display.to_unsafe as LibGdk::Display*), (requestor.to_unsafe as LibGdk::Window*), (selection.to_unsafe as LibGdk::Atom*), (target.to_unsafe as LibGdk::Atom*), (property.to_unsafe as LibGdk::Atom*), UInt32.new(time))
     __return_value
   end
 
@@ -440,7 +440,7 @@ module Gdk
   end
 
   def self.set_double_click_time(msec)
-    __return_value = LibGdk.set_double_click_time(UInt32.cast(msec))
+    __return_value = LibGdk.set_double_click_time(UInt32.new(msec))
     __return_value
   end
 
@@ -450,7 +450,7 @@ module Gdk
   end
 
   def self.set_show_events(show_events)
-    __return_value = LibGdk.set_show_events(Bool.cast(show_events))
+    __return_value = LibGdk.set_show_events(Bool.new(show_events))
     __return_value
   end
 
@@ -470,32 +470,32 @@ module Gdk
   end
 
   def self.test_simulate_button(window, x, y, button, modifiers, button_pressrelease)
-    __return_value = LibGdk.test_simulate_button((window.to_unsafe as LibGdk::Window*), Int32.cast(x), Int32.cast(y), UInt32.cast(button), modifiers, button_pressrelease)
+    __return_value = LibGdk.test_simulate_button((window.to_unsafe as LibGdk::Window*), Int32.new(x), Int32.new(y), UInt32.new(button), modifiers, button_pressrelease)
     __return_value
   end
 
   def self.test_simulate_key(window, x, y, keyval, modifiers, key_pressrelease)
-    __return_value = LibGdk.test_simulate_key((window.to_unsafe as LibGdk::Window*), Int32.cast(x), Int32.cast(y), UInt32.cast(keyval), modifiers, key_pressrelease)
+    __return_value = LibGdk.test_simulate_key((window.to_unsafe as LibGdk::Window*), Int32.new(x), Int32.new(y), UInt32.new(keyval), modifiers, key_pressrelease)
     __return_value
   end
 
   def self.text_property_to_utf8_list_for_display(display, encoding, format, text, length, list)
-    __return_value = LibGdk.text_property_to_utf8_list_for_display((display.to_unsafe as LibGdk::Display*), (encoding.to_unsafe as LibGdk::Atom*), Int32.cast(format), text, Int32.cast(length), list)
+    __return_value = LibGdk.text_property_to_utf8_list_for_display((display.to_unsafe as LibGdk::Display*), (encoding.to_unsafe as LibGdk::Atom*), Int32.new(format), text, Int32.new(length), list)
     __return_value
   end
 
   def self.threads_add_idle(priority, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
-    __return_value = LibGdk.threads_add_idle(Int32.cast(priority), function, data, notify && notify)
+    __return_value = LibGdk.threads_add_idle(Int32.new(priority), function, data, notify && notify)
     __return_value
   end
 
   def self.threads_add_timeout(priority, interval, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
-    __return_value = LibGdk.threads_add_timeout(Int32.cast(priority), UInt32.cast(interval), function, data, notify && notify)
+    __return_value = LibGdk.threads_add_timeout(Int32.new(priority), UInt32.new(interval), function, data, notify && notify)
     __return_value
   end
 
   def self.threads_add_timeout_seconds(priority, interval, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
-    __return_value = LibGdk.threads_add_timeout_seconds(Int32.cast(priority), UInt32.cast(interval), function, data, notify && notify)
+    __return_value = LibGdk.threads_add_timeout_seconds(Int32.new(priority), UInt32.new(interval), function, data, notify && notify)
     __return_value
   end
 
@@ -515,7 +515,7 @@ module Gdk
   end
 
   def self.unicode_to_keyval(wc)
-    __return_value = LibGdk.unicode_to_keyval(UInt32.cast(wc))
+    __return_value = LibGdk.unicode_to_keyval(UInt32.new(wc))
     __return_value
   end
 

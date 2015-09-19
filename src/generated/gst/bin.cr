@@ -28,7 +28,7 @@ module Gst
     end
 
     def by_interface(iface)
-      __return_value = LibGst.bin_get_by_interface((to_unsafe as LibGst::Bin*), UInt64.cast(iface))
+      __return_value = LibGst.bin_get_by_interface((to_unsafe as LibGst::Bin*), UInt64.new(iface))
       Gst::Element.new(__return_value)
     end
 
@@ -43,7 +43,7 @@ module Gst
     end
 
     def iterate_all_by_interface(iface)
-      __return_value = LibGst.bin_iterate_all_by_interface((to_unsafe as LibGst::Bin*), UInt64.cast(iface))
+      __return_value = LibGst.bin_iterate_all_by_interface((to_unsafe as LibGst::Bin*), UInt64.new(iface))
       Gst::Iterator.new(__return_value) if __return_value
     end
 

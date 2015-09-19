@@ -64,22 +64,22 @@ module Gtk
     end
 
     def fraction=(fraction)
-      __return_value = LibGtk.progress_bar_set_fraction((to_unsafe as LibGtk::ProgressBar*), Float64.cast(fraction))
+      __return_value = LibGtk.progress_bar_set_fraction((to_unsafe as LibGtk::ProgressBar*), Float64.new(fraction))
       __return_value
     end
 
     def inverted=(inverted)
-      __return_value = LibGtk.progress_bar_set_inverted((to_unsafe as LibGtk::ProgressBar*), Bool.cast(inverted))
+      __return_value = LibGtk.progress_bar_set_inverted((to_unsafe as LibGtk::ProgressBar*), Bool.new(inverted))
       __return_value
     end
 
     def pulse_step=(fraction)
-      __return_value = LibGtk.progress_bar_set_pulse_step((to_unsafe as LibGtk::ProgressBar*), Float64.cast(fraction))
+      __return_value = LibGtk.progress_bar_set_pulse_step((to_unsafe as LibGtk::ProgressBar*), Float64.new(fraction))
       __return_value
     end
 
     def show_text=(show_text)
-      __return_value = LibGtk.progress_bar_set_show_text((to_unsafe as LibGtk::ProgressBar*), Bool.cast(show_text))
+      __return_value = LibGtk.progress_bar_set_show_text((to_unsafe as LibGtk::ProgressBar*), Bool.new(show_text))
       __return_value
     end
 

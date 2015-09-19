@@ -75,7 +75,7 @@ module Gtk
     end
 
     def direction_wildcarded=(setting)
-      __return_value = LibGtk.icon_source_set_direction_wildcarded((to_unsafe as LibGtk::IconSource*), Bool.cast(setting))
+      __return_value = LibGtk.icon_source_set_direction_wildcarded((to_unsafe as LibGtk::IconSource*), Bool.new(setting))
       __return_value
     end
 
@@ -95,12 +95,12 @@ module Gtk
     end
 
     def size=(size)
-      __return_value = LibGtk.icon_source_set_size((to_unsafe as LibGtk::IconSource*), Int32.cast(size))
+      __return_value = LibGtk.icon_source_set_size((to_unsafe as LibGtk::IconSource*), Int32.new(size))
       __return_value
     end
 
     def size_wildcarded=(setting)
-      __return_value = LibGtk.icon_source_set_size_wildcarded((to_unsafe as LibGtk::IconSource*), Bool.cast(setting))
+      __return_value = LibGtk.icon_source_set_size_wildcarded((to_unsafe as LibGtk::IconSource*), Bool.new(setting))
       __return_value
     end
 
@@ -110,7 +110,7 @@ module Gtk
     end
 
     def state_wildcarded=(setting)
-      __return_value = LibGtk.icon_source_set_state_wildcarded((to_unsafe as LibGtk::IconSource*), Bool.cast(setting))
+      __return_value = LibGtk.icon_source_set_state_wildcarded((to_unsafe as LibGtk::IconSource*), Bool.new(setting))
       __return_value
     end
 

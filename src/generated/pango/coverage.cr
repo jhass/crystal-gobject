@@ -10,7 +10,7 @@ module Pango
     end
 
     def get(index)
-      __return_value = LibPango.coverage_get((to_unsafe as LibPango::Coverage*), Int32.cast(index))
+      __return_value = LibPango.coverage_get((to_unsafe as LibPango::Coverage*), Int32.new(index))
       __return_value
     end
 
@@ -20,12 +20,12 @@ module Pango
     end
 
     def set(index, level)
-      __return_value = LibPango.coverage_set((to_unsafe as LibPango::Coverage*), Int32.cast(index), level)
+      __return_value = LibPango.coverage_set((to_unsafe as LibPango::Coverage*), Int32.new(index), level)
       __return_value
     end
 
     def to_bytes(bytes, n_bytes)
-      __return_value = LibPango.coverage_to_bytes((to_unsafe as LibPango::Coverage*), bytes, Int32.cast(n_bytes))
+      __return_value = LibPango.coverage_to_bytes((to_unsafe as LibPango::Coverage*), bytes, Int32.new(n_bytes))
       __return_value
     end
 

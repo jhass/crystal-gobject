@@ -80,17 +80,17 @@ module Atk
   end
 
   def self.remove_focus_tracker(tracker_id)
-    __return_value = LibAtk.remove_focus_tracker(UInt32.cast(tracker_id))
+    __return_value = LibAtk.remove_focus_tracker(UInt32.new(tracker_id))
     __return_value
   end
 
   def self.remove_global_event_listener(listener_id)
-    __return_value = LibAtk.remove_global_event_listener(UInt32.cast(listener_id))
+    __return_value = LibAtk.remove_global_event_listener(UInt32.new(listener_id))
     __return_value
   end
 
   def self.remove_key_event_listener(listener_id)
-    __return_value = LibAtk.remove_key_event_listener(UInt32.cast(listener_id))
+    __return_value = LibAtk.remove_key_event_listener(UInt32.new(listener_id))
     __return_value
   end
 
@@ -140,7 +140,7 @@ module Atk
   end
 
   def self.text_attribute_get_value(attr, index)
-    __return_value = LibAtk.text_attribute_get_value(attr, Int32.cast(index))
+    __return_value = LibAtk.text_attribute_get_value(attr, Int32.new(index))
     raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
   end
 

@@ -90,17 +90,17 @@ module Pango
     end
 
     def merge(desc_to_merge, replace_existing)
-      __return_value = LibPango.font_description_merge((to_unsafe as LibPango::FontDescription*), desc_to_merge && (desc_to_merge.to_unsafe as LibPango::FontDescription*), Bool.cast(replace_existing))
+      __return_value = LibPango.font_description_merge((to_unsafe as LibPango::FontDescription*), desc_to_merge && (desc_to_merge.to_unsafe as LibPango::FontDescription*), Bool.new(replace_existing))
       __return_value
     end
 
     def merge_static(desc_to_merge, replace_existing)
-      __return_value = LibPango.font_description_merge_static((to_unsafe as LibPango::FontDescription*), (desc_to_merge.to_unsafe as LibPango::FontDescription*), Bool.cast(replace_existing))
+      __return_value = LibPango.font_description_merge_static((to_unsafe as LibPango::FontDescription*), (desc_to_merge.to_unsafe as LibPango::FontDescription*), Bool.new(replace_existing))
       __return_value
     end
 
     def absolute_size=(size)
-      __return_value = LibPango.font_description_set_absolute_size((to_unsafe as LibPango::FontDescription*), Float64.cast(size))
+      __return_value = LibPango.font_description_set_absolute_size((to_unsafe as LibPango::FontDescription*), Float64.new(size))
       __return_value
     end
 
@@ -120,7 +120,7 @@ module Pango
     end
 
     def size=(size)
-      __return_value = LibPango.font_description_set_size((to_unsafe as LibPango::FontDescription*), Int32.cast(size))
+      __return_value = LibPango.font_description_set_size((to_unsafe as LibPango::FontDescription*), Int32.new(size))
       __return_value
     end
 

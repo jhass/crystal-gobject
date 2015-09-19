@@ -30,7 +30,7 @@ module GObject
     end
 
     def qdata(quark)
-      __return_value = LibGObject.param_spec_get_qdata((to_unsafe as LibGObject::ParamSpec*), UInt32.cast(quark))
+      __return_value = LibGObject.param_spec_get_qdata((to_unsafe as LibGObject::ParamSpec*), UInt32.new(quark))
       __return_value
     end
 
@@ -40,7 +40,7 @@ module GObject
     end
 
     def set_qdata(quark, data)
-      __return_value = LibGObject.param_spec_set_qdata((to_unsafe as LibGObject::ParamSpec*), UInt32.cast(quark), data)
+      __return_value = LibGObject.param_spec_set_qdata((to_unsafe as LibGObject::ParamSpec*), UInt32.new(quark), data)
       __return_value
     end
 
@@ -50,7 +50,7 @@ module GObject
     end
 
     def steal_qdata(quark)
-      __return_value = LibGObject.param_spec_steal_qdata((to_unsafe as LibGObject::ParamSpec*), UInt32.cast(quark))
+      __return_value = LibGObject.param_spec_steal_qdata((to_unsafe as LibGObject::ParamSpec*), UInt32.new(quark))
       __return_value
     end
 

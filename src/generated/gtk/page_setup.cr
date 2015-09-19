@@ -96,12 +96,12 @@ module Gtk
     end
 
     def set_bottom_margin(margin, unit)
-      __return_value = LibGtk.page_setup_set_bottom_margin((to_unsafe as LibGtk::PageSetup*), Float64.cast(margin), unit)
+      __return_value = LibGtk.page_setup_set_bottom_margin((to_unsafe as LibGtk::PageSetup*), Float64.new(margin), unit)
       __return_value
     end
 
     def set_left_margin(margin, unit)
-      __return_value = LibGtk.page_setup_set_left_margin((to_unsafe as LibGtk::PageSetup*), Float64.cast(margin), unit)
+      __return_value = LibGtk.page_setup_set_left_margin((to_unsafe as LibGtk::PageSetup*), Float64.new(margin), unit)
       __return_value
     end
 
@@ -121,12 +121,12 @@ module Gtk
     end
 
     def set_right_margin(margin, unit)
-      __return_value = LibGtk.page_setup_set_right_margin((to_unsafe as LibGtk::PageSetup*), Float64.cast(margin), unit)
+      __return_value = LibGtk.page_setup_set_right_margin((to_unsafe as LibGtk::PageSetup*), Float64.new(margin), unit)
       __return_value
     end
 
     def set_top_margin(margin, unit)
-      __return_value = LibGtk.page_setup_set_top_margin((to_unsafe as LibGtk::PageSetup*), Float64.cast(margin), unit)
+      __return_value = LibGtk.page_setup_set_top_margin((to_unsafe as LibGtk::PageSetup*), Float64.new(margin), unit)
       __return_value
     end
 

@@ -1,7 +1,7 @@
 module Atk
   module StreamableContent
     def mime_type(i)
-      __return_value = LibAtk.streamable_content_get_mime_type((to_unsafe as LibAtk::StreamableContent*), Int32.cast(i))
+      __return_value = LibAtk.streamable_content_get_mime_type((to_unsafe as LibAtk::StreamableContent*), Int32.new(i))
       raise "Expected string but got null" unless __return_value; String.new(__return_value)
     end
 

@@ -33,12 +33,12 @@ module Gdk
     end
 
     def entries_for_keycode(hardware_keycode, keys, keyvals, n_entries)
-      __return_value = LibGdk.keymap_get_entries_for_keycode((to_unsafe as LibGdk::Keymap*), UInt32.cast(hardware_keycode), keys, keyvals, Int32.cast(n_entries))
+      __return_value = LibGdk.keymap_get_entries_for_keycode((to_unsafe as LibGdk::Keymap*), UInt32.new(hardware_keycode), keys, keyvals, Int32.new(n_entries))
       __return_value
     end
 
     def entries_for_keyval(keyval, keys, n_keys)
-      __return_value = LibGdk.keymap_get_entries_for_keyval((to_unsafe as LibGdk::Keymap*), UInt32.cast(keyval), keys, Int32.cast(n_keys))
+      __return_value = LibGdk.keymap_get_entries_for_keyval((to_unsafe as LibGdk::Keymap*), UInt32.new(keyval), keys, Int32.new(n_keys))
       __return_value
     end
 
@@ -73,7 +73,7 @@ module Gdk
     end
 
     def translate_keyboard_state(hardware_keycode, state, group, keyval, effective_group, level, consumed_modifiers)
-      __return_value = LibGdk.keymap_translate_keyboard_state((to_unsafe as LibGdk::Keymap*), UInt32.cast(hardware_keycode), state, Int32.cast(group), UInt32.cast(keyval), Int32.cast(effective_group), Int32.cast(level), consumed_modifiers)
+      __return_value = LibGdk.keymap_translate_keyboard_state((to_unsafe as LibGdk::Keymap*), UInt32.new(hardware_keycode), state, Int32.new(group), UInt32.new(keyval), Int32.new(effective_group), Int32.new(level), consumed_modifiers)
       __return_value
     end
 

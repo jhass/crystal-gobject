@@ -39,12 +39,12 @@ module Gtk
     end
 
     def search_mode=(search_mode)
-      __return_value = LibGtk.search_bar_set_search_mode((to_unsafe as LibGtk::SearchBar*), Bool.cast(search_mode))
+      __return_value = LibGtk.search_bar_set_search_mode((to_unsafe as LibGtk::SearchBar*), Bool.new(search_mode))
       __return_value
     end
 
     def show_close_button=(visible)
-      __return_value = LibGtk.search_bar_set_show_close_button((to_unsafe as LibGtk::SearchBar*), Bool.cast(visible))
+      __return_value = LibGtk.search_bar_set_show_close_button((to_unsafe as LibGtk::SearchBar*), Bool.new(visible))
       __return_value
     end
 

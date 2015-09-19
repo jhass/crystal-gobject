@@ -8,7 +8,7 @@ module Gio
     end
 
     def self.deserialize(level, type, size, data)
-      __return_value = LibGio.socket_control_message_deserialize(Int32.cast(level), Int32.cast(type), UInt64.cast(size), data)
+      __return_value = LibGio.socket_control_message_deserialize(Int32.new(level), Int32.new(type), UInt64.new(size), data)
       Gio::SocketControlMessage.new(__return_value)
     end
 

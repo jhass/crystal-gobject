@@ -41,7 +41,7 @@ module Gtk
     end
 
     def visited=(visited)
-      __return_value = LibGtk.link_button_set_visited((to_unsafe as LibGtk::LinkButton*), Bool.cast(visited))
+      __return_value = LibGtk.link_button_set_visited((to_unsafe as LibGtk::LinkButton*), Bool.new(visited))
       __return_value
     end
 

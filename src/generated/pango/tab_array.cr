@@ -10,7 +10,7 @@ module Pango
     end
 
     def self.new_internal(initial_size, positions_in_pixels)
-      __return_value = LibPango.tab_array_new(Int32.cast(initial_size), Bool.cast(positions_in_pixels))
+      __return_value = LibPango.tab_array_new(Int32.new(initial_size), Bool.new(positions_in_pixels))
       Pango::TabArray.new(__return_value)
     end
 
@@ -35,7 +35,7 @@ module Pango
     end
 
     def tab(tab_index, alignment, location)
-      __return_value = LibPango.tab_array_get_tab((to_unsafe as LibPango::TabArray*), Int32.cast(tab_index), alignment, Int32.cast(location))
+      __return_value = LibPango.tab_array_get_tab((to_unsafe as LibPango::TabArray*), Int32.new(tab_index), alignment, Int32.new(location))
       __return_value
     end
 
@@ -45,12 +45,12 @@ module Pango
     end
 
     def resize(new_size)
-      __return_value = LibPango.tab_array_resize((to_unsafe as LibPango::TabArray*), Int32.cast(new_size))
+      __return_value = LibPango.tab_array_resize((to_unsafe as LibPango::TabArray*), Int32.new(new_size))
       __return_value
     end
 
     def set_tab(tab_index, alignment, location)
-      __return_value = LibPango.tab_array_set_tab((to_unsafe as LibPango::TabArray*), Int32.cast(tab_index), alignment, Int32.cast(location))
+      __return_value = LibPango.tab_array_set_tab((to_unsafe as LibPango::TabArray*), Int32.new(tab_index), alignment, Int32.new(location))
       __return_value
     end
 

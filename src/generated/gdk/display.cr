@@ -73,7 +73,7 @@ module Gdk
     end
 
     def maximal_cursor_size(width, height)
-      __return_value = LibGdk.display_get_maximal_cursor_size((to_unsafe as LibGdk::Display*), UInt32.cast(width), UInt32.cast(height))
+      __return_value = LibGdk.display_get_maximal_cursor_size((to_unsafe as LibGdk::Display*), UInt32.new(width), UInt32.new(height))
       __return_value
     end
 
@@ -88,17 +88,17 @@ module Gdk
     end
 
     def pointer(screen, x, y, mask)
-      __return_value = LibGdk.display_get_pointer((to_unsafe as LibGdk::Display*), (screen.to_unsafe as LibGdk::Screen*), Int32.cast(x), Int32.cast(y), mask)
+      __return_value = LibGdk.display_get_pointer((to_unsafe as LibGdk::Display*), (screen.to_unsafe as LibGdk::Screen*), Int32.new(x), Int32.new(y), mask)
       __return_value
     end
 
     def screen(screen_num)
-      __return_value = LibGdk.display_get_screen((to_unsafe as LibGdk::Display*), Int32.cast(screen_num))
+      __return_value = LibGdk.display_get_screen((to_unsafe as LibGdk::Display*), Int32.new(screen_num))
       Gdk::Screen.new(__return_value)
     end
 
     def window_at_pointer(win_x, win_y)
-      __return_value = LibGdk.display_get_window_at_pointer((to_unsafe as LibGdk::Display*), Int32.cast(win_x), Int32.cast(win_y))
+      __return_value = LibGdk.display_get_window_at_pointer((to_unsafe as LibGdk::Display*), Int32.new(win_x), Int32.new(win_y))
       Gdk::Window.new(__return_value) if __return_value
     end
 
@@ -113,7 +113,7 @@ module Gdk
     end
 
     def keyboard_ungrab(time)
-      __return_value = LibGdk.display_keyboard_ungrab((to_unsafe as LibGdk::Display*), UInt32.cast(time))
+      __return_value = LibGdk.display_keyboard_ungrab((to_unsafe as LibGdk::Display*), UInt32.new(time))
       __return_value
     end
 
@@ -138,7 +138,7 @@ module Gdk
     end
 
     def pointer_ungrab(time)
-      __return_value = LibGdk.display_pointer_ungrab((to_unsafe as LibGdk::Display*), UInt32.cast(time))
+      __return_value = LibGdk.display_pointer_ungrab((to_unsafe as LibGdk::Display*), UInt32.new(time))
       __return_value
     end
 
@@ -153,17 +153,17 @@ module Gdk
     end
 
     def double_click_distance=(distance)
-      __return_value = LibGdk.display_set_double_click_distance((to_unsafe as LibGdk::Display*), UInt32.cast(distance))
+      __return_value = LibGdk.display_set_double_click_distance((to_unsafe as LibGdk::Display*), UInt32.new(distance))
       __return_value
     end
 
     def double_click_time=(msec)
-      __return_value = LibGdk.display_set_double_click_time((to_unsafe as LibGdk::Display*), UInt32.cast(msec))
+      __return_value = LibGdk.display_set_double_click_time((to_unsafe as LibGdk::Display*), UInt32.new(msec))
       __return_value
     end
 
     def store_clipboard(clipboard_window, time, targets, n_targets)
-      __return_value = LibGdk.display_store_clipboard((to_unsafe as LibGdk::Display*), (clipboard_window.to_unsafe as LibGdk::Window*), UInt32.cast(time), targets, Int32.cast(n_targets))
+      __return_value = LibGdk.display_store_clipboard((to_unsafe as LibGdk::Display*), (clipboard_window.to_unsafe as LibGdk::Window*), UInt32.new(time), targets, Int32.new(n_targets))
       __return_value
     end
 
@@ -208,7 +208,7 @@ module Gdk
     end
 
     def warp_pointer(screen, x, y)
-      __return_value = LibGdk.display_warp_pointer((to_unsafe as LibGdk::Display*), (screen.to_unsafe as LibGdk::Screen*), Int32.cast(x), Int32.cast(y))
+      __return_value = LibGdk.display_warp_pointer((to_unsafe as LibGdk::Display*), (screen.to_unsafe as LibGdk::Screen*), Int32.new(x), Int32.new(y))
       __return_value
     end
 

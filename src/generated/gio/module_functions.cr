@@ -34,7 +34,7 @@ module Gio
   end
 
   def self.app_info_get_default_for_type(content_type, must_support_uris)
-    __return_value = LibGio.app_info_get_default_for_type(content_type, Bool.cast(must_support_uris))
+    __return_value = LibGio.app_info_get_default_for_type(content_type, Bool.new(must_support_uris))
     __return_value
   end
 
@@ -66,7 +66,7 @@ module Gio
   end
 
   def self.async_initable_newv_async(object_type, n_parameters, parameters, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-    __return_value = LibGio.async_initable_newv_async(UInt64.cast(object_type), UInt32.cast(n_parameters), (parameters.to_unsafe as LibGObject::Parameter*), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+    __return_value = LibGio.async_initable_newv_async(UInt64.new(object_type), UInt32.new(n_parameters), (parameters.to_unsafe as LibGObject::Parameter*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
     __return_value
   end
 
@@ -100,12 +100,12 @@ module Gio
   end
 
   def self.bus_unown_name(owner_id)
-    __return_value = LibGio.bus_unown_name(UInt32.cast(owner_id))
+    __return_value = LibGio.bus_unown_name(UInt32.new(owner_id))
     __return_value
   end
 
   def self.bus_unwatch_name(watcher_id)
-    __return_value = LibGio.bus_unwatch_name(UInt32.cast(watcher_id))
+    __return_value = LibGio.bus_unwatch_name(UInt32.new(watcher_id))
     __return_value
   end
 
@@ -160,13 +160,13 @@ module Gio
   end
 
   def self.content_type_guess(filename, data, data_size, result_uncertain)
-    __return_value = LibGio.content_type_guess(filename && filename, data && data, UInt64.cast(data_size), Bool.cast(result_uncertain))
+    __return_value = LibGio.content_type_guess(filename && filename, data && data, UInt64.new(data_size), Bool.new(result_uncertain))
     raise "Expected string but got null" unless __return_value; String.new(__return_value)
   end
 
   def self.content_type_guess_for_tree(root)
     __return_value = LibGio.content_type_guess_for_tree((root.to_unsafe as LibGio::File*))
-    PointerIterator.new(__return_value) {|__item_80| raise "Expected string but got null" unless __item_80; String.new(__item_80) }
+    PointerIterator.new(__return_value) {|__item_2| raise "Expected string but got null" unless __item_2; String.new(__item_2) }
   end
 
   def self.content_type_is_a(type, supertype)
@@ -246,12 +246,12 @@ module Gio
   end
 
   def self.dbus_error_register_error(error_domain, error_code, dbus_error_name)
-    __return_value = LibGio.dbus_error_register_error(UInt32.cast(error_domain), Int32.cast(error_code), dbus_error_name)
+    __return_value = LibGio.dbus_error_register_error(UInt32.new(error_domain), Int32.new(error_code), dbus_error_name)
     __return_value
   end
 
   def self.dbus_error_register_error_domain(error_domain_quark_name, quark_volatile, entries, num_entries)
-    __return_value = LibGio.dbus_error_register_error_domain(error_domain_quark_name, quark_volatile, (entries.to_unsafe as LibGio::DBusErrorEntry*), UInt32.cast(num_entries))
+    __return_value = LibGio.dbus_error_register_error_domain(error_domain_quark_name, quark_volatile, (entries.to_unsafe as LibGio::DBusErrorEntry*), UInt32.new(num_entries))
     __return_value
   end
 
@@ -261,7 +261,7 @@ module Gio
   end
 
   def self.dbus_error_unregister_error(error_domain, error_code, dbus_error_name)
-    __return_value = LibGio.dbus_error_unregister_error(UInt32.cast(error_domain), Int32.cast(error_code), dbus_error_name)
+    __return_value = LibGio.dbus_error_unregister_error(UInt32.new(error_domain), Int32.new(error_code), dbus_error_name)
     __return_value
   end
 
@@ -368,13 +368,13 @@ module Gio
 
   def self.initable_newv(object_type, n_parameters, parameters, cancellable)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGio.initable_newv(UInt64.cast(object_type), UInt32.cast(n_parameters), parameters, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+    __return_value = LibGio.initable_newv(UInt64.new(object_type), UInt32.new(n_parameters), parameters, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
     GLib::Error.assert __error
     GObject::Object.new(__return_value)
   end
 
   def self.io_error_from_errno(err_no)
-    __return_value = LibGio.io_error_from_errno(Int32.cast(err_no))
+    __return_value = LibGio.io_error_from_errno(Int32.new(err_no))
     __return_value
   end
 
@@ -384,7 +384,7 @@ module Gio
   end
 
   def self.io_extension_point_implement(extension_point_name, type, extension_name, priority)
-    __return_value = LibGio.io_extension_point_implement(extension_point_name, UInt64.cast(type), extension_name, Int32.cast(priority))
+    __return_value = LibGio.io_extension_point_implement(extension_point_name, UInt64.new(type), extension_name, Int32.new(priority))
     Gio::IOExtension.new(__return_value)
   end
 
@@ -424,7 +424,7 @@ module Gio
   end
 
   def self.io_scheduler_push_job(job_func : LibGio::IOSchedulerJobFunc, user_data, notify : LibGLib::DestroyNotify?, io_priority, cancellable)
-    __return_value = LibGio.io_scheduler_push_job(job_func, user_data, notify && notify, Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*))
+    __return_value = LibGio.io_scheduler_push_job(job_func, user_data, notify && notify, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*))
     __return_value
   end
 
@@ -450,21 +450,21 @@ module Gio
 
   def self.pollable_stream_read(stream, buffer, count, blocking, cancellable)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGio.pollable_stream_read((stream.to_unsafe as LibGio::InputStream*), buffer, UInt64.cast(count), Bool.cast(blocking), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+    __return_value = LibGio.pollable_stream_read((stream.to_unsafe as LibGio::InputStream*), buffer, UInt64.new(count), Bool.new(blocking), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
   def self.pollable_stream_write(stream, buffer, count, blocking, cancellable)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGio.pollable_stream_write((stream.to_unsafe as LibGio::OutputStream*), buffer, UInt64.cast(count), Bool.cast(blocking), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+    __return_value = LibGio.pollable_stream_write((stream.to_unsafe as LibGio::OutputStream*), buffer, UInt64.new(count), Bool.new(blocking), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
   def self.pollable_stream_write_all(stream, buffer, count, blocking, bytes_written, cancellable)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGio.pollable_stream_write_all((stream.to_unsafe as LibGio::OutputStream*), buffer, UInt64.cast(count), Bool.cast(blocking), UInt64.cast(bytes_written), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+    __return_value = LibGio.pollable_stream_write_all((stream.to_unsafe as LibGio::OutputStream*), buffer, UInt64.new(count), Bool.new(blocking), UInt64.new(bytes_written), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -500,12 +500,12 @@ module Gio
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGio.resources_enumerate_children(path, lookup_flags, pointerof(__error))
     GLib::Error.assert __error
-    PointerIterator.new(__return_value) {|__item_21| raise "Expected string but got null" unless __item_21; String.new(__item_21) }
+    PointerIterator.new(__return_value) {|__item_70| raise "Expected string but got null" unless __item_70; String.new(__item_70) }
   end
 
   def self.resources_get_info(path, lookup_flags, size, flags)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGio.resources_get_info(path, lookup_flags, UInt64.cast(size), UInt32.cast(flags), pointerof(__error))
+    __return_value = LibGio.resources_get_info(path, lookup_flags, UInt64.new(size), UInt32.new(flags), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -641,12 +641,12 @@ module Gio
   end
 
   def self.unix_mount_points_changed_since(time)
-    __return_value = LibGio.unix_mount_points_changed_since(UInt64.cast(time))
+    __return_value = LibGio.unix_mount_points_changed_since(UInt64.new(time))
     __return_value
   end
 
   def self.unix_mounts_changed_since(time)
-    __return_value = LibGio.unix_mounts_changed_since(UInt64.cast(time))
+    __return_value = LibGio.unix_mounts_changed_since(UInt64.new(time))
     __return_value
   end
 end

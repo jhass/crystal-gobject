@@ -1,7 +1,7 @@
 module Atk
   module Selection
     def add_selection(i)
-      __return_value = LibAtk.selection_add_selection((to_unsafe as LibAtk::Selection*), Int32.cast(i))
+      __return_value = LibAtk.selection_add_selection((to_unsafe as LibAtk::Selection*), Int32.new(i))
       __return_value
     end
 
@@ -16,17 +16,17 @@ module Atk
     end
 
     def is_child_selected(i)
-      __return_value = LibAtk.selection_is_child_selected((to_unsafe as LibAtk::Selection*), Int32.cast(i))
+      __return_value = LibAtk.selection_is_child_selected((to_unsafe as LibAtk::Selection*), Int32.new(i))
       __return_value
     end
 
     def ref_selection(i)
-      __return_value = LibAtk.selection_ref_selection((to_unsafe as LibAtk::Selection*), Int32.cast(i))
+      __return_value = LibAtk.selection_ref_selection((to_unsafe as LibAtk::Selection*), Int32.new(i))
       Atk::Object.new(__return_value) if __return_value
     end
 
     def remove_selection(i)
-      __return_value = LibAtk.selection_remove_selection((to_unsafe as LibAtk::Selection*), Int32.cast(i))
+      __return_value = LibAtk.selection_remove_selection((to_unsafe as LibAtk::Selection*), Int32.new(i))
       __return_value
     end
 

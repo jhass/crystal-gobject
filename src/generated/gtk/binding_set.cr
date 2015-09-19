@@ -10,7 +10,7 @@ module Gtk
     end
 
     def activate(keyval, modifiers, object)
-      __return_value = LibGtk.binding_set_activate((to_unsafe as LibGtk::BindingSet*), UInt32.cast(keyval), modifiers, (object.to_unsafe as LibGObject::Object*))
+      __return_value = LibGtk.binding_set_activate((to_unsafe as LibGtk::BindingSet*), UInt32.new(keyval), modifiers, (object.to_unsafe as LibGObject::Object*))
       __return_value
     end
 

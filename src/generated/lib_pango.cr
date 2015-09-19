@@ -994,7 +994,7 @@ lib LibPango
   ##    Callbacks
   ###########################################
 
- alias AttrFilterFunc = LibPango::Attribute*, Void* -> Bool
- alias FontsetForeachFunc = LibPango::Fontset*, LibPango::Font*, Void* -> Bool
+ type AttrFilterFunc = LibPango::Attribute*, Void* -> Bool
+ type FontsetForeachFunc = LibPango::Fontset*, LibPango::Font*, Void* -> Bool
 end
 

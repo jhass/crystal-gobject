@@ -70,7 +70,7 @@ module Gtk
     end
 
     def expanded=(expanded)
-      __return_value = LibGtk.expander_set_expanded((to_unsafe as LibGtk::Expander*), Bool.cast(expanded))
+      __return_value = LibGtk.expander_set_expanded((to_unsafe as LibGtk::Expander*), Bool.new(expanded))
       __return_value
     end
 
@@ -80,7 +80,7 @@ module Gtk
     end
 
     def label_fill=(label_fill)
-      __return_value = LibGtk.expander_set_label_fill((to_unsafe as LibGtk::Expander*), Bool.cast(label_fill))
+      __return_value = LibGtk.expander_set_label_fill((to_unsafe as LibGtk::Expander*), Bool.new(label_fill))
       __return_value
     end
 
@@ -90,22 +90,22 @@ module Gtk
     end
 
     def resize_toplevel=(resize_toplevel)
-      __return_value = LibGtk.expander_set_resize_toplevel((to_unsafe as LibGtk::Expander*), Bool.cast(resize_toplevel))
+      __return_value = LibGtk.expander_set_resize_toplevel((to_unsafe as LibGtk::Expander*), Bool.new(resize_toplevel))
       __return_value
     end
 
     def spacing=(spacing)
-      __return_value = LibGtk.expander_set_spacing((to_unsafe as LibGtk::Expander*), Int32.cast(spacing))
+      __return_value = LibGtk.expander_set_spacing((to_unsafe as LibGtk::Expander*), Int32.new(spacing))
       __return_value
     end
 
     def use_markup=(use_markup)
-      __return_value = LibGtk.expander_set_use_markup((to_unsafe as LibGtk::Expander*), Bool.cast(use_markup))
+      __return_value = LibGtk.expander_set_use_markup((to_unsafe as LibGtk::Expander*), Bool.new(use_markup))
       __return_value
     end
 
     def use_underline=(use_underline)
-      __return_value = LibGtk.expander_set_use_underline((to_unsafe as LibGtk::Expander*), Bool.cast(use_underline))
+      __return_value = LibGtk.expander_set_use_underline((to_unsafe as LibGtk::Expander*), Bool.new(use_underline))
       __return_value
     end
 

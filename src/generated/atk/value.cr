@@ -36,7 +36,7 @@ module Atk
     end
 
     def value_and_text(value, text)
-      __return_value = LibAtk.value_get_value_and_text((to_unsafe as LibAtk::Value*), Float64.cast(value), text)
+      __return_value = LibAtk.value_get_value_and_text((to_unsafe as LibAtk::Value*), Float64.new(value), text)
       __return_value
     end
 
@@ -46,7 +46,7 @@ module Atk
     end
 
     def value=(new_value)
-      __return_value = LibAtk.value_set_value((to_unsafe as LibAtk::Value*), Float64.cast(new_value))
+      __return_value = LibAtk.value_set_value((to_unsafe as LibAtk::Value*), Float64.new(new_value))
       __return_value
     end
 

@@ -43,7 +43,7 @@ module Gst
     end
 
     def auto_flush_bus=(auto_flush)
-      __return_value = LibGst.pipeline_set_auto_flush_bus((to_unsafe as LibGst::Pipeline*), Bool.cast(auto_flush))
+      __return_value = LibGst.pipeline_set_auto_flush_bus((to_unsafe as LibGst::Pipeline*), Bool.new(auto_flush))
       __return_value
     end
 
@@ -53,7 +53,7 @@ module Gst
     end
 
     def delay=(delay)
-      __return_value = LibGst.pipeline_set_delay((to_unsafe as LibGst::Pipeline*), UInt64.cast(delay))
+      __return_value = LibGst.pipeline_set_delay((to_unsafe as LibGst::Pipeline*), UInt64.new(delay))
       __return_value
     end
 

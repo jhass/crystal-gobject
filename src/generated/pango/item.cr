@@ -25,7 +25,7 @@ module Pango
     end
 
     def split(split_index, split_offset)
-      __return_value = LibPango.item_split((to_unsafe as LibPango::Item*), Int32.cast(split_index), Int32.cast(split_offset))
+      __return_value = LibPango.item_split((to_unsafe as LibPango::Item*), Int32.new(split_index), Int32.new(split_offset))
       Pango::Item.new(__return_value)
     end
 

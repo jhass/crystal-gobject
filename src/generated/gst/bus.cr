@@ -21,12 +21,12 @@ module Gst
     end
 
     def add_signal_watch_full(priority)
-      __return_value = LibGst.bus_add_signal_watch_full((to_unsafe as LibGst::Bus*), Int32.cast(priority))
+      __return_value = LibGst.bus_add_signal_watch_full((to_unsafe as LibGst::Bus*), Int32.new(priority))
       __return_value
     end
 
     def add_watch(priority, func : LibGst::BusFunc, user_data, notify : LibGLib::DestroyNotify)
-      __return_value = LibGst.bus_add_watch((to_unsafe as LibGst::Bus*), Int32.cast(priority), func, user_data, notify)
+      __return_value = LibGst.bus_add_watch((to_unsafe as LibGst::Bus*), Int32.new(priority), func, user_data, notify)
       __return_value
     end
 
@@ -61,7 +61,7 @@ module Gst
     end
 
     def poll(events, timeout)
-      __return_value = LibGst.bus_poll((to_unsafe as LibGst::Bus*), events, UInt64.cast(timeout))
+      __return_value = LibGst.bus_poll((to_unsafe as LibGst::Bus*), events, UInt64.new(timeout))
       Gst::Message.new(__return_value) if __return_value
     end
 
@@ -86,7 +86,7 @@ module Gst
     end
 
     def flushing=(flushing)
-      __return_value = LibGst.bus_set_flushing((to_unsafe as LibGst::Bus*), Bool.cast(flushing))
+      __return_value = LibGst.bus_set_flushing((to_unsafe as LibGst::Bus*), Bool.new(flushing))
       __return_value
     end
 
@@ -101,12 +101,12 @@ module Gst
     end
 
     def timed_pop(timeout)
-      __return_value = LibGst.bus_timed_pop((to_unsafe as LibGst::Bus*), UInt64.cast(timeout))
+      __return_value = LibGst.bus_timed_pop((to_unsafe as LibGst::Bus*), UInt64.new(timeout))
       Gst::Message.new(__return_value) if __return_value
     end
 
     def timed_pop_filtered(timeout, types)
-      __return_value = LibGst.bus_timed_pop_filtered((to_unsafe as LibGst::Bus*), UInt64.cast(timeout), types)
+      __return_value = LibGst.bus_timed_pop_filtered((to_unsafe as LibGst::Bus*), UInt64.new(timeout), types)
       Gst::Message.new(__return_value) if __return_value
     end
 

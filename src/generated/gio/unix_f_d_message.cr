@@ -22,7 +22,7 @@ module Gio
 
     def append_fd(fd)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.unix_f_d_message_append_fd((to_unsafe as LibGio::UnixFDMessage*), Int32.cast(fd), pointerof(__error))
+      __return_value = LibGio.unix_f_d_message_append_fd((to_unsafe as LibGio::UnixFDMessage*), Int32.new(fd), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -33,8 +33,8 @@ module Gio
     end
 
     def steal_fds(length)
-      __return_value = LibGio.unix_f_d_message_steal_fds((to_unsafe as LibGio::UnixFDMessage*), Int32.cast(length))
-      PointerIterator.new(__return_value) {|__item_98| __item_98 }
+      __return_value = LibGio.unix_f_d_message_steal_fds((to_unsafe as LibGio::UnixFDMessage*), Int32.new(length))
+      PointerIterator.new(__return_value) {|__item_84| __item_84 }
     end
 
   end

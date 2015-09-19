@@ -28,22 +28,22 @@ module Gtk
     end
 
     def pop(context_id)
-      __return_value = LibGtk.statusbar_pop((to_unsafe as LibGtk::Statusbar*), UInt32.cast(context_id))
+      __return_value = LibGtk.statusbar_pop((to_unsafe as LibGtk::Statusbar*), UInt32.new(context_id))
       __return_value
     end
 
     def push(context_id, text)
-      __return_value = LibGtk.statusbar_push((to_unsafe as LibGtk::Statusbar*), UInt32.cast(context_id), text)
+      __return_value = LibGtk.statusbar_push((to_unsafe as LibGtk::Statusbar*), UInt32.new(context_id), text)
       __return_value
     end
 
     def remove(context_id, message_id)
-      __return_value = LibGtk.statusbar_remove((to_unsafe as LibGtk::Statusbar*), UInt32.cast(context_id), UInt32.cast(message_id))
+      __return_value = LibGtk.statusbar_remove((to_unsafe as LibGtk::Statusbar*), UInt32.new(context_id), UInt32.new(message_id))
       __return_value
     end
 
     def remove_all(context_id)
-      __return_value = LibGtk.statusbar_remove_all((to_unsafe as LibGtk::Statusbar*), UInt32.cast(context_id))
+      __return_value = LibGtk.statusbar_remove_all((to_unsafe as LibGtk::Statusbar*), UInt32.new(context_id))
       __return_value
     end
 

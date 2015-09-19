@@ -39,12 +39,12 @@ module Gtk
     end
 
     def insert(position, id, text)
-      __return_value = LibGtk.combo_box_text_insert((to_unsafe as LibGtk::ComboBoxText*), Int32.cast(position), id && id, text)
+      __return_value = LibGtk.combo_box_text_insert((to_unsafe as LibGtk::ComboBoxText*), Int32.new(position), id && id, text)
       __return_value
     end
 
     def insert_text(position, text)
-      __return_value = LibGtk.combo_box_text_insert_text((to_unsafe as LibGtk::ComboBoxText*), Int32.cast(position), text)
+      __return_value = LibGtk.combo_box_text_insert_text((to_unsafe as LibGtk::ComboBoxText*), Int32.new(position), text)
       __return_value
     end
 
@@ -59,7 +59,7 @@ module Gtk
     end
 
     def remove(position)
-      __return_value = LibGtk.combo_box_text_remove((to_unsafe as LibGtk::ComboBoxText*), Int32.cast(position))
+      __return_value = LibGtk.combo_box_text_remove((to_unsafe as LibGtk::ComboBoxText*), Int32.new(position))
       __return_value
     end
 

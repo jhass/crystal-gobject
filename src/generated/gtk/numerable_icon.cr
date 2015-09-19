@@ -59,7 +59,7 @@ module Gtk
     end
 
     def count=(count)
-      __return_value = LibGtk.numerable_icon_set_count((to_unsafe as LibGtk::NumerableIcon*), Int32.cast(count))
+      __return_value = LibGtk.numerable_icon_set_count((to_unsafe as LibGtk::NumerableIcon*), Int32.new(count))
       __return_value
     end
 

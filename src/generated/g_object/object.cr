@@ -10,12 +10,12 @@ module GObject
     end
 
     def self.new_internal(object_type, n_parameters, parameters)
-      __return_value = LibGObject.object_new(UInt64.cast(object_type), UInt32.cast(n_parameters), parameters)
+      __return_value = LibGObject.object_new(UInt64.new(object_type), UInt32.new(n_parameters), parameters)
       GObject::Object.new(__return_value)
     end
 
     def self.compat_control(what, data)
-      __return_value = LibGObject.object_compat_control(UInt64.cast(what), data)
+      __return_value = LibGObject.object_compat_control(UInt64.new(what), data)
       __return_value
     end
 
@@ -30,7 +30,7 @@ module GObject
     end
 
     def self.interface_list_properties(g_iface, n_properties_p)
-      __return_value = LibGObject.object_interface_list_properties(g_iface, UInt32.cast(n_properties_p))
+      __return_value = LibGObject.object_interface_list_properties(g_iface, UInt32.new(n_properties_p))
       PointerIterator.new(__return_value) {|__item_38| GObject::ParamSpec.new(__item_38) }
     end
 
@@ -65,7 +65,7 @@ module GObject
     end
 
     def qdata(quark)
-      __return_value = LibGObject.object_get_qdata((to_unsafe as LibGObject::Object*), UInt32.cast(quark))
+      __return_value = LibGObject.object_get_qdata((to_unsafe as LibGObject::Object*), UInt32.new(quark))
       __return_value
     end
 
@@ -100,7 +100,7 @@ module GObject
     end
 
     def replace_qdata(quark, oldval, newval, destroy : LibGLib::DestroyNotify?, old_destroy : LibGLib::DestroyNotify*?)
-      __return_value = LibGObject.object_replace_qdata((to_unsafe as LibGObject::Object*), UInt32.cast(quark), oldval && oldval, newval && newval, destroy && destroy, old_destroy && (old_destroy.to_unsafe as LibGLib::DestroyNotify*))
+      __return_value = LibGObject.object_replace_qdata((to_unsafe as LibGObject::Object*), UInt32.new(quark), oldval && oldval, newval && newval, destroy && destroy, old_destroy && (old_destroy.to_unsafe as LibGLib::DestroyNotify*))
       __return_value
     end
 
@@ -125,7 +125,7 @@ module GObject
     end
 
     def steal_qdata(quark)
-      __return_value = LibGObject.object_steal_qdata((to_unsafe as LibGObject::Object*), UInt32.cast(quark))
+      __return_value = LibGObject.object_steal_qdata((to_unsafe as LibGObject::Object*), UInt32.new(quark))
       __return_value
     end
 

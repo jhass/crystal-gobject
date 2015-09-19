@@ -95,7 +95,7 @@ module Gtk
     end
 
     def priority=(priority)
-      __return_value = LibGtk.text_tag_set_priority((to_unsafe as LibGtk::TextTag*), Int32.cast(priority))
+      __return_value = LibGtk.text_tag_set_priority((to_unsafe as LibGtk::TextTag*), Int32.new(priority))
       __return_value
     end
 

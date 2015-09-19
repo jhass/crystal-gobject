@@ -20,12 +20,12 @@ module Gio
     end
 
     def self.new_abstract(path, path_len)
-      __return_value = LibGio.unix_socket_address_new_abstract(path, Int32.cast(path_len))
+      __return_value = LibGio.unix_socket_address_new_abstract(path, Int32.new(path_len))
       Gio::SocketAddress.new(__return_value)
     end
 
     def self.new_with_type(path, path_len, type)
-      __return_value = LibGio.unix_socket_address_new_with_type(path, Int32.cast(path_len), type)
+      __return_value = LibGio.unix_socket_address_new_with_type(path, Int32.new(path_len), type)
       Gio::SocketAddress.new(__return_value)
     end
 

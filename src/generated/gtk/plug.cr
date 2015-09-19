@@ -14,22 +14,22 @@ module Gtk
 
 
     def self.new_internal(socket_id)
-      __return_value = LibGtk.plug_new(UInt64.cast(socket_id))
+      __return_value = LibGtk.plug_new(UInt64.new(socket_id))
       Gtk::Widget.new(__return_value)
     end
 
     def self.new_for_display(display, socket_id)
-      __return_value = LibGtk.plug_new_for_display((display.to_unsafe as LibGdk::Display*), UInt64.cast(socket_id))
+      __return_value = LibGtk.plug_new_for_display((display.to_unsafe as LibGdk::Display*), UInt64.new(socket_id))
       Gtk::Widget.new(__return_value)
     end
 
     def construct(socket_id)
-      __return_value = LibGtk.plug_construct((to_unsafe as LibGtk::Plug*), UInt64.cast(socket_id))
+      __return_value = LibGtk.plug_construct((to_unsafe as LibGtk::Plug*), UInt64.new(socket_id))
       __return_value
     end
 
     def construct_for_display(display, socket_id)
-      __return_value = LibGtk.plug_construct_for_display((to_unsafe as LibGtk::Plug*), (display.to_unsafe as LibGdk::Display*), UInt64.cast(socket_id))
+      __return_value = LibGtk.plug_construct_for_display((to_unsafe as LibGtk::Plug*), (display.to_unsafe as LibGdk::Display*), UInt64.new(socket_id))
       __return_value
     end
 

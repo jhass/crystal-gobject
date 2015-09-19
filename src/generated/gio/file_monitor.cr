@@ -26,7 +26,7 @@ module Gio
     end
 
     def rate_limit=(limit_msecs)
-      __return_value = LibGio.file_monitor_set_rate_limit((to_unsafe as LibGio::FileMonitor*), Int32.cast(limit_msecs))
+      __return_value = LibGio.file_monitor_set_rate_limit((to_unsafe as LibGio::FileMonitor*), Int32.new(limit_msecs))
       __return_value
     end
 

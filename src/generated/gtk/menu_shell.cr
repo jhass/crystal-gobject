@@ -13,7 +13,7 @@ module Gtk
     # Implements Buildable
 
     def activate_item(menu_item, force_deactivate)
-      __return_value = LibGtk.menu_shell_activate_item((to_unsafe as LibGtk::MenuShell*), (menu_item.to_unsafe as LibGtk::Widget*), Bool.cast(force_deactivate))
+      __return_value = LibGtk.menu_shell_activate_item((to_unsafe as LibGtk::MenuShell*), (menu_item.to_unsafe as LibGtk::Widget*), Bool.new(force_deactivate))
       __return_value
     end
 
@@ -23,7 +23,7 @@ module Gtk
     end
 
     def bind_model(model, action_namespace, with_separators)
-      __return_value = LibGtk.menu_shell_bind_model((to_unsafe as LibGtk::MenuShell*), model && (model.to_unsafe as LibGio::MenuModel*), action_namespace && action_namespace, Bool.cast(with_separators))
+      __return_value = LibGtk.menu_shell_bind_model((to_unsafe as LibGtk::MenuShell*), model && (model.to_unsafe as LibGio::MenuModel*), action_namespace && action_namespace, Bool.new(with_separators))
       __return_value
     end
 
@@ -58,7 +58,7 @@ module Gtk
     end
 
     def insert(child, position)
-      __return_value = LibGtk.menu_shell_insert((to_unsafe as LibGtk::MenuShell*), (child.to_unsafe as LibGtk::Widget*), Int32.cast(position))
+      __return_value = LibGtk.menu_shell_insert((to_unsafe as LibGtk::MenuShell*), (child.to_unsafe as LibGtk::Widget*), Int32.new(position))
       __return_value
     end
 
@@ -68,7 +68,7 @@ module Gtk
     end
 
     def select_first(search_sensitive)
-      __return_value = LibGtk.menu_shell_select_first((to_unsafe as LibGtk::MenuShell*), Bool.cast(search_sensitive))
+      __return_value = LibGtk.menu_shell_select_first((to_unsafe as LibGtk::MenuShell*), Bool.new(search_sensitive))
       __return_value
     end
 
@@ -78,7 +78,7 @@ module Gtk
     end
 
     def take_focus=(take_focus)
-      __return_value = LibGtk.menu_shell_set_take_focus((to_unsafe as LibGtk::MenuShell*), Bool.cast(take_focus))
+      __return_value = LibGtk.menu_shell_set_take_focus((to_unsafe as LibGtk::MenuShell*), Bool.new(take_focus))
       __return_value
     end
 

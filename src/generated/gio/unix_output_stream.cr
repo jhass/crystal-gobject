@@ -14,7 +14,7 @@ module Gio
 
 
     def self.new_internal(fd, close_fd)
-      __return_value = LibGio.unix_output_stream_new(Int32.cast(fd), Bool.cast(close_fd))
+      __return_value = LibGio.unix_output_stream_new(Int32.new(fd), Bool.new(close_fd))
       Gio::OutputStream.new(__return_value)
     end
 
@@ -29,7 +29,7 @@ module Gio
     end
 
     def close_fd=(close_fd)
-      __return_value = LibGio.unix_output_stream_set_close_fd((to_unsafe as LibGio::UnixOutputStream*), Bool.cast(close_fd))
+      __return_value = LibGio.unix_output_stream_set_close_fd((to_unsafe as LibGio::UnixOutputStream*), Bool.new(close_fd))
       __return_value
     end
 

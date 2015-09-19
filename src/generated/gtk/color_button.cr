@@ -55,7 +55,7 @@ module Gtk
     end
 
     def alpha=(alpha)
-      __return_value = LibGtk.color_button_set_alpha((to_unsafe as LibGtk::ColorButton*), UInt16.cast(alpha))
+      __return_value = LibGtk.color_button_set_alpha((to_unsafe as LibGtk::ColorButton*), UInt16.new(alpha))
       __return_value
     end
 
@@ -70,7 +70,7 @@ module Gtk
     end
 
     def use_alpha=(use_alpha)
-      __return_value = LibGtk.color_button_set_use_alpha((to_unsafe as LibGtk::ColorButton*), Bool.cast(use_alpha))
+      __return_value = LibGtk.color_button_set_use_alpha((to_unsafe as LibGtk::ColorButton*), Bool.new(use_alpha))
       __return_value
     end
 

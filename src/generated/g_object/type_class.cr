@@ -20,7 +20,7 @@ module GObject
     end
 
     def self.add_private(g_class, private_size)
-      __return_value = LibGObject.type_class_add_private(g_class, UInt64.cast(private_size))
+      __return_value = LibGObject.type_class_add_private(g_class, UInt64.new(private_size))
       __return_value
     end
 
@@ -30,17 +30,17 @@ module GObject
     end
 
     def self.peek(type)
-      __return_value = LibGObject.type_class_peek(UInt64.cast(type))
+      __return_value = LibGObject.type_class_peek(UInt64.new(type))
       GObject::TypeClass.new(__return_value)
     end
 
     def self.peek_static(type)
-      __return_value = LibGObject.type_class_peek_static(UInt64.cast(type))
+      __return_value = LibGObject.type_class_peek_static(UInt64.new(type))
       GObject::TypeClass.new(__return_value)
     end
 
     def self.ref(type)
-      __return_value = LibGObject.type_class_ref(UInt64.cast(type))
+      __return_value = LibGObject.type_class_ref(UInt64.new(type))
       GObject::TypeClass.new(__return_value)
     end
 

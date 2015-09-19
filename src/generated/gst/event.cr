@@ -10,7 +10,7 @@ module Gst
     end
 
     def self.new_buffer_size(format, minsize, maxsize, async)
-      __return_value = LibGst.event_new_buffer_size(format, Int64.cast(minsize), Int64.cast(maxsize), Bool.cast(async))
+      __return_value = LibGst.event_new_buffer_size(format, Int64.new(minsize), Int64.new(maxsize), Bool.new(async))
       Gst::Event.new(__return_value)
     end
 
@@ -35,17 +35,17 @@ module Gst
     end
 
     def self.new_flush_stop(reset_time)
-      __return_value = LibGst.event_new_flush_stop(Bool.cast(reset_time))
+      __return_value = LibGst.event_new_flush_stop(Bool.new(reset_time))
       Gst::Event.new(__return_value)
     end
 
     def self.new_gap(timestamp, duration)
-      __return_value = LibGst.event_new_gap(UInt64.cast(timestamp), UInt64.cast(duration))
+      __return_value = LibGst.event_new_gap(UInt64.new(timestamp), UInt64.new(duration))
       Gst::Event.new(__return_value)
     end
 
     def self.new_latency(latency)
-      __return_value = LibGst.event_new_latency(UInt64.cast(latency))
+      __return_value = LibGst.event_new_latency(UInt64.new(latency))
       Gst::Event.new(__return_value)
     end
 
@@ -55,7 +55,7 @@ module Gst
     end
 
     def self.new_qos(type, proportion, diff, timestamp)
-      __return_value = LibGst.event_new_qos(type, Float64.cast(proportion), Int64.cast(diff), UInt64.cast(timestamp))
+      __return_value = LibGst.event_new_qos(type, Float64.new(proportion), Int64.new(diff), UInt64.new(timestamp))
       Gst::Event.new(__return_value)
     end
 
@@ -65,7 +65,7 @@ module Gst
     end
 
     def self.new_seek(rate, format, flags, start_type, start, stop_type, stop)
-      __return_value = LibGst.event_new_seek(Float64.cast(rate), format, flags, start_type, Int64.cast(start), stop_type, Int64.cast(stop))
+      __return_value = LibGst.event_new_seek(Float64.new(rate), format, flags, start_type, Int64.new(start), stop_type, Int64.new(stop))
       Gst::Event.new(__return_value)
     end
 
@@ -75,7 +75,7 @@ module Gst
     end
 
     def self.new_segment_done(format, position)
-      __return_value = LibGst.event_new_segment_done(format, Int64.cast(position))
+      __return_value = LibGst.event_new_segment_done(format, Int64.new(position))
       Gst::Event.new(__return_value)
     end
 
@@ -85,7 +85,7 @@ module Gst
     end
 
     def self.new_step(format, amount, rate, flush, intermediate)
-      __return_value = LibGst.event_new_step(format, UInt64.cast(amount), Float64.cast(rate), Bool.cast(flush), Bool.cast(intermediate))
+      __return_value = LibGst.event_new_step(format, UInt64.new(amount), Float64.new(rate), Bool.new(flush), Bool.new(intermediate))
       Gst::Event.new(__return_value)
     end
 
@@ -100,7 +100,7 @@ module Gst
     end
 
     def self.new_toc(toc, updated)
-      __return_value = LibGst.event_new_toc((toc.to_unsafe as LibGst::Toc*), Bool.cast(updated))
+      __return_value = LibGst.event_new_toc((toc.to_unsafe as LibGst::Toc*), Bool.new(updated))
       Gst::Event.new(__return_value)
     end
 
@@ -135,7 +135,7 @@ module Gst
     end
 
     def parse_buffer_size(format, minsize, maxsize, async)
-      __return_value = LibGst.event_parse_buffer_size((to_unsafe as LibGst::Event*), format, Int64.cast(minsize), Int64.cast(maxsize), Bool.cast(async))
+      __return_value = LibGst.event_parse_buffer_size((to_unsafe as LibGst::Event*), format, Int64.new(minsize), Int64.new(maxsize), Bool.new(async))
       __return_value
     end
 
@@ -145,32 +145,32 @@ module Gst
     end
 
     def parse_flush_stop(reset_time)
-      __return_value = LibGst.event_parse_flush_stop((to_unsafe as LibGst::Event*), Bool.cast(reset_time))
+      __return_value = LibGst.event_parse_flush_stop((to_unsafe as LibGst::Event*), Bool.new(reset_time))
       __return_value
     end
 
     def parse_gap(timestamp, duration)
-      __return_value = LibGst.event_parse_gap((to_unsafe as LibGst::Event*), UInt64.cast(timestamp), UInt64.cast(duration))
+      __return_value = LibGst.event_parse_gap((to_unsafe as LibGst::Event*), UInt64.new(timestamp), UInt64.new(duration))
       __return_value
     end
 
     def parse_group_id(group_id)
-      __return_value = LibGst.event_parse_group_id((to_unsafe as LibGst::Event*), UInt32.cast(group_id))
+      __return_value = LibGst.event_parse_group_id((to_unsafe as LibGst::Event*), UInt32.new(group_id))
       __return_value
     end
 
     def parse_latency(latency)
-      __return_value = LibGst.event_parse_latency((to_unsafe as LibGst::Event*), UInt64.cast(latency))
+      __return_value = LibGst.event_parse_latency((to_unsafe as LibGst::Event*), UInt64.new(latency))
       __return_value
     end
 
     def parse_qos(type, proportion, diff, timestamp)
-      __return_value = LibGst.event_parse_qos((to_unsafe as LibGst::Event*), type, Float64.cast(proportion), Int64.cast(diff), UInt64.cast(timestamp))
+      __return_value = LibGst.event_parse_qos((to_unsafe as LibGst::Event*), type, Float64.new(proportion), Int64.new(diff), UInt64.new(timestamp))
       __return_value
     end
 
     def parse_seek(rate, format, flags, start_type, start, stop_type, stop)
-      __return_value = LibGst.event_parse_seek((to_unsafe as LibGst::Event*), Float64.cast(rate), format, flags, start_type, Int64.cast(start), stop_type, Int64.cast(stop))
+      __return_value = LibGst.event_parse_seek((to_unsafe as LibGst::Event*), Float64.new(rate), format, flags, start_type, Int64.new(start), stop_type, Int64.new(stop))
       __return_value
     end
 
@@ -180,7 +180,7 @@ module Gst
     end
 
     def parse_segment_done(format, position)
-      __return_value = LibGst.event_parse_segment_done((to_unsafe as LibGst::Event*), format, Int64.cast(position))
+      __return_value = LibGst.event_parse_segment_done((to_unsafe as LibGst::Event*), format, Int64.new(position))
       __return_value
     end
 
@@ -190,7 +190,7 @@ module Gst
     end
 
     def parse_step(format, amount, rate, flush, intermediate)
-      __return_value = LibGst.event_parse_step((to_unsafe as LibGst::Event*), format, UInt64.cast(amount), Float64.cast(rate), Bool.cast(flush), Bool.cast(intermediate))
+      __return_value = LibGst.event_parse_step((to_unsafe as LibGst::Event*), format, UInt64.new(amount), Float64.new(rate), Bool.new(flush), Bool.new(intermediate))
       __return_value
     end
 
@@ -210,7 +210,7 @@ module Gst
     end
 
     def parse_toc(toc, updated)
-      __return_value = LibGst.event_parse_toc((to_unsafe as LibGst::Event*), (toc.to_unsafe as LibGst::Toc*), Bool.cast(updated))
+      __return_value = LibGst.event_parse_toc((to_unsafe as LibGst::Event*), (toc.to_unsafe as LibGst::Toc*), Bool.new(updated))
       __return_value
     end
 
@@ -220,17 +220,17 @@ module Gst
     end
 
     def group_id=(group_id)
-      __return_value = LibGst.event_set_group_id((to_unsafe as LibGst::Event*), UInt32.cast(group_id))
+      __return_value = LibGst.event_set_group_id((to_unsafe as LibGst::Event*), UInt32.new(group_id))
       __return_value
     end
 
     def running_time_offset=(offset)
-      __return_value = LibGst.event_set_running_time_offset((to_unsafe as LibGst::Event*), Int64.cast(offset))
+      __return_value = LibGst.event_set_running_time_offset((to_unsafe as LibGst::Event*), Int64.new(offset))
       __return_value
     end
 
     def seqnum=(seqnum)
-      __return_value = LibGst.event_set_seqnum((to_unsafe as LibGst::Event*), UInt32.cast(seqnum))
+      __return_value = LibGst.event_set_seqnum((to_unsafe as LibGst::Event*), UInt32.new(seqnum))
       __return_value
     end
 

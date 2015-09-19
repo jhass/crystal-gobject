@@ -54,12 +54,12 @@ module Gio
     end
 
     def anonymous=(anonymous)
-      __return_value = LibGio.mount_operation_set_anonymous((to_unsafe as LibGio::MountOperation*), Bool.cast(anonymous))
+      __return_value = LibGio.mount_operation_set_anonymous((to_unsafe as LibGio::MountOperation*), Bool.new(anonymous))
       __return_value
     end
 
     def choice=(choice)
-      __return_value = LibGio.mount_operation_set_choice((to_unsafe as LibGio::MountOperation*), Int32.cast(choice))
+      __return_value = LibGio.mount_operation_set_choice((to_unsafe as LibGio::MountOperation*), Int32.new(choice))
       __return_value
     end
 

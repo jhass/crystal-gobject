@@ -15,23 +15,23 @@ module GObject
     end
 
     def self.add_prerequisite(interface_type, prerequisite_type)
-      __return_value = LibGObject.type_interface_add_prerequisite(UInt64.cast(interface_type), UInt64.cast(prerequisite_type))
+      __return_value = LibGObject.type_interface_add_prerequisite(UInt64.new(interface_type), UInt64.new(prerequisite_type))
       __return_value
     end
 
     def self.plugin(instance_type, interface_type)
-      __return_value = LibGObject.type_interface_get_plugin(UInt64.cast(instance_type), UInt64.cast(interface_type))
+      __return_value = LibGObject.type_interface_get_plugin(UInt64.new(instance_type), UInt64.new(interface_type))
       __return_value
     end
 
     def self.peek(instance_class, iface_type)
-      __return_value = LibGObject.type_interface_peek((instance_class.to_unsafe as LibGObject::TypeClass*), UInt64.cast(iface_type))
+      __return_value = LibGObject.type_interface_peek((instance_class.to_unsafe as LibGObject::TypeClass*), UInt64.new(iface_type))
       GObject::TypeInterface.new(__return_value)
     end
 
     def self.prerequisites(interface_type, n_prerequisites)
-      __return_value = LibGObject.type_interface_prerequisites(UInt64.cast(interface_type), UInt32.cast(n_prerequisites))
-      PointerIterator.new(__return_value) {|__item_20| __item_20 }
+      __return_value = LibGObject.type_interface_prerequisites(UInt64.new(interface_type), UInt32.new(n_prerequisites))
+      PointerIterator.new(__return_value) {|__item_61| __item_61 }
     end
 
   end

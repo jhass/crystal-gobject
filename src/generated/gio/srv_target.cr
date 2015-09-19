@@ -10,7 +10,7 @@ module Gio
     end
 
     def self.new_internal(hostname, port, priority, weight)
-      __return_value = LibGio.srv_target_new(hostname, UInt16.cast(port), UInt16.cast(priority), UInt16.cast(weight))
+      __return_value = LibGio.srv_target_new(hostname, UInt16.new(port), UInt16.new(priority), UInt16.new(weight))
       Gio::SrvTarget.new(__return_value)
     end
 

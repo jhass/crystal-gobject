@@ -53,7 +53,7 @@ module Gio
     end
 
     def urgent=(urgent)
-      __return_value = LibGio.notification_set_urgent((to_unsafe as LibGio::Notification*), Bool.cast(urgent))
+      __return_value = LibGio.notification_set_urgent((to_unsafe as LibGio::Notification*), Bool.new(urgent))
       __return_value
     end
 

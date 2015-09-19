@@ -15,7 +15,7 @@ module Gst
     end
 
     def self.new_allocation(caps, need_pool)
-      __return_value = LibGst.query_new_allocation((caps.to_unsafe as LibGst::Caps*), Bool.cast(need_pool))
+      __return_value = LibGst.query_new_allocation((caps.to_unsafe as LibGst::Caps*), Bool.new(need_pool))
       Gst::Query.new(__return_value)
     end
 
@@ -35,7 +35,7 @@ module Gst
     end
 
     def self.new_convert(src_format, value, dest_format)
-      __return_value = LibGst.query_new_convert(src_format, Int64.cast(value), dest_format)
+      __return_value = LibGst.query_new_convert(src_format, Int64.new(value), dest_format)
       Gst::Query.new(__return_value)
     end
 
@@ -90,7 +90,7 @@ module Gst
     end
 
     def add_allocation_meta(api, params)
-      __return_value = LibGst.query_add_allocation_meta((to_unsafe as LibGst::Query*), UInt64.cast(api), params && (params.to_unsafe as LibGst::Structure*))
+      __return_value = LibGst.query_add_allocation_meta((to_unsafe as LibGst::Query*), UInt64.new(api), params && (params.to_unsafe as LibGst::Structure*))
       __return_value
     end
 
@@ -100,12 +100,12 @@ module Gst
     end
 
     def add_allocation_pool(pool, size, min_buffers, max_buffers)
-      __return_value = LibGst.query_add_allocation_pool((to_unsafe as LibGst::Query*), pool && (pool.to_unsafe as LibGst::BufferPool*), UInt32.cast(size), UInt32.cast(min_buffers), UInt32.cast(max_buffers))
+      __return_value = LibGst.query_add_allocation_pool((to_unsafe as LibGst::Query*), pool && (pool.to_unsafe as LibGst::BufferPool*), UInt32.new(size), UInt32.new(min_buffers), UInt32.new(max_buffers))
       __return_value
     end
 
     def add_buffering_range(start, stop)
-      __return_value = LibGst.query_add_buffering_range((to_unsafe as LibGst::Query*), Int64.cast(start), Int64.cast(stop))
+      __return_value = LibGst.query_add_buffering_range((to_unsafe as LibGst::Query*), Int64.new(start), Int64.new(stop))
       __return_value
     end
 
@@ -115,7 +115,7 @@ module Gst
     end
 
     def find_allocation_meta(api, index)
-      __return_value = LibGst.query_find_allocation_meta((to_unsafe as LibGst::Query*), UInt64.cast(api), UInt32.cast(index))
+      __return_value = LibGst.query_find_allocation_meta((to_unsafe as LibGst::Query*), UInt64.new(api), UInt32.new(index))
       __return_value
     end
 
@@ -170,22 +170,22 @@ module Gst
     end
 
     def parse_allocation(caps, need_pool)
-      __return_value = LibGst.query_parse_allocation((to_unsafe as LibGst::Query*), (caps.to_unsafe as LibGst::Caps*), Bool.cast(need_pool))
+      __return_value = LibGst.query_parse_allocation((to_unsafe as LibGst::Query*), (caps.to_unsafe as LibGst::Caps*), Bool.new(need_pool))
       __return_value
     end
 
     def parse_buffering_percent(busy, percent)
-      __return_value = LibGst.query_parse_buffering_percent((to_unsafe as LibGst::Query*), Bool.cast(busy), Int32.cast(percent))
+      __return_value = LibGst.query_parse_buffering_percent((to_unsafe as LibGst::Query*), Bool.new(busy), Int32.new(percent))
       __return_value
     end
 
     def parse_buffering_range(format, start, stop, estimated_total)
-      __return_value = LibGst.query_parse_buffering_range((to_unsafe as LibGst::Query*), format, Int64.cast(start), Int64.cast(stop), Int64.cast(estimated_total))
+      __return_value = LibGst.query_parse_buffering_range((to_unsafe as LibGst::Query*), format, Int64.new(start), Int64.new(stop), Int64.new(estimated_total))
       __return_value
     end
 
     def parse_buffering_stats(mode, avg_in, avg_out, buffering_left)
-      __return_value = LibGst.query_parse_buffering_stats((to_unsafe as LibGst::Query*), mode, Int32.cast(avg_in), Int32.cast(avg_out), Int64.cast(buffering_left))
+      __return_value = LibGst.query_parse_buffering_stats((to_unsafe as LibGst::Query*), mode, Int32.new(avg_in), Int32.new(avg_out), Int64.new(buffering_left))
       __return_value
     end
 
@@ -210,72 +210,72 @@ module Gst
     end
 
     def parse_convert(src_format, src_value, dest_format, dest_value)
-      __return_value = LibGst.query_parse_convert((to_unsafe as LibGst::Query*), src_format, Int64.cast(src_value), dest_format, Int64.cast(dest_value))
+      __return_value = LibGst.query_parse_convert((to_unsafe as LibGst::Query*), src_format, Int64.new(src_value), dest_format, Int64.new(dest_value))
       __return_value
     end
 
     def parse_duration(format, duration)
-      __return_value = LibGst.query_parse_duration((to_unsafe as LibGst::Query*), format, Int64.cast(duration))
+      __return_value = LibGst.query_parse_duration((to_unsafe as LibGst::Query*), format, Int64.new(duration))
       __return_value
     end
 
     def parse_latency(live, min_latency, max_latency)
-      __return_value = LibGst.query_parse_latency((to_unsafe as LibGst::Query*), Bool.cast(live), UInt64.cast(min_latency), UInt64.cast(max_latency))
+      __return_value = LibGst.query_parse_latency((to_unsafe as LibGst::Query*), Bool.new(live), UInt64.new(min_latency), UInt64.new(max_latency))
       __return_value
     end
 
     def parse_n_formats(n_formats)
-      __return_value = LibGst.query_parse_n_formats((to_unsafe as LibGst::Query*), UInt32.cast(n_formats))
+      __return_value = LibGst.query_parse_n_formats((to_unsafe as LibGst::Query*), UInt32.new(n_formats))
       __return_value
     end
 
     def parse_nth_allocation_meta(index, params)
-      __return_value = LibGst.query_parse_nth_allocation_meta((to_unsafe as LibGst::Query*), UInt32.cast(index), (params.to_unsafe as LibGst::Structure*))
+      __return_value = LibGst.query_parse_nth_allocation_meta((to_unsafe as LibGst::Query*), UInt32.new(index), (params.to_unsafe as LibGst::Structure*))
       __return_value
     end
 
     def parse_nth_allocation_param(index, allocator, params)
-      __return_value = LibGst.query_parse_nth_allocation_param((to_unsafe as LibGst::Query*), UInt32.cast(index), (allocator.to_unsafe as LibGst::Allocator*), params)
+      __return_value = LibGst.query_parse_nth_allocation_param((to_unsafe as LibGst::Query*), UInt32.new(index), (allocator.to_unsafe as LibGst::Allocator*), params)
       __return_value
     end
 
     def parse_nth_allocation_pool(index, pool, size, min_buffers, max_buffers)
-      __return_value = LibGst.query_parse_nth_allocation_pool((to_unsafe as LibGst::Query*), UInt32.cast(index), (pool.to_unsafe as LibGst::BufferPool*), UInt32.cast(size), UInt32.cast(min_buffers), UInt32.cast(max_buffers))
+      __return_value = LibGst.query_parse_nth_allocation_pool((to_unsafe as LibGst::Query*), UInt32.new(index), (pool.to_unsafe as LibGst::BufferPool*), UInt32.new(size), UInt32.new(min_buffers), UInt32.new(max_buffers))
       __return_value
     end
 
     def parse_nth_buffering_range(index, start, stop)
-      __return_value = LibGst.query_parse_nth_buffering_range((to_unsafe as LibGst::Query*), UInt32.cast(index), Int64.cast(start), Int64.cast(stop))
+      __return_value = LibGst.query_parse_nth_buffering_range((to_unsafe as LibGst::Query*), UInt32.new(index), Int64.new(start), Int64.new(stop))
       __return_value
     end
 
     def parse_nth_format(nth, format)
-      __return_value = LibGst.query_parse_nth_format((to_unsafe as LibGst::Query*), UInt32.cast(nth), format)
+      __return_value = LibGst.query_parse_nth_format((to_unsafe as LibGst::Query*), UInt32.new(nth), format)
       __return_value
     end
 
     def parse_nth_scheduling_mode(index)
-      __return_value = LibGst.query_parse_nth_scheduling_mode((to_unsafe as LibGst::Query*), UInt32.cast(index))
+      __return_value = LibGst.query_parse_nth_scheduling_mode((to_unsafe as LibGst::Query*), UInt32.new(index))
       __return_value
     end
 
     def parse_position(format, cur)
-      __return_value = LibGst.query_parse_position((to_unsafe as LibGst::Query*), format, Int64.cast(cur))
+      __return_value = LibGst.query_parse_position((to_unsafe as LibGst::Query*), format, Int64.new(cur))
       __return_value
     end
 
     def parse_scheduling(flags, minsize, maxsize, align)
-      __return_value = LibGst.query_parse_scheduling((to_unsafe as LibGst::Query*), flags, Int32.cast(minsize), Int32.cast(maxsize), Int32.cast(align))
+      __return_value = LibGst.query_parse_scheduling((to_unsafe as LibGst::Query*), flags, Int32.new(minsize), Int32.new(maxsize), Int32.new(align))
       __return_value
     end
 
     def parse_seeking(format, seekable, segment_start, segment_end)
-      __return_value = LibGst.query_parse_seeking((to_unsafe as LibGst::Query*), format, Bool.cast(seekable), Int64.cast(segment_start), Int64.cast(segment_end))
+      __return_value = LibGst.query_parse_seeking((to_unsafe as LibGst::Query*), format, Bool.new(seekable), Int64.new(segment_start), Int64.new(segment_end))
       __return_value
     end
 
     def parse_segment(rate, format, start_value, stop_value)
-      __return_value = LibGst.query_parse_segment((to_unsafe as LibGst::Query*), Float64.cast(rate), format, Int64.cast(start_value), Int64.cast(stop_value))
+      __return_value = LibGst.query_parse_segment((to_unsafe as LibGst::Query*), Float64.new(rate), format, Int64.new(start_value), Int64.new(stop_value))
       __return_value
     end
 
@@ -290,42 +290,42 @@ module Gst
     end
 
     def parse_uri_redirection_permanent(permanent)
-      __return_value = LibGst.query_parse_uri_redirection_permanent((to_unsafe as LibGst::Query*), Bool.cast(permanent))
+      __return_value = LibGst.query_parse_uri_redirection_permanent((to_unsafe as LibGst::Query*), Bool.new(permanent))
       __return_value
     end
 
     def remove_nth_allocation_meta(index)
-      __return_value = LibGst.query_remove_nth_allocation_meta((to_unsafe as LibGst::Query*), UInt32.cast(index))
+      __return_value = LibGst.query_remove_nth_allocation_meta((to_unsafe as LibGst::Query*), UInt32.new(index))
       __return_value
     end
 
     def remove_nth_allocation_param(index)
-      __return_value = LibGst.query_remove_nth_allocation_param((to_unsafe as LibGst::Query*), UInt32.cast(index))
+      __return_value = LibGst.query_remove_nth_allocation_param((to_unsafe as LibGst::Query*), UInt32.new(index))
       __return_value
     end
 
     def remove_nth_allocation_pool(index)
-      __return_value = LibGst.query_remove_nth_allocation_pool((to_unsafe as LibGst::Query*), UInt32.cast(index))
+      __return_value = LibGst.query_remove_nth_allocation_pool((to_unsafe as LibGst::Query*), UInt32.new(index))
       __return_value
     end
 
     def accept_caps_result=(result)
-      __return_value = LibGst.query_set_accept_caps_result((to_unsafe as LibGst::Query*), Bool.cast(result))
+      __return_value = LibGst.query_set_accept_caps_result((to_unsafe as LibGst::Query*), Bool.new(result))
       __return_value
     end
 
     def set_buffering_percent(busy, percent)
-      __return_value = LibGst.query_set_buffering_percent((to_unsafe as LibGst::Query*), Bool.cast(busy), Int32.cast(percent))
+      __return_value = LibGst.query_set_buffering_percent((to_unsafe as LibGst::Query*), Bool.new(busy), Int32.new(percent))
       __return_value
     end
 
     def set_buffering_range(format, start, stop, estimated_total)
-      __return_value = LibGst.query_set_buffering_range((to_unsafe as LibGst::Query*), format, Int64.cast(start), Int64.cast(stop), Int64.cast(estimated_total))
+      __return_value = LibGst.query_set_buffering_range((to_unsafe as LibGst::Query*), format, Int64.new(start), Int64.new(stop), Int64.new(estimated_total))
       __return_value
     end
 
     def set_buffering_stats(mode, avg_in, avg_out, buffering_left)
-      __return_value = LibGst.query_set_buffering_stats((to_unsafe as LibGst::Query*), mode, Int32.cast(avg_in), Int32.cast(avg_out), Int64.cast(buffering_left))
+      __return_value = LibGst.query_set_buffering_stats((to_unsafe as LibGst::Query*), mode, Int32.new(avg_in), Int32.new(avg_out), Int64.new(buffering_left))
       __return_value
     end
 
@@ -340,52 +340,52 @@ module Gst
     end
 
     def set_convert(src_format, src_value, dest_format, dest_value)
-      __return_value = LibGst.query_set_convert((to_unsafe as LibGst::Query*), src_format, Int64.cast(src_value), dest_format, Int64.cast(dest_value))
+      __return_value = LibGst.query_set_convert((to_unsafe as LibGst::Query*), src_format, Int64.new(src_value), dest_format, Int64.new(dest_value))
       __return_value
     end
 
     def set_duration(format, duration)
-      __return_value = LibGst.query_set_duration((to_unsafe as LibGst::Query*), format, Int64.cast(duration))
+      __return_value = LibGst.query_set_duration((to_unsafe as LibGst::Query*), format, Int64.new(duration))
       __return_value
     end
 
     def set_formatsv(n_formats, formats)
-      __return_value = LibGst.query_set_formatsv((to_unsafe as LibGst::Query*), Int32.cast(n_formats), formats)
+      __return_value = LibGst.query_set_formatsv((to_unsafe as LibGst::Query*), Int32.new(n_formats), formats)
       __return_value
     end
 
     def set_latency(live, min_latency, max_latency)
-      __return_value = LibGst.query_set_latency((to_unsafe as LibGst::Query*), Bool.cast(live), UInt64.cast(min_latency), UInt64.cast(max_latency))
+      __return_value = LibGst.query_set_latency((to_unsafe as LibGst::Query*), Bool.new(live), UInt64.new(min_latency), UInt64.new(max_latency))
       __return_value
     end
 
     def set_nth_allocation_param(index, allocator, params)
-      __return_value = LibGst.query_set_nth_allocation_param((to_unsafe as LibGst::Query*), UInt32.cast(index), allocator && (allocator.to_unsafe as LibGst::Allocator*), params && (params.to_unsafe as LibGst::AllocationParams*))
+      __return_value = LibGst.query_set_nth_allocation_param((to_unsafe as LibGst::Query*), UInt32.new(index), allocator && (allocator.to_unsafe as LibGst::Allocator*), params && (params.to_unsafe as LibGst::AllocationParams*))
       __return_value
     end
 
     def set_nth_allocation_pool(index, pool, size, min_buffers, max_buffers)
-      __return_value = LibGst.query_set_nth_allocation_pool((to_unsafe as LibGst::Query*), UInt32.cast(index), pool && (pool.to_unsafe as LibGst::BufferPool*), UInt32.cast(size), UInt32.cast(min_buffers), UInt32.cast(max_buffers))
+      __return_value = LibGst.query_set_nth_allocation_pool((to_unsafe as LibGst::Query*), UInt32.new(index), pool && (pool.to_unsafe as LibGst::BufferPool*), UInt32.new(size), UInt32.new(min_buffers), UInt32.new(max_buffers))
       __return_value
     end
 
     def set_position(format, cur)
-      __return_value = LibGst.query_set_position((to_unsafe as LibGst::Query*), format, Int64.cast(cur))
+      __return_value = LibGst.query_set_position((to_unsafe as LibGst::Query*), format, Int64.new(cur))
       __return_value
     end
 
     def set_scheduling(flags, minsize, maxsize, align)
-      __return_value = LibGst.query_set_scheduling((to_unsafe as LibGst::Query*), flags, Int32.cast(minsize), Int32.cast(maxsize), Int32.cast(align))
+      __return_value = LibGst.query_set_scheduling((to_unsafe as LibGst::Query*), flags, Int32.new(minsize), Int32.new(maxsize), Int32.new(align))
       __return_value
     end
 
     def set_seeking(format, seekable, segment_start, segment_end)
-      __return_value = LibGst.query_set_seeking((to_unsafe as LibGst::Query*), format, Bool.cast(seekable), Int64.cast(segment_start), Int64.cast(segment_end))
+      __return_value = LibGst.query_set_seeking((to_unsafe as LibGst::Query*), format, Bool.new(seekable), Int64.new(segment_start), Int64.new(segment_end))
       __return_value
     end
 
     def set_segment(rate, format, start_value, stop_value)
-      __return_value = LibGst.query_set_segment((to_unsafe as LibGst::Query*), Float64.cast(rate), format, Int64.cast(start_value), Int64.cast(stop_value))
+      __return_value = LibGst.query_set_segment((to_unsafe as LibGst::Query*), Float64.new(rate), format, Int64.new(start_value), Int64.new(stop_value))
       __return_value
     end
 
@@ -400,7 +400,7 @@ module Gst
     end
 
     def uri_redirection_permanent=(permanent)
-      __return_value = LibGst.query_set_uri_redirection_permanent((to_unsafe as LibGst::Query*), Bool.cast(permanent))
+      __return_value = LibGst.query_set_uri_redirection_permanent((to_unsafe as LibGst::Query*), Bool.new(permanent))
       __return_value
     end
 

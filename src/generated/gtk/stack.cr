@@ -80,17 +80,17 @@ module Gtk
     end
 
     def hhomogeneous=(hhomogeneous)
-      __return_value = LibGtk.stack_set_hhomogeneous((to_unsafe as LibGtk::Stack*), Bool.cast(hhomogeneous))
+      __return_value = LibGtk.stack_set_hhomogeneous((to_unsafe as LibGtk::Stack*), Bool.new(hhomogeneous))
       __return_value
     end
 
     def homogeneous=(homogeneous)
-      __return_value = LibGtk.stack_set_homogeneous((to_unsafe as LibGtk::Stack*), Bool.cast(homogeneous))
+      __return_value = LibGtk.stack_set_homogeneous((to_unsafe as LibGtk::Stack*), Bool.new(homogeneous))
       __return_value
     end
 
     def transition_duration=(duration)
-      __return_value = LibGtk.stack_set_transition_duration((to_unsafe as LibGtk::Stack*), UInt32.cast(duration))
+      __return_value = LibGtk.stack_set_transition_duration((to_unsafe as LibGtk::Stack*), UInt32.new(duration))
       __return_value
     end
 
@@ -100,7 +100,7 @@ module Gtk
     end
 
     def vhomogeneous=(vhomogeneous)
-      __return_value = LibGtk.stack_set_vhomogeneous((to_unsafe as LibGtk::Stack*), Bool.cast(vhomogeneous))
+      __return_value = LibGtk.stack_set_vhomogeneous((to_unsafe as LibGtk::Stack*), Bool.new(vhomogeneous))
       __return_value
     end
 

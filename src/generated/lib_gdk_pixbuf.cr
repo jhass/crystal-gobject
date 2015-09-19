@@ -56,9 +56,9 @@ lib LibGdkPixbuf
   PIXBUF_FEATURES_H = 1 # : Int32
   PIXBUF_MAGIC_NUMBER = 1197763408 # : Int32
   PIXBUF_MAJOR = 2 # : Int32
-  PIXBUF_MICRO = 4 # : Int32
+  PIXBUF_MICRO = 6 # : Int32
   PIXBUF_MINOR = 31 # : Int32
-  PIXBUF_VERSION = "2.31.4" # : UInt8*
+  PIXBUF_VERSION = "2.31.6" # : UInt8*
   PIXDATA_HEADER_LENGTH = 24 # : Int32
 
   ###########################################
@@ -250,7 +250,7 @@ lib LibGdkPixbuf
   ##    Callbacks
   ###########################################
 
- alias PixbufDestroyNotify = UInt8*, Void* -> Void
- alias PixbufSaveFunc = UInt8*, UInt64, LibGLib::Error**, Void* -> Bool
+ type PixbufDestroyNotify = UInt8*, Void* -> Void
+ type PixbufSaveFunc = UInt8*, UInt64, LibGLib::Error**, Void* -> Bool
 end
 

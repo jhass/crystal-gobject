@@ -40,17 +40,17 @@ module Gtk
     end
 
     def self.new_from_gicon(icon, size)
-      __return_value = LibGtk.image_new_from_gicon((icon.to_unsafe as LibGio::Icon*), Int32.cast(size))
+      __return_value = LibGtk.image_new_from_gicon((icon.to_unsafe as LibGio::Icon*), Int32.new(size))
       Gtk::Widget.new(__return_value)
     end
 
     def self.new_from_icon_name(icon_name, size)
-      __return_value = LibGtk.image_new_from_icon_name(icon_name, Int32.cast(size))
+      __return_value = LibGtk.image_new_from_icon_name(icon_name, Int32.new(size))
       Gtk::Widget.new(__return_value)
     end
 
     def self.new_from_icon_set(icon_set, size)
-      __return_value = LibGtk.image_new_from_icon_set((icon_set.to_unsafe as LibGtk::IconSet*), Int32.cast(size))
+      __return_value = LibGtk.image_new_from_icon_set((icon_set.to_unsafe as LibGtk::IconSet*), Int32.new(size))
       Gtk::Widget.new(__return_value)
     end
 
@@ -65,7 +65,7 @@ module Gtk
     end
 
     def self.new_from_stock(stock_id, size)
-      __return_value = LibGtk.image_new_from_stock(stock_id, Int32.cast(size))
+      __return_value = LibGtk.image_new_from_stock(stock_id, Int32.new(size))
       Gtk::Widget.new(__return_value)
     end
 
@@ -85,17 +85,17 @@ module Gtk
     end
 
     def gicon(gicon, size)
-      __return_value = LibGtk.image_get_gicon((to_unsafe as LibGtk::Image*), (gicon.to_unsafe as LibGio::Icon*), Int32.cast(size))
+      __return_value = LibGtk.image_get_gicon((to_unsafe as LibGtk::Image*), (gicon.to_unsafe as LibGio::Icon*), Int32.new(size))
       __return_value
     end
 
     def icon_name(icon_name, size)
-      __return_value = LibGtk.image_get_icon_name((to_unsafe as LibGtk::Image*), icon_name, Int32.cast(size))
+      __return_value = LibGtk.image_get_icon_name((to_unsafe as LibGtk::Image*), icon_name, Int32.new(size))
       __return_value
     end
 
     def icon_set(icon_set, size)
-      __return_value = LibGtk.image_get_icon_set((to_unsafe as LibGtk::Image*), (icon_set.to_unsafe as LibGtk::IconSet*), Int32.cast(size))
+      __return_value = LibGtk.image_get_icon_set((to_unsafe as LibGtk::Image*), (icon_set.to_unsafe as LibGtk::IconSet*), Int32.new(size))
       __return_value
     end
 
@@ -110,7 +110,7 @@ module Gtk
     end
 
     def stock(stock_id, size)
-      __return_value = LibGtk.image_get_stock((to_unsafe as LibGtk::Image*), stock_id, Int32.cast(size))
+      __return_value = LibGtk.image_get_stock((to_unsafe as LibGtk::Image*), stock_id, Int32.new(size))
       __return_value
     end
 
@@ -130,17 +130,17 @@ module Gtk
     end
 
     def set_from_gicon(icon, size)
-      __return_value = LibGtk.image_set_from_gicon((to_unsafe as LibGtk::Image*), (icon.to_unsafe as LibGio::Icon*), Int32.cast(size))
+      __return_value = LibGtk.image_set_from_gicon((to_unsafe as LibGtk::Image*), (icon.to_unsafe as LibGio::Icon*), Int32.new(size))
       __return_value
     end
 
     def set_from_icon_name(icon_name, size)
-      __return_value = LibGtk.image_set_from_icon_name((to_unsafe as LibGtk::Image*), icon_name, Int32.cast(size))
+      __return_value = LibGtk.image_set_from_icon_name((to_unsafe as LibGtk::Image*), icon_name, Int32.new(size))
       __return_value
     end
 
     def set_from_icon_set(icon_set, size)
-      __return_value = LibGtk.image_set_from_icon_set((to_unsafe as LibGtk::Image*), (icon_set.to_unsafe as LibGtk::IconSet*), Int32.cast(size))
+      __return_value = LibGtk.image_set_from_icon_set((to_unsafe as LibGtk::Image*), (icon_set.to_unsafe as LibGtk::IconSet*), Int32.new(size))
       __return_value
     end
 
@@ -155,7 +155,7 @@ module Gtk
     end
 
     def set_from_stock(stock_id, size)
-      __return_value = LibGtk.image_set_from_stock((to_unsafe as LibGtk::Image*), stock_id, Int32.cast(size))
+      __return_value = LibGtk.image_set_from_stock((to_unsafe as LibGtk::Image*), stock_id, Int32.new(size))
       __return_value
     end
 
@@ -165,7 +165,7 @@ module Gtk
     end
 
     def pixel_size=(pixel_size)
-      __return_value = LibGtk.image_set_pixel_size((to_unsafe as LibGtk::Image*), Int32.cast(pixel_size))
+      __return_value = LibGtk.image_set_pixel_size((to_unsafe as LibGtk::Image*), Int32.new(pixel_size))
       __return_value
     end
 

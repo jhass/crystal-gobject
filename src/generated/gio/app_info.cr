@@ -18,7 +18,7 @@ module Gio
     end
 
     def self.default_for_type(content_type, must_support_uris)
-      __return_value = LibGio.app_info_get_default_for_type(content_type, Bool.cast(must_support_uris))
+      __return_value = LibGio.app_info_get_default_for_type(content_type, Bool.new(must_support_uris))
       __return_value
     end
 
@@ -118,7 +118,7 @@ module Gio
 
     def supported_types
       __return_value = LibGio.app_info_get_supported_types((to_unsafe as LibGio::AppInfo*))
-      PointerIterator.new(__return_value) {|__item_16| raise "Expected string but got null" unless __item_16; String.new(__item_16) }
+      PointerIterator.new(__return_value) {|__item_89| raise "Expected string but got null" unless __item_89; String.new(__item_89) }
     end
 
     def launch(files, launch_context)

@@ -71,7 +71,7 @@ module Gio
     end
 
     def handshake_async(io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.tls_connection_handshake_async((to_unsafe as LibGio::TlsConnection*), Int32.cast(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.tls_connection_handshake_async((to_unsafe as LibGio::TlsConnection*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -103,12 +103,12 @@ module Gio
     end
 
     def require_close_notify=(require_close_notify)
-      __return_value = LibGio.tls_connection_set_require_close_notify((to_unsafe as LibGio::TlsConnection*), Bool.cast(require_close_notify))
+      __return_value = LibGio.tls_connection_set_require_close_notify((to_unsafe as LibGio::TlsConnection*), Bool.new(require_close_notify))
       __return_value
     end
 
     def use_system_certdb=(use_system_certdb)
-      __return_value = LibGio.tls_connection_set_use_system_certdb((to_unsafe as LibGio::TlsConnection*), Bool.cast(use_system_certdb))
+      __return_value = LibGio.tls_connection_set_use_system_certdb((to_unsafe as LibGio::TlsConnection*), Bool.new(use_system_certdb))
       __return_value
     end
 

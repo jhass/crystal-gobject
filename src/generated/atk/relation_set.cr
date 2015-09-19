@@ -38,7 +38,7 @@ module Atk
     end
 
     def relation(i)
-      __return_value = LibAtk.relation_set_get_relation((to_unsafe as LibAtk::RelationSet*), Int32.cast(i))
+      __return_value = LibAtk.relation_set_get_relation((to_unsafe as LibAtk::RelationSet*), Int32.new(i))
       Atk::Relation.new(__return_value)
     end
 

@@ -19,11 +19,11 @@ module Gio
 
     def completions(initial_text)
       __return_value = LibGio.filename_completer_get_completions((to_unsafe as LibGio::FilenameCompleter*), initial_text)
-      PointerIterator.new(__return_value) {|__item_9| raise "Expected string but got null" unless __item_9; String.new(__item_9) }
+      PointerIterator.new(__return_value) {|__item_70| raise "Expected string but got null" unless __item_70; String.new(__item_70) }
     end
 
     def dirs_only=(dirs_only)
-      __return_value = LibGio.filename_completer_set_dirs_only((to_unsafe as LibGio::FilenameCompleter*), Bool.cast(dirs_only))
+      __return_value = LibGio.filename_completer_set_dirs_only((to_unsafe as LibGio::FilenameCompleter*), Bool.new(dirs_only))
       __return_value
     end
 

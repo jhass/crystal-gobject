@@ -41,12 +41,12 @@ module Gtk
     end
 
     def reveal_child=(reveal_child)
-      __return_value = LibGtk.revealer_set_reveal_child((to_unsafe as LibGtk::Revealer*), Bool.cast(reveal_child))
+      __return_value = LibGtk.revealer_set_reveal_child((to_unsafe as LibGtk::Revealer*), Bool.new(reveal_child))
       __return_value
     end
 
     def transition_duration=(duration)
-      __return_value = LibGtk.revealer_set_transition_duration((to_unsafe as LibGtk::Revealer*), UInt32.cast(duration))
+      __return_value = LibGtk.revealer_set_transition_duration((to_unsafe as LibGtk::Revealer*), UInt32.new(duration))
       __return_value
     end
 
