@@ -132,7 +132,7 @@ module Gtk
 
     def deserialize_formats(n_formats)
       __return_value = LibGtk.text_buffer_get_deserialize_formats((to_unsafe as LibGtk::TextBuffer*), Int32.new(n_formats))
-      PointerIterator.new(__return_value) {|__item_51| Gdk::Atom.new(__item_51) }
+      PointerIterator.new(__return_value) {|__item_57| Gdk::Atom.new(__item_57) }
     end
 
     def end_iter(iter)
@@ -212,7 +212,7 @@ module Gtk
 
     def serialize_formats(n_formats)
       __return_value = LibGtk.text_buffer_get_serialize_formats((to_unsafe as LibGtk::TextBuffer*), Int32.new(n_formats))
-      PointerIterator.new(__return_value) {|__item_17| Gdk::Atom.new(__item_17) }
+      PointerIterator.new(__return_value) {|__item_67| Gdk::Atom.new(__item_67) }
     end
 
     def slice(start, end, include_hidden_chars)
@@ -347,7 +347,7 @@ module Gtk
 
     def serialize(content_buffer, format, start, end, length)
       __return_value = LibGtk.text_buffer_serialize((to_unsafe as LibGtk::TextBuffer*), (content_buffer.to_unsafe as LibGtk::TextBuffer*), (format.to_unsafe as LibGdk::Atom*), (start.to_unsafe as LibGtk::TextIter*), (end.to_unsafe as LibGtk::TextIter*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_32| __item_32 }
+      PointerIterator.new(__return_value) {|__item_1| __item_1 }
     end
 
     def modified=(setting)

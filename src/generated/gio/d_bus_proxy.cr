@@ -102,7 +102,7 @@ module Gio
 
     def cached_property_names
       __return_value = LibGio.d_bus_proxy_get_cached_property_names((to_unsafe as LibGio::DBusProxy*))
-      PointerIterator.new(__return_value) {|__item_4| raise "Expected string but got null" unless __item_4; String.new(__item_4) }
+      PointerIterator.new(__return_value) {|__item_63| raise "Expected string but got null" unless __item_63; String.new(__item_63) }
     end
 
     def connection

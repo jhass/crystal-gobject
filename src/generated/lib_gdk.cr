@@ -3745,9 +3745,9 @@ lib LibGdk
   ##    Callbacks
   ###########################################
 
- type EventFunc = LibGdk::Event*, Void* -> Void
- type FilterFunc = Void*, LibGdk::Event*, Void* -> LibGdk::FilterReturn
- type WindowChildFunc = LibGdk::Window*, Void* -> Bool
- type WindowInvalidateHandlerFunc = LibGdk::Window*, Libcairo::Region* -> Void
+ alias EventFunc = LibGdk::Event*, Void* -> Void
+ alias FilterFunc = Void*, LibGdk::Event*, Void* -> LibGdk::FilterReturn
+ alias WindowChildFunc = LibGdk::Window*, Void* -> Bool
+ alias WindowInvalidateHandlerFunc = LibGdk::Window*, Libcairo::Region* -> Void
 end
 

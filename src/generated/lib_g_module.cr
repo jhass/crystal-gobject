@@ -43,7 +43,7 @@ lib LibGModule
   ##    Callbacks
   ###########################################
 
- type ModuleCheckInit = LibGModule::Module* -> UInt8*
- type ModuleUnload = LibGModule::Module* -> Void
+ alias ModuleCheckInit = LibGModule::Module* -> UInt8*
+ alias ModuleUnload = LibGModule::Module* -> Void
 end
 

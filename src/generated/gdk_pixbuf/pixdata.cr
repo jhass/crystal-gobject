@@ -18,7 +18,7 @@ module GdkPixbuf
 
     def serialize(stream_length_p)
       __return_value = LibGdkPixbuf.pixdata_serialize((to_unsafe as LibGdkPixbuf::Pixdata*), UInt32.new(stream_length_p))
-      PointerIterator.new(__return_value) {|__item_3| __item_3 }
+      PointerIterator.new(__return_value) {|__item_68| __item_68 }
     end
 
     def to_csource(name, dump_type)

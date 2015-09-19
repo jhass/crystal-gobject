@@ -87,6 +87,6 @@ lib LibNotify
   ##    Callbacks
   ###########################################
 
- type ActionCallback = LibNotify::Notification*, UInt8*, Void* -> Void
+ alias ActionCallback = LibNotify::Notification*, UInt8*, Void* -> Void
 end
 

@@ -59,7 +59,7 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.data_input_stream_read_line((to_unsafe as LibGio::DataInputStream*), UInt64.new(length), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_59| __item_59 } if __return_value
+      PointerIterator.new(__return_value) {|__item_73| __item_73 } if __return_value
     end
 
     def read_line_async(io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
@@ -71,7 +71,7 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.data_input_stream_read_line_finish((to_unsafe as LibGio::DataInputStream*), (result.to_unsafe as LibGio::AsyncResult*), UInt64.new(length), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_26| __item_26 } if __return_value
+      PointerIterator.new(__return_value) {|__item_54| __item_54 } if __return_value
     end
 
     def read_line_finish_utf8(result, length)

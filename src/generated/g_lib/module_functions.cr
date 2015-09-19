@@ -181,7 +181,7 @@ module GLib
 
   def self.base64_decode(text, out_len)
     __return_value = LibGLib.base64_decode(text, UInt64.new(out_len))
-    PointerIterator.new(__return_value) {|__item_38| __item_38 }
+    PointerIterator.new(__return_value) {|__item_35| __item_35 }
   end
 
   def self.base64_decode_inplace(text, out_len)
@@ -548,12 +548,12 @@ module GLib
 
   def self.environ_setenv(envp, variable, value, overwrite)
     __return_value = LibGLib.environ_setenv(envp && envp, variable, value, Bool.new(overwrite))
-    PointerIterator.new(__return_value) {|__item_86| raise "Expected string but got null" unless __item_86; String.new(__item_86) }
+    PointerIterator.new(__return_value) {|__item_70| raise "Expected string but got null" unless __item_70; String.new(__item_70) }
   end
 
   def self.environ_unsetenv(envp, variable)
     __return_value = LibGLib.environ_unsetenv(envp && envp, variable)
-    PointerIterator.new(__return_value) {|__item_99| raise "Expected string but got null" unless __item_99; String.new(__item_99) }
+    PointerIterator.new(__return_value) {|__item_73| raise "Expected string but got null" unless __item_73; String.new(__item_73) }
   end
 
   def self.file_error_from_errno(err_no)
@@ -620,7 +620,7 @@ module GLib
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.filename_from_utf8(utf8string, Int64.new(len), UInt64.new(bytes_read), UInt64.new(bytes_written), pointerof(__error))
     GLib::Error.assert __error
-    PointerIterator.new(__return_value) {|__item_0| __item_0 }
+    PointerIterator.new(__return_value) {|__item_96| __item_96 }
   end
 
   def self.filename_to_uri(filename, hostname)
@@ -689,7 +689,7 @@ module GLib
 
   def self.environ
     __return_value = LibGLib.get_environ
-    PointerIterator.new(__return_value) {|__item_16| raise "Expected string but got null" unless __item_16; String.new(__item_16) }
+    PointerIterator.new(__return_value) {|__item_26| raise "Expected string but got null" unless __item_26; String.new(__item_26) }
   end
 
   def self.filename_charsets(charsets)
@@ -709,12 +709,12 @@ module GLib
 
   def self.language_names
     __return_value = LibGLib.get_language_names
-    PointerIterator.new(__return_value) {|__item_80| raise "Expected string but got null" unless __item_80; String.new(__item_80) }
+    PointerIterator.new(__return_value) {|__item_16| raise "Expected string but got null" unless __item_16; String.new(__item_16) }
   end
 
   def self.locale_variants(locale)
     __return_value = LibGLib.get_locale_variants(locale)
-    PointerIterator.new(__return_value) {|__item_80| raise "Expected string but got null" unless __item_80; String.new(__item_80) }
+    PointerIterator.new(__return_value) {|__item_17| raise "Expected string but got null" unless __item_17; String.new(__item_17) }
   end
 
   def self.monotonic_time
@@ -744,12 +744,12 @@ module GLib
 
   def self.system_config_dirs
     __return_value = LibGLib.get_system_config_dirs
-    PointerIterator.new(__return_value) {|__item_44| raise "Expected string but got null" unless __item_44; String.new(__item_44) }
+    PointerIterator.new(__return_value) {|__item_76| raise "Expected string but got null" unless __item_76; String.new(__item_76) }
   end
 
   def self.system_data_dirs
     __return_value = LibGLib.get_system_data_dirs
-    PointerIterator.new(__return_value) {|__item_10| raise "Expected string but got null" unless __item_10; String.new(__item_10) }
+    PointerIterator.new(__return_value) {|__item_7| raise "Expected string but got null" unless __item_7; String.new(__item_7) }
   end
 
   def self.tmp_dir
@@ -984,7 +984,7 @@ module GLib
 
   def self.listenv
     __return_value = LibGLib.listenv
-    PointerIterator.new(__return_value) {|__item_63| raise "Expected string but got null" unless __item_63; String.new(__item_63) }
+    PointerIterator.new(__return_value) {|__item_47| raise "Expected string but got null" unless __item_47; String.new(__item_47) }
   end
 
   def self.locale_from_utf8(utf8string, len, bytes_read, bytes_written)
@@ -1265,7 +1265,7 @@ module GLib
 
   def self.regex_split_simple(pattern, string, compile_options, match_options)
     __return_value = LibGLib.regex_split_simple(pattern, string, compile_options, match_options)
-    PointerIterator.new(__return_value) {|__item_15| raise "Expected string but got null" unless __item_15; String.new(__item_15) }
+    PointerIterator.new(__return_value) {|__item_25| raise "Expected string but got null" unless __item_25; String.new(__item_25) }
   end
 
   def self.reload_user_special_dirs_cache
@@ -1506,7 +1506,7 @@ module GLib
 
   def self.str_tokenize_and_fold(string, translit_locale, ascii_alternates)
     __return_value = LibGLib.str_tokenize_and_fold(string, translit_locale && translit_locale, ascii_alternates)
-    PointerIterator.new(__return_value) {|__item_45| raise "Expected string but got null" unless __item_45; String.new(__item_45) }
+    PointerIterator.new(__return_value) {|__item_43| raise "Expected string but got null" unless __item_43; String.new(__item_43) }
   end
 
   def self.strcanon(string, valid_chars, substitutor)
@@ -2159,7 +2159,7 @@ module GLib
 
   def self.uri_list_extract_uris(uri_list)
     __return_value = LibGLib.uri_list_extract_uris(uri_list)
-    PointerIterator.new(__return_value) {|__item_68| raise "Expected string but got null" unless __item_68; String.new(__item_68) }
+    PointerIterator.new(__return_value) {|__item_70| raise "Expected string but got null" unless __item_70; String.new(__item_70) }
   end
 
   def self.uri_parse_scheme(uri)

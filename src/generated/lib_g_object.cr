@@ -844,31 +844,31 @@ lib LibGObject
   ##    Callbacks
   ###########################################
 
- type BaseFinalizeFunc = Void* -> Void
- type BaseInitFunc = Void* -> Void
- type BindingTransformFunc = LibGObject::Binding*, LibGObject::Value*, LibGObject::Value*, Void* -> Bool
- type BoxedFreeFunc = Void* -> Void
- type Callback =  -> Void
- type ClassFinalizeFunc = Void*, Void* -> Void
- type ClassInitFunc = Void*, Void* -> Void
- type ClosureMarshal = LibGObject::Closure*, LibGObject::Value*, UInt32, LibGObject::Value*, Void*, Void* -> Void
- type ClosureNotify = Void*, LibGObject::Closure* -> Void
- type InstanceInitFunc = LibGObject::TypeInstance*, Void* -> Void
- type InterfaceFinalizeFunc = Void*, Void* -> Void
- type InterfaceInitFunc = Void*, Void* -> Void
- type ObjectFinalizeFunc = LibGObject::Object* -> Void
- type ObjectGetPropertyFunc = LibGObject::Object*, UInt32, LibGObject::Value*, LibGObject::ParamSpec* -> Void
- type ObjectSetPropertyFunc = LibGObject::Object*, UInt32, LibGObject::Value*, LibGObject::ParamSpec* -> Void
- type SignalAccumulator = LibGObject::SignalInvocationHint*, LibGObject::Value*, LibGObject::Value*, Void* -> Bool
- type SignalEmissionHook = LibGObject::SignalInvocationHint*, UInt32, LibGObject::Value*, Void* -> Bool
- type ToggleNotify = Void*, LibGObject::Object*, Bool -> Void
- type TypeClassCacheFunc = Void*, LibGObject::TypeClass* -> Bool
- type TypeInterfaceCheckFunc = Void*, Void* -> Void
- type TypePluginCompleteInterfaceInfo = LibGObject::TypePlugin*, UInt64, UInt64, LibGObject::InterfaceInfo* -> Void
- type TypePluginCompleteTypeInfo = LibGObject::TypePlugin*, UInt64, LibGObject::TypeInfo*, LibGObject::TypeValueTable* -> Void
- type TypePluginUnuse = LibGObject::TypePlugin* -> Void
- type TypePluginUse = LibGObject::TypePlugin* -> Void
- type ValueTransform = LibGObject::Value*, LibGObject::Value* -> Void
- type WeakNotify = Void*, LibGObject::Object* -> Void
+ alias BaseFinalizeFunc = Void* -> Void
+ alias BaseInitFunc = Void* -> Void
+ alias BindingTransformFunc = LibGObject::Binding*, LibGObject::Value*, LibGObject::Value*, Void* -> Bool
+ alias BoxedFreeFunc = Void* -> Void
+ alias Callback =  -> Void
+ alias ClassFinalizeFunc = Void*, Void* -> Void
+ alias ClassInitFunc = Void*, Void* -> Void
+ alias ClosureMarshal = LibGObject::Closure*, LibGObject::Value*, UInt32, LibGObject::Value*, Void*, Void* -> Void
+ alias ClosureNotify = Void*, LibGObject::Closure* -> Void
+ alias InstanceInitFunc = LibGObject::TypeInstance*, Void* -> Void
+ alias InterfaceFinalizeFunc = Void*, Void* -> Void
+ alias InterfaceInitFunc = Void*, Void* -> Void
+ alias ObjectFinalizeFunc = LibGObject::Object* -> Void
+ alias ObjectGetPropertyFunc = LibGObject::Object*, UInt32, LibGObject::Value*, LibGObject::ParamSpec* -> Void
+ alias ObjectSetPropertyFunc = LibGObject::Object*, UInt32, LibGObject::Value*, LibGObject::ParamSpec* -> Void
+ alias SignalAccumulator = LibGObject::SignalInvocationHint*, LibGObject::Value*, LibGObject::Value*, Void* -> Bool
+ alias SignalEmissionHook = LibGObject::SignalInvocationHint*, UInt32, LibGObject::Value*, Void* -> Bool
+ alias ToggleNotify = Void*, LibGObject::Object*, Bool -> Void
+ alias TypeClassCacheFunc = Void*, LibGObject::TypeClass* -> Bool
+ alias TypeInterfaceCheckFunc = Void*, Void* -> Void
+ alias TypePluginCompleteInterfaceInfo = LibGObject::TypePlugin*, UInt64, UInt64, LibGObject::InterfaceInfo* -> Void
+ alias TypePluginCompleteTypeInfo = LibGObject::TypePlugin*, UInt64, LibGObject::TypeInfo*, LibGObject::TypeValueTable* -> Void
+ alias TypePluginUnuse = LibGObject::TypePlugin* -> Void
+ alias TypePluginUse = LibGObject::TypePlugin* -> Void
+ alias ValueTransform = LibGObject::Value*, LibGObject::Value* -> Void
+ alias WeakNotify = Void*, LibGObject::Object* -> Void
 end
 

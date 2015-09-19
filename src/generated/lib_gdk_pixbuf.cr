@@ -250,7 +250,7 @@ lib LibGdkPixbuf
   ##    Callbacks
   ###########################################
 
- type PixbufDestroyNotify = UInt8*, Void* -> Void
- type PixbufSaveFunc = UInt8*, UInt64, LibGLib::Error**, Void* -> Bool
+ alias PixbufDestroyNotify = UInt8*, Void* -> Void
+ alias PixbufSaveFunc = UInt8*, UInt64, LibGLib::Error**, Void* -> Bool
 end
 

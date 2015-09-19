@@ -67,7 +67,7 @@ module Gtk
 
     def uris(length)
       __return_value = LibGtk.recent_chooser_get_uris((to_unsafe as LibGtk::RecentChooser*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_23| raise "Expected string but got null" unless __item_23; String.new(__item_23) }
+      PointerIterator.new(__return_value) {|__item_26| raise "Expected string but got null" unless __item_26; String.new(__item_26) }
     end
 
     def list_filters

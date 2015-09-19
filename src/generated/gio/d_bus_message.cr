@@ -81,7 +81,7 @@ module Gio
 
     def header_fields
       __return_value = LibGio.d_bus_message_get_header_fields((to_unsafe as LibGio::DBusMessage*))
-      PointerIterator.new(__return_value) {|__item_59| __item_59 }
+      PointerIterator.new(__return_value) {|__item_50| __item_50 }
     end
 
     def interface
@@ -243,7 +243,7 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_message_to_blob((to_unsafe as LibGio::DBusMessage*), UInt64.new(out_size), capabilities, pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_25| __item_25 }
+      PointerIterator.new(__return_value) {|__item_28| __item_28 }
     end
 
     def to_gerror

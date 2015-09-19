@@ -5,7 +5,7 @@ module GIRepository
 
     def lib_definition
       String.build do |io|
-        io << " type #{name} = "
+        io << " alias #{name} = "
         io << args.map(&.type.lib_definition).join(", ")
         io << " -> #{return_type.lib_definition}"
       end

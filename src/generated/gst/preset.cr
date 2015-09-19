@@ -22,12 +22,12 @@ module Gst
 
     def preset_names
       __return_value = LibGst.preset_get_preset_names((to_unsafe as LibGst::Preset*))
-      PointerIterator.new(__return_value) {|__item_94| raise "Expected string but got null" unless __item_94; String.new(__item_94) }
+      PointerIterator.new(__return_value) {|__item_48| raise "Expected string but got null" unless __item_48; String.new(__item_48) }
     end
 
     def property_names
       __return_value = LibGst.preset_get_property_names((to_unsafe as LibGst::Preset*))
-      PointerIterator.new(__return_value) {|__item_19| raise "Expected string but got null" unless __item_19; String.new(__item_19) }
+      PointerIterator.new(__return_value) {|__item_93| raise "Expected string but got null" unless __item_93; String.new(__item_93) }
     end
 
     def load_preset(name)
