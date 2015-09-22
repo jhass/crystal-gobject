@@ -1,7 +1,7 @@
 require "signal"
 require "../g_object"
+require "../gdk"
 require "../generated/lib_gtk"
-require "../generated/gdk"
 require "../generated/gtk/text_direction"
 require "../generated/gtk/selection_data"
 require "../generated/gtk/drag_result"

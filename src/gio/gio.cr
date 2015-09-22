@@ -1,3 +1,4 @@
+require "../g_object"
 require "../generated/gio/application_command_line"
 require "../generated/gio/file"
 require "../generated/gio/i_o_stream"
