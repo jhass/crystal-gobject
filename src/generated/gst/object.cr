@@ -51,7 +51,7 @@ module Gst
 
     def name
       __return_value = LibGst.object_get_name((to_unsafe as LibGst::Object*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def parent
@@ -61,7 +61,7 @@ module Gst
 
     def path_string
       __return_value = LibGst.object_get_path_string((to_unsafe as LibGst::Object*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def value(property_name, timestamp)
@@ -95,12 +95,12 @@ module Gst
     end
 
     def set_control_binding_disabled(property_name, disabled)
-      __return_value = LibGst.object_set_control_binding_disabled((to_unsafe as LibGst::Object*), property_name, Bool.new(disabled))
+      __return_value = LibGst.object_set_control_binding_disabled((to_unsafe as LibGst::Object*), property_name, disabled)
       __return_value
     end
 
     def control_bindings_disabled=(disabled)
-      __return_value = LibGst.object_set_control_bindings_disabled((to_unsafe as LibGst::Object*), Bool.new(disabled))
+      __return_value = LibGst.object_set_control_bindings_disabled((to_unsafe as LibGst::Object*), disabled)
       __return_value
     end
 
@@ -137,6 +137,15 @@ module Gst
     def unref
       __return_value = LibGst.object_unref((to_unsafe as LibGst::Object*))
       __return_value
+    end
+
+    alias DeepNotifySignal = Object, Gst::Object, GObject::ParamSpec -> 
+    def on_deep_notify(&__block : DeepNotifySignal)
+      __callback = ->(_arg0 : LibGst::Object*, _arg1 : LibGst::LibGst::Object*, _arg2 : LibGst::LibGObject::ParamSpec*) {
+       __return_value = __block.call(Object.new(_arg0), Gst::Object.new(_arg1), GObject::ParamSpec.new(_arg2))
+       __return_value
+      }
+      connect("deep-notify", __callback)
     end
 
   end

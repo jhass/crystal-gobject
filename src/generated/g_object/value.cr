@@ -21,7 +21,7 @@ module GObject
 
     def dup_string
       __return_value = LibGObject.value_dup_string((to_unsafe as LibGObject::Value*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def dup_variant
@@ -111,7 +111,7 @@ module GObject
 
     def string
       __return_value = LibGObject.value_get_string((to_unsafe as LibGObject::Value*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def uchar
@@ -160,7 +160,7 @@ module GObject
     end
 
     def boolean=(v_boolean)
-      __return_value = LibGObject.value_set_boolean((to_unsafe as LibGObject::Value*), Bool.new(v_boolean))
+      __return_value = LibGObject.value_set_boolean((to_unsafe as LibGObject::Value*), v_boolean)
       __return_value
     end
 

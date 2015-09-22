@@ -60,8 +60,62 @@ module Gtk
     end
 
     def use_preedit=(use_preedit)
-      __return_value = LibGtk.i_m_context_set_use_preedit((to_unsafe as LibGtk::IMContext*), Bool.new(use_preedit))
+      __return_value = LibGtk.i_m_context_set_use_preedit((to_unsafe as LibGtk::IMContext*), use_preedit)
       __return_value
+    end
+
+    alias CommitSignal = IMContext, UInt8 -> 
+    def on_commit(&__block : CommitSignal)
+      __callback = ->(_arg0 : LibGtk::IMContext*, _arg1 : LibGtk::UInt8**) {
+       __return_value = __block.call(IMContext.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value
+      }
+      connect("commit", __callback)
+    end
+
+    alias DeleteSurroundingSignal = IMContext, Int32, Int32 -> Bool
+    def on_delete_surrounding(&__block : DeleteSurroundingSignal)
+      __callback = ->(_arg0 : LibGtk::IMContext*, _arg1 : LibGtk::Int32*, _arg2 : LibGtk::Int32*) {
+       __return_value = __block.call(IMContext.new(_arg0), _arg1, _arg2)
+       __return_value
+      }
+      connect("delete-surrounding", __callback)
+    end
+
+    alias PreeditChangedSignal = IMContext -> 
+    def on_preedit_changed(&__block : PreeditChangedSignal)
+      __callback = ->(_arg0 : LibGtk::IMContext*) {
+       __return_value = __block.call(IMContext.new(_arg0))
+       __return_value
+      }
+      connect("preedit-changed", __callback)
+    end
+
+    alias PreeditEndSignal = IMContext -> 
+    def on_preedit_end(&__block : PreeditEndSignal)
+      __callback = ->(_arg0 : LibGtk::IMContext*) {
+       __return_value = __block.call(IMContext.new(_arg0))
+       __return_value
+      }
+      connect("preedit-end", __callback)
+    end
+
+    alias PreeditStartSignal = IMContext -> 
+    def on_preedit_start(&__block : PreeditStartSignal)
+      __callback = ->(_arg0 : LibGtk::IMContext*) {
+       __return_value = __block.call(IMContext.new(_arg0))
+       __return_value
+      }
+      connect("preedit-start", __callback)
+    end
+
+    alias RetrieveSurroundingSignal = IMContext -> Bool
+    def on_retrieve_surrounding(&__block : RetrieveSurroundingSignal)
+      __callback = ->(_arg0 : LibGtk::IMContext*) {
+       __return_value = __block.call(IMContext.new(_arg0))
+       __return_value
+      }
+      connect("retrieve-surrounding", __callback)
     end
 
   end

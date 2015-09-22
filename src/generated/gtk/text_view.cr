@@ -262,17 +262,17 @@ module Gtk
     end
 
     def scroll_to_iter(iter, within_margin, use_align, xalign, yalign)
-      __return_value = LibGtk.text_view_scroll_to_iter((to_unsafe as LibGtk::TextView*), (iter.to_unsafe as LibGtk::TextIter*), Float64.new(within_margin), Bool.new(use_align), Float64.new(xalign), Float64.new(yalign))
+      __return_value = LibGtk.text_view_scroll_to_iter((to_unsafe as LibGtk::TextView*), (iter.to_unsafe as LibGtk::TextIter*), Float64.new(within_margin), use_align, Float64.new(xalign), Float64.new(yalign))
       __return_value
     end
 
     def scroll_to_mark(mark, within_margin, use_align, xalign, yalign)
-      __return_value = LibGtk.text_view_scroll_to_mark((to_unsafe as LibGtk::TextView*), (mark.to_unsafe as LibGtk::TextMark*), Float64.new(within_margin), Bool.new(use_align), Float64.new(xalign), Float64.new(yalign))
+      __return_value = LibGtk.text_view_scroll_to_mark((to_unsafe as LibGtk::TextView*), (mark.to_unsafe as LibGtk::TextMark*), Float64.new(within_margin), use_align, Float64.new(xalign), Float64.new(yalign))
       __return_value
     end
 
     def accepts_tab=(accepts_tab)
-      __return_value = LibGtk.text_view_set_accepts_tab((to_unsafe as LibGtk::TextView*), Bool.new(accepts_tab))
+      __return_value = LibGtk.text_view_set_accepts_tab((to_unsafe as LibGtk::TextView*), accepts_tab)
       __return_value
     end
 
@@ -287,12 +287,12 @@ module Gtk
     end
 
     def cursor_visible=(setting)
-      __return_value = LibGtk.text_view_set_cursor_visible((to_unsafe as LibGtk::TextView*), Bool.new(setting))
+      __return_value = LibGtk.text_view_set_cursor_visible((to_unsafe as LibGtk::TextView*), setting)
       __return_value
     end
 
     def editable=(setting)
-      __return_value = LibGtk.text_view_set_editable((to_unsafe as LibGtk::TextView*), Bool.new(setting))
+      __return_value = LibGtk.text_view_set_editable((to_unsafe as LibGtk::TextView*), setting)
       __return_value
     end
 
@@ -322,12 +322,12 @@ module Gtk
     end
 
     def monospace=(monospace)
-      __return_value = LibGtk.text_view_set_monospace((to_unsafe as LibGtk::TextView*), Bool.new(monospace))
+      __return_value = LibGtk.text_view_set_monospace((to_unsafe as LibGtk::TextView*), monospace)
       __return_value
     end
 
     def overwrite=(overwrite)
-      __return_value = LibGtk.text_view_set_overwrite((to_unsafe as LibGtk::TextView*), Bool.new(overwrite))
+      __return_value = LibGtk.text_view_set_overwrite((to_unsafe as LibGtk::TextView*), overwrite)
       __return_value
     end
 
@@ -369,6 +369,141 @@ module Gtk
     def window_to_buffer_coords(win, window_x, window_y, buffer_x, buffer_y)
       __return_value = LibGtk.text_view_window_to_buffer_coords((to_unsafe as LibGtk::TextView*), win, Int32.new(window_x), Int32.new(window_y), Int32.new(buffer_x), Int32.new(buffer_y))
       __return_value
+    end
+
+    alias BackspaceSignal = TextView -> 
+    def on_backspace(&__block : BackspaceSignal)
+      __callback = ->(_arg0 : LibGtk::TextView*) {
+       __return_value = __block.call(TextView.new(_arg0))
+       __return_value
+      }
+      connect("backspace", __callback)
+    end
+
+    alias CopyClipboardSignal = TextView -> 
+    def on_copy_clipboard(&__block : CopyClipboardSignal)
+      __callback = ->(_arg0 : LibGtk::TextView*) {
+       __return_value = __block.call(TextView.new(_arg0))
+       __return_value
+      }
+      connect("copy-clipboard", __callback)
+    end
+
+    alias CutClipboardSignal = TextView -> 
+    def on_cut_clipboard(&__block : CutClipboardSignal)
+      __callback = ->(_arg0 : LibGtk::TextView*) {
+       __return_value = __block.call(TextView.new(_arg0))
+       __return_value
+      }
+      connect("cut-clipboard", __callback)
+    end
+
+    alias DeleteFromCursorSignal = TextView, Gtk::DeleteType, Int32 -> 
+    def on_delete_from_cursor(&__block : DeleteFromCursorSignal)
+      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::LibGtk::DeleteType*, _arg2 : LibGtk::Int32*) {
+       __return_value = __block.call(TextView.new(_arg0), _arg1, _arg2)
+       __return_value
+      }
+      connect("delete-from-cursor", __callback)
+    end
+
+    alias ExtendSelectionSignal = TextView, Gtk::TextExtendSelection, Gtk::TextIter, Gtk::TextIter, Gtk::TextIter -> Bool
+    def on_extend_selection(&__block : ExtendSelectionSignal)
+      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::LibGtk::TextExtendSelection*, _arg2 : LibGtk::LibGtk::TextIter*, _arg3 : LibGtk::LibGtk::TextIter*, _arg4 : LibGtk::LibGtk::TextIter*) {
+       __return_value = __block.call(TextView.new(_arg0), _arg1, Gtk::TextIter.new(_arg2), Gtk::TextIter.new(_arg3), Gtk::TextIter.new(_arg4))
+       __return_value
+      }
+      connect("extend-selection", __callback)
+    end
+
+    alias InsertAtCursorSignal = TextView, UInt8 -> 
+    def on_insert_at_cursor(&__block : InsertAtCursorSignal)
+      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::UInt8**) {
+       __return_value = __block.call(TextView.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value
+      }
+      connect("insert-at-cursor", __callback)
+    end
+
+    alias MoveCursorSignal = TextView, Gtk::MovementStep, Int32, Bool -> 
+    def on_move_cursor(&__block : MoveCursorSignal)
+      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::LibGtk::MovementStep*, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Bool*) {
+       __return_value = __block.call(TextView.new(_arg0), _arg1, _arg2, _arg3)
+       __return_value
+      }
+      connect("move-cursor", __callback)
+    end
+
+    alias MoveViewportSignal = TextView, Gtk::ScrollStep, Int32 -> 
+    def on_move_viewport(&__block : MoveViewportSignal)
+      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::LibGtk::ScrollStep*, _arg2 : LibGtk::Int32*) {
+       __return_value = __block.call(TextView.new(_arg0), _arg1, _arg2)
+       __return_value
+      }
+      connect("move-viewport", __callback)
+    end
+
+    alias PasteClipboardSignal = TextView -> 
+    def on_paste_clipboard(&__block : PasteClipboardSignal)
+      __callback = ->(_arg0 : LibGtk::TextView*) {
+       __return_value = __block.call(TextView.new(_arg0))
+       __return_value
+      }
+      connect("paste-clipboard", __callback)
+    end
+
+    alias PopulatePopupSignal = TextView, Gtk::Widget -> 
+    def on_populate_popup(&__block : PopulatePopupSignal)
+      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::LibGtk::Widget*) {
+       __return_value = __block.call(TextView.new(_arg0), Gtk::Widget.new(_arg1))
+       __return_value
+      }
+      connect("populate-popup", __callback)
+    end
+
+    alias PreeditChangedSignal = TextView, UInt8 -> 
+    def on_preedit_changed(&__block : PreeditChangedSignal)
+      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::UInt8**) {
+       __return_value = __block.call(TextView.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value
+      }
+      connect("preedit-changed", __callback)
+    end
+
+    alias SelectAllSignal = TextView, Bool -> 
+    def on_select_all(&__block : SelectAllSignal)
+      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::Bool*) {
+       __return_value = __block.call(TextView.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("select-all", __callback)
+    end
+
+    alias SetAnchorSignal = TextView -> 
+    def on_set_anchor(&__block : SetAnchorSignal)
+      __callback = ->(_arg0 : LibGtk::TextView*) {
+       __return_value = __block.call(TextView.new(_arg0))
+       __return_value
+      }
+      connect("set-anchor", __callback)
+    end
+
+    alias ToggleCursorVisibleSignal = TextView -> 
+    def on_toggle_cursor_visible(&__block : ToggleCursorVisibleSignal)
+      __callback = ->(_arg0 : LibGtk::TextView*) {
+       __return_value = __block.call(TextView.new(_arg0))
+       __return_value
+      }
+      connect("toggle-cursor-visible", __callback)
+    end
+
+    alias ToggleOverwriteSignal = TextView -> 
+    def on_toggle_overwrite(&__block : ToggleOverwriteSignal)
+      __callback = ->(_arg0 : LibGtk::TextView*) {
+       __return_value = __block.call(TextView.new(_arg0))
+       __return_value
+      }
+      connect("toggle-overwrite", __callback)
     end
 
   end

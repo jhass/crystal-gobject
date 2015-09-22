@@ -21,8 +21,17 @@ module Gtk
     end
 
     def use_alpha=(use_alpha)
-      __return_value = LibGtk.color_chooser_set_use_alpha((to_unsafe as LibGtk::ColorChooser*), Bool.new(use_alpha))
+      __return_value = LibGtk.color_chooser_set_use_alpha((to_unsafe as LibGtk::ColorChooser*), use_alpha)
       __return_value
+    end
+
+    alias ColorActivatedSignal = ColorChooser, Gdk::RGBA -> 
+    def on_color_activated(&__block : ColorActivatedSignal)
+      __callback = ->(_arg0 : LibGtk::ColorChooser*, _arg1 : LibGtk::LibGdk::RGBA*) {
+       __return_value = __block.call(ColorChooser.new(_arg0), Gdk::RGBA.new(_arg1))
+       __return_value
+      }
+      connect("color-activated", __callback)
     end
 
   end

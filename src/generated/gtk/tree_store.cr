@@ -47,7 +47,7 @@ module Gtk
       __return_value
     end
 
-    def is_ancestor(iter, descendant)
+    def ancestor?(iter, descendant)
       __return_value = LibGtk.tree_store_is_ancestor((to_unsafe as LibGtk::TreeStore*), (iter.to_unsafe as LibGtk::TreeIter*), (descendant.to_unsafe as LibGtk::TreeIter*))
       __return_value
     end

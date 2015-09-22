@@ -2,7 +2,7 @@ module Gtk
   module Actionable
     def action_name
       __return_value = LibGtk.actionable_get_action_name((to_unsafe as LibGtk::Actionable*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def action_target_value

@@ -41,7 +41,7 @@ module Gtk
     end
 
     def reveal_child=(reveal_child)
-      __return_value = LibGtk.revealer_set_reveal_child((to_unsafe as LibGtk::Revealer*), Bool.new(reveal_child))
+      __return_value = LibGtk.revealer_set_reveal_child((to_unsafe as LibGtk::Revealer*), reveal_child)
       __return_value
     end
 

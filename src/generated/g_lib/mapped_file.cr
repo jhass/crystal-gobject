@@ -11,14 +11,14 @@ module GLib
 
     def self.new_internal(filename, writable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.mapped_file_new(filename, Bool.new(writable), pointerof(__error))
+      __return_value = LibGLib.mapped_file_new(filename, writable, pointerof(__error))
       GLib::Error.assert __error
       GLib::MappedFile.new(__return_value)
     end
 
     def self.new_from_fd(fd, writable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.mapped_file_new_from_fd(Int32.new(fd), Bool.new(writable), pointerof(__error))
+      __return_value = LibGLib.mapped_file_new_from_fd(Int32.new(fd), writable, pointerof(__error))
       GLib::Error.assert __error
       GLib::MappedFile.new(__return_value)
     end
@@ -35,7 +35,7 @@ module GLib
 
     def contents
       __return_value = LibGLib.mapped_file_get_contents((to_unsafe as LibGLib::MappedFile*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def length

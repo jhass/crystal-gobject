@@ -24,12 +24,12 @@ module Gtk
     end
 
     def pack_end(renderer, expand, align, fixed)
-      __return_value = LibGtk.cell_area_box_pack_end((to_unsafe as LibGtk::CellAreaBox*), (renderer.to_unsafe as LibGtk::CellRenderer*), Bool.new(expand), Bool.new(align), Bool.new(fixed))
+      __return_value = LibGtk.cell_area_box_pack_end((to_unsafe as LibGtk::CellAreaBox*), (renderer.to_unsafe as LibGtk::CellRenderer*), expand, align, fixed)
       __return_value
     end
 
     def pack_start(renderer, expand, align, fixed)
-      __return_value = LibGtk.cell_area_box_pack_start((to_unsafe as LibGtk::CellAreaBox*), (renderer.to_unsafe as LibGtk::CellRenderer*), Bool.new(expand), Bool.new(align), Bool.new(fixed))
+      __return_value = LibGtk.cell_area_box_pack_start((to_unsafe as LibGtk::CellAreaBox*), (renderer.to_unsafe as LibGtk::CellRenderer*), expand, align, fixed)
       __return_value
     end
 

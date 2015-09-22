@@ -15,7 +15,7 @@ module Gst
     end
 
     def self.fork_set_enabled(enabled)
-      __return_value = LibGst.registry_fork_set_enabled(Bool.new(enabled))
+      __return_value = LibGst.registry_fork_set_enabled(enabled)
       __return_value
     end
 
@@ -40,7 +40,7 @@ module Gst
     end
 
     def feature_filter(filter : LibGst::PluginFeatureFilter, first, user_data)
-      __return_value = LibGst.registry_feature_filter((to_unsafe as LibGst::Registry*), filter, Bool.new(first), user_data)
+      __return_value = LibGst.registry_feature_filter((to_unsafe as LibGst::Registry*), filter, first, user_data)
       __return_value
     end
 
@@ -85,7 +85,7 @@ module Gst
     end
 
     def plugin_filter(filter : LibGst::PluginFilter, first, user_data)
-      __return_value = LibGst.registry_plugin_filter((to_unsafe as LibGst::Registry*), filter, Bool.new(first), user_data)
+      __return_value = LibGst.registry_plugin_filter((to_unsafe as LibGst::Registry*), filter, first, user_data)
       __return_value
     end
 
@@ -102,6 +102,24 @@ module Gst
     def scan_path(path)
       __return_value = LibGst.registry_scan_path((to_unsafe as LibGst::Registry*), path)
       __return_value
+    end
+
+    alias FeatureAddedSignal = Registry, Gst::PluginFeature -> 
+    def on_feature_added(&__block : FeatureAddedSignal)
+      __callback = ->(_arg0 : LibGst::Registry*, _arg1 : LibGst::LibGst::PluginFeature*) {
+       __return_value = __block.call(Registry.new(_arg0), Gst::PluginFeature.new(_arg1))
+       __return_value
+      }
+      connect("feature-added", __callback)
+    end
+
+    alias PluginAddedSignal = Registry, Gst::Plugin -> 
+    def on_plugin_added(&__block : PluginAddedSignal)
+      __callback = ->(_arg0 : LibGst::Registry*, _arg1 : LibGst::LibGst::Plugin*) {
+       __return_value = __block.call(Registry.new(_arg0), Gst::Plugin.new(_arg1))
+       __return_value
+      }
+      connect("plugin-added", __callback)
     end
 
   end

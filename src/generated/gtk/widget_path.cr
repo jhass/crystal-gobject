@@ -49,7 +49,7 @@ module Gtk
       __return_value
     end
 
-    def is_type(type)
+    def type?(type)
       __return_value = LibGtk.widget_path_is_type((to_unsafe as LibGtk::WidgetPath*), UInt64.new(type))
       __return_value
     end
@@ -76,7 +76,7 @@ module Gtk
 
     def iter_get_name(pos)
       __return_value = LibGtk.widget_path_iter_get_name((to_unsafe as LibGtk::WidgetPath*), Int32.new(pos))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def iter_get_object_type(pos)
@@ -181,7 +181,7 @@ module Gtk
 
     def to_string
       __return_value = LibGtk.widget_path_to_string((to_unsafe as LibGtk::WidgetPath*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def unref

@@ -7,17 +7,17 @@ module Atk
 
     def description(i)
       __return_value = LibAtk.action_get_description((to_unsafe as LibAtk::Action*), Int32.new(i))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def keybinding(i)
       __return_value = LibAtk.action_get_keybinding((to_unsafe as LibAtk::Action*), Int32.new(i))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def localized_name(i)
       __return_value = LibAtk.action_get_localized_name((to_unsafe as LibAtk::Action*), Int32.new(i))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def n_actions
@@ -27,7 +27,7 @@ module Atk
 
     def name(i)
       __return_value = LibAtk.action_get_name((to_unsafe as LibAtk::Action*), Int32.new(i))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def set_description(i, desc)

@@ -10,7 +10,7 @@ module Gio
       GLib::Source.new(__return_value)
     end
 
-    def is_readable
+    def readable?
       __return_value = LibGio.pollable_input_stream_is_readable((to_unsafe as LibGio::PollableInputStream*))
       __return_value
     end

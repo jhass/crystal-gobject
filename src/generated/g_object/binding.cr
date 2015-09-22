@@ -26,7 +26,7 @@ module GObject
 
     def source_property
       __return_value = LibGObject.binding_get_source_property((to_unsafe as LibGObject::Binding*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def target
@@ -36,7 +36,7 @@ module GObject
 
     def target_property
       __return_value = LibGObject.binding_get_target_property((to_unsafe as LibGObject::Binding*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def unbind

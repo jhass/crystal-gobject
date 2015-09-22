@@ -20,12 +20,12 @@ module Gtk
     end
 
     def add_image_targets(info, writable)
-      __return_value = LibGtk.target_list_add_image_targets((to_unsafe as LibGtk::TargetList*), UInt32.new(info), Bool.new(writable))
+      __return_value = LibGtk.target_list_add_image_targets((to_unsafe as LibGtk::TargetList*), UInt32.new(info), writable)
       __return_value
     end
 
     def add_rich_text_targets(info, deserializable, buffer)
-      __return_value = LibGtk.target_list_add_rich_text_targets((to_unsafe as LibGtk::TargetList*), UInt32.new(info), Bool.new(deserializable), (buffer.to_unsafe as LibGtk::TextBuffer*))
+      __return_value = LibGtk.target_list_add_rich_text_targets((to_unsafe as LibGtk::TargetList*), UInt32.new(info), deserializable, (buffer.to_unsafe as LibGtk::TextBuffer*))
       __return_value
     end
 

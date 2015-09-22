@@ -54,13 +54,13 @@ module GLib
       __return_value
     end
 
-    def is_owner
+    def owner?
       __return_value = LibGLib.main_context_is_owner((to_unsafe as LibGLib::MainContext*))
       __return_value
     end
 
     def iteration(may_block)
-      __return_value = LibGLib.main_context_iteration((to_unsafe as LibGLib::MainContext*), Bool.new(may_block))
+      __return_value = LibGLib.main_context_iteration((to_unsafe as LibGLib::MainContext*), may_block)
       __return_value
     end
 

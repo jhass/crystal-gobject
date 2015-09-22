@@ -58,7 +58,7 @@ module Gtk
     end
 
     def always_show_image=(always_show)
-      __return_value = LibGtk.image_menu_item_set_always_show_image((to_unsafe as LibGtk::ImageMenuItem*), Bool.new(always_show))
+      __return_value = LibGtk.image_menu_item_set_always_show_image((to_unsafe as LibGtk::ImageMenuItem*), always_show)
       __return_value
     end
 
@@ -68,7 +68,7 @@ module Gtk
     end
 
     def use_stock=(use_stock)
-      __return_value = LibGtk.image_menu_item_set_use_stock((to_unsafe as LibGtk::ImageMenuItem*), Bool.new(use_stock))
+      __return_value = LibGtk.image_menu_item_set_use_stock((to_unsafe as LibGtk::ImageMenuItem*), use_stock)
       __return_value
     end
 

@@ -30,12 +30,12 @@ module Gst
     end
 
     def boolean(tag, value)
-      __return_value = LibGst.tag_list_get_boolean((to_unsafe as LibGst::TagList*), tag, Bool.new(value))
+      __return_value = LibGst.tag_list_get_boolean((to_unsafe as LibGst::TagList*), tag, value)
       __return_value
     end
 
     def boolean_index(tag, index, value)
-      __return_value = LibGst.tag_list_get_boolean_index((to_unsafe as LibGst::TagList*), tag, UInt32.new(index), Bool.new(value))
+      __return_value = LibGst.tag_list_get_boolean_index((to_unsafe as LibGst::TagList*), tag, UInt32.new(index), value)
       __return_value
     end
 
@@ -169,12 +169,12 @@ module Gst
       __return_value
     end
 
-    def is_empty
+    def empty?
       __return_value = LibGst.tag_list_is_empty((to_unsafe as LibGst::TagList*))
       __return_value
     end
 
-    def is_equal(list2)
+    def equal?(list2)
       __return_value = LibGst.tag_list_is_equal((to_unsafe as LibGst::TagList*), (list2.to_unsafe as LibGst::TagList*))
       __return_value
     end
@@ -191,7 +191,7 @@ module Gst
 
     def nth_tag_name(index)
       __return_value = LibGst.tag_list_nth_tag_name((to_unsafe as LibGst::TagList*), UInt32.new(index))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def peek_string_index(tag, index, value)
@@ -211,7 +211,7 @@ module Gst
 
     def to_string
       __return_value = LibGst.tag_list_to_string((to_unsafe as LibGst::TagList*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def self.copy_value(dest, list, tag)

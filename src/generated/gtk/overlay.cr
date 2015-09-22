@@ -21,6 +21,15 @@ module Gtk
       __return_value
     end
 
+    alias GetChildPositionSignal = Overlay, Gtk::Widget, Cairo::RectangleInt -> Bool
+    def on_get_child_position(&__block : GetChildPositionSignal)
+      __callback = ->(_arg0 : LibGtk::Overlay*, _arg1 : LibGtk::LibGtk::Widget*, _arg2 : LibGtk::Libcairo::RectangleInt*) {
+       __return_value = __block.call(Overlay.new(_arg0), Gtk::Widget.new(_arg1), Cairo::RectangleInt.new(_arg2))
+       __return_value
+      }
+      connect("get-child-position", __callback)
+    end
+
   end
 end
 

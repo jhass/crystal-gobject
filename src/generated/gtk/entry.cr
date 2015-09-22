@@ -134,7 +134,7 @@ module Gtk
 
     def icon_name(icon_pos)
       __return_value = LibGtk.entry_get_icon_name((to_unsafe as LibGtk::Entry*), icon_pos)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def icon_pixbuf(icon_pos)
@@ -149,7 +149,7 @@ module Gtk
 
     def icon_stock(icon_pos)
       __return_value = LibGtk.entry_get_icon_stock((to_unsafe as LibGtk::Entry*), icon_pos)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def icon_storage_type(icon_pos)
@@ -159,12 +159,12 @@ module Gtk
 
     def icon_tooltip_markup(icon_pos)
       __return_value = LibGtk.entry_get_icon_tooltip_markup((to_unsafe as LibGtk::Entry*), icon_pos)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def icon_tooltip_text(icon_pos)
       __return_value = LibGtk.entry_get_icon_tooltip_text((to_unsafe as LibGtk::Entry*), icon_pos)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def inner_border
@@ -214,7 +214,7 @@ module Gtk
 
     def placeholder_text
       __return_value = LibGtk.entry_get_placeholder_text((to_unsafe as LibGtk::Entry*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def progress_fraction
@@ -234,7 +234,7 @@ module Gtk
 
     def text
       __return_value = LibGtk.entry_get_text((to_unsafe as LibGtk::Entry*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def text_area(text_area)
@@ -283,7 +283,7 @@ module Gtk
     end
 
     def activates_default=(setting)
-      __return_value = LibGtk.entry_set_activates_default((to_unsafe as LibGtk::Entry*), Bool.new(setting))
+      __return_value = LibGtk.entry_set_activates_default((to_unsafe as LibGtk::Entry*), setting)
       __return_value
     end
 
@@ -313,12 +313,12 @@ module Gtk
     end
 
     def has_frame=(setting)
-      __return_value = LibGtk.entry_set_has_frame((to_unsafe as LibGtk::Entry*), Bool.new(setting))
+      __return_value = LibGtk.entry_set_has_frame((to_unsafe as LibGtk::Entry*), setting)
       __return_value
     end
 
     def set_icon_activatable(icon_pos, activatable)
-      __return_value = LibGtk.entry_set_icon_activatable((to_unsafe as LibGtk::Entry*), icon_pos, Bool.new(activatable))
+      __return_value = LibGtk.entry_set_icon_activatable((to_unsafe as LibGtk::Entry*), icon_pos, activatable)
       __return_value
     end
 
@@ -348,7 +348,7 @@ module Gtk
     end
 
     def set_icon_sensitive(icon_pos, sensitive)
-      __return_value = LibGtk.entry_set_icon_sensitive((to_unsafe as LibGtk::Entry*), icon_pos, Bool.new(sensitive))
+      __return_value = LibGtk.entry_set_icon_sensitive((to_unsafe as LibGtk::Entry*), icon_pos, sensitive)
       __return_value
     end
 
@@ -393,7 +393,7 @@ module Gtk
     end
 
     def overwrite_mode=(overwrite)
-      __return_value = LibGtk.entry_set_overwrite_mode((to_unsafe as LibGtk::Entry*), Bool.new(overwrite))
+      __return_value = LibGtk.entry_set_overwrite_mode((to_unsafe as LibGtk::Entry*), overwrite)
       __return_value
     end
 
@@ -423,7 +423,7 @@ module Gtk
     end
 
     def visibility=(visible)
-      __return_value = LibGtk.entry_set_visibility((to_unsafe as LibGtk::Entry*), Bool.new(visible))
+      __return_value = LibGtk.entry_set_visibility((to_unsafe as LibGtk::Entry*), visible)
       __return_value
     end
 
@@ -440,6 +440,123 @@ module Gtk
     def unset_invisible_char
       __return_value = LibGtk.entry_unset_invisible_char((to_unsafe as LibGtk::Entry*))
       __return_value
+    end
+
+    alias ActivateSignal = Entry -> 
+    def on_activate(&__block : ActivateSignal)
+      __callback = ->(_arg0 : LibGtk::Entry*) {
+       __return_value = __block.call(Entry.new(_arg0))
+       __return_value
+      }
+      connect("activate", __callback)
+    end
+
+    alias BackspaceSignal = Entry -> 
+    def on_backspace(&__block : BackspaceSignal)
+      __callback = ->(_arg0 : LibGtk::Entry*) {
+       __return_value = __block.call(Entry.new(_arg0))
+       __return_value
+      }
+      connect("backspace", __callback)
+    end
+
+    alias CopyClipboardSignal = Entry -> 
+    def on_copy_clipboard(&__block : CopyClipboardSignal)
+      __callback = ->(_arg0 : LibGtk::Entry*) {
+       __return_value = __block.call(Entry.new(_arg0))
+       __return_value
+      }
+      connect("copy-clipboard", __callback)
+    end
+
+    alias CutClipboardSignal = Entry -> 
+    def on_cut_clipboard(&__block : CutClipboardSignal)
+      __callback = ->(_arg0 : LibGtk::Entry*) {
+       __return_value = __block.call(Entry.new(_arg0))
+       __return_value
+      }
+      connect("cut-clipboard", __callback)
+    end
+
+    alias DeleteFromCursorSignal = Entry, Gtk::DeleteType, Int32 -> 
+    def on_delete_from_cursor(&__block : DeleteFromCursorSignal)
+      __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : LibGtk::LibGtk::DeleteType*, _arg2 : LibGtk::Int32*) {
+       __return_value = __block.call(Entry.new(_arg0), _arg1, _arg2)
+       __return_value
+      }
+      connect("delete-from-cursor", __callback)
+    end
+
+    alias IconPressSignal = Entry, Gtk::EntryIconPosition, Gdk::EventButton -> 
+    def on_icon_press(&__block : IconPressSignal)
+      __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : LibGtk::LibGtk::EntryIconPosition*, _arg2 : LibGtk::LibGdk::EventButton*) {
+       __return_value = __block.call(Entry.new(_arg0), _arg1, Gdk::EventButton.new(_arg2))
+       __return_value
+      }
+      connect("icon-press", __callback)
+    end
+
+    alias IconReleaseSignal = Entry, Gtk::EntryIconPosition, Gdk::EventButton -> 
+    def on_icon_release(&__block : IconReleaseSignal)
+      __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : LibGtk::LibGtk::EntryIconPosition*, _arg2 : LibGtk::LibGdk::EventButton*) {
+       __return_value = __block.call(Entry.new(_arg0), _arg1, Gdk::EventButton.new(_arg2))
+       __return_value
+      }
+      connect("icon-release", __callback)
+    end
+
+    alias InsertAtCursorSignal = Entry, UInt8 -> 
+    def on_insert_at_cursor(&__block : InsertAtCursorSignal)
+      __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : LibGtk::UInt8**) {
+       __return_value = __block.call(Entry.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value
+      }
+      connect("insert-at-cursor", __callback)
+    end
+
+    alias MoveCursorSignal = Entry, Gtk::MovementStep, Int32, Bool -> 
+    def on_move_cursor(&__block : MoveCursorSignal)
+      __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : LibGtk::LibGtk::MovementStep*, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Bool*) {
+       __return_value = __block.call(Entry.new(_arg0), _arg1, _arg2, _arg3)
+       __return_value
+      }
+      connect("move-cursor", __callback)
+    end
+
+    alias PasteClipboardSignal = Entry -> 
+    def on_paste_clipboard(&__block : PasteClipboardSignal)
+      __callback = ->(_arg0 : LibGtk::Entry*) {
+       __return_value = __block.call(Entry.new(_arg0))
+       __return_value
+      }
+      connect("paste-clipboard", __callback)
+    end
+
+    alias PopulatePopupSignal = Entry, Gtk::Widget -> 
+    def on_populate_popup(&__block : PopulatePopupSignal)
+      __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : LibGtk::LibGtk::Widget*) {
+       __return_value = __block.call(Entry.new(_arg0), Gtk::Widget.new(_arg1))
+       __return_value
+      }
+      connect("populate-popup", __callback)
+    end
+
+    alias PreeditChangedSignal = Entry, UInt8 -> 
+    def on_preedit_changed(&__block : PreeditChangedSignal)
+      __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : LibGtk::UInt8**) {
+       __return_value = __block.call(Entry.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value
+      }
+      connect("preedit-changed", __callback)
+    end
+
+    alias ToggleOverwriteSignal = Entry -> 
+    def on_toggle_overwrite(&__block : ToggleOverwriteSignal)
+      __callback = ->(_arg0 : LibGtk::Entry*) {
+       __return_value = __block.call(Entry.new(_arg0))
+       __return_value
+      }
+      connect("toggle-overwrite", __callback)
     end
 
   end

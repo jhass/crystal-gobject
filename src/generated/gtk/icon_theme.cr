@@ -49,12 +49,12 @@ module Gtk
 
     def example_icon_name
       __return_value = LibGtk.icon_theme_get_example_icon_name((to_unsafe as LibGtk::IconTheme*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def icon_sizes(icon_name)
       __return_value = LibGtk.icon_theme_get_icon_sizes((to_unsafe as LibGtk::IconTheme*), icon_name)
-      PointerIterator.new(__return_value) {|__item_19| __item_19 }
+      PointerIterator.new(__return_value) {|__item_95| __item_95 }
     end
 
     def search_path(path, n_elements)
@@ -141,6 +141,15 @@ module Gtk
     def set_search_path(path, n_elements)
       __return_value = LibGtk.icon_theme_set_search_path((to_unsafe as LibGtk::IconTheme*), path, Int32.new(n_elements))
       __return_value
+    end
+
+    alias ChangedSignal = IconTheme -> 
+    def on_changed(&__block : ChangedSignal)
+      __callback = ->(_arg0 : LibGtk::IconTheme*) {
+       __return_value = __block.call(IconTheme.new(_arg0))
+       __return_value
+      }
+      connect("changed", __callback)
     end
 
   end

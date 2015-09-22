@@ -44,6 +44,15 @@ module Gtk
       __return_value
     end
 
+    alias ShowMenuSignal = MenuToolButton -> 
+    def on_show_menu(&__block : ShowMenuSignal)
+      __callback = ->(_arg0 : LibGtk::MenuToolButton*) {
+       __return_value = __block.call(MenuToolButton.new(_arg0))
+       __return_value
+      }
+      connect("show-menu", __callback)
+    end
+
   end
 end
 

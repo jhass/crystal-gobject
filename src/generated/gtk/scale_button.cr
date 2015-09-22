@@ -63,6 +63,33 @@ module Gtk
       __return_value
     end
 
+    alias PopdownSignal = ScaleButton -> 
+    def on_popdown(&__block : PopdownSignal)
+      __callback = ->(_arg0 : LibGtk::ScaleButton*) {
+       __return_value = __block.call(ScaleButton.new(_arg0))
+       __return_value
+      }
+      connect("popdown", __callback)
+    end
+
+    alias PopupSignal = ScaleButton -> 
+    def on_popup(&__block : PopupSignal)
+      __callback = ->(_arg0 : LibGtk::ScaleButton*) {
+       __return_value = __block.call(ScaleButton.new(_arg0))
+       __return_value
+      }
+      connect("popup", __callback)
+    end
+
+    alias ValueChangedSignal = ScaleButton, Float64 -> 
+    def on_value_changed(&__block : ValueChangedSignal)
+      __callback = ->(_arg0 : LibGtk::ScaleButton*, _arg1 : LibGtk::Float64*) {
+       __return_value = __block.call(ScaleButton.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("value-changed", __callback)
+    end
+
   end
 end
 

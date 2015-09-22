@@ -10,7 +10,7 @@ module GLib
     end
 
     def self.new_internal(context, is_running)
-      __return_value = LibGLib.main_loop_new(context && (context.to_unsafe as LibGLib::MainContext*), Bool.new(is_running))
+      __return_value = LibGLib.main_loop_new(context && (context.to_unsafe as LibGLib::MainContext*), is_running)
       GLib::MainLoop.new(__return_value)
     end
 
@@ -19,7 +19,7 @@ module GLib
       GLib::MainContext.new(__return_value)
     end
 
-    def is_running
+    def running?
       __return_value = LibGLib.main_loop_is_running((to_unsafe as LibGLib::MainLoop*))
       __return_value
     end

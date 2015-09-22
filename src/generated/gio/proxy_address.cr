@@ -24,7 +24,7 @@ module Gio
 
     def destination_hostname
       __return_value = LibGio.proxy_address_get_destination_hostname((to_unsafe as LibGio::ProxyAddress*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def destination_port
@@ -34,27 +34,27 @@ module Gio
 
     def destination_protocol
       __return_value = LibGio.proxy_address_get_destination_protocol((to_unsafe as LibGio::ProxyAddress*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def password
       __return_value = LibGio.proxy_address_get_password((to_unsafe as LibGio::ProxyAddress*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def protocol
       __return_value = LibGio.proxy_address_get_protocol((to_unsafe as LibGio::ProxyAddress*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def uri
       __return_value = LibGio.proxy_address_get_uri((to_unsafe as LibGio::ProxyAddress*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def username
       __return_value = LibGio.proxy_address_get_username((to_unsafe as LibGio::ProxyAddress*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
   end

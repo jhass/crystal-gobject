@@ -111,7 +111,7 @@ module Gtk
     end
 
     def expand_row(path, open_all)
-      __return_value = LibGtk.tree_view_expand_row((to_unsafe as LibGtk::TreeView*), (path.to_unsafe as LibGtk::TreePath*), Bool.new(open_all))
+      __return_value = LibGtk.tree_view_expand_row((to_unsafe as LibGtk::TreeView*), (path.to_unsafe as LibGtk::TreePath*), open_all)
       __return_value
     end
 
@@ -276,7 +276,7 @@ module Gtk
     end
 
     def tooltip_context(x, y, keyboard_tip, model, path, iter)
-      __return_value = LibGtk.tree_view_get_tooltip_context((to_unsafe as LibGtk::TreeView*), Int32.new(x), Int32.new(y), Bool.new(keyboard_tip), model && (model.to_unsafe as LibGtk::TreeModel*), (path.to_unsafe as LibGtk::TreePath*), iter)
+      __return_value = LibGtk.tree_view_get_tooltip_context((to_unsafe as LibGtk::TreeView*), Int32.new(x), Int32.new(y), keyboard_tip, model && (model.to_unsafe as LibGtk::TreeModel*), (path.to_unsafe as LibGtk::TreePath*), iter)
       __return_value
     end
 
@@ -305,12 +305,12 @@ module Gtk
       __return_value
     end
 
-    def is_blank_at_pos(x, y, path, column, cell_x, cell_y)
+    def blank_at_pos?(x, y, path, column, cell_x, cell_y)
       __return_value = LibGtk.tree_view_is_blank_at_pos((to_unsafe as LibGtk::TreeView*), Int32.new(x), Int32.new(y), (path.to_unsafe as LibGtk::TreePath*), (column.to_unsafe as LibGtk::TreeViewColumn*), Int32.new(cell_x), Int32.new(cell_y))
       __return_value
     end
 
-    def is_rubber_banding_active
+    def rubber_banding_active?
       __return_value = LibGtk.tree_view_is_rubber_banding_active((to_unsafe as LibGtk::TreeView*))
       __return_value
     end
@@ -341,7 +341,7 @@ module Gtk
     end
 
     def scroll_to_cell(path, column, use_align, row_align, col_align)
-      __return_value = LibGtk.tree_view_scroll_to_cell((to_unsafe as LibGtk::TreeView*), path && (path.to_unsafe as LibGtk::TreePath*), column && (column.to_unsafe as LibGtk::TreeViewColumn*), Bool.new(use_align), Float32.new(row_align), Float32.new(col_align))
+      __return_value = LibGtk.tree_view_scroll_to_cell((to_unsafe as LibGtk::TreeView*), path && (path.to_unsafe as LibGtk::TreePath*), column && (column.to_unsafe as LibGtk::TreeViewColumn*), use_align, Float32.new(row_align), Float32.new(col_align))
       __return_value
     end
 
@@ -351,7 +351,7 @@ module Gtk
     end
 
     def activate_on_single_click=(single)
-      __return_value = LibGtk.tree_view_set_activate_on_single_click((to_unsafe as LibGtk::TreeView*), Bool.new(single))
+      __return_value = LibGtk.tree_view_set_activate_on_single_click((to_unsafe as LibGtk::TreeView*), single)
       __return_value
     end
 
@@ -361,12 +361,12 @@ module Gtk
     end
 
     def set_cursor(path, focus_column, start_editing)
-      __return_value = LibGtk.tree_view_set_cursor((to_unsafe as LibGtk::TreeView*), (path.to_unsafe as LibGtk::TreePath*), focus_column && (focus_column.to_unsafe as LibGtk::TreeViewColumn*), Bool.new(start_editing))
+      __return_value = LibGtk.tree_view_set_cursor((to_unsafe as LibGtk::TreeView*), (path.to_unsafe as LibGtk::TreePath*), focus_column && (focus_column.to_unsafe as LibGtk::TreeViewColumn*), start_editing)
       __return_value
     end
 
     def set_cursor_on_cell(path, focus_column, focus_cell, start_editing)
-      __return_value = LibGtk.tree_view_set_cursor_on_cell((to_unsafe as LibGtk::TreeView*), (path.to_unsafe as LibGtk::TreePath*), focus_column && (focus_column.to_unsafe as LibGtk::TreeViewColumn*), focus_cell && (focus_cell.to_unsafe as LibGtk::CellRenderer*), Bool.new(start_editing))
+      __return_value = LibGtk.tree_view_set_cursor_on_cell((to_unsafe as LibGtk::TreeView*), (path.to_unsafe as LibGtk::TreePath*), focus_column && (focus_column.to_unsafe as LibGtk::TreeViewColumn*), focus_cell && (focus_cell.to_unsafe as LibGtk::CellRenderer*), start_editing)
       __return_value
     end
 
@@ -381,12 +381,12 @@ module Gtk
     end
 
     def enable_search=(enable_search)
-      __return_value = LibGtk.tree_view_set_enable_search((to_unsafe as LibGtk::TreeView*), Bool.new(enable_search))
+      __return_value = LibGtk.tree_view_set_enable_search((to_unsafe as LibGtk::TreeView*), enable_search)
       __return_value
     end
 
     def enable_tree_lines=(enabled)
-      __return_value = LibGtk.tree_view_set_enable_tree_lines((to_unsafe as LibGtk::TreeView*), Bool.new(enabled))
+      __return_value = LibGtk.tree_view_set_enable_tree_lines((to_unsafe as LibGtk::TreeView*), enabled)
       __return_value
     end
 
@@ -396,7 +396,7 @@ module Gtk
     end
 
     def fixed_height_mode=(enable)
-      __return_value = LibGtk.tree_view_set_fixed_height_mode((to_unsafe as LibGtk::TreeView*), Bool.new(enable))
+      __return_value = LibGtk.tree_view_set_fixed_height_mode((to_unsafe as LibGtk::TreeView*), enable)
       __return_value
     end
 
@@ -411,22 +411,22 @@ module Gtk
     end
 
     def headers_clickable=(setting)
-      __return_value = LibGtk.tree_view_set_headers_clickable((to_unsafe as LibGtk::TreeView*), Bool.new(setting))
+      __return_value = LibGtk.tree_view_set_headers_clickable((to_unsafe as LibGtk::TreeView*), setting)
       __return_value
     end
 
     def headers_visible=(headers_visible)
-      __return_value = LibGtk.tree_view_set_headers_visible((to_unsafe as LibGtk::TreeView*), Bool.new(headers_visible))
+      __return_value = LibGtk.tree_view_set_headers_visible((to_unsafe as LibGtk::TreeView*), headers_visible)
       __return_value
     end
 
     def hover_expand=(expand)
-      __return_value = LibGtk.tree_view_set_hover_expand((to_unsafe as LibGtk::TreeView*), Bool.new(expand))
+      __return_value = LibGtk.tree_view_set_hover_expand((to_unsafe as LibGtk::TreeView*), expand)
       __return_value
     end
 
     def hover_selection=(hover)
-      __return_value = LibGtk.tree_view_set_hover_selection((to_unsafe as LibGtk::TreeView*), Bool.new(hover))
+      __return_value = LibGtk.tree_view_set_hover_selection((to_unsafe as LibGtk::TreeView*), hover)
       __return_value
     end
 
@@ -441,7 +441,7 @@ module Gtk
     end
 
     def reorderable=(reorderable)
-      __return_value = LibGtk.tree_view_set_reorderable((to_unsafe as LibGtk::TreeView*), Bool.new(reorderable))
+      __return_value = LibGtk.tree_view_set_reorderable((to_unsafe as LibGtk::TreeView*), reorderable)
       __return_value
     end
 
@@ -451,12 +451,12 @@ module Gtk
     end
 
     def rubber_banding=(enable)
-      __return_value = LibGtk.tree_view_set_rubber_banding((to_unsafe as LibGtk::TreeView*), Bool.new(enable))
+      __return_value = LibGtk.tree_view_set_rubber_banding((to_unsafe as LibGtk::TreeView*), enable)
       __return_value
     end
 
     def rules_hint=(setting)
-      __return_value = LibGtk.tree_view_set_rules_hint((to_unsafe as LibGtk::TreeView*), Bool.new(setting))
+      __return_value = LibGtk.tree_view_set_rules_hint((to_unsafe as LibGtk::TreeView*), setting)
       __return_value
     end
 
@@ -481,7 +481,7 @@ module Gtk
     end
 
     def show_expanders=(enabled)
-      __return_value = LibGtk.tree_view_set_show_expanders((to_unsafe as LibGtk::TreeView*), Bool.new(enabled))
+      __return_value = LibGtk.tree_view_set_show_expanders((to_unsafe as LibGtk::TreeView*), enabled)
       __return_value
     end
 
@@ -513,6 +513,141 @@ module Gtk
     def unset_rows_drag_source
       __return_value = LibGtk.tree_view_unset_rows_drag_source((to_unsafe as LibGtk::TreeView*))
       __return_value
+    end
+
+    alias ColumnsChangedSignal = TreeView -> 
+    def on_columns_changed(&__block : ColumnsChangedSignal)
+      __callback = ->(_arg0 : LibGtk::TreeView*) {
+       __return_value = __block.call(TreeView.new(_arg0))
+       __return_value
+      }
+      connect("columns-changed", __callback)
+    end
+
+    alias CursorChangedSignal = TreeView -> 
+    def on_cursor_changed(&__block : CursorChangedSignal)
+      __callback = ->(_arg0 : LibGtk::TreeView*) {
+       __return_value = __block.call(TreeView.new(_arg0))
+       __return_value
+      }
+      connect("cursor-changed", __callback)
+    end
+
+    alias ExpandCollapseCursorRowSignal = TreeView, Bool, Bool, Bool -> Bool
+    def on_expand_collapse_cursor_row(&__block : ExpandCollapseCursorRowSignal)
+      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::Bool*, _arg2 : LibGtk::Bool*, _arg3 : LibGtk::Bool*) {
+       __return_value = __block.call(TreeView.new(_arg0), _arg1, _arg2, _arg3)
+       __return_value
+      }
+      connect("expand-collapse-cursor-row", __callback)
+    end
+
+    alias MoveCursorSignal = TreeView, Gtk::MovementStep, Int32 -> Bool
+    def on_move_cursor(&__block : MoveCursorSignal)
+      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::LibGtk::MovementStep*, _arg2 : LibGtk::Int32*) {
+       __return_value = __block.call(TreeView.new(_arg0), _arg1, _arg2)
+       __return_value
+      }
+      connect("move-cursor", __callback)
+    end
+
+    alias RowActivatedSignal = TreeView, Gtk::TreePath, Gtk::TreeViewColumn -> 
+    def on_row_activated(&__block : RowActivatedSignal)
+      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::LibGtk::TreePath*, _arg2 : LibGtk::LibGtk::TreeViewColumn*) {
+       __return_value = __block.call(TreeView.new(_arg0), Gtk::TreePath.new(_arg1), Gtk::TreeViewColumn.new(_arg2))
+       __return_value
+      }
+      connect("row-activated", __callback)
+    end
+
+    alias RowCollapsedSignal = TreeView, Gtk::TreeIter, Gtk::TreePath -> 
+    def on_row_collapsed(&__block : RowCollapsedSignal)
+      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::LibGtk::TreeIter*, _arg2 : LibGtk::LibGtk::TreePath*) {
+       __return_value = __block.call(TreeView.new(_arg0), Gtk::TreeIter.new(_arg1), Gtk::TreePath.new(_arg2))
+       __return_value
+      }
+      connect("row-collapsed", __callback)
+    end
+
+    alias RowExpandedSignal = TreeView, Gtk::TreeIter, Gtk::TreePath -> 
+    def on_row_expanded(&__block : RowExpandedSignal)
+      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::LibGtk::TreeIter*, _arg2 : LibGtk::LibGtk::TreePath*) {
+       __return_value = __block.call(TreeView.new(_arg0), Gtk::TreeIter.new(_arg1), Gtk::TreePath.new(_arg2))
+       __return_value
+      }
+      connect("row-expanded", __callback)
+    end
+
+    alias SelectAllSignal = TreeView -> Bool
+    def on_select_all(&__block : SelectAllSignal)
+      __callback = ->(_arg0 : LibGtk::TreeView*) {
+       __return_value = __block.call(TreeView.new(_arg0))
+       __return_value
+      }
+      connect("select-all", __callback)
+    end
+
+    alias SelectCursorParentSignal = TreeView -> Bool
+    def on_select_cursor_parent(&__block : SelectCursorParentSignal)
+      __callback = ->(_arg0 : LibGtk::TreeView*) {
+       __return_value = __block.call(TreeView.new(_arg0))
+       __return_value
+      }
+      connect("select-cursor-parent", __callback)
+    end
+
+    alias SelectCursorRowSignal = TreeView, Bool -> Bool
+    def on_select_cursor_row(&__block : SelectCursorRowSignal)
+      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::Bool*) {
+       __return_value = __block.call(TreeView.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("select-cursor-row", __callback)
+    end
+
+    alias StartInteractiveSearchSignal = TreeView -> Bool
+    def on_start_interactive_search(&__block : StartInteractiveSearchSignal)
+      __callback = ->(_arg0 : LibGtk::TreeView*) {
+       __return_value = __block.call(TreeView.new(_arg0))
+       __return_value
+      }
+      connect("start-interactive-search", __callback)
+    end
+
+    alias TestCollapseRowSignal = TreeView, Gtk::TreeIter, Gtk::TreePath -> Bool
+    def on_test_collapse_row(&__block : TestCollapseRowSignal)
+      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::LibGtk::TreeIter*, _arg2 : LibGtk::LibGtk::TreePath*) {
+       __return_value = __block.call(TreeView.new(_arg0), Gtk::TreeIter.new(_arg1), Gtk::TreePath.new(_arg2))
+       __return_value
+      }
+      connect("test-collapse-row", __callback)
+    end
+
+    alias TestExpandRowSignal = TreeView, Gtk::TreeIter, Gtk::TreePath -> Bool
+    def on_test_expand_row(&__block : TestExpandRowSignal)
+      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::LibGtk::TreeIter*, _arg2 : LibGtk::LibGtk::TreePath*) {
+       __return_value = __block.call(TreeView.new(_arg0), Gtk::TreeIter.new(_arg1), Gtk::TreePath.new(_arg2))
+       __return_value
+      }
+      connect("test-expand-row", __callback)
+    end
+
+    alias ToggleCursorRowSignal = TreeView -> Bool
+    def on_toggle_cursor_row(&__block : ToggleCursorRowSignal)
+      __callback = ->(_arg0 : LibGtk::TreeView*) {
+       __return_value = __block.call(TreeView.new(_arg0))
+       __return_value
+      }
+      connect("toggle-cursor-row", __callback)
+    end
+
+    alias UnselectAllSignal = TreeView -> Bool
+    def on_unselect_all(&__block : UnselectAllSignal)
+      __callback = ->(_arg0 : LibGtk::TreeView*) {
+       __return_value = __block.call(TreeView.new(_arg0))
+       __return_value
+      }
+      connect("unselect-all", __callback)
     end
 
   end

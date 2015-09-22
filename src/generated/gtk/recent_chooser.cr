@@ -12,7 +12,7 @@ module Gtk
 
     def current_uri
       __return_value = LibGtk.recent_chooser_get_current_uri((to_unsafe as LibGtk::RecentChooser*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def filter
@@ -67,7 +67,7 @@ module Gtk
 
     def uris(length)
       __return_value = LibGtk.recent_chooser_get_uris((to_unsafe as LibGtk::RecentChooser*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_26| raise "Expected string but got null" unless __item_26; String.new(__item_26) }
+      PointerIterator.new(__return_value) {|__item_81| (raise "Expected string but got null" unless __item_81; String.new(__item_81)) }
     end
 
     def list_filters
@@ -110,32 +110,32 @@ module Gtk
     end
 
     def local_only=(local_only)
-      __return_value = LibGtk.recent_chooser_set_local_only((to_unsafe as LibGtk::RecentChooser*), Bool.new(local_only))
+      __return_value = LibGtk.recent_chooser_set_local_only((to_unsafe as LibGtk::RecentChooser*), local_only)
       __return_value
     end
 
     def select_multiple=(select_multiple)
-      __return_value = LibGtk.recent_chooser_set_select_multiple((to_unsafe as LibGtk::RecentChooser*), Bool.new(select_multiple))
+      __return_value = LibGtk.recent_chooser_set_select_multiple((to_unsafe as LibGtk::RecentChooser*), select_multiple)
       __return_value
     end
 
     def show_icons=(show_icons)
-      __return_value = LibGtk.recent_chooser_set_show_icons((to_unsafe as LibGtk::RecentChooser*), Bool.new(show_icons))
+      __return_value = LibGtk.recent_chooser_set_show_icons((to_unsafe as LibGtk::RecentChooser*), show_icons)
       __return_value
     end
 
     def show_not_found=(show_not_found)
-      __return_value = LibGtk.recent_chooser_set_show_not_found((to_unsafe as LibGtk::RecentChooser*), Bool.new(show_not_found))
+      __return_value = LibGtk.recent_chooser_set_show_not_found((to_unsafe as LibGtk::RecentChooser*), show_not_found)
       __return_value
     end
 
     def show_private=(show_private)
-      __return_value = LibGtk.recent_chooser_set_show_private((to_unsafe as LibGtk::RecentChooser*), Bool.new(show_private))
+      __return_value = LibGtk.recent_chooser_set_show_private((to_unsafe as LibGtk::RecentChooser*), show_private)
       __return_value
     end
 
     def show_tips=(show_tips)
-      __return_value = LibGtk.recent_chooser_set_show_tips((to_unsafe as LibGtk::RecentChooser*), Bool.new(show_tips))
+      __return_value = LibGtk.recent_chooser_set_show_tips((to_unsafe as LibGtk::RecentChooser*), show_tips)
       __return_value
     end
 
@@ -157,6 +157,24 @@ module Gtk
     def unselect_uri(uri)
       __return_value = LibGtk.recent_chooser_unselect_uri((to_unsafe as LibGtk::RecentChooser*), uri)
       __return_value
+    end
+
+    alias ItemActivatedSignal = RecentChooser -> 
+    def on_item_activated(&__block : ItemActivatedSignal)
+      __callback = ->(_arg0 : LibGtk::RecentChooser*) {
+       __return_value = __block.call(RecentChooser.new(_arg0))
+       __return_value
+      }
+      connect("item-activated", __callback)
+    end
+
+    alias SelectionChangedSignal = RecentChooser -> 
+    def on_selection_changed(&__block : SelectionChangedSignal)
+      __callback = ->(_arg0 : LibGtk::RecentChooser*) {
+       __return_value = __block.call(RecentChooser.new(_arg0))
+       __return_value
+      }
+      connect("selection-changed", __callback)
     end
 
   end

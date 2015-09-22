@@ -18,7 +18,7 @@ module Gio
     end
 
     def self.default_for_type(content_type, must_support_uris)
-      __return_value = LibGio.app_info_get_default_for_type(content_type, Bool.new(must_support_uris))
+      __return_value = LibGio.app_info_get_default_for_type(content_type, must_support_uris)
       __return_value
     end
 
@@ -83,22 +83,22 @@ module Gio
 
     def commandline
       __return_value = LibGio.app_info_get_commandline((to_unsafe as LibGio::AppInfo*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def description
       __return_value = LibGio.app_info_get_description((to_unsafe as LibGio::AppInfo*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def display_name
       __return_value = LibGio.app_info_get_display_name((to_unsafe as LibGio::AppInfo*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def executable
       __return_value = LibGio.app_info_get_executable((to_unsafe as LibGio::AppInfo*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def icon
@@ -108,17 +108,17 @@ module Gio
 
     def id
       __return_value = LibGio.app_info_get_id((to_unsafe as LibGio::AppInfo*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def name
       __return_value = LibGio.app_info_get_name((to_unsafe as LibGio::AppInfo*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def supported_types
       __return_value = LibGio.app_info_get_supported_types((to_unsafe as LibGio::AppInfo*))
-      PointerIterator.new(__return_value) {|__item_93| raise "Expected string but got null" unless __item_93; String.new(__item_93) }
+      PointerIterator.new(__return_value) {|__item_49| (raise "Expected string but got null" unless __item_49; String.new(__item_49)) }
     end
 
     def launch(files, launch_context)

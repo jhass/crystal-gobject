@@ -25,12 +25,12 @@ module Gst
     end
 
     def fd_ctl_read(fd, active)
-      __return_value = LibGst.poll_fd_ctl_read((to_unsafe as LibGst::Poll*), (fd.to_unsafe as LibGst::PollFD*), Bool.new(active))
+      __return_value = LibGst.poll_fd_ctl_read((to_unsafe as LibGst::Poll*), (fd.to_unsafe as LibGst::PollFD*), active)
       __return_value
     end
 
     def fd_ctl_write(fd, active)
-      __return_value = LibGst.poll_fd_ctl_write((to_unsafe as LibGst::Poll*), (fd.to_unsafe as LibGst::PollFD*), Bool.new(active))
+      __return_value = LibGst.poll_fd_ctl_write((to_unsafe as LibGst::Poll*), (fd.to_unsafe as LibGst::PollFD*), active)
       __return_value
     end
 
@@ -75,12 +75,12 @@ module Gst
     end
 
     def controllable=(controllable)
-      __return_value = LibGst.poll_set_controllable((to_unsafe as LibGst::Poll*), Bool.new(controllable))
+      __return_value = LibGst.poll_set_controllable((to_unsafe as LibGst::Poll*), controllable)
       __return_value
     end
 
     def flushing=(flushing)
-      __return_value = LibGst.poll_set_flushing((to_unsafe as LibGst::Poll*), Bool.new(flushing))
+      __return_value = LibGst.poll_set_flushing((to_unsafe as LibGst::Poll*), flushing)
       __return_value
     end
 

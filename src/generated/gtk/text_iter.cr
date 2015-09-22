@@ -115,7 +115,7 @@ module Gtk
     end
 
     def can_insert(default_editability)
-      __return_value = LibGtk.text_iter_can_insert((to_unsafe as LibGtk::TextIter*), Bool.new(default_editability))
+      __return_value = LibGtk.text_iter_can_insert((to_unsafe as LibGtk::TextIter*), default_editability)
       __return_value
     end
 
@@ -130,7 +130,7 @@ module Gtk
     end
 
     def editable(default_setting)
-      __return_value = LibGtk.text_iter_editable((to_unsafe as LibGtk::TextIter*), Bool.new(default_setting))
+      __return_value = LibGtk.text_iter_editable((to_unsafe as LibGtk::TextIter*), default_setting)
       __return_value
     end
 
@@ -336,7 +336,7 @@ module Gtk
 
     def slice(end)
       __return_value = LibGtk.text_iter_get_slice((to_unsafe as LibGtk::TextIter*), (end.to_unsafe as LibGtk::TextIter*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def tags
@@ -346,11 +346,11 @@ module Gtk
 
     def text(end)
       __return_value = LibGtk.text_iter_get_text((to_unsafe as LibGtk::TextIter*), (end.to_unsafe as LibGtk::TextIter*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def toggled_tags(toggled_on)
-      __return_value = LibGtk.text_iter_get_toggled_tags((to_unsafe as LibGtk::TextIter*), Bool.new(toggled_on))
+      __return_value = LibGtk.text_iter_get_toggled_tags((to_unsafe as LibGtk::TextIter*), toggled_on)
       __return_value
     end
 
@@ -366,12 +366,12 @@ module Gtk
 
     def visible_slice(end)
       __return_value = LibGtk.text_iter_get_visible_slice((to_unsafe as LibGtk::TextIter*), (end.to_unsafe as LibGtk::TextIter*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def visible_text(end)
       __return_value = LibGtk.text_iter_get_visible_text((to_unsafe as LibGtk::TextIter*), (end.to_unsafe as LibGtk::TextIter*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def has_tag(tag)
@@ -394,17 +394,17 @@ module Gtk
       __return_value
     end
 
-    def is_cursor_position
+    def cursor_position?
       __return_value = LibGtk.text_iter_is_cursor_position((to_unsafe as LibGtk::TextIter*))
       __return_value
     end
 
-    def is_end
+    def end?
       __return_value = LibGtk.text_iter_is_end((to_unsafe as LibGtk::TextIter*))
       __return_value
     end
 
-    def is_start
+    def start?
       __return_value = LibGtk.text_iter_is_start((to_unsafe as LibGtk::TextIter*))
       __return_value
     end

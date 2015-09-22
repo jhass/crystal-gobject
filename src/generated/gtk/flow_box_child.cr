@@ -26,9 +26,18 @@ module Gtk
       __return_value
     end
 
-    def is_selected
+    def selected?
       __return_value = LibGtk.flow_box_child_is_selected((to_unsafe as LibGtk::FlowBoxChild*))
       __return_value
+    end
+
+    alias ActivateSignal = FlowBoxChild -> 
+    def on_activate(&__block : ActivateSignal)
+      __callback = ->(_arg0 : LibGtk::FlowBoxChild*) {
+       __return_value = __block.call(FlowBoxChild.new(_arg0))
+       __return_value
+      }
+      connect("activate", __callback)
     end
 
   end

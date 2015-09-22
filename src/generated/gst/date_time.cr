@@ -141,7 +141,7 @@ module Gst
 
     def to_iso8601_string
       __return_value = LibGst.date_time_to_iso8601_string((to_unsafe as LibGst::DateTime*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def unref

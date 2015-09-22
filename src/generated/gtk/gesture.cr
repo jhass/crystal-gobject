@@ -71,17 +71,17 @@ module Gtk
       __return_value
     end
 
-    def is_active
+    def active?
       __return_value = LibGtk.gesture_is_active((to_unsafe as LibGtk::Gesture*))
       __return_value
     end
 
-    def is_grouped_with(other)
+    def grouped_with?(other)
       __return_value = LibGtk.gesture_is_grouped_with((to_unsafe as LibGtk::Gesture*), (other.to_unsafe as LibGtk::Gesture*))
       __return_value
     end
 
-    def is_recognized
+    def recognized?
       __return_value = LibGtk.gesture_is_recognized((to_unsafe as LibGtk::Gesture*))
       __return_value
     end
@@ -104,6 +104,51 @@ module Gtk
     def ungroup
       __return_value = LibGtk.gesture_ungroup((to_unsafe as LibGtk::Gesture*))
       __return_value
+    end
+
+    alias BeginSignal = Gesture, Gdk::EventSequence -> 
+    def on_begin_(&__block : BeginSignal)
+      __callback = ->(_arg0 : LibGtk::Gesture*, _arg1 : LibGtk::LibGdk::EventSequence*) {
+       __return_value = __block.call(Gesture.new(_arg0), Gdk::EventSequence.new(_arg1))
+       __return_value
+      }
+      connect("begin", __callback)
+    end
+
+    alias CancelSignal = Gesture, Gdk::EventSequence -> 
+    def on_cancel(&__block : CancelSignal)
+      __callback = ->(_arg0 : LibGtk::Gesture*, _arg1 : LibGtk::LibGdk::EventSequence*) {
+       __return_value = __block.call(Gesture.new(_arg0), Gdk::EventSequence.new(_arg1))
+       __return_value
+      }
+      connect("cancel", __callback)
+    end
+
+    alias EndSignal = Gesture, Gdk::EventSequence -> 
+    def on_end_(&__block : EndSignal)
+      __callback = ->(_arg0 : LibGtk::Gesture*, _arg1 : LibGtk::LibGdk::EventSequence*) {
+       __return_value = __block.call(Gesture.new(_arg0), Gdk::EventSequence.new(_arg1))
+       __return_value
+      }
+      connect("end", __callback)
+    end
+
+    alias SequenceStateChangedSignal = Gesture, Gdk::EventSequence, Gtk::EventSequenceState -> 
+    def on_sequence_state_changed(&__block : SequenceStateChangedSignal)
+      __callback = ->(_arg0 : LibGtk::Gesture*, _arg1 : LibGtk::LibGdk::EventSequence*, _arg2 : LibGtk::LibGtk::EventSequenceState*) {
+       __return_value = __block.call(Gesture.new(_arg0), Gdk::EventSequence.new(_arg1), _arg2)
+       __return_value
+      }
+      connect("sequence-state-changed", __callback)
+    end
+
+    alias UpdateSignal = Gesture, Gdk::EventSequence -> 
+    def on_update(&__block : UpdateSignal)
+      __callback = ->(_arg0 : LibGtk::Gesture*, _arg1 : LibGtk::LibGdk::EventSequence*) {
+       __return_value = __block.call(Gesture.new(_arg0), Gdk::EventSequence.new(_arg1))
+       __return_value
+      }
+      connect("update", __callback)
     end
 
   end

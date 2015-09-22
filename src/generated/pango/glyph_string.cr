@@ -45,7 +45,7 @@ module Pango
     end
 
     def index_to_x(text, length, analysis, index, trailing, x_pos)
-      __return_value = LibPango.glyph_string_index_to_x((to_unsafe as LibPango::GlyphString*), text, Int32.new(length), (analysis.to_unsafe as LibPango::Analysis*), Int32.new(index), Bool.new(trailing), Int32.new(x_pos))
+      __return_value = LibPango.glyph_string_index_to_x((to_unsafe as LibPango::GlyphString*), text, Int32.new(length), (analysis.to_unsafe as LibPango::Analysis*), Int32.new(index), trailing, Int32.new(x_pos))
       __return_value
     end
 

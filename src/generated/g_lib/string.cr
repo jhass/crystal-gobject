@@ -30,7 +30,7 @@ module GLib
     end
 
     def append_uri_escaped(unescaped, reserved_chars_allowed, allow_utf8)
-      __return_value = LibGLib.string_append_uri_escaped((to_unsafe as LibGLib::String*), unescaped, reserved_chars_allowed, Bool.new(allow_utf8))
+      __return_value = LibGLib.string_append_uri_escaped((to_unsafe as LibGLib::String*), unescaped, reserved_chars_allowed, allow_utf8)
       GLib::String.new(__return_value)
     end
 
@@ -65,8 +65,8 @@ module GLib
     end
 
     def free(free_segment)
-      __return_value = LibGLib.string_free((to_unsafe as LibGLib::String*), Bool.new(free_segment))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      __return_value = LibGLib.string_free((to_unsafe as LibGLib::String*), free_segment)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def free_to_bytes

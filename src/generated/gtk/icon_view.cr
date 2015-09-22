@@ -191,7 +191,7 @@ module Gtk
     end
 
     def tooltip_context(x, y, keyboard_tip, model, path, iter)
-      __return_value = LibGtk.icon_view_get_tooltip_context((to_unsafe as LibGtk::IconView*), Int32.new(x), Int32.new(y), Bool.new(keyboard_tip), (model.to_unsafe as LibGtk::TreeModel*), (path.to_unsafe as LibGtk::TreePath*), iter)
+      __return_value = LibGtk.icon_view_get_tooltip_context((to_unsafe as LibGtk::IconView*), Int32.new(x), Int32.new(y), keyboard_tip, (model.to_unsafe as LibGtk::TreeModel*), (path.to_unsafe as LibGtk::TreePath*), iter)
       __return_value
     end
 
@@ -211,7 +211,7 @@ module Gtk
     end
 
     def scroll_to_path(path, use_align, row_align, col_align)
-      __return_value = LibGtk.icon_view_scroll_to_path((to_unsafe as LibGtk::IconView*), (path.to_unsafe as LibGtk::TreePath*), Bool.new(use_align), Float32.new(row_align), Float32.new(col_align))
+      __return_value = LibGtk.icon_view_scroll_to_path((to_unsafe as LibGtk::IconView*), (path.to_unsafe as LibGtk::TreePath*), use_align, Float32.new(row_align), Float32.new(col_align))
       __return_value
     end
 
@@ -231,7 +231,7 @@ module Gtk
     end
 
     def activate_on_single_click=(single)
-      __return_value = LibGtk.icon_view_set_activate_on_single_click((to_unsafe as LibGtk::IconView*), Bool.new(single))
+      __return_value = LibGtk.icon_view_set_activate_on_single_click((to_unsafe as LibGtk::IconView*), single)
       __return_value
     end
 
@@ -246,7 +246,7 @@ module Gtk
     end
 
     def set_cursor(path, cell, start_editing)
-      __return_value = LibGtk.icon_view_set_cursor((to_unsafe as LibGtk::IconView*), (path.to_unsafe as LibGtk::TreePath*), cell && (cell.to_unsafe as LibGtk::CellRenderer*), Bool.new(start_editing))
+      __return_value = LibGtk.icon_view_set_cursor((to_unsafe as LibGtk::IconView*), (path.to_unsafe as LibGtk::TreePath*), cell && (cell.to_unsafe as LibGtk::CellRenderer*), start_editing)
       __return_value
     end
 
@@ -291,7 +291,7 @@ module Gtk
     end
 
     def reorderable=(reorderable)
-      __return_value = LibGtk.icon_view_set_reorderable((to_unsafe as LibGtk::IconView*), Bool.new(reorderable))
+      __return_value = LibGtk.icon_view_set_reorderable((to_unsafe as LibGtk::IconView*), reorderable)
       __return_value
     end
 
@@ -348,6 +348,78 @@ module Gtk
     def unset_model_drag_source
       __return_value = LibGtk.icon_view_unset_model_drag_source((to_unsafe as LibGtk::IconView*))
       __return_value
+    end
+
+    alias ActivateCursorItemSignal = IconView -> Bool
+    def on_activate_cursor_item(&__block : ActivateCursorItemSignal)
+      __callback = ->(_arg0 : LibGtk::IconView*) {
+       __return_value = __block.call(IconView.new(_arg0))
+       __return_value
+      }
+      connect("activate-cursor-item", __callback)
+    end
+
+    alias ItemActivatedSignal = IconView, Gtk::TreePath -> 
+    def on_item_activated(&__block : ItemActivatedSignal)
+      __callback = ->(_arg0 : LibGtk::IconView*, _arg1 : LibGtk::LibGtk::TreePath*) {
+       __return_value = __block.call(IconView.new(_arg0), Gtk::TreePath.new(_arg1))
+       __return_value
+      }
+      connect("item-activated", __callback)
+    end
+
+    alias MoveCursorSignal = IconView, Gtk::MovementStep, Int32 -> Bool
+    def on_move_cursor(&__block : MoveCursorSignal)
+      __callback = ->(_arg0 : LibGtk::IconView*, _arg1 : LibGtk::LibGtk::MovementStep*, _arg2 : LibGtk::Int32*) {
+       __return_value = __block.call(IconView.new(_arg0), _arg1, _arg2)
+       __return_value
+      }
+      connect("move-cursor", __callback)
+    end
+
+    alias SelectAllSignal = IconView -> 
+    def on_select_all(&__block : SelectAllSignal)
+      __callback = ->(_arg0 : LibGtk::IconView*) {
+       __return_value = __block.call(IconView.new(_arg0))
+       __return_value
+      }
+      connect("select-all", __callback)
+    end
+
+    alias SelectCursorItemSignal = IconView -> 
+    def on_select_cursor_item(&__block : SelectCursorItemSignal)
+      __callback = ->(_arg0 : LibGtk::IconView*) {
+       __return_value = __block.call(IconView.new(_arg0))
+       __return_value
+      }
+      connect("select-cursor-item", __callback)
+    end
+
+    alias SelectionChangedSignal = IconView -> 
+    def on_selection_changed(&__block : SelectionChangedSignal)
+      __callback = ->(_arg0 : LibGtk::IconView*) {
+       __return_value = __block.call(IconView.new(_arg0))
+       __return_value
+      }
+      connect("selection-changed", __callback)
+    end
+
+    alias ToggleCursorItemSignal = IconView -> 
+    def on_toggle_cursor_item(&__block : ToggleCursorItemSignal)
+      __callback = ->(_arg0 : LibGtk::IconView*) {
+       __return_value = __block.call(IconView.new(_arg0))
+       __return_value
+      }
+      connect("toggle-cursor-item", __callback)
+    end
+
+    alias UnselectAllSignal = IconView -> 
+    def on_unselect_all(&__block : UnselectAllSignal)
+      __callback = ->(_arg0 : LibGtk::IconView*) {
+       __return_value = __block.call(IconView.new(_arg0))
+       __return_value
+      }
+      connect("unselect-all", __callback)
     end
 
   end

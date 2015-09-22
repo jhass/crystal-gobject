@@ -33,7 +33,7 @@ module Gio
     end
 
     def use_ssl3=(use_ssl3)
-      __return_value = LibGio.tls_client_connection_set_use_ssl3((to_unsafe as LibGio::TlsClientConnection*), Bool.new(use_ssl3))
+      __return_value = LibGio.tls_client_connection_set_use_ssl3((to_unsafe as LibGio::TlsClientConnection*), use_ssl3)
       __return_value
     end
 

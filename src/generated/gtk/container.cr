@@ -135,7 +135,7 @@ module Gtk
     end
 
     def reallocate_redraws=(needs_redraws)
-      __return_value = LibGtk.container_set_reallocate_redraws((to_unsafe as LibGtk::Container*), Bool.new(needs_redraws))
+      __return_value = LibGtk.container_set_reallocate_redraws((to_unsafe as LibGtk::Container*), needs_redraws)
       __return_value
     end
 
@@ -147,6 +147,42 @@ module Gtk
     def unset_focus_chain
       __return_value = LibGtk.container_unset_focus_chain((to_unsafe as LibGtk::Container*))
       __return_value
+    end
+
+    alias AddSignal = Container, Gtk::Widget -> 
+    def on_add(&__block : AddSignal)
+      __callback = ->(_arg0 : LibGtk::Container*, _arg1 : LibGtk::LibGtk::Widget*) {
+       __return_value = __block.call(Container.new(_arg0), Gtk::Widget.new(_arg1))
+       __return_value
+      }
+      connect("add", __callback)
+    end
+
+    alias CheckResizeSignal = Container -> 
+    def on_check_resize(&__block : CheckResizeSignal)
+      __callback = ->(_arg0 : LibGtk::Container*) {
+       __return_value = __block.call(Container.new(_arg0))
+       __return_value
+      }
+      connect("check-resize", __callback)
+    end
+
+    alias RemoveSignal = Container, Gtk::Widget -> 
+    def on_remove(&__block : RemoveSignal)
+      __callback = ->(_arg0 : LibGtk::Container*, _arg1 : LibGtk::LibGtk::Widget*) {
+       __return_value = __block.call(Container.new(_arg0), Gtk::Widget.new(_arg1))
+       __return_value
+      }
+      connect("remove", __callback)
+    end
+
+    alias SetFocusChildSignal = Container, Gtk::Widget -> 
+    def on_set_focus_child(&__block : SetFocusChildSignal)
+      __callback = ->(_arg0 : LibGtk::Container*, _arg1 : LibGtk::LibGtk::Widget*) {
+       __return_value = __block.call(Container.new(_arg0), Gtk::Widget.new(_arg1))
+       __return_value
+      }
+      connect("set-focus-child", __callback)
     end
 
   end

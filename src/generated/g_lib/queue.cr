@@ -39,7 +39,7 @@ module GLib
       __return_value
     end
 
-    def is_empty
+    def empty?
       __return_value = LibGLib.queue_is_empty((to_unsafe as LibGLib::Queue*))
       __return_value
     end

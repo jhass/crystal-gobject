@@ -56,7 +56,7 @@ module GLib
 
     def name
       __return_value = LibGLib.source_get_name((to_unsafe as LibGLib::Source*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def priority
@@ -74,7 +74,7 @@ module GLib
       __return_value
     end
 
-    def is_destroyed
+    def destroyed?
       __return_value = LibGLib.source_is_destroyed((to_unsafe as LibGLib::Source*))
       __return_value
     end
@@ -120,7 +120,7 @@ module GLib
     end
 
     def can_recurse=(can_recurse)
-      __return_value = LibGLib.source_set_can_recurse((to_unsafe as LibGLib::Source*), Bool.new(can_recurse))
+      __return_value = LibGLib.source_set_can_recurse((to_unsafe as LibGLib::Source*), can_recurse)
       __return_value
     end
 

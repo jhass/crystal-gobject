@@ -30,12 +30,12 @@ module Gst
     end
 
     def self.activate_mode_default(pad, parent, mode, active)
-      __return_value = LibGst.ghost_pad_activate_mode_default((pad.to_unsafe as LibGst::Pad*), parent && (parent.to_unsafe as LibGst::Object*), mode, Bool.new(active))
+      __return_value = LibGst.ghost_pad_activate_mode_default((pad.to_unsafe as LibGst::Pad*), parent && (parent.to_unsafe as LibGst::Object*), mode, active)
       __return_value
     end
 
     def self.internal_activate_mode_default(pad, parent, mode, active)
-      __return_value = LibGst.ghost_pad_internal_activate_mode_default((pad.to_unsafe as LibGst::Pad*), parent && (parent.to_unsafe as LibGst::Object*), mode, Bool.new(active))
+      __return_value = LibGst.ghost_pad_internal_activate_mode_default((pad.to_unsafe as LibGst::Pad*), parent && (parent.to_unsafe as LibGst::Object*), mode, active)
       __return_value
     end
 

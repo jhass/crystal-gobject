@@ -13,22 +13,22 @@ module GLib
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.match_info_expand_references((to_unsafe as LibGLib::MatchInfo*), string_to_expand, pointerof(__error))
       GLib::Error.assert __error
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def fetch(match_num)
       __return_value = LibGLib.match_info_fetch((to_unsafe as LibGLib::MatchInfo*), Int32.new(match_num))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def fetch_all
       __return_value = LibGLib.match_info_fetch_all((to_unsafe as LibGLib::MatchInfo*))
-      PointerIterator.new(__return_value) {|__item_77| raise "Expected string but got null" unless __item_77; String.new(__item_77) }
+      PointerIterator.new(__return_value) {|__item_60| (raise "Expected string but got null" unless __item_60; String.new(__item_60)) }
     end
 
     def fetch_named(name)
       __return_value = LibGLib.match_info_fetch_named((to_unsafe as LibGLib::MatchInfo*), name)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def fetch_named_pos(name, start_pos, end_pos)
@@ -58,10 +58,10 @@ module GLib
 
     def string
       __return_value = LibGLib.match_info_get_string((to_unsafe as LibGLib::MatchInfo*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
-    def is_partial_match
+    def partial_match?
       __return_value = LibGLib.match_info_is_partial_match((to_unsafe as LibGLib::MatchInfo*))
       __return_value
     end

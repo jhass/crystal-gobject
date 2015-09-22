@@ -43,12 +43,12 @@ module Gtk
     end
 
     def exclusive=(exclusive)
-      __return_value = LibGtk.gesture_single_set_exclusive((to_unsafe as LibGtk::GestureSingle*), Bool.new(exclusive))
+      __return_value = LibGtk.gesture_single_set_exclusive((to_unsafe as LibGtk::GestureSingle*), exclusive)
       __return_value
     end
 
     def touch_only=(touch_only)
-      __return_value = LibGtk.gesture_single_set_touch_only((to_unsafe as LibGtk::GestureSingle*), Bool.new(touch_only))
+      __return_value = LibGtk.gesture_single_set_touch_only((to_unsafe as LibGtk::GestureSingle*), touch_only)
       __return_value
     end
 

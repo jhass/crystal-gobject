@@ -10,7 +10,7 @@ module Gst
     end
 
     def self.new_buffer_size(format, minsize, maxsize, async)
-      __return_value = LibGst.event_new_buffer_size(format, Int64.new(minsize), Int64.new(maxsize), Bool.new(async))
+      __return_value = LibGst.event_new_buffer_size(format, Int64.new(minsize), Int64.new(maxsize), async)
       Gst::Event.new(__return_value)
     end
 
@@ -35,7 +35,7 @@ module Gst
     end
 
     def self.new_flush_stop(reset_time)
-      __return_value = LibGst.event_new_flush_stop(Bool.new(reset_time))
+      __return_value = LibGst.event_new_flush_stop(reset_time)
       Gst::Event.new(__return_value)
     end
 
@@ -85,7 +85,7 @@ module Gst
     end
 
     def self.new_step(format, amount, rate, flush, intermediate)
-      __return_value = LibGst.event_new_step(format, UInt64.new(amount), Float64.new(rate), Bool.new(flush), Bool.new(intermediate))
+      __return_value = LibGst.event_new_step(format, UInt64.new(amount), Float64.new(rate), flush, intermediate)
       Gst::Event.new(__return_value)
     end
 
@@ -100,7 +100,7 @@ module Gst
     end
 
     def self.new_toc(toc, updated)
-      __return_value = LibGst.event_new_toc((toc.to_unsafe as LibGst::Toc*), Bool.new(updated))
+      __return_value = LibGst.event_new_toc((toc.to_unsafe as LibGst::Toc*), updated)
       Gst::Event.new(__return_value)
     end
 
@@ -135,7 +135,7 @@ module Gst
     end
 
     def parse_buffer_size(format, minsize, maxsize, async)
-      __return_value = LibGst.event_parse_buffer_size((to_unsafe as LibGst::Event*), format, Int64.new(minsize), Int64.new(maxsize), Bool.new(async))
+      __return_value = LibGst.event_parse_buffer_size((to_unsafe as LibGst::Event*), format, Int64.new(minsize), Int64.new(maxsize), async)
       __return_value
     end
 
@@ -145,7 +145,7 @@ module Gst
     end
 
     def parse_flush_stop(reset_time)
-      __return_value = LibGst.event_parse_flush_stop((to_unsafe as LibGst::Event*), Bool.new(reset_time))
+      __return_value = LibGst.event_parse_flush_stop((to_unsafe as LibGst::Event*), reset_time)
       __return_value
     end
 
@@ -190,7 +190,7 @@ module Gst
     end
 
     def parse_step(format, amount, rate, flush, intermediate)
-      __return_value = LibGst.event_parse_step((to_unsafe as LibGst::Event*), format, UInt64.new(amount), Float64.new(rate), Bool.new(flush), Bool.new(intermediate))
+      __return_value = LibGst.event_parse_step((to_unsafe as LibGst::Event*), format, UInt64.new(amount), Float64.new(rate), flush, intermediate)
       __return_value
     end
 
@@ -210,7 +210,7 @@ module Gst
     end
 
     def parse_toc(toc, updated)
-      __return_value = LibGst.event_parse_toc((to_unsafe as LibGst::Event*), (toc.to_unsafe as LibGst::Toc*), Bool.new(updated))
+      __return_value = LibGst.event_parse_toc((to_unsafe as LibGst::Event*), (toc.to_unsafe as LibGst::Toc*), updated)
       __return_value
     end
 

@@ -26,12 +26,12 @@ module GLib
 
     def description
       __return_value = LibGLib.option_context_get_description((to_unsafe as LibGLib::OptionContext*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def help(main_help, group)
-      __return_value = LibGLib.option_context_get_help((to_unsafe as LibGLib::OptionContext*), Bool.new(main_help), group && (group.to_unsafe as LibGLib::OptionGroup*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      __return_value = LibGLib.option_context_get_help((to_unsafe as LibGLib::OptionContext*), main_help, group && (group.to_unsafe as LibGLib::OptionGroup*))
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def help_enabled
@@ -56,7 +56,7 @@ module GLib
 
     def summary
       __return_value = LibGLib.option_context_get_summary((to_unsafe as LibGLib::OptionContext*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def parse(argc, argv)
@@ -79,12 +79,12 @@ module GLib
     end
 
     def help_enabled=(help_enabled)
-      __return_value = LibGLib.option_context_set_help_enabled((to_unsafe as LibGLib::OptionContext*), Bool.new(help_enabled))
+      __return_value = LibGLib.option_context_set_help_enabled((to_unsafe as LibGLib::OptionContext*), help_enabled)
       __return_value
     end
 
     def ignore_unknown_options=(ignore_unknown)
-      __return_value = LibGLib.option_context_set_ignore_unknown_options((to_unsafe as LibGLib::OptionContext*), Bool.new(ignore_unknown))
+      __return_value = LibGLib.option_context_set_ignore_unknown_options((to_unsafe as LibGLib::OptionContext*), ignore_unknown)
       __return_value
     end
 
@@ -94,7 +94,7 @@ module GLib
     end
 
     def strict_posix=(strict_posix)
-      __return_value = LibGLib.option_context_set_strict_posix((to_unsafe as LibGLib::OptionContext*), Bool.new(strict_posix))
+      __return_value = LibGLib.option_context_set_strict_posix((to_unsafe as LibGLib::OptionContext*), strict_posix)
       __return_value
     end
 

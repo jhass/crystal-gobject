@@ -42,7 +42,7 @@ module Gio
       __return_value
     end
 
-    def is_closed
+    def closed?
       __return_value = LibGio.file_enumerator_is_closed((to_unsafe as LibGio::FileEnumerator*))
       __return_value
     end
@@ -74,7 +74,7 @@ module Gio
     end
 
     def pending=(pending)
-      __return_value = LibGio.file_enumerator_set_pending((to_unsafe as LibGio::FileEnumerator*), Bool.new(pending))
+      __return_value = LibGio.file_enumerator_set_pending((to_unsafe as LibGio::FileEnumerator*), pending)
       __return_value
     end
 

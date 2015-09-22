@@ -26,7 +26,7 @@ module Gst
 
     def self.config_get_option(config, index)
       __return_value = LibGst.buffer_pool_config_get_option((config.to_unsafe as LibGst::Structure*), UInt32.new(index))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def self.config_get_params(config, caps, size, min_buffers, max_buffers)
@@ -71,7 +71,7 @@ module Gst
 
     def options
       __return_value = LibGst.buffer_pool_get_options((to_unsafe as LibGst::BufferPool*))
-      PointerIterator.new(__return_value) {|__item_1| raise "Expected string but got null" unless __item_1; String.new(__item_1) }
+      PointerIterator.new(__return_value) {|__item_2| (raise "Expected string but got null" unless __item_2; String.new(__item_2)) }
     end
 
     def has_option(option)
@@ -79,7 +79,7 @@ module Gst
       __return_value
     end
 
-    def is_active
+    def active?
       __return_value = LibGst.buffer_pool_is_active((to_unsafe as LibGst::BufferPool*))
       __return_value
     end
@@ -90,7 +90,7 @@ module Gst
     end
 
     def active=(active)
-      __return_value = LibGst.buffer_pool_set_active((to_unsafe as LibGst::BufferPool*), Bool.new(active))
+      __return_value = LibGst.buffer_pool_set_active((to_unsafe as LibGst::BufferPool*), active)
       __return_value
     end
 
@@ -100,7 +100,7 @@ module Gst
     end
 
     def flushing=(flushing)
-      __return_value = LibGst.buffer_pool_set_flushing((to_unsafe as LibGst::BufferPool*), Bool.new(flushing))
+      __return_value = LibGst.buffer_pool_set_flushing((to_unsafe as LibGst::BufferPool*), flushing)
       __return_value
     end
 

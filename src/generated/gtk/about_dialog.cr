@@ -38,32 +38,32 @@ module Gtk
 
     def artists
       __return_value = LibGtk.about_dialog_get_artists((to_unsafe as LibGtk::AboutDialog*))
-      PointerIterator.new(__return_value) {|__item_87| raise "Expected string but got null" unless __item_87; String.new(__item_87) }
+      PointerIterator.new(__return_value) {|__item_76| (raise "Expected string but got null" unless __item_76; String.new(__item_76)) }
     end
 
     def authors
       __return_value = LibGtk.about_dialog_get_authors((to_unsafe as LibGtk::AboutDialog*))
-      PointerIterator.new(__return_value) {|__item_11| raise "Expected string but got null" unless __item_11; String.new(__item_11) }
+      PointerIterator.new(__return_value) {|__item_90| (raise "Expected string but got null" unless __item_90; String.new(__item_90)) }
     end
 
     def comments
       __return_value = LibGtk.about_dialog_get_comments((to_unsafe as LibGtk::AboutDialog*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def copyright
       __return_value = LibGtk.about_dialog_get_copyright((to_unsafe as LibGtk::AboutDialog*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def documenters
       __return_value = LibGtk.about_dialog_get_documenters((to_unsafe as LibGtk::AboutDialog*))
-      PointerIterator.new(__return_value) {|__item_20| raise "Expected string but got null" unless __item_20; String.new(__item_20) }
+      PointerIterator.new(__return_value) {|__item_2| (raise "Expected string but got null" unless __item_2; String.new(__item_2)) }
     end
 
     def license
       __return_value = LibGtk.about_dialog_get_license((to_unsafe as LibGtk::AboutDialog*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def license_type
@@ -78,32 +78,32 @@ module Gtk
 
     def logo_icon_name
       __return_value = LibGtk.about_dialog_get_logo_icon_name((to_unsafe as LibGtk::AboutDialog*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def program_name
       __return_value = LibGtk.about_dialog_get_program_name((to_unsafe as LibGtk::AboutDialog*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def translator_credits
       __return_value = LibGtk.about_dialog_get_translator_credits((to_unsafe as LibGtk::AboutDialog*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def version
       __return_value = LibGtk.about_dialog_get_version((to_unsafe as LibGtk::AboutDialog*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def website
       __return_value = LibGtk.about_dialog_get_website((to_unsafe as LibGtk::AboutDialog*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def website_label
       __return_value = LibGtk.about_dialog_get_website_label((to_unsafe as LibGtk::AboutDialog*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def wrap_license
@@ -182,8 +182,17 @@ module Gtk
     end
 
     def wrap_license=(wrap_license)
-      __return_value = LibGtk.about_dialog_set_wrap_license((to_unsafe as LibGtk::AboutDialog*), Bool.new(wrap_license))
+      __return_value = LibGtk.about_dialog_set_wrap_license((to_unsafe as LibGtk::AboutDialog*), wrap_license)
       __return_value
+    end
+
+    alias ActivateLinkSignal = AboutDialog, UInt8 -> Bool
+    def on_activate_link(&__block : ActivateLinkSignal)
+      __callback = ->(_arg0 : LibGtk::AboutDialog*, _arg1 : LibGtk::UInt8**) {
+       __return_value = __block.call(AboutDialog.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value
+      }
+      connect("activate-link", __callback)
     end
 
   end

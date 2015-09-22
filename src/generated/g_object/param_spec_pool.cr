@@ -16,7 +16,7 @@ module GObject
 
     def list(owner_type, n_pspecs_p)
       __return_value = LibGObject.param_spec_pool_list((to_unsafe as LibGObject::ParamSpecPool*), UInt64.new(owner_type), UInt32.new(n_pspecs_p))
-      PointerIterator.new(__return_value) {|__item_94| GObject::ParamSpec.new(__item_94) }
+      PointerIterator.new(__return_value) {|__item_20| GObject::ParamSpec.new(__item_20) }
     end
 
     def list_owned(owner_type)
@@ -25,7 +25,7 @@ module GObject
     end
 
     def lookup(param_name, owner_type, walk_ancestors)
-      __return_value = LibGObject.param_spec_pool_lookup((to_unsafe as LibGObject::ParamSpecPool*), param_name, UInt64.new(owner_type), Bool.new(walk_ancestors))
+      __return_value = LibGObject.param_spec_pool_lookup((to_unsafe as LibGObject::ParamSpecPool*), param_name, UInt64.new(owner_type), walk_ancestors)
       GObject::ParamSpec.new(__return_value)
     end
 
@@ -35,7 +35,7 @@ module GObject
     end
 
     def self.new_internal(type_prefixing)
-      __return_value = LibGObject.param_spec_pool_new(Bool.new(type_prefixing))
+      __return_value = LibGObject.param_spec_pool_new(type_prefixing)
       GObject::ParamSpecPool.new(__return_value)
     end
 

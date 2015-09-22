@@ -36,12 +36,12 @@ module Gst
 
     def metadata(key)
       __return_value = LibGst.device_provider_factory_get_metadata((to_unsafe as LibGst::DeviceProviderFactory*), key)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def metadata_keys
       __return_value = LibGst.device_provider_factory_get_metadata_keys((to_unsafe as LibGst::DeviceProviderFactory*))
-      PointerIterator.new(__return_value) {|__item_94| raise "Expected string but got null" unless __item_94; String.new(__item_94) } if __return_value
+      PointerIterator.new(__return_value) {|__item_21| (raise "Expected string but got null" unless __item_21; String.new(__item_21)) } if __return_value
     end
 
     def has_classes(classes)

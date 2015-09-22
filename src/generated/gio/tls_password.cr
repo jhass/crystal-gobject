@@ -17,7 +17,7 @@ module Gio
 
     def description
       __return_value = LibGio.tls_password_get_description((to_unsafe as LibGio::TlsPassword*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def flags
@@ -32,7 +32,7 @@ module Gio
 
     def warning
       __return_value = LibGio.tls_password_get_warning((to_unsafe as LibGio::TlsPassword*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def description=(description)

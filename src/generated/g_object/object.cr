@@ -31,7 +31,7 @@ module GObject
 
     def self.interface_list_properties(g_iface, n_properties_p)
       __return_value = LibGObject.object_interface_list_properties(g_iface, UInt32.new(n_properties_p))
-      PointerIterator.new(__return_value) {|__item_94| GObject::ParamSpec.new(__item_94) }
+      PointerIterator.new(__return_value) {|__item_63| GObject::ParamSpec.new(__item_63) }
     end
 
     def bind_property(source_property, target, target_property, flags)
@@ -69,7 +69,7 @@ module GObject
       __return_value
     end
 
-    def is_floating
+    def floating?
       __return_value = LibGObject.object_is_floating((to_unsafe as LibGObject::Object*))
       __return_value
     end
@@ -142,6 +142,15 @@ module GObject
     def watch_closure(closure)
       __return_value = LibGObject.object_watch_closure((to_unsafe as LibGObject::Object*), (closure.to_unsafe as LibGObject::Closure*))
       __return_value
+    end
+
+    alias NotifySignal = Object, GObject::ParamSpec -> 
+    def on_notify(&__block : NotifySignal)
+      __callback = ->(_arg0 : LibGObject::Object*, _arg1 : LibGObject::LibGObject::ParamSpec*) {
+       __return_value = __block.call(Object.new(_arg0), GObject::ParamSpec.new(_arg1))
+       __return_value
+      }
+      connect("notify", __callback)
     end
 
   end

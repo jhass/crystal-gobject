@@ -30,12 +30,12 @@ module Gtk
 
     def accels_for_action(detailed_action_name)
       __return_value = LibGtk.application_get_accels_for_action((to_unsafe as LibGtk::Application*), detailed_action_name)
-      PointerIterator.new(__return_value) {|__item_41| raise "Expected string but got null" unless __item_41; String.new(__item_41) }
+      PointerIterator.new(__return_value) {|__item_31| (raise "Expected string but got null" unless __item_31; String.new(__item_31)) }
     end
 
     def actions_for_accel(accel)
       __return_value = LibGtk.application_get_actions_for_accel((to_unsafe as LibGtk::Application*), accel)
-      PointerIterator.new(__return_value) {|__item_87| raise "Expected string but got null" unless __item_87; String.new(__item_87) }
+      PointerIterator.new(__return_value) {|__item_69| (raise "Expected string but got null" unless __item_69; String.new(__item_69)) }
     end
 
     def active_window
@@ -73,14 +73,14 @@ module Gtk
       __return_value
     end
 
-    def is_inhibited(flags)
+    def inhibited?(flags)
       __return_value = LibGtk.application_is_inhibited((to_unsafe as LibGtk::Application*), flags)
       __return_value
     end
 
     def list_action_descriptions
       __return_value = LibGtk.application_list_action_descriptions((to_unsafe as LibGtk::Application*))
-      PointerIterator.new(__return_value) {|__item_88| raise "Expected string but got null" unless __item_88; String.new(__item_88) }
+      PointerIterator.new(__return_value) {|__item_17| (raise "Expected string but got null" unless __item_17; String.new(__item_17)) }
     end
 
     def prefers_app_menu
@@ -116,6 +116,24 @@ module Gtk
     def uninhibit(cookie)
       __return_value = LibGtk.application_uninhibit((to_unsafe as LibGtk::Application*), UInt32.new(cookie))
       __return_value
+    end
+
+    alias WindowAddedSignal = Application, Gtk::Window -> 
+    def on_window_added(&__block : WindowAddedSignal)
+      __callback = ->(_arg0 : LibGtk::Application*, _arg1 : LibGtk::LibGtk::Window*) {
+       __return_value = __block.call(Application.new(_arg0), Gtk::Window.new(_arg1))
+       __return_value
+      }
+      connect("window-added", __callback)
+    end
+
+    alias WindowRemovedSignal = Application, Gtk::Window -> 
+    def on_window_removed(&__block : WindowRemovedSignal)
+      __callback = ->(_arg0 : LibGtk::Application*, _arg1 : LibGtk::LibGtk::Window*) {
+       __return_value = __block.call(Application.new(_arg0), Gtk::Window.new(_arg1))
+       __return_value
+      }
+      connect("window-removed", __callback)
     end
 
   end

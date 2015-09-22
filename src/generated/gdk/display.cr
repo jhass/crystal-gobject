@@ -84,7 +84,7 @@ module Gdk
 
     def name
       __return_value = LibGdk.display_get_name((to_unsafe as LibGdk::Display*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def pointer(screen, x, y, mask)
@@ -107,7 +107,7 @@ module Gdk
       __return_value
     end
 
-    def is_closed
+    def closed?
       __return_value = LibGdk.display_is_closed((to_unsafe as LibGdk::Display*))
       __return_value
     end
@@ -210,6 +210,24 @@ module Gdk
     def warp_pointer(screen, x, y)
       __return_value = LibGdk.display_warp_pointer((to_unsafe as LibGdk::Display*), (screen.to_unsafe as LibGdk::Screen*), Int32.new(x), Int32.new(y))
       __return_value
+    end
+
+    alias ClosedSignal = Display, Bool -> 
+    def on_closed(&__block : ClosedSignal)
+      __callback = ->(_arg0 : LibGdk::Display*, _arg1 : LibGdk::Bool*) {
+       __return_value = __block.call(Display.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("closed", __callback)
+    end
+
+    alias OpenedSignal = Display -> 
+    def on_opened(&__block : OpenedSignal)
+      __callback = ->(_arg0 : LibGdk::Display*) {
+       __return_value = __block.call(Display.new(_arg0))
+       __return_value
+      }
+      connect("opened", __callback)
     end
 
   end

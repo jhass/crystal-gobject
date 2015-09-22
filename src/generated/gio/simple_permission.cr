@@ -10,7 +10,7 @@ module Gio
     end
 
     def self.new_internal(allowed)
-      __return_value = LibGio.simple_permission_new(Bool.new(allowed))
+      __return_value = LibGio.simple_permission_new(allowed)
       Gio::Permission.new(__return_value)
     end
 

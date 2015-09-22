@@ -25,7 +25,7 @@ module Gtk
       Gdk::Screen.new(__return_value)
     end
 
-    def is_showing
+    def showing?
       __return_value = LibGtk.mount_operation_is_showing((to_unsafe as LibGtk::MountOperation*))
       __return_value
     end

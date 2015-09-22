@@ -170,7 +170,7 @@ module Gio
 
     def guid
       __return_value = LibGio.d_bus_connection_get_guid((to_unsafe as LibGio::DBusConnection*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def last_serial
@@ -190,10 +190,10 @@ module Gio
 
     def unique_name
       __return_value = LibGio.d_bus_connection_get_unique_name((to_unsafe as LibGio::DBusConnection*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
-    def is_closed
+    def closed?
       __return_value = LibGio.d_bus_connection_is_closed((to_unsafe as LibGio::DBusConnection*))
       __return_value
     end
@@ -244,7 +244,7 @@ module Gio
     end
 
     def exit_on_close=(exit_on_close)
-      __return_value = LibGio.d_bus_connection_set_exit_on_close((to_unsafe as LibGio::DBusConnection*), Bool.new(exit_on_close))
+      __return_value = LibGio.d_bus_connection_set_exit_on_close((to_unsafe as LibGio::DBusConnection*), exit_on_close)
       __return_value
     end
 
@@ -281,6 +281,15 @@ module Gio
     def unregister_subtree(registration_id)
       __return_value = LibGio.d_bus_connection_unregister_subtree((to_unsafe as LibGio::DBusConnection*), UInt32.new(registration_id))
       __return_value
+    end
+
+    alias ClosedSignal = DBusConnection, Bool, LibGLib::Error* -> 
+    def on_closed(&__block : ClosedSignal)
+      __callback = ->(_arg0 : LibGio::DBusConnection*, _arg1 : LibGio::Bool*, _arg2 : LibGio::LibGLib::Error***) {
+       __return_value = __block.call(DBusConnection.new(_arg0), _arg1, _arg2)
+       __return_value
+      }
+      connect("closed", __callback)
     end
 
   end

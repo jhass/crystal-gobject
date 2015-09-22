@@ -37,7 +37,7 @@ module Gio
 
     def hostname
       __return_value = LibGio.network_address_get_hostname((to_unsafe as LibGio::NetworkAddress*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def port
@@ -47,7 +47,7 @@ module Gio
 
     def scheme
       __return_value = LibGio.network_address_get_scheme((to_unsafe as LibGio::NetworkAddress*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
   end

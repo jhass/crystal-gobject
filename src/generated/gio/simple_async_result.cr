@@ -18,7 +18,7 @@ module Gio
       Gio::SimpleAsyncResult.new(__return_value)
     end
 
-    def self.is_valid(result, source, source_tag)
+    def self.valid?(result, source, source_tag)
       __return_value = LibGio.simple_async_result_is_valid((result.to_unsafe as LibGio::AsyncResult*), source && (source.to_unsafe as LibGObject::Object*), source_tag && source_tag)
       __return_value
     end
@@ -61,12 +61,12 @@ module Gio
     end
 
     def handle_cancellation=(handle_cancellation)
-      __return_value = LibGio.simple_async_result_set_handle_cancellation((to_unsafe as LibGio::SimpleAsyncResult*), Bool.new(handle_cancellation))
+      __return_value = LibGio.simple_async_result_set_handle_cancellation((to_unsafe as LibGio::SimpleAsyncResult*), handle_cancellation)
       __return_value
     end
 
     def op_res_gboolean=(op_res)
-      __return_value = LibGio.simple_async_result_set_op_res_gboolean((to_unsafe as LibGio::SimpleAsyncResult*), Bool.new(op_res))
+      __return_value = LibGio.simple_async_result_set_op_res_gboolean((to_unsafe as LibGio::SimpleAsyncResult*), op_res)
       __return_value
     end
 

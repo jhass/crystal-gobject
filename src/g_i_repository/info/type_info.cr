@@ -69,6 +69,20 @@ module GIRepository
       base
     end
 
+    def wrapper_definition(libname, ident="")
+      case tag
+      when LibGIRepository::TypeTag::INTERFACE
+        interface.full_constant
+      when LibGIRepository::TypeTag::ARRAY
+        type = TypeInfo.new LibGIRepository.type_info_get_param_type(self, 0)
+        "Array(#{type.wrapper_definition(libname)})"
+      when LibGIRepository::TypeTag::ZERO_NONE
+        "Void*"
+      else
+        TAG_MAP[tag]
+      end
+    end
+
     def convert_to_crystal variable
       case tag
       when LibGIRepository::TypeTag::INTERFACE
@@ -89,7 +103,7 @@ module GIRepository
           variable
         end
       when LibGIRepository::TypeTag::UTF8, LibGIRepository::TypeTag::FILENAME
-        %(raise "Expected string but got null" unless #{variable}; String.new(#{variable}))
+        %((raise "Expected string but got null" unless #{variable}; String.new(#{variable})))
       else
         variable
       end
@@ -104,7 +118,9 @@ module GIRepository
            LibGIRepository::TypeTag::GLIST,
            LibGIRepository::TypeTag::GSLIST,
            LibGIRepository::TypeTag::GHASH,
-           LibGIRepository::TypeTag::ERROR
+           LibGIRepository::TypeTag::ERROR,
+           LibGIRepository::TypeTag::BOOLEAN,
+           LibGIRepository::TypeTag::VOID
         variable
       else
         if pointer?

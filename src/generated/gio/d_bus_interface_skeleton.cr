@@ -43,7 +43,7 @@ module Gio
 
     def object_path
       __return_value = LibGio.d_bus_interface_skeleton_get_object_path((to_unsafe as LibGio::DBusInterfaceSkeleton*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def properties
@@ -69,6 +69,15 @@ module Gio
     def unexport_from_connection(connection)
       __return_value = LibGio.d_bus_interface_skeleton_unexport_from_connection((to_unsafe as LibGio::DBusInterfaceSkeleton*), (connection.to_unsafe as LibGio::DBusConnection*))
       __return_value
+    end
+
+    alias GAuthorizeMethodSignal = DBusInterfaceSkeleton, Gio::DBusMethodInvocation -> Bool
+    def on_g_authorize_method(&__block : GAuthorizeMethodSignal)
+      __callback = ->(_arg0 : LibGio::DBusInterfaceSkeleton*, _arg1 : LibGio::LibGio::DBusMethodInvocation*) {
+       __return_value = __block.call(DBusInterfaceSkeleton.new(_arg0), Gio::DBusMethodInvocation.new(_arg1))
+       __return_value
+      }
+      connect("g-authorize-method", __callback)
     end
 
   end

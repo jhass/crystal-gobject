@@ -68,7 +68,7 @@ module Gtk
     end
 
     def inverted=(inverted)
-      __return_value = LibGtk.level_bar_set_inverted((to_unsafe as LibGtk::LevelBar*), Bool.new(inverted))
+      __return_value = LibGtk.level_bar_set_inverted((to_unsafe as LibGtk::LevelBar*), inverted)
       __return_value
     end
 
@@ -90,6 +90,15 @@ module Gtk
     def value=(value)
       __return_value = LibGtk.level_bar_set_value((to_unsafe as LibGtk::LevelBar*), Float64.new(value))
       __return_value
+    end
+
+    alias OffsetChangedSignal = LevelBar, UInt8 -> 
+    def on_offset_changed(&__block : OffsetChangedSignal)
+      __callback = ->(_arg0 : LibGtk::LevelBar*, _arg1 : LibGtk::UInt8**) {
+       __return_value = __block.call(LevelBar.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value
+      }
+      connect("offset-changed", __callback)
     end
 
   end

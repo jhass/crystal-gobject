@@ -46,7 +46,7 @@ module Gtk
 
     def title
       __return_value = LibGtk.color_button_get_title((to_unsafe as LibGtk::ColorButton*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def use_alpha
@@ -70,8 +70,17 @@ module Gtk
     end
 
     def use_alpha=(use_alpha)
-      __return_value = LibGtk.color_button_set_use_alpha((to_unsafe as LibGtk::ColorButton*), Bool.new(use_alpha))
+      __return_value = LibGtk.color_button_set_use_alpha((to_unsafe as LibGtk::ColorButton*), use_alpha)
       __return_value
+    end
+
+    alias ColorSetSignal = ColorButton -> 
+    def on_color_set(&__block : ColorSetSignal)
+      __callback = ->(_arg0 : LibGtk::ColorButton*) {
+       __return_value = __block.call(ColorButton.new(_arg0))
+       __return_value
+      }
+      connect("color-set", __callback)
     end
 
   end

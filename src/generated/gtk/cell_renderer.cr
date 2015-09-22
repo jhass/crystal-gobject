@@ -98,7 +98,7 @@ module Gtk
       __return_value
     end
 
-    def is_activatable
+    def activatable?
       __return_value = LibGtk.cell_renderer_is_activatable((to_unsafe as LibGtk::CellRenderer*))
       __return_value
     end
@@ -124,12 +124,12 @@ module Gtk
     end
 
     def sensitive=(sensitive)
-      __return_value = LibGtk.cell_renderer_set_sensitive((to_unsafe as LibGtk::CellRenderer*), Bool.new(sensitive))
+      __return_value = LibGtk.cell_renderer_set_sensitive((to_unsafe as LibGtk::CellRenderer*), sensitive)
       __return_value
     end
 
     def visible=(visible)
-      __return_value = LibGtk.cell_renderer_set_visible((to_unsafe as LibGtk::CellRenderer*), Bool.new(visible))
+      __return_value = LibGtk.cell_renderer_set_visible((to_unsafe as LibGtk::CellRenderer*), visible)
       __return_value
     end
 
@@ -139,8 +139,26 @@ module Gtk
     end
 
     def stop_editing(canceled)
-      __return_value = LibGtk.cell_renderer_stop_editing((to_unsafe as LibGtk::CellRenderer*), Bool.new(canceled))
+      __return_value = LibGtk.cell_renderer_stop_editing((to_unsafe as LibGtk::CellRenderer*), canceled)
       __return_value
+    end
+
+    alias EditingCanceledSignal = CellRenderer -> 
+    def on_editing_canceled(&__block : EditingCanceledSignal)
+      __callback = ->(_arg0 : LibGtk::CellRenderer*) {
+       __return_value = __block.call(CellRenderer.new(_arg0))
+       __return_value
+      }
+      connect("editing-canceled", __callback)
+    end
+
+    alias EditingStartedSignal = CellRenderer, Gtk::CellEditable, UInt8 -> 
+    def on_editing_started(&__block : EditingStartedSignal)
+      __callback = ->(_arg0 : LibGtk::CellRenderer*, _arg1 : LibGtk::LibGtk::CellEditable*, _arg2 : LibGtk::UInt8**) {
+       __return_value = __block.call(CellRenderer.new(_arg0), _arg1, (raise "Expected string but got null" unless _arg2; String.new(_arg2)))
+       __return_value
+      }
+      connect("editing-started", __callback)
     end
 
   end

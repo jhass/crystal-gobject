@@ -24,12 +24,12 @@ module Gst
 
     def device_class
       __return_value = LibGst.device_get_device_class((to_unsafe as LibGst::Device*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def display_name
       __return_value = LibGst.device_get_display_name((to_unsafe as LibGst::Device*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def has_classes(classes)
@@ -45,6 +45,15 @@ module Gst
     def reconfigure_element(element)
       __return_value = LibGst.device_reconfigure_element((to_unsafe as LibGst::Device*), (element.to_unsafe as LibGst::Element*))
       __return_value
+    end
+
+    alias RemovedSignal = Device -> 
+    def on_removed(&__block : RemovedSignal)
+      __callback = ->(_arg0 : LibGst::Device*) {
+       __return_value = __block.call(Device.new(_arg0))
+       __return_value
+      }
+      connect("removed", __callback)
     end
 
   end

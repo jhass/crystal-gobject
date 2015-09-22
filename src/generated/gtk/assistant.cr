@@ -64,7 +64,7 @@ module Gtk
 
     def page_title(page)
       __return_value = LibGtk.assistant_get_page_title((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def page_type(page)
@@ -113,7 +113,7 @@ module Gtk
     end
 
     def set_page_complete(page, complete)
-      __return_value = LibGtk.assistant_set_page_complete((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*), Bool.new(complete))
+      __return_value = LibGtk.assistant_set_page_complete((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*), complete)
       __return_value
     end
 
@@ -140,6 +140,51 @@ module Gtk
     def update_buttons_state
       __return_value = LibGtk.assistant_update_buttons_state((to_unsafe as LibGtk::Assistant*))
       __return_value
+    end
+
+    alias ApplySignal = Assistant -> 
+    def on_apply(&__block : ApplySignal)
+      __callback = ->(_arg0 : LibGtk::Assistant*) {
+       __return_value = __block.call(Assistant.new(_arg0))
+       __return_value
+      }
+      connect("apply", __callback)
+    end
+
+    alias CancelSignal = Assistant -> 
+    def on_cancel(&__block : CancelSignal)
+      __callback = ->(_arg0 : LibGtk::Assistant*) {
+       __return_value = __block.call(Assistant.new(_arg0))
+       __return_value
+      }
+      connect("cancel", __callback)
+    end
+
+    alias CloseSignal = Assistant -> 
+    def on_close(&__block : CloseSignal)
+      __callback = ->(_arg0 : LibGtk::Assistant*) {
+       __return_value = __block.call(Assistant.new(_arg0))
+       __return_value
+      }
+      connect("close", __callback)
+    end
+
+    alias EscapeSignal = Assistant -> 
+    def on_escape(&__block : EscapeSignal)
+      __callback = ->(_arg0 : LibGtk::Assistant*) {
+       __return_value = __block.call(Assistant.new(_arg0))
+       __return_value
+      }
+      connect("escape", __callback)
+    end
+
+    alias PrepareSignal = Assistant, Gtk::Widget -> 
+    def on_prepare(&__block : PrepareSignal)
+      __callback = ->(_arg0 : LibGtk::Assistant*, _arg1 : LibGtk::LibGtk::Widget*) {
+       __return_value = __block.call(Assistant.new(_arg0), Gtk::Widget.new(_arg1))
+       __return_value
+      }
+      connect("prepare", __callback)
     end
 
   end

@@ -98,6 +98,15 @@ module Gtk
       __return_value
     end
 
+    alias ChangedSignal = TreeSelection -> 
+    def on_changed(&__block : ChangedSignal)
+      __callback = ->(_arg0 : LibGtk::TreeSelection*) {
+       __return_value = __block.call(TreeSelection.new(_arg0))
+       __return_value
+      }
+      connect("changed", __callback)
+    end
+
   end
 end
 

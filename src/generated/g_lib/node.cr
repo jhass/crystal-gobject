@@ -29,7 +29,7 @@ module GLib
       __return_value
     end
 
-    def is_ancestor(descendant)
+    def ancestor?(descendant)
       __return_value = LibGLib.node_is_ancestor((to_unsafe as LibGLib::Node*), (descendant.to_unsafe as LibGLib::Node*))
       __return_value
     end

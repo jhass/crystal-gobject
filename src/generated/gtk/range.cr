@@ -101,7 +101,7 @@ module Gtk
     end
 
     def flippable=(flippable)
-      __return_value = LibGtk.range_set_flippable((to_unsafe as LibGtk::Range*), Bool.new(flippable))
+      __return_value = LibGtk.range_set_flippable((to_unsafe as LibGtk::Range*), flippable)
       __return_value
     end
 
@@ -111,7 +111,7 @@ module Gtk
     end
 
     def inverted=(setting)
-      __return_value = LibGtk.range_set_inverted((to_unsafe as LibGtk::Range*), Bool.new(setting))
+      __return_value = LibGtk.range_set_inverted((to_unsafe as LibGtk::Range*), setting)
       __return_value
     end
 
@@ -131,7 +131,7 @@ module Gtk
     end
 
     def restrict_to_fill_level=(restrict_to_fill_level)
-      __return_value = LibGtk.range_set_restrict_to_fill_level((to_unsafe as LibGtk::Range*), Bool.new(restrict_to_fill_level))
+      __return_value = LibGtk.range_set_restrict_to_fill_level((to_unsafe as LibGtk::Range*), restrict_to_fill_level)
       __return_value
     end
 
@@ -141,12 +141,12 @@ module Gtk
     end
 
     def show_fill_level=(show_fill_level)
-      __return_value = LibGtk.range_set_show_fill_level((to_unsafe as LibGtk::Range*), Bool.new(show_fill_level))
+      __return_value = LibGtk.range_set_show_fill_level((to_unsafe as LibGtk::Range*), show_fill_level)
       __return_value
     end
 
     def slider_size_fixed=(size_fixed)
-      __return_value = LibGtk.range_set_slider_size_fixed((to_unsafe as LibGtk::Range*), Bool.new(size_fixed))
+      __return_value = LibGtk.range_set_slider_size_fixed((to_unsafe as LibGtk::Range*), size_fixed)
       __return_value
     end
 
@@ -158,6 +158,42 @@ module Gtk
     def value=(value)
       __return_value = LibGtk.range_set_value((to_unsafe as LibGtk::Range*), Float64.new(value))
       __return_value
+    end
+
+    alias AdjustBoundsSignal = Range, Float64 -> 
+    def on_adjust_bounds(&__block : AdjustBoundsSignal)
+      __callback = ->(_arg0 : LibGtk::Range*, _arg1 : LibGtk::Float64*) {
+       __return_value = __block.call(Range.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("adjust-bounds", __callback)
+    end
+
+    alias ChangeValueSignal = Range, Gtk::ScrollType, Float64 -> Bool
+    def on_change_value(&__block : ChangeValueSignal)
+      __callback = ->(_arg0 : LibGtk::Range*, _arg1 : LibGtk::LibGtk::ScrollType*, _arg2 : LibGtk::Float64*) {
+       __return_value = __block.call(Range.new(_arg0), _arg1, _arg2)
+       __return_value
+      }
+      connect("change-value", __callback)
+    end
+
+    alias MoveSliderSignal = Range, Gtk::ScrollType -> 
+    def on_move_slider(&__block : MoveSliderSignal)
+      __callback = ->(_arg0 : LibGtk::Range*, _arg1 : LibGtk::LibGtk::ScrollType*) {
+       __return_value = __block.call(Range.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("move-slider", __callback)
+    end
+
+    alias ValueChangedSignal = Range -> 
+    def on_value_changed(&__block : ValueChangedSignal)
+      __callback = ->(_arg0 : LibGtk::Range*) {
+       __return_value = __block.call(Range.new(_arg0))
+       __return_value
+      }
+      connect("value-changed", __callback)
     end
 
   end

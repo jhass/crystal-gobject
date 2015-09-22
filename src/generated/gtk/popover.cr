@@ -57,7 +57,7 @@ module Gtk
     end
 
     def modal=(modal)
-      __return_value = LibGtk.popover_set_modal((to_unsafe as LibGtk::Popover*), Bool.new(modal))
+      __return_value = LibGtk.popover_set_modal((to_unsafe as LibGtk::Popover*), modal)
       __return_value
     end
 
@@ -77,8 +77,17 @@ module Gtk
     end
 
     def transitions_enabled=(transitions_enabled)
-      __return_value = LibGtk.popover_set_transitions_enabled((to_unsafe as LibGtk::Popover*), Bool.new(transitions_enabled))
+      __return_value = LibGtk.popover_set_transitions_enabled((to_unsafe as LibGtk::Popover*), transitions_enabled)
       __return_value
+    end
+
+    alias ClosedSignal = Popover -> 
+    def on_closed(&__block : ClosedSignal)
+      __callback = ->(_arg0 : LibGtk::Popover*) {
+       __return_value = __block.call(Popover.new(_arg0))
+       __return_value
+      }
+      connect("closed", __callback)
     end
 
   end

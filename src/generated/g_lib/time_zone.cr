@@ -36,7 +36,7 @@ module GLib
 
     def abbreviation(interval)
       __return_value = LibGLib.time_zone_get_abbreviation((to_unsafe as LibGLib::TimeZone*), Int32.new(interval))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def offset(interval)
@@ -44,7 +44,7 @@ module GLib
       __return_value
     end
 
-    def is_dst(interval)
+    def dst?(interval)
       __return_value = LibGLib.time_zone_is_dst((to_unsafe as LibGLib::TimeZone*), Int32.new(interval))
       __return_value
     end

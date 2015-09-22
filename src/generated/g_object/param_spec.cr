@@ -11,7 +11,7 @@ module GObject
 
     def blurb
       __return_value = LibGObject.param_spec_get_blurb((to_unsafe as LibGObject::ParamSpec*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def default_value
@@ -21,12 +21,12 @@ module GObject
 
     def name
       __return_value = LibGObject.param_spec_get_name((to_unsafe as LibGObject::ParamSpec*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def nick
       __return_value = LibGObject.param_spec_get_nick((to_unsafe as LibGObject::ParamSpec*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def qdata(quark)

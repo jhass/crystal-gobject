@@ -31,7 +31,7 @@ module Gtk
 
     def icon_name
       __return_value = LibGtk.tool_button_get_icon_name((to_unsafe as LibGtk::ToolButton*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def icon_widget
@@ -41,7 +41,7 @@ module Gtk
 
     def label
       __return_value = LibGtk.tool_button_get_label((to_unsafe as LibGtk::ToolButton*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def label_widget
@@ -51,7 +51,7 @@ module Gtk
 
     def stock_id
       __return_value = LibGtk.tool_button_get_stock_id((to_unsafe as LibGtk::ToolButton*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def use_underline
@@ -85,8 +85,17 @@ module Gtk
     end
 
     def use_underline=(use_underline)
-      __return_value = LibGtk.tool_button_set_use_underline((to_unsafe as LibGtk::ToolButton*), Bool.new(use_underline))
+      __return_value = LibGtk.tool_button_set_use_underline((to_unsafe as LibGtk::ToolButton*), use_underline)
       __return_value
+    end
+
+    alias ClickedSignal = ToolButton -> 
+    def on_clicked(&__block : ClickedSignal)
+      __callback = ->(_arg0 : LibGtk::ToolButton*) {
+       __return_value = __block.call(ToolButton.new(_arg0))
+       __return_value
+      }
+      connect("clicked", __callback)
     end
 
   end

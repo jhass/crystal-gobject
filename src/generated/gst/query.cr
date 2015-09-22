@@ -15,7 +15,7 @@ module Gst
     end
 
     def self.new_allocation(caps, need_pool)
-      __return_value = LibGst.query_new_allocation((caps.to_unsafe as LibGst::Caps*), Bool.new(need_pool))
+      __return_value = LibGst.query_new_allocation((caps.to_unsafe as LibGst::Caps*), need_pool)
       Gst::Query.new(__return_value)
     end
 
@@ -170,12 +170,12 @@ module Gst
     end
 
     def parse_allocation(caps, need_pool)
-      __return_value = LibGst.query_parse_allocation((to_unsafe as LibGst::Query*), (caps.to_unsafe as LibGst::Caps*), Bool.new(need_pool))
+      __return_value = LibGst.query_parse_allocation((to_unsafe as LibGst::Query*), (caps.to_unsafe as LibGst::Caps*), need_pool)
       __return_value
     end
 
     def parse_buffering_percent(busy, percent)
-      __return_value = LibGst.query_parse_buffering_percent((to_unsafe as LibGst::Query*), Bool.new(busy), Int32.new(percent))
+      __return_value = LibGst.query_parse_buffering_percent((to_unsafe as LibGst::Query*), busy, Int32.new(percent))
       __return_value
     end
 
@@ -220,7 +220,7 @@ module Gst
     end
 
     def parse_latency(live, min_latency, max_latency)
-      __return_value = LibGst.query_parse_latency((to_unsafe as LibGst::Query*), Bool.new(live), UInt64.new(min_latency), UInt64.new(max_latency))
+      __return_value = LibGst.query_parse_latency((to_unsafe as LibGst::Query*), live, UInt64.new(min_latency), UInt64.new(max_latency))
       __return_value
     end
 
@@ -270,7 +270,7 @@ module Gst
     end
 
     def parse_seeking(format, seekable, segment_start, segment_end)
-      __return_value = LibGst.query_parse_seeking((to_unsafe as LibGst::Query*), format, Bool.new(seekable), Int64.new(segment_start), Int64.new(segment_end))
+      __return_value = LibGst.query_parse_seeking((to_unsafe as LibGst::Query*), format, seekable, Int64.new(segment_start), Int64.new(segment_end))
       __return_value
     end
 
@@ -290,7 +290,7 @@ module Gst
     end
 
     def parse_uri_redirection_permanent(permanent)
-      __return_value = LibGst.query_parse_uri_redirection_permanent((to_unsafe as LibGst::Query*), Bool.new(permanent))
+      __return_value = LibGst.query_parse_uri_redirection_permanent((to_unsafe as LibGst::Query*), permanent)
       __return_value
     end
 
@@ -310,12 +310,12 @@ module Gst
     end
 
     def accept_caps_result=(result)
-      __return_value = LibGst.query_set_accept_caps_result((to_unsafe as LibGst::Query*), Bool.new(result))
+      __return_value = LibGst.query_set_accept_caps_result((to_unsafe as LibGst::Query*), result)
       __return_value
     end
 
     def set_buffering_percent(busy, percent)
-      __return_value = LibGst.query_set_buffering_percent((to_unsafe as LibGst::Query*), Bool.new(busy), Int32.new(percent))
+      __return_value = LibGst.query_set_buffering_percent((to_unsafe as LibGst::Query*), busy, Int32.new(percent))
       __return_value
     end
 
@@ -355,7 +355,7 @@ module Gst
     end
 
     def set_latency(live, min_latency, max_latency)
-      __return_value = LibGst.query_set_latency((to_unsafe as LibGst::Query*), Bool.new(live), UInt64.new(min_latency), UInt64.new(max_latency))
+      __return_value = LibGst.query_set_latency((to_unsafe as LibGst::Query*), live, UInt64.new(min_latency), UInt64.new(max_latency))
       __return_value
     end
 
@@ -380,7 +380,7 @@ module Gst
     end
 
     def set_seeking(format, seekable, segment_start, segment_end)
-      __return_value = LibGst.query_set_seeking((to_unsafe as LibGst::Query*), format, Bool.new(seekable), Int64.new(segment_start), Int64.new(segment_end))
+      __return_value = LibGst.query_set_seeking((to_unsafe as LibGst::Query*), format, seekable, Int64.new(segment_start), Int64.new(segment_end))
       __return_value
     end
 
@@ -400,7 +400,7 @@ module Gst
     end
 
     def uri_redirection_permanent=(permanent)
-      __return_value = LibGst.query_set_uri_redirection_permanent((to_unsafe as LibGst::Query*), Bool.new(permanent))
+      __return_value = LibGst.query_set_uri_redirection_permanent((to_unsafe as LibGst::Query*), permanent)
       __return_value
     end
 

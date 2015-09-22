@@ -26,7 +26,7 @@ module Gtk
 
     def data(length)
       __return_value = LibGtk.selection_data_get_data((to_unsafe as LibGtk::SelectionData*), Int32.new(length))
-      PointerIterator.new(__return_value) {|__item_37| __item_37 }
+      PointerIterator.new(__return_value) {|__item_94| __item_94 }
     end
 
     def display
@@ -66,12 +66,12 @@ module Gtk
 
     def text
       __return_value = LibGtk.selection_data_get_text((to_unsafe as LibGtk::SelectionData*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def uris
       __return_value = LibGtk.selection_data_get_uris((to_unsafe as LibGtk::SelectionData*))
-      PointerIterator.new(__return_value) {|__item_39| raise "Expected string but got null" unless __item_39; String.new(__item_39) }
+      PointerIterator.new(__return_value) {|__item_42| (raise "Expected string but got null" unless __item_42; String.new(__item_42)) }
     end
 
     def set(type, format, data, length)
@@ -95,7 +95,7 @@ module Gtk
     end
 
     def targets_include_image(writable)
-      __return_value = LibGtk.selection_data_targets_include_image((to_unsafe as LibGtk::SelectionData*), Bool.new(writable))
+      __return_value = LibGtk.selection_data_targets_include_image((to_unsafe as LibGtk::SelectionData*), writable)
       __return_value
     end
 

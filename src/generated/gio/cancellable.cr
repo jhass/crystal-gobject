@@ -37,7 +37,7 @@ module Gio
       __return_value
     end
 
-    def is_cancelled
+    def cancelled?
       __return_value = LibGio.cancellable_is_cancelled((to_unsafe as LibGio::Cancellable*))
       __return_value
     end
@@ -72,6 +72,15 @@ module Gio
       __return_value = LibGio.cancellable_set_error_if_cancelled((to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
+    end
+
+    alias CancelledSignal = Cancellable -> 
+    def on_cancelled(&__block : CancelledSignal)
+      __callback = ->(_arg0 : LibGio::Cancellable*) {
+       __return_value = __block.call(Cancellable.new(_arg0))
+       __return_value
+      }
+      connect("cancelled", __callback)
     end
 
   end

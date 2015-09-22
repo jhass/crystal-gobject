@@ -29,7 +29,7 @@ module Gdk
     end
 
     def self.set_debug_updates(setting)
-      __return_value = LibGdk.window_set_debug_updates(Bool.new(setting))
+      __return_value = LibGdk.window_set_debug_updates(setting)
       __return_value
     end
 
@@ -411,36 +411,36 @@ module Gdk
     end
 
     def invalidate_rect(rect, invalidate_children)
-      __return_value = LibGdk.window_invalidate_rect((to_unsafe as LibGdk::Window*), rect && (rect.to_unsafe as LibCairo::RectangleInt*), Bool.new(invalidate_children))
+      __return_value = LibGdk.window_invalidate_rect((to_unsafe as LibGdk::Window*), rect && (rect.to_unsafe as LibCairo::RectangleInt*), invalidate_children)
       __return_value
     end
 
     def invalidate_region(region, invalidate_children)
-      __return_value = LibGdk.window_invalidate_region((to_unsafe as LibGdk::Window*), (region.to_unsafe as LibCairo::Region*), Bool.new(invalidate_children))
+      __return_value = LibGdk.window_invalidate_region((to_unsafe as LibGdk::Window*), (region.to_unsafe as LibCairo::Region*), invalidate_children)
       __return_value
     end
 
-    def is_destroyed
+    def destroyed?
       __return_value = LibGdk.window_is_destroyed((to_unsafe as LibGdk::Window*))
       __return_value
     end
 
-    def is_input_only
+    def input_only?
       __return_value = LibGdk.window_is_input_only((to_unsafe as LibGdk::Window*))
       __return_value
     end
 
-    def is_shaped
+    def shaped?
       __return_value = LibGdk.window_is_shaped((to_unsafe as LibGdk::Window*))
       __return_value
     end
 
-    def is_viewable
+    def viewable?
       __return_value = LibGdk.window_is_viewable((to_unsafe as LibGdk::Window*))
       __return_value
     end
 
-    def is_visible
+    def visible?
       __return_value = LibGdk.window_is_visible((to_unsafe as LibGdk::Window*))
       __return_value
     end
@@ -491,7 +491,7 @@ module Gdk
     end
 
     def process_updates(update_children)
-      __return_value = LibGdk.window_process_updates((to_unsafe as LibGdk::Window*), Bool.new(update_children))
+      __return_value = LibGdk.window_process_updates((to_unsafe as LibGdk::Window*), update_children)
       __return_value
     end
 
@@ -516,7 +516,7 @@ module Gdk
     end
 
     def restack(sibling, above)
-      __return_value = LibGdk.window_restack((to_unsafe as LibGdk::Window*), sibling && (sibling.to_unsafe as LibGdk::Window*), Bool.new(above))
+      __return_value = LibGdk.window_restack((to_unsafe as LibGdk::Window*), sibling && (sibling.to_unsafe as LibGdk::Window*), above)
       __return_value
     end
 
@@ -526,7 +526,7 @@ module Gdk
     end
 
     def accept_focus=(accept_focus)
-      __return_value = LibGdk.window_set_accept_focus((to_unsafe as LibGdk::Window*), Bool.new(accept_focus))
+      __return_value = LibGdk.window_set_accept_focus((to_unsafe as LibGdk::Window*), accept_focus)
       __return_value
     end
 
@@ -556,7 +556,7 @@ module Gdk
     end
 
     def composited=(composited)
-      __return_value = LibGdk.window_set_composited((to_unsafe as LibGdk::Window*), Bool.new(composited))
+      __return_value = LibGdk.window_set_composited((to_unsafe as LibGdk::Window*), composited)
       __return_value
     end
 
@@ -581,7 +581,7 @@ module Gdk
     end
 
     def event_compression=(event_compression)
-      __return_value = LibGdk.window_set_event_compression((to_unsafe as LibGdk::Window*), Bool.new(event_compression))
+      __return_value = LibGdk.window_set_event_compression((to_unsafe as LibGdk::Window*), event_compression)
       __return_value
     end
 
@@ -591,7 +591,7 @@ module Gdk
     end
 
     def focus_on_map=(focus_on_map)
-      __return_value = LibGdk.window_set_focus_on_map((to_unsafe as LibGdk::Window*), Bool.new(focus_on_map))
+      __return_value = LibGdk.window_set_focus_on_map((to_unsafe as LibGdk::Window*), focus_on_map)
       __return_value
     end
 
@@ -626,17 +626,17 @@ module Gdk
     end
 
     def keep_above=(setting)
-      __return_value = LibGdk.window_set_keep_above((to_unsafe as LibGdk::Window*), Bool.new(setting))
+      __return_value = LibGdk.window_set_keep_above((to_unsafe as LibGdk::Window*), setting)
       __return_value
     end
 
     def keep_below=(setting)
-      __return_value = LibGdk.window_set_keep_below((to_unsafe as LibGdk::Window*), Bool.new(setting))
+      __return_value = LibGdk.window_set_keep_below((to_unsafe as LibGdk::Window*), setting)
       __return_value
     end
 
     def modal_hint=(modal)
-      __return_value = LibGdk.window_set_modal_hint((to_unsafe as LibGdk::Window*), Bool.new(modal))
+      __return_value = LibGdk.window_set_modal_hint((to_unsafe as LibGdk::Window*), modal)
       __return_value
     end
 
@@ -651,7 +651,7 @@ module Gdk
     end
 
     def override_redirect=(override_redirect)
-      __return_value = LibGdk.window_set_override_redirect((to_unsafe as LibGdk::Window*), Bool.new(override_redirect))
+      __return_value = LibGdk.window_set_override_redirect((to_unsafe as LibGdk::Window*), override_redirect)
       __return_value
     end
 
@@ -666,12 +666,12 @@ module Gdk
     end
 
     def skip_pager_hint=(skips_pager)
-      __return_value = LibGdk.window_set_skip_pager_hint((to_unsafe as LibGdk::Window*), Bool.new(skips_pager))
+      __return_value = LibGdk.window_set_skip_pager_hint((to_unsafe as LibGdk::Window*), skips_pager)
       __return_value
     end
 
     def skip_taskbar_hint=(skips_taskbar)
-      __return_value = LibGdk.window_set_skip_taskbar_hint((to_unsafe as LibGdk::Window*), Bool.new(skips_taskbar))
+      __return_value = LibGdk.window_set_skip_taskbar_hint((to_unsafe as LibGdk::Window*), skips_taskbar)
       __return_value
     end
 
@@ -686,12 +686,12 @@ module Gdk
     end
 
     def static_gravities=(use_static)
-      __return_value = LibGdk.window_set_static_gravities((to_unsafe as LibGdk::Window*), Bool.new(use_static))
+      __return_value = LibGdk.window_set_static_gravities((to_unsafe as LibGdk::Window*), use_static)
       __return_value
     end
 
     def support_multidevice=(support_multidevice)
-      __return_value = LibGdk.window_set_support_multidevice((to_unsafe as LibGdk::Window*), Bool.new(support_multidevice))
+      __return_value = LibGdk.window_set_support_multidevice((to_unsafe as LibGdk::Window*), support_multidevice)
       __return_value
     end
 
@@ -711,7 +711,7 @@ module Gdk
     end
 
     def urgency_hint=(urgent)
-      __return_value = LibGdk.window_set_urgency_hint((to_unsafe as LibGdk::Window*), Bool.new(urgent))
+      __return_value = LibGdk.window_set_urgency_hint((to_unsafe as LibGdk::Window*), urgent)
       __return_value
     end
 
@@ -773,6 +773,42 @@ module Gdk
     def withdraw
       __return_value = LibGdk.window_withdraw((to_unsafe as LibGdk::Window*))
       __return_value
+    end
+
+    alias CreateSurfaceSignal = Window, Int32, Int32 -> Cairo::Surface
+    def on_create_surface(&__block : CreateSurfaceSignal)
+      __callback = ->(_arg0 : LibGdk::Window*, _arg1 : LibGdk::Int32*, _arg2 : LibGdk::Int32*) {
+       __return_value = __block.call(Window.new(_arg0), _arg1, _arg2)
+       __return_value
+      }
+      connect("create-surface", __callback)
+    end
+
+    alias FromEmbedderSignal = Window, Float64, Float64, Float64, Float64 -> 
+    def on_from_embedder(&__block : FromEmbedderSignal)
+      __callback = ->(_arg0 : LibGdk::Window*, _arg1 : LibGdk::Float64*, _arg2 : LibGdk::Float64*, _arg3 : LibGdk::Float64*, _arg4 : LibGdk::Float64*) {
+       __return_value = __block.call(Window.new(_arg0), _arg1, _arg2, _arg3, _arg4)
+       __return_value
+      }
+      connect("from-embedder", __callback)
+    end
+
+    alias PickEmbeddedChildSignal = Window, Float64, Float64 -> Gdk::Window
+    def on_pick_embedded_child(&__block : PickEmbeddedChildSignal)
+      __callback = ->(_arg0 : LibGdk::Window*, _arg1 : LibGdk::Float64*, _arg2 : LibGdk::Float64*) {
+       __return_value = __block.call(Window.new(_arg0), _arg1, _arg2)
+       __return_value
+      }
+      connect("pick-embedded-child", __callback)
+    end
+
+    alias ToEmbedderSignal = Window, Float64, Float64, Float64, Float64 -> 
+    def on_to_embedder(&__block : ToEmbedderSignal)
+      __callback = ->(_arg0 : LibGdk::Window*, _arg1 : LibGdk::Float64*, _arg2 : LibGdk::Float64*, _arg3 : LibGdk::Float64*, _arg4 : LibGdk::Float64*) {
+       __return_value = __block.call(Window.new(_arg0), _arg1, _arg2, _arg3, _arg4)
+       __return_value
+      }
+      connect("to-embedder", __callback)
     end
 
   end

@@ -79,52 +79,52 @@ module Gst
       Gst::Caps.new(__return_value)
     end
 
-    def is_always_compatible(caps2)
+    def always_compatible?(caps2)
       __return_value = LibGst.caps_is_always_compatible((to_unsafe as LibGst::Caps*), (caps2.to_unsafe as LibGst::Caps*))
       __return_value
     end
 
-    def is_any
+    def any?
       __return_value = LibGst.caps_is_any((to_unsafe as LibGst::Caps*))
       __return_value
     end
 
-    def is_empty
+    def empty?
       __return_value = LibGst.caps_is_empty((to_unsafe as LibGst::Caps*))
       __return_value
     end
 
-    def is_equal(caps2)
+    def equal?(caps2)
       __return_value = LibGst.caps_is_equal((to_unsafe as LibGst::Caps*), (caps2.to_unsafe as LibGst::Caps*))
       __return_value
     end
 
-    def is_equal_fixed(caps2)
+    def equal_fixed?(caps2)
       __return_value = LibGst.caps_is_equal_fixed((to_unsafe as LibGst::Caps*), (caps2.to_unsafe as LibGst::Caps*))
       __return_value
     end
 
-    def is_fixed
+    def fixed?
       __return_value = LibGst.caps_is_fixed((to_unsafe as LibGst::Caps*))
       __return_value
     end
 
-    def is_strictly_equal(caps2)
+    def strictly_equal?(caps2)
       __return_value = LibGst.caps_is_strictly_equal((to_unsafe as LibGst::Caps*), (caps2.to_unsafe as LibGst::Caps*))
       __return_value
     end
 
-    def is_subset(superset)
+    def subset?(superset)
       __return_value = LibGst.caps_is_subset((to_unsafe as LibGst::Caps*), (superset.to_unsafe as LibGst::Caps*))
       __return_value
     end
 
-    def is_subset_structure(structure)
+    def subset_structure?(structure)
       __return_value = LibGst.caps_is_subset_structure((to_unsafe as LibGst::Caps*), (structure.to_unsafe as LibGst::Structure*))
       __return_value
     end
 
-    def is_subset_structure_full(structure, features)
+    def subset_structure_full?(structure, features)
       __return_value = LibGst.caps_is_subset_structure_full((to_unsafe as LibGst::Caps*), (structure.to_unsafe as LibGst::Structure*), features && (features.to_unsafe as LibGst::CapsFeatures*))
       __return_value
     end
@@ -181,7 +181,7 @@ module Gst
 
     def to_string
       __return_value = LibGst.caps_to_string((to_unsafe as LibGst::Caps*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def truncate

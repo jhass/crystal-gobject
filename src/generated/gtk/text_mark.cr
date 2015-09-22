@@ -10,7 +10,7 @@ module Gtk
 
 
     def self.new_internal(name, left_gravity)
-      __return_value = LibGtk.text_mark_new(name && name, Bool.new(left_gravity))
+      __return_value = LibGtk.text_mark_new(name && name, left_gravity)
       Gtk::TextMark.new(__return_value)
     end
 
@@ -31,7 +31,7 @@ module Gtk
 
     def name
       __return_value = LibGtk.text_mark_get_name((to_unsafe as LibGtk::TextMark*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def visible
@@ -40,7 +40,7 @@ module Gtk
     end
 
     def visible=(setting)
-      __return_value = LibGtk.text_mark_set_visible((to_unsafe as LibGtk::TextMark*), Bool.new(setting))
+      __return_value = LibGtk.text_mark_set_visible((to_unsafe as LibGtk::TextMark*), setting)
       __return_value
     end
 

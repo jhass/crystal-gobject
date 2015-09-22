@@ -15,7 +15,7 @@ module Atk
       __return_value
     end
 
-    def is_child_selected(i)
+    def child_selected?(i)
       __return_value = LibAtk.selection_is_child_selected((to_unsafe as LibAtk::Selection*), Int32.new(i))
       __return_value
     end
@@ -33,6 +33,15 @@ module Atk
     def select_all_selection
       __return_value = LibAtk.selection_select_all_selection((to_unsafe as LibAtk::Selection*))
       __return_value
+    end
+
+    alias SelectionChangedSignal = Selection -> 
+    def on_selection_changed(&__block : SelectionChangedSignal)
+      __callback = ->(_arg0 : LibAtk::Selection*) {
+       __return_value = __block.call(Selection.new(_arg0))
+       __return_value
+      }
+      connect("selection-changed", __callback)
     end
 
   end

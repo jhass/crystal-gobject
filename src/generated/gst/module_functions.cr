@@ -36,7 +36,7 @@ module Gst
 
   def self.debug_construct_term_color(colorinfo)
     __return_value = LibGst.debug_construct_term_color(UInt32.new(colorinfo))
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.debug_construct_win_color(colorinfo)
@@ -71,7 +71,7 @@ module Gst
 
   def self.debug_level_get_name(level)
     __return_value = LibGst.debug_level_get_name(level)
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.debug_log_default(category, level, file, function, line, object, message, unused)
@@ -95,7 +95,7 @@ module Gst
   end
 
   def self.debug_set_active(active)
-    __return_value = LibGst.debug_set_active(Bool.new(active))
+    __return_value = LibGst.debug_set_active(active)
     __return_value
   end
 
@@ -110,7 +110,7 @@ module Gst
   end
 
   def self.debug_set_colored(colored)
-    __return_value = LibGst.debug_set_colored(Bool.new(colored))
+    __return_value = LibGst.debug_set_colored(colored)
     __return_value
   end
 
@@ -125,7 +125,7 @@ module Gst
   end
 
   def self.debug_set_threshold_from_string(list, reset)
-    __return_value = LibGst.debug_set_threshold_from_string(list, Bool.new(reset))
+    __return_value = LibGst.debug_set_threshold_from_string(list, reset)
     __return_value
   end
 
@@ -141,7 +141,7 @@ module Gst
 
   def self.error_get_message(domain, code)
     __return_value = LibGst.error_get_message(UInt32.new(domain), Int32.new(code))
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.event_type_get_flags(type)
@@ -151,7 +151,7 @@ module Gst
 
   def self.event_type_get_name(type)
     __return_value = LibGst.event_type_get_name(type)
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.event_type_to_quark(type)
@@ -163,12 +163,12 @@ module Gst
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGst.filename_to_uri(filename, pointerof(__error))
     GLib::Error.assert __error
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.flow_get_name(ret)
     __return_value = LibGst.flow_get_name(ret)
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.flow_to_quark(ret)
@@ -188,7 +188,7 @@ module Gst
 
   def self.format_get_name(format)
     __return_value = LibGst.format_get_name(format)
-    raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
   end
 
   def self.format_iterate_definitions
@@ -223,12 +223,12 @@ module Gst
     __return_value
   end
 
-  def self.is_caps_features(obj)
+  def self.caps_features?(obj)
     __return_value = LibGst.is_caps_features(obj)
     __return_value
   end
 
-  def self.is_initialized
+  def self.initialized?
     __return_value = LibGst.is_initialized
     __return_value
   end
@@ -240,7 +240,7 @@ module Gst
 
   def self.message_type_get_name(type)
     __return_value = LibGst.message_type_get_name(type)
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.message_type_to_quark(type)
@@ -250,7 +250,7 @@ module Gst
 
   def self.meta_api_type_get_tags(api)
     __return_value = LibGst.meta_api_type_get_tags(UInt64.new(api))
-    PointerIterator.new(__return_value) {|__item_81| raise "Expected string but got null" unless __item_81; String.new(__item_81) }
+    PointerIterator.new(__return_value) {|__item_16| (raise "Expected string but got null" unless __item_16; String.new(__item_16)) }
   end
 
   def self.meta_api_type_has_tag(api, tag)
@@ -285,7 +285,7 @@ module Gst
 
   def self.pad_mode_get_name(mode)
     __return_value = LibGst.pad_mode_get_name(mode)
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.param_spec_fraction(name, nick, blurb, min_num, min_denom, max_num, max_denom, default_num, default_denom, flags)
@@ -295,14 +295,14 @@ module Gst
 
   def self.parse_bin_from_description(bin_description, ghost_unlinked_pads)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGst.parse_bin_from_description(bin_description, Bool.new(ghost_unlinked_pads), pointerof(__error))
+    __return_value = LibGst.parse_bin_from_description(bin_description, ghost_unlinked_pads, pointerof(__error))
     GLib::Error.assert __error
     Gst::Bin.new(__return_value) if __return_value
   end
 
   def self.parse_bin_from_description_full(bin_description, ghost_unlinked_pads, context, flags)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGst.parse_bin_from_description_full(bin_description, Bool.new(ghost_unlinked_pads), context && (context.to_unsafe as LibGst::ParseContext*), flags, pointerof(__error))
+    __return_value = LibGst.parse_bin_from_description_full(bin_description, ghost_unlinked_pads, context && (context.to_unsafe as LibGst::ParseContext*), flags, pointerof(__error))
     GLib::Error.assert __error
     Gst::Element.new(__return_value)
   end
@@ -347,7 +347,7 @@ module Gst
 
   def self.preset_get_app_dir
     __return_value = LibGst.preset_get_app_dir
-    raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
   end
 
   def self.preset_set_app_dir(app_dir)
@@ -362,7 +362,7 @@ module Gst
 
   def self.query_type_get_name(type)
     __return_value = LibGst.query_type_get_name(type)
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.query_type_to_quark(type)
@@ -381,7 +381,7 @@ module Gst
   end
 
   def self.segtrap_set_enabled(enabled)
-    __return_value = LibGst.segtrap_set_enabled(Bool.new(enabled))
+    __return_value = LibGst.segtrap_set_enabled(enabled)
     __return_value
   end
 
@@ -412,7 +412,7 @@ module Gst
 
   def self.tag_get_description(tag)
     __return_value = LibGst.tag_get_description(tag)
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.tag_get_flag(tag)
@@ -422,7 +422,7 @@ module Gst
 
   def self.tag_get_nick(tag)
     __return_value = LibGst.tag_get_nick(tag)
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.tag_get_type(tag)
@@ -452,7 +452,7 @@ module Gst
 
   def self.toc_entry_type_get_nick(type)
     __return_value = LibGst.toc_entry_type_get_nick(type)
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.type_find_get_type
@@ -472,7 +472,7 @@ module Gst
 
   def self.uri_construct(protocol, location)
     __return_value = LibGst.uri_construct(protocol, location)
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.uri_error_quark
@@ -482,12 +482,12 @@ module Gst
 
   def self.uri_get_location(uri)
     __return_value = LibGst.uri_get_location(uri)
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.uri_get_protocol(uri)
     __return_value = LibGst.uri_get_protocol(uri)
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.uri_has_protocol(uri, protocol)
@@ -777,7 +777,7 @@ module Gst
 
   def self.value_serialize(value)
     __return_value = LibGst.value_serialize((value.to_unsafe as LibGObject::Value*))
-    raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
   end
 
   def self.value_set_bitmask(value, bitmask)
@@ -857,7 +857,7 @@ module Gst
 
   def self.version_string
     __return_value = LibGst.version_string
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 end
 

@@ -14,7 +14,7 @@ module Gio
 
     def interface_name
       __return_value = LibGio.d_bus_method_invocation_get_interface_name((to_unsafe as LibGio::DBusMethodInvocation*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def message
@@ -29,12 +29,12 @@ module Gio
 
     def method_name
       __return_value = LibGio.d_bus_method_invocation_get_method_name((to_unsafe as LibGio::DBusMethodInvocation*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def object_path
       __return_value = LibGio.d_bus_method_invocation_get_object_path((to_unsafe as LibGio::DBusMethodInvocation*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def parameters
@@ -49,7 +49,7 @@ module Gio
 
     def sender
       __return_value = LibGio.d_bus_method_invocation_get_sender((to_unsafe as LibGio::DBusMethodInvocation*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def return_dbus_error(error_name, error_message)

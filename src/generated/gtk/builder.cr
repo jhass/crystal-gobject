@@ -107,7 +107,7 @@ module Gtk
 
     def translation_domain
       __return_value = LibGtk.builder_get_translation_domain((to_unsafe as LibGtk::Builder*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def type_from_name(type_name)

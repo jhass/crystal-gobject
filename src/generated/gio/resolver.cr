@@ -16,7 +16,7 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.resolver_lookup_by_address((to_unsafe as LibGio::Resolver*), (address.to_unsafe as LibGio::InetAddress*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def lookup_by_address_async(address, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
@@ -28,7 +28,7 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.resolver_lookup_by_address_finish((to_unsafe as LibGio::Resolver*), (result.to_unsafe as LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def lookup_by_name(hostname, cancellable)
@@ -91,6 +91,15 @@ module Gio
     def set_default
       __return_value = LibGio.resolver_set_default((to_unsafe as LibGio::Resolver*))
       __return_value
+    end
+
+    alias ReloadSignal = Resolver -> 
+    def on_reload(&__block : ReloadSignal)
+      __callback = ->(_arg0 : LibGio::Resolver*) {
+       __return_value = __block.call(Resolver.new(_arg0))
+       __return_value
+      }
+      connect("reload", __callback)
     end
 
   end

@@ -19,12 +19,12 @@ module GLib
       __return_value
     end
 
-    def is_begin
+    def begin?
       __return_value = LibGLib.sequence_iter_is_begin((to_unsafe as LibGLib::SequenceIter*))
       __return_value
     end
 
-    def is_end
+    def end?
       __return_value = LibGLib.sequence_iter_is_end((to_unsafe as LibGLib::SequenceIter*))
       __return_value
     end

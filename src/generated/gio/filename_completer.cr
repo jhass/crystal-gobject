@@ -14,17 +14,26 @@ module Gio
 
     def completion_suffix(initial_text)
       __return_value = LibGio.filename_completer_get_completion_suffix((to_unsafe as LibGio::FilenameCompleter*), initial_text)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def completions(initial_text)
       __return_value = LibGio.filename_completer_get_completions((to_unsafe as LibGio::FilenameCompleter*), initial_text)
-      PointerIterator.new(__return_value) {|__item_73| raise "Expected string but got null" unless __item_73; String.new(__item_73) }
+      PointerIterator.new(__return_value) {|__item_17| (raise "Expected string but got null" unless __item_17; String.new(__item_17)) }
     end
 
     def dirs_only=(dirs_only)
-      __return_value = LibGio.filename_completer_set_dirs_only((to_unsafe as LibGio::FilenameCompleter*), Bool.new(dirs_only))
+      __return_value = LibGio.filename_completer_set_dirs_only((to_unsafe as LibGio::FilenameCompleter*), dirs_only)
       __return_value
+    end
+
+    alias GotCompletionDataSignal = FilenameCompleter -> 
+    def on_got_completion_data(&__block : GotCompletionDataSignal)
+      __callback = ->(_arg0 : LibGio::FilenameCompleter*) {
+       __return_value = __block.call(FilenameCompleter.new(_arg0))
+       __return_value
+      }
+      connect("got-completion-data", __callback)
     end
 
   end

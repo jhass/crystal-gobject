@@ -51,7 +51,7 @@ module Gio
 
     def name
       __return_value = LibGio.mount_get_name((to_unsafe as LibGio::Mount*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def root
@@ -61,7 +61,7 @@ module Gio
 
     def sort_key
       __return_value = LibGio.mount_get_sort_key((to_unsafe as LibGio::Mount*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def symbolic_icon
@@ -71,7 +71,7 @@ module Gio
 
     def uuid
       __return_value = LibGio.mount_get_uuid((to_unsafe as LibGio::Mount*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def volume
@@ -80,7 +80,7 @@ module Gio
     end
 
     def guess_content_type(force_rescan, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.mount_guess_content_type((to_unsafe as LibGio::Mount*), Bool.new(force_rescan), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.mount_guess_content_type((to_unsafe as LibGio::Mount*), force_rescan, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -88,17 +88,17 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.mount_guess_content_type_finish((to_unsafe as LibGio::Mount*), (result.to_unsafe as LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_22| raise "Expected string but got null" unless __item_22; String.new(__item_22) }
+      PointerIterator.new(__return_value) {|__item_75| (raise "Expected string but got null" unless __item_75; String.new(__item_75)) }
     end
 
     def guess_content_type_sync(force_rescan, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.mount_guess_content_type_sync((to_unsafe as LibGio::Mount*), Bool.new(force_rescan), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.mount_guess_content_type_sync((to_unsafe as LibGio::Mount*), force_rescan, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_1| raise "Expected string but got null" unless __item_1; String.new(__item_1) }
+      PointerIterator.new(__return_value) {|__item_93| (raise "Expected string but got null" unless __item_93; String.new(__item_93)) }
     end
 
-    def is_shadowed
+    def shadowed?
       __return_value = LibGio.mount_is_shadowed((to_unsafe as LibGio::Mount*))
       __return_value
     end
@@ -147,6 +147,33 @@ module Gio
     def unshadow
       __return_value = LibGio.mount_unshadow((to_unsafe as LibGio::Mount*))
       __return_value
+    end
+
+    alias ChangedSignal = Mount -> 
+    def on_changed(&__block : ChangedSignal)
+      __callback = ->(_arg0 : LibGio::Mount*) {
+       __return_value = __block.call(Mount.new(_arg0))
+       __return_value
+      }
+      connect("changed", __callback)
+    end
+
+    alias PreUnmountSignal = Mount -> 
+    def on_pre_unmount(&__block : PreUnmountSignal)
+      __callback = ->(_arg0 : LibGio::Mount*) {
+       __return_value = __block.call(Mount.new(_arg0))
+       __return_value
+      }
+      connect("pre-unmount", __callback)
+    end
+
+    alias UnmountedSignal = Mount -> 
+    def on_unmounted(&__block : UnmountedSignal)
+      __callback = ->(_arg0 : LibGio::Mount*) {
+       __return_value = __block.call(Mount.new(_arg0))
+       __return_value
+      }
+      connect("unmounted", __callback)
     end
 
   end

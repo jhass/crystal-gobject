@@ -19,6 +19,15 @@ module Gtk
       __return_value
     end
 
+    alias AngleChangedSignal = GestureRotate, Float64, Float64 -> 
+    def on_angle_changed(&__block : AngleChangedSignal)
+      __callback = ->(_arg0 : LibGtk::GestureRotate*, _arg1 : LibGtk::Float64*, _arg2 : LibGtk::Float64*) {
+       __return_value = __block.call(GestureRotate.new(_arg0), _arg1, _arg2)
+       __return_value
+      }
+      connect("angle-changed", __callback)
+    end
+
   end
 end
 

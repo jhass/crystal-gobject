@@ -40,7 +40,7 @@ module Gtk
 
     def name
       __return_value = LibGtk.file_filter_get_name((to_unsafe as LibGtk::FileFilter*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def needed

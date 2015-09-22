@@ -99,7 +99,7 @@ module Gtk
 
     def wait_for_rich_text(buffer, format, length)
       __return_value = LibGtk.clipboard_wait_for_rich_text((to_unsafe as LibGtk::Clipboard*), (buffer.to_unsafe as LibGtk::TextBuffer*), (format.to_unsafe as LibGdk::Atom*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_23| __item_23 } if __return_value
+      PointerIterator.new(__return_value) {|__item_74| __item_74 } if __return_value
     end
 
     def wait_for_targets(targets, n_targets)
@@ -109,12 +109,12 @@ module Gtk
 
     def wait_for_text
       __return_value = LibGtk.clipboard_wait_for_text((to_unsafe as LibGtk::Clipboard*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def wait_for_uris
       __return_value = LibGtk.clipboard_wait_for_uris((to_unsafe as LibGtk::Clipboard*))
-      PointerIterator.new(__return_value) {|__item_56| raise "Expected string but got null" unless __item_56; String.new(__item_56) } if __return_value
+      PointerIterator.new(__return_value) {|__item_28| (raise "Expected string but got null" unless __item_28; String.new(__item_28)) } if __return_value
     end
 
     def wait_is_image_available
@@ -140,6 +140,15 @@ module Gtk
     def wait_is_uris_available
       __return_value = LibGtk.clipboard_wait_is_uris_available((to_unsafe as LibGtk::Clipboard*))
       __return_value
+    end
+
+    alias OwnerChangeSignal = Clipboard, Gdk::EventOwnerChange -> 
+    def on_owner_change(&__block : OwnerChangeSignal)
+      __callback = ->(_arg0 : LibGtk::Clipboard*, _arg1 : LibGtk::LibGdk::EventOwnerChange*) {
+       __return_value = __block.call(Clipboard.new(_arg0), Gdk::EventOwnerChange.new(_arg1))
+       __return_value
+      }
+      connect("owner-change", __callback)
     end
 
   end

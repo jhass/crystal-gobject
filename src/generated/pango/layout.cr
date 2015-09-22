@@ -124,7 +124,7 @@ module Pango
 
     def log_attrs_readonly(n_attrs)
       __return_value = LibPango.layout_get_log_attrs_readonly((to_unsafe as LibPango::Layout*), Int32.new(n_attrs))
-      PointerIterator.new(__return_value) {|__item_76| Pango::LogAttr.new(__item_76) }
+      PointerIterator.new(__return_value) {|__item_18| Pango::LogAttr.new(__item_18) }
     end
 
     def pixel_extents(ink_rect, logical_rect)
@@ -164,7 +164,7 @@ module Pango
 
     def text
       __return_value = LibPango.layout_get_text((to_unsafe as LibPango::Layout*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def unknown_glyphs_count
@@ -183,7 +183,7 @@ module Pango
     end
 
     def index_to_line_x(index, trailing, line, x_pos)
-      __return_value = LibPango.layout_index_to_line_x((to_unsafe as LibPango::Layout*), Int32.new(index), Bool.new(trailing), Int32.new(line), Int32.new(x_pos))
+      __return_value = LibPango.layout_index_to_line_x((to_unsafe as LibPango::Layout*), Int32.new(index), trailing, Int32.new(line), Int32.new(x_pos))
       __return_value
     end
 
@@ -192,18 +192,18 @@ module Pango
       __return_value
     end
 
-    def is_ellipsized
+    def ellipsized?
       __return_value = LibPango.layout_is_ellipsized((to_unsafe as LibPango::Layout*))
       __return_value
     end
 
-    def is_wrapped
+    def wrapped?
       __return_value = LibPango.layout_is_wrapped((to_unsafe as LibPango::Layout*))
       __return_value
     end
 
     def move_cursor_visually(strong, old_index, old_trailing, direction, new_index, new_trailing)
-      __return_value = LibPango.layout_move_cursor_visually((to_unsafe as LibPango::Layout*), Bool.new(strong), Int32.new(old_index), Int32.new(old_trailing), Int32.new(direction), Int32.new(new_index), Int32.new(new_trailing))
+      __return_value = LibPango.layout_move_cursor_visually((to_unsafe as LibPango::Layout*), strong, Int32.new(old_index), Int32.new(old_trailing), Int32.new(direction), Int32.new(new_index), Int32.new(new_trailing))
       __return_value
     end
 
@@ -218,7 +218,7 @@ module Pango
     end
 
     def auto_dir=(auto_dir)
-      __return_value = LibPango.layout_set_auto_dir((to_unsafe as LibPango::Layout*), Bool.new(auto_dir))
+      __return_value = LibPango.layout_set_auto_dir((to_unsafe as LibPango::Layout*), auto_dir)
       __return_value
     end
 
@@ -243,7 +243,7 @@ module Pango
     end
 
     def justify=(justify)
-      __return_value = LibPango.layout_set_justify((to_unsafe as LibPango::Layout*), Bool.new(justify))
+      __return_value = LibPango.layout_set_justify((to_unsafe as LibPango::Layout*), justify)
       __return_value
     end
 
@@ -258,7 +258,7 @@ module Pango
     end
 
     def single_paragraph_mode=(setting)
-      __return_value = LibPango.layout_set_single_paragraph_mode((to_unsafe as LibPango::Layout*), Bool.new(setting))
+      __return_value = LibPango.layout_set_single_paragraph_mode((to_unsafe as LibPango::Layout*), setting)
       __return_value
     end
 

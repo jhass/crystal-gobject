@@ -51,7 +51,7 @@ module Gio
 
     def enumerate_identifiers
       __return_value = LibGio.drive_enumerate_identifiers((to_unsafe as LibGio::Drive*))
-      PointerIterator.new(__return_value) {|__item_74| raise "Expected string but got null" unless __item_74; String.new(__item_74) }
+      PointerIterator.new(__return_value) {|__item_76| (raise "Expected string but got null" unless __item_76; String.new(__item_76)) }
     end
 
     def icon
@@ -61,17 +61,17 @@ module Gio
 
     def identifier(kind)
       __return_value = LibGio.drive_get_identifier((to_unsafe as LibGio::Drive*), kind)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def name
       __return_value = LibGio.drive_get_name((to_unsafe as LibGio::Drive*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def sort_key
       __return_value = LibGio.drive_get_sort_key((to_unsafe as LibGio::Drive*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def start_stop_type
@@ -99,12 +99,12 @@ module Gio
       __return_value
     end
 
-    def is_media_check_automatic
+    def media_check_automatic?
       __return_value = LibGio.drive_is_media_check_automatic((to_unsafe as LibGio::Drive*))
       __return_value
     end
 
-    def is_media_removable
+    def media_removable?
       __return_value = LibGio.drive_is_media_removable((to_unsafe as LibGio::Drive*))
       __return_value
     end
@@ -143,6 +143,42 @@ module Gio
       __return_value = LibGio.drive_stop_finish((to_unsafe as LibGio::Drive*), (result.to_unsafe as LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
+    end
+
+    alias ChangedSignal = Drive -> 
+    def on_changed(&__block : ChangedSignal)
+      __callback = ->(_arg0 : LibGio::Drive*) {
+       __return_value = __block.call(Drive.new(_arg0))
+       __return_value
+      }
+      connect("changed", __callback)
+    end
+
+    alias DisconnectedSignal = Drive -> 
+    def on_disconnected(&__block : DisconnectedSignal)
+      __callback = ->(_arg0 : LibGio::Drive*) {
+       __return_value = __block.call(Drive.new(_arg0))
+       __return_value
+      }
+      connect("disconnected", __callback)
+    end
+
+    alias EjectButtonSignal = Drive -> 
+    def on_eject_button(&__block : EjectButtonSignal)
+      __callback = ->(_arg0 : LibGio::Drive*) {
+       __return_value = __block.call(Drive.new(_arg0))
+       __return_value
+      }
+      connect("eject-button", __callback)
+    end
+
+    alias StopButtonSignal = Drive -> 
+    def on_stop_button(&__block : StopButtonSignal)
+      __callback = ->(_arg0 : LibGio::Drive*) {
+       __return_value = __block.call(Drive.new(_arg0))
+       __return_value
+      }
+      connect("stop-button", __callback)
     end
 
   end

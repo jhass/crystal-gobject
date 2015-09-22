@@ -65,13 +65,31 @@ module Gtk
     end
 
     def set_response_sensitive(response_id, setting)
-      __return_value = LibGtk.info_bar_set_response_sensitive((to_unsafe as LibGtk::InfoBar*), Int32.new(response_id), Bool.new(setting))
+      __return_value = LibGtk.info_bar_set_response_sensitive((to_unsafe as LibGtk::InfoBar*), Int32.new(response_id), setting)
       __return_value
     end
 
     def show_close_button=(setting)
-      __return_value = LibGtk.info_bar_set_show_close_button((to_unsafe as LibGtk::InfoBar*), Bool.new(setting))
+      __return_value = LibGtk.info_bar_set_show_close_button((to_unsafe as LibGtk::InfoBar*), setting)
       __return_value
+    end
+
+    alias CloseSignal = InfoBar -> 
+    def on_close(&__block : CloseSignal)
+      __callback = ->(_arg0 : LibGtk::InfoBar*) {
+       __return_value = __block.call(InfoBar.new(_arg0))
+       __return_value
+      }
+      connect("close", __callback)
+    end
+
+    alias ResponseSignal = InfoBar, Int32 -> 
+    def on_response(&__block : ResponseSignal)
+      __callback = ->(_arg0 : LibGtk::InfoBar*, _arg1 : LibGtk::Int32*) {
+       __return_value = __block.call(InfoBar.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("response", __callback)
     end
 
   end

@@ -35,7 +35,7 @@ module Gtk
 
     def active_text
       __return_value = LibGtk.combo_box_text_get_active_text((to_unsafe as LibGtk::ComboBoxText*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def insert(position, id, text)

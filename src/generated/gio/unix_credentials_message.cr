@@ -20,7 +20,7 @@ module Gio
       Gio::SocketControlMessage.new(__return_value)
     end
 
-    def self.is_supported
+    def self.supported?
       __return_value = LibGio.unix_credentials_message_is_supported
       __return_value
     end

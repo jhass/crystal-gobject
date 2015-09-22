@@ -10,7 +10,7 @@ module Gio
       GLib::Source.new(__return_value)
     end
 
-    def is_writable
+    def writable?
       __return_value = LibGio.pollable_output_stream_is_writable((to_unsafe as LibGio::PollableOutputStream*))
       __return_value
     end

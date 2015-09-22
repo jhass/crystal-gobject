@@ -14,7 +14,7 @@ module Gio
       Gio::SocketService.new(__return_value)
     end
 
-    def is_active
+    def active?
       __return_value = LibGio.socket_service_is_active((to_unsafe as LibGio::SocketService*))
       __return_value
     end
@@ -27,6 +27,15 @@ module Gio
     def stop
       __return_value = LibGio.socket_service_stop((to_unsafe as LibGio::SocketService*))
       __return_value
+    end
+
+    alias IncomingSignal = SocketService, Gio::SocketConnection, GObject::Object -> Bool
+    def on_incoming(&__block : IncomingSignal)
+      __callback = ->(_arg0 : LibGio::SocketService*, _arg1 : LibGio::LibGio::SocketConnection*, _arg2 : LibGio::LibGObject::Object*) {
+       __return_value = __block.call(SocketService.new(_arg0), Gio::SocketConnection.new(_arg1), GObject::Object.new(_arg2))
+       __return_value
+      }
+      connect("incoming", __callback)
     end
 
   end

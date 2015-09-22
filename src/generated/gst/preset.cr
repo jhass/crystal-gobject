@@ -2,7 +2,7 @@ module Gst
   module Preset
     def self.app_dir
       __return_value = LibGst.preset_get_app_dir
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def self.set_app_dir(app_dir)
@@ -22,12 +22,12 @@ module Gst
 
     def preset_names
       __return_value = LibGst.preset_get_preset_names((to_unsafe as LibGst::Preset*))
-      PointerIterator.new(__return_value) {|__item_48| raise "Expected string but got null" unless __item_48; String.new(__item_48) }
+      PointerIterator.new(__return_value) {|__item_90| (raise "Expected string but got null" unless __item_90; String.new(__item_90)) }
     end
 
     def property_names
       __return_value = LibGst.preset_get_property_names((to_unsafe as LibGst::Preset*))
-      PointerIterator.new(__return_value) {|__item_93| raise "Expected string but got null" unless __item_93; String.new(__item_93) }
+      PointerIterator.new(__return_value) {|__item_71| (raise "Expected string but got null" unless __item_71; String.new(__item_71)) }
     end
 
     def load_preset(name)

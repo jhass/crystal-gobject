@@ -73,7 +73,7 @@ module Gtk
     end
 
     def local_only=(local_only)
-      __return_value = LibGtk.places_sidebar_set_local_only((to_unsafe as LibGtk::PlacesSidebar*), Bool.new(local_only))
+      __return_value = LibGtk.places_sidebar_set_local_only((to_unsafe as LibGtk::PlacesSidebar*), local_only)
       __return_value
     end
 
@@ -88,18 +88,90 @@ module Gtk
     end
 
     def show_connect_to_server=(show_connect_to_server)
-      __return_value = LibGtk.places_sidebar_set_show_connect_to_server((to_unsafe as LibGtk::PlacesSidebar*), Bool.new(show_connect_to_server))
+      __return_value = LibGtk.places_sidebar_set_show_connect_to_server((to_unsafe as LibGtk::PlacesSidebar*), show_connect_to_server)
       __return_value
     end
 
     def show_desktop=(show_desktop)
-      __return_value = LibGtk.places_sidebar_set_show_desktop((to_unsafe as LibGtk::PlacesSidebar*), Bool.new(show_desktop))
+      __return_value = LibGtk.places_sidebar_set_show_desktop((to_unsafe as LibGtk::PlacesSidebar*), show_desktop)
       __return_value
     end
 
     def show_enter_location=(show_enter_location)
-      __return_value = LibGtk.places_sidebar_set_show_enter_location((to_unsafe as LibGtk::PlacesSidebar*), Bool.new(show_enter_location))
+      __return_value = LibGtk.places_sidebar_set_show_enter_location((to_unsafe as LibGtk::PlacesSidebar*), show_enter_location)
       __return_value
+    end
+
+    alias DragActionAskSignal = PlacesSidebar, Int32 -> Int32
+    def on_drag_action_ask(&__block : DragActionAskSignal)
+      __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::Int32*) {
+       __return_value = __block.call(PlacesSidebar.new(_arg0), _arg1)
+       Int32.new(__return_value)
+      }
+      connect("drag-action-ask", __callback)
+    end
+
+    alias DragActionRequestedSignal = PlacesSidebar, Gdk::DragContext, Gio::File, Void* -> Int32
+    def on_drag_action_requested(&__block : DragActionRequestedSignal)
+      __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGdk::DragContext*, _arg2 : LibGtk::LibGio::File*, _arg3 : LibGtk::Void***) {
+       __return_value = __block.call(PlacesSidebar.new(_arg0), Gdk::DragContext.new(_arg1), _arg2, _arg3)
+       Int32.new(__return_value)
+      }
+      connect("drag-action-requested", __callback)
+    end
+
+    alias DragPerformDropSignal = PlacesSidebar, Gio::File, Void*, Int32 -> 
+    def on_drag_perform_drop(&__block : DragPerformDropSignal)
+      __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGio::File*, _arg2 : LibGtk::Void***, _arg3 : LibGtk::Int32*) {
+       __return_value = __block.call(PlacesSidebar.new(_arg0), _arg1, _arg2, _arg3)
+       __return_value
+      }
+      connect("drag-perform-drop", __callback)
+    end
+
+    alias OpenLocationSignal = PlacesSidebar, Gio::File, Gtk::PlacesOpenFlags -> 
+    def on_open_location(&__block : OpenLocationSignal)
+      __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGio::File*, _arg2 : LibGtk::LibGtk::PlacesOpenFlags*) {
+       __return_value = __block.call(PlacesSidebar.new(_arg0), _arg1, _arg2)
+       __return_value
+      }
+      connect("open-location", __callback)
+    end
+
+    alias PopulatePopupSignal = PlacesSidebar, Gtk::Menu, Gio::File, Gio::Volume -> 
+    def on_populate_popup(&__block : PopulatePopupSignal)
+      __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGtk::Menu*, _arg2 : LibGtk::LibGio::File*, _arg3 : LibGtk::LibGio::Volume*) {
+       __return_value = __block.call(PlacesSidebar.new(_arg0), Gtk::Menu.new(_arg1), _arg2, _arg3)
+       __return_value
+      }
+      connect("populate-popup", __callback)
+    end
+
+    alias ShowConnectToServerSignal = PlacesSidebar -> 
+    def on_show_connect_to_server(&__block : ShowConnectToServerSignal)
+      __callback = ->(_arg0 : LibGtk::PlacesSidebar*) {
+       __return_value = __block.call(PlacesSidebar.new(_arg0))
+       __return_value
+      }
+      connect("show-connect-to-server", __callback)
+    end
+
+    alias ShowEnterLocationSignal = PlacesSidebar -> 
+    def on_show_enter_location(&__block : ShowEnterLocationSignal)
+      __callback = ->(_arg0 : LibGtk::PlacesSidebar*) {
+       __return_value = __block.call(PlacesSidebar.new(_arg0))
+       __return_value
+      }
+      connect("show-enter-location", __callback)
+    end
+
+    alias ShowErrorMessageSignal = PlacesSidebar, UInt8, UInt8 -> 
+    def on_show_error_message(&__block : ShowErrorMessageSignal)
+      __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::UInt8**, _arg2 : LibGtk::UInt8**) {
+       __return_value = __block.call(PlacesSidebar.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)), (raise "Expected string but got null" unless _arg2; String.new(_arg2)))
+       __return_value
+      }
+      connect("show-error-message", __callback)
     end
 
   end

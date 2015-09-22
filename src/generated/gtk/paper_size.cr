@@ -68,7 +68,7 @@ module Gtk
 
     def display_name
       __return_value = LibGtk.paper_size_get_display_name((to_unsafe as LibGtk::PaperSize*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def height(unit)
@@ -78,12 +78,12 @@ module Gtk
 
     def name
       __return_value = LibGtk.paper_size_get_name((to_unsafe as LibGtk::PaperSize*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def ppd_name
       __return_value = LibGtk.paper_size_get_ppd_name((to_unsafe as LibGtk::PaperSize*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def width(unit)
@@ -91,17 +91,17 @@ module Gtk
       __return_value
     end
 
-    def is_custom
+    def custom?
       __return_value = LibGtk.paper_size_is_custom((to_unsafe as LibGtk::PaperSize*))
       __return_value
     end
 
-    def is_equal(size2)
+    def equal?(size2)
       __return_value = LibGtk.paper_size_is_equal((to_unsafe as LibGtk::PaperSize*), (size2.to_unsafe as LibGtk::PaperSize*))
       __return_value
     end
 
-    def is_ipp
+    def ipp?
       __return_value = LibGtk.paper_size_is_ipp((to_unsafe as LibGtk::PaperSize*))
       __return_value
     end
@@ -118,11 +118,11 @@ module Gtk
 
     def self.default
       __return_value = LibGtk.paper_size_get_default
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def self.paper_sizes(include_custom)
-      __return_value = LibGtk.paper_size_get_paper_sizes(Bool.new(include_custom))
+      __return_value = LibGtk.paper_size_get_paper_sizes(include_custom)
       __return_value
     end
 

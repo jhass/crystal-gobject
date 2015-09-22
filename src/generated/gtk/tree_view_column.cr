@@ -59,7 +59,7 @@ module Gtk
     end
 
     def cell_set_cell_data(tree_model, iter, is_expander, is_expanded)
-      __return_value = LibGtk.tree_view_column_cell_set_cell_data((to_unsafe as LibGtk::TreeViewColumn*), (tree_model.to_unsafe as LibGtk::TreeModel*), (iter.to_unsafe as LibGtk::TreeIter*), Bool.new(is_expander), Bool.new(is_expanded))
+      __return_value = LibGtk.tree_view_column_cell_set_cell_data((to_unsafe as LibGtk::TreeViewColumn*), (tree_model.to_unsafe as LibGtk::TreeModel*), (iter.to_unsafe as LibGtk::TreeIter*), is_expander, is_expanded)
       __return_value
     end
 
@@ -155,7 +155,7 @@ module Gtk
 
     def title
       __return_value = LibGtk.tree_view_column_get_title((to_unsafe as LibGtk::TreeViewColumn*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def tree_view
@@ -184,12 +184,12 @@ module Gtk
     end
 
     def pack_end(cell, expand)
-      __return_value = LibGtk.tree_view_column_pack_end((to_unsafe as LibGtk::TreeViewColumn*), (cell.to_unsafe as LibGtk::CellRenderer*), Bool.new(expand))
+      __return_value = LibGtk.tree_view_column_pack_end((to_unsafe as LibGtk::TreeViewColumn*), (cell.to_unsafe as LibGtk::CellRenderer*), expand)
       __return_value
     end
 
     def pack_start(cell, expand)
-      __return_value = LibGtk.tree_view_column_pack_start((to_unsafe as LibGtk::TreeViewColumn*), (cell.to_unsafe as LibGtk::CellRenderer*), Bool.new(expand))
+      __return_value = LibGtk.tree_view_column_pack_start((to_unsafe as LibGtk::TreeViewColumn*), (cell.to_unsafe as LibGtk::CellRenderer*), expand)
       __return_value
     end
 
@@ -209,12 +209,12 @@ module Gtk
     end
 
     def clickable=(clickable)
-      __return_value = LibGtk.tree_view_column_set_clickable((to_unsafe as LibGtk::TreeViewColumn*), Bool.new(clickable))
+      __return_value = LibGtk.tree_view_column_set_clickable((to_unsafe as LibGtk::TreeViewColumn*), clickable)
       __return_value
     end
 
     def expand=(expand)
-      __return_value = LibGtk.tree_view_column_set_expand((to_unsafe as LibGtk::TreeViewColumn*), Bool.new(expand))
+      __return_value = LibGtk.tree_view_column_set_expand((to_unsafe as LibGtk::TreeViewColumn*), expand)
       __return_value
     end
 
@@ -234,12 +234,12 @@ module Gtk
     end
 
     def reorderable=(reorderable)
-      __return_value = LibGtk.tree_view_column_set_reorderable((to_unsafe as LibGtk::TreeViewColumn*), Bool.new(reorderable))
+      __return_value = LibGtk.tree_view_column_set_reorderable((to_unsafe as LibGtk::TreeViewColumn*), reorderable)
       __return_value
     end
 
     def resizable=(resizable)
-      __return_value = LibGtk.tree_view_column_set_resizable((to_unsafe as LibGtk::TreeViewColumn*), Bool.new(resizable))
+      __return_value = LibGtk.tree_view_column_set_resizable((to_unsafe as LibGtk::TreeViewColumn*), resizable)
       __return_value
     end
 
@@ -254,7 +254,7 @@ module Gtk
     end
 
     def sort_indicator=(setting)
-      __return_value = LibGtk.tree_view_column_set_sort_indicator((to_unsafe as LibGtk::TreeViewColumn*), Bool.new(setting))
+      __return_value = LibGtk.tree_view_column_set_sort_indicator((to_unsafe as LibGtk::TreeViewColumn*), setting)
       __return_value
     end
 
@@ -274,13 +274,22 @@ module Gtk
     end
 
     def visible=(visible)
-      __return_value = LibGtk.tree_view_column_set_visible((to_unsafe as LibGtk::TreeViewColumn*), Bool.new(visible))
+      __return_value = LibGtk.tree_view_column_set_visible((to_unsafe as LibGtk::TreeViewColumn*), visible)
       __return_value
     end
 
     def widget=(widget)
       __return_value = LibGtk.tree_view_column_set_widget((to_unsafe as LibGtk::TreeViewColumn*), widget && (widget.to_unsafe as LibGtk::Widget*))
       __return_value
+    end
+
+    alias ClickedSignal = TreeViewColumn -> 
+    def on_clicked(&__block : ClickedSignal)
+      __callback = ->(_arg0 : LibGtk::TreeViewColumn*) {
+       __return_value = __block.call(TreeViewColumn.new(_arg0))
+       __return_value
+      }
+      connect("clicked", __callback)
     end
 
   end

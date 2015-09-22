@@ -20,7 +20,7 @@ module Gio
       __return_value
     end
 
-    def is_cancelled
+    def cancelled?
       __return_value = LibGio.file_monitor_is_cancelled((to_unsafe as LibGio::FileMonitor*))
       __return_value
     end
@@ -28,6 +28,15 @@ module Gio
     def rate_limit=(limit_msecs)
       __return_value = LibGio.file_monitor_set_rate_limit((to_unsafe as LibGio::FileMonitor*), Int32.new(limit_msecs))
       __return_value
+    end
+
+    alias ChangedSignal = FileMonitor, Gio::File, Gio::File, Gio::FileMonitorEvent -> 
+    def on_changed(&__block : ChangedSignal)
+      __callback = ->(_arg0 : LibGio::FileMonitor*, _arg1 : LibGio::LibGio::File*, _arg2 : LibGio::LibGio::File*, _arg3 : LibGio::LibGio::FileMonitorEvent*) {
+       __return_value = __block.call(FileMonitor.new(_arg0), _arg1, _arg2, _arg3)
+       __return_value
+      }
+      connect("changed", __callback)
     end
 
   end

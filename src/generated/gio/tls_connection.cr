@@ -103,13 +103,22 @@ module Gio
     end
 
     def require_close_notify=(require_close_notify)
-      __return_value = LibGio.tls_connection_set_require_close_notify((to_unsafe as LibGio::TlsConnection*), Bool.new(require_close_notify))
+      __return_value = LibGio.tls_connection_set_require_close_notify((to_unsafe as LibGio::TlsConnection*), require_close_notify)
       __return_value
     end
 
     def use_system_certdb=(use_system_certdb)
-      __return_value = LibGio.tls_connection_set_use_system_certdb((to_unsafe as LibGio::TlsConnection*), Bool.new(use_system_certdb))
+      __return_value = LibGio.tls_connection_set_use_system_certdb((to_unsafe as LibGio::TlsConnection*), use_system_certdb)
       __return_value
+    end
+
+    alias AcceptCertificateSignal = TlsConnection, Gio::TlsCertificate, Gio::TlsCertificateFlags -> Bool
+    def on_accept_certificate(&__block : AcceptCertificateSignal)
+      __callback = ->(_arg0 : LibGio::TlsConnection*, _arg1 : LibGio::LibGio::TlsCertificate*, _arg2 : LibGio::LibGio::TlsCertificateFlags*) {
+       __return_value = __block.call(TlsConnection.new(_arg0), Gio::TlsCertificate.new(_arg1), _arg2)
+       __return_value
+      }
+      connect("accept-certificate", __callback)
     end
 
   end

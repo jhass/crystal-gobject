@@ -45,12 +45,12 @@ module Gtk
 
     def accel_path
       __return_value = LibGtk.menu_item_get_accel_path((to_unsafe as LibGtk::MenuItem*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def label
       __return_value = LibGtk.menu_item_get_label((to_unsafe as LibGtk::MenuItem*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def reserve_indicator
@@ -89,12 +89,12 @@ module Gtk
     end
 
     def reserve_indicator=(reserve)
-      __return_value = LibGtk.menu_item_set_reserve_indicator((to_unsafe as LibGtk::MenuItem*), Bool.new(reserve))
+      __return_value = LibGtk.menu_item_set_reserve_indicator((to_unsafe as LibGtk::MenuItem*), reserve)
       __return_value
     end
 
     def right_justified=(right_justified)
-      __return_value = LibGtk.menu_item_set_right_justified((to_unsafe as LibGtk::MenuItem*), Bool.new(right_justified))
+      __return_value = LibGtk.menu_item_set_right_justified((to_unsafe as LibGtk::MenuItem*), right_justified)
       __return_value
     end
 
@@ -104,7 +104,7 @@ module Gtk
     end
 
     def use_underline=(setting)
-      __return_value = LibGtk.menu_item_set_use_underline((to_unsafe as LibGtk::MenuItem*), Bool.new(setting))
+      __return_value = LibGtk.menu_item_set_use_underline((to_unsafe as LibGtk::MenuItem*), setting)
       __return_value
     end
 
@@ -116,6 +116,60 @@ module Gtk
     def toggle_size_request(requisition)
       __return_value = LibGtk.menu_item_toggle_size_request((to_unsafe as LibGtk::MenuItem*), Int32.new(requisition))
       __return_value
+    end
+
+    alias ActivateSignal = MenuItem -> 
+    def on_activate(&__block : ActivateSignal)
+      __callback = ->(_arg0 : LibGtk::MenuItem*) {
+       __return_value = __block.call(MenuItem.new(_arg0))
+       __return_value
+      }
+      connect("activate", __callback)
+    end
+
+    alias ActivateItemSignal = MenuItem -> 
+    def on_activate_item(&__block : ActivateItemSignal)
+      __callback = ->(_arg0 : LibGtk::MenuItem*) {
+       __return_value = __block.call(MenuItem.new(_arg0))
+       __return_value
+      }
+      connect("activate-item", __callback)
+    end
+
+    alias DeselectSignal = MenuItem -> 
+    def on_deselect(&__block : DeselectSignal)
+      __callback = ->(_arg0 : LibGtk::MenuItem*) {
+       __return_value = __block.call(MenuItem.new(_arg0))
+       __return_value
+      }
+      connect("deselect", __callback)
+    end
+
+    alias SelectSignal = MenuItem -> 
+    def on_select(&__block : SelectSignal)
+      __callback = ->(_arg0 : LibGtk::MenuItem*) {
+       __return_value = __block.call(MenuItem.new(_arg0))
+       __return_value
+      }
+      connect("select", __callback)
+    end
+
+    alias ToggleSizeAllocateSignal = MenuItem, Int32 -> 
+    def on_toggle_size_allocate(&__block : ToggleSizeAllocateSignal)
+      __callback = ->(_arg0 : LibGtk::MenuItem*, _arg1 : LibGtk::Int32*) {
+       __return_value = __block.call(MenuItem.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("toggle-size-allocate", __callback)
+    end
+
+    alias ToggleSizeRequestSignal = MenuItem, Void* -> 
+    def on_toggle_size_request(&__block : ToggleSizeRequestSignal)
+      __callback = ->(_arg0 : LibGtk::MenuItem*, _arg1 : LibGtk::Void**) {
+       __return_value = __block.call(MenuItem.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("toggle-size-request", __callback)
     end
 
   end

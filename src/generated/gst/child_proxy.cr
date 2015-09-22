@@ -40,6 +40,24 @@ module Gst
       __return_value
     end
 
+    alias ChildAddedSignal = ChildProxy, GObject::Object, UInt8 -> 
+    def on_child_added(&__block : ChildAddedSignal)
+      __callback = ->(_arg0 : LibGst::ChildProxy*, _arg1 : LibGst::LibGObject::Object*, _arg2 : LibGst::UInt8**) {
+       __return_value = __block.call(ChildProxy.new(_arg0), GObject::Object.new(_arg1), (raise "Expected string but got null" unless _arg2; String.new(_arg2)))
+       __return_value
+      }
+      connect("child-added", __callback)
+    end
+
+    alias ChildRemovedSignal = ChildProxy, GObject::Object, UInt8 -> 
+    def on_child_removed(&__block : ChildRemovedSignal)
+      __callback = ->(_arg0 : LibGst::ChildProxy*, _arg1 : LibGst::LibGObject::Object*, _arg2 : LibGst::UInt8**) {
+       __return_value = __block.call(ChildProxy.new(_arg0), GObject::Object.new(_arg1), (raise "Expected string but got null" unless _arg2; String.new(_arg2)))
+       __return_value
+      }
+      connect("child-removed", __callback)
+    end
+
   end
 end
 

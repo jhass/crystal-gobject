@@ -30,7 +30,7 @@ module Gio
       Gio::DBusConnection.new(__return_value)
     end
 
-    def is_exported(object)
+    def exported?(object)
       __return_value = LibGio.d_bus_object_manager_server_is_exported((to_unsafe as LibGio::DBusObjectManagerServer*), (object.to_unsafe as LibGio::DBusObjectSkeleton*))
       __return_value
     end

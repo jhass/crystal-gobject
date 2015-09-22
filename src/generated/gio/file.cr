@@ -203,7 +203,7 @@ module Gio
 
     def basename
       __return_value = LibGio.file_get_basename((to_unsafe as LibGio::File*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def child(name)
@@ -225,27 +225,27 @@ module Gio
 
     def parse_name
       __return_value = LibGio.file_get_parse_name((to_unsafe as LibGio::File*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def path
       __return_value = LibGio.file_get_path((to_unsafe as LibGio::File*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def relative_path(descendant)
       __return_value = LibGio.file_get_relative_path((to_unsafe as LibGio::File*), (descendant.to_unsafe as LibGio::File*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def uri
       __return_value = LibGio.file_get_uri((to_unsafe as LibGio::File*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def uri_scheme
       __return_value = LibGio.file_get_uri_scheme((to_unsafe as LibGio::File*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def has_parent(parent)
@@ -268,7 +268,7 @@ module Gio
       __return_value
     end
 
-    def is_native
+    def native?
       __return_value = LibGio.file_is_native((to_unsafe as LibGio::File*))
       __return_value
     end
@@ -512,30 +512,30 @@ module Gio
 
     def replace(etag, make_backup, flags, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.file_replace((to_unsafe as LibGio::File*), etag && etag, Bool.new(make_backup), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.file_replace((to_unsafe as LibGio::File*), etag && etag, make_backup, flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       Gio::FileOutputStream.new(__return_value)
     end
 
     def replace_async(etag, make_backup, flags, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_replace_async((to_unsafe as LibGio::File*), etag && etag, Bool.new(make_backup), flags, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_replace_async((to_unsafe as LibGio::File*), etag && etag, make_backup, flags, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
     def replace_contents(contents, length, etag, make_backup, flags, new_etag, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.file_replace_contents((to_unsafe as LibGio::File*), contents, UInt64.new(length), etag && etag, Bool.new(make_backup), flags, new_etag, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.file_replace_contents((to_unsafe as LibGio::File*), contents, UInt64.new(length), etag && etag, make_backup, flags, new_etag, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def replace_contents_async(contents, length, etag, make_backup, flags, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_replace_contents_async((to_unsafe as LibGio::File*), contents, UInt64.new(length), etag && etag, Bool.new(make_backup), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_replace_contents_async((to_unsafe as LibGio::File*), contents, UInt64.new(length), etag && etag, make_backup, flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
     def replace_contents_bytes_async(contents, etag, make_backup, flags, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_replace_contents_bytes_async((to_unsafe as LibGio::File*), (contents.to_unsafe as LibGLib::Bytes*), etag && etag, Bool.new(make_backup), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_replace_contents_bytes_async((to_unsafe as LibGio::File*), (contents.to_unsafe as LibGLib::Bytes*), etag && etag, make_backup, flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 
@@ -555,13 +555,13 @@ module Gio
 
     def replace_readwrite(etag, make_backup, flags, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.file_replace_readwrite((to_unsafe as LibGio::File*), etag && etag, Bool.new(make_backup), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.file_replace_readwrite((to_unsafe as LibGio::File*), etag && etag, make_backup, flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       Gio::FileIOStream.new(__return_value)
     end
 
     def replace_readwrite_async(etag, make_backup, flags, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_replace_readwrite_async((to_unsafe as LibGio::File*), etag && etag, Bool.new(make_backup), flags, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_replace_readwrite_async((to_unsafe as LibGio::File*), etag && etag, make_backup, flags, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
       __return_value
     end
 

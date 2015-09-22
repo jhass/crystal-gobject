@@ -7,7 +7,7 @@ module Gtk
 
     def content_type
       __return_value = LibGtk.app_chooser_get_content_type((to_unsafe as LibGtk::AppChooser*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def refresh

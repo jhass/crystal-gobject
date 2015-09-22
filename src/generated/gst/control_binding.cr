@@ -21,13 +21,13 @@ module Gst
       GObject::Value.new(__return_value) if __return_value
     end
 
-    def is_disabled
+    def disabled?
       __return_value = LibGst.control_binding_is_disabled((to_unsafe as LibGst::ControlBinding*))
       __return_value
     end
 
     def disabled=(disabled)
-      __return_value = LibGst.control_binding_set_disabled((to_unsafe as LibGst::ControlBinding*), Bool.new(disabled))
+      __return_value = LibGst.control_binding_set_disabled((to_unsafe as LibGst::ControlBinding*), disabled)
       __return_value
     end
 

@@ -26,7 +26,7 @@ module GdkPixbuf
     end
 
     def loop=(loop)
-      __return_value = LibGdkPixbuf.pixbuf_simple_anim_set_loop((to_unsafe as LibGdkPixbuf::PixbufSimpleAnim*), Bool.new(loop))
+      __return_value = LibGdkPixbuf.pixbuf_simple_anim_set_loop((to_unsafe as LibGdkPixbuf::PixbufSimpleAnim*), loop)
       __return_value
     end
 

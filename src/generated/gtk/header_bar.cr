@@ -31,7 +31,7 @@ module Gtk
 
     def decoration_layout
       __return_value = LibGtk.header_bar_get_decoration_layout((to_unsafe as LibGtk::HeaderBar*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def has_subtitle
@@ -46,12 +46,12 @@ module Gtk
 
     def subtitle
       __return_value = LibGtk.header_bar_get_subtitle((to_unsafe as LibGtk::HeaderBar*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def title
       __return_value = LibGtk.header_bar_get_title((to_unsafe as LibGtk::HeaderBar*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def pack_end(child)
@@ -75,12 +75,12 @@ module Gtk
     end
 
     def has_subtitle=(setting)
-      __return_value = LibGtk.header_bar_set_has_subtitle((to_unsafe as LibGtk::HeaderBar*), Bool.new(setting))
+      __return_value = LibGtk.header_bar_set_has_subtitle((to_unsafe as LibGtk::HeaderBar*), setting)
       __return_value
     end
 
     def show_close_button=(setting)
-      __return_value = LibGtk.header_bar_set_show_close_button((to_unsafe as LibGtk::HeaderBar*), Bool.new(setting))
+      __return_value = LibGtk.header_bar_set_show_close_button((to_unsafe as LibGtk::HeaderBar*), setting)
       __return_value
     end
 

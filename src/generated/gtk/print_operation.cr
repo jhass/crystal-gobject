@@ -80,7 +80,7 @@ module Gtk
 
     def status_string
       __return_value = LibGtk.print_operation_get_status_string((to_unsafe as LibGtk::PrintOperation*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def support_selection
@@ -88,7 +88,7 @@ module Gtk
       __return_value
     end
 
-    def is_finished
+    def finished?
       __return_value = LibGtk.print_operation_is_finished((to_unsafe as LibGtk::PrintOperation*))
       __return_value
     end
@@ -101,7 +101,7 @@ module Gtk
     end
 
     def allow_async=(allow_async)
-      __return_value = LibGtk.print_operation_set_allow_async((to_unsafe as LibGtk::PrintOperation*), Bool.new(allow_async))
+      __return_value = LibGtk.print_operation_set_allow_async((to_unsafe as LibGtk::PrintOperation*), allow_async)
       __return_value
     end
 
@@ -126,7 +126,7 @@ module Gtk
     end
 
     def embed_page_setup=(embed)
-      __return_value = LibGtk.print_operation_set_embed_page_setup((to_unsafe as LibGtk::PrintOperation*), Bool.new(embed))
+      __return_value = LibGtk.print_operation_set_embed_page_setup((to_unsafe as LibGtk::PrintOperation*), embed)
       __return_value
     end
 
@@ -136,7 +136,7 @@ module Gtk
     end
 
     def has_selection=(has_selection)
-      __return_value = LibGtk.print_operation_set_has_selection((to_unsafe as LibGtk::PrintOperation*), Bool.new(has_selection))
+      __return_value = LibGtk.print_operation_set_has_selection((to_unsafe as LibGtk::PrintOperation*), has_selection)
       __return_value
     end
 
@@ -156,17 +156,17 @@ module Gtk
     end
 
     def show_progress=(show_progress)
-      __return_value = LibGtk.print_operation_set_show_progress((to_unsafe as LibGtk::PrintOperation*), Bool.new(show_progress))
+      __return_value = LibGtk.print_operation_set_show_progress((to_unsafe as LibGtk::PrintOperation*), show_progress)
       __return_value
     end
 
     def support_selection=(support_selection)
-      __return_value = LibGtk.print_operation_set_support_selection((to_unsafe as LibGtk::PrintOperation*), Bool.new(support_selection))
+      __return_value = LibGtk.print_operation_set_support_selection((to_unsafe as LibGtk::PrintOperation*), support_selection)
       __return_value
     end
 
     def track_print_status=(track_status)
-      __return_value = LibGtk.print_operation_set_track_print_status((to_unsafe as LibGtk::PrintOperation*), Bool.new(track_status))
+      __return_value = LibGtk.print_operation_set_track_print_status((to_unsafe as LibGtk::PrintOperation*), track_status)
       __return_value
     end
 
@@ -176,8 +176,107 @@ module Gtk
     end
 
     def use_full_page=(full_page)
-      __return_value = LibGtk.print_operation_set_use_full_page((to_unsafe as LibGtk::PrintOperation*), Bool.new(full_page))
+      __return_value = LibGtk.print_operation_set_use_full_page((to_unsafe as LibGtk::PrintOperation*), full_page)
       __return_value
+    end
+
+    alias BeginPrintSignal = PrintOperation, Gtk::PrintContext -> 
+    def on_begin_print(&__block : BeginPrintSignal)
+      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintContext*) {
+       __return_value = __block.call(PrintOperation.new(_arg0), Gtk::PrintContext.new(_arg1))
+       __return_value
+      }
+      connect("begin-print", __callback)
+    end
+
+    alias CreateCustomWidgetSignal = PrintOperation -> GObject::Object
+    def on_create_custom_widget(&__block : CreateCustomWidgetSignal)
+      __callback = ->(_arg0 : LibGtk::PrintOperation*) {
+       __return_value = __block.call(PrintOperation.new(_arg0))
+       __return_value
+      }
+      connect("create-custom-widget", __callback)
+    end
+
+    alias CustomWidgetApplySignal = PrintOperation, Gtk::Widget -> 
+    def on_custom_widget_apply(&__block : CustomWidgetApplySignal)
+      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::Widget*) {
+       __return_value = __block.call(PrintOperation.new(_arg0), Gtk::Widget.new(_arg1))
+       __return_value
+      }
+      connect("custom-widget-apply", __callback)
+    end
+
+    alias DoneSignal = PrintOperation, Gtk::PrintOperationResult -> 
+    def on_done(&__block : DoneSignal)
+      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintOperationResult*) {
+       __return_value = __block.call(PrintOperation.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("done", __callback)
+    end
+
+    alias DrawPageSignal = PrintOperation, Gtk::PrintContext, Int32 -> 
+    def on_draw_page(&__block : DrawPageSignal)
+      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintContext*, _arg2 : LibGtk::Int32*) {
+       __return_value = __block.call(PrintOperation.new(_arg0), Gtk::PrintContext.new(_arg1), _arg2)
+       __return_value
+      }
+      connect("draw-page", __callback)
+    end
+
+    alias EndPrintSignal = PrintOperation, Gtk::PrintContext -> 
+    def on_end_print(&__block : EndPrintSignal)
+      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintContext*) {
+       __return_value = __block.call(PrintOperation.new(_arg0), Gtk::PrintContext.new(_arg1))
+       __return_value
+      }
+      connect("end-print", __callback)
+    end
+
+    alias PaginateSignal = PrintOperation, Gtk::PrintContext -> Bool
+    def on_paginate(&__block : PaginateSignal)
+      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintContext*) {
+       __return_value = __block.call(PrintOperation.new(_arg0), Gtk::PrintContext.new(_arg1))
+       __return_value
+      }
+      connect("paginate", __callback)
+    end
+
+    alias PreviewSignal = PrintOperation, Gtk::PrintOperationPreview, Gtk::PrintContext, Gtk::Window -> Bool
+    def on_preview(&__block : PreviewSignal)
+      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintOperationPreview*, _arg2 : LibGtk::LibGtk::PrintContext*, _arg3 : LibGtk::LibGtk::Window*) {
+       __return_value = __block.call(PrintOperation.new(_arg0), _arg1, Gtk::PrintContext.new(_arg2), Gtk::Window.new(_arg3))
+       __return_value
+      }
+      connect("preview", __callback)
+    end
+
+    alias RequestPageSetupSignal = PrintOperation, Gtk::PrintContext, Int32, Gtk::PageSetup -> 
+    def on_request_page_setup(&__block : RequestPageSetupSignal)
+      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintContext*, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::LibGtk::PageSetup*) {
+       __return_value = __block.call(PrintOperation.new(_arg0), Gtk::PrintContext.new(_arg1), _arg2, Gtk::PageSetup.new(_arg3))
+       __return_value
+      }
+      connect("request-page-setup", __callback)
+    end
+
+    alias StatusChangedSignal = PrintOperation -> 
+    def on_status_changed(&__block : StatusChangedSignal)
+      __callback = ->(_arg0 : LibGtk::PrintOperation*) {
+       __return_value = __block.call(PrintOperation.new(_arg0))
+       __return_value
+      }
+      connect("status-changed", __callback)
+    end
+
+    alias UpdateCustomWidgetSignal = PrintOperation, Gtk::Widget, Gtk::PageSetup, Gtk::PrintSettings -> 
+    def on_update_custom_widget(&__block : UpdateCustomWidgetSignal)
+      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::Widget*, _arg2 : LibGtk::LibGtk::PageSetup*, _arg3 : LibGtk::LibGtk::PrintSettings*) {
+       __return_value = __block.call(PrintOperation.new(_arg0), Gtk::Widget.new(_arg1), Gtk::PageSetup.new(_arg2), Gtk::PrintSettings.new(_arg3))
+       __return_value
+      }
+      connect("update-custom-widget", __callback)
     end
 
   end

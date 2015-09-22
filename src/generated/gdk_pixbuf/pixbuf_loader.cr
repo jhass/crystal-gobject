@@ -67,6 +67,42 @@ module GdkPixbuf
       __return_value
     end
 
+    alias AreaPreparedSignal = PixbufLoader -> 
+    def on_area_prepared(&__block : AreaPreparedSignal)
+      __callback = ->(_arg0 : LibGdkPixbuf::PixbufLoader*) {
+       __return_value = __block.call(PixbufLoader.new(_arg0))
+       __return_value
+      }
+      connect("area-prepared", __callback)
+    end
+
+    alias AreaUpdatedSignal = PixbufLoader, Int32, Int32, Int32, Int32 -> 
+    def on_area_updated(&__block : AreaUpdatedSignal)
+      __callback = ->(_arg0 : LibGdkPixbuf::PixbufLoader*, _arg1 : LibGdkPixbuf::Int32*, _arg2 : LibGdkPixbuf::Int32*, _arg3 : LibGdkPixbuf::Int32*, _arg4 : LibGdkPixbuf::Int32*) {
+       __return_value = __block.call(PixbufLoader.new(_arg0), _arg1, _arg2, _arg3, _arg4)
+       __return_value
+      }
+      connect("area-updated", __callback)
+    end
+
+    alias ClosedSignal = PixbufLoader -> 
+    def on_closed(&__block : ClosedSignal)
+      __callback = ->(_arg0 : LibGdkPixbuf::PixbufLoader*) {
+       __return_value = __block.call(PixbufLoader.new(_arg0))
+       __return_value
+      }
+      connect("closed", __callback)
+    end
+
+    alias SizePreparedSignal = PixbufLoader, Int32, Int32 -> 
+    def on_size_prepared(&__block : SizePreparedSignal)
+      __callback = ->(_arg0 : LibGdkPixbuf::PixbufLoader*, _arg1 : LibGdkPixbuf::Int32*, _arg2 : LibGdkPixbuf::Int32*) {
+       __return_value = __block.call(PixbufLoader.new(_arg0), _arg1, _arg2)
+       __return_value
+      }
+      connect("size-prepared", __callback)
+    end
+
   end
 end
 

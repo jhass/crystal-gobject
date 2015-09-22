@@ -51,7 +51,7 @@ module Gtk
 
     def to_string
       __return_value = LibGtk.symbolic_color_to_string((to_unsafe as LibGtk::SymbolicColor*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def unref

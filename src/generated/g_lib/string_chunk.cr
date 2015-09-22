@@ -21,17 +21,17 @@ module GLib
 
     def insert(string)
       __return_value = LibGLib.string_chunk_insert((to_unsafe as LibGLib::StringChunk*), string)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def insert_const(string)
       __return_value = LibGLib.string_chunk_insert_const((to_unsafe as LibGLib::StringChunk*), string)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def insert_len(string, len)
       __return_value = LibGLib.string_chunk_insert_len((to_unsafe as LibGLib::StringChunk*), string, Int64.new(len))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
   end

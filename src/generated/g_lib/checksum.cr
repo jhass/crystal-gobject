@@ -26,7 +26,7 @@ module GLib
 
     def string
       __return_value = LibGLib.checksum_get_string((to_unsafe as LibGLib::Checksum*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def reset

@@ -90,7 +90,7 @@ module Gtk
 
     def label
       __return_value = LibGtk.button_get_label((to_unsafe as LibGtk::Button*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def relief
@@ -129,12 +129,12 @@ module Gtk
     end
 
     def always_show_image=(always_show)
-      __return_value = LibGtk.button_set_always_show_image((to_unsafe as LibGtk::Button*), Bool.new(always_show))
+      __return_value = LibGtk.button_set_always_show_image((to_unsafe as LibGtk::Button*), always_show)
       __return_value
     end
 
     def focus_on_click=(focus_on_click)
-      __return_value = LibGtk.button_set_focus_on_click((to_unsafe as LibGtk::Button*), Bool.new(focus_on_click))
+      __return_value = LibGtk.button_set_focus_on_click((to_unsafe as LibGtk::Button*), focus_on_click)
       __return_value
     end
 
@@ -159,13 +159,67 @@ module Gtk
     end
 
     def use_stock=(use_stock)
-      __return_value = LibGtk.button_set_use_stock((to_unsafe as LibGtk::Button*), Bool.new(use_stock))
+      __return_value = LibGtk.button_set_use_stock((to_unsafe as LibGtk::Button*), use_stock)
       __return_value
     end
 
     def use_underline=(use_underline)
-      __return_value = LibGtk.button_set_use_underline((to_unsafe as LibGtk::Button*), Bool.new(use_underline))
+      __return_value = LibGtk.button_set_use_underline((to_unsafe as LibGtk::Button*), use_underline)
       __return_value
+    end
+
+    alias ActivateSignal = Button -> 
+    def on_activate(&__block : ActivateSignal)
+      __callback = ->(_arg0 : LibGtk::Button*) {
+       __return_value = __block.call(Button.new(_arg0))
+       __return_value
+      }
+      connect("activate", __callback)
+    end
+
+    alias ClickedSignal = Button -> 
+    def on_clicked(&__block : ClickedSignal)
+      __callback = ->(_arg0 : LibGtk::Button*) {
+       __return_value = __block.call(Button.new(_arg0))
+       __return_value
+      }
+      connect("clicked", __callback)
+    end
+
+    alias EnterSignal = Button -> 
+    def on_enter(&__block : EnterSignal)
+      __callback = ->(_arg0 : LibGtk::Button*) {
+       __return_value = __block.call(Button.new(_arg0))
+       __return_value
+      }
+      connect("enter", __callback)
+    end
+
+    alias LeaveSignal = Button -> 
+    def on_leave(&__block : LeaveSignal)
+      __callback = ->(_arg0 : LibGtk::Button*) {
+       __return_value = __block.call(Button.new(_arg0))
+       __return_value
+      }
+      connect("leave", __callback)
+    end
+
+    alias PressedSignal = Button -> 
+    def on_pressed(&__block : PressedSignal)
+      __callback = ->(_arg0 : LibGtk::Button*) {
+       __return_value = __block.call(Button.new(_arg0))
+       __return_value
+      }
+      connect("pressed", __callback)
+    end
+
+    alias ReleasedSignal = Button -> 
+    def on_released(&__block : ReleasedSignal)
+      __callback = ->(_arg0 : LibGtk::Button*) {
+       __return_value = __block.call(Button.new(_arg0))
+       __return_value
+      }
+      connect("released", __callback)
     end
 
   end

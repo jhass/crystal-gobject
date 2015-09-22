@@ -22,6 +22,24 @@ module Gio
       __return_value
     end
 
+    alias MountpointsChangedSignal = UnixMountMonitor -> 
+    def on_mountpoints_changed(&__block : MountpointsChangedSignal)
+      __callback = ->(_arg0 : LibGio::UnixMountMonitor*) {
+       __return_value = __block.call(UnixMountMonitor.new(_arg0))
+       __return_value
+      }
+      connect("mountpoints-changed", __callback)
+    end
+
+    alias MountsChangedSignal = UnixMountMonitor -> 
+    def on_mounts_changed(&__block : MountsChangedSignal)
+      __callback = ->(_arg0 : LibGio::UnixMountMonitor*) {
+       __return_value = __block.call(UnixMountMonitor.new(_arg0))
+       __return_value
+      }
+      connect("mounts-changed", __callback)
+    end
+
   end
 end
 

@@ -31,7 +31,7 @@ module Gtk
 
     def current_folder
       __return_value = LibGtk.file_chooser_get_current_folder((to_unsafe as LibGtk::FileChooser*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def current_folder_file
@@ -41,12 +41,12 @@ module Gtk
 
     def current_folder_uri
       __return_value = LibGtk.file_chooser_get_current_folder_uri((to_unsafe as LibGtk::FileChooser*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def current_name
       __return_value = LibGtk.file_chooser_get_current_name((to_unsafe as LibGtk::FileChooser*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def do_overwrite_confirmation
@@ -66,7 +66,7 @@ module Gtk
 
     def filename
       __return_value = LibGtk.file_chooser_get_filename((to_unsafe as LibGtk::FileChooser*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def filenames
@@ -96,12 +96,12 @@ module Gtk
 
     def preview_filename
       __return_value = LibGtk.file_chooser_get_preview_filename((to_unsafe as LibGtk::FileChooser*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def preview_uri
       __return_value = LibGtk.file_chooser_get_preview_uri((to_unsafe as LibGtk::FileChooser*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def preview_widget
@@ -126,7 +126,7 @@ module Gtk
 
     def uri
       __return_value = LibGtk.file_chooser_get_uri((to_unsafe as LibGtk::FileChooser*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def uris
@@ -201,7 +201,7 @@ module Gtk
     end
 
     def create_folders=(create_folders)
-      __return_value = LibGtk.file_chooser_set_create_folders((to_unsafe as LibGtk::FileChooser*), Bool.new(create_folders))
+      __return_value = LibGtk.file_chooser_set_create_folders((to_unsafe as LibGtk::FileChooser*), create_folders)
       __return_value
     end
 
@@ -228,7 +228,7 @@ module Gtk
     end
 
     def do_overwrite_confirmation=(do_overwrite_confirmation)
-      __return_value = LibGtk.file_chooser_set_do_overwrite_confirmation((to_unsafe as LibGtk::FileChooser*), Bool.new(do_overwrite_confirmation))
+      __return_value = LibGtk.file_chooser_set_do_overwrite_confirmation((to_unsafe as LibGtk::FileChooser*), do_overwrite_confirmation)
       __return_value
     end
 
@@ -255,7 +255,7 @@ module Gtk
     end
 
     def local_only=(local_only)
-      __return_value = LibGtk.file_chooser_set_local_only((to_unsafe as LibGtk::FileChooser*), Bool.new(local_only))
+      __return_value = LibGtk.file_chooser_set_local_only((to_unsafe as LibGtk::FileChooser*), local_only)
       __return_value
     end
 
@@ -265,17 +265,17 @@ module Gtk
     end
 
     def preview_widget_active=(active)
-      __return_value = LibGtk.file_chooser_set_preview_widget_active((to_unsafe as LibGtk::FileChooser*), Bool.new(active))
+      __return_value = LibGtk.file_chooser_set_preview_widget_active((to_unsafe as LibGtk::FileChooser*), active)
       __return_value
     end
 
     def select_multiple=(select_multiple)
-      __return_value = LibGtk.file_chooser_set_select_multiple((to_unsafe as LibGtk::FileChooser*), Bool.new(select_multiple))
+      __return_value = LibGtk.file_chooser_set_select_multiple((to_unsafe as LibGtk::FileChooser*), select_multiple)
       __return_value
     end
 
     def show_hidden=(show_hidden)
-      __return_value = LibGtk.file_chooser_set_show_hidden((to_unsafe as LibGtk::FileChooser*), Bool.new(show_hidden))
+      __return_value = LibGtk.file_chooser_set_show_hidden((to_unsafe as LibGtk::FileChooser*), show_hidden)
       __return_value
     end
 
@@ -285,7 +285,7 @@ module Gtk
     end
 
     def use_preview_label=(use_label)
-      __return_value = LibGtk.file_chooser_set_use_preview_label((to_unsafe as LibGtk::FileChooser*), Bool.new(use_label))
+      __return_value = LibGtk.file_chooser_set_use_preview_label((to_unsafe as LibGtk::FileChooser*), use_label)
       __return_value
     end
 
@@ -307,6 +307,51 @@ module Gtk
     def unselect_uri(uri)
       __return_value = LibGtk.file_chooser_unselect_uri((to_unsafe as LibGtk::FileChooser*), uri)
       __return_value
+    end
+
+    alias ConfirmOverwriteSignal = FileChooser -> Gtk::FileChooserConfirmation
+    def on_confirm_overwrite(&__block : ConfirmOverwriteSignal)
+      __callback = ->(_arg0 : LibGtk::FileChooser*) {
+       __return_value = __block.call(FileChooser.new(_arg0))
+       __return_value
+      }
+      connect("confirm-overwrite", __callback)
+    end
+
+    alias CurrentFolderChangedSignal = FileChooser -> 
+    def on_current_folder_changed(&__block : CurrentFolderChangedSignal)
+      __callback = ->(_arg0 : LibGtk::FileChooser*) {
+       __return_value = __block.call(FileChooser.new(_arg0))
+       __return_value
+      }
+      connect("current-folder-changed", __callback)
+    end
+
+    alias FileActivatedSignal = FileChooser -> 
+    def on_file_activated(&__block : FileActivatedSignal)
+      __callback = ->(_arg0 : LibGtk::FileChooser*) {
+       __return_value = __block.call(FileChooser.new(_arg0))
+       __return_value
+      }
+      connect("file-activated", __callback)
+    end
+
+    alias SelectionChangedSignal = FileChooser -> 
+    def on_selection_changed(&__block : SelectionChangedSignal)
+      __callback = ->(_arg0 : LibGtk::FileChooser*) {
+       __return_value = __block.call(FileChooser.new(_arg0))
+       __return_value
+      }
+      connect("selection-changed", __callback)
+    end
+
+    alias UpdatePreviewSignal = FileChooser -> 
+    def on_update_preview(&__block : UpdatePreviewSignal)
+      __callback = ->(_arg0 : LibGtk::FileChooser*) {
+       __return_value = __block.call(FileChooser.new(_arg0))
+       __return_value
+      }
+      connect("update-preview", __callback)
     end
 
   end

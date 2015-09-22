@@ -68,12 +68,12 @@ module Gdk
     end
 
     def debug_enabled=(enabled)
-      __return_value = LibGdk.g_l_context_set_debug_enabled((to_unsafe as LibGdk::GLContext*), Bool.new(enabled))
+      __return_value = LibGdk.g_l_context_set_debug_enabled((to_unsafe as LibGdk::GLContext*), enabled)
       __return_value
     end
 
     def forward_compatible=(compatible)
-      __return_value = LibGdk.g_l_context_set_forward_compatible((to_unsafe as LibGdk::GLContext*), Bool.new(compatible))
+      __return_value = LibGdk.g_l_context_set_forward_compatible((to_unsafe as LibGdk::GLContext*), compatible)
       __return_value
     end
 

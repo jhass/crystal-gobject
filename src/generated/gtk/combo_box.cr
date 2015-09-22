@@ -67,7 +67,7 @@ module Gtk
 
     def active_id
       __return_value = LibGtk.combo_box_get_active_id((to_unsafe as LibGtk::ComboBox*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def active_iter(iter)
@@ -132,7 +132,7 @@ module Gtk
 
     def title
       __return_value = LibGtk.combo_box_get_title((to_unsafe as LibGtk::ComboBox*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def wrap_width
@@ -171,7 +171,7 @@ module Gtk
     end
 
     def add_tearoffs=(add_tearoffs)
-      __return_value = LibGtk.combo_box_set_add_tearoffs((to_unsafe as LibGtk::ComboBox*), Bool.new(add_tearoffs))
+      __return_value = LibGtk.combo_box_set_add_tearoffs((to_unsafe as LibGtk::ComboBox*), add_tearoffs)
       __return_value
     end
 
@@ -191,7 +191,7 @@ module Gtk
     end
 
     def focus_on_click=(focus_on_click)
-      __return_value = LibGtk.combo_box_set_focus_on_click((to_unsafe as LibGtk::ComboBox*), Bool.new(focus_on_click))
+      __return_value = LibGtk.combo_box_set_focus_on_click((to_unsafe as LibGtk::ComboBox*), focus_on_click)
       __return_value
     end
 
@@ -206,7 +206,7 @@ module Gtk
     end
 
     def popup_fixed_width=(fixed)
-      __return_value = LibGtk.combo_box_set_popup_fixed_width((to_unsafe as LibGtk::ComboBox*), Bool.new(fixed))
+      __return_value = LibGtk.combo_box_set_popup_fixed_width((to_unsafe as LibGtk::ComboBox*), fixed)
       __return_value
     end
 
@@ -228,6 +228,51 @@ module Gtk
     def wrap_width=(width)
       __return_value = LibGtk.combo_box_set_wrap_width((to_unsafe as LibGtk::ComboBox*), Int32.new(width))
       __return_value
+    end
+
+    alias ChangedSignal = ComboBox -> 
+    def on_changed(&__block : ChangedSignal)
+      __callback = ->(_arg0 : LibGtk::ComboBox*) {
+       __return_value = __block.call(ComboBox.new(_arg0))
+       __return_value
+      }
+      connect("changed", __callback)
+    end
+
+    alias FormatEntryTextSignal = ComboBox, UInt8 -> UInt8
+    def on_format_entry_text(&__block : FormatEntryTextSignal)
+      __callback = ->(_arg0 : LibGtk::ComboBox*, _arg1 : LibGtk::UInt8**) {
+       __return_value = __block.call(ComboBox.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value
+      }
+      connect("format-entry-text", __callback)
+    end
+
+    alias MoveActiveSignal = ComboBox, Gtk::ScrollType -> 
+    def on_move_active(&__block : MoveActiveSignal)
+      __callback = ->(_arg0 : LibGtk::ComboBox*, _arg1 : LibGtk::LibGtk::ScrollType*) {
+       __return_value = __block.call(ComboBox.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("move-active", __callback)
+    end
+
+    alias PopdownSignal = ComboBox -> Bool
+    def on_popdown(&__block : PopdownSignal)
+      __callback = ->(_arg0 : LibGtk::ComboBox*) {
+       __return_value = __block.call(ComboBox.new(_arg0))
+       __return_value
+      }
+      connect("popdown", __callback)
+    end
+
+    alias PopupSignal = ComboBox -> 
+    def on_popup(&__block : PopupSignal)
+      __callback = ->(_arg0 : LibGtk::ComboBox*) {
+       __return_value = __block.call(ComboBox.new(_arg0))
+       __return_value
+      }
+      connect("popup", __callback)
     end
 
   end

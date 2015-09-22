@@ -148,7 +148,7 @@ module Gio
     end
 
     def enable_proxy=(enable)
-      __return_value = LibGio.socket_client_set_enable_proxy((to_unsafe as LibGio::SocketClient*), Bool.new(enable))
+      __return_value = LibGio.socket_client_set_enable_proxy((to_unsafe as LibGio::SocketClient*), enable)
       __return_value
     end
 
@@ -183,13 +183,22 @@ module Gio
     end
 
     def tls=(tls)
-      __return_value = LibGio.socket_client_set_tls((to_unsafe as LibGio::SocketClient*), Bool.new(tls))
+      __return_value = LibGio.socket_client_set_tls((to_unsafe as LibGio::SocketClient*), tls)
       __return_value
     end
 
     def tls_validation_flags=(flags)
       __return_value = LibGio.socket_client_set_tls_validation_flags((to_unsafe as LibGio::SocketClient*), flags)
       __return_value
+    end
+
+    alias EventSignal = SocketClient, Gio::SocketClientEvent, Gio::SocketConnectable, Gio::IOStream -> 
+    def on_event(&__block : EventSignal)
+      __callback = ->(_arg0 : LibGio::SocketClient*, _arg1 : LibGio::LibGio::SocketClientEvent*, _arg2 : LibGio::LibGio::SocketConnectable*, _arg3 : LibGio::LibGio::IOStream*) {
+       __return_value = __block.call(SocketClient.new(_arg0), _arg1, _arg2, Gio::IOStream.new(_arg3))
+       __return_value
+      }
+      connect("event", __callback)
     end
 
   end

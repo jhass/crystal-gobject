@@ -66,12 +66,30 @@ module Gtk
 
     def query(accel_key, accel_mods, n_entries)
       __return_value = LibGtk.accel_group_query((to_unsafe as LibGtk::AccelGroup*), UInt32.new(accel_key), accel_mods, UInt32.new(n_entries))
-      PointerIterator.new(__return_value) {|__item_75| Gtk::AccelGroupEntry.new(__item_75) }
+      PointerIterator.new(__return_value) {|__item_77| Gtk::AccelGroupEntry.new(__item_77) }
     end
 
     def unlock
       __return_value = LibGtk.accel_group_unlock((to_unsafe as LibGtk::AccelGroup*))
       __return_value
+    end
+
+    alias AccelActivateSignal = AccelGroup, GObject::Object, UInt32, Gdk::ModifierType -> Bool
+    def on_accel_activate(&__block : AccelActivateSignal)
+      __callback = ->(_arg0 : LibGtk::AccelGroup*, _arg1 : LibGtk::LibGObject::Object*, _arg2 : LibGtk::UInt32*, _arg3 : LibGtk::LibGdk::ModifierType*) {
+       __return_value = __block.call(AccelGroup.new(_arg0), GObject::Object.new(_arg1), _arg2, _arg3)
+       __return_value
+      }
+      connect("accel-activate", __callback)
+    end
+
+    alias AccelChangedSignal = AccelGroup, UInt32, Gdk::ModifierType, GObject::Closure -> 
+    def on_accel_changed(&__block : AccelChangedSignal)
+      __callback = ->(_arg0 : LibGtk::AccelGroup*, _arg1 : LibGtk::UInt32*, _arg2 : LibGtk::LibGdk::ModifierType*, _arg3 : LibGtk::LibGObject::Closure*) {
+       __return_value = __block.call(AccelGroup.new(_arg0), _arg1, _arg2, GObject::Closure.new(_arg3))
+       __return_value
+      }
+      connect("accel-changed", __callback)
     end
 
   end

@@ -92,12 +92,12 @@ module Gtk
     end
 
     def set_exclusive(group, exclusive)
-      __return_value = LibGtk.tool_palette_set_exclusive((to_unsafe as LibGtk::ToolPalette*), (group.to_unsafe as LibGtk::ToolItemGroup*), Bool.new(exclusive))
+      __return_value = LibGtk.tool_palette_set_exclusive((to_unsafe as LibGtk::ToolPalette*), (group.to_unsafe as LibGtk::ToolItemGroup*), exclusive)
       __return_value
     end
 
     def set_expand(group, expand)
-      __return_value = LibGtk.tool_palette_set_expand((to_unsafe as LibGtk::ToolPalette*), (group.to_unsafe as LibGtk::ToolItemGroup*), Bool.new(expand))
+      __return_value = LibGtk.tool_palette_set_expand((to_unsafe as LibGtk::ToolPalette*), (group.to_unsafe as LibGtk::ToolItemGroup*), expand)
       __return_value
     end
 

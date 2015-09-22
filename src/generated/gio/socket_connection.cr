@@ -58,7 +58,7 @@ module Gio
       Gio::Socket.new(__return_value)
     end
 
-    def is_connected
+    def connected?
       __return_value = LibGio.socket_connection_is_connected((to_unsafe as LibGio::SocketConnection*))
       __return_value
     end

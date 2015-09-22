@@ -47,6 +47,24 @@ module Gtk
       __return_value
     end
 
+    alias TextPoppedSignal = Statusbar, UInt32, UInt8 -> 
+    def on_text_popped(&__block : TextPoppedSignal)
+      __callback = ->(_arg0 : LibGtk::Statusbar*, _arg1 : LibGtk::UInt32*, _arg2 : LibGtk::UInt8**) {
+       __return_value = __block.call(Statusbar.new(_arg0), _arg1, (raise "Expected string but got null" unless _arg2; String.new(_arg2)))
+       __return_value
+      }
+      connect("text-popped", __callback)
+    end
+
+    alias TextPushedSignal = Statusbar, UInt32, UInt8 -> 
+    def on_text_pushed(&__block : TextPushedSignal)
+      __callback = ->(_arg0 : LibGtk::Statusbar*, _arg1 : LibGtk::UInt32*, _arg2 : LibGtk::UInt8**) {
+       __return_value = __block.call(Statusbar.new(_arg0), _arg1, (raise "Expected string but got null" unless _arg2; String.new(_arg2)))
+       __return_value
+      }
+      connect("text-pushed", __callback)
+    end
+
   end
 end
 

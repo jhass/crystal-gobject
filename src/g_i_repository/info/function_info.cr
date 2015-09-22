@@ -28,6 +28,8 @@ module GIRepository
         method_name = method_name[4..-1]
       elsif method_name.starts_with?("set_") && args.size == 2
         method_name = "#{method_name[4..-1]}="
+      elsif method_name.starts_with?("is_")
+        method_name = "#{method_name[3..-1]}?"
       end
 
       if !method? && method_name == "new"

@@ -34,7 +34,7 @@ module Gtk
     end
 
     def merge(props_to_merge, replace)
-      __return_value = LibGtk.style_properties_merge((to_unsafe as LibGtk::StyleProperties*), (props_to_merge.to_unsafe as LibGtk::StyleProperties*), Bool.new(replace))
+      __return_value = LibGtk.style_properties_merge((to_unsafe as LibGtk::StyleProperties*), (props_to_merge.to_unsafe as LibGtk::StyleProperties*), replace)
       __return_value
     end
 

@@ -31,7 +31,7 @@ module Gtk
       __return_value
     end
 
-    def is_adjusting
+    def adjusting?
       __return_value = LibGtk.h_s_v_is_adjusting((to_unsafe as LibGtk::HSV*))
       __return_value
     end
@@ -44,6 +44,24 @@ module Gtk
     def set_metrics(size, ring_width)
       __return_value = LibGtk.h_s_v_set_metrics((to_unsafe as LibGtk::HSV*), Int32.new(size), Int32.new(ring_width))
       __return_value
+    end
+
+    alias ChangedSignal = HSV -> 
+    def on_changed(&__block : ChangedSignal)
+      __callback = ->(_arg0 : LibGtk::HSV*) {
+       __return_value = __block.call(HSV.new(_arg0))
+       __return_value
+      }
+      connect("changed", __callback)
+    end
+
+    alias MoveSignal = HSV, Gtk::DirectionType -> 
+    def on_move(&__block : MoveSignal)
+      __callback = ->(_arg0 : LibGtk::HSV*, _arg1 : LibGtk::LibGtk::DirectionType*) {
+       __return_value = __block.call(HSV.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("move", __callback)
     end
 
   end

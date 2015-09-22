@@ -26,7 +26,7 @@ module Gtk
 
     def heading
       __return_value = LibGtk.app_chooser_dialog_get_heading((to_unsafe as LibGtk::AppChooserDialog*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def widget

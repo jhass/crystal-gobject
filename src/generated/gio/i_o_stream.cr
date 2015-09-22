@@ -56,7 +56,7 @@ module Gio
       __return_value
     end
 
-    def is_closed
+    def closed?
       __return_value = LibGio.i_o_stream_is_closed((to_unsafe as LibGio::IOStream*))
       __return_value
     end

@@ -41,7 +41,7 @@ module Gtk
 
     def font_name
       __return_value = LibGtk.font_selection_get_font_name((to_unsafe as LibGtk::FontSelection*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def preview_entry
@@ -51,7 +51,7 @@ module Gtk
 
     def preview_text
       __return_value = LibGtk.font_selection_get_preview_text((to_unsafe as LibGtk::FontSelection*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def size

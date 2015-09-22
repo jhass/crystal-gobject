@@ -33,7 +33,7 @@ module Gio
     end
 
     def auto_grow=(auto_grow)
-      __return_value = LibGio.buffered_output_stream_set_auto_grow((to_unsafe as LibGio::BufferedOutputStream*), Bool.new(auto_grow))
+      __return_value = LibGio.buffered_output_stream_set_auto_grow((to_unsafe as LibGio::BufferedOutputStream*), auto_grow)
       __return_value
     end
 

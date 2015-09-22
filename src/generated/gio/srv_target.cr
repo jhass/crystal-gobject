@@ -26,7 +26,7 @@ module Gio
 
     def hostname
       __return_value = LibGio.srv_target_get_hostname((to_unsafe as LibGio::SrvTarget*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def port

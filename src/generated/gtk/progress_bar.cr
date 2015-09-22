@@ -50,7 +50,7 @@ module Gtk
 
     def text
       __return_value = LibGtk.progress_bar_get_text((to_unsafe as LibGtk::ProgressBar*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def pulse
@@ -69,7 +69,7 @@ module Gtk
     end
 
     def inverted=(inverted)
-      __return_value = LibGtk.progress_bar_set_inverted((to_unsafe as LibGtk::ProgressBar*), Bool.new(inverted))
+      __return_value = LibGtk.progress_bar_set_inverted((to_unsafe as LibGtk::ProgressBar*), inverted)
       __return_value
     end
 
@@ -79,7 +79,7 @@ module Gtk
     end
 
     def show_text=(show_text)
-      __return_value = LibGtk.progress_bar_set_show_text((to_unsafe as LibGtk::ProgressBar*), Bool.new(show_text))
+      __return_value = LibGtk.progress_bar_set_show_text((to_unsafe as LibGtk::ProgressBar*), show_text)
       __return_value
     end
 

@@ -16,7 +16,7 @@ module GIRepository
 
     def attribute(name)
       __return_value = LibGIRepository.base_info_get_attribute((to_unsafe as LibGIRepository::BaseInfo*), name)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def container
@@ -26,12 +26,12 @@ module GIRepository
 
     def name
       __return_value = LibGIRepository.base_info_get_name((to_unsafe as LibGIRepository::BaseInfo*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def namespace
       __return_value = LibGIRepository.base_info_get_namespace((to_unsafe as LibGIRepository::BaseInfo*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def type
@@ -44,7 +44,7 @@ module GIRepository
       GIRepository::Typelib.new(__return_value)
     end
 
-    def is_deprecated
+    def deprecated?
       __return_value = LibGIRepository.base_info_is_deprecated((to_unsafe as LibGIRepository::BaseInfo*))
       __return_value
     end

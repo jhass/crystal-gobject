@@ -76,7 +76,7 @@ module Gtk
 
     def accel_path
       __return_value = LibGtk.action_get_accel_path((to_unsafe as LibGtk::Action*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def always_show_image
@@ -91,7 +91,7 @@ module Gtk
 
     def icon_name
       __return_value = LibGtk.action_get_icon_name((to_unsafe as LibGtk::Action*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def is_important
@@ -101,12 +101,12 @@ module Gtk
 
     def label
       __return_value = LibGtk.action_get_label((to_unsafe as LibGtk::Action*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def name
       __return_value = LibGtk.action_get_name((to_unsafe as LibGtk::Action*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def proxies
@@ -121,17 +121,17 @@ module Gtk
 
     def short_label
       __return_value = LibGtk.action_get_short_label((to_unsafe as LibGtk::Action*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def stock_id
       __return_value = LibGtk.action_get_stock_id((to_unsafe as LibGtk::Action*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def tooltip
       __return_value = LibGtk.action_get_tooltip((to_unsafe as LibGtk::Action*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def visible
@@ -149,12 +149,12 @@ module Gtk
       __return_value
     end
 
-    def is_sensitive
+    def sensitive?
       __return_value = LibGtk.action_is_sensitive((to_unsafe as LibGtk::Action*))
       __return_value
     end
 
-    def is_visible
+    def visible?
       __return_value = LibGtk.action_is_visible((to_unsafe as LibGtk::Action*))
       __return_value
     end
@@ -170,7 +170,7 @@ module Gtk
     end
 
     def always_show_image=(always_show)
-      __return_value = LibGtk.action_set_always_show_image((to_unsafe as LibGtk::Action*), Bool.new(always_show))
+      __return_value = LibGtk.action_set_always_show_image((to_unsafe as LibGtk::Action*), always_show)
       __return_value
     end
 
@@ -185,7 +185,7 @@ module Gtk
     end
 
     def is_important=(is_important)
-      __return_value = LibGtk.action_set_is_important((to_unsafe as LibGtk::Action*), Bool.new(is_important))
+      __return_value = LibGtk.action_set_is_important((to_unsafe as LibGtk::Action*), is_important)
       __return_value
     end
 
@@ -195,7 +195,7 @@ module Gtk
     end
 
     def sensitive=(sensitive)
-      __return_value = LibGtk.action_set_sensitive((to_unsafe as LibGtk::Action*), Bool.new(sensitive))
+      __return_value = LibGtk.action_set_sensitive((to_unsafe as LibGtk::Action*), sensitive)
       __return_value
     end
 
@@ -215,23 +215,32 @@ module Gtk
     end
 
     def visible=(visible)
-      __return_value = LibGtk.action_set_visible((to_unsafe as LibGtk::Action*), Bool.new(visible))
+      __return_value = LibGtk.action_set_visible((to_unsafe as LibGtk::Action*), visible)
       __return_value
     end
 
     def visible_horizontal=(visible_horizontal)
-      __return_value = LibGtk.action_set_visible_horizontal((to_unsafe as LibGtk::Action*), Bool.new(visible_horizontal))
+      __return_value = LibGtk.action_set_visible_horizontal((to_unsafe as LibGtk::Action*), visible_horizontal)
       __return_value
     end
 
     def visible_vertical=(visible_vertical)
-      __return_value = LibGtk.action_set_visible_vertical((to_unsafe as LibGtk::Action*), Bool.new(visible_vertical))
+      __return_value = LibGtk.action_set_visible_vertical((to_unsafe as LibGtk::Action*), visible_vertical)
       __return_value
     end
 
     def unblock_activate
       __return_value = LibGtk.action_unblock_activate((to_unsafe as LibGtk::Action*))
       __return_value
+    end
+
+    alias ActivateSignal = Action -> 
+    def on_activate(&__block : ActivateSignal)
+      __callback = ->(_arg0 : LibGtk::Action*) {
+       __return_value = __block.call(Action.new(_arg0))
+       __return_value
+      }
+      connect("activate", __callback)
     end
 
   end

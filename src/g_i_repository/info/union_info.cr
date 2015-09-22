@@ -25,5 +25,9 @@ module GIRepository
         io.puts
       end
     end
+
+    def wrapper_definition libname, indent=""
+      "#{indent}alias #{name} = #{libname}::#{name}"
+    end
   end
 end

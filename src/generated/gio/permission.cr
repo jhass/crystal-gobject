@@ -45,7 +45,7 @@ module Gio
     end
 
     def impl_update(allowed, can_acquire, can_release)
-      __return_value = LibGio.permission_impl_update((to_unsafe as LibGio::Permission*), Bool.new(allowed), Bool.new(can_acquire), Bool.new(can_release))
+      __return_value = LibGio.permission_impl_update((to_unsafe as LibGio::Permission*), allowed, can_acquire, can_release)
       __return_value
     end
 

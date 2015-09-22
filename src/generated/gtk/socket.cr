@@ -31,6 +31,24 @@ module Gtk
       Gdk::Window.new(__return_value)
     end
 
+    alias PlugAddedSignal = Socket -> 
+    def on_plug_added(&__block : PlugAddedSignal)
+      __callback = ->(_arg0 : LibGtk::Socket*) {
+       __return_value = __block.call(Socket.new(_arg0))
+       __return_value
+      }
+      connect("plug-added", __callback)
+    end
+
+    alias PlugRemovedSignal = Socket -> Bool
+    def on_plug_removed(&__block : PlugRemovedSignal)
+      __callback = ->(_arg0 : LibGtk::Socket*) {
+       __return_value = __block.call(Socket.new(_arg0))
+       __return_value
+      }
+      connect("plug-removed", __callback)
+    end
+
   end
 end
 

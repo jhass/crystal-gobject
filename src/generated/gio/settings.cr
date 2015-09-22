@@ -40,12 +40,12 @@ module Gio
 
     def self.list_relocatable_schemas
       __return_value = LibGio.settings_list_relocatable_schemas
-      PointerIterator.new(__return_value) {|__item_15| raise "Expected string but got null" unless __item_15; String.new(__item_15) }
+      PointerIterator.new(__return_value) {|__item_27| (raise "Expected string but got null" unless __item_27; String.new(__item_27)) }
     end
 
     def self.list_schemas
       __return_value = LibGio.settings_list_schemas
-      PointerIterator.new(__return_value) {|__item_2| raise "Expected string but got null" unless __item_2; String.new(__item_2) }
+      PointerIterator.new(__return_value) {|__item_11| (raise "Expected string but got null" unless __item_11; String.new(__item_11)) }
     end
 
     def self.sync
@@ -69,7 +69,7 @@ module Gio
     end
 
     def bind_writable(key, object, property, inverted)
-      __return_value = LibGio.settings_bind_writable((to_unsafe as LibGio::Settings*), key, (object.to_unsafe as LibGObject::Object*), property, Bool.new(inverted))
+      __return_value = LibGio.settings_bind_writable((to_unsafe as LibGio::Settings*), key, (object.to_unsafe as LibGObject::Object*), property, inverted)
       __return_value
     end
 
@@ -135,12 +135,12 @@ module Gio
 
     def string(key)
       __return_value = LibGio.settings_get_string((to_unsafe as LibGio::Settings*), key)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def strv(key)
       __return_value = LibGio.settings_get_strv((to_unsafe as LibGio::Settings*), key)
-      PointerIterator.new(__return_value) {|__item_35| raise "Expected string but got null" unless __item_35; String.new(__item_35) }
+      PointerIterator.new(__return_value) {|__item_46| (raise "Expected string but got null" unless __item_46; String.new(__item_46)) }
     end
 
     def uint(key)
@@ -158,19 +158,19 @@ module Gio
       GLib::Variant.new(__return_value)
     end
 
-    def is_writable(name)
+    def writable?(name)
       __return_value = LibGio.settings_is_writable((to_unsafe as LibGio::Settings*), name)
       __return_value
     end
 
     def list_children
       __return_value = LibGio.settings_list_children((to_unsafe as LibGio::Settings*))
-      PointerIterator.new(__return_value) {|__item_4| raise "Expected string but got null" unless __item_4; String.new(__item_4) }
+      PointerIterator.new(__return_value) {|__item_57| (raise "Expected string but got null" unless __item_57; String.new(__item_57)) }
     end
 
     def list_keys
       __return_value = LibGio.settings_list_keys((to_unsafe as LibGio::Settings*))
-      PointerIterator.new(__return_value) {|__item_11| raise "Expected string but got null" unless __item_11; String.new(__item_11) }
+      PointerIterator.new(__return_value) {|__item_84| (raise "Expected string but got null" unless __item_84; String.new(__item_84)) }
     end
 
     def range_check(key, value)
@@ -189,7 +189,7 @@ module Gio
     end
 
     def set_boolean(key, value)
-      __return_value = LibGio.settings_set_boolean((to_unsafe as LibGio::Settings*), key, Bool.new(value))
+      __return_value = LibGio.settings_set_boolean((to_unsafe as LibGio::Settings*), key, value)
       __return_value
     end
 
@@ -231,6 +231,42 @@ module Gio
     def set_value(key, value)
       __return_value = LibGio.settings_set_value((to_unsafe as LibGio::Settings*), key, (value.to_unsafe as LibGLib::Variant*))
       __return_value
+    end
+
+    alias ChangeEventSignal = Settings, Array(UInt32), Int32 -> Bool
+    def on_change_event(&__block : ChangeEventSignal)
+      __callback = ->(_arg0 : LibGio::Settings*, _arg1 : LibGio::UInt32**, _arg2 : LibGio::Int32*) {
+       __return_value = __block.call(Settings.new(_arg0), PointerIterator.new(_arg1) {|__item_52| __item_52 }, _arg2)
+       __return_value
+      }
+      connect("change-event", __callback)
+    end
+
+    alias ChangedSignal = Settings, UInt8 -> 
+    def on_changed(&__block : ChangedSignal)
+      __callback = ->(_arg0 : LibGio::Settings*, _arg1 : LibGio::UInt8**) {
+       __return_value = __block.call(Settings.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value
+      }
+      connect("changed", __callback)
+    end
+
+    alias WritableChangeEventSignal = Settings, UInt32 -> Bool
+    def on_writable_change_event(&__block : WritableChangeEventSignal)
+      __callback = ->(_arg0 : LibGio::Settings*, _arg1 : LibGio::UInt32*) {
+       __return_value = __block.call(Settings.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("writable-change-event", __callback)
+    end
+
+    alias WritableChangedSignal = Settings, UInt8 -> 
+    def on_writable_changed(&__block : WritableChangedSignal)
+      __callback = ->(_arg0 : LibGio::Settings*, _arg1 : LibGio::UInt8**) {
+       __return_value = __block.call(Settings.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value
+      }
+      connect("writable-changed", __callback)
     end
 
   end

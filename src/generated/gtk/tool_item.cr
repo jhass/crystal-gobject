@@ -106,17 +106,17 @@ module Gtk
     end
 
     def expand=(expand)
-      __return_value = LibGtk.tool_item_set_expand((to_unsafe as LibGtk::ToolItem*), Bool.new(expand))
+      __return_value = LibGtk.tool_item_set_expand((to_unsafe as LibGtk::ToolItem*), expand)
       __return_value
     end
 
     def homogeneous=(homogeneous)
-      __return_value = LibGtk.tool_item_set_homogeneous((to_unsafe as LibGtk::ToolItem*), Bool.new(homogeneous))
+      __return_value = LibGtk.tool_item_set_homogeneous((to_unsafe as LibGtk::ToolItem*), homogeneous)
       __return_value
     end
 
     def is_important=(is_important)
-      __return_value = LibGtk.tool_item_set_is_important((to_unsafe as LibGtk::ToolItem*), Bool.new(is_important))
+      __return_value = LibGtk.tool_item_set_is_important((to_unsafe as LibGtk::ToolItem*), is_important)
       __return_value
     end
 
@@ -136,23 +136,41 @@ module Gtk
     end
 
     def use_drag_window=(use_drag_window)
-      __return_value = LibGtk.tool_item_set_use_drag_window((to_unsafe as LibGtk::ToolItem*), Bool.new(use_drag_window))
+      __return_value = LibGtk.tool_item_set_use_drag_window((to_unsafe as LibGtk::ToolItem*), use_drag_window)
       __return_value
     end
 
     def visible_horizontal=(visible_horizontal)
-      __return_value = LibGtk.tool_item_set_visible_horizontal((to_unsafe as LibGtk::ToolItem*), Bool.new(visible_horizontal))
+      __return_value = LibGtk.tool_item_set_visible_horizontal((to_unsafe as LibGtk::ToolItem*), visible_horizontal)
       __return_value
     end
 
     def visible_vertical=(visible_vertical)
-      __return_value = LibGtk.tool_item_set_visible_vertical((to_unsafe as LibGtk::ToolItem*), Bool.new(visible_vertical))
+      __return_value = LibGtk.tool_item_set_visible_vertical((to_unsafe as LibGtk::ToolItem*), visible_vertical)
       __return_value
     end
 
     def toolbar_reconfigured
       __return_value = LibGtk.tool_item_toolbar_reconfigured((to_unsafe as LibGtk::ToolItem*))
       __return_value
+    end
+
+    alias CreateMenuProxySignal = ToolItem -> Bool
+    def on_create_menu_proxy(&__block : CreateMenuProxySignal)
+      __callback = ->(_arg0 : LibGtk::ToolItem*) {
+       __return_value = __block.call(ToolItem.new(_arg0))
+       __return_value
+      }
+      connect("create-menu-proxy", __callback)
+    end
+
+    alias ToolbarReconfiguredSignal = ToolItem -> 
+    def on_toolbar_reconfigured(&__block : ToolbarReconfiguredSignal)
+      __callback = ->(_arg0 : LibGtk::ToolItem*) {
+       __return_value = __block.call(ToolItem.new(_arg0))
+       __return_value
+      }
+      connect("toolbar-reconfigured", __callback)
     end
 
   end

@@ -111,7 +111,7 @@ module GLib
 
     def format(format)
       __return_value = LibGLib.date_time_format((to_unsafe as LibGLib::DateTime*), format)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def day_of_month
@@ -161,7 +161,7 @@ module GLib
 
     def timezone_abbreviation
       __return_value = LibGLib.date_time_get_timezone_abbreviation((to_unsafe as LibGLib::DateTime*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def utc_offset
@@ -189,7 +189,7 @@ module GLib
       __return_value
     end
 
-    def is_daylight_savings
+    def daylight_savings?
       __return_value = LibGLib.date_time_is_daylight_savings((to_unsafe as LibGLib::DateTime*))
       __return_value
     end

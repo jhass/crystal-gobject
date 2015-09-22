@@ -56,7 +56,7 @@ module Gtk
 
     def accel_path
       __return_value = LibGtk.menu_get_accel_path((to_unsafe as LibGtk::Menu*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def active
@@ -86,7 +86,7 @@ module Gtk
 
     def title
       __return_value = LibGtk.menu_get_title((to_unsafe as LibGtk::Menu*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def popdown
@@ -135,7 +135,7 @@ module Gtk
     end
 
     def reserve_toggle_size=(reserve_toggle_size)
-      __return_value = LibGtk.menu_set_reserve_toggle_size((to_unsafe as LibGtk::Menu*), Bool.new(reserve_toggle_size))
+      __return_value = LibGtk.menu_set_reserve_toggle_size((to_unsafe as LibGtk::Menu*), reserve_toggle_size)
       __return_value
     end
 
@@ -145,13 +145,22 @@ module Gtk
     end
 
     def tearoff_state=(torn_off)
-      __return_value = LibGtk.menu_set_tearoff_state((to_unsafe as LibGtk::Menu*), Bool.new(torn_off))
+      __return_value = LibGtk.menu_set_tearoff_state((to_unsafe as LibGtk::Menu*), torn_off)
       __return_value
     end
 
     def title=(title)
       __return_value = LibGtk.menu_set_title((to_unsafe as LibGtk::Menu*), title)
       __return_value
+    end
+
+    alias MoveScrollSignal = Menu, Gtk::ScrollType -> 
+    def on_move_scroll(&__block : MoveScrollSignal)
+      __callback = ->(_arg0 : LibGtk::Menu*, _arg1 : LibGtk::LibGtk::ScrollType*) {
+       __return_value = __block.call(Menu.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("move-scroll", __callback)
     end
 
   end

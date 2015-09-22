@@ -23,6 +23,33 @@ module Gdk
       __return_value
     end
 
+    alias DeviceAddedSignal = DeviceManager, Gdk::Device -> 
+    def on_device_added(&__block : DeviceAddedSignal)
+      __callback = ->(_arg0 : LibGdk::DeviceManager*, _arg1 : LibGdk::LibGdk::Device*) {
+       __return_value = __block.call(DeviceManager.new(_arg0), Gdk::Device.new(_arg1))
+       __return_value
+      }
+      connect("device-added", __callback)
+    end
+
+    alias DeviceChangedSignal = DeviceManager, Gdk::Device -> 
+    def on_device_changed(&__block : DeviceChangedSignal)
+      __callback = ->(_arg0 : LibGdk::DeviceManager*, _arg1 : LibGdk::LibGdk::Device*) {
+       __return_value = __block.call(DeviceManager.new(_arg0), Gdk::Device.new(_arg1))
+       __return_value
+      }
+      connect("device-changed", __callback)
+    end
+
+    alias DeviceRemovedSignal = DeviceManager, Gdk::Device -> 
+    def on_device_removed(&__block : DeviceRemovedSignal)
+      __callback = ->(_arg0 : LibGdk::DeviceManager*, _arg1 : LibGdk::LibGdk::Device*) {
+       __return_value = __block.call(DeviceManager.new(_arg0), Gdk::Device.new(_arg1))
+       __return_value
+      }
+      connect("device-removed", __callback)
+    end
+
   end
 end
 

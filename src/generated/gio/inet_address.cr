@@ -106,7 +106,7 @@ module Gio
 
     def to_string
       __return_value = LibGio.inet_address_to_string((to_unsafe as LibGio::InetAddress*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
   end

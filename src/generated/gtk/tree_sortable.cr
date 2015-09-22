@@ -30,6 +30,15 @@ module Gtk
       __return_value
     end
 
+    alias SortColumnChangedSignal = TreeSortable -> 
+    def on_sort_column_changed(&__block : SortColumnChangedSignal)
+      __callback = ->(_arg0 : LibGtk::TreeSortable*) {
+       __return_value = __block.call(TreeSortable.new(_arg0))
+       __return_value
+      }
+      connect("sort-column-changed", __callback)
+    end
+
   end
 end
 

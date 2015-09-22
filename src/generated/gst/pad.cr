@@ -29,11 +29,11 @@ module Gst
 
     def self.link_get_name(ret)
       __return_value = LibGst.pad_link_get_name(ret)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def activate_mode(mode, active)
-      __return_value = LibGst.pad_activate_mode((to_unsafe as LibGst::Pad*), mode, Bool.new(active))
+      __return_value = LibGst.pad_activate_mode((to_unsafe as LibGst::Pad*), mode, active)
       __return_value
     end
 
@@ -64,7 +64,7 @@ module Gst
 
     def create_stream_id(parent, stream_id)
       __return_value = LibGst.pad_create_stream_id((to_unsafe as LibGst::Pad*), (parent.to_unsafe as LibGst::Element*), stream_id && stream_id)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def event_default(parent, event)
@@ -139,7 +139,7 @@ module Gst
 
     def stream_id
       __return_value = LibGst.pad_get_stream_id((to_unsafe as LibGst::Pad*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def has_current_caps
@@ -147,22 +147,22 @@ module Gst
       __return_value
     end
 
-    def is_active
+    def active?
       __return_value = LibGst.pad_is_active((to_unsafe as LibGst::Pad*))
       __return_value
     end
 
-    def is_blocked
+    def blocked?
       __return_value = LibGst.pad_is_blocked((to_unsafe as LibGst::Pad*))
       __return_value
     end
 
-    def is_blocking
+    def blocking?
       __return_value = LibGst.pad_is_blocking((to_unsafe as LibGst::Pad*))
       __return_value
     end
 
-    def is_linked
+    def linked?
       __return_value = LibGst.pad_is_linked((to_unsafe as LibGst::Pad*))
       __return_value
     end
@@ -318,7 +318,7 @@ module Gst
     end
 
     def active=(active)
-      __return_value = LibGst.pad_set_active((to_unsafe as LibGst::Pad*), Bool.new(active))
+      __return_value = LibGst.pad_set_active((to_unsafe as LibGst::Pad*), active)
       __return_value
     end
 
@@ -400,6 +400,24 @@ module Gst
     def use_fixed_caps
       __return_value = LibGst.pad_use_fixed_caps((to_unsafe as LibGst::Pad*))
       __return_value
+    end
+
+    alias LinkedSignal = Pad, Gst::Pad -> 
+    def on_linked(&__block : LinkedSignal)
+      __callback = ->(_arg0 : LibGst::Pad*, _arg1 : LibGst::LibGst::Pad*) {
+       __return_value = __block.call(Pad.new(_arg0), Gst::Pad.new(_arg1))
+       __return_value
+      }
+      connect("linked", __callback)
+    end
+
+    alias UnlinkedSignal = Pad, Gst::Pad -> 
+    def on_unlinked(&__block : UnlinkedSignal)
+      __callback = ->(_arg0 : LibGst::Pad*, _arg1 : LibGst::LibGst::Pad*) {
+       __return_value = __block.call(Pad.new(_arg0), Gst::Pad.new(_arg1))
+       __return_value
+      }
+      connect("unlinked", __callback)
     end
 
   end

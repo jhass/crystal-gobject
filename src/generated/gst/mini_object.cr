@@ -14,7 +14,7 @@ module Gst
       __return_value if __return_value
     end
 
-    def is_writable
+    def writable?
       __return_value = LibGst.mini_object_is_writable((to_unsafe as LibGst::MiniObject*))
       __return_value
     end

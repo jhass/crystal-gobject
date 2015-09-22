@@ -102,7 +102,7 @@ module Gio
 
     def cached_property_names
       __return_value = LibGio.d_bus_proxy_get_cached_property_names((to_unsafe as LibGio::DBusProxy*))
-      PointerIterator.new(__return_value) {|__item_63| raise "Expected string but got null" unless __item_63; String.new(__item_63) }
+      PointerIterator.new(__return_value) {|__item_19| (raise "Expected string but got null" unless __item_19; String.new(__item_19)) }
     end
 
     def connection
@@ -127,22 +127,22 @@ module Gio
 
     def interface_name
       __return_value = LibGio.d_bus_proxy_get_interface_name((to_unsafe as LibGio::DBusProxy*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def name
       __return_value = LibGio.d_bus_proxy_get_name((to_unsafe as LibGio::DBusProxy*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def name_owner
       __return_value = LibGio.d_bus_proxy_get_name_owner((to_unsafe as LibGio::DBusProxy*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def object_path
       __return_value = LibGio.d_bus_proxy_get_object_path((to_unsafe as LibGio::DBusProxy*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def set_cached_property(property_name, value)
@@ -158,6 +158,24 @@ module Gio
     def interface_info=(info)
       __return_value = LibGio.d_bus_proxy_set_interface_info((to_unsafe as LibGio::DBusProxy*), info && (info.to_unsafe as LibGio::DBusInterfaceInfo*))
       __return_value
+    end
+
+    alias GPropertiesChangedSignal = DBusProxy, GLib::Variant, Array(UInt8) -> 
+    def on_g_properties_changed(&__block : GPropertiesChangedSignal)
+      __callback = ->(_arg0 : LibGio::DBusProxy*, _arg1 : LibGio::LibGLib::Variant*, _arg2 : LibGio::UInt8***) {
+       __return_value = __block.call(DBusProxy.new(_arg0), GLib::Variant.new(_arg1), PointerIterator.new(_arg2) {|__item_29| (raise "Expected string but got null" unless __item_29; String.new(__item_29)) })
+       __return_value
+      }
+      connect("g-properties-changed", __callback)
+    end
+
+    alias GSignalSignal = DBusProxy, UInt8, UInt8, GLib::Variant -> 
+    def on_g_signal(&__block : GSignalSignal)
+      __callback = ->(_arg0 : LibGio::DBusProxy*, _arg1 : LibGio::UInt8**, _arg2 : LibGio::UInt8**, _arg3 : LibGio::LibGLib::Variant*) {
+       __return_value = __block.call(DBusProxy.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)), (raise "Expected string but got null" unless _arg2; String.new(_arg2)), GLib::Variant.new(_arg3))
+       __return_value
+      }
+      connect("g-signal", __callback)
     end
 
   end

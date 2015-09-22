@@ -34,7 +34,7 @@ module Gio
 
     def steal_fds(length)
       __return_value = LibGio.unix_f_d_message_steal_fds((to_unsafe as LibGio::UnixFDMessage*), Int32.new(length))
-      PointerIterator.new(__return_value) {|__item_67| __item_67 }
+      PointerIterator.new(__return_value) {|__item_76| __item_76 }
     end
 
   end

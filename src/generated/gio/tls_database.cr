@@ -9,7 +9,7 @@ module Gio
 
     def create_certificate_handle(certificate)
       __return_value = LibGio.tls_database_create_certificate_handle((to_unsafe as LibGio::TlsDatabase*), (certificate.to_unsafe as LibGio::TlsCertificate*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def lookup_certificate_for_handle(handle, interaction, flags, cancellable)

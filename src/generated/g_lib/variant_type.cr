@@ -41,7 +41,7 @@ module GLib
 
     def dup_string
       __return_value = LibGLib.variant_type_dup_string((to_unsafe as LibGLib::VariantType*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def element
@@ -74,47 +74,47 @@ module GLib
       __return_value
     end
 
-    def is_array
+    def array?
       __return_value = LibGLib.variant_type_is_array((to_unsafe as LibGLib::VariantType*))
       __return_value
     end
 
-    def is_basic
+    def basic?
       __return_value = LibGLib.variant_type_is_basic((to_unsafe as LibGLib::VariantType*))
       __return_value
     end
 
-    def is_container
+    def container?
       __return_value = LibGLib.variant_type_is_container((to_unsafe as LibGLib::VariantType*))
       __return_value
     end
 
-    def is_definite
+    def definite?
       __return_value = LibGLib.variant_type_is_definite((to_unsafe as LibGLib::VariantType*))
       __return_value
     end
 
-    def is_dict_entry
+    def dict_entry?
       __return_value = LibGLib.variant_type_is_dict_entry((to_unsafe as LibGLib::VariantType*))
       __return_value
     end
 
-    def is_maybe
+    def maybe?
       __return_value = LibGLib.variant_type_is_maybe((to_unsafe as LibGLib::VariantType*))
       __return_value
     end
 
-    def is_subtype_of(supertype)
+    def subtype_of?(supertype)
       __return_value = LibGLib.variant_type_is_subtype_of((to_unsafe as LibGLib::VariantType*), (supertype.to_unsafe as LibGLib::VariantType*))
       __return_value
     end
 
-    def is_tuple
+    def tuple?
       __return_value = LibGLib.variant_type_is_tuple((to_unsafe as LibGLib::VariantType*))
       __return_value
     end
 
-    def is_variant
+    def variant?
       __return_value = LibGLib.variant_type_is_variant((to_unsafe as LibGLib::VariantType*))
       __return_value
     end

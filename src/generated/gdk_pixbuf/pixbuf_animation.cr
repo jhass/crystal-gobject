@@ -60,7 +60,7 @@ module GdkPixbuf
       __return_value
     end
 
-    def is_static_image
+    def static_image?
       __return_value = LibGdkPixbuf.pixbuf_animation_is_static_image((to_unsafe as LibGdkPixbuf::PixbufAnimation*))
       __return_value
     end

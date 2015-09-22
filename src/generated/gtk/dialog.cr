@@ -73,8 +73,26 @@ module Gtk
     end
 
     def set_response_sensitive(response_id, setting)
-      __return_value = LibGtk.dialog_set_response_sensitive((to_unsafe as LibGtk::Dialog*), Int32.new(response_id), Bool.new(setting))
+      __return_value = LibGtk.dialog_set_response_sensitive((to_unsafe as LibGtk::Dialog*), Int32.new(response_id), setting)
       __return_value
+    end
+
+    alias CloseSignal = Dialog -> 
+    def on_close(&__block : CloseSignal)
+      __callback = ->(_arg0 : LibGtk::Dialog*) {
+       __return_value = __block.call(Dialog.new(_arg0))
+       __return_value
+      }
+      connect("close", __callback)
+    end
+
+    alias ResponseSignal = Dialog, Int32 -> 
+    def on_response(&__block : ResponseSignal)
+      __callback = ->(_arg0 : LibGtk::Dialog*, _arg1 : LibGtk::Int32*) {
+       __return_value = __block.call(Dialog.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("response", __callback)
     end
 
   end

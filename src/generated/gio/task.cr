@@ -14,7 +14,7 @@ module Gio
       Gio::Task.new(__return_value)
     end
 
-    def self.is_valid(result, source_object)
+    def self.valid?(result, source_object)
       __return_value = LibGio.task_is_valid((result.to_unsafe as LibGio::AsyncResult*), source_object && (source_object.to_unsafe as LibGObject::Object*))
       __return_value
     end
@@ -96,7 +96,7 @@ module Gio
     end
 
     def return_boolean(result)
-      __return_value = LibGio.task_return_boolean((to_unsafe as LibGio::Task*), Bool.new(result))
+      __return_value = LibGio.task_return_boolean((to_unsafe as LibGio::Task*), result)
       __return_value
     end
 
@@ -121,7 +121,7 @@ module Gio
     end
 
     def check_cancellable=(check_cancellable)
-      __return_value = LibGio.task_set_check_cancellable((to_unsafe as LibGio::Task*), Bool.new(check_cancellable))
+      __return_value = LibGio.task_set_check_cancellable((to_unsafe as LibGio::Task*), check_cancellable)
       __return_value
     end
 
@@ -131,7 +131,7 @@ module Gio
     end
 
     def return_on_cancel=(return_on_cancel)
-      __return_value = LibGio.task_set_return_on_cancel((to_unsafe as LibGio::Task*), Bool.new(return_on_cancel))
+      __return_value = LibGio.task_set_return_on_cancel((to_unsafe as LibGio::Task*), return_on_cancel)
       __return_value
     end
 

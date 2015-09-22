@@ -36,7 +36,7 @@ module Gio
 
     def enumerate_identifiers
       __return_value = LibGio.volume_enumerate_identifiers((to_unsafe as LibGio::Volume*))
-      PointerIterator.new(__return_value) {|__item_65| raise "Expected string but got null" unless __item_65; String.new(__item_65) }
+      PointerIterator.new(__return_value) {|__item_19| (raise "Expected string but got null" unless __item_19; String.new(__item_19)) }
     end
 
     def activation_root
@@ -56,7 +56,7 @@ module Gio
 
     def identifier(kind)
       __return_value = LibGio.volume_get_identifier((to_unsafe as LibGio::Volume*), kind)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def mount
@@ -66,12 +66,12 @@ module Gio
 
     def name
       __return_value = LibGio.volume_get_name((to_unsafe as LibGio::Volume*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def sort_key
       __return_value = LibGio.volume_get_sort_key((to_unsafe as LibGio::Volume*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def symbolic_icon
@@ -81,7 +81,7 @@ module Gio
 
     def uuid
       __return_value = LibGio.volume_get_uuid((to_unsafe as LibGio::Volume*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def mount(flags, mount_operation, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
@@ -99,6 +99,24 @@ module Gio
     def should_automount
       __return_value = LibGio.volume_should_automount((to_unsafe as LibGio::Volume*))
       __return_value
+    end
+
+    alias ChangedSignal = Volume -> 
+    def on_changed(&__block : ChangedSignal)
+      __callback = ->(_arg0 : LibGio::Volume*) {
+       __return_value = __block.call(Volume.new(_arg0))
+       __return_value
+      }
+      connect("changed", __callback)
+    end
+
+    alias RemovedSignal = Volume -> 
+    def on_removed(&__block : RemovedSignal)
+      __callback = ->(_arg0 : LibGio::Volume*) {
+       __return_value = __block.call(Volume.new(_arg0))
+       __return_value
+      }
+      connect("removed", __callback)
     end
 
   end

@@ -10,13 +10,13 @@ module Gst
     end
 
     def self.new_internal(context_type, persistent)
-      __return_value = LibGst.context_new(context_type, Bool.new(persistent))
+      __return_value = LibGst.context_new(context_type, persistent)
       Gst::Context.new(__return_value)
     end
 
     def context_type
       __return_value = LibGst.context_get_context_type((to_unsafe as LibGst::Context*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def structure
@@ -29,7 +29,7 @@ module Gst
       __return_value
     end
 
-    def is_persistent
+    def persistent?
       __return_value = LibGst.context_is_persistent((to_unsafe as LibGst::Context*))
       __return_value
     end

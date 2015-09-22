@@ -26,12 +26,12 @@ module Gtk
     end
 
     def pack_end(cell, expand)
-      __return_value = LibGtk.cell_layout_pack_end((to_unsafe as LibGtk::CellLayout*), (cell.to_unsafe as LibGtk::CellRenderer*), Bool.new(expand))
+      __return_value = LibGtk.cell_layout_pack_end((to_unsafe as LibGtk::CellLayout*), (cell.to_unsafe as LibGtk::CellRenderer*), expand)
       __return_value
     end
 
     def pack_start(cell, expand)
-      __return_value = LibGtk.cell_layout_pack_start((to_unsafe as LibGtk::CellLayout*), (cell.to_unsafe as LibGtk::CellRenderer*), Bool.new(expand))
+      __return_value = LibGtk.cell_layout_pack_start((to_unsafe as LibGtk::CellLayout*), (cell.to_unsafe as LibGtk::CellRenderer*), expand)
       __return_value
     end
 

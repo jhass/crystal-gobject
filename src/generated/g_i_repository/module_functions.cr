@@ -86,7 +86,7 @@ module GIRepository
 
   def self.callable_info_get_return_attribute(info, name)
     __return_value = LibGIRepository.callable_info_get_return_attribute((info.to_unsafe as LibGIRepository::BaseInfo*), name)
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.callable_info_get_return_type(info)
@@ -96,7 +96,7 @@ module GIRepository
 
   def self.callable_info_invoke(info, function, in_args, n_in_args, out_args, n_out_args, return_value, is_method, throws)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGIRepository.callable_info_invoke((info.to_unsafe as LibGIRepository::BaseInfo*), function, (in_args.to_unsafe as LibGIRepository::Argument*), Int32.new(n_in_args), (out_args.to_unsafe as LibGIRepository::Argument*), Int32.new(n_out_args), (return_value.to_unsafe as LibGIRepository::Argument*), Bool.new(is_method), Bool.new(throws), pointerof(__error))
+    __return_value = LibGIRepository.callable_info_invoke((info.to_unsafe as LibGIRepository::BaseInfo*), function, (in_args.to_unsafe as LibGIRepository::Argument*), Int32.new(n_in_args), (out_args.to_unsafe as LibGIRepository::Argument*), Int32.new(n_out_args), (return_value.to_unsafe as LibGIRepository::Argument*), is_method, throws, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -138,7 +138,7 @@ module GIRepository
 
   def self.enum_info_get_error_domain(info)
     __return_value = LibGIRepository.enum_info_get_error_domain((info.to_unsafe as LibGIRepository::BaseInfo*))
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.enum_info_get_method(info, n)
@@ -198,7 +198,7 @@ module GIRepository
 
   def self.function_info_get_symbol(info)
     __return_value = LibGIRepository.function_info_get_symbol((info.to_unsafe as LibGIRepository::BaseInfo*))
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.function_info_get_vfunc(info)
@@ -213,7 +213,7 @@ module GIRepository
 
   def self.info_type_to_string(type)
     __return_value = LibGIRepository.info_type_to_string(type)
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.interface_info_find_method(info, name)
@@ -353,7 +353,7 @@ module GIRepository
 
   def self.object_info_get_get_value_function(info)
     __return_value = LibGIRepository.object_info_get_get_value_function((info.to_unsafe as LibGIRepository::BaseInfo*))
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.object_info_get_interface(info, n)
@@ -413,12 +413,12 @@ module GIRepository
 
   def self.object_info_get_ref_function(info)
     __return_value = LibGIRepository.object_info_get_ref_function((info.to_unsafe as LibGIRepository::BaseInfo*))
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.object_info_get_set_value_function(info)
     __return_value = LibGIRepository.object_info_get_set_value_function((info.to_unsafe as LibGIRepository::BaseInfo*))
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.object_info_get_signal(info, n)
@@ -428,17 +428,17 @@ module GIRepository
 
   def self.object_info_get_type_init(info)
     __return_value = LibGIRepository.object_info_get_type_init((info.to_unsafe as LibGIRepository::BaseInfo*))
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.object_info_get_type_name(info)
     __return_value = LibGIRepository.object_info_get_type_name((info.to_unsafe as LibGIRepository::BaseInfo*))
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.object_info_get_unref_function(info)
     __return_value = LibGIRepository.object_info_get_unref_function((info.to_unsafe as LibGIRepository::BaseInfo*))
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.object_info_get_vfunc(info, n)
@@ -468,12 +468,12 @@ module GIRepository
 
   def self.registered_type_info_get_type_init(info)
     __return_value = LibGIRepository.registered_type_info_get_type_init((info.to_unsafe as LibGIRepository::BaseInfo*))
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.registered_type_info_get_type_name(info)
     __return_value = LibGIRepository.registered_type_info_get_type_name((info.to_unsafe as LibGIRepository::BaseInfo*))
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.signal_info_get_class_closure(info)
@@ -578,7 +578,7 @@ module GIRepository
 
   def self.type_tag_to_string(type)
     __return_value = LibGIRepository.type_tag_to_string(type)
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.union_info_find_method(info, name)

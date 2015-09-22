@@ -59,6 +59,15 @@ module Gtk
       __return_value
     end
 
+    alias GroupChangedSignal = RadioButton -> 
+    def on_group_changed(&__block : GroupChangedSignal)
+      __callback = ->(_arg0 : LibGtk::RadioButton*) {
+       __return_value = __block.call(RadioButton.new(_arg0))
+       __return_value
+      }
+      connect("group-changed", __callback)
+    end
+
   end
 end
 

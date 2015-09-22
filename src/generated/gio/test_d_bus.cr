@@ -30,7 +30,7 @@ module Gio
 
     def bus_address
       __return_value = LibGio.test_d_bus_get_bus_address((to_unsafe as LibGio::TestDBus*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def flags

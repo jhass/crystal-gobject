@@ -46,7 +46,7 @@ module Gio
 
     def path
       __return_value = LibGio.unix_socket_address_get_path((to_unsafe as LibGio::UnixSocketAddress*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def path_len

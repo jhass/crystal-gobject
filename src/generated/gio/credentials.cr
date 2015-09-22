@@ -26,7 +26,7 @@ module Gio
       __return_value
     end
 
-    def is_same_user(other_credentials)
+    def same_user?(other_credentials)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.credentials_is_same_user((to_unsafe as LibGio::Credentials*), (other_credentials.to_unsafe as LibGio::Credentials*), pointerof(__error))
       GLib::Error.assert __error
@@ -47,7 +47,7 @@ module Gio
 
     def to_string
       __return_value = LibGio.credentials_to_string((to_unsafe as LibGio::Credentials*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
   end

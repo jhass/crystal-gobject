@@ -45,7 +45,7 @@ module Gio
       Gio::TlsCertificate.new(__return_value)
     end
 
-    def is_same(cert_two)
+    def same?(cert_two)
       __return_value = LibGio.tls_certificate_is_same((to_unsafe as LibGio::TlsCertificate*), (cert_two.to_unsafe as LibGio::TlsCertificate*))
       __return_value
     end

@@ -31,7 +31,7 @@ module Gdk
 
     def to_string
       __return_value = LibGdk.color_to_string((to_unsafe as LibGdk::Color*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def self.parse(spec, color)

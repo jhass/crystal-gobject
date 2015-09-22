@@ -41,7 +41,7 @@ module Pango
 
     def family
       __return_value = LibPango.font_description_get_family((to_unsafe as LibPango::FontDescription*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def gravity
@@ -90,12 +90,12 @@ module Pango
     end
 
     def merge(desc_to_merge, replace_existing)
-      __return_value = LibPango.font_description_merge((to_unsafe as LibPango::FontDescription*), desc_to_merge && (desc_to_merge.to_unsafe as LibPango::FontDescription*), Bool.new(replace_existing))
+      __return_value = LibPango.font_description_merge((to_unsafe as LibPango::FontDescription*), desc_to_merge && (desc_to_merge.to_unsafe as LibPango::FontDescription*), replace_existing)
       __return_value
     end
 
     def merge_static(desc_to_merge, replace_existing)
-      __return_value = LibPango.font_description_merge_static((to_unsafe as LibPango::FontDescription*), (desc_to_merge.to_unsafe as LibPango::FontDescription*), Bool.new(replace_existing))
+      __return_value = LibPango.font_description_merge_static((to_unsafe as LibPango::FontDescription*), (desc_to_merge.to_unsafe as LibPango::FontDescription*), replace_existing)
       __return_value
     end
 
@@ -146,12 +146,12 @@ module Pango
 
     def to_filename
       __return_value = LibPango.font_description_to_filename((to_unsafe as LibPango::FontDescription*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def to_string
       __return_value = LibPango.font_description_to_string((to_unsafe as LibPango::FontDescription*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def unset_fields(to_unset)

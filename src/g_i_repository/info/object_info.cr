@@ -77,6 +77,11 @@ module GIRepository
           io.puts method.wrapper_definition libname, indent+"  "
           io.puts
         end
+
+        each_signal do |signal|
+          io.puts signal.wrapper_definition libname, indent+"  "
+        end
+
         io.puts "#{indent}end"
       end
     end

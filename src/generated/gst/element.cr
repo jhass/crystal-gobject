@@ -23,12 +23,12 @@ module Gst
 
     def self.state_change_return_get_name(state_ret)
       __return_value = LibGst.element_state_change_return_get_name(state_ret)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def self.state_get_name(state)
       __return_value = LibGst.element_state_get_name(state)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def abort_state
@@ -106,7 +106,7 @@ module Gst
       Gst::Pad.new(__return_value) if __return_value
     end
 
-    def is_locked_state
+    def locked_state?
       __return_value = LibGst.element_is_locked_state((to_unsafe as LibGst::Element*))
       __return_value
     end
@@ -247,7 +247,7 @@ module Gst
     end
 
     def locked_state=(locked_state)
-      __return_value = LibGst.element_set_locked_state((to_unsafe as LibGst::Element*), Bool.new(locked_state))
+      __return_value = LibGst.element_set_locked_state((to_unsafe as LibGst::Element*), locked_state)
       __return_value
     end
 
@@ -274,6 +274,33 @@ module Gst
     def unlink_pads(srcpadname, dest, destpadname)
       __return_value = LibGst.element_unlink_pads((to_unsafe as LibGst::Element*), srcpadname, (dest.to_unsafe as LibGst::Element*), destpadname)
       __return_value
+    end
+
+    alias NoMorePadsSignal = Element -> 
+    def on_no_more_pads(&__block : NoMorePadsSignal)
+      __callback = ->(_arg0 : LibGst::Element*) {
+       __return_value = __block.call(Element.new(_arg0))
+       __return_value
+      }
+      connect("no-more-pads", __callback)
+    end
+
+    alias PadAddedSignal = Element, Gst::Pad -> 
+    def on_pad_added(&__block : PadAddedSignal)
+      __callback = ->(_arg0 : LibGst::Element*, _arg1 : LibGst::LibGst::Pad*) {
+       __return_value = __block.call(Element.new(_arg0), Gst::Pad.new(_arg1))
+       __return_value
+      }
+      connect("pad-added", __callback)
+    end
+
+    alias PadRemovedSignal = Element, Gst::Pad -> 
+    def on_pad_removed(&__block : PadRemovedSignal)
+      __callback = ->(_arg0 : LibGst::Element*, _arg1 : LibGst::LibGst::Pad*) {
+       __return_value = __block.call(Element.new(_arg0), Gst::Pad.new(_arg1))
+       __return_value
+      }
+      connect("pad-removed", __callback)
     end
 
   end

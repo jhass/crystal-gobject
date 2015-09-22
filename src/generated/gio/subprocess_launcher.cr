@@ -15,7 +15,7 @@ module Gio
 
     def getenv(variable)
       __return_value = LibGio.subprocess_launcher_getenv((to_unsafe as LibGio::SubprocessLauncher*), variable)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def set_child_setup(child_setup : LibGLib::SpawnChildSetupFunc, user_data, destroy_notify : LibGLib::DestroyNotify)
@@ -54,7 +54,7 @@ module Gio
     end
 
     def setenv(variable, value, overwrite)
-      __return_value = LibGio.subprocess_launcher_setenv((to_unsafe as LibGio::SubprocessLauncher*), variable, value, Bool.new(overwrite))
+      __return_value = LibGio.subprocess_launcher_setenv((to_unsafe as LibGio::SubprocessLauncher*), variable, value, overwrite)
       __return_value
     end
 

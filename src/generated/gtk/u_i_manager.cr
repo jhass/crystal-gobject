@@ -16,7 +16,7 @@ module Gtk
     end
 
     def add_ui(merge_id, path, name, action, type, top)
-      __return_value = LibGtk.u_i_manager_add_ui((to_unsafe as LibGtk::UIManager*), UInt32.new(merge_id), path, name, action && action, type, Bool.new(top))
+      __return_value = LibGtk.u_i_manager_add_ui((to_unsafe as LibGtk::UIManager*), UInt32.new(merge_id), path, name, action && action, type, top)
       __return_value
     end
 
@@ -73,7 +73,7 @@ module Gtk
 
     def ui
       __return_value = LibGtk.u_i_manager_get_ui((to_unsafe as LibGtk::UIManager*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def widget(path)
@@ -102,8 +102,62 @@ module Gtk
     end
 
     def add_tearoffs=(add_tearoffs)
-      __return_value = LibGtk.u_i_manager_set_add_tearoffs((to_unsafe as LibGtk::UIManager*), Bool.new(add_tearoffs))
+      __return_value = LibGtk.u_i_manager_set_add_tearoffs((to_unsafe as LibGtk::UIManager*), add_tearoffs)
       __return_value
+    end
+
+    alias ActionsChangedSignal = UIManager -> 
+    def on_actions_changed(&__block : ActionsChangedSignal)
+      __callback = ->(_arg0 : LibGtk::UIManager*) {
+       __return_value = __block.call(UIManager.new(_arg0))
+       __return_value
+      }
+      connect("actions-changed", __callback)
+    end
+
+    alias AddWidgetSignal = UIManager, Gtk::Widget -> 
+    def on_add_widget(&__block : AddWidgetSignal)
+      __callback = ->(_arg0 : LibGtk::UIManager*, _arg1 : LibGtk::LibGtk::Widget*) {
+       __return_value = __block.call(UIManager.new(_arg0), Gtk::Widget.new(_arg1))
+       __return_value
+      }
+      connect("add-widget", __callback)
+    end
+
+    alias ConnectProxySignal = UIManager, Gtk::Action, Gtk::Widget -> 
+    def on_connect_proxy(&__block : ConnectProxySignal)
+      __callback = ->(_arg0 : LibGtk::UIManager*, _arg1 : LibGtk::LibGtk::Action*, _arg2 : LibGtk::LibGtk::Widget*) {
+       __return_value = __block.call(UIManager.new(_arg0), Gtk::Action.new(_arg1), Gtk::Widget.new(_arg2))
+       __return_value
+      }
+      connect("connect-proxy", __callback)
+    end
+
+    alias DisconnectProxySignal = UIManager, Gtk::Action, Gtk::Widget -> 
+    def on_disconnect_proxy(&__block : DisconnectProxySignal)
+      __callback = ->(_arg0 : LibGtk::UIManager*, _arg1 : LibGtk::LibGtk::Action*, _arg2 : LibGtk::LibGtk::Widget*) {
+       __return_value = __block.call(UIManager.new(_arg0), Gtk::Action.new(_arg1), Gtk::Widget.new(_arg2))
+       __return_value
+      }
+      connect("disconnect-proxy", __callback)
+    end
+
+    alias PostActivateSignal = UIManager, Gtk::Action -> 
+    def on_post_activate(&__block : PostActivateSignal)
+      __callback = ->(_arg0 : LibGtk::UIManager*, _arg1 : LibGtk::LibGtk::Action*) {
+       __return_value = __block.call(UIManager.new(_arg0), Gtk::Action.new(_arg1))
+       __return_value
+      }
+      connect("post-activate", __callback)
+    end
+
+    alias PreActivateSignal = UIManager, Gtk::Action -> 
+    def on_pre_activate(&__block : PreActivateSignal)
+      __callback = ->(_arg0 : LibGtk::UIManager*, _arg1 : LibGtk::LibGtk::Action*) {
+       __return_value = __block.call(UIManager.new(_arg0), Gtk::Action.new(_arg1))
+       __return_value
+      }
+      connect("pre-activate", __callback)
     end
 
   end

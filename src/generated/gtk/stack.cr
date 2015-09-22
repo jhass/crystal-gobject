@@ -76,16 +76,16 @@ module Gtk
 
     def visible_child_name
       __return_value = LibGtk.stack_get_visible_child_name((to_unsafe as LibGtk::Stack*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def hhomogeneous=(hhomogeneous)
-      __return_value = LibGtk.stack_set_hhomogeneous((to_unsafe as LibGtk::Stack*), Bool.new(hhomogeneous))
+      __return_value = LibGtk.stack_set_hhomogeneous((to_unsafe as LibGtk::Stack*), hhomogeneous)
       __return_value
     end
 
     def homogeneous=(homogeneous)
-      __return_value = LibGtk.stack_set_homogeneous((to_unsafe as LibGtk::Stack*), Bool.new(homogeneous))
+      __return_value = LibGtk.stack_set_homogeneous((to_unsafe as LibGtk::Stack*), homogeneous)
       __return_value
     end
 
@@ -100,7 +100,7 @@ module Gtk
     end
 
     def vhomogeneous=(vhomogeneous)
-      __return_value = LibGtk.stack_set_vhomogeneous((to_unsafe as LibGtk::Stack*), Bool.new(vhomogeneous))
+      __return_value = LibGtk.stack_set_vhomogeneous((to_unsafe as LibGtk::Stack*), vhomogeneous)
       __return_value
     end
 

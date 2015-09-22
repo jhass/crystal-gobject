@@ -9,10 +9,10 @@ module Pango
 
     def name
       __return_value = LibPango.font_family_get_name((to_unsafe as LibPango::FontFamily*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
-    def is_monospace
+    def monospace?
       __return_value = LibPango.font_family_is_monospace((to_unsafe as LibPango::FontFamily*))
       __return_value
     end

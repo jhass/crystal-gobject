@@ -28,7 +28,7 @@ module GLib
 
     def element
       __return_value = LibGLib.markup_parse_context_get_element((to_unsafe as LibGLib::MarkupParseContext*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def position(line_number, char_number)

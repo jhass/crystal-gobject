@@ -31,13 +31,31 @@ module Gtk
     end
 
     def active=(is_active)
-      __return_value = LibGtk.switch_set_active((to_unsafe as LibGtk::Switch*), Bool.new(is_active))
+      __return_value = LibGtk.switch_set_active((to_unsafe as LibGtk::Switch*), is_active)
       __return_value
     end
 
     def state=(state)
-      __return_value = LibGtk.switch_set_state((to_unsafe as LibGtk::Switch*), Bool.new(state))
+      __return_value = LibGtk.switch_set_state((to_unsafe as LibGtk::Switch*), state)
       __return_value
+    end
+
+    alias ActivateSignal = Switch -> 
+    def on_activate(&__block : ActivateSignal)
+      __callback = ->(_arg0 : LibGtk::Switch*) {
+       __return_value = __block.call(Switch.new(_arg0))
+       __return_value
+      }
+      connect("activate", __callback)
+    end
+
+    alias StateSetSignal = Switch, Bool -> Bool
+    def on_state_set(&__block : StateSetSignal)
+      __callback = ->(_arg0 : LibGtk::Switch*, _arg1 : LibGtk::Bool*) {
+       __return_value = __block.call(Switch.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("state-set", __callback)
     end
 
   end

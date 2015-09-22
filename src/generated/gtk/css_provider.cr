@@ -51,7 +51,16 @@ module Gtk
 
     def to_string
       __return_value = LibGtk.css_provider_to_string((to_unsafe as LibGtk::CssProvider*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    end
+
+    alias ParsingErrorSignal = CssProvider, Gtk::CssSection, LibGLib::Error* -> 
+    def on_parsing_error(&__block : ParsingErrorSignal)
+      __callback = ->(_arg0 : LibGtk::CssProvider*, _arg1 : LibGtk::LibGtk::CssSection*, _arg2 : LibGtk::LibGLib::Error***) {
+       __return_value = __block.call(CssProvider.new(_arg0), Gtk::CssSection.new(_arg1), _arg2)
+       __return_value
+      }
+      connect("parsing-error", __callback)
     end
 
   end

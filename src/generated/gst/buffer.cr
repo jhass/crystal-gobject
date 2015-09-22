@@ -124,12 +124,12 @@ module Gst
       __return_value
     end
 
-    def is_all_memory_writable
+    def all_memory_writable?
       __return_value = LibGst.buffer_is_all_memory_writable((to_unsafe as LibGst::Buffer*))
       __return_value
     end
 
-    def is_memory_range_writable(idx, length)
+    def memory_range_writable?(idx, length)
       __return_value = LibGst.buffer_is_memory_range_writable((to_unsafe as LibGst::Buffer*), UInt32.new(idx), Int32.new(length))
       __return_value
     end

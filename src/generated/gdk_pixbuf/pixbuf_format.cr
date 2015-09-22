@@ -21,46 +21,46 @@ module GdkPixbuf
 
     def description
       __return_value = LibGdkPixbuf.pixbuf_format_get_description((to_unsafe as LibGdkPixbuf::PixbufFormat*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def extensions
       __return_value = LibGdkPixbuf.pixbuf_format_get_extensions((to_unsafe as LibGdkPixbuf::PixbufFormat*))
-      PointerIterator.new(__return_value) {|__item_78| raise "Expected string but got null" unless __item_78; String.new(__item_78) }
+      PointerIterator.new(__return_value) {|__item_65| (raise "Expected string but got null" unless __item_65; String.new(__item_65)) }
     end
 
     def license
       __return_value = LibGdkPixbuf.pixbuf_format_get_license((to_unsafe as LibGdkPixbuf::PixbufFormat*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def mime_types
       __return_value = LibGdkPixbuf.pixbuf_format_get_mime_types((to_unsafe as LibGdkPixbuf::PixbufFormat*))
-      PointerIterator.new(__return_value) {|__item_13| raise "Expected string but got null" unless __item_13; String.new(__item_13) }
+      PointerIterator.new(__return_value) {|__item_54| (raise "Expected string but got null" unless __item_54; String.new(__item_54)) }
     end
 
     def name
       __return_value = LibGdkPixbuf.pixbuf_format_get_name((to_unsafe as LibGdkPixbuf::PixbufFormat*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
-    def is_disabled
+    def disabled?
       __return_value = LibGdkPixbuf.pixbuf_format_is_disabled((to_unsafe as LibGdkPixbuf::PixbufFormat*))
       __return_value
     end
 
-    def is_scalable
+    def scalable?
       __return_value = LibGdkPixbuf.pixbuf_format_is_scalable((to_unsafe as LibGdkPixbuf::PixbufFormat*))
       __return_value
     end
 
-    def is_writable
+    def writable?
       __return_value = LibGdkPixbuf.pixbuf_format_is_writable((to_unsafe as LibGdkPixbuf::PixbufFormat*))
       __return_value
     end
 
     def disabled=(disabled)
-      __return_value = LibGdkPixbuf.pixbuf_format_set_disabled((to_unsafe as LibGdkPixbuf::PixbufFormat*), Bool.new(disabled))
+      __return_value = LibGdkPixbuf.pixbuf_format_set_disabled((to_unsafe as LibGdkPixbuf::PixbufFormat*), disabled)
       __return_value
     end
 

@@ -122,6 +122,15 @@ module Notify
       __return_value
     end
 
+    alias ClosedSignal = Notification -> 
+    def on_closed(&__block : ClosedSignal)
+      __callback = ->(_arg0 : LibNotify::Notification*) {
+       __return_value = __block.call(Notification.new(_arg0))
+       __return_value
+      }
+      connect("closed", __callback)
+    end
+
   end
 end
 

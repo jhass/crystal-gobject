@@ -27,7 +27,7 @@ module Gtk
 
     def uri
       __return_value = LibGtk.link_button_get_uri((to_unsafe as LibGtk::LinkButton*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def visited
@@ -41,8 +41,17 @@ module Gtk
     end
 
     def visited=(visited)
-      __return_value = LibGtk.link_button_set_visited((to_unsafe as LibGtk::LinkButton*), Bool.new(visited))
+      __return_value = LibGtk.link_button_set_visited((to_unsafe as LibGtk::LinkButton*), visited)
       __return_value
+    end
+
+    alias ActivateLinkSignal = LinkButton -> Bool
+    def on_activate_link(&__block : ActivateLinkSignal)
+      __callback = ->(_arg0 : LibGtk::LinkButton*) {
+       __return_value = __block.call(LinkButton.new(_arg0))
+       __return_value
+      }
+      connect("activate-link", __callback)
     end
 
   end

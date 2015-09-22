@@ -10,7 +10,7 @@ module GLib
     end
 
     def free(immediate, wait)
-      __return_value = LibGLib.thread_pool_free((to_unsafe as LibGLib::ThreadPool*), Bool.new(immediate), Bool.new(wait))
+      __return_value = LibGLib.thread_pool_free((to_unsafe as LibGLib::ThreadPool*), immediate, wait)
       __return_value
     end
 

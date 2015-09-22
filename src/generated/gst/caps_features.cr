@@ -51,7 +51,7 @@ module Gst
 
     def nth(i)
       __return_value = LibGst.caps_features_get_nth((to_unsafe as LibGst::CapsFeatures*), UInt32.new(i))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def nth_id(i)
@@ -64,12 +64,12 @@ module Gst
       __return_value
     end
 
-    def is_any
+    def any?
       __return_value = LibGst.caps_features_is_any((to_unsafe as LibGst::CapsFeatures*))
       __return_value
     end
 
-    def is_equal(features2)
+    def equal?(features2)
       __return_value = LibGst.caps_features_is_equal((to_unsafe as LibGst::CapsFeatures*), (features2.to_unsafe as LibGst::CapsFeatures*))
       __return_value
     end
@@ -91,7 +91,7 @@ module Gst
 
     def to_string
       __return_value = LibGst.caps_features_to_string((to_unsafe as LibGst::CapsFeatures*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def self.from_string(features)

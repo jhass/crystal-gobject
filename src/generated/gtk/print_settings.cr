@@ -38,7 +38,7 @@ module Gtk
 
     def get(key)
       __return_value = LibGtk.print_settings_get((to_unsafe as LibGtk::PrintSettings*), key)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def bool(key)
@@ -53,12 +53,12 @@ module Gtk
 
     def default_source
       __return_value = LibGtk.print_settings_get_default_source((to_unsafe as LibGtk::PrintSettings*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def dither
       __return_value = LibGtk.print_settings_get_dither((to_unsafe as LibGtk::PrintSettings*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def double(key)
@@ -78,7 +78,7 @@ module Gtk
 
     def finishings
       __return_value = LibGtk.print_settings_get_finishings((to_unsafe as LibGtk::PrintSettings*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def int(key)
@@ -98,7 +98,7 @@ module Gtk
 
     def media_type
       __return_value = LibGtk.print_settings_get_media_type((to_unsafe as LibGtk::PrintSettings*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def n_copies
@@ -123,12 +123,12 @@ module Gtk
 
     def output_bin
       __return_value = LibGtk.print_settings_get_output_bin((to_unsafe as LibGtk::PrintSettings*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def page_ranges(num_ranges)
       __return_value = LibGtk.print_settings_get_page_ranges((to_unsafe as LibGtk::PrintSettings*), Int32.new(num_ranges))
-      PointerIterator.new(__return_value) {|__item_82| Gtk::PageRange.new(__item_82) }
+      PointerIterator.new(__return_value) {|__item_18| Gtk::PageRange.new(__item_18) }
     end
 
     def page_set
@@ -158,7 +158,7 @@ module Gtk
 
     def printer
       __return_value = LibGtk.print_settings_get_printer((to_unsafe as LibGtk::PrintSettings*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def printer_lpi
@@ -226,12 +226,12 @@ module Gtk
     end
 
     def set_bool(key, value)
-      __return_value = LibGtk.print_settings_set_bool((to_unsafe as LibGtk::PrintSettings*), key, Bool.new(value))
+      __return_value = LibGtk.print_settings_set_bool((to_unsafe as LibGtk::PrintSettings*), key, value)
       __return_value
     end
 
     def collate=(collate)
-      __return_value = LibGtk.print_settings_set_collate((to_unsafe as LibGtk::PrintSettings*), Bool.new(collate))
+      __return_value = LibGtk.print_settings_set_collate((to_unsafe as LibGtk::PrintSettings*), collate)
       __return_value
     end
 
@@ -356,7 +356,7 @@ module Gtk
     end
 
     def reverse=(reverse)
-      __return_value = LibGtk.print_settings_set_reverse((to_unsafe as LibGtk::PrintSettings*), Bool.new(reverse))
+      __return_value = LibGtk.print_settings_set_reverse((to_unsafe as LibGtk::PrintSettings*), reverse)
       __return_value
     end
 
@@ -366,7 +366,7 @@ module Gtk
     end
 
     def use_color=(use_color)
-      __return_value = LibGtk.print_settings_set_use_color((to_unsafe as LibGtk::PrintSettings*), Bool.new(use_color))
+      __return_value = LibGtk.print_settings_set_use_color((to_unsafe as LibGtk::PrintSettings*), use_color)
       __return_value
     end
 

@@ -23,7 +23,7 @@ module Gio
 
     def client_address
       __return_value = LibGio.d_bus_server_get_client_address((to_unsafe as LibGio::DBusServer*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def flags
@@ -33,10 +33,10 @@ module Gio
 
     def guid
       __return_value = LibGio.d_bus_server_get_guid((to_unsafe as LibGio::DBusServer*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
-    def is_active
+    def active?
       __return_value = LibGio.d_bus_server_is_active((to_unsafe as LibGio::DBusServer*))
       __return_value
     end
@@ -49,6 +49,15 @@ module Gio
     def stop
       __return_value = LibGio.d_bus_server_stop((to_unsafe as LibGio::DBusServer*))
       __return_value
+    end
+
+    alias NewConnectionSignal = DBusServer, Gio::DBusConnection -> Bool
+    def on_new_connection(&__block : NewConnectionSignal)
+      __callback = ->(_arg0 : LibGio::DBusServer*, _arg1 : LibGio::LibGio::DBusConnection*) {
+       __return_value = __block.call(DBusServer.new(_arg0), Gio::DBusConnection.new(_arg1))
+       __return_value
+      }
+      connect("new-connection", __callback)
     end
 
   end

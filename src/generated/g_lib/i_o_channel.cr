@@ -55,7 +55,7 @@ module GLib
 
     def encoding
       __return_value = LibGLib.i_o_channel_get_encoding((to_unsafe as LibGLib::IOChannel*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def flags
@@ -65,7 +65,7 @@ module GLib
 
     def line_term(length)
       __return_value = LibGLib.i_o_channel_get_line_term((to_unsafe as LibGLib::IOChannel*), length)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def init
@@ -136,12 +136,12 @@ module GLib
     end
 
     def buffered=(buffered)
-      __return_value = LibGLib.i_o_channel_set_buffered((to_unsafe as LibGLib::IOChannel*), Bool.new(buffered))
+      __return_value = LibGLib.i_o_channel_set_buffered((to_unsafe as LibGLib::IOChannel*), buffered)
       __return_value
     end
 
     def close_on_unref=(do_close)
-      __return_value = LibGLib.i_o_channel_set_close_on_unref((to_unsafe as LibGLib::IOChannel*), Bool.new(do_close))
+      __return_value = LibGLib.i_o_channel_set_close_on_unref((to_unsafe as LibGLib::IOChannel*), do_close)
       __return_value
     end
 
@@ -166,7 +166,7 @@ module GLib
 
     def shutdown(flush)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.i_o_channel_shutdown((to_unsafe as LibGLib::IOChannel*), Bool.new(flush), pointerof(__error))
+      __return_value = LibGLib.i_o_channel_shutdown((to_unsafe as LibGLib::IOChannel*), flush, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

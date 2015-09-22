@@ -96,6 +96,69 @@ module Gtk
       __return_value
     end
 
+    alias DaySelectedSignal = Calendar -> 
+    def on_day_selected(&__block : DaySelectedSignal)
+      __callback = ->(_arg0 : LibGtk::Calendar*) {
+       __return_value = __block.call(Calendar.new(_arg0))
+       __return_value
+      }
+      connect("day-selected", __callback)
+    end
+
+    alias DaySelectedDoubleClickSignal = Calendar -> 
+    def on_day_selected_double_click(&__block : DaySelectedDoubleClickSignal)
+      __callback = ->(_arg0 : LibGtk::Calendar*) {
+       __return_value = __block.call(Calendar.new(_arg0))
+       __return_value
+      }
+      connect("day-selected-double-click", __callback)
+    end
+
+    alias MonthChangedSignal = Calendar -> 
+    def on_month_changed(&__block : MonthChangedSignal)
+      __callback = ->(_arg0 : LibGtk::Calendar*) {
+       __return_value = __block.call(Calendar.new(_arg0))
+       __return_value
+      }
+      connect("month-changed", __callback)
+    end
+
+    alias NextMonthSignal = Calendar -> 
+    def on_next_month(&__block : NextMonthSignal)
+      __callback = ->(_arg0 : LibGtk::Calendar*) {
+       __return_value = __block.call(Calendar.new(_arg0))
+       __return_value
+      }
+      connect("next-month", __callback)
+    end
+
+    alias NextYearSignal = Calendar -> 
+    def on_next_year(&__block : NextYearSignal)
+      __callback = ->(_arg0 : LibGtk::Calendar*) {
+       __return_value = __block.call(Calendar.new(_arg0))
+       __return_value
+      }
+      connect("next-year", __callback)
+    end
+
+    alias PrevMonthSignal = Calendar -> 
+    def on_prev_month(&__block : PrevMonthSignal)
+      __callback = ->(_arg0 : LibGtk::Calendar*) {
+       __return_value = __block.call(Calendar.new(_arg0))
+       __return_value
+      }
+      connect("prev-month", __callback)
+    end
+
+    alias PrevYearSignal = Calendar -> 
+    def on_prev_year(&__block : PrevYearSignal)
+      __callback = ->(_arg0 : LibGtk::Calendar*) {
+       __return_value = __block.call(Calendar.new(_arg0))
+       __return_value
+      }
+      connect("prev-year", __callback)
+    end
+
   end
 end
 

@@ -17,7 +17,7 @@ module Gtk
 
 
     def self.new_internal(rows, columns, homogeneous)
-      __return_value = LibGtk.table_new(UInt32.new(rows), UInt32.new(columns), Bool.new(homogeneous))
+      __return_value = LibGtk.table_new(UInt32.new(rows), UInt32.new(columns), homogeneous)
       Gtk::Widget.new(__return_value)
     end
 
@@ -77,7 +77,7 @@ module Gtk
     end
 
     def homogeneous=(homogeneous)
-      __return_value = LibGtk.table_set_homogeneous((to_unsafe as LibGtk::Table*), Bool.new(homogeneous))
+      __return_value = LibGtk.table_set_homogeneous((to_unsafe as LibGtk::Table*), homogeneous)
       __return_value
     end
 

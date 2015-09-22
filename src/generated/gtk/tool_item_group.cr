@@ -49,7 +49,7 @@ module Gtk
 
     def label
       __return_value = LibGtk.tool_item_group_get_label((to_unsafe as LibGtk::ToolItemGroup*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def label_widget
@@ -73,7 +73,7 @@ module Gtk
     end
 
     def collapsed=(collapsed)
-      __return_value = LibGtk.tool_item_group_set_collapsed((to_unsafe as LibGtk::ToolItemGroup*), Bool.new(collapsed))
+      __return_value = LibGtk.tool_item_group_set_collapsed((to_unsafe as LibGtk::ToolItemGroup*), collapsed)
       __return_value
     end
 

@@ -41,7 +41,7 @@ module Gst
 
     def plugin_name
       __return_value = LibGst.plugin_feature_get_plugin_name((to_unsafe as LibGst::PluginFeature*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def rank

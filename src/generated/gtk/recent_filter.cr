@@ -55,7 +55,7 @@ module Gtk
 
     def name
       __return_value = LibGtk.recent_filter_get_name((to_unsafe as LibGtk::RecentFilter*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def needed

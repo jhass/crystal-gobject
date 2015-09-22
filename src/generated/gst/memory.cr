@@ -24,12 +24,12 @@ module Gst
       __return_value
     end
 
-    def is_span(mem2, offset)
+    def span?(mem2, offset)
       __return_value = LibGst.memory_is_span((to_unsafe as LibGst::Memory*), (mem2.to_unsafe as LibGst::Memory*), offset)
       __return_value
     end
 
-    def is_type(mem_type)
+    def type?(mem_type)
       __return_value = LibGst.memory_is_type((to_unsafe as LibGst::Memory*), mem_type)
       __return_value
     end

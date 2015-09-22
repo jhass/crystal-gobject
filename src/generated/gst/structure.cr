@@ -45,7 +45,7 @@ module Gst
     end
 
     def fixate_field_boolean(field_name, target)
-      __return_value = LibGst.structure_fixate_field_boolean((to_unsafe as LibGst::Structure*), field_name, Bool.new(target))
+      __return_value = LibGst.structure_fixate_field_boolean((to_unsafe as LibGst::Structure*), field_name, target)
       __return_value
     end
 
@@ -80,7 +80,7 @@ module Gst
     end
 
     def boolean(fieldname, value)
-      __return_value = LibGst.structure_get_boolean((to_unsafe as LibGst::Structure*), fieldname, Bool.new(value))
+      __return_value = LibGst.structure_get_boolean((to_unsafe as LibGst::Structure*), fieldname, value)
       __return_value
     end
 
@@ -131,7 +131,7 @@ module Gst
 
     def name
       __return_value = LibGst.structure_get_name((to_unsafe as LibGst::Structure*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def name_id
@@ -141,7 +141,7 @@ module Gst
 
     def string(fieldname)
       __return_value = LibGst.structure_get_string((to_unsafe as LibGst::Structure*), fieldname)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def uint(fieldname, value)
@@ -204,12 +204,12 @@ module Gst
       Gst::Structure.new(__return_value)
     end
 
-    def is_equal(structure2)
+    def equal?(structure2)
       __return_value = LibGst.structure_is_equal((to_unsafe as LibGst::Structure*), (structure2.to_unsafe as LibGst::Structure*))
       __return_value
     end
 
-    def is_subset(superset)
+    def subset?(superset)
       __return_value = LibGst.structure_is_subset((to_unsafe as LibGst::Structure*), (superset.to_unsafe as LibGst::Structure*))
       __return_value
     end
@@ -226,7 +226,7 @@ module Gst
 
     def nth_field_name(index)
       __return_value = LibGst.structure_nth_field_name((to_unsafe as LibGst::Structure*), UInt32.new(index))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def remove_all_fields
@@ -261,7 +261,7 @@ module Gst
 
     def to_string
       __return_value = LibGst.structure_to_string((to_unsafe as LibGst::Structure*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def self.from_string(string, end)

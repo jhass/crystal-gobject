@@ -59,7 +59,7 @@ module Gio
 
     def application_id
       __return_value = LibGio.application_get_application_id((to_unsafe as LibGio::Application*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def dbus_connection
@@ -69,7 +69,7 @@ module Gio
 
     def dbus_object_path
       __return_value = LibGio.application_get_dbus_object_path((to_unsafe as LibGio::Application*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def flags
@@ -99,7 +99,7 @@ module Gio
 
     def resource_base_path
       __return_value = LibGio.application_get_resource_base_path((to_unsafe as LibGio::Application*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def hold
@@ -187,6 +187,60 @@ module Gio
     def withdraw_notification(id)
       __return_value = LibGio.application_withdraw_notification((to_unsafe as LibGio::Application*), id)
       __return_value
+    end
+
+    alias ActivateSignal = Application -> 
+    def on_activate(&__block : ActivateSignal)
+      __callback = ->(_arg0 : LibGio::Application*) {
+       __return_value = __block.call(Application.new(_arg0))
+       __return_value
+      }
+      connect("activate", __callback)
+    end
+
+    alias CommandLineSignal = Application, Gio::ApplicationCommandLine -> Int32
+    def on_command_line(&__block : CommandLineSignal)
+      __callback = ->(_arg0 : LibGio::Application*, _arg1 : LibGio::LibGio::ApplicationCommandLine*) {
+       __return_value = __block.call(Application.new(_arg0), Gio::ApplicationCommandLine.new(_arg1))
+       Int32.new(__return_value)
+      }
+      connect("command-line", __callback)
+    end
+
+    alias HandleLocalOptionsSignal = Application, GLib::VariantDict -> Int32
+    def on_handle_local_options(&__block : HandleLocalOptionsSignal)
+      __callback = ->(_arg0 : LibGio::Application*, _arg1 : LibGio::LibGLib::VariantDict*) {
+       __return_value = __block.call(Application.new(_arg0), GLib::VariantDict.new(_arg1))
+       Int32.new(__return_value)
+      }
+      connect("handle-local-options", __callback)
+    end
+
+    alias OpenSignal = Application, Array(Gio::File), Int32, UInt8 -> 
+    def on_open(&__block : OpenSignal)
+      __callback = ->(_arg0 : LibGio::Application*, _arg1 : LibGio::LibGio::File**, _arg2 : LibGio::Int32*, _arg3 : LibGio::UInt8**) {
+       __return_value = __block.call(Application.new(_arg0), PointerIterator.new(_arg1) {|__item_80| __item_80 }, _arg2, (raise "Expected string but got null" unless _arg3; String.new(_arg3)))
+       __return_value
+      }
+      connect("open", __callback)
+    end
+
+    alias ShutdownSignal = Application -> 
+    def on_shutdown(&__block : ShutdownSignal)
+      __callback = ->(_arg0 : LibGio::Application*) {
+       __return_value = __block.call(Application.new(_arg0))
+       __return_value
+      }
+      connect("shutdown", __callback)
+    end
+
+    alias StartupSignal = Application -> 
+    def on_startup(&__block : StartupSignal)
+      __callback = ->(_arg0 : LibGio::Application*) {
+       __return_value = __block.call(Application.new(_arg0))
+       __return_value
+      }
+      connect("startup", __callback)
     end
 
   end

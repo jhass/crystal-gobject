@@ -78,7 +78,7 @@ module Gtk
     end
 
     def show_arrow=(show_arrow)
-      __return_value = LibGtk.toolbar_set_show_arrow((to_unsafe as LibGtk::Toolbar*), Bool.new(show_arrow))
+      __return_value = LibGtk.toolbar_set_show_arrow((to_unsafe as LibGtk::Toolbar*), show_arrow)
       __return_value
     end
 
@@ -95,6 +95,42 @@ module Gtk
     def unset_style
       __return_value = LibGtk.toolbar_unset_style((to_unsafe as LibGtk::Toolbar*))
       __return_value
+    end
+
+    alias FocusHomeOrEndSignal = Toolbar, Bool -> Bool
+    def on_focus_home_or_end(&__block : FocusHomeOrEndSignal)
+      __callback = ->(_arg0 : LibGtk::Toolbar*, _arg1 : LibGtk::Bool*) {
+       __return_value = __block.call(Toolbar.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("focus-home-or-end", __callback)
+    end
+
+    alias OrientationChangedSignal = Toolbar, Gtk::Orientation -> 
+    def on_orientation_changed(&__block : OrientationChangedSignal)
+      __callback = ->(_arg0 : LibGtk::Toolbar*, _arg1 : LibGtk::LibGtk::Orientation*) {
+       __return_value = __block.call(Toolbar.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("orientation-changed", __callback)
+    end
+
+    alias PopupContextMenuSignal = Toolbar, Int32, Int32, Int32 -> Bool
+    def on_popup_context_menu(&__block : PopupContextMenuSignal)
+      __callback = ->(_arg0 : LibGtk::Toolbar*, _arg1 : LibGtk::Int32*, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Int32*) {
+       __return_value = __block.call(Toolbar.new(_arg0), _arg1, _arg2, _arg3)
+       __return_value
+      }
+      connect("popup-context-menu", __callback)
+    end
+
+    alias StyleChangedSignal = Toolbar, Gtk::ToolbarStyle -> 
+    def on_style_changed(&__block : StyleChangedSignal)
+      __callback = ->(_arg0 : LibGtk::Toolbar*, _arg1 : LibGtk::LibGtk::ToolbarStyle*) {
+       __return_value = __block.call(Toolbar.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("style-changed", __callback)
     end
 
   end

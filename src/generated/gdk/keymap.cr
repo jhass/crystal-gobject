@@ -77,6 +77,33 @@ module Gdk
       __return_value
     end
 
+    alias DirectionChangedSignal = Keymap -> 
+    def on_direction_changed(&__block : DirectionChangedSignal)
+      __callback = ->(_arg0 : LibGdk::Keymap*) {
+       __return_value = __block.call(Keymap.new(_arg0))
+       __return_value
+      }
+      connect("direction-changed", __callback)
+    end
+
+    alias KeysChangedSignal = Keymap -> 
+    def on_keys_changed(&__block : KeysChangedSignal)
+      __callback = ->(_arg0 : LibGdk::Keymap*) {
+       __return_value = __block.call(Keymap.new(_arg0))
+       __return_value
+      }
+      connect("keys-changed", __callback)
+    end
+
+    alias StateChangedSignal = Keymap -> 
+    def on_state_changed(&__block : StateChangedSignal)
+      __callback = ->(_arg0 : LibGdk::Keymap*) {
+       __return_value = __block.call(Keymap.new(_arg0))
+       __return_value
+      }
+      connect("state-changed", __callback)
+    end
+
   end
 end
 

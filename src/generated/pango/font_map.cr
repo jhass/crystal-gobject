@@ -24,7 +24,7 @@ module Pango
 
     def shape_engine_type
       __return_value = LibPango.font_map_get_shape_engine_type((to_unsafe as LibPango::FontMap*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def list_families(families, n_families)

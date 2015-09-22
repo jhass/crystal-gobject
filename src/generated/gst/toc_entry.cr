@@ -56,15 +56,15 @@ module Gst
 
     def uid
       __return_value = LibGst.toc_entry_get_uid((to_unsafe as LibGst::TocEntry*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
-    def is_alternative
+    def alternative?
       __return_value = LibGst.toc_entry_is_alternative((to_unsafe as LibGst::TocEntry*))
       __return_value
     end
 
-    def is_sequence
+    def sequence?
       __return_value = LibGst.toc_entry_is_sequence((to_unsafe as LibGst::TocEntry*))
       __return_value
     end

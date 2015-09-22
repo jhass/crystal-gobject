@@ -177,7 +177,7 @@ module Gtk
     end
 
     def notify_state_change(window, region_id, state, state_value)
-      __return_value = LibGtk.style_context_notify_state_change((to_unsafe as LibGtk::StyleContext*), (window.to_unsafe as LibGdk::Window*), region_id && region_id, state, Bool.new(state_value))
+      __return_value = LibGtk.style_context_notify_state_change((to_unsafe as LibGtk::StyleContext*), (window.to_unsafe as LibGdk::Window*), region_id && region_id, state, state_value)
       __return_value
     end
 
@@ -269,6 +269,15 @@ module Gtk
     def state_is_running(state, progress)
       __return_value = LibGtk.style_context_state_is_running((to_unsafe as LibGtk::StyleContext*), state, Float64.new(progress))
       __return_value
+    end
+
+    alias ChangedSignal = StyleContext -> 
+    def on_changed(&__block : ChangedSignal)
+      __callback = ->(_arg0 : LibGtk::StyleContext*) {
+       __return_value = __block.call(StyleContext.new(_arg0))
+       __return_value
+      }
+      connect("changed", __callback)
     end
 
   end

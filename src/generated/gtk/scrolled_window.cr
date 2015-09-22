@@ -93,7 +93,7 @@ module Gtk
     end
 
     def capture_button_press=(capture_button_press)
-      __return_value = LibGtk.scrolled_window_set_capture_button_press((to_unsafe as LibGtk::ScrolledWindow*), Bool.new(capture_button_press))
+      __return_value = LibGtk.scrolled_window_set_capture_button_press((to_unsafe as LibGtk::ScrolledWindow*), capture_button_press)
       __return_value
     end
 
@@ -103,7 +103,7 @@ module Gtk
     end
 
     def kinetic_scrolling=(kinetic_scrolling)
-      __return_value = LibGtk.scrolled_window_set_kinetic_scrolling((to_unsafe as LibGtk::ScrolledWindow*), Bool.new(kinetic_scrolling))
+      __return_value = LibGtk.scrolled_window_set_kinetic_scrolling((to_unsafe as LibGtk::ScrolledWindow*), kinetic_scrolling)
       __return_value
     end
 
@@ -118,7 +118,7 @@ module Gtk
     end
 
     def overlay_scrolling=(overlay_scrolling)
-      __return_value = LibGtk.scrolled_window_set_overlay_scrolling((to_unsafe as LibGtk::ScrolledWindow*), Bool.new(overlay_scrolling))
+      __return_value = LibGtk.scrolled_window_set_overlay_scrolling((to_unsafe as LibGtk::ScrolledWindow*), overlay_scrolling)
       __return_value
     end
 
@@ -145,6 +145,42 @@ module Gtk
     def unset_placement
       __return_value = LibGtk.scrolled_window_unset_placement((to_unsafe as LibGtk::ScrolledWindow*))
       __return_value
+    end
+
+    alias EdgeOvershotSignal = ScrolledWindow, Gtk::PositionType -> 
+    def on_edge_overshot(&__block : EdgeOvershotSignal)
+      __callback = ->(_arg0 : LibGtk::ScrolledWindow*, _arg1 : LibGtk::LibGtk::PositionType*) {
+       __return_value = __block.call(ScrolledWindow.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("edge-overshot", __callback)
+    end
+
+    alias EdgeReachedSignal = ScrolledWindow, Gtk::PositionType -> 
+    def on_edge_reached(&__block : EdgeReachedSignal)
+      __callback = ->(_arg0 : LibGtk::ScrolledWindow*, _arg1 : LibGtk::LibGtk::PositionType*) {
+       __return_value = __block.call(ScrolledWindow.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("edge-reached", __callback)
+    end
+
+    alias MoveFocusOutSignal = ScrolledWindow, Gtk::DirectionType -> 
+    def on_move_focus_out(&__block : MoveFocusOutSignal)
+      __callback = ->(_arg0 : LibGtk::ScrolledWindow*, _arg1 : LibGtk::LibGtk::DirectionType*) {
+       __return_value = __block.call(ScrolledWindow.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("move-focus-out", __callback)
+    end
+
+    alias ScrollChildSignal = ScrolledWindow, Gtk::ScrollType, Bool -> Bool
+    def on_scroll_child(&__block : ScrollChildSignal)
+      __callback = ->(_arg0 : LibGtk::ScrolledWindow*, _arg1 : LibGtk::LibGtk::ScrollType*, _arg2 : LibGtk::Bool*) {
+       __return_value = __block.call(ScrolledWindow.new(_arg0), _arg1, _arg2)
+       __return_value
+      }
+      connect("scroll-child", __callback)
     end
 
   end

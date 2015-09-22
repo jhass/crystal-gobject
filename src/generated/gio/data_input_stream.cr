@@ -59,7 +59,7 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.data_input_stream_read_line((to_unsafe as LibGio::DataInputStream*), UInt64.new(length), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_73| __item_73 } if __return_value
+      PointerIterator.new(__return_value) {|__item_80| __item_80 } if __return_value
     end
 
     def read_line_async(io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
@@ -71,21 +71,21 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.data_input_stream_read_line_finish((to_unsafe as LibGio::DataInputStream*), (result.to_unsafe as LibGio::AsyncResult*), UInt64.new(length), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_54| __item_54 } if __return_value
+      PointerIterator.new(__return_value) {|__item_97| __item_97 } if __return_value
     end
 
     def read_line_finish_utf8(result, length)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.data_input_stream_read_line_finish_utf8((to_unsafe as LibGio::DataInputStream*), (result.to_unsafe as LibGio::AsyncResult*), UInt64.new(length), pointerof(__error))
       GLib::Error.assert __error
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def read_line_utf8(length, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.data_input_stream_read_line_utf8((to_unsafe as LibGio::DataInputStream*), UInt64.new(length), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def read_uint16(cancellable)
@@ -113,7 +113,7 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.data_input_stream_read_until((to_unsafe as LibGio::DataInputStream*), stop_chars, UInt64.new(length), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def read_until_async(stop_chars, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
@@ -125,14 +125,14 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.data_input_stream_read_until_finish((to_unsafe as LibGio::DataInputStream*), (result.to_unsafe as LibGio::AsyncResult*), UInt64.new(length), pointerof(__error))
       GLib::Error.assert __error
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def read_upto(stop_chars, stop_chars_len, length, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.data_input_stream_read_upto((to_unsafe as LibGio::DataInputStream*), stop_chars, Int64.new(stop_chars_len), UInt64.new(length), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def read_upto_async(stop_chars, stop_chars_len, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
@@ -144,7 +144,7 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.data_input_stream_read_upto_finish((to_unsafe as LibGio::DataInputStream*), (result.to_unsafe as LibGio::AsyncResult*), UInt64.new(length), pointerof(__error))
       GLib::Error.assert __error
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def byte_order=(order)

@@ -103,7 +103,7 @@ module Gtk
     end
 
     def numeric=(numeric)
-      __return_value = LibGtk.spin_button_set_numeric((to_unsafe as LibGtk::SpinButton*), Bool.new(numeric))
+      __return_value = LibGtk.spin_button_set_numeric((to_unsafe as LibGtk::SpinButton*), numeric)
       __return_value
     end
 
@@ -113,7 +113,7 @@ module Gtk
     end
 
     def snap_to_ticks=(snap_to_ticks)
-      __return_value = LibGtk.spin_button_set_snap_to_ticks((to_unsafe as LibGtk::SpinButton*), Bool.new(snap_to_ticks))
+      __return_value = LibGtk.spin_button_set_snap_to_ticks((to_unsafe as LibGtk::SpinButton*), snap_to_ticks)
       __return_value
     end
 
@@ -128,7 +128,7 @@ module Gtk
     end
 
     def wrap=(wrap)
-      __return_value = LibGtk.spin_button_set_wrap((to_unsafe as LibGtk::SpinButton*), Bool.new(wrap))
+      __return_value = LibGtk.spin_button_set_wrap((to_unsafe as LibGtk::SpinButton*), wrap)
       __return_value
     end
 
@@ -140,6 +140,51 @@ module Gtk
     def update
       __return_value = LibGtk.spin_button_update((to_unsafe as LibGtk::SpinButton*))
       __return_value
+    end
+
+    alias ChangeValueSignal = SpinButton, Gtk::ScrollType -> 
+    def on_change_value(&__block : ChangeValueSignal)
+      __callback = ->(_arg0 : LibGtk::SpinButton*, _arg1 : LibGtk::LibGtk::ScrollType*) {
+       __return_value = __block.call(SpinButton.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("change-value", __callback)
+    end
+
+    alias InputSignal = SpinButton, Float64 -> Int32
+    def on_input(&__block : InputSignal)
+      __callback = ->(_arg0 : LibGtk::SpinButton*, _arg1 : LibGtk::Float64*) {
+       __return_value = __block.call(SpinButton.new(_arg0), _arg1)
+       Int32.new(__return_value)
+      }
+      connect("input", __callback)
+    end
+
+    alias OutputSignal = SpinButton -> Bool
+    def on_output(&__block : OutputSignal)
+      __callback = ->(_arg0 : LibGtk::SpinButton*) {
+       __return_value = __block.call(SpinButton.new(_arg0))
+       __return_value
+      }
+      connect("output", __callback)
+    end
+
+    alias ValueChangedSignal = SpinButton -> 
+    def on_value_changed(&__block : ValueChangedSignal)
+      __callback = ->(_arg0 : LibGtk::SpinButton*) {
+       __return_value = __block.call(SpinButton.new(_arg0))
+       __return_value
+      }
+      connect("value-changed", __callback)
+    end
+
+    alias WrappedSignal = SpinButton -> 
+    def on_wrapped(&__block : WrappedSignal)
+      __callback = ->(_arg0 : LibGtk::SpinButton*) {
+       __return_value = __block.call(SpinButton.new(_arg0))
+       __return_value
+      }
+      connect("wrapped", __callback)
     end
 
   end

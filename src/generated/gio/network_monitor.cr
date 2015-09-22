@@ -34,6 +34,15 @@ module Gio
       __return_value
     end
 
+    alias NetworkChangedSignal = NetworkMonitor, Bool -> 
+    def on_network_changed(&__block : NetworkChangedSignal)
+      __callback = ->(_arg0 : LibGio::NetworkMonitor*, _arg1 : LibGio::Bool*) {
+       __return_value = __block.call(NetworkMonitor.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("network-changed", __callback)
+    end
+
   end
 end
 

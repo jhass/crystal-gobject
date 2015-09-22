@@ -81,7 +81,7 @@ module Gdk
 
     def monitor_plug_name(monitor_num)
       __return_value = LibGdk.screen_get_monitor_plug_name((to_unsafe as LibGdk::Screen*), Int32.new(monitor_num))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def monitor_scale_factor(monitor_num)
@@ -159,7 +159,7 @@ module Gdk
       __return_value if __return_value
     end
 
-    def is_composited
+    def composited?
       __return_value = LibGdk.screen_is_composited((to_unsafe as LibGdk::Screen*))
       __return_value
     end
@@ -171,7 +171,7 @@ module Gdk
 
     def make_display_name
       __return_value = LibGdk.screen_make_display_name((to_unsafe as LibGdk::Screen*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def font_options=(options)
@@ -182,6 +182,33 @@ module Gdk
     def resolution=(dpi)
       __return_value = LibGdk.screen_set_resolution((to_unsafe as LibGdk::Screen*), Float64.new(dpi))
       __return_value
+    end
+
+    alias CompositedChangedSignal = Screen -> 
+    def on_composited_changed(&__block : CompositedChangedSignal)
+      __callback = ->(_arg0 : LibGdk::Screen*) {
+       __return_value = __block.call(Screen.new(_arg0))
+       __return_value
+      }
+      connect("composited-changed", __callback)
+    end
+
+    alias MonitorsChangedSignal = Screen -> 
+    def on_monitors_changed(&__block : MonitorsChangedSignal)
+      __callback = ->(_arg0 : LibGdk::Screen*) {
+       __return_value = __block.call(Screen.new(_arg0))
+       __return_value
+      }
+      connect("monitors-changed", __callback)
+    end
+
+    alias SizeChangedSignal = Screen -> 
+    def on_size_changed(&__block : SizeChangedSignal)
+      __callback = ->(_arg0 : LibGdk::Screen*) {
+       __return_value = __block.call(Screen.new(_arg0))
+       __return_value
+      }
+      connect("size-changed", __callback)
     end
 
   end

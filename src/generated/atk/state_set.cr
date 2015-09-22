@@ -42,7 +42,7 @@ module Atk
       __return_value
     end
 
-    def is_empty
+    def empty?
       __return_value = LibAtk.state_set_is_empty((to_unsafe as LibAtk::StateSet*))
       __return_value
     end

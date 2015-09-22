@@ -21,7 +21,7 @@ module Gio
 
     def enumerate_next
       __return_value = LibGio.file_attribute_matcher_enumerate_next((to_unsafe as LibGio::FileAttributeMatcher*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def matches(attribute)
@@ -46,7 +46,7 @@ module Gio
 
     def to_string
       __return_value = LibGio.file_attribute_matcher_to_string((to_unsafe as LibGio::FileAttributeMatcher*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def unref

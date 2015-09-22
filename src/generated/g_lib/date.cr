@@ -109,12 +109,12 @@ module GLib
       __return_value
     end
 
-    def is_first_of_month
+    def first_of_month?
       __return_value = LibGLib.date_is_first_of_month((to_unsafe as LibGLib::Date*))
       __return_value
     end
 
-    def is_last_of_month
+    def last_of_month?
       __return_value = LibGLib.date_is_last_of_month((to_unsafe as LibGLib::Date*))
       __return_value
     end
@@ -209,7 +209,7 @@ module GLib
       __return_value
     end
 
-    def self.is_leap_year(year)
+    def self.leap_year?(year)
       __return_value = LibGLib.date_is_leap_year(UInt16.new(year))
       __return_value
     end

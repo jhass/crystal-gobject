@@ -7,6 +7,10 @@ end
 module GObject
   class Object
     def connect signal, &callback
+      connect signal, callback
+    end
+
+    def connect signal, callback
       LibGObject.signal_connect_data (to_unsafe as LibGObject::Object*),
                                      signal,
                                      LibGObject::Callback.new(callback.pointer, Pointer(Void).null),

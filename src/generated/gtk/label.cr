@@ -55,7 +55,7 @@ module Gtk
 
     def current_uri
       __return_value = LibGtk.label_get_current_uri((to_unsafe as LibGtk::Label*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def ellipsize
@@ -70,7 +70,7 @@ module Gtk
 
     def label
       __return_value = LibGtk.label_get_label((to_unsafe as LibGtk::Label*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def layout
@@ -130,7 +130,7 @@ module Gtk
 
     def text
       __return_value = LibGtk.label_get_text((to_unsafe as LibGtk::Label*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def track_visited_links
@@ -194,7 +194,7 @@ module Gtk
     end
 
     def line_wrap=(wrap)
-      __return_value = LibGtk.label_set_line_wrap((to_unsafe as LibGtk::Label*), Bool.new(wrap))
+      __return_value = LibGtk.label_set_line_wrap((to_unsafe as LibGtk::Label*), wrap)
       __return_value
     end
 
@@ -234,12 +234,12 @@ module Gtk
     end
 
     def selectable=(setting)
-      __return_value = LibGtk.label_set_selectable((to_unsafe as LibGtk::Label*), Bool.new(setting))
+      __return_value = LibGtk.label_set_selectable((to_unsafe as LibGtk::Label*), setting)
       __return_value
     end
 
     def single_line_mode=(single_line_mode)
-      __return_value = LibGtk.label_set_single_line_mode((to_unsafe as LibGtk::Label*), Bool.new(single_line_mode))
+      __return_value = LibGtk.label_set_single_line_mode((to_unsafe as LibGtk::Label*), single_line_mode)
       __return_value
     end
 
@@ -254,17 +254,17 @@ module Gtk
     end
 
     def track_visited_links=(track_links)
-      __return_value = LibGtk.label_set_track_visited_links((to_unsafe as LibGtk::Label*), Bool.new(track_links))
+      __return_value = LibGtk.label_set_track_visited_links((to_unsafe as LibGtk::Label*), track_links)
       __return_value
     end
 
     def use_markup=(setting)
-      __return_value = LibGtk.label_set_use_markup((to_unsafe as LibGtk::Label*), Bool.new(setting))
+      __return_value = LibGtk.label_set_use_markup((to_unsafe as LibGtk::Label*), setting)
       __return_value
     end
 
     def use_underline=(setting)
-      __return_value = LibGtk.label_set_use_underline((to_unsafe as LibGtk::Label*), Bool.new(setting))
+      __return_value = LibGtk.label_set_use_underline((to_unsafe as LibGtk::Label*), setting)
       __return_value
     end
 
@@ -281,6 +281,51 @@ module Gtk
     def yalign=(yalign)
       __return_value = LibGtk.label_set_yalign((to_unsafe as LibGtk::Label*), Float32.new(yalign))
       __return_value
+    end
+
+    alias ActivateCurrentLinkSignal = Label -> 
+    def on_activate_current_link(&__block : ActivateCurrentLinkSignal)
+      __callback = ->(_arg0 : LibGtk::Label*) {
+       __return_value = __block.call(Label.new(_arg0))
+       __return_value
+      }
+      connect("activate-current-link", __callback)
+    end
+
+    alias ActivateLinkSignal = Label, UInt8 -> Bool
+    def on_activate_link(&__block : ActivateLinkSignal)
+      __callback = ->(_arg0 : LibGtk::Label*, _arg1 : LibGtk::UInt8**) {
+       __return_value = __block.call(Label.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value
+      }
+      connect("activate-link", __callback)
+    end
+
+    alias CopyClipboardSignal = Label -> 
+    def on_copy_clipboard(&__block : CopyClipboardSignal)
+      __callback = ->(_arg0 : LibGtk::Label*) {
+       __return_value = __block.call(Label.new(_arg0))
+       __return_value
+      }
+      connect("copy-clipboard", __callback)
+    end
+
+    alias MoveCursorSignal = Label, Gtk::MovementStep, Int32, Bool -> 
+    def on_move_cursor(&__block : MoveCursorSignal)
+      __callback = ->(_arg0 : LibGtk::Label*, _arg1 : LibGtk::LibGtk::MovementStep*, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Bool*) {
+       __return_value = __block.call(Label.new(_arg0), _arg1, _arg2, _arg3)
+       __return_value
+      }
+      connect("move-cursor", __callback)
+    end
+
+    alias PopulatePopupSignal = Label, Gtk::Menu -> 
+    def on_populate_popup(&__block : PopulatePopupSignal)
+      __callback = ->(_arg0 : LibGtk::Label*, _arg1 : LibGtk::LibGtk::Menu*) {
+       __return_value = __block.call(Label.new(_arg0), Gtk::Menu.new(_arg1))
+       __return_value
+      }
+      connect("populate-popup", __callback)
     end
 
   end

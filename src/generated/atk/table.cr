@@ -22,7 +22,7 @@ module Atk
 
     def column_description(column)
       __return_value = LibAtk.table_get_column_description((to_unsafe as LibAtk::Table*), Int32.new(column))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def column_extent_at(row, column)
@@ -57,7 +57,7 @@ module Atk
 
     def row_description(row)
       __return_value = LibAtk.table_get_row_description((to_unsafe as LibAtk::Table*), Int32.new(row))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def row_extent_at(row, column)
@@ -85,17 +85,17 @@ module Atk
       Atk::Object.new(__return_value)
     end
 
-    def is_column_selected(column)
+    def column_selected?(column)
       __return_value = LibAtk.table_is_column_selected((to_unsafe as LibAtk::Table*), Int32.new(column))
       __return_value
     end
 
-    def is_row_selected(row)
+    def row_selected?(row)
       __return_value = LibAtk.table_is_row_selected((to_unsafe as LibAtk::Table*), Int32.new(row))
       __return_value
     end
 
-    def is_selected(row, column)
+    def selected?(row, column)
       __return_value = LibAtk.table_is_selected((to_unsafe as LibAtk::Table*), Int32.new(row), Int32.new(column))
       __return_value
     end
@@ -143,6 +143,69 @@ module Atk
     def summary=(accessible)
       __return_value = LibAtk.table_set_summary((to_unsafe as LibAtk::Table*), (accessible.to_unsafe as LibAtk::Object*))
       __return_value
+    end
+
+    alias ColumnDeletedSignal = Table, Int32, Int32 -> 
+    def on_column_deleted(&__block : ColumnDeletedSignal)
+      __callback = ->(_arg0 : LibAtk::Table*, _arg1 : LibAtk::Int32*, _arg2 : LibAtk::Int32*) {
+       __return_value = __block.call(Table.new(_arg0), _arg1, _arg2)
+       __return_value
+      }
+      connect("column-deleted", __callback)
+    end
+
+    alias ColumnInsertedSignal = Table, Int32, Int32 -> 
+    def on_column_inserted(&__block : ColumnInsertedSignal)
+      __callback = ->(_arg0 : LibAtk::Table*, _arg1 : LibAtk::Int32*, _arg2 : LibAtk::Int32*) {
+       __return_value = __block.call(Table.new(_arg0), _arg1, _arg2)
+       __return_value
+      }
+      connect("column-inserted", __callback)
+    end
+
+    alias ColumnReorderedSignal = Table -> 
+    def on_column_reordered(&__block : ColumnReorderedSignal)
+      __callback = ->(_arg0 : LibAtk::Table*) {
+       __return_value = __block.call(Table.new(_arg0))
+       __return_value
+      }
+      connect("column-reordered", __callback)
+    end
+
+    alias ModelChangedSignal = Table -> 
+    def on_model_changed(&__block : ModelChangedSignal)
+      __callback = ->(_arg0 : LibAtk::Table*) {
+       __return_value = __block.call(Table.new(_arg0))
+       __return_value
+      }
+      connect("model-changed", __callback)
+    end
+
+    alias RowDeletedSignal = Table, Int32, Int32 -> 
+    def on_row_deleted(&__block : RowDeletedSignal)
+      __callback = ->(_arg0 : LibAtk::Table*, _arg1 : LibAtk::Int32*, _arg2 : LibAtk::Int32*) {
+       __return_value = __block.call(Table.new(_arg0), _arg1, _arg2)
+       __return_value
+      }
+      connect("row-deleted", __callback)
+    end
+
+    alias RowInsertedSignal = Table, Int32, Int32 -> 
+    def on_row_inserted(&__block : RowInsertedSignal)
+      __callback = ->(_arg0 : LibAtk::Table*, _arg1 : LibAtk::Int32*, _arg2 : LibAtk::Int32*) {
+       __return_value = __block.call(Table.new(_arg0), _arg1, _arg2)
+       __return_value
+      }
+      connect("row-inserted", __callback)
+    end
+
+    alias RowReorderedSignal = Table -> 
+    def on_row_reordered(&__block : RowReorderedSignal)
+      __callback = ->(_arg0 : LibAtk::Table*) {
+       __return_value = __block.call(Table.new(_arg0))
+       __return_value
+      }
+      connect("row-reordered", __callback)
     end
 
   end

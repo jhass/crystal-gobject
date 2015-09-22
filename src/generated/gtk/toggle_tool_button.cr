@@ -30,8 +30,17 @@ module Gtk
     end
 
     def active=(is_active)
-      __return_value = LibGtk.toggle_tool_button_set_active((to_unsafe as LibGtk::ToggleToolButton*), Bool.new(is_active))
+      __return_value = LibGtk.toggle_tool_button_set_active((to_unsafe as LibGtk::ToggleToolButton*), is_active)
       __return_value
+    end
+
+    alias ToggledSignal = ToggleToolButton -> 
+    def on_toggled(&__block : ToggledSignal)
+      __callback = ->(_arg0 : LibGtk::ToggleToolButton*) {
+       __return_value = __block.call(ToggleToolButton.new(_arg0))
+       __return_value
+      }
+      connect("toggled", __callback)
     end
 
   end

@@ -46,7 +46,7 @@ module Gio
 
     def arg0
       __return_value = LibGio.d_bus_message_get_arg0((to_unsafe as LibGio::DBusMessage*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def body
@@ -61,12 +61,12 @@ module Gio
 
     def destination
       __return_value = LibGio.d_bus_message_get_destination((to_unsafe as LibGio::DBusMessage*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def error_name
       __return_value = LibGio.d_bus_message_get_error_name((to_unsafe as LibGio::DBusMessage*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def flags
@@ -81,12 +81,12 @@ module Gio
 
     def header_fields
       __return_value = LibGio.d_bus_message_get_header_fields((to_unsafe as LibGio::DBusMessage*))
-      PointerIterator.new(__return_value) {|__item_50| __item_50 }
+      PointerIterator.new(__return_value) {|__item_20| __item_20 }
     end
 
     def interface
       __return_value = LibGio.d_bus_message_get_interface((to_unsafe as LibGio::DBusMessage*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def locked
@@ -96,7 +96,7 @@ module Gio
 
     def member
       __return_value = LibGio.d_bus_message_get_member((to_unsafe as LibGio::DBusMessage*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def message_type
@@ -111,7 +111,7 @@ module Gio
 
     def path
       __return_value = LibGio.d_bus_message_get_path((to_unsafe as LibGio::DBusMessage*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def reply_serial
@@ -121,7 +121,7 @@ module Gio
 
     def sender
       __return_value = LibGio.d_bus_message_get_sender((to_unsafe as LibGio::DBusMessage*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def serial
@@ -131,7 +131,7 @@ module Gio
 
     def signature
       __return_value = LibGio.d_bus_message_get_signature((to_unsafe as LibGio::DBusMessage*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def unix_fd_list
@@ -156,7 +156,7 @@ module Gio
 
     def print(indent)
       __return_value = LibGio.d_bus_message_print((to_unsafe as LibGio::DBusMessage*), UInt32.new(indent))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def body=(body)
@@ -243,7 +243,7 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_message_to_blob((to_unsafe as LibGio::DBusMessage*), UInt64.new(out_size), capabilities, pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_28| __item_28 }
+      PointerIterator.new(__return_value) {|__item_4| __item_4 }
     end
 
     def to_gerror

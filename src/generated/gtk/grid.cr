@@ -98,7 +98,7 @@ module Gtk
     end
 
     def column_homogeneous=(homogeneous)
-      __return_value = LibGtk.grid_set_column_homogeneous((to_unsafe as LibGtk::Grid*), Bool.new(homogeneous))
+      __return_value = LibGtk.grid_set_column_homogeneous((to_unsafe as LibGtk::Grid*), homogeneous)
       __return_value
     end
 
@@ -113,7 +113,7 @@ module Gtk
     end
 
     def row_homogeneous=(homogeneous)
-      __return_value = LibGtk.grid_set_row_homogeneous((to_unsafe as LibGtk::Grid*), Bool.new(homogeneous))
+      __return_value = LibGtk.grid_set_row_homogeneous((to_unsafe as LibGtk::Grid*), homogeneous)
       __return_value
     end
 

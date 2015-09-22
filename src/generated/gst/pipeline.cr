@@ -43,7 +43,7 @@ module Gst
     end
 
     def auto_flush_bus=(auto_flush)
-      __return_value = LibGst.pipeline_set_auto_flush_bus((to_unsafe as LibGst::Pipeline*), Bool.new(auto_flush))
+      __return_value = LibGst.pipeline_set_auto_flush_bus((to_unsafe as LibGst::Pipeline*), auto_flush)
       __return_value
     end
 

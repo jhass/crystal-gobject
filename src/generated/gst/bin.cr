@@ -82,6 +82,33 @@ module Gst
       __return_value
     end
 
+    alias DoLatencySignal = Bin -> Bool
+    def on_do_latency(&__block : DoLatencySignal)
+      __callback = ->(_arg0 : LibGst::Bin*) {
+       __return_value = __block.call(Bin.new(_arg0))
+       __return_value
+      }
+      connect("do-latency", __callback)
+    end
+
+    alias ElementAddedSignal = Bin, Gst::Element -> 
+    def on_element_added(&__block : ElementAddedSignal)
+      __callback = ->(_arg0 : LibGst::Bin*, _arg1 : LibGst::LibGst::Element*) {
+       __return_value = __block.call(Bin.new(_arg0), Gst::Element.new(_arg1))
+       __return_value
+      }
+      connect("element-added", __callback)
+    end
+
+    alias ElementRemovedSignal = Bin, Gst::Element -> 
+    def on_element_removed(&__block : ElementRemovedSignal)
+      __callback = ->(_arg0 : LibGst::Bin*, _arg1 : LibGst::LibGst::Element*) {
+       __return_value = __block.call(Bin.new(_arg0), Gst::Element.new(_arg1))
+       __return_value
+      }
+      connect("element-removed", __callback)
+    end
+
   end
 end
 

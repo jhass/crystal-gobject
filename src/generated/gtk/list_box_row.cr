@@ -43,13 +43,13 @@ module Gtk
       __return_value
     end
 
-    def is_selected
+    def selected?
       __return_value = LibGtk.list_box_row_is_selected((to_unsafe as LibGtk::ListBoxRow*))
       __return_value
     end
 
     def activatable=(activatable)
-      __return_value = LibGtk.list_box_row_set_activatable((to_unsafe as LibGtk::ListBoxRow*), Bool.new(activatable))
+      __return_value = LibGtk.list_box_row_set_activatable((to_unsafe as LibGtk::ListBoxRow*), activatable)
       __return_value
     end
 
@@ -59,8 +59,17 @@ module Gtk
     end
 
     def selectable=(selectable)
-      __return_value = LibGtk.list_box_row_set_selectable((to_unsafe as LibGtk::ListBoxRow*), Bool.new(selectable))
+      __return_value = LibGtk.list_box_row_set_selectable((to_unsafe as LibGtk::ListBoxRow*), selectable)
       __return_value
+    end
+
+    alias ActivateSignal = ListBoxRow -> 
+    def on_activate(&__block : ActivateSignal)
+      __callback = ->(_arg0 : LibGtk::ListBoxRow*) {
+       __return_value = __block.call(ListBoxRow.new(_arg0))
+       __return_value
+      }
+      connect("activate", __callback)
     end
 
   end

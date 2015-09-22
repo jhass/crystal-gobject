@@ -12,7 +12,7 @@ module Gio
     # Implements Seekable
     def etag
       __return_value = LibGio.file_output_stream_get_etag((to_unsafe as LibGio::FileOutputStream*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def query_info(attributes, cancellable)

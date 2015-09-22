@@ -34,22 +34,31 @@ module Atk
 
     def uri(i)
       __return_value = LibAtk.hyperlink_get_uri((to_unsafe as LibAtk::Hyperlink*), Int32.new(i))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
-    def is_inline
+    def inline?
       __return_value = LibAtk.hyperlink_is_inline((to_unsafe as LibAtk::Hyperlink*))
       __return_value
     end
 
-    def is_selected_link
+    def selected_link?
       __return_value = LibAtk.hyperlink_is_selected_link((to_unsafe as LibAtk::Hyperlink*))
       __return_value
     end
 
-    def is_valid
+    def valid?
       __return_value = LibAtk.hyperlink_is_valid((to_unsafe as LibAtk::Hyperlink*))
       __return_value
+    end
+
+    alias LinkActivatedSignal = Hyperlink -> 
+    def on_link_activated(&__block : LinkActivatedSignal)
+      __callback = ->(_arg0 : LibAtk::Hyperlink*) {
+       __return_value = __block.call(Hyperlink.new(_arg0))
+       __return_value
+      }
+      connect("link-activated", __callback)
     end
 
   end

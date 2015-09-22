@@ -28,18 +28,27 @@ module Gtk
     end
 
     def active=(is_active)
-      __return_value = LibGtk.toggle_action_set_active((to_unsafe as LibGtk::ToggleAction*), Bool.new(is_active))
+      __return_value = LibGtk.toggle_action_set_active((to_unsafe as LibGtk::ToggleAction*), is_active)
       __return_value
     end
 
     def draw_as_radio=(draw_as_radio)
-      __return_value = LibGtk.toggle_action_set_draw_as_radio((to_unsafe as LibGtk::ToggleAction*), Bool.new(draw_as_radio))
+      __return_value = LibGtk.toggle_action_set_draw_as_radio((to_unsafe as LibGtk::ToggleAction*), draw_as_radio)
       __return_value
     end
 
     def toggled
       __return_value = LibGtk.toggle_action_toggled((to_unsafe as LibGtk::ToggleAction*))
       __return_value
+    end
+
+    alias ToggledSignal = ToggleAction -> 
+    def on_toggled(&__block : ToggledSignal)
+      __callback = ->(_arg0 : LibGtk::ToggleAction*) {
+       __return_value = __block.call(ToggleAction.new(_arg0))
+       __return_value
+      }
+      connect("toggled", __callback)
     end
 
   end

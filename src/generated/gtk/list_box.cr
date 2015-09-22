@@ -109,7 +109,7 @@ module Gtk
     end
 
     def activate_on_single_click=(single)
-      __return_value = LibGtk.list_box_set_activate_on_single_click((to_unsafe as LibGtk::ListBox*), Bool.new(single))
+      __return_value = LibGtk.list_box_set_activate_on_single_click((to_unsafe as LibGtk::ListBox*), single)
       __return_value
     end
 
@@ -151,6 +151,78 @@ module Gtk
     def unselect_row(row)
       __return_value = LibGtk.list_box_unselect_row((to_unsafe as LibGtk::ListBox*), (row.to_unsafe as LibGtk::ListBoxRow*))
       __return_value
+    end
+
+    alias ActivateCursorRowSignal = ListBox -> 
+    def on_activate_cursor_row(&__block : ActivateCursorRowSignal)
+      __callback = ->(_arg0 : LibGtk::ListBox*) {
+       __return_value = __block.call(ListBox.new(_arg0))
+       __return_value
+      }
+      connect("activate-cursor-row", __callback)
+    end
+
+    alias MoveCursorSignal = ListBox, Gtk::MovementStep, Int32 -> 
+    def on_move_cursor(&__block : MoveCursorSignal)
+      __callback = ->(_arg0 : LibGtk::ListBox*, _arg1 : LibGtk::LibGtk::MovementStep*, _arg2 : LibGtk::Int32*) {
+       __return_value = __block.call(ListBox.new(_arg0), _arg1, _arg2)
+       __return_value
+      }
+      connect("move-cursor", __callback)
+    end
+
+    alias RowActivatedSignal = ListBox, Gtk::ListBoxRow -> 
+    def on_row_activated(&__block : RowActivatedSignal)
+      __callback = ->(_arg0 : LibGtk::ListBox*, _arg1 : LibGtk::LibGtk::ListBoxRow*) {
+       __return_value = __block.call(ListBox.new(_arg0), Gtk::ListBoxRow.new(_arg1))
+       __return_value
+      }
+      connect("row-activated", __callback)
+    end
+
+    alias RowSelectedSignal = ListBox, Gtk::ListBoxRow -> 
+    def on_row_selected(&__block : RowSelectedSignal)
+      __callback = ->(_arg0 : LibGtk::ListBox*, _arg1 : LibGtk::LibGtk::ListBoxRow*) {
+       __return_value = __block.call(ListBox.new(_arg0), Gtk::ListBoxRow.new(_arg1))
+       __return_value
+      }
+      connect("row-selected", __callback)
+    end
+
+    alias SelectAllSignal = ListBox -> 
+    def on_select_all(&__block : SelectAllSignal)
+      __callback = ->(_arg0 : LibGtk::ListBox*) {
+       __return_value = __block.call(ListBox.new(_arg0))
+       __return_value
+      }
+      connect("select-all", __callback)
+    end
+
+    alias SelectedRowsChangedSignal = ListBox -> 
+    def on_selected_rows_changed(&__block : SelectedRowsChangedSignal)
+      __callback = ->(_arg0 : LibGtk::ListBox*) {
+       __return_value = __block.call(ListBox.new(_arg0))
+       __return_value
+      }
+      connect("selected-rows-changed", __callback)
+    end
+
+    alias ToggleCursorRowSignal = ListBox -> 
+    def on_toggle_cursor_row(&__block : ToggleCursorRowSignal)
+      __callback = ->(_arg0 : LibGtk::ListBox*) {
+       __return_value = __block.call(ListBox.new(_arg0))
+       __return_value
+      }
+      connect("toggle-cursor-row", __callback)
+    end
+
+    alias UnselectAllSignal = ListBox -> 
+    def on_unselect_all(&__block : UnselectAllSignal)
+      __callback = ->(_arg0 : LibGtk::ListBox*) {
+       __return_value = __block.call(ListBox.new(_arg0))
+       __return_value
+      }
+      connect("unselect-all", __callback)
     end
 
   end

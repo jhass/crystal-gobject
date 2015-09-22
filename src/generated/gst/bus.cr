@@ -86,7 +86,7 @@ module Gst
     end
 
     def flushing=(flushing)
-      __return_value = LibGst.bus_set_flushing((to_unsafe as LibGst::Bus*), Bool.new(flushing))
+      __return_value = LibGst.bus_set_flushing((to_unsafe as LibGst::Bus*), flushing)
       __return_value
     end
 
@@ -108,6 +108,24 @@ module Gst
     def timed_pop_filtered(timeout, types)
       __return_value = LibGst.bus_timed_pop_filtered((to_unsafe as LibGst::Bus*), UInt64.new(timeout), types)
       Gst::Message.new(__return_value) if __return_value
+    end
+
+    alias MessageSignal = Bus, Gst::Message -> 
+    def on_message(&__block : MessageSignal)
+      __callback = ->(_arg0 : LibGst::Bus*, _arg1 : LibGst::LibGst::Message*) {
+       __return_value = __block.call(Bus.new(_arg0), Gst::Message.new(_arg1))
+       __return_value
+      }
+      connect("message", __callback)
+    end
+
+    alias SyncMessageSignal = Bus, Gst::Message -> 
+    def on_sync_message(&__block : SyncMessageSignal)
+      __callback = ->(_arg0 : LibGst::Bus*, _arg1 : LibGst::LibGst::Message*) {
+       __return_value = __block.call(Bus.new(_arg0), Gst::Message.new(_arg1))
+       __return_value
+      }
+      connect("sync-message", __callback)
     end
 
   end

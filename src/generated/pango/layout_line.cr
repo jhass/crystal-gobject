@@ -25,7 +25,7 @@ module Pango
     end
 
     def index_to_x(index, trailing, x_pos)
-      __return_value = LibPango.layout_line_index_to_x((to_unsafe as LibPango::LayoutLine*), Int32.new(index), Bool.new(trailing), Int32.new(x_pos))
+      __return_value = LibPango.layout_line_index_to_x((to_unsafe as LibPango::LayoutLine*), Int32.new(index), trailing, Int32.new(x_pos))
       __return_value
     end
 

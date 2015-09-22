@@ -19,7 +19,7 @@ module Gdk
 
 
     def self.grab_info_libgtk_only(display, device, grab_window, owner_events)
-      __return_value = LibGdk.device_grab_info_libgtk_only((display.to_unsafe as LibGdk::Display*), (device.to_unsafe as LibGdk::Device*), (grab_window.to_unsafe as LibGdk::Window*), Bool.new(owner_events))
+      __return_value = LibGdk.device_grab_info_libgtk_only((display.to_unsafe as LibGdk::Display*), (device.to_unsafe as LibGdk::Device*), (grab_window.to_unsafe as LibGdk::Window*), owner_events)
       __return_value
     end
 
@@ -75,7 +75,7 @@ module Gdk
 
     def name
       __return_value = LibGdk.device_get_name((to_unsafe as LibGdk::Device*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def position(screen, x, y)
@@ -90,7 +90,7 @@ module Gdk
 
     def product_id
       __return_value = LibGdk.device_get_product_id((to_unsafe as LibGdk::Device*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def source
@@ -100,7 +100,7 @@ module Gdk
 
     def vendor_id
       __return_value = LibGdk.device_get_vendor_id((to_unsafe as LibGdk::Device*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def window_at_position(win_x, win_y)
@@ -114,7 +114,7 @@ module Gdk
     end
 
     def grab(window, grab_ownership, owner_events, event_mask, cursor, time)
-      __return_value = LibGdk.device_grab((to_unsafe as LibGdk::Device*), (window.to_unsafe as LibGdk::Window*), grab_ownership, Bool.new(owner_events), event_mask, cursor && (cursor.to_unsafe as LibGdk::Cursor*), UInt32.new(time))
+      __return_value = LibGdk.device_grab((to_unsafe as LibGdk::Device*), (window.to_unsafe as LibGdk::Window*), grab_ownership, owner_events, event_mask, cursor && (cursor.to_unsafe as LibGdk::Cursor*), UInt32.new(time))
       __return_value
     end
 
@@ -151,6 +151,15 @@ module Gdk
     def warp(screen, x, y)
       __return_value = LibGdk.device_warp((to_unsafe as LibGdk::Device*), (screen.to_unsafe as LibGdk::Screen*), Int32.new(x), Int32.new(y))
       __return_value
+    end
+
+    alias ChangedSignal = Device -> 
+    def on_changed(&__block : ChangedSignal)
+      __callback = ->(_arg0 : LibGdk::Device*) {
+       __return_value = __block.call(Device.new(_arg0))
+       __return_value
+      }
+      connect("changed", __callback)
     end
 
   end

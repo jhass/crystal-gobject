@@ -34,7 +34,7 @@ module Atk
 
     def description
       __return_value = LibAtk.object_get_description((to_unsafe as LibAtk::Object*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def index_in_parent
@@ -59,12 +59,12 @@ module Atk
 
     def name
       __return_value = LibAtk.object_get_name((to_unsafe as LibAtk::Object*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def object_locale
       __return_value = LibAtk.object_get_object_locale((to_unsafe as LibAtk::Object*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def parent
@@ -83,7 +83,7 @@ module Atk
     end
 
     def notify_state_change(state, value)
-      __return_value = LibAtk.object_notify_state_change((to_unsafe as LibAtk::Object*), UInt64.new(state), Bool.new(value))
+      __return_value = LibAtk.object_notify_state_change((to_unsafe as LibAtk::Object*), UInt64.new(state), value)
       __return_value
     end
 
@@ -135,6 +135,60 @@ module Atk
     def role=(role)
       __return_value = LibAtk.object_set_role((to_unsafe as LibAtk::Object*), role)
       __return_value
+    end
+
+    alias ActiveDescendantChangedSignal = Object, Void* -> 
+    def on_active_descendant_changed(&__block : ActiveDescendantChangedSignal)
+      __callback = ->(_arg0 : LibAtk::Object*, _arg1 : LibAtk::Void**) {
+       __return_value = __block.call(Object.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("active-descendant-changed", __callback)
+    end
+
+    alias ChildrenChangedSignal = Object, UInt32, Void* -> 
+    def on_children_changed(&__block : ChildrenChangedSignal)
+      __callback = ->(_arg0 : LibAtk::Object*, _arg1 : LibAtk::UInt32*, _arg2 : LibAtk::Void**) {
+       __return_value = __block.call(Object.new(_arg0), _arg1, _arg2)
+       __return_value
+      }
+      connect("children-changed", __callback)
+    end
+
+    alias FocusEventSignal = Object, Bool -> 
+    def on_focus_event(&__block : FocusEventSignal)
+      __callback = ->(_arg0 : LibAtk::Object*, _arg1 : LibAtk::Bool*) {
+       __return_value = __block.call(Object.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("focus-event", __callback)
+    end
+
+    alias PropertyChangeSignal = Object, Void* -> 
+    def on_property_change(&__block : PropertyChangeSignal)
+      __callback = ->(_arg0 : LibAtk::Object*, _arg1 : LibAtk::Void**) {
+       __return_value = __block.call(Object.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("property-change", __callback)
+    end
+
+    alias StateChangeSignal = Object, UInt8, Bool -> 
+    def on_state_change(&__block : StateChangeSignal)
+      __callback = ->(_arg0 : LibAtk::Object*, _arg1 : LibAtk::UInt8**, _arg2 : LibAtk::Bool*) {
+       __return_value = __block.call(Object.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)), _arg2)
+       __return_value
+      }
+      connect("state-change", __callback)
+    end
+
+    alias VisibleDataChangedSignal = Object -> 
+    def on_visible_data_changed(&__block : VisibleDataChangedSignal)
+      __callback = ->(_arg0 : LibAtk::Object*) {
+       __return_value = __block.call(Object.new(_arg0))
+       __return_value
+      }
+      connect("visible-data-changed", __callback)
     end
 
   end

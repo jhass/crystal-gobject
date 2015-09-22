@@ -21,7 +21,7 @@ module Gio
 
     def self.lookup(annotations, name)
       __return_value = LibGio.d_bus_annotation_info_lookup(annotations && annotations, name)
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
   end

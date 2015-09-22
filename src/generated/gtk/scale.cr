@@ -72,18 +72,27 @@ module Gtk
     end
 
     def draw_value=(draw_value)
-      __return_value = LibGtk.scale_set_draw_value((to_unsafe as LibGtk::Scale*), Bool.new(draw_value))
+      __return_value = LibGtk.scale_set_draw_value((to_unsafe as LibGtk::Scale*), draw_value)
       __return_value
     end
 
     def has_origin=(has_origin)
-      __return_value = LibGtk.scale_set_has_origin((to_unsafe as LibGtk::Scale*), Bool.new(has_origin))
+      __return_value = LibGtk.scale_set_has_origin((to_unsafe as LibGtk::Scale*), has_origin)
       __return_value
     end
 
     def value_pos=(pos)
       __return_value = LibGtk.scale_set_value_pos((to_unsafe as LibGtk::Scale*), pos)
       __return_value
+    end
+
+    alias FormatValueSignal = Scale, Float64 -> UInt8
+    def on_format_value(&__block : FormatValueSignal)
+      __callback = ->(_arg0 : LibGtk::Scale*, _arg1 : LibGtk::Float64*) {
+       __return_value = __block.call(Scale.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("format-value", __callback)
     end
 
   end

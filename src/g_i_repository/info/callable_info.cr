@@ -9,6 +9,22 @@ module GIRepository
       def lib_definition
         @definition
       end
+
+      def wrapper_definition libname, indent=""
+        @definition
+      end
+
+      def tag
+        -1
+      end
+
+      def convert_to_crystal variable
+        "#{@definition}.new(#{variable})"
+      end
+
+      def convert_from_crystal variable
+        variable
+      end
     end
 
     class SelfArgInfo

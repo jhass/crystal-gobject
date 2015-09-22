@@ -13,7 +13,7 @@ module Gtk
 
 
     def activate(context, widget, cell_area, flags, edit_only)
-      __return_value = LibGtk.cell_area_activate((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (cell_area.to_unsafe as LibCairo::RectangleInt*), flags, Bool.new(edit_only))
+      __return_value = LibGtk.cell_area_activate((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (cell_area.to_unsafe as LibCairo::RectangleInt*), flags, edit_only)
       __return_value
     end
 
@@ -33,7 +33,7 @@ module Gtk
     end
 
     def apply_attributes(tree_model, iter, is_expander, is_expanded)
-      __return_value = LibGtk.cell_area_apply_attributes((to_unsafe as LibGtk::CellArea*), (tree_model.to_unsafe as LibGtk::TreeModel*), (iter.to_unsafe as LibGtk::TreeIter*), Bool.new(is_expander), Bool.new(is_expanded))
+      __return_value = LibGtk.cell_area_apply_attributes((to_unsafe as LibGtk::CellArea*), (tree_model.to_unsafe as LibGtk::TreeModel*), (iter.to_unsafe as LibGtk::TreeIter*), is_expander, is_expanded)
       __return_value
     end
 
@@ -104,7 +104,7 @@ module Gtk
 
     def current_path_string
       __return_value = LibGtk.cell_area_get_current_path_string((to_unsafe as LibGtk::CellArea*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def edit_widget
@@ -167,12 +167,12 @@ module Gtk
       __return_value
     end
 
-    def is_activatable
+    def activatable?
       __return_value = LibGtk.cell_area_is_activatable((to_unsafe as LibGtk::CellArea*))
       __return_value
     end
 
-    def is_focus_sibling(renderer, sibling)
+    def focus_sibling?(renderer, sibling)
       __return_value = LibGtk.cell_area_is_focus_sibling((to_unsafe as LibGtk::CellArea*), (renderer.to_unsafe as LibGtk::CellRenderer*), (sibling.to_unsafe as LibGtk::CellRenderer*))
       __return_value
     end
@@ -188,7 +188,7 @@ module Gtk
     end
 
     def render(context, widget, cr, background_area, cell_area, flags, paint_focus)
-      __return_value = LibGtk.cell_area_render((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (cr.to_unsafe as LibCairo::Context*), (background_area.to_unsafe as LibCairo::RectangleInt*), (cell_area.to_unsafe as LibCairo::RectangleInt*), flags, Bool.new(paint_focus))
+      __return_value = LibGtk.cell_area_render((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (cr.to_unsafe as LibCairo::Context*), (background_area.to_unsafe as LibCairo::RectangleInt*), (cell_area.to_unsafe as LibCairo::RectangleInt*), flags, paint_focus)
       __return_value
     end
 
@@ -203,8 +203,44 @@ module Gtk
     end
 
     def stop_editing(canceled)
-      __return_value = LibGtk.cell_area_stop_editing((to_unsafe as LibGtk::CellArea*), Bool.new(canceled))
+      __return_value = LibGtk.cell_area_stop_editing((to_unsafe as LibGtk::CellArea*), canceled)
       __return_value
+    end
+
+    alias AddEditableSignal = CellArea, Gtk::CellRenderer, Gtk::CellEditable, Cairo::RectangleInt, UInt8 -> 
+    def on_add_editable(&__block : AddEditableSignal)
+      __callback = ->(_arg0 : LibGtk::CellArea*, _arg1 : LibGtk::LibGtk::CellRenderer*, _arg2 : LibGtk::LibGtk::CellEditable*, _arg3 : LibGtk::Libcairo::RectangleInt*, _arg4 : LibGtk::UInt8**) {
+       __return_value = __block.call(CellArea.new(_arg0), Gtk::CellRenderer.new(_arg1), _arg2, Cairo::RectangleInt.new(_arg3), (raise "Expected string but got null" unless _arg4; String.new(_arg4)))
+       __return_value
+      }
+      connect("add-editable", __callback)
+    end
+
+    alias ApplyAttributesSignal = CellArea, Gtk::TreeModel, Gtk::TreeIter, Bool, Bool -> 
+    def on_apply_attributes(&__block : ApplyAttributesSignal)
+      __callback = ->(_arg0 : LibGtk::CellArea*, _arg1 : LibGtk::LibGtk::TreeModel*, _arg2 : LibGtk::LibGtk::TreeIter*, _arg3 : LibGtk::Bool*, _arg4 : LibGtk::Bool*) {
+       __return_value = __block.call(CellArea.new(_arg0), _arg1, Gtk::TreeIter.new(_arg2), _arg3, _arg4)
+       __return_value
+      }
+      connect("apply-attributes", __callback)
+    end
+
+    alias FocusChangedSignal = CellArea, Gtk::CellRenderer, UInt8 -> 
+    def on_focus_changed(&__block : FocusChangedSignal)
+      __callback = ->(_arg0 : LibGtk::CellArea*, _arg1 : LibGtk::LibGtk::CellRenderer*, _arg2 : LibGtk::UInt8**) {
+       __return_value = __block.call(CellArea.new(_arg0), Gtk::CellRenderer.new(_arg1), (raise "Expected string but got null" unless _arg2; String.new(_arg2)))
+       __return_value
+      }
+      connect("focus-changed", __callback)
+    end
+
+    alias RemoveEditableSignal = CellArea, Gtk::CellRenderer, Gtk::CellEditable -> 
+    def on_remove_editable(&__block : RemoveEditableSignal)
+      __callback = ->(_arg0 : LibGtk::CellArea*, _arg1 : LibGtk::LibGtk::CellRenderer*, _arg2 : LibGtk::LibGtk::CellEditable*) {
+       __return_value = __block.call(CellArea.new(_arg0), Gtk::CellRenderer.new(_arg1), _arg2)
+       __return_value
+      }
+      connect("remove-editable", __callback)
     end
 
   end

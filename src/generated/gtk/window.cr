@@ -56,7 +56,7 @@ module Gtk
 
     def self.default_icon_name
       __return_value = LibGtk.window_get_default_icon_name
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def self.list_toplevels
@@ -65,7 +65,7 @@ module Gtk
     end
 
     def self.set_auto_startup_notification(setting)
-      __return_value = LibGtk.window_set_auto_startup_notification(Bool.new(setting))
+      __return_value = LibGtk.window_set_auto_startup_notification(setting)
       __return_value
     end
 
@@ -92,7 +92,7 @@ module Gtk
     end
 
     def self.set_interactive_debugging(enable)
-      __return_value = LibGtk.window_set_interactive_debugging(Bool.new(enable))
+      __return_value = LibGtk.window_set_interactive_debugging(enable)
       __return_value
     end
 
@@ -233,7 +233,7 @@ module Gtk
 
     def icon_name
       __return_value = LibGtk.window_get_icon_name((to_unsafe as LibGtk::Window*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def mnemonic_modifier
@@ -273,7 +273,7 @@ module Gtk
 
     def role
       __return_value = LibGtk.window_get_role((to_unsafe as LibGtk::Window*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def screen
@@ -298,7 +298,7 @@ module Gtk
 
     def title
       __return_value = LibGtk.window_get_title((to_unsafe as LibGtk::Window*))
-      raise "Expected string but got null" unless __return_value; String.new(__return_value)
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
     def titlebar
@@ -341,12 +341,12 @@ module Gtk
       __return_value
     end
 
-    def is_active
+    def active?
       __return_value = LibGtk.window_is_active((to_unsafe as LibGtk::Window*))
       __return_value
     end
 
-    def is_maximized
+    def maximized?
       __return_value = LibGtk.window_is_maximized((to_unsafe as LibGtk::Window*))
       __return_value
     end
@@ -417,7 +417,7 @@ module Gtk
     end
 
     def accept_focus=(setting)
-      __return_value = LibGtk.window_set_accept_focus((to_unsafe as LibGtk::Window*), Bool.new(setting))
+      __return_value = LibGtk.window_set_accept_focus((to_unsafe as LibGtk::Window*), setting)
       __return_value
     end
 
@@ -432,7 +432,7 @@ module Gtk
     end
 
     def decorated=(setting)
-      __return_value = LibGtk.window_set_decorated((to_unsafe as LibGtk::Window*), Bool.new(setting))
+      __return_value = LibGtk.window_set_decorated((to_unsafe as LibGtk::Window*), setting)
       __return_value
     end
 
@@ -452,12 +452,12 @@ module Gtk
     end
 
     def deletable=(setting)
-      __return_value = LibGtk.window_set_deletable((to_unsafe as LibGtk::Window*), Bool.new(setting))
+      __return_value = LibGtk.window_set_deletable((to_unsafe as LibGtk::Window*), setting)
       __return_value
     end
 
     def destroy_with_parent=(setting)
-      __return_value = LibGtk.window_set_destroy_with_parent((to_unsafe as LibGtk::Window*), Bool.new(setting))
+      __return_value = LibGtk.window_set_destroy_with_parent((to_unsafe as LibGtk::Window*), setting)
       __return_value
     end
 
@@ -467,12 +467,12 @@ module Gtk
     end
 
     def focus_on_map=(setting)
-      __return_value = LibGtk.window_set_focus_on_map((to_unsafe as LibGtk::Window*), Bool.new(setting))
+      __return_value = LibGtk.window_set_focus_on_map((to_unsafe as LibGtk::Window*), setting)
       __return_value
     end
 
     def focus_visible=(setting)
-      __return_value = LibGtk.window_set_focus_visible((to_unsafe as LibGtk::Window*), Bool.new(setting))
+      __return_value = LibGtk.window_set_focus_visible((to_unsafe as LibGtk::Window*), setting)
       __return_value
     end
 
@@ -487,17 +487,17 @@ module Gtk
     end
 
     def has_resize_grip=(value)
-      __return_value = LibGtk.window_set_has_resize_grip((to_unsafe as LibGtk::Window*), Bool.new(value))
+      __return_value = LibGtk.window_set_has_resize_grip((to_unsafe as LibGtk::Window*), value)
       __return_value
     end
 
     def has_user_ref_count=(setting)
-      __return_value = LibGtk.window_set_has_user_ref_count((to_unsafe as LibGtk::Window*), Bool.new(setting))
+      __return_value = LibGtk.window_set_has_user_ref_count((to_unsafe as LibGtk::Window*), setting)
       __return_value
     end
 
     def hide_titlebar_when_maximized=(setting)
-      __return_value = LibGtk.window_set_hide_titlebar_when_maximized((to_unsafe as LibGtk::Window*), Bool.new(setting))
+      __return_value = LibGtk.window_set_hide_titlebar_when_maximized((to_unsafe as LibGtk::Window*), setting)
       __return_value
     end
 
@@ -524,12 +524,12 @@ module Gtk
     end
 
     def keep_above=(setting)
-      __return_value = LibGtk.window_set_keep_above((to_unsafe as LibGtk::Window*), Bool.new(setting))
+      __return_value = LibGtk.window_set_keep_above((to_unsafe as LibGtk::Window*), setting)
       __return_value
     end
 
     def keep_below=(setting)
-      __return_value = LibGtk.window_set_keep_below((to_unsafe as LibGtk::Window*), Bool.new(setting))
+      __return_value = LibGtk.window_set_keep_below((to_unsafe as LibGtk::Window*), setting)
       __return_value
     end
 
@@ -539,12 +539,12 @@ module Gtk
     end
 
     def mnemonics_visible=(setting)
-      __return_value = LibGtk.window_set_mnemonics_visible((to_unsafe as LibGtk::Window*), Bool.new(setting))
+      __return_value = LibGtk.window_set_mnemonics_visible((to_unsafe as LibGtk::Window*), setting)
       __return_value
     end
 
     def modal=(modal)
-      __return_value = LibGtk.window_set_modal((to_unsafe as LibGtk::Window*), Bool.new(modal))
+      __return_value = LibGtk.window_set_modal((to_unsafe as LibGtk::Window*), modal)
       __return_value
     end
 
@@ -559,7 +559,7 @@ module Gtk
     end
 
     def resizable=(resizable)
-      __return_value = LibGtk.window_set_resizable((to_unsafe as LibGtk::Window*), Bool.new(resizable))
+      __return_value = LibGtk.window_set_resizable((to_unsafe as LibGtk::Window*), resizable)
       __return_value
     end
 
@@ -574,12 +574,12 @@ module Gtk
     end
 
     def skip_pager_hint=(setting)
-      __return_value = LibGtk.window_set_skip_pager_hint((to_unsafe as LibGtk::Window*), Bool.new(setting))
+      __return_value = LibGtk.window_set_skip_pager_hint((to_unsafe as LibGtk::Window*), setting)
       __return_value
     end
 
     def skip_taskbar_hint=(setting)
-      __return_value = LibGtk.window_set_skip_taskbar_hint((to_unsafe as LibGtk::Window*), Bool.new(setting))
+      __return_value = LibGtk.window_set_skip_taskbar_hint((to_unsafe as LibGtk::Window*), setting)
       __return_value
     end
 
@@ -609,7 +609,7 @@ module Gtk
     end
 
     def urgency_hint=(setting)
-      __return_value = LibGtk.window_set_urgency_hint((to_unsafe as LibGtk::Window*), Bool.new(setting))
+      __return_value = LibGtk.window_set_urgency_hint((to_unsafe as LibGtk::Window*), setting)
       __return_value
     end
 
@@ -636,6 +636,51 @@ module Gtk
     def unstick
       __return_value = LibGtk.window_unstick((to_unsafe as LibGtk::Window*))
       __return_value
+    end
+
+    alias ActivateDefaultSignal = Window -> 
+    def on_activate_default(&__block : ActivateDefaultSignal)
+      __callback = ->(_arg0 : LibGtk::Window*) {
+       __return_value = __block.call(Window.new(_arg0))
+       __return_value
+      }
+      connect("activate-default", __callback)
+    end
+
+    alias ActivateFocusSignal = Window -> 
+    def on_activate_focus(&__block : ActivateFocusSignal)
+      __callback = ->(_arg0 : LibGtk::Window*) {
+       __return_value = __block.call(Window.new(_arg0))
+       __return_value
+      }
+      connect("activate-focus", __callback)
+    end
+
+    alias EnableDebuggingSignal = Window, Bool -> Bool
+    def on_enable_debugging(&__block : EnableDebuggingSignal)
+      __callback = ->(_arg0 : LibGtk::Window*, _arg1 : LibGtk::Bool*) {
+       __return_value = __block.call(Window.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("enable-debugging", __callback)
+    end
+
+    alias KeysChangedSignal = Window -> 
+    def on_keys_changed(&__block : KeysChangedSignal)
+      __callback = ->(_arg0 : LibGtk::Window*) {
+       __return_value = __block.call(Window.new(_arg0))
+       __return_value
+      }
+      connect("keys-changed", __callback)
+    end
+
+    alias SetFocusSignal = Window, Gtk::Widget -> 
+    def on_set_focus(&__block : SetFocusSignal)
+      __callback = ->(_arg0 : LibGtk::Window*, _arg1 : LibGtk::LibGtk::Widget*) {
+       __return_value = __block.call(Window.new(_arg0), Gtk::Widget.new(_arg1))
+       __return_value
+      }
+      connect("set-focus", __callback)
     end
 
   end

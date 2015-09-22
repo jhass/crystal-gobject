@@ -180,7 +180,7 @@ module GObject
   end
 
   def self.param_spec_boolean(name, nick, blurb, default_value, flags)
-    __return_value = LibGObject.param_spec_boolean(name, nick, blurb, Bool.new(default_value), flags)
+    __return_value = LibGObject.param_spec_boolean(name, nick, blurb, default_value, flags)
     GObject::ParamSpec.new(__return_value)
   end
 
@@ -250,7 +250,7 @@ module GObject
   end
 
   def self.param_spec_pool_new(type_prefixing)
-    __return_value = LibGObject.param_spec_pool_new(Bool.new(type_prefixing))
+    __return_value = LibGObject.param_spec_pool_new(type_prefixing)
     GObject::ParamSpecPool.new(__return_value)
   end
 
@@ -295,7 +295,7 @@ module GObject
   end
 
   def self.param_value_convert(pspec, src_value, dest_value, strict_validation)
-    __return_value = LibGObject.param_value_convert((pspec.to_unsafe as LibGObject::ParamSpec*), (src_value.to_unsafe as LibGObject::Value*), (dest_value.to_unsafe as LibGObject::Value*), Bool.new(strict_validation))
+    __return_value = LibGObject.param_value_convert((pspec.to_unsafe as LibGObject::ParamSpec*), (src_value.to_unsafe as LibGObject::Value*), (dest_value.to_unsafe as LibGObject::Value*), strict_validation)
     __return_value
   end
 
@@ -345,12 +345,12 @@ module GObject
   end
 
   def self.signal_connect_closure(instance, detailed_signal, closure, after)
-    __return_value = LibGObject.signal_connect_closure((instance.to_unsafe as LibGObject::Object*), detailed_signal, (closure.to_unsafe as LibGObject::Closure*), Bool.new(after))
+    __return_value = LibGObject.signal_connect_closure((instance.to_unsafe as LibGObject::Object*), detailed_signal, (closure.to_unsafe as LibGObject::Closure*), after)
     __return_value
   end
 
   def self.signal_connect_closure_by_id(instance, signal_id, detail, closure, after)
-    __return_value = LibGObject.signal_connect_closure_by_id((instance.to_unsafe as LibGObject::Object*), UInt32.new(signal_id), UInt32.new(detail), (closure.to_unsafe as LibGObject::Closure*), Bool.new(after))
+    __return_value = LibGObject.signal_connect_closure_by_id((instance.to_unsafe as LibGObject::Object*), UInt32.new(signal_id), UInt32.new(detail), (closure.to_unsafe as LibGObject::Closure*), after)
     __return_value
   end
 
@@ -410,13 +410,13 @@ module GObject
   end
 
   def self.signal_has_handler_pending(instance, signal_id, detail, may_be_blocked)
-    __return_value = LibGObject.signal_has_handler_pending((instance.to_unsafe as LibGObject::Object*), UInt32.new(signal_id), UInt32.new(detail), Bool.new(may_be_blocked))
+    __return_value = LibGObject.signal_has_handler_pending((instance.to_unsafe as LibGObject::Object*), UInt32.new(signal_id), UInt32.new(detail), may_be_blocked)
     __return_value
   end
 
   def self.signal_list_ids(itype, n_ids)
     __return_value = LibGObject.signal_list_ids(UInt64.new(itype), UInt32.new(n_ids))
-    PointerIterator.new(__return_value) {|__item_3| __item_3 }
+    PointerIterator.new(__return_value) {|__item_59| __item_59 }
   end
 
   def self.signal_lookup(name, itype)
@@ -426,7 +426,7 @@ module GObject
 
   def self.signal_name(signal_id)
     __return_value = LibGObject.signal_name(UInt32.new(signal_id))
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.signal_override_class_closure(signal_id, instance_type, class_closure)
@@ -435,7 +435,7 @@ module GObject
   end
 
   def self.signal_parse_name(detailed_signal, itype, signal_id_p, detail_p, force_detail_quark)
-    __return_value = LibGObject.signal_parse_name(detailed_signal, UInt64.new(itype), UInt32.new(signal_id_p), UInt32.new(detail_p), Bool.new(force_detail_quark))
+    __return_value = LibGObject.signal_parse_name(detailed_signal, UInt64.new(itype), UInt32.new(signal_id_p), UInt32.new(detail_p), force_detail_quark)
     __return_value
   end
 
@@ -481,7 +481,7 @@ module GObject
 
   def self.strdup_value_contents(value)
     __return_value = LibGObject.strdup_value_contents((value.to_unsafe as LibGObject::Value*))
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.type_add_class_private(class_type, private_size)
@@ -541,7 +541,7 @@ module GObject
 
   def self.type_children(type, n_children)
     __return_value = LibGObject.type_children(UInt64.new(type), UInt32.new(n_children))
-    PointerIterator.new(__return_value) {|__item_67| __item_67 }
+    PointerIterator.new(__return_value) {|__item_37| __item_37 }
   end
 
   def self.type_class_add_private(g_class, private_size)
@@ -661,12 +661,12 @@ module GObject
 
   def self.type_interface_prerequisites(interface_type, n_prerequisites)
     __return_value = LibGObject.type_interface_prerequisites(UInt64.new(interface_type), UInt32.new(n_prerequisites))
-    PointerIterator.new(__return_value) {|__item_20| __item_20 }
+    PointerIterator.new(__return_value) {|__item_26| __item_26 }
   end
 
   def self.type_interfaces(type, n_interfaces)
     __return_value = LibGObject.type_interfaces(UInt64.new(type), UInt32.new(n_interfaces))
-    PointerIterator.new(__return_value) {|__item_49| __item_49 }
+    PointerIterator.new(__return_value) {|__item_55| __item_55 }
   end
 
   def self.type_is_a(type, is_a_type)
@@ -676,17 +676,17 @@ module GObject
 
   def self.type_name(type)
     __return_value = LibGObject.type_name(UInt64.new(type))
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.type_name_from_class(g_class)
     __return_value = LibGObject.type_name_from_class((g_class.to_unsafe as LibGObject::TypeClass*))
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.type_name_from_instance(instance)
     __return_value = LibGObject.type_name_from_instance((instance.to_unsafe as LibGObject::TypeInstance*))
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.type_next_base(leaf_type, root_type)

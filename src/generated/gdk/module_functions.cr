@@ -5,7 +5,7 @@ module Gdk
   end
 
   def self.atom_intern(atom_name, only_if_exists)
-    __return_value = LibGdk.atom_intern(atom_name, Bool.new(only_if_exists))
+    __return_value = LibGdk.atom_intern(atom_name, only_if_exists)
     Gdk::Atom.new(__return_value)
   end
 
@@ -130,12 +130,12 @@ module Gdk
   end
 
   def self.drop_finish(context, success, time)
-    __return_value = LibGdk.drop_finish((context.to_unsafe as LibGdk::DragContext*), Bool.new(success), UInt32.new(time))
+    __return_value = LibGdk.drop_finish((context.to_unsafe as LibGdk::DragContext*), success, UInt32.new(time))
     __return_value
   end
 
   def self.drop_reply(context, accepted, time)
-    __return_value = LibGdk.drop_reply((context.to_unsafe as LibGdk::DragContext*), Bool.new(accepted), UInt32.new(time))
+    __return_value = LibGdk.drop_reply((context.to_unsafe as LibGdk::DragContext*), accepted, UInt32.new(time))
     __return_value
   end
 
@@ -206,17 +206,17 @@ module Gdk
 
   def self.display
     __return_value = LibGdk.get_display
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.display_arg_name
     __return_value = LibGdk.get_display_arg_name
-    raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
   end
 
   def self.program_class
     __return_value = LibGdk.get_program_class
-    raise "Expected string but got null" unless __return_value; String.new(__return_value)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.show_events
@@ -240,7 +240,7 @@ module Gdk
   end
 
   def self.keyboard_grab(window, owner_events, time)
-    __return_value = LibGdk.keyboard_grab((window.to_unsafe as LibGdk::Window*), Bool.new(owner_events), UInt32.new(time))
+    __return_value = LibGdk.keyboard_grab((window.to_unsafe as LibGdk::Window*), owner_events, UInt32.new(time))
     __return_value
   end
 
@@ -271,7 +271,7 @@ module Gdk
 
   def self.keyval_name(keyval)
     __return_value = LibGdk.keyval_name(UInt32.new(keyval))
-    raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
   end
 
   def self.keyval_to_lower(keyval)
@@ -345,7 +345,7 @@ module Gdk
   end
 
   def self.pointer_grab(window, owner_events, event_mask, confine_to, cursor, time)
-    __return_value = LibGdk.pointer_grab((window.to_unsafe as LibGdk::Window*), Bool.new(owner_events), event_mask, confine_to && (confine_to.to_unsafe as LibGdk::Window*), cursor && (cursor.to_unsafe as LibGdk::Cursor*), UInt32.new(time))
+    __return_value = LibGdk.pointer_grab((window.to_unsafe as LibGdk::Window*), owner_events, event_mask, confine_to && (confine_to.to_unsafe as LibGdk::Window*), cursor && (cursor.to_unsafe as LibGdk::Cursor*), UInt32.new(time))
     __return_value
   end
 
@@ -415,12 +415,12 @@ module Gdk
   end
 
   def self.selection_owner_set(owner, selection, time, send_event)
-    __return_value = LibGdk.selection_owner_set(owner && (owner.to_unsafe as LibGdk::Window*), (selection.to_unsafe as LibGdk::Atom*), UInt32.new(time), Bool.new(send_event))
+    __return_value = LibGdk.selection_owner_set(owner && (owner.to_unsafe as LibGdk::Window*), (selection.to_unsafe as LibGdk::Atom*), UInt32.new(time), send_event)
     __return_value
   end
 
   def self.selection_owner_set_for_display(display, owner, selection, time, send_event)
-    __return_value = LibGdk.selection_owner_set_for_display((display.to_unsafe as LibGdk::Display*), owner && (owner.to_unsafe as LibGdk::Window*), (selection.to_unsafe as LibGdk::Atom*), UInt32.new(time), Bool.new(send_event))
+    __return_value = LibGdk.selection_owner_set_for_display((display.to_unsafe as LibGdk::Display*), owner && (owner.to_unsafe as LibGdk::Window*), (selection.to_unsafe as LibGdk::Atom*), UInt32.new(time), send_event)
     __return_value
   end
 
@@ -450,7 +450,7 @@ module Gdk
   end
 
   def self.set_show_events(show_events)
-    __return_value = LibGdk.set_show_events(Bool.new(show_events))
+    __return_value = LibGdk.set_show_events(show_events)
     __return_value
   end
 
@@ -521,7 +521,7 @@ module Gdk
 
   def self.utf8_to_string_target(str)
     __return_value = LibGdk.utf8_to_string_target(str)
-    raise "Expected string but got null" unless __return_value; String.new(__return_value) if __return_value
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
   end
 end
 

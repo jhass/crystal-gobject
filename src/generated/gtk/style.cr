@@ -58,6 +58,24 @@ module Gtk
       __return_value
     end
 
+    alias RealizeSignal = Style -> 
+    def on_realize(&__block : RealizeSignal)
+      __callback = ->(_arg0 : LibGtk::Style*) {
+       __return_value = __block.call(Style.new(_arg0))
+       __return_value
+      }
+      connect("realize", __callback)
+    end
+
+    alias UnrealizeSignal = Style -> 
+    def on_unrealize(&__block : UnrealizeSignal)
+      __callback = ->(_arg0 : LibGtk::Style*) {
+       __return_value = __block.call(Style.new(_arg0))
+       __return_value
+      }
+      connect("unrealize", __callback)
+    end
+
   end
 end
 
