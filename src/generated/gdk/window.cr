@@ -49,7 +49,7 @@ module Gdk
     end
 
     def begin_paint_rect(rectangle)
-      __return_value = LibGdk.window_begin_paint_rect((to_unsafe as LibGdk::Window*), (rectangle.to_unsafe as LibCairo::RectangleInt*))
+      __return_value = LibGdk.window_begin_paint_rect((to_unsafe as LibGdk::Window*), (rectangle.to_unsafe as LibGdk::Rectangle*))
       __return_value
     end
 
@@ -152,6 +152,11 @@ module Gdk
 
     def fullscreen
       __return_value = LibGdk.window_fullscreen((to_unsafe as LibGdk::Window*))
+      __return_value
+    end
+
+    def fullscreen_on_monitor(monitor)
+      __return_value = LibGdk.window_fullscreen_on_monitor((to_unsafe as LibGdk::Window*), Int32.new(monitor))
       __return_value
     end
 
@@ -300,6 +305,11 @@ module Gdk
       Gdk::Window.new(__return_value)
     end
 
+    def pass_through
+      __return_value = LibGdk.window_get_pass_through((to_unsafe as LibGdk::Window*))
+      __return_value
+    end
+
     def pointer(x, y, mask)
       __return_value = LibGdk.window_get_pointer((to_unsafe as LibGdk::Window*), Int32.new(x), Int32.new(y), mask)
       Gdk::Window.new(__return_value) if __return_value
@@ -411,7 +421,7 @@ module Gdk
     end
 
     def invalidate_rect(rect, invalidate_children)
-      __return_value = LibGdk.window_invalidate_rect((to_unsafe as LibGdk::Window*), rect && (rect.to_unsafe as LibCairo::RectangleInt*), invalidate_children)
+      __return_value = LibGdk.window_invalidate_rect((to_unsafe as LibGdk::Window*), rect && (rect.to_unsafe as LibGdk::Rectangle*), invalidate_children)
       __return_value
     end
 
@@ -652,6 +662,11 @@ module Gdk
 
     def override_redirect=(override_redirect)
       __return_value = LibGdk.window_set_override_redirect((to_unsafe as LibGdk::Window*), override_redirect)
+      __return_value
+    end
+
+    def pass_through=(pass_through)
+      __return_value = LibGdk.window_set_pass_through((to_unsafe as LibGdk::Window*), pass_through)
       __return_value
     end
 

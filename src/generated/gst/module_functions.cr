@@ -24,6 +24,11 @@ module Gst
     __return_value
   end
 
+  def self.debug_bin_to_dot_data(bin, details)
+    __return_value = LibGst.debug_bin_to_dot_data((bin.to_unsafe as LibGst::Bin*), details)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+  end
+
   def self.debug_bin_to_dot_file(bin, details, file_name)
     __return_value = LibGst.debug_bin_to_dot_file((bin.to_unsafe as LibGst::Bin*), details, file_name)
     __return_value
@@ -74,8 +79,8 @@ module Gst
     (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
-  def self.debug_log_default(category, level, file, function, line, object, message, unused)
-    __return_value = LibGst.debug_log_default((category.to_unsafe as LibGst::DebugCategory*), level, file, function, Int32.new(line), object && (object.to_unsafe as LibGObject::Object*), (message.to_unsafe as LibGst::DebugMessage*), unused)
+  def self.debug_log_default(category, level, file, function, line, object, message, user_data)
+    __return_value = LibGst.debug_log_default((category.to_unsafe as LibGst::DebugCategory*), level, file, function, Int32.new(line), object && (object.to_unsafe as LibGObject::Object*), (message.to_unsafe as LibGst::DebugMessage*), user_data)
     __return_value
   end
 
@@ -250,7 +255,7 @@ module Gst
 
   def self.meta_api_type_get_tags(api)
     __return_value = LibGst.meta_api_type_get_tags(UInt64.new(api))
-    PointerIterator.new(__return_value) {|__item_16| (raise "Expected string but got null" unless __item_16; String.new(__item_16)) }
+    PointerIterator.new(__return_value) {|__item_72| (raise "Expected string but got null" unless __item_72; String.new(__item_72)) }
   end
 
   def self.meta_api_type_has_tag(api, tag)
@@ -291,6 +296,16 @@ module Gst
   def self.param_spec_fraction(name, nick, blurb, min_num, min_denom, max_num, max_denom, default_num, default_denom, flags)
     __return_value = LibGst.param_spec_fraction(name, nick, blurb, Int32.new(min_num), Int32.new(min_denom), Int32.new(max_num), Int32.new(max_denom), Int32.new(default_num), Int32.new(default_denom), flags)
     GObject::ParamSpec.new(__return_value)
+  end
+
+  def self.parent_buffer_meta_api_get_type
+    __return_value = LibGst.parent_buffer_meta_api_get_type
+    __return_value
+  end
+
+  def self.parent_buffer_meta_get_info
+    __return_value = LibGst.parent_buffer_meta_get_info
+    Gst::MetaInfo.new(__return_value)
   end
 
   def self.parse_bin_from_description(bin_description, ghost_unlinked_pads)
@@ -353,6 +368,21 @@ module Gst
   def self.preset_set_app_dir(app_dir)
     __return_value = LibGst.preset_set_app_dir(app_dir)
     __return_value
+  end
+
+  def self.protection_meta_api_get_type
+    __return_value = LibGst.protection_meta_api_get_type
+    __return_value
+  end
+
+  def self.protection_meta_get_info
+    __return_value = LibGst.protection_meta_get_info
+    Gst::MetaInfo.new(__return_value)
+  end
+
+  def self.protection_select_system(system_identifiers)
+    __return_value = LibGst.protection_select_system(system_identifiers)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.query_type_get_flags(type)
@@ -450,6 +480,16 @@ module Gst
     __return_value
   end
 
+  def self.tag_register(name, flag, type, nick, blurb, func : LibGst::TagMergeFunc?)
+    __return_value = LibGst.tag_register(name, flag, UInt64.new(type), nick, blurb, func && func)
+    __return_value
+  end
+
+  def self.tag_register_static(name, flag, type, nick, blurb, func : LibGst::TagMergeFunc?)
+    __return_value = LibGst.tag_register_static(name, flag, UInt64.new(type), nick, blurb, func && func)
+    __return_value
+  end
+
   def self.toc_entry_type_get_nick(type)
     __return_value = LibGst.toc_entry_type_get_nick(type)
     (raise "Expected string but got null" unless __return_value; String.new(__return_value))
@@ -480,6 +520,11 @@ module Gst
     __return_value
   end
 
+  def self.uri_from_string(uri)
+    __return_value = LibGst.uri_from_string(uri)
+    Gst::Uri.new(__return_value) if __return_value
+  end
+
   def self.uri_get_location(uri)
     __return_value = LibGst.uri_get_location(uri)
     (raise "Expected string but got null" unless __return_value; String.new(__return_value))
@@ -498,6 +543,11 @@ module Gst
   def self.uri_is_valid(uri)
     __return_value = LibGst.uri_is_valid(uri)
     __return_value
+  end
+
+  def self.uri_join_strings(base_uri, ref_uri)
+    __return_value = LibGst.uri_join_strings(base_uri, ref_uri)
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
   end
 
   def self.uri_protocol_is_supported(type, protocol)
@@ -695,6 +745,16 @@ module Gst
     __return_value
   end
 
+  def self.value_get_flagset_flags(value)
+    __return_value = LibGst.value_get_flagset_flags((value.to_unsafe as LibGObject::Value*))
+    __return_value
+  end
+
+  def self.value_get_flagset_mask(value)
+    __return_value = LibGst.value_get_flagset_mask((value.to_unsafe as LibGObject::Value*))
+    __return_value
+  end
+
   def self.value_get_fraction_denominator(value)
     __return_value = LibGst.value_get_fraction_denominator((value.to_unsafe as LibGObject::Value*))
     __return_value
@@ -797,6 +857,11 @@ module Gst
 
   def self.value_set_double_range(value, start, end)
     __return_value = LibGst.value_set_double_range((value.to_unsafe as LibGObject::Value*), Float64.new(start), Float64.new(end))
+    __return_value
+  end
+
+  def self.value_set_flagset(value, flags, mask)
+    __return_value = LibGst.value_set_flagset((value.to_unsafe as LibGObject::Value*), UInt32.new(flags), UInt32.new(mask))
     __return_value
   end
 

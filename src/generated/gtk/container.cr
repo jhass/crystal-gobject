@@ -34,6 +34,11 @@ module Gtk
       __return_value
     end
 
+    def child_notify_by_pspec(child, pspec)
+      __return_value = LibGtk.container_child_notify_by_pspec((to_unsafe as LibGtk::Container*), (child.to_unsafe as LibGtk::Widget*), (pspec.to_unsafe as LibGObject::ParamSpec*))
+      __return_value
+    end
+
     def child_set_property(child, property_name, value)
       __return_value = LibGtk.container_child_set_property((to_unsafe as LibGtk::Container*), (child.to_unsafe as LibGtk::Widget*), property_name, (value.to_unsafe as LibGObject::Value*))
       __return_value

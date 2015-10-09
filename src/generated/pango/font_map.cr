@@ -34,12 +34,12 @@ module Pango
 
     def load_font(context, desc)
       __return_value = LibPango.font_map_load_font((to_unsafe as LibPango::FontMap*), (context.to_unsafe as LibPango::Context*), (desc.to_unsafe as LibPango::FontDescription*))
-      Pango::Font.new(__return_value)
+      Pango::Font.new(__return_value) if __return_value
     end
 
     def load_fontset(context, desc, language)
       __return_value = LibPango.font_map_load_fontset((to_unsafe as LibPango::FontMap*), (context.to_unsafe as LibPango::Context*), (desc.to_unsafe as LibPango::FontDescription*), (language.to_unsafe as LibPango::Language*))
-      Pango::Fontset.new(__return_value)
+      Pango::Fontset.new(__return_value) if __return_value
     end
 
   end

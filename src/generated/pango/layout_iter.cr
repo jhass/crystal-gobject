@@ -16,7 +16,7 @@ module Pango
 
     def copy
       __return_value = LibPango.layout_iter_copy((to_unsafe as LibPango::LayoutIter*))
-      Pango::LayoutIter.new(__return_value)
+      Pango::LayoutIter.new(__return_value) if __return_value
     end
 
     def free
@@ -76,7 +76,7 @@ module Pango
 
     def run
       __return_value = LibPango.layout_iter_get_run((to_unsafe as LibPango::LayoutIter*))
-      Pango::GlyphItem.new(__return_value)
+      Pango::GlyphItem.new(__return_value) if __return_value
     end
 
     def run_extents(ink_rect, logical_rect)
@@ -86,7 +86,7 @@ module Pango
 
     def run_readonly
       __return_value = LibPango.layout_iter_get_run_readonly((to_unsafe as LibPango::LayoutIter*))
-      Pango::GlyphItem.new(__return_value)
+      Pango::GlyphItem.new(__return_value) if __return_value
     end
 
     def next_char

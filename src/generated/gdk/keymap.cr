@@ -57,6 +57,11 @@ module Gdk
       __return_value
     end
 
+    def scroll_lock_state
+      __return_value = LibGdk.keymap_get_scroll_lock_state((to_unsafe as LibGdk::Keymap*))
+      __return_value
+    end
+
     def have_bidi_layouts
       __return_value = LibGdk.keymap_have_bidi_layouts((to_unsafe as LibGdk::Keymap*))
       __return_value

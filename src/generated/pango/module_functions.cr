@@ -1,7 +1,7 @@
 module Pango
   def self.attr_type_get_name(type)
     __return_value = LibPango.attr_type_get_name(type)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
   end
 
   def self.attr_type_register(name)
@@ -30,7 +30,7 @@ module Pango
   end
 
   def self.default_break(text, length, analysis, attrs, attrs_len)
-    __return_value = LibPango.default_break(text, Int32.new(length), (analysis.to_unsafe as LibPango::Analysis*), (attrs.to_unsafe as LibPango::LogAttr*), Int32.new(attrs_len))
+    __return_value = LibPango.default_break(text, Int32.new(length), analysis && (analysis.to_unsafe as LibPango::Analysis*), (attrs.to_unsafe as LibPango::LogAttr*), Int32.new(attrs_len))
     __return_value
   end
 
@@ -75,7 +75,7 @@ module Pango
   end
 
   def self.gravity_get_for_matrix(matrix)
-    __return_value = LibPango.gravity_get_for_matrix((matrix.to_unsafe as LibPango::Matrix*))
+    __return_value = LibPango.gravity_get_for_matrix(matrix && (matrix.to_unsafe as LibPango::Matrix*))
     __return_value
   end
 
@@ -111,7 +111,7 @@ module Pango
 
   def self.language_from_string(language)
     __return_value = LibPango.language_from_string(language && language)
-    Pango::Language.new(__return_value)
+    Pango::Language.new(__return_value) if __return_value
   end
 
   def self.language_get_default
@@ -215,7 +215,7 @@ module Pango
 
   def self.script_get_sample_language(script)
     __return_value = LibPango.script_get_sample_language(script)
-    Pango::Language.new(__return_value)
+    Pango::Language.new(__return_value) if __return_value
   end
 
   def self.shape(text, length, analysis, glyphs)
@@ -235,7 +235,7 @@ module Pango
 
   def self.split_file_list(str)
     __return_value = LibPango.split_file_list(str)
-    PointerIterator.new(__return_value) {|__item_40| (raise "Expected string but got null" unless __item_40; String.new(__item_40)) }
+    PointerIterator.new(__return_value) {|__item_65| (raise "Expected string but got null" unless __item_65; String.new(__item_65)) }
   end
 
   def self.trim_string(str)
@@ -265,7 +265,7 @@ module Pango
 
   def self.version_check(required_major, required_minor, required_micro)
     __return_value = LibPango.version_check(Int32.new(required_major), Int32.new(required_minor), Int32.new(required_micro))
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
   end
 
   def self.version_string

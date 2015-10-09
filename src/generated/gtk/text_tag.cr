@@ -79,6 +79,8 @@ module Gtk
 
 
 
+
+
     def self.new_internal(name)
       __return_value = LibGtk.text_tag_new(name && name)
       Gtk::TextTag.new(__return_value)

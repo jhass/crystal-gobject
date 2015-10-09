@@ -19,6 +19,11 @@ module Gst
       Gst::Buffer.new(__return_value) if __return_value
     end
 
+    def buffer_list
+      __return_value = LibGst.sample_get_buffer_list((to_unsafe as LibGst::Sample*))
+      Gst::BufferList.new(__return_value) if __return_value
+    end
+
     def caps
       __return_value = LibGst.sample_get_caps((to_unsafe as LibGst::Sample*))
       Gst::Caps.new(__return_value) if __return_value
@@ -32,6 +37,11 @@ module Gst
     def segment
       __return_value = LibGst.sample_get_segment((to_unsafe as LibGst::Sample*))
       Gst::Segment.new(__return_value)
+    end
+
+    def buffer_list=(buffer_list)
+      __return_value = LibGst.sample_set_buffer_list((to_unsafe as LibGst::Sample*), (buffer_list.to_unsafe as LibGst::BufferList*))
+      __return_value
     end
 
   end

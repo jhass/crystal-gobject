@@ -54,7 +54,7 @@ module Pango
 
     def matrix
       __return_value = LibPango.context_get_matrix((to_unsafe as LibPango::Context*))
-      Pango::Matrix.new(__return_value)
+      Pango::Matrix.new(__return_value) if __return_value
     end
 
     def metrics(desc, language)
@@ -74,12 +74,12 @@ module Pango
 
     def load_font(desc)
       __return_value = LibPango.context_load_font((to_unsafe as LibPango::Context*), (desc.to_unsafe as LibPango::FontDescription*))
-      Pango::Font.new(__return_value)
+      Pango::Font.new(__return_value) if __return_value
     end
 
     def load_fontset(desc, language)
       __return_value = LibPango.context_load_fontset((to_unsafe as LibPango::Context*), (desc.to_unsafe as LibPango::FontDescription*), (language.to_unsafe as LibPango::Language*))
-      Pango::Fontset.new(__return_value)
+      Pango::Fontset.new(__return_value) if __return_value
     end
 
     def base_dir=(direction)

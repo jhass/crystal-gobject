@@ -20,7 +20,7 @@ module Gtk
     end
 
     def area=(rect)
-      __return_value = LibGtk.gesture_multi_press_set_area((to_unsafe as LibGtk::GestureMultiPress*), rect && (rect.to_unsafe as LibCairo::RectangleInt*))
+      __return_value = LibGtk.gesture_multi_press_set_area((to_unsafe as LibGtk::GestureMultiPress*), rect && (rect.to_unsafe as LibGdk::Rectangle*))
       __return_value
     end
 

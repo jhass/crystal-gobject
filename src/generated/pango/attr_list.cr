@@ -21,12 +21,12 @@ module Pango
 
     def copy
       __return_value = LibPango.attr_list_copy((to_unsafe as LibPango::AttrList*))
-      Pango::AttrList.new(__return_value)
+      Pango::AttrList.new(__return_value) if __return_value
     end
 
     def filter(func : LibPango::AttrFilterFunc, data)
       __return_value = LibPango.attr_list_filter((to_unsafe as LibPango::AttrList*), func, data)
-      Pango::AttrList.new(__return_value)
+      Pango::AttrList.new(__return_value) if __return_value
     end
 
     def insert(attr)

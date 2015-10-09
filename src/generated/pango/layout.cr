@@ -69,7 +69,7 @@ module Pango
 
     def font_description
       __return_value = LibPango.layout_get_font_description((to_unsafe as LibPango::Layout*))
-      Pango::FontDescription.new(__return_value)
+      Pango::FontDescription.new(__return_value) if __return_value
     end
 
     def height
@@ -94,7 +94,7 @@ module Pango
 
     def line(line)
       __return_value = LibPango.layout_get_line((to_unsafe as LibPango::Layout*), Int32.new(line))
-      Pango::LayoutLine.new(__return_value)
+      Pango::LayoutLine.new(__return_value) if __return_value
     end
 
     def line_count
@@ -104,7 +104,7 @@ module Pango
 
     def line_readonly(line)
       __return_value = LibPango.layout_get_line_readonly((to_unsafe as LibPango::Layout*), Int32.new(line))
-      Pango::LayoutLine.new(__return_value)
+      Pango::LayoutLine.new(__return_value) if __return_value
     end
 
     def lines
@@ -124,7 +124,7 @@ module Pango
 
     def log_attrs_readonly(n_attrs)
       __return_value = LibPango.layout_get_log_attrs_readonly((to_unsafe as LibPango::Layout*), Int32.new(n_attrs))
-      PointerIterator.new(__return_value) {|__item_18| Pango::LogAttr.new(__item_18) }
+      PointerIterator.new(__return_value) {|__item_43| Pango::LogAttr.new(__item_43) }
     end
 
     def pixel_extents(ink_rect, logical_rect)
@@ -159,7 +159,7 @@ module Pango
 
     def tabs
       __return_value = LibPango.layout_get_tabs((to_unsafe as LibPango::Layout*))
-      Pango::TabArray.new(__return_value)
+      Pango::TabArray.new(__return_value) if __return_value
     end
 
     def text

@@ -190,7 +190,7 @@ module Gtk
   end
 
   def self.draw_insertion_cursor(widget, cr, location, is_primary, direction, draw_arrow)
-    __return_value = LibGtk.draw_insertion_cursor((widget.to_unsafe as LibGtk::Widget*), (cr.to_unsafe as LibCairo::Context*), (location.to_unsafe as LibCairo::RectangleInt*), is_primary, direction, draw_arrow)
+    __return_value = LibGtk.draw_insertion_cursor((widget.to_unsafe as LibGtk::Widget*), (cr.to_unsafe as LibCairo::Context*), (location.to_unsafe as LibGdk::Rectangle*), is_primary, direction, draw_arrow)
     __return_value
   end
 
@@ -216,12 +216,12 @@ module Gtk
 
   def self.current_event
     __return_value = LibGtk.get_current_event
-    __return_value
+    __return_value if __return_value
   end
 
   def self.current_event_device
     __return_value = LibGtk.get_current_event_device
-    Gdk::Device.new(__return_value)
+    Gdk::Device.new(__return_value) if __return_value
   end
 
   def self.current_event_state(state)
@@ -246,7 +246,7 @@ module Gtk
 
   def self.event_widget(event)
     __return_value = LibGtk.get_event_widget((event.to_unsafe as LibGdk::Event*))
-    Gtk::Widget.new(__return_value)
+    Gtk::Widget.new(__return_value) if __return_value
   end
 
   def self.interface_age
@@ -281,7 +281,7 @@ module Gtk
 
   def self.grab_get_current
     __return_value = LibGtk.grab_get_current
-    Gtk::Widget.new(__return_value)
+    Gtk::Widget.new(__return_value) if __return_value
   end
 
   def self.icon_size_from_name(name)
@@ -331,7 +331,7 @@ module Gtk
 
   def self.init_with_args(argc, argv, parameter_string, entries, translation_domain)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGtk.init_with_args(Int32.new(argc), argv && argv, parameter_string && parameter_string, entries, translation_domain, pointerof(__error))
+    __return_value = LibGtk.init_with_args(Int32.new(argc), argv && argv, parameter_string && parameter_string, entries, translation_domain && translation_domain, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -523,7 +523,7 @@ module Gtk
 
   def self.rc_get_default_files
     __return_value = LibGtk.rc_get_default_files
-    PointerIterator.new(__return_value) {|__item_99| (raise "Expected string but got null" unless __item_99; String.new(__item_99)) }
+    PointerIterator.new(__return_value) {|__item_68| (raise "Expected string but got null" unless __item_68; String.new(__item_68)) }
   end
 
   def self.rc_get_im_module_file
@@ -815,7 +815,7 @@ module Gtk
 
   def self.target_table_new_from_list(list, n_targets)
     __return_value = LibGtk.target_table_new_from_list((list.to_unsafe as LibGtk::TargetList*), Int32.new(n_targets))
-    PointerIterator.new(__return_value) {|__item_4| Gtk::TargetEntry.new(__item_4) }
+    PointerIterator.new(__return_value) {|__item_96| Gtk::TargetEntry.new(__item_96) }
   end
 
   def self.targets_include_image(targets, n_targets, writable)
@@ -860,7 +860,7 @@ module Gtk
 
   def self.test_list_all_types(n_types)
     __return_value = LibGtk.test_list_all_types(UInt32.new(n_types))
-    PointerIterator.new(__return_value) {|__item_2| __item_2 }
+    PointerIterator.new(__return_value) {|__item_67| __item_67 }
   end
 
   def self.test_register_all_types

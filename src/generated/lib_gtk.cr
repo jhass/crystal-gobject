@@ -375,6 +375,7 @@ lib LibGtk
   fun assistant_get_n_pages = gtk_assistant_get_n_pages(this : Assistant*) : Int32
   fun assistant_get_nth_page = gtk_assistant_get_nth_page(this : Assistant*, page_num : Int32) : LibGtk::Widget*
   fun assistant_get_page_complete = gtk_assistant_get_page_complete(this : Assistant*, page : LibGtk::Widget*) : Bool
+  fun assistant_get_page_has_padding = gtk_assistant_get_page_has_padding(this : Assistant*, page : LibGtk::Widget*) : Bool
   fun assistant_get_page_header_image = gtk_assistant_get_page_header_image(this : Assistant*, page : LibGtk::Widget*) : LibGdkPixbuf::Pixbuf*
   fun assistant_get_page_side_image = gtk_assistant_get_page_side_image(this : Assistant*, page : LibGtk::Widget*) : LibGdkPixbuf::Pixbuf*
   fun assistant_get_page_title = gtk_assistant_get_page_title(this : Assistant*, page : LibGtk::Widget*) : UInt8*
@@ -388,6 +389,7 @@ lib LibGtk
   fun assistant_set_current_page = gtk_assistant_set_current_page(this : Assistant*, page_num : Int32) : Void
   fun assistant_set_forward_page_func = gtk_assistant_set_forward_page_func(this : Assistant*, page_func : LibGtk::AssistantPageFunc, data : Void*, destroy : LibGLib::DestroyNotify) : Void
   fun assistant_set_page_complete = gtk_assistant_set_page_complete(this : Assistant*, page : LibGtk::Widget*, complete : Bool) : Void
+  fun assistant_set_page_has_padding = gtk_assistant_set_page_has_padding(this : Assistant*, page : LibGtk::Widget*, has_padding : Bool) : Void
   fun assistant_set_page_header_image = gtk_assistant_set_page_header_image(this : Assistant*, page : LibGtk::Widget*, pixbuf : LibGdkPixbuf::Pixbuf*) : Void
   fun assistant_set_page_side_image = gtk_assistant_set_page_side_image(this : Assistant*, page : LibGtk::Widget*, pixbuf : LibGdkPixbuf::Pixbuf*) : Void
   fun assistant_set_page_title = gtk_assistant_set_page_title(this : Assistant*, page : LibGtk::Widget*, title : UInt8*) : Void
@@ -583,8 +585,8 @@ lib LibGtk
     # Virtual function render
     # Virtual function set_cell_property
   end
-  fun cell_area_activate = gtk_cell_area_activate(this : CellArea*, context : LibGtk::CellAreaContext*, widget : LibGtk::Widget*, cell_area : Libcairo::RectangleInt*, flags : LibGtk::CellRendererState, edit_only : Bool) : Bool
-  fun cell_area_activate_cell = gtk_cell_area_activate_cell(this : CellArea*, widget : LibGtk::Widget*, renderer : LibGtk::CellRenderer*, event : LibGdk::Event*, cell_area : Libcairo::RectangleInt*, flags : LibGtk::CellRendererState) : Bool
+  fun cell_area_activate = gtk_cell_area_activate(this : CellArea*, context : LibGtk::CellAreaContext*, widget : LibGtk::Widget*, cell_area : LibGdk::Rectangle*, flags : LibGtk::CellRendererState, edit_only : Bool) : Bool
+  fun cell_area_activate_cell = gtk_cell_area_activate_cell(this : CellArea*, widget : LibGtk::Widget*, renderer : LibGtk::CellRenderer*, event : LibGdk::Event*, cell_area : LibGdk::Rectangle*, flags : LibGtk::CellRendererState) : Bool
   fun cell_area_add = gtk_cell_area_add(this : CellArea*, renderer : LibGtk::CellRenderer*) : Void
   fun cell_area_add_focus_sibling = gtk_cell_area_add_focus_sibling(this : CellArea*, renderer : LibGtk::CellRenderer*, sibling : LibGtk::CellRenderer*) : Void
   fun cell_area_apply_attributes = gtk_cell_area_apply_attributes(this : CellArea*, tree_model : LibGtk::TreeModel*, iter : LibGtk::TreeIter*, is_expander : Bool, is_expanded : Bool) : Void
@@ -595,12 +597,12 @@ lib LibGtk
   fun cell_area_cell_set_property = gtk_cell_area_cell_set_property(this : CellArea*, renderer : LibGtk::CellRenderer*, property_name : UInt8*, value : LibGObject::Value*) : Void
   fun cell_area_copy_context = gtk_cell_area_copy_context(this : CellArea*, context : LibGtk::CellAreaContext*) : LibGtk::CellAreaContext*
   fun cell_area_create_context = gtk_cell_area_create_context(this : CellArea*) : LibGtk::CellAreaContext*
-  fun cell_area_event = gtk_cell_area_event(this : CellArea*, context : LibGtk::CellAreaContext*, widget : LibGtk::Widget*, event : LibGdk::Event*, cell_area : Libcairo::RectangleInt*, flags : LibGtk::CellRendererState) : Int32
+  fun cell_area_event = gtk_cell_area_event(this : CellArea*, context : LibGtk::CellAreaContext*, widget : LibGtk::Widget*, event : LibGdk::Event*, cell_area : LibGdk::Rectangle*, flags : LibGtk::CellRendererState) : Int32
   fun cell_area_focus = gtk_cell_area_focus(this : CellArea*, direction : LibGtk::DirectionType) : Bool
   fun cell_area_foreach = gtk_cell_area_foreach(this : CellArea*, callback : LibGtk::CellCallback, callback_data : Void*) : Void
-  fun cell_area_foreach_alloc = gtk_cell_area_foreach_alloc(this : CellArea*, context : LibGtk::CellAreaContext*, widget : LibGtk::Widget*, cell_area : Libcairo::RectangleInt*, background_area : Libcairo::RectangleInt*, callback : LibGtk::CellAllocCallback, callback_data : Void*) : Void
-  fun cell_area_get_cell_allocation = gtk_cell_area_get_cell_allocation(this : CellArea*, context : LibGtk::CellAreaContext*, widget : LibGtk::Widget*, renderer : LibGtk::CellRenderer*, cell_area : Libcairo::RectangleInt*, allocation : Libcairo::RectangleInt*) : Void
-  fun cell_area_get_cell_at_position = gtk_cell_area_get_cell_at_position(this : CellArea*, context : LibGtk::CellAreaContext*, widget : LibGtk::Widget*, cell_area : Libcairo::RectangleInt*, x : Int32, y : Int32, alloc_area : Libcairo::RectangleInt*) : LibGtk::CellRenderer*
+  fun cell_area_foreach_alloc = gtk_cell_area_foreach_alloc(this : CellArea*, context : LibGtk::CellAreaContext*, widget : LibGtk::Widget*, cell_area : LibGdk::Rectangle*, background_area : LibGdk::Rectangle*, callback : LibGtk::CellAllocCallback, callback_data : Void*) : Void
+  fun cell_area_get_cell_allocation = gtk_cell_area_get_cell_allocation(this : CellArea*, context : LibGtk::CellAreaContext*, widget : LibGtk::Widget*, renderer : LibGtk::CellRenderer*, cell_area : LibGdk::Rectangle*, allocation : LibGdk::Rectangle*) : Void
+  fun cell_area_get_cell_at_position = gtk_cell_area_get_cell_at_position(this : CellArea*, context : LibGtk::CellAreaContext*, widget : LibGtk::Widget*, cell_area : LibGdk::Rectangle*, x : Int32, y : Int32, alloc_area : LibGdk::Rectangle*) : LibGtk::CellRenderer*
   fun cell_area_get_current_path_string = gtk_cell_area_get_current_path_string(this : CellArea*) : UInt8*
   fun cell_area_get_edit_widget = gtk_cell_area_get_edit_widget(this : CellArea*) : LibGtk::CellEditable*
   fun cell_area_get_edited_cell = gtk_cell_area_get_edited_cell(this : CellArea*) : LibGtk::CellRenderer*
@@ -613,12 +615,12 @@ lib LibGtk
   fun cell_area_get_preferred_width_for_height = gtk_cell_area_get_preferred_width_for_height(this : CellArea*, context : LibGtk::CellAreaContext*, widget : LibGtk::Widget*, height : Int32, minimum_width : Int32*, natural_width : Int32*) : Void
   fun cell_area_get_request_mode = gtk_cell_area_get_request_mode(this : CellArea*) : LibGtk::SizeRequestMode
   fun cell_area_has_renderer = gtk_cell_area_has_renderer(this : CellArea*, renderer : LibGtk::CellRenderer*) : Bool
-  fun cell_area_inner_cell_area = gtk_cell_area_inner_cell_area(this : CellArea*, widget : LibGtk::Widget*, cell_area : Libcairo::RectangleInt*, inner_area : Libcairo::RectangleInt*) : Void
+  fun cell_area_inner_cell_area = gtk_cell_area_inner_cell_area(this : CellArea*, widget : LibGtk::Widget*, cell_area : LibGdk::Rectangle*, inner_area : LibGdk::Rectangle*) : Void
   fun cell_area_is_activatable = gtk_cell_area_is_activatable(this : CellArea*) : Bool
   fun cell_area_is_focus_sibling = gtk_cell_area_is_focus_sibling(this : CellArea*, renderer : LibGtk::CellRenderer*, sibling : LibGtk::CellRenderer*) : Bool
   fun cell_area_remove = gtk_cell_area_remove(this : CellArea*, renderer : LibGtk::CellRenderer*) : Void
   fun cell_area_remove_focus_sibling = gtk_cell_area_remove_focus_sibling(this : CellArea*, renderer : LibGtk::CellRenderer*, sibling : LibGtk::CellRenderer*) : Void
-  fun cell_area_render = gtk_cell_area_render(this : CellArea*, context : LibGtk::CellAreaContext*, widget : LibGtk::Widget*, cr : Libcairo::Context*, background_area : Libcairo::RectangleInt*, cell_area : Libcairo::RectangleInt*, flags : LibGtk::CellRendererState, paint_focus : Bool) : Void
+  fun cell_area_render = gtk_cell_area_render(this : CellArea*, context : LibGtk::CellAreaContext*, widget : LibGtk::Widget*, cr : Libcairo::Context*, background_area : LibGdk::Rectangle*, cell_area : LibGdk::Rectangle*, flags : LibGtk::CellRendererState, paint_focus : Bool) : Void
   fun cell_area_request_renderer = gtk_cell_area_request_renderer(this : CellArea*, renderer : LibGtk::CellRenderer*, orientation : LibGtk::Orientation, widget : LibGtk::Widget*, for_size : Int32, minimum_size : Int32*, natural_size : Int32*) : Void
   fun cell_area_set_focus_cell = gtk_cell_area_set_focus_cell(this : CellArea*, renderer : LibGtk::CellRenderer*) : Void
   fun cell_area_stop_editing = gtk_cell_area_stop_editing(this : CellArea*, canceled : Bool) : Void
@@ -670,8 +672,8 @@ lib LibGtk
     # Virtual function render
     # Virtual function start_editing
   end
-  fun cell_renderer_activate = gtk_cell_renderer_activate(this : CellRenderer*, event : LibGdk::Event*, widget : LibGtk::Widget*, path : UInt8*, background_area : Libcairo::RectangleInt*, cell_area : Libcairo::RectangleInt*, flags : LibGtk::CellRendererState) : Bool
-  fun cell_renderer_get_aligned_area = gtk_cell_renderer_get_aligned_area(this : CellRenderer*, widget : LibGtk::Widget*, flags : LibGtk::CellRendererState, cell_area : Libcairo::RectangleInt*, aligned_area : Libcairo::RectangleInt*) : Void
+  fun cell_renderer_activate = gtk_cell_renderer_activate(this : CellRenderer*, event : LibGdk::Event*, widget : LibGtk::Widget*, path : UInt8*, background_area : LibGdk::Rectangle*, cell_area : LibGdk::Rectangle*, flags : LibGtk::CellRendererState) : Bool
+  fun cell_renderer_get_aligned_area = gtk_cell_renderer_get_aligned_area(this : CellRenderer*, widget : LibGtk::Widget*, flags : LibGtk::CellRendererState, cell_area : LibGdk::Rectangle*, aligned_area : LibGdk::Rectangle*) : Void
   fun cell_renderer_get_alignment = gtk_cell_renderer_get_alignment(this : CellRenderer*, xalign : Float32*, yalign : Float32*) : Void
   fun cell_renderer_get_fixed_size = gtk_cell_renderer_get_fixed_size(this : CellRenderer*, width : Int32*, height : Int32*) : Void
   fun cell_renderer_get_padding = gtk_cell_renderer_get_padding(this : CellRenderer*, xpad : Int32*, ypad : Int32*) : Void
@@ -682,17 +684,17 @@ lib LibGtk
   fun cell_renderer_get_preferred_width_for_height = gtk_cell_renderer_get_preferred_width_for_height(this : CellRenderer*, widget : LibGtk::Widget*, height : Int32, minimum_width : Int32*, natural_width : Int32*) : Void
   fun cell_renderer_get_request_mode = gtk_cell_renderer_get_request_mode(this : CellRenderer*) : LibGtk::SizeRequestMode
   fun cell_renderer_get_sensitive = gtk_cell_renderer_get_sensitive(this : CellRenderer*) : Bool
-  fun cell_renderer_get_size = gtk_cell_renderer_get_size(this : CellRenderer*, widget : LibGtk::Widget*, cell_area : Libcairo::RectangleInt*, x_offset : Int32*, y_offset : Int32*, width : Int32*, height : Int32*) : Void
+  fun cell_renderer_get_size = gtk_cell_renderer_get_size(this : CellRenderer*, widget : LibGtk::Widget*, cell_area : LibGdk::Rectangle*, x_offset : Int32*, y_offset : Int32*, width : Int32*, height : Int32*) : Void
   fun cell_renderer_get_state = gtk_cell_renderer_get_state(this : CellRenderer*, widget : LibGtk::Widget*, cell_state : LibGtk::CellRendererState) : LibGtk::StateFlags
   fun cell_renderer_get_visible = gtk_cell_renderer_get_visible(this : CellRenderer*) : Bool
   fun cell_renderer_is_activatable = gtk_cell_renderer_is_activatable(this : CellRenderer*) : Bool
-  fun cell_renderer_render = gtk_cell_renderer_render(this : CellRenderer*, cr : Libcairo::Context*, widget : LibGtk::Widget*, background_area : Libcairo::RectangleInt*, cell_area : Libcairo::RectangleInt*, flags : LibGtk::CellRendererState) : Void
+  fun cell_renderer_render = gtk_cell_renderer_render(this : CellRenderer*, cr : Libcairo::Context*, widget : LibGtk::Widget*, background_area : LibGdk::Rectangle*, cell_area : LibGdk::Rectangle*, flags : LibGtk::CellRendererState) : Void
   fun cell_renderer_set_alignment = gtk_cell_renderer_set_alignment(this : CellRenderer*, xalign : Float32, yalign : Float32) : Void
   fun cell_renderer_set_fixed_size = gtk_cell_renderer_set_fixed_size(this : CellRenderer*, width : Int32, height : Int32) : Void
   fun cell_renderer_set_padding = gtk_cell_renderer_set_padding(this : CellRenderer*, xpad : Int32, ypad : Int32) : Void
   fun cell_renderer_set_sensitive = gtk_cell_renderer_set_sensitive(this : CellRenderer*, sensitive : Bool) : Void
   fun cell_renderer_set_visible = gtk_cell_renderer_set_visible(this : CellRenderer*, visible : Bool) : Void
-  fun cell_renderer_start_editing = gtk_cell_renderer_start_editing(this : CellRenderer*, event : LibGdk::Event*, widget : LibGtk::Widget*, path : UInt8*, background_area : Libcairo::RectangleInt*, cell_area : Libcairo::RectangleInt*, flags : LibGtk::CellRendererState) : LibGtk::CellEditable*
+  fun cell_renderer_start_editing = gtk_cell_renderer_start_editing(this : CellRenderer*, event : LibGdk::Event*, widget : LibGtk::Widget*, path : UInt8*, background_area : LibGdk::Rectangle*, cell_area : LibGdk::Rectangle*, flags : LibGtk::CellRendererState) : LibGtk::CellEditable*
   fun cell_renderer_stop_editing = gtk_cell_renderer_stop_editing(this : CellRenderer*, canceled : Bool) : Void
 
   struct CellRendererAccel # object
@@ -1002,6 +1004,7 @@ lib LibGtk
   fun container_check_resize = gtk_container_check_resize(this : Container*) : Void
   fun container_child_get_property = gtk_container_child_get_property(this : Container*, child : LibGtk::Widget*, property_name : UInt8*, value : LibGObject::Value*) : Void
   fun container_child_notify = gtk_container_child_notify(this : Container*, child : LibGtk::Widget*, child_property : UInt8*) : Void
+  fun container_child_notify_by_pspec = gtk_container_child_notify_by_pspec(this : Container*, child : LibGtk::Widget*, pspec : LibGObject::ParamSpec*) : Void
   fun container_child_set_property = gtk_container_child_set_property(this : Container*, child : LibGtk::Widget*, property_name : UInt8*, value : LibGObject::Value*) : Void
   fun container_child_type = gtk_container_child_type(this : Container*) : UInt64
   fun container_forall = gtk_container_forall(this : Container*, callback : LibGtk::Callback, callback_data : Void*) : Void
@@ -1123,7 +1126,7 @@ lib LibGtk
   fun entry_get_cursor_hadjustment = gtk_entry_get_cursor_hadjustment(this : Entry*) : LibGtk::Adjustment*
   fun entry_get_has_frame = gtk_entry_get_has_frame(this : Entry*) : Bool
   fun entry_get_icon_activatable = gtk_entry_get_icon_activatable(this : Entry*, icon_pos : LibGtk::EntryIconPosition) : Bool
-  fun entry_get_icon_area = gtk_entry_get_icon_area(this : Entry*, icon_pos : LibGtk::EntryIconPosition, icon_area : Libcairo::RectangleInt*) : Void
+  fun entry_get_icon_area = gtk_entry_get_icon_area(this : Entry*, icon_pos : LibGtk::EntryIconPosition, icon_area : LibGdk::Rectangle*) : Void
   fun entry_get_icon_at_pos = gtk_entry_get_icon_at_pos(this : Entry*, x : Int32, y : Int32) : Int32
   fun entry_get_icon_gicon = gtk_entry_get_icon_gicon(this : Entry*, icon_pos : LibGtk::EntryIconPosition) : LibGio::Icon*
   fun entry_get_icon_name = gtk_entry_get_icon_name(this : Entry*, icon_pos : LibGtk::EntryIconPosition) : UInt8*
@@ -1147,7 +1150,7 @@ lib LibGtk
   fun entry_get_progress_pulse_step = gtk_entry_get_progress_pulse_step(this : Entry*) : Float64
   fun entry_get_tabs = gtk_entry_get_tabs(this : Entry*) : LibPango::TabArray*
   fun entry_get_text = gtk_entry_get_text(this : Entry*) : UInt8*
-  fun entry_get_text_area = gtk_entry_get_text_area(this : Entry*, text_area : Libcairo::RectangleInt*) : Void
+  fun entry_get_text_area = gtk_entry_get_text_area(this : Entry*, text_area : LibGdk::Rectangle*) : Void
   fun entry_get_text_length = gtk_entry_get_text_length(this : Entry*) : UInt16
   fun entry_get_visibility = gtk_entry_get_visibility(this : Entry*) : Bool
   fun entry_get_width_chars = gtk_entry_get_width_chars(this : Entry*) : Int32
@@ -1342,6 +1345,7 @@ lib LibGtk
     # Signal location-popup
     # Signal location-popup-on-paste
     # Signal location-toggle-popup
+    # Signal places-shortcut
     # Signal quick-bookmark
     # Signal recent-shortcut
     # Signal search-shortcut
@@ -1555,7 +1559,7 @@ lib LibGtk
     # Signal sequence-state-changed
     # Signal update
   end
-  fun gesture_get_bounding_box = gtk_gesture_get_bounding_box(this : Gesture*, rect : Libcairo::RectangleInt*) : Bool
+  fun gesture_get_bounding_box = gtk_gesture_get_bounding_box(this : Gesture*, rect : LibGdk::Rectangle*) : Bool
   fun gesture_get_bounding_box_center = gtk_gesture_get_bounding_box_center(this : Gesture*, x : Float64*, y : Float64*) : Bool
   fun gesture_get_device = gtk_gesture_get_device(this : Gesture*) : LibGdk::Device*
   fun gesture_get_group = gtk_gesture_get_group(this : Gesture*) : Void**
@@ -1599,8 +1603,8 @@ lib LibGtk
     # Signal stopped
   end
   fun gesture_multi_press_new = gtk_gesture_multi_press_new(widget : LibGtk::Widget*) : LibGtk::Gesture*
-  fun gesture_multi_press_get_area = gtk_gesture_multi_press_get_area(this : GestureMultiPress*, rect : Libcairo::RectangleInt*) : Bool
-  fun gesture_multi_press_set_area = gtk_gesture_multi_press_set_area(this : GestureMultiPress*, rect : Libcairo::RectangleInt*) : Void
+  fun gesture_multi_press_get_area = gtk_gesture_multi_press_get_area(this : GestureMultiPress*, rect : LibGdk::Rectangle*) : Bool
+  fun gesture_multi_press_set_area = gtk_gesture_multi_press_set_area(this : GestureMultiPress*, rect : LibGdk::Rectangle*) : Void
 
   struct GesturePan # object
     _data : UInt8[0]
@@ -1785,7 +1789,7 @@ lib LibGtk
   fun i_m_context_get_surrounding = gtk_im_context_get_surrounding(this : IMContext*, text : UInt8**, cursor_index : Int32*) : Bool
   fun i_m_context_reset = gtk_im_context_reset(this : IMContext*) : Void
   fun i_m_context_set_client_window = gtk_im_context_set_client_window(this : IMContext*, window : LibGdk::Window*) : Void
-  fun i_m_context_set_cursor_location = gtk_im_context_set_cursor_location(this : IMContext*, area : Libcairo::RectangleInt*) : Void
+  fun i_m_context_set_cursor_location = gtk_im_context_set_cursor_location(this : IMContext*, area : LibGdk::Rectangle*) : Void
   fun i_m_context_set_surrounding = gtk_im_context_set_surrounding(this : IMContext*, text : UInt8*, len : Int32, cursor_index : Int32) : Void
   fun i_m_context_set_use_preedit = gtk_im_context_set_use_preedit(this : IMContext*, use_preedit : Bool) : Void
 
@@ -1824,7 +1828,7 @@ lib LibGtk
   fun icon_info_get_base_size = gtk_icon_info_get_base_size(this : IconInfo*) : Int32
   fun icon_info_get_builtin_pixbuf = gtk_icon_info_get_builtin_pixbuf(this : IconInfo*) : LibGdkPixbuf::Pixbuf*
   fun icon_info_get_display_name = gtk_icon_info_get_display_name(this : IconInfo*) : UInt8*
-  fun icon_info_get_embedded_rect = gtk_icon_info_get_embedded_rect(this : IconInfo*, rectangle : Libcairo::RectangleInt*) : Bool
+  fun icon_info_get_embedded_rect = gtk_icon_info_get_embedded_rect(this : IconInfo*, rectangle : LibGdk::Rectangle*) : Bool
   fun icon_info_get_filename = gtk_icon_info_get_filename(this : IconInfo*) : UInt8*
   fun icon_info_is_symbolic = gtk_icon_info_is_symbolic(this : IconInfo*) : Bool
   fun icon_info_load_icon = gtk_icon_info_load_icon(this : IconInfo*, error : LibGLib::Error**) : LibGdkPixbuf::Pixbuf*
@@ -1901,7 +1905,7 @@ lib LibGtk
   fun icon_view_enable_model_drag_dest = gtk_icon_view_enable_model_drag_dest(this : IconView*, targets : LibGtk::TargetEntry*, n_targets : Int32, actions : LibGdk::DragAction) : Void
   fun icon_view_enable_model_drag_source = gtk_icon_view_enable_model_drag_source(this : IconView*, start_button_mask : LibGdk::ModifierType, targets : LibGtk::TargetEntry*, n_targets : Int32, actions : LibGdk::DragAction) : Void
   fun icon_view_get_activate_on_single_click = gtk_icon_view_get_activate_on_single_click(this : IconView*) : Bool
-  fun icon_view_get_cell_rect = gtk_icon_view_get_cell_rect(this : IconView*, path : LibGtk::TreePath*, cell : LibGtk::CellRenderer*, rect : Libcairo::RectangleInt*) : Bool
+  fun icon_view_get_cell_rect = gtk_icon_view_get_cell_rect(this : IconView*, path : LibGtk::TreePath*, cell : LibGtk::CellRenderer*, rect : LibGdk::Rectangle*) : Bool
   fun icon_view_get_column_spacing = gtk_icon_view_get_column_spacing(this : IconView*) : Int32
   fun icon_view_get_columns = gtk_icon_view_get_columns(this : IconView*) : Int32
   fun icon_view_get_cursor = gtk_icon_view_get_cursor(this : IconView*, path : LibGtk::TreePath**, cell : LibGtk::CellRenderer**) : Bool
@@ -2608,6 +2612,9 @@ lib LibGtk
   end
   fun overlay_new = gtk_overlay_new() : LibGtk::Widget*
   fun overlay_add_overlay = gtk_overlay_add_overlay(this : Overlay*, widget : LibGtk::Widget*) : Void
+  fun overlay_get_overlay_pass_through = gtk_overlay_get_overlay_pass_through(this : Overlay*, widget : LibGtk::Widget*) : Bool
+  fun overlay_reorder_overlay = gtk_overlay_reorder_overlay(this : Overlay*, child : LibGtk::Widget*, position : Int32) : Void
+  fun overlay_set_overlay_pass_through = gtk_overlay_set_overlay_pass_through(this : Overlay*, widget : LibGtk::Widget*, pass_through : Bool) : Void
 
   struct PageSetup # object
     _data : UInt8[0]
@@ -2682,6 +2689,7 @@ lib LibGtk
     # Signal show-connect-to-server
     # Signal show-enter-location
     # Signal show-error-message
+    # Signal show-other-locations
   end
   fun places_sidebar_new = gtk_places_sidebar_new() : LibGtk::Widget*
   fun places_sidebar_add_shortcut = gtk_places_sidebar_add_shortcut(this : PlacesSidebar*, location : LibGio::File*) : Void
@@ -2692,14 +2700,21 @@ lib LibGtk
   fun places_sidebar_get_show_connect_to_server = gtk_places_sidebar_get_show_connect_to_server(this : PlacesSidebar*) : Bool
   fun places_sidebar_get_show_desktop = gtk_places_sidebar_get_show_desktop(this : PlacesSidebar*) : Bool
   fun places_sidebar_get_show_enter_location = gtk_places_sidebar_get_show_enter_location(this : PlacesSidebar*) : Bool
+  fun places_sidebar_get_show_other_locations = gtk_places_sidebar_get_show_other_locations(this : PlacesSidebar*) : Bool
+  fun places_sidebar_get_show_recent = gtk_places_sidebar_get_show_recent(this : PlacesSidebar*) : Bool
+  fun places_sidebar_get_show_trash = gtk_places_sidebar_get_show_trash(this : PlacesSidebar*) : Bool
   fun places_sidebar_list_shortcuts = gtk_places_sidebar_list_shortcuts(this : PlacesSidebar*) : Void**
   fun places_sidebar_remove_shortcut = gtk_places_sidebar_remove_shortcut(this : PlacesSidebar*, location : LibGio::File*) : Void
+  fun places_sidebar_set_drop_targets_visible = gtk_places_sidebar_set_drop_targets_visible(this : PlacesSidebar*, visible : Bool, context : LibGdk::DragContext*) : Void
   fun places_sidebar_set_local_only = gtk_places_sidebar_set_local_only(this : PlacesSidebar*, local_only : Bool) : Void
   fun places_sidebar_set_location = gtk_places_sidebar_set_location(this : PlacesSidebar*, location : LibGio::File*) : Void
   fun places_sidebar_set_open_flags = gtk_places_sidebar_set_open_flags(this : PlacesSidebar*, flags : LibGtk::PlacesOpenFlags) : Void
   fun places_sidebar_set_show_connect_to_server = gtk_places_sidebar_set_show_connect_to_server(this : PlacesSidebar*, show_connect_to_server : Bool) : Void
   fun places_sidebar_set_show_desktop = gtk_places_sidebar_set_show_desktop(this : PlacesSidebar*, show_desktop : Bool) : Void
   fun places_sidebar_set_show_enter_location = gtk_places_sidebar_set_show_enter_location(this : PlacesSidebar*, show_enter_location : Bool) : Void
+  fun places_sidebar_set_show_other_locations = gtk_places_sidebar_set_show_other_locations(this : PlacesSidebar*, show_other_locations : Bool) : Void
+  fun places_sidebar_set_show_recent = gtk_places_sidebar_set_show_recent(this : PlacesSidebar*, show_recent : Bool) : Void
+  fun places_sidebar_set_show_trash = gtk_places_sidebar_set_show_trash(this : PlacesSidebar*, show_trash : Bool) : Void
 
   struct Plug # object
     window : LibGtk::Window
@@ -2724,13 +2739,15 @@ lib LibGtk
   fun popover_new = gtk_popover_new(relative_to : LibGtk::Widget*) : LibGtk::Widget*
   fun popover_new_from_model = gtk_popover_new_from_model(relative_to : LibGtk::Widget*, model : LibGio::MenuModel*) : LibGtk::Widget*
   fun popover_bind_model = gtk_popover_bind_model(this : Popover*, model : LibGio::MenuModel*, action_namespace : UInt8*) : Void
+  fun popover_get_default_widget = gtk_popover_get_default_widget(this : Popover*) : LibGtk::Widget*
   fun popover_get_modal = gtk_popover_get_modal(this : Popover*) : Bool
-  fun popover_get_pointing_to = gtk_popover_get_pointing_to(this : Popover*, rect : Libcairo::RectangleInt*) : Bool
+  fun popover_get_pointing_to = gtk_popover_get_pointing_to(this : Popover*, rect : LibGdk::Rectangle*) : Bool
   fun popover_get_position = gtk_popover_get_position(this : Popover*) : LibGtk::PositionType
   fun popover_get_relative_to = gtk_popover_get_relative_to(this : Popover*) : LibGtk::Widget*
   fun popover_get_transitions_enabled = gtk_popover_get_transitions_enabled(this : Popover*) : Bool
+  fun popover_set_default_widget = gtk_popover_set_default_widget(this : Popover*, widget : LibGtk::Widget*) : Void
   fun popover_set_modal = gtk_popover_set_modal(this : Popover*, modal : Bool) : Void
-  fun popover_set_pointing_to = gtk_popover_set_pointing_to(this : Popover*, rect : Libcairo::RectangleInt*) : Void
+  fun popover_set_pointing_to = gtk_popover_set_pointing_to(this : Popover*, rect : LibGdk::Rectangle*) : Void
   fun popover_set_position = gtk_popover_set_position(this : Popover*, position : LibGtk::PositionType) : Void
   fun popover_set_relative_to = gtk_popover_set_relative_to(this : Popover*, relative_to : LibGtk::Widget*) : Void
   fun popover_set_transitions_enabled = gtk_popover_set_transitions_enabled(this : Popover*, transitions_enabled : Bool) : Void
@@ -2965,6 +2982,7 @@ lib LibGtk
   fun radio_menu_item_new_with_mnemonic = gtk_radio_menu_item_new_with_mnemonic(group : Void**, label : UInt8*) : LibGtk::Widget*
   fun radio_menu_item_new_with_mnemonic_from_widget = gtk_radio_menu_item_new_with_mnemonic_from_widget(group : LibGtk::RadioMenuItem*, label : UInt8*) : LibGtk::Widget*
   fun radio_menu_item_get_group = gtk_radio_menu_item_get_group(this : RadioMenuItem*) : Void**
+  fun radio_menu_item_join_group = gtk_radio_menu_item_join_group(this : RadioMenuItem*, group_source : LibGtk::RadioMenuItem*) : Void
   fun radio_menu_item_set_group = gtk_radio_menu_item_set_group(this : RadioMenuItem*, group : Void**) : Void
 
   struct RadioMenuItemAccessible # object
@@ -3001,7 +3019,7 @@ lib LibGtk
   fun range_get_inverted = gtk_range_get_inverted(this : Range*) : Bool
   fun range_get_lower_stepper_sensitivity = gtk_range_get_lower_stepper_sensitivity(this : Range*) : LibGtk::SensitivityType
   fun range_get_min_slider_size = gtk_range_get_min_slider_size(this : Range*) : Int32
-  fun range_get_range_rect = gtk_range_get_range_rect(this : Range*, range_rect : Libcairo::RectangleInt*) : Void
+  fun range_get_range_rect = gtk_range_get_range_rect(this : Range*, range_rect : LibGdk::Rectangle*) : Void
   fun range_get_restrict_to_fill_level = gtk_range_get_restrict_to_fill_level(this : Range*) : Bool
   fun range_get_round_digits = gtk_range_get_round_digits(this : Range*) : Int32
   fun range_get_show_fill_level = gtk_range_get_show_fill_level(this : Range*) : Bool
@@ -3378,6 +3396,7 @@ lib LibGtk
   fun stack_get_child_by_name = gtk_stack_get_child_by_name(this : Stack*, name : UInt8*) : LibGtk::Widget*
   fun stack_get_hhomogeneous = gtk_stack_get_hhomogeneous(this : Stack*) : Bool
   fun stack_get_homogeneous = gtk_stack_get_homogeneous(this : Stack*) : Bool
+  fun stack_get_interpolate_size = gtk_stack_get_interpolate_size(this : Stack*) : Bool
   fun stack_get_transition_duration = gtk_stack_get_transition_duration(this : Stack*) : UInt32
   fun stack_get_transition_running = gtk_stack_get_transition_running(this : Stack*) : Bool
   fun stack_get_transition_type = gtk_stack_get_transition_type(this : Stack*) : LibGtk::StackTransitionType
@@ -3386,6 +3405,7 @@ lib LibGtk
   fun stack_get_visible_child_name = gtk_stack_get_visible_child_name(this : Stack*) : UInt8*
   fun stack_set_hhomogeneous = gtk_stack_set_hhomogeneous(this : Stack*, hhomogeneous : Bool) : Void
   fun stack_set_homogeneous = gtk_stack_set_homogeneous(this : Stack*, homogeneous : Bool) : Void
+  fun stack_set_interpolate_size = gtk_stack_set_interpolate_size(this : Stack*, interpolate_size : Bool) : Void
   fun stack_set_transition_duration = gtk_stack_set_transition_duration(this : Stack*, duration : UInt32) : Void
   fun stack_set_transition_type = gtk_stack_set_transition_type(this : Stack*, transition : LibGtk::StackTransitionType) : Void
   fun stack_set_vhomogeneous = gtk_stack_set_vhomogeneous(this : Stack*, vhomogeneous : Bool) : Void
@@ -3432,7 +3452,7 @@ lib LibGtk
   fun status_icon_new_from_pixbuf = gtk_status_icon_new_from_pixbuf(pixbuf : LibGdkPixbuf::Pixbuf*) : LibGtk::StatusIcon*
   fun status_icon_new_from_stock = gtk_status_icon_new_from_stock(stock_id : UInt8*) : LibGtk::StatusIcon*
   fun status_icon_position_menu = gtk_status_icon_position_menu(menu : LibGtk::Menu*, x : Int32*, y : Int32*, push_in : Bool*, user_data : LibGtk::StatusIcon*) : Void
-  fun status_icon_get_geometry = gtk_status_icon_get_geometry(this : StatusIcon*, screen : LibGdk::Screen**, area : Libcairo::RectangleInt*, orientation : LibGtk::Orientation*) : Bool
+  fun status_icon_get_geometry = gtk_status_icon_get_geometry(this : StatusIcon*, screen : LibGdk::Screen**, area : LibGdk::Rectangle*, orientation : LibGtk::Orientation*) : Bool
   fun status_icon_get_gicon = gtk_status_icon_get_gicon(this : StatusIcon*) : LibGio::Icon*
   fun status_icon_get_has_tooltip = gtk_status_icon_get_has_tooltip(this : StatusIcon*) : Bool
   fun status_icon_get_icon_name = gtk_status_icon_get_icon_name(this : StatusIcon*) : UInt8*
@@ -3858,8 +3878,9 @@ lib LibGtk
   fun text_view_forward_display_line_end = gtk_text_view_forward_display_line_end(this : TextView*, iter : LibGtk::TextIter*) : Bool
   fun text_view_get_accepts_tab = gtk_text_view_get_accepts_tab(this : TextView*) : Bool
   fun text_view_get_border_window_size = gtk_text_view_get_border_window_size(this : TextView*, type : LibGtk::TextWindowType) : Int32
+  fun text_view_get_bottom_margin = gtk_text_view_get_bottom_margin(this : TextView*) : Int32
   fun text_view_get_buffer = gtk_text_view_get_buffer(this : TextView*) : LibGtk::TextBuffer*
-  fun text_view_get_cursor_locations = gtk_text_view_get_cursor_locations(this : TextView*, iter : LibGtk::TextIter*, strong : Libcairo::RectangleInt*, weak : Libcairo::RectangleInt*) : Void
+  fun text_view_get_cursor_locations = gtk_text_view_get_cursor_locations(this : TextView*, iter : LibGtk::TextIter*, strong : LibGdk::Rectangle*, weak : LibGdk::Rectangle*) : Void
   fun text_view_get_cursor_visible = gtk_text_view_get_cursor_visible(this : TextView*) : Bool
   fun text_view_get_default_attributes = gtk_text_view_get_default_attributes(this : TextView*) : LibGtk::TextAttributes*
   fun text_view_get_editable = gtk_text_view_get_editable(this : TextView*) : Bool
@@ -3869,7 +3890,7 @@ lib LibGtk
   fun text_view_get_input_purpose = gtk_text_view_get_input_purpose(this : TextView*) : LibGtk::InputPurpose
   fun text_view_get_iter_at_location = gtk_text_view_get_iter_at_location(this : TextView*, iter : LibGtk::TextIter*, x : Int32, y : Int32) : Void
   fun text_view_get_iter_at_position = gtk_text_view_get_iter_at_position(this : TextView*, iter : LibGtk::TextIter*, trailing : Int32*, x : Int32, y : Int32) : Void
-  fun text_view_get_iter_location = gtk_text_view_get_iter_location(this : TextView*, iter : LibGtk::TextIter*, location : Libcairo::RectangleInt*) : Void
+  fun text_view_get_iter_location = gtk_text_view_get_iter_location(this : TextView*, iter : LibGtk::TextIter*, location : LibGdk::Rectangle*) : Void
   fun text_view_get_justification = gtk_text_view_get_justification(this : TextView*) : LibGtk::Justification
   fun text_view_get_left_margin = gtk_text_view_get_left_margin(this : TextView*) : Int32
   fun text_view_get_line_at_y = gtk_text_view_get_line_at_y(this : TextView*, target_iter : LibGtk::TextIter*, y : Int32, line_top : Int32*) : Void
@@ -3881,8 +3902,9 @@ lib LibGtk
   fun text_view_get_pixels_inside_wrap = gtk_text_view_get_pixels_inside_wrap(this : TextView*) : Int32
   fun text_view_get_right_margin = gtk_text_view_get_right_margin(this : TextView*) : Int32
   fun text_view_get_tabs = gtk_text_view_get_tabs(this : TextView*) : LibPango::TabArray*
+  fun text_view_get_top_margin = gtk_text_view_get_top_margin(this : TextView*) : Int32
   fun text_view_get_vadjustment = gtk_text_view_get_vadjustment(this : TextView*) : LibGtk::Adjustment*
-  fun text_view_get_visible_rect = gtk_text_view_get_visible_rect(this : TextView*, visible_rect : Libcairo::RectangleInt*) : Void
+  fun text_view_get_visible_rect = gtk_text_view_get_visible_rect(this : TextView*, visible_rect : LibGdk::Rectangle*) : Void
   fun text_view_get_window = gtk_text_view_get_window(this : TextView*, win : LibGtk::TextWindowType) : LibGdk::Window*
   fun text_view_get_window_type = gtk_text_view_get_window_type(this : TextView*, window : LibGdk::Window*) : LibGtk::TextWindowType
   fun text_view_get_wrap_mode = gtk_text_view_get_wrap_mode(this : TextView*) : LibGtk::WrapMode
@@ -3897,6 +3919,7 @@ lib LibGtk
   fun text_view_scroll_to_mark = gtk_text_view_scroll_to_mark(this : TextView*, mark : LibGtk::TextMark*, within_margin : Float64, use_align : Bool, xalign : Float64, yalign : Float64) : Void
   fun text_view_set_accepts_tab = gtk_text_view_set_accepts_tab(this : TextView*, accepts_tab : Bool) : Void
   fun text_view_set_border_window_size = gtk_text_view_set_border_window_size(this : TextView*, type : LibGtk::TextWindowType, size : Int32) : Void
+  fun text_view_set_bottom_margin = gtk_text_view_set_bottom_margin(this : TextView*, bottom_margin : Int32) : Void
   fun text_view_set_buffer = gtk_text_view_set_buffer(this : TextView*, buffer : LibGtk::TextBuffer*) : Void
   fun text_view_set_cursor_visible = gtk_text_view_set_cursor_visible(this : TextView*, setting : Bool) : Void
   fun text_view_set_editable = gtk_text_view_set_editable(this : TextView*, setting : Bool) : Void
@@ -3912,6 +3935,7 @@ lib LibGtk
   fun text_view_set_pixels_inside_wrap = gtk_text_view_set_pixels_inside_wrap(this : TextView*, pixels_inside_wrap : Int32) : Void
   fun text_view_set_right_margin = gtk_text_view_set_right_margin(this : TextView*, right_margin : Int32) : Void
   fun text_view_set_tabs = gtk_text_view_set_tabs(this : TextView*, tabs : LibPango::TabArray*) : Void
+  fun text_view_set_top_margin = gtk_text_view_set_top_margin(this : TextView*, top_margin : Int32) : Void
   fun text_view_set_wrap_mode = gtk_text_view_set_wrap_mode(this : TextView*, wrap_mode : LibGtk::WrapMode) : Void
   fun text_view_starts_display_line = gtk_text_view_starts_display_line(this : TextView*, iter : LibGtk::TextIter*) : Bool
   fun text_view_window_to_buffer_coords = gtk_text_view_window_to_buffer_coords(this : TextView*, win : LibGtk::TextWindowType, window_x : Int32, window_y : Int32, buffer_x : Int32*, buffer_y : Int32*) : Void
@@ -4153,7 +4177,7 @@ lib LibGtk
   fun tooltip_set_icon_from_stock = gtk_tooltip_set_icon_from_stock(this : Tooltip*, stock_id : UInt8*, size : Int32) : Void
   fun tooltip_set_markup = gtk_tooltip_set_markup(this : Tooltip*, markup : UInt8*) : Void
   fun tooltip_set_text = gtk_tooltip_set_text(this : Tooltip*, text : UInt8*) : Void
-  fun tooltip_set_tip_area = gtk_tooltip_set_tip_area(this : Tooltip*, rect : Libcairo::RectangleInt*) : Void
+  fun tooltip_set_tip_area = gtk_tooltip_set_tip_area(this : Tooltip*, rect : LibGdk::Rectangle*) : Void
 
   struct ToplevelAccessible # object
     parent : LibAtk::Object
@@ -4292,9 +4316,9 @@ lib LibGtk
   fun tree_view_expand_row = gtk_tree_view_expand_row(this : TreeView*, path : LibGtk::TreePath*, open_all : Bool) : Bool
   fun tree_view_expand_to_path = gtk_tree_view_expand_to_path(this : TreeView*, path : LibGtk::TreePath*) : Void
   fun tree_view_get_activate_on_single_click = gtk_tree_view_get_activate_on_single_click(this : TreeView*) : Bool
-  fun tree_view_get_background_area = gtk_tree_view_get_background_area(this : TreeView*, path : LibGtk::TreePath*, column : LibGtk::TreeViewColumn*, rect : Libcairo::RectangleInt*) : Void
+  fun tree_view_get_background_area = gtk_tree_view_get_background_area(this : TreeView*, path : LibGtk::TreePath*, column : LibGtk::TreeViewColumn*, rect : LibGdk::Rectangle*) : Void
   fun tree_view_get_bin_window = gtk_tree_view_get_bin_window(this : TreeView*) : LibGdk::Window*
-  fun tree_view_get_cell_area = gtk_tree_view_get_cell_area(this : TreeView*, path : LibGtk::TreePath*, column : LibGtk::TreeViewColumn*, rect : Libcairo::RectangleInt*) : Void
+  fun tree_view_get_cell_area = gtk_tree_view_get_cell_area(this : TreeView*, path : LibGtk::TreePath*, column : LibGtk::TreeViewColumn*, rect : LibGdk::Rectangle*) : Void
   fun tree_view_get_column = gtk_tree_view_get_column(this : TreeView*, n : Int32) : LibGtk::TreeViewColumn*
   fun tree_view_get_columns = gtk_tree_view_get_columns(this : TreeView*) : Void**
   fun tree_view_get_cursor = gtk_tree_view_get_cursor(this : TreeView*, path : LibGtk::TreePath**, focus_column : LibGtk::TreeViewColumn**) : Void
@@ -4325,7 +4349,7 @@ lib LibGtk
   fun tree_view_get_tooltip_context = gtk_tree_view_get_tooltip_context(this : TreeView*, x : Int32*, y : Int32*, keyboard_tip : Bool, model : LibGtk::TreeModel**, path : LibGtk::TreePath**, iter : LibGtk::TreeIter*) : Bool
   fun tree_view_get_vadjustment = gtk_tree_view_get_vadjustment(this : TreeView*) : LibGtk::Adjustment*
   fun tree_view_get_visible_range = gtk_tree_view_get_visible_range(this : TreeView*, start_path : LibGtk::TreePath**, end_path : LibGtk::TreePath**) : Bool
-  fun tree_view_get_visible_rect = gtk_tree_view_get_visible_rect(this : TreeView*, visible_rect : Libcairo::RectangleInt*) : Void
+  fun tree_view_get_visible_rect = gtk_tree_view_get_visible_rect(this : TreeView*, visible_rect : LibGdk::Rectangle*) : Void
   fun tree_view_insert_column = gtk_tree_view_insert_column(this : TreeView*, column : LibGtk::TreeViewColumn*, position : Int32) : Int32
   fun tree_view_insert_column_with_data_func = gtk_tree_view_insert_column_with_data_func(this : TreeView*, position : Int32, title : UInt8*, cell : LibGtk::CellRenderer*, func : LibGtk::TreeCellDataFunc, data : Void*, dnotify : LibGLib::DestroyNotify) : Int32
   fun tree_view_is_blank_at_pos = gtk_tree_view_is_blank_at_pos(this : TreeView*, x : Int32, y : Int32, path : LibGtk::TreePath**, column : LibGtk::TreeViewColumn**, cell_x : Int32*, cell_y : Int32*) : Bool
@@ -4386,7 +4410,7 @@ lib LibGtk
   fun tree_view_column_new_with_area = gtk_tree_view_column_new_with_area(area : LibGtk::CellArea*) : LibGtk::TreeViewColumn*
   fun tree_view_column_add_attribute = gtk_tree_view_column_add_attribute(this : TreeViewColumn*, cell_renderer : LibGtk::CellRenderer*, attribute : UInt8*, column : Int32) : Void
   fun tree_view_column_cell_get_position = gtk_tree_view_column_cell_get_position(this : TreeViewColumn*, cell_renderer : LibGtk::CellRenderer*, x_offset : Int32*, width : Int32*) : Bool
-  fun tree_view_column_cell_get_size = gtk_tree_view_column_cell_get_size(this : TreeViewColumn*, cell_area : Libcairo::RectangleInt*, x_offset : Int32*, y_offset : Int32*, width : Int32*, height : Int32*) : Void
+  fun tree_view_column_cell_get_size = gtk_tree_view_column_cell_get_size(this : TreeViewColumn*, cell_area : LibGdk::Rectangle*, x_offset : Int32*, y_offset : Int32*, width : Int32*, height : Int32*) : Void
   fun tree_view_column_cell_is_visible = gtk_tree_view_column_cell_is_visible(this : TreeViewColumn*) : Bool
   fun tree_view_column_cell_set_cell_data = gtk_tree_view_column_cell_set_cell_data(this : TreeViewColumn*, tree_model : LibGtk::TreeModel*, iter : LibGtk::TreeIter*, is_expander : Bool, is_expanded : Bool) : Void
   fun tree_view_column_clear = gtk_tree_view_column_clear(this : TreeViewColumn*) : Void
@@ -4735,14 +4759,14 @@ lib LibGtk
   fun widget_get_allocated_baseline = gtk_widget_get_allocated_baseline(this : Widget*) : Int32
   fun widget_get_allocated_height = gtk_widget_get_allocated_height(this : Widget*) : Int32
   fun widget_get_allocated_width = gtk_widget_get_allocated_width(this : Widget*) : Int32
-  fun widget_get_allocation = gtk_widget_get_allocation(this : Widget*, allocation : Libcairo::RectangleInt*) : Void
+  fun widget_get_allocation = gtk_widget_get_allocation(this : Widget*, allocation : LibGdk::Rectangle*) : Void
   fun widget_get_ancestor = gtk_widget_get_ancestor(this : Widget*, widget_type : UInt64) : LibGtk::Widget*
   fun widget_get_app_paintable = gtk_widget_get_app_paintable(this : Widget*) : Bool
   fun widget_get_can_default = gtk_widget_get_can_default(this : Widget*) : Bool
   fun widget_get_can_focus = gtk_widget_get_can_focus(this : Widget*) : Bool
   fun widget_get_child_requisition = gtk_widget_get_child_requisition(this : Widget*, requisition : LibGtk::Requisition*) : Void
   fun widget_get_child_visible = gtk_widget_get_child_visible(this : Widget*) : Bool
-  fun widget_get_clip = gtk_widget_get_clip(this : Widget*, clip : Libcairo::RectangleInt*) : Void
+  fun widget_get_clip = gtk_widget_get_clip(this : Widget*, clip : LibGdk::Rectangle*) : Void
   fun widget_get_clipboard = gtk_widget_get_clipboard(this : Widget*, selection : LibGdk::Atom*) : LibGtk::Clipboard*
   fun widget_get_composite_name = gtk_widget_get_composite_name(this : Widget*) : UInt8*
   fun widget_get_device_enabled = gtk_widget_get_device_enabled(this : Widget*, device : LibGdk::Device*) : Bool
@@ -4751,6 +4775,8 @@ lib LibGtk
   fun widget_get_display = gtk_widget_get_display(this : Widget*) : LibGdk::Display*
   fun widget_get_double_buffered = gtk_widget_get_double_buffered(this : Widget*) : Bool
   fun widget_get_events = gtk_widget_get_events(this : Widget*) : Int32
+  fun widget_get_font_map = gtk_widget_get_font_map(this : Widget*) : LibPango::FontMap*
+  fun widget_get_font_options = gtk_widget_get_font_options(this : Widget*) : Libcairo::FontOptions*
   fun widget_get_frame_clock = gtk_widget_get_frame_clock(this : Widget*) : LibGdk::FrameClock*
   fun widget_get_halign = gtk_widget_get_halign(this : Widget*) : LibGtk::Align
   fun widget_get_has_tooltip = gtk_widget_get_has_tooltip(this : Widget*) : Bool
@@ -4823,7 +4849,7 @@ lib LibGtk
   fun widget_init_template = gtk_widget_init_template(this : Widget*) : Void
   fun widget_input_shape_combine_region = gtk_widget_input_shape_combine_region(this : Widget*, region : Libcairo::Region*) : Void
   fun widget_insert_action_group = gtk_widget_insert_action_group(this : Widget*, name : UInt8*, group : LibGio::ActionGroup*) : Void
-  fun widget_intersect = gtk_widget_intersect(this : Widget*, area : Libcairo::RectangleInt*, intersection : Libcairo::RectangleInt*) : Bool
+  fun widget_intersect = gtk_widget_intersect(this : Widget*, area : LibGdk::Rectangle*, intersection : LibGdk::Rectangle*) : Bool
   fun widget_is_ancestor = gtk_widget_is_ancestor(this : Widget*, ancestor : LibGtk::Widget*) : Bool
   fun widget_is_composited = gtk_widget_is_composited(this : Widget*) : Bool
   fun widget_is_drawable = gtk_widget_is_drawable(this : Widget*) : Bool
@@ -4870,18 +4896,20 @@ lib LibGtk
   fun widget_send_expose = gtk_widget_send_expose(this : Widget*, event : LibGdk::Event*) : Int32
   fun widget_send_focus_change = gtk_widget_send_focus_change(this : Widget*, event : LibGdk::Event*) : Bool
   fun widget_set_accel_path = gtk_widget_set_accel_path(this : Widget*, accel_path : UInt8*, accel_group : LibGtk::AccelGroup*) : Void
-  fun widget_set_allocation = gtk_widget_set_allocation(this : Widget*, allocation : Libcairo::RectangleInt*) : Void
+  fun widget_set_allocation = gtk_widget_set_allocation(this : Widget*, allocation : LibGdk::Rectangle*) : Void
   fun widget_set_app_paintable = gtk_widget_set_app_paintable(this : Widget*, app_paintable : Bool) : Void
   fun widget_set_can_default = gtk_widget_set_can_default(this : Widget*, can_default : Bool) : Void
   fun widget_set_can_focus = gtk_widget_set_can_focus(this : Widget*, can_focus : Bool) : Void
   fun widget_set_child_visible = gtk_widget_set_child_visible(this : Widget*, is_visible : Bool) : Void
-  fun widget_set_clip = gtk_widget_set_clip(this : Widget*, clip : Libcairo::RectangleInt*) : Void
+  fun widget_set_clip = gtk_widget_set_clip(this : Widget*, clip : LibGdk::Rectangle*) : Void
   fun widget_set_composite_name = gtk_widget_set_composite_name(this : Widget*, name : UInt8*) : Void
   fun widget_set_device_enabled = gtk_widget_set_device_enabled(this : Widget*, device : LibGdk::Device*, enabled : Bool) : Void
   fun widget_set_device_events = gtk_widget_set_device_events(this : Widget*, device : LibGdk::Device*, events : LibGdk::EventMask) : Void
   fun widget_set_direction = gtk_widget_set_direction(this : Widget*, dir : LibGtk::TextDirection) : Void
   fun widget_set_double_buffered = gtk_widget_set_double_buffered(this : Widget*, double_buffered : Bool) : Void
   fun widget_set_events = gtk_widget_set_events(this : Widget*, events : Int32) : Void
+  fun widget_set_font_map = gtk_widget_set_font_map(this : Widget*, font_map : LibPango::FontMap*) : Void
+  fun widget_set_font_options = gtk_widget_set_font_options(this : Widget*, options : Libcairo::FontOptions*) : Void
   fun widget_set_halign = gtk_widget_set_halign(this : Widget*, align : LibGtk::Align) : Void
   fun widget_set_has_tooltip = gtk_widget_set_has_tooltip(this : Widget*, has_tooltip : Bool) : Void
   fun widget_set_has_window = gtk_widget_set_has_window(this : Widget*, has_window : Bool) : Void
@@ -4921,8 +4949,8 @@ lib LibGtk
   fun widget_show = gtk_widget_show(this : Widget*) : Void
   fun widget_show_all = gtk_widget_show_all(this : Widget*) : Void
   fun widget_show_now = gtk_widget_show_now(this : Widget*) : Void
-  fun widget_size_allocate = gtk_widget_size_allocate(this : Widget*, allocation : Libcairo::RectangleInt*) : Void
-  fun widget_size_allocate_with_baseline = gtk_widget_size_allocate_with_baseline(this : Widget*, allocation : Libcairo::RectangleInt*, baseline : Int32) : Void
+  fun widget_size_allocate = gtk_widget_size_allocate(this : Widget*, allocation : LibGdk::Rectangle*) : Void
+  fun widget_size_allocate_with_baseline = gtk_widget_size_allocate_with_baseline(this : Widget*, allocation : LibGdk::Rectangle*, baseline : Int32) : Void
   fun widget_size_request = gtk_widget_size_request(this : Widget*, requisition : LibGtk::Requisition*) : Void
   fun widget_style_attach = gtk_widget_style_attach(this : Widget*) : Void
   fun widget_style_get_property = gtk_widget_style_get_property(this : Widget*, property_name : UInt8*, value : LibGObject::Value*) : Void
@@ -4974,6 +5002,7 @@ lib LibGtk
   fun window_close = gtk_window_close(this : Window*) : Void
   fun window_deiconify = gtk_window_deiconify(this : Window*) : Void
   fun window_fullscreen = gtk_window_fullscreen(this : Window*) : Void
+  fun window_fullscreen_on_monitor = gtk_window_fullscreen_on_monitor(this : Window*, screen : LibGdk::Screen*, monitor : Int32) : Void
   fun window_get_accept_focus = gtk_window_get_accept_focus(this : Window*) : Bool
   fun window_get_application = gtk_window_get_application(this : Window*) : LibGtk::Application*
   fun window_get_attached_to = gtk_window_get_attached_to(this : Window*) : LibGtk::Widget*
@@ -4998,7 +5027,7 @@ lib LibGtk
   fun window_get_opacity = gtk_window_get_opacity(this : Window*) : Float64
   fun window_get_position = gtk_window_get_position(this : Window*, root_x : Int32*, root_y : Int32*) : Void
   fun window_get_resizable = gtk_window_get_resizable(this : Window*) : Bool
-  fun window_get_resize_grip_area = gtk_window_get_resize_grip_area(this : Window*, rect : Libcairo::RectangleInt*) : Bool
+  fun window_get_resize_grip_area = gtk_window_get_resize_grip_area(this : Window*, rect : LibGdk::Rectangle*) : Bool
   fun window_get_role = gtk_window_get_role(this : Window*) : UInt8*
   fun window_get_screen = gtk_window_get_screen(this : Window*) : LibGdk::Screen*
   fun window_get_size = gtk_window_get_size(this : Window*, width : Int32*, height : Int32*) : Void
@@ -6180,7 +6209,6 @@ lib LibGtk
     no_fallback : UInt32
     pg_bg_rgba : LibGdk::RGBA*
     letter_spacing : Int32
-    padding : UInt32
   end
   fun text_attributes_new = gtk_text_attributes_new() : LibGtk::TextAttributes*
   fun text_attributes_copy = gtk_text_attributes_copy(this : TextAttributes*) : LibGtk::TextAttributes*
@@ -6466,14 +6494,6 @@ lib LibGtk
     _data : UInt8[0]
   end
 
-  struct WidgetAuxInfo # struct
-    width : Int32
-    height : Int32
-    halign : UInt32
-    valign : UInt32
-    margin : LibGtk::Border
-  end
-
   struct WidgetClassPrivate # struct
     _data : UInt8[0]
   end
@@ -6491,6 +6511,7 @@ lib LibGtk
   fun widget_path_has_parent = gtk_widget_path_has_parent(this : WidgetPath*, type : UInt64) : Bool
   fun widget_path_is_type = gtk_widget_path_is_type(this : WidgetPath*, type : UInt64) : Bool
   fun widget_path_iter_add_class = gtk_widget_path_iter_add_class(this : WidgetPath*, pos : Int32, name : UInt8*) : Void
+  fun widget_path_iter_add_qclass = gtk_widget_path_iter_add_qclass(this : WidgetPath*, pos : Int32, qname : UInt32) : Void
   fun widget_path_iter_add_region = gtk_widget_path_iter_add_region(this : WidgetPath*, pos : Int32, name : UInt8*, flags : LibGtk::RegionFlags) : Void
   fun widget_path_iter_clear_classes = gtk_widget_path_iter_clear_classes(this : WidgetPath*, pos : Int32) : Void
   fun widget_path_iter_clear_regions = gtk_widget_path_iter_clear_regions(this : WidgetPath*, pos : Int32) : Void
@@ -6656,6 +6677,7 @@ lib LibGtk
     UPPERCASE_WORDS = 32
     UPPERCASE_SENTENCES = 64
     INHIBIT_OSK = 128
+    VERTICAL_WRITING = 256
   end
 
   enum JunctionSides : UInt32
@@ -6873,7 +6895,7 @@ lib LibGtk
   fun cell_accessible_parent_activate = gtk_cell_accessible_parent_activate(this : CellAccessibleParent*, cell : LibGtk::CellAccessible*) : Void
   fun cell_accessible_parent_edit = gtk_cell_accessible_parent_edit(this : CellAccessibleParent*, cell : LibGtk::CellAccessible*) : Void
   fun cell_accessible_parent_expand_collapse = gtk_cell_accessible_parent_expand_collapse(this : CellAccessibleParent*, cell : LibGtk::CellAccessible*) : Void
-  fun cell_accessible_parent_get_cell_area = gtk_cell_accessible_parent_get_cell_area(this : CellAccessibleParent*, cell : LibGtk::CellAccessible*, cell_rect : Libcairo::RectangleInt*) : Void
+  fun cell_accessible_parent_get_cell_area = gtk_cell_accessible_parent_get_cell_area(this : CellAccessibleParent*, cell : LibGtk::CellAccessible*, cell_rect : LibGdk::Rectangle*) : Void
   fun cell_accessible_parent_get_cell_extents = gtk_cell_accessible_parent_get_cell_extents(this : CellAccessibleParent*, cell : LibGtk::CellAccessible*, x : Int32*, y : Int32*, width : Int32*, height : Int32*, coord_type : LibAtk::CoordType) : Void
   fun cell_accessible_parent_get_child_index = gtk_cell_accessible_parent_get_child_index(this : CellAccessibleParent*, cell : LibGtk::CellAccessible*) : Int32
   fun cell_accessible_parent_get_renderer_state = gtk_cell_accessible_parent_get_renderer_state(this : CellAccessibleParent*, cell : LibGtk::CellAccessible*) : LibGtk::CellRendererState
@@ -7076,6 +7098,8 @@ lib LibGtk
     get_font_size : -> Void
     set_filter_func : -> Void
     font_activated : -> Void
+    set_font_map : -> Void
+    get_font_map : -> Void
     padding : Void*
     # Property font : UInt8*
     # Property font_desc : LibPango::FontDescription
@@ -7085,19 +7109,23 @@ lib LibGtk
     # Virtual function font_activated
     # Virtual function get_font_face
     # Virtual function get_font_family
+    # Virtual function get_font_map
     # Virtual function get_font_size
     # Virtual function set_filter_func
+    # Virtual function set_font_map
   end
   fun font_chooser_get_font = gtk_font_chooser_get_font(this : FontChooser*) : UInt8*
   fun font_chooser_get_font_desc = gtk_font_chooser_get_font_desc(this : FontChooser*) : LibPango::FontDescription*
   fun font_chooser_get_font_face = gtk_font_chooser_get_font_face(this : FontChooser*) : LibPango::FontFace*
   fun font_chooser_get_font_family = gtk_font_chooser_get_font_family(this : FontChooser*) : LibPango::FontFamily*
+  fun font_chooser_get_font_map = gtk_font_chooser_get_font_map(this : FontChooser*) : LibPango::FontMap*
   fun font_chooser_get_font_size = gtk_font_chooser_get_font_size(this : FontChooser*) : Int32
   fun font_chooser_get_preview_text = gtk_font_chooser_get_preview_text(this : FontChooser*) : UInt8*
   fun font_chooser_get_show_preview_entry = gtk_font_chooser_get_show_preview_entry(this : FontChooser*) : Bool
   fun font_chooser_set_filter_func = gtk_font_chooser_set_filter_func(this : FontChooser*, filter : LibGtk::FontFilterFunc, user_data : Void*, destroy : LibGLib::DestroyNotify) : Void
   fun font_chooser_set_font = gtk_font_chooser_set_font(this : FontChooser*, fontname : UInt8*) : Void
   fun font_chooser_set_font_desc = gtk_font_chooser_set_font_desc(this : FontChooser*, font_desc : LibPango::FontDescription*) : Void
+  fun font_chooser_set_font_map = gtk_font_chooser_set_font_map(this : FontChooser*, fontmap : LibPango::FontMap*) : Void
   fun font_chooser_set_preview_text = gtk_font_chooser_set_preview_text(this : FontChooser*, text : UInt8*) : Void
   fun font_chooser_set_show_preview_entry = gtk_font_chooser_set_show_preview_entry(this : FontChooser*, show_preview_entry : Bool) : Void
 
@@ -7469,6 +7497,7 @@ lib LibGtk
     TEMPLATE_MISMATCH = 10
     INVALID_PROPERTY = 11
     INVALID_SIGNAL = 12
+    INVALID_ID = 13
   end
   fun builder_error_quark = gtk_builder_error_quark() : UInt32
 
@@ -8279,15 +8308,15 @@ lib LibGtk
   ##    Constants
   ###########################################
 
-  BINARY_AGE = 1607 # : Int32
+  BINARY_AGE = 1801 # : Int32
   INPUT_ERROR = -1 # : Int32
-  INTERFACE_AGE = 7 # : Int32
+  INTERFACE_AGE = 1 # : Int32
   LEVEL_BAR_OFFSET_HIGH = "high" # : UInt8*
   LEVEL_BAR_OFFSET_LOW = "low" # : UInt8*
   MAJOR_VERSION = 3 # : Int32
   MAX_COMPOSE_LEN = 7 # : Int32
-  MICRO_VERSION = 7 # : Int32
-  MINOR_VERSION = 16 # : Int32
+  MICRO_VERSION = 1 # : Int32
+  MINOR_VERSION = 18 # : Int32
   PAPER_NAME_A3 = "iso_a3" # : UInt8*
   PAPER_NAME_A4 = "iso_a4" # : UInt8*
   PAPER_NAME_A5 = "iso_a5" # : UInt8*
@@ -8583,7 +8612,7 @@ lib LibGtk
   fun drag_set_icon_stock = gtk_drag_set_icon_stock(context : LibGdk::DragContext*, stock_id : UInt8*, hot_x : Int32, hot_y : Int32) : Void
   fun drag_set_icon_surface = gtk_drag_set_icon_surface(context : LibGdk::DragContext*, surface : Libcairo::Surface*) : Void
   fun drag_set_icon_widget = gtk_drag_set_icon_widget(context : LibGdk::DragContext*, widget : LibGtk::Widget*, hot_x : Int32, hot_y : Int32) : Void
-  fun draw_insertion_cursor = gtk_draw_insertion_cursor(widget : LibGtk::Widget*, cr : Libcairo::Context*, location : Libcairo::RectangleInt*, is_primary : Bool, direction : LibGtk::TextDirection, draw_arrow : Bool) : Void
+  fun draw_insertion_cursor = gtk_draw_insertion_cursor(widget : LibGtk::Widget*, cr : Libcairo::Context*, location : LibGdk::Rectangle*, is_primary : Bool, direction : LibGtk::TextDirection, draw_arrow : Bool) : Void
   fun events_pending = gtk_events_pending() : Bool
   fun false = gtk_false() : Bool
   fun file_chooser_error_quark = gtk_file_chooser_error_quark() : UInt32
@@ -8743,7 +8772,7 @@ lib LibGtk
  alias BuilderConnectFunc = LibGtk::Builder*, LibGObject::Object*, UInt8*, UInt8*, LibGObject::Object*, LibGObject::ConnectFlags, Void* -> Void
  alias CalendarDetailFunc = LibGtk::Calendar*, UInt32, UInt32, UInt32, Void* -> UInt8*
  alias Callback = LibGtk::Widget*, Void* -> Void
- alias CellAllocCallback = LibGtk::CellRenderer*, Libcairo::RectangleInt*, Libcairo::RectangleInt*, Void* -> Bool
+ alias CellAllocCallback = LibGtk::CellRenderer*, LibGdk::Rectangle*, LibGdk::Rectangle*, Void* -> Bool
  alias CellCallback = LibGtk::CellRenderer*, Void* -> Bool
  alias CellLayoutDataFunc = LibGtk::CellLayout*, LibGtk::CellRenderer*, LibGtk::TreeModel*, LibGtk::TreeIter*, Void* -> Void
  alias ClipboardClearFunc = LibGtk::Clipboard*, Void* -> Void
@@ -8778,8 +8807,8 @@ lib LibGtk
  alias RcPropertyParser = LibGObject::ParamSpec*, LibGLib::String*, LibGObject::Value* -> Bool
  alias RecentFilterFunc = LibGtk::RecentFilterInfo*, Void* -> Bool
  alias RecentSortFunc = LibGtk::RecentInfo*, LibGtk::RecentInfo*, Void* -> Int32
- alias StylePropertyParser = UInt8*, LibGObject::Value* -> Bool
- alias TextBufferDeserializeFunc = LibGtk::TextBuffer*, LibGtk::TextBuffer*, LibGtk::TextIter*, UInt8*, UInt64, Bool, Void* -> Bool
+ alias StylePropertyParser = UInt8*, LibGObject::Value*, LibGLib::Error** -> Bool
+ alias TextBufferDeserializeFunc = LibGtk::TextBuffer*, LibGtk::TextBuffer*, LibGtk::TextIter*, UInt8*, UInt64, Bool, Void*, LibGLib::Error** -> Bool
  alias TextBufferSerializeFunc = LibGtk::TextBuffer*, LibGtk::TextBuffer*, LibGtk::TextIter*, LibGtk::TextIter*, UInt64*, Void* -> UInt8*
  alias TextCharPredicate = UInt8, Void* -> Bool
  alias TextTagTableForeach = LibGtk::TextTag*, Void* -> Void

@@ -16,7 +16,7 @@ module Gtk
     end
 
     def cell_area(cell, cell_rect)
-      __return_value = LibGtk.cell_accessible_parent_get_cell_area((to_unsafe as LibGtk::CellAccessibleParent*), (cell.to_unsafe as LibGtk::CellAccessible*), (cell_rect.to_unsafe as LibCairo::RectangleInt*))
+      __return_value = LibGtk.cell_accessible_parent_get_cell_area((to_unsafe as LibGtk::CellAccessibleParent*), (cell.to_unsafe as LibGtk::CellAccessible*), (cell_rect.to_unsafe as LibGdk::Rectangle*))
       __return_value
     end
 

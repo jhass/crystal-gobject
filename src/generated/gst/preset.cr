@@ -22,12 +22,17 @@ module Gst
 
     def preset_names
       __return_value = LibGst.preset_get_preset_names((to_unsafe as LibGst::Preset*))
-      PointerIterator.new(__return_value) {|__item_90| (raise "Expected string but got null" unless __item_90; String.new(__item_90)) }
+      PointerIterator.new(__return_value) {|__item_8| (raise "Expected string but got null" unless __item_8; String.new(__item_8)) }
     end
 
     def property_names
       __return_value = LibGst.preset_get_property_names((to_unsafe as LibGst::Preset*))
-      PointerIterator.new(__return_value) {|__item_71| (raise "Expected string but got null" unless __item_71; String.new(__item_71)) }
+      PointerIterator.new(__return_value) {|__item_88| (raise "Expected string but got null" unless __item_88; String.new(__item_88)) }
+    end
+
+    def editable?
+      __return_value = LibGst.preset_is_editable((to_unsafe as LibGst::Preset*))
+      __return_value
     end
 
     def load_preset(name)

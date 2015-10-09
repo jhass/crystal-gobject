@@ -16,7 +16,7 @@ module Pango
 
     def copy
       __return_value = LibPango.glyph_string_copy((to_unsafe as LibPango::GlyphString*))
-      Pango::GlyphString.new(__return_value)
+      Pango::GlyphString.new(__return_value) if __return_value
     end
 
     def extents(font, ink_rect, logical_rect)

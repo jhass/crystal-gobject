@@ -422,6 +422,16 @@ module Gtk
       __return_value
     end
 
+    def font_map
+      __return_value = LibGtk.widget_get_font_map((to_unsafe as LibGtk::Widget*))
+      Pango::FontMap.new(__return_value)
+    end
+
+    def font_options
+      __return_value = LibGtk.widget_get_font_options((to_unsafe as LibGtk::Widget*))
+      Cairo::FontOptions.new(__return_value)
+    end
+
     def frame_clock
       __return_value = LibGtk.widget_get_frame_clock((to_unsafe as LibGtk::Widget*))
       Gdk::FrameClock.new(__return_value)
@@ -783,7 +793,7 @@ module Gtk
     end
 
     def intersect(area, intersection)
-      __return_value = LibGtk.widget_intersect((to_unsafe as LibGtk::Widget*), (area.to_unsafe as LibCairo::RectangleInt*), intersection && (intersection.to_unsafe as LibCairo::RectangleInt*))
+      __return_value = LibGtk.widget_intersect((to_unsafe as LibGtk::Widget*), (area.to_unsafe as LibGdk::Rectangle*), intersection && (intersection.to_unsafe as LibGdk::Rectangle*))
       __return_value
     end
 
@@ -834,7 +844,7 @@ module Gtk
 
     def list_action_prefixes
       __return_value = LibGtk.widget_list_action_prefixes((to_unsafe as LibGtk::Widget*))
-      PointerIterator.new(__return_value) {|__item_53| (raise "Expected string but got null" unless __item_53; String.new(__item_53)) }
+      PointerIterator.new(__return_value) {|__item_54| (raise "Expected string but got null" unless __item_54; String.new(__item_54)) }
     end
 
     def list_mnemonic_labels
@@ -1018,7 +1028,7 @@ module Gtk
     end
 
     def allocation=(allocation)
-      __return_value = LibGtk.widget_set_allocation((to_unsafe as LibGtk::Widget*), (allocation.to_unsafe as LibCairo::RectangleInt*))
+      __return_value = LibGtk.widget_set_allocation((to_unsafe as LibGtk::Widget*), (allocation.to_unsafe as LibGdk::Rectangle*))
       __return_value
     end
 
@@ -1043,7 +1053,7 @@ module Gtk
     end
 
     def clip=(clip)
-      __return_value = LibGtk.widget_set_clip((to_unsafe as LibGtk::Widget*), (clip.to_unsafe as LibCairo::RectangleInt*))
+      __return_value = LibGtk.widget_set_clip((to_unsafe as LibGtk::Widget*), (clip.to_unsafe as LibGdk::Rectangle*))
       __return_value
     end
 
@@ -1074,6 +1084,16 @@ module Gtk
 
     def events=(events)
       __return_value = LibGtk.widget_set_events((to_unsafe as LibGtk::Widget*), Int32.new(events))
+      __return_value
+    end
+
+    def font_map=(font_map)
+      __return_value = LibGtk.widget_set_font_map((to_unsafe as LibGtk::Widget*), font_map && (font_map.to_unsafe as LibPango::FontMap*))
+      __return_value
+    end
+
+    def font_options=(options)
+      __return_value = LibGtk.widget_set_font_options((to_unsafe as LibGtk::Widget*), options && (options.to_unsafe as LibCairo::FontOptions*))
       __return_value
     end
 
@@ -1273,12 +1293,12 @@ module Gtk
     end
 
     def size_allocate(allocation)
-      __return_value = LibGtk.widget_size_allocate((to_unsafe as LibGtk::Widget*), (allocation.to_unsafe as LibCairo::RectangleInt*))
+      __return_value = LibGtk.widget_size_allocate((to_unsafe as LibGtk::Widget*), (allocation.to_unsafe as LibGdk::Rectangle*))
       __return_value
     end
 
     def size_allocate_with_baseline(allocation, baseline)
-      __return_value = LibGtk.widget_size_allocate_with_baseline((to_unsafe as LibGtk::Widget*), (allocation.to_unsafe as LibCairo::RectangleInt*), Int32.new(baseline))
+      __return_value = LibGtk.widget_size_allocate_with_baseline((to_unsafe as LibGtk::Widget*), (allocation.to_unsafe as LibGdk::Rectangle*), Int32.new(baseline))
       __return_value
     end
 
@@ -1859,10 +1879,10 @@ module Gtk
       connect("show-help", __callback)
     end
 
-    alias SizeAllocateSignal = Widget, Cairo::RectangleInt -> 
+    alias SizeAllocateSignal = Widget, Gdk::Rectangle -> 
     def on_size_allocate(&__block : SizeAllocateSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::Libcairo::RectangleInt*) {
-       __return_value = __block.call(Widget.new(_arg0), Cairo::RectangleInt.new(_arg1))
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::Rectangle*) {
+       __return_value = __block.call(Widget.new(_arg0), Gdk::Rectangle.new(_arg1))
        __return_value
       }
       connect("size-allocate", __callback)

@@ -82,6 +82,11 @@ module Gst
       __return_value
     end
 
+    def sync_children_states
+      __return_value = LibGst.bin_sync_children_states((to_unsafe as LibGst::Bin*))
+      __return_value
+    end
+
     alias DoLatencySignal = Bin -> Bool
     def on_do_latency(&__block : DoLatencySignal)
       __callback = ->(_arg0 : LibGst::Bin*) {

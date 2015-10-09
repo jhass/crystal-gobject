@@ -85,6 +85,11 @@ module Gst
       __return_value
     end
 
+    def remove_watch
+      __return_value = LibGst.bus_remove_watch((to_unsafe as LibGst::Bus*))
+      __return_value
+    end
+
     def flushing=(flushing)
       __return_value = LibGst.bus_set_flushing((to_unsafe as LibGst::Bus*), flushing)
       __return_value

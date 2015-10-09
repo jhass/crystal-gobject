@@ -21,7 +21,7 @@ module Gst
 
     def missing_elements
       __return_value = LibGst.parse_context_get_missing_elements((to_unsafe as LibGst::ParseContext*))
-      PointerIterator.new(__return_value) {|__item_28| (raise "Expected string but got null" unless __item_28; String.new(__item_28)) }
+      PointerIterator.new(__return_value) {|__item_81| (raise "Expected string but got null" unless __item_81; String.new(__item_81)) }
     end
 
   end

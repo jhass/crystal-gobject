@@ -44,6 +44,16 @@ module Gst
       Gst::DeviceProviderFactory.new(__return_value)
     end
 
+    def hidden_providers
+      __return_value = LibGst.device_provider_get_hidden_providers((to_unsafe as LibGst::DeviceProvider*))
+      PointerIterator.new(__return_value) {|__item_0| (raise "Expected string but got null" unless __item_0; String.new(__item_0)) }
+    end
+
+    def hide_provider(name)
+      __return_value = LibGst.device_provider_hide_provider((to_unsafe as LibGst::DeviceProvider*), name)
+      __return_value
+    end
+
     def start
       __return_value = LibGst.device_provider_start((to_unsafe as LibGst::DeviceProvider*))
       __return_value
@@ -52,6 +62,29 @@ module Gst
     def stop
       __return_value = LibGst.device_provider_stop((to_unsafe as LibGst::DeviceProvider*))
       __return_value
+    end
+
+    def unhide_provider(name)
+      __return_value = LibGst.device_provider_unhide_provider((to_unsafe as LibGst::DeviceProvider*), name)
+      __return_value
+    end
+
+    alias ProviderHiddenSignal = DeviceProvider, UInt8 -> 
+    def on_provider_hidden(&__block : ProviderHiddenSignal)
+      __callback = ->(_arg0 : LibGst::DeviceProvider*, _arg1 : LibGst::UInt8**) {
+       __return_value = __block.call(DeviceProvider.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value
+      }
+      connect("provider-hidden", __callback)
+    end
+
+    alias ProviderUnhiddenSignal = DeviceProvider, UInt8 -> 
+    def on_provider_unhidden(&__block : ProviderUnhiddenSignal)
+      __callback = ->(_arg0 : LibGst::DeviceProvider*, _arg1 : LibGst::UInt8**) {
+       __return_value = __block.call(DeviceProvider.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value
+      }
+      connect("provider-unhidden", __callback)
     end
 
   end

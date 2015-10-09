@@ -16,7 +16,7 @@ module Pango
 
     def copy
       __return_value = LibPango.matrix_copy((to_unsafe as LibPango::Matrix*))
-      Pango::Matrix.new(__return_value)
+      Pango::Matrix.new(__return_value) if __return_value
     end
 
     def free
@@ -26,6 +26,11 @@ module Pango
 
     def font_scale_factor
       __return_value = LibPango.matrix_get_font_scale_factor((to_unsafe as LibPango::Matrix*))
+      __return_value
+    end
+
+    def font_scale_factors(xscale, yscale)
+      __return_value = LibPango.matrix_get_font_scale_factors((to_unsafe as LibPango::Matrix*), Float64.new(xscale), Float64.new(yscale))
       __return_value
     end
 

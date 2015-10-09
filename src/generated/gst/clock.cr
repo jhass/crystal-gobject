@@ -52,8 +52,18 @@ module Gst
       __return_value
     end
 
+    def add_observation_unapplied(slave, master, r_squared, internal, external, rate_num, rate_denom)
+      __return_value = LibGst.clock_add_observation_unapplied((to_unsafe as LibGst::Clock*), UInt64.new(slave), UInt64.new(master), Float64.new(r_squared), UInt64.new(internal), UInt64.new(external), UInt64.new(rate_num), UInt64.new(rate_denom))
+      __return_value
+    end
+
     def adjust_unlocked(internal)
       __return_value = LibGst.clock_adjust_unlocked((to_unsafe as LibGst::Clock*), UInt64.new(internal))
+      __return_value
+    end
+
+    def adjust_with_calibration(internal_target, cinternal, cexternal, cnum, cdenom)
+      __return_value = LibGst.clock_adjust_with_calibration((to_unsafe as LibGst::Clock*), UInt64.new(internal_target), UInt64.new(cinternal), UInt64.new(cexternal), UInt64.new(cnum), UInt64.new(cdenom))
       __return_value
     end
 
@@ -87,6 +97,11 @@ module Gst
       __return_value
     end
 
+    def synced?
+      __return_value = LibGst.clock_is_synced((to_unsafe as LibGst::Clock*))
+      __return_value
+    end
+
     def new_periodic_id(start_time, interval)
       __return_value = LibGst.clock_new_periodic_id((to_unsafe as LibGst::Clock*), UInt64.new(start_time), UInt64.new(interval))
       __return_value
@@ -117,6 +132,11 @@ module Gst
       __return_value
     end
 
+    def synced=(synced)
+      __return_value = LibGst.clock_set_synced((to_unsafe as LibGst::Clock*), synced)
+      __return_value
+    end
+
     def timeout=(timeout)
       __return_value = LibGst.clock_set_timeout((to_unsafe as LibGst::Clock*), UInt64.new(timeout))
       __return_value
@@ -130,6 +150,20 @@ module Gst
     def unadjust_unlocked(external)
       __return_value = LibGst.clock_unadjust_unlocked((to_unsafe as LibGst::Clock*), UInt64.new(external))
       __return_value
+    end
+
+    def wait_for_sync(timeout)
+      __return_value = LibGst.clock_wait_for_sync((to_unsafe as LibGst::Clock*), UInt64.new(timeout))
+      __return_value
+    end
+
+    alias SyncedSignal = Clock, Bool -> 
+    def on_synced(&__block : SyncedSignal)
+      __callback = ->(_arg0 : LibGst::Clock*, _arg1 : LibGst::Bool*) {
+       __return_value = __block.call(Clock.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("synced", __callback)
     end
 
   end

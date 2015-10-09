@@ -24,6 +24,11 @@ module GObject
       (raise "Expected string but got null" unless __return_value; String.new(__return_value))
     end
 
+    def name_quark
+      __return_value = LibGObject.param_spec_get_name_quark((to_unsafe as LibGObject::ParamSpec*))
+      __return_value
+    end
+
     def nick
       __return_value = LibGObject.param_spec_get_nick((to_unsafe as LibGObject::ParamSpec*))
       (raise "Expected string but got null" unless __return_value; String.new(__return_value))

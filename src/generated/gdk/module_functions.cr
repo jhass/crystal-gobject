@@ -35,7 +35,7 @@ module Gdk
   end
 
   def self.cairo_rectangle(cr, rectangle)
-    __return_value = LibGdk.cairo_rectangle((cr.to_unsafe as LibCairo::Context*), (rectangle.to_unsafe as LibCairo::RectangleInt*))
+    __return_value = LibGdk.cairo_rectangle((cr.to_unsafe as LibCairo::Context*), (rectangle.to_unsafe as LibGdk::Rectangle*))
     __return_value
   end
 
@@ -381,21 +381,6 @@ module Gdk
 
   def self.query_visual_types(visual_types, count)
     __return_value = LibGdk.query_visual_types(visual_types, Int32.new(count))
-    __return_value
-  end
-
-  def self.rectangle_get_type
-    __return_value = LibGdk.rectangle_get_type
-    __return_value
-  end
-
-  def self.rectangle_intersect(src1, src2, dest)
-    __return_value = LibGdk.rectangle_intersect((src1.to_unsafe as LibCairo::RectangleInt*), (src2.to_unsafe as LibCairo::RectangleInt*), dest)
-    __return_value
-  end
-
-  def self.rectangle_union(src1, src2, dest)
-    __return_value = LibGdk.rectangle_union((src1.to_unsafe as LibCairo::RectangleInt*), (src2.to_unsafe as LibCairo::RectangleInt*), dest)
     __return_value
   end
 

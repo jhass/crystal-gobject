@@ -9,6 +9,7 @@ module Gio
       @gio_socket_service.not_nil!
     end
 
+
     def self.new_internal
       __return_value = LibGio.socket_service_new
       Gio::SocketService.new(__return_value)

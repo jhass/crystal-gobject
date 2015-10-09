@@ -58,6 +58,9 @@ lib LibPango
     ABSOLUTE_SIZE = 20
     GRAVITY = 21
     GRAVITY_HINT = 22
+    FONT_FEATURES = 23
+    FOREGROUND_ALPHA = 24
+    BACKGROUND_ALPHA = 25
   end
   fun attr_type_get_name = pango_attr_type_get_name(type : LibPango::AttrType) : UInt8*
   fun attr_type_register = pango_attr_type_register(name : UInt8*) : LibPango::AttrType
@@ -336,6 +339,11 @@ lib LibPango
   struct AttrFontDesc # struct
     attr : LibPango::Attribute
     desc : LibPango::FontDescription*
+  end
+
+  struct AttrFontFeatures # struct
+    attr : LibPango::Attribute
+    features : UInt8*
   end
 
   struct AttrInt # struct
@@ -655,6 +663,7 @@ lib LibPango
   fun matrix_copy = pango_matrix_copy(this : Matrix*) : LibPango::Matrix*
   fun matrix_free = pango_matrix_free(this : Matrix*) : Void
   fun matrix_get_font_scale_factor = pango_matrix_get_font_scale_factor(this : Matrix*) : Float64
+  fun matrix_get_font_scale_factors = pango_matrix_get_font_scale_factors(this : Matrix*, xscale : Float64*, yscale : Float64*) : Void
   fun matrix_rotate = pango_matrix_rotate(this : Matrix*, degrees : Float64) : Void
   fun matrix_scale = pango_matrix_scale(this : Matrix*, scale_x : Float64, scale_y : Float64) : Void
   fun matrix_transform_distance = pango_matrix_transform_distance(this : Matrix*, dx : Float64*, dy : Float64*) : Void
@@ -906,11 +915,13 @@ lib LibPango
   fun renderer_draw_layout_line = pango_renderer_draw_layout_line(this : Renderer*, line : LibPango::LayoutLine*, x : Int32, y : Int32) : Void
   fun renderer_draw_rectangle = pango_renderer_draw_rectangle(this : Renderer*, part : LibPango::RenderPart, x : Int32, y : Int32, width : Int32, height : Int32) : Void
   fun renderer_draw_trapezoid = pango_renderer_draw_trapezoid(this : Renderer*, part : LibPango::RenderPart, y1 : Float64, x11 : Float64, x21 : Float64, y2 : Float64, x12 : Float64, x22 : Float64) : Void
+  fun renderer_get_alpha = pango_renderer_get_alpha(this : Renderer*, part : LibPango::RenderPart) : UInt16
   fun renderer_get_color = pango_renderer_get_color(this : Renderer*, part : LibPango::RenderPart) : LibPango::Color*
   fun renderer_get_layout = pango_renderer_get_layout(this : Renderer*) : LibPango::Layout*
   fun renderer_get_layout_line = pango_renderer_get_layout_line(this : Renderer*) : LibPango::LayoutLine*
   fun renderer_get_matrix = pango_renderer_get_matrix(this : Renderer*) : LibPango::Matrix*
   fun renderer_part_changed = pango_renderer_part_changed(this : Renderer*, part : LibPango::RenderPart) : Void
+  fun renderer_set_alpha = pango_renderer_set_alpha(this : Renderer*, part : LibPango::RenderPart, alpha : UInt16) : Void
   fun renderer_set_color = pango_renderer_set_color(this : Renderer*, part : LibPango::RenderPart, color : LibPango::Color*) : Void
   fun renderer_set_matrix = pango_renderer_set_matrix(this : Renderer*, matrix : LibPango::Matrix*) : Void
 

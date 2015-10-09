@@ -83,6 +83,7 @@ lib LibGObject
   fun param_spec_get_blurb = g_param_spec_get_blurb(this : ParamSpec*) : UInt8*
   fun param_spec_get_default_value = g_param_spec_get_default_value(this : ParamSpec*) : LibGObject::Value*
   fun param_spec_get_name = g_param_spec_get_name(this : ParamSpec*) : UInt8*
+  fun param_spec_get_name_quark = g_param_spec_get_name_quark(this : ParamSpec*) : UInt32
   fun param_spec_get_nick = g_param_spec_get_nick(this : ParamSpec*) : UInt8*
   fun param_spec_get_qdata = g_param_spec_get_qdata(this : ParamSpec*, quark : UInt32) : Void*
   fun param_spec_get_redirect_target = g_param_spec_get_redirect_target(this : ParamSpec*) : LibGObject::ParamSpec*

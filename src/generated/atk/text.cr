@@ -12,7 +12,7 @@ module Atk
 
     def bounded_ranges(rect, coord_type, x_clip_type, y_clip_type)
       __return_value = LibAtk.text_get_bounded_ranges((to_unsafe as LibAtk::Text*), (rect.to_unsafe as LibAtk::TextRectangle*), coord_type, x_clip_type, y_clip_type)
-      PointerIterator.new(__return_value) {|__item_12| Atk::TextRange.new(__item_12) }
+      PointerIterator.new(__return_value) {|__item_95| Atk::TextRange.new(__item_95) }
     end
 
     def caret_offset

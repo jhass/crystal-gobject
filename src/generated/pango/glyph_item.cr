@@ -16,7 +16,7 @@ module Pango
 
     def copy
       __return_value = LibPango.glyph_item_copy((to_unsafe as LibPango::GlyphItem*))
-      Pango::GlyphItem.new(__return_value)
+      Pango::GlyphItem.new(__return_value) if __return_value
     end
 
     def free

@@ -56,7 +56,7 @@ module Pango
 
     def ref
       __return_value = LibPango.font_metrics_ref((to_unsafe as LibPango::FontMetrics*))
-      Pango::FontMetrics.new(__return_value)
+      Pango::FontMetrics.new(__return_value) if __return_value
     end
 
     def unref

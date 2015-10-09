@@ -74,7 +74,7 @@ module Gio
 
     def attribute_stringv(attribute)
       __return_value = LibGio.file_info_get_attribute_stringv((to_unsafe as LibGio::FileInfo*), attribute)
-      PointerIterator.new(__return_value) {|__item_36| (raise "Expected string but got null" unless __item_36; String.new(__item_36)) }
+      PointerIterator.new(__return_value) {|__item_44| (raise "Expected string but got null" unless __item_44; String.new(__item_44)) }
     end
 
     def attribute_type(attribute)
@@ -184,7 +184,7 @@ module Gio
 
     def list_attributes(name_space)
       __return_value = LibGio.file_info_list_attributes((to_unsafe as LibGio::FileInfo*), name_space)
-      PointerIterator.new(__return_value) {|__item_88| (raise "Expected string but got null" unless __item_88; String.new(__item_88)) } if __return_value
+      PointerIterator.new(__return_value) {|__item_73| (raise "Expected string but got null" unless __item_73; String.new(__item_73)) } if __return_value
     end
 
     def remove_attribute(attribute)

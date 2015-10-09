@@ -29,6 +29,16 @@ module GLib
       __return_value
     end
 
+    def push_front(item)
+      __return_value = LibGLib.async_queue_push_front((to_unsafe as LibGLib::AsyncQueue*), item)
+      __return_value
+    end
+
+    def push_front_unlocked(item)
+      __return_value = LibGLib.async_queue_push_front_unlocked((to_unsafe as LibGLib::AsyncQueue*), item)
+      __return_value
+    end
+
     def push_unlocked(data)
       __return_value = LibGLib.async_queue_push_unlocked((to_unsafe as LibGLib::AsyncQueue*), data)
       __return_value
@@ -36,6 +46,16 @@ module GLib
 
     def ref_unlocked
       __return_value = LibGLib.async_queue_ref_unlocked((to_unsafe as LibGLib::AsyncQueue*))
+      __return_value
+    end
+
+    def remove(item)
+      __return_value = LibGLib.async_queue_remove((to_unsafe as LibGLib::AsyncQueue*), item)
+      __return_value
+    end
+
+    def remove_unlocked(item)
+      __return_value = LibGLib.async_queue_remove_unlocked((to_unsafe as LibGLib::AsyncQueue*), item)
       __return_value
     end
 

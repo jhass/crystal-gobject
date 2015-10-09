@@ -34,6 +34,11 @@ module Gst
       Gst::Structure.new(__return_value)
     end
 
+    def filter_and_map_in_place(func : LibGst::StructureFilterMapFunc, user_data)
+      __return_value = LibGst.structure_filter_and_map_in_place((to_unsafe as LibGst::Structure*), func, user_data)
+      __return_value
+    end
+
     def fixate
       __return_value = LibGst.structure_fixate((to_unsafe as LibGst::Structure*))
       __return_value
@@ -111,6 +116,11 @@ module Gst
 
     def field_type(fieldname)
       __return_value = LibGst.structure_get_field_type((to_unsafe as LibGst::Structure*), fieldname)
+      __return_value
+    end
+
+    def flagset(fieldname, value_flags, value_mask)
+      __return_value = LibGst.structure_get_flagset((to_unsafe as LibGst::Structure*), fieldname, UInt32.new(value_flags), UInt32.new(value_mask))
       __return_value
     end
 

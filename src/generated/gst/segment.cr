@@ -44,6 +44,11 @@ module Gst
       __return_value
     end
 
+    def equal?(s1)
+      __return_value = LibGst.segment_is_equal((to_unsafe as LibGst::Segment*), (s1.to_unsafe as LibGst::Segment*))
+      __return_value
+    end
+
     def offset_running_time(format, offset)
       __return_value = LibGst.segment_offset_running_time((to_unsafe as LibGst::Segment*), format, Int64.new(offset))
       __return_value
@@ -61,6 +66,11 @@ module Gst
 
     def to_running_time(format, position)
       __return_value = LibGst.segment_to_running_time((to_unsafe as LibGst::Segment*), format, UInt64.new(position))
+      __return_value
+    end
+
+    def to_running_time_full(format, position, running_time)
+      __return_value = LibGst.segment_to_running_time_full((to_unsafe as LibGst::Segment*), format, UInt64.new(position), running_time)
       __return_value
     end
 

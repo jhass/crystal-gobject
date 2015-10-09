@@ -38,12 +38,12 @@ module Gtk
 
     def artists
       __return_value = LibGtk.about_dialog_get_artists((to_unsafe as LibGtk::AboutDialog*))
-      PointerIterator.new(__return_value) {|__item_76| (raise "Expected string but got null" unless __item_76; String.new(__item_76)) }
+      PointerIterator.new(__return_value) {|__item_31| (raise "Expected string but got null" unless __item_31; String.new(__item_31)) }
     end
 
     def authors
       __return_value = LibGtk.about_dialog_get_authors((to_unsafe as LibGtk::AboutDialog*))
-      PointerIterator.new(__return_value) {|__item_90| (raise "Expected string but got null" unless __item_90; String.new(__item_90)) }
+      PointerIterator.new(__return_value) {|__item_72| (raise "Expected string but got null" unless __item_72; String.new(__item_72)) }
     end
 
     def comments
@@ -58,7 +58,7 @@ module Gtk
 
     def documenters
       __return_value = LibGtk.about_dialog_get_documenters((to_unsafe as LibGtk::AboutDialog*))
-      PointerIterator.new(__return_value) {|__item_2| (raise "Expected string but got null" unless __item_2; String.new(__item_2)) }
+      PointerIterator.new(__return_value) {|__item_82| (raise "Expected string but got null" unless __item_82; String.new(__item_82)) }
     end
 
     def license

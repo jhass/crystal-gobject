@@ -867,6 +867,7 @@ lib LibGio
   # Requires Initable
     # Property connectivity : LibGio::NetworkConnectivity
     # Property network_available : Bool
+    # Property network_metered : Bool
     # Signal network-changed
     # Virtual function can_reach
     # Virtual function can_reach_async
@@ -879,6 +880,7 @@ lib LibGio
   fun network_monitor_can_reach_finish = g_network_monitor_can_reach_finish(this : NetworkMonitor*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : Bool
   fun network_monitor_get_connectivity = g_network_monitor_get_connectivity(this : NetworkMonitor*) : LibGio::NetworkConnectivity
   fun network_monitor_get_network_available = g_network_monitor_get_network_available(this : NetworkMonitor*) : Bool
+  fun network_monitor_get_network_metered = g_network_monitor_get_network_metered(this : NetworkMonitor*) : Bool
 
   struct PollableInputStream # interface
     g_iface : LibGObject::TypeInterface
@@ -1009,13 +1011,16 @@ lib LibGio
 
   struct TlsClientConnection # interface
     g_iface : LibGObject::TypeInterface
+    copy_session_state : -> Void
   # Requires TlsConnection
     # Property accepted_cas : Void**
     # Property server_identity : LibGio::SocketConnectable
     # Property use_ssl3 : Bool
     # Property validation_flags : LibGio::TlsCertificateFlags
+    # Virtual function copy_session_state
   end
   fun tls_client_connection_new = g_tls_client_connection_new(base_io_stream : LibGio::IOStream*, server_identity : LibGio::SocketConnectable*, error : LibGLib::Error**) : LibGio::TlsClientConnection*
+  fun tls_client_connection_copy_session_state = g_tls_client_connection_copy_session_state(this : TlsClientConnection*, source : LibGio::TlsClientConnection*) : Void
   fun tls_client_connection_get_accepted_cas = g_tls_client_connection_get_accepted_cas(this : TlsClientConnection*) : Void**
   fun tls_client_connection_get_server_identity = g_tls_client_connection_get_server_identity(this : TlsClientConnection*) : LibGio::SocketConnectable*
   fun tls_client_connection_get_use_ssl3 = g_tls_client_connection_get_use_ssl3(this : TlsClientConnection*) : Bool
@@ -1418,6 +1423,10 @@ lib LibGio
     _data : UInt8[0]
   end
 
+  struct NativeSocketAddress # struct
+    _data : UInt8[0]
+  end
+
   struct NetworkAddressPrivate # struct
     _data : UInt8[0]
   end
@@ -1490,6 +1499,7 @@ lib LibGio
   fun settings_schema_get_path = g_settings_schema_get_path(this : SettingsSchema*) : UInt8*
   fun settings_schema_has_key = g_settings_schema_has_key(this : SettingsSchema*, name : UInt8*) : Bool
   fun settings_schema_list_children = g_settings_schema_list_children(this : SettingsSchema*) : UInt8**
+  fun settings_schema_list_keys = g_settings_schema_list_keys(this : SettingsSchema*) : UInt8**
   fun settings_schema_ref = g_settings_schema_ref(this : SettingsSchema*) : LibGio::SettingsSchema*
   fun settings_schema_unref = g_settings_schema_unref(this : SettingsSchema*) : Void
 
@@ -1708,6 +1718,7 @@ lib LibGio
     ZERO_NONE = 0
     NONE = 0
     NO_AUTO_START = 1
+    ALLOW_INTERACTIVE_AUTHORIZATION = 2
   end
 
   enum DBusCapabilityFlags : UInt32
@@ -1737,6 +1748,7 @@ lib LibGio
     NONE = 0
     NO_REPLY_EXPECTED = 1
     NO_AUTO_START = 2
+    ALLOW_INTERACTIVE_AUTHORIZATION = 4
   end
 
   enum DBusObjectManagerClientFlags : UInt32
@@ -1833,6 +1845,7 @@ lib LibGio
     WATCH_MOUNTS = 1
     SEND_MOVED = 2
     WATCH_HARD_LINKS = 4
+    WATCH_MOVES = 8
   end
 
   enum FileQueryInfoFlags : UInt32
@@ -2183,7 +2196,7 @@ lib LibGio
   fun d_bus_connection_get_stream = g_dbus_connection_get_stream(this : DBusConnection*) : LibGio::IOStream*
   fun d_bus_connection_get_unique_name = g_dbus_connection_get_unique_name(this : DBusConnection*) : UInt8*
   fun d_bus_connection_is_closed = g_dbus_connection_is_closed(this : DBusConnection*) : Bool
-  fun d_bus_connection_register_object = g_dbus_connection_register_object(this : DBusConnection*, object_path : UInt8*, interface_info : LibGio::DBusInterfaceInfo*, vtable : LibGio::DBusInterfaceVTable*, user_data : Void*, user_data_free_func : LibGLib::DestroyNotify, error : LibGLib::Error**) : UInt32
+  fun d_bus_connection_register_object = g_dbus_connection_register_object_with_closures(this : DBusConnection*, object_path : UInt8*, interface_info : LibGio::DBusInterfaceInfo*, method_call_closure : LibGObject::Closure*, get_property_closure : LibGObject::Closure*, set_property_closure : LibGObject::Closure*, error : LibGLib::Error**) : UInt32
   fun d_bus_connection_register_subtree = g_dbus_connection_register_subtree(this : DBusConnection*, object_path : UInt8*, vtable : LibGio::DBusSubtreeVTable*, flags : LibGio::DBusSubtreeFlags, user_data : Void*, user_data_free_func : LibGLib::DestroyNotify, error : LibGLib::Error**) : UInt32
   fun d_bus_connection_remove_filter = g_dbus_connection_remove_filter(this : DBusConnection*, filter_id : UInt32) : Void
   fun d_bus_connection_send_message = g_dbus_connection_send_message(this : DBusConnection*, message : LibGio::DBusMessage*, flags : LibGio::DBusSendMessageFlags, out_serial : UInt32*, error : LibGLib::Error**) : Bool
@@ -2777,10 +2790,13 @@ lib LibGio
     _data : UInt8[0]
   end
   fun list_store_new = g_list_store_new(item_type : UInt64) : LibGio::ListStore*
-  fun list_store_append = g_list_store_append(this : ListStore*, item : Void*) : Void
-  fun list_store_insert = g_list_store_insert(this : ListStore*, position : UInt32, item : Void*) : Void
+  fun list_store_append = g_list_store_append(this : ListStore*, item : LibGObject::Object*) : Void
+  fun list_store_insert = g_list_store_insert(this : ListStore*, position : UInt32, item : LibGObject::Object*) : Void
+  fun list_store_insert_sorted = g_list_store_insert_sorted(this : ListStore*, item : LibGObject::Object*, compare_func : LibGLib::CompareDataFunc, user_data : Void*) : UInt32
   fun list_store_remove = g_list_store_remove(this : ListStore*, position : UInt32) : Void
   fun list_store_remove_all = g_list_store_remove_all(this : ListStore*) : Void
+  fun list_store_sort = g_list_store_sort(this : ListStore*, compare_func : LibGLib::CompareDataFunc, user_data : Void*) : Void
+  fun list_store_splice = g_list_store_splice(this : ListStore*, position : UInt32, n_removals : UInt32, additions : LibGObject::Object*, n_additions : UInt32) : Void
 
   struct MemoryInputStream # object
     parent_instance : LibGio::InputStream
@@ -2922,8 +2938,8 @@ lib LibGio
   end
   fun network_address_new = g_network_address_new(hostname : UInt8*, port : UInt16) : LibGio::NetworkAddress*
   fun network_address_new_loopback = g_network_address_new_loopback(port : UInt16) : LibGio::NetworkAddress*
-  fun network_address_parse = g_network_address_parse(host_and_port : UInt8*, default_port : UInt16, error : LibGLib::Error**) : LibGio::SocketConnectable*
-  fun network_address_parse_uri = g_network_address_parse_uri(uri : UInt8*, default_port : UInt16, error : LibGLib::Error**) : LibGio::SocketConnectable*
+  fun network_address_parse = g_network_address_parse(host_and_port : UInt8*, default_port : UInt16, error : LibGLib::Error**) : LibGio::NetworkAddress*
+  fun network_address_parse_uri = g_network_address_parse_uri(uri : UInt8*, default_port : UInt16, error : LibGLib::Error**) : LibGio::NetworkAddress*
   fun network_address_get_hostname = g_network_address_get_hostname(this : NetworkAddress*) : UInt8*
   fun network_address_get_port = g_network_address_get_port(this : NetworkAddress*) : UInt16
   fun network_address_get_scheme = g_network_address_get_scheme(this : NetworkAddress*) : UInt8*
@@ -3332,7 +3348,9 @@ lib LibGio
   struct SocketListener # object
     parent_instance : LibGObject::Object
     priv : LibGio::SocketListenerPrivate*
+    # Signal event
     # Virtual function changed
+    # Virtual function event
   end
   fun socket_listener_new = g_socket_listener_new() : LibGio::SocketListener*
   fun socket_listener_accept = g_socket_listener_accept(this : SocketListener*, source_object : LibGObject::Object**, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : LibGio::SocketConnection*
@@ -3931,6 +3949,9 @@ lib LibGio
     PRE_UNMOUNT = 5
     UNMOUNTED = 6
     MOVED = 7
+    RENAMED = 8
+    MOVED_IN = 9
+    MOVED_OUT = 10
   end
 
   enum FileType : UInt32
@@ -4083,6 +4104,14 @@ lib LibGio
     IPV6 = 10
   end
 
+  enum SocketListenerEvent : UInt32
+    ZERO_NONE = 0
+    BINDING = 0
+    BOUND = 1
+    LISTENING = 2
+    LISTENED = 3
+  end
+
   enum SocketProtocol : Int32
     ZERO_NONE = 0
     UNKNOWN = -1
@@ -4213,6 +4242,7 @@ lib LibGio
   FILE_ATTRIBUTE_STANDARD_IS_HIDDEN = "standard::is-hidden" # : UInt8*
   FILE_ATTRIBUTE_STANDARD_IS_SYMLINK = "standard::is-symlink" # : UInt8*
   FILE_ATTRIBUTE_STANDARD_IS_VIRTUAL = "standard::is-virtual" # : UInt8*
+  FILE_ATTRIBUTE_STANDARD_IS_VOLATILE = "standard::is-volatile" # : UInt8*
   FILE_ATTRIBUTE_STANDARD_NAME = "standard::name" # : UInt8*
   FILE_ATTRIBUTE_STANDARD_SIZE = "standard::size" # : UInt8*
   FILE_ATTRIBUTE_STANDARD_SORT_ORDER = "standard::sort-order" # : UInt8*

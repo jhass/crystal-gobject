@@ -21,12 +21,12 @@ module Pango
 
     def copy
       __return_value = LibPango.font_description_copy((to_unsafe as LibPango::FontDescription*))
-      Pango::FontDescription.new(__return_value)
+      Pango::FontDescription.new(__return_value) if __return_value
     end
 
     def copy_static
       __return_value = LibPango.font_description_copy_static((to_unsafe as LibPango::FontDescription*))
-      Pango::FontDescription.new(__return_value)
+      Pango::FontDescription.new(__return_value) if __return_value
     end
 
     def equal(desc2)
@@ -41,7 +41,7 @@ module Pango
 
     def family
       __return_value = LibPango.font_description_get_family((to_unsafe as LibPango::FontDescription*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def gravity

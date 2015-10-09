@@ -52,6 +52,11 @@ module Gtk
       __return_value
     end
 
+    def page_has_padding(page)
+      __return_value = LibGtk.assistant_get_page_has_padding((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*))
+      __return_value
+    end
+
     def page_header_image(page)
       __return_value = LibGtk.assistant_get_page_header_image((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*))
       GdkPixbuf::Pixbuf.new(__return_value)
@@ -114,6 +119,11 @@ module Gtk
 
     def set_page_complete(page, complete)
       __return_value = LibGtk.assistant_set_page_complete((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*), complete)
+      __return_value
+    end
+
+    def set_page_has_padding(page, has_padding)
+      __return_value = LibGtk.assistant_set_page_has_padding((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*), has_padding)
       __return_value
     end
 

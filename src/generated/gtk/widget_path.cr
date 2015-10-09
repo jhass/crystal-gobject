@@ -59,6 +59,11 @@ module Gtk
       __return_value
     end
 
+    def iter_add_qclass(pos, qname)
+      __return_value = LibGtk.widget_path_iter_add_qclass((to_unsafe as LibGtk::WidgetPath*), Int32.new(pos), UInt32.new(qname))
+      __return_value
+    end
+
     def iter_add_region(pos, name, flags)
       __return_value = LibGtk.widget_path_iter_add_region((to_unsafe as LibGtk::WidgetPath*), Int32.new(pos), name, flags)
       __return_value

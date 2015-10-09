@@ -205,6 +205,7 @@ lib LibGdk
   fun keymap_get_modifier_mask = gdk_keymap_get_modifier_mask(this : Keymap*, intent : LibGdk::ModifierIntent) : LibGdk::ModifierType
   fun keymap_get_modifier_state = gdk_keymap_get_modifier_state(this : Keymap*) : UInt32
   fun keymap_get_num_lock_state = gdk_keymap_get_num_lock_state(this : Keymap*) : Bool
+  fun keymap_get_scroll_lock_state = gdk_keymap_get_scroll_lock_state(this : Keymap*) : Bool
   fun keymap_have_bidi_layouts = gdk_keymap_have_bidi_layouts(this : Keymap*) : Bool
   fun keymap_lookup_key = gdk_keymap_lookup_key(this : Keymap*, key : LibGdk::KeymapKey*) : UInt32
   fun keymap_map_virtual_modifiers = gdk_keymap_map_virtual_modifiers(this : Keymap*, state : LibGdk::ModifierType*) : Bool
@@ -228,12 +229,12 @@ lib LibGdk
   fun screen_get_height_mm = gdk_screen_get_height_mm(this : Screen*) : Int32
   fun screen_get_monitor_at_point = gdk_screen_get_monitor_at_point(this : Screen*, x : Int32, y : Int32) : Int32
   fun screen_get_monitor_at_window = gdk_screen_get_monitor_at_window(this : Screen*, window : LibGdk::Window*) : Int32
-  fun screen_get_monitor_geometry = gdk_screen_get_monitor_geometry(this : Screen*, monitor_num : Int32, dest : Libcairo::RectangleInt*) : Void
+  fun screen_get_monitor_geometry = gdk_screen_get_monitor_geometry(this : Screen*, monitor_num : Int32, dest : LibGdk::Rectangle*) : Void
   fun screen_get_monitor_height_mm = gdk_screen_get_monitor_height_mm(this : Screen*, monitor_num : Int32) : Int32
   fun screen_get_monitor_plug_name = gdk_screen_get_monitor_plug_name(this : Screen*, monitor_num : Int32) : UInt8*
   fun screen_get_monitor_scale_factor = gdk_screen_get_monitor_scale_factor(this : Screen*, monitor_num : Int32) : Int32
   fun screen_get_monitor_width_mm = gdk_screen_get_monitor_width_mm(this : Screen*, monitor_num : Int32) : Int32
-  fun screen_get_monitor_workarea = gdk_screen_get_monitor_workarea(this : Screen*, monitor_num : Int32, dest : Libcairo::RectangleInt*) : Void
+  fun screen_get_monitor_workarea = gdk_screen_get_monitor_workarea(this : Screen*, monitor_num : Int32, dest : LibGdk::Rectangle*) : Void
   fun screen_get_n_monitors = gdk_screen_get_n_monitors(this : Screen*) : Int32
   fun screen_get_number = gdk_screen_get_number(this : Screen*) : Int32
   fun screen_get_primary_monitor = gdk_screen_get_primary_monitor(this : Screen*) : Int32
@@ -290,7 +291,7 @@ lib LibGdk
   fun window_beep = gdk_window_beep(this : Window*) : Void
   fun window_begin_move_drag = gdk_window_begin_move_drag(this : Window*, button : Int32, root_x : Int32, root_y : Int32, timestamp : UInt32) : Void
   fun window_begin_move_drag_for_device = gdk_window_begin_move_drag_for_device(this : Window*, device : LibGdk::Device*, button : Int32, root_x : Int32, root_y : Int32, timestamp : UInt32) : Void
-  fun window_begin_paint_rect = gdk_window_begin_paint_rect(this : Window*, rectangle : Libcairo::RectangleInt*) : Void
+  fun window_begin_paint_rect = gdk_window_begin_paint_rect(this : Window*, rectangle : LibGdk::Rectangle*) : Void
   fun window_begin_paint_region = gdk_window_begin_paint_region(this : Window*, region : Libcairo::Region*) : Void
   fun window_begin_resize_drag = gdk_window_begin_resize_drag(this : Window*, edge : LibGdk::WindowEdge, button : Int32, root_x : Int32, root_y : Int32, timestamp : UInt32) : Void
   fun window_begin_resize_drag_for_device = gdk_window_begin_resize_drag_for_device(this : Window*, edge : LibGdk::WindowEdge, device : LibGdk::Device*, button : Int32, root_x : Int32, root_y : Int32, timestamp : UInt32) : Void
@@ -311,6 +312,7 @@ lib LibGdk
   fun window_freeze_toplevel_updates_libgtk_only = gdk_window_freeze_toplevel_updates_libgtk_only(this : Window*) : Void
   fun window_freeze_updates = gdk_window_freeze_updates(this : Window*) : Void
   fun window_fullscreen = gdk_window_fullscreen(this : Window*) : Void
+  fun window_fullscreen_on_monitor = gdk_window_fullscreen_on_monitor(this : Window*, monitor : Int32) : Void
   fun window_geometry_changed = gdk_window_geometry_changed(this : Window*) : Void
   fun window_get_accept_focus = gdk_window_get_accept_focus(this : Window*) : Bool
   fun window_get_background_pattern = gdk_window_get_background_pattern(this : Window*) : Libcairo::Pattern*
@@ -332,7 +334,7 @@ lib LibGdk
   fun window_get_events = gdk_window_get_events(this : Window*) : LibGdk::EventMask
   fun window_get_focus_on_map = gdk_window_get_focus_on_map(this : Window*) : Bool
   fun window_get_frame_clock = gdk_window_get_frame_clock(this : Window*) : LibGdk::FrameClock*
-  fun window_get_frame_extents = gdk_window_get_frame_extents(this : Window*, rect : Libcairo::RectangleInt*) : Void
+  fun window_get_frame_extents = gdk_window_get_frame_extents(this : Window*, rect : LibGdk::Rectangle*) : Void
   fun window_get_fullscreen_mode = gdk_window_get_fullscreen_mode(this : Window*) : LibGdk::FullscreenMode
   fun window_get_geometry = gdk_window_get_geometry(this : Window*, x : Int32*, y : Int32*, width : Int32*, height : Int32*) : Void
   fun window_get_group = gdk_window_get_group(this : Window*) : LibGdk::Window*
@@ -340,6 +342,7 @@ lib LibGdk
   fun window_get_modal_hint = gdk_window_get_modal_hint(this : Window*) : Bool
   fun window_get_origin = gdk_window_get_origin(this : Window*, x : Int32*, y : Int32*) : Int32
   fun window_get_parent = gdk_window_get_parent(this : Window*) : LibGdk::Window*
+  fun window_get_pass_through = gdk_window_get_pass_through(this : Window*) : Bool
   fun window_get_pointer = gdk_window_get_pointer(this : Window*, x : Int32*, y : Int32*, mask : LibGdk::ModifierType*) : LibGdk::Window*
   fun window_get_position = gdk_window_get_position(this : Window*, x : Int32*, y : Int32*) : Void
   fun window_get_root_coords = gdk_window_get_root_coords(this : Window*, x : Int32, y : Int32, root_x : Int32*, root_y : Int32*) : Void
@@ -362,7 +365,7 @@ lib LibGdk
   fun window_iconify = gdk_window_iconify(this : Window*) : Void
   fun window_input_shape_combine_region = gdk_window_input_shape_combine_region(this : Window*, shape_region : Libcairo::Region*, offset_x : Int32, offset_y : Int32) : Void
   fun window_invalidate_maybe_recurse = gdk_window_invalidate_maybe_recurse(this : Window*, region : Libcairo::Region*, child_func : LibGdk::WindowChildFunc, user_data : Void*) : Void
-  fun window_invalidate_rect = gdk_window_invalidate_rect(this : Window*, rect : Libcairo::RectangleInt*, invalidate_children : Bool) : Void
+  fun window_invalidate_rect = gdk_window_invalidate_rect(this : Window*, rect : LibGdk::Rectangle*, invalidate_children : Bool) : Void
   fun window_invalidate_region = gdk_window_invalidate_region(this : Window*, region : Libcairo::Region*, invalidate_children : Bool) : Void
   fun window_is_destroyed = gdk_window_is_destroyed(this : Window*) : Bool
   fun window_is_input_only = gdk_window_is_input_only(this : Window*) : Bool
@@ -411,6 +414,7 @@ lib LibGdk
   fun window_set_opacity = gdk_window_set_opacity(this : Window*, opacity : Float64) : Void
   fun window_set_opaque_region = gdk_window_set_opaque_region(this : Window*, region : Libcairo::Region*) : Void
   fun window_set_override_redirect = gdk_window_set_override_redirect(this : Window*, override_redirect : Bool) : Void
+  fun window_set_pass_through = gdk_window_set_pass_through(this : Window*, pass_through : Bool) : Void
   fun window_set_role = gdk_window_set_role(this : Window*, role : UInt8*) : Void
   fun window_set_shadow_width = gdk_window_set_shadow_width(this : Window*, left : Int32, right : Int32, top : Int32, bottom : Int32) : Void
   fun window_set_skip_pager_hint = gdk_window_set_skip_pager_hint(this : Window*, skips_pager : Bool) : Void
@@ -522,7 +526,7 @@ lib LibGdk
     type : LibGdk::EventType
     window : LibGdk::Window*
     send_event : Int8
-    area : Libcairo::RectangleInt
+    area : LibGdk::Rectangle
     region : Libcairo::Region*
     count : Int32
   end
@@ -655,6 +659,40 @@ lib LibGdk
     y_root : Float64
   end
 
+  struct EventTouchpadPinch # struct
+    type : LibGdk::EventType
+    window : LibGdk::Window*
+    send_event : Int8
+    phase : LibGdk::TouchpadGesturePhase
+    n_fingers : Int8
+    time : UInt32
+    x : Float64
+    y : Float64
+    dx : Float64
+    dy : Float64
+    angle_delta : Float64
+    scale : Float64
+    x_root : Float64
+    y_root : Float64
+    state : LibGdk::ModifierType
+  end
+
+  struct EventTouchpadSwipe # struct
+    type : LibGdk::EventType
+    window : LibGdk::Window*
+    send_event : Int8
+    phase : LibGdk::TouchpadGesturePhase
+    n_fingers : Int8
+    time : UInt32
+    x : Float64
+    y : Float64
+    dx : Float64
+    dy : Float64
+    x_root : Float64
+    y_root : Float64
+    state : LibGdk::ModifierType
+  end
+
   struct EventVisibility # struct
     type : LibGdk::EventType
     window : LibGdk::Window*
@@ -723,6 +761,15 @@ lib LibGdk
   fun r_g_b_a_hash = gdk_rgba_hash(this : RGBA*) : UInt32
   fun r_g_b_a_parse = gdk_rgba_parse(this : RGBA*, spec : UInt8*) : Bool
   fun r_g_b_a_to_string = gdk_rgba_to_string(this : RGBA*) : UInt8*
+
+  struct Rectangle # struct
+    x : Int32
+    y : Int32
+    width : Int32
+    height : Int32
+  end
+  fun rectangle_intersect = gdk_rectangle_intersect(this : Rectangle*, src2 : LibGdk::Rectangle*, dest : LibGdk::Rectangle*) : Bool
+  fun rectangle_union = gdk_rectangle_union(this : Rectangle*, src2 : LibGdk::Rectangle*, dest : LibGdk::Rectangle*) : Void
 
   struct TimeCoord # struct
     time : UInt32
@@ -934,7 +981,9 @@ lib LibGdk
     TOUCH_UPDATE = 38
     TOUCH_END = 39
     TOUCH_CANCEL = 40
-    EVENT_LAST = 41
+    TOUCHPAD_SWIPE = 41
+    TOUCHPAD_PINCH = 42
+    EVENT_LAST = 43
   end
 
   enum FilterReturn : UInt32
@@ -1015,6 +1064,7 @@ lib LibGdk
     MODIFY_SELECTION = 3
     NO_TEXT_INPUT = 4
     SHIFT_GROUP = 5
+    DEFAULT_MOD_MASK = 6
   end
 
   enum NotifyType : UInt32
@@ -1070,6 +1120,14 @@ lib LibGdk
     ERROR_PARAM = -2
     ERROR_FILE = -3
     ERROR_MEM = -4
+  end
+
+  enum TouchpadGesturePhase : UInt32
+    ZERO_NONE = 0
+    BEGIN = 0
+    UPDATE = 1
+    END = 2
+    CANCEL = 3
   end
 
   enum VisibilityState : UInt32
@@ -3460,6 +3518,7 @@ lib LibGdk
     SCROLL_MASK = 2097152
     TOUCH_MASK = 4194304
     SMOOTH_SCROLL_MASK = 8388608
+    TOUCHPAD_GESTURE_MASK = 16777216
     ALL_EVENTS_MASK = 16777214
   end
 
@@ -3596,6 +3655,8 @@ lib LibGdk
     window_state : LibGdk::EventWindowState
     setting : LibGdk::EventSetting
     grab_broken : LibGdk::EventGrabBroken
+    touchpad_swipe : LibGdk::EventTouchpadSwipe
+    touchpad_pinch : LibGdk::EventTouchpadPinch
   end
   fun event_new = gdk_event_new(type : LibGdk::EventType) : LibGdk::Event*
   fun event__get_angle = gdk_events_get_angle(this : Event*, event2 : LibGdk::Event*, angle : Float64*) : Bool
@@ -3641,8 +3702,8 @@ lib LibGdk
   fun beep = gdk_beep() : Void
   fun cairo_create = gdk_cairo_create(window : LibGdk::Window*) : Libcairo::Context*
   fun cairo_draw_from_gl = gdk_cairo_draw_from_gl(cr : Libcairo::Context*, window : LibGdk::Window*, source : Int32, source_type : Int32, buffer_scale : Int32, x : Int32, y : Int32, width : Int32, height : Int32) : Void
-  fun cairo_get_clip_rectangle = gdk_cairo_get_clip_rectangle(cr : Libcairo::Context*, rect : Libcairo::RectangleInt*) : Bool
-  fun cairo_rectangle = gdk_cairo_rectangle(cr : Libcairo::Context*, rectangle : Libcairo::RectangleInt*) : Void
+  fun cairo_get_clip_rectangle = gdk_cairo_get_clip_rectangle(cr : Libcairo::Context*, rect : LibGdk::Rectangle*) : Bool
+  fun cairo_rectangle = gdk_cairo_rectangle(cr : Libcairo::Context*, rectangle : LibGdk::Rectangle*) : Void
   fun cairo_region = gdk_cairo_region(cr : Libcairo::Context*, region : Libcairo::Region*) : Void
   fun cairo_region_create_from_surface = gdk_cairo_region_create_from_surface(surface : Libcairo::Surface*) : Libcairo::Region*
   fun cairo_set_source_color = gdk_cairo_set_source_color(cr : Libcairo::Context*, color : LibGdk::Color*) : Void
@@ -3712,9 +3773,6 @@ lib LibGdk
   fun property_get = gdk_property_get(window : LibGdk::Window*, property : LibGdk::Atom*, type : LibGdk::Atom*, offset : UInt64, length : UInt64, pdelete : Int32, actual_property_type : LibGdk::Atom**, actual_format : Int32*, actual_length : Int32*, data : UInt8**) : Bool
   fun query_depths = gdk_query_depths(depths : Int32**, count : Int32*) : Void
   fun query_visual_types = gdk_query_visual_types(visual_types : LibGdk::VisualType**, count : Int32*) : Void
-  fun rectangle_get_type = gdk_rectangle_get_type() : UInt64
-  fun rectangle_intersect = gdk_rectangle_intersect(src1 : Libcairo::RectangleInt*, src2 : Libcairo::RectangleInt*, dest : Libcairo::RectangleInt*) : Bool
-  fun rectangle_union = gdk_rectangle_union(src1 : Libcairo::RectangleInt*, src2 : Libcairo::RectangleInt*, dest : Libcairo::RectangleInt*) : Void
   fun selection_convert = gdk_selection_convert(requestor : LibGdk::Window*, selection : LibGdk::Atom*, target : LibGdk::Atom*, time : UInt32) : Void
   fun selection_owner_get = gdk_selection_owner_get(selection : LibGdk::Atom*) : LibGdk::Window*
   fun selection_owner_get_for_display = gdk_selection_owner_get_for_display(display : LibGdk::Display*, selection : LibGdk::Atom*) : LibGdk::Window*

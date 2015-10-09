@@ -14,6 +14,7 @@ module Gtk
     # Implements FileChooser
     # Implements Orientable
 
+
     def self.new_internal(action)
       __return_value = LibGtk.file_chooser_widget_new(action)
       Gtk::Widget.new(__return_value)
@@ -71,6 +72,15 @@ module Gtk
        __return_value
       }
       connect("location-toggle-popup", __callback)
+    end
+
+    alias PlacesShortcutSignal = FileChooserWidget -> 
+    def on_places_shortcut(&__block : PlacesShortcutSignal)
+      __callback = ->(_arg0 : LibGtk::FileChooserWidget*) {
+       __return_value = __block.call(FileChooserWidget.new(_arg0))
+       __return_value
+      }
+      connect("places-shortcut", __callback)
     end
 
     alias QuickBookmarkSignal = FileChooserWidget, Int32 -> 

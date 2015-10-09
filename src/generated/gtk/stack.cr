@@ -19,6 +19,7 @@ module Gtk
 
 
 
+
     def self.new_internal
       __return_value = LibGtk.stack_new
       Gtk::Widget.new(__return_value)
@@ -46,6 +47,11 @@ module Gtk
 
     def homogeneous
       __return_value = LibGtk.stack_get_homogeneous((to_unsafe as LibGtk::Stack*))
+      __return_value
+    end
+
+    def interpolate_size
+      __return_value = LibGtk.stack_get_interpolate_size((to_unsafe as LibGtk::Stack*))
       __return_value
     end
 
@@ -86,6 +92,11 @@ module Gtk
 
     def homogeneous=(homogeneous)
       __return_value = LibGtk.stack_set_homogeneous((to_unsafe as LibGtk::Stack*), homogeneous)
+      __return_value
+    end
+
+    def interpolate_size=(interpolate_size)
+      __return_value = LibGtk.stack_set_interpolate_size((to_unsafe as LibGtk::Stack*), interpolate_size)
       __return_value
     end
 

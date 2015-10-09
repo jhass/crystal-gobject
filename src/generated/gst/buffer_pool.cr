@@ -20,7 +20,7 @@ module Gst
     end
 
     def self.config_get_allocator(config, allocator, params)
-      __return_value = LibGst.buffer_pool_config_get_allocator((config.to_unsafe as LibGst::Structure*), (allocator.to_unsafe as LibGst::Allocator*), (params.to_unsafe as LibGst::AllocationParams*))
+      __return_value = LibGst.buffer_pool_config_get_allocator((config.to_unsafe as LibGst::Structure*), (allocator.to_unsafe as LibGst::Allocator*), params)
       __return_value
     end
 
@@ -71,7 +71,7 @@ module Gst
 
     def options
       __return_value = LibGst.buffer_pool_get_options((to_unsafe as LibGst::BufferPool*))
-      PointerIterator.new(__return_value) {|__item_2| (raise "Expected string but got null" unless __item_2; String.new(__item_2)) }
+      PointerIterator.new(__return_value) {|__item_93| (raise "Expected string but got null" unless __item_93; String.new(__item_93)) }
     end
 
     def has_option(option)

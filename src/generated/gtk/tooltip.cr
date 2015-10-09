@@ -48,7 +48,7 @@ module Gtk
     end
 
     def tip_area=(rect)
-      __return_value = LibGtk.tooltip_set_tip_area((to_unsafe as LibGtk::Tooltip*), (rect.to_unsafe as LibCairo::RectangleInt*))
+      __return_value = LibGtk.tooltip_set_tip_area((to_unsafe as LibGtk::Tooltip*), (rect.to_unsafe as LibGdk::Rectangle*))
       __return_value
     end
 

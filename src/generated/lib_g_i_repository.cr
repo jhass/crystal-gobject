@@ -342,6 +342,7 @@ lib LibGIRepository
   fun signal_info_get_class_closure = g_signal_info_get_class_closure(info : LibGIRepository::BaseInfo*) : LibGIRepository::BaseInfo*
   fun signal_info_get_flags = g_signal_info_get_flags(info : LibGIRepository::BaseInfo*) : LibGObject::SignalFlags
   fun signal_info_true_stops_emit = g_signal_info_true_stops_emit(info : LibGIRepository::BaseInfo*) : Bool
+  fun struct_info_find_field = g_struct_info_find_field(info : LibGIRepository::BaseInfo*, name : UInt8*) : LibGIRepository::BaseInfo*
   fun struct_info_find_method = g_struct_info_find_method(info : LibGIRepository::BaseInfo*, name : UInt8*) : LibGIRepository::BaseInfo*
   fun struct_info_get_alignment = g_struct_info_get_alignment(info : LibGIRepository::BaseInfo*) : UInt64
   fun struct_info_get_field = g_struct_info_get_field(info : LibGIRepository::BaseInfo*, n : Int32) : LibGIRepository::BaseInfo*

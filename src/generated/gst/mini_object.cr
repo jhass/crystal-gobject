@@ -39,11 +39,6 @@ module Gst
       __return_value
     end
 
-    def unref
-      __return_value = LibGst.mini_object_unref((to_unsafe as LibGst::MiniObject*))
-      __return_value
-    end
-
     def self.replace(olddata, newdata)
       __return_value = LibGst.mini_object_replace(olddata && (olddata.to_unsafe as LibGst::MiniObject*), newdata && (newdata.to_unsafe as LibGst::MiniObject*))
       __return_value

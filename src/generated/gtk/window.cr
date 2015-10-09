@@ -146,6 +146,11 @@ module Gtk
       __return_value
     end
 
+    def fullscreen_on_monitor(screen, monitor)
+      __return_value = LibGtk.window_fullscreen_on_monitor((to_unsafe as LibGtk::Window*), (screen.to_unsafe as LibGdk::Screen*), Int32.new(monitor))
+      __return_value
+    end
+
     def accept_focus
       __return_value = LibGtk.window_get_accept_focus((to_unsafe as LibGtk::Window*))
       __return_value

@@ -166,7 +166,7 @@ module Gio
 
   def self.content_type_guess_for_tree(root)
     __return_value = LibGio.content_type_guess_for_tree((root.to_unsafe as LibGio::File*))
-    PointerIterator.new(__return_value) {|__item_35| (raise "Expected string but got null" unless __item_35; String.new(__item_35)) }
+    PointerIterator.new(__return_value) {|__item_55| (raise "Expected string but got null" unless __item_55; String.new(__item_55)) }
   end
 
   def self.content_type_is_a(type, supertype)
@@ -500,7 +500,7 @@ module Gio
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGio.resources_enumerate_children(path, lookup_flags, pointerof(__error))
     GLib::Error.assert __error
-    PointerIterator.new(__return_value) {|__item_86| (raise "Expected string but got null" unless __item_86; String.new(__item_86)) }
+    PointerIterator.new(__return_value) {|__item_56| (raise "Expected string but got null" unless __item_56; String.new(__item_56)) }
   end
 
   def self.resources_get_info(path, lookup_flags, size, flags)

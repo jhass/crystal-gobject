@@ -54,6 +54,11 @@ module Gst
       Gst::Event.new(__return_value)
     end
 
+    def self.new_protection(system_id, data, origin)
+      __return_value = LibGst.event_new_protection(system_id, (data.to_unsafe as LibGst::Buffer*), origin)
+      Gst::Event.new(__return_value)
+    end
+
     def self.new_qos(type, proportion, diff, timestamp)
       __return_value = LibGst.event_new_qos(type, Float64.new(proportion), Int64.new(diff), UInt64.new(timestamp))
       Gst::Event.new(__return_value)
@@ -161,6 +166,11 @@ module Gst
 
     def parse_latency(latency)
       __return_value = LibGst.event_parse_latency((to_unsafe as LibGst::Event*), UInt64.new(latency))
+      __return_value
+    end
+
+    def parse_protection(system_id, data, origin)
+      __return_value = LibGst.event_parse_protection((to_unsafe as LibGst::Event*), system_id, (data.to_unsafe as LibGst::Buffer*), origin && origin)
       __return_value
     end
 

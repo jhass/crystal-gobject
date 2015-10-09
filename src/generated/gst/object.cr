@@ -84,6 +84,16 @@ module Gst
       __return_value
     end
 
+    def has_as_ancestor(ancestor)
+      __return_value = LibGst.object_has_as_ancestor((to_unsafe as LibGst::Object*), (ancestor.to_unsafe as LibGst::Object*))
+      __return_value
+    end
+
+    def has_as_parent(parent)
+      __return_value = LibGst.object_has_as_parent((to_unsafe as LibGst::Object*), (parent.to_unsafe as LibGst::Object*))
+      __return_value
+    end
+
     def ref
       __return_value = LibGst.object_ref((to_unsafe as LibGst::Object*))
       Gst::Object.new(__return_value)

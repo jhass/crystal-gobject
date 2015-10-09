@@ -15,6 +15,7 @@ module Gio
 
 
 
+
     def self.new_internal(name, object, property_name)
       __return_value = LibGio.property_action_new(name, (object.to_unsafe as LibGObject::Object*), property_name)
       Gio::PropertyAction.new(__return_value)

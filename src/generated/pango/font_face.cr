@@ -23,7 +23,7 @@ module Pango
     end
 
     def list_sizes(sizes, n_sizes)
-      __return_value = LibPango.font_face_list_sizes((to_unsafe as LibPango::FontFace*), sizes, Int32.new(n_sizes))
+      __return_value = LibPango.font_face_list_sizes((to_unsafe as LibPango::FontFace*), sizes && sizes, Int32.new(n_sizes))
       __return_value
     end
 

@@ -24,12 +24,12 @@ module Gtk
 
 
     def activate(event, widget, path, background_area, cell_area, flags)
-      __return_value = LibGtk.cell_renderer_activate((to_unsafe as LibGtk::CellRenderer*), (event.to_unsafe as LibGdk::Event*), (widget.to_unsafe as LibGtk::Widget*), path, (background_area.to_unsafe as LibCairo::RectangleInt*), (cell_area.to_unsafe as LibCairo::RectangleInt*), flags)
+      __return_value = LibGtk.cell_renderer_activate((to_unsafe as LibGtk::CellRenderer*), (event.to_unsafe as LibGdk::Event*), (widget.to_unsafe as LibGtk::Widget*), path, (background_area.to_unsafe as LibGdk::Rectangle*), (cell_area.to_unsafe as LibGdk::Rectangle*), flags)
       __return_value
     end
 
     def aligned_area(widget, flags, cell_area, aligned_area)
-      __return_value = LibGtk.cell_renderer_get_aligned_area((to_unsafe as LibGtk::CellRenderer*), (widget.to_unsafe as LibGtk::Widget*), flags, (cell_area.to_unsafe as LibCairo::RectangleInt*), aligned_area)
+      __return_value = LibGtk.cell_renderer_get_aligned_area((to_unsafe as LibGtk::CellRenderer*), (widget.to_unsafe as LibGtk::Widget*), flags, (cell_area.to_unsafe as LibGdk::Rectangle*), aligned_area)
       __return_value
     end
 
@@ -84,7 +84,7 @@ module Gtk
     end
 
     def size(widget, cell_area, x_offset, y_offset, width, height)
-      __return_value = LibGtk.cell_renderer_get_size((to_unsafe as LibGtk::CellRenderer*), (widget.to_unsafe as LibGtk::Widget*), cell_area && (cell_area.to_unsafe as LibCairo::RectangleInt*), Int32.new(x_offset), Int32.new(y_offset), Int32.new(width), Int32.new(height))
+      __return_value = LibGtk.cell_renderer_get_size((to_unsafe as LibGtk::CellRenderer*), (widget.to_unsafe as LibGtk::Widget*), cell_area && (cell_area.to_unsafe as LibGdk::Rectangle*), Int32.new(x_offset), Int32.new(y_offset), Int32.new(width), Int32.new(height))
       __return_value
     end
 
@@ -104,7 +104,7 @@ module Gtk
     end
 
     def render(cr, widget, background_area, cell_area, flags)
-      __return_value = LibGtk.cell_renderer_render((to_unsafe as LibGtk::CellRenderer*), (cr.to_unsafe as LibCairo::Context*), (widget.to_unsafe as LibGtk::Widget*), (background_area.to_unsafe as LibCairo::RectangleInt*), (cell_area.to_unsafe as LibCairo::RectangleInt*), flags)
+      __return_value = LibGtk.cell_renderer_render((to_unsafe as LibGtk::CellRenderer*), (cr.to_unsafe as LibCairo::Context*), (widget.to_unsafe as LibGtk::Widget*), (background_area.to_unsafe as LibGdk::Rectangle*), (cell_area.to_unsafe as LibGdk::Rectangle*), flags)
       __return_value
     end
 
@@ -134,7 +134,7 @@ module Gtk
     end
 
     def start_editing(event, widget, path, background_area, cell_area, flags)
-      __return_value = LibGtk.cell_renderer_start_editing((to_unsafe as LibGtk::CellRenderer*), (event.to_unsafe as LibGdk::Event*), (widget.to_unsafe as LibGtk::Widget*), path, (background_area.to_unsafe as LibCairo::RectangleInt*), (cell_area.to_unsafe as LibCairo::RectangleInt*), flags)
+      __return_value = LibGtk.cell_renderer_start_editing((to_unsafe as LibGtk::CellRenderer*), (event.to_unsafe as LibGdk::Event*), (widget.to_unsafe as LibGtk::Widget*), path, (background_area.to_unsafe as LibGdk::Rectangle*), (cell_area.to_unsafe as LibGdk::Rectangle*), flags)
       __return_value
     end
 

@@ -34,6 +34,11 @@ module Gio
       __return_value
     end
 
+    def network_metered
+      __return_value = LibGio.network_monitor_get_network_metered((to_unsafe as LibGio::NetworkMonitor*))
+      __return_value
+    end
+
     alias NetworkChangedSignal = NetworkMonitor, Bool -> 
     def on_network_changed(&__block : NetworkChangedSignal)
       __callback = ->(_arg0 : LibGio::NetworkMonitor*, _arg1 : LibGio::Bool*) {

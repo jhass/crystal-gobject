@@ -31,6 +31,11 @@ module Gtk
       __return_value
     end
 
+    def default_widget
+      __return_value = LibGtk.popover_get_default_widget((to_unsafe as LibGtk::Popover*))
+      Gtk::Widget.new(__return_value)
+    end
+
     def modal
       __return_value = LibGtk.popover_get_modal((to_unsafe as LibGtk::Popover*))
       __return_value
@@ -56,13 +61,18 @@ module Gtk
       __return_value
     end
 
+    def default_widget=(widget)
+      __return_value = LibGtk.popover_set_default_widget((to_unsafe as LibGtk::Popover*), widget && (widget.to_unsafe as LibGtk::Widget*))
+      __return_value
+    end
+
     def modal=(modal)
       __return_value = LibGtk.popover_set_modal((to_unsafe as LibGtk::Popover*), modal)
       __return_value
     end
 
     def pointing_to=(rect)
-      __return_value = LibGtk.popover_set_pointing_to((to_unsafe as LibGtk::Popover*), (rect.to_unsafe as LibCairo::RectangleInt*))
+      __return_value = LibGtk.popover_set_pointing_to((to_unsafe as LibGtk::Popover*), (rect.to_unsafe as LibGdk::Rectangle*))
       __return_value
     end
 

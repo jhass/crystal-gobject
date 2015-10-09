@@ -49,7 +49,7 @@ module Gtk
     end
 
     def cell_get_size(cell_area, x_offset, y_offset, width, height)
-      __return_value = LibGtk.tree_view_column_cell_get_size((to_unsafe as LibGtk::TreeViewColumn*), cell_area && (cell_area.to_unsafe as LibCairo::RectangleInt*), Int32.new(x_offset), Int32.new(y_offset), Int32.new(width), Int32.new(height))
+      __return_value = LibGtk.tree_view_column_cell_get_size((to_unsafe as LibGtk::TreeViewColumn*), cell_area && (cell_area.to_unsafe as LibGdk::Rectangle*), Int32.new(x_offset), Int32.new(y_offset), Int32.new(width), Int32.new(height))
       __return_value
     end
 

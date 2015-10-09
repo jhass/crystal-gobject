@@ -24,7 +24,7 @@ module Pango
 
     def font_map
       __return_value = LibPango.font_get_font_map((to_unsafe as LibPango::Font*))
-      Pango::FontMap.new(__return_value)
+      Pango::FontMap.new(__return_value) if __return_value
     end
 
     def glyph_extents(glyph, ink_rect, logical_rect)

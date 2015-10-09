@@ -95,7 +95,7 @@ lib LibGLib
   MININT32 = -2147483648 # : Int32
   MININT64 = -9223372036854775808 # : Int64
   MININT8 = -128 # : Int8
-  MINOR_VERSION = 44 # : Int32
+  MINOR_VERSION = 46 # : Int32
   MODULE_SUFFIX = "so" # : UInt8*
   OPTION_REMAINING = "" # : UInt8*
   PDP_ENDIAN = 3412 # : Int32
@@ -153,8 +153,12 @@ lib LibGLib
   fun async_queue_length_unlocked = g_async_queue_length_unlocked(this : AsyncQueue*) : Int32
   fun async_queue_lock = g_async_queue_lock(this : AsyncQueue*) : Void
   fun async_queue_push = g_async_queue_push(this : AsyncQueue*, data : Void*) : Void
+  fun async_queue_push_front = g_async_queue_push_front(this : AsyncQueue*, item : Void*) : Void
+  fun async_queue_push_front_unlocked = g_async_queue_push_front_unlocked(this : AsyncQueue*, item : Void*) : Void
   fun async_queue_push_unlocked = g_async_queue_push_unlocked(this : AsyncQueue*, data : Void*) : Void
   fun async_queue_ref_unlocked = g_async_queue_ref_unlocked(this : AsyncQueue*) : Void
+  fun async_queue_remove = g_async_queue_remove(this : AsyncQueue*, item : Void*) : Bool
+  fun async_queue_remove_unlocked = g_async_queue_remove_unlocked(this : AsyncQueue*, item : Void*) : Bool
   fun async_queue_unlock = g_async_queue_unlock(this : AsyncQueue*) : Void
   fun async_queue_unref = g_async_queue_unref(this : AsyncQueue*) : Void
   fun async_queue_unref_and_unlock = g_async_queue_unref_and_unlock(this : AsyncQueue*) : Void
@@ -1122,6 +1126,7 @@ lib LibGLib
   fun thread_pool_free = g_thread_pool_free(this : ThreadPool*, immediate : Bool, wait : Bool) : Void
   fun thread_pool_get_max_threads = g_thread_pool_get_max_threads(this : ThreadPool*) : Int32
   fun thread_pool_get_num_threads = g_thread_pool_get_num_threads(this : ThreadPool*) : UInt32
+  fun thread_pool_move_to_front = g_thread_pool_move_to_front(this : ThreadPool*, data : Void*) : Bool
   fun thread_pool_push = g_thread_pool_push(this : ThreadPool*, data : Void*, error : LibGLib::Error**) : Bool
   fun thread_pool_set_max_threads = g_thread_pool_set_max_threads(this : ThreadPool*, max_threads : Int32, error : LibGLib::Error**) : Bool
   fun thread_pool_unprocessed = g_thread_pool_unprocessed(this : ThreadPool*) : UInt32
@@ -2405,6 +2410,7 @@ lib LibGLib
   fun log_remove_handler = g_log_remove_handler(log_domain : UInt8*, handler_id : UInt32) : Void
   fun log_set_always_fatal = g_log_set_always_fatal(fatal_mask : LibGLib::LogLevelFlags) : LibGLib::LogLevelFlags
   fun log_set_fatal_mask = g_log_set_fatal_mask(log_domain : UInt8*, fatal_mask : LibGLib::LogLevelFlags) : LibGLib::LogLevelFlags
+  fun log_set_handler = g_log_set_handler_full(log_domain : UInt8*, log_levels : LibGLib::LogLevelFlags, log_func : LibGLib::LogFunc, user_data : Void*, destroy : LibGLib::DestroyNotify) : UInt32
   fun main_context_default = g_main_context_default() : LibGLib::MainContext*
   fun main_context_get_thread_default = g_main_context_get_thread_default() : LibGLib::MainContext*
   fun main_context_ref_thread_default = g_main_context_ref_thread_default() : LibGLib::MainContext*
@@ -2696,9 +2702,9 @@ lib LibGLib
  alias LogFunc = UInt8*, LibGLib::LogLevelFlags, UInt8*, Void* -> Void
  alias NodeForeachFunc = LibGLib::Node*, Void* -> Void
  alias NodeTraverseFunc = LibGLib::Node*, Void* -> Bool
- alias OptionArgFunc = UInt8*, UInt8*, Void* -> Bool
- alias OptionErrorFunc = LibGLib::OptionContext*, LibGLib::OptionGroup*, Void* -> Void
- alias OptionParseFunc = LibGLib::OptionContext*, LibGLib::OptionGroup*, Void* -> Bool
+ alias OptionArgFunc = UInt8*, UInt8*, Void*, LibGLib::Error** -> Bool
+ alias OptionErrorFunc = LibGLib::OptionContext*, LibGLib::OptionGroup*, Void*, LibGLib::Error** -> Void
+ alias OptionParseFunc = LibGLib::OptionContext*, LibGLib::OptionGroup*, Void*, LibGLib::Error** -> Bool
  alias PollFunc = LibGLib::PollFD*, UInt32, Int32 -> Int32
  alias PrintFunc = UInt8* -> Void
  alias RegexEvalCallback = LibGLib::MatchInfo*, LibGLib::String*, Void* -> Bool

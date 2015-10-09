@@ -20,6 +20,11 @@ module Gtk
       Pango::FontFamily.new(__return_value)
     end
 
+    def font_map
+      __return_value = LibGtk.font_chooser_get_font_map((to_unsafe as LibGtk::FontChooser*))
+      Pango::FontMap.new(__return_value)
+    end
+
     def font_size
       __return_value = LibGtk.font_chooser_get_font_size((to_unsafe as LibGtk::FontChooser*))
       __return_value
@@ -47,6 +52,11 @@ module Gtk
 
     def font_desc=(font_desc)
       __return_value = LibGtk.font_chooser_set_font_desc((to_unsafe as LibGtk::FontChooser*), (font_desc.to_unsafe as LibPango::FontDescription*))
+      __return_value
+    end
+
+    def font_map=(fontmap)
+      __return_value = LibGtk.font_chooser_set_font_map((to_unsafe as LibGtk::FontChooser*), fontmap && (fontmap.to_unsafe as LibPango::FontMap*))
       __return_value
     end
 

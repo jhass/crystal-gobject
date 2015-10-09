@@ -2,7 +2,7 @@ module Gst
   module URIHandler
     def protocols
       __return_value = LibGst.u_r_i_handler_get_protocols((to_unsafe as LibGst::URIHandler*))
-      PointerIterator.new(__return_value) {|__item_74| (raise "Expected string but got null" unless __item_74; String.new(__item_74)) } if __return_value
+      PointerIterator.new(__return_value) {|__item_48| (raise "Expected string but got null" unless __item_48; String.new(__item_48)) } if __return_value
     end
 
     def uri

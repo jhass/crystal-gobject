@@ -198,9 +198,9 @@ module Gio
       __return_value
     end
 
-    def register_object(object_path, interface_info, vtable, user_data, user_data_free_func : LibGLib::DestroyNotify)
+    def register_object(object_path, interface_info, method_call_closure, get_property_closure, set_property_closure)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.d_bus_connection_register_object((to_unsafe as LibGio::DBusConnection*), object_path, (interface_info.to_unsafe as LibGio::DBusInterfaceInfo*), vtable && (vtable.to_unsafe as LibGio::DBusInterfaceVTable*), user_data && user_data, user_data_free_func, pointerof(__error))
+      __return_value = LibGio.d_bus_connection_register_object((to_unsafe as LibGio::DBusConnection*), object_path, (interface_info.to_unsafe as LibGio::DBusInterfaceInfo*), method_call_closure && (method_call_closure.to_unsafe as LibGObject::Closure*), get_property_closure && (get_property_closure.to_unsafe as LibGObject::Closure*), set_property_closure && (set_property_closure.to_unsafe as LibGObject::Closure*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

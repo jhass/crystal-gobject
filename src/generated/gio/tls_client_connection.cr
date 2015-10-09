@@ -7,6 +7,11 @@ module Gio
       __return_value
     end
 
+    def copy_session_state(source)
+      __return_value = LibGio.tls_client_connection_copy_session_state((to_unsafe as LibGio::TlsClientConnection*), (source.to_unsafe as LibGio::TlsClientConnection*))
+      __return_value
+    end
+
     def accepted_cas
       __return_value = LibGio.tls_client_connection_get_accepted_cas((to_unsafe as LibGio::TlsClientConnection*))
       __return_value

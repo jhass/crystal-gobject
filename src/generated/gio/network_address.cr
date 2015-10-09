@@ -25,14 +25,14 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.network_address_parse(host_and_port, UInt16.new(default_port), pointerof(__error))
       GLib::Error.assert __error
-      __return_value
+      Gio::NetworkAddress.new(__return_value)
     end
 
     def self.parse_uri(uri, default_port)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.network_address_parse_uri(uri, UInt16.new(default_port), pointerof(__error))
       GLib::Error.assert __error
-      __return_value
+      Gio::NetworkAddress.new(__return_value)
     end
 
     def hostname

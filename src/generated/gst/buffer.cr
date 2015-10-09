@@ -34,6 +34,16 @@ module Gst
       Gst::Meta.new(__return_value)
     end
 
+    def add_parent_buffer_meta(ref)
+      __return_value = LibGst.buffer_add_parent_buffer_meta((to_unsafe as LibGst::Buffer*), (ref.to_unsafe as LibGst::Buffer*))
+      Gst::ParentBufferMeta.new(__return_value)
+    end
+
+    def add_protection_meta(info)
+      __return_value = LibGst.buffer_add_protection_meta((to_unsafe as LibGst::Buffer*), (info.to_unsafe as LibGst::Structure*))
+      Gst::ProtectionMeta.new(__return_value)
+    end
+
     def append(buf2)
       __return_value = LibGst.buffer_append((to_unsafe as LibGst::Buffer*), (buf2.to_unsafe as LibGst::Buffer*))
       Gst::Buffer.new(__return_value)
@@ -46,6 +56,11 @@ module Gst
 
     def append_region(buf2, offset, size)
       __return_value = LibGst.buffer_append_region((to_unsafe as LibGst::Buffer*), (buf2.to_unsafe as LibGst::Buffer*), Int64.new(offset), Int64.new(size))
+      Gst::Buffer.new(__return_value)
+    end
+
+    def copy_deep
+      __return_value = LibGst.buffer_copy_deep((to_unsafe as LibGst::Buffer*))
       Gst::Buffer.new(__return_value)
     end
 

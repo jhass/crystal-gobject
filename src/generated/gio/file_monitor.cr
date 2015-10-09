@@ -9,7 +9,6 @@ module Gio
 
 
 
-
     def cancel
       __return_value = LibGio.file_monitor_cancel((to_unsafe as LibGio::FileMonitor*))
       __return_value

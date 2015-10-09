@@ -491,6 +491,11 @@ module GIRepository
     __return_value
   end
 
+  def self.struct_info_find_field(info, name)
+    __return_value = LibGIRepository.struct_info_find_field((info.to_unsafe as LibGIRepository::BaseInfo*), name)
+    GIRepository::BaseInfo.new(__return_value)
+  end
+
   def self.struct_info_find_method(info, name)
     __return_value = LibGIRepository.struct_info_find_method((info.to_unsafe as LibGIRepository::BaseInfo*), name)
     GIRepository::BaseInfo.new(__return_value)

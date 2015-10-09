@@ -31,6 +31,8 @@ module Gtk
 
 
 
+
+
     def self.new_internal
       __return_value = LibGtk.text_view_new
       Gtk::Widget.new(__return_value)
@@ -83,6 +85,11 @@ module Gtk
 
     def border_window_size(type)
       __return_value = LibGtk.text_view_get_border_window_size((to_unsafe as LibGtk::TextView*), type)
+      __return_value
+    end
+
+    def bottom_margin
+      __return_value = LibGtk.text_view_get_bottom_margin((to_unsafe as LibGtk::TextView*))
       __return_value
     end
 
@@ -201,6 +208,11 @@ module Gtk
       Pango::TabArray.new(__return_value)
     end
 
+    def top_margin
+      __return_value = LibGtk.text_view_get_top_margin((to_unsafe as LibGtk::TextView*))
+      __return_value
+    end
+
     def vadjustment
       __return_value = LibGtk.text_view_get_vadjustment((to_unsafe as LibGtk::TextView*))
       Gtk::Adjustment.new(__return_value)
@@ -281,6 +293,11 @@ module Gtk
       __return_value
     end
 
+    def bottom_margin=(bottom_margin)
+      __return_value = LibGtk.text_view_set_bottom_margin((to_unsafe as LibGtk::TextView*), Int32.new(bottom_margin))
+      __return_value
+    end
+
     def buffer=(buffer)
       __return_value = LibGtk.text_view_set_buffer((to_unsafe as LibGtk::TextView*), buffer && (buffer.to_unsafe as LibGtk::TextBuffer*))
       __return_value
@@ -353,6 +370,11 @@ module Gtk
 
     def tabs=(tabs)
       __return_value = LibGtk.text_view_set_tabs((to_unsafe as LibGtk::TextView*), (tabs.to_unsafe as LibPango::TabArray*))
+      __return_value
+    end
+
+    def top_margin=(top_margin)
+      __return_value = LibGtk.text_view_set_top_margin((to_unsafe as LibGtk::TextView*), Int32.new(top_margin))
       __return_value
     end
 

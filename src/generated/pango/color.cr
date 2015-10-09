@@ -11,7 +11,7 @@ module Pango
 
     def copy
       __return_value = LibPango.color_copy((to_unsafe as LibPango::Color*))
-      Pango::Color.new(__return_value)
+      Pango::Color.new(__return_value) if __return_value
     end
 
     def free

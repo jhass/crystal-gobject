@@ -50,7 +50,7 @@ module Gtk
     end
 
     def cursor_location=(area)
-      __return_value = LibGtk.i_m_context_set_cursor_location((to_unsafe as LibGtk::IMContext*), (area.to_unsafe as LibCairo::RectangleInt*))
+      __return_value = LibGtk.i_m_context_set_cursor_location((to_unsafe as LibGtk::IMContext*), (area.to_unsafe as LibGdk::Rectangle*))
       __return_value
     end
 

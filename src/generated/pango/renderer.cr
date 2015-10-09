@@ -57,28 +57,38 @@ module Pango
       __return_value
     end
 
+    def alpha(part)
+      __return_value = LibPango.renderer_get_alpha((to_unsafe as LibPango::Renderer*), part)
+      __return_value
+    end
+
     def color(part)
       __return_value = LibPango.renderer_get_color((to_unsafe as LibPango::Renderer*), part)
-      Pango::Color.new(__return_value)
+      Pango::Color.new(__return_value) if __return_value
     end
 
     def layout
       __return_value = LibPango.renderer_get_layout((to_unsafe as LibPango::Renderer*))
-      Pango::Layout.new(__return_value)
+      Pango::Layout.new(__return_value) if __return_value
     end
 
     def layout_line
       __return_value = LibPango.renderer_get_layout_line((to_unsafe as LibPango::Renderer*))
-      Pango::LayoutLine.new(__return_value)
+      Pango::LayoutLine.new(__return_value) if __return_value
     end
 
     def matrix
       __return_value = LibPango.renderer_get_matrix((to_unsafe as LibPango::Renderer*))
-      Pango::Matrix.new(__return_value)
+      Pango::Matrix.new(__return_value) if __return_value
     end
 
     def part_changed(part)
       __return_value = LibPango.renderer_part_changed((to_unsafe as LibPango::Renderer*), part)
+      __return_value
+    end
+
+    def set_alpha(part, alpha)
+      __return_value = LibPango.renderer_set_alpha((to_unsafe as LibPango::Renderer*), part, UInt16.new(alpha))
       __return_value
     end
 

@@ -12,6 +12,7 @@ module Gst
     # Implements ChildProxy
 
 
+
     def self.new_internal(name)
       __return_value = LibGst.pipeline_new(name && name)
       Gst::Element.new(__return_value)
@@ -32,14 +33,19 @@ module Gst
       Gst::Bus.new(__return_value)
     end
 
-    def clock
-      __return_value = LibGst.pipeline_get_clock((to_unsafe as LibGst::Pipeline*))
-      Gst::Clock.new(__return_value)
-    end
-
     def delay
       __return_value = LibGst.pipeline_get_delay((to_unsafe as LibGst::Pipeline*))
       __return_value
+    end
+
+    def latency
+      __return_value = LibGst.pipeline_get_latency((to_unsafe as LibGst::Pipeline*))
+      __return_value
+    end
+
+    def pipeline_clock
+      __return_value = LibGst.pipeline_get_pipeline_clock((to_unsafe as LibGst::Pipeline*))
+      Gst::Clock.new(__return_value)
     end
 
     def auto_flush_bus=(auto_flush)
@@ -47,13 +53,13 @@ module Gst
       __return_value
     end
 
-    def clock=(clock)
-      __return_value = LibGst.pipeline_set_clock((to_unsafe as LibGst::Pipeline*), (clock.to_unsafe as LibGst::Clock*))
+    def delay=(delay)
+      __return_value = LibGst.pipeline_set_delay((to_unsafe as LibGst::Pipeline*), UInt64.new(delay))
       __return_value
     end
 
-    def delay=(delay)
-      __return_value = LibGst.pipeline_set_delay((to_unsafe as LibGst::Pipeline*), UInt64.new(delay))
+    def latency=(latency)
+      __return_value = LibGst.pipeline_set_latency((to_unsafe as LibGst::Pipeline*), UInt64.new(latency))
       __return_value
     end
 

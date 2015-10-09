@@ -16,7 +16,7 @@ module Pango
 
     def copy
       __return_value = LibPango.item_copy((to_unsafe as LibPango::Item*))
-      Pango::Item.new(__return_value)
+      Pango::Item.new(__return_value) if __return_value
     end
 
     def free

@@ -17,6 +17,10 @@ module Gtk
 
 
 
+
+
+
+
     def self.new_internal
       __return_value = LibGtk.places_sidebar_new
       Gtk::Widget.new(__return_value)
@@ -62,6 +66,21 @@ module Gtk
       __return_value
     end
 
+    def show_other_locations
+      __return_value = LibGtk.places_sidebar_get_show_other_locations((to_unsafe as LibGtk::PlacesSidebar*))
+      __return_value
+    end
+
+    def show_recent
+      __return_value = LibGtk.places_sidebar_get_show_recent((to_unsafe as LibGtk::PlacesSidebar*))
+      __return_value
+    end
+
+    def show_trash
+      __return_value = LibGtk.places_sidebar_get_show_trash((to_unsafe as LibGtk::PlacesSidebar*))
+      __return_value
+    end
+
     def list_shortcuts
       __return_value = LibGtk.places_sidebar_list_shortcuts((to_unsafe as LibGtk::PlacesSidebar*))
       __return_value
@@ -69,6 +88,11 @@ module Gtk
 
     def remove_shortcut(location)
       __return_value = LibGtk.places_sidebar_remove_shortcut((to_unsafe as LibGtk::PlacesSidebar*), (location.to_unsafe as LibGio::File*))
+      __return_value
+    end
+
+    def set_drop_targets_visible(visible, context)
+      __return_value = LibGtk.places_sidebar_set_drop_targets_visible((to_unsafe as LibGtk::PlacesSidebar*), visible, (context.to_unsafe as LibGdk::DragContext*))
       __return_value
     end
 
@@ -99,6 +123,21 @@ module Gtk
 
     def show_enter_location=(show_enter_location)
       __return_value = LibGtk.places_sidebar_set_show_enter_location((to_unsafe as LibGtk::PlacesSidebar*), show_enter_location)
+      __return_value
+    end
+
+    def show_other_locations=(show_other_locations)
+      __return_value = LibGtk.places_sidebar_set_show_other_locations((to_unsafe as LibGtk::PlacesSidebar*), show_other_locations)
+      __return_value
+    end
+
+    def show_recent=(show_recent)
+      __return_value = LibGtk.places_sidebar_set_show_recent((to_unsafe as LibGtk::PlacesSidebar*), show_recent)
+      __return_value
+    end
+
+    def show_trash=(show_trash)
+      __return_value = LibGtk.places_sidebar_set_show_trash((to_unsafe as LibGtk::PlacesSidebar*), show_trash)
       __return_value
     end
 
@@ -138,10 +177,10 @@ module Gtk
       connect("open-location", __callback)
     end
 
-    alias PopulatePopupSignal = PlacesSidebar, Gtk::Menu, Gio::File, Gio::Volume -> 
+    alias PopulatePopupSignal = PlacesSidebar, Gtk::Widget, Gio::File, Gio::Volume -> 
     def on_populate_popup(&__block : PopulatePopupSignal)
-      __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGtk::Menu*, _arg2 : LibGtk::LibGio::File*, _arg3 : LibGtk::LibGio::Volume*) {
-       __return_value = __block.call(PlacesSidebar.new(_arg0), Gtk::Menu.new(_arg1), _arg2, _arg3)
+      __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGtk::Widget*, _arg2 : LibGtk::LibGio::File*, _arg3 : LibGtk::LibGio::Volume*) {
+       __return_value = __block.call(PlacesSidebar.new(_arg0), Gtk::Widget.new(_arg1), _arg2, _arg3)
        __return_value
       }
       connect("populate-popup", __callback)
@@ -172,6 +211,15 @@ module Gtk
        __return_value
       }
       connect("show-error-message", __callback)
+    end
+
+    alias ShowOtherLocationsSignal = PlacesSidebar -> 
+    def on_show_other_locations(&__block : ShowOtherLocationsSignal)
+      __callback = ->(_arg0 : LibGtk::PlacesSidebar*) {
+       __return_value = __block.call(PlacesSidebar.new(_arg0))
+       __return_value
+      }
+      connect("show-other-locations", __callback)
     end
 
   end

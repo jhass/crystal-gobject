@@ -19,6 +19,11 @@ module Gst
       Gst::BufferList.new(__return_value)
     end
 
+    def copy_deep
+      __return_value = LibGst.buffer_list_copy_deep((to_unsafe as LibGst::BufferList*))
+      Gst::BufferList.new(__return_value)
+    end
+
     def foreach(func : LibGst::BufferListFunc, user_data)
       __return_value = LibGst.buffer_list_foreach((to_unsafe as LibGst::BufferList*), func, user_data)
       __return_value

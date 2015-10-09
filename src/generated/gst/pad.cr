@@ -12,6 +12,7 @@ module Gst
 
 
 
+
     def self.new_internal(name, direction)
       __return_value = LibGst.pad_new(name && name, direction)
       Gst::Pad.new(__return_value) if __return_value

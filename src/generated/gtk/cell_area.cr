@@ -13,12 +13,12 @@ module Gtk
 
 
     def activate(context, widget, cell_area, flags, edit_only)
-      __return_value = LibGtk.cell_area_activate((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (cell_area.to_unsafe as LibCairo::RectangleInt*), flags, edit_only)
+      __return_value = LibGtk.cell_area_activate((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (cell_area.to_unsafe as LibGdk::Rectangle*), flags, edit_only)
       __return_value
     end
 
     def activate_cell(widget, renderer, event, cell_area, flags)
-      __return_value = LibGtk.cell_area_activate_cell((to_unsafe as LibGtk::CellArea*), (widget.to_unsafe as LibGtk::Widget*), (renderer.to_unsafe as LibGtk::CellRenderer*), (event.to_unsafe as LibGdk::Event*), (cell_area.to_unsafe as LibCairo::RectangleInt*), flags)
+      __return_value = LibGtk.cell_area_activate_cell((to_unsafe as LibGtk::CellArea*), (widget.to_unsafe as LibGtk::Widget*), (renderer.to_unsafe as LibGtk::CellRenderer*), (event.to_unsafe as LibGdk::Event*), (cell_area.to_unsafe as LibGdk::Rectangle*), flags)
       __return_value
     end
 
@@ -73,7 +73,7 @@ module Gtk
     end
 
     def event(context, widget, event, cell_area, flags)
-      __return_value = LibGtk.cell_area_event((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (event.to_unsafe as LibGdk::Event*), (cell_area.to_unsafe as LibCairo::RectangleInt*), flags)
+      __return_value = LibGtk.cell_area_event((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (event.to_unsafe as LibGdk::Event*), (cell_area.to_unsafe as LibGdk::Rectangle*), flags)
       __return_value
     end
 
@@ -88,17 +88,17 @@ module Gtk
     end
 
     def foreach_alloc(context, widget, cell_area, background_area, callback : LibGtk::CellAllocCallback, callback_data)
-      __return_value = LibGtk.cell_area_foreach_alloc((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (cell_area.to_unsafe as LibCairo::RectangleInt*), (background_area.to_unsafe as LibCairo::RectangleInt*), callback, callback_data)
+      __return_value = LibGtk.cell_area_foreach_alloc((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (cell_area.to_unsafe as LibGdk::Rectangle*), (background_area.to_unsafe as LibGdk::Rectangle*), callback, callback_data)
       __return_value
     end
 
     def cell_allocation(context, widget, renderer, cell_area, allocation)
-      __return_value = LibGtk.cell_area_get_cell_allocation((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (renderer.to_unsafe as LibGtk::CellRenderer*), (cell_area.to_unsafe as LibCairo::RectangleInt*), allocation)
+      __return_value = LibGtk.cell_area_get_cell_allocation((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (renderer.to_unsafe as LibGtk::CellRenderer*), (cell_area.to_unsafe as LibGdk::Rectangle*), allocation)
       __return_value
     end
 
     def cell_at_position(context, widget, cell_area, x, y, alloc_area)
-      __return_value = LibGtk.cell_area_get_cell_at_position((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (cell_area.to_unsafe as LibCairo::RectangleInt*), Int32.new(x), Int32.new(y), alloc_area)
+      __return_value = LibGtk.cell_area_get_cell_at_position((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (cell_area.to_unsafe as LibGdk::Rectangle*), Int32.new(x), Int32.new(y), alloc_area)
       Gtk::CellRenderer.new(__return_value)
     end
 
@@ -163,7 +163,7 @@ module Gtk
     end
 
     def inner_cell_area(widget, cell_area, inner_area)
-      __return_value = LibGtk.cell_area_inner_cell_area((to_unsafe as LibGtk::CellArea*), (widget.to_unsafe as LibGtk::Widget*), (cell_area.to_unsafe as LibCairo::RectangleInt*), inner_area)
+      __return_value = LibGtk.cell_area_inner_cell_area((to_unsafe as LibGtk::CellArea*), (widget.to_unsafe as LibGtk::Widget*), (cell_area.to_unsafe as LibGdk::Rectangle*), inner_area)
       __return_value
     end
 
@@ -188,7 +188,7 @@ module Gtk
     end
 
     def render(context, widget, cr, background_area, cell_area, flags, paint_focus)
-      __return_value = LibGtk.cell_area_render((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (cr.to_unsafe as LibCairo::Context*), (background_area.to_unsafe as LibCairo::RectangleInt*), (cell_area.to_unsafe as LibCairo::RectangleInt*), flags, paint_focus)
+      __return_value = LibGtk.cell_area_render((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (cr.to_unsafe as LibCairo::Context*), (background_area.to_unsafe as LibGdk::Rectangle*), (cell_area.to_unsafe as LibGdk::Rectangle*), flags, paint_focus)
       __return_value
     end
 
@@ -207,10 +207,10 @@ module Gtk
       __return_value
     end
 
-    alias AddEditableSignal = CellArea, Gtk::CellRenderer, Gtk::CellEditable, Cairo::RectangleInt, UInt8 -> 
+    alias AddEditableSignal = CellArea, Gtk::CellRenderer, Gtk::CellEditable, Gdk::Rectangle, UInt8 -> 
     def on_add_editable(&__block : AddEditableSignal)
-      __callback = ->(_arg0 : LibGtk::CellArea*, _arg1 : LibGtk::LibGtk::CellRenderer*, _arg2 : LibGtk::LibGtk::CellEditable*, _arg3 : LibGtk::Libcairo::RectangleInt*, _arg4 : LibGtk::UInt8**) {
-       __return_value = __block.call(CellArea.new(_arg0), Gtk::CellRenderer.new(_arg1), _arg2, Cairo::RectangleInt.new(_arg3), (raise "Expected string but got null" unless _arg4; String.new(_arg4)))
+      __callback = ->(_arg0 : LibGtk::CellArea*, _arg1 : LibGtk::LibGtk::CellRenderer*, _arg2 : LibGtk::LibGtk::CellEditable*, _arg3 : LibGtk::LibGdk::Rectangle*, _arg4 : LibGtk::UInt8**) {
+       __return_value = __block.call(CellArea.new(_arg0), Gtk::CellRenderer.new(_arg1), _arg2, Gdk::Rectangle.new(_arg3), (raise "Expected string but got null" unless _arg4; String.new(_arg4)))
        __return_value
       }
       connect("add-editable", __callback)
