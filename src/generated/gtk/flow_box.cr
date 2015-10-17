@@ -182,7 +182,7 @@ module Gtk
       connect("child-activated", __callback)
     end
 
-    alias MoveCursorSignal = FlowBox, Gtk::MovementStep, Int32 -> 
+    alias MoveCursorSignal = FlowBox, Gtk::MovementStep, Int32 -> Bool
     def on_move_cursor(&__block : MoveCursorSignal)
       __callback = ->(_arg0 : LibGtk::FlowBox*, _arg1 : LibGtk::LibGtk::MovementStep*, _arg2 : LibGtk::Int32*) {
        __return_value = __block.call(FlowBox.new(_arg0), _arg1, _arg2)

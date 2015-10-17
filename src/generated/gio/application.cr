@@ -219,7 +219,7 @@ module Gio
     alias OpenSignal = Application, Array(Gio::File), Int32, UInt8 -> 
     def on_open(&__block : OpenSignal)
       __callback = ->(_arg0 : LibGio::Application*, _arg1 : LibGio::LibGio::File**, _arg2 : LibGio::Int32*, _arg3 : LibGio::UInt8**) {
-       __return_value = __block.call(Application.new(_arg0), PointerIterator.new(_arg1) {|__item_41| __item_41 }, _arg2, (raise "Expected string but got null" unless _arg3; String.new(_arg3)))
+       __return_value = __block.call(Application.new(_arg0), PointerIterator.new(_arg1) {|__item_48| __item_48 }, _arg2, (raise "Expected string but got null" unless _arg3; String.new(_arg3)))
        __return_value
       }
       connect("open", __callback)

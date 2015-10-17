@@ -29,7 +29,7 @@ module Gio
 
     def supported_uri_schemes
       __return_value = LibGio.vfs_get_supported_uri_schemes((to_unsafe as LibGio::Vfs*))
-      PointerIterator.new(__return_value) {|__item_69| (raise "Expected string but got null" unless __item_69; String.new(__item_69)) }
+      PointerIterator.new(__return_value) {|__item_88| (raise "Expected string but got null" unless __item_88; String.new(__item_88)) }
     end
 
     def active?

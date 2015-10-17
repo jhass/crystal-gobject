@@ -80,7 +80,7 @@ module Gio
     alias InterfaceProxyPropertiesChangedSignal = DBusObjectManagerClient, Gio::DBusObjectProxy, Gio::DBusProxy, GLib::Variant, Array(UInt8) -> 
     def on_interface_proxy_properties_changed(&__block : InterfaceProxyPropertiesChangedSignal)
       __callback = ->(_arg0 : LibGio::DBusObjectManagerClient*, _arg1 : LibGio::LibGio::DBusObjectProxy*, _arg2 : LibGio::LibGio::DBusProxy*, _arg3 : LibGio::LibGLib::Variant*, _arg4 : LibGio::UInt8***) {
-       __return_value = __block.call(DBusObjectManagerClient.new(_arg0), Gio::DBusObjectProxy.new(_arg1), Gio::DBusProxy.new(_arg2), GLib::Variant.new(_arg3), PointerIterator.new(_arg4) {|__item_50| (raise "Expected string but got null" unless __item_50; String.new(__item_50)) })
+       __return_value = __block.call(DBusObjectManagerClient.new(_arg0), Gio::DBusObjectProxy.new(_arg1), Gio::DBusProxy.new(_arg2), GLib::Variant.new(_arg3), PointerIterator.new(_arg4) {|__item_18| (raise "Expected string but got null" unless __item_18; String.new(__item_18)) })
        __return_value
       }
       connect("interface-proxy-properties-changed", __callback)

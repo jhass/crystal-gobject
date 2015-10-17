@@ -23,7 +23,7 @@ module GLib
 
     def fetch_all
       __return_value = LibGLib.match_info_fetch_all((to_unsafe as LibGLib::MatchInfo*))
-      PointerIterator.new(__return_value) {|__item_63| (raise "Expected string but got null" unless __item_63; String.new(__item_63)) }
+      PointerIterator.new(__return_value) {|__item_80| (raise "Expected string but got null" unless __item_80; String.new(__item_80)) }
     end
 
     def fetch_named(name)

@@ -3,25 +3,25 @@ require "./base_info"
 module GIRepository
   class TypeInfo < BaseInfo
     TAG_MAP = {
-      LibGIRepository::TypeTag::VOID     => "Void"
-      LibGIRepository::TypeTag::BOOLEAN  => "Bool"
-      LibGIRepository::TypeTag::INT8     => "Int8"
-      LibGIRepository::TypeTag::UINT8    => "UInt8"
-      LibGIRepository::TypeTag::INT16    => "Int16"
-      LibGIRepository::TypeTag::UINT16   => "UInt16"
-      LibGIRepository::TypeTag::INT32    => "Int32"
-      LibGIRepository::TypeTag::UINT32   => "UInt32"
-      LibGIRepository::TypeTag::INT64    => "Int64"
-      LibGIRepository::TypeTag::UINT64   => "UInt64"
-      LibGIRepository::TypeTag::FLOAT    => "Float32"
-      LibGIRepository::TypeTag::DOUBLE   => "Float64"
-      LibGIRepository::TypeTag::GTYPE    => "UInt64"
-      LibGIRepository::TypeTag::UTF8     => "UInt8"
-      LibGIRepository::TypeTag::FILENAME => "UInt8"
-      LibGIRepository::TypeTag::GLIST    => "Void*"
-      LibGIRepository::TypeTag::GSLIST   => "Void*"
-      LibGIRepository::TypeTag::GHASH    => "Void*"
-      LibGIRepository::TypeTag::ERROR    => "LibGLib::Error*"
+      LibGIRepository::TypeTag::VOID     => "Void",
+      LibGIRepository::TypeTag::BOOLEAN  => "Bool",
+      LibGIRepository::TypeTag::INT8     => "Int8",
+      LibGIRepository::TypeTag::UINT8    => "UInt8",
+      LibGIRepository::TypeTag::INT16    => "Int16",
+      LibGIRepository::TypeTag::UINT16   => "UInt16",
+      LibGIRepository::TypeTag::INT32    => "Int32",
+      LibGIRepository::TypeTag::UINT32   => "UInt32",
+      LibGIRepository::TypeTag::INT64    => "Int64",
+      LibGIRepository::TypeTag::UINT64   => "UInt64",
+      LibGIRepository::TypeTag::FLOAT    => "Float32",
+      LibGIRepository::TypeTag::DOUBLE   => "Float64",
+      LibGIRepository::TypeTag::GTYPE    => "UInt64",
+      LibGIRepository::TypeTag::UTF8     => "UInt8",
+      LibGIRepository::TypeTag::FILENAME => "UInt8",
+      LibGIRepository::TypeTag::GLIST    => "Void*",
+      LibGIRepository::TypeTag::GSLIST   => "Void*",
+      LibGIRepository::TypeTag::GHASH    => "Void*",
+      LibGIRepository::TypeTag::ERROR    => "LibGLib::Error*",
       LibGIRepository::TypeTag::UNICHAR  => "UInt8"
     }
 

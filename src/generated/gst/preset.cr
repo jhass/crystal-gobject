@@ -22,12 +22,12 @@ module Gst
 
     def preset_names
       __return_value = LibGst.preset_get_preset_names((to_unsafe as LibGst::Preset*))
-      PointerIterator.new(__return_value) {|__item_8| (raise "Expected string but got null" unless __item_8; String.new(__item_8)) }
+      PointerIterator.new(__return_value) {|__item_22| (raise "Expected string but got null" unless __item_22; String.new(__item_22)) }
     end
 
     def property_names
       __return_value = LibGst.preset_get_property_names((to_unsafe as LibGst::Preset*))
-      PointerIterator.new(__return_value) {|__item_88| (raise "Expected string but got null" unless __item_88; String.new(__item_88)) }
+      PointerIterator.new(__return_value) {|__item_14| (raise "Expected string but got null" unless __item_14; String.new(__item_14)) }
     end
 
     def editable?

@@ -844,7 +844,7 @@ module Gtk
 
     def list_action_prefixes
       __return_value = LibGtk.widget_list_action_prefixes((to_unsafe as LibGtk::Widget*))
-      PointerIterator.new(__return_value) {|__item_54| (raise "Expected string but got null" unless __item_54; String.new(__item_54)) }
+      PointerIterator.new(__return_value) {|__item_74| (raise "Expected string but got null" unless __item_74; String.new(__item_74)) }
     end
 
     def list_mnemonic_labels
