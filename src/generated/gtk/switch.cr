@@ -2,7 +2,7 @@ require "./widget"
 
 module Gtk
   class Switch < Widget
-    def initialize @gtk_switch
+    def initialize(@gtk_switch)
     end
 
     def to_unsafe

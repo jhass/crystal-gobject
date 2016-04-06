@@ -8,7 +8,7 @@ module GIRepository
       "  # Signal #{name}"
     end
 
-    def wrapper_definition libname, indent=""
+    def wrapper_definition(libname, indent="")
       String.build do |io|
         io << "#{indent}alias #{alias_name}Signal = "
         io << args.map(&.type.wrapper_definition(libname)).join(", ")

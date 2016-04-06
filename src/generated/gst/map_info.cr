@@ -2,7 +2,7 @@ module Gst
   class MapInfo
     include GObject::WrappedType
 
-    def initialize @gst_map_info
+    def initialize(@gst_map_info)
     end
 
     def to_unsafe

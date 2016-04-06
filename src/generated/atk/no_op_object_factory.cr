@@ -2,7 +2,7 @@ require "./object_factory"
 
 module Atk
   class NoOpObjectFactory < ObjectFactory
-    def initialize @atk_no_op_object_factory
+    def initialize(@atk_no_op_object_factory)
     end
 
     def to_unsafe

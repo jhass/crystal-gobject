@@ -1,6 +1,6 @@
 module Gdk
   class GLContext < GObject::Object
-    def initialize @gdk_g_l_context
+    def initialize(@gdk_g_l_context)
     end
 
     def to_unsafe

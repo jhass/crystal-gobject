@@ -2,7 +2,7 @@ module Gtk
   class EventBoxPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_event_box_private
+    def initialize(@gtk_event_box_private)
     end
 
     def to_unsafe

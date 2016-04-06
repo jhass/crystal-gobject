@@ -2,7 +2,7 @@ require "./object"
 
 module Atk
   class Plug < Object
-    def initialize @atk_plug
+    def initialize(@atk_plug)
     end
 
     def to_unsafe

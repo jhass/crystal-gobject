@@ -46,7 +46,7 @@ module GIRepository
       end
     end
 
-    def wrapper_definition libname, indent=""
+    def wrapper_definition(libname, indent="")
       String.build do |io|
         parent_object = parent
         parent = parent_object.constant if parent_object && parent_object.namespace == namespace
@@ -57,7 +57,7 @@ module GIRepository
         io << "#{indent}  include GObject::WrappedType\n\n" unless parent
 
         ptr = "@#{GIRepository.filename(full_constant)}"
-        io.puts "#{indent}  def initialize #{ptr}"
+        io.puts "#{indent}  def initialize(#{ptr})"
         io.puts "#{indent}  end"
         io.puts
         io.puts "#{indent}  def to_unsafe"

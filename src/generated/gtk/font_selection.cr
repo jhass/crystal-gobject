@@ -2,7 +2,7 @@ require "./box"
 
 module Gtk
   class FontSelection < Box
-    def initialize @gtk_font_selection
+    def initialize(@gtk_font_selection)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ module Gtk
   class StockItem
     include GObject::WrappedType
 
-    def initialize @gtk_stock_item
+    def initialize(@gtk_stock_item)
     end
 
     def to_unsafe

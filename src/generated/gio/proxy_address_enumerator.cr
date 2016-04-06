@@ -2,7 +2,7 @@ require "./socket_address_enumerator"
 
 module Gio
   class ProxyAddressEnumerator < SocketAddressEnumerator
-    def initialize @gio_proxy_address_enumerator
+    def initialize(@gio_proxy_address_enumerator)
     end
 
     def to_unsafe

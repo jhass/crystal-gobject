@@ -2,7 +2,7 @@ module GLib
   class Hmac
     include GObject::WrappedType
 
-    def initialize @g_lib_hmac
+    def initialize(@g_lib_hmac)
     end
 
     def to_unsafe

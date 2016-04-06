@@ -2,7 +2,7 @@ module GLib
   class Checksum
     include GObject::WrappedType
 
-    def initialize @g_lib_checksum
+    def initialize(@g_lib_checksum)
     end
 
     def to_unsafe

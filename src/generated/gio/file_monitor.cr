@@ -1,6 +1,6 @@
 module Gio
   class FileMonitor < GObject::Object
-    def initialize @gio_file_monitor
+    def initialize(@gio_file_monitor)
     end
 
     def to_unsafe

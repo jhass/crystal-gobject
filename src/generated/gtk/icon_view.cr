@@ -2,7 +2,7 @@ require "./container"
 
 module Gtk
   class IconView < Container
-    def initialize @gtk_icon_view
+    def initialize(@gtk_icon_view)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ module Gtk
   class PlugPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_plug_private
+    def initialize(@gtk_plug_private)
     end
 
     def to_unsafe

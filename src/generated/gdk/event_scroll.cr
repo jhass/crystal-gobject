@@ -2,7 +2,7 @@ module Gdk
   class EventScroll
     include GObject::WrappedType
 
-    def initialize @gdk_event_scroll
+    def initialize(@gdk_event_scroll)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ require "./gesture"
 
 module Gtk
   class GestureSingle < Gesture
-    def initialize @gtk_gesture_single
+    def initialize(@gtk_gesture_single)
     end
 
     def to_unsafe
@@ -24,7 +24,7 @@ module Gtk
 
     def current_sequence
       __return_value = LibGtk.gesture_single_get_current_sequence((to_unsafe as LibGtk::GestureSingle*))
-      Gdk::EventSequence.new(__return_value)
+      Gdk::EventSequence.new(__return_value) if __return_value
     end
 
     def exclusive

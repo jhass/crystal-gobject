@@ -2,7 +2,7 @@ module Gtk
   class EntryPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_entry_private
+    def initialize(@gtk_entry_private)
     end
 
     def to_unsafe

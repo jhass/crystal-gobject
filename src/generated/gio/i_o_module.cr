@@ -1,6 +1,6 @@
 module Gio
   class IOModule < GObject::TypeModule
-    def initialize @gio_i_o_module
+    def initialize(@gio_i_o_module)
     end
 
     def to_unsafe
@@ -15,7 +15,7 @@ module Gio
 
     def self.query
       __return_value = LibGio.i_o_module_query
-      PointerIterator.new(__return_value) {|__item_0| (raise "Expected string but got null" unless __item_0; String.new(__item_0)) }
+      PointerIterator.new(__return_value) {|__item_34| (raise "Expected string but got null" unless __item_34; String.new(__item_34)) }
     end
 
     def load

@@ -2,7 +2,7 @@ require "./container"
 
 module Gtk
   class Table < Container
-    def initialize @gtk_table
+    def initialize(@gtk_table)
     end
 
     def to_unsafe

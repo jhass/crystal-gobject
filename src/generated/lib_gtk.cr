@@ -3188,8 +3188,8 @@ lib LibGtk
   end
   fun scale_button_new = gtk_scale_button_new(size : Int32, min : Float64, max : Float64, step : Float64, icons : UInt8**) : LibGtk::Widget*
   fun scale_button_get_adjustment = gtk_scale_button_get_adjustment(this : ScaleButton*) : LibGtk::Adjustment*
-  fun scale_button_get_minus_button = gtk_scale_button_get_minus_button(this : ScaleButton*) : LibGtk::Widget*
-  fun scale_button_get_plus_button = gtk_scale_button_get_plus_button(this : ScaleButton*) : LibGtk::Widget*
+  fun scale_button_get_minus_button = gtk_scale_button_get_minus_button(this : ScaleButton*) : LibGtk::Button*
+  fun scale_button_get_plus_button = gtk_scale_button_get_plus_button(this : ScaleButton*) : LibGtk::Button*
   fun scale_button_get_popup = gtk_scale_button_get_popup(this : ScaleButton*) : LibGtk::Widget*
   fun scale_button_get_value = gtk_scale_button_get_value(this : ScaleButton*) : Float64
   fun scale_button_set_adjustment = gtk_scale_button_set_adjustment(this : ScaleButton*, adjustment : LibGtk::Adjustment*) : Void
@@ -8308,14 +8308,14 @@ lib LibGtk
   ##    Constants
   ###########################################
 
-  BINARY_AGE = 1802 # : Int32
+  BINARY_AGE = 1809 # : Int32
   INPUT_ERROR = -1 # : Int32
-  INTERFACE_AGE = 2 # : Int32
+  INTERFACE_AGE = 9 # : Int32
   LEVEL_BAR_OFFSET_HIGH = "high" # : UInt8*
   LEVEL_BAR_OFFSET_LOW = "low" # : UInt8*
   MAJOR_VERSION = 3 # : Int32
   MAX_COMPOSE_LEN = 7 # : Int32
-  MICRO_VERSION = 2 # : Int32
+  MICRO_VERSION = 9 # : Int32
   MINOR_VERSION = 18 # : Int32
   PAPER_NAME_A3 = "iso_a3" # : UInt8*
   PAPER_NAME_A4 = "iso_a4" # : UInt8*

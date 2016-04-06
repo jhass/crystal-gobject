@@ -1,5 +1,5 @@
 class Namespace
-  def initialize @namespace
+  def initialize(@namespace)
     self.require
   end
 
@@ -35,12 +35,12 @@ class Namespace
     "#{wrapper_filename(@namespace)}.cr"
   end
 
-  def write directory
+  def write(directory)
     write_lib directory
     write_wrappers directory
   end
 
-  def write_lib directory
+  def write_lib(directory)
     Dir.mkdir_p directory
 
     # Ensure all deps are there, even when not generated
@@ -55,7 +55,7 @@ class Namespace
     end
   end
 
-  private def lib_definition io
+  private def lib_definition(io)
     requires = false
     GIRepository::Repository.instance.dependencies(@namespace).each do |dependency|
       namespace, version = dependency
@@ -108,7 +108,7 @@ class Namespace
     io.puts
   end
 
-  def write_wrappers directory
+  def write_wrappers(directory)
     prefix = File.join(directory, GIRepository.filename(@namespace))
     Dir.mkdir_p prefix
 
@@ -148,7 +148,7 @@ class Namespace
     write_wrapper File.join(prefix, "module_functions.cr"), functions
   end
 
-  private def write_wrapper path, content, info=nil
+  private def write_wrapper(path, content, info=nil)
     File.open(path, "w") do |io|
 
       # Not really the right place for this code
@@ -167,7 +167,7 @@ class Namespace
     end
   end
 
-  private def skip_info? info
+  private def skip_info?(info)
     case info
     when GIRepository::EnumInfo
       return true unless 'A' <= info.name[0] <= 'Z' # Bug in typelib?

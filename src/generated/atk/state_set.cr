@@ -1,6 +1,6 @@
 module Atk
   class StateSet < GObject::Object
-    def initialize @atk_state_set
+    def initialize(@atk_state_set)
     end
 
     def to_unsafe

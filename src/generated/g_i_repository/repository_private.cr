@@ -2,7 +2,7 @@ module GIRepository
   class RepositoryPrivate
     include GObject::WrappedType
 
-    def initialize @g_i_repository_repository_private
+    def initialize(@g_i_repository_repository_private)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ require "./socket_connection"
 
 module Gio
   class UnixConnection < SocketConnection
-    def initialize @gio_unix_connection
+    def initialize(@gio_unix_connection)
     end
 
     def to_unsafe

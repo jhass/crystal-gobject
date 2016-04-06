@@ -2,7 +2,7 @@ module Gio
   class UnixFDListPrivate
     include GObject::WrappedType
 
-    def initialize @gio_unix_f_d_list_private
+    def initialize(@gio_unix_f_d_list_private)
     end
 
     def to_unsafe

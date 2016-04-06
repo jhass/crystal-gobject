@@ -1,6 +1,6 @@
 module Gio
   class AppLaunchContext < GObject::Object
-    def initialize @gio_app_launch_context
+    def initialize(@gio_app_launch_context)
     end
 
     def to_unsafe
@@ -19,7 +19,7 @@ module Gio
 
     def environment
       __return_value = LibGio.app_launch_context_get_environment((to_unsafe as LibGio::AppLaunchContext*))
-      PointerIterator.new(__return_value) {|__item_21| (raise "Expected string but got null" unless __item_21; String.new(__item_21)) }
+      PointerIterator.new(__return_value) {|__item_39| (raise "Expected string but got null" unless __item_39; String.new(__item_39)) }
     end
 
     def startup_notify_id(info, files)

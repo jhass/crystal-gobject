@@ -2,7 +2,7 @@ module Gtk
   class NotebookPageAccessiblePrivate
     include GObject::WrappedType
 
-    def initialize @gtk_notebook_page_accessible_private
+    def initialize(@gtk_notebook_page_accessible_private)
     end
 
     def to_unsafe

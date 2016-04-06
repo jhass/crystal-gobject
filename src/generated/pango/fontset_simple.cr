@@ -2,7 +2,7 @@ require "./fontset"
 
 module Pango
   class FontsetSimple < Fontset
-    def initialize @pango_fontset_simple
+    def initialize(@pango_fontset_simple)
     end
 
     def to_unsafe

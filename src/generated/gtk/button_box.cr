@@ -2,7 +2,7 @@ require "./box"
 
 module Gtk
   class ButtonBox < Box
-    def initialize @gtk_button_box
+    def initialize(@gtk_button_box)
     end
 
     def to_unsafe

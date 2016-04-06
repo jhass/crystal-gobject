@@ -2,7 +2,7 @@ module Gio
   class TlsPasswordPrivate
     include GObject::WrappedType
 
-    def initialize @gio_tls_password_private
+    def initialize(@gio_tls_password_private)
     end
 
     def to_unsafe

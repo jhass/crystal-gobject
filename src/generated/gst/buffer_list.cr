@@ -2,7 +2,7 @@ module Gst
   class BufferList
     include GObject::WrappedType
 
-    def initialize @gst_buffer_list
+    def initialize(@gst_buffer_list)
     end
 
     def to_unsafe

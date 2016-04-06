@@ -2,7 +2,7 @@ require "./bin"
 
 module Gtk
   class Window < Bin
-    def initialize @gtk_window
+    def initialize(@gtk_window)
     end
 
     def to_unsafe

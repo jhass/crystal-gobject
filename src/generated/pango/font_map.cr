@@ -1,6 +1,6 @@
 module Pango
   class FontMap < GObject::Object
-    def initialize @pango_font_map
+    def initialize(@pango_font_map)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ require "./object"
 
 module Gst
   class Task < Object
-    def initialize @gst_task
+    def initialize(@gst_task)
     end
 
     def to_unsafe

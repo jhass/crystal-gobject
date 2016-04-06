@@ -2,7 +2,7 @@ require "./button"
 
 module Gtk
   class ScaleButton < Button
-    def initialize @gtk_scale_button
+    def initialize(@gtk_scale_button)
     end
 
     def to_unsafe
@@ -30,12 +30,12 @@ module Gtk
 
     def minus_button
       __return_value = LibGtk.scale_button_get_minus_button((to_unsafe as LibGtk::ScaleButton*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Button.new(__return_value)
     end
 
     def plus_button
       __return_value = LibGtk.scale_button_get_plus_button((to_unsafe as LibGtk::ScaleButton*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Button.new(__return_value)
     end
 
     def popup

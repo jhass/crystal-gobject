@@ -2,18 +2,18 @@ require "./type"
 
 module GObject
   class Value
-    def self.new string : String
+    def self.new(string : String)
       new(Type::STRING).tap &.string=(string)
     end
 
-    def self.new type : Type
+    def self.new(type : Type)
       new(LibGObject::Value.new).tap &.init(type)
     end
 
-    def initialize @g_object_value : LibGObject::Value
+    def initialize(@g_object_value : LibGObject::Value)
     end
 
-    def init type : Type
+    def init(type : Type)
       LibGObject.value_init self, type.fundamental
     end
 
@@ -26,7 +26,7 @@ module GObject
       type == Type::STRING
     end
 
-    # def string= string : String
+    # def string=(string : String)
     #   init Type::String
     #   LibGObject.value_set_string self, string
     # end
@@ -53,7 +53,7 @@ end
 
 
 class String
-  def self.from_gvalue value
+  def self.from_gvalue(value)
     value.string
   end
 

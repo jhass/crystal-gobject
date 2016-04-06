@@ -26,7 +26,7 @@ module GIRepository
       "  # Property #{name} : #{type.lib_definition}"
     end
 
-    def wrapper_definition libname, indent=""
+    def wrapper_definition(libname, indent="")
       String.build do |io|
         this = "(to_unsafe as #{libname}::#{container.name}*)"
 

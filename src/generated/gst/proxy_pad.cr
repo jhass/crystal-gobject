@@ -2,7 +2,7 @@ require "./pad"
 
 module Gst
   class ProxyPad < Pad
-    def initialize @gst_proxy_pad
+    def initialize(@gst_proxy_pad)
     end
 
     def to_unsafe

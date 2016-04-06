@@ -1,6 +1,6 @@
 module Pango
   class Context < GObject::Object
-    def initialize @pango_context
+    def initialize(@pango_context)
     end
 
     def to_unsafe

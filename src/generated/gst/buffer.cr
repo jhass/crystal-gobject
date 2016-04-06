@@ -2,7 +2,7 @@ module Gst
   class Buffer
     include GObject::WrappedType
 
-    def initialize @gst_buffer
+    def initialize(@gst_buffer)
     end
 
     def to_unsafe

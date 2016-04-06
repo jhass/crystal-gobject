@@ -2,7 +2,7 @@ require "./i_o_stream"
 
 module Gio
   class SocketConnection < IOStream
-    def initialize @gio_socket_connection
+    def initialize(@gio_socket_connection)
     end
 
     def to_unsafe

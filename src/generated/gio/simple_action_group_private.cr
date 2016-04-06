@@ -2,7 +2,7 @@ module Gio
   class SimpleActionGroupPrivate
     include GObject::WrappedType
 
-    def initialize @gio_simple_action_group_private
+    def initialize(@gio_simple_action_group_private)
     end
 
     def to_unsafe

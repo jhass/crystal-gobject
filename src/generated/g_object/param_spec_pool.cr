@@ -2,7 +2,7 @@ module GObject
   class ParamSpecPool
     include GObject::WrappedType
 
-    def initialize @g_object_param_spec_pool
+    def initialize(@g_object_param_spec_pool)
     end
 
     def to_unsafe
@@ -16,7 +16,7 @@ module GObject
 
     def list(owner_type, n_pspecs_p)
       __return_value = LibGObject.param_spec_pool_list((to_unsafe as LibGObject::ParamSpecPool*), UInt64.new(owner_type), UInt32.new(n_pspecs_p))
-      PointerIterator.new(__return_value) {|__item_66| GObject::ParamSpec.new(__item_66) }
+      PointerIterator.new(__return_value) {|__item_68| GObject::ParamSpec.new(__item_68) }
     end
 
     def list_owned(owner_type)

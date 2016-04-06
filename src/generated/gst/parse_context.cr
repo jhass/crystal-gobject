@@ -2,7 +2,7 @@ module Gst
   class ParseContext
     include GObject::WrappedType
 
-    def initialize @gst_parse_context
+    def initialize(@gst_parse_context)
     end
 
     def to_unsafe
@@ -21,7 +21,7 @@ module Gst
 
     def missing_elements
       __return_value = LibGst.parse_context_get_missing_elements((to_unsafe as LibGst::ParseContext*))
-      PointerIterator.new(__return_value) {|__item_87| (raise "Expected string but got null" unless __item_87; String.new(__item_87)) }
+      PointerIterator.new(__return_value) {|__item_44| (raise "Expected string but got null" unless __item_44; String.new(__item_44)) }
     end
 
   end

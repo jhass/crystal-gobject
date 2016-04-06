@@ -1,6 +1,6 @@
 module Gtk
   class RecentFilter < GObject::InitiallyUnowned
-    def initialize @gtk_recent_filter
+    def initialize(@gtk_recent_filter)
     end
 
     def to_unsafe

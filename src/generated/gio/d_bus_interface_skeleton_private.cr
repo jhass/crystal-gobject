@@ -2,7 +2,7 @@ module Gio
   class DBusInterfaceSkeletonPrivate
     include GObject::WrappedType
 
-    def initialize @gio_d_bus_interface_skeleton_private
+    def initialize(@gio_d_bus_interface_skeleton_private)
     end
 
     def to_unsafe

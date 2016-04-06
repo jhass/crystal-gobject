@@ -1,6 +1,6 @@
 module Gtk
   class PrintContext < GObject::Object
-    def initialize @gtk_print_context
+    def initialize(@gtk_print_context)
     end
 
     def to_unsafe

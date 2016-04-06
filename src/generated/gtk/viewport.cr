@@ -2,7 +2,7 @@ require "./bin"
 
 module Gtk
   class Viewport < Bin
-    def initialize @gtk_viewport
+    def initialize(@gtk_viewport)
     end
 
     def to_unsafe

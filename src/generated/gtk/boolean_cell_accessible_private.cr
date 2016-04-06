@@ -2,7 +2,7 @@ module Gtk
   class BooleanCellAccessiblePrivate
     include GObject::WrappedType
 
-    def initialize @gtk_boolean_cell_accessible_private
+    def initialize(@gtk_boolean_cell_accessible_private)
     end
 
     def to_unsafe

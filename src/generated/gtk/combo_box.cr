@@ -2,7 +2,7 @@ require "./bin"
 
 module Gtk
   class ComboBox < Bin
-    def initialize @gtk_combo_box
+    def initialize(@gtk_combo_box)
     end
 
     def to_unsafe

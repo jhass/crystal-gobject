@@ -2,7 +2,7 @@ require "./button"
 
 module Gtk
   class LockButton < Button
-    def initialize @gtk_lock_button
+    def initialize(@gtk_lock_button)
     end
 
     def to_unsafe

@@ -33,7 +33,7 @@ module Notify
         @resident
       end
 
-      def action name, label, &block : ActionCallback
+      def action(name, label, &block : ActionCallback)
         @actions << {name, label, block}
       end
     end
@@ -64,13 +64,13 @@ module Notify
       end
     end
 
-    def self.new summary : String, body=nil, icon=nil
+    def self.new(summary : String, body=nil, icon=nil)
       body = body ? body.to_unsafe : Pointer(UInt8).null
       icon =  icon ? icon.to_unsafe : Pointer(UInt8).null
       new_internal summary, body, icon
     end
 
-    def action name, label, &block : ActionCallback
+    def action(name, label, &block : ActionCallback)
       LibNotify.notification_add_action(
         self,
         name,
@@ -81,12 +81,12 @@ module Notify
       )
     end
 
-    def self.handle_action notification, action, callback
+    def self.handle_action(notification, action, callback)
       action = String.new(action)
       Box(ActionCallback).unbox(callback).call action
     end
 
-    def set_hint name, value
+    def set_hint(name, value)
       case value
       when Bool
         set_hint_uint32 name, value ? 1_u32 : 0_u32
@@ -109,7 +109,7 @@ module Notify
       set_hint "resident", true
     end
 
-    def urgency= urgency : Symbol
+    def urgency=(urgency : Symbol)
       self.urgency = case urgency
           when :low
             LibNotify::Urgency::LOW
@@ -122,7 +122,7 @@ module Notify
           end
     end
 
-    def update summary=nil, body=nil, icon=nil
+    def update(summary=nil, body=nil, icon=nil)
       summary ||= self.summary.not_nil!
       body    ||= self.body
       icon    ||= self.icon_name
@@ -134,7 +134,7 @@ module Notify
       show
     end
 
-    private def get property
+    private def get(property)
     end
   end
 end

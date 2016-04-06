@@ -1,6 +1,6 @@
 module Gtk
   class PrintOperation < GObject::Object
-    def initialize @gtk_print_operation
+    def initialize(@gtk_print_operation)
     end
 
     def to_unsafe

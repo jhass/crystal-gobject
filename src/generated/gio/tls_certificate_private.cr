@@ -2,7 +2,7 @@ module Gio
   class TlsCertificatePrivate
     include GObject::WrappedType
 
-    def initialize @gio_tls_certificate_private
+    def initialize(@gio_tls_certificate_private)
     end
 
     def to_unsafe

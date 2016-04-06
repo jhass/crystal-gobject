@@ -2,7 +2,7 @@ module Gtk
   class SymbolicColor
     include GObject::WrappedType
 
-    def initialize @gtk_symbolic_color
+    def initialize(@gtk_symbolic_color)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ require "./plugin_feature"
 
 module Gst
   class TypeFindFactory < PluginFeature
-    def initialize @gst_type_find_factory
+    def initialize(@gst_type_find_factory)
     end
 
     def to_unsafe
@@ -26,7 +26,7 @@ module Gst
 
     def extensions
       __return_value = LibGst.type_find_factory_get_extensions((to_unsafe as LibGst::TypeFindFactory*))
-      PointerIterator.new(__return_value) {|__item_74| (raise "Expected string but got null" unless __item_74; String.new(__item_74)) } if __return_value
+      PointerIterator.new(__return_value) {|__item_81| (raise "Expected string but got null" unless __item_81; String.new(__item_81)) } if __return_value
     end
 
     def has_function

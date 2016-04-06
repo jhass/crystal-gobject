@@ -1,6 +1,6 @@
 module Gio
   class ApplicationCommandLine < GObject::Object
-    def initialize @gio_application_command_line
+    def initialize(@gio_application_command_line)
     end
 
     def to_unsafe
@@ -18,7 +18,7 @@ module Gio
 
     def arguments(argc)
       __return_value = LibGio.application_command_line_get_arguments((to_unsafe as LibGio::ApplicationCommandLine*), Int32.new(argc))
-      PointerIterator.new(__return_value) {|__item_37| (raise "Expected string but got null" unless __item_37; String.new(__item_37)) }
+      PointerIterator.new(__return_value) {|__item_9| (raise "Expected string but got null" unless __item_9; String.new(__item_9)) }
     end
 
     def cwd
@@ -28,7 +28,7 @@ module Gio
 
     def environ
       __return_value = LibGio.application_command_line_get_environ((to_unsafe as LibGio::ApplicationCommandLine*))
-      PointerIterator.new(__return_value) {|__item_98| (raise "Expected string but got null" unless __item_98; String.new(__item_98)) }
+      PointerIterator.new(__return_value) {|__item_17| (raise "Expected string but got null" unless __item_17; String.new(__item_17)) }
     end
 
     def exit_status

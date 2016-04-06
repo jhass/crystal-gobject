@@ -1,6 +1,6 @@
 module Atk
   class RelationSet < GObject::Object
-    def initialize @atk_relation_set
+    def initialize(@atk_relation_set)
     end
 
     def to_unsafe

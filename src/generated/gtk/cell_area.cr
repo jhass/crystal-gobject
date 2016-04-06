@@ -1,6 +1,6 @@
 module Gtk
   class CellArea < GObject::InitiallyUnowned
-    def initialize @gtk_cell_area
+    def initialize(@gtk_cell_area)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ module Gtk
   class TargetEntry
     include GObject::WrappedType
 
-    def initialize @gtk_target_entry
+    def initialize(@gtk_target_entry)
     end
 
     def to_unsafe

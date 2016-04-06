@@ -2,7 +2,7 @@ module Gtk
   class Gradient
     include GObject::WrappedType
 
-    def initialize @gtk_gradient
+    def initialize(@gtk_gradient)
     end
 
     def to_unsafe

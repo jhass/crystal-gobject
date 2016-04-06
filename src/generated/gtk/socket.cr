@@ -2,7 +2,7 @@ require "./container"
 
 module Gtk
   class Socket < Container
-    def initialize @gtk_socket
+    def initialize(@gtk_socket)
     end
 
     def to_unsafe

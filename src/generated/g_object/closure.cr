@@ -2,7 +2,7 @@ module GObject
   class Closure
     include GObject::WrappedType
 
-    def initialize @g_object_closure
+    def initialize(@g_object_closure)
     end
 
     def to_unsafe

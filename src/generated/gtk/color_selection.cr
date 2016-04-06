@@ -2,7 +2,7 @@ require "./box"
 
 module Gtk
   class ColorSelection < Box
-    def initialize @gtk_color_selection
+    def initialize(@gtk_color_selection)
     end
 
     def to_unsafe

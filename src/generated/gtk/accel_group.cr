@@ -1,6 +1,6 @@
 module Gtk
   class AccelGroup < GObject::Object
-    def initialize @gtk_accel_group
+    def initialize(@gtk_accel_group)
     end
 
     def to_unsafe
@@ -66,7 +66,7 @@ module Gtk
 
     def query(accel_key, accel_mods, n_entries)
       __return_value = LibGtk.accel_group_query((to_unsafe as LibGtk::AccelGroup*), UInt32.new(accel_key), accel_mods, UInt32.new(n_entries))
-      PointerIterator.new(__return_value) {|__item_26| Gtk::AccelGroupEntry.new(__item_26) }
+      PointerIterator.new(__return_value) {|__item_88| Gtk::AccelGroupEntry.new(__item_88) }
     end
 
     def unlock

@@ -2,7 +2,7 @@ require "./object"
 
 module Atk
   class NoOpObject < Object
-    def initialize @atk_no_op_object
+    def initialize(@atk_no_op_object)
     end
 
     def to_unsafe

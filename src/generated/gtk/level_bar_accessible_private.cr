@@ -2,7 +2,7 @@ module Gtk
   class LevelBarAccessiblePrivate
     include GObject::WrappedType
 
-    def initialize @gtk_level_bar_accessible_private
+    def initialize(@gtk_level_bar_accessible_private)
     end
 
     def to_unsafe

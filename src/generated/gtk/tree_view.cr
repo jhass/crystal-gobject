@@ -2,7 +2,7 @@ require "./container"
 
 module Gtk
   class TreeView < Container
-    def initialize @gtk_tree_view
+    def initialize(@gtk_tree_view)
     end
 
     def to_unsafe

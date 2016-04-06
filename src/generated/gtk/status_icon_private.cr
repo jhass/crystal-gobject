@@ -2,7 +2,7 @@ module Gtk
   class StatusIconPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_status_icon_private
+    def initialize(@gtk_status_icon_private)
     end
 
     def to_unsafe

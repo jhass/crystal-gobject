@@ -2,7 +2,7 @@ module Gdk
   class FrameTimings
     include GObject::WrappedType
 
-    def initialize @gdk_frame_timings
+    def initialize(@gdk_frame_timings)
     end
 
     def to_unsafe

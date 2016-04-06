@@ -2,7 +2,7 @@ require "./container"
 
 module Gtk
   class Layout < Container
-    def initialize @gtk_layout
+    def initialize(@gtk_layout)
     end
 
     def to_unsafe

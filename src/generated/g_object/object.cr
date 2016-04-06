@@ -2,7 +2,7 @@ module GObject
   class Object
     include GObject::WrappedType
 
-    def initialize @g_object_object
+    def initialize(@g_object_object)
     end
 
     def to_unsafe
@@ -31,7 +31,7 @@ module GObject
 
     def self.interface_list_properties(g_iface, n_properties_p)
       __return_value = LibGObject.object_interface_list_properties(g_iface, UInt32.new(n_properties_p))
-      PointerIterator.new(__return_value) {|__item_96| GObject::ParamSpec.new(__item_96) }
+      PointerIterator.new(__return_value) {|__item_90| GObject::ParamSpec.new(__item_90) }
     end
 
     def bind_property(source_property, target, target_property, flags)

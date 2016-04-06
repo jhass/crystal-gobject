@@ -2,7 +2,7 @@ module Gio
   class UnixFDMessagePrivate
     include GObject::WrappedType
 
-    def initialize @gio_unix_f_d_message_private
+    def initialize(@gio_unix_f_d_message_private)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ module Gst
   class BusPrivate
     include GObject::WrappedType
 
-    def initialize @gst_bus_private
+    def initialize(@gst_bus_private)
     end
 
     def to_unsafe

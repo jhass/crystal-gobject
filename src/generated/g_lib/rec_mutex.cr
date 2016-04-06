@@ -2,7 +2,7 @@ module GLib
   class RecMutex
     include GObject::WrappedType
 
-    def initialize @g_lib_rec_mutex
+    def initialize(@g_lib_rec_mutex)
     end
 
     def to_unsafe

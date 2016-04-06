@@ -2,7 +2,7 @@ module GLib
   class Date
     include GObject::WrappedType
 
-    def initialize @g_lib_date
+    def initialize(@g_lib_date)
     end
 
     def to_unsafe

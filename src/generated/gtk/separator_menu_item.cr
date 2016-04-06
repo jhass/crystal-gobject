@@ -2,7 +2,7 @@ require "./menu_item"
 
 module Gtk
   class SeparatorMenuItem < MenuItem
-    def initialize @gtk_separator_menu_item
+    def initialize(@gtk_separator_menu_item)
     end
 
     def to_unsafe

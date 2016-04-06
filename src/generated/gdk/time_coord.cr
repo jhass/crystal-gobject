@@ -2,7 +2,7 @@ module Gdk
   class TimeCoord
     include GObject::WrappedType
 
-    def initialize @gdk_time_coord
+    def initialize(@gdk_time_coord)
     end
 
     def to_unsafe

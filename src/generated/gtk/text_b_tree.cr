@@ -2,7 +2,7 @@ module Gtk
   class TextBTree
     include GObject::WrappedType
 
-    def initialize @gtk_text_b_tree
+    def initialize(@gtk_text_b_tree)
     end
 
     def to_unsafe

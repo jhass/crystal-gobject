@@ -2,7 +2,7 @@ module Gtk
   class TreeIter
     include GObject::WrappedType
 
-    def initialize @gtk_tree_iter
+    def initialize(@gtk_tree_iter)
     end
 
     def to_unsafe

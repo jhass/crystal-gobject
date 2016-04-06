@@ -2,7 +2,7 @@ module Pango
   class GlyphItemIter
     include GObject::WrappedType
 
-    def initialize @pango_glyph_item_iter
+    def initialize(@pango_glyph_item_iter)
     end
 
     def to_unsafe

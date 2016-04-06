@@ -1,6 +1,6 @@
 module Gdk
   class DisplayManager < GObject::Object
-    def initialize @gdk_display_manager
+    def initialize(@gdk_display_manager)
     end
 
     def to_unsafe

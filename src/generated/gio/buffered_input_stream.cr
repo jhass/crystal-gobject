@@ -2,7 +2,7 @@ require "./filter_input_stream"
 
 module Gio
   class BufferedInputStream < FilterInputStream
-    def initialize @gio_buffered_input_stream
+    def initialize(@gio_buffered_input_stream)
     end
 
     def to_unsafe
@@ -57,7 +57,7 @@ module Gio
 
     def peek_buffer(count)
       __return_value = LibGio.buffered_input_stream_peek_buffer((to_unsafe as LibGio::BufferedInputStream*), UInt64.new(count))
-      PointerIterator.new(__return_value) {|__item_80| __item_80 }
+      PointerIterator.new(__return_value) {|__item_26| __item_26 }
     end
 
     def read_byte(cancellable)

@@ -2,7 +2,7 @@ require "./container"
 
 module Gtk
   class MenuShell < Container
-    def initialize @gtk_menu_shell
+    def initialize(@gtk_menu_shell)
     end
 
     def to_unsafe

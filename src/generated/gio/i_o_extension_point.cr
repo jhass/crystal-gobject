@@ -2,7 +2,7 @@ module Gio
   class IOExtensionPoint
     include GObject::WrappedType
 
-    def initialize @gio_i_o_extension_point
+    def initialize(@gio_i_o_extension_point)
     end
 
     def to_unsafe

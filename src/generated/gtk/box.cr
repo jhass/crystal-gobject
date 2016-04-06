@@ -2,7 +2,7 @@ require "./container"
 
 module Gtk
   class Box < Container
-    def initialize @gtk_box
+    def initialize(@gtk_box)
     end
 
     def to_unsafe

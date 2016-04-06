@@ -2,7 +2,7 @@ require "./button"
 
 module Gtk
   class ToggleButton < Button
-    def initialize @gtk_toggle_button
+    def initialize(@gtk_toggle_button)
     end
 
     def to_unsafe

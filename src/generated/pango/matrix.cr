@@ -2,7 +2,7 @@ module Pango
   class Matrix
     include GObject::WrappedType
 
-    def initialize @pango_matrix
+    def initialize(@pango_matrix)
     end
 
     def to_unsafe

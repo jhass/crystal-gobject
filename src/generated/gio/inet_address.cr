@@ -1,6 +1,6 @@
 module Gio
   class InetAddress < GObject::Object
-    def initialize @gio_inet_address
+    def initialize(@gio_inet_address)
     end
 
     def to_unsafe

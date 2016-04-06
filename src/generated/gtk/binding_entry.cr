@@ -2,7 +2,7 @@ module Gtk
   class BindingEntry
     include GObject::WrappedType
 
-    def initialize @gtk_binding_entry
+    def initialize(@gtk_binding_entry)
     end
 
     def to_unsafe

@@ -1,6 +1,6 @@
 module Gio
   class CharsetConverter < GObject::Object
-    def initialize @gio_charset_converter
+    def initialize(@gio_charset_converter)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ require "./object"
 
 module Gst
   class DeviceProvider < Object
-    def initialize @gst_device_provider
+    def initialize(@gst_device_provider)
     end
 
     def to_unsafe
@@ -46,7 +46,7 @@ module Gst
 
     def hidden_providers
       __return_value = LibGst.device_provider_get_hidden_providers((to_unsafe as LibGst::DeviceProvider*))
-      PointerIterator.new(__return_value) {|__item_20| (raise "Expected string but got null" unless __item_20; String.new(__item_20)) }
+      PointerIterator.new(__return_value) {|__item_93| (raise "Expected string but got null" unless __item_93; String.new(__item_93)) }
     end
 
     def hide_provider(name)

@@ -10,11 +10,11 @@ end
 
 module GLib
   class Error < Exception
-    def self.assert error
+    def self.assert(error)
       raise new(error) if error
     end
 
-    def initialize gerror : LibGLib::GError*
+    def initialize(gerror : LibGLib::GError*)
       super String.new(gerror.value.message)
     end
   end
@@ -33,7 +33,7 @@ require "../g_object/wrapped_type"
 
 module GIRepository
   class BaseInfo
-    def initialize @ptr
+    def initialize(@ptr)
     end
 
     def to_unsafe
@@ -44,14 +44,14 @@ module GIRepository
   class Repository
     include GObject::WrappedType
 
-    def initialize @ptr
+    def initialize(@ptr)
     end
 
     def to_unsafe
       @ptr
     end
 
-    def require(namespace, version, flags)
+    def require(namespace,(version, flags))
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGIRepository.repository_require((to_unsafe as LibGIRepository::Repository*), namespace, version, flags, pointerof(__error))
       GLib::Error.assert __error
@@ -72,7 +72,7 @@ module GIRepository
       __return_value
     end
 
-    def info(namespace, index)
+    def info(namespace,(index))
       __return_value = LibGIRepository.repository_get_info((to_unsafe as LibGIRepository::Repository*), namespace, Int32.new(index))
       GIRepository::BaseInfo.new(__return_value)
     end
@@ -88,7 +88,7 @@ module GIRepository
   end
 
 
-  def self.filename filename
+  def self.filename(filename)
     filename.gsub(/[A-Z][a-z]*(?=[A-Z])/) {|m| "#{m.downcase}_" }
             .gsub(/::/, "_")
             .downcase

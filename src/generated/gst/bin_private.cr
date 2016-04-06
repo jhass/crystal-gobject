@@ -2,7 +2,7 @@ module Gst
   class BinPrivate
     include GObject::WrappedType
 
-    def initialize @gst_bin_private
+    def initialize(@gst_bin_private)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ module GLib
   class SequenceIter
     include GObject::WrappedType
 
-    def initialize @g_lib_sequence_iter
+    def initialize(@g_lib_sequence_iter)
     end
 
     def to_unsafe

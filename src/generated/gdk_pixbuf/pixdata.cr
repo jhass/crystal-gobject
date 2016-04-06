@@ -2,7 +2,7 @@ module GdkPixbuf
   class Pixdata
     include GObject::WrappedType
 
-    def initialize @gdk_pixbuf_pixdata
+    def initialize(@gdk_pixbuf_pixdata)
     end
 
     def to_unsafe
@@ -18,7 +18,7 @@ module GdkPixbuf
 
     def serialize(stream_length_p)
       __return_value = LibGdkPixbuf.pixdata_serialize((to_unsafe as LibGdkPixbuf::Pixdata*), UInt32.new(stream_length_p))
-      PointerIterator.new(__return_value) {|__item_55| __item_55 }
+      PointerIterator.new(__return_value) {|__item_32| __item_32 }
     end
 
     def to_csource(name, dump_type)

@@ -1,6 +1,6 @@
 module Gtk
   class RecentManager < GObject::Object
-    def initialize @gtk_recent_manager
+    def initialize(@gtk_recent_manager)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ module Gio
   class SocketControlMessagePrivate
     include GObject::WrappedType
 
-    def initialize @gio_socket_control_message_private
+    def initialize(@gio_socket_control_message_private)
     end
 
     def to_unsafe

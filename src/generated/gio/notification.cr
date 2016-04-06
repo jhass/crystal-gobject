@@ -1,6 +1,6 @@
 module Gio
   class Notification < GObject::Object
-    def initialize @gio_notification
+    def initialize(@gio_notification)
     end
 
     def to_unsafe

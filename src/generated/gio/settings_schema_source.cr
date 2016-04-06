@@ -2,7 +2,7 @@ module Gio
   class SettingsSchemaSource
     include GObject::WrappedType
 
-    def initialize @gio_settings_schema_source
+    def initialize(@gio_settings_schema_source)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ module Gio
   class FileAttributeMatcher
     include GObject::WrappedType
 
-    def initialize @gio_file_attribute_matcher
+    def initialize(@gio_file_attribute_matcher)
     end
 
     def to_unsafe

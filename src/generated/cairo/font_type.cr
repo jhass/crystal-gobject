@@ -2,7 +2,7 @@ module Cairo
   class FontType
     include GObject::WrappedType
 
-    def initialize @cairo_font_type
+    def initialize(@cairo_font_type)
     end
 
     def to_unsafe

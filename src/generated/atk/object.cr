@@ -1,6 +1,6 @@
 module Atk
   class Object < GObject::Object
-    def initialize @atk_object
+    def initialize(@atk_object)
     end
 
     def to_unsafe

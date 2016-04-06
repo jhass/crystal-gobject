@@ -1,6 +1,6 @@
 module GIRepository
   class Repository < GObject::Object
-    def initialize @g_i_repository_repository
+    def initialize(@g_i_repository_repository)
     end
 
     def to_unsafe
@@ -66,12 +66,12 @@ module GIRepository
 
     def dependencies(namespace)
       __return_value = LibGIRepository.repository_get_dependencies((to_unsafe as LibGIRepository::Repository*), namespace)
-      PointerIterator.new(__return_value) {|__item_51| (raise "Expected string but got null" unless __item_51; String.new(__item_51)) }
+      PointerIterator.new(__return_value) {|__item_27| (raise "Expected string but got null" unless __item_27; String.new(__item_27)) }
     end
 
     def immediate_dependencies(namespace)
       __return_value = LibGIRepository.repository_get_immediate_dependencies((to_unsafe as LibGIRepository::Repository*), namespace)
-      PointerIterator.new(__return_value) {|__item_89| (raise "Expected string but got null" unless __item_89; String.new(__item_89)) }
+      PointerIterator.new(__return_value) {|__item_63| (raise "Expected string but got null" unless __item_63; String.new(__item_63)) }
     end
 
     def info(namespace, index)
@@ -81,7 +81,7 @@ module GIRepository
 
     def loaded_namespaces
       __return_value = LibGIRepository.repository_get_loaded_namespaces((to_unsafe as LibGIRepository::Repository*))
-      PointerIterator.new(__return_value) {|__item_70| (raise "Expected string but got null" unless __item_70; String.new(__item_70)) }
+      PointerIterator.new(__return_value) {|__item_24| (raise "Expected string but got null" unless __item_24; String.new(__item_24)) }
     end
 
     def n_infos(namespace)

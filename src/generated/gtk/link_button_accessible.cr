@@ -2,7 +2,7 @@ require "./button_accessible"
 
 module Gtk
   class LinkButtonAccessible < ButtonAccessible
-    def initialize @gtk_link_button_accessible
+    def initialize(@gtk_link_button_accessible)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ module Gtk
   class HeaderBarPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_header_bar_private
+    def initialize(@gtk_header_bar_private)
     end
 
     def to_unsafe

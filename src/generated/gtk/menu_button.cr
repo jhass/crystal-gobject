@@ -2,7 +2,7 @@ require "./toggle_button"
 
 module Gtk
   class MenuButton < ToggleButton
-    def initialize @gtk_menu_button
+    def initialize(@gtk_menu_button)
     end
 
     def to_unsafe

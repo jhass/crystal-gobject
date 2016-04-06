@@ -2,7 +2,7 @@ module GLib
   class MemVTable
     include GObject::WrappedType
 
-    def initialize @g_lib_mem_v_table
+    def initialize(@g_lib_mem_v_table)
     end
 
     def to_unsafe

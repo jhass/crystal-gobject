@@ -2,7 +2,7 @@ require "./gesture_single"
 
 module Gtk
   class GestureLongPress < GestureSingle
-    def initialize @gtk_gesture_long_press
+    def initialize(@gtk_gesture_long_press)
     end
 
     def to_unsafe

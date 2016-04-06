@@ -2,7 +2,7 @@ module Cairo
   class Surface
     include GObject::WrappedType
 
-    def initialize @cairo_surface
+    def initialize(@cairo_surface)
     end
 
     def to_unsafe

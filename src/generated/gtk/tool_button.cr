@@ -2,7 +2,7 @@ require "./tool_item"
 
 module Gtk
   class ToolButton < ToolItem
-    def initialize @gtk_tool_button
+    def initialize(@gtk_tool_button)
     end
 
     def to_unsafe

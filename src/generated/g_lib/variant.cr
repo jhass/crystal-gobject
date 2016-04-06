@@ -2,7 +2,7 @@ module GLib
   class Variant
     include GObject::WrappedType
 
-    def initialize @g_lib_variant
+    def initialize(@g_lib_variant)
     end
 
     def to_unsafe
@@ -156,17 +156,17 @@ module GLib
 
     def dup_bytestring(length)
       __return_value = LibGLib.variant_dup_bytestring((to_unsafe as LibGLib::Variant*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_86| __item_86 }
+      PointerIterator.new(__return_value) {|__item_19| __item_19 }
     end
 
     def dup_bytestring_array(length)
       __return_value = LibGLib.variant_dup_bytestring_array((to_unsafe as LibGLib::Variant*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_4| (raise "Expected string but got null" unless __item_4; String.new(__item_4)) }
+      PointerIterator.new(__return_value) {|__item_44| (raise "Expected string but got null" unless __item_44; String.new(__item_44)) }
     end
 
     def dup_objv(length)
       __return_value = LibGLib.variant_dup_objv((to_unsafe as LibGLib::Variant*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_31| (raise "Expected string but got null" unless __item_31; String.new(__item_31)) }
+      PointerIterator.new(__return_value) {|__item_7| (raise "Expected string but got null" unless __item_7; String.new(__item_7)) }
     end
 
     def dup_string(length)
@@ -176,7 +176,7 @@ module GLib
 
     def dup_strv(length)
       __return_value = LibGLib.variant_dup_strv((to_unsafe as LibGLib::Variant*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_43| (raise "Expected string but got null" unless __item_43; String.new(__item_43)) }
+      PointerIterator.new(__return_value) {|__item_91| (raise "Expected string but got null" unless __item_91; String.new(__item_91)) }
     end
 
     def equal(two)
@@ -196,12 +196,12 @@ module GLib
 
     def bytestring
       __return_value = LibGLib.variant_get_bytestring((to_unsafe as LibGLib::Variant*))
-      PointerIterator.new(__return_value) {|__item_31| __item_31 }
+      PointerIterator.new(__return_value) {|__item_69| __item_69 }
     end
 
     def bytestring_array(length)
       __return_value = LibGLib.variant_get_bytestring_array((to_unsafe as LibGLib::Variant*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_95| (raise "Expected string but got null" unless __item_95; String.new(__item_95)) }
+      PointerIterator.new(__return_value) {|__item_83| (raise "Expected string but got null" unless __item_83; String.new(__item_83)) }
     end
 
     def child_value(index)
@@ -256,7 +256,7 @@ module GLib
 
     def objv(length)
       __return_value = LibGLib.variant_get_objv((to_unsafe as LibGLib::Variant*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_50| (raise "Expected string but got null" unless __item_50; String.new(__item_50)) }
+      PointerIterator.new(__return_value) {|__item_67| (raise "Expected string but got null" unless __item_67; String.new(__item_67)) }
     end
 
     def size
@@ -271,7 +271,7 @@ module GLib
 
     def strv(length)
       __return_value = LibGLib.variant_get_strv((to_unsafe as LibGLib::Variant*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_82| (raise "Expected string but got null" unless __item_82; String.new(__item_82)) }
+      PointerIterator.new(__return_value) {|__item_46| (raise "Expected string but got null" unless __item_46; String.new(__item_46)) }
     end
 
     def type

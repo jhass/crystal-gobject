@@ -2,7 +2,7 @@ require "./socket_address"
 
 module Gio
   class InetSocketAddress < SocketAddress
-    def initialize @gio_inet_socket_address
+    def initialize(@gio_inet_socket_address)
     end
 
     def to_unsafe

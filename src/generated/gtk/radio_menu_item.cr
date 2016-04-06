@@ -2,7 +2,7 @@ require "./check_menu_item"
 
 module Gtk
   class RadioMenuItem < CheckMenuItem
-    def initialize @gtk_radio_menu_item
+    def initialize(@gtk_radio_menu_item)
     end
 
     def to_unsafe

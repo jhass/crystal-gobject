@@ -2,7 +2,7 @@ require "./widget"
 
 module Gtk
   class GLArea < Widget
-    def initialize @gtk_g_l_area
+    def initialize(@gtk_g_l_area)
     end
 
     def to_unsafe

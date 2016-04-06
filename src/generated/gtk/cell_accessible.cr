@@ -2,7 +2,7 @@ require "./accessible"
 
 module Gtk
   class CellAccessible < Accessible
-    def initialize @gtk_cell_accessible
+    def initialize(@gtk_cell_accessible)
     end
 
     def to_unsafe

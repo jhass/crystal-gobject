@@ -2,7 +2,7 @@ module Gtk
   class AlignmentPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_alignment_private
+    def initialize(@gtk_alignment_private)
     end
 
     def to_unsafe

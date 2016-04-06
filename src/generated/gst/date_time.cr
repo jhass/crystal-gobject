@@ -2,7 +2,7 @@ module Gst
   class DateTime
     include GObject::WrappedType
 
-    def initialize @gst_date_time
+    def initialize(@gst_date_time)
     end
 
     def to_unsafe

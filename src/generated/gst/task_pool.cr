@@ -2,7 +2,7 @@ require "./object"
 
 module Gst
   class TaskPool < Object
-    def initialize @gst_task_pool
+    def initialize(@gst_task_pool)
     end
 
     def to_unsafe

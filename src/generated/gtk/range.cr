@@ -2,7 +2,7 @@ require "./widget"
 
 module Gtk
   class Range < Widget
-    def initialize @gtk_range
+    def initialize(@gtk_range)
     end
 
     def to_unsafe

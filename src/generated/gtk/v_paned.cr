@@ -2,7 +2,7 @@ require "./paned"
 
 module Gtk
   class VPaned < Paned
-    def initialize @gtk_v_paned
+    def initialize(@gtk_v_paned)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ module Gst
   class PollFD
     include GObject::WrappedType
 
-    def initialize @gst_poll_f_d
+    def initialize(@gst_poll_f_d)
     end
 
     def to_unsafe

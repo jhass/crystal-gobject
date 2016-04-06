@@ -2,7 +2,7 @@ module Gio
   class ApplicationCommandLinePrivate
     include GObject::WrappedType
 
-    def initialize @gio_application_command_line_private
+    def initialize(@gio_application_command_line_private)
     end
 
     def to_unsafe

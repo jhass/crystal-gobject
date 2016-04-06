@@ -2,7 +2,7 @@ module Pango
   class Analysis
     include GObject::WrappedType
 
-    def initialize @pango_analysis
+    def initialize(@pango_analysis)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ module Pango
   class GlyphVisAttr
     include GObject::WrappedType
 
-    def initialize @pango_glyph_vis_attr
+    def initialize(@pango_glyph_vis_attr)
     end
 
     def to_unsafe

@@ -1,6 +1,6 @@
 module Gtk
   class TreeStore < GObject::Object
-    def initialize @gtk_tree_store
+    def initialize(@gtk_tree_store)
     end
 
     def to_unsafe

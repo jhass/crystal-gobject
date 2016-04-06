@@ -2,7 +2,7 @@ require "./gesture_single"
 
 module Gtk
   class GestureDrag < GestureSingle
-    def initialize @gtk_gesture_drag
+    def initialize(@gtk_gesture_drag)
     end
 
     def to_unsafe

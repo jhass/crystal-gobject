@@ -2,7 +2,7 @@ module GLib
   class TimeVal
     include GObject::WrappedType
 
-    def initialize @g_lib_time_val
+    def initialize(@g_lib_time_val)
     end
 
     def to_unsafe

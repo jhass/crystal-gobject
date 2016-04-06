@@ -1,6 +1,6 @@
 module Gtk
   class IconTheme < GObject::Object
-    def initialize @gtk_icon_theme
+    def initialize(@gtk_icon_theme)
     end
 
     def to_unsafe
@@ -54,7 +54,7 @@ module Gtk
 
     def icon_sizes(icon_name)
       __return_value = LibGtk.icon_theme_get_icon_sizes((to_unsafe as LibGtk::IconTheme*), icon_name)
-      PointerIterator.new(__return_value) {|__item_95| __item_95 }
+      PointerIterator.new(__return_value) {|__item_5| __item_5 }
     end
 
     def search_path(path, n_elements)

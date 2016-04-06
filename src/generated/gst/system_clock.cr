@@ -2,7 +2,7 @@ require "./clock"
 
 module Gst
   class SystemClock < Clock
-    def initialize @gst_system_clock
+    def initialize(@gst_system_clock)
     end
 
     def to_unsafe

@@ -1,6 +1,6 @@
 module Gio
   class VolumeMonitor < GObject::Object
-    def initialize @gio_volume_monitor
+    def initialize(@gio_volume_monitor)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ require "./entry"
 
 module Gtk
   class SearchEntry < Entry
-    def initialize @gtk_search_entry
+    def initialize(@gtk_search_entry)
     end
 
     def to_unsafe

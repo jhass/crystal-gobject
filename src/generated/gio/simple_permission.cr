@@ -2,7 +2,7 @@ require "./permission"
 
 module Gio
   class SimplePermission < Permission
-    def initialize @gio_simple_permission
+    def initialize(@gio_simple_permission)
     end
 
     def to_unsafe

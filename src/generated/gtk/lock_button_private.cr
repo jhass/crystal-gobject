@@ -2,7 +2,7 @@ module Gtk
   class LockButtonPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_lock_button_private
+    def initialize(@gtk_lock_button_private)
     end
 
     def to_unsafe

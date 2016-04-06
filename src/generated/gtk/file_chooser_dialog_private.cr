@@ -2,7 +2,7 @@ module Gtk
   class FileChooserDialogPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_file_chooser_dialog_private
+    def initialize(@gtk_file_chooser_dialog_private)
     end
 
     def to_unsafe

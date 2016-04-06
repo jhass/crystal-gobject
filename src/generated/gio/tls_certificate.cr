@@ -1,6 +1,6 @@
 module Gio
   class TlsCertificate < GObject::Object
-    def initialize @gio_tls_certificate
+    def initialize(@gio_tls_certificate)
     end
 
     def to_unsafe

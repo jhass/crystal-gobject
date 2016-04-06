@@ -2,7 +2,7 @@ module Gst
   class TypeFind
     include GObject::WrappedType
 
-    def initialize @gst_type_find
+    def initialize(@gst_type_find)
     end
 
     def to_unsafe
@@ -16,7 +16,7 @@ module Gst
 
     def peek(offset, size)
       __return_value = LibGst.type_find_peek((to_unsafe as LibGst::TypeFind*), Int64.new(offset), UInt32.new(size))
-      PointerIterator.new(__return_value) {|__item_86| __item_86 } if __return_value
+      PointerIterator.new(__return_value) {|__item_14| __item_14 } if __return_value
     end
 
     def suggest(probability, caps)

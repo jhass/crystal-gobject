@@ -2,7 +2,7 @@ require "./container"
 
 module Gtk
   class TextView < Container
-    def initialize @gtk_text_view
+    def initialize(@gtk_text_view)
     end
 
     def to_unsafe

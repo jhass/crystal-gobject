@@ -2,7 +2,7 @@ require "./window"
 
 module Gtk
   class Dialog < Window
-    def initialize @gtk_dialog
+    def initialize(@gtk_dialog)
     end
 
     def to_unsafe

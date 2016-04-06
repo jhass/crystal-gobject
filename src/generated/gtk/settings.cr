@@ -1,6 +1,6 @@
 module Gtk
   class Settings < GObject::Object
-    def initialize @gtk_settings
+    def initialize(@gtk_settings)
     end
 
     def to_unsafe

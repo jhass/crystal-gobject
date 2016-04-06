@@ -2,7 +2,7 @@ module Gst
   class TocEntry
     include GObject::WrappedType
 
-    def initialize @gst_toc_entry
+    def initialize(@gst_toc_entry)
     end
 
     def to_unsafe

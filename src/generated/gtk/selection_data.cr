@@ -2,7 +2,7 @@ module Gtk
   class SelectionData
     include GObject::WrappedType
 
-    def initialize @gtk_selection_data
+    def initialize(@gtk_selection_data)
     end
 
     def to_unsafe
@@ -26,7 +26,7 @@ module Gtk
 
     def data(length)
       __return_value = LibGtk.selection_data_get_data((to_unsafe as LibGtk::SelectionData*), Int32.new(length))
-      PointerIterator.new(__return_value) {|__item_61| __item_61 }
+      PointerIterator.new(__return_value) {|__item_9| __item_9 }
     end
 
     def display
@@ -71,7 +71,7 @@ module Gtk
 
     def uris
       __return_value = LibGtk.selection_data_get_uris((to_unsafe as LibGtk::SelectionData*))
-      PointerIterator.new(__return_value) {|__item_10| (raise "Expected string but got null" unless __item_10; String.new(__item_10)) }
+      PointerIterator.new(__return_value) {|__item_67| (raise "Expected string but got null" unless __item_67; String.new(__item_67)) }
     end
 
     def set(type, format, data, length)

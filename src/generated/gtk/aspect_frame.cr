@@ -2,7 +2,7 @@ require "./frame"
 
 module Gtk
   class AspectFrame < Frame
-    def initialize @gtk_aspect_frame
+    def initialize(@gtk_aspect_frame)
     end
 
     def to_unsafe

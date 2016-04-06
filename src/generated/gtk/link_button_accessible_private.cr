@@ -2,7 +2,7 @@ module Gtk
   class LinkButtonAccessiblePrivate
     include GObject::WrappedType
 
-    def initialize @gtk_link_button_accessible_private
+    def initialize(@gtk_link_button_accessible_private)
     end
 
     def to_unsafe

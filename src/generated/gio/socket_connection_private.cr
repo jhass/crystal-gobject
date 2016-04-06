@@ -2,7 +2,7 @@ module Gio
   class SocketConnectionPrivate
     include GObject::WrappedType
 
-    def initialize @gio_socket_connection_private
+    def initialize(@gio_socket_connection_private)
     end
 
     def to_unsafe

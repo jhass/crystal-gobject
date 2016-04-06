@@ -1,6 +1,6 @@
 module Gdk
   class DragContext < GObject::Object
-    def initialize @gdk_drag_context
+    def initialize(@gdk_drag_context)
     end
 
     def to_unsafe

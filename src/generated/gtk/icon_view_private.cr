@@ -2,7 +2,7 @@ module Gtk
   class IconViewPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_icon_view_private
+    def initialize(@gtk_icon_view_private)
     end
 
     def to_unsafe

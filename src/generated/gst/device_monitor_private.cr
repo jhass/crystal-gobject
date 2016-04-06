@@ -2,7 +2,7 @@ module Gst
   class DeviceMonitorPrivate
     include GObject::WrappedType
 
-    def initialize @gst_device_monitor_private
+    def initialize(@gst_device_monitor_private)
     end
 
     def to_unsafe

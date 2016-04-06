@@ -183,7 +183,7 @@ lib LibGst
   VALUE_LESS_THAN = -1 # : Int32
   VALUE_UNORDERED = 2 # : Int32
   VERSION_MAJOR = 1 # : Int32
-  VERSION_MICRO = 0 # : Int32
+  VERSION_MICRO = 3 # : Int32
   VERSION_MINOR = 6 # : Int32
   VERSION_NANO = 0 # : Int32
 
@@ -1381,8 +1381,8 @@ lib LibGst
     get_value_array : LibGst::ControlSourceGetValueArray
     _gst_reserved : Void*
   end
-  fun control_source_get_value = gst_control_source_get_value(this : ControlSource*, timestamp : UInt64, value : Float64*) : Bool
-  fun control_source_get_value_array = gst_control_source_get_value_array(this : ControlSource*, timestamp : UInt64, interval : UInt64, n_values : UInt32, values : Float64*) : Bool
+  fun control_source_control_source_get_value = gst_control_source_get_value(this : ControlSource*, timestamp : UInt64, value : Float64*) : Bool
+  fun control_source_control_source_get_value_array = gst_control_source_get_value_array(this : ControlSource*, timestamp : UInt64, interval : UInt64, n_values : UInt32, values : Float64*) : Bool
 
   struct Device # object
     parent : LibGst::Object

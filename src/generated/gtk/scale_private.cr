@@ -2,7 +2,7 @@ module Gtk
   class ScalePrivate
     include GObject::WrappedType
 
-    def initialize @gtk_scale_private
+    def initialize(@gtk_scale_private)
     end
 
     def to_unsafe

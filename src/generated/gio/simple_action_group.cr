@@ -1,6 +1,6 @@
 module Gio
   class SimpleActionGroup < GObject::Object
-    def initialize @gio_simple_action_group
+    def initialize(@gio_simple_action_group)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ require "./widget"
 
 module Gtk
   class Container < Widget
-    def initialize @gtk_container
+    def initialize(@gtk_container)
     end
 
     def to_unsafe

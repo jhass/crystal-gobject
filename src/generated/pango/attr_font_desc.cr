@@ -2,7 +2,7 @@ module Pango
   class AttrFontDesc
     include GObject::WrappedType
 
-    def initialize @pango_attr_font_desc
+    def initialize(@pango_attr_font_desc)
     end
 
     def to_unsafe

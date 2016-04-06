@@ -2,7 +2,7 @@ module GModule
   class Module
     include GObject::WrappedType
 
-    def initialize @g_module_module
+    def initialize(@g_module_module)
     end
 
     def to_unsafe

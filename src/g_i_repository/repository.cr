@@ -6,11 +6,11 @@ module GIRepository
       @@instance ||= default
     end
 
-    def require namespace, version=nil
+    def require(namespace, version=nil)
       self.require namespace, version, LibGIRepository::RepositoryLoadFlags::ZERO_NONE
     end
 
-    def dependencies namespace
+    def dependencies(namespace)
       dependencies = previous_def
       dependencies.map {|dep|
         name, version = dep.split('-')
@@ -18,13 +18,13 @@ module GIRepository
       }
     end
 
-    def all_infos namespace
+    def all_infos(namespace)
       Array.new(n_infos(namespace)) {|index|
         info namespace, index
       }
     end
 
-    def info namespace, index
+    def info(namespace, index)
       BaseInfo.wrap previous_def
     end
   end

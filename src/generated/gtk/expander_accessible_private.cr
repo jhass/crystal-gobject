@@ -2,7 +2,7 @@ module Gtk
   class ExpanderAccessiblePrivate
     include GObject::WrappedType
 
-    def initialize @gtk_expander_accessible_private
+    def initialize(@gtk_expander_accessible_private)
     end
 
     def to_unsafe

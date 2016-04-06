@@ -2,7 +2,7 @@ require "./bin"
 
 module Gtk
   class ListBoxRow < Bin
-    def initialize @gtk_list_box_row
+    def initialize(@gtk_list_box_row)
     end
 
     def to_unsafe
@@ -30,7 +30,7 @@ module Gtk
 
     def header
       __return_value = LibGtk.list_box_row_get_header((to_unsafe as LibGtk::ListBoxRow*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def index

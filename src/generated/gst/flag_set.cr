@@ -2,7 +2,7 @@ module Gst
   class FlagSet
     include GObject::WrappedType
 
-    def initialize @gst_flag_set
+    def initialize(@gst_flag_set)
     end
 
     def to_unsafe

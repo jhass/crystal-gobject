@@ -1,6 +1,6 @@
 module Gdk
   class AppLaunchContext < Gio::AppLaunchContext
-    def initialize @gdk_app_launch_context
+    def initialize(@gdk_app_launch_context)
     end
 
     def to_unsafe

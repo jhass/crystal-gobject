@@ -1,6 +1,6 @@
 module Gio
   class Task < GObject::Object
-    def initialize @gio_task
+    def initialize(@gio_task)
     end
 
     def to_unsafe

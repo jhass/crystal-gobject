@@ -28,7 +28,7 @@ module GIRepository
       end
     end
 
-    def wrapper_definition libname, indent=""
+    def wrapper_definition(libname, indent="")
       "#{indent}alias #{name} = #{libname}::#{name}"
     end
   end

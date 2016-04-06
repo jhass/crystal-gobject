@@ -2,7 +2,7 @@ require "./scale"
 
 module Gtk
   class VScale < Scale
-    def initialize @gtk_v_scale
+    def initialize(@gtk_v_scale)
     end
 
     def to_unsafe

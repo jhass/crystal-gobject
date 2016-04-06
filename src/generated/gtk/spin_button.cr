@@ -2,7 +2,7 @@ require "./entry"
 
 module Gtk
   class SpinButton < Entry
-    def initialize @gtk_spin_button
+    def initialize(@gtk_spin_button)
     end
 
     def to_unsafe

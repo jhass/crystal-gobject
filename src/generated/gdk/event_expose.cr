@@ -2,7 +2,7 @@ module Gdk
   class EventExpose
     include GObject::WrappedType
 
-    def initialize @gdk_event_expose
+    def initialize(@gdk_event_expose)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ require "./window"
 
 module Gtk
   class Assistant < Window
-    def initialize @gtk_assistant
+    def initialize(@gtk_assistant)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ module Gio
   class IOModuleScope
     include GObject::WrappedType
 
-    def initialize @gio_i_o_module_scope
+    def initialize(@gio_i_o_module_scope)
     end
 
     def to_unsafe

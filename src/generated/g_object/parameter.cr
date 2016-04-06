@@ -2,7 +2,7 @@ module GObject
   class Parameter
     include GObject::WrappedType
 
-    def initialize @g_object_parameter
+    def initialize(@g_object_parameter)
     end
 
     def to_unsafe

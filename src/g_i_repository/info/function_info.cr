@@ -22,7 +22,7 @@ module GIRepository
       end
     end
 
-    def wrapper_definition libname, indent=""
+    def wrapper_definition(libname, indent="")
       method_name = name
       if method_name.starts_with?("get_")
         method_name = method_name[4..-1]

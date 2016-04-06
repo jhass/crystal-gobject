@@ -2,7 +2,7 @@ module Gtk
   class WidgetPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_widget_private
+    def initialize(@gtk_widget_private)
     end
 
     def to_unsafe

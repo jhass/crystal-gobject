@@ -2,7 +2,7 @@ module Atk
   class TextRectangle
     include GObject::WrappedType
 
-    def initialize @atk_text_rectangle
+    def initialize(@atk_text_rectangle)
     end
 
     def to_unsafe

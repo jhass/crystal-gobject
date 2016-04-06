@@ -1,6 +1,6 @@
 module Gdk
   class Device < GObject::Object
-    def initialize @gdk_device
+    def initialize(@gdk_device)
     end
 
     def to_unsafe

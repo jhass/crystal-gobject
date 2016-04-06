@@ -2,7 +2,7 @@ module Gtk
   class TextAppearance
     include GObject::WrappedType
 
-    def initialize @gtk_text_appearance
+    def initialize(@gtk_text_appearance)
     end
 
     def to_unsafe

@@ -1,6 +1,6 @@
 module Gio
   class UnixFDList < GObject::Object
-    def initialize @gio_unix_f_d_list
+    def initialize(@gio_unix_f_d_list)
     end
 
     def to_unsafe
@@ -38,12 +38,12 @@ module Gio
 
     def peek_fds(length)
       __return_value = LibGio.unix_f_d_list_peek_fds((to_unsafe as LibGio::UnixFDList*), Int32.new(length))
-      PointerIterator.new(__return_value) {|__item_44| __item_44 }
+      PointerIterator.new(__return_value) {|__item_93| __item_93 }
     end
 
     def steal_fds(length)
       __return_value = LibGio.unix_f_d_list_steal_fds((to_unsafe as LibGio::UnixFDList*), Int32.new(length))
-      PointerIterator.new(__return_value) {|__item_84| __item_84 }
+      PointerIterator.new(__return_value) {|__item_20| __item_20 }
     end
 
   end

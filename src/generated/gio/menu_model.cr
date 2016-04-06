@@ -1,6 +1,6 @@
 module Gio
   class MenuModel < GObject::Object
-    def initialize @gio_menu_model
+    def initialize(@gio_menu_model)
     end
 
     def to_unsafe

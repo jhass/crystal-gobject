@@ -2,7 +2,7 @@ module Gtk
   class RequestedSize
     include GObject::WrappedType
 
-    def initialize @gtk_requested_size
+    def initialize(@gtk_requested_size)
     end
 
     def to_unsafe

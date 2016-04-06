@@ -2,7 +2,7 @@ module Gst
   class Event
     include GObject::WrappedType
 
-    def initialize @gst_event
+    def initialize(@gst_event)
     end
 
     def to_unsafe

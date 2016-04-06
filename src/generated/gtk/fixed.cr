@@ -2,7 +2,7 @@ require "./container"
 
 module Gtk
   class Fixed < Container
-    def initialize @gtk_fixed
+    def initialize(@gtk_fixed)
     end
 
     def to_unsafe

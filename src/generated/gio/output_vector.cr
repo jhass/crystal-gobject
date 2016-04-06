@@ -2,7 +2,7 @@ module Gio
   class OutputVector
     include GObject::WrappedType
 
-    def initialize @gio_output_vector
+    def initialize(@gio_output_vector)
     end
 
     def to_unsafe

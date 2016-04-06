@@ -2,7 +2,7 @@ require "./container_accessible"
 
 module Gtk
   class ScrolledWindowAccessible < ContainerAccessible
-    def initialize @gtk_scrolled_window_accessible
+    def initialize(@gtk_scrolled_window_accessible)
     end
 
     def to_unsafe

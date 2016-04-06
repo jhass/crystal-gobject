@@ -2,7 +2,7 @@ require "./gesture_drag"
 
 module Gtk
   class GesturePan < GestureDrag
-    def initialize @gtk_gesture_pan
+    def initialize(@gtk_gesture_pan)
     end
 
     def to_unsafe

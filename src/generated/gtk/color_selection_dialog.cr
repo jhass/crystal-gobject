@@ -2,7 +2,7 @@ require "./dialog"
 
 module Gtk
   class ColorSelectionDialog < Dialog
-    def initialize @gtk_color_selection_dialog
+    def initialize(@gtk_color_selection_dialog)
     end
 
     def to_unsafe

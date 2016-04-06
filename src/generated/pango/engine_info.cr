@@ -2,7 +2,7 @@ module Pango
   class EngineInfo
     include GObject::WrappedType
 
-    def initialize @pango_engine_info
+    def initialize(@pango_engine_info)
     end
 
     def to_unsafe

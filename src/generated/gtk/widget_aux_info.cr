@@ -2,7 +2,7 @@ module Gtk
   class WidgetAuxInfo
     include GObject::WrappedType
 
-    def initialize @gtk_widget_aux_info
+    def initialize()
     end
 
     def to_unsafe

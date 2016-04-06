@@ -2,7 +2,7 @@ module GLib
   class MatchInfo
     include GObject::WrappedType
 
-    def initialize @g_lib_match_info
+    def initialize(@g_lib_match_info)
     end
 
     def to_unsafe
@@ -23,7 +23,7 @@ module GLib
 
     def fetch_all
       __return_value = LibGLib.match_info_fetch_all((to_unsafe as LibGLib::MatchInfo*))
-      PointerIterator.new(__return_value) {|__item_80| (raise "Expected string but got null" unless __item_80; String.new(__item_80)) }
+      PointerIterator.new(__return_value) {|__item_31| (raise "Expected string but got null" unless __item_31; String.new(__item_31)) }
     end
 
     def fetch_named(name)

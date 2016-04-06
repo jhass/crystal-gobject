@@ -1,6 +1,6 @@
 module Gio
   class Settings < GObject::Object
-    def initialize @gio_settings
+    def initialize(@gio_settings)
     end
 
     def to_unsafe
@@ -40,12 +40,12 @@ module Gio
 
     def self.list_relocatable_schemas
       __return_value = LibGio.settings_list_relocatable_schemas
-      PointerIterator.new(__return_value) {|__item_13| (raise "Expected string but got null" unless __item_13; String.new(__item_13)) }
+      PointerIterator.new(__return_value) {|__item_67| (raise "Expected string but got null" unless __item_67; String.new(__item_67)) }
     end
 
     def self.list_schemas
       __return_value = LibGio.settings_list_schemas
-      PointerIterator.new(__return_value) {|__item_61| (raise "Expected string but got null" unless __item_61; String.new(__item_61)) }
+      PointerIterator.new(__return_value) {|__item_52| (raise "Expected string but got null" unless __item_52; String.new(__item_52)) }
     end
 
     def self.sync
@@ -140,7 +140,7 @@ module Gio
 
     def strv(key)
       __return_value = LibGio.settings_get_strv((to_unsafe as LibGio::Settings*), key)
-      PointerIterator.new(__return_value) {|__item_44| (raise "Expected string but got null" unless __item_44; String.new(__item_44)) }
+      PointerIterator.new(__return_value) {|__item_19| (raise "Expected string but got null" unless __item_19; String.new(__item_19)) }
     end
 
     def uint(key)
@@ -165,12 +165,12 @@ module Gio
 
     def list_children
       __return_value = LibGio.settings_list_children((to_unsafe as LibGio::Settings*))
-      PointerIterator.new(__return_value) {|__item_74| (raise "Expected string but got null" unless __item_74; String.new(__item_74)) }
+      PointerIterator.new(__return_value) {|__item_30| (raise "Expected string but got null" unless __item_30; String.new(__item_30)) }
     end
 
     def list_keys
       __return_value = LibGio.settings_list_keys((to_unsafe as LibGio::Settings*))
-      PointerIterator.new(__return_value) {|__item_99| (raise "Expected string but got null" unless __item_99; String.new(__item_99)) }
+      PointerIterator.new(__return_value) {|__item_36| (raise "Expected string but got null" unless __item_36; String.new(__item_36)) }
     end
 
     def range_check(key, value)
@@ -236,7 +236,7 @@ module Gio
     alias ChangeEventSignal = Settings, Array(UInt32), Int32 -> Bool
     def on_change_event(&__block : ChangeEventSignal)
       __callback = ->(_arg0 : LibGio::Settings*, _arg1 : LibGio::UInt32**, _arg2 : LibGio::Int32*) {
-       __return_value = __block.call(Settings.new(_arg0), PointerIterator.new(_arg1) {|__item_13| __item_13 }, _arg2)
+       __return_value = __block.call(Settings.new(_arg0), PointerIterator.new(_arg1) {|__item_44| __item_44 }, _arg2)
        __return_value
       }
       connect("change-event", __callback)

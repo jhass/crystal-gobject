@@ -1,6 +1,6 @@
 module Gio
   class SocketAddressEnumerator < GObject::Object
-    def initialize @gio_socket_address_enumerator
+    def initialize(@gio_socket_address_enumerator)
     end
 
     def to_unsafe

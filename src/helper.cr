@@ -1,11 +1,11 @@
 class PointerIterator(T, V)
   include Enumerable(V)
 
-  def self.string_array array : UInt8**
+  def self.string_array(array : UInt8**)
     new(array) {|string| String.new(string) }.to_a
   end
 
-  def initialize @array : T*, &@converter : T -> V
+  def initialize(@array : T*, &@converter : T -> V)
   end
 
   def each
@@ -33,15 +33,15 @@ class ClosureDataManager
     @@instance ||= new
   end
 
-  def self.deregister data
+  def self.deregister(data)
     instance.deregister data
   end
 
-  def self.deregister data, _closure
+  def self.deregister(data, _closure)
     instance.deregister data
   end
 
-  def self.register data
+  def self.register(data)
     instance.register data
     data
   end
@@ -50,12 +50,12 @@ class ClosureDataManager
     @closure_data = Hash(Void*, Int32).new {|h, k| h[k] = 0 }
   end
 
-  def register data
+  def register(data)
     @closure_data[data] += 1
     data
   end
 
-  def deregister data
+  def deregister(data)
     @closure_data[data] -= 1
     if @closure_data[data] <= 0
       @closure_data.delete data

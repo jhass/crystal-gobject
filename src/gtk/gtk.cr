@@ -47,7 +47,7 @@ module Gtk
       new LibGtk::WindowType::TOPLEVEL
     end
 
-    def self.new type : LibGtk::WindowType
+    def self.new(type : LibGtk::WindowType)
       widget = new_internal type
       new widget.to_unsafe
     end
@@ -58,7 +58,7 @@ module Gtk
       connect_signals nil
     end
 
-    def [] id
+    def [](id)
       object(id)
     end
   end

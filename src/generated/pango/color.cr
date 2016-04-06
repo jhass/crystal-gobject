@@ -2,7 +2,7 @@ module Pango
   class Color
     include GObject::WrappedType
 
-    def initialize @pango_color
+    def initialize(@pango_color)
     end
 
     def to_unsafe

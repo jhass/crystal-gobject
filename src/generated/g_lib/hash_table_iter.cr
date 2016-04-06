@@ -2,7 +2,7 @@ module GLib
   class HashTableIter
     include GObject::WrappedType
 
-    def initialize @g_lib_hash_table_iter
+    def initialize(@g_lib_hash_table_iter)
     end
 
     def to_unsafe

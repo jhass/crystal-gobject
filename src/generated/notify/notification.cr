@@ -1,6 +1,6 @@
 module Notify
   class Notification < GObject::Object
-    def initialize @notify_notification
+    def initialize(@notify_notification)
     end
 
     def to_unsafe

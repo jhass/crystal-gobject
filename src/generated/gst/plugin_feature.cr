@@ -2,7 +2,7 @@ require "./object"
 
 module Gst
   class PluginFeature < Object
-    def initialize @gst_plugin_feature
+    def initialize(@gst_plugin_feature)
     end
 
     def to_unsafe

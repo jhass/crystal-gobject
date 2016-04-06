@@ -2,7 +2,7 @@ module Pango
   class Coverage
     include GObject::WrappedType
 
-    def initialize @pango_coverage
+    def initialize(@pango_coverage)
     end
 
     def to_unsafe

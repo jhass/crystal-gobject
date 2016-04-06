@@ -2,7 +2,7 @@ require "./button_box"
 
 module Gtk
   class HButtonBox < ButtonBox
-    def initialize @gtk_h_button_box
+    def initialize(@gtk_h_button_box)
     end
 
     def to_unsafe

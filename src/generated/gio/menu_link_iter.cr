@@ -1,6 +1,6 @@
 module Gio
   class MenuLinkIter < GObject::Object
-    def initialize @gio_menu_link_iter
+    def initialize(@gio_menu_link_iter)
     end
 
     def to_unsafe

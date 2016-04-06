@@ -2,7 +2,7 @@ module GLib
   class TestSuite
     include GObject::WrappedType
 
-    def initialize @g_lib_test_suite
+    def initialize(@g_lib_test_suite)
     end
 
     def to_unsafe

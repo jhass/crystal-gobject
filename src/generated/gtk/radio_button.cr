@@ -2,7 +2,7 @@ require "./check_button"
 
 module Gtk
   class RadioButton < CheckButton
-    def initialize @gtk_radio_button
+    def initialize(@gtk_radio_button)
     end
 
     def to_unsafe

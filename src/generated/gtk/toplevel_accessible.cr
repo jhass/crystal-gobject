@@ -1,6 +1,6 @@
 module Gtk
   class ToplevelAccessible < Atk::Object
-    def initialize @gtk_toplevel_accessible
+    def initialize(@gtk_toplevel_accessible)
     end
 
     def to_unsafe

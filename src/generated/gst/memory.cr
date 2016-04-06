@@ -2,7 +2,7 @@ module Gst
   class Memory
     include GObject::WrappedType
 
-    def initialize @gst_memory
+    def initialize(@gst_memory)
     end
 
     def to_unsafe

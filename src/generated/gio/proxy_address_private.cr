@@ -2,7 +2,7 @@ module Gio
   class ProxyAddressPrivate
     include GObject::WrappedType
 
-    def initialize @gio_proxy_address_private
+    def initialize(@gio_proxy_address_private)
     end
 
     def to_unsafe

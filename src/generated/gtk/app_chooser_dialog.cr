@@ -2,7 +2,7 @@ require "./dialog"
 
 module Gtk
   class AppChooserDialog < Dialog
-    def initialize @gtk_app_chooser_dialog
+    def initialize(@gtk_app_chooser_dialog)
     end
 
     def to_unsafe

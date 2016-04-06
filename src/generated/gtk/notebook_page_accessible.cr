@@ -1,6 +1,6 @@
 module Gtk
   class NotebookPageAccessible < Atk::Object
-    def initialize @gtk_notebook_page_accessible
+    def initialize(@gtk_notebook_page_accessible)
     end
 
     def to_unsafe

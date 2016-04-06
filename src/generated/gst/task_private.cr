@@ -2,7 +2,7 @@ module Gst
   class TaskPrivate
     include GObject::WrappedType
 
-    def initialize @gst_task_private
+    def initialize(@gst_task_private)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ module Gtk
   class ComboBoxTextPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_combo_box_text_private
+    def initialize(@gtk_combo_box_text_private)
     end
 
     def to_unsafe

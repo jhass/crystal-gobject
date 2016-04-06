@@ -10,7 +10,7 @@ module Notify
   end
 
   def self.server_info(ret_name, ret_vendor, ret_version, ret_spec_version)
-    __return_value = LibNotify.get_server_info(ret_name && ret_name, ret_vendor && ret_vendor, ret_version && ret_version, ret_spec_version && ret_spec_version)
+    __return_value = LibNotify.get_server_info(ret_name, ret_vendor, ret_version, ret_spec_version)
     __return_value
   end
 

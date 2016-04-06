@@ -2,7 +2,7 @@ module Gtk
   class RadioActionPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_radio_action_private
+    def initialize(@gtk_radio_action_private)
     end
 
     def to_unsafe

@@ -1,6 +1,6 @@
 module GdkPixbuf
   class PixbufAnimationIter < GObject::Object
-    def initialize @gdk_pixbuf_pixbuf_animation_iter
+    def initialize(@gdk_pixbuf_pixbuf_animation_iter)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ module Gdk
   class EventCrossing
     include GObject::WrappedType
 
-    def initialize @gdk_event_crossing
+    def initialize(@gdk_event_crossing)
     end
 
     def to_unsafe

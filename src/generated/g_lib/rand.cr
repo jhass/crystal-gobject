@@ -2,7 +2,7 @@ module GLib
   class Rand
     include GObject::WrappedType
 
-    def initialize @g_lib_rand
+    def initialize(@g_lib_rand)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ require "./param_spec"
 
 module GObject
   class ParamSpecInt < ParamSpec
-    def initialize @g_object_param_spec_int
+    def initialize(@g_object_param_spec_int)
     end
 
     def to_unsafe

@@ -1,6 +1,6 @@
 module Gdk
   class Keymap < GObject::Object
-    def initialize @gdk_keymap
+    def initialize(@gdk_keymap)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ module Gio
   class CancellablePrivate
     include GObject::WrappedType
 
-    def initialize @gio_cancellable_private
+    def initialize(@gio_cancellable_private)
     end
 
     def to_unsafe

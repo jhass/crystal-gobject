@@ -2,7 +2,7 @@ module Gtk
   class SpinnerPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_spinner_private
+    def initialize(@gtk_spinner_private)
     end
 
     def to_unsafe

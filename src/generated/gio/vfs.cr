@@ -1,6 +1,6 @@
 module Gio
   class Vfs < GObject::Object
-    def initialize @gio_vfs
+    def initialize(@gio_vfs)
     end
 
     def to_unsafe
@@ -29,7 +29,7 @@ module Gio
 
     def supported_uri_schemes
       __return_value = LibGio.vfs_get_supported_uri_schemes((to_unsafe as LibGio::Vfs*))
-      PointerIterator.new(__return_value) {|__item_88| (raise "Expected string but got null" unless __item_88; String.new(__item_88)) }
+      PointerIterator.new(__return_value) {|__item_96| (raise "Expected string but got null" unless __item_96; String.new(__item_96)) }
     end
 
     def active?

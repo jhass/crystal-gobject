@@ -2,7 +2,7 @@ module Gst
   class Sample
     include GObject::WrappedType
 
-    def initialize @gst_sample
+    def initialize(@gst_sample)
     end
 
     def to_unsafe

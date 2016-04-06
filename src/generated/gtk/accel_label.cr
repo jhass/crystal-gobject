@@ -2,7 +2,7 @@ require "./label"
 
 module Gtk
   class AccelLabel < Label
-    def initialize @gtk_accel_label
+    def initialize(@gtk_accel_label)
     end
 
     def to_unsafe

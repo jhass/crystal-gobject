@@ -2,7 +2,7 @@ module Gtk
   class ColorSelectionPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_color_selection_private
+    def initialize(@gtk_color_selection_private)
     end
 
     def to_unsafe

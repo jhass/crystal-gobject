@@ -2,7 +2,7 @@ require "./object"
 
 module Atk
   class Socket < Object
-    def initialize @atk_socket
+    def initialize(@atk_socket)
     end
 
     def to_unsafe

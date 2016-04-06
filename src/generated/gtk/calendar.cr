@@ -2,7 +2,7 @@ require "./widget"
 
 module Gtk
   class Calendar < Widget
-    def initialize @gtk_calendar
+    def initialize(@gtk_calendar)
     end
 
     def to_unsafe

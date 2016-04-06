@@ -2,7 +2,7 @@ module Gtk
   class BinPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_bin_private
+    def initialize(@gtk_bin_private)
     end
 
     def to_unsafe

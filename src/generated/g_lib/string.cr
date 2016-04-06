@@ -2,7 +2,7 @@ module GLib
   class String
     include GObject::WrappedType
 
-    def initialize @g_lib_string
+    def initialize(@g_lib_string)
     end
 
     def to_unsafe

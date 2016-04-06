@@ -2,7 +2,7 @@ module Gdk
   class EventAny
     include GObject::WrappedType
 
-    def initialize @gdk_event_any
+    def initialize(@gdk_event_any)
     end
 
     def to_unsafe

@@ -1,6 +1,6 @@
 module Gio
   class InetAddressMask < GObject::Object
-    def initialize @gio_inet_address_mask
+    def initialize(@gio_inet_address_mask)
     end
 
     def to_unsafe

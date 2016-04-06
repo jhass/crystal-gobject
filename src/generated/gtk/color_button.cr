@@ -2,7 +2,7 @@ require "./button"
 
 module Gtk
   class ColorButton < Button
-    def initialize @gtk_color_button
+    def initialize(@gtk_color_button)
     end
 
     def to_unsafe

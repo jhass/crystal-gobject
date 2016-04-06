@@ -2,7 +2,7 @@ module Gio
   class InputVector
     include GObject::WrappedType
 
-    def initialize @gio_input_vector
+    def initialize(@gio_input_vector)
     end
 
     def to_unsafe

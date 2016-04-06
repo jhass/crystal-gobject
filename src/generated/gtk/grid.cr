@@ -2,7 +2,7 @@ require "./container"
 
 module Gtk
   class Grid < Container
-    def initialize @gtk_grid
+    def initialize(@gtk_grid)
     end
 
     def to_unsafe
@@ -39,7 +39,7 @@ module Gtk
 
     def child_at(left, top)
       __return_value = LibGtk.grid_get_child_at((to_unsafe as LibGtk::Grid*), Int32.new(left), Int32.new(top))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def column_homogeneous

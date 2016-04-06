@@ -2,7 +2,7 @@ require "./misc"
 
 module Gtk
   class Label < Misc
-    def initialize @gtk_label
+    def initialize(@gtk_label)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ require "./container"
 
 module Gtk
   class Toolbar < Container
-    def initialize @gtk_toolbar
+    def initialize(@gtk_toolbar)
     end
 
     def to_unsafe

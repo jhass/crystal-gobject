@@ -24,7 +24,7 @@ end
 
 
 module GIRepository
-  def self.filename filename
+  def self.filename(filename)
     filename.gsub(/[A-Z][a-z]*(?=[A-Z])/) {|m| "#{m.downcase}_" }
             .gsub(/::/, "_")
             .downcase

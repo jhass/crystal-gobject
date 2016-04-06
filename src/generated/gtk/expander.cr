@@ -2,7 +2,7 @@ require "./bin"
 
 module Gtk
   class Expander < Bin
-    def initialize @gtk_expander
+    def initialize(@gtk_expander)
     end
 
     def to_unsafe

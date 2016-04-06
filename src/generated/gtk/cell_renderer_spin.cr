@@ -2,7 +2,7 @@ require "./cell_renderer_text"
 
 module Gtk
   class CellRendererSpin < CellRendererText
-    def initialize @gtk_cell_renderer_spin
+    def initialize(@gtk_cell_renderer_spin)
     end
 
     def to_unsafe

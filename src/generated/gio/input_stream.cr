@@ -1,6 +1,6 @@
 module Gio
   class InputStream < GObject::Object
-    def initialize @gio_input_stream
+    def initialize(@gio_input_stream)
     end
 
     def to_unsafe

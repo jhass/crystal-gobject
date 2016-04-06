@@ -1,6 +1,6 @@
 module Gio
   class SimpleAsyncResult < GObject::Object
-    def initialize @gio_simple_async_result
+    def initialize(@gio_simple_async_result)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ module Pango
   class AttrIterator
     include GObject::WrappedType
 
-    def initialize @pango_attr_iterator
+    def initialize(@pango_attr_iterator)
     end
 
     def to_unsafe

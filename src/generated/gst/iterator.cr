@@ -2,7 +2,7 @@ module Gst
   class Iterator
     include GObject::WrappedType
 
-    def initialize @gst_iterator
+    def initialize(@gst_iterator)
     end
 
     def to_unsafe

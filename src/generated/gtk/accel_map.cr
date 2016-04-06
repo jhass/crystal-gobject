@@ -1,6 +1,6 @@
 module Gtk
   class AccelMap < GObject::Object
-    def initialize @gtk_accel_map
+    def initialize(@gtk_accel_map)
     end
 
     def to_unsafe

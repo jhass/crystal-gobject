@@ -2,7 +2,7 @@ module GLib
   class Thread
     include GObject::WrappedType
 
-    def initialize @g_lib_thread
+    def initialize(@g_lib_thread)
     end
 
     def to_unsafe

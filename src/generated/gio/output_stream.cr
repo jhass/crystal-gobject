@@ -1,6 +1,6 @@
 module Gio
   class OutputStream < GObject::Object
-    def initialize @gio_output_stream
+    def initialize(@gio_output_stream)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ require "./widget_accessible"
 
 module Gtk
   class LevelBarAccessible < WidgetAccessible
-    def initialize @gtk_level_bar_accessible
+    def initialize(@gtk_level_bar_accessible)
     end
 
     def to_unsafe

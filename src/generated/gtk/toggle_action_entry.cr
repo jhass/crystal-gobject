@@ -2,7 +2,7 @@ module Gtk
   class ToggleActionEntry
     include GObject::WrappedType
 
-    def initialize @gtk_toggle_action_entry
+    def initialize(@gtk_toggle_action_entry)
     end
 
     def to_unsafe

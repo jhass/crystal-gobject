@@ -2,7 +2,7 @@ require "./window"
 
 module Gtk
   class Plug < Window
-    def initialize @gtk_plug
+    def initialize(@gtk_plug)
     end
 
     def to_unsafe

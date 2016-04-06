@@ -2,7 +2,7 @@ module Gdk
   class EventTouchpadSwipe
     include GObject::WrappedType
 
-    def initialize @gdk_event_touchpad_swipe
+    def initialize(@gdk_event_touchpad_swipe)
     end
 
     def to_unsafe

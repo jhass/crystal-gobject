@@ -1,6 +1,6 @@
 module Atk
   class ObjectFactory < GObject::Object
-    def initialize @atk_object_factory
+    def initialize(@atk_object_factory)
     end
 
     def to_unsafe

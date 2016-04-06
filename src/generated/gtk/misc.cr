@@ -2,7 +2,7 @@ require "./widget"
 
 module Gtk
   class Misc < Widget
-    def initialize @gtk_misc
+    def initialize(@gtk_misc)
     end
 
     def to_unsafe

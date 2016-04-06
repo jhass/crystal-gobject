@@ -2,7 +2,7 @@ module Gio
   class SettingsSchema
     include GObject::WrappedType
 
-    def initialize @gio_settings_schema
+    def initialize(@gio_settings_schema)
     end
 
     def to_unsafe
@@ -31,12 +31,12 @@ module Gio
 
     def list_children
       __return_value = LibGio.settings_schema_list_children((to_unsafe as LibGio::SettingsSchema*))
-      PointerIterator.new(__return_value) {|__item_87| (raise "Expected string but got null" unless __item_87; String.new(__item_87)) }
+      PointerIterator.new(__return_value) {|__item_86| (raise "Expected string but got null" unless __item_86; String.new(__item_86)) }
     end
 
     def list_keys
       __return_value = LibGio.settings_schema_list_keys((to_unsafe as LibGio::SettingsSchema*))
-      PointerIterator.new(__return_value) {|__item_33| (raise "Expected string but got null" unless __item_33; String.new(__item_33)) }
+      PointerIterator.new(__return_value) {|__item_68| (raise "Expected string but got null" unless __item_68; String.new(__item_68)) }
     end
 
     def ref

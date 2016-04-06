@@ -2,7 +2,7 @@ module Pango
   class LayoutIter
     include GObject::WrappedType
 
-    def initialize @pango_layout_iter
+    def initialize(@pango_layout_iter)
     end
 
     def to_unsafe

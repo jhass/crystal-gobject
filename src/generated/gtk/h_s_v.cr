@@ -2,7 +2,7 @@ require "./widget"
 
 module Gtk
   class HSV < Widget
-    def initialize @gtk_h_s_v
+    def initialize(@gtk_h_s_v)
     end
 
     def to_unsafe

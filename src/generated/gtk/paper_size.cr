@@ -2,7 +2,7 @@ module Gtk
   class PaperSize
     include GObject::WrappedType
 
-    def initialize @gtk_paper_size
+    def initialize(@gtk_paper_size)
     end
 
     def to_unsafe

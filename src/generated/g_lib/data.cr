@@ -2,7 +2,7 @@ module GLib
   class Data
     include GObject::WrappedType
 
-    def initialize @g_lib_data
+    def initialize(@g_lib_data)
     end
 
     def to_unsafe

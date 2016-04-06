@@ -1,6 +1,6 @@
 module Gdk
   class Screen < GObject::Object
-    def initialize @gdk_screen
+    def initialize(@gdk_screen)
     end
 
     def to_unsafe

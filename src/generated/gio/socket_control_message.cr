@@ -1,6 +1,6 @@
 module Gio
   class SocketControlMessage < GObject::Object
-    def initialize @gio_socket_control_message
+    def initialize(@gio_socket_control_message)
     end
 
     def to_unsafe

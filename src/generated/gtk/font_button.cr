@@ -2,7 +2,7 @@ require "./button"
 
 module Gtk
   class FontButton < Button
-    def initialize @gtk_font_button
+    def initialize(@gtk_font_button)
     end
 
     def to_unsafe

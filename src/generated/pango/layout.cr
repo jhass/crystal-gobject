@@ -1,6 +1,6 @@
 module Pango
   class Layout < GObject::Object
-    def initialize @pango_layout
+    def initialize(@pango_layout)
     end
 
     def to_unsafe
@@ -124,7 +124,7 @@ module Pango
 
     def log_attrs_readonly(n_attrs)
       __return_value = LibPango.layout_get_log_attrs_readonly((to_unsafe as LibPango::Layout*), Int32.new(n_attrs))
-      PointerIterator.new(__return_value) {|__item_70| Pango::LogAttr.new(__item_70) }
+      PointerIterator.new(__return_value) {|__item_3| Pango::LogAttr.new(__item_3) }
     end
 
     def pixel_extents(ink_rect, logical_rect)

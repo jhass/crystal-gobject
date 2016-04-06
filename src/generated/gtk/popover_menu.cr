@@ -2,7 +2,7 @@ require "./popover"
 
 module Gtk
   class PopoverMenu < Popover
-    def initialize @gtk_popover_menu
+    def initialize(@gtk_popover_menu)
     end
 
     def to_unsafe

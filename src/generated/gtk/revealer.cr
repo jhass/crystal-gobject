@@ -2,7 +2,7 @@ require "./bin"
 
 module Gtk
   class Revealer < Bin
-    def initialize @gtk_revealer
+    def initialize(@gtk_revealer)
     end
 
     def to_unsafe

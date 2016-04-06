@@ -2,7 +2,7 @@ module Gst
   class ProtectionMeta
     include GObject::WrappedType
 
-    def initialize @gst_protection_meta
+    def initialize(@gst_protection_meta)
     end
 
     def to_unsafe

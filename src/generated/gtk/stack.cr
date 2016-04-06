@@ -2,7 +2,7 @@ require "./container"
 
 module Gtk
   class Stack < Container
-    def initialize @gtk_stack
+    def initialize(@gtk_stack)
     end
 
     def to_unsafe

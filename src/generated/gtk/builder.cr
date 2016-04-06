@@ -1,6 +1,6 @@
 module Gtk
   class Builder < GObject::Object
-    def initialize @gtk_builder
+    def initialize(@gtk_builder)
     end
 
     def to_unsafe

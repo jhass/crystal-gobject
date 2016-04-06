@@ -2,7 +2,7 @@ require "./range"
 
 module Gtk
   class Scrollbar < Range
-    def initialize @gtk_scrollbar
+    def initialize(@gtk_scrollbar)
     end
 
     def to_unsafe

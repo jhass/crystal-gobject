@@ -2,7 +2,7 @@ require "./widget"
 
 module Gtk
   class CellView < Widget
-    def initialize @gtk_cell_view
+    def initialize(@gtk_cell_view)
     end
 
     def to_unsafe

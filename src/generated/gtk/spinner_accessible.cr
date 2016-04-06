@@ -2,7 +2,7 @@ require "./widget_accessible"
 
 module Gtk
   class SpinnerAccessible < WidgetAccessible
-    def initialize @gtk_spinner_accessible
+    def initialize(@gtk_spinner_accessible)
     end
 
     def to_unsafe

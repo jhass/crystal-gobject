@@ -2,7 +2,7 @@ require "./dialog"
 
 module Gtk
   class MessageDialog < Dialog
-    def initialize @gtk_message_dialog
+    def initialize(@gtk_message_dialog)
     end
 
     def to_unsafe

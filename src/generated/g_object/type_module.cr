@@ -2,7 +2,7 @@ require "./object"
 
 module GObject
   class TypeModule < Object
-    def initialize @g_object_type_module
+    def initialize(@g_object_type_module)
     end
 
     def to_unsafe

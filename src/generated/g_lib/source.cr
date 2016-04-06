@@ -2,7 +2,7 @@ module GLib
   class Source
     include GObject::WrappedType
 
-    def initialize @g_lib_source
+    def initialize(@g_lib_source)
     end
 
     def to_unsafe

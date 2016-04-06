@@ -2,7 +2,7 @@ module Gst
   class Segment
     include GObject::WrappedType
 
-    def initialize @gst_segment
+    def initialize(@gst_segment)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ module Gio
   class NetworkAddressPrivate
     include GObject::WrappedType
 
-    def initialize @gio_network_address_private
+    def initialize(@gio_network_address_private)
     end
 
     def to_unsafe

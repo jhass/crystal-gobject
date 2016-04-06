@@ -2,7 +2,7 @@ module Gst
   class Caps
     include GObject::WrappedType
 
-    def initialize @gst_caps
+    def initialize(@gst_caps)
     end
 
     def to_unsafe

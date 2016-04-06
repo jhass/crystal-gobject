@@ -2,7 +2,7 @@ require "./range"
 
 module Gtk
   class Scale < Range
-    def initialize @gtk_scale
+    def initialize(@gtk_scale)
     end
 
     def to_unsafe

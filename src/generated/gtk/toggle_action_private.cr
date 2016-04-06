@@ -2,7 +2,7 @@ module Gtk
   class ToggleActionPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_toggle_action_private
+    def initialize(@gtk_toggle_action_private)
     end
 
     def to_unsafe

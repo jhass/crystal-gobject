@@ -2,7 +2,7 @@ module Gtk
   class TableChild
     include GObject::WrappedType
 
-    def initialize @gtk_table_child
+    def initialize(@gtk_table_child)
     end
 
     def to_unsafe

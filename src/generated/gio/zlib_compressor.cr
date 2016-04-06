@@ -1,6 +1,6 @@
 module Gio
   class ZlibCompressor < GObject::Object
-    def initialize @gio_zlib_compressor
+    def initialize(@gio_zlib_compressor)
     end
 
     def to_unsafe

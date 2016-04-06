@@ -2,7 +2,7 @@ require "./object"
 
 module Gst
   class ControlBinding < Object
-    def initialize @gst_control_binding
+    def initialize(@gst_control_binding)
     end
 
     def to_unsafe

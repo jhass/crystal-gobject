@@ -2,7 +2,7 @@ require "./bin"
 
 module Gtk
   class Button < Bin
-    def initialize @gtk_button
+    def initialize(@gtk_button)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ module Gtk
   class RecentInfo
     include GObject::WrappedType
 
-    def initialize @gtk_recent_info
+    def initialize(@gtk_recent_info)
     end
 
     def to_unsafe
@@ -38,7 +38,7 @@ module Gtk
 
     def applications(length)
       __return_value = LibGtk.recent_info_get_applications((to_unsafe as LibGtk::RecentInfo*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_19| (raise "Expected string but got null" unless __item_19; String.new(__item_19)) }
+      PointerIterator.new(__return_value) {|__item_77| (raise "Expected string but got null" unless __item_77; String.new(__item_77)) }
     end
 
     def description
@@ -58,7 +58,7 @@ module Gtk
 
     def groups(length)
       __return_value = LibGtk.recent_info_get_groups((to_unsafe as LibGtk::RecentInfo*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_62| (raise "Expected string but got null" unless __item_62; String.new(__item_62)) }
+      PointerIterator.new(__return_value) {|__item_64| (raise "Expected string but got null" unless __item_64; String.new(__item_64)) }
     end
 
     def icon(size)

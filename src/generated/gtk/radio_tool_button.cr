@@ -2,7 +2,7 @@ require "./toggle_tool_button"
 
 module Gtk
   class RadioToolButton < ToggleToolButton
-    def initialize @gtk_radio_tool_button
+    def initialize(@gtk_radio_tool_button)
     end
 
     def to_unsafe

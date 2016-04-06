@@ -1,6 +1,6 @@
 module Pango
   class FontFamily < GObject::Object
-    def initialize @pango_font_family
+    def initialize(@pango_font_family)
     end
 
     def to_unsafe

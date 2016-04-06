@@ -1,6 +1,6 @@
 module Gtk
   class TreeViewColumn < GObject::InitiallyUnowned
-    def initialize @gtk_tree_view_column
+    def initialize(@gtk_tree_view_column)
     end
 
     def to_unsafe

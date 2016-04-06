@@ -2,7 +2,7 @@ require "./object"
 
 module Gst
   class Device < Object
-    def initialize @gst_device
+    def initialize(@gst_device)
     end
 
     def to_unsafe

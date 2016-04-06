@@ -2,7 +2,7 @@ require "./bin"
 
 module Gtk
   class StackSidebar < Bin
-    def initialize @gtk_stack_sidebar
+    def initialize(@gtk_stack_sidebar)
     end
 
     def to_unsafe

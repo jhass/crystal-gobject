@@ -2,7 +2,7 @@ require "./container_accessible"
 
 module Gtk
   class TreeViewAccessible < ContainerAccessible
-    def initialize @gtk_tree_view_accessible
+    def initialize(@gtk_tree_view_accessible)
     end
 
     def to_unsafe

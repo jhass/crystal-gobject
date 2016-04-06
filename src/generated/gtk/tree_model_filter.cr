@@ -1,6 +1,6 @@
 module Gtk
   class TreeModelFilter < GObject::Object
-    def initialize @gtk_tree_model_filter
+    def initialize(@gtk_tree_model_filter)
     end
 
     def to_unsafe

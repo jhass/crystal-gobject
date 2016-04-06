@@ -2,7 +2,7 @@ module Gst
   class StaticPadTemplate
     include GObject::WrappedType
 
-    def initialize @gst_static_pad_template
+    def initialize(@gst_static_pad_template)
     end
 
     def to_unsafe

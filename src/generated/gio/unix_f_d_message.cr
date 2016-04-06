@@ -2,7 +2,7 @@ require "./socket_control_message"
 
 module Gio
   class UnixFDMessage < SocketControlMessage
-    def initialize @gio_unix_f_d_message
+    def initialize(@gio_unix_f_d_message)
     end
 
     def to_unsafe
@@ -34,7 +34,7 @@ module Gio
 
     def steal_fds(length)
       __return_value = LibGio.unix_f_d_message_steal_fds((to_unsafe as LibGio::UnixFDMessage*), Int32.new(length))
-      PointerIterator.new(__return_value) {|__item_96| __item_96 }
+      PointerIterator.new(__return_value) {|__item_13| __item_13 }
     end
 
   end

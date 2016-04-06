@@ -2,7 +2,7 @@ module Gtk
   class LabelPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_label_private
+    def initialize(@gtk_label_private)
     end
 
     def to_unsafe

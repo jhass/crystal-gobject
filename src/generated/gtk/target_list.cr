@@ -2,7 +2,7 @@ module Gtk
   class TargetList
     include GObject::WrappedType
 
-    def initialize @gtk_target_list
+    def initialize(@gtk_target_list)
     end
 
     def to_unsafe

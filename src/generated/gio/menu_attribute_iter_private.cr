@@ -2,7 +2,7 @@ module Gio
   class MenuAttributeIterPrivate
     include GObject::WrappedType
 
-    def initialize @gio_menu_attribute_iter_private
+    def initialize(@gio_menu_attribute_iter_private)
     end
 
     def to_unsafe

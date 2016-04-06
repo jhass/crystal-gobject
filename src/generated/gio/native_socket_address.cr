@@ -2,7 +2,7 @@ module Gio
   class NativeSocketAddress
     include GObject::WrappedType
 
-    def initialize @gio_native_socket_address
+    def initialize(@gio_native_socket_address)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ module Gtk
   class CellRendererSpinnerPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_cell_renderer_spinner_private
+    def initialize(@gtk_cell_renderer_spinner_private)
     end
 
     def to_unsafe

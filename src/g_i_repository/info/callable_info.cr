@@ -3,14 +3,14 @@ require "./base_info"
 module GIRepository
   module CallableInfo
     class FakeType
-      def initialize @definition
+      def initialize(@definition)
       end
 
       def lib_definition
         @definition
       end
 
-      def wrapper_definition libname, indent=""
+      def wrapper_definition(libname, indent="")
         @definition
       end
 
@@ -18,17 +18,17 @@ module GIRepository
         -1
       end
 
-      def convert_to_crystal variable
+      def convert_to_crystal(variable)
         "#{@definition}.new(#{variable})"
       end
 
-      def convert_from_crystal variable
+      def convert_from_crystal(variable)
         variable
       end
     end
 
     class SelfArgInfo
-      def initialize @container
+      def initialize(@container)
       end
 
       def lib_definition
@@ -39,10 +39,10 @@ module GIRepository
         FakeType.new "#{@container.name}"
       end
 
-      def for_wrapper_definition libname
+      def for_wrapper_definition(libname)
       end
 
-      def for_wrapper_pass libname
+      def for_wrapper_pass(libname)
         "(to_unsafe as #{libname}::#{@container.name}*)"
       end
     end
@@ -56,10 +56,10 @@ module GIRepository
         FakeType.new "LibGLib::Error**"
       end
 
-      def for_wrapper_definition libname
+      def for_wrapper_definition(libname)
       end
 
-      def for_wrapper_pass libname
+      def for_wrapper_pass(libname)
         "pointerof(__error)"
       end
     end

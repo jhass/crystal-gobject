@@ -2,7 +2,7 @@ module Gtk
   class StyleContextPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_style_context_private
+    def initialize(@gtk_style_context_private)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ require "./box"
 
 module Gtk
   class InfoBar < Box
-    def initialize @gtk_info_bar
+    def initialize(@gtk_info_bar)
     end
 
     def to_unsafe

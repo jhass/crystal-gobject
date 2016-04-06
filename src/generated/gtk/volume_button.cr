@@ -2,7 +2,7 @@ require "./scale_button"
 
 module Gtk
   class VolumeButton < ScaleButton
-    def initialize @gtk_volume_button
+    def initialize(@gtk_volume_button)
     end
 
     def to_unsafe

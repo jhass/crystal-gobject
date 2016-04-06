@@ -37,6 +37,7 @@ lib LibGdkPixbuf
     UNKNOWN_TYPE = 3
     UNSUPPORTED_OPERATION = 4
     FAILED = 5
+    INCOMPLETE_ANIMATION = 6
   end
   fun pixbuf_error_quark = gdk_pixbuf_error_quark() : UInt32
 
@@ -56,9 +57,9 @@ lib LibGdkPixbuf
   PIXBUF_FEATURES_H = 1 # : Int32
   PIXBUF_MAGIC_NUMBER = 1197763408 # : Int32
   PIXBUF_MAJOR = 2 # : Int32
-  PIXBUF_MICRO = 1 # : Int32
-  PIXBUF_MINOR = 32 # : Int32
-  PIXBUF_VERSION = "2.32.1" # : UInt8*
+  PIXBUF_MICRO = 0 # : Int32
+  PIXBUF_MINOR = 34 # : Int32
+  PIXBUF_VERSION = "2.34.0" # : UInt8*
   PIXDATA_HEADER_LENGTH = 24 # : Int32
 
   ###########################################

@@ -2,7 +2,7 @@ module Gio
   class MountOperationPrivate
     include GObject::WrappedType
 
-    def initialize @gio_mount_operation_private
+    def initialize(@gio_mount_operation_private)
     end
 
     def to_unsafe

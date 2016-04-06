@@ -1,6 +1,6 @@
 module Gio
   class UnixMountMonitor < GObject::Object
-    def initialize @gio_unix_mount_monitor
+    def initialize(@gio_unix_mount_monitor)
     end
 
     def to_unsafe

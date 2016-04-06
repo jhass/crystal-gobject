@@ -1,6 +1,6 @@
 module Gdk
   class Display < GObject::Object
-    def initialize @gdk_display
+    def initialize(@gdk_display)
     end
 
     def to_unsafe

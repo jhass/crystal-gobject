@@ -1,6 +1,6 @@
 module Gio
   class DBusMethodInvocation < GObject::Object
-    def initialize @gio_d_bus_method_invocation
+    def initialize(@gio_d_bus_method_invocation)
     end
 
     def to_unsafe

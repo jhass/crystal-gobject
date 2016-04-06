@@ -2,7 +2,7 @@ require "./widget"
 
 module Gtk
   class Entry < Widget
-    def initialize @gtk_entry
+    def initialize(@gtk_entry)
     end
 
     def to_unsafe
@@ -84,7 +84,7 @@ module Gtk
 
     def attributes
       __return_value = LibGtk.entry_get_attributes((to_unsafe as LibGtk::Entry*))
-      Pango::AttrList.new(__return_value)
+      Pango::AttrList.new(__return_value) if __return_value
     end
 
     def buffer
@@ -104,7 +104,7 @@ module Gtk
 
     def cursor_hadjustment
       __return_value = LibGtk.entry_get_cursor_hadjustment((to_unsafe as LibGtk::Entry*))
-      Gtk::Adjustment.new(__return_value)
+      Gtk::Adjustment.new(__return_value) if __return_value
     end
 
     def has_frame
@@ -129,17 +129,17 @@ module Gtk
 
     def icon_gicon(icon_pos)
       __return_value = LibGtk.entry_get_icon_gicon((to_unsafe as LibGtk::Entry*), icon_pos)
-      __return_value
+      __return_value if __return_value
     end
 
     def icon_name(icon_pos)
       __return_value = LibGtk.entry_get_icon_name((to_unsafe as LibGtk::Entry*), icon_pos)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def icon_pixbuf(icon_pos)
       __return_value = LibGtk.entry_get_icon_pixbuf((to_unsafe as LibGtk::Entry*), icon_pos)
-      GdkPixbuf::Pixbuf.new(__return_value)
+      GdkPixbuf::Pixbuf.new(__return_value) if __return_value
     end
 
     def icon_sensitive(icon_pos)
@@ -308,7 +308,7 @@ module Gtk
     end
 
     def cursor_hadjustment=(adjustment)
-      __return_value = LibGtk.entry_set_cursor_hadjustment((to_unsafe as LibGtk::Entry*), (adjustment.to_unsafe as LibGtk::Adjustment*))
+      __return_value = LibGtk.entry_set_cursor_hadjustment((to_unsafe as LibGtk::Entry*), adjustment && (adjustment.to_unsafe as LibGtk::Adjustment*))
       __return_value
     end
 
@@ -398,7 +398,7 @@ module Gtk
     end
 
     def placeholder_text=(text)
-      __return_value = LibGtk.entry_set_placeholder_text((to_unsafe as LibGtk::Entry*), text)
+      __return_value = LibGtk.entry_set_placeholder_text((to_unsafe as LibGtk::Entry*), text && text)
       __return_value
     end
 

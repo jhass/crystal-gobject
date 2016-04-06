@@ -2,7 +2,7 @@ require "./container"
 
 module Gtk
   class FlowBox < Container
-    def initialize @gtk_flow_box
+    def initialize(@gtk_flow_box)
     end
 
     def to_unsafe
@@ -31,7 +31,7 @@ module Gtk
 
     def child_at_index(idx)
       __return_value = LibGtk.flow_box_get_child_at_index((to_unsafe as LibGtk::FlowBox*), Int32.new(idx))
-      Gtk::FlowBoxChild.new(__return_value)
+      Gtk::FlowBoxChild.new(__return_value) if __return_value
     end
 
     def column_spacing

@@ -2,7 +2,7 @@ module GLib
   class TestLogMsg
     include GObject::WrappedType
 
-    def initialize @g_lib_test_log_msg
+    def initialize(@g_lib_test_log_msg)
     end
 
     def to_unsafe

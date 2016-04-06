@@ -1,6 +1,6 @@
 module Gio
   class SocketListener < GObject::Object
-    def initialize @gio_socket_listener
+    def initialize(@gio_socket_listener)
     end
 
     def to_unsafe

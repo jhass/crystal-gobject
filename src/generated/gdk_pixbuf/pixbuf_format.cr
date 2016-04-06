@@ -2,7 +2,7 @@ module GdkPixbuf
   class PixbufFormat
     include GObject::WrappedType
 
-    def initialize @gdk_pixbuf_pixbuf_format
+    def initialize(@gdk_pixbuf_pixbuf_format)
     end
 
     def to_unsafe
@@ -26,7 +26,7 @@ module GdkPixbuf
 
     def extensions
       __return_value = LibGdkPixbuf.pixbuf_format_get_extensions((to_unsafe as LibGdkPixbuf::PixbufFormat*))
-      PointerIterator.new(__return_value) {|__item_76| (raise "Expected string but got null" unless __item_76; String.new(__item_76)) }
+      PointerIterator.new(__return_value) {|__item_48| (raise "Expected string but got null" unless __item_48; String.new(__item_48)) }
     end
 
     def license
@@ -36,7 +36,7 @@ module GdkPixbuf
 
     def mime_types
       __return_value = LibGdkPixbuf.pixbuf_format_get_mime_types((to_unsafe as LibGdkPixbuf::PixbufFormat*))
-      PointerIterator.new(__return_value) {|__item_87| (raise "Expected string but got null" unless __item_87; String.new(__item_87)) }
+      PointerIterator.new(__return_value) {|__item_93| (raise "Expected string but got null" unless __item_93; String.new(__item_93)) }
     end
 
     def name

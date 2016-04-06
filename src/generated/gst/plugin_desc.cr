@@ -2,7 +2,7 @@ module Gst
   class PluginDesc
     include GObject::WrappedType
 
-    def initialize @gst_plugin_desc
+    def initialize(@gst_plugin_desc)
     end
 
     def to_unsafe

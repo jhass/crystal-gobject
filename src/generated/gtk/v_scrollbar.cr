@@ -2,7 +2,7 @@ require "./scrollbar"
 
 module Gtk
   class VScrollbar < Scrollbar
-    def initialize @gtk_v_scrollbar
+    def initialize(@gtk_v_scrollbar)
     end
 
     def to_unsafe

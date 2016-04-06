@@ -2,7 +2,7 @@ module GLib
   class Node
     include GObject::WrappedType
 
-    def initialize @g_lib_node
+    def initialize(@g_lib_node)
     end
 
     def to_unsafe

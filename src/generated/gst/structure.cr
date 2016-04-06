@@ -2,7 +2,7 @@ module Gst
   class Structure
     include GObject::WrappedType
 
-    def initialize @gst_structure
+    def initialize(@gst_structure)
     end
 
     def to_unsafe

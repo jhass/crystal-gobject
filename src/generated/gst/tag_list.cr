@@ -2,7 +2,7 @@ module Gst
   class TagList
     include GObject::WrappedType
 
-    def initialize @gst_tag_list
+    def initialize(@gst_tag_list)
     end
 
     def to_unsafe

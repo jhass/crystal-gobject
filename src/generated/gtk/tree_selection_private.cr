@@ -2,7 +2,7 @@ module Gtk
   class TreeSelectionPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_tree_selection_private
+    def initialize(@gtk_tree_selection_private)
     end
 
     def to_unsafe

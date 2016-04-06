@@ -2,7 +2,7 @@ module GLib
   class VariantDict
     include GObject::WrappedType
 
-    def initialize @g_lib_variant_dict
+    def initialize(@g_lib_variant_dict)
     end
 
     def to_unsafe

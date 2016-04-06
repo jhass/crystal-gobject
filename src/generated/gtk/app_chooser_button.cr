@@ -2,7 +2,7 @@ require "./combo_box"
 
 module Gtk
   class AppChooserButton < ComboBox
-    def initialize @gtk_app_chooser_button
+    def initialize(@gtk_app_chooser_button)
     end
 
     def to_unsafe

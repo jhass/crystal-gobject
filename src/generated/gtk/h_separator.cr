@@ -2,7 +2,7 @@ require "./separator"
 
 module Gtk
   class HSeparator < Separator
-    def initialize @gtk_h_separator
+    def initialize(@gtk_h_separator)
     end
 
     def to_unsafe

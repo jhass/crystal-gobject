@@ -2,7 +2,7 @@ module Gdk
   class FrameClockPrivate
     include GObject::WrappedType
 
-    def initialize @gdk_frame_clock_private
+    def initialize(@gdk_frame_clock_private)
     end
 
     def to_unsafe

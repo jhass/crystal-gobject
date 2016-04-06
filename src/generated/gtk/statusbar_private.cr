@@ -2,7 +2,7 @@ module Gtk
   class StatusbarPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_statusbar_private
+    def initialize(@gtk_statusbar_private)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ require "./container"
 
 module Gtk
   class ToolItemGroup < Container
-    def initialize @gtk_tool_item_group
+    def initialize(@gtk_tool_item_group)
     end
 
     def to_unsafe

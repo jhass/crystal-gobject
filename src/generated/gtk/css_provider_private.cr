@@ -2,7 +2,7 @@ module Gtk
   class CssProviderPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_css_provider_private
+    def initialize(@gtk_css_provider_private)
     end
 
     def to_unsafe

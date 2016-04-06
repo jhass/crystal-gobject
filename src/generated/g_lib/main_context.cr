@@ -2,7 +2,7 @@ module GLib
   class MainContext
     include GObject::WrappedType
 
-    def initialize @g_lib_main_context
+    def initialize(@g_lib_main_context)
     end
 
     def to_unsafe

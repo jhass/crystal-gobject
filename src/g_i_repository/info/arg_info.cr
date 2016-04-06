@@ -41,7 +41,7 @@ module GIRepository
       end
     end
 
-    def for_wrapper_definition libname
+    def for_wrapper_definition(libname)
       if type.tag == LibGIRepository::TypeTag::INTERFACE && type.interface.is_a? CallbackInfo
         "#{name} : #{type.lib_definition}#{"?" if nullable?}"
       else
@@ -49,7 +49,7 @@ module GIRepository
       end
     end
 
-    def for_wrapper_pass libname
+    def for_wrapper_pass(libname)
       "#{"#{name} && " if nullable?}#{type.convert_from_crystal(name)}"
     end
   end

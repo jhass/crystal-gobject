@@ -2,7 +2,7 @@ require "./gesture"
 
 module Gtk
   class GestureZoom < Gesture
-    def initialize @gtk_gesture_zoom
+    def initialize(@gtk_gesture_zoom)
     end
 
     def to_unsafe

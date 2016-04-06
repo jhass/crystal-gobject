@@ -2,7 +2,7 @@ module Gio
   class DBusArgInfo
     include GObject::WrappedType
 
-    def initialize @gio_d_bus_arg_info
+    def initialize(@gio_d_bus_arg_info)
     end
 
     def to_unsafe

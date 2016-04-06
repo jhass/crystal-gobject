@@ -2,7 +2,7 @@ require "./bin"
 
 module Gtk
   class Popover < Bin
-    def initialize @gtk_popover
+    def initialize(@gtk_popover)
     end
 
     def to_unsafe

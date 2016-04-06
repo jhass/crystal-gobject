@@ -2,7 +2,7 @@ module Gtk
   class BindingArg
     include GObject::WrappedType
 
-    def initialize @gtk_binding_arg
+    def initialize(@gtk_binding_arg)
     end
 
     def to_unsafe

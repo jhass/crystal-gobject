@@ -2,7 +2,7 @@ module GLib
   class Regex
     include GObject::WrappedType
 
-    def initialize @g_lib_regex
+    def initialize(@g_lib_regex)
     end
 
     def to_unsafe
@@ -101,14 +101,14 @@ module GLib
 
     def split(string, match_options)
       __return_value = LibGLib.regex_split((to_unsafe as LibGLib::Regex*), string, match_options)
-      PointerIterator.new(__return_value) {|__item_44| (raise "Expected string but got null" unless __item_44; String.new(__item_44)) }
+      PointerIterator.new(__return_value) {|__item_14| (raise "Expected string but got null" unless __item_14; String.new(__item_14)) }
     end
 
     def split_full(string, string_len, start_position, match_options, max_tokens)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.regex_split_full((to_unsafe as LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), match_options, Int32.new(max_tokens), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_60| (raise "Expected string but got null" unless __item_60; String.new(__item_60)) }
+      PointerIterator.new(__return_value) {|__item_38| (raise "Expected string but got null" unless __item_38; String.new(__item_38)) }
     end
 
     def unref
@@ -145,7 +145,7 @@ module GLib
 
     def self.split_simple(pattern, string, compile_options, match_options)
       __return_value = LibGLib.regex_split_simple(pattern, string, compile_options, match_options)
-      PointerIterator.new(__return_value) {|__item_36| (raise "Expected string but got null" unless __item_36; String.new(__item_36)) }
+      PointerIterator.new(__return_value) {|__item_30| (raise "Expected string but got null" unless __item_30; String.new(__item_30)) }
     end
 
   end

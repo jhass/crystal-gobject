@@ -2,7 +2,7 @@ require "./tool_item"
 
 module Gtk
   class SeparatorToolItem < ToolItem
-    def initialize @gtk_separator_tool_item
+    def initialize(@gtk_separator_tool_item)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ module Gtk
   class AccelGroupEntry
     include GObject::WrappedType
 
-    def initialize @gtk_accel_group_entry
+    def initialize(@gtk_accel_group_entry)
     end
 
     def to_unsafe

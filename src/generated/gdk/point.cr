@@ -2,7 +2,7 @@ module Gdk
   class Point
     include GObject::WrappedType
 
-    def initialize @gdk_point
+    def initialize(@gdk_point)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ require "./container"
 
 module Gtk
   class ListBox < Container
-    def initialize @gtk_list_box
+    def initialize(@gtk_list_box)
     end
 
     def to_unsafe
@@ -45,12 +45,12 @@ module Gtk
 
     def row_at_index(index)
       __return_value = LibGtk.list_box_get_row_at_index((to_unsafe as LibGtk::ListBox*), Int32.new(index))
-      Gtk::ListBoxRow.new(__return_value)
+      Gtk::ListBoxRow.new(__return_value) if __return_value
     end
 
     def row_at_y(y)
       __return_value = LibGtk.list_box_get_row_at_y((to_unsafe as LibGtk::ListBox*), Int32.new(y))
-      Gtk::ListBoxRow.new(__return_value)
+      Gtk::ListBoxRow.new(__return_value) if __return_value
     end
 
     def selected_row

@@ -1,6 +1,6 @@
 module Gtk
   class Widget < GObject::InitiallyUnowned
-    def initialize @gtk_widget
+    def initialize(@gtk_widget)
     end
 
     def to_unsafe
@@ -349,7 +349,7 @@ module Gtk
 
     def ancestor(widget_type)
       __return_value = LibGtk.widget_get_ancestor((to_unsafe as LibGtk::Widget*), UInt64.new(widget_type))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def app_paintable
@@ -424,12 +424,12 @@ module Gtk
 
     def font_map
       __return_value = LibGtk.widget_get_font_map((to_unsafe as LibGtk::Widget*))
-      Pango::FontMap.new(__return_value)
+      Pango::FontMap.new(__return_value) if __return_value
     end
 
     def font_options
       __return_value = LibGtk.widget_get_font_options((to_unsafe as LibGtk::Widget*))
-      Cairo::FontOptions.new(__return_value)
+      Cairo::FontOptions.new(__return_value) if __return_value
     end
 
     def frame_clock
@@ -529,7 +529,7 @@ module Gtk
 
     def parent
       __return_value = LibGtk.widget_get_parent((to_unsafe as LibGtk::Widget*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def parent_window
@@ -659,12 +659,12 @@ module Gtk
 
     def tooltip_markup
       __return_value = LibGtk.widget_get_tooltip_markup((to_unsafe as LibGtk::Widget*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def tooltip_text
       __return_value = LibGtk.widget_get_tooltip_text((to_unsafe as LibGtk::Widget*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
     end
 
     def tooltip_window
@@ -844,7 +844,7 @@ module Gtk
 
     def list_action_prefixes
       __return_value = LibGtk.widget_list_action_prefixes((to_unsafe as LibGtk::Widget*))
-      PointerIterator.new(__return_value) {|__item_74| (raise "Expected string but got null" unless __item_74; String.new(__item_74)) }
+      PointerIterator.new(__return_value) {|__item_60| (raise "Expected string but got null" unless __item_60; String.new(__item_60)) }
     end
 
     def list_mnemonic_labels
@@ -994,7 +994,7 @@ module Gtk
 
     def render_icon_pixbuf(stock_id, size)
       __return_value = LibGtk.widget_render_icon_pixbuf((to_unsafe as LibGtk::Widget*), stock_id, Int32.new(size))
-      GdkPixbuf::Pixbuf.new(__return_value)
+      GdkPixbuf::Pixbuf.new(__return_value) if __return_value
     end
 
     def reparent(new_parent)

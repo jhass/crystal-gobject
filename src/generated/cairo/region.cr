@@ -2,7 +2,7 @@ module Cairo
   class Region
     include GObject::WrappedType
 
-    def initialize @cairo_region
+    def initialize(@cairo_region)
     end
 
     def to_unsafe

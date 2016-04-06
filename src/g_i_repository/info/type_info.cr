@@ -83,7 +83,7 @@ module GIRepository
       end
     end
 
-    def convert_to_crystal variable
+    def convert_to_crystal(variable)
       case tag
       when LibGIRepository::TypeTag::INTERFACE
         interface = interface
@@ -109,7 +109,7 @@ module GIRepository
       end
     end
 
-    def convert_from_crystal variable
+    def convert_from_crystal(variable)
       case tag
       when LibGIRepository::TypeTag::INTERFACE
         pointer? ? "(#{variable}.to_unsafe as Lib#{interface.full_constant}*)" : variable

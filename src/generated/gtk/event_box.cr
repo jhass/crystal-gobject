@@ -2,7 +2,7 @@ require "./bin"
 
 module Gtk
   class EventBox < Bin
-    def initialize @gtk_event_box
+    def initialize(@gtk_event_box)
     end
 
     def to_unsafe

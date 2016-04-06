@@ -2,7 +2,7 @@ module Gst
   class DoubleRange
     include GObject::WrappedType
 
-    def initialize @gst_double_range
+    def initialize(@gst_double_range)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ require "./button"
 
 module Gtk
   class ModelButton < Button
-    def initialize @gtk_model_button
+    def initialize(@gtk_model_button)
     end
 
     def to_unsafe

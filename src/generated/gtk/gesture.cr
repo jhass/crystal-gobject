@@ -2,7 +2,7 @@ require "./event_controller"
 
 module Gtk
   class Gesture < EventController
-    def initialize @gtk_gesture
+    def initialize(@gtk_gesture)
     end
 
     def to_unsafe
@@ -33,12 +33,12 @@ module Gtk
 
     def last_event(sequence)
       __return_value = LibGtk.gesture_get_last_event((to_unsafe as LibGtk::Gesture*), (sequence.to_unsafe as LibGdk::EventSequence*))
-      __return_value
+      __return_value if __return_value
     end
 
     def last_updated_sequence
       __return_value = LibGtk.gesture_get_last_updated_sequence((to_unsafe as LibGtk::Gesture*))
-      Gdk::EventSequence.new(__return_value)
+      Gdk::EventSequence.new(__return_value) if __return_value
     end
 
     def point(sequence, x, y)

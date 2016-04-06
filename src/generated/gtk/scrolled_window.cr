@@ -2,7 +2,7 @@ require "./bin"
 
 module Gtk
   class ScrolledWindow < Bin
-    def initialize @gtk_scrolled_window
+    def initialize(@gtk_scrolled_window)
     end
 
     def to_unsafe

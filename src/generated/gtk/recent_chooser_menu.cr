@@ -2,7 +2,7 @@ require "./menu"
 
 module Gtk
   class RecentChooserMenu < Menu
-    def initialize @gtk_recent_chooser_menu
+    def initialize(@gtk_recent_chooser_menu)
     end
 
     def to_unsafe

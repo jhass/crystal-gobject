@@ -2,7 +2,7 @@ require "./i_o_stream"
 
 module Gio
   class FileIOStream < IOStream
-    def initialize @gio_file_i_o_stream
+    def initialize(@gio_file_i_o_stream)
     end
 
     def to_unsafe

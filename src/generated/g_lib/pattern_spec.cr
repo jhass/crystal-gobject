@@ -2,7 +2,7 @@ module GLib
   class PatternSpec
     include GObject::WrappedType
 
-    def initialize @g_lib_pattern_spec
+    def initialize(@g_lib_pattern_spec)
     end
 
     def to_unsafe

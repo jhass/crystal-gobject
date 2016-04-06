@@ -2,7 +2,7 @@ module Cairo
   class ScaledFont
     include GObject::WrappedType
 
-    def initialize @cairo_scaled_font
+    def initialize(@cairo_scaled_font)
     end
 
     def to_unsafe

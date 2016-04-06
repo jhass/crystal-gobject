@@ -2,7 +2,7 @@ module Pango
   class EngineScriptInfo
     include GObject::WrappedType
 
-    def initialize @pango_engine_script_info
+    def initialize(@pango_engine_script_info)
     end
 
     def to_unsafe

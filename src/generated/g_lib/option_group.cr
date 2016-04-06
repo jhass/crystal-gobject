@@ -2,7 +2,7 @@ module GLib
   class OptionGroup
     include GObject::WrappedType
 
-    def initialize @g_lib_option_group
+    def initialize(@g_lib_option_group)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ require "./box"
 
 module Gtk
   class ColorChooserWidget < Box
-    def initialize @gtk_color_chooser_widget
+    def initialize(@gtk_color_chooser_widget)
     end
 
     def to_unsafe

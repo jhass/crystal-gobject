@@ -1,6 +1,6 @@
 module Gio
   class ListStore < GObject::Object
-    def initialize @gio_list_store
+    def initialize(@gio_list_store)
     end
 
     def to_unsafe

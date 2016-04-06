@@ -2,7 +2,7 @@ require "./container_accessible"
 
 module Gtk
   class FrameAccessible < ContainerAccessible
-    def initialize @gtk_frame_accessible
+    def initialize(@gtk_frame_accessible)
     end
 
     def to_unsafe

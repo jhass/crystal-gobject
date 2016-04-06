@@ -2,7 +2,7 @@ module Gtk
   class WindowGroupPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_window_group_private
+    def initialize(@gtk_window_group_private)
     end
 
     def to_unsafe

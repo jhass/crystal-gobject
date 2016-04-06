@@ -2,7 +2,7 @@ module GLib
   class HookList
     include GObject::WrappedType
 
-    def initialize @g_lib_hook_list
+    def initialize(@g_lib_hook_list)
     end
 
     def to_unsafe

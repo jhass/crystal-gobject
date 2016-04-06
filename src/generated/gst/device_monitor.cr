@@ -2,7 +2,7 @@ require "./object"
 
 module Gst
   class DeviceMonitor < Object
-    def initialize @gst_device_monitor
+    def initialize(@gst_device_monitor)
     end
 
     def to_unsafe
@@ -32,7 +32,7 @@ module Gst
 
     def providers
       __return_value = LibGst.device_monitor_get_providers((to_unsafe as LibGst::DeviceMonitor*))
-      PointerIterator.new(__return_value) {|__item_96| (raise "Expected string but got null" unless __item_96; String.new(__item_96)) }
+      PointerIterator.new(__return_value) {|__item_45| (raise "Expected string but got null" unless __item_45; String.new(__item_45)) }
     end
 
     def show_all_devices

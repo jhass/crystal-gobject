@@ -2,7 +2,7 @@ require "./container"
 
 module Gtk
   class ToolPalette < Container
-    def initialize @gtk_tool_palette
+    def initialize(@gtk_tool_palette)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ module Gst
   class BufferPoolPrivate
     include GObject::WrappedType
 
-    def initialize @gst_buffer_pool_private
+    def initialize(@gst_buffer_pool_private)
     end
 
     def to_unsafe

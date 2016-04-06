@@ -2,7 +2,7 @@ module GLib
   class BookmarkFile
     include GObject::WrappedType
 
-    def initialize @g_lib_bookmark_file
+    def initialize(@g_lib_bookmark_file)
     end
 
     def to_unsafe
@@ -42,7 +42,7 @@ module GLib
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.bookmark_file_get_applications((to_unsafe as LibGLib::BookmarkFile*), uri, UInt64.new(length), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_44| (raise "Expected string but got null" unless __item_44; String.new(__item_44)) }
+      PointerIterator.new(__return_value) {|__item_0| (raise "Expected string but got null" unless __item_0; String.new(__item_0)) }
     end
 
     def description(uri)
@@ -56,7 +56,7 @@ module GLib
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.bookmark_file_get_groups((to_unsafe as LibGLib::BookmarkFile*), uri, UInt64.new(length), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_58| (raise "Expected string but got null" unless __item_58; String.new(__item_58)) }
+      PointerIterator.new(__return_value) {|__item_55| (raise "Expected string but got null" unless __item_55; String.new(__item_55)) }
     end
 
     def icon(uri, href, mime_type)
@@ -101,7 +101,7 @@ module GLib
 
     def uris(length)
       __return_value = LibGLib.bookmark_file_get_uris((to_unsafe as LibGLib::BookmarkFile*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_65| (raise "Expected string but got null" unless __item_65; String.new(__item_65)) }
+      PointerIterator.new(__return_value) {|__item_42| (raise "Expected string but got null" unless __item_42; String.new(__item_42)) }
     end
 
     def visited(uri)

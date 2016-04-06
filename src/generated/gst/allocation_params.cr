@@ -2,7 +2,7 @@ module Gst
   class AllocationParams
     include GObject::WrappedType
 
-    def initialize @gst_allocation_params
+    def initialize(@gst_allocation_params)
     end
 
     def to_unsafe

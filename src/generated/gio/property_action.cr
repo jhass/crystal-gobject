@@ -1,6 +1,6 @@
 module Gio
   class PropertyAction < GObject::Object
-    def initialize @gio_property_action
+    def initialize(@gio_property_action)
     end
 
     def to_unsafe

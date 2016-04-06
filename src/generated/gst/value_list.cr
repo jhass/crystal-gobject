@@ -2,7 +2,7 @@ module Gst
   class ValueList
     include GObject::WrappedType
 
-    def initialize @gst_value_list
+    def initialize(@gst_value_list)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ require "./dialog"
 
 module Gtk
   class FontChooserDialog < Dialog
-    def initialize @gtk_font_chooser_dialog
+    def initialize(@gtk_font_chooser_dialog)
     end
 
     def to_unsafe

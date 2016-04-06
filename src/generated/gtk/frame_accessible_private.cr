@@ -2,7 +2,7 @@ module Gtk
   class FrameAccessiblePrivate
     include GObject::WrappedType
 
-    def initialize @gtk_frame_accessible_private
+    def initialize(@gtk_frame_accessible_private)
     end
 
     def to_unsafe

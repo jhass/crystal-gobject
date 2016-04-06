@@ -2,7 +2,7 @@ module Gst
   class MiniObject
     include GObject::WrappedType
 
-    def initialize @gst_mini_object
+    def initialize(@gst_mini_object)
     end
 
     def to_unsafe

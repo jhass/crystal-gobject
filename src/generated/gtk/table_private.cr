@@ -2,7 +2,7 @@ module Gtk
   class TablePrivate
     include GObject::WrappedType
 
-    def initialize @gtk_table_private
+    def initialize(@gtk_table_private)
     end
 
     def to_unsafe

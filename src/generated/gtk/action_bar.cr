@@ -2,7 +2,7 @@ require "./bin"
 
 module Gtk
   class ActionBar < Bin
-    def initialize @gtk_action_bar
+    def initialize(@gtk_action_bar)
     end
 
     def to_unsafe

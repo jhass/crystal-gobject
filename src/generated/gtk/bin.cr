@@ -2,7 +2,7 @@ require "./container"
 
 module Gtk
   class Bin < Container
-    def initialize @gtk_bin
+    def initialize(@gtk_bin)
     end
 
     def to_unsafe

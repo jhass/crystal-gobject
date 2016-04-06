@@ -2,7 +2,7 @@ module Gtk
   class TextViewAccessiblePrivate
     include GObject::WrappedType
 
-    def initialize @gtk_text_view_accessible_private
+    def initialize(@gtk_text_view_accessible_private)
     end
 
     def to_unsafe

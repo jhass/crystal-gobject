@@ -2,7 +2,7 @@ require "./object"
 
 module Gst
   class BufferPool < Object
-    def initialize @gst_buffer_pool
+    def initialize(@gst_buffer_pool)
     end
 
     def to_unsafe
@@ -71,7 +71,7 @@ module Gst
 
     def options
       __return_value = LibGst.buffer_pool_get_options((to_unsafe as LibGst::BufferPool*))
-      PointerIterator.new(__return_value) {|__item_28| (raise "Expected string but got null" unless __item_28; String.new(__item_28)) }
+      PointerIterator.new(__return_value) {|__item_26| (raise "Expected string but got null" unless __item_26; String.new(__item_26)) }
     end
 
     def has_option(option)

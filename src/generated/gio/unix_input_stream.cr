@@ -2,7 +2,7 @@ require "./input_stream"
 
 module Gio
   class UnixInputStream < InputStream
-    def initialize @gio_unix_input_stream
+    def initialize(@gio_unix_input_stream)
     end
 
     def to_unsafe

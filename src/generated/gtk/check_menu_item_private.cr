@@ -2,7 +2,7 @@ module Gtk
   class CheckMenuItemPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_check_menu_item_private
+    def initialize(@gtk_check_menu_item_private)
     end
 
     def to_unsafe

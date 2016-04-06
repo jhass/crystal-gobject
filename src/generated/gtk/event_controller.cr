@@ -1,6 +1,6 @@
 module Gtk
   class EventController < GObject::Object
-    def initialize @gtk_event_controller
+    def initialize(@gtk_event_controller)
     end
 
     def to_unsafe

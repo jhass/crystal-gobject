@@ -2,7 +2,7 @@ module Gst
   class Uri
     include GObject::WrappedType
 
-    def initialize @gst_uri
+    def initialize(@gst_uri)
     end
 
     def to_unsafe

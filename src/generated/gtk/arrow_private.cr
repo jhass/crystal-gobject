@@ -2,7 +2,7 @@ module Gtk
   class ArrowPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_arrow_private
+    def initialize(@gtk_arrow_private)
     end
 
     def to_unsafe

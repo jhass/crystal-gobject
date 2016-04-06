@@ -1,6 +1,6 @@
 module Gtk
   class IconInfo < GObject::Object
-    def initialize @gtk_icon_info
+    def initialize(@gtk_icon_info)
     end
 
     def to_unsafe

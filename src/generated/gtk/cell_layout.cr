@@ -17,7 +17,7 @@ module Gtk
 
     def area
       __return_value = LibGtk.cell_layout_get_area((to_unsafe as LibGtk::CellLayout*))
-      Gtk::CellArea.new(__return_value)
+      Gtk::CellArea.new(__return_value) if __return_value
     end
 
     def cells

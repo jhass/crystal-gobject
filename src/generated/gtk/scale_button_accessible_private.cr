@@ -2,7 +2,7 @@ module Gtk
   class ScaleButtonAccessiblePrivate
     include GObject::WrappedType
 
-    def initialize @gtk_scale_button_accessible_private
+    def initialize(@gtk_scale_button_accessible_private)
     end
 
     def to_unsafe

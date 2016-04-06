@@ -2,7 +2,7 @@ require "./bin"
 
 module Gtk
   class Overlay < Bin
-    def initialize @gtk_overlay
+    def initialize(@gtk_overlay)
     end
 
     def to_unsafe

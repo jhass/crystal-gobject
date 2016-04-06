@@ -1,6 +1,6 @@
 module Gtk
   class TextChildAnchor < GObject::Object
-    def initialize @gtk_text_child_anchor
+    def initialize(@gtk_text_child_anchor)
     end
 
     def to_unsafe

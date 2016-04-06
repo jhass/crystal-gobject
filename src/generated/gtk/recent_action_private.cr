@@ -2,7 +2,7 @@ module Gtk
   class RecentActionPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_recent_action_private
+    def initialize(@gtk_recent_action_private)
     end
 
     def to_unsafe

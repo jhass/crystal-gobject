@@ -2,7 +2,7 @@ module GIRepository
   class UnresolvedInfo
     include GObject::WrappedType
 
-    def initialize @g_i_repository_unresolved_info
+    def initialize(@g_i_repository_unresolved_info)
     end
 
     def to_unsafe

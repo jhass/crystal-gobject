@@ -2,7 +2,7 @@ module Gst
   class Context
     include GObject::WrappedType
 
-    def initialize @gst_context
+    def initialize(@gst_context)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ module GLib
   class OptionContext
     include GObject::WrappedType
 
-    def initialize @g_lib_option_context
+    def initialize(@g_lib_option_context)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ require "./menu_item_accessible"
 
 module Gtk
   class CheckMenuItemAccessible < MenuItemAccessible
-    def initialize @gtk_check_menu_item_accessible
+    def initialize(@gtk_check_menu_item_accessible)
     end
 
     def to_unsafe

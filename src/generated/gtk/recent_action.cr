@@ -2,7 +2,7 @@ require "./action"
 
 module Gtk
   class RecentAction < Action
-    def initialize @gtk_recent_action
+    def initialize(@gtk_recent_action)
     end
 
     def to_unsafe

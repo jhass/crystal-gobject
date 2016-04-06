@@ -39,14 +39,14 @@ module GIRepository
       io.puts "    _data : UInt8[#{size}]" if fields_size == 0
     end
 
-    def wrapper_definition libname, indent=""
+    def wrapper_definition(libname, indent="")
       String.build do |io|
         io.puts "#{indent}class #{name}"
         io.puts "#{indent}  include GObject::WrappedType"
         io.puts
 
         ptr = "@#{GIRepository.filename(full_constant)}"
-        io.puts "#{indent}  def initialize #{ptr}"
+        io.puts "#{indent}  def initialize(#{ptr})"
         io.puts "#{indent}  end"
         io.puts
         io.puts "#{indent}  def to_unsafe"

@@ -2,7 +2,7 @@ module Gtk
   class FixedPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_fixed_private
+    def initialize(@gtk_fixed_private)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ module Gtk
   class EntryCompletionPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_entry_completion_private
+    def initialize(@gtk_entry_completion_private)
     end
 
     def to_unsafe

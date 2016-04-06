@@ -2,7 +2,7 @@ module Gio
   class OutputMessage
     include GObject::WrappedType
 
-    def initialize @gio_output_message
+    def initialize(@gio_output_message)
     end
 
     def to_unsafe

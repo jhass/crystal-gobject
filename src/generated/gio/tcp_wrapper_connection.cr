@@ -2,7 +2,7 @@ require "./tcp_connection"
 
 module Gio
   class TcpWrapperConnection < TcpConnection
-    def initialize @gio_tcp_wrapper_connection
+    def initialize(@gio_tcp_wrapper_connection)
     end
 
     def to_unsafe

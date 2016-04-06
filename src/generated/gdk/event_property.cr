@@ -2,7 +2,7 @@ module Gdk
   class EventProperty
     include GObject::WrappedType
 
-    def initialize @gdk_event_property
+    def initialize(@gdk_event_property)
     end
 
     def to_unsafe

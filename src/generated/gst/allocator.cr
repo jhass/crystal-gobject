@@ -2,7 +2,7 @@ require "./object"
 
 module Gst
   class Allocator < Object
-    def initialize @gst_allocator
+    def initialize(@gst_allocator)
     end
 
     def to_unsafe

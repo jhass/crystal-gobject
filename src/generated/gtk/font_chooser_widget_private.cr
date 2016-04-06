@@ -2,7 +2,7 @@ module Gtk
   class FontChooserWidgetPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_font_chooser_widget_private
+    def initialize(@gtk_font_chooser_widget_private)
     end
 
     def to_unsafe

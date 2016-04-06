@@ -2,7 +2,7 @@ module Gio
   class InetSocketAddressPrivate
     include GObject::WrappedType
 
-    def initialize @gio_inet_socket_address_private
+    def initialize(@gio_inet_socket_address_private)
     end
 
     def to_unsafe

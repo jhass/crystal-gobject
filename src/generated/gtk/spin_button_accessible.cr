@@ -2,7 +2,7 @@ require "./entry_accessible"
 
 module Gtk
   class SpinButtonAccessible < EntryAccessible
-    def initialize @gtk_spin_button_accessible
+    def initialize(@gtk_spin_button_accessible)
     end
 
     def to_unsafe

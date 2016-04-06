@@ -2,7 +2,7 @@ module Gtk
   class ImageAccessiblePrivate
     include GObject::WrappedType
 
-    def initialize @gtk_image_accessible_private
+    def initialize(@gtk_image_accessible_private)
     end
 
     def to_unsafe

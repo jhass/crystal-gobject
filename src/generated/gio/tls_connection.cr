@@ -2,7 +2,7 @@ require "./i_o_stream"
 
 module Gio
   class TlsConnection < IOStream
-    def initialize @gio_tls_connection
+    def initialize(@gio_tls_connection)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ module GLib
   class RWLock
     include GObject::WrappedType
 
-    def initialize @g_lib_r_w_lock
+    def initialize(@g_lib_r_w_lock)
     end
 
     def to_unsafe

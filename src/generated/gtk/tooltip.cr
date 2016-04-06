@@ -1,6 +1,6 @@
 module Gtk
   class Tooltip < GObject::Object
-    def initialize @gtk_tooltip
+    def initialize(@gtk_tooltip)
     end
 
     def to_unsafe

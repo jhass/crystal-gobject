@@ -2,7 +2,7 @@ module Gtk
   class IMContextInfo
     include GObject::WrappedType
 
-    def initialize @gtk_i_m_context_info
+    def initialize(@gtk_i_m_context_info)
     end
 
     def to_unsafe

@@ -2,7 +2,7 @@ require "./button_accessible"
 
 module Gtk
   class ScaleButtonAccessible < ButtonAccessible
-    def initialize @gtk_scale_button_accessible
+    def initialize(@gtk_scale_button_accessible)
     end
 
     def to_unsafe

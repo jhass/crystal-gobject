@@ -2,7 +2,7 @@ module Gst
   class ClockPrivate
     include GObject::WrappedType
 
-    def initialize @gst_clock_private
+    def initialize(@gst_clock_private)
     end
 
     def to_unsafe

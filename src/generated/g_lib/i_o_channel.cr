@@ -2,7 +2,7 @@ module GLib
   class IOChannel
     include GObject::WrappedType
 
-    def initialize @g_lib_i_o_channel
+    def initialize(@g_lib_i_o_channel)
     end
 
     def to_unsafe

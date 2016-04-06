@@ -2,7 +2,7 @@ module Gio
   class UnixMountPoint
     include GObject::WrappedType
 
-    def initialize @gio_unix_mount_point
+    def initialize(@gio_unix_mount_point)
     end
 
     def to_unsafe

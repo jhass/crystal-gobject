@@ -2,7 +2,7 @@ module Gtk
   class GridPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_grid_private
+    def initialize(@gtk_grid_private)
     end
 
     def to_unsafe

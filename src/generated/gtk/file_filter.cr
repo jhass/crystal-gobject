@@ -1,6 +1,6 @@
 module Gtk
   class FileFilter < GObject::InitiallyUnowned
-    def initialize @gtk_file_filter
+    def initialize(@gtk_file_filter)
     end
 
     def to_unsafe

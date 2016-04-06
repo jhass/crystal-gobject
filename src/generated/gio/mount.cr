@@ -88,14 +88,14 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.mount_guess_content_type_finish((to_unsafe as LibGio::Mount*), (result.to_unsafe as LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_84| (raise "Expected string but got null" unless __item_84; String.new(__item_84)) }
+      PointerIterator.new(__return_value) {|__item_75| (raise "Expected string but got null" unless __item_75; String.new(__item_75)) }
     end
 
     def guess_content_type_sync(force_rescan, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.mount_guess_content_type_sync((to_unsafe as LibGio::Mount*), force_rescan, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_39| (raise "Expected string but got null" unless __item_39; String.new(__item_39)) }
+      PointerIterator.new(__return_value) {|__item_85| (raise "Expected string but got null" unless __item_85; String.new(__item_85)) }
     end
 
     def shadowed?

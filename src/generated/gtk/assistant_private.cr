@@ -2,7 +2,7 @@ module Gtk
   class AssistantPrivate
     include GObject::WrappedType
 
-    def initialize @gtk_assistant_private
+    def initialize(@gtk_assistant_private)
     end
 
     def to_unsafe

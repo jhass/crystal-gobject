@@ -2,7 +2,7 @@ require "./box"
 
 module Gtk
   class VBox < Box
-    def initialize @gtk_v_box
+    def initialize(@gtk_v_box)
     end
 
     def to_unsafe

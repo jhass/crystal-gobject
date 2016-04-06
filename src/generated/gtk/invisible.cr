@@ -2,7 +2,7 @@ require "./widget"
 
 module Gtk
   class Invisible < Widget
-    def initialize @gtk_invisible
+    def initialize(@gtk_invisible)
     end
 
     def to_unsafe

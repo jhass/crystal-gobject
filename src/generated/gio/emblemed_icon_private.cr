@@ -2,7 +2,7 @@ module Gio
   class EmblemedIconPrivate
     include GObject::WrappedType
 
-    def initialize @gio_emblemed_icon_private
+    def initialize(@gio_emblemed_icon_private)
     end
 
     def to_unsafe

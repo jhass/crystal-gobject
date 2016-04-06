@@ -2,7 +2,7 @@ require "./scrolled_window"
 
 module Gtk
   class PlacesSidebar < ScrolledWindow
-    def initialize @gtk_places_sidebar
+    def initialize(@gtk_places_sidebar)
     end
 
     def to_unsafe

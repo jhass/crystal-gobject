@@ -2,7 +2,7 @@ module GLib
   class Bytes
     include GObject::WrappedType
 
-    def initialize @g_lib_bytes
+    def initialize(@g_lib_bytes)
     end
 
     def to_unsafe
@@ -31,7 +31,7 @@ module GLib
 
     def data(size)
       __return_value = LibGLib.bytes_get_data((to_unsafe as LibGLib::Bytes*), UInt64.new(size))
-      PointerIterator.new(__return_value) {|__item_41| __item_41 }
+      PointerIterator.new(__return_value) {|__item_52| __item_52 }
     end
 
     def size

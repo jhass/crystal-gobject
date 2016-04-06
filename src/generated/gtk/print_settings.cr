@@ -1,6 +1,6 @@
 module Gtk
   class PrintSettings < GObject::Object
-    def initialize @gtk_print_settings
+    def initialize(@gtk_print_settings)
     end
 
     def to_unsafe
@@ -128,7 +128,7 @@ module Gtk
 
     def page_ranges(num_ranges)
       __return_value = LibGtk.print_settings_get_page_ranges((to_unsafe as LibGtk::PrintSettings*), Int32.new(num_ranges))
-      PointerIterator.new(__return_value) {|__item_67| Gtk::PageRange.new(__item_67) }
+      PointerIterator.new(__return_value) {|__item_84| Gtk::PageRange.new(__item_84) }
     end
 
     def page_set
