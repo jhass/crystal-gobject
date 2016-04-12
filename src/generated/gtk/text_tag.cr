@@ -83,7 +83,12 @@ module Gtk
 
     def self.new_internal(name)
       __return_value = LibGtk.text_tag_new(name && name)
-      Gtk::TextTag.new(__return_value)
+      cast Gtk::TextTag.new(__return_value)
+    end
+
+    def changed(size_changed)
+      __return_value = LibGtk.text_tag_changed((to_unsafe as LibGtk::TextTag*), size_changed)
+      __return_value
     end
 
     def event(event_object, event, iter)

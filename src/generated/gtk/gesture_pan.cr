@@ -12,7 +12,7 @@ module Gtk
 
     def self.new_internal(widget, orientation)
       __return_value = LibGtk.gesture_pan_new((widget.to_unsafe as LibGtk::Widget*), orientation)
-      Gtk::Gesture.new(__return_value)
+      cast Gtk::Gesture.new(__return_value)
     end
 
     def orientation

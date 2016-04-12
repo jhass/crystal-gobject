@@ -11,7 +11,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.i_m_multicontext_new
-      Gtk::IMContext.new(__return_value)
+      cast Gtk::IMContext.new(__return_value)
     end
 
     def append_menuitems(menushell)
@@ -21,7 +21,7 @@ module Gtk
 
     def context_id
       __return_value = LibGtk.i_m_multicontext_get_context_id((to_unsafe as LibGtk::IMMulticontext*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def context_id=(context_id)

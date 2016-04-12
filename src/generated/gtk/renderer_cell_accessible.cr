@@ -14,7 +14,7 @@ module Gtk
 
     def self.new_internal(renderer)
       __return_value = LibGtk.renderer_cell_accessible_new((renderer.to_unsafe as LibGtk::CellRenderer*))
-      Atk::Object.new(__return_value)
+      cast Atk::Object.new(__return_value)
     end
 
   end

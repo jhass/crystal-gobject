@@ -11,7 +11,7 @@ module Gst
 
     def self.new_internal
       __return_value = LibGst.buffer_pool_new
-      Gst::BufferPool.new(__return_value)
+      cast Gst::BufferPool.new(__return_value)
     end
 
     def self.config_add_option(config, option)
@@ -26,7 +26,7 @@ module Gst
 
     def self.config_get_option(config, index)
       __return_value = LibGst.buffer_pool_config_get_option((config.to_unsafe as LibGst::Structure*), UInt32.new(index))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def self.config_get_params(config, caps, size, min_buffers, max_buffers)
@@ -71,7 +71,7 @@ module Gst
 
     def options
       __return_value = LibGst.buffer_pool_get_options((to_unsafe as LibGst::BufferPool*))
-      PointerIterator.new(__return_value) {|__item_26| (raise "Expected string but got null" unless __item_26; String.new(__item_26)) }
+      PointerIterator.new(__return_value) {|__item_35| (raise "Expected string but got null" unless __item_35; ::String.new(__item_35)) }
     end
 
     def has_option(option)

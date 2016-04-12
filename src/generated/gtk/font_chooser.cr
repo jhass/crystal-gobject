@@ -2,27 +2,27 @@ module Gtk
   module FontChooser
     def font
       __return_value = LibGtk.font_chooser_get_font((to_unsafe as LibGtk::FontChooser*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def font_desc
       __return_value = LibGtk.font_chooser_get_font_desc((to_unsafe as LibGtk::FontChooser*))
-      Pango::FontDescription.new(__return_value)
+      Pango::FontDescription.new(__return_value) if __return_value
     end
 
     def font_face
       __return_value = LibGtk.font_chooser_get_font_face((to_unsafe as LibGtk::FontChooser*))
-      Pango::FontFace.new(__return_value)
+      Pango::FontFace.new(__return_value) if __return_value
     end
 
     def font_family
       __return_value = LibGtk.font_chooser_get_font_family((to_unsafe as LibGtk::FontChooser*))
-      Pango::FontFamily.new(__return_value)
+      Pango::FontFamily.new(__return_value) if __return_value
     end
 
     def font_map
       __return_value = LibGtk.font_chooser_get_font_map((to_unsafe as LibGtk::FontChooser*))
-      Pango::FontMap.new(__return_value)
+      Pango::FontMap.new(__return_value) if __return_value
     end
 
     def font_size
@@ -32,7 +32,7 @@ module Gtk
 
     def preview_text
       __return_value = LibGtk.font_chooser_get_preview_text((to_unsafe as LibGtk::FontChooser*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def show_preview_entry
@@ -41,7 +41,7 @@ module Gtk
     end
 
     def set_filter_func(filter : LibGtk::FontFilterFunc?, user_data, destroy : LibGLib::DestroyNotify)
-      __return_value = LibGtk.font_chooser_set_filter_func((to_unsafe as LibGtk::FontChooser*), filter && filter, user_data, destroy)
+      __return_value = LibGtk.font_chooser_set_filter_func((to_unsafe as LibGtk::FontChooser*), filter && filter, user_data && user_data, destroy)
       __return_value
     end
 
@@ -73,7 +73,7 @@ module Gtk
     alias FontActivatedSignal = FontChooser, UInt8 -> 
     def on_font_activated(&__block : FontActivatedSignal)
       __callback = ->(_arg0 : LibGtk::FontChooser*, _arg1 : LibGtk::UInt8**) {
-       __return_value = __block.call(FontChooser.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value = __block.call(FontChooser.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
       connect("font-activated", __callback)

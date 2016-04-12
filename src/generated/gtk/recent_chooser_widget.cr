@@ -15,12 +15,12 @@ module Gtk
     # Implements RecentChooser
     def self.new_internal
       __return_value = LibGtk.recent_chooser_widget_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_for_manager(manager)
       __return_value = LibGtk.recent_chooser_widget_new_for_manager((manager.to_unsafe as LibGtk::RecentManager*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
   end

@@ -23,7 +23,7 @@ module Gio
 
     def client_address
       __return_value = LibGio.d_bus_server_get_client_address((to_unsafe as LibGio::DBusServer*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def flags
@@ -33,7 +33,7 @@ module Gio
 
     def guid
       __return_value = LibGio.d_bus_server_get_guid((to_unsafe as LibGio::DBusServer*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def active?

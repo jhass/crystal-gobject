@@ -15,7 +15,7 @@ module Gst
 
     def self.new_internal(name)
       __return_value = LibGst.pipeline_new(name && name)
-      Gst::Element.new(__return_value)
+      cast Gst::Element.new(__return_value)
     end
 
     def auto_clock

@@ -15,11 +15,11 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.list_box_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def bind_model(model, create_widget_func : LibGtk::ListBoxCreateWidgetFunc?, user_data, user_data_free_func : LibGLib::DestroyNotify)
-      __return_value = LibGtk.list_box_bind_model((to_unsafe as LibGtk::ListBox*), model && (model.to_unsafe as LibGio::ListModel*), create_widget_func && create_widget_func, user_data, user_data_free_func)
+      __return_value = LibGtk.list_box_bind_model((to_unsafe as LibGtk::ListBox*), model && (model.to_unsafe as LibGio::ListModel*), create_widget_func && create_widget_func, user_data && user_data, user_data_free_func)
       __return_value
     end
 
@@ -104,7 +104,7 @@ module Gtk
     end
 
     def selected_foreach(func : LibGtk::ListBoxForeachFunc, data)
-      __return_value = LibGtk.list_box_selected_foreach((to_unsafe as LibGtk::ListBox*), func, data)
+      __return_value = LibGtk.list_box_selected_foreach((to_unsafe as LibGtk::ListBox*), func, data && data)
       __return_value
     end
 
@@ -119,12 +119,12 @@ module Gtk
     end
 
     def set_filter_func(filter_func : LibGtk::ListBoxFilterFunc?, user_data, destroy : LibGLib::DestroyNotify)
-      __return_value = LibGtk.list_box_set_filter_func((to_unsafe as LibGtk::ListBox*), filter_func && filter_func, user_data, destroy)
+      __return_value = LibGtk.list_box_set_filter_func((to_unsafe as LibGtk::ListBox*), filter_func && filter_func, user_data && user_data, destroy)
       __return_value
     end
 
     def set_header_func(update_header : LibGtk::ListBoxUpdateHeaderFunc?, user_data, destroy : LibGLib::DestroyNotify)
-      __return_value = LibGtk.list_box_set_header_func((to_unsafe as LibGtk::ListBox*), update_header && update_header, user_data, destroy)
+      __return_value = LibGtk.list_box_set_header_func((to_unsafe as LibGtk::ListBox*), update_header && update_header, user_data && user_data, destroy)
       __return_value
     end
 
@@ -139,7 +139,7 @@ module Gtk
     end
 
     def set_sort_func(sort_func : LibGtk::ListBoxSortFunc?, user_data, destroy : LibGLib::DestroyNotify)
-      __return_value = LibGtk.list_box_set_sort_func((to_unsafe as LibGtk::ListBox*), sort_func && sort_func, user_data, destroy)
+      __return_value = LibGtk.list_box_set_sort_func((to_unsafe as LibGtk::ListBox*), sort_func && sort_func, user_data && user_data, destroy)
       __return_value
     end
 

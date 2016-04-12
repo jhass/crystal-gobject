@@ -11,7 +11,7 @@ module GLib
 
     def self.new_literal(domain, code, message)
       __return_value = LibGLib.error_new_literal(UInt32.new(domain), Int32.new(code), message)
-      __return_value
+      cast __return_value
     end
 
     def copy

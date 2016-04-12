@@ -14,7 +14,7 @@ module Gtk
     # Implements Orientable
     def self.new_internal(orientation, adjustment)
       __return_value = LibGtk.scrollbar_new(orientation, adjustment && (adjustment.to_unsafe as LibGtk::Adjustment*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
   end

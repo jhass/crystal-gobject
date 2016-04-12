@@ -17,7 +17,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.switch_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def active

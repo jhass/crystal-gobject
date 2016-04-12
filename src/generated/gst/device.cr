@@ -25,12 +25,12 @@ module Gst
 
     def device_class
       __return_value = LibGst.device_get_device_class((to_unsafe as LibGst::Device*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def display_name
       __return_value = LibGst.device_get_display_name((to_unsafe as LibGst::Device*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def properties

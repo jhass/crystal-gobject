@@ -21,17 +21,17 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.header_bar_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def custom_title
       __return_value = LibGtk.header_bar_get_custom_title((to_unsafe as LibGtk::HeaderBar*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def decoration_layout
       __return_value = LibGtk.header_bar_get_decoration_layout((to_unsafe as LibGtk::HeaderBar*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def has_subtitle
@@ -46,12 +46,12 @@ module Gtk
 
     def subtitle
       __return_value = LibGtk.header_bar_get_subtitle((to_unsafe as LibGtk::HeaderBar*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def title
       __return_value = LibGtk.header_bar_get_title((to_unsafe as LibGtk::HeaderBar*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def pack_end(child)

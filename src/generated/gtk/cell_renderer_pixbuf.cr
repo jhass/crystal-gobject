@@ -21,7 +21,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.cell_renderer_pixbuf_new
-      Gtk::CellRenderer.new(__return_value)
+      cast Gtk::CellRenderer.new(__return_value)
     end
 
   end

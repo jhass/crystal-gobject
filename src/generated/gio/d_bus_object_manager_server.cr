@@ -12,7 +12,7 @@ module Gio
 
     def self.new_internal(object_path)
       __return_value = LibGio.d_bus_object_manager_server_new(object_path)
-      Gio::DBusObjectManagerServer.new(__return_value)
+      cast Gio::DBusObjectManagerServer.new(__return_value)
     end
 
     def export(object)

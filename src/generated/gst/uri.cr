@@ -11,7 +11,7 @@ module Gst
 
     def self.new_internal(scheme, userinfo, host, port, path, query, fragment)
       __return_value = LibGst.uri_new(scheme && scheme, userinfo && userinfo, host && host, UInt32.new(port), path && path, query && query, fragment && fragment)
-      Gst::Uri.new(__return_value)
+      cast Gst::Uri.new(__return_value)
     end
 
     def append_path(relative_path)
@@ -36,17 +36,17 @@ module Gst
 
     def fragment
       __return_value = LibGst.uri_get_fragment((to_unsafe as LibGst::Uri*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def host
       __return_value = LibGst.uri_get_host((to_unsafe as LibGst::Uri*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def path
       __return_value = LibGst.uri_get_path((to_unsafe as LibGst::Uri*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def path_segments
@@ -56,7 +56,7 @@ module Gst
 
     def path_string
       __return_value = LibGst.uri_get_path_string((to_unsafe as LibGst::Uri*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def port
@@ -71,7 +71,7 @@ module Gst
 
     def query_string
       __return_value = LibGst.uri_get_query_string((to_unsafe as LibGst::Uri*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def query_table
@@ -81,17 +81,17 @@ module Gst
 
     def query_value(query_key)
       __return_value = LibGst.uri_get_query_value((to_unsafe as LibGst::Uri*), query_key)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def scheme
       __return_value = LibGst.uri_get_scheme((to_unsafe as LibGst::Uri*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def userinfo
       __return_value = LibGst.uri_get_userinfo((to_unsafe as LibGst::Uri*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def normalized?
@@ -191,12 +191,12 @@ module Gst
 
     def to_string
       __return_value = LibGst.uri_to_string((to_unsafe as LibGst::Uri*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def self.construct(protocol, location)
       __return_value = LibGst.uri_construct(protocol, location)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def self.from_string(uri)
@@ -206,12 +206,12 @@ module Gst
 
     def self.location(uri)
       __return_value = LibGst.uri_get_location(uri)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def self.protocol(uri)
       __return_value = LibGst.uri_get_protocol(uri)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def self.has_protocol(uri, protocol)
@@ -226,7 +226,7 @@ module Gst
 
     def self.join_strings(base_uri, ref_uri)
       __return_value = LibGst.uri_join_strings(base_uri, ref_uri)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def self.protocol_is_supported(type, protocol)

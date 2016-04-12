@@ -16,12 +16,12 @@ module Gio
 
     def self.new_resizable
       __return_value = LibGio.memory_output_stream_new_resizable
-      Gio::OutputStream.new(__return_value)
+      cast Gio::OutputStream.new(__return_value)
     end
 
     def data
       __return_value = LibGio.memory_output_stream_get_data((to_unsafe as LibGio::MemoryOutputStream*))
-      __return_value
+      __return_value if __return_value
     end
 
     def data_size
@@ -41,7 +41,7 @@ module Gio
 
     def steal_data
       __return_value = LibGio.memory_output_stream_steal_data((to_unsafe as LibGio::MemoryOutputStream*))
-      __return_value
+      __return_value if __return_value
     end
 
   end

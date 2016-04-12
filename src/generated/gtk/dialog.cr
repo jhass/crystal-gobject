@@ -14,7 +14,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.dialog_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def add_action_widget(child, response_id)
@@ -49,7 +49,7 @@ module Gtk
 
     def widget_for_response(response_id)
       __return_value = LibGtk.dialog_get_widget_for_response((to_unsafe as LibGtk::Dialog*), Int32.new(response_id))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def response(response_id)

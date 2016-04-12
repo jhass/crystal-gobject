@@ -19,19 +19,20 @@ module Gtk
 
 
 
+
     def self.new_internal
       __return_value = LibGtk.color_button_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_color(color)
       __return_value = LibGtk.color_button_new_with_color((color.to_unsafe as LibGdk::Color*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_rgba(rgba)
       __return_value = LibGtk.color_button_new_with_rgba((rgba.to_unsafe as LibGdk::RGBA*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def alpha
@@ -46,7 +47,7 @@ module Gtk
 
     def title
       __return_value = LibGtk.color_button_get_title((to_unsafe as LibGtk::ColorButton*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def use_alpha

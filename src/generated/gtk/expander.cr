@@ -21,12 +21,12 @@ module Gtk
 
     def self.new_internal(label)
       __return_value = LibGtk.expander_new(label)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_mnemonic(label)
       __return_value = LibGtk.expander_new_with_mnemonic(label && label)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def expanded
@@ -36,7 +36,7 @@ module Gtk
 
     def label
       __return_value = LibGtk.expander_get_label((to_unsafe as LibGtk::Expander*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def label_fill
@@ -46,7 +46,7 @@ module Gtk
 
     def label_widget
       __return_value = LibGtk.expander_get_label_widget((to_unsafe as LibGtk::Expander*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def resize_toplevel

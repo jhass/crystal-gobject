@@ -9,7 +9,7 @@ module Gio
 
     def self.new_internal
       __return_value = LibGio.credentials_new
-      Gio::Credentials.new(__return_value)
+      cast Gio::Credentials.new(__return_value)
     end
 
     def unix_pid
@@ -47,7 +47,7 @@ module Gio
 
     def to_string
       __return_value = LibGio.credentials_to_string((to_unsafe as LibGio::Credentials*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
   end

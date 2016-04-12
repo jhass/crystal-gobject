@@ -21,22 +21,22 @@ module Gio
 
     def self.new_any(family)
       __return_value = LibGio.inet_address_new_any(family)
-      Gio::InetAddress.new(__return_value)
+      cast Gio::InetAddress.new(__return_value)
     end
 
     def self.new_from_bytes(bytes, family)
       __return_value = LibGio.inet_address_new_from_bytes(bytes, family)
-      Gio::InetAddress.new(__return_value)
+      cast Gio::InetAddress.new(__return_value)
     end
 
     def self.new_from_string(string)
       __return_value = LibGio.inet_address_new_from_string(string)
-      Gio::InetAddress.new(__return_value)
+      cast Gio::InetAddress.new(__return_value)
     end
 
     def self.new_loopback(family)
       __return_value = LibGio.inet_address_new_loopback(family)
-      Gio::InetAddress.new(__return_value)
+      cast Gio::InetAddress.new(__return_value)
     end
 
     def equal(other_address)
@@ -106,7 +106,7 @@ module Gio
 
     def to_string
       __return_value = LibGio.inet_address_to_string((to_unsafe as LibGio::InetAddress*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
   end

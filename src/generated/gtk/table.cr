@@ -18,7 +18,7 @@ module Gtk
 
     def self.new_internal(rows, columns, homogeneous)
       __return_value = LibGtk.table_new(UInt32.new(rows), UInt32.new(columns), homogeneous)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def attach(child, left_attach, right_attach, top_attach, bottom_attach, xoptions, yoptions, xpadding, ypadding)

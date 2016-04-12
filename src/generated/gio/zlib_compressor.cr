@@ -13,7 +13,7 @@ module Gio
 
     def self.new_internal(format, level)
       __return_value = LibGio.zlib_compressor_new(format, Int32.new(level))
-      Gio::ZlibCompressor.new(__return_value)
+      cast Gio::ZlibCompressor.new(__return_value)
     end
 
     def file_info

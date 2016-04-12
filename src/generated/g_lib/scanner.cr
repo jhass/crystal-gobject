@@ -49,14 +49,24 @@ module GLib
       __return_value
     end
 
+    def lookup_symbol(symbol)
+      __return_value = LibGLib.scanner_lookup_symbol((to_unsafe as LibGLib::Scanner*), symbol)
+      __return_value if __return_value
+    end
+
     def peek_next_token
       __return_value = LibGLib.scanner_peek_next_token((to_unsafe as LibGLib::Scanner*))
       __return_value
     end
 
     def scope_add_symbol(scope_id, symbol, value)
-      __return_value = LibGLib.scanner_scope_add_symbol((to_unsafe as LibGLib::Scanner*), UInt32.new(scope_id), symbol, value)
+      __return_value = LibGLib.scanner_scope_add_symbol((to_unsafe as LibGLib::Scanner*), UInt32.new(scope_id), symbol, value && value)
       __return_value
+    end
+
+    def scope_lookup_symbol(scope_id, symbol)
+      __return_value = LibGLib.scanner_scope_lookup_symbol((to_unsafe as LibGLib::Scanner*), UInt32.new(scope_id), symbol)
+      __return_value if __return_value
     end
 
     def scope_remove_symbol(scope_id, symbol)

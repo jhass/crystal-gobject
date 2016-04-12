@@ -19,7 +19,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.toolbar_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def drop_index(x, y)
@@ -44,7 +44,7 @@ module Gtk
 
     def nth_item(n)
       __return_value = LibGtk.toolbar_get_nth_item((to_unsafe as LibGtk::Toolbar*), Int32.new(n))
-      Gtk::ToolItem.new(__return_value)
+      Gtk::ToolItem.new(__return_value) if __return_value
     end
 
     def relief_style

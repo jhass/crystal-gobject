@@ -10,7 +10,7 @@ module GLib
     end
 
     def child_index(data)
-      __return_value = LibGLib.node_child_index((to_unsafe as LibGLib::Node*), data)
+      __return_value = LibGLib.node_child_index((to_unsafe as LibGLib::Node*), data && data)
       __return_value
     end
 

@@ -34,36 +34,36 @@ module Gtk
 
     def owner
       __return_value = LibGtk.clipboard_get_owner((to_unsafe as LibGtk::Clipboard*))
-      GObject::Object.new(__return_value)
+      GObject::Object.new(__return_value) if __return_value
     end
 
     def request_contents(target, callback : LibGtk::ClipboardReceivedFunc, user_data)
-      __return_value = LibGtk.clipboard_request_contents((to_unsafe as LibGtk::Clipboard*), (target.to_unsafe as LibGdk::Atom*), callback, user_data)
+      __return_value = LibGtk.clipboard_request_contents((to_unsafe as LibGtk::Clipboard*), (target.to_unsafe as LibGdk::Atom*), callback, user_data && user_data)
       __return_value
     end
 
     def request_image(callback : LibGtk::ClipboardImageReceivedFunc, user_data)
-      __return_value = LibGtk.clipboard_request_image((to_unsafe as LibGtk::Clipboard*), callback, user_data)
+      __return_value = LibGtk.clipboard_request_image((to_unsafe as LibGtk::Clipboard*), callback, user_data && user_data)
       __return_value
     end
 
     def request_rich_text(buffer, callback : LibGtk::ClipboardRichTextReceivedFunc, user_data)
-      __return_value = LibGtk.clipboard_request_rich_text((to_unsafe as LibGtk::Clipboard*), (buffer.to_unsafe as LibGtk::TextBuffer*), callback, user_data)
+      __return_value = LibGtk.clipboard_request_rich_text((to_unsafe as LibGtk::Clipboard*), (buffer.to_unsafe as LibGtk::TextBuffer*), callback, user_data && user_data)
       __return_value
     end
 
     def request_targets(callback : LibGtk::ClipboardTargetsReceivedFunc, user_data)
-      __return_value = LibGtk.clipboard_request_targets((to_unsafe as LibGtk::Clipboard*), callback, user_data)
+      __return_value = LibGtk.clipboard_request_targets((to_unsafe as LibGtk::Clipboard*), callback, user_data && user_data)
       __return_value
     end
 
     def request_text(callback : LibGtk::ClipboardTextReceivedFunc, user_data)
-      __return_value = LibGtk.clipboard_request_text((to_unsafe as LibGtk::Clipboard*), callback, user_data)
+      __return_value = LibGtk.clipboard_request_text((to_unsafe as LibGtk::Clipboard*), callback, user_data && user_data)
       __return_value
     end
 
     def request_uris(callback : LibGtk::ClipboardURIReceivedFunc, user_data)
-      __return_value = LibGtk.clipboard_request_uris((to_unsafe as LibGtk::Clipboard*), callback, user_data)
+      __return_value = LibGtk.clipboard_request_uris((to_unsafe as LibGtk::Clipboard*), callback, user_data && user_data)
       __return_value
     end
 
@@ -99,7 +99,7 @@ module Gtk
 
     def wait_for_rich_text(buffer, format, length)
       __return_value = LibGtk.clipboard_wait_for_rich_text((to_unsafe as LibGtk::Clipboard*), (buffer.to_unsafe as LibGtk::TextBuffer*), (format.to_unsafe as LibGdk::Atom*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_67| __item_67 } if __return_value
+      PointerIterator.new(__return_value) {|__item_19| __item_19 } if __return_value
     end
 
     def wait_for_targets(targets, n_targets)
@@ -109,12 +109,12 @@ module Gtk
 
     def wait_for_text
       __return_value = LibGtk.clipboard_wait_for_text((to_unsafe as LibGtk::Clipboard*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def wait_for_uris
       __return_value = LibGtk.clipboard_wait_for_uris((to_unsafe as LibGtk::Clipboard*))
-      PointerIterator.new(__return_value) {|__item_65| (raise "Expected string but got null" unless __item_65; String.new(__item_65)) } if __return_value
+      PointerIterator.new(__return_value) {|__item_36| (raise "Expected string but got null" unless __item_36; ::String.new(__item_36)) } if __return_value
     end
 
     def wait_is_image_available

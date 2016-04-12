@@ -13,7 +13,7 @@ module Gio
 
     def self.new_internal(base_stream, converter)
       __return_value = LibGio.converter_input_stream_new((base_stream.to_unsafe as LibGio::InputStream*), (converter.to_unsafe as LibGio::Converter*))
-      Gio::InputStream.new(__return_value)
+      cast Gio::InputStream.new(__return_value)
     end
 
     def converter

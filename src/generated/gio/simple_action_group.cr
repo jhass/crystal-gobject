@@ -11,11 +11,11 @@ module Gio
     # Implements ActionMap
     def self.new_internal
       __return_value = LibGio.simple_action_group_new
-      Gio::SimpleActionGroup.new(__return_value)
+      cast Gio::SimpleActionGroup.new(__return_value)
     end
 
     def add_entries(entries, n_entries, user_data)
-      __return_value = LibGio.simple_action_group_add_entries((to_unsafe as LibGio::SimpleActionGroup*), entries, Int32.new(n_entries), user_data)
+      __return_value = LibGio.simple_action_group_add_entries((to_unsafe as LibGio::SimpleActionGroup*), entries, Int32.new(n_entries), user_data && user_data)
       __return_value
     end
 

@@ -11,7 +11,7 @@ module Gio
     end
 
     def eject(flags, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.volume_eject((to_unsafe as LibGio::Volume*), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.volume_eject((to_unsafe as LibGio::Volume*), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -23,7 +23,7 @@ module Gio
     end
 
     def eject_with_operation(flags, mount_operation, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.volume_eject_with_operation((to_unsafe as LibGio::Volume*), flags, mount_operation && (mount_operation.to_unsafe as LibGio::MountOperation*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.volume_eject_with_operation((to_unsafe as LibGio::Volume*), flags, mount_operation && (mount_operation.to_unsafe as LibGio::MountOperation*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -36,7 +36,7 @@ module Gio
 
     def enumerate_identifiers
       __return_value = LibGio.volume_enumerate_identifiers((to_unsafe as LibGio::Volume*))
-      PointerIterator.new(__return_value) {|__item_56| (raise "Expected string but got null" unless __item_56; String.new(__item_56)) }
+      PointerIterator.new(__return_value) {|__item_42| (raise "Expected string but got null" unless __item_42; ::String.new(__item_42)) }
     end
 
     def activation_root
@@ -56,7 +56,7 @@ module Gio
 
     def identifier(kind)
       __return_value = LibGio.volume_get_identifier((to_unsafe as LibGio::Volume*), kind)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def mount
@@ -66,12 +66,12 @@ module Gio
 
     def name
       __return_value = LibGio.volume_get_name((to_unsafe as LibGio::Volume*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def sort_key
       __return_value = LibGio.volume_get_sort_key((to_unsafe as LibGio::Volume*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def symbolic_icon
@@ -81,11 +81,11 @@ module Gio
 
     def uuid
       __return_value = LibGio.volume_get_uuid((to_unsafe as LibGio::Volume*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def mount(flags, mount_operation, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.volume_mount((to_unsafe as LibGio::Volume*), flags, mount_operation && (mount_operation.to_unsafe as LibGio::MountOperation*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.volume_mount((to_unsafe as LibGio::Volume*), flags, mount_operation && (mount_operation.to_unsafe as LibGio::MountOperation*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 

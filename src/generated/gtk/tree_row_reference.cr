@@ -11,12 +11,12 @@ module Gtk
 
     def self.new_internal(model, path)
       __return_value = LibGtk.tree_row_reference_new((model.to_unsafe as LibGtk::TreeModel*), (path.to_unsafe as LibGtk::TreePath*))
-      Gtk::TreeRowReference.new(__return_value)
+      cast Gtk::TreeRowReference.new(__return_value)
     end
 
     def self.new_proxy(proxy, model, path)
       __return_value = LibGtk.tree_row_reference_new_proxy((proxy.to_unsafe as LibGObject::Object*), (model.to_unsafe as LibGtk::TreeModel*), (path.to_unsafe as LibGtk::TreePath*))
-      Gtk::TreeRowReference.new(__return_value)
+      cast Gtk::TreeRowReference.new(__return_value)
     end
 
     def copy

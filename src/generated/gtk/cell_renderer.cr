@@ -135,7 +135,7 @@ module Gtk
 
     def start_editing(event, widget, path, background_area, cell_area, flags)
       __return_value = LibGtk.cell_renderer_start_editing((to_unsafe as LibGtk::CellRenderer*), (event.to_unsafe as LibGdk::Event*), (widget.to_unsafe as LibGtk::Widget*), path, (background_area.to_unsafe as LibGdk::Rectangle*), (cell_area.to_unsafe as LibGdk::Rectangle*), flags)
-      __return_value
+      __return_value if __return_value
     end
 
     def stop_editing(canceled)
@@ -155,7 +155,7 @@ module Gtk
     alias EditingStartedSignal = CellRenderer, Gtk::CellEditable, UInt8 -> 
     def on_editing_started(&__block : EditingStartedSignal)
       __callback = ->(_arg0 : LibGtk::CellRenderer*, _arg1 : LibGtk::LibGtk::CellEditable*, _arg2 : LibGtk::UInt8**) {
-       __return_value = __block.call(CellRenderer.new(_arg0), _arg1, (raise "Expected string but got null" unless _arg2; String.new(_arg2)))
+       __return_value = __block.call(CellRenderer.new(_arg0), _arg1, (raise "Expected string but got null" unless _arg2; ::String.new(_arg2)))
        __return_value
       }
       connect("editing-started", __callback)

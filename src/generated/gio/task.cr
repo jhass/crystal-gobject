@@ -10,8 +10,8 @@ module Gio
     # Implements AsyncResult
 
     def self.new_internal(source_object, cancellable, callback : LibGio::AsyncReadyCallback?, callback_data)
-      __return_value = LibGio.task_new(source_object && (source_object.to_unsafe as LibGObject::Object*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, callback_data)
-      Gio::Task.new(__return_value)
+      __return_value = LibGio.task_new(source_object && (source_object.to_unsafe as LibGObject::Object*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, callback_data && callback_data)
+      cast Gio::Task.new(__return_value)
     end
 
     def self.valid?(result, source_object)
@@ -20,7 +20,7 @@ module Gio
     end
 
     def self.report_error(source_object, callback : LibGio::AsyncReadyCallback?, callback_data, source_tag, error)
-      __return_value = LibGio.task_report_error(source_object && (source_object.to_unsafe as LibGObject::Object*), callback && callback, callback_data, source_tag, error)
+      __return_value = LibGio.task_report_error(source_object && (source_object.to_unsafe as LibGObject::Object*), callback && callback, callback_data && callback_data, source_tag && source_tag, error)
       __return_value
     end
 
@@ -61,12 +61,12 @@ module Gio
 
     def source_tag
       __return_value = LibGio.task_get_source_tag((to_unsafe as LibGio::Task*))
-      __return_value
+      __return_value if __return_value
     end
 
     def task_data
       __return_value = LibGio.task_get_task_data((to_unsafe as LibGio::Task*))
-      __return_value
+      __return_value if __return_value
     end
 
     def had_error
@@ -92,7 +92,7 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.task_propagate_pointer((to_unsafe as LibGio::Task*), pointerof(__error))
       GLib::Error.assert __error
-      __return_value
+      __return_value if __return_value
     end
 
     def return_boolean(result)
@@ -136,7 +136,7 @@ module Gio
     end
 
     def source_tag=(source_tag)
-      __return_value = LibGio.task_set_source_tag((to_unsafe as LibGio::Task*), source_tag)
+      __return_value = LibGio.task_set_source_tag((to_unsafe as LibGio::Task*), source_tag && source_tag)
       __return_value
     end
 

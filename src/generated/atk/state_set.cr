@@ -9,7 +9,7 @@ module Atk
 
     def self.new_internal
       __return_value = LibAtk.state_set_new
-      Atk::StateSet.new(__return_value)
+      cast Atk::StateSet.new(__return_value)
     end
 
     def add_state(type)

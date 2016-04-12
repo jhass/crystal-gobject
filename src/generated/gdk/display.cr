@@ -62,6 +62,11 @@ module Gdk
       Gdk::Screen.new(__return_value)
     end
 
+    def default_seat
+      __return_value = LibGdk.display_get_default_seat((to_unsafe as LibGdk::Display*))
+      Gdk::Seat.new(__return_value)
+    end
+
     def device_manager
       __return_value = LibGdk.display_get_device_manager((to_unsafe as LibGdk::Display*))
       Gdk::DeviceManager.new(__return_value) if __return_value
@@ -84,7 +89,7 @@ module Gdk
 
     def name
       __return_value = LibGdk.display_get_name((to_unsafe as LibGdk::Display*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def pointer(screen, x, y, mask)
@@ -119,6 +124,11 @@ module Gdk
 
     def list_devices
       __return_value = LibGdk.display_list_devices((to_unsafe as LibGdk::Display*))
+      __return_value
+    end
+
+    def list_seats
+      __return_value = LibGdk.display_list_seats((to_unsafe as LibGdk::Display*))
       __return_value
     end
 
@@ -228,6 +238,24 @@ module Gdk
        __return_value
       }
       connect("opened", __callback)
+    end
+
+    alias SeatAddedSignal = Display, Gdk::Seat -> 
+    def on_seat_added(&__block : SeatAddedSignal)
+      __callback = ->(_arg0 : LibGdk::Display*, _arg1 : LibGdk::LibGdk::Seat*) {
+       __return_value = __block.call(Display.new(_arg0), Gdk::Seat.new(_arg1))
+       __return_value
+      }
+      connect("seat-added", __callback)
+    end
+
+    alias SeatRemovedSignal = Display, Gdk::Seat -> 
+    def on_seat_removed(&__block : SeatRemovedSignal)
+      __callback = ->(_arg0 : LibGdk::Display*, _arg1 : LibGdk::LibGdk::Seat*) {
+       __return_value = __block.call(Display.new(_arg0), Gdk::Seat.new(_arg1))
+       __return_value
+      }
+      connect("seat-removed", __callback)
     end
 
   end

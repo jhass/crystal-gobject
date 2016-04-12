@@ -11,7 +11,7 @@ module Atk
 
     def self.new_internal
       __return_value = LibAtk.no_op_object_factory_new
-      Atk::ObjectFactory.new(__return_value)
+      cast Atk::ObjectFactory.new(__return_value)
     end
 
   end

@@ -10,7 +10,7 @@ module Gst
     end
 
     def control_source_get_value(timestamp, value)
-      __return_value = LibGst.control_source_control_source_get_value((to_unsafe as LibGst::ControlSource*), UInt64.new(timestamp), value)
+      __return_value = LibGst.control_source_control_source_get_value((to_unsafe as LibGst::ControlSource*), UInt64.new(timestamp), Float64.new(value))
       __return_value
     end
 

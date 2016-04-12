@@ -9,7 +9,7 @@ module Pango
 
     def self.new_internal
       __return_value = LibPango.context_new
-      Pango::Context.new(__return_value)
+      cast Pango::Context.new(__return_value)
     end
 
     def changed

@@ -13,7 +13,7 @@ module Gst
 
 
     def self.id_compare_func(id1, id2)
-      __return_value = LibGst.clock_id_compare_func(id1, id2)
+      __return_value = LibGst.clock_id_compare_func(id1 && id1, id2 && id2)
       __return_value
     end
 
@@ -43,7 +43,7 @@ module Gst
     end
 
     def self.id_wait_async(id, func : LibGst::ClockCallback, user_data, destroy_data : LibGLib::DestroyNotify)
-      __return_value = LibGst.clock_id_wait_async(id, func, user_data, destroy_data)
+      __return_value = LibGst.clock_id_wait_async(id, func, user_data && user_data, destroy_data)
       __return_value
     end
 
@@ -149,6 +149,11 @@ module Gst
 
     def unadjust_unlocked(external)
       __return_value = LibGst.clock_unadjust_unlocked((to_unsafe as LibGst::Clock*), UInt64.new(external))
+      __return_value
+    end
+
+    def unadjust_with_calibration(external_target, cinternal, cexternal, cnum, cdenom)
+      __return_value = LibGst.clock_unadjust_with_calibration((to_unsafe as LibGst::Clock*), UInt64.new(external_target), UInt64.new(cinternal), UInt64.new(cexternal), UInt64.new(cnum), UInt64.new(cdenom))
       __return_value
     end
 

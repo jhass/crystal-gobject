@@ -11,12 +11,12 @@ module Pango
 
     def sample_string
       __return_value = LibPango.language_get_sample_string((to_unsafe as LibPango::Language*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def scripts(num_scripts)
       __return_value = LibPango.language_get_scripts((to_unsafe as LibPango::Language*), Int32.new(num_scripts))
-      PointerIterator.new(__return_value) {|__item_81| __item_81 } if __return_value
+      PointerIterator.new(__return_value) {|__item_16| __item_16 } if __return_value
     end
 
     def includes_script(script)
@@ -31,7 +31,7 @@ module Pango
 
     def to_string
       __return_value = LibPango.language_to_string((to_unsafe as LibPango::Language*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def self.from_string(language)

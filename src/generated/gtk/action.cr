@@ -26,7 +26,7 @@ module Gtk
 
     def self.new_internal(name, label, tooltip, stock_id)
       __return_value = LibGtk.action_new(name, label && label, tooltip && tooltip, stock_id && stock_id)
-      Gtk::Action.new(__return_value)
+      cast Gtk::Action.new(__return_value)
     end
 
     def activate
@@ -76,7 +76,7 @@ module Gtk
 
     def accel_path
       __return_value = LibGtk.action_get_accel_path((to_unsafe as LibGtk::Action*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def always_show_image
@@ -91,7 +91,7 @@ module Gtk
 
     def icon_name
       __return_value = LibGtk.action_get_icon_name((to_unsafe as LibGtk::Action*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def is_important
@@ -101,12 +101,12 @@ module Gtk
 
     def label
       __return_value = LibGtk.action_get_label((to_unsafe as LibGtk::Action*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def name
       __return_value = LibGtk.action_get_name((to_unsafe as LibGtk::Action*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def proxies
@@ -121,17 +121,17 @@ module Gtk
 
     def short_label
       __return_value = LibGtk.action_get_short_label((to_unsafe as LibGtk::Action*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def stock_id
       __return_value = LibGtk.action_get_stock_id((to_unsafe as LibGtk::Action*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def tooltip
       __return_value = LibGtk.action_get_tooltip((to_unsafe as LibGtk::Action*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def visible

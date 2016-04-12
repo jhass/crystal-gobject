@@ -11,17 +11,17 @@ module GLib
 
     def self.new_internal(identifier)
       __return_value = LibGLib.time_zone_new(identifier && identifier)
-      GLib::TimeZone.new(__return_value)
+      cast GLib::TimeZone.new(__return_value)
     end
 
     def self.new_local
       __return_value = LibGLib.time_zone_new_local
-      GLib::TimeZone.new(__return_value)
+      cast GLib::TimeZone.new(__return_value)
     end
 
     def self.new_utc
       __return_value = LibGLib.time_zone_new_utc
-      GLib::TimeZone.new(__return_value)
+      cast GLib::TimeZone.new(__return_value)
     end
 
     def adjust_time(type, time)
@@ -36,7 +36,7 @@ module GLib
 
     def abbreviation(interval)
       __return_value = LibGLib.time_zone_get_abbreviation((to_unsafe as LibGLib::TimeZone*), Int32.new(interval))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def offset(interval)

@@ -9,7 +9,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.text_child_anchor_new
-      Gtk::TextChildAnchor.new(__return_value)
+      cast Gtk::TextChildAnchor.new(__return_value)
     end
 
     def deleted

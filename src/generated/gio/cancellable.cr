@@ -9,7 +9,7 @@ module Gio
 
     def self.new_internal
       __return_value = LibGio.cancellable_new
-      Gio::Cancellable.new(__return_value)
+      cast Gio::Cancellable.new(__return_value)
     end
 
     def self.current
@@ -23,7 +23,7 @@ module Gio
     end
 
     def connect(callback : LibGObject::Callback, data, data_destroy_func : LibGLib::DestroyNotify?)
-      __return_value = LibGio.cancellable_connect((to_unsafe as LibGio::Cancellable*), callback, data, data_destroy_func && data_destroy_func)
+      __return_value = LibGio.cancellable_connect((to_unsafe as LibGio::Cancellable*), callback, data && data, data_destroy_func && data_destroy_func)
       __return_value
     end
 

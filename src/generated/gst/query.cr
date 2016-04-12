@@ -11,82 +11,82 @@ module Gst
 
     def self.new_accept_caps(caps)
       __return_value = LibGst.query_new_accept_caps((caps.to_unsafe as LibGst::Caps*))
-      Gst::Query.new(__return_value)
+      cast Gst::Query.new(__return_value)
     end
 
     def self.new_allocation(caps, need_pool)
       __return_value = LibGst.query_new_allocation((caps.to_unsafe as LibGst::Caps*), need_pool)
-      Gst::Query.new(__return_value)
+      cast Gst::Query.new(__return_value)
     end
 
     def self.new_buffering(format)
       __return_value = LibGst.query_new_buffering(format)
-      Gst::Query.new(__return_value)
+      cast Gst::Query.new(__return_value)
     end
 
     def self.new_caps(filter)
       __return_value = LibGst.query_new_caps((filter.to_unsafe as LibGst::Caps*))
-      Gst::Query.new(__return_value)
+      cast Gst::Query.new(__return_value)
     end
 
     def self.new_context(context_type)
       __return_value = LibGst.query_new_context(context_type)
-      Gst::Query.new(__return_value)
+      cast Gst::Query.new(__return_value)
     end
 
     def self.new_convert(src_format, value, dest_format)
       __return_value = LibGst.query_new_convert(src_format, Int64.new(value), dest_format)
-      Gst::Query.new(__return_value)
+      cast Gst::Query.new(__return_value)
     end
 
     def self.new_custom(type, structure)
       __return_value = LibGst.query_new_custom(type, structure && (structure.to_unsafe as LibGst::Structure*))
-      Gst::Query.new(__return_value)
+      cast Gst::Query.new(__return_value)
     end
 
     def self.new_drain
       __return_value = LibGst.query_new_drain
-      Gst::Query.new(__return_value)
+      cast Gst::Query.new(__return_value)
     end
 
     def self.new_duration(format)
       __return_value = LibGst.query_new_duration(format)
-      Gst::Query.new(__return_value)
+      cast Gst::Query.new(__return_value)
     end
 
     def self.new_formats
       __return_value = LibGst.query_new_formats
-      Gst::Query.new(__return_value)
+      cast Gst::Query.new(__return_value)
     end
 
     def self.new_latency
       __return_value = LibGst.query_new_latency
-      Gst::Query.new(__return_value)
+      cast Gst::Query.new(__return_value)
     end
 
     def self.new_position(format)
       __return_value = LibGst.query_new_position(format)
-      Gst::Query.new(__return_value)
+      cast Gst::Query.new(__return_value)
     end
 
     def self.new_scheduling
       __return_value = LibGst.query_new_scheduling
-      Gst::Query.new(__return_value)
+      cast Gst::Query.new(__return_value)
     end
 
     def self.new_seeking(format)
       __return_value = LibGst.query_new_seeking(format)
-      Gst::Query.new(__return_value)
+      cast Gst::Query.new(__return_value)
     end
 
     def self.new_segment(format)
       __return_value = LibGst.query_new_segment(format)
-      Gst::Query.new(__return_value)
+      cast Gst::Query.new(__return_value)
     end
 
     def self.new_uri
       __return_value = LibGst.query_new_uri
-      Gst::Query.new(__return_value)
+      cast Gst::Query.new(__return_value)
     end
 
     def add_allocation_meta(api, params)

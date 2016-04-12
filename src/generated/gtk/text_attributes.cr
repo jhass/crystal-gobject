@@ -11,7 +11,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.text_attributes_new
-      Gtk::TextAttributes.new(__return_value)
+      cast Gtk::TextAttributes.new(__return_value)
     end
 
     def copy

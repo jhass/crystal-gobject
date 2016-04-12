@@ -62,7 +62,7 @@ module Gio
 
     def list_actions
       __return_value = LibGio.action_group_list_actions((to_unsafe as LibGio::ActionGroup*))
-      PointerIterator.new(__return_value) {|__item_56| (raise "Expected string but got null" unless __item_56; String.new(__item_56)) }
+      PointerIterator.new(__return_value) {|__item_0| (raise "Expected string but got null" unless __item_0; ::String.new(__item_0)) }
     end
 
     def query_action(action_name, enabled, parameter_type, state_type, state_hint, state)
@@ -73,7 +73,7 @@ module Gio
     alias ActionAddedSignal = ActionGroup, UInt8 -> 
     def on_action_added(&__block : ActionAddedSignal)
       __callback = ->(_arg0 : LibGio::ActionGroup*, _arg1 : LibGio::UInt8**) {
-       __return_value = __block.call(ActionGroup.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value = __block.call(ActionGroup.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
       connect("action-added", __callback)
@@ -82,7 +82,7 @@ module Gio
     alias ActionEnabledChangedSignal = ActionGroup, UInt8, Bool -> 
     def on_action_enabled_changed(&__block : ActionEnabledChangedSignal)
       __callback = ->(_arg0 : LibGio::ActionGroup*, _arg1 : LibGio::UInt8**, _arg2 : LibGio::Bool*) {
-       __return_value = __block.call(ActionGroup.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)), _arg2)
+       __return_value = __block.call(ActionGroup.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)), _arg2)
        __return_value
       }
       connect("action-enabled-changed", __callback)
@@ -91,7 +91,7 @@ module Gio
     alias ActionRemovedSignal = ActionGroup, UInt8 -> 
     def on_action_removed(&__block : ActionRemovedSignal)
       __callback = ->(_arg0 : LibGio::ActionGroup*, _arg1 : LibGio::UInt8**) {
-       __return_value = __block.call(ActionGroup.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value = __block.call(ActionGroup.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
       connect("action-removed", __callback)
@@ -100,7 +100,7 @@ module Gio
     alias ActionStateChangedSignal = ActionGroup, UInt8, GLib::Variant -> 
     def on_action_state_changed(&__block : ActionStateChangedSignal)
       __callback = ->(_arg0 : LibGio::ActionGroup*, _arg1 : LibGio::UInt8**, _arg2 : LibGio::LibGLib::Variant*) {
-       __return_value = __block.call(ActionGroup.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)), GLib::Variant.new(_arg2))
+       __return_value = __block.call(ActionGroup.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)), GLib::Variant.new(_arg2))
        __return_value
       }
       connect("action-state-changed", __callback)

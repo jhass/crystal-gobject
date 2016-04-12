@@ -16,12 +16,12 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.toggle_tool_button_new
-      Gtk::ToolItem.new(__return_value)
+      cast Gtk::ToolItem.new(__return_value)
     end
 
     def self.new_from_stock(stock_id)
       __return_value = LibGtk.toggle_tool_button_new_from_stock(stock_id)
-      Gtk::ToolItem.new(__return_value)
+      cast Gtk::ToolItem.new(__return_value)
     end
 
     def active

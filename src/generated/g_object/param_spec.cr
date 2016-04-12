@@ -11,7 +11,7 @@ module GObject
 
     def blurb
       __return_value = LibGObject.param_spec_get_blurb((to_unsafe as LibGObject::ParamSpec*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def default_value
@@ -21,7 +21,7 @@ module GObject
 
     def name
       __return_value = LibGObject.param_spec_get_name((to_unsafe as LibGObject::ParamSpec*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def name_quark
@@ -31,12 +31,12 @@ module GObject
 
     def nick
       __return_value = LibGObject.param_spec_get_nick((to_unsafe as LibGObject::ParamSpec*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def qdata(quark)
       __return_value = LibGObject.param_spec_get_qdata((to_unsafe as LibGObject::ParamSpec*), UInt32.new(quark))
-      __return_value
+      __return_value if __return_value
     end
 
     def redirect_target
@@ -45,7 +45,7 @@ module GObject
     end
 
     def set_qdata(quark, data)
-      __return_value = LibGObject.param_spec_set_qdata((to_unsafe as LibGObject::ParamSpec*), UInt32.new(quark), data)
+      __return_value = LibGObject.param_spec_set_qdata((to_unsafe as LibGObject::ParamSpec*), UInt32.new(quark), data && data)
       __return_value
     end
 
@@ -56,7 +56,7 @@ module GObject
 
     def steal_qdata(quark)
       __return_value = LibGObject.param_spec_steal_qdata((to_unsafe as LibGObject::ParamSpec*), UInt32.new(quark))
-      __return_value
+      __return_value if __return_value
     end
 
   end

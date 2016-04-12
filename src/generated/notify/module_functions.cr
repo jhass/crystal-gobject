@@ -1,7 +1,7 @@
 module Notify
   def self.app_name
     __return_value = LibNotify.get_app_name
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.server_caps

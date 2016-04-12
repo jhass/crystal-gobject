@@ -17,7 +17,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.tool_item_new
-      Gtk::ToolItem.new(__return_value)
+      cast Gtk::ToolItem.new(__return_value)
     end
 
     def ellipsize_mode

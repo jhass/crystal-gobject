@@ -2,7 +2,7 @@ module Gst
   module Preset
     def self.app_dir
       __return_value = LibGst.preset_get_app_dir
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def self.set_app_dir(app_dir)
@@ -22,12 +22,12 @@ module Gst
 
     def preset_names
       __return_value = LibGst.preset_get_preset_names((to_unsafe as LibGst::Preset*))
-      PointerIterator.new(__return_value) {|__item_74| (raise "Expected string but got null" unless __item_74; String.new(__item_74)) }
+      PointerIterator.new(__return_value) {|__item_62| (raise "Expected string but got null" unless __item_62; ::String.new(__item_62)) }
     end
 
     def property_names
       __return_value = LibGst.preset_get_property_names((to_unsafe as LibGst::Preset*))
-      PointerIterator.new(__return_value) {|__item_18| (raise "Expected string but got null" unless __item_18; String.new(__item_18)) }
+      PointerIterator.new(__return_value) {|__item_25| (raise "Expected string but got null" unless __item_25; ::String.new(__item_25)) }
     end
 
     def editable?

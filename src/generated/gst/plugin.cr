@@ -32,7 +32,7 @@ module Gst
     end
 
     def self.register_static_full(major_version, minor_version, name, description, init_full_func : LibGst::PluginInitFullFunc, version, license, source, package, origin, user_data)
-      __return_value = LibGst.plugin_register_static_full(Int32.new(major_version), Int32.new(minor_version), name, description, init_full_func, version, license, source, package, origin, user_data)
+      __return_value = LibGst.plugin_register_static_full(Int32.new(major_version), Int32.new(minor_version), name, description, init_full_func, version, license, source, package, origin, user_data && user_data)
       __return_value
     end
 
@@ -53,47 +53,47 @@ module Gst
 
     def description
       __return_value = LibGst.plugin_get_description((to_unsafe as LibGst::Plugin*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def filename
       __return_value = LibGst.plugin_get_filename((to_unsafe as LibGst::Plugin*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def license
       __return_value = LibGst.plugin_get_license((to_unsafe as LibGst::Plugin*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def name
       __return_value = LibGst.plugin_get_name((to_unsafe as LibGst::Plugin*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def origin
       __return_value = LibGst.plugin_get_origin((to_unsafe as LibGst::Plugin*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def package
       __return_value = LibGst.plugin_get_package((to_unsafe as LibGst::Plugin*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def release_date_string
       __return_value = LibGst.plugin_get_release_date_string((to_unsafe as LibGst::Plugin*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def source
       __return_value = LibGst.plugin_get_source((to_unsafe as LibGst::Plugin*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def version
       __return_value = LibGst.plugin_get_version((to_unsafe as LibGst::Plugin*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def loaded?

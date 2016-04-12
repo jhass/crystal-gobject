@@ -13,12 +13,12 @@ module Gio
 
     def self.new_internal(base_stream)
       __return_value = LibGio.buffered_input_stream_new((base_stream.to_unsafe as LibGio::InputStream*))
-      Gio::InputStream.new(__return_value)
+      cast Gio::InputStream.new(__return_value)
     end
 
     def self.new_sized(base_stream, size)
       __return_value = LibGio.buffered_input_stream_new_sized((base_stream.to_unsafe as LibGio::InputStream*), UInt64.new(size))
-      Gio::InputStream.new(__return_value)
+      cast Gio::InputStream.new(__return_value)
     end
 
     def fill(count, cancellable)
@@ -29,7 +29,7 @@ module Gio
     end
 
     def fill_async(count, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.buffered_input_stream_fill_async((to_unsafe as LibGio::BufferedInputStream*), Int64.new(count), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.buffered_input_stream_fill_async((to_unsafe as LibGio::BufferedInputStream*), Int64.new(count), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -57,7 +57,7 @@ module Gio
 
     def peek_buffer(count)
       __return_value = LibGio.buffered_input_stream_peek_buffer((to_unsafe as LibGio::BufferedInputStream*), UInt64.new(count))
-      PointerIterator.new(__return_value) {|__item_26| __item_26 }
+      PointerIterator.new(__return_value) {|__item_47| __item_47 }
     end
 
     def read_byte(cancellable)

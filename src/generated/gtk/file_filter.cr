@@ -10,11 +10,11 @@ module Gtk
     # Implements Buildable
     def self.new_internal
       __return_value = LibGtk.file_filter_new
-      Gtk::FileFilter.new(__return_value)
+      cast Gtk::FileFilter.new(__return_value)
     end
 
     def add_custom(needed, func : LibGtk::FileFilterFunc, data, notify : LibGLib::DestroyNotify)
-      __return_value = LibGtk.file_filter_add_custom((to_unsafe as LibGtk::FileFilter*), needed, func, data, notify)
+      __return_value = LibGtk.file_filter_add_custom((to_unsafe as LibGtk::FileFilter*), needed, func, data && data, notify)
       __return_value
     end
 
@@ -40,7 +40,7 @@ module Gtk
 
     def name
       __return_value = LibGtk.file_filter_get_name((to_unsafe as LibGtk::FileFilter*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def needed

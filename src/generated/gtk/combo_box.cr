@@ -29,35 +29,34 @@ module Gtk
 
 
 
-
     def self.new_internal
       __return_value = LibGtk.combo_box_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_area(area)
       __return_value = LibGtk.combo_box_new_with_area((area.to_unsafe as LibGtk::CellArea*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_area_and_entry(area)
       __return_value = LibGtk.combo_box_new_with_area_and_entry((area.to_unsafe as LibGtk::CellArea*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_entry
       __return_value = LibGtk.combo_box_new_with_entry
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_model(model)
       __return_value = LibGtk.combo_box_new_with_model((model.to_unsafe as LibGtk::TreeModel*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_model_and_entry(model)
       __return_value = LibGtk.combo_box_new_with_model_and_entry((model.to_unsafe as LibGtk::TreeModel*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def active
@@ -67,7 +66,7 @@ module Gtk
 
     def active_id
       __return_value = LibGtk.combo_box_get_active_id((to_unsafe as LibGtk::ComboBox*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def active_iter(iter)
@@ -132,7 +131,7 @@ module Gtk
 
     def title
       __return_value = LibGtk.combo_box_get_title((to_unsafe as LibGtk::ComboBox*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def wrap_width
@@ -242,7 +241,7 @@ module Gtk
     alias FormatEntryTextSignal = ComboBox, UInt8 -> UInt8
     def on_format_entry_text(&__block : FormatEntryTextSignal)
       __callback = ->(_arg0 : LibGtk::ComboBox*, _arg1 : LibGtk::UInt8**) {
-       __return_value = __block.call(ComboBox.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value = __block.call(ComboBox.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
       connect("format-entry-text", __callback)

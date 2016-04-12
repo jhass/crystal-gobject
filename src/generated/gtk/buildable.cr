@@ -11,17 +11,17 @@ module Gtk
     end
 
     def custom_finished(builder, child, tagname, data)
-      __return_value = LibGtk.buildable_custom_finished((to_unsafe as LibGtk::Buildable*), (builder.to_unsafe as LibGtk::Builder*), child && (child.to_unsafe as LibGObject::Object*), tagname, data)
+      __return_value = LibGtk.buildable_custom_finished((to_unsafe as LibGtk::Buildable*), (builder.to_unsafe as LibGtk::Builder*), child && (child.to_unsafe as LibGObject::Object*), tagname, data && data)
       __return_value
     end
 
     def custom_tag_end(builder, child, tagname, data)
-      __return_value = LibGtk.buildable_custom_tag_end((to_unsafe as LibGtk::Buildable*), (builder.to_unsafe as LibGtk::Builder*), child && (child.to_unsafe as LibGObject::Object*), tagname, data)
+      __return_value = LibGtk.buildable_custom_tag_end((to_unsafe as LibGtk::Buildable*), (builder.to_unsafe as LibGtk::Builder*), child && (child.to_unsafe as LibGObject::Object*), tagname, data && data)
       __return_value
     end
 
     def custom_tag_start(builder, child, tagname, parser, data)
-      __return_value = LibGtk.buildable_custom_tag_start((to_unsafe as LibGtk::Buildable*), (builder.to_unsafe as LibGtk::Builder*), child && (child.to_unsafe as LibGObject::Object*), tagname, parser, data)
+      __return_value = LibGtk.buildable_custom_tag_start((to_unsafe as LibGtk::Buildable*), (builder.to_unsafe as LibGtk::Builder*), child && (child.to_unsafe as LibGObject::Object*), tagname, parser, data && data)
       __return_value
     end
 
@@ -32,7 +32,7 @@ module Gtk
 
     def name
       __return_value = LibGtk.buildable_get_name((to_unsafe as LibGtk::Buildable*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def parser_finished(builder)

@@ -10,7 +10,7 @@ module Gtk
     # Implements Buildable
     def self.new_internal
       __return_value = LibGtk.text_tag_table_new
-      Gtk::TextTagTable.new(__return_value)
+      cast Gtk::TextTagTable.new(__return_value)
     end
 
     def add(tag)
@@ -19,7 +19,7 @@ module Gtk
     end
 
     def foreach(func : LibGtk::TextTagTableForeach, data)
-      __return_value = LibGtk.text_tag_table_foreach((to_unsafe as LibGtk::TextTagTable*), func, data)
+      __return_value = LibGtk.text_tag_table_foreach((to_unsafe as LibGtk::TextTagTable*), func, data && data)
       __return_value
     end
 
@@ -30,7 +30,7 @@ module Gtk
 
     def lookup(name)
       __return_value = LibGtk.text_tag_table_lookup((to_unsafe as LibGtk::TextTagTable*), name)
-      Gtk::TextTag.new(__return_value)
+      Gtk::TextTag.new(__return_value) if __return_value
     end
 
     def remove(tag)

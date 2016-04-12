@@ -19,7 +19,7 @@ module Gio
 
     def self.new_internal(application_id, flags)
       __return_value = LibGio.application_new(application_id && application_id, flags)
-      Gio::Application.new(__return_value)
+      cast Gio::Application.new(__return_value)
     end
 
     def self.default
@@ -59,7 +59,7 @@ module Gio
 
     def application_id
       __return_value = LibGio.application_get_application_id((to_unsafe as LibGio::Application*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def dbus_connection
@@ -69,7 +69,7 @@ module Gio
 
     def dbus_object_path
       __return_value = LibGio.application_get_dbus_object_path((to_unsafe as LibGio::Application*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def flags
@@ -99,7 +99,7 @@ module Gio
 
     def resource_base_path
       __return_value = LibGio.application_get_resource_base_path((to_unsafe as LibGio::Application*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def hold
@@ -219,7 +219,7 @@ module Gio
     alias OpenSignal = Application, Array(Gio::File), Int32, UInt8 -> 
     def on_open(&__block : OpenSignal)
       __callback = ->(_arg0 : LibGio::Application*, _arg1 : LibGio::LibGio::File**, _arg2 : LibGio::Int32*, _arg3 : LibGio::UInt8**) {
-       __return_value = __block.call(Application.new(_arg0), PointerIterator.new(_arg1) {|__item_9| __item_9 }, _arg2, (raise "Expected string but got null" unless _arg3; String.new(_arg3)))
+       __return_value = __block.call(Application.new(_arg0), PointerIterator.new(_arg1) {|__item_77| __item_77 }, _arg2, (raise "Expected string but got null" unless _arg3; ::String.new(_arg3)))
        __return_value
       }
       connect("open", __callback)

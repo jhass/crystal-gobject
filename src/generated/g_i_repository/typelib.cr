@@ -16,11 +16,11 @@ module GIRepository
 
     def namespace
       __return_value = LibGIRepository.typelib_get_namespace((to_unsafe as LibGIRepository::Typelib*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def symbol(symbol_name, symbol)
-      __return_value = LibGIRepository.typelib_symbol((to_unsafe as LibGIRepository::Typelib*), symbol_name, symbol)
+      __return_value = LibGIRepository.typelib_symbol((to_unsafe as LibGIRepository::Typelib*), symbol_name, symbol && symbol)
       __return_value
     end
 

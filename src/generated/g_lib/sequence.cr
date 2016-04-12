@@ -19,6 +19,16 @@ module GLib
       __return_value
     end
 
+    def empty?
+      __return_value = LibGLib.sequence_is_empty((to_unsafe as LibGLib::Sequence*))
+      __return_value
+    end
+
+    def self.get(iter)
+      __return_value = LibGLib.sequence_get((iter.to_unsafe as LibGLib::SequenceIter*))
+      __return_value if __return_value
+    end
+
     def self.move(src, dest)
       __return_value = LibGLib.sequence_move((src.to_unsafe as LibGLib::SequenceIter*), (dest.to_unsafe as LibGLib::SequenceIter*))
       __return_value
@@ -40,7 +50,7 @@ module GLib
     end
 
     def self.set(iter, data)
-      __return_value = LibGLib.sequence_set((iter.to_unsafe as LibGLib::SequenceIter*), data)
+      __return_value = LibGLib.sequence_set((iter.to_unsafe as LibGLib::SequenceIter*), data && data)
       __return_value
     end
 

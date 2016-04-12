@@ -35,7 +35,7 @@ module GLib
 
     def contents
       __return_value = LibGLib.mapped_file_get_contents((to_unsafe as LibGLib::MappedFile*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def length

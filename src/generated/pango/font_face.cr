@@ -14,7 +14,7 @@ module Pango
 
     def face_name
       __return_value = LibPango.font_face_get_face_name((to_unsafe as LibPango::FontFace*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def synthesized?

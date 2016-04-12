@@ -9,7 +9,7 @@ module Gio
 
     def self.new_internal(title)
       __return_value = LibGio.notification_new(title)
-      Gio::Notification.new(__return_value)
+      cast Gio::Notification.new(__return_value)
     end
 
     def add_button(label, detailed_action)

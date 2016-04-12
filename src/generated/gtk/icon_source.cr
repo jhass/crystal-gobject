@@ -11,7 +11,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.icon_source_new
-      Gtk::IconSource.new(__return_value)
+      cast Gtk::IconSource.new(__return_value)
     end
 
     def copy
@@ -36,12 +36,12 @@ module Gtk
 
     def filename
       __return_value = LibGtk.icon_source_get_filename((to_unsafe as LibGtk::IconSource*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def icon_name
       __return_value = LibGtk.icon_source_get_icon_name((to_unsafe as LibGtk::IconSource*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def pixbuf

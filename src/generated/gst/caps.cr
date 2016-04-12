@@ -11,17 +11,17 @@ module Gst
 
     def self.new_any
       __return_value = LibGst.caps_new_any
-      Gst::Caps.new(__return_value)
+      cast Gst::Caps.new(__return_value)
     end
 
     def self.new_empty
       __return_value = LibGst.caps_new_empty
-      Gst::Caps.new(__return_value)
+      cast Gst::Caps.new(__return_value)
     end
 
     def self.new_empty_simple(media_type)
       __return_value = LibGst.caps_new_empty_simple(media_type)
-      Gst::Caps.new(__return_value)
+      cast Gst::Caps.new(__return_value)
     end
 
     def append(caps2)
@@ -50,7 +50,7 @@ module Gst
     end
 
     def filter_and_map_in_place(func : LibGst::CapsFilterMapFunc, user_data)
-      __return_value = LibGst.caps_filter_and_map_in_place((to_unsafe as LibGst::Caps*), func, user_data)
+      __return_value = LibGst.caps_filter_and_map_in_place((to_unsafe as LibGst::Caps*), func, user_data && user_data)
       __return_value
     end
 
@@ -60,7 +60,7 @@ module Gst
     end
 
     def foreach(func : LibGst::CapsForeachFunc, user_data)
-      __return_value = LibGst.caps_foreach((to_unsafe as LibGst::Caps*), func, user_data)
+      __return_value = LibGst.caps_foreach((to_unsafe as LibGst::Caps*), func, user_data && user_data)
       __return_value
     end
 
@@ -140,7 +140,7 @@ module Gst
     end
 
     def map_in_place(func : LibGst::CapsMapFunc, user_data)
-      __return_value = LibGst.caps_map_in_place((to_unsafe as LibGst::Caps*), func, user_data)
+      __return_value = LibGst.caps_map_in_place((to_unsafe as LibGst::Caps*), func, user_data && user_data)
       __return_value
     end
 
@@ -196,7 +196,7 @@ module Gst
 
     def to_string
       __return_value = LibGst.caps_to_string((to_unsafe as LibGst::Caps*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def truncate

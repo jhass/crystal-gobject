@@ -61,12 +61,12 @@ module Gst
 
     def metadata(key)
       __return_value = LibGst.element_factory_get_metadata((to_unsafe as LibGst::ElementFactory*), key)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def metadata_keys
       __return_value = LibGst.element_factory_get_metadata_keys((to_unsafe as LibGst::ElementFactory*))
-      PointerIterator.new(__return_value) {|__item_19| (raise "Expected string but got null" unless __item_19; String.new(__item_19)) } if __return_value
+      PointerIterator.new(__return_value) {|__item_20| (raise "Expected string but got null" unless __item_20; ::String.new(__item_20)) } if __return_value
     end
 
     def num_pad_templates
@@ -81,7 +81,7 @@ module Gst
 
     def uri_protocols
       __return_value = LibGst.element_factory_get_uri_protocols((to_unsafe as LibGst::ElementFactory*))
-      PointerIterator.new(__return_value) {|__item_93| (raise "Expected string but got null" unless __item_93; String.new(__item_93)) }
+      PointerIterator.new(__return_value) {|__item_48| (raise "Expected string but got null" unless __item_48; ::String.new(__item_48)) }
     end
 
     def uri_type

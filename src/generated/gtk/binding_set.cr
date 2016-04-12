@@ -21,7 +21,7 @@ module Gtk
 
     def self.find(set_name)
       __return_value = LibGtk.binding_set_find(set_name)
-      Gtk::BindingSet.new(__return_value)
+      Gtk::BindingSet.new(__return_value) if __return_value
     end
 
   end

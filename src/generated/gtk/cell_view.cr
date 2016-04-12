@@ -24,32 +24,32 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.cell_view_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_context(area, context)
       __return_value = LibGtk.cell_view_new_with_context((area.to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_markup(markup)
       __return_value = LibGtk.cell_view_new_with_markup(markup)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_pixbuf(pixbuf)
       __return_value = LibGtk.cell_view_new_with_pixbuf((pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_text(text)
       __return_value = LibGtk.cell_view_new_with_text(text)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def displayed_row
       __return_value = LibGtk.cell_view_get_displayed_row((to_unsafe as LibGtk::CellView*))
-      Gtk::TreePath.new(__return_value)
+      Gtk::TreePath.new(__return_value) if __return_value
     end
 
     def draw_sensitive
@@ -64,7 +64,7 @@ module Gtk
 
     def model
       __return_value = LibGtk.cell_view_get_model((to_unsafe as LibGtk::CellView*))
-      __return_value
+      __return_value if __return_value
     end
 
     def size_of_row(path, requisition)

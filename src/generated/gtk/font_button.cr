@@ -22,17 +22,17 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.font_button_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_font(fontname)
       __return_value = LibGtk.font_button_new_with_font(fontname)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def font_name
       __return_value = LibGtk.font_button_get_font_name((to_unsafe as LibGtk::FontButton*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def show_size
@@ -47,7 +47,7 @@ module Gtk
 
     def title
       __return_value = LibGtk.font_button_get_title((to_unsafe as LibGtk::FontButton*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def use_font

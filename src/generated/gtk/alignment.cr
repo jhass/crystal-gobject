@@ -21,7 +21,7 @@ module Gtk
 
     def self.new_internal(xalign, yalign, xscale, yscale)
       __return_value = LibGtk.alignment_new(Float32.new(xalign), Float32.new(yalign), Float32.new(xscale), Float32.new(yscale))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def padding(padding_top, padding_bottom, padding_left, padding_right)

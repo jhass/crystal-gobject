@@ -36,7 +36,7 @@ module Gdk
 
     def to_string
       __return_value = LibGdk.r_g_b_a_to_string((to_unsafe as LibGdk::RGBA*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
   end

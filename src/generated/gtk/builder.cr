@@ -10,22 +10,22 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.builder_new
-      Gtk::Builder.new(__return_value)
+      cast Gtk::Builder.new(__return_value)
     end
 
     def self.new_from_file(filename)
       __return_value = LibGtk.builder_new_from_file(filename)
-      Gtk::Builder.new(__return_value)
+      cast Gtk::Builder.new(__return_value)
     end
 
     def self.new_from_resource(resource_path)
       __return_value = LibGtk.builder_new_from_resource(resource_path)
-      Gtk::Builder.new(__return_value)
+      cast Gtk::Builder.new(__return_value)
     end
 
     def self.new_from_string(string, length)
       __return_value = LibGtk.builder_new_from_string(string, Int64.new(length))
-      Gtk::Builder.new(__return_value)
+      cast Gtk::Builder.new(__return_value)
     end
 
     def add_callback_symbol(callback_name, callback_symbol : LibGObject::Callback)
@@ -76,12 +76,12 @@ module Gtk
     end
 
     def connect_signals(user_data)
-      __return_value = LibGtk.builder_connect_signals((to_unsafe as LibGtk::Builder*), user_data)
+      __return_value = LibGtk.builder_connect_signals((to_unsafe as LibGtk::Builder*), user_data && user_data)
       __return_value
     end
 
     def connect_signals_full(func : LibGtk::BuilderConnectFunc, user_data)
-      __return_value = LibGtk.builder_connect_signals_full((to_unsafe as LibGtk::Builder*), func, user_data)
+      __return_value = LibGtk.builder_connect_signals_full((to_unsafe as LibGtk::Builder*), func, user_data && user_data)
       __return_value
     end
 
@@ -90,14 +90,21 @@ module Gtk
       __return_value
     end
 
+    def extend_with_template(widget, template_type, buffer, length)
+      __error = Pointer(LibGLib::Error).null
+      __return_value = LibGtk.builder_extend_with_template((to_unsafe as LibGtk::Builder*), (widget.to_unsafe as LibGtk::Widget*), UInt64.new(template_type), buffer, UInt64.new(length), pointerof(__error))
+      GLib::Error.assert __error
+      __return_value
+    end
+
     def application
       __return_value = LibGtk.builder_get_application((to_unsafe as LibGtk::Builder*))
-      Gtk::Application.new(__return_value)
+      Gtk::Application.new(__return_value) if __return_value
     end
 
     def object(name)
       __return_value = LibGtk.builder_get_object((to_unsafe as LibGtk::Builder*), name)
-      GObject::Object.new(__return_value)
+      GObject::Object.new(__return_value) if __return_value
     end
 
     def objects
@@ -107,7 +114,7 @@ module Gtk
 
     def translation_domain
       __return_value = LibGtk.builder_get_translation_domain((to_unsafe as LibGtk::Builder*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def type_from_name(type_name)

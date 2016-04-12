@@ -90,9 +90,10 @@ module Gtk
 
 
 
+
     def self.default
       __return_value = LibGtk.settings_get_default
-      Gtk::Settings.new(__return_value)
+      Gtk::Settings.new(__return_value) if __return_value
     end
 
     def self.for_screen(screen)
@@ -107,6 +108,11 @@ module Gtk
 
     def self.install_property_parser(pspec, parser : LibGtk::RcPropertyParser)
       __return_value = LibGtk.settings_install_property_parser((pspec.to_unsafe as LibGObject::ParamSpec*), parser)
+      __return_value
+    end
+
+    def reset_property(name)
+      __return_value = LibGtk.settings_reset_property((to_unsafe as LibGtk::Settings*), name)
       __return_value
     end
 

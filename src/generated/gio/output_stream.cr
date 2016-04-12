@@ -20,7 +20,7 @@ module Gio
     end
 
     def close_async(io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.output_stream_close_async((to_unsafe as LibGio::OutputStream*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.output_stream_close_async((to_unsafe as LibGio::OutputStream*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -39,7 +39,7 @@ module Gio
     end
 
     def flush_async(io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.output_stream_flush_async((to_unsafe as LibGio::OutputStream*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.output_stream_flush_async((to_unsafe as LibGio::OutputStream*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -80,7 +80,7 @@ module Gio
     end
 
     def splice_async(source, flags, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.output_stream_splice_async((to_unsafe as LibGio::OutputStream*), (source.to_unsafe as LibGio::InputStream*), flags, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.output_stream_splice_async((to_unsafe as LibGio::OutputStream*), (source.to_unsafe as LibGio::InputStream*), flags, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -106,7 +106,7 @@ module Gio
     end
 
     def write_all_async(buffer, count, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.output_stream_write_all_async((to_unsafe as LibGio::OutputStream*), buffer, UInt64.new(count), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.output_stream_write_all_async((to_unsafe as LibGio::OutputStream*), buffer, UInt64.new(count), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -118,7 +118,7 @@ module Gio
     end
 
     def write_async(buffer, count, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.output_stream_write_async((to_unsafe as LibGio::OutputStream*), buffer, UInt64.new(count), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.output_stream_write_async((to_unsafe as LibGio::OutputStream*), buffer, UInt64.new(count), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -130,7 +130,7 @@ module Gio
     end
 
     def write_bytes_async(bytes, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.output_stream_write_bytes_async((to_unsafe as LibGio::OutputStream*), (bytes.to_unsafe as LibGLib::Bytes*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.output_stream_write_bytes_async((to_unsafe as LibGio::OutputStream*), (bytes.to_unsafe as LibGLib::Bytes*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 

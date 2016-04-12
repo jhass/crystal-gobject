@@ -11,12 +11,12 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.icon_set_new
-      Gtk::IconSet.new(__return_value)
+      cast Gtk::IconSet.new(__return_value)
     end
 
     def self.new_from_pixbuf(pixbuf)
       __return_value = LibGtk.icon_set_new_from_pixbuf((pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*))
-      Gtk::IconSet.new(__return_value)
+      cast Gtk::IconSet.new(__return_value)
     end
 
     def add_source(source)

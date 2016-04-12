@@ -11,7 +11,7 @@ module Gtk
 
     def self.new_internal(name, left_gravity)
       __return_value = LibGtk.text_mark_new(name && name, left_gravity)
-      Gtk::TextMark.new(__return_value)
+      cast Gtk::TextMark.new(__return_value)
     end
 
     def buffer
@@ -31,7 +31,7 @@ module Gtk
 
     def name
       __return_value = LibGtk.text_mark_get_name((to_unsafe as LibGtk::TextMark*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def visible

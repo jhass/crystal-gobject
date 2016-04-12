@@ -25,13 +25,13 @@ module GLib
     end
 
     def move_to_front(data)
-      __return_value = LibGLib.thread_pool_move_to_front((to_unsafe as LibGLib::ThreadPool*), data)
+      __return_value = LibGLib.thread_pool_move_to_front((to_unsafe as LibGLib::ThreadPool*), data && data)
       __return_value
     end
 
     def push(data)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.thread_pool_push((to_unsafe as LibGLib::ThreadPool*), data, pointerof(__error))
+      __return_value = LibGLib.thread_pool_push((to_unsafe as LibGLib::ThreadPool*), data && data, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

@@ -13,7 +13,7 @@ module Gio
 
     def self.new_internal(base_stream)
       __return_value = LibGio.data_output_stream_new((base_stream.to_unsafe as LibGio::OutputStream*))
-      Gio::DataOutputStream.new(__return_value)
+      cast Gio::DataOutputStream.new(__return_value)
     end
 
     def byte_order

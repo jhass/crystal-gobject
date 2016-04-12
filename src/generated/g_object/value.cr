@@ -21,7 +21,7 @@ module GObject
 
     def dup_string
       __return_value = LibGObject.value_dup_string((to_unsafe as LibGObject::Value*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def dup_variant
@@ -41,7 +41,7 @@ module GObject
 
     def boxed
       __return_value = LibGObject.value_get_boxed((to_unsafe as LibGObject::Value*))
-      __return_value
+      __return_value if __return_value
     end
 
     def char
@@ -101,7 +101,7 @@ module GObject
 
     def pointer
       __return_value = LibGObject.value_get_pointer((to_unsafe as LibGObject::Value*))
-      __return_value
+      __return_value if __return_value
     end
 
     def schar
@@ -111,7 +111,7 @@ module GObject
 
     def string
       __return_value = LibGObject.value_get_string((to_unsafe as LibGObject::Value*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def uchar
@@ -145,13 +145,13 @@ module GObject
     end
 
     def init_from_instance(instance)
-      __return_value = LibGObject.value_init_from_instance((to_unsafe as LibGObject::Value*), instance)
+      __return_value = LibGObject.value_init_from_instance((to_unsafe as LibGObject::Value*), (instance.to_unsafe as LibGObject::TypeInstance*))
       __return_value
     end
 
     def peek_pointer
       __return_value = LibGObject.value_peek_pointer((to_unsafe as LibGObject::Value*))
-      __return_value
+      __return_value if __return_value
     end
 
     def reset
@@ -235,7 +235,7 @@ module GObject
     end
 
     def pointer=(v_pointer)
-      __return_value = LibGObject.value_set_pointer((to_unsafe as LibGObject::Value*), v_pointer)
+      __return_value = LibGObject.value_set_pointer((to_unsafe as LibGObject::Value*), v_pointer && v_pointer)
       __return_value
     end
 

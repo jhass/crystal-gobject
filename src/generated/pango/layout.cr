@@ -9,7 +9,7 @@ module Pango
 
     def self.new_internal(context)
       __return_value = LibPango.layout_new((context.to_unsafe as LibPango::Context*))
-      Pango::Layout.new(__return_value)
+      cast Pango::Layout.new(__return_value)
     end
 
     def context_changed
@@ -124,7 +124,7 @@ module Pango
 
     def log_attrs_readonly(n_attrs)
       __return_value = LibPango.layout_get_log_attrs_readonly((to_unsafe as LibPango::Layout*), Int32.new(n_attrs))
-      PointerIterator.new(__return_value) {|__item_3| Pango::LogAttr.new(__item_3) }
+      PointerIterator.new(__return_value) {|__item_50| Pango::LogAttr.new(__item_50) }
     end
 
     def pixel_extents(ink_rect, logical_rect)
@@ -164,7 +164,7 @@ module Pango
 
     def text
       __return_value = LibPango.layout_get_text((to_unsafe as LibPango::Layout*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def unknown_glyphs_count

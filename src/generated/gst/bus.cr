@@ -12,7 +12,7 @@ module Gst
 
     def self.new_internal
       __return_value = LibGst.bus_new
-      Gst::Bus.new(__return_value)
+      cast Gst::Bus.new(__return_value)
     end
 
     def add_signal_watch
@@ -26,12 +26,12 @@ module Gst
     end
 
     def add_watch(priority, func : LibGst::BusFunc, user_data, notify : LibGLib::DestroyNotify)
-      __return_value = LibGst.bus_add_watch((to_unsafe as LibGst::Bus*), Int32.new(priority), func, user_data, notify)
+      __return_value = LibGst.bus_add_watch((to_unsafe as LibGst::Bus*), Int32.new(priority), func, user_data && user_data, notify)
       __return_value
     end
 
     def async_signal_func(message, data)
-      __return_value = LibGst.bus_async_signal_func((to_unsafe as LibGst::Bus*), (message.to_unsafe as LibGst::Message*), data)
+      __return_value = LibGst.bus_async_signal_func((to_unsafe as LibGst::Bus*), (message.to_unsafe as LibGst::Message*), data && data)
       __return_value
     end
 
@@ -96,12 +96,12 @@ module Gst
     end
 
     def set_sync_handler(func : LibGst::BusSyncHandler?, user_data, notify : LibGLib::DestroyNotify)
-      __return_value = LibGst.bus_set_sync_handler((to_unsafe as LibGst::Bus*), func && func, user_data, notify)
+      __return_value = LibGst.bus_set_sync_handler((to_unsafe as LibGst::Bus*), func && func, user_data && user_data, notify)
       __return_value
     end
 
     def sync_signal_handler(message, data)
-      __return_value = LibGst.bus_sync_signal_handler((to_unsafe as LibGst::Bus*), (message.to_unsafe as LibGst::Message*), data)
+      __return_value = LibGst.bus_sync_signal_handler((to_unsafe as LibGst::Bus*), (message.to_unsafe as LibGst::Message*), data && data)
       __return_value
     end
 

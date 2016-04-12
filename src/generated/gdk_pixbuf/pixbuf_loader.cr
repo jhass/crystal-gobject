@@ -9,7 +9,7 @@ module GdkPixbuf
 
     def self.new_internal
       __return_value = LibGdkPixbuf.pixbuf_loader_new
-      GdkPixbuf::PixbufLoader.new(__return_value)
+      cast GdkPixbuf::PixbufLoader.new(__return_value)
     end
 
     def self.new_with_mime_type(mime_type)

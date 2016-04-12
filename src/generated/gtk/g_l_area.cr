@@ -18,7 +18,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.g_l_area_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def attach_buffers
@@ -38,7 +38,7 @@ module Gtk
 
     def error
       __return_value = LibGtk.g_l_area_get_error((to_unsafe as LibGtk::GLArea*))
-      __return_value
+      __return_value if __return_value
     end
 
     def has_alpha

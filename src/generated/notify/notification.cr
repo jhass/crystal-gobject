@@ -15,7 +15,7 @@ module Notify
 
     def self.new_internal(summary, body, icon)
       __return_value = LibNotify.notification_new(summary, body && body, icon && icon)
-      Notify::Notification.new(__return_value)
+      cast Notify::Notification.new(__return_value)
     end
 
     def add_action(action, label, callback : LibNotify::ActionCallback, user_data, free_func : LibGLib::DestroyNotify)

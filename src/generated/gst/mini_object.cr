@@ -25,7 +25,7 @@ module Gst
     end
 
     def set_qdata(quark, data, destroy : LibGLib::DestroyNotify)
-      __return_value = LibGst.mini_object_set_qdata((to_unsafe as LibGst::MiniObject*), UInt32.new(quark), data, destroy)
+      __return_value = LibGst.mini_object_set_qdata((to_unsafe as LibGst::MiniObject*), UInt32.new(quark), data && data, destroy)
       __return_value
     end
 

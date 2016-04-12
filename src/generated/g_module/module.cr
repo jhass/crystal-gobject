@@ -21,22 +21,22 @@ module GModule
 
     def name
       __return_value = LibGModule.module_name((to_unsafe as LibGModule::Module*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def symbol(symbol_name, symbol)
-      __return_value = LibGModule.module_symbol((to_unsafe as LibGModule::Module*), symbol_name, symbol)
+      __return_value = LibGModule.module_symbol((to_unsafe as LibGModule::Module*), symbol_name, symbol && symbol)
       __return_value
     end
 
     def self.build_path(directory, module_name)
       __return_value = LibGModule.module_build_path(directory && directory, module_name)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def self.error
       __return_value = LibGModule.module_error
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def self.supported

@@ -412,7 +412,7 @@ lib LibPango
     ink_rect : LibPango::Rectangle
     logical_rect : LibPango::Rectangle
     data : Void*
-    copy_func : Void*
+    copy_func : LibPango::AttrDataCopyFunc
     destroy_func : LibGLib::DestroyNotify
   end
 
@@ -1034,6 +1034,7 @@ lib LibPango
   ##    Callbacks
   ###########################################
 
+ alias AttrDataCopyFunc = Void* -> Void*
  alias AttrFilterFunc = LibPango::Attribute*, Void* -> Bool
  alias FontsetForeachFunc = LibPango::Fontset*, LibPango::Font*, Void* -> Bool
 end

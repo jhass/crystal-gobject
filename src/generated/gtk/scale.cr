@@ -18,12 +18,12 @@ module Gtk
 
     def self.new_internal(orientation, adjustment)
       __return_value = LibGtk.scale_new(orientation, adjustment && (adjustment.to_unsafe as LibGtk::Adjustment*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_range(orientation, min, max, step)
       __return_value = LibGtk.scale_new_with_range(orientation, Float64.new(min), Float64.new(max), Float64.new(step))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def add_mark(value, position, markup)
@@ -53,7 +53,7 @@ module Gtk
 
     def layout
       __return_value = LibGtk.scale_get_layout((to_unsafe as LibGtk::Scale*))
-      Pango::Layout.new(__return_value)
+      Pango::Layout.new(__return_value) if __return_value
     end
 
     def layout_offsets(x, y)

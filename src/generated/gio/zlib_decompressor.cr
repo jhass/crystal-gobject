@@ -12,7 +12,7 @@ module Gio
 
     def self.new_internal(format)
       __return_value = LibGio.zlib_decompressor_new(format)
-      Gio::ZlibDecompressor.new(__return_value)
+      cast Gio::ZlibDecompressor.new(__return_value)
     end
 
     def file_info

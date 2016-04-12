@@ -66,7 +66,7 @@ module GLib
 
     def free(free_segment)
       __return_value = LibGLib.string_free((to_unsafe as LibGLib::String*), free_segment)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def free_to_bytes

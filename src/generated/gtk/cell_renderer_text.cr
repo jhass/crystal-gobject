@@ -59,7 +59,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.cell_renderer_text_new
-      Gtk::CellRenderer.new(__return_value)
+      cast Gtk::CellRenderer.new(__return_value)
     end
 
     def fixed_height_from_font=(number_of_rows)
@@ -70,7 +70,7 @@ module Gtk
     alias EditedSignal = CellRendererText, UInt8, UInt8 -> 
     def on_edited(&__block : EditedSignal)
       __callback = ->(_arg0 : LibGtk::CellRendererText*, _arg1 : LibGtk::UInt8**, _arg2 : LibGtk::UInt8**) {
-       __return_value = __block.call(CellRendererText.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)), (raise "Expected string but got null" unless _arg2; String.new(_arg2)))
+       __return_value = __block.call(CellRendererText.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)), (raise "Expected string but got null" unless _arg2; ::String.new(_arg2)))
        __return_value
       }
       connect("edited", __callback)

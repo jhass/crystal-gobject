@@ -20,13 +20,13 @@ module Gst
   end
 
   def self.debug_add_log_function(func : LibGst::LogFunction, user_data, notify : LibGLib::DestroyNotify)
-    __return_value = LibGst.debug_add_log_function(func, user_data, notify)
+    __return_value = LibGst.debug_add_log_function(func, user_data && user_data, notify)
     __return_value
   end
 
   def self.debug_bin_to_dot_data(bin, details)
     __return_value = LibGst.debug_bin_to_dot_data((bin.to_unsafe as LibGst::Bin*), details)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.debug_bin_to_dot_file(bin, details, file_name)
@@ -41,7 +41,7 @@ module Gst
 
   def self.debug_construct_term_color(colorinfo)
     __return_value = LibGst.debug_construct_term_color(UInt32.new(colorinfo))
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.debug_construct_win_color(colorinfo)
@@ -76,11 +76,11 @@ module Gst
 
   def self.debug_level_get_name(level)
     __return_value = LibGst.debug_level_get_name(level)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.debug_log_default(category, level, file, function, line, object, message, user_data)
-    __return_value = LibGst.debug_log_default((category.to_unsafe as LibGst::DebugCategory*), level, file, function, Int32.new(line), object && (object.to_unsafe as LibGObject::Object*), (message.to_unsafe as LibGst::DebugMessage*), user_data)
+    __return_value = LibGst.debug_log_default((category.to_unsafe as LibGst::DebugCategory*), level, file, function, Int32.new(line), object && (object.to_unsafe as LibGObject::Object*), (message.to_unsafe as LibGst::DebugMessage*), user_data && user_data)
     __return_value
   end
 
@@ -95,7 +95,7 @@ module Gst
   end
 
   def self.debug_remove_log_function_by_data(data)
-    __return_value = LibGst.debug_remove_log_function_by_data(data)
+    __return_value = LibGst.debug_remove_log_function_by_data(data && data)
     __return_value
   end
 
@@ -146,7 +146,7 @@ module Gst
 
   def self.error_get_message(domain, code)
     __return_value = LibGst.error_get_message(UInt32.new(domain), Int32.new(code))
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.event_type_get_flags(type)
@@ -156,7 +156,7 @@ module Gst
 
   def self.event_type_get_name(type)
     __return_value = LibGst.event_type_get_name(type)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.event_type_to_quark(type)
@@ -168,12 +168,12 @@ module Gst
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGst.filename_to_uri(filename, pointerof(__error))
     GLib::Error.assert __error
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.flow_get_name(ret)
     __return_value = LibGst.flow_get_name(ret)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.flow_to_quark(ret)
@@ -193,7 +193,7 @@ module Gst
 
   def self.format_get_name(format)
     __return_value = LibGst.format_get_name(format)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.format_iterate_definitions
@@ -229,7 +229,7 @@ module Gst
   end
 
   def self.caps_features?(obj)
-    __return_value = LibGst.is_caps_features(obj)
+    __return_value = LibGst.is_caps_features(obj && obj)
     __return_value
   end
 
@@ -245,7 +245,7 @@ module Gst
 
   def self.message_type_get_name(type)
     __return_value = LibGst.message_type_get_name(type)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.message_type_to_quark(type)
@@ -255,7 +255,7 @@ module Gst
 
   def self.meta_api_type_get_tags(api)
     __return_value = LibGst.meta_api_type_get_tags(UInt64.new(api))
-    PointerIterator.new(__return_value) {|__item_27| (raise "Expected string but got null" unless __item_27; String.new(__item_27)) }
+    PointerIterator.new(__return_value) {|__item_31| (raise "Expected string but got null" unless __item_31; ::String.new(__item_31)) }
   end
 
   def self.meta_api_type_has_tag(api, tag)
@@ -290,7 +290,7 @@ module Gst
 
   def self.pad_mode_get_name(mode)
     __return_value = LibGst.pad_mode_get_name(mode)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.param_spec_fraction(name, nick, blurb, min_num, min_denom, max_num, max_denom, default_num, default_denom, flags)
@@ -362,7 +362,7 @@ module Gst
 
   def self.preset_get_app_dir
     __return_value = LibGst.preset_get_app_dir
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.preset_set_app_dir(app_dir)
@@ -382,7 +382,7 @@ module Gst
 
   def self.protection_select_system(system_identifiers)
     __return_value = LibGst.protection_select_system(system_identifiers)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.query_type_get_flags(type)
@@ -392,7 +392,7 @@ module Gst
 
   def self.query_type_get_name(type)
     __return_value = LibGst.query_type_get_name(type)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.query_type_to_quark(type)
@@ -442,7 +442,7 @@ module Gst
 
   def self.tag_get_description(tag)
     __return_value = LibGst.tag_get_description(tag)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.tag_get_flag(tag)
@@ -452,7 +452,7 @@ module Gst
 
   def self.tag_get_nick(tag)
     __return_value = LibGst.tag_get_nick(tag)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.tag_get_type(tag)
@@ -492,7 +492,7 @@ module Gst
 
   def self.toc_entry_type_get_nick(type)
     __return_value = LibGst.toc_entry_type_get_nick(type)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.type_find_get_type
@@ -501,7 +501,7 @@ module Gst
   end
 
   def self.type_find_register(plugin, name, rank, func : LibGst::TypeFindFunction, extensions, possible_caps, data, data_notify : LibGLib::DestroyNotify)
-    __return_value = LibGst.type_find_register(plugin && (plugin.to_unsafe as LibGst::Plugin*), name, UInt32.new(rank), func, extensions && extensions, (possible_caps.to_unsafe as LibGst::Caps*), data, data_notify)
+    __return_value = LibGst.type_find_register(plugin && (plugin.to_unsafe as LibGst::Plugin*), name, UInt32.new(rank), func, extensions && extensions, (possible_caps.to_unsafe as LibGst::Caps*), data && data, data_notify)
     __return_value
   end
 
@@ -512,7 +512,7 @@ module Gst
 
   def self.uri_construct(protocol, location)
     __return_value = LibGst.uri_construct(protocol, location)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.uri_error_quark
@@ -527,12 +527,12 @@ module Gst
 
   def self.uri_get_location(uri)
     __return_value = LibGst.uri_get_location(uri)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.uri_get_protocol(uri)
     __return_value = LibGst.uri_get_protocol(uri)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.uri_has_protocol(uri, protocol)
@@ -547,7 +547,7 @@ module Gst
 
   def self.uri_join_strings(base_uri, ref_uri)
     __return_value = LibGst.uri_join_strings(base_uri, ref_uri)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.uri_protocol_is_supported(type, protocol)
@@ -561,7 +561,7 @@ module Gst
   end
 
   def self.util_array_binary_search(array, num_elements, element_size, search_func : LibGLib::CompareDataFunc, mode, search_data, user_data)
-    __return_value = LibGst.util_array_binary_search(array, UInt32.new(num_elements), UInt64.new(element_size), search_func, mode, search_data, user_data)
+    __return_value = LibGst.util_array_binary_search(array && array, UInt32.new(num_elements), UInt64.new(element_size), search_func, mode, search_data && search_data, user_data && user_data)
     __return_value if __return_value
   end
 
@@ -837,7 +837,7 @@ module Gst
 
   def self.value_serialize(value)
     __return_value = LibGst.value_serialize((value.to_unsafe as LibGObject::Value*))
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.value_set_bitmask(value, bitmask)
@@ -922,7 +922,7 @@ module Gst
 
   def self.version_string
     __return_value = LibGst.version_string
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 end
 

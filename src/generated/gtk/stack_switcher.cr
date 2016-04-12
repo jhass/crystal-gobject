@@ -13,14 +13,15 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
 
+
     def self.new_internal
       __return_value = LibGtk.stack_switcher_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def stack
       __return_value = LibGtk.stack_switcher_get_stack((to_unsafe as LibGtk::StackSwitcher*))
-      Gtk::Stack.new(__return_value)
+      Gtk::Stack.new(__return_value) if __return_value
     end
 
     def stack=(stack)

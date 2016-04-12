@@ -12,12 +12,12 @@ module Atk
     # Implements Component
     def self.new_internal
       __return_value = LibAtk.plug_new
-      Atk::Object.new(__return_value)
+      cast Atk::Object.new(__return_value)
     end
 
     def id
       __return_value = LibAtk.plug_get_id((to_unsafe as LibAtk::Plug*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
   end

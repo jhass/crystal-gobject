@@ -19,7 +19,7 @@ module Gtk
 
     def self.new_internal(orientation)
       __return_value = LibGtk.paned_new(orientation)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def add1(child)
@@ -34,12 +34,12 @@ module Gtk
 
     def child1
       __return_value = LibGtk.paned_get_child1((to_unsafe as LibGtk::Paned*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def child2
       __return_value = LibGtk.paned_get_child2((to_unsafe as LibGtk::Paned*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def handle_window

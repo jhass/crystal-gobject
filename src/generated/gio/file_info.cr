@@ -9,7 +9,7 @@ module Gio
 
     def self.new_internal
       __return_value = LibGio.file_info_new
-      Gio::FileInfo.new(__return_value)
+      cast Gio::FileInfo.new(__return_value)
     end
 
     def clear_status
@@ -29,7 +29,7 @@ module Gio
 
     def attribute_as_string(attribute)
       __return_value = LibGio.file_info_get_attribute_as_string((to_unsafe as LibGio::FileInfo*), attribute)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def attribute_boolean(attribute)
@@ -39,7 +39,7 @@ module Gio
 
     def attribute_byte_string(attribute)
       __return_value = LibGio.file_info_get_attribute_byte_string((to_unsafe as LibGio::FileInfo*), attribute)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def attribute_data(attribute, type, value_pp, status)
@@ -69,12 +69,12 @@ module Gio
 
     def attribute_string(attribute)
       __return_value = LibGio.file_info_get_attribute_string((to_unsafe as LibGio::FileInfo*), attribute)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def attribute_stringv(attribute)
       __return_value = LibGio.file_info_get_attribute_stringv((to_unsafe as LibGio::FileInfo*), attribute)
-      PointerIterator.new(__return_value) {|__item_8| (raise "Expected string but got null" unless __item_8; String.new(__item_8)) }
+      PointerIterator.new(__return_value) {|__item_8| (raise "Expected string but got null" unless __item_8; ::String.new(__item_8)) }
     end
 
     def attribute_type(attribute)
@@ -94,7 +94,7 @@ module Gio
 
     def content_type
       __return_value = LibGio.file_info_get_content_type((to_unsafe as LibGio::FileInfo*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def deletion_date
@@ -104,17 +104,17 @@ module Gio
 
     def display_name
       __return_value = LibGio.file_info_get_display_name((to_unsafe as LibGio::FileInfo*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def edit_name
       __return_value = LibGio.file_info_get_edit_name((to_unsafe as LibGio::FileInfo*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def etag
       __return_value = LibGio.file_info_get_etag((to_unsafe as LibGio::FileInfo*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def file_type
@@ -149,7 +149,7 @@ module Gio
 
     def name
       __return_value = LibGio.file_info_get_name((to_unsafe as LibGio::FileInfo*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def size
@@ -169,7 +169,7 @@ module Gio
 
     def symlink_target
       __return_value = LibGio.file_info_get_symlink_target((to_unsafe as LibGio::FileInfo*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def has_attribute(attribute)
@@ -183,8 +183,8 @@ module Gio
     end
 
     def list_attributes(name_space)
-      __return_value = LibGio.file_info_list_attributes((to_unsafe as LibGio::FileInfo*), name_space)
-      PointerIterator.new(__return_value) {|__item_56| (raise "Expected string but got null" unless __item_56; String.new(__item_56)) } if __return_value
+      __return_value = LibGio.file_info_list_attributes((to_unsafe as LibGio::FileInfo*), name_space && name_space)
+      PointerIterator.new(__return_value) {|__item_11| (raise "Expected string but got null" unless __item_11; ::String.new(__item_11)) } if __return_value
     end
 
     def remove_attribute(attribute)

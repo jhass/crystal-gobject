@@ -15,7 +15,7 @@ module Gtk
 
     def self.new_internal(application_id, flags)
       __return_value = LibGtk.application_new(application_id && application_id, flags)
-      Gtk::Application.new(__return_value)
+      cast Gtk::Application.new(__return_value)
     end
 
     def add_accelerator(accelerator, action_name, parameter)
@@ -30,12 +30,12 @@ module Gtk
 
     def accels_for_action(detailed_action_name)
       __return_value = LibGtk.application_get_accels_for_action((to_unsafe as LibGtk::Application*), detailed_action_name)
-      PointerIterator.new(__return_value) {|__item_12| (raise "Expected string but got null" unless __item_12; String.new(__item_12)) }
+      PointerIterator.new(__return_value) {|__item_76| (raise "Expected string but got null" unless __item_76; ::String.new(__item_76)) }
     end
 
     def actions_for_accel(accel)
       __return_value = LibGtk.application_get_actions_for_accel((to_unsafe as LibGtk::Application*), accel)
-      PointerIterator.new(__return_value) {|__item_68| (raise "Expected string but got null" unless __item_68; String.new(__item_68)) }
+      PointerIterator.new(__return_value) {|__item_8| (raise "Expected string but got null" unless __item_8; ::String.new(__item_8)) }
     end
 
     def active_window
@@ -60,7 +60,7 @@ module Gtk
 
     def window_by_id(id)
       __return_value = LibGtk.application_get_window_by_id((to_unsafe as LibGtk::Application*), UInt32.new(id))
-      Gtk::Window.new(__return_value)
+      Gtk::Window.new(__return_value) if __return_value
     end
 
     def windows
@@ -80,7 +80,7 @@ module Gtk
 
     def list_action_descriptions
       __return_value = LibGtk.application_list_action_descriptions((to_unsafe as LibGtk::Application*))
-      PointerIterator.new(__return_value) {|__item_59| (raise "Expected string but got null" unless __item_59; String.new(__item_59)) }
+      PointerIterator.new(__return_value) {|__item_46| (raise "Expected string but got null" unless __item_46; ::String.new(__item_46)) }
     end
 
     def prefers_app_menu

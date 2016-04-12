@@ -16,22 +16,22 @@ module Gtk
 
   def self.accelerator_get_label(accelerator_key, accelerator_mods)
     __return_value = LibGtk.accelerator_get_label(UInt32.new(accelerator_key), accelerator_mods)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.accelerator_get_label_with_keycode(display, accelerator_key, keycode, accelerator_mods)
     __return_value = LibGtk.accelerator_get_label_with_keycode(display && (display.to_unsafe as LibGdk::Display*), UInt32.new(accelerator_key), UInt32.new(keycode), accelerator_mods)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.accelerator_name(accelerator_key, accelerator_mods)
     __return_value = LibGtk.accelerator_name(UInt32.new(accelerator_key), accelerator_mods)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.accelerator_name_with_keycode(display, accelerator_key, keycode, accelerator_mods)
     __return_value = LibGtk.accelerator_name_with_keycode(display && (display.to_unsafe as LibGdk::Display*), UInt32.new(accelerator_key), UInt32.new(keycode), accelerator_mods)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.accelerator_parse(accelerator, accelerator_key, accelerator_mods)
@@ -81,7 +81,7 @@ module Gtk
 
   def self.binding_set_find(set_name)
     __return_value = LibGtk.binding_set_find(set_name)
-    Gtk::BindingSet.new(__return_value)
+    Gtk::BindingSet.new(__return_value) if __return_value
   end
 
   def self.bindings_activate(object, keyval, modifiers)
@@ -111,7 +111,7 @@ module Gtk
 
   def self.check_version(required_major, required_minor, required_micro)
     __return_value = LibGtk.check_version(UInt32.new(required_major), UInt32.new(required_minor), UInt32.new(required_micro))
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.css_provider_error_quark
@@ -151,7 +151,7 @@ module Gtk
 
   def self.drag_get_source_widget(context)
     __return_value = LibGtk.drag_get_source_widget((context.to_unsafe as LibGdk::DragContext*))
-    Gtk::Widget.new(__return_value)
+    Gtk::Widget.new(__return_value) if __return_value
   end
 
   def self.drag_set_icon_default(context)
@@ -291,7 +291,7 @@ module Gtk
 
   def self.icon_size_get_name(size)
     __return_value = LibGtk.icon_size_get_name(Int32.new(size))
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.icon_size_lookup(size, width, height)
@@ -473,7 +473,7 @@ module Gtk
 
   def self.paper_size_get_default
     __return_value = LibGtk.paper_size_get_default
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.paper_size_get_paper_sizes(include_custom)
@@ -497,7 +497,7 @@ module Gtk
   end
 
   def self.print_run_page_setup_dialog_async(parent, page_setup, settings, done_cb : LibGtk::PageSetupDoneFunc, data)
-    __return_value = LibGtk.print_run_page_setup_dialog_async(parent && (parent.to_unsafe as LibGtk::Window*), page_setup && (page_setup.to_unsafe as LibGtk::PageSetup*), (settings.to_unsafe as LibGtk::PrintSettings*), done_cb, data)
+    __return_value = LibGtk.print_run_page_setup_dialog_async(parent && (parent.to_unsafe as LibGtk::Window*), page_setup && (page_setup.to_unsafe as LibGtk::PageSetup*), (settings.to_unsafe as LibGtk::PrintSettings*), done_cb, data && data)
     __return_value
   end
 
@@ -513,32 +513,32 @@ module Gtk
 
   def self.rc_find_module_in_path(module_file)
     __return_value = LibGtk.rc_find_module_in_path(module_file)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.rc_find_pixmap_in_path(settings, scanner, pixmap_file)
     __return_value = LibGtk.rc_find_pixmap_in_path((settings.to_unsafe as LibGtk::Settings*), (scanner.to_unsafe as LibGLib::Scanner*), pixmap_file)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.rc_get_default_files
     __return_value = LibGtk.rc_get_default_files
-    PointerIterator.new(__return_value) {|__item_84| (raise "Expected string but got null" unless __item_84; String.new(__item_84)) }
+    PointerIterator.new(__return_value) {|__item_30| (raise "Expected string but got null" unless __item_30; ::String.new(__item_30)) }
   end
 
   def self.rc_get_im_module_file
     __return_value = LibGtk.rc_get_im_module_file
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.rc_get_im_module_path
     __return_value = LibGtk.rc_get_im_module_path
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.rc_get_module_dir
     __return_value = LibGtk.rc_get_module_dir
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.rc_get_style(widget)
@@ -553,7 +553,7 @@ module Gtk
 
   def self.rc_get_theme_dir
     __return_value = LibGtk.rc_get_theme_dir
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.rc_parse(filename)
@@ -653,6 +653,11 @@ module Gtk
 
   def self.render_background(context, cr, x, y, width, height)
     __return_value = LibGtk.render_background((context.to_unsafe as LibGtk::StyleContext*), (cr.to_unsafe as LibCairo::Context*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height))
+    __return_value
+  end
+
+  def self.render_background_get_clip(context, x, y, width, height, out_clip)
+    __return_value = LibGtk.render_background_get_clip((context.to_unsafe as LibGtk::StyleContext*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height), out_clip)
     __return_value
   end
 
@@ -804,7 +809,7 @@ module Gtk
   end
 
   def self.stock_set_translate_func(domain, func : LibGtk::TranslateFunc, data, notify : LibGLib::DestroyNotify)
-    __return_value = LibGtk.stock_set_translate_func(domain, func, data, notify)
+    __return_value = LibGtk.stock_set_translate_func(domain, func, data && data, notify)
     __return_value
   end
 
@@ -815,7 +820,7 @@ module Gtk
 
   def self.target_table_new_from_list(list, n_targets)
     __return_value = LibGtk.target_table_new_from_list((list.to_unsafe as LibGtk::TargetList*), Int32.new(n_targets))
-    PointerIterator.new(__return_value) {|__item_3| Gtk::TargetEntry.new(__item_3) }
+    PointerIterator.new(__return_value) {|__item_26| Gtk::TargetEntry.new(__item_26) }
   end
 
   def self.targets_include_image(targets, n_targets, writable)
@@ -855,7 +860,7 @@ module Gtk
 
   def self.test_find_widget(widget, label_pattern, widget_type)
     __return_value = LibGtk.test_find_widget((widget.to_unsafe as LibGtk::Widget*), label_pattern, UInt64.new(widget_type))
-    Gtk::Widget.new(__return_value)
+    Gtk::Widget.new(__return_value) if __return_value
   end
 
   def self.test_list_all_types(n_types)
@@ -885,7 +890,7 @@ module Gtk
 
   def self.test_text_get(widget)
     __return_value = LibGtk.test_text_get((widget.to_unsafe as LibGtk::Widget*))
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.test_text_set(widget, string)

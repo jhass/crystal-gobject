@@ -10,7 +10,7 @@ module Gdk
 
     def self.new_internal(parent, attributes, attributes_mask)
       __return_value = LibGdk.window_new(parent && (parent.to_unsafe as LibGdk::Window*), (attributes.to_unsafe as LibGdk::WindowAttr*), attributes_mask)
-      Gdk::Window.new(__return_value)
+      cast Gdk::Window.new(__return_value)
     end
 
     def self.at_pointer(win_x, win_y)
@@ -181,7 +181,7 @@ module Gdk
     end
 
     def children_with_user_data(user_data)
-      __return_value = LibGdk.window_get_children_with_user_data((to_unsafe as LibGdk::Window*), user_data)
+      __return_value = LibGdk.window_get_children_with_user_data((to_unsafe as LibGdk::Window*), user_data && user_data)
       __return_value
     end
 
@@ -371,7 +371,7 @@ module Gdk
     end
 
     def user_data(data)
-      __return_value = LibGdk.window_get_user_data((to_unsafe as LibGdk::Window*), data)
+      __return_value = LibGdk.window_get_user_data((to_unsafe as LibGdk::Window*), data && data)
       __return_value
     end
 
@@ -416,7 +416,7 @@ module Gdk
     end
 
     def invalidate_maybe_recurse(region, child_func : LibGdk::WindowChildFunc?, user_data)
-      __return_value = LibGdk.window_invalidate_maybe_recurse((to_unsafe as LibGdk::Window*), (region.to_unsafe as LibCairo::Region*), child_func && child_func, user_data)
+      __return_value = LibGdk.window_invalidate_maybe_recurse((to_unsafe as LibGdk::Window*), (region.to_unsafe as LibCairo::Region*), child_func && child_func, user_data && user_data)
       __return_value
     end
 

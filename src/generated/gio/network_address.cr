@@ -13,12 +13,12 @@ module Gio
 
     def self.new_internal(hostname, port)
       __return_value = LibGio.network_address_new(hostname, UInt16.new(port))
-      Gio::NetworkAddress.new(__return_value)
+      cast Gio::NetworkAddress.new(__return_value)
     end
 
     def self.new_loopback(port)
       __return_value = LibGio.network_address_new_loopback(UInt16.new(port))
-      Gio::NetworkAddress.new(__return_value)
+      cast Gio::NetworkAddress.new(__return_value)
     end
 
     def self.parse(host_and_port, default_port)
@@ -37,7 +37,7 @@ module Gio
 
     def hostname
       __return_value = LibGio.network_address_get_hostname((to_unsafe as LibGio::NetworkAddress*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def port
@@ -47,7 +47,7 @@ module Gio
 
     def scheme
       __return_value = LibGio.network_address_get_scheme((to_unsafe as LibGio::NetworkAddress*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
   end

@@ -19,7 +19,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.color_selection_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.palette_from_string(str, colors, n_colors)
@@ -29,7 +29,7 @@ module Gtk
 
     def self.palette_to_string(colors, n_colors)
       __return_value = LibGtk.color_selection_palette_to_string(colors, Int32.new(n_colors))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def current_alpha

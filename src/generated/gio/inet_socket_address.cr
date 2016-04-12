@@ -16,12 +16,12 @@ module Gio
 
     def self.new_internal(address, port)
       __return_value = LibGio.inet_socket_address_new((address.to_unsafe as LibGio::InetAddress*), UInt16.new(port))
-      Gio::SocketAddress.new(__return_value)
+      cast Gio::SocketAddress.new(__return_value)
     end
 
     def self.new_from_string(address, port)
       __return_value = LibGio.inet_socket_address_new_from_string(address, UInt32.new(port))
-      Gio::SocketAddress.new(__return_value)
+      cast Gio::SocketAddress.new(__return_value)
     end
 
     def address

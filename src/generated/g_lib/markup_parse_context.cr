@@ -10,8 +10,8 @@ module GLib
     end
 
     def self.new_internal(parser, flags, user_data, user_data_dnotify : LibGLib::DestroyNotify)
-      __return_value = LibGLib.markup_parse_context_new((parser.to_unsafe as LibGLib::MarkupParser*), flags, user_data, user_data_dnotify)
-      GLib::MarkupParseContext.new(__return_value)
+      __return_value = LibGLib.markup_parse_context_new((parser.to_unsafe as LibGLib::MarkupParser*), flags, user_data && user_data, user_data_dnotify)
+      cast GLib::MarkupParseContext.new(__return_value)
     end
 
     def end_parse
@@ -28,12 +28,17 @@ module GLib
 
     def element
       __return_value = LibGLib.markup_parse_context_get_element((to_unsafe as LibGLib::MarkupParseContext*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def position(line_number, char_number)
       __return_value = LibGLib.markup_parse_context_get_position((to_unsafe as LibGLib::MarkupParseContext*), line_number && line_number, char_number && char_number)
       __return_value
+    end
+
+    def user_data
+      __return_value = LibGLib.markup_parse_context_get_user_data((to_unsafe as LibGLib::MarkupParseContext*))
+      __return_value if __return_value
     end
 
     def parse(text, text_len)
@@ -43,8 +48,13 @@ module GLib
       __return_value
     end
 
+    def pop
+      __return_value = LibGLib.markup_parse_context_pop((to_unsafe as LibGLib::MarkupParseContext*))
+      __return_value if __return_value
+    end
+
     def push(parser, user_data)
-      __return_value = LibGLib.markup_parse_context_push((to_unsafe as LibGLib::MarkupParseContext*), (parser.to_unsafe as LibGLib::MarkupParser*), user_data)
+      __return_value = LibGLib.markup_parse_context_push((to_unsafe as LibGLib::MarkupParseContext*), (parser.to_unsafe as LibGLib::MarkupParser*), user_data && user_data)
       __return_value
     end
 

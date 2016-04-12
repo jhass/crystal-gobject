@@ -6,7 +6,7 @@ module Gtk
     end
 
     def foreach(func : LibGtk::TreeModelForeachFunc, user_data)
-      __return_value = LibGtk.tree_model_foreach((to_unsafe as LibGtk::TreeModel*), func, user_data)
+      __return_value = LibGtk.tree_model_foreach((to_unsafe as LibGtk::TreeModel*), func, user_data && user_data)
       __return_value
     end
 
@@ -47,7 +47,7 @@ module Gtk
 
     def string_from_iter(iter)
       __return_value = LibGtk.tree_model_get_string_from_iter((to_unsafe as LibGtk::TreeModel*), (iter.to_unsafe as LibGtk::TreeIter*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def value(iter, column, value)

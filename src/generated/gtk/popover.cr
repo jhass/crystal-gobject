@@ -16,14 +16,15 @@ module Gtk
 
 
 
+
     def self.new_internal(relative_to)
       __return_value = LibGtk.popover_new(relative_to && (relative_to.to_unsafe as LibGtk::Widget*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_from_model(relative_to, model)
       __return_value = LibGtk.popover_new_from_model(relative_to && (relative_to.to_unsafe as LibGtk::Widget*), (model.to_unsafe as LibGio::MenuModel*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def bind_model(model, action_namespace)
@@ -31,9 +32,14 @@ module Gtk
       __return_value
     end
 
+    def constrain_to
+      __return_value = LibGtk.popover_get_constrain_to((to_unsafe as LibGtk::Popover*))
+      __return_value
+    end
+
     def default_widget
       __return_value = LibGtk.popover_get_default_widget((to_unsafe as LibGtk::Popover*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def modal
@@ -58,6 +64,11 @@ module Gtk
 
     def transitions_enabled
       __return_value = LibGtk.popover_get_transitions_enabled((to_unsafe as LibGtk::Popover*))
+      __return_value
+    end
+
+    def constrain_to=(constraint)
+      __return_value = LibGtk.popover_set_constrain_to((to_unsafe as LibGtk::Popover*), constraint)
       __return_value
     end
 

@@ -51,7 +51,7 @@ module Gst
 
     def name
       __return_value = LibGst.object_get_name((to_unsafe as LibGst::Object*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def parent
@@ -61,7 +61,7 @@ module Gst
 
     def path_string
       __return_value = LibGst.object_get_path_string((to_unsafe as LibGst::Object*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def value(property_name, timestamp)
@@ -70,7 +70,7 @@ module Gst
     end
 
     def value_array(property_name, timestamp, interval, n_values, values)
-      __return_value = LibGst.object_get_value_array((to_unsafe as LibGst::Object*), property_name, UInt64.new(timestamp), UInt64.new(interval), UInt32.new(n_values), values)
+      __return_value = LibGst.object_get_value_array((to_unsafe as LibGst::Object*), property_name, UInt64.new(timestamp), UInt64.new(interval), UInt32.new(n_values), values && values)
       __return_value
     end
 

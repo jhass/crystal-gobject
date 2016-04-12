@@ -11,7 +11,7 @@ module Pango
 
     def self.new_internal
       __return_value = LibPango.glyph_string_new
-      Pango::GlyphString.new(__return_value)
+      cast Pango::GlyphString.new(__return_value)
     end
 
     def copy

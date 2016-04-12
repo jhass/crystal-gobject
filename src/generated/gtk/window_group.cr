@@ -9,7 +9,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.window_group_new
-      Gtk::WindowGroup.new(__return_value)
+      cast Gtk::WindowGroup.new(__return_value)
     end
 
     def add_window(window)
@@ -19,7 +19,7 @@ module Gtk
 
     def current_device_grab(device)
       __return_value = LibGtk.window_group_get_current_device_grab((to_unsafe as LibGtk::WindowGroup*), (device.to_unsafe as LibGdk::Device*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def current_grab

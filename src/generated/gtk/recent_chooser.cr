@@ -12,7 +12,7 @@ module Gtk
 
     def current_uri
       __return_value = LibGtk.recent_chooser_get_current_uri((to_unsafe as LibGtk::RecentChooser*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def filter
@@ -67,7 +67,7 @@ module Gtk
 
     def uris(length)
       __return_value = LibGtk.recent_chooser_get_uris((to_unsafe as LibGtk::RecentChooser*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_45| (raise "Expected string but got null" unless __item_45; String.new(__item_45)) }
+      PointerIterator.new(__return_value) {|__item_77| (raise "Expected string but got null" unless __item_77; ::String.new(__item_77)) }
     end
 
     def list_filters

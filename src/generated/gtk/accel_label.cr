@@ -15,7 +15,7 @@ module Gtk
 
     def self.new_internal(string)
       __return_value = LibGtk.accel_label_new(string)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def accel(accelerator_key, accelerator_mods)
@@ -25,7 +25,7 @@ module Gtk
 
     def accel_widget
       __return_value = LibGtk.accel_label_get_accel_widget((to_unsafe as LibGtk::AccelLabel*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def accel_width

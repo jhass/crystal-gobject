@@ -11,7 +11,7 @@ module GLib
 
     def self.new_internal(source_funcs, struct_size)
       __return_value = LibGLib.source_new((source_funcs.to_unsafe as LibGLib::SourceFuncs*), UInt32.new(struct_size))
-      GLib::Source.new(__return_value)
+      cast GLib::Source.new(__return_value)
     end
 
     def add_child_source(child_source)
@@ -21,6 +21,11 @@ module GLib
 
     def add_poll(fd)
       __return_value = LibGLib.source_add_poll((to_unsafe as LibGLib::Source*), (fd.to_unsafe as LibGLib::PollFD*))
+      __return_value
+    end
+
+    def add_unix_fd(fd, events)
+      __return_value = LibGLib.source_add_unix_fd((to_unsafe as LibGLib::Source*), Int32.new(fd), events)
       __return_value
     end
 
@@ -41,7 +46,7 @@ module GLib
 
     def context
       __return_value = LibGLib.source_get_context((to_unsafe as LibGLib::Source*))
-      GLib::MainContext.new(__return_value)
+      GLib::MainContext.new(__return_value) if __return_value
     end
 
     def current_time(timeval)
@@ -56,7 +61,7 @@ module GLib
 
     def name
       __return_value = LibGLib.source_get_name((to_unsafe as LibGLib::Source*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def priority
@@ -110,12 +115,12 @@ module GLib
     end
 
     def set_callback(func : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
-      __return_value = LibGLib.source_set_callback((to_unsafe as LibGLib::Source*), func, data, notify && notify)
+      __return_value = LibGLib.source_set_callback((to_unsafe as LibGLib::Source*), func, data && data, notify && notify)
       __return_value
     end
 
     def set_callback_indirect(callback_data, callback_funcs)
-      __return_value = LibGLib.source_set_callback_indirect((to_unsafe as LibGLib::Source*), callback_data, (callback_funcs.to_unsafe as LibGLib::SourceCallbackFuncs*))
+      __return_value = LibGLib.source_set_callback_indirect((to_unsafe as LibGLib::Source*), callback_data && callback_data, (callback_funcs.to_unsafe as LibGLib::SourceCallbackFuncs*))
       __return_value
     end
 
@@ -155,12 +160,12 @@ module GLib
     end
 
     def self.remove_by_funcs_user_data(funcs, user_data)
-      __return_value = LibGLib.source_remove_by_funcs_user_data((funcs.to_unsafe as LibGLib::SourceFuncs*), user_data)
+      __return_value = LibGLib.source_remove_by_funcs_user_data((funcs.to_unsafe as LibGLib::SourceFuncs*), user_data && user_data)
       __return_value
     end
 
     def self.remove_by_user_data(user_data)
-      __return_value = LibGLib.source_remove_by_user_data(user_data)
+      __return_value = LibGLib.source_remove_by_user_data(user_data && user_data)
       __return_value
     end
 

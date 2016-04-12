@@ -10,7 +10,7 @@ module Gdk
 
     def self.new_internal
       __return_value = LibGdk.app_launch_context_new
-      Gdk::AppLaunchContext.new(__return_value)
+      cast Gdk::AppLaunchContext.new(__return_value)
     end
 
     def desktop=(desktop)

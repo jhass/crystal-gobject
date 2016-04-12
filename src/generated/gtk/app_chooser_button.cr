@@ -19,7 +19,7 @@ module Gtk
 
     def self.new_internal(content_type)
       __return_value = LibGtk.app_chooser_button_new(content_type)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def append_custom_item(name, label, icon)
@@ -34,7 +34,7 @@ module Gtk
 
     def heading
       __return_value = LibGtk.app_chooser_button_get_heading((to_unsafe as LibGtk::AppChooserButton*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def show_default_item
@@ -70,7 +70,7 @@ module Gtk
     alias CustomItemActivatedSignal = AppChooserButton, UInt8 -> 
     def on_custom_item_activated(&__block : CustomItemActivatedSignal)
       __callback = ->(_arg0 : LibGtk::AppChooserButton*, _arg1 : LibGtk::UInt8**) {
-       __return_value = __block.call(AppChooserButton.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value = __block.call(AppChooserButton.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
       connect("custom-item-activated", __callback)

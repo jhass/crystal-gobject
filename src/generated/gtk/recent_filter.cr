@@ -10,7 +10,7 @@ module Gtk
     # Implements Buildable
     def self.new_internal
       __return_value = LibGtk.recent_filter_new
-      Gtk::RecentFilter.new(__return_value)
+      cast Gtk::RecentFilter.new(__return_value)
     end
 
     def add_age(days)
@@ -24,7 +24,7 @@ module Gtk
     end
 
     def add_custom(needed, func : LibGtk::RecentFilterFunc, data, data_destroy : LibGLib::DestroyNotify)
-      __return_value = LibGtk.recent_filter_add_custom((to_unsafe as LibGtk::RecentFilter*), needed, func, data, data_destroy)
+      __return_value = LibGtk.recent_filter_add_custom((to_unsafe as LibGtk::RecentFilter*), needed, func, data && data, data_destroy)
       __return_value
     end
 
@@ -55,7 +55,7 @@ module Gtk
 
     def name
       __return_value = LibGtk.recent_filter_get_name((to_unsafe as LibGtk::RecentFilter*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def needed

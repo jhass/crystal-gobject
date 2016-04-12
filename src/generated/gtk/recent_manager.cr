@@ -11,7 +11,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.recent_manager_new
-      Gtk::RecentManager.new(__return_value)
+      cast Gtk::RecentManager.new(__return_value)
     end
 
     def self.default
@@ -43,7 +43,7 @@ module Gtk
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.recent_manager_lookup_item((to_unsafe as LibGtk::RecentManager*), uri, pointerof(__error))
       GLib::Error.assert __error
-      Gtk::RecentInfo.new(__return_value)
+      Gtk::RecentInfo.new(__return_value) if __return_value
     end
 
     def move_item(uri, new_uri)

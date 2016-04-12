@@ -35,12 +35,12 @@ module Gtk
 
     def self.new_internal(str)
       __return_value = LibGtk.label_new(str && str)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_mnemonic(str)
       __return_value = LibGtk.label_new_with_mnemonic(str && str)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def angle
@@ -50,12 +50,12 @@ module Gtk
 
     def attributes
       __return_value = LibGtk.label_get_attributes((to_unsafe as LibGtk::Label*))
-      Pango::AttrList.new(__return_value)
+      Pango::AttrList.new(__return_value) if __return_value
     end
 
     def current_uri
       __return_value = LibGtk.label_get_current_uri((to_unsafe as LibGtk::Label*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def ellipsize
@@ -70,7 +70,7 @@ module Gtk
 
     def label
       __return_value = LibGtk.label_get_label((to_unsafe as LibGtk::Label*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def layout
@@ -110,7 +110,7 @@ module Gtk
 
     def mnemonic_widget
       __return_value = LibGtk.label_get_mnemonic_widget((to_unsafe as LibGtk::Label*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def selectable
@@ -130,7 +130,7 @@ module Gtk
 
     def text
       __return_value = LibGtk.label_get_text((to_unsafe as LibGtk::Label*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def track_visited_links
@@ -295,7 +295,7 @@ module Gtk
     alias ActivateLinkSignal = Label, UInt8 -> Bool
     def on_activate_link(&__block : ActivateLinkSignal)
       __callback = ->(_arg0 : LibGtk::Label*, _arg1 : LibGtk::UInt8**) {
-       __return_value = __block.call(Label.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value = __block.call(Label.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
       connect("activate-link", __callback)

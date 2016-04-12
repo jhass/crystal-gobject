@@ -11,7 +11,7 @@ module GLib
 
     def self.new_internal(name, description, help_description, user_data, destroy : LibGLib::DestroyNotify?)
       __return_value = LibGLib.option_group_new(name, description, help_description, user_data && user_data, destroy && destroy)
-      GLib::OptionGroup.new(__return_value)
+      cast GLib::OptionGroup.new(__return_value)
     end
 
     def add_entries(entries)

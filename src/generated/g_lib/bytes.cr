@@ -11,12 +11,12 @@ module GLib
 
     def self.new_internal(data, size)
       __return_value = LibGLib.bytes_new(data && data, UInt64.new(size))
-      GLib::Bytes.new(__return_value)
+      cast GLib::Bytes.new(__return_value)
     end
 
     def self.new_take(data, size)
       __return_value = LibGLib.bytes_new_take(data && data, UInt64.new(size))
-      GLib::Bytes.new(__return_value)
+      cast GLib::Bytes.new(__return_value)
     end
 
     def compare(bytes2)
@@ -31,7 +31,7 @@ module GLib
 
     def data(size)
       __return_value = LibGLib.bytes_get_data((to_unsafe as LibGLib::Bytes*), UInt64.new(size))
-      PointerIterator.new(__return_value) {|__item_52| __item_52 }
+      PointerIterator.new(__return_value) {|__item_21| __item_21 } if __return_value
     end
 
     def size
@@ -65,8 +65,8 @@ module GLib
     end
 
     def unref_to_data(size)
-      __return_value = LibGLib.bytes_unref_to_data((to_unsafe as LibGLib::Bytes*), size)
-      __return_value
+      __return_value = LibGLib.bytes_unref_to_data((to_unsafe as LibGLib::Bytes*), UInt64.new(size))
+      PointerIterator.new(__return_value) {|__item_1| __item_1 }
     end
 
   end

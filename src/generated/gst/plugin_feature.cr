@@ -25,7 +25,7 @@ module Gst
     end
 
     def self.rank_compare_func(p1, p2)
-      __return_value = LibGst.plugin_feature_rank_compare_func(p1, p2)
+      __return_value = LibGst.plugin_feature_rank_compare_func(p1 && p1, p2 && p2)
       __return_value
     end
 
@@ -41,7 +41,7 @@ module Gst
 
     def plugin_name
       __return_value = LibGst.plugin_feature_get_plugin_name((to_unsafe as LibGst::PluginFeature*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def rank

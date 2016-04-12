@@ -16,12 +16,12 @@ module Gtk
 
     def self.new_internal(icon_widget, label)
       __return_value = LibGtk.menu_tool_button_new(icon_widget && (icon_widget.to_unsafe as LibGtk::Widget*), label && label)
-      Gtk::ToolItem.new(__return_value)
+      cast Gtk::ToolItem.new(__return_value)
     end
 
     def self.new_from_stock(stock_id)
       __return_value = LibGtk.menu_tool_button_new_from_stock(stock_id)
-      Gtk::ToolItem.new(__return_value)
+      cast Gtk::ToolItem.new(__return_value)
     end
 
     def menu

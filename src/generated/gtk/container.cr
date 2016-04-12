@@ -50,12 +50,12 @@ module Gtk
     end
 
     def forall(callback : LibGtk::Callback, callback_data)
-      __return_value = LibGtk.container_forall((to_unsafe as LibGtk::Container*), callback, callback_data)
+      __return_value = LibGtk.container_forall((to_unsafe as LibGtk::Container*), callback, callback_data && callback_data)
       __return_value
     end
 
     def foreach(callback : LibGtk::Callback, callback_data)
-      __return_value = LibGtk.container_foreach((to_unsafe as LibGtk::Container*), callback, callback_data)
+      __return_value = LibGtk.container_foreach((to_unsafe as LibGtk::Container*), callback, callback_data && callback_data)
       __return_value
     end
 
@@ -76,17 +76,17 @@ module Gtk
 
     def focus_child
       __return_value = LibGtk.container_get_focus_child((to_unsafe as LibGtk::Container*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def focus_hadjustment
       __return_value = LibGtk.container_get_focus_hadjustment((to_unsafe as LibGtk::Container*))
-      Gtk::Adjustment.new(__return_value)
+      Gtk::Adjustment.new(__return_value) if __return_value
     end
 
     def focus_vadjustment
       __return_value = LibGtk.container_get_focus_vadjustment((to_unsafe as LibGtk::Container*))
-      Gtk::Adjustment.new(__return_value)
+      Gtk::Adjustment.new(__return_value) if __return_value
     end
 
     def path_for_child(child)

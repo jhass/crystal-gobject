@@ -9,7 +9,6 @@ lib LibGLib
   ANALYZER_ANALYZING = 1 # : Int32
   ASCII_DTOSTR_BUF_SIZE = 39 # : Int32
   BIG_ENDIAN = 4321 # : Int32
-  CAN_INLINE = 1 # : Int32
   CSET_A_2_Z = "ABCDEFGHIJKLMNOPQRSTUVWXYZ" # : UInt8*
   CSET_DIGITS = "0123456789" # : UInt8*
   CSET_a_2_z = "abcdefghijklmnopqrstuvwxyz" # : UInt8*
@@ -42,10 +41,7 @@ lib LibGLib
   HAVE_GNUC_VARARGS = 1 # : Int32
   HAVE_GNUC_VISIBILITY = 1 # : Int32
   HAVE_GROWING_STACK = 0 # : Int32
-  HAVE_INLINE = 1 # : Int32
   HAVE_ISO_VARARGS = 1 # : Int32
-  HAVE___INLINE = 1 # : Int32
-  HAVE___INLINE__ = 1 # : Int32
   HOOK_FLAG_USER_SHIFT = 4 # : Int32
   IEEE754_DOUBLE_BIAS = 1023 # : Int32
   IEEE754_FLOAT_BIAS = 127 # : Int32
@@ -95,14 +91,14 @@ lib LibGLib
   MININT32 = -2147483648 # : Int32
   MININT64 = -9223372036854775808 # : Int64
   MININT8 = -128 # : Int8
-  MINOR_VERSION = 46 # : Int32
+  MINOR_VERSION = 48 # : Int32
   MODULE_SUFFIX = "so" # : UInt8*
   OPTION_REMAINING = "" # : UInt8*
   PDP_ENDIAN = 3412 # : Int32
   PI = 3.14159 # : Float64
   PI_2 = 1.5708 # : Float64
   PI_4 = 0.785398 # : Float64
-  POLLFD_FORMAT = "%#I64x" # : UInt8*
+  POLLFD_FORMAT = "%d" # : UInt8*
   PRIORITY_DEFAULT = 0 # : Int32
   PRIORITY_DEFAULT_IDLE = 200 # : Int32
   PRIORITY_HIGH = -100 # : Int32
@@ -152,6 +148,8 @@ lib LibGLib
   fun async_queue_length = g_async_queue_length(this : AsyncQueue*) : Int32
   fun async_queue_length_unlocked = g_async_queue_length_unlocked(this : AsyncQueue*) : Int32
   fun async_queue_lock = g_async_queue_lock(this : AsyncQueue*) : Void
+  fun async_queue_pop = g_async_queue_pop(this : AsyncQueue*) : Void*
+  fun async_queue_pop_unlocked = g_async_queue_pop_unlocked(this : AsyncQueue*) : Void*
   fun async_queue_push = g_async_queue_push(this : AsyncQueue*, data : Void*) : Void
   fun async_queue_push_front = g_async_queue_push_front(this : AsyncQueue*, item : Void*) : Void
   fun async_queue_push_front_unlocked = g_async_queue_push_front_unlocked(this : AsyncQueue*, item : Void*) : Void
@@ -159,6 +157,12 @@ lib LibGLib
   fun async_queue_ref_unlocked = g_async_queue_ref_unlocked(this : AsyncQueue*) : Void
   fun async_queue_remove = g_async_queue_remove(this : AsyncQueue*, item : Void*) : Bool
   fun async_queue_remove_unlocked = g_async_queue_remove_unlocked(this : AsyncQueue*, item : Void*) : Bool
+  fun async_queue_timed_pop = g_async_queue_timed_pop(this : AsyncQueue*, end_time : LibGLib::TimeVal*) : Void*
+  fun async_queue_timed_pop_unlocked = g_async_queue_timed_pop_unlocked(this : AsyncQueue*, end_time : LibGLib::TimeVal*) : Void*
+  fun async_queue_timeout_pop = g_async_queue_timeout_pop(this : AsyncQueue*, timeout : UInt64) : Void*
+  fun async_queue_timeout_pop_unlocked = g_async_queue_timeout_pop_unlocked(this : AsyncQueue*, timeout : UInt64) : Void*
+  fun async_queue_try_pop = g_async_queue_try_pop(this : AsyncQueue*) : Void*
+  fun async_queue_try_pop_unlocked = g_async_queue_try_pop_unlocked(this : AsyncQueue*) : Void*
   fun async_queue_unlock = g_async_queue_unlock(this : AsyncQueue*) : Void
   fun async_queue_unref = g_async_queue_unref(this : AsyncQueue*) : Void
   fun async_queue_unref_and_unlock = g_async_queue_unref_and_unlock(this : AsyncQueue*) : Void
@@ -223,14 +227,14 @@ lib LibGLib
   fun bytes_new_take = g_bytes_new_take(data : UInt8*, size : UInt64) : LibGLib::Bytes*
   fun bytes_compare = g_bytes_compare(this : Bytes*, bytes2 : LibGLib::Bytes*) : Int32
   fun bytes_equal = g_bytes_equal(this : Bytes*, bytes2 : LibGLib::Bytes*) : Bool
-  fun bytes_get_data = g_bytes_get_data(this : Bytes*, size : UInt64*) : UInt8**
+  fun bytes_get_data = g_bytes_get_data(this : Bytes*, size : UInt64*) : UInt8*
   fun bytes_get_size = g_bytes_get_size(this : Bytes*) : UInt64
   fun bytes_hash = g_bytes_hash(this : Bytes*) : UInt32
   fun bytes_new_from_bytes = g_bytes_new_from_bytes(this : Bytes*, offset : UInt64, length : UInt64) : LibGLib::Bytes*
   fun bytes_ref = g_bytes_ref(this : Bytes*) : LibGLib::Bytes*
   fun bytes_unref = g_bytes_unref(this : Bytes*) : Void
   fun bytes_unref_to_array = g_bytes_unref_to_array(this : Bytes*) : Void**
-  fun bytes_unref_to_data = g_bytes_unref_to_data(this : Bytes*, size : UInt64*) : Void*
+  fun bytes_unref_to_data = g_bytes_unref_to_data(this : Bytes*, size : UInt64*) : UInt8*
 
   struct Checksum # struct
     _data : UInt8[0]
@@ -396,7 +400,8 @@ lib LibGLib
   fun hash_table_contains = g_hash_table_contains(hash_table : Void**, key : Void*) : Bool
   fun hash_table_destroy = g_hash_table_destroy(hash_table : Void**) : Void
   fun hash_table_insert = g_hash_table_insert(hash_table : Void**, key : Void*, value : Void*) : Bool
-  fun hash_table_lookup_extended = g_hash_table_lookup_extended(hash_table : Void**, lookup_key : Void*, orig_key : Void*, value : Void*) : Bool
+  fun hash_table_lookup = g_hash_table_lookup(hash_table : Void**, key : Void*) : Void*
+  fun hash_table_lookup_extended = g_hash_table_lookup_extended(hash_table : Void**, lookup_key : Void*, orig_key : Void**, value : Void**) : Bool
   fun hash_table_remove = g_hash_table_remove(hash_table : Void**, key : Void*) : Bool
   fun hash_table_remove_all = g_hash_table_remove_all(hash_table : Void**) : Void
   fun hash_table_replace = g_hash_table_replace(hash_table : Void**, key : Void*, value : Void*) : Bool
@@ -414,7 +419,7 @@ lib LibGLib
     dummy6 : Void*
   end
   fun hash_table_iter_init = g_hash_table_iter_init(this : HashTableIter*, hash_table : Void**) : Void
-  fun hash_table_iter_next = g_hash_table_iter_next(this : HashTableIter*, key : Void*, value : Void*) : Bool
+  fun hash_table_iter_next = g_hash_table_iter_next(this : HashTableIter*, key : Void**, value : Void**) : Bool
   fun hash_table_iter_remove = g_hash_table_iter_remove(this : HashTableIter*) : Void
   fun hash_table_iter_replace = g_hash_table_iter_replace(this : HashTableIter*, value : Void*) : Void
   fun hash_table_iter_steal = g_hash_table_iter_steal(this : HashTableIter*) : Void
@@ -607,7 +612,7 @@ lib LibGLib
   fun main_context_pop_thread_default = g_main_context_pop_thread_default(this : MainContext*) : Void
   fun main_context_prepare = g_main_context_prepare(this : MainContext*, priority : Int32*) : Bool
   fun main_context_push_thread_default = g_main_context_push_thread_default(this : MainContext*) : Void
-  fun main_context_query = g_main_context_query(this : MainContext*, max_priority : Int32, timeout : Int32*, fds : LibGLib::PollFD**, n_fds : Int32*) : Int32
+  fun main_context_query = g_main_context_query(this : MainContext*, max_priority : Int32, timeout : Int32*, fds : LibGLib::PollFD**, n_fds : Int32) : Int32
   fun main_context_ref = g_main_context_ref(this : MainContext*) : LibGLib::MainContext*
   fun main_context_release = g_main_context_release(this : MainContext*) : Void
   fun main_context_remove_poll = g_main_context_remove_poll(this : MainContext*, fd : LibGLib::PollFD*) : Void
@@ -649,7 +654,9 @@ lib LibGLib
   fun markup_parse_context_free = g_markup_parse_context_free(this : MarkupParseContext*) : Void
   fun markup_parse_context_get_element = g_markup_parse_context_get_element(this : MarkupParseContext*) : UInt8*
   fun markup_parse_context_get_position = g_markup_parse_context_get_position(this : MarkupParseContext*, line_number : Int32*, char_number : Int32*) : Void
+  fun markup_parse_context_get_user_data = g_markup_parse_context_get_user_data(this : MarkupParseContext*) : Void*
   fun markup_parse_context_parse = g_markup_parse_context_parse(this : MarkupParseContext*, text : UInt8*, text_len : Int64, error : LibGLib::Error**) : Bool
+  fun markup_parse_context_pop = g_markup_parse_context_pop(this : MarkupParseContext*) : Void*
   fun markup_parse_context_push = g_markup_parse_context_push(this : MarkupParseContext*, parser : LibGLib::MarkupParser*, user_data : Void*) : Void
   fun markup_parse_context_ref = g_markup_parse_context_ref(this : MarkupParseContext*) : LibGLib::MarkupParseContext*
   fun markup_parse_context_unref = g_markup_parse_context_unref(this : MarkupParseContext*) : Void
@@ -682,12 +689,12 @@ lib LibGLib
   fun match_info_unref = g_match_info_unref(this : MatchInfo*) : Void
 
   struct MemVTable # struct
-    malloc : Void*
-    realloc : Void*
+    malloc : -> Void
+    realloc : -> Void
     free : -> Void
-    calloc : Void*
-    try_malloc : Void*
-    try_realloc : Void*
+    calloc : -> Void
+    try_malloc : -> Void
+    try_realloc : -> Void
   end
 
   struct Node # struct
@@ -777,6 +784,7 @@ lib LibGLib
     notify : LibGLib::DestroyNotify
     future : Void*
   end
+  fun private_get = g_private_get(this : Private*) : Void*
   fun private_replace = g_private_replace(this : Private*, value : Void*) : Void
   fun private_set = g_private_set(this : Private*, value : Void*) : Void
 
@@ -797,6 +805,12 @@ lib LibGLib
   fun queue_index = g_queue_index(this : Queue*, data : Void*) : Int32
   fun queue_init = g_queue_init(this : Queue*) : Void
   fun queue_is_empty = g_queue_is_empty(this : Queue*) : Bool
+  fun queue_peek_head = g_queue_peek_head(this : Queue*) : Void*
+  fun queue_peek_nth = g_queue_peek_nth(this : Queue*, n : UInt32) : Void*
+  fun queue_peek_tail = g_queue_peek_tail(this : Queue*) : Void*
+  fun queue_pop_head = g_queue_pop_head(this : Queue*) : Void*
+  fun queue_pop_nth = g_queue_pop_nth(this : Queue*, n : UInt32) : Void*
+  fun queue_pop_tail = g_queue_pop_tail(this : Queue*) : Void*
   fun queue_push_head = g_queue_push_head(this : Queue*, data : Void*) : Void
   fun queue_push_nth = g_queue_push_nth(this : Queue*, data : Void*, n : Int32) : Void
   fun queue_push_tail = g_queue_push_tail(this : Queue*, data : Void*) : Void
@@ -903,8 +917,10 @@ lib LibGLib
   fun scanner_get_next_token = g_scanner_get_next_token(this : Scanner*) : LibGLib::TokenType
   fun scanner_input_file = g_scanner_input_file(this : Scanner*, input_fd : Int32) : Void
   fun scanner_input_text = g_scanner_input_text(this : Scanner*, text : UInt8*, text_len : UInt32) : Void
+  fun scanner_lookup_symbol = g_scanner_lookup_symbol(this : Scanner*, symbol : UInt8*) : Void*
   fun scanner_peek_next_token = g_scanner_peek_next_token(this : Scanner*) : LibGLib::TokenType
   fun scanner_scope_add_symbol = g_scanner_scope_add_symbol(this : Scanner*, scope_id : UInt32, symbol : UInt8*, value : Void*) : Void
+  fun scanner_scope_lookup_symbol = g_scanner_scope_lookup_symbol(this : Scanner*, scope_id : UInt32, symbol : UInt8*) : Void*
   fun scanner_scope_remove_symbol = g_scanner_scope_remove_symbol(this : Scanner*, scope_id : UInt32, symbol : UInt8*) : Void
   fun scanner_set_scope = g_scanner_set_scope(this : Scanner*, scope_id : UInt32) : UInt32
   fun scanner_sync_file_offset = g_scanner_sync_file_offset(this : Scanner*) : Void
@@ -945,6 +961,8 @@ lib LibGLib
   end
   fun sequence_free = g_sequence_free(this : Sequence*) : Void
   fun sequence_get_length = g_sequence_get_length(this : Sequence*) : Int32
+  fun sequence_is_empty = g_sequence_is_empty(this : Sequence*) : Bool
+  fun sequence_get = g_sequence_get(iter : LibGLib::SequenceIter*) : Void*
   fun sequence_move = g_sequence_move(src : LibGLib::SequenceIter*, dest : LibGLib::SequenceIter*) : Void
   fun sequence_move_range = g_sequence_move_range(dest : LibGLib::SequenceIter*, _begin : LibGLib::SequenceIter*, end : LibGLib::SequenceIter*) : Void
   fun sequence_remove = g_sequence_remove(iter : LibGLib::SequenceIter*) : Void
@@ -978,6 +996,7 @@ lib LibGLib
   fun source_new = g_source_new(source_funcs : LibGLib::SourceFuncs*, struct_size : UInt32) : LibGLib::Source*
   fun source_add_child_source = g_source_add_child_source(this : Source*, child_source : LibGLib::Source*) : Void
   fun source_add_poll = g_source_add_poll(this : Source*, fd : LibGLib::PollFD*) : Void
+  fun source_add_unix_fd = g_source_add_unix_fd(this : Source*, fd : Int32, events : LibGLib::IOCondition) : Void*
   fun source_attach = g_source_attach(this : Source*, context : LibGLib::MainContext*) : UInt32
   fun source_destroy = g_source_destroy(this : Source*) : Void
   fun source_get_can_recurse = g_source_get_can_recurse(this : Source*) : Bool
@@ -1111,6 +1130,7 @@ lib LibGLib
   struct Thread # struct
     _data : UInt8[0]
   end
+  fun thread_join = g_thread_join(this : Thread*) : Void*
   fun thread_ref = g_thread_ref(this : Thread*) : LibGLib::Thread*
   fun thread_unref = g_thread_unref(this : Thread*) : Void
   fun thread_error_quark = g_thread_error_quark() : UInt32
@@ -1173,6 +1193,8 @@ lib LibGLib
     next : LibGLib::TrashStack*
   end
   fun trash_stack_height = g_trash_stack_height(stack_p : LibGLib::TrashStack*) : UInt32
+  fun trash_stack_peek = g_trash_stack_peek(stack_p : LibGLib::TrashStack*) : Void*
+  fun trash_stack_pop = g_trash_stack_pop(stack_p : LibGLib::TrashStack*) : Void*
   fun trash_stack_push = g_trash_stack_push(stack_p : LibGLib::TrashStack*, data_p : Void*) : Void
 
   struct Tree # struct
@@ -1181,6 +1203,7 @@ lib LibGLib
   fun tree_destroy = g_tree_destroy(this : Tree*) : Void
   fun tree_height = g_tree_height(this : Tree*) : Int32
   fun tree_insert = g_tree_insert(this : Tree*, key : Void*, value : Void*) : Void
+  fun tree_lookup = g_tree_lookup(this : Tree*, key : Void*) : Void*
   fun tree_lookup_extended = g_tree_lookup_extended(this : Tree*, lookup_key : Void*, orig_key : Void*, value : Void*) : Bool
   fun tree_nnodes = g_tree_nnodes(this : Tree*) : Int32
   fun tree_remove = g_tree_remove(this : Tree*, key : Void*) : Bool
@@ -2076,6 +2099,12 @@ lib LibGLib
     SIDDHAM = 123
     TIRHUTA = 124
     WARANG_CITI = 125
+    AHOM = 126
+    ANATOLIAN_HIEROGLYPHS = 127
+    HATRAN = 128
+    MULTANI = 129
+    OLD_HUNGARIAN = 130
+    SIGNWRITING = 131
   end
 
   enum UnicodeType : UInt32
@@ -2219,9 +2248,9 @@ lib LibGLib
   fun ascii_strcasecmp = g_ascii_strcasecmp(s1 : UInt8*, s2 : UInt8*) : Int32
   fun ascii_strdown = g_ascii_strdown(str : UInt8*, len : Int64) : UInt8*
   fun ascii_strncasecmp = g_ascii_strncasecmp(s1 : UInt8*, s2 : UInt8*, n : UInt64) : Int32
-  fun ascii_strtod = g_ascii_strtod(nptr : UInt8*, endptr : UInt8*) : Float64
-  fun ascii_strtoll = g_ascii_strtoll(nptr : UInt8*, endptr : UInt8*, base : UInt32) : Int64
-  fun ascii_strtoull = g_ascii_strtoull(nptr : UInt8*, endptr : UInt8*, base : UInt32) : UInt64
+  fun ascii_strtod = g_ascii_strtod(nptr : UInt8*, endptr : UInt8**) : Float64
+  fun ascii_strtoll = g_ascii_strtoll(nptr : UInt8*, endptr : UInt8**, base : UInt32) : Int64
+  fun ascii_strtoull = g_ascii_strtoull(nptr : UInt8*, endptr : UInt8**, base : UInt32) : UInt64
   fun ascii_strup = g_ascii_strup(str : UInt8*, len : Int64) : UInt8*
   fun ascii_tolower = g_ascii_tolower(c : Int8) : Int8
   fun ascii_toupper = g_ascii_toupper(c : Int8) : Int8
@@ -2230,7 +2259,6 @@ lib LibGLib
   fun assertion_message = g_assertion_message(domain : UInt8*, file : UInt8*, line : Int32, func : UInt8*, message : UInt8*) : Void
   fun assertion_message_cmpstr = g_assertion_message_cmpstr(domain : UInt8*, file : UInt8*, line : Int32, func : UInt8*, expr : UInt8*, arg1 : UInt8*, cmp : UInt8*, arg2 : UInt8*) : Void
   fun assertion_message_error = g_assertion_message_error(domain : UInt8*, file : UInt8*, line : Int32, func : UInt8*, expr : UInt8*, error : LibGLib::Error**, error_domain : UInt32, error_code : Int32) : Void
-  fun assertion_message_expr = g_assertion_message_expr(domain : UInt8*, file : UInt8*, line : Int32, func : UInt8*, expr : UInt8*) : Void
   fun atexit = g_atexit(func : LibGLib::VoidFunc) : Void
   fun atomic_int_add = g_atomic_int_add(atomic : Int32*, val : Int32) : Int32
   fun atomic_int_and = g_atomic_int_and(atomic : UInt32*, val : UInt32) : UInt32
@@ -2245,6 +2273,7 @@ lib LibGLib
   fun atomic_pointer_add = g_atomic_pointer_add(atomic : Void*, val : Int64) : Int64
   fun atomic_pointer_and = g_atomic_pointer_and(atomic : Void*, val : UInt64) : UInt64
   fun atomic_pointer_compare_and_exchange = g_atomic_pointer_compare_and_exchange(atomic : Void*, oldval : Void*, newval : Void*) : Bool
+  fun atomic_pointer_get = g_atomic_pointer_get(atomic : Void*) : Void*
   fun atomic_pointer_or = g_atomic_pointer_or(atomic : Void*, val : UInt64) : UInt64
   fun atomic_pointer_set = g_atomic_pointer_set(atomic : Void*, newval : Void*) : Void
   fun atomic_pointer_xor = g_atomic_pointer_xor(atomic : Void*, val : UInt64) : UInt64
@@ -2286,13 +2315,18 @@ lib LibGLib
   fun convert_with_fallback = g_convert_with_fallback(str : UInt8*, len : Int64, to_codeset : UInt8*, from_codeset : UInt8*, fallback : UInt8*, bytes_read : UInt64*, bytes_written : UInt64*, error : LibGLib::Error**) : UInt8*
   fun convert_with_iconv = g_convert_with_iconv(str : UInt8*, len : Int64, converter : LibGLib::IConv*, bytes_read : UInt64*, bytes_written : UInt64*, error : LibGLib::Error**) : UInt8*
   fun datalist_clear = g_datalist_clear(datalist : LibGLib::Data*) : Void
+  fun datalist_get_data = g_datalist_get_data(datalist : LibGLib::Data*, key : UInt8*) : Void*
   fun datalist_get_flags = g_datalist_get_flags(datalist : LibGLib::Data*) : UInt32
+  fun datalist_id_get_data = g_datalist_id_get_data(datalist : LibGLib::Data*, key_id : UInt32) : Void*
+  fun datalist_id_remove_no_notify = g_datalist_id_remove_no_notify(datalist : LibGLib::Data*, key_id : UInt32) : Void*
   fun datalist_id_replace_data = g_datalist_id_replace_data(datalist : LibGLib::Data*, key_id : UInt32, oldval : Void*, newval : Void*, destroy : LibGLib::DestroyNotify, old_destroy : LibGLib::DestroyNotify*) : Bool
   fun datalist_id_set_data_full = g_datalist_id_set_data_full(datalist : LibGLib::Data*, key_id : UInt32, data : Void*, destroy_func : LibGLib::DestroyNotify) : Void
   fun datalist_init = g_datalist_init(datalist : LibGLib::Data*) : Void
   fun datalist_set_flags = g_datalist_set_flags(datalist : LibGLib::Data*, flags : UInt32) : Void
   fun datalist_unset_flags = g_datalist_unset_flags(datalist : LibGLib::Data*, flags : UInt32) : Void
   fun dataset_destroy = g_dataset_destroy(dataset_location : Void*) : Void
+  fun dataset_id_get_data = g_dataset_id_get_data(dataset_location : Void*, key_id : UInt32) : Void*
+  fun dataset_id_remove_no_notify = g_dataset_id_remove_no_notify(dataset_location : Void*, key_id : UInt32) : Void*
   fun dataset_id_set_data_full = g_dataset_id_set_data_full(dataset_location : Void*, key_id : UInt32, data : Void*, destroy_func : LibGLib::DestroyNotify) : Void
   fun date_get_days_in_month = g_date_get_days_in_month(month : LibGLib::DateMonth, year : UInt16) : UInt8
   fun date_get_monday_weeks_in_year = g_date_get_monday_weeks_in_year(year : UInt16) : UInt8
@@ -2369,7 +2403,8 @@ lib LibGLib
   fun hash_table_contains = g_hash_table_contains(hash_table : Void**, key : Void*) : Bool
   fun hash_table_destroy = g_hash_table_destroy(hash_table : Void**) : Void
   fun hash_table_insert = g_hash_table_insert(hash_table : Void**, key : Void*, value : Void*) : Bool
-  fun hash_table_lookup_extended = g_hash_table_lookup_extended(hash_table : Void**, lookup_key : Void*, orig_key : Void*, value : Void*) : Bool
+  fun hash_table_lookup = g_hash_table_lookup(hash_table : Void**, key : Void*) : Void*
+  fun hash_table_lookup_extended = g_hash_table_lookup_extended(hash_table : Void**, lookup_key : Void*, orig_key : Void**, value : Void**) : Bool
   fun hash_table_remove = g_hash_table_remove(hash_table : Void**, key : Void*) : Bool
   fun hash_table_remove_all = g_hash_table_remove_all(hash_table : Void**) : Void
   fun hash_table_replace = g_hash_table_replace(hash_table : Void**, key : Void*, value : Void*) : Bool
@@ -2416,11 +2451,16 @@ lib LibGLib
   fun main_context_ref_thread_default = g_main_context_ref_thread_default() : LibGLib::MainContext*
   fun main_current_source = g_main_current_source() : LibGLib::Source*
   fun main_depth = g_main_depth() : Int32
+  fun malloc = g_malloc(n_bytes : UInt64) : Void*
+  fun malloc0 = g_malloc0(n_bytes : UInt64) : Void*
+  fun malloc0_n = g_malloc0_n(n_blocks : UInt64, n_block_bytes : UInt64) : Void*
+  fun malloc_n = g_malloc_n(n_blocks : UInt64, n_block_bytes : UInt64) : Void*
   fun markup_error_quark = g_markup_error_quark() : UInt32
   fun markup_escape_text = g_markup_escape_text(text : UInt8*, length : Int64) : UInt8*
   fun mem_is_system_malloc = g_mem_is_system_malloc() : Bool
   fun mem_profile = g_mem_profile() : Void
   fun mem_set_vtable = g_mem_set_vtable(vtable : LibGLib::MemVTable*) : Void
+  fun memdup = g_memdup(mem : Void*, byte_size : UInt32) : Void*
   fun mkdir_with_parents = g_mkdir_with_parents(pathname : UInt8*, mode : Int32) : Int32
   fun mkdtemp = g_mkdtemp(tmpl : UInt8*) : UInt8*
   fun mkdtemp_full = g_mkdtemp_full(tmpl : UInt8*, mode : Int32) : UInt8*
@@ -2444,7 +2484,7 @@ lib LibGLib
   fun pointer_bit_trylock = g_pointer_bit_trylock(address : Void*, lock_bit : Int32) : Bool
   fun pointer_bit_unlock = g_pointer_bit_unlock(address : Void*, lock_bit : Int32) : Void
   fun poll = g_poll(fds : LibGLib::PollFD*, nfds : UInt32, timeout : Int32) : Int32
-  fun propagate_error = g_propagate_error(dest : LibGLib::Error**, src : LibGLib::Error**) : Void
+  fun propagate_error = g_propagate_error(dest : LibGLib::Error***, src : LibGLib::Error**) : Void
   fun quark_from_static_string = g_quark_from_static_string(string : UInt8*) : UInt32
   fun quark_from_string = g_quark_from_string(string : UInt8*) : UInt32
   fun quark_to_string = g_quark_to_string(quark : UInt32) : UInt8*
@@ -2454,6 +2494,8 @@ lib LibGLib
   fun random_int = g_random_int() : UInt32
   fun random_int_range = g_random_int_range(_begin : Int32, end : Int32) : Int32
   fun random_set_seed = g_random_set_seed(seed : UInt32) : Void
+  fun realloc = g_realloc(mem : Void*, n_bytes : UInt64) : Void*
+  fun realloc_n = g_realloc_n(mem : Void*, n_blocks : UInt64, n_block_bytes : UInt64) : Void*
   fun regex_check_replacement = g_regex_check_replacement(replacement : UInt8*, has_references : Bool*, error : LibGLib::Error**) : Bool
   fun regex_error_quark = g_regex_error_quark() : UInt32
   fun regex_escape_nul = g_regex_escape_nul(string : UInt8*, length : Int32) : UInt8*
@@ -2461,8 +2503,8 @@ lib LibGLib
   fun regex_match_simple = g_regex_match_simple(pattern : UInt8*, string : UInt8*, compile_options : LibGLib::RegexCompileFlags, match_options : LibGLib::RegexMatchFlags) : Bool
   fun regex_split_simple = g_regex_split_simple(pattern : UInt8*, string : UInt8*, compile_options : LibGLib::RegexCompileFlags, match_options : LibGLib::RegexMatchFlags) : UInt8**
   fun reload_user_special_dirs_cache = g_reload_user_special_dirs_cache() : Void
-  fun return_if_fail_warning = g_return_if_fail_warning(log_domain : UInt8*, pretty_function : UInt8*, expression : UInt8*) : Void
   fun rmdir = g_rmdir(filename : UInt8*) : Int32
+  fun sequence_get = g_sequence_get(iter : LibGLib::SequenceIter*) : Void*
   fun sequence_move = g_sequence_move(src : LibGLib::SequenceIter*, dest : LibGLib::SequenceIter*) : Void
   fun sequence_move_range = g_sequence_move_range(dest : LibGLib::SequenceIter*, _begin : LibGLib::SequenceIter*, end : LibGLib::SequenceIter*) : Void
   fun sequence_remove = g_sequence_remove(iter : LibGLib::SequenceIter*) : Void
@@ -2470,13 +2512,16 @@ lib LibGLib
   fun sequence_set = g_sequence_set(iter : LibGLib::SequenceIter*, data : Void*) : Void
   fun sequence_swap = g_sequence_swap(a : LibGLib::SequenceIter*, b : LibGLib::SequenceIter*) : Void
   fun set_application_name = g_set_application_name(application_name : UInt8*) : Void
-  fun set_error_literal = g_set_error_literal(err : LibGLib::Error**, domain : UInt32, code : Int32, message : UInt8*) : Void
+  fun set_error_literal = g_set_error_literal(err : LibGLib::Error***, domain : UInt32, code : Int32, message : UInt8*) : Void
   fun set_prgname = g_set_prgname(prgname : UInt8*) : Void
   fun setenv = g_setenv(variable : UInt8*, value : UInt8*, overwrite : Bool) : Bool
   fun shell_error_quark = g_shell_error_quark() : UInt32
   fun shell_parse_argv = g_shell_parse_argv(command_line : UInt8*, argcp : Int32*, argvp : UInt8***, error : LibGLib::Error**) : Bool
   fun shell_quote = g_shell_quote(unquoted_string : UInt8*) : UInt8*
   fun shell_unquote = g_shell_unquote(quoted_string : UInt8*, error : LibGLib::Error**) : UInt8*
+  fun slice_alloc = g_slice_alloc(block_size : UInt64) : Void*
+  fun slice_alloc0 = g_slice_alloc0(block_size : UInt64) : Void*
+  fun slice_copy = g_slice_copy(block_size : UInt64, mem_block : Void*) : Void*
   fun slice_free1 = g_slice_free1(block_size : UInt64, mem_block : Void*) : Void
   fun slice_free_chain_with_offset = g_slice_free_chain_with_offset(block_size : UInt64, mem_chain : Void*, next_offset : UInt64) : Void
   fun slice_get_config = g_slice_get_config(ckey : LibGLib::SliceConfig) : Int64
@@ -2532,7 +2577,7 @@ lib LibGLib
   fun strrstr_len = g_strrstr_len(haystack : UInt8*, haystack_len : Int64, needle : UInt8*) : UInt8*
   fun strsignal = g_strsignal(signum : Int32) : UInt8*
   fun strstr_len = g_strstr_len(haystack : UInt8*, haystack_len : Int64, needle : UInt8*) : UInt8*
-  fun strtod = g_strtod(nptr : UInt8*, endptr : UInt8*) : Float64
+  fun strtod = g_strtod(nptr : UInt8*, endptr : UInt8**) : Float64
   fun strup = g_strup(string : UInt8*) : UInt8*
   fun strv_contains = g_strv_contains(strv : UInt8*, str : UInt8*) : Bool
   fun strv_get_type = g_strv_get_type() : UInt64
@@ -2584,7 +2629,15 @@ lib LibGLib
   fun timeout_source_new = g_timeout_source_new(interval : UInt32) : LibGLib::Source*
   fun timeout_source_new_seconds = g_timeout_source_new_seconds(interval : UInt32) : LibGLib::Source*
   fun trash_stack_height = g_trash_stack_height(stack_p : LibGLib::TrashStack*) : UInt32
+  fun trash_stack_peek = g_trash_stack_peek(stack_p : LibGLib::TrashStack*) : Void*
+  fun trash_stack_pop = g_trash_stack_pop(stack_p : LibGLib::TrashStack*) : Void*
   fun trash_stack_push = g_trash_stack_push(stack_p : LibGLib::TrashStack*, data_p : Void*) : Void
+  fun try_malloc = g_try_malloc(n_bytes : UInt64) : Void*
+  fun try_malloc0 = g_try_malloc0(n_bytes : UInt64) : Void*
+  fun try_malloc0_n = g_try_malloc0_n(n_blocks : UInt64, n_block_bytes : UInt64) : Void*
+  fun try_malloc_n = g_try_malloc_n(n_blocks : UInt64, n_block_bytes : UInt64) : Void*
+  fun try_realloc = g_try_realloc(mem : Void*, n_bytes : UInt64) : Void*
+  fun try_realloc_n = g_try_realloc_n(mem : Void*, n_blocks : UInt64, n_block_bytes : UInt64) : Void*
   fun ucs4_to_utf16 = g_ucs4_to_utf16(str : UInt8*, len : Int64, items_read : Int64*, items_written : Int64*, error : LibGLib::Error**) : UInt16*
   fun ucs4_to_utf8 = g_ucs4_to_utf8(str : UInt8*, len : Int64, items_read : Int64*, items_written : Int64*, error : LibGLib::Error**) : UInt8*
   fun unichar_break_type = g_unichar_break_type(c : UInt8) : LibGLib::UnicodeBreakType
@@ -2612,7 +2665,7 @@ lib LibGLib
   fun unichar_iswide_cjk = g_unichar_iswide_cjk(c : UInt8) : Bool
   fun unichar_isxdigit = g_unichar_isxdigit(c : UInt8) : Bool
   fun unichar_iszerowidth = g_unichar_iszerowidth(c : UInt8) : Bool
-  fun unichar_to_utf8 = g_unichar_to_utf8(c : UInt8, outbuf : UInt8*) : Int32
+  fun unichar_to_utf8 = g_unichar_to_utf8(c : UInt8, outbuf : UInt8**) : Int32
   fun unichar_tolower = g_unichar_tolower(c : UInt8) : UInt8
   fun unichar_totitle = g_unichar_totitle(c : UInt8) : UInt8
   fun unichar_toupper = g_unichar_toupper(c : UInt8) : UInt8
@@ -2674,7 +2727,6 @@ lib LibGLib
   fun variant_type_checked_ = g_variant_type_checked_(arg0 : UInt8*) : LibGLib::VariantType*
   fun variant_type_string_is_valid = g_variant_type_string_is_valid(type_string : UInt8*) : Bool
   fun variant_type_string_scan = g_variant_type_string_scan(string : UInt8*, limit : UInt8*, endptr : UInt8**) : Bool
-  fun warn_message = g_warn_message(domain : UInt8*, file : UInt8*, line : Int32, func : UInt8*, warnexpr : UInt8*) : Void
 
   ###########################################
   ##    Callbacks
@@ -2683,8 +2735,10 @@ lib LibGLib
  alias ChildWatchFunc = Int32, Int32, Void* -> Void
  alias CompareDataFunc = Void*, Void*, Void* -> Int32
  alias CompareFunc = Void*, Void* -> Int32
+ alias CopyFunc = Void*, Void* -> Void*
  alias DataForeachFunc = UInt32, Void*, Void* -> Void
  alias DestroyNotify = Void* -> Void
+ alias DuplicateFunc = Void*, Void* -> Void*
  alias EqualFunc = Void*, Void* -> Bool
  alias FreeFunc = Void* -> Void
  alias Func = Void*, Void* -> Void
@@ -2717,6 +2771,7 @@ lib LibGLib
  alias TestFixtureFunc = Void*, Void* -> Void
  alias TestFunc =  -> Void
  alias TestLogFatalFunc = UInt8*, LibGLib::LogLevelFlags, UInt8*, Void* -> Bool
+ alias ThreadFunc = Void* -> Void*
  alias TranslateFunc = UInt8*, Void* -> UInt8*
  alias TraverseFunc = Void*, Void*, Void* -> Bool
  alias UnixFDSourceFunc = Int32, LibGLib::IOCondition, Void* -> Bool

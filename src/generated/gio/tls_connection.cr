@@ -71,7 +71,7 @@ module Gio
     end
 
     def handshake_async(io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.tls_connection_handshake_async((to_unsafe as LibGio::TlsConnection*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.tls_connection_handshake_async((to_unsafe as LibGio::TlsConnection*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 

@@ -14,12 +14,12 @@ module Gio
 
     def self.new_internal(base_stream)
       __return_value = LibGio.buffered_output_stream_new((base_stream.to_unsafe as LibGio::OutputStream*))
-      Gio::OutputStream.new(__return_value)
+      cast Gio::OutputStream.new(__return_value)
     end
 
     def self.new_sized(base_stream, size)
       __return_value = LibGio.buffered_output_stream_new_sized((base_stream.to_unsafe as LibGio::OutputStream*), UInt64.new(size))
-      Gio::OutputStream.new(__return_value)
+      cast Gio::OutputStream.new(__return_value)
     end
 
     def auto_grow

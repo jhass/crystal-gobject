@@ -17,17 +17,17 @@ module Gtk
 
     def self.new_internal(uri)
       __return_value = LibGtk.link_button_new(uri)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_label(uri, label)
       __return_value = LibGtk.link_button_new_with_label(uri, label && label)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def uri
       __return_value = LibGtk.link_button_get_uri((to_unsafe as LibGtk::LinkButton*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def visited

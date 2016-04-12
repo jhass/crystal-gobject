@@ -40,7 +40,7 @@ module Gst
     end
 
     def feature_filter(filter : LibGst::PluginFeatureFilter, first, user_data)
-      __return_value = LibGst.registry_feature_filter((to_unsafe as LibGst::Registry*), filter, first, user_data)
+      __return_value = LibGst.registry_feature_filter((to_unsafe as LibGst::Registry*), filter, first, user_data && user_data)
       __return_value
     end
 
@@ -85,7 +85,7 @@ module Gst
     end
 
     def plugin_filter(filter : LibGst::PluginFilter, first, user_data)
-      __return_value = LibGst.registry_plugin_filter((to_unsafe as LibGst::Registry*), filter, first, user_data)
+      __return_value = LibGst.registry_plugin_filter((to_unsafe as LibGst::Registry*), filter, first, user_data && user_data)
       __return_value
     end
 

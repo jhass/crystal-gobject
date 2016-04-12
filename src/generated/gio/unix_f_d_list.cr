@@ -9,12 +9,12 @@ module Gio
 
     def self.new_internal
       __return_value = LibGio.unix_f_d_list_new
-      Gio::UnixFDList.new(__return_value)
+      cast Gio::UnixFDList.new(__return_value)
     end
 
     def self.new_from_array(fds, n_fds)
       __return_value = LibGio.unix_f_d_list_new_from_array(fds, Int32.new(n_fds))
-      Gio::UnixFDList.new(__return_value)
+      cast Gio::UnixFDList.new(__return_value)
     end
 
     def append(fd)
@@ -38,12 +38,12 @@ module Gio
 
     def peek_fds(length)
       __return_value = LibGio.unix_f_d_list_peek_fds((to_unsafe as LibGio::UnixFDList*), Int32.new(length))
-      PointerIterator.new(__return_value) {|__item_93| __item_93 }
+      PointerIterator.new(__return_value) {|__item_99| __item_99 }
     end
 
     def steal_fds(length)
       __return_value = LibGio.unix_f_d_list_steal_fds((to_unsafe as LibGio::UnixFDList*), Int32.new(length))
-      PointerIterator.new(__return_value) {|__item_20| __item_20 }
+      PointerIterator.new(__return_value) {|__item_62| __item_62 }
     end
 
   end

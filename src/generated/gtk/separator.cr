@@ -14,7 +14,7 @@ module Gtk
     # Implements Orientable
     def self.new_internal(orientation)
       __return_value = LibGtk.separator_new(orientation)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
   end

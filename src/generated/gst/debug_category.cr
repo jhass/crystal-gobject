@@ -21,12 +21,12 @@ module Gst
 
     def description
       __return_value = LibGst.debug_category_get_description((to_unsafe as LibGst::DebugCategory*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def name
       __return_value = LibGst.debug_category_get_name((to_unsafe as LibGst::DebugCategory*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def threshold

@@ -8,7 +8,7 @@ module Gio
     end
 
     def load_async(size, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.loadable_icon_load_async((to_unsafe as LibGio::LoadableIcon*), Int32.new(size), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.loadable_icon_load_async((to_unsafe as LibGio::LoadableIcon*), Int32.new(size), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 

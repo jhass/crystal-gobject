@@ -32,17 +32,17 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.icon_view_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_area(area)
       __return_value = LibGtk.icon_view_new_with_area((area.to_unsafe as LibGtk::CellArea*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_model(model)
       __return_value = LibGtk.icon_view_new_with_model((model.to_unsafe as LibGtk::TreeModel*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def convert_widget_to_bin_window_coords(wx, wy, bx, by)
@@ -142,12 +142,12 @@ module Gtk
 
     def model
       __return_value = LibGtk.icon_view_get_model((to_unsafe as LibGtk::IconView*))
-      __return_value
+      __return_value if __return_value
     end
 
     def path_at_pos(x, y)
       __return_value = LibGtk.icon_view_get_path_at_pos((to_unsafe as LibGtk::IconView*), Int32.new(x), Int32.new(y))
-      Gtk::TreePath.new(__return_value)
+      Gtk::TreePath.new(__return_value) if __return_value
     end
 
     def pixbuf_column
@@ -226,7 +226,7 @@ module Gtk
     end
 
     def selected_foreach(func : LibGtk::IconViewForeachFunc, data)
-      __return_value = LibGtk.icon_view_selected_foreach((to_unsafe as LibGtk::IconView*), func, data)
+      __return_value = LibGtk.icon_view_selected_foreach((to_unsafe as LibGtk::IconView*), func, data && data)
       __return_value
     end
 

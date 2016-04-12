@@ -9,7 +9,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.rc_style_new
-      Gtk::RcStyle.new(__return_value)
+      cast Gtk::RcStyle.new(__return_value)
     end
 
     def copy

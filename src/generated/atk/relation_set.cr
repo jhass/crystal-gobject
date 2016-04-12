@@ -9,7 +9,7 @@ module Atk
 
     def self.new_internal
       __return_value = LibAtk.relation_set_new
-      Atk::RelationSet.new(__return_value)
+      cast Atk::RelationSet.new(__return_value)
     end
 
     def add(relation)

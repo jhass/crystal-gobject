@@ -11,7 +11,7 @@ module Gst
 
     def self.new_internal(type, uid)
       __return_value = LibGst.toc_entry_new(type, uid)
-      Gst::TocEntry.new(__return_value)
+      cast Gst::TocEntry.new(__return_value)
     end
 
     def append_sub_entry(subentry)
@@ -56,7 +56,7 @@ module Gst
 
     def uid
       __return_value = LibGst.toc_entry_get_uid((to_unsafe as LibGst::TocEntry*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def alternative?

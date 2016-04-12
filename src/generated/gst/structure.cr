@@ -11,17 +11,17 @@ module Gst
 
     def self.new_empty(name)
       __return_value = LibGst.structure_new_empty(name)
-      Gst::Structure.new(__return_value)
+      cast Gst::Structure.new(__return_value)
     end
 
     def self.new_from_string(string)
       __return_value = LibGst.structure_new_from_string(string)
-      Gst::Structure.new(__return_value) if __return_value
+      cast Gst::Structure.new(__return_value) if __return_value
     end
 
     def self.new_id_empty(quark)
       __return_value = LibGst.structure_new_id_empty(UInt32.new(quark))
-      Gst::Structure.new(__return_value)
+      cast Gst::Structure.new(__return_value)
     end
 
     def can_intersect(struct2)
@@ -35,7 +35,7 @@ module Gst
     end
 
     def filter_and_map_in_place(func : LibGst::StructureFilterMapFunc, user_data)
-      __return_value = LibGst.structure_filter_and_map_in_place((to_unsafe as LibGst::Structure*), func, user_data)
+      __return_value = LibGst.structure_filter_and_map_in_place((to_unsafe as LibGst::Structure*), func, user_data && user_data)
       __return_value
     end
 
@@ -75,7 +75,7 @@ module Gst
     end
 
     def foreach(func : LibGst::StructureForeachFunc, user_data)
-      __return_value = LibGst.structure_foreach((to_unsafe as LibGst::Structure*), func, user_data)
+      __return_value = LibGst.structure_foreach((to_unsafe as LibGst::Structure*), func, user_data && user_data)
       __return_value
     end
 
@@ -141,7 +141,7 @@ module Gst
 
     def name
       __return_value = LibGst.structure_get_name((to_unsafe as LibGst::Structure*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def name_id
@@ -151,7 +151,7 @@ module Gst
 
     def string(fieldname)
       __return_value = LibGst.structure_get_string((to_unsafe as LibGst::Structure*), fieldname)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def uint(fieldname, value)
@@ -225,7 +225,7 @@ module Gst
     end
 
     def map_in_place(func : LibGst::StructureMapFunc, user_data)
-      __return_value = LibGst.structure_map_in_place((to_unsafe as LibGst::Structure*), func, user_data)
+      __return_value = LibGst.structure_map_in_place((to_unsafe as LibGst::Structure*), func, user_data && user_data)
       __return_value
     end
 
@@ -236,7 +236,7 @@ module Gst
 
     def nth_field_name(index)
       __return_value = LibGst.structure_nth_field_name((to_unsafe as LibGst::Structure*), UInt32.new(index))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def remove_all_fields
@@ -271,7 +271,7 @@ module Gst
 
     def to_string
       __return_value = LibGst.structure_to_string((to_unsafe as LibGst::Structure*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def self.from_string(string, end)

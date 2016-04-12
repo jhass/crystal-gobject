@@ -23,7 +23,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.calendar_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def clear_marks
@@ -72,7 +72,7 @@ module Gtk
     end
 
     def set_detail_func(func : LibGtk::CalendarDetailFunc, data, destroy : LibGLib::DestroyNotify)
-      __return_value = LibGtk.calendar_set_detail_func((to_unsafe as LibGtk::Calendar*), func, data, destroy)
+      __return_value = LibGtk.calendar_set_detail_func((to_unsafe as LibGtk::Calendar*), func, data && data, destroy)
       __return_value
     end
 

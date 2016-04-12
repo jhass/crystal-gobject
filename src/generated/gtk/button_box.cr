@@ -15,7 +15,7 @@ module Gtk
 
     def self.new_internal(orientation)
       __return_value = LibGtk.button_box_new(orientation)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def child_non_homogeneous(child)

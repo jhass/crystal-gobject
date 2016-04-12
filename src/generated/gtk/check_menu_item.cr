@@ -18,17 +18,17 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.check_menu_item_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_label(label)
       __return_value = LibGtk.check_menu_item_new_with_label(label)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_mnemonic(label)
       __return_value = LibGtk.check_menu_item_new_with_mnemonic(label)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def active

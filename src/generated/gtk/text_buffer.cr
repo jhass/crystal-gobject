@@ -15,7 +15,7 @@ module Gtk
 
     def self.new_internal(table)
       __return_value = LibGtk.text_buffer_new(table && (table.to_unsafe as LibGtk::TextTagTable*))
-      Gtk::TextBuffer.new(__return_value)
+      cast Gtk::TextBuffer.new(__return_value)
     end
 
     def add_mark(mark, where)
@@ -132,7 +132,7 @@ module Gtk
 
     def deserialize_formats(n_formats)
       __return_value = LibGtk.text_buffer_get_deserialize_formats((to_unsafe as LibGtk::TextBuffer*), Int32.new(n_formats))
-      PointerIterator.new(__return_value) {|__item_31| Gdk::Atom.new(__item_31) }
+      PointerIterator.new(__return_value) {|__item_48| Gdk::Atom.new(__item_48) }
     end
 
     def end_iter(iter)
@@ -187,7 +187,7 @@ module Gtk
 
     def mark(name)
       __return_value = LibGtk.text_buffer_get_mark((to_unsafe as LibGtk::TextBuffer*), name)
-      Gtk::TextMark.new(__return_value)
+      Gtk::TextMark.new(__return_value) if __return_value
     end
 
     def modified
@@ -212,12 +212,12 @@ module Gtk
 
     def serialize_formats(n_formats)
       __return_value = LibGtk.text_buffer_get_serialize_formats((to_unsafe as LibGtk::TextBuffer*), Int32.new(n_formats))
-      PointerIterator.new(__return_value) {|__item_79| Gdk::Atom.new(__item_79) }
+      PointerIterator.new(__return_value) {|__item_11| Gdk::Atom.new(__item_11) }
     end
 
     def slice(start, end, include_hidden_chars)
       __return_value = LibGtk.text_buffer_get_slice((to_unsafe as LibGtk::TextBuffer*), (start.to_unsafe as LibGtk::TextIter*), (end.to_unsafe as LibGtk::TextIter*), include_hidden_chars)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def start_iter(iter)
@@ -232,7 +232,7 @@ module Gtk
 
     def text(start, end, include_hidden_chars)
       __return_value = LibGtk.text_buffer_get_text((to_unsafe as LibGtk::TextBuffer*), (start.to_unsafe as LibGtk::TextIter*), (end.to_unsafe as LibGtk::TextIter*), include_hidden_chars)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def insert(iter, text, len)
@@ -301,7 +301,7 @@ module Gtk
     end
 
     def register_deserialize_format(mime_type, function : LibGtk::TextBufferDeserializeFunc, user_data, user_data_destroy : LibGLib::DestroyNotify)
-      __return_value = LibGtk.text_buffer_register_deserialize_format((to_unsafe as LibGtk::TextBuffer*), mime_type, function, user_data, user_data_destroy)
+      __return_value = LibGtk.text_buffer_register_deserialize_format((to_unsafe as LibGtk::TextBuffer*), mime_type, function, user_data && user_data, user_data_destroy)
       Gdk::Atom.new(__return_value)
     end
 
@@ -311,7 +311,7 @@ module Gtk
     end
 
     def register_serialize_format(mime_type, function : LibGtk::TextBufferSerializeFunc, user_data, user_data_destroy : LibGLib::DestroyNotify)
-      __return_value = LibGtk.text_buffer_register_serialize_format((to_unsafe as LibGtk::TextBuffer*), mime_type, function, user_data, user_data_destroy)
+      __return_value = LibGtk.text_buffer_register_serialize_format((to_unsafe as LibGtk::TextBuffer*), mime_type, function, user_data && user_data, user_data_destroy)
       Gdk::Atom.new(__return_value)
     end
 
@@ -347,7 +347,7 @@ module Gtk
 
     def serialize(content_buffer, format, start, end, length)
       __return_value = LibGtk.text_buffer_serialize((to_unsafe as LibGtk::TextBuffer*), (content_buffer.to_unsafe as LibGtk::TextBuffer*), (format.to_unsafe as LibGdk::Atom*), (start.to_unsafe as LibGtk::TextIter*), (end.to_unsafe as LibGtk::TextIter*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_84| __item_84 }
+      PointerIterator.new(__return_value) {|__item_19| __item_19 }
     end
 
     def modified=(setting)
@@ -436,7 +436,7 @@ module Gtk
     alias InsertTextSignal = TextBuffer, Gtk::TextIter, UInt8, Int32 -> 
     def on_insert_text(&__block : InsertTextSignal)
       __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::LibGtk::TextIter*, _arg2 : LibGtk::UInt8**, _arg3 : LibGtk::Int32*) {
-       __return_value = __block.call(TextBuffer.new(_arg0), Gtk::TextIter.new(_arg1), (raise "Expected string but got null" unless _arg2; String.new(_arg2)), _arg3)
+       __return_value = __block.call(TextBuffer.new(_arg0), Gtk::TextIter.new(_arg1), (raise "Expected string but got null" unless _arg2; ::String.new(_arg2)), _arg3)
        __return_value
       }
       connect("insert-text", __callback)

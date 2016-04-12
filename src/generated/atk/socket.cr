@@ -12,7 +12,7 @@ module Atk
     # Implements Component
     def self.new_internal
       __return_value = LibAtk.socket_new
-      Atk::Object.new(__return_value)
+      cast Atk::Object.new(__return_value)
     end
 
     def embed(plug_id)

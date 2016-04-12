@@ -11,17 +11,17 @@ module GLib
 
     def self.new_internal
       __return_value = LibGLib.date_new
-      GLib::Date.new(__return_value)
+      cast GLib::Date.new(__return_value)
     end
 
     def self.new_dmy(day, month, year)
       __return_value = LibGLib.date_new_dmy(UInt8.new(day), month, UInt16.new(year))
-      GLib::Date.new(__return_value)
+      cast GLib::Date.new(__return_value)
     end
 
     def self.new_julian(julian_day)
       __return_value = LibGLib.date_new_julian(UInt32.new(julian_day))
-      GLib::Date.new(__return_value)
+      cast GLib::Date.new(__return_value)
     end
 
     def add_days(n_days)

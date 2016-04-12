@@ -11,7 +11,7 @@ module Pango
 
     def self.new_internal(language)
       __return_value = LibPango.fontset_simple_new((language.to_unsafe as LibPango::Language*))
-      Pango::FontsetSimple.new(__return_value)
+      cast Pango::FontsetSimple.new(__return_value)
     end
 
     def append(font)

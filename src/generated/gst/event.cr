@@ -11,107 +11,107 @@ module Gst
 
     def self.new_buffer_size(format, minsize, maxsize, async)
       __return_value = LibGst.event_new_buffer_size(format, Int64.new(minsize), Int64.new(maxsize), async)
-      Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value)
     end
 
     def self.new_caps(caps)
       __return_value = LibGst.event_new_caps((caps.to_unsafe as LibGst::Caps*))
-      Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value)
     end
 
     def self.new_custom(type, structure)
       __return_value = LibGst.event_new_custom(type, (structure.to_unsafe as LibGst::Structure*))
-      Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value)
     end
 
     def self.new_eos
       __return_value = LibGst.event_new_eos
-      Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value)
     end
 
     def self.new_flush_start
       __return_value = LibGst.event_new_flush_start
-      Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value)
     end
 
     def self.new_flush_stop(reset_time)
       __return_value = LibGst.event_new_flush_stop(reset_time)
-      Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value)
     end
 
     def self.new_gap(timestamp, duration)
       __return_value = LibGst.event_new_gap(UInt64.new(timestamp), UInt64.new(duration))
-      Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value)
     end
 
     def self.new_latency(latency)
       __return_value = LibGst.event_new_latency(UInt64.new(latency))
-      Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value)
     end
 
     def self.new_navigation(structure)
       __return_value = LibGst.event_new_navigation((structure.to_unsafe as LibGst::Structure*))
-      Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value)
     end
 
     def self.new_protection(system_id, data, origin)
       __return_value = LibGst.event_new_protection(system_id, (data.to_unsafe as LibGst::Buffer*), origin)
-      Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value)
     end
 
     def self.new_qos(type, proportion, diff, timestamp)
       __return_value = LibGst.event_new_qos(type, Float64.new(proportion), Int64.new(diff), UInt64.new(timestamp))
-      Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value)
     end
 
     def self.new_reconfigure
       __return_value = LibGst.event_new_reconfigure
-      Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value)
     end
 
     def self.new_seek(rate, format, flags, start_type, start, stop_type, stop)
       __return_value = LibGst.event_new_seek(Float64.new(rate), format, flags, start_type, Int64.new(start), stop_type, Int64.new(stop))
-      Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value)
     end
 
     def self.new_segment(segment)
       __return_value = LibGst.event_new_segment((segment.to_unsafe as LibGst::Segment*))
-      Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value)
     end
 
     def self.new_segment_done(format, position)
       __return_value = LibGst.event_new_segment_done(format, Int64.new(position))
-      Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value)
     end
 
     def self.new_sink_message(name, msg)
       __return_value = LibGst.event_new_sink_message(name, (msg.to_unsafe as LibGst::Message*))
-      Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value)
     end
 
     def self.new_step(format, amount, rate, flush, intermediate)
       __return_value = LibGst.event_new_step(format, UInt64.new(amount), Float64.new(rate), flush, intermediate)
-      Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value)
     end
 
     def self.new_stream_start(stream_id)
       __return_value = LibGst.event_new_stream_start(stream_id)
-      Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value)
     end
 
     def self.new_tag(taglist)
       __return_value = LibGst.event_new_tag((taglist.to_unsafe as LibGst::TagList*))
-      Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value)
     end
 
     def self.new_toc(toc, updated)
       __return_value = LibGst.event_new_toc((toc.to_unsafe as LibGst::Toc*), updated)
-      Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value)
     end
 
     def self.new_toc_select(uid)
       __return_value = LibGst.event_new_toc_select(uid)
-      Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value)
     end
 
     def copy_segment(segment)

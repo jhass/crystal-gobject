@@ -31,7 +31,7 @@ module Gtk
 
     def current_folder
       __return_value = LibGtk.file_chooser_get_current_folder((to_unsafe as LibGtk::FileChooser*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def current_folder_file
@@ -41,12 +41,12 @@ module Gtk
 
     def current_folder_uri
       __return_value = LibGtk.file_chooser_get_current_folder_uri((to_unsafe as LibGtk::FileChooser*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def current_name
       __return_value = LibGtk.file_chooser_get_current_name((to_unsafe as LibGtk::FileChooser*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def do_overwrite_confirmation
@@ -56,7 +56,7 @@ module Gtk
 
     def extra_widget
       __return_value = LibGtk.file_chooser_get_extra_widget((to_unsafe as LibGtk::FileChooser*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def file
@@ -66,7 +66,7 @@ module Gtk
 
     def filename
       __return_value = LibGtk.file_chooser_get_filename((to_unsafe as LibGtk::FileChooser*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def filenames
@@ -81,7 +81,7 @@ module Gtk
 
     def filter
       __return_value = LibGtk.file_chooser_get_filter((to_unsafe as LibGtk::FileChooser*))
-      Gtk::FileFilter.new(__return_value)
+      Gtk::FileFilter.new(__return_value) if __return_value
     end
 
     def local_only
@@ -91,22 +91,22 @@ module Gtk
 
     def preview_file
       __return_value = LibGtk.file_chooser_get_preview_file((to_unsafe as LibGtk::FileChooser*))
-      __return_value
+      __return_value if __return_value
     end
 
     def preview_filename
       __return_value = LibGtk.file_chooser_get_preview_filename((to_unsafe as LibGtk::FileChooser*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def preview_uri
       __return_value = LibGtk.file_chooser_get_preview_uri((to_unsafe as LibGtk::FileChooser*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def preview_widget
       __return_value = LibGtk.file_chooser_get_preview_widget((to_unsafe as LibGtk::FileChooser*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def preview_widget_active
@@ -126,7 +126,7 @@ module Gtk
 
     def uri
       __return_value = LibGtk.file_chooser_get_uri((to_unsafe as LibGtk::FileChooser*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def uris

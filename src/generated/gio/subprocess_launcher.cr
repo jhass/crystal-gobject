@@ -10,16 +10,16 @@ module Gio
 
     def self.new_internal(flags)
       __return_value = LibGio.subprocess_launcher_new(flags)
-      Gio::SubprocessLauncher.new(__return_value)
+      cast Gio::SubprocessLauncher.new(__return_value)
     end
 
     def getenv(variable)
       __return_value = LibGio.subprocess_launcher_getenv((to_unsafe as LibGio::SubprocessLauncher*), variable)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def set_child_setup(child_setup : LibGLib::SpawnChildSetupFunc, user_data, destroy_notify : LibGLib::DestroyNotify)
-      __return_value = LibGio.subprocess_launcher_set_child_setup((to_unsafe as LibGio::SubprocessLauncher*), child_setup, user_data, destroy_notify)
+      __return_value = LibGio.subprocess_launcher_set_child_setup((to_unsafe as LibGio::SubprocessLauncher*), child_setup, user_data && user_data, destroy_notify)
       __return_value
     end
 

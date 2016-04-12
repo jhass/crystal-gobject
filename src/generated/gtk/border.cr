@@ -11,7 +11,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.border_new
-      Gtk::Border.new(__return_value)
+      cast Gtk::Border.new(__return_value)
     end
 
     def copy

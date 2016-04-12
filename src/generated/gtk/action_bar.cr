@@ -13,12 +13,12 @@ module Gtk
     # Implements Buildable
     def self.new_internal
       __return_value = LibGtk.action_bar_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def center_widget
       __return_value = LibGtk.action_bar_get_center_widget((to_unsafe as LibGtk::ActionBar*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def pack_end(child)

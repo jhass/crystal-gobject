@@ -46,7 +46,7 @@ module Gtk
 
     def self.new_internal(type)
       __return_value = LibGtk.window_new(type)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.default_icon_list
@@ -56,7 +56,7 @@ module Gtk
 
     def self.default_icon_name
       __return_value = LibGtk.window_get_default_icon_name
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def self.list_toplevels
@@ -158,12 +158,12 @@ module Gtk
 
     def application
       __return_value = LibGtk.window_get_application((to_unsafe as LibGtk::Window*))
-      Gtk::Application.new(__return_value)
+      Gtk::Application.new(__return_value) if __return_value
     end
 
     def attached_to
       __return_value = LibGtk.window_get_attached_to((to_unsafe as LibGtk::Window*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def decorated
@@ -178,7 +178,7 @@ module Gtk
 
     def default_widget
       __return_value = LibGtk.window_get_default_widget((to_unsafe as LibGtk::Window*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def deletable
@@ -193,7 +193,7 @@ module Gtk
 
     def focus
       __return_value = LibGtk.window_get_focus((to_unsafe as LibGtk::Window*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def focus_on_map
@@ -238,7 +238,7 @@ module Gtk
 
     def icon_name
       __return_value = LibGtk.window_get_icon_name((to_unsafe as LibGtk::Window*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def mnemonic_modifier
@@ -278,7 +278,7 @@ module Gtk
 
     def role
       __return_value = LibGtk.window_get_role((to_unsafe as LibGtk::Window*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def screen
@@ -303,17 +303,17 @@ module Gtk
 
     def title
       __return_value = LibGtk.window_get_title((to_unsafe as LibGtk::Window*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def titlebar
       __return_value = LibGtk.window_get_titlebar((to_unsafe as LibGtk::Window*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def transient_for
       __return_value = LibGtk.window_get_transient_for((to_unsafe as LibGtk::Window*))
-      Gtk::Window.new(__return_value)
+      Gtk::Window.new(__return_value) if __return_value
     end
 
     def type_hint

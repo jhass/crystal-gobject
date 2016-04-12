@@ -13,22 +13,22 @@ module GLib
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.match_info_expand_references((to_unsafe as LibGLib::MatchInfo*), string_to_expand, pointerof(__error))
       GLib::Error.assert __error
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def fetch(match_num)
       __return_value = LibGLib.match_info_fetch((to_unsafe as LibGLib::MatchInfo*), Int32.new(match_num))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def fetch_all
       __return_value = LibGLib.match_info_fetch_all((to_unsafe as LibGLib::MatchInfo*))
-      PointerIterator.new(__return_value) {|__item_31| (raise "Expected string but got null" unless __item_31; String.new(__item_31)) }
+      PointerIterator.new(__return_value) {|__item_69| (raise "Expected string but got null" unless __item_69; ::String.new(__item_69)) }
     end
 
     def fetch_named(name)
       __return_value = LibGLib.match_info_fetch_named((to_unsafe as LibGLib::MatchInfo*), name)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def fetch_named_pos(name, start_pos, end_pos)
@@ -58,7 +58,7 @@ module GLib
 
     def string
       __return_value = LibGLib.match_info_get_string((to_unsafe as LibGLib::MatchInfo*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def partial_match?

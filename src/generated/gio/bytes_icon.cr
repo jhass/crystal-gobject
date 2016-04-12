@@ -12,7 +12,7 @@ module Gio
 
     def self.new_internal(bytes)
       __return_value = LibGio.bytes_icon_new((bytes.to_unsafe as LibGLib::Bytes*))
-      Gio::BytesIcon.new(__return_value)
+      cast Gio::BytesIcon.new(__return_value)
     end
 
     def bytes

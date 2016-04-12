@@ -9,22 +9,22 @@ module Gio
 
     def self.new_internal(label, detailed_action)
       __return_value = LibGio.menu_item_new(label && label, detailed_action && detailed_action)
-      Gio::MenuItem.new(__return_value)
+      cast Gio::MenuItem.new(__return_value)
     end
 
     def self.new_from_model(model, item_index)
       __return_value = LibGio.menu_item_new_from_model((model.to_unsafe as LibGio::MenuModel*), Int32.new(item_index))
-      Gio::MenuItem.new(__return_value)
+      cast Gio::MenuItem.new(__return_value)
     end
 
     def self.new_section(label, section)
       __return_value = LibGio.menu_item_new_section(label && label, (section.to_unsafe as LibGio::MenuModel*))
-      Gio::MenuItem.new(__return_value)
+      cast Gio::MenuItem.new(__return_value)
     end
 
     def self.new_submenu(label, submenu)
       __return_value = LibGio.menu_item_new_submenu(label && label, (submenu.to_unsafe as LibGio::MenuModel*))
-      Gio::MenuItem.new(__return_value)
+      cast Gio::MenuItem.new(__return_value)
     end
 
     def attribute_value(attribute, expected_type)

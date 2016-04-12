@@ -30,12 +30,12 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.tree_view_column_new
-      Gtk::TreeViewColumn.new(__return_value)
+      cast Gtk::TreeViewColumn.new(__return_value)
     end
 
     def self.new_with_area(area)
       __return_value = LibGtk.tree_view_column_new_with_area((area.to_unsafe as LibGtk::CellArea*))
-      Gtk::TreeViewColumn.new(__return_value)
+      cast Gtk::TreeViewColumn.new(__return_value)
     end
 
     def add_attribute(cell_renderer, attribute, column)
@@ -155,12 +155,12 @@ module Gtk
 
     def title
       __return_value = LibGtk.tree_view_column_get_title((to_unsafe as LibGtk::TreeViewColumn*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def tree_view
       __return_value = LibGtk.tree_view_column_get_tree_view((to_unsafe as LibGtk::TreeViewColumn*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def visible
@@ -170,7 +170,7 @@ module Gtk
 
     def widget
       __return_value = LibGtk.tree_view_column_get_widget((to_unsafe as LibGtk::TreeViewColumn*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def width
@@ -204,7 +204,7 @@ module Gtk
     end
 
     def set_cell_data_func(cell_renderer, func : LibGtk::TreeCellDataFunc?, func_data, destroy : LibGLib::DestroyNotify)
-      __return_value = LibGtk.tree_view_column_set_cell_data_func((to_unsafe as LibGtk::TreeViewColumn*), (cell_renderer.to_unsafe as LibGtk::CellRenderer*), func && func, func_data, destroy)
+      __return_value = LibGtk.tree_view_column_set_cell_data_func((to_unsafe as LibGtk::TreeViewColumn*), (cell_renderer.to_unsafe as LibGtk::CellRenderer*), func && func, func_data && func_data, destroy)
       __return_value
     end
 

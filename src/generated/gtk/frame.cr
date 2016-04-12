@@ -18,12 +18,12 @@ module Gtk
 
     def self.new_internal(label)
       __return_value = LibGtk.frame_new(label && label)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def label
       __return_value = LibGtk.frame_get_label((to_unsafe as LibGtk::Frame*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def label_align(xalign, yalign)

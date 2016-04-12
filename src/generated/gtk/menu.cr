@@ -21,12 +21,12 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.menu_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_from_model(model)
       __return_value = LibGtk.menu_new_from_model((model.to_unsafe as LibGio::MenuModel*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.for_attach_widget(widget)
@@ -56,7 +56,7 @@ module Gtk
 
     def accel_path
       __return_value = LibGtk.menu_get_accel_path((to_unsafe as LibGtk::Menu*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def active
@@ -86,7 +86,7 @@ module Gtk
 
     def title
       __return_value = LibGtk.menu_get_title((to_unsafe as LibGtk::Menu*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def popdown
@@ -95,7 +95,7 @@ module Gtk
     end
 
     def popup(parent_menu_shell, parent_menu_item, func : LibGtk::MenuPositionFunc?, data, button, activate_time)
-      __return_value = LibGtk.menu_popup((to_unsafe as LibGtk::Menu*), parent_menu_shell && (parent_menu_shell.to_unsafe as LibGtk::Widget*), parent_menu_item && (parent_menu_item.to_unsafe as LibGtk::Widget*), func && func, data, UInt32.new(button), UInt32.new(activate_time))
+      __return_value = LibGtk.menu_popup((to_unsafe as LibGtk::Menu*), parent_menu_shell && (parent_menu_shell.to_unsafe as LibGtk::Widget*), parent_menu_item && (parent_menu_item.to_unsafe as LibGtk::Widget*), func && func, data && data, UInt32.new(button), UInt32.new(activate_time))
       __return_value
     end
 

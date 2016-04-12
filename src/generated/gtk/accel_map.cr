@@ -28,7 +28,7 @@ module Gtk
     end
 
     def self.foreach_unfiltered(data, foreach_func : LibGtk::AccelMapForeach)
-      __return_value = LibGtk.accel_map_foreach_unfiltered(data, foreach_func)
+      __return_value = LibGtk.accel_map_foreach_unfiltered(data && data, foreach_func)
       __return_value
     end
 
@@ -80,7 +80,7 @@ module Gtk
     alias ChangedSignal = AccelMap, UInt8, UInt32, Gdk::ModifierType -> 
     def on_changed(&__block : ChangedSignal)
       __callback = ->(_arg0 : LibGtk::AccelMap*, _arg1 : LibGtk::UInt8**, _arg2 : LibGtk::UInt32*, _arg3 : LibGtk::LibGdk::ModifierType*) {
-       __return_value = __block.call(AccelMap.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)), _arg2, _arg3)
+       __return_value = __block.call(AccelMap.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)), _arg2, _arg3)
        __return_value
       }
       connect("changed", __callback)

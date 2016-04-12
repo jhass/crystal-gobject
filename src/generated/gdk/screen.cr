@@ -81,7 +81,7 @@ module Gdk
 
     def monitor_plug_name(monitor_num)
       __return_value = LibGdk.screen_get_monitor_plug_name((to_unsafe as LibGdk::Screen*), Int32.new(monitor_num))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def monitor_scale_factor(monitor_num)
@@ -171,7 +171,7 @@ module Gdk
 
     def make_display_name
       __return_value = LibGdk.screen_make_display_name((to_unsafe as LibGdk::Screen*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def font_options=(options)

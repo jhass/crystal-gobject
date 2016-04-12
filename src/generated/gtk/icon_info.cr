@@ -9,7 +9,7 @@ module Gtk
 
     def self.new_for_pixbuf(icon_theme, pixbuf)
       __return_value = LibGtk.icon_info_new_for_pixbuf((icon_theme.to_unsafe as LibGtk::IconTheme*), (pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*))
-      Gtk::IconInfo.new(__return_value)
+      cast Gtk::IconInfo.new(__return_value)
     end
 
     def attach_points(points, n_points)
@@ -34,7 +34,7 @@ module Gtk
 
     def display_name
       __return_value = LibGtk.icon_info_get_display_name((to_unsafe as LibGtk::IconInfo*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def embedded_rect(rectangle)
@@ -44,7 +44,7 @@ module Gtk
 
     def filename
       __return_value = LibGtk.icon_info_get_filename((to_unsafe as LibGtk::IconInfo*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def symbolic?
@@ -60,7 +60,7 @@ module Gtk
     end
 
     def load_icon_async(cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGtk.icon_info_load_icon_async((to_unsafe as LibGtk::IconInfo*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGtk.icon_info_load_icon_async((to_unsafe as LibGtk::IconInfo*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -86,7 +86,7 @@ module Gtk
     end
 
     def load_symbolic_async(fg, success_color, warning_color, error_color, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGtk.icon_info_load_symbolic_async((to_unsafe as LibGtk::IconInfo*), (fg.to_unsafe as LibGdk::RGBA*), success_color && (success_color.to_unsafe as LibGdk::RGBA*), warning_color && (warning_color.to_unsafe as LibGdk::RGBA*), error_color && (error_color.to_unsafe as LibGdk::RGBA*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGtk.icon_info_load_symbolic_async((to_unsafe as LibGtk::IconInfo*), (fg.to_unsafe as LibGdk::RGBA*), success_color && (success_color.to_unsafe as LibGdk::RGBA*), warning_color && (warning_color.to_unsafe as LibGdk::RGBA*), error_color && (error_color.to_unsafe as LibGdk::RGBA*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -105,7 +105,7 @@ module Gtk
     end
 
     def load_symbolic_for_context_async(context, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGtk.icon_info_load_symbolic_for_context_async((to_unsafe as LibGtk::IconInfo*), (context.to_unsafe as LibGtk::StyleContext*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGtk.icon_info_load_symbolic_for_context_async((to_unsafe as LibGtk::IconInfo*), (context.to_unsafe as LibGtk::StyleContext*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 

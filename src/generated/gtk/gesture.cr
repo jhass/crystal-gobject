@@ -23,7 +23,7 @@ module Gtk
 
     def device
       __return_value = LibGtk.gesture_get_device((to_unsafe as LibGtk::Gesture*))
-      Gdk::Device.new(__return_value)
+      Gdk::Device.new(__return_value) if __return_value
     end
 
     def group
@@ -58,7 +58,7 @@ module Gtk
 
     def window
       __return_value = LibGtk.gesture_get_window((to_unsafe as LibGtk::Gesture*))
-      Gdk::Window.new(__return_value)
+      Gdk::Window.new(__return_value) if __return_value
     end
 
     def group(gesture)

@@ -11,7 +11,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.requisition_new
-      Gtk::Requisition.new(__return_value)
+      cast Gtk::Requisition.new(__return_value)
     end
 
     def copy

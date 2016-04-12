@@ -40,7 +40,7 @@ module Gio
     end
 
     def append_to_async(flags, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_append_to_async((to_unsafe as LibGio::File*), flags, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_append_to_async((to_unsafe as LibGio::File*), flags, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -53,7 +53,7 @@ module Gio
 
     def copy(destination, flags, cancellable, progress_callback : LibGio::FileProgressCallback?, progress_callback_data)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.file_copy((to_unsafe as LibGio::File*), (destination.to_unsafe as LibGio::File*), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), progress_callback && progress_callback, progress_callback_data, pointerof(__error))
+      __return_value = LibGio.file_copy((to_unsafe as LibGio::File*), (destination.to_unsafe as LibGio::File*), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), progress_callback && progress_callback, progress_callback_data && progress_callback_data, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -80,7 +80,7 @@ module Gio
     end
 
     def create_async(flags, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_create_async((to_unsafe as LibGio::File*), flags, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_create_async((to_unsafe as LibGio::File*), flags, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -99,7 +99,7 @@ module Gio
     end
 
     def create_readwrite_async(flags, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_create_readwrite_async((to_unsafe as LibGio::File*), flags, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_create_readwrite_async((to_unsafe as LibGio::File*), flags, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -118,7 +118,7 @@ module Gio
     end
 
     def delete_async(io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_delete_async((to_unsafe as LibGio::File*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_delete_async((to_unsafe as LibGio::File*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -135,7 +135,7 @@ module Gio
     end
 
     def eject_mountable(flags, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_eject_mountable((to_unsafe as LibGio::File*), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_eject_mountable((to_unsafe as LibGio::File*), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -147,7 +147,7 @@ module Gio
     end
 
     def eject_mountable_with_operation(flags, mount_operation, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_eject_mountable_with_operation((to_unsafe as LibGio::File*), flags, mount_operation && (mount_operation.to_unsafe as LibGio::MountOperation*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_eject_mountable_with_operation((to_unsafe as LibGio::File*), flags, mount_operation && (mount_operation.to_unsafe as LibGio::MountOperation*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -166,7 +166,7 @@ module Gio
     end
 
     def enumerate_children_async(attributes, flags, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_enumerate_children_async((to_unsafe as LibGio::File*), attributes, flags, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_enumerate_children_async((to_unsafe as LibGio::File*), attributes, flags, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -190,7 +190,7 @@ module Gio
     end
 
     def find_enclosing_mount_async(io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_find_enclosing_mount_async((to_unsafe as LibGio::File*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_find_enclosing_mount_async((to_unsafe as LibGio::File*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -203,7 +203,7 @@ module Gio
 
     def basename
       __return_value = LibGio.file_get_basename((to_unsafe as LibGio::File*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def child(name)
@@ -225,27 +225,27 @@ module Gio
 
     def parse_name
       __return_value = LibGio.file_get_parse_name((to_unsafe as LibGio::File*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def path
       __return_value = LibGio.file_get_path((to_unsafe as LibGio::File*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def relative_path(descendant)
       __return_value = LibGio.file_get_relative_path((to_unsafe as LibGio::File*), (descendant.to_unsafe as LibGio::File*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def uri
       __return_value = LibGio.file_get_uri((to_unsafe as LibGio::File*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def uri_scheme
       __return_value = LibGio.file_get_uri_scheme((to_unsafe as LibGio::File*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def has_parent(parent)
@@ -281,7 +281,7 @@ module Gio
     end
 
     def load_contents_async(cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_load_contents_async((to_unsafe as LibGio::File*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_load_contents_async((to_unsafe as LibGio::File*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -307,7 +307,7 @@ module Gio
     end
 
     def make_directory_async(io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_make_directory_async((to_unsafe as LibGio::File*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_make_directory_async((to_unsafe as LibGio::File*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -361,7 +361,7 @@ module Gio
     end
 
     def mount_enclosing_volume(flags, mount_operation, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_mount_enclosing_volume((to_unsafe as LibGio::File*), flags, mount_operation && (mount_operation.to_unsafe as LibGio::MountOperation*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_mount_enclosing_volume((to_unsafe as LibGio::File*), flags, mount_operation && (mount_operation.to_unsafe as LibGio::MountOperation*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -373,7 +373,7 @@ module Gio
     end
 
     def mount_mountable(flags, mount_operation, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_mount_mountable((to_unsafe as LibGio::File*), flags, mount_operation && (mount_operation.to_unsafe as LibGio::MountOperation*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_mount_mountable((to_unsafe as LibGio::File*), flags, mount_operation && (mount_operation.to_unsafe as LibGio::MountOperation*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -386,7 +386,7 @@ module Gio
 
     def move(destination, flags, cancellable, progress_callback : LibGio::FileProgressCallback?, progress_callback_data)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.file_move((to_unsafe as LibGio::File*), (destination.to_unsafe as LibGio::File*), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), progress_callback && progress_callback, progress_callback_data, pointerof(__error))
+      __return_value = LibGio.file_move((to_unsafe as LibGio::File*), (destination.to_unsafe as LibGio::File*), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), progress_callback && progress_callback, progress_callback_data && progress_callback_data, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -399,7 +399,7 @@ module Gio
     end
 
     def open_readwrite_async(io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_open_readwrite_async((to_unsafe as LibGio::File*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_open_readwrite_async((to_unsafe as LibGio::File*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -411,7 +411,7 @@ module Gio
     end
 
     def poll_mountable(cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_poll_mountable((to_unsafe as LibGio::File*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_poll_mountable((to_unsafe as LibGio::File*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -447,7 +447,7 @@ module Gio
     end
 
     def query_filesystem_info_async(attributes, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_query_filesystem_info_async((to_unsafe as LibGio::File*), attributes, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_query_filesystem_info_async((to_unsafe as LibGio::File*), attributes, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -466,7 +466,7 @@ module Gio
     end
 
     def query_info_async(attributes, flags, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_query_info_async((to_unsafe as LibGio::File*), attributes, flags, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_query_info_async((to_unsafe as LibGio::File*), attributes, flags, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -499,7 +499,7 @@ module Gio
     end
 
     def read_async(io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_read_async((to_unsafe as LibGio::File*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_read_async((to_unsafe as LibGio::File*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -518,7 +518,7 @@ module Gio
     end
 
     def replace_async(etag, make_backup, flags, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_replace_async((to_unsafe as LibGio::File*), etag && etag, make_backup, flags, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_replace_async((to_unsafe as LibGio::File*), etag && etag, make_backup, flags, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -530,12 +530,12 @@ module Gio
     end
 
     def replace_contents_async(contents, length, etag, make_backup, flags, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_replace_contents_async((to_unsafe as LibGio::File*), contents, UInt64.new(length), etag && etag, make_backup, flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_replace_contents_async((to_unsafe as LibGio::File*), contents, UInt64.new(length), etag && etag, make_backup, flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
     def replace_contents_bytes_async(contents, etag, make_backup, flags, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_replace_contents_bytes_async((to_unsafe as LibGio::File*), (contents.to_unsafe as LibGLib::Bytes*), etag && etag, make_backup, flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_replace_contents_bytes_async((to_unsafe as LibGio::File*), (contents.to_unsafe as LibGLib::Bytes*), etag && etag, make_backup, flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -561,7 +561,7 @@ module Gio
     end
 
     def replace_readwrite_async(etag, make_backup, flags, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_replace_readwrite_async((to_unsafe as LibGio::File*), etag && etag, make_backup, flags, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_replace_readwrite_async((to_unsafe as LibGio::File*), etag && etag, make_backup, flags, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -627,7 +627,7 @@ module Gio
     end
 
     def set_attributes_async(info, flags, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_set_attributes_async((to_unsafe as LibGio::File*), (info.to_unsafe as LibGio::FileInfo*), flags, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_set_attributes_async((to_unsafe as LibGio::File*), (info.to_unsafe as LibGio::FileInfo*), flags, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -653,7 +653,7 @@ module Gio
     end
 
     def set_display_name_async(display_name, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_set_display_name_async((to_unsafe as LibGio::File*), display_name, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_set_display_name_async((to_unsafe as LibGio::File*), display_name, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -665,7 +665,7 @@ module Gio
     end
 
     def start_mountable(flags, start_operation, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_start_mountable((to_unsafe as LibGio::File*), flags, start_operation && (start_operation.to_unsafe as LibGio::MountOperation*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_start_mountable((to_unsafe as LibGio::File*), flags, start_operation && (start_operation.to_unsafe as LibGio::MountOperation*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -677,7 +677,7 @@ module Gio
     end
 
     def stop_mountable(flags, mount_operation, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_stop_mountable((to_unsafe as LibGio::File*), flags, mount_operation && (mount_operation.to_unsafe as LibGio::MountOperation*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_stop_mountable((to_unsafe as LibGio::File*), flags, mount_operation && (mount_operation.to_unsafe as LibGio::MountOperation*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -701,7 +701,7 @@ module Gio
     end
 
     def trash_async(io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_trash_async((to_unsafe as LibGio::File*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_trash_async((to_unsafe as LibGio::File*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -713,7 +713,7 @@ module Gio
     end
 
     def unmount_mountable(flags, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_unmount_mountable((to_unsafe as LibGio::File*), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_unmount_mountable((to_unsafe as LibGio::File*), flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -725,7 +725,7 @@ module Gio
     end
 
     def unmount_mountable_with_operation(flags, mount_operation, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.file_unmount_mountable_with_operation((to_unsafe as LibGio::File*), flags, mount_operation && (mount_operation.to_unsafe as LibGio::MountOperation*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.file_unmount_mountable_with_operation((to_unsafe as LibGio::File*), flags, mount_operation && (mount_operation.to_unsafe as LibGio::MountOperation*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 

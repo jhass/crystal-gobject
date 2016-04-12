@@ -1,7 +1,7 @@
 module Pango
   def self.attr_type_get_name(type)
     __return_value = LibPango.attr_type_get_name(type)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.attr_type_register(name)
@@ -21,12 +21,12 @@ module Pango
 
   def self.config_key_get(key)
     __return_value = LibPango.config_key_get(key)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.config_key_get_system(key)
     __return_value = LibPango.config_key_get_system(key)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.default_break(text, length, analysis, attrs, attrs_len)
@@ -56,7 +56,7 @@ module Pango
 
   def self.lib_subdirectory
     __return_value = LibPango.get_lib_subdirectory
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.log_attrs(text, length, level, language, log_attrs, attrs_len)
@@ -71,7 +71,7 @@ module Pango
 
   def self.sysconf_subdirectory
     __return_value = LibPango.get_sysconf_subdirectory
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.gravity_get_for_matrix(matrix)
@@ -184,7 +184,7 @@ module Pango
   end
 
   def self.read_line(stream, str)
-    __return_value = LibPango.read_line(stream, str)
+    __return_value = LibPango.read_line(stream && stream, str)
     __return_value
   end
 
@@ -235,12 +235,12 @@ module Pango
 
   def self.split_file_list(str)
     __return_value = LibPango.split_file_list(str)
-    PointerIterator.new(__return_value) {|__item_98| (raise "Expected string but got null" unless __item_98; String.new(__item_98)) }
+    PointerIterator.new(__return_value) {|__item_13| (raise "Expected string but got null" unless __item_13; ::String.new(__item_13)) }
   end
 
   def self.trim_string(str)
     __return_value = LibPango.trim_string(str)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.unichar_direction(ch)
@@ -265,12 +265,12 @@ module Pango
 
   def self.version_check(required_major, required_minor, required_micro)
     __return_value = LibPango.version_check(Int32.new(required_major), Int32.new(required_minor), Int32.new(required_micro))
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.version_string
     __return_value = LibPango.version_string
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 end
 

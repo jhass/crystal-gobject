@@ -48,17 +48,17 @@ module Gio
     end
 
     def self.new_internal(connection, flags, info, name, object_path, interface_name, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.d_bus_proxy_new((connection.to_unsafe as LibGio::DBusConnection*), flags, info && (info.to_unsafe as LibGio::DBusInterfaceInfo*), name && name, object_path, interface_name, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.d_bus_proxy_new((connection.to_unsafe as LibGio::DBusConnection*), flags, info && (info.to_unsafe as LibGio::DBusInterfaceInfo*), name && name, object_path, interface_name, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
     def self.new_for_bus(bus_type, flags, info, name, object_path, interface_name, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.d_bus_proxy_new_for_bus(bus_type, flags, info && (info.to_unsafe as LibGio::DBusInterfaceInfo*), name, object_path, interface_name, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.d_bus_proxy_new_for_bus(bus_type, flags, info && (info.to_unsafe as LibGio::DBusInterfaceInfo*), name, object_path, interface_name, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
     def call(method_name, parameters, flags, timeout_msec, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.d_bus_proxy_call((to_unsafe as LibGio::DBusProxy*), method_name, parameters && (parameters.to_unsafe as LibGLib::Variant*), flags, Int32.new(timeout_msec), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.d_bus_proxy_call((to_unsafe as LibGio::DBusProxy*), method_name, parameters && (parameters.to_unsafe as LibGLib::Variant*), flags, Int32.new(timeout_msec), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -77,7 +77,7 @@ module Gio
     end
 
     def call_with_unix_fd_list(method_name, parameters, flags, timeout_msec, fd_list, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.d_bus_proxy_call_with_unix_fd_list((to_unsafe as LibGio::DBusProxy*), method_name, parameters && (parameters.to_unsafe as LibGLib::Variant*), flags, Int32.new(timeout_msec), fd_list && (fd_list.to_unsafe as LibGio::UnixFDList*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.d_bus_proxy_call_with_unix_fd_list((to_unsafe as LibGio::DBusProxy*), method_name, parameters && (parameters.to_unsafe as LibGLib::Variant*), flags, Int32.new(timeout_msec), fd_list && (fd_list.to_unsafe as LibGio::UnixFDList*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -102,7 +102,7 @@ module Gio
 
     def cached_property_names
       __return_value = LibGio.d_bus_proxy_get_cached_property_names((to_unsafe as LibGio::DBusProxy*))
-      PointerIterator.new(__return_value) {|__item_48| (raise "Expected string but got null" unless __item_48; String.new(__item_48)) }
+      PointerIterator.new(__return_value) {|__item_54| (raise "Expected string but got null" unless __item_54; ::String.new(__item_54)) }
     end
 
     def connection
@@ -127,22 +127,22 @@ module Gio
 
     def interface_name
       __return_value = LibGio.d_bus_proxy_get_interface_name((to_unsafe as LibGio::DBusProxy*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def name
       __return_value = LibGio.d_bus_proxy_get_name((to_unsafe as LibGio::DBusProxy*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def name_owner
       __return_value = LibGio.d_bus_proxy_get_name_owner((to_unsafe as LibGio::DBusProxy*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def object_path
       __return_value = LibGio.d_bus_proxy_get_object_path((to_unsafe as LibGio::DBusProxy*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def set_cached_property(property_name, value)
@@ -163,7 +163,7 @@ module Gio
     alias GPropertiesChangedSignal = DBusProxy, GLib::Variant, Array(UInt8) -> 
     def on_g_properties_changed(&__block : GPropertiesChangedSignal)
       __callback = ->(_arg0 : LibGio::DBusProxy*, _arg1 : LibGio::LibGLib::Variant*, _arg2 : LibGio::UInt8***) {
-       __return_value = __block.call(DBusProxy.new(_arg0), GLib::Variant.new(_arg1), PointerIterator.new(_arg2) {|__item_46| (raise "Expected string but got null" unless __item_46; String.new(__item_46)) })
+       __return_value = __block.call(DBusProxy.new(_arg0), GLib::Variant.new(_arg1), PointerIterator.new(_arg2) {|__item_93| (raise "Expected string but got null" unless __item_93; ::String.new(__item_93)) })
        __return_value
       }
       connect("g-properties-changed", __callback)
@@ -172,7 +172,7 @@ module Gio
     alias GSignalSignal = DBusProxy, UInt8, UInt8, GLib::Variant -> 
     def on_g_signal(&__block : GSignalSignal)
       __callback = ->(_arg0 : LibGio::DBusProxy*, _arg1 : LibGio::UInt8**, _arg2 : LibGio::UInt8**, _arg3 : LibGio::LibGLib::Variant*) {
-       __return_value = __block.call(DBusProxy.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)), (raise "Expected string but got null" unless _arg2; String.new(_arg2)), GLib::Variant.new(_arg3))
+       __return_value = __block.call(DBusProxy.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)), (raise "Expected string but got null" unless _arg2; ::String.new(_arg2)), GLib::Variant.new(_arg3))
        __return_value
       }
       connect("g-signal", __callback)

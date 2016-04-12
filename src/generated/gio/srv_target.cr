@@ -11,7 +11,7 @@ module Gio
 
     def self.new_internal(hostname, port, priority, weight)
       __return_value = LibGio.srv_target_new(hostname, UInt16.new(port), UInt16.new(priority), UInt16.new(weight))
-      Gio::SrvTarget.new(__return_value)
+      cast Gio::SrvTarget.new(__return_value)
     end
 
     def copy
@@ -26,7 +26,7 @@ module Gio
 
     def hostname
       __return_value = LibGio.srv_target_get_hostname((to_unsafe as LibGio::SrvTarget*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def port

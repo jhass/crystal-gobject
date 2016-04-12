@@ -38,17 +38,17 @@ module Gtk
 
     def applications(length)
       __return_value = LibGtk.recent_info_get_applications((to_unsafe as LibGtk::RecentInfo*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_77| (raise "Expected string but got null" unless __item_77; String.new(__item_77)) }
+      PointerIterator.new(__return_value) {|__item_97| (raise "Expected string but got null" unless __item_97; ::String.new(__item_97)) }
     end
 
     def description
       __return_value = LibGtk.recent_info_get_description((to_unsafe as LibGtk::RecentInfo*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def display_name
       __return_value = LibGtk.recent_info_get_display_name((to_unsafe as LibGtk::RecentInfo*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def gicon
@@ -58,7 +58,7 @@ module Gtk
 
     def groups(length)
       __return_value = LibGtk.recent_info_get_groups((to_unsafe as LibGtk::RecentInfo*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_64| (raise "Expected string but got null" unless __item_64; String.new(__item_64)) }
+      PointerIterator.new(__return_value) {|__item_36| (raise "Expected string but got null" unless __item_36; ::String.new(__item_36)) }
     end
 
     def icon(size)
@@ -68,7 +68,7 @@ module Gtk
 
     def mime_type
       __return_value = LibGtk.recent_info_get_mime_type((to_unsafe as LibGtk::RecentInfo*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def modified
@@ -83,17 +83,17 @@ module Gtk
 
     def short_name
       __return_value = LibGtk.recent_info_get_short_name((to_unsafe as LibGtk::RecentInfo*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def uri
       __return_value = LibGtk.recent_info_get_uri((to_unsafe as LibGtk::RecentInfo*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def uri_display
       __return_value = LibGtk.recent_info_get_uri_display((to_unsafe as LibGtk::RecentInfo*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def visited
@@ -118,7 +118,7 @@ module Gtk
 
     def last_application
       __return_value = LibGtk.recent_info_last_application((to_unsafe as LibGtk::RecentInfo*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def match(info_b)

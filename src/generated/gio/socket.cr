@@ -7,6 +7,7 @@ module Gio
       @gio_socket.not_nil!
     end
 
+    # Implements DatagramBased
     # Implements Initable
 
 
@@ -235,7 +236,14 @@ module Gio
 
     def receive_message(address, vectors, num_vectors, messages, num_messages, flags, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.socket_receive_message((to_unsafe as LibGio::Socket*), (address.to_unsafe as LibGio::SocketAddress*), vectors, Int32.new(num_vectors), messages && messages, num_messages, flags, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.socket_receive_message((to_unsafe as LibGio::Socket*), address && (address.to_unsafe as LibGio::SocketAddress*), vectors, Int32.new(num_vectors), messages && messages, Int32.new(num_messages), Int32.new(flags), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      GLib::Error.assert __error
+      __return_value
+    end
+
+    def receive_messages(messages, num_messages, flags, cancellable)
+      __error = Pointer(LibGLib::Error).null
+      __return_value = LibGio.socket_receive_messages((to_unsafe as LibGio::Socket*), messages, UInt32.new(num_messages), Int32.new(flags), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

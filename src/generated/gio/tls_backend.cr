@@ -20,6 +20,16 @@ module Gio
       Gio::TlsDatabase.new(__return_value)
     end
 
+    def dtls_client_connection_type
+      __return_value = LibGio.tls_backend_get_dtls_client_connection_type((to_unsafe as LibGio::TlsBackend*))
+      __return_value
+    end
+
+    def dtls_server_connection_type
+      __return_value = LibGio.tls_backend_get_dtls_server_connection_type((to_unsafe as LibGio::TlsBackend*))
+      __return_value
+    end
+
     def file_database_type
       __return_value = LibGio.tls_backend_get_file_database_type((to_unsafe as LibGio::TlsBackend*))
       __return_value
@@ -27,6 +37,11 @@ module Gio
 
     def server_connection_type
       __return_value = LibGio.tls_backend_get_server_connection_type((to_unsafe as LibGio::TlsBackend*))
+      __return_value
+    end
+
+    def supports_dtls
+      __return_value = LibGio.tls_backend_supports_dtls((to_unsafe as LibGio::TlsBackend*))
       __return_value
     end
 

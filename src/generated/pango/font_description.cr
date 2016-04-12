@@ -11,7 +11,7 @@ module Pango
 
     def self.new_internal
       __return_value = LibPango.font_description_new
-      Pango::FontDescription.new(__return_value)
+      cast Pango::FontDescription.new(__return_value)
     end
 
     def better_match(old_match, new_match)
@@ -41,7 +41,7 @@ module Pango
 
     def family
       __return_value = LibPango.font_description_get_family((to_unsafe as LibPango::FontDescription*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def gravity
@@ -146,12 +146,12 @@ module Pango
 
     def to_filename
       __return_value = LibPango.font_description_to_filename((to_unsafe as LibPango::FontDescription*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def to_string
       __return_value = LibPango.font_description_to_string((to_unsafe as LibPango::FontDescription*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def unset_fields(to_unset)

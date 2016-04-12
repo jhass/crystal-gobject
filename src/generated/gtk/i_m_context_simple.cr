@@ -11,7 +11,12 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.i_m_context_simple_new
-      Gtk::IMContext.new(__return_value)
+      cast Gtk::IMContext.new(__return_value)
+    end
+
+    def add_compose_file(compose_file)
+      __return_value = LibGtk.i_m_context_simple_add_compose_file((to_unsafe as LibGtk::IMContextSimple*), compose_file)
+      __return_value
     end
 
   end

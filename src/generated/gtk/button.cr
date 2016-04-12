@@ -22,30 +22,29 @@ module Gtk
 
 
 
-
     def self.new_internal
       __return_value = LibGtk.button_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_from_icon_name(icon_name, size)
       __return_value = LibGtk.button_new_from_icon_name(icon_name, Int32.new(size))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_from_stock(stock_id)
       __return_value = LibGtk.button_new_from_stock(stock_id)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_label(label)
       __return_value = LibGtk.button_new_with_label(label)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_mnemonic(label)
       __return_value = LibGtk.button_new_with_mnemonic(label)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def clicked
@@ -80,7 +79,7 @@ module Gtk
 
     def image
       __return_value = LibGtk.button_get_image((to_unsafe as LibGtk::Button*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def image_position
@@ -90,7 +89,7 @@ module Gtk
 
     def label
       __return_value = LibGtk.button_get_label((to_unsafe as LibGtk::Button*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def relief

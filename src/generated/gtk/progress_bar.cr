@@ -20,7 +20,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.progress_bar_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def ellipsize
@@ -50,7 +50,7 @@ module Gtk
 
     def text
       __return_value = LibGtk.progress_bar_get_text((to_unsafe as LibGtk::ProgressBar*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def pulse

@@ -28,7 +28,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.print_operation_new
-      Gtk::PrintOperation.new(__return_value)
+      cast Gtk::PrintOperation.new(__return_value)
     end
 
     def cancel
@@ -80,7 +80,7 @@ module Gtk
 
     def status_string
       __return_value = LibGtk.print_operation_get_status_string((to_unsafe as LibGtk::PrintOperation*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def support_selection

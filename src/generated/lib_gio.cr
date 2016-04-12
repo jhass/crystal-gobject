@@ -223,7 +223,7 @@ lib LibGio
     # Virtual function convert
     # Virtual function reset
   end
-  fun converter_convert = g_converter_convert(this : Converter*, inbuf : UInt8*, inbuf_size : UInt64, outbuf : Void*, outbuf_size : UInt64, flags : LibGio::ConverterFlags, bytes_read : UInt64*, bytes_written : UInt64*, error : LibGLib::Error**) : LibGio::ConverterResult
+  fun converter_convert = g_converter_convert(this : Converter*, inbuf : UInt8*, inbuf_size : UInt64, outbuf : UInt8*, outbuf_size : UInt64, flags : LibGio::ConverterFlags, bytes_read : UInt64*, bytes_written : UInt64*, error : LibGLib::Error**) : LibGio::ConverterResult
   fun converter_reset = g_converter_reset(this : Converter*) : Void
 
   struct DBusInterface # interface
@@ -286,6 +286,25 @@ lib LibGio
   fun d_bus_object_manager_get_object = g_dbus_object_manager_get_object(this : DBusObjectManager*, object_path : UInt8*) : LibGio::DBusObject*
   fun d_bus_object_manager_get_object_path = g_dbus_object_manager_get_object_path(this : DBusObjectManager*) : UInt8*
   fun d_bus_object_manager_get_objects = g_dbus_object_manager_get_objects(this : DBusObjectManager*) : Void**
+
+  struct DatagramBased # interface
+    g_iface : LibGObject::TypeInterface
+    receive_messages : -> Void
+    send_messages : -> Void
+    create_source : -> Void
+    condition_check : -> Void
+    condition_wait : -> Void
+    # Virtual function condition_check
+    # Virtual function condition_wait
+    # Virtual function create_source
+    # Virtual function receive_messages
+    # Virtual function send_messages
+  end
+  fun datagram_based_condition_check = g_datagram_based_condition_check(this : DatagramBased*, condition : LibGLib::IOCondition) : LibGLib::IOCondition
+  fun datagram_based_condition_wait = g_datagram_based_condition_wait(this : DatagramBased*, condition : LibGLib::IOCondition, timeout : Int64, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Bool
+  fun datagram_based_create_source = g_datagram_based_create_source(this : DatagramBased*, condition : LibGLib::IOCondition, cancellable : LibGio::Cancellable*) : LibGLib::Source*
+  fun datagram_based_receive_messages = g_datagram_based_receive_messages(this : DatagramBased*, messages : LibGio::InputMessage*, num_messages : UInt32, flags : Int32, timeout : Int64, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int32
+  fun datagram_based_send_messages = g_datagram_based_send_messages(this : DatagramBased*, messages : LibGio::OutputMessage*, num_messages : UInt32, flags : Int32, timeout : Int64, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int32
 
   struct DesktopAppInfoLookup # interface
     g_iface : LibGObject::TypeInterface
@@ -390,6 +409,79 @@ lib LibGio
   fun drive_start_finish = g_drive_start_finish(this : Drive*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : Bool
   fun drive_stop = g_drive_stop(this : Drive*, flags : LibGio::MountUnmountFlags, mount_operation : LibGio::MountOperation*, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun drive_stop_finish = g_drive_stop_finish(this : Drive*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : Bool
+
+  struct DtlsClientConnection # interface
+    g_iface : LibGObject::TypeInterface
+  # Requires DatagramBased
+  # Requires DtlsConnection
+    # Property accepted_cas : Void**
+    # Property server_identity : LibGio::SocketConnectable
+    # Property validation_flags : LibGio::TlsCertificateFlags
+  end
+  fun dtls_client_connection_new = g_dtls_client_connection_new(base_socket : LibGio::DatagramBased*, server_identity : LibGio::SocketConnectable*, error : LibGLib::Error**) : LibGio::DtlsClientConnection*
+  fun dtls_client_connection_get_accepted_cas = g_dtls_client_connection_get_accepted_cas(this : DtlsClientConnection*) : Void**
+  fun dtls_client_connection_get_server_identity = g_dtls_client_connection_get_server_identity(this : DtlsClientConnection*) : LibGio::SocketConnectable*
+  fun dtls_client_connection_get_validation_flags = g_dtls_client_connection_get_validation_flags(this : DtlsClientConnection*) : LibGio::TlsCertificateFlags
+  fun dtls_client_connection_set_server_identity = g_dtls_client_connection_set_server_identity(this : DtlsClientConnection*, identity : LibGio::SocketConnectable*) : Void
+  fun dtls_client_connection_set_validation_flags = g_dtls_client_connection_set_validation_flags(this : DtlsClientConnection*, flags : LibGio::TlsCertificateFlags) : Void
+
+  struct DtlsConnection # interface
+    g_iface : LibGObject::TypeInterface
+    accept_certificate : -> Void
+    handshake : -> Void
+    handshake_async : -> Void
+    handshake_finish : -> Void
+    shutdown : -> Void
+    shutdown_async : -> Void
+    shutdown_finish : -> Void
+  # Requires DatagramBased
+    # Property base_socket : LibGio::DatagramBased
+    # Property certificate : LibGio::TlsCertificate
+    # Property database : LibGio::TlsDatabase
+    # Property interaction : LibGio::TlsInteraction
+    # Property peer_certificate : LibGio::TlsCertificate
+    # Property peer_certificate_errors : LibGio::TlsCertificateFlags
+    # Property rehandshake_mode : LibGio::TlsRehandshakeMode
+    # Property require_close_notify : Bool
+    # Signal accept-certificate
+    # Virtual function accept_certificate
+    # Virtual function handshake
+    # Virtual function handshake_async
+    # Virtual function handshake_finish
+    # Virtual function shutdown
+    # Virtual function shutdown_async
+    # Virtual function shutdown_finish
+  end
+  fun dtls_connection_close = g_dtls_connection_close(this : DtlsConnection*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Bool
+  fun dtls_connection_close_async = g_dtls_connection_close_async(this : DtlsConnection*, io_priority : Int32, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
+  fun dtls_connection_close_finish = g_dtls_connection_close_finish(this : DtlsConnection*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : Bool
+  fun dtls_connection_emit_accept_certificate = g_dtls_connection_emit_accept_certificate(this : DtlsConnection*, peer_cert : LibGio::TlsCertificate*, errors : LibGio::TlsCertificateFlags) : Bool
+  fun dtls_connection_get_certificate = g_dtls_connection_get_certificate(this : DtlsConnection*) : LibGio::TlsCertificate*
+  fun dtls_connection_get_database = g_dtls_connection_get_database(this : DtlsConnection*) : LibGio::TlsDatabase*
+  fun dtls_connection_get_interaction = g_dtls_connection_get_interaction(this : DtlsConnection*) : LibGio::TlsInteraction*
+  fun dtls_connection_get_peer_certificate = g_dtls_connection_get_peer_certificate(this : DtlsConnection*) : LibGio::TlsCertificate*
+  fun dtls_connection_get_peer_certificate_errors = g_dtls_connection_get_peer_certificate_errors(this : DtlsConnection*) : LibGio::TlsCertificateFlags
+  fun dtls_connection_get_rehandshake_mode = g_dtls_connection_get_rehandshake_mode(this : DtlsConnection*) : LibGio::TlsRehandshakeMode
+  fun dtls_connection_get_require_close_notify = g_dtls_connection_get_require_close_notify(this : DtlsConnection*) : Bool
+  fun dtls_connection_handshake = g_dtls_connection_handshake(this : DtlsConnection*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Bool
+  fun dtls_connection_handshake_async = g_dtls_connection_handshake_async(this : DtlsConnection*, io_priority : Int32, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
+  fun dtls_connection_handshake_finish = g_dtls_connection_handshake_finish(this : DtlsConnection*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : Bool
+  fun dtls_connection_set_certificate = g_dtls_connection_set_certificate(this : DtlsConnection*, certificate : LibGio::TlsCertificate*) : Void
+  fun dtls_connection_set_database = g_dtls_connection_set_database(this : DtlsConnection*, database : LibGio::TlsDatabase*) : Void
+  fun dtls_connection_set_interaction = g_dtls_connection_set_interaction(this : DtlsConnection*, interaction : LibGio::TlsInteraction*) : Void
+  fun dtls_connection_set_rehandshake_mode = g_dtls_connection_set_rehandshake_mode(this : DtlsConnection*, mode : LibGio::TlsRehandshakeMode) : Void
+  fun dtls_connection_set_require_close_notify = g_dtls_connection_set_require_close_notify(this : DtlsConnection*, require_close_notify : Bool) : Void
+  fun dtls_connection_shutdown = g_dtls_connection_shutdown(this : DtlsConnection*, shutdown_read : Bool, shutdown_write : Bool, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Bool
+  fun dtls_connection_shutdown_async = g_dtls_connection_shutdown_async(this : DtlsConnection*, shutdown_read : Bool, shutdown_write : Bool, io_priority : Int32, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
+  fun dtls_connection_shutdown_finish = g_dtls_connection_shutdown_finish(this : DtlsConnection*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : Bool
+
+  struct DtlsServerConnection # interface
+    g_iface : LibGObject::TypeInterface
+  # Requires DatagramBased
+  # Requires DtlsConnection
+    # Property authentication_mode : LibGio::TlsAuthenticationMode
+  end
+  fun dtls_server_connection_new = g_dtls_server_connection_new(base_socket : LibGio::DatagramBased*, certificate : LibGio::TlsCertificate*, error : LibGLib::Error**) : LibGio::DtlsServerConnection*
 
   struct File # interface
     g_iface : LibGObject::TypeInterface
@@ -746,8 +838,9 @@ lib LibGio
     g_iface : LibGObject::TypeInterface
     get_item_type : -> Void
     get_n_items : -> Void
-    get_item : Void*
+    get_item : -> Void
     # Signal items-changed
+    # Virtual function get_item
     # Virtual function get_item_type
     # Virtual function get_n_items
   end
@@ -984,11 +1077,14 @@ lib LibGio
     g_iface : LibGObject::TypeInterface
     enumerate : -> Void
     proxy_enumerate : -> Void
+    to_string : -> Void
     # Virtual function enumerate
     # Virtual function proxy_enumerate
+    # Virtual function to_string
   end
   fun socket_connectable_enumerate = g_socket_connectable_enumerate(this : SocketConnectable*) : LibGio::SocketAddressEnumerator*
   fun socket_connectable_proxy_enumerate = g_socket_connectable_proxy_enumerate(this : SocketConnectable*) : LibGio::SocketAddressEnumerator*
+  fun socket_connectable_to_string = g_socket_connectable_to_string(this : SocketConnectable*) : UInt8*
 
   struct TlsBackend # interface
     g_iface : LibGObject::TypeInterface
@@ -998,15 +1094,22 @@ lib LibGio
     get_server_connection_type : -> Void
     get_file_database_type : -> Void
     get_default_database : -> Void
+    supports_dtls : -> Void
+    get_dtls_client_connection_type : -> Void
+    get_dtls_server_connection_type : -> Void
     # Virtual function get_default_database
+    # Virtual function supports_dtls
     # Virtual function supports_tls
   end
   fun tls_backend_get_default = g_tls_backend_get_default() : LibGio::TlsBackend*
   fun tls_backend_get_certificate_type = g_tls_backend_get_certificate_type(this : TlsBackend*) : UInt64
   fun tls_backend_get_client_connection_type = g_tls_backend_get_client_connection_type(this : TlsBackend*) : UInt64
   fun tls_backend_get_default_database = g_tls_backend_get_default_database(this : TlsBackend*) : LibGio::TlsDatabase*
+  fun tls_backend_get_dtls_client_connection_type = g_tls_backend_get_dtls_client_connection_type(this : TlsBackend*) : UInt64
+  fun tls_backend_get_dtls_server_connection_type = g_tls_backend_get_dtls_server_connection_type(this : TlsBackend*) : UInt64
   fun tls_backend_get_file_database_type = g_tls_backend_get_file_database_type(this : TlsBackend*) : UInt64
   fun tls_backend_get_server_connection_type = g_tls_backend_get_server_connection_type(this : TlsBackend*) : UInt64
+  fun tls_backend_supports_dtls = g_tls_backend_supports_dtls(this : TlsBackend*) : Bool
   fun tls_backend_supports_tls = g_tls_backend_supports_tls(this : TlsBackend*) : Bool
 
   struct TlsClientConnection # interface
@@ -1390,6 +1493,16 @@ lib LibGio
     _data : UInt8[0]
   end
 
+  struct InputMessage # struct
+    address : LibGio::SocketAddress*
+    vectors : LibGio::InputVector*
+    num_vectors : UInt32
+    bytes_received : UInt64
+    flags : Int32
+    control_messages : LibGio::SocketControlMessage**
+    num_control_messages : UInt32*
+  end
+
   struct InputStreamPrivate # struct
     _data : UInt8[0]
   end
@@ -1683,6 +1796,7 @@ lib LibGio
     HANDLES_COMMAND_LINE = 8
     SEND_ENVIRONMENT = 16
     NON_UNIQUE = 32
+    CAN_OVERRIDE_APP_ID = 64
   end
 
   enum AskPasswordFlags : UInt32
@@ -3238,7 +3352,8 @@ lib LibGio
   fun socket_listen = g_socket_listen(this : Socket*, error : LibGLib::Error**) : Bool
   fun socket_receive = g_socket_receive(this : Socket*, buffer : UInt8*, size : UInt64, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int64
   fun socket_receive_from = g_socket_receive_from(this : Socket*, address : LibGio::SocketAddress**, buffer : UInt8*, size : UInt64, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int64
-  fun socket_receive_message = g_socket_receive_message(this : Socket*, address : LibGio::SocketAddress**, vectors : LibGio::InputVector*, num_vectors : Int32, messages : LibGio::SocketControlMessage**, num_messages : Int32*, flags : Int32*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int64
+  fun socket_receive_message = g_socket_receive_message(this : Socket*, address : LibGio::SocketAddress**, vectors : LibGio::InputVector*, num_vectors : Int32, messages : LibGio::SocketControlMessage***, num_messages : Int32*, flags : Int32*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int64
+  fun socket_receive_messages = g_socket_receive_messages(this : Socket*, messages : LibGio::InputMessage*, num_messages : UInt32, flags : Int32, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int32
   fun socket_receive_with_blocking = g_socket_receive_with_blocking(this : Socket*, buffer : UInt8*, size : UInt64, blocking : Bool, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int64
   fun socket_send = g_socket_send(this : Socket*, buffer : UInt8*, size : UInt64, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int64
   fun socket_send_message = g_socket_send_message(this : Socket*, address : LibGio::SocketAddress*, vectors : LibGio::OutputVector*, num_vectors : Int32, messages : LibGio::SocketControlMessage**, num_messages : Int32, flags : Int32, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int64
@@ -4021,6 +4136,7 @@ lib LibGio
     BROKEN_PIPE = 44
     CONNECTION_CLOSED = 44
     NOT_CONNECTED = 45
+    MESSAGE_TOO_LARGE = 46
   end
 
   enum IOModuleScopeFlags : UInt32
@@ -4339,8 +4455,8 @@ lib LibGio
   fun dbus_address_escape_value = g_dbus_address_escape_value(string : UInt8*) : UInt8*
   fun dbus_address_get_for_bus_sync = g_dbus_address_get_for_bus_sync(bus_type : LibGio::BusType, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : UInt8*
   fun dbus_address_get_stream = g_dbus_address_get_stream(address : UInt8*, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
-  fun dbus_address_get_stream_finish = g_dbus_address_get_stream_finish(res : LibGio::AsyncResult*, out_guid : UInt8*, error : LibGLib::Error**) : LibGio::IOStream*
-  fun dbus_address_get_stream_sync = g_dbus_address_get_stream_sync(address : UInt8*, out_guid : UInt8*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : LibGio::IOStream*
+  fun dbus_address_get_stream_finish = g_dbus_address_get_stream_finish(res : LibGio::AsyncResult*, out_guid : UInt8**, error : LibGLib::Error**) : LibGio::IOStream*
+  fun dbus_address_get_stream_sync = g_dbus_address_get_stream_sync(address : UInt8*, out_guid : UInt8**, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : LibGio::IOStream*
   fun dbus_annotation_info_lookup = g_dbus_annotation_info_lookup(annotations : LibGio::DBusAnnotationInfo**, name : UInt8*) : UInt8*
   fun dbus_error_encode_gerror = g_dbus_error_encode_gerror(error : LibGLib::Error**) : UInt8*
   fun dbus_error_get_remote_error = g_dbus_error_get_remote_error(error : LibGLib::Error**) : UInt8*
@@ -4361,6 +4477,8 @@ lib LibGio
   fun dbus_is_name = g_dbus_is_name(string : UInt8*) : Bool
   fun dbus_is_supported_address = g_dbus_is_supported_address(string : UInt8*, error : LibGLib::Error**) : Bool
   fun dbus_is_unique_name = g_dbus_is_unique_name(string : UInt8*) : Bool
+  fun dtls_client_connection_new = g_dtls_client_connection_new(base_socket : LibGio::DatagramBased*, server_identity : LibGio::SocketConnectable*, error : LibGLib::Error**) : LibGio::DtlsClientConnection*
+  fun dtls_server_connection_new = g_dtls_server_connection_new(base_socket : LibGio::DatagramBased*, certificate : LibGio::TlsCertificate*, error : LibGLib::Error**) : LibGio::DtlsServerConnection*
   fun file_new_for_commandline_arg = g_file_new_for_commandline_arg(arg : UInt8*) : LibGio::File*
   fun file_new_for_commandline_arg_and_cwd = g_file_new_for_commandline_arg_and_cwd(arg : UInt8*, cwd : UInt8*) : LibGio::File*
   fun file_new_for_path = g_file_new_for_path(path : UInt8*) : LibGio::File*
@@ -4442,12 +4560,14 @@ lib LibGio
  alias DBusSignalCallback = LibGio::DBusConnection*, UInt8*, UInt8*, UInt8*, UInt8*, LibGLib::Variant*, Void* -> Void
  alias DBusSubtreeDispatchFunc = LibGio::DBusConnection*, UInt8*, UInt8*, UInt8*, UInt8*, Void*, Void* -> LibGio::DBusInterfaceVTable*
  alias DBusSubtreeIntrospectFunc = LibGio::DBusConnection*, UInt8*, UInt8*, UInt8*, Void* -> LibGio::DBusInterfaceInfo*
+ alias DatagramBasedSourceFunc = LibGio::DatagramBased*, LibGLib::IOCondition, Void* -> Bool
  alias DesktopAppLaunchCallback = LibGio::DesktopAppInfo*, Int32, Void* -> Void
  alias FileMeasureProgressCallback = Bool, UInt64, UInt64, UInt64, Void* -> Void
  alias FileProgressCallback = Int64, Int64, Void* -> Void
  alias FileReadMoreCallback = UInt8*, Int64, Void* -> Bool
  alias IOSchedulerJobFunc = LibGio::IOSchedulerJob*, LibGio::Cancellable*, Void* -> Bool
  alias PollableSourceFunc = LibGObject::Object*, Void* -> Bool
+ alias ReallocFunc = Void*, UInt64 -> Void*
  alias SettingsBindGetMapping = LibGObject::Value*, LibGLib::Variant*, Void* -> Bool
  alias SettingsBindSetMapping = LibGObject::Value*, LibGLib::VariantType*, Void* -> LibGLib::Variant*
  alias SettingsGetMapping = LibGLib::Variant*, Void*, Void* -> Bool

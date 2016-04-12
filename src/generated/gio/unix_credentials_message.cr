@@ -12,12 +12,12 @@ module Gio
 
     def self.new_internal
       __return_value = LibGio.unix_credentials_message_new
-      Gio::SocketControlMessage.new(__return_value)
+      cast Gio::SocketControlMessage.new(__return_value)
     end
 
     def self.new_with_credentials(credentials)
       __return_value = LibGio.unix_credentials_message_new_with_credentials((credentials.to_unsafe as LibGio::Credentials*))
-      Gio::SocketControlMessage.new(__return_value)
+      cast Gio::SocketControlMessage.new(__return_value)
     end
 
     def self.supported?

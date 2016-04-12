@@ -10,7 +10,7 @@ module Gtk
     # Implements Buildable
     def self.new_internal
       __return_value = LibGtk.icon_factory_new
-      Gtk::IconFactory.new(__return_value)
+      cast Gtk::IconFactory.new(__return_value)
     end
 
     def self.lookup_default(stock_id)

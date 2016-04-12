@@ -13,7 +13,7 @@ module Gtk
     # Implements Component
     def self.new_internal
       __return_value = LibGtk.container_cell_accessible_new
-      Gtk::ContainerCellAccessible.new(__return_value)
+      cast Gtk::ContainerCellAccessible.new(__return_value)
     end
 
     def add_child(child)

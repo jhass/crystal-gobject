@@ -22,7 +22,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.stack_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def add_named(child, name)
@@ -37,7 +37,7 @@ module Gtk
 
     def child_by_name(name)
       __return_value = LibGtk.stack_get_child_by_name((to_unsafe as LibGtk::Stack*), name)
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def hhomogeneous
@@ -77,12 +77,12 @@ module Gtk
 
     def visible_child
       __return_value = LibGtk.stack_get_visible_child((to_unsafe as LibGtk::Stack*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def visible_child_name
       __return_value = LibGtk.stack_get_visible_child_name((to_unsafe as LibGtk::Stack*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def hhomogeneous=(hhomogeneous)

@@ -11,26 +11,26 @@ module Gst
 
     def self.new_internal
       __return_value = LibGst.buffer_new
-      Gst::Buffer.new(__return_value)
+      cast Gst::Buffer.new(__return_value)
     end
 
     def self.new_allocate(allocator, size, params)
       __return_value = LibGst.buffer_new_allocate(allocator && (allocator.to_unsafe as LibGst::Allocator*), UInt64.new(size), params && (params.to_unsafe as LibGst::AllocationParams*))
-      Gst::Buffer.new(__return_value) if __return_value
+      cast Gst::Buffer.new(__return_value) if __return_value
     end
 
     def self.new_wrapped(data, size)
       __return_value = LibGst.buffer_new_wrapped(data, UInt64.new(size))
-      Gst::Buffer.new(__return_value)
+      cast Gst::Buffer.new(__return_value)
     end
 
     def self.new_wrapped_full(flags, data, maxsize, offset, size, user_data, notify : LibGLib::DestroyNotify?)
       __return_value = LibGst.buffer_new_wrapped_full(flags, data, UInt64.new(maxsize), UInt64.new(offset), UInt64.new(size), user_data && user_data, notify && notify)
-      Gst::Buffer.new(__return_value)
+      cast Gst::Buffer.new(__return_value)
     end
 
     def add_meta(info, params)
-      __return_value = LibGst.buffer_add_meta((to_unsafe as LibGst::Buffer*), (info.to_unsafe as LibGst::MetaInfo*), params)
+      __return_value = LibGst.buffer_add_meta((to_unsafe as LibGst::Buffer*), (info.to_unsafe as LibGst::MetaInfo*), params && params)
       Gst::Meta.new(__return_value)
     end
 
@@ -75,7 +75,7 @@ module Gst
     end
 
     def extract(offset, dest, size)
-      __return_value = LibGst.buffer_extract((to_unsafe as LibGst::Buffer*), UInt64.new(offset), dest, UInt64.new(size))
+      __return_value = LibGst.buffer_extract((to_unsafe as LibGst::Buffer*), UInt64.new(offset), dest && dest, UInt64.new(size))
       __return_value
     end
 
@@ -95,7 +95,7 @@ module Gst
     end
 
     def foreach_meta(func : LibGst::BufferForeachMetaFunc, user_data)
-      __return_value = LibGst.buffer_foreach_meta((to_unsafe as LibGst::Buffer*), func, user_data)
+      __return_value = LibGst.buffer_foreach_meta((to_unsafe as LibGst::Buffer*), func, user_data && user_data)
       __return_value
     end
 
@@ -150,7 +150,7 @@ module Gst
     end
 
     def iterate_meta(state)
-      __return_value = LibGst.buffer_iterate_meta((to_unsafe as LibGst::Buffer*), state)
+      __return_value = LibGst.buffer_iterate_meta((to_unsafe as LibGst::Buffer*), state && state)
       Gst::Meta.new(__return_value) if __return_value
     end
 

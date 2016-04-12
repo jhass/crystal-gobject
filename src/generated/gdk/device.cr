@@ -18,6 +18,8 @@ module Gdk
 
 
 
+
+
     def self.grab_info_libgtk_only(display, device, grab_window, owner_events)
       __return_value = LibGdk.device_grab_info_libgtk_only((display.to_unsafe as LibGdk::Display*), (device.to_unsafe as LibGdk::Device*), (grab_window.to_unsafe as LibGdk::Window*), owner_events)
       __return_value
@@ -55,7 +57,7 @@ module Gdk
 
     def last_event_window
       __return_value = LibGdk.device_get_last_event_window((to_unsafe as LibGdk::Device*))
-      Gdk::Window.new(__return_value)
+      Gdk::Window.new(__return_value) if __return_value
     end
 
     def mode
@@ -75,7 +77,7 @@ module Gdk
 
     def name
       __return_value = LibGdk.device_get_name((to_unsafe as LibGdk::Device*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def position(screen, x, y)
@@ -90,7 +92,12 @@ module Gdk
 
     def product_id
       __return_value = LibGdk.device_get_product_id((to_unsafe as LibGdk::Device*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
+    end
+
+    def seat
+      __return_value = LibGdk.device_get_seat((to_unsafe as LibGdk::Device*))
+      Gdk::Seat.new(__return_value)
     end
 
     def source
@@ -100,7 +107,7 @@ module Gdk
 
     def vendor_id
       __return_value = LibGdk.device_get_vendor_id((to_unsafe as LibGdk::Device*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def window_at_position(win_x, win_y)

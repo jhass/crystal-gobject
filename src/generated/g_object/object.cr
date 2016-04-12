@@ -11,27 +11,27 @@ module GObject
 
     def self.new_internal(object_type, n_parameters, parameters)
       __return_value = LibGObject.object_new(UInt64.new(object_type), UInt32.new(n_parameters), parameters)
-      GObject::Object.new(__return_value)
+      cast GObject::Object.new(__return_value)
     end
 
     def self.compat_control(what, data)
-      __return_value = LibGObject.object_compat_control(UInt64.new(what), data)
+      __return_value = LibGObject.object_compat_control(UInt64.new(what), data && data)
       __return_value
     end
 
     def self.interface_find_property(g_iface, property_name)
-      __return_value = LibGObject.object_interface_find_property(g_iface, property_name)
+      __return_value = LibGObject.object_interface_find_property((g_iface.to_unsafe as LibGObject::TypeInterface*), property_name)
       GObject::ParamSpec.new(__return_value)
     end
 
     def self.interface_install_property(g_iface, pspec)
-      __return_value = LibGObject.object_interface_install_property(g_iface, (pspec.to_unsafe as LibGObject::ParamSpec*))
+      __return_value = LibGObject.object_interface_install_property((g_iface.to_unsafe as LibGObject::TypeInterface*), (pspec.to_unsafe as LibGObject::ParamSpec*))
       __return_value
     end
 
     def self.interface_list_properties(g_iface, n_properties_p)
-      __return_value = LibGObject.object_interface_list_properties(g_iface, UInt32.new(n_properties_p))
-      PointerIterator.new(__return_value) {|__item_90| GObject::ParamSpec.new(__item_90) }
+      __return_value = LibGObject.object_interface_list_properties((g_iface.to_unsafe as LibGObject::TypeInterface*), UInt32.new(n_properties_p))
+      PointerIterator.new(__return_value) {|__item_21| GObject::ParamSpec.new(__item_21) }
     end
 
     def bind_property(source_property, target, target_property, flags)
@@ -56,7 +56,7 @@ module GObject
 
     def data(key)
       __return_value = LibGObject.object_get_data((to_unsafe as LibGObject::Object*), key)
-      __return_value
+      __return_value if __return_value
     end
 
     def property(property_name, value)
@@ -66,7 +66,7 @@ module GObject
 
     def qdata(quark)
       __return_value = LibGObject.object_get_qdata((to_unsafe as LibGObject::Object*), UInt32.new(quark))
-      __return_value
+      __return_value if __return_value
     end
 
     def floating?
@@ -110,7 +110,7 @@ module GObject
     end
 
     def set_data(key, data)
-      __return_value = LibGObject.object_set_data((to_unsafe as LibGObject::Object*), key, data)
+      __return_value = LibGObject.object_set_data((to_unsafe as LibGObject::Object*), key, data && data)
       __return_value
     end
 
@@ -121,12 +121,12 @@ module GObject
 
     def steal_data(key)
       __return_value = LibGObject.object_steal_data((to_unsafe as LibGObject::Object*), key)
-      __return_value
+      __return_value if __return_value
     end
 
     def steal_qdata(quark)
       __return_value = LibGObject.object_steal_qdata((to_unsafe as LibGObject::Object*), UInt32.new(quark))
-      __return_value
+      __return_value if __return_value
     end
 
     def thaw_notify

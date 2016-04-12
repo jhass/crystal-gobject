@@ -23,7 +23,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.places_sidebar_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def add_shortcut(location)
@@ -38,12 +38,12 @@ module Gtk
 
     def location
       __return_value = LibGtk.places_sidebar_get_location((to_unsafe as LibGtk::PlacesSidebar*))
-      __return_value
+      __return_value if __return_value
     end
 
     def nth_bookmark(n)
       __return_value = LibGtk.places_sidebar_get_nth_bookmark((to_unsafe as LibGtk::PlacesSidebar*), Int32.new(n))
-      __return_value
+      __return_value if __return_value
     end
 
     def open_flags
@@ -168,6 +168,15 @@ module Gtk
       connect("drag-perform-drop", __callback)
     end
 
+    alias MountSignal = PlacesSidebar, Gio::MountOperation -> 
+    def on_mount(&__block : MountSignal)
+      __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGio::MountOperation*) {
+       __return_value = __block.call(PlacesSidebar.new(_arg0), Gio::MountOperation.new(_arg1))
+       __return_value
+      }
+      connect("mount", __callback)
+    end
+
     alias OpenLocationSignal = PlacesSidebar, Gio::File, Gtk::PlacesOpenFlags -> 
     def on_open_location(&__block : OpenLocationSignal)
       __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGio::File*, _arg2 : LibGtk::LibGtk::PlacesOpenFlags*) {
@@ -207,7 +216,7 @@ module Gtk
     alias ShowErrorMessageSignal = PlacesSidebar, UInt8, UInt8 -> 
     def on_show_error_message(&__block : ShowErrorMessageSignal)
       __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::UInt8**, _arg2 : LibGtk::UInt8**) {
-       __return_value = __block.call(PlacesSidebar.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)), (raise "Expected string but got null" unless _arg2; String.new(_arg2)))
+       __return_value = __block.call(PlacesSidebar.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)), (raise "Expected string but got null" unless _arg2; ::String.new(_arg2)))
        __return_value
       }
       connect("show-error-message", __callback)
@@ -220,6 +229,24 @@ module Gtk
        __return_value
       }
       connect("show-other-locations", __callback)
+    end
+
+    alias ShowOtherLocationsWithFlagsSignal = PlacesSidebar, Gtk::PlacesOpenFlags -> 
+    def on_show_other_locations_with_flags(&__block : ShowOtherLocationsWithFlagsSignal)
+      __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGtk::PlacesOpenFlags*) {
+       __return_value = __block.call(PlacesSidebar.new(_arg0), _arg1)
+       __return_value
+      }
+      connect("show-other-locations-with-flags", __callback)
+    end
+
+    alias UnmountSignal = PlacesSidebar, Gio::MountOperation -> 
+    def on_unmount(&__block : UnmountSignal)
+      __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGio::MountOperation*) {
+       __return_value = __block.call(PlacesSidebar.new(_arg0), Gio::MountOperation.new(_arg1))
+       __return_value
+      }
+      connect("unmount", __callback)
     end
 
   end

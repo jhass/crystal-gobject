@@ -11,17 +11,17 @@ module Gtk
 
     def self.new_internal(name)
       __return_value = LibGtk.paper_size_new(name && name)
-      Gtk::PaperSize.new(__return_value)
+      cast Gtk::PaperSize.new(__return_value)
     end
 
     def self.new_custom(name, display_name, width, height, unit)
       __return_value = LibGtk.paper_size_new_custom(name, display_name, Float64.new(width), Float64.new(height), unit)
-      Gtk::PaperSize.new(__return_value)
+      cast Gtk::PaperSize.new(__return_value)
     end
 
     def self.new_from_ipp(ipp_name, width, height)
       __return_value = LibGtk.paper_size_new_from_ipp(ipp_name, Float64.new(width), Float64.new(height))
-      Gtk::PaperSize.new(__return_value)
+      cast Gtk::PaperSize.new(__return_value)
     end
 
     def self.new_from_key_file(key_file, group_name)
@@ -33,7 +33,7 @@ module Gtk
 
     def self.new_from_ppd(ppd_name, ppd_display_name, width, height)
       __return_value = LibGtk.paper_size_new_from_ppd(ppd_name, ppd_display_name, Float64.new(width), Float64.new(height))
-      Gtk::PaperSize.new(__return_value)
+      cast Gtk::PaperSize.new(__return_value)
     end
 
     def copy
@@ -68,7 +68,7 @@ module Gtk
 
     def display_name
       __return_value = LibGtk.paper_size_get_display_name((to_unsafe as LibGtk::PaperSize*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def height(unit)
@@ -78,12 +78,12 @@ module Gtk
 
     def name
       __return_value = LibGtk.paper_size_get_name((to_unsafe as LibGtk::PaperSize*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def ppd_name
       __return_value = LibGtk.paper_size_get_ppd_name((to_unsafe as LibGtk::PaperSize*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def width(unit)
@@ -118,7 +118,7 @@ module Gtk
 
     def self.default
       __return_value = LibGtk.paper_size_get_default
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def self.paper_sizes(include_custom)

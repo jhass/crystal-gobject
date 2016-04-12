@@ -16,7 +16,7 @@ module Gtk
 
     def self.new_internal(hadjustment, vadjustment)
       __return_value = LibGtk.layout_new(hadjustment && (hadjustment.to_unsafe as LibGtk::Adjustment*), vadjustment && (vadjustment.to_unsafe as LibGtk::Adjustment*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def bin_window

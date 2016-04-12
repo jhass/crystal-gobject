@@ -12,7 +12,7 @@ module Gst
 
     def self.new_internal
       __return_value = LibGst.device_monitor_new
-      Gst::DeviceMonitor.new(__return_value)
+      cast Gst::DeviceMonitor.new(__return_value)
     end
 
     def add_filter(classes, caps)
@@ -32,7 +32,7 @@ module Gst
 
     def providers
       __return_value = LibGst.device_monitor_get_providers((to_unsafe as LibGst::DeviceMonitor*))
-      PointerIterator.new(__return_value) {|__item_45| (raise "Expected string but got null" unless __item_45; String.new(__item_45)) }
+      PointerIterator.new(__return_value) {|__item_37| (raise "Expected string but got null" unless __item_37; ::String.new(__item_37)) }
     end
 
     def show_all_devices

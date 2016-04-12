@@ -14,7 +14,7 @@ module Gst
 
     def self.new_internal(name)
       __return_value = LibGst.bin_new(name && name)
-      Gst::Element.new(__return_value)
+      cast Gst::Element.new(__return_value)
     end
 
     def add(element)

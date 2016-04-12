@@ -15,7 +15,7 @@ module Gtk
 
     def self.new_internal(title, parent)
       __return_value = LibGtk.color_chooser_dialog_new(title && title, parent && (parent.to_unsafe as LibGtk::Window*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
   end

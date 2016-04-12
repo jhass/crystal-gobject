@@ -55,6 +55,11 @@ module Gdk
       Gdk::Window.new(__return_value)
     end
 
+    def legacy?
+      __return_value = LibGdk.g_l_context_is_legacy((to_unsafe as LibGdk::GLContext*))
+      __return_value
+    end
+
     def make_current
       __return_value = LibGdk.g_l_context_make_current((to_unsafe as LibGdk::GLContext*))
       __return_value

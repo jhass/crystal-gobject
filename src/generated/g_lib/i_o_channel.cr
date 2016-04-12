@@ -18,7 +18,7 @@ module GLib
 
     def self.unix_new(fd)
       __return_value = LibGLib.i_o_channel_unix_new(Int32.new(fd))
-      GLib::IOChannel.new(__return_value)
+      cast GLib::IOChannel.new(__return_value)
     end
 
     def close
@@ -55,7 +55,7 @@ module GLib
 
     def encoding
       __return_value = LibGLib.i_o_channel_get_encoding((to_unsafe as LibGLib::IOChannel*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def flags
@@ -65,7 +65,7 @@ module GLib
 
     def line_term(length)
       __return_value = LibGLib.i_o_channel_get_line_term((to_unsafe as LibGLib::IOChannel*), length)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def init

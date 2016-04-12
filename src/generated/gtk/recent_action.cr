@@ -14,12 +14,12 @@ module Gtk
 
     def self.new_internal(name, label, tooltip, stock_id)
       __return_value = LibGtk.recent_action_new(name, label && label, tooltip && tooltip, stock_id && stock_id)
-      Gtk::Action.new(__return_value)
+      cast Gtk::Action.new(__return_value)
     end
 
     def self.new_for_manager(name, label, tooltip, stock_id, manager)
       __return_value = LibGtk.recent_action_new_for_manager(name, label && label, tooltip && tooltip, stock_id && stock_id, manager && (manager.to_unsafe as LibGtk::RecentManager*))
-      Gtk::Action.new(__return_value)
+      cast Gtk::Action.new(__return_value)
     end
 
     def show_numbers

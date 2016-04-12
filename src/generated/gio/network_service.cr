@@ -14,27 +14,27 @@ module Gio
 
     def self.new_internal(service, protocol, domain)
       __return_value = LibGio.network_service_new(service, protocol, domain)
-      Gio::NetworkService.new(__return_value)
+      cast Gio::NetworkService.new(__return_value)
     end
 
     def domain
       __return_value = LibGio.network_service_get_domain((to_unsafe as LibGio::NetworkService*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def protocol
       __return_value = LibGio.network_service_get_protocol((to_unsafe as LibGio::NetworkService*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def scheme
       __return_value = LibGio.network_service_get_scheme((to_unsafe as LibGio::NetworkService*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def service
       __return_value = LibGio.network_service_get_service((to_unsafe as LibGio::NetworkService*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def scheme=(scheme)

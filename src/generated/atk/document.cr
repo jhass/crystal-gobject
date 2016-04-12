@@ -2,7 +2,7 @@ module Atk
   module Document
     def attribute_value(attribute_name)
       __return_value = LibAtk.document_get_attribute_value((to_unsafe as LibAtk::Document*), attribute_name)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def attributes
@@ -17,17 +17,17 @@ module Atk
 
     def document
       __return_value = LibAtk.document_get_document((to_unsafe as LibAtk::Document*))
-      __return_value
+      __return_value if __return_value
     end
 
     def document_type
       __return_value = LibAtk.document_get_document_type((to_unsafe as LibAtk::Document*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def locale
       __return_value = LibAtk.document_get_locale((to_unsafe as LibAtk::Document*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def page_count

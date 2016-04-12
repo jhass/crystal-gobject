@@ -11,7 +11,7 @@ module Gtk
 
     def self.new_internal(widget)
       __return_value = LibGtk.gesture_rotate_new((widget.to_unsafe as LibGtk::Widget*))
-      Gtk::Gesture.new(__return_value)
+      cast Gtk::Gesture.new(__return_value)
     end
 
     def angle_delta

@@ -11,12 +11,12 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.accel_group_new
-      Gtk::AccelGroup.new(__return_value)
+      cast Gtk::AccelGroup.new(__return_value)
     end
 
     def self.from_accel_closure(closure)
       __return_value = LibGtk.accel_group_from_accel_closure((closure.to_unsafe as LibGObject::Closure*))
-      Gtk::AccelGroup.new(__return_value)
+      Gtk::AccelGroup.new(__return_value) if __return_value
     end
 
     def activate(accel_quark, acceleratable, accel_key, accel_mods)
@@ -45,7 +45,7 @@ module Gtk
     end
 
     def find(find_func : LibGtk::AccelGroupFindFunc, data)
-      __return_value = LibGtk.accel_group_find((to_unsafe as LibGtk::AccelGroup*), find_func, data)
+      __return_value = LibGtk.accel_group_find((to_unsafe as LibGtk::AccelGroup*), find_func, data && data)
       Gtk::AccelKey.new(__return_value)
     end
 
@@ -66,7 +66,7 @@ module Gtk
 
     def query(accel_key, accel_mods, n_entries)
       __return_value = LibGtk.accel_group_query((to_unsafe as LibGtk::AccelGroup*), UInt32.new(accel_key), accel_mods, UInt32.new(n_entries))
-      PointerIterator.new(__return_value) {|__item_88| Gtk::AccelGroupEntry.new(__item_88) }
+      PointerIterator.new(__return_value) {|__item_78| Gtk::AccelGroupEntry.new(__item_78) } if __return_value
     end
 
     def unlock

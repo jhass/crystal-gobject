@@ -11,7 +11,7 @@ module Gst
 
     def self.new_internal(initial_size)
       __return_value = LibGst.atomic_queue_new(UInt32.new(initial_size))
-      Gst::AtomicQueue.new(__return_value)
+      cast Gst::AtomicQueue.new(__return_value)
     end
 
     def length
@@ -26,11 +26,11 @@ module Gst
 
     def pop
       __return_value = LibGst.atomic_queue_pop((to_unsafe as LibGst::AtomicQueue*))
-      __return_value
+      __return_value if __return_value
     end
 
     def push(data)
-      __return_value = LibGst.atomic_queue_push((to_unsafe as LibGst::AtomicQueue*), data)
+      __return_value = LibGst.atomic_queue_push((to_unsafe as LibGst::AtomicQueue*), data && data)
       __return_value
     end
 

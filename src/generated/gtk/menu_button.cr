@@ -21,12 +21,12 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.menu_button_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def align_widget
       __return_value = LibGtk.menu_button_get_align_widget((to_unsafe as LibGtk::MenuButton*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def direction
@@ -36,17 +36,17 @@ module Gtk
 
     def menu_model
       __return_value = LibGtk.menu_button_get_menu_model((to_unsafe as LibGtk::MenuButton*))
-      Gio::MenuModel.new(__return_value)
+      Gio::MenuModel.new(__return_value) if __return_value
     end
 
     def popover
       __return_value = LibGtk.menu_button_get_popover((to_unsafe as LibGtk::MenuButton*))
-      Gtk::Popover.new(__return_value)
+      Gtk::Popover.new(__return_value) if __return_value
     end
 
     def popup
       __return_value = LibGtk.menu_button_get_popup((to_unsafe as LibGtk::MenuButton*))
-      Gtk::Menu.new(__return_value)
+      Gtk::Menu.new(__return_value) if __return_value
     end
 
     def use_popover

@@ -10,7 +10,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.style_new
-      Gtk::Style.new(__return_value)
+      cast Gtk::Style.new(__return_value)
     end
 
     def apply_default_background(cr, window, state_type, x, y, width, height)

@@ -43,7 +43,7 @@ module Gio
 
     def object_path
       __return_value = LibGio.d_bus_interface_skeleton_get_object_path((to_unsafe as LibGio::DBusInterfaceSkeleton*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def properties

@@ -24,32 +24,32 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.status_icon_new
-      Gtk::StatusIcon.new(__return_value)
+      cast Gtk::StatusIcon.new(__return_value)
     end
 
     def self.new_from_file(filename)
       __return_value = LibGtk.status_icon_new_from_file(filename)
-      Gtk::StatusIcon.new(__return_value)
+      cast Gtk::StatusIcon.new(__return_value)
     end
 
     def self.new_from_gicon(icon)
       __return_value = LibGtk.status_icon_new_from_gicon((icon.to_unsafe as LibGio::Icon*))
-      Gtk::StatusIcon.new(__return_value)
+      cast Gtk::StatusIcon.new(__return_value)
     end
 
     def self.new_from_icon_name(icon_name)
       __return_value = LibGtk.status_icon_new_from_icon_name(icon_name)
-      Gtk::StatusIcon.new(__return_value)
+      cast Gtk::StatusIcon.new(__return_value)
     end
 
     def self.new_from_pixbuf(pixbuf)
       __return_value = LibGtk.status_icon_new_from_pixbuf((pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*))
-      Gtk::StatusIcon.new(__return_value)
+      cast Gtk::StatusIcon.new(__return_value)
     end
 
     def self.new_from_stock(stock_id)
       __return_value = LibGtk.status_icon_new_from_stock(stock_id)
-      Gtk::StatusIcon.new(__return_value)
+      cast Gtk::StatusIcon.new(__return_value)
     end
 
     def self.position_menu(menu, x, y, push_in, user_data)
@@ -74,7 +74,7 @@ module Gtk
 
     def icon_name
       __return_value = LibGtk.status_icon_get_icon_name((to_unsafe as LibGtk::StatusIcon*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def pixbuf
@@ -94,7 +94,7 @@ module Gtk
 
     def stock
       __return_value = LibGtk.status_icon_get_stock((to_unsafe as LibGtk::StatusIcon*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def storage_type
@@ -104,17 +104,17 @@ module Gtk
 
     def title
       __return_value = LibGtk.status_icon_get_title((to_unsafe as LibGtk::StatusIcon*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def tooltip_markup
       __return_value = LibGtk.status_icon_get_tooltip_markup((to_unsafe as LibGtk::StatusIcon*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def tooltip_text
       __return_value = LibGtk.status_icon_get_tooltip_text((to_unsafe as LibGtk::StatusIcon*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def visible

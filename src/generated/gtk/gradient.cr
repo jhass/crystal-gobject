@@ -11,12 +11,12 @@ module Gtk
 
     def self.new_linear(x0, y0, x1, y1)
       __return_value = LibGtk.gradient_new_linear(Float64.new(x0), Float64.new(y0), Float64.new(x1), Float64.new(y1))
-      Gtk::Gradient.new(__return_value)
+      cast Gtk::Gradient.new(__return_value)
     end
 
     def self.new_radial(x0, y0, radius0, x1, y1, radius1)
       __return_value = LibGtk.gradient_new_radial(Float64.new(x0), Float64.new(y0), Float64.new(radius0), Float64.new(x1), Float64.new(y1), Float64.new(radius1))
-      Gtk::Gradient.new(__return_value)
+      cast Gtk::Gradient.new(__return_value)
     end
 
     def add_color_stop(offset, color)
@@ -41,7 +41,7 @@ module Gtk
 
     def to_string
       __return_value = LibGtk.gradient_to_string((to_unsafe as LibGtk::Gradient*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def unref

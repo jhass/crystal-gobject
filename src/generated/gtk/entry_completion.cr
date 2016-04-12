@@ -20,12 +20,12 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.entry_completion_new
-      Gtk::EntryCompletion.new(__return_value)
+      cast Gtk::EntryCompletion.new(__return_value)
     end
 
     def self.new_with_area(area)
       __return_value = LibGtk.entry_completion_new_with_area((area.to_unsafe as LibGtk::CellArea*))
-      Gtk::EntryCompletion.new(__return_value)
+      cast Gtk::EntryCompletion.new(__return_value)
     end
 
     def complete
@@ -35,7 +35,7 @@ module Gtk
 
     def compute_prefix(key)
       __return_value = LibGtk.entry_completion_compute_prefix((to_unsafe as LibGtk::EntryCompletion*), key)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def delete_action(index)
@@ -45,7 +45,7 @@ module Gtk
 
     def completion_prefix
       __return_value = LibGtk.entry_completion_get_completion_prefix((to_unsafe as LibGtk::EntryCompletion*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def entry
@@ -70,7 +70,7 @@ module Gtk
 
     def model
       __return_value = LibGtk.entry_completion_get_model((to_unsafe as LibGtk::EntryCompletion*))
-      __return_value
+      __return_value if __return_value
     end
 
     def popup_completion
@@ -119,7 +119,7 @@ module Gtk
     end
 
     def set_match_func(func : LibGtk::EntryCompletionMatchFunc, func_data, func_notify : LibGLib::DestroyNotify)
-      __return_value = LibGtk.entry_completion_set_match_func((to_unsafe as LibGtk::EntryCompletion*), func, func_data, func_notify)
+      __return_value = LibGtk.entry_completion_set_match_func((to_unsafe as LibGtk::EntryCompletion*), func, func_data && func_data, func_notify)
       __return_value
     end
 
@@ -174,7 +174,7 @@ module Gtk
     alias InsertPrefixSignal = EntryCompletion, UInt8 -> Bool
     def on_insert_prefix(&__block : InsertPrefixSignal)
       __callback = ->(_arg0 : LibGtk::EntryCompletion*, _arg1 : LibGtk::UInt8**) {
-       __return_value = __block.call(EntryCompletion.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value = __block.call(EntryCompletion.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
       connect("insert-prefix", __callback)

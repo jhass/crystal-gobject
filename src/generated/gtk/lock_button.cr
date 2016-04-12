@@ -21,7 +21,7 @@ module Gtk
 
     def self.new_internal(permission)
       __return_value = LibGtk.lock_button_new(permission && (permission.to_unsafe as LibGio::Permission*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def permission

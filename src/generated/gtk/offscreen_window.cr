@@ -13,17 +13,17 @@ module Gtk
     # Implements Buildable
     def self.new_internal
       __return_value = LibGtk.offscreen_window_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def pixbuf
       __return_value = LibGtk.offscreen_window_get_pixbuf((to_unsafe as LibGtk::OffscreenWindow*))
-      GdkPixbuf::Pixbuf.new(__return_value)
+      GdkPixbuf::Pixbuf.new(__return_value) if __return_value
     end
 
     def surface
       __return_value = LibGtk.offscreen_window_get_surface((to_unsafe as LibGtk::OffscreenWindow*))
-      Cairo::Surface.new(__return_value)
+      Cairo::Surface.new(__return_value) if __return_value
     end
 
   end

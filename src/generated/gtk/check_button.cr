@@ -15,17 +15,17 @@ module Gtk
     # Implements Buildable
     def self.new_internal
       __return_value = LibGtk.check_button_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_label(label)
       __return_value = LibGtk.check_button_new_with_label(label)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_mnemonic(label)
       __return_value = LibGtk.check_button_new_with_mnemonic(label)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
   end

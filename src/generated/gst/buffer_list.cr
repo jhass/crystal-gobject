@@ -11,12 +11,12 @@ module Gst
 
     def self.new_internal
       __return_value = LibGst.buffer_list_new
-      Gst::BufferList.new(__return_value)
+      cast Gst::BufferList.new(__return_value)
     end
 
     def self.new_sized(size)
       __return_value = LibGst.buffer_list_new_sized(UInt32.new(size))
-      Gst::BufferList.new(__return_value)
+      cast Gst::BufferList.new(__return_value)
     end
 
     def copy_deep
@@ -25,7 +25,7 @@ module Gst
     end
 
     def foreach(func : LibGst::BufferListFunc, user_data)
-      __return_value = LibGst.buffer_list_foreach((to_unsafe as LibGst::BufferList*), func, user_data)
+      __return_value = LibGst.buffer_list_foreach((to_unsafe as LibGst::BufferList*), func, user_data && user_data)
       __return_value
     end
 

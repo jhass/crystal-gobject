@@ -30,7 +30,7 @@ module Gtk
 
     def background_icon_name
       __return_value = LibGtk.numerable_icon_get_background_icon_name((to_unsafe as LibGtk::NumerableIcon*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def count
@@ -40,7 +40,7 @@ module Gtk
 
     def label
       __return_value = LibGtk.numerable_icon_get_label((to_unsafe as LibGtk::NumerableIcon*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def style_context

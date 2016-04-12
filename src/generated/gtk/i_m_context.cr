@@ -67,7 +67,7 @@ module Gtk
     alias CommitSignal = IMContext, UInt8 -> 
     def on_commit(&__block : CommitSignal)
       __callback = ->(_arg0 : LibGtk::IMContext*, _arg1 : LibGtk::UInt8**) {
-       __return_value = __block.call(IMContext.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value = __block.call(IMContext.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
       connect("commit", __callback)

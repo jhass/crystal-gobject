@@ -11,22 +11,22 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.tree_path_new
-      Gtk::TreePath.new(__return_value)
+      cast Gtk::TreePath.new(__return_value)
     end
 
     def self.new_first
       __return_value = LibGtk.tree_path_new_first
-      Gtk::TreePath.new(__return_value)
+      cast Gtk::TreePath.new(__return_value)
     end
 
     def self.new_from_indices(indices, length)
       __return_value = LibGtk.tree_path_new_from_indices(indices, UInt64.new(length))
-      Gtk::TreePath.new(__return_value)
+      cast Gtk::TreePath.new(__return_value)
     end
 
     def self.new_from_string(path)
       __return_value = LibGtk.tree_path_new_from_string(path)
-      Gtk::TreePath.new(__return_value)
+      cast Gtk::TreePath.new(__return_value)
     end
 
     def append_index(index)
@@ -61,7 +61,7 @@ module Gtk
 
     def indices(depth)
       __return_value = LibGtk.tree_path_get_indices((to_unsafe as LibGtk::TreePath*), Int32.new(depth))
-      PointerIterator.new(__return_value) {|__item_59| __item_59 }
+      PointerIterator.new(__return_value) {|__item_84| __item_84 }
     end
 
     def ancestor?(descendant)
@@ -91,7 +91,7 @@ module Gtk
 
     def to_string
       __return_value = LibGtk.tree_path_to_string((to_unsafe as LibGtk::TreePath*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def up

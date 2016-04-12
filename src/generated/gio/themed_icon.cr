@@ -13,17 +13,17 @@ module Gio
 
     def self.new_internal(iconname)
       __return_value = LibGio.themed_icon_new(iconname)
-      Gio::ThemedIcon.new(__return_value)
+      cast Gio::ThemedIcon.new(__return_value)
     end
 
     def self.new_from_names(iconnames, len)
       __return_value = LibGio.themed_icon_new_from_names(iconnames, Int32.new(len))
-      Gio::ThemedIcon.new(__return_value)
+      cast Gio::ThemedIcon.new(__return_value)
     end
 
     def self.new_with_default_fallbacks(iconname)
       __return_value = LibGio.themed_icon_new_with_default_fallbacks(iconname)
-      Gio::ThemedIcon.new(__return_value)
+      cast Gio::ThemedIcon.new(__return_value)
     end
 
     def append_name(iconname)
@@ -33,7 +33,7 @@ module Gio
 
     def names
       __return_value = LibGio.themed_icon_get_names((to_unsafe as LibGio::ThemedIcon*))
-      PointerIterator.new(__return_value) {|__item_90| (raise "Expected string but got null" unless __item_90; String.new(__item_90)) }
+      PointerIterator.new(__return_value) {|__item_61| (raise "Expected string but got null" unless __item_61; ::String.new(__item_61)) }
     end
 
     def prepend_name(iconname)

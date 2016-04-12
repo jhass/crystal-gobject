@@ -9,7 +9,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.icon_theme_new
-      Gtk::IconTheme.new(__return_value)
+      cast Gtk::IconTheme.new(__return_value)
     end
 
     def self.add_builtin_icon(icon_name, size, pixbuf)
@@ -49,12 +49,12 @@ module Gtk
 
     def example_icon_name
       __return_value = LibGtk.icon_theme_get_example_icon_name((to_unsafe as LibGtk::IconTheme*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def icon_sizes(icon_name)
       __return_value = LibGtk.icon_theme_get_icon_sizes((to_unsafe as LibGtk::IconTheme*), icon_name)
-      PointerIterator.new(__return_value) {|__item_5| __item_5 }
+      PointerIterator.new(__return_value) {|__item_70| __item_70 }
     end
 
     def search_path(path, n_elements)

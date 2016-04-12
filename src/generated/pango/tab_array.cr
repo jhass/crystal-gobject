@@ -11,7 +11,7 @@ module Pango
 
     def self.new_internal(initial_size, positions_in_pixels)
       __return_value = LibPango.tab_array_new(Int32.new(initial_size), positions_in_pixels)
-      Pango::TabArray.new(__return_value)
+      cast Pango::TabArray.new(__return_value)
     end
 
     def copy

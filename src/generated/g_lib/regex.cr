@@ -13,7 +13,7 @@ module GLib
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.regex_new(pattern, compile_options, match_options, pointerof(__error))
       GLib::Error.assert __error
-      GLib::Regex.new(__return_value)
+      GLib::Regex.new(__return_value) if __return_value
     end
 
     def capture_count
@@ -48,7 +48,7 @@ module GLib
 
     def pattern
       __return_value = LibGLib.regex_get_pattern((to_unsafe as LibGLib::Regex*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def string_number(name)
@@ -89,26 +89,26 @@ module GLib
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.regex_replace((to_unsafe as LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), replacement, match_options, pointerof(__error))
       GLib::Error.assert __error
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def replace_literal(string, string_len, start_position, replacement, match_options)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.regex_replace_literal((to_unsafe as LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), replacement, match_options, pointerof(__error))
       GLib::Error.assert __error
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def split(string, match_options)
       __return_value = LibGLib.regex_split((to_unsafe as LibGLib::Regex*), string, match_options)
-      PointerIterator.new(__return_value) {|__item_14| (raise "Expected string but got null" unless __item_14; String.new(__item_14)) }
+      PointerIterator.new(__return_value) {|__item_23| (raise "Expected string but got null" unless __item_23; ::String.new(__item_23)) }
     end
 
     def split_full(string, string_len, start_position, match_options, max_tokens)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.regex_split_full((to_unsafe as LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), match_options, Int32.new(max_tokens), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_38| (raise "Expected string but got null" unless __item_38; String.new(__item_38)) }
+      PointerIterator.new(__return_value) {|__item_44| (raise "Expected string but got null" unless __item_44; ::String.new(__item_44)) }
     end
 
     def unref
@@ -130,12 +130,12 @@ module GLib
 
     def self.escape_nul(string, length)
       __return_value = LibGLib.regex_escape_nul(string, Int32.new(length))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def self.escape_string(string, length)
       __return_value = LibGLib.regex_escape_string(string, Int32.new(length))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def self.match_simple(pattern, string, compile_options, match_options)
@@ -145,7 +145,7 @@ module GLib
 
     def self.split_simple(pattern, string, compile_options, match_options)
       __return_value = LibGLib.regex_split_simple(pattern, string, compile_options, match_options)
-      PointerIterator.new(__return_value) {|__item_30| (raise "Expected string but got null" unless __item_30; String.new(__item_30)) }
+      PointerIterator.new(__return_value) {|__item_86| (raise "Expected string but got null" unless __item_86; ::String.new(__item_86)) }
     end
 
   end

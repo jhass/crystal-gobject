@@ -18,7 +18,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.tool_palette_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.drag_target_group
@@ -43,12 +43,12 @@ module Gtk
 
     def drop_group(x, y)
       __return_value = LibGtk.tool_palette_get_drop_group((to_unsafe as LibGtk::ToolPalette*), Int32.new(x), Int32.new(y))
-      Gtk::ToolItemGroup.new(__return_value)
+      Gtk::ToolItemGroup.new(__return_value) if __return_value
     end
 
     def drop_item(x, y)
       __return_value = LibGtk.tool_palette_get_drop_item((to_unsafe as LibGtk::ToolPalette*), Int32.new(x), Int32.new(y))
-      Gtk::ToolItem.new(__return_value)
+      Gtk::ToolItem.new(__return_value) if __return_value
     end
 
     def exclusive(group)

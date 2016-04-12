@@ -12,7 +12,7 @@ module Gio
 
     def object_path
       __return_value = LibGio.d_bus_object_manager_get_object_path((to_unsafe as LibGio::DBusObjectManager*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def objects

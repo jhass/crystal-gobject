@@ -99,8 +99,18 @@ module Gdk
     Gdk::DragContext.new(__return_value)
   end
 
+  def self.drag_begin_from_point(window, device, targets, x_root, y_root)
+    __return_value = LibGdk.drag_begin_from_point((window.to_unsafe as LibGdk::Window*), (device.to_unsafe as LibGdk::Device*), targets, Int32.new(x_root), Int32.new(y_root))
+    Gdk::DragContext.new(__return_value)
+  end
+
   def self.drag_drop(context, time)
     __return_value = LibGdk.drag_drop((context.to_unsafe as LibGdk::DragContext*), UInt32.new(time))
+    __return_value
+  end
+
+  def self.drag_drop_done(context, success)
+    __return_value = LibGdk.drag_drop_done((context.to_unsafe as LibGdk::DragContext*), success)
     __return_value
   end
 
@@ -160,7 +170,7 @@ module Gdk
   end
 
   def self.event_handler_set(func : LibGdk::EventFunc, data, notify : LibGLib::DestroyNotify)
-    __return_value = LibGdk.event_handler_set(func, data, notify)
+    __return_value = LibGdk.event_handler_set(func, data && data, notify)
     __return_value
   end
 
@@ -206,17 +216,17 @@ module Gdk
 
   def self.display
     __return_value = LibGdk.get_display
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.display_arg_name
     __return_value = LibGdk.get_display_arg_name
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.program_class
     __return_value = LibGdk.get_program_class
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.show_events
@@ -271,7 +281,7 @@ module Gdk
 
   def self.keyval_name(keyval)
     __return_value = LibGdk.keyval_name(UInt32.new(keyval))
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.keyval_to_lower(keyval)
@@ -470,17 +480,17 @@ module Gdk
   end
 
   def self.threads_add_idle(priority, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
-    __return_value = LibGdk.threads_add_idle(Int32.new(priority), function, data, notify && notify)
+    __return_value = LibGdk.threads_add_idle(Int32.new(priority), function, data && data, notify && notify)
     __return_value
   end
 
   def self.threads_add_timeout(priority, interval, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
-    __return_value = LibGdk.threads_add_timeout(Int32.new(priority), UInt32.new(interval), function, data, notify && notify)
+    __return_value = LibGdk.threads_add_timeout(Int32.new(priority), UInt32.new(interval), function, data && data, notify && notify)
     __return_value
   end
 
   def self.threads_add_timeout_seconds(priority, interval, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
-    __return_value = LibGdk.threads_add_timeout_seconds(Int32.new(priority), UInt32.new(interval), function, data, notify && notify)
+    __return_value = LibGdk.threads_add_timeout_seconds(Int32.new(priority), UInt32.new(interval), function, data && data, notify && notify)
     __return_value
   end
 
@@ -506,7 +516,7 @@ module Gdk
 
   def self.utf8_to_string_target(str)
     __return_value = LibGdk.utf8_to_string_target(str)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 end
 

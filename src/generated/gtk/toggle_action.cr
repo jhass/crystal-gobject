@@ -14,7 +14,7 @@ module Gtk
 
     def self.new_internal(name, label, tooltip, stock_id)
       __return_value = LibGtk.toggle_action_new(name, label && label, tooltip && tooltip, stock_id && stock_id)
-      Gtk::ToggleAction.new(__return_value)
+      cast Gtk::ToggleAction.new(__return_value)
     end
 
     def active

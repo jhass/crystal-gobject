@@ -15,7 +15,7 @@ module Gtk
     # Implements Buildable
     def self.new_internal
       __return_value = LibGtk.separator_menu_item_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
   end

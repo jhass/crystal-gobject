@@ -14,7 +14,7 @@ module Gtk
 
     def self.new_internal(name)
       __return_value = LibGtk.action_group_new(name)
-      Gtk::ActionGroup.new(__return_value)
+      cast Gtk::ActionGroup.new(__return_value)
     end
 
     def add_action(action)
@@ -39,7 +39,7 @@ module Gtk
 
     def name
       __return_value = LibGtk.action_group_get_name((to_unsafe as LibGtk::ActionGroup*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def sensitive
@@ -73,7 +73,7 @@ module Gtk
     end
 
     def set_translate_func(func : LibGtk::TranslateFunc, data, notify : LibGLib::DestroyNotify)
-      __return_value = LibGtk.action_group_set_translate_func((to_unsafe as LibGtk::ActionGroup*), func, data, notify)
+      __return_value = LibGtk.action_group_set_translate_func((to_unsafe as LibGtk::ActionGroup*), func, data && data, notify)
       __return_value
     end
 
@@ -89,7 +89,7 @@ module Gtk
 
     def translate_string(string)
       __return_value = LibGtk.action_group_translate_string((to_unsafe as LibGtk::ActionGroup*), string)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     alias ConnectProxySignal = ActionGroup, Gtk::Action, Gtk::Widget -> 

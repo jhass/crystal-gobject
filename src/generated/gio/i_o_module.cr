@@ -10,12 +10,12 @@ module Gio
     # Implements TypePlugin
     def self.new_internal(filename)
       __return_value = LibGio.i_o_module_new(filename)
-      Gio::IOModule.new(__return_value)
+      cast Gio::IOModule.new(__return_value)
     end
 
     def self.query
       __return_value = LibGio.i_o_module_query
-      PointerIterator.new(__return_value) {|__item_34| (raise "Expected string but got null" unless __item_34; String.new(__item_34)) }
+      PointerIterator.new(__return_value) {|__item_18| (raise "Expected string but got null" unless __item_18; ::String.new(__item_18)) }
     end
 
     def load

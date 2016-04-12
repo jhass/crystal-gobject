@@ -34,7 +34,7 @@ module Atk
 
     def description
       __return_value = LibAtk.object_get_description((to_unsafe as LibAtk::Object*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def index_in_parent
@@ -59,12 +59,12 @@ module Atk
 
     def name
       __return_value = LibAtk.object_get_name((to_unsafe as LibAtk::Object*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def object_locale
       __return_value = LibAtk.object_get_object_locale((to_unsafe as LibAtk::Object*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def parent
@@ -78,7 +78,7 @@ module Atk
     end
 
     def init(data)
-      __return_value = LibAtk.object_init((to_unsafe as LibAtk::Object*), data)
+      __return_value = LibAtk.object_init((to_unsafe as LibAtk::Object*), data && data)
       __return_value
     end
 
@@ -176,7 +176,7 @@ module Atk
     alias StateChangeSignal = Object, UInt8, Bool -> 
     def on_state_change(&__block : StateChangeSignal)
       __callback = ->(_arg0 : LibAtk::Object*, _arg1 : LibAtk::UInt8**, _arg2 : LibAtk::Bool*) {
-       __return_value = __block.call(Object.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)), _arg2)
+       __return_value = __block.call(Object.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)), _arg2)
        __return_value
       }
       connect("state-change", __callback)

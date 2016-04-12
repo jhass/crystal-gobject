@@ -21,22 +21,22 @@ module Gio
 
     def device_path
       __return_value = LibGio.unix_mount_point_get_device_path((to_unsafe as LibGio::UnixMountPoint*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def fs_type
       __return_value = LibGio.unix_mount_point_get_fs_type((to_unsafe as LibGio::UnixMountPoint*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def mount_path
       __return_value = LibGio.unix_mount_point_get_mount_path((to_unsafe as LibGio::UnixMountPoint*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def options
       __return_value = LibGio.unix_mount_point_get_options((to_unsafe as LibGio::UnixMountPoint*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def guess_can_eject
@@ -51,7 +51,7 @@ module Gio
 
     def guess_name
       __return_value = LibGio.unix_mount_point_guess_name((to_unsafe as LibGio::UnixMountPoint*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def guess_symbolic_icon

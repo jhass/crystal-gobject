@@ -26,12 +26,12 @@ module GLib
 
     def description
       __return_value = LibGLib.option_context_get_description((to_unsafe as LibGLib::OptionContext*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def help(main_help, group)
       __return_value = LibGLib.option_context_get_help((to_unsafe as LibGLib::OptionContext*), main_help, group && (group.to_unsafe as LibGLib::OptionGroup*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def help_enabled
@@ -56,7 +56,7 @@ module GLib
 
     def summary
       __return_value = LibGLib.option_context_get_summary((to_unsafe as LibGLib::OptionContext*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def parse(argc, argv)

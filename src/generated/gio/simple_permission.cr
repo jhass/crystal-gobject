@@ -11,7 +11,7 @@ module Gio
 
     def self.new_internal(allowed)
       __return_value = LibGio.simple_permission_new(allowed)
-      Gio::Permission.new(__return_value)
+      cast Gio::Permission.new(__return_value)
     end
 
   end

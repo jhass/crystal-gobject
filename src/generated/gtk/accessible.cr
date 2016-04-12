@@ -15,7 +15,7 @@ module Gtk
 
     def widget
       __return_value = LibGtk.accessible_get_widget((to_unsafe as LibGtk::Accessible*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def widget=(widget)

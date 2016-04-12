@@ -21,12 +21,12 @@ module Gtk
 
     def self.new_internal(content_type)
       __return_value = LibGtk.app_chooser_widget_new(content_type)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def default_text
       __return_value = LibGtk.app_chooser_widget_get_default_text((to_unsafe as LibGtk::AppChooserWidget*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def show_all

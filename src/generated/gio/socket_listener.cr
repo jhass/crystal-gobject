@@ -10,7 +10,7 @@ module Gio
 
     def self.new_internal
       __return_value = LibGio.socket_listener_new
-      Gio::SocketListener.new(__return_value)
+      cast Gio::SocketListener.new(__return_value)
     end
 
     def accept(source_object, cancellable)
@@ -21,7 +21,7 @@ module Gio
     end
 
     def accept_async(cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.socket_listener_accept_async((to_unsafe as LibGio::SocketListener*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.socket_listener_accept_async((to_unsafe as LibGio::SocketListener*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
@@ -40,7 +40,7 @@ module Gio
     end
 
     def accept_socket_async(cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGio.socket_listener_accept_socket_async((to_unsafe as LibGio::SocketListener*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+      __return_value = LibGio.socket_listener_accept_socket_async((to_unsafe as LibGio::SocketListener*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 

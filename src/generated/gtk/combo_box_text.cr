@@ -15,12 +15,12 @@ module Gtk
     # Implements CellLayout
     def self.new_internal
       __return_value = LibGtk.combo_box_text_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_entry
       __return_value = LibGtk.combo_box_text_new_with_entry
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def append(id, text)
@@ -35,7 +35,7 @@ module Gtk
 
     def active_text
       __return_value = LibGtk.combo_box_text_get_active_text((to_unsafe as LibGtk::ComboBoxText*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def insert(position, id, text)

@@ -11,7 +11,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.widget_path_new
-      Gtk::WidgetPath.new(__return_value)
+      cast Gtk::WidgetPath.new(__return_value)
     end
 
     def append_for_widget(widget)
@@ -59,11 +59,6 @@ module Gtk
       __return_value
     end
 
-    def iter_add_qclass(pos, qname)
-      __return_value = LibGtk.widget_path_iter_add_qclass((to_unsafe as LibGtk::WidgetPath*), Int32.new(pos), UInt32.new(qname))
-      __return_value
-    end
-
     def iter_add_region(pos, name, flags)
       __return_value = LibGtk.widget_path_iter_add_region((to_unsafe as LibGtk::WidgetPath*), Int32.new(pos), name, flags)
       __return_value
@@ -81,7 +76,12 @@ module Gtk
 
     def iter_get_name(pos)
       __return_value = LibGtk.widget_path_iter_get_name((to_unsafe as LibGtk::WidgetPath*), Int32.new(pos))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
+
+    def iter_get_object_name(pos)
+      __return_value = LibGtk.widget_path_iter_get_object_name((to_unsafe as LibGtk::WidgetPath*), Int32.new(pos))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def iter_get_object_type(pos)
@@ -159,6 +159,11 @@ module Gtk
       __return_value
     end
 
+    def iter_set_object_name(pos, name)
+      __return_value = LibGtk.widget_path_iter_set_object_name((to_unsafe as LibGtk::WidgetPath*), Int32.new(pos), name && name)
+      __return_value
+    end
+
     def iter_set_object_type(pos, type)
       __return_value = LibGtk.widget_path_iter_set_object_type((to_unsafe as LibGtk::WidgetPath*), Int32.new(pos), UInt64.new(type))
       __return_value
@@ -186,7 +191,7 @@ module Gtk
 
     def to_string
       __return_value = LibGtk.widget_path_to_string((to_unsafe as LibGtk::WidgetPath*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def unref

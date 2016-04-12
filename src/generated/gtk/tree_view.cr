@@ -32,12 +32,12 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.tree_view_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_model(model)
       __return_value = LibGtk.tree_view_new_with_model((model.to_unsafe as LibGtk::TreeModel*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def append_column(column)
@@ -132,7 +132,7 @@ module Gtk
 
     def bin_window
       __return_value = LibGtk.tree_view_get_bin_window((to_unsafe as LibGtk::TreeView*))
-      Gdk::Window.new(__return_value)
+      Gdk::Window.new(__return_value) if __return_value
     end
 
     def cell_area(path, column, rect)
@@ -142,7 +142,7 @@ module Gtk
 
     def column(n)
       __return_value = LibGtk.tree_view_get_column((to_unsafe as LibGtk::TreeView*), Int32.new(n))
-      Gtk::TreeViewColumn.new(__return_value)
+      Gtk::TreeViewColumn.new(__return_value) if __return_value
     end
 
     def columns
@@ -301,7 +301,7 @@ module Gtk
     end
 
     def insert_column_with_data_func(position, title, cell, func : LibGtk::TreeCellDataFunc, data, dnotify : LibGLib::DestroyNotify)
-      __return_value = LibGtk.tree_view_insert_column_with_data_func((to_unsafe as LibGtk::TreeView*), Int32.new(position), title, (cell.to_unsafe as LibGtk::CellRenderer*), func, data, dnotify)
+      __return_value = LibGtk.tree_view_insert_column_with_data_func((to_unsafe as LibGtk::TreeView*), Int32.new(position), title, (cell.to_unsafe as LibGtk::CellRenderer*), func, data && data, dnotify)
       __return_value
     end
 
@@ -316,7 +316,7 @@ module Gtk
     end
 
     def map_expanded_rows(func : LibGtk::TreeViewMappingFunc, data)
-      __return_value = LibGtk.tree_view_map_expanded_rows((to_unsafe as LibGtk::TreeView*), func, data)
+      __return_value = LibGtk.tree_view_map_expanded_rows((to_unsafe as LibGtk::TreeView*), func, data && data)
       __return_value
     end
 

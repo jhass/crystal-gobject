@@ -21,27 +21,27 @@ module GdkPixbuf
 
     def description
       __return_value = LibGdkPixbuf.pixbuf_format_get_description((to_unsafe as LibGdkPixbuf::PixbufFormat*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def extensions
       __return_value = LibGdkPixbuf.pixbuf_format_get_extensions((to_unsafe as LibGdkPixbuf::PixbufFormat*))
-      PointerIterator.new(__return_value) {|__item_48| (raise "Expected string but got null" unless __item_48; String.new(__item_48)) }
+      PointerIterator.new(__return_value) {|__item_6| (raise "Expected string but got null" unless __item_6; ::String.new(__item_6)) }
     end
 
     def license
       __return_value = LibGdkPixbuf.pixbuf_format_get_license((to_unsafe as LibGdkPixbuf::PixbufFormat*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def mime_types
       __return_value = LibGdkPixbuf.pixbuf_format_get_mime_types((to_unsafe as LibGdkPixbuf::PixbufFormat*))
-      PointerIterator.new(__return_value) {|__item_93| (raise "Expected string but got null" unless __item_93; String.new(__item_93)) }
+      PointerIterator.new(__return_value) {|__item_49| (raise "Expected string but got null" unless __item_49; ::String.new(__item_49)) }
     end
 
     def name
       __return_value = LibGdkPixbuf.pixbuf_format_get_name((to_unsafe as LibGdkPixbuf::PixbufFormat*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def disabled?

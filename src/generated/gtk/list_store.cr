@@ -14,7 +14,7 @@ module Gtk
     # Implements TreeSortable
     def self.new_internal(n_columns, types)
       __return_value = LibGtk.list_store_new(Int32.new(n_columns), types)
-      Gtk::ListStore.new(__return_value)
+      cast Gtk::ListStore.new(__return_value)
     end
 
     def append(iter)

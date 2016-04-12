@@ -13,7 +13,7 @@ module Gtk
     # Implements Buildable
     def self.new_internal
       __return_value = LibGtk.h_s_v_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.to_rgb(h, s, v, r, g, b)

@@ -11,7 +11,7 @@ module Gio
 
     def self.new_internal(item_type)
       __return_value = LibGio.list_store_new(UInt64.new(item_type))
-      Gio::ListStore.new(__return_value)
+      cast Gio::ListStore.new(__return_value)
     end
 
     def append(item)
@@ -25,7 +25,7 @@ module Gio
     end
 
     def insert_sorted(item, compare_func : LibGLib::CompareDataFunc, user_data)
-      __return_value = LibGio.list_store_insert_sorted((to_unsafe as LibGio::ListStore*), (item.to_unsafe as LibGObject::Object*), compare_func, user_data)
+      __return_value = LibGio.list_store_insert_sorted((to_unsafe as LibGio::ListStore*), (item.to_unsafe as LibGObject::Object*), compare_func, user_data && user_data)
       __return_value
     end
 
@@ -40,7 +40,7 @@ module Gio
     end
 
     def sort(compare_func : LibGLib::CompareDataFunc, user_data)
-      __return_value = LibGio.list_store_sort((to_unsafe as LibGio::ListStore*), compare_func, user_data)
+      __return_value = LibGio.list_store_sort((to_unsafe as LibGio::ListStore*), compare_func, user_data && user_data)
       __return_value
     end
 

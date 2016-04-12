@@ -10,7 +10,7 @@ module Gtk
     # Implements StyleProvider
     def self.new_internal
       __return_value = LibGtk.css_provider_new
-      Gtk::CssProvider.new(__return_value)
+      cast Gtk::CssProvider.new(__return_value)
     end
 
     def self.default
@@ -51,7 +51,7 @@ module Gtk
 
     def to_string
       __return_value = LibGtk.css_provider_to_string((to_unsafe as LibGtk::CssProvider*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     alias ParsingErrorSignal = CssProvider, Gtk::CssSection, LibGLib::Error* -> 

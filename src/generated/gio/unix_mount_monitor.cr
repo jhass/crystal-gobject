@@ -9,7 +9,7 @@ module Gio
 
     def self.new_internal
       __return_value = LibGio.unix_mount_monitor_new
-      Gio::UnixMountMonitor.new(__return_value)
+      cast Gio::UnixMountMonitor.new(__return_value)
     end
 
     def self.get

@@ -19,12 +19,12 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.level_bar_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_for_interval(min_value, max_value)
       __return_value = LibGtk.level_bar_new_for_interval(Float64.new(min_value), Float64.new(max_value))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def add_offset_value(name, value)
@@ -95,7 +95,7 @@ module Gtk
     alias OffsetChangedSignal = LevelBar, UInt8 -> 
     def on_offset_changed(&__block : OffsetChangedSignal)
       __callback = ->(_arg0 : LibGtk::LevelBar*, _arg1 : LibGtk::UInt8**) {
-       __return_value = __block.call(LevelBar.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value = __block.call(LevelBar.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
       connect("offset-changed", __callback)

@@ -11,7 +11,7 @@ module GLib
 
     def self.new_internal
       __return_value = LibGLib.main_context_new
-      GLib::MainContext.new(__return_value)
+      cast GLib::MainContext.new(__return_value)
     end
 
     def acquire
@@ -35,7 +35,7 @@ module GLib
     end
 
     def find_source_by_funcs_user_data(funcs, user_data)
-      __return_value = LibGLib.main_context_find_source_by_funcs_user_data((to_unsafe as LibGLib::MainContext*), (funcs.to_unsafe as LibGLib::SourceFuncs*), user_data)
+      __return_value = LibGLib.main_context_find_source_by_funcs_user_data((to_unsafe as LibGLib::MainContext*), (funcs.to_unsafe as LibGLib::SourceFuncs*), user_data && user_data)
       GLib::Source.new(__return_value)
     end
 
@@ -45,12 +45,12 @@ module GLib
     end
 
     def find_source_by_user_data(user_data)
-      __return_value = LibGLib.main_context_find_source_by_user_data((to_unsafe as LibGLib::MainContext*), user_data)
+      __return_value = LibGLib.main_context_find_source_by_user_data((to_unsafe as LibGLib::MainContext*), user_data && user_data)
       GLib::Source.new(__return_value)
     end
 
     def invoke_full(priority, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
-      __return_value = LibGLib.main_context_invoke_full((to_unsafe as LibGLib::MainContext*), Int32.new(priority), function, data, notify && notify)
+      __return_value = LibGLib.main_context_invoke_full((to_unsafe as LibGLib::MainContext*), Int32.new(priority), function, data && data, notify && notify)
       __return_value
     end
 

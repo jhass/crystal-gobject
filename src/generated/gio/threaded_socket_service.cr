@@ -12,7 +12,7 @@ module Gio
 
     def self.new_internal(max_threads)
       __return_value = LibGio.threaded_socket_service_new(Int32.new(max_threads))
-      Gio::SocketService.new(__return_value)
+      cast Gio::SocketService.new(__return_value)
     end
 
     alias RunSignal = ThreadedSocketService, Gio::SocketConnection, GObject::Object -> Bool

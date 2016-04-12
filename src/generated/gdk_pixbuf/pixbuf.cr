@@ -20,17 +20,17 @@ module GdkPixbuf
 
     def self.new_internal(colorspace, has_alpha, bits_per_sample, width, height)
       __return_value = LibGdkPixbuf.pixbuf_new(colorspace, has_alpha, Int32.new(bits_per_sample), Int32.new(width), Int32.new(height))
-      GdkPixbuf::Pixbuf.new(__return_value)
+      cast GdkPixbuf::Pixbuf.new(__return_value)
     end
 
     def self.new_from_bytes(data, colorspace, has_alpha, bits_per_sample, width, height, rowstride)
       __return_value = LibGdkPixbuf.pixbuf_new_from_bytes((data.to_unsafe as LibGLib::Bytes*), colorspace, has_alpha, Int32.new(bits_per_sample), Int32.new(width), Int32.new(height), Int32.new(rowstride))
-      GdkPixbuf::Pixbuf.new(__return_value)
+      cast GdkPixbuf::Pixbuf.new(__return_value)
     end
 
     def self.new_from_data(data, colorspace, has_alpha, bits_per_sample, width, height, rowstride, destroy_fn : LibGdkPixbuf::PixbufDestroyNotify?, destroy_fn_data)
       __return_value = LibGdkPixbuf.pixbuf_new_from_data(data, colorspace, has_alpha, Int32.new(bits_per_sample), Int32.new(width), Int32.new(height), Int32.new(rowstride), destroy_fn && destroy_fn, destroy_fn_data && destroy_fn_data)
-      GdkPixbuf::Pixbuf.new(__return_value)
+      cast GdkPixbuf::Pixbuf.new(__return_value)
     end
 
     def self.new_from_file(filename)
@@ -98,7 +98,7 @@ module GdkPixbuf
 
     def self.new_from_xpm_data(data)
       __return_value = LibGdkPixbuf.pixbuf_new_from_xpm_data(data)
-      GdkPixbuf::Pixbuf.new(__return_value)
+      cast GdkPixbuf::Pixbuf.new(__return_value)
     end
 
     def self.from_pixdata(pixdata, copy_pixels)
@@ -224,7 +224,7 @@ module GdkPixbuf
 
     def option(key)
       __return_value = LibGdkPixbuf.pixbuf_get_option((to_unsafe as LibGdkPixbuf::Pixbuf*), key)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def options
@@ -234,7 +234,7 @@ module GdkPixbuf
 
     def pixels(length)
       __return_value = LibGdkPixbuf.pixbuf_get_pixels((to_unsafe as LibGdkPixbuf::Pixbuf*), UInt32.new(length))
-      PointerIterator.new(__return_value) {|__item_0| __item_0 }
+      PointerIterator.new(__return_value) {|__item_11| __item_11 }
     end
 
     def rowstride

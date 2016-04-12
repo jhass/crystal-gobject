@@ -20,17 +20,17 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.menu_item_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_label(label)
       __return_value = LibGtk.menu_item_new_with_label(label)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_mnemonic(label)
       __return_value = LibGtk.menu_item_new_with_mnemonic(label)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def activate
@@ -45,12 +45,12 @@ module Gtk
 
     def accel_path
       __return_value = LibGtk.menu_item_get_accel_path((to_unsafe as LibGtk::MenuItem*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def label
       __return_value = LibGtk.menu_item_get_label((to_unsafe as LibGtk::MenuItem*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def reserve_indicator
@@ -65,7 +65,7 @@ module Gtk
 
     def submenu
       __return_value = LibGtk.menu_item_get_submenu((to_unsafe as LibGtk::MenuItem*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def use_underline

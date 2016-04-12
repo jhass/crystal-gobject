@@ -16,12 +16,12 @@ module Gio
 
     def description
       __return_value = LibGio.settings_schema_key_get_description((to_unsafe as LibGio::SettingsSchemaKey*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def name
       __return_value = LibGio.settings_schema_key_get_name((to_unsafe as LibGio::SettingsSchemaKey*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def range
@@ -31,7 +31,7 @@ module Gio
 
     def summary
       __return_value = LibGio.settings_schema_key_get_summary((to_unsafe as LibGio::SettingsSchemaKey*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def value_type

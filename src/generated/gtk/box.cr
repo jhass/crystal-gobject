@@ -17,7 +17,7 @@ module Gtk
 
     def self.new_internal(orientation, spacing)
       __return_value = LibGtk.box_new(orientation, Int32.new(spacing))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def baseline_position
@@ -27,7 +27,7 @@ module Gtk
 
     def center_widget
       __return_value = LibGtk.box_get_center_widget((to_unsafe as LibGtk::Box*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def homogeneous

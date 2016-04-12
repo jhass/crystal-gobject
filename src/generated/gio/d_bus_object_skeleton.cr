@@ -11,7 +11,7 @@ module Gio
 
     def self.new_internal(object_path)
       __return_value = LibGio.d_bus_object_skeleton_new(object_path)
-      Gio::DBusObjectSkeleton.new(__return_value)
+      cast Gio::DBusObjectSkeleton.new(__return_value)
     end
 
     def add_interface(interface)

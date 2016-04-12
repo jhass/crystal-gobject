@@ -12,7 +12,7 @@ module Gio
 
     def self.new_internal
       __return_value = LibGio.socket_service_new
-      Gio::SocketService.new(__return_value)
+      cast Gio::SocketService.new(__return_value)
     end
 
     def active?

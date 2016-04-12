@@ -16,15 +16,14 @@ module Gtk
 
 
 
-
     def self.new_internal(title, action)
       __return_value = LibGtk.file_chooser_button_new(title, action)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_dialog(dialog)
       __return_value = LibGtk.file_chooser_button_new_with_dialog((dialog.to_unsafe as LibGtk::Dialog*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def focus_on_click
@@ -34,7 +33,7 @@ module Gtk
 
     def title
       __return_value = LibGtk.file_chooser_button_get_title((to_unsafe as LibGtk::FileChooserButton*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def width_chars

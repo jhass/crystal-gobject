@@ -13,7 +13,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.style_context_new
-      Gtk::StyleContext.new(__return_value)
+      cast Gtk::StyleContext.new(__return_value)
     end
 
     def self.add_provider_for_screen(screen, provider, priority)
@@ -83,7 +83,7 @@ module Gtk
 
     def frame_clock
       __return_value = LibGtk.style_context_get_frame_clock((to_unsafe as LibGtk::StyleContext*))
-      Gdk::FrameClock.new(__return_value)
+      Gdk::FrameClock.new(__return_value) if __return_value
     end
 
     def junction_sides
@@ -103,7 +103,7 @@ module Gtk
 
     def parent
       __return_value = LibGtk.style_context_get_parent((to_unsafe as LibGtk::StyleContext*))
-      Gtk::StyleContext.new(__return_value)
+      Gtk::StyleContext.new(__return_value) if __return_value
     end
 
     def path
@@ -128,7 +128,7 @@ module Gtk
 
     def section(property)
       __return_value = LibGtk.style_context_get_section((to_unsafe as LibGtk::StyleContext*), property)
-      Gtk::CssSection.new(__return_value)
+      Gtk::CssSection.new(__return_value) if __return_value
     end
 
     def state
@@ -187,7 +187,7 @@ module Gtk
     end
 
     def push_animatable_region(region_id)
-      __return_value = LibGtk.style_context_push_animatable_region((to_unsafe as LibGtk::StyleContext*), region_id)
+      __return_value = LibGtk.style_context_push_animatable_region((to_unsafe as LibGtk::StyleContext*), region_id && region_id)
       __return_value
     end
 
@@ -269,6 +269,11 @@ module Gtk
     def state_is_running(state, progress)
       __return_value = LibGtk.style_context_state_is_running((to_unsafe as LibGtk::StyleContext*), state, Float64.new(progress))
       __return_value
+    end
+
+    def to_string(flags)
+      __return_value = LibGtk.style_context_to_string((to_unsafe as LibGtk::StyleContext*), flags)
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     alias ChangedSignal = StyleContext -> 

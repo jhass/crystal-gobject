@@ -15,7 +15,7 @@ module Gtk
 
     def self.new_internal(arrow_type, shadow_type)
       __return_value = LibGtk.arrow_new(arrow_type, shadow_type)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def set(arrow_type, shadow_type)

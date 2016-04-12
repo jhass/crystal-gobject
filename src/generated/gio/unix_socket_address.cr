@@ -16,17 +16,17 @@ module Gio
 
     def self.new_internal(path)
       __return_value = LibGio.unix_socket_address_new(path)
-      Gio::SocketAddress.new(__return_value)
+      cast Gio::SocketAddress.new(__return_value)
     end
 
     def self.new_abstract(path, path_len)
       __return_value = LibGio.unix_socket_address_new_abstract(path, Int32.new(path_len))
-      Gio::SocketAddress.new(__return_value)
+      cast Gio::SocketAddress.new(__return_value)
     end
 
     def self.new_with_type(path, path_len, type)
       __return_value = LibGio.unix_socket_address_new_with_type(path, Int32.new(path_len), type)
-      Gio::SocketAddress.new(__return_value)
+      cast Gio::SocketAddress.new(__return_value)
     end
 
     def self.abstract_names_supported
@@ -46,7 +46,7 @@ module Gio
 
     def path
       __return_value = LibGio.unix_socket_address_get_path((to_unsafe as LibGio::UnixSocketAddress*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def path_len

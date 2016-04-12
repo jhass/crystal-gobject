@@ -64,12 +64,12 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.entry_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_buffer(buffer)
       __return_value = LibGtk.entry_new_with_buffer((buffer.to_unsafe as LibGtk::EntryBuffer*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def activates_default
@@ -134,7 +134,7 @@ module Gtk
 
     def icon_name(icon_pos)
       __return_value = LibGtk.entry_get_icon_name((to_unsafe as LibGtk::Entry*), icon_pos)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def icon_pixbuf(icon_pos)
@@ -149,7 +149,7 @@ module Gtk
 
     def icon_stock(icon_pos)
       __return_value = LibGtk.entry_get_icon_stock((to_unsafe as LibGtk::Entry*), icon_pos)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def icon_storage_type(icon_pos)
@@ -159,12 +159,12 @@ module Gtk
 
     def icon_tooltip_markup(icon_pos)
       __return_value = LibGtk.entry_get_icon_tooltip_markup((to_unsafe as LibGtk::Entry*), icon_pos)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def icon_tooltip_text(icon_pos)
       __return_value = LibGtk.entry_get_icon_tooltip_text((to_unsafe as LibGtk::Entry*), icon_pos)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def inner_border
@@ -214,7 +214,7 @@ module Gtk
 
     def placeholder_text
       __return_value = LibGtk.entry_get_placeholder_text((to_unsafe as LibGtk::Entry*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def progress_fraction
@@ -234,7 +234,7 @@ module Gtk
 
     def text
       __return_value = LibGtk.entry_get_text((to_unsafe as LibGtk::Entry*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def text_area(text_area)
@@ -508,7 +508,7 @@ module Gtk
     alias InsertAtCursorSignal = Entry, UInt8 -> 
     def on_insert_at_cursor(&__block : InsertAtCursorSignal)
       __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : LibGtk::UInt8**) {
-       __return_value = __block.call(Entry.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value = __block.call(Entry.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
       connect("insert-at-cursor", __callback)
@@ -544,7 +544,7 @@ module Gtk
     alias PreeditChangedSignal = Entry, UInt8 -> 
     def on_preedit_changed(&__block : PreeditChangedSignal)
       __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : LibGtk::UInt8**) {
-       __return_value = __block.call(Entry.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value = __block.call(Entry.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
       connect("preedit-changed", __callback)

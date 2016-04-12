@@ -23,7 +23,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.model_button_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
   end

@@ -11,7 +11,7 @@ module Pango
 
     def self.new_internal
       __return_value = LibPango.item_new
-      Pango::Item.new(__return_value)
+      cast Pango::Item.new(__return_value)
     end
 
     def copy

@@ -11,7 +11,7 @@ module Gst
 
     def self.new_internal(scope)
       __return_value = LibGst.toc_new(scope)
-      Gst::Toc.new(__return_value)
+      cast Gst::Toc.new(__return_value)
     end
 
     def append_entry(entry)

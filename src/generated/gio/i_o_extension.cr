@@ -11,7 +11,7 @@ module Gio
 
     def name
       __return_value = LibGio.i_o_extension_get_name((to_unsafe as LibGio::IOExtension*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def priority

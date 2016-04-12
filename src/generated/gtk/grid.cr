@@ -19,7 +19,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.grid_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def attach(child, left, top, width, height)

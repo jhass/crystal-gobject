@@ -23,7 +23,7 @@ module Gtk
 
     def convert_child_path_to_path(child_path)
       __return_value = LibGtk.tree_model_sort_convert_child_path_to_path((to_unsafe as LibGtk::TreeModelSort*), (child_path.to_unsafe as LibGtk::TreePath*))
-      Gtk::TreePath.new(__return_value)
+      Gtk::TreePath.new(__return_value) if __return_value
     end
 
     def convert_iter_to_child_iter(child_iter, sorted_iter)
@@ -33,7 +33,7 @@ module Gtk
 
     def convert_path_to_child_path(sorted_path)
       __return_value = LibGtk.tree_model_sort_convert_path_to_child_path((to_unsafe as LibGtk::TreeModelSort*), (sorted_path.to_unsafe as LibGtk::TreePath*))
-      Gtk::TreePath.new(__return_value)
+      Gtk::TreePath.new(__return_value) if __return_value
     end
 
     def model

@@ -12,7 +12,7 @@ module Gtk
 
     def self.new_internal(initial_chars, n_initial_chars)
       __return_value = LibGtk.entry_buffer_new(initial_chars && initial_chars, Int32.new(n_initial_chars))
-      Gtk::EntryBuffer.new(__return_value)
+      cast Gtk::EntryBuffer.new(__return_value)
     end
 
     def delete_text(position, n_chars)
@@ -47,7 +47,7 @@ module Gtk
 
     def text
       __return_value = LibGtk.entry_buffer_get_text((to_unsafe as LibGtk::EntryBuffer*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def insert_text(position, chars, n_chars)
@@ -77,7 +77,7 @@ module Gtk
     alias InsertedTextSignal = EntryBuffer, UInt32, UInt8, UInt32 -> 
     def on_inserted_text(&__block : InsertedTextSignal)
       __callback = ->(_arg0 : LibGtk::EntryBuffer*, _arg1 : LibGtk::UInt32*, _arg2 : LibGtk::UInt8**, _arg3 : LibGtk::UInt32*) {
-       __return_value = __block.call(EntryBuffer.new(_arg0), _arg1, (raise "Expected string but got null" unless _arg2; String.new(_arg2)), _arg3)
+       __return_value = __block.call(EntryBuffer.new(_arg0), _arg1, (raise "Expected string but got null" unless _arg2; ::String.new(_arg2)), _arg3)
        __return_value
       }
       connect("inserted-text", __callback)

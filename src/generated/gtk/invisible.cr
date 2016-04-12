@@ -14,12 +14,12 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.invisible_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_for_screen(screen)
       __return_value = LibGtk.invisible_new_for_screen((screen.to_unsafe as LibGdk::Screen*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def screen

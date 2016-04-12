@@ -23,7 +23,7 @@ module Gtk
 
     def convert_child_path_to_path(child_path)
       __return_value = LibGtk.tree_model_filter_convert_child_path_to_path((to_unsafe as LibGtk::TreeModelFilter*), (child_path.to_unsafe as LibGtk::TreePath*))
-      Gtk::TreePath.new(__return_value)
+      Gtk::TreePath.new(__return_value) if __return_value
     end
 
     def convert_iter_to_child_iter(child_iter, filter_iter)
@@ -33,7 +33,7 @@ module Gtk
 
     def convert_path_to_child_path(filter_path)
       __return_value = LibGtk.tree_model_filter_convert_path_to_child_path((to_unsafe as LibGtk::TreeModelFilter*), (filter_path.to_unsafe as LibGtk::TreePath*))
-      Gtk::TreePath.new(__return_value)
+      Gtk::TreePath.new(__return_value) if __return_value
     end
 
     def model

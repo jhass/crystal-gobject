@@ -13,7 +13,7 @@ module Gtk
     # Implements Buildable
     def self.new_internal
       __return_value = LibGtk.socket_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def add_id(window)
@@ -28,7 +28,7 @@ module Gtk
 
     def plug_window
       __return_value = LibGtk.socket_get_plug_window((to_unsafe as LibGtk::Socket*))
-      Gdk::Window.new(__return_value)
+      Gdk::Window.new(__return_value) if __return_value
     end
 
     alias PlugAddedSignal = Socket -> 

@@ -83,12 +83,12 @@ module Gtk
     end
 
     def foreach(callback : LibGtk::CellCallback, callback_data)
-      __return_value = LibGtk.cell_area_foreach((to_unsafe as LibGtk::CellArea*), callback, callback_data)
+      __return_value = LibGtk.cell_area_foreach((to_unsafe as LibGtk::CellArea*), callback, callback_data && callback_data)
       __return_value
     end
 
     def foreach_alloc(context, widget, cell_area, background_area, callback : LibGtk::CellAllocCallback, callback_data)
-      __return_value = LibGtk.cell_area_foreach_alloc((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (cell_area.to_unsafe as LibGdk::Rectangle*), (background_area.to_unsafe as LibGdk::Rectangle*), callback, callback_data)
+      __return_value = LibGtk.cell_area_foreach_alloc((to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*), (widget.to_unsafe as LibGtk::Widget*), (cell_area.to_unsafe as LibGdk::Rectangle*), (background_area.to_unsafe as LibGdk::Rectangle*), callback, callback_data && callback_data)
       __return_value
     end
 
@@ -104,7 +104,7 @@ module Gtk
 
     def current_path_string
       __return_value = LibGtk.cell_area_get_current_path_string((to_unsafe as LibGtk::CellArea*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def edit_widget
@@ -124,7 +124,7 @@ module Gtk
 
     def focus_from_sibling(renderer)
       __return_value = LibGtk.cell_area_get_focus_from_sibling((to_unsafe as LibGtk::CellArea*), (renderer.to_unsafe as LibGtk::CellRenderer*))
-      Gtk::CellRenderer.new(__return_value)
+      Gtk::CellRenderer.new(__return_value) if __return_value
     end
 
     def focus_siblings(renderer)
@@ -210,7 +210,7 @@ module Gtk
     alias AddEditableSignal = CellArea, Gtk::CellRenderer, Gtk::CellEditable, Gdk::Rectangle, UInt8 -> 
     def on_add_editable(&__block : AddEditableSignal)
       __callback = ->(_arg0 : LibGtk::CellArea*, _arg1 : LibGtk::LibGtk::CellRenderer*, _arg2 : LibGtk::LibGtk::CellEditable*, _arg3 : LibGtk::LibGdk::Rectangle*, _arg4 : LibGtk::UInt8**) {
-       __return_value = __block.call(CellArea.new(_arg0), Gtk::CellRenderer.new(_arg1), _arg2, Gdk::Rectangle.new(_arg3), (raise "Expected string but got null" unless _arg4; String.new(_arg4)))
+       __return_value = __block.call(CellArea.new(_arg0), Gtk::CellRenderer.new(_arg1), _arg2, Gdk::Rectangle.new(_arg3), (raise "Expected string but got null" unless _arg4; ::String.new(_arg4)))
        __return_value
       }
       connect("add-editable", __callback)
@@ -228,7 +228,7 @@ module Gtk
     alias FocusChangedSignal = CellArea, Gtk::CellRenderer, UInt8 -> 
     def on_focus_changed(&__block : FocusChangedSignal)
       __callback = ->(_arg0 : LibGtk::CellArea*, _arg1 : LibGtk::LibGtk::CellRenderer*, _arg2 : LibGtk::UInt8**) {
-       __return_value = __block.call(CellArea.new(_arg0), Gtk::CellRenderer.new(_arg1), (raise "Expected string but got null" unless _arg2; String.new(_arg2)))
+       __return_value = __block.call(CellArea.new(_arg0), Gtk::CellRenderer.new(_arg1), (raise "Expected string but got null" unless _arg2; ::String.new(_arg2)))
        __return_value
       }
       connect("focus-changed", __callback)

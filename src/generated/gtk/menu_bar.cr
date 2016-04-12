@@ -15,12 +15,12 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.menu_bar_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_from_model(model)
       __return_value = LibGtk.menu_bar_new_from_model((model.to_unsafe as LibGio::MenuModel*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def child_pack_direction

@@ -23,7 +23,7 @@ module Atk
     # Implements Window
     def self.new_internal(obj)
       __return_value = LibAtk.no_op_object_new((obj.to_unsafe as LibGObject::Object*))
-      Atk::Object.new(__return_value)
+      cast Atk::Object.new(__return_value)
     end
 
   end

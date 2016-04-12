@@ -14,12 +14,12 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.stack_sidebar_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def stack
       __return_value = LibGtk.stack_sidebar_get_stack((to_unsafe as LibGtk::StackSidebar*))
-      Gtk::Stack.new(__return_value)
+      Gtk::Stack.new(__return_value) if __return_value
     end
 
     def stack=(stack)

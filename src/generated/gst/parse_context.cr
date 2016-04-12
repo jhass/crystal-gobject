@@ -11,7 +11,7 @@ module Gst
 
     def self.new_internal
       __return_value = LibGst.parse_context_new
-      Gst::ParseContext.new(__return_value)
+      cast Gst::ParseContext.new(__return_value)
     end
 
     def free
@@ -21,7 +21,7 @@ module Gst
 
     def missing_elements
       __return_value = LibGst.parse_context_get_missing_elements((to_unsafe as LibGst::ParseContext*))
-      PointerIterator.new(__return_value) {|__item_44| (raise "Expected string but got null" unless __item_44; String.new(__item_44)) }
+      PointerIterator.new(__return_value) {|__item_8| (raise "Expected string but got null" unless __item_8; ::String.new(__item_8)) }
     end
 
   end

@@ -11,7 +11,7 @@ module Gio
 
     def id
       __return_value = LibGio.settings_schema_get_id((to_unsafe as LibGio::SettingsSchema*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def key(name)
@@ -21,7 +21,7 @@ module Gio
 
     def path
       __return_value = LibGio.settings_schema_get_path((to_unsafe as LibGio::SettingsSchema*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def has_key(name)
@@ -31,12 +31,12 @@ module Gio
 
     def list_children
       __return_value = LibGio.settings_schema_list_children((to_unsafe as LibGio::SettingsSchema*))
-      PointerIterator.new(__return_value) {|__item_86| (raise "Expected string but got null" unless __item_86; String.new(__item_86)) }
+      PointerIterator.new(__return_value) {|__item_16| (raise "Expected string but got null" unless __item_16; ::String.new(__item_16)) }
     end
 
     def list_keys
       __return_value = LibGio.settings_schema_list_keys((to_unsafe as LibGio::SettingsSchema*))
-      PointerIterator.new(__return_value) {|__item_68| (raise "Expected string but got null" unless __item_68; String.new(__item_68)) }
+      PointerIterator.new(__return_value) {|__item_12| (raise "Expected string but got null" unless __item_12; ::String.new(__item_12)) }
     end
 
     def ref

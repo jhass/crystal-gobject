@@ -11,27 +11,27 @@ module GLib
 
     def self.new_internal(type_string)
       __return_value = LibGLib.variant_type_new(type_string)
-      GLib::VariantType.new(__return_value)
+      cast GLib::VariantType.new(__return_value)
     end
 
     def self.new_array(element)
       __return_value = LibGLib.variant_type_new_array((element.to_unsafe as LibGLib::VariantType*))
-      GLib::VariantType.new(__return_value)
+      cast GLib::VariantType.new(__return_value)
     end
 
     def self.new_dict_entry(key, value)
       __return_value = LibGLib.variant_type_new_dict_entry((key.to_unsafe as LibGLib::VariantType*), (value.to_unsafe as LibGLib::VariantType*))
-      GLib::VariantType.new(__return_value)
+      cast GLib::VariantType.new(__return_value)
     end
 
     def self.new_maybe(element)
       __return_value = LibGLib.variant_type_new_maybe((element.to_unsafe as LibGLib::VariantType*))
-      GLib::VariantType.new(__return_value)
+      cast GLib::VariantType.new(__return_value)
     end
 
     def self.new_tuple(items, length)
       __return_value = LibGLib.variant_type_new_tuple(items, Int32.new(length))
-      GLib::VariantType.new(__return_value)
+      cast GLib::VariantType.new(__return_value)
     end
 
     def copy
@@ -41,7 +41,7 @@ module GLib
 
     def dup_string
       __return_value = LibGLib.variant_type_dup_string((to_unsafe as LibGLib::VariantType*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def element

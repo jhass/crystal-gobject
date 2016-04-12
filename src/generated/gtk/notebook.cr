@@ -20,7 +20,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.notebook_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def append_page(child, tab_label)
@@ -40,7 +40,7 @@ module Gtk
 
     def action_widget(pack_type)
       __return_value = LibGtk.notebook_get_action_widget((to_unsafe as LibGtk::Notebook*), pack_type)
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def current_page
@@ -50,17 +50,17 @@ module Gtk
 
     def group_name
       __return_value = LibGtk.notebook_get_group_name((to_unsafe as LibGtk::Notebook*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def menu_label(child)
       __return_value = LibGtk.notebook_get_menu_label((to_unsafe as LibGtk::Notebook*), (child.to_unsafe as LibGtk::Widget*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def menu_label_text(child)
       __return_value = LibGtk.notebook_get_menu_label_text((to_unsafe as LibGtk::Notebook*), (child.to_unsafe as LibGtk::Widget*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def n_pages
@@ -70,7 +70,7 @@ module Gtk
 
     def nth_page(page_num)
       __return_value = LibGtk.notebook_get_nth_page((to_unsafe as LibGtk::Notebook*), Int32.new(page_num))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def scrollable
@@ -105,7 +105,7 @@ module Gtk
 
     def tab_label_text(child)
       __return_value = LibGtk.notebook_get_tab_label_text((to_unsafe as LibGtk::Notebook*), (child.to_unsafe as LibGtk::Widget*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def tab_pos

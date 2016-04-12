@@ -11,7 +11,7 @@ module Gst
 
     def self.new_single(type, object)
       __return_value = LibGst.iterator_new_single(UInt64.new(type), (object.to_unsafe as LibGObject::Value*))
-      Gst::Iterator.new(__return_value)
+      cast Gst::Iterator.new(__return_value)
     end
 
     def copy
@@ -25,17 +25,17 @@ module Gst
     end
 
     def find_custom(func : LibGLib::CompareFunc, elem, user_data)
-      __return_value = LibGst.iterator_find_custom((to_unsafe as LibGst::Iterator*), func, elem, user_data)
+      __return_value = LibGst.iterator_find_custom((to_unsafe as LibGst::Iterator*), func, elem, user_data && user_data)
       __return_value
     end
 
     def fold(func : LibGst::IteratorFoldFunction, ret, user_data)
-      __return_value = LibGst.iterator_fold((to_unsafe as LibGst::Iterator*), func, (ret.to_unsafe as LibGObject::Value*), user_data)
+      __return_value = LibGst.iterator_fold((to_unsafe as LibGst::Iterator*), func, (ret.to_unsafe as LibGObject::Value*), user_data && user_data)
       __return_value
     end
 
     def foreach(func : LibGst::IteratorForeachFunction, user_data)
-      __return_value = LibGst.iterator_foreach((to_unsafe as LibGst::Iterator*), func, user_data)
+      __return_value = LibGst.iterator_foreach((to_unsafe as LibGst::Iterator*), func, user_data && user_data)
       __return_value
     end
 

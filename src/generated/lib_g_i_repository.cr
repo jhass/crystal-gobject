@@ -373,6 +373,7 @@ lib LibGIRepository
   fun union_info_get_size = g_union_info_get_size(info : LibGIRepository::BaseInfo*) : UInt64
   fun union_info_is_discriminated = g_union_info_is_discriminated(info : LibGIRepository::BaseInfo*) : Bool
   fun value_info_get_value = g_value_info_get_value(info : LibGIRepository::BaseInfo*) : Int64
+  fun vfunc_info_get_address = g_vfunc_info_get_address(info : LibGIRepository::BaseInfo*, implementor_gtype : UInt64, error : LibGLib::Error**) : Void*
   fun vfunc_info_get_flags = g_vfunc_info_get_flags(info : LibGIRepository::BaseInfo*) : LibGIRepository::VFuncInfoFlags
   fun vfunc_info_get_invoker = g_vfunc_info_get_invoker(info : LibGIRepository::BaseInfo*) : LibGIRepository::BaseInfo*
   fun vfunc_info_get_offset = g_vfunc_info_get_offset(info : LibGIRepository::BaseInfo*) : Int32

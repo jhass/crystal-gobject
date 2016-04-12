@@ -16,32 +16,32 @@ module Gtk
 
     def self.new_internal(group)
       __return_value = LibGtk.radio_button_new(group && group)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_from_widget(radio_group_member)
       __return_value = LibGtk.radio_button_new_from_widget(radio_group_member && (radio_group_member.to_unsafe as LibGtk::RadioButton*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_label(group, label)
       __return_value = LibGtk.radio_button_new_with_label(group && group, label)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_label_from_widget(radio_group_member, label)
       __return_value = LibGtk.radio_button_new_with_label_from_widget(radio_group_member && (radio_group_member.to_unsafe as LibGtk::RadioButton*), label)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_mnemonic(group, label)
       __return_value = LibGtk.radio_button_new_with_mnemonic(group && group, label)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_mnemonic_from_widget(radio_group_member, label)
       __return_value = LibGtk.radio_button_new_with_mnemonic_from_widget(radio_group_member && (radio_group_member.to_unsafe as LibGtk::RadioButton*), label)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def group

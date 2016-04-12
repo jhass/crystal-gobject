@@ -11,127 +11,127 @@ module GLib
 
     def self.new_array(child_type, children, n_children)
       __return_value = LibGLib.variant_new_array(child_type && (child_type.to_unsafe as LibGLib::VariantType*), children && children, UInt64.new(n_children))
-      GLib::Variant.new(__return_value)
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_boolean(value)
       __return_value = LibGLib.variant_new_boolean(value)
-      GLib::Variant.new(__return_value)
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_byte(value)
       __return_value = LibGLib.variant_new_byte(UInt8.new(value))
-      GLib::Variant.new(__return_value)
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_bytestring(string)
       __return_value = LibGLib.variant_new_bytestring(string)
-      GLib::Variant.new(__return_value)
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_bytestring_array(strv, length)
       __return_value = LibGLib.variant_new_bytestring_array(strv, Int64.new(length))
-      GLib::Variant.new(__return_value)
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_dict_entry(key, value)
       __return_value = LibGLib.variant_new_dict_entry((key.to_unsafe as LibGLib::Variant*), (value.to_unsafe as LibGLib::Variant*))
-      GLib::Variant.new(__return_value)
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_double(value)
       __return_value = LibGLib.variant_new_double(Float64.new(value))
-      GLib::Variant.new(__return_value)
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_fixed_array(element_type, elements, n_elements, element_size)
-      __return_value = LibGLib.variant_new_fixed_array((element_type.to_unsafe as LibGLib::VariantType*), elements, UInt64.new(n_elements), UInt64.new(element_size))
-      GLib::Variant.new(__return_value)
+      __return_value = LibGLib.variant_new_fixed_array((element_type.to_unsafe as LibGLib::VariantType*), elements && elements, UInt64.new(n_elements), UInt64.new(element_size))
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_from_bytes(type, bytes, trusted)
       __return_value = LibGLib.variant_new_from_bytes((type.to_unsafe as LibGLib::VariantType*), (bytes.to_unsafe as LibGLib::Bytes*), trusted)
-      GLib::Variant.new(__return_value)
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_from_data(type, data, size, trusted, notify : LibGLib::DestroyNotify, user_data)
-      __return_value = LibGLib.variant_new_from_data((type.to_unsafe as LibGLib::VariantType*), data, UInt64.new(size), trusted, notify, user_data)
-      GLib::Variant.new(__return_value)
+      __return_value = LibGLib.variant_new_from_data((type.to_unsafe as LibGLib::VariantType*), data, UInt64.new(size), trusted, notify, user_data && user_data)
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_handle(value)
       __return_value = LibGLib.variant_new_handle(Int32.new(value))
-      GLib::Variant.new(__return_value)
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_int16(value)
       __return_value = LibGLib.variant_new_int16(Int16.new(value))
-      GLib::Variant.new(__return_value)
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_int32(value)
       __return_value = LibGLib.variant_new_int32(Int32.new(value))
-      GLib::Variant.new(__return_value)
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_int64(value)
       __return_value = LibGLib.variant_new_int64(Int64.new(value))
-      GLib::Variant.new(__return_value)
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_maybe(child_type, child)
       __return_value = LibGLib.variant_new_maybe(child_type && (child_type.to_unsafe as LibGLib::VariantType*), child && (child.to_unsafe as LibGLib::Variant*))
-      GLib::Variant.new(__return_value)
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_object_path(object_path)
       __return_value = LibGLib.variant_new_object_path(object_path)
-      GLib::Variant.new(__return_value)
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_objv(strv, length)
       __return_value = LibGLib.variant_new_objv(strv, Int64.new(length))
-      GLib::Variant.new(__return_value)
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_signature(signature)
       __return_value = LibGLib.variant_new_signature(signature)
-      GLib::Variant.new(__return_value)
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_string(string)
       __return_value = LibGLib.variant_new_string(string)
-      GLib::Variant.new(__return_value)
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_strv(strv, length)
       __return_value = LibGLib.variant_new_strv(strv, Int64.new(length))
-      GLib::Variant.new(__return_value)
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_tuple(children, n_children)
       __return_value = LibGLib.variant_new_tuple(children, UInt64.new(n_children))
-      GLib::Variant.new(__return_value)
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_uint16(value)
       __return_value = LibGLib.variant_new_uint16(UInt16.new(value))
-      GLib::Variant.new(__return_value)
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_uint32(value)
       __return_value = LibGLib.variant_new_uint32(UInt32.new(value))
-      GLib::Variant.new(__return_value)
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_uint64(value)
       __return_value = LibGLib.variant_new_uint64(UInt64.new(value))
-      GLib::Variant.new(__return_value)
+      cast GLib::Variant.new(__return_value)
     end
 
     def self.new_variant(value)
       __return_value = LibGLib.variant_new_variant((value.to_unsafe as LibGLib::Variant*))
-      GLib::Variant.new(__return_value)
+      cast GLib::Variant.new(__return_value)
     end
 
     def byteswap
@@ -156,27 +156,27 @@ module GLib
 
     def dup_bytestring(length)
       __return_value = LibGLib.variant_dup_bytestring((to_unsafe as LibGLib::Variant*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_19| __item_19 }
+      PointerIterator.new(__return_value) {|__item_93| __item_93 }
     end
 
     def dup_bytestring_array(length)
       __return_value = LibGLib.variant_dup_bytestring_array((to_unsafe as LibGLib::Variant*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_44| (raise "Expected string but got null" unless __item_44; String.new(__item_44)) }
+      PointerIterator.new(__return_value) {|__item_70| (raise "Expected string but got null" unless __item_70; ::String.new(__item_70)) }
     end
 
     def dup_objv(length)
       __return_value = LibGLib.variant_dup_objv((to_unsafe as LibGLib::Variant*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_7| (raise "Expected string but got null" unless __item_7; String.new(__item_7)) }
+      PointerIterator.new(__return_value) {|__item_40| (raise "Expected string but got null" unless __item_40; ::String.new(__item_40)) }
     end
 
     def dup_string(length)
       __return_value = LibGLib.variant_dup_string((to_unsafe as LibGLib::Variant*), UInt64.new(length))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def dup_strv(length)
       __return_value = LibGLib.variant_dup_strv((to_unsafe as LibGLib::Variant*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_91| (raise "Expected string but got null" unless __item_91; String.new(__item_91)) }
+      PointerIterator.new(__return_value) {|__item_97| (raise "Expected string but got null" unless __item_97; ::String.new(__item_97)) }
     end
 
     def equal(two)
@@ -196,12 +196,12 @@ module GLib
 
     def bytestring
       __return_value = LibGLib.variant_get_bytestring((to_unsafe as LibGLib::Variant*))
-      PointerIterator.new(__return_value) {|__item_69| __item_69 }
+      PointerIterator.new(__return_value) {|__item_91| __item_91 }
     end
 
     def bytestring_array(length)
       __return_value = LibGLib.variant_get_bytestring_array((to_unsafe as LibGLib::Variant*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_83| (raise "Expected string but got null" unless __item_83; String.new(__item_83)) }
+      PointerIterator.new(__return_value) {|__item_31| (raise "Expected string but got null" unless __item_31; ::String.new(__item_31)) }
     end
 
     def child_value(index)
@@ -211,7 +211,7 @@ module GLib
 
     def data
       __return_value = LibGLib.variant_get_data((to_unsafe as LibGLib::Variant*))
-      __return_value
+      __return_value if __return_value
     end
 
     def data_as_bytes
@@ -246,7 +246,7 @@ module GLib
 
     def maybe
       __return_value = LibGLib.variant_get_maybe((to_unsafe as LibGLib::Variant*))
-      GLib::Variant.new(__return_value)
+      GLib::Variant.new(__return_value) if __return_value
     end
 
     def normal_form
@@ -256,7 +256,7 @@ module GLib
 
     def objv(length)
       __return_value = LibGLib.variant_get_objv((to_unsafe as LibGLib::Variant*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_67| (raise "Expected string but got null" unless __item_67; String.new(__item_67)) }
+      PointerIterator.new(__return_value) {|__item_1| (raise "Expected string but got null" unless __item_1; ::String.new(__item_1)) }
     end
 
     def size
@@ -266,12 +266,12 @@ module GLib
 
     def string(length)
       __return_value = LibGLib.variant_get_string((to_unsafe as LibGLib::Variant*), UInt64.new(length))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def strv(length)
       __return_value = LibGLib.variant_get_strv((to_unsafe as LibGLib::Variant*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_46| (raise "Expected string but got null" unless __item_46; String.new(__item_46)) }
+      PointerIterator.new(__return_value) {|__item_88| (raise "Expected string but got null" unless __item_88; ::String.new(__item_88)) }
     end
 
     def type
@@ -281,7 +281,7 @@ module GLib
 
     def type_string
       __return_value = LibGLib.variant_get_type_string((to_unsafe as LibGLib::Variant*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def uint16
@@ -341,7 +341,7 @@ module GLib
 
     def print(type_annotate)
       __return_value = LibGLib.variant_print((to_unsafe as LibGLib::Variant*), type_annotate)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def ref
@@ -388,7 +388,7 @@ module GLib
 
     def self.parse_error_print_context(error, source_str)
       __return_value = LibGLib.variant_parse_error_print_context(error, source_str)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def self.parse_error_quark

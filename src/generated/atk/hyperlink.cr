@@ -34,7 +34,7 @@ module Atk
 
     def uri(i)
       __return_value = LibAtk.hyperlink_get_uri((to_unsafe as LibAtk::Hyperlink*), Int32.new(i))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def inline?

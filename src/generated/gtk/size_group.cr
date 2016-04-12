@@ -12,7 +12,7 @@ module Gtk
 
     def self.new_internal(mode)
       __return_value = LibGtk.size_group_new(mode)
-      Gtk::SizeGroup.new(__return_value)
+      cast Gtk::SizeGroup.new(__return_value)
     end
 
     def add_widget(widget)

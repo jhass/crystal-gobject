@@ -111,6 +111,7 @@ lib LibGst
   TAG_COMMENT = "comment" # : UInt8*
   TAG_COMPOSER = "composer" # : UInt8*
   TAG_COMPOSER_SORTNAME = "composer-sortname" # : UInt8*
+  TAG_CONDUCTOR = "conductor" # : UInt8*
   TAG_CONTACT = "contact" # : UInt8*
   TAG_CONTAINER_FORMAT = "container-format" # : UInt8*
   TAG_COPYRIGHT = "copyright" # : UInt8*
@@ -157,6 +158,7 @@ lib LibGst
   TAG_ORGANIZATION = "organization" # : UInt8*
   TAG_PERFORMER = "performer" # : UInt8*
   TAG_PREVIEW_IMAGE = "preview-image" # : UInt8*
+  TAG_PRIVATE_DATA = "private-data" # : UInt8*
   TAG_PUBLISHER = "publisher" # : UInt8*
   TAG_REFERENCE_LEVEL = "replaygain-reference-level" # : UInt8*
   TAG_SERIAL = "serial" # : UInt8*
@@ -183,8 +185,8 @@ lib LibGst
   VALUE_LESS_THAN = -1 # : Int32
   VALUE_UNORDERED = 2 # : Int32
   VERSION_MAJOR = 1 # : Int32
-  VERSION_MICRO = 3 # : Int32
-  VERSION_MINOR = 6 # : Int32
+  VERSION_MICRO = 0 # : Int32
+  VERSION_MINOR = 8 # : Int32
   VERSION_NANO = 0 # : Int32
 
   ###########################################
@@ -934,11 +936,16 @@ lib LibGst
   fun segment_init = gst_segment_init(this : Segment*, format : LibGst::Format) : Void
   fun segment_is_equal = gst_segment_is_equal(this : Segment*, s1 : LibGst::Segment*) : Bool
   fun segment_offset_running_time = gst_segment_offset_running_time(this : Segment*, format : LibGst::Format, offset : Int64) : Bool
+  fun segment_position_from_running_time = gst_segment_position_from_running_time(this : Segment*, format : LibGst::Format, running_time : UInt64) : UInt64
+  fun segment_position_from_running_time_full = gst_segment_position_from_running_time_full(this : Segment*, format : LibGst::Format, running_time : UInt64, position : UInt64*) : Int32
+  fun segment_position_from_stream_time = gst_segment_position_from_stream_time(this : Segment*, format : LibGst::Format, stream_time : UInt64) : UInt64
+  fun segment_position_from_stream_time_full = gst_segment_position_from_stream_time_full(this : Segment*, format : LibGst::Format, stream_time : UInt64, position : UInt64*) : Int32
   fun segment_set_running_time = gst_segment_set_running_time(this : Segment*, format : LibGst::Format, running_time : UInt64) : Bool
   fun segment_to_position = gst_segment_to_position(this : Segment*, format : LibGst::Format, running_time : UInt64) : UInt64
   fun segment_to_running_time = gst_segment_to_running_time(this : Segment*, format : LibGst::Format, position : UInt64) : UInt64
   fun segment_to_running_time_full = gst_segment_to_running_time_full(this : Segment*, format : LibGst::Format, position : UInt64, running_time : UInt64*) : Int32
   fun segment_to_stream_time = gst_segment_to_stream_time(this : Segment*, format : LibGst::Format, position : UInt64) : UInt64
+  fun segment_to_stream_time_full = gst_segment_to_stream_time_full(this : Segment*, format : LibGst::Format, position : UInt64, stream_time : UInt64*) : Int32
 
   struct StaticCaps # struct
     caps : LibGst::Caps*
@@ -1108,6 +1115,10 @@ lib LibGst
   fun toc_entry_set_start_stop_times = gst_toc_entry_set_start_stop_times(this : TocEntry*, start : Int64, stop : Int64) : Void
   fun toc_entry_set_tags = gst_toc_entry_set_tags(this : TocEntry*, tags : LibGst::TagList*) : Void
 
+  struct TracerPrivate # struct
+    _data : UInt8[0]
+  end
+
   struct TypeFind # struct
     peek : -> Void
     suggest : -> Void
@@ -1186,12 +1197,12 @@ lib LibGst
   struct Allocator # object
     object : LibGst::Object
     mem_type : UInt8*
-    mem_map : Void*
+    mem_map : LibGst::MemoryMapFunction
     mem_unmap : LibGst::MemoryUnmapFunction
     mem_copy : LibGst::MemoryCopyFunction
     mem_share : LibGst::MemoryShareFunction
     mem_is_span : LibGst::MemoryIsSpanFunction
-    mem_map_full : Void*
+    mem_map_full : LibGst::MemoryMapFullFunction
     mem_unmap_full : LibGst::MemoryUnmapFullFunction
     _gst_reserved : Void*
     priv : LibGst::AllocatorPrivate*
@@ -1356,6 +1367,7 @@ lib LibGst
   fun clock_set_timeout = gst_clock_set_timeout(this : Clock*, timeout : UInt64) : Void
   fun clock_single_shot_id_reinit = gst_clock_single_shot_id_reinit(this : Clock*, id : Void*, time : UInt64) : Bool
   fun clock_unadjust_unlocked = gst_clock_unadjust_unlocked(this : Clock*, external : UInt64) : UInt64
+  fun clock_unadjust_with_calibration = gst_clock_unadjust_with_calibration(this : Clock*, external_target : UInt64, cinternal : UInt64, cexternal : UInt64, cnum : UInt64, cdenom : UInt64) : UInt64
   fun clock_wait_for_sync = gst_clock_wait_for_sync(this : Clock*, timeout : UInt64) : Bool
 
   struct ControlBinding # object
@@ -1478,6 +1490,7 @@ lib LibGst
     numsinkpads : UInt16
     sinkpads : Void**
     pads_cookie : UInt32
+    contexts : Void**
     _gst_reserved : Void*
     # Signal no-more-pads
     # Signal pad-added
@@ -1513,6 +1526,9 @@ lib LibGst
   fun element_get_clock = gst_element_get_clock(this : Element*) : LibGst::Clock*
   fun element_get_compatible_pad = gst_element_get_compatible_pad(this : Element*, pad : LibGst::Pad*, caps : LibGst::Caps*) : LibGst::Pad*
   fun element_get_compatible_pad_template = gst_element_get_compatible_pad_template(this : Element*, compattempl : LibGst::PadTemplate*) : LibGst::PadTemplate*
+  fun element_get_context = gst_element_get_context(this : Element*, context_type : UInt8*) : LibGst::Context*
+  fun element_get_context_unlocked = gst_element_get_context_unlocked(this : Element*, context_type : UInt8*) : LibGst::Context*
+  fun element_get_contexts = gst_element_get_contexts(this : Element*) : Void**
   fun element_get_factory = gst_element_get_factory(this : Element*) : LibGst::ElementFactory*
   fun element_get_request_pad = gst_element_get_request_pad(this : Element*, name : UInt8*) : LibGst::Pad*
   fun element_get_start_time = gst_element_get_start_time(this : Element*) : UInt64
@@ -1533,7 +1549,7 @@ lib LibGst
   fun element_post_message = gst_element_post_message(this : Element*, message : LibGst::Message*) : Bool
   fun element_provide_clock = gst_element_provide_clock(this : Element*) : LibGst::Clock*
   fun element_query = gst_element_query(this : Element*, query : LibGst::Query*) : Bool
-  fun element_query_convert = gst_element_query_convert(this : Element*, src_format : LibGst::Format*, src_val : Int64, dest_format : LibGst::Format, dest_val : Int64*) : Bool
+  fun element_query_convert = gst_element_query_convert(this : Element*, src_format : LibGst::Format, src_val : Int64, dest_format : LibGst::Format, dest_val : Int64*) : Bool
   fun element_query_duration = gst_element_query_duration(this : Element*, format : LibGst::Format, duration : Int64*) : Bool
   fun element_query_position = gst_element_query_position(this : Element*, format : LibGst::Format, cur : Int64*) : Bool
   fun element_release_request_pad = gst_element_release_request_pad(this : Element*, pad : LibGst::Pad*) : Void
@@ -1767,6 +1783,7 @@ lib LibGst
   fun pad_set_chain_function_full = gst_pad_set_chain_function_full(this : Pad*, chain : LibGst::PadChainFunction, user_data : Void*, notify : LibGLib::DestroyNotify) : Void
   fun pad_set_chain_list_function_full = gst_pad_set_chain_list_function_full(this : Pad*, chainlist : LibGst::PadChainListFunction, user_data : Void*, notify : LibGLib::DestroyNotify) : Void
   fun pad_set_element_private = gst_pad_set_element_private(this : Pad*, priv : Void*) : Void
+  fun pad_set_event_full_function_full = gst_pad_set_event_full_function_full(this : Pad*, event : LibGst::PadEventFullFunction, user_data : Void*, notify : LibGLib::DestroyNotify) : Void
   fun pad_set_event_function_full = gst_pad_set_event_function_full(this : Pad*, event : LibGst::PadEventFunction, user_data : Void*, notify : LibGLib::DestroyNotify) : Void
   fun pad_set_getrange_function_full = gst_pad_set_getrange_function_full(this : Pad*, get : LibGst::PadGetRangeFunction, user_data : Void*, notify : LibGLib::DestroyNotify) : Void
   fun pad_set_iterate_internal_links_function_full = gst_pad_set_iterate_internal_links_function_full(this : Pad*, iterintlink : LibGst::PadIterIntLinkFunction, user_data : Void*, notify : LibGLib::DestroyNotify) : Void
@@ -1942,6 +1959,21 @@ lib LibGst
   fun task_pool_join = gst_task_pool_join(this : TaskPool*, id : Void*) : Void
   fun task_pool_prepare = gst_task_pool_prepare(this : TaskPool*, error : LibGLib::Error**) : Void
   fun task_pool_push = gst_task_pool_push(this : TaskPool*, func : LibGst::TaskPoolFunction, user_data : Void*, error : LibGLib::Error**) : Void*
+
+  struct Tracer # object
+    parent : LibGst::Object
+    priv : LibGst::TracerPrivate*
+    _gst_reserved : Void*
+  end
+
+  struct TracerFactory # object
+    _data : UInt8[0]
+  end
+  fun tracer_factory_get_list = gst_tracer_factory_get_list() : Void**
+
+  struct TracerRecord # object
+    _data : UInt8[0]
+  end
 
   struct TypeFindFactory # object
     _data : UInt8[0]
@@ -2246,6 +2278,7 @@ lib LibGst
     RECURSE = 1
     PATHS_ARE_DEFAULT_ONLY = 2
     FILE_NAME_IS_SUFFIX = 4
+    FILE_NAME_IS_PREFIX = 8
   end
 
   enum PluginFlags : UInt32
@@ -2301,6 +2334,13 @@ lib LibGst
     SPARSE = 1
     SELECT = 2
     UNSELECT = 4
+  end
+
+  enum TracerValueFlags : UInt32
+    ZERO_NONE = 0
+    NONE = 0
+    OPTIONAL = 1
+    AGGREGATED = 2
   end
 
 
@@ -2563,6 +2603,7 @@ lib LibGst
     COULD_NOT_SET_PROPERTY = 4
     EMPTY_BIN = 5
     EMPTY = 6
+    DELAYED_LINK = 7
   end
   fun parse_error_quark = gst_parse_error_quark() : UInt32
 
@@ -2780,6 +2821,14 @@ lib LibGst
     ZERO_NONE = 0
     GLOBAL = 1
     CURRENT = 2
+  end
+
+  enum TracerValueScope : UInt32
+    ZERO_NONE = 0
+    PROCESS = 0
+    THREAD = 1
+    ELEMENT = 2
+    PAD = 3
   end
 
   enum TypeFindProbability : UInt32
@@ -3117,6 +3166,8 @@ lib LibGst
  alias LogFunction = LibGst::DebugCategory*, LibGst::DebugLevel, UInt8*, UInt8*, Int32, LibGObject::Object*, LibGst::DebugMessage*, Void* -> Void
  alias MemoryCopyFunction = LibGst::Memory*, Int64, Int64 -> LibGst::Memory*
  alias MemoryIsSpanFunction = LibGst::Memory*, LibGst::Memory*, UInt64* -> Bool
+ alias MemoryMapFullFunction = LibGst::Memory*, LibGst::MapInfo*, UInt64 -> Void*
+ alias MemoryMapFunction = LibGst::Memory*, UInt64, LibGst::MapFlags -> Void*
  alias MemoryShareFunction = LibGst::Memory*, Int64, Int64 -> LibGst::Memory*
  alias MemoryUnmapFullFunction = LibGst::Memory*, LibGst::MapInfo* -> Void
  alias MemoryUnmapFunction = LibGst::Memory* -> Void
@@ -3130,6 +3181,7 @@ lib LibGst
  alias PadActivateModeFunction = LibGst::Pad*, LibGst::Object*, LibGst::PadMode, Bool -> Bool
  alias PadChainFunction = LibGst::Pad*, LibGst::Object*, LibGst::Buffer* -> LibGst::FlowReturn
  alias PadChainListFunction = LibGst::Pad*, LibGst::Object*, LibGst::BufferList* -> LibGst::FlowReturn
+ alias PadEventFullFunction = LibGst::Pad*, LibGst::Object*, LibGst::Event* -> LibGst::FlowReturn
  alias PadEventFunction = LibGst::Pad*, LibGst::Object*, LibGst::Event* -> Bool
  alias PadForwardFunction = LibGst::Pad*, Void* -> Bool
  alias PadGetRangeFunction = LibGst::Pad*, LibGst::Object*, UInt64, UInt32, LibGst::Buffer* -> LibGst::FlowReturn

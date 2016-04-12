@@ -19,7 +19,7 @@ module Gtk
 
     def self.new_internal(label)
       __return_value = LibGtk.tool_item_group_new(label)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def collapsed
@@ -49,7 +49,7 @@ module Gtk
 
     def label
       __return_value = LibGtk.tool_item_group_get_label((to_unsafe as LibGtk::ToolItemGroup*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def label_widget

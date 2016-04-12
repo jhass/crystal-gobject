@@ -23,12 +23,12 @@ module Gst
 
     def self.state_change_return_get_name(state_ret)
       __return_value = LibGst.element_state_change_return_get_name(state_ret)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def self.state_get_name(state)
       __return_value = LibGst.element_state_get_name(state)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def abort_state
@@ -79,6 +79,21 @@ module Gst
     def compatible_pad_template(compattempl)
       __return_value = LibGst.element_get_compatible_pad_template((to_unsafe as LibGst::Element*), (compattempl.to_unsafe as LibGst::PadTemplate*))
       Gst::PadTemplate.new(__return_value) if __return_value
+    end
+
+    def context(context_type)
+      __return_value = LibGst.element_get_context((to_unsafe as LibGst::Element*), context_type)
+      Gst::Context.new(__return_value)
+    end
+
+    def context_unlocked(context_type)
+      __return_value = LibGst.element_get_context_unlocked((to_unsafe as LibGst::Element*), context_type)
+      Gst::Context.new(__return_value)
+    end
+
+    def contexts
+      __return_value = LibGst.element_get_contexts((to_unsafe as LibGst::Element*))
+      __return_value
     end
 
     def factory

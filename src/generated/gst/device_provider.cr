@@ -46,7 +46,7 @@ module Gst
 
     def hidden_providers
       __return_value = LibGst.device_provider_get_hidden_providers((to_unsafe as LibGst::DeviceProvider*))
-      PointerIterator.new(__return_value) {|__item_93| (raise "Expected string but got null" unless __item_93; String.new(__item_93)) }
+      PointerIterator.new(__return_value) {|__item_90| (raise "Expected string but got null" unless __item_90; ::String.new(__item_90)) }
     end
 
     def hide_provider(name)
@@ -72,7 +72,7 @@ module Gst
     alias ProviderHiddenSignal = DeviceProvider, UInt8 -> 
     def on_provider_hidden(&__block : ProviderHiddenSignal)
       __callback = ->(_arg0 : LibGst::DeviceProvider*, _arg1 : LibGst::UInt8**) {
-       __return_value = __block.call(DeviceProvider.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value = __block.call(DeviceProvider.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
       connect("provider-hidden", __callback)
@@ -81,7 +81,7 @@ module Gst
     alias ProviderUnhiddenSignal = DeviceProvider, UInt8 -> 
     def on_provider_unhidden(&__block : ProviderUnhiddenSignal)
       __callback = ->(_arg0 : LibGst::DeviceProvider*, _arg1 : LibGst::UInt8**) {
-       __return_value = __block.call(DeviceProvider.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value = __block.call(DeviceProvider.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
       connect("provider-unhidden", __callback)

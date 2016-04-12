@@ -17,7 +17,7 @@ module Gtk
 
     def self.new_internal(action)
       __return_value = LibGtk.file_chooser_widget_new(action)
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     alias DesktopFolderSignal = FileChooserWidget -> 
@@ -50,7 +50,7 @@ module Gtk
     alias LocationPopupSignal = FileChooserWidget, UInt8 -> 
     def on_location_popup(&__block : LocationPopupSignal)
       __callback = ->(_arg0 : LibGtk::FileChooserWidget*, _arg1 : LibGtk::UInt8**) {
-       __return_value = __block.call(FileChooserWidget.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value = __block.call(FileChooserWidget.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
       connect("location-popup", __callback)

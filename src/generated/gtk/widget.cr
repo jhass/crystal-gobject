@@ -47,6 +47,7 @@ module Gtk
 
 
 
+
     def self.default_direction
       __return_value = LibGtk.widget_get_default_direction
       __return_value
@@ -98,7 +99,7 @@ module Gtk
     end
 
     def add_tick_callback(callback : LibGtk::TickCallback, user_data, notify : LibGLib::DestroyNotify)
-      __return_value = LibGtk.widget_add_tick_callback((to_unsafe as LibGtk::Widget*), callback, user_data, notify)
+      __return_value = LibGtk.widget_add_tick_callback((to_unsafe as LibGtk::Widget*), callback, user_data && user_data, notify)
       __return_value
     end
 
@@ -189,7 +190,7 @@ module Gtk
 
     def drag_dest_get_target_list
       __return_value = LibGtk.widget_drag_dest_get_target_list((to_unsafe as LibGtk::Widget*))
-      Gtk::TargetList.new(__return_value)
+      Gtk::TargetList.new(__return_value) if __return_value
     end
 
     def drag_dest_get_track_motion
@@ -249,7 +250,7 @@ module Gtk
 
     def drag_source_get_target_list
       __return_value = LibGtk.widget_drag_source_get_target_list((to_unsafe as LibGtk::Widget*))
-      Gtk::TargetList.new(__return_value)
+      Gtk::TargetList.new(__return_value) if __return_value
     end
 
     def drag_source_set(start_button_mask, targets, n_targets, actions)
@@ -337,6 +338,11 @@ module Gtk
       __return_value
     end
 
+    def allocated_size(allocation, baseline)
+      __return_value = LibGtk.widget_get_allocated_size((to_unsafe as LibGtk::Widget*), allocation, Int32.new(baseline))
+      __return_value
+    end
+
     def allocated_width
       __return_value = LibGtk.widget_get_allocated_width((to_unsafe as LibGtk::Widget*))
       __return_value
@@ -389,7 +395,7 @@ module Gtk
 
     def composite_name
       __return_value = LibGtk.widget_get_composite_name((to_unsafe as LibGtk::Widget*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def device_enabled(device)
@@ -422,6 +428,11 @@ module Gtk
       __return_value
     end
 
+    def focus_on_click
+      __return_value = LibGtk.widget_get_focus_on_click((to_unsafe as LibGtk::Widget*))
+      __return_value
+    end
+
     def font_map
       __return_value = LibGtk.widget_get_font_map((to_unsafe as LibGtk::Widget*))
       Pango::FontMap.new(__return_value) if __return_value
@@ -434,7 +445,7 @@ module Gtk
 
     def frame_clock
       __return_value = LibGtk.widget_get_frame_clock((to_unsafe as LibGtk::Widget*))
-      Gdk::FrameClock.new(__return_value)
+      Gdk::FrameClock.new(__return_value) if __return_value
     end
 
     def halign
@@ -509,7 +520,7 @@ module Gtk
 
     def name
       __return_value = LibGtk.widget_get_name((to_unsafe as LibGtk::Widget*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def no_show_all
@@ -659,12 +670,12 @@ module Gtk
 
     def tooltip_markup
       __return_value = LibGtk.widget_get_tooltip_markup((to_unsafe as LibGtk::Widget*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def tooltip_text
       __return_value = LibGtk.widget_get_tooltip_text((to_unsafe as LibGtk::Widget*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def tooltip_window
@@ -709,7 +720,7 @@ module Gtk
 
     def window
       __return_value = LibGtk.widget_get_window((to_unsafe as LibGtk::Widget*))
-      Gdk::Window.new(__return_value)
+      Gdk::Window.new(__return_value) if __return_value
     end
 
     def grab_add
@@ -844,7 +855,7 @@ module Gtk
 
     def list_action_prefixes
       __return_value = LibGtk.widget_list_action_prefixes((to_unsafe as LibGtk::Widget*))
-      PointerIterator.new(__return_value) {|__item_60| (raise "Expected string but got null" unless __item_60; String.new(__item_60)) }
+      PointerIterator.new(__return_value) {|__item_65| (raise "Expected string but got null" unless __item_65; ::String.new(__item_65)) }
     end
 
     def list_mnemonic_labels
@@ -924,6 +935,11 @@ module Gtk
 
     def path(path_length, path, path_reversed)
       __return_value = LibGtk.widget_path((to_unsafe as LibGtk::Widget*), UInt32.new(path_length), path, path_reversed)
+      __return_value
+    end
+
+    def queue_allocate
+      __return_value = LibGtk.widget_queue_allocate((to_unsafe as LibGtk::Widget*))
       __return_value
     end
 
@@ -1084,6 +1100,11 @@ module Gtk
 
     def events=(events)
       __return_value = LibGtk.widget_set_events((to_unsafe as LibGtk::Widget*), Int32.new(events))
+      __return_value
+    end
+
+    def focus_on_click=(focus_on_click)
+      __return_value = LibGtk.widget_set_focus_on_click((to_unsafe as LibGtk::Widget*), focus_on_click)
       __return_value
     end
 

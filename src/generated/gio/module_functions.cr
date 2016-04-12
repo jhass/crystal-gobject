@@ -13,7 +13,7 @@ module Gio
 
   def self.action_print_detailed_name(action_name, target_value)
     __return_value = LibGio.action_print_detailed_name(action_name, target_value && (target_value.to_unsafe as LibGLib::Variant*))
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.app_info_create_from_commandline(commandline, application_name, flags)
@@ -66,12 +66,12 @@ module Gio
   end
 
   def self.async_initable_newv_async(object_type, n_parameters, parameters, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-    __return_value = LibGio.async_initable_newv_async(UInt64.new(object_type), UInt32.new(n_parameters), (parameters.to_unsafe as LibGObject::Parameter*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+    __return_value = LibGio.async_initable_newv_async(UInt64.new(object_type), UInt32.new(n_parameters), (parameters.to_unsafe as LibGObject::Parameter*), Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
     __return_value
   end
 
   def self.bus_get(bus_type, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-    __return_value = LibGio.bus_get(bus_type, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+    __return_value = LibGio.bus_get(bus_type, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
     __return_value
   end
 
@@ -131,17 +131,17 @@ module Gio
 
   def self.content_type_from_mime_type(mime_type)
     __return_value = LibGio.content_type_from_mime_type(mime_type)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.content_type_get_description(type)
     __return_value = LibGio.content_type_get_description(type)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.content_type_get_generic_icon_name(type)
     __return_value = LibGio.content_type_get_generic_icon_name(type)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.content_type_get_icon(type)
@@ -151,7 +151,7 @@ module Gio
 
   def self.content_type_get_mime_type(type)
     __return_value = LibGio.content_type_get_mime_type(type)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.content_type_get_symbolic_icon(type)
@@ -161,12 +161,12 @@ module Gio
 
   def self.content_type_guess(filename, data, data_size, result_uncertain)
     __return_value = LibGio.content_type_guess(filename && filename, data && data, UInt64.new(data_size), result_uncertain)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.content_type_guess_for_tree(root)
     __return_value = LibGio.content_type_guess_for_tree((root.to_unsafe as LibGio::File*))
-    PointerIterator.new(__return_value) {|__item_99| (raise "Expected string but got null" unless __item_99; String.new(__item_99)) }
+    PointerIterator.new(__return_value) {|__item_16| (raise "Expected string but got null" unless __item_16; ::String.new(__item_16)) }
   end
 
   def self.content_type_is_a(type, supertype)
@@ -186,18 +186,18 @@ module Gio
 
   def self.dbus_address_escape_value(string)
     __return_value = LibGio.dbus_address_escape_value(string)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.dbus_address_get_for_bus_sync(bus_type, cancellable)
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGio.dbus_address_get_for_bus_sync(bus_type, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
     GLib::Error.assert __error
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.dbus_address_get_stream(address, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-    __return_value = LibGio.dbus_address_get_stream(address, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data)
+    __return_value = LibGio.dbus_address_get_stream(address, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
     __return_value
   end
 
@@ -217,17 +217,17 @@ module Gio
 
   def self.dbus_annotation_info_lookup(annotations, name)
     __return_value = LibGio.dbus_annotation_info_lookup(annotations && annotations, name)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.dbus_error_encode_gerror(error)
     __return_value = LibGio.dbus_error_encode_gerror(error)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.dbus_error_get_remote_error(error)
     __return_value = LibGio.dbus_error_get_remote_error(error)
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.dbus_error_is_remote_error(error)
@@ -267,7 +267,7 @@ module Gio
 
   def self.dbus_generate_guid
     __return_value = LibGio.dbus_generate_guid
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.dbus_gvalue_to_gvariant(gvalue, type)
@@ -314,6 +314,20 @@ module Gio
 
   def self.dbus_is_unique_name(string)
     __return_value = LibGio.dbus_is_unique_name(string)
+    __return_value
+  end
+
+  def self.dtls_client_connection_new(base_socket, server_identity)
+    __error = Pointer(LibGLib::Error).null
+    __return_value = LibGio.dtls_client_connection_new((base_socket.to_unsafe as LibGio::DatagramBased*), server_identity && (server_identity.to_unsafe as LibGio::SocketConnectable*), pointerof(__error))
+    GLib::Error.assert __error
+    __return_value
+  end
+
+  def self.dtls_server_connection_new(base_socket, certificate)
+    __error = Pointer(LibGLib::Error).null
+    __return_value = LibGio.dtls_server_connection_new((base_socket.to_unsafe as LibGio::DatagramBased*), certificate && (certificate.to_unsafe as LibGio::TlsCertificate*), pointerof(__error))
+    GLib::Error.assert __error
     __return_value
   end
 
@@ -424,7 +438,7 @@ module Gio
   end
 
   def self.io_scheduler_push_job(job_func : LibGio::IOSchedulerJobFunc, user_data, notify : LibGLib::DestroyNotify?, io_priority, cancellable)
-    __return_value = LibGio.io_scheduler_push_job(job_func, user_data, notify && notify, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*))
+    __return_value = LibGio.io_scheduler_push_job(job_func, user_data && user_data, notify && notify, Int32.new(io_priority), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*))
     __return_value
   end
 
@@ -500,7 +514,7 @@ module Gio
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGio.resources_enumerate_children(path, lookup_flags, pointerof(__error))
     GLib::Error.assert __error
-    PointerIterator.new(__return_value) {|__item_95| (raise "Expected string but got null" unless __item_95; String.new(__item_95)) }
+    PointerIterator.new(__return_value) {|__item_40| (raise "Expected string but got null" unless __item_40; ::String.new(__item_40)) }
   end
 
   def self.resources_get_info(path, lookup_flags, size, flags)
@@ -540,7 +554,7 @@ module Gio
   end
 
   def self.simple_async_report_gerror_in_idle(object, callback : LibGio::AsyncReadyCallback?, user_data, error)
-    __return_value = LibGio.simple_async_report_gerror_in_idle(object && (object.to_unsafe as LibGObject::Object*), callback && callback, user_data, error)
+    __return_value = LibGio.simple_async_report_gerror_in_idle(object && (object.to_unsafe as LibGObject::Object*), callback && callback, user_data && user_data, error)
     __return_value
   end
 
@@ -592,17 +606,17 @@ module Gio
 
   def self.unix_mount_get_device_path(mount_entry)
     __return_value = LibGio.unix_mount_get_device_path((mount_entry.to_unsafe as LibGio::UnixMountEntry*))
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.unix_mount_get_fs_type(mount_entry)
     __return_value = LibGio.unix_mount_get_fs_type((mount_entry.to_unsafe as LibGio::UnixMountEntry*))
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.unix_mount_get_mount_path(mount_entry)
     __return_value = LibGio.unix_mount_get_mount_path((mount_entry.to_unsafe as LibGio::UnixMountEntry*))
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.unix_mount_guess_can_eject(mount_entry)
@@ -617,7 +631,7 @@ module Gio
 
   def self.unix_mount_guess_name(mount_entry)
     __return_value = LibGio.unix_mount_guess_name((mount_entry.to_unsafe as LibGio::UnixMountEntry*))
-    (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.unix_mount_guess_should_display(mount_entry)

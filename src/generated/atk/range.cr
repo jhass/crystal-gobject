@@ -11,7 +11,7 @@ module Atk
 
     def self.new_internal(lower_limit, upper_limit, description)
       __return_value = LibAtk.range_new(Float64.new(lower_limit), Float64.new(upper_limit), description)
-      Atk::Range.new(__return_value)
+      cast Atk::Range.new(__return_value)
     end
 
     def copy
@@ -26,7 +26,7 @@ module Atk
 
     def description
       __return_value = LibAtk.range_get_description((to_unsafe as LibAtk::Range*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def lower_limit

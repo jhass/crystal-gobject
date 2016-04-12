@@ -11,7 +11,7 @@ module GLib
 
     def self.new_internal(type)
       __return_value = LibGLib.variant_builder_new((type.to_unsafe as LibGLib::VariantType*))
-      GLib::VariantBuilder.new(__return_value)
+      cast GLib::VariantBuilder.new(__return_value)
     end
 
     def add_value(value)

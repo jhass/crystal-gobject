@@ -11,172 +11,172 @@ module Gst
 
     def self.new_application(src, structure)
       __return_value = LibGst.message_new_application(src && (src.to_unsafe as LibGst::Object*), (structure.to_unsafe as LibGst::Structure*))
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_async_done(src, running_time)
       __return_value = LibGst.message_new_async_done(src && (src.to_unsafe as LibGst::Object*), UInt64.new(running_time))
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_async_start(src)
       __return_value = LibGst.message_new_async_start(src && (src.to_unsafe as LibGst::Object*))
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_buffering(src, percent)
       __return_value = LibGst.message_new_buffering(src && (src.to_unsafe as LibGst::Object*), Int32.new(percent))
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_clock_lost(src, clock)
       __return_value = LibGst.message_new_clock_lost(src && (src.to_unsafe as LibGst::Object*), (clock.to_unsafe as LibGst::Clock*))
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_clock_provide(src, clock, ready)
       __return_value = LibGst.message_new_clock_provide(src && (src.to_unsafe as LibGst::Object*), (clock.to_unsafe as LibGst::Clock*), ready)
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_custom(type, src, structure)
       __return_value = LibGst.message_new_custom(type, src && (src.to_unsafe as LibGst::Object*), structure && (structure.to_unsafe as LibGst::Structure*))
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_device_added(src, device)
       __return_value = LibGst.message_new_device_added((src.to_unsafe as LibGst::Object*), (device.to_unsafe as LibGst::Device*))
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_device_removed(src, device)
       __return_value = LibGst.message_new_device_removed((src.to_unsafe as LibGst::Object*), (device.to_unsafe as LibGst::Device*))
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_duration_changed(src)
       __return_value = LibGst.message_new_duration_changed(src && (src.to_unsafe as LibGst::Object*))
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_element(src, structure)
       __return_value = LibGst.message_new_element(src && (src.to_unsafe as LibGst::Object*), (structure.to_unsafe as LibGst::Structure*))
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_eos(src)
       __return_value = LibGst.message_new_eos(src && (src.to_unsafe as LibGst::Object*))
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_error(src, error, debug)
       __return_value = LibGst.message_new_error(src && (src.to_unsafe as LibGst::Object*), error, debug)
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_have_context(src, context)
       __return_value = LibGst.message_new_have_context(src && (src.to_unsafe as LibGst::Object*), (context.to_unsafe as LibGst::Context*))
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_info(src, error, debug)
       __return_value = LibGst.message_new_info(src && (src.to_unsafe as LibGst::Object*), error, debug)
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_latency(src)
       __return_value = LibGst.message_new_latency(src && (src.to_unsafe as LibGst::Object*))
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_need_context(src, context_type)
       __return_value = LibGst.message_new_need_context(src && (src.to_unsafe as LibGst::Object*), context_type)
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_new_clock(src, clock)
       __return_value = LibGst.message_new_new_clock(src && (src.to_unsafe as LibGst::Object*), (clock.to_unsafe as LibGst::Clock*))
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_progress(src, type, code, text)
       __return_value = LibGst.message_new_progress((src.to_unsafe as LibGst::Object*), type, code, text)
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_qos(src, live, running_time, stream_time, timestamp, duration)
       __return_value = LibGst.message_new_qos((src.to_unsafe as LibGst::Object*), live, UInt64.new(running_time), UInt64.new(stream_time), UInt64.new(timestamp), UInt64.new(duration))
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_request_state(src, state)
       __return_value = LibGst.message_new_request_state(src && (src.to_unsafe as LibGst::Object*), state)
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_reset_time(src, running_time)
       __return_value = LibGst.message_new_reset_time(src && (src.to_unsafe as LibGst::Object*), UInt64.new(running_time))
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_segment_done(src, format, position)
       __return_value = LibGst.message_new_segment_done(src && (src.to_unsafe as LibGst::Object*), format, Int64.new(position))
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_segment_start(src, format, position)
       __return_value = LibGst.message_new_segment_start(src && (src.to_unsafe as LibGst::Object*), format, Int64.new(position))
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_state_changed(src, oldstate, newstate, pending)
       __return_value = LibGst.message_new_state_changed(src && (src.to_unsafe as LibGst::Object*), oldstate, newstate, pending)
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_state_dirty(src)
       __return_value = LibGst.message_new_state_dirty(src && (src.to_unsafe as LibGst::Object*))
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_step_done(src, format, amount, rate, flush, intermediate, duration, eos)
       __return_value = LibGst.message_new_step_done((src.to_unsafe as LibGst::Object*), format, UInt64.new(amount), Float64.new(rate), flush, intermediate, UInt64.new(duration), eos)
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_step_start(src, active, format, amount, rate, flush, intermediate)
       __return_value = LibGst.message_new_step_start((src.to_unsafe as LibGst::Object*), active, format, UInt64.new(amount), Float64.new(rate), flush, intermediate)
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_stream_start(src)
       __return_value = LibGst.message_new_stream_start(src && (src.to_unsafe as LibGst::Object*))
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_stream_status(src, type, owner)
       __return_value = LibGst.message_new_stream_status((src.to_unsafe as LibGst::Object*), type, (owner.to_unsafe as LibGst::Element*))
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_structure_change(src, type, owner, busy)
       __return_value = LibGst.message_new_structure_change(src && (src.to_unsafe as LibGst::Object*), type, (owner.to_unsafe as LibGst::Element*), busy)
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_tag(src, tag_list)
       __return_value = LibGst.message_new_tag(src && (src.to_unsafe as LibGst::Object*), (tag_list.to_unsafe as LibGst::TagList*))
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_toc(src, toc, updated)
       __return_value = LibGst.message_new_toc((src.to_unsafe as LibGst::Object*), (toc.to_unsafe as LibGst::Toc*), updated)
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def self.new_warning(src, error, debug)
       __return_value = LibGst.message_new_warning(src && (src.to_unsafe as LibGst::Object*), error, debug)
-      Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value)
     end
 
     def seqnum

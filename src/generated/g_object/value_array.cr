@@ -11,7 +11,7 @@ module GObject
 
     def self.new_internal(n_prealloced)
       __return_value = LibGObject.value_array_new(UInt32.new(n_prealloced))
-      GObject::ValueArray.new(__return_value)
+      cast GObject::ValueArray.new(__return_value)
     end
 
     def append(value)
@@ -50,7 +50,7 @@ module GObject
     end
 
     def sort(compare_func : LibGLib::CompareDataFunc, user_data)
-      __return_value = LibGObject.value_array_sort((to_unsafe as LibGObject::ValueArray*), compare_func, user_data)
+      __return_value = LibGObject.value_array_sort((to_unsafe as LibGObject::ValueArray*), compare_func, user_data && user_data)
       GObject::ValueArray.new(__return_value)
     end
 

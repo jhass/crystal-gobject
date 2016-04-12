@@ -9,7 +9,7 @@ module Gio
 
     def name
       __return_value = LibGio.menu_link_iter_get_name((to_unsafe as LibGio::MenuLinkIter*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def next(out_link, value)

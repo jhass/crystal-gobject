@@ -2,12 +2,12 @@ module Atk
   module Image
     def image_description
       __return_value = LibAtk.image_get_image_description((to_unsafe as LibAtk::Image*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def image_locale
       __return_value = LibAtk.image_get_image_locale((to_unsafe as LibAtk::Image*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def image_position(x, y, coord_type)

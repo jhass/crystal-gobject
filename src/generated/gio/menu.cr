@@ -11,7 +11,7 @@ module Gio
 
     def self.new_internal
       __return_value = LibGio.menu_new
-      Gio::Menu.new(__return_value)
+      cast Gio::Menu.new(__return_value)
     end
 
     def append(label, detailed_action)

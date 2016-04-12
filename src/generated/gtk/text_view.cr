@@ -35,12 +35,12 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.text_view_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_buffer(buffer)
       __return_value = LibGtk.text_view_new_with_buffer((buffer.to_unsafe as LibGtk::TextBuffer*))
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def add_child_at_anchor(child, anchor)
@@ -205,7 +205,7 @@ module Gtk
 
     def tabs
       __return_value = LibGtk.text_view_get_tabs((to_unsafe as LibGtk::TextView*))
-      Pango::TabArray.new(__return_value)
+      Pango::TabArray.new(__return_value) if __return_value
     end
 
     def top_margin
@@ -225,7 +225,7 @@ module Gtk
 
     def window(win)
       __return_value = LibGtk.text_view_get_window((to_unsafe as LibGtk::TextView*), win)
-      Gdk::Window.new(__return_value)
+      Gdk::Window.new(__return_value) if __return_value
     end
 
     def window_type(window)
@@ -260,6 +260,11 @@ module Gtk
 
     def place_cursor_onscreen
       __return_value = LibGtk.text_view_place_cursor_onscreen((to_unsafe as LibGtk::TextView*))
+      __return_value
+    end
+
+    def reset_cursor_blink
+      __return_value = LibGtk.text_view_reset_cursor_blink((to_unsafe as LibGtk::TextView*))
       __return_value
     end
 
@@ -441,7 +446,7 @@ module Gtk
     alias InsertAtCursorSignal = TextView, UInt8 -> 
     def on_insert_at_cursor(&__block : InsertAtCursorSignal)
       __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::UInt8**) {
-       __return_value = __block.call(TextView.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value = __block.call(TextView.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
       connect("insert-at-cursor", __callback)
@@ -486,7 +491,7 @@ module Gtk
     alias PreeditChangedSignal = TextView, UInt8 -> 
     def on_preedit_changed(&__block : PreeditChangedSignal)
       __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::UInt8**) {
-       __return_value = __block.call(TextView.new(_arg0), (raise "Expected string but got null" unless _arg1; String.new(_arg1)))
+       __return_value = __block.call(TextView.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
       connect("preedit-changed", __callback)

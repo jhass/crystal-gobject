@@ -11,7 +11,7 @@ module Gst
 
     def self.new_internal
       __return_value = LibGst.segment_new
-      Gst::Segment.new(__return_value)
+      cast Gst::Segment.new(__return_value)
     end
 
     def clip(format, start, stop, clip_start, clip_stop)
@@ -54,6 +54,26 @@ module Gst
       __return_value
     end
 
+    def position_from_running_time(format, running_time)
+      __return_value = LibGst.segment_position_from_running_time((to_unsafe as LibGst::Segment*), format, UInt64.new(running_time))
+      __return_value
+    end
+
+    def position_from_running_time_full(format, running_time, position)
+      __return_value = LibGst.segment_position_from_running_time_full((to_unsafe as LibGst::Segment*), format, UInt64.new(running_time), position)
+      __return_value
+    end
+
+    def position_from_stream_time(format, stream_time)
+      __return_value = LibGst.segment_position_from_stream_time((to_unsafe as LibGst::Segment*), format, UInt64.new(stream_time))
+      __return_value
+    end
+
+    def position_from_stream_time_full(format, stream_time, position)
+      __return_value = LibGst.segment_position_from_stream_time_full((to_unsafe as LibGst::Segment*), format, UInt64.new(stream_time), position)
+      __return_value
+    end
+
     def set_running_time(format, running_time)
       __return_value = LibGst.segment_set_running_time((to_unsafe as LibGst::Segment*), format, UInt64.new(running_time))
       __return_value
@@ -76,6 +96,11 @@ module Gst
 
     def to_stream_time(format, position)
       __return_value = LibGst.segment_to_stream_time((to_unsafe as LibGst::Segment*), format, UInt64.new(position))
+      __return_value
+    end
+
+    def to_stream_time_full(format, position, stream_time)
+      __return_value = LibGst.segment_to_stream_time_full((to_unsafe as LibGst::Segment*), format, UInt64.new(position), stream_time)
       __return_value
     end
 

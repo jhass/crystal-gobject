@@ -22,7 +22,7 @@ module Atk
 
     def column_description(column)
       __return_value = LibAtk.table_get_column_description((to_unsafe as LibAtk::Table*), Int32.new(column))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def column_extent_at(row, column)
@@ -57,7 +57,7 @@ module Atk
 
     def row_description(row)
       __return_value = LibAtk.table_get_row_description((to_unsafe as LibAtk::Table*), Int32.new(row))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def row_extent_at(row, column)

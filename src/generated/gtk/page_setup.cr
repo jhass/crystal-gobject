@@ -9,7 +9,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.page_setup_new
-      Gtk::PageSetup.new(__return_value)
+      cast Gtk::PageSetup.new(__return_value)
     end
 
     def self.new_from_file(file_name)

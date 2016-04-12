@@ -15,7 +15,7 @@ module Gio
 
     def self.new_internal(fd, close_fd)
       __return_value = LibGio.unix_input_stream_new(Int32.new(fd), close_fd)
-      Gio::InputStream.new(__return_value)
+      cast Gio::InputStream.new(__return_value)
     end
 
     def close_fd

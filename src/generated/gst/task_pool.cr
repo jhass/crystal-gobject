@@ -11,7 +11,7 @@ module Gst
 
     def self.new_internal
       __return_value = LibGst.task_pool_new
-      Gst::TaskPool.new(__return_value)
+      cast Gst::TaskPool.new(__return_value)
     end
 
     def cleanup
@@ -20,7 +20,7 @@ module Gst
     end
 
     def join(id)
-      __return_value = LibGst.task_pool_join((to_unsafe as LibGst::TaskPool*), id)
+      __return_value = LibGst.task_pool_join((to_unsafe as LibGst::TaskPool*), id && id)
       __return_value
     end
 
@@ -33,7 +33,7 @@ module Gst
 
     def push(func : LibGst::TaskPoolFunction, user_data)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGst.task_pool_push((to_unsafe as LibGst::TaskPool*), func, user_data, pointerof(__error))
+      __return_value = LibGst.task_pool_push((to_unsafe as LibGst::TaskPool*), func, user_data && user_data, pointerof(__error))
       GLib::Error.assert __error
       __return_value if __return_value
     end

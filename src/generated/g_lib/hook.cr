@@ -30,7 +30,7 @@ module GLib
     end
 
     def self.insert_before(hook_list, sibling, hook)
-      __return_value = LibGLib.hook_insert_before((hook_list.to_unsafe as LibGLib::HookList*), (sibling.to_unsafe as LibGLib::Hook*), (hook.to_unsafe as LibGLib::Hook*))
+      __return_value = LibGLib.hook_insert_before((hook_list.to_unsafe as LibGLib::HookList*), sibling && (sibling.to_unsafe as LibGLib::Hook*), (hook.to_unsafe as LibGLib::Hook*))
       __return_value
     end
 

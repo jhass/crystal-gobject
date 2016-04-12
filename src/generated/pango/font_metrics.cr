@@ -11,7 +11,7 @@ module Pango
 
     def self.new_internal
       __return_value = LibPango.font_metrics_new
-      Pango::FontMetrics.new(__return_value)
+      cast Pango::FontMetrics.new(__return_value)
     end
 
     def approximate_char_width

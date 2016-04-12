@@ -11,7 +11,7 @@ module GLib
 
     def self.new_internal(from_asv)
       __return_value = LibGLib.variant_dict_new(from_asv && (from_asv.to_unsafe as LibGLib::Variant*))
-      GLib::VariantDict.new(__return_value)
+      cast GLib::VariantDict.new(__return_value)
     end
 
     def clear

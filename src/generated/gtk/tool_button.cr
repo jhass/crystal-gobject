@@ -21,37 +21,37 @@ module Gtk
 
     def self.new_internal(icon_widget, label)
       __return_value = LibGtk.tool_button_new(icon_widget && (icon_widget.to_unsafe as LibGtk::Widget*), label && label)
-      Gtk::ToolItem.new(__return_value)
+      cast Gtk::ToolItem.new(__return_value)
     end
 
     def self.new_from_stock(stock_id)
       __return_value = LibGtk.tool_button_new_from_stock(stock_id)
-      Gtk::ToolItem.new(__return_value)
+      cast Gtk::ToolItem.new(__return_value)
     end
 
     def icon_name
       __return_value = LibGtk.tool_button_get_icon_name((to_unsafe as LibGtk::ToolButton*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def icon_widget
       __return_value = LibGtk.tool_button_get_icon_widget((to_unsafe as LibGtk::ToolButton*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def label
       __return_value = LibGtk.tool_button_get_label((to_unsafe as LibGtk::ToolButton*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def label_widget
       __return_value = LibGtk.tool_button_get_label_widget((to_unsafe as LibGtk::ToolButton*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def stock_id
       __return_value = LibGtk.tool_button_get_stock_id((to_unsafe as LibGtk::ToolButton*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def use_underline

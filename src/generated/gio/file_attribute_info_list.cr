@@ -11,7 +11,7 @@ module Gio
 
     def self.new_internal
       __return_value = LibGio.file_attribute_info_list_new
-      Gio::FileAttributeInfoList.new(__return_value)
+      cast Gio::FileAttributeInfoList.new(__return_value)
     end
 
     def add(name, type, flags)

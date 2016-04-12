@@ -11,12 +11,12 @@ module Gst
 
     def self.new_empty
       __return_value = LibGst.tag_list_new_empty
-      Gst::TagList.new(__return_value)
+      cast Gst::TagList.new(__return_value)
     end
 
     def self.new_from_string(str)
       __return_value = LibGst.tag_list_new_from_string(str)
-      Gst::TagList.new(__return_value) if __return_value
+      cast Gst::TagList.new(__return_value) if __return_value
     end
 
     def add_value(mode, tag, value)
@@ -25,7 +25,7 @@ module Gst
     end
 
     def foreach(func : LibGst::TagForeachFunc, user_data)
-      __return_value = LibGst.tag_list_foreach((to_unsafe as LibGst::TagList*), func, user_data)
+      __return_value = LibGst.tag_list_foreach((to_unsafe as LibGst::TagList*), func, user_data && user_data)
       __return_value
     end
 
@@ -100,12 +100,12 @@ module Gst
     end
 
     def pointer(tag, value)
-      __return_value = LibGst.tag_list_get_pointer((to_unsafe as LibGst::TagList*), tag, value)
+      __return_value = LibGst.tag_list_get_pointer((to_unsafe as LibGst::TagList*), tag, value && value)
       __return_value
     end
 
     def pointer_index(tag, index, value)
-      __return_value = LibGst.tag_list_get_pointer_index((to_unsafe as LibGst::TagList*), tag, UInt32.new(index), value)
+      __return_value = LibGst.tag_list_get_pointer_index((to_unsafe as LibGst::TagList*), tag, UInt32.new(index), value && value)
       __return_value
     end
 
@@ -191,7 +191,7 @@ module Gst
 
     def nth_tag_name(index)
       __return_value = LibGst.tag_list_nth_tag_name((to_unsafe as LibGst::TagList*), UInt32.new(index))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def peek_string_index(tag, index, value)
@@ -211,7 +211,7 @@ module Gst
 
     def to_string
       __return_value = LibGst.tag_list_to_string((to_unsafe as LibGst::TagList*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value)) if __return_value
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def self.copy_value(dest, list, tag)

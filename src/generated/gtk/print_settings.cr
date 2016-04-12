@@ -9,7 +9,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.print_settings_new
-      Gtk::PrintSettings.new(__return_value)
+      cast Gtk::PrintSettings.new(__return_value)
     end
 
     def self.new_from_file(file_name)
@@ -32,13 +32,13 @@ module Gtk
     end
 
     def foreach(func : LibGtk::PrintSettingsFunc, user_data)
-      __return_value = LibGtk.print_settings_foreach((to_unsafe as LibGtk::PrintSettings*), func, user_data)
+      __return_value = LibGtk.print_settings_foreach((to_unsafe as LibGtk::PrintSettings*), func, user_data && user_data)
       __return_value
     end
 
     def get(key)
       __return_value = LibGtk.print_settings_get((to_unsafe as LibGtk::PrintSettings*), key)
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def bool(key)
@@ -53,12 +53,12 @@ module Gtk
 
     def default_source
       __return_value = LibGtk.print_settings_get_default_source((to_unsafe as LibGtk::PrintSettings*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def dither
       __return_value = LibGtk.print_settings_get_dither((to_unsafe as LibGtk::PrintSettings*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def double(key)
@@ -78,7 +78,7 @@ module Gtk
 
     def finishings
       __return_value = LibGtk.print_settings_get_finishings((to_unsafe as LibGtk::PrintSettings*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def int(key)
@@ -98,7 +98,7 @@ module Gtk
 
     def media_type
       __return_value = LibGtk.print_settings_get_media_type((to_unsafe as LibGtk::PrintSettings*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def n_copies
@@ -123,12 +123,12 @@ module Gtk
 
     def output_bin
       __return_value = LibGtk.print_settings_get_output_bin((to_unsafe as LibGtk::PrintSettings*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def page_ranges(num_ranges)
       __return_value = LibGtk.print_settings_get_page_ranges((to_unsafe as LibGtk::PrintSettings*), Int32.new(num_ranges))
-      PointerIterator.new(__return_value) {|__item_84| Gtk::PageRange.new(__item_84) }
+      PointerIterator.new(__return_value) {|__item_67| Gtk::PageRange.new(__item_67) }
     end
 
     def page_set
@@ -158,7 +158,7 @@ module Gtk
 
     def printer
       __return_value = LibGtk.print_settings_get_printer((to_unsafe as LibGtk::PrintSettings*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def printer_lpi

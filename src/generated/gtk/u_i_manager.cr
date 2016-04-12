@@ -12,7 +12,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.u_i_manager_new
-      Gtk::UIManager.new(__return_value)
+      cast Gtk::UIManager.new(__return_value)
     end
 
     def add_ui(merge_id, path, name, action, type, top)
@@ -73,7 +73,7 @@ module Gtk
 
     def ui
       __return_value = LibGtk.u_i_manager_get_ui((to_unsafe as LibGtk::UIManager*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def widget(path)

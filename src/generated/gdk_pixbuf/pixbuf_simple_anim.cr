@@ -12,7 +12,7 @@ module GdkPixbuf
 
     def self.new_internal(width, height, rate)
       __return_value = LibGdkPixbuf.pixbuf_simple_anim_new(Int32.new(width), Int32.new(height), Float32.new(rate))
-      GdkPixbuf::PixbufSimpleAnim.new(__return_value)
+      cast GdkPixbuf::PixbufSimpleAnim.new(__return_value)
     end
 
     def add_frame(pixbuf)

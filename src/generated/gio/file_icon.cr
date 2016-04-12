@@ -12,7 +12,7 @@ module Gio
 
     def self.new_internal(file)
       __return_value = LibGio.file_icon_new((file.to_unsafe as LibGio::File*))
-      Gio::FileIcon.new(__return_value)
+      cast Gio::FileIcon.new(__return_value)
     end
 
     def file

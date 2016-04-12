@@ -42,21 +42,21 @@ module GLib
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.bookmark_file_get_applications((to_unsafe as LibGLib::BookmarkFile*), uri, UInt64.new(length), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_0| (raise "Expected string but got null" unless __item_0; String.new(__item_0)) }
+      PointerIterator.new(__return_value) {|__item_25| (raise "Expected string but got null" unless __item_25; ::String.new(__item_25)) }
     end
 
     def description(uri)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.bookmark_file_get_description((to_unsafe as LibGLib::BookmarkFile*), uri, pointerof(__error))
       GLib::Error.assert __error
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def groups(uri, length)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.bookmark_file_get_groups((to_unsafe as LibGLib::BookmarkFile*), uri, UInt64.new(length), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_55| (raise "Expected string but got null" unless __item_55; String.new(__item_55)) }
+      PointerIterator.new(__return_value) {|__item_47| (raise "Expected string but got null" unless __item_47; ::String.new(__item_47)) }
     end
 
     def icon(uri, href, mime_type)
@@ -77,7 +77,7 @@ module GLib
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.bookmark_file_get_mime_type((to_unsafe as LibGLib::BookmarkFile*), uri, pointerof(__error))
       GLib::Error.assert __error
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def modified(uri)
@@ -96,12 +96,12 @@ module GLib
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.bookmark_file_get_title((to_unsafe as LibGLib::BookmarkFile*), uri && uri, pointerof(__error))
       GLib::Error.assert __error
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def uris(length)
       __return_value = LibGLib.bookmark_file_get_uris((to_unsafe as LibGLib::BookmarkFile*), UInt64.new(length))
-      PointerIterator.new(__return_value) {|__item_42| (raise "Expected string but got null" unless __item_42; String.new(__item_42)) }
+      PointerIterator.new(__return_value) {|__item_46| (raise "Expected string but got null" unless __item_46; ::String.new(__item_46)) }
     end
 
     def visited(uri)
@@ -235,7 +235,7 @@ module GLib
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.bookmark_file_to_data((to_unsafe as LibGLib::BookmarkFile*), UInt64.new(length), pointerof(__error))
       GLib::Error.assert __error
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def to_file(filename)

@@ -15,7 +15,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.cell_area_box_new
-      Gtk::CellArea.new(__return_value)
+      cast Gtk::CellArea.new(__return_value)
     end
 
     def spacing

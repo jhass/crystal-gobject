@@ -14,7 +14,7 @@ module Gtk
 
     def self.new_internal
       __return_value = LibGtk.assistant_new
-      Gtk::Widget.new(__return_value)
+      cast Gtk::Widget.new(__return_value)
     end
 
     def add_action_widget(child)
@@ -44,7 +44,7 @@ module Gtk
 
     def nth_page(page_num)
       __return_value = LibGtk.assistant_get_nth_page((to_unsafe as LibGtk::Assistant*), Int32.new(page_num))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def page_complete(page)
@@ -69,7 +69,7 @@ module Gtk
 
     def page_title(page)
       __return_value = LibGtk.assistant_get_page_title((to_unsafe as LibGtk::Assistant*), (page.to_unsafe as LibGtk::Widget*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def page_type(page)
@@ -113,7 +113,7 @@ module Gtk
     end
 
     def set_forward_page_func(page_func : LibGtk::AssistantPageFunc?, data, destroy : LibGLib::DestroyNotify)
-      __return_value = LibGtk.assistant_set_forward_page_func((to_unsafe as LibGtk::Assistant*), page_func && page_func, data, destroy)
+      __return_value = LibGtk.assistant_set_forward_page_func((to_unsafe as LibGtk::Assistant*), page_func && page_func, data && data, destroy)
       __return_value
     end
 

@@ -83,22 +83,22 @@ module Gio
 
     def commandline
       __return_value = LibGio.app_info_get_commandline((to_unsafe as LibGio::AppInfo*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def description
       __return_value = LibGio.app_info_get_description((to_unsafe as LibGio::AppInfo*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def display_name
       __return_value = LibGio.app_info_get_display_name((to_unsafe as LibGio::AppInfo*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def executable
       __return_value = LibGio.app_info_get_executable((to_unsafe as LibGio::AppInfo*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def icon
@@ -108,17 +108,17 @@ module Gio
 
     def id
       __return_value = LibGio.app_info_get_id((to_unsafe as LibGio::AppInfo*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def name
       __return_value = LibGio.app_info_get_name((to_unsafe as LibGio::AppInfo*))
-      (raise "Expected string but got null" unless __return_value; String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def supported_types
       __return_value = LibGio.app_info_get_supported_types((to_unsafe as LibGio::AppInfo*))
-      PointerIterator.new(__return_value) {|__item_68| (raise "Expected string but got null" unless __item_68; String.new(__item_68)) }
+      PointerIterator.new(__return_value) {|__item_17| (raise "Expected string but got null" unless __item_17; ::String.new(__item_17)) }
     end
 
     def launch(files, launch_context)
