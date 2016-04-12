@@ -54,7 +54,8 @@ module GIRepository
         io << "\n#{indent}  GLib::Error.assert __error" if throws?
 
         unless skip_return?
-          io << "\n#{indent}  #{return_type.convert_to_crystal("__return_value")}"
+          casts = GIRepository.function_info_get_flags(self).is_constructor? ? "cast " : ""
+          io << "\n#{indent}  #{casts}#{return_type.convert_to_crystal("__return_value")}"
           io << " if __return_value" if may_return_null?
           io << '\n'
         else
