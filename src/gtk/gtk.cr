@@ -59,6 +59,10 @@ module Gtk
     end
 
     def [](id)
+      object(id).not_nil!
+    end
+
+    def []?(id)
       object(id)
     end
   end

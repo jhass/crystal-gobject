@@ -8,7 +8,7 @@ info_text = Gtk::Label.cast builder["text"]
 name = Gtk::Entry.cast builder["name"]
 greet = Gtk::Button.cast(builder["greet"])
 
-def greet button, info, info_text, name
+def greet(button, info, info_text, name)
   button.sensitive = false
   button.label = "One time is enough!"
 
