@@ -103,7 +103,7 @@ module GIRepository
           variable
         end
       when LibGIRepository::TypeTag::UTF8, LibGIRepository::TypeTag::FILENAME
-        %((raise "Expected string but got null" unless #{variable}; String.new(#{variable})))
+        %((raise "Expected string but got null" unless #{variable}; ::String.new(#{variable})))
       else
         variable
       end
