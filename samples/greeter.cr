@@ -11,6 +11,7 @@ greet = Gtk::Button.cast(builder["greet"])
 def greet(button, info, info_text, name)
   button.sensitive = false
   button.label = "One time is enough!"
+  name.disconnect("activate")
 
   text = name.text
   text = text.empty? ? "You should enter your name :("  : "Hello #{text}!"
