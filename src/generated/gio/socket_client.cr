@@ -16,7 +16,7 @@ module Gio
 
 
 
-    def self.new_internal
+    def self.new
       __return_value = LibGio.socket_client_new
       cast Gio::SocketClient.new(__return_value)
     end

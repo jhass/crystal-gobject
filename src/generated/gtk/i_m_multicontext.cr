@@ -9,7 +9,7 @@ module Gtk
       @gtk_i_m_multicontext.not_nil!
     end
 
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.i_m_multicontext_new
       cast Gtk::IMContext.new(__return_value)
     end

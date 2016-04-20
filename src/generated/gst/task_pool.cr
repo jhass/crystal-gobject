@@ -9,7 +9,7 @@ module Gst
       @gst_task_pool.not_nil!
     end
 
-    def self.new_internal
+    def self.new
       __return_value = LibGst.task_pool_new
       cast Gst::TaskPool.new(__return_value)
     end

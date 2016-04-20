@@ -8,7 +8,7 @@ module Gtk
     end
 
 
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.builder_new
       cast Gtk::Builder.new(__return_value)
     end

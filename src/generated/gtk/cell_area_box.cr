@@ -13,7 +13,7 @@ module Gtk
     # Implements CellLayout
     # Implements Orientable
 
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.cell_area_box_new
       cast Gtk::CellArea.new(__return_value)
     end

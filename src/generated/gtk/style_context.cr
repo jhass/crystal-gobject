@@ -11,7 +11,7 @@ module Gtk
 
 
 
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.style_context_new
       cast Gtk::StyleContext.new(__return_value)
     end

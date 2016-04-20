@@ -8,7 +8,7 @@ module Gtk
     end
 
 
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.style_new
       cast Gtk::Style.new(__return_value)
     end

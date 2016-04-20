@@ -9,7 +9,7 @@ module Gst
       @gst_buffer.not_nil!
     end
 
-    def self.new_internal
+    def self.new
       __return_value = LibGst.buffer_new
       cast Gst::Buffer.new(__return_value)
     end

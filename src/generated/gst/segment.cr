@@ -9,7 +9,7 @@ module Gst
       @gst_segment.not_nil!
     end
 
-    def self.new_internal
+    def self.new
       __return_value = LibGst.segment_new
       cast Gst::Segment.new(__return_value)
     end

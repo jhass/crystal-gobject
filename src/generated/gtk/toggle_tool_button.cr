@@ -14,7 +14,7 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
 
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.toggle_tool_button_new
       cast Gtk::ToolItem.new(__return_value)
     end

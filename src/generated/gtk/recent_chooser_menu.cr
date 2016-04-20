@@ -14,7 +14,7 @@ module Gtk
     # Implements Buildable
     # Implements RecentChooser
 
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.recent_chooser_menu_new
       cast Gtk::Widget.new(__return_value)
     end

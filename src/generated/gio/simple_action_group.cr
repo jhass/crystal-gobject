@@ -9,7 +9,7 @@ module Gio
 
     # Implements ActionGroup
     # Implements ActionMap
-    def self.new_internal
+    def self.new
       __return_value = LibGio.simple_action_group_new
       cast Gio::SimpleActionGroup.new(__return_value)
     end

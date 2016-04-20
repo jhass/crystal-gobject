@@ -255,7 +255,7 @@ module Gst
 
   def self.meta_api_type_get_tags(api)
     __return_value = LibGst.meta_api_type_get_tags(UInt64.new(api))
-    PointerIterator.new(__return_value) {|__item_31| (raise "Expected string but got null" unless __item_31; ::String.new(__item_31)) }
+    PointerIterator.new(__return_value) {|__item_69| (raise "Expected string but got null" unless __item_69; ::String.new(__item_69)) }
   end
 
   def self.meta_api_type_has_tag(api, tag)

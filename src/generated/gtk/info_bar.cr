@@ -14,7 +14,7 @@ module Gtk
     # Implements Orientable
 
 
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.info_bar_new
       cast Gtk::Widget.new(__return_value)
     end

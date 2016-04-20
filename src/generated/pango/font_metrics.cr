@@ -9,7 +9,7 @@ module Pango
       @pango_font_metrics.not_nil!
     end
 
-    def self.new_internal
+    def self.new
       __return_value = LibPango.font_metrics_new
       cast Pango::FontMetrics.new(__return_value)
     end

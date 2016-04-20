@@ -15,7 +15,7 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
 
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.volume_button_new
       cast Gtk::Widget.new(__return_value)
     end

@@ -12,7 +12,7 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.h_separator_new
       cast Gtk::Widget.new(__return_value)
     end

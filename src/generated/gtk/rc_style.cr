@@ -7,7 +7,7 @@ module Gtk
       @gtk_rc_style.not_nil!
     end
 
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.rc_style_new
       cast Gtk::RcStyle.new(__return_value)
     end

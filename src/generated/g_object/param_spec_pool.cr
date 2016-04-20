@@ -16,7 +16,7 @@ module GObject
 
     def list(owner_type, n_pspecs_p)
       __return_value = LibGObject.param_spec_pool_list((to_unsafe as LibGObject::ParamSpecPool*), UInt64.new(owner_type), UInt32.new(n_pspecs_p))
-      PointerIterator.new(__return_value) {|__item_75| GObject::ParamSpec.new(__item_75) }
+      PointerIterator.new(__return_value) {|__item_95| GObject::ParamSpec.new(__item_95) }
     end
 
     def list_owned(owner_type)

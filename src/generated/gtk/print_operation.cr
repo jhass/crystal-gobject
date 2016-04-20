@@ -26,7 +26,7 @@ module Gtk
 
 
 
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.print_operation_new
       cast Gtk::PrintOperation.new(__return_value)
     end

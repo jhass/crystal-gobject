@@ -14,7 +14,7 @@ module Gtk
 
 
 
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.cell_renderer_toggle_new
       cast Gtk::CellRenderer.new(__return_value)
     end

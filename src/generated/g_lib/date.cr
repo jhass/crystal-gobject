@@ -9,7 +9,7 @@ module GLib
       @g_lib_date.not_nil!
     end
 
-    def self.new_internal
+    def self.new
       __return_value = LibGLib.date_new
       cast GLib::Date.new(__return_value)
     end

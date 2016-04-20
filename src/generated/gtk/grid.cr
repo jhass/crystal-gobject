@@ -17,7 +17,7 @@ module Gtk
 
 
 
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.grid_new
       cast Gtk::Widget.new(__return_value)
     end

@@ -32,7 +32,7 @@ module GIRepository
         method_name = "#{method_name[3..-1]}?"
       end
 
-      if !method? && method_name == "new"
+      if !method? && method_name == "new" && !args.empty?
         method_name = "new_internal"
       end
 

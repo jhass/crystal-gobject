@@ -26,7 +26,7 @@ module GdkPixbuf
 
     def extensions
       __return_value = LibGdkPixbuf.pixbuf_format_get_extensions((to_unsafe as LibGdkPixbuf::PixbufFormat*))
-      PointerIterator.new(__return_value) {|__item_6| (raise "Expected string but got null" unless __item_6; ::String.new(__item_6)) }
+      PointerIterator.new(__return_value) {|__item_10| (raise "Expected string but got null" unless __item_10; ::String.new(__item_10)) }
     end
 
     def license
@@ -36,7 +36,7 @@ module GdkPixbuf
 
     def mime_types
       __return_value = LibGdkPixbuf.pixbuf_format_get_mime_types((to_unsafe as LibGdkPixbuf::PixbufFormat*))
-      PointerIterator.new(__return_value) {|__item_49| (raise "Expected string but got null" unless __item_49; ::String.new(__item_49)) }
+      PointerIterator.new(__return_value) {|__item_36| (raise "Expected string but got null" unless __item_36; ::String.new(__item_36)) }
     end
 
     def name

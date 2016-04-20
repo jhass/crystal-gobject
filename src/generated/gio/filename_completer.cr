@@ -7,7 +7,7 @@ module Gio
       @gio_filename_completer.not_nil!
     end
 
-    def self.new_internal
+    def self.new
       __return_value = LibGio.filename_completer_new
       cast Gio::FilenameCompleter.new(__return_value)
     end
@@ -19,7 +19,7 @@ module Gio
 
     def completions(initial_text)
       __return_value = LibGio.filename_completer_get_completions((to_unsafe as LibGio::FilenameCompleter*), initial_text)
-      PointerIterator.new(__return_value) {|__item_82| (raise "Expected string but got null" unless __item_82; ::String.new(__item_82)) }
+      PointerIterator.new(__return_value) {|__item_49| (raise "Expected string but got null" unless __item_49; ::String.new(__item_49)) }
     end
 
     def dirs_only=(dirs_only)

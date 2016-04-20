@@ -10,7 +10,7 @@ module Atk
     end
 
     # Implements Component
-    def self.new_internal
+    def self.new
       __return_value = LibAtk.plug_new
       cast Atk::Object.new(__return_value)
     end

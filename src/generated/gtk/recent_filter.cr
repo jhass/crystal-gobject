@@ -8,7 +8,7 @@ module Gtk
     end
 
     # Implements Buildable
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.recent_filter_new
       cast Gtk::RecentFilter.new(__return_value)
     end

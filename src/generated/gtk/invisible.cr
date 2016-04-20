@@ -12,7 +12,7 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
 
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.invisible_new
       cast Gtk::Widget.new(__return_value)
     end

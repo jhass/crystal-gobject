@@ -7,7 +7,7 @@ module Gio
       @gio_unix_f_d_list.not_nil!
     end
 
-    def self.new_internal
+    def self.new
       __return_value = LibGio.unix_f_d_list_new
       cast Gio::UnixFDList.new(__return_value)
     end
@@ -38,12 +38,12 @@ module Gio
 
     def peek_fds(length)
       __return_value = LibGio.unix_f_d_list_peek_fds((to_unsafe as LibGio::UnixFDList*), Int32.new(length))
-      PointerIterator.new(__return_value) {|__item_99| __item_99 }
+      PointerIterator.new(__return_value) {|__item_47| __item_47 }
     end
 
     def steal_fds(length)
       __return_value = LibGio.unix_f_d_list_steal_fds((to_unsafe as LibGio::UnixFDList*), Int32.new(length))
-      PointerIterator.new(__return_value) {|__item_62| __item_62 }
+      PointerIterator.new(__return_value) {|__item_23| __item_23 }
     end
 
   end

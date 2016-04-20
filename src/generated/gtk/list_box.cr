@@ -13,7 +13,7 @@ module Gtk
     # Implements Buildable
 
 
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.list_box_new
       cast Gtk::Widget.new(__return_value)
     end

@@ -9,7 +9,7 @@ module Pango
       @pango_attr_list.not_nil!
     end
 
-    def self.new_internal
+    def self.new
       __return_value = LibPango.attr_list_new
       cast Pango::AttrList.new(__return_value)
     end

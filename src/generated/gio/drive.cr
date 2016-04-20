@@ -51,7 +51,7 @@ module Gio
 
     def enumerate_identifiers
       __return_value = LibGio.drive_enumerate_identifiers((to_unsafe as LibGio::Drive*))
-      PointerIterator.new(__return_value) {|__item_67| (raise "Expected string but got null" unless __item_67; ::String.new(__item_67)) }
+      PointerIterator.new(__return_value) {|__item_91| (raise "Expected string but got null" unless __item_91; ::String.new(__item_91)) }
     end
 
     def icon

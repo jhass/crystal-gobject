@@ -22,7 +22,7 @@ module Gtk
 
 
 
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.status_icon_new
       cast Gtk::StatusIcon.new(__return_value)
     end

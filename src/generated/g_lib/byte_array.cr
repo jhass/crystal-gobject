@@ -19,7 +19,7 @@ module GLib
       GLib::Bytes.new(__return_value)
     end
 
-    def self.new_internal
+    def self.new
       __return_value = LibGLib.byte_array_new
       __return_value
     end

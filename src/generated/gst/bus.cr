@@ -10,7 +10,7 @@ module Gst
     end
 
 
-    def self.new_internal
+    def self.new
       __return_value = LibGst.bus_new
       cast Gst::Bus.new(__return_value)
     end

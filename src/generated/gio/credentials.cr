@@ -7,7 +7,7 @@ module Gio
       @gio_credentials.not_nil!
     end
 
-    def self.new_internal
+    def self.new
       __return_value = LibGio.credentials_new
       cast Gio::Credentials.new(__return_value)
     end

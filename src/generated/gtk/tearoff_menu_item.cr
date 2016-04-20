@@ -13,7 +13,7 @@ module Gtk
     # Implements Actionable
     # Implements Activatable
     # Implements Buildable
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.tearoff_menu_item_new
       cast Gtk::Widget.new(__return_value)
     end

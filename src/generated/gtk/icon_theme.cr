@@ -7,7 +7,7 @@ module Gtk
       @gtk_icon_theme.not_nil!
     end
 
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.icon_theme_new
       cast Gtk::IconTheme.new(__return_value)
     end
@@ -54,7 +54,7 @@ module Gtk
 
     def icon_sizes(icon_name)
       __return_value = LibGtk.icon_theme_get_icon_sizes((to_unsafe as LibGtk::IconTheme*), icon_name)
-      PointerIterator.new(__return_value) {|__item_70| __item_70 }
+      PointerIterator.new(__return_value) {|__item_94| __item_94 }
     end
 
     def search_path(path, n_elements)

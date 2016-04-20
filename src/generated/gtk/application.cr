@@ -30,12 +30,12 @@ module Gtk
 
     def accels_for_action(detailed_action_name)
       __return_value = LibGtk.application_get_accels_for_action((to_unsafe as LibGtk::Application*), detailed_action_name)
-      PointerIterator.new(__return_value) {|__item_76| (raise "Expected string but got null" unless __item_76; ::String.new(__item_76)) }
+      PointerIterator.new(__return_value) {|__item_63| (raise "Expected string but got null" unless __item_63; ::String.new(__item_63)) }
     end
 
     def actions_for_accel(accel)
       __return_value = LibGtk.application_get_actions_for_accel((to_unsafe as LibGtk::Application*), accel)
-      PointerIterator.new(__return_value) {|__item_8| (raise "Expected string but got null" unless __item_8; ::String.new(__item_8)) }
+      PointerIterator.new(__return_value) {|__item_49| (raise "Expected string but got null" unless __item_49; ::String.new(__item_49)) }
     end
 
     def active_window
@@ -80,7 +80,7 @@ module Gtk
 
     def list_action_descriptions
       __return_value = LibGtk.application_list_action_descriptions((to_unsafe as LibGtk::Application*))
-      PointerIterator.new(__return_value) {|__item_46| (raise "Expected string but got null" unless __item_46; ::String.new(__item_46)) }
+      PointerIterator.new(__return_value) {|__item_45| (raise "Expected string but got null" unless __item_45; ::String.new(__item_45)) }
     end
 
     def prefers_app_menu

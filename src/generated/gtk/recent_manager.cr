@@ -9,7 +9,7 @@ module Gtk
 
 
 
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.recent_manager_new
       cast Gtk::RecentManager.new(__return_value)
     end

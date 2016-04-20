@@ -7,7 +7,7 @@ module Atk
       @atk_state_set.not_nil!
     end
 
-    def self.new_internal
+    def self.new
       __return_value = LibAtk.state_set_new
       cast Atk::StateSet.new(__return_value)
     end

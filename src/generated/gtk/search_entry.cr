@@ -13,7 +13,7 @@ module Gtk
     # Implements Buildable
     # Implements CellEditable
     # Implements Editable
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.search_entry_new
       cast Gtk::Widget.new(__return_value)
     end

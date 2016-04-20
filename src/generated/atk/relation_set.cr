@@ -7,7 +7,7 @@ module Atk
       @atk_relation_set.not_nil!
     end
 
-    def self.new_internal
+    def self.new
       __return_value = LibAtk.relation_set_new
       cast Atk::RelationSet.new(__return_value)
     end

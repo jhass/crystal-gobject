@@ -9,7 +9,7 @@ module Gio
       @gio_menu.not_nil!
     end
 
-    def self.new_internal
+    def self.new
       __return_value = LibGio.menu_new
       cast Gio::Menu.new(__return_value)
     end

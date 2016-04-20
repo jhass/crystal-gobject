@@ -10,7 +10,7 @@ module Gio
     end
 
 
-    def self.new_internal
+    def self.new
       __return_value = LibGio.unix_credentials_message_new
       cast Gio::SocketControlMessage.new(__return_value)
     end

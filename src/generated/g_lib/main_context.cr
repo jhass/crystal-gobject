@@ -9,7 +9,7 @@ module GLib
       @g_lib_main_context.not_nil!
     end
 
-    def self.new_internal
+    def self.new
       __return_value = LibGLib.main_context_new
       cast GLib::MainContext.new(__return_value)
     end

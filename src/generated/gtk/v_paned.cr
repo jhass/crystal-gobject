@@ -12,7 +12,7 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.v_paned_new
       cast Gtk::Widget.new(__return_value)
     end

@@ -11,7 +11,7 @@ module Gio
 
     # Implements PollableInputStream
     # Implements Seekable
-    def self.new_internal
+    def self.new
       __return_value = LibGio.memory_input_stream_new
       cast Gio::InputStream.new(__return_value)
     end

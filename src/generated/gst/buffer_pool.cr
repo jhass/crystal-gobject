@@ -9,7 +9,7 @@ module Gst
       @gst_buffer_pool.not_nil!
     end
 
-    def self.new_internal
+    def self.new
       __return_value = LibGst.buffer_pool_new
       cast Gst::BufferPool.new(__return_value)
     end
@@ -71,7 +71,7 @@ module Gst
 
     def options
       __return_value = LibGst.buffer_pool_get_options((to_unsafe as LibGst::BufferPool*))
-      PointerIterator.new(__return_value) {|__item_35| (raise "Expected string but got null" unless __item_35; ::String.new(__item_35)) }
+      PointerIterator.new(__return_value) {|__item_14| (raise "Expected string but got null" unless __item_14; ::String.new(__item_14)) }
     end
 
     def has_option(option)

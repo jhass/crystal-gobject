@@ -7,7 +7,7 @@ module Gio
       @gio_file_info.not_nil!
     end
 
-    def self.new_internal
+    def self.new
       __return_value = LibGio.file_info_new
       cast Gio::FileInfo.new(__return_value)
     end
@@ -74,7 +74,7 @@ module Gio
 
     def attribute_stringv(attribute)
       __return_value = LibGio.file_info_get_attribute_stringv((to_unsafe as LibGio::FileInfo*), attribute)
-      PointerIterator.new(__return_value) {|__item_8| (raise "Expected string but got null" unless __item_8; ::String.new(__item_8)) }
+      PointerIterator.new(__return_value) {|__item_59| (raise "Expected string but got null" unless __item_59; ::String.new(__item_59)) }
     end
 
     def attribute_type(attribute)
@@ -184,7 +184,7 @@ module Gio
 
     def list_attributes(name_space)
       __return_value = LibGio.file_info_list_attributes((to_unsafe as LibGio::FileInfo*), name_space && name_space)
-      PointerIterator.new(__return_value) {|__item_11| (raise "Expected string but got null" unless __item_11; ::String.new(__item_11)) } if __return_value
+      PointerIterator.new(__return_value) {|__item_40| (raise "Expected string but got null" unless __item_40; ::String.new(__item_40)) } if __return_value
     end
 
     def remove_attribute(attribute)

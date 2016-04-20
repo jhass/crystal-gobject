@@ -10,7 +10,7 @@ module Gio
     end
 
 
-    def self.new_internal
+    def self.new
       __return_value = LibGio.unix_f_d_message_new
       cast Gio::SocketControlMessage.new(__return_value)
     end
@@ -34,7 +34,7 @@ module Gio
 
     def steal_fds(length)
       __return_value = LibGio.unix_f_d_message_steal_fds((to_unsafe as LibGio::UnixFDMessage*), Int32.new(length))
-      PointerIterator.new(__return_value) {|__item_76| __item_76 }
+      PointerIterator.new(__return_value) {|__item_25| __item_25 }
     end
 
   end

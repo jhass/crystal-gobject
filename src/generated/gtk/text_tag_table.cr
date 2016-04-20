@@ -8,7 +8,7 @@ module Gtk
     end
 
     # Implements Buildable
-    def self.new_internal
+    def self.new
       __return_value = LibGtk.text_tag_table_new
       cast Gtk::TextTagTable.new(__return_value)
     end
