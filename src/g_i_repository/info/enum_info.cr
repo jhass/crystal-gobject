@@ -29,7 +29,12 @@ module GIRepository
     end
 
     def wrapper_definition(libname, indent="")
-      "#{indent}alias #{name} = #{libname}::#{name}"
+      String.build do |io|
+        io.puts "#{indent}alias #{name} = #{libname}::#{name}"
+        each_method do |method|
+          io.puts "#{indent}# Function #{method.name}"
+        end
+      end
     end
   end
 
