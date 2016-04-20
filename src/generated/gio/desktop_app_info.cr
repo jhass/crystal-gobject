@@ -31,7 +31,7 @@ module Gio
 
     def self.search(search_string)
       __return_value = LibGio.desktop_app_info_search(search_string)
-      PointerIterator.new(__return_value) {|__item_88| PointerIterator.new(__item_88) {|__item_95| (raise "Expected string but got null" unless __item_95; ::String.new(__item_95)) } }
+      PointerIterator.new(__return_value) {|__item| PointerIterator.new(__item) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) } }
     end
 
     def self.set_desktop_env(desktop_env)
@@ -71,7 +71,7 @@ module Gio
 
     def keywords
       __return_value = LibGio.desktop_app_info_get_keywords((to_unsafe as LibGio::DesktopAppInfo*))
-      PointerIterator.new(__return_value) {|__item_61| (raise "Expected string but got null" unless __item_61; ::String.new(__item_61)) }
+      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def nodisplay
@@ -113,7 +113,7 @@ module Gio
 
     def list_actions
       __return_value = LibGio.desktop_app_info_list_actions((to_unsafe as LibGio::DesktopAppInfo*))
-      PointerIterator.new(__return_value) {|__item_33| (raise "Expected string but got null" unless __item_33; ::String.new(__item_33)) }
+      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
   end

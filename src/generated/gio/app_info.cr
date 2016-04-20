@@ -118,7 +118,7 @@ module Gio
 
     def supported_types
       __return_value = LibGio.app_info_get_supported_types((to_unsafe as LibGio::AppInfo*))
-      PointerIterator.new(__return_value) {|__item_73| (raise "Expected string but got null" unless __item_73; ::String.new(__item_73)) }
+      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def launch(files, launch_context)

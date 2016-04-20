@@ -102,7 +102,7 @@ module Gio
 
     def cached_property_names
       __return_value = LibGio.d_bus_proxy_get_cached_property_names((to_unsafe as LibGio::DBusProxy*))
-      PointerIterator.new(__return_value) {|__item_51| (raise "Expected string but got null" unless __item_51; ::String.new(__item_51)) }
+      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def connection
@@ -163,7 +163,7 @@ module Gio
     alias GPropertiesChangedSignal = DBusProxy, GLib::Variant, Array(UInt8) -> 
     def on_g_properties_changed(&__block : GPropertiesChangedSignal)
       __callback = ->(_arg0 : LibGio::DBusProxy*, _arg1 : LibGio::LibGLib::Variant*, _arg2 : LibGio::UInt8***) {
-       __return_value = __block.call(DBusProxy.new(_arg0), GLib::Variant.new(_arg1), PointerIterator.new(_arg2) {|__item_47| (raise "Expected string but got null" unless __item_47; ::String.new(__item_47)) })
+       __return_value = __block.call(DBusProxy.new(_arg0), GLib::Variant.new(_arg1), PointerIterator.new(_arg2) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) })
        __return_value
       }
       connect("g-properties-changed", __callback)

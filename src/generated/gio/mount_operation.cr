@@ -104,7 +104,7 @@ module Gio
     alias AskQuestionSignal = MountOperation, UInt8, Array(UInt8) -> 
     def on_ask_question(&__block : AskQuestionSignal)
       __callback = ->(_arg0 : LibGio::MountOperation*, _arg1 : LibGio::UInt8**, _arg2 : LibGio::UInt8***) {
-       __return_value = __block.call(MountOperation.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)), PointerIterator.new(_arg2) {|__item_36| (raise "Expected string but got null" unless __item_36; ::String.new(__item_36)) })
+       __return_value = __block.call(MountOperation.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)), PointerIterator.new(_arg2) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) })
        __return_value
       }
       connect("ask-question", __callback)
@@ -122,7 +122,7 @@ module Gio
     alias ShowProcessesSignal = MountOperation, UInt8, Array(Int32), Array(UInt8) -> 
     def on_show_processes(&__block : ShowProcessesSignal)
       __callback = ->(_arg0 : LibGio::MountOperation*, _arg1 : LibGio::UInt8**, _arg2 : LibGio::Void***, _arg3 : LibGio::UInt8***) {
-       __return_value = __block.call(MountOperation.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)), _arg2, PointerIterator.new(_arg3) {|__item_1| (raise "Expected string but got null" unless __item_1; ::String.new(__item_1)) })
+       __return_value = __block.call(MountOperation.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)), _arg2, PointerIterator.new(_arg3) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) })
        __return_value
       }
       connect("show-processes", __callback)

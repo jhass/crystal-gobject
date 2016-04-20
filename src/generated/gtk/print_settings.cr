@@ -128,7 +128,7 @@ module Gtk
 
     def page_ranges(num_ranges)
       __return_value = LibGtk.print_settings_get_page_ranges((to_unsafe as LibGtk::PrintSettings*), Int32.new(num_ranges))
-      PointerIterator.new(__return_value) {|__item_8| Gtk::PageRange.new(__item_8) }
+      PointerIterator.new(__return_value) {|__item| Gtk::PageRange.new(__item) }
     end
 
     def page_set

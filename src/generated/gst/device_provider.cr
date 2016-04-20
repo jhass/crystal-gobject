@@ -46,7 +46,7 @@ module Gst
 
     def hidden_providers
       __return_value = LibGst.device_provider_get_hidden_providers((to_unsafe as LibGst::DeviceProvider*))
-      PointerIterator.new(__return_value) {|__item_86| (raise "Expected string but got null" unless __item_86; ::String.new(__item_86)) }
+      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def hide_provider(name)

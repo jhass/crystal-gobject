@@ -38,12 +38,12 @@ module Gio
 
     def peek_fds(length)
       __return_value = LibGio.unix_f_d_list_peek_fds((to_unsafe as LibGio::UnixFDList*), Int32.new(length))
-      PointerIterator.new(__return_value) {|__item_47| __item_47 }
+      PointerIterator.new(__return_value) {|__item| __item }
     end
 
     def steal_fds(length)
       __return_value = LibGio.unix_f_d_list_steal_fds((to_unsafe as LibGio::UnixFDList*), Int32.new(length))
-      PointerIterator.new(__return_value) {|__item_23| __item_23 }
+      PointerIterator.new(__return_value) {|__item| __item }
     end
 
   end

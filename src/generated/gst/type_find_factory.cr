@@ -26,7 +26,7 @@ module Gst
 
     def extensions
       __return_value = LibGst.type_find_factory_get_extensions((to_unsafe as LibGst::TypeFindFactory*))
-      PointerIterator.new(__return_value) {|__item_39| (raise "Expected string but got null" unless __item_39; ::String.new(__item_39)) } if __return_value
+      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) } if __return_value
     end
 
     def has_function

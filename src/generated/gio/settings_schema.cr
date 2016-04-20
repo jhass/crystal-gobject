@@ -31,12 +31,12 @@ module Gio
 
     def list_children
       __return_value = LibGio.settings_schema_list_children((to_unsafe as LibGio::SettingsSchema*))
-      PointerIterator.new(__return_value) {|__item_28| (raise "Expected string but got null" unless __item_28; ::String.new(__item_28)) }
+      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def list_keys
       __return_value = LibGio.settings_schema_list_keys((to_unsafe as LibGio::SettingsSchema*))
-      PointerIterator.new(__return_value) {|__item_95| (raise "Expected string but got null" unless __item_95; ::String.new(__item_95)) }
+      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def ref

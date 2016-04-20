@@ -71,7 +71,7 @@ module Gst
 
     def options
       __return_value = LibGst.buffer_pool_get_options((to_unsafe as LibGst::BufferPool*))
-      PointerIterator.new(__return_value) {|__item_14| (raise "Expected string but got null" unless __item_14; ::String.new(__item_14)) }
+      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def has_option(option)

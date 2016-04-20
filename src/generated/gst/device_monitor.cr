@@ -32,7 +32,7 @@ module Gst
 
     def providers
       __return_value = LibGst.device_monitor_get_providers((to_unsafe as LibGst::DeviceMonitor*))
-      PointerIterator.new(__return_value) {|__item_18| (raise "Expected string but got null" unless __item_18; ::String.new(__item_18)) }
+      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def show_all_devices

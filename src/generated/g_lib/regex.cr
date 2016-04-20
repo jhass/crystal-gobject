@@ -101,14 +101,14 @@ module GLib
 
     def split(string, match_options)
       __return_value = LibGLib.regex_split((to_unsafe as LibGLib::Regex*), string, match_options)
-      PointerIterator.new(__return_value) {|__item_28| (raise "Expected string but got null" unless __item_28; ::String.new(__item_28)) }
+      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def split_full(string, string_len, start_position, match_options, max_tokens)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.regex_split_full((to_unsafe as LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), match_options, Int32.new(max_tokens), pointerof(__error))
       GLib::Error.assert __error
-      PointerIterator.new(__return_value) {|__item_71| (raise "Expected string but got null" unless __item_71; ::String.new(__item_71)) }
+      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def unref
@@ -145,7 +145,7 @@ module GLib
 
     def self.split_simple(pattern, string, compile_options, match_options)
       __return_value = LibGLib.regex_split_simple(pattern, string, compile_options, match_options)
-      PointerIterator.new(__return_value) {|__item_33| (raise "Expected string but got null" unless __item_33; ::String.new(__item_33)) }
+      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
   end

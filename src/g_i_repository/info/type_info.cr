@@ -97,7 +97,7 @@ module GIRepository
         case array_type
         when LibGIRepository::ArrayType::C
           type = TypeInfo.new LibGIRepository.type_info_get_param_type(self, 0)
-          item = "__item_#{rand(100)}"
+          item = "__item"
           "PointerIterator.new(#{variable}) {|#{item}| #{type.convert_to_crystal("#{item}")} }"
         else
           variable

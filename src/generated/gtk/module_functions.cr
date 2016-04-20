@@ -523,7 +523,7 @@ module Gtk
 
   def self.rc_get_default_files
     __return_value = LibGtk.rc_get_default_files
-    PointerIterator.new(__return_value) {|__item_24| (raise "Expected string but got null" unless __item_24; ::String.new(__item_24)) }
+    PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
   end
 
   def self.rc_get_im_module_file
@@ -820,7 +820,7 @@ module Gtk
 
   def self.target_table_new_from_list(list, n_targets)
     __return_value = LibGtk.target_table_new_from_list((list.to_unsafe as LibGtk::TargetList*), Int32.new(n_targets))
-    PointerIterator.new(__return_value) {|__item_70| Gtk::TargetEntry.new(__item_70) }
+    PointerIterator.new(__return_value) {|__item| Gtk::TargetEntry.new(__item) }
   end
 
   def self.targets_include_image(targets, n_targets, writable)
@@ -865,7 +865,7 @@ module Gtk
 
   def self.test_list_all_types(n_types)
     __return_value = LibGtk.test_list_all_types(UInt32.new(n_types))
-    PointerIterator.new(__return_value) {|__item_77| __item_77 }
+    PointerIterator.new(__return_value) {|__item| __item }
   end
 
   def self.test_register_all_types

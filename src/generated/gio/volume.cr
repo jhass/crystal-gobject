@@ -36,7 +36,7 @@ module Gio
 
     def enumerate_identifiers
       __return_value = LibGio.volume_enumerate_identifiers((to_unsafe as LibGio::Volume*))
-      PointerIterator.new(__return_value) {|__item_5| (raise "Expected string but got null" unless __item_5; ::String.new(__item_5)) }
+      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def activation_root
