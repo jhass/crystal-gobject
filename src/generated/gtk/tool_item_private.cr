@@ -2,7 +2,8 @@ module Gtk
   class ToolItemPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_tool_item_private)
+    @gtk_tool_item_private : LibGtk::ToolItemPrivate*?
+    def initialize(@gtk_tool_item_private : LibGtk::ToolItemPrivate*)
     end
 
     def to_unsafe

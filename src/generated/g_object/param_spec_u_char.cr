@@ -2,7 +2,8 @@ require "./param_spec"
 
 module GObject
   class ParamSpecUChar < ParamSpec
-    def initialize(@g_object_param_spec_u_char)
+    @g_object_param_spec_u_char : LibGObject::ParamSpecUChar*?
+    def initialize(@g_object_param_spec_u_char : LibGObject::ParamSpecUChar*)
     end
 
     def to_unsafe

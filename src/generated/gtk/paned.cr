@@ -2,7 +2,8 @@ require "./container"
 
 module Gtk
   class Paned < Container
-    def initialize(@gtk_paned)
+    @gtk_paned : LibGtk::Paned*?
+    def initialize(@gtk_paned : LibGtk::Paned*)
     end
 
     def to_unsafe

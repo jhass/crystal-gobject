@@ -2,7 +2,8 @@ module Gst
   class BufferList
     include GObject::WrappedType
 
-    def initialize(@gst_buffer_list)
+    @gst_buffer_list : LibGst::BufferList*?
+    def initialize(@gst_buffer_list : LibGst::BufferList*)
     end
 
     def to_unsafe

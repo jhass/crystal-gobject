@@ -2,7 +2,8 @@ module Gio
   class PermissionPrivate
     include GObject::WrappedType
 
-    def initialize(@gio_permission_private)
+    @gio_permission_private : LibGio::PermissionPrivate*?
+    def initialize(@gio_permission_private : LibGio::PermissionPrivate*)
     end
 
     def to_unsafe

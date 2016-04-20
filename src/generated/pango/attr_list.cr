@@ -2,7 +2,8 @@ module Pango
   class AttrList
     include GObject::WrappedType
 
-    def initialize(@pango_attr_list)
+    @pango_attr_list : LibPango::AttrList*?
+    def initialize(@pango_attr_list : LibPango::AttrList*)
     end
 
     def to_unsafe

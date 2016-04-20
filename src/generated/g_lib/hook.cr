@@ -2,7 +2,8 @@ module GLib
   class Hook
     include GObject::WrappedType
 
-    def initialize(@g_lib_hook)
+    @g_lib_hook : LibGLib::Hook*?
+    def initialize(@g_lib_hook : LibGLib::Hook*)
     end
 
     def to_unsafe

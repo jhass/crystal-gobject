@@ -2,7 +2,8 @@ module Gio
   class InetAddressMaskPrivate
     include GObject::WrappedType
 
-    def initialize(@gio_inet_address_mask_private)
+    @gio_inet_address_mask_private : LibGio::InetAddressMaskPrivate*?
+    def initialize(@gio_inet_address_mask_private : LibGio::InetAddressMaskPrivate*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Gtk
   class TreeStorePrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_tree_store_private)
+    @gtk_tree_store_private : LibGtk::TreeStorePrivate*?
+    def initialize(@gtk_tree_store_private : LibGtk::TreeStorePrivate*)
     end
 
     def to_unsafe

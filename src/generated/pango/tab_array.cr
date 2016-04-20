@@ -2,7 +2,8 @@ module Pango
   class TabArray
     include GObject::WrappedType
 
-    def initialize(@pango_tab_array)
+    @pango_tab_array : LibPango::TabArray*?
+    def initialize(@pango_tab_array : LibPango::TabArray*)
     end
 
     def to_unsafe

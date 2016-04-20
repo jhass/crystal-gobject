@@ -2,7 +2,8 @@ module GLib
   class Cond
     include GObject::WrappedType
 
-    def initialize(@g_lib_cond)
+    @g_lib_cond : LibGLib::Cond*?
+    def initialize(@g_lib_cond : LibGLib::Cond*)
     end
 
     def to_unsafe

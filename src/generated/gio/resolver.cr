@@ -1,6 +1,7 @@
 module Gio
   class Resolver < GObject::Object
-    def initialize(@gio_resolver)
+    @gio_resolver : LibGio::Resolver*?
+    def initialize(@gio_resolver : LibGio::Resolver*)
     end
 
     def to_unsafe

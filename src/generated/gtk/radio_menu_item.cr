@@ -2,7 +2,8 @@ require "./check_menu_item"
 
 module Gtk
   class RadioMenuItem < CheckMenuItem
-    def initialize(@gtk_radio_menu_item)
+    @gtk_radio_menu_item : LibGtk::RadioMenuItem*?
+    def initialize(@gtk_radio_menu_item : LibGtk::RadioMenuItem*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Gdk
   class EventButton
     include GObject::WrappedType
 
-    def initialize(@gdk_event_button)
+    @gdk_event_button : LibGdk::EventButton*?
+    def initialize(@gdk_event_button : LibGdk::EventButton*)
     end
 
     def to_unsafe

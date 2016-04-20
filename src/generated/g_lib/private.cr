@@ -2,7 +2,8 @@ module GLib
   class Private
     include GObject::WrappedType
 
-    def initialize(@g_lib_private)
+    @g_lib_private : LibGLib::Private*?
+    def initialize(@g_lib_private : LibGLib::Private*)
     end
 
     def to_unsafe

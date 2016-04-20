@@ -2,7 +2,8 @@ require "./event_controller"
 
 module Gtk
   class Gesture < EventController
-    def initialize(@gtk_gesture)
+    @gtk_gesture : LibGtk::Gesture*?
+    def initialize(@gtk_gesture : LibGtk::Gesture*)
     end
 
     def to_unsafe

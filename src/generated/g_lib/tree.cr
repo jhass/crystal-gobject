@@ -2,7 +2,8 @@ module GLib
   class Tree
     include GObject::WrappedType
 
-    def initialize(@g_lib_tree)
+    @g_lib_tree : LibGLib::Tree*?
+    def initialize(@g_lib_tree : LibGLib::Tree*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Gtk
   class ActionBarPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_action_bar_private)
+    @gtk_action_bar_private : LibGtk::ActionBarPrivate*?
+    def initialize(@gtk_action_bar_private : LibGtk::ActionBarPrivate*)
     end
 
     def to_unsafe

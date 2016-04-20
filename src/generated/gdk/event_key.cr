@@ -2,7 +2,8 @@ module Gdk
   class EventKey
     include GObject::WrappedType
 
-    def initialize(@gdk_event_key)
+    @gdk_event_key : LibGdk::EventKey*?
+    def initialize(@gdk_event_key : LibGdk::EventKey*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ require "./container"
 
 module Gtk
   class Bin < Container
-    def initialize(@gtk_bin)
+    @gtk_bin : LibGtk::Bin*?
+    def initialize(@gtk_bin : LibGtk::Bin*)
     end
 
     def to_unsafe

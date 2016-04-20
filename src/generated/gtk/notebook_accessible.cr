@@ -2,7 +2,8 @@ require "./container_accessible"
 
 module Gtk
   class NotebookAccessible < ContainerAccessible
-    def initialize(@gtk_notebook_accessible)
+    @gtk_notebook_accessible : LibGtk::NotebookAccessible*?
+    def initialize(@gtk_notebook_accessible : LibGtk::NotebookAccessible*)
     end
 
     def to_unsafe

@@ -2,6 +2,8 @@ require "./info/base_info"
 
 module GIRepository
   class Repository
+    @@instance : self?
+
     def self.instance
       @@instance ||= default
     end

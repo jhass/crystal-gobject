@@ -45,8 +45,12 @@ module GIRepository
         io.puts "#{indent}  include GObject::WrappedType"
         io.puts
 
+        # TODO: extract redundancy with ObjectInfo
+
         ptr = "@#{GIRepository.filename(full_constant)}"
-        io.puts "#{indent}  def initialize(#{ptr})"
+        ptr_type = "#{libname}::#{name}*"
+        io.puts "#{indent}  #{ptr} : #{ptr_type}?"
+        io.puts "#{indent}  def initialize(#{ptr} : #{ptr_type})"
         io.puts "#{indent}  end"
         io.puts
         io.puts "#{indent}  def to_unsafe"

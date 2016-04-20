@@ -2,7 +2,8 @@ module Gtk
   class CalendarPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_calendar_private)
+    @gtk_calendar_private : LibGtk::CalendarPrivate*?
+    def initialize(@gtk_calendar_private : LibGtk::CalendarPrivate*)
     end
 
     def to_unsafe

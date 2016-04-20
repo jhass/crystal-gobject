@@ -2,7 +2,8 @@ require "./plugin_feature"
 
 module Gst
   class TypeFindFactory < PluginFeature
-    def initialize(@gst_type_find_factory)
+    @gst_type_find_factory : LibGst::TypeFindFactory*?
+    def initialize(@gst_type_find_factory : LibGst::TypeFindFactory*)
     end
 
     def to_unsafe

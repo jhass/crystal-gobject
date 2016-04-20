@@ -2,7 +2,8 @@ module Gtk
   class ArrowAccessiblePrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_arrow_accessible_private)
+    @gtk_arrow_accessible_private : LibGtk::ArrowAccessiblePrivate*?
+    def initialize(@gtk_arrow_accessible_private : LibGtk::ArrowAccessiblePrivate*)
     end
 
     def to_unsafe

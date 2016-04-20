@@ -2,7 +2,8 @@ module Gtk
   class InfoBarPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_info_bar_private)
+    @gtk_info_bar_private : LibGtk::InfoBarPrivate*?
+    def initialize(@gtk_info_bar_private : LibGtk::InfoBarPrivate*)
     end
 
     def to_unsafe

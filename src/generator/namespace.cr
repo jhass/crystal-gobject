@@ -1,5 +1,5 @@
 class Namespace
-  def initialize(@namespace)
+  def initialize(@namespace : String)
     self.require
   end
 

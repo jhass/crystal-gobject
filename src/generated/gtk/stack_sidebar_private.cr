@@ -2,7 +2,8 @@ module Gtk
   class StackSidebarPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_stack_sidebar_private)
+    @gtk_stack_sidebar_private : LibGtk::StackSidebarPrivate*?
+    def initialize(@gtk_stack_sidebar_private : LibGtk::StackSidebarPrivate*)
     end
 
     def to_unsafe

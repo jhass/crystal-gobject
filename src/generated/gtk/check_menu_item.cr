@@ -2,7 +2,8 @@ require "./menu_item"
 
 module Gtk
   class CheckMenuItem < MenuItem
-    def initialize(@gtk_check_menu_item)
+    @gtk_check_menu_item : LibGtk::CheckMenuItem*?
+    def initialize(@gtk_check_menu_item : LibGtk::CheckMenuItem*)
     end
 
     def to_unsafe

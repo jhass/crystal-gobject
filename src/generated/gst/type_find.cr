@@ -2,7 +2,8 @@ module Gst
   class TypeFind
     include GObject::WrappedType
 
-    def initialize(@gst_type_find)
+    @gst_type_find : LibGst::TypeFind*?
+    def initialize(@gst_type_find : LibGst::TypeFind*)
     end
 
     def to_unsafe

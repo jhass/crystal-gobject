@@ -1,6 +1,7 @@
 module Gtk
   class CssProvider < GObject::Object
-    def initialize(@gtk_css_provider)
+    @gtk_css_provider : LibGtk::CssProvider*?
+    def initialize(@gtk_css_provider : LibGtk::CssProvider*)
     end
 
     def to_unsafe

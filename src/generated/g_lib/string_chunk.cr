@@ -2,7 +2,8 @@ module GLib
   class StringChunk
     include GObject::WrappedType
 
-    def initialize(@g_lib_string_chunk)
+    @g_lib_string_chunk : LibGLib::StringChunk*?
+    def initialize(@g_lib_string_chunk : LibGLib::StringChunk*)
     end
 
     def to_unsafe

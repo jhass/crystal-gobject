@@ -2,7 +2,8 @@ module GObject
   class TypeValueTable
     include GObject::WrappedType
 
-    def initialize(@g_object_type_value_table)
+    @g_object_type_value_table : LibGObject::TypeValueTable*?
+    def initialize(@g_object_type_value_table : LibGObject::TypeValueTable*)
     end
 
     def to_unsafe

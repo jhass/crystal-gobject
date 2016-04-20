@@ -2,7 +2,8 @@ module Gio
   class IOSchedulerJob
     include GObject::WrappedType
 
-    def initialize(@gio_i_o_scheduler_job)
+    @gio_i_o_scheduler_job : LibGio::IOSchedulerJob*?
+    def initialize(@gio_i_o_scheduler_job : LibGio::IOSchedulerJob*)
     end
 
     def to_unsafe

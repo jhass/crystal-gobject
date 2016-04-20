@@ -2,7 +2,8 @@ module Gtk
   class PopoverPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_popover_private)
+    @gtk_popover_private : LibGtk::PopoverPrivate*?
+    def initialize(@gtk_popover_private : LibGtk::PopoverPrivate*)
     end
 
     def to_unsafe

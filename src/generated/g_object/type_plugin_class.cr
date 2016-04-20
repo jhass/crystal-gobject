@@ -2,7 +2,8 @@ module GObject
   class TypePluginClass
     include GObject::WrappedType
 
-    def initialize(@g_object_type_plugin_class)
+    @g_object_type_plugin_class : LibGObject::TypePluginClass*?
+    def initialize(@g_object_type_plugin_class : LibGObject::TypePluginClass*)
     end
 
     def to_unsafe

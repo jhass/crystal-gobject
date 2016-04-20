@@ -2,7 +2,8 @@ require "./widget_accessible"
 
 module Gtk
   class ArrowAccessible < WidgetAccessible
-    def initialize(@gtk_arrow_accessible)
+    @gtk_arrow_accessible : LibGtk::ArrowAccessible*?
+    def initialize(@gtk_arrow_accessible : LibGtk::ArrowAccessible*)
     end
 
     def to_unsafe

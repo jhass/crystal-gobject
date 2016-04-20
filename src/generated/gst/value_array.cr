@@ -2,7 +2,8 @@ module Gst
   class ValueArray
     include GObject::WrappedType
 
-    def initialize(@gst_value_array)
+    @gst_value_array : LibGst::ValueArray*?
+    def initialize(@gst_value_array : LibGst::ValueArray*)
     end
 
     def to_unsafe

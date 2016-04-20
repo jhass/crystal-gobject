@@ -2,7 +2,8 @@ require "./object"
 
 module Gst
   class Bus < Object
-    def initialize(@gst_bus)
+    @gst_bus : LibGst::Bus*?
+    def initialize(@gst_bus : LibGst::Bus*)
     end
 
     def to_unsafe

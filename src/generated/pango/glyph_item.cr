@@ -2,7 +2,8 @@ module Pango
   class GlyphItem
     include GObject::WrappedType
 
-    def initialize(@pango_glyph_item)
+    @pango_glyph_item : LibPango::GlyphItem*?
+    def initialize(@pango_glyph_item : LibPango::GlyphItem*)
     end
 
     def to_unsafe

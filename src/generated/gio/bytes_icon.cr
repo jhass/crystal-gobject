@@ -1,6 +1,7 @@
 module Gio
   class BytesIcon < GObject::Object
-    def initialize(@gio_bytes_icon)
+    @gio_bytes_icon : LibGio::BytesIcon*?
+    def initialize(@gio_bytes_icon : LibGio::BytesIcon*)
     end
 
     def to_unsafe

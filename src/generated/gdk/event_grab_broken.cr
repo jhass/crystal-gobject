@@ -2,7 +2,8 @@ module Gdk
   class EventGrabBroken
     include GObject::WrappedType
 
-    def initialize(@gdk_event_grab_broken)
+    @gdk_event_grab_broken : LibGdk::EventGrabBroken*?
+    def initialize(@gdk_event_grab_broken : LibGdk::EventGrabBroken*)
     end
 
     def to_unsafe

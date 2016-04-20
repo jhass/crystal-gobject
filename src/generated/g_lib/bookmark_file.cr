@@ -2,7 +2,8 @@ module GLib
   class BookmarkFile
     include GObject::WrappedType
 
-    def initialize(@g_lib_bookmark_file)
+    @g_lib_bookmark_file : LibGLib::BookmarkFile*?
+    def initialize(@g_lib_bookmark_file : LibGLib::BookmarkFile*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ require "./widget"
 
 module Gtk
   class Container < Widget
-    def initialize(@gtk_container)
+    @gtk_container : LibGtk::Container*?
+    def initialize(@gtk_container : LibGtk::Container*)
     end
 
     def to_unsafe

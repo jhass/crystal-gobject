@@ -2,7 +2,8 @@ module GLib
   class Error
     include GObject::WrappedType
 
-    def initialize(@g_lib_error)
+    @g_lib_error : LibGLib::Error*?
+    def initialize(@g_lib_error : LibGLib::Error*)
     end
 
     def to_unsafe

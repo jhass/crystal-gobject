@@ -1,6 +1,7 @@
 module Gio
   class IOStream < GObject::Object
-    def initialize(@gio_i_o_stream)
+    @gio_i_o_stream : LibGio::IOStream*?
+    def initialize(@gio_i_o_stream : LibGio::IOStream*)
     end
 
     def to_unsafe

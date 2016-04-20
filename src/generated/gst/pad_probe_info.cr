@@ -2,7 +2,8 @@ module Gst
   class PadProbeInfo
     include GObject::WrappedType
 
-    def initialize(@gst_pad_probe_info)
+    @gst_pad_probe_info : LibGst::PadProbeInfo*?
+    def initialize(@gst_pad_probe_info : LibGst::PadProbeInfo*)
     end
 
     def to_unsafe

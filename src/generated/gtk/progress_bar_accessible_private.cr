@@ -2,7 +2,8 @@ module Gtk
   class ProgressBarAccessiblePrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_progress_bar_accessible_private)
+    @gtk_progress_bar_accessible_private : LibGtk::ProgressBarAccessiblePrivate*?
+    def initialize(@gtk_progress_bar_accessible_private : LibGtk::ProgressBarAccessiblePrivate*)
     end
 
     def to_unsafe

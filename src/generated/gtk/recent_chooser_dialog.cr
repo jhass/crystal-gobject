@@ -2,7 +2,8 @@ require "./dialog"
 
 module Gtk
   class RecentChooserDialog < Dialog
-    def initialize(@gtk_recent_chooser_dialog)
+    @gtk_recent_chooser_dialog : LibGtk::RecentChooserDialog*?
+    def initialize(@gtk_recent_chooser_dialog : LibGtk::RecentChooserDialog*)
     end
 
     def to_unsafe

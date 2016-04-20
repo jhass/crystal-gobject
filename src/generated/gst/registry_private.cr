@@ -2,7 +2,8 @@ module Gst
   class RegistryPrivate
     include GObject::WrappedType
 
-    def initialize(@gst_registry_private)
+    @gst_registry_private : LibGst::RegistryPrivate*?
+    def initialize(@gst_registry_private : LibGst::RegistryPrivate*)
     end
 
     def to_unsafe

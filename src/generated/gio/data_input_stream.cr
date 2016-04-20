@@ -2,7 +2,8 @@ require "./buffered_input_stream"
 
 module Gio
   class DataInputStream < BufferedInputStream
-    def initialize(@gio_data_input_stream)
+    @gio_data_input_stream : LibGio::DataInputStream*?
+    def initialize(@gio_data_input_stream : LibGio::DataInputStream*)
     end
 
     def to_unsafe

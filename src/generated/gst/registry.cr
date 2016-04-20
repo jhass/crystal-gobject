@@ -2,7 +2,8 @@ require "./object"
 
 module Gst
   class Registry < Object
-    def initialize(@gst_registry)
+    @gst_registry : LibGst::Registry*?
+    def initialize(@gst_registry : LibGst::Registry*)
     end
 
     def to_unsafe

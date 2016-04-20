@@ -1,6 +1,7 @@
 module Gio
   class TestDBus < GObject::Object
-    def initialize(@gio_test_d_bus)
+    @gio_test_d_bus : LibGio::TestDBus*?
+    def initialize(@gio_test_d_bus : LibGio::TestDBus*)
     end
 
     def to_unsafe

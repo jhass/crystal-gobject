@@ -2,7 +2,8 @@ module Gtk
   class StylePropertiesPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_style_properties_private)
+    @gtk_style_properties_private : LibGtk::StylePropertiesPrivate*?
+    def initialize(@gtk_style_properties_private : LibGtk::StylePropertiesPrivate*)
     end
 
     def to_unsafe

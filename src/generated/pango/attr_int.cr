@@ -2,7 +2,8 @@ module Pango
   class AttrInt
     include GObject::WrappedType
 
-    def initialize(@pango_attr_int)
+    @pango_attr_int : LibPango::AttrInt*?
+    def initialize(@pango_attr_int : LibPango::AttrInt*)
     end
 
     def to_unsafe

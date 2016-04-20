@@ -2,7 +2,8 @@ module GObject
   class ParamSpecPool
     include GObject::WrappedType
 
-    def initialize(@g_object_param_spec_pool)
+    @g_object_param_spec_pool : LibGObject::ParamSpecPool*?
+    def initialize(@g_object_param_spec_pool : LibGObject::ParamSpecPool*)
     end
 
     def to_unsafe

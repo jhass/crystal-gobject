@@ -2,7 +2,8 @@ module GLib
   class DateTime
     include GObject::WrappedType
 
-    def initialize(@g_lib_date_time)
+    @g_lib_date_time : LibGLib::DateTime*?
+    def initialize(@g_lib_date_time : LibGLib::DateTime*)
     end
 
     def to_unsafe

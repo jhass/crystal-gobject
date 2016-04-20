@@ -2,7 +2,8 @@ module Gtk
   class TreeViewPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_tree_view_private)
+    @gtk_tree_view_private : LibGtk::TreeViewPrivate*?
+    def initialize(@gtk_tree_view_private : LibGtk::TreeViewPrivate*)
     end
 
     def to_unsafe

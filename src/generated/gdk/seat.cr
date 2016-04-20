@@ -1,6 +1,7 @@
 module Gdk
   class Seat < GObject::Object
-    def initialize(@gdk_seat)
+    @gdk_seat : LibGdk::Seat*?
+    def initialize(@gdk_seat : LibGdk::Seat*)
     end
 
     def to_unsafe

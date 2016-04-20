@@ -2,7 +2,8 @@ module Gst
   class AllocatorPrivate
     include GObject::WrappedType
 
-    def initialize(@gst_allocator_private)
+    @gst_allocator_private : LibGst::AllocatorPrivate*?
+    def initialize(@gst_allocator_private : LibGst::AllocatorPrivate*)
     end
 
     def to_unsafe

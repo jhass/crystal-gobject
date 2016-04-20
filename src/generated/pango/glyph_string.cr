@@ -2,7 +2,8 @@ module Pango
   class GlyphString
     include GObject::WrappedType
 
-    def initialize(@pango_glyph_string)
+    @pango_glyph_string : LibPango::GlyphString*?
+    def initialize(@pango_glyph_string : LibPango::GlyphString*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Pango
   class Language
     include GObject::WrappedType
 
-    def initialize(@pango_language)
+    @pango_language : LibPango::Language*?
+    def initialize(@pango_language : LibPango::Language*)
     end
 
     def to_unsafe

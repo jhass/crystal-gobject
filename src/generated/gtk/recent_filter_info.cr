@@ -2,7 +2,8 @@ module Gtk
   class RecentFilterInfo
     include GObject::WrappedType
 
-    def initialize(@gtk_recent_filter_info)
+    @gtk_recent_filter_info : LibGtk::RecentFilterInfo*?
+    def initialize(@gtk_recent_filter_info : LibGtk::RecentFilterInfo*)
     end
 
     def to_unsafe

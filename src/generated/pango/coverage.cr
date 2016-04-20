@@ -2,7 +2,8 @@ module Pango
   class Coverage
     include GObject::WrappedType
 
-    def initialize(@pango_coverage)
+    @pango_coverage : LibPango::Coverage*?
+    def initialize(@pango_coverage : LibPango::Coverage*)
     end
 
     def to_unsafe

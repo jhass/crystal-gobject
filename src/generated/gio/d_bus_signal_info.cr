@@ -2,7 +2,8 @@ module Gio
   class DBusSignalInfo
     include GObject::WrappedType
 
-    def initialize(@gio_d_bus_signal_info)
+    @gio_d_bus_signal_info : LibGio::DBusSignalInfo*?
+    def initialize(@gio_d_bus_signal_info : LibGio::DBusSignalInfo*)
     end
 
     def to_unsafe

@@ -1,6 +1,7 @@
 module GdkPixbuf
   class PixbufLoader < GObject::Object
-    def initialize(@gdk_pixbuf_pixbuf_loader)
+    @gdk_pixbuf_pixbuf_loader : LibGdkPixbuf::PixbufLoader*?
+    def initialize(@gdk_pixbuf_pixbuf_loader : LibGdkPixbuf::PixbufLoader*)
     end
 
     def to_unsafe

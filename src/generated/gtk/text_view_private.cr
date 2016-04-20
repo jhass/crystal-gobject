@@ -2,7 +2,8 @@ module Gtk
   class TextViewPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_text_view_private)
+    @gtk_text_view_private : LibGtk::TextViewPrivate*?
+    def initialize(@gtk_text_view_private : LibGtk::TextViewPrivate*)
     end
 
     def to_unsafe

@@ -1,6 +1,7 @@
 module Gtk
   class UIManager < GObject::Object
-    def initialize(@gtk_u_i_manager)
+    @gtk_u_i_manager : LibGtk::UIManager*?
+    def initialize(@gtk_u_i_manager : LibGtk::UIManager*)
     end
 
     def to_unsafe

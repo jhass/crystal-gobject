@@ -2,7 +2,8 @@ module Gtk
   class PlugPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_plug_private)
+    @gtk_plug_private : LibGtk::PlugPrivate*?
+    def initialize(@gtk_plug_private : LibGtk::PlugPrivate*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ require "./socket_address"
 
 module Gio
   class InetSocketAddress < SocketAddress
-    def initialize(@gio_inet_socket_address)
+    @gio_inet_socket_address : LibGio::InetSocketAddress*?
+    def initialize(@gio_inet_socket_address : LibGio::InetSocketAddress*)
     end
 
     def to_unsafe

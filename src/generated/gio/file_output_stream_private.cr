@@ -2,7 +2,8 @@ module Gio
   class FileOutputStreamPrivate
     include GObject::WrappedType
 
-    def initialize(@gio_file_output_stream_private)
+    @gio_file_output_stream_private : LibGio::FileOutputStreamPrivate*?
+    def initialize(@gio_file_output_stream_private : LibGio::FileOutputStreamPrivate*)
     end
 
     def to_unsafe

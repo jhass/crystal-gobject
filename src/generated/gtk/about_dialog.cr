@@ -2,7 +2,8 @@ require "./dialog"
 
 module Gtk
   class AboutDialog < Dialog
-    def initialize(@gtk_about_dialog)
+    @gtk_about_dialog : LibGtk::AboutDialog*?
+    def initialize(@gtk_about_dialog : LibGtk::AboutDialog*)
     end
 
     def to_unsafe

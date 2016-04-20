@@ -2,7 +2,8 @@ require "./window"
 
 module Gtk
   class ApplicationWindow < Window
-    def initialize(@gtk_application_window)
+    @gtk_application_window : LibGtk::ApplicationWindow*?
+    def initialize(@gtk_application_window : LibGtk::ApplicationWindow*)
     end
 
     def to_unsafe

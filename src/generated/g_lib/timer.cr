@@ -2,7 +2,8 @@ module GLib
   class Timer
     include GObject::WrappedType
 
-    def initialize(@g_lib_timer)
+    @g_lib_timer : LibGLib::Timer*?
+    def initialize(@g_lib_timer : LibGLib::Timer*)
     end
 
     def to_unsafe

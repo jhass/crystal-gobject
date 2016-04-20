@@ -2,7 +2,8 @@ module Gtk
   class Border
     include GObject::WrappedType
 
-    def initialize(@gtk_border)
+    @gtk_border : LibGtk::Border*?
+    def initialize(@gtk_border : LibGtk::Border*)
     end
 
     def to_unsafe

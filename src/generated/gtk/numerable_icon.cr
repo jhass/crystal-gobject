@@ -1,6 +1,7 @@
 module Gtk
   class NumerableIcon < Gio::EmblemedIcon
-    def initialize(@gtk_numerable_icon)
+    @gtk_numerable_icon : LibGtk::NumerableIcon*?
+    def initialize(@gtk_numerable_icon : LibGtk::NumerableIcon*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Pango
   class IncludedModule
     include GObject::WrappedType
 
-    def initialize(@pango_included_module)
+    @pango_included_module : LibPango::IncludedModule*?
+    def initialize(@pango_included_module : LibPango::IncludedModule*)
     end
 
     def to_unsafe

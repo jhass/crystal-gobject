@@ -2,7 +2,8 @@ module Pango
   class ScriptForLang
     include GObject::WrappedType
 
-    def initialize(@pango_script_for_lang)
+    @pango_script_for_lang : LibPango::ScriptForLang*?
+    def initialize(@pango_script_for_lang : LibPango::ScriptForLang*)
     end
 
     def to_unsafe

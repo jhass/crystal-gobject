@@ -1,6 +1,7 @@
 module Gio
   class SocketAddress < GObject::Object
-    def initialize(@gio_socket_address)
+    @gio_socket_address : LibGio::SocketAddress*?
+    def initialize(@gio_socket_address : LibGio::SocketAddress*)
     end
 
     def to_unsafe

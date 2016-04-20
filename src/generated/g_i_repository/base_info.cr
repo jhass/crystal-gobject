@@ -2,7 +2,8 @@ module GIRepository
   class BaseInfo
     include GObject::WrappedType
 
-    def initialize(@g_i_repository_base_info)
+    @g_i_repository_base_info : LibGIRepository::BaseInfo*?
+    def initialize(@g_i_repository_base_info : LibGIRepository::BaseInfo*)
     end
 
     def to_unsafe

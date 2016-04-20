@@ -1,6 +1,7 @@
 module Gio
   class SocketClient < GObject::Object
-    def initialize(@gio_socket_client)
+    @gio_socket_client : LibGio::SocketClient*?
+    def initialize(@gio_socket_client : LibGio::SocketClient*)
     end
 
     def to_unsafe

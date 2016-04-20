@@ -2,7 +2,8 @@ require "./box"
 
 module Gtk
   class HBox < Box
-    def initialize(@gtk_h_box)
+    @gtk_h_box : LibGtk::HBox*?
+    def initialize(@gtk_h_box : LibGtk::HBox*)
     end
 
     def to_unsafe

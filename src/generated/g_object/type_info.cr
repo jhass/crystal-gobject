@@ -2,7 +2,8 @@ module GObject
   class TypeInfo
     include GObject::WrappedType
 
-    def initialize(@g_object_type_info)
+    @g_object_type_info : LibGObject::TypeInfo*?
+    def initialize(@g_object_type_info : LibGObject::TypeInfo*)
     end
 
     def to_unsafe

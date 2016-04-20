@@ -2,7 +2,8 @@ require "./widget"
 
 module Gtk
   class Entry < Widget
-    def initialize(@gtk_entry)
+    @gtk_entry : LibGtk::Entry*?
+    def initialize(@gtk_entry : LibGtk::Entry*)
     end
 
     def to_unsafe

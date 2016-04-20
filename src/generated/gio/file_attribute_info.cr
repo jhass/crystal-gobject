@@ -2,7 +2,8 @@ module Gio
   class FileAttributeInfo
     include GObject::WrappedType
 
-    def initialize(@gio_file_attribute_info)
+    @gio_file_attribute_info : LibGio::FileAttributeInfo*?
+    def initialize(@gio_file_attribute_info : LibGio::FileAttributeInfo*)
     end
 
     def to_unsafe

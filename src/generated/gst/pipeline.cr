@@ -2,7 +2,8 @@ require "./bin"
 
 module Gst
   class Pipeline < Bin
-    def initialize(@gst_pipeline)
+    @gst_pipeline : LibGst::Pipeline*?
+    def initialize(@gst_pipeline : LibGst::Pipeline*)
     end
 
     def to_unsafe

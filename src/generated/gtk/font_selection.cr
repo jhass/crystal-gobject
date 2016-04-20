@@ -2,7 +2,8 @@ require "./box"
 
 module Gtk
   class FontSelection < Box
-    def initialize(@gtk_font_selection)
+    @gtk_font_selection : LibGtk::FontSelection*?
+    def initialize(@gtk_font_selection : LibGtk::FontSelection*)
     end
 
     def to_unsafe

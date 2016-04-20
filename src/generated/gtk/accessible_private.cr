@@ -2,7 +2,8 @@ module Gtk
   class AccessiblePrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_accessible_private)
+    @gtk_accessible_private : LibGtk::AccessiblePrivate*?
+    def initialize(@gtk_accessible_private : LibGtk::AccessiblePrivate*)
     end
 
     def to_unsafe

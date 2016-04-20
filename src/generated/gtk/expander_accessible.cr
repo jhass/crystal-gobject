@@ -2,7 +2,8 @@ require "./container_accessible"
 
 module Gtk
   class ExpanderAccessible < ContainerAccessible
-    def initialize(@gtk_expander_accessible)
+    @gtk_expander_accessible : LibGtk::ExpanderAccessible*?
+    def initialize(@gtk_expander_accessible : LibGtk::ExpanderAccessible*)
     end
 
     def to_unsafe

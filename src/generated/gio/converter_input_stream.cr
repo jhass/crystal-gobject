@@ -2,7 +2,8 @@ require "./filter_input_stream"
 
 module Gio
   class ConverterInputStream < FilterInputStream
-    def initialize(@gio_converter_input_stream)
+    @gio_converter_input_stream : LibGio::ConverterInputStream*?
+    def initialize(@gio_converter_input_stream : LibGio::ConverterInputStream*)
     end
 
     def to_unsafe

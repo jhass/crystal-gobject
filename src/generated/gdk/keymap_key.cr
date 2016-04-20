@@ -2,7 +2,8 @@ module Gdk
   class KeymapKey
     include GObject::WrappedType
 
-    def initialize(@gdk_keymap_key)
+    @gdk_keymap_key : LibGdk::KeymapKey*?
+    def initialize(@gdk_keymap_key : LibGdk::KeymapKey*)
     end
 
     def to_unsafe

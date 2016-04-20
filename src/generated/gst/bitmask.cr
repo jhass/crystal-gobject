@@ -2,7 +2,8 @@ module Gst
   class Bitmask
     include GObject::WrappedType
 
-    def initialize(@gst_bitmask)
+    @gst_bitmask : LibGst::Bitmask*?
+    def initialize(@gst_bitmask : LibGst::Bitmask*)
     end
 
     def to_unsafe

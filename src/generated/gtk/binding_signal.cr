@@ -2,7 +2,8 @@ module Gtk
   class BindingSignal
     include GObject::WrappedType
 
-    def initialize(@gtk_binding_signal)
+    @gtk_binding_signal : LibGtk::BindingSignal*?
+    def initialize(@gtk_binding_signal : LibGtk::BindingSignal*)
     end
 
     def to_unsafe

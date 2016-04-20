@@ -2,7 +2,8 @@ module Gio
   class MenuLinkIterPrivate
     include GObject::WrappedType
 
-    def initialize(@gio_menu_link_iter_private)
+    @gio_menu_link_iter_private : LibGio::MenuLinkIterPrivate*?
+    def initialize(@gio_menu_link_iter_private : LibGio::MenuLinkIterPrivate*)
     end
 
     def to_unsafe

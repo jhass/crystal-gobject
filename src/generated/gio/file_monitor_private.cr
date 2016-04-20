@@ -2,7 +2,8 @@ module Gio
   class FileMonitorPrivate
     include GObject::WrappedType
 
-    def initialize(@gio_file_monitor_private)
+    @gio_file_monitor_private : LibGio::FileMonitorPrivate*?
+    def initialize(@gio_file_monitor_private : LibGio::FileMonitorPrivate*)
     end
 
     def to_unsafe

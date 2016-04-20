@@ -1,6 +1,7 @@
 module Gio
   class DBusObjectSkeleton < GObject::Object
-    def initialize(@gio_d_bus_object_skeleton)
+    @gio_d_bus_object_skeleton : LibGio::DBusObjectSkeleton*?
+    def initialize(@gio_d_bus_object_skeleton : LibGio::DBusObjectSkeleton*)
     end
 
     def to_unsafe

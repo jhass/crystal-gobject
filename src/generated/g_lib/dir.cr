@@ -2,7 +2,8 @@ module GLib
   class Dir
     include GObject::WrappedType
 
-    def initialize(@g_lib_dir)
+    @g_lib_dir : LibGLib::Dir*?
+    def initialize(@g_lib_dir : LibGLib::Dir*)
     end
 
     def to_unsafe

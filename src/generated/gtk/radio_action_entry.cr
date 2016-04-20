@@ -2,7 +2,8 @@ module Gtk
   class RadioActionEntry
     include GObject::WrappedType
 
-    def initialize(@gtk_radio_action_entry)
+    @gtk_radio_action_entry : LibGtk::RadioActionEntry*?
+    def initialize(@gtk_radio_action_entry : LibGtk::RadioActionEntry*)
     end
 
     def to_unsafe

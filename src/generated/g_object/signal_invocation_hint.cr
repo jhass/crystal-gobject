@@ -2,7 +2,8 @@ module GObject
   class SignalInvocationHint
     include GObject::WrappedType
 
-    def initialize(@g_object_signal_invocation_hint)
+    @g_object_signal_invocation_hint : LibGObject::SignalInvocationHint*?
+    def initialize(@g_object_signal_invocation_hint : LibGObject::SignalInvocationHint*)
     end
 
     def to_unsafe

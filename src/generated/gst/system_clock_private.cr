@@ -2,7 +2,8 @@ module Gst
   class SystemClockPrivate
     include GObject::WrappedType
 
-    def initialize(@gst_system_clock_private)
+    @gst_system_clock_private : LibGst::SystemClockPrivate*?
+    def initialize(@gst_system_clock_private : LibGst::SystemClockPrivate*)
     end
 
     def to_unsafe

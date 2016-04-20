@@ -1,6 +1,7 @@
 module Gio
   class DBusAuthObserver < GObject::Object
-    def initialize(@gio_d_bus_auth_observer)
+    @gio_d_bus_auth_observer : LibGio::DBusAuthObserver*?
+    def initialize(@gio_d_bus_auth_observer : LibGio::DBusAuthObserver*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Gtk
   class ActionPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_action_private)
+    @gtk_action_private : LibGtk::ActionPrivate*?
+    def initialize(@gtk_action_private : LibGtk::ActionPrivate*)
     end
 
     def to_unsafe

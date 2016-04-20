@@ -1,6 +1,7 @@
 module Gio
   class Subprocess < GObject::Object
-    def initialize(@gio_subprocess)
+    @gio_subprocess : LibGio::Subprocess*?
+    def initialize(@gio_subprocess : LibGio::Subprocess*)
     end
 
     def to_unsafe

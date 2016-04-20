@@ -1,6 +1,7 @@
 module Gio
   class AppLaunchContext < GObject::Object
-    def initialize(@gio_app_launch_context)
+    @gio_app_launch_context : LibGio::AppLaunchContext*?
+    def initialize(@gio_app_launch_context : LibGio::AppLaunchContext*)
     end
 
     def to_unsafe

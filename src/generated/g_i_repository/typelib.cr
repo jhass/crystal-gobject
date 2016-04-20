@@ -2,7 +2,8 @@ module GIRepository
   class Typelib
     include GObject::WrappedType
 
-    def initialize(@g_i_repository_typelib)
+    @g_i_repository_typelib : LibGIRepository::Typelib*?
+    def initialize(@g_i_repository_typelib : LibGIRepository::Typelib*)
     end
 
     def to_unsafe

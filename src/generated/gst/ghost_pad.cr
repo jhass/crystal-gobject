@@ -2,7 +2,8 @@ require "./proxy_pad"
 
 module Gst
   class GhostPad < ProxyPad
-    def initialize(@gst_ghost_pad)
+    @gst_ghost_pad : LibGst::GhostPad*?
+    def initialize(@gst_ghost_pad : LibGst::GhostPad*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ require "./entry"
 
 module Gtk
   class SpinButton < Entry
-    def initialize(@gtk_spin_button)
+    @gtk_spin_button : LibGtk::SpinButton*?
+    def initialize(@gtk_spin_button : LibGtk::SpinButton*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Gst
   class DebugCategory
     include GObject::WrappedType
 
-    def initialize(@gst_debug_category)
+    @gst_debug_category : LibGst::DebugCategory*?
+    def initialize(@gst_debug_category : LibGst::DebugCategory*)
     end
 
     def to_unsafe

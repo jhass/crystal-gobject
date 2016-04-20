@@ -2,7 +2,8 @@ require "./cell_renderer_text"
 
 module Gtk
   class CellRendererCombo < CellRendererText
-    def initialize(@gtk_cell_renderer_combo)
+    @gtk_cell_renderer_combo : LibGtk::CellRendererCombo*?
+    def initialize(@gtk_cell_renderer_combo : LibGtk::CellRendererCombo*)
     end
 
     def to_unsafe

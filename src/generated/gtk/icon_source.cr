@@ -2,7 +2,8 @@ module Gtk
   class IconSource
     include GObject::WrappedType
 
-    def initialize(@gtk_icon_source)
+    @gtk_icon_source : LibGtk::IconSource*?
+    def initialize(@gtk_icon_source : LibGtk::IconSource*)
     end
 
     def to_unsafe

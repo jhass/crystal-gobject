@@ -2,7 +2,8 @@ require "./button"
 
 module Gtk
   class ToggleButton < Button
-    def initialize(@gtk_toggle_button)
+    @gtk_toggle_button : LibGtk::ToggleButton*?
+    def initialize(@gtk_toggle_button : LibGtk::ToggleButton*)
     end
 
     def to_unsafe

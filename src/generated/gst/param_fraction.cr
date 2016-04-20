@@ -1,6 +1,7 @@
 module Gst
   class ParamFraction < GObject::ParamSpec
-    def initialize(@gst_param_fraction)
+    @gst_param_fraction : LibGst::ParamFraction*?
+    def initialize(@gst_param_fraction : LibGst::ParamFraction*)
     end
 
     def to_unsafe

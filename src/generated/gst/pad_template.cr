@@ -2,7 +2,8 @@ require "./object"
 
 module Gst
   class PadTemplate < Object
-    def initialize(@gst_pad_template)
+    @gst_pad_template : LibGst::PadTemplate*?
+    def initialize(@gst_pad_template : LibGst::PadTemplate*)
     end
 
     def to_unsafe

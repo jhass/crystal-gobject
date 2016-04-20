@@ -2,7 +2,8 @@ module Pango
   class Map
     include GObject::WrappedType
 
-    def initialize(@pango_map)
+    @pango_map : LibPango::Map*?
+    def initialize(@pango_map : LibPango::Map*)
     end
 
     def to_unsafe

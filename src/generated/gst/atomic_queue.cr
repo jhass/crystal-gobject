@@ -2,7 +2,8 @@ module Gst
   class AtomicQueue
     include GObject::WrappedType
 
-    def initialize(@gst_atomic_queue)
+    @gst_atomic_queue : LibGst::AtomicQueue*?
+    def initialize(@gst_atomic_queue : LibGst::AtomicQueue*)
     end
 
     def to_unsafe

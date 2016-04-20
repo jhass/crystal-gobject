@@ -2,7 +2,8 @@ module Gio
   class DBusErrorEntry
     include GObject::WrappedType
 
-    def initialize(@gio_d_bus_error_entry)
+    @gio_d_bus_error_entry : LibGio::DBusErrorEntry*?
+    def initialize(@gio_d_bus_error_entry : LibGio::DBusErrorEntry*)
     end
 
     def to_unsafe

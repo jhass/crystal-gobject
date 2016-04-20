@@ -1,6 +1,7 @@
 module GIRepository
   class Repository < GObject::Object
-    def initialize(@g_i_repository_repository)
+    @g_i_repository_repository : LibGIRepository::Repository*?
+    def initialize(@g_i_repository_repository : LibGIRepository::Repository*)
     end
 
     def to_unsafe

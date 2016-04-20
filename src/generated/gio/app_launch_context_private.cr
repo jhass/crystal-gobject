@@ -2,7 +2,8 @@ module Gio
   class AppLaunchContextPrivate
     include GObject::WrappedType
 
-    def initialize(@gio_app_launch_context_private)
+    @gio_app_launch_context_private : LibGio::AppLaunchContextPrivate*?
+    def initialize(@gio_app_launch_context_private : LibGio::AppLaunchContextPrivate*)
     end
 
     def to_unsafe

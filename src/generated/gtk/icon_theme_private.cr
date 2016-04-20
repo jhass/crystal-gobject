@@ -2,7 +2,8 @@ module Gtk
   class IconThemePrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_icon_theme_private)
+    @gtk_icon_theme_private : LibGtk::IconThemePrivate*?
+    def initialize(@gtk_icon_theme_private : LibGtk::IconThemePrivate*)
     end
 
     def to_unsafe

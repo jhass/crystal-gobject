@@ -2,7 +2,8 @@ require "./tool_button"
 
 module Gtk
   class ToggleToolButton < ToolButton
-    def initialize(@gtk_toggle_tool_button)
+    @gtk_toggle_tool_button : LibGtk::ToggleToolButton*?
+    def initialize(@gtk_toggle_tool_button : LibGtk::ToggleToolButton*)
     end
 
     def to_unsafe

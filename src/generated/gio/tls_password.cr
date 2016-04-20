@@ -1,6 +1,7 @@
 module Gio
   class TlsPassword < GObject::Object
-    def initialize(@gio_tls_password)
+    @gio_tls_password : LibGio::TlsPassword*?
+    def initialize(@gio_tls_password : LibGio::TlsPassword*)
     end
 
     def to_unsafe

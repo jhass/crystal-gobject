@@ -2,7 +2,8 @@ module Gdk
   class EventTouch
     include GObject::WrappedType
 
-    def initialize(@gdk_event_touch)
+    @gdk_event_touch : LibGdk::EventTouch*?
+    def initialize(@gdk_event_touch : LibGdk::EventTouch*)
     end
 
     def to_unsafe

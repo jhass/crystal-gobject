@@ -1,6 +1,7 @@
 module Gtk
   class RcStyle < GObject::Object
-    def initialize(@gtk_rc_style)
+    @gtk_rc_style : LibGtk::RcStyle*?
+    def initialize(@gtk_rc_style : LibGtk::RcStyle*)
     end
 
     def to_unsafe

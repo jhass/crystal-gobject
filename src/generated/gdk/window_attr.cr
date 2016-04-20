@@ -2,7 +2,8 @@ module Gdk
   class WindowAttr
     include GObject::WrappedType
 
-    def initialize(@gdk_window_attr)
+    @gdk_window_attr : LibGdk::WindowAttr*?
+    def initialize(@gdk_window_attr : LibGdk::WindowAttr*)
     end
 
     def to_unsafe

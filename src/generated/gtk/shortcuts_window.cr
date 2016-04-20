@@ -2,7 +2,8 @@ require "./window"
 
 module Gtk
   class ShortcutsWindow < Window
-    def initialize(@gtk_shortcuts_window)
+    @gtk_shortcuts_window : LibGtk::ShortcutsWindow*?
+    def initialize(@gtk_shortcuts_window : LibGtk::ShortcutsWindow*)
     end
 
     def to_unsafe

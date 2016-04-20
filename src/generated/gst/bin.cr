@@ -2,7 +2,8 @@ require "./element"
 
 module Gst
   class Bin < Element
-    def initialize(@gst_bin)
+    @gst_bin : LibGst::Bin*?
+    def initialize(@gst_bin : LibGst::Bin*)
     end
 
     def to_unsafe

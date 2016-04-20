@@ -2,7 +2,8 @@ module Gtk
   class AdjustmentPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_adjustment_private)
+    @gtk_adjustment_private : LibGtk::AdjustmentPrivate*?
+    def initialize(@gtk_adjustment_private : LibGtk::AdjustmentPrivate*)
     end
 
     def to_unsafe

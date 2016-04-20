@@ -2,7 +2,8 @@ require "./box"
 
 module Gtk
   class ColorChooserWidget < Box
-    def initialize(@gtk_color_chooser_widget)
+    @gtk_color_chooser_widget : LibGtk::ColorChooserWidget*?
+    def initialize(@gtk_color_chooser_widget : LibGtk::ColorChooserWidget*)
     end
 
     def to_unsafe

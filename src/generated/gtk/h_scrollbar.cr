@@ -2,7 +2,8 @@ require "./scrollbar"
 
 module Gtk
   class HScrollbar < Scrollbar
-    def initialize(@gtk_h_scrollbar)
+    @gtk_h_scrollbar : LibGtk::HScrollbar*?
+    def initialize(@gtk_h_scrollbar : LibGtk::HScrollbar*)
     end
 
     def to_unsafe

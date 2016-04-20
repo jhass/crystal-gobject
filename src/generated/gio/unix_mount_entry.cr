@@ -2,7 +2,8 @@ module Gio
   class UnixMountEntry
     include GObject::WrappedType
 
-    def initialize(@gio_unix_mount_entry)
+    @gio_unix_mount_entry : LibGio::UnixMountEntry*?
+    def initialize(@gio_unix_mount_entry : LibGio::UnixMountEntry*)
     end
 
     def to_unsafe

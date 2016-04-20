@@ -2,7 +2,8 @@ require "./menu_item"
 
 module Gtk
   class TearoffMenuItem < MenuItem
-    def initialize(@gtk_tearoff_menu_item)
+    @gtk_tearoff_menu_item : LibGtk::TearoffMenuItem*?
+    def initialize(@gtk_tearoff_menu_item : LibGtk::TearoffMenuItem*)
     end
 
     def to_unsafe

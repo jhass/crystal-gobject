@@ -2,7 +2,8 @@ module Gtk
   class RadioButtonPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_radio_button_private)
+    @gtk_radio_button_private : LibGtk::RadioButtonPrivate*?
+    def initialize(@gtk_radio_button_private : LibGtk::RadioButtonPrivate*)
     end
 
     def to_unsafe

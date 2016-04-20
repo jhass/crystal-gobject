@@ -1,6 +1,7 @@
 module Gio
   class TlsDatabase < GObject::Object
-    def initialize(@gio_tls_database)
+    @gio_tls_database : LibGio::TlsDatabase*?
+    def initialize(@gio_tls_database : LibGio::TlsDatabase*)
     end
 
     def to_unsafe

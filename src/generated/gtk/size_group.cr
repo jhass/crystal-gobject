@@ -1,6 +1,7 @@
 module Gtk
   class SizeGroup < GObject::Object
-    def initialize(@gtk_size_group)
+    @gtk_size_group : LibGtk::SizeGroup*?
+    def initialize(@gtk_size_group : LibGtk::SizeGroup*)
     end
 
     def to_unsafe

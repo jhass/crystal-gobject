@@ -2,7 +2,8 @@ require "./menu_model"
 
 module Gio
   class Menu < MenuModel
-    def initialize(@gio_menu)
+    @gio_menu : LibGio::Menu*?
+    def initialize(@gio_menu : LibGio::Menu*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Gtk
   class EntryBufferPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_entry_buffer_private)
+    @gtk_entry_buffer_private : LibGtk::EntryBufferPrivate*?
+    def initialize(@gtk_entry_buffer_private : LibGtk::EntryBufferPrivate*)
     end
 
     def to_unsafe

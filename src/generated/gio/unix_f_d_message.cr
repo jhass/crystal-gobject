@@ -2,7 +2,8 @@ require "./socket_control_message"
 
 module Gio
   class UnixFDMessage < SocketControlMessage
-    def initialize(@gio_unix_f_d_message)
+    @gio_unix_f_d_message : LibGio::UnixFDMessage*?
+    def initialize(@gio_unix_f_d_message : LibGio::UnixFDMessage*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module GLib
   class KeyFile
     include GObject::WrappedType
 
-    def initialize(@g_lib_key_file)
+    @g_lib_key_file : LibGLib::KeyFile*?
+    def initialize(@g_lib_key_file : LibGLib::KeyFile*)
     end
 
     def to_unsafe

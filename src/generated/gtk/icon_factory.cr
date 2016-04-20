@@ -1,6 +1,7 @@
 module Gtk
   class IconFactory < GObject::Object
-    def initialize(@gtk_icon_factory)
+    @gtk_icon_factory : LibGtk::IconFactory*?
+    def initialize(@gtk_icon_factory : LibGtk::IconFactory*)
     end
 
     def to_unsafe

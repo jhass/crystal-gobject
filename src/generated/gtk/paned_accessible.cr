@@ -2,7 +2,8 @@ require "./container_accessible"
 
 module Gtk
   class PanedAccessible < ContainerAccessible
-    def initialize(@gtk_paned_accessible)
+    @gtk_paned_accessible : LibGtk::PanedAccessible*?
+    def initialize(@gtk_paned_accessible : LibGtk::PanedAccessible*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Gdk
   class Atom
     include GObject::WrappedType
 
-    def initialize(@gdk_atom)
+    @gdk_atom : LibGdk::Atom*?
+    def initialize(@gdk_atom : LibGdk::Atom*)
     end
 
     def to_unsafe

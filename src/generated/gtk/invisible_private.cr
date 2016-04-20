@@ -2,7 +2,8 @@ module Gtk
   class InvisiblePrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_invisible_private)
+    @gtk_invisible_private : LibGtk::InvisiblePrivate*?
+    def initialize(@gtk_invisible_private : LibGtk::InvisiblePrivate*)
     end
 
     def to_unsafe

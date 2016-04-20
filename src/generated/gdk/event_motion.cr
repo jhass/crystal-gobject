@@ -2,7 +2,8 @@ module Gdk
   class EventMotion
     include GObject::WrappedType
 
-    def initialize(@gdk_event_motion)
+    @gdk_event_motion : LibGdk::EventMotion*?
+    def initialize(@gdk_event_motion : LibGdk::EventMotion*)
     end
 
     def to_unsafe

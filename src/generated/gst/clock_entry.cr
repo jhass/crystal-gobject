@@ -2,7 +2,8 @@ module Gst
   class ClockEntry
     include GObject::WrappedType
 
-    def initialize(@gst_clock_entry)
+    @gst_clock_entry : LibGst::ClockEntry*?
+    def initialize(@gst_clock_entry : LibGst::ClockEntry*)
     end
 
     def to_unsafe

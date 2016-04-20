@@ -2,7 +2,8 @@ require "./button"
 
 module Gtk
   class LinkButton < Button
-    def initialize(@gtk_link_button)
+    @gtk_link_button : LibGtk::LinkButton*?
+    def initialize(@gtk_link_button : LibGtk::LinkButton*)
     end
 
     def to_unsafe

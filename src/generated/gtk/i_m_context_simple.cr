@@ -2,7 +2,8 @@ require "./i_m_context"
 
 module Gtk
   class IMContextSimple < IMContext
-    def initialize(@gtk_i_m_context_simple)
+    @gtk_i_m_context_simple : LibGtk::IMContextSimple*?
+    def initialize(@gtk_i_m_context_simple : LibGtk::IMContextSimple*)
     end
 
     def to_unsafe

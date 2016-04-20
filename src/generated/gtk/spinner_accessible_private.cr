@@ -2,7 +2,8 @@ module Gtk
   class SpinnerAccessiblePrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_spinner_accessible_private)
+    @gtk_spinner_accessible_private : LibGtk::SpinnerAccessiblePrivate*?
+    def initialize(@gtk_spinner_accessible_private : LibGtk::SpinnerAccessiblePrivate*)
     end
 
     def to_unsafe

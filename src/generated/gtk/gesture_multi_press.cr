@@ -2,7 +2,8 @@ require "./gesture_single"
 
 module Gtk
   class GestureMultiPress < GestureSingle
-    def initialize(@gtk_gesture_multi_press)
+    @gtk_gesture_multi_press : LibGtk::GestureMultiPress*?
+    def initialize(@gtk_gesture_multi_press : LibGtk::GestureMultiPress*)
     end
 
     def to_unsafe

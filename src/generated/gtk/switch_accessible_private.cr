@@ -2,7 +2,8 @@ module Gtk
   class SwitchAccessiblePrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_switch_accessible_private)
+    @gtk_switch_accessible_private : LibGtk::SwitchAccessiblePrivate*?
+    def initialize(@gtk_switch_accessible_private : LibGtk::SwitchAccessiblePrivate*)
     end
 
     def to_unsafe

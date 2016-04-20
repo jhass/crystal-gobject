@@ -2,7 +2,8 @@ require "./button_box"
 
 module Gtk
   class HButtonBox < ButtonBox
-    def initialize(@gtk_h_button_box)
+    @gtk_h_button_box : LibGtk::HButtonBox*?
+    def initialize(@gtk_h_button_box : LibGtk::HButtonBox*)
     end
 
     def to_unsafe

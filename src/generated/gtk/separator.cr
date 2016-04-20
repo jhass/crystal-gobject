@@ -2,7 +2,8 @@ require "./widget"
 
 module Gtk
   class Separator < Widget
-    def initialize(@gtk_separator)
+    @gtk_separator : LibGtk::Separator*?
+    def initialize(@gtk_separator : LibGtk::Separator*)
     end
 
     def to_unsafe

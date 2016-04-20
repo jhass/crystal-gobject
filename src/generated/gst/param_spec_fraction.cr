@@ -2,7 +2,8 @@ module Gst
   class ParamSpecFraction
     include GObject::WrappedType
 
-    def initialize(@gst_param_spec_fraction)
+    @gst_param_spec_fraction : LibGst::ParamSpecFraction*?
+    def initialize(@gst_param_spec_fraction : LibGst::ParamSpecFraction*)
     end
 
     def to_unsafe

@@ -1,6 +1,7 @@
 module Gtk
   class TextTag < GObject::Object
-    def initialize(@gtk_text_tag)
+    @gtk_text_tag : LibGtk::TextTag*?
+    def initialize(@gtk_text_tag : LibGtk::TextTag*)
     end
 
     def to_unsafe

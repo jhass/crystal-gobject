@@ -2,7 +2,8 @@ module Gtk
   class CellViewPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_cell_view_private)
+    @gtk_cell_view_private : LibGtk::CellViewPrivate*?
+    def initialize(@gtk_cell_view_private : LibGtk::CellViewPrivate*)
     end
 
     def to_unsafe

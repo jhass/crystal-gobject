@@ -2,7 +2,8 @@ module Gtk
   class OverlayPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_overlay_private)
+    @gtk_overlay_private : LibGtk::OverlayPrivate*?
+    def initialize(@gtk_overlay_private : LibGtk::OverlayPrivate*)
     end
 
     def to_unsafe

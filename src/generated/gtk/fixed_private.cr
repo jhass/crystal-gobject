@@ -2,7 +2,8 @@ module Gtk
   class FixedPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_fixed_private)
+    @gtk_fixed_private : LibGtk::FixedPrivate*?
+    def initialize(@gtk_fixed_private : LibGtk::FixedPrivate*)
     end
 
     def to_unsafe

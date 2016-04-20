@@ -2,7 +2,8 @@ module Gtk
   class CellRendererProgressPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_cell_renderer_progress_private)
+    @gtk_cell_renderer_progress_private : LibGtk::CellRendererProgressPrivate*?
+    def initialize(@gtk_cell_renderer_progress_private : LibGtk::CellRendererProgressPrivate*)
     end
 
     def to_unsafe

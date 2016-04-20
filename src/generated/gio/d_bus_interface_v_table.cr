@@ -2,7 +2,8 @@ module Gio
   class DBusInterfaceVTable
     include GObject::WrappedType
 
-    def initialize(@gio_d_bus_interface_v_table)
+    @gio_d_bus_interface_v_table : LibGio::DBusInterfaceVTable*?
+    def initialize(@gio_d_bus_interface_v_table : LibGio::DBusInterfaceVTable*)
     end
 
     def to_unsafe

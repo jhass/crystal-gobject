@@ -2,7 +2,8 @@ require "./container"
 
 module Gtk
   class Table < Container
-    def initialize(@gtk_table)
+    @gtk_table : LibGtk::Table*?
+    def initialize(@gtk_table : LibGtk::Table*)
     end
 
     def to_unsafe

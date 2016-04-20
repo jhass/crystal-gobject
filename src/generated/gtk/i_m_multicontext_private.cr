@@ -2,7 +2,8 @@ module Gtk
   class IMMulticontextPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_i_m_multicontext_private)
+    @gtk_i_m_multicontext_private : LibGtk::IMMulticontextPrivate*?
+    def initialize(@gtk_i_m_multicontext_private : LibGtk::IMMulticontextPrivate*)
     end
 
     def to_unsafe

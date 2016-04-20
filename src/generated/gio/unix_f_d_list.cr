@@ -1,6 +1,7 @@
 module Gio
   class UnixFDList < GObject::Object
-    def initialize(@gio_unix_f_d_list)
+    @gio_unix_f_d_list : LibGio::UnixFDList*?
+    def initialize(@gio_unix_f_d_list : LibGio::UnixFDList*)
     end
 
     def to_unsafe

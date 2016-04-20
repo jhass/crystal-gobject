@@ -2,7 +2,8 @@ require "./container"
 
 module Gtk
   class TreeView < Container
-    def initialize(@gtk_tree_view)
+    @gtk_tree_view : LibGtk::TreeView*?
+    def initialize(@gtk_tree_view : LibGtk::TreeView*)
     end
 
     def to_unsafe

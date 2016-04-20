@@ -2,7 +2,8 @@ require "./object"
 
 module GObject
   class Binding < Object
-    def initialize(@g_object_binding)
+    @g_object_binding : LibGObject::Binding*?
+    def initialize(@g_object_binding : LibGObject::Binding*)
     end
 
     def to_unsafe

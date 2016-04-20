@@ -1,6 +1,7 @@
 module Atk
   class Hyperlink < GObject::Object
-    def initialize(@atk_hyperlink)
+    @atk_hyperlink : LibAtk::Hyperlink*?
+    def initialize(@atk_hyperlink : LibAtk::Hyperlink*)
     end
 
     def to_unsafe

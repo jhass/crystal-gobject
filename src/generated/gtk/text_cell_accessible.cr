@@ -2,7 +2,8 @@ require "./renderer_cell_accessible"
 
 module Gtk
   class TextCellAccessible < RendererCellAccessible
-    def initialize(@gtk_text_cell_accessible)
+    @gtk_text_cell_accessible : LibGtk::TextCellAccessible*?
+    def initialize(@gtk_text_cell_accessible : LibGtk::TextCellAccessible*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ require "./native_dialog"
 
 module Gtk
   class FileChooserNative < NativeDialog
-    def initialize(@gtk_file_chooser_native)
+    @gtk_file_chooser_native : LibGtk::FileChooserNative*?
+    def initialize(@gtk_file_chooser_native : LibGtk::FileChooserNative*)
     end
 
     def to_unsafe

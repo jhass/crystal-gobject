@@ -2,7 +2,8 @@ module GObject
   class SignalQuery
     include GObject::WrappedType
 
-    def initialize(@g_object_signal_query)
+    @g_object_signal_query : LibGObject::SignalQuery*?
+    def initialize(@g_object_signal_query : LibGObject::SignalQuery*)
     end
 
     def to_unsafe

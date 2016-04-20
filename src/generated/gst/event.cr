@@ -2,7 +2,8 @@ module Gst
   class Event
     include GObject::WrappedType
 
-    def initialize(@gst_event)
+    @gst_event : LibGst::Event*?
+    def initialize(@gst_event : LibGst::Event*)
     end
 
     def to_unsafe

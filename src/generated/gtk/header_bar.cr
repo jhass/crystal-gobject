@@ -2,7 +2,8 @@ require "./container"
 
 module Gtk
   class HeaderBar < Container
-    def initialize(@gtk_header_bar)
+    @gtk_header_bar : LibGtk::HeaderBar*?
+    def initialize(@gtk_header_bar : LibGtk::HeaderBar*)
     end
 
     def to_unsafe

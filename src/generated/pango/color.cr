@@ -2,7 +2,8 @@ module Pango
   class Color
     include GObject::WrappedType
 
-    def initialize(@pango_color)
+    @pango_color : LibPango::Color*?
+    def initialize(@pango_color : LibPango::Color*)
     end
 
     def to_unsafe

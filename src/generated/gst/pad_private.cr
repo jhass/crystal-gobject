@@ -2,7 +2,8 @@ module Gst
   class PadPrivate
     include GObject::WrappedType
 
-    def initialize(@gst_pad_private)
+    @gst_pad_private : LibGst::PadPrivate*?
+    def initialize(@gst_pad_private : LibGst::PadPrivate*)
     end
 
     def to_unsafe

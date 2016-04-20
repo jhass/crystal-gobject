@@ -2,7 +2,8 @@ require "./container"
 
 module Gtk
   class Box < Container
-    def initialize(@gtk_box)
+    @gtk_box : LibGtk::Box*?
+    def initialize(@gtk_box : LibGtk::Box*)
     end
 
     def to_unsafe

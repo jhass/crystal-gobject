@@ -2,7 +2,8 @@ require "./container"
 
 module Gtk
   class Socket < Container
-    def initialize(@gtk_socket)
+    @gtk_socket : LibGtk::Socket*?
+    def initialize(@gtk_socket : LibGtk::Socket*)
     end
 
     def to_unsafe

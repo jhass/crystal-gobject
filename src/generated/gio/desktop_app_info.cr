@@ -1,6 +1,7 @@
 module Gio
   class DesktopAppInfo < GObject::Object
-    def initialize(@gio_desktop_app_info)
+    @gio_desktop_app_info : LibGio::DesktopAppInfo*?
+    def initialize(@gio_desktop_app_info : LibGio::DesktopAppInfo*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Gio
   class StaticResource
     include GObject::WrappedType
 
-    def initialize(@gio_static_resource)
+    @gio_static_resource : LibGio::StaticResource*?
+    def initialize(@gio_static_resource : LibGio::StaticResource*)
     end
 
     def to_unsafe

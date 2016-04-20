@@ -2,7 +2,8 @@ module Gtk
   class SeparatorPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_separator_private)
+    @gtk_separator_private : LibGtk::SeparatorPrivate*?
+    def initialize(@gtk_separator_private : LibGtk::SeparatorPrivate*)
     end
 
     def to_unsafe

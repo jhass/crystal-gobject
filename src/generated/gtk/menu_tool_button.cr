@@ -2,7 +2,8 @@ require "./tool_button"
 
 module Gtk
   class MenuToolButton < ToolButton
-    def initialize(@gtk_menu_tool_button)
+    @gtk_menu_tool_button : LibGtk::MenuToolButton*?
+    def initialize(@gtk_menu_tool_button : LibGtk::MenuToolButton*)
     end
 
     def to_unsafe

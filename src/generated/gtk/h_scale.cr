@@ -2,7 +2,8 @@ require "./scale"
 
 module Gtk
   class HScale < Scale
-    def initialize(@gtk_h_scale)
+    @gtk_h_scale : LibGtk::HScale*?
+    def initialize(@gtk_h_scale : LibGtk::HScale*)
     end
 
     def to_unsafe

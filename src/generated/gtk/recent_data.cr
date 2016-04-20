@@ -2,7 +2,8 @@ module Gtk
   class RecentData
     include GObject::WrappedType
 
-    def initialize(@gtk_recent_data)
+    @gtk_recent_data : LibGtk::RecentData*?
+    def initialize(@gtk_recent_data : LibGtk::RecentData*)
     end
 
     def to_unsafe

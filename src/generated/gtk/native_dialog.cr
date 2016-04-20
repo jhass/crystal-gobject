@@ -1,6 +1,7 @@
 module Gtk
   class NativeDialog < GObject::Object
-    def initialize(@gtk_native_dialog)
+    @gtk_native_dialog : LibGtk::NativeDialog*?
+    def initialize(@gtk_native_dialog : LibGtk::NativeDialog*)
     end
 
     def to_unsafe

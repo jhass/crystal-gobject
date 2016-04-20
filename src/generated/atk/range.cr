@@ -2,7 +2,8 @@ module Atk
   class Range
     include GObject::WrappedType
 
-    def initialize(@atk_range)
+    @atk_range : LibAtk::Range*?
+    def initialize(@atk_range : LibAtk::Range*)
     end
 
     def to_unsafe

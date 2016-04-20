@@ -1,6 +1,7 @@
 module Gtk
   class ActionGroup < GObject::Object
-    def initialize(@gtk_action_group)
+    @gtk_action_group : LibGtk::ActionGroup*?
+    def initialize(@gtk_action_group : LibGtk::ActionGroup*)
     end
 
     def to_unsafe

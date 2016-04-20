@@ -2,7 +2,8 @@ module Gst
   class ProxyPadPrivate
     include GObject::WrappedType
 
-    def initialize(@gst_proxy_pad_private)
+    @gst_proxy_pad_private : LibGst::ProxyPadPrivate*?
+    def initialize(@gst_proxy_pad_private : LibGst::ProxyPadPrivate*)
     end
 
     def to_unsafe

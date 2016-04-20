@@ -1,6 +1,7 @@
 module Gtk
   class ListStore < GObject::Object
-    def initialize(@gtk_list_store)
+    @gtk_list_store : LibGtk::ListStore*?
+    def initialize(@gtk_list_store : LibGtk::ListStore*)
     end
 
     def to_unsafe

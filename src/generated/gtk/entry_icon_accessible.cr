@@ -1,6 +1,7 @@
 module Gtk
   class EntryIconAccessible < Atk::Object
-    def initialize(@gtk_entry_icon_accessible)
+    @gtk_entry_icon_accessible : LibGtk::EntryIconAccessible*?
+    def initialize(@gtk_entry_icon_accessible : LibGtk::EntryIconAccessible*)
     end
 
     def to_unsafe

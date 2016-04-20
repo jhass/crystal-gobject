@@ -1,6 +1,7 @@
 module Gio
   class Emblem < GObject::Object
-    def initialize(@gio_emblem)
+    @gio_emblem : LibGio::Emblem*?
+    def initialize(@gio_emblem : LibGio::Emblem*)
     end
 
     def to_unsafe

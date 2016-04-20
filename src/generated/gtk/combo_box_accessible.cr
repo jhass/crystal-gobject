@@ -2,7 +2,8 @@ require "./container_accessible"
 
 module Gtk
   class ComboBoxAccessible < ContainerAccessible
-    def initialize(@gtk_combo_box_accessible)
+    @gtk_combo_box_accessible : LibGtk::ComboBoxAccessible*?
+    def initialize(@gtk_combo_box_accessible : LibGtk::ComboBoxAccessible*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Pango
   class AttrShape
     include GObject::WrappedType
 
-    def initialize(@pango_attr_shape)
+    @pango_attr_shape : LibPango::AttrShape*?
+    def initialize(@pango_attr_shape : LibPango::AttrShape*)
     end
 
     def to_unsafe

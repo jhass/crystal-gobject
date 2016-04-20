@@ -2,7 +2,8 @@ module Gtk
   class TargetList
     include GObject::WrappedType
 
-    def initialize(@gtk_target_list)
+    @gtk_target_list : LibGtk::TargetList*?
+    def initialize(@gtk_target_list : LibGtk::TargetList*)
     end
 
     def to_unsafe

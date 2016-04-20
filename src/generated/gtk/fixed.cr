@@ -2,7 +2,8 @@ require "./container"
 
 module Gtk
   class Fixed < Container
-    def initialize(@gtk_fixed)
+    @gtk_fixed : LibGtk::Fixed*?
+    def initialize(@gtk_fixed : LibGtk::Fixed*)
     end
 
     def to_unsafe

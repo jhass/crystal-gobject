@@ -2,7 +2,8 @@ require "./container_accessible"
 
 module Gtk
   class TextViewAccessible < ContainerAccessible
-    def initialize(@gtk_text_view_accessible)
+    @gtk_text_view_accessible : LibGtk::TextViewAccessible*?
+    def initialize(@gtk_text_view_accessible : LibGtk::TextViewAccessible*)
     end
 
     def to_unsafe

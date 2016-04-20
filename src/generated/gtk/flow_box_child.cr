@@ -2,7 +2,8 @@ require "./bin"
 
 module Gtk
   class FlowBoxChild < Bin
-    def initialize(@gtk_flow_box_child)
+    @gtk_flow_box_child : LibGtk::FlowBoxChild*?
+    def initialize(@gtk_flow_box_child : LibGtk::FlowBoxChild*)
     end
 
     def to_unsafe

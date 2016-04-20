@@ -1,6 +1,7 @@
 module Gdk
   class DeviceManager < GObject::Object
-    def initialize(@gdk_device_manager)
+    @gdk_device_manager : LibGdk::DeviceManager*?
+    def initialize(@gdk_device_manager : LibGdk::DeviceManager*)
     end
 
     def to_unsafe

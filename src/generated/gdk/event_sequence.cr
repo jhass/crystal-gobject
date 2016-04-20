@@ -2,7 +2,8 @@ module Gdk
   class EventSequence
     include GObject::WrappedType
 
-    def initialize(@gdk_event_sequence)
+    @gdk_event_sequence : LibGdk::EventSequence*?
+    def initialize(@gdk_event_sequence : LibGdk::EventSequence*)
     end
 
     def to_unsafe

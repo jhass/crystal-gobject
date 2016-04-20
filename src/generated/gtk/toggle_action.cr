@@ -2,7 +2,8 @@ require "./action"
 
 module Gtk
   class ToggleAction < Action
-    def initialize(@gtk_toggle_action)
+    @gtk_toggle_action : LibGtk::ToggleAction*?
+    def initialize(@gtk_toggle_action : LibGtk::ToggleAction*)
     end
 
     def to_unsafe

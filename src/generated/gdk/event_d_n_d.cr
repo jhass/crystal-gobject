@@ -2,7 +2,8 @@ module Gdk
   class EventDND
     include GObject::WrappedType
 
-    def initialize(@gdk_event_d_n_d)
+    @gdk_event_d_n_d : LibGdk::EventDND*?
+    def initialize(@gdk_event_d_n_d : LibGdk::EventDND*)
     end
 
     def to_unsafe

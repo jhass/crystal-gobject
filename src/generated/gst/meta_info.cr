@@ -2,7 +2,8 @@ module Gst
   class MetaInfo
     include GObject::WrappedType
 
-    def initialize(@gst_meta_info)
+    @gst_meta_info : LibGst::MetaInfo*?
+    def initialize(@gst_meta_info : LibGst::MetaInfo*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ require "./container"
 
 module Gtk
   class Notebook < Container
-    def initialize(@gtk_notebook)
+    @gtk_notebook : LibGtk::Notebook*?
+    def initialize(@gtk_notebook : LibGtk::Notebook*)
     end
 
     def to_unsafe

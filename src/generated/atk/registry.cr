@@ -1,6 +1,7 @@
 module Atk
   class Registry < GObject::Object
-    def initialize(@atk_registry)
+    @atk_registry : LibAtk::Registry*?
+    def initialize(@atk_registry : LibAtk::Registry*)
     end
 
     def to_unsafe

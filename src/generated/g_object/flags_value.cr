@@ -2,7 +2,8 @@ module GObject
   class FlagsValue
     include GObject::WrappedType
 
-    def initialize(@g_object_flags_value)
+    @g_object_flags_value : LibGObject::FlagsValue*?
+    def initialize(@g_object_flags_value : LibGObject::FlagsValue*)
     end
 
     def to_unsafe

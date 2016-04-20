@@ -1,6 +1,7 @@
 module Gdk
   class Cursor < GObject::Object
-    def initialize(@gdk_cursor)
+    @gdk_cursor : LibGdk::Cursor*?
+    def initialize(@gdk_cursor : LibGdk::Cursor*)
     end
 
     def to_unsafe

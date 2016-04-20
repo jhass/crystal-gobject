@@ -2,7 +2,8 @@ require "./container"
 
 module Gtk
   class ToolItemGroup < Container
-    def initialize(@gtk_tool_item_group)
+    @gtk_tool_item_group : LibGtk::ToolItemGroup*?
+    def initialize(@gtk_tool_item_group : LibGtk::ToolItemGroup*)
     end
 
     def to_unsafe

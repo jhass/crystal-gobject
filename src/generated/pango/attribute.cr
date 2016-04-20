@@ -2,7 +2,8 @@ module Pango
   class Attribute
     include GObject::WrappedType
 
-    def initialize(@pango_attribute)
+    @pango_attribute : LibPango::Attribute*?
+    def initialize(@pango_attribute : LibPango::Attribute*)
     end
 
     def to_unsafe

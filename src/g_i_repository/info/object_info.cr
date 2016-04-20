@@ -56,8 +56,13 @@ module GIRepository
         io << (parent ? " < #{parent}\n" : "\n")
         io << "#{indent}  include GObject::WrappedType\n\n" unless parent
 
+
+        # TODO: extract redundancy with StructInfo
+
         ptr = "@#{GIRepository.filename(full_constant)}"
-        io.puts "#{indent}  def initialize(#{ptr})"
+        ptr_type = "#{libname}::#{name}*"
+        io.puts "#{indent}  #{ptr} : #{ptr_type}?"
+        io.puts "#{indent}  def initialize(#{ptr} : #{ptr_type})"
         io.puts "#{indent}  end"
         io.puts
         io.puts "#{indent}  def to_unsafe"

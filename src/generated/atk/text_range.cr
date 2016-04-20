@@ -2,7 +2,8 @@ module Atk
   class TextRange
     include GObject::WrappedType
 
-    def initialize(@atk_text_range)
+    @atk_text_range : LibAtk::TextRange*?
+    def initialize(@atk_text_range : LibAtk::TextRange*)
     end
 
     def to_unsafe

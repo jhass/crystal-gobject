@@ -2,7 +2,8 @@ require "./output_stream"
 
 module Gio
   class FileOutputStream < OutputStream
-    def initialize(@gio_file_output_stream)
+    @gio_file_output_stream : LibGio::FileOutputStream*?
+    def initialize(@gio_file_output_stream : LibGio::FileOutputStream*)
     end
 
     def to_unsafe

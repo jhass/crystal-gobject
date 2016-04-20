@@ -1,6 +1,7 @@
 module Gtk
   class WindowGroup < GObject::Object
-    def initialize(@gtk_window_group)
+    @gtk_window_group : LibGtk::WindowGroup*?
+    def initialize(@gtk_window_group : LibGtk::WindowGroup*)
     end
 
     def to_unsafe

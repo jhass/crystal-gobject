@@ -2,7 +2,8 @@ module Atk
   class Implementor
     include GObject::WrappedType
 
-    def initialize(@atk_implementor)
+    @atk_implementor : LibAtk::Implementor*?
+    def initialize(@atk_implementor : LibAtk::Implementor*)
     end
 
     def to_unsafe

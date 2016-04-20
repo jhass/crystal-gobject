@@ -2,7 +2,8 @@ module Gtk
   class HSVPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_h_s_v_private)
+    @gtk_h_s_v_private : LibGtk::HSVPrivate*?
+    def initialize(@gtk_h_s_v_private : LibGtk::HSVPrivate*)
     end
 
     def to_unsafe

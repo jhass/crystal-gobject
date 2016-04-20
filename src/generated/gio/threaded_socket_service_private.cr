@@ -2,7 +2,8 @@ module Gio
   class ThreadedSocketServicePrivate
     include GObject::WrappedType
 
-    def initialize(@gio_threaded_socket_service_private)
+    @gio_threaded_socket_service_private : LibGio::ThreadedSocketServicePrivate*?
+    def initialize(@gio_threaded_socket_service_private : LibGio::ThreadedSocketServicePrivate*)
     end
 
     def to_unsafe

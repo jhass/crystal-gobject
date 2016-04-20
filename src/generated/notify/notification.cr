@@ -1,6 +1,7 @@
 module Notify
   class Notification < GObject::Object
-    def initialize(@notify_notification)
+    @notify_notification : LibNotify::Notification*?
+    def initialize(@notify_notification : LibNotify::Notification*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Gtk
   class PageRange
     include GObject::WrappedType
 
-    def initialize(@gtk_page_range)
+    @gtk_page_range : LibGtk::PageRange*?
+    def initialize(@gtk_page_range : LibGtk::PageRange*)
     end
 
     def to_unsafe

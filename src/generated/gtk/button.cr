@@ -2,7 +2,8 @@ require "./bin"
 
 module Gtk
   class Button < Bin
-    def initialize(@gtk_button)
+    @gtk_button : LibGtk::Button*?
+    def initialize(@gtk_button : LibGtk::Button*)
     end
 
     def to_unsafe

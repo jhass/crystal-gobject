@@ -2,7 +2,8 @@ module Cairo
   class Pattern
     include GObject::WrappedType
 
-    def initialize(@cairo_pattern)
+    @cairo_pattern : Libcairo::Pattern*?
+    def initialize(@cairo_pattern : Libcairo::Pattern*)
     end
 
     def to_unsafe

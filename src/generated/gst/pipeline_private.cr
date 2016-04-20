@@ -2,7 +2,8 @@ module Gst
   class PipelinePrivate
     include GObject::WrappedType
 
-    def initialize(@gst_pipeline_private)
+    @gst_pipeline_private : LibGst::PipelinePrivate*?
+    def initialize(@gst_pipeline_private : LibGst::PipelinePrivate*)
     end
 
     def to_unsafe

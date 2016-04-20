@@ -2,7 +2,8 @@ module Gtk
   class TargetPair
     include GObject::WrappedType
 
-    def initialize(@gtk_target_pair)
+    @gtk_target_pair : LibGtk::TargetPair*?
+    def initialize(@gtk_target_pair : LibGtk::TargetPair*)
     end
 
     def to_unsafe

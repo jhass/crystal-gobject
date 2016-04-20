@@ -1,6 +1,7 @@
 module Pango
   class Renderer < GObject::Object
-    def initialize(@pango_renderer)
+    @pango_renderer : LibPango::Renderer*?
+    def initialize(@pango_renderer : LibPango::Renderer*)
     end
 
     def to_unsafe

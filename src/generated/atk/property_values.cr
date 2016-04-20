@@ -2,7 +2,8 @@ module Atk
   class PropertyValues
     include GObject::WrappedType
 
-    def initialize(@atk_property_values)
+    @atk_property_values : LibAtk::PropertyValues*?
+    def initialize(@atk_property_values : LibAtk::PropertyValues*)
     end
 
     def to_unsafe

@@ -1,6 +1,7 @@
 module Gio
   class Cancellable < GObject::Object
-    def initialize(@gio_cancellable)
+    @gio_cancellable : LibGio::Cancellable*?
+    def initialize(@gio_cancellable : LibGio::Cancellable*)
     end
 
     def to_unsafe

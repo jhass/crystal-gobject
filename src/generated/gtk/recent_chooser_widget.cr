@@ -2,7 +2,8 @@ require "./box"
 
 module Gtk
   class RecentChooserWidget < Box
-    def initialize(@gtk_recent_chooser_widget)
+    @gtk_recent_chooser_widget : LibGtk::RecentChooserWidget*?
+    def initialize(@gtk_recent_chooser_widget : LibGtk::RecentChooserWidget*)
     end
 
     def to_unsafe

@@ -3,7 +3,7 @@ require "./base_info"
 module GIRepository
   module CallableInfo
     class FakeType
-      def initialize(@definition)
+      def initialize(@definition : String)
       end
 
       def lib_definition
@@ -28,7 +28,7 @@ module GIRepository
     end
 
     class SelfArgInfo
-      def initialize(@container)
+      def initialize(@container : BaseInfo)
       end
 
       def lib_definition

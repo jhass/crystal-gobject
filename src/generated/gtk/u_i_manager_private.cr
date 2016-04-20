@@ -2,7 +2,8 @@ module Gtk
   class UIManagerPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_u_i_manager_private)
+    @gtk_u_i_manager_private : LibGtk::UIManagerPrivate*?
+    def initialize(@gtk_u_i_manager_private : LibGtk::UIManagerPrivate*)
     end
 
     def to_unsafe

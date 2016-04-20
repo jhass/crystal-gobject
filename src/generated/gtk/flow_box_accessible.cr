@@ -2,7 +2,8 @@ require "./container_accessible"
 
 module Gtk
   class FlowBoxAccessible < ContainerAccessible
-    def initialize(@gtk_flow_box_accessible)
+    @gtk_flow_box_accessible : LibGtk::FlowBoxAccessible*?
+    def initialize(@gtk_flow_box_accessible : LibGtk::FlowBoxAccessible*)
     end
 
     def to_unsafe

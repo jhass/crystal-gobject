@@ -2,7 +2,8 @@ module Pango
   class AttrSize
     include GObject::WrappedType
 
-    def initialize(@pango_attr_size)
+    @pango_attr_size : LibPango::AttrSize*?
+    def initialize(@pango_attr_size : LibPango::AttrSize*)
     end
 
     def to_unsafe

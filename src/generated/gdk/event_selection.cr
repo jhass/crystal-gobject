@@ -2,7 +2,8 @@ module Gdk
   class EventSelection
     include GObject::WrappedType
 
-    def initialize(@gdk_event_selection)
+    @gdk_event_selection : LibGdk::EventSelection*?
+    def initialize(@gdk_event_selection : LibGdk::EventSelection*)
     end
 
     def to_unsafe

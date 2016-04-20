@@ -2,7 +2,8 @@ module Gtk
   class RcProperty
     include GObject::WrappedType
 
-    def initialize(@gtk_rc_property)
+    @gtk_rc_property : LibGtk::RcProperty*?
+    def initialize(@gtk_rc_property : LibGtk::RcProperty*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ require "./engine"
 
 module Pango
   class EngineShape < Engine
-    def initialize(@pango_engine_shape)
+    @pango_engine_shape : LibPango::EngineShape*?
+    def initialize(@pango_engine_shape : LibPango::EngineShape*)
     end
 
     def to_unsafe

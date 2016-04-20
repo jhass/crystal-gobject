@@ -1,6 +1,7 @@
 module Gdk
   class FrameClock < GObject::Object
-    def initialize(@gdk_frame_clock)
+    @gdk_frame_clock : LibGdk::FrameClock*?
+    def initialize(@gdk_frame_clock : LibGdk::FrameClock*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ require "./bin"
 
 module Gtk
   class ListBoxRow < Bin
-    def initialize(@gtk_list_box_row)
+    @gtk_list_box_row : LibGtk::ListBoxRow*?
+    def initialize(@gtk_list_box_row : LibGtk::ListBoxRow*)
     end
 
     def to_unsafe

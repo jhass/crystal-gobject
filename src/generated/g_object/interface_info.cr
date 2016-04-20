@@ -2,7 +2,8 @@ module GObject
   class InterfaceInfo
     include GObject::WrappedType
 
-    def initialize(@g_object_interface_info)
+    @g_object_interface_info : LibGObject::InterfaceInfo*?
+    def initialize(@g_object_interface_info : LibGObject::InterfaceInfo*)
     end
 
     def to_unsafe

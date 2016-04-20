@@ -2,7 +2,8 @@ module Gtk
   class RcContext
     include GObject::WrappedType
 
-    def initialize(@gtk_rc_context)
+    @gtk_rc_context : LibGtk::RcContext*?
+    def initialize(@gtk_rc_context : LibGtk::RcContext*)
     end
 
     def to_unsafe

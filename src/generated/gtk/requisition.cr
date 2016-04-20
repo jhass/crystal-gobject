@@ -2,7 +2,8 @@ module Gtk
   class Requisition
     include GObject::WrappedType
 
-    def initialize(@gtk_requisition)
+    @gtk_requisition : LibGtk::Requisition*?
+    def initialize(@gtk_requisition : LibGtk::Requisition*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ require "./object"
 
 module Gst
   class Plugin < Object
-    def initialize(@gst_plugin)
+    @gst_plugin : LibGst::Plugin*?
+    def initialize(@gst_plugin : LibGst::Plugin*)
     end
 
     def to_unsafe

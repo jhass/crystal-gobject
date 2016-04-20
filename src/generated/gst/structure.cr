@@ -2,7 +2,8 @@ module Gst
   class Structure
     include GObject::WrappedType
 
-    def initialize(@gst_structure)
+    @gst_structure : LibGst::Structure*?
+    def initialize(@gst_structure : LibGst::Structure*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Atk
   class KeyEventStruct
     include GObject::WrappedType
 
-    def initialize(@atk_key_event_struct)
+    @atk_key_event_struct : LibAtk::KeyEventStruct*?
+    def initialize(@atk_key_event_struct : LibAtk::KeyEventStruct*)
     end
 
     def to_unsafe

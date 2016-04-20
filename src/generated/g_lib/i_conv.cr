@@ -2,7 +2,8 @@ module GLib
   class IConv
     include GObject::WrappedType
 
-    def initialize(@g_lib_i_conv)
+    @g_lib_i_conv : LibGLib::IConv*?
+    def initialize(@g_lib_i_conv : LibGLib::IConv*)
     end
 
     def to_unsafe

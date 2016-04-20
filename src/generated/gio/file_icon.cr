@@ -1,6 +1,7 @@
 module Gio
   class FileIcon < GObject::Object
-    def initialize(@gio_file_icon)
+    @gio_file_icon : LibGio::FileIcon*?
+    def initialize(@gio_file_icon : LibGio::FileIcon*)
     end
 
     def to_unsafe

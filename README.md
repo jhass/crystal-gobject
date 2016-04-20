@@ -1,6 +1,6 @@
 # gobject-introspection for [Crystal](http://crystal-lang.org)
 
-This is a proof of concept, nothing real world usable.
+This is closer to a proof of concept, than to something real world usable.
 If you want to turn it into something usable, feel free to do so.
 If you want to hack on it and make some
 generally useful progress, pull requests are welcome!
@@ -17,3 +17,5 @@ generally useful progress, pull requests are welcome!
   for dependencies that are actually used in the binding.
 * Should figure out link flags for when gi_repository_get_shared_library
   return NULL, or at least not crash on that.
+* Should have a nice command line interface
+* Decide whether/what generated bindings to keep in this shard and what to move into its own shard (Gtk probably).

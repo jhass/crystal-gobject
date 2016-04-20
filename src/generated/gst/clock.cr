@@ -2,7 +2,8 @@ require "./object"
 
 module Gst
   class Clock < Object
-    def initialize(@gst_clock)
+    @gst_clock : LibGst::Clock*?
+    def initialize(@gst_clock : LibGst::Clock*)
     end
 
     def to_unsafe

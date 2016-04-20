@@ -2,7 +2,8 @@ module Cairo
   class Path
     include GObject::WrappedType
 
-    def initialize(@cairo_path)
+    @cairo_path : Libcairo::Path*?
+    def initialize(@cairo_path : Libcairo::Path*)
     end
 
     def to_unsafe

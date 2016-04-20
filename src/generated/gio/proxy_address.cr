@@ -2,7 +2,8 @@ require "./inet_socket_address"
 
 module Gio
   class ProxyAddress < InetSocketAddress
-    def initialize(@gio_proxy_address)
+    @gio_proxy_address : LibGio::ProxyAddress*?
+    def initialize(@gio_proxy_address : LibGio::ProxyAddress*)
     end
 
     def to_unsafe

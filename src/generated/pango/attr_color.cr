@@ -2,7 +2,8 @@ module Pango
   class AttrColor
     include GObject::WrappedType
 
-    def initialize(@pango_attr_color)
+    @pango_attr_color : LibPango::AttrColor*?
+    def initialize(@pango_attr_color : LibPango::AttrColor*)
     end
 
     def to_unsafe

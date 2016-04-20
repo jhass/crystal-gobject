@@ -2,7 +2,8 @@ require "./object_factory"
 
 module Atk
   class NoOpObjectFactory < ObjectFactory
-    def initialize(@atk_no_op_object_factory)
+    @atk_no_op_object_factory : LibAtk::NoOpObjectFactory*?
+    def initialize(@atk_no_op_object_factory : LibAtk::NoOpObjectFactory*)
     end
 
     def to_unsafe

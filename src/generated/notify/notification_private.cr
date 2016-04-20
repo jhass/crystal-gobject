@@ -2,7 +2,8 @@ module Notify
   class NotificationPrivate
     include GObject::WrappedType
 
-    def initialize(@notify_notification_private)
+    @notify_notification_private : LibNotify::NotificationPrivate*?
+    def initialize(@notify_notification_private : LibNotify::NotificationPrivate*)
     end
 
     def to_unsafe

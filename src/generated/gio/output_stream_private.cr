@@ -2,7 +2,8 @@ module Gio
   class OutputStreamPrivate
     include GObject::WrappedType
 
-    def initialize(@gio_output_stream_private)
+    @gio_output_stream_private : LibGio::OutputStreamPrivate*?
+    def initialize(@gio_output_stream_private : LibGio::OutputStreamPrivate*)
     end
 
     def to_unsafe

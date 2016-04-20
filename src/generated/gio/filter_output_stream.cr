@@ -2,7 +2,8 @@ require "./output_stream"
 
 module Gio
   class FilterOutputStream < OutputStream
-    def initialize(@gio_filter_output_stream)
+    @gio_filter_output_stream : LibGio::FilterOutputStream*?
+    def initialize(@gio_filter_output_stream : LibGio::FilterOutputStream*)
     end
 
     def to_unsafe

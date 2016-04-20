@@ -2,7 +2,8 @@ module Gtk
   class CellRendererSpinPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_cell_renderer_spin_private)
+    @gtk_cell_renderer_spin_private : LibGtk::CellRendererSpinPrivate*?
+    def initialize(@gtk_cell_renderer_spin_private : LibGtk::CellRendererSpinPrivate*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Gio
   class MenuModelPrivate
     include GObject::WrappedType
 
-    def initialize(@gio_menu_model_private)
+    @gio_menu_model_private : LibGio::MenuModelPrivate*?
+    def initialize(@gio_menu_model_private : LibGio::MenuModelPrivate*)
     end
 
     def to_unsafe

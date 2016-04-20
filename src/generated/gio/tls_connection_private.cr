@@ -2,7 +2,8 @@ module Gio
   class TlsConnectionPrivate
     include GObject::WrappedType
 
-    def initialize(@gio_tls_connection_private)
+    @gio_tls_connection_private : LibGio::TlsConnectionPrivate*?
+    def initialize(@gio_tls_connection_private : LibGio::TlsConnectionPrivate*)
     end
 
     def to_unsafe

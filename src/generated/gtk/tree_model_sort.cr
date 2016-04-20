@@ -1,6 +1,7 @@
 module Gtk
   class TreeModelSort < GObject::Object
-    def initialize(@gtk_tree_model_sort)
+    @gtk_tree_model_sort : LibGtk::TreeModelSort*?
+    def initialize(@gtk_tree_model_sort : LibGtk::TreeModelSort*)
     end
 
     def to_unsafe

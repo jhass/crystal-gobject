@@ -2,7 +2,8 @@ module Gio
   class ApplicationPrivate
     include GObject::WrappedType
 
-    def initialize(@gio_application_private)
+    @gio_application_private : LibGio::ApplicationPrivate*?
+    def initialize(@gio_application_private : LibGio::ApplicationPrivate*)
     end
 
     def to_unsafe

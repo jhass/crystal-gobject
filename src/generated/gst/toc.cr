@@ -2,7 +2,8 @@ module Gst
   class Toc
     include GObject::WrappedType
 
-    def initialize(@gst_toc)
+    @gst_toc : LibGst::Toc*?
+    def initialize(@gst_toc : LibGst::Toc*)
     end
 
     def to_unsafe

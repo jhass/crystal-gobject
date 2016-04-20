@@ -2,7 +2,8 @@ module Gio
   class EmblemedIconPrivate
     include GObject::WrappedType
 
-    def initialize(@gio_emblemed_icon_private)
+    @gio_emblemed_icon_private : LibGio::EmblemedIconPrivate*?
+    def initialize(@gio_emblemed_icon_private : LibGio::EmblemedIconPrivate*)
     end
 
     def to_unsafe

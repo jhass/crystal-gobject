@@ -2,7 +2,8 @@ module GLib
   class ThreadPool
     include GObject::WrappedType
 
-    def initialize(@g_lib_thread_pool)
+    @g_lib_thread_pool : LibGLib::ThreadPool*?
+    def initialize(@g_lib_thread_pool : LibGLib::ThreadPool*)
     end
 
     def to_unsafe

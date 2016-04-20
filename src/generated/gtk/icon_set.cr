@@ -2,7 +2,8 @@ module Gtk
   class IconSet
     include GObject::WrappedType
 
-    def initialize(@gtk_icon_set)
+    @gtk_icon_set : LibGtk::IconSet*?
+    def initialize(@gtk_icon_set : LibGtk::IconSet*)
     end
 
     def to_unsafe

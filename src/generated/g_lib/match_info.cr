@@ -2,7 +2,8 @@ module GLib
   class MatchInfo
     include GObject::WrappedType
 
-    def initialize(@g_lib_match_info)
+    @g_lib_match_info : LibGLib::MatchInfo*?
+    def initialize(@g_lib_match_info : LibGLib::MatchInfo*)
     end
 
     def to_unsafe

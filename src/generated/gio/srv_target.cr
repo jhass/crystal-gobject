@@ -2,7 +2,8 @@ module Gio
   class SrvTarget
     include GObject::WrappedType
 
-    def initialize(@gio_srv_target)
+    @gio_srv_target : LibGio::SrvTarget*?
+    def initialize(@gio_srv_target : LibGio::SrvTarget*)
     end
 
     def to_unsafe

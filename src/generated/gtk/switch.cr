@@ -2,7 +2,8 @@ require "./widget"
 
 module Gtk
   class Switch < Widget
-    def initialize(@gtk_switch)
+    @gtk_switch : LibGtk::Switch*?
+    def initialize(@gtk_switch : LibGtk::Switch*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Gtk
   class FileFilterInfo
     include GObject::WrappedType
 
-    def initialize(@gtk_file_filter_info)
+    @gtk_file_filter_info : LibGtk::FileFilterInfo*?
+    def initialize(@gtk_file_filter_info : LibGtk::FileFilterInfo*)
     end
 
     def to_unsafe

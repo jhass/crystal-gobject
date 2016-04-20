@@ -2,13 +2,13 @@ module Notify
   class Notification
 
     class Fields
-      property! summary
-      property! body
-      property! icon_name
-      property! app_name
-      property! timeout
-      property! category
-      property! urgency
+      property! summary : String
+      property! body : String
+      property! icon_name : String
+      property! app_name : String
+      property! timeout : Int32
+      property! category : String
+      property! urgency : Symbol|Notify::Urgency
       getter actions
 
       def initialize
@@ -64,10 +64,10 @@ module Notify
       end
     end
 
-    def self.new(summary : String, body=nil, icon=nil)
+    def self.new(summary : String, body : String? =nil, icon : String? = nil)
       body = body ? body.to_unsafe : Pointer(UInt8).null
       icon =  icon ? icon.to_unsafe : Pointer(UInt8).null
-      new_internal summary, body, icon
+      new summary, body, icon
     end
 
     def action(name, label, &block : ActionCallback)
@@ -109,17 +109,21 @@ module Notify
       set_hint "resident", true
     end
 
-    def urgency=(urgency : Symbol)
-      self.urgency = case urgency
+    def urgency=(urgency)
+      if urgency.is_a?(Symbol)
+        urgency = case urgency
           when :low
-            LibNotify::Urgency::LOW
+            Notify::Urgency::LOW
           when :normal
-            LibNotify::Urgency::NORMAL
+            Notify::Urgency::NORMAL
           when :critical
-            LibNotify::Urgency::CRITICAL
+            Notify::Urgency::CRITICAL
           else
             raise ArgumentError.new "#{urgency} is not a valid urgency level"
           end
+      end
+
+      previous_def(urgency)
     end
 
     def update(summary=nil, body=nil, icon=nil)

@@ -2,7 +2,8 @@ require "./widget"
 
 module Gtk
   class Misc < Widget
-    def initialize(@gtk_misc)
+    @gtk_misc : LibGtk::Misc*?
+    def initialize(@gtk_misc : LibGtk::Misc*)
     end
 
     def to_unsafe

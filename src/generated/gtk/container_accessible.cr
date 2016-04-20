@@ -2,7 +2,8 @@ require "./widget_accessible"
 
 module Gtk
   class ContainerAccessible < WidgetAccessible
-    def initialize(@gtk_container_accessible)
+    @gtk_container_accessible : LibGtk::ContainerAccessible*?
+    def initialize(@gtk_container_accessible : LibGtk::ContainerAccessible*)
     end
 
     def to_unsafe

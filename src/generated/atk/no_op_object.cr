@@ -2,7 +2,8 @@ require "./object"
 
 module Atk
   class NoOpObject < Object
-    def initialize(@atk_no_op_object)
+    @atk_no_op_object : LibAtk::NoOpObject*?
+    def initialize(@atk_no_op_object : LibAtk::NoOpObject*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ require "./param_spec"
 
 module GObject
   class ParamSpecFloat < ParamSpec
-    def initialize(@g_object_param_spec_float)
+    @g_object_param_spec_float : LibGObject::ParamSpecFloat*?
+    def initialize(@g_object_param_spec_float : LibGObject::ParamSpecFloat*)
     end
 
     def to_unsafe

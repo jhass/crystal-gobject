@@ -2,7 +2,8 @@ require "./param_spec"
 
 module GObject
   class ParamSpecBoxed < ParamSpec
-    def initialize(@g_object_param_spec_boxed)
+    @g_object_param_spec_boxed : LibGObject::ParamSpecBoxed*?
+    def initialize(@g_object_param_spec_boxed : LibGObject::ParamSpecBoxed*)
     end
 
     def to_unsafe

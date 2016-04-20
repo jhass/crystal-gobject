@@ -2,7 +2,8 @@ require "./socket_service"
 
 module Gio
   class ThreadedSocketService < SocketService
-    def initialize(@gio_threaded_socket_service)
+    @gio_threaded_socket_service : LibGio::ThreadedSocketService*?
+    def initialize(@gio_threaded_socket_service : LibGio::ThreadedSocketService*)
     end
 
     def to_unsafe

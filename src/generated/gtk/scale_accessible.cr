@@ -2,7 +2,8 @@ require "./range_accessible"
 
 module Gtk
   class ScaleAccessible < RangeAccessible
-    def initialize(@gtk_scale_accessible)
+    @gtk_scale_accessible : LibGtk::ScaleAccessible*?
+    def initialize(@gtk_scale_accessible : LibGtk::ScaleAccessible*)
     end
 
     def to_unsafe

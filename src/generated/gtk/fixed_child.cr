@@ -2,7 +2,8 @@ module Gtk
   class FixedChild
     include GObject::WrappedType
 
-    def initialize(@gtk_fixed_child)
+    @gtk_fixed_child : LibGtk::FixedChild*?
+    def initialize(@gtk_fixed_child : LibGtk::FixedChild*)
     end
 
     def to_unsafe

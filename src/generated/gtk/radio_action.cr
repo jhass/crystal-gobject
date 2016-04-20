@@ -2,7 +2,8 @@ require "./toggle_action"
 
 module Gtk
   class RadioAction < ToggleAction
-    def initialize(@gtk_radio_action)
+    @gtk_radio_action : LibGtk::RadioAction*?
+    def initialize(@gtk_radio_action : LibGtk::RadioAction*)
     end
 
     def to_unsafe

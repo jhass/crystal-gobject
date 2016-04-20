@@ -1,6 +1,7 @@
 module Gst
   class Object < GObject::InitiallyUnowned
-    def initialize(@gst_object)
+    @gst_object : LibGst::Object*?
+    def initialize(@gst_object : LibGst::Object*)
     end
 
     def to_unsafe

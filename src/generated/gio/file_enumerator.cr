@@ -1,6 +1,7 @@
 module Gio
   class FileEnumerator < GObject::Object
-    def initialize(@gio_file_enumerator)
+    @gio_file_enumerator : LibGio::FileEnumerator*?
+    def initialize(@gio_file_enumerator : LibGio::FileEnumerator*)
     end
 
     def to_unsafe

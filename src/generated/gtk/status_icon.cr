@@ -1,6 +1,7 @@
 module Gtk
   class StatusIcon < GObject::Object
-    def initialize(@gtk_status_icon)
+    @gtk_status_icon : LibGtk::StatusIcon*?
+    def initialize(@gtk_status_icon : LibGtk::StatusIcon*)
     end
 
     def to_unsafe

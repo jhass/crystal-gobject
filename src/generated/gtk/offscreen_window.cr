@@ -2,7 +2,8 @@ require "./window"
 
 module Gtk
   class OffscreenWindow < Window
-    def initialize(@gtk_offscreen_window)
+    @gtk_offscreen_window : LibGtk::OffscreenWindow*?
+    def initialize(@gtk_offscreen_window : LibGtk::OffscreenWindow*)
     end
 
     def to_unsafe

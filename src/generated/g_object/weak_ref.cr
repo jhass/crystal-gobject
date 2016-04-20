@@ -2,7 +2,8 @@ module GObject
   class WeakRef
     include GObject::WrappedType
 
-    def initialize(@g_object_weak_ref)
+    @g_object_weak_ref : LibGObject::WeakRef*?
+    def initialize(@g_object_weak_ref : LibGObject::WeakRef*)
     end
 
     def to_unsafe

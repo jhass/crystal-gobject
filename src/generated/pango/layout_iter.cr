@@ -2,7 +2,8 @@ module Pango
   class LayoutIter
     include GObject::WrappedType
 
-    def initialize(@pango_layout_iter)
+    @pango_layout_iter : LibPango::LayoutIter*?
+    def initialize(@pango_layout_iter : LibPango::LayoutIter*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module GLib
   class DebugKey
     include GObject::WrappedType
 
-    def initialize(@g_lib_debug_key)
+    @g_lib_debug_key : LibGLib::DebugKey*?
+    def initialize(@g_lib_debug_key : LibGLib::DebugKey*)
     end
 
     def to_unsafe

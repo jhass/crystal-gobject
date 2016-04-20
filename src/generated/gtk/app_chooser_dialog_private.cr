@@ -2,7 +2,8 @@ module Gtk
   class AppChooserDialogPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_app_chooser_dialog_private)
+    @gtk_app_chooser_dialog_private : LibGtk::AppChooserDialogPrivate*?
+    def initialize(@gtk_app_chooser_dialog_private : LibGtk::AppChooserDialogPrivate*)
     end
 
     def to_unsafe

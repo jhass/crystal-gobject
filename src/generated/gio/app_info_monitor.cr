@@ -1,6 +1,7 @@
 module Gio
   class AppInfoMonitor < GObject::Object
-    def initialize(@gio_app_info_monitor)
+    @gio_app_info_monitor : LibGio::AppInfoMonitor*?
+    def initialize(@gio_app_info_monitor : LibGio::AppInfoMonitor*)
     end
 
     def to_unsafe

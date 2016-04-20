@@ -2,7 +2,8 @@ require "./bin"
 
 module Gtk
   class SearchBar < Bin
-    def initialize(@gtk_search_bar)
+    @gtk_search_bar : LibGtk::SearchBar*?
+    def initialize(@gtk_search_bar : LibGtk::SearchBar*)
     end
 
     def to_unsafe

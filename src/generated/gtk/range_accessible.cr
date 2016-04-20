@@ -2,7 +2,8 @@ require "./widget_accessible"
 
 module Gtk
   class RangeAccessible < WidgetAccessible
-    def initialize(@gtk_range_accessible)
+    @gtk_range_accessible : LibGtk::RangeAccessible*?
+    def initialize(@gtk_range_accessible : LibGtk::RangeAccessible*)
     end
 
     def to_unsafe

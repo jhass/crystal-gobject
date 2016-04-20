@@ -2,7 +2,8 @@ module Pango
   class LayoutLine
     include GObject::WrappedType
 
-    def initialize(@pango_layout_line)
+    @pango_layout_line : LibPango::LayoutLine*?
+    def initialize(@pango_layout_line : LibPango::LayoutLine*)
     end
 
     def to_unsafe

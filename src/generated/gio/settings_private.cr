@@ -2,7 +2,8 @@ module Gio
   class SettingsPrivate
     include GObject::WrappedType
 
-    def initialize(@gio_settings_private)
+    @gio_settings_private : LibGio::SettingsPrivate*?
+    def initialize(@gio_settings_private : LibGio::SettingsPrivate*)
     end
 
     def to_unsafe

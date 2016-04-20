@@ -2,7 +2,8 @@ module Gtk
   class FileChooserWidgetPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_file_chooser_widget_private)
+    @gtk_file_chooser_widget_private : LibGtk::FileChooserWidgetPrivate*?
+    def initialize(@gtk_file_chooser_widget_private : LibGtk::FileChooserWidgetPrivate*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ require "./cell_renderer_text"
 
 module Gtk
   class CellRendererAccel < CellRendererText
-    def initialize(@gtk_cell_renderer_accel)
+    @gtk_cell_renderer_accel : LibGtk::CellRendererAccel*?
+    def initialize(@gtk_cell_renderer_accel : LibGtk::CellRendererAccel*)
     end
 
     def to_unsafe

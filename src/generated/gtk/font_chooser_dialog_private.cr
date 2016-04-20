@@ -2,7 +2,8 @@ module Gtk
   class FontChooserDialogPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_font_chooser_dialog_private)
+    @gtk_font_chooser_dialog_private : LibGtk::FontChooserDialogPrivate*?
+    def initialize(@gtk_font_chooser_dialog_private : LibGtk::FontChooserDialogPrivate*)
     end
 
     def to_unsafe

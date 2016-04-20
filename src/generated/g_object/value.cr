@@ -2,7 +2,8 @@ module GObject
   class Value
     include GObject::WrappedType
 
-    def initialize(@g_object_value)
+    @g_object_value : LibGObject::Value*?
+    def initialize(@g_object_value : LibGObject::Value*)
     end
 
     def to_unsafe

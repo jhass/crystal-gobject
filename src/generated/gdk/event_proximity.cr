@@ -2,7 +2,8 @@ module Gdk
   class EventProximity
     include GObject::WrappedType
 
-    def initialize(@gdk_event_proximity)
+    @gdk_event_proximity : LibGdk::EventProximity*?
+    def initialize(@gdk_event_proximity : LibGdk::EventProximity*)
     end
 
     def to_unsafe

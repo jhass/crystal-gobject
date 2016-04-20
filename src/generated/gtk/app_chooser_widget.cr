@@ -2,7 +2,8 @@ require "./box"
 
 module Gtk
   class AppChooserWidget < Box
-    def initialize(@gtk_app_chooser_widget)
+    @gtk_app_chooser_widget : LibGtk::AppChooserWidget*?
+    def initialize(@gtk_app_chooser_widget : LibGtk::AppChooserWidget*)
     end
 
     def to_unsafe

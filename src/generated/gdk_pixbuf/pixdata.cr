@@ -2,7 +2,8 @@ module GdkPixbuf
   class Pixdata
     include GObject::WrappedType
 
-    def initialize(@gdk_pixbuf_pixdata)
+    @gdk_pixbuf_pixdata : LibGdkPixbuf::Pixdata*?
+    def initialize(@gdk_pixbuf_pixdata : LibGdkPixbuf::Pixdata*)
     end
 
     def to_unsafe

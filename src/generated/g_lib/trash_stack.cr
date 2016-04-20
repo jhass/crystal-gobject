@@ -2,7 +2,8 @@ module GLib
   class TrashStack
     include GObject::WrappedType
 
-    def initialize(@g_lib_trash_stack)
+    @g_lib_trash_stack : LibGLib::TrashStack*?
+    def initialize(@g_lib_trash_stack : LibGLib::TrashStack*)
     end
 
     def to_unsafe

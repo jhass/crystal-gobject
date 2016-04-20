@@ -2,7 +2,8 @@ module Pango
   class LogAttr
     include GObject::WrappedType
 
-    def initialize(@pango_log_attr)
+    @pango_log_attr : LibPango::LogAttr*?
+    def initialize(@pango_log_attr : LibPango::LogAttr*)
     end
 
     def to_unsafe

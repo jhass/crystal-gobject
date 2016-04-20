@@ -2,7 +2,8 @@ module Cairo
   class RectangleInt
     include GObject::WrappedType
 
-    def initialize(@cairo_rectangle_int)
+    @cairo_rectangle_int : Libcairo::RectangleInt*?
+    def initialize(@cairo_rectangle_int : Libcairo::RectangleInt*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ require "./widget"
 
 module Gtk
   class LevelBar < Widget
-    def initialize(@gtk_level_bar)
+    @gtk_level_bar : LibGtk::LevelBar*?
+    def initialize(@gtk_level_bar : LibGtk::LevelBar*)
     end
 
     def to_unsafe

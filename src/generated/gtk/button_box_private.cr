@@ -2,7 +2,8 @@ module Gtk
   class ButtonBoxPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_button_box_private)
+    @gtk_button_box_private : LibGtk::ButtonBoxPrivate*?
+    def initialize(@gtk_button_box_private : LibGtk::ButtonBoxPrivate*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Pango
   class FontMetrics
     include GObject::WrappedType
 
-    def initialize(@pango_font_metrics)
+    @pango_font_metrics : LibPango::FontMetrics*?
+    def initialize(@pango_font_metrics : LibPango::FontMetrics*)
     end
 
     def to_unsafe

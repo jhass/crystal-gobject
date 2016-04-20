@@ -2,7 +2,8 @@ module Gst
   class FormatDefinition
     include GObject::WrappedType
 
-    def initialize(@gst_format_definition)
+    @gst_format_definition : LibGst::FormatDefinition*?
+    def initialize(@gst_format_definition : LibGst::FormatDefinition*)
     end
 
     def to_unsafe

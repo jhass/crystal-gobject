@@ -1,6 +1,7 @@
 module Gtk
   class StyleProperties < GObject::Object
-    def initialize(@gtk_style_properties)
+    @gtk_style_properties : LibGtk::StyleProperties*?
+    def initialize(@gtk_style_properties : LibGtk::StyleProperties*)
     end
 
     def to_unsafe

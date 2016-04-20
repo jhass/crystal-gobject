@@ -6,11 +6,9 @@ module GObject
       new(Type::STRING).tap &.string=(string)
     end
 
-    def self.new(type : Type)
-      new(LibGObject::Value.new).tap &.init(type)
-    end
-
-    def initialize(@g_object_value : LibGObject::Value)
+    def initialize(type : Type)
+      @g_object_value = Pointer(LibGObject::Value).malloc
+      init(type)
     end
 
     def init(type : Type)
@@ -26,25 +24,6 @@ module GObject
       type == Type::STRING
     end
 
-    # def string=(string : String)
-    #   init Type::String
-    #   LibGObject.value_set_string self, string
-    # end
-
-    def string
-      # raise ArgumentError.new "Not a string, is #{type}" unless holds_string?
-      value = LibGObject.value_get_string(self)
-      String.new value if value
-    end
-
-    # def to_s
-    #   string.not_nil!
-    # end
-
-    def to_unsafe
-      pointerof(@g_object_value) as LibGObject::Value*
-    end
-
     def finalize
       unset
     end
@@ -58,7 +37,7 @@ class String
   end
 
   def self.new_gvalue
-    GObject::Value.new ""#GObject::Type::STRING
+    GObject::Value.new GObject::Type::STRING
   end
 
   def to_gvalue

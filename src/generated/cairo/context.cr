@@ -2,7 +2,8 @@ module Cairo
   class Context
     include GObject::WrappedType
 
-    def initialize(@cairo_context)
+    @cairo_context : Libcairo::Context*?
+    def initialize(@cairo_context : Libcairo::Context*)
     end
 
     def to_unsafe

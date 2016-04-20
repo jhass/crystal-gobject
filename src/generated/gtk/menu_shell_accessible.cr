@@ -2,7 +2,8 @@ require "./container_accessible"
 
 module Gtk
   class MenuShellAccessible < ContainerAccessible
-    def initialize(@gtk_menu_shell_accessible)
+    @gtk_menu_shell_accessible : LibGtk::MenuShellAccessible*?
+    def initialize(@gtk_menu_shell_accessible : LibGtk::MenuShellAccessible*)
     end
 
     def to_unsafe

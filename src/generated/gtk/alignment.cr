@@ -2,7 +2,8 @@ require "./bin"
 
 module Gtk
   class Alignment < Bin
-    def initialize(@gtk_alignment)
+    @gtk_alignment : LibGtk::Alignment*?
+    def initialize(@gtk_alignment : LibGtk::Alignment*)
     end
 
     def to_unsafe

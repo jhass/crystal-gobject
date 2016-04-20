@@ -2,7 +2,8 @@ require "./toggle_button_accessible"
 
 module Gtk
   class RadioButtonAccessible < ToggleButtonAccessible
-    def initialize(@gtk_radio_button_accessible)
+    @gtk_radio_button_accessible : LibGtk::RadioButtonAccessible*?
+    def initialize(@gtk_radio_button_accessible : LibGtk::RadioButtonAccessible*)
     end
 
     def to_unsafe

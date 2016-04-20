@@ -2,7 +2,8 @@ require "./bin"
 
 module Gtk
   class ToolItem < Bin
-    def initialize(@gtk_tool_item)
+    @gtk_tool_item : LibGtk::ToolItem*?
+    def initialize(@gtk_tool_item : LibGtk::ToolItem*)
     end
 
     def to_unsafe

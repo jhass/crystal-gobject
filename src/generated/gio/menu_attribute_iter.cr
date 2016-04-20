@@ -1,6 +1,7 @@
 module Gio
   class MenuAttributeIter < GObject::Object
-    def initialize(@gio_menu_attribute_iter)
+    @gio_menu_attribute_iter : LibGio::MenuAttributeIter*?
+    def initialize(@gio_menu_attribute_iter : LibGio::MenuAttributeIter*)
     end
 
     def to_unsafe

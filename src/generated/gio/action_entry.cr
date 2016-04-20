@@ -2,7 +2,8 @@ module Gio
   class ActionEntry
     include GObject::WrappedType
 
-    def initialize(@gio_action_entry)
+    @gio_action_entry : LibGio::ActionEntry*?
+    def initialize(@gio_action_entry : LibGio::ActionEntry*)
     end
 
     def to_unsafe

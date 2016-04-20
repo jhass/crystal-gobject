@@ -2,7 +2,8 @@ module Gdk
   class EventVisibility
     include GObject::WrappedType
 
-    def initialize(@gdk_event_visibility)
+    @gdk_event_visibility : LibGdk::EventVisibility*?
+    def initialize(@gdk_event_visibility : LibGdk::EventVisibility*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Gtk
   class PanedAccessiblePrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_paned_accessible_private)
+    @gtk_paned_accessible_private : LibGtk::PanedAccessiblePrivate*?
+    def initialize(@gtk_paned_accessible_private : LibGtk::PanedAccessiblePrivate*)
     end
 
     def to_unsafe

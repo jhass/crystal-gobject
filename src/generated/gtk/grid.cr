@@ -2,7 +2,8 @@ require "./container"
 
 module Gtk
   class Grid < Container
-    def initialize(@gtk_grid)
+    @gtk_grid : LibGtk::Grid*?
+    def initialize(@gtk_grid : LibGtk::Grid*)
     end
 
     def to_unsafe

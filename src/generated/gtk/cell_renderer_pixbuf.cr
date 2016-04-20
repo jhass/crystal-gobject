@@ -2,7 +2,8 @@ require "./cell_renderer"
 
 module Gtk
   class CellRendererPixbuf < CellRenderer
-    def initialize(@gtk_cell_renderer_pixbuf)
+    @gtk_cell_renderer_pixbuf : LibGtk::CellRendererPixbuf*?
+    def initialize(@gtk_cell_renderer_pixbuf : LibGtk::CellRendererPixbuf*)
     end
 
     def to_unsafe

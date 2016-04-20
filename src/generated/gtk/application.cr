@@ -1,6 +1,7 @@
 module Gtk
   class Application < Gio::Application
-    def initialize(@gtk_application)
+    @gtk_application : LibGtk::Application*?
+    def initialize(@gtk_application : LibGtk::Application*)
     end
 
     def to_unsafe

@@ -1,6 +1,7 @@
 module Gio
   class NetworkService < GObject::Object
-    def initialize(@gio_network_service)
+    @gio_network_service : LibGio::NetworkService*?
+    def initialize(@gio_network_service : LibGio::NetworkService*)
     end
 
     def to_unsafe

@@ -1,6 +1,7 @@
 module Gdk
   class Visual < GObject::Object
-    def initialize(@gdk_visual)
+    @gdk_visual : LibGdk::Visual*?
+    def initialize(@gdk_visual : LibGdk::Visual*)
     end
 
     def to_unsafe

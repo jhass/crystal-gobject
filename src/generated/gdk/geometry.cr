@@ -2,7 +2,8 @@ module Gdk
   class Geometry
     include GObject::WrappedType
 
-    def initialize(@gdk_geometry)
+    @gdk_geometry : LibGdk::Geometry*?
+    def initialize(@gdk_geometry : LibGdk::Geometry*)
     end
 
     def to_unsafe

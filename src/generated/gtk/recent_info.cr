@@ -2,7 +2,8 @@ module Gtk
   class RecentInfo
     include GObject::WrappedType
 
-    def initialize(@gtk_recent_info)
+    @gtk_recent_info : LibGtk::RecentInfo*?
+    def initialize(@gtk_recent_info : LibGtk::RecentInfo*)
     end
 
     def to_unsafe

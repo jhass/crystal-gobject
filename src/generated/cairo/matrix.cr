@@ -2,7 +2,8 @@ module Cairo
   class Matrix
     include GObject::WrappedType
 
-    def initialize(@cairo_matrix)
+    @cairo_matrix : Libcairo::Matrix*?
+    def initialize(@cairo_matrix : Libcairo::Matrix*)
     end
 
     def to_unsafe

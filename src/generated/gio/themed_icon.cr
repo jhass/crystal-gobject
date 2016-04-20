@@ -1,6 +1,7 @@
 module Gio
   class ThemedIcon < GObject::Object
-    def initialize(@gio_themed_icon)
+    @gio_themed_icon : LibGio::ThemedIcon*?
+    def initialize(@gio_themed_icon : LibGio::ThemedIcon*)
     end
 
     def to_unsafe

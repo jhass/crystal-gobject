@@ -2,7 +2,8 @@ module Pango
   class AttrFloat
     include GObject::WrappedType
 
-    def initialize(@pango_attr_float)
+    @pango_attr_float : LibPango::AttrFloat*?
+    def initialize(@pango_attr_float : LibPango::AttrFloat*)
     end
 
     def to_unsafe

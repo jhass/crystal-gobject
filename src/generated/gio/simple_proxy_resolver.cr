@@ -1,6 +1,7 @@
 module Gio
   class SimpleProxyResolver < GObject::Object
-    def initialize(@gio_simple_proxy_resolver)
+    @gio_simple_proxy_resolver : LibGio::SimpleProxyResolver*?
+    def initialize(@gio_simple_proxy_resolver : LibGio::SimpleProxyResolver*)
     end
 
     def to_unsafe

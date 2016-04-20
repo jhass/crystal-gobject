@@ -1,6 +1,7 @@
 module GdkPixbuf
   class PixbufAnimation < GObject::Object
-    def initialize(@gdk_pixbuf_pixbuf_animation)
+    @gdk_pixbuf_pixbuf_animation : LibGdkPixbuf::PixbufAnimation*?
+    def initialize(@gdk_pixbuf_pixbuf_animation : LibGdkPixbuf::PixbufAnimation*)
     end
 
     def to_unsafe

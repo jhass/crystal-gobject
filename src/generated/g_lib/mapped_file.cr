@@ -2,7 +2,8 @@ module GLib
   class MappedFile
     include GObject::WrappedType
 
-    def initialize(@g_lib_mapped_file)
+    @g_lib_mapped_file : LibGLib::MappedFile*?
+    def initialize(@g_lib_mapped_file : LibGLib::MappedFile*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Gtk
   class ListBoxAccessiblePrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_list_box_accessible_private)
+    @gtk_list_box_accessible_private : LibGtk::ListBoxAccessiblePrivate*?
+    def initialize(@gtk_list_box_accessible_private : LibGtk::ListBoxAccessiblePrivate*)
     end
 
     def to_unsafe

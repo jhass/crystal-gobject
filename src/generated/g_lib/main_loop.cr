@@ -2,7 +2,8 @@ module GLib
   class MainLoop
     include GObject::WrappedType
 
-    def initialize(@g_lib_main_loop)
+    @g_lib_main_loop : LibGLib::MainLoop*?
+    def initialize(@g_lib_main_loop : LibGLib::MainLoop*)
     end
 
     def to_unsafe

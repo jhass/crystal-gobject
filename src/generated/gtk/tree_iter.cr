@@ -2,7 +2,8 @@ module Gtk
   class TreeIter
     include GObject::WrappedType
 
-    def initialize(@gtk_tree_iter)
+    @gtk_tree_iter : LibGtk::TreeIter*?
+    def initialize(@gtk_tree_iter : LibGtk::TreeIter*)
     end
 
     def to_unsafe

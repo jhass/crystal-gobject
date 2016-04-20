@@ -2,7 +2,8 @@ module GLib
   class Sequence
     include GObject::WrappedType
 
-    def initialize(@g_lib_sequence)
+    @g_lib_sequence : LibGLib::Sequence*?
+    def initialize(@g_lib_sequence : LibGLib::Sequence*)
     end
 
     def to_unsafe

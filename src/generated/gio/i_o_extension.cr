@@ -2,7 +2,8 @@ module Gio
   class IOExtension
     include GObject::WrappedType
 
-    def initialize(@gio_i_o_extension)
+    @gio_i_o_extension : LibGio::IOExtension*?
+    def initialize(@gio_i_o_extension : LibGio::IOExtension*)
     end
 
     def to_unsafe

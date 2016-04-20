@@ -2,7 +2,8 @@ module Gtk
   class NumerableIconPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_numerable_icon_private)
+    @gtk_numerable_icon_private : LibGtk::NumerableIconPrivate*?
+    def initialize(@gtk_numerable_icon_private : LibGtk::NumerableIconPrivate*)
     end
 
     def to_unsafe

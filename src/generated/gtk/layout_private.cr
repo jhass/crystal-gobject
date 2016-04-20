@@ -2,7 +2,8 @@ module Gtk
   class LayoutPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_layout_private)
+    @gtk_layout_private : LibGtk::LayoutPrivate*?
+    def initialize(@gtk_layout_private : LibGtk::LayoutPrivate*)
     end
 
     def to_unsafe

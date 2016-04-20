@@ -2,7 +2,8 @@ module Gtk
   class SelectionData
     include GObject::WrappedType
 
-    def initialize(@gtk_selection_data)
+    @gtk_selection_data : LibGtk::SelectionData*?
+    def initialize(@gtk_selection_data : LibGtk::SelectionData*)
     end
 
     def to_unsafe

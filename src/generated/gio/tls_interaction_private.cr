@@ -2,7 +2,8 @@ module Gio
   class TlsInteractionPrivate
     include GObject::WrappedType
 
-    def initialize(@gio_tls_interaction_private)
+    @gio_tls_interaction_private : LibGio::TlsInteractionPrivate*?
+    def initialize(@gio_tls_interaction_private : LibGio::TlsInteractionPrivate*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Pango
   class AttrLanguage
     include GObject::WrappedType
 
-    def initialize(@pango_attr_language)
+    @pango_attr_language : LibPango::AttrLanguage*?
+    def initialize(@pango_attr_language : LibPango::AttrLanguage*)
     end
 
     def to_unsafe

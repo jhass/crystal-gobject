@@ -2,7 +2,8 @@ module Gtk
   class TextIter
     include GObject::WrappedType
 
-    def initialize(@gtk_text_iter)
+    @gtk_text_iter : LibGtk::TextIter*?
+    def initialize(@gtk_text_iter : LibGtk::TextIter*)
     end
 
     def to_unsafe

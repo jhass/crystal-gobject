@@ -2,7 +2,8 @@ module Gio
   class IOStreamPrivate
     include GObject::WrappedType
 
-    def initialize(@gio_i_o_stream_private)
+    @gio_i_o_stream_private : LibGio::IOStreamPrivate*?
+    def initialize(@gio_i_o_stream_private : LibGio::IOStreamPrivate*)
     end
 
     def to_unsafe

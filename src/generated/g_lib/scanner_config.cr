@@ -2,7 +2,8 @@ module GLib
   class ScannerConfig
     include GObject::WrappedType
 
-    def initialize(@g_lib_scanner_config)
+    @g_lib_scanner_config : LibGLib::ScannerConfig*?
+    def initialize(@g_lib_scanner_config : LibGLib::ScannerConfig*)
     end
 
     def to_unsafe

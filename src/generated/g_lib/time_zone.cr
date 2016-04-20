@@ -2,7 +2,8 @@ module GLib
   class TimeZone
     include GObject::WrappedType
 
-    def initialize(@g_lib_time_zone)
+    @g_lib_time_zone : LibGLib::TimeZone*?
+    def initialize(@g_lib_time_zone : LibGLib::TimeZone*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module GLib
   class ByteArray
     include GObject::WrappedType
 
-    def initialize(@g_lib_byte_array)
+    @g_lib_byte_array : LibGLib::ByteArray*?
+    def initialize(@g_lib_byte_array : LibGLib::ByteArray*)
     end
 
     def to_unsafe

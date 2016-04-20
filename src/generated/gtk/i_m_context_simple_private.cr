@@ -2,7 +2,8 @@ module Gtk
   class IMContextSimplePrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_i_m_context_simple_private)
+    @gtk_i_m_context_simple_private : LibGtk::IMContextSimplePrivate*?
+    def initialize(@gtk_i_m_context_simple_private : LibGtk::IMContextSimplePrivate*)
     end
 
     def to_unsafe

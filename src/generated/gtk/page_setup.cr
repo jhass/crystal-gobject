@@ -1,6 +1,7 @@
 module Gtk
   class PageSetup < GObject::Object
-    def initialize(@gtk_page_setup)
+    @gtk_page_setup : LibGtk::PageSetup*?
+    def initialize(@gtk_page_setup : LibGtk::PageSetup*)
     end
 
     def to_unsafe

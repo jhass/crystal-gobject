@@ -2,7 +2,8 @@ module Gtk
   class AspectFramePrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_aspect_frame_private)
+    @gtk_aspect_frame_private : LibGtk::AspectFramePrivate*?
+    def initialize(@gtk_aspect_frame_private : LibGtk::AspectFramePrivate*)
     end
 
     def to_unsafe

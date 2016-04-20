@@ -2,7 +2,8 @@ module Gtk
   class ColorButtonPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_color_button_private)
+    @gtk_color_button_private : LibGtk::ColorButtonPrivate*?
+    def initialize(@gtk_color_button_private : LibGtk::ColorButtonPrivate*)
     end
 
     def to_unsafe

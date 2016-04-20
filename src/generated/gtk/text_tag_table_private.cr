@@ -2,7 +2,8 @@ module Gtk
   class TextTagTablePrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_text_tag_table_private)
+    @gtk_text_tag_table_private : LibGtk::TextTagTablePrivate*?
+    def initialize(@gtk_text_tag_table_private : LibGtk::TextTagTablePrivate*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Gdk
   class EventConfigure
     include GObject::WrappedType
 
-    def initialize(@gdk_event_configure)
+    @gdk_event_configure : LibGdk::EventConfigure*?
+    def initialize(@gdk_event_configure : LibGdk::EventConfigure*)
     end
 
     def to_unsafe

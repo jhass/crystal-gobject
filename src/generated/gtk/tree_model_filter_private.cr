@@ -2,7 +2,8 @@ module Gtk
   class TreeModelFilterPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_tree_model_filter_private)
+    @gtk_tree_model_filter_private : LibGtk::TreeModelFilterPrivate*?
+    def initialize(@gtk_tree_model_filter_private : LibGtk::TreeModelFilterPrivate*)
     end
 
     def to_unsafe

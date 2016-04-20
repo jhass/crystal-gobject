@@ -2,7 +2,8 @@ module Pango
   class FontDescription
     include GObject::WrappedType
 
-    def initialize(@pango_font_description)
+    @pango_font_description : LibPango::FontDescription*?
+    def initialize(@pango_font_description : LibPango::FontDescription*)
     end
 
     def to_unsafe

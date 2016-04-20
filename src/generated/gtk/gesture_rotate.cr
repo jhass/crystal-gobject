@@ -2,7 +2,8 @@ require "./gesture"
 
 module Gtk
   class GestureRotate < Gesture
-    def initialize(@gtk_gesture_rotate)
+    @gtk_gesture_rotate : LibGtk::GestureRotate*?
+    def initialize(@gtk_gesture_rotate : LibGtk::GestureRotate*)
     end
 
     def to_unsafe

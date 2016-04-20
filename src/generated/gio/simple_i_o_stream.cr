@@ -2,7 +2,8 @@ require "./i_o_stream"
 
 module Gio
   class SimpleIOStream < IOStream
-    def initialize(@gio_simple_i_o_stream)
+    @gio_simple_i_o_stream : LibGio::SimpleIOStream*?
+    def initialize(@gio_simple_i_o_stream : LibGio::SimpleIOStream*)
     end
 
     def to_unsafe

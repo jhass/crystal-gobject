@@ -2,7 +2,8 @@ require "./bin"
 
 module Gtk
   class MenuItem < Bin
-    def initialize(@gtk_menu_item)
+    @gtk_menu_item : LibGtk::MenuItem*?
+    def initialize(@gtk_menu_item : LibGtk::MenuItem*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ require "./check_button"
 
 module Gtk
   class RadioButton < CheckButton
-    def initialize(@gtk_radio_button)
+    @gtk_radio_button : LibGtk::RadioButton*?
+    def initialize(@gtk_radio_button : LibGtk::RadioButton*)
     end
 
     def to_unsafe

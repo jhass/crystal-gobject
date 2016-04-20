@@ -2,7 +2,8 @@ require "./i_o_stream"
 
 module Gio
   class TlsConnection < IOStream
-    def initialize(@gio_tls_connection)
+    @gio_tls_connection : LibGio::TlsConnection*?
+    def initialize(@gio_tls_connection : LibGio::TlsConnection*)
     end
 
     def to_unsafe

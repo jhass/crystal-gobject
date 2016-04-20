@@ -2,7 +2,8 @@ module GObject
   class TypeInterface
     include GObject::WrappedType
 
-    def initialize(@g_object_type_interface)
+    @g_object_type_interface : LibGObject::TypeInterface*?
+    def initialize(@g_object_type_interface : LibGObject::TypeInterface*)
     end
 
     def to_unsafe

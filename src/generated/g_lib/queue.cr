@@ -2,7 +2,8 @@ module GLib
   class Queue
     include GObject::WrappedType
 
-    def initialize(@g_lib_queue)
+    @g_lib_queue : LibGLib::Queue*?
+    def initialize(@g_lib_queue : LibGLib::Queue*)
     end
 
     def to_unsafe

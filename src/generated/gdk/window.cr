@@ -1,6 +1,7 @@
 module Gdk
   class Window < GObject::Object
-    def initialize(@gdk_window)
+    @gdk_window : LibGdk::Window*?
+    def initialize(@gdk_window : LibGdk::Window*)
     end
 
     def to_unsafe

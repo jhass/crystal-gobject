@@ -2,7 +2,8 @@ require "./widget"
 
 module Gtk
   class ProgressBar < Widget
-    def initialize(@gtk_progress_bar)
+    @gtk_progress_bar : LibGtk::ProgressBar*?
+    def initialize(@gtk_progress_bar : LibGtk::ProgressBar*)
     end
 
     def to_unsafe

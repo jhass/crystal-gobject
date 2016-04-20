@@ -1,6 +1,7 @@
 module Gio
   class ApplicationCommandLine < GObject::Object
-    def initialize(@gio_application_command_line)
+    @gio_application_command_line : LibGio::ApplicationCommandLine*?
+    def initialize(@gio_application_command_line : LibGio::ApplicationCommandLine*)
     end
 
     def to_unsafe

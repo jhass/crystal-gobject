@@ -2,7 +2,8 @@ require "./cell_area"
 
 module Gtk
   class CellAreaBox < CellArea
-    def initialize(@gtk_cell_area_box)
+    @gtk_cell_area_box : LibGtk::CellAreaBox*?
+    def initialize(@gtk_cell_area_box : LibGtk::CellAreaBox*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Atk
   class Rectangle
     include GObject::WrappedType
 
-    def initialize(@atk_rectangle)
+    @atk_rectangle : LibAtk::Rectangle*?
+    def initialize(@atk_rectangle : LibAtk::Rectangle*)
     end
 
     def to_unsafe

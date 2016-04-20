@@ -2,7 +2,8 @@ module Gtk
   class MiscPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_misc_private)
+    @gtk_misc_private : LibGtk::MiscPrivate*?
+    def initialize(@gtk_misc_private : LibGtk::MiscPrivate*)
     end
 
     def to_unsafe

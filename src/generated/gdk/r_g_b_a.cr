@@ -2,7 +2,8 @@ module Gdk
   class RGBA
     include GObject::WrappedType
 
-    def initialize(@gdk_r_g_b_a)
+    @gdk_r_g_b_a : LibGdk::RGBA*?
+    def initialize(@gdk_r_g_b_a : LibGdk::RGBA*)
     end
 
     def to_unsafe

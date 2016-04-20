@@ -1,6 +1,7 @@
 module Gtk
   class AccelGroup < GObject::Object
-    def initialize(@gtk_accel_group)
+    @gtk_accel_group : LibGtk::AccelGroup*?
+    def initialize(@gtk_accel_group : LibGtk::AccelGroup*)
     end
 
     def to_unsafe

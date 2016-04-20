@@ -2,7 +2,8 @@ require "./window"
 
 module Gtk
   class Assistant < Window
-    def initialize(@gtk_assistant)
+    @gtk_assistant : LibGtk::Assistant*?
+    def initialize(@gtk_assistant : LibGtk::Assistant*)
     end
 
     def to_unsafe

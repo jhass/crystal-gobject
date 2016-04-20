@@ -1,6 +1,7 @@
 module Gtk
   class CellAreaContext < GObject::Object
-    def initialize(@gtk_cell_area_context)
+    @gtk_cell_area_context : LibGtk::CellAreaContext*?
+    def initialize(@gtk_cell_area_context : LibGtk::CellAreaContext*)
     end
 
     def to_unsafe

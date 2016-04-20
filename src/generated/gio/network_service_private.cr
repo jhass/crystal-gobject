@@ -2,7 +2,8 @@ module Gio
   class NetworkServicePrivate
     include GObject::WrappedType
 
-    def initialize(@gio_network_service_private)
+    @gio_network_service_private : LibGio::NetworkServicePrivate*?
+    def initialize(@gio_network_service_private : LibGio::NetworkServicePrivate*)
     end
 
     def to_unsafe

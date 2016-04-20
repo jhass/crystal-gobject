@@ -2,7 +2,8 @@ module Gtk
   class ExpanderPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_expander_private)
+    @gtk_expander_private : LibGtk::ExpanderPrivate*?
+    def initialize(@gtk_expander_private : LibGtk::ExpanderPrivate*)
     end
 
     def to_unsafe

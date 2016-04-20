@@ -2,7 +2,8 @@ require "./container"
 
 module Gtk
   class ToolPalette < Container
-    def initialize(@gtk_tool_palette)
+    @gtk_tool_palette : LibGtk::ToolPalette*?
+    def initialize(@gtk_tool_palette : LibGtk::ToolPalette*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ require "./object"
 
 module Gst
   class Element < Object
-    def initialize(@gst_element)
+    @gst_element : LibGst::Element*?
+    def initialize(@gst_element : LibGst::Element*)
     end
 
     def to_unsafe

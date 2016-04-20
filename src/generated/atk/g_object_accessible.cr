@@ -2,7 +2,8 @@ require "./object"
 
 module Atk
   class GObjectAccessible < Object
-    def initialize(@atk_g_object_accessible)
+    @atk_g_object_accessible : LibAtk::GObjectAccessible*?
+    def initialize(@atk_g_object_accessible : LibAtk::GObjectAccessible*)
     end
 
     def to_unsafe

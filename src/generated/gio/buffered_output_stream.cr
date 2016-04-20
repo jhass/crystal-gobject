@@ -2,7 +2,8 @@ require "./filter_output_stream"
 
 module Gio
   class BufferedOutputStream < FilterOutputStream
-    def initialize(@gio_buffered_output_stream)
+    @gio_buffered_output_stream : LibGio::BufferedOutputStream*?
+    def initialize(@gio_buffered_output_stream : LibGio::BufferedOutputStream*)
     end
 
     def to_unsafe

@@ -1,6 +1,7 @@
 module Gtk
   class StyleContext < GObject::Object
-    def initialize(@gtk_style_context)
+    @gtk_style_context : LibGtk::StyleContext*?
+    def initialize(@gtk_style_context : LibGtk::StyleContext*)
     end
 
     def to_unsafe

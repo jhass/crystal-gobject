@@ -2,7 +2,8 @@ module Gio
   class SimpleProxyResolverPrivate
     include GObject::WrappedType
 
-    def initialize(@gio_simple_proxy_resolver_private)
+    @gio_simple_proxy_resolver_private : LibGio::SimpleProxyResolverPrivate*?
+    def initialize(@gio_simple_proxy_resolver_private : LibGio::SimpleProxyResolverPrivate*)
     end
 
     def to_unsafe

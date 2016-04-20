@@ -1,6 +1,7 @@
 module Gtk
   class Adjustment < GObject::InitiallyUnowned
-    def initialize(@gtk_adjustment)
+    @gtk_adjustment : LibGtk::Adjustment*?
+    def initialize(@gtk_adjustment : LibGtk::Adjustment*)
     end
 
     def to_unsafe

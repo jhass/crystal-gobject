@@ -2,7 +2,8 @@ require "./socket_connection"
 
 module Gio
   class TcpConnection < SocketConnection
-    def initialize(@gio_tcp_connection)
+    @gio_tcp_connection : LibGio::TcpConnection*?
+    def initialize(@gio_tcp_connection : LibGio::TcpConnection*)
     end
 
     def to_unsafe

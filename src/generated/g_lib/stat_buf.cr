@@ -2,7 +2,8 @@ module GLib
   class StatBuf
     include GObject::WrappedType
 
-    def initialize(@g_lib_stat_buf)
+    @g_lib_stat_buf : LibGLib::StatBuf*?
+    def initialize(@g_lib_stat_buf : LibGLib::StatBuf*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ require "./plugin_feature"
 
 module Gst
   class TracerFactory < PluginFeature
-    def initialize(@gst_tracer_factory)
+    @gst_tracer_factory : LibGst::TracerFactory*?
+    def initialize(@gst_tracer_factory : LibGst::TracerFactory*)
     end
 
     def to_unsafe

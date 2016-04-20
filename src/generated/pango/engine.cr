@@ -1,6 +1,7 @@
 module Pango
   class Engine < GObject::Object
-    def initialize(@pango_engine)
+    @pango_engine : LibPango::Engine*?
+    def initialize(@pango_engine : LibPango::Engine*)
     end
 
     def to_unsafe

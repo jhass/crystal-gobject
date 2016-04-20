@@ -2,7 +2,8 @@ module Gtk
   class SettingsValue
     include GObject::WrappedType
 
-    def initialize(@gtk_settings_value)
+    @gtk_settings_value : LibGtk::SettingsValue*?
+    def initialize(@gtk_settings_value : LibGtk::SettingsValue*)
     end
 
     def to_unsafe

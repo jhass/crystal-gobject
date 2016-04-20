@@ -2,7 +2,8 @@ module Gtk
   class TextAttributes
     include GObject::WrappedType
 
-    def initialize(@gtk_text_attributes)
+    @gtk_text_attributes : LibGtk::TextAttributes*?
+    def initialize(@gtk_text_attributes : LibGtk::TextAttributes*)
     end
 
     def to_unsafe

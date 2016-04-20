@@ -2,7 +2,8 @@ module Gtk
   class ThemingEnginePrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_theming_engine_private)
+    @gtk_theming_engine_private : LibGtk::ThemingEnginePrivate*?
+    def initialize(@gtk_theming_engine_private : LibGtk::ThemingEnginePrivate*)
     end
 
     def to_unsafe

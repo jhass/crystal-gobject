@@ -2,7 +2,8 @@ module Gst
   class DebugMessage
     include GObject::WrappedType
 
-    def initialize(@gst_debug_message)
+    @gst_debug_message : LibGst::DebugMessage*?
+    def initialize(@gst_debug_message : LibGst::DebugMessage*)
     end
 
     def to_unsafe

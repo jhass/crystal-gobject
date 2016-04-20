@@ -2,7 +2,8 @@ module GLib
   class MarkupParser
     include GObject::WrappedType
 
-    def initialize(@g_lib_markup_parser)
+    @g_lib_markup_parser : LibGLib::MarkupParser*?
+    def initialize(@g_lib_markup_parser : LibGLib::MarkupParser*)
     end
 
     def to_unsafe

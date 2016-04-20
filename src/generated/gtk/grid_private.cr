@@ -2,7 +2,8 @@ module Gtk
   class GridPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_grid_private)
+    @gtk_grid_private : LibGtk::GridPrivate*?
+    def initialize(@gtk_grid_private : LibGtk::GridPrivate*)
     end
 
     def to_unsafe

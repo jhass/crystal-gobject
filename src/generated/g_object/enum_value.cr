@@ -2,7 +2,8 @@ module GObject
   class EnumValue
     include GObject::WrappedType
 
-    def initialize(@g_object_enum_value)
+    @g_object_enum_value : LibGObject::EnumValue*?
+    def initialize(@g_object_enum_value : LibGObject::EnumValue*)
     end
 
     def to_unsafe

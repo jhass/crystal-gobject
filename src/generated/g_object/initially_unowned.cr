@@ -2,7 +2,8 @@ require "./object"
 
 module GObject
   class InitiallyUnowned < Object
-    def initialize(@g_object_initially_unowned)
+    @g_object_initially_unowned : LibGObject::InitiallyUnowned*?
+    def initialize(@g_object_initially_unowned : LibGObject::InitiallyUnowned*)
     end
 
     def to_unsafe

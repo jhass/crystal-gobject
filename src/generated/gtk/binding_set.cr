@@ -2,7 +2,8 @@ module Gtk
   class BindingSet
     include GObject::WrappedType
 
-    def initialize(@gtk_binding_set)
+    @gtk_binding_set : LibGtk::BindingSet*?
+    def initialize(@gtk_binding_set : LibGtk::BindingSet*)
     end
 
     def to_unsafe

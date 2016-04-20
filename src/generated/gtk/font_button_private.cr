@@ -2,7 +2,8 @@ module Gtk
   class FontButtonPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_font_button_private)
+    @gtk_font_button_private : LibGtk::FontButtonPrivate*?
+    def initialize(@gtk_font_button_private : LibGtk::FontButtonPrivate*)
     end
 
     def to_unsafe

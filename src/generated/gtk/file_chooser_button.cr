@@ -2,7 +2,8 @@ require "./box"
 
 module Gtk
   class FileChooserButton < Box
-    def initialize(@gtk_file_chooser_button)
+    @gtk_file_chooser_button : LibGtk::FileChooserButton*?
+    def initialize(@gtk_file_chooser_button : LibGtk::FileChooserButton*)
     end
 
     def to_unsafe

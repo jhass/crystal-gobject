@@ -2,7 +2,8 @@ module Gtk
   class IconFactoryPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_icon_factory_private)
+    @gtk_icon_factory_private : LibGtk::IconFactoryPrivate*?
+    def initialize(@gtk_icon_factory_private : LibGtk::IconFactoryPrivate*)
     end
 
     def to_unsafe

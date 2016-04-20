@@ -2,7 +2,8 @@ module Gio
   class BufferedInputStreamPrivate
     include GObject::WrappedType
 
-    def initialize(@gio_buffered_input_stream_private)
+    @gio_buffered_input_stream_private : LibGio::BufferedInputStreamPrivate*?
+    def initialize(@gio_buffered_input_stream_private : LibGio::BufferedInputStreamPrivate*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Gio
   class UnixCredentialsMessagePrivate
     include GObject::WrappedType
 
-    def initialize(@gio_unix_credentials_message_private)
+    @gio_unix_credentials_message_private : LibGio::UnixCredentialsMessagePrivate*?
+    def initialize(@gio_unix_credentials_message_private : LibGio::UnixCredentialsMessagePrivate*)
     end
 
     def to_unsafe

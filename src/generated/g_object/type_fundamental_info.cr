@@ -2,7 +2,8 @@ module GObject
   class TypeFundamentalInfo
     include GObject::WrappedType
 
-    def initialize(@g_object_type_fundamental_info)
+    @g_object_type_fundamental_info : LibGObject::TypeFundamentalInfo*?
+    def initialize(@g_object_type_fundamental_info : LibGObject::TypeFundamentalInfo*)
     end
 
     def to_unsafe

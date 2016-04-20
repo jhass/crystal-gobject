@@ -1,6 +1,7 @@
 module Gtk
   class MountOperation < Gio::MountOperation
-    def initialize(@gtk_mount_operation)
+    @gtk_mount_operation : LibGtk::MountOperation*?
+    def initialize(@gtk_mount_operation : LibGtk::MountOperation*)
     end
 
     def to_unsafe

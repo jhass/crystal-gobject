@@ -2,7 +2,8 @@ module Gtk
   class TreeModelSortPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_tree_model_sort_private)
+    @gtk_tree_model_sort_private : LibGtk::TreeModelSortPrivate*?
+    def initialize(@gtk_tree_model_sort_private : LibGtk::TreeModelSortPrivate*)
     end
 
     def to_unsafe

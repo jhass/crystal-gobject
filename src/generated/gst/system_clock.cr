@@ -2,7 +2,8 @@ require "./clock"
 
 module Gst
   class SystemClock < Clock
-    def initialize(@gst_system_clock)
+    @gst_system_clock : LibGst::SystemClock*?
+    def initialize(@gst_system_clock : LibGst::SystemClock*)
     end
 
     def to_unsafe

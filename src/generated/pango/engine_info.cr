@@ -2,7 +2,8 @@ module Pango
   class EngineInfo
     include GObject::WrappedType
 
-    def initialize(@pango_engine_info)
+    @pango_engine_info : LibPango::EngineInfo*?
+    def initialize(@pango_engine_info : LibPango::EngineInfo*)
     end
 
     def to_unsafe

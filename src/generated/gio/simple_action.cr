@@ -1,6 +1,7 @@
 module Gio
   class SimpleAction < GObject::Object
-    def initialize(@gio_simple_action)
+    @gio_simple_action : LibGio::SimpleAction*?
+    def initialize(@gio_simple_action : LibGio::SimpleAction*)
     end
 
     def to_unsafe

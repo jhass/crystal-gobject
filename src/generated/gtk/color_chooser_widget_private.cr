@@ -2,7 +2,8 @@ module Gtk
   class ColorChooserWidgetPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_color_chooser_widget_private)
+    @gtk_color_chooser_widget_private : LibGtk::ColorChooserWidgetPrivate*?
+    def initialize(@gtk_color_chooser_widget_private : LibGtk::ColorChooserWidgetPrivate*)
     end
 
     def to_unsafe

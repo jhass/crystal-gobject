@@ -2,7 +2,8 @@ module Gtk
   class MountOperationPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_mount_operation_private)
+    @gtk_mount_operation_private : LibGtk::MountOperationPrivate*?
+    def initialize(@gtk_mount_operation_private : LibGtk::MountOperationPrivate*)
     end
 
     def to_unsafe

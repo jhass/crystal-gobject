@@ -2,7 +2,8 @@ module GLib
   class SList
     include GObject::WrappedType
 
-    def initialize(@g_lib_s_list)
+    @g_lib_s_list : LibGLib::SList*?
+    def initialize(@g_lib_s_list : LibGLib::SList*)
     end
 
     def to_unsafe

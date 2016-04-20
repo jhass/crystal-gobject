@@ -1,6 +1,7 @@
 module Gio
   class ZlibDecompressor < GObject::Object
-    def initialize(@gio_zlib_decompressor)
+    @gio_zlib_decompressor : LibGio::ZlibDecompressor*?
+    def initialize(@gio_zlib_decompressor : LibGio::ZlibDecompressor*)
     end
 
     def to_unsafe

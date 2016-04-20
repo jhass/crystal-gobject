@@ -2,7 +2,8 @@ require "./box"
 
 module Gtk
   class FileChooserWidget < Box
-    def initialize(@gtk_file_chooser_widget)
+    @gtk_file_chooser_widget : LibGtk::FileChooserWidget*?
+    def initialize(@gtk_file_chooser_widget : LibGtk::FileChooserWidget*)
     end
 
     def to_unsafe

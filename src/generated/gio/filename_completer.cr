@@ -1,6 +1,7 @@
 module Gio
   class FilenameCompleter < GObject::Object
-    def initialize(@gio_filename_completer)
+    @gio_filename_completer : LibGio::FilenameCompleter*?
+    def initialize(@gio_filename_completer : LibGio::FilenameCompleter*)
     end
 
     def to_unsafe

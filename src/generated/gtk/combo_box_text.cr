@@ -2,7 +2,8 @@ require "./combo_box"
 
 module Gtk
   class ComboBoxText < ComboBox
-    def initialize(@gtk_combo_box_text)
+    @gtk_combo_box_text : LibGtk::ComboBoxText*?
+    def initialize(@gtk_combo_box_text : LibGtk::ComboBoxText*)
     end
 
     def to_unsafe

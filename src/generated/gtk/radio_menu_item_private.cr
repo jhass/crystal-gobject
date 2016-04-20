@@ -2,7 +2,8 @@ module Gtk
   class RadioMenuItemPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_radio_menu_item_private)
+    @gtk_radio_menu_item_private : LibGtk::RadioMenuItemPrivate*?
+    def initialize(@gtk_radio_menu_item_private : LibGtk::RadioMenuItemPrivate*)
     end
 
     def to_unsafe

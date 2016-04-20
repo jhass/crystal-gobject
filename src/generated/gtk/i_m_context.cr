@@ -1,6 +1,7 @@
 module Gtk
   class IMContext < GObject::Object
-    def initialize(@gtk_i_m_context)
+    @gtk_i_m_context : LibGtk::IMContext*?
+    def initialize(@gtk_i_m_context : LibGtk::IMContext*)
     end
 
     def to_unsafe

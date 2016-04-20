@@ -2,7 +2,8 @@ module Gst
   class ParentBufferMeta
     include GObject::WrappedType
 
-    def initialize(@gst_parent_buffer_meta)
+    @gst_parent_buffer_meta : LibGst::ParentBufferMeta*?
+    def initialize(@gst_parent_buffer_meta : LibGst::ParentBufferMeta*)
     end
 
     def to_unsafe

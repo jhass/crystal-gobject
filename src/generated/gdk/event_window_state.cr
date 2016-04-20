@@ -2,7 +2,8 @@ module Gdk
   class EventWindowState
     include GObject::WrappedType
 
-    def initialize(@gdk_event_window_state)
+    @gdk_event_window_state : LibGdk::EventWindowState*?
+    def initialize(@gdk_event_window_state : LibGdk::EventWindowState*)
     end
 
     def to_unsafe

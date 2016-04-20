@@ -2,7 +2,8 @@ module Gio
   class SettingsBackend
     include GObject::WrappedType
 
-    def initialize(@gio_settings_backend)
+    @gio_settings_backend : LibGio::SettingsBackend*?
+    def initialize(@gio_settings_backend : LibGio::SettingsBackend*)
     end
 
     def to_unsafe

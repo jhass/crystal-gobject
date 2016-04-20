@@ -2,7 +2,8 @@ module Pango
   class GlyphGeometry
     include GObject::WrappedType
 
-    def initialize(@pango_glyph_geometry)
+    @pango_glyph_geometry : LibPango::GlyphGeometry*?
+    def initialize(@pango_glyph_geometry : LibPango::GlyphGeometry*)
     end
 
     def to_unsafe

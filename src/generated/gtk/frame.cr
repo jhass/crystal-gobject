@@ -2,7 +2,8 @@ require "./bin"
 
 module Gtk
   class Frame < Bin
-    def initialize(@gtk_frame)
+    @gtk_frame : LibGtk::Frame*?
+    def initialize(@gtk_frame : LibGtk::Frame*)
     end
 
     def to_unsafe

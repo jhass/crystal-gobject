@@ -1,6 +1,7 @@
 module Pango
   class Layout < GObject::Object
-    def initialize(@pango_layout)
+    @pango_layout : LibPango::Layout*?
+    def initialize(@pango_layout : LibPango::Layout*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Gtk
   class MenuAccessiblePrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_menu_accessible_private)
+    @gtk_menu_accessible_private : LibGtk::MenuAccessiblePrivate*?
+    def initialize(@gtk_menu_accessible_private : LibGtk::MenuAccessiblePrivate*)
     end
 
     def to_unsafe

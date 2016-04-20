@@ -2,7 +2,8 @@ module GLib
   class Array
     include GObject::WrappedType
 
-    def initialize(@g_lib_array)
+    @g_lib_array : LibGLib::Array*?
+    def initialize(@g_lib_array : LibGLib::Array*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ require "./output_stream"
 
 module Gio
   class MemoryOutputStream < OutputStream
-    def initialize(@gio_memory_output_stream)
+    @gio_memory_output_stream : LibGio::MemoryOutputStream*?
+    def initialize(@gio_memory_output_stream : LibGio::MemoryOutputStream*)
     end
 
     def to_unsafe

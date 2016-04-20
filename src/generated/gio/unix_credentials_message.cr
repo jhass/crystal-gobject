@@ -2,7 +2,8 @@ require "./socket_control_message"
 
 module Gio
   class UnixCredentialsMessage < SocketControlMessage
-    def initialize(@gio_unix_credentials_message)
+    @gio_unix_credentials_message : LibGio::UnixCredentialsMessage*?
+    def initialize(@gio_unix_credentials_message : LibGio::UnixCredentialsMessage*)
     end
 
     def to_unsafe

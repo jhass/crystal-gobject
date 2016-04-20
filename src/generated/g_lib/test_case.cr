@@ -2,7 +2,8 @@ module GLib
   class TestCase
     include GObject::WrappedType
 
-    def initialize(@g_lib_test_case)
+    @g_lib_test_case : LibGLib::TestCase*?
+    def initialize(@g_lib_test_case : LibGLib::TestCase*)
     end
 
     def to_unsafe

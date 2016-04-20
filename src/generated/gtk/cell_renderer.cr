@@ -1,6 +1,7 @@
 module Gtk
   class CellRenderer < GObject::InitiallyUnowned
-    def initialize(@gtk_cell_renderer)
+    @gtk_cell_renderer : LibGtk::CellRenderer*?
+    def initialize(@gtk_cell_renderer : LibGtk::CellRenderer*)
     end
 
     def to_unsafe

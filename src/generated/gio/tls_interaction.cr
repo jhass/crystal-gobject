@@ -1,6 +1,7 @@
 module Gio
   class TlsInteraction < GObject::Object
-    def initialize(@gio_tls_interaction)
+    @gio_tls_interaction : LibGio::TlsInteraction*?
+    def initialize(@gio_tls_interaction : LibGio::TlsInteraction*)
     end
 
     def to_unsafe

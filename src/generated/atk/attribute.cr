@@ -2,7 +2,8 @@ module Atk
   class Attribute
     include GObject::WrappedType
 
-    def initialize(@atk_attribute)
+    @atk_attribute : LibAtk::Attribute*?
+    def initialize(@atk_attribute : LibAtk::Attribute*)
     end
 
     def to_unsafe

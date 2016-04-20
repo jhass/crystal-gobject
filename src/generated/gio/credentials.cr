@@ -1,6 +1,7 @@
 module Gio
   class Credentials < GObject::Object
-    def initialize(@gio_credentials)
+    @gio_credentials : LibGio::Credentials*?
+    def initialize(@gio_credentials : LibGio::Credentials*)
     end
 
     def to_unsafe

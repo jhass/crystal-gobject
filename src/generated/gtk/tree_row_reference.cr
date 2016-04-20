@@ -2,7 +2,8 @@ module Gtk
   class TreeRowReference
     include GObject::WrappedType
 
-    def initialize(@gtk_tree_row_reference)
+    @gtk_tree_row_reference : LibGtk::TreeRowReference*?
+    def initialize(@gtk_tree_row_reference : LibGtk::TreeRowReference*)
     end
 
     def to_unsafe

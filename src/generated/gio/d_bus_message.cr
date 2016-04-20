@@ -1,6 +1,7 @@
 module Gio
   class DBusMessage < GObject::Object
-    def initialize(@gio_d_bus_message)
+    @gio_d_bus_message : LibGio::DBusMessage*?
+    def initialize(@gio_d_bus_message : LibGio::DBusMessage*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ require "./container_accessible"
 
 module Gtk
   class ListBoxRowAccessible < ContainerAccessible
-    def initialize(@gtk_list_box_row_accessible)
+    @gtk_list_box_row_accessible : LibGtk::ListBoxRowAccessible*?
+    def initialize(@gtk_list_box_row_accessible : LibGtk::ListBoxRowAccessible*)
     end
 
     def to_unsafe

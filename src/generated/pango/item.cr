@@ -2,7 +2,8 @@ module Pango
   class Item
     include GObject::WrappedType
 
-    def initialize(@pango_item)
+    @pango_item : LibPango::Item*?
+    def initialize(@pango_item : LibPango::Item*)
     end
 
     def to_unsafe

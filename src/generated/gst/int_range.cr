@@ -2,7 +2,8 @@ module Gst
   class IntRange
     include GObject::WrappedType
 
-    def initialize(@gst_int_range)
+    @gst_int_range : LibGst::IntRange*?
+    def initialize(@gst_int_range : LibGst::IntRange*)
     end
 
     def to_unsafe

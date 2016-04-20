@@ -2,7 +2,8 @@ require "./widget_accessible"
 
 module Gtk
   class LabelAccessible < WidgetAccessible
-    def initialize(@gtk_label_accessible)
+    @gtk_label_accessible : LibGtk::LabelAccessible*?
+    def initialize(@gtk_label_accessible : LibGtk::LabelAccessible*)
     end
 
     def to_unsafe

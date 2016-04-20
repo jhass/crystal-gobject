@@ -2,7 +2,8 @@ require "./container_accessible"
 
 module Gtk
   class PopoverAccessible < ContainerAccessible
-    def initialize(@gtk_popover_accessible)
+    @gtk_popover_accessible : LibGtk::PopoverAccessible*?
+    def initialize(@gtk_popover_accessible : LibGtk::PopoverAccessible*)
     end
 
     def to_unsafe

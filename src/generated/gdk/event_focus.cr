@@ -2,7 +2,8 @@ module Gdk
   class EventFocus
     include GObject::WrappedType
 
-    def initialize(@gdk_event_focus)
+    @gdk_event_focus : LibGdk::EventFocus*?
+    def initialize(@gdk_event_focus : LibGdk::EventFocus*)
     end
 
     def to_unsafe

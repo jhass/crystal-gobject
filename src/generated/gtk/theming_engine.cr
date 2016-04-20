@@ -1,6 +1,7 @@
 module Gtk
   class ThemingEngine < GObject::Object
-    def initialize(@gtk_theming_engine)
+    @gtk_theming_engine : LibGtk::ThemingEngine*?
+    def initialize(@gtk_theming_engine : LibGtk::ThemingEngine*)
     end
 
     def to_unsafe

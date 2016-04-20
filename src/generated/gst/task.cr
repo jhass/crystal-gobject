@@ -2,7 +2,8 @@ require "./object"
 
 module Gst
   class Task < Object
-    def initialize(@gst_task)
+    @gst_task : LibGst::Task*?
+    def initialize(@gst_task : LibGst::Task*)
     end
 
     def to_unsafe

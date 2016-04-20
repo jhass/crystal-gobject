@@ -2,7 +2,8 @@ module Gio
   class DBusAnnotationInfo
     include GObject::WrappedType
 
-    def initialize(@gio_d_bus_annotation_info)
+    @gio_d_bus_annotation_info : LibGio::DBusAnnotationInfo*?
+    def initialize(@gio_d_bus_annotation_info : LibGio::DBusAnnotationInfo*)
     end
 
     def to_unsafe

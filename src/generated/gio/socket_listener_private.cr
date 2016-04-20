@@ -2,7 +2,8 @@ module Gio
   class SocketListenerPrivate
     include GObject::WrappedType
 
-    def initialize(@gio_socket_listener_private)
+    @gio_socket_listener_private : LibGio::SocketListenerPrivate*?
+    def initialize(@gio_socket_listener_private : LibGio::SocketListenerPrivate*)
     end
 
     def to_unsafe

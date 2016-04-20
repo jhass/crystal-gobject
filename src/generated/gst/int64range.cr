@@ -2,7 +2,8 @@ module Gst
   class Int64Range
     include GObject::WrappedType
 
-    def initialize(@gst_int64range)
+    @gst_int64range : LibGst::Int64Range*?
+    def initialize(@gst_int64range : LibGst::Int64Range*)
     end
 
     def to_unsafe

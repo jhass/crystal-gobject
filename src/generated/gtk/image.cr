@@ -2,7 +2,8 @@ require "./misc"
 
 module Gtk
   class Image < Misc
-    def initialize(@gtk_image)
+    @gtk_image : LibGtk::Image*?
+    def initialize(@gtk_image : LibGtk::Image*)
     end
 
     def to_unsafe

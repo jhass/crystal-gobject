@@ -2,7 +2,8 @@ require "./widget"
 
 module Gtk
   class CellView < Widget
-    def initialize(@gtk_cell_view)
+    @gtk_cell_view : LibGtk::CellView*?
+    def initialize(@gtk_cell_view : LibGtk::CellView*)
     end
 
     def to_unsafe

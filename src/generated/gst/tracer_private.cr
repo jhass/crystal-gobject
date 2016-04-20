@@ -2,7 +2,8 @@ module Gst
   class TracerPrivate
     include GObject::WrappedType
 
-    def initialize(@gst_tracer_private)
+    @gst_tracer_private : LibGst::TracerPrivate*?
+    def initialize(@gst_tracer_private : LibGst::TracerPrivate*)
     end
 
     def to_unsafe

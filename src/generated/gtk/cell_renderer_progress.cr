@@ -2,7 +2,8 @@ require "./cell_renderer"
 
 module Gtk
   class CellRendererProgress < CellRenderer
-    def initialize(@gtk_cell_renderer_progress)
+    @gtk_cell_renderer_progress : LibGtk::CellRendererProgress*?
+    def initialize(@gtk_cell_renderer_progress : LibGtk::CellRendererProgress*)
     end
 
     def to_unsafe

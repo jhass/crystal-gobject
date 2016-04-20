@@ -2,7 +2,8 @@ require "./widget_accessible"
 
 module Gtk
   class ImageAccessible < WidgetAccessible
-    def initialize(@gtk_image_accessible)
+    @gtk_image_accessible : LibGtk::ImageAccessible*?
+    def initialize(@gtk_image_accessible : LibGtk::ImageAccessible*)
     end
 
     def to_unsafe

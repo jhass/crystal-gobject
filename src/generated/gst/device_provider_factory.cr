@@ -2,7 +2,8 @@ require "./plugin_feature"
 
 module Gst
   class DeviceProviderFactory < PluginFeature
-    def initialize(@gst_device_provider_factory)
+    @gst_device_provider_factory : LibGst::DeviceProviderFactory*?
+    def initialize(@gst_device_provider_factory : LibGst::DeviceProviderFactory*)
     end
 
     def to_unsafe

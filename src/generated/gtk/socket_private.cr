@@ -2,7 +2,8 @@ module Gtk
   class SocketPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_socket_private)
+    @gtk_socket_private : LibGtk::SocketPrivate*?
+    def initialize(@gtk_socket_private : LibGtk::SocketPrivate*)
     end
 
     def to_unsafe

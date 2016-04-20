@@ -1,6 +1,7 @@
 module Atk
   class Misc < GObject::Object
-    def initialize(@atk_misc)
+    @atk_misc : LibAtk::Misc*?
+    def initialize(@atk_misc : LibAtk::Misc*)
     end
 
     def to_unsafe

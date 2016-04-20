@@ -2,7 +2,8 @@ module Gst
   class Fraction
     include GObject::WrappedType
 
-    def initialize(@gst_fraction)
+    @gst_fraction : LibGst::Fraction*?
+    def initialize(@gst_fraction : LibGst::Fraction*)
     end
 
     def to_unsafe

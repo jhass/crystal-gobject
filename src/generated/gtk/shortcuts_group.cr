@@ -2,7 +2,8 @@ require "./box"
 
 module Gtk
   class ShortcutsGroup < Box
-    def initialize(@gtk_shortcuts_group)
+    @gtk_shortcuts_group : LibGtk::ShortcutsGroup*?
+    def initialize(@gtk_shortcuts_group : LibGtk::ShortcutsGroup*)
     end
 
     def to_unsafe

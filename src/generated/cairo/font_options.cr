@@ -2,7 +2,8 @@ module Cairo
   class FontOptions
     include GObject::WrappedType
 
-    def initialize(@cairo_font_options)
+    @cairo_font_options : Libcairo::FontOptions*?
+    def initialize(@cairo_font_options : Libcairo::FontOptions*)
     end
 
     def to_unsafe

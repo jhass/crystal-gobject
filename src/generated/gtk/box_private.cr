@@ -2,7 +2,8 @@ module Gtk
   class BoxPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_box_private)
+    @gtk_box_private : LibGtk::BoxPrivate*?
+    def initialize(@gtk_box_private : LibGtk::BoxPrivate*)
     end
 
     def to_unsafe

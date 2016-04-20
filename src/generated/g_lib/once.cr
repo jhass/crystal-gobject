@@ -2,7 +2,8 @@ module GLib
   class Once
     include GObject::WrappedType
 
-    def initialize(@g_lib_once)
+    @g_lib_once : LibGLib::Once*?
+    def initialize(@g_lib_once : LibGLib::Once*)
     end
 
     def to_unsafe

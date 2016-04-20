@@ -2,7 +2,8 @@ require "./socket_address"
 
 module Gio
   class UnixSocketAddress < SocketAddress
-    def initialize(@gio_unix_socket_address)
+    @gio_unix_socket_address : LibGio::UnixSocketAddress*?
+    def initialize(@gio_unix_socket_address : LibGio::UnixSocketAddress*)
     end
 
     def to_unsafe

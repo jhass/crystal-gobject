@@ -2,7 +2,8 @@ require "./object"
 
 module Gst
   class DeviceMonitor < Object
-    def initialize(@gst_device_monitor)
+    @gst_device_monitor : LibGst::DeviceMonitor*?
+    def initialize(@gst_device_monitor : LibGst::DeviceMonitor*)
     end
 
     def to_unsafe

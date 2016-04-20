@@ -1,6 +1,7 @@
 module Gio
   class Settings < GObject::Object
-    def initialize(@gio_settings)
+    @gio_settings : LibGio::Settings*?
+    def initialize(@gio_settings : LibGio::Settings*)
     end
 
     def to_unsafe

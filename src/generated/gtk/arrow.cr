@@ -2,7 +2,8 @@ require "./misc"
 
 module Gtk
   class Arrow < Misc
-    def initialize(@gtk_arrow)
+    @gtk_arrow : LibGtk::Arrow*?
+    def initialize(@gtk_arrow : LibGtk::Arrow*)
     end
 
     def to_unsafe

@@ -1,6 +1,7 @@
 module Gtk
   class EntryBuffer < GObject::Object
-    def initialize(@gtk_entry_buffer)
+    @gtk_entry_buffer : LibGtk::EntryBuffer*?
+    def initialize(@gtk_entry_buffer : LibGtk::EntryBuffer*)
     end
 
     def to_unsafe

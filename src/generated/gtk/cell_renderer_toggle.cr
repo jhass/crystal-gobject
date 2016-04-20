@@ -2,7 +2,8 @@ require "./cell_renderer"
 
 module Gtk
   class CellRendererToggle < CellRenderer
-    def initialize(@gtk_cell_renderer_toggle)
+    @gtk_cell_renderer_toggle : LibGtk::CellRendererToggle*?
+    def initialize(@gtk_cell_renderer_toggle : LibGtk::CellRendererToggle*)
     end
 
     def to_unsafe

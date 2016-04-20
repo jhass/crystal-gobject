@@ -2,7 +2,8 @@ module Gtk
   class ScrolledWindowPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_scrolled_window_private)
+    @gtk_scrolled_window_private : LibGtk::ScrolledWindowPrivate*?
+    def initialize(@gtk_scrolled_window_private : LibGtk::ScrolledWindowPrivate*)
     end
 
     def to_unsafe

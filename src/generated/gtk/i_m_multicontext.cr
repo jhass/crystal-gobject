@@ -2,7 +2,8 @@ require "./i_m_context"
 
 module Gtk
   class IMMulticontext < IMContext
-    def initialize(@gtk_i_m_multicontext)
+    @gtk_i_m_multicontext : LibGtk::IMMulticontext*?
+    def initialize(@gtk_i_m_multicontext : LibGtk::IMMulticontext*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Gio
   class SocketClientPrivate
     include GObject::WrappedType
 
-    def initialize(@gio_socket_client_private)
+    @gio_socket_client_private : LibGio::SocketClientPrivate*?
+    def initialize(@gio_socket_client_private : LibGio::SocketClientPrivate*)
     end
 
     def to_unsafe

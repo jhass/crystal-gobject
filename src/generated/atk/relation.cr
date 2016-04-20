@@ -1,6 +1,7 @@
 module Atk
   class Relation < GObject::Object
-    def initialize(@atk_relation)
+    @atk_relation : LibAtk::Relation*?
+    def initialize(@atk_relation : LibAtk::Relation*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ require "./container"
 
 module Gtk
   class Layout < Container
-    def initialize(@gtk_layout)
+    @gtk_layout : LibGtk::Layout*?
+    def initialize(@gtk_layout : LibGtk::Layout*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Pango
   class AttrString
     include GObject::WrappedType
 
-    def initialize(@pango_attr_string)
+    @pango_attr_string : LibPango::AttrString*?
+    def initialize(@pango_attr_string : LibPango::AttrString*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module GLib
   class IOChannel
     include GObject::WrappedType
 
-    def initialize(@g_lib_i_o_channel)
+    @g_lib_i_o_channel : LibGLib::IOChannel*?
+    def initialize(@g_lib_i_o_channel : LibGLib::IOChannel*)
     end
 
     def to_unsafe

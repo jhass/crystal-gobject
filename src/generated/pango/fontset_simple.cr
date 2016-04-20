@@ -2,7 +2,8 @@ require "./fontset"
 
 module Pango
   class FontsetSimple < Fontset
-    def initialize(@pango_fontset_simple)
+    @pango_fontset_simple : LibPango::FontsetSimple*?
+    def initialize(@pango_fontset_simple : LibPango::FontsetSimple*)
     end
 
     def to_unsafe

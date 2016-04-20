@@ -2,7 +2,8 @@ require "./widget"
 
 module Gtk
   class DrawingArea < Widget
-    def initialize(@gtk_drawing_area)
+    @gtk_drawing_area : LibGtk::DrawingArea*?
+    def initialize(@gtk_drawing_area : LibGtk::DrawingArea*)
     end
 
     def to_unsafe

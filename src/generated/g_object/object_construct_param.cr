@@ -2,7 +2,8 @@ module GObject
   class ObjectConstructParam
     include GObject::WrappedType
 
-    def initialize(@g_object_object_construct_param)
+    @g_object_object_construct_param : LibGObject::ObjectConstructParam*?
+    def initialize(@g_object_object_construct_param : LibGObject::ObjectConstructParam*)
     end
 
     def to_unsafe

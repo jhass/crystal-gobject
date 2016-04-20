@@ -2,7 +2,8 @@ module GLib
   class MarkupParseContext
     include GObject::WrappedType
 
-    def initialize(@g_lib_markup_parse_context)
+    @g_lib_markup_parse_context : LibGLib::MarkupParseContext*?
+    def initialize(@g_lib_markup_parse_context : LibGLib::MarkupParseContext*)
     end
 
     def to_unsafe

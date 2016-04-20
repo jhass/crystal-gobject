@@ -2,7 +2,8 @@ require "./container"
 
 module Gtk
   class TextView < Container
-    def initialize(@gtk_text_view)
+    @gtk_text_view : LibGtk::TextView*?
+    def initialize(@gtk_text_view : LibGtk::TextView*)
     end
 
     def to_unsafe

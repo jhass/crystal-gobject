@@ -2,7 +2,8 @@ require "./toggle_tool_button"
 
 module Gtk
   class RadioToolButton < ToggleToolButton
-    def initialize(@gtk_radio_tool_button)
+    @gtk_radio_tool_button : LibGtk::RadioToolButton*?
+    def initialize(@gtk_radio_tool_button : LibGtk::RadioToolButton*)
     end
 
     def to_unsafe

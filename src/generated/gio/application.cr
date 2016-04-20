@@ -1,6 +1,7 @@
 module Gio
   class Application < GObject::Object
-    def initialize(@gio_application)
+    @gio_application : LibGio::Application*?
+    def initialize(@gio_application : LibGio::Application*)
     end
 
     def to_unsafe

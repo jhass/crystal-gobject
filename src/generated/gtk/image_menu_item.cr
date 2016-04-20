@@ -2,7 +2,8 @@ require "./menu_item"
 
 module Gtk
   class ImageMenuItem < MenuItem
-    def initialize(@gtk_image_menu_item)
+    @gtk_image_menu_item : LibGtk::ImageMenuItem*?
+    def initialize(@gtk_image_menu_item : LibGtk::ImageMenuItem*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ require "./cell_accessible"
 
 module Gtk
   class ContainerCellAccessible < CellAccessible
-    def initialize(@gtk_container_cell_accessible)
+    @gtk_container_cell_accessible : LibGtk::ContainerCellAccessible*?
+    def initialize(@gtk_container_cell_accessible : LibGtk::ContainerCellAccessible*)
     end
 
     def to_unsafe

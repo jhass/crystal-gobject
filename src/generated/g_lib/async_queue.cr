@@ -2,7 +2,8 @@ module GLib
   class AsyncQueue
     include GObject::WrappedType
 
-    def initialize(@g_lib_async_queue)
+    @g_lib_async_queue : LibGLib::AsyncQueue*?
+    def initialize(@g_lib_async_queue : LibGLib::AsyncQueue*)
     end
 
     def to_unsafe

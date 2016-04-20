@@ -1,6 +1,7 @@
 module Gio
   class DBusObjectProxy < GObject::Object
-    def initialize(@gio_d_bus_object_proxy)
+    @gio_d_bus_object_proxy : LibGio::DBusObjectProxy*?
+    def initialize(@gio_d_bus_object_proxy : LibGio::DBusObjectProxy*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Gtk
   class AccelGroupPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_accel_group_private)
+    @gtk_accel_group_private : LibGtk::AccelGroupPrivate*?
+    def initialize(@gtk_accel_group_private : LibGtk::AccelGroupPrivate*)
     end
 
     def to_unsafe

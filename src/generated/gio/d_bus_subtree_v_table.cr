@@ -2,7 +2,8 @@ module Gio
   class DBusSubtreeVTable
     include GObject::WrappedType
 
-    def initialize(@gio_d_bus_subtree_v_table)
+    @gio_d_bus_subtree_v_table : LibGio::DBusSubtreeVTable*?
+    def initialize(@gio_d_bus_subtree_v_table : LibGio::DBusSubtreeVTable*)
     end
 
     def to_unsafe

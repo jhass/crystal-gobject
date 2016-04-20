@@ -2,7 +2,8 @@ require "./object"
 
 module Gst
   class Tracer < Object
-    def initialize(@gst_tracer)
+    @gst_tracer : LibGst::Tracer*?
+    def initialize(@gst_tracer : LibGst::Tracer*)
     end
 
     def to_unsafe

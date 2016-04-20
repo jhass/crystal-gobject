@@ -2,7 +2,8 @@ module Gdk
   class Color
     include GObject::WrappedType
 
-    def initialize(@gdk_color)
+    @gdk_color : LibGdk::Color*?
+    def initialize(@gdk_color : LibGdk::Color*)
     end
 
     def to_unsafe

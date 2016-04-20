@@ -2,7 +2,8 @@ module Gst
   class TimedValue
     include GObject::WrappedType
 
-    def initialize(@gst_timed_value)
+    @gst_timed_value : LibGst::TimedValue*?
+    def initialize(@gst_timed_value : LibGst::TimedValue*)
     end
 
     def to_unsafe

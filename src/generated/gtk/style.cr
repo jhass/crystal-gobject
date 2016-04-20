@@ -1,6 +1,7 @@
 module Gtk
   class Style < GObject::Object
-    def initialize(@gtk_style)
+    @gtk_style : LibGtk::Style*?
+    def initialize(@gtk_style : LibGtk::Style*)
     end
 
     def to_unsafe

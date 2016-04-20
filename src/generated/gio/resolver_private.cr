@@ -2,7 +2,8 @@ module Gio
   class ResolverPrivate
     include GObject::WrappedType
 
-    def initialize(@gio_resolver_private)
+    @gio_resolver_private : LibGio::ResolverPrivate*?
+    def initialize(@gio_resolver_private : LibGio::ResolverPrivate*)
     end
 
     def to_unsafe

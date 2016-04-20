@@ -2,7 +2,8 @@ require "./renderer_cell_accessible"
 
 module Gtk
   class ImageCellAccessible < RendererCellAccessible
-    def initialize(@gtk_image_cell_accessible)
+    @gtk_image_cell_accessible : LibGtk::ImageCellAccessible*?
+    def initialize(@gtk_image_cell_accessible : LibGtk::ImageCellAccessible*)
     end
 
     def to_unsafe

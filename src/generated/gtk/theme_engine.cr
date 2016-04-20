@@ -2,7 +2,8 @@ module Gtk
   class ThemeEngine
     include GObject::WrappedType
 
-    def initialize(@gtk_theme_engine)
+    @gtk_theme_engine : LibGtk::ThemeEngine*?
+    def initialize(@gtk_theme_engine : LibGtk::ThemeEngine*)
     end
 
     def to_unsafe

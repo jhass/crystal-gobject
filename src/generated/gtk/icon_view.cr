@@ -2,7 +2,8 @@ require "./container"
 
 module Gtk
   class IconView < Container
-    def initialize(@gtk_icon_view)
+    @gtk_icon_view : LibGtk::IconView*?
+    def initialize(@gtk_icon_view : LibGtk::IconView*)
     end
 
     def to_unsafe

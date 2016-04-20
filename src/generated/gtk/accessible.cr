@@ -1,6 +1,7 @@
 module Gtk
   class Accessible < Atk::Object
-    def initialize(@gtk_accessible)
+    @gtk_accessible : LibGtk::Accessible*?
+    def initialize(@gtk_accessible : LibGtk::Accessible*)
     end
 
     def to_unsafe

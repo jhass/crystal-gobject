@@ -2,7 +2,8 @@ require "./widget_accessible"
 
 module Gtk
   class SwitchAccessible < WidgetAccessible
-    def initialize(@gtk_switch_accessible)
+    @gtk_switch_accessible : LibGtk::SwitchAccessible*?
+    def initialize(@gtk_switch_accessible : LibGtk::SwitchAccessible*)
     end
 
     def to_unsafe

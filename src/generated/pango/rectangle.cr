@@ -2,7 +2,8 @@ module Pango
   class Rectangle
     include GObject::WrappedType
 
-    def initialize(@pango_rectangle)
+    @pango_rectangle : LibPango::Rectangle*?
+    def initialize(@pango_rectangle : LibPango::Rectangle*)
     end
 
     def to_unsafe

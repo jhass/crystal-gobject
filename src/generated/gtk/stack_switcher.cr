@@ -2,7 +2,8 @@ require "./box"
 
 module Gtk
   class StackSwitcher < Box
-    def initialize(@gtk_stack_switcher)
+    @gtk_stack_switcher : LibGtk::StackSwitcher*?
+    def initialize(@gtk_stack_switcher : LibGtk::StackSwitcher*)
     end
 
     def to_unsafe

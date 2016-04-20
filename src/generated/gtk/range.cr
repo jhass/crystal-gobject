@@ -2,7 +2,8 @@ require "./widget"
 
 module Gtk
   class Range < Widget
-    def initialize(@gtk_range)
+    @gtk_range : LibGtk::Range*?
+    def initialize(@gtk_range : LibGtk::Range*)
     end
 
     def to_unsafe

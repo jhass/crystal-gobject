@@ -2,7 +2,8 @@ module Gst
   class Query
     include GObject::WrappedType
 
-    def initialize(@gst_query)
+    @gst_query : LibGst::Query*?
+    def initialize(@gst_query : LibGst::Query*)
     end
 
     def to_unsafe

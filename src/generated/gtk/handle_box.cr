@@ -2,7 +2,8 @@ require "./bin"
 
 module Gtk
   class HandleBox < Bin
-    def initialize(@gtk_handle_box)
+    @gtk_handle_box : LibGtk::HandleBox*?
+    def initialize(@gtk_handle_box : LibGtk::HandleBox*)
     end
 
     def to_unsafe

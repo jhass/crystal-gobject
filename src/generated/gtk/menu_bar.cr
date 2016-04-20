@@ -2,7 +2,8 @@ require "./menu_shell"
 
 module Gtk
   class MenuBar < MenuShell
-    def initialize(@gtk_menu_bar)
+    @gtk_menu_bar : LibGtk::MenuBar*?
+    def initialize(@gtk_menu_bar : LibGtk::MenuBar*)
     end
 
     def to_unsafe

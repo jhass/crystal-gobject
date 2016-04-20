@@ -1,6 +1,7 @@
 module Gio
   class DBusActionGroup < GObject::Object
-    def initialize(@gio_d_bus_action_group)
+    @gio_d_bus_action_group : LibGio::DBusActionGroup*?
+    def initialize(@gio_d_bus_action_group : LibGio::DBusActionGroup*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ require "./gesture_single"
 
 module Gtk
   class GestureSwipe < GestureSingle
-    def initialize(@gtk_gesture_swipe)
+    @gtk_gesture_swipe : LibGtk::GestureSwipe*?
+    def initialize(@gtk_gesture_swipe : LibGtk::GestureSwipe*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Gtk
   class AboutDialogPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_about_dialog_private)
+    @gtk_about_dialog_private : LibGtk::AboutDialogPrivate*?
+    def initialize(@gtk_about_dialog_private : LibGtk::AboutDialogPrivate*)
     end
 
     def to_unsafe

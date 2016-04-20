@@ -2,7 +2,8 @@ module Gtk
   class BuilderPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_builder_private)
+    @gtk_builder_private : LibGtk::BuilderPrivate*?
+    def initialize(@gtk_builder_private : LibGtk::BuilderPrivate*)
     end
 
     def to_unsafe

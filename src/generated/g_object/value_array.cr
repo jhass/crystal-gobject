@@ -2,7 +2,8 @@ module GObject
   class ValueArray
     include GObject::WrappedType
 
-    def initialize(@g_object_value_array)
+    @g_object_value_array : LibGObject::ValueArray*?
+    def initialize(@g_object_value_array : LibGObject::ValueArray*)
     end
 
     def to_unsafe

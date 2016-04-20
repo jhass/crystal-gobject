@@ -2,7 +2,8 @@ module Gtk
   class CellAreaPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_cell_area_private)
+    @gtk_cell_area_private : LibGtk::CellAreaPrivate*?
+    def initialize(@gtk_cell_area_private : LibGtk::CellAreaPrivate*)
     end
 
     def to_unsafe

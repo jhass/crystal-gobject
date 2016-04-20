@@ -1,6 +1,7 @@
 module Gio
   class Permission < GObject::Object
-    def initialize(@gio_permission)
+    @gio_permission : LibGio::Permission*?
+    def initialize(@gio_permission : LibGio::Permission*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Gio
   class TlsDatabasePrivate
     include GObject::WrappedType
 
-    def initialize(@gio_tls_database_private)
+    @gio_tls_database_private : LibGio::TlsDatabasePrivate*?
+    def initialize(@gio_tls_database_private : LibGio::TlsDatabasePrivate*)
     end
 
     def to_unsafe

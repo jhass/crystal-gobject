@@ -2,7 +2,8 @@ require "./box"
 
 module Gtk
   class Statusbar < Box
-    def initialize(@gtk_statusbar)
+    @gtk_statusbar : LibGtk::Statusbar*?
+    def initialize(@gtk_statusbar : LibGtk::Statusbar*)
     end
 
     def to_unsafe

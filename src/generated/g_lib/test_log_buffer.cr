@@ -2,7 +2,8 @@ module GLib
   class TestLogBuffer
     include GObject::WrappedType
 
-    def initialize(@g_lib_test_log_buffer)
+    @g_lib_test_log_buffer : LibGLib::TestLogBuffer*?
+    def initialize(@g_lib_test_log_buffer : LibGLib::TestLogBuffer*)
     end
 
     def to_unsafe

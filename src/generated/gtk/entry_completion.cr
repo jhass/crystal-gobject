@@ -1,6 +1,7 @@
 module Gtk
   class EntryCompletion < GObject::Object
-    def initialize(@gtk_entry_completion)
+    @gtk_entry_completion : LibGtk::EntryCompletion*?
+    def initialize(@gtk_entry_completion : LibGtk::EntryCompletion*)
     end
 
     def to_unsafe

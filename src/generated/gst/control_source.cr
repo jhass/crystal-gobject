@@ -2,7 +2,8 @@ require "./object"
 
 module Gst
   class ControlSource < Object
-    def initialize(@gst_control_source)
+    @gst_control_source : LibGst::ControlSource*?
+    def initialize(@gst_control_source : LibGst::ControlSource*)
     end
 
     def to_unsafe

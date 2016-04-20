@@ -2,7 +2,8 @@ module Gtk
   class SizeGroupPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_size_group_private)
+    @gtk_size_group_private : LibGtk::SizeGroupPrivate*?
+    def initialize(@gtk_size_group_private : LibGtk::SizeGroupPrivate*)
     end
 
     def to_unsafe

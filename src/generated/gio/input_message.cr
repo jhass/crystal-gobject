@@ -2,7 +2,8 @@ module Gio
   class InputMessage
     include GObject::WrappedType
 
-    def initialize(@gio_input_message)
+    @gio_input_message : LibGio::InputMessage*?
+    def initialize(@gio_input_message : LibGio::InputMessage*)
     end
 
     def to_unsafe

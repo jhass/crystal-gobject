@@ -2,7 +2,8 @@ module Gtk
   class CssSection
     include GObject::WrappedType
 
-    def initialize(@gtk_css_section)
+    @gtk_css_section : LibGtk::CssSection*?
+    def initialize(@gtk_css_section : LibGtk::CssSection*)
     end
 
     def to_unsafe

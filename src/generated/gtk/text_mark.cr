@@ -1,6 +1,7 @@
 module Gtk
   class TextMark < GObject::Object
-    def initialize(@gtk_text_mark)
+    @gtk_text_mark : LibGtk::TextMark*?
+    def initialize(@gtk_text_mark : LibGtk::TextMark*)
     end
 
     def to_unsafe

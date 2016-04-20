@@ -2,7 +2,8 @@ module Gio
   class DBusObjectManagerClientPrivate
     include GObject::WrappedType
 
-    def initialize(@gio_d_bus_object_manager_client_private)
+    @gio_d_bus_object_manager_client_private : LibGio::DBusObjectManagerClientPrivate*?
+    def initialize(@gio_d_bus_object_manager_client_private : LibGio::DBusObjectManagerClientPrivate*)
     end
 
     def to_unsafe

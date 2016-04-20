@@ -2,7 +2,8 @@ require "./widget"
 
 module Gtk
   class Spinner < Widget
-    def initialize(@gtk_spinner)
+    @gtk_spinner : LibGtk::Spinner*?
+    def initialize(@gtk_spinner : LibGtk::Spinner*)
     end
 
     def to_unsafe

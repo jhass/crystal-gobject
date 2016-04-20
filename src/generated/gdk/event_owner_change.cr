@@ -2,7 +2,8 @@ module Gdk
   class EventOwnerChange
     include GObject::WrappedType
 
-    def initialize(@gdk_event_owner_change)
+    @gdk_event_owner_change : LibGdk::EventOwnerChange*?
+    def initialize(@gdk_event_owner_change : LibGdk::EventOwnerChange*)
     end
 
     def to_unsafe

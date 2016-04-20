@@ -2,7 +2,8 @@ module Pango
   class RendererPrivate
     include GObject::WrappedType
 
-    def initialize(@pango_renderer_private)
+    @pango_renderer_private : LibPango::RendererPrivate*?
+    def initialize(@pango_renderer_private : LibPango::RendererPrivate*)
     end
 
     def to_unsafe

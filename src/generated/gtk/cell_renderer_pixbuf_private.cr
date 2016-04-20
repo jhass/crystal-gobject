@@ -2,7 +2,8 @@ module Gtk
   class CellRendererPixbufPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_cell_renderer_pixbuf_private)
+    @gtk_cell_renderer_pixbuf_private : LibGtk::CellRendererPixbufPrivate*?
+    def initialize(@gtk_cell_renderer_pixbuf_private : LibGtk::CellRendererPixbufPrivate*)
     end
 
     def to_unsafe

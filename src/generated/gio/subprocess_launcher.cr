@@ -1,6 +1,7 @@
 module Gio
   class SubprocessLauncher < GObject::Object
-    def initialize(@gio_subprocess_launcher)
+    @gio_subprocess_launcher : LibGio::SubprocessLauncher*?
+    def initialize(@gio_subprocess_launcher : LibGio::SubprocessLauncher*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Gtk
   class CellRendererClassPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_cell_renderer_class_private)
+    @gtk_cell_renderer_class_private : LibGtk::CellRendererClassPrivate*?
+    def initialize(@gtk_cell_renderer_class_private : LibGtk::CellRendererClassPrivate*)
     end
 
     def to_unsafe

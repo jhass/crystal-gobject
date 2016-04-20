@@ -1,6 +1,7 @@
 module Gio
   class DBusConnection < GObject::Object
-    def initialize(@gio_d_bus_connection)
+    @gio_d_bus_connection : LibGio::DBusConnection*?
+    def initialize(@gio_d_bus_connection : LibGio::DBusConnection*)
     end
 
     def to_unsafe

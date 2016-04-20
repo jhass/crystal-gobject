@@ -1,6 +1,7 @@
 module Gtk
   class Clipboard < GObject::Object
-    def initialize(@gtk_clipboard)
+    @gtk_clipboard : LibGtk::Clipboard*?
+    def initialize(@gtk_clipboard : LibGtk::Clipboard*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module GObject
   class TypeQuery
     include GObject::WrappedType
 
-    def initialize(@g_object_type_query)
+    @g_object_type_query : LibGObject::TypeQuery*?
+    def initialize(@g_object_type_query : LibGObject::TypeQuery*)
     end
 
     def to_unsafe

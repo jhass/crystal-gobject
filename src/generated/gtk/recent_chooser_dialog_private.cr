@@ -2,7 +2,8 @@ module Gtk
   class RecentChooserDialogPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_recent_chooser_dialog_private)
+    @gtk_recent_chooser_dialog_private : LibGtk::RecentChooserDialogPrivate*?
+    def initialize(@gtk_recent_chooser_dialog_private : LibGtk::RecentChooserDialogPrivate*)
     end
 
     def to_unsafe

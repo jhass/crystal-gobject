@@ -1,6 +1,7 @@
 module Gtk
   class TreeSelection < GObject::Object
-    def initialize(@gtk_tree_selection)
+    @gtk_tree_selection : LibGtk::TreeSelection*?
+    def initialize(@gtk_tree_selection : LibGtk::TreeSelection*)
     end
 
     def to_unsafe

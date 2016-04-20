@@ -2,7 +2,8 @@ require "./socket_listener"
 
 module Gio
   class SocketService < SocketListener
-    def initialize(@gio_socket_service)
+    @gio_socket_service : LibGio::SocketService*?
+    def initialize(@gio_socket_service : LibGio::SocketService*)
     end
 
     def to_unsafe

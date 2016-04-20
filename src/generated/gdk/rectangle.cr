@@ -2,7 +2,8 @@ module Gdk
   class Rectangle
     include GObject::WrappedType
 
-    def initialize(@gdk_rectangle)
+    @gdk_rectangle : LibGdk::Rectangle*?
+    def initialize(@gdk_rectangle : LibGdk::Rectangle*)
     end
 
     def to_unsafe

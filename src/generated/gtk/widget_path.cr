@@ -2,7 +2,8 @@ module Gtk
   class WidgetPath
     include GObject::WrappedType
 
-    def initialize(@gtk_widget_path)
+    @gtk_widget_path : LibGtk::WidgetPath*?
+    def initialize(@gtk_widget_path : LibGtk::WidgetPath*)
     end
 
     def to_unsafe

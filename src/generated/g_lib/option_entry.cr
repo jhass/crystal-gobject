@@ -2,7 +2,8 @@ module GLib
   class OptionEntry
     include GObject::WrappedType
 
-    def initialize(@g_lib_option_entry)
+    @g_lib_option_entry : LibGLib::OptionEntry*?
+    def initialize(@g_lib_option_entry : LibGLib::OptionEntry*)
     end
 
     def to_unsafe

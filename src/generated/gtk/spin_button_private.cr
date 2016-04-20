@@ -2,7 +2,8 @@ module Gtk
   class SpinButtonPrivate
     include GObject::WrappedType
 
-    def initialize(@gtk_spin_button_private)
+    @gtk_spin_button_private : LibGtk::SpinButtonPrivate*?
+    def initialize(@gtk_spin_button_private : LibGtk::SpinButtonPrivate*)
     end
 
     def to_unsafe

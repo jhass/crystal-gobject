@@ -2,7 +2,8 @@ module GObject
   class ClosureNotifyData
     include GObject::WrappedType
 
-    def initialize(@g_object_closure_notify_data)
+    @g_object_closure_notify_data : LibGObject::ClosureNotifyData*?
+    def initialize(@g_object_closure_notify_data : LibGObject::ClosureNotifyData*)
     end
 
     def to_unsafe

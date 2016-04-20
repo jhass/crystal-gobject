@@ -2,7 +2,8 @@ module Gst
   class ValueTable
     include GObject::WrappedType
 
-    def initialize(@gst_value_table)
+    @gst_value_table : LibGst::ValueTable*?
+    def initialize(@gst_value_table : LibGst::ValueTable*)
     end
 
     def to_unsafe

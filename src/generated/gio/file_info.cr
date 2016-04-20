@@ -1,6 +1,7 @@
 module Gio
   class FileInfo < GObject::Object
-    def initialize(@gio_file_info)
+    @gio_file_info : LibGio::FileInfo*?
+    def initialize(@gio_file_info : LibGio::FileInfo*)
     end
 
     def to_unsafe

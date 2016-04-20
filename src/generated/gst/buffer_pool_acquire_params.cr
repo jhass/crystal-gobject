@@ -2,7 +2,8 @@ module Gst
   class BufferPoolAcquireParams
     include GObject::WrappedType
 
-    def initialize(@gst_buffer_pool_acquire_params)
+    @gst_buffer_pool_acquire_params : LibGst::BufferPoolAcquireParams*?
+    def initialize(@gst_buffer_pool_acquire_params : LibGst::BufferPoolAcquireParams*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ module Gdk
   class EventTouchpadPinch
     include GObject::WrappedType
 
-    def initialize(@gdk_event_touchpad_pinch)
+    @gdk_event_touchpad_pinch : LibGdk::EventTouchpadPinch*?
+    def initialize(@gdk_event_touchpad_pinch : LibGdk::EventTouchpadPinch*)
     end
 
     def to_unsafe

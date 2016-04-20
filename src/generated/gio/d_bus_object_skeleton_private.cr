@@ -2,7 +2,8 @@ module Gio
   class DBusObjectSkeletonPrivate
     include GObject::WrappedType
 
-    def initialize(@gio_d_bus_object_skeleton_private)
+    @gio_d_bus_object_skeleton_private : LibGio::DBusObjectSkeletonPrivate*?
+    def initialize(@gio_d_bus_object_skeleton_private : LibGio::DBusObjectSkeletonPrivate*)
     end
 
     def to_unsafe

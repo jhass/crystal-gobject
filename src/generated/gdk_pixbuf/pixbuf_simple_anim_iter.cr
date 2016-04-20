@@ -2,7 +2,8 @@ require "./pixbuf_animation_iter"
 
 module GdkPixbuf
   class PixbufSimpleAnimIter < PixbufAnimationIter
-    def initialize(@gdk_pixbuf_pixbuf_simple_anim_iter)
+    @gdk_pixbuf_pixbuf_simple_anim_iter : LibGdkPixbuf::PixbufSimpleAnimIter*?
+    def initialize(@gdk_pixbuf_pixbuf_simple_anim_iter : LibGdkPixbuf::PixbufSimpleAnimIter*)
     end
 
     def to_unsafe

@@ -2,7 +2,8 @@ require "./scale_button"
 
 module Gtk
   class VolumeButton < ScaleButton
-    def initialize(@gtk_volume_button)
+    @gtk_volume_button : LibGtk::VolumeButton*?
+    def initialize(@gtk_volume_button : LibGtk::VolumeButton*)
     end
 
     def to_unsafe

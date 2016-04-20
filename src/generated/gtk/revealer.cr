@@ -2,7 +2,8 @@ require "./bin"
 
 module Gtk
   class Revealer < Bin
-    def initialize(@gtk_revealer)
+    @gtk_revealer : LibGtk::Revealer*?
+    def initialize(@gtk_revealer : LibGtk::Revealer*)
     end
 
     def to_unsafe

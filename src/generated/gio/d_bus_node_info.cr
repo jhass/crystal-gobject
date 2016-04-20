@@ -2,7 +2,8 @@ module Gio
   class DBusNodeInfo
     include GObject::WrappedType
 
-    def initialize(@gio_d_bus_node_info)
+    @gio_d_bus_node_info : LibGio::DBusNodeInfo*?
+    def initialize(@gio_d_bus_node_info : LibGio::DBusNodeInfo*)
     end
 
     def to_unsafe

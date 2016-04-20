@@ -2,7 +2,8 @@ module Gtk
   class ActionEntry
     include GObject::WrappedType
 
-    def initialize(@gtk_action_entry)
+    @gtk_action_entry : LibGtk::ActionEntry*?
+    def initialize(@gtk_action_entry : LibGtk::ActionEntry*)
     end
 
     def to_unsafe

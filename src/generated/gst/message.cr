@@ -2,7 +2,8 @@ module Gst
   class Message
     include GObject::WrappedType
 
-    def initialize(@gst_message)
+    @gst_message : LibGst::Message*?
+    def initialize(@gst_message : LibGst::Message*)
     end
 
     def to_unsafe

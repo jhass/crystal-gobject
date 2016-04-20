@@ -2,7 +2,8 @@ require "./object"
 
 module Gst
   class Allocator < Object
-    def initialize(@gst_allocator)
+    @gst_allocator : LibGst::Allocator*?
+    def initialize(@gst_allocator : LibGst::Allocator*)
     end
 
     def to_unsafe
