@@ -8,7 +8,7 @@ module Pango
       @pango_context.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibPango.context_new
       cast Pango::Context.new(__return_value)
     end

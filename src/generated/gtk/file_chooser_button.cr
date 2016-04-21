@@ -17,12 +17,12 @@ module Gtk
 
 
 
-    def self.new_internal(title, action)
+    def self.new(title, action) : self
       __return_value = LibGtk.file_chooser_button_new(title, action)
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_dialog(dialog)
+    def self.new_with_dialog(dialog) : self
       __return_value = LibGtk.file_chooser_button_new_with_dialog((dialog.to_unsafe as LibGtk::Dialog*))
       cast Gtk::Widget.new(__return_value)
     end

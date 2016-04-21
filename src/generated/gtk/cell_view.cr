@@ -23,27 +23,27 @@ module Gtk
 
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.cell_view_new
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_context(area, context)
+    def self.new_with_context(area, context) : self
       __return_value = LibGtk.cell_view_new_with_context((area.to_unsafe as LibGtk::CellArea*), (context.to_unsafe as LibGtk::CellAreaContext*))
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_markup(markup)
+    def self.new_with_markup(markup) : self
       __return_value = LibGtk.cell_view_new_with_markup(markup)
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_pixbuf(pixbuf)
+    def self.new_with_pixbuf(pixbuf) : self
       __return_value = LibGtk.cell_view_new_with_pixbuf((pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*))
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_text(text)
+    def self.new_with_text(text) : self
       __return_value = LibGtk.cell_view_new_with_text(text)
       cast Gtk::Widget.new(__return_value)
     end

@@ -11,7 +11,7 @@ module Gtk
     end
 
 
-    def self.new_internal(widget)
+    def self.new(widget) : self
       __return_value = LibGtk.gesture_long_press_new((widget.to_unsafe as LibGtk::Widget*))
       cast Gtk::Gesture.new(__return_value)
     end

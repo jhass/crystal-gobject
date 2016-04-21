@@ -17,7 +17,7 @@ module GLib
       GLib::IOChannel.new(__return_value)
     end
 
-    def self.unix_new(fd)
+    def self.unix_new(fd) : self
       __return_value = LibGLib.i_o_channel_unix_new(Int32.new(fd))
       cast GLib::IOChannel.new(__return_value)
     end

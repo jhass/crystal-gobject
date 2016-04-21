@@ -10,7 +10,7 @@ module GLib
       @g_lib_option_group.not_nil!
     end
 
-    def self.new_internal(name, description, help_description, user_data, destroy : LibGLib::DestroyNotify?)
+    def self.new(name, description, help_description, user_data, destroy : LibGLib::DestroyNotify?) : self
       __return_value = LibGLib.option_group_new(name, description, help_description, user_data && user_data, destroy && destroy)
       cast GLib::OptionGroup.new(__return_value)
     end

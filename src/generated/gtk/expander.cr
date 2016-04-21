@@ -20,12 +20,12 @@ module Gtk
 
 
 
-    def self.new_internal(label)
+    def self.new(label) : self
       __return_value = LibGtk.expander_new(label)
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_mnemonic(label)
+    def self.new_with_mnemonic(label) : self
       __return_value = LibGtk.expander_new_with_mnemonic(label && label)
       cast Gtk::Widget.new(__return_value)
     end

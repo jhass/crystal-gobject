@@ -43,13 +43,8 @@ require "../generated/gtk"
 
 module Gtk
   class Window
-    def self.new
+    def self.new : self
       new LibGtk::WindowType::TOPLEVEL
-    end
-
-    def self.new(type : LibGtk::WindowType)
-      widget = new_internal type
-      new widget.to_unsafe
     end
   end
 

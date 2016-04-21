@@ -15,7 +15,7 @@ module Gtk
     # Implements Orientable
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.font_selection_new
       cast Gtk::Widget.new(__return_value)
     end

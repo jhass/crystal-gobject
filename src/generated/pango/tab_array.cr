@@ -10,7 +10,7 @@ module Pango
       @pango_tab_array.not_nil!
     end
 
-    def self.new_internal(initial_size, positions_in_pixels)
+    def self.new(initial_size, positions_in_pixels) : self
       __return_value = LibPango.tab_array_new(Int32.new(initial_size), positions_in_pixels)
       cast Pango::TabArray.new(__return_value)
     end

@@ -9,7 +9,7 @@ module Gio
     end
 
     # Implements TypePlugin
-    def self.new_internal(filename)
+    def self.new(filename) : self
       __return_value = LibGio.i_o_module_new(filename)
       cast Gio::IOModule.new(__return_value)
     end

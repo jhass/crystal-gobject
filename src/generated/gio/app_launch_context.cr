@@ -8,7 +8,7 @@ module Gio
       @gio_app_launch_context.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGio.app_launch_context_new
       cast Gio::AppLaunchContext.new(__return_value)
     end

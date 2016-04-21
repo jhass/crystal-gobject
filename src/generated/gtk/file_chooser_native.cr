@@ -13,7 +13,7 @@ module Gtk
     # Implements FileChooser
 
 
-    def self.new_internal(title, parent, action, accept_label, cancel_label)
+    def self.new(title, parent, action, accept_label, cancel_label) : self
       __return_value = LibGtk.file_chooser_native_new(title && title, parent && (parent.to_unsafe as LibGtk::Window*), action, accept_label && accept_label, cancel_label && cancel_label)
       cast Gtk::FileChooserNative.new(__return_value)
     end

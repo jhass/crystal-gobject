@@ -9,7 +9,7 @@ module Gtk
     end
 
     # Implements StyleProvider
-    def self.new
+    def self.new : self
       __return_value = LibGtk.style_properties_new
       cast Gtk::StyleProperties.new(__return_value)
     end

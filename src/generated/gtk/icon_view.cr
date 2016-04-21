@@ -31,17 +31,17 @@ module Gtk
 
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.icon_view_new
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_area(area)
+    def self.new_with_area(area) : self
       __return_value = LibGtk.icon_view_new_with_area((area.to_unsafe as LibGtk::CellArea*))
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_model(model)
+    def self.new_with_model(model) : self
       __return_value = LibGtk.icon_view_new_with_model((model.to_unsafe as LibGtk::TreeModel*))
       cast Gtk::Widget.new(__return_value)
     end

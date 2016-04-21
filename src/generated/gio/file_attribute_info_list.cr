@@ -10,7 +10,7 @@ module Gio
       @gio_file_attribute_info_list.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGio.file_attribute_info_list_new
       cast Gio::FileAttributeInfoList.new(__return_value)
     end

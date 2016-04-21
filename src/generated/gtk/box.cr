@@ -16,7 +16,7 @@ module Gtk
 
 
 
-    def self.new_internal(orientation, spacing)
+    def self.new(orientation, spacing) : self
       __return_value = LibGtk.box_new(orientation, Int32.new(spacing))
       cast Gtk::Widget.new(__return_value)
     end

@@ -17,12 +17,12 @@ module Gtk
 
 
 
-    def self.new_internal(orientation, adjustment)
+    def self.new(orientation, adjustment) : self
       __return_value = LibGtk.scale_new(orientation, adjustment && (adjustment.to_unsafe as LibGtk::Adjustment*))
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_range(orientation, min, max, step)
+    def self.new_with_range(orientation, min, max, step) : self
       __return_value = LibGtk.scale_new_with_range(orientation, Float64.new(min), Float64.new(max), Float64.new(step))
       cast Gtk::Widget.new(__return_value)
     end

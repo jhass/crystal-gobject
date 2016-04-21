@@ -10,7 +10,7 @@ module GLib
       @g_lib_error.not_nil!
     end
 
-    def self.new_literal(domain, code, message)
+    def self.new_literal(domain, code, message) : self
       __return_value = LibGLib.error_new_literal(UInt32.new(domain), Int32.new(code), message)
       cast __return_value
     end

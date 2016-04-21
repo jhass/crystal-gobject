@@ -8,7 +8,7 @@ module Gtk
       @gtk_window_group.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.window_group_new
       cast Gtk::WindowGroup.new(__return_value)
     end

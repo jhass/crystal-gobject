@@ -10,17 +10,17 @@ module Gio
 
     # Implements AppInfo
 
-    def self.new_internal(desktop_id)
+    def self.new(desktop_id) : self
       __return_value = LibGio.desktop_app_info_new(desktop_id)
       cast Gio::DesktopAppInfo.new(__return_value)
     end
 
-    def self.new_from_filename(filename)
+    def self.new_from_filename(filename) : self
       __return_value = LibGio.desktop_app_info_new_from_filename(filename)
       cast Gio::DesktopAppInfo.new(__return_value)
     end
 
-    def self.new_from_keyfile(key_file)
+    def self.new_from_keyfile(key_file) : self
       __return_value = LibGio.desktop_app_info_new_from_keyfile((key_file.to_unsafe as LibGLib::KeyFile*))
       cast Gio::DesktopAppInfo.new(__return_value)
     end

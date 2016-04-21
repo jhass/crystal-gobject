@@ -10,7 +10,7 @@ module Gst
       @gst_uri.not_nil!
     end
 
-    def self.new_internal(scheme, userinfo, host, port, path, query, fragment)
+    def self.new(scheme, userinfo, host, port, path, query, fragment) : self
       __return_value = LibGst.uri_new(scheme && scheme, userinfo && userinfo, host && host, UInt32.new(port), path && path, query && query, fragment && fragment)
       cast Gst::Uri.new(__return_value)
     end

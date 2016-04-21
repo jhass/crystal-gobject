@@ -9,7 +9,7 @@ module Gdk
     end
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGdk.app_launch_context_new
       cast Gdk::AppLaunchContext.new(__return_value)
     end

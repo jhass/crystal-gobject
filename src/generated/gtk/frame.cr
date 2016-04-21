@@ -17,7 +17,7 @@ module Gtk
 
 
 
-    def self.new_internal(label)
+    def self.new(label) : self
       __return_value = LibGtk.frame_new(label && label)
       cast Gtk::Widget.new(__return_value)
     end

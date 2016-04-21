@@ -15,12 +15,12 @@ module Gtk
     # Implements Buildable
 
 
-    def self.new_internal(parent, flags, file)
+    def self.new(parent, flags, file) : self
       __return_value = LibGtk.app_chooser_dialog_new(parent && (parent.to_unsafe as LibGtk::Window*), flags, (file.to_unsafe as LibGio::File*))
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_for_content_type(parent, flags, content_type)
+    def self.new_for_content_type(parent, flags, content_type) : self
       __return_value = LibGtk.app_chooser_dialog_new_for_content_type(parent && (parent.to_unsafe as LibGtk::Window*), flags, content_type)
       cast Gtk::Widget.new(__return_value)
     end

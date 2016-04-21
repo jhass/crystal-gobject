@@ -20,22 +20,22 @@ module Gio
 
 
 
-    def self.new_any(family)
+    def self.new_any(family) : self
       __return_value = LibGio.inet_address_new_any(family)
       cast Gio::InetAddress.new(__return_value)
     end
 
-    def self.new_from_bytes(bytes, family)
+    def self.new_from_bytes(bytes, family) : self
       __return_value = LibGio.inet_address_new_from_bytes(bytes, family)
       cast Gio::InetAddress.new(__return_value)
     end
 
-    def self.new_from_string(string)
+    def self.new_from_string(string) : self
       __return_value = LibGio.inet_address_new_from_string(string)
       cast Gio::InetAddress.new(__return_value)
     end
 
-    def self.new_loopback(family)
+    def self.new_loopback(family) : self
       __return_value = LibGio.inet_address_new_loopback(family)
       cast Gio::InetAddress.new(__return_value)
     end

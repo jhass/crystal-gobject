@@ -11,7 +11,7 @@ module Gst
     end
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGst.device_monitor_new
       cast Gst::DeviceMonitor.new(__return_value)
     end

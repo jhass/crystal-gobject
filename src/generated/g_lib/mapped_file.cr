@@ -10,7 +10,7 @@ module GLib
       @g_lib_mapped_file.not_nil!
     end
 
-    def self.new_internal(filename, writable)
+    def self.new(filename, writable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.mapped_file_new(filename, writable, pointerof(__error))
       GLib::Error.assert __error

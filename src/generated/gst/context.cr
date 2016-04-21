@@ -10,7 +10,7 @@ module Gst
       @gst_context.not_nil!
     end
 
-    def self.new_internal(context_type, persistent)
+    def self.new(context_type, persistent) : self
       __return_value = LibGst.context_new(context_type, persistent)
       cast Gst::Context.new(__return_value)
     end

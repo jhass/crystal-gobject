@@ -14,7 +14,7 @@ module Gio
 
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGio.mount_operation_new
       cast Gio::MountOperation.new(__return_value)
     end

@@ -18,7 +18,7 @@ module Gtk
 
 
 
-    def self.new_internal(orientation)
+    def self.new(orientation) : self
       __return_value = LibGtk.paned_new(orientation)
       cast Gtk::Widget.new(__return_value)
     end

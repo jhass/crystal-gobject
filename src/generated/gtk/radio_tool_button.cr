@@ -15,22 +15,22 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
 
-    def self.new_internal(group)
+    def self.new(group) : self
       __return_value = LibGtk.radio_tool_button_new(group && group)
       cast Gtk::ToolItem.new(__return_value)
     end
 
-    def self.new_from_stock(group, stock_id)
+    def self.new_from_stock(group, stock_id) : self
       __return_value = LibGtk.radio_tool_button_new_from_stock(group && group, stock_id)
       cast Gtk::ToolItem.new(__return_value)
     end
 
-    def self.new_from_widget(group)
+    def self.new_from_widget(group) : self
       __return_value = LibGtk.radio_tool_button_new_from_widget(group && (group.to_unsafe as LibGtk::RadioToolButton*))
       cast Gtk::ToolItem.new(__return_value)
     end
 
-    def self.new_with_stock_from_widget(group, stock_id)
+    def self.new_with_stock_from_widget(group, stock_id) : self
       __return_value = LibGtk.radio_tool_button_new_with_stock_from_widget(group && (group.to_unsafe as LibGtk::RadioToolButton*), stock_id)
       cast Gtk::ToolItem.new(__return_value)
     end

@@ -12,7 +12,7 @@ module Gtk
 
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.style_context_new
       cast Gtk::StyleContext.new(__return_value)
     end

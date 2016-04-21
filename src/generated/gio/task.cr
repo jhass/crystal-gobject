@@ -10,7 +10,7 @@ module Gio
 
     # Implements AsyncResult
 
-    def self.new_internal(source_object, cancellable, callback : LibGio::AsyncReadyCallback?, callback_data)
+    def self.new(source_object, cancellable, callback : LibGio::AsyncReadyCallback?, callback_data) : self
       __return_value = LibGio.task_new(source_object && (source_object.to_unsafe as LibGObject::Object*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, callback_data && callback_data)
       cast Gio::Task.new(__return_value)
     end

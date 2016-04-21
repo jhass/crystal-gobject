@@ -10,7 +10,7 @@ module Gio
       @gio_file_attribute_matcher.not_nil!
     end
 
-    def self.new_internal(attributes)
+    def self.new(attributes) : self
       __return_value = LibGio.file_attribute_matcher_new(attributes)
       cast Gio::FileAttributeMatcher.new(__return_value)
     end

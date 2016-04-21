@@ -21,12 +21,12 @@ module Gtk
 
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.font_button_new
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_font(fontname)
+    def self.new_with_font(fontname) : self
       __return_value = LibGtk.font_button_new_with_font(fontname)
       cast Gtk::Widget.new(__return_value)
     end

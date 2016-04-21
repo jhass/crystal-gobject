@@ -12,7 +12,7 @@ module Gtk
 
     # Implements Action
     # Implements Component
-    def self.new
+    def self.new : self
       __return_value = LibGtk.container_cell_accessible_new
       cast Gtk::ContainerCellAccessible.new(__return_value)
     end

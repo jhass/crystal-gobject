@@ -13,12 +13,12 @@ module Gio
     # Implements Seekable
 
 
-    def self.new_internal(base_stream)
+    def self.new(base_stream) : self
       __return_value = LibGio.buffered_output_stream_new((base_stream.to_unsafe as LibGio::OutputStream*))
       cast Gio::OutputStream.new(__return_value)
     end
 
-    def self.new_sized(base_stream, size)
+    def self.new_sized(base_stream, size) : self
       __return_value = LibGio.buffered_output_stream_new_sized((base_stream.to_unsafe as LibGio::OutputStream*), UInt64.new(size))
       cast Gio::OutputStream.new(__return_value)
     end

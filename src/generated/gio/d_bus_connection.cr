@@ -47,7 +47,7 @@ module Gio
       Gio::DBusConnection.new(__return_value)
     end
 
-    def self.new_internal(stream, guid, flags, observer, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def self.new(stream, guid, flags, observer, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.d_bus_connection_new((stream.to_unsafe as LibGio::IOStream*), guid && guid, flags, observer && (observer.to_unsafe as LibGio::DBusAuthObserver*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end

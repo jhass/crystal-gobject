@@ -12,17 +12,17 @@ module Gio
 
     # Implements PollableInputStream
     # Implements Seekable
-    def self.new
+    def self.new : self
       __return_value = LibGio.memory_input_stream_new
       cast Gio::InputStream.new(__return_value)
     end
 
-    def self.new_from_bytes(bytes)
+    def self.new_from_bytes(bytes) : self
       __return_value = LibGio.memory_input_stream_new_from_bytes((bytes.to_unsafe as LibGLib::Bytes*))
       cast Gio::InputStream.new(__return_value)
     end
 
-    def self.new_from_data(data, len, destroy : LibGLib::DestroyNotify?)
+    def self.new_from_data(data, len, destroy : LibGLib::DestroyNotify?) : self
       __return_value = LibGio.memory_input_stream_new_from_data(data, Int64.new(len), destroy && destroy)
       cast Gio::InputStream.new(__return_value)
     end

@@ -8,7 +8,7 @@ module GdkPixbuf
       @gdk_pixbuf_pixbuf_loader.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGdkPixbuf.pixbuf_loader_new
       cast GdkPixbuf::PixbufLoader.new(__return_value)
     end

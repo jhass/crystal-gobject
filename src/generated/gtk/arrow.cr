@@ -14,7 +14,7 @@ module Gtk
     # Implements Buildable
 
 
-    def self.new_internal(arrow_type, shadow_type)
+    def self.new(arrow_type, shadow_type) : self
       __return_value = LibGtk.arrow_new(arrow_type, shadow_type)
       cast Gtk::Widget.new(__return_value)
     end

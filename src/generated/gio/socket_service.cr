@@ -11,7 +11,7 @@ module Gio
     end
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGio.socket_service_new
       cast Gio::SocketService.new(__return_value)
     end

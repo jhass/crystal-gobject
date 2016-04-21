@@ -35,7 +35,7 @@ module GObject
       __return_value
     end
 
-    def self.new_internal(type_prefixing)
+    def self.new(type_prefixing)
       __return_value = LibGObject.param_spec_pool_new(type_prefixing)
       GObject::ParamSpecPool.new(__return_value)
     end

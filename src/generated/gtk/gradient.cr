@@ -10,12 +10,12 @@ module Gtk
       @gtk_gradient.not_nil!
     end
 
-    def self.new_linear(x0, y0, x1, y1)
+    def self.new_linear(x0, y0, x1, y1) : self
       __return_value = LibGtk.gradient_new_linear(Float64.new(x0), Float64.new(y0), Float64.new(x1), Float64.new(y1))
       cast Gtk::Gradient.new(__return_value)
     end
 
-    def self.new_radial(x0, y0, radius0, x1, y1, radius1)
+    def self.new_radial(x0, y0, radius0, x1, y1, radius1) : self
       __return_value = LibGtk.gradient_new_radial(Float64.new(x0), Float64.new(y0), Float64.new(radius0), Float64.new(x1), Float64.new(y1), Float64.new(radius1))
       cast Gtk::Gradient.new(__return_value)
     end

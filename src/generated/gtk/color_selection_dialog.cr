@@ -16,7 +16,7 @@ module Gtk
 
 
 
-    def self.new_internal(title)
+    def self.new(title) : self
       __return_value = LibGtk.color_selection_dialog_new(title)
       cast Gtk::Widget.new(__return_value)
     end

@@ -10,12 +10,12 @@ module Gst
       @gst_caps_features.not_nil!
     end
 
-    def self.new_any
+    def self.new_any : self
       __return_value = LibGst.caps_features_new_any
       cast Gst::CapsFeatures.new(__return_value)
     end
 
-    def self.new_empty
+    def self.new_empty : self
       __return_value = LibGst.caps_features_new_empty
       cast Gst::CapsFeatures.new(__return_value)
     end

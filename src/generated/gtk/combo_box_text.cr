@@ -14,12 +14,12 @@ module Gtk
     # Implements Buildable
     # Implements CellEditable
     # Implements CellLayout
-    def self.new
+    def self.new : self
       __return_value = LibGtk.combo_box_text_new
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_entry
+    def self.new_with_entry : self
       __return_value = LibGtk.combo_box_text_new_with_entry
       cast Gtk::Widget.new(__return_value)
     end

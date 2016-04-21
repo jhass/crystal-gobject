@@ -9,7 +9,7 @@ module Gio
     end
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGio.d_bus_message_new
       cast Gio::DBusMessage.new(__return_value)
     end
@@ -21,12 +21,12 @@ module Gio
       Gio::DBusMessage.new(__return_value)
     end
 
-    def self.new_method_call(name, path, interface, method)
+    def self.new_method_call(name, path, interface, method) : self
       __return_value = LibGio.d_bus_message_new_method_call(name && name, path, interface && interface, method)
       cast Gio::DBusMessage.new(__return_value)
     end
 
-    def self.new_signal(path, interface, signal)
+    def self.new_signal(path, interface, signal) : self
       __return_value = LibGio.d_bus_message_new_signal(path, interface, signal)
       cast Gio::DBusMessage.new(__return_value)
     end

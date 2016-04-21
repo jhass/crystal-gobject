@@ -8,7 +8,7 @@ module Gio
       @gio_filename_completer.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGio.filename_completer_new
       cast Gio::FilenameCompleter.new(__return_value)
     end

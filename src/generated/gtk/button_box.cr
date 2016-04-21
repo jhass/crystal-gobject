@@ -14,7 +14,7 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
 
-    def self.new_internal(orientation)
+    def self.new(orientation) : self
       __return_value = LibGtk.button_box_new(orientation)
       cast Gtk::Widget.new(__return_value)
     end

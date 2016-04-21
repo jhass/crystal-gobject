@@ -10,7 +10,7 @@ module Pango
       @pango_item.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibPango.item_new
       cast Pango::Item.new(__return_value)
     end

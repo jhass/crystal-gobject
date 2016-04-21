@@ -11,7 +11,7 @@ module Gio
     end
 
 
-    def self.new_internal(max_threads)
+    def self.new(max_threads) : self
       __return_value = LibGio.threaded_socket_service_new(Int32.new(max_threads))
       cast Gio::SocketService.new(__return_value)
     end

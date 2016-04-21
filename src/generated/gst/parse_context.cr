@@ -10,7 +10,7 @@ module Gst
       @gst_parse_context.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGst.parse_context_new
       cast Gst::ParseContext.new(__return_value)
     end

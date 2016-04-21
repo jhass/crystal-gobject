@@ -14,27 +14,27 @@ module Gio
 
 
 
-    def self.new_internal(schema_id)
+    def self.new(schema_id) : self
       __return_value = LibGio.settings_new(schema_id)
       cast Gio::Settings.new(__return_value)
     end
 
-    def self.new_full(schema, backend, path)
+    def self.new_full(schema, backend, path) : self
       __return_value = LibGio.settings_new_full((schema.to_unsafe as LibGio::SettingsSchema*), backend && (backend.to_unsafe as LibGio::SettingsBackend*), path && path)
       cast Gio::Settings.new(__return_value)
     end
 
-    def self.new_with_backend(schema_id, backend)
+    def self.new_with_backend(schema_id, backend) : self
       __return_value = LibGio.settings_new_with_backend(schema_id, (backend.to_unsafe as LibGio::SettingsBackend*))
       cast Gio::Settings.new(__return_value)
     end
 
-    def self.new_with_backend_and_path(schema_id, backend, path)
+    def self.new_with_backend_and_path(schema_id, backend, path) : self
       __return_value = LibGio.settings_new_with_backend_and_path(schema_id, (backend.to_unsafe as LibGio::SettingsBackend*), path)
       cast Gio::Settings.new(__return_value)
     end
 
-    def self.new_with_path(schema_id, path)
+    def self.new_with_path(schema_id, path) : self
       __return_value = LibGio.settings_new_with_path(schema_id, path)
       cast Gio::Settings.new(__return_value)
     end

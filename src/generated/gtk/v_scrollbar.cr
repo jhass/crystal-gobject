@@ -13,7 +13,7 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
-    def self.new_internal(adjustment)
+    def self.new(adjustment) : self
       __return_value = LibGtk.v_scrollbar_new(adjustment && (adjustment.to_unsafe as LibGtk::Adjustment*))
       cast Gtk::Widget.new(__return_value)
     end

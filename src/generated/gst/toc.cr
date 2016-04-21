@@ -10,7 +10,7 @@ module Gst
       @gst_toc.not_nil!
     end
 
-    def self.new_internal(scope)
+    def self.new(scope) : self
       __return_value = LibGst.toc_new(scope)
       cast Gst::Toc.new(__return_value)
     end

@@ -10,32 +10,32 @@ module Gtk
       @gtk_symbolic_color.not_nil!
     end
 
-    def self.new_alpha(color, factor)
+    def self.new_alpha(color, factor) : self
       __return_value = LibGtk.symbolic_color_new_alpha((color.to_unsafe as LibGtk::SymbolicColor*), Float64.new(factor))
       cast Gtk::SymbolicColor.new(__return_value)
     end
 
-    def self.new_literal(color)
+    def self.new_literal(color) : self
       __return_value = LibGtk.symbolic_color_new_literal((color.to_unsafe as LibGdk::RGBA*))
       cast Gtk::SymbolicColor.new(__return_value)
     end
 
-    def self.new_mix(color1, color2, factor)
+    def self.new_mix(color1, color2, factor) : self
       __return_value = LibGtk.symbolic_color_new_mix((color1.to_unsafe as LibGtk::SymbolicColor*), (color2.to_unsafe as LibGtk::SymbolicColor*), Float64.new(factor))
       cast Gtk::SymbolicColor.new(__return_value)
     end
 
-    def self.new_name(name)
+    def self.new_name(name) : self
       __return_value = LibGtk.symbolic_color_new_name(name)
       cast Gtk::SymbolicColor.new(__return_value)
     end
 
-    def self.new_shade(color, factor)
+    def self.new_shade(color, factor) : self
       __return_value = LibGtk.symbolic_color_new_shade((color.to_unsafe as LibGtk::SymbolicColor*), Float64.new(factor))
       cast Gtk::SymbolicColor.new(__return_value)
     end
 
-    def self.new_win32(theme_class, id)
+    def self.new_win32(theme_class, id) : self
       __return_value = LibGtk.symbolic_color_new_win32(theme_class, Int32.new(id))
       cast Gtk::SymbolicColor.new(__return_value)
     end

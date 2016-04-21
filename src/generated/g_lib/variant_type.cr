@@ -10,27 +10,27 @@ module GLib
       @g_lib_variant_type.not_nil!
     end
 
-    def self.new_internal(type_string)
+    def self.new(type_string) : self
       __return_value = LibGLib.variant_type_new(type_string)
       cast GLib::VariantType.new(__return_value)
     end
 
-    def self.new_array(element)
+    def self.new_array(element) : self
       __return_value = LibGLib.variant_type_new_array((element.to_unsafe as LibGLib::VariantType*))
       cast GLib::VariantType.new(__return_value)
     end
 
-    def self.new_dict_entry(key, value)
+    def self.new_dict_entry(key, value) : self
       __return_value = LibGLib.variant_type_new_dict_entry((key.to_unsafe as LibGLib::VariantType*), (value.to_unsafe as LibGLib::VariantType*))
       cast GLib::VariantType.new(__return_value)
     end
 
-    def self.new_maybe(element)
+    def self.new_maybe(element) : self
       __return_value = LibGLib.variant_type_new_maybe((element.to_unsafe as LibGLib::VariantType*))
       cast GLib::VariantType.new(__return_value)
     end
 
-    def self.new_tuple(items, length)
+    def self.new_tuple(items, length) : self
       __return_value = LibGLib.variant_type_new_tuple(items, Int32.new(length))
       cast GLib::VariantType.new(__return_value)
     end

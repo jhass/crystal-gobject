@@ -14,7 +14,7 @@ module Gtk
     # Implements Buildable
     # Implements ColorChooser
 
-    def self.new_internal(title, parent)
+    def self.new(title, parent) : self
       __return_value = LibGtk.color_chooser_dialog_new(title && title, parent && (parent.to_unsafe as LibGtk::Window*))
       cast Gtk::Widget.new(__return_value)
     end

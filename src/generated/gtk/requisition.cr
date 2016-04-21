@@ -10,7 +10,7 @@ module Gtk
       @gtk_requisition.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.requisition_new
       cast Gtk::Requisition.new(__return_value)
     end

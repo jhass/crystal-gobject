@@ -8,7 +8,7 @@ module Gtk
       @gtk_page_setup.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.page_setup_new
       cast Gtk::PageSetup.new(__return_value)
     end

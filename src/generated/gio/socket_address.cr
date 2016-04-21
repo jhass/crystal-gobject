@@ -10,7 +10,7 @@ module Gio
 
     # Implements SocketConnectable
 
-    def self.new_from_native(native, len)
+    def self.new_from_native(native, len) : self
       __return_value = LibGio.socket_address_new_from_native(native, UInt64.new(len))
       cast Gio::SocketAddress.new(__return_value)
     end

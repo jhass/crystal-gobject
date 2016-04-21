@@ -11,7 +11,7 @@ module Gtk
 
 
 
-    def self.new_internal(initial_chars, n_initial_chars)
+    def self.new(initial_chars, n_initial_chars) : self
       __return_value = LibGtk.entry_buffer_new(initial_chars && initial_chars, Int32.new(n_initial_chars))
       cast Gtk::EntryBuffer.new(__return_value)
     end

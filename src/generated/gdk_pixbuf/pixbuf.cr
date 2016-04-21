@@ -19,17 +19,17 @@ module GdkPixbuf
 
 
 
-    def self.new_internal(colorspace, has_alpha, bits_per_sample, width, height)
+    def self.new(colorspace, has_alpha, bits_per_sample, width, height) : self
       __return_value = LibGdkPixbuf.pixbuf_new(colorspace, has_alpha, Int32.new(bits_per_sample), Int32.new(width), Int32.new(height))
       cast GdkPixbuf::Pixbuf.new(__return_value)
     end
 
-    def self.new_from_bytes(data, colorspace, has_alpha, bits_per_sample, width, height, rowstride)
+    def self.new_from_bytes(data, colorspace, has_alpha, bits_per_sample, width, height, rowstride) : self
       __return_value = LibGdkPixbuf.pixbuf_new_from_bytes((data.to_unsafe as LibGLib::Bytes*), colorspace, has_alpha, Int32.new(bits_per_sample), Int32.new(width), Int32.new(height), Int32.new(rowstride))
       cast GdkPixbuf::Pixbuf.new(__return_value)
     end
 
-    def self.new_from_data(data, colorspace, has_alpha, bits_per_sample, width, height, rowstride, destroy_fn : LibGdkPixbuf::PixbufDestroyNotify?, destroy_fn_data)
+    def self.new_from_data(data, colorspace, has_alpha, bits_per_sample, width, height, rowstride, destroy_fn : LibGdkPixbuf::PixbufDestroyNotify?, destroy_fn_data) : self
       __return_value = LibGdkPixbuf.pixbuf_new_from_data(data, colorspace, has_alpha, Int32.new(bits_per_sample), Int32.new(width), Int32.new(height), Int32.new(rowstride), destroy_fn && destroy_fn, destroy_fn_data && destroy_fn_data)
       cast GdkPixbuf::Pixbuf.new(__return_value)
     end
@@ -97,7 +97,7 @@ module GdkPixbuf
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 
-    def self.new_from_xpm_data(data)
+    def self.new_from_xpm_data(data) : self
       __return_value = LibGdkPixbuf.pixbuf_new_from_xpm_data(data)
       cast GdkPixbuf::Pixbuf.new(__return_value)
     end

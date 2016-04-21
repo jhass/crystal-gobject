@@ -14,7 +14,7 @@ module Gtk
     # Implements Buildable
     # Implements Scrollable
 
-    def self.new_internal(hadjustment, vadjustment)
+    def self.new(hadjustment, vadjustment) : self
       __return_value = LibGtk.viewport_new(hadjustment && (hadjustment.to_unsafe as LibGtk::Adjustment*), vadjustment && (vadjustment.to_unsafe as LibGtk::Adjustment*))
       cast Gtk::Widget.new(__return_value)
     end

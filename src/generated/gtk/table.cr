@@ -17,7 +17,7 @@ module Gtk
 
 
 
-    def self.new_internal(rows, columns, homogeneous)
+    def self.new(rows, columns, homogeneous) : self
       __return_value = LibGtk.table_new(UInt32.new(rows), UInt32.new(columns), homogeneous)
       cast Gtk::Widget.new(__return_value)
     end

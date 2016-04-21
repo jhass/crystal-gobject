@@ -8,7 +8,7 @@ module Gtk
       @gtk_print_settings.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.print_settings_new
       cast Gtk::PrintSettings.new(__return_value)
     end

@@ -10,7 +10,7 @@ module GObject
       @g_object_value_array.not_nil!
     end
 
-    def self.new_internal(n_prealloced)
+    def self.new(n_prealloced) : self
       __return_value = LibGObject.value_array_new(UInt32.new(n_prealloced))
       cast GObject::ValueArray.new(__return_value)
     end

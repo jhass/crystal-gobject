@@ -58,7 +58,7 @@ module Gtk
 
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.cell_renderer_text_new
       cast Gtk::CellRenderer.new(__return_value)
     end

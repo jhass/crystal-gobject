@@ -10,7 +10,7 @@ module Pango
       @pango_glyph_string.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibPango.glyph_string_new
       cast Pango::GlyphString.new(__return_value)
     end

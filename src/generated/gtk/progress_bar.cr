@@ -19,7 +19,7 @@ module Gtk
 
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.progress_bar_new
       cast Gtk::Widget.new(__return_value)
     end

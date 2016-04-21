@@ -11,7 +11,7 @@ module Gio
     # Implements ProxyResolver
 
 
-    def self.new_internal(default_proxy, ignore_hosts)
+    def self.new(default_proxy, ignore_hosts)
       __return_value = LibGio.simple_proxy_resolver_new(default_proxy && default_proxy, ignore_hosts && ignore_hosts)
       __return_value
     end

@@ -12,17 +12,17 @@ module Gio
 
 
 
-    def self.new_internal(iconname)
+    def self.new(iconname) : self
       __return_value = LibGio.themed_icon_new(iconname)
       cast Gio::ThemedIcon.new(__return_value)
     end
 
-    def self.new_from_names(iconnames, len)
+    def self.new_from_names(iconnames, len) : self
       __return_value = LibGio.themed_icon_new_from_names(iconnames, Int32.new(len))
       cast Gio::ThemedIcon.new(__return_value)
     end
 
-    def self.new_with_default_fallbacks(iconname)
+    def self.new_with_default_fallbacks(iconname) : self
       __return_value = LibGio.themed_icon_new_with_default_fallbacks(iconname)
       cast Gio::ThemedIcon.new(__return_value)
     end

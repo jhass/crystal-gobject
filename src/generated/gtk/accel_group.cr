@@ -10,7 +10,7 @@ module Gtk
 
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.accel_group_new
       cast Gtk::AccelGroup.new(__return_value)
     end

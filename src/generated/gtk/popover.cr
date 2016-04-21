@@ -18,12 +18,12 @@ module Gtk
 
 
 
-    def self.new_internal(relative_to)
+    def self.new(relative_to) : self
       __return_value = LibGtk.popover_new(relative_to && (relative_to.to_unsafe as LibGtk::Widget*))
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_from_model(relative_to, model)
+    def self.new_from_model(relative_to, model) : self
       __return_value = LibGtk.popover_new_from_model(relative_to && (relative_to.to_unsafe as LibGtk::Widget*), (model.to_unsafe as LibGio::MenuModel*))
       cast Gtk::Widget.new(__return_value)
     end

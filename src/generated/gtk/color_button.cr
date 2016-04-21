@@ -21,17 +21,17 @@ module Gtk
 
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.color_button_new
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_color(color)
+    def self.new_with_color(color) : self
       __return_value = LibGtk.color_button_new_with_color((color.to_unsafe as LibGdk::Color*))
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_rgba(rgba)
+    def self.new_with_rgba(rgba) : self
       __return_value = LibGtk.color_button_new_with_rgba((rgba.to_unsafe as LibGdk::RGBA*))
       cast Gtk::Widget.new(__return_value)
     end

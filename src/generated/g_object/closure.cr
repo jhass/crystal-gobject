@@ -10,12 +10,12 @@ module GObject
       @g_object_closure.not_nil!
     end
 
-    def self.new_object(sizeof_closure, object)
+    def self.new_object(sizeof_closure, object) : self
       __return_value = LibGObject.closure_new_object(UInt32.new(sizeof_closure), (object.to_unsafe as LibGObject::Object*))
       cast GObject::Closure.new(__return_value)
     end
 
-    def self.new_simple(sizeof_closure, data)
+    def self.new_simple(sizeof_closure, data) : self
       __return_value = LibGObject.closure_new_simple(UInt32.new(sizeof_closure), data && data)
       cast GObject::Closure.new(__return_value)
     end

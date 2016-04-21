@@ -10,17 +10,17 @@ module Gtk
       @gtk_paper_size.not_nil!
     end
 
-    def self.new_internal(name)
+    def self.new(name) : self
       __return_value = LibGtk.paper_size_new(name && name)
       cast Gtk::PaperSize.new(__return_value)
     end
 
-    def self.new_custom(name, display_name, width, height, unit)
+    def self.new_custom(name, display_name, width, height, unit) : self
       __return_value = LibGtk.paper_size_new_custom(name, display_name, Float64.new(width), Float64.new(height), unit)
       cast Gtk::PaperSize.new(__return_value)
     end
 
-    def self.new_from_ipp(ipp_name, width, height)
+    def self.new_from_ipp(ipp_name, width, height) : self
       __return_value = LibGtk.paper_size_new_from_ipp(ipp_name, Float64.new(width), Float64.new(height))
       cast Gtk::PaperSize.new(__return_value)
     end
@@ -32,7 +32,7 @@ module Gtk
       Gtk::PaperSize.new(__return_value)
     end
 
-    def self.new_from_ppd(ppd_name, ppd_display_name, width, height)
+    def self.new_from_ppd(ppd_name, ppd_display_name, width, height) : self
       __return_value = LibGtk.paper_size_new_from_ppd(ppd_name, ppd_display_name, Float64.new(width), Float64.new(height))
       cast Gtk::PaperSize.new(__return_value)
     end

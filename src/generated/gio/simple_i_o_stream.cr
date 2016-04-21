@@ -12,7 +12,7 @@ module Gio
 
 
 
-    def self.new_internal(input_stream, output_stream)
+    def self.new(input_stream, output_stream) : self
       __return_value = LibGio.simple_i_o_stream_new((input_stream.to_unsafe as LibGio::InputStream*), (output_stream.to_unsafe as LibGio::OutputStream*))
       cast Gio::IOStream.new(__return_value)
     end

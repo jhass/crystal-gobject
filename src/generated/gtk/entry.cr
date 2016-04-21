@@ -63,12 +63,12 @@ module Gtk
 
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.entry_new
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_buffer(buffer)
+    def self.new_with_buffer(buffer) : self
       __return_value = LibGtk.entry_new_with_buffer((buffer.to_unsafe as LibGtk::EntryBuffer*))
       cast Gtk::Widget.new(__return_value)
     end

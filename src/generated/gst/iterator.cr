@@ -10,7 +10,7 @@ module Gst
       @gst_iterator.not_nil!
     end
 
-    def self.new_single(type, object)
+    def self.new_single(type, object) : self
       __return_value = LibGst.iterator_new_single(UInt64.new(type), (object.to_unsafe as LibGObject::Value*))
       cast Gst::Iterator.new(__return_value)
     end

@@ -10,22 +10,22 @@ module Gst
       @gst_buffer.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGst.buffer_new
       cast Gst::Buffer.new(__return_value)
     end
 
-    def self.new_allocate(allocator, size, params)
+    def self.new_allocate(allocator, size, params) : self
       __return_value = LibGst.buffer_new_allocate(allocator && (allocator.to_unsafe as LibGst::Allocator*), UInt64.new(size), params && (params.to_unsafe as LibGst::AllocationParams*))
       cast Gst::Buffer.new(__return_value) if __return_value
     end
 
-    def self.new_wrapped(data, size)
+    def self.new_wrapped(data, size) : self
       __return_value = LibGst.buffer_new_wrapped(data, UInt64.new(size))
       cast Gst::Buffer.new(__return_value)
     end
 
-    def self.new_wrapped_full(flags, data, maxsize, offset, size, user_data, notify : LibGLib::DestroyNotify?)
+    def self.new_wrapped_full(flags, data, maxsize, offset, size, user_data, notify : LibGLib::DestroyNotify?) : self
       __return_value = LibGst.buffer_new_wrapped_full(flags, data, UInt64.new(maxsize), UInt64.new(offset), UInt64.new(size), user_data && user_data, notify && notify)
       cast Gst::Buffer.new(__return_value)
     end

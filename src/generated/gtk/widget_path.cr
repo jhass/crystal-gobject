@@ -10,7 +10,7 @@ module Gtk
       @gtk_widget_path.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.widget_path_new
       cast Gtk::WidgetPath.new(__return_value)
     end

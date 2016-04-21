@@ -8,7 +8,7 @@ module Gio
       @gio_file_info.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGio.file_info_new
       cast Gio::FileInfo.new(__return_value)
     end

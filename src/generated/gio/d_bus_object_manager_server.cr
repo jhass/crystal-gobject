@@ -11,7 +11,7 @@ module Gio
     # Implements DBusObjectManager
 
 
-    def self.new_internal(object_path)
+    def self.new(object_path) : self
       __return_value = LibGio.d_bus_object_manager_server_new(object_path)
       cast Gio::DBusObjectManagerServer.new(__return_value)
     end

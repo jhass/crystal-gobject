@@ -12,7 +12,7 @@ module Gio
 
 
 
-    def self.new_internal(addr, length)
+    def self.new(addr, length)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.inet_address_mask_new((addr.to_unsafe as LibGio::InetAddress*), UInt32.new(length), pointerof(__error))
       GLib::Error.assert __error

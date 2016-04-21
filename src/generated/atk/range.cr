@@ -10,7 +10,7 @@ module Atk
       @atk_range.not_nil!
     end
 
-    def self.new_internal(lower_limit, upper_limit, description)
+    def self.new(lower_limit, upper_limit, description) : self
       __return_value = LibAtk.range_new(Float64.new(lower_limit), Float64.new(upper_limit), description)
       cast Atk::Range.new(__return_value)
     end

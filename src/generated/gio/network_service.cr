@@ -13,7 +13,7 @@ module Gio
 
 
 
-    def self.new_internal(service, protocol, domain)
+    def self.new(service, protocol, domain) : self
       __return_value = LibGio.network_service_new(service, protocol, domain)
       cast Gio::NetworkService.new(__return_value)
     end

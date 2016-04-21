@@ -9,7 +9,7 @@ module Gtk
     end
 
     # Implements Buildable
-    def self.new
+    def self.new : self
       __return_value = LibGtk.icon_factory_new
       cast Gtk::IconFactory.new(__return_value)
     end

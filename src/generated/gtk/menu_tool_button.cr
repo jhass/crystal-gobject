@@ -15,12 +15,12 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
 
-    def self.new_internal(icon_widget, label)
+    def self.new(icon_widget, label) : self
       __return_value = LibGtk.menu_tool_button_new(icon_widget && (icon_widget.to_unsafe as LibGtk::Widget*), label && label)
       cast Gtk::ToolItem.new(__return_value)
     end
 
-    def self.new_from_stock(stock_id)
+    def self.new_from_stock(stock_id) : self
       __return_value = LibGtk.menu_tool_button_new_from_stock(stock_id)
       cast Gtk::ToolItem.new(__return_value)
     end

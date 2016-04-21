@@ -14,7 +14,7 @@ module Gtk
 
 
 
-    def self.new_internal(name, label, tooltip, stock_id, value)
+    def self.new(name, label, tooltip, stock_id, value) : self
       __return_value = LibGtk.radio_action_new(name, label && label, tooltip && tooltip, stock_id && stock_id, Int32.new(value))
       cast Gtk::RadioAction.new(__return_value)
     end

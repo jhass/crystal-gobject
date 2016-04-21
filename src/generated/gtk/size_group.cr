@@ -11,7 +11,7 @@ module Gtk
     # Implements Buildable
 
 
-    def self.new_internal(mode)
+    def self.new(mode) : self
       __return_value = LibGtk.size_group_new(mode)
       cast Gtk::SizeGroup.new(__return_value)
     end

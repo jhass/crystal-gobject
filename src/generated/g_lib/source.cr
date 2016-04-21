@@ -10,7 +10,7 @@ module GLib
       @g_lib_source.not_nil!
     end
 
-    def self.new_internal(source_funcs, struct_size)
+    def self.new(source_funcs, struct_size) : self
       __return_value = LibGLib.source_new((source_funcs.to_unsafe as LibGLib::SourceFuncs*), UInt32.new(struct_size))
       cast GLib::Source.new(__return_value)
     end

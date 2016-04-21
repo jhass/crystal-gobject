@@ -13,12 +13,12 @@ module Gtk
     # Implements Buildable
     # Implements RecentChooser
 
-    def self.new_internal(name, label, tooltip, stock_id)
+    def self.new(name, label, tooltip, stock_id) : self
       __return_value = LibGtk.recent_action_new(name, label && label, tooltip && tooltip, stock_id && stock_id)
       cast Gtk::Action.new(__return_value)
     end
 
-    def self.new_for_manager(name, label, tooltip, stock_id, manager)
+    def self.new_for_manager(name, label, tooltip, stock_id, manager) : self
       __return_value = LibGtk.recent_action_new_for_manager(name, label && label, tooltip && tooltip, stock_id && stock_id, manager && (manager.to_unsafe as LibGtk::RecentManager*))
       cast Gtk::Action.new(__return_value)
     end

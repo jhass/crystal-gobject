@@ -18,7 +18,7 @@ module Gio
 
 
 
-    def self.new_internal(application_id, flags)
+    def self.new(application_id, flags) : self
       __return_value = LibGio.application_new(application_id && application_id, flags)
       cast Gio::Application.new(__return_value)
     end

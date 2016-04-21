@@ -8,22 +8,22 @@ module Gio
       @gio_menu_item.not_nil!
     end
 
-    def self.new_internal(label, detailed_action)
+    def self.new(label, detailed_action) : self
       __return_value = LibGio.menu_item_new(label && label, detailed_action && detailed_action)
       cast Gio::MenuItem.new(__return_value)
     end
 
-    def self.new_from_model(model, item_index)
+    def self.new_from_model(model, item_index) : self
       __return_value = LibGio.menu_item_new_from_model((model.to_unsafe as LibGio::MenuModel*), Int32.new(item_index))
       cast Gio::MenuItem.new(__return_value)
     end
 
-    def self.new_section(label, section)
+    def self.new_section(label, section) : self
       __return_value = LibGio.menu_item_new_section(label && label, (section.to_unsafe as LibGio::MenuModel*))
       cast Gio::MenuItem.new(__return_value)
     end
 
-    def self.new_submenu(label, submenu)
+    def self.new_submenu(label, submenu) : self
       __return_value = LibGio.menu_item_new_submenu(label && label, (submenu.to_unsafe as LibGio::MenuModel*))
       cast Gio::MenuItem.new(__return_value)
     end

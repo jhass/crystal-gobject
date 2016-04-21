@@ -10,7 +10,7 @@ module Atk
       @atk_no_op_object_factory.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibAtk.no_op_object_factory_new
       cast Atk::ObjectFactory.new(__return_value)
     end

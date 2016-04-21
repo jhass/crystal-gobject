@@ -13,7 +13,7 @@ module Gtk
     # Implements TreeDragSource
     # Implements TreeModel
     # Implements TreeSortable
-    def self.new_internal(n_columns, types)
+    def self.new(n_columns, types) : self
       __return_value = LibGtk.tree_store_new(Int32.new(n_columns), types)
       cast Gtk::TreeStore.new(__return_value)
     end

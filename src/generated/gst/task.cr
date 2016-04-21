@@ -10,7 +10,7 @@ module Gst
       @gst_task.not_nil!
     end
 
-    def self.new_internal(func : LibGst::TaskFunction, user_data, notify : LibGLib::DestroyNotify)
+    def self.new(func : LibGst::TaskFunction, user_data, notify : LibGLib::DestroyNotify) : self
       __return_value = LibGst.task_new(func, user_data && user_data, notify)
       cast Gst::Task.new(__return_value)
     end

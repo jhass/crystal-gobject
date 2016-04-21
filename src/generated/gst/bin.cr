@@ -13,7 +13,7 @@ module Gst
     # Implements ChildProxy
 
 
-    def self.new_internal(name)
+    def self.new(name) : self
       __return_value = LibGst.bin_new(name && name)
       cast Gst::Element.new(__return_value)
     end

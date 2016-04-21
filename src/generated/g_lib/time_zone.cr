@@ -10,17 +10,17 @@ module GLib
       @g_lib_time_zone.not_nil!
     end
 
-    def self.new_internal(identifier)
+    def self.new(identifier) : self
       __return_value = LibGLib.time_zone_new(identifier && identifier)
       cast GLib::TimeZone.new(__return_value)
     end
 
-    def self.new_local
+    def self.new_local : self
       __return_value = LibGLib.time_zone_new_local
       cast GLib::TimeZone.new(__return_value)
     end
 
-    def self.new_utc
+    def self.new_utc : self
       __return_value = LibGLib.time_zone_new_utc
       cast GLib::TimeZone.new(__return_value)
     end

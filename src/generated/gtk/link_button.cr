@@ -16,12 +16,12 @@ module Gtk
     # Implements Buildable
 
 
-    def self.new_internal(uri)
+    def self.new(uri) : self
       __return_value = LibGtk.link_button_new(uri)
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_label(uri, label)
+    def self.new_with_label(uri, label) : self
       __return_value = LibGtk.link_button_new_with_label(uri, label && label)
       cast Gtk::Widget.new(__return_value)
     end

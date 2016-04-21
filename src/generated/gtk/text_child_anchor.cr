@@ -8,7 +8,7 @@ module Gtk
       @gtk_text_child_anchor.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.text_child_anchor_new
       cast Gtk::TextChildAnchor.new(__return_value)
     end

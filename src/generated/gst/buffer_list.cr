@@ -10,12 +10,12 @@ module Gst
       @gst_buffer_list.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGst.buffer_list_new
       cast Gst::BufferList.new(__return_value)
     end
 
-    def self.new_sized(size)
+    def self.new_sized(size) : self
       __return_value = LibGst.buffer_list_new_sized(UInt32.new(size))
       cast Gst::BufferList.new(__return_value)
     end

@@ -48,7 +48,7 @@ module Gio
       Gio::DBusProxy.new(__return_value)
     end
 
-    def self.new_internal(connection, flags, info, name, object_path, interface_name, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def self.new(connection, flags, info, name, object_path, interface_name, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
       __return_value = LibGio.d_bus_proxy_new((connection.to_unsafe as LibGio::DBusConnection*), flags, info && (info.to_unsafe as LibGio::DBusInterfaceInfo*), name && name, object_path, interface_name, cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end

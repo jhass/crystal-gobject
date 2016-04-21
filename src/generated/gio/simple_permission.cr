@@ -10,7 +10,7 @@ module Gio
       @gio_simple_permission.not_nil!
     end
 
-    def self.new_internal(allowed)
+    def self.new(allowed) : self
       __return_value = LibGio.simple_permission_new(allowed)
       cast Gio::Permission.new(__return_value)
     end

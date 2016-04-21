@@ -14,7 +14,7 @@ module Gtk
 
 
 
-    def self.new_internal(table)
+    def self.new(table) : self
       __return_value = LibGtk.text_buffer_new(table && (table.to_unsafe as LibGtk::TextTagTable*))
       cast Gtk::TextBuffer.new(__return_value)
     end

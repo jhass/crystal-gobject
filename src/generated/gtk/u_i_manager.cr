@@ -11,7 +11,7 @@ module Gtk
     # Implements Buildable
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.u_i_manager_new
       cast Gtk::UIManager.new(__return_value)
     end

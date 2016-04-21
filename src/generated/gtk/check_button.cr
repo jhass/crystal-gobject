@@ -14,17 +14,17 @@ module Gtk
     # Implements Actionable
     # Implements Activatable
     # Implements Buildable
-    def self.new
+    def self.new : self
       __return_value = LibGtk.check_button_new
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_label(label)
+    def self.new_with_label(label) : self
       __return_value = LibGtk.check_button_new_with_label(label)
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_mnemonic(label)
+    def self.new_with_mnemonic(label) : self
       __return_value = LibGtk.check_button_new_with_mnemonic(label)
       cast Gtk::Widget.new(__return_value)
     end

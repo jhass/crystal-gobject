@@ -10,7 +10,7 @@ module Gst
       @gst_memory.not_nil!
     end
 
-    def self.new_wrapped(flags, data, maxsize, offset, size, user_data, notify : LibGLib::DestroyNotify?)
+    def self.new_wrapped(flags, data, maxsize, offset, size, user_data, notify : LibGLib::DestroyNotify?) : self
       __return_value = LibGst.memory_new_wrapped(flags, data, UInt64.new(maxsize), UInt64.new(offset), UInt64.new(size), user_data && user_data, notify && notify)
       cast Gst::Memory.new(__return_value)
     end

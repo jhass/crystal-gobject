@@ -10,7 +10,7 @@ module Gtk
       @gtk_icon_source.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.icon_source_new
       cast Gtk::IconSource.new(__return_value)
     end

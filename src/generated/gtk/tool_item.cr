@@ -16,7 +16,7 @@ module Gtk
 
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.tool_item_new
       cast Gtk::ToolItem.new(__return_value)
     end

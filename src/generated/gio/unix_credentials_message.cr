@@ -11,12 +11,12 @@ module Gio
     end
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGio.unix_credentials_message_new
       cast Gio::SocketControlMessage.new(__return_value)
     end
 
-    def self.new_with_credentials(credentials)
+    def self.new_with_credentials(credentials) : self
       __return_value = LibGio.unix_credentials_message_new_with_credentials((credentials.to_unsafe as LibGio::Credentials*))
       cast Gio::SocketControlMessage.new(__return_value)
     end

@@ -15,12 +15,12 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.toggle_tool_button_new
       cast Gtk::ToolItem.new(__return_value)
     end
 
-    def self.new_from_stock(stock_id)
+    def self.new_from_stock(stock_id) : self
       __return_value = LibGtk.toggle_tool_button_new_from_stock(stock_id)
       cast Gtk::ToolItem.new(__return_value)
     end

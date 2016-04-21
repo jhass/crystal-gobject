@@ -8,7 +8,7 @@ module Gtk
       @gtk_icon_info.not_nil!
     end
 
-    def self.new_for_pixbuf(icon_theme, pixbuf)
+    def self.new_for_pixbuf(icon_theme, pixbuf) : self
       __return_value = LibGtk.icon_info_new_for_pixbuf((icon_theme.to_unsafe as LibGtk::IconTheme*), (pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*))
       cast Gtk::IconInfo.new(__return_value)
     end

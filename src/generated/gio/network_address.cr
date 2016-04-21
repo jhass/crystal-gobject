@@ -12,12 +12,12 @@ module Gio
 
 
 
-    def self.new_internal(hostname, port)
+    def self.new(hostname, port) : self
       __return_value = LibGio.network_address_new(hostname, UInt16.new(port))
       cast Gio::NetworkAddress.new(__return_value)
     end
 
-    def self.new_loopback(port)
+    def self.new_loopback(port) : self
       __return_value = LibGio.network_address_new_loopback(UInt16.new(port))
       cast Gio::NetworkAddress.new(__return_value)
     end

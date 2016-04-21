@@ -14,12 +14,12 @@ module Gtk
     # Implements Buildable
 
 
-    def self.new_internal(socket_id)
+    def self.new(socket_id) : self
       __return_value = LibGtk.plug_new(UInt64.new(socket_id))
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_for_display(display, socket_id)
+    def self.new_for_display(display, socket_id) : self
       __return_value = LibGtk.plug_new_for_display((display.to_unsafe as LibGdk::Display*), UInt64.new(socket_id))
       cast Gtk::Widget.new(__return_value)
     end

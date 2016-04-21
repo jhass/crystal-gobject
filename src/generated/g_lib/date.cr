@@ -10,17 +10,17 @@ module GLib
       @g_lib_date.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGLib.date_new
       cast GLib::Date.new(__return_value)
     end
 
-    def self.new_dmy(day, month, year)
+    def self.new_dmy(day, month, year) : self
       __return_value = LibGLib.date_new_dmy(UInt8.new(day), month, UInt16.new(year))
       cast GLib::Date.new(__return_value)
     end
 
-    def self.new_julian(julian_day)
+    def self.new_julian(julian_day) : self
       __return_value = LibGLib.date_new_julian(UInt32.new(julian_day))
       cast GLib::Date.new(__return_value)
     end

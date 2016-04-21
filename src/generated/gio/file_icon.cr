@@ -11,7 +11,7 @@ module Gio
     # Implements Icon
     # Implements LoadableIcon
 
-    def self.new_internal(file)
+    def self.new(file) : self
       __return_value = LibGio.file_icon_new((file.to_unsafe as LibGio::File*))
       cast Gio::FileIcon.new(__return_value)
     end

@@ -10,127 +10,127 @@ module GLib
       @g_lib_variant.not_nil!
     end
 
-    def self.new_array(child_type, children, n_children)
+    def self.new_array(child_type, children, n_children) : self
       __return_value = LibGLib.variant_new_array(child_type && (child_type.to_unsafe as LibGLib::VariantType*), children && children, UInt64.new(n_children))
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_boolean(value)
+    def self.new_boolean(value) : self
       __return_value = LibGLib.variant_new_boolean(value)
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_byte(value)
+    def self.new_byte(value) : self
       __return_value = LibGLib.variant_new_byte(UInt8.new(value))
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_bytestring(string)
+    def self.new_bytestring(string) : self
       __return_value = LibGLib.variant_new_bytestring(string)
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_bytestring_array(strv, length)
+    def self.new_bytestring_array(strv, length) : self
       __return_value = LibGLib.variant_new_bytestring_array(strv, Int64.new(length))
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_dict_entry(key, value)
+    def self.new_dict_entry(key, value) : self
       __return_value = LibGLib.variant_new_dict_entry((key.to_unsafe as LibGLib::Variant*), (value.to_unsafe as LibGLib::Variant*))
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_double(value)
+    def self.new_double(value) : self
       __return_value = LibGLib.variant_new_double(Float64.new(value))
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_fixed_array(element_type, elements, n_elements, element_size)
+    def self.new_fixed_array(element_type, elements, n_elements, element_size) : self
       __return_value = LibGLib.variant_new_fixed_array((element_type.to_unsafe as LibGLib::VariantType*), elements && elements, UInt64.new(n_elements), UInt64.new(element_size))
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_from_bytes(type, bytes, trusted)
+    def self.new_from_bytes(type, bytes, trusted) : self
       __return_value = LibGLib.variant_new_from_bytes((type.to_unsafe as LibGLib::VariantType*), (bytes.to_unsafe as LibGLib::Bytes*), trusted)
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_from_data(type, data, size, trusted, notify : LibGLib::DestroyNotify, user_data)
+    def self.new_from_data(type, data, size, trusted, notify : LibGLib::DestroyNotify, user_data) : self
       __return_value = LibGLib.variant_new_from_data((type.to_unsafe as LibGLib::VariantType*), data, UInt64.new(size), trusted, notify, user_data && user_data)
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_handle(value)
+    def self.new_handle(value) : self
       __return_value = LibGLib.variant_new_handle(Int32.new(value))
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_int16(value)
+    def self.new_int16(value) : self
       __return_value = LibGLib.variant_new_int16(Int16.new(value))
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_int32(value)
+    def self.new_int32(value) : self
       __return_value = LibGLib.variant_new_int32(Int32.new(value))
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_int64(value)
+    def self.new_int64(value) : self
       __return_value = LibGLib.variant_new_int64(Int64.new(value))
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_maybe(child_type, child)
+    def self.new_maybe(child_type, child) : self
       __return_value = LibGLib.variant_new_maybe(child_type && (child_type.to_unsafe as LibGLib::VariantType*), child && (child.to_unsafe as LibGLib::Variant*))
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_object_path(object_path)
+    def self.new_object_path(object_path) : self
       __return_value = LibGLib.variant_new_object_path(object_path)
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_objv(strv, length)
+    def self.new_objv(strv, length) : self
       __return_value = LibGLib.variant_new_objv(strv, Int64.new(length))
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_signature(signature)
+    def self.new_signature(signature) : self
       __return_value = LibGLib.variant_new_signature(signature)
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_string(string)
+    def self.new_string(string) : self
       __return_value = LibGLib.variant_new_string(string)
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_strv(strv, length)
+    def self.new_strv(strv, length) : self
       __return_value = LibGLib.variant_new_strv(strv, Int64.new(length))
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_tuple(children, n_children)
+    def self.new_tuple(children, n_children) : self
       __return_value = LibGLib.variant_new_tuple(children, UInt64.new(n_children))
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_uint16(value)
+    def self.new_uint16(value) : self
       __return_value = LibGLib.variant_new_uint16(UInt16.new(value))
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_uint32(value)
+    def self.new_uint32(value) : self
       __return_value = LibGLib.variant_new_uint32(UInt32.new(value))
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_uint64(value)
+    def self.new_uint64(value) : self
       __return_value = LibGLib.variant_new_uint64(UInt64.new(value))
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_variant(value)
+    def self.new_variant(value) : self
       __return_value = LibGLib.variant_new_variant((value.to_unsafe as LibGLib::Variant*))
       cast GLib::Variant.new(__return_value)
     end

@@ -14,7 +14,7 @@ module Gio
     # Implements PollableInputStream
 
 
-    def self.new_internal(fd, close_fd)
+    def self.new(fd, close_fd) : self
       __return_value = LibGio.unix_input_stream_new(Int32.new(fd), close_fd)
       cast Gio::InputStream.new(__return_value)
     end

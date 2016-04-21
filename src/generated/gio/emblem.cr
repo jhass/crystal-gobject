@@ -11,12 +11,12 @@ module Gio
     # Implements Icon
 
 
-    def self.new_internal(icon)
+    def self.new(icon) : self
       __return_value = LibGio.emblem_new((icon.to_unsafe as LibGio::Icon*))
       cast Gio::Emblem.new(__return_value)
     end
 
-    def self.new_with_origin(icon, origin)
+    def self.new_with_origin(icon, origin) : self
       __return_value = LibGio.emblem_new_with_origin((icon.to_unsafe as LibGio::Icon*), origin)
       cast Gio::Emblem.new(__return_value)
     end

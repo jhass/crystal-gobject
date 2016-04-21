@@ -9,7 +9,7 @@ module Gdk
     end
 
 
-    def self.new_internal(parent, attributes, attributes_mask)
+    def self.new(parent, attributes, attributes_mask) : self
       __return_value = LibGdk.window_new(parent && (parent.to_unsafe as LibGdk::Window*), (attributes.to_unsafe as LibGdk::WindowAttr*), attributes_mask)
       cast Gdk::Window.new(__return_value)
     end

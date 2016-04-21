@@ -10,7 +10,7 @@ module Gtk
       @gtk_text_attributes.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.text_attributes_new
       cast Gtk::TextAttributes.new(__return_value)
     end

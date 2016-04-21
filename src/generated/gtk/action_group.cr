@@ -13,7 +13,7 @@ module Gtk
 
 
 
-    def self.new_internal(name)
+    def self.new(name) : self
       __return_value = LibGtk.action_group_new(name)
       cast Gtk::ActionGroup.new(__return_value)
     end

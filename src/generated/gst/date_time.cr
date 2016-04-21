@@ -10,57 +10,57 @@ module Gst
       @gst_date_time.not_nil!
     end
 
-    def self.new_internal(tzoffset, year, month, day, hour, minute, seconds)
+    def self.new(tzoffset, year, month, day, hour, minute, seconds) : self
       __return_value = LibGst.date_time_new(Float32.new(tzoffset), Int32.new(year), Int32.new(month), Int32.new(day), Int32.new(hour), Int32.new(minute), Float64.new(seconds))
       cast Gst::DateTime.new(__return_value)
     end
 
-    def self.new_from_g_date_time(dt)
+    def self.new_from_g_date_time(dt) : self
       __return_value = LibGst.date_time_new_from_g_date_time((dt.to_unsafe as LibGLib::DateTime*))
       cast Gst::DateTime.new(__return_value) if __return_value
     end
 
-    def self.new_from_iso8601_string(string)
+    def self.new_from_iso8601_string(string) : self
       __return_value = LibGst.date_time_new_from_iso8601_string(string)
       cast Gst::DateTime.new(__return_value) if __return_value
     end
 
-    def self.new_from_unix_epoch_local_time(secs)
+    def self.new_from_unix_epoch_local_time(secs) : self
       __return_value = LibGst.date_time_new_from_unix_epoch_local_time(Int64.new(secs))
       cast Gst::DateTime.new(__return_value)
     end
 
-    def self.new_from_unix_epoch_utc(secs)
+    def self.new_from_unix_epoch_utc(secs) : self
       __return_value = LibGst.date_time_new_from_unix_epoch_utc(Int64.new(secs))
       cast Gst::DateTime.new(__return_value)
     end
 
-    def self.new_local_time(year, month, day, hour, minute, seconds)
+    def self.new_local_time(year, month, day, hour, minute, seconds) : self
       __return_value = LibGst.date_time_new_local_time(Int32.new(year), Int32.new(month), Int32.new(day), Int32.new(hour), Int32.new(minute), Float64.new(seconds))
       cast Gst::DateTime.new(__return_value)
     end
 
-    def self.new_now_local_time
+    def self.new_now_local_time : self
       __return_value = LibGst.date_time_new_now_local_time
       cast Gst::DateTime.new(__return_value)
     end
 
-    def self.new_now_utc
+    def self.new_now_utc : self
       __return_value = LibGst.date_time_new_now_utc
       cast Gst::DateTime.new(__return_value)
     end
 
-    def self.new_y(year)
+    def self.new_y(year) : self
       __return_value = LibGst.date_time_new_y(Int32.new(year))
       cast Gst::DateTime.new(__return_value)
     end
 
-    def self.new_ym(year, month)
+    def self.new_ym(year, month) : self
       __return_value = LibGst.date_time_new_ym(Int32.new(year), Int32.new(month))
       cast Gst::DateTime.new(__return_value)
     end
 
-    def self.new_ymd(year, month, day)
+    def self.new_ymd(year, month, day) : self
       __return_value = LibGst.date_time_new_ymd(Int32.new(year), Int32.new(month), Int32.new(day))
       cast Gst::DateTime.new(__return_value)
     end

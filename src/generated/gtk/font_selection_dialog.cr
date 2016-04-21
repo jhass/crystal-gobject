@@ -12,7 +12,7 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
-    def self.new_internal(title)
+    def self.new(title) : self
       __return_value = LibGtk.font_selection_dialog_new(title)
       cast Gtk::Widget.new(__return_value)
     end

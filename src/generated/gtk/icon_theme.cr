@@ -8,7 +8,7 @@ module Gtk
       @gtk_icon_theme.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.icon_theme_new
       cast Gtk::IconTheme.new(__return_value)
     end

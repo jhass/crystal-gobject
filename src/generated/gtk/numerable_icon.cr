@@ -14,7 +14,7 @@ module Gtk
 
 
 
-    def self.new_internal(base_icon)
+    def self.new(base_icon)
       __return_value = LibGtk.numerable_icon_new((base_icon.to_unsafe as LibGio::Icon*))
       __return_value
     end

@@ -20,12 +20,12 @@ module Gtk
 
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.menu_new
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_from_model(model)
+    def self.new_from_model(model) : self
       __return_value = LibGtk.menu_new_from_model((model.to_unsafe as LibGio::MenuModel*))
       cast Gtk::Widget.new(__return_value)
     end

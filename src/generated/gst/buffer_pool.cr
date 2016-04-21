@@ -10,7 +10,7 @@ module Gst
       @gst_buffer_pool.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGst.buffer_pool_new
       cast Gst::BufferPool.new(__return_value)
     end

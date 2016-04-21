@@ -8,7 +8,7 @@ module Gio
       @gio_d_bus_auth_observer.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGio.d_bus_auth_observer_new
       cast Gio::DBusAuthObserver.new(__return_value)
     end

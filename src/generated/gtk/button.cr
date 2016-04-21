@@ -23,27 +23,27 @@ module Gtk
 
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.button_new
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_from_icon_name(icon_name, size)
+    def self.new_from_icon_name(icon_name, size) : self
       __return_value = LibGtk.button_new_from_icon_name(icon_name, Int32.new(size))
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_from_stock(stock_id)
+    def self.new_from_stock(stock_id) : self
       __return_value = LibGtk.button_new_from_stock(stock_id)
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_label(label)
+    def self.new_with_label(label) : self
       __return_value = LibGtk.button_new_with_label(label)
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_mnemonic(label)
+    def self.new_with_mnemonic(label) : self
       __return_value = LibGtk.button_new_with_mnemonic(label)
       cast Gtk::Widget.new(__return_value)
     end

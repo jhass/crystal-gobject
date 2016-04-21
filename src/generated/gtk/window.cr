@@ -45,7 +45,7 @@ module Gtk
 
 
 
-    def self.new_internal(type)
+    def self.new(type) : self
       __return_value = LibGtk.window_new(type)
       cast Gtk::Widget.new(__return_value)
     end

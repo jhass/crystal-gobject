@@ -14,7 +14,7 @@ module Gtk
 
 
 
-    def self.new_internal(value, lower, upper, step_increment, page_increment, page_size)
+    def self.new(value, lower, upper, step_increment, page_increment, page_size) : self
       __return_value = LibGtk.adjustment_new(Float64.new(value), Float64.new(lower), Float64.new(upper), Float64.new(step_increment), Float64.new(page_increment), Float64.new(page_size))
       cast Gtk::Adjustment.new(__return_value)
     end

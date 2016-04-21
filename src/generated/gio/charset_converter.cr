@@ -13,7 +13,7 @@ module Gio
 
 
 
-    def self.new_internal(to_charset, from_charset)
+    def self.new(to_charset, from_charset)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.charset_converter_new(to_charset, from_charset, pointerof(__error))
       GLib::Error.assert __error

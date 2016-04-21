@@ -14,7 +14,7 @@ module Gtk
 
 
 
-    def self.new_internal(application_id, flags)
+    def self.new(application_id, flags) : self
       __return_value = LibGtk.application_new(application_id && application_id, flags)
       cast Gtk::Application.new(__return_value)
     end

@@ -11,7 +11,7 @@ module Atk
     end
 
     # Implements Component
-    def self.new
+    def self.new : self
       __return_value = LibAtk.socket_new
       cast Atk::Object.new(__return_value)
     end

@@ -10,7 +10,7 @@ module Gio
 
     # Implements DBusObject
 
-    def self.new_internal(object_path)
+    def self.new(object_path) : self
       __return_value = LibGio.d_bus_object_skeleton_new(object_path)
       cast Gio::DBusObjectSkeleton.new(__return_value)
     end

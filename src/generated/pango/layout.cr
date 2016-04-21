@@ -8,7 +8,7 @@ module Pango
       @pango_layout.not_nil!
     end
 
-    def self.new_internal(context)
+    def self.new(context) : self
       __return_value = LibPango.layout_new((context.to_unsafe as LibPango::Context*))
       cast Pango::Layout.new(__return_value)
     end

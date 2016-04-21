@@ -14,17 +14,17 @@ module Gst
 
 
 
-    def self.new_internal(name, direction)
+    def self.new(name, direction) : self
       __return_value = LibGst.pad_new(name && name, direction)
       cast Gst::Pad.new(__return_value) if __return_value
     end
 
-    def self.new_from_static_template(templ, name)
+    def self.new_from_static_template(templ, name) : self
       __return_value = LibGst.pad_new_from_static_template((templ.to_unsafe as LibGst::StaticPadTemplate*), name)
       cast Gst::Pad.new(__return_value) if __return_value
     end
 
-    def self.new_from_template(templ, name)
+    def self.new_from_template(templ, name) : self
       __return_value = LibGst.pad_new_from_template((templ.to_unsafe as LibGst::PadTemplate*), name && name)
       cast Gst::Pad.new(__return_value) if __return_value
     end

@@ -8,12 +8,12 @@ module Gio
       @gio_unix_f_d_list.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGio.unix_f_d_list_new
       cast Gio::UnixFDList.new(__return_value)
     end
 
-    def self.new_from_array(fds, n_fds)
+    def self.new_from_array(fds, n_fds) : self
       __return_value = LibGio.unix_f_d_list_new_from_array(fds, Int32.new(n_fds))
       cast Gio::UnixFDList.new(__return_value)
     end

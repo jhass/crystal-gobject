@@ -15,17 +15,17 @@ module Gio
 
 
 
-    def self.new_internal(path)
+    def self.new(path) : self
       __return_value = LibGio.unix_socket_address_new(path)
       cast Gio::SocketAddress.new(__return_value)
     end
 
-    def self.new_abstract(path, path_len)
+    def self.new_abstract(path, path_len) : self
       __return_value = LibGio.unix_socket_address_new_abstract(path, Int32.new(path_len))
       cast Gio::SocketAddress.new(__return_value)
     end
 
-    def self.new_with_type(path, path_len, type)
+    def self.new_with_type(path, path_len, type) : self
       __return_value = LibGio.unix_socket_address_new_with_type(path, Int32.new(path_len), type)
       cast Gio::SocketAddress.new(__return_value)
     end

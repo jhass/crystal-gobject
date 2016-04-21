@@ -9,7 +9,7 @@ module Gtk
     end
 
     # Implements Component
-    def self.new_internal(notebook, child)
+    def self.new(notebook, child) : self
       __return_value = LibGtk.notebook_page_accessible_new((notebook.to_unsafe as LibGtk::NotebookAccessible*), (child.to_unsafe as LibGtk::Widget*))
       cast Atk::Object.new(__return_value)
     end

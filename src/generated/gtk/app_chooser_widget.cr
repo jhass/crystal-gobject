@@ -20,7 +20,7 @@ module Gtk
 
 
 
-    def self.new_internal(content_type)
+    def self.new(content_type) : self
       __return_value = LibGtk.app_chooser_widget_new(content_type)
       cast Gtk::Widget.new(__return_value)
     end

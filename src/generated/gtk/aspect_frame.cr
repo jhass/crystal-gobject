@@ -16,7 +16,7 @@ module Gtk
 
 
 
-    def self.new_internal(label, xalign, yalign, ratio, obey_child)
+    def self.new(label, xalign, yalign, ratio, obey_child) : self
       __return_value = LibGtk.aspect_frame_new(label && label, Float32.new(xalign), Float32.new(yalign), Float32.new(ratio), obey_child)
       cast Gtk::Widget.new(__return_value)
     end

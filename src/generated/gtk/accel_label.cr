@@ -14,7 +14,7 @@ module Gtk
     # Implements Buildable
 
 
-    def self.new_internal(string)
+    def self.new(string) : self
       __return_value = LibGtk.accel_label_new(string)
       cast Gtk::Widget.new(__return_value)
     end

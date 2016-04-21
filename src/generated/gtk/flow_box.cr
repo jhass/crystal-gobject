@@ -20,7 +20,7 @@ module Gtk
 
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.flow_box_new
       cast Gtk::Widget.new(__return_value)
     end

@@ -9,7 +9,7 @@ module Gtk
     end
 
     # Implements StyleProvider
-    def self.new
+    def self.new : self
       __return_value = LibGtk.css_provider_new
       cast Gtk::CssProvider.new(__return_value)
     end

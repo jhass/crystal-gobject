@@ -9,7 +9,7 @@ module Gio
     end
 
 
-    def self.new_internal(flags)
+    def self.new(flags) : self
       __return_value = LibGio.subprocess_launcher_new(flags)
       cast Gio::SubprocessLauncher.new(__return_value)
     end

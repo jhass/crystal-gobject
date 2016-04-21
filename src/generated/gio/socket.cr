@@ -24,7 +24,7 @@ module Gio
 
 
 
-    def self.new_internal(family, type, protocol)
+    def self.new(family, type, protocol)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_new(family, type, protocol, pointerof(__error))
       GLib::Error.assert __error

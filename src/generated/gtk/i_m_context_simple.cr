@@ -10,7 +10,7 @@ module Gtk
       @gtk_i_m_context_simple.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.i_m_context_simple_new
       cast Gtk::IMContext.new(__return_value)
     end

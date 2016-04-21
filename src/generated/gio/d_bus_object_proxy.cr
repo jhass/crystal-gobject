@@ -11,7 +11,7 @@ module Gio
     # Implements DBusObject
 
 
-    def self.new_internal(connection, object_path)
+    def self.new(connection, object_path) : self
       __return_value = LibGio.d_bus_object_proxy_new((connection.to_unsafe as LibGio::DBusConnection*), object_path)
       cast Gio::DBusObjectProxy.new(__return_value)
     end

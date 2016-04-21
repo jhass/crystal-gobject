@@ -10,7 +10,7 @@ module Gio
 
     # Implements ListModel
 
-    def self.new_internal(item_type)
+    def self.new(item_type) : self
       __return_value = LibGio.list_store_new(UInt64.new(item_type))
       cast Gio::ListStore.new(__return_value)
     end

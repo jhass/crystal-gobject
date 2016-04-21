@@ -10,22 +10,22 @@ module Gst
       @gst_ghost_pad.not_nil!
     end
 
-    def self.new_internal(name, target)
+    def self.new(name, target) : self
       __return_value = LibGst.ghost_pad_new(name && name, (target.to_unsafe as LibGst::Pad*))
       cast Gst::Pad.new(__return_value) if __return_value
     end
 
-    def self.new_from_template(name, target, templ)
+    def self.new_from_template(name, target, templ) : self
       __return_value = LibGst.ghost_pad_new_from_template(name && name, (target.to_unsafe as LibGst::Pad*), (templ.to_unsafe as LibGst::PadTemplate*))
       cast Gst::Pad.new(__return_value) if __return_value
     end
 
-    def self.new_no_target(name, dir)
+    def self.new_no_target(name, dir) : self
       __return_value = LibGst.ghost_pad_new_no_target(name && name, dir)
       cast Gst::Pad.new(__return_value) if __return_value
     end
 
-    def self.new_no_target_from_template(name, templ)
+    def self.new_no_target_from_template(name, templ) : self
       __return_value = LibGst.ghost_pad_new_no_target_from_template(name && name, (templ.to_unsafe as LibGst::PadTemplate*))
       cast Gst::Pad.new(__return_value) if __return_value
     end

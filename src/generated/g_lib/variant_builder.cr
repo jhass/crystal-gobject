@@ -10,7 +10,7 @@ module GLib
       @g_lib_variant_builder.not_nil!
     end
 
-    def self.new_internal(type)
+    def self.new(type) : self
       __return_value = LibGLib.variant_builder_new((type.to_unsafe as LibGLib::VariantType*))
       cast GLib::VariantBuilder.new(__return_value)
     end

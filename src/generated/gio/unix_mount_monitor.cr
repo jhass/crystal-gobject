@@ -8,7 +8,7 @@ module Gio
       @gio_unix_mount_monitor.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGio.unix_mount_monitor_new
       cast Gio::UnixMountMonitor.new(__return_value)
     end

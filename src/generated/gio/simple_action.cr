@@ -14,12 +14,12 @@ module Gio
 
 
 
-    def self.new_internal(name, parameter_type)
+    def self.new(name, parameter_type) : self
       __return_value = LibGio.simple_action_new(name, parameter_type && (parameter_type.to_unsafe as LibGLib::VariantType*))
       cast Gio::SimpleAction.new(__return_value)
     end
 
-    def self.new_stateful(name, parameter_type, state)
+    def self.new_stateful(name, parameter_type, state) : self
       __return_value = LibGio.simple_action_new_stateful(name, parameter_type && (parameter_type.to_unsafe as LibGLib::VariantType*), (state.to_unsafe as LibGLib::Variant*))
       cast Gio::SimpleAction.new(__return_value)
     end

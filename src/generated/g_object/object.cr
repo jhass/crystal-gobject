@@ -10,7 +10,7 @@ module GObject
       @g_object_object.not_nil!
     end
 
-    def self.new_internal(object_type, n_parameters, parameters)
+    def self.new(object_type, n_parameters, parameters) : self
       __return_value = LibGObject.object_new(UInt64.new(object_type), UInt32.new(n_parameters), parameters)
       cast GObject::Object.new(__return_value)
     end

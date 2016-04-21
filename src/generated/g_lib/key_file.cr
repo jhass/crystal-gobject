@@ -10,7 +10,7 @@ module GLib
       @g_lib_key_file.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGLib.key_file_new
       cast GLib::KeyFile.new(__return_value)
     end

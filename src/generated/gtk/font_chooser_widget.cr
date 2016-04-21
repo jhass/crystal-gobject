@@ -14,7 +14,7 @@ module Gtk
     # Implements Buildable
     # Implements FontChooser
     # Implements Orientable
-    def self.new
+    def self.new : self
       __return_value = LibGtk.font_chooser_widget_new
       cast Gtk::Widget.new(__return_value)
     end

@@ -15,7 +15,7 @@ module Gio
 
 
 
-    def self.new_resizable
+    def self.new_resizable : self
       __return_value = LibGio.memory_output_stream_new_resizable
       cast Gio::OutputStream.new(__return_value)
     end

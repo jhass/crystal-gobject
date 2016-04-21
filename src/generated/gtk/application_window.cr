@@ -15,7 +15,7 @@ module Gtk
     # Implements ActionMap
     # Implements Buildable
 
-    def self.new_internal(application)
+    def self.new(application) : self
       __return_value = LibGtk.application_window_new((application.to_unsafe as LibGtk::Application*))
       cast Gtk::Widget.new(__return_value)
     end

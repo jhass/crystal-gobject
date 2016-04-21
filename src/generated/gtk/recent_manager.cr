@@ -10,7 +10,7 @@ module Gtk
 
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.recent_manager_new
       cast Gtk::RecentManager.new(__return_value)
     end

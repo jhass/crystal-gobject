@@ -9,22 +9,22 @@ module Gtk
     end
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.builder_new
       cast Gtk::Builder.new(__return_value)
     end
 
-    def self.new_from_file(filename)
+    def self.new_from_file(filename) : self
       __return_value = LibGtk.builder_new_from_file(filename)
       cast Gtk::Builder.new(__return_value)
     end
 
-    def self.new_from_resource(resource_path)
+    def self.new_from_resource(resource_path) : self
       __return_value = LibGtk.builder_new_from_resource(resource_path)
       cast Gtk::Builder.new(__return_value)
     end
 
-    def self.new_from_string(string, length)
+    def self.new_from_string(string, length) : self
       __return_value = LibGtk.builder_new_from_string(string, Int64.new(length))
       cast Gtk::Builder.new(__return_value)
     end

@@ -13,7 +13,7 @@ module Gtk
     # Implements Buildable
 
 
-    def self.new_internal(name, label, tooltip, stock_id)
+    def self.new(name, label, tooltip, stock_id) : self
       __return_value = LibGtk.toggle_action_new(name, label && label, tooltip && tooltip, stock_id && stock_id)
       cast Gtk::ToggleAction.new(__return_value)
     end

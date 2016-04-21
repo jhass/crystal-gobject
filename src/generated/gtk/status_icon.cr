@@ -23,32 +23,32 @@ module Gtk
 
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.status_icon_new
       cast Gtk::StatusIcon.new(__return_value)
     end
 
-    def self.new_from_file(filename)
+    def self.new_from_file(filename) : self
       __return_value = LibGtk.status_icon_new_from_file(filename)
       cast Gtk::StatusIcon.new(__return_value)
     end
 
-    def self.new_from_gicon(icon)
+    def self.new_from_gicon(icon) : self
       __return_value = LibGtk.status_icon_new_from_gicon((icon.to_unsafe as LibGio::Icon*))
       cast Gtk::StatusIcon.new(__return_value)
     end
 
-    def self.new_from_icon_name(icon_name)
+    def self.new_from_icon_name(icon_name) : self
       __return_value = LibGtk.status_icon_new_from_icon_name(icon_name)
       cast Gtk::StatusIcon.new(__return_value)
     end
 
-    def self.new_from_pixbuf(pixbuf)
+    def self.new_from_pixbuf(pixbuf) : self
       __return_value = LibGtk.status_icon_new_from_pixbuf((pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*))
       cast Gtk::StatusIcon.new(__return_value)
     end
 
-    def self.new_from_stock(stock_id)
+    def self.new_from_stock(stock_id) : self
       __return_value = LibGtk.status_icon_new_from_stock(stock_id)
       cast Gtk::StatusIcon.new(__return_value)
     end

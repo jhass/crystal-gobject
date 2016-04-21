@@ -10,17 +10,17 @@ module Gst
       @gst_structure.not_nil!
     end
 
-    def self.new_empty(name)
+    def self.new_empty(name) : self
       __return_value = LibGst.structure_new_empty(name)
       cast Gst::Structure.new(__return_value)
     end
 
-    def self.new_from_string(string)
+    def self.new_from_string(string) : self
       __return_value = LibGst.structure_new_from_string(string)
       cast Gst::Structure.new(__return_value) if __return_value
     end
 
-    def self.new_id_empty(quark)
+    def self.new_id_empty(quark) : self
       __return_value = LibGst.structure_new_id_empty(UInt32.new(quark))
       cast Gst::Structure.new(__return_value)
     end

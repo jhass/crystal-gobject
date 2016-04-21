@@ -10,7 +10,7 @@ module Gtk
       @gtk_target_entry.not_nil!
     end
 
-    def self.new_internal(target, flags, info)
+    def self.new(target, flags, info) : self
       __return_value = LibGtk.target_entry_new(target, UInt32.new(flags), UInt32.new(info))
       cast Gtk::TargetEntry.new(__return_value)
     end

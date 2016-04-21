@@ -10,12 +10,12 @@ module Gtk
       @gtk_icon_set.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.icon_set_new
       cast Gtk::IconSet.new(__return_value)
     end
 
-    def self.new_from_pixbuf(pixbuf)
+    def self.new_from_pixbuf(pixbuf) : self
       __return_value = LibGtk.icon_set_new_from_pixbuf((pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*))
       cast Gtk::IconSet.new(__return_value)
     end

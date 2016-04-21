@@ -11,7 +11,7 @@ module Gio
 
 
 
-    def self.new_internal(flags, description)
+    def self.new(flags, description) : self
       __return_value = LibGio.tls_password_new(flags, description)
       cast Gio::TlsPassword.new(__return_value)
     end

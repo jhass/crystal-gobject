@@ -30,32 +30,32 @@ module Gtk
 
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.combo_box_new
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_area(area)
+    def self.new_with_area(area) : self
       __return_value = LibGtk.combo_box_new_with_area((area.to_unsafe as LibGtk::CellArea*))
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_area_and_entry(area)
+    def self.new_with_area_and_entry(area) : self
       __return_value = LibGtk.combo_box_new_with_area_and_entry((area.to_unsafe as LibGtk::CellArea*))
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_entry
+    def self.new_with_entry : self
       __return_value = LibGtk.combo_box_new_with_entry
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_model(model)
+    def self.new_with_model(model) : self
       __return_value = LibGtk.combo_box_new_with_model((model.to_unsafe as LibGtk::TreeModel*))
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_model_and_entry(model)
+    def self.new_with_model_and_entry(model) : self
       __return_value = LibGtk.combo_box_new_with_model_and_entry((model.to_unsafe as LibGtk::TreeModel*))
       cast Gtk::Widget.new(__return_value)
     end

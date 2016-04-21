@@ -10,27 +10,27 @@ module Gdk
 
 
 
-    def self.new_internal(cursor_type)
+    def self.new(cursor_type) : self
       __return_value = LibGdk.cursor_new(cursor_type)
       cast Gdk::Cursor.new(__return_value)
     end
 
-    def self.new_for_display(display, cursor_type)
+    def self.new_for_display(display, cursor_type) : self
       __return_value = LibGdk.cursor_new_for_display((display.to_unsafe as LibGdk::Display*), cursor_type)
       cast Gdk::Cursor.new(__return_value)
     end
 
-    def self.new_from_name(display, name)
+    def self.new_from_name(display, name) : self
       __return_value = LibGdk.cursor_new_from_name((display.to_unsafe as LibGdk::Display*), name)
       cast Gdk::Cursor.new(__return_value) if __return_value
     end
 
-    def self.new_from_pixbuf(display, pixbuf, x, y)
+    def self.new_from_pixbuf(display, pixbuf, x, y) : self
       __return_value = LibGdk.cursor_new_from_pixbuf((display.to_unsafe as LibGdk::Display*), (pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*), Int32.new(x), Int32.new(y))
       cast Gdk::Cursor.new(__return_value)
     end
 
-    def self.new_from_surface(display, surface, x, y)
+    def self.new_from_surface(display, surface, x, y) : self
       __return_value = LibGdk.cursor_new_from_surface((display.to_unsafe as LibGdk::Display*), (surface.to_unsafe as LibCairo::Surface*), Float64.new(x), Float64.new(y))
       cast Gdk::Cursor.new(__return_value)
     end

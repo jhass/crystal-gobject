@@ -10,7 +10,7 @@ module Gtk
       @gtk_target_list.not_nil!
     end
 
-    def self.new_internal(targets, ntargets)
+    def self.new(targets, ntargets) : self
       __return_value = LibGtk.target_list_new(targets && targets, UInt32.new(ntargets))
       cast Gtk::TargetList.new(__return_value)
     end

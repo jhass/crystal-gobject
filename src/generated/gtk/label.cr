@@ -34,12 +34,12 @@ module Gtk
 
 
 
-    def self.new_internal(str)
+    def self.new(str) : self
       __return_value = LibGtk.label_new(str && str)
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_mnemonic(str)
+    def self.new_with_mnemonic(str) : self
       __return_value = LibGtk.label_new_with_mnemonic(str && str)
       cast Gtk::Widget.new(__return_value)
     end

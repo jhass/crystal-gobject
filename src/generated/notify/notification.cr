@@ -14,7 +14,7 @@ module Notify
 
 
 
-    def self.new_internal(summary, body, icon)
+    def self.new(summary, body, icon) : self
       __return_value = LibNotify.notification_new(summary, body && body, icon && icon)
       cast Notify::Notification.new(__return_value)
     end

@@ -25,52 +25,52 @@ module Gtk
 
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.image_new
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_from_animation(animation)
+    def self.new_from_animation(animation) : self
       __return_value = LibGtk.image_new_from_animation((animation.to_unsafe as LibGdkPixbuf::PixbufAnimation*))
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_from_file(filename)
+    def self.new_from_file(filename) : self
       __return_value = LibGtk.image_new_from_file(filename)
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_from_gicon(icon, size)
+    def self.new_from_gicon(icon, size) : self
       __return_value = LibGtk.image_new_from_gicon((icon.to_unsafe as LibGio::Icon*), Int32.new(size))
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_from_icon_name(icon_name, size)
+    def self.new_from_icon_name(icon_name, size) : self
       __return_value = LibGtk.image_new_from_icon_name(icon_name, Int32.new(size))
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_from_icon_set(icon_set, size)
+    def self.new_from_icon_set(icon_set, size) : self
       __return_value = LibGtk.image_new_from_icon_set((icon_set.to_unsafe as LibGtk::IconSet*), Int32.new(size))
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_from_pixbuf(pixbuf)
+    def self.new_from_pixbuf(pixbuf) : self
       __return_value = LibGtk.image_new_from_pixbuf(pixbuf && (pixbuf.to_unsafe as LibGdkPixbuf::Pixbuf*))
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_from_resource(resource_path)
+    def self.new_from_resource(resource_path) : self
       __return_value = LibGtk.image_new_from_resource(resource_path)
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_from_stock(stock_id, size)
+    def self.new_from_stock(stock_id, size) : self
       __return_value = LibGtk.image_new_from_stock(stock_id, Int32.new(size))
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_from_surface(surface)
+    def self.new_from_surface(surface) : self
       __return_value = LibGtk.image_new_from_surface(surface && (surface.to_unsafe as LibCairo::Surface*))
       cast Gtk::Widget.new(__return_value)
     end

@@ -8,7 +8,7 @@ module Gio
       @gio_notification.not_nil!
     end
 
-    def self.new_internal(title)
+    def self.new(title) : self
       __return_value = LibGio.notification_new(title)
       cast Gio::Notification.new(__return_value)
     end

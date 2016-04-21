@@ -10,22 +10,22 @@ module Gtk
       @gtk_tree_path.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.tree_path_new
       cast Gtk::TreePath.new(__return_value)
     end
 
-    def self.new_first
+    def self.new_first : self
       __return_value = LibGtk.tree_path_new_first
       cast Gtk::TreePath.new(__return_value)
     end
 
-    def self.new_from_indices(indices, length)
+    def self.new_from_indices(indices, length) : self
       __return_value = LibGtk.tree_path_new_from_indices(indices, UInt64.new(length))
       cast Gtk::TreePath.new(__return_value)
     end
 
-    def self.new_from_string(path)
+    def self.new_from_string(path) : self
       __return_value = LibGtk.tree_path_new_from_string(path)
       cast Gtk::TreePath.new(__return_value)
     end

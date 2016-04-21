@@ -18,12 +18,12 @@ module Gtk
 
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.level_bar_new
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_for_interval(min_value, max_value)
+    def self.new_for_interval(min_value, max_value) : self
       __return_value = LibGtk.level_bar_new_for_interval(Float64.new(min_value), Float64.new(max_value))
       cast Gtk::Widget.new(__return_value)
     end

@@ -10,7 +10,7 @@ module Gtk
       @gtk_border.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.border_new
       cast Gtk::Border.new(__return_value)
     end

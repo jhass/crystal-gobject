@@ -10,12 +10,12 @@ module Gst
       @gst_tag_list.not_nil!
     end
 
-    def self.new_empty
+    def self.new_empty : self
       __return_value = LibGst.tag_list_new_empty
       cast Gst::TagList.new(__return_value)
     end
 
-    def self.new_from_string(str)
+    def self.new_from_string(str) : self
       __return_value = LibGst.tag_list_new_from_string(str)
       cast Gst::TagList.new(__return_value) if __return_value
     end

@@ -10,7 +10,7 @@ module Pango
       @pango_fontset_simple.not_nil!
     end
 
-    def self.new_internal(language)
+    def self.new(language) : self
       __return_value = LibPango.fontset_simple_new((language.to_unsafe as LibPango::Language*))
       cast Pango::FontsetSimple.new(__return_value)
     end

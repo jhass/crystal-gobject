@@ -9,7 +9,7 @@ module Gtk
     end
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.style_new
       cast Gtk::Style.new(__return_value)
     end

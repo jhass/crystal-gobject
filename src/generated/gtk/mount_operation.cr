@@ -11,7 +11,7 @@ module Gtk
 
 
 
-    def self.new_internal(parent)
+    def self.new(parent) : self
       __return_value = LibGtk.mount_operation_new(parent && (parent.to_unsafe as LibGtk::Window*))
       cast Gio::MountOperation.new(__return_value)
     end

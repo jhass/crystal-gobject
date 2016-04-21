@@ -11,12 +11,12 @@ module Gio
     end
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGio.unix_f_d_message_new
       cast Gio::SocketControlMessage.new(__return_value)
     end
 
-    def self.new_with_fd_list(fd_list)
+    def self.new_with_fd_list(fd_list) : self
       __return_value = LibGio.unix_f_d_message_new_with_fd_list((fd_list.to_unsafe as LibGio::UnixFDList*))
       cast Gio::SocketControlMessage.new(__return_value)
     end

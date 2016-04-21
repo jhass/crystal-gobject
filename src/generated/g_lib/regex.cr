@@ -10,7 +10,7 @@ module GLib
       @g_lib_regex.not_nil!
     end
 
-    def self.new_internal(pattern, compile_options, match_options)
+    def self.new(pattern, compile_options, match_options)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.regex_new(pattern, compile_options, match_options, pointerof(__error))
       GLib::Error.assert __error

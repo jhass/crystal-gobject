@@ -14,6 +14,10 @@ module GIRepository
       String.new LibGIRepository.function_info_get_symbol(self)
     end
 
+    def constructor?
+      LibGIRepository.function_info_get_flags(self).is_constructor?
+    end
+
     def lib_definition
       String.build do |io|
         io << "  fun #{prefix}#{name} = #{symbol}("
@@ -32,10 +36,6 @@ module GIRepository
         method_name = "#{method_name[3..-1]}?"
       end
 
-      if !method? && method_name == "new" && !args.empty?
-        method_name = "new_internal"
-      end
-
       String.build do |io|
         io << "#{indent}def "
         io << "self." unless method?
@@ -43,6 +43,8 @@ module GIRepository
 
         wrapper_args = args.map(&.for_wrapper_definition(libname)).compact.join(", ")
         io << "(#{wrapper_args})" unless wrapper_args.empty?
+
+        io << " : self" if constructor?
 
         io << "\n#{indent}  __error = Pointer(LibGLib::Error).null" if throws?
 
@@ -54,8 +56,7 @@ module GIRepository
         io << "\n#{indent}  GLib::Error.assert __error" if throws?
 
         unless skip_return?
-          casts = GIRepository.function_info_get_flags(self).is_constructor? ? "cast " : ""
-          io << "\n#{indent}  #{casts}#{return_type.convert_to_crystal("__return_value")}"
+          io << "\n#{indent}  #{"cast " if constructor?}#{return_type.convert_to_crystal("__return_value")}"
           io << " if __return_value" if may_return_null?
           io << '\n'
         else

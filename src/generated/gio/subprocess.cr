@@ -11,7 +11,7 @@ module Gio
     # Implements Initable
 
 
-    def self.new_internal(argv, flags)
+    def self.new(argv, flags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.subprocess_new(argv, flags, pointerof(__error))
       GLib::Error.assert __error

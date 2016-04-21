@@ -10,7 +10,7 @@ module Gtk
       @gtk_gesture_drag.not_nil!
     end
 
-    def self.new_internal(widget)
+    def self.new(widget) : self
       __return_value = LibGtk.gesture_drag_new((widget.to_unsafe as LibGtk::Widget*))
       cast Gtk::Gesture.new(__return_value)
     end

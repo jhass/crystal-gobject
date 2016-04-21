@@ -10,17 +10,17 @@ module Gst
       @gst_caps.not_nil!
     end
 
-    def self.new_any
+    def self.new_any : self
       __return_value = LibGst.caps_new_any
       cast Gst::Caps.new(__return_value)
     end
 
-    def self.new_empty
+    def self.new_empty : self
       __return_value = LibGst.caps_new_empty
       cast Gst::Caps.new(__return_value)
     end
 
-    def self.new_empty_simple(media_type)
+    def self.new_empty_simple(media_type) : self
       __return_value = LibGst.caps_new_empty_simple(media_type)
       cast Gst::Caps.new(__return_value)
     end

@@ -8,7 +8,7 @@ module Gio
       @gio_cancellable.not_nil!
     end
 
-    def self.new
+    def self.new : self
       __return_value = LibGio.cancellable_new
       cast Gio::Cancellable.new(__return_value)
     end

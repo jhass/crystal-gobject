@@ -10,7 +10,7 @@ module Gst
       @gst_toc_entry.not_nil!
     end
 
-    def self.new_internal(type, uid)
+    def self.new(type, uid) : self
       __return_value = LibGst.toc_entry_new(type, uid)
       cast Gst::TocEntry.new(__return_value)
     end

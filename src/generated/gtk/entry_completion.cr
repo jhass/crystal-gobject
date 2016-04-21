@@ -19,12 +19,12 @@ module Gtk
 
 
 
-    def self.new
+    def self.new : self
       __return_value = LibGtk.entry_completion_new
       cast Gtk::EntryCompletion.new(__return_value)
     end
 
-    def self.new_with_area(area)
+    def self.new_with_area(area) : self
       __return_value = LibGtk.entry_completion_new_with_area((area.to_unsafe as LibGtk::CellArea*))
       cast Gtk::EntryCompletion.new(__return_value)
     end

@@ -10,52 +10,52 @@ module GLib
       @g_lib_date_time.not_nil!
     end
 
-    def self.new_internal(tz, year, month, day, hour, minute, seconds)
+    def self.new(tz, year, month, day, hour, minute, seconds) : self
       __return_value = LibGLib.date_time_new((tz.to_unsafe as LibGLib::TimeZone*), Int32.new(year), Int32.new(month), Int32.new(day), Int32.new(hour), Int32.new(minute), Float64.new(seconds))
       cast GLib::DateTime.new(__return_value)
     end
 
-    def self.new_from_timeval_local(tv)
+    def self.new_from_timeval_local(tv) : self
       __return_value = LibGLib.date_time_new_from_timeval_local((tv.to_unsafe as LibGLib::TimeVal*))
       cast GLib::DateTime.new(__return_value)
     end
 
-    def self.new_from_timeval_utc(tv)
+    def self.new_from_timeval_utc(tv) : self
       __return_value = LibGLib.date_time_new_from_timeval_utc((tv.to_unsafe as LibGLib::TimeVal*))
       cast GLib::DateTime.new(__return_value)
     end
 
-    def self.new_from_unix_local(t)
+    def self.new_from_unix_local(t) : self
       __return_value = LibGLib.date_time_new_from_unix_local(Int64.new(t))
       cast GLib::DateTime.new(__return_value)
     end
 
-    def self.new_from_unix_utc(t)
+    def self.new_from_unix_utc(t) : self
       __return_value = LibGLib.date_time_new_from_unix_utc(Int64.new(t))
       cast GLib::DateTime.new(__return_value)
     end
 
-    def self.new_local(year, month, day, hour, minute, seconds)
+    def self.new_local(year, month, day, hour, minute, seconds) : self
       __return_value = LibGLib.date_time_new_local(Int32.new(year), Int32.new(month), Int32.new(day), Int32.new(hour), Int32.new(minute), Float64.new(seconds))
       cast GLib::DateTime.new(__return_value)
     end
 
-    def self.new_now(tz)
+    def self.new_now(tz) : self
       __return_value = LibGLib.date_time_new_now((tz.to_unsafe as LibGLib::TimeZone*))
       cast GLib::DateTime.new(__return_value)
     end
 
-    def self.new_now_local
+    def self.new_now_local : self
       __return_value = LibGLib.date_time_new_now_local
       cast GLib::DateTime.new(__return_value)
     end
 
-    def self.new_now_utc
+    def self.new_now_utc : self
       __return_value = LibGLib.date_time_new_now_utc
       cast GLib::DateTime.new(__return_value)
     end
 
-    def self.new_utc(year, month, day, hour, minute, seconds)
+    def self.new_utc(year, month, day, hour, minute, seconds) : self
       __return_value = LibGLib.date_time_new_utc(Int32.new(year), Int32.new(month), Int32.new(day), Int32.new(hour), Int32.new(minute), Float64.new(seconds))
       cast GLib::DateTime.new(__return_value)
     end
