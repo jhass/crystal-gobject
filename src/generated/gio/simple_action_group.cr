@@ -16,22 +16,22 @@ module Gio
     end
 
     def add_entries(entries, n_entries, user_data)
-      __return_value = LibGio.simple_action_group_add_entries((to_unsafe as LibGio::SimpleActionGroup*), entries, Int32.new(n_entries), user_data && user_data)
+      __return_value = LibGio.simple_action_group_add_entries(to_unsafe.as(LibGio::SimpleActionGroup*), entries, Int32.new(n_entries), user_data && user_data)
       __return_value
     end
 
     def insert(action)
-      __return_value = LibGio.simple_action_group_insert((to_unsafe as LibGio::SimpleActionGroup*), (action.to_unsafe as LibGio::Action*))
+      __return_value = LibGio.simple_action_group_insert(to_unsafe.as(LibGio::SimpleActionGroup*), action.to_unsafe.as(LibGio::Action*))
       __return_value
     end
 
     def lookup(action_name)
-      __return_value = LibGio.simple_action_group_lookup((to_unsafe as LibGio::SimpleActionGroup*), action_name)
+      __return_value = LibGio.simple_action_group_lookup(to_unsafe.as(LibGio::SimpleActionGroup*), action_name)
       __return_value
     end
 
     def remove(action_name)
-      __return_value = LibGio.simple_action_group_remove((to_unsafe as LibGio::SimpleActionGroup*), action_name)
+      __return_value = LibGio.simple_action_group_remove(to_unsafe.as(LibGio::SimpleActionGroup*), action_name)
       __return_value
     end
 

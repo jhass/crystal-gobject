@@ -11,12 +11,12 @@ module Gtk
     end
 
     def self.new(widget) : self
-      __return_value = LibGtk.gesture_zoom_new((widget.to_unsafe as LibGtk::Widget*))
+      __return_value = LibGtk.gesture_zoom_new(widget.to_unsafe.as(LibGtk::Widget*))
       cast Gtk::Gesture.new(__return_value)
     end
 
     def scale_delta
-      __return_value = LibGtk.gesture_zoom_get_scale_delta((to_unsafe as LibGtk::GestureZoom*))
+      __return_value = LibGtk.gesture_zoom_get_scale_delta(to_unsafe.as(LibGtk::GestureZoom*))
       __return_value
     end
 

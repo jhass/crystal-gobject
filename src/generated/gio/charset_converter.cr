@@ -21,17 +21,17 @@ module Gio
     end
 
     def num_fallbacks
-      __return_value = LibGio.charset_converter_get_num_fallbacks((to_unsafe as LibGio::CharsetConverter*))
+      __return_value = LibGio.charset_converter_get_num_fallbacks(to_unsafe.as(LibGio::CharsetConverter*))
       __return_value
     end
 
     def use_fallback
-      __return_value = LibGio.charset_converter_get_use_fallback((to_unsafe as LibGio::CharsetConverter*))
+      __return_value = LibGio.charset_converter_get_use_fallback(to_unsafe.as(LibGio::CharsetConverter*))
       __return_value
     end
 
     def use_fallback=(use_fallback)
-      __return_value = LibGio.charset_converter_set_use_fallback((to_unsafe as LibGio::CharsetConverter*), use_fallback)
+      __return_value = LibGio.charset_converter_set_use_fallback(to_unsafe.as(LibGio::CharsetConverter*), use_fallback)
       __return_value
     end
 

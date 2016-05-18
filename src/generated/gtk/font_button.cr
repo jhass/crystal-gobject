@@ -32,62 +32,62 @@ module Gtk
     end
 
     def font_name
-      __return_value = LibGtk.font_button_get_font_name((to_unsafe as LibGtk::FontButton*))
+      __return_value = LibGtk.font_button_get_font_name(to_unsafe.as(LibGtk::FontButton*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def show_size
-      __return_value = LibGtk.font_button_get_show_size((to_unsafe as LibGtk::FontButton*))
+      __return_value = LibGtk.font_button_get_show_size(to_unsafe.as(LibGtk::FontButton*))
       __return_value
     end
 
     def show_style
-      __return_value = LibGtk.font_button_get_show_style((to_unsafe as LibGtk::FontButton*))
+      __return_value = LibGtk.font_button_get_show_style(to_unsafe.as(LibGtk::FontButton*))
       __return_value
     end
 
     def title
-      __return_value = LibGtk.font_button_get_title((to_unsafe as LibGtk::FontButton*))
+      __return_value = LibGtk.font_button_get_title(to_unsafe.as(LibGtk::FontButton*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def use_font
-      __return_value = LibGtk.font_button_get_use_font((to_unsafe as LibGtk::FontButton*))
+      __return_value = LibGtk.font_button_get_use_font(to_unsafe.as(LibGtk::FontButton*))
       __return_value
     end
 
     def use_size
-      __return_value = LibGtk.font_button_get_use_size((to_unsafe as LibGtk::FontButton*))
+      __return_value = LibGtk.font_button_get_use_size(to_unsafe.as(LibGtk::FontButton*))
       __return_value
     end
 
     def font_name=(fontname)
-      __return_value = LibGtk.font_button_set_font_name((to_unsafe as LibGtk::FontButton*), fontname)
+      __return_value = LibGtk.font_button_set_font_name(to_unsafe.as(LibGtk::FontButton*), fontname)
       __return_value
     end
 
     def show_size=(show_size)
-      __return_value = LibGtk.font_button_set_show_size((to_unsafe as LibGtk::FontButton*), show_size)
+      __return_value = LibGtk.font_button_set_show_size(to_unsafe.as(LibGtk::FontButton*), show_size)
       __return_value
     end
 
     def show_style=(show_style)
-      __return_value = LibGtk.font_button_set_show_style((to_unsafe as LibGtk::FontButton*), show_style)
+      __return_value = LibGtk.font_button_set_show_style(to_unsafe.as(LibGtk::FontButton*), show_style)
       __return_value
     end
 
     def title=(title)
-      __return_value = LibGtk.font_button_set_title((to_unsafe as LibGtk::FontButton*), title)
+      __return_value = LibGtk.font_button_set_title(to_unsafe.as(LibGtk::FontButton*), title)
       __return_value
     end
 
     def use_font=(use_font)
-      __return_value = LibGtk.font_button_set_use_font((to_unsafe as LibGtk::FontButton*), use_font)
+      __return_value = LibGtk.font_button_set_use_font(to_unsafe.as(LibGtk::FontButton*), use_font)
       __return_value
     end
 
     def use_size=(use_size)
-      __return_value = LibGtk.font_button_set_use_size((to_unsafe as LibGtk::FontButton*), use_size)
+      __return_value = LibGtk.font_button_set_use_size(to_unsafe.as(LibGtk::FontButton*), use_size)
       __return_value
     end
 

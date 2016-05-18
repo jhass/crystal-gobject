@@ -11,22 +11,22 @@ module Gio
     end
 
     def extension_by_name(name)
-      __return_value = LibGio.i_o_extension_point_get_extension_by_name((to_unsafe as LibGio::IOExtensionPoint*), name)
+      __return_value = LibGio.i_o_extension_point_get_extension_by_name(to_unsafe.as(LibGio::IOExtensionPoint*), name)
       Gio::IOExtension.new(__return_value)
     end
 
     def extensions
-      __return_value = LibGio.i_o_extension_point_get_extensions((to_unsafe as LibGio::IOExtensionPoint*))
+      __return_value = LibGio.i_o_extension_point_get_extensions(to_unsafe.as(LibGio::IOExtensionPoint*))
       __return_value
     end
 
     def required_type
-      __return_value = LibGio.i_o_extension_point_get_required_type((to_unsafe as LibGio::IOExtensionPoint*))
+      __return_value = LibGio.i_o_extension_point_get_required_type(to_unsafe.as(LibGio::IOExtensionPoint*))
       __return_value
     end
 
     def required_type=(type)
-      __return_value = LibGio.i_o_extension_point_set_required_type((to_unsafe as LibGio::IOExtensionPoint*), UInt64.new(type))
+      __return_value = LibGio.i_o_extension_point_set_required_type(to_unsafe.as(LibGio::IOExtensionPoint*), UInt64.new(type))
       __return_value
     end
 

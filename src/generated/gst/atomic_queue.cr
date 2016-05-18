@@ -16,32 +16,32 @@ module Gst
     end
 
     def length
-      __return_value = LibGst.atomic_queue_length((to_unsafe as LibGst::AtomicQueue*))
+      __return_value = LibGst.atomic_queue_length(to_unsafe.as(LibGst::AtomicQueue*))
       __return_value
     end
 
     def peek
-      __return_value = LibGst.atomic_queue_peek((to_unsafe as LibGst::AtomicQueue*))
+      __return_value = LibGst.atomic_queue_peek(to_unsafe.as(LibGst::AtomicQueue*))
       __return_value if __return_value
     end
 
     def pop
-      __return_value = LibGst.atomic_queue_pop((to_unsafe as LibGst::AtomicQueue*))
+      __return_value = LibGst.atomic_queue_pop(to_unsafe.as(LibGst::AtomicQueue*))
       __return_value if __return_value
     end
 
     def push(data)
-      __return_value = LibGst.atomic_queue_push((to_unsafe as LibGst::AtomicQueue*), data && data)
+      __return_value = LibGst.atomic_queue_push(to_unsafe.as(LibGst::AtomicQueue*), data && data)
       __return_value
     end
 
     def ref
-      __return_value = LibGst.atomic_queue_ref((to_unsafe as LibGst::AtomicQueue*))
+      __return_value = LibGst.atomic_queue_ref(to_unsafe.as(LibGst::AtomicQueue*))
       __return_value
     end
 
     def unref
-      __return_value = LibGst.atomic_queue_unref((to_unsafe as LibGst::AtomicQueue*))
+      __return_value = LibGst.atomic_queue_unref(to_unsafe.as(LibGst::AtomicQueue*))
       __return_value
     end
 

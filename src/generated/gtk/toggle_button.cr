@@ -33,37 +33,37 @@ module Gtk
     end
 
     def active
-      __return_value = LibGtk.toggle_button_get_active((to_unsafe as LibGtk::ToggleButton*))
+      __return_value = LibGtk.toggle_button_get_active(to_unsafe.as(LibGtk::ToggleButton*))
       __return_value
     end
 
     def inconsistent
-      __return_value = LibGtk.toggle_button_get_inconsistent((to_unsafe as LibGtk::ToggleButton*))
+      __return_value = LibGtk.toggle_button_get_inconsistent(to_unsafe.as(LibGtk::ToggleButton*))
       __return_value
     end
 
     def mode
-      __return_value = LibGtk.toggle_button_get_mode((to_unsafe as LibGtk::ToggleButton*))
+      __return_value = LibGtk.toggle_button_get_mode(to_unsafe.as(LibGtk::ToggleButton*))
       __return_value
     end
 
     def active=(is_active)
-      __return_value = LibGtk.toggle_button_set_active((to_unsafe as LibGtk::ToggleButton*), is_active)
+      __return_value = LibGtk.toggle_button_set_active(to_unsafe.as(LibGtk::ToggleButton*), is_active)
       __return_value
     end
 
     def inconsistent=(setting)
-      __return_value = LibGtk.toggle_button_set_inconsistent((to_unsafe as LibGtk::ToggleButton*), setting)
+      __return_value = LibGtk.toggle_button_set_inconsistent(to_unsafe.as(LibGtk::ToggleButton*), setting)
       __return_value
     end
 
     def mode=(draw_indicator)
-      __return_value = LibGtk.toggle_button_set_mode((to_unsafe as LibGtk::ToggleButton*), draw_indicator)
+      __return_value = LibGtk.toggle_button_set_mode(to_unsafe.as(LibGtk::ToggleButton*), draw_indicator)
       __return_value
     end
 
     def toggled
-      __return_value = LibGtk.toggle_button_toggled((to_unsafe as LibGtk::ToggleButton*))
+      __return_value = LibGtk.toggle_button_toggled(to_unsafe.as(LibGtk::ToggleButton*))
       __return_value
     end
 

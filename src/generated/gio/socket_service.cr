@@ -17,17 +17,17 @@ module Gio
     end
 
     def active?
-      __return_value = LibGio.socket_service_is_active((to_unsafe as LibGio::SocketService*))
+      __return_value = LibGio.socket_service_is_active(to_unsafe.as(LibGio::SocketService*))
       __return_value
     end
 
     def start
-      __return_value = LibGio.socket_service_start((to_unsafe as LibGio::SocketService*))
+      __return_value = LibGio.socket_service_start(to_unsafe.as(LibGio::SocketService*))
       __return_value
     end
 
     def stop
-      __return_value = LibGio.socket_service_stop((to_unsafe as LibGio::SocketService*))
+      __return_value = LibGio.socket_service_stop(to_unsafe.as(LibGio::SocketService*))
       __return_value
     end
 

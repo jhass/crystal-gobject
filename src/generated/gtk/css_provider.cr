@@ -26,32 +26,32 @@ module Gtk
 
     def load_from_data(data, length)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.css_provider_load_from_data((to_unsafe as LibGtk::CssProvider*), data, Int64.new(length), pointerof(__error))
+      __return_value = LibGtk.css_provider_load_from_data(to_unsafe.as(LibGtk::CssProvider*), data, Int64.new(length), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def load_from_file(file)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.css_provider_load_from_file((to_unsafe as LibGtk::CssProvider*), (file.to_unsafe as LibGio::File*), pointerof(__error))
+      __return_value = LibGtk.css_provider_load_from_file(to_unsafe.as(LibGtk::CssProvider*), file.to_unsafe.as(LibGio::File*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def load_from_path(path)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.css_provider_load_from_path((to_unsafe as LibGtk::CssProvider*), path, pointerof(__error))
+      __return_value = LibGtk.css_provider_load_from_path(to_unsafe.as(LibGtk::CssProvider*), path, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def load_from_resource(resource_path)
-      __return_value = LibGtk.css_provider_load_from_resource((to_unsafe as LibGtk::CssProvider*), resource_path)
+      __return_value = LibGtk.css_provider_load_from_resource(to_unsafe.as(LibGtk::CssProvider*), resource_path)
       __return_value
     end
 
     def to_string
-      __return_value = LibGtk.css_provider_to_string((to_unsafe as LibGtk::CssProvider*))
+      __return_value = LibGtk.css_provider_to_string(to_unsafe.as(LibGtk::CssProvider*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

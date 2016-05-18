@@ -17,7 +17,7 @@ module Atk
     end
 
     def id
-      __return_value = LibAtk.plug_get_id((to_unsafe as LibAtk::Plug*))
+      __return_value = LibAtk.plug_get_id(to_unsafe.as(LibAtk::Plug*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

@@ -11,12 +11,12 @@ module Atk
     end
 
     def self.for_object(obj)
-      __return_value = LibAtk.g_object_accessible_for_object((obj.to_unsafe as LibGObject::Object*))
+      __return_value = LibAtk.g_object_accessible_for_object(obj.to_unsafe.as(LibGObject::Object*))
       Atk::Object.new(__return_value)
     end
 
     def object
-      __return_value = LibAtk.g_object_accessible_get_object((to_unsafe as LibAtk::GObjectAccessible*))
+      __return_value = LibAtk.g_object_accessible_get_object(to_unsafe.as(LibAtk::GObjectAccessible*))
       GObject::Object.new(__return_value)
     end
 

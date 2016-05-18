@@ -16,12 +16,12 @@ module Gtk
     end
 
     def copy
-      __return_value = LibGtk.border_copy((to_unsafe as LibGtk::Border*))
+      __return_value = LibGtk.border_copy(to_unsafe.as(LibGtk::Border*))
       Gtk::Border.new(__return_value)
     end
 
     def free
-      __return_value = LibGtk.border_free((to_unsafe as LibGtk::Border*))
+      __return_value = LibGtk.border_free(to_unsafe.as(LibGtk::Border*))
       __return_value
     end
 

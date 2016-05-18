@@ -14,7 +14,7 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
     def self.new(adjustment) : self
-      __return_value = LibGtk.v_scale_new((adjustment.to_unsafe as LibGtk::Adjustment*))
+      __return_value = LibGtk.v_scale_new(adjustment.to_unsafe.as(LibGtk::Adjustment*))
       cast Gtk::Widget.new(__return_value)
     end
 

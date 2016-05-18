@@ -24,45 +24,45 @@ module GdkPixbuf
 
     def self.new_from_stream(stream, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGdkPixbuf.pixbuf_animation_new_from_stream((stream.to_unsafe as LibGio::InputStream*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGdkPixbuf.pixbuf_animation_new_from_stream(stream.to_unsafe.as(LibGio::InputStream*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       GdkPixbuf::PixbufAnimation.new(__return_value)
     end
 
     def self.new_from_stream_finish(async_result)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGdkPixbuf.pixbuf_animation_new_from_stream_finish((async_result.to_unsafe as LibGio::AsyncResult*), pointerof(__error))
+      __return_value = LibGdkPixbuf.pixbuf_animation_new_from_stream_finish(async_result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       GdkPixbuf::PixbufAnimation.new(__return_value)
     end
 
     def self.new_from_stream_async(stream, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
-      __return_value = LibGdkPixbuf.pixbuf_animation_new_from_stream_async((stream.to_unsafe as LibGio::InputStream*), cancellable && (cancellable.to_unsafe as LibGio::Cancellable*), callback && callback, user_data && user_data)
+      __return_value = LibGdkPixbuf.pixbuf_animation_new_from_stream_async(stream.to_unsafe.as(LibGio::InputStream*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 
     def height
-      __return_value = LibGdkPixbuf.pixbuf_animation_get_height((to_unsafe as LibGdkPixbuf::PixbufAnimation*))
+      __return_value = LibGdkPixbuf.pixbuf_animation_get_height(to_unsafe.as(LibGdkPixbuf::PixbufAnimation*))
       __return_value
     end
 
     def iter(start_time)
-      __return_value = LibGdkPixbuf.pixbuf_animation_get_iter((to_unsafe as LibGdkPixbuf::PixbufAnimation*), start_time && (start_time.to_unsafe as LibGLib::TimeVal*))
+      __return_value = LibGdkPixbuf.pixbuf_animation_get_iter(to_unsafe.as(LibGdkPixbuf::PixbufAnimation*), start_time && start_time.to_unsafe.as(LibGLib::TimeVal*))
       GdkPixbuf::PixbufAnimationIter.new(__return_value)
     end
 
     def static_image
-      __return_value = LibGdkPixbuf.pixbuf_animation_get_static_image((to_unsafe as LibGdkPixbuf::PixbufAnimation*))
+      __return_value = LibGdkPixbuf.pixbuf_animation_get_static_image(to_unsafe.as(LibGdkPixbuf::PixbufAnimation*))
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 
     def width
-      __return_value = LibGdkPixbuf.pixbuf_animation_get_width((to_unsafe as LibGdkPixbuf::PixbufAnimation*))
+      __return_value = LibGdkPixbuf.pixbuf_animation_get_width(to_unsafe.as(LibGdkPixbuf::PixbufAnimation*))
       __return_value
     end
 
     def static_image?
-      __return_value = LibGdkPixbuf.pixbuf_animation_is_static_image((to_unsafe as LibGdkPixbuf::PixbufAnimation*))
+      __return_value = LibGdkPixbuf.pixbuf_animation_is_static_image(to_unsafe.as(LibGdkPixbuf::PixbufAnimation*))
       __return_value
     end
 

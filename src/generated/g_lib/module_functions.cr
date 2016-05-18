@@ -324,7 +324,7 @@ module GLib
   end
 
   def self.compute_checksum_for_bytes(checksum_type, data)
-    __return_value = LibGLib.compute_checksum_for_bytes(checksum_type, (data.to_unsafe as LibGLib::Bytes*))
+    __return_value = LibGLib.compute_checksum_for_bytes(checksum_type, data.to_unsafe.as(LibGLib::Bytes*))
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
@@ -369,58 +369,58 @@ module GLib
 
   def self.convert_with_iconv(str, len, converter, bytes_read, bytes_written)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.convert_with_iconv(str, Int64.new(len), (converter.to_unsafe as LibGLib::IConv*), bytes_read, bytes_written, pointerof(__error))
+    __return_value = LibGLib.convert_with_iconv(str, Int64.new(len), converter.to_unsafe.as(LibGLib::IConv*), bytes_read, bytes_written, pointerof(__error))
     GLib::Error.assert __error
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.datalist_clear(datalist)
-    __return_value = LibGLib.datalist_clear((datalist.to_unsafe as LibGLib::Data*))
+    __return_value = LibGLib.datalist_clear(datalist.to_unsafe.as(LibGLib::Data*))
     __return_value
   end
 
   def self.datalist_get_data(datalist, key)
-    __return_value = LibGLib.datalist_get_data((datalist.to_unsafe as LibGLib::Data*), key)
+    __return_value = LibGLib.datalist_get_data(datalist.to_unsafe.as(LibGLib::Data*), key)
     __return_value if __return_value
   end
 
   def self.datalist_get_flags(datalist)
-    __return_value = LibGLib.datalist_get_flags((datalist.to_unsafe as LibGLib::Data*))
+    __return_value = LibGLib.datalist_get_flags(datalist.to_unsafe.as(LibGLib::Data*))
     __return_value
   end
 
   def self.datalist_id_get_data(datalist, key_id)
-    __return_value = LibGLib.datalist_id_get_data((datalist.to_unsafe as LibGLib::Data*), UInt32.new(key_id))
+    __return_value = LibGLib.datalist_id_get_data(datalist.to_unsafe.as(LibGLib::Data*), UInt32.new(key_id))
     __return_value if __return_value
   end
 
   def self.datalist_id_remove_no_notify(datalist, key_id)
-    __return_value = LibGLib.datalist_id_remove_no_notify((datalist.to_unsafe as LibGLib::Data*), UInt32.new(key_id))
+    __return_value = LibGLib.datalist_id_remove_no_notify(datalist.to_unsafe.as(LibGLib::Data*), UInt32.new(key_id))
     __return_value if __return_value
   end
 
   def self.datalist_id_replace_data(datalist, key_id, oldval, newval, destroy : LibGLib::DestroyNotify?, old_destroy : LibGLib::DestroyNotify*?)
-    __return_value = LibGLib.datalist_id_replace_data((datalist.to_unsafe as LibGLib::Data*), UInt32.new(key_id), oldval && oldval, newval && newval, destroy && destroy, old_destroy && (old_destroy.to_unsafe as LibGLib::DestroyNotify*))
+    __return_value = LibGLib.datalist_id_replace_data(datalist.to_unsafe.as(LibGLib::Data*), UInt32.new(key_id), oldval && oldval, newval && newval, destroy && destroy, old_destroy && old_destroy.to_unsafe.as(LibGLib::DestroyNotify*))
     __return_value
   end
 
   def self.datalist_id_set_data_full(datalist, key_id, data, destroy_func : LibGLib::DestroyNotify)
-    __return_value = LibGLib.datalist_id_set_data_full((datalist.to_unsafe as LibGLib::Data*), UInt32.new(key_id), data && data, destroy_func)
+    __return_value = LibGLib.datalist_id_set_data_full(datalist.to_unsafe.as(LibGLib::Data*), UInt32.new(key_id), data && data, destroy_func)
     __return_value
   end
 
   def self.datalist_init(datalist)
-    __return_value = LibGLib.datalist_init((datalist.to_unsafe as LibGLib::Data*))
+    __return_value = LibGLib.datalist_init(datalist.to_unsafe.as(LibGLib::Data*))
     __return_value
   end
 
   def self.datalist_set_flags(datalist, flags)
-    __return_value = LibGLib.datalist_set_flags((datalist.to_unsafe as LibGLib::Data*), UInt32.new(flags))
+    __return_value = LibGLib.datalist_set_flags(datalist.to_unsafe.as(LibGLib::Data*), UInt32.new(flags))
     __return_value
   end
 
   def self.datalist_unset_flags(datalist, flags)
-    __return_value = LibGLib.datalist_unset_flags((datalist.to_unsafe as LibGLib::Data*), UInt32.new(flags))
+    __return_value = LibGLib.datalist_unset_flags(datalist.to_unsafe.as(LibGLib::Data*), UInt32.new(flags))
     __return_value
   end
 
@@ -465,7 +465,7 @@ module GLib
   end
 
   def self.date_strftime(s, slen, format, date)
-    __return_value = LibGLib.date_strftime(s, UInt64.new(slen), format, (date.to_unsafe as LibGLib::Date*))
+    __return_value = LibGLib.date_strftime(s, UInt64.new(slen), format, date.to_unsafe.as(LibGLib::Date*))
     __return_value
   end
 
@@ -708,7 +708,7 @@ module GLib
   end
 
   def self.current_time(result)
-    __return_value = LibGLib.get_current_time((result.to_unsafe as LibGLib::TimeVal*))
+    __return_value = LibGLib.get_current_time(result.to_unsafe.as(LibGLib::TimeVal*))
     __return_value
   end
 
@@ -883,32 +883,32 @@ module GLib
   end
 
   def self.hook_destroy(hook_list, hook_id)
-    __return_value = LibGLib.hook_destroy((hook_list.to_unsafe as LibGLib::HookList*), UInt64.new(hook_id))
+    __return_value = LibGLib.hook_destroy(hook_list.to_unsafe.as(LibGLib::HookList*), UInt64.new(hook_id))
     __return_value
   end
 
   def self.hook_destroy_link(hook_list, hook)
-    __return_value = LibGLib.hook_destroy_link((hook_list.to_unsafe as LibGLib::HookList*), (hook.to_unsafe as LibGLib::Hook*))
+    __return_value = LibGLib.hook_destroy_link(hook_list.to_unsafe.as(LibGLib::HookList*), hook.to_unsafe.as(LibGLib::Hook*))
     __return_value
   end
 
   def self.hook_free(hook_list, hook)
-    __return_value = LibGLib.hook_free((hook_list.to_unsafe as LibGLib::HookList*), (hook.to_unsafe as LibGLib::Hook*))
+    __return_value = LibGLib.hook_free(hook_list.to_unsafe.as(LibGLib::HookList*), hook.to_unsafe.as(LibGLib::Hook*))
     __return_value
   end
 
   def self.hook_insert_before(hook_list, sibling, hook)
-    __return_value = LibGLib.hook_insert_before((hook_list.to_unsafe as LibGLib::HookList*), sibling && (sibling.to_unsafe as LibGLib::Hook*), (hook.to_unsafe as LibGLib::Hook*))
+    __return_value = LibGLib.hook_insert_before(hook_list.to_unsafe.as(LibGLib::HookList*), sibling && sibling.to_unsafe.as(LibGLib::Hook*), hook.to_unsafe.as(LibGLib::Hook*))
     __return_value
   end
 
   def self.hook_prepend(hook_list, hook)
-    __return_value = LibGLib.hook_prepend((hook_list.to_unsafe as LibGLib::HookList*), (hook.to_unsafe as LibGLib::Hook*))
+    __return_value = LibGLib.hook_prepend(hook_list.to_unsafe.as(LibGLib::HookList*), hook.to_unsafe.as(LibGLib::Hook*))
     __return_value
   end
 
   def self.hook_unref(hook_list, hook)
-    __return_value = LibGLib.hook_unref((hook_list.to_unsafe as LibGLib::HookList*), (hook.to_unsafe as LibGLib::Hook*))
+    __return_value = LibGLib.hook_unref(hook_list.to_unsafe.as(LibGLib::HookList*), hook.to_unsafe.as(LibGLib::Hook*))
     __return_value
   end
 
@@ -938,7 +938,7 @@ module GLib
   end
 
   def self.iconv(converter, inbuf, inbytes_left, outbuf, outbytes_left)
-    __return_value = LibGLib.iconv((converter.to_unsafe as LibGLib::IConv*), inbuf, inbytes_left, outbuf, outbytes_left)
+    __return_value = LibGLib.iconv(converter.to_unsafe.as(LibGLib::IConv*), inbuf, inbytes_left, outbuf, outbytes_left)
     __return_value
   end
 
@@ -988,7 +988,7 @@ module GLib
   end
 
   def self.io_add_watch(channel, priority, condition, func : LibGLib::IOFunc, user_data, notify : LibGLib::DestroyNotify)
-    __return_value = LibGLib.io_add_watch((channel.to_unsafe as LibGLib::IOChannel*), Int32.new(priority), condition, func, user_data && user_data, notify)
+    __return_value = LibGLib.io_add_watch(channel.to_unsafe.as(LibGLib::IOChannel*), Int32.new(priority), condition, func, user_data && user_data, notify)
     __return_value
   end
 
@@ -1003,7 +1003,7 @@ module GLib
   end
 
   def self.io_create_watch(channel, condition)
-    __return_value = LibGLib.io_create_watch((channel.to_unsafe as LibGLib::IOChannel*), condition)
+    __return_value = LibGLib.io_create_watch(channel.to_unsafe.as(LibGLib::IOChannel*), condition)
     GLib::Source.new(__return_value)
   end
 
@@ -1122,7 +1122,7 @@ module GLib
   end
 
   def self.mem_set_vtable(vtable)
-    __return_value = LibGLib.mem_set_vtable((vtable.to_unsafe as LibGLib::MemVTable*))
+    __return_value = LibGLib.mem_set_vtable(vtable.to_unsafe.as(LibGLib::MemVTable*))
     __return_value
   end
 
@@ -1212,7 +1212,7 @@ module GLib
   end
 
   def self.pattern_match(pspec, string_length, string, string_reversed)
-    __return_value = LibGLib.pattern_match((pspec.to_unsafe as LibGLib::PatternSpec*), UInt32.new(string_length), string, string_reversed && string_reversed)
+    __return_value = LibGLib.pattern_match(pspec.to_unsafe.as(LibGLib::PatternSpec*), UInt32.new(string_length), string, string_reversed && string_reversed)
     __return_value
   end
 
@@ -1222,7 +1222,7 @@ module GLib
   end
 
   def self.pattern_match_string(pspec, string)
-    __return_value = LibGLib.pattern_match_string((pspec.to_unsafe as LibGLib::PatternSpec*), string)
+    __return_value = LibGLib.pattern_match_string(pspec.to_unsafe.as(LibGLib::PatternSpec*), string)
     __return_value
   end
 
@@ -1242,7 +1242,7 @@ module GLib
   end
 
   def self.poll(fds, nfds, timeout)
-    __return_value = LibGLib.poll((fds.to_unsafe as LibGLib::PollFD*), UInt32.new(nfds), Int32.new(timeout))
+    __return_value = LibGLib.poll(fds.to_unsafe.as(LibGLib::PollFD*), UInt32.new(nfds), Int32.new(timeout))
     __return_value
   end
 
@@ -1349,37 +1349,37 @@ module GLib
   end
 
   def self.sequence_get(iter)
-    __return_value = LibGLib.sequence_get((iter.to_unsafe as LibGLib::SequenceIter*))
+    __return_value = LibGLib.sequence_get(iter.to_unsafe.as(LibGLib::SequenceIter*))
     __return_value if __return_value
   end
 
   def self.sequence_move(src, dest)
-    __return_value = LibGLib.sequence_move((src.to_unsafe as LibGLib::SequenceIter*), (dest.to_unsafe as LibGLib::SequenceIter*))
+    __return_value = LibGLib.sequence_move(src.to_unsafe.as(LibGLib::SequenceIter*), dest.to_unsafe.as(LibGLib::SequenceIter*))
     __return_value
   end
 
   def self.sequence_move_range(dest, _begin, end)
-    __return_value = LibGLib.sequence_move_range((dest.to_unsafe as LibGLib::SequenceIter*), (_begin.to_unsafe as LibGLib::SequenceIter*), (end.to_unsafe as LibGLib::SequenceIter*))
+    __return_value = LibGLib.sequence_move_range(dest.to_unsafe.as(LibGLib::SequenceIter*), _begin.to_unsafe.as(LibGLib::SequenceIter*), end.to_unsafe.as(LibGLib::SequenceIter*))
     __return_value
   end
 
   def self.sequence_remove(iter)
-    __return_value = LibGLib.sequence_remove((iter.to_unsafe as LibGLib::SequenceIter*))
+    __return_value = LibGLib.sequence_remove(iter.to_unsafe.as(LibGLib::SequenceIter*))
     __return_value
   end
 
   def self.sequence_remove_range(_begin, end)
-    __return_value = LibGLib.sequence_remove_range((_begin.to_unsafe as LibGLib::SequenceIter*), (end.to_unsafe as LibGLib::SequenceIter*))
+    __return_value = LibGLib.sequence_remove_range(_begin.to_unsafe.as(LibGLib::SequenceIter*), end.to_unsafe.as(LibGLib::SequenceIter*))
     __return_value
   end
 
   def self.sequence_set(iter, data)
-    __return_value = LibGLib.sequence_set((iter.to_unsafe as LibGLib::SequenceIter*), data && data)
+    __return_value = LibGLib.sequence_set(iter.to_unsafe.as(LibGLib::SequenceIter*), data && data)
     __return_value
   end
 
   def self.sequence_swap(a, b)
-    __return_value = LibGLib.sequence_swap((a.to_unsafe as LibGLib::SequenceIter*), (b.to_unsafe as LibGLib::SequenceIter*))
+    __return_value = LibGLib.sequence_swap(a.to_unsafe.as(LibGLib::SequenceIter*), b.to_unsafe.as(LibGLib::SequenceIter*))
     __return_value
   end
 
@@ -1473,7 +1473,7 @@ module GLib
   end
 
   def self.source_remove_by_funcs_user_data(funcs, user_data)
-    __return_value = LibGLib.source_remove_by_funcs_user_data((funcs.to_unsafe as LibGLib::SourceFuncs*), user_data && user_data)
+    __return_value = LibGLib.source_remove_by_funcs_user_data(funcs.to_unsafe.as(LibGLib::SourceFuncs*), user_data && user_data)
     __return_value
   end
 
@@ -1850,7 +1850,7 @@ module GLib
   end
 
   def self.test_run_suite(suite)
-    __return_value = LibGLib.test_run_suite((suite.to_unsafe as LibGLib::TestSuite*))
+    __return_value = LibGLib.test_run_suite(suite.to_unsafe.as(LibGLib::TestSuite*))
     __return_value
   end
 
@@ -1985,22 +1985,22 @@ module GLib
   end
 
   def self.trash_stack_height(stack_p)
-    __return_value = LibGLib.trash_stack_height((stack_p.to_unsafe as LibGLib::TrashStack*))
+    __return_value = LibGLib.trash_stack_height(stack_p.to_unsafe.as(LibGLib::TrashStack*))
     __return_value
   end
 
   def self.trash_stack_peek(stack_p)
-    __return_value = LibGLib.trash_stack_peek((stack_p.to_unsafe as LibGLib::TrashStack*))
+    __return_value = LibGLib.trash_stack_peek(stack_p.to_unsafe.as(LibGLib::TrashStack*))
     __return_value if __return_value
   end
 
   def self.trash_stack_pop(stack_p)
-    __return_value = LibGLib.trash_stack_pop((stack_p.to_unsafe as LibGLib::TrashStack*))
+    __return_value = LibGLib.trash_stack_pop(stack_p.to_unsafe.as(LibGLib::TrashStack*))
     __return_value if __return_value
   end
 
   def self.trash_stack_push(stack_p, data_p)
-    __return_value = LibGLib.trash_stack_push((stack_p.to_unsafe as LibGLib::TrashStack*), data_p)
+    __return_value = LibGLib.trash_stack_push(stack_p.to_unsafe.as(LibGLib::TrashStack*), data_p)
     __return_value
   end
 
@@ -2462,7 +2462,7 @@ module GLib
 
   def self.variant_parse(type, text, limit, endptr)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.variant_parse(type && (type.to_unsafe as LibGLib::VariantType*), text, limit && limit, endptr && endptr, pointerof(__error))
+    __return_value = LibGLib.variant_parse(type && type.to_unsafe.as(LibGLib::VariantType*), text, limit && limit, endptr && endptr, pointerof(__error))
     GLib::Error.assert __error
     GLib::Variant.new(__return_value)
   end

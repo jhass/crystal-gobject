@@ -36,22 +36,22 @@ module Gio
     end
 
     def address_type
-      __return_value = LibGio.unix_socket_address_get_address_type((to_unsafe as LibGio::UnixSocketAddress*))
+      __return_value = LibGio.unix_socket_address_get_address_type(to_unsafe.as(LibGio::UnixSocketAddress*))
       __return_value
     end
 
     def is_abstract
-      __return_value = LibGio.unix_socket_address_get_is_abstract((to_unsafe as LibGio::UnixSocketAddress*))
+      __return_value = LibGio.unix_socket_address_get_is_abstract(to_unsafe.as(LibGio::UnixSocketAddress*))
       __return_value
     end
 
     def path
-      __return_value = LibGio.unix_socket_address_get_path((to_unsafe as LibGio::UnixSocketAddress*))
+      __return_value = LibGio.unix_socket_address_get_path(to_unsafe.as(LibGio::UnixSocketAddress*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def path_len
-      __return_value = LibGio.unix_socket_address_get_path_len((to_unsafe as LibGio::UnixSocketAddress*))
+      __return_value = LibGio.unix_socket_address_get_path_len(to_unsafe.as(LibGio::UnixSocketAddress*))
       __return_value
     end
 

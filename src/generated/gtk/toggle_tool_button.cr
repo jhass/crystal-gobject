@@ -26,12 +26,12 @@ module Gtk
     end
 
     def active
-      __return_value = LibGtk.toggle_tool_button_get_active((to_unsafe as LibGtk::ToggleToolButton*))
+      __return_value = LibGtk.toggle_tool_button_get_active(to_unsafe.as(LibGtk::ToggleToolButton*))
       __return_value
     end
 
     def active=(is_active)
-      __return_value = LibGtk.toggle_tool_button_set_active((to_unsafe as LibGtk::ToggleToolButton*), is_active)
+      __return_value = LibGtk.toggle_tool_button_set_active(to_unsafe.as(LibGtk::ToggleToolButton*), is_active)
       __return_value
     end
 

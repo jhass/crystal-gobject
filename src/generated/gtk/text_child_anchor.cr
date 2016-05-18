@@ -14,12 +14,12 @@ module Gtk
     end
 
     def deleted
-      __return_value = LibGtk.text_child_anchor_get_deleted((to_unsafe as LibGtk::TextChildAnchor*))
+      __return_value = LibGtk.text_child_anchor_get_deleted(to_unsafe.as(LibGtk::TextChildAnchor*))
       __return_value
     end
 
     def widgets
-      __return_value = LibGtk.text_child_anchor_get_widgets((to_unsafe as LibGtk::TextChildAnchor*))
+      __return_value = LibGtk.text_child_anchor_get_widgets(to_unsafe.as(LibGtk::TextChildAnchor*))
       __return_value
     end
 

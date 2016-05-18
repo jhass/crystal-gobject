@@ -11,7 +11,7 @@ module Gst
     end
 
     def init
-      __return_value = LibGst.poll_f_d_init((to_unsafe as LibGst::PollFD*))
+      __return_value = LibGst.poll_f_d_init(to_unsafe.as(LibGst::PollFD*))
       __return_value
     end
 

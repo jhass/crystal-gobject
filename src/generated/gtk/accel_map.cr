@@ -49,7 +49,7 @@ module Gtk
     end
 
     def self.load_scanner(scanner)
-      __return_value = LibGtk.accel_map_load_scanner((scanner.to_unsafe as LibGLib::Scanner*))
+      __return_value = LibGtk.accel_map_load_scanner(scanner.to_unsafe.as(LibGLib::Scanner*))
       __return_value
     end
 

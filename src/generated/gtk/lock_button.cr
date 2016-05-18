@@ -21,17 +21,17 @@ module Gtk
 
 
     def self.new(permission) : self
-      __return_value = LibGtk.lock_button_new(permission && (permission.to_unsafe as LibGio::Permission*))
+      __return_value = LibGtk.lock_button_new(permission && permission.to_unsafe.as(LibGio::Permission*))
       cast Gtk::Widget.new(__return_value)
     end
 
     def permission
-      __return_value = LibGtk.lock_button_get_permission((to_unsafe as LibGtk::LockButton*))
+      __return_value = LibGtk.lock_button_get_permission(to_unsafe.as(LibGtk::LockButton*))
       Gio::Permission.new(__return_value)
     end
 
     def permission=(permission)
-      __return_value = LibGtk.lock_button_set_permission((to_unsafe as LibGtk::LockButton*), permission && (permission.to_unsafe as LibGio::Permission*))
+      __return_value = LibGtk.lock_button_set_permission(to_unsafe.as(LibGtk::LockButton*), permission && permission.to_unsafe.as(LibGio::Permission*))
       __return_value
     end
 

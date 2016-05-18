@@ -5,7 +5,7 @@ module Atk
   end
 
   def self.focus_tracker_notify(object)
-    __return_value = LibAtk.focus_tracker_notify((object.to_unsafe as LibAtk::Object*))
+    __return_value = LibAtk.focus_tracker_notify(object.to_unsafe.as(LibAtk::Object*))
     __return_value
   end
 

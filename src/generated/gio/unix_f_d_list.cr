@@ -20,30 +20,30 @@ module Gio
 
     def append(fd)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.unix_f_d_list_append((to_unsafe as LibGio::UnixFDList*), Int32.new(fd), pointerof(__error))
+      __return_value = LibGio.unix_f_d_list_append(to_unsafe.as(LibGio::UnixFDList*), Int32.new(fd), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def get(index)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.unix_f_d_list_get((to_unsafe as LibGio::UnixFDList*), Int32.new(index), pointerof(__error))
+      __return_value = LibGio.unix_f_d_list_get(to_unsafe.as(LibGio::UnixFDList*), Int32.new(index), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def length
-      __return_value = LibGio.unix_f_d_list_get_length((to_unsafe as LibGio::UnixFDList*))
+      __return_value = LibGio.unix_f_d_list_get_length(to_unsafe.as(LibGio::UnixFDList*))
       __return_value
     end
 
     def peek_fds(length)
-      __return_value = LibGio.unix_f_d_list_peek_fds((to_unsafe as LibGio::UnixFDList*), Int32.new(length))
+      __return_value = LibGio.unix_f_d_list_peek_fds(to_unsafe.as(LibGio::UnixFDList*), Int32.new(length))
       PointerIterator.new(__return_value) {|__item| __item }
     end
 
     def steal_fds(length)
-      __return_value = LibGio.unix_f_d_list_steal_fds((to_unsafe as LibGio::UnixFDList*), Int32.new(length))
+      __return_value = LibGio.unix_f_d_list_steal_fds(to_unsafe.as(LibGio::UnixFDList*), Int32.new(length))
       PointerIterator.new(__return_value) {|__item| __item }
     end
 

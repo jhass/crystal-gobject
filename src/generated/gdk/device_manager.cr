@@ -10,17 +10,17 @@ module Gdk
 
 
     def client_pointer
-      __return_value = LibGdk.device_manager_get_client_pointer((to_unsafe as LibGdk::DeviceManager*))
+      __return_value = LibGdk.device_manager_get_client_pointer(to_unsafe.as(LibGdk::DeviceManager*))
       Gdk::Device.new(__return_value)
     end
 
     def display
-      __return_value = LibGdk.device_manager_get_display((to_unsafe as LibGdk::DeviceManager*))
+      __return_value = LibGdk.device_manager_get_display(to_unsafe.as(LibGdk::DeviceManager*))
       Gdk::Display.new(__return_value) if __return_value
     end
 
     def list_devices(type)
-      __return_value = LibGdk.device_manager_list_devices((to_unsafe as LibGdk::DeviceManager*), type)
+      __return_value = LibGdk.device_manager_list_devices(to_unsafe.as(LibGdk::DeviceManager*), type)
       __return_value
     end
 

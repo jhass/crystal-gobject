@@ -17,7 +17,7 @@ module Gio
     end
 
     def file_info
-      __return_value = LibGio.zlib_decompressor_get_file_info((to_unsafe as LibGio::ZlibDecompressor*))
+      __return_value = LibGio.zlib_decompressor_get_file_info(to_unsafe.as(LibGio::ZlibDecompressor*))
       Gio::FileInfo.new(__return_value)
     end
 

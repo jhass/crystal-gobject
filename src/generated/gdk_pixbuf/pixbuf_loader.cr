@@ -29,41 +29,41 @@ module GdkPixbuf
 
     def close
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGdkPixbuf.pixbuf_loader_close((to_unsafe as LibGdkPixbuf::PixbufLoader*), pointerof(__error))
+      __return_value = LibGdkPixbuf.pixbuf_loader_close(to_unsafe.as(LibGdkPixbuf::PixbufLoader*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def animation
-      __return_value = LibGdkPixbuf.pixbuf_loader_get_animation((to_unsafe as LibGdkPixbuf::PixbufLoader*))
+      __return_value = LibGdkPixbuf.pixbuf_loader_get_animation(to_unsafe.as(LibGdkPixbuf::PixbufLoader*))
       GdkPixbuf::PixbufAnimation.new(__return_value)
     end
 
     def format
-      __return_value = LibGdkPixbuf.pixbuf_loader_get_format((to_unsafe as LibGdkPixbuf::PixbufLoader*))
+      __return_value = LibGdkPixbuf.pixbuf_loader_get_format(to_unsafe.as(LibGdkPixbuf::PixbufLoader*))
       GdkPixbuf::PixbufFormat.new(__return_value) if __return_value
     end
 
     def pixbuf
-      __return_value = LibGdkPixbuf.pixbuf_loader_get_pixbuf((to_unsafe as LibGdkPixbuf::PixbufLoader*))
+      __return_value = LibGdkPixbuf.pixbuf_loader_get_pixbuf(to_unsafe.as(LibGdkPixbuf::PixbufLoader*))
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 
     def set_size(width, height)
-      __return_value = LibGdkPixbuf.pixbuf_loader_set_size((to_unsafe as LibGdkPixbuf::PixbufLoader*), Int32.new(width), Int32.new(height))
+      __return_value = LibGdkPixbuf.pixbuf_loader_set_size(to_unsafe.as(LibGdkPixbuf::PixbufLoader*), Int32.new(width), Int32.new(height))
       __return_value
     end
 
     def write(buf, count)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGdkPixbuf.pixbuf_loader_write((to_unsafe as LibGdkPixbuf::PixbufLoader*), buf, UInt64.new(count), pointerof(__error))
+      __return_value = LibGdkPixbuf.pixbuf_loader_write(to_unsafe.as(LibGdkPixbuf::PixbufLoader*), buf, UInt64.new(count), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def write_bytes(buffer)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGdkPixbuf.pixbuf_loader_write_bytes((to_unsafe as LibGdkPixbuf::PixbufLoader*), (buffer.to_unsafe as LibGLib::Bytes*), pointerof(__error))
+      __return_value = LibGdkPixbuf.pixbuf_loader_write_bytes(to_unsafe.as(LibGdkPixbuf::PixbufLoader*), buffer.to_unsafe.as(LibGLib::Bytes*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

@@ -14,7 +14,7 @@ module Gtk
     end
 
     def copy
-      __return_value = LibGtk.rc_style_copy((to_unsafe as LibGtk::RcStyle*))
+      __return_value = LibGtk.rc_style_copy(to_unsafe.as(LibGtk::RcStyle*))
       Gtk::RcStyle.new(__return_value)
     end
 

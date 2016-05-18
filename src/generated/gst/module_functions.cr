@@ -25,17 +25,17 @@ module Gst
   end
 
   def self.debug_bin_to_dot_data(bin, details)
-    __return_value = LibGst.debug_bin_to_dot_data((bin.to_unsafe as LibGst::Bin*), details)
+    __return_value = LibGst.debug_bin_to_dot_data(bin.to_unsafe.as(LibGst::Bin*), details)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.debug_bin_to_dot_file(bin, details, file_name)
-    __return_value = LibGst.debug_bin_to_dot_file((bin.to_unsafe as LibGst::Bin*), details, file_name)
+    __return_value = LibGst.debug_bin_to_dot_file(bin.to_unsafe.as(LibGst::Bin*), details, file_name)
     __return_value
   end
 
   def self.debug_bin_to_dot_file_with_ts(bin, details, file_name)
-    __return_value = LibGst.debug_bin_to_dot_file_with_ts((bin.to_unsafe as LibGst::Bin*), details, file_name)
+    __return_value = LibGst.debug_bin_to_dot_file_with_ts(bin.to_unsafe.as(LibGst::Bin*), details, file_name)
     __return_value
   end
 
@@ -80,7 +80,7 @@ module Gst
   end
 
   def self.debug_log_default(category, level, file, function, line, object, message, user_data)
-    __return_value = LibGst.debug_log_default((category.to_unsafe as LibGst::DebugCategory*), level, file, function, Int32.new(line), object && (object.to_unsafe as LibGObject::Object*), (message.to_unsafe as LibGst::DebugMessage*), user_data && user_data)
+    __return_value = LibGst.debug_log_default(category.to_unsafe.as(LibGst::DebugCategory*), level, file, function, Int32.new(line), object && object.to_unsafe.as(LibGObject::Object*), message.to_unsafe.as(LibGst::DebugMessage*), user_data && user_data)
     __return_value
   end
 
@@ -279,12 +279,12 @@ module Gst
   end
 
   def self.mini_object_replace(olddata, newdata)
-    __return_value = LibGst.mini_object_replace(olddata && (olddata.to_unsafe as LibGst::MiniObject*), newdata && (newdata.to_unsafe as LibGst::MiniObject*))
+    __return_value = LibGst.mini_object_replace(olddata && olddata.to_unsafe.as(LibGst::MiniObject*), newdata && newdata.to_unsafe.as(LibGst::MiniObject*))
     __return_value
   end
 
   def self.mini_object_take(olddata, newdata)
-    __return_value = LibGst.mini_object_take((olddata.to_unsafe as LibGst::MiniObject*), (newdata.to_unsafe as LibGst::MiniObject*))
+    __return_value = LibGst.mini_object_take(olddata.to_unsafe.as(LibGst::MiniObject*), newdata.to_unsafe.as(LibGst::MiniObject*))
     __return_value
   end
 
@@ -317,7 +317,7 @@ module Gst
 
   def self.parse_bin_from_description_full(bin_description, ghost_unlinked_pads, context, flags)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGst.parse_bin_from_description_full(bin_description, ghost_unlinked_pads, context && (context.to_unsafe as LibGst::ParseContext*), flags, pointerof(__error))
+    __return_value = LibGst.parse_bin_from_description_full(bin_description, ghost_unlinked_pads, context && context.to_unsafe.as(LibGst::ParseContext*), flags, pointerof(__error))
     GLib::Error.assert __error
     Gst::Element.new(__return_value)
   end
@@ -336,7 +336,7 @@ module Gst
 
   def self.parse_launch_full(pipeline_description, context, flags)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGst.parse_launch_full(pipeline_description, context && (context.to_unsafe as LibGst::ParseContext*), flags, pointerof(__error))
+    __return_value = LibGst.parse_launch_full(pipeline_description, context && context.to_unsafe.as(LibGst::ParseContext*), flags, pointerof(__error))
     GLib::Error.assert __error
     Gst::Element.new(__return_value)
   end
@@ -350,7 +350,7 @@ module Gst
 
   def self.parse_launchv_full(argv, context, flags)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGst.parse_launchv_full(argv, context && (context.to_unsafe as LibGst::ParseContext*), flags, pointerof(__error))
+    __return_value = LibGst.parse_launchv_full(argv, context && context.to_unsafe.as(LibGst::ParseContext*), flags, pointerof(__error))
     GLib::Error.assert __error
     Gst::Element.new(__return_value)
   end
@@ -466,17 +466,17 @@ module Gst
   end
 
   def self.tag_list_copy_value(dest, list, tag)
-    __return_value = LibGst.tag_list_copy_value(dest, (list.to_unsafe as LibGst::TagList*), tag)
+    __return_value = LibGst.tag_list_copy_value(dest, list.to_unsafe.as(LibGst::TagList*), tag)
     __return_value
   end
 
   def self.tag_merge_strings_with_comma(dest, src)
-    __return_value = LibGst.tag_merge_strings_with_comma(dest, (src.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.tag_merge_strings_with_comma(dest, src.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.tag_merge_use_first(dest, src)
-    __return_value = LibGst.tag_merge_use_first(dest, (src.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.tag_merge_use_first(dest, src.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
@@ -501,7 +501,7 @@ module Gst
   end
 
   def self.type_find_register(plugin, name, rank, func : LibGst::TypeFindFunction, extensions, possible_caps, data, data_notify : LibGLib::DestroyNotify)
-    __return_value = LibGst.type_find_register(plugin && (plugin.to_unsafe as LibGst::Plugin*), name, UInt32.new(rank), func, extensions && extensions, (possible_caps.to_unsafe as LibGst::Caps*), data && data, data_notify)
+    __return_value = LibGst.type_find_register(plugin && plugin.to_unsafe.as(LibGst::Plugin*), name, UInt32.new(rank), func, extensions && extensions, possible_caps.to_unsafe.as(LibGst::Caps*), data && data, data_notify)
     __return_value
   end
 
@@ -636,7 +636,7 @@ module Gst
   end
 
   def self.util_set_object_arg(object, name, value)
-    __return_value = LibGst.util_set_object_arg((object.to_unsafe as LibGObject::Object*), name, value)
+    __return_value = LibGst.util_set_object_arg(object.to_unsafe.as(LibGObject::Object*), name, value)
     __return_value
   end
 
@@ -676,27 +676,27 @@ module Gst
   end
 
   def self.value_can_compare(value1, value2)
-    __return_value = LibGst.value_can_compare((value1.to_unsafe as LibGObject::Value*), (value2.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_can_compare(value1.to_unsafe.as(LibGObject::Value*), value2.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_can_intersect(value1, value2)
-    __return_value = LibGst.value_can_intersect((value1.to_unsafe as LibGObject::Value*), (value2.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_can_intersect(value1.to_unsafe.as(LibGObject::Value*), value2.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_can_subtract(minuend, subtrahend)
-    __return_value = LibGst.value_can_subtract((minuend.to_unsafe as LibGObject::Value*), (subtrahend.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_can_subtract(minuend.to_unsafe.as(LibGObject::Value*), subtrahend.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_can_union(value1, value2)
-    __return_value = LibGst.value_can_union((value1.to_unsafe as LibGObject::Value*), (value2.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_can_union(value1.to_unsafe.as(LibGObject::Value*), value2.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_compare(value1, value2)
-    __return_value = LibGst.value_compare((value1.to_unsafe as LibGObject::Value*), (value2.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_compare(value1.to_unsafe.as(LibGObject::Value*), value2.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
@@ -706,212 +706,212 @@ module Gst
   end
 
   def self.value_fixate(dest, src)
-    __return_value = LibGst.value_fixate((dest.to_unsafe as LibGObject::Value*), (src.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_fixate(dest.to_unsafe.as(LibGObject::Value*), src.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_fraction_multiply(product, factor1, factor2)
-    __return_value = LibGst.value_fraction_multiply((product.to_unsafe as LibGObject::Value*), (factor1.to_unsafe as LibGObject::Value*), (factor2.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_fraction_multiply(product.to_unsafe.as(LibGObject::Value*), factor1.to_unsafe.as(LibGObject::Value*), factor2.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_fraction_subtract(dest, minuend, subtrahend)
-    __return_value = LibGst.value_fraction_subtract((dest.to_unsafe as LibGObject::Value*), (minuend.to_unsafe as LibGObject::Value*), (subtrahend.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_fraction_subtract(dest.to_unsafe.as(LibGObject::Value*), minuend.to_unsafe.as(LibGObject::Value*), subtrahend.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_get_bitmask(value)
-    __return_value = LibGst.value_get_bitmask((value.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_get_bitmask(value.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_get_caps(value)
-    __return_value = LibGst.value_get_caps((value.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_get_caps(value.to_unsafe.as(LibGObject::Value*))
     Gst::Caps.new(__return_value)
   end
 
   def self.value_get_caps_features(value)
-    __return_value = LibGst.value_get_caps_features((value.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_get_caps_features(value.to_unsafe.as(LibGObject::Value*))
     Gst::CapsFeatures.new(__return_value)
   end
 
   def self.value_get_double_range_max(value)
-    __return_value = LibGst.value_get_double_range_max((value.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_get_double_range_max(value.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_get_double_range_min(value)
-    __return_value = LibGst.value_get_double_range_min((value.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_get_double_range_min(value.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_get_flagset_flags(value)
-    __return_value = LibGst.value_get_flagset_flags((value.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_get_flagset_flags(value.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_get_flagset_mask(value)
-    __return_value = LibGst.value_get_flagset_mask((value.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_get_flagset_mask(value.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_get_fraction_denominator(value)
-    __return_value = LibGst.value_get_fraction_denominator((value.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_get_fraction_denominator(value.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_get_fraction_numerator(value)
-    __return_value = LibGst.value_get_fraction_numerator((value.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_get_fraction_numerator(value.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_get_fraction_range_max(value)
-    __return_value = LibGst.value_get_fraction_range_max((value.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_get_fraction_range_max(value.to_unsafe.as(LibGObject::Value*))
     GObject::Value.new(__return_value)
   end
 
   def self.value_get_fraction_range_min(value)
-    __return_value = LibGst.value_get_fraction_range_min((value.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_get_fraction_range_min(value.to_unsafe.as(LibGObject::Value*))
     GObject::Value.new(__return_value)
   end
 
   def self.value_get_int64_range_max(value)
-    __return_value = LibGst.value_get_int64_range_max((value.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_get_int64_range_max(value.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_get_int64_range_min(value)
-    __return_value = LibGst.value_get_int64_range_min((value.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_get_int64_range_min(value.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_get_int64_range_step(value)
-    __return_value = LibGst.value_get_int64_range_step((value.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_get_int64_range_step(value.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_get_int_range_max(value)
-    __return_value = LibGst.value_get_int_range_max((value.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_get_int_range_max(value.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_get_int_range_min(value)
-    __return_value = LibGst.value_get_int_range_min((value.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_get_int_range_min(value.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_get_int_range_step(value)
-    __return_value = LibGst.value_get_int_range_step((value.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_get_int_range_step(value.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_get_structure(value)
-    __return_value = LibGst.value_get_structure((value.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_get_structure(value.to_unsafe.as(LibGObject::Value*))
     Gst::Structure.new(__return_value)
   end
 
   def self.value_init_and_copy(dest, src)
-    __return_value = LibGst.value_init_and_copy(dest, (src.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_init_and_copy(dest, src.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_intersect(dest, value1, value2)
-    __return_value = LibGst.value_intersect(dest, (value1.to_unsafe as LibGObject::Value*), (value2.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_intersect(dest, value1.to_unsafe.as(LibGObject::Value*), value2.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_is_fixed(value)
-    __return_value = LibGst.value_is_fixed((value.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_is_fixed(value.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_is_subset(value1, value2)
-    __return_value = LibGst.value_is_subset((value1.to_unsafe as LibGObject::Value*), (value2.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_is_subset(value1.to_unsafe.as(LibGObject::Value*), value2.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_register(table)
-    __return_value = LibGst.value_register((table.to_unsafe as LibGst::ValueTable*))
+    __return_value = LibGst.value_register(table.to_unsafe.as(LibGst::ValueTable*))
     __return_value
   end
 
   def self.value_serialize(value)
-    __return_value = LibGst.value_serialize((value.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_serialize(value.to_unsafe.as(LibGObject::Value*))
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.value_set_bitmask(value, bitmask)
-    __return_value = LibGst.value_set_bitmask((value.to_unsafe as LibGObject::Value*), UInt64.new(bitmask))
+    __return_value = LibGst.value_set_bitmask(value.to_unsafe.as(LibGObject::Value*), UInt64.new(bitmask))
     __return_value
   end
 
   def self.value_set_caps(value, caps)
-    __return_value = LibGst.value_set_caps((value.to_unsafe as LibGObject::Value*), (caps.to_unsafe as LibGst::Caps*))
+    __return_value = LibGst.value_set_caps(value.to_unsafe.as(LibGObject::Value*), caps.to_unsafe.as(LibGst::Caps*))
     __return_value
   end
 
   def self.value_set_caps_features(value, features)
-    __return_value = LibGst.value_set_caps_features((value.to_unsafe as LibGObject::Value*), (features.to_unsafe as LibGst::CapsFeatures*))
+    __return_value = LibGst.value_set_caps_features(value.to_unsafe.as(LibGObject::Value*), features.to_unsafe.as(LibGst::CapsFeatures*))
     __return_value
   end
 
   def self.value_set_double_range(value, start, end)
-    __return_value = LibGst.value_set_double_range((value.to_unsafe as LibGObject::Value*), Float64.new(start), Float64.new(end))
+    __return_value = LibGst.value_set_double_range(value.to_unsafe.as(LibGObject::Value*), Float64.new(start), Float64.new(end))
     __return_value
   end
 
   def self.value_set_flagset(value, flags, mask)
-    __return_value = LibGst.value_set_flagset((value.to_unsafe as LibGObject::Value*), UInt32.new(flags), UInt32.new(mask))
+    __return_value = LibGst.value_set_flagset(value.to_unsafe.as(LibGObject::Value*), UInt32.new(flags), UInt32.new(mask))
     __return_value
   end
 
   def self.value_set_fraction(value, numerator, denominator)
-    __return_value = LibGst.value_set_fraction((value.to_unsafe as LibGObject::Value*), Int32.new(numerator), Int32.new(denominator))
+    __return_value = LibGst.value_set_fraction(value.to_unsafe.as(LibGObject::Value*), Int32.new(numerator), Int32.new(denominator))
     __return_value
   end
 
   def self.value_set_fraction_range(value, start, end)
-    __return_value = LibGst.value_set_fraction_range((value.to_unsafe as LibGObject::Value*), (start.to_unsafe as LibGObject::Value*), (end.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_set_fraction_range(value.to_unsafe.as(LibGObject::Value*), start.to_unsafe.as(LibGObject::Value*), end.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_set_fraction_range_full(value, numerator_start, denominator_start, numerator_end, denominator_end)
-    __return_value = LibGst.value_set_fraction_range_full((value.to_unsafe as LibGObject::Value*), Int32.new(numerator_start), Int32.new(denominator_start), Int32.new(numerator_end), Int32.new(denominator_end))
+    __return_value = LibGst.value_set_fraction_range_full(value.to_unsafe.as(LibGObject::Value*), Int32.new(numerator_start), Int32.new(denominator_start), Int32.new(numerator_end), Int32.new(denominator_end))
     __return_value
   end
 
   def self.value_set_int64_range(value, start, end)
-    __return_value = LibGst.value_set_int64_range((value.to_unsafe as LibGObject::Value*), Int64.new(start), Int64.new(end))
+    __return_value = LibGst.value_set_int64_range(value.to_unsafe.as(LibGObject::Value*), Int64.new(start), Int64.new(end))
     __return_value
   end
 
   def self.value_set_int64_range_step(value, start, end, step)
-    __return_value = LibGst.value_set_int64_range_step((value.to_unsafe as LibGObject::Value*), Int64.new(start), Int64.new(end), Int64.new(step))
+    __return_value = LibGst.value_set_int64_range_step(value.to_unsafe.as(LibGObject::Value*), Int64.new(start), Int64.new(end), Int64.new(step))
     __return_value
   end
 
   def self.value_set_int_range(value, start, end)
-    __return_value = LibGst.value_set_int_range((value.to_unsafe as LibGObject::Value*), Int32.new(start), Int32.new(end))
+    __return_value = LibGst.value_set_int_range(value.to_unsafe.as(LibGObject::Value*), Int32.new(start), Int32.new(end))
     __return_value
   end
 
   def self.value_set_int_range_step(value, start, end, step)
-    __return_value = LibGst.value_set_int_range_step((value.to_unsafe as LibGObject::Value*), Int32.new(start), Int32.new(end), Int32.new(step))
+    __return_value = LibGst.value_set_int_range_step(value.to_unsafe.as(LibGObject::Value*), Int32.new(start), Int32.new(end), Int32.new(step))
     __return_value
   end
 
   def self.value_set_structure(value, structure)
-    __return_value = LibGst.value_set_structure((value.to_unsafe as LibGObject::Value*), (structure.to_unsafe as LibGst::Structure*))
+    __return_value = LibGst.value_set_structure(value.to_unsafe.as(LibGObject::Value*), structure.to_unsafe.as(LibGst::Structure*))
     __return_value
   end
 
   def self.value_subtract(dest, minuend, subtrahend)
-    __return_value = LibGst.value_subtract(dest, (minuend.to_unsafe as LibGObject::Value*), (subtrahend.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_subtract(dest, minuend.to_unsafe.as(LibGObject::Value*), subtrahend.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
   def self.value_union(dest, value1, value2)
-    __return_value = LibGst.value_union(dest, (value1.to_unsafe as LibGObject::Value*), (value2.to_unsafe as LibGObject::Value*))
+    __return_value = LibGst.value_union(dest, value1.to_unsafe.as(LibGObject::Value*), value2.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 

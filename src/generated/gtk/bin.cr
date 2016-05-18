@@ -13,7 +13,7 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def child
-      __return_value = LibGtk.bin_get_child((to_unsafe as LibGtk::Bin*))
+      __return_value = LibGtk.bin_get_child(to_unsafe.as(LibGtk::Bin*))
       Gtk::Widget.new(__return_value)
     end
 

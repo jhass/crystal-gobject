@@ -11,12 +11,12 @@ module GLib
     end
 
     def equal(pspec2)
-      __return_value = LibGLib.pattern_spec_equal((to_unsafe as LibGLib::PatternSpec*), (pspec2.to_unsafe as LibGLib::PatternSpec*))
+      __return_value = LibGLib.pattern_spec_equal(to_unsafe.as(LibGLib::PatternSpec*), pspec2.to_unsafe.as(LibGLib::PatternSpec*))
       __return_value
     end
 
     def free
-      __return_value = LibGLib.pattern_spec_free((to_unsafe as LibGLib::PatternSpec*))
+      __return_value = LibGLib.pattern_spec_free(to_unsafe.as(LibGLib::PatternSpec*))
       __return_value
     end
 

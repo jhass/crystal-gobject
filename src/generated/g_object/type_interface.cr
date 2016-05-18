@@ -11,7 +11,7 @@ module GObject
     end
 
     def peek_parent
-      __return_value = LibGObject.type_interface_peek_parent((to_unsafe as LibGObject::TypeInterface*))
+      __return_value = LibGObject.type_interface_peek_parent(to_unsafe.as(LibGObject::TypeInterface*))
       GObject::TypeInterface.new(__return_value)
     end
 
@@ -26,7 +26,7 @@ module GObject
     end
 
     def self.peek(instance_class, iface_type)
-      __return_value = LibGObject.type_interface_peek((instance_class.to_unsafe as LibGObject::TypeClass*), UInt64.new(iface_type))
+      __return_value = LibGObject.type_interface_peek(instance_class.to_unsafe.as(LibGObject::TypeClass*), UInt64.new(iface_type))
       GObject::TypeInterface.new(__return_value)
     end
 

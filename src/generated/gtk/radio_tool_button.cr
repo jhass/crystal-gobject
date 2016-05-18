@@ -26,22 +26,22 @@ module Gtk
     end
 
     def self.new_from_widget(group) : self
-      __return_value = LibGtk.radio_tool_button_new_from_widget(group && (group.to_unsafe as LibGtk::RadioToolButton*))
+      __return_value = LibGtk.radio_tool_button_new_from_widget(group && group.to_unsafe.as(LibGtk::RadioToolButton*))
       cast Gtk::ToolItem.new(__return_value)
     end
 
     def self.new_with_stock_from_widget(group, stock_id) : self
-      __return_value = LibGtk.radio_tool_button_new_with_stock_from_widget(group && (group.to_unsafe as LibGtk::RadioToolButton*), stock_id)
+      __return_value = LibGtk.radio_tool_button_new_with_stock_from_widget(group && group.to_unsafe.as(LibGtk::RadioToolButton*), stock_id)
       cast Gtk::ToolItem.new(__return_value)
     end
 
     def group
-      __return_value = LibGtk.radio_tool_button_get_group((to_unsafe as LibGtk::RadioToolButton*))
+      __return_value = LibGtk.radio_tool_button_get_group(to_unsafe.as(LibGtk::RadioToolButton*))
       __return_value
     end
 
     def group=(group)
-      __return_value = LibGtk.radio_tool_button_set_group((to_unsafe as LibGtk::RadioToolButton*), group && group)
+      __return_value = LibGtk.radio_tool_button_set_group(to_unsafe.as(LibGtk::RadioToolButton*), group && group)
       __return_value
     end
 

@@ -20,32 +20,32 @@ module Gtk
     end
 
     def self.new_for_display(display, socket_id) : self
-      __return_value = LibGtk.plug_new_for_display((display.to_unsafe as LibGdk::Display*), UInt64.new(socket_id))
+      __return_value = LibGtk.plug_new_for_display(display.to_unsafe.as(LibGdk::Display*), UInt64.new(socket_id))
       cast Gtk::Widget.new(__return_value)
     end
 
     def construct(socket_id)
-      __return_value = LibGtk.plug_construct((to_unsafe as LibGtk::Plug*), UInt64.new(socket_id))
+      __return_value = LibGtk.plug_construct(to_unsafe.as(LibGtk::Plug*), UInt64.new(socket_id))
       __return_value
     end
 
     def construct_for_display(display, socket_id)
-      __return_value = LibGtk.plug_construct_for_display((to_unsafe as LibGtk::Plug*), (display.to_unsafe as LibGdk::Display*), UInt64.new(socket_id))
+      __return_value = LibGtk.plug_construct_for_display(to_unsafe.as(LibGtk::Plug*), display.to_unsafe.as(LibGdk::Display*), UInt64.new(socket_id))
       __return_value
     end
 
     def embedded
-      __return_value = LibGtk.plug_get_embedded((to_unsafe as LibGtk::Plug*))
+      __return_value = LibGtk.plug_get_embedded(to_unsafe.as(LibGtk::Plug*))
       __return_value
     end
 
     def id
-      __return_value = LibGtk.plug_get_id((to_unsafe as LibGtk::Plug*))
+      __return_value = LibGtk.plug_get_id(to_unsafe.as(LibGtk::Plug*))
       __return_value
     end
 
     def socket_window
-      __return_value = LibGtk.plug_get_socket_window((to_unsafe as LibGtk::Plug*))
+      __return_value = LibGtk.plug_get_socket_window(to_unsafe.as(LibGtk::Plug*))
       Gdk::Window.new(__return_value) if __return_value
     end
 

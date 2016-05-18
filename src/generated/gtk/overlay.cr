@@ -18,22 +18,22 @@ module Gtk
     end
 
     def add_overlay(widget)
-      __return_value = LibGtk.overlay_add_overlay((to_unsafe as LibGtk::Overlay*), (widget.to_unsafe as LibGtk::Widget*))
+      __return_value = LibGtk.overlay_add_overlay(to_unsafe.as(LibGtk::Overlay*), widget.to_unsafe.as(LibGtk::Widget*))
       __return_value
     end
 
     def overlay_pass_through(widget)
-      __return_value = LibGtk.overlay_get_overlay_pass_through((to_unsafe as LibGtk::Overlay*), (widget.to_unsafe as LibGtk::Widget*))
+      __return_value = LibGtk.overlay_get_overlay_pass_through(to_unsafe.as(LibGtk::Overlay*), widget.to_unsafe.as(LibGtk::Widget*))
       __return_value
     end
 
     def reorder_overlay(child, position)
-      __return_value = LibGtk.overlay_reorder_overlay((to_unsafe as LibGtk::Overlay*), (child.to_unsafe as LibGtk::Widget*), Int32.new(position))
+      __return_value = LibGtk.overlay_reorder_overlay(to_unsafe.as(LibGtk::Overlay*), child.to_unsafe.as(LibGtk::Widget*), Int32.new(position))
       __return_value
     end
 
     def set_overlay_pass_through(widget, pass_through)
-      __return_value = LibGtk.overlay_set_overlay_pass_through((to_unsafe as LibGtk::Overlay*), (widget.to_unsafe as LibGtk::Widget*), pass_through)
+      __return_value = LibGtk.overlay_set_overlay_pass_through(to_unsafe.as(LibGtk::Overlay*), widget.to_unsafe.as(LibGtk::Widget*), pass_through)
       __return_value
     end
 

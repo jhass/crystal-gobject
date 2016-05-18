@@ -18,7 +18,7 @@ module Gtk
 
 
     def self.new(orientation, adjustment) : self
-      __return_value = LibGtk.scale_new(orientation, adjustment && (adjustment.to_unsafe as LibGtk::Adjustment*))
+      __return_value = LibGtk.scale_new(orientation, adjustment && adjustment.to_unsafe.as(LibGtk::Adjustment*))
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -28,62 +28,62 @@ module Gtk
     end
 
     def add_mark(value, position, markup)
-      __return_value = LibGtk.scale_add_mark((to_unsafe as LibGtk::Scale*), Float64.new(value), position, markup && markup)
+      __return_value = LibGtk.scale_add_mark(to_unsafe.as(LibGtk::Scale*), Float64.new(value), position, markup && markup)
       __return_value
     end
 
     def clear_marks
-      __return_value = LibGtk.scale_clear_marks((to_unsafe as LibGtk::Scale*))
+      __return_value = LibGtk.scale_clear_marks(to_unsafe.as(LibGtk::Scale*))
       __return_value
     end
 
     def digits
-      __return_value = LibGtk.scale_get_digits((to_unsafe as LibGtk::Scale*))
+      __return_value = LibGtk.scale_get_digits(to_unsafe.as(LibGtk::Scale*))
       __return_value
     end
 
     def draw_value
-      __return_value = LibGtk.scale_get_draw_value((to_unsafe as LibGtk::Scale*))
+      __return_value = LibGtk.scale_get_draw_value(to_unsafe.as(LibGtk::Scale*))
       __return_value
     end
 
     def has_origin
-      __return_value = LibGtk.scale_get_has_origin((to_unsafe as LibGtk::Scale*))
+      __return_value = LibGtk.scale_get_has_origin(to_unsafe.as(LibGtk::Scale*))
       __return_value
     end
 
     def layout
-      __return_value = LibGtk.scale_get_layout((to_unsafe as LibGtk::Scale*))
+      __return_value = LibGtk.scale_get_layout(to_unsafe.as(LibGtk::Scale*))
       Pango::Layout.new(__return_value) if __return_value
     end
 
     def layout_offsets(x, y)
-      __return_value = LibGtk.scale_get_layout_offsets((to_unsafe as LibGtk::Scale*), Int32.new(x), Int32.new(y))
+      __return_value = LibGtk.scale_get_layout_offsets(to_unsafe.as(LibGtk::Scale*), Int32.new(x), Int32.new(y))
       __return_value
     end
 
     def value_pos
-      __return_value = LibGtk.scale_get_value_pos((to_unsafe as LibGtk::Scale*))
+      __return_value = LibGtk.scale_get_value_pos(to_unsafe.as(LibGtk::Scale*))
       __return_value
     end
 
     def digits=(digits)
-      __return_value = LibGtk.scale_set_digits((to_unsafe as LibGtk::Scale*), Int32.new(digits))
+      __return_value = LibGtk.scale_set_digits(to_unsafe.as(LibGtk::Scale*), Int32.new(digits))
       __return_value
     end
 
     def draw_value=(draw_value)
-      __return_value = LibGtk.scale_set_draw_value((to_unsafe as LibGtk::Scale*), draw_value)
+      __return_value = LibGtk.scale_set_draw_value(to_unsafe.as(LibGtk::Scale*), draw_value)
       __return_value
     end
 
     def has_origin=(has_origin)
-      __return_value = LibGtk.scale_set_has_origin((to_unsafe as LibGtk::Scale*), has_origin)
+      __return_value = LibGtk.scale_set_has_origin(to_unsafe.as(LibGtk::Scale*), has_origin)
       __return_value
     end
 
     def value_pos=(pos)
-      __return_value = LibGtk.scale_set_value_pos((to_unsafe as LibGtk::Scale*), pos)
+      __return_value = LibGtk.scale_set_value_pos(to_unsafe.as(LibGtk::Scale*), pos)
       __return_value
     end
 

@@ -11,17 +11,17 @@ module Pango
     end
 
     def self.new(language) : self
-      __return_value = LibPango.fontset_simple_new((language.to_unsafe as LibPango::Language*))
+      __return_value = LibPango.fontset_simple_new(language.to_unsafe.as(LibPango::Language*))
       cast Pango::FontsetSimple.new(__return_value)
     end
 
     def append(font)
-      __return_value = LibPango.fontset_simple_append((to_unsafe as LibPango::FontsetSimple*), (font.to_unsafe as LibPango::Font*))
+      __return_value = LibPango.fontset_simple_append(to_unsafe.as(LibPango::FontsetSimple*), font.to_unsafe.as(LibPango::Font*))
       __return_value
     end
 
     def size
-      __return_value = LibPango.fontset_simple_size((to_unsafe as LibPango::FontsetSimple*))
+      __return_value = LibPango.fontset_simple_size(to_unsafe.as(LibPango::FontsetSimple*))
       __return_value
     end
 

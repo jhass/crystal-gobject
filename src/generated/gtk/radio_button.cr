@@ -21,7 +21,7 @@ module Gtk
     end
 
     def self.new_from_widget(radio_group_member) : self
-      __return_value = LibGtk.radio_button_new_from_widget(radio_group_member && (radio_group_member.to_unsafe as LibGtk::RadioButton*))
+      __return_value = LibGtk.radio_button_new_from_widget(radio_group_member && radio_group_member.to_unsafe.as(LibGtk::RadioButton*))
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -31,7 +31,7 @@ module Gtk
     end
 
     def self.new_with_label_from_widget(radio_group_member, label) : self
-      __return_value = LibGtk.radio_button_new_with_label_from_widget(radio_group_member && (radio_group_member.to_unsafe as LibGtk::RadioButton*), label)
+      __return_value = LibGtk.radio_button_new_with_label_from_widget(radio_group_member && radio_group_member.to_unsafe.as(LibGtk::RadioButton*), label)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -41,22 +41,22 @@ module Gtk
     end
 
     def self.new_with_mnemonic_from_widget(radio_group_member, label) : self
-      __return_value = LibGtk.radio_button_new_with_mnemonic_from_widget(radio_group_member && (radio_group_member.to_unsafe as LibGtk::RadioButton*), label)
+      __return_value = LibGtk.radio_button_new_with_mnemonic_from_widget(radio_group_member && radio_group_member.to_unsafe.as(LibGtk::RadioButton*), label)
       cast Gtk::Widget.new(__return_value)
     end
 
     def group
-      __return_value = LibGtk.radio_button_get_group((to_unsafe as LibGtk::RadioButton*))
+      __return_value = LibGtk.radio_button_get_group(to_unsafe.as(LibGtk::RadioButton*))
       __return_value
     end
 
     def join_group(group_source)
-      __return_value = LibGtk.radio_button_join_group((to_unsafe as LibGtk::RadioButton*), group_source && (group_source.to_unsafe as LibGtk::RadioButton*))
+      __return_value = LibGtk.radio_button_join_group(to_unsafe.as(LibGtk::RadioButton*), group_source && group_source.to_unsafe.as(LibGtk::RadioButton*))
       __return_value
     end
 
     def group=(group)
-      __return_value = LibGtk.radio_button_set_group((to_unsafe as LibGtk::RadioButton*), group && group)
+      __return_value = LibGtk.radio_button_set_group(to_unsafe.as(LibGtk::RadioButton*), group && group)
       __return_value
     end
 

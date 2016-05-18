@@ -11,7 +11,7 @@ module Gdk
     end
 
     def name
-      __return_value = LibGdk.atom_name((to_unsafe as LibGdk::Atom*))
+      __return_value = LibGdk.atom_name(to_unsafe.as(LibGdk::Atom*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

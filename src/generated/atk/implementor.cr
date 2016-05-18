@@ -11,7 +11,7 @@ module Atk
     end
 
     def ref_accessible
-      __return_value = LibAtk.implementor_ref_accessible((to_unsafe as LibAtk::Implementor*))
+      __return_value = LibAtk.implementor_ref_accessible(to_unsafe.as(LibAtk::Implementor*))
       Atk::Object.new(__return_value)
     end
 

@@ -19,17 +19,17 @@ module Gtk
     end
 
     def self.new_for_manager(name, label, tooltip, stock_id, manager) : self
-      __return_value = LibGtk.recent_action_new_for_manager(name, label && label, tooltip && tooltip, stock_id && stock_id, manager && (manager.to_unsafe as LibGtk::RecentManager*))
+      __return_value = LibGtk.recent_action_new_for_manager(name, label && label, tooltip && tooltip, stock_id && stock_id, manager && manager.to_unsafe.as(LibGtk::RecentManager*))
       cast Gtk::Action.new(__return_value)
     end
 
     def show_numbers
-      __return_value = LibGtk.recent_action_get_show_numbers((to_unsafe as LibGtk::RecentAction*))
+      __return_value = LibGtk.recent_action_get_show_numbers(to_unsafe.as(LibGtk::RecentAction*))
       __return_value
     end
 
     def show_numbers=(show_numbers)
-      __return_value = LibGtk.recent_action_set_show_numbers((to_unsafe as LibGtk::RecentAction*), show_numbers)
+      __return_value = LibGtk.recent_action_set_show_numbers(to_unsafe.as(LibGtk::RecentAction*), show_numbers)
       __return_value
     end
 

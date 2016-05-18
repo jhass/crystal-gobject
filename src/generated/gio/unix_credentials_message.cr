@@ -17,7 +17,7 @@ module Gio
     end
 
     def self.new_with_credentials(credentials) : self
-      __return_value = LibGio.unix_credentials_message_new_with_credentials((credentials.to_unsafe as LibGio::Credentials*))
+      __return_value = LibGio.unix_credentials_message_new_with_credentials(credentials.to_unsafe.as(LibGio::Credentials*))
       cast Gio::SocketControlMessage.new(__return_value)
     end
 
@@ -27,7 +27,7 @@ module Gio
     end
 
     def credentials
-      __return_value = LibGio.unix_credentials_message_get_credentials((to_unsafe as LibGio::UnixCredentialsMessage*))
+      __return_value = LibGio.unix_credentials_message_get_credentials(to_unsafe.as(LibGio::UnixCredentialsMessage*))
       Gio::Credentials.new(__return_value)
     end
 

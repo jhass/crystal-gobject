@@ -21,12 +21,12 @@ module Gtk
     end
 
     def stack
-      __return_value = LibGtk.stack_switcher_get_stack((to_unsafe as LibGtk::StackSwitcher*))
+      __return_value = LibGtk.stack_switcher_get_stack(to_unsafe.as(LibGtk::StackSwitcher*))
       Gtk::Stack.new(__return_value) if __return_value
     end
 
     def stack=(stack)
-      __return_value = LibGtk.stack_switcher_set_stack((to_unsafe as LibGtk::StackSwitcher*), stack && (stack.to_unsafe as LibGtk::Stack*))
+      __return_value = LibGtk.stack_switcher_set_stack(to_unsafe.as(LibGtk::StackSwitcher*), stack && stack.to_unsafe.as(LibGtk::Stack*))
       __return_value
     end
 

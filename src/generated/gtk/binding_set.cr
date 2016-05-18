@@ -11,12 +11,12 @@ module Gtk
     end
 
     def activate(keyval, modifiers, object)
-      __return_value = LibGtk.binding_set_activate((to_unsafe as LibGtk::BindingSet*), UInt32.new(keyval), modifiers, (object.to_unsafe as LibGObject::Object*))
+      __return_value = LibGtk.binding_set_activate(to_unsafe.as(LibGtk::BindingSet*), UInt32.new(keyval), modifiers, object.to_unsafe.as(LibGObject::Object*))
       __return_value
     end
 
     def add_path(path_type, path_pattern, priority)
-      __return_value = LibGtk.binding_set_add_path((to_unsafe as LibGtk::BindingSet*), path_type, path_pattern, priority)
+      __return_value = LibGtk.binding_set_add_path(to_unsafe.as(LibGtk::BindingSet*), path_type, path_pattern, priority)
       __return_value
     end
 

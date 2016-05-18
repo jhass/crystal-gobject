@@ -20,17 +20,17 @@ module Gio
     end
 
     def close_fd
-      __return_value = LibGio.unix_input_stream_get_close_fd((to_unsafe as LibGio::UnixInputStream*))
+      __return_value = LibGio.unix_input_stream_get_close_fd(to_unsafe.as(LibGio::UnixInputStream*))
       __return_value
     end
 
     def fd
-      __return_value = LibGio.unix_input_stream_get_fd((to_unsafe as LibGio::UnixInputStream*))
+      __return_value = LibGio.unix_input_stream_get_fd(to_unsafe.as(LibGio::UnixInputStream*))
       __return_value
     end
 
     def close_fd=(close_fd)
-      __return_value = LibGio.unix_input_stream_set_close_fd((to_unsafe as LibGio::UnixInputStream*), close_fd)
+      __return_value = LibGio.unix_input_stream_set_close_fd(to_unsafe.as(LibGio::UnixInputStream*), close_fd)
       __return_value
     end
 

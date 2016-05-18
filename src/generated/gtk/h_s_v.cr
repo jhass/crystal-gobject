@@ -23,27 +23,27 @@ module Gtk
     end
 
     def color(h, s, v)
-      __return_value = LibGtk.h_s_v_get_color((to_unsafe as LibGtk::HSV*), Float64.new(h), Float64.new(s), Float64.new(v))
+      __return_value = LibGtk.h_s_v_get_color(to_unsafe.as(LibGtk::HSV*), Float64.new(h), Float64.new(s), Float64.new(v))
       __return_value
     end
 
     def metrics(size, ring_width)
-      __return_value = LibGtk.h_s_v_get_metrics((to_unsafe as LibGtk::HSV*), Int32.new(size), Int32.new(ring_width))
+      __return_value = LibGtk.h_s_v_get_metrics(to_unsafe.as(LibGtk::HSV*), Int32.new(size), Int32.new(ring_width))
       __return_value
     end
 
     def adjusting?
-      __return_value = LibGtk.h_s_v_is_adjusting((to_unsafe as LibGtk::HSV*))
+      __return_value = LibGtk.h_s_v_is_adjusting(to_unsafe.as(LibGtk::HSV*))
       __return_value
     end
 
     def set_color(h, s, v)
-      __return_value = LibGtk.h_s_v_set_color((to_unsafe as LibGtk::HSV*), Float64.new(h), Float64.new(s), Float64.new(v))
+      __return_value = LibGtk.h_s_v_set_color(to_unsafe.as(LibGtk::HSV*), Float64.new(h), Float64.new(s), Float64.new(v))
       __return_value
     end
 
     def set_metrics(size, ring_width)
-      __return_value = LibGtk.h_s_v_set_metrics((to_unsafe as LibGtk::HSV*), Int32.new(size), Int32.new(ring_width))
+      __return_value = LibGtk.h_s_v_set_metrics(to_unsafe.as(LibGtk::HSV*), Int32.new(size), Int32.new(ring_width))
       __return_value
     end
 

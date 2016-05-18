@@ -16,12 +16,12 @@ module Gtk
     end
 
     def copy
-      __return_value = LibGtk.requisition_copy((to_unsafe as LibGtk::Requisition*))
+      __return_value = LibGtk.requisition_copy(to_unsafe.as(LibGtk::Requisition*))
       Gtk::Requisition.new(__return_value)
     end
 
     def free
-      __return_value = LibGtk.requisition_free((to_unsafe as LibGtk::Requisition*))
+      __return_value = LibGtk.requisition_free(to_unsafe.as(LibGtk::Requisition*))
       __return_value
     end
 

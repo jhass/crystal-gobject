@@ -18,17 +18,17 @@ module Gtk
     end
 
     def changed
-      __return_value = LibGtk.flow_box_child_changed((to_unsafe as LibGtk::FlowBoxChild*))
+      __return_value = LibGtk.flow_box_child_changed(to_unsafe.as(LibGtk::FlowBoxChild*))
       __return_value
     end
 
     def index
-      __return_value = LibGtk.flow_box_child_get_index((to_unsafe as LibGtk::FlowBoxChild*))
+      __return_value = LibGtk.flow_box_child_get_index(to_unsafe.as(LibGtk::FlowBoxChild*))
       __return_value
     end
 
     def selected?
-      __return_value = LibGtk.flow_box_child_is_selected((to_unsafe as LibGtk::FlowBoxChild*))
+      __return_value = LibGtk.flow_box_child_is_selected(to_unsafe.as(LibGtk::FlowBoxChild*))
       __return_value
     end
 

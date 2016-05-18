@@ -18,102 +18,102 @@ module GLib
     end
 
     def capture_count
-      __return_value = LibGLib.regex_get_capture_count((to_unsafe as LibGLib::Regex*))
+      __return_value = LibGLib.regex_get_capture_count(to_unsafe.as(LibGLib::Regex*))
       __return_value
     end
 
     def compile_flags
-      __return_value = LibGLib.regex_get_compile_flags((to_unsafe as LibGLib::Regex*))
+      __return_value = LibGLib.regex_get_compile_flags(to_unsafe.as(LibGLib::Regex*))
       __return_value
     end
 
     def has_cr_or_lf
-      __return_value = LibGLib.regex_get_has_cr_or_lf((to_unsafe as LibGLib::Regex*))
+      __return_value = LibGLib.regex_get_has_cr_or_lf(to_unsafe.as(LibGLib::Regex*))
       __return_value
     end
 
     def match_flags
-      __return_value = LibGLib.regex_get_match_flags((to_unsafe as LibGLib::Regex*))
+      __return_value = LibGLib.regex_get_match_flags(to_unsafe.as(LibGLib::Regex*))
       __return_value
     end
 
     def max_backref
-      __return_value = LibGLib.regex_get_max_backref((to_unsafe as LibGLib::Regex*))
+      __return_value = LibGLib.regex_get_max_backref(to_unsafe.as(LibGLib::Regex*))
       __return_value
     end
 
     def max_lookbehind
-      __return_value = LibGLib.regex_get_max_lookbehind((to_unsafe as LibGLib::Regex*))
+      __return_value = LibGLib.regex_get_max_lookbehind(to_unsafe.as(LibGLib::Regex*))
       __return_value
     end
 
     def pattern
-      __return_value = LibGLib.regex_get_pattern((to_unsafe as LibGLib::Regex*))
+      __return_value = LibGLib.regex_get_pattern(to_unsafe.as(LibGLib::Regex*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def string_number(name)
-      __return_value = LibGLib.regex_get_string_number((to_unsafe as LibGLib::Regex*), name)
+      __return_value = LibGLib.regex_get_string_number(to_unsafe.as(LibGLib::Regex*), name)
       __return_value
     end
 
     def match(string, match_options, match_info)
-      __return_value = LibGLib.regex_match((to_unsafe as LibGLib::Regex*), string, match_options, (match_info.to_unsafe as LibGLib::MatchInfo*))
+      __return_value = LibGLib.regex_match(to_unsafe.as(LibGLib::Regex*), string, match_options, match_info.to_unsafe.as(LibGLib::MatchInfo*))
       __return_value
     end
 
     def match_all(string, match_options, match_info)
-      __return_value = LibGLib.regex_match_all((to_unsafe as LibGLib::Regex*), string, match_options, (match_info.to_unsafe as LibGLib::MatchInfo*))
+      __return_value = LibGLib.regex_match_all(to_unsafe.as(LibGLib::Regex*), string, match_options, match_info.to_unsafe.as(LibGLib::MatchInfo*))
       __return_value
     end
 
     def match_all_full(string, string_len, start_position, match_options, match_info)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.regex_match_all_full((to_unsafe as LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), match_options, (match_info.to_unsafe as LibGLib::MatchInfo*), pointerof(__error))
+      __return_value = LibGLib.regex_match_all_full(to_unsafe.as(LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), match_options, match_info.to_unsafe.as(LibGLib::MatchInfo*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def match_full(string, string_len, start_position, match_options, match_info)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.regex_match_full((to_unsafe as LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), match_options, (match_info.to_unsafe as LibGLib::MatchInfo*), pointerof(__error))
+      __return_value = LibGLib.regex_match_full(to_unsafe.as(LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), match_options, match_info.to_unsafe.as(LibGLib::MatchInfo*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def ref
-      __return_value = LibGLib.regex_ref((to_unsafe as LibGLib::Regex*))
+      __return_value = LibGLib.regex_ref(to_unsafe.as(LibGLib::Regex*))
       GLib::Regex.new(__return_value)
     end
 
     def replace(string, string_len, start_position, replacement, match_options)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.regex_replace((to_unsafe as LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), replacement, match_options, pointerof(__error))
+      __return_value = LibGLib.regex_replace(to_unsafe.as(LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), replacement, match_options, pointerof(__error))
       GLib::Error.assert __error
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def replace_literal(string, string_len, start_position, replacement, match_options)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.regex_replace_literal((to_unsafe as LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), replacement, match_options, pointerof(__error))
+      __return_value = LibGLib.regex_replace_literal(to_unsafe.as(LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), replacement, match_options, pointerof(__error))
       GLib::Error.assert __error
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def split(string, match_options)
-      __return_value = LibGLib.regex_split((to_unsafe as LibGLib::Regex*), string, match_options)
+      __return_value = LibGLib.regex_split(to_unsafe.as(LibGLib::Regex*), string, match_options)
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def split_full(string, string_len, start_position, match_options, max_tokens)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.regex_split_full((to_unsafe as LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), match_options, Int32.new(max_tokens), pointerof(__error))
+      __return_value = LibGLib.regex_split_full(to_unsafe.as(LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), match_options, Int32.new(max_tokens), pointerof(__error))
       GLib::Error.assert __error
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def unref
-      __return_value = LibGLib.regex_unref((to_unsafe as LibGLib::Regex*))
+      __return_value = LibGLib.regex_unref(to_unsafe.as(LibGLib::Regex*))
       __return_value
     end
 

@@ -27,52 +27,52 @@ module Gtk
     end
 
     def self.new_with_color(color) : self
-      __return_value = LibGtk.color_button_new_with_color((color.to_unsafe as LibGdk::Color*))
+      __return_value = LibGtk.color_button_new_with_color(color.to_unsafe.as(LibGdk::Color*))
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_rgba(rgba) : self
-      __return_value = LibGtk.color_button_new_with_rgba((rgba.to_unsafe as LibGdk::RGBA*))
+      __return_value = LibGtk.color_button_new_with_rgba(rgba.to_unsafe.as(LibGdk::RGBA*))
       cast Gtk::Widget.new(__return_value)
     end
 
     def alpha
-      __return_value = LibGtk.color_button_get_alpha((to_unsafe as LibGtk::ColorButton*))
+      __return_value = LibGtk.color_button_get_alpha(to_unsafe.as(LibGtk::ColorButton*))
       __return_value
     end
 
     def color(color)
-      __return_value = LibGtk.color_button_get_color((to_unsafe as LibGtk::ColorButton*), color)
+      __return_value = LibGtk.color_button_get_color(to_unsafe.as(LibGtk::ColorButton*), color)
       __return_value
     end
 
     def title
-      __return_value = LibGtk.color_button_get_title((to_unsafe as LibGtk::ColorButton*))
+      __return_value = LibGtk.color_button_get_title(to_unsafe.as(LibGtk::ColorButton*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def use_alpha
-      __return_value = LibGtk.color_button_get_use_alpha((to_unsafe as LibGtk::ColorButton*))
+      __return_value = LibGtk.color_button_get_use_alpha(to_unsafe.as(LibGtk::ColorButton*))
       __return_value
     end
 
     def alpha=(alpha)
-      __return_value = LibGtk.color_button_set_alpha((to_unsafe as LibGtk::ColorButton*), UInt16.new(alpha))
+      __return_value = LibGtk.color_button_set_alpha(to_unsafe.as(LibGtk::ColorButton*), UInt16.new(alpha))
       __return_value
     end
 
     def color=(color)
-      __return_value = LibGtk.color_button_set_color((to_unsafe as LibGtk::ColorButton*), (color.to_unsafe as LibGdk::Color*))
+      __return_value = LibGtk.color_button_set_color(to_unsafe.as(LibGtk::ColorButton*), color.to_unsafe.as(LibGdk::Color*))
       __return_value
     end
 
     def title=(title)
-      __return_value = LibGtk.color_button_set_title((to_unsafe as LibGtk::ColorButton*), title)
+      __return_value = LibGtk.color_button_set_title(to_unsafe.as(LibGtk::ColorButton*), title)
       __return_value
     end
 
     def use_alpha=(use_alpha)
-      __return_value = LibGtk.color_button_set_use_alpha((to_unsafe as LibGtk::ColorButton*), use_alpha)
+      __return_value = LibGtk.color_button_set_use_alpha(to_unsafe.as(LibGtk::ColorButton*), use_alpha)
       __return_value
     end
 

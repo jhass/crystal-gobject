@@ -16,7 +16,7 @@ module Gtk
     # Implements Buildable
 
     def self.new(icon_widget, label) : self
-      __return_value = LibGtk.menu_tool_button_new(icon_widget && (icon_widget.to_unsafe as LibGtk::Widget*), label && label)
+      __return_value = LibGtk.menu_tool_button_new(icon_widget && icon_widget.to_unsafe.as(LibGtk::Widget*), label && label)
       cast Gtk::ToolItem.new(__return_value)
     end
 
@@ -26,22 +26,22 @@ module Gtk
     end
 
     def menu
-      __return_value = LibGtk.menu_tool_button_get_menu((to_unsafe as LibGtk::MenuToolButton*))
+      __return_value = LibGtk.menu_tool_button_get_menu(to_unsafe.as(LibGtk::MenuToolButton*))
       Gtk::Widget.new(__return_value)
     end
 
     def arrow_tooltip_markup=(markup)
-      __return_value = LibGtk.menu_tool_button_set_arrow_tooltip_markup((to_unsafe as LibGtk::MenuToolButton*), markup)
+      __return_value = LibGtk.menu_tool_button_set_arrow_tooltip_markup(to_unsafe.as(LibGtk::MenuToolButton*), markup)
       __return_value
     end
 
     def arrow_tooltip_text=(text)
-      __return_value = LibGtk.menu_tool_button_set_arrow_tooltip_text((to_unsafe as LibGtk::MenuToolButton*), text)
+      __return_value = LibGtk.menu_tool_button_set_arrow_tooltip_text(to_unsafe.as(LibGtk::MenuToolButton*), text)
       __return_value
     end
 
     def menu=(menu)
-      __return_value = LibGtk.menu_tool_button_set_menu((to_unsafe as LibGtk::MenuToolButton*), (menu.to_unsafe as LibGtk::Widget*))
+      __return_value = LibGtk.menu_tool_button_set_menu(to_unsafe.as(LibGtk::MenuToolButton*), menu.to_unsafe.as(LibGtk::Widget*))
       __return_value
     end
 

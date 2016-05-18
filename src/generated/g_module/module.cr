@@ -11,22 +11,22 @@ module GModule
     end
 
     def close
-      __return_value = LibGModule.module_close((to_unsafe as LibGModule::Module*))
+      __return_value = LibGModule.module_close(to_unsafe.as(LibGModule::Module*))
       __return_value
     end
 
     def make_resident
-      __return_value = LibGModule.module_make_resident((to_unsafe as LibGModule::Module*))
+      __return_value = LibGModule.module_make_resident(to_unsafe.as(LibGModule::Module*))
       __return_value
     end
 
     def name
-      __return_value = LibGModule.module_name((to_unsafe as LibGModule::Module*))
+      __return_value = LibGModule.module_name(to_unsafe.as(LibGModule::Module*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def symbol(symbol_name, symbol)
-      __return_value = LibGModule.module_symbol((to_unsafe as LibGModule::Module*), symbol_name, symbol && symbol)
+      __return_value = LibGModule.module_symbol(to_unsafe.as(LibGModule::Module*), symbol_name, symbol && symbol)
       __return_value
     end
 

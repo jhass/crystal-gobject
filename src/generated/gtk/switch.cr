@@ -22,22 +22,22 @@ module Gtk
     end
 
     def active
-      __return_value = LibGtk.switch_get_active((to_unsafe as LibGtk::Switch*))
+      __return_value = LibGtk.switch_get_active(to_unsafe.as(LibGtk::Switch*))
       __return_value
     end
 
     def state
-      __return_value = LibGtk.switch_get_state((to_unsafe as LibGtk::Switch*))
+      __return_value = LibGtk.switch_get_state(to_unsafe.as(LibGtk::Switch*))
       __return_value
     end
 
     def active=(is_active)
-      __return_value = LibGtk.switch_set_active((to_unsafe as LibGtk::Switch*), is_active)
+      __return_value = LibGtk.switch_set_active(to_unsafe.as(LibGtk::Switch*), is_active)
       __return_value
     end
 
     def state=(state)
-      __return_value = LibGtk.switch_set_state((to_unsafe as LibGtk::Switch*), state)
+      __return_value = LibGtk.switch_set_state(to_unsafe.as(LibGtk::Switch*), state)
       __return_value
     end
 

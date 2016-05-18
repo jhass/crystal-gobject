@@ -28,7 +28,7 @@ module GIRepository
 
     def wrapper_definition(libname, indent="")
       String.build do |io|
-        this = "(to_unsafe as #{libname}::#{container.name}*)"
+        this = "to_unsafe.as(#{libname}::#{container.name}*)"
 
         if getter?
           io.puts "#{indent}def #{name}"

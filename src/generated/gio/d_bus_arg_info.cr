@@ -11,12 +11,12 @@ module Gio
     end
 
     def ref
-      __return_value = LibGio.d_bus_arg_info_ref((to_unsafe as LibGio::DBusArgInfo*))
+      __return_value = LibGio.d_bus_arg_info_ref(to_unsafe.as(LibGio::DBusArgInfo*))
       Gio::DBusArgInfo.new(__return_value)
     end
 
     def unref
-      __return_value = LibGio.d_bus_arg_info_unref((to_unsafe as LibGio::DBusArgInfo*))
+      __return_value = LibGio.d_bus_arg_info_unref(to_unsafe.as(LibGio::DBusArgInfo*))
       __return_value
     end
 

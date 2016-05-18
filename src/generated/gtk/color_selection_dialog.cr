@@ -22,7 +22,7 @@ module Gtk
     end
 
     def color_selection
-      __return_value = LibGtk.color_selection_dialog_get_color_selection((to_unsafe as LibGtk::ColorSelectionDialog*))
+      __return_value = LibGtk.color_selection_dialog_get_color_selection(to_unsafe.as(LibGtk::ColorSelectionDialog*))
       Gtk::Widget.new(__return_value)
     end
 

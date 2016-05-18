@@ -16,12 +16,12 @@ module Gtk
     end
 
     def copy
-      __return_value = LibGtk.target_entry_copy((to_unsafe as LibGtk::TargetEntry*))
+      __return_value = LibGtk.target_entry_copy(to_unsafe.as(LibGtk::TargetEntry*))
       Gtk::TargetEntry.new(__return_value)
     end
 
     def free
-      __return_value = LibGtk.target_entry_free((to_unsafe as LibGtk::TargetEntry*))
+      __return_value = LibGtk.target_entry_free(to_unsafe.as(LibGtk::TargetEntry*))
       __return_value
     end
 

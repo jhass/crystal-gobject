@@ -15,17 +15,17 @@ module Gst
 
 
     def self.new(name_template, direction, presence, caps) : self
-      __return_value = LibGst.pad_template_new(name_template, direction, presence, (caps.to_unsafe as LibGst::Caps*))
+      __return_value = LibGst.pad_template_new(name_template, direction, presence, caps.to_unsafe.as(LibGst::Caps*))
       cast Gst::PadTemplate.new(__return_value)
     end
 
     def caps
-      __return_value = LibGst.pad_template_get_caps((to_unsafe as LibGst::PadTemplate*))
+      __return_value = LibGst.pad_template_get_caps(to_unsafe.as(LibGst::PadTemplate*))
       Gst::Caps.new(__return_value)
     end
 
     def pad_created(pad)
-      __return_value = LibGst.pad_template_pad_created((to_unsafe as LibGst::PadTemplate*), (pad.to_unsafe as LibGst::Pad*))
+      __return_value = LibGst.pad_template_pad_created(to_unsafe.as(LibGst::PadTemplate*), pad.to_unsafe.as(LibGst::Pad*))
       __return_value
     end
 

@@ -1405,6 +1405,7 @@ lib LibGtk
     # Virtual function unselect_all
   end
   fun flow_box_new = gtk_flow_box_new() : LibGtk::Widget*
+  fun flow_box_bind_model = gtk_flow_box_bind_model(this : FlowBox*, model : LibGio::ListModel*, create_widget_func : LibGtk::FlowBoxCreateWidgetFunc, user_data : Void*, user_data_free_func : LibGLib::DestroyNotify) : Void
   fun flow_box_get_activate_on_single_click = gtk_flow_box_get_activate_on_single_click(this : FlowBox*) : Bool
   fun flow_box_get_child_at_index = gtk_flow_box_get_child_at_index(this : FlowBox*, idx : Int32) : LibGtk::FlowBoxChild*
   fun flow_box_get_column_spacing = gtk_flow_box_get_column_spacing(this : FlowBox*) : UInt32
@@ -8405,15 +8406,15 @@ lib LibGtk
   ##    Constants
   ###########################################
 
-  BINARY_AGE = 2003 # : Int32
+  BINARY_AGE = 2004 # : Int32
   INPUT_ERROR = -1 # : Int32
-  INTERFACE_AGE = 3 # : Int32
+  INTERFACE_AGE = 4 # : Int32
   LEVEL_BAR_OFFSET_FULL = "full" # : UInt8*
   LEVEL_BAR_OFFSET_HIGH = "high" # : UInt8*
   LEVEL_BAR_OFFSET_LOW = "low" # : UInt8*
   MAJOR_VERSION = 3 # : Int32
   MAX_COMPOSE_LEN = 7 # : Int32
-  MICRO_VERSION = 3 # : Int32
+  MICRO_VERSION = 4 # : Int32
   MINOR_VERSION = 20 # : Int32
   PAPER_NAME_A3 = "iso_a3" # : UInt8*
   PAPER_NAME_A4 = "iso_a4" # : UInt8*
@@ -8886,6 +8887,7 @@ lib LibGtk
  alias ColorSelectionChangePaletteWithScreenFunc = LibGdk::Screen*, LibGdk::Color*, Int32 -> Void
  alias EntryCompletionMatchFunc = LibGtk::EntryCompletion*, UInt8*, LibGtk::TreeIter*, Void* -> Bool
  alias FileFilterFunc = LibGtk::FileFilterInfo*, Void* -> Bool
+ alias FlowBoxCreateWidgetFunc = Void*, Void* -> LibGtk::Widget*
  alias FlowBoxFilterFunc = LibGtk::FlowBoxChild*, Void* -> Bool
  alias FlowBoxForeachFunc = LibGtk::FlowBox*, LibGtk::FlowBoxChild*, Void* -> Void
  alias FlowBoxSortFunc = LibGtk::FlowBoxChild*, LibGtk::FlowBoxChild*, Void* -> Int32

@@ -23,37 +23,37 @@ module Gtk
     end
 
     def child_detached
-      __return_value = LibGtk.handle_box_get_child_detached((to_unsafe as LibGtk::HandleBox*))
+      __return_value = LibGtk.handle_box_get_child_detached(to_unsafe.as(LibGtk::HandleBox*))
       __return_value
     end
 
     def handle_position
-      __return_value = LibGtk.handle_box_get_handle_position((to_unsafe as LibGtk::HandleBox*))
+      __return_value = LibGtk.handle_box_get_handle_position(to_unsafe.as(LibGtk::HandleBox*))
       __return_value
     end
 
     def shadow_type
-      __return_value = LibGtk.handle_box_get_shadow_type((to_unsafe as LibGtk::HandleBox*))
+      __return_value = LibGtk.handle_box_get_shadow_type(to_unsafe.as(LibGtk::HandleBox*))
       __return_value
     end
 
     def snap_edge
-      __return_value = LibGtk.handle_box_get_snap_edge((to_unsafe as LibGtk::HandleBox*))
+      __return_value = LibGtk.handle_box_get_snap_edge(to_unsafe.as(LibGtk::HandleBox*))
       __return_value
     end
 
     def handle_position=(position)
-      __return_value = LibGtk.handle_box_set_handle_position((to_unsafe as LibGtk::HandleBox*), position)
+      __return_value = LibGtk.handle_box_set_handle_position(to_unsafe.as(LibGtk::HandleBox*), position)
       __return_value
     end
 
     def shadow_type=(type)
-      __return_value = LibGtk.handle_box_set_shadow_type((to_unsafe as LibGtk::HandleBox*), type)
+      __return_value = LibGtk.handle_box_set_shadow_type(to_unsafe.as(LibGtk::HandleBox*), type)
       __return_value
     end
 
     def snap_edge=(edge)
-      __return_value = LibGtk.handle_box_set_snap_edge((to_unsafe as LibGtk::HandleBox*), edge)
+      __return_value = LibGtk.handle_box_set_snap_edge(to_unsafe.as(LibGtk::HandleBox*), edge)
       __return_value
     end
 

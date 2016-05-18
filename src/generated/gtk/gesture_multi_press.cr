@@ -11,17 +11,17 @@ module Gtk
     end
 
     def self.new(widget) : self
-      __return_value = LibGtk.gesture_multi_press_new((widget.to_unsafe as LibGtk::Widget*))
+      __return_value = LibGtk.gesture_multi_press_new(widget.to_unsafe.as(LibGtk::Widget*))
       cast Gtk::Gesture.new(__return_value)
     end
 
     def area(rect)
-      __return_value = LibGtk.gesture_multi_press_get_area((to_unsafe as LibGtk::GestureMultiPress*), rect)
+      __return_value = LibGtk.gesture_multi_press_get_area(to_unsafe.as(LibGtk::GestureMultiPress*), rect)
       __return_value
     end
 
     def area=(rect)
-      __return_value = LibGtk.gesture_multi_press_set_area((to_unsafe as LibGtk::GestureMultiPress*), rect && (rect.to_unsafe as LibGdk::Rectangle*))
+      __return_value = LibGtk.gesture_multi_press_set_area(to_unsafe.as(LibGtk::GestureMultiPress*), rect && rect.to_unsafe.as(LibGdk::Rectangle*))
       __return_value
     end
 

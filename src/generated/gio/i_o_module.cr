@@ -20,12 +20,12 @@ module Gio
     end
 
     def load
-      __return_value = LibGio.i_o_module_load((to_unsafe as LibGio::IOModule*))
+      __return_value = LibGio.i_o_module_load(to_unsafe.as(LibGio::IOModule*))
       __return_value
     end
 
     def unload
-      __return_value = LibGio.i_o_module_unload((to_unsafe as LibGio::IOModule*))
+      __return_value = LibGio.i_o_module_unload(to_unsafe.as(LibGio::IOModule*))
       __return_value
     end
 

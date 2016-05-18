@@ -37,17 +37,17 @@ module Gio
     end
 
     def hostname
-      __return_value = LibGio.network_address_get_hostname((to_unsafe as LibGio::NetworkAddress*))
+      __return_value = LibGio.network_address_get_hostname(to_unsafe.as(LibGio::NetworkAddress*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def port
-      __return_value = LibGio.network_address_get_port((to_unsafe as LibGio::NetworkAddress*))
+      __return_value = LibGio.network_address_get_port(to_unsafe.as(LibGio::NetworkAddress*))
       __return_value
     end
 
     def scheme
-      __return_value = LibGio.network_address_get_scheme((to_unsafe as LibGio::NetworkAddress*))
+      __return_value = LibGio.network_address_get_scheme(to_unsafe.as(LibGio::NetworkAddress*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

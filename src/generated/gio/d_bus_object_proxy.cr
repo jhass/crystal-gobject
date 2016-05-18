@@ -12,12 +12,12 @@ module Gio
 
 
     def self.new(connection, object_path) : self
-      __return_value = LibGio.d_bus_object_proxy_new((connection.to_unsafe as LibGio::DBusConnection*), object_path)
+      __return_value = LibGio.d_bus_object_proxy_new(connection.to_unsafe.as(LibGio::DBusConnection*), object_path)
       cast Gio::DBusObjectProxy.new(__return_value)
     end
 
     def connection
-      __return_value = LibGio.d_bus_object_proxy_get_connection((to_unsafe as LibGio::DBusObjectProxy*))
+      __return_value = LibGio.d_bus_object_proxy_get_connection(to_unsafe.as(LibGio::DBusObjectProxy*))
       Gio::DBusConnection.new(__return_value)
     end
 

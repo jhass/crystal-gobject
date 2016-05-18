@@ -9,7 +9,7 @@ module Gtk
     end
 
     def children
-      __return_value = LibGtk.toplevel_accessible_get_children((to_unsafe as LibGtk::ToplevelAccessible*))
+      __return_value = LibGtk.toplevel_accessible_get_children(to_unsafe.as(LibGtk::ToplevelAccessible*))
       __return_value
     end
 

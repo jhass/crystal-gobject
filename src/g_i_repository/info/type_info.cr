@@ -112,7 +112,7 @@ module GIRepository
     def convert_from_crystal(variable)
       case tag
       when LibGIRepository::TypeTag::INTERFACE
-        pointer? ? "(#{variable}.to_unsafe as Lib#{interface.full_constant}*)" : variable
+        pointer? ? "#{variable}.to_unsafe.as(Lib#{interface.full_constant}*)" : variable
       when LibGIRepository::TypeTag::ARRAY,
            LibGIRepository::TypeTag::UTF8,
            LibGIRepository::TypeTag::GLIST,

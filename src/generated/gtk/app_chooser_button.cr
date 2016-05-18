@@ -24,47 +24,47 @@ module Gtk
     end
 
     def append_custom_item(name, label, icon)
-      __return_value = LibGtk.app_chooser_button_append_custom_item((to_unsafe as LibGtk::AppChooserButton*), name, label, (icon.to_unsafe as LibGio::Icon*))
+      __return_value = LibGtk.app_chooser_button_append_custom_item(to_unsafe.as(LibGtk::AppChooserButton*), name, label, icon.to_unsafe.as(LibGio::Icon*))
       __return_value
     end
 
     def append_separator
-      __return_value = LibGtk.app_chooser_button_append_separator((to_unsafe as LibGtk::AppChooserButton*))
+      __return_value = LibGtk.app_chooser_button_append_separator(to_unsafe.as(LibGtk::AppChooserButton*))
       __return_value
     end
 
     def heading
-      __return_value = LibGtk.app_chooser_button_get_heading((to_unsafe as LibGtk::AppChooserButton*))
+      __return_value = LibGtk.app_chooser_button_get_heading(to_unsafe.as(LibGtk::AppChooserButton*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def show_default_item
-      __return_value = LibGtk.app_chooser_button_get_show_default_item((to_unsafe as LibGtk::AppChooserButton*))
+      __return_value = LibGtk.app_chooser_button_get_show_default_item(to_unsafe.as(LibGtk::AppChooserButton*))
       __return_value
     end
 
     def show_dialog_item
-      __return_value = LibGtk.app_chooser_button_get_show_dialog_item((to_unsafe as LibGtk::AppChooserButton*))
+      __return_value = LibGtk.app_chooser_button_get_show_dialog_item(to_unsafe.as(LibGtk::AppChooserButton*))
       __return_value
     end
 
     def active_custom_item=(name)
-      __return_value = LibGtk.app_chooser_button_set_active_custom_item((to_unsafe as LibGtk::AppChooserButton*), name)
+      __return_value = LibGtk.app_chooser_button_set_active_custom_item(to_unsafe.as(LibGtk::AppChooserButton*), name)
       __return_value
     end
 
     def heading=(heading)
-      __return_value = LibGtk.app_chooser_button_set_heading((to_unsafe as LibGtk::AppChooserButton*), heading)
+      __return_value = LibGtk.app_chooser_button_set_heading(to_unsafe.as(LibGtk::AppChooserButton*), heading)
       __return_value
     end
 
     def show_default_item=(setting)
-      __return_value = LibGtk.app_chooser_button_set_show_default_item((to_unsafe as LibGtk::AppChooserButton*), setting)
+      __return_value = LibGtk.app_chooser_button_set_show_default_item(to_unsafe.as(LibGtk::AppChooserButton*), setting)
       __return_value
     end
 
     def show_dialog_item=(setting)
-      __return_value = LibGtk.app_chooser_button_set_show_dialog_item((to_unsafe as LibGtk::AppChooserButton*), setting)
+      __return_value = LibGtk.app_chooser_button_set_show_dialog_item(to_unsafe.as(LibGtk::AppChooserButton*), setting)
       __return_value
     end
 

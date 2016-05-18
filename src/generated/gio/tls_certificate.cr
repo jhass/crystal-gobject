@@ -42,17 +42,17 @@ module Gio
     end
 
     def issuer
-      __return_value = LibGio.tls_certificate_get_issuer((to_unsafe as LibGio::TlsCertificate*))
+      __return_value = LibGio.tls_certificate_get_issuer(to_unsafe.as(LibGio::TlsCertificate*))
       Gio::TlsCertificate.new(__return_value)
     end
 
     def same?(cert_two)
-      __return_value = LibGio.tls_certificate_is_same((to_unsafe as LibGio::TlsCertificate*), (cert_two.to_unsafe as LibGio::TlsCertificate*))
+      __return_value = LibGio.tls_certificate_is_same(to_unsafe.as(LibGio::TlsCertificate*), cert_two.to_unsafe.as(LibGio::TlsCertificate*))
       __return_value
     end
 
     def verify(identity, trusted_ca)
-      __return_value = LibGio.tls_certificate_verify((to_unsafe as LibGio::TlsCertificate*), identity && (identity.to_unsafe as LibGio::SocketConnectable*), trusted_ca && (trusted_ca.to_unsafe as LibGio::TlsCertificate*))
+      __return_value = LibGio.tls_certificate_verify(to_unsafe.as(LibGio::TlsCertificate*), identity && identity.to_unsafe.as(LibGio::SocketConnectable*), trusted_ca && trusted_ca.to_unsafe.as(LibGio::TlsCertificate*))
       __return_value
     end
 

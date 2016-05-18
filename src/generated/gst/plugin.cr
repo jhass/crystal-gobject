@@ -38,77 +38,77 @@ module Gst
     end
 
     def add_dependency(env_vars, paths, names, flags)
-      __return_value = LibGst.plugin_add_dependency((to_unsafe as LibGst::Plugin*), env_vars && env_vars, paths && paths, names && names, flags)
+      __return_value = LibGst.plugin_add_dependency(to_unsafe.as(LibGst::Plugin*), env_vars && env_vars, paths && paths, names && names, flags)
       __return_value
     end
 
     def add_dependency_simple(env_vars, paths, names, flags)
-      __return_value = LibGst.plugin_add_dependency_simple((to_unsafe as LibGst::Plugin*), env_vars && env_vars, paths && paths, names && names, flags)
+      __return_value = LibGst.plugin_add_dependency_simple(to_unsafe.as(LibGst::Plugin*), env_vars && env_vars, paths && paths, names && names, flags)
       __return_value
     end
 
     def cache_data
-      __return_value = LibGst.plugin_get_cache_data((to_unsafe as LibGst::Plugin*))
+      __return_value = LibGst.plugin_get_cache_data(to_unsafe.as(LibGst::Plugin*))
       Gst::Structure.new(__return_value) if __return_value
     end
 
     def description
-      __return_value = LibGst.plugin_get_description((to_unsafe as LibGst::Plugin*))
+      __return_value = LibGst.plugin_get_description(to_unsafe.as(LibGst::Plugin*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def filename
-      __return_value = LibGst.plugin_get_filename((to_unsafe as LibGst::Plugin*))
+      __return_value = LibGst.plugin_get_filename(to_unsafe.as(LibGst::Plugin*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def license
-      __return_value = LibGst.plugin_get_license((to_unsafe as LibGst::Plugin*))
+      __return_value = LibGst.plugin_get_license(to_unsafe.as(LibGst::Plugin*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def name
-      __return_value = LibGst.plugin_get_name((to_unsafe as LibGst::Plugin*))
+      __return_value = LibGst.plugin_get_name(to_unsafe.as(LibGst::Plugin*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def origin
-      __return_value = LibGst.plugin_get_origin((to_unsafe as LibGst::Plugin*))
+      __return_value = LibGst.plugin_get_origin(to_unsafe.as(LibGst::Plugin*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def package
-      __return_value = LibGst.plugin_get_package((to_unsafe as LibGst::Plugin*))
+      __return_value = LibGst.plugin_get_package(to_unsafe.as(LibGst::Plugin*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def release_date_string
-      __return_value = LibGst.plugin_get_release_date_string((to_unsafe as LibGst::Plugin*))
+      __return_value = LibGst.plugin_get_release_date_string(to_unsafe.as(LibGst::Plugin*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def source
-      __return_value = LibGst.plugin_get_source((to_unsafe as LibGst::Plugin*))
+      __return_value = LibGst.plugin_get_source(to_unsafe.as(LibGst::Plugin*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def version
-      __return_value = LibGst.plugin_get_version((to_unsafe as LibGst::Plugin*))
+      __return_value = LibGst.plugin_get_version(to_unsafe.as(LibGst::Plugin*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def loaded?
-      __return_value = LibGst.plugin_is_loaded((to_unsafe as LibGst::Plugin*))
+      __return_value = LibGst.plugin_is_loaded(to_unsafe.as(LibGst::Plugin*))
       __return_value
     end
 
     def load
-      __return_value = LibGst.plugin_load((to_unsafe as LibGst::Plugin*))
+      __return_value = LibGst.plugin_load(to_unsafe.as(LibGst::Plugin*))
       Gst::Plugin.new(__return_value)
     end
 
     def cache_data=(cache_data)
-      __return_value = LibGst.plugin_set_cache_data((to_unsafe as LibGst::Plugin*), (cache_data.to_unsafe as LibGst::Structure*))
+      __return_value = LibGst.plugin_set_cache_data(to_unsafe.as(LibGst::Plugin*), cache_data.to_unsafe.as(LibGst::Structure*))
       __return_value
     end
 

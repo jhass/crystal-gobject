@@ -11,12 +11,12 @@ module Gst
     end
 
     def get
-      __return_value = LibGst.static_pad_template_get((to_unsafe as LibGst::StaticPadTemplate*))
+      __return_value = LibGst.static_pad_template_get(to_unsafe.as(LibGst::StaticPadTemplate*))
       Gst::PadTemplate.new(__return_value)
     end
 
     def caps
-      __return_value = LibGst.static_pad_template_get_caps((to_unsafe as LibGst::StaticPadTemplate*))
+      __return_value = LibGst.static_pad_template_get_caps(to_unsafe.as(LibGst::StaticPadTemplate*))
       Gst::Caps.new(__return_value)
     end
 

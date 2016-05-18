@@ -19,17 +19,17 @@ module Gtk
     end
 
     def self.new_for_screen(screen) : self
-      __return_value = LibGtk.invisible_new_for_screen((screen.to_unsafe as LibGdk::Screen*))
+      __return_value = LibGtk.invisible_new_for_screen(screen.to_unsafe.as(LibGdk::Screen*))
       cast Gtk::Widget.new(__return_value)
     end
 
     def screen
-      __return_value = LibGtk.invisible_get_screen((to_unsafe as LibGtk::Invisible*))
+      __return_value = LibGtk.invisible_get_screen(to_unsafe.as(LibGtk::Invisible*))
       Gdk::Screen.new(__return_value)
     end
 
     def screen=(screen)
-      __return_value = LibGtk.invisible_set_screen((to_unsafe as LibGtk::Invisible*), (screen.to_unsafe as LibGdk::Screen*))
+      __return_value = LibGtk.invisible_set_screen(to_unsafe.as(LibGtk::Invisible*), screen.to_unsafe.as(LibGdk::Screen*))
       __return_value
     end
 

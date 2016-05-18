@@ -25,32 +25,32 @@ module GLib
     end
 
     def free
-      __return_value = LibGLib.mapped_file_free((to_unsafe as LibGLib::MappedFile*))
+      __return_value = LibGLib.mapped_file_free(to_unsafe.as(LibGLib::MappedFile*))
       __return_value
     end
 
     def bytes
-      __return_value = LibGLib.mapped_file_get_bytes((to_unsafe as LibGLib::MappedFile*))
+      __return_value = LibGLib.mapped_file_get_bytes(to_unsafe.as(LibGLib::MappedFile*))
       GLib::Bytes.new(__return_value)
     end
 
     def contents
-      __return_value = LibGLib.mapped_file_get_contents((to_unsafe as LibGLib::MappedFile*))
+      __return_value = LibGLib.mapped_file_get_contents(to_unsafe.as(LibGLib::MappedFile*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def length
-      __return_value = LibGLib.mapped_file_get_length((to_unsafe as LibGLib::MappedFile*))
+      __return_value = LibGLib.mapped_file_get_length(to_unsafe.as(LibGLib::MappedFile*))
       __return_value
     end
 
     def ref
-      __return_value = LibGLib.mapped_file_ref((to_unsafe as LibGLib::MappedFile*))
+      __return_value = LibGLib.mapped_file_ref(to_unsafe.as(LibGLib::MappedFile*))
       GLib::MappedFile.new(__return_value)
     end
 
     def unref
-      __return_value = LibGLib.mapped_file_unref((to_unsafe as LibGLib::MappedFile*))
+      __return_value = LibGLib.mapped_file_unref(to_unsafe.as(LibGLib::MappedFile*))
       __return_value
     end
 

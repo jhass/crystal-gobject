@@ -26,62 +26,62 @@ module Gtk
     end
 
     def default_text
-      __return_value = LibGtk.app_chooser_widget_get_default_text((to_unsafe as LibGtk::AppChooserWidget*))
+      __return_value = LibGtk.app_chooser_widget_get_default_text(to_unsafe.as(LibGtk::AppChooserWidget*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def show_all
-      __return_value = LibGtk.app_chooser_widget_get_show_all((to_unsafe as LibGtk::AppChooserWidget*))
+      __return_value = LibGtk.app_chooser_widget_get_show_all(to_unsafe.as(LibGtk::AppChooserWidget*))
       __return_value
     end
 
     def show_default
-      __return_value = LibGtk.app_chooser_widget_get_show_default((to_unsafe as LibGtk::AppChooserWidget*))
+      __return_value = LibGtk.app_chooser_widget_get_show_default(to_unsafe.as(LibGtk::AppChooserWidget*))
       __return_value
     end
 
     def show_fallback
-      __return_value = LibGtk.app_chooser_widget_get_show_fallback((to_unsafe as LibGtk::AppChooserWidget*))
+      __return_value = LibGtk.app_chooser_widget_get_show_fallback(to_unsafe.as(LibGtk::AppChooserWidget*))
       __return_value
     end
 
     def show_other
-      __return_value = LibGtk.app_chooser_widget_get_show_other((to_unsafe as LibGtk::AppChooserWidget*))
+      __return_value = LibGtk.app_chooser_widget_get_show_other(to_unsafe.as(LibGtk::AppChooserWidget*))
       __return_value
     end
 
     def show_recommended
-      __return_value = LibGtk.app_chooser_widget_get_show_recommended((to_unsafe as LibGtk::AppChooserWidget*))
+      __return_value = LibGtk.app_chooser_widget_get_show_recommended(to_unsafe.as(LibGtk::AppChooserWidget*))
       __return_value
     end
 
     def default_text=(text)
-      __return_value = LibGtk.app_chooser_widget_set_default_text((to_unsafe as LibGtk::AppChooserWidget*), text)
+      __return_value = LibGtk.app_chooser_widget_set_default_text(to_unsafe.as(LibGtk::AppChooserWidget*), text)
       __return_value
     end
 
     def show_all=(setting)
-      __return_value = LibGtk.app_chooser_widget_set_show_all((to_unsafe as LibGtk::AppChooserWidget*), setting)
+      __return_value = LibGtk.app_chooser_widget_set_show_all(to_unsafe.as(LibGtk::AppChooserWidget*), setting)
       __return_value
     end
 
     def show_default=(setting)
-      __return_value = LibGtk.app_chooser_widget_set_show_default((to_unsafe as LibGtk::AppChooserWidget*), setting)
+      __return_value = LibGtk.app_chooser_widget_set_show_default(to_unsafe.as(LibGtk::AppChooserWidget*), setting)
       __return_value
     end
 
     def show_fallback=(setting)
-      __return_value = LibGtk.app_chooser_widget_set_show_fallback((to_unsafe as LibGtk::AppChooserWidget*), setting)
+      __return_value = LibGtk.app_chooser_widget_set_show_fallback(to_unsafe.as(LibGtk::AppChooserWidget*), setting)
       __return_value
     end
 
     def show_other=(setting)
-      __return_value = LibGtk.app_chooser_widget_set_show_other((to_unsafe as LibGtk::AppChooserWidget*), setting)
+      __return_value = LibGtk.app_chooser_widget_set_show_other(to_unsafe.as(LibGtk::AppChooserWidget*), setting)
       __return_value
     end
 
     def show_recommended=(setting)
-      __return_value = LibGtk.app_chooser_widget_set_show_recommended((to_unsafe as LibGtk::AppChooserWidget*), setting)
+      __return_value = LibGtk.app_chooser_widget_set_show_recommended(to_unsafe.as(LibGtk::AppChooserWidget*), setting)
       __return_value
     end
 

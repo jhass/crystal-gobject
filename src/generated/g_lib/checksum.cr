@@ -16,27 +16,27 @@ module GLib
     end
 
     def copy
-      __return_value = LibGLib.checksum_copy((to_unsafe as LibGLib::Checksum*))
+      __return_value = LibGLib.checksum_copy(to_unsafe.as(LibGLib::Checksum*))
       GLib::Checksum.new(__return_value)
     end
 
     def free
-      __return_value = LibGLib.checksum_free((to_unsafe as LibGLib::Checksum*))
+      __return_value = LibGLib.checksum_free(to_unsafe.as(LibGLib::Checksum*))
       __return_value
     end
 
     def string
-      __return_value = LibGLib.checksum_get_string((to_unsafe as LibGLib::Checksum*))
+      __return_value = LibGLib.checksum_get_string(to_unsafe.as(LibGLib::Checksum*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def reset
-      __return_value = LibGLib.checksum_reset((to_unsafe as LibGLib::Checksum*))
+      __return_value = LibGLib.checksum_reset(to_unsafe.as(LibGLib::Checksum*))
       __return_value
     end
 
     def update(data, length)
-      __return_value = LibGLib.checksum_update((to_unsafe as LibGLib::Checksum*), data, Int64.new(length))
+      __return_value = LibGLib.checksum_update(to_unsafe.as(LibGLib::Checksum*), data, Int64.new(length))
       __return_value
     end
 

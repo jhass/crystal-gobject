@@ -16,17 +16,17 @@ module GLib
     end
 
     def copy
-      __return_value = LibGLib.error_copy((to_unsafe as LibGLib::Error*))
+      __return_value = LibGLib.error_copy(to_unsafe.as(LibGLib::Error*))
       __return_value
     end
 
     def free
-      __return_value = LibGLib.error_free((to_unsafe as LibGLib::Error*))
+      __return_value = LibGLib.error_free(to_unsafe.as(LibGLib::Error*))
       __return_value
     end
 
     def matches(domain, code)
-      __return_value = LibGLib.error_matches((to_unsafe as LibGLib::Error*), UInt32.new(domain), Int32.new(code))
+      __return_value = LibGLib.error_matches(to_unsafe.as(LibGLib::Error*), UInt32.new(domain), Int32.new(code))
       __return_value
     end
 

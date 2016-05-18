@@ -28,17 +28,17 @@ module Gio
     end
 
     def append_name(iconname)
-      __return_value = LibGio.themed_icon_append_name((to_unsafe as LibGio::ThemedIcon*), iconname)
+      __return_value = LibGio.themed_icon_append_name(to_unsafe.as(LibGio::ThemedIcon*), iconname)
       __return_value
     end
 
     def names
-      __return_value = LibGio.themed_icon_get_names((to_unsafe as LibGio::ThemedIcon*))
+      __return_value = LibGio.themed_icon_get_names(to_unsafe.as(LibGio::ThemedIcon*))
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def prepend_name(iconname)
-      __return_value = LibGio.themed_icon_prepend_name((to_unsafe as LibGio::ThemedIcon*), iconname)
+      __return_value = LibGio.themed_icon_prepend_name(to_unsafe.as(LibGio::ThemedIcon*), iconname)
       __return_value
     end
 

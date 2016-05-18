@@ -20,7 +20,7 @@ module Gtk
     end
 
     def self.new_for_manager(manager) : self
-      __return_value = LibGtk.recent_chooser_widget_new_for_manager((manager.to_unsafe as LibGtk::RecentManager*))
+      __return_value = LibGtk.recent_chooser_widget_new_for_manager(manager.to_unsafe.as(LibGtk::RecentManager*))
       cast Gtk::Widget.new(__return_value)
     end
 

@@ -21,32 +21,32 @@ module Gtk
     end
 
     def add_color_stop(offset, color)
-      __return_value = LibGtk.gradient_add_color_stop((to_unsafe as LibGtk::Gradient*), Float64.new(offset), (color.to_unsafe as LibGtk::SymbolicColor*))
+      __return_value = LibGtk.gradient_add_color_stop(to_unsafe.as(LibGtk::Gradient*), Float64.new(offset), color.to_unsafe.as(LibGtk::SymbolicColor*))
       __return_value
     end
 
     def ref
-      __return_value = LibGtk.gradient_ref((to_unsafe as LibGtk::Gradient*))
+      __return_value = LibGtk.gradient_ref(to_unsafe.as(LibGtk::Gradient*))
       Gtk::Gradient.new(__return_value)
     end
 
     def resolve(props, resolved_gradient)
-      __return_value = LibGtk.gradient_resolve((to_unsafe as LibGtk::Gradient*), (props.to_unsafe as LibGtk::StyleProperties*), (resolved_gradient.to_unsafe as LibCairo::Pattern*))
+      __return_value = LibGtk.gradient_resolve(to_unsafe.as(LibGtk::Gradient*), props.to_unsafe.as(LibGtk::StyleProperties*), resolved_gradient.to_unsafe.as(LibCairo::Pattern*))
       __return_value
     end
 
     def resolve_for_context(context)
-      __return_value = LibGtk.gradient_resolve_for_context((to_unsafe as LibGtk::Gradient*), (context.to_unsafe as LibGtk::StyleContext*))
+      __return_value = LibGtk.gradient_resolve_for_context(to_unsafe.as(LibGtk::Gradient*), context.to_unsafe.as(LibGtk::StyleContext*))
       Cairo::Pattern.new(__return_value)
     end
 
     def to_string
-      __return_value = LibGtk.gradient_to_string((to_unsafe as LibGtk::Gradient*))
+      __return_value = LibGtk.gradient_to_string(to_unsafe.as(LibGtk::Gradient*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def unref
-      __return_value = LibGtk.gradient_unref((to_unsafe as LibGtk::Gradient*))
+      __return_value = LibGtk.gradient_unref(to_unsafe.as(LibGtk::Gradient*))
       __return_value
     end
 

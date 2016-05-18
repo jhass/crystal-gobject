@@ -12,32 +12,32 @@ module Gtk
 
 
     def self.new(parent) : self
-      __return_value = LibGtk.mount_operation_new(parent && (parent.to_unsafe as LibGtk::Window*))
+      __return_value = LibGtk.mount_operation_new(parent && parent.to_unsafe.as(LibGtk::Window*))
       cast Gio::MountOperation.new(__return_value)
     end
 
     def parent
-      __return_value = LibGtk.mount_operation_get_parent((to_unsafe as LibGtk::MountOperation*))
+      __return_value = LibGtk.mount_operation_get_parent(to_unsafe.as(LibGtk::MountOperation*))
       Gtk::Window.new(__return_value)
     end
 
     def screen
-      __return_value = LibGtk.mount_operation_get_screen((to_unsafe as LibGtk::MountOperation*))
+      __return_value = LibGtk.mount_operation_get_screen(to_unsafe.as(LibGtk::MountOperation*))
       Gdk::Screen.new(__return_value)
     end
 
     def showing?
-      __return_value = LibGtk.mount_operation_is_showing((to_unsafe as LibGtk::MountOperation*))
+      __return_value = LibGtk.mount_operation_is_showing(to_unsafe.as(LibGtk::MountOperation*))
       __return_value
     end
 
     def parent=(parent)
-      __return_value = LibGtk.mount_operation_set_parent((to_unsafe as LibGtk::MountOperation*), parent && (parent.to_unsafe as LibGtk::Window*))
+      __return_value = LibGtk.mount_operation_set_parent(to_unsafe.as(LibGtk::MountOperation*), parent && parent.to_unsafe.as(LibGtk::Window*))
       __return_value
     end
 
     def screen=(screen)
-      __return_value = LibGtk.mount_operation_set_screen((to_unsafe as LibGtk::MountOperation*), (screen.to_unsafe as LibGdk::Screen*))
+      __return_value = LibGtk.mount_operation_set_screen(to_unsafe.as(LibGtk::MountOperation*), screen.to_unsafe.as(LibGdk::Screen*))
       __return_value
     end
 

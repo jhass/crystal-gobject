@@ -20,47 +20,47 @@ module Gtk
     end
 
     def changed
-      __return_value = LibGtk.list_box_row_changed((to_unsafe as LibGtk::ListBoxRow*))
+      __return_value = LibGtk.list_box_row_changed(to_unsafe.as(LibGtk::ListBoxRow*))
       __return_value
     end
 
     def activatable
-      __return_value = LibGtk.list_box_row_get_activatable((to_unsafe as LibGtk::ListBoxRow*))
+      __return_value = LibGtk.list_box_row_get_activatable(to_unsafe.as(LibGtk::ListBoxRow*))
       __return_value
     end
 
     def header
-      __return_value = LibGtk.list_box_row_get_header((to_unsafe as LibGtk::ListBoxRow*))
+      __return_value = LibGtk.list_box_row_get_header(to_unsafe.as(LibGtk::ListBoxRow*))
       Gtk::Widget.new(__return_value) if __return_value
     end
 
     def index
-      __return_value = LibGtk.list_box_row_get_index((to_unsafe as LibGtk::ListBoxRow*))
+      __return_value = LibGtk.list_box_row_get_index(to_unsafe.as(LibGtk::ListBoxRow*))
       __return_value
     end
 
     def selectable
-      __return_value = LibGtk.list_box_row_get_selectable((to_unsafe as LibGtk::ListBoxRow*))
+      __return_value = LibGtk.list_box_row_get_selectable(to_unsafe.as(LibGtk::ListBoxRow*))
       __return_value
     end
 
     def selected?
-      __return_value = LibGtk.list_box_row_is_selected((to_unsafe as LibGtk::ListBoxRow*))
+      __return_value = LibGtk.list_box_row_is_selected(to_unsafe.as(LibGtk::ListBoxRow*))
       __return_value
     end
 
     def activatable=(activatable)
-      __return_value = LibGtk.list_box_row_set_activatable((to_unsafe as LibGtk::ListBoxRow*), activatable)
+      __return_value = LibGtk.list_box_row_set_activatable(to_unsafe.as(LibGtk::ListBoxRow*), activatable)
       __return_value
     end
 
     def header=(header)
-      __return_value = LibGtk.list_box_row_set_header((to_unsafe as LibGtk::ListBoxRow*), header && (header.to_unsafe as LibGtk::Widget*))
+      __return_value = LibGtk.list_box_row_set_header(to_unsafe.as(LibGtk::ListBoxRow*), header && header.to_unsafe.as(LibGtk::Widget*))
       __return_value
     end
 
     def selectable=(selectable)
-      __return_value = LibGtk.list_box_row_set_selectable((to_unsafe as LibGtk::ListBoxRow*), selectable)
+      __return_value = LibGtk.list_box_row_set_selectable(to_unsafe.as(LibGtk::ListBoxRow*), selectable)
       __return_value
     end
 

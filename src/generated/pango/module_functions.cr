@@ -15,7 +15,7 @@ module Pango
   end
 
   def self.break(text, length, analysis, attrs, attrs_len)
-    __return_value = LibPango.break(text, Int32.new(length), (analysis.to_unsafe as LibPango::Analysis*), attrs, Int32.new(attrs_len))
+    __return_value = LibPango.break(text, Int32.new(length), analysis.to_unsafe.as(LibPango::Analysis*), attrs, Int32.new(attrs_len))
     __return_value
   end
 
@@ -30,12 +30,12 @@ module Pango
   end
 
   def self.default_break(text, length, analysis, attrs, attrs_len)
-    __return_value = LibPango.default_break(text, Int32.new(length), analysis && (analysis.to_unsafe as LibPango::Analysis*), (attrs.to_unsafe as LibPango::LogAttr*), Int32.new(attrs_len))
+    __return_value = LibPango.default_break(text, Int32.new(length), analysis && analysis.to_unsafe.as(LibPango::Analysis*), attrs.to_unsafe.as(LibPango::LogAttr*), Int32.new(attrs_len))
     __return_value
   end
 
   def self.extents_to_pixels(inclusive, nearest)
-    __return_value = LibPango.extents_to_pixels(inclusive && (inclusive.to_unsafe as LibPango::Rectangle*), nearest && (nearest.to_unsafe as LibPango::Rectangle*))
+    __return_value = LibPango.extents_to_pixels(inclusive && inclusive.to_unsafe.as(LibPango::Rectangle*), nearest && nearest.to_unsafe.as(LibPango::Rectangle*))
     __return_value
   end
 
@@ -60,7 +60,7 @@ module Pango
   end
 
   def self.log_attrs(text, length, level, language, log_attrs, attrs_len)
-    __return_value = LibPango.get_log_attrs(text, Int32.new(length), Int32.new(level), (language.to_unsafe as LibPango::Language*), log_attrs, Int32.new(attrs_len))
+    __return_value = LibPango.get_log_attrs(text, Int32.new(length), Int32.new(level), language.to_unsafe.as(LibPango::Language*), log_attrs, Int32.new(attrs_len))
     __return_value
   end
 
@@ -75,7 +75,7 @@ module Pango
   end
 
   def self.gravity_get_for_matrix(matrix)
-    __return_value = LibPango.gravity_get_for_matrix(matrix && (matrix.to_unsafe as LibPango::Matrix*))
+    __return_value = LibPango.gravity_get_for_matrix(matrix && matrix.to_unsafe.as(LibPango::Matrix*))
     __return_value
   end
 
@@ -100,12 +100,12 @@ module Pango
   end
 
   def self.itemize(context, text, start_index, length, attrs, cached_iter)
-    __return_value = LibPango.itemize((context.to_unsafe as LibPango::Context*), text, Int32.new(start_index), Int32.new(length), (attrs.to_unsafe as LibPango::AttrList*), cached_iter && (cached_iter.to_unsafe as LibPango::AttrIterator*))
+    __return_value = LibPango.itemize(context.to_unsafe.as(LibPango::Context*), text, Int32.new(start_index), Int32.new(length), attrs.to_unsafe.as(LibPango::AttrList*), cached_iter && cached_iter.to_unsafe.as(LibPango::AttrIterator*))
     __return_value
   end
 
   def self.itemize_with_base_dir(context, base_dir, text, start_index, length, attrs, cached_iter)
-    __return_value = LibPango.itemize_with_base_dir((context.to_unsafe as LibPango::Context*), base_dir, text, Int32.new(start_index), Int32.new(length), (attrs.to_unsafe as LibPango::AttrList*), cached_iter && (cached_iter.to_unsafe as LibPango::AttrIterator*))
+    __return_value = LibPango.itemize_with_base_dir(context.to_unsafe.as(LibPango::Context*), base_dir, text, Int32.new(start_index), Int32.new(length), attrs.to_unsafe.as(LibPango::AttrList*), cached_iter && cached_iter.to_unsafe.as(LibPango::AttrIterator*))
     __return_value
   end
 
@@ -120,7 +120,7 @@ module Pango
   end
 
   def self.log2vis_get_embedding_levels(text, length, pbase_dir)
-    __return_value = LibPango.log2vis_get_embedding_levels(text, Int32.new(length), (pbase_dir.to_unsafe as LibPango::Direction*))
+    __return_value = LibPango.log2vis_get_embedding_levels(text, Int32.new(length), pbase_dir.to_unsafe.as(LibPango::Direction*))
     __return_value
   end
 
@@ -131,7 +131,7 @@ module Pango
 
   def self.markup_parser_finish(context, attr_list, text, accel_char)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibPango.markup_parser_finish((context.to_unsafe as LibGLib::MarkupParseContext*), (attr_list.to_unsafe as LibPango::AttrList*), text, UInt8.new(accel_char), pointerof(__error))
+    __return_value = LibPango.markup_parser_finish(context.to_unsafe.as(LibGLib::MarkupParseContext*), attr_list.to_unsafe.as(LibPango::AttrList*), text, UInt8.new(accel_char), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -142,7 +142,7 @@ module Pango
   end
 
   def self.module_register(_module)
-    __return_value = LibPango.module_register((_module.to_unsafe as LibPango::IncludedModule*))
+    __return_value = LibPango.module_register(_module.to_unsafe.as(LibPango::IncludedModule*))
     __return_value
   end
 
@@ -153,7 +153,7 @@ module Pango
 
   def self.parse_markup(markup_text, length, accel_marker, attr_list, text, accel_char)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibPango.parse_markup(markup_text, Int32.new(length), UInt8.new(accel_marker), (attr_list.to_unsafe as LibPango::AttrList*), text, UInt8.new(accel_char), pointerof(__error))
+    __return_value = LibPango.parse_markup(markup_text, Int32.new(length), UInt8.new(accel_marker), attr_list.to_unsafe.as(LibPango::AttrList*), text, UInt8.new(accel_char), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -219,12 +219,12 @@ module Pango
   end
 
   def self.shape(text, length, analysis, glyphs)
-    __return_value = LibPango.shape(text, Int32.new(length), (analysis.to_unsafe as LibPango::Analysis*), (glyphs.to_unsafe as LibPango::GlyphString*))
+    __return_value = LibPango.shape(text, Int32.new(length), analysis.to_unsafe.as(LibPango::Analysis*), glyphs.to_unsafe.as(LibPango::GlyphString*))
     __return_value
   end
 
   def self.shape_full(item_text, item_length, paragraph_text, paragraph_length, analysis, glyphs)
-    __return_value = LibPango.shape_full(item_text, Int32.new(item_length), paragraph_text && paragraph_text, Int32.new(paragraph_length), (analysis.to_unsafe as LibPango::Analysis*), (glyphs.to_unsafe as LibPango::GlyphString*))
+    __return_value = LibPango.shape_full(item_text, Int32.new(item_length), paragraph_text && paragraph_text, Int32.new(paragraph_length), analysis.to_unsafe.as(LibPango::Analysis*), glyphs.to_unsafe.as(LibPango::GlyphString*))
     __return_value
   end
 

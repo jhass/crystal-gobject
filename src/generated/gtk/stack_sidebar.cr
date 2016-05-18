@@ -19,12 +19,12 @@ module Gtk
     end
 
     def stack
-      __return_value = LibGtk.stack_sidebar_get_stack((to_unsafe as LibGtk::StackSidebar*))
+      __return_value = LibGtk.stack_sidebar_get_stack(to_unsafe.as(LibGtk::StackSidebar*))
       Gtk::Stack.new(__return_value) if __return_value
     end
 
     def stack=(stack)
-      __return_value = LibGtk.stack_sidebar_set_stack((to_unsafe as LibGtk::StackSidebar*), (stack.to_unsafe as LibGtk::Stack*))
+      __return_value = LibGtk.stack_sidebar_set_stack(to_unsafe.as(LibGtk::StackSidebar*), stack.to_unsafe.as(LibGtk::Stack*))
       __return_value
     end
 
