@@ -18,7 +18,7 @@ lib LibGLib
   DATE_BAD_YEAR = 0 # : Int32
   DIR_SEPARATOR = 92 # : Int32
   DIR_SEPARATOR_S = "\\" # : UInt8*
-  E = 2.71828 # : Float64
+  E = 2.718282 # : Float64
   GINT16_FORMAT = "hi" # : UInt8*
   GINT16_MODIFIER = "h" # : UInt8*
   GINT32_FORMAT = "i" # : UInt8*
@@ -71,7 +71,7 @@ lib LibGLib
   KEY_FILE_DESKTOP_TYPE_DIRECTORY = "Directory" # : UInt8*
   KEY_FILE_DESKTOP_TYPE_LINK = "Link" # : UInt8*
   LITTLE_ENDIAN = 1234 # : Int32
-  LN10 = 2.30259 # : Float64
+  LN10 = 2.302585 # : Float64
   LN2 = 0.693147 # : Float64
   LOG_2_BASE_10 = 0.30103 # : Float64
   LOG_DOMAIN = 0 # : Int8
@@ -95,8 +95,8 @@ lib LibGLib
   MODULE_SUFFIX = "so" # : UInt8*
   OPTION_REMAINING = "" # : UInt8*
   PDP_ENDIAN = 3412 # : Int32
-  PI = 3.14159 # : Float64
-  PI_2 = 1.5708 # : Float64
+  PI = 3.141593 # : Float64
+  PI_2 = 1.570796 # : Float64
   PI_4 = 0.785398 # : Float64
   POLLFD_FORMAT = "%d" # : UInt8*
   PRIORITY_DEFAULT = 0 # : Int32
@@ -112,7 +112,7 @@ lib LibGLib
   SIZEOF_VOID_P = 8 # : Int32
   SOURCE_CONTINUE = true # : Bool
   SOURCE_REMOVE = false # : Bool
-  SQRT2 = 1.41421 # : Float64
+  SQRT2 = 1.414214 # : Float64
   STR_DELIMITERS = "_-|> <." # : UInt8*
   SYSDEF_AF_INET = 2 # : Int32
   SYSDEF_AF_INET6 = 10 # : Int32
