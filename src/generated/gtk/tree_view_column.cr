@@ -40,7 +40,7 @@ module Gtk
     end
 
     def add_attribute(cell_renderer, attribute, column)
-      __return_value = LibGtk.tree_view_column_add_attribute(to_unsafe.as(LibGtk::TreeViewColumn*), cell_renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute, Int32.new(column))
+      __return_value = LibGtk.tree_view_column_add_attribute(to_unsafe.as(LibGtk::TreeViewColumn*), cell_renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute.to_unsafe, Int32.new(column))
       __return_value
     end
 
@@ -270,7 +270,7 @@ module Gtk
     end
 
     def title=(title)
-      __return_value = LibGtk.tree_view_column_set_title(to_unsafe.as(LibGtk::TreeViewColumn*), title)
+      __return_value = LibGtk.tree_view_column_set_title(to_unsafe.as(LibGtk::TreeViewColumn*), title.to_unsafe)
       __return_value
     end
 
@@ -284,7 +284,7 @@ module Gtk
       __return_value
     end
 
-    alias ClickedSignal = TreeViewColumn -> 
+    alias ClickedSignal = TreeViewColumn ->
     def on_clicked(&__block : ClickedSignal)
       __callback = ->(_arg0 : LibGtk::TreeViewColumn*) {
        __return_value = __block.call(TreeViewColumn.new(_arg0))

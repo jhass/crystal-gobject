@@ -20,12 +20,12 @@ module Gtk
     end
 
     def add_mime_type(mime_type)
-      __return_value = LibGtk.file_filter_add_mime_type(to_unsafe.as(LibGtk::FileFilter*), mime_type)
+      __return_value = LibGtk.file_filter_add_mime_type(to_unsafe.as(LibGtk::FileFilter*), mime_type.to_unsafe)
       __return_value
     end
 
     def add_pattern(pattern)
-      __return_value = LibGtk.file_filter_add_pattern(to_unsafe.as(LibGtk::FileFilter*), pattern)
+      __return_value = LibGtk.file_filter_add_pattern(to_unsafe.as(LibGtk::FileFilter*), pattern.to_unsafe)
       __return_value
     end
 
@@ -50,7 +50,7 @@ module Gtk
     end
 
     def name=(name)
-      __return_value = LibGtk.file_filter_set_name(to_unsafe.as(LibGtk::FileFilter*), name && name)
+      __return_value = LibGtk.file_filter_set_name(to_unsafe.as(LibGtk::FileFilter*), name && name.to_unsafe)
       __return_value
     end
 

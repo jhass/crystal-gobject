@@ -143,7 +143,7 @@ module Gtk
       __return_value
     end
 
-    alias ChangeValueSignal = SpinButton, Gtk::ScrollType -> 
+    alias ChangeValueSignal = SpinButton, Gtk::ScrollType ->
     def on_change_value(&__block : ChangeValueSignal)
       __callback = ->(_arg0 : LibGtk::SpinButton*, _arg1 : LibGtk::LibGtk::ScrollType*) {
        __return_value = __block.call(SpinButton.new(_arg0), _arg1)
@@ -170,7 +170,7 @@ module Gtk
       connect("output", __callback)
     end
 
-    alias ValueChangedSignal = SpinButton -> 
+    alias ValueChangedSignal = SpinButton ->
     def on_value_changed(&__block : ValueChangedSignal)
       __callback = ->(_arg0 : LibGtk::SpinButton*) {
        __return_value = __block.call(SpinButton.new(_arg0))
@@ -179,7 +179,7 @@ module Gtk
       connect("value-changed", __callback)
     end
 
-    alias WrappedSignal = SpinButton -> 
+    alias WrappedSignal = SpinButton ->
     def on_wrapped(&__block : WrappedSignal)
       __callback = ->(_arg0 : LibGtk::SpinButton*) {
        __return_value = __block.call(SpinButton.new(_arg0))

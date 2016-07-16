@@ -1090,6 +1090,7 @@ lib LibAtk
   ##    Flags
   ###########################################
 
+  @[Flags]
   enum HyperlinkStateFlags : UInt32
     ZERO_NONE = 0
     INLINE = 1

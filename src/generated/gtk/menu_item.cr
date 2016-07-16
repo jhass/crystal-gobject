@@ -25,12 +25,12 @@ module Gtk
     end
 
     def self.new_with_label(label) : self
-      __return_value = LibGtk.menu_item_new_with_label(label)
+      __return_value = LibGtk.menu_item_new_with_label(label.to_unsafe)
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_mnemonic(label) : self
-      __return_value = LibGtk.menu_item_new_with_mnemonic(label)
+      __return_value = LibGtk.menu_item_new_with_mnemonic(label.to_unsafe)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -80,12 +80,12 @@ module Gtk
     end
 
     def accel_path=(accel_path)
-      __return_value = LibGtk.menu_item_set_accel_path(to_unsafe.as(LibGtk::MenuItem*), accel_path && accel_path)
+      __return_value = LibGtk.menu_item_set_accel_path(to_unsafe.as(LibGtk::MenuItem*), accel_path && accel_path.to_unsafe)
       __return_value
     end
 
     def label=(label)
-      __return_value = LibGtk.menu_item_set_label(to_unsafe.as(LibGtk::MenuItem*), label)
+      __return_value = LibGtk.menu_item_set_label(to_unsafe.as(LibGtk::MenuItem*), label.to_unsafe)
       __return_value
     end
 
@@ -119,7 +119,7 @@ module Gtk
       __return_value
     end
 
-    alias ActivateSignal = MenuItem -> 
+    alias ActivateSignal = MenuItem ->
     def on_activate(&__block : ActivateSignal)
       __callback = ->(_arg0 : LibGtk::MenuItem*) {
        __return_value = __block.call(MenuItem.new(_arg0))
@@ -128,7 +128,7 @@ module Gtk
       connect("activate", __callback)
     end
 
-    alias ActivateItemSignal = MenuItem -> 
+    alias ActivateItemSignal = MenuItem ->
     def on_activate_item(&__block : ActivateItemSignal)
       __callback = ->(_arg0 : LibGtk::MenuItem*) {
        __return_value = __block.call(MenuItem.new(_arg0))
@@ -137,7 +137,7 @@ module Gtk
       connect("activate-item", __callback)
     end
 
-    alias DeselectSignal = MenuItem -> 
+    alias DeselectSignal = MenuItem ->
     def on_deselect(&__block : DeselectSignal)
       __callback = ->(_arg0 : LibGtk::MenuItem*) {
        __return_value = __block.call(MenuItem.new(_arg0))
@@ -146,7 +146,7 @@ module Gtk
       connect("deselect", __callback)
     end
 
-    alias SelectSignal = MenuItem -> 
+    alias SelectSignal = MenuItem ->
     def on_select(&__block : SelectSignal)
       __callback = ->(_arg0 : LibGtk::MenuItem*) {
        __return_value = __block.call(MenuItem.new(_arg0))
@@ -155,7 +155,7 @@ module Gtk
       connect("select", __callback)
     end
 
-    alias ToggleSizeAllocateSignal = MenuItem, Int32 -> 
+    alias ToggleSizeAllocateSignal = MenuItem, Int32 ->
     def on_toggle_size_allocate(&__block : ToggleSizeAllocateSignal)
       __callback = ->(_arg0 : LibGtk::MenuItem*, _arg1 : LibGtk::Int32*) {
        __return_value = __block.call(MenuItem.new(_arg0), _arg1)
@@ -164,7 +164,7 @@ module Gtk
       connect("toggle-size-allocate", __callback)
     end
 
-    alias ToggleSizeRequestSignal = MenuItem, Void* -> 
+    alias ToggleSizeRequestSignal = MenuItem, Void* ->
     def on_toggle_size_request(&__block : ToggleSizeRequestSignal)
       __callback = ->(_arg0 : LibGtk::MenuItem*, _arg1 : LibGtk::Void**) {
        __return_value = __block.call(MenuItem.new(_arg0), _arg1)

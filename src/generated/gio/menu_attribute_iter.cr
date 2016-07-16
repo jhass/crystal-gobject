@@ -14,7 +14,7 @@ module Gio
     end
 
     def next(out_name, value)
-      __return_value = LibGio.menu_attribute_iter_get_next(to_unsafe.as(LibGio::MenuAttributeIter*), out_name, value.to_unsafe.as(LibGLib::Variant*))
+      __return_value = LibGio.menu_attribute_iter_get_next(to_unsafe.as(LibGio::MenuAttributeIter*), out_name.to_unsafe, value.to_unsafe.as(LibGLib::Variant*))
       __return_value
     end
 

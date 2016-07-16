@@ -33,7 +33,7 @@ module Gtk
     end
 
     def add_class(class_name)
-      __return_value = LibGtk.style_context_add_class(to_unsafe.as(LibGtk::StyleContext*), class_name)
+      __return_value = LibGtk.style_context_add_class(to_unsafe.as(LibGtk::StyleContext*), class_name.to_unsafe)
       __return_value
     end
 
@@ -43,7 +43,7 @@ module Gtk
     end
 
     def add_region(region_name, flags)
-      __return_value = LibGtk.style_context_add_region(to_unsafe.as(LibGtk::StyleContext*), region_name, flags)
+      __return_value = LibGtk.style_context_add_region(to_unsafe.as(LibGtk::StyleContext*), region_name.to_unsafe, flags)
       __return_value
     end
 
@@ -113,7 +113,7 @@ module Gtk
     end
 
     def property(property, state, value)
-      __return_value = LibGtk.style_context_get_property(to_unsafe.as(LibGtk::StyleContext*), property, state, value)
+      __return_value = LibGtk.style_context_get_property(to_unsafe.as(LibGtk::StyleContext*), property.to_unsafe, state, value)
       __return_value
     end
 
@@ -128,7 +128,7 @@ module Gtk
     end
 
     def section(property)
-      __return_value = LibGtk.style_context_get_section(to_unsafe.as(LibGtk::StyleContext*), property)
+      __return_value = LibGtk.style_context_get_section(to_unsafe.as(LibGtk::StyleContext*), property.to_unsafe)
       Gtk::CssSection.new(__return_value) if __return_value
     end
 
@@ -138,17 +138,17 @@ module Gtk
     end
 
     def style_property(property_name, value)
-      __return_value = LibGtk.style_context_get_style_property(to_unsafe.as(LibGtk::StyleContext*), property_name, value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGtk.style_context_get_style_property(to_unsafe.as(LibGtk::StyleContext*), property_name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 
     def has_class(class_name)
-      __return_value = LibGtk.style_context_has_class(to_unsafe.as(LibGtk::StyleContext*), class_name)
+      __return_value = LibGtk.style_context_has_class(to_unsafe.as(LibGtk::StyleContext*), class_name.to_unsafe)
       __return_value
     end
 
     def has_region(region_name, flags_return)
-      __return_value = LibGtk.style_context_has_region(to_unsafe.as(LibGtk::StyleContext*), region_name, flags_return)
+      __return_value = LibGtk.style_context_has_region(to_unsafe.as(LibGtk::StyleContext*), region_name.to_unsafe, flags_return)
       __return_value
     end
 
@@ -168,12 +168,12 @@ module Gtk
     end
 
     def lookup_color(color_name, color)
-      __return_value = LibGtk.style_context_lookup_color(to_unsafe.as(LibGtk::StyleContext*), color_name, color)
+      __return_value = LibGtk.style_context_lookup_color(to_unsafe.as(LibGtk::StyleContext*), color_name.to_unsafe, color)
       __return_value
     end
 
     def lookup_icon_set(stock_id)
-      __return_value = LibGtk.style_context_lookup_icon_set(to_unsafe.as(LibGtk::StyleContext*), stock_id)
+      __return_value = LibGtk.style_context_lookup_icon_set(to_unsafe.as(LibGtk::StyleContext*), stock_id.to_unsafe)
       Gtk::IconSet.new(__return_value)
     end
 
@@ -193,7 +193,7 @@ module Gtk
     end
 
     def remove_class(class_name)
-      __return_value = LibGtk.style_context_remove_class(to_unsafe.as(LibGtk::StyleContext*), class_name)
+      __return_value = LibGtk.style_context_remove_class(to_unsafe.as(LibGtk::StyleContext*), class_name.to_unsafe)
       __return_value
     end
 
@@ -203,7 +203,7 @@ module Gtk
     end
 
     def remove_region(region_name)
-      __return_value = LibGtk.style_context_remove_region(to_unsafe.as(LibGtk::StyleContext*), region_name)
+      __return_value = LibGtk.style_context_remove_region(to_unsafe.as(LibGtk::StyleContext*), region_name.to_unsafe)
       __return_value
     end
 
@@ -277,7 +277,7 @@ module Gtk
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    alias ChangedSignal = StyleContext -> 
+    alias ChangedSignal = StyleContext ->
     def on_changed(&__block : ChangedSignal)
       __callback = ->(_arg0 : LibGtk::StyleContext*) {
        __return_value = __block.call(StyleContext.new(_arg0))

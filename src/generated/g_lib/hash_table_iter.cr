@@ -2,6 +2,11 @@ module GLib
   class HashTableIter
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(40, 0)
+      super(ptr.as(LibGLib::HashTableIter*))
+    end
+
     @g_lib_hash_table_iter : LibGLib::HashTableIter*?
     def initialize(@g_lib_hash_table_iter : LibGLib::HashTableIter*)
     end
@@ -33,6 +38,30 @@ module GLib
     def steal
       __return_value = LibGLib.hash_table_iter_steal(to_unsafe.as(LibGLib::HashTableIter*))
       __return_value
+    end
+
+    def dummy1
+      (to_unsafe.value.dummy1)
+    end
+
+    def dummy2
+      (to_unsafe.value.dummy2)
+    end
+
+    def dummy3
+      (to_unsafe.value.dummy3)
+    end
+
+    def dummy4
+      (to_unsafe.value.dummy4)
+    end
+
+    def dummy5
+      (to_unsafe.value.dummy5)
+    end
+
+    def dummy6
+      (to_unsafe.value.dummy6)
     end
 
   end

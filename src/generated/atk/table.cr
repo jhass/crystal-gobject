@@ -121,7 +121,7 @@ module Atk
     end
 
     def set_column_description(column, description)
-      __return_value = LibAtk.table_set_column_description(to_unsafe.as(LibAtk::Table*), Int32.new(column), description)
+      __return_value = LibAtk.table_set_column_description(to_unsafe.as(LibAtk::Table*), Int32.new(column), description.to_unsafe)
       __return_value
     end
 
@@ -131,7 +131,7 @@ module Atk
     end
 
     def set_row_description(row, description)
-      __return_value = LibAtk.table_set_row_description(to_unsafe.as(LibAtk::Table*), Int32.new(row), description)
+      __return_value = LibAtk.table_set_row_description(to_unsafe.as(LibAtk::Table*), Int32.new(row), description.to_unsafe)
       __return_value
     end
 
@@ -145,7 +145,7 @@ module Atk
       __return_value
     end
 
-    alias ColumnDeletedSignal = Table, Int32, Int32 -> 
+    alias ColumnDeletedSignal = Table, Int32, Int32 ->
     def on_column_deleted(&__block : ColumnDeletedSignal)
       __callback = ->(_arg0 : LibAtk::Table*, _arg1 : LibAtk::Int32*, _arg2 : LibAtk::Int32*) {
        __return_value = __block.call(Table.new(_arg0), _arg1, _arg2)
@@ -154,7 +154,7 @@ module Atk
       connect("column-deleted", __callback)
     end
 
-    alias ColumnInsertedSignal = Table, Int32, Int32 -> 
+    alias ColumnInsertedSignal = Table, Int32, Int32 ->
     def on_column_inserted(&__block : ColumnInsertedSignal)
       __callback = ->(_arg0 : LibAtk::Table*, _arg1 : LibAtk::Int32*, _arg2 : LibAtk::Int32*) {
        __return_value = __block.call(Table.new(_arg0), _arg1, _arg2)
@@ -163,7 +163,7 @@ module Atk
       connect("column-inserted", __callback)
     end
 
-    alias ColumnReorderedSignal = Table -> 
+    alias ColumnReorderedSignal = Table ->
     def on_column_reordered(&__block : ColumnReorderedSignal)
       __callback = ->(_arg0 : LibAtk::Table*) {
        __return_value = __block.call(Table.new(_arg0))
@@ -172,7 +172,7 @@ module Atk
       connect("column-reordered", __callback)
     end
 
-    alias ModelChangedSignal = Table -> 
+    alias ModelChangedSignal = Table ->
     def on_model_changed(&__block : ModelChangedSignal)
       __callback = ->(_arg0 : LibAtk::Table*) {
        __return_value = __block.call(Table.new(_arg0))
@@ -181,7 +181,7 @@ module Atk
       connect("model-changed", __callback)
     end
 
-    alias RowDeletedSignal = Table, Int32, Int32 -> 
+    alias RowDeletedSignal = Table, Int32, Int32 ->
     def on_row_deleted(&__block : RowDeletedSignal)
       __callback = ->(_arg0 : LibAtk::Table*, _arg1 : LibAtk::Int32*, _arg2 : LibAtk::Int32*) {
        __return_value = __block.call(Table.new(_arg0), _arg1, _arg2)
@@ -190,7 +190,7 @@ module Atk
       connect("row-deleted", __callback)
     end
 
-    alias RowInsertedSignal = Table, Int32, Int32 -> 
+    alias RowInsertedSignal = Table, Int32, Int32 ->
     def on_row_inserted(&__block : RowInsertedSignal)
       __callback = ->(_arg0 : LibAtk::Table*, _arg1 : LibAtk::Int32*, _arg2 : LibAtk::Int32*) {
        __return_value = __block.call(Table.new(_arg0), _arg1, _arg2)
@@ -199,7 +199,7 @@ module Atk
       connect("row-inserted", __callback)
     end
 
-    alias RowReorderedSignal = Table -> 
+    alias RowReorderedSignal = Table ->
     def on_row_reordered(&__block : RowReorderedSignal)
       __callback = ->(_arg0 : LibAtk::Table*) {
        __return_value = __block.call(Table.new(_arg0))

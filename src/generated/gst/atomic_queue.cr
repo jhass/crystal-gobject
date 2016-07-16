@@ -2,6 +2,11 @@ module Gst
   class AtomicQueue
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGst::AtomicQueue*))
+    end
+
     @gst_atomic_queue : LibGst::AtomicQueue*?
     def initialize(@gst_atomic_queue : LibGst::AtomicQueue*)
     end

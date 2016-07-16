@@ -19,12 +19,12 @@ module Gtk
 
 
     def self.new(content_type) : self
-      __return_value = LibGtk.app_chooser_button_new(content_type)
+      __return_value = LibGtk.app_chooser_button_new(content_type.to_unsafe)
       cast Gtk::Widget.new(__return_value)
     end
 
     def append_custom_item(name, label, icon)
-      __return_value = LibGtk.app_chooser_button_append_custom_item(to_unsafe.as(LibGtk::AppChooserButton*), name, label, icon.to_unsafe.as(LibGio::Icon*))
+      __return_value = LibGtk.app_chooser_button_append_custom_item(to_unsafe.as(LibGtk::AppChooserButton*), name.to_unsafe, label.to_unsafe, icon.to_unsafe.as(LibGio::Icon*))
       __return_value
     end
 
@@ -49,12 +49,12 @@ module Gtk
     end
 
     def active_custom_item=(name)
-      __return_value = LibGtk.app_chooser_button_set_active_custom_item(to_unsafe.as(LibGtk::AppChooserButton*), name)
+      __return_value = LibGtk.app_chooser_button_set_active_custom_item(to_unsafe.as(LibGtk::AppChooserButton*), name.to_unsafe)
       __return_value
     end
 
     def heading=(heading)
-      __return_value = LibGtk.app_chooser_button_set_heading(to_unsafe.as(LibGtk::AppChooserButton*), heading)
+      __return_value = LibGtk.app_chooser_button_set_heading(to_unsafe.as(LibGtk::AppChooserButton*), heading.to_unsafe)
       __return_value
     end
 
@@ -68,7 +68,7 @@ module Gtk
       __return_value
     end
 
-    alias CustomItemActivatedSignal = AppChooserButton, UInt8 -> 
+    alias CustomItemActivatedSignal = AppChooserButton, String ->
     def on_custom_item_activated(&__block : CustomItemActivatedSignal)
       __callback = ->(_arg0 : LibGtk::AppChooserButton*, _arg1 : LibGtk::UInt8**) {
        __return_value = __block.call(AppChooserButton.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))

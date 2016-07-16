@@ -2,6 +2,11 @@ module GLib
   class Variant
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGLib::Variant*))
+    end
+
     @g_lib_variant : LibGLib::Variant*?
     def initialize(@g_lib_variant : LibGLib::Variant*)
     end
@@ -86,7 +91,7 @@ module GLib
     end
 
     def self.new_object_path(object_path) : self
-      __return_value = LibGLib.variant_new_object_path(object_path)
+      __return_value = LibGLib.variant_new_object_path(object_path.to_unsafe)
       cast GLib::Variant.new(__return_value)
     end
 
@@ -96,12 +101,12 @@ module GLib
     end
 
     def self.new_signature(signature) : self
-      __return_value = LibGLib.variant_new_signature(signature)
+      __return_value = LibGLib.variant_new_signature(signature.to_unsafe)
       cast GLib::Variant.new(__return_value)
     end
 
     def self.new_string(string) : self
-      __return_value = LibGLib.variant_new_string(string)
+      __return_value = LibGLib.variant_new_string(string.to_unsafe)
       cast GLib::Variant.new(__return_value)
     end
 
@@ -141,7 +146,7 @@ module GLib
     end
 
     def check_format_string(format_string, copy_only)
-      __return_value = LibGLib.variant_check_format_string(to_unsafe.as(LibGLib::Variant*), format_string, copy_only)
+      __return_value = LibGLib.variant_check_format_string(to_unsafe.as(LibGLib::Variant*), format_string.to_unsafe, copy_only)
       __return_value
     end
 
@@ -331,7 +336,7 @@ module GLib
     end
 
     def lookup_value(key, expected_type)
-      __return_value = LibGLib.variant_lookup_value(to_unsafe.as(LibGLib::Variant*), key, expected_type && expected_type.to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGLib.variant_lookup_value(to_unsafe.as(LibGLib::Variant*), key.to_unsafe, expected_type && expected_type.to_unsafe.as(LibGLib::VariantType*))
       GLib::Variant.new(__return_value)
     end
 
@@ -371,24 +376,24 @@ module GLib
     end
 
     def self.object_path?(string)
-      __return_value = LibGLib.variant_is_object_path(string)
+      __return_value = LibGLib.variant_is_object_path(string.to_unsafe)
       __return_value
     end
 
     def self.signature?(string)
-      __return_value = LibGLib.variant_is_signature(string)
+      __return_value = LibGLib.variant_is_signature(string.to_unsafe)
       __return_value
     end
 
     def self.parse(type, text, limit, endptr)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.variant_parse(type && type.to_unsafe.as(LibGLib::VariantType*), text, limit && limit, endptr && endptr, pointerof(__error))
+      __return_value = LibGLib.variant_parse(type && type.to_unsafe.as(LibGLib::VariantType*), text.to_unsafe, limit && limit.to_unsafe, endptr && endptr.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       GLib::Variant.new(__return_value)
     end
 
     def self.parse_error_print_context(error, source_str)
-      __return_value = LibGLib.variant_parse_error_print_context(error, source_str)
+      __return_value = LibGLib.variant_parse_error_print_context(error, source_str.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

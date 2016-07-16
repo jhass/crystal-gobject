@@ -360,7 +360,7 @@ module Gtk
       connect("activate-cursor-item", __callback)
     end
 
-    alias ItemActivatedSignal = IconView, Gtk::TreePath -> 
+    alias ItemActivatedSignal = IconView, Gtk::TreePath ->
     def on_item_activated(&__block : ItemActivatedSignal)
       __callback = ->(_arg0 : LibGtk::IconView*, _arg1 : LibGtk::LibGtk::TreePath*) {
        __return_value = __block.call(IconView.new(_arg0), Gtk::TreePath.new(_arg1))
@@ -378,7 +378,7 @@ module Gtk
       connect("move-cursor", __callback)
     end
 
-    alias SelectAllSignal = IconView -> 
+    alias SelectAllSignal = IconView ->
     def on_select_all(&__block : SelectAllSignal)
       __callback = ->(_arg0 : LibGtk::IconView*) {
        __return_value = __block.call(IconView.new(_arg0))
@@ -387,7 +387,7 @@ module Gtk
       connect("select-all", __callback)
     end
 
-    alias SelectCursorItemSignal = IconView -> 
+    alias SelectCursorItemSignal = IconView ->
     def on_select_cursor_item(&__block : SelectCursorItemSignal)
       __callback = ->(_arg0 : LibGtk::IconView*) {
        __return_value = __block.call(IconView.new(_arg0))
@@ -396,7 +396,7 @@ module Gtk
       connect("select-cursor-item", __callback)
     end
 
-    alias SelectionChangedSignal = IconView -> 
+    alias SelectionChangedSignal = IconView ->
     def on_selection_changed(&__block : SelectionChangedSignal)
       __callback = ->(_arg0 : LibGtk::IconView*) {
        __return_value = __block.call(IconView.new(_arg0))
@@ -405,7 +405,7 @@ module Gtk
       connect("selection-changed", __callback)
     end
 
-    alias ToggleCursorItemSignal = IconView -> 
+    alias ToggleCursorItemSignal = IconView ->
     def on_toggle_cursor_item(&__block : ToggleCursorItemSignal)
       __callback = ->(_arg0 : LibGtk::IconView*) {
        __return_value = __block.call(IconView.new(_arg0))
@@ -414,7 +414,7 @@ module Gtk
       connect("toggle-cursor-item", __callback)
     end
 
-    alias UnselectAllSignal = IconView -> 
+    alias UnselectAllSignal = IconView ->
     def on_unselect_all(&__block : UnselectAllSignal)
       __callback = ->(_arg0 : LibGtk::IconView*) {
        __return_value = __block.call(IconView.new(_arg0))

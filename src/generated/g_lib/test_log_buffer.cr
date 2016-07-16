@@ -2,6 +2,11 @@ module GLib
   class TestLogBuffer
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(16, 0)
+      super(ptr.as(LibGLib::TestLogBuffer*))
+    end
+
     @g_lib_test_log_buffer : LibGLib::TestLogBuffer*?
     def initialize(@g_lib_test_log_buffer : LibGLib::TestLogBuffer*)
     end
@@ -18,6 +23,14 @@ module GLib
     def push(n_bytes, bytes)
       __return_value = LibGLib.test_log_buffer_push(to_unsafe.as(LibGLib::TestLogBuffer*), UInt32.new(n_bytes), bytes)
       __return_value
+    end
+
+    def data
+      GLib::String.new((to_unsafe.value.data))
+    end
+
+    def msgs
+      (to_unsafe.value.msgs)
     end
 
   end

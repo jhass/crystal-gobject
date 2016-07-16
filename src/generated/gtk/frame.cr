@@ -18,7 +18,7 @@ module Gtk
 
 
     def self.new(label) : self
-      __return_value = LibGtk.frame_new(label && label)
+      __return_value = LibGtk.frame_new(label && label.to_unsafe)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -43,7 +43,7 @@ module Gtk
     end
 
     def label=(label)
-      __return_value = LibGtk.frame_set_label(to_unsafe.as(LibGtk::Frame*), label && label)
+      __return_value = LibGtk.frame_set_label(to_unsafe.as(LibGtk::Frame*), label && label.to_unsafe)
       __return_value
     end
 

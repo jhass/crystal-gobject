@@ -2,6 +2,11 @@ module Gst
   class Poll
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGst::Poll*))
+    end
+
     @gst_poll : LibGst::Poll*?
     def initialize(@gst_poll : LibGst::Poll*)
     end

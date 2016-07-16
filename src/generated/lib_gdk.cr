@@ -3518,6 +3518,7 @@ lib LibGdk
   ##    Flags
   ###########################################
 
+  @[Flags]
   enum DragAction : UInt32
     ZERO_NONE = 0
     DEFAULT = 1
@@ -3528,6 +3529,7 @@ lib LibGdk
     ASK = 32
   end
 
+  @[Flags]
   enum EventMask : UInt32
     ZERO_NONE = 0
     EXPOSURE_MASK = 2
@@ -3557,6 +3559,7 @@ lib LibGdk
     ALL_EVENTS_MASK = 16777214
   end
 
+  @[Flags]
   enum FrameClockPhase : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -3569,6 +3572,7 @@ lib LibGdk
     AFTER_PAINT = 64
   end
 
+  @[Flags]
   enum ModifierType : UInt32
     ZERO_NONE = 0
     SHIFT_MASK = 1
@@ -3605,6 +3609,7 @@ lib LibGdk
     MODIFIER_MASK = 1543512063
   end
 
+  @[Flags]
   enum SeatCapabilities : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -3616,6 +3621,7 @@ lib LibGdk
     ALL = 15
   end
 
+  @[Flags]
   enum WMDecoration : UInt32
     ZERO_NONE = 0
     ALL = 1
@@ -3627,6 +3633,7 @@ lib LibGdk
     MAXIMIZE = 64
   end
 
+  @[Flags]
   enum WMFunction : UInt32
     ZERO_NONE = 0
     ALL = 1
@@ -3637,6 +3644,7 @@ lib LibGdk
     CLOSE = 32
   end
 
+  @[Flags]
   enum WindowAttributesType : UInt32
     ZERO_NONE = 0
     TITLE = 2
@@ -3649,6 +3657,7 @@ lib LibGdk
     TYPE_HINT = 256
   end
 
+  @[Flags]
   enum WindowHints : UInt32
     ZERO_NONE = 0
     POS = 1
@@ -3662,6 +3671,7 @@ lib LibGdk
     USER_SIZE = 256
   end
 
+  @[Flags]
   enum WindowState : UInt32
     ZERO_NONE = 0
     WITHDRAWN = 1

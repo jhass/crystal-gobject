@@ -2,6 +2,16 @@ module Gtk
   class Border
     include GObject::WrappedType
 
+    def self.new(left : Int16|Nil = nil, right : Int16|Nil = nil, top : Int16|Nil = nil, bottom : Int16|Nil = nil) : self
+      ptr = Pointer(UInt8).malloc(8, 0u8)
+      new(ptr.as(LibGtk::Border*)).tap do |object|
+        object.left = left unless left.nil?
+        object.right = right unless right.nil?
+        object.top = top unless top.nil?
+        object.bottom = bottom unless bottom.nil?
+      end
+    end
+
     @gtk_border : LibGtk::Border*?
     def initialize(@gtk_border : LibGtk::Border*)
     end
@@ -23,6 +33,38 @@ module Gtk
     def free
       __return_value = LibGtk.border_free(to_unsafe.as(LibGtk::Border*))
       __return_value
+    end
+
+    def left
+      (to_unsafe.value.left)
+    end
+
+    def left=(value : Int16)
+      to_unsafe.value.left = Int16.new(value)
+    end
+
+    def right
+      (to_unsafe.value.right)
+    end
+
+    def right=(value : Int16)
+      to_unsafe.value.right = Int16.new(value)
+    end
+
+    def top
+      (to_unsafe.value.top)
+    end
+
+    def top=(value : Int16)
+      to_unsafe.value.top = Int16.new(value)
+    end
+
+    def bottom
+      (to_unsafe.value.bottom)
+    end
+
+    def bottom=(value : Int16)
+      to_unsafe.value.bottom = Int16.new(value)
     end
 
   end

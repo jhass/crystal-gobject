@@ -25,7 +25,7 @@ module Gtk
 
 
     def activate(event, widget, path, background_area, cell_area, flags)
-      __return_value = LibGtk.cell_renderer_activate(to_unsafe.as(LibGtk::CellRenderer*), event.to_unsafe.as(LibGdk::Event*), widget.to_unsafe.as(LibGtk::Widget*), path, background_area.to_unsafe.as(LibGdk::Rectangle*), cell_area.to_unsafe.as(LibGdk::Rectangle*), flags)
+      __return_value = LibGtk.cell_renderer_activate(to_unsafe.as(LibGtk::CellRenderer*), event.to_unsafe.as(LibGdk::Event*), widget.to_unsafe.as(LibGtk::Widget*), path.to_unsafe, background_area.to_unsafe.as(LibGdk::Rectangle*), cell_area.to_unsafe.as(LibGdk::Rectangle*), flags)
       __return_value
     end
 
@@ -135,7 +135,7 @@ module Gtk
     end
 
     def start_editing(event, widget, path, background_area, cell_area, flags)
-      __return_value = LibGtk.cell_renderer_start_editing(to_unsafe.as(LibGtk::CellRenderer*), event.to_unsafe.as(LibGdk::Event*), widget.to_unsafe.as(LibGtk::Widget*), path, background_area.to_unsafe.as(LibGdk::Rectangle*), cell_area.to_unsafe.as(LibGdk::Rectangle*), flags)
+      __return_value = LibGtk.cell_renderer_start_editing(to_unsafe.as(LibGtk::CellRenderer*), event.to_unsafe.as(LibGdk::Event*), widget.to_unsafe.as(LibGtk::Widget*), path.to_unsafe, background_area.to_unsafe.as(LibGdk::Rectangle*), cell_area.to_unsafe.as(LibGdk::Rectangle*), flags)
       __return_value if __return_value
     end
 
@@ -144,7 +144,7 @@ module Gtk
       __return_value
     end
 
-    alias EditingCanceledSignal = CellRenderer -> 
+    alias EditingCanceledSignal = CellRenderer ->
     def on_editing_canceled(&__block : EditingCanceledSignal)
       __callback = ->(_arg0 : LibGtk::CellRenderer*) {
        __return_value = __block.call(CellRenderer.new(_arg0))
@@ -153,7 +153,7 @@ module Gtk
       connect("editing-canceled", __callback)
     end
 
-    alias EditingStartedSignal = CellRenderer, Gtk::CellEditable, UInt8 -> 
+    alias EditingStartedSignal = CellRenderer, Gtk::CellEditable, String ->
     def on_editing_started(&__block : EditingStartedSignal)
       __callback = ->(_arg0 : LibGtk::CellRenderer*, _arg1 : LibGtk::LibGtk::CellEditable*, _arg2 : LibGtk::UInt8**) {
        __return_value = __block.call(CellRenderer.new(_arg0), _arg1, (raise "Expected string but got null" unless _arg2; ::String.new(_arg2)))

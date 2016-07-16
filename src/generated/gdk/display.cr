@@ -14,7 +14,7 @@ module Gdk
     end
 
     def self.open(display_name)
-      __return_value = LibGdk.display_open(display_name)
+      __return_value = LibGdk.display_open(display_name.to_unsafe)
       Gdk::Display.new(__return_value) if __return_value
     end
 
@@ -134,7 +134,7 @@ module Gdk
     end
 
     def notify_startup_complete(startup_id)
-      __return_value = LibGdk.display_notify_startup_complete(to_unsafe.as(LibGdk::Display*), startup_id)
+      __return_value = LibGdk.display_notify_startup_complete(to_unsafe.as(LibGdk::Display*), startup_id.to_unsafe)
       __return_value
     end
 
@@ -223,7 +223,7 @@ module Gdk
       __return_value
     end
 
-    alias ClosedSignal = Display, Bool -> 
+    alias ClosedSignal = Display, Bool ->
     def on_closed(&__block : ClosedSignal)
       __callback = ->(_arg0 : LibGdk::Display*, _arg1 : LibGdk::Bool*) {
        __return_value = __block.call(Display.new(_arg0), _arg1)
@@ -232,7 +232,7 @@ module Gdk
       connect("closed", __callback)
     end
 
-    alias OpenedSignal = Display -> 
+    alias OpenedSignal = Display ->
     def on_opened(&__block : OpenedSignal)
       __callback = ->(_arg0 : LibGdk::Display*) {
        __return_value = __block.call(Display.new(_arg0))
@@ -241,7 +241,7 @@ module Gdk
       connect("opened", __callback)
     end
 
-    alias SeatAddedSignal = Display, Gdk::Seat -> 
+    alias SeatAddedSignal = Display, Gdk::Seat ->
     def on_seat_added(&__block : SeatAddedSignal)
       __callback = ->(_arg0 : LibGdk::Display*, _arg1 : LibGdk::LibGdk::Seat*) {
        __return_value = __block.call(Display.new(_arg0), Gdk::Seat.new(_arg1))
@@ -250,7 +250,7 @@ module Gdk
       connect("seat-added", __callback)
     end
 
-    alias SeatRemovedSignal = Display, Gdk::Seat -> 
+    alias SeatRemovedSignal = Display, Gdk::Seat ->
     def on_seat_removed(&__block : SeatRemovedSignal)
       __callback = ->(_arg0 : LibGdk::Display*, _arg1 : LibGdk::LibGdk::Seat*) {
        __return_value = __block.call(Display.new(_arg0), Gdk::Seat.new(_arg1))

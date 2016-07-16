@@ -53,7 +53,7 @@ module Gtk
     end
 
     def title=(title)
-      __return_value = LibGtk.native_dialog_set_title(to_unsafe.as(LibGtk::NativeDialog*), title)
+      __return_value = LibGtk.native_dialog_set_title(to_unsafe.as(LibGtk::NativeDialog*), title.to_unsafe)
       __return_value
     end
 
@@ -67,7 +67,7 @@ module Gtk
       __return_value
     end
 
-    alias ResponseSignal = NativeDialog, Int32 -> 
+    alias ResponseSignal = NativeDialog, Int32 ->
     def on_response(&__block : ResponseSignal)
       __callback = ->(_arg0 : LibGtk::NativeDialog*, _arg1 : LibGtk::Int32*) {
        __return_value = __block.call(NativeDialog.new(_arg0), _arg1)

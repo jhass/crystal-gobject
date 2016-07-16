@@ -2,6 +2,15 @@ module GLib
   class String
     include GObject::WrappedType
 
+    def self.new(str : String|Nil = nil, len : UInt64|Nil = nil, allocated_len : UInt64|Nil = nil) : self
+      ptr = Pointer(UInt8).malloc(24, 0u8)
+      new(ptr.as(LibGLib::String*)).tap do |object|
+        object.str = str unless str.nil?
+        object.len = len unless len.nil?
+        object.allocated_len = allocated_len unless allocated_len.nil?
+      end
+    end
+
     @g_lib_string : LibGLib::String*?
     def initialize(@g_lib_string : LibGLib::String*)
     end
@@ -11,7 +20,7 @@ module GLib
     end
 
     def append(val)
-      __return_value = LibGLib.string_append(to_unsafe.as(LibGLib::String*), val)
+      __return_value = LibGLib.string_append(to_unsafe.as(LibGLib::String*), val.to_unsafe)
       GLib::String.new(__return_value)
     end
 
@@ -21,7 +30,7 @@ module GLib
     end
 
     def append_len(val, len)
-      __return_value = LibGLib.string_append_len(to_unsafe.as(LibGLib::String*), val, Int64.new(len))
+      __return_value = LibGLib.string_append_len(to_unsafe.as(LibGLib::String*), val.to_unsafe, Int64.new(len))
       GLib::String.new(__return_value)
     end
 
@@ -31,7 +40,7 @@ module GLib
     end
 
     def append_uri_escaped(unescaped, reserved_chars_allowed, allow_utf8)
-      __return_value = LibGLib.string_append_uri_escaped(to_unsafe.as(LibGLib::String*), unescaped, reserved_chars_allowed, allow_utf8)
+      __return_value = LibGLib.string_append_uri_escaped(to_unsafe.as(LibGLib::String*), unescaped.to_unsafe, reserved_chars_allowed.to_unsafe, allow_utf8)
       GLib::String.new(__return_value)
     end
 
@@ -46,7 +55,7 @@ module GLib
     end
 
     def assign(rval)
-      __return_value = LibGLib.string_assign(to_unsafe.as(LibGLib::String*), rval)
+      __return_value = LibGLib.string_assign(to_unsafe.as(LibGLib::String*), rval.to_unsafe)
       GLib::String.new(__return_value)
     end
 
@@ -81,7 +90,7 @@ module GLib
     end
 
     def insert(pos, val)
-      __return_value = LibGLib.string_insert(to_unsafe.as(LibGLib::String*), Int64.new(pos), val)
+      __return_value = LibGLib.string_insert(to_unsafe.as(LibGLib::String*), Int64.new(pos), val.to_unsafe)
       GLib::String.new(__return_value)
     end
 
@@ -91,7 +100,7 @@ module GLib
     end
 
     def insert_len(pos, val, len)
-      __return_value = LibGLib.string_insert_len(to_unsafe.as(LibGLib::String*), Int64.new(pos), val, Int64.new(len))
+      __return_value = LibGLib.string_insert_len(to_unsafe.as(LibGLib::String*), Int64.new(pos), val.to_unsafe, Int64.new(len))
       GLib::String.new(__return_value)
     end
 
@@ -101,17 +110,17 @@ module GLib
     end
 
     def overwrite(pos, val)
-      __return_value = LibGLib.string_overwrite(to_unsafe.as(LibGLib::String*), UInt64.new(pos), val)
+      __return_value = LibGLib.string_overwrite(to_unsafe.as(LibGLib::String*), UInt64.new(pos), val.to_unsafe)
       GLib::String.new(__return_value)
     end
 
     def overwrite_len(pos, val, len)
-      __return_value = LibGLib.string_overwrite_len(to_unsafe.as(LibGLib::String*), UInt64.new(pos), val, Int64.new(len))
+      __return_value = LibGLib.string_overwrite_len(to_unsafe.as(LibGLib::String*), UInt64.new(pos), val.to_unsafe, Int64.new(len))
       GLib::String.new(__return_value)
     end
 
     def prepend(val)
-      __return_value = LibGLib.string_prepend(to_unsafe.as(LibGLib::String*), val)
+      __return_value = LibGLib.string_prepend(to_unsafe.as(LibGLib::String*), val.to_unsafe)
       GLib::String.new(__return_value)
     end
 
@@ -121,7 +130,7 @@ module GLib
     end
 
     def prepend_len(val, len)
-      __return_value = LibGLib.string_prepend_len(to_unsafe.as(LibGLib::String*), val, Int64.new(len))
+      __return_value = LibGLib.string_prepend_len(to_unsafe.as(LibGLib::String*), val.to_unsafe, Int64.new(len))
       GLib::String.new(__return_value)
     end
 
@@ -143,6 +152,30 @@ module GLib
     def up
       __return_value = LibGLib.string_up(to_unsafe.as(LibGLib::String*))
       GLib::String.new(__return_value)
+    end
+
+    def str
+      (raise "Expected string but got null" unless (to_unsafe.value.str); ::String.new((to_unsafe.value.str)))
+    end
+
+    def str=(value : String)
+      to_unsafe.value.str = value.to_unsafe
+    end
+
+    def len
+      (to_unsafe.value.len)
+    end
+
+    def len=(value : UInt64)
+      to_unsafe.value.len = UInt64.new(value)
+    end
+
+    def allocated_len
+      (to_unsafe.value.allocated_len)
+    end
+
+    def allocated_len=(value : UInt64)
+      to_unsafe.value.allocated_len = UInt64.new(value)
     end
 
   end

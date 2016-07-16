@@ -24,7 +24,7 @@ module Gtk
     end
 
     def bind_model(model, action_namespace, with_separators)
-      __return_value = LibGtk.menu_shell_bind_model(to_unsafe.as(LibGtk::MenuShell*), model && model.to_unsafe.as(LibGio::MenuModel*), action_namespace && action_namespace, with_separators)
+      __return_value = LibGtk.menu_shell_bind_model(to_unsafe.as(LibGtk::MenuShell*), model && model.to_unsafe.as(LibGio::MenuModel*), action_namespace && action_namespace.to_unsafe, with_separators)
       __return_value
     end
 
@@ -83,7 +83,7 @@ module Gtk
       __return_value
     end
 
-    alias ActivateCurrentSignal = MenuShell, Bool -> 
+    alias ActivateCurrentSignal = MenuShell, Bool ->
     def on_activate_current(&__block : ActivateCurrentSignal)
       __callback = ->(_arg0 : LibGtk::MenuShell*, _arg1 : LibGtk::Bool*) {
        __return_value = __block.call(MenuShell.new(_arg0), _arg1)
@@ -92,7 +92,7 @@ module Gtk
       connect("activate-current", __callback)
     end
 
-    alias CancelSignal = MenuShell -> 
+    alias CancelSignal = MenuShell ->
     def on_cancel(&__block : CancelSignal)
       __callback = ->(_arg0 : LibGtk::MenuShell*) {
        __return_value = __block.call(MenuShell.new(_arg0))
@@ -101,7 +101,7 @@ module Gtk
       connect("cancel", __callback)
     end
 
-    alias CycleFocusSignal = MenuShell, Gtk::DirectionType -> 
+    alias CycleFocusSignal = MenuShell, Gtk::DirectionType ->
     def on_cycle_focus(&__block : CycleFocusSignal)
       __callback = ->(_arg0 : LibGtk::MenuShell*, _arg1 : LibGtk::LibGtk::DirectionType*) {
        __return_value = __block.call(MenuShell.new(_arg0), _arg1)
@@ -110,7 +110,7 @@ module Gtk
       connect("cycle-focus", __callback)
     end
 
-    alias DeactivateSignal = MenuShell -> 
+    alias DeactivateSignal = MenuShell ->
     def on_deactivate(&__block : DeactivateSignal)
       __callback = ->(_arg0 : LibGtk::MenuShell*) {
        __return_value = __block.call(MenuShell.new(_arg0))
@@ -119,7 +119,7 @@ module Gtk
       connect("deactivate", __callback)
     end
 
-    alias InsertSignal = MenuShell, Gtk::Widget, Int32 -> 
+    alias InsertSignal = MenuShell, Gtk::Widget, Int32 ->
     def on_insert(&__block : InsertSignal)
       __callback = ->(_arg0 : LibGtk::MenuShell*, _arg1 : LibGtk::LibGtk::Widget*, _arg2 : LibGtk::Int32*) {
        __return_value = __block.call(MenuShell.new(_arg0), Gtk::Widget.new(_arg1), _arg2)
@@ -128,7 +128,7 @@ module Gtk
       connect("insert", __callback)
     end
 
-    alias MoveCurrentSignal = MenuShell, Gtk::MenuDirectionType -> 
+    alias MoveCurrentSignal = MenuShell, Gtk::MenuDirectionType ->
     def on_move_current(&__block : MoveCurrentSignal)
       __callback = ->(_arg0 : LibGtk::MenuShell*, _arg1 : LibGtk::LibGtk::MenuDirectionType*) {
        __return_value = __block.call(MenuShell.new(_arg0), _arg1)
@@ -146,7 +146,7 @@ module Gtk
       connect("move-selected", __callback)
     end
 
-    alias SelectionDoneSignal = MenuShell -> 
+    alias SelectionDoneSignal = MenuShell ->
     def on_selection_done(&__block : SelectionDoneSignal)
       __callback = ->(_arg0 : LibGtk::MenuShell*) {
        __return_value = __block.call(MenuShell.new(_arg0))

@@ -79,7 +79,7 @@ module Gtk
     end
 
     def set_text(text, len)
-      __return_value = LibGtk.clipboard_set_text(to_unsafe.as(LibGtk::Clipboard*), text, Int32.new(len))
+      __return_value = LibGtk.clipboard_set_text(to_unsafe.as(LibGtk::Clipboard*), text.to_unsafe, Int32.new(len))
       __return_value
     end
 
@@ -143,7 +143,7 @@ module Gtk
       __return_value
     end
 
-    alias OwnerChangeSignal = Clipboard, Gdk::EventOwnerChange -> 
+    alias OwnerChangeSignal = Clipboard, Gdk::EventOwnerChange ->
     def on_owner_change(&__block : OwnerChangeSignal)
       __callback = ->(_arg0 : LibGtk::Clipboard*, _arg1 : LibGtk::LibGdk::EventOwnerChange*) {
        __return_value = __block.call(Clipboard.new(_arg0), Gdk::EventOwnerChange.new(_arg1))

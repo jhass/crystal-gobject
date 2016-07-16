@@ -12,7 +12,7 @@ module Gtk
 
 
     def self.new(initial_chars, n_initial_chars) : self
-      __return_value = LibGtk.entry_buffer_new(initial_chars && initial_chars, Int32.new(n_initial_chars))
+      __return_value = LibGtk.entry_buffer_new(initial_chars && initial_chars.to_unsafe, Int32.new(n_initial_chars))
       cast Gtk::EntryBuffer.new(__return_value)
     end
 
@@ -27,7 +27,7 @@ module Gtk
     end
 
     def emit_inserted_text(position, chars, n_chars)
-      __return_value = LibGtk.entry_buffer_emit_inserted_text(to_unsafe.as(LibGtk::EntryBuffer*), UInt32.new(position), chars, UInt32.new(n_chars))
+      __return_value = LibGtk.entry_buffer_emit_inserted_text(to_unsafe.as(LibGtk::EntryBuffer*), UInt32.new(position), chars.to_unsafe, UInt32.new(n_chars))
       __return_value
     end
 
@@ -52,7 +52,7 @@ module Gtk
     end
 
     def insert_text(position, chars, n_chars)
-      __return_value = LibGtk.entry_buffer_insert_text(to_unsafe.as(LibGtk::EntryBuffer*), UInt32.new(position), chars, Int32.new(n_chars))
+      __return_value = LibGtk.entry_buffer_insert_text(to_unsafe.as(LibGtk::EntryBuffer*), UInt32.new(position), chars.to_unsafe, Int32.new(n_chars))
       __return_value
     end
 
@@ -62,11 +62,11 @@ module Gtk
     end
 
     def set_text(chars, n_chars)
-      __return_value = LibGtk.entry_buffer_set_text(to_unsafe.as(LibGtk::EntryBuffer*), chars, Int32.new(n_chars))
+      __return_value = LibGtk.entry_buffer_set_text(to_unsafe.as(LibGtk::EntryBuffer*), chars.to_unsafe, Int32.new(n_chars))
       __return_value
     end
 
-    alias DeletedTextSignal = EntryBuffer, UInt32, UInt32 -> 
+    alias DeletedTextSignal = EntryBuffer, UInt32, UInt32 ->
     def on_deleted_text(&__block : DeletedTextSignal)
       __callback = ->(_arg0 : LibGtk::EntryBuffer*, _arg1 : LibGtk::UInt32*, _arg2 : LibGtk::UInt32*) {
        __return_value = __block.call(EntryBuffer.new(_arg0), _arg1, _arg2)
@@ -75,7 +75,7 @@ module Gtk
       connect("deleted-text", __callback)
     end
 
-    alias InsertedTextSignal = EntryBuffer, UInt32, UInt8, UInt32 -> 
+    alias InsertedTextSignal = EntryBuffer, UInt32, String, UInt32 ->
     def on_inserted_text(&__block : InsertedTextSignal)
       __callback = ->(_arg0 : LibGtk::EntryBuffer*, _arg1 : LibGtk::UInt32*, _arg2 : LibGtk::UInt8**, _arg3 : LibGtk::UInt32*) {
        __return_value = __block.call(EntryBuffer.new(_arg0), _arg1, (raise "Expected string but got null" unless _arg2; ::String.new(_arg2)), _arg3)

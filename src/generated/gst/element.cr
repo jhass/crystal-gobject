@@ -12,13 +12,13 @@ module Gst
 
     def self.make_from_uri(type, uri, elementname)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGst.element_make_from_uri(type, uri, elementname && elementname, pointerof(__error))
+      __return_value = LibGst.element_make_from_uri(type, uri.to_unsafe, elementname && elementname.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       Gst::Element.new(__return_value)
     end
 
     def self.register(plugin, name, rank, type)
-      __return_value = LibGst.element_register(plugin && plugin.to_unsafe.as(LibGst::Plugin*), name, UInt32.new(rank), UInt64.new(type))
+      __return_value = LibGst.element_register(plugin && plugin.to_unsafe.as(LibGst::Plugin*), name.to_unsafe, UInt32.new(rank), UInt64.new(type))
       __return_value
     end
 
@@ -83,12 +83,12 @@ module Gst
     end
 
     def context(context_type)
-      __return_value = LibGst.element_get_context(to_unsafe.as(LibGst::Element*), context_type)
+      __return_value = LibGst.element_get_context(to_unsafe.as(LibGst::Element*), context_type.to_unsafe)
       Gst::Context.new(__return_value)
     end
 
     def context_unlocked(context_type)
-      __return_value = LibGst.element_get_context_unlocked(to_unsafe.as(LibGst::Element*), context_type)
+      __return_value = LibGst.element_get_context_unlocked(to_unsafe.as(LibGst::Element*), context_type.to_unsafe)
       Gst::Context.new(__return_value)
     end
 
@@ -103,7 +103,7 @@ module Gst
     end
 
     def request_pad(name)
-      __return_value = LibGst.element_get_request_pad(to_unsafe.as(LibGst::Element*), name)
+      __return_value = LibGst.element_get_request_pad(to_unsafe.as(LibGst::Element*), name.to_unsafe)
       Gst::Pad.new(__return_value) if __return_value
     end
 
@@ -118,7 +118,7 @@ module Gst
     end
 
     def static_pad(name)
-      __return_value = LibGst.element_get_static_pad(to_unsafe.as(LibGst::Element*), name)
+      __return_value = LibGst.element_get_static_pad(to_unsafe.as(LibGst::Element*), name.to_unsafe)
       Gst::Pad.new(__return_value) if __return_value
     end
 
@@ -153,17 +153,17 @@ module Gst
     end
 
     def link_pads(srcpadname, dest, destpadname)
-      __return_value = LibGst.element_link_pads(to_unsafe.as(LibGst::Element*), srcpadname && srcpadname, dest.to_unsafe.as(LibGst::Element*), destpadname && destpadname)
+      __return_value = LibGst.element_link_pads(to_unsafe.as(LibGst::Element*), srcpadname && srcpadname.to_unsafe, dest.to_unsafe.as(LibGst::Element*), destpadname && destpadname.to_unsafe)
       __return_value
     end
 
     def link_pads_filtered(srcpadname, dest, destpadname, filter)
-      __return_value = LibGst.element_link_pads_filtered(to_unsafe.as(LibGst::Element*), srcpadname && srcpadname, dest.to_unsafe.as(LibGst::Element*), destpadname && destpadname, filter && filter.to_unsafe.as(LibGst::Caps*))
+      __return_value = LibGst.element_link_pads_filtered(to_unsafe.as(LibGst::Element*), srcpadname && srcpadname.to_unsafe, dest.to_unsafe.as(LibGst::Element*), destpadname && destpadname.to_unsafe, filter && filter.to_unsafe.as(LibGst::Caps*))
       __return_value
     end
 
     def link_pads_full(srcpadname, dest, destpadname, flags)
-      __return_value = LibGst.element_link_pads_full(to_unsafe.as(LibGst::Element*), srcpadname && srcpadname, dest.to_unsafe.as(LibGst::Element*), destpadname && destpadname, flags)
+      __return_value = LibGst.element_link_pads_full(to_unsafe.as(LibGst::Element*), srcpadname && srcpadname.to_unsafe, dest.to_unsafe.as(LibGst::Element*), destpadname && destpadname.to_unsafe, flags)
       __return_value
     end
 
@@ -173,7 +173,7 @@ module Gst
     end
 
     def message_full(type, domain, code, text, debug, file, function, line)
-      __return_value = LibGst.element_message_full(to_unsafe.as(LibGst::Element*), type, UInt32.new(domain), Int32.new(code), text && text, debug && debug, file, function, Int32.new(line))
+      __return_value = LibGst.element_message_full(to_unsafe.as(LibGst::Element*), type, UInt32.new(domain), Int32.new(code), text && text.to_unsafe, debug && debug.to_unsafe, file.to_unsafe, function.to_unsafe, Int32.new(line))
       __return_value
     end
 
@@ -223,7 +223,7 @@ module Gst
     end
 
     def request_pad(templ, name, caps)
-      __return_value = LibGst.element_request_pad(to_unsafe.as(LibGst::Element*), templ.to_unsafe.as(LibGst::PadTemplate*), name && name, caps && caps.to_unsafe.as(LibGst::Caps*))
+      __return_value = LibGst.element_request_pad(to_unsafe.as(LibGst::Element*), templ.to_unsafe.as(LibGst::PadTemplate*), name && name.to_unsafe, caps && caps.to_unsafe.as(LibGst::Caps*))
       Gst::Pad.new(__return_value) if __return_value
     end
 
@@ -288,11 +288,11 @@ module Gst
     end
 
     def unlink_pads(srcpadname, dest, destpadname)
-      __return_value = LibGst.element_unlink_pads(to_unsafe.as(LibGst::Element*), srcpadname, dest.to_unsafe.as(LibGst::Element*), destpadname)
+      __return_value = LibGst.element_unlink_pads(to_unsafe.as(LibGst::Element*), srcpadname.to_unsafe, dest.to_unsafe.as(LibGst::Element*), destpadname.to_unsafe)
       __return_value
     end
 
-    alias NoMorePadsSignal = Element -> 
+    alias NoMorePadsSignal = Element ->
     def on_no_more_pads(&__block : NoMorePadsSignal)
       __callback = ->(_arg0 : LibGst::Element*) {
        __return_value = __block.call(Element.new(_arg0))
@@ -301,7 +301,7 @@ module Gst
       connect("no-more-pads", __callback)
     end
 
-    alias PadAddedSignal = Element, Gst::Pad -> 
+    alias PadAddedSignal = Element, Gst::Pad ->
     def on_pad_added(&__block : PadAddedSignal)
       __callback = ->(_arg0 : LibGst::Element*, _arg1 : LibGst::LibGst::Pad*) {
        __return_value = __block.call(Element.new(_arg0), Gst::Pad.new(_arg1))
@@ -310,7 +310,7 @@ module Gst
       connect("pad-added", __callback)
     end
 
-    alias PadRemovedSignal = Element, Gst::Pad -> 
+    alias PadRemovedSignal = Element, Gst::Pad ->
     def on_pad_removed(&__block : PadRemovedSignal)
       __callback = ->(_arg0 : LibGst::Element*, _arg1 : LibGst::LibGst::Pad*) {
        __return_value = __block.call(Element.new(_arg0), Gst::Pad.new(_arg1))

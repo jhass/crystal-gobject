@@ -53,7 +53,7 @@ module Gdk
       __return_value
     end
 
-    alias AfterPaintSignal = FrameClock -> 
+    alias AfterPaintSignal = FrameClock ->
     def on_after_paint(&__block : AfterPaintSignal)
       __callback = ->(_arg0 : LibGdk::FrameClock*) {
        __return_value = __block.call(FrameClock.new(_arg0))
@@ -62,7 +62,7 @@ module Gdk
       connect("after-paint", __callback)
     end
 
-    alias BeforePaintSignal = FrameClock -> 
+    alias BeforePaintSignal = FrameClock ->
     def on_before_paint(&__block : BeforePaintSignal)
       __callback = ->(_arg0 : LibGdk::FrameClock*) {
        __return_value = __block.call(FrameClock.new(_arg0))
@@ -71,7 +71,7 @@ module Gdk
       connect("before-paint", __callback)
     end
 
-    alias FlushEventsSignal = FrameClock -> 
+    alias FlushEventsSignal = FrameClock ->
     def on_flush_events(&__block : FlushEventsSignal)
       __callback = ->(_arg0 : LibGdk::FrameClock*) {
        __return_value = __block.call(FrameClock.new(_arg0))
@@ -80,7 +80,7 @@ module Gdk
       connect("flush-events", __callback)
     end
 
-    alias LayoutSignal = FrameClock -> 
+    alias LayoutSignal = FrameClock ->
     def on_layout(&__block : LayoutSignal)
       __callback = ->(_arg0 : LibGdk::FrameClock*) {
        __return_value = __block.call(FrameClock.new(_arg0))
@@ -89,7 +89,7 @@ module Gdk
       connect("layout", __callback)
     end
 
-    alias PaintSignal = FrameClock -> 
+    alias PaintSignal = FrameClock ->
     def on_paint(&__block : PaintSignal)
       __callback = ->(_arg0 : LibGdk::FrameClock*) {
        __return_value = __block.call(FrameClock.new(_arg0))
@@ -98,7 +98,7 @@ module Gdk
       connect("paint", __callback)
     end
 
-    alias ResumeEventsSignal = FrameClock -> 
+    alias ResumeEventsSignal = FrameClock ->
     def on_resume_events(&__block : ResumeEventsSignal)
       __callback = ->(_arg0 : LibGdk::FrameClock*) {
        __return_value = __block.call(FrameClock.new(_arg0))
@@ -107,7 +107,7 @@ module Gdk
       connect("resume-events", __callback)
     end
 
-    alias UpdateSignal = FrameClock -> 
+    alias UpdateSignal = FrameClock ->
     def on_update(&__block : UpdateSignal)
       __callback = ->(_arg0 : LibGdk::FrameClock*) {
        __return_value = __block.call(FrameClock.new(_arg0))

@@ -256,6 +256,7 @@ lib LibGObject
   ##    Flags
   ###########################################
 
+  @[Flags]
   enum BindingFlags : UInt32
     ZERO_NONE = 0
     DEFAULT = 0
@@ -264,12 +265,14 @@ lib LibGObject
     INVERT_BOOLEAN = 4
   end
 
+  @[Flags]
   enum ConnectFlags : UInt32
     ZERO_NONE = 0
     AFTER = 1
     SWAPPED = 2
   end
 
+  @[Flags]
   enum ParamFlags : UInt32
     ZERO_NONE = 0
     READABLE = 1
@@ -286,6 +289,7 @@ lib LibGObject
     DEPRECATED = 2147483648
   end
 
+  @[Flags]
   enum SignalFlags : UInt32
     ZERO_NONE = 0
     RUN_FIRST = 1
@@ -299,6 +303,7 @@ lib LibGObject
     DEPRECATED = 256
   end
 
+  @[Flags]
   enum SignalMatchType : UInt32
     ZERO_NONE = 0
     ID = 1
@@ -309,6 +314,7 @@ lib LibGObject
     UNBLOCKED = 32
   end
 
+  @[Flags]
   enum TypeDebugFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -318,12 +324,14 @@ lib LibGObject
     MASK = 7
   end
 
+  @[Flags]
   enum TypeFlags : UInt32
     ZERO_NONE = 0
     ABSTRACT = 16
     VALUE_ABSTRACT = 32
   end
 
+  @[Flags]
   enum TypeFundamentalFlags : UInt32
     ZERO_NONE = 0
     CLASSED = 1

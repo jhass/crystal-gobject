@@ -149,7 +149,7 @@ module Gio
       __return_value
     end
 
-    alias ChangedSignal = Mount -> 
+    alias ChangedSignal = Mount ->
     def on_changed(&__block : ChangedSignal)
       __callback = ->(_arg0 : LibGio::Mount*) {
        __return_value = __block.call(Mount.new(_arg0))
@@ -158,7 +158,7 @@ module Gio
       connect("changed", __callback)
     end
 
-    alias PreUnmountSignal = Mount -> 
+    alias PreUnmountSignal = Mount ->
     def on_pre_unmount(&__block : PreUnmountSignal)
       __callback = ->(_arg0 : LibGio::Mount*) {
        __return_value = __block.call(Mount.new(_arg0))
@@ -167,7 +167,7 @@ module Gio
       connect("pre-unmount", __callback)
     end
 
-    alias UnmountedSignal = Mount -> 
+    alias UnmountedSignal = Mount ->
     def on_unmounted(&__block : UnmountedSignal)
       __callback = ->(_arg0 : LibGio::Mount*) {
        __return_value = __block.call(Mount.new(_arg0))

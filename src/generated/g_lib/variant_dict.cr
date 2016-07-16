@@ -2,6 +2,11 @@ module GLib
   class VariantDict
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(128, 0)
+      super(ptr.as(LibGLib::VariantDict*))
+    end
+
     @g_lib_variant_dict : LibGLib::VariantDict*?
     def initialize(@g_lib_variant_dict : LibGLib::VariantDict*)
     end
@@ -21,7 +26,7 @@ module GLib
     end
 
     def contains(key)
-      __return_value = LibGLib.variant_dict_contains(to_unsafe.as(LibGLib::VariantDict*), key)
+      __return_value = LibGLib.variant_dict_contains(to_unsafe.as(LibGLib::VariantDict*), key.to_unsafe)
       __return_value
     end
 
@@ -31,12 +36,12 @@ module GLib
     end
 
     def insert_value(key, value)
-      __return_value = LibGLib.variant_dict_insert_value(to_unsafe.as(LibGLib::VariantDict*), key, value.to_unsafe.as(LibGLib::Variant*))
+      __return_value = LibGLib.variant_dict_insert_value(to_unsafe.as(LibGLib::VariantDict*), key.to_unsafe, value.to_unsafe.as(LibGLib::Variant*))
       __return_value
     end
 
     def lookup_value(key, expected_type)
-      __return_value = LibGLib.variant_dict_lookup_value(to_unsafe.as(LibGLib::VariantDict*), key, expected_type && expected_type.to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGLib.variant_dict_lookup_value(to_unsafe.as(LibGLib::VariantDict*), key.to_unsafe, expected_type && expected_type.to_unsafe.as(LibGLib::VariantType*))
       GLib::Variant.new(__return_value)
     end
 
@@ -46,13 +51,17 @@ module GLib
     end
 
     def remove(key)
-      __return_value = LibGLib.variant_dict_remove(to_unsafe.as(LibGLib::VariantDict*), key)
+      __return_value = LibGLib.variant_dict_remove(to_unsafe.as(LibGLib::VariantDict*), key.to_unsafe)
       __return_value
     end
 
     def unref
       __return_value = LibGLib.variant_dict_unref(to_unsafe.as(LibGLib::VariantDict*))
       __return_value
+    end
+
+    def x
+      PointerIterator.new((to_unsafe.value.x)) {|__item| __item }
     end
 
   end

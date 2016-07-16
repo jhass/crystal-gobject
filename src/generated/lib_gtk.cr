@@ -5322,7 +5322,7 @@ lib LibGtk
   fun binding_set_find = gtk_binding_set_find(set_name : UInt8*) : LibGtk::BindingSet*
 
   struct BindingSignal # struct
-    next : LibGtk::BindingSignal*
+    next_ : LibGtk::BindingSignal*
     signal_name : UInt8*
     n_args : UInt32
     args : LibGtk::BindingArg*
@@ -6633,6 +6633,7 @@ lib LibGtk
   ##    Flags
   ###########################################
 
+  @[Flags]
   enum AccelFlags : UInt32
     ZERO_NONE = 0
     VISIBLE = 1
@@ -6640,6 +6641,7 @@ lib LibGtk
     MASK = 7
   end
 
+  @[Flags]
   enum ApplicationInhibitFlags : UInt32
     ZERO_NONE = 0
     LOGOUT = 1
@@ -6648,6 +6650,7 @@ lib LibGtk
     IDLE = 8
   end
 
+  @[Flags]
   enum AttachOptions : UInt32
     ZERO_NONE = 0
     EXPAND = 1
@@ -6655,6 +6658,7 @@ lib LibGtk
     FILL = 4
   end
 
+  @[Flags]
   enum CalendarDisplayOptions : UInt32
     ZERO_NONE = 0
     SHOW_HEADING = 1
@@ -6664,6 +6668,7 @@ lib LibGtk
     SHOW_DETAILS = 32
   end
 
+  @[Flags]
   enum CellRendererState : UInt32
     ZERO_NONE = 0
     SELECTED = 1
@@ -6675,6 +6680,7 @@ lib LibGtk
     EXPANDED = 64
   end
 
+  @[Flags]
   enum DebugFlag : UInt32
     ZERO_NONE = 0
     MISC = 1
@@ -6701,6 +6707,7 @@ lib LibGtk
     LAYOUT = 2097152
   end
 
+  @[Flags]
   enum DestDefaults : UInt32
     ZERO_NONE = 0
     MOTION = 1
@@ -6709,6 +6716,7 @@ lib LibGtk
     ALL = 7
   end
 
+  @[Flags]
   enum DialogFlags : UInt32
     ZERO_NONE = 0
     MODAL = 1
@@ -6716,6 +6724,7 @@ lib LibGtk
     USE_HEADER_BAR = 4
   end
 
+  @[Flags]
   enum FileFilterFlags : UInt32
     ZERO_NONE = 0
     FILENAME = 1
@@ -6724,6 +6733,7 @@ lib LibGtk
     MIME_TYPE = 8
   end
 
+  @[Flags]
   enum IconLookupFlags : UInt32
     ZERO_NONE = 0
     NO_SVG = 1
@@ -6737,6 +6747,7 @@ lib LibGtk
     DIR_RTL = 256
   end
 
+  @[Flags]
   enum InputHints : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -6751,6 +6762,7 @@ lib LibGtk
     VERTICAL_WRITING = 256
   end
 
+  @[Flags]
   enum JunctionSides : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -6764,6 +6776,7 @@ lib LibGtk
     RIGHT = 10
   end
 
+  @[Flags]
   enum PlacesOpenFlags : UInt32
     ZERO_NONE = 0
     NORMAL = 1
@@ -6771,6 +6784,7 @@ lib LibGtk
     NEW_WINDOW = 4
   end
 
+  @[Flags]
   enum RcFlags : UInt32
     ZERO_NONE = 0
     FG = 1
@@ -6779,6 +6793,7 @@ lib LibGtk
     BASE = 8
   end
 
+  @[Flags]
   enum RecentFilterFlags : UInt32
     ZERO_NONE = 0
     URI = 1
@@ -6789,6 +6804,7 @@ lib LibGtk
     AGE = 32
   end
 
+  @[Flags]
   enum RegionFlags : UInt32
     ZERO_NONE = 0
     EVEN = 1
@@ -6799,6 +6815,7 @@ lib LibGtk
     SORTED = 32
   end
 
+  @[Flags]
   enum StateFlags : UInt32
     ZERO_NONE = 0
     NORMAL = 0
@@ -6817,6 +6834,7 @@ lib LibGtk
     DROP_ACTIVE = 4096
   end
 
+  @[Flags]
   enum StyleContextPrintFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -6824,6 +6842,7 @@ lib LibGtk
     SHOW_STYLE = 2
   end
 
+  @[Flags]
   enum TargetFlags : UInt32
     ZERO_NONE = 0
     SAME_APP = 1
@@ -6832,6 +6851,7 @@ lib LibGtk
     OTHER_WIDGET = 8
   end
 
+  @[Flags]
   enum TextSearchFlags : UInt32
     ZERO_NONE = 0
     VISIBLE_ONLY = 1
@@ -6839,18 +6859,21 @@ lib LibGtk
     CASE_INSENSITIVE = 4
   end
 
+  @[Flags]
   enum ToolPaletteDragTargets : UInt32
     ZERO_NONE = 0
     ITEMS = 1
     GROUPS = 2
   end
 
+  @[Flags]
   enum TreeModelFlags : UInt32
     ZERO_NONE = 0
     ITERS_PERSIST = 1
     LIST_ONLY = 2
   end
 
+  @[Flags]
   enum UIManagerItemType : UInt32
     ZERO_NONE = 0
     AUTO = 0

@@ -21,7 +21,7 @@ module Gtk
     end
 
     def self.new_for_content_type(parent, flags, content_type) : self
-      __return_value = LibGtk.app_chooser_dialog_new_for_content_type(parent && parent.to_unsafe.as(LibGtk::Window*), flags, content_type)
+      __return_value = LibGtk.app_chooser_dialog_new_for_content_type(parent && parent.to_unsafe.as(LibGtk::Window*), flags, content_type.to_unsafe)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -36,7 +36,7 @@ module Gtk
     end
 
     def heading=(heading)
-      __return_value = LibGtk.app_chooser_dialog_set_heading(to_unsafe.as(LibGtk::AppChooserDialog*), heading)
+      __return_value = LibGtk.app_chooser_dialog_set_heading(to_unsafe.as(LibGtk::AppChooserDialog*), heading.to_unsafe)
       __return_value
     end
 

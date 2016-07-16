@@ -2,6 +2,19 @@ module Gst
   class Buffer
     include GObject::WrappedType
 
+    def self.new(mini_object : Gst::MiniObject|Nil = nil, pool : Gst::BufferPool|Nil = nil, pts : UInt64|Nil = nil, dts : UInt64|Nil = nil, duration : UInt64|Nil = nil, offset : UInt64|Nil = nil, offset_end : UInt64|Nil = nil) : self
+      ptr = Pointer(UInt8).malloc(112, 0u8)
+      new(ptr.as(LibGst::Buffer*)).tap do |object|
+        object.mini_object = mini_object unless mini_object.nil?
+        object.pool = pool unless pool.nil?
+        object.pts = pts unless pts.nil?
+        object.dts = dts unless dts.nil?
+        object.duration = duration unless duration.nil?
+        object.offset = offset unless offset.nil?
+        object.offset_end = offset_end unless offset_end.nil?
+      end
+    end
+
     @gst_buffer : LibGst::Buffer*?
     def initialize(@gst_buffer : LibGst::Buffer*)
     end
@@ -248,6 +261,62 @@ module Gst
     def self.max_memory
       __return_value = LibGst.buffer_get_max_memory
       __return_value
+    end
+
+    def mini_object
+      Gst::MiniObject.new((to_unsafe.value.mini_object))
+    end
+
+    def mini_object=(value : Gst::MiniObject)
+      to_unsafe.value.mini_object = value
+    end
+
+    def pool
+      Gst::BufferPool.new((to_unsafe.value.pool))
+    end
+
+    def pool=(value : Gst::BufferPool)
+      to_unsafe.value.pool = value.to_unsafe.as(LibGst::BufferPool*)
+    end
+
+    def pts
+      (to_unsafe.value.pts)
+    end
+
+    def pts=(value : UInt64)
+      to_unsafe.value.pts = UInt64.new(value)
+    end
+
+    def dts
+      (to_unsafe.value.dts)
+    end
+
+    def dts=(value : UInt64)
+      to_unsafe.value.dts = UInt64.new(value)
+    end
+
+    def duration
+      (to_unsafe.value.duration)
+    end
+
+    def duration=(value : UInt64)
+      to_unsafe.value.duration = UInt64.new(value)
+    end
+
+    def offset
+      (to_unsafe.value.offset)
+    end
+
+    def offset=(value : UInt64)
+      to_unsafe.value.offset = UInt64.new(value)
+    end
+
+    def offset_end
+      (to_unsafe.value.offset_end)
+    end
+
+    def offset_end=(value : UInt64)
+      to_unsafe.value.offset_end = UInt64.new(value)
     end
 
   end

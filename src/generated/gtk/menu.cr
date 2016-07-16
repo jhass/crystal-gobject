@@ -121,7 +121,7 @@ module Gtk
     end
 
     def accel_path=(accel_path)
-      __return_value = LibGtk.menu_set_accel_path(to_unsafe.as(LibGtk::Menu*), accel_path && accel_path)
+      __return_value = LibGtk.menu_set_accel_path(to_unsafe.as(LibGtk::Menu*), accel_path && accel_path.to_unsafe)
       __return_value
     end
 
@@ -151,11 +151,11 @@ module Gtk
     end
 
     def title=(title)
-      __return_value = LibGtk.menu_set_title(to_unsafe.as(LibGtk::Menu*), title)
+      __return_value = LibGtk.menu_set_title(to_unsafe.as(LibGtk::Menu*), title.to_unsafe)
       __return_value
     end
 
-    alias MoveScrollSignal = Menu, Gtk::ScrollType -> 
+    alias MoveScrollSignal = Menu, Gtk::ScrollType ->
     def on_move_scroll(&__block : MoveScrollSignal)
       __callback = ->(_arg0 : LibGtk::Menu*, _arg1 : LibGtk::LibGtk::ScrollType*) {
        __return_value = __block.call(Menu.new(_arg0), _arg1)

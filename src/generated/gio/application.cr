@@ -19,7 +19,7 @@ module Gio
 
 
     def self.new(application_id, flags) : self
-      __return_value = LibGio.application_new(application_id && application_id, flags)
+      __return_value = LibGio.application_new(application_id && application_id.to_unsafe, flags)
       cast Gio::Application.new(__return_value)
     end
 
@@ -29,7 +29,7 @@ module Gio
     end
 
     def self.id_is_valid(application_id)
-      __return_value = LibGio.application_id_is_valid(application_id)
+      __return_value = LibGio.application_id_is_valid(application_id.to_unsafe)
       __return_value
     end
 
@@ -39,7 +39,7 @@ module Gio
     end
 
     def add_main_option(long_name, short_name, flags, arg, description, arg_description)
-      __return_value = LibGio.application_add_main_option(to_unsafe.as(LibGio::Application*), long_name, Int8.new(short_name), flags, arg, description, arg_description && arg_description)
+      __return_value = LibGio.application_add_main_option(to_unsafe.as(LibGio::Application*), long_name.to_unsafe, Int8.new(short_name), flags, arg, description.to_unsafe, arg_description && arg_description.to_unsafe)
       __return_value
     end
 
@@ -54,7 +54,7 @@ module Gio
     end
 
     def bind_busy_property(object, property)
-      __return_value = LibGio.application_bind_busy_property(to_unsafe.as(LibGio::Application*), object.to_unsafe.as(LibGObject::Object*), property)
+      __return_value = LibGio.application_bind_busy_property(to_unsafe.as(LibGio::Application*), object.to_unsafe.as(LibGObject::Object*), property.to_unsafe)
       __return_value
     end
 
@@ -114,7 +114,7 @@ module Gio
     end
 
     def open(files, n_files, hint)
-      __return_value = LibGio.application_open(to_unsafe.as(LibGio::Application*), files, Int32.new(n_files), hint)
+      __return_value = LibGio.application_open(to_unsafe.as(LibGio::Application*), files, Int32.new(n_files), hint.to_unsafe)
       __return_value
     end
 
@@ -141,7 +141,7 @@ module Gio
     end
 
     def send_notification(id, notification)
-      __return_value = LibGio.application_send_notification(to_unsafe.as(LibGio::Application*), id && id, notification.to_unsafe.as(LibGio::Notification*))
+      __return_value = LibGio.application_send_notification(to_unsafe.as(LibGio::Application*), id && id.to_unsafe, notification.to_unsafe.as(LibGio::Notification*))
       __return_value
     end
 
@@ -151,7 +151,7 @@ module Gio
     end
 
     def application_id=(application_id)
-      __return_value = LibGio.application_set_application_id(to_unsafe.as(LibGio::Application*), application_id && application_id)
+      __return_value = LibGio.application_set_application_id(to_unsafe.as(LibGio::Application*), application_id && application_id.to_unsafe)
       __return_value
     end
 
@@ -171,12 +171,12 @@ module Gio
     end
 
     def resource_base_path=(resource_path)
-      __return_value = LibGio.application_set_resource_base_path(to_unsafe.as(LibGio::Application*), resource_path && resource_path)
+      __return_value = LibGio.application_set_resource_base_path(to_unsafe.as(LibGio::Application*), resource_path && resource_path.to_unsafe)
       __return_value
     end
 
     def unbind_busy_property(object, property)
-      __return_value = LibGio.application_unbind_busy_property(to_unsafe.as(LibGio::Application*), object.to_unsafe.as(LibGObject::Object*), property)
+      __return_value = LibGio.application_unbind_busy_property(to_unsafe.as(LibGio::Application*), object.to_unsafe.as(LibGObject::Object*), property.to_unsafe)
       __return_value
     end
 
@@ -186,11 +186,11 @@ module Gio
     end
 
     def withdraw_notification(id)
-      __return_value = LibGio.application_withdraw_notification(to_unsafe.as(LibGio::Application*), id)
+      __return_value = LibGio.application_withdraw_notification(to_unsafe.as(LibGio::Application*), id.to_unsafe)
       __return_value
     end
 
-    alias ActivateSignal = Application -> 
+    alias ActivateSignal = Application ->
     def on_activate(&__block : ActivateSignal)
       __callback = ->(_arg0 : LibGio::Application*) {
        __return_value = __block.call(Application.new(_arg0))
@@ -217,7 +217,7 @@ module Gio
       connect("handle-local-options", __callback)
     end
 
-    alias OpenSignal = Application, Array(Gio::File), Int32, UInt8 -> 
+    alias OpenSignal = Application, Array(Gio::File), Int32, String ->
     def on_open(&__block : OpenSignal)
       __callback = ->(_arg0 : LibGio::Application*, _arg1 : LibGio::LibGio::File**, _arg2 : LibGio::Int32*, _arg3 : LibGio::UInt8**) {
        __return_value = __block.call(Application.new(_arg0), PointerIterator.new(_arg1) {|__item| __item }, _arg2, (raise "Expected string but got null" unless _arg3; ::String.new(_arg3)))
@@ -226,7 +226,7 @@ module Gio
       connect("open", __callback)
     end
 
-    alias ShutdownSignal = Application -> 
+    alias ShutdownSignal = Application ->
     def on_shutdown(&__block : ShutdownSignal)
       __callback = ->(_arg0 : LibGio::Application*) {
        __return_value = __block.call(Application.new(_arg0))
@@ -235,7 +235,7 @@ module Gio
       connect("shutdown", __callback)
     end
 
-    alias StartupSignal = Application -> 
+    alias StartupSignal = Application ->
     def on_startup(&__block : StartupSignal)
       __callback = ->(_arg0 : LibGio::Application*) {
        __return_value = __block.call(Application.new(_arg0))

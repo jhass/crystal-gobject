@@ -97,7 +97,7 @@ module Gtk
       __return_value
     end
 
-    alias DaySelectedSignal = Calendar -> 
+    alias DaySelectedSignal = Calendar ->
     def on_day_selected(&__block : DaySelectedSignal)
       __callback = ->(_arg0 : LibGtk::Calendar*) {
        __return_value = __block.call(Calendar.new(_arg0))
@@ -106,7 +106,7 @@ module Gtk
       connect("day-selected", __callback)
     end
 
-    alias DaySelectedDoubleClickSignal = Calendar -> 
+    alias DaySelectedDoubleClickSignal = Calendar ->
     def on_day_selected_double_click(&__block : DaySelectedDoubleClickSignal)
       __callback = ->(_arg0 : LibGtk::Calendar*) {
        __return_value = __block.call(Calendar.new(_arg0))
@@ -115,7 +115,7 @@ module Gtk
       connect("day-selected-double-click", __callback)
     end
 
-    alias MonthChangedSignal = Calendar -> 
+    alias MonthChangedSignal = Calendar ->
     def on_month_changed(&__block : MonthChangedSignal)
       __callback = ->(_arg0 : LibGtk::Calendar*) {
        __return_value = __block.call(Calendar.new(_arg0))
@@ -124,7 +124,7 @@ module Gtk
       connect("month-changed", __callback)
     end
 
-    alias NextMonthSignal = Calendar -> 
+    alias NextMonthSignal = Calendar ->
     def on_next_month(&__block : NextMonthSignal)
       __callback = ->(_arg0 : LibGtk::Calendar*) {
        __return_value = __block.call(Calendar.new(_arg0))
@@ -133,7 +133,7 @@ module Gtk
       connect("next-month", __callback)
     end
 
-    alias NextYearSignal = Calendar -> 
+    alias NextYearSignal = Calendar ->
     def on_next_year(&__block : NextYearSignal)
       __callback = ->(_arg0 : LibGtk::Calendar*) {
        __return_value = __block.call(Calendar.new(_arg0))
@@ -142,7 +142,7 @@ module Gtk
       connect("next-year", __callback)
     end
 
-    alias PrevMonthSignal = Calendar -> 
+    alias PrevMonthSignal = Calendar ->
     def on_prev_month(&__block : PrevMonthSignal)
       __callback = ->(_arg0 : LibGtk::Calendar*) {
        __return_value = __block.call(Calendar.new(_arg0))
@@ -151,7 +151,7 @@ module Gtk
       connect("prev-month", __callback)
     end
 
-    alias PrevYearSignal = Calendar -> 
+    alias PrevYearSignal = Calendar ->
     def on_prev_year(&__block : PrevYearSignal)
       __callback = ->(_arg0 : LibGtk::Calendar*) {
        __return_value = __block.call(Calendar.new(_arg0))

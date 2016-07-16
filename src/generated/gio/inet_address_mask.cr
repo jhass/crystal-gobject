@@ -12,18 +12,18 @@ module Gio
 
 
 
-    def self.new(addr, length)
+    def self.new(addr, length) : self
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.inet_address_mask_new(addr.to_unsafe.as(LibGio::InetAddress*), UInt32.new(length), pointerof(__error))
       GLib::Error.assert __error
-      Gio::InetAddressMask.new(__return_value)
+      cast Gio::InetAddressMask.new(__return_value)
     end
 
-    def self.new_from_string(mask_string)
+    def self.new_from_string(mask_string) : self
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.inet_address_mask_new_from_string(mask_string, pointerof(__error))
+      __return_value = LibGio.inet_address_mask_new_from_string(mask_string.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
-      Gio::InetAddressMask.new(__return_value)
+      cast Gio::InetAddressMask.new(__return_value)
     end
 
     def equal(mask2)

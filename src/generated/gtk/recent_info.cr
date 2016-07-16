@@ -2,6 +2,11 @@ module Gtk
   class RecentInfo
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGtk::RecentInfo*))
+    end
+
     @gtk_recent_info : LibGtk::RecentInfo*?
     def initialize(@gtk_recent_info : LibGtk::RecentInfo*)
     end
@@ -12,7 +17,7 @@ module Gtk
 
     def create_app_info(app_name)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.recent_info_create_app_info(to_unsafe.as(LibGtk::RecentInfo*), app_name && app_name, pointerof(__error))
+      __return_value = LibGtk.recent_info_create_app_info(to_unsafe.as(LibGtk::RecentInfo*), app_name && app_name.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -33,7 +38,7 @@ module Gtk
     end
 
     def application_info(app_name, app_exec, count, time)
-      __return_value = LibGtk.recent_info_get_application_info(to_unsafe.as(LibGtk::RecentInfo*), app_name, app_exec, UInt32.new(count), Int64.new(time))
+      __return_value = LibGtk.recent_info_get_application_info(to_unsafe.as(LibGtk::RecentInfo*), app_name.to_unsafe, app_exec.to_unsafe, UInt32.new(count), Int64.new(time))
       __return_value
     end
 
@@ -103,12 +108,12 @@ module Gtk
     end
 
     def has_application(app_name)
-      __return_value = LibGtk.recent_info_has_application(to_unsafe.as(LibGtk::RecentInfo*), app_name)
+      __return_value = LibGtk.recent_info_has_application(to_unsafe.as(LibGtk::RecentInfo*), app_name.to_unsafe)
       __return_value
     end
 
     def has_group(group_name)
-      __return_value = LibGtk.recent_info_has_group(to_unsafe.as(LibGtk::RecentInfo*), group_name)
+      __return_value = LibGtk.recent_info_has_group(to_unsafe.as(LibGtk::RecentInfo*), group_name.to_unsafe)
       __return_value
     end
 

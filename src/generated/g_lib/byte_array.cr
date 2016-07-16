@@ -2,6 +2,14 @@ module GLib
   class ByteArray
     include GObject::WrappedType
 
+    def self.new(data : UInt8|Nil = nil, len : UInt32|Nil = nil) : self
+      ptr = Pointer(UInt8).malloc(16, 0u8)
+      new(ptr.as(LibGLib::ByteArray*)).tap do |object|
+        object.data = data unless data.nil?
+        object.len = len unless len.nil?
+      end
+    end
+
     @g_lib_byte_array : LibGLib::ByteArray*?
     def initialize(@g_lib_byte_array : LibGLib::ByteArray*)
     end
@@ -33,6 +41,22 @@ module GLib
     def self.unref(array)
       __return_value = LibGLib.byte_array_unref(array)
       __return_value
+    end
+
+    def data
+      (to_unsafe.value.data)
+    end
+
+    def data=(value : UInt8)
+      to_unsafe.value.data = value
+    end
+
+    def len
+      (to_unsafe.value.len)
+    end
+
+    def len=(value : UInt32)
+      to_unsafe.value.len = UInt32.new(value)
     end
 
   end

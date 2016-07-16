@@ -85,7 +85,7 @@ module Gtk
     end
 
     def text=(text)
-      __return_value = LibGtk.progress_bar_set_text(to_unsafe.as(LibGtk::ProgressBar*), text && text)
+      __return_value = LibGtk.progress_bar_set_text(to_unsafe.as(LibGtk::ProgressBar*), text && text.to_unsafe)
       __return_value
     end
 

@@ -2,6 +2,18 @@ module Pango
   class LayoutLine
     include GObject::WrappedType
 
+    def self.new(layout : Pango::Layout|Nil = nil, start_index : Int32|Nil = nil, length : Int32|Nil = nil, runs : Void*|Nil = nil, is_paragraph_start : UInt32|Nil = nil, resolved_dir : UInt32|Nil = nil) : self
+      ptr = Pointer(UInt8).malloc(32, 0u8)
+      new(ptr.as(LibPango::LayoutLine*)).tap do |object|
+        object.layout = layout unless layout.nil?
+        object.start_index = start_index unless start_index.nil?
+        object.length = length unless length.nil?
+        object.runs = runs unless runs.nil?
+        object.is_paragraph_start = is_paragraph_start unless is_paragraph_start.nil?
+        object.resolved_dir = resolved_dir unless resolved_dir.nil?
+      end
+    end
+
     @pango_layout_line : LibPango::LayoutLine*?
     def initialize(@pango_layout_line : LibPango::LayoutLine*)
     end
@@ -43,6 +55,54 @@ module Pango
     def x_to_index(x_pos, index, trailing)
       __return_value = LibPango.layout_line_x_to_index(to_unsafe.as(LibPango::LayoutLine*), Int32.new(x_pos), Int32.new(index), Int32.new(trailing))
       __return_value
+    end
+
+    def layout
+      Pango::Layout.new((to_unsafe.value.layout))
+    end
+
+    def layout=(value : Pango::Layout)
+      to_unsafe.value.layout = value.to_unsafe.as(LibPango::Layout*)
+    end
+
+    def start_index
+      (to_unsafe.value.start_index)
+    end
+
+    def start_index=(value : Int32)
+      to_unsafe.value.start_index = Int32.new(value)
+    end
+
+    def length
+      (to_unsafe.value.length)
+    end
+
+    def length=(value : Int32)
+      to_unsafe.value.length = Int32.new(value)
+    end
+
+    def runs
+      (to_unsafe.value.runs)
+    end
+
+    def runs=(value : Void*)
+      to_unsafe.value.runs = value
+    end
+
+    def is_paragraph_start
+      (to_unsafe.value.is_paragraph_start)
+    end
+
+    def is_paragraph_start=(value : UInt32)
+      to_unsafe.value.is_paragraph_start = UInt32.new(value)
+    end
+
+    def resolved_dir
+      (to_unsafe.value.resolved_dir)
+    end
+
+    def resolved_dir=(value : UInt32)
+      to_unsafe.value.resolved_dir = UInt32.new(value)
     end
 
   end

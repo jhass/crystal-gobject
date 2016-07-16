@@ -35,7 +35,7 @@ module Gtk
     end
 
     def compute_prefix(key)
-      __return_value = LibGtk.entry_completion_compute_prefix(to_unsafe.as(LibGtk::EntryCompletion*), key)
+      __return_value = LibGtk.entry_completion_compute_prefix(to_unsafe.as(LibGtk::EntryCompletion*), key.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
@@ -95,12 +95,12 @@ module Gtk
     end
 
     def insert_action_markup(index, markup)
-      __return_value = LibGtk.entry_completion_insert_action_markup(to_unsafe.as(LibGtk::EntryCompletion*), Int32.new(index), markup)
+      __return_value = LibGtk.entry_completion_insert_action_markup(to_unsafe.as(LibGtk::EntryCompletion*), Int32.new(index), markup.to_unsafe)
       __return_value
     end
 
     def insert_action_text(index, text)
-      __return_value = LibGtk.entry_completion_insert_action_text(to_unsafe.as(LibGtk::EntryCompletion*), Int32.new(index), text)
+      __return_value = LibGtk.entry_completion_insert_action_text(to_unsafe.as(LibGtk::EntryCompletion*), Int32.new(index), text.to_unsafe)
       __return_value
     end
 
@@ -154,7 +154,7 @@ module Gtk
       __return_value
     end
 
-    alias ActionActivatedSignal = EntryCompletion, Int32 -> 
+    alias ActionActivatedSignal = EntryCompletion, Int32 ->
     def on_action_activated(&__block : ActionActivatedSignal)
       __callback = ->(_arg0 : LibGtk::EntryCompletion*, _arg1 : LibGtk::Int32*) {
        __return_value = __block.call(EntryCompletion.new(_arg0), _arg1)
@@ -172,7 +172,7 @@ module Gtk
       connect("cursor-on-match", __callback)
     end
 
-    alias InsertPrefixSignal = EntryCompletion, UInt8 -> Bool
+    alias InsertPrefixSignal = EntryCompletion, String -> Bool
     def on_insert_prefix(&__block : InsertPrefixSignal)
       __callback = ->(_arg0 : LibGtk::EntryCompletion*, _arg1 : LibGtk::UInt8**) {
        __return_value = __block.call(EntryCompletion.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
@@ -190,7 +190,7 @@ module Gtk
       connect("match-selected", __callback)
     end
 
-    alias NoMatchesSignal = EntryCompletion -> 
+    alias NoMatchesSignal = EntryCompletion ->
     def on_no_matches(&__block : NoMatchesSignal)
       __callback = ->(_arg0 : LibGtk::EntryCompletion*) {
        __return_value = __block.call(EntryCompletion.new(_arg0))

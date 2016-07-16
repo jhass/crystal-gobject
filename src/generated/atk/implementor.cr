@@ -2,6 +2,11 @@ module Atk
   class Implementor
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibAtk::Implementor*))
+    end
+
     @atk_implementor : LibAtk::Implementor*?
     def initialize(@atk_implementor : LibAtk::Implementor*)
     end

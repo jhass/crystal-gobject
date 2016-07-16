@@ -107,7 +107,7 @@ module Gtk
       connect("focus-home-or-end", __callback)
     end
 
-    alias OrientationChangedSignal = Toolbar, Gtk::Orientation -> 
+    alias OrientationChangedSignal = Toolbar, Gtk::Orientation ->
     def on_orientation_changed(&__block : OrientationChangedSignal)
       __callback = ->(_arg0 : LibGtk::Toolbar*, _arg1 : LibGtk::LibGtk::Orientation*) {
        __return_value = __block.call(Toolbar.new(_arg0), _arg1)
@@ -125,7 +125,7 @@ module Gtk
       connect("popup-context-menu", __callback)
     end
 
-    alias StyleChangedSignal = Toolbar, Gtk::ToolbarStyle -> 
+    alias StyleChangedSignal = Toolbar, Gtk::ToolbarStyle ->
     def on_style_changed(&__block : StyleChangedSignal)
       __callback = ->(_arg0 : LibGtk::Toolbar*, _arg1 : LibGtk::LibGtk::ToolbarStyle*) {
        __return_value = __block.call(Toolbar.new(_arg0), _arg1)

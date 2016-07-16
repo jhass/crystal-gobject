@@ -2,6 +2,23 @@ module Gst
   class Iterator
     include GObject::WrappedType
 
+    def self.new(copy : Gst::IteratorCopyFunction|Nil = nil, next next_ : Gst::IteratorNextFunction|Nil = nil, item : Gst::IteratorItemFunction|Nil = nil, resync : Gst::IteratorResyncFunction|Nil = nil, free : Gst::IteratorFreeFunction|Nil = nil, pushed : Gst::Iterator|Nil = nil, type : UInt64|Nil = nil, lock : GLib::Mutex|Nil = nil, cookie : UInt32|Nil = nil, master_cookie : UInt32|Nil = nil, size : UInt32|Nil = nil) : self
+      ptr = Pointer(UInt8).malloc(120, 0u8)
+      new(ptr.as(LibGst::Iterator*)).tap do |object|
+        object.copy = copy unless copy.nil?
+        object.next = next_ unless next_.nil?
+        object.item = item unless item.nil?
+        object.resync = resync unless resync.nil?
+        object.free = free unless free.nil?
+        object.pushed = pushed unless pushed.nil?
+        object.type = type unless type.nil?
+        object.lock = lock unless lock.nil?
+        object.cookie = cookie unless cookie.nil?
+        object.master_cookie = master_cookie unless master_cookie.nil?
+        object.size = size unless size.nil?
+      end
+    end
+
     @gst_iterator : LibGst::Iterator*?
     def initialize(@gst_iterator : LibGst::Iterator*)
     end
@@ -58,6 +75,98 @@ module Gst
     def resync
       __return_value = LibGst.iterator_resync(to_unsafe.as(LibGst::Iterator*))
       __return_value
+    end
+
+    def copy
+      (to_unsafe.value.copy)
+    end
+
+    def copy=(value : Gst::IteratorCopyFunction)
+      to_unsafe.value.copy = value
+    end
+
+    def next
+      (to_unsafe.value.next_)
+    end
+
+    def next=(value : Gst::IteratorNextFunction)
+      to_unsafe.value.next_ = value
+    end
+
+    def item
+      (to_unsafe.value.item)
+    end
+
+    def item=(value : Gst::IteratorItemFunction)
+      to_unsafe.value.item = value
+    end
+
+    def resync
+      (to_unsafe.value.resync)
+    end
+
+    def resync=(value : Gst::IteratorResyncFunction)
+      to_unsafe.value.resync = value
+    end
+
+    def free
+      (to_unsafe.value.free)
+    end
+
+    def free=(value : Gst::IteratorFreeFunction)
+      to_unsafe.value.free = value
+    end
+
+    def pushed
+      Gst::Iterator.new((to_unsafe.value.pushed))
+    end
+
+    def pushed=(value : Gst::Iterator)
+      to_unsafe.value.pushed = value.to_unsafe.as(LibGst::Iterator*)
+    end
+
+    def type
+      (to_unsafe.value.type)
+    end
+
+    def type=(value : UInt64)
+      to_unsafe.value.type = UInt64.new(value)
+    end
+
+    def lock
+      (to_unsafe.value.lock)
+    end
+
+    def lock=(value : GLib::Mutex)
+      to_unsafe.value.lock = value.to_unsafe.as(LibGLib::Mutex*)
+    end
+
+    def cookie
+      (to_unsafe.value.cookie)
+    end
+
+    def cookie=(value : UInt32)
+      to_unsafe.value.cookie = UInt32.new(value)
+    end
+
+    def master_cookie
+      (to_unsafe.value.master_cookie)
+    end
+
+    def master_cookie=(value : UInt32)
+      to_unsafe.value.master_cookie = value
+    end
+
+    def size
+      (to_unsafe.value.size)
+    end
+
+    def size=(value : UInt32)
+      to_unsafe.value.size = UInt32.new(value)
+    end
+
+    def _gst_reserved
+      PointerIterator.new((to_unsafe.value._gst_reserved)) {|__item| __item }
     end
 
   end

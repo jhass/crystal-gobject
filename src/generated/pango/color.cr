@@ -2,6 +2,15 @@ module Pango
   class Color
     include GObject::WrappedType
 
+    def self.new(red : UInt16|Nil = nil, green : UInt16|Nil = nil, blue : UInt16|Nil = nil) : self
+      ptr = Pointer(UInt8).malloc(6, 0u8)
+      new(ptr.as(LibPango::Color*)).tap do |object|
+        object.red = red unless red.nil?
+        object.green = green unless green.nil?
+        object.blue = blue unless blue.nil?
+      end
+    end
+
     @pango_color : LibPango::Color*?
     def initialize(@pango_color : LibPango::Color*)
     end
@@ -21,13 +30,37 @@ module Pango
     end
 
     def parse(spec)
-      __return_value = LibPango.color_parse(to_unsafe.as(LibPango::Color*), spec)
+      __return_value = LibPango.color_parse(to_unsafe.as(LibPango::Color*), spec.to_unsafe)
       __return_value
     end
 
     def to_string
       __return_value = LibPango.color_to_string(to_unsafe.as(LibPango::Color*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
+
+    def red
+      (to_unsafe.value.red)
+    end
+
+    def red=(value : UInt16)
+      to_unsafe.value.red = UInt16.new(value)
+    end
+
+    def green
+      (to_unsafe.value.green)
+    end
+
+    def green=(value : UInt16)
+      to_unsafe.value.green = UInt16.new(value)
+    end
+
+    def blue
+      (to_unsafe.value.blue)
+    end
+
+    def blue=(value : UInt16)
+      to_unsafe.value.blue = UInt16.new(value)
     end
 
   end

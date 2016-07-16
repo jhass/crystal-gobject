@@ -26,12 +26,12 @@ module Gtk
     end
 
     def child_get_property(child, property_name, value)
-      __return_value = LibGtk.container_child_get_property(to_unsafe.as(LibGtk::Container*), child.to_unsafe.as(LibGtk::Widget*), property_name, value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGtk.container_child_get_property(to_unsafe.as(LibGtk::Container*), child.to_unsafe.as(LibGtk::Widget*), property_name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 
     def child_notify(child, child_property)
-      __return_value = LibGtk.container_child_notify(to_unsafe.as(LibGtk::Container*), child.to_unsafe.as(LibGtk::Widget*), child_property)
+      __return_value = LibGtk.container_child_notify(to_unsafe.as(LibGtk::Container*), child.to_unsafe.as(LibGtk::Widget*), child_property.to_unsafe)
       __return_value
     end
 
@@ -41,7 +41,7 @@ module Gtk
     end
 
     def child_set_property(child, property_name, value)
-      __return_value = LibGtk.container_child_set_property(to_unsafe.as(LibGtk::Container*), child.to_unsafe.as(LibGtk::Widget*), property_name, value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGtk.container_child_set_property(to_unsafe.as(LibGtk::Container*), child.to_unsafe.as(LibGtk::Widget*), property_name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 
@@ -155,7 +155,7 @@ module Gtk
       __return_value
     end
 
-    alias AddSignal = Container, Gtk::Widget -> 
+    alias AddSignal = Container, Gtk::Widget ->
     def on_add(&__block : AddSignal)
       __callback = ->(_arg0 : LibGtk::Container*, _arg1 : LibGtk::LibGtk::Widget*) {
        __return_value = __block.call(Container.new(_arg0), Gtk::Widget.new(_arg1))
@@ -164,7 +164,7 @@ module Gtk
       connect("add", __callback)
     end
 
-    alias CheckResizeSignal = Container -> 
+    alias CheckResizeSignal = Container ->
     def on_check_resize(&__block : CheckResizeSignal)
       __callback = ->(_arg0 : LibGtk::Container*) {
        __return_value = __block.call(Container.new(_arg0))
@@ -173,7 +173,7 @@ module Gtk
       connect("check-resize", __callback)
     end
 
-    alias RemoveSignal = Container, Gtk::Widget -> 
+    alias RemoveSignal = Container, Gtk::Widget ->
     def on_remove(&__block : RemoveSignal)
       __callback = ->(_arg0 : LibGtk::Container*, _arg1 : LibGtk::LibGtk::Widget*) {
        __return_value = __block.call(Container.new(_arg0), Gtk::Widget.new(_arg1))
@@ -182,7 +182,7 @@ module Gtk
       connect("remove", __callback)
     end
 
-    alias SetFocusChildSignal = Container, Gtk::Widget -> 
+    alias SetFocusChildSignal = Container, Gtk::Widget ->
     def on_set_focus_child(&__block : SetFocusChildSignal)
       __callback = ->(_arg0 : LibGtk::Container*, _arg1 : LibGtk::LibGtk::Widget*) {
        __return_value = __block.call(Container.new(_arg0), Gtk::Widget.new(_arg1))

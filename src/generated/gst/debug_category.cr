@@ -2,6 +2,11 @@ module Gst
   class DebugCategory
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(24, 0)
+      super(ptr.as(LibGst::DebugCategory*))
+    end
+
     @gst_debug_category : LibGst::DebugCategory*?
     def initialize(@gst_debug_category : LibGst::DebugCategory*)
     end
@@ -43,6 +48,22 @@ module Gst
     def threshold=(level)
       __return_value = LibGst.debug_category_set_threshold(to_unsafe.as(LibGst::DebugCategory*), level)
       __return_value
+    end
+
+    def threshold
+      (to_unsafe.value.threshold)
+    end
+
+    def color
+      (to_unsafe.value.color)
+    end
+
+    def name
+      (raise "Expected string but got null" unless (to_unsafe.value.name); ::String.new((to_unsafe.value.name)))
+    end
+
+    def description
+      (raise "Expected string but got null" unless (to_unsafe.value.description); ::String.new((to_unsafe.value.description)))
     end
 
   end

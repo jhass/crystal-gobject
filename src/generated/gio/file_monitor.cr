@@ -30,7 +30,7 @@ module Gio
       __return_value
     end
 
-    alias ChangedSignal = FileMonitor, Gio::File, Gio::File, Gio::FileMonitorEvent -> 
+    alias ChangedSignal = FileMonitor, Gio::File, Gio::File, Gio::FileMonitorEvent ->
     def on_changed(&__block : ChangedSignal)
       __callback = ->(_arg0 : LibGio::FileMonitor*, _arg1 : LibGio::LibGio::File*, _arg2 : LibGio::LibGio::File*, _arg3 : LibGio::LibGio::FileMonitorEvent*) {
        __return_value = __block.call(FileMonitor.new(_arg0), _arg1, _arg2, _arg3)

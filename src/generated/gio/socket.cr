@@ -24,18 +24,18 @@ module Gio
 
 
 
-    def self.new(family, type, protocol)
+    def self.new(family, type, protocol) : self
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_new(family, type, protocol, pointerof(__error))
       GLib::Error.assert __error
-      Gio::Socket.new(__return_value)
+      cast Gio::Socket.new(__return_value)
     end
 
-    def self.new_from_fd(fd)
+    def self.new_from_fd(fd) : self
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_new_from_fd(Int32.new(fd), pointerof(__error))
       GLib::Error.assert __error
-      Gio::Socket.new(__return_value)
+      cast Gio::Socket.new(__return_value)
     end
 
     def accept(cancellable)
@@ -202,14 +202,14 @@ module Gio
 
     def join_multicast_group(group, source_specific, iface)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.socket_join_multicast_group(to_unsafe.as(LibGio::Socket*), group.to_unsafe.as(LibGio::InetAddress*), source_specific, iface && iface, pointerof(__error))
+      __return_value = LibGio.socket_join_multicast_group(to_unsafe.as(LibGio::Socket*), group.to_unsafe.as(LibGio::InetAddress*), source_specific, iface && iface.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def leave_multicast_group(group, source_specific, iface)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.socket_leave_multicast_group(to_unsafe.as(LibGio::Socket*), group.to_unsafe.as(LibGio::InetAddress*), source_specific, iface && iface, pointerof(__error))
+      __return_value = LibGio.socket_leave_multicast_group(to_unsafe.as(LibGio::Socket*), group.to_unsafe.as(LibGio::InetAddress*), source_specific, iface && iface.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

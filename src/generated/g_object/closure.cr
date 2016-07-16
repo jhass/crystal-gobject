@@ -2,6 +2,14 @@ module GObject
   class Closure
     include GObject::WrappedType
 
+    def self.new(in_marshal : UInt32|Nil = nil, is_invalid : UInt32|Nil = nil) : self
+      ptr = Pointer(UInt8).malloc(64, 0u8)
+      new(ptr.as(LibGObject::Closure*)).tap do |object|
+        object.in_marshal = in_marshal unless in_marshal.nil?
+        object.is_invalid = is_invalid unless is_invalid.nil?
+      end
+    end
+
     @g_object_closure : LibGObject::Closure*?
     def initialize(@g_object_closure : LibGObject::Closure*)
     end
@@ -43,6 +51,66 @@ module GObject
     def unref
       __return_value = LibGObject.closure_unref(to_unsafe.as(LibGObject::Closure*))
       __return_value
+    end
+
+    def ref_count
+      (to_unsafe.value.ref_count)
+    end
+
+    def meta_marshal_nouse
+      (to_unsafe.value.meta_marshal_nouse)
+    end
+
+    def n_guards
+      (to_unsafe.value.n_guards)
+    end
+
+    def n_fnotifiers
+      (to_unsafe.value.n_fnotifiers)
+    end
+
+    def n_inotifiers
+      (to_unsafe.value.n_inotifiers)
+    end
+
+    def in_inotify
+      (to_unsafe.value.in_inotify)
+    end
+
+    def floating
+      (to_unsafe.value.floating)
+    end
+
+    def derivative_flag
+      (to_unsafe.value.derivative_flag)
+    end
+
+    def in_marshal
+      (to_unsafe.value.in_marshal)
+    end
+
+    def in_marshal=(value : UInt32)
+      to_unsafe.value.in_marshal = UInt32.new(value)
+    end
+
+    def is_invalid
+      (to_unsafe.value.is_invalid)
+    end
+
+    def is_invalid=(value : UInt32)
+      to_unsafe.value.is_invalid = UInt32.new(value)
+    end
+
+    def marshal
+      (to_unsafe.value.marshal)
+    end
+
+    def data
+      (to_unsafe.value.data)
+    end
+
+    def notifiers
+      GObject::ClosureNotifyData.new((to_unsafe.value.notifiers))
     end
 
   end

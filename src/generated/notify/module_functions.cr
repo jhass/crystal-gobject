@@ -10,12 +10,12 @@ module Notify
   end
 
   def self.server_info(ret_name, ret_vendor, ret_version, ret_spec_version)
-    __return_value = LibNotify.get_server_info(ret_name, ret_vendor, ret_version, ret_spec_version)
+    __return_value = LibNotify.get_server_info(ret_name.to_unsafe, ret_vendor.to_unsafe, ret_version.to_unsafe, ret_spec_version.to_unsafe)
     __return_value
   end
 
   def self.init(app_name)
-    __return_value = LibNotify.init(app_name)
+    __return_value = LibNotify.init(app_name.to_unsafe)
     __return_value
   end
 
@@ -25,7 +25,7 @@ module Notify
   end
 
   def self.set_app_name(app_name)
-    __return_value = LibNotify.set_app_name(app_name)
+    __return_value = LibNotify.set_app_name(app_name.to_unsafe)
     __return_value
   end
 

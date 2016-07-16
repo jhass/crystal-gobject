@@ -15,17 +15,17 @@ module Gst
 
 
     def self.new(name, direction) : self
-      __return_value = LibGst.pad_new(name && name, direction)
+      __return_value = LibGst.pad_new(name && name.to_unsafe, direction)
       cast Gst::Pad.new(__return_value) if __return_value
     end
 
     def self.new_from_static_template(templ, name) : self
-      __return_value = LibGst.pad_new_from_static_template(templ.to_unsafe.as(LibGst::StaticPadTemplate*), name)
+      __return_value = LibGst.pad_new_from_static_template(templ.to_unsafe.as(LibGst::StaticPadTemplate*), name.to_unsafe)
       cast Gst::Pad.new(__return_value) if __return_value
     end
 
     def self.new_from_template(templ, name) : self
-      __return_value = LibGst.pad_new_from_template(templ.to_unsafe.as(LibGst::PadTemplate*), name && name)
+      __return_value = LibGst.pad_new_from_template(templ.to_unsafe.as(LibGst::PadTemplate*), name && name.to_unsafe)
       cast Gst::Pad.new(__return_value) if __return_value
     end
 
@@ -65,7 +65,7 @@ module Gst
     end
 
     def create_stream_id(parent, stream_id)
-      __return_value = LibGst.pad_create_stream_id(to_unsafe.as(LibGst::Pad*), parent.to_unsafe.as(LibGst::Element*), stream_id && stream_id)
+      __return_value = LibGst.pad_create_stream_id(to_unsafe.as(LibGst::Pad*), parent.to_unsafe.as(LibGst::Element*), stream_id && stream_id.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
@@ -409,7 +409,7 @@ module Gst
       __return_value
     end
 
-    alias LinkedSignal = Pad, Gst::Pad -> 
+    alias LinkedSignal = Pad, Gst::Pad ->
     def on_linked(&__block : LinkedSignal)
       __callback = ->(_arg0 : LibGst::Pad*, _arg1 : LibGst::LibGst::Pad*) {
        __return_value = __block.call(Pad.new(_arg0), Gst::Pad.new(_arg1))
@@ -418,7 +418,7 @@ module Gst
       connect("linked", __callback)
     end
 
-    alias UnlinkedSignal = Pad, Gst::Pad -> 
+    alias UnlinkedSignal = Pad, Gst::Pad ->
     def on_unlinked(&__block : UnlinkedSignal)
       __callback = ->(_arg0 : LibGst::Pad*, _arg1 : LibGst::LibGst::Pad*) {
        __return_value = __block.call(Pad.new(_arg0), Gst::Pad.new(_arg1))

@@ -2,6 +2,11 @@ module Gst
   class DateTime
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGst::DateTime*))
+    end
+
     @gst_date_time : LibGst::DateTime*?
     def initialize(@gst_date_time : LibGst::DateTime*)
     end
@@ -21,7 +26,7 @@ module Gst
     end
 
     def self.new_from_iso8601_string(string) : self
-      __return_value = LibGst.date_time_new_from_iso8601_string(string)
+      __return_value = LibGst.date_time_new_from_iso8601_string(string.to_unsafe)
       cast Gst::DateTime.new(__return_value) if __return_value
     end
 

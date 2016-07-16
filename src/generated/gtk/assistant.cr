@@ -139,7 +139,7 @@ module Gtk
     end
 
     def set_page_title(page, title)
-      __return_value = LibGtk.assistant_set_page_title(to_unsafe.as(LibGtk::Assistant*), page.to_unsafe.as(LibGtk::Widget*), title)
+      __return_value = LibGtk.assistant_set_page_title(to_unsafe.as(LibGtk::Assistant*), page.to_unsafe.as(LibGtk::Widget*), title.to_unsafe)
       __return_value
     end
 
@@ -153,7 +153,7 @@ module Gtk
       __return_value
     end
 
-    alias ApplySignal = Assistant -> 
+    alias ApplySignal = Assistant ->
     def on_apply(&__block : ApplySignal)
       __callback = ->(_arg0 : LibGtk::Assistant*) {
        __return_value = __block.call(Assistant.new(_arg0))
@@ -162,7 +162,7 @@ module Gtk
       connect("apply", __callback)
     end
 
-    alias CancelSignal = Assistant -> 
+    alias CancelSignal = Assistant ->
     def on_cancel(&__block : CancelSignal)
       __callback = ->(_arg0 : LibGtk::Assistant*) {
        __return_value = __block.call(Assistant.new(_arg0))
@@ -171,7 +171,7 @@ module Gtk
       connect("cancel", __callback)
     end
 
-    alias CloseSignal = Assistant -> 
+    alias CloseSignal = Assistant ->
     def on_close(&__block : CloseSignal)
       __callback = ->(_arg0 : LibGtk::Assistant*) {
        __return_value = __block.call(Assistant.new(_arg0))
@@ -180,7 +180,7 @@ module Gtk
       connect("close", __callback)
     end
 
-    alias EscapeSignal = Assistant -> 
+    alias EscapeSignal = Assistant ->
     def on_escape(&__block : EscapeSignal)
       __callback = ->(_arg0 : LibGtk::Assistant*) {
        __return_value = __block.call(Assistant.new(_arg0))
@@ -189,7 +189,7 @@ module Gtk
       connect("escape", __callback)
     end
 
-    alias PrepareSignal = Assistant, Gtk::Widget -> 
+    alias PrepareSignal = Assistant, Gtk::Widget ->
     def on_prepare(&__block : PrepareSignal)
       __callback = ->(_arg0 : LibGtk::Assistant*, _arg1 : LibGtk::LibGtk::Widget*) {
        __return_value = __block.call(Assistant.new(_arg0), Gtk::Widget.new(_arg1))

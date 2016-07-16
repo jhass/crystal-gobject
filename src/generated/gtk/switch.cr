@@ -41,7 +41,7 @@ module Gtk
       __return_value
     end
 
-    alias ActivateSignal = Switch -> 
+    alias ActivateSignal = Switch ->
     def on_activate(&__block : ActivateSignal)
       __callback = ->(_arg0 : LibGtk::Switch*) {
        __return_value = __block.call(Switch.new(_arg0))

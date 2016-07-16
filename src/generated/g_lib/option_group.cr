@@ -2,6 +2,11 @@ module GLib
   class OptionGroup
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGLib::OptionGroup*))
+    end
+
     @g_lib_option_group : LibGLib::OptionGroup*?
     def initialize(@g_lib_option_group : LibGLib::OptionGroup*)
     end
@@ -11,7 +16,7 @@ module GLib
     end
 
     def self.new(name, description, help_description, user_data, destroy : LibGLib::DestroyNotify?) : self
-      __return_value = LibGLib.option_group_new(name, description, help_description, user_data && user_data, destroy && destroy)
+      __return_value = LibGLib.option_group_new(name.to_unsafe, description.to_unsafe, help_description.to_unsafe, user_data && user_data, destroy && destroy)
       cast GLib::OptionGroup.new(__return_value)
     end
 
@@ -36,7 +41,7 @@ module GLib
     end
 
     def translation_domain=(domain)
-      __return_value = LibGLib.option_group_set_translation_domain(to_unsafe.as(LibGLib::OptionGroup*), domain)
+      __return_value = LibGLib.option_group_set_translation_domain(to_unsafe.as(LibGLib::OptionGroup*), domain.to_unsafe)
       __return_value
     end
 

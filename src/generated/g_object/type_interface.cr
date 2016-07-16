@@ -2,6 +2,11 @@ module GObject
   class TypeInterface
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(16, 0)
+      super(ptr.as(LibGObject::TypeInterface*))
+    end
+
     @g_object_type_interface : LibGObject::TypeInterface*?
     def initialize(@g_object_type_interface : LibGObject::TypeInterface*)
     end
@@ -33,6 +38,14 @@ module GObject
     def self.prerequisites(interface_type, n_prerequisites)
       __return_value = LibGObject.type_interface_prerequisites(UInt64.new(interface_type), UInt32.new(n_prerequisites))
       PointerIterator.new(__return_value) {|__item| __item }
+    end
+
+    def g_type
+      (to_unsafe.value.g_type)
+    end
+
+    def g_instance_type
+      (to_unsafe.value.g_instance_type)
     end
 
   end

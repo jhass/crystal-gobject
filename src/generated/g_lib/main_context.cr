@@ -2,6 +2,11 @@ module GLib
   class MainContext
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGLib::MainContext*))
+    end
+
     @g_lib_main_context : LibGLib::MainContext*?
     def initialize(@g_lib_main_context : LibGLib::MainContext*)
     end

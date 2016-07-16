@@ -2,6 +2,11 @@ module GObject
   class TypeClass
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(8, 0)
+      super(ptr.as(LibGObject::TypeClass*))
+    end
+
     @g_object_type_class : LibGObject::TypeClass*?
     def initialize(@g_object_type_class : LibGObject::TypeClass*)
     end
@@ -48,6 +53,10 @@ module GObject
     def self.ref(type)
       __return_value = LibGObject.type_class_ref(UInt64.new(type))
       GObject::TypeClass.new(__return_value)
+    end
+
+    def g_type
+      (to_unsafe.value.g_type)
     end
 
   end

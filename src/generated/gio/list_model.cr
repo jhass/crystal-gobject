@@ -20,7 +20,7 @@ module Gio
       __return_value
     end
 
-    alias ItemsChangedSignal = ListModel, UInt32, UInt32, UInt32 -> 
+    alias ItemsChangedSignal = ListModel, UInt32, UInt32, UInt32 ->
     def on_items_changed(&__block : ItemsChangedSignal)
       __callback = ->(_arg0 : LibGio::ListModel*, _arg1 : LibGio::UInt32*, _arg2 : LibGio::UInt32*, _arg3 : LibGio::UInt32*) {
        __return_value = __block.call(ListModel.new(_arg0), _arg1, _arg2, _arg3)

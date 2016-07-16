@@ -14,7 +14,7 @@ module Gtk
     # Implements Buildable
 
 
-    alias CloseSignal = ShortcutsWindow -> 
+    alias CloseSignal = ShortcutsWindow ->
     def on_close(&__block : CloseSignal)
       __callback = ->(_arg0 : LibGtk::ShortcutsWindow*) {
        __return_value = __block.call(ShortcutsWindow.new(_arg0))
@@ -23,7 +23,7 @@ module Gtk
       connect("close", __callback)
     end
 
-    alias SearchSignal = ShortcutsWindow -> 
+    alias SearchSignal = ShortcutsWindow ->
     def on_search(&__block : SearchSignal)
       __callback = ->(_arg0 : LibGtk::ShortcutsWindow*) {
        __return_value = __block.call(ShortcutsWindow.new(_arg0))

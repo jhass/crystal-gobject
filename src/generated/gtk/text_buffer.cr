@@ -35,7 +35,7 @@ module Gtk
     end
 
     def apply_tag_by_name(name, start, end)
-      __return_value = LibGtk.text_buffer_apply_tag_by_name(to_unsafe.as(LibGtk::TextBuffer*), name, start.to_unsafe.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*))
+      __return_value = LibGtk.text_buffer_apply_tag_by_name(to_unsafe.as(LibGtk::TextBuffer*), name.to_unsafe, start.to_unsafe.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*))
       __return_value
     end
 
@@ -60,7 +60,7 @@ module Gtk
     end
 
     def create_mark(mark_name, where, left_gravity)
-      __return_value = LibGtk.text_buffer_create_mark(to_unsafe.as(LibGtk::TextBuffer*), mark_name && mark_name, where.to_unsafe.as(LibGtk::TextIter*), left_gravity)
+      __return_value = LibGtk.text_buffer_create_mark(to_unsafe.as(LibGtk::TextBuffer*), mark_name && mark_name.to_unsafe, where.to_unsafe.as(LibGtk::TextIter*), left_gravity)
       Gtk::TextMark.new(__return_value)
     end
 
@@ -85,7 +85,7 @@ module Gtk
     end
 
     def delete_mark_by_name(name)
-      __return_value = LibGtk.text_buffer_delete_mark_by_name(to_unsafe.as(LibGtk::TextBuffer*), name)
+      __return_value = LibGtk.text_buffer_delete_mark_by_name(to_unsafe.as(LibGtk::TextBuffer*), name.to_unsafe)
       __return_value
     end
 
@@ -187,7 +187,7 @@ module Gtk
     end
 
     def mark(name)
-      __return_value = LibGtk.text_buffer_get_mark(to_unsafe.as(LibGtk::TextBuffer*), name)
+      __return_value = LibGtk.text_buffer_get_mark(to_unsafe.as(LibGtk::TextBuffer*), name.to_unsafe)
       Gtk::TextMark.new(__return_value) if __return_value
     end
 
@@ -237,12 +237,12 @@ module Gtk
     end
 
     def insert(iter, text, len)
-      __return_value = LibGtk.text_buffer_insert(to_unsafe.as(LibGtk::TextBuffer*), iter.to_unsafe.as(LibGtk::TextIter*), text, Int32.new(len))
+      __return_value = LibGtk.text_buffer_insert(to_unsafe.as(LibGtk::TextBuffer*), iter.to_unsafe.as(LibGtk::TextIter*), text.to_unsafe, Int32.new(len))
       __return_value
     end
 
     def insert_at_cursor(text, len)
-      __return_value = LibGtk.text_buffer_insert_at_cursor(to_unsafe.as(LibGtk::TextBuffer*), text, Int32.new(len))
+      __return_value = LibGtk.text_buffer_insert_at_cursor(to_unsafe.as(LibGtk::TextBuffer*), text.to_unsafe, Int32.new(len))
       __return_value
     end
 
@@ -252,17 +252,17 @@ module Gtk
     end
 
     def insert_interactive(iter, text, len, default_editable)
-      __return_value = LibGtk.text_buffer_insert_interactive(to_unsafe.as(LibGtk::TextBuffer*), iter.to_unsafe.as(LibGtk::TextIter*), text, Int32.new(len), default_editable)
+      __return_value = LibGtk.text_buffer_insert_interactive(to_unsafe.as(LibGtk::TextBuffer*), iter.to_unsafe.as(LibGtk::TextIter*), text.to_unsafe, Int32.new(len), default_editable)
       __return_value
     end
 
     def insert_interactive_at_cursor(text, len, default_editable)
-      __return_value = LibGtk.text_buffer_insert_interactive_at_cursor(to_unsafe.as(LibGtk::TextBuffer*), text, Int32.new(len), default_editable)
+      __return_value = LibGtk.text_buffer_insert_interactive_at_cursor(to_unsafe.as(LibGtk::TextBuffer*), text.to_unsafe, Int32.new(len), default_editable)
       __return_value
     end
 
     def insert_markup(iter, markup, len)
-      __return_value = LibGtk.text_buffer_insert_markup(to_unsafe.as(LibGtk::TextBuffer*), iter.to_unsafe.as(LibGtk::TextIter*), markup, Int32.new(len))
+      __return_value = LibGtk.text_buffer_insert_markup(to_unsafe.as(LibGtk::TextBuffer*), iter.to_unsafe.as(LibGtk::TextIter*), markup.to_unsafe, Int32.new(len))
       __return_value
     end
 
@@ -287,7 +287,7 @@ module Gtk
     end
 
     def move_mark_by_name(name, where)
-      __return_value = LibGtk.text_buffer_move_mark_by_name(to_unsafe.as(LibGtk::TextBuffer*), name, where.to_unsafe.as(LibGtk::TextIter*))
+      __return_value = LibGtk.text_buffer_move_mark_by_name(to_unsafe.as(LibGtk::TextBuffer*), name.to_unsafe, where.to_unsafe.as(LibGtk::TextIter*))
       __return_value
     end
 
@@ -302,22 +302,22 @@ module Gtk
     end
 
     def register_deserialize_format(mime_type, function : LibGtk::TextBufferDeserializeFunc, user_data, user_data_destroy : LibGLib::DestroyNotify)
-      __return_value = LibGtk.text_buffer_register_deserialize_format(to_unsafe.as(LibGtk::TextBuffer*), mime_type, function, user_data && user_data, user_data_destroy)
+      __return_value = LibGtk.text_buffer_register_deserialize_format(to_unsafe.as(LibGtk::TextBuffer*), mime_type.to_unsafe, function, user_data && user_data, user_data_destroy)
       Gdk::Atom.new(__return_value)
     end
 
     def register_deserialize_tagset(tagset_name)
-      __return_value = LibGtk.text_buffer_register_deserialize_tagset(to_unsafe.as(LibGtk::TextBuffer*), tagset_name && tagset_name)
+      __return_value = LibGtk.text_buffer_register_deserialize_tagset(to_unsafe.as(LibGtk::TextBuffer*), tagset_name && tagset_name.to_unsafe)
       Gdk::Atom.new(__return_value)
     end
 
     def register_serialize_format(mime_type, function : LibGtk::TextBufferSerializeFunc, user_data, user_data_destroy : LibGLib::DestroyNotify)
-      __return_value = LibGtk.text_buffer_register_serialize_format(to_unsafe.as(LibGtk::TextBuffer*), mime_type, function, user_data && user_data, user_data_destroy)
+      __return_value = LibGtk.text_buffer_register_serialize_format(to_unsafe.as(LibGtk::TextBuffer*), mime_type.to_unsafe, function, user_data && user_data, user_data_destroy)
       Gdk::Atom.new(__return_value)
     end
 
     def register_serialize_tagset(tagset_name)
-      __return_value = LibGtk.text_buffer_register_serialize_tagset(to_unsafe.as(LibGtk::TextBuffer*), tagset_name && tagset_name)
+      __return_value = LibGtk.text_buffer_register_serialize_tagset(to_unsafe.as(LibGtk::TextBuffer*), tagset_name && tagset_name.to_unsafe)
       Gdk::Atom.new(__return_value)
     end
 
@@ -337,7 +337,7 @@ module Gtk
     end
 
     def remove_tag_by_name(name, start, end)
-      __return_value = LibGtk.text_buffer_remove_tag_by_name(to_unsafe.as(LibGtk::TextBuffer*), name, start.to_unsafe.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*))
+      __return_value = LibGtk.text_buffer_remove_tag_by_name(to_unsafe.as(LibGtk::TextBuffer*), name.to_unsafe, start.to_unsafe.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*))
       __return_value
     end
 
@@ -357,7 +357,7 @@ module Gtk
     end
 
     def set_text(text, len)
-      __return_value = LibGtk.text_buffer_set_text(to_unsafe.as(LibGtk::TextBuffer*), text, Int32.new(len))
+      __return_value = LibGtk.text_buffer_set_text(to_unsafe.as(LibGtk::TextBuffer*), text.to_unsafe, Int32.new(len))
       __return_value
     end
 
@@ -371,7 +371,7 @@ module Gtk
       __return_value
     end
 
-    alias ApplyTagSignal = TextBuffer, Gtk::TextTag, Gtk::TextIter, Gtk::TextIter -> 
+    alias ApplyTagSignal = TextBuffer, Gtk::TextTag, Gtk::TextIter, Gtk::TextIter ->
     def on_apply_tag(&__block : ApplyTagSignal)
       __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::LibGtk::TextTag*, _arg2 : LibGtk::LibGtk::TextIter*, _arg3 : LibGtk::LibGtk::TextIter*) {
        __return_value = __block.call(TextBuffer.new(_arg0), Gtk::TextTag.new(_arg1), Gtk::TextIter.new(_arg2), Gtk::TextIter.new(_arg3))
@@ -380,7 +380,7 @@ module Gtk
       connect("apply-tag", __callback)
     end
 
-    alias BeginUserActionSignal = TextBuffer -> 
+    alias BeginUserActionSignal = TextBuffer ->
     def on_begin_user_action(&__block : BeginUserActionSignal)
       __callback = ->(_arg0 : LibGtk::TextBuffer*) {
        __return_value = __block.call(TextBuffer.new(_arg0))
@@ -389,7 +389,7 @@ module Gtk
       connect("begin-user-action", __callback)
     end
 
-    alias ChangedSignal = TextBuffer -> 
+    alias ChangedSignal = TextBuffer ->
     def on_changed(&__block : ChangedSignal)
       __callback = ->(_arg0 : LibGtk::TextBuffer*) {
        __return_value = __block.call(TextBuffer.new(_arg0))
@@ -398,7 +398,7 @@ module Gtk
       connect("changed", __callback)
     end
 
-    alias DeleteRangeSignal = TextBuffer, Gtk::TextIter, Gtk::TextIter -> 
+    alias DeleteRangeSignal = TextBuffer, Gtk::TextIter, Gtk::TextIter ->
     def on_delete_range(&__block : DeleteRangeSignal)
       __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::LibGtk::TextIter*, _arg2 : LibGtk::LibGtk::TextIter*) {
        __return_value = __block.call(TextBuffer.new(_arg0), Gtk::TextIter.new(_arg1), Gtk::TextIter.new(_arg2))
@@ -407,7 +407,7 @@ module Gtk
       connect("delete-range", __callback)
     end
 
-    alias EndUserActionSignal = TextBuffer -> 
+    alias EndUserActionSignal = TextBuffer ->
     def on_end_user_action(&__block : EndUserActionSignal)
       __callback = ->(_arg0 : LibGtk::TextBuffer*) {
        __return_value = __block.call(TextBuffer.new(_arg0))
@@ -416,7 +416,7 @@ module Gtk
       connect("end-user-action", __callback)
     end
 
-    alias InsertChildAnchorSignal = TextBuffer, Gtk::TextIter, Gtk::TextChildAnchor -> 
+    alias InsertChildAnchorSignal = TextBuffer, Gtk::TextIter, Gtk::TextChildAnchor ->
     def on_insert_child_anchor(&__block : InsertChildAnchorSignal)
       __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::LibGtk::TextIter*, _arg2 : LibGtk::LibGtk::TextChildAnchor*) {
        __return_value = __block.call(TextBuffer.new(_arg0), Gtk::TextIter.new(_arg1), Gtk::TextChildAnchor.new(_arg2))
@@ -425,7 +425,7 @@ module Gtk
       connect("insert-child-anchor", __callback)
     end
 
-    alias InsertPixbufSignal = TextBuffer, Gtk::TextIter, GdkPixbuf::Pixbuf -> 
+    alias InsertPixbufSignal = TextBuffer, Gtk::TextIter, GdkPixbuf::Pixbuf ->
     def on_insert_pixbuf(&__block : InsertPixbufSignal)
       __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::LibGtk::TextIter*, _arg2 : LibGtk::LibGdkPixbuf::Pixbuf*) {
        __return_value = __block.call(TextBuffer.new(_arg0), Gtk::TextIter.new(_arg1), GdkPixbuf::Pixbuf.new(_arg2))
@@ -434,7 +434,7 @@ module Gtk
       connect("insert-pixbuf", __callback)
     end
 
-    alias InsertTextSignal = TextBuffer, Gtk::TextIter, UInt8, Int32 -> 
+    alias InsertTextSignal = TextBuffer, Gtk::TextIter, String, Int32 ->
     def on_insert_text(&__block : InsertTextSignal)
       __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::LibGtk::TextIter*, _arg2 : LibGtk::UInt8**, _arg3 : LibGtk::Int32*) {
        __return_value = __block.call(TextBuffer.new(_arg0), Gtk::TextIter.new(_arg1), (raise "Expected string but got null" unless _arg2; ::String.new(_arg2)), _arg3)
@@ -443,7 +443,7 @@ module Gtk
       connect("insert-text", __callback)
     end
 
-    alias MarkDeletedSignal = TextBuffer, Gtk::TextMark -> 
+    alias MarkDeletedSignal = TextBuffer, Gtk::TextMark ->
     def on_mark_deleted(&__block : MarkDeletedSignal)
       __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::LibGtk::TextMark*) {
        __return_value = __block.call(TextBuffer.new(_arg0), Gtk::TextMark.new(_arg1))
@@ -452,7 +452,7 @@ module Gtk
       connect("mark-deleted", __callback)
     end
 
-    alias MarkSetSignal = TextBuffer, Gtk::TextIter, Gtk::TextMark -> 
+    alias MarkSetSignal = TextBuffer, Gtk::TextIter, Gtk::TextMark ->
     def on_mark_set(&__block : MarkSetSignal)
       __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::LibGtk::TextIter*, _arg2 : LibGtk::LibGtk::TextMark*) {
        __return_value = __block.call(TextBuffer.new(_arg0), Gtk::TextIter.new(_arg1), Gtk::TextMark.new(_arg2))
@@ -461,7 +461,7 @@ module Gtk
       connect("mark-set", __callback)
     end
 
-    alias ModifiedChangedSignal = TextBuffer -> 
+    alias ModifiedChangedSignal = TextBuffer ->
     def on_modified_changed(&__block : ModifiedChangedSignal)
       __callback = ->(_arg0 : LibGtk::TextBuffer*) {
        __return_value = __block.call(TextBuffer.new(_arg0))
@@ -470,7 +470,7 @@ module Gtk
       connect("modified-changed", __callback)
     end
 
-    alias PasteDoneSignal = TextBuffer, Gtk::Clipboard -> 
+    alias PasteDoneSignal = TextBuffer, Gtk::Clipboard ->
     def on_paste_done(&__block : PasteDoneSignal)
       __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::LibGtk::Clipboard*) {
        __return_value = __block.call(TextBuffer.new(_arg0), Gtk::Clipboard.new(_arg1))
@@ -479,7 +479,7 @@ module Gtk
       connect("paste-done", __callback)
     end
 
-    alias RemoveTagSignal = TextBuffer, Gtk::TextTag, Gtk::TextIter, Gtk::TextIter -> 
+    alias RemoveTagSignal = TextBuffer, Gtk::TextTag, Gtk::TextIter, Gtk::TextIter ->
     def on_remove_tag(&__block : RemoveTagSignal)
       __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::LibGtk::TextTag*, _arg2 : LibGtk::LibGtk::TextIter*, _arg3 : LibGtk::LibGtk::TextIter*) {
        __return_value = __block.call(TextBuffer.new(_arg0), Gtk::TextTag.new(_arg1), Gtk::TextIter.new(_arg2), Gtk::TextIter.new(_arg3))

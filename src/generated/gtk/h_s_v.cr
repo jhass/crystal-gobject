@@ -47,7 +47,7 @@ module Gtk
       __return_value
     end
 
-    alias ChangedSignal = HSV -> 
+    alias ChangedSignal = HSV ->
     def on_changed(&__block : ChangedSignal)
       __callback = ->(_arg0 : LibGtk::HSV*) {
        __return_value = __block.call(HSV.new(_arg0))
@@ -56,7 +56,7 @@ module Gtk
       connect("changed", __callback)
     end
 
-    alias MoveSignal = HSV, Gtk::DirectionType -> 
+    alias MoveSignal = HSV, Gtk::DirectionType ->
     def on_move(&__block : MoveSignal)
       __callback = ->(_arg0 : LibGtk::HSV*, _arg1 : LibGtk::LibGtk::DirectionType*) {
        __return_value = __block.call(HSV.new(_arg0), _arg1)

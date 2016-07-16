@@ -32,7 +32,7 @@ module Gtk
       __return_value
     end
 
-    alias ActivateSignal = FlowBoxChild -> 
+    alias ActivateSignal = FlowBoxChild ->
     def on_activate(&__block : ActivateSignal)
       __callback = ->(_arg0 : LibGtk::FlowBoxChild*) {
        __return_value = __block.call(FlowBoxChild.new(_arg0))

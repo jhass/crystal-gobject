@@ -65,7 +65,7 @@ module Atk
       __return_value
     end
 
-    alias BoundsChangedSignal = Component, Atk::Rectangle -> 
+    alias BoundsChangedSignal = Component, Atk::Rectangle ->
     def on_bounds_changed(&__block : BoundsChangedSignal)
       __callback = ->(_arg0 : LibAtk::Component*, _arg1 : LibAtk::LibAtk::Rectangle*) {
        __return_value = __block.call(Component.new(_arg0), Atk::Rectangle.new(_arg1))

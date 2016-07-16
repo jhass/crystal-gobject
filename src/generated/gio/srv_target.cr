@@ -2,6 +2,11 @@ module Gio
   class SrvTarget
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGio::SrvTarget*))
+    end
+
     @gio_srv_target : LibGio::SrvTarget*?
     def initialize(@gio_srv_target : LibGio::SrvTarget*)
     end
@@ -11,7 +16,7 @@ module Gio
     end
 
     def self.new(hostname, port, priority, weight) : self
-      __return_value = LibGio.srv_target_new(hostname, UInt16.new(port), UInt16.new(priority), UInt16.new(weight))
+      __return_value = LibGio.srv_target_new(hostname.to_unsafe, UInt16.new(port), UInt16.new(priority), UInt16.new(weight))
       cast Gio::SrvTarget.new(__return_value)
     end
 

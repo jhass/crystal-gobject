@@ -2,6 +2,11 @@ module GLib
   class MappedFile
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGLib::MappedFile*))
+    end
+
     @g_lib_mapped_file : LibGLib::MappedFile*?
     def initialize(@g_lib_mapped_file : LibGLib::MappedFile*)
     end
@@ -10,18 +15,18 @@ module GLib
       @g_lib_mapped_file.not_nil!
     end
 
-    def self.new(filename, writable)
+    def self.new(filename, writable) : self
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.mapped_file_new(filename, writable, pointerof(__error))
+      __return_value = LibGLib.mapped_file_new(filename.to_unsafe, writable, pointerof(__error))
       GLib::Error.assert __error
-      GLib::MappedFile.new(__return_value)
+      cast GLib::MappedFile.new(__return_value)
     end
 
-    def self.new_from_fd(fd, writable)
+    def self.new_from_fd(fd, writable) : self
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.mapped_file_new_from_fd(Int32.new(fd), writable, pointerof(__error))
       GLib::Error.assert __error
-      GLib::MappedFile.new(__return_value)
+      cast GLib::MappedFile.new(__return_value)
     end
 
     def free

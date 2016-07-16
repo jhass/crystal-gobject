@@ -959,6 +959,7 @@ lib LibPango
   ##    Flags
   ###########################################
 
+  @[Flags]
   enum FontMask : UInt32
     ZERO_NONE = 0
     FAMILY = 1

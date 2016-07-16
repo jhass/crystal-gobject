@@ -15,7 +15,7 @@ module Gtk
 
 
     def self.new(name, label, tooltip, stock_id, value) : self
-      __return_value = LibGtk.radio_action_new(name, label && label, tooltip && tooltip, stock_id && stock_id, Int32.new(value))
+      __return_value = LibGtk.radio_action_new(name.to_unsafe, label && label.to_unsafe, tooltip && tooltip.to_unsafe, stock_id && stock_id.to_unsafe, Int32.new(value))
       cast Gtk::RadioAction.new(__return_value)
     end
 
@@ -44,7 +44,7 @@ module Gtk
       __return_value
     end
 
-    alias ChangedSignal = RadioAction, Gtk::RadioAction -> 
+    alias ChangedSignal = RadioAction, Gtk::RadioAction ->
     def on_changed(&__block : ChangedSignal)
       __callback = ->(_arg0 : LibGtk::RadioAction*, _arg1 : LibGtk::LibGtk::RadioAction*) {
        __return_value = __block.call(RadioAction.new(_arg0), Gtk::RadioAction.new(_arg1))

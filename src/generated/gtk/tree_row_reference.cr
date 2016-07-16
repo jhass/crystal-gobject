@@ -2,6 +2,11 @@ module Gtk
   class TreeRowReference
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGtk::TreeRowReference*))
+    end
+
     @gtk_tree_row_reference : LibGtk::TreeRowReference*?
     def initialize(@gtk_tree_row_reference : LibGtk::TreeRowReference*)
     end

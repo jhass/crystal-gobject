@@ -1,7 +1,7 @@
 module Gst
   module TagSetter
     def add_tag_value(mode, tag, value)
-      __return_value = LibGst.tag_setter_add_tag_value(to_unsafe.as(LibGst::TagSetter*), mode, tag, value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGst.tag_setter_add_tag_value(to_unsafe.as(LibGst::TagSetter*), mode, tag.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 

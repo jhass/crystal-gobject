@@ -52,7 +52,7 @@ module Gtk
     end
 
     def proxy_menu_item(menu_item_id)
-      __return_value = LibGtk.tool_item_get_proxy_menu_item(to_unsafe.as(LibGtk::ToolItem*), menu_item_id)
+      __return_value = LibGtk.tool_item_get_proxy_menu_item(to_unsafe.as(LibGtk::ToolItem*), menu_item_id.to_unsafe)
       Gtk::Widget.new(__return_value)
     end
 
@@ -122,17 +122,17 @@ module Gtk
     end
 
     def set_proxy_menu_item(menu_item_id, menu_item)
-      __return_value = LibGtk.tool_item_set_proxy_menu_item(to_unsafe.as(LibGtk::ToolItem*), menu_item_id, menu_item.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.tool_item_set_proxy_menu_item(to_unsafe.as(LibGtk::ToolItem*), menu_item_id.to_unsafe, menu_item.to_unsafe.as(LibGtk::Widget*))
       __return_value
     end
 
     def tooltip_markup=(markup)
-      __return_value = LibGtk.tool_item_set_tooltip_markup(to_unsafe.as(LibGtk::ToolItem*), markup)
+      __return_value = LibGtk.tool_item_set_tooltip_markup(to_unsafe.as(LibGtk::ToolItem*), markup.to_unsafe)
       __return_value
     end
 
     def tooltip_text=(text)
-      __return_value = LibGtk.tool_item_set_tooltip_text(to_unsafe.as(LibGtk::ToolItem*), text)
+      __return_value = LibGtk.tool_item_set_tooltip_text(to_unsafe.as(LibGtk::ToolItem*), text.to_unsafe)
       __return_value
     end
 
@@ -165,7 +165,7 @@ module Gtk
       connect("create-menu-proxy", __callback)
     end
 
-    alias ToolbarReconfiguredSignal = ToolItem -> 
+    alias ToolbarReconfiguredSignal = ToolItem ->
     def on_toolbar_reconfigured(&__block : ToolbarReconfiguredSignal)
       __callback = ->(_arg0 : LibGtk::ToolItem*) {
        __return_value = __block.call(ToolItem.new(_arg0))

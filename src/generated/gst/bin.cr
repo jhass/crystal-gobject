@@ -14,7 +14,7 @@ module Gst
 
 
     def self.new(name) : self
-      __return_value = LibGst.bin_new(name && name)
+      __return_value = LibGst.bin_new(name && name.to_unsafe)
       cast Gst::Element.new(__return_value)
     end
 
@@ -34,12 +34,12 @@ module Gst
     end
 
     def by_name(name)
-      __return_value = LibGst.bin_get_by_name(to_unsafe.as(LibGst::Bin*), name)
+      __return_value = LibGst.bin_get_by_name(to_unsafe.as(LibGst::Bin*), name.to_unsafe)
       Gst::Element.new(__return_value) if __return_value
     end
 
     def by_name_recurse_up(name)
-      __return_value = LibGst.bin_get_by_name_recurse_up(to_unsafe.as(LibGst::Bin*), name)
+      __return_value = LibGst.bin_get_by_name_recurse_up(to_unsafe.as(LibGst::Bin*), name.to_unsafe)
       Gst::Element.new(__return_value) if __return_value
     end
 
@@ -97,7 +97,7 @@ module Gst
       connect("do-latency", __callback)
     end
 
-    alias ElementAddedSignal = Bin, Gst::Element -> 
+    alias ElementAddedSignal = Bin, Gst::Element ->
     def on_element_added(&__block : ElementAddedSignal)
       __callback = ->(_arg0 : LibGst::Bin*, _arg1 : LibGst::LibGst::Element*) {
        __return_value = __block.call(Bin.new(_arg0), Gst::Element.new(_arg1))
@@ -106,7 +106,7 @@ module Gst
       connect("element-added", __callback)
     end
 
-    alias ElementRemovedSignal = Bin, Gst::Element -> 
+    alias ElementRemovedSignal = Bin, Gst::Element ->
     def on_element_removed(&__block : ElementRemovedSignal)
       __callback = ->(_arg0 : LibGst::Bin*, _arg1 : LibGst::LibGst::Element*) {
        __return_value = __block.call(Bin.new(_arg0), Gst::Element.new(_arg1))

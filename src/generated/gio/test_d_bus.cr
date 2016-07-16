@@ -20,7 +20,7 @@ module Gio
     end
 
     def add_service_dir(path)
-      __return_value = LibGio.test_d_bus_add_service_dir(to_unsafe.as(LibGio::TestDBus*), path)
+      __return_value = LibGio.test_d_bus_add_service_dir(to_unsafe.as(LibGio::TestDBus*), path.to_unsafe)
       __return_value
     end
 

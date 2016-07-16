@@ -55,7 +55,7 @@ module Gio
     end
 
     def identifier(kind)
-      __return_value = LibGio.volume_get_identifier(to_unsafe.as(LibGio::Volume*), kind)
+      __return_value = LibGio.volume_get_identifier(to_unsafe.as(LibGio::Volume*), kind.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
@@ -101,7 +101,7 @@ module Gio
       __return_value
     end
 
-    alias ChangedSignal = Volume -> 
+    alias ChangedSignal = Volume ->
     def on_changed(&__block : ChangedSignal)
       __callback = ->(_arg0 : LibGio::Volume*) {
        __return_value = __block.call(Volume.new(_arg0))
@@ -110,7 +110,7 @@ module Gio
       connect("changed", __callback)
     end
 
-    alias RemovedSignal = Volume -> 
+    alias RemovedSignal = Volume ->
     def on_removed(&__block : RemovedSignal)
       __callback = ->(_arg0 : LibGio::Volume*) {
        __return_value = __block.call(Volume.new(_arg0))

@@ -2,6 +2,11 @@ module Pango
   class Language
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibPango::Language*))
+    end
+
     @pango_language : LibPango::Language*?
     def initialize(@pango_language : LibPango::Language*)
     end
@@ -26,7 +31,7 @@ module Pango
     end
 
     def matches(range_list)
-      __return_value = LibPango.language_matches(to_unsafe.as(LibPango::Language*), range_list)
+      __return_value = LibPango.language_matches(to_unsafe.as(LibPango::Language*), range_list.to_unsafe)
       __return_value
     end
 
@@ -36,7 +41,7 @@ module Pango
     end
 
     def self.from_string(language)
-      __return_value = LibPango.language_from_string(language && language)
+      __return_value = LibPango.language_from_string(language && language.to_unsafe)
       Pango::Language.new(__return_value) if __return_value
     end
 

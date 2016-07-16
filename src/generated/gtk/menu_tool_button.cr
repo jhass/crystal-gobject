@@ -16,12 +16,12 @@ module Gtk
     # Implements Buildable
 
     def self.new(icon_widget, label) : self
-      __return_value = LibGtk.menu_tool_button_new(icon_widget && icon_widget.to_unsafe.as(LibGtk::Widget*), label && label)
+      __return_value = LibGtk.menu_tool_button_new(icon_widget && icon_widget.to_unsafe.as(LibGtk::Widget*), label && label.to_unsafe)
       cast Gtk::ToolItem.new(__return_value)
     end
 
     def self.new_from_stock(stock_id) : self
-      __return_value = LibGtk.menu_tool_button_new_from_stock(stock_id)
+      __return_value = LibGtk.menu_tool_button_new_from_stock(stock_id.to_unsafe)
       cast Gtk::ToolItem.new(__return_value)
     end
 
@@ -31,12 +31,12 @@ module Gtk
     end
 
     def arrow_tooltip_markup=(markup)
-      __return_value = LibGtk.menu_tool_button_set_arrow_tooltip_markup(to_unsafe.as(LibGtk::MenuToolButton*), markup)
+      __return_value = LibGtk.menu_tool_button_set_arrow_tooltip_markup(to_unsafe.as(LibGtk::MenuToolButton*), markup.to_unsafe)
       __return_value
     end
 
     def arrow_tooltip_text=(text)
-      __return_value = LibGtk.menu_tool_button_set_arrow_tooltip_text(to_unsafe.as(LibGtk::MenuToolButton*), text)
+      __return_value = LibGtk.menu_tool_button_set_arrow_tooltip_text(to_unsafe.as(LibGtk::MenuToolButton*), text.to_unsafe)
       __return_value
     end
 
@@ -45,7 +45,7 @@ module Gtk
       __return_value
     end
 
-    alias ShowMenuSignal = MenuToolButton -> 
+    alias ShowMenuSignal = MenuToolButton ->
     def on_show_menu(&__block : ShowMenuSignal)
       __callback = ->(_arg0 : LibGtk::MenuToolButton*) {
        __return_value = __block.call(MenuToolButton.new(_arg0))

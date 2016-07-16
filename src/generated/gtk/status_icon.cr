@@ -29,7 +29,7 @@ module Gtk
     end
 
     def self.new_from_file(filename) : self
-      __return_value = LibGtk.status_icon_new_from_file(filename)
+      __return_value = LibGtk.status_icon_new_from_file(filename.to_unsafe)
       cast Gtk::StatusIcon.new(__return_value)
     end
 
@@ -39,7 +39,7 @@ module Gtk
     end
 
     def self.new_from_icon_name(icon_name) : self
-      __return_value = LibGtk.status_icon_new_from_icon_name(icon_name)
+      __return_value = LibGtk.status_icon_new_from_icon_name(icon_name.to_unsafe)
       cast Gtk::StatusIcon.new(__return_value)
     end
 
@@ -49,7 +49,7 @@ module Gtk
     end
 
     def self.new_from_stock(stock_id) : self
-      __return_value = LibGtk.status_icon_new_from_stock(stock_id)
+      __return_value = LibGtk.status_icon_new_from_stock(stock_id.to_unsafe)
       cast Gtk::StatusIcon.new(__return_value)
     end
 
@@ -134,7 +134,7 @@ module Gtk
     end
 
     def from_file=(filename)
-      __return_value = LibGtk.status_icon_set_from_file(to_unsafe.as(LibGtk::StatusIcon*), filename)
+      __return_value = LibGtk.status_icon_set_from_file(to_unsafe.as(LibGtk::StatusIcon*), filename.to_unsafe)
       __return_value
     end
 
@@ -144,7 +144,7 @@ module Gtk
     end
 
     def from_icon_name=(icon_name)
-      __return_value = LibGtk.status_icon_set_from_icon_name(to_unsafe.as(LibGtk::StatusIcon*), icon_name)
+      __return_value = LibGtk.status_icon_set_from_icon_name(to_unsafe.as(LibGtk::StatusIcon*), icon_name.to_unsafe)
       __return_value
     end
 
@@ -154,7 +154,7 @@ module Gtk
     end
 
     def from_stock=(stock_id)
-      __return_value = LibGtk.status_icon_set_from_stock(to_unsafe.as(LibGtk::StatusIcon*), stock_id)
+      __return_value = LibGtk.status_icon_set_from_stock(to_unsafe.as(LibGtk::StatusIcon*), stock_id.to_unsafe)
       __return_value
     end
 
@@ -164,7 +164,7 @@ module Gtk
     end
 
     def name=(name)
-      __return_value = LibGtk.status_icon_set_name(to_unsafe.as(LibGtk::StatusIcon*), name)
+      __return_value = LibGtk.status_icon_set_name(to_unsafe.as(LibGtk::StatusIcon*), name.to_unsafe)
       __return_value
     end
 
@@ -174,17 +174,17 @@ module Gtk
     end
 
     def title=(title)
-      __return_value = LibGtk.status_icon_set_title(to_unsafe.as(LibGtk::StatusIcon*), title)
+      __return_value = LibGtk.status_icon_set_title(to_unsafe.as(LibGtk::StatusIcon*), title.to_unsafe)
       __return_value
     end
 
     def tooltip_markup=(markup)
-      __return_value = LibGtk.status_icon_set_tooltip_markup(to_unsafe.as(LibGtk::StatusIcon*), markup && markup)
+      __return_value = LibGtk.status_icon_set_tooltip_markup(to_unsafe.as(LibGtk::StatusIcon*), markup && markup.to_unsafe)
       __return_value
     end
 
     def tooltip_text=(text)
-      __return_value = LibGtk.status_icon_set_tooltip_text(to_unsafe.as(LibGtk::StatusIcon*), text)
+      __return_value = LibGtk.status_icon_set_tooltip_text(to_unsafe.as(LibGtk::StatusIcon*), text.to_unsafe)
       __return_value
     end
 
@@ -193,7 +193,7 @@ module Gtk
       __return_value
     end
 
-    alias ActivateSignal = StatusIcon -> 
+    alias ActivateSignal = StatusIcon ->
     def on_activate(&__block : ActivateSignal)
       __callback = ->(_arg0 : LibGtk::StatusIcon*) {
        __return_value = __block.call(StatusIcon.new(_arg0))
@@ -220,7 +220,7 @@ module Gtk
       connect("button-release-event", __callback)
     end
 
-    alias PopupMenuSignal = StatusIcon, UInt32, UInt32 -> 
+    alias PopupMenuSignal = StatusIcon, UInt32, UInt32 ->
     def on_popup_menu(&__block : PopupMenuSignal)
       __callback = ->(_arg0 : LibGtk::StatusIcon*, _arg1 : LibGtk::UInt32*, _arg2 : LibGtk::UInt32*) {
        __return_value = __block.call(StatusIcon.new(_arg0), _arg1, _arg2)

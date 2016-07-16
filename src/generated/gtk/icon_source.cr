@@ -2,6 +2,11 @@ module Gtk
   class IconSource
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGtk::IconSource*))
+    end
+
     @gtk_icon_source : LibGtk::IconSource*?
     def initialize(@gtk_icon_source : LibGtk::IconSource*)
     end
@@ -81,12 +86,12 @@ module Gtk
     end
 
     def filename=(filename)
-      __return_value = LibGtk.icon_source_set_filename(to_unsafe.as(LibGtk::IconSource*), filename)
+      __return_value = LibGtk.icon_source_set_filename(to_unsafe.as(LibGtk::IconSource*), filename.to_unsafe)
       __return_value
     end
 
     def icon_name=(icon_name)
-      __return_value = LibGtk.icon_source_set_icon_name(to_unsafe.as(LibGtk::IconSource*), icon_name && icon_name)
+      __return_value = LibGtk.icon_source_set_icon_name(to_unsafe.as(LibGtk::IconSource*), icon_name && icon_name.to_unsafe)
       __return_value
     end
 

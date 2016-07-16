@@ -2,6 +2,11 @@ module Pango
   class ScriptIter
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibPango::ScriptIter*))
+    end
+
     @pango_script_iter : LibPango::ScriptIter*?
     def initialize(@pango_script_iter : LibPango::ScriptIter*)
     end
@@ -16,7 +21,7 @@ module Pango
     end
 
     def range(start, end, script)
-      __return_value = LibPango.script_iter_get_range(to_unsafe.as(LibPango::ScriptIter*), start, end, script)
+      __return_value = LibPango.script_iter_get_range(to_unsafe.as(LibPango::ScriptIter*), start.to_unsafe, end.to_unsafe, script)
       __return_value
     end
 

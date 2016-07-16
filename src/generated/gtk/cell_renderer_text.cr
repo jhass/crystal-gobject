@@ -68,7 +68,7 @@ module Gtk
       __return_value
     end
 
-    alias EditedSignal = CellRendererText, UInt8, UInt8 -> 
+    alias EditedSignal = CellRendererText, String, String ->
     def on_edited(&__block : EditedSignal)
       __callback = ->(_arg0 : LibGtk::CellRendererText*, _arg1 : LibGtk::UInt8**, _arg2 : LibGtk::UInt8**) {
        __return_value = __block.call(CellRendererText.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)), (raise "Expected string but got null" unless _arg2; ::String.new(_arg2)))

@@ -15,7 +15,7 @@ module Gst
 
 
     def self.new(name_template, direction, presence, caps) : self
-      __return_value = LibGst.pad_template_new(name_template, direction, presence, caps.to_unsafe.as(LibGst::Caps*))
+      __return_value = LibGst.pad_template_new(name_template.to_unsafe, direction, presence, caps.to_unsafe.as(LibGst::Caps*))
       cast Gst::PadTemplate.new(__return_value)
     end
 
@@ -29,7 +29,7 @@ module Gst
       __return_value
     end
 
-    alias PadCreatedSignal = PadTemplate, Gst::Pad -> 
+    alias PadCreatedSignal = PadTemplate, Gst::Pad ->
     def on_pad_created(&__block : PadCreatedSignal)
       __callback = ->(_arg0 : LibGst::PadTemplate*, _arg1 : LibGst::LibGst::Pad*) {
        __return_value = __block.call(PadTemplate.new(_arg0), Gst::Pad.new(_arg1))

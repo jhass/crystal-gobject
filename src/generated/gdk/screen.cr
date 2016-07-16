@@ -131,7 +131,7 @@ module Gdk
     end
 
     def setting(name, value)
-      __return_value = LibGdk.screen_get_setting(to_unsafe.as(LibGdk::Screen*), name, value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGdk.screen_get_setting(to_unsafe.as(LibGdk::Screen*), name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 
@@ -185,7 +185,7 @@ module Gdk
       __return_value
     end
 
-    alias CompositedChangedSignal = Screen -> 
+    alias CompositedChangedSignal = Screen ->
     def on_composited_changed(&__block : CompositedChangedSignal)
       __callback = ->(_arg0 : LibGdk::Screen*) {
        __return_value = __block.call(Screen.new(_arg0))
@@ -194,7 +194,7 @@ module Gdk
       connect("composited-changed", __callback)
     end
 
-    alias MonitorsChangedSignal = Screen -> 
+    alias MonitorsChangedSignal = Screen ->
     def on_monitors_changed(&__block : MonitorsChangedSignal)
       __callback = ->(_arg0 : LibGdk::Screen*) {
        __return_value = __block.call(Screen.new(_arg0))
@@ -203,7 +203,7 @@ module Gdk
       connect("monitors-changed", __callback)
     end
 
-    alias SizeChangedSignal = Screen -> 
+    alias SizeChangedSignal = Screen ->
     def on_size_changed(&__block : SizeChangedSignal)
       __callback = ->(_arg0 : LibGdk::Screen*) {
        __return_value = __block.call(Screen.new(_arg0))

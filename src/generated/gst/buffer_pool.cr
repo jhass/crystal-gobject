@@ -16,7 +16,7 @@ module Gst
     end
 
     def self.config_add_option(config, option)
-      __return_value = LibGst.buffer_pool_config_add_option(config.to_unsafe.as(LibGst::Structure*), option)
+      __return_value = LibGst.buffer_pool_config_add_option(config.to_unsafe.as(LibGst::Structure*), option.to_unsafe)
       __return_value
     end
 
@@ -36,7 +36,7 @@ module Gst
     end
 
     def self.config_has_option(config, option)
-      __return_value = LibGst.buffer_pool_config_has_option(config.to_unsafe.as(LibGst::Structure*), option)
+      __return_value = LibGst.buffer_pool_config_has_option(config.to_unsafe.as(LibGst::Structure*), option.to_unsafe)
       __return_value
     end
 
@@ -76,7 +76,7 @@ module Gst
     end
 
     def has_option(option)
-      __return_value = LibGst.buffer_pool_has_option(to_unsafe.as(LibGst::BufferPool*), option)
+      __return_value = LibGst.buffer_pool_has_option(to_unsafe.as(LibGst::BufferPool*), option.to_unsafe)
       __return_value
     end
 

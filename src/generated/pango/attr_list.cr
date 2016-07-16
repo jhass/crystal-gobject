@@ -2,6 +2,11 @@ module Pango
   class AttrList
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibPango::AttrList*))
+    end
+
     @pango_attr_list : LibPango::AttrList*?
     def initialize(@pango_attr_list : LibPango::AttrList*)
     end

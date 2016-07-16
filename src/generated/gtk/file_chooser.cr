@@ -7,14 +7,14 @@ module Gtk
 
     def add_shortcut_folder(folder)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.file_chooser_add_shortcut_folder(to_unsafe.as(LibGtk::FileChooser*), folder, pointerof(__error))
+      __return_value = LibGtk.file_chooser_add_shortcut_folder(to_unsafe.as(LibGtk::FileChooser*), folder.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def add_shortcut_folder_uri(uri)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.file_chooser_add_shortcut_folder_uri(to_unsafe.as(LibGtk::FileChooser*), uri, pointerof(__error))
+      __return_value = LibGtk.file_chooser_add_shortcut_folder_uri(to_unsafe.as(LibGtk::FileChooser*), uri.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -161,14 +161,14 @@ module Gtk
 
     def remove_shortcut_folder(folder)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.file_chooser_remove_shortcut_folder(to_unsafe.as(LibGtk::FileChooser*), folder, pointerof(__error))
+      __return_value = LibGtk.file_chooser_remove_shortcut_folder(to_unsafe.as(LibGtk::FileChooser*), folder.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def remove_shortcut_folder_uri(uri)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.file_chooser_remove_shortcut_folder_uri(to_unsafe.as(LibGtk::FileChooser*), uri, pointerof(__error))
+      __return_value = LibGtk.file_chooser_remove_shortcut_folder_uri(to_unsafe.as(LibGtk::FileChooser*), uri.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -186,12 +186,12 @@ module Gtk
     end
 
     def select_filename(filename)
-      __return_value = LibGtk.file_chooser_select_filename(to_unsafe.as(LibGtk::FileChooser*), filename)
+      __return_value = LibGtk.file_chooser_select_filename(to_unsafe.as(LibGtk::FileChooser*), filename.to_unsafe)
       __return_value
     end
 
     def select_uri(uri)
-      __return_value = LibGtk.file_chooser_select_uri(to_unsafe.as(LibGtk::FileChooser*), uri)
+      __return_value = LibGtk.file_chooser_select_uri(to_unsafe.as(LibGtk::FileChooser*), uri.to_unsafe)
       __return_value
     end
 
@@ -206,7 +206,7 @@ module Gtk
     end
 
     def current_folder=(filename)
-      __return_value = LibGtk.file_chooser_set_current_folder(to_unsafe.as(LibGtk::FileChooser*), filename)
+      __return_value = LibGtk.file_chooser_set_current_folder(to_unsafe.as(LibGtk::FileChooser*), filename.to_unsafe)
       __return_value
     end
 
@@ -218,12 +218,12 @@ module Gtk
     end
 
     def current_folder_uri=(uri)
-      __return_value = LibGtk.file_chooser_set_current_folder_uri(to_unsafe.as(LibGtk::FileChooser*), uri)
+      __return_value = LibGtk.file_chooser_set_current_folder_uri(to_unsafe.as(LibGtk::FileChooser*), uri.to_unsafe)
       __return_value
     end
 
     def current_name=(name)
-      __return_value = LibGtk.file_chooser_set_current_name(to_unsafe.as(LibGtk::FileChooser*), name)
+      __return_value = LibGtk.file_chooser_set_current_name(to_unsafe.as(LibGtk::FileChooser*), name.to_unsafe)
       __return_value
     end
 
@@ -245,7 +245,7 @@ module Gtk
     end
 
     def filename=(filename)
-      __return_value = LibGtk.file_chooser_set_filename(to_unsafe.as(LibGtk::FileChooser*), filename)
+      __return_value = LibGtk.file_chooser_set_filename(to_unsafe.as(LibGtk::FileChooser*), filename.to_unsafe)
       __return_value
     end
 
@@ -280,7 +280,7 @@ module Gtk
     end
 
     def uri=(uri)
-      __return_value = LibGtk.file_chooser_set_uri(to_unsafe.as(LibGtk::FileChooser*), uri)
+      __return_value = LibGtk.file_chooser_set_uri(to_unsafe.as(LibGtk::FileChooser*), uri.to_unsafe)
       __return_value
     end
 
@@ -300,12 +300,12 @@ module Gtk
     end
 
     def unselect_filename(filename)
-      __return_value = LibGtk.file_chooser_unselect_filename(to_unsafe.as(LibGtk::FileChooser*), filename)
+      __return_value = LibGtk.file_chooser_unselect_filename(to_unsafe.as(LibGtk::FileChooser*), filename.to_unsafe)
       __return_value
     end
 
     def unselect_uri(uri)
-      __return_value = LibGtk.file_chooser_unselect_uri(to_unsafe.as(LibGtk::FileChooser*), uri)
+      __return_value = LibGtk.file_chooser_unselect_uri(to_unsafe.as(LibGtk::FileChooser*), uri.to_unsafe)
       __return_value
     end
 
@@ -318,7 +318,7 @@ module Gtk
       connect("confirm-overwrite", __callback)
     end
 
-    alias CurrentFolderChangedSignal = FileChooser -> 
+    alias CurrentFolderChangedSignal = FileChooser ->
     def on_current_folder_changed(&__block : CurrentFolderChangedSignal)
       __callback = ->(_arg0 : LibGtk::FileChooser*) {
        __return_value = __block.call(FileChooser.new(_arg0))
@@ -327,7 +327,7 @@ module Gtk
       connect("current-folder-changed", __callback)
     end
 
-    alias FileActivatedSignal = FileChooser -> 
+    alias FileActivatedSignal = FileChooser ->
     def on_file_activated(&__block : FileActivatedSignal)
       __callback = ->(_arg0 : LibGtk::FileChooser*) {
        __return_value = __block.call(FileChooser.new(_arg0))
@@ -336,7 +336,7 @@ module Gtk
       connect("file-activated", __callback)
     end
 
-    alias SelectionChangedSignal = FileChooser -> 
+    alias SelectionChangedSignal = FileChooser ->
     def on_selection_changed(&__block : SelectionChangedSignal)
       __callback = ->(_arg0 : LibGtk::FileChooser*) {
        __return_value = __block.call(FileChooser.new(_arg0))
@@ -345,7 +345,7 @@ module Gtk
       connect("selection-changed", __callback)
     end
 
-    alias UpdatePreviewSignal = FileChooser -> 
+    alias UpdatePreviewSignal = FileChooser ->
     def on_update_preview(&__block : UpdatePreviewSignal)
       __callback = ->(_arg0 : LibGtk::FileChooser*) {
        __return_value = __block.call(FileChooser.new(_arg0))

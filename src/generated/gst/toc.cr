@@ -2,6 +2,11 @@ module Gst
   class Toc
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGst::Toc*))
+    end
+
     @gst_toc : LibGst::Toc*?
     def initialize(@gst_toc : LibGst::Toc*)
     end
@@ -26,7 +31,7 @@ module Gst
     end
 
     def find_entry(uid)
-      __return_value = LibGst.toc_find_entry(to_unsafe.as(LibGst::Toc*), uid)
+      __return_value = LibGst.toc_find_entry(to_unsafe.as(LibGst::Toc*), uid.to_unsafe)
       Gst::TocEntry.new(__return_value) if __return_value
     end
 

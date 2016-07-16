@@ -26,22 +26,22 @@ module Gtk
     end
 
     def self.new_with_label(group, label) : self
-      __return_value = LibGtk.radio_menu_item_new_with_label(group && group, label)
+      __return_value = LibGtk.radio_menu_item_new_with_label(group && group, label.to_unsafe)
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_label_from_widget(group, label) : self
-      __return_value = LibGtk.radio_menu_item_new_with_label_from_widget(group && group.to_unsafe.as(LibGtk::RadioMenuItem*), label && label)
+      __return_value = LibGtk.radio_menu_item_new_with_label_from_widget(group && group.to_unsafe.as(LibGtk::RadioMenuItem*), label && label.to_unsafe)
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_mnemonic(group, label) : self
-      __return_value = LibGtk.radio_menu_item_new_with_mnemonic(group && group, label)
+      __return_value = LibGtk.radio_menu_item_new_with_mnemonic(group && group, label.to_unsafe)
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_mnemonic_from_widget(group, label) : self
-      __return_value = LibGtk.radio_menu_item_new_with_mnemonic_from_widget(group && group.to_unsafe.as(LibGtk::RadioMenuItem*), label && label)
+      __return_value = LibGtk.radio_menu_item_new_with_mnemonic_from_widget(group && group.to_unsafe.as(LibGtk::RadioMenuItem*), label && label.to_unsafe)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -60,7 +60,7 @@ module Gtk
       __return_value
     end
 
-    alias GroupChangedSignal = RadioMenuItem -> 
+    alias GroupChangedSignal = RadioMenuItem ->
     def on_group_changed(&__block : GroupChangedSignal)
       __callback = ->(_arg0 : LibGtk::RadioMenuItem*) {
        __return_value = __block.call(RadioMenuItem.new(_arg0))

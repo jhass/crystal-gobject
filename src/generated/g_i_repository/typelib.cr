@@ -2,6 +2,11 @@ module GIRepository
   class Typelib
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGIRepository::Typelib*))
+    end
+
     @g_i_repository_typelib : LibGIRepository::Typelib*?
     def initialize(@g_i_repository_typelib : LibGIRepository::Typelib*)
     end
@@ -21,7 +26,7 @@ module GIRepository
     end
 
     def symbol(symbol_name, symbol)
-      __return_value = LibGIRepository.typelib_symbol(to_unsafe.as(LibGIRepository::Typelib*), symbol_name, symbol && symbol)
+      __return_value = LibGIRepository.typelib_symbol(to_unsafe.as(LibGIRepository::Typelib*), symbol_name.to_unsafe, symbol && symbol)
       __return_value
     end
 

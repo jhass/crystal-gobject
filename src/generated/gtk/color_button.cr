@@ -67,7 +67,7 @@ module Gtk
     end
 
     def title=(title)
-      __return_value = LibGtk.color_button_set_title(to_unsafe.as(LibGtk::ColorButton*), title)
+      __return_value = LibGtk.color_button_set_title(to_unsafe.as(LibGtk::ColorButton*), title.to_unsafe)
       __return_value
     end
 
@@ -76,7 +76,7 @@ module Gtk
       __return_value
     end
 
-    alias ColorSetSignal = ColorButton -> 
+    alias ColorSetSignal = ColorButton ->
     def on_color_set(&__block : ColorSetSignal)
       __callback = ->(_arg0 : LibGtk::ColorButton*) {
        __return_value = __block.call(ColorButton.new(_arg0))

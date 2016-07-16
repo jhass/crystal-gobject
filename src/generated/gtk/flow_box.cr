@@ -170,7 +170,7 @@ module Gtk
       __return_value
     end
 
-    alias ActivateCursorChildSignal = FlowBox -> 
+    alias ActivateCursorChildSignal = FlowBox ->
     def on_activate_cursor_child(&__block : ActivateCursorChildSignal)
       __callback = ->(_arg0 : LibGtk::FlowBox*) {
        __return_value = __block.call(FlowBox.new(_arg0))
@@ -179,7 +179,7 @@ module Gtk
       connect("activate-cursor-child", __callback)
     end
 
-    alias ChildActivatedSignal = FlowBox, Gtk::FlowBoxChild -> 
+    alias ChildActivatedSignal = FlowBox, Gtk::FlowBoxChild ->
     def on_child_activated(&__block : ChildActivatedSignal)
       __callback = ->(_arg0 : LibGtk::FlowBox*, _arg1 : LibGtk::LibGtk::FlowBoxChild*) {
        __return_value = __block.call(FlowBox.new(_arg0), Gtk::FlowBoxChild.new(_arg1))
@@ -197,7 +197,7 @@ module Gtk
       connect("move-cursor", __callback)
     end
 
-    alias SelectAllSignal = FlowBox -> 
+    alias SelectAllSignal = FlowBox ->
     def on_select_all(&__block : SelectAllSignal)
       __callback = ->(_arg0 : LibGtk::FlowBox*) {
        __return_value = __block.call(FlowBox.new(_arg0))
@@ -206,7 +206,7 @@ module Gtk
       connect("select-all", __callback)
     end
 
-    alias SelectedChildrenChangedSignal = FlowBox -> 
+    alias SelectedChildrenChangedSignal = FlowBox ->
     def on_selected_children_changed(&__block : SelectedChildrenChangedSignal)
       __callback = ->(_arg0 : LibGtk::FlowBox*) {
        __return_value = __block.call(FlowBox.new(_arg0))
@@ -215,7 +215,7 @@ module Gtk
       connect("selected-children-changed", __callback)
     end
 
-    alias ToggleCursorChildSignal = FlowBox -> 
+    alias ToggleCursorChildSignal = FlowBox ->
     def on_toggle_cursor_child(&__block : ToggleCursorChildSignal)
       __callback = ->(_arg0 : LibGtk::FlowBox*) {
        __return_value = __block.call(FlowBox.new(_arg0))
@@ -224,7 +224,7 @@ module Gtk
       connect("toggle-cursor-child", __callback)
     end
 
-    alias UnselectAllSignal = FlowBox -> 
+    alias UnselectAllSignal = FlowBox ->
     def on_unselect_all(&__block : UnselectAllSignal)
       __callback = ->(_arg0 : LibGtk::FlowBox*) {
        __return_value = __block.call(FlowBox.new(_arg0))

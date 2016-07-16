@@ -148,7 +148,7 @@ module Gtk
       __return_value
     end
 
-    alias EdgeOvershotSignal = ScrolledWindow, Gtk::PositionType -> 
+    alias EdgeOvershotSignal = ScrolledWindow, Gtk::PositionType ->
     def on_edge_overshot(&__block : EdgeOvershotSignal)
       __callback = ->(_arg0 : LibGtk::ScrolledWindow*, _arg1 : LibGtk::LibGtk::PositionType*) {
        __return_value = __block.call(ScrolledWindow.new(_arg0), _arg1)
@@ -157,7 +157,7 @@ module Gtk
       connect("edge-overshot", __callback)
     end
 
-    alias EdgeReachedSignal = ScrolledWindow, Gtk::PositionType -> 
+    alias EdgeReachedSignal = ScrolledWindow, Gtk::PositionType ->
     def on_edge_reached(&__block : EdgeReachedSignal)
       __callback = ->(_arg0 : LibGtk::ScrolledWindow*, _arg1 : LibGtk::LibGtk::PositionType*) {
        __return_value = __block.call(ScrolledWindow.new(_arg0), _arg1)
@@ -166,7 +166,7 @@ module Gtk
       connect("edge-reached", __callback)
     end
 
-    alias MoveFocusOutSignal = ScrolledWindow, Gtk::DirectionType -> 
+    alias MoveFocusOutSignal = ScrolledWindow, Gtk::DirectionType ->
     def on_move_focus_out(&__block : MoveFocusOutSignal)
       __callback = ->(_arg0 : LibGtk::ScrolledWindow*, _arg1 : LibGtk::LibGtk::DirectionType*) {
        __return_value = __block.call(ScrolledWindow.new(_arg0), _arg1)

@@ -64,7 +64,7 @@ module Gtk
       __return_value
     end
 
-    alias ActivateSignal = ListBoxRow -> 
+    alias ActivateSignal = ListBoxRow ->
     def on_activate(&__block : ActivateSignal)
       __callback = ->(_arg0 : LibGtk::ListBoxRow*) {
        __return_value = __block.call(ListBoxRow.new(_arg0))

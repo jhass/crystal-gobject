@@ -14,7 +14,7 @@ module Gtk
 
 
     def self.new(name, label, tooltip, stock_id) : self
-      __return_value = LibGtk.toggle_action_new(name, label && label, tooltip && tooltip, stock_id && stock_id)
+      __return_value = LibGtk.toggle_action_new(name.to_unsafe, label && label.to_unsafe, tooltip && tooltip.to_unsafe, stock_id && stock_id.to_unsafe)
       cast Gtk::ToggleAction.new(__return_value)
     end
 
@@ -43,7 +43,7 @@ module Gtk
       __return_value
     end
 
-    alias ToggledSignal = ToggleAction -> 
+    alias ToggledSignal = ToggleAction ->
     def on_toggled(&__block : ToggledSignal)
       __callback = ->(_arg0 : LibGtk::ToggleAction*) {
        __return_value = __block.call(ToggleAction.new(_arg0))

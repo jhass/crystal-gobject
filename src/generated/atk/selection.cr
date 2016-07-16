@@ -35,7 +35,7 @@ module Atk
       __return_value
     end
 
-    alias SelectionChangedSignal = Selection -> 
+    alias SelectionChangedSignal = Selection ->
     def on_selection_changed(&__block : SelectionChangedSignal)
       __callback = ->(_arg0 : LibAtk::Selection*) {
        __return_value = __block.call(Selection.new(_arg0))

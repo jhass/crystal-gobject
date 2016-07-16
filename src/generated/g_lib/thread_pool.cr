@@ -2,6 +2,15 @@ module GLib
   class ThreadPool
     include GObject::WrappedType
 
+    def self.new(func : GLib::Func|Nil = nil, user_data : Void*|Nil = nil, exclusive : Bool|Nil = nil) : self
+      ptr = Pointer(UInt8).malloc(24, 0u8)
+      new(ptr.as(LibGLib::ThreadPool*)).tap do |object|
+        object.func = func unless func.nil?
+        object.user_data = user_data unless user_data.nil?
+        object.exclusive = exclusive unless exclusive.nil?
+      end
+    end
+
     @g_lib_thread_pool : LibGLib::ThreadPool*?
     def initialize(@g_lib_thread_pool : LibGLib::ThreadPool*)
     end
@@ -77,6 +86,30 @@ module GLib
     def self.stop_unused_threads
       __return_value = LibGLib.thread_pool_stop_unused_threads
       __return_value
+    end
+
+    def func
+      (to_unsafe.value.func)
+    end
+
+    def func=(value : GLib::Func)
+      to_unsafe.value.func = value
+    end
+
+    def user_data
+      (to_unsafe.value.user_data)
+    end
+
+    def user_data=(value : Void*)
+      to_unsafe.value.user_data = value
+    end
+
+    def exclusive
+      (to_unsafe.value.exclusive)
+    end
+
+    def exclusive=(value : Bool)
+      to_unsafe.value.exclusive = value
     end
 
   end

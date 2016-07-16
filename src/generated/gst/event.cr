@@ -2,6 +2,16 @@ module Gst
   class Event
     include GObject::WrappedType
 
+    def self.new(mini_object : Gst::MiniObject|Nil = nil, type : Gst::EventType|Nil = nil, timestamp : UInt64|Nil = nil, seqnum : UInt32|Nil = nil) : self
+      ptr = Pointer(UInt8).malloc(88, 0u8)
+      new(ptr.as(LibGst::Event*)).tap do |object|
+        object.mini_object = mini_object unless mini_object.nil?
+        object.type = type unless type.nil?
+        object.timestamp = timestamp unless timestamp.nil?
+        object.seqnum = seqnum unless seqnum.nil?
+      end
+    end
+
     @gst_event : LibGst::Event*?
     def initialize(@gst_event : LibGst::Event*)
     end
@@ -56,7 +66,7 @@ module Gst
     end
 
     def self.new_protection(system_id, data, origin) : self
-      __return_value = LibGst.event_new_protection(system_id, data.to_unsafe.as(LibGst::Buffer*), origin)
+      __return_value = LibGst.event_new_protection(system_id.to_unsafe, data.to_unsafe.as(LibGst::Buffer*), origin.to_unsafe)
       cast Gst::Event.new(__return_value)
     end
 
@@ -86,7 +96,7 @@ module Gst
     end
 
     def self.new_sink_message(name, msg) : self
-      __return_value = LibGst.event_new_sink_message(name, msg.to_unsafe.as(LibGst::Message*))
+      __return_value = LibGst.event_new_sink_message(name.to_unsafe, msg.to_unsafe.as(LibGst::Message*))
       cast Gst::Event.new(__return_value)
     end
 
@@ -96,7 +106,7 @@ module Gst
     end
 
     def self.new_stream_start(stream_id) : self
-      __return_value = LibGst.event_new_stream_start(stream_id)
+      __return_value = LibGst.event_new_stream_start(stream_id.to_unsafe)
       cast Gst::Event.new(__return_value)
     end
 
@@ -111,7 +121,7 @@ module Gst
     end
 
     def self.new_toc_select(uid) : self
-      __return_value = LibGst.event_new_toc_select(uid)
+      __return_value = LibGst.event_new_toc_select(uid.to_unsafe)
       cast Gst::Event.new(__return_value)
     end
 
@@ -136,7 +146,7 @@ module Gst
     end
 
     def has_name(name)
-      __return_value = LibGst.event_has_name(to_unsafe.as(LibGst::Event*), name)
+      __return_value = LibGst.event_has_name(to_unsafe.as(LibGst::Event*), name.to_unsafe)
       __return_value
     end
 
@@ -171,7 +181,7 @@ module Gst
     end
 
     def parse_protection(system_id, data, origin)
-      __return_value = LibGst.event_parse_protection(to_unsafe.as(LibGst::Event*), system_id, data.to_unsafe.as(LibGst::Buffer*), origin && origin)
+      __return_value = LibGst.event_parse_protection(to_unsafe.as(LibGst::Event*), system_id.to_unsafe, data.to_unsafe.as(LibGst::Buffer*), origin && origin.to_unsafe)
       __return_value
     end
 
@@ -211,7 +221,7 @@ module Gst
     end
 
     def parse_stream_start(stream_id)
-      __return_value = LibGst.event_parse_stream_start(to_unsafe.as(LibGst::Event*), stream_id)
+      __return_value = LibGst.event_parse_stream_start(to_unsafe.as(LibGst::Event*), stream_id.to_unsafe)
       __return_value
     end
 
@@ -226,7 +236,7 @@ module Gst
     end
 
     def parse_toc_select(uid)
-      __return_value = LibGst.event_parse_toc_select(to_unsafe.as(LibGst::Event*), uid)
+      __return_value = LibGst.event_parse_toc_select(to_unsafe.as(LibGst::Event*), uid.to_unsafe)
       __return_value
     end
 
@@ -253,6 +263,38 @@ module Gst
     def writable_structure
       __return_value = LibGst.event_writable_structure(to_unsafe.as(LibGst::Event*))
       Gst::Structure.new(__return_value)
+    end
+
+    def mini_object
+      Gst::MiniObject.new((to_unsafe.value.mini_object))
+    end
+
+    def mini_object=(value : Gst::MiniObject)
+      to_unsafe.value.mini_object = value
+    end
+
+    def type
+      (to_unsafe.value.type)
+    end
+
+    def type=(value : Gst::EventType)
+      to_unsafe.value.type = value
+    end
+
+    def timestamp
+      (to_unsafe.value.timestamp)
+    end
+
+    def timestamp=(value : UInt64)
+      to_unsafe.value.timestamp = UInt64.new(value)
+    end
+
+    def seqnum
+      (to_unsafe.value.seqnum)
+    end
+
+    def seqnum=(value : UInt32)
+      to_unsafe.value.seqnum = UInt32.new(value)
     end
 
   end

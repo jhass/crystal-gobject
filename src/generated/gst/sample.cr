@@ -2,6 +2,11 @@ module Gst
   class Sample
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGst::Sample*))
+    end
+
     @gst_sample : LibGst::Sample*?
     def initialize(@gst_sample : LibGst::Sample*)
     end

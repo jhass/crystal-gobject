@@ -2,6 +2,11 @@ module GLib
   class Private
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(32, 0)
+      super(ptr.as(LibGLib::Private*))
+    end
+
     @g_lib_private : LibGLib::Private*?
     def initialize(@g_lib_private : LibGLib::Private*)
     end
@@ -23,6 +28,18 @@ module GLib
     def set(value)
       __return_value = LibGLib.private_set(to_unsafe.as(LibGLib::Private*), value && value)
       __return_value
+    end
+
+    def p
+      (to_unsafe.value.p)
+    end
+
+    def notify
+      (to_unsafe.value.notify)
+    end
+
+    def future
+      PointerIterator.new((to_unsafe.value.future)) {|__item| __item }
     end
 
   end

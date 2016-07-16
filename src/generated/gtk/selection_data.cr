@@ -2,6 +2,11 @@ module Gtk
   class SelectionData
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGtk::SelectionData*))
+    end
+
     @gtk_selection_data : LibGtk::SelectionData*?
     def initialize(@gtk_selection_data : LibGtk::SelectionData*)
     end
@@ -86,7 +91,7 @@ module Gtk
     end
 
     def set_text(str, len)
-      __return_value = LibGtk.selection_data_set_text(to_unsafe.as(LibGtk::SelectionData*), str, Int32.new(len))
+      __return_value = LibGtk.selection_data_set_text(to_unsafe.as(LibGtk::SelectionData*), str.to_unsafe, Int32.new(len))
       __return_value
     end
 

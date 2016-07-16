@@ -2,6 +2,11 @@ module GLib
   class DateTime
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGLib::DateTime*))
+    end
+
     @g_lib_date_time : LibGLib::DateTime*?
     def initialize(@g_lib_date_time : LibGLib::DateTime*)
     end
@@ -111,7 +116,7 @@ module GLib
     end
 
     def format(format)
-      __return_value = LibGLib.date_time_format(to_unsafe.as(LibGLib::DateTime*), format)
+      __return_value = LibGLib.date_time_format(to_unsafe.as(LibGLib::DateTime*), format.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

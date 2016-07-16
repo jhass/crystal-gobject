@@ -2,6 +2,11 @@ module GLib
   class OptionContext
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGLib::OptionContext*))
+    end
+
     @g_lib_option_context : LibGLib::OptionContext*?
     def initialize(@g_lib_option_context : LibGLib::OptionContext*)
     end
@@ -16,7 +21,7 @@ module GLib
     end
 
     def add_main_entries(entries, translation_domain)
-      __return_value = LibGLib.option_context_add_main_entries(to_unsafe.as(LibGLib::OptionContext*), entries.to_unsafe.as(LibGLib::OptionEntry*), translation_domain && translation_domain)
+      __return_value = LibGLib.option_context_add_main_entries(to_unsafe.as(LibGLib::OptionContext*), entries.to_unsafe.as(LibGLib::OptionEntry*), translation_domain && translation_domain.to_unsafe)
       __return_value
     end
 
@@ -75,7 +80,7 @@ module GLib
     end
 
     def description=(description)
-      __return_value = LibGLib.option_context_set_description(to_unsafe.as(LibGLib::OptionContext*), description && description)
+      __return_value = LibGLib.option_context_set_description(to_unsafe.as(LibGLib::OptionContext*), description && description.to_unsafe)
       __return_value
     end
 
@@ -100,7 +105,7 @@ module GLib
     end
 
     def summary=(summary)
-      __return_value = LibGLib.option_context_set_summary(to_unsafe.as(LibGLib::OptionContext*), summary && summary)
+      __return_value = LibGLib.option_context_set_summary(to_unsafe.as(LibGLib::OptionContext*), summary && summary.to_unsafe)
       __return_value
     end
 
@@ -110,7 +115,7 @@ module GLib
     end
 
     def translation_domain=(domain)
-      __return_value = LibGLib.option_context_set_translation_domain(to_unsafe.as(LibGLib::OptionContext*), domain)
+      __return_value = LibGLib.option_context_set_translation_domain(to_unsafe.as(LibGLib::OptionContext*), domain.to_unsafe)
       __return_value
     end
 

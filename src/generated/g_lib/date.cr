@@ -2,6 +2,18 @@ module GLib
   class Date
     include GObject::WrappedType
 
+    def self.new(julian_days : UInt32|Nil = nil, julian : UInt32|Nil = nil, dmy : UInt32|Nil = nil, day : UInt32|Nil = nil, month : UInt32|Nil = nil, year : UInt32|Nil = nil) : self
+      ptr = Pointer(UInt8).malloc(24, 0u8)
+      new(ptr.as(LibGLib::Date*)).tap do |object|
+        object.julian_days = julian_days unless julian_days.nil?
+        object.julian = julian unless julian.nil?
+        object.dmy = dmy unless dmy.nil?
+        object.day = day unless day.nil?
+        object.month = month unless month.nil?
+        object.year = year unless year.nil?
+      end
+    end
+
     @g_lib_date : LibGLib::Date*?
     def initialize(@g_lib_date : LibGLib::Date*)
     end
@@ -146,7 +158,7 @@ module GLib
     end
 
     def parse=(str)
-      __return_value = LibGLib.date_set_parse(to_unsafe.as(LibGLib::Date*), str)
+      __return_value = LibGLib.date_set_parse(to_unsafe.as(LibGLib::Date*), str.to_unsafe)
       __return_value
     end
 
@@ -216,7 +228,7 @@ module GLib
     end
 
     def self.strftime(s, slen, format, date)
-      __return_value = LibGLib.date_strftime(s, UInt64.new(slen), format, date.to_unsafe.as(LibGLib::Date*))
+      __return_value = LibGLib.date_strftime(s.to_unsafe, UInt64.new(slen), format.to_unsafe, date.to_unsafe.as(LibGLib::Date*))
       __return_value
     end
 
@@ -248,6 +260,54 @@ module GLib
     def self.valid_year(year)
       __return_value = LibGLib.date_valid_year(UInt16.new(year))
       __return_value
+    end
+
+    def julian_days
+      (to_unsafe.value.julian_days)
+    end
+
+    def julian_days=(value : UInt32)
+      to_unsafe.value.julian_days = UInt32.new(value)
+    end
+
+    def julian
+      (to_unsafe.value.julian)
+    end
+
+    def julian=(value : UInt32)
+      to_unsafe.value.julian = UInt32.new(value)
+    end
+
+    def dmy
+      (to_unsafe.value.dmy)
+    end
+
+    def dmy=(value : UInt32)
+      to_unsafe.value.dmy = UInt32.new(value)
+    end
+
+    def day
+      (to_unsafe.value.day)
+    end
+
+    def day=(value : UInt32)
+      to_unsafe.value.day = UInt32.new(value)
+    end
+
+    def month
+      (to_unsafe.value.month)
+    end
+
+    def month=(value : UInt32)
+      to_unsafe.value.month = UInt32.new(value)
+    end
+
+    def year
+      (to_unsafe.value.year)
+    end
+
+    def year=(value : UInt32)
+      to_unsafe.value.year = UInt32.new(value)
     end
 
   end

@@ -19,12 +19,12 @@ module Gio
     end
 
     def file_for_path(path)
-      __return_value = LibGio.vfs_get_file_for_path(to_unsafe.as(LibGio::Vfs*), path)
+      __return_value = LibGio.vfs_get_file_for_path(to_unsafe.as(LibGio::Vfs*), path.to_unsafe)
       __return_value
     end
 
     def file_for_uri(uri)
-      __return_value = LibGio.vfs_get_file_for_uri(to_unsafe.as(LibGio::Vfs*), uri)
+      __return_value = LibGio.vfs_get_file_for_uri(to_unsafe.as(LibGio::Vfs*), uri.to_unsafe)
       __return_value
     end
 
@@ -39,7 +39,7 @@ module Gio
     end
 
     def parse_name(parse_name)
-      __return_value = LibGio.vfs_parse_name(to_unsafe.as(LibGio::Vfs*), parse_name)
+      __return_value = LibGio.vfs_parse_name(to_unsafe.as(LibGio::Vfs*), parse_name.to_unsafe)
       __return_value
     end
 

@@ -15,7 +15,7 @@ module Gtk
       __return_value
     end
 
-    alias EditingDoneSignal = CellEditable -> 
+    alias EditingDoneSignal = CellEditable ->
     def on_editing_done(&__block : EditingDoneSignal)
       __callback = ->(_arg0 : LibGtk::CellEditable*) {
        __return_value = __block.call(CellEditable.new(_arg0))
@@ -24,7 +24,7 @@ module Gtk
       connect("editing-done", __callback)
     end
 
-    alias RemoveWidgetSignal = CellEditable -> 
+    alias RemoveWidgetSignal = CellEditable ->
     def on_remove_widget(&__block : RemoveWidgetSignal)
       __callback = ->(_arg0 : LibGtk::CellEditable*) {
        __return_value = __block.call(CellEditable.new(_arg0))

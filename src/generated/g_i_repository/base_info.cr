@@ -2,6 +2,11 @@ module GIRepository
   class BaseInfo
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(72, 0)
+      super(ptr.as(LibGIRepository::BaseInfo*))
+    end
+
     @g_i_repository_base_info : LibGIRepository::BaseInfo*?
     def initialize(@g_i_repository_base_info : LibGIRepository::BaseInfo*)
     end
@@ -16,7 +21,7 @@ module GIRepository
     end
 
     def attribute(name)
-      __return_value = LibGIRepository.base_info_get_attribute(to_unsafe.as(LibGIRepository::BaseInfo*), name)
+      __return_value = LibGIRepository.base_info_get_attribute(to_unsafe.as(LibGIRepository::BaseInfo*), name.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
@@ -51,8 +56,40 @@ module GIRepository
     end
 
     def iterate_attributes(iterator, name, value)
-      __return_value = LibGIRepository.base_info_iterate_attributes(to_unsafe.as(LibGIRepository::BaseInfo*), iterator.to_unsafe.as(LibGIRepository::AttributeIter*), name, value)
+      __return_value = LibGIRepository.base_info_iterate_attributes(to_unsafe.as(LibGIRepository::BaseInfo*), iterator.to_unsafe.as(LibGIRepository::AttributeIter*), name.to_unsafe, value.to_unsafe)
       __return_value
+    end
+
+    def dummy1
+      (to_unsafe.value.dummy1)
+    end
+
+    def dummy2
+      (to_unsafe.value.dummy2)
+    end
+
+    def dummy3
+      (to_unsafe.value.dummy3)
+    end
+
+    def dummy4
+      (to_unsafe.value.dummy4)
+    end
+
+    def dummy5
+      (to_unsafe.value.dummy5)
+    end
+
+    def dummy6
+      (to_unsafe.value.dummy6)
+    end
+
+    def dummy7
+      (to_unsafe.value.dummy7)
+    end
+
+    def padding
+      PointerIterator.new((to_unsafe.value.padding)) {|__item| __item }
     end
 
   end

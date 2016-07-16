@@ -13,18 +13,18 @@ module Gtk
       cast Gtk::PrintSettings.new(__return_value)
     end
 
-    def self.new_from_file(file_name)
+    def self.new_from_file(file_name) : self
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.print_settings_new_from_file(file_name, pointerof(__error))
+      __return_value = LibGtk.print_settings_new_from_file(file_name.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
-      Gtk::PrintSettings.new(__return_value)
+      cast Gtk::PrintSettings.new(__return_value)
     end
 
-    def self.new_from_key_file(key_file, group_name)
+    def self.new_from_key_file(key_file, group_name) : self
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.print_settings_new_from_key_file(key_file.to_unsafe.as(LibGLib::KeyFile*), group_name && group_name, pointerof(__error))
+      __return_value = LibGtk.print_settings_new_from_key_file(key_file.to_unsafe.as(LibGLib::KeyFile*), group_name && group_name.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
-      Gtk::PrintSettings.new(__return_value)
+      cast Gtk::PrintSettings.new(__return_value)
     end
 
     def copy
@@ -38,12 +38,12 @@ module Gtk
     end
 
     def get(key)
-      __return_value = LibGtk.print_settings_get(to_unsafe.as(LibGtk::PrintSettings*), key)
+      __return_value = LibGtk.print_settings_get(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def bool(key)
-      __return_value = LibGtk.print_settings_get_bool(to_unsafe.as(LibGtk::PrintSettings*), key)
+      __return_value = LibGtk.print_settings_get_bool(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe)
       __return_value
     end
 
@@ -63,12 +63,12 @@ module Gtk
     end
 
     def double(key)
-      __return_value = LibGtk.print_settings_get_double(to_unsafe.as(LibGtk::PrintSettings*), key)
+      __return_value = LibGtk.print_settings_get_double(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe)
       __return_value
     end
 
     def double_with_default(key, _def)
-      __return_value = LibGtk.print_settings_get_double_with_default(to_unsafe.as(LibGtk::PrintSettings*), key, Float64.new(_def))
+      __return_value = LibGtk.print_settings_get_double_with_default(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe, Float64.new(_def))
       __return_value
     end
 
@@ -83,17 +83,17 @@ module Gtk
     end
 
     def int(key)
-      __return_value = LibGtk.print_settings_get_int(to_unsafe.as(LibGtk::PrintSettings*), key)
+      __return_value = LibGtk.print_settings_get_int(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe)
       __return_value
     end
 
     def int_with_default(key, _def)
-      __return_value = LibGtk.print_settings_get_int_with_default(to_unsafe.as(LibGtk::PrintSettings*), key, Int32.new(_def))
+      __return_value = LibGtk.print_settings_get_int_with_default(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe, Int32.new(_def))
       __return_value
     end
 
     def length(key, unit)
-      __return_value = LibGtk.print_settings_get_length(to_unsafe.as(LibGtk::PrintSettings*), key, unit)
+      __return_value = LibGtk.print_settings_get_length(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe, unit)
       __return_value
     end
 
@@ -203,31 +203,31 @@ module Gtk
     end
 
     def has_key(key)
-      __return_value = LibGtk.print_settings_has_key(to_unsafe.as(LibGtk::PrintSettings*), key)
+      __return_value = LibGtk.print_settings_has_key(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe)
       __return_value
     end
 
     def load_file(file_name)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.print_settings_load_file(to_unsafe.as(LibGtk::PrintSettings*), file_name, pointerof(__error))
+      __return_value = LibGtk.print_settings_load_file(to_unsafe.as(LibGtk::PrintSettings*), file_name.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def load_key_file(key_file, group_name)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.print_settings_load_key_file(to_unsafe.as(LibGtk::PrintSettings*), key_file.to_unsafe.as(LibGLib::KeyFile*), group_name && group_name, pointerof(__error))
+      __return_value = LibGtk.print_settings_load_key_file(to_unsafe.as(LibGtk::PrintSettings*), key_file.to_unsafe.as(LibGLib::KeyFile*), group_name && group_name.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def set(key, value)
-      __return_value = LibGtk.print_settings_set(to_unsafe.as(LibGtk::PrintSettings*), key, value && value)
+      __return_value = LibGtk.print_settings_set(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe, value && value.to_unsafe)
       __return_value
     end
 
     def set_bool(key, value)
-      __return_value = LibGtk.print_settings_set_bool(to_unsafe.as(LibGtk::PrintSettings*), key, value)
+      __return_value = LibGtk.print_settings_set_bool(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe, value)
       __return_value
     end
 
@@ -237,17 +237,17 @@ module Gtk
     end
 
     def default_source=(default_source)
-      __return_value = LibGtk.print_settings_set_default_source(to_unsafe.as(LibGtk::PrintSettings*), default_source)
+      __return_value = LibGtk.print_settings_set_default_source(to_unsafe.as(LibGtk::PrintSettings*), default_source.to_unsafe)
       __return_value
     end
 
     def dither=(dither)
-      __return_value = LibGtk.print_settings_set_dither(to_unsafe.as(LibGtk::PrintSettings*), dither)
+      __return_value = LibGtk.print_settings_set_dither(to_unsafe.as(LibGtk::PrintSettings*), dither.to_unsafe)
       __return_value
     end
 
     def set_double(key, value)
-      __return_value = LibGtk.print_settings_set_double(to_unsafe.as(LibGtk::PrintSettings*), key, Float64.new(value))
+      __return_value = LibGtk.print_settings_set_double(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe, Float64.new(value))
       __return_value
     end
 
@@ -257,22 +257,22 @@ module Gtk
     end
 
     def finishings=(finishings)
-      __return_value = LibGtk.print_settings_set_finishings(to_unsafe.as(LibGtk::PrintSettings*), finishings)
+      __return_value = LibGtk.print_settings_set_finishings(to_unsafe.as(LibGtk::PrintSettings*), finishings.to_unsafe)
       __return_value
     end
 
     def set_int(key, value)
-      __return_value = LibGtk.print_settings_set_int(to_unsafe.as(LibGtk::PrintSettings*), key, Int32.new(value))
+      __return_value = LibGtk.print_settings_set_int(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe, Int32.new(value))
       __return_value
     end
 
     def set_length(key, value, unit)
-      __return_value = LibGtk.print_settings_set_length(to_unsafe.as(LibGtk::PrintSettings*), key, Float64.new(value), unit)
+      __return_value = LibGtk.print_settings_set_length(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe, Float64.new(value), unit)
       __return_value
     end
 
     def media_type=(media_type)
-      __return_value = LibGtk.print_settings_set_media_type(to_unsafe.as(LibGtk::PrintSettings*), media_type)
+      __return_value = LibGtk.print_settings_set_media_type(to_unsafe.as(LibGtk::PrintSettings*), media_type.to_unsafe)
       __return_value
     end
 
@@ -297,7 +297,7 @@ module Gtk
     end
 
     def output_bin=(output_bin)
-      __return_value = LibGtk.print_settings_set_output_bin(to_unsafe.as(LibGtk::PrintSettings*), output_bin)
+      __return_value = LibGtk.print_settings_set_output_bin(to_unsafe.as(LibGtk::PrintSettings*), output_bin.to_unsafe)
       __return_value
     end
 
@@ -332,7 +332,7 @@ module Gtk
     end
 
     def printer=(printer)
-      __return_value = LibGtk.print_settings_set_printer(to_unsafe.as(LibGtk::PrintSettings*), printer)
+      __return_value = LibGtk.print_settings_set_printer(to_unsafe.as(LibGtk::PrintSettings*), printer.to_unsafe)
       __return_value
     end
 
@@ -373,18 +373,18 @@ module Gtk
 
     def to_file(file_name)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.print_settings_to_file(to_unsafe.as(LibGtk::PrintSettings*), file_name, pointerof(__error))
+      __return_value = LibGtk.print_settings_to_file(to_unsafe.as(LibGtk::PrintSettings*), file_name.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def to_key_file(key_file, group_name)
-      __return_value = LibGtk.print_settings_to_key_file(to_unsafe.as(LibGtk::PrintSettings*), key_file.to_unsafe.as(LibGLib::KeyFile*), group_name)
+      __return_value = LibGtk.print_settings_to_key_file(to_unsafe.as(LibGtk::PrintSettings*), key_file.to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe)
       __return_value
     end
 
     def unset(key)
-      __return_value = LibGtk.print_settings_unset(to_unsafe.as(LibGtk::PrintSettings*), key)
+      __return_value = LibGtk.print_settings_unset(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe)
       __return_value
     end
 

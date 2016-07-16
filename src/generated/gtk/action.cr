@@ -26,7 +26,7 @@ module Gtk
 
 
     def self.new(name, label, tooltip, stock_id) : self
-      __return_value = LibGtk.action_new(name, label && label, tooltip && tooltip, stock_id && stock_id)
+      __return_value = LibGtk.action_new(name.to_unsafe, label && label.to_unsafe, tooltip && tooltip.to_unsafe, stock_id && stock_id.to_unsafe)
       cast Gtk::Action.new(__return_value)
     end
 
@@ -166,7 +166,7 @@ module Gtk
     end
 
     def accel_path=(accel_path)
-      __return_value = LibGtk.action_set_accel_path(to_unsafe.as(LibGtk::Action*), accel_path)
+      __return_value = LibGtk.action_set_accel_path(to_unsafe.as(LibGtk::Action*), accel_path.to_unsafe)
       __return_value
     end
 
@@ -181,7 +181,7 @@ module Gtk
     end
 
     def icon_name=(icon_name)
-      __return_value = LibGtk.action_set_icon_name(to_unsafe.as(LibGtk::Action*), icon_name)
+      __return_value = LibGtk.action_set_icon_name(to_unsafe.as(LibGtk::Action*), icon_name.to_unsafe)
       __return_value
     end
 
@@ -191,7 +191,7 @@ module Gtk
     end
 
     def label=(label)
-      __return_value = LibGtk.action_set_label(to_unsafe.as(LibGtk::Action*), label)
+      __return_value = LibGtk.action_set_label(to_unsafe.as(LibGtk::Action*), label.to_unsafe)
       __return_value
     end
 
@@ -201,17 +201,17 @@ module Gtk
     end
 
     def short_label=(short_label)
-      __return_value = LibGtk.action_set_short_label(to_unsafe.as(LibGtk::Action*), short_label)
+      __return_value = LibGtk.action_set_short_label(to_unsafe.as(LibGtk::Action*), short_label.to_unsafe)
       __return_value
     end
 
     def stock_id=(stock_id)
-      __return_value = LibGtk.action_set_stock_id(to_unsafe.as(LibGtk::Action*), stock_id)
+      __return_value = LibGtk.action_set_stock_id(to_unsafe.as(LibGtk::Action*), stock_id.to_unsafe)
       __return_value
     end
 
     def tooltip=(tooltip)
-      __return_value = LibGtk.action_set_tooltip(to_unsafe.as(LibGtk::Action*), tooltip)
+      __return_value = LibGtk.action_set_tooltip(to_unsafe.as(LibGtk::Action*), tooltip.to_unsafe)
       __return_value
     end
 
@@ -235,7 +235,7 @@ module Gtk
       __return_value
     end
 
-    alias ActivateSignal = Action -> 
+    alias ActivateSignal = Action ->
     def on_activate(&__block : ActivateSignal)
       __callback = ->(_arg0 : LibGtk::Action*) {
        __return_value = __block.call(Action.new(_arg0))

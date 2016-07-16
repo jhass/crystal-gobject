@@ -2,6 +2,11 @@ module Gst
   class CapsFeatures
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGst::CapsFeatures*))
+    end
+
     @gst_caps_features : LibGst::CapsFeatures*?
     def initialize(@gst_caps_features : LibGst::CapsFeatures*)
     end
@@ -21,7 +26,7 @@ module Gst
     end
 
     def add(feature)
-      __return_value = LibGst.caps_features_add(to_unsafe.as(LibGst::CapsFeatures*), feature)
+      __return_value = LibGst.caps_features_add(to_unsafe.as(LibGst::CapsFeatures*), feature.to_unsafe)
       __return_value
     end
 
@@ -31,7 +36,7 @@ module Gst
     end
 
     def contains(feature)
-      __return_value = LibGst.caps_features_contains(to_unsafe.as(LibGst::CapsFeatures*), feature)
+      __return_value = LibGst.caps_features_contains(to_unsafe.as(LibGst::CapsFeatures*), feature.to_unsafe)
       __return_value
     end
 
@@ -76,7 +81,7 @@ module Gst
     end
 
     def remove(feature)
-      __return_value = LibGst.caps_features_remove(to_unsafe.as(LibGst::CapsFeatures*), feature)
+      __return_value = LibGst.caps_features_remove(to_unsafe.as(LibGst::CapsFeatures*), feature.to_unsafe)
       __return_value
     end
 
@@ -96,7 +101,7 @@ module Gst
     end
 
     def self.from_string(features)
-      __return_value = LibGst.caps_features_from_string(features)
+      __return_value = LibGst.caps_features_from_string(features.to_unsafe)
       Gst::CapsFeatures.new(__return_value) if __return_value
     end
 

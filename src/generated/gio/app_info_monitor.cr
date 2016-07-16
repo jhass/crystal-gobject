@@ -13,7 +13,7 @@ module Gio
       Gio::AppInfoMonitor.new(__return_value)
     end
 
-    alias ChangedSignal = AppInfoMonitor -> 
+    alias ChangedSignal = AppInfoMonitor ->
     def on_changed(&__block : ChangedSignal)
       __callback = ->(_arg0 : LibGio::AppInfoMonitor*) {
        __return_value = __block.call(AppInfoMonitor.new(_arg0))

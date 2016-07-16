@@ -2,6 +2,17 @@ module Gst
   class Message
     include GObject::WrappedType
 
+    def self.new(mini_object : Gst::MiniObject|Nil = nil, type : Gst::MessageType|Nil = nil, timestamp : UInt64|Nil = nil, src : Gst::Object|Nil = nil, seqnum : UInt32|Nil = nil) : self
+      ptr = Pointer(UInt8).malloc(120, 0u8)
+      new(ptr.as(LibGst::Message*)).tap do |object|
+        object.mini_object = mini_object unless mini_object.nil?
+        object.type = type unless type.nil?
+        object.timestamp = timestamp unless timestamp.nil?
+        object.src = src unless src.nil?
+        object.seqnum = seqnum unless seqnum.nil?
+      end
+    end
+
     @gst_message : LibGst::Message*?
     def initialize(@gst_message : LibGst::Message*)
     end
@@ -71,7 +82,7 @@ module Gst
     end
 
     def self.new_error(src, error, debug) : self
-      __return_value = LibGst.message_new_error(src && src.to_unsafe.as(LibGst::Object*), error, debug)
+      __return_value = LibGst.message_new_error(src && src.to_unsafe.as(LibGst::Object*), error, debug.to_unsafe)
       cast Gst::Message.new(__return_value)
     end
 
@@ -81,7 +92,7 @@ module Gst
     end
 
     def self.new_info(src, error, debug) : self
-      __return_value = LibGst.message_new_info(src && src.to_unsafe.as(LibGst::Object*), error, debug)
+      __return_value = LibGst.message_new_info(src && src.to_unsafe.as(LibGst::Object*), error, debug.to_unsafe)
       cast Gst::Message.new(__return_value)
     end
 
@@ -91,7 +102,7 @@ module Gst
     end
 
     def self.new_need_context(src, context_type) : self
-      __return_value = LibGst.message_new_need_context(src && src.to_unsafe.as(LibGst::Object*), context_type)
+      __return_value = LibGst.message_new_need_context(src && src.to_unsafe.as(LibGst::Object*), context_type.to_unsafe)
       cast Gst::Message.new(__return_value)
     end
 
@@ -101,7 +112,7 @@ module Gst
     end
 
     def self.new_progress(src, type, code, text) : self
-      __return_value = LibGst.message_new_progress(src.to_unsafe.as(LibGst::Object*), type, code, text)
+      __return_value = LibGst.message_new_progress(src.to_unsafe.as(LibGst::Object*), type, code.to_unsafe, text.to_unsafe)
       cast Gst::Message.new(__return_value)
     end
 
@@ -176,7 +187,7 @@ module Gst
     end
 
     def self.new_warning(src, error, debug) : self
-      __return_value = LibGst.message_new_warning(src && src.to_unsafe.as(LibGst::Object*), error, debug)
+      __return_value = LibGst.message_new_warning(src && src.to_unsafe.as(LibGst::Object*), error, debug.to_unsafe)
       cast Gst::Message.new(__return_value)
     end
 
@@ -196,7 +207,7 @@ module Gst
     end
 
     def has_name(name)
-      __return_value = LibGst.message_has_name(to_unsafe.as(LibGst::Message*), name)
+      __return_value = LibGst.message_has_name(to_unsafe.as(LibGst::Message*), name.to_unsafe)
       __return_value
     end
 
@@ -226,7 +237,7 @@ module Gst
     end
 
     def parse_context_type(context_type)
-      __return_value = LibGst.message_parse_context_type(to_unsafe.as(LibGst::Message*), context_type)
+      __return_value = LibGst.message_parse_context_type(to_unsafe.as(LibGst::Message*), context_type.to_unsafe)
       __return_value
     end
 
@@ -241,7 +252,7 @@ module Gst
     end
 
     def parse_error(gerror, debug)
-      __return_value = LibGst.message_parse_error(to_unsafe.as(LibGst::Message*), gerror, debug)
+      __return_value = LibGst.message_parse_error(to_unsafe.as(LibGst::Message*), gerror, debug.to_unsafe)
       __return_value
     end
 
@@ -256,7 +267,7 @@ module Gst
     end
 
     def parse_info(gerror, debug)
-      __return_value = LibGst.message_parse_info(to_unsafe.as(LibGst::Message*), gerror, debug)
+      __return_value = LibGst.message_parse_info(to_unsafe.as(LibGst::Message*), gerror, debug.to_unsafe)
       __return_value
     end
 
@@ -266,7 +277,7 @@ module Gst
     end
 
     def parse_progress(type, code, text)
-      __return_value = LibGst.message_parse_progress(to_unsafe.as(LibGst::Message*), type, code, text)
+      __return_value = LibGst.message_parse_progress(to_unsafe.as(LibGst::Message*), type, code.to_unsafe, text.to_unsafe)
       __return_value
     end
 
@@ -341,7 +352,7 @@ module Gst
     end
 
     def parse_warning(gerror, debug)
-      __return_value = LibGst.message_parse_warning(to_unsafe.as(LibGst::Message*), gerror, debug)
+      __return_value = LibGst.message_parse_warning(to_unsafe.as(LibGst::Message*), gerror, debug.to_unsafe)
       __return_value
     end
 
@@ -373,6 +384,54 @@ module Gst
     def stream_status_object=(object)
       __return_value = LibGst.message_set_stream_status_object(to_unsafe.as(LibGst::Message*), object.to_unsafe.as(LibGObject::Value*))
       __return_value
+    end
+
+    def mini_object
+      Gst::MiniObject.new((to_unsafe.value.mini_object))
+    end
+
+    def mini_object=(value : Gst::MiniObject)
+      to_unsafe.value.mini_object = value
+    end
+
+    def type
+      (to_unsafe.value.type)
+    end
+
+    def type=(value : Gst::MessageType)
+      to_unsafe.value.type = value
+    end
+
+    def timestamp
+      (to_unsafe.value.timestamp)
+    end
+
+    def timestamp=(value : UInt64)
+      to_unsafe.value.timestamp = UInt64.new(value)
+    end
+
+    def src
+      Gst::Object.new((to_unsafe.value.src))
+    end
+
+    def src=(value : Gst::Object)
+      to_unsafe.value.src = value.to_unsafe.as(LibGst::Object*)
+    end
+
+    def seqnum
+      (to_unsafe.value.seqnum)
+    end
+
+    def seqnum=(value : UInt32)
+      to_unsafe.value.seqnum = UInt32.new(value)
+    end
+
+    def lock
+      (to_unsafe.value.lock)
+    end
+
+    def cond
+      GLib::Cond.new((to_unsafe.value.cond))
     end
 
   end

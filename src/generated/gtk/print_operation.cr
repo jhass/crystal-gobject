@@ -112,7 +112,7 @@ module Gtk
     end
 
     def custom_tab_label=(label)
-      __return_value = LibGtk.print_operation_set_custom_tab_label(to_unsafe.as(LibGtk::PrintOperation*), label && label)
+      __return_value = LibGtk.print_operation_set_custom_tab_label(to_unsafe.as(LibGtk::PrintOperation*), label && label.to_unsafe)
       __return_value
     end
 
@@ -132,7 +132,7 @@ module Gtk
     end
 
     def export_filename=(filename)
-      __return_value = LibGtk.print_operation_set_export_filename(to_unsafe.as(LibGtk::PrintOperation*), filename)
+      __return_value = LibGtk.print_operation_set_export_filename(to_unsafe.as(LibGtk::PrintOperation*), filename.to_unsafe)
       __return_value
     end
 
@@ -142,7 +142,7 @@ module Gtk
     end
 
     def job_name=(job_name)
-      __return_value = LibGtk.print_operation_set_job_name(to_unsafe.as(LibGtk::PrintOperation*), job_name)
+      __return_value = LibGtk.print_operation_set_job_name(to_unsafe.as(LibGtk::PrintOperation*), job_name.to_unsafe)
       __return_value
     end
 
@@ -181,7 +181,7 @@ module Gtk
       __return_value
     end
 
-    alias BeginPrintSignal = PrintOperation, Gtk::PrintContext -> 
+    alias BeginPrintSignal = PrintOperation, Gtk::PrintContext ->
     def on_begin_print(&__block : BeginPrintSignal)
       __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintContext*) {
        __return_value = __block.call(PrintOperation.new(_arg0), Gtk::PrintContext.new(_arg1))
@@ -199,7 +199,7 @@ module Gtk
       connect("create-custom-widget", __callback)
     end
 
-    alias CustomWidgetApplySignal = PrintOperation, Gtk::Widget -> 
+    alias CustomWidgetApplySignal = PrintOperation, Gtk::Widget ->
     def on_custom_widget_apply(&__block : CustomWidgetApplySignal)
       __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::Widget*) {
        __return_value = __block.call(PrintOperation.new(_arg0), Gtk::Widget.new(_arg1))
@@ -208,7 +208,7 @@ module Gtk
       connect("custom-widget-apply", __callback)
     end
 
-    alias DoneSignal = PrintOperation, Gtk::PrintOperationResult -> 
+    alias DoneSignal = PrintOperation, Gtk::PrintOperationResult ->
     def on_done(&__block : DoneSignal)
       __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintOperationResult*) {
        __return_value = __block.call(PrintOperation.new(_arg0), _arg1)
@@ -217,7 +217,7 @@ module Gtk
       connect("done", __callback)
     end
 
-    alias DrawPageSignal = PrintOperation, Gtk::PrintContext, Int32 -> 
+    alias DrawPageSignal = PrintOperation, Gtk::PrintContext, Int32 ->
     def on_draw_page(&__block : DrawPageSignal)
       __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintContext*, _arg2 : LibGtk::Int32*) {
        __return_value = __block.call(PrintOperation.new(_arg0), Gtk::PrintContext.new(_arg1), _arg2)
@@ -226,7 +226,7 @@ module Gtk
       connect("draw-page", __callback)
     end
 
-    alias EndPrintSignal = PrintOperation, Gtk::PrintContext -> 
+    alias EndPrintSignal = PrintOperation, Gtk::PrintContext ->
     def on_end_print(&__block : EndPrintSignal)
       __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintContext*) {
        __return_value = __block.call(PrintOperation.new(_arg0), Gtk::PrintContext.new(_arg1))
@@ -253,7 +253,7 @@ module Gtk
       connect("preview", __callback)
     end
 
-    alias RequestPageSetupSignal = PrintOperation, Gtk::PrintContext, Int32, Gtk::PageSetup -> 
+    alias RequestPageSetupSignal = PrintOperation, Gtk::PrintContext, Int32, Gtk::PageSetup ->
     def on_request_page_setup(&__block : RequestPageSetupSignal)
       __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintContext*, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::LibGtk::PageSetup*) {
        __return_value = __block.call(PrintOperation.new(_arg0), Gtk::PrintContext.new(_arg1), _arg2, Gtk::PageSetup.new(_arg3))
@@ -262,7 +262,7 @@ module Gtk
       connect("request-page-setup", __callback)
     end
 
-    alias StatusChangedSignal = PrintOperation -> 
+    alias StatusChangedSignal = PrintOperation ->
     def on_status_changed(&__block : StatusChangedSignal)
       __callback = ->(_arg0 : LibGtk::PrintOperation*) {
        __return_value = __block.call(PrintOperation.new(_arg0))
@@ -271,7 +271,7 @@ module Gtk
       connect("status-changed", __callback)
     end
 
-    alias UpdateCustomWidgetSignal = PrintOperation, Gtk::Widget, Gtk::PageSetup, Gtk::PrintSettings -> 
+    alias UpdateCustomWidgetSignal = PrintOperation, Gtk::Widget, Gtk::PageSetup, Gtk::PrintSettings ->
     def on_update_custom_widget(&__block : UpdateCustomWidgetSignal)
       __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::Widget*, _arg2 : LibGtk::LibGtk::PageSetup*, _arg3 : LibGtk::LibGtk::PrintSettings*) {
        __return_value = __block.call(PrintOperation.new(_arg0), Gtk::Widget.new(_arg1), Gtk::PageSetup.new(_arg2), Gtk::PrintSettings.new(_arg3))

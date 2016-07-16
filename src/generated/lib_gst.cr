@@ -536,7 +536,7 @@ lib LibGst
 
   struct Iterator # struct
     copy : LibGst::IteratorCopyFunction
-    next : LibGst::IteratorNextFunction
+    next_ : LibGst::IteratorNextFunction
     item : LibGst::IteratorItemFunction
     resync : LibGst::IteratorResyncFunction
     free : LibGst::IteratorFreeFunction
@@ -2009,18 +2009,21 @@ lib LibGst
   ##    Flags
   ###########################################
 
+  @[Flags]
   enum AllocatorFlags : UInt32
     ZERO_NONE = 0
     CUSTOM_ALLOC = 16
     LAST = 1048576
   end
 
+  @[Flags]
   enum BinFlags : UInt32
     ZERO_NONE = 0
     NO_RESYNC = 16384
     LAST = 524288
   end
 
+  @[Flags]
   enum BufferCopyFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -2032,6 +2035,7 @@ lib LibGst
     DEEP = 32
   end
 
+  @[Flags]
   enum BufferFlags : UInt32
     ZERO_NONE = 0
     LIVE = 16
@@ -2049,6 +2053,7 @@ lib LibGst
     LAST = 1048576
   end
 
+  @[Flags]
   enum BufferPoolAcquireFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -2058,17 +2063,20 @@ lib LibGst
     LAST = 65536
   end
 
+  @[Flags]
   enum BusFlags : UInt32
     ZERO_NONE = 0
     FLUSHING = 16
     FLAG_LAST = 32
   end
 
+  @[Flags]
   enum CapsFlags : UInt32
     ZERO_NONE = 0
     ANY = 16
   end
 
+  @[Flags]
   enum ClockFlags : UInt32
     ZERO_NONE = 0
     CAN_DO_SINGLE_SYNC = 16
@@ -2081,6 +2089,7 @@ lib LibGst
     LAST = 4096
   end
 
+  @[Flags]
   enum DebugGraphDetails : Int32
     ZERO_NONE = 0
     MEDIA_TYPE = 1
@@ -2092,6 +2101,7 @@ lib LibGst
     VERBOSE = -1
   end
 
+  @[Flags]
   enum ElementFlags : UInt32
     ZERO_NONE = 0
     LOCKED_STATE = 16
@@ -2103,6 +2113,7 @@ lib LibGst
     LAST = 16384
   end
 
+  @[Flags]
   enum EventTypeFlags : UInt32
     ZERO_NONE = 0
     UPSTREAM = 1
@@ -2112,6 +2123,7 @@ lib LibGst
     STICKY_MULTI = 16
   end
 
+  @[Flags]
   enum LockFlags : UInt32
     ZERO_NONE = 0
     READ = 1
@@ -2120,6 +2132,7 @@ lib LibGst
     LAST = 256
   end
 
+  @[Flags]
   enum MapFlags : UInt32
     ZERO_NONE = 0
     READ = 1
@@ -2127,6 +2140,7 @@ lib LibGst
     FLAG_LAST = 65536
   end
 
+  @[Flags]
   enum MemoryFlags : UInt32
     ZERO_NONE = 0
     READONLY = 2
@@ -2138,6 +2152,7 @@ lib LibGst
     LAST = 1048576
   end
 
+  @[Flags]
   enum MessageType : UInt32
     ZERO_NONE = 0
     UNKNOWN = 0
@@ -2180,6 +2195,7 @@ lib LibGst
   fun message_type_get_name = gst_message_type_get_name(type : LibGst::MessageType) : UInt8*
   fun message_type_to_quark = gst_message_type_to_quark(type : LibGst::MessageType) : UInt32
 
+  @[Flags]
   enum MetaFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -2189,6 +2205,7 @@ lib LibGst
     LAST = 65536
   end
 
+  @[Flags]
   enum MiniObjectFlags : UInt32
     ZERO_NONE = 0
     LOCKABLE = 1
@@ -2196,11 +2213,13 @@ lib LibGst
     LAST = 16
   end
 
+  @[Flags]
   enum ObjectFlags : UInt32
     ZERO_NONE = 0
     LAST = 16
   end
 
+  @[Flags]
   enum PadFlags : UInt32
     ZERO_NONE = 0
     BLOCKED = 16
@@ -2219,6 +2238,7 @@ lib LibGst
     LAST = 1048576
   end
 
+  @[Flags]
   enum PadLinkCheck : UInt32
     ZERO_NONE = 0
     NOTHING = 0
@@ -2228,6 +2248,7 @@ lib LibGst
     DEFAULT = 5
   end
 
+  @[Flags]
   enum PadProbeType : UInt32
     ZERO_NONE = 0
     INVALID = 0
@@ -2254,11 +2275,13 @@ lib LibGst
     SCHEDULING = 12288
   end
 
+  @[Flags]
   enum PadTemplateFlags : UInt32
     ZERO_NONE = 0
     LAST = 256
   end
 
+  @[Flags]
   enum ParseFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -2266,12 +2289,14 @@ lib LibGst
     NO_SINGLE_ELEMENT_BINS = 2
   end
 
+  @[Flags]
   enum PipelineFlags : UInt32
     ZERO_NONE = 0
     FIXED_CLOCK = 524288
     LAST = 8388608
   end
 
+  @[Flags]
   enum PluginDependencyFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -2281,12 +2306,14 @@ lib LibGst
     FILE_NAME_IS_PREFIX = 8
   end
 
+  @[Flags]
   enum PluginFlags : UInt32
     ZERO_NONE = 0
     CACHED = 16
     BLACKLISTED = 32
   end
 
+  @[Flags]
   enum QueryTypeFlags : UInt32
     ZERO_NONE = 0
     UPSTREAM = 1
@@ -2294,6 +2321,7 @@ lib LibGst
     SERIALIZED = 4
   end
 
+  @[Flags]
   enum SchedulingFlags : UInt32
     ZERO_NONE = 0
     SEEKABLE = 1
@@ -2301,6 +2329,7 @@ lib LibGst
     BANDWIDTH_LIMITED = 4
   end
 
+  @[Flags]
   enum SeekFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -2317,6 +2346,7 @@ lib LibGst
     TRICKMODE_NO_AUDIO = 256
   end
 
+  @[Flags]
   enum SegmentFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -2328,6 +2358,7 @@ lib LibGst
     TRICKMODE_NO_AUDIO = 256
   end
 
+  @[Flags]
   enum StreamFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -2336,6 +2367,7 @@ lib LibGst
     UNSELECT = 4
   end
 
+  @[Flags]
   enum TracerValueFlags : UInt32
     ZERO_NONE = 0
     NONE = 0

@@ -2,6 +2,14 @@ module Gio
   class FileAttributeInfoList
     include GObject::WrappedType
 
+    def self.new(infos : Gio::FileAttributeInfo|Nil = nil, n_infos : Int32|Nil = nil) : self
+      ptr = Pointer(UInt8).malloc(16, 0u8)
+      new(ptr.as(LibGio::FileAttributeInfoList*)).tap do |object|
+        object.infos = infos unless infos.nil?
+        object.n_infos = n_infos unless n_infos.nil?
+      end
+    end
+
     @gio_file_attribute_info_list : LibGio::FileAttributeInfoList*?
     def initialize(@gio_file_attribute_info_list : LibGio::FileAttributeInfoList*)
     end
@@ -16,7 +24,7 @@ module Gio
     end
 
     def add(name, type, flags)
-      __return_value = LibGio.file_attribute_info_list_add(to_unsafe.as(LibGio::FileAttributeInfoList*), name, type, flags)
+      __return_value = LibGio.file_attribute_info_list_add(to_unsafe.as(LibGio::FileAttributeInfoList*), name.to_unsafe, type, flags)
       __return_value
     end
 
@@ -26,7 +34,7 @@ module Gio
     end
 
     def lookup(name)
-      __return_value = LibGio.file_attribute_info_list_lookup(to_unsafe.as(LibGio::FileAttributeInfoList*), name)
+      __return_value = LibGio.file_attribute_info_list_lookup(to_unsafe.as(LibGio::FileAttributeInfoList*), name.to_unsafe)
       Gio::FileAttributeInfo.new(__return_value)
     end
 
@@ -38,6 +46,22 @@ module Gio
     def unref
       __return_value = LibGio.file_attribute_info_list_unref(to_unsafe.as(LibGio::FileAttributeInfoList*))
       __return_value
+    end
+
+    def infos
+      Gio::FileAttributeInfo.new((to_unsafe.value.infos))
+    end
+
+    def infos=(value : Gio::FileAttributeInfo)
+      to_unsafe.value.infos = value.to_unsafe.as(LibGio::FileAttributeInfo*)
+    end
+
+    def n_infos
+      (to_unsafe.value.n_infos)
+    end
+
+    def n_infos=(value : Int32)
+      to_unsafe.value.n_infos = Int32.new(value)
     end
 
   end

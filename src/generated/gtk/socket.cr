@@ -32,7 +32,7 @@ module Gtk
       Gdk::Window.new(__return_value) if __return_value
     end
 
-    alias PlugAddedSignal = Socket -> 
+    alias PlugAddedSignal = Socket ->
     def on_plug_added(&__block : PlugAddedSignal)
       __callback = ->(_arg0 : LibGtk::Socket*) {
        __return_value = __block.call(Socket.new(_arg0))

@@ -2,6 +2,11 @@ module GLib
   class Source
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(96, 0)
+      super(ptr.as(LibGLib::Source*))
+    end
+
     @g_lib_source : LibGLib::Source*?
     def initialize(@g_lib_source : LibGLib::Source*)
     end
@@ -136,7 +141,7 @@ module GLib
     end
 
     def name=(name)
-      __return_value = LibGLib.source_set_name(to_unsafe.as(LibGLib::Source*), name)
+      __return_value = LibGLib.source_set_name(to_unsafe.as(LibGLib::Source*), name.to_unsafe)
       __return_value
     end
 
@@ -171,8 +176,60 @@ module GLib
     end
 
     def self.name_by_id=(tag, name)
-      __return_value = LibGLib.source_set_name_by_id(UInt32.new(tag), name)
+      __return_value = LibGLib.source_set_name_by_id(UInt32.new(tag), name.to_unsafe)
       __return_value
+    end
+
+    def callback_data
+      (to_unsafe.value.callback_data)
+    end
+
+    def callback_funcs
+      GLib::SourceCallbackFuncs.new((to_unsafe.value.callback_funcs))
+    end
+
+    def source_funcs
+      GLib::SourceFuncs.new((to_unsafe.value.source_funcs))
+    end
+
+    def ref_count
+      (to_unsafe.value.ref_count)
+    end
+
+    def context
+      GLib::MainContext.new((to_unsafe.value.context))
+    end
+
+    def priority
+      (to_unsafe.value.priority)
+    end
+
+    def flags
+      (to_unsafe.value.flags)
+    end
+
+    def source_id
+      (to_unsafe.value.source_id)
+    end
+
+    def poll_fds
+      (to_unsafe.value.poll_fds)
+    end
+
+    def prev
+      GLib::Source.new((to_unsafe.value.prev))
+    end
+
+    def next
+      GLib::Source.new((to_unsafe.value.next_))
+    end
+
+    def name
+      (raise "Expected string but got null" unless (to_unsafe.value.name); ::String.new((to_unsafe.value.name)))
+    end
+
+    def priv
+      GLib::SourcePrivate.new((to_unsafe.value.priv))
     end
 
   end

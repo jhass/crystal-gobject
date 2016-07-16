@@ -20,7 +20,7 @@ module Gtk
       __return_value
     end
 
-    alias SwipeSignal = GestureSwipe, Float64, Float64 -> 
+    alias SwipeSignal = GestureSwipe, Float64, Float64 ->
     def on_swipe(&__block : SwipeSignal)
       __callback = ->(_arg0 : LibGtk::GestureSwipe*, _arg1 : LibGtk::Float64*, _arg2 : LibGtk::Float64*) {
        __return_value = __block.call(GestureSwipe.new(_arg0), _arg1, _arg2)

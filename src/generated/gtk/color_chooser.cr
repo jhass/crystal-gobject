@@ -25,7 +25,7 @@ module Gtk
       __return_value
     end
 
-    alias ColorActivatedSignal = ColorChooser, Gdk::RGBA -> 
+    alias ColorActivatedSignal = ColorChooser, Gdk::RGBA ->
     def on_color_activated(&__block : ColorActivatedSignal)
       __callback = ->(_arg0 : LibGtk::ColorChooser*, _arg1 : LibGtk::LibGdk::RGBA*) {
        __return_value = __block.call(ColorChooser.new(_arg0), Gdk::RGBA.new(_arg1))

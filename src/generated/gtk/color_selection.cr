@@ -24,7 +24,7 @@ module Gtk
     end
 
     def self.palette_from_string(str, colors, n_colors)
-      __return_value = LibGtk.color_selection_palette_from_string(str, colors, Int32.new(n_colors))
+      __return_value = LibGtk.color_selection_palette_from_string(str.to_unsafe, colors, Int32.new(n_colors))
       __return_value
     end
 
@@ -118,7 +118,7 @@ module Gtk
       __return_value
     end
 
-    alias ColorChangedSignal = ColorSelection -> 
+    alias ColorChangedSignal = ColorSelection ->
     def on_color_changed(&__block : ColorChangedSignal)
       __callback = ->(_arg0 : LibGtk::ColorSelection*) {
        __return_value = __block.call(ColorSelection.new(_arg0))

@@ -24,7 +24,7 @@ module Gtk
       __return_value
     end
 
-    alias NextMatchSignal = SearchEntry -> 
+    alias NextMatchSignal = SearchEntry ->
     def on_next_match(&__block : NextMatchSignal)
       __callback = ->(_arg0 : LibGtk::SearchEntry*) {
        __return_value = __block.call(SearchEntry.new(_arg0))
@@ -33,7 +33,7 @@ module Gtk
       connect("next-match", __callback)
     end
 
-    alias PreviousMatchSignal = SearchEntry -> 
+    alias PreviousMatchSignal = SearchEntry ->
     def on_previous_match(&__block : PreviousMatchSignal)
       __callback = ->(_arg0 : LibGtk::SearchEntry*) {
        __return_value = __block.call(SearchEntry.new(_arg0))
@@ -42,7 +42,7 @@ module Gtk
       connect("previous-match", __callback)
     end
 
-    alias SearchChangedSignal = SearchEntry -> 
+    alias SearchChangedSignal = SearchEntry ->
     def on_search_changed(&__block : SearchChangedSignal)
       __callback = ->(_arg0 : LibGtk::SearchEntry*) {
        __return_value = __block.call(SearchEntry.new(_arg0))
@@ -51,7 +51,7 @@ module Gtk
       connect("search-changed", __callback)
     end
 
-    alias StopSearchSignal = SearchEntry -> 
+    alias StopSearchSignal = SearchEntry ->
     def on_stop_search(&__block : StopSearchSignal)
       __callback = ->(_arg0 : LibGtk::SearchEntry*) {
        __return_value = __block.call(SearchEntry.new(_arg0))

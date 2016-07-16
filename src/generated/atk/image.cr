@@ -21,7 +21,7 @@ module Atk
     end
 
     def image_description=(description)
-      __return_value = LibAtk.image_set_image_description(to_unsafe.as(LibAtk::Image*), description)
+      __return_value = LibAtk.image_set_image_description(to_unsafe.as(LibAtk::Image*), description.to_unsafe)
       __return_value
     end
 

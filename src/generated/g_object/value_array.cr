@@ -2,6 +2,14 @@ module GObject
   class ValueArray
     include GObject::WrappedType
 
+    def self.new(n_values : UInt32|Nil = nil, values : GObject::Value|Nil = nil) : self
+      ptr = Pointer(UInt8).malloc(24, 0u8)
+      new(ptr.as(LibGObject::ValueArray*)).tap do |object|
+        object.n_values = n_values unless n_values.nil?
+        object.values = values unless values.nil?
+      end
+    end
+
     @g_object_value_array : LibGObject::ValueArray*?
     def initialize(@g_object_value_array : LibGObject::ValueArray*)
     end
@@ -53,6 +61,26 @@ module GObject
     def sort(compare_func : LibGLib::CompareDataFunc, user_data)
       __return_value = LibGObject.value_array_sort(to_unsafe.as(LibGObject::ValueArray*), compare_func, user_data && user_data)
       GObject::ValueArray.new(__return_value)
+    end
+
+    def n_values
+      (to_unsafe.value.n_values)
+    end
+
+    def n_values=(value : UInt32)
+      to_unsafe.value.n_values = UInt32.new(value)
+    end
+
+    def values
+      GObject::Value.new((to_unsafe.value.values))
+    end
+
+    def values=(value : GObject::Value)
+      to_unsafe.value.values = value.to_unsafe.as(LibGObject::Value*)
+    end
+
+    def n_prealloced
+      (to_unsafe.value.n_prealloced)
     end
 
   end

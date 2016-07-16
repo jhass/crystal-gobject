@@ -13,30 +13,30 @@ module Gio
 
 
 
-    def self.new_from_file(file)
+    def self.new_from_file(file) : self
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.tls_certificate_new_from_file(file, pointerof(__error))
+      __return_value = LibGio.tls_certificate_new_from_file(file.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
-      Gio::TlsCertificate.new(__return_value)
+      cast Gio::TlsCertificate.new(__return_value)
     end
 
-    def self.new_from_files(cert_file, key_file)
+    def self.new_from_files(cert_file, key_file) : self
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.tls_certificate_new_from_files(cert_file, key_file, pointerof(__error))
+      __return_value = LibGio.tls_certificate_new_from_files(cert_file.to_unsafe, key_file.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
-      Gio::TlsCertificate.new(__return_value)
+      cast Gio::TlsCertificate.new(__return_value)
     end
 
-    def self.new_from_pem(data, length)
+    def self.new_from_pem(data, length) : self
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.tls_certificate_new_from_pem(data, Int64.new(length), pointerof(__error))
+      __return_value = LibGio.tls_certificate_new_from_pem(data.to_unsafe, Int64.new(length), pointerof(__error))
       GLib::Error.assert __error
-      Gio::TlsCertificate.new(__return_value)
+      cast Gio::TlsCertificate.new(__return_value)
     end
 
     def self.list_new_from_file(file)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.tls_certificate_list_new_from_file(file, pointerof(__error))
+      __return_value = LibGio.tls_certificate_list_new_from_file(file.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

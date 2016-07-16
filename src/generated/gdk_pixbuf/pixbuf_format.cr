@@ -2,6 +2,11 @@ module GdkPixbuf
   class PixbufFormat
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGdkPixbuf::PixbufFormat*))
+    end
+
     @gdk_pixbuf_pixbuf_format : LibGdkPixbuf::PixbufFormat*?
     def initialize(@gdk_pixbuf_pixbuf_format : LibGdkPixbuf::PixbufFormat*)
     end

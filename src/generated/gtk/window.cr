@@ -77,7 +77,7 @@ module Gtk
 
     def self.default_icon_from_file=(filename)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.window_set_default_icon_from_file(filename, pointerof(__error))
+      __return_value = LibGtk.window_set_default_icon_from_file(filename.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -88,7 +88,7 @@ module Gtk
     end
 
     def self.set_default_icon_name(name)
-      __return_value = LibGtk.window_set_default_icon_name(name)
+      __return_value = LibGtk.window_set_default_icon_name(name.to_unsafe)
       __return_value
     end
 
@@ -373,7 +373,7 @@ module Gtk
     end
 
     def parse_geometry(geometry)
-      __return_value = LibGtk.window_parse_geometry(to_unsafe.as(LibGtk::Window*), geometry)
+      __return_value = LibGtk.window_parse_geometry(to_unsafe.as(LibGtk::Window*), geometry.to_unsafe)
       __return_value
     end
 
@@ -514,7 +514,7 @@ module Gtk
 
     def set_icon_from_file(filename)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.window_set_icon_from_file(to_unsafe.as(LibGtk::Window*), filename, pointerof(__error))
+      __return_value = LibGtk.window_set_icon_from_file(to_unsafe.as(LibGtk::Window*), filename.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -525,7 +525,7 @@ module Gtk
     end
 
     def icon_name=(name)
-      __return_value = LibGtk.window_set_icon_name(to_unsafe.as(LibGtk::Window*), name && name)
+      __return_value = LibGtk.window_set_icon_name(to_unsafe.as(LibGtk::Window*), name && name.to_unsafe)
       __return_value
     end
 
@@ -570,7 +570,7 @@ module Gtk
     end
 
     def role=(role)
-      __return_value = LibGtk.window_set_role(to_unsafe.as(LibGtk::Window*), role)
+      __return_value = LibGtk.window_set_role(to_unsafe.as(LibGtk::Window*), role.to_unsafe)
       __return_value
     end
 
@@ -590,12 +590,12 @@ module Gtk
     end
 
     def startup_id=(startup_id)
-      __return_value = LibGtk.window_set_startup_id(to_unsafe.as(LibGtk::Window*), startup_id)
+      __return_value = LibGtk.window_set_startup_id(to_unsafe.as(LibGtk::Window*), startup_id.to_unsafe)
       __return_value
     end
 
     def title=(title)
-      __return_value = LibGtk.window_set_title(to_unsafe.as(LibGtk::Window*), title)
+      __return_value = LibGtk.window_set_title(to_unsafe.as(LibGtk::Window*), title.to_unsafe)
       __return_value
     end
 
@@ -620,7 +620,7 @@ module Gtk
     end
 
     def set_wmclass(wmclass_name, wmclass_class)
-      __return_value = LibGtk.window_set_wmclass(to_unsafe.as(LibGtk::Window*), wmclass_name, wmclass_class)
+      __return_value = LibGtk.window_set_wmclass(to_unsafe.as(LibGtk::Window*), wmclass_name.to_unsafe, wmclass_class.to_unsafe)
       __return_value
     end
 
@@ -644,7 +644,7 @@ module Gtk
       __return_value
     end
 
-    alias ActivateDefaultSignal = Window -> 
+    alias ActivateDefaultSignal = Window ->
     def on_activate_default(&__block : ActivateDefaultSignal)
       __callback = ->(_arg0 : LibGtk::Window*) {
        __return_value = __block.call(Window.new(_arg0))
@@ -653,7 +653,7 @@ module Gtk
       connect("activate-default", __callback)
     end
 
-    alias ActivateFocusSignal = Window -> 
+    alias ActivateFocusSignal = Window ->
     def on_activate_focus(&__block : ActivateFocusSignal)
       __callback = ->(_arg0 : LibGtk::Window*) {
        __return_value = __block.call(Window.new(_arg0))
@@ -671,7 +671,7 @@ module Gtk
       connect("enable-debugging", __callback)
     end
 
-    alias KeysChangedSignal = Window -> 
+    alias KeysChangedSignal = Window ->
     def on_keys_changed(&__block : KeysChangedSignal)
       __callback = ->(_arg0 : LibGtk::Window*) {
        __return_value = __block.call(Window.new(_arg0))
@@ -680,7 +680,7 @@ module Gtk
       connect("keys-changed", __callback)
     end
 
-    alias SetFocusSignal = Window, Gtk::Widget -> 
+    alias SetFocusSignal = Window, Gtk::Widget ->
     def on_set_focus(&__block : SetFocusSignal)
       __callback = ->(_arg0 : LibGtk::Window*, _arg1 : LibGtk::LibGtk::Widget*) {
        __return_value = __block.call(Window.new(_arg0), Gtk::Widget.new(_arg1))

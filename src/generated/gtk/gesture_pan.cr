@@ -26,7 +26,7 @@ module Gtk
       __return_value
     end
 
-    alias PanSignal = GesturePan, Gtk::PanDirection, Float64 -> 
+    alias PanSignal = GesturePan, Gtk::PanDirection, Float64 ->
     def on_pan(&__block : PanSignal)
       __callback = ->(_arg0 : LibGtk::GesturePan*, _arg1 : LibGtk::LibGtk::PanDirection*, _arg2 : LibGtk::Float64*) {
        __return_value = __block.call(GesturePan.new(_arg0), _arg1, _arg2)

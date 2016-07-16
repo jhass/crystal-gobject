@@ -2,6 +2,11 @@ module GLib
   class MatchInfo
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGLib::MatchInfo*))
+    end
+
     @g_lib_match_info : LibGLib::MatchInfo*?
     def initialize(@g_lib_match_info : LibGLib::MatchInfo*)
     end
@@ -12,7 +17,7 @@ module GLib
 
     def expand_references(string_to_expand)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.match_info_expand_references(to_unsafe.as(LibGLib::MatchInfo*), string_to_expand, pointerof(__error))
+      __return_value = LibGLib.match_info_expand_references(to_unsafe.as(LibGLib::MatchInfo*), string_to_expand.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
@@ -28,12 +33,12 @@ module GLib
     end
 
     def fetch_named(name)
-      __return_value = LibGLib.match_info_fetch_named(to_unsafe.as(LibGLib::MatchInfo*), name)
+      __return_value = LibGLib.match_info_fetch_named(to_unsafe.as(LibGLib::MatchInfo*), name.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def fetch_named_pos(name, start_pos, end_pos)
-      __return_value = LibGLib.match_info_fetch_named_pos(to_unsafe.as(LibGLib::MatchInfo*), name, Int32.new(start_pos), Int32.new(end_pos))
+      __return_value = LibGLib.match_info_fetch_named_pos(to_unsafe.as(LibGLib::MatchInfo*), name.to_unsafe, Int32.new(start_pos), Int32.new(end_pos))
       __return_value
     end
 

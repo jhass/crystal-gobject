@@ -13,7 +13,7 @@ module Gio
 
 
     def self.new(hostname, port) : self
-      __return_value = LibGio.network_address_new(hostname, UInt16.new(port))
+      __return_value = LibGio.network_address_new(hostname.to_unsafe, UInt16.new(port))
       cast Gio::NetworkAddress.new(__return_value)
     end
 
@@ -24,14 +24,14 @@ module Gio
 
     def self.parse(host_and_port, default_port)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.network_address_parse(host_and_port, UInt16.new(default_port), pointerof(__error))
+      __return_value = LibGio.network_address_parse(host_and_port.to_unsafe, UInt16.new(default_port), pointerof(__error))
       GLib::Error.assert __error
       Gio::NetworkAddress.new(__return_value)
     end
 
     def self.parse_uri(uri, default_port)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.network_address_parse_uri(uri, UInt16.new(default_port), pointerof(__error))
+      __return_value = LibGio.network_address_parse_uri(uri.to_unsafe, UInt16.new(default_port), pointerof(__error))
       GLib::Error.assert __error
       Gio::NetworkAddress.new(__return_value)
     end

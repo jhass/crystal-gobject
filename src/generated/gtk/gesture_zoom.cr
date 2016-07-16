@@ -20,7 +20,7 @@ module Gtk
       __return_value
     end
 
-    alias ScaleChangedSignal = GestureZoom, Float64 -> 
+    alias ScaleChangedSignal = GestureZoom, Float64 ->
     def on_scale_changed(&__block : ScaleChangedSignal)
       __callback = ->(_arg0 : LibGtk::GestureZoom*, _arg1 : LibGtk::Float64*) {
        __return_value = __block.call(GestureZoom.new(_arg0), _arg1)

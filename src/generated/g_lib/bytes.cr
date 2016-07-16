@@ -2,6 +2,11 @@ module GLib
   class Bytes
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGLib::Bytes*))
+    end
+
     @g_lib_bytes : LibGLib::Bytes*?
     def initialize(@g_lib_bytes : LibGLib::Bytes*)
     end

@@ -15,7 +15,7 @@ module Gtk
 
 
     def self.new(string) : self
-      __return_value = LibGtk.accel_label_new(string)
+      __return_value = LibGtk.accel_label_new(string.to_unsafe)
       cast Gtk::Widget.new(__return_value)
     end
 

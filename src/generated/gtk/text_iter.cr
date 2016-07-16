@@ -2,6 +2,11 @@ module Gtk
   class TextIter
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(80, 0)
+      super(ptr.as(LibGtk::TextIter*))
+    end
+
     @gtk_text_iter : LibGtk::TextIter*?
     def initialize(@gtk_text_iter : LibGtk::TextIter*)
     end
@@ -51,7 +56,7 @@ module Gtk
     end
 
     def backward_search(str, flags, match_start, match_end, limit)
-      __return_value = LibGtk.text_iter_backward_search(to_unsafe.as(LibGtk::TextIter*), str, flags, match_start, match_end, limit && limit.to_unsafe.as(LibGtk::TextIter*))
+      __return_value = LibGtk.text_iter_backward_search(to_unsafe.as(LibGtk::TextIter*), str.to_unsafe, flags, match_start, match_end, limit && limit.to_unsafe.as(LibGtk::TextIter*))
       __return_value
     end
 
@@ -196,7 +201,7 @@ module Gtk
     end
 
     def forward_search(str, flags, match_start, match_end, limit)
-      __return_value = LibGtk.text_iter_forward_search(to_unsafe.as(LibGtk::TextIter*), str, flags, match_start, match_end, limit && limit.to_unsafe.as(LibGtk::TextIter*))
+      __return_value = LibGtk.text_iter_forward_search(to_unsafe.as(LibGtk::TextIter*), str.to_unsafe, flags, match_start, match_end, limit && limit.to_unsafe.as(LibGtk::TextIter*))
       __return_value
     end
 
@@ -468,6 +473,62 @@ module Gtk
     def toggles_tag(tag)
       __return_value = LibGtk.text_iter_toggles_tag(to_unsafe.as(LibGtk::TextIter*), tag && tag.to_unsafe.as(LibGtk::TextTag*))
       __return_value
+    end
+
+    def dummy1
+      (to_unsafe.value.dummy1)
+    end
+
+    def dummy2
+      (to_unsafe.value.dummy2)
+    end
+
+    def dummy3
+      (to_unsafe.value.dummy3)
+    end
+
+    def dummy4
+      (to_unsafe.value.dummy4)
+    end
+
+    def dummy5
+      (to_unsafe.value.dummy5)
+    end
+
+    def dummy6
+      (to_unsafe.value.dummy6)
+    end
+
+    def dummy7
+      (to_unsafe.value.dummy7)
+    end
+
+    def dummy8
+      (to_unsafe.value.dummy8)
+    end
+
+    def dummy9
+      (to_unsafe.value.dummy9)
+    end
+
+    def dummy10
+      (to_unsafe.value.dummy10)
+    end
+
+    def dummy11
+      (to_unsafe.value.dummy11)
+    end
+
+    def dummy12
+      (to_unsafe.value.dummy12)
+    end
+
+    def dummy13
+      (to_unsafe.value.dummy13)
+    end
+
+    def dummy14
+      (to_unsafe.value.dummy14)
     end
 
   end

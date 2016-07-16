@@ -16,7 +16,7 @@ module Gio
 
 
     def self.new(path) : self
-      __return_value = LibGio.unix_socket_address_new(path)
+      __return_value = LibGio.unix_socket_address_new(path.to_unsafe)
       cast Gio::SocketAddress.new(__return_value)
     end
 

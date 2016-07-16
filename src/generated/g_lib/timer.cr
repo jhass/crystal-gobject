@@ -2,6 +2,11 @@ module GLib
   class Timer
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGLib::Timer*))
+    end
+
     @g_lib_timer : LibGLib::Timer*?
     def initialize(@g_lib_timer : LibGLib::Timer*)
     end

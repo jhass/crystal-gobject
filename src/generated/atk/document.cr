@@ -1,7 +1,7 @@
 module Atk
   module Document
     def attribute_value(attribute_name)
-      __return_value = LibAtk.document_get_attribute_value(to_unsafe.as(LibAtk::Document*), attribute_name)
+      __return_value = LibAtk.document_get_attribute_value(to_unsafe.as(LibAtk::Document*), attribute_name.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
@@ -36,11 +36,11 @@ module Atk
     end
 
     def set_attribute_value(attribute_name, attribute_value)
-      __return_value = LibAtk.document_set_attribute_value(to_unsafe.as(LibAtk::Document*), attribute_name, attribute_value)
+      __return_value = LibAtk.document_set_attribute_value(to_unsafe.as(LibAtk::Document*), attribute_name.to_unsafe, attribute_value.to_unsafe)
       __return_value
     end
 
-    alias LoadCompleteSignal = Document -> 
+    alias LoadCompleteSignal = Document ->
     def on_load_complete(&__block : LoadCompleteSignal)
       __callback = ->(_arg0 : LibAtk::Document*) {
        __return_value = __block.call(Document.new(_arg0))
@@ -49,7 +49,7 @@ module Atk
       connect("load-complete", __callback)
     end
 
-    alias LoadStoppedSignal = Document -> 
+    alias LoadStoppedSignal = Document ->
     def on_load_stopped(&__block : LoadStoppedSignal)
       __callback = ->(_arg0 : LibAtk::Document*) {
        __return_value = __block.call(Document.new(_arg0))
@@ -58,7 +58,7 @@ module Atk
       connect("load-stopped", __callback)
     end
 
-    alias PageChangedSignal = Document, Int32 -> 
+    alias PageChangedSignal = Document, Int32 ->
     def on_page_changed(&__block : PageChangedSignal)
       __callback = ->(_arg0 : LibAtk::Document*, _arg1 : LibAtk::Int32*) {
        __return_value = __block.call(Document.new(_arg0), _arg1)
@@ -67,7 +67,7 @@ module Atk
       connect("page-changed", __callback)
     end
 
-    alias ReloadSignal = Document -> 
+    alias ReloadSignal = Document ->
     def on_reload(&__block : ReloadSignal)
       __callback = ->(_arg0 : LibAtk::Document*) {
        __return_value = __block.call(Document.new(_arg0))

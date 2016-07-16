@@ -31,12 +31,12 @@ module Gtk
     end
 
     def preedit_string(str, attrs, cursor_pos)
-      __return_value = LibGtk.i_m_context_get_preedit_string(to_unsafe.as(LibGtk::IMContext*), str, attrs.to_unsafe.as(LibPango::AttrList*), Int32.new(cursor_pos))
+      __return_value = LibGtk.i_m_context_get_preedit_string(to_unsafe.as(LibGtk::IMContext*), str.to_unsafe, attrs.to_unsafe.as(LibPango::AttrList*), Int32.new(cursor_pos))
       __return_value
     end
 
     def surrounding(text, cursor_index)
-      __return_value = LibGtk.i_m_context_get_surrounding(to_unsafe.as(LibGtk::IMContext*), text, Int32.new(cursor_index))
+      __return_value = LibGtk.i_m_context_get_surrounding(to_unsafe.as(LibGtk::IMContext*), text.to_unsafe, Int32.new(cursor_index))
       __return_value
     end
 
@@ -56,7 +56,7 @@ module Gtk
     end
 
     def set_surrounding(text, len, cursor_index)
-      __return_value = LibGtk.i_m_context_set_surrounding(to_unsafe.as(LibGtk::IMContext*), text, Int32.new(len), Int32.new(cursor_index))
+      __return_value = LibGtk.i_m_context_set_surrounding(to_unsafe.as(LibGtk::IMContext*), text.to_unsafe, Int32.new(len), Int32.new(cursor_index))
       __return_value
     end
 
@@ -65,7 +65,7 @@ module Gtk
       __return_value
     end
 
-    alias CommitSignal = IMContext, UInt8 -> 
+    alias CommitSignal = IMContext, String ->
     def on_commit(&__block : CommitSignal)
       __callback = ->(_arg0 : LibGtk::IMContext*, _arg1 : LibGtk::UInt8**) {
        __return_value = __block.call(IMContext.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
@@ -83,7 +83,7 @@ module Gtk
       connect("delete-surrounding", __callback)
     end
 
-    alias PreeditChangedSignal = IMContext -> 
+    alias PreeditChangedSignal = IMContext ->
     def on_preedit_changed(&__block : PreeditChangedSignal)
       __callback = ->(_arg0 : LibGtk::IMContext*) {
        __return_value = __block.call(IMContext.new(_arg0))
@@ -92,7 +92,7 @@ module Gtk
       connect("preedit-changed", __callback)
     end
 
-    alias PreeditEndSignal = IMContext -> 
+    alias PreeditEndSignal = IMContext ->
     def on_preedit_end(&__block : PreeditEndSignal)
       __callback = ->(_arg0 : LibGtk::IMContext*) {
        __return_value = __block.call(IMContext.new(_arg0))
@@ -101,7 +101,7 @@ module Gtk
       connect("preedit-end", __callback)
     end
 
-    alias PreeditStartSignal = IMContext -> 
+    alias PreeditStartSignal = IMContext ->
     def on_preedit_start(&__block : PreeditStartSignal)
       __callback = ->(_arg0 : LibGtk::IMContext*) {
        __return_value = __block.call(IMContext.new(_arg0))

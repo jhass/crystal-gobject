@@ -39,27 +39,27 @@ module Gtk
     end
 
     def attribute_connect(renderer, attribute, column)
-      __return_value = LibGtk.cell_area_attribute_connect(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute, Int32.new(column))
+      __return_value = LibGtk.cell_area_attribute_connect(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute.to_unsafe, Int32.new(column))
       __return_value
     end
 
     def attribute_disconnect(renderer, attribute)
-      __return_value = LibGtk.cell_area_attribute_disconnect(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute)
+      __return_value = LibGtk.cell_area_attribute_disconnect(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute.to_unsafe)
       __return_value
     end
 
     def attribute_get_column(renderer, attribute)
-      __return_value = LibGtk.cell_area_attribute_get_column(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute)
+      __return_value = LibGtk.cell_area_attribute_get_column(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute.to_unsafe)
       __return_value
     end
 
     def cell_get_property(renderer, property_name, value)
-      __return_value = LibGtk.cell_area_cell_get_property(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), property_name, value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGtk.cell_area_cell_get_property(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), property_name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 
     def cell_set_property(renderer, property_name, value)
-      __return_value = LibGtk.cell_area_cell_set_property(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), property_name, value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGtk.cell_area_cell_set_property(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), property_name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 
@@ -208,7 +208,7 @@ module Gtk
       __return_value
     end
 
-    alias AddEditableSignal = CellArea, Gtk::CellRenderer, Gtk::CellEditable, Gdk::Rectangle, UInt8 -> 
+    alias AddEditableSignal = CellArea, Gtk::CellRenderer, Gtk::CellEditable, Gdk::Rectangle, String ->
     def on_add_editable(&__block : AddEditableSignal)
       __callback = ->(_arg0 : LibGtk::CellArea*, _arg1 : LibGtk::LibGtk::CellRenderer*, _arg2 : LibGtk::LibGtk::CellEditable*, _arg3 : LibGtk::LibGdk::Rectangle*, _arg4 : LibGtk::UInt8**) {
        __return_value = __block.call(CellArea.new(_arg0), Gtk::CellRenderer.new(_arg1), _arg2, Gdk::Rectangle.new(_arg3), (raise "Expected string but got null" unless _arg4; ::String.new(_arg4)))
@@ -217,7 +217,7 @@ module Gtk
       connect("add-editable", __callback)
     end
 
-    alias ApplyAttributesSignal = CellArea, Gtk::TreeModel, Gtk::TreeIter, Bool, Bool -> 
+    alias ApplyAttributesSignal = CellArea, Gtk::TreeModel, Gtk::TreeIter, Bool, Bool ->
     def on_apply_attributes(&__block : ApplyAttributesSignal)
       __callback = ->(_arg0 : LibGtk::CellArea*, _arg1 : LibGtk::LibGtk::TreeModel*, _arg2 : LibGtk::LibGtk::TreeIter*, _arg3 : LibGtk::Bool*, _arg4 : LibGtk::Bool*) {
        __return_value = __block.call(CellArea.new(_arg0), _arg1, Gtk::TreeIter.new(_arg2), _arg3, _arg4)
@@ -226,7 +226,7 @@ module Gtk
       connect("apply-attributes", __callback)
     end
 
-    alias FocusChangedSignal = CellArea, Gtk::CellRenderer, UInt8 -> 
+    alias FocusChangedSignal = CellArea, Gtk::CellRenderer, String ->
     def on_focus_changed(&__block : FocusChangedSignal)
       __callback = ->(_arg0 : LibGtk::CellArea*, _arg1 : LibGtk::LibGtk::CellRenderer*, _arg2 : LibGtk::UInt8**) {
        __return_value = __block.call(CellArea.new(_arg0), Gtk::CellRenderer.new(_arg1), (raise "Expected string but got null" unless _arg2; ::String.new(_arg2)))
@@ -235,7 +235,7 @@ module Gtk
       connect("focus-changed", __callback)
     end
 
-    alias RemoveEditableSignal = CellArea, Gtk::CellRenderer, Gtk::CellEditable -> 
+    alias RemoveEditableSignal = CellArea, Gtk::CellRenderer, Gtk::CellEditable ->
     def on_remove_editable(&__block : RemoveEditableSignal)
       __callback = ->(_arg0 : LibGtk::CellArea*, _arg1 : LibGtk::LibGtk::CellRenderer*, _arg2 : LibGtk::LibGtk::CellEditable*) {
        __return_value = __block.call(CellArea.new(_arg0), Gtk::CellRenderer.new(_arg1), _arg2)

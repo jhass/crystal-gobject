@@ -249,12 +249,12 @@ module Pango
     end
 
     def set_markup(markup, length)
-      __return_value = LibPango.layout_set_markup(to_unsafe.as(LibPango::Layout*), markup, Int32.new(length))
+      __return_value = LibPango.layout_set_markup(to_unsafe.as(LibPango::Layout*), markup.to_unsafe, Int32.new(length))
       __return_value
     end
 
     def set_markup_with_accel(markup, length, accel_marker, accel_char)
-      __return_value = LibPango.layout_set_markup_with_accel(to_unsafe.as(LibPango::Layout*), markup, Int32.new(length), UInt8.new(accel_marker), UInt8.new(accel_char))
+      __return_value = LibPango.layout_set_markup_with_accel(to_unsafe.as(LibPango::Layout*), markup.to_unsafe, Int32.new(length), UInt8.new(accel_marker), UInt8.new(accel_char))
       __return_value
     end
 
@@ -274,7 +274,7 @@ module Pango
     end
 
     def set_text(text, length)
-      __return_value = LibPango.layout_set_text(to_unsafe.as(LibPango::Layout*), text, Int32.new(length))
+      __return_value = LibPango.layout_set_text(to_unsafe.as(LibPango::Layout*), text.to_unsafe, Int32.new(length))
       __return_value
     end
 

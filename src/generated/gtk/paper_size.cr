@@ -2,6 +2,11 @@ module Gtk
   class PaperSize
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGtk::PaperSize*))
+    end
+
     @gtk_paper_size : LibGtk::PaperSize*?
     def initialize(@gtk_paper_size : LibGtk::PaperSize*)
     end
@@ -11,29 +16,29 @@ module Gtk
     end
 
     def self.new(name) : self
-      __return_value = LibGtk.paper_size_new(name && name)
+      __return_value = LibGtk.paper_size_new(name && name.to_unsafe)
       cast Gtk::PaperSize.new(__return_value)
     end
 
     def self.new_custom(name, display_name, width, height, unit) : self
-      __return_value = LibGtk.paper_size_new_custom(name, display_name, Float64.new(width), Float64.new(height), unit)
+      __return_value = LibGtk.paper_size_new_custom(name.to_unsafe, display_name.to_unsafe, Float64.new(width), Float64.new(height), unit)
       cast Gtk::PaperSize.new(__return_value)
     end
 
     def self.new_from_ipp(ipp_name, width, height) : self
-      __return_value = LibGtk.paper_size_new_from_ipp(ipp_name, Float64.new(width), Float64.new(height))
+      __return_value = LibGtk.paper_size_new_from_ipp(ipp_name.to_unsafe, Float64.new(width), Float64.new(height))
       cast Gtk::PaperSize.new(__return_value)
     end
 
-    def self.new_from_key_file(key_file, group_name)
+    def self.new_from_key_file(key_file, group_name) : self
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.paper_size_new_from_key_file(key_file.to_unsafe.as(LibGLib::KeyFile*), group_name, pointerof(__error))
+      __return_value = LibGtk.paper_size_new_from_key_file(key_file.to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
-      Gtk::PaperSize.new(__return_value)
+      cast Gtk::PaperSize.new(__return_value)
     end
 
     def self.new_from_ppd(ppd_name, ppd_display_name, width, height) : self
-      __return_value = LibGtk.paper_size_new_from_ppd(ppd_name, ppd_display_name, Float64.new(width), Float64.new(height))
+      __return_value = LibGtk.paper_size_new_from_ppd(ppd_name.to_unsafe, ppd_display_name.to_unsafe, Float64.new(width), Float64.new(height))
       cast Gtk::PaperSize.new(__return_value)
     end
 
@@ -113,7 +118,7 @@ module Gtk
     end
 
     def to_key_file(key_file, group_name)
-      __return_value = LibGtk.paper_size_to_key_file(to_unsafe.as(LibGtk::PaperSize*), key_file.to_unsafe.as(LibGLib::KeyFile*), group_name)
+      __return_value = LibGtk.paper_size_to_key_file(to_unsafe.as(LibGtk::PaperSize*), key_file.to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe)
       __return_value
     end
 

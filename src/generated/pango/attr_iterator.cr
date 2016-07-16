@@ -2,6 +2,11 @@ module Pango
   class AttrIterator
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibPango::AttrIterator*))
+    end
+
     @pango_attr_iterator : LibPango::AttrIterator*?
     def initialize(@pango_attr_iterator : LibPango::AttrIterator*)
     end

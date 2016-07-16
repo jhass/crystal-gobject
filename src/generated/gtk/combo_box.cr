@@ -161,7 +161,7 @@ module Gtk
     end
 
     def active_id=(active_id)
-      __return_value = LibGtk.combo_box_set_active_id(to_unsafe.as(LibGtk::ComboBox*), active_id && active_id)
+      __return_value = LibGtk.combo_box_set_active_id(to_unsafe.as(LibGtk::ComboBox*), active_id && active_id.to_unsafe)
       __return_value
     end
 
@@ -221,7 +221,7 @@ module Gtk
     end
 
     def title=(title)
-      __return_value = LibGtk.combo_box_set_title(to_unsafe.as(LibGtk::ComboBox*), title)
+      __return_value = LibGtk.combo_box_set_title(to_unsafe.as(LibGtk::ComboBox*), title.to_unsafe)
       __return_value
     end
 
@@ -230,7 +230,7 @@ module Gtk
       __return_value
     end
 
-    alias ChangedSignal = ComboBox -> 
+    alias ChangedSignal = ComboBox ->
     def on_changed(&__block : ChangedSignal)
       __callback = ->(_arg0 : LibGtk::ComboBox*) {
        __return_value = __block.call(ComboBox.new(_arg0))
@@ -239,16 +239,16 @@ module Gtk
       connect("changed", __callback)
     end
 
-    alias FormatEntryTextSignal = ComboBox, UInt8 -> UInt8
+    alias FormatEntryTextSignal = ComboBox, String -> String
     def on_format_entry_text(&__block : FormatEntryTextSignal)
       __callback = ->(_arg0 : LibGtk::ComboBox*, _arg1 : LibGtk::UInt8**) {
        __return_value = __block.call(ComboBox.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
-       __return_value
+       __return_value.to_unsafe
       }
       connect("format-entry-text", __callback)
     end
 
-    alias MoveActiveSignal = ComboBox, Gtk::ScrollType -> 
+    alias MoveActiveSignal = ComboBox, Gtk::ScrollType ->
     def on_move_active(&__block : MoveActiveSignal)
       __callback = ->(_arg0 : LibGtk::ComboBox*, _arg1 : LibGtk::LibGtk::ScrollType*) {
        __return_value = __block.call(ComboBox.new(_arg0), _arg1)
@@ -266,7 +266,7 @@ module Gtk
       connect("popdown", __callback)
     end
 
-    alias PopupSignal = ComboBox -> 
+    alias PopupSignal = ComboBox ->
     def on_popup(&__block : PopupSignal)
       __callback = ->(_arg0 : LibGtk::ComboBox*) {
        __return_value = __block.call(ComboBox.new(_arg0))

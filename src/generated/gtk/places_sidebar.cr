@@ -160,7 +160,7 @@ module Gtk
       connect("drag-action-requested", __callback)
     end
 
-    alias DragPerformDropSignal = PlacesSidebar, Gio::File, Void*, Int32 -> 
+    alias DragPerformDropSignal = PlacesSidebar, Gio::File, Void*, Int32 ->
     def on_drag_perform_drop(&__block : DragPerformDropSignal)
       __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGio::File*, _arg2 : LibGtk::Void***, _arg3 : LibGtk::Int32*) {
        __return_value = __block.call(PlacesSidebar.new(_arg0), _arg1, _arg2, _arg3)
@@ -169,7 +169,7 @@ module Gtk
       connect("drag-perform-drop", __callback)
     end
 
-    alias MountSignal = PlacesSidebar, Gio::MountOperation -> 
+    alias MountSignal = PlacesSidebar, Gio::MountOperation ->
     def on_mount(&__block : MountSignal)
       __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGio::MountOperation*) {
        __return_value = __block.call(PlacesSidebar.new(_arg0), Gio::MountOperation.new(_arg1))
@@ -178,7 +178,7 @@ module Gtk
       connect("mount", __callback)
     end
 
-    alias OpenLocationSignal = PlacesSidebar, Gio::File, Gtk::PlacesOpenFlags -> 
+    alias OpenLocationSignal = PlacesSidebar, Gio::File, Gtk::PlacesOpenFlags ->
     def on_open_location(&__block : OpenLocationSignal)
       __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGio::File*, _arg2 : LibGtk::LibGtk::PlacesOpenFlags*) {
        __return_value = __block.call(PlacesSidebar.new(_arg0), _arg1, _arg2)
@@ -187,7 +187,7 @@ module Gtk
       connect("open-location", __callback)
     end
 
-    alias PopulatePopupSignal = PlacesSidebar, Gtk::Widget, Gio::File, Gio::Volume -> 
+    alias PopulatePopupSignal = PlacesSidebar, Gtk::Widget, Gio::File, Gio::Volume ->
     def on_populate_popup(&__block : PopulatePopupSignal)
       __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGtk::Widget*, _arg2 : LibGtk::LibGio::File*, _arg3 : LibGtk::LibGio::Volume*) {
        __return_value = __block.call(PlacesSidebar.new(_arg0), Gtk::Widget.new(_arg1), _arg2, _arg3)
@@ -196,7 +196,7 @@ module Gtk
       connect("populate-popup", __callback)
     end
 
-    alias ShowConnectToServerSignal = PlacesSidebar -> 
+    alias ShowConnectToServerSignal = PlacesSidebar ->
     def on_show_connect_to_server(&__block : ShowConnectToServerSignal)
       __callback = ->(_arg0 : LibGtk::PlacesSidebar*) {
        __return_value = __block.call(PlacesSidebar.new(_arg0))
@@ -205,7 +205,7 @@ module Gtk
       connect("show-connect-to-server", __callback)
     end
 
-    alias ShowEnterLocationSignal = PlacesSidebar -> 
+    alias ShowEnterLocationSignal = PlacesSidebar ->
     def on_show_enter_location(&__block : ShowEnterLocationSignal)
       __callback = ->(_arg0 : LibGtk::PlacesSidebar*) {
        __return_value = __block.call(PlacesSidebar.new(_arg0))
@@ -214,7 +214,7 @@ module Gtk
       connect("show-enter-location", __callback)
     end
 
-    alias ShowErrorMessageSignal = PlacesSidebar, UInt8, UInt8 -> 
+    alias ShowErrorMessageSignal = PlacesSidebar, String, String ->
     def on_show_error_message(&__block : ShowErrorMessageSignal)
       __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::UInt8**, _arg2 : LibGtk::UInt8**) {
        __return_value = __block.call(PlacesSidebar.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)), (raise "Expected string but got null" unless _arg2; ::String.new(_arg2)))
@@ -223,7 +223,7 @@ module Gtk
       connect("show-error-message", __callback)
     end
 
-    alias ShowOtherLocationsSignal = PlacesSidebar -> 
+    alias ShowOtherLocationsSignal = PlacesSidebar ->
     def on_show_other_locations(&__block : ShowOtherLocationsSignal)
       __callback = ->(_arg0 : LibGtk::PlacesSidebar*) {
        __return_value = __block.call(PlacesSidebar.new(_arg0))
@@ -232,7 +232,7 @@ module Gtk
       connect("show-other-locations", __callback)
     end
 
-    alias ShowOtherLocationsWithFlagsSignal = PlacesSidebar, Gtk::PlacesOpenFlags -> 
+    alias ShowOtherLocationsWithFlagsSignal = PlacesSidebar, Gtk::PlacesOpenFlags ->
     def on_show_other_locations_with_flags(&__block : ShowOtherLocationsWithFlagsSignal)
       __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGtk::PlacesOpenFlags*) {
        __return_value = __block.call(PlacesSidebar.new(_arg0), _arg1)
@@ -241,7 +241,7 @@ module Gtk
       connect("show-other-locations-with-flags", __callback)
     end
 
-    alias UnmountSignal = PlacesSidebar, Gio::MountOperation -> 
+    alias UnmountSignal = PlacesSidebar, Gio::MountOperation ->
     def on_unmount(&__block : UnmountSignal)
       __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGio::MountOperation*) {
        __return_value = __block.call(PlacesSidebar.new(_arg0), Gio::MountOperation.new(_arg1))

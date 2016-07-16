@@ -30,7 +30,7 @@ module Gtk
     end
 
     def style_property(widget_type, property_name, value)
-      __return_value = LibGtk.style_get_style_property(to_unsafe.as(LibGtk::Style*), UInt64.new(widget_type), property_name, value)
+      __return_value = LibGtk.style_get_style_property(to_unsafe.as(LibGtk::Style*), UInt64.new(widget_type), property_name.to_unsafe, value)
       __return_value
     end
 
@@ -40,17 +40,17 @@ module Gtk
     end
 
     def lookup_color(color_name, color)
-      __return_value = LibGtk.style_lookup_color(to_unsafe.as(LibGtk::Style*), color_name, color)
+      __return_value = LibGtk.style_lookup_color(to_unsafe.as(LibGtk::Style*), color_name.to_unsafe, color)
       __return_value
     end
 
     def lookup_icon_set(stock_id)
-      __return_value = LibGtk.style_lookup_icon_set(to_unsafe.as(LibGtk::Style*), stock_id)
+      __return_value = LibGtk.style_lookup_icon_set(to_unsafe.as(LibGtk::Style*), stock_id.to_unsafe)
       Gtk::IconSet.new(__return_value)
     end
 
     def render_icon(source, direction, state, size, widget, detail)
-      __return_value = LibGtk.style_render_icon(to_unsafe.as(LibGtk::Style*), source.to_unsafe.as(LibGtk::IconSource*), direction, state, Int32.new(size), widget && widget.to_unsafe.as(LibGtk::Widget*), detail && detail)
+      __return_value = LibGtk.style_render_icon(to_unsafe.as(LibGtk::Style*), source.to_unsafe.as(LibGtk::IconSource*), direction, state, Int32.new(size), widget && widget.to_unsafe.as(LibGtk::Widget*), detail && detail.to_unsafe)
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 
@@ -59,7 +59,7 @@ module Gtk
       __return_value
     end
 
-    alias RealizeSignal = Style -> 
+    alias RealizeSignal = Style ->
     def on_realize(&__block : RealizeSignal)
       __callback = ->(_arg0 : LibGtk::Style*) {
        __return_value = __block.call(Style.new(_arg0))
@@ -68,7 +68,7 @@ module Gtk
       connect("realize", __callback)
     end
 
-    alias UnrealizeSignal = Style -> 
+    alias UnrealizeSignal = Style ->
     def on_unrealize(&__block : UnrealizeSignal)
       __callback = ->(_arg0 : LibGtk::Style*) {
        __return_value = __block.call(Style.new(_arg0))

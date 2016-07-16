@@ -2,7 +2,7 @@ module Gio
   module AppInfo
     def self.create_from_commandline(commandline, application_name, flags)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.app_info_create_from_commandline(commandline, application_name && application_name, flags, pointerof(__error))
+      __return_value = LibGio.app_info_create_from_commandline(commandline.to_unsafe, application_name && application_name.to_unsafe, flags, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -13,45 +13,45 @@ module Gio
     end
 
     def self.all_for_type(content_type)
-      __return_value = LibGio.app_info_get_all_for_type(content_type)
+      __return_value = LibGio.app_info_get_all_for_type(content_type.to_unsafe)
       __return_value
     end
 
     def self.default_for_type(content_type, must_support_uris)
-      __return_value = LibGio.app_info_get_default_for_type(content_type, must_support_uris)
+      __return_value = LibGio.app_info_get_default_for_type(content_type.to_unsafe, must_support_uris)
       __return_value
     end
 
     def self.default_for_uri_scheme(uri_scheme)
-      __return_value = LibGio.app_info_get_default_for_uri_scheme(uri_scheme)
+      __return_value = LibGio.app_info_get_default_for_uri_scheme(uri_scheme.to_unsafe)
       __return_value
     end
 
     def self.fallback_for_type(content_type)
-      __return_value = LibGio.app_info_get_fallback_for_type(content_type)
+      __return_value = LibGio.app_info_get_fallback_for_type(content_type.to_unsafe)
       __return_value
     end
 
     def self.recommended_for_type(content_type)
-      __return_value = LibGio.app_info_get_recommended_for_type(content_type)
+      __return_value = LibGio.app_info_get_recommended_for_type(content_type.to_unsafe)
       __return_value
     end
 
     def self.launch_default_for_uri(uri, launch_context)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.app_info_launch_default_for_uri(uri, launch_context && launch_context.to_unsafe.as(LibGio::AppLaunchContext*), pointerof(__error))
+      __return_value = LibGio.app_info_launch_default_for_uri(uri.to_unsafe, launch_context && launch_context.to_unsafe.as(LibGio::AppLaunchContext*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def self.reset_type_associations(content_type)
-      __return_value = LibGio.app_info_reset_type_associations(content_type)
+      __return_value = LibGio.app_info_reset_type_associations(content_type.to_unsafe)
       __return_value
     end
 
     def add_supports_type(content_type)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.app_info_add_supports_type(to_unsafe.as(LibGio::AppInfo*), content_type, pointerof(__error))
+      __return_value = LibGio.app_info_add_supports_type(to_unsafe.as(LibGio::AppInfo*), content_type.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -137,28 +137,28 @@ module Gio
 
     def remove_supports_type(content_type)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.app_info_remove_supports_type(to_unsafe.as(LibGio::AppInfo*), content_type, pointerof(__error))
+      __return_value = LibGio.app_info_remove_supports_type(to_unsafe.as(LibGio::AppInfo*), content_type.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def set_as_default_for_extension(extension)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.app_info_set_as_default_for_extension(to_unsafe.as(LibGio::AppInfo*), extension, pointerof(__error))
+      __return_value = LibGio.app_info_set_as_default_for_extension(to_unsafe.as(LibGio::AppInfo*), extension.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def set_as_default_for_type(content_type)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.app_info_set_as_default_for_type(to_unsafe.as(LibGio::AppInfo*), content_type, pointerof(__error))
+      __return_value = LibGio.app_info_set_as_default_for_type(to_unsafe.as(LibGio::AppInfo*), content_type.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def set_as_last_used_for_type(content_type)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.app_info_set_as_last_used_for_type(to_unsafe.as(LibGio::AppInfo*), content_type, pointerof(__error))
+      __return_value = LibGio.app_info_set_as_last_used_for_type(to_unsafe.as(LibGio::AppInfo*), content_type.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

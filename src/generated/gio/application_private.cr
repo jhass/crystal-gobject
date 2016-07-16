@@ -2,6 +2,11 @@ module Gio
   class ApplicationPrivate
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGio::ApplicationPrivate*))
+    end
+
     @gio_application_private : LibGio::ApplicationPrivate*?
     def initialize(@gio_application_private : LibGio::ApplicationPrivate*)
     end

@@ -14,7 +14,7 @@ module Gio
     end
 
     def allow_mechanism(mechanism)
-      __return_value = LibGio.d_bus_auth_observer_allow_mechanism(to_unsafe.as(LibGio::DBusAuthObserver*), mechanism)
+      __return_value = LibGio.d_bus_auth_observer_allow_mechanism(to_unsafe.as(LibGio::DBusAuthObserver*), mechanism.to_unsafe)
       __return_value
     end
 
@@ -23,7 +23,7 @@ module Gio
       __return_value
     end
 
-    alias AllowMechanismSignal = DBusAuthObserver, UInt8 -> Bool
+    alias AllowMechanismSignal = DBusAuthObserver, String -> Bool
     def on_allow_mechanism(&__block : AllowMechanismSignal)
       __callback = ->(_arg0 : LibGio::DBusAuthObserver*, _arg1 : LibGio::UInt8**) {
        __return_value = __block.call(DBusAuthObserver.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))

@@ -31,7 +31,7 @@ module Gtk
     end
 
     def iter_from_string(iter, path_string)
-      __return_value = LibGtk.tree_model_get_iter_from_string(to_unsafe.as(LibGtk::TreeModel*), iter, path_string)
+      __return_value = LibGtk.tree_model_get_iter_from_string(to_unsafe.as(LibGtk::TreeModel*), iter, path_string.to_unsafe)
       __return_value
     end
 
@@ -130,7 +130,7 @@ module Gtk
       __return_value
     end
 
-    alias RowChangedSignal = TreeModel, Gtk::TreePath, Gtk::TreeIter -> 
+    alias RowChangedSignal = TreeModel, Gtk::TreePath, Gtk::TreeIter ->
     def on_row_changed(&__block : RowChangedSignal)
       __callback = ->(_arg0 : LibGtk::TreeModel*, _arg1 : LibGtk::LibGtk::TreePath*, _arg2 : LibGtk::LibGtk::TreeIter*) {
        __return_value = __block.call(TreeModel.new(_arg0), Gtk::TreePath.new(_arg1), Gtk::TreeIter.new(_arg2))
@@ -139,7 +139,7 @@ module Gtk
       connect("row-changed", __callback)
     end
 
-    alias RowDeletedSignal = TreeModel, Gtk::TreePath -> 
+    alias RowDeletedSignal = TreeModel, Gtk::TreePath ->
     def on_row_deleted(&__block : RowDeletedSignal)
       __callback = ->(_arg0 : LibGtk::TreeModel*, _arg1 : LibGtk::LibGtk::TreePath*) {
        __return_value = __block.call(TreeModel.new(_arg0), Gtk::TreePath.new(_arg1))
@@ -148,7 +148,7 @@ module Gtk
       connect("row-deleted", __callback)
     end
 
-    alias RowHasChildToggledSignal = TreeModel, Gtk::TreePath, Gtk::TreeIter -> 
+    alias RowHasChildToggledSignal = TreeModel, Gtk::TreePath, Gtk::TreeIter ->
     def on_row_has_child_toggled(&__block : RowHasChildToggledSignal)
       __callback = ->(_arg0 : LibGtk::TreeModel*, _arg1 : LibGtk::LibGtk::TreePath*, _arg2 : LibGtk::LibGtk::TreeIter*) {
        __return_value = __block.call(TreeModel.new(_arg0), Gtk::TreePath.new(_arg1), Gtk::TreeIter.new(_arg2))
@@ -157,7 +157,7 @@ module Gtk
       connect("row-has-child-toggled", __callback)
     end
 
-    alias RowInsertedSignal = TreeModel, Gtk::TreePath, Gtk::TreeIter -> 
+    alias RowInsertedSignal = TreeModel, Gtk::TreePath, Gtk::TreeIter ->
     def on_row_inserted(&__block : RowInsertedSignal)
       __callback = ->(_arg0 : LibGtk::TreeModel*, _arg1 : LibGtk::LibGtk::TreePath*, _arg2 : LibGtk::LibGtk::TreeIter*) {
        __return_value = __block.call(TreeModel.new(_arg0), Gtk::TreePath.new(_arg1), Gtk::TreeIter.new(_arg2))

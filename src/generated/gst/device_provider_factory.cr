@@ -11,12 +11,12 @@ module Gst
     end
 
     def self.find(name)
-      __return_value = LibGst.device_provider_factory_find(name)
+      __return_value = LibGst.device_provider_factory_find(name.to_unsafe)
       Gst::DeviceProviderFactory.new(__return_value) if __return_value
     end
 
     def self.by_name(factoryname)
-      __return_value = LibGst.device_provider_factory_get_by_name(factoryname)
+      __return_value = LibGst.device_provider_factory_get_by_name(factoryname.to_unsafe)
       Gst::DeviceProvider.new(__return_value) if __return_value
     end
 
@@ -36,7 +36,7 @@ module Gst
     end
 
     def metadata(key)
-      __return_value = LibGst.device_provider_factory_get_metadata(to_unsafe.as(LibGst::DeviceProviderFactory*), key)
+      __return_value = LibGst.device_provider_factory_get_metadata(to_unsafe.as(LibGst::DeviceProviderFactory*), key.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
@@ -46,7 +46,7 @@ module Gst
     end
 
     def has_classes(classes)
-      __return_value = LibGst.device_provider_factory_has_classes(to_unsafe.as(LibGst::DeviceProviderFactory*), classes && classes)
+      __return_value = LibGst.device_provider_factory_has_classes(to_unsafe.as(LibGst::DeviceProviderFactory*), classes && classes.to_unsafe)
       __return_value
     end
 

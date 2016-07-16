@@ -29,7 +29,7 @@ module Gtk
     end
 
     def add_offset_value(name, value)
-      __return_value = LibGtk.level_bar_add_offset_value(to_unsafe.as(LibGtk::LevelBar*), name, Float64.new(value))
+      __return_value = LibGtk.level_bar_add_offset_value(to_unsafe.as(LibGtk::LevelBar*), name.to_unsafe, Float64.new(value))
       __return_value
     end
 
@@ -54,7 +54,7 @@ module Gtk
     end
 
     def offset_value(name, value)
-      __return_value = LibGtk.level_bar_get_offset_value(to_unsafe.as(LibGtk::LevelBar*), name && name, Float64.new(value))
+      __return_value = LibGtk.level_bar_get_offset_value(to_unsafe.as(LibGtk::LevelBar*), name && name.to_unsafe, Float64.new(value))
       __return_value
     end
 
@@ -64,7 +64,7 @@ module Gtk
     end
 
     def remove_offset_value(name)
-      __return_value = LibGtk.level_bar_remove_offset_value(to_unsafe.as(LibGtk::LevelBar*), name && name)
+      __return_value = LibGtk.level_bar_remove_offset_value(to_unsafe.as(LibGtk::LevelBar*), name && name.to_unsafe)
       __return_value
     end
 
@@ -93,7 +93,7 @@ module Gtk
       __return_value
     end
 
-    alias OffsetChangedSignal = LevelBar, UInt8 -> 
+    alias OffsetChangedSignal = LevelBar, String ->
     def on_offset_changed(&__block : OffsetChangedSignal)
       __callback = ->(_arg0 : LibGtk::LevelBar*, _arg1 : LibGtk::UInt8**) {
        __return_value = __block.call(LevelBar.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))

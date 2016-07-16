@@ -26,7 +26,7 @@ module Gtk
     end
 
     def add_button(button_text, response_id)
-      __return_value = LibGtk.info_bar_add_button(to_unsafe.as(LibGtk::InfoBar*), button_text, Int32.new(response_id))
+      __return_value = LibGtk.info_bar_add_button(to_unsafe.as(LibGtk::InfoBar*), button_text.to_unsafe, Int32.new(response_id))
       Gtk::Button.new(__return_value)
     end
 
@@ -75,7 +75,7 @@ module Gtk
       __return_value
     end
 
-    alias CloseSignal = InfoBar -> 
+    alias CloseSignal = InfoBar ->
     def on_close(&__block : CloseSignal)
       __callback = ->(_arg0 : LibGtk::InfoBar*) {
        __return_value = __block.call(InfoBar.new(_arg0))
@@ -84,7 +84,7 @@ module Gtk
       connect("close", __callback)
     end
 
-    alias ResponseSignal = InfoBar, Int32 -> 
+    alias ResponseSignal = InfoBar, Int32 ->
     def on_response(&__block : ResponseSignal)
       __callback = ->(_arg0 : LibGtk::InfoBar*, _arg1 : LibGtk::Int32*) {
        __return_value = __block.call(InfoBar.new(_arg0), _arg1)

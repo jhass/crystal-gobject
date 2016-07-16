@@ -15,12 +15,12 @@ module Gtk
 
 
     def self.new(application_id, flags) : self
-      __return_value = LibGtk.application_new(application_id && application_id, flags)
+      __return_value = LibGtk.application_new(application_id && application_id.to_unsafe, flags)
       cast Gtk::Application.new(__return_value)
     end
 
     def add_accelerator(accelerator, action_name, parameter)
-      __return_value = LibGtk.application_add_accelerator(to_unsafe.as(LibGtk::Application*), accelerator, action_name, parameter && parameter.to_unsafe.as(LibGLib::Variant*))
+      __return_value = LibGtk.application_add_accelerator(to_unsafe.as(LibGtk::Application*), accelerator.to_unsafe, action_name.to_unsafe, parameter && parameter.to_unsafe.as(LibGLib::Variant*))
       __return_value
     end
 
@@ -30,12 +30,12 @@ module Gtk
     end
 
     def accels_for_action(detailed_action_name)
-      __return_value = LibGtk.application_get_accels_for_action(to_unsafe.as(LibGtk::Application*), detailed_action_name)
+      __return_value = LibGtk.application_get_accels_for_action(to_unsafe.as(LibGtk::Application*), detailed_action_name.to_unsafe)
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def actions_for_accel(accel)
-      __return_value = LibGtk.application_get_actions_for_accel(to_unsafe.as(LibGtk::Application*), accel)
+      __return_value = LibGtk.application_get_actions_for_accel(to_unsafe.as(LibGtk::Application*), accel.to_unsafe)
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
@@ -50,7 +50,7 @@ module Gtk
     end
 
     def menu_by_id(id)
-      __return_value = LibGtk.application_get_menu_by_id(to_unsafe.as(LibGtk::Application*), id)
+      __return_value = LibGtk.application_get_menu_by_id(to_unsafe.as(LibGtk::Application*), id.to_unsafe)
       Gio::Menu.new(__return_value)
     end
 
@@ -70,7 +70,7 @@ module Gtk
     end
 
     def inhibit(window, flags, reason)
-      __return_value = LibGtk.application_inhibit(to_unsafe.as(LibGtk::Application*), window && window.to_unsafe.as(LibGtk::Window*), flags, reason && reason)
+      __return_value = LibGtk.application_inhibit(to_unsafe.as(LibGtk::Application*), window && window.to_unsafe.as(LibGtk::Window*), flags, reason && reason.to_unsafe)
       __return_value
     end
 
@@ -90,7 +90,7 @@ module Gtk
     end
 
     def remove_accelerator(action_name, parameter)
-      __return_value = LibGtk.application_remove_accelerator(to_unsafe.as(LibGtk::Application*), action_name, parameter && parameter.to_unsafe.as(LibGLib::Variant*))
+      __return_value = LibGtk.application_remove_accelerator(to_unsafe.as(LibGtk::Application*), action_name.to_unsafe, parameter && parameter.to_unsafe.as(LibGLib::Variant*))
       __return_value
     end
 
@@ -100,7 +100,7 @@ module Gtk
     end
 
     def set_accels_for_action(detailed_action_name, accels)
-      __return_value = LibGtk.application_set_accels_for_action(to_unsafe.as(LibGtk::Application*), detailed_action_name, accels)
+      __return_value = LibGtk.application_set_accels_for_action(to_unsafe.as(LibGtk::Application*), detailed_action_name.to_unsafe, accels)
       __return_value
     end
 
@@ -119,7 +119,7 @@ module Gtk
       __return_value
     end
 
-    alias WindowAddedSignal = Application, Gtk::Window -> 
+    alias WindowAddedSignal = Application, Gtk::Window ->
     def on_window_added(&__block : WindowAddedSignal)
       __callback = ->(_arg0 : LibGtk::Application*, _arg1 : LibGtk::LibGtk::Window*) {
        __return_value = __block.call(Application.new(_arg0), Gtk::Window.new(_arg1))
@@ -128,7 +128,7 @@ module Gtk
       connect("window-added", __callback)
     end
 
-    alias WindowRemovedSignal = Application, Gtk::Window -> 
+    alias WindowRemovedSignal = Application, Gtk::Window ->
     def on_window_removed(&__block : WindowRemovedSignal)
       __callback = ->(_arg0 : LibGtk::Application*, _arg1 : LibGtk::LibGtk::Window*) {
        __return_value = __block.call(Application.new(_arg0), Gtk::Window.new(_arg1))

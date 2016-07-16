@@ -120,7 +120,7 @@ module Gtk
       connect("render", __callback)
     end
 
-    alias ResizeSignal = GLArea, Int32, Int32 -> 
+    alias ResizeSignal = GLArea, Int32, Int32 ->
     def on_resize(&__block : ResizeSignal)
       __callback = ->(_arg0 : LibGtk::GLArea*, _arg1 : LibGtk::Int32*, _arg2 : LibGtk::Int32*) {
        __return_value = __block.call(GLArea.new(_arg0), _arg1, _arg2)

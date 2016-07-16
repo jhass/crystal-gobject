@@ -104,7 +104,7 @@ module Gtk
       __return_value
     end
 
-    alias ChangedSignal = Adjustment -> 
+    alias ChangedSignal = Adjustment ->
     def on_changed(&__block : ChangedSignal)
       __callback = ->(_arg0 : LibGtk::Adjustment*) {
        __return_value = __block.call(Adjustment.new(_arg0))
@@ -113,7 +113,7 @@ module Gtk
       connect("changed", __callback)
     end
 
-    alias ValueChangedSignal = Adjustment -> 
+    alias ValueChangedSignal = Adjustment ->
     def on_value_changed(&__block : ValueChangedSignal)
       __callback = ->(_arg0 : LibGtk::Adjustment*) {
        __return_value = __block.call(Adjustment.new(_arg0))

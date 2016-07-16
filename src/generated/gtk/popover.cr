@@ -29,7 +29,7 @@ module Gtk
     end
 
     def bind_model(model, action_namespace)
-      __return_value = LibGtk.popover_bind_model(to_unsafe.as(LibGtk::Popover*), model && model.to_unsafe.as(LibGio::MenuModel*), action_namespace && action_namespace)
+      __return_value = LibGtk.popover_bind_model(to_unsafe.as(LibGtk::Popover*), model && model.to_unsafe.as(LibGio::MenuModel*), action_namespace && action_namespace.to_unsafe)
       __return_value
     end
 
@@ -103,7 +103,7 @@ module Gtk
       __return_value
     end
 
-    alias ClosedSignal = Popover -> 
+    alias ClosedSignal = Popover ->
     def on_closed(&__block : ClosedSignal)
       __callback = ->(_arg0 : LibGtk::Popover*) {
        __return_value = __block.call(Popover.new(_arg0))

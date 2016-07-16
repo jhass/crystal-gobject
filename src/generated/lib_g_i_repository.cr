@@ -177,12 +177,14 @@ lib LibGIRepository
   ##    Flags
   ###########################################
 
+  @[Flags]
   enum FieldInfoFlags : UInt32
     ZERO_NONE = 0
     READABLE = 1
     WRITABLE = 2
   end
 
+  @[Flags]
   enum FunctionInfoFlags : UInt32
     ZERO_NONE = 0
     IS_METHOD = 1
@@ -193,11 +195,13 @@ lib LibGIRepository
     THROWS = 32
   end
 
+  @[Flags]
   enum RepositoryLoadFlags : UInt32
     ZERO_NONE = 0
     IREPOSITORY_LOAD_FLAG_LAZY = 1
   end
 
+  @[Flags]
   enum VFuncInfoFlags : UInt32
     ZERO_NONE = 0
     MUST_CHAIN_UP = 1

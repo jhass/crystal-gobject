@@ -44,7 +44,7 @@ module Gdk
       __return_value
     end
 
-    alias DeviceAddedSignal = Seat, Gdk::Device -> 
+    alias DeviceAddedSignal = Seat, Gdk::Device ->
     def on_device_added(&__block : DeviceAddedSignal)
       __callback = ->(_arg0 : LibGdk::Seat*, _arg1 : LibGdk::LibGdk::Device*) {
        __return_value = __block.call(Seat.new(_arg0), Gdk::Device.new(_arg1))
@@ -53,7 +53,7 @@ module Gdk
       connect("device-added", __callback)
     end
 
-    alias DeviceRemovedSignal = Seat, Gdk::Device -> 
+    alias DeviceRemovedSignal = Seat, Gdk::Device ->
     def on_device_removed(&__block : DeviceRemovedSignal)
       __callback = ->(_arg0 : LibGdk::Seat*, _arg1 : LibGdk::LibGdk::Device*) {
        __return_value = __block.call(Seat.new(_arg0), Gdk::Device.new(_arg1))

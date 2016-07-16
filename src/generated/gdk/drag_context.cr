@@ -68,7 +68,7 @@ module Gdk
       __return_value
     end
 
-    alias ActionChangedSignal = DragContext, Gdk::DragAction -> 
+    alias ActionChangedSignal = DragContext, Gdk::DragAction ->
     def on_action_changed(&__block : ActionChangedSignal)
       __callback = ->(_arg0 : LibGdk::DragContext*, _arg1 : LibGdk::LibGdk::DragAction*) {
        __return_value = __block.call(DragContext.new(_arg0), _arg1)
@@ -77,7 +77,7 @@ module Gdk
       connect("action-changed", __callback)
     end
 
-    alias CancelSignal = DragContext, Gdk::DragCancelReason -> 
+    alias CancelSignal = DragContext, Gdk::DragCancelReason ->
     def on_cancel(&__block : CancelSignal)
       __callback = ->(_arg0 : LibGdk::DragContext*, _arg1 : LibGdk::LibGdk::DragCancelReason*) {
        __return_value = __block.call(DragContext.new(_arg0), _arg1)
@@ -86,7 +86,7 @@ module Gdk
       connect("cancel", __callback)
     end
 
-    alias DndFinishedSignal = DragContext -> 
+    alias DndFinishedSignal = DragContext ->
     def on_dnd_finished(&__block : DndFinishedSignal)
       __callback = ->(_arg0 : LibGdk::DragContext*) {
        __return_value = __block.call(DragContext.new(_arg0))
@@ -95,7 +95,7 @@ module Gdk
       connect("dnd-finished", __callback)
     end
 
-    alias DropPerformedSignal = DragContext, Int32 -> 
+    alias DropPerformedSignal = DragContext, Int32 ->
     def on_drop_performed(&__block : DropPerformedSignal)
       __callback = ->(_arg0 : LibGdk::DragContext*, _arg1 : LibGdk::Int32*) {
        __return_value = __block.call(DragContext.new(_arg0), _arg1)

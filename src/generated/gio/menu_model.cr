@@ -9,12 +9,12 @@ module Gio
     end
 
     def item_attribute_value(item_index, attribute, expected_type)
-      __return_value = LibGio.menu_model_get_item_attribute_value(to_unsafe.as(LibGio::MenuModel*), Int32.new(item_index), attribute, expected_type && expected_type.to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGio.menu_model_get_item_attribute_value(to_unsafe.as(LibGio::MenuModel*), Int32.new(item_index), attribute.to_unsafe, expected_type && expected_type.to_unsafe.as(LibGLib::VariantType*))
       GLib::Variant.new(__return_value)
     end
 
     def item_link(item_index, link)
-      __return_value = LibGio.menu_model_get_item_link(to_unsafe.as(LibGio::MenuModel*), Int32.new(item_index), link)
+      __return_value = LibGio.menu_model_get_item_link(to_unsafe.as(LibGio::MenuModel*), Int32.new(item_index), link.to_unsafe)
       Gio::MenuModel.new(__return_value)
     end
 
@@ -43,7 +43,7 @@ module Gio
       Gio::MenuLinkIter.new(__return_value)
     end
 
-    alias ItemsChangedSignal = MenuModel, Int32, Int32, Int32 -> 
+    alias ItemsChangedSignal = MenuModel, Int32, Int32, Int32 ->
     def on_items_changed(&__block : ItemsChangedSignal)
       __callback = ->(_arg0 : LibGio::MenuModel*, _arg1 : LibGio::Int32*, _arg2 : LibGio::Int32*, _arg3 : LibGio::Int32*) {
        __return_value = __block.call(MenuModel.new(_arg0), _arg1, _arg2, _arg3)

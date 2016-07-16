@@ -2,6 +2,11 @@ module Pango
   class FontMetrics
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(36, 0)
+      super(ptr.as(LibPango::FontMetrics*))
+    end
+
     @pango_font_metrics : LibPango::FontMetrics*?
     def initialize(@pango_font_metrics : LibPango::FontMetrics*)
     end
@@ -63,6 +68,42 @@ module Pango
     def unref
       __return_value = LibPango.font_metrics_unref(to_unsafe.as(LibPango::FontMetrics*))
       __return_value
+    end
+
+    def ref_count
+      (to_unsafe.value.ref_count)
+    end
+
+    def ascent
+      (to_unsafe.value.ascent)
+    end
+
+    def descent
+      (to_unsafe.value.descent)
+    end
+
+    def approximate_char_width
+      (to_unsafe.value.approximate_char_width)
+    end
+
+    def approximate_digit_width
+      (to_unsafe.value.approximate_digit_width)
+    end
+
+    def underline_position
+      (to_unsafe.value.underline_position)
+    end
+
+    def underline_thickness
+      (to_unsafe.value.underline_thickness)
+    end
+
+    def strikethrough_position
+      (to_unsafe.value.strikethrough_position)
+    end
+
+    def strikethrough_thickness
+      (to_unsafe.value.strikethrough_thickness)
     end
 
   end

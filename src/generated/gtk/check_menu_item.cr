@@ -23,12 +23,12 @@ module Gtk
     end
 
     def self.new_with_label(label) : self
-      __return_value = LibGtk.check_menu_item_new_with_label(label)
+      __return_value = LibGtk.check_menu_item_new_with_label(label.to_unsafe)
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_mnemonic(label) : self
-      __return_value = LibGtk.check_menu_item_new_with_mnemonic(label)
+      __return_value = LibGtk.check_menu_item_new_with_mnemonic(label.to_unsafe)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -67,7 +67,7 @@ module Gtk
       __return_value
     end
 
-    alias ToggledSignal = CheckMenuItem -> 
+    alias ToggledSignal = CheckMenuItem ->
     def on_toggled(&__block : ToggledSignal)
       __callback = ->(_arg0 : LibGtk::CheckMenuItem*) {
        __return_value = __block.call(CheckMenuItem.new(_arg0))

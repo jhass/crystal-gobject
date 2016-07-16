@@ -13,18 +13,18 @@ module Gtk
       cast Gtk::PageSetup.new(__return_value)
     end
 
-    def self.new_from_file(file_name)
+    def self.new_from_file(file_name) : self
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.page_setup_new_from_file(file_name, pointerof(__error))
+      __return_value = LibGtk.page_setup_new_from_file(file_name.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
-      Gtk::PageSetup.new(__return_value)
+      cast Gtk::PageSetup.new(__return_value)
     end
 
-    def self.new_from_key_file(key_file, group_name)
+    def self.new_from_key_file(key_file, group_name) : self
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.page_setup_new_from_key_file(key_file.to_unsafe.as(LibGLib::KeyFile*), group_name && group_name, pointerof(__error))
+      __return_value = LibGtk.page_setup_new_from_key_file(key_file.to_unsafe.as(LibGLib::KeyFile*), group_name && group_name.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
-      Gtk::PageSetup.new(__return_value)
+      cast Gtk::PageSetup.new(__return_value)
     end
 
     def copy
@@ -84,14 +84,14 @@ module Gtk
 
     def load_file(file_name)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.page_setup_load_file(to_unsafe.as(LibGtk::PageSetup*), file_name, pointerof(__error))
+      __return_value = LibGtk.page_setup_load_file(to_unsafe.as(LibGtk::PageSetup*), file_name.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def load_key_file(key_file, group_name)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.page_setup_load_key_file(to_unsafe.as(LibGtk::PageSetup*), key_file.to_unsafe.as(LibGLib::KeyFile*), group_name && group_name, pointerof(__error))
+      __return_value = LibGtk.page_setup_load_key_file(to_unsafe.as(LibGtk::PageSetup*), key_file.to_unsafe.as(LibGLib::KeyFile*), group_name && group_name.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -133,13 +133,13 @@ module Gtk
 
     def to_file(file_name)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.page_setup_to_file(to_unsafe.as(LibGtk::PageSetup*), file_name, pointerof(__error))
+      __return_value = LibGtk.page_setup_to_file(to_unsafe.as(LibGtk::PageSetup*), file_name.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def to_key_file(key_file, group_name)
-      __return_value = LibGtk.page_setup_to_key_file(to_unsafe.as(LibGtk::PageSetup*), key_file.to_unsafe.as(LibGLib::KeyFile*), group_name)
+      __return_value = LibGtk.page_setup_to_key_file(to_unsafe.as(LibGtk::PageSetup*), key_file.to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe)
       __return_value
     end
 

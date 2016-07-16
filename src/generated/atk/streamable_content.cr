@@ -11,12 +11,12 @@ module Atk
     end
 
     def stream(mime_type)
-      __return_value = LibAtk.streamable_content_get_stream(to_unsafe.as(LibAtk::StreamableContent*), mime_type)
+      __return_value = LibAtk.streamable_content_get_stream(to_unsafe.as(LibAtk::StreamableContent*), mime_type.to_unsafe)
       GLib::IOChannel.new(__return_value)
     end
 
     def uri(mime_type)
-      __return_value = LibAtk.streamable_content_get_uri(to_unsafe.as(LibAtk::StreamableContent*), mime_type)
+      __return_value = LibAtk.streamable_content_get_uri(to_unsafe.as(LibAtk::StreamableContent*), mime_type.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 

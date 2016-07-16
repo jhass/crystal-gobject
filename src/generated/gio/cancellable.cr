@@ -75,7 +75,7 @@ module Gio
       __return_value
     end
 
-    alias CancelledSignal = Cancellable -> 
+    alias CancelledSignal = Cancellable ->
     def on_cancelled(&__block : CancelledSignal)
       __callback = ->(_arg0 : LibGio::Cancellable*) {
        __return_value = __block.call(Cancellable.new(_arg0))

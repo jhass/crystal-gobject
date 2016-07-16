@@ -18,7 +18,7 @@ module Gtk
 
 
     def self.new(title, action) : self
-      __return_value = LibGtk.file_chooser_button_new(title, action)
+      __return_value = LibGtk.file_chooser_button_new(title.to_unsafe, action)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -48,7 +48,7 @@ module Gtk
     end
 
     def title=(title)
-      __return_value = LibGtk.file_chooser_button_set_title(to_unsafe.as(LibGtk::FileChooserButton*), title)
+      __return_value = LibGtk.file_chooser_button_set_title(to_unsafe.as(LibGtk::FileChooserButton*), title.to_unsafe)
       __return_value
     end
 
@@ -57,7 +57,7 @@ module Gtk
       __return_value
     end
 
-    alias FileSetSignal = FileChooserButton -> 
+    alias FileSetSignal = FileChooserButton ->
     def on_file_set(&__block : FileSetSignal)
       __callback = ->(_arg0 : LibGtk::FileChooserButton*) {
        __return_value = __block.call(FileChooserButton.new(_arg0))

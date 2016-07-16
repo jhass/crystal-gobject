@@ -2,6 +2,11 @@ module GLib
   class RWLock
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(16, 0)
+      super(ptr.as(LibGLib::RWLock*))
+    end
+
     @g_lib_r_w_lock : LibGLib::RWLock*?
     def initialize(@g_lib_r_w_lock : LibGLib::RWLock*)
     end
@@ -48,6 +53,14 @@ module GLib
     def writer_unlock
       __return_value = LibGLib.r_w_lock_writer_unlock(to_unsafe.as(LibGLib::RWLock*))
       __return_value
+    end
+
+    def p
+      (to_unsafe.value.p)
+    end
+
+    def i
+      PointerIterator.new((to_unsafe.value.i)) {|__item| __item }
     end
 
   end

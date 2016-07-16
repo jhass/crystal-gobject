@@ -29,22 +29,22 @@ module Gtk
     end
 
     def self.new_from_icon_name(icon_name, size) : self
-      __return_value = LibGtk.button_new_from_icon_name(icon_name, Int32.new(size))
+      __return_value = LibGtk.button_new_from_icon_name(icon_name.to_unsafe, Int32.new(size))
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_from_stock(stock_id) : self
-      __return_value = LibGtk.button_new_from_stock(stock_id)
+      __return_value = LibGtk.button_new_from_stock(stock_id.to_unsafe)
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_label(label) : self
-      __return_value = LibGtk.button_new_with_label(label)
+      __return_value = LibGtk.button_new_with_label(label.to_unsafe)
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_mnemonic(label) : self
-      __return_value = LibGtk.button_new_with_mnemonic(label)
+      __return_value = LibGtk.button_new_with_mnemonic(label.to_unsafe)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -149,7 +149,7 @@ module Gtk
     end
 
     def label=(label)
-      __return_value = LibGtk.button_set_label(to_unsafe.as(LibGtk::Button*), label)
+      __return_value = LibGtk.button_set_label(to_unsafe.as(LibGtk::Button*), label.to_unsafe)
       __return_value
     end
 
@@ -168,7 +168,7 @@ module Gtk
       __return_value
     end
 
-    alias ActivateSignal = Button -> 
+    alias ActivateSignal = Button ->
     def on_activate(&__block : ActivateSignal)
       __callback = ->(_arg0 : LibGtk::Button*) {
        __return_value = __block.call(Button.new(_arg0))
@@ -177,7 +177,7 @@ module Gtk
       connect("activate", __callback)
     end
 
-    alias ClickedSignal = Button -> 
+    alias ClickedSignal = Button ->
     def on_clicked(&__block : ClickedSignal)
       __callback = ->(_arg0 : LibGtk::Button*) {
        __return_value = __block.call(Button.new(_arg0))
@@ -186,7 +186,7 @@ module Gtk
       connect("clicked", __callback)
     end
 
-    alias EnterSignal = Button -> 
+    alias EnterSignal = Button ->
     def on_enter(&__block : EnterSignal)
       __callback = ->(_arg0 : LibGtk::Button*) {
        __return_value = __block.call(Button.new(_arg0))
@@ -195,7 +195,7 @@ module Gtk
       connect("enter", __callback)
     end
 
-    alias LeaveSignal = Button -> 
+    alias LeaveSignal = Button ->
     def on_leave(&__block : LeaveSignal)
       __callback = ->(_arg0 : LibGtk::Button*) {
        __return_value = __block.call(Button.new(_arg0))
@@ -204,7 +204,7 @@ module Gtk
       connect("leave", __callback)
     end
 
-    alias PressedSignal = Button -> 
+    alias PressedSignal = Button ->
     def on_pressed(&__block : PressedSignal)
       __callback = ->(_arg0 : LibGtk::Button*) {
        __return_value = __block.call(Button.new(_arg0))
@@ -213,7 +213,7 @@ module Gtk
       connect("pressed", __callback)
     end
 
-    alias ReleasedSignal = Button -> 
+    alias ReleasedSignal = Button ->
     def on_released(&__block : ReleasedSignal)
       __callback = ->(_arg0 : LibGtk::Button*) {
        __return_value = __block.call(Button.new(_arg0))

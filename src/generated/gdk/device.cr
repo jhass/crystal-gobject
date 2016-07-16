@@ -161,7 +161,7 @@ module Gdk
       __return_value
     end
 
-    alias ChangedSignal = Device -> 
+    alias ChangedSignal = Device ->
     def on_changed(&__block : ChangedSignal)
       __callback = ->(_arg0 : LibGdk::Device*) {
        __return_value = __block.call(Device.new(_arg0))

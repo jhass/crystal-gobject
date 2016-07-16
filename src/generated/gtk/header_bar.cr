@@ -71,7 +71,7 @@ module Gtk
     end
 
     def decoration_layout=(layout)
-      __return_value = LibGtk.header_bar_set_decoration_layout(to_unsafe.as(LibGtk::HeaderBar*), layout && layout)
+      __return_value = LibGtk.header_bar_set_decoration_layout(to_unsafe.as(LibGtk::HeaderBar*), layout && layout.to_unsafe)
       __return_value
     end
 
@@ -86,12 +86,12 @@ module Gtk
     end
 
     def subtitle=(subtitle)
-      __return_value = LibGtk.header_bar_set_subtitle(to_unsafe.as(LibGtk::HeaderBar*), subtitle && subtitle)
+      __return_value = LibGtk.header_bar_set_subtitle(to_unsafe.as(LibGtk::HeaderBar*), subtitle && subtitle.to_unsafe)
       __return_value
     end
 
     def title=(title)
-      __return_value = LibGtk.header_bar_set_title(to_unsafe.as(LibGtk::HeaderBar*), title && title)
+      __return_value = LibGtk.header_bar_set_title(to_unsafe.as(LibGtk::HeaderBar*), title && title.to_unsafe)
       __return_value
     end
 

@@ -14,7 +14,7 @@ module Gio
     end
 
     def next(out_link, value)
-      __return_value = LibGio.menu_link_iter_get_next(to_unsafe.as(LibGio::MenuLinkIter*), out_link, value.to_unsafe.as(LibGio::MenuModel*))
+      __return_value = LibGio.menu_link_iter_get_next(to_unsafe.as(LibGio::MenuLinkIter*), out_link.to_unsafe, value.to_unsafe.as(LibGio::MenuModel*))
       __return_value
     end
 

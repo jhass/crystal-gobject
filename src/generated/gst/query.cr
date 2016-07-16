@@ -2,6 +2,14 @@ module Gst
   class Query
     include GObject::WrappedType
 
+    def self.new(mini_object : Gst::MiniObject|Nil = nil, type : Gst::QueryType|Nil = nil) : self
+      ptr = Pointer(UInt8).malloc(72, 0u8)
+      new(ptr.as(LibGst::Query*)).tap do |object|
+        object.mini_object = mini_object unless mini_object.nil?
+        object.type = type unless type.nil?
+      end
+    end
+
     @gst_query : LibGst::Query*?
     def initialize(@gst_query : LibGst::Query*)
     end
@@ -31,7 +39,7 @@ module Gst
     end
 
     def self.new_context(context_type) : self
-      __return_value = LibGst.query_new_context(context_type)
+      __return_value = LibGst.query_new_context(context_type.to_unsafe)
       cast Gst::Query.new(__return_value)
     end
 
@@ -206,7 +214,7 @@ module Gst
     end
 
     def parse_context_type(context_type)
-      __return_value = LibGst.query_parse_context_type(to_unsafe.as(LibGst::Query*), context_type)
+      __return_value = LibGst.query_parse_context_type(to_unsafe.as(LibGst::Query*), context_type.to_unsafe)
       __return_value
     end
 
@@ -281,12 +289,12 @@ module Gst
     end
 
     def parse_uri(uri)
-      __return_value = LibGst.query_parse_uri(to_unsafe.as(LibGst::Query*), uri)
+      __return_value = LibGst.query_parse_uri(to_unsafe.as(LibGst::Query*), uri.to_unsafe)
       __return_value
     end
 
     def parse_uri_redirection(uri)
-      __return_value = LibGst.query_parse_uri_redirection(to_unsafe.as(LibGst::Query*), uri)
+      __return_value = LibGst.query_parse_uri_redirection(to_unsafe.as(LibGst::Query*), uri.to_unsafe)
       __return_value
     end
 
@@ -391,12 +399,12 @@ module Gst
     end
 
     def uri=(uri)
-      __return_value = LibGst.query_set_uri(to_unsafe.as(LibGst::Query*), uri)
+      __return_value = LibGst.query_set_uri(to_unsafe.as(LibGst::Query*), uri.to_unsafe)
       __return_value
     end
 
     def uri_redirection=(uri)
-      __return_value = LibGst.query_set_uri_redirection(to_unsafe.as(LibGst::Query*), uri)
+      __return_value = LibGst.query_set_uri_redirection(to_unsafe.as(LibGst::Query*), uri.to_unsafe)
       __return_value
     end
 
@@ -408,6 +416,22 @@ module Gst
     def writable_structure
       __return_value = LibGst.query_writable_structure(to_unsafe.as(LibGst::Query*))
       Gst::Structure.new(__return_value)
+    end
+
+    def mini_object
+      Gst::MiniObject.new((to_unsafe.value.mini_object))
+    end
+
+    def mini_object=(value : Gst::MiniObject)
+      to_unsafe.value.mini_object = value
+    end
+
+    def type
+      (to_unsafe.value.type)
+    end
+
+    def type=(value : Gst::QueryType)
+      to_unsafe.value.type = value
     end
 
   end

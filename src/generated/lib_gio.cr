@@ -1686,7 +1686,7 @@ lib LibGio
     data : UInt8*
     data_len : UInt64
     resource : LibGio::Resource*
-    next : LibGio::StaticResource*
+    next_ : LibGio::StaticResource*
     padding : Void*
   end
   fun static_resource_fini = g_static_resource_fini(this : StaticResource*) : Void
@@ -1779,6 +1779,7 @@ lib LibGio
   ##    Flags
   ###########################################
 
+  @[Flags]
   enum AppInfoCreateFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -1787,6 +1788,7 @@ lib LibGio
     SUPPORTS_STARTUP_NOTIFICATION = 4
   end
 
+  @[Flags]
   enum ApplicationFlags : UInt32
     ZERO_NONE = 0
     FLAGS_NONE = 0
@@ -1799,6 +1801,7 @@ lib LibGio
     CAN_OVERRIDE_APP_ID = 64
   end
 
+  @[Flags]
   enum AskPasswordFlags : UInt32
     ZERO_NONE = 0
     NEED_PASSWORD = 1
@@ -1808,6 +1811,7 @@ lib LibGio
     ANONYMOUS_SUPPORTED = 16
   end
 
+  @[Flags]
   enum BusNameOwnerFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -1815,12 +1819,14 @@ lib LibGio
     REPLACE = 2
   end
 
+  @[Flags]
   enum BusNameWatcherFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     AUTO_START = 1
   end
 
+  @[Flags]
   enum ConverterFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -1828,6 +1834,7 @@ lib LibGio
     FLUSH = 2
   end
 
+  @[Flags]
   enum DBusCallFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -1835,12 +1842,14 @@ lib LibGio
     ALLOW_INTERACTIVE_AUTHORIZATION = 2
   end
 
+  @[Flags]
   enum DBusCapabilityFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     UNIX_FD_PASSING = 1
   end
 
+  @[Flags]
   enum DBusConnectionFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -1851,12 +1860,14 @@ lib LibGio
     DELAY_MESSAGE_PROCESSING = 16
   end
 
+  @[Flags]
   enum DBusInterfaceSkeletonFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     HANDLE_METHOD_INVOCATIONS_IN_THREAD = 1
   end
 
+  @[Flags]
   enum DBusMessageFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -1865,12 +1876,14 @@ lib LibGio
     ALLOW_INTERACTIVE_AUTHORIZATION = 4
   end
 
+  @[Flags]
   enum DBusObjectManagerClientFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     DO_NOT_AUTO_START = 1
   end
 
+  @[Flags]
   enum DBusPropertyInfoFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -1878,6 +1891,7 @@ lib LibGio
     WRITABLE = 2
   end
 
+  @[Flags]
   enum DBusProxyFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -1888,12 +1902,14 @@ lib LibGio
     DO_NOT_AUTO_START_AT_CONSTRUCTION = 16
   end
 
+  @[Flags]
   enum DBusSendMessageFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     PRESERVE_SERIAL = 1
   end
 
+  @[Flags]
   enum DBusServerFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -1901,6 +1917,7 @@ lib LibGio
     AUTHENTICATION_ALLOW_ANONYMOUS = 2
   end
 
+  @[Flags]
   enum DBusSignalFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -1909,17 +1926,20 @@ lib LibGio
     MATCH_ARG0_PATH = 4
   end
 
+  @[Flags]
   enum DBusSubtreeFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     DISPATCH_TO_UNENUMERATED_NODES = 1
   end
 
+  @[Flags]
   enum DriveStartFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
   end
 
+  @[Flags]
   enum FileAttributeInfoFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -1927,6 +1947,7 @@ lib LibGio
     COPY_WHEN_MOVED = 2
   end
 
+  @[Flags]
   enum FileCopyFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -1938,6 +1959,7 @@ lib LibGio
     TARGET_DEFAULT_PERMS = 32
   end
 
+  @[Flags]
   enum FileCreateFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -1945,6 +1967,7 @@ lib LibGio
     REPLACE_DESTINATION = 2
   end
 
+  @[Flags]
   enum FileMeasureFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -1953,6 +1976,7 @@ lib LibGio
     NO_XDEV = 8
   end
 
+  @[Flags]
   enum FileMonitorFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -1962,12 +1986,14 @@ lib LibGio
     WATCH_MOVES = 8
   end
 
+  @[Flags]
   enum FileQueryInfoFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     NOFOLLOW_SYMLINKS = 1
   end
 
+  @[Flags]
   enum IOStreamSpliceFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -1976,17 +2002,20 @@ lib LibGio
     WAIT_FOR_BOTH = 4
   end
 
+  @[Flags]
   enum MountMountFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
   end
 
+  @[Flags]
   enum MountUnmountFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     FORCE = 1
   end
 
+  @[Flags]
   enum OutputStreamSpliceFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -1994,17 +2023,20 @@ lib LibGio
     CLOSE_TARGET = 2
   end
 
+  @[Flags]
   enum ResourceFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
     COMPRESSED = 1
   end
 
+  @[Flags]
   enum ResourceLookupFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
   end
 
+  @[Flags]
   enum SettingsBindFlags : UInt32
     ZERO_NONE = 0
     DEFAULT = 0
@@ -2015,6 +2047,7 @@ lib LibGio
     INVERT_BOOLEAN = 16
   end
 
+  @[Flags]
   enum SocketMsgFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -2023,6 +2056,7 @@ lib LibGio
     DONTROUTE = 4
   end
 
+  @[Flags]
   enum SubprocessFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -2036,11 +2070,13 @@ lib LibGio
     INHERIT_FDS = 128
   end
 
+  @[Flags]
   enum TestDBusFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
   end
 
+  @[Flags]
   enum TlsCertificateFlags : UInt32
     ZERO_NONE = 0
     UNKNOWN_CA = 1
@@ -2053,11 +2089,13 @@ lib LibGio
     VALIDATE_ALL = 127
   end
 
+  @[Flags]
   enum TlsDatabaseVerifyFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
   end
 
+  @[Flags]
   enum TlsPasswordFlags : UInt32
     ZERO_NONE = 0
     NONE = 0

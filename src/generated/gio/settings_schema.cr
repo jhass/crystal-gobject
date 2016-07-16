@@ -2,6 +2,11 @@ module Gio
   class SettingsSchema
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGio::SettingsSchema*))
+    end
+
     @gio_settings_schema : LibGio::SettingsSchema*?
     def initialize(@gio_settings_schema : LibGio::SettingsSchema*)
     end
@@ -16,7 +21,7 @@ module Gio
     end
 
     def key(name)
-      __return_value = LibGio.settings_schema_get_key(to_unsafe.as(LibGio::SettingsSchema*), name)
+      __return_value = LibGio.settings_schema_get_key(to_unsafe.as(LibGio::SettingsSchema*), name.to_unsafe)
       Gio::SettingsSchemaKey.new(__return_value)
     end
 
@@ -26,7 +31,7 @@ module Gio
     end
 
     def has_key(name)
-      __return_value = LibGio.settings_schema_has_key(to_unsafe.as(LibGio::SettingsSchema*), name)
+      __return_value = LibGio.settings_schema_has_key(to_unsafe.as(LibGio::SettingsSchema*), name.to_unsafe)
       __return_value
     end
 

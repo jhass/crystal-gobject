@@ -2,6 +2,11 @@ module GLib
   class IConv
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGLib::IConv*))
+    end
+
     @g_lib_i_conv : LibGLib::IConv*?
     def initialize(@g_lib_i_conv : LibGLib::IConv*)
     end
@@ -11,7 +16,7 @@ module GLib
     end
 
     def new(inbuf, inbytes_left, outbuf, outbytes_left)
-      __return_value = LibGLib.i_conv_new(to_unsafe.as(LibGLib::IConv*), inbuf, inbytes_left, outbuf, outbytes_left)
+      __return_value = LibGLib.i_conv_new(to_unsafe.as(LibGLib::IConv*), inbuf.to_unsafe, inbytes_left, outbuf.to_unsafe, outbytes_left)
       __return_value
     end
 

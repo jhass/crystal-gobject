@@ -2,6 +2,11 @@ module Gtk
   class IconSet
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGtk::IconSet*))
+    end
+
     @gtk_icon_set : LibGtk::IconSet*?
     def initialize(@gtk_icon_set : LibGtk::IconSet*)
     end
@@ -41,7 +46,7 @@ module Gtk
     end
 
     def render_icon(style, direction, state, size, widget, detail)
-      __return_value = LibGtk.icon_set_render_icon(to_unsafe.as(LibGtk::IconSet*), style && style.to_unsafe.as(LibGtk::Style*), direction, state, Int32.new(size), widget && widget.to_unsafe.as(LibGtk::Widget*), detail && detail)
+      __return_value = LibGtk.icon_set_render_icon(to_unsafe.as(LibGtk::IconSet*), style && style.to_unsafe.as(LibGtk::Style*), direction, state, Int32.new(size), widget && widget.to_unsafe.as(LibGtk::Widget*), detail && detail.to_unsafe)
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 

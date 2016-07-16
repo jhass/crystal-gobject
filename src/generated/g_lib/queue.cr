@@ -2,6 +2,15 @@ module GLib
   class Queue
     include GObject::WrappedType
 
+    def self.new(head : Void*|Nil = nil, tail : Void*|Nil = nil, length : UInt32|Nil = nil) : self
+      ptr = Pointer(UInt8).malloc(24, 0u8)
+      new(ptr.as(LibGLib::Queue*)).tap do |object|
+        object.head = head unless head.nil?
+        object.tail = tail unless tail.nil?
+        object.length = length unless length.nil?
+      end
+    end
+
     @g_lib_queue : LibGLib::Queue*?
     def initialize(@g_lib_queue : LibGLib::Queue*)
     end
@@ -103,6 +112,30 @@ module GLib
     def reverse
       __return_value = LibGLib.queue_reverse(to_unsafe.as(LibGLib::Queue*))
       __return_value
+    end
+
+    def head
+      (to_unsafe.value.head)
+    end
+
+    def head=(value : Void*)
+      to_unsafe.value.head = value
+    end
+
+    def tail
+      (to_unsafe.value.tail)
+    end
+
+    def tail=(value : Void*)
+      to_unsafe.value.tail = value
+    end
+
+    def length
+      (to_unsafe.value.length)
+    end
+
+    def length=(value : UInt32)
+      to_unsafe.value.length = UInt32.new(value)
     end
 
   end

@@ -2,6 +2,11 @@ module Gdk
   class Atom
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGdk::Atom*))
+    end
+
     @gdk_atom : LibGdk::Atom*?
     def initialize(@gdk_atom : LibGdk::Atom*)
     end
@@ -16,12 +21,12 @@ module Gdk
     end
 
     def self.intern(atom_name, only_if_exists)
-      __return_value = LibGdk.atom_intern(atom_name, only_if_exists)
+      __return_value = LibGdk.atom_intern(atom_name.to_unsafe, only_if_exists)
       Gdk::Atom.new(__return_value)
     end
 
     def self.intern_static_string(atom_name)
-      __return_value = LibGdk.atom_intern_static_string(atom_name)
+      __return_value = LibGdk.atom_intern_static_string(atom_name.to_unsafe)
       Gdk::Atom.new(__return_value)
     end
 

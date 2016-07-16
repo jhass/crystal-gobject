@@ -23,6 +23,7 @@ lib LibGModule
   ##    Flags
   ###########################################
 
+  @[Flags]
   enum ModuleFlags : UInt32
     ZERO_NONE = 0
     LAZY = 1

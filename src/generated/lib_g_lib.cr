@@ -434,7 +434,7 @@ lib LibGLib
 
   struct Hook # struct
     data : Void*
-    next : LibGLib::Hook*
+    next_ : LibGLib::Hook*
     prev : LibGLib::Hook*
     ref_count : UInt32
     hook_id : UInt64
@@ -590,7 +590,7 @@ lib LibGLib
 
   struct List # struct
     data : Void*
-    next : Void**
+    next_ : Void**
     prev : Void**
   end
 
@@ -699,7 +699,7 @@ lib LibGLib
 
   struct Node # struct
     data : Void*
-    next : LibGLib::Node*
+    next_ : LibGLib::Node*
     prev : LibGLib::Node*
     parent : LibGLib::Node*
     children : LibGLib::Node*
@@ -883,7 +883,7 @@ lib LibGLib
 
   struct SList # struct
     data : Void*
-    next : Void**
+    next_ : Void**
   end
 
   struct Scanner # struct
@@ -989,7 +989,7 @@ lib LibGLib
     source_id : UInt32
     poll_fds : Void**
     prev : LibGLib::Source*
-    next : LibGLib::Source*
+    next_ : LibGLib::Source*
     name : UInt8*
     priv : LibGLib::SourcePrivate*
   end
@@ -1190,7 +1190,7 @@ lib LibGLib
   fun timer_stop = g_timer_stop(this : Timer*) : Void
 
   struct TrashStack # struct
-    next : LibGLib::TrashStack*
+    next_ : LibGLib::TrashStack*
   end
   fun trash_stack_height = g_trash_stack_height(stack_p : LibGLib::TrashStack*) : UInt32
   fun trash_stack_peek = g_trash_stack_peek(stack_p : LibGLib::TrashStack*) : Void*
@@ -1355,6 +1355,7 @@ lib LibGLib
   ##    Flags
   ###########################################
 
+  @[Flags]
   enum AsciiType : UInt32
     ZERO_NONE = 0
     ALNUM = 1
@@ -1370,6 +1371,7 @@ lib LibGLib
     XDIGIT = 1024
   end
 
+  @[Flags]
   enum FileTest : UInt32
     ZERO_NONE = 0
     IS_REGULAR = 1
@@ -1379,6 +1381,7 @@ lib LibGLib
     EXISTS = 16
   end
 
+  @[Flags]
   enum FormatSizeFlags : UInt32
     ZERO_NONE = 0
     DEFAULT = 0
@@ -1386,6 +1389,7 @@ lib LibGLib
     IEC_UNITS = 2
   end
 
+  @[Flags]
   enum HookFlagMask : UInt32
     ZERO_NONE = 0
     ACTIVE = 1
@@ -1393,6 +1397,7 @@ lib LibGLib
     MASK = 15
   end
 
+  @[Flags]
   enum IOCondition : UInt32
     ZERO_NONE = 0
     IN = 1
@@ -1403,6 +1408,7 @@ lib LibGLib
     NVAL = 32
   end
 
+  @[Flags]
   enum IOFlags : UInt32
     ZERO_NONE = 0
     APPEND = 1
@@ -1416,6 +1422,7 @@ lib LibGLib
     SET_MASK = 3
   end
 
+  @[Flags]
   enum KeyFileFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -1423,6 +1430,7 @@ lib LibGLib
     KEEP_TRANSLATIONS = 2
   end
 
+  @[Flags]
   enum LogLevelFlags : Int32
     ZERO_NONE = 0
     FLAG_RECURSION = 1
@@ -1436,6 +1444,7 @@ lib LibGLib
     LEVEL_MASK = -4
   end
 
+  @[Flags]
   enum MarkupCollectType : UInt32
     ZERO_NONE = 0
     INVALID = 0
@@ -1446,6 +1455,7 @@ lib LibGLib
     OPTIONAL = 65536
   end
 
+  @[Flags]
   enum MarkupParseFlags : UInt32
     ZERO_NONE = 0
     DO_NOT_USE_THIS_UNSUPPORTED_FLAG = 1
@@ -1454,6 +1464,7 @@ lib LibGLib
     IGNORE_QUALIFIED = 8
   end
 
+  @[Flags]
   enum OptionFlags : UInt32
     ZERO_NONE = 0
     NONE = 0
@@ -1466,6 +1477,7 @@ lib LibGLib
     NOALIAS = 64
   end
 
+  @[Flags]
   enum RegexCompileFlags : UInt32
     ZERO_NONE = 0
     CASELESS = 1
@@ -1488,6 +1500,7 @@ lib LibGLib
     JAVASCRIPT_COMPAT = 33554432
   end
 
+  @[Flags]
   enum RegexMatchFlags : UInt32
     ZERO_NONE = 0
     ANCHORED = 16
@@ -1507,6 +1520,7 @@ lib LibGLib
     NOTEMPTY_ATSTART = 268435456
   end
 
+  @[Flags]
   enum SpawnFlags : UInt32
     ZERO_NONE = 0
     DEFAULT = 0
@@ -1521,6 +1535,7 @@ lib LibGLib
     CLOEXEC_PIPES = 256
   end
 
+  @[Flags]
   enum TestSubprocessFlags : UInt32
     ZERO_NONE = 0
     STDIN = 1
@@ -1528,6 +1543,7 @@ lib LibGLib
     STDERR = 4
   end
 
+  @[Flags]
   enum TestTrapFlags : UInt32
     ZERO_NONE = 0
     SILENCE_STDOUT = 128
@@ -1535,6 +1551,7 @@ lib LibGLib
     INHERIT_STDIN = 512
   end
 
+  @[Flags]
   enum TraverseFlags : UInt32
     ZERO_NONE = 0
     LEAVES = 1

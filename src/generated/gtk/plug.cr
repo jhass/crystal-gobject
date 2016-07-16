@@ -49,7 +49,7 @@ module Gtk
       Gdk::Window.new(__return_value) if __return_value
     end
 
-    alias EmbeddedSignal = Plug -> 
+    alias EmbeddedSignal = Plug ->
     def on_embedded(&__block : EmbeddedSignal)
       __callback = ->(_arg0 : LibGtk::Plug*) {
        __return_value = __block.call(Plug.new(_arg0))

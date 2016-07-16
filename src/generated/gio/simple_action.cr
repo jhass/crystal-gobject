@@ -15,12 +15,12 @@ module Gio
 
 
     def self.new(name, parameter_type) : self
-      __return_value = LibGio.simple_action_new(name, parameter_type && parameter_type.to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGio.simple_action_new(name.to_unsafe, parameter_type && parameter_type.to_unsafe.as(LibGLib::VariantType*))
       cast Gio::SimpleAction.new(__return_value)
     end
 
     def self.new_stateful(name, parameter_type, state) : self
-      __return_value = LibGio.simple_action_new_stateful(name, parameter_type && parameter_type.to_unsafe.as(LibGLib::VariantType*), state.to_unsafe.as(LibGLib::Variant*))
+      __return_value = LibGio.simple_action_new_stateful(name.to_unsafe, parameter_type && parameter_type.to_unsafe.as(LibGLib::VariantType*), state.to_unsafe.as(LibGLib::Variant*))
       cast Gio::SimpleAction.new(__return_value)
     end
 
@@ -39,7 +39,7 @@ module Gio
       __return_value
     end
 
-    alias ActivateSignal = SimpleAction, GLib::Variant -> 
+    alias ActivateSignal = SimpleAction, GLib::Variant ->
     def on_activate(&__block : ActivateSignal)
       __callback = ->(_arg0 : LibGio::SimpleAction*, _arg1 : LibGio::LibGLib::Variant*) {
        __return_value = __block.call(SimpleAction.new(_arg0), GLib::Variant.new(_arg1))
@@ -48,7 +48,7 @@ module Gio
       connect("activate", __callback)
     end
 
-    alias ChangeStateSignal = SimpleAction, GLib::Variant -> 
+    alias ChangeStateSignal = SimpleAction, GLib::Variant ->
     def on_change_state(&__block : ChangeStateSignal)
       __callback = ->(_arg0 : LibGio::SimpleAction*, _arg1 : LibGio::LibGLib::Variant*) {
        __return_value = __block.call(SimpleAction.new(_arg0), GLib::Variant.new(_arg1))

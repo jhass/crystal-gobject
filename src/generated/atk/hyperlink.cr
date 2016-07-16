@@ -53,7 +53,7 @@ module Atk
       __return_value
     end
 
-    alias LinkActivatedSignal = Hyperlink -> 
+    alias LinkActivatedSignal = Hyperlink ->
     def on_link_activated(&__block : LinkActivatedSignal)
       __callback = ->(_arg0 : LibAtk::Hyperlink*) {
        __return_value = __block.call(Hyperlink.new(_arg0))

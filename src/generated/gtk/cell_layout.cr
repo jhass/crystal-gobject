@@ -1,7 +1,7 @@
 module Gtk
   module CellLayout
     def add_attribute(cell, attribute, column)
-      __return_value = LibGtk.cell_layout_add_attribute(to_unsafe.as(LibGtk::CellLayout*), cell.to_unsafe.as(LibGtk::CellRenderer*), attribute, Int32.new(column))
+      __return_value = LibGtk.cell_layout_add_attribute(to_unsafe.as(LibGtk::CellLayout*), cell.to_unsafe.as(LibGtk::CellRenderer*), attribute.to_unsafe, Int32.new(column))
       __return_value
     end
 

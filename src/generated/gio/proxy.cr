@@ -1,7 +1,7 @@
 module Gio
   module Proxy
     def self.default_for_protocol(protocol)
-      __return_value = LibGio.proxy_get_default_for_protocol(protocol)
+      __return_value = LibGio.proxy_get_default_for_protocol(protocol.to_unsafe)
       __return_value
     end
 

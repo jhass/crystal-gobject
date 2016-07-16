@@ -216,6 +216,7 @@ lib LibGdkPixbuf
   ##    Flags
   ###########################################
 
+  @[Flags]
   enum PixdataDumpType : UInt32
     ZERO_NONE = 0
     PIXDATA_STREAM = 0
@@ -228,6 +229,7 @@ lib LibGdkPixbuf
     RLE_DECODER = 65536
   end
 
+  @[Flags]
   enum PixdataType : UInt32
     ZERO_NONE = 0
     COLOR_TYPE_RGB = 1

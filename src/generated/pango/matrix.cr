@@ -2,6 +2,18 @@ module Pango
   class Matrix
     include GObject::WrappedType
 
+    def self.new(xx : Float64|Nil = nil, xy : Float64|Nil = nil, yx : Float64|Nil = nil, yy : Float64|Nil = nil, x0 : Float64|Nil = nil, y0 : Float64|Nil = nil) : self
+      ptr = Pointer(UInt8).malloc(48, 0u8)
+      new(ptr.as(LibPango::Matrix*)).tap do |object|
+        object.xx = xx unless xx.nil?
+        object.xy = xy unless xy.nil?
+        object.yx = yx unless yx.nil?
+        object.yy = yy unless yy.nil?
+        object.x0 = x0 unless x0.nil?
+        object.y0 = y0 unless y0.nil?
+      end
+    end
+
     @pango_matrix : LibPango::Matrix*?
     def initialize(@pango_matrix : LibPango::Matrix*)
     end
@@ -68,6 +80,54 @@ module Pango
     def translate(tx, ty)
       __return_value = LibPango.matrix_translate(to_unsafe.as(LibPango::Matrix*), Float64.new(tx), Float64.new(ty))
       __return_value
+    end
+
+    def xx
+      (to_unsafe.value.xx)
+    end
+
+    def xx=(value : Float64)
+      to_unsafe.value.xx = Float64.new(value)
+    end
+
+    def xy
+      (to_unsafe.value.xy)
+    end
+
+    def xy=(value : Float64)
+      to_unsafe.value.xy = Float64.new(value)
+    end
+
+    def yx
+      (to_unsafe.value.yx)
+    end
+
+    def yx=(value : Float64)
+      to_unsafe.value.yx = Float64.new(value)
+    end
+
+    def yy
+      (to_unsafe.value.yy)
+    end
+
+    def yy=(value : Float64)
+      to_unsafe.value.yy = Float64.new(value)
+    end
+
+    def x0
+      (to_unsafe.value.x0)
+    end
+
+    def x0=(value : Float64)
+      to_unsafe.value.x0 = Float64.new(value)
+    end
+
+    def y0
+      (to_unsafe.value.y0)
+    end
+
+    def y0=(value : Float64)
+      to_unsafe.value.y0 = Float64.new(value)
     end
 
   end

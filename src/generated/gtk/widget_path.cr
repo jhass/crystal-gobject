@@ -2,6 +2,11 @@ module Gtk
   class WidgetPath
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGtk::WidgetPath*))
+    end
+
     @gtk_widget_path : LibGtk::WidgetPath*?
     def initialize(@gtk_widget_path : LibGtk::WidgetPath*)
     end
@@ -56,12 +61,12 @@ module Gtk
     end
 
     def iter_add_class(pos, name)
-      __return_value = LibGtk.widget_path_iter_add_class(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name)
+      __return_value = LibGtk.widget_path_iter_add_class(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name.to_unsafe)
       __return_value
     end
 
     def iter_add_region(pos, name, flags)
-      __return_value = LibGtk.widget_path_iter_add_region(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name, flags)
+      __return_value = LibGtk.widget_path_iter_add_region(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name.to_unsafe, flags)
       __return_value
     end
 
@@ -106,12 +111,12 @@ module Gtk
     end
 
     def iter_has_class(pos, name)
-      __return_value = LibGtk.widget_path_iter_has_class(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name)
+      __return_value = LibGtk.widget_path_iter_has_class(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name.to_unsafe)
       __return_value
     end
 
     def iter_has_name(pos, name)
-      __return_value = LibGtk.widget_path_iter_has_name(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name)
+      __return_value = LibGtk.widget_path_iter_has_name(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name.to_unsafe)
       __return_value
     end
 
@@ -131,7 +136,7 @@ module Gtk
     end
 
     def iter_has_region(pos, name, flags)
-      __return_value = LibGtk.widget_path_iter_has_region(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name, flags)
+      __return_value = LibGtk.widget_path_iter_has_region(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name.to_unsafe, flags)
       __return_value
     end
 
@@ -146,22 +151,22 @@ module Gtk
     end
 
     def iter_remove_class(pos, name)
-      __return_value = LibGtk.widget_path_iter_remove_class(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name)
+      __return_value = LibGtk.widget_path_iter_remove_class(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name.to_unsafe)
       __return_value
     end
 
     def iter_remove_region(pos, name)
-      __return_value = LibGtk.widget_path_iter_remove_region(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name)
+      __return_value = LibGtk.widget_path_iter_remove_region(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name.to_unsafe)
       __return_value
     end
 
     def iter_set_name(pos, name)
-      __return_value = LibGtk.widget_path_iter_set_name(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name)
+      __return_value = LibGtk.widget_path_iter_set_name(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name.to_unsafe)
       __return_value
     end
 
     def iter_set_object_name(pos, name)
-      __return_value = LibGtk.widget_path_iter_set_object_name(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name && name)
+      __return_value = LibGtk.widget_path_iter_set_object_name(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name && name.to_unsafe)
       __return_value
     end
 

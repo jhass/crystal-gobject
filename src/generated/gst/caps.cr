@@ -2,6 +2,13 @@ module Gst
   class Caps
     include GObject::WrappedType
 
+    def self.new(mini_object : Gst::MiniObject|Nil = nil) : self
+      ptr = Pointer(UInt8).malloc(64, 0u8)
+      new(ptr.as(LibGst::Caps*)).tap do |object|
+        object.mini_object = mini_object unless mini_object.nil?
+      end
+    end
+
     @gst_caps : LibGst::Caps*?
     def initialize(@gst_caps : LibGst::Caps*)
     end
@@ -21,7 +28,7 @@ module Gst
     end
 
     def self.new_empty_simple(media_type) : self
-      __return_value = LibGst.caps_new_empty_simple(media_type)
+      __return_value = LibGst.caps_new_empty_simple(media_type.to_unsafe)
       cast Gst::Caps.new(__return_value)
     end
 
@@ -176,7 +183,7 @@ module Gst
     end
 
     def set_value(field, value)
-      __return_value = LibGst.caps_set_value(to_unsafe.as(LibGst::Caps*), field, value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGst.caps_set_value(to_unsafe.as(LibGst::Caps*), field.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 
@@ -206,8 +213,16 @@ module Gst
     end
 
     def self.from_string(string)
-      __return_value = LibGst.caps_from_string(string)
+      __return_value = LibGst.caps_from_string(string.to_unsafe)
       Gst::Caps.new(__return_value)
+    end
+
+    def mini_object
+      Gst::MiniObject.new((to_unsafe.value.mini_object))
+    end
+
+    def mini_object=(value : Gst::MiniObject)
+      to_unsafe.value.mini_object = value
     end
 
   end

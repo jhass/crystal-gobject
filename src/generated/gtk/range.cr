@@ -161,7 +161,7 @@ module Gtk
       __return_value
     end
 
-    alias AdjustBoundsSignal = Range, Float64 -> 
+    alias AdjustBoundsSignal = Range, Float64 ->
     def on_adjust_bounds(&__block : AdjustBoundsSignal)
       __callback = ->(_arg0 : LibGtk::Range*, _arg1 : LibGtk::Float64*) {
        __return_value = __block.call(Range.new(_arg0), _arg1)
@@ -179,7 +179,7 @@ module Gtk
       connect("change-value", __callback)
     end
 
-    alias MoveSliderSignal = Range, Gtk::ScrollType -> 
+    alias MoveSliderSignal = Range, Gtk::ScrollType ->
     def on_move_slider(&__block : MoveSliderSignal)
       __callback = ->(_arg0 : LibGtk::Range*, _arg1 : LibGtk::LibGtk::ScrollType*) {
        __return_value = __block.call(Range.new(_arg0), _arg1)
@@ -188,7 +188,7 @@ module Gtk
       connect("move-slider", __callback)
     end
 
-    alias ValueChangedSignal = Range -> 
+    alias ValueChangedSignal = Range ->
     def on_value_changed(&__block : ValueChangedSignal)
       __callback = ->(_arg0 : LibGtk::Range*) {
        __return_value = __block.call(Range.new(_arg0))

@@ -2,12 +2,45 @@ module Gio
   class FileAttributeInfo
     include GObject::WrappedType
 
+    def self.new(name : String|Nil = nil, type : Gio::FileAttributeType|Nil = nil, flags : Gio::FileAttributeInfoFlags|Nil = nil) : self
+      ptr = Pointer(UInt8).malloc(16, 0u8)
+      new(ptr.as(LibGio::FileAttributeInfo*)).tap do |object|
+        object.name = name unless name.nil?
+        object.type = type unless type.nil?
+        object.flags = flags unless flags.nil?
+      end
+    end
+
     @gio_file_attribute_info : LibGio::FileAttributeInfo*?
     def initialize(@gio_file_attribute_info : LibGio::FileAttributeInfo*)
     end
 
     def to_unsafe
       @gio_file_attribute_info.not_nil!
+    end
+
+    def name
+      (raise "Expected string but got null" unless (to_unsafe.value.name); ::String.new((to_unsafe.value.name)))
+    end
+
+    def name=(value : String)
+      to_unsafe.value.name = value.to_unsafe
+    end
+
+    def type
+      (to_unsafe.value.type)
+    end
+
+    def type=(value : Gio::FileAttributeType)
+      to_unsafe.value.type = value
+    end
+
+    def flags
+      (to_unsafe.value.flags)
+    end
+
+    def flags=(value : Gio::FileAttributeInfoFlags)
+      to_unsafe.value.flags = value
     end
 
   end

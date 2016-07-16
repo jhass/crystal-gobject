@@ -25,7 +25,7 @@ module Gdk
     end
 
     def open_display(name)
-      __return_value = LibGdk.display_manager_open_display(to_unsafe.as(LibGdk::DisplayManager*), name)
+      __return_value = LibGdk.display_manager_open_display(to_unsafe.as(LibGdk::DisplayManager*), name.to_unsafe)
       Gdk::Display.new(__return_value) if __return_value
     end
 
@@ -34,7 +34,7 @@ module Gdk
       __return_value
     end
 
-    alias DisplayOpenedSignal = DisplayManager, Gdk::Display -> 
+    alias DisplayOpenedSignal = DisplayManager, Gdk::Display ->
     def on_display_opened(&__block : DisplayOpenedSignal)
       __callback = ->(_arg0 : LibGdk::DisplayManager*, _arg1 : LibGdk::LibGdk::Display*) {
        __return_value = __block.call(DisplayManager.new(_arg0), Gdk::Display.new(_arg1))

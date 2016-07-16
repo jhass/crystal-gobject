@@ -15,7 +15,7 @@ module Gst
 
 
     def create_element(name)
-      __return_value = LibGst.device_create_element(to_unsafe.as(LibGst::Device*), name && name)
+      __return_value = LibGst.device_create_element(to_unsafe.as(LibGst::Device*), name && name.to_unsafe)
       Gst::Element.new(__return_value)
     end
 
@@ -40,7 +40,7 @@ module Gst
     end
 
     def has_classes(classes)
-      __return_value = LibGst.device_has_classes(to_unsafe.as(LibGst::Device*), classes)
+      __return_value = LibGst.device_has_classes(to_unsafe.as(LibGst::Device*), classes.to_unsafe)
       __return_value
     end
 
@@ -54,7 +54,7 @@ module Gst
       __return_value
     end
 
-    alias RemovedSignal = Device -> 
+    alias RemovedSignal = Device ->
     def on_removed(&__block : RemovedSignal)
       __callback = ->(_arg0 : LibGst::Device*) {
        __return_value = __block.call(Device.new(_arg0))

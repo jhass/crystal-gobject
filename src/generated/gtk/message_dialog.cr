@@ -36,7 +36,7 @@ module Gtk
     end
 
     def markup=(str)
-      __return_value = LibGtk.message_dialog_set_markup(to_unsafe.as(LibGtk::MessageDialog*), str)
+      __return_value = LibGtk.message_dialog_set_markup(to_unsafe.as(LibGtk::MessageDialog*), str.to_unsafe)
       __return_value
     end
 

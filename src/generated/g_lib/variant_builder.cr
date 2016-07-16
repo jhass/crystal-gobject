@@ -2,6 +2,11 @@ module GLib
   class VariantBuilder
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(128, 0)
+      super(ptr.as(LibGLib::VariantBuilder*))
+    end
+
     @g_lib_variant_builder : LibGLib::VariantBuilder*?
     def initialize(@g_lib_variant_builder : LibGLib::VariantBuilder*)
     end
@@ -43,6 +48,10 @@ module GLib
     def unref
       __return_value = LibGLib.variant_builder_unref(to_unsafe.as(LibGLib::VariantBuilder*))
       __return_value
+    end
+
+    def x
+      PointerIterator.new((to_unsafe.value.x)) {|__item| __item }
     end
 
   end

@@ -105,7 +105,7 @@ module Atk
       __return_value
     end
 
-    alias TextAttributesChangedSignal = Text -> 
+    alias TextAttributesChangedSignal = Text ->
     def on_text_attributes_changed(&__block : TextAttributesChangedSignal)
       __callback = ->(_arg0 : LibAtk::Text*) {
        __return_value = __block.call(Text.new(_arg0))
@@ -114,7 +114,7 @@ module Atk
       connect("text-attributes-changed", __callback)
     end
 
-    alias TextCaretMovedSignal = Text, Int32 -> 
+    alias TextCaretMovedSignal = Text, Int32 ->
     def on_text_caret_moved(&__block : TextCaretMovedSignal)
       __callback = ->(_arg0 : LibAtk::Text*, _arg1 : LibAtk::Int32*) {
        __return_value = __block.call(Text.new(_arg0), _arg1)
@@ -123,7 +123,7 @@ module Atk
       connect("text-caret-moved", __callback)
     end
 
-    alias TextChangedSignal = Text, Int32, Int32 -> 
+    alias TextChangedSignal = Text, Int32, Int32 ->
     def on_text_changed(&__block : TextChangedSignal)
       __callback = ->(_arg0 : LibAtk::Text*, _arg1 : LibAtk::Int32*, _arg2 : LibAtk::Int32*) {
        __return_value = __block.call(Text.new(_arg0), _arg1, _arg2)
@@ -132,7 +132,7 @@ module Atk
       connect("text-changed", __callback)
     end
 
-    alias TextInsertSignal = Text, Int32, Int32, UInt8 -> 
+    alias TextInsertSignal = Text, Int32, Int32, String ->
     def on_text_insert(&__block : TextInsertSignal)
       __callback = ->(_arg0 : LibAtk::Text*, _arg1 : LibAtk::Int32*, _arg2 : LibAtk::Int32*, _arg3 : LibAtk::UInt8**) {
        __return_value = __block.call(Text.new(_arg0), _arg1, _arg2, (raise "Expected string but got null" unless _arg3; ::String.new(_arg3)))
@@ -141,7 +141,7 @@ module Atk
       connect("text-insert", __callback)
     end
 
-    alias TextRemoveSignal = Text, Int32, Int32, UInt8 -> 
+    alias TextRemoveSignal = Text, Int32, Int32, String ->
     def on_text_remove(&__block : TextRemoveSignal)
       __callback = ->(_arg0 : LibAtk::Text*, _arg1 : LibAtk::Int32*, _arg2 : LibAtk::Int32*, _arg3 : LibAtk::UInt8**) {
        __return_value = __block.call(Text.new(_arg0), _arg1, _arg2, (raise "Expected string but got null" unless _arg3; ::String.new(_arg3)))
@@ -150,7 +150,7 @@ module Atk
       connect("text-remove", __callback)
     end
 
-    alias TextSelectionChangedSignal = Text -> 
+    alias TextSelectionChangedSignal = Text ->
     def on_text_selection_changed(&__block : TextSelectionChangedSignal)
       __callback = ->(_arg0 : LibAtk::Text*) {
        __return_value = __block.call(Text.new(_arg0))

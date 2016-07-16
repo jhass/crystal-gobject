@@ -11,12 +11,12 @@ module Gio
     end
 
     def lookup_action(action_name)
-      __return_value = LibGio.action_map_lookup_action(to_unsafe.as(LibGio::ActionMap*), action_name)
+      __return_value = LibGio.action_map_lookup_action(to_unsafe.as(LibGio::ActionMap*), action_name.to_unsafe)
       __return_value
     end
 
     def remove_action(action_name)
-      __return_value = LibGio.action_map_remove_action(to_unsafe.as(LibGio::ActionMap*), action_name)
+      __return_value = LibGio.action_map_remove_action(to_unsafe.as(LibGio::ActionMap*), action_name.to_unsafe)
       __return_value
     end
 

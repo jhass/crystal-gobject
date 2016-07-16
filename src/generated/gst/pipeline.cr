@@ -15,7 +15,7 @@ module Gst
 
 
     def self.new(name) : self
-      __return_value = LibGst.pipeline_new(name && name)
+      __return_value = LibGst.pipeline_new(name && name.to_unsafe)
       cast Gst::Element.new(__return_value)
     end
 

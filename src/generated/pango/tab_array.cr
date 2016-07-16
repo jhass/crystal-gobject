@@ -2,6 +2,11 @@ module Pango
   class TabArray
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibPango::TabArray*))
+    end
+
     @pango_tab_array : LibPango::TabArray*?
     def initialize(@pango_tab_array : LibPango::TabArray*)
     end

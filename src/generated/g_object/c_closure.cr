@@ -2,6 +2,14 @@ module GObject
   class CClosure
     include GObject::WrappedType
 
+    def self.new(closure : GObject::Closure|Nil = nil, callback : Void*|Nil = nil) : self
+      ptr = Pointer(UInt8).malloc(72, 0u8)
+      new(ptr.as(LibGObject::CClosure*)).tap do |object|
+        object.closure = closure unless closure.nil?
+        object.callback = callback unless callback.nil?
+      end
+    end
+
     @g_object_c_closure : LibGObject::CClosure*?
     def initialize(@g_object_c_closure : LibGObject::CClosure*)
     end
@@ -123,6 +131,22 @@ module GObject
     def self.marshal_generic(closure, return_gvalue, n_param_values, param_values, invocation_hint, marshal_data)
       __return_value = LibGObject.c_closure_marshal_generic(closure.to_unsafe.as(LibGObject::Closure*), return_gvalue.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint && invocation_hint, marshal_data && marshal_data)
       __return_value
+    end
+
+    def closure
+      GObject::Closure.new((to_unsafe.value.closure))
+    end
+
+    def closure=(value : GObject::Closure)
+      to_unsafe.value.closure = value
+    end
+
+    def callback
+      (to_unsafe.value.callback)
+    end
+
+    def callback=(value : Void*)
+      to_unsafe.value.callback = value
     end
 
   end

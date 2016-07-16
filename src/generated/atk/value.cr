@@ -36,7 +36,7 @@ module Atk
     end
 
     def value_and_text(value, text)
-      __return_value = LibAtk.value_get_value_and_text(to_unsafe.as(LibAtk::Value*), Float64.new(value), text)
+      __return_value = LibAtk.value_get_value_and_text(to_unsafe.as(LibAtk::Value*), Float64.new(value), text.to_unsafe)
       __return_value
     end
 
@@ -50,7 +50,7 @@ module Atk
       __return_value
     end
 
-    alias ValueChangedSignal = Value, Float64, UInt8 -> 
+    alias ValueChangedSignal = Value, Float64, String ->
     def on_value_changed(&__block : ValueChangedSignal)
       __callback = ->(_arg0 : LibAtk::Value*, _arg1 : LibAtk::Float64*, _arg2 : LibAtk::UInt8**) {
        __return_value = __block.call(Value.new(_arg0), _arg1, (raise "Expected string but got null" unless _arg2; ::String.new(_arg2)))

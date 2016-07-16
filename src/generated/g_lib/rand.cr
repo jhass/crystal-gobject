@@ -2,6 +2,11 @@ module GLib
   class Rand
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGLib::Rand*))
+    end
+
     @g_lib_rand : LibGLib::Rand*?
     def initialize(@g_lib_rand : LibGLib::Rand*)
     end

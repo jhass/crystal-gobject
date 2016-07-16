@@ -87,14 +87,14 @@ module Gtk
 
     def select_uri(uri)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.recent_chooser_select_uri(to_unsafe.as(LibGtk::RecentChooser*), uri, pointerof(__error))
+      __return_value = LibGtk.recent_chooser_select_uri(to_unsafe.as(LibGtk::RecentChooser*), uri.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def set_current_uri(uri)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.recent_chooser_set_current_uri(to_unsafe.as(LibGtk::RecentChooser*), uri, pointerof(__error))
+      __return_value = LibGtk.recent_chooser_set_current_uri(to_unsafe.as(LibGtk::RecentChooser*), uri.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -155,11 +155,11 @@ module Gtk
     end
 
     def unselect_uri(uri)
-      __return_value = LibGtk.recent_chooser_unselect_uri(to_unsafe.as(LibGtk::RecentChooser*), uri)
+      __return_value = LibGtk.recent_chooser_unselect_uri(to_unsafe.as(LibGtk::RecentChooser*), uri.to_unsafe)
       __return_value
     end
 
-    alias ItemActivatedSignal = RecentChooser -> 
+    alias ItemActivatedSignal = RecentChooser ->
     def on_item_activated(&__block : ItemActivatedSignal)
       __callback = ->(_arg0 : LibGtk::RecentChooser*) {
        __return_value = __block.call(RecentChooser.new(_arg0))
@@ -168,7 +168,7 @@ module Gtk
       connect("item-activated", __callback)
     end
 
-    alias SelectionChangedSignal = RecentChooser -> 
+    alias SelectionChangedSignal = RecentChooser ->
     def on_selection_changed(&__block : SelectionChangedSignal)
       __callback = ->(_arg0 : LibGtk::RecentChooser*) {
        __return_value = __block.call(RecentChooser.new(_arg0))

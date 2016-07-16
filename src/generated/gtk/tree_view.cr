@@ -302,7 +302,7 @@ module Gtk
     end
 
     def insert_column_with_data_func(position, title, cell, func : LibGtk::TreeCellDataFunc, data, dnotify : LibGLib::DestroyNotify)
-      __return_value = LibGtk.tree_view_insert_column_with_data_func(to_unsafe.as(LibGtk::TreeView*), Int32.new(position), title, cell.to_unsafe.as(LibGtk::CellRenderer*), func, data && data, dnotify)
+      __return_value = LibGtk.tree_view_insert_column_with_data_func(to_unsafe.as(LibGtk::TreeView*), Int32.new(position), title.to_unsafe, cell.to_unsafe.as(LibGtk::CellRenderer*), func, data && data, dnotify)
       __return_value
     end
 
@@ -516,7 +516,7 @@ module Gtk
       __return_value
     end
 
-    alias ColumnsChangedSignal = TreeView -> 
+    alias ColumnsChangedSignal = TreeView ->
     def on_columns_changed(&__block : ColumnsChangedSignal)
       __callback = ->(_arg0 : LibGtk::TreeView*) {
        __return_value = __block.call(TreeView.new(_arg0))
@@ -525,7 +525,7 @@ module Gtk
       connect("columns-changed", __callback)
     end
 
-    alias CursorChangedSignal = TreeView -> 
+    alias CursorChangedSignal = TreeView ->
     def on_cursor_changed(&__block : CursorChangedSignal)
       __callback = ->(_arg0 : LibGtk::TreeView*) {
        __return_value = __block.call(TreeView.new(_arg0))
@@ -552,7 +552,7 @@ module Gtk
       connect("move-cursor", __callback)
     end
 
-    alias RowActivatedSignal = TreeView, Gtk::TreePath, Gtk::TreeViewColumn -> 
+    alias RowActivatedSignal = TreeView, Gtk::TreePath, Gtk::TreeViewColumn ->
     def on_row_activated(&__block : RowActivatedSignal)
       __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::LibGtk::TreePath*, _arg2 : LibGtk::LibGtk::TreeViewColumn*) {
        __return_value = __block.call(TreeView.new(_arg0), Gtk::TreePath.new(_arg1), Gtk::TreeViewColumn.new(_arg2))
@@ -561,7 +561,7 @@ module Gtk
       connect("row-activated", __callback)
     end
 
-    alias RowCollapsedSignal = TreeView, Gtk::TreeIter, Gtk::TreePath -> 
+    alias RowCollapsedSignal = TreeView, Gtk::TreeIter, Gtk::TreePath ->
     def on_row_collapsed(&__block : RowCollapsedSignal)
       __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::LibGtk::TreeIter*, _arg2 : LibGtk::LibGtk::TreePath*) {
        __return_value = __block.call(TreeView.new(_arg0), Gtk::TreeIter.new(_arg1), Gtk::TreePath.new(_arg2))
@@ -570,7 +570,7 @@ module Gtk
       connect("row-collapsed", __callback)
     end
 
-    alias RowExpandedSignal = TreeView, Gtk::TreeIter, Gtk::TreePath -> 
+    alias RowExpandedSignal = TreeView, Gtk::TreeIter, Gtk::TreePath ->
     def on_row_expanded(&__block : RowExpandedSignal)
       __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::LibGtk::TreeIter*, _arg2 : LibGtk::LibGtk::TreePath*) {
        __return_value = __block.call(TreeView.new(_arg0), Gtk::TreeIter.new(_arg1), Gtk::TreePath.new(_arg2))

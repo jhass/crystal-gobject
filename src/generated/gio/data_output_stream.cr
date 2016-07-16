@@ -52,7 +52,7 @@ module Gio
 
     def put_string(str, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.data_output_stream_put_string(to_unsafe.as(LibGio::DataOutputStream*), str, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.data_output_stream_put_string(to_unsafe.as(LibGio::DataOutputStream*), str.to_unsafe, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

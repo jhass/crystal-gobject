@@ -2,6 +2,13 @@ module GObject
   class Value
     include GObject::WrappedType
 
+    def self.new(data : Array(GObject::G_Value__data__union)|Nil = nil) : self
+      ptr = Pointer(UInt8).malloc(24, 0u8)
+      new(ptr.as(LibGObject::Value*)).tap do |object|
+        object.data = data unless data.nil?
+      end
+    end
+
     @g_object_value : LibGObject::Value*?
     def initialize(@g_object_value : LibGObject::Value*)
     end
@@ -251,17 +258,17 @@ module GObject
     end
 
     def static_string=(v_string)
-      __return_value = LibGObject.value_set_static_string(to_unsafe.as(LibGObject::Value*), v_string && v_string)
+      __return_value = LibGObject.value_set_static_string(to_unsafe.as(LibGObject::Value*), v_string && v_string.to_unsafe)
       __return_value
     end
 
     def string=(v_string)
-      __return_value = LibGObject.value_set_string(to_unsafe.as(LibGObject::Value*), v_string && v_string)
+      __return_value = LibGObject.value_set_string(to_unsafe.as(LibGObject::Value*), v_string && v_string.to_unsafe)
       __return_value
     end
 
     def string_take_ownership=(v_string)
-      __return_value = LibGObject.value_set_string_take_ownership(to_unsafe.as(LibGObject::Value*), v_string && v_string)
+      __return_value = LibGObject.value_set_string_take_ownership(to_unsafe.as(LibGObject::Value*), v_string && v_string.to_unsafe)
       __return_value
     end
 
@@ -296,7 +303,7 @@ module GObject
     end
 
     def take_string(v_string)
-      __return_value = LibGObject.value_take_string(to_unsafe.as(LibGObject::Value*), v_string && v_string)
+      __return_value = LibGObject.value_take_string(to_unsafe.as(LibGObject::Value*), v_string && v_string.to_unsafe)
       __return_value
     end
 
@@ -323,6 +330,18 @@ module GObject
     def self.type_transformable(src_type, dest_type)
       __return_value = LibGObject.value_type_transformable(UInt64.new(src_type), UInt64.new(dest_type))
       __return_value
+    end
+
+    def g_type
+      (to_unsafe.value.g_type)
+    end
+
+    def data
+      PointerIterator.new((to_unsafe.value.data)) {|__item| __item }
+    end
+
+    def data=(value : Array(GObject::G_Value__data__union))
+      to_unsafe.value.data = value
     end
 
   end

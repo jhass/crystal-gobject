@@ -2,6 +2,11 @@ module Pango
   class FontDescription
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibPango::FontDescription*))
+    end
+
     @pango_font_description : LibPango::FontDescription*?
     def initialize(@pango_font_description : LibPango::FontDescription*)
     end
@@ -106,12 +111,12 @@ module Pango
     end
 
     def family=(family)
-      __return_value = LibPango.font_description_set_family(to_unsafe.as(LibPango::FontDescription*), family)
+      __return_value = LibPango.font_description_set_family(to_unsafe.as(LibPango::FontDescription*), family.to_unsafe)
       __return_value
     end
 
     def family_static=(family)
-      __return_value = LibPango.font_description_set_family_static(to_unsafe.as(LibPango::FontDescription*), family)
+      __return_value = LibPango.font_description_set_family_static(to_unsafe.as(LibPango::FontDescription*), family.to_unsafe)
       __return_value
     end
 
@@ -161,7 +166,7 @@ module Pango
     end
 
     def self.from_string(str)
-      __return_value = LibPango.font_description_from_string(str)
+      __return_value = LibPango.font_description_from_string(str.to_unsafe)
       Pango::FontDescription.new(__return_value)
     end
 

@@ -21,7 +21,7 @@ module Gtk
     end
 
     def self.new_from_stock(stock_id) : self
-      __return_value = LibGtk.toggle_tool_button_new_from_stock(stock_id)
+      __return_value = LibGtk.toggle_tool_button_new_from_stock(stock_id.to_unsafe)
       cast Gtk::ToolItem.new(__return_value)
     end
 
@@ -35,7 +35,7 @@ module Gtk
       __return_value
     end
 
-    alias ToggledSignal = ToggleToolButton -> 
+    alias ToggledSignal = ToggleToolButton ->
     def on_toggled(&__block : ToggledSignal)
       __callback = ->(_arg0 : LibGtk::ToggleToolButton*) {
        __return_value = __block.call(ToggleToolButton.new(_arg0))

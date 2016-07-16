@@ -31,7 +31,7 @@ module Gtk
     end
 
     def connect_by_path(accel_path, closure)
-      __return_value = LibGtk.accel_group_connect_by_path(to_unsafe.as(LibGtk::AccelGroup*), accel_path, closure.to_unsafe.as(LibGObject::Closure*))
+      __return_value = LibGtk.accel_group_connect_by_path(to_unsafe.as(LibGtk::AccelGroup*), accel_path.to_unsafe, closure.to_unsafe.as(LibGObject::Closure*))
       __return_value
     end
 
@@ -84,7 +84,7 @@ module Gtk
       connect("accel-activate", __callback)
     end
 
-    alias AccelChangedSignal = AccelGroup, UInt32, Gdk::ModifierType, GObject::Closure -> 
+    alias AccelChangedSignal = AccelGroup, UInt32, Gdk::ModifierType, GObject::Closure ->
     def on_accel_changed(&__block : AccelChangedSignal)
       __callback = ->(_arg0 : LibGtk::AccelGroup*, _arg1 : LibGtk::UInt32*, _arg2 : LibGtk::LibGdk::ModifierType*, _arg3 : LibGtk::LibGObject::Closure*) {
        __return_value = __block.call(AccelGroup.new(_arg0), _arg1, _arg2, GObject::Closure.new(_arg3))

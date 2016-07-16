@@ -25,7 +25,7 @@ module Gtk
       __return_value
     end
 
-    alias DragBeginSignal = GestureDrag, Float64, Float64 -> 
+    alias DragBeginSignal = GestureDrag, Float64, Float64 ->
     def on_drag_begin(&__block : DragBeginSignal)
       __callback = ->(_arg0 : LibGtk::GestureDrag*, _arg1 : LibGtk::Float64*, _arg2 : LibGtk::Float64*) {
        __return_value = __block.call(GestureDrag.new(_arg0), _arg1, _arg2)
@@ -34,7 +34,7 @@ module Gtk
       connect("drag-begin", __callback)
     end
 
-    alias DragEndSignal = GestureDrag, Float64, Float64 -> 
+    alias DragEndSignal = GestureDrag, Float64, Float64 ->
     def on_drag_end(&__block : DragEndSignal)
       __callback = ->(_arg0 : LibGtk::GestureDrag*, _arg1 : LibGtk::Float64*, _arg2 : LibGtk::Float64*) {
        __return_value = __block.call(GestureDrag.new(_arg0), _arg1, _arg2)
@@ -43,7 +43,7 @@ module Gtk
       connect("drag-end", __callback)
     end
 
-    alias DragUpdateSignal = GestureDrag, Float64, Float64 -> 
+    alias DragUpdateSignal = GestureDrag, Float64, Float64 ->
     def on_drag_update(&__block : DragUpdateSignal)
       __callback = ->(_arg0 : LibGtk::GestureDrag*, _arg1 : LibGtk::Float64*, _arg2 : LibGtk::Float64*) {
        __return_value = __block.call(GestureDrag.new(_arg0), _arg1, _arg2)

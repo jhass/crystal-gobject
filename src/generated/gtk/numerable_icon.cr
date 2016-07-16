@@ -55,7 +55,7 @@ module Gtk
     end
 
     def background_icon_name=(icon_name)
-      __return_value = LibGtk.numerable_icon_set_background_icon_name(to_unsafe.as(LibGtk::NumerableIcon*), icon_name && icon_name)
+      __return_value = LibGtk.numerable_icon_set_background_icon_name(to_unsafe.as(LibGtk::NumerableIcon*), icon_name && icon_name.to_unsafe)
       __return_value
     end
 
@@ -65,7 +65,7 @@ module Gtk
     end
 
     def label=(label)
-      __return_value = LibGtk.numerable_icon_set_label(to_unsafe.as(LibGtk::NumerableIcon*), label && label)
+      __return_value = LibGtk.numerable_icon_set_label(to_unsafe.as(LibGtk::NumerableIcon*), label && label.to_unsafe)
       __return_value
     end
 

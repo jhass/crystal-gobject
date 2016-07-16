@@ -2,6 +2,11 @@ module GLib
   class VariantType
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGLib::VariantType*))
+    end
+
     @g_lib_variant_type : LibGLib::VariantType*?
     def initialize(@g_lib_variant_type : LibGLib::VariantType*)
     end
@@ -11,7 +16,7 @@ module GLib
     end
 
     def self.new(type_string) : self
-      __return_value = LibGLib.variant_type_new(type_string)
+      __return_value = LibGLib.variant_type_new(type_string.to_unsafe)
       cast GLib::VariantType.new(__return_value)
     end
 
@@ -141,17 +146,17 @@ module GLib
     end
 
     def self.checked_(arg0)
-      __return_value = LibGLib.variant_type_checked_(arg0)
+      __return_value = LibGLib.variant_type_checked_(arg0.to_unsafe)
       GLib::VariantType.new(__return_value)
     end
 
     def self.string_is_valid(type_string)
-      __return_value = LibGLib.variant_type_string_is_valid(type_string)
+      __return_value = LibGLib.variant_type_string_is_valid(type_string.to_unsafe)
       __return_value
     end
 
     def self.string_scan(string, limit, endptr)
-      __return_value = LibGLib.variant_type_string_scan(string, limit && limit, endptr)
+      __return_value = LibGLib.variant_type_string_scan(string.to_unsafe, limit && limit.to_unsafe, endptr.to_unsafe)
       __return_value
     end
 

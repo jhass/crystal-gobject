@@ -119,12 +119,12 @@ module Atk
     end
 
     def description=(description)
-      __return_value = LibAtk.object_set_description(to_unsafe.as(LibAtk::Object*), description)
+      __return_value = LibAtk.object_set_description(to_unsafe.as(LibAtk::Object*), description.to_unsafe)
       __return_value
     end
 
     def name=(name)
-      __return_value = LibAtk.object_set_name(to_unsafe.as(LibAtk::Object*), name)
+      __return_value = LibAtk.object_set_name(to_unsafe.as(LibAtk::Object*), name.to_unsafe)
       __return_value
     end
 
@@ -138,7 +138,7 @@ module Atk
       __return_value
     end
 
-    alias ActiveDescendantChangedSignal = Object, Void* -> 
+    alias ActiveDescendantChangedSignal = Object, Void* ->
     def on_active_descendant_changed(&__block : ActiveDescendantChangedSignal)
       __callback = ->(_arg0 : LibAtk::Object*, _arg1 : LibAtk::Void**) {
        __return_value = __block.call(Object.new(_arg0), _arg1)
@@ -147,7 +147,7 @@ module Atk
       connect("active-descendant-changed", __callback)
     end
 
-    alias ChildrenChangedSignal = Object, UInt32, Void* -> 
+    alias ChildrenChangedSignal = Object, UInt32, Void* ->
     def on_children_changed(&__block : ChildrenChangedSignal)
       __callback = ->(_arg0 : LibAtk::Object*, _arg1 : LibAtk::UInt32*, _arg2 : LibAtk::Void**) {
        __return_value = __block.call(Object.new(_arg0), _arg1, _arg2)
@@ -156,7 +156,7 @@ module Atk
       connect("children-changed", __callback)
     end
 
-    alias FocusEventSignal = Object, Bool -> 
+    alias FocusEventSignal = Object, Bool ->
     def on_focus_event(&__block : FocusEventSignal)
       __callback = ->(_arg0 : LibAtk::Object*, _arg1 : LibAtk::Bool*) {
        __return_value = __block.call(Object.new(_arg0), _arg1)
@@ -165,7 +165,7 @@ module Atk
       connect("focus-event", __callback)
     end
 
-    alias PropertyChangeSignal = Object, Void* -> 
+    alias PropertyChangeSignal = Object, Void* ->
     def on_property_change(&__block : PropertyChangeSignal)
       __callback = ->(_arg0 : LibAtk::Object*, _arg1 : LibAtk::Void**) {
        __return_value = __block.call(Object.new(_arg0), _arg1)
@@ -174,7 +174,7 @@ module Atk
       connect("property-change", __callback)
     end
 
-    alias StateChangeSignal = Object, UInt8, Bool -> 
+    alias StateChangeSignal = Object, String, Bool ->
     def on_state_change(&__block : StateChangeSignal)
       __callback = ->(_arg0 : LibAtk::Object*, _arg1 : LibAtk::UInt8**, _arg2 : LibAtk::Bool*) {
        __return_value = __block.call(Object.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)), _arg2)
@@ -183,7 +183,7 @@ module Atk
       connect("state-change", __callback)
     end
 
-    alias VisibleDataChangedSignal = Object -> 
+    alias VisibleDataChangedSignal = Object ->
     def on_visible_data_changed(&__block : VisibleDataChangedSignal)
       __callback = ->(_arg0 : LibAtk::Object*) {
        __return_value = __block.call(Object.new(_arg0))

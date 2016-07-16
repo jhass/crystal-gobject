@@ -2,6 +2,11 @@ module GObject
   class ParamSpecPool
     include GObject::WrappedType
 
+    def self.new : self
+      ptr = Pointer(UInt8).malloc(0, 0)
+      super(ptr.as(LibGObject::ParamSpecPool*))
+    end
+
     @g_object_param_spec_pool : LibGObject::ParamSpecPool*?
     def initialize(@g_object_param_spec_pool : LibGObject::ParamSpecPool*)
     end
@@ -26,7 +31,7 @@ module GObject
     end
 
     def lookup(param_name, owner_type, walk_ancestors)
-      __return_value = LibGObject.param_spec_pool_lookup(to_unsafe.as(LibGObject::ParamSpecPool*), param_name, UInt64.new(owner_type), walk_ancestors)
+      __return_value = LibGObject.param_spec_pool_lookup(to_unsafe.as(LibGObject::ParamSpecPool*), param_name.to_unsafe, UInt64.new(owner_type), walk_ancestors)
       GObject::ParamSpec.new(__return_value)
     end
 

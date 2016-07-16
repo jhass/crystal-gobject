@@ -10,7 +10,7 @@ module Gtk
 
 
     def self.load(name)
-      __return_value = LibGtk.theming_engine_load(name)
+      __return_value = LibGtk.theming_engine_load(name.to_unsafe)
       Gtk::ThemingEngine.new(__return_value)
     end
 
@@ -65,7 +65,7 @@ module Gtk
     end
 
     def property(property, state, value)
-      __return_value = LibGtk.theming_engine_get_property(to_unsafe.as(LibGtk::ThemingEngine*), property, state, value)
+      __return_value = LibGtk.theming_engine_get_property(to_unsafe.as(LibGtk::ThemingEngine*), property.to_unsafe, state, value)
       __return_value
     end
 
@@ -80,22 +80,22 @@ module Gtk
     end
 
     def style_property(property_name, value)
-      __return_value = LibGtk.theming_engine_get_style_property(to_unsafe.as(LibGtk::ThemingEngine*), property_name, value)
+      __return_value = LibGtk.theming_engine_get_style_property(to_unsafe.as(LibGtk::ThemingEngine*), property_name.to_unsafe, value)
       __return_value
     end
 
     def has_class(style_class)
-      __return_value = LibGtk.theming_engine_has_class(to_unsafe.as(LibGtk::ThemingEngine*), style_class)
+      __return_value = LibGtk.theming_engine_has_class(to_unsafe.as(LibGtk::ThemingEngine*), style_class.to_unsafe)
       __return_value
     end
 
     def has_region(style_region, flags)
-      __return_value = LibGtk.theming_engine_has_region(to_unsafe.as(LibGtk::ThemingEngine*), style_region, flags)
+      __return_value = LibGtk.theming_engine_has_region(to_unsafe.as(LibGtk::ThemingEngine*), style_region.to_unsafe, flags)
       __return_value
     end
 
     def lookup_color(color_name, color)
-      __return_value = LibGtk.theming_engine_lookup_color(to_unsafe.as(LibGtk::ThemingEngine*), color_name, color)
+      __return_value = LibGtk.theming_engine_lookup_color(to_unsafe.as(LibGtk::ThemingEngine*), color_name.to_unsafe, color)
       __return_value
     end
 

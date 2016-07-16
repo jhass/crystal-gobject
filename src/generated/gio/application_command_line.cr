@@ -13,7 +13,7 @@ module Gio
 
 
     def create_file_for_arg(arg)
-      __return_value = LibGio.application_command_line_create_file_for_arg(to_unsafe.as(LibGio::ApplicationCommandLine*), arg)
+      __return_value = LibGio.application_command_line_create_file_for_arg(to_unsafe.as(LibGio::ApplicationCommandLine*), arg.to_unsafe)
       __return_value
     end
 
@@ -58,7 +58,7 @@ module Gio
     end
 
     def getenv(name)
-      __return_value = LibGio.application_command_line_getenv(to_unsafe.as(LibGio::ApplicationCommandLine*), name)
+      __return_value = LibGio.application_command_line_getenv(to_unsafe.as(LibGio::ApplicationCommandLine*), name.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
