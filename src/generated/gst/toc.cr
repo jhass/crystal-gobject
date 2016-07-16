@@ -2,11 +2,6 @@ module Gst
   class Toc
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGst::Toc*))
-    end
-
     @gst_toc : LibGst::Toc*?
     def initialize(@gst_toc : LibGst::Toc*)
     end

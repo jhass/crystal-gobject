@@ -2,11 +2,6 @@ module GLib
   class Thread
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGLib::Thread*))
-    end
-
     @g_lib_thread : LibGLib::Thread*?
     def initialize(@g_lib_thread : LibGLib::Thread*)
     end

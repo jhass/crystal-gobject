@@ -2,11 +2,6 @@ module GModule
   class Module
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGModule::Module*))
-    end
-
     @g_module_module : LibGModule::Module*?
     def initialize(@g_module_module : LibGModule::Module*)
     end

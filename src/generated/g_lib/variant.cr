@@ -2,11 +2,6 @@ module GLib
   class Variant
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGLib::Variant*))
-    end
-
     @g_lib_variant : LibGLib::Variant*?
     def initialize(@g_lib_variant : LibGLib::Variant*)
     end

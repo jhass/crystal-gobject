@@ -2,11 +2,6 @@ module Gtk
   class PaperSize
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGtk::PaperSize*))
-    end
-
     @gtk_paper_size : LibGtk::PaperSize*?
     def initialize(@gtk_paper_size : LibGtk::PaperSize*)
     end

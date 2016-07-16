@@ -2,11 +2,6 @@ module GLib
   class MarkupParseContext
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGLib::MarkupParseContext*))
-    end
-
     @g_lib_markup_parse_context : LibGLib::MarkupParseContext*?
     def initialize(@g_lib_markup_parse_context : LibGLib::MarkupParseContext*)
     end

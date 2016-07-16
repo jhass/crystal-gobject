@@ -2,11 +2,6 @@ module Gst
   class PipelinePrivate
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGst::PipelinePrivate*))
-    end
-
     @gst_pipeline_private : LibGst::PipelinePrivate*?
     def initialize(@gst_pipeline_private : LibGst::PipelinePrivate*)
     end

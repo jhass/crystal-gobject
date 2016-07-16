@@ -2,11 +2,6 @@ module Gio
   class Resource
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGio::Resource*))
-    end
-
     @gio_resource : LibGio::Resource*?
     def initialize(@gio_resource : LibGio::Resource*)
     end

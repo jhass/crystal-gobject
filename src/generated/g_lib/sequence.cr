@@ -2,11 +2,6 @@ module GLib
   class Sequence
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGLib::Sequence*))
-    end
-
     @g_lib_sequence : LibGLib::Sequence*?
     def initialize(@g_lib_sequence : LibGLib::Sequence*)
     end

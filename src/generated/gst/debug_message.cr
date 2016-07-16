@@ -2,11 +2,6 @@ module Gst
   class DebugMessage
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGst::DebugMessage*))
-    end
-
     @gst_debug_message : LibGst::DebugMessage*?
     def initialize(@gst_debug_message : LibGst::DebugMessage*)
     end

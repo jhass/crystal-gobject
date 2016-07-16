@@ -2,11 +2,6 @@ module Gio
   class SrvTarget
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGio::SrvTarget*))
-    end
-
     @gio_srv_target : LibGio::SrvTarget*?
     def initialize(@gio_srv_target : LibGio::SrvTarget*)
     end

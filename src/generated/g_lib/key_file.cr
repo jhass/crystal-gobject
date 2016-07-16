@@ -2,11 +2,6 @@ module GLib
   class KeyFile
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGLib::KeyFile*))
-    end
-
     @g_lib_key_file : LibGLib::KeyFile*?
     def initialize(@g_lib_key_file : LibGLib::KeyFile*)
     end

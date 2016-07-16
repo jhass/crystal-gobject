@@ -2,11 +2,6 @@ module Gio
   class ResolverPrivate
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGio::ResolverPrivate*))
-    end
-
     @gio_resolver_private : LibGio::ResolverPrivate*?
     def initialize(@gio_resolver_private : LibGio::ResolverPrivate*)
     end

@@ -2,11 +2,6 @@ module GLib
   class IConv
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGLib::IConv*))
-    end
-
     @g_lib_i_conv : LibGLib::IConv*?
     def initialize(@g_lib_i_conv : LibGLib::IConv*)
     end

@@ -2,11 +2,6 @@ module GObject
   class ParamSpecPool
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGObject::ParamSpecPool*))
-    end
-
     @g_object_param_spec_pool : LibGObject::ParamSpecPool*?
     def initialize(@g_object_param_spec_pool : LibGObject::ParamSpecPool*)
     end

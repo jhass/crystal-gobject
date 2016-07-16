@@ -2,11 +2,6 @@ module GLib
   class MappedFile
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGLib::MappedFile*))
-    end
-
     @g_lib_mapped_file : LibGLib::MappedFile*?
     def initialize(@g_lib_mapped_file : LibGLib::MappedFile*)
     end

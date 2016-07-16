@@ -2,11 +2,6 @@ module Pango
   class FontDescription
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibPango::FontDescription*))
-    end
-
     @pango_font_description : LibPango::FontDescription*?
     def initialize(@pango_font_description : LibPango::FontDescription*)
     end

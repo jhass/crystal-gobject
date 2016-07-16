@@ -2,11 +2,6 @@ module Gtk
   class TargetList
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGtk::TargetList*))
-    end
-
     @gtk_target_list : LibGtk::TargetList*?
     def initialize(@gtk_target_list : LibGtk::TargetList*)
     end

@@ -2,11 +2,6 @@ module GLib
   class PatternSpec
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGLib::PatternSpec*))
-    end
-
     @g_lib_pattern_spec : LibGLib::PatternSpec*?
     def initialize(@g_lib_pattern_spec : LibGLib::PatternSpec*)
     end

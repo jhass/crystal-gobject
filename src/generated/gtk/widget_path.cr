@@ -2,11 +2,6 @@ module Gtk
   class WidgetPath
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGtk::WidgetPath*))
-    end
-
     @gtk_widget_path : LibGtk::WidgetPath*?
     def initialize(@gtk_widget_path : LibGtk::WidgetPath*)
     end

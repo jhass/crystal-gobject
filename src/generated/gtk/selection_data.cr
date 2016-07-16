@@ -2,11 +2,6 @@ module Gtk
   class SelectionData
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGtk::SelectionData*))
-    end
-
     @gtk_selection_data : LibGtk::SelectionData*?
     def initialize(@gtk_selection_data : LibGtk::SelectionData*)
     end

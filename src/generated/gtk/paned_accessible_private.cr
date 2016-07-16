@@ -2,11 +2,6 @@ module Gtk
   class PanedAccessiblePrivate
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGtk::PanedAccessiblePrivate*))
-    end
-
     @gtk_paned_accessible_private : LibGtk::PanedAccessiblePrivate*?
     def initialize(@gtk_paned_accessible_private : LibGtk::PanedAccessiblePrivate*)
     end

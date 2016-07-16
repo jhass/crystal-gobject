@@ -2,11 +2,6 @@ module GLib
   class BookmarkFile
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGLib::BookmarkFile*))
-    end
-
     @g_lib_bookmark_file : LibGLib::BookmarkFile*?
     def initialize(@g_lib_bookmark_file : LibGLib::BookmarkFile*)
     end

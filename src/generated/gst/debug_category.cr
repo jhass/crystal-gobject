@@ -3,7 +3,7 @@ module Gst
     include GObject::WrappedType
 
     def self.new : self
-      ptr = Pointer(UInt8).malloc(24, 0)
+      ptr = Pointer(UInt8).malloc(24, 0u8)
       super(ptr.as(LibGst::DebugCategory*))
     end
 

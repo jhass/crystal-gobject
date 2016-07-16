@@ -3,7 +3,7 @@ module Pango
     include GObject::WrappedType
 
     def self.new : self
-      ptr = Pointer(UInt8).malloc(36, 0)
+      ptr = Pointer(UInt8).malloc(36, 0u8)
       super(ptr.as(LibPango::FontMetrics*))
     end
 

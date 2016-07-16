@@ -2,11 +2,6 @@ module Gst
   class ParseContext
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGst::ParseContext*))
-    end
-
     @gst_parse_context : LibGst::ParseContext*?
     def initialize(@gst_parse_context : LibGst::ParseContext*)
     end

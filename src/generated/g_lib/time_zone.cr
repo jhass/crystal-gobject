@@ -2,11 +2,6 @@ module GLib
   class TimeZone
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGLib::TimeZone*))
-    end
-
     @g_lib_time_zone : LibGLib::TimeZone*?
     def initialize(@g_lib_time_zone : LibGLib::TimeZone*)
     end

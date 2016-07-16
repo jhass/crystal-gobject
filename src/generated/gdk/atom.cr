@@ -2,11 +2,6 @@ module Gdk
   class Atom
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGdk::Atom*))
-    end
-
     @gdk_atom : LibGdk::Atom*?
     def initialize(@gdk_atom : LibGdk::Atom*)
     end

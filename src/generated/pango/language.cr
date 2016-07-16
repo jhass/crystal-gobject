@@ -2,11 +2,6 @@ module Pango
   class Language
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibPango::Language*))
-    end
-
     @pango_language : LibPango::Language*?
     def initialize(@pango_language : LibPango::Language*)
     end

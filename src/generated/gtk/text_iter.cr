@@ -3,7 +3,7 @@ module Gtk
     include GObject::WrappedType
 
     def self.new : self
-      ptr = Pointer(UInt8).malloc(80, 0)
+      ptr = Pointer(UInt8).malloc(80, 0u8)
       super(ptr.as(LibGtk::TextIter*))
     end
 

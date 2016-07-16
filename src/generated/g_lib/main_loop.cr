@@ -2,11 +2,6 @@ module GLib
   class MainLoop
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGLib::MainLoop*))
-    end
-
     @g_lib_main_loop : LibGLib::MainLoop*?
     def initialize(@g_lib_main_loop : LibGLib::MainLoop*)
     end

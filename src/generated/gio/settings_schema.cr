@@ -2,11 +2,6 @@ module Gio
   class SettingsSchema
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGio::SettingsSchema*))
-    end
-
     @gio_settings_schema : LibGio::SettingsSchema*?
     def initialize(@gio_settings_schema : LibGio::SettingsSchema*)
     end

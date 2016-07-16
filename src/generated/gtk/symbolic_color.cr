@@ -2,11 +2,6 @@ module Gtk
   class SymbolicColor
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGtk::SymbolicColor*))
-    end
-
     @gtk_symbolic_color : LibGtk::SymbolicColor*?
     def initialize(@gtk_symbolic_color : LibGtk::SymbolicColor*)
     end

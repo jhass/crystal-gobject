@@ -2,11 +2,6 @@ module Gio
   class IOExtension
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGio::IOExtension*))
-    end
-
     @gio_i_o_extension : LibGio::IOExtension*?
     def initialize(@gio_i_o_extension : LibGio::IOExtension*)
     end

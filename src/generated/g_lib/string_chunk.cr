@@ -2,11 +2,6 @@ module GLib
   class StringChunk
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGLib::StringChunk*))
-    end
-
     @g_lib_string_chunk : LibGLib::StringChunk*?
     def initialize(@g_lib_string_chunk : LibGLib::StringChunk*)
     end

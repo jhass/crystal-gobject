@@ -2,11 +2,6 @@ module GLib
   class AsyncQueue
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGLib::AsyncQueue*))
-    end
-
     @g_lib_async_queue : LibGLib::AsyncQueue*?
     def initialize(@g_lib_async_queue : LibGLib::AsyncQueue*)
     end

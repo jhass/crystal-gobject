@@ -2,11 +2,6 @@ module Pango
   class LayoutIter
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibPango::LayoutIter*))
-    end
-
     @pango_layout_iter : LibPango::LayoutIter*?
     def initialize(@pango_layout_iter : LibPango::LayoutIter*)
     end

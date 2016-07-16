@@ -2,11 +2,6 @@ module GLib
   class TestSuite
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGLib::TestSuite*))
-    end
-
     @g_lib_test_suite : LibGLib::TestSuite*?
     def initialize(@g_lib_test_suite : LibGLib::TestSuite*)
     end

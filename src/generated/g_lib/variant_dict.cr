@@ -3,7 +3,7 @@ module GLib
     include GObject::WrappedType
 
     def self.new : self
-      ptr = Pointer(UInt8).malloc(128, 0)
+      ptr = Pointer(UInt8).malloc(128, 0u8)
       super(ptr.as(LibGLib::VariantDict*))
     end
 

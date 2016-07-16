@@ -2,11 +2,6 @@ module Gst
   class Context
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGst::Context*))
-    end
-
     @gst_context : LibGst::Context*?
     def initialize(@gst_context : LibGst::Context*)
     end

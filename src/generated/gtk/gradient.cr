@@ -2,11 +2,6 @@ module Gtk
   class Gradient
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGtk::Gradient*))
-    end
-
     @gtk_gradient : LibGtk::Gradient*?
     def initialize(@gtk_gradient : LibGtk::Gradient*)
     end

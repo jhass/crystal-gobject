@@ -2,11 +2,6 @@ module Gst
   class Uri
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGst::Uri*))
-    end
-
     @gst_uri : LibGst::Uri*?
     def initialize(@gst_uri : LibGst::Uri*)
     end

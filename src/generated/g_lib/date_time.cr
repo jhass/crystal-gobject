@@ -2,11 +2,6 @@ module GLib
   class DateTime
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGLib::DateTime*))
-    end
-
     @g_lib_date_time : LibGLib::DateTime*?
     def initialize(@g_lib_date_time : LibGLib::DateTime*)
     end

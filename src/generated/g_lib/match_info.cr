@@ -2,11 +2,6 @@ module GLib
   class MatchInfo
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGLib::MatchInfo*))
-    end
-
     @g_lib_match_info : LibGLib::MatchInfo*?
     def initialize(@g_lib_match_info : LibGLib::MatchInfo*)
     end

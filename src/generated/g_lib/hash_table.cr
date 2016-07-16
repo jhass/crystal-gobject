@@ -2,11 +2,6 @@ module GLib
   class HashTable
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGLib::HashTable*))
-    end
-
     @g_lib_hash_table : LibGLib::HashTable*?
     def initialize(@g_lib_hash_table : LibGLib::HashTable*)
     end

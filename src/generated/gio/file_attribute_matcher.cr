@@ -2,11 +2,6 @@ module Gio
   class FileAttributeMatcher
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGio::FileAttributeMatcher*))
-    end
-
     @gio_file_attribute_matcher : LibGio::FileAttributeMatcher*?
     def initialize(@gio_file_attribute_matcher : LibGio::FileAttributeMatcher*)
     end

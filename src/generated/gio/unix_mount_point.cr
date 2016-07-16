@@ -2,11 +2,6 @@ module Gio
   class UnixMountPoint
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGio::UnixMountPoint*))
-    end
-
     @gio_unix_mount_point : LibGio::UnixMountPoint*?
     def initialize(@gio_unix_mount_point : LibGio::UnixMountPoint*)
     end

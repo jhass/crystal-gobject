@@ -2,11 +2,6 @@ module Atk
   class Range
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibAtk::Range*))
-    end
-
     @atk_range : LibAtk::Range*?
     def initialize(@atk_range : LibAtk::Range*)
     end

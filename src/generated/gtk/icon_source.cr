@@ -2,11 +2,6 @@ module Gtk
   class IconSource
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGtk::IconSource*))
-    end
-
     @gtk_icon_source : LibGtk::IconSource*?
     def initialize(@gtk_icon_source : LibGtk::IconSource*)
     end

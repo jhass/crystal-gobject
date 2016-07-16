@@ -2,11 +2,6 @@ module GLib
   class Dir
     include GObject::WrappedType
 
-    def self.new : self
-      ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(LibGLib::Dir*))
-    end
-
     @g_lib_dir : LibGLib::Dir*?
     def initialize(@g_lib_dir : LibGLib::Dir*)
     end

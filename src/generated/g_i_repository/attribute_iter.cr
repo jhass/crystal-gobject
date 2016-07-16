@@ -3,7 +3,7 @@ module GIRepository
     include GObject::WrappedType
 
     def self.new : self
-      ptr = Pointer(UInt8).malloc(32, 0)
+      ptr = Pointer(UInt8).malloc(32, 0u8)
       super(ptr.as(LibGIRepository::AttributeIter*))
     end
 
