@@ -50,7 +50,11 @@ module GIRepository
     end
 
     def for_wrapper_pass(libname)
-      "#{"#{name} && " if nullable?}#{type.convert_from_crystal(name)}"
+      if out? || inout?
+        name
+      else
+        "#{"#{name} && " if nullable?}#{type.convert_from_crystal(name)}"
+      end
     end
   end
 end
