@@ -12,9 +12,9 @@ module GIRepository
       String.build do |io|
         io << "#{indent}alias #{alias_name}Signal = "
         io << args.map(&.type.wrapper_definition(libname)).join(", ")
-        io << " -> "
+        io << " ->"
         ret_type = return_type.wrapper_definition(libname)
-        io << ret_type unless ret_type == "Void*"
+        io << ' ' << ret_type unless ret_type == "Void*"
         io.puts
         io.puts "#{indent}def on_#{identifier}(&__block : #{alias_name}Signal)"
         proc_arguments = args.each.with_index.map {|ai| arg, i = ai; "_arg#{i} : #{libname}::#{arg.type.lib_definition}*" }
