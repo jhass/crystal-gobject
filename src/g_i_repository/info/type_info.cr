@@ -43,6 +43,10 @@ module GIRepository
       LibGIRepository.type_info_get_array_type(self)
     end
 
+    def param_type(n=0)
+      TypeInfo.new LibGIRepository.type_info_get_param_type(self, n)
+    end
+
     def lib_definition
       base = case tag
         when LibGIRepository::TypeTag::INTERFACE
@@ -57,8 +61,7 @@ module GIRepository
         when LibGIRepository::TypeTag::ARRAY
           case array_type
           when LibGIRepository::ArrayType::C
-            type = TypeInfo.new LibGIRepository.type_info_get_param_type(self, 0)
-            type.lib_definition
+            param_type.lib_definition
           else
             "Void*"
           end
@@ -69,13 +72,12 @@ module GIRepository
       base
     end
 
-    def wrapper_definition(libname, ident="")
+    def wrapper_definition(libname="", ident="")
       case tag
       when LibGIRepository::TypeTag::INTERFACE
         interface.full_constant
       when LibGIRepository::TypeTag::ARRAY
-        type = TypeInfo.new LibGIRepository.type_info_get_param_type(self, 0)
-        "Array(#{type.wrapper_definition(libname)})"
+        "Array(#{param_type.wrapper_definition(libname)})"
       when LibGIRepository::TypeTag::ZERO_NONE
         "Void*"
       when LibGIRepository::TypeTag::UTF8, LibGIRepository::TypeTag::FILENAME
@@ -98,14 +100,17 @@ module GIRepository
       when LibGIRepository::TypeTag::ARRAY
         case array_type
         when LibGIRepository::ArrayType::C
-          type = TypeInfo.new LibGIRepository.type_info_get_param_type(self, 0)
           item = "__item"
-          "PointerIterator.new(#{variable}) {|#{item}| #{type.convert_to_crystal("#{item}")} }"
+          "PointerIterator.new(#{variable}) {|#{item}| #{param_type.convert_to_crystal("#{item}")} }"
         else
           variable
         end
       when LibGIRepository::TypeTag::UTF8, LibGIRepository::TypeTag::FILENAME
         %((raise "Expected string but got null" unless #{variable}; ::String.new(#{variable})))
+      when LibGIRepository::TypeTag::GLIST
+        "GLib::ListIterator(#{param_type.wrapper_definition}, #{param_type.lib_definition}*).new(GLib::SList.new(#{variable}.as(LibGLib::List*)))"
+      when LibGIRepository::TypeTag::GSLIST
+        "GLib::SListIterator(#{param_type.wrapper_definition}, #{param_type.lib_definition}*).new(GLib::SList.new(#{variable}.as(LibGLib::SList*)))"
       else
         variable
       end
