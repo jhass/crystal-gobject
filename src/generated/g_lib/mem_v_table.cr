@@ -16,27 +16,27 @@ module GLib
     end
 
     def malloc
-      (to_unsafe.value.malloc)
+      (to_unsafe.as(LibGLib::MemVTable*).value.malloc)
     end
 
     def realloc
-      (to_unsafe.value.realloc)
+      (to_unsafe.as(LibGLib::MemVTable*).value.realloc)
     end
 
     def free
-      (to_unsafe.value.free)
+      (to_unsafe.as(LibGLib::MemVTable*).value.free)
     end
 
     def calloc
-      (to_unsafe.value.calloc)
+      (to_unsafe.as(LibGLib::MemVTable*).value.calloc)
     end
 
     def try_malloc
-      (to_unsafe.value.try_malloc)
+      (to_unsafe.as(LibGLib::MemVTable*).value.try_malloc)
     end
 
     def try_realloc
-      (to_unsafe.value.try_realloc)
+      (to_unsafe.as(LibGLib::MemVTable*).value.try_realloc)
     end
 
   end

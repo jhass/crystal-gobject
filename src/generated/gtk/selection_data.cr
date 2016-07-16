@@ -31,7 +31,7 @@ module Gtk
     end
 
     def data(length)
-      __return_value = LibGtk.selection_data_get_data(to_unsafe.as(LibGtk::SelectionData*), Int32.new(length))
+      __return_value = LibGtk.selection_data_get_data(to_unsafe.as(LibGtk::SelectionData*), length)
       PointerIterator.new(__return_value) {|__item| __item }
     end
 
@@ -66,7 +66,7 @@ module Gtk
     end
 
     def targets(targets, n_atoms)
-      __return_value = LibGtk.selection_data_get_targets(to_unsafe.as(LibGtk::SelectionData*), targets, Int32.new(n_atoms))
+      __return_value = LibGtk.selection_data_get_targets(to_unsafe.as(LibGtk::SelectionData*), targets, n_atoms)
       __return_value
     end
 

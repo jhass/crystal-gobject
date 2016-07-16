@@ -242,7 +242,7 @@ module Gio
 
     def to_blob(out_size, capabilities)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.d_bus_message_to_blob(to_unsafe.as(LibGio::DBusMessage*), UInt64.new(out_size), capabilities, pointerof(__error))
+      __return_value = LibGio.d_bus_message_to_blob(to_unsafe.as(LibGio::DBusMessage*), out_size, capabilities, pointerof(__error))
       GLib::Error.assert __error
       PointerIterator.new(__return_value) {|__item| __item }
     end

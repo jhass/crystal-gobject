@@ -16,12 +16,12 @@ module Gtk
     end
 
     def offset(x, y)
-      __return_value = LibGtk.gesture_drag_get_offset(to_unsafe.as(LibGtk::GestureDrag*), x && Float64.new(x), y && Float64.new(y))
+      __return_value = LibGtk.gesture_drag_get_offset(to_unsafe.as(LibGtk::GestureDrag*), x, y)
       __return_value
     end
 
     def start_point(x, y)
-      __return_value = LibGtk.gesture_drag_get_start_point(to_unsafe.as(LibGtk::GestureDrag*), x && Float64.new(x), y && Float64.new(y))
+      __return_value = LibGtk.gesture_drag_get_start_point(to_unsafe.as(LibGtk::GestureDrag*), x, y)
       __return_value
     end
 

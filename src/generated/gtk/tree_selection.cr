@@ -20,12 +20,12 @@ module Gtk
     end
 
     def selected(model, iter)
-      __return_value = LibGtk.tree_selection_get_selected(to_unsafe.as(LibGtk::TreeSelection*), model.to_unsafe.as(LibGtk::TreeModel*), iter)
+      __return_value = LibGtk.tree_selection_get_selected(to_unsafe.as(LibGtk::TreeSelection*), model, iter)
       __return_value
     end
 
     def selected_rows(model)
-      __return_value = LibGtk.tree_selection_get_selected_rows(to_unsafe.as(LibGtk::TreeSelection*), model.to_unsafe.as(LibGtk::TreeModel*))
+      __return_value = LibGtk.tree_selection_get_selected_rows(to_unsafe.as(LibGtk::TreeSelection*), model)
       __return_value
     end
 

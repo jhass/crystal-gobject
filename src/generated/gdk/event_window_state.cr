@@ -22,43 +22,43 @@ module Gdk
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibGdk::EventWindowState*).value.type)
     end
 
     def type=(value : Gdk::EventType)
-      to_unsafe.value.type = value
+      to_unsafe.as(LibGdk::EventWindowState*).value.type = value
     end
 
     def window
-      Gdk::Window.new((to_unsafe.value.window))
+      Gdk::Window.new((to_unsafe.as(LibGdk::EventWindowState*).value.window))
     end
 
     def window=(value : Gdk::Window)
-      to_unsafe.value.window = value.to_unsafe.as(LibGdk::Window*)
+      to_unsafe.as(LibGdk::EventWindowState*).value.window = value.to_unsafe.as(LibGdk::Window*)
     end
 
     def send_event
-      (to_unsafe.value.send_event)
+      (to_unsafe.as(LibGdk::EventWindowState*).value.send_event)
     end
 
     def send_event=(value : Int8)
-      to_unsafe.value.send_event = Int8.new(value)
+      to_unsafe.as(LibGdk::EventWindowState*).value.send_event = Int8.new(value)
     end
 
     def changed_mask
-      (to_unsafe.value.changed_mask)
+      (to_unsafe.as(LibGdk::EventWindowState*).value.changed_mask)
     end
 
     def changed_mask=(value : Gdk::WindowState)
-      to_unsafe.value.changed_mask = value
+      to_unsafe.as(LibGdk::EventWindowState*).value.changed_mask = value
     end
 
     def new_window_state
-      (to_unsafe.value.new_window_state)
+      (to_unsafe.as(LibGdk::EventWindowState*).value.new_window_state)
     end
 
     def new_window_state=(value : Gdk::WindowState)
-      to_unsafe.value.new_window_state = value
+      to_unsafe.as(LibGdk::EventWindowState*).value.new_window_state = value
     end
 
   end

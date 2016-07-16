@@ -181,55 +181,55 @@ module GLib
     end
 
     def callback_data
-      (to_unsafe.value.callback_data)
+      (to_unsafe.as(LibGLib::Source*).value.callback_data)
     end
 
     def callback_funcs
-      GLib::SourceCallbackFuncs.new((to_unsafe.value.callback_funcs))
+      GLib::SourceCallbackFuncs.new((to_unsafe.as(LibGLib::Source*).value.callback_funcs))
     end
 
     def source_funcs
-      GLib::SourceFuncs.new((to_unsafe.value.source_funcs))
+      GLib::SourceFuncs.new((to_unsafe.as(LibGLib::Source*).value.source_funcs))
     end
 
     def ref_count
-      (to_unsafe.value.ref_count)
+      (to_unsafe.as(LibGLib::Source*).value.ref_count)
     end
 
     def context
-      GLib::MainContext.new((to_unsafe.value.context))
+      GLib::MainContext.new((to_unsafe.as(LibGLib::Source*).value.context))
     end
 
     def priority
-      (to_unsafe.value.priority)
+      (to_unsafe.as(LibGLib::Source*).value.priority)
     end
 
     def flags
-      (to_unsafe.value.flags)
+      (to_unsafe.as(LibGLib::Source*).value.flags)
     end
 
     def source_id
-      (to_unsafe.value.source_id)
+      (to_unsafe.as(LibGLib::Source*).value.source_id)
     end
 
     def poll_fds
-      (to_unsafe.value.poll_fds)
+      (to_unsafe.as(LibGLib::Source*).value.poll_fds)
     end
 
     def prev
-      GLib::Source.new((to_unsafe.value.prev))
+      GLib::Source.new((to_unsafe.as(LibGLib::Source*).value.prev))
     end
 
     def next
-      GLib::Source.new((to_unsafe.value.next_))
+      GLib::Source.new((to_unsafe.as(LibGLib::Source*).value.next_))
     end
 
     def name
-      (raise "Expected string but got null" unless (to_unsafe.value.name); ::String.new((to_unsafe.value.name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGLib::Source*).value.name); ::String.new((to_unsafe.as(LibGLib::Source*).value.name)))
     end
 
     def priv
-      GLib::SourcePrivate.new((to_unsafe.value.priv))
+      GLib::SourcePrivate.new((to_unsafe.as(LibGLib::Source*).value.priv))
     end
 
   end

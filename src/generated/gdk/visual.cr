@@ -49,7 +49,7 @@ module Gdk
     end
 
     def blue_pixel_details(mask, shift, precision)
-      __return_value = LibGdk.visual_get_blue_pixel_details(to_unsafe.as(LibGdk::Visual*), UInt32.new(mask), Int32.new(shift), Int32.new(precision))
+      __return_value = LibGdk.visual_get_blue_pixel_details(to_unsafe.as(LibGdk::Visual*), mask, shift, precision)
       __return_value
     end
 
@@ -69,12 +69,12 @@ module Gdk
     end
 
     def green_pixel_details(mask, shift, precision)
-      __return_value = LibGdk.visual_get_green_pixel_details(to_unsafe.as(LibGdk::Visual*), UInt32.new(mask), Int32.new(shift), Int32.new(precision))
+      __return_value = LibGdk.visual_get_green_pixel_details(to_unsafe.as(LibGdk::Visual*), mask, shift, precision)
       __return_value
     end
 
     def red_pixel_details(mask, shift, precision)
-      __return_value = LibGdk.visual_get_red_pixel_details(to_unsafe.as(LibGdk::Visual*), UInt32.new(mask), Int32.new(shift), Int32.new(precision))
+      __return_value = LibGdk.visual_get_red_pixel_details(to_unsafe.as(LibGdk::Visual*), mask, shift, precision)
       __return_value
     end
 

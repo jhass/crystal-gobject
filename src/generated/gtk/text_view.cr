@@ -65,7 +65,7 @@ module Gtk
     end
 
     def buffer_to_window_coords(win, buffer_x, buffer_y, window_x, window_y)
-      __return_value = LibGtk.text_view_buffer_to_window_coords(to_unsafe.as(LibGtk::TextView*), win, Int32.new(buffer_x), Int32.new(buffer_y), Int32.new(window_x), Int32.new(window_y))
+      __return_value = LibGtk.text_view_buffer_to_window_coords(to_unsafe.as(LibGtk::TextView*), win, Int32.new(buffer_x), Int32.new(buffer_y), window_x, window_y)
       __return_value
     end
 
@@ -145,7 +145,7 @@ module Gtk
     end
 
     def iter_at_position(iter, trailing, x, y)
-      __return_value = LibGtk.text_view_get_iter_at_position(to_unsafe.as(LibGtk::TextView*), iter, Int32.new(trailing), Int32.new(x), Int32.new(y))
+      __return_value = LibGtk.text_view_get_iter_at_position(to_unsafe.as(LibGtk::TextView*), iter, trailing, Int32.new(x), Int32.new(y))
       __return_value
     end
 
@@ -165,12 +165,12 @@ module Gtk
     end
 
     def line_at_y(target_iter, y, line_top)
-      __return_value = LibGtk.text_view_get_line_at_y(to_unsafe.as(LibGtk::TextView*), target_iter, Int32.new(y), Int32.new(line_top))
+      __return_value = LibGtk.text_view_get_line_at_y(to_unsafe.as(LibGtk::TextView*), target_iter, Int32.new(y), line_top)
       __return_value
     end
 
     def line_yrange(iter, y, height)
-      __return_value = LibGtk.text_view_get_line_yrange(to_unsafe.as(LibGtk::TextView*), iter.to_unsafe.as(LibGtk::TextIter*), Int32.new(y), Int32.new(height))
+      __return_value = LibGtk.text_view_get_line_yrange(to_unsafe.as(LibGtk::TextView*), iter.to_unsafe.as(LibGtk::TextIter*), y, height)
       __return_value
     end
 
@@ -395,7 +395,7 @@ module Gtk
     end
 
     def window_to_buffer_coords(win, window_x, window_y, buffer_x, buffer_y)
-      __return_value = LibGtk.text_view_window_to_buffer_coords(to_unsafe.as(LibGtk::TextView*), win, Int32.new(window_x), Int32.new(window_y), Int32.new(buffer_x), Int32.new(buffer_y))
+      __return_value = LibGtk.text_view_window_to_buffer_coords(to_unsafe.as(LibGtk::TextView*), win, Int32.new(window_x), Int32.new(window_y), buffer_x, buffer_y)
       __return_value
     end
 

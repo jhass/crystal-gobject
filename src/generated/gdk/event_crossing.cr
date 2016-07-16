@@ -30,107 +30,107 @@ module Gdk
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibGdk::EventCrossing*).value.type)
     end
 
     def type=(value : Gdk::EventType)
-      to_unsafe.value.type = value
+      to_unsafe.as(LibGdk::EventCrossing*).value.type = value
     end
 
     def window
-      Gdk::Window.new((to_unsafe.value.window))
+      Gdk::Window.new((to_unsafe.as(LibGdk::EventCrossing*).value.window))
     end
 
     def window=(value : Gdk::Window)
-      to_unsafe.value.window = value.to_unsafe.as(LibGdk::Window*)
+      to_unsafe.as(LibGdk::EventCrossing*).value.window = value.to_unsafe.as(LibGdk::Window*)
     end
 
     def send_event
-      (to_unsafe.value.send_event)
+      (to_unsafe.as(LibGdk::EventCrossing*).value.send_event)
     end
 
     def send_event=(value : Int8)
-      to_unsafe.value.send_event = Int8.new(value)
+      to_unsafe.as(LibGdk::EventCrossing*).value.send_event = Int8.new(value)
     end
 
     def subwindow
-      Gdk::Window.new((to_unsafe.value.subwindow))
+      Gdk::Window.new((to_unsafe.as(LibGdk::EventCrossing*).value.subwindow))
     end
 
     def subwindow=(value : Gdk::Window)
-      to_unsafe.value.subwindow = value.to_unsafe.as(LibGdk::Window*)
+      to_unsafe.as(LibGdk::EventCrossing*).value.subwindow = value.to_unsafe.as(LibGdk::Window*)
     end
 
     def time
-      (to_unsafe.value.time)
+      (to_unsafe.as(LibGdk::EventCrossing*).value.time)
     end
 
     def time=(value : UInt32)
-      to_unsafe.value.time = UInt32.new(value)
+      to_unsafe.as(LibGdk::EventCrossing*).value.time = UInt32.new(value)
     end
 
     def x
-      (to_unsafe.value.x)
+      (to_unsafe.as(LibGdk::EventCrossing*).value.x)
     end
 
     def x=(value : Float64)
-      to_unsafe.value.x = Float64.new(value)
+      to_unsafe.as(LibGdk::EventCrossing*).value.x = Float64.new(value)
     end
 
     def y
-      (to_unsafe.value.y)
+      (to_unsafe.as(LibGdk::EventCrossing*).value.y)
     end
 
     def y=(value : Float64)
-      to_unsafe.value.y = Float64.new(value)
+      to_unsafe.as(LibGdk::EventCrossing*).value.y = Float64.new(value)
     end
 
     def x_root
-      (to_unsafe.value.x_root)
+      (to_unsafe.as(LibGdk::EventCrossing*).value.x_root)
     end
 
     def x_root=(value : Float64)
-      to_unsafe.value.x_root = Float64.new(value)
+      to_unsafe.as(LibGdk::EventCrossing*).value.x_root = Float64.new(value)
     end
 
     def y_root
-      (to_unsafe.value.y_root)
+      (to_unsafe.as(LibGdk::EventCrossing*).value.y_root)
     end
 
     def y_root=(value : Float64)
-      to_unsafe.value.y_root = Float64.new(value)
+      to_unsafe.as(LibGdk::EventCrossing*).value.y_root = Float64.new(value)
     end
 
     def mode
-      (to_unsafe.value.mode)
+      (to_unsafe.as(LibGdk::EventCrossing*).value.mode)
     end
 
     def mode=(value : Gdk::CrossingMode)
-      to_unsafe.value.mode = value
+      to_unsafe.as(LibGdk::EventCrossing*).value.mode = value
     end
 
     def detail
-      (to_unsafe.value.detail)
+      (to_unsafe.as(LibGdk::EventCrossing*).value.detail)
     end
 
     def detail=(value : Gdk::NotifyType)
-      to_unsafe.value.detail = value
+      to_unsafe.as(LibGdk::EventCrossing*).value.detail = value
     end
 
     def focus
-      (to_unsafe.value.focus)
+      (to_unsafe.as(LibGdk::EventCrossing*).value.focus)
     end
 
     def focus=(value : Bool)
-      to_unsafe.value.focus = value
+      to_unsafe.as(LibGdk::EventCrossing*).value.focus = value
     end
 
     def state
-      (to_unsafe.value.state)
+      (to_unsafe.as(LibGdk::EventCrossing*).value.state)
     end
 
     def state=(value : Gdk::ModifierType)
-      to_unsafe.value.state = value
+      to_unsafe.as(LibGdk::EventCrossing*).value.state = value
     end
 
   end

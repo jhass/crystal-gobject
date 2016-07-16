@@ -57,7 +57,7 @@ module Gio
     end
 
     def peek_buffer(count)
-      __return_value = LibGio.buffered_input_stream_peek_buffer(to_unsafe.as(LibGio::BufferedInputStream*), UInt64.new(count))
+      __return_value = LibGio.buffered_input_stream_peek_buffer(to_unsafe.as(LibGio::BufferedInputStream*), count)
       PointerIterator.new(__return_value) {|__item| __item }
     end
 

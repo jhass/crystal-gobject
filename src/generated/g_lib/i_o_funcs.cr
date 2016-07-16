@@ -16,35 +16,35 @@ module GLib
     end
 
     def io_read
-      (to_unsafe.value.io_read)
+      (to_unsafe.as(LibGLib::IOFuncs*).value.io_read)
     end
 
     def io_write
-      (to_unsafe.value.io_write)
+      (to_unsafe.as(LibGLib::IOFuncs*).value.io_write)
     end
 
     def io_seek
-      (to_unsafe.value.io_seek)
+      (to_unsafe.as(LibGLib::IOFuncs*).value.io_seek)
     end
 
     def io_close
-      (to_unsafe.value.io_close)
+      (to_unsafe.as(LibGLib::IOFuncs*).value.io_close)
     end
 
     def io_create_watch
-      (to_unsafe.value.io_create_watch)
+      (to_unsafe.as(LibGLib::IOFuncs*).value.io_create_watch)
     end
 
     def io_free
-      (to_unsafe.value.io_free)
+      (to_unsafe.as(LibGLib::IOFuncs*).value.io_free)
     end
 
     def io_set_flags
-      (to_unsafe.value.io_set_flags)
+      (to_unsafe.as(LibGLib::IOFuncs*).value.io_set_flags)
     end
 
     def io_get_flags
-      (to_unsafe.value.io_get_flags)
+      (to_unsafe.as(LibGLib::IOFuncs*).value.io_get_flags)
     end
 
   end

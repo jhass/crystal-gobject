@@ -23,51 +23,51 @@ module Gtk
     end
 
     def name
-      (raise "Expected string but got null" unless (to_unsafe.value.name); ::String.new((to_unsafe.value.name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::RadioActionEntry*).value.name); ::String.new((to_unsafe.as(LibGtk::RadioActionEntry*).value.name)))
     end
 
     def name=(value : String)
-      to_unsafe.value.name = value.to_unsafe
+      to_unsafe.as(LibGtk::RadioActionEntry*).value.name = value.to_unsafe
     end
 
     def stock_id
-      (raise "Expected string but got null" unless (to_unsafe.value.stock_id); ::String.new((to_unsafe.value.stock_id)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::RadioActionEntry*).value.stock_id); ::String.new((to_unsafe.as(LibGtk::RadioActionEntry*).value.stock_id)))
     end
 
     def stock_id=(value : String)
-      to_unsafe.value.stock_id = value.to_unsafe
+      to_unsafe.as(LibGtk::RadioActionEntry*).value.stock_id = value.to_unsafe
     end
 
     def label
-      (raise "Expected string but got null" unless (to_unsafe.value.label); ::String.new((to_unsafe.value.label)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::RadioActionEntry*).value.label); ::String.new((to_unsafe.as(LibGtk::RadioActionEntry*).value.label)))
     end
 
     def label=(value : String)
-      to_unsafe.value.label = value.to_unsafe
+      to_unsafe.as(LibGtk::RadioActionEntry*).value.label = value.to_unsafe
     end
 
     def accelerator
-      (raise "Expected string but got null" unless (to_unsafe.value.accelerator); ::String.new((to_unsafe.value.accelerator)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::RadioActionEntry*).value.accelerator); ::String.new((to_unsafe.as(LibGtk::RadioActionEntry*).value.accelerator)))
     end
 
     def accelerator=(value : String)
-      to_unsafe.value.accelerator = value.to_unsafe
+      to_unsafe.as(LibGtk::RadioActionEntry*).value.accelerator = value.to_unsafe
     end
 
     def tooltip
-      (raise "Expected string but got null" unless (to_unsafe.value.tooltip); ::String.new((to_unsafe.value.tooltip)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::RadioActionEntry*).value.tooltip); ::String.new((to_unsafe.as(LibGtk::RadioActionEntry*).value.tooltip)))
     end
 
     def tooltip=(value : String)
-      to_unsafe.value.tooltip = value.to_unsafe
+      to_unsafe.as(LibGtk::RadioActionEntry*).value.tooltip = value.to_unsafe
     end
 
     def value
-      (to_unsafe.value.value)
+      (to_unsafe.as(LibGtk::RadioActionEntry*).value.value)
     end
 
     def value=(value : Int32)
-      to_unsafe.value.value = Int32.new(value)
+      to_unsafe.as(LibGtk::RadioActionEntry*).value.value = Int32.new(value)
     end
 
   end

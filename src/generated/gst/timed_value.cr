@@ -19,19 +19,19 @@ module Gst
     end
 
     def timestamp
-      (to_unsafe.value.timestamp)
+      (to_unsafe.as(LibGst::TimedValue*).value.timestamp)
     end
 
     def timestamp=(value : UInt64)
-      to_unsafe.value.timestamp = UInt64.new(value)
+      to_unsafe.as(LibGst::TimedValue*).value.timestamp = UInt64.new(value)
     end
 
     def value
-      (to_unsafe.value.value)
+      (to_unsafe.as(LibGst::TimedValue*).value.value)
     end
 
     def value=(value : Float64)
-      to_unsafe.value.value = Float64.new(value)
+      to_unsafe.as(LibGst::TimedValue*).value.value = Float64.new(value)
     end
 
   end

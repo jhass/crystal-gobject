@@ -16,23 +16,23 @@ module GLib
     end
 
     def start_element
-      (to_unsafe.value.start_element)
+      (to_unsafe.as(LibGLib::MarkupParser*).value.start_element)
     end
 
     def end_element
-      (to_unsafe.value.end_element)
+      (to_unsafe.as(LibGLib::MarkupParser*).value.end_element)
     end
 
     def text
-      (to_unsafe.value.text)
+      (to_unsafe.as(LibGLib::MarkupParser*).value.text)
     end
 
     def passthrough
-      (to_unsafe.value.passthrough)
+      (to_unsafe.as(LibGLib::MarkupParser*).value.passthrough)
     end
 
     def error
-      (to_unsafe.value.error)
+      (to_unsafe.as(LibGLib::MarkupParser*).value.error)
     end
 
   end

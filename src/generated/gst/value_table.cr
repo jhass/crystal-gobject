@@ -21,39 +21,39 @@ module Gst
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibGst::ValueTable*).value.type)
     end
 
     def type=(value : UInt64)
-      to_unsafe.value.type = UInt64.new(value)
+      to_unsafe.as(LibGst::ValueTable*).value.type = UInt64.new(value)
     end
 
     def compare
-      (to_unsafe.value.compare)
+      (to_unsafe.as(LibGst::ValueTable*).value.compare)
     end
 
     def compare=(value : Gst::ValueCompareFunc)
-      to_unsafe.value.compare = value
+      to_unsafe.as(LibGst::ValueTable*).value.compare = value
     end
 
     def serialize
-      (to_unsafe.value.serialize)
+      (to_unsafe.as(LibGst::ValueTable*).value.serialize)
     end
 
     def serialize=(value : Gst::ValueSerializeFunc)
-      to_unsafe.value.serialize = value
+      to_unsafe.as(LibGst::ValueTable*).value.serialize = value
     end
 
     def deserialize
-      (to_unsafe.value.deserialize)
+      (to_unsafe.as(LibGst::ValueTable*).value.deserialize)
     end
 
     def deserialize=(value : Gst::ValueDeserializeFunc)
-      to_unsafe.value.deserialize = value
+      to_unsafe.as(LibGst::ValueTable*).value.deserialize = value
     end
 
     def _gst_reserved
-      PointerIterator.new((to_unsafe.value._gst_reserved)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGst::ValueTable*).value._gst_reserved)) {|__item| __item }
     end
 
   end

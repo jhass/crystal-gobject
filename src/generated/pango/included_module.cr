@@ -16,19 +16,19 @@ module Pango
     end
 
     def list
-      (to_unsafe.value.list)
+      (to_unsafe.as(LibPango::IncludedModule*).value.list)
     end
 
     def init
-      (to_unsafe.value.init)
+      (to_unsafe.as(LibPango::IncludedModule*).value.init)
     end
 
     def exit
-      (to_unsafe.value.exit)
+      (to_unsafe.as(LibPango::IncludedModule*).value.exit)
     end
 
     def create
-      (to_unsafe.value.create)
+      (to_unsafe.as(LibPango::IncludedModule*).value.create)
     end
 
   end

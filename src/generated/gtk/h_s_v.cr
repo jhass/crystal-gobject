@@ -18,17 +18,17 @@ module Gtk
     end
 
     def self.to_rgb(h, s, v, r, g, b)
-      __return_value = LibGtk.h_s_v_to_rgb(Float64.new(h), Float64.new(s), Float64.new(v), Float64.new(r), Float64.new(g), Float64.new(b))
+      __return_value = LibGtk.h_s_v_to_rgb(Float64.new(h), Float64.new(s), Float64.new(v), r, g, b)
       __return_value
     end
 
     def color(h, s, v)
-      __return_value = LibGtk.h_s_v_get_color(to_unsafe.as(LibGtk::HSV*), Float64.new(h), Float64.new(s), Float64.new(v))
+      __return_value = LibGtk.h_s_v_get_color(to_unsafe.as(LibGtk::HSV*), h, s, v)
       __return_value
     end
 
     def metrics(size, ring_width)
-      __return_value = LibGtk.h_s_v_get_metrics(to_unsafe.as(LibGtk::HSV*), Int32.new(size), Int32.new(ring_width))
+      __return_value = LibGtk.h_s_v_get_metrics(to_unsafe.as(LibGtk::HSV*), size, ring_width)
       __return_value
     end
 

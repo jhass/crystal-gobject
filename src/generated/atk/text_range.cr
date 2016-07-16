@@ -21,35 +21,35 @@ module Atk
     end
 
     def bounds
-      Atk::TextRectangle.new((to_unsafe.value.bounds))
+      Atk::TextRectangle.new((to_unsafe.as(LibAtk::TextRange*).value.bounds))
     end
 
     def bounds=(value : Atk::TextRectangle)
-      to_unsafe.value.bounds = value
+      to_unsafe.as(LibAtk::TextRange*).value.bounds = value
     end
 
     def start_offset
-      (to_unsafe.value.start_offset)
+      (to_unsafe.as(LibAtk::TextRange*).value.start_offset)
     end
 
     def start_offset=(value : Int32)
-      to_unsafe.value.start_offset = Int32.new(value)
+      to_unsafe.as(LibAtk::TextRange*).value.start_offset = Int32.new(value)
     end
 
     def end_offset
-      (to_unsafe.value.end_offset)
+      (to_unsafe.as(LibAtk::TextRange*).value.end_offset)
     end
 
     def end_offset=(value : Int32)
-      to_unsafe.value.end_offset = Int32.new(value)
+      to_unsafe.as(LibAtk::TextRange*).value.end_offset = Int32.new(value)
     end
 
     def content
-      (raise "Expected string but got null" unless (to_unsafe.value.content); ::String.new((to_unsafe.value.content)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibAtk::TextRange*).value.content); ::String.new((to_unsafe.as(LibAtk::TextRange*).value.content)))
     end
 
     def content=(value : String)
-      to_unsafe.value.content = value.to_unsafe
+      to_unsafe.as(LibAtk::TextRange*).value.content = value.to_unsafe
     end
 
   end

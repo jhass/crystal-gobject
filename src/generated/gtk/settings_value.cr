@@ -19,19 +19,19 @@ module Gtk
     end
 
     def origin
-      (raise "Expected string but got null" unless (to_unsafe.value.origin); ::String.new((to_unsafe.value.origin)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::SettingsValue*).value.origin); ::String.new((to_unsafe.as(LibGtk::SettingsValue*).value.origin)))
     end
 
     def origin=(value : String)
-      to_unsafe.value.origin = value.to_unsafe
+      to_unsafe.as(LibGtk::SettingsValue*).value.origin = value.to_unsafe
     end
 
     def value
-      GObject::Value.new((to_unsafe.value.value))
+      GObject::Value.new((to_unsafe.as(LibGtk::SettingsValue*).value.value))
     end
 
     def value=(value : GObject::Value)
-      to_unsafe.value.value = value
+      to_unsafe.as(LibGtk::SettingsValue*).value.value = value
     end
 
   end

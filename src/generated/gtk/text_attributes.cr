@@ -61,167 +61,167 @@ module Gtk
     end
 
     def refcount
-      (to_unsafe.value.refcount)
+      (to_unsafe.as(LibGtk::TextAttributes*).value.refcount)
     end
 
     def appearance
-      Gtk::TextAppearance.new((to_unsafe.value.appearance))
+      Gtk::TextAppearance.new((to_unsafe.as(LibGtk::TextAttributes*).value.appearance))
     end
 
     def appearance=(value : Gtk::TextAppearance)
-      to_unsafe.value.appearance = value
+      to_unsafe.as(LibGtk::TextAttributes*).value.appearance = value
     end
 
     def justification
-      (to_unsafe.value.justification)
+      (to_unsafe.as(LibGtk::TextAttributes*).value.justification)
     end
 
     def justification=(value : Gtk::Justification)
-      to_unsafe.value.justification = value
+      to_unsafe.as(LibGtk::TextAttributes*).value.justification = value
     end
 
     def direction
-      (to_unsafe.value.direction)
+      (to_unsafe.as(LibGtk::TextAttributes*).value.direction)
     end
 
     def direction=(value : Gtk::TextDirection)
-      to_unsafe.value.direction = value
+      to_unsafe.as(LibGtk::TextAttributes*).value.direction = value
     end
 
     def font
-      Pango::FontDescription.new((to_unsafe.value.font))
+      Pango::FontDescription.new((to_unsafe.as(LibGtk::TextAttributes*).value.font))
     end
 
     def font=(value : Pango::FontDescription)
-      to_unsafe.value.font = value.to_unsafe.as(LibPango::FontDescription*)
+      to_unsafe.as(LibGtk::TextAttributes*).value.font = value.to_unsafe.as(LibPango::FontDescription*)
     end
 
     def font_scale
-      (to_unsafe.value.font_scale)
+      (to_unsafe.as(LibGtk::TextAttributes*).value.font_scale)
     end
 
     def font_scale=(value : Float64)
-      to_unsafe.value.font_scale = Float64.new(value)
+      to_unsafe.as(LibGtk::TextAttributes*).value.font_scale = Float64.new(value)
     end
 
     def left_margin
-      (to_unsafe.value.left_margin)
+      (to_unsafe.as(LibGtk::TextAttributes*).value.left_margin)
     end
 
     def left_margin=(value : Int32)
-      to_unsafe.value.left_margin = Int32.new(value)
+      to_unsafe.as(LibGtk::TextAttributes*).value.left_margin = Int32.new(value)
     end
 
     def right_margin
-      (to_unsafe.value.right_margin)
+      (to_unsafe.as(LibGtk::TextAttributes*).value.right_margin)
     end
 
     def right_margin=(value : Int32)
-      to_unsafe.value.right_margin = Int32.new(value)
+      to_unsafe.as(LibGtk::TextAttributes*).value.right_margin = Int32.new(value)
     end
 
     def indent
-      (to_unsafe.value.indent)
+      (to_unsafe.as(LibGtk::TextAttributes*).value.indent)
     end
 
     def indent=(value : Int32)
-      to_unsafe.value.indent = Int32.new(value)
+      to_unsafe.as(LibGtk::TextAttributes*).value.indent = Int32.new(value)
     end
 
     def pixels_above_lines
-      (to_unsafe.value.pixels_above_lines)
+      (to_unsafe.as(LibGtk::TextAttributes*).value.pixels_above_lines)
     end
 
     def pixels_above_lines=(value : Int32)
-      to_unsafe.value.pixels_above_lines = Int32.new(value)
+      to_unsafe.as(LibGtk::TextAttributes*).value.pixels_above_lines = Int32.new(value)
     end
 
     def pixels_below_lines
-      (to_unsafe.value.pixels_below_lines)
+      (to_unsafe.as(LibGtk::TextAttributes*).value.pixels_below_lines)
     end
 
     def pixels_below_lines=(value : Int32)
-      to_unsafe.value.pixels_below_lines = Int32.new(value)
+      to_unsafe.as(LibGtk::TextAttributes*).value.pixels_below_lines = Int32.new(value)
     end
 
     def pixels_inside_wrap
-      (to_unsafe.value.pixels_inside_wrap)
+      (to_unsafe.as(LibGtk::TextAttributes*).value.pixels_inside_wrap)
     end
 
     def pixels_inside_wrap=(value : Int32)
-      to_unsafe.value.pixels_inside_wrap = Int32.new(value)
+      to_unsafe.as(LibGtk::TextAttributes*).value.pixels_inside_wrap = Int32.new(value)
     end
 
     def tabs
-      Pango::TabArray.new((to_unsafe.value.tabs))
+      Pango::TabArray.new((to_unsafe.as(LibGtk::TextAttributes*).value.tabs))
     end
 
     def tabs=(value : Pango::TabArray)
-      to_unsafe.value.tabs = value.to_unsafe.as(LibPango::TabArray*)
+      to_unsafe.as(LibGtk::TextAttributes*).value.tabs = value.to_unsafe.as(LibPango::TabArray*)
     end
 
     def wrap_mode
-      (to_unsafe.value.wrap_mode)
+      (to_unsafe.as(LibGtk::TextAttributes*).value.wrap_mode)
     end
 
     def wrap_mode=(value : Gtk::WrapMode)
-      to_unsafe.value.wrap_mode = value
+      to_unsafe.as(LibGtk::TextAttributes*).value.wrap_mode = value
     end
 
     def language
-      Pango::Language.new((to_unsafe.value.language))
+      Pango::Language.new((to_unsafe.as(LibGtk::TextAttributes*).value.language))
     end
 
     def language=(value : Pango::Language)
-      to_unsafe.value.language = value.to_unsafe.as(LibPango::Language*)
+      to_unsafe.as(LibGtk::TextAttributes*).value.language = value.to_unsafe.as(LibPango::Language*)
     end
 
     def pg_bg_color
-      Gdk::Color.new((to_unsafe.value.pg_bg_color))
+      Gdk::Color.new((to_unsafe.as(LibGtk::TextAttributes*).value.pg_bg_color))
     end
 
     def invisible
-      (to_unsafe.value.invisible)
+      (to_unsafe.as(LibGtk::TextAttributes*).value.invisible)
     end
 
     def invisible=(value : UInt32)
-      to_unsafe.value.invisible = UInt32.new(value)
+      to_unsafe.as(LibGtk::TextAttributes*).value.invisible = UInt32.new(value)
     end
 
     def bg_full_height
-      (to_unsafe.value.bg_full_height)
+      (to_unsafe.as(LibGtk::TextAttributes*).value.bg_full_height)
     end
 
     def bg_full_height=(value : UInt32)
-      to_unsafe.value.bg_full_height = UInt32.new(value)
+      to_unsafe.as(LibGtk::TextAttributes*).value.bg_full_height = UInt32.new(value)
     end
 
     def editable
-      (to_unsafe.value.editable)
+      (to_unsafe.as(LibGtk::TextAttributes*).value.editable)
     end
 
     def editable=(value : UInt32)
-      to_unsafe.value.editable = UInt32.new(value)
+      to_unsafe.as(LibGtk::TextAttributes*).value.editable = UInt32.new(value)
     end
 
     def no_fallback
-      (to_unsafe.value.no_fallback)
+      (to_unsafe.as(LibGtk::TextAttributes*).value.no_fallback)
     end
 
     def no_fallback=(value : UInt32)
-      to_unsafe.value.no_fallback = UInt32.new(value)
+      to_unsafe.as(LibGtk::TextAttributes*).value.no_fallback = UInt32.new(value)
     end
 
     def pg_bg_rgba
-      Gdk::RGBA.new((to_unsafe.value.pg_bg_rgba))
+      Gdk::RGBA.new((to_unsafe.as(LibGtk::TextAttributes*).value.pg_bg_rgba))
     end
 
     def letter_spacing
-      (to_unsafe.value.letter_spacing)
+      (to_unsafe.as(LibGtk::TextAttributes*).value.letter_spacing)
     end
 
     def letter_spacing=(value : Int32)
-      to_unsafe.value.letter_spacing = Int32.new(value)
+      to_unsafe.as(LibGtk::TextAttributes*).value.letter_spacing = Int32.new(value)
     end
 
   end

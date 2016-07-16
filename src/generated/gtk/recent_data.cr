@@ -24,59 +24,59 @@ module Gtk
     end
 
     def display_name
-      (raise "Expected string but got null" unless (to_unsafe.value.display_name); ::String.new((to_unsafe.value.display_name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::RecentData*).value.display_name); ::String.new((to_unsafe.as(LibGtk::RecentData*).value.display_name)))
     end
 
     def display_name=(value : String)
-      to_unsafe.value.display_name = value.to_unsafe
+      to_unsafe.as(LibGtk::RecentData*).value.display_name = value.to_unsafe
     end
 
     def description
-      (raise "Expected string but got null" unless (to_unsafe.value.description); ::String.new((to_unsafe.value.description)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::RecentData*).value.description); ::String.new((to_unsafe.as(LibGtk::RecentData*).value.description)))
     end
 
     def description=(value : String)
-      to_unsafe.value.description = value.to_unsafe
+      to_unsafe.as(LibGtk::RecentData*).value.description = value.to_unsafe
     end
 
     def mime_type
-      (raise "Expected string but got null" unless (to_unsafe.value.mime_type); ::String.new((to_unsafe.value.mime_type)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::RecentData*).value.mime_type); ::String.new((to_unsafe.as(LibGtk::RecentData*).value.mime_type)))
     end
 
     def mime_type=(value : String)
-      to_unsafe.value.mime_type = value.to_unsafe
+      to_unsafe.as(LibGtk::RecentData*).value.mime_type = value.to_unsafe
     end
 
     def app_name
-      (raise "Expected string but got null" unless (to_unsafe.value.app_name); ::String.new((to_unsafe.value.app_name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::RecentData*).value.app_name); ::String.new((to_unsafe.as(LibGtk::RecentData*).value.app_name)))
     end
 
     def app_name=(value : String)
-      to_unsafe.value.app_name = value.to_unsafe
+      to_unsafe.as(LibGtk::RecentData*).value.app_name = value.to_unsafe
     end
 
     def app_exec
-      (raise "Expected string but got null" unless (to_unsafe.value.app_exec); ::String.new((to_unsafe.value.app_exec)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::RecentData*).value.app_exec); ::String.new((to_unsafe.as(LibGtk::RecentData*).value.app_exec)))
     end
 
     def app_exec=(value : String)
-      to_unsafe.value.app_exec = value.to_unsafe
+      to_unsafe.as(LibGtk::RecentData*).value.app_exec = value.to_unsafe
     end
 
     def groups
-      PointerIterator.new((to_unsafe.value.groups)) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
+      PointerIterator.new((to_unsafe.as(LibGtk::RecentData*).value.groups)) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def groups=(value : Array(String))
-      to_unsafe.value.groups = value
+      to_unsafe.as(LibGtk::RecentData*).value.groups = value
     end
 
     def is_private
-      (to_unsafe.value.is_private)
+      (to_unsafe.as(LibGtk::RecentData*).value.is_private)
     end
 
     def is_private=(value : Bool)
-      to_unsafe.value.is_private = value
+      to_unsafe.as(LibGtk::RecentData*).value.is_private = value
     end
 
   end

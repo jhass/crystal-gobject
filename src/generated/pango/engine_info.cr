@@ -22,43 +22,43 @@ module Pango
     end
 
     def id
-      (raise "Expected string but got null" unless (to_unsafe.value.id); ::String.new((to_unsafe.value.id)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibPango::EngineInfo*).value.id); ::String.new((to_unsafe.as(LibPango::EngineInfo*).value.id)))
     end
 
     def id=(value : String)
-      to_unsafe.value.id = value.to_unsafe
+      to_unsafe.as(LibPango::EngineInfo*).value.id = value.to_unsafe
     end
 
     def engine_type
-      (raise "Expected string but got null" unless (to_unsafe.value.engine_type); ::String.new((to_unsafe.value.engine_type)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibPango::EngineInfo*).value.engine_type); ::String.new((to_unsafe.as(LibPango::EngineInfo*).value.engine_type)))
     end
 
     def engine_type=(value : String)
-      to_unsafe.value.engine_type = value.to_unsafe
+      to_unsafe.as(LibPango::EngineInfo*).value.engine_type = value.to_unsafe
     end
 
     def render_type
-      (raise "Expected string but got null" unless (to_unsafe.value.render_type); ::String.new((to_unsafe.value.render_type)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibPango::EngineInfo*).value.render_type); ::String.new((to_unsafe.as(LibPango::EngineInfo*).value.render_type)))
     end
 
     def render_type=(value : String)
-      to_unsafe.value.render_type = value.to_unsafe
+      to_unsafe.as(LibPango::EngineInfo*).value.render_type = value.to_unsafe
     end
 
     def scripts
-      Pango::EngineScriptInfo.new((to_unsafe.value.scripts))
+      Pango::EngineScriptInfo.new((to_unsafe.as(LibPango::EngineInfo*).value.scripts))
     end
 
     def scripts=(value : Pango::EngineScriptInfo)
-      to_unsafe.value.scripts = value.to_unsafe.as(LibPango::EngineScriptInfo*)
+      to_unsafe.as(LibPango::EngineInfo*).value.scripts = value.to_unsafe.as(LibPango::EngineScriptInfo*)
     end
 
     def n_scripts
-      (to_unsafe.value.n_scripts)
+      (to_unsafe.as(LibPango::EngineInfo*).value.n_scripts)
     end
 
     def n_scripts=(value : Int32)
-      to_unsafe.value.n_scripts = Int32.new(value)
+      to_unsafe.as(LibPango::EngineInfo*).value.n_scripts = Int32.new(value)
     end
 
   end

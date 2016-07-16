@@ -49,19 +49,19 @@ module Pango
     end
 
     def item
-      Pango::Item.new((to_unsafe.value.item))
+      Pango::Item.new((to_unsafe.as(LibPango::GlyphItem*).value.item))
     end
 
     def item=(value : Pango::Item)
-      to_unsafe.value.item = value.to_unsafe.as(LibPango::Item*)
+      to_unsafe.as(LibPango::GlyphItem*).value.item = value.to_unsafe.as(LibPango::Item*)
     end
 
     def glyphs
-      Pango::GlyphString.new((to_unsafe.value.glyphs))
+      Pango::GlyphString.new((to_unsafe.as(LibPango::GlyphItem*).value.glyphs))
     end
 
     def glyphs=(value : Pango::GlyphString)
-      to_unsafe.value.glyphs = value.to_unsafe.as(LibPango::GlyphString*)
+      to_unsafe.as(LibPango::GlyphItem*).value.glyphs = value.to_unsafe.as(LibPango::GlyphString*)
     end
 
   end

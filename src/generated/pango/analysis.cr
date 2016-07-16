@@ -26,75 +26,75 @@ module Pango
     end
 
     def shape_engine
-      Pango::EngineShape.new((to_unsafe.value.shape_engine))
+      Pango::EngineShape.new((to_unsafe.as(LibPango::Analysis*).value.shape_engine))
     end
 
     def shape_engine=(value : Pango::EngineShape)
-      to_unsafe.value.shape_engine = value.to_unsafe.as(LibPango::EngineShape*)
+      to_unsafe.as(LibPango::Analysis*).value.shape_engine = value.to_unsafe.as(LibPango::EngineShape*)
     end
 
     def lang_engine
-      Pango::EngineLang.new((to_unsafe.value.lang_engine))
+      Pango::EngineLang.new((to_unsafe.as(LibPango::Analysis*).value.lang_engine))
     end
 
     def lang_engine=(value : Pango::EngineLang)
-      to_unsafe.value.lang_engine = value.to_unsafe.as(LibPango::EngineLang*)
+      to_unsafe.as(LibPango::Analysis*).value.lang_engine = value.to_unsafe.as(LibPango::EngineLang*)
     end
 
     def font
-      Pango::Font.new((to_unsafe.value.font))
+      Pango::Font.new((to_unsafe.as(LibPango::Analysis*).value.font))
     end
 
     def font=(value : Pango::Font)
-      to_unsafe.value.font = value.to_unsafe.as(LibPango::Font*)
+      to_unsafe.as(LibPango::Analysis*).value.font = value.to_unsafe.as(LibPango::Font*)
     end
 
     def level
-      (to_unsafe.value.level)
+      (to_unsafe.as(LibPango::Analysis*).value.level)
     end
 
     def level=(value : UInt8)
-      to_unsafe.value.level = UInt8.new(value)
+      to_unsafe.as(LibPango::Analysis*).value.level = UInt8.new(value)
     end
 
     def gravity
-      (to_unsafe.value.gravity)
+      (to_unsafe.as(LibPango::Analysis*).value.gravity)
     end
 
     def gravity=(value : UInt8)
-      to_unsafe.value.gravity = UInt8.new(value)
+      to_unsafe.as(LibPango::Analysis*).value.gravity = UInt8.new(value)
     end
 
     def flags
-      (to_unsafe.value.flags)
+      (to_unsafe.as(LibPango::Analysis*).value.flags)
     end
 
     def flags=(value : UInt8)
-      to_unsafe.value.flags = UInt8.new(value)
+      to_unsafe.as(LibPango::Analysis*).value.flags = UInt8.new(value)
     end
 
     def script
-      (to_unsafe.value.script)
+      (to_unsafe.as(LibPango::Analysis*).value.script)
     end
 
     def script=(value : UInt8)
-      to_unsafe.value.script = UInt8.new(value)
+      to_unsafe.as(LibPango::Analysis*).value.script = UInt8.new(value)
     end
 
     def language
-      Pango::Language.new((to_unsafe.value.language))
+      Pango::Language.new((to_unsafe.as(LibPango::Analysis*).value.language))
     end
 
     def language=(value : Pango::Language)
-      to_unsafe.value.language = value.to_unsafe.as(LibPango::Language*)
+      to_unsafe.as(LibPango::Analysis*).value.language = value.to_unsafe.as(LibPango::Language*)
     end
 
     def extra_attrs
-      (to_unsafe.value.extra_attrs)
+      (to_unsafe.as(LibPango::Analysis*).value.extra_attrs)
     end
 
     def extra_attrs=(value : Void*)
-      to_unsafe.value.extra_attrs = value
+      to_unsafe.as(LibPango::Analysis*).value.extra_attrs = value
     end
 
   end

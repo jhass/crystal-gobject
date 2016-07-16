@@ -23,51 +23,51 @@ module Gdk
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibGdk::EventProperty*).value.type)
     end
 
     def type=(value : Gdk::EventType)
-      to_unsafe.value.type = value
+      to_unsafe.as(LibGdk::EventProperty*).value.type = value
     end
 
     def window
-      Gdk::Window.new((to_unsafe.value.window))
+      Gdk::Window.new((to_unsafe.as(LibGdk::EventProperty*).value.window))
     end
 
     def window=(value : Gdk::Window)
-      to_unsafe.value.window = value.to_unsafe.as(LibGdk::Window*)
+      to_unsafe.as(LibGdk::EventProperty*).value.window = value.to_unsafe.as(LibGdk::Window*)
     end
 
     def send_event
-      (to_unsafe.value.send_event)
+      (to_unsafe.as(LibGdk::EventProperty*).value.send_event)
     end
 
     def send_event=(value : Int8)
-      to_unsafe.value.send_event = Int8.new(value)
+      to_unsafe.as(LibGdk::EventProperty*).value.send_event = Int8.new(value)
     end
 
     def atom
-      Gdk::Atom.new((to_unsafe.value.atom))
+      Gdk::Atom.new((to_unsafe.as(LibGdk::EventProperty*).value.atom))
     end
 
     def atom=(value : Gdk::Atom)
-      to_unsafe.value.atom = value.to_unsafe.as(LibGdk::Atom*)
+      to_unsafe.as(LibGdk::EventProperty*).value.atom = value.to_unsafe.as(LibGdk::Atom*)
     end
 
     def time
-      (to_unsafe.value.time)
+      (to_unsafe.as(LibGdk::EventProperty*).value.time)
     end
 
     def time=(value : UInt32)
-      to_unsafe.value.time = UInt32.new(value)
+      to_unsafe.as(LibGdk::EventProperty*).value.time = UInt32.new(value)
     end
 
     def state
-      (to_unsafe.value.state)
+      (to_unsafe.as(LibGdk::EventProperty*).value.state)
     end
 
     def state=(value : Gdk::PropertyState)
-      to_unsafe.value.state = value
+      to_unsafe.as(LibGdk::EventProperty*).value.state = value
     end
 
   end

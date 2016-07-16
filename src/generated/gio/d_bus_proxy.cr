@@ -84,14 +84,14 @@ module Gio
 
     def call_with_unix_fd_list_finish(out_fd_list, res)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.d_bus_proxy_call_with_unix_fd_list_finish(to_unsafe.as(LibGio::DBusProxy*), out_fd_list.to_unsafe.as(LibGio::UnixFDList*), res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
+      __return_value = LibGio.d_bus_proxy_call_with_unix_fd_list_finish(to_unsafe.as(LibGio::DBusProxy*), out_fd_list, res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       GLib::Variant.new(__return_value)
     end
 
     def call_with_unix_fd_list_sync(method_name, parameters, flags, timeout_msec, fd_list, out_fd_list, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.d_bus_proxy_call_with_unix_fd_list_sync(to_unsafe.as(LibGio::DBusProxy*), method_name.to_unsafe, parameters && parameters.to_unsafe.as(LibGLib::Variant*), flags, Int32.new(timeout_msec), fd_list && fd_list.to_unsafe.as(LibGio::UnixFDList*), out_fd_list.to_unsafe.as(LibGio::UnixFDList*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.d_bus_proxy_call_with_unix_fd_list_sync(to_unsafe.as(LibGio::DBusProxy*), method_name.to_unsafe, parameters && parameters.to_unsafe.as(LibGLib::Variant*), flags, Int32.new(timeout_msec), fd_list && fd_list.to_unsafe.as(LibGio::UnixFDList*), out_fd_list, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       GLib::Variant.new(__return_value)
     end

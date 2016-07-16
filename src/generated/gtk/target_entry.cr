@@ -35,27 +35,27 @@ module Gtk
     end
 
     def target
-      (raise "Expected string but got null" unless (to_unsafe.value.target); ::String.new((to_unsafe.value.target)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::TargetEntry*).value.target); ::String.new((to_unsafe.as(LibGtk::TargetEntry*).value.target)))
     end
 
     def target=(value : String)
-      to_unsafe.value.target = value.to_unsafe
+      to_unsafe.as(LibGtk::TargetEntry*).value.target = value.to_unsafe
     end
 
     def flags
-      (to_unsafe.value.flags)
+      (to_unsafe.as(LibGtk::TargetEntry*).value.flags)
     end
 
     def flags=(value : UInt32)
-      to_unsafe.value.flags = UInt32.new(value)
+      to_unsafe.as(LibGtk::TargetEntry*).value.flags = UInt32.new(value)
     end
 
     def info
-      (to_unsafe.value.info)
+      (to_unsafe.as(LibGtk::TargetEntry*).value.info)
     end
 
     def info=(value : UInt32)
-      to_unsafe.value.info = UInt32.new(value)
+      to_unsafe.as(LibGtk::TargetEntry*).value.info = UInt32.new(value)
     end
 
   end

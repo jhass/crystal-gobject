@@ -20,27 +20,27 @@ module GObject
     end
 
     def interface_init
-      (to_unsafe.value.interface_init)
+      (to_unsafe.as(LibGObject::InterfaceInfo*).value.interface_init)
     end
 
     def interface_init=(value : GObject::InterfaceInitFunc)
-      to_unsafe.value.interface_init = value
+      to_unsafe.as(LibGObject::InterfaceInfo*).value.interface_init = value
     end
 
     def interface_finalize
-      (to_unsafe.value.interface_finalize)
+      (to_unsafe.as(LibGObject::InterfaceInfo*).value.interface_finalize)
     end
 
     def interface_finalize=(value : GObject::InterfaceFinalizeFunc)
-      to_unsafe.value.interface_finalize = value
+      to_unsafe.as(LibGObject::InterfaceInfo*).value.interface_finalize = value
     end
 
     def interface_data
-      (to_unsafe.value.interface_data)
+      (to_unsafe.as(LibGObject::InterfaceInfo*).value.interface_data)
     end
 
     def interface_data=(value : Void*)
-      to_unsafe.value.interface_data = value
+      to_unsafe.as(LibGObject::InterfaceInfo*).value.interface_data = value
     end
 
   end

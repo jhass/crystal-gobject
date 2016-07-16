@@ -415,7 +415,7 @@ module GObject
   end
 
   def self.signal_list_ids(itype, n_ids)
-    __return_value = LibGObject.signal_list_ids(UInt64.new(itype), UInt32.new(n_ids))
+    __return_value = LibGObject.signal_list_ids(UInt64.new(itype), n_ids)
     PointerIterator.new(__return_value) {|__item| __item }
   end
 
@@ -435,7 +435,7 @@ module GObject
   end
 
   def self.signal_parse_name(detailed_signal, itype, signal_id_p, detail_p, force_detail_quark)
-    __return_value = LibGObject.signal_parse_name(detailed_signal.to_unsafe, UInt64.new(itype), UInt32.new(signal_id_p), UInt32.new(detail_p), force_detail_quark)
+    __return_value = LibGObject.signal_parse_name(detailed_signal.to_unsafe, UInt64.new(itype), signal_id_p, detail_p, force_detail_quark)
     __return_value
   end
 
@@ -540,7 +540,7 @@ module GObject
   end
 
   def self.type_children(type, n_children)
-    __return_value = LibGObject.type_children(UInt64.new(type), UInt32.new(n_children))
+    __return_value = LibGObject.type_children(UInt64.new(type), n_children)
     PointerIterator.new(__return_value) {|__item| __item }
   end
 
@@ -655,12 +655,12 @@ module GObject
   end
 
   def self.type_interface_prerequisites(interface_type, n_prerequisites)
-    __return_value = LibGObject.type_interface_prerequisites(UInt64.new(interface_type), UInt32.new(n_prerequisites))
+    __return_value = LibGObject.type_interface_prerequisites(UInt64.new(interface_type), n_prerequisites)
     PointerIterator.new(__return_value) {|__item| __item }
   end
 
   def self.type_interfaces(type, n_interfaces)
-    __return_value = LibGObject.type_interfaces(UInt64.new(type), UInt32.new(n_interfaces))
+    __return_value = LibGObject.type_interfaces(UInt64.new(type), n_interfaces)
     PointerIterator.new(__return_value) {|__item| __item }
   end
 

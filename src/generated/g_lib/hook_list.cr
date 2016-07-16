@@ -44,59 +44,59 @@ module GLib
     end
 
     def seq_id
-      (to_unsafe.value.seq_id)
+      (to_unsafe.as(LibGLib::HookList*).value.seq_id)
     end
 
     def seq_id=(value : UInt64)
-      to_unsafe.value.seq_id = UInt64.new(value)
+      to_unsafe.as(LibGLib::HookList*).value.seq_id = UInt64.new(value)
     end
 
     def hook_size
-      (to_unsafe.value.hook_size)
+      (to_unsafe.as(LibGLib::HookList*).value.hook_size)
     end
 
     def hook_size=(value : UInt32)
-      to_unsafe.value.hook_size = UInt32.new(value)
+      to_unsafe.as(LibGLib::HookList*).value.hook_size = UInt32.new(value)
     end
 
     def is_setup
-      (to_unsafe.value.is_setup)
+      (to_unsafe.as(LibGLib::HookList*).value.is_setup)
     end
 
     def is_setup=(value : UInt32)
-      to_unsafe.value.is_setup = UInt32.new(value)
+      to_unsafe.as(LibGLib::HookList*).value.is_setup = UInt32.new(value)
     end
 
     def hooks
-      GLib::Hook.new((to_unsafe.value.hooks))
+      GLib::Hook.new((to_unsafe.as(LibGLib::HookList*).value.hooks))
     end
 
     def hooks=(value : GLib::Hook)
-      to_unsafe.value.hooks = value.to_unsafe.as(LibGLib::Hook*)
+      to_unsafe.as(LibGLib::HookList*).value.hooks = value.to_unsafe.as(LibGLib::Hook*)
     end
 
     def dummy3
-      (to_unsafe.value.dummy3)
+      (to_unsafe.as(LibGLib::HookList*).value.dummy3)
     end
 
     def dummy3=(value : Void*)
-      to_unsafe.value.dummy3 = value
+      to_unsafe.as(LibGLib::HookList*).value.dummy3 = value
     end
 
     def finalize_hook
-      (to_unsafe.value.finalize_hook)
+      (to_unsafe.as(LibGLib::HookList*).value.finalize_hook)
     end
 
     def finalize_hook=(value : GLib::HookFinalizeFunc)
-      to_unsafe.value.finalize_hook = value
+      to_unsafe.as(LibGLib::HookList*).value.finalize_hook = value
     end
 
     def dummy
-      PointerIterator.new((to_unsafe.value.dummy)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGLib::HookList*).value.dummy)) {|__item| __item }
     end
 
     def dummy=(value : Array(Void*))
-      to_unsafe.value.dummy = value
+      to_unsafe.as(LibGLib::HookList*).value.dummy = value
     end
 
   end

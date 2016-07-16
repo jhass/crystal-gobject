@@ -217,13 +217,13 @@ module Gst
   end
 
   def self.init(argc, argv)
-    __return_value = LibGst.init(argc && Int32.new(argc), argv && argv)
+    __return_value = LibGst.init(argc, argv)
     __return_value
   end
 
   def self.init_check(argc, argv)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGst.init_check(argc && Int32.new(argc), argv && argv, pointerof(__error))
+    __return_value = LibGst.init_check(argc, argv, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -279,12 +279,12 @@ module Gst
   end
 
   def self.mini_object_replace(olddata, newdata)
-    __return_value = LibGst.mini_object_replace(olddata && olddata.to_unsafe.as(LibGst::MiniObject*), newdata && newdata.to_unsafe.as(LibGst::MiniObject*))
+    __return_value = LibGst.mini_object_replace(olddata, newdata && newdata.to_unsafe.as(LibGst::MiniObject*))
     __return_value
   end
 
   def self.mini_object_take(olddata, newdata)
-    __return_value = LibGst.mini_object_take(olddata.to_unsafe.as(LibGst::MiniObject*), newdata.to_unsafe.as(LibGst::MiniObject*))
+    __return_value = LibGst.mini_object_take(olddata, newdata.to_unsafe.as(LibGst::MiniObject*))
     __return_value
   end
 
@@ -431,7 +431,7 @@ module Gst
   end
 
   def self.structure_from_string(string, end)
-    __return_value = LibGst.structure_from_string(string.to_unsafe, end.to_unsafe)
+    __return_value = LibGst.structure_from_string(string.to_unsafe, end)
     Gst::Structure.new(__return_value) if __return_value
   end
 
@@ -566,7 +566,7 @@ module Gst
   end
 
   def self.util_double_to_fraction(src, dest_n, dest_d)
-    __return_value = LibGst.util_double_to_fraction(Float64.new(src), Int32.new(dest_n), Int32.new(dest_d))
+    __return_value = LibGst.util_double_to_fraction(Float64.new(src), dest_n, dest_d)
     __return_value
   end
 
@@ -576,7 +576,7 @@ module Gst
   end
 
   def self.util_fraction_add(a_n, a_d, b_n, b_d, res_n, res_d)
-    __return_value = LibGst.util_fraction_add(Int32.new(a_n), Int32.new(a_d), Int32.new(b_n), Int32.new(b_d), Int32.new(res_n), Int32.new(res_d))
+    __return_value = LibGst.util_fraction_add(Int32.new(a_n), Int32.new(a_d), Int32.new(b_n), Int32.new(b_d), res_n, res_d)
     __return_value
   end
 
@@ -586,12 +586,12 @@ module Gst
   end
 
   def self.util_fraction_multiply(a_n, a_d, b_n, b_d, res_n, res_d)
-    __return_value = LibGst.util_fraction_multiply(Int32.new(a_n), Int32.new(a_d), Int32.new(b_n), Int32.new(b_d), Int32.new(res_n), Int32.new(res_d))
+    __return_value = LibGst.util_fraction_multiply(Int32.new(a_n), Int32.new(a_d), Int32.new(b_n), Int32.new(b_d), res_n, res_d)
     __return_value
   end
 
   def self.util_fraction_to_double(src_n, src_d, dest)
-    __return_value = LibGst.util_fraction_to_double(Int32.new(src_n), Int32.new(src_d), Float64.new(dest))
+    __return_value = LibGst.util_fraction_to_double(Int32.new(src_n), Int32.new(src_d), dest)
     __return_value
   end
 
@@ -916,7 +916,7 @@ module Gst
   end
 
   def self.version(major, minor, micro, nano)
-    __return_value = LibGst.version(UInt32.new(major), UInt32.new(minor), UInt32.new(micro), UInt32.new(nano))
+    __return_value = LibGst.version(major, minor, micro, nano)
     __return_value
   end
 

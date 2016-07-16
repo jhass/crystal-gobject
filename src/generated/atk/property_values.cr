@@ -20,27 +20,27 @@ module Atk
     end
 
     def property_name
-      (raise "Expected string but got null" unless (to_unsafe.value.property_name); ::String.new((to_unsafe.value.property_name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibAtk::PropertyValues*).value.property_name); ::String.new((to_unsafe.as(LibAtk::PropertyValues*).value.property_name)))
     end
 
     def property_name=(value : String)
-      to_unsafe.value.property_name = value.to_unsafe
+      to_unsafe.as(LibAtk::PropertyValues*).value.property_name = value.to_unsafe
     end
 
     def old_value
-      GObject::Value.new((to_unsafe.value.old_value))
+      GObject::Value.new((to_unsafe.as(LibAtk::PropertyValues*).value.old_value))
     end
 
     def old_value=(value : GObject::Value)
-      to_unsafe.value.old_value = value
+      to_unsafe.as(LibAtk::PropertyValues*).value.old_value = value
     end
 
     def new_value
-      GObject::Value.new((to_unsafe.value.new_value))
+      GObject::Value.new((to_unsafe.as(LibAtk::PropertyValues*).value.new_value))
     end
 
     def new_value=(value : GObject::Value)
-      to_unsafe.value.new_value = value
+      to_unsafe.as(LibAtk::PropertyValues*).value.new_value = value
     end
 
   end

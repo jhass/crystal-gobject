@@ -80,7 +80,7 @@ module Gtk
     end
 
     def layout_offsets(x, y)
-      __return_value = LibGtk.label_get_layout_offsets(to_unsafe.as(LibGtk::Label*), Int32.new(x), Int32.new(y))
+      __return_value = LibGtk.label_get_layout_offsets(to_unsafe.as(LibGtk::Label*), x, y)
       __return_value
     end
 
@@ -120,7 +120,7 @@ module Gtk
     end
 
     def selection_bounds(start, end)
-      __return_value = LibGtk.label_get_selection_bounds(to_unsafe.as(LibGtk::Label*), Int32.new(start), Int32.new(end))
+      __return_value = LibGtk.label_get_selection_bounds(to_unsafe.as(LibGtk::Label*), start, end)
       __return_value
     end
 

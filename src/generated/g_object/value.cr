@@ -333,15 +333,15 @@ module GObject
     end
 
     def g_type
-      (to_unsafe.value.g_type)
+      (to_unsafe.as(LibGObject::Value*).value.g_type)
     end
 
     def data
-      PointerIterator.new((to_unsafe.value.data)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGObject::Value*).value.data)) {|__item| __item }
     end
 
     def data=(value : Array(GObject::G_Value__data__union))
-      to_unsafe.value.data = value
+      to_unsafe.as(LibGObject::Value*).value.data = value
     end
 
   end

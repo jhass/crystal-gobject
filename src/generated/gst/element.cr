@@ -198,17 +198,17 @@ module Gst
     end
 
     def query_convert(src_format, src_val, dest_format, dest_val)
-      __return_value = LibGst.element_query_convert(to_unsafe.as(LibGst::Element*), src_format, Int64.new(src_val), dest_format, Int64.new(dest_val))
+      __return_value = LibGst.element_query_convert(to_unsafe.as(LibGst::Element*), src_format, Int64.new(src_val), dest_format, dest_val)
       __return_value
     end
 
     def query_duration(format, duration)
-      __return_value = LibGst.element_query_duration(to_unsafe.as(LibGst::Element*), format, Int64.new(duration))
+      __return_value = LibGst.element_query_duration(to_unsafe.as(LibGst::Element*), format, duration)
       __return_value
     end
 
     def query_position(format, cur)
-      __return_value = LibGst.element_query_position(to_unsafe.as(LibGst::Element*), format, Int64.new(cur))
+      __return_value = LibGst.element_query_position(to_unsafe.as(LibGst::Element*), format, cur)
       __return_value
     end
 

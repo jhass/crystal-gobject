@@ -173,7 +173,7 @@ module Gtk
     end
 
     def default_size(width, height)
-      __return_value = LibGtk.window_get_default_size(to_unsafe.as(LibGtk::Window*), Int32.new(width), Int32.new(height))
+      __return_value = LibGtk.window_get_default_size(to_unsafe.as(LibGtk::Window*), width, height)
       __return_value
     end
 
@@ -263,7 +263,7 @@ module Gtk
     end
 
     def position(root_x, root_y)
-      __return_value = LibGtk.window_get_position(to_unsafe.as(LibGtk::Window*), Int32.new(root_x), Int32.new(root_y))
+      __return_value = LibGtk.window_get_position(to_unsafe.as(LibGtk::Window*), root_x, root_y)
       __return_value
     end
 
@@ -288,7 +288,7 @@ module Gtk
     end
 
     def size(width, height)
-      __return_value = LibGtk.window_get_size(to_unsafe.as(LibGtk::Window*), Int32.new(width), Int32.new(height))
+      __return_value = LibGtk.window_get_size(to_unsafe.as(LibGtk::Window*), width, height)
       __return_value
     end
 

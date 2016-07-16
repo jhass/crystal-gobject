@@ -21,39 +21,39 @@ module Gst
     end
 
     def format
-      (to_unsafe.value.format)
+      (to_unsafe.as(LibGst::BufferPoolAcquireParams*).value.format)
     end
 
     def format=(value : Gst::Format)
-      to_unsafe.value.format = value
+      to_unsafe.as(LibGst::BufferPoolAcquireParams*).value.format = value
     end
 
     def start
-      (to_unsafe.value.start)
+      (to_unsafe.as(LibGst::BufferPoolAcquireParams*).value.start)
     end
 
     def start=(value : Int64)
-      to_unsafe.value.start = Int64.new(value)
+      to_unsafe.as(LibGst::BufferPoolAcquireParams*).value.start = Int64.new(value)
     end
 
     def stop
-      (to_unsafe.value.stop)
+      (to_unsafe.as(LibGst::BufferPoolAcquireParams*).value.stop)
     end
 
     def stop=(value : Int64)
-      to_unsafe.value.stop = Int64.new(value)
+      to_unsafe.as(LibGst::BufferPoolAcquireParams*).value.stop = Int64.new(value)
     end
 
     def flags
-      (to_unsafe.value.flags)
+      (to_unsafe.as(LibGst::BufferPoolAcquireParams*).value.flags)
     end
 
     def flags=(value : Gst::BufferPoolAcquireFlags)
-      to_unsafe.value.flags = value
+      to_unsafe.as(LibGst::BufferPoolAcquireParams*).value.flags = value
     end
 
     def _gst_reserved
-      PointerIterator.new((to_unsafe.value._gst_reserved)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGst::BufferPoolAcquireParams*).value._gst_reserved)) {|__item| __item }
     end
 
   end

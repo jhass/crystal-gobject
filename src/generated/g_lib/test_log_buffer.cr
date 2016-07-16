@@ -26,11 +26,11 @@ module GLib
     end
 
     def data
-      GLib::String.new((to_unsafe.value.data))
+      GLib::String.new((to_unsafe.as(LibGLib::TestLogBuffer*).value.data))
     end
 
     def msgs
-      (to_unsafe.value.msgs)
+      (to_unsafe.as(LibGLib::TestLogBuffer*).value.msgs)
     end
 
   end

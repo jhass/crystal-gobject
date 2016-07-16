@@ -24,59 +24,59 @@ module Gdk
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibGdk::EventConfigure*).value.type)
     end
 
     def type=(value : Gdk::EventType)
-      to_unsafe.value.type = value
+      to_unsafe.as(LibGdk::EventConfigure*).value.type = value
     end
 
     def window
-      Gdk::Window.new((to_unsafe.value.window))
+      Gdk::Window.new((to_unsafe.as(LibGdk::EventConfigure*).value.window))
     end
 
     def window=(value : Gdk::Window)
-      to_unsafe.value.window = value.to_unsafe.as(LibGdk::Window*)
+      to_unsafe.as(LibGdk::EventConfigure*).value.window = value.to_unsafe.as(LibGdk::Window*)
     end
 
     def send_event
-      (to_unsafe.value.send_event)
+      (to_unsafe.as(LibGdk::EventConfigure*).value.send_event)
     end
 
     def send_event=(value : Int8)
-      to_unsafe.value.send_event = Int8.new(value)
+      to_unsafe.as(LibGdk::EventConfigure*).value.send_event = Int8.new(value)
     end
 
     def x
-      (to_unsafe.value.x)
+      (to_unsafe.as(LibGdk::EventConfigure*).value.x)
     end
 
     def x=(value : Int32)
-      to_unsafe.value.x = Int32.new(value)
+      to_unsafe.as(LibGdk::EventConfigure*).value.x = Int32.new(value)
     end
 
     def y
-      (to_unsafe.value.y)
+      (to_unsafe.as(LibGdk::EventConfigure*).value.y)
     end
 
     def y=(value : Int32)
-      to_unsafe.value.y = Int32.new(value)
+      to_unsafe.as(LibGdk::EventConfigure*).value.y = Int32.new(value)
     end
 
     def width
-      (to_unsafe.value.width)
+      (to_unsafe.as(LibGdk::EventConfigure*).value.width)
     end
 
     def width=(value : Int32)
-      to_unsafe.value.width = Int32.new(value)
+      to_unsafe.as(LibGdk::EventConfigure*).value.width = Int32.new(value)
     end
 
     def height
-      (to_unsafe.value.height)
+      (to_unsafe.as(LibGdk::EventConfigure*).value.height)
     end
 
     def height=(value : Int32)
-      to_unsafe.value.height = Int32.new(value)
+      to_unsafe.as(LibGdk::EventConfigure*).value.height = Int32.new(value)
     end
 
   end

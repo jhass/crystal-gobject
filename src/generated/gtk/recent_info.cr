@@ -38,12 +38,12 @@ module Gtk
     end
 
     def application_info(app_name, app_exec, count, time)
-      __return_value = LibGtk.recent_info_get_application_info(to_unsafe.as(LibGtk::RecentInfo*), app_name.to_unsafe, app_exec.to_unsafe, UInt32.new(count), Int64.new(time))
+      __return_value = LibGtk.recent_info_get_application_info(to_unsafe.as(LibGtk::RecentInfo*), app_name.to_unsafe, app_exec, count, time)
       __return_value
     end
 
     def applications(length)
-      __return_value = LibGtk.recent_info_get_applications(to_unsafe.as(LibGtk::RecentInfo*), UInt64.new(length))
+      __return_value = LibGtk.recent_info_get_applications(to_unsafe.as(LibGtk::RecentInfo*), length)
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
@@ -63,7 +63,7 @@ module Gtk
     end
 
     def groups(length)
-      __return_value = LibGtk.recent_info_get_groups(to_unsafe.as(LibGtk::RecentInfo*), UInt64.new(length))
+      __return_value = LibGtk.recent_info_get_groups(to_unsafe.as(LibGtk::RecentInfo*), length)
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 

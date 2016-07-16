@@ -19,19 +19,19 @@ module Pango
     end
 
     def attr
-      Pango::Attribute.new((to_unsafe.value.attr))
+      Pango::Attribute.new((to_unsafe.as(LibPango::AttrColor*).value.attr))
     end
 
     def attr=(value : Pango::Attribute)
-      to_unsafe.value.attr = value
+      to_unsafe.as(LibPango::AttrColor*).value.attr = value
     end
 
     def color
-      Pango::Color.new((to_unsafe.value.color))
+      Pango::Color.new((to_unsafe.as(LibPango::AttrColor*).value.color))
     end
 
     def color=(value : Pango::Color)
-      to_unsafe.value.color = value
+      to_unsafe.as(LibPango::AttrColor*).value.color = value
     end
 
   end

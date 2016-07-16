@@ -24,59 +24,59 @@ module Atk
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibAtk::KeyEventStruct*).value.type)
     end
 
     def type=(value : Int32)
-      to_unsafe.value.type = Int32.new(value)
+      to_unsafe.as(LibAtk::KeyEventStruct*).value.type = Int32.new(value)
     end
 
     def state
-      (to_unsafe.value.state)
+      (to_unsafe.as(LibAtk::KeyEventStruct*).value.state)
     end
 
     def state=(value : UInt32)
-      to_unsafe.value.state = UInt32.new(value)
+      to_unsafe.as(LibAtk::KeyEventStruct*).value.state = UInt32.new(value)
     end
 
     def keyval
-      (to_unsafe.value.keyval)
+      (to_unsafe.as(LibAtk::KeyEventStruct*).value.keyval)
     end
 
     def keyval=(value : UInt32)
-      to_unsafe.value.keyval = UInt32.new(value)
+      to_unsafe.as(LibAtk::KeyEventStruct*).value.keyval = UInt32.new(value)
     end
 
     def length
-      (to_unsafe.value.length)
+      (to_unsafe.as(LibAtk::KeyEventStruct*).value.length)
     end
 
     def length=(value : Int32)
-      to_unsafe.value.length = Int32.new(value)
+      to_unsafe.as(LibAtk::KeyEventStruct*).value.length = Int32.new(value)
     end
 
     def string
-      (raise "Expected string but got null" unless (to_unsafe.value.string); ::String.new((to_unsafe.value.string)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibAtk::KeyEventStruct*).value.string); ::String.new((to_unsafe.as(LibAtk::KeyEventStruct*).value.string)))
     end
 
     def string=(value : String)
-      to_unsafe.value.string = value.to_unsafe
+      to_unsafe.as(LibAtk::KeyEventStruct*).value.string = value.to_unsafe
     end
 
     def keycode
-      (to_unsafe.value.keycode)
+      (to_unsafe.as(LibAtk::KeyEventStruct*).value.keycode)
     end
 
     def keycode=(value : UInt16)
-      to_unsafe.value.keycode = UInt16.new(value)
+      to_unsafe.as(LibAtk::KeyEventStruct*).value.keycode = UInt16.new(value)
     end
 
     def timestamp
-      (to_unsafe.value.timestamp)
+      (to_unsafe.as(LibAtk::KeyEventStruct*).value.timestamp)
     end
 
     def timestamp=(value : UInt32)
-      to_unsafe.value.timestamp = UInt32.new(value)
+      to_unsafe.as(LibAtk::KeyEventStruct*).value.timestamp = UInt32.new(value)
     end
 
   end

@@ -18,7 +18,7 @@ module Gio
     end
 
     def arguments(argc)
-      __return_value = LibGio.application_command_line_get_arguments(to_unsafe.as(LibGio::ApplicationCommandLine*), Int32.new(argc))
+      __return_value = LibGio.application_command_line_get_arguments(to_unsafe.as(LibGio::ApplicationCommandLine*), argc)
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 

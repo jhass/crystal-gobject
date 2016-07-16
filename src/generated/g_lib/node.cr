@@ -72,43 +72,43 @@ module GLib
     end
 
     def data
-      (to_unsafe.value.data)
+      (to_unsafe.as(LibGLib::Node*).value.data)
     end
 
     def data=(value : Void*)
-      to_unsafe.value.data = value
+      to_unsafe.as(LibGLib::Node*).value.data = value
     end
 
     def next
-      GLib::Node.new((to_unsafe.value.next_))
+      GLib::Node.new((to_unsafe.as(LibGLib::Node*).value.next_))
     end
 
     def next=(value : GLib::Node)
-      to_unsafe.value.next_ = value.to_unsafe.as(LibGLib::Node*)
+      to_unsafe.as(LibGLib::Node*).value.next_ = value.to_unsafe.as(LibGLib::Node*)
     end
 
     def prev
-      GLib::Node.new((to_unsafe.value.prev))
+      GLib::Node.new((to_unsafe.as(LibGLib::Node*).value.prev))
     end
 
     def prev=(value : GLib::Node)
-      to_unsafe.value.prev = value.to_unsafe.as(LibGLib::Node*)
+      to_unsafe.as(LibGLib::Node*).value.prev = value.to_unsafe.as(LibGLib::Node*)
     end
 
     def parent
-      GLib::Node.new((to_unsafe.value.parent))
+      GLib::Node.new((to_unsafe.as(LibGLib::Node*).value.parent))
     end
 
     def parent=(value : GLib::Node)
-      to_unsafe.value.parent = value.to_unsafe.as(LibGLib::Node*)
+      to_unsafe.as(LibGLib::Node*).value.parent = value.to_unsafe.as(LibGLib::Node*)
     end
 
     def children
-      GLib::Node.new((to_unsafe.value.children))
+      GLib::Node.new((to_unsafe.as(LibGLib::Node*).value.children))
     end
 
     def children=(value : GLib::Node)
-      to_unsafe.value.children = value.to_unsafe.as(LibGLib::Node*)
+      to_unsafe.as(LibGLib::Node*).value.children = value.to_unsafe.as(LibGLib::Node*)
     end
 
   end

@@ -48,47 +48,47 @@ module Gst
     end
 
     def date(tag, value)
-      __return_value = LibGst.tag_list_get_date(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, value.to_unsafe.as(LibGLib::Date*))
+      __return_value = LibGst.tag_list_get_date(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, value)
       __return_value
     end
 
     def date_index(tag, index, value)
-      __return_value = LibGst.tag_list_get_date_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), value.to_unsafe.as(LibGLib::Date*))
+      __return_value = LibGst.tag_list_get_date_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), value)
       __return_value
     end
 
     def date_time(tag, value)
-      __return_value = LibGst.tag_list_get_date_time(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, value.to_unsafe.as(LibGst::DateTime*))
+      __return_value = LibGst.tag_list_get_date_time(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, value)
       __return_value
     end
 
     def date_time_index(tag, index, value)
-      __return_value = LibGst.tag_list_get_date_time_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), value.to_unsafe.as(LibGst::DateTime*))
+      __return_value = LibGst.tag_list_get_date_time_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), value)
       __return_value
     end
 
     def double(tag, value)
-      __return_value = LibGst.tag_list_get_double(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, Float64.new(value))
+      __return_value = LibGst.tag_list_get_double(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, value)
       __return_value
     end
 
     def double_index(tag, index, value)
-      __return_value = LibGst.tag_list_get_double_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), Float64.new(value))
+      __return_value = LibGst.tag_list_get_double_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), value)
       __return_value
     end
 
     def float(tag, value)
-      __return_value = LibGst.tag_list_get_float(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, Float32.new(value))
+      __return_value = LibGst.tag_list_get_float(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, value)
       __return_value
     end
 
     def float_index(tag, index, value)
-      __return_value = LibGst.tag_list_get_float_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), Float32.new(value))
+      __return_value = LibGst.tag_list_get_float_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), value)
       __return_value
     end
 
     def int(tag, value)
-      __return_value = LibGst.tag_list_get_int(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, Int32.new(value))
+      __return_value = LibGst.tag_list_get_int(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, value)
       __return_value
     end
 
@@ -98,32 +98,32 @@ module Gst
     end
 
     def int64_index(tag, index, value)
-      __return_value = LibGst.tag_list_get_int64_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), Int64.new(value))
+      __return_value = LibGst.tag_list_get_int64_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), value)
       __return_value
     end
 
     def int_index(tag, index, value)
-      __return_value = LibGst.tag_list_get_int_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), Int32.new(value))
+      __return_value = LibGst.tag_list_get_int_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), value)
       __return_value
     end
 
     def pointer(tag, value)
-      __return_value = LibGst.tag_list_get_pointer(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, value && value)
+      __return_value = LibGst.tag_list_get_pointer(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, value)
       __return_value
     end
 
     def pointer_index(tag, index, value)
-      __return_value = LibGst.tag_list_get_pointer_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), value && value)
+      __return_value = LibGst.tag_list_get_pointer_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), value)
       __return_value
     end
 
     def sample(tag, sample)
-      __return_value = LibGst.tag_list_get_sample(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, sample.to_unsafe.as(LibGst::Sample*))
+      __return_value = LibGst.tag_list_get_sample(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, sample)
       __return_value
     end
 
     def sample_index(tag, index, sample)
-      __return_value = LibGst.tag_list_get_sample_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), sample.to_unsafe.as(LibGst::Sample*))
+      __return_value = LibGst.tag_list_get_sample_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), sample)
       __return_value
     end
 
@@ -133,12 +133,12 @@ module Gst
     end
 
     def string(tag, value)
-      __return_value = LibGst.tag_list_get_string(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, value.to_unsafe)
+      __return_value = LibGst.tag_list_get_string(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, value)
       __return_value
     end
 
     def string_index(tag, index, value)
-      __return_value = LibGst.tag_list_get_string_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), value.to_unsafe)
+      __return_value = LibGst.tag_list_get_string_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), value)
       __return_value
     end
 
@@ -148,22 +148,22 @@ module Gst
     end
 
     def uint(tag, value)
-      __return_value = LibGst.tag_list_get_uint(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(value))
+      __return_value = LibGst.tag_list_get_uint(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, value)
       __return_value
     end
 
     def uint64(tag, value)
-      __return_value = LibGst.tag_list_get_uint64(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt64.new(value))
+      __return_value = LibGst.tag_list_get_uint64(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, value)
       __return_value
     end
 
     def uint64_index(tag, index, value)
-      __return_value = LibGst.tag_list_get_uint64_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), UInt64.new(value))
+      __return_value = LibGst.tag_list_get_uint64_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), value)
       __return_value
     end
 
     def uint_index(tag, index, value)
-      __return_value = LibGst.tag_list_get_uint_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), UInt32.new(value))
+      __return_value = LibGst.tag_list_get_uint_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), value)
       __return_value
     end
 
@@ -203,7 +203,7 @@ module Gst
     end
 
     def peek_string_index(tag, index, value)
-      __return_value = LibGst.tag_list_peek_string_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), value.to_unsafe)
+      __return_value = LibGst.tag_list_peek_string_index(to_unsafe.as(LibGst::TagList*), tag.to_unsafe, UInt32.new(index), value)
       __return_value
     end
 
@@ -228,11 +228,11 @@ module Gst
     end
 
     def mini_object
-      Gst::MiniObject.new((to_unsafe.value.mini_object))
+      Gst::MiniObject.new((to_unsafe.as(LibGst::TagList*).value.mini_object))
     end
 
     def mini_object=(value : Gst::MiniObject)
-      to_unsafe.value.mini_object = value
+      to_unsafe.as(LibGst::TagList*).value.mini_object = value
     end
 
   end

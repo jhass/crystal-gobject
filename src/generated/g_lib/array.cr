@@ -19,19 +19,19 @@ module GLib
     end
 
     def data
-      (raise "Expected string but got null" unless (to_unsafe.value.data); ::String.new((to_unsafe.value.data)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGLib::Array*).value.data); ::String.new((to_unsafe.as(LibGLib::Array*).value.data)))
     end
 
     def data=(value : String)
-      to_unsafe.value.data = value.to_unsafe
+      to_unsafe.as(LibGLib::Array*).value.data = value.to_unsafe
     end
 
     def len
-      (to_unsafe.value.len)
+      (to_unsafe.as(LibGLib::Array*).value.len)
     end
 
     def len=(value : UInt32)
-      to_unsafe.value.len = UInt32.new(value)
+      to_unsafe.as(LibGLib::Array*).value.len = UInt32.new(value)
     end
 
   end

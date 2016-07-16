@@ -22,43 +22,43 @@ module Gtk
     end
 
     def contains
-      (to_unsafe.value.contains)
+      (to_unsafe.as(LibGtk::FileFilterInfo*).value.contains)
     end
 
     def contains=(value : Gtk::FileFilterFlags)
-      to_unsafe.value.contains = value
+      to_unsafe.as(LibGtk::FileFilterInfo*).value.contains = value
     end
 
     def filename
-      (raise "Expected string but got null" unless (to_unsafe.value.filename); ::String.new((to_unsafe.value.filename)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::FileFilterInfo*).value.filename); ::String.new((to_unsafe.as(LibGtk::FileFilterInfo*).value.filename)))
     end
 
     def filename=(value : String)
-      to_unsafe.value.filename = value.to_unsafe
+      to_unsafe.as(LibGtk::FileFilterInfo*).value.filename = value.to_unsafe
     end
 
     def uri
-      (raise "Expected string but got null" unless (to_unsafe.value.uri); ::String.new((to_unsafe.value.uri)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::FileFilterInfo*).value.uri); ::String.new((to_unsafe.as(LibGtk::FileFilterInfo*).value.uri)))
     end
 
     def uri=(value : String)
-      to_unsafe.value.uri = value.to_unsafe
+      to_unsafe.as(LibGtk::FileFilterInfo*).value.uri = value.to_unsafe
     end
 
     def display_name
-      (raise "Expected string but got null" unless (to_unsafe.value.display_name); ::String.new((to_unsafe.value.display_name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::FileFilterInfo*).value.display_name); ::String.new((to_unsafe.as(LibGtk::FileFilterInfo*).value.display_name)))
     end
 
     def display_name=(value : String)
-      to_unsafe.value.display_name = value.to_unsafe
+      to_unsafe.as(LibGtk::FileFilterInfo*).value.display_name = value.to_unsafe
     end
 
     def mime_type
-      (raise "Expected string but got null" unless (to_unsafe.value.mime_type); ::String.new((to_unsafe.value.mime_type)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::FileFilterInfo*).value.mime_type); ::String.new((to_unsafe.as(LibGtk::FileFilterInfo*).value.mime_type)))
     end
 
     def mime_type=(value : String)
-      to_unsafe.value.mime_type = value.to_unsafe
+      to_unsafe.as(LibGtk::FileFilterInfo*).value.mime_type = value.to_unsafe
     end
 
   end

@@ -35,27 +35,27 @@ module Pango
     end
 
     def klass
-      Pango::AttrClass.new((to_unsafe.value.klass))
+      Pango::AttrClass.new((to_unsafe.as(LibPango::Attribute*).value.klass))
     end
 
     def klass=(value : Pango::AttrClass)
-      to_unsafe.value.klass = value.to_unsafe.as(LibPango::AttrClass*)
+      to_unsafe.as(LibPango::Attribute*).value.klass = value.to_unsafe.as(LibPango::AttrClass*)
     end
 
     def start_index
-      (to_unsafe.value.start_index)
+      (to_unsafe.as(LibPango::Attribute*).value.start_index)
     end
 
     def start_index=(value : UInt32)
-      to_unsafe.value.start_index = UInt32.new(value)
+      to_unsafe.as(LibPango::Attribute*).value.start_index = UInt32.new(value)
     end
 
     def end_index
-      (to_unsafe.value.end_index)
+      (to_unsafe.as(LibPango::Attribute*).value.end_index)
     end
 
     def end_index=(value : UInt32)
-      to_unsafe.value.end_index = UInt32.new(value)
+      to_unsafe.as(LibPango::Attribute*).value.end_index = UInt32.new(value)
     end
 
   end

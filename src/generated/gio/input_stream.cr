@@ -51,7 +51,7 @@ module Gio
 
     def read_all(buffer, count, bytes_read, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.input_stream_read_all(to_unsafe.as(LibGio::InputStream*), buffer, UInt64.new(count), UInt64.new(bytes_read), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.input_stream_read_all(to_unsafe.as(LibGio::InputStream*), buffer, UInt64.new(count), bytes_read, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -63,7 +63,7 @@ module Gio
 
     def read_all_finish(result, bytes_read)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.input_stream_read_all_finish(to_unsafe.as(LibGio::InputStream*), result.to_unsafe.as(LibGio::AsyncResult*), UInt64.new(bytes_read), pointerof(__error))
+      __return_value = LibGio.input_stream_read_all_finish(to_unsafe.as(LibGio::InputStream*), result.to_unsafe.as(LibGio::AsyncResult*), bytes_read, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

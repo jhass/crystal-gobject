@@ -41,35 +41,35 @@ module Pango
     end
 
     def offset
-      (to_unsafe.value.offset)
+      (to_unsafe.as(LibPango::Item*).value.offset)
     end
 
     def offset=(value : Int32)
-      to_unsafe.value.offset = Int32.new(value)
+      to_unsafe.as(LibPango::Item*).value.offset = Int32.new(value)
     end
 
     def length
-      (to_unsafe.value.length)
+      (to_unsafe.as(LibPango::Item*).value.length)
     end
 
     def length=(value : Int32)
-      to_unsafe.value.length = Int32.new(value)
+      to_unsafe.as(LibPango::Item*).value.length = Int32.new(value)
     end
 
     def num_chars
-      (to_unsafe.value.num_chars)
+      (to_unsafe.as(LibPango::Item*).value.num_chars)
     end
 
     def num_chars=(value : Int32)
-      to_unsafe.value.num_chars = Int32.new(value)
+      to_unsafe.as(LibPango::Item*).value.num_chars = Int32.new(value)
     end
 
     def analysis
-      Pango::Analysis.new((to_unsafe.value.analysis))
+      Pango::Analysis.new((to_unsafe.as(LibPango::Item*).value.analysis))
     end
 
     def analysis=(value : Pango::Analysis)
-      to_unsafe.value.analysis = value
+      to_unsafe.as(LibPango::Item*).value.analysis = value
     end
 
   end

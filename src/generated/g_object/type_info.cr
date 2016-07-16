@@ -27,83 +27,83 @@ module GObject
     end
 
     def class_size
-      (to_unsafe.value.class_size)
+      (to_unsafe.as(LibGObject::TypeInfo*).value.class_size)
     end
 
     def class_size=(value : UInt16)
-      to_unsafe.value.class_size = UInt16.new(value)
+      to_unsafe.as(LibGObject::TypeInfo*).value.class_size = UInt16.new(value)
     end
 
     def base_init
-      (to_unsafe.value.base_init)
+      (to_unsafe.as(LibGObject::TypeInfo*).value.base_init)
     end
 
     def base_init=(value : GObject::BaseInitFunc)
-      to_unsafe.value.base_init = value
+      to_unsafe.as(LibGObject::TypeInfo*).value.base_init = value
     end
 
     def base_finalize
-      (to_unsafe.value.base_finalize)
+      (to_unsafe.as(LibGObject::TypeInfo*).value.base_finalize)
     end
 
     def base_finalize=(value : GObject::BaseFinalizeFunc)
-      to_unsafe.value.base_finalize = value
+      to_unsafe.as(LibGObject::TypeInfo*).value.base_finalize = value
     end
 
     def class_init
-      (to_unsafe.value.class_init)
+      (to_unsafe.as(LibGObject::TypeInfo*).value.class_init)
     end
 
     def class_init=(value : GObject::ClassInitFunc)
-      to_unsafe.value.class_init = value
+      to_unsafe.as(LibGObject::TypeInfo*).value.class_init = value
     end
 
     def class_finalize
-      (to_unsafe.value.class_finalize)
+      (to_unsafe.as(LibGObject::TypeInfo*).value.class_finalize)
     end
 
     def class_finalize=(value : GObject::ClassFinalizeFunc)
-      to_unsafe.value.class_finalize = value
+      to_unsafe.as(LibGObject::TypeInfo*).value.class_finalize = value
     end
 
     def class_data
-      (to_unsafe.value.class_data)
+      (to_unsafe.as(LibGObject::TypeInfo*).value.class_data)
     end
 
     def class_data=(value : Void*)
-      to_unsafe.value.class_data = value
+      to_unsafe.as(LibGObject::TypeInfo*).value.class_data = value
     end
 
     def instance_size
-      (to_unsafe.value.instance_size)
+      (to_unsafe.as(LibGObject::TypeInfo*).value.instance_size)
     end
 
     def instance_size=(value : UInt16)
-      to_unsafe.value.instance_size = UInt16.new(value)
+      to_unsafe.as(LibGObject::TypeInfo*).value.instance_size = UInt16.new(value)
     end
 
     def n_preallocs
-      (to_unsafe.value.n_preallocs)
+      (to_unsafe.as(LibGObject::TypeInfo*).value.n_preallocs)
     end
 
     def n_preallocs=(value : UInt16)
-      to_unsafe.value.n_preallocs = UInt16.new(value)
+      to_unsafe.as(LibGObject::TypeInfo*).value.n_preallocs = UInt16.new(value)
     end
 
     def instance_init
-      (to_unsafe.value.instance_init)
+      (to_unsafe.as(LibGObject::TypeInfo*).value.instance_init)
     end
 
     def instance_init=(value : GObject::InstanceInitFunc)
-      to_unsafe.value.instance_init = value
+      to_unsafe.as(LibGObject::TypeInfo*).value.instance_init = value
     end
 
     def value_table
-      GObject::TypeValueTable.new((to_unsafe.value.value_table))
+      GObject::TypeValueTable.new((to_unsafe.as(LibGObject::TypeInfo*).value.value_table))
     end
 
     def value_table=(value : GObject::TypeValueTable)
-      to_unsafe.value.value_table = value.to_unsafe.as(LibGObject::TypeValueTable*)
+      to_unsafe.as(LibGObject::TypeInfo*).value.value_table = value.to_unsafe.as(LibGObject::TypeValueTable*)
     end
 
   end

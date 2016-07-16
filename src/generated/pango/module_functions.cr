@@ -45,7 +45,7 @@ module Pango
   end
 
   def self.find_paragraph_boundary(text, length, paragraph_delimiter_index, next_paragraph_start)
-    __return_value = LibPango.find_paragraph_boundary(text.to_unsafe, Int32.new(length), Int32.new(paragraph_delimiter_index), Int32.new(next_paragraph_start))
+    __return_value = LibPango.find_paragraph_boundary(text.to_unsafe, Int32.new(length), paragraph_delimiter_index, next_paragraph_start)
     __return_value
   end
 
@@ -125,13 +125,13 @@ module Pango
   end
 
   def self.lookup_aliases(fontname, families, n_families)
-    __return_value = LibPango.lookup_aliases(fontname.to_unsafe, families, Int32.new(n_families))
+    __return_value = LibPango.lookup_aliases(fontname.to_unsafe, families, n_families)
     __return_value
   end
 
   def self.markup_parser_finish(context, attr_list, text, accel_char)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibPango.markup_parser_finish(context.to_unsafe.as(LibGLib::MarkupParseContext*), attr_list.to_unsafe.as(LibPango::AttrList*), text.to_unsafe, UInt8.new(accel_char), pointerof(__error))
+    __return_value = LibPango.markup_parser_finish(context.to_unsafe.as(LibGLib::MarkupParseContext*), attr_list, text, accel_char, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -147,13 +147,13 @@ module Pango
   end
 
   def self.parse_enum(type, str, value, warn, possible_values)
-    __return_value = LibPango.parse_enum(UInt64.new(type), str && str.to_unsafe, Int32.new(value), warn, possible_values.to_unsafe)
+    __return_value = LibPango.parse_enum(UInt64.new(type), str && str.to_unsafe, value, warn, possible_values)
     __return_value
   end
 
   def self.parse_markup(markup_text, length, accel_marker, attr_list, text, accel_char)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibPango.parse_markup(markup_text.to_unsafe, Int32.new(length), UInt8.new(accel_marker), attr_list.to_unsafe.as(LibPango::AttrList*), text.to_unsafe, UInt8.new(accel_char), pointerof(__error))
+    __return_value = LibPango.parse_markup(markup_text.to_unsafe, Int32.new(length), UInt8.new(accel_marker), attr_list, text, accel_char, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -179,7 +179,7 @@ module Pango
   end
 
   def self.quantize_line_geometry(thickness, position)
-    __return_value = LibPango.quantize_line_geometry(Int32.new(thickness), Int32.new(position))
+    __return_value = LibPango.quantize_line_geometry(thickness, position)
     __return_value
   end
 
@@ -194,17 +194,17 @@ module Pango
   end
 
   def self.scan_int(pos, _out)
-    __return_value = LibPango.scan_int(pos.to_unsafe, Int32.new(_out))
+    __return_value = LibPango.scan_int(pos, _out)
     __return_value
   end
 
   def self.scan_string(pos, _out)
-    __return_value = LibPango.scan_string(pos.to_unsafe, _out)
+    __return_value = LibPango.scan_string(pos, _out)
     __return_value
   end
 
   def self.scan_word(pos, _out)
-    __return_value = LibPango.scan_word(pos.to_unsafe, _out)
+    __return_value = LibPango.scan_word(pos, _out)
     __return_value
   end
 
@@ -229,7 +229,7 @@ module Pango
   end
 
   def self.skip_space(pos)
-    __return_value = LibPango.skip_space(pos.to_unsafe)
+    __return_value = LibPango.skip_space(pos)
     __return_value
   end
 

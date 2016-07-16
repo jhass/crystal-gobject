@@ -18,11 +18,11 @@ module Gtk
     end
 
     def arg_type
-      (to_unsafe.value.arg_type)
+      (to_unsafe.as(LibGtk::BindingArg*).value.arg_type)
     end
 
     def arg_type=(value : UInt64)
-      to_unsafe.value.arg_type = UInt64.new(value)
+      to_unsafe.as(LibGtk::BindingArg*).value.arg_type = UInt64.new(value)
     end
 
   end

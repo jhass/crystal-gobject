@@ -16,15 +16,15 @@ module GLib
     end
 
     def ref
-      (to_unsafe.value.ref)
+      (to_unsafe.as(LibGLib::SourceCallbackFuncs*).value.ref)
     end
 
     def unref
-      (to_unsafe.value.unref)
+      (to_unsafe.as(LibGLib::SourceCallbackFuncs*).value.unref)
     end
 
     def get
-      (to_unsafe.value.get)
+      (to_unsafe.as(LibGLib::SourceCallbackFuncs*).value.get)
     end
 
   end

@@ -58,7 +58,7 @@ module Gtk
     end
 
     def size(rows, columns)
-      __return_value = LibGtk.table_get_size(to_unsafe.as(LibGtk::Table*), UInt32.new(rows), UInt32.new(columns))
+      __return_value = LibGtk.table_get_size(to_unsafe.as(LibGtk::Table*), rows, columns)
       __return_value
     end
 

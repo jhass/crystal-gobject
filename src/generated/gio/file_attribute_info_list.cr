@@ -49,19 +49,19 @@ module Gio
     end
 
     def infos
-      Gio::FileAttributeInfo.new((to_unsafe.value.infos))
+      Gio::FileAttributeInfo.new((to_unsafe.as(LibGio::FileAttributeInfoList*).value.infos))
     end
 
     def infos=(value : Gio::FileAttributeInfo)
-      to_unsafe.value.infos = value.to_unsafe.as(LibGio::FileAttributeInfo*)
+      to_unsafe.as(LibGio::FileAttributeInfoList*).value.infos = value.to_unsafe.as(LibGio::FileAttributeInfo*)
     end
 
     def n_infos
-      (to_unsafe.value.n_infos)
+      (to_unsafe.as(LibGio::FileAttributeInfoList*).value.n_infos)
     end
 
     def n_infos=(value : Int32)
-      to_unsafe.value.n_infos = Int32.new(value)
+      to_unsafe.as(LibGio::FileAttributeInfoList*).value.n_infos = Int32.new(value)
     end
 
   end

@@ -23,51 +23,51 @@ module GLib
     end
 
     def test_initialized
-      (to_unsafe.value.test_initialized)
+      (to_unsafe.as(LibGLib::TestConfig*).value.test_initialized)
     end
 
     def test_initialized=(value : Bool)
-      to_unsafe.value.test_initialized = value
+      to_unsafe.as(LibGLib::TestConfig*).value.test_initialized = value
     end
 
     def test_quick
-      (to_unsafe.value.test_quick)
+      (to_unsafe.as(LibGLib::TestConfig*).value.test_quick)
     end
 
     def test_quick=(value : Bool)
-      to_unsafe.value.test_quick = value
+      to_unsafe.as(LibGLib::TestConfig*).value.test_quick = value
     end
 
     def test_perf
-      (to_unsafe.value.test_perf)
+      (to_unsafe.as(LibGLib::TestConfig*).value.test_perf)
     end
 
     def test_perf=(value : Bool)
-      to_unsafe.value.test_perf = value
+      to_unsafe.as(LibGLib::TestConfig*).value.test_perf = value
     end
 
     def test_verbose
-      (to_unsafe.value.test_verbose)
+      (to_unsafe.as(LibGLib::TestConfig*).value.test_verbose)
     end
 
     def test_verbose=(value : Bool)
-      to_unsafe.value.test_verbose = value
+      to_unsafe.as(LibGLib::TestConfig*).value.test_verbose = value
     end
 
     def test_quiet
-      (to_unsafe.value.test_quiet)
+      (to_unsafe.as(LibGLib::TestConfig*).value.test_quiet)
     end
 
     def test_quiet=(value : Bool)
-      to_unsafe.value.test_quiet = value
+      to_unsafe.as(LibGLib::TestConfig*).value.test_quiet = value
     end
 
     def test_undefined
-      (to_unsafe.value.test_undefined)
+      (to_unsafe.as(LibGLib::TestConfig*).value.test_undefined)
     end
 
     def test_undefined=(value : Bool)
-      to_unsafe.value.test_undefined = value
+      to_unsafe.as(LibGLib::TestConfig*).value.test_undefined = value
     end
 
   end

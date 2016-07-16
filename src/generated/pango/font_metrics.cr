@@ -71,39 +71,39 @@ module Pango
     end
 
     def ref_count
-      (to_unsafe.value.ref_count)
+      (to_unsafe.as(LibPango::FontMetrics*).value.ref_count)
     end
 
     def ascent
-      (to_unsafe.value.ascent)
+      (to_unsafe.as(LibPango::FontMetrics*).value.ascent)
     end
 
     def descent
-      (to_unsafe.value.descent)
+      (to_unsafe.as(LibPango::FontMetrics*).value.descent)
     end
 
     def approximate_char_width
-      (to_unsafe.value.approximate_char_width)
+      (to_unsafe.as(LibPango::FontMetrics*).value.approximate_char_width)
     end
 
     def approximate_digit_width
-      (to_unsafe.value.approximate_digit_width)
+      (to_unsafe.as(LibPango::FontMetrics*).value.approximate_digit_width)
     end
 
     def underline_position
-      (to_unsafe.value.underline_position)
+      (to_unsafe.as(LibPango::FontMetrics*).value.underline_position)
     end
 
     def underline_thickness
-      (to_unsafe.value.underline_thickness)
+      (to_unsafe.as(LibPango::FontMetrics*).value.underline_thickness)
     end
 
     def strikethrough_position
-      (to_unsafe.value.strikethrough_position)
+      (to_unsafe.as(LibPango::FontMetrics*).value.strikethrough_position)
     end
 
     def strikethrough_thickness
-      (to_unsafe.value.strikethrough_thickness)
+      (to_unsafe.as(LibPango::FontMetrics*).value.strikethrough_thickness)
     end
 
   end

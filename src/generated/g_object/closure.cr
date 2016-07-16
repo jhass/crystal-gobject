@@ -54,63 +54,63 @@ module GObject
     end
 
     def ref_count
-      (to_unsafe.value.ref_count)
+      (to_unsafe.as(LibGObject::Closure*).value.ref_count)
     end
 
     def meta_marshal_nouse
-      (to_unsafe.value.meta_marshal_nouse)
+      (to_unsafe.as(LibGObject::Closure*).value.meta_marshal_nouse)
     end
 
     def n_guards
-      (to_unsafe.value.n_guards)
+      (to_unsafe.as(LibGObject::Closure*).value.n_guards)
     end
 
     def n_fnotifiers
-      (to_unsafe.value.n_fnotifiers)
+      (to_unsafe.as(LibGObject::Closure*).value.n_fnotifiers)
     end
 
     def n_inotifiers
-      (to_unsafe.value.n_inotifiers)
+      (to_unsafe.as(LibGObject::Closure*).value.n_inotifiers)
     end
 
     def in_inotify
-      (to_unsafe.value.in_inotify)
+      (to_unsafe.as(LibGObject::Closure*).value.in_inotify)
     end
 
     def floating
-      (to_unsafe.value.floating)
+      (to_unsafe.as(LibGObject::Closure*).value.floating)
     end
 
     def derivative_flag
-      (to_unsafe.value.derivative_flag)
+      (to_unsafe.as(LibGObject::Closure*).value.derivative_flag)
     end
 
     def in_marshal
-      (to_unsafe.value.in_marshal)
+      (to_unsafe.as(LibGObject::Closure*).value.in_marshal)
     end
 
     def in_marshal=(value : UInt32)
-      to_unsafe.value.in_marshal = UInt32.new(value)
+      to_unsafe.as(LibGObject::Closure*).value.in_marshal = UInt32.new(value)
     end
 
     def is_invalid
-      (to_unsafe.value.is_invalid)
+      (to_unsafe.as(LibGObject::Closure*).value.is_invalid)
     end
 
     def is_invalid=(value : UInt32)
-      to_unsafe.value.is_invalid = UInt32.new(value)
+      to_unsafe.as(LibGObject::Closure*).value.is_invalid = UInt32.new(value)
     end
 
     def marshal
-      (to_unsafe.value.marshal)
+      (to_unsafe.as(LibGObject::Closure*).value.marshal)
     end
 
     def data
-      (to_unsafe.value.data)
+      (to_unsafe.as(LibGObject::Closure*).value.data)
     end
 
     def notifiers
-      GObject::ClosureNotifyData.new((to_unsafe.value.notifiers))
+      GObject::ClosureNotifyData.new((to_unsafe.as(LibGObject::Closure*).value.notifiers))
     end
 
   end

@@ -31,7 +31,7 @@ module Gst
     end
 
     def lookup(name, target, pspec)
-      __return_value = LibGst.child_proxy_lookup(to_unsafe.as(LibGst::ChildProxy*), name.to_unsafe, target.to_unsafe.as(LibGObject::Object*), pspec.to_unsafe.as(LibGObject::ParamSpec*))
+      __return_value = LibGst.child_proxy_lookup(to_unsafe.as(LibGst::ChildProxy*), name.to_unsafe, target, pspec)
       __return_value
     end
 

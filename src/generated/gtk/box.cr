@@ -52,7 +52,7 @@ module Gtk
     end
 
     def query_child_packing(child, expand, fill, padding, pack_type)
-      __return_value = LibGtk.box_query_child_packing(to_unsafe.as(LibGtk::Box*), child.to_unsafe.as(LibGtk::Widget*), expand, fill, UInt32.new(padding), pack_type)
+      __return_value = LibGtk.box_query_child_packing(to_unsafe.as(LibGtk::Box*), child.to_unsafe.as(LibGtk::Widget*), expand, fill, padding, pack_type)
       __return_value
     end
 

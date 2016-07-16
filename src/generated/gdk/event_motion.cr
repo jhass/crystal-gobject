@@ -29,99 +29,99 @@ module Gdk
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibGdk::EventMotion*).value.type)
     end
 
     def type=(value : Gdk::EventType)
-      to_unsafe.value.type = value
+      to_unsafe.as(LibGdk::EventMotion*).value.type = value
     end
 
     def window
-      Gdk::Window.new((to_unsafe.value.window))
+      Gdk::Window.new((to_unsafe.as(LibGdk::EventMotion*).value.window))
     end
 
     def window=(value : Gdk::Window)
-      to_unsafe.value.window = value.to_unsafe.as(LibGdk::Window*)
+      to_unsafe.as(LibGdk::EventMotion*).value.window = value.to_unsafe.as(LibGdk::Window*)
     end
 
     def send_event
-      (to_unsafe.value.send_event)
+      (to_unsafe.as(LibGdk::EventMotion*).value.send_event)
     end
 
     def send_event=(value : Int8)
-      to_unsafe.value.send_event = Int8.new(value)
+      to_unsafe.as(LibGdk::EventMotion*).value.send_event = Int8.new(value)
     end
 
     def time
-      (to_unsafe.value.time)
+      (to_unsafe.as(LibGdk::EventMotion*).value.time)
     end
 
     def time=(value : UInt32)
-      to_unsafe.value.time = UInt32.new(value)
+      to_unsafe.as(LibGdk::EventMotion*).value.time = UInt32.new(value)
     end
 
     def x
-      (to_unsafe.value.x)
+      (to_unsafe.as(LibGdk::EventMotion*).value.x)
     end
 
     def x=(value : Float64)
-      to_unsafe.value.x = Float64.new(value)
+      to_unsafe.as(LibGdk::EventMotion*).value.x = Float64.new(value)
     end
 
     def y
-      (to_unsafe.value.y)
+      (to_unsafe.as(LibGdk::EventMotion*).value.y)
     end
 
     def y=(value : Float64)
-      to_unsafe.value.y = Float64.new(value)
+      to_unsafe.as(LibGdk::EventMotion*).value.y = Float64.new(value)
     end
 
     def axes
-      (to_unsafe.value.axes)
+      (to_unsafe.as(LibGdk::EventMotion*).value.axes)
     end
 
     def axes=(value : Float64)
-      to_unsafe.value.axes = value
+      to_unsafe.as(LibGdk::EventMotion*).value.axes = value
     end
 
     def state
-      (to_unsafe.value.state)
+      (to_unsafe.as(LibGdk::EventMotion*).value.state)
     end
 
     def state=(value : Gdk::ModifierType)
-      to_unsafe.value.state = value
+      to_unsafe.as(LibGdk::EventMotion*).value.state = value
     end
 
     def is_hint
-      (to_unsafe.value.is_hint)
+      (to_unsafe.as(LibGdk::EventMotion*).value.is_hint)
     end
 
     def is_hint=(value : Int16)
-      to_unsafe.value.is_hint = Int16.new(value)
+      to_unsafe.as(LibGdk::EventMotion*).value.is_hint = Int16.new(value)
     end
 
     def device
-      Gdk::Device.new((to_unsafe.value.device))
+      Gdk::Device.new((to_unsafe.as(LibGdk::EventMotion*).value.device))
     end
 
     def device=(value : Gdk::Device)
-      to_unsafe.value.device = value.to_unsafe.as(LibGdk::Device*)
+      to_unsafe.as(LibGdk::EventMotion*).value.device = value.to_unsafe.as(LibGdk::Device*)
     end
 
     def x_root
-      (to_unsafe.value.x_root)
+      (to_unsafe.as(LibGdk::EventMotion*).value.x_root)
     end
 
     def x_root=(value : Float64)
-      to_unsafe.value.x_root = Float64.new(value)
+      to_unsafe.as(LibGdk::EventMotion*).value.x_root = Float64.new(value)
     end
 
     def y_root
-      (to_unsafe.value.y_root)
+      (to_unsafe.as(LibGdk::EventMotion*).value.y_root)
     end
 
     def y_root=(value : Float64)
-      to_unsafe.value.y_root = Float64.new(value)
+      to_unsafe.as(LibGdk::EventMotion*).value.y_root = Float64.new(value)
     end
 
   end

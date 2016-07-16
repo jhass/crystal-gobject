@@ -107,7 +107,7 @@ module GIRepository
   end
 
   def self.callable_info_iterate_return_attributes(info, iterator, name, value)
-    __return_value = LibGIRepository.callable_info_iterate_return_attributes(info.to_unsafe.as(LibGIRepository::BaseInfo*), iterator.to_unsafe.as(LibGIRepository::AttributeIter*), name.to_unsafe, value.to_unsafe)
+    __return_value = LibGIRepository.callable_info_iterate_return_attributes(info.to_unsafe.as(LibGIRepository::BaseInfo*), iterator.to_unsafe.as(LibGIRepository::AttributeIter*), name, value)
     __return_value
   end
 
@@ -307,7 +307,7 @@ module GIRepository
   end
 
   def self.object_info_find_method_using_interfaces(info, name, implementor)
-    __return_value = LibGIRepository.object_info_find_method_using_interfaces(info.to_unsafe.as(LibGIRepository::BaseInfo*), name.to_unsafe, implementor.to_unsafe.as(LibGIRepository::BaseInfo*))
+    __return_value = LibGIRepository.object_info_find_method_using_interfaces(info.to_unsafe.as(LibGIRepository::BaseInfo*), name.to_unsafe, implementor)
     GIRepository::BaseInfo.new(__return_value)
   end
 
@@ -322,7 +322,7 @@ module GIRepository
   end
 
   def self.object_info_find_vfunc_using_interfaces(info, name, implementor)
-    __return_value = LibGIRepository.object_info_find_vfunc_using_interfaces(info.to_unsafe.as(LibGIRepository::BaseInfo*), name.to_unsafe, implementor.to_unsafe.as(LibGIRepository::BaseInfo*))
+    __return_value = LibGIRepository.object_info_find_vfunc_using_interfaces(info.to_unsafe.as(LibGIRepository::BaseInfo*), name.to_unsafe, implementor)
     GIRepository::BaseInfo.new(__return_value)
   end
 

@@ -19,19 +19,19 @@ module Pango
     end
 
     def attr
-      Pango::Attribute.new((to_unsafe.value.attr))
+      Pango::Attribute.new((to_unsafe.as(LibPango::AttrLanguage*).value.attr))
     end
 
     def attr=(value : Pango::Attribute)
-      to_unsafe.value.attr = value
+      to_unsafe.as(LibPango::AttrLanguage*).value.attr = value
     end
 
     def value
-      Pango::Language.new((to_unsafe.value.value))
+      Pango::Language.new((to_unsafe.as(LibPango::AttrLanguage*).value.value))
     end
 
     def value=(value : Pango::Language)
-      to_unsafe.value.value = value.to_unsafe.as(LibPango::Language*)
+      to_unsafe.as(LibPango::AttrLanguage*).value.value = value.to_unsafe.as(LibPango::Language*)
     end
 
   end

@@ -44,19 +44,19 @@ module GLib
     end
 
     def data
-      (to_unsafe.value.data)
+      (to_unsafe.as(LibGLib::ByteArray*).value.data)
     end
 
     def data=(value : UInt8)
-      to_unsafe.value.data = value
+      to_unsafe.as(LibGLib::ByteArray*).value.data = value
     end
 
     def len
-      (to_unsafe.value.len)
+      (to_unsafe.as(LibGLib::ByteArray*).value.len)
     end
 
     def len=(value : UInt32)
-      to_unsafe.value.len = UInt32.new(value)
+      to_unsafe.as(LibGLib::ByteArray*).value.len = UInt32.new(value)
     end
 
   end

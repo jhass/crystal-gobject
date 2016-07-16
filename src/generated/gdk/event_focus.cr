@@ -21,35 +21,35 @@ module Gdk
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibGdk::EventFocus*).value.type)
     end
 
     def type=(value : Gdk::EventType)
-      to_unsafe.value.type = value
+      to_unsafe.as(LibGdk::EventFocus*).value.type = value
     end
 
     def window
-      Gdk::Window.new((to_unsafe.value.window))
+      Gdk::Window.new((to_unsafe.as(LibGdk::EventFocus*).value.window))
     end
 
     def window=(value : Gdk::Window)
-      to_unsafe.value.window = value.to_unsafe.as(LibGdk::Window*)
+      to_unsafe.as(LibGdk::EventFocus*).value.window = value.to_unsafe.as(LibGdk::Window*)
     end
 
     def send_event
-      (to_unsafe.value.send_event)
+      (to_unsafe.as(LibGdk::EventFocus*).value.send_event)
     end
 
     def send_event=(value : Int8)
-      to_unsafe.value.send_event = Int8.new(value)
+      to_unsafe.as(LibGdk::EventFocus*).value.send_event = Int8.new(value)
     end
 
     def in
-      (to_unsafe.value.in)
+      (to_unsafe.as(LibGdk::EventFocus*).value.in)
     end
 
     def in=(value : Int16)
-      to_unsafe.value.in = Int16.new(value)
+      to_unsafe.as(LibGdk::EventFocus*).value.in = Int16.new(value)
     end
 
   end

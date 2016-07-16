@@ -30,107 +30,107 @@ module Pango
     end
 
     def is_line_break
-      (to_unsafe.value.is_line_break)
+      (to_unsafe.as(LibPango::LogAttr*).value.is_line_break)
     end
 
     def is_line_break=(value : UInt32)
-      to_unsafe.value.is_line_break = UInt32.new(value)
+      to_unsafe.as(LibPango::LogAttr*).value.is_line_break = UInt32.new(value)
     end
 
     def is_mandatory_break
-      (to_unsafe.value.is_mandatory_break)
+      (to_unsafe.as(LibPango::LogAttr*).value.is_mandatory_break)
     end
 
     def is_mandatory_break=(value : UInt32)
-      to_unsafe.value.is_mandatory_break = UInt32.new(value)
+      to_unsafe.as(LibPango::LogAttr*).value.is_mandatory_break = UInt32.new(value)
     end
 
     def is_char_break
-      (to_unsafe.value.is_char_break)
+      (to_unsafe.as(LibPango::LogAttr*).value.is_char_break)
     end
 
     def is_char_break=(value : UInt32)
-      to_unsafe.value.is_char_break = UInt32.new(value)
+      to_unsafe.as(LibPango::LogAttr*).value.is_char_break = UInt32.new(value)
     end
 
     def is_white
-      (to_unsafe.value.is_white)
+      (to_unsafe.as(LibPango::LogAttr*).value.is_white)
     end
 
     def is_white=(value : UInt32)
-      to_unsafe.value.is_white = UInt32.new(value)
+      to_unsafe.as(LibPango::LogAttr*).value.is_white = UInt32.new(value)
     end
 
     def is_cursor_position
-      (to_unsafe.value.is_cursor_position)
+      (to_unsafe.as(LibPango::LogAttr*).value.is_cursor_position)
     end
 
     def is_cursor_position=(value : UInt32)
-      to_unsafe.value.is_cursor_position = UInt32.new(value)
+      to_unsafe.as(LibPango::LogAttr*).value.is_cursor_position = UInt32.new(value)
     end
 
     def is_word_start
-      (to_unsafe.value.is_word_start)
+      (to_unsafe.as(LibPango::LogAttr*).value.is_word_start)
     end
 
     def is_word_start=(value : UInt32)
-      to_unsafe.value.is_word_start = UInt32.new(value)
+      to_unsafe.as(LibPango::LogAttr*).value.is_word_start = UInt32.new(value)
     end
 
     def is_word_end
-      (to_unsafe.value.is_word_end)
+      (to_unsafe.as(LibPango::LogAttr*).value.is_word_end)
     end
 
     def is_word_end=(value : UInt32)
-      to_unsafe.value.is_word_end = UInt32.new(value)
+      to_unsafe.as(LibPango::LogAttr*).value.is_word_end = UInt32.new(value)
     end
 
     def is_sentence_boundary
-      (to_unsafe.value.is_sentence_boundary)
+      (to_unsafe.as(LibPango::LogAttr*).value.is_sentence_boundary)
     end
 
     def is_sentence_boundary=(value : UInt32)
-      to_unsafe.value.is_sentence_boundary = UInt32.new(value)
+      to_unsafe.as(LibPango::LogAttr*).value.is_sentence_boundary = UInt32.new(value)
     end
 
     def is_sentence_start
-      (to_unsafe.value.is_sentence_start)
+      (to_unsafe.as(LibPango::LogAttr*).value.is_sentence_start)
     end
 
     def is_sentence_start=(value : UInt32)
-      to_unsafe.value.is_sentence_start = UInt32.new(value)
+      to_unsafe.as(LibPango::LogAttr*).value.is_sentence_start = UInt32.new(value)
     end
 
     def is_sentence_end
-      (to_unsafe.value.is_sentence_end)
+      (to_unsafe.as(LibPango::LogAttr*).value.is_sentence_end)
     end
 
     def is_sentence_end=(value : UInt32)
-      to_unsafe.value.is_sentence_end = UInt32.new(value)
+      to_unsafe.as(LibPango::LogAttr*).value.is_sentence_end = UInt32.new(value)
     end
 
     def backspace_deletes_character
-      (to_unsafe.value.backspace_deletes_character)
+      (to_unsafe.as(LibPango::LogAttr*).value.backspace_deletes_character)
     end
 
     def backspace_deletes_character=(value : UInt32)
-      to_unsafe.value.backspace_deletes_character = UInt32.new(value)
+      to_unsafe.as(LibPango::LogAttr*).value.backspace_deletes_character = UInt32.new(value)
     end
 
     def is_expandable_space
-      (to_unsafe.value.is_expandable_space)
+      (to_unsafe.as(LibPango::LogAttr*).value.is_expandable_space)
     end
 
     def is_expandable_space=(value : UInt32)
-      to_unsafe.value.is_expandable_space = UInt32.new(value)
+      to_unsafe.as(LibPango::LogAttr*).value.is_expandable_space = UInt32.new(value)
     end
 
     def is_word_boundary
-      (to_unsafe.value.is_word_boundary)
+      (to_unsafe.as(LibPango::LogAttr*).value.is_word_boundary)
     end
 
     def is_word_boundary=(value : UInt32)
-      to_unsafe.value.is_word_boundary = UInt32.new(value)
+      to_unsafe.as(LibPango::LogAttr*).value.is_word_boundary = UInt32.new(value)
     end
 
   end

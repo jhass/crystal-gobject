@@ -86,14 +86,14 @@ module GLib
 
     def read_chars(buf, count, bytes_read)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.i_o_channel_read_chars(to_unsafe.as(LibGLib::IOChannel*), buf, UInt64.new(count), UInt64.new(bytes_read), pointerof(__error))
+      __return_value = LibGLib.i_o_channel_read_chars(to_unsafe.as(LibGLib::IOChannel*), buf, UInt64.new(count), bytes_read, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def read_line(str_return, length, terminator_pos)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.i_o_channel_read_line(to_unsafe.as(LibGLib::IOChannel*), str_return.to_unsafe, UInt64.new(length), UInt64.new(terminator_pos), pointerof(__error))
+      __return_value = LibGLib.i_o_channel_read_line(to_unsafe.as(LibGLib::IOChannel*), str_return, length, terminator_pos, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -107,14 +107,14 @@ module GLib
 
     def read_to_end(str_return, length)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.i_o_channel_read_to_end(to_unsafe.as(LibGLib::IOChannel*), str_return, UInt64.new(length), pointerof(__error))
+      __return_value = LibGLib.i_o_channel_read_to_end(to_unsafe.as(LibGLib::IOChannel*), str_return, length, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def read_unichar(thechar)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.i_o_channel_read_unichar(to_unsafe.as(LibGLib::IOChannel*), UInt8.new(thechar), pointerof(__error))
+      __return_value = LibGLib.i_o_channel_read_unichar(to_unsafe.as(LibGLib::IOChannel*), thechar, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -194,7 +194,7 @@ module GLib
 
     def write_chars(buf, count, bytes_written)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.i_o_channel_write_chars(to_unsafe.as(LibGLib::IOChannel*), buf, Int64.new(count), UInt64.new(bytes_written), pointerof(__error))
+      __return_value = LibGLib.i_o_channel_write_chars(to_unsafe.as(LibGLib::IOChannel*), buf, Int64.new(count), bytes_written, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -217,83 +217,83 @@ module GLib
     end
 
     def ref_count
-      (to_unsafe.value.ref_count)
+      (to_unsafe.as(LibGLib::IOChannel*).value.ref_count)
     end
 
     def funcs
-      GLib::IOFuncs.new((to_unsafe.value.funcs))
+      GLib::IOFuncs.new((to_unsafe.as(LibGLib::IOChannel*).value.funcs))
     end
 
     def encoding
-      (raise "Expected string but got null" unless (to_unsafe.value.encoding); ::String.new((to_unsafe.value.encoding)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGLib::IOChannel*).value.encoding); ::String.new((to_unsafe.as(LibGLib::IOChannel*).value.encoding)))
     end
 
     def read_cd
-      GLib::IConv.new((to_unsafe.value.read_cd))
+      GLib::IConv.new((to_unsafe.as(LibGLib::IOChannel*).value.read_cd))
     end
 
     def write_cd
-      GLib::IConv.new((to_unsafe.value.write_cd))
+      GLib::IConv.new((to_unsafe.as(LibGLib::IOChannel*).value.write_cd))
     end
 
     def line_term
-      (raise "Expected string but got null" unless (to_unsafe.value.line_term); ::String.new((to_unsafe.value.line_term)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGLib::IOChannel*).value.line_term); ::String.new((to_unsafe.as(LibGLib::IOChannel*).value.line_term)))
     end
 
     def line_term_len
-      (to_unsafe.value.line_term_len)
+      (to_unsafe.as(LibGLib::IOChannel*).value.line_term_len)
     end
 
     def buf_size
-      (to_unsafe.value.buf_size)
+      (to_unsafe.as(LibGLib::IOChannel*).value.buf_size)
     end
 
     def read_buf
-      GLib::String.new((to_unsafe.value.read_buf))
+      GLib::String.new((to_unsafe.as(LibGLib::IOChannel*).value.read_buf))
     end
 
     def encoded_read_buf
-      GLib::String.new((to_unsafe.value.encoded_read_buf))
+      GLib::String.new((to_unsafe.as(LibGLib::IOChannel*).value.encoded_read_buf))
     end
 
     def write_buf
-      GLib::String.new((to_unsafe.value.write_buf))
+      GLib::String.new((to_unsafe.as(LibGLib::IOChannel*).value.write_buf))
     end
 
     def partial_write_buf
-      PointerIterator.new((to_unsafe.value.partial_write_buf)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGLib::IOChannel*).value.partial_write_buf)) {|__item| __item }
     end
 
     def use_buffer
-      (to_unsafe.value.use_buffer)
+      (to_unsafe.as(LibGLib::IOChannel*).value.use_buffer)
     end
 
     def do_encode
-      (to_unsafe.value.do_encode)
+      (to_unsafe.as(LibGLib::IOChannel*).value.do_encode)
     end
 
     def close_on_unref
-      (to_unsafe.value.close_on_unref)
+      (to_unsafe.as(LibGLib::IOChannel*).value.close_on_unref)
     end
 
     def is_readable
-      (to_unsafe.value.is_readable)
+      (to_unsafe.as(LibGLib::IOChannel*).value.is_readable)
     end
 
     def is_writeable
-      (to_unsafe.value.is_writeable)
+      (to_unsafe.as(LibGLib::IOChannel*).value.is_writeable)
     end
 
     def is_seekable
-      (to_unsafe.value.is_seekable)
+      (to_unsafe.as(LibGLib::IOChannel*).value.is_seekable)
     end
 
     def reserved1
-      (to_unsafe.value.reserved1)
+      (to_unsafe.as(LibGLib::IOChannel*).value.reserved1)
     end
 
     def reserved2
-      (to_unsafe.value.reserved2)
+      (to_unsafe.as(LibGLib::IOChannel*).value.reserved2)
     end
 
   end

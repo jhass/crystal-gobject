@@ -55,67 +55,67 @@ module Pango
     end
 
     def glyph_item
-      Pango::GlyphItem.new((to_unsafe.value.glyph_item))
+      Pango::GlyphItem.new((to_unsafe.as(LibPango::GlyphItemIter*).value.glyph_item))
     end
 
     def glyph_item=(value : Pango::GlyphItem)
-      to_unsafe.value.glyph_item = value.to_unsafe.as(LibPango::GlyphItem*)
+      to_unsafe.as(LibPango::GlyphItemIter*).value.glyph_item = value.to_unsafe.as(LibPango::GlyphItem*)
     end
 
     def text
-      (raise "Expected string but got null" unless (to_unsafe.value.text); ::String.new((to_unsafe.value.text)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibPango::GlyphItemIter*).value.text); ::String.new((to_unsafe.as(LibPango::GlyphItemIter*).value.text)))
     end
 
     def text=(value : String)
-      to_unsafe.value.text = value.to_unsafe
+      to_unsafe.as(LibPango::GlyphItemIter*).value.text = value.to_unsafe
     end
 
     def start_glyph
-      (to_unsafe.value.start_glyph)
+      (to_unsafe.as(LibPango::GlyphItemIter*).value.start_glyph)
     end
 
     def start_glyph=(value : Int32)
-      to_unsafe.value.start_glyph = Int32.new(value)
+      to_unsafe.as(LibPango::GlyphItemIter*).value.start_glyph = Int32.new(value)
     end
 
     def start_index
-      (to_unsafe.value.start_index)
+      (to_unsafe.as(LibPango::GlyphItemIter*).value.start_index)
     end
 
     def start_index=(value : Int32)
-      to_unsafe.value.start_index = Int32.new(value)
+      to_unsafe.as(LibPango::GlyphItemIter*).value.start_index = Int32.new(value)
     end
 
     def start_char
-      (to_unsafe.value.start_char)
+      (to_unsafe.as(LibPango::GlyphItemIter*).value.start_char)
     end
 
     def start_char=(value : Int32)
-      to_unsafe.value.start_char = Int32.new(value)
+      to_unsafe.as(LibPango::GlyphItemIter*).value.start_char = Int32.new(value)
     end
 
     def end_glyph
-      (to_unsafe.value.end_glyph)
+      (to_unsafe.as(LibPango::GlyphItemIter*).value.end_glyph)
     end
 
     def end_glyph=(value : Int32)
-      to_unsafe.value.end_glyph = Int32.new(value)
+      to_unsafe.as(LibPango::GlyphItemIter*).value.end_glyph = Int32.new(value)
     end
 
     def end_index
-      (to_unsafe.value.end_index)
+      (to_unsafe.as(LibPango::GlyphItemIter*).value.end_index)
     end
 
     def end_index=(value : Int32)
-      to_unsafe.value.end_index = Int32.new(value)
+      to_unsafe.as(LibPango::GlyphItemIter*).value.end_index = Int32.new(value)
     end
 
     def end_char
-      (to_unsafe.value.end_char)
+      (to_unsafe.as(LibPango::GlyphItemIter*).value.end_char)
     end
 
     def end_char=(value : Int32)
-      to_unsafe.value.end_char = Int32.new(value)
+      to_unsafe.as(LibPango::GlyphItemIter*).value.end_char = Int32.new(value)
     end
 
   end

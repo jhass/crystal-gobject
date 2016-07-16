@@ -35,12 +35,12 @@ module Gtk
   end
 
   def self.accelerator_parse(accelerator, accelerator_key, accelerator_mods)
-    __return_value = LibGtk.accelerator_parse(accelerator.to_unsafe, UInt32.new(accelerator_key), accelerator_mods)
+    __return_value = LibGtk.accelerator_parse(accelerator.to_unsafe, accelerator_key, accelerator_mods)
     __return_value
   end
 
   def self.accelerator_parse_with_keycode(accelerator, accelerator_key, accelerator_codes, accelerator_mods)
-    __return_value = LibGtk.accelerator_parse_with_keycode(accelerator.to_unsafe, UInt32.new(accelerator_key), accelerator_codes, accelerator_mods)
+    __return_value = LibGtk.accelerator_parse_with_keycode(accelerator.to_unsafe, accelerator_key, accelerator_codes, accelerator_mods)
     __return_value
   end
 
@@ -295,12 +295,12 @@ module Gtk
   end
 
   def self.icon_size_lookup(size, width, height)
-    __return_value = LibGtk.icon_size_lookup(Int32.new(size), Int32.new(width), Int32.new(height))
+    __return_value = LibGtk.icon_size_lookup(Int32.new(size), width, height)
     __return_value
   end
 
   def self.icon_size_lookup_for_settings(settings, size, width, height)
-    __return_value = LibGtk.icon_size_lookup_for_settings(settings.to_unsafe.as(LibGtk::Settings*), Int32.new(size), Int32.new(width), Int32.new(height))
+    __return_value = LibGtk.icon_size_lookup_for_settings(settings.to_unsafe.as(LibGtk::Settings*), Int32.new(size), width, height)
     __return_value
   end
 
@@ -320,18 +320,18 @@ module Gtk
   end
 
   def self.init(argc, argv)
-    __return_value = LibGtk.init(Int32.new(argc), argv && argv)
+    __return_value = LibGtk.init(argc, argv)
     __return_value
   end
 
   def self.init_check(argc, argv)
-    __return_value = LibGtk.init_check(Int32.new(argc), argv && argv)
+    __return_value = LibGtk.init_check(argc, argv)
     __return_value
   end
 
   def self.init_with_args(argc, argv, parameter_string, entries, translation_domain)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGtk.init_with_args(Int32.new(argc), argv && argv, parameter_string && parameter_string.to_unsafe, entries, translation_domain && translation_domain.to_unsafe, pointerof(__error))
+    __return_value = LibGtk.init_with_args(argc, argv, parameter_string && parameter_string.to_unsafe, entries, translation_domain && translation_domain.to_unsafe, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -482,7 +482,7 @@ module Gtk
   end
 
   def self.parse_args(argc, argv)
-    __return_value = LibGtk.parse_args(Int32.new(argc), argv)
+    __return_value = LibGtk.parse_args(argc, argv)
     __return_value
   end
 
@@ -737,7 +737,7 @@ module Gtk
   end
 
   def self.rgb_to_hsv(r, g, b, h, s, v)
-    __return_value = LibGtk.rgb_to_hsv(Float64.new(r), Float64.new(g), Float64.new(b), Float64.new(h), Float64.new(s), Float64.new(v))
+    __return_value = LibGtk.rgb_to_hsv(Float64.new(r), Float64.new(g), Float64.new(b), h, s, v)
     __return_value
   end
 
@@ -819,7 +819,7 @@ module Gtk
   end
 
   def self.target_table_new_from_list(list, n_targets)
-    __return_value = LibGtk.target_table_new_from_list(list.to_unsafe.as(LibGtk::TargetList*), Int32.new(n_targets))
+    __return_value = LibGtk.target_table_new_from_list(list.to_unsafe.as(LibGtk::TargetList*), n_targets)
     PointerIterator.new(__return_value) {|__item| Gtk::TargetEntry.new(__item) }
   end
 
@@ -864,7 +864,7 @@ module Gtk
   end
 
   def self.test_list_all_types(n_types)
-    __return_value = LibGtk.test_list_all_types(UInt32.new(n_types))
+    __return_value = LibGtk.test_list_all_types(n_types)
     PointerIterator.new(__return_value) {|__item| __item }
   end
 
@@ -914,7 +914,7 @@ module Gtk
   end
 
   def self.tree_get_row_drag_data(selection_data, tree_model, path)
-    __return_value = LibGtk.tree_get_row_drag_data(selection_data.to_unsafe.as(LibGtk::SelectionData*), tree_model && tree_model.to_unsafe.as(LibGtk::TreeModel*), path && path.to_unsafe.as(LibGtk::TreePath*))
+    __return_value = LibGtk.tree_get_row_drag_data(selection_data.to_unsafe.as(LibGtk::SelectionData*), tree_model, path)
     __return_value
   end
 

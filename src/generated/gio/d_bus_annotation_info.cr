@@ -36,35 +36,35 @@ module Gio
     end
 
     def ref_count
-      (to_unsafe.value.ref_count)
+      (to_unsafe.as(LibGio::DBusAnnotationInfo*).value.ref_count)
     end
 
     def ref_count=(value : Int32)
-      to_unsafe.value.ref_count = Int32.new(value)
+      to_unsafe.as(LibGio::DBusAnnotationInfo*).value.ref_count = Int32.new(value)
     end
 
     def key
-      (raise "Expected string but got null" unless (to_unsafe.value.key); ::String.new((to_unsafe.value.key)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGio::DBusAnnotationInfo*).value.key); ::String.new((to_unsafe.as(LibGio::DBusAnnotationInfo*).value.key)))
     end
 
     def key=(value : String)
-      to_unsafe.value.key = value.to_unsafe
+      to_unsafe.as(LibGio::DBusAnnotationInfo*).value.key = value.to_unsafe
     end
 
     def value
-      (raise "Expected string but got null" unless (to_unsafe.value.value); ::String.new((to_unsafe.value.value)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGio::DBusAnnotationInfo*).value.value); ::String.new((to_unsafe.as(LibGio::DBusAnnotationInfo*).value.value)))
     end
 
     def value=(value : String)
-      to_unsafe.value.value = value.to_unsafe
+      to_unsafe.as(LibGio::DBusAnnotationInfo*).value.value = value.to_unsafe
     end
 
     def annotations
-      PointerIterator.new((to_unsafe.value.annotations)) {|__item| Gio::DBusAnnotationInfo.new(__item) }
+      PointerIterator.new((to_unsafe.as(LibGio::DBusAnnotationInfo*).value.annotations)) {|__item| Gio::DBusAnnotationInfo.new(__item) }
     end
 
     def annotations=(value : Array(Gio::DBusAnnotationInfo))
-      to_unsafe.value.annotations = value
+      to_unsafe.as(LibGio::DBusAnnotationInfo*).value.annotations = value
     end
 
   end

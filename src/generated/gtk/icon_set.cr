@@ -36,7 +36,7 @@ module Gtk
     end
 
     def sizes(sizes, n_sizes)
-      __return_value = LibGtk.icon_set_get_sizes(to_unsafe.as(LibGtk::IconSet*), sizes, Int32.new(n_sizes))
+      __return_value = LibGtk.icon_set_get_sizes(to_unsafe.as(LibGtk::IconSet*), sizes, n_sizes)
       __return_value
     end
 

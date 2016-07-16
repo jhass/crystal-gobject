@@ -23,15 +23,15 @@ module Gst
     end
 
     def fd
-      (to_unsafe.value.fd)
+      (to_unsafe.as(LibGst::PollFD*).value.fd)
     end
 
     def fd=(value : Int32)
-      to_unsafe.value.fd = Int32.new(value)
+      to_unsafe.as(LibGst::PollFD*).value.fd = Int32.new(value)
     end
 
     def idx
-      (to_unsafe.value.idx)
+      (to_unsafe.as(LibGst::PollFD*).value.idx)
     end
 
   end

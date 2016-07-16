@@ -40,67 +40,67 @@ module Gtk
     end
 
     def set_name
-      (raise "Expected string but got null" unless (to_unsafe.value.set_name); ::String.new((to_unsafe.value.set_name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::BindingSet*).value.set_name); ::String.new((to_unsafe.as(LibGtk::BindingSet*).value.set_name)))
     end
 
     def set_name=(value : String)
-      to_unsafe.value.set_name = value.to_unsafe
+      to_unsafe.as(LibGtk::BindingSet*).value.set_name = value.to_unsafe
     end
 
     def priority
-      (to_unsafe.value.priority)
+      (to_unsafe.as(LibGtk::BindingSet*).value.priority)
     end
 
     def priority=(value : Int32)
-      to_unsafe.value.priority = Int32.new(value)
+      to_unsafe.as(LibGtk::BindingSet*).value.priority = Int32.new(value)
     end
 
     def widget_path_pspecs
-      (to_unsafe.value.widget_path_pspecs)
+      (to_unsafe.as(LibGtk::BindingSet*).value.widget_path_pspecs)
     end
 
     def widget_path_pspecs=(value : Void*)
-      to_unsafe.value.widget_path_pspecs = value
+      to_unsafe.as(LibGtk::BindingSet*).value.widget_path_pspecs = value
     end
 
     def widget_class_pspecs
-      (to_unsafe.value.widget_class_pspecs)
+      (to_unsafe.as(LibGtk::BindingSet*).value.widget_class_pspecs)
     end
 
     def widget_class_pspecs=(value : Void*)
-      to_unsafe.value.widget_class_pspecs = value
+      to_unsafe.as(LibGtk::BindingSet*).value.widget_class_pspecs = value
     end
 
     def class_branch_pspecs
-      (to_unsafe.value.class_branch_pspecs)
+      (to_unsafe.as(LibGtk::BindingSet*).value.class_branch_pspecs)
     end
 
     def class_branch_pspecs=(value : Void*)
-      to_unsafe.value.class_branch_pspecs = value
+      to_unsafe.as(LibGtk::BindingSet*).value.class_branch_pspecs = value
     end
 
     def entries
-      Gtk::BindingEntry.new((to_unsafe.value.entries))
+      Gtk::BindingEntry.new((to_unsafe.as(LibGtk::BindingSet*).value.entries))
     end
 
     def entries=(value : Gtk::BindingEntry)
-      to_unsafe.value.entries = value.to_unsafe.as(LibGtk::BindingEntry*)
+      to_unsafe.as(LibGtk::BindingSet*).value.entries = value.to_unsafe.as(LibGtk::BindingEntry*)
     end
 
     def current
-      Gtk::BindingEntry.new((to_unsafe.value.current))
+      Gtk::BindingEntry.new((to_unsafe.as(LibGtk::BindingSet*).value.current))
     end
 
     def current=(value : Gtk::BindingEntry)
-      to_unsafe.value.current = value.to_unsafe.as(LibGtk::BindingEntry*)
+      to_unsafe.as(LibGtk::BindingSet*).value.current = value.to_unsafe.as(LibGtk::BindingEntry*)
     end
 
     def parsed
-      (to_unsafe.value.parsed)
+      (to_unsafe.as(LibGtk::BindingSet*).value.parsed)
     end
 
     def parsed=(value : UInt32)
-      to_unsafe.value.parsed = UInt32.new(value)
+      to_unsafe.as(LibGtk::BindingSet*).value.parsed = UInt32.new(value)
     end
 
   end

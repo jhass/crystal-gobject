@@ -31,7 +31,7 @@ module GObject
     end
 
     def self.interface_list_properties(g_iface, n_properties_p)
-      __return_value = LibGObject.object_interface_list_properties(g_iface.to_unsafe.as(LibGObject::TypeInterface*), UInt32.new(n_properties_p))
+      __return_value = LibGObject.object_interface_list_properties(g_iface.to_unsafe.as(LibGObject::TypeInterface*), n_properties_p)
       PointerIterator.new(__return_value) {|__item| GObject::ParamSpec.new(__item) }
     end
 

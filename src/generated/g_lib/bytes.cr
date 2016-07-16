@@ -36,7 +36,7 @@ module GLib
     end
 
     def data(size)
-      __return_value = LibGLib.bytes_get_data(to_unsafe.as(LibGLib::Bytes*), UInt64.new(size))
+      __return_value = LibGLib.bytes_get_data(to_unsafe.as(LibGLib::Bytes*), size)
       PointerIterator.new(__return_value) {|__item| __item } if __return_value
     end
 
@@ -71,7 +71,7 @@ module GLib
     end
 
     def unref_to_data(size)
-      __return_value = LibGLib.bytes_unref_to_data(to_unsafe.as(LibGLib::Bytes*), UInt64.new(size))
+      __return_value = LibGLib.bytes_unref_to_data(to_unsafe.as(LibGLib::Bytes*), size)
       PointerIterator.new(__return_value) {|__item| __item }
     end
 

@@ -56,11 +56,11 @@ module GLib
     end
 
     def p
-      (to_unsafe.value.p)
+      (to_unsafe.as(LibGLib::RWLock*).value.p)
     end
 
     def i
-      PointerIterator.new((to_unsafe.value.i)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGLib::RWLock*).value.i)) {|__item| __item }
     end
 
   end

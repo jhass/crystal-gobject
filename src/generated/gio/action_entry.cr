@@ -20,39 +20,39 @@ module Gio
     end
 
     def name
-      (raise "Expected string but got null" unless (to_unsafe.value.name); ::String.new((to_unsafe.value.name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGio::ActionEntry*).value.name); ::String.new((to_unsafe.as(LibGio::ActionEntry*).value.name)))
     end
 
     def name=(value : String)
-      to_unsafe.value.name = value.to_unsafe
+      to_unsafe.as(LibGio::ActionEntry*).value.name = value.to_unsafe
     end
 
     def activate
-      (to_unsafe.value.activate)
+      (to_unsafe.as(LibGio::ActionEntry*).value.activate)
     end
 
     def parameter_type
-      (raise "Expected string but got null" unless (to_unsafe.value.parameter_type); ::String.new((to_unsafe.value.parameter_type)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGio::ActionEntry*).value.parameter_type); ::String.new((to_unsafe.as(LibGio::ActionEntry*).value.parameter_type)))
     end
 
     def parameter_type=(value : String)
-      to_unsafe.value.parameter_type = value.to_unsafe
+      to_unsafe.as(LibGio::ActionEntry*).value.parameter_type = value.to_unsafe
     end
 
     def state
-      (raise "Expected string but got null" unless (to_unsafe.value.state); ::String.new((to_unsafe.value.state)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGio::ActionEntry*).value.state); ::String.new((to_unsafe.as(LibGio::ActionEntry*).value.state)))
     end
 
     def state=(value : String)
-      to_unsafe.value.state = value.to_unsafe
+      to_unsafe.as(LibGio::ActionEntry*).value.state = value.to_unsafe
     end
 
     def change_state
-      (to_unsafe.value.change_state)
+      (to_unsafe.as(LibGio::ActionEntry*).value.change_state)
     end
 
     def padding
-      PointerIterator.new((to_unsafe.value.padding)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGio::ActionEntry*).value.padding)) {|__item| __item }
     end
 
   end

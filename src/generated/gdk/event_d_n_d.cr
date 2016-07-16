@@ -24,59 +24,59 @@ module Gdk
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibGdk::EventDND*).value.type)
     end
 
     def type=(value : Gdk::EventType)
-      to_unsafe.value.type = value
+      to_unsafe.as(LibGdk::EventDND*).value.type = value
     end
 
     def window
-      Gdk::Window.new((to_unsafe.value.window))
+      Gdk::Window.new((to_unsafe.as(LibGdk::EventDND*).value.window))
     end
 
     def window=(value : Gdk::Window)
-      to_unsafe.value.window = value.to_unsafe.as(LibGdk::Window*)
+      to_unsafe.as(LibGdk::EventDND*).value.window = value.to_unsafe.as(LibGdk::Window*)
     end
 
     def send_event
-      (to_unsafe.value.send_event)
+      (to_unsafe.as(LibGdk::EventDND*).value.send_event)
     end
 
     def send_event=(value : Int8)
-      to_unsafe.value.send_event = Int8.new(value)
+      to_unsafe.as(LibGdk::EventDND*).value.send_event = Int8.new(value)
     end
 
     def context
-      Gdk::DragContext.new((to_unsafe.value.context))
+      Gdk::DragContext.new((to_unsafe.as(LibGdk::EventDND*).value.context))
     end
 
     def context=(value : Gdk::DragContext)
-      to_unsafe.value.context = value.to_unsafe.as(LibGdk::DragContext*)
+      to_unsafe.as(LibGdk::EventDND*).value.context = value.to_unsafe.as(LibGdk::DragContext*)
     end
 
     def time
-      (to_unsafe.value.time)
+      (to_unsafe.as(LibGdk::EventDND*).value.time)
     end
 
     def time=(value : UInt32)
-      to_unsafe.value.time = UInt32.new(value)
+      to_unsafe.as(LibGdk::EventDND*).value.time = UInt32.new(value)
     end
 
     def x_root
-      (to_unsafe.value.x_root)
+      (to_unsafe.as(LibGdk::EventDND*).value.x_root)
     end
 
     def x_root=(value : Int16)
-      to_unsafe.value.x_root = Int16.new(value)
+      to_unsafe.as(LibGdk::EventDND*).value.x_root = Int16.new(value)
     end
 
     def y_root
-      (to_unsafe.value.y_root)
+      (to_unsafe.as(LibGdk::EventDND*).value.y_root)
     end
 
     def y_root=(value : Int16)
-      to_unsafe.value.y_root = Int16.new(value)
+      to_unsafe.as(LibGdk::EventDND*).value.y_root = Int16.new(value)
     end
 
   end

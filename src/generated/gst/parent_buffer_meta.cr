@@ -24,19 +24,19 @@ module Gst
     end
 
     def parent
-      Gst::Meta.new((to_unsafe.value.parent))
+      Gst::Meta.new((to_unsafe.as(LibGst::ParentBufferMeta*).value.parent))
     end
 
     def parent=(value : Gst::Meta)
-      to_unsafe.value.parent = value
+      to_unsafe.as(LibGst::ParentBufferMeta*).value.parent = value
     end
 
     def buffer
-      Gst::Buffer.new((to_unsafe.value.buffer))
+      Gst::Buffer.new((to_unsafe.as(LibGst::ParentBufferMeta*).value.buffer))
     end
 
     def buffer=(value : Gst::Buffer)
-      to_unsafe.value.buffer = value.to_unsafe.as(LibGst::Buffer*)
+      to_unsafe.as(LibGst::ParentBufferMeta*).value.buffer = value.to_unsafe.as(LibGst::Buffer*)
     end
 
   end

@@ -19,19 +19,19 @@ module Pango
     end
 
     def lang
-      PointerIterator.new((to_unsafe.value.lang)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibPango::ScriptForLang*).value.lang)) {|__item| __item }
     end
 
     def lang=(value : Array(Int8))
-      to_unsafe.value.lang = value
+      to_unsafe.as(LibPango::ScriptForLang*).value.lang = value
     end
 
     def scripts
-      PointerIterator.new((to_unsafe.value.scripts)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibPango::ScriptForLang*).value.scripts)) {|__item| __item }
     end
 
     def scripts=(value : Array(Pango::Script))
-      to_unsafe.value.scripts = value
+      to_unsafe.as(LibPango::ScriptForLang*).value.scripts = value
     end
 
   end

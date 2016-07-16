@@ -1,7 +1,7 @@
 module Gtk
   module TreeSortable
     def sort_column_id(sort_column_id, order)
-      __return_value = LibGtk.tree_sortable_get_sort_column_id(to_unsafe.as(LibGtk::TreeSortable*), Int32.new(sort_column_id), order)
+      __return_value = LibGtk.tree_sortable_get_sort_column_id(to_unsafe.as(LibGtk::TreeSortable*), sort_column_id, order)
       __return_value
     end
 

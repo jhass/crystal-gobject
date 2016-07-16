@@ -56,40 +56,40 @@ module GIRepository
     end
 
     def iterate_attributes(iterator, name, value)
-      __return_value = LibGIRepository.base_info_iterate_attributes(to_unsafe.as(LibGIRepository::BaseInfo*), iterator.to_unsafe.as(LibGIRepository::AttributeIter*), name.to_unsafe, value.to_unsafe)
+      __return_value = LibGIRepository.base_info_iterate_attributes(to_unsafe.as(LibGIRepository::BaseInfo*), iterator.to_unsafe.as(LibGIRepository::AttributeIter*), name, value)
       __return_value
     end
 
     def dummy1
-      (to_unsafe.value.dummy1)
+      (to_unsafe.as(LibGIRepository::BaseInfo*).value.dummy1)
     end
 
     def dummy2
-      (to_unsafe.value.dummy2)
+      (to_unsafe.as(LibGIRepository::BaseInfo*).value.dummy2)
     end
 
     def dummy3
-      (to_unsafe.value.dummy3)
+      (to_unsafe.as(LibGIRepository::BaseInfo*).value.dummy3)
     end
 
     def dummy4
-      (to_unsafe.value.dummy4)
+      (to_unsafe.as(LibGIRepository::BaseInfo*).value.dummy4)
     end
 
     def dummy5
-      (to_unsafe.value.dummy5)
+      (to_unsafe.as(LibGIRepository::BaseInfo*).value.dummy5)
     end
 
     def dummy6
-      (to_unsafe.value.dummy6)
+      (to_unsafe.as(LibGIRepository::BaseInfo*).value.dummy6)
     end
 
     def dummy7
-      (to_unsafe.value.dummy7)
+      (to_unsafe.as(LibGIRepository::BaseInfo*).value.dummy7)
     end
 
     def padding
-      PointerIterator.new((to_unsafe.value.padding)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGIRepository::BaseInfo*).value.padding)) {|__item| __item }
     end
 
   end

@@ -29,19 +29,19 @@ module GLib
     end
 
     def status
-      (to_unsafe.value.status)
+      (to_unsafe.as(LibGLib::Once*).value.status)
     end
 
     def status=(value : GLib::OnceStatus)
-      to_unsafe.value.status = value
+      to_unsafe.as(LibGLib::Once*).value.status = value
     end
 
     def retval
-      (to_unsafe.value.retval)
+      (to_unsafe.as(LibGLib::Once*).value.retval)
     end
 
     def retval=(value : Void*)
-      to_unsafe.value.retval = value
+      to_unsafe.as(LibGLib::Once*).value.retval = value
     end
 
   end

@@ -31,35 +31,35 @@ module Gst
     end
 
     def name_template
-      (raise "Expected string but got null" unless (to_unsafe.value.name_template); ::String.new((to_unsafe.value.name_template)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGst::StaticPadTemplate*).value.name_template); ::String.new((to_unsafe.as(LibGst::StaticPadTemplate*).value.name_template)))
     end
 
     def name_template=(value : String)
-      to_unsafe.value.name_template = value.to_unsafe
+      to_unsafe.as(LibGst::StaticPadTemplate*).value.name_template = value.to_unsafe
     end
 
     def direction
-      (to_unsafe.value.direction)
+      (to_unsafe.as(LibGst::StaticPadTemplate*).value.direction)
     end
 
     def direction=(value : Gst::PadDirection)
-      to_unsafe.value.direction = value
+      to_unsafe.as(LibGst::StaticPadTemplate*).value.direction = value
     end
 
     def presence
-      (to_unsafe.value.presence)
+      (to_unsafe.as(LibGst::StaticPadTemplate*).value.presence)
     end
 
     def presence=(value : Gst::PadPresence)
-      to_unsafe.value.presence = value
+      to_unsafe.as(LibGst::StaticPadTemplate*).value.presence = value
     end
 
     def static_caps
-      Gst::StaticCaps.new((to_unsafe.value.static_caps))
+      Gst::StaticCaps.new((to_unsafe.as(LibGst::StaticPadTemplate*).value.static_caps))
     end
 
     def static_caps=(value : Gst::StaticCaps)
-      to_unsafe.value.static_caps = value
+      to_unsafe.as(LibGst::StaticPadTemplate*).value.static_caps = value
     end
 
   end

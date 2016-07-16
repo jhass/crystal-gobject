@@ -19,19 +19,19 @@ module Pango
     end
 
     def attr
-      Pango::Attribute.new((to_unsafe.value.attr))
+      Pango::Attribute.new((to_unsafe.as(LibPango::AttrInt*).value.attr))
     end
 
     def attr=(value : Pango::Attribute)
-      to_unsafe.value.attr = value
+      to_unsafe.as(LibPango::AttrInt*).value.attr = value
     end
 
     def value
-      (to_unsafe.value.value)
+      (to_unsafe.as(LibPango::AttrInt*).value.value)
     end
 
     def value=(value : Int32)
-      to_unsafe.value.value = Int32.new(value)
+      to_unsafe.as(LibPango::AttrInt*).value.value = Int32.new(value)
     end
 
   end

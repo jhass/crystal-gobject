@@ -66,7 +66,7 @@ module Gtk
     end
 
     def uris(length)
-      __return_value = LibGtk.recent_chooser_get_uris(to_unsafe.as(LibGtk::RecentChooser*), UInt64.new(length))
+      __return_value = LibGtk.recent_chooser_get_uris(to_unsafe.as(LibGtk::RecentChooser*), length)
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 

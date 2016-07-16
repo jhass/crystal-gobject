@@ -36,7 +36,7 @@ module Gtk
     end
 
     def resolve(props, resolved_gradient)
-      __return_value = LibGtk.gradient_resolve(to_unsafe.as(LibGtk::Gradient*), props.to_unsafe.as(LibGtk::StyleProperties*), resolved_gradient.to_unsafe.as(LibCairo::Pattern*))
+      __return_value = LibGtk.gradient_resolve(to_unsafe.as(LibGtk::Gradient*), props.to_unsafe.as(LibGtk::StyleProperties*), resolved_gradient)
       __return_value
     end
 

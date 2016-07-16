@@ -24,19 +24,19 @@ module Atk
     end
 
     def name
-      (raise "Expected string but got null" unless (to_unsafe.value.name); ::String.new((to_unsafe.value.name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibAtk::Attribute*).value.name); ::String.new((to_unsafe.as(LibAtk::Attribute*).value.name)))
     end
 
     def name=(value : String)
-      to_unsafe.value.name = value.to_unsafe
+      to_unsafe.as(LibAtk::Attribute*).value.name = value.to_unsafe
     end
 
     def value
-      (raise "Expected string but got null" unless (to_unsafe.value.value); ::String.new((to_unsafe.value.value)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibAtk::Attribute*).value.value); ::String.new((to_unsafe.as(LibAtk::Attribute*).value.value)))
     end
 
     def value=(value : String)
-      to_unsafe.value.value = value.to_unsafe
+      to_unsafe.as(LibAtk::Attribute*).value.value = value.to_unsafe
     end
 
   end

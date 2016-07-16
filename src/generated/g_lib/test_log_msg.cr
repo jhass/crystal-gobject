@@ -27,43 +27,43 @@ module GLib
     end
 
     def log_type
-      (to_unsafe.value.log_type)
+      (to_unsafe.as(LibGLib::TestLogMsg*).value.log_type)
     end
 
     def log_type=(value : GLib::TestLogType)
-      to_unsafe.value.log_type = value
+      to_unsafe.as(LibGLib::TestLogMsg*).value.log_type = value
     end
 
     def n_strings
-      (to_unsafe.value.n_strings)
+      (to_unsafe.as(LibGLib::TestLogMsg*).value.n_strings)
     end
 
     def n_strings=(value : UInt32)
-      to_unsafe.value.n_strings = UInt32.new(value)
+      to_unsafe.as(LibGLib::TestLogMsg*).value.n_strings = UInt32.new(value)
     end
 
     def strings
-      (raise "Expected string but got null" unless (to_unsafe.value.strings); ::String.new((to_unsafe.value.strings)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGLib::TestLogMsg*).value.strings); ::String.new((to_unsafe.as(LibGLib::TestLogMsg*).value.strings)))
     end
 
     def strings=(value : String)
-      to_unsafe.value.strings = value.to_unsafe
+      to_unsafe.as(LibGLib::TestLogMsg*).value.strings = value.to_unsafe
     end
 
     def n_nums
-      (to_unsafe.value.n_nums)
+      (to_unsafe.as(LibGLib::TestLogMsg*).value.n_nums)
     end
 
     def n_nums=(value : UInt32)
-      to_unsafe.value.n_nums = UInt32.new(value)
+      to_unsafe.as(LibGLib::TestLogMsg*).value.n_nums = UInt32.new(value)
     end
 
     def nums
-      (to_unsafe.value.nums)
+      (to_unsafe.as(LibGLib::TestLogMsg*).value.nums)
     end
 
     def nums=(value : Int64)
-      to_unsafe.value.nums = value
+      to_unsafe.as(LibGLib::TestLogMsg*).value.nums = value
     end
 
   end

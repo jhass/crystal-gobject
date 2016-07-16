@@ -63,51 +63,51 @@ module Gio
     end
 
     def ref_count
-      (to_unsafe.value.ref_count)
+      (to_unsafe.as(LibGio::DBusInterfaceInfo*).value.ref_count)
     end
 
     def ref_count=(value : Int32)
-      to_unsafe.value.ref_count = Int32.new(value)
+      to_unsafe.as(LibGio::DBusInterfaceInfo*).value.ref_count = Int32.new(value)
     end
 
     def name
-      (raise "Expected string but got null" unless (to_unsafe.value.name); ::String.new((to_unsafe.value.name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGio::DBusInterfaceInfo*).value.name); ::String.new((to_unsafe.as(LibGio::DBusInterfaceInfo*).value.name)))
     end
 
     def name=(value : String)
-      to_unsafe.value.name = value.to_unsafe
+      to_unsafe.as(LibGio::DBusInterfaceInfo*).value.name = value.to_unsafe
     end
 
     def methods
-      PointerIterator.new((to_unsafe.value.methods)) {|__item| Gio::DBusMethodInfo.new(__item) }
+      PointerIterator.new((to_unsafe.as(LibGio::DBusInterfaceInfo*).value.methods)) {|__item| Gio::DBusMethodInfo.new(__item) }
     end
 
     def methods=(value : Array(Gio::DBusMethodInfo))
-      to_unsafe.value.methods = value
+      to_unsafe.as(LibGio::DBusInterfaceInfo*).value.methods = value
     end
 
     def signals
-      PointerIterator.new((to_unsafe.value.signals)) {|__item| Gio::DBusSignalInfo.new(__item) }
+      PointerIterator.new((to_unsafe.as(LibGio::DBusInterfaceInfo*).value.signals)) {|__item| Gio::DBusSignalInfo.new(__item) }
     end
 
     def signals=(value : Array(Gio::DBusSignalInfo))
-      to_unsafe.value.signals = value
+      to_unsafe.as(LibGio::DBusInterfaceInfo*).value.signals = value
     end
 
     def properties
-      PointerIterator.new((to_unsafe.value.properties)) {|__item| Gio::DBusPropertyInfo.new(__item) }
+      PointerIterator.new((to_unsafe.as(LibGio::DBusInterfaceInfo*).value.properties)) {|__item| Gio::DBusPropertyInfo.new(__item) }
     end
 
     def properties=(value : Array(Gio::DBusPropertyInfo))
-      to_unsafe.value.properties = value
+      to_unsafe.as(LibGio::DBusInterfaceInfo*).value.properties = value
     end
 
     def annotations
-      PointerIterator.new((to_unsafe.value.annotations)) {|__item| Gio::DBusAnnotationInfo.new(__item) }
+      PointerIterator.new((to_unsafe.as(LibGio::DBusInterfaceInfo*).value.annotations)) {|__item| Gio::DBusAnnotationInfo.new(__item) }
     end
 
     def annotations=(value : Array(Gio::DBusAnnotationInfo))
-      to_unsafe.value.annotations = value
+      to_unsafe.as(LibGio::DBusInterfaceInfo*).value.annotations = value
     end
 
   end

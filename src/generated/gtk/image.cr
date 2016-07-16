@@ -86,17 +86,17 @@ module Gtk
     end
 
     def gicon(gicon, size)
-      __return_value = LibGtk.image_get_gicon(to_unsafe.as(LibGtk::Image*), gicon.to_unsafe.as(LibGio::Icon*), Int32.new(size))
+      __return_value = LibGtk.image_get_gicon(to_unsafe.as(LibGtk::Image*), gicon, size)
       __return_value
     end
 
     def icon_name(icon_name, size)
-      __return_value = LibGtk.image_get_icon_name(to_unsafe.as(LibGtk::Image*), icon_name.to_unsafe, Int32.new(size))
+      __return_value = LibGtk.image_get_icon_name(to_unsafe.as(LibGtk::Image*), icon_name, size)
       __return_value
     end
 
     def icon_set(icon_set, size)
-      __return_value = LibGtk.image_get_icon_set(to_unsafe.as(LibGtk::Image*), icon_set.to_unsafe.as(LibGtk::IconSet*), Int32.new(size))
+      __return_value = LibGtk.image_get_icon_set(to_unsafe.as(LibGtk::Image*), icon_set, size)
       __return_value
     end
 
@@ -111,7 +111,7 @@ module Gtk
     end
 
     def stock(stock_id, size)
-      __return_value = LibGtk.image_get_stock(to_unsafe.as(LibGtk::Image*), stock_id.to_unsafe, Int32.new(size))
+      __return_value = LibGtk.image_get_stock(to_unsafe.as(LibGtk::Image*), stock_id, size)
       __return_value
     end
 

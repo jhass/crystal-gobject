@@ -19,19 +19,19 @@ module Pango
     end
 
     def script
-      (to_unsafe.value.script)
+      (to_unsafe.as(LibPango::EngineScriptInfo*).value.script)
     end
 
     def script=(value : Pango::Script)
-      to_unsafe.value.script = value
+      to_unsafe.as(LibPango::EngineScriptInfo*).value.script = value
     end
 
     def langs
-      (raise "Expected string but got null" unless (to_unsafe.value.langs); ::String.new((to_unsafe.value.langs)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibPango::EngineScriptInfo*).value.langs); ::String.new((to_unsafe.as(LibPango::EngineScriptInfo*).value.langs)))
     end
 
     def langs=(value : String)
-      to_unsafe.value.langs = value.to_unsafe
+      to_unsafe.as(LibPango::EngineScriptInfo*).value.langs = value.to_unsafe
     end
 
   end

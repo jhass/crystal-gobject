@@ -20,27 +20,27 @@ module Pango
     end
 
     def attr
-      Pango::Attribute.new((to_unsafe.value.attr))
+      Pango::Attribute.new((to_unsafe.as(LibPango::AttrSize*).value.attr))
     end
 
     def attr=(value : Pango::Attribute)
-      to_unsafe.value.attr = value
+      to_unsafe.as(LibPango::AttrSize*).value.attr = value
     end
 
     def size
-      (to_unsafe.value.size)
+      (to_unsafe.as(LibPango::AttrSize*).value.size)
     end
 
     def size=(value : Int32)
-      to_unsafe.value.size = Int32.new(value)
+      to_unsafe.as(LibPango::AttrSize*).value.size = Int32.new(value)
     end
 
     def absolute
-      (to_unsafe.value.absolute)
+      (to_unsafe.as(LibPango::AttrSize*).value.absolute)
     end
 
     def absolute=(value : UInt32)
-      to_unsafe.value.absolute = UInt32.new(value)
+      to_unsafe.as(LibPango::AttrSize*).value.absolute = UInt32.new(value)
     end
 
   end

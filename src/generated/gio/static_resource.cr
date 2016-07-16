@@ -31,23 +31,23 @@ module Gio
     end
 
     def data
-      (to_unsafe.value.data)
+      (to_unsafe.as(LibGio::StaticResource*).value.data)
     end
 
     def data_len
-      (to_unsafe.value.data_len)
+      (to_unsafe.as(LibGio::StaticResource*).value.data_len)
     end
 
     def resource
-      Gio::Resource.new((to_unsafe.value.resource))
+      Gio::Resource.new((to_unsafe.as(LibGio::StaticResource*).value.resource))
     end
 
     def next
-      Gio::StaticResource.new((to_unsafe.value.next_))
+      Gio::StaticResource.new((to_unsafe.as(LibGio::StaticResource*).value.next_))
     end
 
     def padding
-      (to_unsafe.value.padding)
+      (to_unsafe.as(LibGio::StaticResource*).value.padding)
     end
 
   end

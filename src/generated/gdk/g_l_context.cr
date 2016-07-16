@@ -37,7 +37,7 @@ module Gdk
     end
 
     def required_version(major, minor)
-      __return_value = LibGdk.g_l_context_get_required_version(to_unsafe.as(LibGdk::GLContext*), major && Int32.new(major), minor && Int32.new(minor))
+      __return_value = LibGdk.g_l_context_get_required_version(to_unsafe.as(LibGdk::GLContext*), major, minor)
       __return_value
     end
 
@@ -47,7 +47,7 @@ module Gdk
     end
 
     def version(major, minor)
-      __return_value = LibGdk.g_l_context_get_version(to_unsafe.as(LibGdk::GLContext*), Int32.new(major), Int32.new(minor))
+      __return_value = LibGdk.g_l_context_get_version(to_unsafe.as(LibGdk::GLContext*), major, minor)
       __return_value
     end
 

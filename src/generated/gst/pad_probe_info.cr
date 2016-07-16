@@ -42,43 +42,43 @@ module Gst
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibGst::PadProbeInfo*).value.type)
     end
 
     def type=(value : Gst::PadProbeType)
-      to_unsafe.value.type = value
+      to_unsafe.as(LibGst::PadProbeInfo*).value.type = value
     end
 
     def id
-      (to_unsafe.value.id)
+      (to_unsafe.as(LibGst::PadProbeInfo*).value.id)
     end
 
     def id=(value : UInt64)
-      to_unsafe.value.id = UInt64.new(value)
+      to_unsafe.as(LibGst::PadProbeInfo*).value.id = UInt64.new(value)
     end
 
     def data
-      (to_unsafe.value.data)
+      (to_unsafe.as(LibGst::PadProbeInfo*).value.data)
     end
 
     def data=(value : Void*)
-      to_unsafe.value.data = value
+      to_unsafe.as(LibGst::PadProbeInfo*).value.data = value
     end
 
     def offset
-      (to_unsafe.value.offset)
+      (to_unsafe.as(LibGst::PadProbeInfo*).value.offset)
     end
 
     def offset=(value : UInt64)
-      to_unsafe.value.offset = UInt64.new(value)
+      to_unsafe.as(LibGst::PadProbeInfo*).value.offset = UInt64.new(value)
     end
 
     def size
-      (to_unsafe.value.size)
+      (to_unsafe.as(LibGst::PadProbeInfo*).value.size)
     end
 
     def size=(value : UInt32)
-      to_unsafe.value.size = UInt32.new(value)
+      to_unsafe.as(LibGst::PadProbeInfo*).value.size = UInt32.new(value)
     end
 
   end

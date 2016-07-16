@@ -54,77 +54,77 @@ module Gst
     end
 
     def self.replace(olddata, newdata)
-      __return_value = LibGst.mini_object_replace(olddata && olddata.to_unsafe.as(LibGst::MiniObject*), newdata && newdata.to_unsafe.as(LibGst::MiniObject*))
+      __return_value = LibGst.mini_object_replace(olddata, newdata && newdata.to_unsafe.as(LibGst::MiniObject*))
       __return_value
     end
 
     def self.take(olddata, newdata)
-      __return_value = LibGst.mini_object_take(olddata.to_unsafe.as(LibGst::MiniObject*), newdata.to_unsafe.as(LibGst::MiniObject*))
+      __return_value = LibGst.mini_object_take(olddata, newdata.to_unsafe.as(LibGst::MiniObject*))
       __return_value
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibGst::MiniObject*).value.type)
     end
 
     def type=(value : UInt64)
-      to_unsafe.value.type = UInt64.new(value)
+      to_unsafe.as(LibGst::MiniObject*).value.type = UInt64.new(value)
     end
 
     def refcount
-      (to_unsafe.value.refcount)
+      (to_unsafe.as(LibGst::MiniObject*).value.refcount)
     end
 
     def refcount=(value : Int32)
-      to_unsafe.value.refcount = Int32.new(value)
+      to_unsafe.as(LibGst::MiniObject*).value.refcount = Int32.new(value)
     end
 
     def lockstate
-      (to_unsafe.value.lockstate)
+      (to_unsafe.as(LibGst::MiniObject*).value.lockstate)
     end
 
     def lockstate=(value : Int32)
-      to_unsafe.value.lockstate = Int32.new(value)
+      to_unsafe.as(LibGst::MiniObject*).value.lockstate = Int32.new(value)
     end
 
     def flags
-      (to_unsafe.value.flags)
+      (to_unsafe.as(LibGst::MiniObject*).value.flags)
     end
 
     def flags=(value : UInt32)
-      to_unsafe.value.flags = UInt32.new(value)
+      to_unsafe.as(LibGst::MiniObject*).value.flags = UInt32.new(value)
     end
 
     def copy
-      (to_unsafe.value.copy)
+      (to_unsafe.as(LibGst::MiniObject*).value.copy)
     end
 
     def copy=(value : Void*)
-      to_unsafe.value.copy = value
+      to_unsafe.as(LibGst::MiniObject*).value.copy = value
     end
 
     def dispose
-      (to_unsafe.value.dispose)
+      (to_unsafe.as(LibGst::MiniObject*).value.dispose)
     end
 
     def dispose=(value : Gst::MiniObjectDisposeFunction)
-      to_unsafe.value.dispose = value
+      to_unsafe.as(LibGst::MiniObject*).value.dispose = value
     end
 
     def free
-      (to_unsafe.value.free)
+      (to_unsafe.as(LibGst::MiniObject*).value.free)
     end
 
     def free=(value : Gst::MiniObjectFreeFunction)
-      to_unsafe.value.free = value
+      to_unsafe.as(LibGst::MiniObject*).value.free = value
     end
 
     def n_qdata
-      (to_unsafe.value.n_qdata)
+      (to_unsafe.as(LibGst::MiniObject*).value.n_qdata)
     end
 
     def qdata
-      (to_unsafe.value.qdata)
+      (to_unsafe.as(LibGst::MiniObject*).value.qdata)
     end
 
   end

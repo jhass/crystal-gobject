@@ -41,7 +41,7 @@ module Gio
 
     def info(path, lookup_flags, size, flags)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.resource_get_info(to_unsafe.as(LibGio::Resource*), path.to_unsafe, lookup_flags, UInt64.new(size), UInt32.new(flags), pointerof(__error))
+      __return_value = LibGio.resource_get_info(to_unsafe.as(LibGio::Resource*), path.to_unsafe, lookup_flags, size, flags, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

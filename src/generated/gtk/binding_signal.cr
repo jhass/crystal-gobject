@@ -21,35 +21,35 @@ module Gtk
     end
 
     def next
-      Gtk::BindingSignal.new((to_unsafe.value.next_))
+      Gtk::BindingSignal.new((to_unsafe.as(LibGtk::BindingSignal*).value.next_))
     end
 
     def next=(value : Gtk::BindingSignal)
-      to_unsafe.value.next_ = value.to_unsafe.as(LibGtk::BindingSignal*)
+      to_unsafe.as(LibGtk::BindingSignal*).value.next_ = value.to_unsafe.as(LibGtk::BindingSignal*)
     end
 
     def signal_name
-      (raise "Expected string but got null" unless (to_unsafe.value.signal_name); ::String.new((to_unsafe.value.signal_name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::BindingSignal*).value.signal_name); ::String.new((to_unsafe.as(LibGtk::BindingSignal*).value.signal_name)))
     end
 
     def signal_name=(value : String)
-      to_unsafe.value.signal_name = value.to_unsafe
+      to_unsafe.as(LibGtk::BindingSignal*).value.signal_name = value.to_unsafe
     end
 
     def n_args
-      (to_unsafe.value.n_args)
+      (to_unsafe.as(LibGtk::BindingSignal*).value.n_args)
     end
 
     def n_args=(value : UInt32)
-      to_unsafe.value.n_args = UInt32.new(value)
+      to_unsafe.as(LibGtk::BindingSignal*).value.n_args = UInt32.new(value)
     end
 
     def args
-      PointerIterator.new((to_unsafe.value.args)) {|__item| Gtk::BindingArg.new(__item) }
+      PointerIterator.new((to_unsafe.as(LibGtk::BindingSignal*).value.args)) {|__item| Gtk::BindingArg.new(__item) }
     end
 
     def args=(value : Array(Gtk::BindingArg))
-      to_unsafe.value.args = value
+      to_unsafe.as(LibGtk::BindingSignal*).value.args = value
     end
 
   end

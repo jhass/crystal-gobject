@@ -59,7 +59,7 @@ module Gtk
     end
 
     def search_path(path, n_elements)
-      __return_value = LibGtk.icon_theme_get_search_path(to_unsafe.as(LibGtk::IconTheme*), path, Int32.new(n_elements))
+      __return_value = LibGtk.icon_theme_get_search_path(to_unsafe.as(LibGtk::IconTheme*), path, n_elements)
       __return_value
     end
 

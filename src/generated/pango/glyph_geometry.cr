@@ -20,27 +20,27 @@ module Pango
     end
 
     def width
-      (to_unsafe.value.width)
+      (to_unsafe.as(LibPango::GlyphGeometry*).value.width)
     end
 
     def width=(value : Int32)
-      to_unsafe.value.width = Int32.new(value)
+      to_unsafe.as(LibPango::GlyphGeometry*).value.width = Int32.new(value)
     end
 
     def x_offset
-      (to_unsafe.value.x_offset)
+      (to_unsafe.as(LibPango::GlyphGeometry*).value.x_offset)
     end
 
     def x_offset=(value : Int32)
-      to_unsafe.value.x_offset = Int32.new(value)
+      to_unsafe.as(LibPango::GlyphGeometry*).value.x_offset = Int32.new(value)
     end
 
     def y_offset
-      (to_unsafe.value.y_offset)
+      (to_unsafe.as(LibPango::GlyphGeometry*).value.y_offset)
     end
 
     def y_offset=(value : Int32)
-      to_unsafe.value.y_offset = Int32.new(value)
+      to_unsafe.as(LibPango::GlyphGeometry*).value.y_offset = Int32.new(value)
     end
 
   end

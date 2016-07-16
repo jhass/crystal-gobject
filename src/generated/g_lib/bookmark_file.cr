@@ -39,14 +39,14 @@ module GLib
 
     def app_info(uri, name, exec, count, stamp)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.bookmark_file_get_app_info(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, name.to_unsafe, exec.to_unsafe, UInt32.new(count), Int64.new(stamp), pointerof(__error))
+      __return_value = LibGLib.bookmark_file_get_app_info(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, name.to_unsafe, exec, count, stamp, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def applications(uri, length)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.bookmark_file_get_applications(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, UInt64.new(length), pointerof(__error))
+      __return_value = LibGLib.bookmark_file_get_applications(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, length, pointerof(__error))
       GLib::Error.assert __error
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
@@ -60,14 +60,14 @@ module GLib
 
     def groups(uri, length)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.bookmark_file_get_groups(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, UInt64.new(length), pointerof(__error))
+      __return_value = LibGLib.bookmark_file_get_groups(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, length, pointerof(__error))
       GLib::Error.assert __error
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def icon(uri, href, mime_type)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.bookmark_file_get_icon(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, href.to_unsafe, mime_type.to_unsafe, pointerof(__error))
+      __return_value = LibGLib.bookmark_file_get_icon(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, href, mime_type, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -106,7 +106,7 @@ module GLib
     end
 
     def uris(length)
-      __return_value = LibGLib.bookmark_file_get_uris(to_unsafe.as(LibGLib::BookmarkFile*), UInt64.new(length))
+      __return_value = LibGLib.bookmark_file_get_uris(to_unsafe.as(LibGLib::BookmarkFile*), length)
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
@@ -239,7 +239,7 @@ module GLib
 
     def to_data(length)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.bookmark_file_to_data(to_unsafe.as(LibGLib::BookmarkFile*), UInt64.new(length), pointerof(__error))
+      __return_value = LibGLib.bookmark_file_to_data(to_unsafe.as(LibGLib::BookmarkFile*), length, pointerof(__error))
       GLib::Error.assert __error
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end

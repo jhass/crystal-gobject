@@ -28,95 +28,95 @@ module Gst
     end
 
     def major_version
-      (to_unsafe.value.major_version)
+      (to_unsafe.as(LibGst::PluginDesc*).value.major_version)
     end
 
     def major_version=(value : Int32)
-      to_unsafe.value.major_version = Int32.new(value)
+      to_unsafe.as(LibGst::PluginDesc*).value.major_version = Int32.new(value)
     end
 
     def minor_version
-      (to_unsafe.value.minor_version)
+      (to_unsafe.as(LibGst::PluginDesc*).value.minor_version)
     end
 
     def minor_version=(value : Int32)
-      to_unsafe.value.minor_version = Int32.new(value)
+      to_unsafe.as(LibGst::PluginDesc*).value.minor_version = Int32.new(value)
     end
 
     def name
-      (raise "Expected string but got null" unless (to_unsafe.value.name); ::String.new((to_unsafe.value.name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGst::PluginDesc*).value.name); ::String.new((to_unsafe.as(LibGst::PluginDesc*).value.name)))
     end
 
     def name=(value : String)
-      to_unsafe.value.name = value.to_unsafe
+      to_unsafe.as(LibGst::PluginDesc*).value.name = value.to_unsafe
     end
 
     def description
-      (raise "Expected string but got null" unless (to_unsafe.value.description); ::String.new((to_unsafe.value.description)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGst::PluginDesc*).value.description); ::String.new((to_unsafe.as(LibGst::PluginDesc*).value.description)))
     end
 
     def description=(value : String)
-      to_unsafe.value.description = value.to_unsafe
+      to_unsafe.as(LibGst::PluginDesc*).value.description = value.to_unsafe
     end
 
     def plugin_init
-      (to_unsafe.value.plugin_init)
+      (to_unsafe.as(LibGst::PluginDesc*).value.plugin_init)
     end
 
     def plugin_init=(value : Gst::PluginInitFunc)
-      to_unsafe.value.plugin_init = value
+      to_unsafe.as(LibGst::PluginDesc*).value.plugin_init = value
     end
 
     def version
-      (raise "Expected string but got null" unless (to_unsafe.value.version); ::String.new((to_unsafe.value.version)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGst::PluginDesc*).value.version); ::String.new((to_unsafe.as(LibGst::PluginDesc*).value.version)))
     end
 
     def version=(value : String)
-      to_unsafe.value.version = value.to_unsafe
+      to_unsafe.as(LibGst::PluginDesc*).value.version = value.to_unsafe
     end
 
     def license
-      (raise "Expected string but got null" unless (to_unsafe.value.license); ::String.new((to_unsafe.value.license)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGst::PluginDesc*).value.license); ::String.new((to_unsafe.as(LibGst::PluginDesc*).value.license)))
     end
 
     def license=(value : String)
-      to_unsafe.value.license = value.to_unsafe
+      to_unsafe.as(LibGst::PluginDesc*).value.license = value.to_unsafe
     end
 
     def source
-      (raise "Expected string but got null" unless (to_unsafe.value.source); ::String.new((to_unsafe.value.source)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGst::PluginDesc*).value.source); ::String.new((to_unsafe.as(LibGst::PluginDesc*).value.source)))
     end
 
     def source=(value : String)
-      to_unsafe.value.source = value.to_unsafe
+      to_unsafe.as(LibGst::PluginDesc*).value.source = value.to_unsafe
     end
 
     def package
-      (raise "Expected string but got null" unless (to_unsafe.value.package); ::String.new((to_unsafe.value.package)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGst::PluginDesc*).value.package); ::String.new((to_unsafe.as(LibGst::PluginDesc*).value.package)))
     end
 
     def package=(value : String)
-      to_unsafe.value.package = value.to_unsafe
+      to_unsafe.as(LibGst::PluginDesc*).value.package = value.to_unsafe
     end
 
     def origin
-      (raise "Expected string but got null" unless (to_unsafe.value.origin); ::String.new((to_unsafe.value.origin)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGst::PluginDesc*).value.origin); ::String.new((to_unsafe.as(LibGst::PluginDesc*).value.origin)))
     end
 
     def origin=(value : String)
-      to_unsafe.value.origin = value.to_unsafe
+      to_unsafe.as(LibGst::PluginDesc*).value.origin = value.to_unsafe
     end
 
     def release_datetime
-      (raise "Expected string but got null" unless (to_unsafe.value.release_datetime); ::String.new((to_unsafe.value.release_datetime)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGst::PluginDesc*).value.release_datetime); ::String.new((to_unsafe.as(LibGst::PluginDesc*).value.release_datetime)))
     end
 
     def release_datetime=(value : String)
-      to_unsafe.value.release_datetime = value.to_unsafe
+      to_unsafe.as(LibGst::PluginDesc*).value.release_datetime = value.to_unsafe
     end
 
     def _gst_reserved
-      PointerIterator.new((to_unsafe.value._gst_reserved)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGst::PluginDesc*).value._gst_reserved)) {|__item| __item }
     end
 
   end

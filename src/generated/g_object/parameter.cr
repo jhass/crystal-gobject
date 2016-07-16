@@ -19,19 +19,19 @@ module GObject
     end
 
     def name
-      (raise "Expected string but got null" unless (to_unsafe.value.name); ::String.new((to_unsafe.value.name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGObject::Parameter*).value.name); ::String.new((to_unsafe.as(LibGObject::Parameter*).value.name)))
     end
 
     def name=(value : String)
-      to_unsafe.value.name = value.to_unsafe
+      to_unsafe.as(LibGObject::Parameter*).value.name = value.to_unsafe
     end
 
     def value
-      GObject::Value.new((to_unsafe.value.value))
+      GObject::Value.new((to_unsafe.as(LibGObject::Parameter*).value.value))
     end
 
     def value=(value : GObject::Value)
-      to_unsafe.value.value = value
+      to_unsafe.as(LibGObject::Parameter*).value.value = value
     end
 
   end

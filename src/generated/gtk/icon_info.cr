@@ -14,7 +14,7 @@ module Gtk
     end
 
     def attach_points(points, n_points)
-      __return_value = LibGtk.icon_info_get_attach_points(to_unsafe.as(LibGtk::IconInfo*), points, Int32.new(n_points))
+      __return_value = LibGtk.icon_info_get_attach_points(to_unsafe.as(LibGtk::IconInfo*), points, n_points)
       __return_value
     end
 

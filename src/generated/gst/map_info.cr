@@ -23,55 +23,55 @@ module Gst
     end
 
     def memory
-      Gst::Memory.new((to_unsafe.value.memory))
+      Gst::Memory.new((to_unsafe.as(LibGst::MapInfo*).value.memory))
     end
 
     def memory=(value : Gst::Memory)
-      to_unsafe.value.memory = value.to_unsafe.as(LibGst::Memory*)
+      to_unsafe.as(LibGst::MapInfo*).value.memory = value.to_unsafe.as(LibGst::Memory*)
     end
 
     def flags
-      (to_unsafe.value.flags)
+      (to_unsafe.as(LibGst::MapInfo*).value.flags)
     end
 
     def flags=(value : Gst::MapFlags)
-      to_unsafe.value.flags = value
+      to_unsafe.as(LibGst::MapInfo*).value.flags = value
     end
 
     def data
-      PointerIterator.new((to_unsafe.value.data)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGst::MapInfo*).value.data)) {|__item| __item }
     end
 
     def data=(value : Array(UInt8))
-      to_unsafe.value.data = value
+      to_unsafe.as(LibGst::MapInfo*).value.data = value
     end
 
     def size
-      (to_unsafe.value.size)
+      (to_unsafe.as(LibGst::MapInfo*).value.size)
     end
 
     def size=(value : UInt64)
-      to_unsafe.value.size = UInt64.new(value)
+      to_unsafe.as(LibGst::MapInfo*).value.size = UInt64.new(value)
     end
 
     def maxsize
-      (to_unsafe.value.maxsize)
+      (to_unsafe.as(LibGst::MapInfo*).value.maxsize)
     end
 
     def maxsize=(value : UInt64)
-      to_unsafe.value.maxsize = UInt64.new(value)
+      to_unsafe.as(LibGst::MapInfo*).value.maxsize = UInt64.new(value)
     end
 
     def user_data
-      PointerIterator.new((to_unsafe.value.user_data)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGst::MapInfo*).value.user_data)) {|__item| __item }
     end
 
     def user_data=(value : Array(Void*))
-      to_unsafe.value.user_data = value
+      to_unsafe.as(LibGst::MapInfo*).value.user_data = value
     end
 
     def _gst_reserved
-      PointerIterator.new((to_unsafe.value._gst_reserved)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGst::MapInfo*).value._gst_reserved)) {|__item| __item }
     end
 
   end

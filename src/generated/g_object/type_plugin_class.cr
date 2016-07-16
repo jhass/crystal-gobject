@@ -21,39 +21,39 @@ module GObject
     end
 
     def base_iface
-      GObject::TypeInterface.new((to_unsafe.value.base_iface))
+      GObject::TypeInterface.new((to_unsafe.as(LibGObject::TypePluginClass*).value.base_iface))
     end
 
     def use_plugin
-      (to_unsafe.value.use_plugin)
+      (to_unsafe.as(LibGObject::TypePluginClass*).value.use_plugin)
     end
 
     def use_plugin=(value : GObject::TypePluginUse)
-      to_unsafe.value.use_plugin = value
+      to_unsafe.as(LibGObject::TypePluginClass*).value.use_plugin = value
     end
 
     def unuse_plugin
-      (to_unsafe.value.unuse_plugin)
+      (to_unsafe.as(LibGObject::TypePluginClass*).value.unuse_plugin)
     end
 
     def unuse_plugin=(value : GObject::TypePluginUnuse)
-      to_unsafe.value.unuse_plugin = value
+      to_unsafe.as(LibGObject::TypePluginClass*).value.unuse_plugin = value
     end
 
     def complete_type_info
-      (to_unsafe.value.complete_type_info)
+      (to_unsafe.as(LibGObject::TypePluginClass*).value.complete_type_info)
     end
 
     def complete_type_info=(value : GObject::TypePluginCompleteTypeInfo)
-      to_unsafe.value.complete_type_info = value
+      to_unsafe.as(LibGObject::TypePluginClass*).value.complete_type_info = value
     end
 
     def complete_interface_info
-      (to_unsafe.value.complete_interface_info)
+      (to_unsafe.as(LibGObject::TypePluginClass*).value.complete_interface_info)
     end
 
     def complete_interface_info=(value : GObject::TypePluginCompleteInterfaceInfo)
-      to_unsafe.value.complete_interface_info = value
+      to_unsafe.as(LibGObject::TypePluginClass*).value.complete_interface_info = value
     end
 
   end

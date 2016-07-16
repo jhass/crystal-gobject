@@ -21,7 +21,7 @@ module Gtk
     end
 
     def custom_tag_start(builder, child, tagname, parser, data)
-      __return_value = LibGtk.buildable_custom_tag_start(to_unsafe.as(LibGtk::Buildable*), builder.to_unsafe.as(LibGtk::Builder*), child && child.to_unsafe.as(LibGObject::Object*), tagname.to_unsafe, parser, data && data)
+      __return_value = LibGtk.buildable_custom_tag_start(to_unsafe.as(LibGtk::Buildable*), builder.to_unsafe.as(LibGtk::Builder*), child && child.to_unsafe.as(LibGObject::Object*), tagname.to_unsafe, parser, data)
       __return_value
     end
 

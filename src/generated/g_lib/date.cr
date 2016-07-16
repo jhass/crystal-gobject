@@ -263,51 +263,51 @@ module GLib
     end
 
     def julian_days
-      (to_unsafe.value.julian_days)
+      (to_unsafe.as(LibGLib::Date*).value.julian_days)
     end
 
     def julian_days=(value : UInt32)
-      to_unsafe.value.julian_days = UInt32.new(value)
+      to_unsafe.as(LibGLib::Date*).value.julian_days = UInt32.new(value)
     end
 
     def julian
-      (to_unsafe.value.julian)
+      (to_unsafe.as(LibGLib::Date*).value.julian)
     end
 
     def julian=(value : UInt32)
-      to_unsafe.value.julian = UInt32.new(value)
+      to_unsafe.as(LibGLib::Date*).value.julian = UInt32.new(value)
     end
 
     def dmy
-      (to_unsafe.value.dmy)
+      (to_unsafe.as(LibGLib::Date*).value.dmy)
     end
 
     def dmy=(value : UInt32)
-      to_unsafe.value.dmy = UInt32.new(value)
+      to_unsafe.as(LibGLib::Date*).value.dmy = UInt32.new(value)
     end
 
     def day
-      (to_unsafe.value.day)
+      (to_unsafe.as(LibGLib::Date*).value.day)
     end
 
     def day=(value : UInt32)
-      to_unsafe.value.day = UInt32.new(value)
+      to_unsafe.as(LibGLib::Date*).value.day = UInt32.new(value)
     end
 
     def month
-      (to_unsafe.value.month)
+      (to_unsafe.as(LibGLib::Date*).value.month)
     end
 
     def month=(value : UInt32)
-      to_unsafe.value.month = UInt32.new(value)
+      to_unsafe.as(LibGLib::Date*).value.month = UInt32.new(value)
     end
 
     def year
-      (to_unsafe.value.year)
+      (to_unsafe.as(LibGLib::Date*).value.year)
     end
 
     def year=(value : UInt32)
-      to_unsafe.value.year = UInt32.new(value)
+      to_unsafe.as(LibGLib::Date*).value.year = UInt32.new(value)
     end
 
   end

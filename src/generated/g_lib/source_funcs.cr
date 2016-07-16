@@ -16,27 +16,27 @@ module GLib
     end
 
     def prepare
-      (to_unsafe.value.prepare)
+      (to_unsafe.as(LibGLib::SourceFuncs*).value.prepare)
     end
 
     def check
-      (to_unsafe.value.check)
+      (to_unsafe.as(LibGLib::SourceFuncs*).value.check)
     end
 
     def dispatch
-      (to_unsafe.value.dispatch)
+      (to_unsafe.as(LibGLib::SourceFuncs*).value.dispatch)
     end
 
     def finalize
-      (to_unsafe.value.finalize)
+      (to_unsafe.as(LibGLib::SourceFuncs*).value.finalize)
     end
 
     def closure_callback
-      (to_unsafe.value.closure_callback)
+      (to_unsafe.as(LibGLib::SourceFuncs*).value.closure_callback)
     end
 
     def closure_marshal
-      (to_unsafe.value.closure_marshal)
+      (to_unsafe.as(LibGLib::SourceFuncs*).value.closure_marshal)
     end
 
   end

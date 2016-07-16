@@ -31,35 +31,35 @@ module Gtk
     end
 
     def stamp
-      (to_unsafe.value.stamp)
+      (to_unsafe.as(LibGtk::TreeIter*).value.stamp)
     end
 
     def stamp=(value : Int32)
-      to_unsafe.value.stamp = Int32.new(value)
+      to_unsafe.as(LibGtk::TreeIter*).value.stamp = Int32.new(value)
     end
 
     def user_data
-      (to_unsafe.value.user_data)
+      (to_unsafe.as(LibGtk::TreeIter*).value.user_data)
     end
 
     def user_data=(value : Void*)
-      to_unsafe.value.user_data = value
+      to_unsafe.as(LibGtk::TreeIter*).value.user_data = value
     end
 
     def user_data2
-      (to_unsafe.value.user_data2)
+      (to_unsafe.as(LibGtk::TreeIter*).value.user_data2)
     end
 
     def user_data2=(value : Void*)
-      to_unsafe.value.user_data2 = value
+      to_unsafe.as(LibGtk::TreeIter*).value.user_data2 = value
     end
 
     def user_data3
-      (to_unsafe.value.user_data3)
+      (to_unsafe.as(LibGtk::TreeIter*).value.user_data3)
     end
 
     def user_data3=(value : Void*)
-      to_unsafe.value.user_data3 = value
+      to_unsafe.as(LibGtk::TreeIter*).value.user_data3 = value
     end
 
   end

@@ -51,7 +51,7 @@ module Gtk
     end
 
     def find(target, info)
-      __return_value = LibGtk.target_list_find(to_unsafe.as(LibGtk::TargetList*), target.to_unsafe.as(LibGdk::Atom*), UInt32.new(info))
+      __return_value = LibGtk.target_list_find(to_unsafe.as(LibGtk::TargetList*), target.to_unsafe.as(LibGdk::Atom*), info)
       __return_value
     end
 

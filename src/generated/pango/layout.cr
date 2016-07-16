@@ -119,12 +119,12 @@ module Pango
     end
 
     def log_attrs(attrs, n_attrs)
-      __return_value = LibPango.layout_get_log_attrs(to_unsafe.as(LibPango::Layout*), attrs, Int32.new(n_attrs))
+      __return_value = LibPango.layout_get_log_attrs(to_unsafe.as(LibPango::Layout*), attrs, n_attrs)
       __return_value
     end
 
     def log_attrs_readonly(n_attrs)
-      __return_value = LibPango.layout_get_log_attrs_readonly(to_unsafe.as(LibPango::Layout*), Int32.new(n_attrs))
+      __return_value = LibPango.layout_get_log_attrs_readonly(to_unsafe.as(LibPango::Layout*), n_attrs)
       PointerIterator.new(__return_value) {|__item| Pango::LogAttr.new(__item) }
     end
 
@@ -134,7 +134,7 @@ module Pango
     end
 
     def pixel_size(width, height)
-      __return_value = LibPango.layout_get_pixel_size(to_unsafe.as(LibPango::Layout*), Int32.new(width), Int32.new(height))
+      __return_value = LibPango.layout_get_pixel_size(to_unsafe.as(LibPango::Layout*), width, height)
       __return_value
     end
 
@@ -149,7 +149,7 @@ module Pango
     end
 
     def size(width, height)
-      __return_value = LibPango.layout_get_size(to_unsafe.as(LibPango::Layout*), Int32.new(width), Int32.new(height))
+      __return_value = LibPango.layout_get_size(to_unsafe.as(LibPango::Layout*), width, height)
       __return_value
     end
 
@@ -184,7 +184,7 @@ module Pango
     end
 
     def index_to_line_x(index, trailing, line, x_pos)
-      __return_value = LibPango.layout_index_to_line_x(to_unsafe.as(LibPango::Layout*), Int32.new(index), trailing, Int32.new(line), Int32.new(x_pos))
+      __return_value = LibPango.layout_index_to_line_x(to_unsafe.as(LibPango::Layout*), Int32.new(index), trailing, line, x_pos)
       __return_value
     end
 
@@ -204,7 +204,7 @@ module Pango
     end
 
     def move_cursor_visually(strong, old_index, old_trailing, direction, new_index, new_trailing)
-      __return_value = LibPango.layout_move_cursor_visually(to_unsafe.as(LibPango::Layout*), strong, Int32.new(old_index), Int32.new(old_trailing), Int32.new(direction), Int32.new(new_index), Int32.new(new_trailing))
+      __return_value = LibPango.layout_move_cursor_visually(to_unsafe.as(LibPango::Layout*), strong, Int32.new(old_index), Int32.new(old_trailing), Int32.new(direction), new_index, new_trailing)
       __return_value
     end
 
@@ -254,7 +254,7 @@ module Pango
     end
 
     def set_markup_with_accel(markup, length, accel_marker, accel_char)
-      __return_value = LibPango.layout_set_markup_with_accel(to_unsafe.as(LibPango::Layout*), markup.to_unsafe, Int32.new(length), UInt8.new(accel_marker), UInt8.new(accel_char))
+      __return_value = LibPango.layout_set_markup_with_accel(to_unsafe.as(LibPango::Layout*), markup.to_unsafe, Int32.new(length), UInt8.new(accel_marker), accel_char)
       __return_value
     end
 
@@ -289,7 +289,7 @@ module Pango
     end
 
     def xy_to_index(x, y, index, trailing)
-      __return_value = LibPango.layout_xy_to_index(to_unsafe.as(LibPango::Layout*), Int32.new(x), Int32.new(y), Int32.new(index), Int32.new(trailing))
+      __return_value = LibPango.layout_xy_to_index(to_unsafe.as(LibPango::Layout*), Int32.new(x), Int32.new(y), index, trailing)
       __return_value
     end
 

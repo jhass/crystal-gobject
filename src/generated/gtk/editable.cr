@@ -36,12 +36,12 @@ module Gtk
     end
 
     def selection_bounds(start_pos, end_pos)
-      __return_value = LibGtk.editable_get_selection_bounds(to_unsafe.as(LibGtk::Editable*), Int32.new(start_pos), Int32.new(end_pos))
+      __return_value = LibGtk.editable_get_selection_bounds(to_unsafe.as(LibGtk::Editable*), start_pos, end_pos)
       __return_value
     end
 
     def insert_text(new_text, new_text_length, position)
-      __return_value = LibGtk.editable_insert_text(to_unsafe.as(LibGtk::Editable*), new_text.to_unsafe, Int32.new(new_text_length), Int32.new(position))
+      __return_value = LibGtk.editable_insert_text(to_unsafe.as(LibGtk::Editable*), new_text.to_unsafe, Int32.new(new_text_length), position)
       __return_value
     end
 

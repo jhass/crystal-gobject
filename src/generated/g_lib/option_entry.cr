@@ -24,59 +24,59 @@ module GLib
     end
 
     def long_name
-      (raise "Expected string but got null" unless (to_unsafe.value.long_name); ::String.new((to_unsafe.value.long_name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGLib::OptionEntry*).value.long_name); ::String.new((to_unsafe.as(LibGLib::OptionEntry*).value.long_name)))
     end
 
     def long_name=(value : String)
-      to_unsafe.value.long_name = value.to_unsafe
+      to_unsafe.as(LibGLib::OptionEntry*).value.long_name = value.to_unsafe
     end
 
     def short_name
-      (to_unsafe.value.short_name)
+      (to_unsafe.as(LibGLib::OptionEntry*).value.short_name)
     end
 
     def short_name=(value : Int8)
-      to_unsafe.value.short_name = Int8.new(value)
+      to_unsafe.as(LibGLib::OptionEntry*).value.short_name = Int8.new(value)
     end
 
     def flags
-      (to_unsafe.value.flags)
+      (to_unsafe.as(LibGLib::OptionEntry*).value.flags)
     end
 
     def flags=(value : Int32)
-      to_unsafe.value.flags = Int32.new(value)
+      to_unsafe.as(LibGLib::OptionEntry*).value.flags = Int32.new(value)
     end
 
     def arg
-      (to_unsafe.value.arg)
+      (to_unsafe.as(LibGLib::OptionEntry*).value.arg)
     end
 
     def arg=(value : GLib::OptionArg)
-      to_unsafe.value.arg = value
+      to_unsafe.as(LibGLib::OptionEntry*).value.arg = value
     end
 
     def arg_data
-      (to_unsafe.value.arg_data)
+      (to_unsafe.as(LibGLib::OptionEntry*).value.arg_data)
     end
 
     def arg_data=(value : Void*)
-      to_unsafe.value.arg_data = value
+      to_unsafe.as(LibGLib::OptionEntry*).value.arg_data = value
     end
 
     def description
-      (raise "Expected string but got null" unless (to_unsafe.value.description); ::String.new((to_unsafe.value.description)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGLib::OptionEntry*).value.description); ::String.new((to_unsafe.as(LibGLib::OptionEntry*).value.description)))
     end
 
     def description=(value : String)
-      to_unsafe.value.description = value.to_unsafe
+      to_unsafe.as(LibGLib::OptionEntry*).value.description = value.to_unsafe
     end
 
     def arg_description
-      (raise "Expected string but got null" unless (to_unsafe.value.arg_description); ::String.new((to_unsafe.value.arg_description)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGLib::OptionEntry*).value.arg_description); ::String.new((to_unsafe.as(LibGLib::OptionEntry*).value.arg_description)))
     end
 
     def arg_description=(value : String)
-      to_unsafe.value.arg_description = value.to_unsafe
+      to_unsafe.as(LibGLib::OptionEntry*).value.arg_description = value.to_unsafe
     end
 
   end

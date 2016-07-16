@@ -66,7 +66,7 @@ module Gio
     end
 
     def query_action(action_name, enabled, parameter_type, state_type, state_hint, state)
-      __return_value = LibGio.action_group_query_action(to_unsafe.as(LibGio::ActionGroup*), action_name.to_unsafe, enabled, parameter_type.to_unsafe.as(LibGLib::VariantType*), state_type.to_unsafe.as(LibGLib::VariantType*), state_hint.to_unsafe.as(LibGLib::Variant*), state.to_unsafe.as(LibGLib::Variant*))
+      __return_value = LibGio.action_group_query_action(to_unsafe.as(LibGio::ActionGroup*), action_name.to_unsafe, enabled, parameter_type, state_type, state_hint, state)
       __return_value
     end
 

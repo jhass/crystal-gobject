@@ -21,35 +21,35 @@ module Pango
     end
 
     def x
-      (to_unsafe.value.x)
+      (to_unsafe.as(LibPango::Rectangle*).value.x)
     end
 
     def x=(value : Int32)
-      to_unsafe.value.x = Int32.new(value)
+      to_unsafe.as(LibPango::Rectangle*).value.x = Int32.new(value)
     end
 
     def y
-      (to_unsafe.value.y)
+      (to_unsafe.as(LibPango::Rectangle*).value.y)
     end
 
     def y=(value : Int32)
-      to_unsafe.value.y = Int32.new(value)
+      to_unsafe.as(LibPango::Rectangle*).value.y = Int32.new(value)
     end
 
     def width
-      (to_unsafe.value.width)
+      (to_unsafe.as(LibPango::Rectangle*).value.width)
     end
 
     def width=(value : Int32)
-      to_unsafe.value.width = Int32.new(value)
+      to_unsafe.as(LibPango::Rectangle*).value.width = Int32.new(value)
     end
 
     def height
-      (to_unsafe.value.height)
+      (to_unsafe.as(LibPango::Rectangle*).value.height)
     end
 
     def height=(value : Int32)
-      to_unsafe.value.height = Int32.new(value)
+      to_unsafe.as(LibPango::Rectangle*).value.height = Int32.new(value)
     end
 
   end

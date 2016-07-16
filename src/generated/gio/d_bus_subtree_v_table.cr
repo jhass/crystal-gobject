@@ -20,31 +20,31 @@ module Gio
     end
 
     def enumerate
-      (to_unsafe.value.enumerate)
+      (to_unsafe.as(LibGio::DBusSubtreeVTable*).value.enumerate)
     end
 
     def enumerate=(value : Void*)
-      to_unsafe.value.enumerate = value
+      to_unsafe.as(LibGio::DBusSubtreeVTable*).value.enumerate = value
     end
 
     def introspect
-      (to_unsafe.value.introspect)
+      (to_unsafe.as(LibGio::DBusSubtreeVTable*).value.introspect)
     end
 
     def introspect=(value : Gio::DBusSubtreeIntrospectFunc)
-      to_unsafe.value.introspect = value
+      to_unsafe.as(LibGio::DBusSubtreeVTable*).value.introspect = value
     end
 
     def dispatch
-      (to_unsafe.value.dispatch)
+      (to_unsafe.as(LibGio::DBusSubtreeVTable*).value.dispatch)
     end
 
     def dispatch=(value : Gio::DBusSubtreeDispatchFunc)
-      to_unsafe.value.dispatch = value
+      to_unsafe.as(LibGio::DBusSubtreeVTable*).value.dispatch = value
     end
 
     def padding
-      PointerIterator.new((to_unsafe.value.padding)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGio::DBusSubtreeVTable*).value.padding)) {|__item| __item }
     end
 
   end

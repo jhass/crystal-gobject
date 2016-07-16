@@ -34,19 +34,19 @@ module Gtk
     end
 
     def width
-      (to_unsafe.value.width)
+      (to_unsafe.as(LibGtk::Requisition*).value.width)
     end
 
     def width=(value : Int32)
-      to_unsafe.value.width = Int32.new(value)
+      to_unsafe.as(LibGtk::Requisition*).value.width = Int32.new(value)
     end
 
     def height
-      (to_unsafe.value.height)
+      (to_unsafe.as(LibGtk::Requisition*).value.height)
     end
 
     def height=(value : Int32)
-      to_unsafe.value.height = Int32.new(value)
+      to_unsafe.as(LibGtk::Requisition*).value.height = Int32.new(value)
     end
 
   end

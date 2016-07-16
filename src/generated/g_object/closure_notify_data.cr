@@ -19,19 +19,19 @@ module GObject
     end
 
     def data
-      (to_unsafe.value.data)
+      (to_unsafe.as(LibGObject::ClosureNotifyData*).value.data)
     end
 
     def data=(value : Void*)
-      to_unsafe.value.data = value
+      to_unsafe.as(LibGObject::ClosureNotifyData*).value.data = value
     end
 
     def notify
-      (to_unsafe.value.notify)
+      (to_unsafe.as(LibGObject::ClosureNotifyData*).value.notify)
     end
 
     def notify=(value : GObject::ClosureNotify)
-      to_unsafe.value.notify = value
+      to_unsafe.as(LibGObject::ClosureNotifyData*).value.notify = value
     end
 
   end

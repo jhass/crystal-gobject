@@ -29,23 +29,23 @@ module Gst
     end
 
     def caps
-      Gst::Caps.new((to_unsafe.value.caps))
+      Gst::Caps.new((to_unsafe.as(LibGst::StaticCaps*).value.caps))
     end
 
     def caps=(value : Gst::Caps)
-      to_unsafe.value.caps = value.to_unsafe.as(LibGst::Caps*)
+      to_unsafe.as(LibGst::StaticCaps*).value.caps = value.to_unsafe.as(LibGst::Caps*)
     end
 
     def string
-      (raise "Expected string but got null" unless (to_unsafe.value.string); ::String.new((to_unsafe.value.string)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGst::StaticCaps*).value.string); ::String.new((to_unsafe.as(LibGst::StaticCaps*).value.string)))
     end
 
     def string=(value : String)
-      to_unsafe.value.string = value.to_unsafe
+      to_unsafe.as(LibGst::StaticCaps*).value.string = value.to_unsafe
     end
 
     def _gst_reserved
-      PointerIterator.new((to_unsafe.value._gst_reserved)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGst::StaticCaps*).value._gst_reserved)) {|__item| __item }
     end
 
   end

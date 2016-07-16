@@ -76,7 +76,7 @@ module Pango
     end
 
     def line_yrange(y0, y1)
-      __return_value = LibPango.layout_iter_get_line_yrange(to_unsafe.as(LibPango::LayoutIter*), Int32.new(y0), Int32.new(y1))
+      __return_value = LibPango.layout_iter_get_line_yrange(to_unsafe.as(LibPango::LayoutIter*), y0, y1)
       __return_value
     end
 

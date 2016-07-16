@@ -29,99 +29,99 @@ module Gdk
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibGdk::EventButton*).value.type)
     end
 
     def type=(value : Gdk::EventType)
-      to_unsafe.value.type = value
+      to_unsafe.as(LibGdk::EventButton*).value.type = value
     end
 
     def window
-      Gdk::Window.new((to_unsafe.value.window))
+      Gdk::Window.new((to_unsafe.as(LibGdk::EventButton*).value.window))
     end
 
     def window=(value : Gdk::Window)
-      to_unsafe.value.window = value.to_unsafe.as(LibGdk::Window*)
+      to_unsafe.as(LibGdk::EventButton*).value.window = value.to_unsafe.as(LibGdk::Window*)
     end
 
     def send_event
-      (to_unsafe.value.send_event)
+      (to_unsafe.as(LibGdk::EventButton*).value.send_event)
     end
 
     def send_event=(value : Int8)
-      to_unsafe.value.send_event = Int8.new(value)
+      to_unsafe.as(LibGdk::EventButton*).value.send_event = Int8.new(value)
     end
 
     def time
-      (to_unsafe.value.time)
+      (to_unsafe.as(LibGdk::EventButton*).value.time)
     end
 
     def time=(value : UInt32)
-      to_unsafe.value.time = UInt32.new(value)
+      to_unsafe.as(LibGdk::EventButton*).value.time = UInt32.new(value)
     end
 
     def x
-      (to_unsafe.value.x)
+      (to_unsafe.as(LibGdk::EventButton*).value.x)
     end
 
     def x=(value : Float64)
-      to_unsafe.value.x = Float64.new(value)
+      to_unsafe.as(LibGdk::EventButton*).value.x = Float64.new(value)
     end
 
     def y
-      (to_unsafe.value.y)
+      (to_unsafe.as(LibGdk::EventButton*).value.y)
     end
 
     def y=(value : Float64)
-      to_unsafe.value.y = Float64.new(value)
+      to_unsafe.as(LibGdk::EventButton*).value.y = Float64.new(value)
     end
 
     def axes
-      (to_unsafe.value.axes)
+      (to_unsafe.as(LibGdk::EventButton*).value.axes)
     end
 
     def axes=(value : Float64)
-      to_unsafe.value.axes = value
+      to_unsafe.as(LibGdk::EventButton*).value.axes = value
     end
 
     def state
-      (to_unsafe.value.state)
+      (to_unsafe.as(LibGdk::EventButton*).value.state)
     end
 
     def state=(value : Gdk::ModifierType)
-      to_unsafe.value.state = value
+      to_unsafe.as(LibGdk::EventButton*).value.state = value
     end
 
     def button
-      (to_unsafe.value.button)
+      (to_unsafe.as(LibGdk::EventButton*).value.button)
     end
 
     def button=(value : UInt32)
-      to_unsafe.value.button = UInt32.new(value)
+      to_unsafe.as(LibGdk::EventButton*).value.button = UInt32.new(value)
     end
 
     def device
-      Gdk::Device.new((to_unsafe.value.device))
+      Gdk::Device.new((to_unsafe.as(LibGdk::EventButton*).value.device))
     end
 
     def device=(value : Gdk::Device)
-      to_unsafe.value.device = value.to_unsafe.as(LibGdk::Device*)
+      to_unsafe.as(LibGdk::EventButton*).value.device = value.to_unsafe.as(LibGdk::Device*)
     end
 
     def x_root
-      (to_unsafe.value.x_root)
+      (to_unsafe.as(LibGdk::EventButton*).value.x_root)
     end
 
     def x_root=(value : Float64)
-      to_unsafe.value.x_root = Float64.new(value)
+      to_unsafe.as(LibGdk::EventButton*).value.x_root = Float64.new(value)
     end
 
     def y_root
-      (to_unsafe.value.y_root)
+      (to_unsafe.as(LibGdk::EventButton*).value.y_root)
     end
 
     def y_root=(value : Float64)
-      to_unsafe.value.y_root = Float64.new(value)
+      to_unsafe.as(LibGdk::EventButton*).value.y_root = Float64.new(value)
     end
 
   end

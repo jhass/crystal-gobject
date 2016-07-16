@@ -24,19 +24,19 @@ module Gst
     end
 
     def meta
-      Gst::Meta.new((to_unsafe.value.meta))
+      Gst::Meta.new((to_unsafe.as(LibGst::ProtectionMeta*).value.meta))
     end
 
     def meta=(value : Gst::Meta)
-      to_unsafe.value.meta = value
+      to_unsafe.as(LibGst::ProtectionMeta*).value.meta = value
     end
 
     def info
-      Gst::Structure.new((to_unsafe.value.info))
+      Gst::Structure.new((to_unsafe.as(LibGst::ProtectionMeta*).value.info))
     end
 
     def info=(value : Gst::Structure)
-      to_unsafe.value.info = value.to_unsafe.as(LibGst::Structure*)
+      to_unsafe.as(LibGst::ProtectionMeta*).value.info = value.to_unsafe.as(LibGst::Structure*)
     end
 
   end

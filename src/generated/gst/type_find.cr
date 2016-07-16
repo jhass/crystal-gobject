@@ -23,7 +23,7 @@ module Gst
     end
 
     def peek(offset, size)
-      __return_value = LibGst.type_find_peek(to_unsafe.as(LibGst::TypeFind*), Int64.new(offset), UInt32.new(size))
+      __return_value = LibGst.type_find_peek(to_unsafe.as(LibGst::TypeFind*), Int64.new(offset), size)
       PointerIterator.new(__return_value) {|__item| __item } if __return_value
     end
 
@@ -38,27 +38,27 @@ module Gst
     end
 
     def peek
-      (to_unsafe.value.peek)
+      (to_unsafe.as(LibGst::TypeFind*).value.peek)
     end
 
     def suggest
-      (to_unsafe.value.suggest)
+      (to_unsafe.as(LibGst::TypeFind*).value.suggest)
     end
 
     def data
-      (to_unsafe.value.data)
+      (to_unsafe.as(LibGst::TypeFind*).value.data)
     end
 
     def data=(value : Void*)
-      to_unsafe.value.data = value
+      to_unsafe.as(LibGst::TypeFind*).value.data = value
     end
 
     def get_length
-      (to_unsafe.value.get_length)
+      (to_unsafe.as(LibGst::TypeFind*).value.get_length)
     end
 
     def _gst_reserved
-      PointerIterator.new((to_unsafe.value._gst_reserved)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGst::TypeFind*).value._gst_reserved)) {|__item| __item }
     end
 
   end

@@ -120,7 +120,7 @@ module Gtk
     end
 
     def class_path(path_length, path, path_reversed)
-      __return_value = LibGtk.widget_class_path(to_unsafe.as(LibGtk::Widget*), UInt32.new(path_length), path.to_unsafe, path_reversed.to_unsafe)
+      __return_value = LibGtk.widget_class_path(to_unsafe.as(LibGtk::Widget*), path_length, path, path_reversed)
       __return_value
     end
 
@@ -145,7 +145,7 @@ module Gtk
     end
 
     def destroyed(widget_pointer)
-      __return_value = LibGtk.widget_destroyed(to_unsafe.as(LibGtk::Widget*), widget_pointer.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.widget_destroyed(to_unsafe.as(LibGtk::Widget*), widget_pointer)
       __return_value
     end
 
@@ -340,7 +340,7 @@ module Gtk
     end
 
     def allocated_size(allocation, baseline)
-      __return_value = LibGtk.widget_get_allocated_size(to_unsafe.as(LibGtk::Widget*), allocation, Int32.new(baseline))
+      __return_value = LibGtk.widget_get_allocated_size(to_unsafe.as(LibGtk::Widget*), allocation, baseline)
       __return_value
     end
 
@@ -555,22 +555,22 @@ module Gtk
     end
 
     def pointer(x, y)
-      __return_value = LibGtk.widget_get_pointer(to_unsafe.as(LibGtk::Widget*), Int32.new(x), Int32.new(y))
+      __return_value = LibGtk.widget_get_pointer(to_unsafe.as(LibGtk::Widget*), x, y)
       __return_value
     end
 
     def preferred_height(minimum_height, natural_height)
-      __return_value = LibGtk.widget_get_preferred_height(to_unsafe.as(LibGtk::Widget*), Int32.new(minimum_height), Int32.new(natural_height))
+      __return_value = LibGtk.widget_get_preferred_height(to_unsafe.as(LibGtk::Widget*), minimum_height, natural_height)
       __return_value
     end
 
     def preferred_height_and_baseline_for_width(width, minimum_height, natural_height, minimum_baseline, natural_baseline)
-      __return_value = LibGtk.widget_get_preferred_height_and_baseline_for_width(to_unsafe.as(LibGtk::Widget*), Int32.new(width), Int32.new(minimum_height), Int32.new(natural_height), Int32.new(minimum_baseline), Int32.new(natural_baseline))
+      __return_value = LibGtk.widget_get_preferred_height_and_baseline_for_width(to_unsafe.as(LibGtk::Widget*), Int32.new(width), minimum_height, natural_height, minimum_baseline, natural_baseline)
       __return_value
     end
 
     def preferred_height_for_width(width, minimum_height, natural_height)
-      __return_value = LibGtk.widget_get_preferred_height_for_width(to_unsafe.as(LibGtk::Widget*), Int32.new(width), Int32.new(minimum_height), Int32.new(natural_height))
+      __return_value = LibGtk.widget_get_preferred_height_for_width(to_unsafe.as(LibGtk::Widget*), Int32.new(width), minimum_height, natural_height)
       __return_value
     end
 
@@ -580,12 +580,12 @@ module Gtk
     end
 
     def preferred_width(minimum_width, natural_width)
-      __return_value = LibGtk.widget_get_preferred_width(to_unsafe.as(LibGtk::Widget*), Int32.new(minimum_width), Int32.new(natural_width))
+      __return_value = LibGtk.widget_get_preferred_width(to_unsafe.as(LibGtk::Widget*), minimum_width, natural_width)
       __return_value
     end
 
     def preferred_width_for_height(height, minimum_width, natural_width)
-      __return_value = LibGtk.widget_get_preferred_width_for_height(to_unsafe.as(LibGtk::Widget*), Int32.new(height), Int32.new(minimum_width), Int32.new(natural_width))
+      __return_value = LibGtk.widget_get_preferred_width_for_height(to_unsafe.as(LibGtk::Widget*), Int32.new(height), minimum_width, natural_width)
       __return_value
     end
 
@@ -635,7 +635,7 @@ module Gtk
     end
 
     def size_request(width, height)
-      __return_value = LibGtk.widget_get_size_request(to_unsafe.as(LibGtk::Widget*), Int32.new(width), Int32.new(height))
+      __return_value = LibGtk.widget_get_size_request(to_unsafe.as(LibGtk::Widget*), width, height)
       __return_value
     end
 
@@ -935,7 +935,7 @@ module Gtk
     end
 
     def path(path_length, path, path_reversed)
-      __return_value = LibGtk.widget_path(to_unsafe.as(LibGtk::Widget*), UInt32.new(path_length), path.to_unsafe, path_reversed.to_unsafe)
+      __return_value = LibGtk.widget_path(to_unsafe.as(LibGtk::Widget*), path_length, path, path_reversed)
       __return_value
     end
 
@@ -1345,7 +1345,7 @@ module Gtk
     end
 
     def translate_coordinates(dest_widget, src_x, src_y, dest_x, dest_y)
-      __return_value = LibGtk.widget_translate_coordinates(to_unsafe.as(LibGtk::Widget*), dest_widget.to_unsafe.as(LibGtk::Widget*), Int32.new(src_x), Int32.new(src_y), Int32.new(dest_x), Int32.new(dest_y))
+      __return_value = LibGtk.widget_translate_coordinates(to_unsafe.as(LibGtk::Widget*), dest_widget.to_unsafe.as(LibGtk::Widget*), Int32.new(src_x), Int32.new(src_y), dest_x, dest_y)
       __return_value
     end
 

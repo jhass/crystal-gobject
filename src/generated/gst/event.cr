@@ -151,12 +151,12 @@ module Gst
     end
 
     def parse_buffer_size(format, minsize, maxsize, async)
-      __return_value = LibGst.event_parse_buffer_size(to_unsafe.as(LibGst::Event*), format, Int64.new(minsize), Int64.new(maxsize), async)
+      __return_value = LibGst.event_parse_buffer_size(to_unsafe.as(LibGst::Event*), format, minsize, maxsize, async)
       __return_value
     end
 
     def parse_caps(caps)
-      __return_value = LibGst.event_parse_caps(to_unsafe.as(LibGst::Event*), caps.to_unsafe.as(LibGst::Caps*))
+      __return_value = LibGst.event_parse_caps(to_unsafe.as(LibGst::Event*), caps)
       __return_value
     end
 
@@ -166,52 +166,52 @@ module Gst
     end
 
     def parse_gap(timestamp, duration)
-      __return_value = LibGst.event_parse_gap(to_unsafe.as(LibGst::Event*), UInt64.new(timestamp), UInt64.new(duration))
+      __return_value = LibGst.event_parse_gap(to_unsafe.as(LibGst::Event*), timestamp, duration)
       __return_value
     end
 
     def parse_group_id(group_id)
-      __return_value = LibGst.event_parse_group_id(to_unsafe.as(LibGst::Event*), UInt32.new(group_id))
+      __return_value = LibGst.event_parse_group_id(to_unsafe.as(LibGst::Event*), group_id)
       __return_value
     end
 
     def parse_latency(latency)
-      __return_value = LibGst.event_parse_latency(to_unsafe.as(LibGst::Event*), UInt64.new(latency))
+      __return_value = LibGst.event_parse_latency(to_unsafe.as(LibGst::Event*), latency)
       __return_value
     end
 
     def parse_protection(system_id, data, origin)
-      __return_value = LibGst.event_parse_protection(to_unsafe.as(LibGst::Event*), system_id.to_unsafe, data.to_unsafe.as(LibGst::Buffer*), origin && origin.to_unsafe)
+      __return_value = LibGst.event_parse_protection(to_unsafe.as(LibGst::Event*), system_id, data, origin && origin.to_unsafe)
       __return_value
     end
 
     def parse_qos(type, proportion, diff, timestamp)
-      __return_value = LibGst.event_parse_qos(to_unsafe.as(LibGst::Event*), type, Float64.new(proportion), Int64.new(diff), UInt64.new(timestamp))
+      __return_value = LibGst.event_parse_qos(to_unsafe.as(LibGst::Event*), type, proportion, diff, timestamp)
       __return_value
     end
 
     def parse_seek(rate, format, flags, start_type, start, stop_type, stop)
-      __return_value = LibGst.event_parse_seek(to_unsafe.as(LibGst::Event*), Float64.new(rate), format, flags, start_type, Int64.new(start), stop_type, Int64.new(stop))
+      __return_value = LibGst.event_parse_seek(to_unsafe.as(LibGst::Event*), rate, format, flags, start_type, start, stop_type, stop)
       __return_value
     end
 
     def parse_segment(segment)
-      __return_value = LibGst.event_parse_segment(to_unsafe.as(LibGst::Event*), segment.to_unsafe.as(LibGst::Segment*))
+      __return_value = LibGst.event_parse_segment(to_unsafe.as(LibGst::Event*), segment)
       __return_value
     end
 
     def parse_segment_done(format, position)
-      __return_value = LibGst.event_parse_segment_done(to_unsafe.as(LibGst::Event*), format, Int64.new(position))
+      __return_value = LibGst.event_parse_segment_done(to_unsafe.as(LibGst::Event*), format, position)
       __return_value
     end
 
     def parse_sink_message(msg)
-      __return_value = LibGst.event_parse_sink_message(to_unsafe.as(LibGst::Event*), msg.to_unsafe.as(LibGst::Message*))
+      __return_value = LibGst.event_parse_sink_message(to_unsafe.as(LibGst::Event*), msg)
       __return_value
     end
 
     def parse_step(format, amount, rate, flush, intermediate)
-      __return_value = LibGst.event_parse_step(to_unsafe.as(LibGst::Event*), format, UInt64.new(amount), Float64.new(rate), flush, intermediate)
+      __return_value = LibGst.event_parse_step(to_unsafe.as(LibGst::Event*), format, amount, rate, flush, intermediate)
       __return_value
     end
 
@@ -221,22 +221,22 @@ module Gst
     end
 
     def parse_stream_start(stream_id)
-      __return_value = LibGst.event_parse_stream_start(to_unsafe.as(LibGst::Event*), stream_id.to_unsafe)
+      __return_value = LibGst.event_parse_stream_start(to_unsafe.as(LibGst::Event*), stream_id)
       __return_value
     end
 
     def parse_tag(taglist)
-      __return_value = LibGst.event_parse_tag(to_unsafe.as(LibGst::Event*), taglist.to_unsafe.as(LibGst::TagList*))
+      __return_value = LibGst.event_parse_tag(to_unsafe.as(LibGst::Event*), taglist)
       __return_value
     end
 
     def parse_toc(toc, updated)
-      __return_value = LibGst.event_parse_toc(to_unsafe.as(LibGst::Event*), toc.to_unsafe.as(LibGst::Toc*), updated)
+      __return_value = LibGst.event_parse_toc(to_unsafe.as(LibGst::Event*), toc, updated)
       __return_value
     end
 
     def parse_toc_select(uid)
-      __return_value = LibGst.event_parse_toc_select(to_unsafe.as(LibGst::Event*), uid.to_unsafe)
+      __return_value = LibGst.event_parse_toc_select(to_unsafe.as(LibGst::Event*), uid)
       __return_value
     end
 
@@ -266,35 +266,35 @@ module Gst
     end
 
     def mini_object
-      Gst::MiniObject.new((to_unsafe.value.mini_object))
+      Gst::MiniObject.new((to_unsafe.as(LibGst::Event*).value.mini_object))
     end
 
     def mini_object=(value : Gst::MiniObject)
-      to_unsafe.value.mini_object = value
+      to_unsafe.as(LibGst::Event*).value.mini_object = value
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibGst::Event*).value.type)
     end
 
     def type=(value : Gst::EventType)
-      to_unsafe.value.type = value
+      to_unsafe.as(LibGst::Event*).value.type = value
     end
 
     def timestamp
-      (to_unsafe.value.timestamp)
+      (to_unsafe.as(LibGst::Event*).value.timestamp)
     end
 
     def timestamp=(value : UInt64)
-      to_unsafe.value.timestamp = UInt64.new(value)
+      to_unsafe.as(LibGst::Event*).value.timestamp = UInt64.new(value)
     end
 
     def seqnum
-      (to_unsafe.value.seqnum)
+      (to_unsafe.as(LibGst::Event*).value.seqnum)
     end
 
     def seqnum=(value : UInt32)
-      to_unsafe.value.seqnum = UInt32.new(value)
+      to_unsafe.as(LibGst::Event*).value.seqnum = UInt32.new(value)
     end
 
   end

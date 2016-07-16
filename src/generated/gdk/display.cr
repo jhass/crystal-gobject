@@ -79,7 +79,7 @@ module Gdk
     end
 
     def maximal_cursor_size(width, height)
-      __return_value = LibGdk.display_get_maximal_cursor_size(to_unsafe.as(LibGdk::Display*), UInt32.new(width), UInt32.new(height))
+      __return_value = LibGdk.display_get_maximal_cursor_size(to_unsafe.as(LibGdk::Display*), width, height)
       __return_value
     end
 
@@ -94,7 +94,7 @@ module Gdk
     end
 
     def pointer(screen, x, y, mask)
-      __return_value = LibGdk.display_get_pointer(to_unsafe.as(LibGdk::Display*), screen.to_unsafe.as(LibGdk::Screen*), Int32.new(x), Int32.new(y), mask)
+      __return_value = LibGdk.display_get_pointer(to_unsafe.as(LibGdk::Display*), screen, x, y, mask)
       __return_value
     end
 
@@ -104,7 +104,7 @@ module Gdk
     end
 
     def window_at_pointer(win_x, win_y)
-      __return_value = LibGdk.display_get_window_at_pointer(to_unsafe.as(LibGdk::Display*), Int32.new(win_x), Int32.new(win_y))
+      __return_value = LibGdk.display_get_window_at_pointer(to_unsafe.as(LibGdk::Display*), win_x, win_y)
       Gdk::Window.new(__return_value) if __return_value
     end
 

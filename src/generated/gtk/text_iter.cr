@@ -476,59 +476,59 @@ module Gtk
     end
 
     def dummy1
-      (to_unsafe.value.dummy1)
+      (to_unsafe.as(LibGtk::TextIter*).value.dummy1)
     end
 
     def dummy2
-      (to_unsafe.value.dummy2)
+      (to_unsafe.as(LibGtk::TextIter*).value.dummy2)
     end
 
     def dummy3
-      (to_unsafe.value.dummy3)
+      (to_unsafe.as(LibGtk::TextIter*).value.dummy3)
     end
 
     def dummy4
-      (to_unsafe.value.dummy4)
+      (to_unsafe.as(LibGtk::TextIter*).value.dummy4)
     end
 
     def dummy5
-      (to_unsafe.value.dummy5)
+      (to_unsafe.as(LibGtk::TextIter*).value.dummy5)
     end
 
     def dummy6
-      (to_unsafe.value.dummy6)
+      (to_unsafe.as(LibGtk::TextIter*).value.dummy6)
     end
 
     def dummy7
-      (to_unsafe.value.dummy7)
+      (to_unsafe.as(LibGtk::TextIter*).value.dummy7)
     end
 
     def dummy8
-      (to_unsafe.value.dummy8)
+      (to_unsafe.as(LibGtk::TextIter*).value.dummy8)
     end
 
     def dummy9
-      (to_unsafe.value.dummy9)
+      (to_unsafe.as(LibGtk::TextIter*).value.dummy9)
     end
 
     def dummy10
-      (to_unsafe.value.dummy10)
+      (to_unsafe.as(LibGtk::TextIter*).value.dummy10)
     end
 
     def dummy11
-      (to_unsafe.value.dummy11)
+      (to_unsafe.as(LibGtk::TextIter*).value.dummy11)
     end
 
     def dummy12
-      (to_unsafe.value.dummy12)
+      (to_unsafe.as(LibGtk::TextIter*).value.dummy12)
     end
 
     def dummy13
-      (to_unsafe.value.dummy13)
+      (to_unsafe.as(LibGtk::TextIter*).value.dummy13)
     end
 
     def dummy14
-      (to_unsafe.value.dummy14)
+      (to_unsafe.as(LibGtk::TextIter*).value.dummy14)
     end
 
   end

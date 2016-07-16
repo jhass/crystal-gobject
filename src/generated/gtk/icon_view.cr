@@ -47,7 +47,7 @@ module Gtk
     end
 
     def convert_widget_to_bin_window_coords(wx, wy, bx, by)
-      __return_value = LibGtk.icon_view_convert_widget_to_bin_window_coords(to_unsafe.as(LibGtk::IconView*), Int32.new(wx), Int32.new(wy), Int32.new(bx), Int32.new(by))
+      __return_value = LibGtk.icon_view_convert_widget_to_bin_window_coords(to_unsafe.as(LibGtk::IconView*), Int32.new(wx), Int32.new(wy), bx, by)
       __return_value
     end
 
@@ -87,22 +87,22 @@ module Gtk
     end
 
     def cursor(path, cell)
-      __return_value = LibGtk.icon_view_get_cursor(to_unsafe.as(LibGtk::IconView*), path.to_unsafe.as(LibGtk::TreePath*), cell.to_unsafe.as(LibGtk::CellRenderer*))
+      __return_value = LibGtk.icon_view_get_cursor(to_unsafe.as(LibGtk::IconView*), path, cell)
       __return_value
     end
 
     def dest_item_at_pos(drag_x, drag_y, path, pos)
-      __return_value = LibGtk.icon_view_get_dest_item_at_pos(to_unsafe.as(LibGtk::IconView*), Int32.new(drag_x), Int32.new(drag_y), path.to_unsafe.as(LibGtk::TreePath*), pos)
+      __return_value = LibGtk.icon_view_get_dest_item_at_pos(to_unsafe.as(LibGtk::IconView*), Int32.new(drag_x), Int32.new(drag_y), path, pos)
       __return_value
     end
 
     def drag_dest_item(path, pos)
-      __return_value = LibGtk.icon_view_get_drag_dest_item(to_unsafe.as(LibGtk::IconView*), path.to_unsafe.as(LibGtk::TreePath*), pos)
+      __return_value = LibGtk.icon_view_get_drag_dest_item(to_unsafe.as(LibGtk::IconView*), path, pos)
       __return_value
     end
 
     def item_at_pos(x, y, path, cell)
-      __return_value = LibGtk.icon_view_get_item_at_pos(to_unsafe.as(LibGtk::IconView*), Int32.new(x), Int32.new(y), path.to_unsafe.as(LibGtk::TreePath*), cell.to_unsafe.as(LibGtk::CellRenderer*))
+      __return_value = LibGtk.icon_view_get_item_at_pos(to_unsafe.as(LibGtk::IconView*), Int32.new(x), Int32.new(y), path, cell)
       __return_value
     end
 
@@ -192,12 +192,12 @@ module Gtk
     end
 
     def tooltip_context(x, y, keyboard_tip, model, path, iter)
-      __return_value = LibGtk.icon_view_get_tooltip_context(to_unsafe.as(LibGtk::IconView*), Int32.new(x), Int32.new(y), keyboard_tip, model.to_unsafe.as(LibGtk::TreeModel*), path.to_unsafe.as(LibGtk::TreePath*), iter)
+      __return_value = LibGtk.icon_view_get_tooltip_context(to_unsafe.as(LibGtk::IconView*), x, y, keyboard_tip, model, path, iter)
       __return_value
     end
 
     def visible_range(start_path, end_path)
-      __return_value = LibGtk.icon_view_get_visible_range(to_unsafe.as(LibGtk::IconView*), start_path.to_unsafe.as(LibGtk::TreePath*), end_path.to_unsafe.as(LibGtk::TreePath*))
+      __return_value = LibGtk.icon_view_get_visible_range(to_unsafe.as(LibGtk::IconView*), start_path, end_path)
       __return_value
     end
 

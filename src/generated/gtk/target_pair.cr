@@ -20,27 +20,27 @@ module Gtk
     end
 
     def target
-      Gdk::Atom.new((to_unsafe.value.target))
+      Gdk::Atom.new((to_unsafe.as(LibGtk::TargetPair*).value.target))
     end
 
     def target=(value : Gdk::Atom)
-      to_unsafe.value.target = value.to_unsafe.as(LibGdk::Atom*)
+      to_unsafe.as(LibGtk::TargetPair*).value.target = value.to_unsafe.as(LibGdk::Atom*)
     end
 
     def flags
-      (to_unsafe.value.flags)
+      (to_unsafe.as(LibGtk::TargetPair*).value.flags)
     end
 
     def flags=(value : UInt32)
-      to_unsafe.value.flags = UInt32.new(value)
+      to_unsafe.as(LibGtk::TargetPair*).value.flags = UInt32.new(value)
     end
 
     def info
-      (to_unsafe.value.info)
+      (to_unsafe.as(LibGtk::TargetPair*).value.info)
     end
 
     def info=(value : UInt32)
-      to_unsafe.value.info = UInt32.new(value)
+      to_unsafe.as(LibGtk::TargetPair*).value.info = UInt32.new(value)
     end
 
   end

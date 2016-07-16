@@ -20,27 +20,27 @@ module Gtk
     end
 
     def widget
-      Gtk::Widget.new((to_unsafe.value.widget))
+      Gtk::Widget.new((to_unsafe.as(LibGtk::FixedChild*).value.widget))
     end
 
     def widget=(value : Gtk::Widget)
-      to_unsafe.value.widget = value.to_unsafe.as(LibGtk::Widget*)
+      to_unsafe.as(LibGtk::FixedChild*).value.widget = value.to_unsafe.as(LibGtk::Widget*)
     end
 
     def x
-      (to_unsafe.value.x)
+      (to_unsafe.as(LibGtk::FixedChild*).value.x)
     end
 
     def x=(value : Int32)
-      to_unsafe.value.x = Int32.new(value)
+      to_unsafe.as(LibGtk::FixedChild*).value.x = Int32.new(value)
     end
 
     def y
-      (to_unsafe.value.y)
+      (to_unsafe.as(LibGtk::FixedChild*).value.y)
     end
 
     def y=(value : Int32)
-      to_unsafe.value.y = Int32.new(value)
+      to_unsafe.as(LibGtk::FixedChild*).value.y = Int32.new(value)
     end
 
   end

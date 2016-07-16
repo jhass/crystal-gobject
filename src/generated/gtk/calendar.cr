@@ -33,7 +33,7 @@ module Gtk
     end
 
     def date(year, month, day)
-      __return_value = LibGtk.calendar_get_date(to_unsafe.as(LibGtk::Calendar*), UInt32.new(year), UInt32.new(month), UInt32.new(day))
+      __return_value = LibGtk.calendar_get_date(to_unsafe.as(LibGtk::Calendar*), year, month, day)
       __return_value
     end
 

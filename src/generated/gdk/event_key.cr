@@ -28,91 +28,91 @@ module Gdk
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibGdk::EventKey*).value.type)
     end
 
     def type=(value : Gdk::EventType)
-      to_unsafe.value.type = value
+      to_unsafe.as(LibGdk::EventKey*).value.type = value
     end
 
     def window
-      Gdk::Window.new((to_unsafe.value.window))
+      Gdk::Window.new((to_unsafe.as(LibGdk::EventKey*).value.window))
     end
 
     def window=(value : Gdk::Window)
-      to_unsafe.value.window = value.to_unsafe.as(LibGdk::Window*)
+      to_unsafe.as(LibGdk::EventKey*).value.window = value.to_unsafe.as(LibGdk::Window*)
     end
 
     def send_event
-      (to_unsafe.value.send_event)
+      (to_unsafe.as(LibGdk::EventKey*).value.send_event)
     end
 
     def send_event=(value : Int8)
-      to_unsafe.value.send_event = Int8.new(value)
+      to_unsafe.as(LibGdk::EventKey*).value.send_event = Int8.new(value)
     end
 
     def time
-      (to_unsafe.value.time)
+      (to_unsafe.as(LibGdk::EventKey*).value.time)
     end
 
     def time=(value : UInt32)
-      to_unsafe.value.time = UInt32.new(value)
+      to_unsafe.as(LibGdk::EventKey*).value.time = UInt32.new(value)
     end
 
     def state
-      (to_unsafe.value.state)
+      (to_unsafe.as(LibGdk::EventKey*).value.state)
     end
 
     def state=(value : Gdk::ModifierType)
-      to_unsafe.value.state = value
+      to_unsafe.as(LibGdk::EventKey*).value.state = value
     end
 
     def keyval
-      (to_unsafe.value.keyval)
+      (to_unsafe.as(LibGdk::EventKey*).value.keyval)
     end
 
     def keyval=(value : UInt32)
-      to_unsafe.value.keyval = UInt32.new(value)
+      to_unsafe.as(LibGdk::EventKey*).value.keyval = UInt32.new(value)
     end
 
     def length
-      (to_unsafe.value.length)
+      (to_unsafe.as(LibGdk::EventKey*).value.length)
     end
 
     def length=(value : Int32)
-      to_unsafe.value.length = Int32.new(value)
+      to_unsafe.as(LibGdk::EventKey*).value.length = Int32.new(value)
     end
 
     def string
-      (raise "Expected string but got null" unless (to_unsafe.value.string); ::String.new((to_unsafe.value.string)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGdk::EventKey*).value.string); ::String.new((to_unsafe.as(LibGdk::EventKey*).value.string)))
     end
 
     def string=(value : String)
-      to_unsafe.value.string = value.to_unsafe
+      to_unsafe.as(LibGdk::EventKey*).value.string = value.to_unsafe
     end
 
     def hardware_keycode
-      (to_unsafe.value.hardware_keycode)
+      (to_unsafe.as(LibGdk::EventKey*).value.hardware_keycode)
     end
 
     def hardware_keycode=(value : UInt16)
-      to_unsafe.value.hardware_keycode = UInt16.new(value)
+      to_unsafe.as(LibGdk::EventKey*).value.hardware_keycode = UInt16.new(value)
     end
 
     def group
-      (to_unsafe.value.group)
+      (to_unsafe.as(LibGdk::EventKey*).value.group)
     end
 
     def group=(value : UInt8)
-      to_unsafe.value.group = UInt8.new(value)
+      to_unsafe.as(LibGdk::EventKey*).value.group = UInt8.new(value)
     end
 
     def is_modifier
-      (to_unsafe.value.is_modifier)
+      (to_unsafe.as(LibGdk::EventKey*).value.is_modifier)
     end
 
     def is_modifier=(value : UInt32)
-      to_unsafe.value.is_modifier = UInt32.new(value)
+      to_unsafe.as(LibGdk::EventKey*).value.is_modifier = UInt32.new(value)
     end
 
   end

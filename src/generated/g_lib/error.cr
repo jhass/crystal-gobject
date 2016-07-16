@@ -40,27 +40,27 @@ module GLib
     end
 
     def domain
-      (to_unsafe.value.domain)
+      (to_unsafe.as(LibGLib::Error*).value.domain)
     end
 
     def domain=(value : UInt32)
-      to_unsafe.value.domain = UInt32.new(value)
+      to_unsafe.as(LibGLib::Error*).value.domain = UInt32.new(value)
     end
 
     def code
-      (to_unsafe.value.code)
+      (to_unsafe.as(LibGLib::Error*).value.code)
     end
 
     def code=(value : Int32)
-      to_unsafe.value.code = Int32.new(value)
+      to_unsafe.as(LibGLib::Error*).value.code = Int32.new(value)
     end
 
     def message
-      (raise "Expected string but got null" unless (to_unsafe.value.message); ::String.new((to_unsafe.value.message)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGLib::Error*).value.message); ::String.new((to_unsafe.as(LibGLib::Error*).value.message)))
     end
 
     def message=(value : String)
-      to_unsafe.value.message = value.to_unsafe
+      to_unsafe.as(LibGLib::Error*).value.message = value.to_unsafe
     end
 
   end

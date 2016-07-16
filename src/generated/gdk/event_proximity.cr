@@ -22,43 +22,43 @@ module Gdk
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibGdk::EventProximity*).value.type)
     end
 
     def type=(value : Gdk::EventType)
-      to_unsafe.value.type = value
+      to_unsafe.as(LibGdk::EventProximity*).value.type = value
     end
 
     def window
-      Gdk::Window.new((to_unsafe.value.window))
+      Gdk::Window.new((to_unsafe.as(LibGdk::EventProximity*).value.window))
     end
 
     def window=(value : Gdk::Window)
-      to_unsafe.value.window = value.to_unsafe.as(LibGdk::Window*)
+      to_unsafe.as(LibGdk::EventProximity*).value.window = value.to_unsafe.as(LibGdk::Window*)
     end
 
     def send_event
-      (to_unsafe.value.send_event)
+      (to_unsafe.as(LibGdk::EventProximity*).value.send_event)
     end
 
     def send_event=(value : Int8)
-      to_unsafe.value.send_event = Int8.new(value)
+      to_unsafe.as(LibGdk::EventProximity*).value.send_event = Int8.new(value)
     end
 
     def time
-      (to_unsafe.value.time)
+      (to_unsafe.as(LibGdk::EventProximity*).value.time)
     end
 
     def time=(value : UInt32)
-      to_unsafe.value.time = UInt32.new(value)
+      to_unsafe.as(LibGdk::EventProximity*).value.time = UInt32.new(value)
     end
 
     def device
-      Gdk::Device.new((to_unsafe.value.device))
+      Gdk::Device.new((to_unsafe.as(LibGdk::EventProximity*).value.device))
     end
 
     def device=(value : Gdk::Device)
-      to_unsafe.value.device = value.to_unsafe.as(LibGdk::Device*)
+      to_unsafe.as(LibGdk::EventProximity*).value.device = value.to_unsafe.as(LibGdk::Device*)
     end
 
   end

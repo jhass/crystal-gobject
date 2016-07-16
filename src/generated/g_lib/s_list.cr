@@ -19,19 +19,19 @@ module GLib
     end
 
     def data
-      (to_unsafe.value.data)
+      (to_unsafe.as(LibGLib::SList*).value.data)
     end
 
     def data=(value : Void*)
-      to_unsafe.value.data = value
+      to_unsafe.as(LibGLib::SList*).value.data = value
     end
 
     def next
-      (to_unsafe.value.next_)
+      (to_unsafe.as(LibGLib::SList*).value.next_)
     end
 
     def next=(value : Void*)
-      to_unsafe.value.next_ = value
+      to_unsafe.as(LibGLib::SList*).value.next_ = value
     end
 
   end

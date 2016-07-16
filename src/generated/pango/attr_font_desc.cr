@@ -19,19 +19,19 @@ module Pango
     end
 
     def attr
-      Pango::Attribute.new((to_unsafe.value.attr))
+      Pango::Attribute.new((to_unsafe.as(LibPango::AttrFontDesc*).value.attr))
     end
 
     def attr=(value : Pango::Attribute)
-      to_unsafe.value.attr = value
+      to_unsafe.as(LibPango::AttrFontDesc*).value.attr = value
     end
 
     def desc
-      Pango::FontDescription.new((to_unsafe.value.desc))
+      Pango::FontDescription.new((to_unsafe.as(LibPango::AttrFontDesc*).value.desc))
     end
 
     def desc=(value : Pango::FontDescription)
-      to_unsafe.value.desc = value.to_unsafe.as(LibPango::FontDescription*)
+      to_unsafe.as(LibPango::AttrFontDesc*).value.desc = value.to_unsafe.as(LibPango::FontDescription*)
     end
 
   end

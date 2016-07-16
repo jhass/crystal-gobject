@@ -63,25 +63,25 @@ module GLib
     end
 
     def match(string, match_options, match_info)
-      __return_value = LibGLib.regex_match(to_unsafe.as(LibGLib::Regex*), string.to_unsafe, match_options, match_info.to_unsafe.as(LibGLib::MatchInfo*))
+      __return_value = LibGLib.regex_match(to_unsafe.as(LibGLib::Regex*), string.to_unsafe, match_options, match_info)
       __return_value
     end
 
     def match_all(string, match_options, match_info)
-      __return_value = LibGLib.regex_match_all(to_unsafe.as(LibGLib::Regex*), string.to_unsafe, match_options, match_info.to_unsafe.as(LibGLib::MatchInfo*))
+      __return_value = LibGLib.regex_match_all(to_unsafe.as(LibGLib::Regex*), string.to_unsafe, match_options, match_info)
       __return_value
     end
 
     def match_all_full(string, string_len, start_position, match_options, match_info)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.regex_match_all_full(to_unsafe.as(LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), match_options, match_info.to_unsafe.as(LibGLib::MatchInfo*), pointerof(__error))
+      __return_value = LibGLib.regex_match_all_full(to_unsafe.as(LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), match_options, match_info, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def match_full(string, string_len, start_position, match_options, match_info)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.regex_match_full(to_unsafe.as(LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), match_options, match_info.to_unsafe.as(LibGLib::MatchInfo*), pointerof(__error))
+      __return_value = LibGLib.regex_match_full(to_unsafe.as(LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), match_options, match_info, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

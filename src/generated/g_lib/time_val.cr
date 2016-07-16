@@ -34,19 +34,19 @@ module GLib
     end
 
     def tv_sec
-      (to_unsafe.value.tv_sec)
+      (to_unsafe.as(LibGLib::TimeVal*).value.tv_sec)
     end
 
     def tv_sec=(value : Int64)
-      to_unsafe.value.tv_sec = Int64.new(value)
+      to_unsafe.as(LibGLib::TimeVal*).value.tv_sec = Int64.new(value)
     end
 
     def tv_usec
-      (to_unsafe.value.tv_usec)
+      (to_unsafe.as(LibGLib::TimeVal*).value.tv_usec)
     end
 
     def tv_usec=(value : Int64)
-      to_unsafe.value.tv_usec = Int64.new(value)
+      to_unsafe.as(LibGLib::TimeVal*).value.tv_usec = Int64.new(value)
     end
 
   end

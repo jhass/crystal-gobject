@@ -32,43 +32,43 @@ module Gio
     end
 
     def ref_count
-      (to_unsafe.value.ref_count)
+      (to_unsafe.as(LibGio::DBusMethodInfo*).value.ref_count)
     end
 
     def ref_count=(value : Int32)
-      to_unsafe.value.ref_count = Int32.new(value)
+      to_unsafe.as(LibGio::DBusMethodInfo*).value.ref_count = Int32.new(value)
     end
 
     def name
-      (raise "Expected string but got null" unless (to_unsafe.value.name); ::String.new((to_unsafe.value.name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGio::DBusMethodInfo*).value.name); ::String.new((to_unsafe.as(LibGio::DBusMethodInfo*).value.name)))
     end
 
     def name=(value : String)
-      to_unsafe.value.name = value.to_unsafe
+      to_unsafe.as(LibGio::DBusMethodInfo*).value.name = value.to_unsafe
     end
 
     def in_args
-      PointerIterator.new((to_unsafe.value.in_args)) {|__item| Gio::DBusArgInfo.new(__item) }
+      PointerIterator.new((to_unsafe.as(LibGio::DBusMethodInfo*).value.in_args)) {|__item| Gio::DBusArgInfo.new(__item) }
     end
 
     def in_args=(value : Array(Gio::DBusArgInfo))
-      to_unsafe.value.in_args = value
+      to_unsafe.as(LibGio::DBusMethodInfo*).value.in_args = value
     end
 
     def out_args
-      PointerIterator.new((to_unsafe.value.out_args)) {|__item| Gio::DBusArgInfo.new(__item) }
+      PointerIterator.new((to_unsafe.as(LibGio::DBusMethodInfo*).value.out_args)) {|__item| Gio::DBusArgInfo.new(__item) }
     end
 
     def out_args=(value : Array(Gio::DBusArgInfo))
-      to_unsafe.value.out_args = value
+      to_unsafe.as(LibGio::DBusMethodInfo*).value.out_args = value
     end
 
     def annotations
-      PointerIterator.new((to_unsafe.value.annotations)) {|__item| Gio::DBusAnnotationInfo.new(__item) }
+      PointerIterator.new((to_unsafe.as(LibGio::DBusMethodInfo*).value.annotations)) {|__item| Gio::DBusAnnotationInfo.new(__item) }
     end
 
     def annotations=(value : Array(Gio::DBusAnnotationInfo))
-      to_unsafe.value.annotations = value
+      to_unsafe.as(LibGio::DBusMethodInfo*).value.annotations = value
     end
 
   end

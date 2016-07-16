@@ -194,7 +194,7 @@ module Gtk
     end
 
     def layout_offsets(x, y)
-      __return_value = LibGtk.entry_get_layout_offsets(to_unsafe.as(LibGtk::Entry*), Int32.new(x), Int32.new(y))
+      __return_value = LibGtk.entry_get_layout_offsets(to_unsafe.as(LibGtk::Entry*), x, y)
       __return_value
     end
 

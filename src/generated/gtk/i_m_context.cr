@@ -31,12 +31,12 @@ module Gtk
     end
 
     def preedit_string(str, attrs, cursor_pos)
-      __return_value = LibGtk.i_m_context_get_preedit_string(to_unsafe.as(LibGtk::IMContext*), str.to_unsafe, attrs.to_unsafe.as(LibPango::AttrList*), Int32.new(cursor_pos))
+      __return_value = LibGtk.i_m_context_get_preedit_string(to_unsafe.as(LibGtk::IMContext*), str, attrs, cursor_pos)
       __return_value
     end
 
     def surrounding(text, cursor_index)
-      __return_value = LibGtk.i_m_context_get_surrounding(to_unsafe.as(LibGtk::IMContext*), text.to_unsafe, Int32.new(cursor_index))
+      __return_value = LibGtk.i_m_context_get_surrounding(to_unsafe.as(LibGtk::IMContext*), text, cursor_index)
       __return_value
     end
 

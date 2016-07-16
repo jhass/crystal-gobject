@@ -20,27 +20,27 @@ module GLib
     end
 
     def fd
-      (to_unsafe.value.fd)
+      (to_unsafe.as(LibGLib::PollFD*).value.fd)
     end
 
     def fd=(value : Int32)
-      to_unsafe.value.fd = Int32.new(value)
+      to_unsafe.as(LibGLib::PollFD*).value.fd = Int32.new(value)
     end
 
     def events
-      (to_unsafe.value.events)
+      (to_unsafe.as(LibGLib::PollFD*).value.events)
     end
 
     def events=(value : UInt16)
-      to_unsafe.value.events = UInt16.new(value)
+      to_unsafe.as(LibGLib::PollFD*).value.events = UInt16.new(value)
     end
 
     def revents
-      (to_unsafe.value.revents)
+      (to_unsafe.as(LibGLib::PollFD*).value.revents)
     end
 
     def revents=(value : UInt16)
-      to_unsafe.value.revents = UInt16.new(value)
+      to_unsafe.as(LibGLib::PollFD*).value.revents = UInt16.new(value)
     end
 
   end

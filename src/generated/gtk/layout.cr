@@ -31,7 +31,7 @@ module Gtk
     end
 
     def size(width, height)
-      __return_value = LibGtk.layout_get_size(to_unsafe.as(LibGtk::Layout*), UInt32.new(width), UInt32.new(height))
+      __return_value = LibGtk.layout_get_size(to_unsafe.as(LibGtk::Layout*), width, height)
       __return_value
     end
 

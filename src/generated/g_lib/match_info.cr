@@ -38,12 +38,12 @@ module GLib
     end
 
     def fetch_named_pos(name, start_pos, end_pos)
-      __return_value = LibGLib.match_info_fetch_named_pos(to_unsafe.as(LibGLib::MatchInfo*), name.to_unsafe, Int32.new(start_pos), Int32.new(end_pos))
+      __return_value = LibGLib.match_info_fetch_named_pos(to_unsafe.as(LibGLib::MatchInfo*), name.to_unsafe, start_pos, end_pos)
       __return_value
     end
 
     def fetch_pos(match_num, start_pos, end_pos)
-      __return_value = LibGLib.match_info_fetch_pos(to_unsafe.as(LibGLib::MatchInfo*), Int32.new(match_num), Int32.new(start_pos), Int32.new(end_pos))
+      __return_value = LibGLib.match_info_fetch_pos(to_unsafe.as(LibGLib::MatchInfo*), Int32.new(match_num), start_pos, end_pos)
       __return_value
     end
 

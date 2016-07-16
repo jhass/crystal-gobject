@@ -25,67 +25,67 @@ module Gtk
     end
 
     def requisition
-      (to_unsafe.value.requisition)
+      (to_unsafe.as(LibGtk::TableRowCol*).value.requisition)
     end
 
     def requisition=(value : UInt16)
-      to_unsafe.value.requisition = UInt16.new(value)
+      to_unsafe.as(LibGtk::TableRowCol*).value.requisition = UInt16.new(value)
     end
 
     def allocation
-      (to_unsafe.value.allocation)
+      (to_unsafe.as(LibGtk::TableRowCol*).value.allocation)
     end
 
     def allocation=(value : UInt16)
-      to_unsafe.value.allocation = UInt16.new(value)
+      to_unsafe.as(LibGtk::TableRowCol*).value.allocation = UInt16.new(value)
     end
 
     def spacing
-      (to_unsafe.value.spacing)
+      (to_unsafe.as(LibGtk::TableRowCol*).value.spacing)
     end
 
     def spacing=(value : UInt16)
-      to_unsafe.value.spacing = UInt16.new(value)
+      to_unsafe.as(LibGtk::TableRowCol*).value.spacing = UInt16.new(value)
     end
 
     def need_expand
-      (to_unsafe.value.need_expand)
+      (to_unsafe.as(LibGtk::TableRowCol*).value.need_expand)
     end
 
     def need_expand=(value : UInt32)
-      to_unsafe.value.need_expand = UInt32.new(value)
+      to_unsafe.as(LibGtk::TableRowCol*).value.need_expand = UInt32.new(value)
     end
 
     def need_shrink
-      (to_unsafe.value.need_shrink)
+      (to_unsafe.as(LibGtk::TableRowCol*).value.need_shrink)
     end
 
     def need_shrink=(value : UInt32)
-      to_unsafe.value.need_shrink = UInt32.new(value)
+      to_unsafe.as(LibGtk::TableRowCol*).value.need_shrink = UInt32.new(value)
     end
 
     def expand
-      (to_unsafe.value.expand)
+      (to_unsafe.as(LibGtk::TableRowCol*).value.expand)
     end
 
     def expand=(value : UInt32)
-      to_unsafe.value.expand = UInt32.new(value)
+      to_unsafe.as(LibGtk::TableRowCol*).value.expand = UInt32.new(value)
     end
 
     def shrink
-      (to_unsafe.value.shrink)
+      (to_unsafe.as(LibGtk::TableRowCol*).value.shrink)
     end
 
     def shrink=(value : UInt32)
-      to_unsafe.value.shrink = UInt32.new(value)
+      to_unsafe.as(LibGtk::TableRowCol*).value.shrink = UInt32.new(value)
     end
 
     def empty
-      (to_unsafe.value.empty)
+      (to_unsafe.as(LibGtk::TableRowCol*).value.empty)
     end
 
     def empty=(value : UInt32)
-      to_unsafe.value.empty = UInt32.new(value)
+      to_unsafe.as(LibGtk::TableRowCol*).value.empty = UInt32.new(value)
     end
 
   end

@@ -19,19 +19,19 @@ module Gdk
     end
 
     def time
-      (to_unsafe.value.time)
+      (to_unsafe.as(LibGdk::TimeCoord*).value.time)
     end
 
     def time=(value : UInt32)
-      to_unsafe.value.time = UInt32.new(value)
+      to_unsafe.as(LibGdk::TimeCoord*).value.time = UInt32.new(value)
     end
 
     def axes
-      PointerIterator.new((to_unsafe.value.axes)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGdk::TimeCoord*).value.axes)) {|__item| __item }
     end
 
     def axes=(value : Array(Float64))
-      to_unsafe.value.axes = value
+      to_unsafe.as(LibGdk::TimeCoord*).value.axes = value
     end
 
   end

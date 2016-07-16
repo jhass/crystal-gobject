@@ -58,7 +58,7 @@ module Gtk
     end
 
     def required_version(major, minor)
-      __return_value = LibGtk.g_l_area_get_required_version(to_unsafe.as(LibGtk::GLArea*), Int32.new(major), Int32.new(minor))
+      __return_value = LibGtk.g_l_area_get_required_version(to_unsafe.as(LibGtk::GLArea*), major, minor)
       __return_value
     end
 

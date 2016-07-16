@@ -60,67 +60,67 @@ module GLib
     end
 
     def data
-      (to_unsafe.value.data)
+      (to_unsafe.as(LibGLib::Hook*).value.data)
     end
 
     def data=(value : Void*)
-      to_unsafe.value.data = value
+      to_unsafe.as(LibGLib::Hook*).value.data = value
     end
 
     def next
-      GLib::Hook.new((to_unsafe.value.next_))
+      GLib::Hook.new((to_unsafe.as(LibGLib::Hook*).value.next_))
     end
 
     def next=(value : GLib::Hook)
-      to_unsafe.value.next_ = value.to_unsafe.as(LibGLib::Hook*)
+      to_unsafe.as(LibGLib::Hook*).value.next_ = value.to_unsafe.as(LibGLib::Hook*)
     end
 
     def prev
-      GLib::Hook.new((to_unsafe.value.prev))
+      GLib::Hook.new((to_unsafe.as(LibGLib::Hook*).value.prev))
     end
 
     def prev=(value : GLib::Hook)
-      to_unsafe.value.prev = value.to_unsafe.as(LibGLib::Hook*)
+      to_unsafe.as(LibGLib::Hook*).value.prev = value.to_unsafe.as(LibGLib::Hook*)
     end
 
     def ref_count
-      (to_unsafe.value.ref_count)
+      (to_unsafe.as(LibGLib::Hook*).value.ref_count)
     end
 
     def ref_count=(value : UInt32)
-      to_unsafe.value.ref_count = UInt32.new(value)
+      to_unsafe.as(LibGLib::Hook*).value.ref_count = UInt32.new(value)
     end
 
     def hook_id
-      (to_unsafe.value.hook_id)
+      (to_unsafe.as(LibGLib::Hook*).value.hook_id)
     end
 
     def hook_id=(value : UInt64)
-      to_unsafe.value.hook_id = UInt64.new(value)
+      to_unsafe.as(LibGLib::Hook*).value.hook_id = UInt64.new(value)
     end
 
     def flags
-      (to_unsafe.value.flags)
+      (to_unsafe.as(LibGLib::Hook*).value.flags)
     end
 
     def flags=(value : UInt32)
-      to_unsafe.value.flags = UInt32.new(value)
+      to_unsafe.as(LibGLib::Hook*).value.flags = UInt32.new(value)
     end
 
     def func
-      (to_unsafe.value.func)
+      (to_unsafe.as(LibGLib::Hook*).value.func)
     end
 
     def func=(value : Void*)
-      to_unsafe.value.func = value
+      to_unsafe.as(LibGLib::Hook*).value.func = value
     end
 
     def destroy
-      (to_unsafe.value.destroy)
+      (to_unsafe.as(LibGLib::Hook*).value.destroy)
     end
 
     def destroy=(value : GLib::DestroyNotify)
-      to_unsafe.value.destroy = value
+      to_unsafe.as(LibGLib::Hook*).value.destroy = value
     end
 
   end

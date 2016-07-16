@@ -6,7 +6,7 @@ module Gio
 
   def self.action_parse_detailed_name(detailed_name, action_name, target_value)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGio.action_parse_detailed_name(detailed_name.to_unsafe, action_name.to_unsafe, target_value.to_unsafe.as(LibGLib::Variant*), pointerof(__error))
+    __return_value = LibGio.action_parse_detailed_name(detailed_name.to_unsafe, action_name, target_value, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -203,14 +203,14 @@ module Gio
 
   def self.dbus_address_get_stream_finish(res, out_guid)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGio.dbus_address_get_stream_finish(res.to_unsafe.as(LibGio::AsyncResult*), out_guid.to_unsafe, pointerof(__error))
+    __return_value = LibGio.dbus_address_get_stream_finish(res.to_unsafe.as(LibGio::AsyncResult*), out_guid, pointerof(__error))
     GLib::Error.assert __error
     Gio::IOStream.new(__return_value)
   end
 
   def self.dbus_address_get_stream_sync(address, out_guid, cancellable)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGio.dbus_address_get_stream_sync(address.to_unsafe, out_guid.to_unsafe, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+    __return_value = LibGio.dbus_address_get_stream_sync(address.to_unsafe, out_guid, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
     GLib::Error.assert __error
     Gio::IOStream.new(__return_value)
   end
@@ -353,7 +353,7 @@ module Gio
 
   def self.file_new_tmp(tmpl, iostream)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGio.file_new_tmp(tmpl && tmpl.to_unsafe, iostream.to_unsafe.as(LibGio::FileIOStream*), pointerof(__error))
+    __return_value = LibGio.file_new_tmp(tmpl && tmpl.to_unsafe, iostream, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -478,7 +478,7 @@ module Gio
 
   def self.pollable_stream_write_all(stream, buffer, count, blocking, bytes_written, cancellable)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGio.pollable_stream_write_all(stream.to_unsafe.as(LibGio::OutputStream*), buffer, UInt64.new(count), blocking, UInt64.new(bytes_written), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+    __return_value = LibGio.pollable_stream_write_all(stream.to_unsafe.as(LibGio::OutputStream*), buffer, UInt64.new(count), blocking, bytes_written, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -519,7 +519,7 @@ module Gio
 
   def self.resources_get_info(path, lookup_flags, size, flags)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGio.resources_get_info(path.to_unsafe, lookup_flags, UInt64.new(size), UInt32.new(flags), pointerof(__error))
+    __return_value = LibGio.resources_get_info(path.to_unsafe, lookup_flags, size, flags, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end

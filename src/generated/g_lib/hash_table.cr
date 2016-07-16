@@ -41,7 +41,7 @@ module GLib
     end
 
     def self.lookup_extended(hash_table, lookup_key, orig_key, value)
-      __return_value = LibGLib.hash_table_lookup_extended(hash_table, lookup_key && lookup_key, orig_key && orig_key, value && value)
+      __return_value = LibGLib.hash_table_lookup_extended(hash_table, lookup_key && lookup_key, orig_key, value)
       __return_value
     end
 

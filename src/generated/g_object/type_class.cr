@@ -56,7 +56,7 @@ module GObject
     end
 
     def g_type
-      (to_unsafe.value.g_type)
+      (to_unsafe.as(LibGObject::TypeClass*).value.g_type)
     end
 
   end

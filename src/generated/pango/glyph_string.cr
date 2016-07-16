@@ -55,7 +55,7 @@ module Pango
     end
 
     def index_to_x(text, length, analysis, index, trailing, x_pos)
-      __return_value = LibPango.glyph_string_index_to_x(to_unsafe.as(LibPango::GlyphString*), text.to_unsafe, Int32.new(length), analysis.to_unsafe.as(LibPango::Analysis*), Int32.new(index), trailing, Int32.new(x_pos))
+      __return_value = LibPango.glyph_string_index_to_x(to_unsafe.as(LibPango::GlyphString*), text.to_unsafe, Int32.new(length), analysis.to_unsafe.as(LibPango::Analysis*), Int32.new(index), trailing, x_pos)
       __return_value
     end
 
@@ -65,36 +65,36 @@ module Pango
     end
 
     def x_to_index(text, length, analysis, x_pos, index, trailing)
-      __return_value = LibPango.glyph_string_x_to_index(to_unsafe.as(LibPango::GlyphString*), text.to_unsafe, Int32.new(length), analysis.to_unsafe.as(LibPango::Analysis*), Int32.new(x_pos), Int32.new(index), Int32.new(trailing))
+      __return_value = LibPango.glyph_string_x_to_index(to_unsafe.as(LibPango::GlyphString*), text.to_unsafe, Int32.new(length), analysis.to_unsafe.as(LibPango::Analysis*), Int32.new(x_pos), index, trailing)
       __return_value
     end
 
     def num_glyphs
-      (to_unsafe.value.num_glyphs)
+      (to_unsafe.as(LibPango::GlyphString*).value.num_glyphs)
     end
 
     def num_glyphs=(value : Int32)
-      to_unsafe.value.num_glyphs = Int32.new(value)
+      to_unsafe.as(LibPango::GlyphString*).value.num_glyphs = Int32.new(value)
     end
 
     def glyphs
-      PointerIterator.new((to_unsafe.value.glyphs)) {|__item| Pango::GlyphInfo.new(__item) }
+      PointerIterator.new((to_unsafe.as(LibPango::GlyphString*).value.glyphs)) {|__item| Pango::GlyphInfo.new(__item) }
     end
 
     def glyphs=(value : Array(Pango::GlyphInfo))
-      to_unsafe.value.glyphs = value
+      to_unsafe.as(LibPango::GlyphString*).value.glyphs = value
     end
 
     def log_clusters
-      (to_unsafe.value.log_clusters)
+      (to_unsafe.as(LibPango::GlyphString*).value.log_clusters)
     end
 
     def log_clusters=(value : Int32)
-      to_unsafe.value.log_clusters = value
+      to_unsafe.as(LibPango::GlyphString*).value.log_clusters = value
     end
 
     def space
-      (to_unsafe.value.space)
+      (to_unsafe.as(LibPango::GlyphString*).value.space)
     end
 
   end

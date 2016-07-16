@@ -19,19 +19,19 @@ module GObject
     end
 
     def pspec
-      GObject::ParamSpec.new((to_unsafe.value.pspec))
+      GObject::ParamSpec.new((to_unsafe.as(LibGObject::ObjectConstructParam*).value.pspec))
     end
 
     def pspec=(value : GObject::ParamSpec)
-      to_unsafe.value.pspec = value.to_unsafe.as(LibGObject::ParamSpec*)
+      to_unsafe.as(LibGObject::ObjectConstructParam*).value.pspec = value.to_unsafe.as(LibGObject::ParamSpec*)
     end
 
     def value
-      GObject::Value.new((to_unsafe.value.value))
+      GObject::Value.new((to_unsafe.as(LibGObject::ObjectConstructParam*).value.value))
     end
 
     def value=(value : GObject::Value)
-      to_unsafe.value.value = value.to_unsafe.as(LibGObject::Value*)
+      to_unsafe.as(LibGObject::ObjectConstructParam*).value.value = value.to_unsafe.as(LibGObject::Value*)
     end
 
   end

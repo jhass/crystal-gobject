@@ -32,43 +32,43 @@ module Gio
     end
 
     def ref_count
-      (to_unsafe.value.ref_count)
+      (to_unsafe.as(LibGio::DBusPropertyInfo*).value.ref_count)
     end
 
     def ref_count=(value : Int32)
-      to_unsafe.value.ref_count = Int32.new(value)
+      to_unsafe.as(LibGio::DBusPropertyInfo*).value.ref_count = Int32.new(value)
     end
 
     def name
-      (raise "Expected string but got null" unless (to_unsafe.value.name); ::String.new((to_unsafe.value.name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGio::DBusPropertyInfo*).value.name); ::String.new((to_unsafe.as(LibGio::DBusPropertyInfo*).value.name)))
     end
 
     def name=(value : String)
-      to_unsafe.value.name = value.to_unsafe
+      to_unsafe.as(LibGio::DBusPropertyInfo*).value.name = value.to_unsafe
     end
 
     def signature
-      (raise "Expected string but got null" unless (to_unsafe.value.signature); ::String.new((to_unsafe.value.signature)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGio::DBusPropertyInfo*).value.signature); ::String.new((to_unsafe.as(LibGio::DBusPropertyInfo*).value.signature)))
     end
 
     def signature=(value : String)
-      to_unsafe.value.signature = value.to_unsafe
+      to_unsafe.as(LibGio::DBusPropertyInfo*).value.signature = value.to_unsafe
     end
 
     def flags
-      (to_unsafe.value.flags)
+      (to_unsafe.as(LibGio::DBusPropertyInfo*).value.flags)
     end
 
     def flags=(value : Gio::DBusPropertyInfoFlags)
-      to_unsafe.value.flags = value
+      to_unsafe.as(LibGio::DBusPropertyInfo*).value.flags = value
     end
 
     def annotations
-      PointerIterator.new((to_unsafe.value.annotations)) {|__item| Gio::DBusAnnotationInfo.new(__item) }
+      PointerIterator.new((to_unsafe.as(LibGio::DBusPropertyInfo*).value.annotations)) {|__item| Gio::DBusAnnotationInfo.new(__item) }
     end
 
     def annotations=(value : Array(Gio::DBusAnnotationInfo))
-      to_unsafe.value.annotations = value
+      to_unsafe.as(LibGio::DBusPropertyInfo*).value.annotations = value
     end
 
   end

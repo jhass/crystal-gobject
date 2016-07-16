@@ -33,7 +33,7 @@ module Gst
     end
 
     def clip(format, start, stop, clip_start, clip_stop)
-      __return_value = LibGst.segment_clip(to_unsafe.as(LibGst::Segment*), format, UInt64.new(start), UInt64.new(stop), UInt64.new(clip_start), UInt64.new(clip_stop))
+      __return_value = LibGst.segment_clip(to_unsafe.as(LibGst::Segment*), format, UInt64.new(start), UInt64.new(stop), clip_start, clip_stop)
       __return_value
     end
 
@@ -123,95 +123,95 @@ module Gst
     end
 
     def flags
-      (to_unsafe.value.flags)
+      (to_unsafe.as(LibGst::Segment*).value.flags)
     end
 
     def flags=(value : Gst::SegmentFlags)
-      to_unsafe.value.flags = value
+      to_unsafe.as(LibGst::Segment*).value.flags = value
     end
 
     def rate
-      (to_unsafe.value.rate)
+      (to_unsafe.as(LibGst::Segment*).value.rate)
     end
 
     def rate=(value : Float64)
-      to_unsafe.value.rate = Float64.new(value)
+      to_unsafe.as(LibGst::Segment*).value.rate = Float64.new(value)
     end
 
     def applied_rate
-      (to_unsafe.value.applied_rate)
+      (to_unsafe.as(LibGst::Segment*).value.applied_rate)
     end
 
     def applied_rate=(value : Float64)
-      to_unsafe.value.applied_rate = Float64.new(value)
+      to_unsafe.as(LibGst::Segment*).value.applied_rate = Float64.new(value)
     end
 
     def format
-      (to_unsafe.value.format)
+      (to_unsafe.as(LibGst::Segment*).value.format)
     end
 
     def format=(value : Gst::Format)
-      to_unsafe.value.format = value
+      to_unsafe.as(LibGst::Segment*).value.format = value
     end
 
     def base
-      (to_unsafe.value.base)
+      (to_unsafe.as(LibGst::Segment*).value.base)
     end
 
     def base=(value : UInt64)
-      to_unsafe.value.base = UInt64.new(value)
+      to_unsafe.as(LibGst::Segment*).value.base = UInt64.new(value)
     end
 
     def offset
-      (to_unsafe.value.offset)
+      (to_unsafe.as(LibGst::Segment*).value.offset)
     end
 
     def offset=(value : UInt64)
-      to_unsafe.value.offset = UInt64.new(value)
+      to_unsafe.as(LibGst::Segment*).value.offset = UInt64.new(value)
     end
 
     def start
-      (to_unsafe.value.start)
+      (to_unsafe.as(LibGst::Segment*).value.start)
     end
 
     def start=(value : UInt64)
-      to_unsafe.value.start = UInt64.new(value)
+      to_unsafe.as(LibGst::Segment*).value.start = UInt64.new(value)
     end
 
     def stop
-      (to_unsafe.value.stop)
+      (to_unsafe.as(LibGst::Segment*).value.stop)
     end
 
     def stop=(value : UInt64)
-      to_unsafe.value.stop = UInt64.new(value)
+      to_unsafe.as(LibGst::Segment*).value.stop = UInt64.new(value)
     end
 
     def time
-      (to_unsafe.value.time)
+      (to_unsafe.as(LibGst::Segment*).value.time)
     end
 
     def time=(value : UInt64)
-      to_unsafe.value.time = UInt64.new(value)
+      to_unsafe.as(LibGst::Segment*).value.time = UInt64.new(value)
     end
 
     def position
-      (to_unsafe.value.position)
+      (to_unsafe.as(LibGst::Segment*).value.position)
     end
 
     def position=(value : UInt64)
-      to_unsafe.value.position = UInt64.new(value)
+      to_unsafe.as(LibGst::Segment*).value.position = UInt64.new(value)
     end
 
     def duration
-      (to_unsafe.value.duration)
+      (to_unsafe.as(LibGst::Segment*).value.duration)
     end
 
     def duration=(value : UInt64)
-      to_unsafe.value.duration = UInt64.new(value)
+      to_unsafe.as(LibGst::Segment*).value.duration = UInt64.new(value)
     end
 
     def _gst_reserved
-      PointerIterator.new((to_unsafe.value._gst_reserved)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGst::Segment*).value._gst_reserved)) {|__item| __item }
     end
 
   end

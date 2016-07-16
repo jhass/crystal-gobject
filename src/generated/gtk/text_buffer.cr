@@ -132,7 +132,7 @@ module Gtk
     end
 
     def deserialize_formats(n_formats)
-      __return_value = LibGtk.text_buffer_get_deserialize_formats(to_unsafe.as(LibGtk::TextBuffer*), Int32.new(n_formats))
+      __return_value = LibGtk.text_buffer_get_deserialize_formats(to_unsafe.as(LibGtk::TextBuffer*), n_formats)
       PointerIterator.new(__return_value) {|__item| Gdk::Atom.new(__item) }
     end
 
@@ -212,7 +212,7 @@ module Gtk
     end
 
     def serialize_formats(n_formats)
-      __return_value = LibGtk.text_buffer_get_serialize_formats(to_unsafe.as(LibGtk::TextBuffer*), Int32.new(n_formats))
+      __return_value = LibGtk.text_buffer_get_serialize_formats(to_unsafe.as(LibGtk::TextBuffer*), n_formats)
       PointerIterator.new(__return_value) {|__item| Gdk::Atom.new(__item) }
     end
 
@@ -347,7 +347,7 @@ module Gtk
     end
 
     def serialize(content_buffer, format, start, end, length)
-      __return_value = LibGtk.text_buffer_serialize(to_unsafe.as(LibGtk::TextBuffer*), content_buffer.to_unsafe.as(LibGtk::TextBuffer*), format.to_unsafe.as(LibGdk::Atom*), start.to_unsafe.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*), UInt64.new(length))
+      __return_value = LibGtk.text_buffer_serialize(to_unsafe.as(LibGtk::TextBuffer*), content_buffer.to_unsafe.as(LibGtk::TextBuffer*), format.to_unsafe.as(LibGdk::Atom*), start.to_unsafe.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*), length)
       PointerIterator.new(__return_value) {|__item| __item }
     end
 

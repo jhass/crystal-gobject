@@ -54,7 +54,7 @@ module Gtk
     end
 
     def offset_value(name, value)
-      __return_value = LibGtk.level_bar_get_offset_value(to_unsafe.as(LibGtk::LevelBar*), name && name.to_unsafe, Float64.new(value))
+      __return_value = LibGtk.level_bar_get_offset_value(to_unsafe.as(LibGtk::LevelBar*), name && name.to_unsafe, value)
       __return_value
     end
 

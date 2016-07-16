@@ -25,67 +25,67 @@ module Gdk
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibGdk::EventSelection*).value.type)
     end
 
     def type=(value : Gdk::EventType)
-      to_unsafe.value.type = value
+      to_unsafe.as(LibGdk::EventSelection*).value.type = value
     end
 
     def window
-      Gdk::Window.new((to_unsafe.value.window))
+      Gdk::Window.new((to_unsafe.as(LibGdk::EventSelection*).value.window))
     end
 
     def window=(value : Gdk::Window)
-      to_unsafe.value.window = value.to_unsafe.as(LibGdk::Window*)
+      to_unsafe.as(LibGdk::EventSelection*).value.window = value.to_unsafe.as(LibGdk::Window*)
     end
 
     def send_event
-      (to_unsafe.value.send_event)
+      (to_unsafe.as(LibGdk::EventSelection*).value.send_event)
     end
 
     def send_event=(value : Int8)
-      to_unsafe.value.send_event = Int8.new(value)
+      to_unsafe.as(LibGdk::EventSelection*).value.send_event = Int8.new(value)
     end
 
     def selection
-      Gdk::Atom.new((to_unsafe.value.selection))
+      Gdk::Atom.new((to_unsafe.as(LibGdk::EventSelection*).value.selection))
     end
 
     def selection=(value : Gdk::Atom)
-      to_unsafe.value.selection = value.to_unsafe.as(LibGdk::Atom*)
+      to_unsafe.as(LibGdk::EventSelection*).value.selection = value.to_unsafe.as(LibGdk::Atom*)
     end
 
     def target
-      Gdk::Atom.new((to_unsafe.value.target))
+      Gdk::Atom.new((to_unsafe.as(LibGdk::EventSelection*).value.target))
     end
 
     def target=(value : Gdk::Atom)
-      to_unsafe.value.target = value.to_unsafe.as(LibGdk::Atom*)
+      to_unsafe.as(LibGdk::EventSelection*).value.target = value.to_unsafe.as(LibGdk::Atom*)
     end
 
     def property
-      Gdk::Atom.new((to_unsafe.value.property))
+      Gdk::Atom.new((to_unsafe.as(LibGdk::EventSelection*).value.property))
     end
 
     def property=(value : Gdk::Atom)
-      to_unsafe.value.property = value.to_unsafe.as(LibGdk::Atom*)
+      to_unsafe.as(LibGdk::EventSelection*).value.property = value.to_unsafe.as(LibGdk::Atom*)
     end
 
     def time
-      (to_unsafe.value.time)
+      (to_unsafe.as(LibGdk::EventSelection*).value.time)
     end
 
     def time=(value : UInt32)
-      to_unsafe.value.time = UInt32.new(value)
+      to_unsafe.as(LibGdk::EventSelection*).value.time = UInt32.new(value)
     end
 
     def requestor
-      Gdk::Window.new((to_unsafe.value.requestor))
+      Gdk::Window.new((to_unsafe.as(LibGdk::EventSelection*).value.requestor))
     end
 
     def requestor=(value : Gdk::Window)
-      to_unsafe.value.requestor = value.to_unsafe.as(LibGdk::Window*)
+      to_unsafe.as(LibGdk::EventSelection*).value.requestor = value.to_unsafe.as(LibGdk::Window*)
     end
 
   end

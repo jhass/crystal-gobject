@@ -218,11 +218,11 @@ module Gst
     end
 
     def mini_object
-      Gst::MiniObject.new((to_unsafe.value.mini_object))
+      Gst::MiniObject.new((to_unsafe.as(LibGst::Caps*).value.mini_object))
     end
 
     def mini_object=(value : Gst::MiniObject)
-      to_unsafe.value.mini_object = value
+      to_unsafe.as(LibGst::Caps*).value.mini_object = value
     end
 
   end

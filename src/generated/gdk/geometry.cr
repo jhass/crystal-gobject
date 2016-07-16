@@ -28,91 +28,91 @@ module Gdk
     end
 
     def min_width
-      (to_unsafe.value.min_width)
+      (to_unsafe.as(LibGdk::Geometry*).value.min_width)
     end
 
     def min_width=(value : Int32)
-      to_unsafe.value.min_width = Int32.new(value)
+      to_unsafe.as(LibGdk::Geometry*).value.min_width = Int32.new(value)
     end
 
     def min_height
-      (to_unsafe.value.min_height)
+      (to_unsafe.as(LibGdk::Geometry*).value.min_height)
     end
 
     def min_height=(value : Int32)
-      to_unsafe.value.min_height = Int32.new(value)
+      to_unsafe.as(LibGdk::Geometry*).value.min_height = Int32.new(value)
     end
 
     def max_width
-      (to_unsafe.value.max_width)
+      (to_unsafe.as(LibGdk::Geometry*).value.max_width)
     end
 
     def max_width=(value : Int32)
-      to_unsafe.value.max_width = Int32.new(value)
+      to_unsafe.as(LibGdk::Geometry*).value.max_width = Int32.new(value)
     end
 
     def max_height
-      (to_unsafe.value.max_height)
+      (to_unsafe.as(LibGdk::Geometry*).value.max_height)
     end
 
     def max_height=(value : Int32)
-      to_unsafe.value.max_height = Int32.new(value)
+      to_unsafe.as(LibGdk::Geometry*).value.max_height = Int32.new(value)
     end
 
     def base_width
-      (to_unsafe.value.base_width)
+      (to_unsafe.as(LibGdk::Geometry*).value.base_width)
     end
 
     def base_width=(value : Int32)
-      to_unsafe.value.base_width = Int32.new(value)
+      to_unsafe.as(LibGdk::Geometry*).value.base_width = Int32.new(value)
     end
 
     def base_height
-      (to_unsafe.value.base_height)
+      (to_unsafe.as(LibGdk::Geometry*).value.base_height)
     end
 
     def base_height=(value : Int32)
-      to_unsafe.value.base_height = Int32.new(value)
+      to_unsafe.as(LibGdk::Geometry*).value.base_height = Int32.new(value)
     end
 
     def width_inc
-      (to_unsafe.value.width_inc)
+      (to_unsafe.as(LibGdk::Geometry*).value.width_inc)
     end
 
     def width_inc=(value : Int32)
-      to_unsafe.value.width_inc = Int32.new(value)
+      to_unsafe.as(LibGdk::Geometry*).value.width_inc = Int32.new(value)
     end
 
     def height_inc
-      (to_unsafe.value.height_inc)
+      (to_unsafe.as(LibGdk::Geometry*).value.height_inc)
     end
 
     def height_inc=(value : Int32)
-      to_unsafe.value.height_inc = Int32.new(value)
+      to_unsafe.as(LibGdk::Geometry*).value.height_inc = Int32.new(value)
     end
 
     def min_aspect
-      (to_unsafe.value.min_aspect)
+      (to_unsafe.as(LibGdk::Geometry*).value.min_aspect)
     end
 
     def min_aspect=(value : Float64)
-      to_unsafe.value.min_aspect = Float64.new(value)
+      to_unsafe.as(LibGdk::Geometry*).value.min_aspect = Float64.new(value)
     end
 
     def max_aspect
-      (to_unsafe.value.max_aspect)
+      (to_unsafe.as(LibGdk::Geometry*).value.max_aspect)
     end
 
     def max_aspect=(value : Float64)
-      to_unsafe.value.max_aspect = Float64.new(value)
+      to_unsafe.as(LibGdk::Geometry*).value.max_aspect = Float64.new(value)
     end
 
     def win_gravity
-      (to_unsafe.value.win_gravity)
+      (to_unsafe.as(LibGdk::Geometry*).value.win_gravity)
     end
 
     def win_gravity=(value : Gdk::Gravity)
-      to_unsafe.value.win_gravity = value
+      to_unsafe.as(LibGdk::Geometry*).value.win_gravity = value
     end
 
   end

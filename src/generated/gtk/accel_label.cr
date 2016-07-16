@@ -20,7 +20,7 @@ module Gtk
     end
 
     def accel(accelerator_key, accelerator_mods)
-      __return_value = LibGtk.accel_label_get_accel(to_unsafe.as(LibGtk::AccelLabel*), UInt32.new(accelerator_key), accelerator_mods)
+      __return_value = LibGtk.accel_label_get_accel(to_unsafe.as(LibGtk::AccelLabel*), accelerator_key, accelerator_mods)
       __return_value
     end
 

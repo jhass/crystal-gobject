@@ -24,59 +24,59 @@ module GObject
     end
 
     def signal_id
-      (to_unsafe.value.signal_id)
+      (to_unsafe.as(LibGObject::SignalQuery*).value.signal_id)
     end
 
     def signal_id=(value : UInt32)
-      to_unsafe.value.signal_id = UInt32.new(value)
+      to_unsafe.as(LibGObject::SignalQuery*).value.signal_id = UInt32.new(value)
     end
 
     def signal_name
-      (raise "Expected string but got null" unless (to_unsafe.value.signal_name); ::String.new((to_unsafe.value.signal_name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGObject::SignalQuery*).value.signal_name); ::String.new((to_unsafe.as(LibGObject::SignalQuery*).value.signal_name)))
     end
 
     def signal_name=(value : String)
-      to_unsafe.value.signal_name = value.to_unsafe
+      to_unsafe.as(LibGObject::SignalQuery*).value.signal_name = value.to_unsafe
     end
 
     def itype
-      (to_unsafe.value.itype)
+      (to_unsafe.as(LibGObject::SignalQuery*).value.itype)
     end
 
     def itype=(value : UInt64)
-      to_unsafe.value.itype = UInt64.new(value)
+      to_unsafe.as(LibGObject::SignalQuery*).value.itype = UInt64.new(value)
     end
 
     def signal_flags
-      (to_unsafe.value.signal_flags)
+      (to_unsafe.as(LibGObject::SignalQuery*).value.signal_flags)
     end
 
     def signal_flags=(value : GObject::SignalFlags)
-      to_unsafe.value.signal_flags = value
+      to_unsafe.as(LibGObject::SignalQuery*).value.signal_flags = value
     end
 
     def return_type
-      (to_unsafe.value.return_type)
+      (to_unsafe.as(LibGObject::SignalQuery*).value.return_type)
     end
 
     def return_type=(value : UInt64)
-      to_unsafe.value.return_type = UInt64.new(value)
+      to_unsafe.as(LibGObject::SignalQuery*).value.return_type = UInt64.new(value)
     end
 
     def n_params
-      (to_unsafe.value.n_params)
+      (to_unsafe.as(LibGObject::SignalQuery*).value.n_params)
     end
 
     def n_params=(value : UInt32)
-      to_unsafe.value.n_params = UInt32.new(value)
+      to_unsafe.as(LibGObject::SignalQuery*).value.n_params = UInt32.new(value)
     end
 
     def param_types
-      PointerIterator.new((to_unsafe.value.param_types)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGObject::SignalQuery*).value.param_types)) {|__item| __item }
     end
 
     def param_types=(value : Array(UInt64))
-      to_unsafe.value.param_types = value
+      to_unsafe.as(LibGObject::SignalQuery*).value.param_types = value
     end
 
   end

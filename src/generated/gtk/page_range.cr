@@ -19,19 +19,19 @@ module Gtk
     end
 
     def start
-      (to_unsafe.value.start)
+      (to_unsafe.as(LibGtk::PageRange*).value.start)
     end
 
     def start=(value : Int32)
-      to_unsafe.value.start = Int32.new(value)
+      to_unsafe.as(LibGtk::PageRange*).value.start = Int32.new(value)
     end
 
     def end
-      (to_unsafe.value.end_)
+      (to_unsafe.as(LibGtk::PageRange*).value.end_)
     end
 
     def end=(value : Int32)
-      to_unsafe.value.end_ = Int32.new(value)
+      to_unsafe.as(LibGtk::PageRange*).value.end_ = Int32.new(value)
     end
 
   end

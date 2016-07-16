@@ -74,59 +74,59 @@ module Gst
     end
 
     def mini_object
-      Gst::MiniObject.new((to_unsafe.value.mini_object))
+      Gst::MiniObject.new((to_unsafe.as(LibGst::Memory*).value.mini_object))
     end
 
     def mini_object=(value : Gst::MiniObject)
-      to_unsafe.value.mini_object = value
+      to_unsafe.as(LibGst::Memory*).value.mini_object = value
     end
 
     def allocator
-      Gst::Allocator.new((to_unsafe.value.allocator))
+      Gst::Allocator.new((to_unsafe.as(LibGst::Memory*).value.allocator))
     end
 
     def allocator=(value : Gst::Allocator)
-      to_unsafe.value.allocator = value.to_unsafe.as(LibGst::Allocator*)
+      to_unsafe.as(LibGst::Memory*).value.allocator = value.to_unsafe.as(LibGst::Allocator*)
     end
 
     def parent
-      Gst::Memory.new((to_unsafe.value.parent))
+      Gst::Memory.new((to_unsafe.as(LibGst::Memory*).value.parent))
     end
 
     def parent=(value : Gst::Memory)
-      to_unsafe.value.parent = value.to_unsafe.as(LibGst::Memory*)
+      to_unsafe.as(LibGst::Memory*).value.parent = value.to_unsafe.as(LibGst::Memory*)
     end
 
     def maxsize
-      (to_unsafe.value.maxsize)
+      (to_unsafe.as(LibGst::Memory*).value.maxsize)
     end
 
     def maxsize=(value : UInt64)
-      to_unsafe.value.maxsize = UInt64.new(value)
+      to_unsafe.as(LibGst::Memory*).value.maxsize = UInt64.new(value)
     end
 
     def align
-      (to_unsafe.value.align)
+      (to_unsafe.as(LibGst::Memory*).value.align)
     end
 
     def align=(value : UInt64)
-      to_unsafe.value.align = UInt64.new(value)
+      to_unsafe.as(LibGst::Memory*).value.align = UInt64.new(value)
     end
 
     def offset
-      (to_unsafe.value.offset)
+      (to_unsafe.as(LibGst::Memory*).value.offset)
     end
 
     def offset=(value : UInt64)
-      to_unsafe.value.offset = UInt64.new(value)
+      to_unsafe.as(LibGst::Memory*).value.offset = UInt64.new(value)
     end
 
     def size
-      (to_unsafe.value.size)
+      (to_unsafe.as(LibGst::Memory*).value.size)
     end
 
     def size=(value : UInt64)
-      to_unsafe.value.size = UInt64.new(value)
+      to_unsafe.as(LibGst::Memory*).value.size = UInt64.new(value)
     end
 
   end

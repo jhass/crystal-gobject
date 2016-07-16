@@ -50,7 +50,7 @@ module Gio
 
     def iterate(out_info, out_child, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.file_enumerator_iterate(to_unsafe.as(LibGio::FileEnumerator*), out_info.to_unsafe.as(LibGio::FileInfo*), out_child.to_unsafe.as(LibGio::File*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.file_enumerator_iterate(to_unsafe.as(LibGio::FileEnumerator*), out_info, out_child, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

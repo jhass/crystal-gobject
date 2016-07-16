@@ -18,11 +18,11 @@ module GObject
     end
 
     def type_flags
-      (to_unsafe.value.type_flags)
+      (to_unsafe.as(LibGObject::TypeFundamentalInfo*).value.type_flags)
     end
 
     def type_flags=(value : GObject::TypeFundamentalFlags)
-      to_unsafe.value.type_flags = value
+      to_unsafe.as(LibGObject::TypeFundamentalInfo*).value.type_flags = value
     end
 
   end

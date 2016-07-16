@@ -67,7 +67,7 @@ module GLib
 
     def parse(argc, argv)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.option_context_parse(to_unsafe.as(LibGLib::OptionContext*), argc && Int32.new(argc), argv && argv, pointerof(__error))
+      __return_value = LibGLib.option_context_parse(to_unsafe.as(LibGLib::OptionContext*), argc, argv, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

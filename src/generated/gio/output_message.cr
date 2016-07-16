@@ -23,51 +23,51 @@ module Gio
     end
 
     def address
-      Gio::SocketAddress.new((to_unsafe.value.address))
+      Gio::SocketAddress.new((to_unsafe.as(LibGio::OutputMessage*).value.address))
     end
 
     def address=(value : Gio::SocketAddress)
-      to_unsafe.value.address = value.to_unsafe.as(LibGio::SocketAddress*)
+      to_unsafe.as(LibGio::OutputMessage*).value.address = value.to_unsafe.as(LibGio::SocketAddress*)
     end
 
     def vectors
-      Gio::OutputVector.new((to_unsafe.value.vectors))
+      Gio::OutputVector.new((to_unsafe.as(LibGio::OutputMessage*).value.vectors))
     end
 
     def vectors=(value : Gio::OutputVector)
-      to_unsafe.value.vectors = value.to_unsafe.as(LibGio::OutputVector*)
+      to_unsafe.as(LibGio::OutputMessage*).value.vectors = value.to_unsafe.as(LibGio::OutputVector*)
     end
 
     def num_vectors
-      (to_unsafe.value.num_vectors)
+      (to_unsafe.as(LibGio::OutputMessage*).value.num_vectors)
     end
 
     def num_vectors=(value : UInt32)
-      to_unsafe.value.num_vectors = UInt32.new(value)
+      to_unsafe.as(LibGio::OutputMessage*).value.num_vectors = UInt32.new(value)
     end
 
     def bytes_sent
-      (to_unsafe.value.bytes_sent)
+      (to_unsafe.as(LibGio::OutputMessage*).value.bytes_sent)
     end
 
     def bytes_sent=(value : UInt32)
-      to_unsafe.value.bytes_sent = UInt32.new(value)
+      to_unsafe.as(LibGio::OutputMessage*).value.bytes_sent = UInt32.new(value)
     end
 
     def control_messages
-      PointerIterator.new((to_unsafe.value.control_messages)) {|__item| Gio::SocketControlMessage.new(__item) }
+      PointerIterator.new((to_unsafe.as(LibGio::OutputMessage*).value.control_messages)) {|__item| Gio::SocketControlMessage.new(__item) }
     end
 
     def control_messages=(value : Array(Gio::SocketControlMessage))
-      to_unsafe.value.control_messages = value
+      to_unsafe.as(LibGio::OutputMessage*).value.control_messages = value
     end
 
     def num_control_messages
-      (to_unsafe.value.num_control_messages)
+      (to_unsafe.as(LibGio::OutputMessage*).value.num_control_messages)
     end
 
     def num_control_messages=(value : UInt32)
-      to_unsafe.value.num_control_messages = UInt32.new(value)
+      to_unsafe.as(LibGio::OutputMessage*).value.num_control_messages = UInt32.new(value)
     end
 
   end

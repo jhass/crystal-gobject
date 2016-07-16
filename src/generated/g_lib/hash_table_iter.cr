@@ -21,7 +21,7 @@ module GLib
     end
 
     def next(key, value)
-      __return_value = LibGLib.hash_table_iter_next(to_unsafe.as(LibGLib::HashTableIter*), key && key, value && value)
+      __return_value = LibGLib.hash_table_iter_next(to_unsafe.as(LibGLib::HashTableIter*), key, value)
       __return_value
     end
 
@@ -41,27 +41,27 @@ module GLib
     end
 
     def dummy1
-      (to_unsafe.value.dummy1)
+      (to_unsafe.as(LibGLib::HashTableIter*).value.dummy1)
     end
 
     def dummy2
-      (to_unsafe.value.dummy2)
+      (to_unsafe.as(LibGLib::HashTableIter*).value.dummy2)
     end
 
     def dummy3
-      (to_unsafe.value.dummy3)
+      (to_unsafe.as(LibGLib::HashTableIter*).value.dummy3)
     end
 
     def dummy4
-      (to_unsafe.value.dummy4)
+      (to_unsafe.as(LibGLib::HashTableIter*).value.dummy4)
     end
 
     def dummy5
-      (to_unsafe.value.dummy5)
+      (to_unsafe.as(LibGLib::HashTableIter*).value.dummy5)
     end
 
     def dummy6
-      (to_unsafe.value.dummy6)
+      (to_unsafe.as(LibGLib::HashTableIter*).value.dummy6)
     end
 
   end

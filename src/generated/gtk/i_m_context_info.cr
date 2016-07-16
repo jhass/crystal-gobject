@@ -22,43 +22,43 @@ module Gtk
     end
 
     def context_id
-      (raise "Expected string but got null" unless (to_unsafe.value.context_id); ::String.new((to_unsafe.value.context_id)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::IMContextInfo*).value.context_id); ::String.new((to_unsafe.as(LibGtk::IMContextInfo*).value.context_id)))
     end
 
     def context_id=(value : String)
-      to_unsafe.value.context_id = value.to_unsafe
+      to_unsafe.as(LibGtk::IMContextInfo*).value.context_id = value.to_unsafe
     end
 
     def context_name
-      (raise "Expected string but got null" unless (to_unsafe.value.context_name); ::String.new((to_unsafe.value.context_name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::IMContextInfo*).value.context_name); ::String.new((to_unsafe.as(LibGtk::IMContextInfo*).value.context_name)))
     end
 
     def context_name=(value : String)
-      to_unsafe.value.context_name = value.to_unsafe
+      to_unsafe.as(LibGtk::IMContextInfo*).value.context_name = value.to_unsafe
     end
 
     def domain
-      (raise "Expected string but got null" unless (to_unsafe.value.domain); ::String.new((to_unsafe.value.domain)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::IMContextInfo*).value.domain); ::String.new((to_unsafe.as(LibGtk::IMContextInfo*).value.domain)))
     end
 
     def domain=(value : String)
-      to_unsafe.value.domain = value.to_unsafe
+      to_unsafe.as(LibGtk::IMContextInfo*).value.domain = value.to_unsafe
     end
 
     def domain_dirname
-      (raise "Expected string but got null" unless (to_unsafe.value.domain_dirname); ::String.new((to_unsafe.value.domain_dirname)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::IMContextInfo*).value.domain_dirname); ::String.new((to_unsafe.as(LibGtk::IMContextInfo*).value.domain_dirname)))
     end
 
     def domain_dirname=(value : String)
-      to_unsafe.value.domain_dirname = value.to_unsafe
+      to_unsafe.as(LibGtk::IMContextInfo*).value.domain_dirname = value.to_unsafe
     end
 
     def default_locales
-      (raise "Expected string but got null" unless (to_unsafe.value.default_locales); ::String.new((to_unsafe.value.default_locales)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::IMContextInfo*).value.default_locales); ::String.new((to_unsafe.as(LibGtk::IMContextInfo*).value.default_locales)))
     end
 
     def default_locales=(value : String)
-      to_unsafe.value.default_locales = value.to_unsafe
+      to_unsafe.as(LibGtk::IMContextInfo*).value.default_locales = value.to_unsafe
     end
 
   end

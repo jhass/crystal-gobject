@@ -41,12 +41,12 @@ module Pango
     end
 
     def tab(tab_index, alignment, location)
-      __return_value = LibPango.tab_array_get_tab(to_unsafe.as(LibPango::TabArray*), Int32.new(tab_index), alignment, Int32.new(location))
+      __return_value = LibPango.tab_array_get_tab(to_unsafe.as(LibPango::TabArray*), Int32.new(tab_index), alignment, location)
       __return_value
     end
 
     def tabs(alignments, locations)
-      __return_value = LibPango.tab_array_get_tabs(to_unsafe.as(LibPango::TabArray*), alignments.to_unsafe.as(LibPango::TabAlign*), locations)
+      __return_value = LibPango.tab_array_get_tabs(to_unsafe.as(LibPango::TabArray*), alignments, locations)
       __return_value
     end
 

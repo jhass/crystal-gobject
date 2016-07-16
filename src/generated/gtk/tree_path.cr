@@ -66,7 +66,7 @@ module Gtk
     end
 
     def indices(depth)
-      __return_value = LibGtk.tree_path_get_indices(to_unsafe.as(LibGtk::TreePath*), Int32.new(depth))
+      __return_value = LibGtk.tree_path_get_indices(to_unsafe.as(LibGtk::TreePath*), depth)
       PointerIterator.new(__return_value) {|__item| __item }
     end
 

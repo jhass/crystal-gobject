@@ -44,19 +44,19 @@ module Gst
     end
 
     def flags
-      (to_unsafe.value.flags)
+      (to_unsafe.as(LibGst::Meta*).value.flags)
     end
 
     def flags=(value : Gst::MetaFlags)
-      to_unsafe.value.flags = value
+      to_unsafe.as(LibGst::Meta*).value.flags = value
     end
 
     def info
-      Gst::MetaInfo.new((to_unsafe.value.info))
+      Gst::MetaInfo.new((to_unsafe.as(LibGst::Meta*).value.info))
     end
 
     def info=(value : Gst::MetaInfo)
-      to_unsafe.value.info = value.to_unsafe.as(LibGst::MetaInfo*)
+      to_unsafe.as(LibGst::Meta*).value.info = value.to_unsafe.as(LibGst::MetaInfo*)
     end
 
   end

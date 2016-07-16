@@ -115,27 +115,27 @@ module GLib
     end
 
     def head
-      (to_unsafe.value.head)
+      (to_unsafe.as(LibGLib::Queue*).value.head)
     end
 
     def head=(value : Void*)
-      to_unsafe.value.head = value
+      to_unsafe.as(LibGLib::Queue*).value.head = value
     end
 
     def tail
-      (to_unsafe.value.tail)
+      (to_unsafe.as(LibGLib::Queue*).value.tail)
     end
 
     def tail=(value : Void*)
-      to_unsafe.value.tail = value
+      to_unsafe.as(LibGLib::Queue*).value.tail = value
     end
 
     def length
-      (to_unsafe.value.length)
+      (to_unsafe.as(LibGLib::Queue*).value.length)
     end
 
     def length=(value : UInt32)
-      to_unsafe.value.length = UInt32.new(value)
+      to_unsafe.as(LibGLib::Queue*).value.length = UInt32.new(value)
     end
 
   end

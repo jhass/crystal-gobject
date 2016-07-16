@@ -20,27 +20,27 @@ module GObject
     end
 
     def value
-      (to_unsafe.value.value)
+      (to_unsafe.as(LibGObject::EnumValue*).value.value)
     end
 
     def value=(value : Int32)
-      to_unsafe.value.value = Int32.new(value)
+      to_unsafe.as(LibGObject::EnumValue*).value.value = Int32.new(value)
     end
 
     def value_name
-      (raise "Expected string but got null" unless (to_unsafe.value.value_name); ::String.new((to_unsafe.value.value_name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGObject::EnumValue*).value.value_name); ::String.new((to_unsafe.as(LibGObject::EnumValue*).value.value_name)))
     end
 
     def value_name=(value : String)
-      to_unsafe.value.value_name = value.to_unsafe
+      to_unsafe.as(LibGObject::EnumValue*).value.value_name = value.to_unsafe
     end
 
     def value_nick
-      (raise "Expected string but got null" unless (to_unsafe.value.value_nick); ::String.new((to_unsafe.value.value_nick)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGObject::EnumValue*).value.value_nick); ::String.new((to_unsafe.as(LibGObject::EnumValue*).value.value_nick)))
     end
 
     def value_nick=(value : String)
-      to_unsafe.value.value_nick = value.to_unsafe
+      to_unsafe.as(LibGObject::EnumValue*).value.value_nick = value.to_unsafe
     end
 
   end

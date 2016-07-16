@@ -20,27 +20,27 @@ module Pango
     end
 
     def glyph
-      (to_unsafe.value.glyph)
+      (to_unsafe.as(LibPango::GlyphInfo*).value.glyph)
     end
 
     def glyph=(value : UInt32)
-      to_unsafe.value.glyph = UInt32.new(value)
+      to_unsafe.as(LibPango::GlyphInfo*).value.glyph = UInt32.new(value)
     end
 
     def geometry
-      Pango::GlyphGeometry.new((to_unsafe.value.geometry))
+      Pango::GlyphGeometry.new((to_unsafe.as(LibPango::GlyphInfo*).value.geometry))
     end
 
     def geometry=(value : Pango::GlyphGeometry)
-      to_unsafe.value.geometry = value
+      to_unsafe.as(LibPango::GlyphInfo*).value.geometry = value
     end
 
     def attr
-      Pango::GlyphVisAttr.new((to_unsafe.value.attr))
+      Pango::GlyphVisAttr.new((to_unsafe.as(LibPango::GlyphInfo*).value.attr))
     end
 
     def attr=(value : Pango::GlyphVisAttr)
-      to_unsafe.value.attr = value
+      to_unsafe.as(LibPango::GlyphInfo*).value.attr = value
     end
 
   end

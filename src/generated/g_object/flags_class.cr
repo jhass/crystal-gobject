@@ -21,35 +21,35 @@ module GObject
     end
 
     def g_type_class
-      GObject::TypeClass.new((to_unsafe.value.g_type_class))
+      GObject::TypeClass.new((to_unsafe.as(LibGObject::FlagsClass*).value.g_type_class))
     end
 
     def g_type_class=(value : GObject::TypeClass)
-      to_unsafe.value.g_type_class = value
+      to_unsafe.as(LibGObject::FlagsClass*).value.g_type_class = value
     end
 
     def mask
-      (to_unsafe.value.mask)
+      (to_unsafe.as(LibGObject::FlagsClass*).value.mask)
     end
 
     def mask=(value : UInt32)
-      to_unsafe.value.mask = UInt32.new(value)
+      to_unsafe.as(LibGObject::FlagsClass*).value.mask = UInt32.new(value)
     end
 
     def n_values
-      (to_unsafe.value.n_values)
+      (to_unsafe.as(LibGObject::FlagsClass*).value.n_values)
     end
 
     def n_values=(value : UInt32)
-      to_unsafe.value.n_values = UInt32.new(value)
+      to_unsafe.as(LibGObject::FlagsClass*).value.n_values = UInt32.new(value)
     end
 
     def values
-      GObject::FlagsValue.new((to_unsafe.value.values))
+      GObject::FlagsValue.new((to_unsafe.as(LibGObject::FlagsClass*).value.values))
     end
 
     def values=(value : GObject::FlagsValue)
-      to_unsafe.value.values = value.to_unsafe.as(LibGObject::FlagsValue*)
+      to_unsafe.as(LibGObject::FlagsClass*).value.values = value.to_unsafe.as(LibGObject::FlagsValue*)
     end
 
   end

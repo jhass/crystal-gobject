@@ -20,27 +20,27 @@ module Gio
     end
 
     def name
-      (raise "Expected string but got null" unless (to_unsafe.value.name); ::String.new((to_unsafe.value.name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGio::FileAttributeInfo*).value.name); ::String.new((to_unsafe.as(LibGio::FileAttributeInfo*).value.name)))
     end
 
     def name=(value : String)
-      to_unsafe.value.name = value.to_unsafe
+      to_unsafe.as(LibGio::FileAttributeInfo*).value.name = value.to_unsafe
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibGio::FileAttributeInfo*).value.type)
     end
 
     def type=(value : Gio::FileAttributeType)
-      to_unsafe.value.type = value
+      to_unsafe.as(LibGio::FileAttributeInfo*).value.type = value
     end
 
     def flags
-      (to_unsafe.value.flags)
+      (to_unsafe.as(LibGio::FileAttributeInfo*).value.flags)
     end
 
     def flags=(value : Gio::FileAttributeInfoFlags)
-      to_unsafe.value.flags = value
+      to_unsafe.as(LibGio::FileAttributeInfo*).value.flags = value
     end
 
   end

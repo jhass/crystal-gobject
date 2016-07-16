@@ -51,35 +51,35 @@ module Gdk
     end
 
     def red
-      (to_unsafe.value.red)
+      (to_unsafe.as(LibGdk::RGBA*).value.red)
     end
 
     def red=(value : Float64)
-      to_unsafe.value.red = Float64.new(value)
+      to_unsafe.as(LibGdk::RGBA*).value.red = Float64.new(value)
     end
 
     def green
-      (to_unsafe.value.green)
+      (to_unsafe.as(LibGdk::RGBA*).value.green)
     end
 
     def green=(value : Float64)
-      to_unsafe.value.green = Float64.new(value)
+      to_unsafe.as(LibGdk::RGBA*).value.green = Float64.new(value)
     end
 
     def blue
-      (to_unsafe.value.blue)
+      (to_unsafe.as(LibGdk::RGBA*).value.blue)
     end
 
     def blue=(value : Float64)
-      to_unsafe.value.blue = Float64.new(value)
+      to_unsafe.as(LibGdk::RGBA*).value.blue = Float64.new(value)
     end
 
     def alpha
-      (to_unsafe.value.alpha)
+      (to_unsafe.as(LibGdk::RGBA*).value.alpha)
     end
 
     def alpha=(value : Float64)
-      to_unsafe.value.alpha = Float64.new(value)
+      to_unsafe.as(LibGdk::RGBA*).value.alpha = Float64.new(value)
     end
 
   end

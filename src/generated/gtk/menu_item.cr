@@ -115,7 +115,7 @@ module Gtk
     end
 
     def toggle_size_request(requisition)
-      __return_value = LibGtk.menu_item_toggle_size_request(to_unsafe.as(LibGtk::MenuItem*), Int32.new(requisition))
+      __return_value = LibGtk.menu_item_toggle_size_request(to_unsafe.as(LibGtk::MenuItem*), requisition)
       __return_value
     end
 

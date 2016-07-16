@@ -18,23 +18,23 @@ module Pango
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibPango::AttrClass*).value.type)
     end
 
     def type=(value : Pango::AttrType)
-      to_unsafe.value.type = value
+      to_unsafe.as(LibPango::AttrClass*).value.type = value
     end
 
     def copy
-      (to_unsafe.value.copy)
+      (to_unsafe.as(LibPango::AttrClass*).value.copy)
     end
 
     def destroy
-      (to_unsafe.value.destroy)
+      (to_unsafe.as(LibPango::AttrClass*).value.destroy)
     end
 
     def equal
-      (to_unsafe.value.equal)
+      (to_unsafe.as(LibPango::AttrClass*).value.equal)
     end
 
   end

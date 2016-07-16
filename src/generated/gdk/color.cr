@@ -51,35 +51,35 @@ module Gdk
     end
 
     def pixel
-      (to_unsafe.value.pixel)
+      (to_unsafe.as(LibGdk::Color*).value.pixel)
     end
 
     def pixel=(value : UInt32)
-      to_unsafe.value.pixel = UInt32.new(value)
+      to_unsafe.as(LibGdk::Color*).value.pixel = UInt32.new(value)
     end
 
     def red
-      (to_unsafe.value.red)
+      (to_unsafe.as(LibGdk::Color*).value.red)
     end
 
     def red=(value : UInt16)
-      to_unsafe.value.red = UInt16.new(value)
+      to_unsafe.as(LibGdk::Color*).value.red = UInt16.new(value)
     end
 
     def green
-      (to_unsafe.value.green)
+      (to_unsafe.as(LibGdk::Color*).value.green)
     end
 
     def green=(value : UInt16)
-      to_unsafe.value.green = UInt16.new(value)
+      to_unsafe.as(LibGdk::Color*).value.green = UInt16.new(value)
     end
 
     def blue
-      (to_unsafe.value.blue)
+      (to_unsafe.as(LibGdk::Color*).value.blue)
     end
 
     def blue=(value : UInt16)
-      to_unsafe.value.blue = UInt16.new(value)
+      to_unsafe.as(LibGdk::Color*).value.blue = UInt16.new(value)
     end
 
   end

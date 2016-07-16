@@ -38,11 +38,11 @@ module GLib
     end
 
     def next
-      GLib::TrashStack.new((to_unsafe.value.next_))
+      GLib::TrashStack.new((to_unsafe.as(LibGLib::TrashStack*).value.next_))
     end
 
     def next=(value : GLib::TrashStack)
-      to_unsafe.value.next_ = value.to_unsafe.as(LibGLib::TrashStack*)
+      to_unsafe.as(LibGLib::TrashStack*).value.next_ = value.to_unsafe.as(LibGLib::TrashStack*)
     end
 
   end

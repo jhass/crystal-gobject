@@ -39,7 +39,7 @@ module Gst
     end
 
     def self.id_wait(id, jitter)
-      __return_value = LibGst.clock_id_wait(id, Int64.new(jitter))
+      __return_value = LibGst.clock_id_wait(id, jitter)
       __return_value
     end
 
@@ -49,12 +49,12 @@ module Gst
     end
 
     def add_observation(slave, master, r_squared)
-      __return_value = LibGst.clock_add_observation(to_unsafe.as(LibGst::Clock*), UInt64.new(slave), UInt64.new(master), Float64.new(r_squared))
+      __return_value = LibGst.clock_add_observation(to_unsafe.as(LibGst::Clock*), UInt64.new(slave), UInt64.new(master), r_squared)
       __return_value
     end
 
     def add_observation_unapplied(slave, master, r_squared, internal, external, rate_num, rate_denom)
-      __return_value = LibGst.clock_add_observation_unapplied(to_unsafe.as(LibGst::Clock*), UInt64.new(slave), UInt64.new(master), Float64.new(r_squared), UInt64.new(internal), UInt64.new(external), UInt64.new(rate_num), UInt64.new(rate_denom))
+      __return_value = LibGst.clock_add_observation_unapplied(to_unsafe.as(LibGst::Clock*), UInt64.new(slave), UInt64.new(master), r_squared, internal, external, rate_num, rate_denom)
       __return_value
     end
 
@@ -69,7 +69,7 @@ module Gst
     end
 
     def calibration(internal, external, rate_num, rate_denom)
-      __return_value = LibGst.clock_get_calibration(to_unsafe.as(LibGst::Clock*), UInt64.new(internal), UInt64.new(external), UInt64.new(rate_num), UInt64.new(rate_denom))
+      __return_value = LibGst.clock_get_calibration(to_unsafe.as(LibGst::Clock*), internal, external, rate_num, rate_denom)
       __return_value
     end
 

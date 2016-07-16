@@ -31,7 +31,7 @@ module GModule
     end
 
     def symbol(symbol_name, symbol)
-      __return_value = LibGModule.module_symbol(to_unsafe.as(LibGModule::Module*), symbol_name.to_unsafe, symbol && symbol)
+      __return_value = LibGModule.module_symbol(to_unsafe.as(LibGModule::Module*), symbol_name.to_unsafe, symbol)
       __return_value
     end
 

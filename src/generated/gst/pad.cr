@@ -130,7 +130,7 @@ module Gst
     end
 
     def range(offset, size, buffer)
-      __return_value = LibGst.pad_get_range(to_unsafe.as(LibGst::Pad*), UInt64.new(offset), UInt32.new(size), buffer.to_unsafe.as(LibGst::Buffer*))
+      __return_value = LibGst.pad_get_range(to_unsafe.as(LibGst::Pad*), UInt64.new(offset), UInt32.new(size), buffer)
       __return_value
     end
 
@@ -220,17 +220,17 @@ module Gst
     end
 
     def peer_query_convert(src_format, src_val, dest_format, dest_val)
-      __return_value = LibGst.pad_peer_query_convert(to_unsafe.as(LibGst::Pad*), src_format, Int64.new(src_val), dest_format, Int64.new(dest_val))
+      __return_value = LibGst.pad_peer_query_convert(to_unsafe.as(LibGst::Pad*), src_format, Int64.new(src_val), dest_format, dest_val)
       __return_value
     end
 
     def peer_query_duration(format, duration)
-      __return_value = LibGst.pad_peer_query_duration(to_unsafe.as(LibGst::Pad*), format, Int64.new(duration))
+      __return_value = LibGst.pad_peer_query_duration(to_unsafe.as(LibGst::Pad*), format, duration)
       __return_value
     end
 
     def peer_query_position(format, cur)
-      __return_value = LibGst.pad_peer_query_position(to_unsafe.as(LibGst::Pad*), format, Int64.new(cur))
+      __return_value = LibGst.pad_peer_query_position(to_unsafe.as(LibGst::Pad*), format, cur)
       __return_value
     end
 
@@ -245,7 +245,7 @@ module Gst
     end
 
     def pull_range(offset, size, buffer)
-      __return_value = LibGst.pad_pull_range(to_unsafe.as(LibGst::Pad*), UInt64.new(offset), UInt32.new(size), buffer.to_unsafe.as(LibGst::Buffer*))
+      __return_value = LibGst.pad_pull_range(to_unsafe.as(LibGst::Pad*), UInt64.new(offset), UInt32.new(size), buffer)
       __return_value
     end
 
@@ -280,7 +280,7 @@ module Gst
     end
 
     def query_convert(src_format, src_val, dest_format, dest_val)
-      __return_value = LibGst.pad_query_convert(to_unsafe.as(LibGst::Pad*), src_format, Int64.new(src_val), dest_format, Int64.new(dest_val))
+      __return_value = LibGst.pad_query_convert(to_unsafe.as(LibGst::Pad*), src_format, Int64.new(src_val), dest_format, dest_val)
       __return_value
     end
 
@@ -290,12 +290,12 @@ module Gst
     end
 
     def query_duration(format, duration)
-      __return_value = LibGst.pad_query_duration(to_unsafe.as(LibGst::Pad*), format, Int64.new(duration))
+      __return_value = LibGst.pad_query_duration(to_unsafe.as(LibGst::Pad*), format, duration)
       __return_value
     end
 
     def query_position(format, cur)
-      __return_value = LibGst.pad_query_position(to_unsafe.as(LibGst::Pad*), format, Int64.new(cur))
+      __return_value = LibGst.pad_query_position(to_unsafe.as(LibGst::Pad*), format, cur)
       __return_value
     end
 

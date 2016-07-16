@@ -15,12 +15,12 @@ module Gdk
     end
 
     def self.at_pointer(win_x, win_y)
-      __return_value = LibGdk.window_at_pointer(Int32.new(win_x), Int32.new(win_y))
+      __return_value = LibGdk.window_at_pointer(win_x, win_y)
       Gdk::Window.new(__return_value)
     end
 
     def self.constrain_size(geometry, flags, width, height, new_width, new_height)
-      __return_value = LibGdk.window_constrain_size(geometry.to_unsafe.as(LibGdk::Geometry*), flags, Int32.new(width), Int32.new(height), Int32.new(new_width), Int32.new(new_height))
+      __return_value = LibGdk.window_constrain_size(geometry.to_unsafe.as(LibGdk::Geometry*), flags, Int32.new(width), Int32.new(height), new_width, new_height)
       __return_value
     end
 
@@ -75,12 +75,12 @@ module Gdk
     end
 
     def coords_from_parent(parent_x, parent_y, x, y)
-      __return_value = LibGdk.window_coords_from_parent(to_unsafe.as(LibGdk::Window*), Float64.new(parent_x), Float64.new(parent_y), Float64.new(x), Float64.new(y))
+      __return_value = LibGdk.window_coords_from_parent(to_unsafe.as(LibGdk::Window*), Float64.new(parent_x), Float64.new(parent_y), x, y)
       __return_value
     end
 
     def coords_to_parent(x, y, parent_x, parent_y)
-      __return_value = LibGdk.window_coords_to_parent(to_unsafe.as(LibGdk::Window*), Float64.new(x), Float64.new(y), Float64.new(parent_x), Float64.new(parent_y))
+      __return_value = LibGdk.window_coords_to_parent(to_unsafe.as(LibGdk::Window*), Float64.new(x), Float64.new(y), parent_x, parent_y)
       __return_value
     end
 
@@ -217,12 +217,12 @@ module Gdk
     end
 
     def device_position(device, x, y, mask)
-      __return_value = LibGdk.window_get_device_position(to_unsafe.as(LibGdk::Window*), device.to_unsafe.as(LibGdk::Device*), Int32.new(x), Int32.new(y), mask)
+      __return_value = LibGdk.window_get_device_position(to_unsafe.as(LibGdk::Window*), device.to_unsafe.as(LibGdk::Device*), x, y, mask)
       Gdk::Window.new(__return_value) if __return_value
     end
 
     def device_position_double(device, x, y, mask)
-      __return_value = LibGdk.window_get_device_position_double(to_unsafe.as(LibGdk::Window*), device.to_unsafe.as(LibGdk::Device*), Float64.new(x), Float64.new(y), mask)
+      __return_value = LibGdk.window_get_device_position_double(to_unsafe.as(LibGdk::Window*), device.to_unsafe.as(LibGdk::Device*), x, y, mask)
       Gdk::Window.new(__return_value) if __return_value
     end
 
@@ -232,7 +232,7 @@ module Gdk
     end
 
     def drag_protocol(target)
-      __return_value = LibGdk.window_get_drag_protocol(to_unsafe.as(LibGdk::Window*), target.to_unsafe.as(LibGdk::Window*))
+      __return_value = LibGdk.window_get_drag_protocol(to_unsafe.as(LibGdk::Window*), target)
       __return_value
     end
 
@@ -277,7 +277,7 @@ module Gdk
     end
 
     def geometry(x, y, width, height)
-      __return_value = LibGdk.window_get_geometry(to_unsafe.as(LibGdk::Window*), Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
+      __return_value = LibGdk.window_get_geometry(to_unsafe.as(LibGdk::Window*), x, y, width, height)
       __return_value
     end
 
@@ -297,7 +297,7 @@ module Gdk
     end
 
     def origin(x, y)
-      __return_value = LibGdk.window_get_origin(to_unsafe.as(LibGdk::Window*), Int32.new(x), Int32.new(y))
+      __return_value = LibGdk.window_get_origin(to_unsafe.as(LibGdk::Window*), x, y)
       __return_value
     end
 
@@ -312,22 +312,22 @@ module Gdk
     end
 
     def pointer(x, y, mask)
-      __return_value = LibGdk.window_get_pointer(to_unsafe.as(LibGdk::Window*), Int32.new(x), Int32.new(y), mask)
+      __return_value = LibGdk.window_get_pointer(to_unsafe.as(LibGdk::Window*), x, y, mask)
       Gdk::Window.new(__return_value) if __return_value
     end
 
     def position(x, y)
-      __return_value = LibGdk.window_get_position(to_unsafe.as(LibGdk::Window*), Int32.new(x), Int32.new(y))
+      __return_value = LibGdk.window_get_position(to_unsafe.as(LibGdk::Window*), x, y)
       __return_value
     end
 
     def root_coords(x, y, root_x, root_y)
-      __return_value = LibGdk.window_get_root_coords(to_unsafe.as(LibGdk::Window*), Int32.new(x), Int32.new(y), Int32.new(root_x), Int32.new(root_y))
+      __return_value = LibGdk.window_get_root_coords(to_unsafe.as(LibGdk::Window*), Int32.new(x), Int32.new(y), root_x, root_y)
       __return_value
     end
 
     def root_origin(x, y)
-      __return_value = LibGdk.window_get_root_origin(to_unsafe.as(LibGdk::Window*), Int32.new(x), Int32.new(y))
+      __return_value = LibGdk.window_get_root_origin(to_unsafe.as(LibGdk::Window*), x, y)
       __return_value
     end
 
@@ -372,7 +372,7 @@ module Gdk
     end
 
     def user_data(data)
-      __return_value = LibGdk.window_get_user_data(to_unsafe.as(LibGdk::Window*), data && data)
+      __return_value = LibGdk.window_get_user_data(to_unsafe.as(LibGdk::Window*), data)
       __return_value
     end
 

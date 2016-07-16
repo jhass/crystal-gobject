@@ -54,12 +54,12 @@ module Gtk
     end
 
     def self.position_menu(menu, x, y, push_in, user_data)
-      __return_value = LibGtk.status_icon_position_menu(menu.to_unsafe.as(LibGtk::Menu*), Int32.new(x), Int32.new(y), push_in, user_data.to_unsafe.as(LibGtk::StatusIcon*))
+      __return_value = LibGtk.status_icon_position_menu(menu.to_unsafe.as(LibGtk::Menu*), x, y, push_in, user_data.to_unsafe.as(LibGtk::StatusIcon*))
       __return_value
     end
 
     def geometry(screen, area, orientation)
-      __return_value = LibGtk.status_icon_get_geometry(to_unsafe.as(LibGtk::StatusIcon*), screen.to_unsafe.as(LibGdk::Screen*), area, orientation)
+      __return_value = LibGtk.status_icon_get_geometry(to_unsafe.as(LibGtk::StatusIcon*), screen, area, orientation)
       __return_value
     end
 

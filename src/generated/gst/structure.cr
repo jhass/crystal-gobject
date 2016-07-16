@@ -98,27 +98,27 @@ module Gst
     end
 
     def clock_time(fieldname, value)
-      __return_value = LibGst.structure_get_clock_time(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, UInt64.new(value))
+      __return_value = LibGst.structure_get_clock_time(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value)
       __return_value
     end
 
     def date(fieldname, value)
-      __return_value = LibGst.structure_get_date(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value.to_unsafe.as(LibGLib::Date*))
+      __return_value = LibGst.structure_get_date(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value)
       __return_value
     end
 
     def date_time(fieldname, value)
-      __return_value = LibGst.structure_get_date_time(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value.to_unsafe.as(LibGst::DateTime*))
+      __return_value = LibGst.structure_get_date_time(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value)
       __return_value
     end
 
     def double(fieldname, value)
-      __return_value = LibGst.structure_get_double(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, Float64.new(value))
+      __return_value = LibGst.structure_get_double(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value)
       __return_value
     end
 
     def enum(fieldname, enumtype, value)
-      __return_value = LibGst.structure_get_enum(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, UInt64.new(enumtype), Int32.new(value))
+      __return_value = LibGst.structure_get_enum(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, UInt64.new(enumtype), value)
       __return_value
     end
 
@@ -128,22 +128,22 @@ module Gst
     end
 
     def flagset(fieldname, value_flags, value_mask)
-      __return_value = LibGst.structure_get_flagset(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, UInt32.new(value_flags), UInt32.new(value_mask))
+      __return_value = LibGst.structure_get_flagset(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value_flags, value_mask)
       __return_value
     end
 
     def fraction(fieldname, value_numerator, value_denominator)
-      __return_value = LibGst.structure_get_fraction(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, Int32.new(value_numerator), Int32.new(value_denominator))
+      __return_value = LibGst.structure_get_fraction(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value_numerator, value_denominator)
       __return_value
     end
 
     def int(fieldname, value)
-      __return_value = LibGst.structure_get_int(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, Int32.new(value))
+      __return_value = LibGst.structure_get_int(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value)
       __return_value
     end
 
     def int64(fieldname, value)
-      __return_value = LibGst.structure_get_int64(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, Int64.new(value))
+      __return_value = LibGst.structure_get_int64(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value)
       __return_value
     end
 
@@ -163,12 +163,12 @@ module Gst
     end
 
     def uint(fieldname, value)
-      __return_value = LibGst.structure_get_uint(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, UInt32.new(value))
+      __return_value = LibGst.structure_get_uint(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value)
       __return_value
     end
 
     def uint64(fieldname, value)
-      __return_value = LibGst.structure_get_uint64(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, UInt64.new(value))
+      __return_value = LibGst.structure_get_uint64(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value)
       __return_value
     end
 
@@ -283,20 +283,20 @@ module Gst
     end
 
     def self.from_string(string, end)
-      __return_value = LibGst.structure_from_string(string.to_unsafe, end.to_unsafe)
+      __return_value = LibGst.structure_from_string(string.to_unsafe, end)
       Gst::Structure.new(__return_value) if __return_value
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibGst::Structure*).value.type)
     end
 
     def type=(value : UInt64)
-      to_unsafe.value.type = UInt64.new(value)
+      to_unsafe.as(LibGst::Structure*).value.type = UInt64.new(value)
     end
 
     def name
-      (to_unsafe.value.name)
+      (to_unsafe.as(LibGst::Structure*).value.name)
     end
 
   end

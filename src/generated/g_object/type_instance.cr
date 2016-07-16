@@ -21,7 +21,7 @@ module GObject
     end
 
     def g_class
-      GObject::TypeClass.new((to_unsafe.value.g_class))
+      GObject::TypeClass.new((to_unsafe.as(LibGObject::TypeInstance*).value.g_class))
     end
 
   end

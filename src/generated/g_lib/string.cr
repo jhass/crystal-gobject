@@ -155,27 +155,27 @@ module GLib
     end
 
     def str
-      (raise "Expected string but got null" unless (to_unsafe.value.str); ::String.new((to_unsafe.value.str)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGLib::String*).value.str); ::String.new((to_unsafe.as(LibGLib::String*).value.str)))
     end
 
     def str=(value : String)
-      to_unsafe.value.str = value.to_unsafe
+      to_unsafe.as(LibGLib::String*).value.str = value.to_unsafe
     end
 
     def len
-      (to_unsafe.value.len)
+      (to_unsafe.as(LibGLib::String*).value.len)
     end
 
     def len=(value : UInt64)
-      to_unsafe.value.len = UInt64.new(value)
+      to_unsafe.as(LibGLib::String*).value.len = UInt64.new(value)
     end
 
     def allocated_len
-      (to_unsafe.value.allocated_len)
+      (to_unsafe.as(LibGLib::String*).value.allocated_len)
     end
 
     def allocated_len=(value : UInt64)
-      to_unsafe.value.allocated_len = UInt64.new(value)
+      to_unsafe.as(LibGLib::String*).value.allocated_len = UInt64.new(value)
     end
 
   end

@@ -59,7 +59,7 @@ module Gtk
     end
 
     def alignment(xalign, yalign)
-      __return_value = LibGtk.button_get_alignment(to_unsafe.as(LibGtk::Button*), Float32.new(xalign), Float32.new(yalign))
+      __return_value = LibGtk.button_get_alignment(to_unsafe.as(LibGtk::Button*), xalign, yalign)
       __return_value
     end
 

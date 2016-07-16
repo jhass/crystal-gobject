@@ -36,35 +36,35 @@ module Gtk
     end
 
     def left
-      (to_unsafe.value.left)
+      (to_unsafe.as(LibGtk::Border*).value.left)
     end
 
     def left=(value : Int16)
-      to_unsafe.value.left = Int16.new(value)
+      to_unsafe.as(LibGtk::Border*).value.left = Int16.new(value)
     end
 
     def right
-      (to_unsafe.value.right)
+      (to_unsafe.as(LibGtk::Border*).value.right)
     end
 
     def right=(value : Int16)
-      to_unsafe.value.right = Int16.new(value)
+      to_unsafe.as(LibGtk::Border*).value.right = Int16.new(value)
     end
 
     def top
-      (to_unsafe.value.top)
+      (to_unsafe.as(LibGtk::Border*).value.top)
     end
 
     def top=(value : Int16)
-      to_unsafe.value.top = Int16.new(value)
+      to_unsafe.as(LibGtk::Border*).value.top = Int16.new(value)
     end
 
     def bottom
-      (to_unsafe.value.bottom)
+      (to_unsafe.as(LibGtk::Border*).value.bottom)
     end
 
     def bottom=(value : Int16)
-      to_unsafe.value.bottom = Int16.new(value)
+      to_unsafe.as(LibGtk::Border*).value.bottom = Int16.new(value)
     end
 
   end

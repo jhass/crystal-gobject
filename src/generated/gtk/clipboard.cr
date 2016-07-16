@@ -99,12 +99,12 @@ module Gtk
     end
 
     def wait_for_rich_text(buffer, format, length)
-      __return_value = LibGtk.clipboard_wait_for_rich_text(to_unsafe.as(LibGtk::Clipboard*), buffer.to_unsafe.as(LibGtk::TextBuffer*), format.to_unsafe.as(LibGdk::Atom*), UInt64.new(length))
+      __return_value = LibGtk.clipboard_wait_for_rich_text(to_unsafe.as(LibGtk::Clipboard*), buffer.to_unsafe.as(LibGtk::TextBuffer*), format, length)
       PointerIterator.new(__return_value) {|__item| __item } if __return_value
     end
 
     def wait_for_targets(targets, n_targets)
-      __return_value = LibGtk.clipboard_wait_for_targets(to_unsafe.as(LibGtk::Clipboard*), targets, Int32.new(n_targets))
+      __return_value = LibGtk.clipboard_wait_for_targets(to_unsafe.as(LibGtk::Clipboard*), targets, n_targets)
       __return_value
     end
 

@@ -31,7 +31,7 @@ module Pango
     end
 
     def to_bytes(bytes, n_bytes)
-      __return_value = LibPango.coverage_to_bytes(to_unsafe.as(LibPango::Coverage*), bytes, Int32.new(n_bytes))
+      __return_value = LibPango.coverage_to_bytes(to_unsafe.as(LibPango::Coverage*), bytes, n_bytes)
       __return_value
     end
 

@@ -19,43 +19,43 @@ module GObject
     end
 
     def value_init
-      (to_unsafe.value.value_init)
+      (to_unsafe.as(LibGObject::TypeValueTable*).value.value_init)
     end
 
     def value_free
-      (to_unsafe.value.value_free)
+      (to_unsafe.as(LibGObject::TypeValueTable*).value.value_free)
     end
 
     def value_copy
-      (to_unsafe.value.value_copy)
+      (to_unsafe.as(LibGObject::TypeValueTable*).value.value_copy)
     end
 
     def value_peek_pointer
-      (to_unsafe.value.value_peek_pointer)
+      (to_unsafe.as(LibGObject::TypeValueTable*).value.value_peek_pointer)
     end
 
     def collect_format
-      (raise "Expected string but got null" unless (to_unsafe.value.collect_format); ::String.new((to_unsafe.value.collect_format)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGObject::TypeValueTable*).value.collect_format); ::String.new((to_unsafe.as(LibGObject::TypeValueTable*).value.collect_format)))
     end
 
     def collect_format=(value : String)
-      to_unsafe.value.collect_format = value.to_unsafe
+      to_unsafe.as(LibGObject::TypeValueTable*).value.collect_format = value.to_unsafe
     end
 
     def collect_value
-      (to_unsafe.value.collect_value)
+      (to_unsafe.as(LibGObject::TypeValueTable*).value.collect_value)
     end
 
     def lcopy_format
-      (raise "Expected string but got null" unless (to_unsafe.value.lcopy_format); ::String.new((to_unsafe.value.lcopy_format)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGObject::TypeValueTable*).value.lcopy_format); ::String.new((to_unsafe.as(LibGObject::TypeValueTable*).value.lcopy_format)))
     end
 
     def lcopy_format=(value : String)
-      to_unsafe.value.lcopy_format = value.to_unsafe
+      to_unsafe.as(LibGObject::TypeValueTable*).value.lcopy_format = value.to_unsafe
     end
 
     def lcopy_value
-      (to_unsafe.value.lcopy_value)
+      (to_unsafe.as(LibGObject::TypeValueTable*).value.lcopy_value)
     end
 
   end

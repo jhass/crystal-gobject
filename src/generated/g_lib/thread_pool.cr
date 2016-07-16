@@ -89,27 +89,27 @@ module GLib
     end
 
     def func
-      (to_unsafe.value.func)
+      (to_unsafe.as(LibGLib::ThreadPool*).value.func)
     end
 
     def func=(value : GLib::Func)
-      to_unsafe.value.func = value
+      to_unsafe.as(LibGLib::ThreadPool*).value.func = value
     end
 
     def user_data
-      (to_unsafe.value.user_data)
+      (to_unsafe.as(LibGLib::ThreadPool*).value.user_data)
     end
 
     def user_data=(value : Void*)
-      to_unsafe.value.user_data = value
+      to_unsafe.as(LibGLib::ThreadPool*).value.user_data = value
     end
 
     def exclusive
-      (to_unsafe.value.exclusive)
+      (to_unsafe.as(LibGLib::ThreadPool*).value.exclusive)
     end
 
     def exclusive=(value : Bool)
-      to_unsafe.value.exclusive = value
+      to_unsafe.as(LibGLib::ThreadPool*).value.exclusive = value
     end
 
   end

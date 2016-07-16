@@ -62,32 +62,32 @@ module Gtk
     end
 
     def convert_bin_window_to_tree_coords(bx, by, tx, ty)
-      __return_value = LibGtk.tree_view_convert_bin_window_to_tree_coords(to_unsafe.as(LibGtk::TreeView*), Int32.new(bx), Int32.new(by), Int32.new(tx), Int32.new(ty))
+      __return_value = LibGtk.tree_view_convert_bin_window_to_tree_coords(to_unsafe.as(LibGtk::TreeView*), Int32.new(bx), Int32.new(by), tx, ty)
       __return_value
     end
 
     def convert_bin_window_to_widget_coords(bx, by, wx, wy)
-      __return_value = LibGtk.tree_view_convert_bin_window_to_widget_coords(to_unsafe.as(LibGtk::TreeView*), Int32.new(bx), Int32.new(by), Int32.new(wx), Int32.new(wy))
+      __return_value = LibGtk.tree_view_convert_bin_window_to_widget_coords(to_unsafe.as(LibGtk::TreeView*), Int32.new(bx), Int32.new(by), wx, wy)
       __return_value
     end
 
     def convert_tree_to_bin_window_coords(tx, ty, bx, by)
-      __return_value = LibGtk.tree_view_convert_tree_to_bin_window_coords(to_unsafe.as(LibGtk::TreeView*), Int32.new(tx), Int32.new(ty), Int32.new(bx), Int32.new(by))
+      __return_value = LibGtk.tree_view_convert_tree_to_bin_window_coords(to_unsafe.as(LibGtk::TreeView*), Int32.new(tx), Int32.new(ty), bx, by)
       __return_value
     end
 
     def convert_tree_to_widget_coords(tx, ty, wx, wy)
-      __return_value = LibGtk.tree_view_convert_tree_to_widget_coords(to_unsafe.as(LibGtk::TreeView*), Int32.new(tx), Int32.new(ty), Int32.new(wx), Int32.new(wy))
+      __return_value = LibGtk.tree_view_convert_tree_to_widget_coords(to_unsafe.as(LibGtk::TreeView*), Int32.new(tx), Int32.new(ty), wx, wy)
       __return_value
     end
 
     def convert_widget_to_bin_window_coords(wx, wy, bx, by)
-      __return_value = LibGtk.tree_view_convert_widget_to_bin_window_coords(to_unsafe.as(LibGtk::TreeView*), Int32.new(wx), Int32.new(wy), Int32.new(bx), Int32.new(by))
+      __return_value = LibGtk.tree_view_convert_widget_to_bin_window_coords(to_unsafe.as(LibGtk::TreeView*), Int32.new(wx), Int32.new(wy), bx, by)
       __return_value
     end
 
     def convert_widget_to_tree_coords(wx, wy, tx, ty)
-      __return_value = LibGtk.tree_view_convert_widget_to_tree_coords(to_unsafe.as(LibGtk::TreeView*), Int32.new(wx), Int32.new(wy), Int32.new(tx), Int32.new(ty))
+      __return_value = LibGtk.tree_view_convert_widget_to_tree_coords(to_unsafe.as(LibGtk::TreeView*), Int32.new(wx), Int32.new(wy), tx, ty)
       __return_value
     end
 
@@ -152,17 +152,17 @@ module Gtk
     end
 
     def cursor(path, focus_column)
-      __return_value = LibGtk.tree_view_get_cursor(to_unsafe.as(LibGtk::TreeView*), path && path.to_unsafe.as(LibGtk::TreePath*), focus_column && focus_column.to_unsafe.as(LibGtk::TreeViewColumn*))
+      __return_value = LibGtk.tree_view_get_cursor(to_unsafe.as(LibGtk::TreeView*), path, focus_column)
       __return_value
     end
 
     def dest_row_at_pos(drag_x, drag_y, path, pos)
-      __return_value = LibGtk.tree_view_get_dest_row_at_pos(to_unsafe.as(LibGtk::TreeView*), Int32.new(drag_x), Int32.new(drag_y), path && path.to_unsafe.as(LibGtk::TreePath*), pos)
+      __return_value = LibGtk.tree_view_get_dest_row_at_pos(to_unsafe.as(LibGtk::TreeView*), Int32.new(drag_x), Int32.new(drag_y), path, pos)
       __return_value
     end
 
     def drag_dest_row(path, pos)
-      __return_value = LibGtk.tree_view_get_drag_dest_row(to_unsafe.as(LibGtk::TreeView*), path && path.to_unsafe.as(LibGtk::TreePath*), pos)
+      __return_value = LibGtk.tree_view_get_drag_dest_row(to_unsafe.as(LibGtk::TreeView*), path, pos)
       __return_value
     end
 
@@ -232,7 +232,7 @@ module Gtk
     end
 
     def path_at_pos(x, y, path, column, cell_x, cell_y)
-      __return_value = LibGtk.tree_view_get_path_at_pos(to_unsafe.as(LibGtk::TreeView*), Int32.new(x), Int32.new(y), path && path.to_unsafe.as(LibGtk::TreePath*), column && column.to_unsafe.as(LibGtk::TreeViewColumn*), Int32.new(cell_x), Int32.new(cell_y))
+      __return_value = LibGtk.tree_view_get_path_at_pos(to_unsafe.as(LibGtk::TreeView*), Int32.new(x), Int32.new(y), path, column, cell_x, cell_y)
       __return_value
     end
 
@@ -277,7 +277,7 @@ module Gtk
     end
 
     def tooltip_context(x, y, keyboard_tip, model, path, iter)
-      __return_value = LibGtk.tree_view_get_tooltip_context(to_unsafe.as(LibGtk::TreeView*), Int32.new(x), Int32.new(y), keyboard_tip, model && model.to_unsafe.as(LibGtk::TreeModel*), path.to_unsafe.as(LibGtk::TreePath*), iter)
+      __return_value = LibGtk.tree_view_get_tooltip_context(to_unsafe.as(LibGtk::TreeView*), x, y, keyboard_tip, model, path, iter)
       __return_value
     end
 
@@ -287,7 +287,7 @@ module Gtk
     end
 
     def visible_range(start_path, end_path)
-      __return_value = LibGtk.tree_view_get_visible_range(to_unsafe.as(LibGtk::TreeView*), start_path.to_unsafe.as(LibGtk::TreePath*), end_path.to_unsafe.as(LibGtk::TreePath*))
+      __return_value = LibGtk.tree_view_get_visible_range(to_unsafe.as(LibGtk::TreeView*), start_path, end_path)
       __return_value
     end
 
@@ -307,7 +307,7 @@ module Gtk
     end
 
     def blank_at_pos?(x, y, path, column, cell_x, cell_y)
-      __return_value = LibGtk.tree_view_is_blank_at_pos(to_unsafe.as(LibGtk::TreeView*), Int32.new(x), Int32.new(y), path.to_unsafe.as(LibGtk::TreePath*), column.to_unsafe.as(LibGtk::TreeViewColumn*), Int32.new(cell_x), Int32.new(cell_y))
+      __return_value = LibGtk.tree_view_is_blank_at_pos(to_unsafe.as(LibGtk::TreeView*), Int32.new(x), Int32.new(y), path, column, cell_x, cell_y)
       __return_value
     end
 

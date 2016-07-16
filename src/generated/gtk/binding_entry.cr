@@ -46,75 +46,75 @@ module Gtk
     end
 
     def keyval
-      (to_unsafe.value.keyval)
+      (to_unsafe.as(LibGtk::BindingEntry*).value.keyval)
     end
 
     def keyval=(value : UInt32)
-      to_unsafe.value.keyval = UInt32.new(value)
+      to_unsafe.as(LibGtk::BindingEntry*).value.keyval = UInt32.new(value)
     end
 
     def modifiers
-      (to_unsafe.value.modifiers)
+      (to_unsafe.as(LibGtk::BindingEntry*).value.modifiers)
     end
 
     def modifiers=(value : Gdk::ModifierType)
-      to_unsafe.value.modifiers = value
+      to_unsafe.as(LibGtk::BindingEntry*).value.modifiers = value
     end
 
     def binding_set
-      Gtk::BindingSet.new((to_unsafe.value.binding_set))
+      Gtk::BindingSet.new((to_unsafe.as(LibGtk::BindingEntry*).value.binding_set))
     end
 
     def binding_set=(value : Gtk::BindingSet)
-      to_unsafe.value.binding_set = value.to_unsafe.as(LibGtk::BindingSet*)
+      to_unsafe.as(LibGtk::BindingEntry*).value.binding_set = value.to_unsafe.as(LibGtk::BindingSet*)
     end
 
     def destroyed
-      (to_unsafe.value.destroyed)
+      (to_unsafe.as(LibGtk::BindingEntry*).value.destroyed)
     end
 
     def destroyed=(value : UInt32)
-      to_unsafe.value.destroyed = UInt32.new(value)
+      to_unsafe.as(LibGtk::BindingEntry*).value.destroyed = UInt32.new(value)
     end
 
     def in_emission
-      (to_unsafe.value.in_emission)
+      (to_unsafe.as(LibGtk::BindingEntry*).value.in_emission)
     end
 
     def in_emission=(value : UInt32)
-      to_unsafe.value.in_emission = UInt32.new(value)
+      to_unsafe.as(LibGtk::BindingEntry*).value.in_emission = UInt32.new(value)
     end
 
     def marks_unbound
-      (to_unsafe.value.marks_unbound)
+      (to_unsafe.as(LibGtk::BindingEntry*).value.marks_unbound)
     end
 
     def marks_unbound=(value : UInt32)
-      to_unsafe.value.marks_unbound = UInt32.new(value)
+      to_unsafe.as(LibGtk::BindingEntry*).value.marks_unbound = UInt32.new(value)
     end
 
     def set_next
-      Gtk::BindingEntry.new((to_unsafe.value.set_next))
+      Gtk::BindingEntry.new((to_unsafe.as(LibGtk::BindingEntry*).value.set_next))
     end
 
     def set_next=(value : Gtk::BindingEntry)
-      to_unsafe.value.set_next = value.to_unsafe.as(LibGtk::BindingEntry*)
+      to_unsafe.as(LibGtk::BindingEntry*).value.set_next = value.to_unsafe.as(LibGtk::BindingEntry*)
     end
 
     def hash_next
-      Gtk::BindingEntry.new((to_unsafe.value.hash_next))
+      Gtk::BindingEntry.new((to_unsafe.as(LibGtk::BindingEntry*).value.hash_next))
     end
 
     def hash_next=(value : Gtk::BindingEntry)
-      to_unsafe.value.hash_next = value.to_unsafe.as(LibGtk::BindingEntry*)
+      to_unsafe.as(LibGtk::BindingEntry*).value.hash_next = value.to_unsafe.as(LibGtk::BindingEntry*)
     end
 
     def signals
-      Gtk::BindingSignal.new((to_unsafe.value.signals))
+      Gtk::BindingSignal.new((to_unsafe.as(LibGtk::BindingEntry*).value.signals))
     end
 
     def signals=(value : Gtk::BindingSignal)
-      to_unsafe.value.signals = value.to_unsafe.as(LibGtk::BindingSignal*)
+      to_unsafe.as(LibGtk::BindingEntry*).value.signals = value.to_unsafe.as(LibGtk::BindingSignal*)
     end
 
   end

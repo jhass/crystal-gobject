@@ -158,7 +158,7 @@ module Gio
 
     def option(level, optname, value)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.socket_get_option(to_unsafe.as(LibGio::Socket*), Int32.new(level), Int32.new(optname), Int32.new(value), pointerof(__error))
+      __return_value = LibGio.socket_get_option(to_unsafe.as(LibGio::Socket*), Int32.new(level), Int32.new(optname), value, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -230,14 +230,14 @@ module Gio
 
     def receive_from(address, buffer, size, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.socket_receive_from(to_unsafe.as(LibGio::Socket*), address.to_unsafe.as(LibGio::SocketAddress*), buffer, UInt64.new(size), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.socket_receive_from(to_unsafe.as(LibGio::Socket*), address, buffer, UInt64.new(size), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def receive_message(address, vectors, num_vectors, messages, num_messages, flags, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.socket_receive_message(to_unsafe.as(LibGio::Socket*), address && address.to_unsafe.as(LibGio::SocketAddress*), vectors, Int32.new(num_vectors), messages && messages, Int32.new(num_messages), Int32.new(flags), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.socket_receive_message(to_unsafe.as(LibGio::Socket*), address, vectors, Int32.new(num_vectors), messages, num_messages, flags, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

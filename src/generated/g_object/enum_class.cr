@@ -22,43 +22,43 @@ module GObject
     end
 
     def g_type_class
-      GObject::TypeClass.new((to_unsafe.value.g_type_class))
+      GObject::TypeClass.new((to_unsafe.as(LibGObject::EnumClass*).value.g_type_class))
     end
 
     def g_type_class=(value : GObject::TypeClass)
-      to_unsafe.value.g_type_class = value
+      to_unsafe.as(LibGObject::EnumClass*).value.g_type_class = value
     end
 
     def minimum
-      (to_unsafe.value.minimum)
+      (to_unsafe.as(LibGObject::EnumClass*).value.minimum)
     end
 
     def minimum=(value : Int32)
-      to_unsafe.value.minimum = Int32.new(value)
+      to_unsafe.as(LibGObject::EnumClass*).value.minimum = Int32.new(value)
     end
 
     def maximum
-      (to_unsafe.value.maximum)
+      (to_unsafe.as(LibGObject::EnumClass*).value.maximum)
     end
 
     def maximum=(value : Int32)
-      to_unsafe.value.maximum = Int32.new(value)
+      to_unsafe.as(LibGObject::EnumClass*).value.maximum = Int32.new(value)
     end
 
     def n_values
-      (to_unsafe.value.n_values)
+      (to_unsafe.as(LibGObject::EnumClass*).value.n_values)
     end
 
     def n_values=(value : UInt32)
-      to_unsafe.value.n_values = UInt32.new(value)
+      to_unsafe.as(LibGObject::EnumClass*).value.n_values = UInt32.new(value)
     end
 
     def values
-      GObject::EnumValue.new((to_unsafe.value.values))
+      GObject::EnumValue.new((to_unsafe.as(LibGObject::EnumClass*).value.values))
     end
 
     def values=(value : GObject::EnumValue)
-      to_unsafe.value.values = value.to_unsafe.as(LibGObject::EnumValue*)
+      to_unsafe.as(LibGObject::EnumClass*).value.values = value.to_unsafe.as(LibGObject::EnumValue*)
     end
 
   end

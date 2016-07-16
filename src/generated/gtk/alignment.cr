@@ -26,7 +26,7 @@ module Gtk
     end
 
     def padding(padding_top, padding_bottom, padding_left, padding_right)
-      __return_value = LibGtk.alignment_get_padding(to_unsafe.as(LibGtk::Alignment*), UInt32.new(padding_top), UInt32.new(padding_bottom), UInt32.new(padding_left), UInt32.new(padding_right))
+      __return_value = LibGtk.alignment_get_padding(to_unsafe.as(LibGtk::Alignment*), padding_top, padding_bottom, padding_left, padding_right)
       __return_value
     end
 

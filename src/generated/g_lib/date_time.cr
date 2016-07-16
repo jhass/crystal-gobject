@@ -191,7 +191,7 @@ module GLib
     end
 
     def ymd(year, month, day)
-      __return_value = LibGLib.date_time_get_ymd(to_unsafe.as(LibGLib::DateTime*), Int32.new(year), Int32.new(month), Int32.new(day))
+      __return_value = LibGLib.date_time_get_ymd(to_unsafe.as(LibGLib::DateTime*), year, month, day)
       __return_value
     end
 

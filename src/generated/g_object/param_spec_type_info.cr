@@ -20,47 +20,47 @@ module GObject
     end
 
     def instance_size
-      (to_unsafe.value.instance_size)
+      (to_unsafe.as(LibGObject::ParamSpecTypeInfo*).value.instance_size)
     end
 
     def instance_size=(value : UInt16)
-      to_unsafe.value.instance_size = UInt16.new(value)
+      to_unsafe.as(LibGObject::ParamSpecTypeInfo*).value.instance_size = UInt16.new(value)
     end
 
     def n_preallocs
-      (to_unsafe.value.n_preallocs)
+      (to_unsafe.as(LibGObject::ParamSpecTypeInfo*).value.n_preallocs)
     end
 
     def n_preallocs=(value : UInt16)
-      to_unsafe.value.n_preallocs = UInt16.new(value)
+      to_unsafe.as(LibGObject::ParamSpecTypeInfo*).value.n_preallocs = UInt16.new(value)
     end
 
     def instance_init
-      (to_unsafe.value.instance_init)
+      (to_unsafe.as(LibGObject::ParamSpecTypeInfo*).value.instance_init)
     end
 
     def value_type
-      (to_unsafe.value.value_type)
+      (to_unsafe.as(LibGObject::ParamSpecTypeInfo*).value.value_type)
     end
 
     def value_type=(value : UInt64)
-      to_unsafe.value.value_type = UInt64.new(value)
+      to_unsafe.as(LibGObject::ParamSpecTypeInfo*).value.value_type = UInt64.new(value)
     end
 
     def finalize
-      (to_unsafe.value.finalize)
+      (to_unsafe.as(LibGObject::ParamSpecTypeInfo*).value.finalize)
     end
 
     def value_set_default
-      (to_unsafe.value.value_set_default)
+      (to_unsafe.as(LibGObject::ParamSpecTypeInfo*).value.value_set_default)
     end
 
     def value_validate
-      (to_unsafe.value.value_validate)
+      (to_unsafe.as(LibGObject::ParamSpecTypeInfo*).value.value_validate)
     end
 
     def values_cmp
-      (to_unsafe.value.values_cmp)
+      (to_unsafe.as(LibGObject::ParamSpecTypeInfo*).value.values_cmp)
     end
 
   end

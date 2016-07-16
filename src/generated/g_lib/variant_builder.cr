@@ -51,7 +51,7 @@ module GLib
     end
 
     def x
-      PointerIterator.new((to_unsafe.value.x)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGLib::VariantBuilder*).value.x)) {|__item| __item }
     end
 
   end

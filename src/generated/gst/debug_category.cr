@@ -51,19 +51,19 @@ module Gst
     end
 
     def threshold
-      (to_unsafe.value.threshold)
+      (to_unsafe.as(LibGst::DebugCategory*).value.threshold)
     end
 
     def color
-      (to_unsafe.value.color)
+      (to_unsafe.as(LibGst::DebugCategory*).value.color)
     end
 
     def name
-      (raise "Expected string but got null" unless (to_unsafe.value.name); ::String.new((to_unsafe.value.name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGst::DebugCategory*).value.name); ::String.new((to_unsafe.as(LibGst::DebugCategory*).value.name)))
     end
 
     def description
-      (raise "Expected string but got null" unless (to_unsafe.value.description); ::String.new((to_unsafe.value.description)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGst::DebugCategory*).value.description); ::String.new((to_unsafe.as(LibGst::DebugCategory*).value.description)))
     end
 
   end

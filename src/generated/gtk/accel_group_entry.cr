@@ -20,27 +20,27 @@ module Gtk
     end
 
     def key
-      Gtk::AccelKey.new((to_unsafe.value.key))
+      Gtk::AccelKey.new((to_unsafe.as(LibGtk::AccelGroupEntry*).value.key))
     end
 
     def key=(value : Gtk::AccelKey)
-      to_unsafe.value.key = value
+      to_unsafe.as(LibGtk::AccelGroupEntry*).value.key = value
     end
 
     def closure
-      GObject::Closure.new((to_unsafe.value.closure))
+      GObject::Closure.new((to_unsafe.as(LibGtk::AccelGroupEntry*).value.closure))
     end
 
     def closure=(value : GObject::Closure)
-      to_unsafe.value.closure = value.to_unsafe.as(LibGObject::Closure*)
+      to_unsafe.as(LibGtk::AccelGroupEntry*).value.closure = value.to_unsafe.as(LibGObject::Closure*)
     end
 
     def accel_path_quark
-      (to_unsafe.value.accel_path_quark)
+      (to_unsafe.as(LibGtk::AccelGroupEntry*).value.accel_path_quark)
     end
 
     def accel_path_quark=(value : UInt32)
-      to_unsafe.value.accel_path_quark = UInt32.new(value)
+      to_unsafe.as(LibGtk::AccelGroupEntry*).value.accel_path_quark = UInt32.new(value)
     end
 
   end

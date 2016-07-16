@@ -16,7 +16,7 @@ module Gst
     end
 
     def meta(name, tag, value)
-      __return_value = LibGst.preset_get_meta(to_unsafe.as(LibGst::Preset*), name.to_unsafe, tag.to_unsafe, value.to_unsafe)
+      __return_value = LibGst.preset_get_meta(to_unsafe.as(LibGst::Preset*), name.to_unsafe, tag.to_unsafe, value)
       __return_value
     end
 

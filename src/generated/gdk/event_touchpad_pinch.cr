@@ -32,123 +32,123 @@ module Gdk
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibGdk::EventTouchpadPinch*).value.type)
     end
 
     def type=(value : Gdk::EventType)
-      to_unsafe.value.type = value
+      to_unsafe.as(LibGdk::EventTouchpadPinch*).value.type = value
     end
 
     def window
-      Gdk::Window.new((to_unsafe.value.window))
+      Gdk::Window.new((to_unsafe.as(LibGdk::EventTouchpadPinch*).value.window))
     end
 
     def window=(value : Gdk::Window)
-      to_unsafe.value.window = value.to_unsafe.as(LibGdk::Window*)
+      to_unsafe.as(LibGdk::EventTouchpadPinch*).value.window = value.to_unsafe.as(LibGdk::Window*)
     end
 
     def send_event
-      (to_unsafe.value.send_event)
+      (to_unsafe.as(LibGdk::EventTouchpadPinch*).value.send_event)
     end
 
     def send_event=(value : Int8)
-      to_unsafe.value.send_event = Int8.new(value)
+      to_unsafe.as(LibGdk::EventTouchpadPinch*).value.send_event = Int8.new(value)
     end
 
     def phase
-      (to_unsafe.value.phase)
+      (to_unsafe.as(LibGdk::EventTouchpadPinch*).value.phase)
     end
 
     def phase=(value : Gdk::TouchpadGesturePhase)
-      to_unsafe.value.phase = value
+      to_unsafe.as(LibGdk::EventTouchpadPinch*).value.phase = value
     end
 
     def n_fingers
-      (to_unsafe.value.n_fingers)
+      (to_unsafe.as(LibGdk::EventTouchpadPinch*).value.n_fingers)
     end
 
     def n_fingers=(value : Int8)
-      to_unsafe.value.n_fingers = Int8.new(value)
+      to_unsafe.as(LibGdk::EventTouchpadPinch*).value.n_fingers = Int8.new(value)
     end
 
     def time
-      (to_unsafe.value.time)
+      (to_unsafe.as(LibGdk::EventTouchpadPinch*).value.time)
     end
 
     def time=(value : UInt32)
-      to_unsafe.value.time = UInt32.new(value)
+      to_unsafe.as(LibGdk::EventTouchpadPinch*).value.time = UInt32.new(value)
     end
 
     def x
-      (to_unsafe.value.x)
+      (to_unsafe.as(LibGdk::EventTouchpadPinch*).value.x)
     end
 
     def x=(value : Float64)
-      to_unsafe.value.x = Float64.new(value)
+      to_unsafe.as(LibGdk::EventTouchpadPinch*).value.x = Float64.new(value)
     end
 
     def y
-      (to_unsafe.value.y)
+      (to_unsafe.as(LibGdk::EventTouchpadPinch*).value.y)
     end
 
     def y=(value : Float64)
-      to_unsafe.value.y = Float64.new(value)
+      to_unsafe.as(LibGdk::EventTouchpadPinch*).value.y = Float64.new(value)
     end
 
     def dx
-      (to_unsafe.value.dx)
+      (to_unsafe.as(LibGdk::EventTouchpadPinch*).value.dx)
     end
 
     def dx=(value : Float64)
-      to_unsafe.value.dx = Float64.new(value)
+      to_unsafe.as(LibGdk::EventTouchpadPinch*).value.dx = Float64.new(value)
     end
 
     def dy
-      (to_unsafe.value.dy)
+      (to_unsafe.as(LibGdk::EventTouchpadPinch*).value.dy)
     end
 
     def dy=(value : Float64)
-      to_unsafe.value.dy = Float64.new(value)
+      to_unsafe.as(LibGdk::EventTouchpadPinch*).value.dy = Float64.new(value)
     end
 
     def angle_delta
-      (to_unsafe.value.angle_delta)
+      (to_unsafe.as(LibGdk::EventTouchpadPinch*).value.angle_delta)
     end
 
     def angle_delta=(value : Float64)
-      to_unsafe.value.angle_delta = Float64.new(value)
+      to_unsafe.as(LibGdk::EventTouchpadPinch*).value.angle_delta = Float64.new(value)
     end
 
     def scale
-      (to_unsafe.value.scale)
+      (to_unsafe.as(LibGdk::EventTouchpadPinch*).value.scale)
     end
 
     def scale=(value : Float64)
-      to_unsafe.value.scale = Float64.new(value)
+      to_unsafe.as(LibGdk::EventTouchpadPinch*).value.scale = Float64.new(value)
     end
 
     def x_root
-      (to_unsafe.value.x_root)
+      (to_unsafe.as(LibGdk::EventTouchpadPinch*).value.x_root)
     end
 
     def x_root=(value : Float64)
-      to_unsafe.value.x_root = Float64.new(value)
+      to_unsafe.as(LibGdk::EventTouchpadPinch*).value.x_root = Float64.new(value)
     end
 
     def y_root
-      (to_unsafe.value.y_root)
+      (to_unsafe.as(LibGdk::EventTouchpadPinch*).value.y_root)
     end
 
     def y_root=(value : Float64)
-      to_unsafe.value.y_root = Float64.new(value)
+      to_unsafe.as(LibGdk::EventTouchpadPinch*).value.y_root = Float64.new(value)
     end
 
     def state
-      (to_unsafe.value.state)
+      (to_unsafe.as(LibGdk::EventTouchpadPinch*).value.state)
     end
 
     def state=(value : Gdk::ModifierType)
-      to_unsafe.value.state = value
+      to_unsafe.as(LibGdk::EventTouchpadPinch*).value.state = value
     end
 
   end

@@ -19,19 +19,19 @@ module Gdk
     end
 
     def x
-      (to_unsafe.value.x)
+      (to_unsafe.as(LibGdk::Point*).value.x)
     end
 
     def x=(value : Int32)
-      to_unsafe.value.x = Int32.new(value)
+      to_unsafe.as(LibGdk::Point*).value.x = Int32.new(value)
     end
 
     def y
-      (to_unsafe.value.y)
+      (to_unsafe.as(LibGdk::Point*).value.y)
     end
 
     def y=(value : Int32)
-      to_unsafe.value.y = Int32.new(value)
+      to_unsafe.as(LibGdk::Point*).value.y = Int32.new(value)
     end
 
   end

@@ -23,51 +23,51 @@ module Gdk
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibGdk::EventGrabBroken*).value.type)
     end
 
     def type=(value : Gdk::EventType)
-      to_unsafe.value.type = value
+      to_unsafe.as(LibGdk::EventGrabBroken*).value.type = value
     end
 
     def window
-      Gdk::Window.new((to_unsafe.value.window))
+      Gdk::Window.new((to_unsafe.as(LibGdk::EventGrabBroken*).value.window))
     end
 
     def window=(value : Gdk::Window)
-      to_unsafe.value.window = value.to_unsafe.as(LibGdk::Window*)
+      to_unsafe.as(LibGdk::EventGrabBroken*).value.window = value.to_unsafe.as(LibGdk::Window*)
     end
 
     def send_event
-      (to_unsafe.value.send_event)
+      (to_unsafe.as(LibGdk::EventGrabBroken*).value.send_event)
     end
 
     def send_event=(value : Int8)
-      to_unsafe.value.send_event = Int8.new(value)
+      to_unsafe.as(LibGdk::EventGrabBroken*).value.send_event = Int8.new(value)
     end
 
     def keyboard
-      (to_unsafe.value.keyboard)
+      (to_unsafe.as(LibGdk::EventGrabBroken*).value.keyboard)
     end
 
     def keyboard=(value : Bool)
-      to_unsafe.value.keyboard = value
+      to_unsafe.as(LibGdk::EventGrabBroken*).value.keyboard = value
     end
 
     def implicit
-      (to_unsafe.value.implicit)
+      (to_unsafe.as(LibGdk::EventGrabBroken*).value.implicit)
     end
 
     def implicit=(value : Bool)
-      to_unsafe.value.implicit = value
+      to_unsafe.as(LibGdk::EventGrabBroken*).value.implicit = value
     end
 
     def grab_window
-      Gdk::Window.new((to_unsafe.value.grab_window))
+      Gdk::Window.new((to_unsafe.as(LibGdk::EventGrabBroken*).value.grab_window))
     end
 
     def grab_window=(value : Gdk::Window)
-      to_unsafe.value.grab_window = value.to_unsafe.as(LibGdk::Window*)
+      to_unsafe.as(LibGdk::EventGrabBroken*).value.grab_window = value.to_unsafe.as(LibGdk::Window*)
     end
 
   end

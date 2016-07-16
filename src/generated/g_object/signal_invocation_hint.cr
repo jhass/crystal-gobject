@@ -20,27 +20,27 @@ module GObject
     end
 
     def signal_id
-      (to_unsafe.value.signal_id)
+      (to_unsafe.as(LibGObject::SignalInvocationHint*).value.signal_id)
     end
 
     def signal_id=(value : UInt32)
-      to_unsafe.value.signal_id = UInt32.new(value)
+      to_unsafe.as(LibGObject::SignalInvocationHint*).value.signal_id = UInt32.new(value)
     end
 
     def detail
-      (to_unsafe.value.detail)
+      (to_unsafe.as(LibGObject::SignalInvocationHint*).value.detail)
     end
 
     def detail=(value : UInt32)
-      to_unsafe.value.detail = UInt32.new(value)
+      to_unsafe.as(LibGObject::SignalInvocationHint*).value.detail = UInt32.new(value)
     end
 
     def run_type
-      (to_unsafe.value.run_type)
+      (to_unsafe.as(LibGObject::SignalInvocationHint*).value.run_type)
     end
 
     def run_type=(value : GObject::SignalFlags)
-      to_unsafe.value.run_type = value
+      to_unsafe.as(LibGObject::SignalInvocationHint*).value.run_type = value
     end
 
   end

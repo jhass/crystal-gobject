@@ -23,55 +23,55 @@ module Gst
     end
 
     def api
-      (to_unsafe.value.api)
+      (to_unsafe.as(LibGst::MetaInfo*).value.api)
     end
 
     def api=(value : UInt64)
-      to_unsafe.value.api = UInt64.new(value)
+      to_unsafe.as(LibGst::MetaInfo*).value.api = UInt64.new(value)
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibGst::MetaInfo*).value.type)
     end
 
     def type=(value : UInt64)
-      to_unsafe.value.type = UInt64.new(value)
+      to_unsafe.as(LibGst::MetaInfo*).value.type = UInt64.new(value)
     end
 
     def size
-      (to_unsafe.value.size)
+      (to_unsafe.as(LibGst::MetaInfo*).value.size)
     end
 
     def size=(value : UInt64)
-      to_unsafe.value.size = UInt64.new(value)
+      to_unsafe.as(LibGst::MetaInfo*).value.size = UInt64.new(value)
     end
 
     def init_func
-      (to_unsafe.value.init_func)
+      (to_unsafe.as(LibGst::MetaInfo*).value.init_func)
     end
 
     def init_func=(value : Gst::MetaInitFunction)
-      to_unsafe.value.init_func = value
+      to_unsafe.as(LibGst::MetaInfo*).value.init_func = value
     end
 
     def free_func
-      (to_unsafe.value.free_func)
+      (to_unsafe.as(LibGst::MetaInfo*).value.free_func)
     end
 
     def free_func=(value : Gst::MetaFreeFunction)
-      to_unsafe.value.free_func = value
+      to_unsafe.as(LibGst::MetaInfo*).value.free_func = value
     end
 
     def transform_func
-      (to_unsafe.value.transform_func)
+      (to_unsafe.as(LibGst::MetaInfo*).value.transform_func)
     end
 
     def transform_func=(value : Gst::MetaTransformFunction)
-      to_unsafe.value.transform_func = value
+      to_unsafe.as(LibGst::MetaInfo*).value.transform_func = value
     end
 
     def _gst_reserved
-      PointerIterator.new((to_unsafe.value._gst_reserved)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGst::MetaInfo*).value._gst_reserved)) {|__item| __item }
     end
 
   end

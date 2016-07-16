@@ -43,7 +43,7 @@ module Pango
     end
 
     def font_scale_factors(xscale, yscale)
-      __return_value = LibPango.matrix_get_font_scale_factors(to_unsafe.as(LibPango::Matrix*), Float64.new(xscale), Float64.new(yscale))
+      __return_value = LibPango.matrix_get_font_scale_factors(to_unsafe.as(LibPango::Matrix*), xscale, yscale)
       __return_value
     end
 
@@ -58,22 +58,22 @@ module Pango
     end
 
     def transform_distance(dx, dy)
-      __return_value = LibPango.matrix_transform_distance(to_unsafe.as(LibPango::Matrix*), Float64.new(dx), Float64.new(dy))
+      __return_value = LibPango.matrix_transform_distance(to_unsafe.as(LibPango::Matrix*), dx, dy)
       __return_value
     end
 
     def transform_pixel_rectangle(rect)
-      __return_value = LibPango.matrix_transform_pixel_rectangle(to_unsafe.as(LibPango::Matrix*), rect && rect)
+      __return_value = LibPango.matrix_transform_pixel_rectangle(to_unsafe.as(LibPango::Matrix*), rect)
       __return_value
     end
 
     def transform_point(x, y)
-      __return_value = LibPango.matrix_transform_point(to_unsafe.as(LibPango::Matrix*), Float64.new(x), Float64.new(y))
+      __return_value = LibPango.matrix_transform_point(to_unsafe.as(LibPango::Matrix*), x, y)
       __return_value
     end
 
     def transform_rectangle(rect)
-      __return_value = LibPango.matrix_transform_rectangle(to_unsafe.as(LibPango::Matrix*), rect && rect)
+      __return_value = LibPango.matrix_transform_rectangle(to_unsafe.as(LibPango::Matrix*), rect)
       __return_value
     end
 
@@ -83,51 +83,51 @@ module Pango
     end
 
     def xx
-      (to_unsafe.value.xx)
+      (to_unsafe.as(LibPango::Matrix*).value.xx)
     end
 
     def xx=(value : Float64)
-      to_unsafe.value.xx = Float64.new(value)
+      to_unsafe.as(LibPango::Matrix*).value.xx = Float64.new(value)
     end
 
     def xy
-      (to_unsafe.value.xy)
+      (to_unsafe.as(LibPango::Matrix*).value.xy)
     end
 
     def xy=(value : Float64)
-      to_unsafe.value.xy = Float64.new(value)
+      to_unsafe.as(LibPango::Matrix*).value.xy = Float64.new(value)
     end
 
     def yx
-      (to_unsafe.value.yx)
+      (to_unsafe.as(LibPango::Matrix*).value.yx)
     end
 
     def yx=(value : Float64)
-      to_unsafe.value.yx = Float64.new(value)
+      to_unsafe.as(LibPango::Matrix*).value.yx = Float64.new(value)
     end
 
     def yy
-      (to_unsafe.value.yy)
+      (to_unsafe.as(LibPango::Matrix*).value.yy)
     end
 
     def yy=(value : Float64)
-      to_unsafe.value.yy = Float64.new(value)
+      to_unsafe.as(LibPango::Matrix*).value.yy = Float64.new(value)
     end
 
     def x0
-      (to_unsafe.value.x0)
+      (to_unsafe.as(LibPango::Matrix*).value.x0)
     end
 
     def x0=(value : Float64)
-      to_unsafe.value.x0 = Float64.new(value)
+      to_unsafe.as(LibPango::Matrix*).value.x0 = Float64.new(value)
     end
 
     def y0
-      (to_unsafe.value.y0)
+      (to_unsafe.as(LibPango::Matrix*).value.y0)
     end
 
     def y0=(value : Float64)
-      to_unsafe.value.y0 = Float64.new(value)
+      to_unsafe.as(LibPango::Matrix*).value.y0 = Float64.new(value)
     end
 
   end

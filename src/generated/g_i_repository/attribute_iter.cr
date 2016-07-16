@@ -16,19 +16,19 @@ module GIRepository
     end
 
     def data
-      (to_unsafe.value.data)
+      (to_unsafe.as(LibGIRepository::AttributeIter*).value.data)
     end
 
     def data2
-      (to_unsafe.value.data2)
+      (to_unsafe.as(LibGIRepository::AttributeIter*).value.data2)
     end
 
     def data3
-      (to_unsafe.value.data3)
+      (to_unsafe.as(LibGIRepository::AttributeIter*).value.data3)
     end
 
     def data4
-      (to_unsafe.value.data4)
+      (to_unsafe.as(LibGIRepository::AttributeIter*).value.data4)
     end
 
   end

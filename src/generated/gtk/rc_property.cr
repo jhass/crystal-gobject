@@ -46,35 +46,35 @@ module Gtk
     end
 
     def type_name
-      (to_unsafe.value.type_name)
+      (to_unsafe.as(LibGtk::RcProperty*).value.type_name)
     end
 
     def type_name=(value : UInt32)
-      to_unsafe.value.type_name = UInt32.new(value)
+      to_unsafe.as(LibGtk::RcProperty*).value.type_name = UInt32.new(value)
     end
 
     def property_name
-      (to_unsafe.value.property_name)
+      (to_unsafe.as(LibGtk::RcProperty*).value.property_name)
     end
 
     def property_name=(value : UInt32)
-      to_unsafe.value.property_name = UInt32.new(value)
+      to_unsafe.as(LibGtk::RcProperty*).value.property_name = UInt32.new(value)
     end
 
     def origin
-      (raise "Expected string but got null" unless (to_unsafe.value.origin); ::String.new((to_unsafe.value.origin)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::RcProperty*).value.origin); ::String.new((to_unsafe.as(LibGtk::RcProperty*).value.origin)))
     end
 
     def origin=(value : String)
-      to_unsafe.value.origin = value.to_unsafe
+      to_unsafe.as(LibGtk::RcProperty*).value.origin = value.to_unsafe
     end
 
     def value
-      GObject::Value.new((to_unsafe.value.value))
+      GObject::Value.new((to_unsafe.as(LibGtk::RcProperty*).value.value))
     end
 
     def value=(value : GObject::Value)
-      to_unsafe.value.value = value
+      to_unsafe.as(LibGtk::RcProperty*).value.value = value
     end
 
   end

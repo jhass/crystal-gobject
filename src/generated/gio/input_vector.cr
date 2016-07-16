@@ -19,19 +19,19 @@ module Gio
     end
 
     def buffer
-      (to_unsafe.value.buffer)
+      (to_unsafe.as(LibGio::InputVector*).value.buffer)
     end
 
     def buffer=(value : Void*)
-      to_unsafe.value.buffer = value
+      to_unsafe.as(LibGio::InputVector*).value.buffer = value
     end
 
     def size
-      (to_unsafe.value.size)
+      (to_unsafe.as(LibGio::InputVector*).value.size)
     end
 
     def size=(value : UInt64)
-      to_unsafe.value.size = UInt64.new(value)
+      to_unsafe.as(LibGio::InputVector*).value.size = UInt64.new(value)
     end
 
   end

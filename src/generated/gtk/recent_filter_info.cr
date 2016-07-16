@@ -24,59 +24,59 @@ module Gtk
     end
 
     def contains
-      (to_unsafe.value.contains)
+      (to_unsafe.as(LibGtk::RecentFilterInfo*).value.contains)
     end
 
     def contains=(value : Gtk::RecentFilterFlags)
-      to_unsafe.value.contains = value
+      to_unsafe.as(LibGtk::RecentFilterInfo*).value.contains = value
     end
 
     def uri
-      (raise "Expected string but got null" unless (to_unsafe.value.uri); ::String.new((to_unsafe.value.uri)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::RecentFilterInfo*).value.uri); ::String.new((to_unsafe.as(LibGtk::RecentFilterInfo*).value.uri)))
     end
 
     def uri=(value : String)
-      to_unsafe.value.uri = value.to_unsafe
+      to_unsafe.as(LibGtk::RecentFilterInfo*).value.uri = value.to_unsafe
     end
 
     def display_name
-      (raise "Expected string but got null" unless (to_unsafe.value.display_name); ::String.new((to_unsafe.value.display_name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::RecentFilterInfo*).value.display_name); ::String.new((to_unsafe.as(LibGtk::RecentFilterInfo*).value.display_name)))
     end
 
     def display_name=(value : String)
-      to_unsafe.value.display_name = value.to_unsafe
+      to_unsafe.as(LibGtk::RecentFilterInfo*).value.display_name = value.to_unsafe
     end
 
     def mime_type
-      (raise "Expected string but got null" unless (to_unsafe.value.mime_type); ::String.new((to_unsafe.value.mime_type)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::RecentFilterInfo*).value.mime_type); ::String.new((to_unsafe.as(LibGtk::RecentFilterInfo*).value.mime_type)))
     end
 
     def mime_type=(value : String)
-      to_unsafe.value.mime_type = value.to_unsafe
+      to_unsafe.as(LibGtk::RecentFilterInfo*).value.mime_type = value.to_unsafe
     end
 
     def applications
-      PointerIterator.new((to_unsafe.value.applications)) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
+      PointerIterator.new((to_unsafe.as(LibGtk::RecentFilterInfo*).value.applications)) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def applications=(value : Array(String))
-      to_unsafe.value.applications = value
+      to_unsafe.as(LibGtk::RecentFilterInfo*).value.applications = value
     end
 
     def groups
-      PointerIterator.new((to_unsafe.value.groups)) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
+      PointerIterator.new((to_unsafe.as(LibGtk::RecentFilterInfo*).value.groups)) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def groups=(value : Array(String))
-      to_unsafe.value.groups = value
+      to_unsafe.as(LibGtk::RecentFilterInfo*).value.groups = value
     end
 
     def age
-      (to_unsafe.value.age)
+      (to_unsafe.as(LibGtk::RecentFilterInfo*).value.age)
     end
 
     def age=(value : Int32)
-      to_unsafe.value.age = Int32.new(value)
+      to_unsafe.as(LibGtk::RecentFilterInfo*).value.age = Int32.new(value)
     end
 
   end

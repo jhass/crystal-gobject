@@ -19,19 +19,19 @@ module GLib
     end
 
     def pdata
-      (to_unsafe.value.pdata)
+      (to_unsafe.as(LibGLib::PtrArray*).value.pdata)
     end
 
     def pdata=(value : Void*)
-      to_unsafe.value.pdata = value
+      to_unsafe.as(LibGLib::PtrArray*).value.pdata = value
     end
 
     def len
-      (to_unsafe.value.len)
+      (to_unsafe.as(LibGLib::PtrArray*).value.len)
     end
 
     def len=(value : UInt32)
-      to_unsafe.value.len = UInt32.new(value)
+      to_unsafe.as(LibGLib::PtrArray*).value.len = UInt32.new(value)
     end
 
   end

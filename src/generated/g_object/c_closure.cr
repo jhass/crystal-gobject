@@ -134,19 +134,19 @@ module GObject
     end
 
     def closure
-      GObject::Closure.new((to_unsafe.value.closure))
+      GObject::Closure.new((to_unsafe.as(LibGObject::CClosure*).value.closure))
     end
 
     def closure=(value : GObject::Closure)
-      to_unsafe.value.closure = value
+      to_unsafe.as(LibGObject::CClosure*).value.closure = value
     end
 
     def callback
-      (to_unsafe.value.callback)
+      (to_unsafe.as(LibGObject::CClosure*).value.callback)
     end
 
     def callback=(value : Void*)
-      to_unsafe.value.callback = value
+      to_unsafe.as(LibGObject::CClosure*).value.callback = value
     end
 
   end

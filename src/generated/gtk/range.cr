@@ -72,7 +72,7 @@ module Gtk
     end
 
     def slider_range(slider_start, slider_end)
-      __return_value = LibGtk.range_get_slider_range(to_unsafe.as(LibGtk::Range*), Int32.new(slider_start), Int32.new(slider_end))
+      __return_value = LibGtk.range_get_slider_range(to_unsafe.as(LibGtk::Range*), slider_start, slider_end)
       __return_value
     end
 

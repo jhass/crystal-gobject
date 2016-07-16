@@ -156,7 +156,7 @@ module GLib
     end
 
     def self.string_scan(string, limit, endptr)
-      __return_value = LibGLib.variant_type_string_scan(string.to_unsafe, limit && limit.to_unsafe, endptr.to_unsafe)
+      __return_value = LibGLib.variant_type_string_scan(string.to_unsafe, limit && limit.to_unsafe, endptr)
       __return_value
     end
 

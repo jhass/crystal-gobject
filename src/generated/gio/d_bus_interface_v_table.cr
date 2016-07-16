@@ -20,31 +20,31 @@ module Gio
     end
 
     def method_call
-      (to_unsafe.value.method_call)
+      (to_unsafe.as(LibGio::DBusInterfaceVTable*).value.method_call)
     end
 
     def method_call=(value : Gio::DBusInterfaceMethodCallFunc)
-      to_unsafe.value.method_call = value
+      to_unsafe.as(LibGio::DBusInterfaceVTable*).value.method_call = value
     end
 
     def get_property
-      (to_unsafe.value.get_property)
+      (to_unsafe.as(LibGio::DBusInterfaceVTable*).value.get_property)
     end
 
     def get_property=(value : Gio::DBusInterfaceGetPropertyFunc)
-      to_unsafe.value.get_property = value
+      to_unsafe.as(LibGio::DBusInterfaceVTable*).value.get_property = value
     end
 
     def set_property
-      (to_unsafe.value.set_property)
+      (to_unsafe.as(LibGio::DBusInterfaceVTable*).value.set_property)
     end
 
     def set_property=(value : Gio::DBusInterfaceSetPropertyFunc)
-      to_unsafe.value.set_property = value
+      to_unsafe.as(LibGio::DBusInterfaceVTable*).value.set_property = value
     end
 
     def padding
-      PointerIterator.new((to_unsafe.value.padding)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGio::DBusInterfaceVTable*).value.padding)) {|__item| __item }
     end
 
   end

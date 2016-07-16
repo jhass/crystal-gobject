@@ -94,7 +94,7 @@ module Gst
     end
 
     def extract_dup(offset, size, dest, dest_size)
-      __return_value = LibGst.buffer_extract_dup(to_unsafe.as(LibGst::Buffer*), UInt64.new(offset), UInt64.new(size), dest, UInt64.new(dest_size))
+      __return_value = LibGst.buffer_extract_dup(to_unsafe.as(LibGst::Buffer*), UInt64.new(offset), UInt64.new(size), dest, dest_size)
       __return_value
     end
 
@@ -104,7 +104,7 @@ module Gst
     end
 
     def find_memory(offset, size, idx, length, skip)
-      __return_value = LibGst.buffer_find_memory(to_unsafe.as(LibGst::Buffer*), UInt64.new(offset), UInt64.new(size), UInt32.new(idx), UInt32.new(length), UInt64.new(skip))
+      __return_value = LibGst.buffer_find_memory(to_unsafe.as(LibGst::Buffer*), UInt64.new(offset), UInt64.new(size), idx, length, skip)
       __return_value
     end
 
@@ -139,12 +139,12 @@ module Gst
     end
 
     def sizes(offset, maxsize)
-      __return_value = LibGst.buffer_get_sizes(to_unsafe.as(LibGst::Buffer*), UInt64.new(offset), UInt64.new(maxsize))
+      __return_value = LibGst.buffer_get_sizes(to_unsafe.as(LibGst::Buffer*), offset, maxsize)
       __return_value
     end
 
     def sizes_range(idx, length, offset, maxsize)
-      __return_value = LibGst.buffer_get_sizes_range(to_unsafe.as(LibGst::Buffer*), UInt32.new(idx), Int32.new(length), UInt64.new(offset), UInt64.new(maxsize))
+      __return_value = LibGst.buffer_get_sizes_range(to_unsafe.as(LibGst::Buffer*), UInt32.new(idx), Int32.new(length), offset, maxsize)
       __return_value
     end
 
@@ -264,59 +264,59 @@ module Gst
     end
 
     def mini_object
-      Gst::MiniObject.new((to_unsafe.value.mini_object))
+      Gst::MiniObject.new((to_unsafe.as(LibGst::Buffer*).value.mini_object))
     end
 
     def mini_object=(value : Gst::MiniObject)
-      to_unsafe.value.mini_object = value
+      to_unsafe.as(LibGst::Buffer*).value.mini_object = value
     end
 
     def pool
-      Gst::BufferPool.new((to_unsafe.value.pool))
+      Gst::BufferPool.new((to_unsafe.as(LibGst::Buffer*).value.pool))
     end
 
     def pool=(value : Gst::BufferPool)
-      to_unsafe.value.pool = value.to_unsafe.as(LibGst::BufferPool*)
+      to_unsafe.as(LibGst::Buffer*).value.pool = value.to_unsafe.as(LibGst::BufferPool*)
     end
 
     def pts
-      (to_unsafe.value.pts)
+      (to_unsafe.as(LibGst::Buffer*).value.pts)
     end
 
     def pts=(value : UInt64)
-      to_unsafe.value.pts = UInt64.new(value)
+      to_unsafe.as(LibGst::Buffer*).value.pts = UInt64.new(value)
     end
 
     def dts
-      (to_unsafe.value.dts)
+      (to_unsafe.as(LibGst::Buffer*).value.dts)
     end
 
     def dts=(value : UInt64)
-      to_unsafe.value.dts = UInt64.new(value)
+      to_unsafe.as(LibGst::Buffer*).value.dts = UInt64.new(value)
     end
 
     def duration
-      (to_unsafe.value.duration)
+      (to_unsafe.as(LibGst::Buffer*).value.duration)
     end
 
     def duration=(value : UInt64)
-      to_unsafe.value.duration = UInt64.new(value)
+      to_unsafe.as(LibGst::Buffer*).value.duration = UInt64.new(value)
     end
 
     def offset
-      (to_unsafe.value.offset)
+      (to_unsafe.as(LibGst::Buffer*).value.offset)
     end
 
     def offset=(value : UInt64)
-      to_unsafe.value.offset = UInt64.new(value)
+      to_unsafe.as(LibGst::Buffer*).value.offset = UInt64.new(value)
     end
 
     def offset_end
-      (to_unsafe.value.offset_end)
+      (to_unsafe.as(LibGst::Buffer*).value.offset_end)
     end
 
     def offset_end=(value : UInt64)
-      to_unsafe.value.offset_end = UInt64.new(value)
+      to_unsafe.as(LibGst::Buffer*).value.offset_end = UInt64.new(value)
     end
 
   end

@@ -161,27 +161,27 @@ module GLib
     end
 
     def dup_bytestring(length)
-      __return_value = LibGLib.variant_dup_bytestring(to_unsafe.as(LibGLib::Variant*), UInt64.new(length))
+      __return_value = LibGLib.variant_dup_bytestring(to_unsafe.as(LibGLib::Variant*), length)
       PointerIterator.new(__return_value) {|__item| __item }
     end
 
     def dup_bytestring_array(length)
-      __return_value = LibGLib.variant_dup_bytestring_array(to_unsafe.as(LibGLib::Variant*), UInt64.new(length))
+      __return_value = LibGLib.variant_dup_bytestring_array(to_unsafe.as(LibGLib::Variant*), length)
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def dup_objv(length)
-      __return_value = LibGLib.variant_dup_objv(to_unsafe.as(LibGLib::Variant*), UInt64.new(length))
+      __return_value = LibGLib.variant_dup_objv(to_unsafe.as(LibGLib::Variant*), length)
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def dup_string(length)
-      __return_value = LibGLib.variant_dup_string(to_unsafe.as(LibGLib::Variant*), UInt64.new(length))
+      __return_value = LibGLib.variant_dup_string(to_unsafe.as(LibGLib::Variant*), length)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def dup_strv(length)
-      __return_value = LibGLib.variant_dup_strv(to_unsafe.as(LibGLib::Variant*), UInt64.new(length))
+      __return_value = LibGLib.variant_dup_strv(to_unsafe.as(LibGLib::Variant*), length)
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
@@ -206,7 +206,7 @@ module GLib
     end
 
     def bytestring_array(length)
-      __return_value = LibGLib.variant_get_bytestring_array(to_unsafe.as(LibGLib::Variant*), UInt64.new(length))
+      __return_value = LibGLib.variant_get_bytestring_array(to_unsafe.as(LibGLib::Variant*), length)
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
@@ -261,7 +261,7 @@ module GLib
     end
 
     def objv(length)
-      __return_value = LibGLib.variant_get_objv(to_unsafe.as(LibGLib::Variant*), UInt64.new(length))
+      __return_value = LibGLib.variant_get_objv(to_unsafe.as(LibGLib::Variant*), length)
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
@@ -271,12 +271,12 @@ module GLib
     end
 
     def string(length)
-      __return_value = LibGLib.variant_get_string(to_unsafe.as(LibGLib::Variant*), UInt64.new(length))
+      __return_value = LibGLib.variant_get_string(to_unsafe.as(LibGLib::Variant*), length)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def strv(length)
-      __return_value = LibGLib.variant_get_strv(to_unsafe.as(LibGLib::Variant*), UInt64.new(length))
+      __return_value = LibGLib.variant_get_strv(to_unsafe.as(LibGLib::Variant*), length)
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 

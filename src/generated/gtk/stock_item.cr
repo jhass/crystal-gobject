@@ -27,43 +27,43 @@ module Gtk
     end
 
     def stock_id
-      (raise "Expected string but got null" unless (to_unsafe.value.stock_id); ::String.new((to_unsafe.value.stock_id)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::StockItem*).value.stock_id); ::String.new((to_unsafe.as(LibGtk::StockItem*).value.stock_id)))
     end
 
     def stock_id=(value : String)
-      to_unsafe.value.stock_id = value.to_unsafe
+      to_unsafe.as(LibGtk::StockItem*).value.stock_id = value.to_unsafe
     end
 
     def label
-      (raise "Expected string but got null" unless (to_unsafe.value.label); ::String.new((to_unsafe.value.label)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::StockItem*).value.label); ::String.new((to_unsafe.as(LibGtk::StockItem*).value.label)))
     end
 
     def label=(value : String)
-      to_unsafe.value.label = value.to_unsafe
+      to_unsafe.as(LibGtk::StockItem*).value.label = value.to_unsafe
     end
 
     def modifier
-      (to_unsafe.value.modifier)
+      (to_unsafe.as(LibGtk::StockItem*).value.modifier)
     end
 
     def modifier=(value : Gdk::ModifierType)
-      to_unsafe.value.modifier = value
+      to_unsafe.as(LibGtk::StockItem*).value.modifier = value
     end
 
     def keyval
-      (to_unsafe.value.keyval)
+      (to_unsafe.as(LibGtk::StockItem*).value.keyval)
     end
 
     def keyval=(value : UInt32)
-      to_unsafe.value.keyval = UInt32.new(value)
+      to_unsafe.as(LibGtk::StockItem*).value.keyval = UInt32.new(value)
     end
 
     def translation_domain
-      (raise "Expected string but got null" unless (to_unsafe.value.translation_domain); ::String.new((to_unsafe.value.translation_domain)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGtk::StockItem*).value.translation_domain); ::String.new((to_unsafe.as(LibGtk::StockItem*).value.translation_domain)))
     end
 
     def translation_domain=(value : String)
-      to_unsafe.value.translation_domain = value.to_unsafe
+      to_unsafe.as(LibGtk::StockItem*).value.translation_domain = value.to_unsafe
     end
 
   end

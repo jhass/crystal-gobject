@@ -21,7 +21,7 @@ module Pango
     end
 
     def scripts(num_scripts)
-      __return_value = LibPango.language_get_scripts(to_unsafe.as(LibPango::Language*), Int32.new(num_scripts))
+      __return_value = LibPango.language_get_scripts(to_unsafe.as(LibPango::Language*), num_scripts)
       PointerIterator.new(__return_value) {|__item| __item } if __return_value
     end
 

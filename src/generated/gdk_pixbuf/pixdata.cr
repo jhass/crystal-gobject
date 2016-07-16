@@ -31,7 +31,7 @@ module GdkPixbuf
     end
 
     def serialize(stream_length_p)
-      __return_value = LibGdkPixbuf.pixdata_serialize(to_unsafe.as(LibGdkPixbuf::Pixdata*), UInt32.new(stream_length_p))
+      __return_value = LibGdkPixbuf.pixdata_serialize(to_unsafe.as(LibGdkPixbuf::Pixdata*), stream_length_p)
       PointerIterator.new(__return_value) {|__item| __item }
     end
 
@@ -41,59 +41,59 @@ module GdkPixbuf
     end
 
     def magic
-      (to_unsafe.value.magic)
+      (to_unsafe.as(LibGdkPixbuf::Pixdata*).value.magic)
     end
 
     def magic=(value : UInt32)
-      to_unsafe.value.magic = UInt32.new(value)
+      to_unsafe.as(LibGdkPixbuf::Pixdata*).value.magic = UInt32.new(value)
     end
 
     def length
-      (to_unsafe.value.length)
+      (to_unsafe.as(LibGdkPixbuf::Pixdata*).value.length)
     end
 
     def length=(value : Int32)
-      to_unsafe.value.length = Int32.new(value)
+      to_unsafe.as(LibGdkPixbuf::Pixdata*).value.length = Int32.new(value)
     end
 
     def pixdata_type
-      (to_unsafe.value.pixdata_type)
+      (to_unsafe.as(LibGdkPixbuf::Pixdata*).value.pixdata_type)
     end
 
     def pixdata_type=(value : UInt32)
-      to_unsafe.value.pixdata_type = UInt32.new(value)
+      to_unsafe.as(LibGdkPixbuf::Pixdata*).value.pixdata_type = UInt32.new(value)
     end
 
     def rowstride
-      (to_unsafe.value.rowstride)
+      (to_unsafe.as(LibGdkPixbuf::Pixdata*).value.rowstride)
     end
 
     def rowstride=(value : UInt32)
-      to_unsafe.value.rowstride = UInt32.new(value)
+      to_unsafe.as(LibGdkPixbuf::Pixdata*).value.rowstride = UInt32.new(value)
     end
 
     def width
-      (to_unsafe.value.width)
+      (to_unsafe.as(LibGdkPixbuf::Pixdata*).value.width)
     end
 
     def width=(value : UInt32)
-      to_unsafe.value.width = UInt32.new(value)
+      to_unsafe.as(LibGdkPixbuf::Pixdata*).value.width = UInt32.new(value)
     end
 
     def height
-      (to_unsafe.value.height)
+      (to_unsafe.as(LibGdkPixbuf::Pixdata*).value.height)
     end
 
     def height=(value : UInt32)
-      to_unsafe.value.height = UInt32.new(value)
+      to_unsafe.as(LibGdkPixbuf::Pixdata*).value.height = UInt32.new(value)
     end
 
     def pixel_data
-      PointerIterator.new((to_unsafe.value.pixel_data)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGdkPixbuf::Pixdata*).value.pixel_data)) {|__item| __item }
     end
 
     def pixel_data=(value : Array(UInt8))
-      to_unsafe.value.pixel_data = value
+      to_unsafe.as(LibGdkPixbuf::Pixdata*).value.pixel_data = value
     end
 
   end

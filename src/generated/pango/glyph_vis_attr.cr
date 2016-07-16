@@ -18,11 +18,11 @@ module Pango
     end
 
     def is_cluster_start
-      (to_unsafe.value.is_cluster_start)
+      (to_unsafe.as(LibPango::GlyphVisAttr*).value.is_cluster_start)
     end
 
     def is_cluster_start=(value : UInt32)
-      to_unsafe.value.is_cluster_start = UInt32.new(value)
+      to_unsafe.as(LibPango::GlyphVisAttr*).value.is_cluster_start = UInt32.new(value)
     end
 
   end

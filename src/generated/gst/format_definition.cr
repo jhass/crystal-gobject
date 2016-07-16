@@ -21,35 +21,35 @@ module Gst
     end
 
     def value
-      (to_unsafe.value.value)
+      (to_unsafe.as(LibGst::FormatDefinition*).value.value)
     end
 
     def value=(value : Gst::Format)
-      to_unsafe.value.value = value
+      to_unsafe.as(LibGst::FormatDefinition*).value.value = value
     end
 
     def nick
-      (raise "Expected string but got null" unless (to_unsafe.value.nick); ::String.new((to_unsafe.value.nick)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGst::FormatDefinition*).value.nick); ::String.new((to_unsafe.as(LibGst::FormatDefinition*).value.nick)))
     end
 
     def nick=(value : String)
-      to_unsafe.value.nick = value.to_unsafe
+      to_unsafe.as(LibGst::FormatDefinition*).value.nick = value.to_unsafe
     end
 
     def description
-      (raise "Expected string but got null" unless (to_unsafe.value.description); ::String.new((to_unsafe.value.description)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGst::FormatDefinition*).value.description); ::String.new((to_unsafe.as(LibGst::FormatDefinition*).value.description)))
     end
 
     def description=(value : String)
-      to_unsafe.value.description = value.to_unsafe
+      to_unsafe.as(LibGst::FormatDefinition*).value.description = value.to_unsafe
     end
 
     def quark
-      (to_unsafe.value.quark)
+      (to_unsafe.as(LibGst::FormatDefinition*).value.quark)
     end
 
     def quark=(value : UInt32)
-      to_unsafe.value.quark = UInt32.new(value)
+      to_unsafe.as(LibGst::FormatDefinition*).value.quark = UInt32.new(value)
     end
 
   end

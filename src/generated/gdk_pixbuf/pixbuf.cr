@@ -110,7 +110,7 @@ module GdkPixbuf
     end
 
     def self.file_info(filename, width, height)
-      __return_value = LibGdkPixbuf.pixbuf_get_file_info(filename.to_unsafe, Int32.new(width), Int32.new(height))
+      __return_value = LibGdkPixbuf.pixbuf_get_file_info(filename.to_unsafe, width, height)
       GdkPixbuf::PixbufFormat.new(__return_value) if __return_value
     end
 
@@ -121,7 +121,7 @@ module GdkPixbuf
 
     def self.file_info_finish(async_result, width, height)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGdkPixbuf.pixbuf_get_file_info_finish(async_result.to_unsafe.as(LibGio::AsyncResult*), Int32.new(width), Int32.new(height), pointerof(__error))
+      __return_value = LibGdkPixbuf.pixbuf_get_file_info_finish(async_result.to_unsafe.as(LibGio::AsyncResult*), width, height, pointerof(__error))
       GLib::Error.assert __error
       GdkPixbuf::PixbufFormat.new(__return_value)
     end
@@ -234,7 +234,7 @@ module GdkPixbuf
     end
 
     def pixels(length)
-      __return_value = LibGdkPixbuf.pixbuf_get_pixels(to_unsafe.as(LibGdkPixbuf::Pixbuf*), UInt32.new(length))
+      __return_value = LibGdkPixbuf.pixbuf_get_pixels(to_unsafe.as(LibGdkPixbuf::Pixbuf*), length)
       PointerIterator.new(__return_value) {|__item| __item }
     end
 
@@ -275,7 +275,7 @@ module GdkPixbuf
 
     def save_to_bufferv(buffer, buffer_size, type, option_keys, option_values)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGdkPixbuf.pixbuf_save_to_bufferv(to_unsafe.as(LibGdkPixbuf::Pixbuf*), buffer, UInt64.new(buffer_size), type.to_unsafe, option_keys, option_values, pointerof(__error))
+      __return_value = LibGdkPixbuf.pixbuf_save_to_bufferv(to_unsafe.as(LibGdkPixbuf::Pixbuf*), buffer, buffer_size, type.to_unsafe, option_keys, option_values, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

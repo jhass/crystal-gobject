@@ -28,95 +28,95 @@ module Gst
     end
 
     def refcount
-      (to_unsafe.value.refcount)
+      (to_unsafe.as(LibGst::ClockEntry*).value.refcount)
     end
 
     def refcount=(value : Int32)
-      to_unsafe.value.refcount = Int32.new(value)
+      to_unsafe.as(LibGst::ClockEntry*).value.refcount = Int32.new(value)
     end
 
     def clock
-      Gst::Clock.new((to_unsafe.value.clock))
+      Gst::Clock.new((to_unsafe.as(LibGst::ClockEntry*).value.clock))
     end
 
     def clock=(value : Gst::Clock)
-      to_unsafe.value.clock = value.to_unsafe.as(LibGst::Clock*)
+      to_unsafe.as(LibGst::ClockEntry*).value.clock = value.to_unsafe.as(LibGst::Clock*)
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibGst::ClockEntry*).value.type)
     end
 
     def type=(value : Gst::ClockEntryType)
-      to_unsafe.value.type = value
+      to_unsafe.as(LibGst::ClockEntry*).value.type = value
     end
 
     def time
-      (to_unsafe.value.time)
+      (to_unsafe.as(LibGst::ClockEntry*).value.time)
     end
 
     def time=(value : UInt64)
-      to_unsafe.value.time = UInt64.new(value)
+      to_unsafe.as(LibGst::ClockEntry*).value.time = UInt64.new(value)
     end
 
     def interval
-      (to_unsafe.value.interval)
+      (to_unsafe.as(LibGst::ClockEntry*).value.interval)
     end
 
     def interval=(value : UInt64)
-      to_unsafe.value.interval = UInt64.new(value)
+      to_unsafe.as(LibGst::ClockEntry*).value.interval = UInt64.new(value)
     end
 
     def status
-      (to_unsafe.value.status)
+      (to_unsafe.as(LibGst::ClockEntry*).value.status)
     end
 
     def status=(value : Gst::ClockReturn)
-      to_unsafe.value.status = value
+      to_unsafe.as(LibGst::ClockEntry*).value.status = value
     end
 
     def func
-      (to_unsafe.value.func)
+      (to_unsafe.as(LibGst::ClockEntry*).value.func)
     end
 
     def func=(value : Gst::ClockCallback)
-      to_unsafe.value.func = value
+      to_unsafe.as(LibGst::ClockEntry*).value.func = value
     end
 
     def user_data
-      (to_unsafe.value.user_data)
+      (to_unsafe.as(LibGst::ClockEntry*).value.user_data)
     end
 
     def user_data=(value : Void*)
-      to_unsafe.value.user_data = value
+      to_unsafe.as(LibGst::ClockEntry*).value.user_data = value
     end
 
     def destroy_data
-      (to_unsafe.value.destroy_data)
+      (to_unsafe.as(LibGst::ClockEntry*).value.destroy_data)
     end
 
     def destroy_data=(value : GLib::DestroyNotify)
-      to_unsafe.value.destroy_data = value
+      to_unsafe.as(LibGst::ClockEntry*).value.destroy_data = value
     end
 
     def unscheduled
-      (to_unsafe.value.unscheduled)
+      (to_unsafe.as(LibGst::ClockEntry*).value.unscheduled)
     end
 
     def unscheduled=(value : Bool)
-      to_unsafe.value.unscheduled = value
+      to_unsafe.as(LibGst::ClockEntry*).value.unscheduled = value
     end
 
     def woken_up
-      (to_unsafe.value.woken_up)
+      (to_unsafe.as(LibGst::ClockEntry*).value.woken_up)
     end
 
     def woken_up=(value : Bool)
-      to_unsafe.value.woken_up = value
+      to_unsafe.as(LibGst::ClockEntry*).value.woken_up = value
     end
 
     def _gst_reserved
-      PointerIterator.new((to_unsafe.value._gst_reserved)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGst::ClockEntry*).value._gst_reserved)) {|__item| __item }
     end
 
   end

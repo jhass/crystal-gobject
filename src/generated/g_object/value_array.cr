@@ -64,23 +64,23 @@ module GObject
     end
 
     def n_values
-      (to_unsafe.value.n_values)
+      (to_unsafe.as(LibGObject::ValueArray*).value.n_values)
     end
 
     def n_values=(value : UInt32)
-      to_unsafe.value.n_values = UInt32.new(value)
+      to_unsafe.as(LibGObject::ValueArray*).value.n_values = UInt32.new(value)
     end
 
     def values
-      GObject::Value.new((to_unsafe.value.values))
+      GObject::Value.new((to_unsafe.as(LibGObject::ValueArray*).value.values))
     end
 
     def values=(value : GObject::Value)
-      to_unsafe.value.values = value.to_unsafe.as(LibGObject::Value*)
+      to_unsafe.as(LibGObject::ValueArray*).value.values = value.to_unsafe.as(LibGObject::Value*)
     end
 
     def n_prealloced
-      (to_unsafe.value.n_prealloced)
+      (to_unsafe.as(LibGObject::ValueArray*).value.n_prealloced)
     end
 
   end

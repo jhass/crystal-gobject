@@ -31,15 +31,15 @@ module GLib
     end
 
     def p
-      (to_unsafe.value.p)
+      (to_unsafe.as(LibGLib::Private*).value.p)
     end
 
     def notify
-      (to_unsafe.value.notify)
+      (to_unsafe.as(LibGLib::Private*).value.notify)
     end
 
     def future
-      PointerIterator.new((to_unsafe.value.future)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGLib::Private*).value.future)) {|__item| __item }
     end
 
   end

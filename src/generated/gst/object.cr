@@ -21,7 +21,7 @@ module Gst
     end
 
     def self.replace(oldobj, newobj)
-      __return_value = LibGst.object_replace(oldobj && oldobj.to_unsafe.as(LibGst::Object*), newobj && newobj.to_unsafe.as(LibGst::Object*))
+      __return_value = LibGst.object_replace(oldobj, newobj && newobj.to_unsafe.as(LibGst::Object*))
       __return_value
     end
 

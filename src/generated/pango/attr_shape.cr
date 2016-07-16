@@ -23,51 +23,51 @@ module Pango
     end
 
     def attr
-      Pango::Attribute.new((to_unsafe.value.attr))
+      Pango::Attribute.new((to_unsafe.as(LibPango::AttrShape*).value.attr))
     end
 
     def attr=(value : Pango::Attribute)
-      to_unsafe.value.attr = value
+      to_unsafe.as(LibPango::AttrShape*).value.attr = value
     end
 
     def ink_rect
-      Pango::Rectangle.new((to_unsafe.value.ink_rect))
+      Pango::Rectangle.new((to_unsafe.as(LibPango::AttrShape*).value.ink_rect))
     end
 
     def ink_rect=(value : Pango::Rectangle)
-      to_unsafe.value.ink_rect = value
+      to_unsafe.as(LibPango::AttrShape*).value.ink_rect = value
     end
 
     def logical_rect
-      Pango::Rectangle.new((to_unsafe.value.logical_rect))
+      Pango::Rectangle.new((to_unsafe.as(LibPango::AttrShape*).value.logical_rect))
     end
 
     def logical_rect=(value : Pango::Rectangle)
-      to_unsafe.value.logical_rect = value
+      to_unsafe.as(LibPango::AttrShape*).value.logical_rect = value
     end
 
     def data
-      (to_unsafe.value.data)
+      (to_unsafe.as(LibPango::AttrShape*).value.data)
     end
 
     def data=(value : Void*)
-      to_unsafe.value.data = value
+      to_unsafe.as(LibPango::AttrShape*).value.data = value
     end
 
     def copy_func
-      (to_unsafe.value.copy_func)
+      (to_unsafe.as(LibPango::AttrShape*).value.copy_func)
     end
 
     def copy_func=(value : Pango::AttrDataCopyFunc)
-      to_unsafe.value.copy_func = value
+      to_unsafe.as(LibPango::AttrShape*).value.copy_func = value
     end
 
     def destroy_func
-      (to_unsafe.value.destroy_func)
+      (to_unsafe.as(LibPango::AttrShape*).value.destroy_func)
     end
 
     def destroy_func=(value : GLib::DestroyNotify)
-      to_unsafe.value.destroy_func = value
+      to_unsafe.as(LibPango::AttrShape*).value.destroy_func = value
     end
 
   end

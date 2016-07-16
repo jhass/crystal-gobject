@@ -19,19 +19,19 @@ module GLib
     end
 
     def key
-      (raise "Expected string but got null" unless (to_unsafe.value.key); ::String.new((to_unsafe.value.key)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGLib::DebugKey*).value.key); ::String.new((to_unsafe.as(LibGLib::DebugKey*).value.key)))
     end
 
     def key=(value : String)
-      to_unsafe.value.key = value.to_unsafe
+      to_unsafe.as(LibGLib::DebugKey*).value.key = value.to_unsafe
     end
 
     def value
-      (to_unsafe.value.value)
+      (to_unsafe.as(LibGLib::DebugKey*).value.value)
     end
 
     def value=(value : UInt32)
-      to_unsafe.value.value = UInt32.new(value)
+      to_unsafe.as(LibGLib::DebugKey*).value.value = UInt32.new(value)
     end
 
   end

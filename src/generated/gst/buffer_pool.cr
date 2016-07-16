@@ -21,7 +21,7 @@ module Gst
     end
 
     def self.config_get_allocator(config, allocator, params)
-      __return_value = LibGst.buffer_pool_config_get_allocator(config.to_unsafe.as(LibGst::Structure*), allocator.to_unsafe.as(LibGst::Allocator*), params)
+      __return_value = LibGst.buffer_pool_config_get_allocator(config.to_unsafe.as(LibGst::Structure*), allocator, params)
       __return_value
     end
 
@@ -31,7 +31,7 @@ module Gst
     end
 
     def self.config_get_params(config, caps, size, min_buffers, max_buffers)
-      __return_value = LibGst.buffer_pool_config_get_params(config.to_unsafe.as(LibGst::Structure*), caps.to_unsafe.as(LibGst::Caps*), UInt32.new(size), UInt32.new(min_buffers), UInt32.new(max_buffers))
+      __return_value = LibGst.buffer_pool_config_get_params(config.to_unsafe.as(LibGst::Structure*), caps, size, min_buffers, max_buffers)
       __return_value
     end
 
@@ -61,7 +61,7 @@ module Gst
     end
 
     def acquire_buffer(buffer, params)
-      __return_value = LibGst.buffer_pool_acquire_buffer(to_unsafe.as(LibGst::BufferPool*), buffer.to_unsafe.as(LibGst::Buffer*), params && params.to_unsafe.as(LibGst::BufferPoolAcquireParams*))
+      __return_value = LibGst.buffer_pool_acquire_buffer(to_unsafe.as(LibGst::BufferPool*), buffer, params && params.to_unsafe.as(LibGst::BufferPoolAcquireParams*))
       __return_value
     end
 

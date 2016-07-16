@@ -31,115 +31,115 @@ module Gdk
     end
 
     def title
-      (raise "Expected string but got null" unless (to_unsafe.value.title); ::String.new((to_unsafe.value.title)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGdk::WindowAttr*).value.title); ::String.new((to_unsafe.as(LibGdk::WindowAttr*).value.title)))
     end
 
     def title=(value : String)
-      to_unsafe.value.title = value.to_unsafe
+      to_unsafe.as(LibGdk::WindowAttr*).value.title = value.to_unsafe
     end
 
     def event_mask
-      (to_unsafe.value.event_mask)
+      (to_unsafe.as(LibGdk::WindowAttr*).value.event_mask)
     end
 
     def event_mask=(value : Int32)
-      to_unsafe.value.event_mask = Int32.new(value)
+      to_unsafe.as(LibGdk::WindowAttr*).value.event_mask = Int32.new(value)
     end
 
     def x
-      (to_unsafe.value.x)
+      (to_unsafe.as(LibGdk::WindowAttr*).value.x)
     end
 
     def x=(value : Int32)
-      to_unsafe.value.x = Int32.new(value)
+      to_unsafe.as(LibGdk::WindowAttr*).value.x = Int32.new(value)
     end
 
     def y
-      (to_unsafe.value.y)
+      (to_unsafe.as(LibGdk::WindowAttr*).value.y)
     end
 
     def y=(value : Int32)
-      to_unsafe.value.y = Int32.new(value)
+      to_unsafe.as(LibGdk::WindowAttr*).value.y = Int32.new(value)
     end
 
     def width
-      (to_unsafe.value.width)
+      (to_unsafe.as(LibGdk::WindowAttr*).value.width)
     end
 
     def width=(value : Int32)
-      to_unsafe.value.width = Int32.new(value)
+      to_unsafe.as(LibGdk::WindowAttr*).value.width = Int32.new(value)
     end
 
     def height
-      (to_unsafe.value.height)
+      (to_unsafe.as(LibGdk::WindowAttr*).value.height)
     end
 
     def height=(value : Int32)
-      to_unsafe.value.height = Int32.new(value)
+      to_unsafe.as(LibGdk::WindowAttr*).value.height = Int32.new(value)
     end
 
     def wclass
-      (to_unsafe.value.wclass)
+      (to_unsafe.as(LibGdk::WindowAttr*).value.wclass)
     end
 
     def wclass=(value : Gdk::WindowWindowClass)
-      to_unsafe.value.wclass = value
+      to_unsafe.as(LibGdk::WindowAttr*).value.wclass = value
     end
 
     def visual
-      Gdk::Visual.new((to_unsafe.value.visual))
+      Gdk::Visual.new((to_unsafe.as(LibGdk::WindowAttr*).value.visual))
     end
 
     def visual=(value : Gdk::Visual)
-      to_unsafe.value.visual = value.to_unsafe.as(LibGdk::Visual*)
+      to_unsafe.as(LibGdk::WindowAttr*).value.visual = value.to_unsafe.as(LibGdk::Visual*)
     end
 
     def window_type
-      (to_unsafe.value.window_type)
+      (to_unsafe.as(LibGdk::WindowAttr*).value.window_type)
     end
 
     def window_type=(value : Gdk::WindowType)
-      to_unsafe.value.window_type = value
+      to_unsafe.as(LibGdk::WindowAttr*).value.window_type = value
     end
 
     def cursor
-      Gdk::Cursor.new((to_unsafe.value.cursor))
+      Gdk::Cursor.new((to_unsafe.as(LibGdk::WindowAttr*).value.cursor))
     end
 
     def cursor=(value : Gdk::Cursor)
-      to_unsafe.value.cursor = value.to_unsafe.as(LibGdk::Cursor*)
+      to_unsafe.as(LibGdk::WindowAttr*).value.cursor = value.to_unsafe.as(LibGdk::Cursor*)
     end
 
     def wmclass_name
-      (raise "Expected string but got null" unless (to_unsafe.value.wmclass_name); ::String.new((to_unsafe.value.wmclass_name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGdk::WindowAttr*).value.wmclass_name); ::String.new((to_unsafe.as(LibGdk::WindowAttr*).value.wmclass_name)))
     end
 
     def wmclass_name=(value : String)
-      to_unsafe.value.wmclass_name = value.to_unsafe
+      to_unsafe.as(LibGdk::WindowAttr*).value.wmclass_name = value.to_unsafe
     end
 
     def wmclass_class
-      (raise "Expected string but got null" unless (to_unsafe.value.wmclass_class); ::String.new((to_unsafe.value.wmclass_class)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGdk::WindowAttr*).value.wmclass_class); ::String.new((to_unsafe.as(LibGdk::WindowAttr*).value.wmclass_class)))
     end
 
     def wmclass_class=(value : String)
-      to_unsafe.value.wmclass_class = value.to_unsafe
+      to_unsafe.as(LibGdk::WindowAttr*).value.wmclass_class = value.to_unsafe
     end
 
     def override_redirect
-      (to_unsafe.value.override_redirect)
+      (to_unsafe.as(LibGdk::WindowAttr*).value.override_redirect)
     end
 
     def override_redirect=(value : Bool)
-      to_unsafe.value.override_redirect = value
+      to_unsafe.as(LibGdk::WindowAttr*).value.override_redirect = value
     end
 
     def type_hint
-      (to_unsafe.value.type_hint)
+      (to_unsafe.as(LibGdk::WindowAttr*).value.type_hint)
     end
 
     def type_hint=(value : Gdk::WindowTypeHint)
-      to_unsafe.value.type_hint = value
+      to_unsafe.as(LibGdk::WindowAttr*).value.type_hint = value
     end
 
   end

@@ -49,7 +49,7 @@ module Gtk
     end
 
     def increments(step, page)
-      __return_value = LibGtk.spin_button_get_increments(to_unsafe.as(LibGtk::SpinButton*), Float64.new(step), Float64.new(page))
+      __return_value = LibGtk.spin_button_get_increments(to_unsafe.as(LibGtk::SpinButton*), step, page)
       __return_value
     end
 
@@ -59,7 +59,7 @@ module Gtk
     end
 
     def range(min, max)
-      __return_value = LibGtk.spin_button_get_range(to_unsafe.as(LibGtk::SpinButton*), Float64.new(min), Float64.new(max))
+      __return_value = LibGtk.spin_button_get_range(to_unsafe.as(LibGtk::SpinButton*), min, max)
       __return_value
     end
 

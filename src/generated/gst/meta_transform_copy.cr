@@ -20,27 +20,27 @@ module Gst
     end
 
     def region
-      (to_unsafe.value.region)
+      (to_unsafe.as(LibGst::MetaTransformCopy*).value.region)
     end
 
     def region=(value : Bool)
-      to_unsafe.value.region = value
+      to_unsafe.as(LibGst::MetaTransformCopy*).value.region = value
     end
 
     def offset
-      (to_unsafe.value.offset)
+      (to_unsafe.as(LibGst::MetaTransformCopy*).value.offset)
     end
 
     def offset=(value : UInt64)
-      to_unsafe.value.offset = UInt64.new(value)
+      to_unsafe.as(LibGst::MetaTransformCopy*).value.offset = UInt64.new(value)
     end
 
     def size
-      (to_unsafe.value.size)
+      (to_unsafe.as(LibGst::MetaTransformCopy*).value.size)
     end
 
     def size=(value : UInt64)
-      to_unsafe.value.size = UInt64.new(value)
+      to_unsafe.as(LibGst::MetaTransformCopy*).value.size = UInt64.new(value)
     end
 
   end

@@ -100,7 +100,7 @@ module Gtk
     end
 
     def state_is_running(state, progress)
-      __return_value = LibGtk.theming_engine_state_is_running(to_unsafe.as(LibGtk::ThemingEngine*), state, Float64.new(progress))
+      __return_value = LibGtk.theming_engine_state_is_running(to_unsafe.as(LibGtk::ThemingEngine*), state, progress)
       __return_value
     end
 

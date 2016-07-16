@@ -91,7 +91,7 @@ module GLib
     end
 
     def query(max_priority, timeout, fds, n_fds)
-      __return_value = LibGLib.main_context_query(to_unsafe.as(LibGLib::MainContext*), Int32.new(max_priority), Int32.new(timeout), fds, Int32.new(n_fds))
+      __return_value = LibGLib.main_context_query(to_unsafe.as(LibGLib::MainContext*), Int32.new(max_priority), timeout, fds, Int32.new(n_fds))
       __return_value
     end
 

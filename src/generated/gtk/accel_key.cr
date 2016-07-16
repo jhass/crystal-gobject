@@ -20,27 +20,27 @@ module Gtk
     end
 
     def accel_key
-      (to_unsafe.value.accel_key)
+      (to_unsafe.as(LibGtk::AccelKey*).value.accel_key)
     end
 
     def accel_key=(value : UInt32)
-      to_unsafe.value.accel_key = UInt32.new(value)
+      to_unsafe.as(LibGtk::AccelKey*).value.accel_key = UInt32.new(value)
     end
 
     def accel_mods
-      (to_unsafe.value.accel_mods)
+      (to_unsafe.as(LibGtk::AccelKey*).value.accel_mods)
     end
 
     def accel_mods=(value : Gdk::ModifierType)
-      to_unsafe.value.accel_mods = value
+      to_unsafe.as(LibGtk::AccelKey*).value.accel_mods = value
     end
 
     def accel_flags
-      (to_unsafe.value.accel_flags)
+      (to_unsafe.as(LibGtk::AccelKey*).value.accel_flags)
     end
 
     def accel_flags=(value : UInt32)
-      to_unsafe.value.accel_flags = UInt32.new(value)
+      to_unsafe.as(LibGtk::AccelKey*).value.accel_flags = UInt32.new(value)
     end
 
   end

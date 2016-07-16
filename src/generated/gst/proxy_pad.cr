@@ -21,7 +21,7 @@ module Gst
     end
 
     def self.getrange_default(pad, parent, offset, size, buffer)
-      __return_value = LibGst.proxy_pad_getrange_default(pad.to_unsafe.as(LibGst::Pad*), parent.to_unsafe.as(LibGst::Object*), UInt64.new(offset), UInt32.new(size), buffer.to_unsafe.as(LibGst::Buffer*))
+      __return_value = LibGst.proxy_pad_getrange_default(pad.to_unsafe.as(LibGst::Pad*), parent.to_unsafe.as(LibGst::Object*), UInt64.new(offset), UInt32.new(size), buffer)
       __return_value
     end
 

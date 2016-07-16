@@ -20,27 +20,27 @@ module Gdk
     end
 
     def keycode
-      (to_unsafe.value.keycode)
+      (to_unsafe.as(LibGdk::KeymapKey*).value.keycode)
     end
 
     def keycode=(value : UInt32)
-      to_unsafe.value.keycode = UInt32.new(value)
+      to_unsafe.as(LibGdk::KeymapKey*).value.keycode = UInt32.new(value)
     end
 
     def group
-      (to_unsafe.value.group)
+      (to_unsafe.as(LibGdk::KeymapKey*).value.group)
     end
 
     def group=(value : Int32)
-      to_unsafe.value.group = Int32.new(value)
+      to_unsafe.as(LibGdk::KeymapKey*).value.group = Int32.new(value)
     end
 
     def level
-      (to_unsafe.value.level)
+      (to_unsafe.as(LibGdk::KeymapKey*).value.level)
     end
 
     def level=(value : Int32)
-      to_unsafe.value.level = Int32.new(value)
+      to_unsafe.as(LibGdk::KeymapKey*).value.level = Int32.new(value)
     end
 
   end

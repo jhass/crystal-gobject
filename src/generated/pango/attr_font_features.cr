@@ -19,19 +19,19 @@ module Pango
     end
 
     def attr
-      Pango::Attribute.new((to_unsafe.value.attr))
+      Pango::Attribute.new((to_unsafe.as(LibPango::AttrFontFeatures*).value.attr))
     end
 
     def attr=(value : Pango::Attribute)
-      to_unsafe.value.attr = value
+      to_unsafe.as(LibPango::AttrFontFeatures*).value.attr = value
     end
 
     def features
-      (raise "Expected string but got null" unless (to_unsafe.value.features); ::String.new((to_unsafe.value.features)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibPango::AttrFontFeatures*).value.features); ::String.new((to_unsafe.as(LibPango::AttrFontFeatures*).value.features)))
     end
 
     def features=(value : String)
-      to_unsafe.value.features = value.to_unsafe
+      to_unsafe.as(LibPango::AttrFontFeatures*).value.features = value.to_unsafe
     end
 
   end

@@ -120,7 +120,7 @@ module Gdk
   end
 
   def self.drag_find_window_for_screen(context, drag_window, screen, x_root, y_root, dest_window, protocol)
-    __return_value = LibGdk.drag_find_window_for_screen(context.to_unsafe.as(LibGdk::DragContext*), drag_window.to_unsafe.as(LibGdk::Window*), screen.to_unsafe.as(LibGdk::Screen*), Int32.new(x_root), Int32.new(y_root), dest_window.to_unsafe.as(LibGdk::Window*), protocol)
+    __return_value = LibGdk.drag_find_window_for_screen(context.to_unsafe.as(LibGdk::DragContext*), drag_window.to_unsafe.as(LibGdk::Window*), screen.to_unsafe.as(LibGdk::Screen*), Int32.new(x_root), Int32.new(y_root), dest_window, protocol)
     __return_value
   end
 
@@ -185,17 +185,17 @@ module Gdk
   end
 
   def self.events_get_angle(event1, event2, angle)
-    __return_value = LibGdk.events_get_angle(event1.to_unsafe.as(LibGdk::Event*), event2.to_unsafe.as(LibGdk::Event*), Float64.new(angle))
+    __return_value = LibGdk.events_get_angle(event1.to_unsafe.as(LibGdk::Event*), event2.to_unsafe.as(LibGdk::Event*), angle)
     __return_value
   end
 
   def self.events_get_center(event1, event2, x, y)
-    __return_value = LibGdk.events_get_center(event1.to_unsafe.as(LibGdk::Event*), event2.to_unsafe.as(LibGdk::Event*), Float64.new(x), Float64.new(y))
+    __return_value = LibGdk.events_get_center(event1.to_unsafe.as(LibGdk::Event*), event2.to_unsafe.as(LibGdk::Event*), x, y)
     __return_value
   end
 
   def self.events_get_distance(event1, event2, distance)
-    __return_value = LibGdk.events_get_distance(event1.to_unsafe.as(LibGdk::Event*), event2.to_unsafe.as(LibGdk::Event*), Float64.new(distance))
+    __return_value = LibGdk.events_get_distance(event1.to_unsafe.as(LibGdk::Event*), event2.to_unsafe.as(LibGdk::Event*), distance)
     __return_value
   end
 
@@ -240,12 +240,12 @@ module Gdk
   end
 
   def self.init(argc, argv)
-    __return_value = LibGdk.init(Int32.new(argc), argv)
+    __return_value = LibGdk.init(argc, argv)
     __return_value
   end
 
   def self.init_check(argc, argv)
-    __return_value = LibGdk.init_check(Int32.new(argc), argv)
+    __return_value = LibGdk.init_check(argc, argv)
     __return_value
   end
 
@@ -260,7 +260,7 @@ module Gdk
   end
 
   def self.keyval_convert_case(symbol, lower, upper)
-    __return_value = LibGdk.keyval_convert_case(UInt32.new(symbol), UInt32.new(lower), UInt32.new(upper))
+    __return_value = LibGdk.keyval_convert_case(UInt32.new(symbol), lower, upper)
     __return_value
   end
 
@@ -340,7 +340,7 @@ module Gdk
   end
 
   def self.parse_args(argc, argv)
-    __return_value = LibGdk.parse_args(Int32.new(argc), argv)
+    __return_value = LibGdk.parse_args(argc, argv)
     __return_value
   end
 
@@ -380,17 +380,17 @@ module Gdk
   end
 
   def self.property_get(window, property, type, offset, length, pdelete, actual_property_type, actual_format, actual_length, data)
-    __return_value = LibGdk.property_get(window.to_unsafe.as(LibGdk::Window*), property.to_unsafe.as(LibGdk::Atom*), type.to_unsafe.as(LibGdk::Atom*), UInt64.new(offset), UInt64.new(length), Int32.new(pdelete), actual_property_type.to_unsafe.as(LibGdk::Atom*), Int32.new(actual_format), Int32.new(actual_length), data)
+    __return_value = LibGdk.property_get(window.to_unsafe.as(LibGdk::Window*), property.to_unsafe.as(LibGdk::Atom*), type.to_unsafe.as(LibGdk::Atom*), UInt64.new(offset), UInt64.new(length), Int32.new(pdelete), actual_property_type, actual_format, actual_length, data)
     __return_value
   end
 
   def self.query_depths(depths, count)
-    __return_value = LibGdk.query_depths(depths, Int32.new(count))
+    __return_value = LibGdk.query_depths(depths, count)
     __return_value
   end
 
   def self.query_visual_types(visual_types, count)
-    __return_value = LibGdk.query_visual_types(visual_types, Int32.new(count))
+    __return_value = LibGdk.query_visual_types(visual_types, count)
     __return_value
   end
 

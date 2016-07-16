@@ -51,7 +51,7 @@ module Gdk
     end
 
     def surface(x_hot, y_hot)
-      __return_value = LibGdk.cursor_get_surface(to_unsafe.as(LibGdk::Cursor*), Float64.new(x_hot), Float64.new(y_hot))
+      __return_value = LibGdk.cursor_get_surface(to_unsafe.as(LibGdk::Cursor*), x_hot, y_hot)
       Cairo::Surface.new(__return_value) if __return_value
     end
 

@@ -21,35 +21,35 @@ module GObject
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibGObject::TypeQuery*).value.type)
     end
 
     def type=(value : UInt64)
-      to_unsafe.value.type = UInt64.new(value)
+      to_unsafe.as(LibGObject::TypeQuery*).value.type = UInt64.new(value)
     end
 
     def type_name
-      (raise "Expected string but got null" unless (to_unsafe.value.type_name); ::String.new((to_unsafe.value.type_name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGObject::TypeQuery*).value.type_name); ::String.new((to_unsafe.as(LibGObject::TypeQuery*).value.type_name)))
     end
 
     def type_name=(value : String)
-      to_unsafe.value.type_name = value.to_unsafe
+      to_unsafe.as(LibGObject::TypeQuery*).value.type_name = value.to_unsafe
     end
 
     def class_size
-      (to_unsafe.value.class_size)
+      (to_unsafe.as(LibGObject::TypeQuery*).value.class_size)
     end
 
     def class_size=(value : UInt32)
-      to_unsafe.value.class_size = UInt32.new(value)
+      to_unsafe.as(LibGObject::TypeQuery*).value.class_size = UInt32.new(value)
     end
 
     def instance_size
-      (to_unsafe.value.instance_size)
+      (to_unsafe.as(LibGObject::TypeQuery*).value.instance_size)
     end
 
     def instance_size=(value : UInt32)
-      to_unsafe.value.instance_size = UInt32.new(value)
+      to_unsafe.as(LibGObject::TypeQuery*).value.instance_size = UInt32.new(value)
     end
 
   end

@@ -20,27 +20,27 @@ module Gtk
     end
 
     def data
-      (to_unsafe.value.data)
+      (to_unsafe.as(LibGtk::RequestedSize*).value.data)
     end
 
     def data=(value : Void*)
-      to_unsafe.value.data = value
+      to_unsafe.as(LibGtk::RequestedSize*).value.data = value
     end
 
     def minimum_size
-      (to_unsafe.value.minimum_size)
+      (to_unsafe.as(LibGtk::RequestedSize*).value.minimum_size)
     end
 
     def minimum_size=(value : Int32)
-      to_unsafe.value.minimum_size = Int32.new(value)
+      to_unsafe.as(LibGtk::RequestedSize*).value.minimum_size = Int32.new(value)
     end
 
     def natural_size
-      (to_unsafe.value.natural_size)
+      (to_unsafe.as(LibGtk::RequestedSize*).value.natural_size)
     end
 
     def natural_size=(value : Int32)
-      to_unsafe.value.natural_size = Int32.new(value)
+      to_unsafe.as(LibGtk::RequestedSize*).value.natural_size = Int32.new(value)
     end
 
   end

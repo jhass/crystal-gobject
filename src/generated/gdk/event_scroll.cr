@@ -31,115 +31,115 @@ module Gdk
     end
 
     def type
-      (to_unsafe.value.type)
+      (to_unsafe.as(LibGdk::EventScroll*).value.type)
     end
 
     def type=(value : Gdk::EventType)
-      to_unsafe.value.type = value
+      to_unsafe.as(LibGdk::EventScroll*).value.type = value
     end
 
     def window
-      Gdk::Window.new((to_unsafe.value.window))
+      Gdk::Window.new((to_unsafe.as(LibGdk::EventScroll*).value.window))
     end
 
     def window=(value : Gdk::Window)
-      to_unsafe.value.window = value.to_unsafe.as(LibGdk::Window*)
+      to_unsafe.as(LibGdk::EventScroll*).value.window = value.to_unsafe.as(LibGdk::Window*)
     end
 
     def send_event
-      (to_unsafe.value.send_event)
+      (to_unsafe.as(LibGdk::EventScroll*).value.send_event)
     end
 
     def send_event=(value : Int8)
-      to_unsafe.value.send_event = Int8.new(value)
+      to_unsafe.as(LibGdk::EventScroll*).value.send_event = Int8.new(value)
     end
 
     def time
-      (to_unsafe.value.time)
+      (to_unsafe.as(LibGdk::EventScroll*).value.time)
     end
 
     def time=(value : UInt32)
-      to_unsafe.value.time = UInt32.new(value)
+      to_unsafe.as(LibGdk::EventScroll*).value.time = UInt32.new(value)
     end
 
     def x
-      (to_unsafe.value.x)
+      (to_unsafe.as(LibGdk::EventScroll*).value.x)
     end
 
     def x=(value : Float64)
-      to_unsafe.value.x = Float64.new(value)
+      to_unsafe.as(LibGdk::EventScroll*).value.x = Float64.new(value)
     end
 
     def y
-      (to_unsafe.value.y)
+      (to_unsafe.as(LibGdk::EventScroll*).value.y)
     end
 
     def y=(value : Float64)
-      to_unsafe.value.y = Float64.new(value)
+      to_unsafe.as(LibGdk::EventScroll*).value.y = Float64.new(value)
     end
 
     def state
-      (to_unsafe.value.state)
+      (to_unsafe.as(LibGdk::EventScroll*).value.state)
     end
 
     def state=(value : Gdk::ModifierType)
-      to_unsafe.value.state = value
+      to_unsafe.as(LibGdk::EventScroll*).value.state = value
     end
 
     def direction
-      (to_unsafe.value.direction)
+      (to_unsafe.as(LibGdk::EventScroll*).value.direction)
     end
 
     def direction=(value : Gdk::ScrollDirection)
-      to_unsafe.value.direction = value
+      to_unsafe.as(LibGdk::EventScroll*).value.direction = value
     end
 
     def device
-      Gdk::Device.new((to_unsafe.value.device))
+      Gdk::Device.new((to_unsafe.as(LibGdk::EventScroll*).value.device))
     end
 
     def device=(value : Gdk::Device)
-      to_unsafe.value.device = value.to_unsafe.as(LibGdk::Device*)
+      to_unsafe.as(LibGdk::EventScroll*).value.device = value.to_unsafe.as(LibGdk::Device*)
     end
 
     def x_root
-      (to_unsafe.value.x_root)
+      (to_unsafe.as(LibGdk::EventScroll*).value.x_root)
     end
 
     def x_root=(value : Float64)
-      to_unsafe.value.x_root = Float64.new(value)
+      to_unsafe.as(LibGdk::EventScroll*).value.x_root = Float64.new(value)
     end
 
     def y_root
-      (to_unsafe.value.y_root)
+      (to_unsafe.as(LibGdk::EventScroll*).value.y_root)
     end
 
     def y_root=(value : Float64)
-      to_unsafe.value.y_root = Float64.new(value)
+      to_unsafe.as(LibGdk::EventScroll*).value.y_root = Float64.new(value)
     end
 
     def delta_x
-      (to_unsafe.value.delta_x)
+      (to_unsafe.as(LibGdk::EventScroll*).value.delta_x)
     end
 
     def delta_x=(value : Float64)
-      to_unsafe.value.delta_x = Float64.new(value)
+      to_unsafe.as(LibGdk::EventScroll*).value.delta_x = Float64.new(value)
     end
 
     def delta_y
-      (to_unsafe.value.delta_y)
+      (to_unsafe.as(LibGdk::EventScroll*).value.delta_y)
     end
 
     def delta_y=(value : Float64)
-      to_unsafe.value.delta_y = Float64.new(value)
+      to_unsafe.as(LibGdk::EventScroll*).value.delta_y = Float64.new(value)
     end
 
     def is_stop
-      (to_unsafe.value.is_stop)
+      (to_unsafe.as(LibGdk::EventScroll*).value.is_stop)
     end
 
     def is_stop=(value : UInt32)
-      to_unsafe.value.is_stop = UInt32.new(value)
+      to_unsafe.as(LibGdk::EventScroll*).value.is_stop = UInt32.new(value)
     end
 
   end

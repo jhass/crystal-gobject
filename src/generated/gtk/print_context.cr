@@ -34,7 +34,7 @@ module Gtk
     end
 
     def hard_margins(top, bottom, left, right)
-      __return_value = LibGtk.print_context_get_hard_margins(to_unsafe.as(LibGtk::PrintContext*), Float64.new(top), Float64.new(bottom), Float64.new(left), Float64.new(right))
+      __return_value = LibGtk.print_context_get_hard_margins(to_unsafe.as(LibGtk::PrintContext*), top, bottom, left, right)
       __return_value
     end
 

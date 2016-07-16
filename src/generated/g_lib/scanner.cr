@@ -112,147 +112,147 @@ module GLib
     end
 
     def user_data
-      (to_unsafe.value.user_data)
+      (to_unsafe.as(LibGLib::Scanner*).value.user_data)
     end
 
     def user_data=(value : Void*)
-      to_unsafe.value.user_data = value
+      to_unsafe.as(LibGLib::Scanner*).value.user_data = value
     end
 
     def max_parse_errors
-      (to_unsafe.value.max_parse_errors)
+      (to_unsafe.as(LibGLib::Scanner*).value.max_parse_errors)
     end
 
     def max_parse_errors=(value : UInt32)
-      to_unsafe.value.max_parse_errors = UInt32.new(value)
+      to_unsafe.as(LibGLib::Scanner*).value.max_parse_errors = UInt32.new(value)
     end
 
     def parse_errors
-      (to_unsafe.value.parse_errors)
+      (to_unsafe.as(LibGLib::Scanner*).value.parse_errors)
     end
 
     def parse_errors=(value : UInt32)
-      to_unsafe.value.parse_errors = UInt32.new(value)
+      to_unsafe.as(LibGLib::Scanner*).value.parse_errors = UInt32.new(value)
     end
 
     def input_name
-      (raise "Expected string but got null" unless (to_unsafe.value.input_name); ::String.new((to_unsafe.value.input_name)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGLib::Scanner*).value.input_name); ::String.new((to_unsafe.as(LibGLib::Scanner*).value.input_name)))
     end
 
     def input_name=(value : String)
-      to_unsafe.value.input_name = value.to_unsafe
+      to_unsafe.as(LibGLib::Scanner*).value.input_name = value.to_unsafe
     end
 
     def qdata
-      GLib::Data.new((to_unsafe.value.qdata))
+      GLib::Data.new((to_unsafe.as(LibGLib::Scanner*).value.qdata))
     end
 
     def qdata=(value : GLib::Data)
-      to_unsafe.value.qdata = value.to_unsafe.as(LibGLib::Data*)
+      to_unsafe.as(LibGLib::Scanner*).value.qdata = value.to_unsafe.as(LibGLib::Data*)
     end
 
     def config
-      GLib::ScannerConfig.new((to_unsafe.value.config))
+      GLib::ScannerConfig.new((to_unsafe.as(LibGLib::Scanner*).value.config))
     end
 
     def config=(value : GLib::ScannerConfig)
-      to_unsafe.value.config = value.to_unsafe.as(LibGLib::ScannerConfig*)
+      to_unsafe.as(LibGLib::Scanner*).value.config = value.to_unsafe.as(LibGLib::ScannerConfig*)
     end
 
     def token
-      (to_unsafe.value.token)
+      (to_unsafe.as(LibGLib::Scanner*).value.token)
     end
 
     def token=(value : GLib::TokenType)
-      to_unsafe.value.token = value
+      to_unsafe.as(LibGLib::Scanner*).value.token = value
     end
 
     def value
-      (to_unsafe.value.value)
+      (to_unsafe.as(LibGLib::Scanner*).value.value)
     end
 
     def value=(value : GLib::TokenValue)
-      to_unsafe.value.value = value
+      to_unsafe.as(LibGLib::Scanner*).value.value = value
     end
 
     def line
-      (to_unsafe.value.line)
+      (to_unsafe.as(LibGLib::Scanner*).value.line)
     end
 
     def line=(value : UInt32)
-      to_unsafe.value.line = UInt32.new(value)
+      to_unsafe.as(LibGLib::Scanner*).value.line = UInt32.new(value)
     end
 
     def position
-      (to_unsafe.value.position)
+      (to_unsafe.as(LibGLib::Scanner*).value.position)
     end
 
     def position=(value : UInt32)
-      to_unsafe.value.position = UInt32.new(value)
+      to_unsafe.as(LibGLib::Scanner*).value.position = UInt32.new(value)
     end
 
     def next_token
-      (to_unsafe.value.next_token)
+      (to_unsafe.as(LibGLib::Scanner*).value.next_token)
     end
 
     def next_token=(value : GLib::TokenType)
-      to_unsafe.value.next_token = value
+      to_unsafe.as(LibGLib::Scanner*).value.next_token = value
     end
 
     def next_value
-      (to_unsafe.value.next_value)
+      (to_unsafe.as(LibGLib::Scanner*).value.next_value)
     end
 
     def next_value=(value : GLib::TokenValue)
-      to_unsafe.value.next_value = value
+      to_unsafe.as(LibGLib::Scanner*).value.next_value = value
     end
 
     def next_line
-      (to_unsafe.value.next_line)
+      (to_unsafe.as(LibGLib::Scanner*).value.next_line)
     end
 
     def next_line=(value : UInt32)
-      to_unsafe.value.next_line = UInt32.new(value)
+      to_unsafe.as(LibGLib::Scanner*).value.next_line = UInt32.new(value)
     end
 
     def next_position
-      (to_unsafe.value.next_position)
+      (to_unsafe.as(LibGLib::Scanner*).value.next_position)
     end
 
     def next_position=(value : UInt32)
-      to_unsafe.value.next_position = UInt32.new(value)
+      to_unsafe.as(LibGLib::Scanner*).value.next_position = UInt32.new(value)
     end
 
     def symbol_table
-      (to_unsafe.value.symbol_table)
+      (to_unsafe.as(LibGLib::Scanner*).value.symbol_table)
     end
 
     def input_fd
-      (to_unsafe.value.input_fd)
+      (to_unsafe.as(LibGLib::Scanner*).value.input_fd)
     end
 
     def text
-      (raise "Expected string but got null" unless (to_unsafe.value.text); ::String.new((to_unsafe.value.text)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGLib::Scanner*).value.text); ::String.new((to_unsafe.as(LibGLib::Scanner*).value.text)))
     end
 
     def text_end
-      (raise "Expected string but got null" unless (to_unsafe.value.text_end); ::String.new((to_unsafe.value.text_end)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGLib::Scanner*).value.text_end); ::String.new((to_unsafe.as(LibGLib::Scanner*).value.text_end)))
     end
 
     def buffer
-      (raise "Expected string but got null" unless (to_unsafe.value.buffer); ::String.new((to_unsafe.value.buffer)))
+      (raise "Expected string but got null" unless (to_unsafe.as(LibGLib::Scanner*).value.buffer); ::String.new((to_unsafe.as(LibGLib::Scanner*).value.buffer)))
     end
 
     def scope_id
-      (to_unsafe.value.scope_id)
+      (to_unsafe.as(LibGLib::Scanner*).value.scope_id)
     end
 
     def msg_handler
-      (to_unsafe.value.msg_handler)
+      (to_unsafe.as(LibGLib::Scanner*).value.msg_handler)
     end
 
     def msg_handler=(value : GLib::ScannerMsgFunc)
-      to_unsafe.value.msg_handler = value
+      to_unsafe.as(LibGLib::Scanner*).value.msg_handler = value
     end
 
   end

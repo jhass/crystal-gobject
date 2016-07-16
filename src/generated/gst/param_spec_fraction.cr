@@ -24,59 +24,59 @@ module Gst
     end
 
     def parent_instance
-      GObject::ParamSpec.new((to_unsafe.value.parent_instance))
+      GObject::ParamSpec.new((to_unsafe.as(LibGst::ParamSpecFraction*).value.parent_instance))
     end
 
     def parent_instance=(value : GObject::ParamSpec)
-      to_unsafe.value.parent_instance = value
+      to_unsafe.as(LibGst::ParamSpecFraction*).value.parent_instance = value
     end
 
     def min_num
-      (to_unsafe.value.min_num)
+      (to_unsafe.as(LibGst::ParamSpecFraction*).value.min_num)
     end
 
     def min_num=(value : Int32)
-      to_unsafe.value.min_num = Int32.new(value)
+      to_unsafe.as(LibGst::ParamSpecFraction*).value.min_num = Int32.new(value)
     end
 
     def min_den
-      (to_unsafe.value.min_den)
+      (to_unsafe.as(LibGst::ParamSpecFraction*).value.min_den)
     end
 
     def min_den=(value : Int32)
-      to_unsafe.value.min_den = Int32.new(value)
+      to_unsafe.as(LibGst::ParamSpecFraction*).value.min_den = Int32.new(value)
     end
 
     def max_num
-      (to_unsafe.value.max_num)
+      (to_unsafe.as(LibGst::ParamSpecFraction*).value.max_num)
     end
 
     def max_num=(value : Int32)
-      to_unsafe.value.max_num = Int32.new(value)
+      to_unsafe.as(LibGst::ParamSpecFraction*).value.max_num = Int32.new(value)
     end
 
     def max_den
-      (to_unsafe.value.max_den)
+      (to_unsafe.as(LibGst::ParamSpecFraction*).value.max_den)
     end
 
     def max_den=(value : Int32)
-      to_unsafe.value.max_den = Int32.new(value)
+      to_unsafe.as(LibGst::ParamSpecFraction*).value.max_den = Int32.new(value)
     end
 
     def def_num
-      (to_unsafe.value.def_num)
+      (to_unsafe.as(LibGst::ParamSpecFraction*).value.def_num)
     end
 
     def def_num=(value : Int32)
-      to_unsafe.value.def_num = Int32.new(value)
+      to_unsafe.as(LibGst::ParamSpecFraction*).value.def_num = Int32.new(value)
     end
 
     def def_den
-      (to_unsafe.value.def_den)
+      (to_unsafe.as(LibGst::ParamSpecFraction*).value.def_den)
     end
 
     def def_den=(value : Int32)
-      to_unsafe.value.def_den = Int32.new(value)
+      to_unsafe.as(LibGst::ParamSpecFraction*).value.def_den = Int32.new(value)
     end
 
   end
