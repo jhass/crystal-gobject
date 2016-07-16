@@ -6,6 +6,9 @@ module GIRepository
     each_converted enum_info, value, ValueInfo
     each_converted enum_info, method, FunctionInfo
 
+    def attributes(io)
+    end
+
     def type
       tag = LibGIRepository.enum_info_get_storage_type(self)
       TypeInfo::TAG_MAP[tag]
@@ -13,6 +16,7 @@ module GIRepository
 
     def lib_definition
       String.build do |io|
+        attributes(io)
         io.puts "  enum #{name} : #{type}"
         io.puts "    ZERO_NONE = 0"
         each_value do |value|
@@ -39,5 +43,8 @@ module GIRepository
   end
 
   class FlagsInfo < EnumInfo
+    def attributes(io)
+      io.puts "  @[Flags]"
+    end
   end
 end
