@@ -90,14 +90,14 @@ module GIRepository
         each_field do |field|
           if field.readable?
             io.puts "#{indent}  def #{field.name(false)}"
-            io.puts "#{indent}    #{field.type.convert_to_crystal("(to_unsafe.value.#{field.name})")}"
+            io.puts "#{indent}    #{field.type.convert_to_crystal("(to_unsafe.as(#{ptr_type}).value.#{field.name})")}"
             io.puts "#{indent}  end"
             io.puts
           end
 
           if field.writable?
             io.puts "#{indent}  def #{field.name(false)}=(value : #{field.type.wrapper_definition(libname)})"
-            io.puts "#{indent}    to_unsafe.value.#{field.name} = #{field.type.convert_from_crystal("value")}"
+            io.puts "#{indent}    to_unsafe.as(#{ptr_type}).value.#{field.name} = #{field.type.convert_from_crystal("value")}"
             io.puts "#{indent}  end"
             io.puts
           end
