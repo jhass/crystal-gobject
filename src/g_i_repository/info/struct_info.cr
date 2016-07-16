@@ -49,7 +49,7 @@ module GIRepository
         ptr_type = "#{libname}::#{name}*"
 
         writable_fields = fields.select(&.writable?)
-        unless writable_fields.empty?
+        if !writable_fields.empty?
           io.print "#{indent}  def self.new("
           io.print writable_fields.map {|field|
             external = "#{field.name(false)} " if field.name(false) != field.name
@@ -64,9 +64,9 @@ module GIRepository
           io.puts "#{indent}    end"
           io.puts "#{indent}  end"
           io.puts
-        else
+        elsif size != 0 # if size is 0 it's opaque to us, there should be a constructor function
           io.puts "#{indent}  def self.new : self"
-          io.puts "#{indent}    ptr = Pointer(UInt8).malloc(#{size}, 0)"
+          io.puts "#{indent}    ptr = Pointer(UInt8).malloc(#{size}, 0u8)"
           io.puts "#{indent}    super(ptr.as(#{ptr_type}))"
           io.puts "#{indent}  end"
           io.puts
