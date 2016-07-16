@@ -5,7 +5,7 @@ module GdkPixbuf
     end
 
     def to_unsafe
-      @gdk_pixbuf_pixbuf_animation_iter.not_nil!
+      @gdk_pixbuf_pixbuf_animation_iter.not_nil!.as(Void*)
     end
 
     def advance(current_time)

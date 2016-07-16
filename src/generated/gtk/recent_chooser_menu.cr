@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_recent_chooser_menu.not_nil!
+      @gtk_recent_chooser_menu.not_nil!.as(Void*)
     end
 
     # Implements ImplementorIface

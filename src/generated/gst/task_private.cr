@@ -12,7 +12,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_task_private.not_nil!
+      @gst_task_private.not_nil!.as(Void*)
     end
 
   end

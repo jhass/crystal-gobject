@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_menu_model.not_nil!
+      @gio_menu_model.not_nil!.as(Void*)
     end
 
     def item_attribute_value(item_index, attribute, expected_type)

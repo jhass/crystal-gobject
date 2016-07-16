@@ -12,7 +12,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_device_monitor_private.not_nil!
+      @gst_device_monitor_private.not_nil!.as(Void*)
     end
 
   end

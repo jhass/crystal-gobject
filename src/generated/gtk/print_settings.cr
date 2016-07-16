@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_print_settings.not_nil!
+      @gtk_print_settings.not_nil!.as(Void*)
     end
 
     def self.new : self

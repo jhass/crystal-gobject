@@ -17,7 +17,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_rectangle.not_nil!
+      @gdk_rectangle.not_nil!.as(Void*)
     end
 
     def equal(rect2)

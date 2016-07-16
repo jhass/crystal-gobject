@@ -12,7 +12,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_paper_size.not_nil!
+      @gtk_paper_size.not_nil!.as(Void*)
     end
 
     def self.new(name) : self

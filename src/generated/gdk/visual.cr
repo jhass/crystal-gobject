@@ -5,7 +5,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_visual.not_nil!
+      @gdk_visual.not_nil!.as(Void*)
     end
 
     def self.best

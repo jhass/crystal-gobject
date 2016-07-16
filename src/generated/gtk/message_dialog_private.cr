@@ -12,7 +12,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_message_dialog_private.not_nil!
+      @gtk_message_dialog_private.not_nil!.as(Void*)
     end
 
   end

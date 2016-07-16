@@ -12,7 +12,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_context.not_nil!
+      @gst_context.not_nil!.as(Void*)
     end
 
     def self.new(context_type, persistent) : self

@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_notebook_page_accessible.not_nil!
+      @gtk_notebook_page_accessible.not_nil!.as(Void*)
     end
 
     # Implements Component

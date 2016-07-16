@@ -15,7 +15,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_point.not_nil!
+      @gdk_point.not_nil!.as(Void*)
     end
 
     def x

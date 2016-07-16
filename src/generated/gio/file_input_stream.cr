@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_file_input_stream.not_nil!
+      @gio_file_input_stream.not_nil!.as(Void*)
     end
 
     # Implements Seekable

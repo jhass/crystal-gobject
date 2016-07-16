@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_application.not_nil!
+      @gtk_application.not_nil!.as(Void*)
     end
 
     # Implements ActionGroup

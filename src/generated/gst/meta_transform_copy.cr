@@ -16,7 +16,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_meta_transform_copy.not_nil!
+      @gst_meta_transform_copy.not_nil!.as(Void*)
     end
 
     def region

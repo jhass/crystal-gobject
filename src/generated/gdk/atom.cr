@@ -12,7 +12,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_atom.not_nil!
+      @gdk_atom.not_nil!.as(Void*)
     end
 
     def name

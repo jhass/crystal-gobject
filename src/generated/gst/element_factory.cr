@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_element_factory.not_nil!
+      @gst_element_factory.not_nil!.as(Void*)
     end
 
     def self.find(name)

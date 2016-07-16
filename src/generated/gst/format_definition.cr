@@ -17,7 +17,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_format_definition.not_nil!
+      @gst_format_definition.not_nil!.as(Void*)
     end
 
     def value

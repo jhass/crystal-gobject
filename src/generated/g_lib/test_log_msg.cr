@@ -18,7 +18,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_test_log_msg.not_nil!
+      @g_lib_test_log_msg.not_nil!.as(Void*)
     end
 
     def free

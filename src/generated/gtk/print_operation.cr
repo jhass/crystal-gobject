@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_print_operation.not_nil!
+      @gtk_print_operation.not_nil!.as(Void*)
     end
 
     # Implements PrintOperationPreview

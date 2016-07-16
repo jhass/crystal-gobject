@@ -12,7 +12,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_tls_certificate_private.not_nil!
+      @gio_tls_certificate_private.not_nil!.as(Void*)
     end
 
   end

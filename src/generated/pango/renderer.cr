@@ -5,7 +5,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_renderer.not_nil!
+      @pango_renderer.not_nil!.as(Void*)
     end
 
     def activate

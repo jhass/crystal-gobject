@@ -14,7 +14,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_type_find.not_nil!
+      @gst_type_find.not_nil!.as(Void*)
     end
 
     def length

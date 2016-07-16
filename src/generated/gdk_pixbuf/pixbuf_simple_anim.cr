@@ -7,7 +7,7 @@ module GdkPixbuf
     end
 
     def to_unsafe
-      @gdk_pixbuf_pixbuf_simple_anim.not_nil!
+      @gdk_pixbuf_pixbuf_simple_anim.not_nil!.as(Void*)
     end
 
 

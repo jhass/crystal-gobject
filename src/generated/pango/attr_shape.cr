@@ -19,7 +19,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_attr_shape.not_nil!
+      @pango_attr_shape.not_nil!.as(Void*)
     end
 
     def attr

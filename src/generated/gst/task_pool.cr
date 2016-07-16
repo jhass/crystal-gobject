@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_task_pool.not_nil!
+      @gst_task_pool.not_nil!.as(Void*)
     end
 
     def self.new : self

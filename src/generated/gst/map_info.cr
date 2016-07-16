@@ -19,7 +19,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_map_info.not_nil!
+      @gst_map_info.not_nil!.as(Void*)
     end
 
     def memory

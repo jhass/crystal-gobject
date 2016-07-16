@@ -17,7 +17,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_tree_iter.not_nil!
+      @gtk_tree_iter.not_nil!.as(Void*)
     end
 
     def copy

@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_unix_mount_monitor.not_nil!
+      @gio_unix_mount_monitor.not_nil!.as(Void*)
     end
 
     def self.new : self

@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_task.not_nil!
+      @gst_task.not_nil!.as(Void*)
     end
 
     def self.new(func : LibGst::TaskFunction, user_data, notify : LibGLib::DestroyNotify) : self

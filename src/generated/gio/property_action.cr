@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_property_action.not_nil!
+      @gio_property_action.not_nil!.as(Void*)
     end
 
     # Implements Action

@@ -12,7 +12,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_option_context.not_nil!
+      @g_lib_option_context.not_nil!.as(Void*)
     end
 
     def add_group(group)

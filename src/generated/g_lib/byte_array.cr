@@ -15,7 +15,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_byte_array.not_nil!
+      @g_lib_byte_array.not_nil!.as(Void*)
     end
 
     def self.free(array, free_segment)

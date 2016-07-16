@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_tearoff_menu_item.not_nil!
+      @gtk_tearoff_menu_item.not_nil!.as(Void*)
     end
 
     # Implements ImplementorIface

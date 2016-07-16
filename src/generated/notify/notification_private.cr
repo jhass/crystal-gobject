@@ -12,7 +12,7 @@ module Notify
     end
 
     def to_unsafe
-      @notify_notification_private.not_nil!
+      @notify_notification_private.not_nil!.as(Void*)
     end
 
   end

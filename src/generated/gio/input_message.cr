@@ -20,7 +20,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_input_message.not_nil!
+      @gio_input_message.not_nil!.as(Void*)
     end
 
     def address

@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_list_store.not_nil!
+      @gio_list_store.not_nil!.as(Void*)
     end
 
     # Implements ListModel

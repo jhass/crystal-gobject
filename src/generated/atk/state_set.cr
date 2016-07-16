@@ -5,7 +5,7 @@ module Atk
     end
 
     def to_unsafe
-      @atk_state_set.not_nil!
+      @atk_state_set.not_nil!.as(Void*)
     end
 
     def self.new : self

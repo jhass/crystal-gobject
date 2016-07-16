@@ -12,7 +12,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_system_clock_private.not_nil!
+      @gst_system_clock_private.not_nil!.as(Void*)
     end
 
   end

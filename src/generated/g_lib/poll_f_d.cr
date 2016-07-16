@@ -16,7 +16,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_poll_f_d.not_nil!
+      @g_lib_poll_f_d.not_nil!.as(Void*)
     end
 
     def fd

@@ -12,7 +12,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_tree.not_nil!
+      @g_lib_tree.not_nil!.as(Void*)
     end
 
     def destroy

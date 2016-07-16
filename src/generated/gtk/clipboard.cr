@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_clipboard.not_nil!
+      @gtk_clipboard.not_nil!.as(Void*)
     end
 
     def self.get(selection)

@@ -12,7 +12,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_source.not_nil!
+      @g_lib_source.not_nil!.as(Void*)
     end
 
     def self.new(source_funcs, struct_size) : self

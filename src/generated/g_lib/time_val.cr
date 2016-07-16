@@ -15,7 +15,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_time_val.not_nil!
+      @g_lib_time_val.not_nil!.as(Void*)
     end
 
     def add(microseconds)

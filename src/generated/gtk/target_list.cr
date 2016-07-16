@@ -12,7 +12,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_target_list.not_nil!
+      @gtk_target_list.not_nil!.as(Void*)
     end
 
     def self.new(targets, ntargets) : self

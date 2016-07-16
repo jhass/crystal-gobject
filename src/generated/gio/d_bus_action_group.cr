@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_d_bus_action_group.not_nil!
+      @gio_d_bus_action_group.not_nil!.as(Void*)
     end
 
     # Implements ActionGroup

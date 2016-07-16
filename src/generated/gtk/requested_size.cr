@@ -16,7 +16,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_requested_size.not_nil!
+      @gtk_requested_size.not_nil!.as(Void*)
     end
 
     def data

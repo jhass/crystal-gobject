@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_d_bus_object_manager_client.not_nil!
+      @gio_d_bus_object_manager_client.not_nil!.as(Void*)
     end
 
     # Implements AsyncInitable

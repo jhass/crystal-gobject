@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_tracer_factory.not_nil!
+      @gst_tracer_factory.not_nil!.as(Void*)
     end
 
     def self.list

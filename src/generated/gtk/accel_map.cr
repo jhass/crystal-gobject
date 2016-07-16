@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_accel_map.not_nil!
+      @gtk_accel_map.not_nil!.as(Void*)
     end
 
     def self.add_entry(accel_path, accel_key, accel_mods)

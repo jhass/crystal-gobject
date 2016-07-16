@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_accel_group.not_nil!
+      @gtk_accel_group.not_nil!.as(Void*)
     end
 
 

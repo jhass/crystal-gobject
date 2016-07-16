@@ -28,7 +28,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_scanner.not_nil!
+      @g_lib_scanner.not_nil!.as(Void*)
     end
 
     def cur_line

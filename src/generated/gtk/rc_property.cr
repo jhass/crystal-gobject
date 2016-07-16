@@ -17,7 +17,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_rc_property.not_nil!
+      @gtk_rc_property.not_nil!.as(Void*)
     end
 
     def self.parse_border(pspec, gstring, property_value)

@@ -18,7 +18,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_pad_probe_info.not_nil!
+      @gst_pad_probe_info.not_nil!.as(Void*)
     end
 
     def buffer

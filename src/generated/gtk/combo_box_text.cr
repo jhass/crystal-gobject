@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_combo_box_text.not_nil!
+      @gtk_combo_box_text.not_nil!.as(Void*)
     end
 
     # Implements ImplementorIface

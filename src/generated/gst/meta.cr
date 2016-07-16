@@ -15,7 +15,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_meta.not_nil!
+      @gst_meta.not_nil!.as(Void*)
     end
 
     def self.api_type_get_tags(api)

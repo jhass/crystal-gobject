@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_bitmask.not_nil!
+      @gst_bitmask.not_nil!.as(Void*)
     end
 
   end

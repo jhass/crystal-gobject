@@ -12,7 +12,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_layout_iter.not_nil!
+      @pango_layout_iter.not_nil!.as(Void*)
     end
 
     def at_last_line

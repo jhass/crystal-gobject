@@ -15,7 +15,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_type_value_table.not_nil!
+      @g_object_type_value_table.not_nil!.as(Void*)
     end
 
     def value_init

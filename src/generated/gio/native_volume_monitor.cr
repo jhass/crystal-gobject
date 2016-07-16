@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_native_volume_monitor.not_nil!
+      @gio_native_volume_monitor.not_nil!.as(Void*)
     end
 
   end

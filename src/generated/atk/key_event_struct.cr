@@ -20,7 +20,7 @@ module Atk
     end
 
     def to_unsafe
-      @atk_key_event_struct.not_nil!
+      @atk_key_event_struct.not_nil!.as(Void*)
     end
 
     def type

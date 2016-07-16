@@ -4,15 +4,15 @@ module Cairo
 
     def self.new : self
       ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(Libcairo::Pattern*))
+      super(ptr.as(LibCairo::Pattern*))
     end
 
-    @cairo_pattern : Libcairo::Pattern*?
-    def initialize(@cairo_pattern : Libcairo::Pattern*)
+    @cairo_pattern : LibCairo::Pattern*?
+    def initialize(@cairo_pattern : LibCairo::Pattern*)
     end
 
     def to_unsafe
-      @cairo_pattern.not_nil!
+      @cairo_pattern.not_nil!.as(Void*)
     end
 
   end

@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_tls_interaction.not_nil!
+      @gio_tls_interaction.not_nil!.as(Void*)
     end
 
     def ask_password(password, cancellable)

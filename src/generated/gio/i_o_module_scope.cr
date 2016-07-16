@@ -12,7 +12,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_i_o_module_scope.not_nil!
+      @gio_i_o_module_scope.not_nil!.as(Void*)
     end
 
     def block(basename)

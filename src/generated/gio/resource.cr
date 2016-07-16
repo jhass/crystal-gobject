@@ -12,7 +12,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_resource.not_nil!
+      @gio_resource.not_nil!.as(Void*)
     end
 
     def self.new_from_data(data) : self

@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_socket.not_nil!
+      @gio_socket.not_nil!.as(Void*)
     end
 
     # Implements DatagramBased

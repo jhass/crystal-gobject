@@ -12,7 +12,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_stat_buf.not_nil!
+      @g_lib_stat_buf.not_nil!.as(Void*)
     end
 
   end

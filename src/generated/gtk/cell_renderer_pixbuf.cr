@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_cell_renderer_pixbuf.not_nil!
+      @gtk_cell_renderer_pixbuf.not_nil!.as(Void*)
     end
 
 

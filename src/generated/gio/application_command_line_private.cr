@@ -12,7 +12,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_application_command_line_private.not_nil!
+      @gio_application_command_line_private.not_nil!.as(Void*)
     end
 
   end

@@ -21,7 +21,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_binding_set.not_nil!
+      @gtk_binding_set.not_nil!.as(Void*)
     end
 
     def activate(keyval, modifiers, object)

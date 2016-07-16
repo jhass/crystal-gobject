@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_color_selection.not_nil!
+      @gtk_color_selection.not_nil!.as(Void*)
     end
 
     # Implements ImplementorIface

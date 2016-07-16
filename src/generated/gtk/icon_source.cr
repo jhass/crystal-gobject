@@ -12,7 +12,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_icon_source.not_nil!
+      @gtk_icon_source.not_nil!.as(Void*)
     end
 
     def self.new : self

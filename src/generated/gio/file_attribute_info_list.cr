@@ -15,7 +15,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_file_attribute_info_list.not_nil!
+      @gio_file_attribute_info_list.not_nil!.as(Void*)
     end
 
     def self.new : self

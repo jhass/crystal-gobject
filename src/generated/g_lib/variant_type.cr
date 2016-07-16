@@ -12,7 +12,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_variant_type.not_nil!
+      @g_lib_variant_type.not_nil!.as(Void*)
     end
 
     def self.new(type_string) : self

@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_icon_view_accessible.not_nil!
+      @gtk_icon_view_accessible.not_nil!.as(Void*)
     end
 
     # Implements Component

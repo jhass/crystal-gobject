@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_unix_f_d_message.not_nil!
+      @gio_unix_f_d_message.not_nil!.as(Void*)
     end
 
 

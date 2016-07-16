@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_style_properties.not_nil!
+      @gtk_style_properties.not_nil!.as(Void*)
     end
 
     # Implements StyleProvider

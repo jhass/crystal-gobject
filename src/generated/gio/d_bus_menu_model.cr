@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_d_bus_menu_model.not_nil!
+      @gio_d_bus_menu_model.not_nil!.as(Void*)
     end
 
     def self.get(connection, bus_name, object_path)

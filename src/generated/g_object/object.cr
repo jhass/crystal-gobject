@@ -7,7 +7,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_object.not_nil!
+      @g_object_object.not_nil!.as(Void*)
     end
 
     def self.new(object_type, n_parameters, parameters) : self

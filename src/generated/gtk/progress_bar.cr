@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_progress_bar.not_nil!
+      @gtk_progress_bar.not_nil!.as(Void*)
     end
 
     # Implements ImplementorIface

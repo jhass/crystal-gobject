@@ -5,7 +5,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_object.not_nil!
+      @gst_object.not_nil!.as(Void*)
     end
 
 

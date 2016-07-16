@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_tooltip.not_nil!
+      @gtk_tooltip.not_nil!.as(Void*)
     end
 
     def self.trigger_tooltip_query(display)

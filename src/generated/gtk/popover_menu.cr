@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_popover_menu.not_nil!
+      @gtk_popover_menu.not_nil!.as(Void*)
     end
 
     # Implements ImplementorIface

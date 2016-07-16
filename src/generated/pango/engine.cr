@@ -5,7 +5,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_engine.not_nil!
+      @pango_engine.not_nil!.as(Void*)
     end
 
   end

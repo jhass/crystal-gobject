@@ -18,7 +18,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_file_filter_info.not_nil!
+      @gtk_file_filter_info.not_nil!.as(Void*)
     end
 
     def contains

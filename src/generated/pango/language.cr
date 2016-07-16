@@ -12,7 +12,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_language.not_nil!
+      @pango_language.not_nil!.as(Void*)
     end
 
     def sample_string

@@ -4,7 +4,7 @@ module Cairo
 
     def self.new(x : Int32|Nil = nil, y : Int32|Nil = nil, width : Int32|Nil = nil, height : Int32|Nil = nil) : self
       ptr = Pointer(UInt8).malloc(16, 0u8)
-      new(ptr.as(Libcairo::RectangleInt*)).tap do |object|
+      new(ptr.as(LibCairo::RectangleInt*)).tap do |object|
         object.x = x unless x.nil?
         object.y = y unless y.nil?
         object.width = width unless width.nil?
@@ -12,12 +12,12 @@ module Cairo
       end
     end
 
-    @cairo_rectangle_int : Libcairo::RectangleInt*?
-    def initialize(@cairo_rectangle_int : Libcairo::RectangleInt*)
+    @cairo_rectangle_int : LibCairo::RectangleInt*?
+    def initialize(@cairo_rectangle_int : LibCairo::RectangleInt*)
     end
 
     def to_unsafe
-      @cairo_rectangle_int.not_nil!
+      @cairo_rectangle_int.not_nil!.as(Void*)
     end
 
     def x

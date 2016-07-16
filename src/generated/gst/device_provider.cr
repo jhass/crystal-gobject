@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_device_provider.not_nil!
+      @gst_device_provider.not_nil!.as(Void*)
     end
 
     def self.register(plugin, name, rank, type)

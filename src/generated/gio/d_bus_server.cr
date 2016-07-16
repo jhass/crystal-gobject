@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_d_bus_server.not_nil!
+      @gio_d_bus_server.not_nil!.as(Void*)
     end
 
     # Implements Initable

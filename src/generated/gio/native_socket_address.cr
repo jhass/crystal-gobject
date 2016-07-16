@@ -12,7 +12,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_native_socket_address.not_nil!
+      @gio_native_socket_address.not_nil!.as(Void*)
     end
 
   end

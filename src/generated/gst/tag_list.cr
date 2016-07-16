@@ -14,7 +14,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_tag_list.not_nil!
+      @gst_tag_list.not_nil!.as(Void*)
     end
 
     def self.new_empty : self

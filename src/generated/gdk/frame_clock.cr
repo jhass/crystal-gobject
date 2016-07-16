@@ -5,7 +5,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_frame_clock.not_nil!
+      @gdk_frame_clock.not_nil!.as(Void*)
     end
 
     def begin_updating

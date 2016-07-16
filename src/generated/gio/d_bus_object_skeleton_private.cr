@@ -12,7 +12,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_d_bus_object_skeleton_private.not_nil!
+      @gio_d_bus_object_skeleton_private.not_nil!.as(Void*)
     end
 
   end

@@ -15,7 +15,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_value_array.not_nil!
+      @g_object_value_array.not_nil!.as(Void*)
     end
 
     def self.new(n_prealloced) : self

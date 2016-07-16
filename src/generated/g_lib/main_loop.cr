@@ -12,7 +12,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_main_loop.not_nil!
+      @g_lib_main_loop.not_nil!.as(Void*)
     end
 
     def self.new(context, is_running) : self

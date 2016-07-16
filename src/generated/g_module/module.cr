@@ -12,7 +12,7 @@ module GModule
     end
 
     def to_unsafe
-      @g_module_module.not_nil!
+      @g_module_module.not_nil!.as(Void*)
     end
 
     def close

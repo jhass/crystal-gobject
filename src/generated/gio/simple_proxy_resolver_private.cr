@@ -12,7 +12,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_simple_proxy_resolver_private.not_nil!
+      @gio_simple_proxy_resolver_private.not_nil!.as(Void*)
     end
 
   end

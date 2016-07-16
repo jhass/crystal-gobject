@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_h_scrollbar.not_nil!
+      @gtk_h_scrollbar.not_nil!.as(Void*)
     end
 
     # Implements ImplementorIface

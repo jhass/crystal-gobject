@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_native_dialog.not_nil!
+      @gtk_native_dialog.not_nil!.as(Void*)
     end
 
 

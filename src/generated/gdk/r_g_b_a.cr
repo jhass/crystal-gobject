@@ -17,7 +17,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_r_g_b_a.not_nil!
+      @gdk_r_g_b_a.not_nil!.as(Void*)
     end
 
     def copy

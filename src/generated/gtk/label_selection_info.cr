@@ -12,7 +12,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_label_selection_info.not_nil!
+      @gtk_label_selection_info.not_nil!.as(Void*)
     end
 
   end

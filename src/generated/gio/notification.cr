@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_notification.not_nil!
+      @gio_notification.not_nil!.as(Void*)
     end
 
     def self.new(title) : self

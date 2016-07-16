@@ -12,7 +12,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_caps_features.not_nil!
+      @gst_caps_features.not_nil!.as(Void*)
     end
 
     def self.new_any : self

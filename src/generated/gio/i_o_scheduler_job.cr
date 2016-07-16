@@ -12,7 +12,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_i_o_scheduler_job.not_nil!
+      @gio_i_o_scheduler_job.not_nil!.as(Void*)
     end
 
     def send_to_mainloop(func : LibGLib::SourceFunc, user_data, notify : LibGLib::DestroyNotify?)

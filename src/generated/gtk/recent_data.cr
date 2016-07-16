@@ -20,7 +20,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_recent_data.not_nil!
+      @gtk_recent_data.not_nil!.as(Void*)
     end
 
     def display_name

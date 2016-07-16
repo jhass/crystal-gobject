@@ -15,7 +15,7 @@ module Atk
     end
 
     def to_unsafe
-      @atk_attribute.not_nil!
+      @atk_attribute.not_nil!.as(Void*)
     end
 
     def self.set_free(attrib_set)

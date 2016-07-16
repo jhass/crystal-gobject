@@ -12,7 +12,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_tcp_wrapper_connection_private.not_nil!
+      @gio_tcp_wrapper_connection_private.not_nil!.as(Void*)
     end
 
   end

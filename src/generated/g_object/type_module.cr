@@ -7,7 +7,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_type_module.not_nil!
+      @g_object_type_module.not_nil!.as(Void*)
     end
 
     # Implements TypePlugin

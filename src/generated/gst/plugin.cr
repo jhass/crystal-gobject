@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_plugin.not_nil!
+      @gst_plugin.not_nil!.as(Void*)
     end
 
     def self.list_free(list)

@@ -15,7 +15,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_closure.not_nil!
+      @g_object_closure.not_nil!.as(Void*)
     end
 
     def self.new_object(sizeof_closure, object) : self

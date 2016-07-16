@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_bin.not_nil!
+      @gst_bin.not_nil!.as(Void*)
     end
 
     # Implements ChildProxy

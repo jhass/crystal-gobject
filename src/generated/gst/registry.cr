@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_registry.not_nil!
+      @gst_registry.not_nil!.as(Void*)
     end
 
     def self.fork_is_enabled

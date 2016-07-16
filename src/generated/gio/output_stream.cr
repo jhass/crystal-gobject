@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_output_stream.not_nil!
+      @gio_output_stream.not_nil!.as(Void*)
     end
 
     def clear_pending

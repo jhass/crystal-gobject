@@ -16,7 +16,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_signal_invocation_hint.not_nil!
+      @g_object_signal_invocation_hint.not_nil!.as(Void*)
     end
 
     def signal_id

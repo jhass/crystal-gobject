@@ -12,7 +12,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_variant.not_nil!
+      @g_lib_variant.not_nil!.as(Void*)
     end
 
     def self.new_array(child_type, children, n_children) : self

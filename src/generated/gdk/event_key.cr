@@ -24,7 +24,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_event_key.not_nil!
+      @gdk_event_key.not_nil!.as(Void*)
     end
 
     def type

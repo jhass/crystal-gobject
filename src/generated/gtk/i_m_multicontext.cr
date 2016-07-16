@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_i_m_multicontext.not_nil!
+      @gtk_i_m_multicontext.not_nil!.as(Void*)
     end
 
     def self.new : self

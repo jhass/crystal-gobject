@@ -14,7 +14,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_poll_f_d.not_nil!
+      @gst_poll_f_d.not_nil!.as(Void*)
     end
 
     def init

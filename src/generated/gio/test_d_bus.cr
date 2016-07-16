@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_test_d_bus.not_nil!
+      @gio_test_d_bus.not_nil!.as(Void*)
     end
 
 

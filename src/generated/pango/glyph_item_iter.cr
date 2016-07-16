@@ -21,7 +21,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_glyph_item_iter.not_nil!
+      @pango_glyph_item_iter.not_nil!.as(Void*)
     end
 
     def copy

@@ -22,7 +22,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_analysis.not_nil!
+      @pango_analysis.not_nil!.as(Void*)
     end
 
     def shape_engine

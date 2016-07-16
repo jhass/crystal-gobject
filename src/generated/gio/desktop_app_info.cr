@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_desktop_app_info.not_nil!
+      @gio_desktop_app_info.not_nil!.as(Void*)
     end
 
     # Implements AppInfo

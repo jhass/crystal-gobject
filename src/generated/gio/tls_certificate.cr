@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_tls_certificate.not_nil!
+      @gio_tls_certificate.not_nil!.as(Void*)
     end
 
 

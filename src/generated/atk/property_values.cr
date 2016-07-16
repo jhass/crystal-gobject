@@ -16,7 +16,7 @@ module Atk
     end
 
     def to_unsafe
-      @atk_property_values.not_nil!
+      @atk_property_values.not_nil!.as(Void*)
     end
 
     def property_name

@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_volume_monitor.not_nil!
+      @gio_volume_monitor.not_nil!.as(Void*)
     end
 
     def self.adopt_orphan_mount(mount)

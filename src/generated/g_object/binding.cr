@@ -7,7 +7,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_binding.not_nil!
+      @g_object_binding.not_nil!.as(Void*)
     end
 
 

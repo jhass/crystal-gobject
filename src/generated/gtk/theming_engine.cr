@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_theming_engine.not_nil!
+      @gtk_theming_engine.not_nil!.as(Void*)
     end
 
 

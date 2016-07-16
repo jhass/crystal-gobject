@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_d_bus_auth_observer.not_nil!
+      @gio_d_bus_auth_observer.not_nil!.as(Void*)
     end
 
     def self.new : self

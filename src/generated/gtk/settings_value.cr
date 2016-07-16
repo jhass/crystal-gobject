@@ -15,7 +15,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_settings_value.not_nil!
+      @gtk_settings_value.not_nil!.as(Void*)
     end
 
     def origin

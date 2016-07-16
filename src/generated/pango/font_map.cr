@@ -5,7 +5,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_font_map.not_nil!
+      @pango_font_map.not_nil!.as(Void*)
     end
 
     def changed

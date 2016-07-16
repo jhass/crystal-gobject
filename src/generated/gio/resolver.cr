@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_resolver.not_nil!
+      @gio_resolver.not_nil!.as(Void*)
     end
 
     def self.default

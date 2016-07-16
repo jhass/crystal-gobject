@@ -1,5 +1,5 @@
 @[Link("cairo-gobject")]
-lib Libcairo
+lib LibCairo
 
   ###########################################
   ##    Structs

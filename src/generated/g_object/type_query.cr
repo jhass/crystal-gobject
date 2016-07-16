@@ -17,7 +17,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_type_query.not_nil!
+      @g_object_type_query.not_nil!.as(Void*)
     end
 
     def type

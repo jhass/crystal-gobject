@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_settings.not_nil!
+      @gio_settings.not_nil!.as(Void*)
     end
 
 

@@ -17,7 +17,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_event.not_nil!
+      @gst_event.not_nil!.as(Void*)
     end
 
     def self.new_buffer_size(format, minsize, maxsize, async) : self

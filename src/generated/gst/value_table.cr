@@ -17,7 +17,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_value_table.not_nil!
+      @gst_value_table.not_nil!.as(Void*)
     end
 
     def type

@@ -20,7 +20,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_memory.not_nil!
+      @gst_memory.not_nil!.as(Void*)
     end
 
     def self.new_wrapped(flags, data, maxsize, offset, size, user_data, notify : LibGLib::DestroyNotify?) : self

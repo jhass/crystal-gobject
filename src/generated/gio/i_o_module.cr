@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_i_o_module.not_nil!
+      @gio_i_o_module.not_nil!.as(Void*)
     end
 
     # Implements TypePlugin

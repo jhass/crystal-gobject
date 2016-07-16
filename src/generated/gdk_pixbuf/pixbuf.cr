@@ -5,7 +5,7 @@ module GdkPixbuf
     end
 
     def to_unsafe
-      @gdk_pixbuf_pixbuf.not_nil!
+      @gdk_pixbuf_pixbuf.not_nil!.as(Void*)
     end
 
     # Implements Icon

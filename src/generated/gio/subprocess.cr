@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_subprocess.not_nil!
+      @gio_subprocess.not_nil!.as(Void*)
     end
 
     # Implements Initable

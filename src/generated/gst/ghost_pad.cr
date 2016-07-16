@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_ghost_pad.not_nil!
+      @gst_ghost_pad.not_nil!.as(Void*)
     end
 
     def self.new(name, target) : self

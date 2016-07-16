@@ -15,7 +15,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_attr_language.not_nil!
+      @pango_attr_language.not_nil!.as(Void*)
     end
 
     def attr

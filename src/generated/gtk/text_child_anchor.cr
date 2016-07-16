@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_text_child_anchor.not_nil!
+      @gtk_text_child_anchor.not_nil!.as(Void*)
     end
 
     def self.new : self

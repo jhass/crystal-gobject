@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_expander_accessible.not_nil!
+      @gtk_expander_accessible.not_nil!.as(Void*)
     end
 
     # Implements Action

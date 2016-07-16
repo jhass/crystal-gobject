@@ -15,7 +15,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_static_caps.not_nil!
+      @gst_static_caps.not_nil!.as(Void*)
     end
 
     def cleanup

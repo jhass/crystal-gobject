@@ -12,7 +12,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_hash_table_iter.not_nil!
+      @g_lib_hash_table_iter.not_nil!.as(Void*)
     end
 
     def init(hash_table)

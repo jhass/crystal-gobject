@@ -20,7 +20,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_toggle_action_entry.not_nil!
+      @gtk_toggle_action_entry.not_nil!.as(Void*)
     end
 
     def name

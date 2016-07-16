@@ -16,7 +16,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_accel_key.not_nil!
+      @gtk_accel_key.not_nil!.as(Void*)
     end
 
     def accel_key

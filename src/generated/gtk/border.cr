@@ -17,7 +17,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_border.not_nil!
+      @gtk_border.not_nil!.as(Void*)
     end
 
     def self.new : self

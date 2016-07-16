@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_text_tag_table.not_nil!
+      @gtk_text_tag_table.not_nil!.as(Void*)
     end
 
     # Implements Buildable

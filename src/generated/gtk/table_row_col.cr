@@ -21,7 +21,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_table_row_col.not_nil!
+      @gtk_table_row_col.not_nil!.as(Void*)
     end
 
     def requisition

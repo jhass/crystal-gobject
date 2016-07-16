@@ -12,7 +12,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_match_info.not_nil!
+      @g_lib_match_info.not_nil!.as(Void*)
     end
 
     def expand_references(string_to_expand)

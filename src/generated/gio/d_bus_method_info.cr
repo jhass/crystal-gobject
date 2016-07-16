@@ -18,7 +18,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_d_bus_method_info.not_nil!
+      @gio_d_bus_method_info.not_nil!.as(Void*)
     end
 
     def ref

@@ -15,7 +15,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_timed_value.not_nil!
+      @gst_timed_value.not_nil!.as(Void*)
     end
 
     def timestamp

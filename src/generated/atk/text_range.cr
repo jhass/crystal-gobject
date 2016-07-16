@@ -17,7 +17,7 @@ module Atk
     end
 
     def to_unsafe
-      @atk_text_range.not_nil!
+      @atk_text_range.not_nil!.as(Void*)
     end
 
     def bounds

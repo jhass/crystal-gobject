@@ -12,7 +12,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_settings_schema.not_nil!
+      @gio_settings_schema.not_nil!.as(Void*)
     end
 
     def id

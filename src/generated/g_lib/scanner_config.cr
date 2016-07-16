@@ -39,7 +39,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_scanner_config.not_nil!
+      @g_lib_scanner_config.not_nil!.as(Void*)
     end
 
     def cset_skip_characters

@@ -15,7 +15,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_protection_meta.not_nil!
+      @gst_protection_meta.not_nil!.as(Void*)
     end
 
     def self.info

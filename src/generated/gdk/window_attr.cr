@@ -27,7 +27,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_window_attr.not_nil!
+      @gdk_window_attr.not_nil!.as(Void*)
     end
 
     def title

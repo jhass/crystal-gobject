@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_simple_permission.not_nil!
+      @gio_simple_permission.not_nil!.as(Void*)
     end
 
     def self.new(allowed) : self

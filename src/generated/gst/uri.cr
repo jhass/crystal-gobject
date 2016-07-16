@@ -12,7 +12,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_uri.not_nil!
+      @gst_uri.not_nil!.as(Void*)
     end
 
     def self.new(scheme, userinfo, host, port, path, query, fragment) : self

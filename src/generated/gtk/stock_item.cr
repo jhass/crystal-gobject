@@ -18,7 +18,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_stock_item.not_nil!
+      @gtk_stock_item.not_nil!.as(Void*)
     end
 
     def free

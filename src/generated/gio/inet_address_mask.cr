@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_inet_address_mask.not_nil!
+      @gio_inet_address_mask.not_nil!.as(Void*)
     end
 
     # Implements Initable

@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_toplevel_accessible.not_nil!
+      @gtk_toplevel_accessible.not_nil!.as(Void*)
     end
 
     def children

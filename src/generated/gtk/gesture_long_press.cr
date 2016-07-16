@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_gesture_long_press.not_nil!
+      @gtk_gesture_long_press.not_nil!.as(Void*)
     end
 
 

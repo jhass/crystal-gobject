@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_font_chooser_widget.not_nil!
+      @gtk_font_chooser_widget.not_nil!.as(Void*)
     end
 
     # Implements ImplementorIface

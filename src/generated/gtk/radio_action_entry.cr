@@ -19,7 +19,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_radio_action_entry.not_nil!
+      @gtk_radio_action_entry.not_nil!.as(Void*)
     end
 
     def name

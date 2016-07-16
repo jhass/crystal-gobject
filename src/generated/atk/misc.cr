@@ -5,7 +5,7 @@ module Atk
     end
 
     def to_unsafe
-      @atk_misc.not_nil!
+      @atk_misc.not_nil!.as(Void*)
     end
 
     def self.instance

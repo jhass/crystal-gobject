@@ -16,7 +16,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_fixed_child.not_nil!
+      @gtk_fixed_child.not_nil!.as(Void*)
     end
 
     def widget

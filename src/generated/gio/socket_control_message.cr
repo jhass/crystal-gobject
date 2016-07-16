@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_socket_control_message.not_nil!
+      @gio_socket_control_message.not_nil!.as(Void*)
     end
 
     def self.deserialize(level, type, size, data)

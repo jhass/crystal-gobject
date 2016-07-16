@@ -5,7 +5,7 @@ module Atk
     end
 
     def to_unsafe
-      @atk_object.not_nil!
+      @atk_object.not_nil!.as(Void*)
     end
 
 

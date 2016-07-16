@@ -24,7 +24,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_segment.not_nil!
+      @gst_segment.not_nil!.as(Void*)
     end
 
     def self.new : self

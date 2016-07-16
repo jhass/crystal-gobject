@@ -4,15 +4,15 @@ module Cairo
 
     def self.new : self
       ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(Libcairo::Surface*))
+      super(ptr.as(LibCairo::Surface*))
     end
 
-    @cairo_surface : Libcairo::Surface*?
-    def initialize(@cairo_surface : Libcairo::Surface*)
+    @cairo_surface : LibCairo::Surface*?
+    def initialize(@cairo_surface : LibCairo::Surface*)
     end
 
     def to_unsafe
-      @cairo_surface.not_nil!
+      @cairo_surface.not_nil!.as(Void*)
     end
 
   end

@@ -5,7 +5,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_cursor.not_nil!
+      @gdk_cursor.not_nil!.as(Void*)
     end
 
 

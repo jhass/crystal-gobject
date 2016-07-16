@@ -16,7 +16,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_attribute.not_nil!
+      @pango_attribute.not_nil!.as(Void*)
     end
 
     def destroy

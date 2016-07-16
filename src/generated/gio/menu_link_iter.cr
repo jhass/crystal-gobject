@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_menu_link_iter.not_nil!
+      @gio_menu_link_iter.not_nil!.as(Void*)
     end
 
     def name

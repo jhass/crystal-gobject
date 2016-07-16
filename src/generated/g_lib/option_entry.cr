@@ -20,7 +20,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_option_entry.not_nil!
+      @g_lib_option_entry.not_nil!.as(Void*)
     end
 
     def long_name

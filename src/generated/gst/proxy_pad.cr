@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_proxy_pad.not_nil!
+      @gst_proxy_pad.not_nil!.as(Void*)
     end
 
     def self.chain_default(pad, parent, buffer)

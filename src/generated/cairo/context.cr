@@ -4,15 +4,15 @@ module Cairo
 
     def self.new : self
       ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(Libcairo::Context*))
+      super(ptr.as(LibCairo::Context*))
     end
 
-    @cairo_context : Libcairo::Context*?
-    def initialize(@cairo_context : Libcairo::Context*)
+    @cairo_context : LibCairo::Context*?
+    def initialize(@cairo_context : LibCairo::Context*)
     end
 
     def to_unsafe
-      @cairo_context.not_nil!
+      @cairo_context.not_nil!.as(Void*)
     end
 
   end

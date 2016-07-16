@@ -12,7 +12,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_date_time.not_nil!
+      @gst_date_time.not_nil!.as(Void*)
     end
 
     def self.new(tzoffset, year, month, day, hour, minute, seconds) : self

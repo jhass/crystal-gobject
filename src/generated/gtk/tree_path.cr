@@ -12,7 +12,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_tree_path.not_nil!
+      @gtk_tree_path.not_nil!.as(Void*)
     end
 
     def self.new : self

@@ -5,7 +5,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_device.not_nil!
+      @gdk_device.not_nil!.as(Void*)
     end
 
 

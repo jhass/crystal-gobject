@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_widget.not_nil!
+      @gtk_widget.not_nil!.as(Void*)
     end
 
     # Implements ImplementorIface
@@ -1570,7 +1570,7 @@ module Gtk
 
     alias DrawSignal = Widget, Cairo::Context -> Bool
     def on_draw(&__block : DrawSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::Libcairo::Context*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibCairo::Context*) {
        __return_value = __block.call(Widget.new(_arg0), Cairo::Context.new(_arg1))
        __return_value
       }

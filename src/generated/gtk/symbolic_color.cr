@@ -12,7 +12,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_symbolic_color.not_nil!
+      @gtk_symbolic_color.not_nil!.as(Void*)
     end
 
     def self.new_alpha(color, factor) : self

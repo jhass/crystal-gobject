@@ -5,7 +5,7 @@ module GIRepository
     end
 
     def to_unsafe
-      @g_i_repository_repository.not_nil!
+      @g_i_repository_repository.not_nil!.as(Void*)
     end
 
     def self.dump(arg)

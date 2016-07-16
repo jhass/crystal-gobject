@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_file_chooser_dialog.not_nil!
+      @gtk_file_chooser_dialog.not_nil!.as(Void*)
     end
 
     # Implements ImplementorIface

@@ -16,7 +16,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_thread_pool.not_nil!
+      @g_lib_thread_pool.not_nil!.as(Void*)
     end
 
     def free(immediate, wait)

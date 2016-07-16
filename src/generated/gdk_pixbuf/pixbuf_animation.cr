@@ -5,7 +5,7 @@ module GdkPixbuf
     end
 
     def to_unsafe
-      @gdk_pixbuf_pixbuf_animation.not_nil!
+      @gdk_pixbuf_pixbuf_animation.not_nil!.as(Void*)
     end
 
     def self.new_from_file(filename) : self

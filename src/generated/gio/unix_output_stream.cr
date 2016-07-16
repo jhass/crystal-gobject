@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_unix_output_stream.not_nil!
+      @gio_unix_output_stream.not_nil!.as(Void*)
     end
 
     # Implements FileDescriptorBased

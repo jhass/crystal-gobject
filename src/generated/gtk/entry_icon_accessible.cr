@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_entry_icon_accessible.not_nil!
+      @gtk_entry_icon_accessible.not_nil!.as(Void*)
     end
 
     # Implements Action

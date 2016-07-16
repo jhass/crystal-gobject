@@ -12,7 +12,7 @@ module Atk
     end
 
     def to_unsafe
-      @atk_implementor.not_nil!
+      @atk_implementor.not_nil!.as(Void*)
     end
 
     def ref_accessible

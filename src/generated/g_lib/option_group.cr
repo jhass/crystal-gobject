@@ -12,7 +12,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_option_group.not_nil!
+      @g_lib_option_group.not_nil!.as(Void*)
     end
 
     def self.new(name, description, help_description, user_data, destroy : LibGLib::DestroyNotify?) : self

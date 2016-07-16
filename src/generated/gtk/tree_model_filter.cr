@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_tree_model_filter.not_nil!
+      @gtk_tree_model_filter.not_nil!.as(Void*)
     end
 
     # Implements TreeDragSource

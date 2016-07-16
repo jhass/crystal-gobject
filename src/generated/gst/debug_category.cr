@@ -12,7 +12,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_debug_category.not_nil!
+      @gst_debug_category.not_nil!.as(Void*)
     end
 
     def free

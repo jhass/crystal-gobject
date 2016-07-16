@@ -16,7 +16,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_d_bus_subtree_v_table.not_nil!
+      @gio_d_bus_subtree_v_table.not_nil!.as(Void*)
     end
 
     def enumerate

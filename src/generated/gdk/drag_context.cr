@@ -5,7 +5,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_drag_context.not_nil!
+      @gdk_drag_context.not_nil!.as(Void*)
     end
 
     def actions

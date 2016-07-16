@@ -12,7 +12,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_time_zone.not_nil!
+      @g_lib_time_zone.not_nil!.as(Void*)
     end
 
     def self.new(identifier) : self

@@ -16,7 +16,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_target_entry.not_nil!
+      @gtk_target_entry.not_nil!.as(Void*)
     end
 
     def self.new(target, flags, info) : self

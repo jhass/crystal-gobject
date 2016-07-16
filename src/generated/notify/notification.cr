@@ -5,7 +5,7 @@ module Notify
     end
 
     def to_unsafe
-      @notify_notification.not_nil!
+      @notify_notification.not_nil!.as(Void*)
     end
 
 

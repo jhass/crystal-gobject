@@ -12,7 +12,7 @@ module GIRepository
     end
 
     def to_unsafe
-      @g_i_repository_attribute_iter.not_nil!
+      @g_i_repository_attribute_iter.not_nil!.as(Void*)
     end
 
     def data

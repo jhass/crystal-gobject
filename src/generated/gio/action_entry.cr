@@ -16,7 +16,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_action_entry.not_nil!
+      @gio_action_entry.not_nil!.as(Void*)
     end
 
     def name

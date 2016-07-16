@@ -15,7 +15,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_once.not_nil!
+      @g_lib_once.not_nil!.as(Void*)
     end
 
     def self.init_enter(location)

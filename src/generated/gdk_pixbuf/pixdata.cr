@@ -20,7 +20,7 @@ module GdkPixbuf
     end
 
     def to_unsafe
-      @gdk_pixbuf_pixdata.not_nil!
+      @gdk_pixbuf_pixdata.not_nil!.as(Void*)
     end
 
     def deserialize(stream_length, stream)

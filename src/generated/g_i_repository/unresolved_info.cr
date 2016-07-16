@@ -12,7 +12,7 @@ module GIRepository
     end
 
     def to_unsafe
-      @g_i_repository_unresolved_info.not_nil!
+      @g_i_repository_unresolved_info.not_nil!.as(Void*)
     end
 
   end

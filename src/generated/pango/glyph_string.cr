@@ -16,7 +16,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_glyph_string.not_nil!
+      @pango_glyph_string.not_nil!.as(Void*)
     end
 
     def self.new : self

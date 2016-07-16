@@ -17,7 +17,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_color.not_nil!
+      @gdk_color.not_nil!.as(Void*)
     end
 
     def copy

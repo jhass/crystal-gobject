@@ -15,7 +15,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_time_coord.not_nil!
+      @gdk_time_coord.not_nil!.as(Void*)
     end
 
     def time

@@ -15,7 +15,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_glyph_item.not_nil!
+      @pango_glyph_item.not_nil!.as(Void*)
     end
 
     def apply_attrs(text, list)

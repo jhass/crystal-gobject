@@ -12,7 +12,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_window_redirect.not_nil!
+      @gdk_window_redirect.not_nil!.as(Void*)
     end
 
   end

@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_u_i_manager.not_nil!
+      @gtk_u_i_manager.not_nil!.as(Void*)
     end
 
     # Implements Buildable

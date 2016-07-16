@@ -12,7 +12,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_markup_parse_context.not_nil!
+      @g_lib_markup_parse_context.not_nil!.as(Void*)
     end
 
     def self.new(parser, flags, user_data, user_data_dnotify : LibGLib::DestroyNotify) : self

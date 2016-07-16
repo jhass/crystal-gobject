@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_file_filter.not_nil!
+      @gtk_file_filter.not_nil!.as(Void*)
     end
 
     # Implements Buildable

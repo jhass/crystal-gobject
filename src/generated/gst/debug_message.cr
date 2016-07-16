@@ -12,7 +12,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_debug_message.not_nil!
+      @gst_debug_message.not_nil!.as(Void*)
     end
 
     def get

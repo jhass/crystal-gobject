@@ -18,7 +18,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_i_m_context_info.not_nil!
+      @gtk_i_m_context_info.not_nil!.as(Void*)
     end
 
     def context_id

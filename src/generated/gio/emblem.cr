@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_emblem.not_nil!
+      @gio_emblem.not_nil!.as(Void*)
     end
 
     # Implements Icon

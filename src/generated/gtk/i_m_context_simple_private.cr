@@ -12,7 +12,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_i_m_context_simple_private.not_nil!
+      @gtk_i_m_context_simple_private.not_nil!.as(Void*)
     end
 
   end

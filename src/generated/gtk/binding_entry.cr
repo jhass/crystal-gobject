@@ -22,7 +22,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_binding_entry.not_nil!
+      @gtk_binding_entry.not_nil!.as(Void*)
     end
 
     def self.add_signal_from_string(binding_set, signal_desc)

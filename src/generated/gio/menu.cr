@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_menu.not_nil!
+      @gio_menu.not_nil!.as(Void*)
     end
 
     def self.new : self

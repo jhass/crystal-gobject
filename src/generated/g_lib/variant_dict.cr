@@ -12,7 +12,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_variant_dict.not_nil!
+      @g_lib_variant_dict.not_nil!.as(Void*)
     end
 
     def self.new(from_asv) : self

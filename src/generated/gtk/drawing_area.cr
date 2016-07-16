@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_drawing_area.not_nil!
+      @gtk_drawing_area.not_nil!.as(Void*)
     end
 
     # Implements ImplementorIface

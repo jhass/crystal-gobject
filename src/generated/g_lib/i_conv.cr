@@ -12,7 +12,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_i_conv.not_nil!
+      @g_lib_i_conv.not_nil!.as(Void*)
     end
 
     def new(inbuf, inbytes_left, outbuf, outbytes_left)

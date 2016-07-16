@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_element.not_nil!
+      @gst_element.not_nil!.as(Void*)
     end
 
     def self.make_from_uri(type, uri, elementname)

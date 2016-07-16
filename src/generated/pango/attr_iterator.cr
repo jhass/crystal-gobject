@@ -12,7 +12,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_attr_iterator.not_nil!
+      @pango_attr_iterator.not_nil!.as(Void*)
     end
 
     def destroy

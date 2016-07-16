@@ -12,7 +12,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_scrolled_window_accessible_private.not_nil!
+      @gtk_scrolled_window_accessible_private.not_nil!.as(Void*)
     end
 
   end

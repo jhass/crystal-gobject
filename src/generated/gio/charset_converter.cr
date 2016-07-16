@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_charset_converter.not_nil!
+      @gio_charset_converter.not_nil!.as(Void*)
     end
 
     # Implements Converter

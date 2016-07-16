@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_shortcuts_group.not_nil!
+      @gtk_shortcuts_group.not_nil!.as(Void*)
     end
 
     # Implements ImplementorIface

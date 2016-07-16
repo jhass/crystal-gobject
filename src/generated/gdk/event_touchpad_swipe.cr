@@ -26,7 +26,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_event_touchpad_swipe.not_nil!
+      @gdk_event_touchpad_swipe.not_nil!.as(Void*)
     end
 
     def type

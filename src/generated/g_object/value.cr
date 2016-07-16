@@ -14,7 +14,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_value.not_nil!
+      @g_object_value.not_nil!.as(Void*)
     end
 
     def copy(dest_value)

@@ -12,7 +12,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_font_description.not_nil!
+      @pango_font_description.not_nil!.as(Void*)
     end
 
     def self.new : self

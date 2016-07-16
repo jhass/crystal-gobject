@@ -15,7 +15,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_s_list.not_nil!
+      @g_lib_s_list.not_nil!.as(Void*)
     end
 
     def data

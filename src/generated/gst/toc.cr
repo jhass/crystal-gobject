@@ -12,7 +12,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_toc.not_nil!
+      @gst_toc.not_nil!.as(Void*)
     end
 
     def self.new(scope) : self

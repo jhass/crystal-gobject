@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_icon_factory.not_nil!
+      @gtk_icon_factory.not_nil!.as(Void*)
     end
 
     # Implements Buildable

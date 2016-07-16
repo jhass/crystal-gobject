@@ -12,7 +12,7 @@ module Atk
     end
 
     def to_unsafe
-      @atk_range.not_nil!
+      @atk_range.not_nil!.as(Void*)
     end
 
     def self.new(lower_limit, upper_limit, description) : self

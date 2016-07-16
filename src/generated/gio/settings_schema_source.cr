@@ -12,7 +12,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_settings_schema_source.not_nil!
+      @gio_settings_schema_source.not_nil!.as(Void*)
     end
 
     def self.new_from_directory(directory, parent, trusted) : self

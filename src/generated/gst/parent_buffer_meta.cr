@@ -15,7 +15,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_parent_buffer_meta.not_nil!
+      @gst_parent_buffer_meta.not_nil!.as(Void*)
     end
 
     def self.info

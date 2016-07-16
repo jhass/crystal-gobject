@@ -17,7 +17,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_buffer_pool_acquire_params.not_nil!
+      @gst_buffer_pool_acquire_params.not_nil!.as(Void*)
     end
 
     def format

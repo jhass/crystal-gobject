@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_inet_socket_address.not_nil!
+      @gio_inet_socket_address.not_nil!.as(Void*)
     end
 
     # Implements SocketConnectable

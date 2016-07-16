@@ -4,15 +4,15 @@ module Cairo
 
     def self.new : self
       ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(Libcairo::ScaledFont*))
+      super(ptr.as(LibCairo::ScaledFont*))
     end
 
-    @cairo_scaled_font : Libcairo::ScaledFont*?
-    def initialize(@cairo_scaled_font : Libcairo::ScaledFont*)
+    @cairo_scaled_font : LibCairo::ScaledFont*?
+    def initialize(@cairo_scaled_font : LibCairo::ScaledFont*)
     end
 
     def to_unsafe
-      @cairo_scaled_font.not_nil!
+      @cairo_scaled_font.not_nil!.as(Void*)
     end
 
   end

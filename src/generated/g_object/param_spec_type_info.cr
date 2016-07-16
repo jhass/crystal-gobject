@@ -16,7 +16,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_param_spec_type_info.not_nil!
+      @g_object_param_spec_type_info.not_nil!.as(Void*)
     end
 
     def instance_size

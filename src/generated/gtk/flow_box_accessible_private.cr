@@ -12,7 +12,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_flow_box_accessible_private.not_nil!
+      @gtk_flow_box_accessible_private.not_nil!.as(Void*)
     end
 
   end

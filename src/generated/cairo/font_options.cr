@@ -4,15 +4,15 @@ module Cairo
 
     def self.new : self
       ptr = Pointer(UInt8).malloc(0, 0)
-      super(ptr.as(Libcairo::FontOptions*))
+      super(ptr.as(LibCairo::FontOptions*))
     end
 
-    @cairo_font_options : Libcairo::FontOptions*?
-    def initialize(@cairo_font_options : Libcairo::FontOptions*)
+    @cairo_font_options : LibCairo::FontOptions*?
+    def initialize(@cairo_font_options : LibCairo::FontOptions*)
     end
 
     def to_unsafe
-      @cairo_font_options.not_nil!
+      @cairo_font_options.not_nil!.as(Void*)
     end
 
   end

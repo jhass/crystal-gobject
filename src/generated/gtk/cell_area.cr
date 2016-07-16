@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_cell_area.not_nil!
+      @gtk_cell_area.not_nil!.as(Void*)
     end
 
     # Implements Buildable

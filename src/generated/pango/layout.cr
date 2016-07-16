@@ -5,7 +5,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_layout.not_nil!
+      @pango_layout.not_nil!.as(Void*)
     end
 
     def self.new(context) : self

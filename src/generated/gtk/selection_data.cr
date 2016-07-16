@@ -12,7 +12,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_selection_data.not_nil!
+      @gtk_selection_data.not_nil!.as(Void*)
     end
 
     def copy

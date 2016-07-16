@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_tcp_connection.not_nil!
+      @gio_tcp_connection.not_nil!.as(Void*)
     end
 
 

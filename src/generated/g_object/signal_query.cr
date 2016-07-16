@@ -20,7 +20,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_signal_query.not_nil!
+      @g_object_signal_query.not_nil!.as(Void*)
     end
 
     def signal_id

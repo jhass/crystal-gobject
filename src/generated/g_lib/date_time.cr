@@ -12,7 +12,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_date_time.not_nil!
+      @g_lib_date_time.not_nil!.as(Void*)
     end
 
     def self.new(tz, year, month, day, hour, minute, seconds) : self

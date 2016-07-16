@@ -1,4 +1,4 @@
 module Cairo
-  alias Content = Libcairo::Content
+  alias Content = LibCairo::Content
 end
 

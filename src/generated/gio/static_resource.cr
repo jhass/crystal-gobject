@@ -12,7 +12,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_static_resource.not_nil!
+      @gio_static_resource.not_nil!.as(Void*)
     end
 
     def fini

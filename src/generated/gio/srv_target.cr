@@ -12,7 +12,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_srv_target.not_nil!
+      @gio_srv_target.not_nil!.as(Void*)
     end
 
     def self.new(hostname, port, priority, weight) : self

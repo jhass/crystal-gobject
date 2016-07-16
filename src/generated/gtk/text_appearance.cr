@@ -21,7 +21,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_text_appearance.not_nil!
+      @gtk_text_appearance.not_nil!.as(Void*)
     end
 
     def bg_color

@@ -12,7 +12,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_map_entry.not_nil!
+      @pango_map_entry.not_nil!.as(Void*)
     end
 
   end

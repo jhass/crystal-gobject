@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_unix_connection.not_nil!
+      @gio_unix_connection.not_nil!.as(Void*)
     end
 
     def receive_credentials(cancellable)

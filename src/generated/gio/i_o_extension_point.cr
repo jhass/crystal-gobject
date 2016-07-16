@@ -12,7 +12,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_i_o_extension_point.not_nil!
+      @gio_i_o_extension_point.not_nil!.as(Void*)
     end
 
     def extension_by_name(name)

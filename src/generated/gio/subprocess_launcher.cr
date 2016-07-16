@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_subprocess_launcher.not_nil!
+      @gio_subprocess_launcher.not_nil!.as(Void*)
     end
 
 

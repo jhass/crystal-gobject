@@ -15,7 +15,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_closure_notify_data.not_nil!
+      @g_object_closure_notify_data.not_nil!.as(Void*)
     end
 
     def data

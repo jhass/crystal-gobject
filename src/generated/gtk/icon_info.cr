@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_icon_info.not_nil!
+      @gtk_icon_info.not_nil!.as(Void*)
     end
 
     def self.new_for_pixbuf(icon_theme, pixbuf) : self

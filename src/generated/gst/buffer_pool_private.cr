@@ -12,7 +12,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_buffer_pool_private.not_nil!
+      @gst_buffer_pool_private.not_nil!.as(Void*)
     end
 
   end

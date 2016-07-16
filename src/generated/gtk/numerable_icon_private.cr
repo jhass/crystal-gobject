@@ -12,7 +12,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_numerable_icon_private.not_nil!
+      @gtk_numerable_icon_private.not_nil!.as(Void*)
     end
 
   end

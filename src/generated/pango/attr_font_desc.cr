@@ -15,7 +15,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_attr_font_desc.not_nil!
+      @pango_attr_font_desc.not_nil!.as(Void*)
     end
 
     def attr

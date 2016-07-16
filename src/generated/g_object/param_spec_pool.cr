@@ -12,7 +12,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_param_spec_pool.not_nil!
+      @g_object_param_spec_pool.not_nil!.as(Void*)
     end
 
     def insert(pspec, owner_type)

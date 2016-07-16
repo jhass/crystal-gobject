@@ -12,7 +12,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_threaded_socket_service_private.not_nil!
+      @gio_threaded_socket_service_private.not_nil!.as(Void*)
     end
 
   end

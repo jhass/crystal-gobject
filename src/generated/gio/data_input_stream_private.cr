@@ -12,7 +12,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_data_input_stream_private.not_nil!
+      @gio_data_input_stream_private.not_nil!.as(Void*)
     end
 
   end

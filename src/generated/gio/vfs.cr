@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_vfs.not_nil!
+      @gio_vfs.not_nil!.as(Void*)
     end
 
     def self.default

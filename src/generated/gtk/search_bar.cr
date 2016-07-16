@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_search_bar.not_nil!
+      @gtk_search_bar.not_nil!.as(Void*)
     end
 
     # Implements ImplementorIface

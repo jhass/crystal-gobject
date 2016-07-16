@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_filename_completer.not_nil!
+      @gio_filename_completer.not_nil!.as(Void*)
     end
 
     def self.new : self

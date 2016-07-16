@@ -18,7 +18,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_node.not_nil!
+      @g_lib_node.not_nil!.as(Void*)
     end
 
     def child_index(data)
