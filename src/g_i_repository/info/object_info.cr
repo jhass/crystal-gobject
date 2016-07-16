@@ -66,7 +66,7 @@ module GIRepository
         io.puts "#{indent}  end"
         io.puts
         io.puts "#{indent}  def to_unsafe"
-        io.puts "#{indent}    #{ptr}.not_nil!"
+        io.puts "#{indent}    #{ptr}.not_nil!.as(Void*)"
         io.puts "#{indent}  end"
         io.puts
 

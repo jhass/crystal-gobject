@@ -91,5 +91,9 @@ module GIRepository
     def to_s(io)
       io << name << '(' << info_type << ')'
     end
+
+    def to_unsafe
+      previous_def.as(LibGIRepository::BaseInfo*)
+    end
   end
 end
