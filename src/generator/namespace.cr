@@ -16,7 +16,8 @@ class Namespace
   end
 
   def libname
-    "Lib#{@namespace}"
+    namespace = "#{@namespace[0].upcase}#{@namespace[1..-1]}"
+    "Lib#{namespace}"
   end
 
   def lib_filename

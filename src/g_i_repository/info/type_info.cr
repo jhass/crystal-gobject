@@ -46,7 +46,7 @@ module GIRepository
     def lib_definition
       base = case tag
         when LibGIRepository::TypeTag::INTERFACE
-          interface = interface
+          interface = self.interface
           if BLACKLIST.includes?(interface.name) || 'a' <= interface.name[0] <= 'z' # More weird stuff
             interface.is_a?(CallbackInfo) ? "-> Void" : "Void*"
           else

@@ -36,7 +36,8 @@ module GIRepository
     end
 
     def namespace
-      String.new LibGIRepository.base_info_get_namespace(self)
+      namespace = String.new LibGIRepository.base_info_get_namespace(self)
+      "#{namespace[0].upcase}#{namespace[1..-1]}"
     end
 
     def namespace_constant
