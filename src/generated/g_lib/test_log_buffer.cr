@@ -30,7 +30,7 @@ module GLib
     end
 
     def msgs
-      (to_unsafe.as(LibGLib::TestLogBuffer*).value.msgs)
+      GLib::SListIterator(Void*, Void**).new(GLib::SList.new((to_unsafe.as(LibGLib::TestLogBuffer*).value.msgs).as(LibGLib::SList*)))
     end
 
   end

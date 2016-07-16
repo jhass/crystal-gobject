@@ -27,7 +27,7 @@ module Gio
 
     def emblems
       __return_value = LibGio.emblemed_icon_get_emblems(to_unsafe.as(LibGio::EmblemedIcon*))
-      __return_value
+      GLib::ListIterator(Gio::Emblem, LibGio::Emblem*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def icon

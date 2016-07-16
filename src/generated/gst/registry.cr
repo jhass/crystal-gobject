@@ -42,7 +42,7 @@ module Gst
 
     def feature_filter(filter : LibGst::PluginFeatureFilter, first, user_data)
       __return_value = LibGst.registry_feature_filter(to_unsafe.as(LibGst::Registry*), filter, first, user_data && user_data)
-      __return_value
+      GLib::ListIterator(Gst::PluginFeature, LibGst::PluginFeature*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def find_feature(name, type)
@@ -57,12 +57,12 @@ module Gst
 
     def feature_list(type)
       __return_value = LibGst.registry_get_feature_list(to_unsafe.as(LibGst::Registry*), UInt64.new(type))
-      __return_value
+      GLib::ListIterator(Gst::PluginFeature, LibGst::PluginFeature*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def feature_list_by_plugin(name)
       __return_value = LibGst.registry_get_feature_list_by_plugin(to_unsafe.as(LibGst::Registry*), name.to_unsafe)
-      __return_value
+      GLib::ListIterator(Gst::PluginFeature, LibGst::PluginFeature*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def feature_list_cookie
@@ -72,7 +72,7 @@ module Gst
 
     def plugin_list
       __return_value = LibGst.registry_get_plugin_list(to_unsafe.as(LibGst::Registry*))
-      __return_value
+      GLib::ListIterator(Gst::Plugin, LibGst::Plugin*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def lookup(filename)
@@ -87,7 +87,7 @@ module Gst
 
     def plugin_filter(filter : LibGst::PluginFilter, first, user_data)
       __return_value = LibGst.registry_plugin_filter(to_unsafe.as(LibGst::Registry*), filter, first, user_data && user_data)
-      __return_value
+      GLib::ListIterator(Gst::Plugin, LibGst::Plugin*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def remove_feature(feature)

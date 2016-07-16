@@ -29,7 +29,7 @@ module Gtk
 
     def group
       __return_value = LibGtk.gesture_get_group(to_unsafe.as(LibGtk::Gesture*))
-      __return_value
+      GLib::ListIterator(Gtk::Gesture, LibGtk::Gesture*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def last_event(sequence)
@@ -54,7 +54,7 @@ module Gtk
 
     def sequences
       __return_value = LibGtk.gesture_get_sequences(to_unsafe.as(LibGtk::Gesture*))
-      __return_value
+      GLib::ListIterator(Gdk::EventSequence, LibGdk::EventSequence*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def window

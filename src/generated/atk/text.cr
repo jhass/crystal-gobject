@@ -37,7 +37,7 @@ module Atk
 
     def default_attributes
       __return_value = LibAtk.text_get_default_attributes(to_unsafe.as(LibAtk::Text*))
-      __return_value
+      GLib::SListIterator(Void*, Void**).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def n_selections
@@ -57,7 +57,7 @@ module Atk
 
     def run_attributes(offset, start_offset, end_offset)
       __return_value = LibAtk.text_get_run_attributes(to_unsafe.as(LibAtk::Text*), Int32.new(offset), start_offset, end_offset)
-      __return_value
+      GLib::SListIterator(Void*, Void**).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def selection(selection_num, start_offset, end_offset)

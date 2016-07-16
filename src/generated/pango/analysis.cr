@@ -90,7 +90,7 @@ module Pango
     end
 
     def extra_attrs
-      (to_unsafe.as(LibPango::Analysis*).value.extra_attrs)
+      GLib::SListIterator(Void*, Void**).new(GLib::SList.new((to_unsafe.as(LibPango::Analysis*).value.extra_attrs).as(LibGLib::SList*)))
     end
 
     def extra_attrs=(value : Void*)

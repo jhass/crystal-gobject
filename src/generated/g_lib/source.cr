@@ -213,7 +213,7 @@ module GLib
     end
 
     def poll_fds
-      (to_unsafe.as(LibGLib::Source*).value.poll_fds)
+      GLib::SListIterator(Void*, Void**).new(GLib::SList.new((to_unsafe.as(LibGLib::Source*).value.poll_fds).as(LibGLib::SList*)))
     end
 
     def prev

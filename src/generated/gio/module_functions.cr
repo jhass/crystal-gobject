@@ -25,12 +25,12 @@ module Gio
 
   def self.app_info_get_all
     __return_value = LibGio.app_info_get_all
-    __return_value
+    GLib::ListIterator(Gio::AppInfo, LibGio::AppInfo*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
   end
 
   def self.app_info_get_all_for_type(content_type)
     __return_value = LibGio.app_info_get_all_for_type(content_type.to_unsafe)
-    __return_value
+    GLib::ListIterator(Gio::AppInfo, LibGio::AppInfo*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
   end
 
   def self.app_info_get_default_for_type(content_type, must_support_uris)
@@ -45,12 +45,12 @@ module Gio
 
   def self.app_info_get_fallback_for_type(content_type)
     __return_value = LibGio.app_info_get_fallback_for_type(content_type.to_unsafe)
-    __return_value
+    GLib::ListIterator(Gio::AppInfo, LibGio::AppInfo*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
   end
 
   def self.app_info_get_recommended_for_type(content_type)
     __return_value = LibGio.app_info_get_recommended_for_type(content_type.to_unsafe)
-    __return_value
+    GLib::ListIterator(Gio::AppInfo, LibGio::AppInfo*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
   end
 
   def self.app_info_launch_default_for_uri(uri, launch_context)
@@ -181,7 +181,7 @@ module Gio
 
   def self.content_types_get_registered
     __return_value = LibGio.content_types_get_registered
-    __return_value
+    GLib::ListIterator(String, UInt8**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
   end
 
   def self.dbus_address_escape_value(string)
@@ -414,12 +414,12 @@ module Gio
 
   def self.io_modules_load_all_in_directory(dirname)
     __return_value = LibGio.io_modules_load_all_in_directory(dirname.to_unsafe)
-    __return_value
+    GLib::ListIterator(Gio::IOModule, LibGio::IOModule*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
   end
 
   def self.io_modules_load_all_in_directory_with_scope(dirname, scope)
     __return_value = LibGio.io_modules_load_all_in_directory_with_scope(dirname.to_unsafe, scope.to_unsafe.as(LibGio::IOModuleScope*))
-    __return_value
+    GLib::ListIterator(Gio::IOModule, LibGio::IOModule*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
   end
 
   def self.io_modules_scan_all_in_directory(dirname)

@@ -51,7 +51,7 @@ module Gst
 
   def self.debug_get_all_categories
     __return_value = LibGst.debug_get_all_categories
-    __return_value
+    GLib::SListIterator(Gst::DebugCategory, LibGst::DebugCategory*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
   end
 
   def self.debug_get_color_mode

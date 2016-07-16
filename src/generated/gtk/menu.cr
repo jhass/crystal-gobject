@@ -32,7 +32,7 @@ module Gtk
 
     def self.for_attach_widget(widget)
       __return_value = LibGtk.menu_get_for_attach_widget(widget.to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      GLib::ListIterator(Gtk::Widget, LibGtk::Widget*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def attach(child, left_attach, right_attach, top_attach, bottom_attach)

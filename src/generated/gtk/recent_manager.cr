@@ -32,7 +32,7 @@ module Gtk
 
     def items
       __return_value = LibGtk.recent_manager_get_items(to_unsafe.as(LibGtk::RecentManager*))
-      __return_value
+      GLib::ListIterator(Gtk::RecentInfo, LibGtk::RecentInfo*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def has_item(uri)

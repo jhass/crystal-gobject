@@ -20,7 +20,7 @@ module Pango
 
     def apply_attrs(text, list)
       __return_value = LibPango.glyph_item_apply_attrs(to_unsafe.as(LibPango::GlyphItem*), text.to_unsafe, list.to_unsafe.as(LibPango::AttrList*))
-      __return_value
+      GLib::SListIterator(Pango::GlyphItem, LibPango::GlyphItem*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def copy

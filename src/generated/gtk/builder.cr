@@ -110,7 +110,7 @@ module Gtk
 
     def objects
       __return_value = LibGtk.builder_get_objects(to_unsafe.as(LibGtk::Builder*))
-      __return_value
+      GLib::SListIterator(GObject::Object, LibGObject::Object*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def translation_domain

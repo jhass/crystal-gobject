@@ -21,7 +21,7 @@ module Gdk
 
     def list_devices(type)
       __return_value = LibGdk.device_manager_list_devices(to_unsafe.as(LibGdk::DeviceManager*), type)
-      __return_value
+      GLib::ListIterator(Gdk::Device, LibGdk::Device*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     alias DeviceAddedSignal = DeviceManager, Gdk::Device ->

@@ -20,7 +20,7 @@ module Gio
 
     def connected_drives
       __return_value = LibGio.volume_monitor_get_connected_drives(to_unsafe.as(LibGio::VolumeMonitor*))
-      __return_value
+      GLib::ListIterator(Gio::Drive, LibGio::Drive*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def mount_for_uuid(uuid)
@@ -30,7 +30,7 @@ module Gio
 
     def mounts
       __return_value = LibGio.volume_monitor_get_mounts(to_unsafe.as(LibGio::VolumeMonitor*))
-      __return_value
+      GLib::ListIterator(Gio::Mount, LibGio::Mount*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def volume_for_uuid(uuid)
@@ -40,7 +40,7 @@ module Gio
 
     def volumes
       __return_value = LibGio.volume_monitor_get_volumes(to_unsafe.as(LibGio::VolumeMonitor*))
-      __return_value
+      GLib::ListIterator(Gio::Volume, LibGio::Volume*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     alias DriveChangedSignal = VolumeMonitor, Gio::Drive ->

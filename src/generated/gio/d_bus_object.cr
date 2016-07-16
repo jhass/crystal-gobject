@@ -7,7 +7,7 @@ module Gio
 
     def interfaces
       __return_value = LibGio.d_bus_object_get_interfaces(to_unsafe.as(LibGio::DBusObject*))
-      __return_value
+      GLib::ListIterator(Gio::DBusInterface, LibGio::DBusInterface*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def object_path

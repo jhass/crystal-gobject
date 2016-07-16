@@ -17,7 +17,7 @@ module Gio
 
     def objects
       __return_value = LibGio.d_bus_object_manager_get_objects(to_unsafe.as(LibGio::DBusObjectManager*))
-      __return_value
+      GLib::ListIterator(Gio::DBusObject, LibGio::DBusObject*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     alias InterfaceAddedSignal = DBusObjectManager, Gio::DBusObject, Gio::DBusInterface ->

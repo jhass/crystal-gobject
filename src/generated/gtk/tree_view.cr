@@ -148,7 +148,7 @@ module Gtk
 
     def columns
       __return_value = LibGtk.tree_view_get_columns(to_unsafe.as(LibGtk::TreeView*))
-      __return_value
+      GLib::ListIterator(Gtk::TreeViewColumn, LibGtk::TreeViewColumn*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def cursor(path, focus_column)

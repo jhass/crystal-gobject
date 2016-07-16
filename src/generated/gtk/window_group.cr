@@ -30,7 +30,7 @@ module Gtk
 
     def list_windows
       __return_value = LibGtk.window_group_list_windows(to_unsafe.as(LibGtk::WindowGroup*))
-      __return_value
+      GLib::ListIterator(Gtk::Window, LibGtk::Window*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def remove_window(window)

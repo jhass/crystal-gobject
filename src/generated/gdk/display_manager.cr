@@ -21,7 +21,7 @@ module Gdk
 
     def list_displays
       __return_value = LibGdk.display_manager_list_displays(to_unsafe.as(LibGdk::DisplayManager*))
-      __return_value
+      GLib::SListIterator(Gdk::Display, LibGdk::Display*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def open_display(name)

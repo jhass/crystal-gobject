@@ -94,7 +94,7 @@ module Gst
 
     def contexts
       __return_value = LibGst.element_get_contexts(to_unsafe.as(LibGst::Element*))
-      __return_value
+      GLib::ListIterator(Gst::Context, LibGst::Context*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def factory

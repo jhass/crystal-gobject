@@ -22,7 +22,7 @@ module Gtk
 
     def items
       __return_value = LibGtk.recent_chooser_get_items(to_unsafe.as(LibGtk::RecentChooser*))
-      __return_value
+      GLib::ListIterator(Gtk::RecentInfo, LibGtk::RecentInfo*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def limit
@@ -72,7 +72,7 @@ module Gtk
 
     def list_filters
       __return_value = LibGtk.recent_chooser_list_filters(to_unsafe.as(LibGtk::RecentChooser*))
-      __return_value
+      GLib::SListIterator(Gtk::RecentFilter, LibGtk::RecentFilter*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def remove_filter(filter)

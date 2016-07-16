@@ -10,7 +10,7 @@ module Gtk
 
     def children
       __return_value = LibGtk.toplevel_accessible_get_children(to_unsafe.as(LibGtk::ToplevelAccessible*))
-      __return_value
+      GLib::ListIterator(Gtk::Window, LibGtk::Window*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
   end

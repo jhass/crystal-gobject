@@ -71,7 +71,7 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_enumerator_next_files_finish(to_unsafe.as(LibGio::FileEnumerator*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
-      __return_value
+      GLib::ListIterator(Gio::FileInfo, LibGio::FileInfo*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def pending=(pending)

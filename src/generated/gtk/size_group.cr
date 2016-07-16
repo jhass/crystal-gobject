@@ -33,7 +33,7 @@ module Gtk
 
     def widgets
       __return_value = LibGtk.size_group_get_widgets(to_unsafe.as(LibGtk::SizeGroup*))
-      __return_value
+      GLib::SListIterator(Gtk::Widget, LibGtk::Widget*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def remove_widget(widget)

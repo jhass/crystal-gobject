@@ -22,7 +22,7 @@ module GObject
 
     def list_owned(owner_type)
       __return_value = LibGObject.param_spec_pool_list_owned(to_unsafe.as(LibGObject::ParamSpecPool*), UInt64.new(owner_type))
-      __return_value
+      GLib::ListIterator(GObject::ParamSpec, LibGObject::ParamSpec*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def lookup(param_name, owner_type, walk_ancestors)

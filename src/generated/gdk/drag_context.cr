@@ -50,7 +50,7 @@ module Gdk
 
     def list_targets
       __return_value = LibGdk.drag_context_list_targets(to_unsafe.as(LibGdk::DragContext*))
-      __return_value
+      GLib::ListIterator(Gdk::Atom, LibGdk::Atom**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def manage_dnd(ipc_window, actions)

@@ -59,7 +59,7 @@ module Gtk
 
     def action_groups
       __return_value = LibGtk.u_i_manager_get_action_groups(to_unsafe.as(LibGtk::UIManager*))
-      __return_value
+      GLib::ListIterator(Gtk::ActionGroup, LibGtk::ActionGroup*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def add_tearoffs
@@ -69,7 +69,7 @@ module Gtk
 
     def toplevels(types)
       __return_value = LibGtk.u_i_manager_get_toplevels(to_unsafe.as(LibGtk::UIManager*), types)
-      __return_value
+      GLib::SListIterator(Gtk::Widget, LibGtk::Widget*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def ui

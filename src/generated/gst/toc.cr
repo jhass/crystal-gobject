@@ -32,7 +32,7 @@ module Gst
 
     def entries
       __return_value = LibGst.toc_get_entries(to_unsafe.as(LibGst::Toc*))
-      __return_value
+      GLib::ListIterator(Gst::TocEntry, LibGst::TocEntry*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def scope

@@ -52,7 +52,7 @@ module Gtk
 
     def self.default_icon_list
       __return_value = LibGtk.window_get_default_icon_list
-      __return_value
+      GLib::ListIterator(GdkPixbuf::Pixbuf, LibGdkPixbuf::Pixbuf*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def self.default_icon_name
@@ -62,7 +62,7 @@ module Gtk
 
     def self.list_toplevels
       __return_value = LibGtk.window_list_toplevels
-      __return_value
+      GLib::ListIterator(Gtk::Widget, LibGtk::Widget*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def self.set_auto_startup_notification(setting)
@@ -234,7 +234,7 @@ module Gtk
 
     def icon_list
       __return_value = LibGtk.window_get_icon_list(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      GLib::ListIterator(GdkPixbuf::Pixbuf, LibGdkPixbuf::Pixbuf*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def icon_name

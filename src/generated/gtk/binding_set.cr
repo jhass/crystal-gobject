@@ -56,7 +56,7 @@ module Gtk
     end
 
     def widget_path_pspecs
-      (to_unsafe.as(LibGtk::BindingSet*).value.widget_path_pspecs)
+      GLib::SListIterator(Void*, Void**).new(GLib::SList.new((to_unsafe.as(LibGtk::BindingSet*).value.widget_path_pspecs).as(LibGLib::SList*)))
     end
 
     def widget_path_pspecs=(value : Void*)
@@ -64,7 +64,7 @@ module Gtk
     end
 
     def widget_class_pspecs
-      (to_unsafe.as(LibGtk::BindingSet*).value.widget_class_pspecs)
+      GLib::SListIterator(Void*, Void**).new(GLib::SList.new((to_unsafe.as(LibGtk::BindingSet*).value.widget_class_pspecs).as(LibGLib::SList*)))
     end
 
     def widget_class_pspecs=(value : Void*)
@@ -72,7 +72,7 @@ module Gtk
     end
 
     def class_branch_pspecs
-      (to_unsafe.as(LibGtk::BindingSet*).value.class_branch_pspecs)
+      GLib::SListIterator(Void*, Void**).new(GLib::SList.new((to_unsafe.as(LibGtk::BindingSet*).value.class_branch_pspecs).as(LibGLib::SList*)))
     end
 
     def class_branch_pspecs=(value : Void*)

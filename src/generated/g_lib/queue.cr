@@ -115,7 +115,7 @@ module GLib
     end
 
     def head
-      (to_unsafe.as(LibGLib::Queue*).value.head)
+      GLib::ListIterator(Void*, Void**).new(GLib::SList.new((to_unsafe.as(LibGLib::Queue*).value.head).as(LibGLib::List*)))
     end
 
     def head=(value : Void*)
@@ -123,7 +123,7 @@ module GLib
     end
 
     def tail
-      (to_unsafe.as(LibGLib::Queue*).value.tail)
+      GLib::ListIterator(Void*, Void**).new(GLib::SList.new((to_unsafe.as(LibGLib::Queue*).value.tail).as(LibGLib::List*)))
     end
 
     def tail=(value : Void*)

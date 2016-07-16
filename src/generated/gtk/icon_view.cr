@@ -168,7 +168,7 @@ module Gtk
 
     def selected_items
       __return_value = LibGtk.icon_view_get_selected_items(to_unsafe.as(LibGtk::IconView*))
-      __return_value
+      GLib::ListIterator(Gtk::TreePath, LibGtk::TreePath*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def selection_mode

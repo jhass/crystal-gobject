@@ -178,12 +178,12 @@ module Gdk
 
     def children
       __return_value = LibGdk.window_get_children(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      GLib::ListIterator(Gdk::Window, LibGdk::Window*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def children_with_user_data(user_data)
       __return_value = LibGdk.window_get_children_with_user_data(to_unsafe.as(LibGdk::Window*), user_data && user_data)
-      __return_value
+      GLib::ListIterator(Gdk::Window, LibGdk::Window*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def clip_region
@@ -498,7 +498,7 @@ module Gdk
 
     def peek_children
       __return_value = LibGdk.window_peek_children(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      GLib::ListIterator(Gdk::Window, LibGdk::Window*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def process_updates(update_children)

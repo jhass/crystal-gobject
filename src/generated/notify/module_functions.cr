@@ -6,7 +6,7 @@ module Notify
 
   def self.server_caps
     __return_value = LibNotify.get_server_caps
-    __return_value
+    GLib::ListIterator(String, UInt8**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
   end
 
   def self.server_info(ret_name, ret_vendor, ret_version, ret_spec_version)

@@ -27,7 +27,7 @@ module GLib
     end
 
     def next
-      (to_unsafe.as(LibGLib::SList*).value.next_)
+      GLib::SListIterator(Void*, Void**).new(GLib::SList.new((to_unsafe.as(LibGLib::SList*).value.next_).as(LibGLib::SList*)))
     end
 
     def next=(value : Void*)

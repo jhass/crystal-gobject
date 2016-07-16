@@ -55,7 +55,7 @@ module Gtk
 
     def list_actions
       __return_value = LibGtk.action_group_list_actions(to_unsafe.as(LibGtk::ActionGroup*))
-      __return_value
+      GLib::ListIterator(Gtk::Action, LibGtk::Action*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def remove_action(action)

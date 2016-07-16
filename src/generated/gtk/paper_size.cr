@@ -124,7 +124,7 @@ module Gtk
 
     def self.paper_sizes(include_custom)
       __return_value = LibGtk.paper_size_get_paper_sizes(include_custom)
-      __return_value
+      GLib::ListIterator(Gtk::PaperSize, LibGtk::PaperSize*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
   end

@@ -851,7 +851,7 @@ module Gtk
 
     def list_accel_closures
       __return_value = LibGtk.widget_list_accel_closures(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      GLib::ListIterator(GObject::Closure, LibGObject::Closure*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def list_action_prefixes
@@ -861,7 +861,7 @@ module Gtk
 
     def list_mnemonic_labels
       __return_value = LibGtk.widget_list_mnemonic_labels(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      GLib::ListIterator(Gtk::Widget, LibGtk::Widget*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def map

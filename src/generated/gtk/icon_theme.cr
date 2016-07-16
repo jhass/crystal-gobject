@@ -70,12 +70,12 @@ module Gtk
 
     def list_contexts
       __return_value = LibGtk.icon_theme_list_contexts(to_unsafe.as(LibGtk::IconTheme*))
-      __return_value
+      GLib::ListIterator(String, UInt8**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def list_icons(context)
       __return_value = LibGtk.icon_theme_list_icons(to_unsafe.as(LibGtk::IconTheme*), context && context.to_unsafe)
-      __return_value
+      GLib::ListIterator(String, UInt8**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def load_icon(icon_name, size, flags)

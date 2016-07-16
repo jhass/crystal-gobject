@@ -27,7 +27,7 @@ module Gio
 
     def self.implementations(interface)
       __return_value = LibGio.desktop_app_info_get_implementations(interface.to_unsafe)
-      __return_value
+      GLib::ListIterator(Gio::DesktopAppInfo, LibGio::DesktopAppInfo*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def self.search(search_string)

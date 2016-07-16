@@ -66,7 +66,7 @@ module Gtk
 
     def windows
       __return_value = LibGtk.application_get_windows(to_unsafe.as(LibGtk::Application*))
-      __return_value
+      GLib::ListIterator(Gtk::Window, LibGtk::Window*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def inhibit(window, flags, reason)

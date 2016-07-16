@@ -38,7 +38,7 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.tls_certificate_list_new_from_file(file.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
-      __return_value
+      GLib::ListIterator(Gio::TlsCertificate, LibGio::TlsCertificate*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def issuer

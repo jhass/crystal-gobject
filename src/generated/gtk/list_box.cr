@@ -61,7 +61,7 @@ module Gtk
 
     def selected_rows
       __return_value = LibGtk.list_box_get_selected_rows(to_unsafe.as(LibGtk::ListBox*))
-      __return_value
+      GLib::ListIterator(Gtk::ListBoxRow, LibGtk::ListBoxRow*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def selection_mode

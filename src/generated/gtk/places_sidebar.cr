@@ -84,7 +84,7 @@ module Gtk
 
     def list_shortcuts
       __return_value = LibGtk.places_sidebar_list_shortcuts(to_unsafe.as(LibGtk::PlacesSidebar*))
-      __return_value
+      GLib::SListIterator(Gio::File, LibGio::File*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def remove_shortcut(location)
@@ -154,7 +154,7 @@ module Gtk
     alias DragActionRequestedSignal = PlacesSidebar, Gdk::DragContext, Gio::File, Void* -> Int32
     def on_drag_action_requested(&__block : DragActionRequestedSignal)
       __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGdk::DragContext*, _arg2 : LibGtk::LibGio::File*, _arg3 : LibGtk::Void***) {
-       __return_value = __block.call(PlacesSidebar.new(_arg0), Gdk::DragContext.new(_arg1), _arg2, _arg3)
+       __return_value = __block.call(PlacesSidebar.new(_arg0), Gdk::DragContext.new(_arg1), _arg2, GLib::ListIterator(Gio::File, LibGio::File*).new(GLib::SList.new(_arg3.as(LibGLib::List*))))
        Int32.new(__return_value)
       }
       connect("drag-action-requested", __callback)
@@ -163,7 +163,7 @@ module Gtk
     alias DragPerformDropSignal = PlacesSidebar, Gio::File, Void*, Int32 ->
     def on_drag_perform_drop(&__block : DragPerformDropSignal)
       __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGio::File*, _arg2 : LibGtk::Void***, _arg3 : LibGtk::Int32*) {
-       __return_value = __block.call(PlacesSidebar.new(_arg0), _arg1, _arg2, _arg3)
+       __return_value = __block.call(PlacesSidebar.new(_arg0), _arg1, GLib::ListIterator(Gio::File, LibGio::File*).new(GLib::SList.new(_arg2.as(LibGLib::List*))), _arg3)
        __return_value
       }
       connect("drag-perform-drop", __callback)

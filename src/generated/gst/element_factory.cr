@@ -17,12 +17,12 @@ module Gst
 
     def self.list_filter(list, caps, direction, subsetonly)
       __return_value = LibGst.element_factory_list_filter(list, caps.to_unsafe.as(LibGst::Caps*), direction, subsetonly)
-      __return_value
+      GLib::ListIterator(Gst::ElementFactory, LibGst::ElementFactory*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def self.list_get_elements(type, minrank)
       __return_value = LibGst.element_factory_list_get_elements(UInt64.new(type), minrank)
-      __return_value
+      GLib::ListIterator(Gst::ElementFactory, LibGst::ElementFactory*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def self.make(factoryname, name)
@@ -77,7 +77,7 @@ module Gst
 
     def static_pad_templates
       __return_value = LibGst.element_factory_get_static_pad_templates(to_unsafe.as(LibGst::ElementFactory*))
-      __return_value
+      GLib::ListIterator(Gst::StaticPadTemplate, LibGst::StaticPadTemplate*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def uri_protocols

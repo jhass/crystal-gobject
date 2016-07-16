@@ -17,7 +17,7 @@ module Pango
 
     def attrs
       __return_value = LibPango.attr_iterator_get_attrs(to_unsafe.as(LibPango::AttrIterator*))
-      __return_value
+      GLib::SListIterator(Pango::Attribute, LibPango::Attribute*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def font(desc, language, extra_attrs)

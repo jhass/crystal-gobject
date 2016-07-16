@@ -12,7 +12,7 @@ module Gst
 
     def self.list
       __return_value = LibGst.tracer_factory_get_list
-      __return_value
+      GLib::ListIterator(Gst::TracerFactory, LibGst::TracerFactory*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
   end

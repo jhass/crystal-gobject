@@ -128,7 +128,7 @@ module GdkPixbuf
 
     def self.formats
       __return_value = LibGdkPixbuf.pixbuf_get_formats
-      __return_value
+      GLib::SListIterator(GdkPixbuf::PixbufFormat, LibGdkPixbuf::PixbufFormat*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def self.new_from_stream_async(stream, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)

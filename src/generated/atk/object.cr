@@ -30,7 +30,7 @@ module Atk
 
     def attributes
       __return_value = LibAtk.object_get_attributes(to_unsafe.as(LibAtk::Object*))
-      __return_value
+      GLib::SListIterator(Void*, Void**).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def description

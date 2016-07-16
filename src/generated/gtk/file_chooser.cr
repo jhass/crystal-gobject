@@ -71,12 +71,12 @@ module Gtk
 
     def filenames
       __return_value = LibGtk.file_chooser_get_filenames(to_unsafe.as(LibGtk::FileChooser*))
-      __return_value
+      GLib::SListIterator(String, UInt8**).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def files
       __return_value = LibGtk.file_chooser_get_files(to_unsafe.as(LibGtk::FileChooser*))
-      __return_value
+      GLib::SListIterator(Gio::File, LibGio::File*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def filter
@@ -131,7 +131,7 @@ module Gtk
 
     def uris
       __return_value = LibGtk.file_chooser_get_uris(to_unsafe.as(LibGtk::FileChooser*))
-      __return_value
+      GLib::SListIterator(String, UInt8**).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def use_preview_label
@@ -141,17 +141,17 @@ module Gtk
 
     def list_filters
       __return_value = LibGtk.file_chooser_list_filters(to_unsafe.as(LibGtk::FileChooser*))
-      __return_value
+      GLib::SListIterator(Gtk::FileFilter, LibGtk::FileFilter*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def list_shortcut_folder_uris
       __return_value = LibGtk.file_chooser_list_shortcut_folder_uris(to_unsafe.as(LibGtk::FileChooser*))
-      __return_value if __return_value
+      GLib::SListIterator(String, UInt8**).new(GLib::SList.new(__return_value.as(LibGLib::SList*))) if __return_value
     end
 
     def list_shortcut_folders
       __return_value = LibGtk.file_chooser_list_shortcut_folders(to_unsafe.as(LibGtk::FileChooser*))
-      __return_value if __return_value
+      GLib::SListIterator(String, UInt8**).new(GLib::SList.new(__return_value.as(LibGLib::SList*))) if __return_value
     end
 
     def remove_filter(filter)

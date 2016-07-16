@@ -32,7 +32,7 @@ module Atk
 
     def sub_ranges
       __return_value = LibAtk.value_get_sub_ranges(to_unsafe.as(LibAtk::Value*))
-      __return_value
+      GLib::SListIterator(Atk::Range, LibAtk::Range*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def value_and_text(value, text)

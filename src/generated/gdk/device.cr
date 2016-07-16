@@ -128,12 +128,12 @@ module Gdk
 
     def list_axes
       __return_value = LibGdk.device_list_axes(to_unsafe.as(LibGdk::Device*))
-      __return_value
+      GLib::ListIterator(Gdk::Atom, LibGdk::Atom**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def list_slave_devices
       __return_value = LibGdk.device_list_slave_devices(to_unsafe.as(LibGdk::Device*))
-      __return_value if __return_value
+      GLib::ListIterator(Gdk::Device, LibGdk::Device*).new(GLib::SList.new(__return_value.as(LibGLib::List*))) if __return_value
     end
 
     def set_axis_use(index, use)

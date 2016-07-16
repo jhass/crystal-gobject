@@ -28,7 +28,7 @@ module Gst
 
     def devices
       __return_value = LibGst.device_monitor_get_devices(to_unsafe.as(LibGst::DeviceMonitor*))
-      __return_value
+      GLib::ListIterator(Gst::Device, LibGst::Device*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def providers

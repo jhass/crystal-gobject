@@ -52,7 +52,7 @@ module Gst
 
     def path_segments
       __return_value = LibGst.uri_get_path_segments(to_unsafe.as(LibGst::Uri*))
-      __return_value
+      GLib::ListIterator(String, UInt8**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def path_string
@@ -67,7 +67,7 @@ module Gst
 
     def query_keys
       __return_value = LibGst.uri_get_query_keys(to_unsafe.as(LibGst::Uri*))
-      __return_value
+      GLib::ListIterator(String, UInt8**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def query_string

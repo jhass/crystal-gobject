@@ -42,7 +42,7 @@ module Gst
 
     def sub_entries
       __return_value = LibGst.toc_entry_get_sub_entries(to_unsafe.as(LibGst::TocEntry*))
-      __return_value
+      GLib::ListIterator(Gst::TocEntry, LibGst::TocEntry*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def tags

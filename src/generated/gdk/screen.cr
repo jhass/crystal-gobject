@@ -142,7 +142,7 @@ module Gdk
 
     def toplevel_windows
       __return_value = LibGdk.screen_get_toplevel_windows(to_unsafe.as(LibGdk::Screen*))
-      __return_value
+      GLib::ListIterator(Gdk::Window, LibGdk::Window*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def width
@@ -157,7 +157,7 @@ module Gdk
 
     def window_stack
       __return_value = LibGdk.screen_get_window_stack(to_unsafe.as(LibGdk::Screen*))
-      __return_value if __return_value
+      GLib::ListIterator(Gdk::Window, LibGdk::Window*).new(GLib::SList.new(__return_value.as(LibGLib::List*))) if __return_value
     end
 
     def composited?
@@ -167,7 +167,7 @@ module Gdk
 
     def list_visuals
       __return_value = LibGdk.screen_list_visuals(to_unsafe.as(LibGdk::Screen*))
-      __return_value
+      GLib::ListIterator(Gdk::Visual, LibGdk::Visual*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def make_display_name

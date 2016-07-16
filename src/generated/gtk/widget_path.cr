@@ -137,12 +137,12 @@ module Gtk
 
     def iter_list_classes(pos)
       __return_value = LibGtk.widget_path_iter_list_classes(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos))
-      __return_value
+      GLib::SListIterator(String, UInt8**).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def iter_list_regions(pos)
       __return_value = LibGtk.widget_path_iter_list_regions(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos))
-      __return_value
+      GLib::SListIterator(String, UInt8**).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def iter_remove_class(pos, name)

@@ -12,7 +12,7 @@ module Gst
 
     def self.list_copy(list)
       __return_value = LibGst.plugin_feature_list_copy(list)
-      __return_value
+      GLib::ListIterator(Gst::PluginFeature, LibGst::PluginFeature*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def self.list_debug(list)

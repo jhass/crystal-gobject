@@ -27,7 +27,7 @@ module GIRepository
 
     def self.search_path
       __return_value = LibGIRepository.repository_get_search_path
-      __return_value
+      GLib::SListIterator(String, UInt8**).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def self.prepend_library_path(directory)
@@ -42,7 +42,7 @@ module GIRepository
 
     def enumerate_versions(namespace)
       __return_value = LibGIRepository.repository_enumerate_versions(to_unsafe.as(LibGIRepository::Repository*), namespace.to_unsafe)
-      __return_value
+      GLib::ListIterator(String, UInt8**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def find_by_error_domain(domain)

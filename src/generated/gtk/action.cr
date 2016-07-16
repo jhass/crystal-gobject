@@ -112,7 +112,7 @@ module Gtk
 
     def proxies
       __return_value = LibGtk.action_get_proxies(to_unsafe.as(LibGtk::Action*))
-      __return_value
+      GLib::SListIterator(Gtk::Widget, LibGtk::Widget*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def sensitive

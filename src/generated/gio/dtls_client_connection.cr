@@ -9,7 +9,7 @@ module Gio
 
     def accepted_cas
       __return_value = LibGio.dtls_client_connection_get_accepted_cas(to_unsafe.as(LibGio::DtlsClientConnection*))
-      __return_value
+      GLib::ListIterator(Array(Void*), Void***).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def server_identity

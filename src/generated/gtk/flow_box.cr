@@ -67,7 +67,7 @@ module Gtk
 
     def selected_children
       __return_value = LibGtk.flow_box_get_selected_children(to_unsafe.as(LibGtk::FlowBox*))
-      __return_value
+      GLib::ListIterator(Gtk::FlowBoxChild, LibGtk::FlowBoxChild*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def selection_mode

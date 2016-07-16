@@ -17,7 +17,7 @@ module Gio
 
     def extensions
       __return_value = LibGio.i_o_extension_point_get_extensions(to_unsafe.as(LibGio::IOExtensionPoint*))
-      __return_value
+      GLib::ListIterator(Gio::IOExtension, LibGio::IOExtension**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def required_type

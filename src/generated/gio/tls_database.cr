@@ -55,7 +55,7 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.tls_database_lookup_certificates_issued_by(to_unsafe.as(LibGio::TlsDatabase*), issuer_raw_dn, interaction && interaction.to_unsafe.as(LibGio::TlsInteraction*), flags, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
-      __return_value
+      GLib::ListIterator(Gio::TlsCertificate, LibGio::TlsCertificate*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def lookup_certificates_issued_by_async(issuer_raw_dn, interaction, flags, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
@@ -67,7 +67,7 @@ module Gio
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.tls_database_lookup_certificates_issued_by_finish(to_unsafe.as(LibGio::TlsDatabase*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
-      __return_value
+      GLib::ListIterator(Gio::TlsCertificate, LibGio::TlsCertificate*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def verify_chain(chain, purpose, identity, interaction, flags, cancellable)

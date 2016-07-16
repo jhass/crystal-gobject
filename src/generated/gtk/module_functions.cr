@@ -6,7 +6,7 @@ module Gtk
 
   def self.accel_groups_from_object(object)
     __return_value = LibGtk.accel_groups_from_object(object.to_unsafe.as(LibGObject::Object*))
-    __return_value
+    GLib::SListIterator(Gtk::AccelGroup, LibGtk::AccelGroup*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
   end
 
   def self.accelerator_get_default_mod_mask
@@ -478,7 +478,7 @@ module Gtk
 
   def self.paper_size_get_paper_sizes(include_custom)
     __return_value = LibGtk.paper_size_get_paper_sizes(include_custom)
-    __return_value
+    GLib::ListIterator(Gtk::PaperSize, LibGtk::PaperSize*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
   end
 
   def self.parse_args(argc, argv)
@@ -800,7 +800,7 @@ module Gtk
 
   def self.stock_list_ids
     __return_value = LibGtk.stock_list_ids
-    __return_value
+    GLib::SListIterator(String, UInt8**).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
   end
 
   def self.stock_lookup(stock_id, item)

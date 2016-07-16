@@ -301,7 +301,7 @@ module Gdk
 
   def self.list_visuals
     __return_value = LibGdk.list_visuals
-    __return_value
+    GLib::ListIterator(Gdk::Visual, LibGdk::Visual*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
   end
 
   def self.notify_startup_complete

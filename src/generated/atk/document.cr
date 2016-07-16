@@ -7,7 +7,7 @@ module Atk
 
     def attributes
       __return_value = LibAtk.document_get_attributes(to_unsafe.as(LibAtk::Document*))
-      __return_value
+      GLib::SListIterator(Void*, Void**).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def current_page_number

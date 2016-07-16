@@ -110,12 +110,12 @@ module Pango
 
     def lines
       __return_value = LibPango.layout_get_lines(to_unsafe.as(LibPango::Layout*))
-      __return_value
+      GLib::SListIterator(Pango::LayoutLine, LibPango::LayoutLine*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def lines_readonly
       __return_value = LibPango.layout_get_lines_readonly(to_unsafe.as(LibPango::Layout*))
-      __return_value
+      GLib::SListIterator(Pango::LayoutLine, LibPango::LayoutLine*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def log_attrs(attrs, n_attrs)

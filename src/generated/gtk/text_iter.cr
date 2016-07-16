@@ -327,7 +327,7 @@ module Gtk
 
     def marks
       __return_value = LibGtk.text_iter_get_marks(to_unsafe.as(LibGtk::TextIter*))
-      __return_value
+      GLib::SListIterator(Gtk::TextMark, LibGtk::TextMark*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def offset
@@ -347,7 +347,7 @@ module Gtk
 
     def tags
       __return_value = LibGtk.text_iter_get_tags(to_unsafe.as(LibGtk::TextIter*))
-      __return_value
+      GLib::SListIterator(Gtk::TextTag, LibGtk::TextTag*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def text(end)
@@ -357,7 +357,7 @@ module Gtk
 
     def toggled_tags(toggled_on)
       __return_value = LibGtk.text_iter_get_toggled_tags(to_unsafe.as(LibGtk::TextIter*), toggled_on)
-      __return_value
+      GLib::SListIterator(Gtk::TextTag, LibGtk::TextTag*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def visible_line_index

@@ -47,7 +47,7 @@ module Gtk
 
     def group
       __return_value = LibGtk.radio_button_get_group(to_unsafe.as(LibGtk::RadioButton*))
-      __return_value
+      GLib::SListIterator(Gtk::RadioButton, LibGtk::RadioButton*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def join_group(group_source)

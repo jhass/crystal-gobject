@@ -86,7 +86,7 @@ module Gio
 
     def volumes
       __return_value = LibGio.drive_get_volumes(to_unsafe.as(LibGio::Drive*))
-      __return_value
+      GLib::ListIterator(Gio::Volume, LibGio::Volume*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def has_media

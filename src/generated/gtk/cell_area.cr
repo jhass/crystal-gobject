@@ -130,7 +130,7 @@ module Gtk
 
     def focus_siblings(renderer)
       __return_value = LibGtk.cell_area_get_focus_siblings(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*))
-      __return_value
+      GLib::ListIterator(Gtk::CellRenderer, LibGtk::CellRenderer*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def preferred_height(context, widget, minimum_height, natural_height)

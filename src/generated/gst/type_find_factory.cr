@@ -12,7 +12,7 @@ module Gst
 
     def self.list
       __return_value = LibGst.type_find_factory_get_list
-      __return_value
+      GLib::ListIterator(Gst::TypeFindFactory, LibGst::TypeFindFactory*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def call_function(find)

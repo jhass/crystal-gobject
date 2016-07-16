@@ -26,7 +26,7 @@ module Gtk
 
     def selected_rows(model)
       __return_value = LibGtk.tree_selection_get_selected_rows(to_unsafe.as(LibGtk::TreeSelection*), model)
-      __return_value
+      GLib::ListIterator(Gtk::TreePath, LibGtk::TreePath*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def tree_view

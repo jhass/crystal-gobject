@@ -125,12 +125,12 @@ module Gdk
 
     def list_devices
       __return_value = LibGdk.display_list_devices(to_unsafe.as(LibGdk::Display*))
-      __return_value
+      GLib::ListIterator(Gdk::Device, LibGdk::Device*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def list_seats
       __return_value = LibGdk.display_list_seats(to_unsafe.as(LibGdk::Display*))
-      __return_value
+      GLib::ListIterator(Gdk::Seat, LibGdk::Seat*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def notify_startup_complete(startup_id)

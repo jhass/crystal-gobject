@@ -9,12 +9,12 @@ module Gio
 
     def self.all
       __return_value = LibGio.app_info_get_all
-      __return_value
+      GLib::ListIterator(Gio::AppInfo, LibGio::AppInfo*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def self.all_for_type(content_type)
       __return_value = LibGio.app_info_get_all_for_type(content_type.to_unsafe)
-      __return_value
+      GLib::ListIterator(Gio::AppInfo, LibGio::AppInfo*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def self.default_for_type(content_type, must_support_uris)
@@ -29,12 +29,12 @@ module Gio
 
     def self.fallback_for_type(content_type)
       __return_value = LibGio.app_info_get_fallback_for_type(content_type.to_unsafe)
-      __return_value
+      GLib::ListIterator(Gio::AppInfo, LibGio::AppInfo*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def self.recommended_for_type(content_type)
       __return_value = LibGio.app_info_get_recommended_for_type(content_type.to_unsafe)
-      __return_value
+      GLib::ListIterator(Gio::AppInfo, LibGio::AppInfo*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def self.launch_default_for_uri(uri, launch_context)

@@ -29,7 +29,7 @@ module Gio
 
     def connections
       __return_value = LibGio.d_bus_interface_skeleton_get_connections(to_unsafe.as(LibGio::DBusInterfaceSkeleton*))
-      __return_value
+      GLib::ListIterator(Gio::DBusConnection, LibGio::DBusConnection*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def flags

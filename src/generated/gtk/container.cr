@@ -67,7 +67,7 @@ module Gtk
 
     def children
       __return_value = LibGtk.container_get_children(to_unsafe.as(LibGtk::Container*))
-      __return_value
+      GLib::ListIterator(Gtk::Widget, LibGtk::Widget*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def focus_chain(focusable_widgets)

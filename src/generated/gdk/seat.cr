@@ -31,7 +31,7 @@ module Gdk
 
     def slaves(capabilities)
       __return_value = LibGdk.seat_get_slaves(to_unsafe.as(LibGdk::Seat*), capabilities)
-      __return_value
+      GLib::ListIterator(Gdk::Device, LibGdk::Device*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def grab(window, capabilities, owner_events, cursor, event, prepare_func : LibGdk::SeatGrabPrepareFunc?, prepare_func_data)

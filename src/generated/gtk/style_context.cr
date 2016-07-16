@@ -159,12 +159,12 @@ module Gtk
 
     def list_classes
       __return_value = LibGtk.style_context_list_classes(to_unsafe.as(LibGtk::StyleContext*))
-      __return_value
+      GLib::ListIterator(String, UInt8**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def list_regions
       __return_value = LibGtk.style_context_list_regions(to_unsafe.as(LibGtk::StyleContext*))
-      __return_value
+      GLib::ListIterator(String, UInt8**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def lookup_color(color_name, color)

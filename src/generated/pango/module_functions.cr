@@ -101,12 +101,12 @@ module Pango
 
   def self.itemize(context, text, start_index, length, attrs, cached_iter)
     __return_value = LibPango.itemize(context.to_unsafe.as(LibPango::Context*), text.to_unsafe, Int32.new(start_index), Int32.new(length), attrs.to_unsafe.as(LibPango::AttrList*), cached_iter && cached_iter.to_unsafe.as(LibPango::AttrIterator*))
-    __return_value
+    GLib::ListIterator(Pango::Item, LibPango::Item*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
   end
 
   def self.itemize_with_base_dir(context, base_dir, text, start_index, length, attrs, cached_iter)
     __return_value = LibPango.itemize_with_base_dir(context.to_unsafe.as(LibPango::Context*), base_dir, text.to_unsafe, Int32.new(start_index), Int32.new(length), attrs.to_unsafe.as(LibPango::AttrList*), cached_iter && cached_iter.to_unsafe.as(LibPango::AttrIterator*))
-    __return_value
+    GLib::ListIterator(Pango::Item, LibPango::Item*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
   end
 
   def self.language_from_string(language)
@@ -190,7 +190,7 @@ module Pango
 
   def self.reorder_items(logical_items)
     __return_value = LibPango.reorder_items(logical_items)
-    __return_value
+    GLib::ListIterator(Pango::Item, LibPango::Item*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
   end
 
   def self.scan_int(pos, _out)
