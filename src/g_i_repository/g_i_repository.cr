@@ -20,6 +20,14 @@ end
         yield {{type.id}}.new LibGIRepository.{{prefix.id}}_get_{{basename.id}}(self, index)
       end
     end
+
+    def {{plural ? plural.id : "#{basename}s".id}}
+      items = Array({{type}}).new({{plural ? plural.id : "#{basename}s".id}}_size)
+      each_{{basename.id}} do |item|
+        items << item
+      end
+      items
+    end
   end
 
 
