@@ -78,6 +78,8 @@ module GIRepository
         "Array(#{type.wrapper_definition(libname)})"
       when LibGIRepository::TypeTag::ZERO_NONE
         "Void*"
+      when LibGIRepository::TypeTag::UTF8, LibGIRepository::TypeTag::FILENAME
+        "String"
       else
         TAG_MAP[tag]
       end
@@ -114,7 +116,6 @@ module GIRepository
       when LibGIRepository::TypeTag::INTERFACE
         pointer? ? "#{variable}.to_unsafe.as(Lib#{interface.full_constant}*)" : variable
       when LibGIRepository::TypeTag::ARRAY,
-           LibGIRepository::TypeTag::UTF8,
            LibGIRepository::TypeTag::GLIST,
            LibGIRepository::TypeTag::GSLIST,
            LibGIRepository::TypeTag::GHASH,
@@ -122,6 +123,8 @@ module GIRepository
            LibGIRepository::TypeTag::BOOLEAN,
            LibGIRepository::TypeTag::VOID
         variable
+      when LibGIRepository::TypeTag::UTF8, LibGIRepository::TypeTag::FILENAME
+        "#{variable}.to_unsafe"
       else
         if pointer?
           variable
