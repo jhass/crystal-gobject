@@ -17,4 +17,8 @@ window.events = Gdk::EventMask::ZERO_NONE
 
 window.show
 
+Gdk::Event.on_event do |event|
+  puts event.event_type
+end
+
 GLib::MainLoop.new(nil, true).run

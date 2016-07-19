@@ -1,4 +1,5 @@
 require "../generated/gdk"
+require "./event"
 
 module Gdk
   def self.init

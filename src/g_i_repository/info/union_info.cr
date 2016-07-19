@@ -2,6 +2,8 @@ require "./base_info"
 
 module GIRepository
   class UnionInfo < BaseInfo
+    include WrapperGenerator
+
     each_converted union_info, field, FieldInfo
     each_converted union_info, method, FunctionInfo
 
@@ -27,7 +29,17 @@ module GIRepository
     end
 
     def wrapper_definition(libname, indent="")
-      "#{indent}alias #{name} = #{libname}::#{name}"
+      String.build do |io|
+        io.puts "#{indent}class #{name}"
+        io.puts "#{indent}  include GObject::WrappedType"
+        io.puts
+
+        write_constructor libname, io, indent
+        write_to_unsafe libname, io, indent
+        write_methods libname, io, indent
+
+        io.puts "#{indent}end"
+      end
     end
   end
 end

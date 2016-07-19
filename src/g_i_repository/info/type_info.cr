@@ -92,7 +92,7 @@ module GIRepository
       when LibGIRepository::TypeTag::INTERFACE
         interface = interface
         case interface
-        when ObjectInfo, StructInfo
+        when ObjectInfo, StructInfo, UnionInfo
           "#{interface.full_constant}.new(#{variable})"
         else
           variable
