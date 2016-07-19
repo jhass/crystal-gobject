@@ -2,6 +2,8 @@ require "./base_info"
 
 module GIRepository
   class StructInfo < BaseInfo
+    include WrapperGenerator
+
     each_converted struct_info, field, FieldInfo
     each_converted struct_info, method, FunctionInfo
 
@@ -45,9 +47,6 @@ module GIRepository
         io.puts "#{indent}  include GObject::WrappedType"
         io.puts
 
-        ptr = "@#{GIRepository.filename(full_constant)}"
-        ptr_type = "#{libname}::#{name}*"
-
         writable_fields = fields.select(&.writable?)
         if !writable_fields.empty?
           io.print "#{indent}  def self.new("
@@ -57,7 +56,7 @@ module GIRepository
           }.join(", ")
           io.puts ") : self"
           io.puts "#{indent}    ptr = Pointer(UInt8).malloc(#{size}, 0u8)"
-          io.puts "#{indent}    new(ptr.as(#{ptr_type})).tap do |object|"
+          io.puts "#{indent}    new(ptr.as(#{ptr_type(libname)})).tap do |object|"
           writable_fields.each do |field|
             io.puts "#{indent}      object.#{field.name(false)} = #{field.name} unless #{field.name}.nil?"
           end
@@ -67,37 +66,26 @@ module GIRepository
         elsif size != 0 # if size is 0 it's opaque to us, there should be a constructor function
           io.puts "#{indent}  def self.new : self"
           io.puts "#{indent}    ptr = Pointer(UInt8).malloc(#{size}, 0u8)"
-          io.puts "#{indent}    super(ptr.as(#{ptr_type}))"
+          io.puts "#{indent}    super(ptr.as(#{ptr_type(libname)}))"
           io.puts "#{indent}  end"
           io.puts
         end
 
-        # TODO: extract redundancy with ObjectInfo
+        write_constructor libname, io, indent
+        write_to_unsafe libname, io, indent
+        write_methods libname, io, indent
 
-        io.puts "#{indent}  #{ptr} : #{ptr_type}?"
-        io.puts "#{indent}  def initialize(#{ptr} : #{ptr_type})"
-        io.puts "#{indent}  end"
-        io.puts
-        io.puts "#{indent}  def to_unsafe"
-        io.puts "#{indent}    #{ptr}.not_nil!.as(Void*)"
-        io.puts "#{indent}  end"
-        io.puts
-
-        each_method do |method|
-          io.puts method.wrapper_definition libname, indent+"  "
-          io.puts
-        end
         each_field do |field|
           if field.readable?
             io.puts "#{indent}  def #{field.name(false)}"
-            io.puts "#{indent}    #{field.type.convert_to_crystal("(to_unsafe.as(#{ptr_type}).value.#{field.name})")}"
+            io.puts "#{indent}    #{field.type.convert_to_crystal("(to_unsafe.as(#{ptr_type(libname)}).value.#{field.name})")}"
             io.puts "#{indent}  end"
             io.puts
           end
 
           if field.writable?
             io.puts "#{indent}  def #{field.name(false)}=(value : #{field.type.wrapper_definition(libname)})"
-            io.puts "#{indent}    to_unsafe.as(#{ptr_type}).value.#{field.name} = #{field.type.convert_from_crystal("value")}"
+            io.puts "#{indent}    to_unsafe.as(#{ptr_type(libname)}).value.#{field.name} = #{field.type.convert_from_crystal("value")}"
             io.puts "#{indent}  end"
             io.puts
           end

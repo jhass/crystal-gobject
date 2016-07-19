@@ -2,6 +2,8 @@ require "./base_info"
 
 module GIRepository
   class ObjectInfo < BaseInfo
+    include WrapperGenerator
+
     each_converted object_info, constant, ConstantInfo
     each_converted object_info, field, FieldInfo
     each_converted object_info, method, FunctionInfo
@@ -56,19 +58,8 @@ module GIRepository
         io << (parent ? " < #{parent}\n" : "\n")
         io << "#{indent}  include GObject::WrappedType\n\n" unless parent
 
-
-        # TODO: extract redundancy with StructInfo
-
-        ptr = "@#{GIRepository.filename(full_constant)}"
-        ptr_type = "#{libname}::#{name}*"
-        io.puts "#{indent}  #{ptr} : #{ptr_type}?"
-        io.puts "#{indent}  def initialize(#{ptr} : #{ptr_type})"
-        io.puts "#{indent}  end"
-        io.puts
-        io.puts "#{indent}  def to_unsafe"
-        io.puts "#{indent}    #{ptr}.not_nil!.as(Void*)"
-        io.puts "#{indent}  end"
-        io.puts
+        write_constructor libname, io, indent
+        write_to_unsafe libname, io, indent
 
         each_interface do |interface|
           io.puts "#{indent}  # Implements #{interface.name}"
@@ -78,10 +69,7 @@ module GIRepository
           io.puts property.wrapper_definition libname, indent+"  "
         end
 
-        each_method do |method|
-          io.puts method.wrapper_definition libname, indent+"  "
-          io.puts
-        end
+        write_methods libname, io, indent
 
         each_signal do |signal|
           io.puts signal.wrapper_definition libname, indent+"  "

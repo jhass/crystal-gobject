@@ -40,5 +40,6 @@ module GIRepository
 end
 
 require "../helper"
+require "./wrapper_generator"
 require "./info/*"
 require "./repository"

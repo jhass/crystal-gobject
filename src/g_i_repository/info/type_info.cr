@@ -72,7 +72,7 @@ module GIRepository
       base
     end
 
-    def wrapper_definition(libname="", ident="")
+    def wrapper_definition(libname="", indent="")
       case tag
       when LibGIRepository::TypeTag::INTERFACE
         interface.full_constant
