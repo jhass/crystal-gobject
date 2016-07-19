@@ -6,8 +6,10 @@ module GIRepository
 
     def name
       name = super
-      name = name.empty? ? "new" : name
-      name == "initialize" ? "init" : name
+      name = name.sub(/^_/, "") unless symbol.includes?("__")
+      name = "new" if name.empty?
+      name = "init" if name == "initialize"
+      name
     end
 
     def symbol
