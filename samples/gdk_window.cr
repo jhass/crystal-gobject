@@ -13,6 +13,8 @@ window = Gdk::Window.new(nil,
   Gdk::WindowAttributesType.flags(TITLE)
 )
 
+window.events = Gdk::EventMask::ZERO_NONE
+
 window.show
 
 GLib::MainLoop.new(nil, true).run
