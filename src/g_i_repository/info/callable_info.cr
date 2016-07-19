@@ -35,6 +35,10 @@ module GIRepository
         "this : #{@container.name}*"
       end
 
+      def name
+        "this"
+      end
+
       def type
         FakeType.new "#{@container.name}"
       end
@@ -45,11 +49,19 @@ module GIRepository
       def for_wrapper_pass(libname)
         "to_unsafe.as(#{libname}::#{@container.name}*)"
       end
+
+      def from_wrapper_pass
+        "#{@container.name}.new(this)"
+      end
     end
 
     class ErrorArgInfo
       def lib_definition
         "error : LibGLib::Error**"
+      end
+
+      def name
+        "error"
       end
 
       def type
@@ -61,6 +73,10 @@ module GIRepository
 
       def for_wrapper_pass(libname)
         "pointerof(__error)"
+      end
+
+      def from_wrapper_pass
+        "error"
       end
     end
 
