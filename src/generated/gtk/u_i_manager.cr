@@ -16,7 +16,7 @@ module Gtk
       cast Gtk::UIManager.new(__return_value)
     end
 
-    def add_ui(merge_id, path, name, action, type, top)
+    def add_ui(merge_id, path, name, action, type : Gtk::UIManagerItemType, top)
       __return_value = LibGtk.u_i_manager_add_ui(to_unsafe.as(LibGtk::UIManager*), UInt32.new(merge_id), path.to_unsafe, name.to_unsafe, action && action.to_unsafe, type, top)
       __return_value
     end
@@ -67,7 +67,7 @@ module Gtk
       __return_value
     end
 
-    def toplevels(types)
+    def toplevels(types : Gtk::UIManagerItemType)
       __return_value = LibGtk.u_i_manager_get_toplevels(to_unsafe.as(LibGtk::UIManager*), types)
       GLib::SListIterator(Gtk::Widget, LibGtk::Widget*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end

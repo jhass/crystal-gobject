@@ -26,7 +26,7 @@ module Gst
       __return_value
     end
 
-    def add_watch(priority, func : LibGst::BusFunc, user_data, notify : LibGLib::DestroyNotify)
+    def add_watch(priority, func, user_data, notify)
       __return_value = LibGst.bus_add_watch(to_unsafe.as(LibGst::Bus*), Int32.new(priority), func, user_data && user_data, notify)
       __return_value
     end
@@ -61,7 +61,7 @@ module Gst
       Gst::Message.new(__return_value) if __return_value
     end
 
-    def poll(events, timeout)
+    def poll(events : Gst::MessageType, timeout)
       __return_value = LibGst.bus_poll(to_unsafe.as(LibGst::Bus*), events, UInt64.new(timeout))
       Gst::Message.new(__return_value) if __return_value
     end
@@ -71,7 +71,7 @@ module Gst
       Gst::Message.new(__return_value) if __return_value
     end
 
-    def pop_filtered(types)
+    def pop_filtered(types : Gst::MessageType)
       __return_value = LibGst.bus_pop_filtered(to_unsafe.as(LibGst::Bus*), types)
       Gst::Message.new(__return_value) if __return_value
     end
@@ -96,7 +96,7 @@ module Gst
       __return_value
     end
 
-    def set_sync_handler(func : LibGst::BusSyncHandler?, user_data, notify : LibGLib::DestroyNotify)
+    def set_sync_handler(func, user_data, notify)
       __return_value = LibGst.bus_set_sync_handler(to_unsafe.as(LibGst::Bus*), func && func, user_data && user_data, notify)
       __return_value
     end
@@ -111,7 +111,7 @@ module Gst
       Gst::Message.new(__return_value) if __return_value
     end
 
-    def timed_pop_filtered(timeout, types)
+    def timed_pop_filtered(timeout, types : Gst::MessageType)
       __return_value = LibGst.bus_timed_pop_filtered(to_unsafe.as(LibGst::Bus*), UInt64.new(timeout), types)
       Gst::Message.new(__return_value) if __return_value
     end

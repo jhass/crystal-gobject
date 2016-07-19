@@ -25,7 +25,7 @@ module Gtk
       cast Gtk::Widget.new(__return_value)
     end
 
-    def bind_model(model, create_widget_func : LibGtk::FlowBoxCreateWidgetFunc, user_data, user_data_free_func : LibGLib::DestroyNotify)
+    def bind_model(model, create_widget_func, user_data, user_data_free_func)
       __return_value = LibGtk.flow_box_bind_model(to_unsafe.as(LibGtk::FlowBox*), model && model.to_unsafe.as(LibGio::ListModel*), create_widget_func, user_data && user_data, user_data_free_func)
       __return_value
     end
@@ -100,7 +100,7 @@ module Gtk
       __return_value
     end
 
-    def selected_foreach(func : LibGtk::FlowBoxForeachFunc, data)
+    def selected_foreach(func, data)
       __return_value = LibGtk.flow_box_selected_foreach(to_unsafe.as(LibGtk::FlowBox*), func, data && data)
       __return_value
     end
@@ -115,7 +115,7 @@ module Gtk
       __return_value
     end
 
-    def set_filter_func(filter_func : LibGtk::FlowBoxFilterFunc?, user_data, destroy : LibGLib::DestroyNotify)
+    def set_filter_func(filter_func, user_data, destroy)
       __return_value = LibGtk.flow_box_set_filter_func(to_unsafe.as(LibGtk::FlowBox*), filter_func && filter_func, user_data && user_data, destroy)
       __return_value
     end
@@ -145,12 +145,12 @@ module Gtk
       __return_value
     end
 
-    def selection_mode=(mode)
+    def selection_mode=(mode : Gtk::SelectionMode)
       __return_value = LibGtk.flow_box_set_selection_mode(to_unsafe.as(LibGtk::FlowBox*), mode)
       __return_value
     end
 
-    def set_sort_func(sort_func : LibGtk::FlowBoxSortFunc?, user_data, destroy : LibGLib::DestroyNotify)
+    def set_sort_func(sort_func, user_data, destroy)
       __return_value = LibGtk.flow_box_set_sort_func(to_unsafe.as(LibGtk::FlowBox*), sort_func && sort_func, user_data && user_data, destroy)
       __return_value
     end

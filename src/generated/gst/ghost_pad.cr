@@ -20,7 +20,7 @@ module Gst
       cast Gst::Pad.new(__return_value) if __return_value
     end
 
-    def self.new_no_target(name, dir) : self
+    def self.new_no_target(name, dir : Gst::PadDirection) : self
       __return_value = LibGst.ghost_pad_new_no_target(name && name.to_unsafe, dir)
       cast Gst::Pad.new(__return_value) if __return_value
     end
@@ -30,12 +30,12 @@ module Gst
       cast Gst::Pad.new(__return_value) if __return_value
     end
 
-    def self.activate_mode_default(pad, parent, mode, active)
+    def self.activate_mode_default(pad, parent, mode : Gst::PadMode, active)
       __return_value = LibGst.ghost_pad_activate_mode_default(pad.to_unsafe.as(LibGst::Pad*), parent && parent.to_unsafe.as(LibGst::Object*), mode, active)
       __return_value
     end
 
-    def self.internal_activate_mode_default(pad, parent, mode, active)
+    def self.internal_activate_mode_default(pad, parent, mode : Gst::PadMode, active)
       __return_value = LibGst.ghost_pad_internal_activate_mode_default(pad.to_unsafe.as(LibGst::Pad*), parent && parent.to_unsafe.as(LibGst::Object*), mode, active)
       __return_value
     end

@@ -19,7 +19,7 @@ module Gtk
       __return_value
     end
 
-    def foreach(func : LibGtk::TextTagTableForeach, data)
+    def foreach(func, data)
       __return_value = LibGtk.text_tag_table_foreach(to_unsafe.as(LibGtk::TextTagTable*), func, data && data)
       __return_value
     end

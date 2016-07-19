@@ -73,7 +73,7 @@ module Gtk
       __return_value
     end
 
-    def icon_size=(icon_size)
+    def icon_size=(icon_size : Gtk::IconSize)
       __return_value = LibGtk.toolbar_set_icon_size(to_unsafe.as(LibGtk::Toolbar*), icon_size)
       __return_value
     end
@@ -83,7 +83,7 @@ module Gtk
       __return_value
     end
 
-    def style=(style)
+    def style=(style : Gtk::ToolbarStyle)
       __return_value = LibGtk.toolbar_set_style(to_unsafe.as(LibGtk::Toolbar*), style)
       __return_value
     end

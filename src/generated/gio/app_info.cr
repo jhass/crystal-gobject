@@ -1,6 +1,6 @@
 module Gio
   module AppInfo
-    def self.create_from_commandline(commandline, application_name, flags)
+    def self.create_from_commandline(commandline, application_name, flags : Gio::AppInfoCreateFlags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.app_info_create_from_commandline(commandline.to_unsafe, application_name && application_name.to_unsafe, flags, pointerof(__error))
       GLib::Error.assert __error

@@ -175,7 +175,7 @@ module Gtk
       __return_value
     end
 
-    def button_sensitivity=(sensitivity)
+    def button_sensitivity=(sensitivity : Gtk::SensitivityType)
       __return_value = LibGtk.combo_box_set_button_sensitivity(to_unsafe.as(LibGtk::ComboBox*), sensitivity)
       __return_value
     end
@@ -210,7 +210,7 @@ module Gtk
       __return_value
     end
 
-    def set_row_separator_func(func : LibGtk::TreeViewRowSeparatorFunc, data, destroy : LibGLib::DestroyNotify?)
+    def set_row_separator_func(func, data, destroy)
       __return_value = LibGtk.combo_box_set_row_separator_func(to_unsafe.as(LibGtk::ComboBox*), func, data && data, destroy && destroy)
       __return_value
     end

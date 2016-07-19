@@ -10,7 +10,7 @@ module Gst
       @gst_toc.not_nil!.as(Void*)
     end
 
-    def self.new(scope) : self
+    def self.new(scope : Gst::TocScope) : self
       __return_value = LibGst.toc_new(scope)
       cast Gst::Toc.new(__return_value)
     end
@@ -45,7 +45,7 @@ module Gst
       Gst::TagList.new(__return_value)
     end
 
-    def merge_tags(tags, mode)
+    def merge_tags(tags, mode : Gst::TagMergeMode)
       __return_value = LibGst.toc_merge_tags(to_unsafe.as(LibGst::Toc*), tags && tags.to_unsafe.as(LibGst::TagList*), mode)
       __return_value
     end

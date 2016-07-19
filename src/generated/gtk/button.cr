@@ -143,7 +143,7 @@ module Gtk
       __return_value
     end
 
-    def image_position=(position)
+    def image_position=(position : Gtk::PositionType)
       __return_value = LibGtk.button_set_image_position(to_unsafe.as(LibGtk::Button*), position)
       __return_value
     end
@@ -153,7 +153,7 @@ module Gtk
       __return_value
     end
 
-    def relief=(relief)
+    def relief=(relief : Gtk::ReliefStyle)
       __return_value = LibGtk.button_set_relief(to_unsafe.as(LibGtk::Button*), relief)
       __return_value
     end

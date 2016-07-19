@@ -15,7 +15,7 @@ module Gio
       __return_value
     end
 
-    def emit_event(child, other_file, event_type)
+    def emit_event(child, other_file, event_type : Gio::FileMonitorEvent)
       __return_value = LibGio.file_monitor_emit_event(to_unsafe.as(LibGio::FileMonitor*), child.to_unsafe.as(LibGio::File*), other_file.to_unsafe.as(LibGio::File*), event_type)
       __return_value
     end

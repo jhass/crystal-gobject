@@ -104,7 +104,7 @@ module GLib
       __return_value
     end
 
-    def set_translate_func(func : LibGLib::TranslateFunc?, data, destroy_notify : LibGLib::DestroyNotify?)
+    def set_translate_func(func, data, destroy_notify)
       __return_value = LibGLib.option_context_set_translate_func(to_unsafe.as(LibGLib::OptionContext*), func && func, data && data, destroy_notify && destroy_notify)
       __return_value
     end

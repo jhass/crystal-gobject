@@ -27,22 +27,22 @@ module Gst
       Gst::Plugin.new(__return_value)
     end
 
-    def self.register_static(major_version, minor_version, name, description, init_func : LibGst::PluginInitFunc, version, license, source, package, origin)
+    def self.register_static(major_version, minor_version, name, description, init_func, version, license, source, package, origin)
       __return_value = LibGst.plugin_register_static(Int32.new(major_version), Int32.new(minor_version), name.to_unsafe, description.to_unsafe, init_func, version.to_unsafe, license.to_unsafe, source.to_unsafe, package.to_unsafe, origin.to_unsafe)
       __return_value
     end
 
-    def self.register_static_full(major_version, minor_version, name, description, init_full_func : LibGst::PluginInitFullFunc, version, license, source, package, origin, user_data)
+    def self.register_static_full(major_version, minor_version, name, description, init_full_func, version, license, source, package, origin, user_data)
       __return_value = LibGst.plugin_register_static_full(Int32.new(major_version), Int32.new(minor_version), name.to_unsafe, description.to_unsafe, init_full_func, version.to_unsafe, license.to_unsafe, source.to_unsafe, package.to_unsafe, origin.to_unsafe, user_data && user_data)
       __return_value
     end
 
-    def add_dependency(env_vars, paths, names, flags)
+    def add_dependency(env_vars, paths, names, flags : Gst::PluginDependencyFlags)
       __return_value = LibGst.plugin_add_dependency(to_unsafe.as(LibGst::Plugin*), env_vars && env_vars.to_unsafe, paths && paths.to_unsafe, names && names.to_unsafe, flags)
       __return_value
     end
 
-    def add_dependency_simple(env_vars, paths, names, flags)
+    def add_dependency_simple(env_vars, paths, names, flags : Gst::PluginDependencyFlags)
       __return_value = LibGst.plugin_add_dependency_simple(to_unsafe.as(LibGst::Plugin*), env_vars && env_vars.to_unsafe, paths && paths.to_unsafe, names && names.to_unsafe, flags)
       __return_value
     end

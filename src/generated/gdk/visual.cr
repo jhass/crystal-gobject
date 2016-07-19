@@ -23,7 +23,7 @@ module Gdk
       __return_value
     end
 
-    def self.best_with_both(depth, visual_type)
+    def self.best_with_both(depth, visual_type : Gdk::VisualType)
       __return_value = LibGdk.visual_get_best_with_both(Int32.new(depth), visual_type)
       Gdk::Visual.new(__return_value) if __return_value
     end
@@ -33,7 +33,7 @@ module Gdk
       Gdk::Visual.new(__return_value)
     end
 
-    def self.best_with_type(visual_type)
+    def self.best_with_type(visual_type : Gdk::VisualType)
       __return_value = LibGdk.visual_get_best_with_type(visual_type)
       Gdk::Visual.new(__return_value)
     end

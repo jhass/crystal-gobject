@@ -119,7 +119,7 @@ module Gdk
     __return_value
   end
 
-  def self.drag_find_window_for_screen(context, drag_window, screen, x_root, y_root, dest_window, protocol)
+  def self.drag_find_window_for_screen(context, drag_window, screen, x_root, y_root, dest_window, protocol : Gdk::DragProtocol)
     __return_value = LibGdk.drag_find_window_for_screen(context.to_unsafe.as(LibGdk::DragContext*), drag_window.to_unsafe.as(LibGdk::Window*), screen.to_unsafe.as(LibGdk::Screen*), Int32.new(x_root), Int32.new(y_root), dest_window, protocol)
     __return_value
   end
@@ -129,12 +129,12 @@ module Gdk
     Gdk::Atom.new(__return_value)
   end
 
-  def self.drag_motion(context, dest_window, protocol, x_root, y_root, suggested_action, possible_actions, time)
+  def self.drag_motion(context, dest_window, protocol : Gdk::DragProtocol, x_root, y_root, suggested_action : Gdk::DragAction, possible_actions : Gdk::DragAction, time)
     __return_value = LibGdk.drag_motion(context.to_unsafe.as(LibGdk::DragContext*), dest_window.to_unsafe.as(LibGdk::Window*), protocol, Int32.new(x_root), Int32.new(y_root), suggested_action, possible_actions, UInt32.new(time))
     __return_value
   end
 
-  def self.drag_status(context, action, time)
+  def self.drag_status(context, action : Gdk::DragAction, time)
     __return_value = LibGdk.drag_status(context.to_unsafe.as(LibGdk::DragContext*), action, UInt32.new(time))
     __return_value
   end
@@ -166,17 +166,17 @@ module Gdk
 
   def self.event_get
     __return_value = LibGdk.event_get
-    __return_value if __return_value
+    Gdk::Event.new(__return_value) if __return_value
   end
 
-  def self.event_handler_set(func : LibGdk::EventFunc, data, notify : LibGLib::DestroyNotify)
+  def self.event_handler_set(func, data, notify)
     __return_value = LibGdk.event_handler_set(func, data && data, notify)
     __return_value
   end
 
   def self.event_peek
     __return_value = LibGdk.event_peek
-    __return_value if __return_value
+    Gdk::Event.new(__return_value) if __return_value
   end
 
   def self.event_request_motions(event)
@@ -354,7 +354,7 @@ module Gdk
     GdkPixbuf::Pixbuf.new(__return_value) if __return_value
   end
 
-  def self.pointer_grab(window, owner_events, event_mask, confine_to, cursor, time)
+  def self.pointer_grab(window, owner_events, event_mask : Gdk::EventMask, confine_to, cursor, time)
     __return_value = LibGdk.pointer_grab(window.to_unsafe.as(LibGdk::Window*), owner_events, event_mask, confine_to && confine_to.to_unsafe.as(LibGdk::Window*), cursor && cursor.to_unsafe.as(LibGdk::Cursor*), UInt32.new(time))
     __return_value
   end
@@ -454,7 +454,7 @@ module Gdk
     __return_value
   end
 
-  def self.synthesize_window_state(window, unset_flags, set_flags)
+  def self.synthesize_window_state(window, unset_flags : Gdk::WindowState, set_flags : Gdk::WindowState)
     __return_value = LibGdk.synthesize_window_state(window.to_unsafe.as(LibGdk::Window*), unset_flags, set_flags)
     __return_value
   end
@@ -464,12 +464,12 @@ module Gdk
     __return_value
   end
 
-  def self.test_simulate_button(window, x, y, button, modifiers, button_pressrelease)
+  def self.test_simulate_button(window, x, y, button, modifiers : Gdk::ModifierType, button_pressrelease : Gdk::EventType)
     __return_value = LibGdk.test_simulate_button(window.to_unsafe.as(LibGdk::Window*), Int32.new(x), Int32.new(y), UInt32.new(button), modifiers, button_pressrelease)
     __return_value
   end
 
-  def self.test_simulate_key(window, x, y, keyval, modifiers, key_pressrelease)
+  def self.test_simulate_key(window, x, y, keyval, modifiers : Gdk::ModifierType, key_pressrelease : Gdk::EventType)
     __return_value = LibGdk.test_simulate_key(window.to_unsafe.as(LibGdk::Window*), Int32.new(x), Int32.new(y), UInt32.new(keyval), modifiers, key_pressrelease)
     __return_value
   end
@@ -479,17 +479,17 @@ module Gdk
     __return_value
   end
 
-  def self.threads_add_idle(priority, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
+  def self.threads_add_idle(priority, function, data, notify)
     __return_value = LibGdk.threads_add_idle(Int32.new(priority), function, data && data, notify && notify)
     __return_value
   end
 
-  def self.threads_add_timeout(priority, interval, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
+  def self.threads_add_timeout(priority, interval, function, data, notify)
     __return_value = LibGdk.threads_add_timeout(Int32.new(priority), UInt32.new(interval), function, data && data, notify && notify)
     __return_value
   end
 
-  def self.threads_add_timeout_seconds(priority, interval, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
+  def self.threads_add_timeout_seconds(priority, interval, function, data, notify)
     __return_value = LibGdk.threads_add_timeout_seconds(Int32.new(priority), UInt32.new(interval), function, data && data, notify && notify)
     __return_value
   end

@@ -73,7 +73,7 @@ module Gtk
       __return_value
     end
 
-    def set_translate_func(func : LibGtk::TranslateFunc, data, notify : LibGLib::DestroyNotify)
+    def set_translate_func(func, data, notify)
       __return_value = LibGtk.action_group_set_translate_func(to_unsafe.as(LibGtk::ActionGroup*), func, data && data, notify)
       __return_value
     end

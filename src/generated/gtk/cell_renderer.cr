@@ -24,12 +24,12 @@ module Gtk
 
 
 
-    def activate(event, widget, path, background_area, cell_area, flags)
+    def activate(event, widget, path, background_area, cell_area, flags : Gtk::CellRendererState)
       __return_value = LibGtk.cell_renderer_activate(to_unsafe.as(LibGtk::CellRenderer*), event.to_unsafe.as(LibGdk::Event*), widget.to_unsafe.as(LibGtk::Widget*), path.to_unsafe, background_area.to_unsafe.as(LibGdk::Rectangle*), cell_area.to_unsafe.as(LibGdk::Rectangle*), flags)
       __return_value
     end
 
-    def aligned_area(widget, flags, cell_area, aligned_area)
+    def aligned_area(widget, flags : Gtk::CellRendererState, cell_area, aligned_area)
       __return_value = LibGtk.cell_renderer_get_aligned_area(to_unsafe.as(LibGtk::CellRenderer*), widget.to_unsafe.as(LibGtk::Widget*), flags, cell_area.to_unsafe.as(LibGdk::Rectangle*), aligned_area)
       __return_value
     end
@@ -89,7 +89,7 @@ module Gtk
       __return_value
     end
 
-    def state(widget, cell_state)
+    def state(widget, cell_state : Gtk::CellRendererState)
       __return_value = LibGtk.cell_renderer_get_state(to_unsafe.as(LibGtk::CellRenderer*), widget.to_unsafe.as(LibGtk::Widget*), cell_state)
       __return_value
     end
@@ -104,7 +104,7 @@ module Gtk
       __return_value
     end
 
-    def render(cr, widget, background_area, cell_area, flags)
+    def render(cr, widget, background_area, cell_area, flags : Gtk::CellRendererState)
       __return_value = LibGtk.cell_renderer_render(to_unsafe.as(LibGtk::CellRenderer*), cr.to_unsafe.as(LibCairo::Context*), widget.to_unsafe.as(LibGtk::Widget*), background_area.to_unsafe.as(LibGdk::Rectangle*), cell_area.to_unsafe.as(LibGdk::Rectangle*), flags)
       __return_value
     end
@@ -134,7 +134,7 @@ module Gtk
       __return_value
     end
 
-    def start_editing(event, widget, path, background_area, cell_area, flags)
+    def start_editing(event, widget, path, background_area, cell_area, flags : Gtk::CellRendererState)
       __return_value = LibGtk.cell_renderer_start_editing(to_unsafe.as(LibGtk::CellRenderer*), event.to_unsafe.as(LibGdk::Event*), widget.to_unsafe.as(LibGtk::Widget*), path.to_unsafe, background_area.to_unsafe.as(LibGdk::Rectangle*), cell_area.to_unsafe.as(LibGdk::Rectangle*), flags)
       __return_value if __return_value
     end

@@ -17,17 +17,17 @@ module Gtk
 
 
 
-    def self.new(orientation, adjustment) : self
+    def self.new(orientation : Gtk::Orientation, adjustment) : self
       __return_value = LibGtk.scale_new(orientation, adjustment && adjustment.to_unsafe.as(LibGtk::Adjustment*))
       cast Gtk::Widget.new(__return_value)
     end
 
-    def self.new_with_range(orientation, min, max, step) : self
+    def self.new_with_range(orientation : Gtk::Orientation, min, max, step) : self
       __return_value = LibGtk.scale_new_with_range(orientation, Float64.new(min), Float64.new(max), Float64.new(step))
       cast Gtk::Widget.new(__return_value)
     end
 
-    def add_mark(value, position, markup)
+    def add_mark(value, position : Gtk::PositionType, markup)
       __return_value = LibGtk.scale_add_mark(to_unsafe.as(LibGtk::Scale*), Float64.new(value), position, markup && markup.to_unsafe)
       __return_value
     end
@@ -82,7 +82,7 @@ module Gtk
       __return_value
     end
 
-    def value_pos=(pos)
+    def value_pos=(pos : Gtk::PositionType)
       __return_value = LibGtk.scale_set_value_pos(to_unsafe.as(LibGtk::Scale*), pos)
       __return_value
     end

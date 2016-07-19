@@ -40,7 +40,7 @@ module Gtk
       __return_value
     end
 
-    def backward_find_char(pred : LibGtk::TextCharPredicate, user_data, limit)
+    def backward_find_char(pred, user_data, limit)
       __return_value = LibGtk.text_iter_backward_find_char(to_unsafe.as(LibGtk::TextIter*), pred, user_data && user_data, limit && limit.to_unsafe.as(LibGtk::TextIter*))
       __return_value
     end
@@ -55,7 +55,7 @@ module Gtk
       __return_value
     end
 
-    def backward_search(str, flags, match_start, match_end, limit)
+    def backward_search(str, flags : Gtk::TextSearchFlags, match_start, match_end, limit)
       __return_value = LibGtk.text_iter_backward_search(to_unsafe.as(LibGtk::TextIter*), str.to_unsafe, flags, match_start, match_end, limit && limit.to_unsafe.as(LibGtk::TextIter*))
       __return_value
     end
@@ -185,7 +185,7 @@ module Gtk
       __return_value
     end
 
-    def forward_find_char(pred : LibGtk::TextCharPredicate, user_data, limit)
+    def forward_find_char(pred, user_data, limit)
       __return_value = LibGtk.text_iter_forward_find_char(to_unsafe.as(LibGtk::TextIter*), pred, user_data && user_data, limit && limit.to_unsafe.as(LibGtk::TextIter*))
       __return_value
     end
@@ -200,7 +200,7 @@ module Gtk
       __return_value
     end
 
-    def forward_search(str, flags, match_start, match_end, limit)
+    def forward_search(str, flags : Gtk::TextSearchFlags, match_start, match_end, limit)
       __return_value = LibGtk.text_iter_forward_search(to_unsafe.as(LibGtk::TextIter*), str.to_unsafe, flags, match_start, match_end, limit && limit.to_unsafe.as(LibGtk::TextIter*))
       __return_value
     end

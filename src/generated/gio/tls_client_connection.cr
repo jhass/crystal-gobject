@@ -42,7 +42,7 @@ module Gio
       __return_value
     end
 
-    def validation_flags=(flags)
+    def validation_flags=(flags : Gio::TlsCertificateFlags)
       __return_value = LibGio.tls_client_connection_set_validation_flags(to_unsafe.as(LibGio::TlsClientConnection*), flags)
       __return_value
     end

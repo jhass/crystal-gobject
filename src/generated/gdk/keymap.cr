@@ -18,7 +18,7 @@ module Gdk
       Gdk::Keymap.new(__return_value)
     end
 
-    def add_virtual_modifiers(state)
+    def add_virtual_modifiers(state : Gdk::ModifierType)
       __return_value = LibGdk.keymap_add_virtual_modifiers(to_unsafe.as(LibGdk::Keymap*), state)
       __return_value
     end
@@ -43,7 +43,7 @@ module Gdk
       __return_value
     end
 
-    def modifier_mask(intent)
+    def modifier_mask(intent : Gdk::ModifierIntent)
       __return_value = LibGdk.keymap_get_modifier_mask(to_unsafe.as(LibGdk::Keymap*), intent)
       __return_value
     end
@@ -73,12 +73,12 @@ module Gdk
       __return_value
     end
 
-    def map_virtual_modifiers(state)
+    def map_virtual_modifiers(state : Gdk::ModifierType)
       __return_value = LibGdk.keymap_map_virtual_modifiers(to_unsafe.as(LibGdk::Keymap*), state)
       __return_value
     end
 
-    def translate_keyboard_state(hardware_keycode, state, group, keyval, effective_group, level, consumed_modifiers)
+    def translate_keyboard_state(hardware_keycode, state : Gdk::ModifierType, group, keyval, effective_group, level, consumed_modifiers : Gdk::ModifierType?)
       __return_value = LibGdk.keymap_translate_keyboard_state(to_unsafe.as(LibGdk::Keymap*), UInt32.new(hardware_keycode), state, Int32.new(group), keyval, effective_group, level, consumed_modifiers)
       __return_value
     end

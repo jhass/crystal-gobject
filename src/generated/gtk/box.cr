@@ -16,7 +16,7 @@ module Gtk
 
 
 
-    def self.new(orientation, spacing) : self
+    def self.new(orientation : Gtk::Orientation, spacing) : self
       __return_value = LibGtk.box_new(orientation, Int32.new(spacing))
       cast Gtk::Widget.new(__return_value)
     end
@@ -51,7 +51,7 @@ module Gtk
       __return_value
     end
 
-    def query_child_packing(child, expand, fill, padding, pack_type)
+    def query_child_packing(child, expand, fill, padding, pack_type : Gtk::PackType)
       __return_value = LibGtk.box_query_child_packing(to_unsafe.as(LibGtk::Box*), child.to_unsafe.as(LibGtk::Widget*), expand, fill, padding, pack_type)
       __return_value
     end
@@ -61,7 +61,7 @@ module Gtk
       __return_value
     end
 
-    def baseline_position=(position)
+    def baseline_position=(position : Gtk::BaselinePosition)
       __return_value = LibGtk.box_set_baseline_position(to_unsafe.as(LibGtk::Box*), position)
       __return_value
     end
@@ -71,7 +71,7 @@ module Gtk
       __return_value
     end
 
-    def set_child_packing(child, expand, fill, padding, pack_type)
+    def set_child_packing(child, expand, fill, padding, pack_type : Gtk::PackType)
       __return_value = LibGtk.box_set_child_packing(to_unsafe.as(LibGtk::Box*), child.to_unsafe.as(LibGtk::Widget*), expand, fill, UInt32.new(padding), pack_type)
       __return_value
     end

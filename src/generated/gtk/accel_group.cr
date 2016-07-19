@@ -20,12 +20,12 @@ module Gtk
       Gtk::AccelGroup.new(__return_value) if __return_value
     end
 
-    def activate(accel_quark, acceleratable, accel_key, accel_mods)
+    def activate(accel_quark, acceleratable, accel_key, accel_mods : Gdk::ModifierType)
       __return_value = LibGtk.accel_group_activate(to_unsafe.as(LibGtk::AccelGroup*), UInt32.new(accel_quark), acceleratable.to_unsafe.as(LibGObject::Object*), UInt32.new(accel_key), accel_mods)
       __return_value
     end
 
-    def connect(accel_key, accel_mods, accel_flags, closure)
+    def connect(accel_key, accel_mods : Gdk::ModifierType, accel_flags : Gtk::AccelFlags, closure)
       __return_value = LibGtk.accel_group_connect(to_unsafe.as(LibGtk::AccelGroup*), UInt32.new(accel_key), accel_mods, accel_flags, closure.to_unsafe.as(LibGObject::Closure*))
       __return_value
     end
@@ -40,12 +40,12 @@ module Gtk
       __return_value
     end
 
-    def disconnect_key(accel_key, accel_mods)
+    def disconnect_key(accel_key, accel_mods : Gdk::ModifierType)
       __return_value = LibGtk.accel_group_disconnect_key(to_unsafe.as(LibGtk::AccelGroup*), UInt32.new(accel_key), accel_mods)
       __return_value
     end
 
-    def find(find_func : LibGtk::AccelGroupFindFunc, data)
+    def find(find_func, data)
       __return_value = LibGtk.accel_group_find(to_unsafe.as(LibGtk::AccelGroup*), find_func, data && data)
       Gtk::AccelKey.new(__return_value)
     end
@@ -65,7 +65,7 @@ module Gtk
       __return_value
     end
 
-    def query(accel_key, accel_mods, n_entries)
+    def query(accel_key, accel_mods : Gdk::ModifierType, n_entries)
       __return_value = LibGtk.accel_group_query(to_unsafe.as(LibGtk::AccelGroup*), UInt32.new(accel_key), accel_mods, n_entries)
       PointerIterator.new(__return_value) {|__item| Gtk::AccelGroupEntry.new(__item) } if __return_value
     end

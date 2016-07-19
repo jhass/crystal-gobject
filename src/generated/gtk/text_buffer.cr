@@ -301,7 +301,7 @@ module Gtk
       __return_value
     end
 
-    def register_deserialize_format(mime_type, function : LibGtk::TextBufferDeserializeFunc, user_data, user_data_destroy : LibGLib::DestroyNotify)
+    def register_deserialize_format(mime_type, function, user_data, user_data_destroy)
       __return_value = LibGtk.text_buffer_register_deserialize_format(to_unsafe.as(LibGtk::TextBuffer*), mime_type.to_unsafe, function, user_data && user_data, user_data_destroy)
       Gdk::Atom.new(__return_value)
     end
@@ -311,7 +311,7 @@ module Gtk
       Gdk::Atom.new(__return_value)
     end
 
-    def register_serialize_format(mime_type, function : LibGtk::TextBufferSerializeFunc, user_data, user_data_destroy : LibGLib::DestroyNotify)
+    def register_serialize_format(mime_type, function, user_data, user_data_destroy)
       __return_value = LibGtk.text_buffer_register_serialize_format(to_unsafe.as(LibGtk::TextBuffer*), mime_type.to_unsafe, function, user_data && user_data, user_data_destroy)
       Gdk::Atom.new(__return_value)
     end

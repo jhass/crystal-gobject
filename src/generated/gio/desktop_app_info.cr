@@ -105,7 +105,7 @@ module Gio
       __return_value
     end
 
-    def launch_uris_as_manager(uris, launch_context, spawn_flags, user_setup : LibGLib::SpawnChildSetupFunc?, user_setup_data, pid_callback : LibGio::DesktopAppLaunchCallback?, pid_callback_data)
+    def launch_uris_as_manager(uris, launch_context, spawn_flags : GLib::SpawnFlags, user_setup, user_setup_data, pid_callback, pid_callback_data)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.desktop_app_info_launch_uris_as_manager(to_unsafe.as(LibGio::DesktopAppInfo*), uris, launch_context && launch_context.to_unsafe.as(LibGio::AppLaunchContext*), spawn_flags, user_setup && user_setup, user_setup_data && user_setup_data, pid_callback && pid_callback, pid_callback_data && pid_callback_data, pointerof(__error))
       GLib::Error.assert __error

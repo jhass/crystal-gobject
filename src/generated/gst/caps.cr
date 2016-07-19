@@ -57,7 +57,7 @@ module Gst
       Gst::Caps.new(__return_value)
     end
 
-    def filter_and_map_in_place(func : LibGst::CapsFilterMapFunc, user_data)
+    def filter_and_map_in_place(func, user_data)
       __return_value = LibGst.caps_filter_and_map_in_place(to_unsafe.as(LibGst::Caps*), func, user_data && user_data)
       __return_value
     end
@@ -67,7 +67,7 @@ module Gst
       Gst::Caps.new(__return_value)
     end
 
-    def foreach(func : LibGst::CapsForeachFunc, user_data)
+    def foreach(func, user_data)
       __return_value = LibGst.caps_foreach(to_unsafe.as(LibGst::Caps*), func, user_data && user_data)
       __return_value
     end
@@ -92,7 +92,7 @@ module Gst
       Gst::Caps.new(__return_value)
     end
 
-    def intersect_full(caps2, mode)
+    def intersect_full(caps2, mode : Gst::CapsIntersectMode)
       __return_value = LibGst.caps_intersect_full(to_unsafe.as(LibGst::Caps*), caps2.to_unsafe.as(LibGst::Caps*), mode)
       Gst::Caps.new(__return_value)
     end
@@ -147,7 +147,7 @@ module Gst
       __return_value
     end
 
-    def map_in_place(func : LibGst::CapsMapFunc, user_data)
+    def map_in_place(func, user_data)
       __return_value = LibGst.caps_map_in_place(to_unsafe.as(LibGst::Caps*), func, user_data && user_data)
       __return_value
     end

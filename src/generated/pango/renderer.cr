@@ -48,22 +48,22 @@ module Pango
       __return_value
     end
 
-    def draw_rectangle(part, x, y, width, height)
+    def draw_rectangle(part : Pango::RenderPart, x, y, width, height)
       __return_value = LibPango.renderer_draw_rectangle(to_unsafe.as(LibPango::Renderer*), part, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
       __return_value
     end
 
-    def draw_trapezoid(part, y1, x11, x21, y2, x12, x22)
+    def draw_trapezoid(part : Pango::RenderPart, y1, x11, x21, y2, x12, x22)
       __return_value = LibPango.renderer_draw_trapezoid(to_unsafe.as(LibPango::Renderer*), part, Float64.new(y1), Float64.new(x11), Float64.new(x21), Float64.new(y2), Float64.new(x12), Float64.new(x22))
       __return_value
     end
 
-    def alpha(part)
+    def alpha(part : Pango::RenderPart)
       __return_value = LibPango.renderer_get_alpha(to_unsafe.as(LibPango::Renderer*), part)
       __return_value
     end
 
-    def color(part)
+    def color(part : Pango::RenderPart)
       __return_value = LibPango.renderer_get_color(to_unsafe.as(LibPango::Renderer*), part)
       Pango::Color.new(__return_value) if __return_value
     end
@@ -83,17 +83,17 @@ module Pango
       Pango::Matrix.new(__return_value) if __return_value
     end
 
-    def part_changed(part)
+    def part_changed(part : Pango::RenderPart)
       __return_value = LibPango.renderer_part_changed(to_unsafe.as(LibPango::Renderer*), part)
       __return_value
     end
 
-    def set_alpha(part, alpha)
+    def set_alpha(part : Pango::RenderPart, alpha)
       __return_value = LibPango.renderer_set_alpha(to_unsafe.as(LibPango::Renderer*), part, UInt16.new(alpha))
       __return_value
     end
 
-    def set_color(part, color)
+    def set_color(part : Pango::RenderPart, color)
       __return_value = LibPango.renderer_set_color(to_unsafe.as(LibPango::Renderer*), part, color && color.to_unsafe.as(LibPango::Color*))
       __return_value
     end

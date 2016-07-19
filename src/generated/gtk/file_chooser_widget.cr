@@ -16,7 +16,7 @@ module Gtk
     # Implements Orientable
 
 
-    def self.new(action) : self
+    def self.new(action : Gtk::FileChooserAction) : self
       __return_value = LibGtk.file_chooser_widget_new(action)
       cast Gtk::Widget.new(__return_value)
     end

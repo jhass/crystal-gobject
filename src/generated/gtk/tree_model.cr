@@ -5,7 +5,7 @@ module Gtk
       __return_value
     end
 
-    def foreach(func : LibGtk::TreeModelForeachFunc, user_data)
+    def foreach(func, user_data)
       __return_value = LibGtk.tree_model_foreach(to_unsafe.as(LibGtk::TreeModel*), func, user_data && user_data)
       __return_value
     end

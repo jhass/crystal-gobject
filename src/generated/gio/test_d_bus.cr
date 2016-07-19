@@ -9,7 +9,7 @@ module Gio
     end
 
 
-    def self.new(flags) : self
+    def self.new(flags : Gio::TestDBusFlags) : self
       __return_value = LibGio.test_d_bus_new(flags)
       cast Gio::TestDBus.new(__return_value)
     end

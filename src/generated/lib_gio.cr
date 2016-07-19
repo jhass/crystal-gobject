@@ -1586,8 +1586,8 @@ lib LibGio
     _data : UInt8[0]
   end
   fun resource_new_from_data = g_resource_new_from_data(data : LibGLib::Bytes*, error : LibGLib::Error**) : LibGio::Resource*
-  fun resource__register = g_resources_register(this : Resource*) : Void
-  fun resource__unregister = g_resources_unregister(this : Resource*) : Void
+  fun resource_register = g_resources_register(this : Resource*) : Void
+  fun resource_unregister = g_resources_unregister(this : Resource*) : Void
   fun resource_enumerate_children = g_resource_enumerate_children(this : Resource*, path : UInt8*, lookup_flags : LibGio::ResourceLookupFlags, error : LibGLib::Error**) : UInt8**
   fun resource_get_info = g_resource_get_info(this : Resource*, path : UInt8*, lookup_flags : LibGio::ResourceLookupFlags, size : UInt64*, flags : UInt32*, error : LibGLib::Error**) : Bool
   fun resource_lookup_data = g_resource_lookup_data(this : Resource*, path : UInt8*, lookup_flags : LibGio::ResourceLookupFlags, error : LibGLib::Error**) : LibGLib::Bytes*

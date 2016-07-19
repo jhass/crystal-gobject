@@ -14,22 +14,22 @@ module Gtk
       Gtk::ThemingEngine.new(__return_value)
     end
 
-    def background_color(state, color)
+    def background_color(state : Gtk::StateFlags, color)
       __return_value = LibGtk.theming_engine_get_background_color(to_unsafe.as(LibGtk::ThemingEngine*), state, color)
       __return_value
     end
 
-    def border(state, border)
+    def border(state : Gtk::StateFlags, border)
       __return_value = LibGtk.theming_engine_get_border(to_unsafe.as(LibGtk::ThemingEngine*), state, border)
       __return_value
     end
 
-    def border_color(state, color)
+    def border_color(state : Gtk::StateFlags, color)
       __return_value = LibGtk.theming_engine_get_border_color(to_unsafe.as(LibGtk::ThemingEngine*), state, color)
       __return_value
     end
 
-    def color(state, color)
+    def color(state : Gtk::StateFlags, color)
       __return_value = LibGtk.theming_engine_get_color(to_unsafe.as(LibGtk::ThemingEngine*), state, color)
       __return_value
     end
@@ -39,7 +39,7 @@ module Gtk
       __return_value
     end
 
-    def font(state)
+    def font(state : Gtk::StateFlags)
       __return_value = LibGtk.theming_engine_get_font(to_unsafe.as(LibGtk::ThemingEngine*), state)
       Pango::FontDescription.new(__return_value)
     end
@@ -49,12 +49,12 @@ module Gtk
       __return_value
     end
 
-    def margin(state, margin)
+    def margin(state : Gtk::StateFlags, margin)
       __return_value = LibGtk.theming_engine_get_margin(to_unsafe.as(LibGtk::ThemingEngine*), state, margin)
       __return_value
     end
 
-    def padding(state, padding)
+    def padding(state : Gtk::StateFlags, padding)
       __return_value = LibGtk.theming_engine_get_padding(to_unsafe.as(LibGtk::ThemingEngine*), state, padding)
       __return_value
     end
@@ -64,7 +64,7 @@ module Gtk
       Gtk::WidgetPath.new(__return_value)
     end
 
-    def property(property, state, value)
+    def property(property, state : Gtk::StateFlags, value)
       __return_value = LibGtk.theming_engine_get_property(to_unsafe.as(LibGtk::ThemingEngine*), property.to_unsafe, state, value)
       __return_value
     end
@@ -89,7 +89,7 @@ module Gtk
       __return_value
     end
 
-    def has_region(style_region, flags)
+    def has_region(style_region, flags : Gtk::RegionFlags?)
       __return_value = LibGtk.theming_engine_has_region(to_unsafe.as(LibGtk::ThemingEngine*), style_region.to_unsafe, flags)
       __return_value
     end
@@ -99,7 +99,7 @@ module Gtk
       __return_value
     end
 
-    def state_is_running(state, progress)
+    def state_is_running(state : Gtk::StateType, progress)
       __return_value = LibGtk.theming_engine_state_is_running(to_unsafe.as(LibGtk::ThemingEngine*), state, progress)
       __return_value
     end

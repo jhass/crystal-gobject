@@ -20,7 +20,7 @@ module Pango
       PointerIterator.new(__return_value) {|__item| __item } if __return_value
     end
 
-    def includes_script(script)
+    def includes_script(script : Pango::Script)
       __return_value = LibPango.language_includes_script(to_unsafe.as(LibPango::Language*), script)
       __return_value
     end

@@ -29,7 +29,7 @@ module GLib
       __return_value
     end
 
-    def free_full(free_func : LibGLib::DestroyNotify)
+    def free_full(free_func)
       __return_value = LibGLib.queue_free_full(to_unsafe.as(LibGLib::Queue*), free_func)
       __return_value
     end

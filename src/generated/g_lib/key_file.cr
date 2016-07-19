@@ -135,28 +135,28 @@ module GLib
       __return_value
     end
 
-    def load_from_data(data, length, flags)
+    def load_from_data(data, length, flags : GLib::KeyFileFlags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.key_file_load_from_data(to_unsafe.as(LibGLib::KeyFile*), data.to_unsafe, UInt64.new(length), flags, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def load_from_data_dirs(file, full_path, flags)
+    def load_from_data_dirs(file, full_path, flags : GLib::KeyFileFlags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.key_file_load_from_data_dirs(to_unsafe.as(LibGLib::KeyFile*), file.to_unsafe, full_path, flags, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def load_from_dirs(file, search_dirs, full_path, flags)
+    def load_from_dirs(file, search_dirs, full_path, flags : GLib::KeyFileFlags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.key_file_load_from_dirs(to_unsafe.as(LibGLib::KeyFile*), file.to_unsafe, search_dirs, full_path, flags, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def load_from_file(file, flags)
+    def load_from_file(file, flags : GLib::KeyFileFlags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.key_file_load_from_file(to_unsafe.as(LibGLib::KeyFile*), file.to_unsafe, flags, pointerof(__error))
       GLib::Error.assert __error

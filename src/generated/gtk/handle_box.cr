@@ -42,17 +42,17 @@ module Gtk
       __return_value
     end
 
-    def handle_position=(position)
+    def handle_position=(position : Gtk::PositionType)
       __return_value = LibGtk.handle_box_set_handle_position(to_unsafe.as(LibGtk::HandleBox*), position)
       __return_value
     end
 
-    def shadow_type=(type)
+    def shadow_type=(type : Gtk::ShadowType)
       __return_value = LibGtk.handle_box_set_shadow_type(to_unsafe.as(LibGtk::HandleBox*), type)
       __return_value
     end
 
-    def snap_edge=(edge)
+    def snap_edge=(edge : Gtk::PositionType)
       __return_value = LibGtk.handle_box_set_snap_edge(to_unsafe.as(LibGtk::HandleBox*), edge)
       __return_value
     end

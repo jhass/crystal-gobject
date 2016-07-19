@@ -56,12 +56,12 @@ module Gtk
       Cairo::Surface.new(__return_value)
     end
 
-    def enable_model_drag_dest(targets, n_targets, actions)
+    def enable_model_drag_dest(targets, n_targets, actions : Gdk::DragAction)
       __return_value = LibGtk.icon_view_enable_model_drag_dest(to_unsafe.as(LibGtk::IconView*), targets, Int32.new(n_targets), actions)
       __return_value
     end
 
-    def enable_model_drag_source(start_button_mask, targets, n_targets, actions)
+    def enable_model_drag_source(start_button_mask : Gdk::ModifierType, targets, n_targets, actions : Gdk::DragAction)
       __return_value = LibGtk.icon_view_enable_model_drag_source(to_unsafe.as(LibGtk::IconView*), start_button_mask, targets, Int32.new(n_targets), actions)
       __return_value
     end
@@ -91,12 +91,12 @@ module Gtk
       __return_value
     end
 
-    def dest_item_at_pos(drag_x, drag_y, path, pos)
+    def dest_item_at_pos(drag_x, drag_y, path, pos : Gtk::IconViewDropPosition?)
       __return_value = LibGtk.icon_view_get_dest_item_at_pos(to_unsafe.as(LibGtk::IconView*), Int32.new(drag_x), Int32.new(drag_y), path, pos)
       __return_value
     end
 
-    def drag_dest_item(path, pos)
+    def drag_dest_item(path, pos : Gtk::IconViewDropPosition?)
       __return_value = LibGtk.icon_view_get_drag_dest_item(to_unsafe.as(LibGtk::IconView*), path, pos)
       __return_value
     end
@@ -226,7 +226,7 @@ module Gtk
       __return_value
     end
 
-    def selected_foreach(func : LibGtk::IconViewForeachFunc, data)
+    def selected_foreach(func, data)
       __return_value = LibGtk.icon_view_selected_foreach(to_unsafe.as(LibGtk::IconView*), func, data && data)
       __return_value
     end
@@ -251,12 +251,12 @@ module Gtk
       __return_value
     end
 
-    def set_drag_dest_item(path, pos)
+    def set_drag_dest_item(path, pos : Gtk::IconViewDropPosition)
       __return_value = LibGtk.icon_view_set_drag_dest_item(to_unsafe.as(LibGtk::IconView*), path && path.to_unsafe.as(LibGtk::TreePath*), pos)
       __return_value
     end
 
-    def item_orientation=(orientation)
+    def item_orientation=(orientation : Gtk::Orientation)
       __return_value = LibGtk.icon_view_set_item_orientation(to_unsafe.as(LibGtk::IconView*), orientation)
       __return_value
     end
@@ -301,7 +301,7 @@ module Gtk
       __return_value
     end
 
-    def selection_mode=(mode)
+    def selection_mode=(mode : Gtk::SelectionMode)
       __return_value = LibGtk.icon_view_set_selection_mode(to_unsafe.as(LibGtk::IconView*), mode)
       __return_value
     end

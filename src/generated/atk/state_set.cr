@@ -13,7 +13,7 @@ module Atk
       cast Atk::StateSet.new(__return_value)
     end
 
-    def add_state(type)
+    def add_state(type : Atk::StateType)
       __return_value = LibAtk.state_set_add_state(to_unsafe.as(LibAtk::StateSet*), type)
       __return_value
     end
@@ -33,7 +33,7 @@ module Atk
       __return_value
     end
 
-    def contains_state(type)
+    def contains_state(type : Atk::StateType)
       __return_value = LibAtk.state_set_contains_state(to_unsafe.as(LibAtk::StateSet*), type)
       __return_value
     end
@@ -53,7 +53,7 @@ module Atk
       Atk::StateSet.new(__return_value) if __return_value
     end
 
-    def remove_state(type)
+    def remove_state(type : Atk::StateType)
       __return_value = LibAtk.state_set_remove_state(to_unsafe.as(LibAtk::StateSet*), type)
       __return_value
     end

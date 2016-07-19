@@ -11,7 +11,7 @@ module Gio
 
 
 
-    def self.new(flags, description) : self
+    def self.new(flags : Gio::TlsPasswordFlags, description) : self
       __return_value = LibGio.tls_password_new(flags, description.to_unsafe)
       cast Gio::TlsPassword.new(__return_value)
     end
@@ -41,7 +41,7 @@ module Gio
       __return_value
     end
 
-    def flags=(flags)
+    def flags=(flags : Gio::TlsPasswordFlags)
       __return_value = LibGio.tls_password_set_flags(to_unsafe.as(LibGio::TlsPassword*), flags)
       __return_value
     end
@@ -51,7 +51,7 @@ module Gio
       __return_value
     end
 
-    def set_value_full(value, length, destroy : LibGLib::DestroyNotify?)
+    def set_value_full(value, length, destroy)
       __return_value = LibGio.tls_password_set_value_full(to_unsafe.as(LibGio::TlsPassword*), value, Int64.new(length), destroy && destroy)
       __return_value
     end

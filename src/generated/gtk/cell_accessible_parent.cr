@@ -20,7 +20,7 @@ module Gtk
       __return_value
     end
 
-    def cell_extents(cell, x, y, width, height, coord_type)
+    def cell_extents(cell, x, y, width, height, coord_type : Atk::CoordType)
       __return_value = LibGtk.cell_accessible_parent_get_cell_extents(to_unsafe.as(LibGtk::CellAccessibleParent*), cell.to_unsafe.as(LibGtk::CellAccessible*), x, y, width, height, coord_type)
       __return_value
     end

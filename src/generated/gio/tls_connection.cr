@@ -19,7 +19,7 @@ module Gio
 
 
 
-    def emit_accept_certificate(peer_cert, errors)
+    def emit_accept_certificate(peer_cert, errors : Gio::TlsCertificateFlags)
       __return_value = LibGio.tls_connection_emit_accept_certificate(to_unsafe.as(LibGio::TlsConnection*), peer_cert.to_unsafe.as(LibGio::TlsCertificate*), errors)
       __return_value
     end
@@ -71,7 +71,7 @@ module Gio
       __return_value
     end
 
-    def handshake_async(io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def handshake_async(io_priority, cancellable, callback, user_data)
       __return_value = LibGio.tls_connection_handshake_async(to_unsafe.as(LibGio::TlsConnection*), Int32.new(io_priority), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
@@ -98,7 +98,7 @@ module Gio
       __return_value
     end
 
-    def rehandshake_mode=(mode)
+    def rehandshake_mode=(mode : Gio::TlsRehandshakeMode)
       __return_value = LibGio.tls_connection_set_rehandshake_mode(to_unsafe.as(LibGio::TlsConnection*), mode)
       __return_value
     end

@@ -32,7 +32,7 @@ module Gtk
       Gtk::TargetEntry.new(__return_value)
     end
 
-    def add_drag_dest(widget, flags, targets, actions)
+    def add_drag_dest(widget, flags : Gtk::DestDefaults, targets : Gtk::ToolPaletteDragTargets, actions : Gdk::DragAction)
       __return_value = LibGtk.tool_palette_add_drag_dest(to_unsafe.as(LibGtk::ToolPalette*), widget.to_unsafe.as(LibGtk::Widget*), flags, targets, actions)
       __return_value
     end
@@ -87,7 +87,7 @@ module Gtk
       Gtk::Adjustment.new(__return_value)
     end
 
-    def drag_source=(targets)
+    def drag_source=(targets : Gtk::ToolPaletteDragTargets)
       __return_value = LibGtk.tool_palette_set_drag_source(to_unsafe.as(LibGtk::ToolPalette*), targets)
       __return_value
     end
@@ -112,7 +112,7 @@ module Gtk
       __return_value
     end
 
-    def style=(style)
+    def style=(style : Gtk::ToolbarStyle)
       __return_value = LibGtk.tool_palette_set_style(to_unsafe.as(LibGtk::ToolPalette*), style)
       __return_value
     end

@@ -118,7 +118,7 @@ module Gtk
       __return_value
     end
 
-    def update_policy=(policy)
+    def update_policy=(policy : Gtk::SpinButtonUpdatePolicy)
       __return_value = LibGtk.spin_button_set_update_policy(to_unsafe.as(LibGtk::SpinButton*), policy)
       __return_value
     end
@@ -133,7 +133,7 @@ module Gtk
       __return_value
     end
 
-    def spin(direction, increment)
+    def spin(direction : Gtk::SpinType, increment)
       __return_value = LibGtk.spin_button_spin(to_unsafe.as(LibGtk::SpinButton*), direction, Float64.new(increment))
       __return_value
     end

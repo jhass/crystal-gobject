@@ -14,7 +14,7 @@ module Gio
       cast Gio::DBusMessage.new(__return_value)
     end
 
-    def self.new_from_blob(blob, blob_len, capabilities) : self
+    def self.new_from_blob(blob, blob_len, capabilities : Gio::DBusCapabilityFlags) : self
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_message_new_from_blob(blob, UInt64.new(blob_len), capabilities, pointerof(__error))
       GLib::Error.assert __error
@@ -75,7 +75,7 @@ module Gio
       __return_value
     end
 
-    def header(header_field)
+    def header(header_field : Gio::DBusMessageHeaderField)
       __return_value = LibGio.d_bus_message_get_header(to_unsafe.as(LibGio::DBusMessage*), header_field)
       GLib::Variant.new(__return_value)
     end
@@ -165,7 +165,7 @@ module Gio
       __return_value
     end
 
-    def byte_order=(byte_order)
+    def byte_order=(byte_order : Gio::DBusMessageByteOrder)
       __return_value = LibGio.d_bus_message_set_byte_order(to_unsafe.as(LibGio::DBusMessage*), byte_order)
       __return_value
     end
@@ -180,12 +180,12 @@ module Gio
       __return_value
     end
 
-    def flags=(flags)
+    def flags=(flags : Gio::DBusMessageFlags)
       __return_value = LibGio.d_bus_message_set_flags(to_unsafe.as(LibGio::DBusMessage*), flags)
       __return_value
     end
 
-    def set_header(header_field, value)
+    def set_header(header_field : Gio::DBusMessageHeaderField, value)
       __return_value = LibGio.d_bus_message_set_header(to_unsafe.as(LibGio::DBusMessage*), header_field, value && value.to_unsafe.as(LibGLib::Variant*))
       __return_value
     end
@@ -200,7 +200,7 @@ module Gio
       __return_value
     end
 
-    def message_type=(type)
+    def message_type=(type : Gio::DBusMessageType)
       __return_value = LibGio.d_bus_message_set_message_type(to_unsafe.as(LibGio::DBusMessage*), type)
       __return_value
     end
@@ -240,7 +240,7 @@ module Gio
       __return_value
     end
 
-    def to_blob(out_size, capabilities)
+    def to_blob(out_size, capabilities : Gio::DBusCapabilityFlags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_message_to_blob(to_unsafe.as(LibGio::DBusMessage*), out_size, capabilities, pointerof(__error))
       GLib::Error.assert __error

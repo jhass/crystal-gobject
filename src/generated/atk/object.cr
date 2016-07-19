@@ -23,7 +23,7 @@ module Atk
 
 
 
-    def add_relationship(relationship, target)
+    def add_relationship(relationship : Atk::RelationType, target)
       __return_value = LibAtk.object_add_relationship(to_unsafe.as(LibAtk::Object*), relationship, target.to_unsafe.as(LibAtk::Object*))
       __return_value
     end
@@ -113,7 +113,7 @@ module Atk
       __return_value
     end
 
-    def remove_relationship(relationship, target)
+    def remove_relationship(relationship : Atk::RelationType, target)
       __return_value = LibAtk.object_remove_relationship(to_unsafe.as(LibAtk::Object*), relationship, target.to_unsafe.as(LibAtk::Object*))
       __return_value
     end
@@ -133,7 +133,7 @@ module Atk
       __return_value
     end
 
-    def role=(role)
+    def role=(role : Atk::Role)
       __return_value = LibAtk.object_set_role(to_unsafe.as(LibAtk::Object*), role)
       __return_value
     end

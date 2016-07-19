@@ -34,7 +34,7 @@ module Gio
       Gio::SocketConnection.new(__return_value)
     end
 
-    def connect_async(connectable, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def connect_async(connectable, cancellable, callback, user_data)
       __return_value = LibGio.socket_client_connect_async(to_unsafe.as(LibGio::SocketClient*), connectable.to_unsafe.as(LibGio::SocketConnectable*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
@@ -53,7 +53,7 @@ module Gio
       Gio::SocketConnection.new(__return_value)
     end
 
-    def connect_to_host_async(host_and_port, default_port, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def connect_to_host_async(host_and_port, default_port, cancellable, callback, user_data)
       __return_value = LibGio.socket_client_connect_to_host_async(to_unsafe.as(LibGio::SocketClient*), host_and_port.to_unsafe, UInt16.new(default_port), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
@@ -72,7 +72,7 @@ module Gio
       Gio::SocketConnection.new(__return_value)
     end
 
-    def connect_to_service_async(domain, service, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def connect_to_service_async(domain, service, cancellable, callback, user_data)
       __return_value = LibGio.socket_client_connect_to_service_async(to_unsafe.as(LibGio::SocketClient*), domain.to_unsafe, service.to_unsafe, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
@@ -91,7 +91,7 @@ module Gio
       Gio::SocketConnection.new(__return_value)
     end
 
-    def connect_to_uri_async(uri, default_port, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def connect_to_uri_async(uri, default_port, cancellable, callback, user_data)
       __return_value = LibGio.socket_client_connect_to_uri_async(to_unsafe.as(LibGio::SocketClient*), uri.to_unsafe, UInt16.new(default_port), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
@@ -153,7 +153,7 @@ module Gio
       __return_value
     end
 
-    def family=(family)
+    def family=(family : Gio::SocketFamily)
       __return_value = LibGio.socket_client_set_family(to_unsafe.as(LibGio::SocketClient*), family)
       __return_value
     end
@@ -163,7 +163,7 @@ module Gio
       __return_value
     end
 
-    def protocol=(protocol)
+    def protocol=(protocol : Gio::SocketProtocol)
       __return_value = LibGio.socket_client_set_protocol(to_unsafe.as(LibGio::SocketClient*), protocol)
       __return_value
     end
@@ -173,7 +173,7 @@ module Gio
       __return_value
     end
 
-    def socket_type=(type)
+    def socket_type=(type : Gio::SocketType)
       __return_value = LibGio.socket_client_set_socket_type(to_unsafe.as(LibGio::SocketClient*), type)
       __return_value
     end
@@ -188,7 +188,7 @@ module Gio
       __return_value
     end
 
-    def tls_validation_flags=(flags)
+    def tls_validation_flags=(flags : Gio::TlsCertificateFlags)
       __return_value = LibGio.socket_client_set_tls_validation_flags(to_unsafe.as(LibGio::SocketClient*), flags)
       __return_value
     end

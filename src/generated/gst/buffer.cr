@@ -38,7 +38,7 @@ module Gst
       cast Gst::Buffer.new(__return_value)
     end
 
-    def self.new_wrapped_full(flags, data, maxsize, offset, size, user_data, notify : LibGLib::DestroyNotify?) : self
+    def self.new_wrapped_full(flags : Gst::MemoryFlags, data, maxsize, offset, size, user_data, notify) : self
       __return_value = LibGst.buffer_new_wrapped_full(flags, data, UInt64.new(maxsize), UInt64.new(offset), UInt64.new(size), user_data && user_data, notify && notify)
       cast Gst::Buffer.new(__return_value)
     end
@@ -78,12 +78,12 @@ module Gst
       Gst::Buffer.new(__return_value)
     end
 
-    def copy_into(src, flags, offset, size)
+    def copy_into(src, flags : Gst::BufferCopyFlags, offset, size)
       __return_value = LibGst.buffer_copy_into(to_unsafe.as(LibGst::Buffer*), src.to_unsafe.as(LibGst::Buffer*), flags, UInt64.new(offset), UInt64.new(size))
       __return_value
     end
 
-    def copy_region(flags, offset, size)
+    def copy_region(flags : Gst::BufferCopyFlags, offset, size)
       __return_value = LibGst.buffer_copy_region(to_unsafe.as(LibGst::Buffer*), flags, UInt64.new(offset), UInt64.new(size))
       Gst::Buffer.new(__return_value)
     end
@@ -108,7 +108,7 @@ module Gst
       __return_value
     end
 
-    def foreach_meta(func : LibGst::BufferForeachMetaFunc, user_data)
+    def foreach_meta(func, user_data)
       __return_value = LibGst.buffer_foreach_meta(to_unsafe.as(LibGst::Buffer*), func, user_data && user_data)
       __return_value
     end
@@ -168,12 +168,12 @@ module Gst
       Gst::Meta.new(__return_value) if __return_value
     end
 
-    def map(info, flags)
+    def map(info, flags : Gst::MapFlags)
       __return_value = LibGst.buffer_map(to_unsafe.as(LibGst::Buffer*), info, flags)
       __return_value
     end
 
-    def map_range(idx, length, info, flags)
+    def map_range(idx, length, info, flags : Gst::MapFlags)
       __return_value = LibGst.buffer_map_range(to_unsafe.as(LibGst::Buffer*), UInt32.new(idx), Int32.new(length), info, flags)
       __return_value
     end

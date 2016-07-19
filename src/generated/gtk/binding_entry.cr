@@ -30,17 +30,17 @@ module Gtk
       __return_value
     end
 
-    def self.add_signall(binding_set, keyval, modifiers, signal_name, binding_args)
+    def self.add_signall(binding_set, keyval, modifiers : Gdk::ModifierType, signal_name, binding_args)
       __return_value = LibGtk.binding_entry_add_signall(binding_set.to_unsafe.as(LibGtk::BindingSet*), UInt32.new(keyval), modifiers, signal_name.to_unsafe, binding_args)
       __return_value
     end
 
-    def self.remove(binding_set, keyval, modifiers)
+    def self.remove(binding_set, keyval, modifiers : Gdk::ModifierType)
       __return_value = LibGtk.binding_entry_remove(binding_set.to_unsafe.as(LibGtk::BindingSet*), UInt32.new(keyval), modifiers)
       __return_value
     end
 
-    def self.skip(binding_set, keyval, modifiers)
+    def self.skip(binding_set, keyval, modifiers : Gdk::ModifierType)
       __return_value = LibGtk.binding_entry_skip(binding_set.to_unsafe.as(LibGtk::BindingSet*), UInt32.new(keyval), modifiers)
       __return_value
     end

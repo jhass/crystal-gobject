@@ -107,7 +107,7 @@ module Gtk
       __return_value
     end
 
-    def open_flags=(flags)
+    def open_flags=(flags : Gtk::PlacesOpenFlags)
       __return_value = LibGtk.places_sidebar_set_open_flags(to_unsafe.as(LibGtk::PlacesSidebar*), flags)
       __return_value
     end

@@ -10,7 +10,7 @@ module Gio
       __return_value
     end
 
-    def eject(flags, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def eject(flags : Gio::MountUnmountFlags, cancellable, callback, user_data)
       __return_value = LibGio.mount_eject(to_unsafe.as(LibGio::Mount*), flags, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
@@ -22,7 +22,7 @@ module Gio
       __return_value
     end
 
-    def eject_with_operation(flags, mount_operation, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def eject_with_operation(flags : Gio::MountUnmountFlags, mount_operation, cancellable, callback, user_data)
       __return_value = LibGio.mount_eject_with_operation(to_unsafe.as(LibGio::Mount*), flags, mount_operation && mount_operation.to_unsafe.as(LibGio::MountOperation*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
@@ -79,7 +79,7 @@ module Gio
       __return_value
     end
 
-    def guess_content_type(force_rescan, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def guess_content_type(force_rescan, cancellable, callback, user_data)
       __return_value = LibGio.mount_guess_content_type(to_unsafe.as(LibGio::Mount*), force_rescan, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
@@ -103,7 +103,7 @@ module Gio
       __return_value
     end
 
-    def remount(flags, mount_operation, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def remount(flags : Gio::MountMountFlags, mount_operation, cancellable, callback, user_data)
       __return_value = LibGio.mount_remount(to_unsafe.as(LibGio::Mount*), flags, mount_operation && mount_operation.to_unsafe.as(LibGio::MountOperation*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
@@ -120,7 +120,7 @@ module Gio
       __return_value
     end
 
-    def unmount(flags, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def unmount(flags : Gio::MountUnmountFlags, cancellable, callback, user_data)
       __return_value = LibGio.mount_unmount(to_unsafe.as(LibGio::Mount*), flags, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
@@ -132,7 +132,7 @@ module Gio
       __return_value
     end
 
-    def unmount_with_operation(flags, mount_operation, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def unmount_with_operation(flags : Gio::MountUnmountFlags, mount_operation, cancellable, callback, user_data)
       __return_value = LibGio.mount_unmount_with_operation(to_unsafe.as(LibGio::Mount*), flags, mount_operation && mount_operation.to_unsafe.as(LibGio::MountOperation*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end

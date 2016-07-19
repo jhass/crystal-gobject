@@ -60,7 +60,7 @@ module Gtk
       __return_value
     end
 
-    def message_type=(message_type)
+    def message_type=(message_type : Gtk::MessageType)
       __return_value = LibGtk.info_bar_set_message_type(to_unsafe.as(LibGtk::InfoBar*), message_type)
       __return_value
     end

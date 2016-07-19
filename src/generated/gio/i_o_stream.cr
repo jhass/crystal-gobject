@@ -30,7 +30,7 @@ module Gio
       __return_value
     end
 
-    def close_async(io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def close_async(io_priority, cancellable, callback, user_data)
       __return_value = LibGio.i_o_stream_close_async(to_unsafe.as(LibGio::IOStream*), Int32.new(io_priority), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
@@ -69,7 +69,7 @@ module Gio
       __return_value
     end
 
-    def splice_async(stream2, flags, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def splice_async(stream2, flags : Gio::IOStreamSpliceFlags, io_priority, cancellable, callback, user_data)
       __return_value = LibGio.i_o_stream_splice_async(to_unsafe.as(LibGio::IOStream*), stream2.to_unsafe.as(LibGio::IOStream*), flags, Int32.new(io_priority), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end

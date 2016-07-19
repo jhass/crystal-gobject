@@ -15,12 +15,12 @@ module Gst
       Gst::ElementFactory.new(__return_value) if __return_value
     end
 
-    def self.list_filter(list, caps, direction, subsetonly)
+    def self.list_filter(list, caps, direction : Gst::PadDirection, subsetonly)
       __return_value = LibGst.element_factory_list_filter(list, caps.to_unsafe.as(LibGst::Caps*), direction, subsetonly)
       GLib::ListIterator(Gst::ElementFactory, LibGst::ElementFactory*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
-    def self.list_get_elements(type, minrank)
+    def self.list_get_elements(type, minrank : Gst::Rank)
       __return_value = LibGst.element_factory_list_get_elements(UInt64.new(type), minrank)
       GLib::ListIterator(Gst::ElementFactory, LibGst::ElementFactory*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end

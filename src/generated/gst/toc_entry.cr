@@ -10,7 +10,7 @@ module Gst
       @gst_toc_entry.not_nil!.as(Void*)
     end
 
-    def self.new(type, uid) : self
+    def self.new(type : Gst::TocEntryType, uid) : self
       __return_value = LibGst.toc_entry_new(type, uid.to_unsafe)
       cast Gst::TocEntry.new(__return_value)
     end
@@ -25,7 +25,7 @@ module Gst
       __return_value
     end
 
-    def loop(loop_type, repeat_count)
+    def loop(loop_type : Gst::TocLoopType?, repeat_count)
       __return_value = LibGst.toc_entry_get_loop(to_unsafe.as(LibGst::TocEntry*), loop_type, repeat_count)
       __return_value
     end
@@ -70,12 +70,12 @@ module Gst
       __return_value
     end
 
-    def merge_tags(tags, mode)
+    def merge_tags(tags, mode : Gst::TagMergeMode)
       __return_value = LibGst.toc_entry_merge_tags(to_unsafe.as(LibGst::TocEntry*), tags && tags.to_unsafe.as(LibGst::TagList*), mode)
       __return_value
     end
 
-    def set_loop(loop_type, repeat_count)
+    def set_loop(loop_type : Gst::TocLoopType, repeat_count)
       __return_value = LibGst.toc_entry_set_loop(to_unsafe.as(LibGst::TocEntry*), loop_type, Int32.new(repeat_count))
       __return_value
     end

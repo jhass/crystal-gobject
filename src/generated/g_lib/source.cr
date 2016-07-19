@@ -30,7 +30,7 @@ module GLib
       __return_value
     end
 
-    def add_unix_fd(fd, events)
+    def add_unix_fd(fd, events : GLib::IOCondition)
       __return_value = LibGLib.source_add_unix_fd(to_unsafe.as(LibGLib::Source*), Int32.new(fd), events)
       __return_value
     end
@@ -90,7 +90,7 @@ module GLib
       __return_value
     end
 
-    def modify_unix_fd(tag, new_events)
+    def modify_unix_fd(tag, new_events : GLib::IOCondition)
       __return_value = LibGLib.source_modify_unix_fd(to_unsafe.as(LibGLib::Source*), tag, new_events)
       __return_value
     end
@@ -120,7 +120,7 @@ module GLib
       __return_value
     end
 
-    def set_callback(func : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
+    def set_callback(func, data, notify)
       __return_value = LibGLib.source_set_callback(to_unsafe.as(LibGLib::Source*), func, data && data, notify && notify)
       __return_value
     end

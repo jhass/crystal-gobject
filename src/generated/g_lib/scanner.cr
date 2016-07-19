@@ -106,7 +106,7 @@ module GLib
       __return_value
     end
 
-    def unexp_token(expected_token, identifier_spec, symbol_spec, symbol_name, message, is_error)
+    def unexp_token(expected_token : GLib::TokenType, identifier_spec, symbol_spec, symbol_name, message, is_error)
       __return_value = LibGLib.scanner_unexp_token(to_unsafe.as(LibGLib::Scanner*), expected_token, identifier_spec.to_unsafe, symbol_spec.to_unsafe, symbol_name.to_unsafe, message.to_unsafe, Int32.new(is_error))
       __return_value
     end
@@ -168,7 +168,7 @@ module GLib
     end
 
     def value
-      (to_unsafe.as(LibGLib::Scanner*).value.value)
+      GLib::TokenValue.new((to_unsafe.as(LibGLib::Scanner*).value.value))
     end
 
     def value=(value : GLib::TokenValue)
@@ -200,7 +200,7 @@ module GLib
     end
 
     def next_value
-      (to_unsafe.as(LibGLib::Scanner*).value.next_value)
+      GLib::TokenValue.new((to_unsafe.as(LibGLib::Scanner*).value.next_value))
     end
 
     def next_value=(value : GLib::TokenValue)

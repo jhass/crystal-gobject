@@ -60,7 +60,7 @@ module Gtk
       __return_value
     end
 
-    def iter_add_region(pos, name, flags)
+    def iter_add_region(pos, name, flags : Gtk::RegionFlags)
       __return_value = LibGtk.widget_path_iter_add_region(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name.to_unsafe, flags)
       __return_value
     end
@@ -125,12 +125,12 @@ module Gtk
       __return_value
     end
 
-    def iter_has_qregion(pos, qname, flags)
+    def iter_has_qregion(pos, qname, flags : Gtk::RegionFlags)
       __return_value = LibGtk.widget_path_iter_has_qregion(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), UInt32.new(qname), flags)
       __return_value
     end
 
-    def iter_has_region(pos, name, flags)
+    def iter_has_region(pos, name, flags : Gtk::RegionFlags)
       __return_value = LibGtk.widget_path_iter_has_region(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name.to_unsafe, flags)
       __return_value
     end
@@ -170,7 +170,7 @@ module Gtk
       __return_value
     end
 
-    def iter_set_state(pos, state)
+    def iter_set_state(pos, state : Gtk::StateFlags)
       __return_value = LibGtk.widget_path_iter_set_state(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), state)
       __return_value
     end

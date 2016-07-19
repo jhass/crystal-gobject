@@ -32,7 +32,7 @@ module Gtk
       Gtk::PrintSettings.new(__return_value)
     end
 
-    def foreach(func : LibGtk::PrintSettingsFunc, user_data)
+    def foreach(func, user_data)
       __return_value = LibGtk.print_settings_foreach(to_unsafe.as(LibGtk::PrintSettings*), func, user_data && user_data)
       __return_value
     end
@@ -92,7 +92,7 @@ module Gtk
       __return_value
     end
 
-    def length(key, unit)
+    def length(key, unit : Gtk::Unit)
       __return_value = LibGtk.print_settings_get_length(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe, unit)
       __return_value
     end
@@ -137,7 +137,7 @@ module Gtk
       __return_value
     end
 
-    def paper_height(unit)
+    def paper_height(unit : Gtk::Unit)
       __return_value = LibGtk.print_settings_get_paper_height(to_unsafe.as(LibGtk::PrintSettings*), unit)
       __return_value
     end
@@ -147,7 +147,7 @@ module Gtk
       Gtk::PaperSize.new(__return_value)
     end
 
-    def paper_width(unit)
+    def paper_width(unit : Gtk::Unit)
       __return_value = LibGtk.print_settings_get_paper_width(to_unsafe.as(LibGtk::PrintSettings*), unit)
       __return_value
     end
@@ -251,7 +251,7 @@ module Gtk
       __return_value
     end
 
-    def duplex=(duplex)
+    def duplex=(duplex : Gtk::PrintDuplex)
       __return_value = LibGtk.print_settings_set_duplex(to_unsafe.as(LibGtk::PrintSettings*), duplex)
       __return_value
     end
@@ -266,7 +266,7 @@ module Gtk
       __return_value
     end
 
-    def set_length(key, value, unit)
+    def set_length(key, value, unit : Gtk::Unit)
       __return_value = LibGtk.print_settings_set_length(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe, Float64.new(value), unit)
       __return_value
     end
@@ -286,12 +286,12 @@ module Gtk
       __return_value
     end
 
-    def number_up_layout=(number_up_layout)
+    def number_up_layout=(number_up_layout : Gtk::NumberUpLayout)
       __return_value = LibGtk.print_settings_set_number_up_layout(to_unsafe.as(LibGtk::PrintSettings*), number_up_layout)
       __return_value
     end
 
-    def orientation=(orientation)
+    def orientation=(orientation : Gtk::PageOrientation)
       __return_value = LibGtk.print_settings_set_orientation(to_unsafe.as(LibGtk::PrintSettings*), orientation)
       __return_value
     end
@@ -306,12 +306,12 @@ module Gtk
       __return_value
     end
 
-    def page_set=(page_set)
+    def page_set=(page_set : Gtk::PageSet)
       __return_value = LibGtk.print_settings_set_page_set(to_unsafe.as(LibGtk::PrintSettings*), page_set)
       __return_value
     end
 
-    def set_paper_height(height, unit)
+    def set_paper_height(height, unit : Gtk::Unit)
       __return_value = LibGtk.print_settings_set_paper_height(to_unsafe.as(LibGtk::PrintSettings*), Float64.new(height), unit)
       __return_value
     end
@@ -321,12 +321,12 @@ module Gtk
       __return_value
     end
 
-    def set_paper_width(width, unit)
+    def set_paper_width(width, unit : Gtk::Unit)
       __return_value = LibGtk.print_settings_set_paper_width(to_unsafe.as(LibGtk::PrintSettings*), Float64.new(width), unit)
       __return_value
     end
 
-    def print_pages=(pages)
+    def print_pages=(pages : Gtk::PrintPages)
       __return_value = LibGtk.print_settings_set_print_pages(to_unsafe.as(LibGtk::PrintSettings*), pages)
       __return_value
     end
@@ -341,7 +341,7 @@ module Gtk
       __return_value
     end
 
-    def quality=(quality)
+    def quality=(quality : Gtk::PrintQuality)
       __return_value = LibGtk.print_settings_set_quality(to_unsafe.as(LibGtk::PrintSettings*), quality)
       __return_value
     end

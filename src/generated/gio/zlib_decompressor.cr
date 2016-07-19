@@ -11,7 +11,7 @@ module Gio
     # Implements Converter
 
 
-    def self.new(format) : self
+    def self.new(format : Gio::ZlibCompressorFormat) : self
       __return_value = LibGio.zlib_decompressor_new(format)
       cast Gio::ZlibDecompressor.new(__return_value)
     end

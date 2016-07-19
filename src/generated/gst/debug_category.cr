@@ -45,7 +45,7 @@ module Gst
       __return_value
     end
 
-    def threshold=(level)
+    def threshold=(level : Gst::DebugLevel)
       __return_value = LibGst.debug_category_set_threshold(to_unsafe.as(LibGst::DebugCategory*), level)
       __return_value
     end

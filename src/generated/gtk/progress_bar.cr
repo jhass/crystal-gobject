@@ -59,7 +59,7 @@ module Gtk
       __return_value
     end
 
-    def ellipsize=(mode)
+    def ellipsize=(mode : Pango::EllipsizeMode)
       __return_value = LibGtk.progress_bar_set_ellipsize(to_unsafe.as(LibGtk::ProgressBar*), mode)
       __return_value
     end

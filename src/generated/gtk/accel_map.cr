@@ -8,7 +8,7 @@ module Gtk
       @gtk_accel_map.not_nil!.as(Void*)
     end
 
-    def self.add_entry(accel_path, accel_key, accel_mods)
+    def self.add_entry(accel_path, accel_key, accel_mods : Gdk::ModifierType)
       __return_value = LibGtk.accel_map_add_entry(accel_path.to_unsafe, UInt32.new(accel_key), accel_mods)
       __return_value
     end
@@ -18,17 +18,17 @@ module Gtk
       __return_value
     end
 
-    def self.change_entry(accel_path, accel_key, accel_mods, replace)
+    def self.change_entry(accel_path, accel_key, accel_mods : Gdk::ModifierType, replace)
       __return_value = LibGtk.accel_map_change_entry(accel_path.to_unsafe, UInt32.new(accel_key), accel_mods, replace)
       __return_value
     end
 
-    def self.foreach(data, foreach_func : LibGtk::AccelMapForeach)
+    def self.foreach(data, foreach_func)
       __return_value = LibGtk.accel_map_foreach(data && data, foreach_func)
       __return_value
     end
 
-    def self.foreach_unfiltered(data, foreach_func : LibGtk::AccelMapForeach)
+    def self.foreach_unfiltered(data, foreach_func)
       __return_value = LibGtk.accel_map_foreach_unfiltered(data && data, foreach_func)
       __return_value
     end

@@ -25,7 +25,7 @@ module Gio
       cast Gio::SocketAddress.new(__return_value)
     end
 
-    def self.new_with_type(path, path_len, type) : self
+    def self.new_with_type(path, path_len, type : Gio::UnixSocketAddressType) : self
       __return_value = LibGio.unix_socket_address_new_with_type(path, Int32.new(path_len), type)
       cast Gio::SocketAddress.new(__return_value)
     end

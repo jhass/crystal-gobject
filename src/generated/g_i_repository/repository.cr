@@ -110,21 +110,21 @@ module GIRepository
       __return_value
     end
 
-    def load_typelib(typelib, flags)
+    def load_typelib(typelib, flags : GIRepository::RepositoryLoadFlags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGIRepository.repository_load_typelib(to_unsafe.as(LibGIRepository::Repository*), typelib.to_unsafe.as(LibGIRepository::Typelib*), flags, pointerof(__error))
       GLib::Error.assert __error
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def require(namespace, version, flags)
+    def require(namespace, version, flags : GIRepository::RepositoryLoadFlags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGIRepository.repository_require(to_unsafe.as(LibGIRepository::Repository*), namespace.to_unsafe, version && version.to_unsafe, flags, pointerof(__error))
       GLib::Error.assert __error
       GIRepository::Typelib.new(__return_value)
     end
 
-    def require_private(typelib_dir, namespace, version, flags)
+    def require_private(typelib_dir, namespace, version, flags : GIRepository::RepositoryLoadFlags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGIRepository.repository_require_private(to_unsafe.as(LibGIRepository::Repository*), typelib_dir.to_unsafe, namespace.to_unsafe, version && version.to_unsafe, flags, pointerof(__error))
       GLib::Error.assert __error

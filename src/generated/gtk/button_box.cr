@@ -14,7 +14,7 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
 
-    def self.new(orientation) : self
+    def self.new(orientation : Gtk::Orientation) : self
       __return_value = LibGtk.button_box_new(orientation)
       cast Gtk::Widget.new(__return_value)
     end
@@ -44,7 +44,7 @@ module Gtk
       __return_value
     end
 
-    def layout=(layout_style)
+    def layout=(layout_style : Gtk::ButtonBoxStyle)
       __return_value = LibGtk.button_box_set_layout(to_unsafe.as(LibGtk::ButtonBox*), layout_style)
       __return_value
     end

@@ -9,7 +9,7 @@ module Gdk
     end
 
 
-    def self.new(parent, attributes, attributes_mask) : self
+    def self.new(parent, attributes, attributes_mask : Gdk::WindowAttributesType) : self
       __return_value = LibGdk.window_new(parent && parent.to_unsafe.as(LibGdk::Window*), attributes.to_unsafe.as(LibGdk::WindowAttr*), attributes_mask)
       cast Gdk::Window.new(__return_value)
     end
@@ -19,7 +19,7 @@ module Gdk
       Gdk::Window.new(__return_value)
     end
 
-    def self.constrain_size(geometry, flags, width, height, new_width, new_height)
+    def self.constrain_size(geometry, flags : Gdk::WindowHints, width, height, new_width, new_height)
       __return_value = LibGdk.window_constrain_size(geometry.to_unsafe.as(LibGdk::Geometry*), flags, Int32.new(width), Int32.new(height), new_width, new_height)
       __return_value
     end
@@ -59,12 +59,12 @@ module Gdk
       __return_value
     end
 
-    def begin_resize_drag(edge, button, root_x, root_y, timestamp)
+    def begin_resize_drag(edge : Gdk::WindowEdge, button, root_x, root_y, timestamp)
       __return_value = LibGdk.window_begin_resize_drag(to_unsafe.as(LibGdk::Window*), edge, Int32.new(button), Int32.new(root_x), Int32.new(root_y), UInt32.new(timestamp))
       __return_value
     end
 
-    def begin_resize_drag_for_device(edge, device, button, root_x, root_y, timestamp)
+    def begin_resize_drag_for_device(edge : Gdk::WindowEdge, device, button, root_x, root_y, timestamp)
       __return_value = LibGdk.window_begin_resize_drag_for_device(to_unsafe.as(LibGdk::Window*), edge, device.to_unsafe.as(LibGdk::Device*), Int32.new(button), Int32.new(root_x), Int32.new(root_y), UInt32.new(timestamp))
       __return_value
     end
@@ -96,7 +96,7 @@ module Gdk
       Cairo::Surface.new(__return_value)
     end
 
-    def create_similar_surface(content, width, height)
+    def create_similar_surface(content : Cairo::Content, width, height)
       __return_value = LibGdk.window_create_similar_surface(to_unsafe.as(LibGdk::Window*), content, Int32.new(width), Int32.new(height))
       Cairo::Surface.new(__return_value)
     end
@@ -201,7 +201,7 @@ module Gdk
       Gdk::Cursor.new(__return_value) if __return_value
     end
 
-    def decorations(decorations)
+    def decorations(decorations : Gdk::WMDecoration)
       __return_value = LibGdk.window_get_decorations(to_unsafe.as(LibGdk::Window*), decorations)
       __return_value
     end
@@ -216,12 +216,12 @@ module Gdk
       __return_value
     end
 
-    def device_position(device, x, y, mask)
+    def device_position(device, x, y, mask : Gdk::ModifierType?)
       __return_value = LibGdk.window_get_device_position(to_unsafe.as(LibGdk::Window*), device.to_unsafe.as(LibGdk::Device*), x, y, mask)
       Gdk::Window.new(__return_value) if __return_value
     end
 
-    def device_position_double(device, x, y, mask)
+    def device_position_double(device, x, y, mask : Gdk::ModifierType?)
       __return_value = LibGdk.window_get_device_position_double(to_unsafe.as(LibGdk::Window*), device.to_unsafe.as(LibGdk::Device*), x, y, mask)
       Gdk::Window.new(__return_value) if __return_value
     end
@@ -311,7 +311,7 @@ module Gdk
       __return_value
     end
 
-    def pointer(x, y, mask)
+    def pointer(x, y, mask : Gdk::ModifierType?)
       __return_value = LibGdk.window_get_pointer(to_unsafe.as(LibGdk::Window*), x, y, mask)
       Gdk::Window.new(__return_value) if __return_value
     end
@@ -341,7 +341,7 @@ module Gdk
       Gdk::Screen.new(__return_value)
     end
 
-    def source_events(source)
+    def source_events(source : Gdk::InputSource)
       __return_value = LibGdk.window_get_source_events(to_unsafe.as(LibGdk::Window*), source)
       __return_value
     end
@@ -416,7 +416,7 @@ module Gdk
       __return_value
     end
 
-    def invalidate_maybe_recurse(region, child_func : LibGdk::WindowChildFunc?, user_data)
+    def invalidate_maybe_recurse(region, child_func, user_data)
       __return_value = LibGdk.window_invalidate_maybe_recurse(to_unsafe.as(LibGdk::Window*), region.to_unsafe.as(LibCairo::Region*), child_func && child_func, user_data && user_data)
       __return_value
     end
@@ -576,7 +576,7 @@ module Gdk
       __return_value
     end
 
-    def decorations=(decorations)
+    def decorations=(decorations : Gdk::WMDecoration)
       __return_value = LibGdk.window_set_decorations(to_unsafe.as(LibGdk::Window*), decorations)
       __return_value
     end
@@ -586,7 +586,7 @@ module Gdk
       __return_value
     end
 
-    def set_device_events(device, event_mask)
+    def set_device_events(device, event_mask : Gdk::EventMask)
       __return_value = LibGdk.window_set_device_events(to_unsafe.as(LibGdk::Window*), device.to_unsafe.as(LibGdk::Device*), event_mask)
       __return_value
     end
@@ -596,7 +596,7 @@ module Gdk
       __return_value
     end
 
-    def events=(event_mask)
+    def events=(event_mask : Gdk::EventMask)
       __return_value = LibGdk.window_set_events(to_unsafe.as(LibGdk::Window*), event_mask)
       __return_value
     end
@@ -606,17 +606,17 @@ module Gdk
       __return_value
     end
 
-    def fullscreen_mode=(mode)
+    def fullscreen_mode=(mode : Gdk::FullscreenMode)
       __return_value = LibGdk.window_set_fullscreen_mode(to_unsafe.as(LibGdk::Window*), mode)
       __return_value
     end
 
-    def functions=(functions)
+    def functions=(functions : Gdk::WMFunction)
       __return_value = LibGdk.window_set_functions(to_unsafe.as(LibGdk::Window*), functions)
       __return_value
     end
 
-    def set_geometry_hints(geometry, geom_mask)
+    def set_geometry_hints(geometry, geom_mask : Gdk::WindowHints)
       __return_value = LibGdk.window_set_geometry_hints(to_unsafe.as(LibGdk::Window*), geometry.to_unsafe.as(LibGdk::Geometry*), geom_mask)
       __return_value
     end
@@ -691,7 +691,7 @@ module Gdk
       __return_value
     end
 
-    def set_source_events(source, event_mask)
+    def set_source_events(source : Gdk::InputSource, event_mask : Gdk::EventMask)
       __return_value = LibGdk.window_set_source_events(to_unsafe.as(LibGdk::Window*), source, event_mask)
       __return_value
     end
@@ -721,7 +721,7 @@ module Gdk
       __return_value
     end
 
-    def type_hint=(hint)
+    def type_hint=(hint : Gdk::WindowTypeHint)
       __return_value = LibGdk.window_set_type_hint(to_unsafe.as(LibGdk::Window*), hint)
       __return_value
     end

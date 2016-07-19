@@ -39,7 +39,7 @@ module Gtk
       __return_value
     end
 
-    def action_widget(pack_type)
+    def action_widget(pack_type : Gtk::PackType)
       __return_value = LibGtk.notebook_get_action_widget(to_unsafe.as(LibGtk::Notebook*), pack_type)
       Gtk::Widget.new(__return_value) if __return_value
     end
@@ -179,7 +179,7 @@ module Gtk
       __return_value
     end
 
-    def set_action_widget(widget, pack_type)
+    def set_action_widget(widget, pack_type : Gtk::PackType)
       __return_value = LibGtk.notebook_set_action_widget(to_unsafe.as(LibGtk::Notebook*), widget.to_unsafe.as(LibGtk::Widget*), pack_type)
       __return_value
     end
@@ -234,7 +234,7 @@ module Gtk
       __return_value
     end
 
-    def tab_pos=(pos)
+    def tab_pos=(pos : Gtk::PositionType)
       __return_value = LibGtk.notebook_set_tab_pos(to_unsafe.as(LibGtk::Notebook*), pos)
       __return_value
     end

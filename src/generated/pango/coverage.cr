@@ -20,7 +20,7 @@ module Pango
       __return_value
     end
 
-    def set(index, level)
+    def set(index, level : Pango::CoverageLevel)
       __return_value = LibPango.coverage_set(to_unsafe.as(LibPango::Coverage*), Int32.new(index), level)
       __return_value
     end

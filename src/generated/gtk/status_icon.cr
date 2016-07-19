@@ -58,7 +58,7 @@ module Gtk
       __return_value
     end
 
-    def geometry(screen, area, orientation)
+    def geometry(screen, area, orientation : Gtk::Orientation?)
       __return_value = LibGtk.status_icon_get_geometry(to_unsafe.as(LibGtk::StatusIcon*), screen, area, orientation)
       __return_value
     end

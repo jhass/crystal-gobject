@@ -19,7 +19,7 @@ module Gdk
       Gdk::Display.new(__return_value) if __return_value
     end
 
-    def list_devices(type)
+    def list_devices(type : Gdk::DeviceType)
       __return_value = LibGdk.device_manager_list_devices(to_unsafe.as(LibGdk::DeviceManager*), type)
       GLib::ListIterator(Gdk::Device, LibGdk::Device*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end

@@ -63,7 +63,7 @@ module Gio
       PointerIterator.new(__return_value) {|__item| __item } if __return_value
     end
 
-    def read_line_async(io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def read_line_async(io_priority, cancellable, callback, user_data)
       __return_value = LibGio.data_input_stream_read_line_async(to_unsafe.as(LibGio::DataInputStream*), Int32.new(io_priority), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
@@ -117,7 +117,7 @@ module Gio
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def read_until_async(stop_chars, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def read_until_async(stop_chars, io_priority, cancellable, callback, user_data)
       __return_value = LibGio.data_input_stream_read_until_async(to_unsafe.as(LibGio::DataInputStream*), stop_chars.to_unsafe, Int32.new(io_priority), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
@@ -136,7 +136,7 @@ module Gio
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def read_upto_async(stop_chars, stop_chars_len, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def read_upto_async(stop_chars, stop_chars_len, io_priority, cancellable, callback, user_data)
       __return_value = LibGio.data_input_stream_read_upto_async(to_unsafe.as(LibGio::DataInputStream*), stop_chars.to_unsafe, Int64.new(stop_chars_len), Int32.new(io_priority), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
@@ -148,12 +148,12 @@ module Gio
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def byte_order=(order)
+    def byte_order=(order : Gio::DataStreamByteOrder)
       __return_value = LibGio.data_input_stream_set_byte_order(to_unsafe.as(LibGio::DataInputStream*), order)
       __return_value
     end
 
-    def newline_type=(type)
+    def newline_type=(type : Gio::DataStreamNewlineType)
       __return_value = LibGio.data_input_stream_set_newline_type(to_unsafe.as(LibGio::DataInputStream*), type)
       __return_value
     end

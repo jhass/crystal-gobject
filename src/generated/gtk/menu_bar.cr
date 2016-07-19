@@ -34,12 +34,12 @@ module Gtk
       __return_value
     end
 
-    def child_pack_direction=(child_pack_dir)
+    def child_pack_direction=(child_pack_dir : Gtk::PackDirection)
       __return_value = LibGtk.menu_bar_set_child_pack_direction(to_unsafe.as(LibGtk::MenuBar*), child_pack_dir)
       __return_value
     end
 
-    def pack_direction=(pack_dir)
+    def pack_direction=(pack_dir : Gtk::PackDirection)
       __return_value = LibGtk.menu_bar_set_pack_direction(to_unsafe.as(LibGtk::MenuBar*), pack_dir)
       __return_value
     end

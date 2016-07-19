@@ -53,7 +53,7 @@ module Gdk
       GLib::ListIterator(Gdk::Atom, LibGdk::Atom**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
-    def manage_dnd(ipc_window, actions)
+    def manage_dnd(ipc_window, actions : Gdk::DragAction)
       __return_value = LibGdk.drag_context_manage_dnd(to_unsafe.as(LibGdk::DragContext*), ipc_window.to_unsafe.as(LibGdk::Window*), actions)
       __return_value
     end

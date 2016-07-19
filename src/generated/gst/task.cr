@@ -10,7 +10,7 @@ module Gst
       @gst_task.not_nil!.as(Void*)
     end
 
-    def self.new(func : LibGst::TaskFunction, user_data, notify : LibGLib::DestroyNotify) : self
+    def self.new(func, user_data, notify) : self
       __return_value = LibGst.task_new(func, user_data && user_data, notify)
       cast Gst::Task.new(__return_value)
     end
@@ -40,12 +40,12 @@ module Gst
       __return_value
     end
 
-    def set_enter_callback(enter_func : LibGst::TaskThreadFunc, user_data, notify : LibGLib::DestroyNotify)
+    def set_enter_callback(enter_func, user_data, notify)
       __return_value = LibGst.task_set_enter_callback(to_unsafe.as(LibGst::Task*), enter_func, user_data && user_data, notify)
       __return_value
     end
 
-    def set_leave_callback(leave_func : LibGst::TaskThreadFunc, user_data, notify : LibGLib::DestroyNotify)
+    def set_leave_callback(leave_func, user_data, notify)
       __return_value = LibGst.task_set_leave_callback(to_unsafe.as(LibGst::Task*), leave_func, user_data && user_data, notify)
       __return_value
     end
@@ -60,7 +60,7 @@ module Gst
       __return_value
     end
 
-    def state=(state)
+    def state=(state : Gst::TaskState)
       __return_value = LibGst.task_set_state(to_unsafe.as(LibGst::Task*), state)
       __return_value
     end

@@ -27,12 +27,12 @@ module Gst
       cast Gst::TagList.new(__return_value) if __return_value
     end
 
-    def add_value(mode, tag, value)
+    def add_value(mode : Gst::TagMergeMode, tag, value)
       __return_value = LibGst.tag_list_add_value(to_unsafe.as(LibGst::TagList*), mode, tag.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 
-    def foreach(func : LibGst::TagForeachFunc, user_data)
+    def foreach(func, user_data)
       __return_value = LibGst.tag_list_foreach(to_unsafe.as(LibGst::TagList*), func, user_data && user_data)
       __return_value
     end
@@ -172,7 +172,7 @@ module Gst
       GObject::Value.new(__return_value) if __return_value
     end
 
-    def insert(from, mode)
+    def insert(from, mode : Gst::TagMergeMode)
       __return_value = LibGst.tag_list_insert(to_unsafe.as(LibGst::TagList*), from.to_unsafe.as(LibGst::TagList*), mode)
       __return_value
     end
@@ -187,7 +187,7 @@ module Gst
       __return_value
     end
 
-    def merge(list2, mode)
+    def merge(list2, mode : Gst::TagMergeMode)
       __return_value = LibGst.tag_list_merge(to_unsafe.as(LibGst::TagList*), list2 && list2.to_unsafe.as(LibGst::TagList*), mode)
       Gst::TagList.new(__return_value) if __return_value
     end
@@ -212,7 +212,7 @@ module Gst
       __return_value
     end
 
-    def scope=(scope)
+    def scope=(scope : Gst::TagScope)
       __return_value = LibGst.tag_list_set_scope(to_unsafe.as(LibGst::TagList*), scope)
       __return_value
     end

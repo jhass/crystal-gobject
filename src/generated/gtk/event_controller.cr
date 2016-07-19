@@ -30,7 +30,7 @@ module Gtk
       __return_value
     end
 
-    def propagation_phase=(phase)
+    def propagation_phase=(phase : Gtk::PropagationPhase)
       __return_value = LibGtk.event_controller_set_propagation_phase(to_unsafe.as(LibGtk::EventController*), phase)
       __return_value
     end

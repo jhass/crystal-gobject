@@ -139,12 +139,12 @@ module Gtk
       __return_value
     end
 
-    def set_sort_func(sort_func : LibGtk::RecentSortFunc, sort_data, data_destroy : LibGLib::DestroyNotify?)
+    def set_sort_func(sort_func, sort_data, data_destroy)
       __return_value = LibGtk.recent_chooser_set_sort_func(to_unsafe.as(LibGtk::RecentChooser*), sort_func, sort_data && sort_data, data_destroy && data_destroy)
       __return_value
     end
 
-    def sort_type=(sort_type)
+    def sort_type=(sort_type : Gtk::RecentSortType)
       __return_value = LibGtk.recent_chooser_set_sort_type(to_unsafe.as(LibGtk::RecentChooser*), sort_type)
       __return_value
     end

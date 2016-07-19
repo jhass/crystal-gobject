@@ -68,7 +68,7 @@ module Gtk
       __return_value
     end
 
-    def constrain_to=(constraint)
+    def constrain_to=(constraint : Gtk::PopoverConstraint)
       __return_value = LibGtk.popover_set_constrain_to(to_unsafe.as(LibGtk::Popover*), constraint)
       __return_value
     end
@@ -88,7 +88,7 @@ module Gtk
       __return_value
     end
 
-    def position=(position)
+    def position=(position : Gtk::PositionType)
       __return_value = LibGtk.popover_set_position(to_unsafe.as(LibGtk::Popover*), position)
       __return_value
     end

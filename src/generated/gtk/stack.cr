@@ -106,7 +106,7 @@ module Gtk
       __return_value
     end
 
-    def transition_type=(transition)
+    def transition_type=(transition : Gtk::StackTransitionType)
       __return_value = LibGtk.stack_set_transition_type(to_unsafe.as(LibGtk::Stack*), transition)
       __return_value
     end
@@ -121,7 +121,7 @@ module Gtk
       __return_value
     end
 
-    def set_visible_child_full(name, transition)
+    def set_visible_child_full(name, transition : Gtk::StackTransitionType)
       __return_value = LibGtk.stack_set_visible_child_full(to_unsafe.as(LibGtk::Stack*), name.to_unsafe, transition)
       __return_value
     end

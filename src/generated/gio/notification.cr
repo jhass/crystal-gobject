@@ -43,7 +43,7 @@ module Gio
       __return_value
     end
 
-    def priority=(priority)
+    def priority=(priority : Gio::NotificationPriority)
       __return_value = LibGio.notification_set_priority(to_unsafe.as(LibGio::Notification*), priority)
       __return_value
     end

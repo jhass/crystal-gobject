@@ -32,7 +32,7 @@ module Gst
       __return_value
     end
 
-    def self.register(plugin, name, rank, func : LibGst::TypeFindFunction, extensions, possible_caps, data, data_notify : LibGLib::DestroyNotify)
+    def self.register(plugin, name, rank, func, extensions, possible_caps, data, data_notify)
       __return_value = LibGst.type_find_register(plugin && plugin.to_unsafe.as(LibGst::Plugin*), name.to_unsafe, UInt32.new(rank), func, extensions && extensions.to_unsafe, possible_caps.to_unsafe.as(LibGst::Caps*), data && data, data_notify)
       __return_value
     end

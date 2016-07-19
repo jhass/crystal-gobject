@@ -19,7 +19,7 @@ module Gtk
       __return_value
     end
 
-    def property(property, state, value)
+    def property(property, state : Gtk::StateFlags, value)
       __return_value = LibGtk.style_properties_get_property(to_unsafe.as(LibGtk::StyleProperties*), property.to_unsafe, state, value)
       __return_value
     end
@@ -39,12 +39,12 @@ module Gtk
       __return_value
     end
 
-    def set_property(property, state, value)
+    def set_property(property, state : Gtk::StateFlags, value)
       __return_value = LibGtk.style_properties_set_property(to_unsafe.as(LibGtk::StyleProperties*), property.to_unsafe, state, value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 
-    def unset_property(property, state)
+    def unset_property(property, state : Gtk::StateFlags)
       __return_value = LibGtk.style_properties_unset_property(to_unsafe.as(LibGtk::StyleProperties*), property.to_unsafe, state)
       __return_value
     end

@@ -55,7 +55,7 @@ module GLib
       cast GLib::Variant.new(__return_value)
     end
 
-    def self.new_from_data(type, data, size, trusted, notify : LibGLib::DestroyNotify, user_data) : self
+    def self.new_from_data(type, data, size, trusted, notify, user_data) : self
       __return_value = LibGLib.variant_new_from_data(type.to_unsafe.as(LibGLib::VariantType*), data, UInt64.new(size), trusted, notify, user_data && user_data)
       cast GLib::Variant.new(__return_value)
     end

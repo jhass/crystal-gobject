@@ -124,12 +124,12 @@ module GLib
       GLib::IOChannel.new(__return_value)
     end
 
-    def seek(offset, type)
+    def seek(offset, type : GLib::SeekType)
       __return_value = LibGLib.i_o_channel_seek(to_unsafe.as(LibGLib::IOChannel*), Int64.new(offset), type)
       __return_value
     end
 
-    def seek_position(offset, type)
+    def seek_position(offset, type : GLib::SeekType)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.i_o_channel_seek_position(to_unsafe.as(LibGLib::IOChannel*), Int64.new(offset), type, pointerof(__error))
       GLib::Error.assert __error
@@ -158,7 +158,7 @@ module GLib
       __return_value
     end
 
-    def set_flags(flags)
+    def set_flags(flags : GLib::IOFlags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.i_o_channel_set_flags(to_unsafe.as(LibGLib::IOChannel*), flags, pointerof(__error))
       GLib::Error.assert __error

@@ -94,7 +94,7 @@ module Gtk
       __return_value
     end
 
-    def run(action, parent)
+    def run(action : Gtk::PrintOperationAction, parent)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.print_operation_run(to_unsafe.as(LibGtk::PrintOperation*), action, parent && parent.to_unsafe.as(LibGtk::Window*), pointerof(__error))
       GLib::Error.assert __error
@@ -171,7 +171,7 @@ module Gtk
       __return_value
     end
 
-    def unit=(unit)
+    def unit=(unit : Gtk::Unit)
       __return_value = LibGtk.print_operation_set_unit(to_unsafe.as(LibGtk::PrintOperation*), unit)
       __return_value
     end

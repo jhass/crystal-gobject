@@ -57,7 +57,7 @@ module Gtk
       __return_value
     end
 
-    def shadow_type=(type)
+    def shadow_type=(type : Gtk::ShadowType)
       __return_value = LibGtk.frame_set_shadow_type(to_unsafe.as(LibGtk::Frame*), type)
       __return_value
     end

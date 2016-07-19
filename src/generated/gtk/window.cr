@@ -45,7 +45,7 @@ module Gtk
 
 
 
-    def self.new(type) : self
+    def self.new(type : Gtk::WindowType) : self
       __return_value = LibGtk.window_new(type)
       cast Gtk::Widget.new(__return_value)
     end
@@ -127,7 +127,7 @@ module Gtk
       __return_value
     end
 
-    def begin_resize_drag(edge, button, root_x, root_y, timestamp)
+    def begin_resize_drag(edge : Gdk::WindowEdge, button, root_x, root_y, timestamp)
       __return_value = LibGtk.window_begin_resize_drag(to_unsafe.as(LibGtk::Window*), edge, Int32.new(button), Int32.new(root_x), Int32.new(root_y), UInt32.new(timestamp))
       __return_value
     end
@@ -362,7 +362,7 @@ module Gtk
       __return_value
     end
 
-    def mnemonic_activate(keyval, modifier)
+    def mnemonic_activate(keyval, modifier : Gdk::ModifierType)
       __return_value = LibGtk.window_mnemonic_activate(to_unsafe.as(LibGtk::Window*), UInt32.new(keyval), modifier)
       __return_value
     end
@@ -482,12 +482,12 @@ module Gtk
       __return_value
     end
 
-    def set_geometry_hints(geometry_widget, geometry, geom_mask)
+    def set_geometry_hints(geometry_widget, geometry, geom_mask : Gdk::WindowHints)
       __return_value = LibGtk.window_set_geometry_hints(to_unsafe.as(LibGtk::Window*), geometry_widget && geometry_widget.to_unsafe.as(LibGtk::Widget*), geometry && geometry.to_unsafe.as(LibGdk::Geometry*), geom_mask)
       __return_value
     end
 
-    def gravity=(gravity)
+    def gravity=(gravity : Gdk::Gravity)
       __return_value = LibGtk.window_set_gravity(to_unsafe.as(LibGtk::Window*), gravity)
       __return_value
     end
@@ -539,7 +539,7 @@ module Gtk
       __return_value
     end
 
-    def mnemonic_modifier=(modifier)
+    def mnemonic_modifier=(modifier : Gdk::ModifierType)
       __return_value = LibGtk.window_set_mnemonic_modifier(to_unsafe.as(LibGtk::Window*), modifier)
       __return_value
     end
@@ -559,7 +559,7 @@ module Gtk
       __return_value
     end
 
-    def position=(position)
+    def position=(position : Gtk::WindowPosition)
       __return_value = LibGtk.window_set_position(to_unsafe.as(LibGtk::Window*), position)
       __return_value
     end
@@ -609,7 +609,7 @@ module Gtk
       __return_value
     end
 
-    def type_hint=(hint)
+    def type_hint=(hint : Gdk::WindowTypeHint)
       __return_value = LibGtk.window_set_type_hint(to_unsafe.as(LibGtk::Window*), hint)
       __return_value
     end

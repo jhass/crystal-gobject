@@ -10,7 +10,7 @@ module Atk
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
-    def image_position(x, y, coord_type)
+    def image_position(x, y, coord_type : Atk::CoordType)
       __return_value = LibAtk.image_get_image_position(to_unsafe.as(LibAtk::Image*), x, y, coord_type)
       __return_value
     end

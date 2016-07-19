@@ -27,7 +27,7 @@ module GLib
       cast GLib::Date.new(__return_value)
     end
 
-    def self.new_dmy(day, month, year) : self
+    def self.new_dmy(day, month : GLib::DateMonth, year) : self
       __return_value = LibGLib.date_new_dmy(UInt8.new(day), month, UInt16.new(year))
       cast GLib::Date.new(__return_value)
     end
@@ -142,7 +142,7 @@ module GLib
       __return_value
     end
 
-    def set_dmy(day, month, y)
+    def set_dmy(day, month : GLib::DateMonth, y)
       __return_value = LibGLib.date_set_dmy(to_unsafe.as(LibGLib::Date*), UInt8.new(day), month, UInt16.new(y))
       __return_value
     end
@@ -152,7 +152,7 @@ module GLib
       __return_value
     end
 
-    def month=(month)
+    def month=(month : GLib::DateMonth)
       __return_value = LibGLib.date_set_month(to_unsafe.as(LibGLib::Date*), month)
       __return_value
     end
@@ -207,7 +207,7 @@ module GLib
       __return_value
     end
 
-    def self.days_in_month(month, year)
+    def self.days_in_month(month : GLib::DateMonth, year)
       __return_value = LibGLib.date_get_days_in_month(month, UInt16.new(year))
       __return_value
     end
@@ -237,7 +237,7 @@ module GLib
       __return_value
     end
 
-    def self.valid_dmy(day, month, year)
+    def self.valid_dmy(day, month : GLib::DateMonth, year)
       __return_value = LibGLib.date_valid_dmy(UInt8.new(day), month, UInt16.new(year))
       __return_value
     end
@@ -247,12 +247,12 @@ module GLib
       __return_value
     end
 
-    def self.valid_month(month)
+    def self.valid_month(month : GLib::DateMonth)
       __return_value = LibGLib.date_valid_month(month)
       __return_value
     end
 
-    def self.valid_weekday(weekday)
+    def self.valid_weekday(weekday : GLib::DateWeekday)
       __return_value = LibGLib.date_valid_weekday(weekday)
       __return_value
     end

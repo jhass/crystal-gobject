@@ -49,7 +49,7 @@ module Gio
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def reply(result)
+    def reply(result : Gio::MountOperationResult)
       __return_value = LibGio.mount_operation_reply(to_unsafe.as(LibGio::MountOperation*), result)
       __return_value
     end
@@ -74,7 +74,7 @@ module Gio
       __return_value
     end
 
-    def password_save=(save)
+    def password_save=(save : Gio::PasswordSave)
       __return_value = LibGio.mount_operation_set_password_save(to_unsafe.as(LibGio::MountOperation*), save)
       __return_value
     end

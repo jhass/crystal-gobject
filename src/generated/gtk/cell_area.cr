@@ -13,12 +13,12 @@ module Gtk
 
 
 
-    def activate(context, widget, cell_area, flags, edit_only)
+    def activate(context, widget, cell_area, flags : Gtk::CellRendererState, edit_only)
       __return_value = LibGtk.cell_area_activate(to_unsafe.as(LibGtk::CellArea*), context.to_unsafe.as(LibGtk::CellAreaContext*), widget.to_unsafe.as(LibGtk::Widget*), cell_area.to_unsafe.as(LibGdk::Rectangle*), flags, edit_only)
       __return_value
     end
 
-    def activate_cell(widget, renderer, event, cell_area, flags)
+    def activate_cell(widget, renderer, event, cell_area, flags : Gtk::CellRendererState)
       __return_value = LibGtk.cell_area_activate_cell(to_unsafe.as(LibGtk::CellArea*), widget.to_unsafe.as(LibGtk::Widget*), renderer.to_unsafe.as(LibGtk::CellRenderer*), event.to_unsafe.as(LibGdk::Event*), cell_area.to_unsafe.as(LibGdk::Rectangle*), flags)
       __return_value
     end
@@ -73,22 +73,22 @@ module Gtk
       Gtk::CellAreaContext.new(__return_value)
     end
 
-    def event(context, widget, event, cell_area, flags)
+    def event(context, widget, event, cell_area, flags : Gtk::CellRendererState)
       __return_value = LibGtk.cell_area_event(to_unsafe.as(LibGtk::CellArea*), context.to_unsafe.as(LibGtk::CellAreaContext*), widget.to_unsafe.as(LibGtk::Widget*), event.to_unsafe.as(LibGdk::Event*), cell_area.to_unsafe.as(LibGdk::Rectangle*), flags)
       __return_value
     end
 
-    def focus(direction)
+    def focus(direction : Gtk::DirectionType)
       __return_value = LibGtk.cell_area_focus(to_unsafe.as(LibGtk::CellArea*), direction)
       __return_value
     end
 
-    def foreach(callback : LibGtk::CellCallback, callback_data)
+    def foreach(callback, callback_data)
       __return_value = LibGtk.cell_area_foreach(to_unsafe.as(LibGtk::CellArea*), callback, callback_data && callback_data)
       __return_value
     end
 
-    def foreach_alloc(context, widget, cell_area, background_area, callback : LibGtk::CellAllocCallback, callback_data)
+    def foreach_alloc(context, widget, cell_area, background_area, callback, callback_data)
       __return_value = LibGtk.cell_area_foreach_alloc(to_unsafe.as(LibGtk::CellArea*), context.to_unsafe.as(LibGtk::CellAreaContext*), widget.to_unsafe.as(LibGtk::Widget*), cell_area.to_unsafe.as(LibGdk::Rectangle*), background_area.to_unsafe.as(LibGdk::Rectangle*), callback, callback_data && callback_data)
       __return_value
     end
@@ -188,12 +188,12 @@ module Gtk
       __return_value
     end
 
-    def render(context, widget, cr, background_area, cell_area, flags, paint_focus)
+    def render(context, widget, cr, background_area, cell_area, flags : Gtk::CellRendererState, paint_focus)
       __return_value = LibGtk.cell_area_render(to_unsafe.as(LibGtk::CellArea*), context.to_unsafe.as(LibGtk::CellAreaContext*), widget.to_unsafe.as(LibGtk::Widget*), cr.to_unsafe.as(LibCairo::Context*), background_area.to_unsafe.as(LibGdk::Rectangle*), cell_area.to_unsafe.as(LibGdk::Rectangle*), flags, paint_focus)
       __return_value
     end
 
-    def request_renderer(renderer, orientation, widget, for_size, minimum_size, natural_size)
+    def request_renderer(renderer, orientation : Gtk::Orientation, widget, for_size, minimum_size, natural_size)
       __return_value = LibGtk.cell_area_request_renderer(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), orientation, widget.to_unsafe.as(LibGtk::Widget*), Int32.new(for_size), minimum_size, natural_size)
       __return_value
     end

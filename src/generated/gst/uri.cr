@@ -230,7 +230,7 @@ module Gst
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def self.protocol_is_supported(type, protocol)
+    def self.protocol_is_supported(type : Gst::URIType, protocol)
       __return_value = LibGst.uri_protocol_is_supported(type, protocol.to_unsafe)
       __return_value
     end

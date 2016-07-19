@@ -15,7 +15,7 @@ module Pango
       __return_value
     end
 
-    def range(start, end, script)
+    def range(start, end, script : Pango::Script?)
       __return_value = LibPango.script_iter_get_range(to_unsafe.as(LibPango::ScriptIter*), start, end, script)
       __return_value
     end

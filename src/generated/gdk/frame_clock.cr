@@ -48,7 +48,7 @@ module Gdk
       Gdk::FrameTimings.new(__return_value) if __return_value
     end
 
-    def request_phase(phase)
+    def request_phase(phase : Gdk::FrameClockPhase)
       __return_value = LibGdk.frame_clock_request_phase(to_unsafe.as(LibGdk::FrameClock*), phase)
       __return_value
     end

@@ -29,12 +29,12 @@ module Gdk
       Gdk::Device.new(__return_value) if __return_value
     end
 
-    def slaves(capabilities)
+    def slaves(capabilities : Gdk::SeatCapabilities)
       __return_value = LibGdk.seat_get_slaves(to_unsafe.as(LibGdk::Seat*), capabilities)
       GLib::ListIterator(Gdk::Device, LibGdk::Device*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
-    def grab(window, capabilities, owner_events, cursor, event, prepare_func : LibGdk::SeatGrabPrepareFunc?, prepare_func_data)
+    def grab(window, capabilities : Gdk::SeatCapabilities, owner_events, cursor, event, prepare_func, prepare_func_data)
       __return_value = LibGdk.seat_grab(to_unsafe.as(LibGdk::Seat*), window.to_unsafe.as(LibGdk::Window*), capabilities, owner_events, cursor && cursor.to_unsafe.as(LibGdk::Cursor*), event && event.to_unsafe.as(LibGdk::Event*), prepare_func && prepare_func, prepare_func_data && prepare_func_data)
       __return_value
     end

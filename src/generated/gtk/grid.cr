@@ -28,7 +28,7 @@ module Gtk
       __return_value
     end
 
-    def attach_next_to(child, sibling, side, width, height)
+    def attach_next_to(child, sibling, side : Gtk::PositionType, width, height)
       __return_value = LibGtk.grid_attach_next_to(to_unsafe.as(LibGtk::Grid*), child.to_unsafe.as(LibGtk::Widget*), sibling && sibling.to_unsafe.as(LibGtk::Widget*), side, Int32.new(width), Int32.new(height))
       __return_value
     end
@@ -73,7 +73,7 @@ module Gtk
       __return_value
     end
 
-    def insert_next_to(sibling, side)
+    def insert_next_to(sibling, side : Gtk::PositionType)
       __return_value = LibGtk.grid_insert_next_to(to_unsafe.as(LibGtk::Grid*), sibling.to_unsafe.as(LibGtk::Widget*), side)
       __return_value
     end
@@ -108,7 +108,7 @@ module Gtk
       __return_value
     end
 
-    def set_row_baseline_position(row, pos)
+    def set_row_baseline_position(row, pos : Gtk::BaselinePosition)
       __return_value = LibGtk.grid_set_row_baseline_position(to_unsafe.as(LibGtk::Grid*), Int32.new(row), pos)
       __return_value
     end

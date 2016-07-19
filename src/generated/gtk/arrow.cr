@@ -14,12 +14,12 @@ module Gtk
     # Implements Buildable
 
 
-    def self.new(arrow_type, shadow_type) : self
+    def self.new(arrow_type : Gtk::ArrowType, shadow_type : Gtk::ShadowType) : self
       __return_value = LibGtk.arrow_new(arrow_type, shadow_type)
       cast Gtk::Widget.new(__return_value)
     end
 
-    def set(arrow_type, shadow_type)
+    def set(arrow_type : Gtk::ArrowType, shadow_type : Gtk::ShadowType)
       __return_value = LibGtk.arrow_set(to_unsafe.as(LibGtk::Arrow*), arrow_type, shadow_type)
       __return_value
     end

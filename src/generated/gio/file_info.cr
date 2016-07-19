@@ -43,7 +43,7 @@ module Gio
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def attribute_data(attribute, type, value_pp, status)
+    def attribute_data(attribute, type : Gio::FileAttributeType?, value_pp, status : Gio::FileAttributeStatus?)
       __return_value = LibGio.file_info_get_attribute_data(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe, type, value_pp, status)
       __return_value
     end
@@ -193,7 +193,7 @@ module Gio
       __return_value
     end
 
-    def set_attribute(attribute, type, value_p)
+    def set_attribute(attribute, type : Gio::FileAttributeType, value_p)
       __return_value = LibGio.file_info_set_attribute(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe, type, value_p)
       __return_value
     end
@@ -228,7 +228,7 @@ module Gio
       __return_value
     end
 
-    def set_attribute_status(attribute, status)
+    def set_attribute_status(attribute, status : Gio::FileAttributeStatus)
       __return_value = LibGio.file_info_set_attribute_status(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe, status)
       __return_value
     end
@@ -268,7 +268,7 @@ module Gio
       __return_value
     end
 
-    def file_type=(type)
+    def file_type=(type : Gio::FileType)
       __return_value = LibGio.file_info_set_file_type(to_unsafe.as(LibGio::FileInfo*), type)
       __return_value
     end

@@ -195,7 +195,7 @@ module Gtk
       __return_value
     end
 
-    def action=(action)
+    def action=(action : Gtk::FileChooserAction)
       __return_value = LibGtk.file_chooser_set_action(to_unsafe.as(LibGtk::FileChooser*), action)
       __return_value
     end

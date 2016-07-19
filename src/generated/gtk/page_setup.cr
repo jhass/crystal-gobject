@@ -32,12 +32,12 @@ module Gtk
       Gtk::PageSetup.new(__return_value)
     end
 
-    def bottom_margin(unit)
+    def bottom_margin(unit : Gtk::Unit)
       __return_value = LibGtk.page_setup_get_bottom_margin(to_unsafe.as(LibGtk::PageSetup*), unit)
       __return_value
     end
 
-    def left_margin(unit)
+    def left_margin(unit : Gtk::Unit)
       __return_value = LibGtk.page_setup_get_left_margin(to_unsafe.as(LibGtk::PageSetup*), unit)
       __return_value
     end
@@ -47,17 +47,17 @@ module Gtk
       __return_value
     end
 
-    def page_height(unit)
+    def page_height(unit : Gtk::Unit)
       __return_value = LibGtk.page_setup_get_page_height(to_unsafe.as(LibGtk::PageSetup*), unit)
       __return_value
     end
 
-    def page_width(unit)
+    def page_width(unit : Gtk::Unit)
       __return_value = LibGtk.page_setup_get_page_width(to_unsafe.as(LibGtk::PageSetup*), unit)
       __return_value
     end
 
-    def paper_height(unit)
+    def paper_height(unit : Gtk::Unit)
       __return_value = LibGtk.page_setup_get_paper_height(to_unsafe.as(LibGtk::PageSetup*), unit)
       __return_value
     end
@@ -67,17 +67,17 @@ module Gtk
       Gtk::PaperSize.new(__return_value)
     end
 
-    def paper_width(unit)
+    def paper_width(unit : Gtk::Unit)
       __return_value = LibGtk.page_setup_get_paper_width(to_unsafe.as(LibGtk::PageSetup*), unit)
       __return_value
     end
 
-    def right_margin(unit)
+    def right_margin(unit : Gtk::Unit)
       __return_value = LibGtk.page_setup_get_right_margin(to_unsafe.as(LibGtk::PageSetup*), unit)
       __return_value
     end
 
-    def top_margin(unit)
+    def top_margin(unit : Gtk::Unit)
       __return_value = LibGtk.page_setup_get_top_margin(to_unsafe.as(LibGtk::PageSetup*), unit)
       __return_value
     end
@@ -96,17 +96,17 @@ module Gtk
       __return_value
     end
 
-    def set_bottom_margin(margin, unit)
+    def set_bottom_margin(margin, unit : Gtk::Unit)
       __return_value = LibGtk.page_setup_set_bottom_margin(to_unsafe.as(LibGtk::PageSetup*), Float64.new(margin), unit)
       __return_value
     end
 
-    def set_left_margin(margin, unit)
+    def set_left_margin(margin, unit : Gtk::Unit)
       __return_value = LibGtk.page_setup_set_left_margin(to_unsafe.as(LibGtk::PageSetup*), Float64.new(margin), unit)
       __return_value
     end
 
-    def orientation=(orientation)
+    def orientation=(orientation : Gtk::PageOrientation)
       __return_value = LibGtk.page_setup_set_orientation(to_unsafe.as(LibGtk::PageSetup*), orientation)
       __return_value
     end
@@ -121,12 +121,12 @@ module Gtk
       __return_value
     end
 
-    def set_right_margin(margin, unit)
+    def set_right_margin(margin, unit : Gtk::Unit)
       __return_value = LibGtk.page_setup_set_right_margin(to_unsafe.as(LibGtk::PageSetup*), Float64.new(margin), unit)
       __return_value
     end
 
-    def set_top_margin(margin, unit)
+    def set_top_margin(margin, unit : Gtk::Unit)
       __return_value = LibGtk.page_setup_set_top_margin(to_unsafe.as(LibGtk::PageSetup*), Float64.new(margin), unit)
       __return_value
     end

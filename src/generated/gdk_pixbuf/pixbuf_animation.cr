@@ -36,7 +36,7 @@ module GdkPixbuf
       cast GdkPixbuf::PixbufAnimation.new(__return_value)
     end
 
-    def self.new_from_stream_async(stream, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def self.new_from_stream_async(stream, cancellable, callback, user_data)
       __return_value = LibGdkPixbuf.pixbuf_animation_new_from_stream_async(stream.to_unsafe.as(LibGio::InputStream*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end

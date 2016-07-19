@@ -83,7 +83,7 @@ module Gtk
       __return_value
     end
 
-    def mode=(mode)
+    def mode=(mode : Gtk::LevelBarMode)
       __return_value = LibGtk.level_bar_set_mode(to_unsafe.as(LibGtk::LevelBar*), mode)
       __return_value
     end

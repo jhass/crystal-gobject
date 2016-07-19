@@ -25,7 +25,7 @@ module Gio
       __return_value
     end
 
-    def insert_sorted(item, compare_func : LibGLib::CompareDataFunc, user_data)
+    def insert_sorted(item, compare_func, user_data)
       __return_value = LibGio.list_store_insert_sorted(to_unsafe.as(LibGio::ListStore*), item.to_unsafe.as(LibGObject::Object*), compare_func, user_data && user_data)
       __return_value
     end
@@ -40,7 +40,7 @@ module Gio
       __return_value
     end
 
-    def sort(compare_func : LibGLib::CompareDataFunc, user_data)
+    def sort(compare_func, user_data)
       __return_value = LibGio.list_store_sort(to_unsafe.as(LibGio::ListStore*), compare_func, user_data && user_data)
       __return_value
     end

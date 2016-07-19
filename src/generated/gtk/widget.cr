@@ -69,7 +69,7 @@ module Gtk
       __return_value
     end
 
-    def self.set_default_direction(dir)
+    def self.set_default_direction(dir : Gtk::TextDirection)
       __return_value = LibGtk.widget_set_default_direction(dir)
       __return_value
     end
@@ -79,12 +79,12 @@ module Gtk
       __return_value
     end
 
-    def add_accelerator(accel_signal, accel_group, accel_key, accel_mods, accel_flags)
+    def add_accelerator(accel_signal, accel_group, accel_key, accel_mods : Gdk::ModifierType, accel_flags : Gtk::AccelFlags)
       __return_value = LibGtk.widget_add_accelerator(to_unsafe.as(LibGtk::Widget*), accel_signal.to_unsafe, accel_group.to_unsafe.as(LibGtk::AccelGroup*), UInt32.new(accel_key), accel_mods, accel_flags)
       __return_value
     end
 
-    def add_device_events(device, events)
+    def add_device_events(device, events : Gdk::EventMask)
       __return_value = LibGtk.widget_add_device_events(to_unsafe.as(LibGtk::Widget*), device.to_unsafe.as(LibGdk::Device*), events)
       __return_value
     end
@@ -99,7 +99,7 @@ module Gtk
       __return_value
     end
 
-    def add_tick_callback(callback : LibGtk::TickCallback, user_data, notify : LibGLib::DestroyNotify)
+    def add_tick_callback(callback, user_data, notify)
       __return_value = LibGtk.widget_add_tick_callback(to_unsafe.as(LibGtk::Widget*), callback, user_data && user_data, notify)
       __return_value
     end
@@ -109,7 +109,7 @@ module Gtk
       __return_value
     end
 
-    def child_focus(direction)
+    def child_focus(direction : Gtk::DirectionType)
       __return_value = LibGtk.widget_child_focus(to_unsafe.as(LibGtk::Widget*), direction)
       __return_value
     end
@@ -124,7 +124,7 @@ module Gtk
       __return_value
     end
 
-    def compute_expand(orientation)
+    def compute_expand(orientation : Gtk::Orientation)
       __return_value = LibGtk.widget_compute_expand(to_unsafe.as(LibGtk::Widget*), orientation)
       __return_value
     end
@@ -154,12 +154,12 @@ module Gtk
       __return_value
     end
 
-    def drag_begin(targets, actions, button, event)
+    def drag_begin(targets, actions : Gdk::DragAction, button, event)
       __return_value = LibGtk.widget_drag_begin(to_unsafe.as(LibGtk::Widget*), targets.to_unsafe.as(LibGtk::TargetList*), actions, Int32.new(button), event && event.to_unsafe.as(LibGdk::Event*))
       Gdk::DragContext.new(__return_value)
     end
 
-    def drag_begin_with_coordinates(targets, actions, button, event, x, y)
+    def drag_begin_with_coordinates(targets, actions : Gdk::DragAction, button, event, x, y)
       __return_value = LibGtk.widget_drag_begin_with_coordinates(to_unsafe.as(LibGtk::Widget*), targets.to_unsafe.as(LibGtk::TargetList*), actions, Int32.new(button), event && event.to_unsafe.as(LibGdk::Event*), Int32.new(x), Int32.new(y))
       Gdk::DragContext.new(__return_value)
     end
@@ -199,12 +199,12 @@ module Gtk
       __return_value
     end
 
-    def drag_dest_set(flags, targets, n_targets, actions)
+    def drag_dest_set(flags : Gtk::DestDefaults, targets, n_targets, actions : Gdk::DragAction)
       __return_value = LibGtk.widget_drag_dest_set(to_unsafe.as(LibGtk::Widget*), flags, targets && targets, Int32.new(n_targets), actions)
       __return_value
     end
 
-    def drag_dest_set_proxy(proxy_window, protocol, use_coordinates)
+    def drag_dest_set_proxy(proxy_window, protocol : Gdk::DragProtocol, use_coordinates)
       __return_value = LibGtk.widget_drag_dest_set_proxy(to_unsafe.as(LibGtk::Widget*), proxy_window.to_unsafe.as(LibGdk::Window*), protocol, use_coordinates)
       __return_value
     end
@@ -254,7 +254,7 @@ module Gtk
       Gtk::TargetList.new(__return_value) if __return_value
     end
 
-    def drag_source_set(start_button_mask, targets, n_targets, actions)
+    def drag_source_set(start_button_mask : Gdk::ModifierType, targets, n_targets, actions : Gdk::DragAction)
       __return_value = LibGtk.widget_drag_source_set(to_unsafe.as(LibGtk::Widget*), start_button_mask, targets && targets, Int32.new(n_targets), actions)
       __return_value
     end
@@ -509,7 +509,7 @@ module Gtk
       __return_value
     end
 
-    def modifier_mask(intent)
+    def modifier_mask(intent : Gdk::ModifierIntent)
       __return_value = LibGtk.widget_get_modifier_mask(to_unsafe.as(LibGtk::Widget*), intent)
       __return_value
     end
@@ -844,7 +844,7 @@ module Gtk
       __return_value
     end
 
-    def keynav_failed(direction)
+    def keynav_failed(direction : Gtk::DirectionType)
       __return_value = LibGtk.widget_keynav_failed(to_unsafe.as(LibGtk::Widget*), direction)
       __return_value
     end
@@ -874,12 +874,12 @@ module Gtk
       __return_value
     end
 
-    def modify_base(state, color)
+    def modify_base(state : Gtk::StateType, color)
       __return_value = LibGtk.widget_modify_base(to_unsafe.as(LibGtk::Widget*), state, color && color.to_unsafe.as(LibGdk::Color*))
       __return_value
     end
 
-    def modify_bg(state, color)
+    def modify_bg(state : Gtk::StateType, color)
       __return_value = LibGtk.widget_modify_bg(to_unsafe.as(LibGtk::Widget*), state, color && color.to_unsafe.as(LibGdk::Color*))
       __return_value
     end
@@ -889,7 +889,7 @@ module Gtk
       __return_value
     end
 
-    def modify_fg(state, color)
+    def modify_fg(state : Gtk::StateType, color)
       __return_value = LibGtk.widget_modify_fg(to_unsafe.as(LibGtk::Widget*), state, color && color.to_unsafe.as(LibGdk::Color*))
       __return_value
     end
@@ -904,17 +904,17 @@ module Gtk
       __return_value
     end
 
-    def modify_text(state, color)
+    def modify_text(state : Gtk::StateType, color)
       __return_value = LibGtk.widget_modify_text(to_unsafe.as(LibGtk::Widget*), state, color && color.to_unsafe.as(LibGdk::Color*))
       __return_value
     end
 
-    def override_background_color(state, color)
+    def override_background_color(state : Gtk::StateFlags, color)
       __return_value = LibGtk.widget_override_background_color(to_unsafe.as(LibGtk::Widget*), state, color && color.to_unsafe.as(LibGdk::RGBA*))
       __return_value
     end
 
-    def override_color(state, color)
+    def override_color(state : Gtk::StateFlags, color)
       __return_value = LibGtk.widget_override_color(to_unsafe.as(LibGtk::Widget*), state, color && color.to_unsafe.as(LibGdk::RGBA*))
       __return_value
     end
@@ -989,7 +989,7 @@ module Gtk
       __return_value
     end
 
-    def remove_accelerator(accel_group, accel_key, accel_mods)
+    def remove_accelerator(accel_group, accel_key, accel_mods : Gdk::ModifierType)
       __return_value = LibGtk.widget_remove_accelerator(to_unsafe.as(LibGtk::Widget*), accel_group.to_unsafe.as(LibGtk::AccelGroup*), UInt32.new(accel_key), accel_mods)
       __return_value
     end
@@ -1084,12 +1084,12 @@ module Gtk
       __return_value
     end
 
-    def set_device_events(device, events)
+    def set_device_events(device, events : Gdk::EventMask)
       __return_value = LibGtk.widget_set_device_events(to_unsafe.as(LibGtk::Widget*), device.to_unsafe.as(LibGdk::Device*), events)
       __return_value
     end
 
-    def direction=(dir)
+    def direction=(dir : Gtk::TextDirection)
       __return_value = LibGtk.widget_set_direction(to_unsafe.as(LibGtk::Widget*), dir)
       __return_value
     end
@@ -1119,7 +1119,7 @@ module Gtk
       __return_value
     end
 
-    def halign=(align)
+    def halign=(align : Gtk::Align)
       __return_value = LibGtk.widget_set_halign(to_unsafe.as(LibGtk::Widget*), align)
       __return_value
     end
@@ -1229,12 +1229,12 @@ module Gtk
       __return_value
     end
 
-    def state=(state)
+    def state=(state : Gtk::StateType)
       __return_value = LibGtk.widget_set_state(to_unsafe.as(LibGtk::Widget*), state)
       __return_value
     end
 
-    def set_state_flags(flags, clear)
+    def set_state_flags(flags : Gtk::StateFlags, clear)
       __return_value = LibGtk.widget_set_state_flags(to_unsafe.as(LibGtk::Widget*), flags, clear)
       __return_value
     end
@@ -1264,7 +1264,7 @@ module Gtk
       __return_value
     end
 
-    def valign=(align)
+    def valign=(align : Gtk::Align)
       __return_value = LibGtk.widget_set_valign(to_unsafe.as(LibGtk::Widget*), align)
       __return_value
     end
@@ -1374,7 +1374,7 @@ module Gtk
       __return_value
     end
 
-    def unset_state_flags(flags)
+    def unset_state_flags(flags : Gtk::StateFlags)
       __return_value = LibGtk.widget_unset_state_flags(to_unsafe.as(LibGtk::Widget*), flags)
       __return_value
     end
@@ -1454,7 +1454,7 @@ module Gtk
     alias DeleteEventSignal = Widget, Gdk::Event -> Bool
     def on_delete_event(&__block : DeleteEventSignal)
       __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::Event*) {
-       __return_value = __block.call(Widget.new(_arg0), _arg1)
+       __return_value = __block.call(Widget.new(_arg0), Gdk::Event.new(_arg1))
        __return_value
       }
       connect("delete-event", __callback)
@@ -1472,7 +1472,7 @@ module Gtk
     alias DestroyEventSignal = Widget, Gdk::Event -> Bool
     def on_destroy_event(&__block : DestroyEventSignal)
       __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::Event*) {
-       __return_value = __block.call(Widget.new(_arg0), _arg1)
+       __return_value = __block.call(Widget.new(_arg0), Gdk::Event.new(_arg1))
        __return_value
       }
       connect("destroy-event", __callback)
@@ -1589,7 +1589,7 @@ module Gtk
     alias EventSignal = Widget, Gdk::Event -> Bool
     def on_event(&__block : EventSignal)
       __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::Event*) {
-       __return_value = __block.call(Widget.new(_arg0), _arg1)
+       __return_value = __block.call(Widget.new(_arg0), Gdk::Event.new(_arg1))
        __return_value
       }
       connect("event", __callback)
@@ -1598,7 +1598,7 @@ module Gtk
     alias EventAfterSignal = Widget, Gdk::Event ->
     def on_event_after(&__block : EventAfterSignal)
       __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::Event*) {
-       __return_value = __block.call(Widget.new(_arg0), _arg1)
+       __return_value = __block.call(Widget.new(_arg0), Gdk::Event.new(_arg1))
        __return_value
       }
       connect("event-after", __callback)
@@ -1949,7 +1949,7 @@ module Gtk
     alias TouchEventSignal = Widget, Gdk::Event -> Bool
     def on_touch_event(&__block : TouchEventSignal)
       __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::Event*) {
-       __return_value = __block.call(Widget.new(_arg0), _arg1)
+       __return_value = __block.call(Widget.new(_arg0), Gdk::Event.new(_arg1))
        __return_value
       }
       connect("touch-event", __callback)

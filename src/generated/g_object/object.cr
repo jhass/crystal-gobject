@@ -35,12 +35,12 @@ module GObject
       PointerIterator.new(__return_value) {|__item| GObject::ParamSpec.new(__item) }
     end
 
-    def bind_property(source_property, target, target_property, flags)
+    def bind_property(source_property, target, target_property, flags : GObject::BindingFlags)
       __return_value = LibGObject.object_bind_property(to_unsafe.as(LibGObject::Object*), source_property.to_unsafe, target.to_unsafe.as(LibGObject::Object*), target_property.to_unsafe, flags)
       GObject::Binding.new(__return_value)
     end
 
-    def bind_property_full(source_property, target, target_property, flags, transform_to, transform_from)
+    def bind_property_full(source_property, target, target_property, flags : GObject::BindingFlags, transform_to, transform_from)
       __return_value = LibGObject.object_bind_property_full(to_unsafe.as(LibGObject::Object*), source_property.to_unsafe, target.to_unsafe.as(LibGObject::Object*), target_property.to_unsafe, flags, transform_to.to_unsafe.as(LibGObject::Closure*), transform_from.to_unsafe.as(LibGObject::Closure*))
       GObject::Binding.new(__return_value)
     end
@@ -95,12 +95,12 @@ module GObject
       GObject::Object.new(__return_value)
     end
 
-    def replace_data(key, oldval, newval, destroy : LibGLib::DestroyNotify?, old_destroy : LibGLib::DestroyNotify*?)
+    def replace_data(key, oldval, newval, destroy, old_destroy)
       __return_value = LibGObject.object_replace_data(to_unsafe.as(LibGObject::Object*), key.to_unsafe, oldval && oldval, newval && newval, destroy && destroy, old_destroy && old_destroy.to_unsafe.as(LibGLib::DestroyNotify*))
       __return_value
     end
 
-    def replace_qdata(quark, oldval, newval, destroy : LibGLib::DestroyNotify?, old_destroy : LibGLib::DestroyNotify*?)
+    def replace_qdata(quark, oldval, newval, destroy, old_destroy)
       __return_value = LibGObject.object_replace_qdata(to_unsafe.as(LibGObject::Object*), UInt32.new(quark), oldval && oldval, newval && newval, destroy && destroy, old_destroy && old_destroy.to_unsafe.as(LibGLib::DestroyNotify*))
       __return_value
     end

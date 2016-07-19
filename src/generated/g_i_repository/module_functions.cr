@@ -206,12 +206,12 @@ module GIRepository
     GIRepository::BaseInfo.new(__return_value)
   end
 
-  def self.info_new(type, container, typelib, offset)
+  def self.info_new(type : GIRepository::InfoType, container, typelib, offset)
     __return_value = LibGIRepository.info_new(type, container.to_unsafe.as(LibGIRepository::BaseInfo*), typelib.to_unsafe.as(LibGIRepository::Typelib*), UInt32.new(offset))
     GIRepository::BaseInfo.new(__return_value)
   end
 
-  def self.info_type_to_string(type)
+  def self.info_type_to_string(type : GIRepository::InfoType)
     __return_value = LibGIRepository.info_type_to_string(type)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
@@ -581,7 +581,7 @@ module GIRepository
     __return_value
   end
 
-  def self.type_tag_to_string(type)
+  def self.type_tag_to_string(type : GIRepository::TypeTag)
     __return_value = LibGIRepository.type_tag_to_string(type)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end

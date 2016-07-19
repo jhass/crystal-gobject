@@ -40,7 +40,7 @@ module Gtk
       Gtk::IconSet.new(__return_value)
     end
 
-    def render_icon(style, direction, state, size, widget, detail)
+    def render_icon(style, direction : Gtk::TextDirection, state : Gtk::StateType, size, widget, detail)
       __return_value = LibGtk.icon_set_render_icon(to_unsafe.as(LibGtk::IconSet*), style && style.to_unsafe.as(LibGtk::Style*), direction, state, Int32.new(size), widget && widget.to_unsafe.as(LibGtk::Widget*), detail && detail.to_unsafe)
       GdkPixbuf::Pixbuf.new(__return_value)
     end

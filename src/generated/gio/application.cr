@@ -18,7 +18,7 @@ module Gio
 
 
 
-    def self.new(application_id, flags) : self
+    def self.new(application_id, flags : Gio::ApplicationFlags) : self
       __return_value = LibGio.application_new(application_id && application_id.to_unsafe, flags)
       cast Gio::Application.new(__return_value)
     end
@@ -38,7 +38,7 @@ module Gio
       __return_value
     end
 
-    def add_main_option(long_name, short_name, flags, arg, description, arg_description)
+    def add_main_option(long_name, short_name, flags : GLib::OptionFlags, arg : GLib::OptionArg, description, arg_description)
       __return_value = LibGio.application_add_main_option(to_unsafe.as(LibGio::Application*), long_name.to_unsafe, Int8.new(short_name), flags, arg, description.to_unsafe, arg_description && arg_description.to_unsafe)
       __return_value
     end
@@ -160,7 +160,7 @@ module Gio
       __return_value
     end
 
-    def flags=(flags)
+    def flags=(flags : Gio::ApplicationFlags)
       __return_value = LibGio.application_set_flags(to_unsafe.as(LibGio::Application*), flags)
       __return_value
     end

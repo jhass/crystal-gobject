@@ -14,7 +14,7 @@ module Gst
 
 
 
-    def self.new(name, direction) : self
+    def self.new(name, direction : Gst::PadDirection) : self
       __return_value = LibGst.pad_new(name && name.to_unsafe, direction)
       cast Gst::Pad.new(__return_value) if __return_value
     end
@@ -29,17 +29,17 @@ module Gst
       cast Gst::Pad.new(__return_value) if __return_value
     end
 
-    def self.link_get_name(ret)
+    def self.link_get_name(ret : Gst::PadLinkReturn)
       __return_value = LibGst.pad_link_get_name(ret)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def activate_mode(mode, active)
+    def activate_mode(mode : Gst::PadMode, active)
       __return_value = LibGst.pad_activate_mode(to_unsafe.as(LibGst::Pad*), mode, active)
       __return_value
     end
 
-    def add_probe(mask, callback : LibGst::PadProbeCallback, user_data, destroy_data : LibGLib::DestroyNotify)
+    def add_probe(mask : Gst::PadProbeType, callback, user_data, destroy_data)
       __return_value = LibGst.pad_add_probe(to_unsafe.as(LibGst::Pad*), mask, callback, user_data && user_data, destroy_data)
       __return_value
     end
@@ -74,7 +74,7 @@ module Gst
       __return_value
     end
 
-    def forward(forward : LibGst::PadForwardFunction, user_data)
+    def forward(forward, user_data)
       __return_value = LibGst.pad_forward(to_unsafe.as(LibGst::Pad*), forward, user_data && user_data)
       __return_value
     end
@@ -134,7 +134,7 @@ module Gst
       __return_value
     end
 
-    def sticky_event(event_type, idx)
+    def sticky_event(event_type : Gst::EventType, idx)
       __return_value = LibGst.pad_get_sticky_event(to_unsafe.as(LibGst::Pad*), event_type, UInt32.new(idx))
       Gst::Event.new(__return_value) if __return_value
     end
@@ -184,7 +184,7 @@ module Gst
       __return_value
     end
 
-    def link_full(sinkpad, flags)
+    def link_full(sinkpad, flags : Gst::PadLinkCheck)
       __return_value = LibGst.pad_link_full(to_unsafe.as(LibGst::Pad*), sinkpad.to_unsafe.as(LibGst::Pad*), flags)
       __return_value
     end
@@ -219,17 +219,17 @@ module Gst
       Gst::Caps.new(__return_value)
     end
 
-    def peer_query_convert(src_format, src_val, dest_format, dest_val)
+    def peer_query_convert(src_format : Gst::Format, src_val, dest_format : Gst::Format, dest_val)
       __return_value = LibGst.pad_peer_query_convert(to_unsafe.as(LibGst::Pad*), src_format, Int64.new(src_val), dest_format, dest_val)
       __return_value
     end
 
-    def peer_query_duration(format, duration)
+    def peer_query_duration(format : Gst::Format, duration)
       __return_value = LibGst.pad_peer_query_duration(to_unsafe.as(LibGst::Pad*), format, duration)
       __return_value
     end
 
-    def peer_query_position(format, cur)
+    def peer_query_position(format : Gst::Format, cur)
       __return_value = LibGst.pad_peer_query_position(to_unsafe.as(LibGst::Pad*), format, cur)
       __return_value
     end
@@ -279,7 +279,7 @@ module Gst
       Gst::Caps.new(__return_value)
     end
 
-    def query_convert(src_format, src_val, dest_format, dest_val)
+    def query_convert(src_format : Gst::Format, src_val, dest_format : Gst::Format, dest_val)
       __return_value = LibGst.pad_query_convert(to_unsafe.as(LibGst::Pad*), src_format, Int64.new(src_val), dest_format, dest_val)
       __return_value
     end
@@ -289,12 +289,12 @@ module Gst
       __return_value
     end
 
-    def query_duration(format, duration)
+    def query_duration(format : Gst::Format, duration)
       __return_value = LibGst.pad_query_duration(to_unsafe.as(LibGst::Pad*), format, duration)
       __return_value
     end
 
-    def query_position(format, cur)
+    def query_position(format : Gst::Format, cur)
       __return_value = LibGst.pad_query_position(to_unsafe.as(LibGst::Pad*), format, cur)
       __return_value
     end
@@ -309,12 +309,12 @@ module Gst
       __return_value
     end
 
-    def set_activate_function_full(activate : LibGst::PadActivateFunction, user_data, notify : LibGLib::DestroyNotify)
+    def set_activate_function_full(activate, user_data, notify)
       __return_value = LibGst.pad_set_activate_function_full(to_unsafe.as(LibGst::Pad*), activate, user_data && user_data, notify)
       __return_value
     end
 
-    def set_activatemode_function_full(activatemode : LibGst::PadActivateModeFunction, user_data, notify : LibGLib::DestroyNotify)
+    def set_activatemode_function_full(activatemode, user_data, notify)
       __return_value = LibGst.pad_set_activatemode_function_full(to_unsafe.as(LibGst::Pad*), activatemode, user_data && user_data, notify)
       __return_value
     end
@@ -324,12 +324,12 @@ module Gst
       __return_value
     end
 
-    def set_chain_function_full(chain : LibGst::PadChainFunction, user_data, notify : LibGLib::DestroyNotify)
+    def set_chain_function_full(chain, user_data, notify)
       __return_value = LibGst.pad_set_chain_function_full(to_unsafe.as(LibGst::Pad*), chain, user_data && user_data, notify)
       __return_value
     end
 
-    def set_chain_list_function_full(chainlist : LibGst::PadChainListFunction, user_data, notify : LibGLib::DestroyNotify)
+    def set_chain_list_function_full(chainlist, user_data, notify)
       __return_value = LibGst.pad_set_chain_list_function_full(to_unsafe.as(LibGst::Pad*), chainlist, user_data && user_data, notify)
       __return_value
     end
@@ -339,27 +339,27 @@ module Gst
       __return_value
     end
 
-    def set_event_full_function_full(event : LibGst::PadEventFullFunction, user_data, notify : LibGLib::DestroyNotify)
+    def set_event_full_function_full(event, user_data, notify)
       __return_value = LibGst.pad_set_event_full_function_full(to_unsafe.as(LibGst::Pad*), event, user_data && user_data, notify)
       __return_value
     end
 
-    def set_event_function_full(event : LibGst::PadEventFunction, user_data, notify : LibGLib::DestroyNotify)
+    def set_event_function_full(event, user_data, notify)
       __return_value = LibGst.pad_set_event_function_full(to_unsafe.as(LibGst::Pad*), event, user_data && user_data, notify)
       __return_value
     end
 
-    def set_getrange_function_full(get : LibGst::PadGetRangeFunction, user_data, notify : LibGLib::DestroyNotify)
+    def set_getrange_function_full(get, user_data, notify)
       __return_value = LibGst.pad_set_getrange_function_full(to_unsafe.as(LibGst::Pad*), get, user_data && user_data, notify)
       __return_value
     end
 
-    def set_iterate_internal_links_function_full(iterintlink : LibGst::PadIterIntLinkFunction, user_data, notify : LibGLib::DestroyNotify)
+    def set_iterate_internal_links_function_full(iterintlink, user_data, notify)
       __return_value = LibGst.pad_set_iterate_internal_links_function_full(to_unsafe.as(LibGst::Pad*), iterintlink, user_data && user_data, notify)
       __return_value
     end
 
-    def set_link_function_full(link : LibGst::PadLinkFunction, user_data, notify : LibGLib::DestroyNotify)
+    def set_link_function_full(link, user_data, notify)
       __return_value = LibGst.pad_set_link_function_full(to_unsafe.as(LibGst::Pad*), link, user_data && user_data, notify)
       __return_value
     end
@@ -369,22 +369,22 @@ module Gst
       __return_value
     end
 
-    def set_query_function_full(query : LibGst::PadQueryFunction, user_data, notify : LibGLib::DestroyNotify)
+    def set_query_function_full(query, user_data, notify)
       __return_value = LibGst.pad_set_query_function_full(to_unsafe.as(LibGst::Pad*), query, user_data && user_data, notify)
       __return_value
     end
 
-    def set_unlink_function_full(unlink : LibGst::PadUnlinkFunction, user_data, notify : LibGLib::DestroyNotify)
+    def set_unlink_function_full(unlink, user_data, notify)
       __return_value = LibGst.pad_set_unlink_function_full(to_unsafe.as(LibGst::Pad*), unlink, user_data && user_data, notify)
       __return_value
     end
 
-    def start_task(func : LibGst::TaskFunction, user_data, notify : LibGLib::DestroyNotify)
+    def start_task(func, user_data, notify)
       __return_value = LibGst.pad_start_task(to_unsafe.as(LibGst::Pad*), func, user_data && user_data, notify)
       __return_value
     end
 
-    def sticky_events_foreach(foreach_func : LibGst::PadStickyEventsForeachFunction, user_data)
+    def sticky_events_foreach(foreach_func, user_data)
       __return_value = LibGst.pad_sticky_events_foreach(to_unsafe.as(LibGst::Pad*), foreach_func, user_data && user_data)
       __return_value
     end

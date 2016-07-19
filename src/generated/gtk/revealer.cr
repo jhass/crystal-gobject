@@ -51,7 +51,7 @@ module Gtk
       __return_value
     end
 
-    def transition_type=(transition)
+    def transition_type=(transition : Gtk::RevealerTransitionType)
       __return_value = LibGtk.revealer_set_transition_type(to_unsafe.as(LibGtk::Revealer*), transition)
       __return_value
     end

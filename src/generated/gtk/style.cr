@@ -14,7 +14,7 @@ module Gtk
       cast Gtk::Style.new(__return_value)
     end
 
-    def apply_default_background(cr, window, state_type, x, y, width, height)
+    def apply_default_background(cr, window, state_type : Gtk::StateType, x, y, width, height)
       __return_value = LibGtk.style_apply_default_background(to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), window.to_unsafe.as(LibGdk::Window*), state_type, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
       __return_value
     end
@@ -49,12 +49,12 @@ module Gtk
       Gtk::IconSet.new(__return_value)
     end
 
-    def render_icon(source, direction, state, size, widget, detail)
+    def render_icon(source, direction : Gtk::TextDirection, state : Gtk::StateType, size, widget, detail)
       __return_value = LibGtk.style_render_icon(to_unsafe.as(LibGtk::Style*), source.to_unsafe.as(LibGtk::IconSource*), direction, state, Int32.new(size), widget && widget.to_unsafe.as(LibGtk::Widget*), detail && detail.to_unsafe)
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 
-    def set_background(window, state_type)
+    def set_background(window, state_type : Gtk::StateType)
       __return_value = LibGtk.style_set_background(to_unsafe.as(LibGtk::Style*), window.to_unsafe.as(LibGdk::Window*), state_type)
       __return_value
     end

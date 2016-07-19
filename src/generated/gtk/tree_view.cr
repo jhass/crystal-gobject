@@ -96,12 +96,12 @@ module Gtk
       Cairo::Surface.new(__return_value)
     end
 
-    def enable_model_drag_dest(targets, n_targets, actions)
+    def enable_model_drag_dest(targets, n_targets, actions : Gdk::DragAction)
       __return_value = LibGtk.tree_view_enable_model_drag_dest(to_unsafe.as(LibGtk::TreeView*), targets, Int32.new(n_targets), actions)
       __return_value
     end
 
-    def enable_model_drag_source(start_button_mask, targets, n_targets, actions)
+    def enable_model_drag_source(start_button_mask : Gdk::ModifierType, targets, n_targets, actions : Gdk::DragAction)
       __return_value = LibGtk.tree_view_enable_model_drag_source(to_unsafe.as(LibGtk::TreeView*), start_button_mask, targets, Int32.new(n_targets), actions)
       __return_value
     end
@@ -156,12 +156,12 @@ module Gtk
       __return_value
     end
 
-    def dest_row_at_pos(drag_x, drag_y, path, pos)
+    def dest_row_at_pos(drag_x, drag_y, path, pos : Gtk::TreeViewDropPosition?)
       __return_value = LibGtk.tree_view_get_dest_row_at_pos(to_unsafe.as(LibGtk::TreeView*), Int32.new(drag_x), Int32.new(drag_y), path, pos)
       __return_value
     end
 
-    def drag_dest_row(path, pos)
+    def drag_dest_row(path, pos : Gtk::TreeViewDropPosition?)
       __return_value = LibGtk.tree_view_get_drag_dest_row(to_unsafe.as(LibGtk::TreeView*), path, pos)
       __return_value
     end
@@ -301,7 +301,7 @@ module Gtk
       __return_value
     end
 
-    def insert_column_with_data_func(position, title, cell, func : LibGtk::TreeCellDataFunc, data, dnotify : LibGLib::DestroyNotify)
+    def insert_column_with_data_func(position, title, cell, func, data, dnotify)
       __return_value = LibGtk.tree_view_insert_column_with_data_func(to_unsafe.as(LibGtk::TreeView*), Int32.new(position), title.to_unsafe, cell.to_unsafe.as(LibGtk::CellRenderer*), func, data && data, dnotify)
       __return_value
     end
@@ -316,7 +316,7 @@ module Gtk
       __return_value
     end
 
-    def map_expanded_rows(func : LibGtk::TreeViewMappingFunc, data)
+    def map_expanded_rows(func, data)
       __return_value = LibGtk.tree_view_map_expanded_rows(to_unsafe.as(LibGtk::TreeView*), func, data && data)
       __return_value
     end
@@ -356,7 +356,7 @@ module Gtk
       __return_value
     end
 
-    def set_column_drag_function(func : LibGtk::TreeViewColumnDropFunc?, user_data, destroy : LibGLib::DestroyNotify?)
+    def set_column_drag_function(func, user_data, destroy)
       __return_value = LibGtk.tree_view_set_column_drag_function(to_unsafe.as(LibGtk::TreeView*), func && func, user_data && user_data, destroy && destroy)
       __return_value
     end
@@ -371,12 +371,12 @@ module Gtk
       __return_value
     end
 
-    def set_destroy_count_func(func : LibGtk::TreeDestroyCountFunc?, data, destroy : LibGLib::DestroyNotify?)
+    def set_destroy_count_func(func, data, destroy)
       __return_value = LibGtk.tree_view_set_destroy_count_func(to_unsafe.as(LibGtk::TreeView*), func && func, data && data, destroy && destroy)
       __return_value
     end
 
-    def set_drag_dest_row(path, pos)
+    def set_drag_dest_row(path, pos : Gtk::TreeViewDropPosition)
       __return_value = LibGtk.tree_view_set_drag_dest_row(to_unsafe.as(LibGtk::TreeView*), path && path.to_unsafe.as(LibGtk::TreePath*), pos)
       __return_value
     end
@@ -401,7 +401,7 @@ module Gtk
       __return_value
     end
 
-    def grid_lines=(grid_lines)
+    def grid_lines=(grid_lines : Gtk::TreeViewGridLines)
       __return_value = LibGtk.tree_view_set_grid_lines(to_unsafe.as(LibGtk::TreeView*), grid_lines)
       __return_value
     end
@@ -446,7 +446,7 @@ module Gtk
       __return_value
     end
 
-    def set_row_separator_func(func : LibGtk::TreeViewRowSeparatorFunc?, data, destroy : LibGLib::DestroyNotify?)
+    def set_row_separator_func(func, data, destroy)
       __return_value = LibGtk.tree_view_set_row_separator_func(to_unsafe.as(LibGtk::TreeView*), func && func, data && data, destroy && destroy)
       __return_value
     end
@@ -471,12 +471,12 @@ module Gtk
       __return_value
     end
 
-    def set_search_equal_func(search_equal_func : LibGtk::TreeViewSearchEqualFunc, search_user_data, search_destroy : LibGLib::DestroyNotify?)
+    def set_search_equal_func(search_equal_func, search_user_data, search_destroy)
       __return_value = LibGtk.tree_view_set_search_equal_func(to_unsafe.as(LibGtk::TreeView*), search_equal_func, search_user_data && search_user_data, search_destroy && search_destroy)
       __return_value
     end
 
-    def set_search_position_func(func : LibGtk::TreeViewSearchPositionFunc?, data, destroy : LibGLib::DestroyNotify?)
+    def set_search_position_func(func, data, destroy)
       __return_value = LibGtk.tree_view_set_search_position_func(to_unsafe.as(LibGtk::TreeView*), func && func, data && data, destroy && destroy)
       __return_value
     end

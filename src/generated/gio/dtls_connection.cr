@@ -7,7 +7,7 @@ module Gio
       __return_value
     end
 
-    def close_async(io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def close_async(io_priority, cancellable, callback, user_data)
       __return_value = LibGio.dtls_connection_close_async(to_unsafe.as(LibGio::DtlsConnection*), Int32.new(io_priority), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
@@ -19,7 +19,7 @@ module Gio
       __return_value
     end
 
-    def emit_accept_certificate(peer_cert, errors)
+    def emit_accept_certificate(peer_cert, errors : Gio::TlsCertificateFlags)
       __return_value = LibGio.dtls_connection_emit_accept_certificate(to_unsafe.as(LibGio::DtlsConnection*), peer_cert.to_unsafe.as(LibGio::TlsCertificate*), errors)
       __return_value
     end
@@ -66,7 +66,7 @@ module Gio
       __return_value
     end
 
-    def handshake_async(io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def handshake_async(io_priority, cancellable, callback, user_data)
       __return_value = LibGio.dtls_connection_handshake_async(to_unsafe.as(LibGio::DtlsConnection*), Int32.new(io_priority), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
@@ -93,7 +93,7 @@ module Gio
       __return_value
     end
 
-    def rehandshake_mode=(mode)
+    def rehandshake_mode=(mode : Gio::TlsRehandshakeMode)
       __return_value = LibGio.dtls_connection_set_rehandshake_mode(to_unsafe.as(LibGio::DtlsConnection*), mode)
       __return_value
     end
@@ -110,7 +110,7 @@ module Gio
       __return_value
     end
 
-    def shutdown_async(shutdown_read, shutdown_write, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def shutdown_async(shutdown_read, shutdown_write, io_priority, cancellable, callback, user_data)
       __return_value = LibGio.dtls_connection_shutdown_async(to_unsafe.as(LibGio::DtlsConnection*), shutdown_read, shutdown_write, Int32.new(io_priority), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end

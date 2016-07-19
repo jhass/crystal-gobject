@@ -3715,9 +3715,9 @@ lib LibGdk
     touchpad_pinch : LibGdk::EventTouchpadPinch
   end
   fun event_new = gdk_event_new(type : LibGdk::EventType) : LibGdk::Event*
-  fun event__get_angle = gdk_events_get_angle(this : Event*, event2 : LibGdk::Event*, angle : Float64*) : Bool
-  fun event__get_center = gdk_events_get_center(this : Event*, event2 : LibGdk::Event*, x : Float64*, y : Float64*) : Bool
-  fun event__get_distance = gdk_events_get_distance(this : Event*, event2 : LibGdk::Event*, distance : Float64*) : Bool
+  fun event_get_angle = gdk_events_get_angle(this : Event*, event2 : LibGdk::Event*, angle : Float64*) : Bool
+  fun event_get_center = gdk_events_get_center(this : Event*, event2 : LibGdk::Event*, x : Float64*, y : Float64*) : Bool
+  fun event_get_distance = gdk_events_get_distance(this : Event*, event2 : LibGdk::Event*, distance : Float64*) : Bool
   fun event_copy = gdk_event_copy(this : Event*) : LibGdk::Event*
   fun event_free = gdk_event_free(this : Event*) : Void
   fun event_get_axis = gdk_event_get_axis(this : Event*, axis_use : LibGdk::AxisUse, value : Float64*) : Bool

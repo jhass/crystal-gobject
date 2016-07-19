@@ -20,12 +20,12 @@ module Gio
 
 
 
-    def self.new_any(family) : self
+    def self.new_any(family : Gio::SocketFamily) : self
       __return_value = LibGio.inet_address_new_any(family)
       cast Gio::InetAddress.new(__return_value)
     end
 
-    def self.new_from_bytes(bytes, family) : self
+    def self.new_from_bytes(bytes, family : Gio::SocketFamily) : self
       __return_value = LibGio.inet_address_new_from_bytes(bytes, family)
       cast Gio::InetAddress.new(__return_value)
     end
@@ -35,7 +35,7 @@ module Gio
       cast Gio::InetAddress.new(__return_value)
     end
 
-    def self.new_loopback(family) : self
+    def self.new_loopback(family : Gio::SocketFamily) : self
       __return_value = LibGio.inet_address_new_loopback(family)
       cast Gio::InetAddress.new(__return_value)
     end

@@ -24,7 +24,7 @@ module Gio
 
 
 
-    def self.new(family, type, protocol) : self
+    def self.new(family : Gio::SocketFamily, type : Gio::SocketType, protocol : Gio::SocketProtocol) : self
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_new(family, type, protocol, pointerof(__error))
       GLib::Error.assert __error
@@ -66,19 +66,19 @@ module Gio
       __return_value
     end
 
-    def condition_check(condition)
+    def condition_check(condition : GLib::IOCondition)
       __return_value = LibGio.socket_condition_check(to_unsafe.as(LibGio::Socket*), condition)
       __return_value
     end
 
-    def condition_timed_wait(condition, timeout, cancellable)
+    def condition_timed_wait(condition : GLib::IOCondition, timeout, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_condition_timed_wait(to_unsafe.as(LibGio::Socket*), condition, Int64.new(timeout), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def condition_wait(condition, cancellable)
+    def condition_wait(condition : GLib::IOCondition, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_condition_wait(to_unsafe.as(LibGio::Socket*), condition, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error

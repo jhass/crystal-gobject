@@ -10,7 +10,7 @@ module Atk
 
 
 
-    def self.new(targets, n_targets, relationship) : self
+    def self.new(targets, n_targets, relationship : Atk::RelationType) : self
       __return_value = LibAtk.relation_new(targets, Int32.new(n_targets), relationship)
       cast Atk::Relation.new(__return_value)
     end

@@ -29,7 +29,7 @@ module Gio
       __return_value
     end
 
-    def fill_async(count, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def fill_async(count, io_priority, cancellable, callback, user_data)
       __return_value = LibGio.buffered_input_stream_fill_async(to_unsafe.as(LibGio::BufferedInputStream*), Int64.new(count), Int32.new(io_priority), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end

@@ -69,7 +69,7 @@ module Atk
     __return_value
   end
 
-  def self.relation_type_get_name(type)
+  def self.relation_type_get_name(type : Atk::RelationType)
     __return_value = LibAtk.relation_type_get_name(type)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
@@ -99,12 +99,12 @@ module Atk
     __return_value
   end
 
-  def self.role_get_localized_name(role)
+  def self.role_get_localized_name(role : Atk::Role)
     __return_value = LibAtk.role_get_localized_name(role)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.role_get_name(role)
+  def self.role_get_name(role : Atk::Role)
     __return_value = LibAtk.role_get_name(role)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
@@ -119,7 +119,7 @@ module Atk
     __return_value
   end
 
-  def self.state_type_get_name(type)
+  def self.state_type_get_name(type : Atk::StateType)
     __return_value = LibAtk.state_type_get_name(type)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
@@ -134,12 +134,12 @@ module Atk
     __return_value
   end
 
-  def self.text_attribute_get_name(attr)
+  def self.text_attribute_get_name(attr : Atk::TextAttribute)
     __return_value = LibAtk.text_attribute_get_name(attr)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.text_attribute_get_value(attr, index)
+  def self.text_attribute_get_value(attr : Atk::TextAttribute, index)
     __return_value = LibAtk.text_attribute_get_value(attr, Int32.new(index))
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
@@ -154,12 +154,12 @@ module Atk
     __return_value
   end
 
-  def self.value_type_get_localized_name(value_type)
+  def self.value_type_get_localized_name(value_type : Atk::ValueType)
     __return_value = LibAtk.value_type_get_localized_name(value_type)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.value_type_get_name(value_type)
+  def self.value_type_get_name(value_type : Atk::ValueType)
     __return_value = LibAtk.value_type_get_name(value_type)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end

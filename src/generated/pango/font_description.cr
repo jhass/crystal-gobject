@@ -115,7 +115,7 @@ module Pango
       __return_value
     end
 
-    def gravity=(gravity)
+    def gravity=(gravity : Pango::Gravity)
       __return_value = LibPango.font_description_set_gravity(to_unsafe.as(LibPango::FontDescription*), gravity)
       __return_value
     end
@@ -125,22 +125,22 @@ module Pango
       __return_value
     end
 
-    def stretch=(stretch)
+    def stretch=(stretch : Pango::Stretch)
       __return_value = LibPango.font_description_set_stretch(to_unsafe.as(LibPango::FontDescription*), stretch)
       __return_value
     end
 
-    def style=(style)
+    def style=(style : Pango::Style)
       __return_value = LibPango.font_description_set_style(to_unsafe.as(LibPango::FontDescription*), style)
       __return_value
     end
 
-    def variant=(variant)
+    def variant=(variant : Pango::Variant)
       __return_value = LibPango.font_description_set_variant(to_unsafe.as(LibPango::FontDescription*), variant)
       __return_value
     end
 
-    def weight=(weight)
+    def weight=(weight : Pango::Weight)
       __return_value = LibPango.font_description_set_weight(to_unsafe.as(LibPango::FontDescription*), weight)
       __return_value
     end
@@ -155,7 +155,7 @@ module Pango
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def unset_fields(to_unset)
+    def unset_fields(to_unset : Pango::FontMask)
       __return_value = LibPango.font_description_unset_fields(to_unsafe.as(LibPango::FontDescription*), to_unset)
       __return_value
     end

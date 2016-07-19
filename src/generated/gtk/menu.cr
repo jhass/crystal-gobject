@@ -40,7 +40,7 @@ module Gtk
       __return_value
     end
 
-    def attach_to_widget(attach_widget, detacher : LibGtk::MenuDetachFunc?)
+    def attach_to_widget(attach_widget, detacher)
       __return_value = LibGtk.menu_attach_to_widget(to_unsafe.as(LibGtk::Menu*), attach_widget.to_unsafe.as(LibGtk::Widget*), detacher && detacher)
       __return_value
     end
@@ -95,12 +95,12 @@ module Gtk
       __return_value
     end
 
-    def popup(parent_menu_shell, parent_menu_item, func : LibGtk::MenuPositionFunc?, data, button, activate_time)
+    def popup(parent_menu_shell, parent_menu_item, func, data, button, activate_time)
       __return_value = LibGtk.menu_popup(to_unsafe.as(LibGtk::Menu*), parent_menu_shell && parent_menu_shell.to_unsafe.as(LibGtk::Widget*), parent_menu_item && parent_menu_item.to_unsafe.as(LibGtk::Widget*), func && func, data && data, UInt32.new(button), UInt32.new(activate_time))
       __return_value
     end
 
-    def popup_for_device(device, parent_menu_shell, parent_menu_item, func : LibGtk::MenuPositionFunc?, data, destroy : LibGLib::DestroyNotify?, button, activate_time)
+    def popup_for_device(device, parent_menu_shell, parent_menu_item, func, data, destroy, button, activate_time)
       __return_value = LibGtk.menu_popup_for_device(to_unsafe.as(LibGtk::Menu*), device && device.to_unsafe.as(LibGdk::Device*), parent_menu_shell && parent_menu_shell.to_unsafe.as(LibGtk::Widget*), parent_menu_item && parent_menu_item.to_unsafe.as(LibGtk::Widget*), func && func, data && data, destroy && destroy, UInt32.new(button), UInt32.new(activate_time))
       __return_value
     end

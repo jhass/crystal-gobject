@@ -38,7 +38,7 @@ module Gst
       Gst::MetaInfo.new(__return_value) if __return_value
     end
 
-    def self.register(api, impl, size, init_func : LibGst::MetaInitFunction, free_func : LibGst::MetaFreeFunction, transform_func : LibGst::MetaTransformFunction)
+    def self.register(api, impl, size, init_func, free_func, transform_func)
       __return_value = LibGst.meta_register(UInt64.new(api), impl.to_unsafe, UInt64.new(size), init_func, free_func, transform_func)
       Gst::MetaInfo.new(__return_value)
     end

@@ -17,7 +17,7 @@ module Gtk
 
 
 
-    def self.new(title, action) : self
+    def self.new(title, action : Gtk::FileChooserAction) : self
       __return_value = LibGtk.file_chooser_button_new(title.to_unsafe, action)
       cast Gtk::Widget.new(__return_value)
     end

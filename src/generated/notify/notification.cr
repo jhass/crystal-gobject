@@ -19,7 +19,7 @@ module Notify
       cast Notify::Notification.new(__return_value)
     end
 
-    def add_action(action, label, callback : LibNotify::ActionCallback, user_data, free_func : LibGLib::DestroyNotify)
+    def add_action(action, label, callback, user_data, free_func)
       __return_value = LibNotify.notification_add_action(to_unsafe.as(LibNotify::Notification*), action.to_unsafe, label.to_unsafe, callback, user_data, free_func)
       __return_value
     end
@@ -106,7 +106,7 @@ module Notify
       __return_value
     end
 
-    def urgency=(urgency)
+    def urgency=(urgency : Notify::Urgency)
       __return_value = LibNotify.notification_set_urgency(to_unsafe.as(LibNotify::Notification*), urgency)
       __return_value
     end

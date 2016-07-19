@@ -75,7 +75,7 @@ module Gdk
 
     def event
       __return_value = LibGdk.display_get_event(to_unsafe.as(LibGdk::Display*))
-      __return_value if __return_value
+      Gdk::Event.new(__return_value) if __return_value
     end
 
     def maximal_cursor_size(width, height)
@@ -93,7 +93,7 @@ module Gdk
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def pointer(screen, x, y, mask)
+    def pointer(screen, x, y, mask : Gdk::ModifierType?)
       __return_value = LibGdk.display_get_pointer(to_unsafe.as(LibGdk::Display*), screen, x, y, mask)
       __return_value
     end
@@ -140,7 +140,7 @@ module Gdk
 
     def peek_event
       __return_value = LibGdk.display_peek_event(to_unsafe.as(LibGdk::Display*))
-      __return_value if __return_value
+      Gdk::Event.new(__return_value) if __return_value
     end
 
     def pointer_is_grabbed

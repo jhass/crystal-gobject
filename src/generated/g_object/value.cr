@@ -337,7 +337,7 @@ module GObject
     end
 
     def data
-      PointerIterator.new((to_unsafe.as(LibGObject::Value*).value.data)) {|__item| __item }
+      PointerIterator.new((to_unsafe.as(LibGObject::Value*).value.data)) {|__item| GObject::G_Value__data__union.new(__item) }
     end
 
     def data=(value : Array(GObject::G_Value__data__union))

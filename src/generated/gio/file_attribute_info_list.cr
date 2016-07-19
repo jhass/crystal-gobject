@@ -23,7 +23,7 @@ module Gio
       cast Gio::FileAttributeInfoList.new(__return_value)
     end
 
-    def add(name, type, flags)
+    def add(name, type : Gio::FileAttributeType, flags : Gio::FileAttributeInfoFlags)
       __return_value = LibGio.file_attribute_info_list_add(to_unsafe.as(LibGio::FileAttributeInfoList*), name.to_unsafe, type, flags)
       __return_value
     end

@@ -9,7 +9,7 @@ module Gio
     end
 
 
-    def self.new(flags) : self
+    def self.new(flags : Gio::SubprocessFlags) : self
       __return_value = LibGio.subprocess_launcher_new(flags)
       cast Gio::SubprocessLauncher.new(__return_value)
     end
@@ -19,7 +19,7 @@ module Gio
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def set_child_setup(child_setup : LibGLib::SpawnChildSetupFunc, user_data, destroy_notify : LibGLib::DestroyNotify)
+    def set_child_setup(child_setup, user_data, destroy_notify)
       __return_value = LibGio.subprocess_launcher_set_child_setup(to_unsafe.as(LibGio::SubprocessLauncher*), child_setup, user_data && user_data, destroy_notify)
       __return_value
     end
@@ -34,7 +34,7 @@ module Gio
       __return_value
     end
 
-    def flags=(flags)
+    def flags=(flags : Gio::SubprocessFlags)
       __return_value = LibGio.subprocess_launcher_set_flags(to_unsafe.as(LibGio::SubprocessLauncher*), flags)
       __return_value
     end

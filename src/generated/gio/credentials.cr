@@ -34,7 +34,7 @@ module Gio
       __return_value
     end
 
-    def set_native(native_type, native)
+    def set_native(native_type : Gio::CredentialsType, native)
       __return_value = LibGio.credentials_set_native(to_unsafe.as(LibGio::Credentials*), native_type, native)
       __return_value
     end

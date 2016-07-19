@@ -15,7 +15,7 @@ module Gtk
       cast Gtk::PaperSize.new(__return_value)
     end
 
-    def self.new_custom(name, display_name, width, height, unit) : self
+    def self.new_custom(name, display_name, width, height, unit : Gtk::Unit) : self
       __return_value = LibGtk.paper_size_new_custom(name.to_unsafe, display_name.to_unsafe, Float64.new(width), Float64.new(height), unit)
       cast Gtk::PaperSize.new(__return_value)
     end
@@ -47,22 +47,22 @@ module Gtk
       __return_value
     end
 
-    def default_bottom_margin(unit)
+    def default_bottom_margin(unit : Gtk::Unit)
       __return_value = LibGtk.paper_size_get_default_bottom_margin(to_unsafe.as(LibGtk::PaperSize*), unit)
       __return_value
     end
 
-    def default_left_margin(unit)
+    def default_left_margin(unit : Gtk::Unit)
       __return_value = LibGtk.paper_size_get_default_left_margin(to_unsafe.as(LibGtk::PaperSize*), unit)
       __return_value
     end
 
-    def default_right_margin(unit)
+    def default_right_margin(unit : Gtk::Unit)
       __return_value = LibGtk.paper_size_get_default_right_margin(to_unsafe.as(LibGtk::PaperSize*), unit)
       __return_value
     end
 
-    def default_top_margin(unit)
+    def default_top_margin(unit : Gtk::Unit)
       __return_value = LibGtk.paper_size_get_default_top_margin(to_unsafe.as(LibGtk::PaperSize*), unit)
       __return_value
     end
@@ -72,7 +72,7 @@ module Gtk
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def height(unit)
+    def height(unit : Gtk::Unit)
       __return_value = LibGtk.paper_size_get_height(to_unsafe.as(LibGtk::PaperSize*), unit)
       __return_value
     end
@@ -87,7 +87,7 @@ module Gtk
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def width(unit)
+    def width(unit : Gtk::Unit)
       __return_value = LibGtk.paper_size_get_width(to_unsafe.as(LibGtk::PaperSize*), unit)
       __return_value
     end
@@ -107,7 +107,7 @@ module Gtk
       __return_value
     end
 
-    def set_size(width, height, unit)
+    def set_size(width, height, unit : Gtk::Unit)
       __return_value = LibGtk.paper_size_set_size(to_unsafe.as(LibGtk::PaperSize*), Float64.new(width), Float64.new(height), unit)
       __return_value
     end

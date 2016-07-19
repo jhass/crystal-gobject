@@ -10,7 +10,7 @@ module Atk
       __return_value
     end
 
-    def bounded_ranges(rect, coord_type, x_clip_type, y_clip_type)
+    def bounded_ranges(rect, coord_type : Atk::CoordType, x_clip_type : Atk::TextClipType, y_clip_type : Atk::TextClipType)
       __return_value = LibAtk.text_get_bounded_ranges(to_unsafe.as(LibAtk::Text*), rect.to_unsafe.as(LibAtk::TextRectangle*), coord_type, x_clip_type, y_clip_type)
       PointerIterator.new(__return_value) {|__item| Atk::TextRange.new(__item) }
     end
@@ -30,7 +30,7 @@ module Atk
       __return_value
     end
 
-    def character_extents(offset, x, y, width, height, coords)
+    def character_extents(offset, x, y, width, height, coords : Atk::CoordType)
       __return_value = LibAtk.text_get_character_extents(to_unsafe.as(LibAtk::Text*), Int32.new(offset), x, y, width, height, coords)
       __return_value
     end
@@ -45,12 +45,12 @@ module Atk
       __return_value
     end
 
-    def offset_at_point(x, y, coords)
+    def offset_at_point(x, y, coords : Atk::CoordType)
       __return_value = LibAtk.text_get_offset_at_point(to_unsafe.as(LibAtk::Text*), Int32.new(x), Int32.new(y), coords)
       __return_value
     end
 
-    def range_extents(start_offset, end_offset, coord_type, rect)
+    def range_extents(start_offset, end_offset, coord_type : Atk::CoordType, rect)
       __return_value = LibAtk.text_get_range_extents(to_unsafe.as(LibAtk::Text*), Int32.new(start_offset), Int32.new(end_offset), coord_type, rect.to_unsafe.as(LibAtk::TextRectangle*))
       __return_value
     end
@@ -65,7 +65,7 @@ module Atk
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def string_at_offset(offset, granularity, start_offset, end_offset)
+    def string_at_offset(offset, granularity : Atk::TextGranularity, start_offset, end_offset)
       __return_value = LibAtk.text_get_string_at_offset(to_unsafe.as(LibAtk::Text*), Int32.new(offset), granularity, start_offset, end_offset)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
@@ -75,17 +75,17 @@ module Atk
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def text_after_offset(offset, boundary_type, start_offset, end_offset)
+    def text_after_offset(offset, boundary_type : Atk::TextBoundary, start_offset, end_offset)
       __return_value = LibAtk.text_get_text_after_offset(to_unsafe.as(LibAtk::Text*), Int32.new(offset), boundary_type, start_offset, end_offset)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def text_at_offset(offset, boundary_type, start_offset, end_offset)
+    def text_at_offset(offset, boundary_type : Atk::TextBoundary, start_offset, end_offset)
       __return_value = LibAtk.text_get_text_at_offset(to_unsafe.as(LibAtk::Text*), Int32.new(offset), boundary_type, start_offset, end_offset)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def text_before_offset(offset, boundary_type, start_offset, end_offset)
+    def text_before_offset(offset, boundary_type : Atk::TextBoundary, start_offset, end_offset)
       __return_value = LibAtk.text_get_text_before_offset(to_unsafe.as(LibAtk::Text*), Int32.new(offset), boundary_type, start_offset, end_offset)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end

@@ -30,7 +30,7 @@ module Gtk
       __return_value
     end
 
-    def hscroll_policy=(policy)
+    def hscroll_policy=(policy : Gtk::ScrollablePolicy)
       __return_value = LibGtk.scrollable_set_hscroll_policy(to_unsafe.as(LibGtk::Scrollable*), policy)
       __return_value
     end
@@ -40,7 +40,7 @@ module Gtk
       __return_value
     end
 
-    def vscroll_policy=(policy)
+    def vscroll_policy=(policy : Gtk::ScrollablePolicy)
       __return_value = LibGtk.scrollable_set_vscroll_policy(to_unsafe.as(LibGtk::Scrollable*), policy)
       __return_value
     end

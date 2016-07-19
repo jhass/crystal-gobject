@@ -43,7 +43,7 @@ module Gst
       __return_value
     end
 
-    def self.id_wait_async(id, func : LibGst::ClockCallback, user_data, destroy_data : LibGLib::DestroyNotify)
+    def self.id_wait_async(id, func, user_data, destroy_data)
       __return_value = LibGst.clock_id_wait_async(id, func, user_data && user_data, destroy_data)
       __return_value
     end

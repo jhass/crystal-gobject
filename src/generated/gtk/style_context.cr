@@ -42,7 +42,7 @@ module Gtk
       __return_value
     end
 
-    def add_region(region_name, flags)
+    def add_region(region_name, flags : Gtk::RegionFlags)
       __return_value = LibGtk.style_context_add_region(to_unsafe.as(LibGtk::StyleContext*), region_name.to_unsafe, flags)
       __return_value
     end
@@ -52,22 +52,22 @@ module Gtk
       __return_value
     end
 
-    def background_color(state, color)
+    def background_color(state : Gtk::StateFlags, color)
       __return_value = LibGtk.style_context_get_background_color(to_unsafe.as(LibGtk::StyleContext*), state, color)
       __return_value
     end
 
-    def border(state, border)
+    def border(state : Gtk::StateFlags, border)
       __return_value = LibGtk.style_context_get_border(to_unsafe.as(LibGtk::StyleContext*), state, border)
       __return_value
     end
 
-    def border_color(state, color)
+    def border_color(state : Gtk::StateFlags, color)
       __return_value = LibGtk.style_context_get_border_color(to_unsafe.as(LibGtk::StyleContext*), state, color)
       __return_value
     end
 
-    def color(state, color)
+    def color(state : Gtk::StateFlags, color)
       __return_value = LibGtk.style_context_get_color(to_unsafe.as(LibGtk::StyleContext*), state, color)
       __return_value
     end
@@ -77,7 +77,7 @@ module Gtk
       __return_value
     end
 
-    def font(state)
+    def font(state : Gtk::StateFlags)
       __return_value = LibGtk.style_context_get_font(to_unsafe.as(LibGtk::StyleContext*), state)
       Pango::FontDescription.new(__return_value)
     end
@@ -92,12 +92,12 @@ module Gtk
       __return_value
     end
 
-    def margin(state, margin)
+    def margin(state : Gtk::StateFlags, margin)
       __return_value = LibGtk.style_context_get_margin(to_unsafe.as(LibGtk::StyleContext*), state, margin)
       __return_value
     end
 
-    def padding(state, padding)
+    def padding(state : Gtk::StateFlags, padding)
       __return_value = LibGtk.style_context_get_padding(to_unsafe.as(LibGtk::StyleContext*), state, padding)
       __return_value
     end
@@ -112,7 +112,7 @@ module Gtk
       Gtk::WidgetPath.new(__return_value)
     end
 
-    def property(property, state, value)
+    def property(property, state : Gtk::StateFlags, value)
       __return_value = LibGtk.style_context_get_property(to_unsafe.as(LibGtk::StyleContext*), property.to_unsafe, state, value)
       __return_value
     end
@@ -147,7 +147,7 @@ module Gtk
       __return_value
     end
 
-    def has_region(region_name, flags_return)
+    def has_region(region_name, flags_return : Gtk::RegionFlags?)
       __return_value = LibGtk.style_context_has_region(to_unsafe.as(LibGtk::StyleContext*), region_name.to_unsafe, flags_return)
       __return_value
     end
@@ -177,7 +177,7 @@ module Gtk
       Gtk::IconSet.new(__return_value)
     end
 
-    def notify_state_change(window, region_id, state, state_value)
+    def notify_state_change(window, region_id, state : Gtk::StateType, state_value)
       __return_value = LibGtk.style_context_notify_state_change(to_unsafe.as(LibGtk::StyleContext*), window.to_unsafe.as(LibGdk::Window*), region_id && region_id, state, state_value)
       __return_value
     end
@@ -227,7 +227,7 @@ module Gtk
       __return_value
     end
 
-    def direction=(direction)
+    def direction=(direction : Gtk::TextDirection)
       __return_value = LibGtk.style_context_set_direction(to_unsafe.as(LibGtk::StyleContext*), direction)
       __return_value
     end
@@ -237,7 +237,7 @@ module Gtk
       __return_value
     end
 
-    def junction_sides=(sides)
+    def junction_sides=(sides : Gtk::JunctionSides)
       __return_value = LibGtk.style_context_set_junction_sides(to_unsafe.as(LibGtk::StyleContext*), sides)
       __return_value
     end
@@ -262,17 +262,17 @@ module Gtk
       __return_value
     end
 
-    def state=(flags)
+    def state=(flags : Gtk::StateFlags)
       __return_value = LibGtk.style_context_set_state(to_unsafe.as(LibGtk::StyleContext*), flags)
       __return_value
     end
 
-    def state_is_running(state, progress)
+    def state_is_running(state : Gtk::StateType, progress)
       __return_value = LibGtk.style_context_state_is_running(to_unsafe.as(LibGtk::StyleContext*), state, progress)
       __return_value
     end
 
-    def to_string(flags)
+    def to_string(flags : Gtk::StyleContextPrintFlags)
       __return_value = LibGtk.style_context_to_string(to_unsafe.as(LibGtk::StyleContext*), flags)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end

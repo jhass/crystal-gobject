@@ -33,12 +33,12 @@ module Gst
       __return_value
     end
 
-    def lock(flags)
+    def lock(flags : Gst::LockFlags)
       __return_value = LibGst.mini_object_lock(to_unsafe.as(LibGst::MiniObject*), flags)
       __return_value
     end
 
-    def set_qdata(quark, data, destroy : LibGLib::DestroyNotify)
+    def set_qdata(quark, data, destroy)
       __return_value = LibGst.mini_object_set_qdata(to_unsafe.as(LibGst::MiniObject*), UInt32.new(quark), data && data, destroy)
       __return_value
     end
@@ -48,7 +48,7 @@ module Gst
       __return_value if __return_value
     end
 
-    def unlock(flags)
+    def unlock(flags : Gst::LockFlags)
       __return_value = LibGst.mini_object_unlock(to_unsafe.as(LibGst::MiniObject*), flags)
       __return_value
     end

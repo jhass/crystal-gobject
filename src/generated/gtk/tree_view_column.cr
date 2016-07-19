@@ -204,7 +204,7 @@ module Gtk
       __return_value
     end
 
-    def set_cell_data_func(cell_renderer, func : LibGtk::TreeCellDataFunc?, func_data, destroy : LibGLib::DestroyNotify)
+    def set_cell_data_func(cell_renderer, func, func_data, destroy)
       __return_value = LibGtk.tree_view_column_set_cell_data_func(to_unsafe.as(LibGtk::TreeViewColumn*), cell_renderer.to_unsafe.as(LibGtk::CellRenderer*), func && func, func_data && func_data, destroy)
       __return_value
     end
@@ -244,7 +244,7 @@ module Gtk
       __return_value
     end
 
-    def sizing=(type)
+    def sizing=(type : Gtk::TreeViewColumnSizing)
       __return_value = LibGtk.tree_view_column_set_sizing(to_unsafe.as(LibGtk::TreeViewColumn*), type)
       __return_value
     end
@@ -259,7 +259,7 @@ module Gtk
       __return_value
     end
 
-    def sort_order=(order)
+    def sort_order=(order : Gtk::SortType)
       __return_value = LibGtk.tree_view_column_set_sort_order(to_unsafe.as(LibGtk::TreeViewColumn*), order)
       __return_value
     end

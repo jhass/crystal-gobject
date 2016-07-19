@@ -50,12 +50,12 @@ module Gtk
       __return_value
     end
 
-    def forall(callback : LibGtk::Callback, callback_data)
+    def forall(callback, callback_data)
       __return_value = LibGtk.container_forall(to_unsafe.as(LibGtk::Container*), callback, callback_data && callback_data)
       __return_value
     end
 
-    def foreach(callback : LibGtk::Callback, callback_data)
+    def foreach(callback, callback_data)
       __return_value = LibGtk.container_foreach(to_unsafe.as(LibGtk::Container*), callback, callback_data && callback_data)
       __return_value
     end
@@ -145,7 +145,7 @@ module Gtk
       __return_value
     end
 
-    def resize_mode=(resize_mode)
+    def resize_mode=(resize_mode : Gtk::ResizeMode)
       __return_value = LibGtk.container_set_resize_mode(to_unsafe.as(LibGtk::Container*), resize_mode)
       __return_value
     end

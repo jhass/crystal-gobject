@@ -78,7 +78,7 @@ module Gio
       __return_value
     end
 
-    def byte_order=(order)
+    def byte_order=(order : Gio::DataStreamByteOrder)
       __return_value = LibGio.data_output_stream_set_byte_order(to_unsafe.as(LibGio::DataOutputStream*), order)
       __return_value
     end

@@ -22,7 +22,7 @@ module Gtk
       cast Gtk::Widget.new(__return_value)
     end
 
-    def attach(child, left_attach, right_attach, top_attach, bottom_attach, xoptions, yoptions, xpadding, ypadding)
+    def attach(child, left_attach, right_attach, top_attach, bottom_attach, xoptions : Gtk::AttachOptions, yoptions : Gtk::AttachOptions, xpadding, ypadding)
       __return_value = LibGtk.table_attach(to_unsafe.as(LibGtk::Table*), child.to_unsafe.as(LibGtk::Widget*), UInt32.new(left_attach), UInt32.new(right_attach), UInt32.new(top_attach), UInt32.new(bottom_attach), xoptions, yoptions, UInt32.new(xpadding), UInt32.new(ypadding))
       __return_value
     end

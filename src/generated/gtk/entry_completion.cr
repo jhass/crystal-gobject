@@ -119,7 +119,7 @@ module Gtk
       __return_value
     end
 
-    def set_match_func(func : LibGtk::EntryCompletionMatchFunc, func_data, func_notify : LibGLib::DestroyNotify)
+    def set_match_func(func, func_data, func_notify)
       __return_value = LibGtk.entry_completion_set_match_func(to_unsafe.as(LibGtk::EntryCompletion*), func, func_data && func_data, func_notify)
       __return_value
     end

@@ -12,7 +12,7 @@ module Gio
 
 
 
-    def self.new(format, level) : self
+    def self.new(format : Gio::ZlibCompressorFormat, level) : self
       __return_value = LibGio.zlib_compressor_new(format, Int32.new(level))
       cast Gio::ZlibCompressor.new(__return_value)
     end

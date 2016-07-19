@@ -17,7 +17,7 @@ module Gio
       Gio::Credentials.new(__return_value)
     end
 
-    def receive_credentials_async(cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def receive_credentials_async(cancellable, callback, user_data)
       __return_value = LibGio.unix_connection_receive_credentials_async(to_unsafe.as(LibGio::UnixConnection*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
@@ -43,7 +43,7 @@ module Gio
       __return_value
     end
 
-    def send_credentials_async(cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def send_credentials_async(cancellable, callback, user_data)
       __return_value = LibGio.unix_connection_send_credentials_async(to_unsafe.as(LibGio::UnixConnection*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end

@@ -34,7 +34,7 @@ module Gtk
 
     def last_event(sequence)
       __return_value = LibGtk.gesture_get_last_event(to_unsafe.as(LibGtk::Gesture*), sequence.to_unsafe.as(LibGdk::EventSequence*))
-      __return_value if __return_value
+      Gdk::Event.new(__return_value) if __return_value
     end
 
     def last_updated_sequence
@@ -87,12 +87,12 @@ module Gtk
       __return_value
     end
 
-    def set_sequence_state(sequence, state)
+    def set_sequence_state(sequence, state : Gtk::EventSequenceState)
       __return_value = LibGtk.gesture_set_sequence_state(to_unsafe.as(LibGtk::Gesture*), sequence.to_unsafe.as(LibGdk::EventSequence*), state)
       __return_value
     end
 
-    def state=(state)
+    def state=(state : Gtk::EventSequenceState)
       __return_value = LibGtk.gesture_set_state(to_unsafe.as(LibGtk::Gesture*), state)
       __return_value
     end

@@ -83,12 +83,12 @@ module Pango
       Pango::Fontset.new(__return_value) if __return_value
     end
 
-    def base_dir=(direction)
+    def base_dir=(direction : Pango::Direction)
       __return_value = LibPango.context_set_base_dir(to_unsafe.as(LibPango::Context*), direction)
       __return_value
     end
 
-    def base_gravity=(gravity)
+    def base_gravity=(gravity : Pango::Gravity)
       __return_value = LibPango.context_set_base_gravity(to_unsafe.as(LibPango::Context*), gravity)
       __return_value
     end
@@ -103,7 +103,7 @@ module Pango
       __return_value
     end
 
-    def gravity_hint=(hint)
+    def gravity_hint=(hint : Pango::GravityHint)
       __return_value = LibPango.context_set_gravity_hint(to_unsafe.as(LibPango::Context*), hint)
       __return_value
     end

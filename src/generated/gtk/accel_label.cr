@@ -19,7 +19,7 @@ module Gtk
       cast Gtk::Widget.new(__return_value)
     end
 
-    def accel(accelerator_key, accelerator_mods)
+    def accel(accelerator_key, accelerator_mods : Gdk::ModifierType)
       __return_value = LibGtk.accel_label_get_accel(to_unsafe.as(LibGtk::AccelLabel*), accelerator_key, accelerator_mods)
       __return_value
     end
@@ -39,7 +39,7 @@ module Gtk
       __return_value
     end
 
-    def set_accel(accelerator_key, accelerator_mods)
+    def set_accel(accelerator_key, accelerator_mods : Gdk::ModifierType)
       __return_value = LibGtk.accel_label_set_accel(to_unsafe.as(LibGtk::AccelLabel*), UInt32.new(accelerator_key), accelerator_mods)
       __return_value
     end

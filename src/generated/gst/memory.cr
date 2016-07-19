@@ -23,7 +23,7 @@ module Gst
       @gst_memory.not_nil!.as(Void*)
     end
 
-    def self.new_wrapped(flags, data, maxsize, offset, size, user_data, notify : LibGLib::DestroyNotify?) : self
+    def self.new_wrapped(flags : Gst::MemoryFlags, data, maxsize, offset, size, user_data, notify) : self
       __return_value = LibGst.memory_new_wrapped(flags, data, UInt64.new(maxsize), UInt64.new(offset), UInt64.new(size), user_data && user_data, notify && notify)
       cast Gst::Memory.new(__return_value)
     end
@@ -48,12 +48,12 @@ module Gst
       __return_value
     end
 
-    def make_mapped(info, flags)
+    def make_mapped(info, flags : Gst::MapFlags)
       __return_value = LibGst.memory_make_mapped(to_unsafe.as(LibGst::Memory*), info, flags)
       Gst::Memory.new(__return_value) if __return_value
     end
 
-    def map(info, flags)
+    def map(info, flags : Gst::MapFlags)
       __return_value = LibGst.memory_map(to_unsafe.as(LibGst::Memory*), info, flags)
       __return_value
     end

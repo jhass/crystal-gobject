@@ -142,7 +142,7 @@ module Gtk
       __return_value
     end
 
-    def license_type=(license_type)
+    def license_type=(license_type : Gtk::License)
       __return_value = LibGtk.about_dialog_set_license_type(to_unsafe.as(LibGtk::AboutDialog*), license_type)
       __return_value
     end

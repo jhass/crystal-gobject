@@ -60,7 +60,7 @@ module Gtk
       __return_value
     end
 
-    def direction=(direction)
+    def direction=(direction : Gtk::ArrowType)
       __return_value = LibGtk.menu_button_set_direction(to_unsafe.as(LibGtk::MenuButton*), direction)
       __return_value
     end

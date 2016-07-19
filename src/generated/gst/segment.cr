@@ -32,7 +32,7 @@ module Gst
       cast Gst::Segment.new(__return_value)
     end
 
-    def clip(format, start, stop, clip_start, clip_stop)
+    def clip(format : Gst::Format, start, stop, clip_start, clip_stop)
       __return_value = LibGst.segment_clip(to_unsafe.as(LibGst::Segment*), format, UInt64.new(start), UInt64.new(stop), clip_start, clip_stop)
       __return_value
     end
@@ -47,7 +47,7 @@ module Gst
       __return_value
     end
 
-    def do_seek(rate, format, flags, start_type, start, stop_type, stop, update)
+    def do_seek(rate, format : Gst::Format, flags : Gst::SeekFlags, start_type : Gst::SeekType, start, stop_type : Gst::SeekType, stop, update)
       __return_value = LibGst.segment_do_seek(to_unsafe.as(LibGst::Segment*), Float64.new(rate), format, flags, start_type, UInt64.new(start), stop_type, UInt64.new(stop), update)
       __return_value
     end
@@ -57,7 +57,7 @@ module Gst
       __return_value
     end
 
-    def init(format)
+    def init(format : Gst::Format)
       __return_value = LibGst.segment_init(to_unsafe.as(LibGst::Segment*), format)
       __return_value
     end
@@ -67,57 +67,57 @@ module Gst
       __return_value
     end
 
-    def offset_running_time(format, offset)
+    def offset_running_time(format : Gst::Format, offset)
       __return_value = LibGst.segment_offset_running_time(to_unsafe.as(LibGst::Segment*), format, Int64.new(offset))
       __return_value
     end
 
-    def position_from_running_time(format, running_time)
+    def position_from_running_time(format : Gst::Format, running_time)
       __return_value = LibGst.segment_position_from_running_time(to_unsafe.as(LibGst::Segment*), format, UInt64.new(running_time))
       __return_value
     end
 
-    def position_from_running_time_full(format, running_time, position)
+    def position_from_running_time_full(format : Gst::Format, running_time, position)
       __return_value = LibGst.segment_position_from_running_time_full(to_unsafe.as(LibGst::Segment*), format, UInt64.new(running_time), position)
       __return_value
     end
 
-    def position_from_stream_time(format, stream_time)
+    def position_from_stream_time(format : Gst::Format, stream_time)
       __return_value = LibGst.segment_position_from_stream_time(to_unsafe.as(LibGst::Segment*), format, UInt64.new(stream_time))
       __return_value
     end
 
-    def position_from_stream_time_full(format, stream_time, position)
+    def position_from_stream_time_full(format : Gst::Format, stream_time, position)
       __return_value = LibGst.segment_position_from_stream_time_full(to_unsafe.as(LibGst::Segment*), format, UInt64.new(stream_time), position)
       __return_value
     end
 
-    def set_running_time(format, running_time)
+    def set_running_time(format : Gst::Format, running_time)
       __return_value = LibGst.segment_set_running_time(to_unsafe.as(LibGst::Segment*), format, UInt64.new(running_time))
       __return_value
     end
 
-    def to_position(format, running_time)
+    def to_position(format : Gst::Format, running_time)
       __return_value = LibGst.segment_to_position(to_unsafe.as(LibGst::Segment*), format, UInt64.new(running_time))
       __return_value
     end
 
-    def to_running_time(format, position)
+    def to_running_time(format : Gst::Format, position)
       __return_value = LibGst.segment_to_running_time(to_unsafe.as(LibGst::Segment*), format, UInt64.new(position))
       __return_value
     end
 
-    def to_running_time_full(format, position, running_time)
+    def to_running_time_full(format : Gst::Format, position, running_time)
       __return_value = LibGst.segment_to_running_time_full(to_unsafe.as(LibGst::Segment*), format, UInt64.new(position), running_time)
       __return_value
     end
 
-    def to_stream_time(format, position)
+    def to_stream_time(format : Gst::Format, position)
       __return_value = LibGst.segment_to_stream_time(to_unsafe.as(LibGst::Segment*), format, UInt64.new(position))
       __return_value
     end
 
-    def to_stream_time_full(format, position, stream_time)
+    def to_stream_time_full(format : Gst::Format, position, stream_time)
       __return_value = LibGst.segment_to_stream_time_full(to_unsafe.as(LibGst::Segment*), format, UInt64.new(position), stream_time)
       __return_value
     end

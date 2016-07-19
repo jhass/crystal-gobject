@@ -21,7 +21,7 @@ module Gio
       Gio::SocketConnection.new(__return_value)
     end
 
-    def accept_async(cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def accept_async(cancellable, callback, user_data)
       __return_value = LibGio.socket_listener_accept_async(to_unsafe.as(LibGio::SocketListener*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
@@ -40,7 +40,7 @@ module Gio
       Gio::Socket.new(__return_value)
     end
 
-    def accept_socket_async(cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def accept_socket_async(cancellable, callback, user_data)
       __return_value = LibGio.socket_listener_accept_socket_async(to_unsafe.as(LibGio::SocketListener*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
@@ -52,7 +52,7 @@ module Gio
       Gio::Socket.new(__return_value)
     end
 
-    def add_address(address, type, protocol, source_object, effective_address)
+    def add_address(address, type : Gio::SocketType, protocol : Gio::SocketProtocol, source_object, effective_address)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_listener_add_address(to_unsafe.as(LibGio::SocketListener*), address.to_unsafe.as(LibGio::SocketAddress*), type, protocol, source_object && source_object.to_unsafe.as(LibGObject::Object*), effective_address, pointerof(__error))
       GLib::Error.assert __error

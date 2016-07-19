@@ -14,7 +14,7 @@ module Gtk
       cast Gtk::FileFilter.new(__return_value)
     end
 
-    def add_custom(needed, func : LibGtk::FileFilterFunc, data, notify : LibGLib::DestroyNotify)
+    def add_custom(needed : Gtk::FileFilterFlags, func, data, notify)
       __return_value = LibGtk.file_filter_add_custom(to_unsafe.as(LibGtk::FileFilter*), needed, func, data && data, notify)
       __return_value
     end

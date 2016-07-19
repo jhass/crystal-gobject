@@ -73,7 +73,7 @@ module Gtk
       __return_value
     end
 
-    def policy(hscrollbar_policy, vscrollbar_policy)
+    def policy(hscrollbar_policy : Gtk::PolicyType?, vscrollbar_policy : Gtk::PolicyType?)
       __return_value = LibGtk.scrolled_window_get_policy(to_unsafe.as(LibGtk::ScrolledWindow*), hscrollbar_policy, vscrollbar_policy)
       __return_value
     end
@@ -123,17 +123,17 @@ module Gtk
       __return_value
     end
 
-    def placement=(window_placement)
+    def placement=(window_placement : Gtk::CornerType)
       __return_value = LibGtk.scrolled_window_set_placement(to_unsafe.as(LibGtk::ScrolledWindow*), window_placement)
       __return_value
     end
 
-    def set_policy(hscrollbar_policy, vscrollbar_policy)
+    def set_policy(hscrollbar_policy : Gtk::PolicyType, vscrollbar_policy : Gtk::PolicyType)
       __return_value = LibGtk.scrolled_window_set_policy(to_unsafe.as(LibGtk::ScrolledWindow*), hscrollbar_policy, vscrollbar_policy)
       __return_value
     end
 
-    def shadow_type=(type)
+    def shadow_type=(type : Gtk::ShadowType)
       __return_value = LibGtk.scrolled_window_set_shadow_type(to_unsafe.as(LibGtk::ScrolledWindow*), type)
       __return_value
     end

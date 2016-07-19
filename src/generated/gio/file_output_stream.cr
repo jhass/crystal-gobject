@@ -23,7 +23,7 @@ module Gio
       Gio::FileInfo.new(__return_value)
     end
 
-    def query_info_async(attributes, io_priority, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def query_info_async(attributes, io_priority, cancellable, callback, user_data)
       __return_value = LibGio.file_output_stream_query_info_async(to_unsafe.as(LibGio::FileOutputStream*), attributes.to_unsafe, Int32.new(io_priority), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end

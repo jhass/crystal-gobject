@@ -64,7 +64,7 @@ module Gio
       __return_value
     end
 
-    def bind(key, object, property, flags)
+    def bind(key, object, property, flags : Gio::SettingsBindFlags)
       __return_value = LibGio.settings_bind(to_unsafe.as(LibGio::Settings*), key.to_unsafe, object.to_unsafe.as(LibGObject::Object*), property.to_unsafe, flags)
       __return_value
     end
@@ -124,7 +124,7 @@ module Gio
       __return_value
     end
 
-    def mapped(key, mapping : LibGio::SettingsGetMapping, user_data)
+    def mapped(key, mapping, user_data)
       __return_value = LibGio.settings_get_mapped(to_unsafe.as(LibGio::Settings*), key.to_unsafe, mapping, user_data && user_data)
       __return_value if __return_value
     end

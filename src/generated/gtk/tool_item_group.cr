@@ -78,12 +78,12 @@ module Gtk
       __return_value
     end
 
-    def ellipsize=(ellipsize)
+    def ellipsize=(ellipsize : Pango::EllipsizeMode)
       __return_value = LibGtk.tool_item_group_set_ellipsize(to_unsafe.as(LibGtk::ToolItemGroup*), ellipsize)
       __return_value
     end
 
-    def header_relief=(style)
+    def header_relief=(style : Gtk::ReliefStyle)
       __return_value = LibGtk.tool_item_group_set_header_relief(to_unsafe.as(LibGtk::ToolItemGroup*), style)
       __return_value
     end

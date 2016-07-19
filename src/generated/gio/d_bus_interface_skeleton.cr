@@ -57,7 +57,7 @@ module Gio
       __return_value
     end
 
-    def flags=(flags)
+    def flags=(flags : Gio::DBusInterfaceSkeletonFlags)
       __return_value = LibGio.d_bus_interface_skeleton_set_flags(to_unsafe.as(LibGio::DBusInterfaceSkeleton*), flags)
       __return_value
     end

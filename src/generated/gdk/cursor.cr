@@ -10,12 +10,12 @@ module Gdk
 
 
 
-    def self.new(cursor_type) : self
+    def self.new(cursor_type : Gdk::CursorType) : self
       __return_value = LibGdk.cursor_new(cursor_type)
       cast Gdk::Cursor.new(__return_value)
     end
 
-    def self.new_for_display(display, cursor_type) : self
+    def self.new_for_display(display, cursor_type : Gdk::CursorType) : self
       __return_value = LibGdk.cursor_new_for_display(display.to_unsafe.as(LibGdk::Display*), cursor_type)
       cast Gdk::Cursor.new(__return_value)
     end

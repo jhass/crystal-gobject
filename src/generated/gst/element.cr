@@ -10,7 +10,7 @@ module Gst
       @gst_element.not_nil!.as(Void*)
     end
 
-    def self.make_from_uri(type, uri, elementname)
+    def self.make_from_uri(type : Gst::URIType, uri, elementname)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGst.element_make_from_uri(type, uri.to_unsafe, elementname && elementname.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
@@ -22,12 +22,12 @@ module Gst
       __return_value
     end
 
-    def self.state_change_return_get_name(state_ret)
+    def self.state_change_return_get_name(state_ret : Gst::StateChangeReturn)
       __return_value = LibGst.element_state_change_return_get_name(state_ret)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def self.state_get_name(state)
+    def self.state_get_name(state : Gst::State)
       __return_value = LibGst.element_state_get_name(state)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
@@ -42,12 +42,12 @@ module Gst
       __return_value
     end
 
-    def change_state(transition)
+    def change_state(transition : Gst::StateChange)
       __return_value = LibGst.element_change_state(to_unsafe.as(LibGst::Element*), transition)
       __return_value
     end
 
-    def continue_state(ret)
+    def continue_state(ret : Gst::StateChangeReturn)
       __return_value = LibGst.element_continue_state(to_unsafe.as(LibGst::Element*), ret)
       __return_value
     end
@@ -112,7 +112,7 @@ module Gst
       __return_value
     end
 
-    def state(state, pending, timeout)
+    def state(state : Gst::State?, pending : Gst::State?, timeout)
       __return_value = LibGst.element_get_state(to_unsafe.as(LibGst::Element*), state, pending, UInt64.new(timeout))
       __return_value
     end
@@ -162,7 +162,7 @@ module Gst
       __return_value
     end
 
-    def link_pads_full(srcpadname, dest, destpadname, flags)
+    def link_pads_full(srcpadname, dest, destpadname, flags : Gst::PadLinkCheck)
       __return_value = LibGst.element_link_pads_full(to_unsafe.as(LibGst::Element*), srcpadname && srcpadname.to_unsafe, dest.to_unsafe.as(LibGst::Element*), destpadname && destpadname.to_unsafe, flags)
       __return_value
     end
@@ -172,7 +172,7 @@ module Gst
       __return_value
     end
 
-    def message_full(type, domain, code, text, debug, file, function, line)
+    def message_full(type : Gst::MessageType, domain, code, text, debug, file, function, line)
       __return_value = LibGst.element_message_full(to_unsafe.as(LibGst::Element*), type, UInt32.new(domain), Int32.new(code), text && text.to_unsafe, debug && debug.to_unsafe, file.to_unsafe, function.to_unsafe, Int32.new(line))
       __return_value
     end
@@ -197,17 +197,17 @@ module Gst
       __return_value
     end
 
-    def query_convert(src_format, src_val, dest_format, dest_val)
+    def query_convert(src_format : Gst::Format, src_val, dest_format : Gst::Format, dest_val)
       __return_value = LibGst.element_query_convert(to_unsafe.as(LibGst::Element*), src_format, Int64.new(src_val), dest_format, dest_val)
       __return_value
     end
 
-    def query_duration(format, duration)
+    def query_duration(format : Gst::Format, duration)
       __return_value = LibGst.element_query_duration(to_unsafe.as(LibGst::Element*), format, duration)
       __return_value
     end
 
-    def query_position(format, cur)
+    def query_position(format : Gst::Format, cur)
       __return_value = LibGst.element_query_position(to_unsafe.as(LibGst::Element*), format, cur)
       __return_value
     end
@@ -227,12 +227,12 @@ module Gst
       Gst::Pad.new(__return_value) if __return_value
     end
 
-    def seek(rate, format, flags, start_type, start, stop_type, stop)
+    def seek(rate, format : Gst::Format, flags : Gst::SeekFlags, start_type : Gst::SeekType, start, stop_type : Gst::SeekType, stop)
       __return_value = LibGst.element_seek(to_unsafe.as(LibGst::Element*), Float64.new(rate), format, flags, start_type, Int64.new(start), stop_type, Int64.new(stop))
       __return_value
     end
 
-    def seek_simple(format, seek_flags, seek_pos)
+    def seek_simple(format : Gst::Format, seek_flags : Gst::SeekFlags, seek_pos)
       __return_value = LibGst.element_seek_simple(to_unsafe.as(LibGst::Element*), format, seek_flags, Int64.new(seek_pos))
       __return_value
     end
@@ -272,7 +272,7 @@ module Gst
       __return_value
     end
 
-    def state=(state)
+    def state=(state : Gst::State)
       __return_value = LibGst.element_set_state(to_unsafe.as(LibGst::Element*), state)
       __return_value
     end

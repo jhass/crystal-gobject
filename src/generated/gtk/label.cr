@@ -179,12 +179,12 @@ module Gtk
       __return_value
     end
 
-    def ellipsize=(mode)
+    def ellipsize=(mode : Pango::EllipsizeMode)
       __return_value = LibGtk.label_set_ellipsize(to_unsafe.as(LibGtk::Label*), mode)
       __return_value
     end
 
-    def justify=(jtype)
+    def justify=(jtype : Gtk::Justification)
       __return_value = LibGtk.label_set_justify(to_unsafe.as(LibGtk::Label*), jtype)
       __return_value
     end
@@ -199,7 +199,7 @@ module Gtk
       __return_value
     end
 
-    def line_wrap_mode=(wrap_mode)
+    def line_wrap_mode=(wrap_mode : Pango::WrapMode)
       __return_value = LibGtk.label_set_line_wrap_mode(to_unsafe.as(LibGtk::Label*), wrap_mode)
       __return_value
     end

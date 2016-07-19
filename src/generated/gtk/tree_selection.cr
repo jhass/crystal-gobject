@@ -64,17 +64,17 @@ module Gtk
       __return_value
     end
 
-    def selected_foreach(func : LibGtk::TreeSelectionForeachFunc, data)
+    def selected_foreach(func, data)
       __return_value = LibGtk.tree_selection_selected_foreach(to_unsafe.as(LibGtk::TreeSelection*), func, data && data)
       __return_value
     end
 
-    def mode=(type)
+    def mode=(type : Gtk::SelectionMode)
       __return_value = LibGtk.tree_selection_set_mode(to_unsafe.as(LibGtk::TreeSelection*), type)
       __return_value
     end
 
-    def set_select_function(func : LibGtk::TreeSelectionFunc, data, destroy : LibGLib::DestroyNotify)
+    def set_select_function(func, data, destroy)
       __return_value = LibGtk.tree_selection_set_select_function(to_unsafe.as(LibGtk::TreeSelection*), func, data && data, destroy)
       __return_value
     end

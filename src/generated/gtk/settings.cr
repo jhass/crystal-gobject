@@ -107,7 +107,7 @@ module Gtk
       __return_value
     end
 
-    def self.install_property_parser(pspec, parser : LibGtk::RcPropertyParser)
+    def self.install_property_parser(pspec, parser)
       __return_value = LibGtk.settings_install_property_parser(pspec.to_unsafe.as(LibGObject::ParamSpec*), parser)
       __return_value
     end

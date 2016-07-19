@@ -51,7 +51,7 @@ module Gst
       cast Gst::Message.new(__return_value)
     end
 
-    def self.new_custom(type, src, structure) : self
+    def self.new_custom(type : Gst::MessageType, src, structure) : self
       __return_value = LibGst.message_new_custom(type, src && src.to_unsafe.as(LibGst::Object*), structure && structure.to_unsafe.as(LibGst::Structure*))
       cast Gst::Message.new(__return_value)
     end
@@ -111,7 +111,7 @@ module Gst
       cast Gst::Message.new(__return_value)
     end
 
-    def self.new_progress(src, type, code, text) : self
+    def self.new_progress(src, type : Gst::ProgressType, code, text) : self
       __return_value = LibGst.message_new_progress(src.to_unsafe.as(LibGst::Object*), type, code.to_unsafe, text.to_unsafe)
       cast Gst::Message.new(__return_value)
     end
@@ -121,7 +121,7 @@ module Gst
       cast Gst::Message.new(__return_value)
     end
 
-    def self.new_request_state(src, state) : self
+    def self.new_request_state(src, state : Gst::State) : self
       __return_value = LibGst.message_new_request_state(src && src.to_unsafe.as(LibGst::Object*), state)
       cast Gst::Message.new(__return_value)
     end
@@ -131,17 +131,17 @@ module Gst
       cast Gst::Message.new(__return_value)
     end
 
-    def self.new_segment_done(src, format, position) : self
+    def self.new_segment_done(src, format : Gst::Format, position) : self
       __return_value = LibGst.message_new_segment_done(src && src.to_unsafe.as(LibGst::Object*), format, Int64.new(position))
       cast Gst::Message.new(__return_value)
     end
 
-    def self.new_segment_start(src, format, position) : self
+    def self.new_segment_start(src, format : Gst::Format, position) : self
       __return_value = LibGst.message_new_segment_start(src && src.to_unsafe.as(LibGst::Object*), format, Int64.new(position))
       cast Gst::Message.new(__return_value)
     end
 
-    def self.new_state_changed(src, oldstate, newstate, pending) : self
+    def self.new_state_changed(src, oldstate : Gst::State, newstate : Gst::State, pending : Gst::State) : self
       __return_value = LibGst.message_new_state_changed(src && src.to_unsafe.as(LibGst::Object*), oldstate, newstate, pending)
       cast Gst::Message.new(__return_value)
     end
@@ -151,12 +151,12 @@ module Gst
       cast Gst::Message.new(__return_value)
     end
 
-    def self.new_step_done(src, format, amount, rate, flush, intermediate, duration, eos) : self
+    def self.new_step_done(src, format : Gst::Format, amount, rate, flush, intermediate, duration, eos) : self
       __return_value = LibGst.message_new_step_done(src.to_unsafe.as(LibGst::Object*), format, UInt64.new(amount), Float64.new(rate), flush, intermediate, UInt64.new(duration), eos)
       cast Gst::Message.new(__return_value)
     end
 
-    def self.new_step_start(src, active, format, amount, rate, flush, intermediate) : self
+    def self.new_step_start(src, active, format : Gst::Format, amount, rate, flush, intermediate) : self
       __return_value = LibGst.message_new_step_start(src.to_unsafe.as(LibGst::Object*), active, format, UInt64.new(amount), Float64.new(rate), flush, intermediate)
       cast Gst::Message.new(__return_value)
     end
@@ -166,12 +166,12 @@ module Gst
       cast Gst::Message.new(__return_value)
     end
 
-    def self.new_stream_status(src, type, owner) : self
+    def self.new_stream_status(src, type : Gst::StreamStatusType, owner) : self
       __return_value = LibGst.message_new_stream_status(src.to_unsafe.as(LibGst::Object*), type, owner.to_unsafe.as(LibGst::Element*))
       cast Gst::Message.new(__return_value)
     end
 
-    def self.new_structure_change(src, type, owner, busy) : self
+    def self.new_structure_change(src, type : Gst::StructureChangeType, owner, busy) : self
       __return_value = LibGst.message_new_structure_change(src && src.to_unsafe.as(LibGst::Object*), type, owner.to_unsafe.as(LibGst::Element*), busy)
       cast Gst::Message.new(__return_value)
     end
@@ -221,7 +221,7 @@ module Gst
       __return_value
     end
 
-    def parse_buffering_stats(mode, avg_in, avg_out, buffering_left)
+    def parse_buffering_stats(mode : Gst::BufferingMode?, avg_in, avg_out, buffering_left)
       __return_value = LibGst.message_parse_buffering_stats(to_unsafe.as(LibGst::Message*), mode, avg_in, avg_out, buffering_left)
       __return_value
     end
@@ -276,7 +276,7 @@ module Gst
       __return_value
     end
 
-    def parse_progress(type, code, text)
+    def parse_progress(type : Gst::ProgressType?, code, text)
       __return_value = LibGst.message_parse_progress(to_unsafe.as(LibGst::Message*), type, code, text)
       __return_value
     end
@@ -286,7 +286,7 @@ module Gst
       __return_value
     end
 
-    def parse_qos_stats(format, processed, dropped)
+    def parse_qos_stats(format : Gst::Format?, processed, dropped)
       __return_value = LibGst.message_parse_qos_stats(to_unsafe.as(LibGst::Message*), format, processed, dropped)
       __return_value
     end
@@ -296,7 +296,7 @@ module Gst
       __return_value
     end
 
-    def parse_request_state(state)
+    def parse_request_state(state : Gst::State?)
       __return_value = LibGst.message_parse_request_state(to_unsafe.as(LibGst::Message*), state)
       __return_value
     end
@@ -306,37 +306,37 @@ module Gst
       __return_value
     end
 
-    def parse_segment_done(format, position)
+    def parse_segment_done(format : Gst::Format?, position)
       __return_value = LibGst.message_parse_segment_done(to_unsafe.as(LibGst::Message*), format, position)
       __return_value
     end
 
-    def parse_segment_start(format, position)
+    def parse_segment_start(format : Gst::Format?, position)
       __return_value = LibGst.message_parse_segment_start(to_unsafe.as(LibGst::Message*), format, position)
       __return_value
     end
 
-    def parse_state_changed(oldstate, newstate, pending)
+    def parse_state_changed(oldstate : Gst::State?, newstate : Gst::State?, pending : Gst::State?)
       __return_value = LibGst.message_parse_state_changed(to_unsafe.as(LibGst::Message*), oldstate, newstate, pending)
       __return_value
     end
 
-    def parse_step_done(format, amount, rate, flush, intermediate, duration, eos)
+    def parse_step_done(format : Gst::Format?, amount, rate, flush, intermediate, duration, eos)
       __return_value = LibGst.message_parse_step_done(to_unsafe.as(LibGst::Message*), format, amount, rate, flush, intermediate, duration, eos)
       __return_value
     end
 
-    def parse_step_start(active, format, amount, rate, flush, intermediate)
+    def parse_step_start(active, format : Gst::Format?, amount, rate, flush, intermediate)
       __return_value = LibGst.message_parse_step_start(to_unsafe.as(LibGst::Message*), active, format, amount, rate, flush, intermediate)
       __return_value
     end
 
-    def parse_stream_status(type, owner)
+    def parse_stream_status(type : Gst::StreamStatusType, owner)
       __return_value = LibGst.message_parse_stream_status(to_unsafe.as(LibGst::Message*), type, owner)
       __return_value
     end
 
-    def parse_structure_change(type, owner, busy)
+    def parse_structure_change(type : Gst::StructureChangeType, owner, busy)
       __return_value = LibGst.message_parse_structure_change(to_unsafe.as(LibGst::Message*), type, owner, busy)
       __return_value
     end
@@ -356,7 +356,7 @@ module Gst
       __return_value
     end
 
-    def set_buffering_stats(mode, avg_in, avg_out, buffering_left)
+    def set_buffering_stats(mode : Gst::BufferingMode, avg_in, avg_out, buffering_left)
       __return_value = LibGst.message_set_buffering_stats(to_unsafe.as(LibGst::Message*), mode, Int32.new(avg_in), Int32.new(avg_out), Int64.new(buffering_left))
       __return_value
     end
@@ -366,7 +366,7 @@ module Gst
       __return_value
     end
 
-    def set_qos_stats(format, processed, dropped)
+    def set_qos_stats(format : Gst::Format, processed, dropped)
       __return_value = LibGst.message_set_qos_stats(to_unsafe.as(LibGst::Message*), format, UInt64.new(processed), UInt64.new(dropped))
       __return_value
     end
@@ -427,7 +427,7 @@ module Gst
     end
 
     def lock
-      (to_unsafe.as(LibGst::Message*).value.lock)
+      GLib::Mutex.new((to_unsafe.as(LibGst::Message*).value.lock))
     end
 
     def cond

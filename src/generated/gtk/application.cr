@@ -14,7 +14,7 @@ module Gtk
 
 
 
-    def self.new(application_id, flags) : self
+    def self.new(application_id, flags : Gio::ApplicationFlags) : self
       __return_value = LibGtk.application_new(application_id && application_id.to_unsafe, flags)
       cast Gtk::Application.new(__return_value)
     end
@@ -69,12 +69,12 @@ module Gtk
       GLib::ListIterator(Gtk::Window, LibGtk::Window*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
-    def inhibit(window, flags, reason)
+    def inhibit(window, flags : Gtk::ApplicationInhibitFlags, reason)
       __return_value = LibGtk.application_inhibit(to_unsafe.as(LibGtk::Application*), window && window.to_unsafe.as(LibGtk::Window*), flags, reason && reason.to_unsafe)
       __return_value
     end
 
-    def inhibited?(flags)
+    def inhibited?(flags : Gtk::ApplicationInhibitFlags)
       __return_value = LibGtk.application_is_inhibited(to_unsafe.as(LibGtk::Application*), flags)
       __return_value
     end

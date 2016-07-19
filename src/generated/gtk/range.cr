@@ -116,7 +116,7 @@ module Gtk
       __return_value
     end
 
-    def lower_stepper_sensitivity=(sensitivity)
+    def lower_stepper_sensitivity=(sensitivity : Gtk::SensitivityType)
       __return_value = LibGtk.range_set_lower_stepper_sensitivity(to_unsafe.as(LibGtk::Range*), sensitivity)
       __return_value
     end
@@ -151,7 +151,7 @@ module Gtk
       __return_value
     end
 
-    def upper_stepper_sensitivity=(sensitivity)
+    def upper_stepper_sensitivity=(sensitivity : Gtk::SensitivityType)
       __return_value = LibGtk.range_set_upper_stepper_sensitivity(to_unsafe.as(LibGtk::Range*), sensitivity)
       __return_value
     end

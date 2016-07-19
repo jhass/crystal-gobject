@@ -11,12 +11,12 @@ module Gio
     end
 
 
-    def self.factory_lookup_type(family, type, protocol_id)
+    def self.factory_lookup_type(family : Gio::SocketFamily, type : Gio::SocketType, protocol_id)
       __return_value = LibGio.socket_connection_factory_lookup_type(family, type, Int32.new(protocol_id))
       __return_value
     end
 
-    def self.factory_register_type(g_type, family, type, protocol)
+    def self.factory_register_type(g_type, family : Gio::SocketFamily, type : Gio::SocketType, protocol)
       __return_value = LibGio.socket_connection_factory_register_type(UInt64.new(g_type), family, type, Int32.new(protocol))
       __return_value
     end
@@ -28,7 +28,7 @@ module Gio
       __return_value
     end
 
-    def connect_async(address, cancellable, callback : LibGio::AsyncReadyCallback?, user_data)
+    def connect_async(address, cancellable, callback, user_data)
       __return_value = LibGio.socket_connection_connect_async(to_unsafe.as(LibGio::SocketConnection*), address.to_unsafe.as(LibGio::SocketAddress*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end

@@ -89,7 +89,7 @@ module GLib
     __return_value
   end
 
-  def self.atexit(func : LibGLib::VoidFunc)
+  def self.atexit(func)
     __return_value = LibGLib.atexit(func)
     __return_value
   end
@@ -294,12 +294,12 @@ module GLib
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.checksum_type_get_length(checksum_type)
+  def self.checksum_type_get_length(checksum_type : GLib::ChecksumType)
     __return_value = LibGLib.checksum_type_get_length(checksum_type)
     __return_value
   end
 
-  def self.child_watch_add(priority, pid, function : LibGLib::ChildWatchFunc, data, notify : LibGLib::DestroyNotify?)
+  def self.child_watch_add(priority, pid, function, data, notify)
     __return_value = LibGLib.child_watch_add(Int32.new(priority), Int32.new(pid), function, data && data, notify && notify)
     __return_value
   end
@@ -323,27 +323,27 @@ module GLib
     __return_value
   end
 
-  def self.compute_checksum_for_bytes(checksum_type, data)
+  def self.compute_checksum_for_bytes(checksum_type : GLib::ChecksumType, data)
     __return_value = LibGLib.compute_checksum_for_bytes(checksum_type, data.to_unsafe.as(LibGLib::Bytes*))
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.compute_checksum_for_data(checksum_type, data, length)
+  def self.compute_checksum_for_data(checksum_type : GLib::ChecksumType, data, length)
     __return_value = LibGLib.compute_checksum_for_data(checksum_type, data, UInt64.new(length))
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.compute_checksum_for_string(checksum_type, str, length)
+  def self.compute_checksum_for_string(checksum_type : GLib::ChecksumType, str, length)
     __return_value = LibGLib.compute_checksum_for_string(checksum_type, str.to_unsafe, Int64.new(length))
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.compute_hmac_for_data(digest_type, key, key_len, data, length)
+  def self.compute_hmac_for_data(digest_type : GLib::ChecksumType, key, key_len, data, length)
     __return_value = LibGLib.compute_hmac_for_data(digest_type, key, UInt64.new(key_len), data, UInt64.new(length))
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.compute_hmac_for_string(digest_type, key, key_len, str, length)
+  def self.compute_hmac_for_string(digest_type : GLib::ChecksumType, key, key_len, str, length)
     __return_value = LibGLib.compute_hmac_for_string(digest_type, key, UInt64.new(key_len), str.to_unsafe, Int64.new(length))
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
@@ -399,12 +399,12 @@ module GLib
     __return_value if __return_value
   end
 
-  def self.datalist_id_replace_data(datalist, key_id, oldval, newval, destroy : LibGLib::DestroyNotify?, old_destroy : LibGLib::DestroyNotify*?)
+  def self.datalist_id_replace_data(datalist, key_id, oldval, newval, destroy, old_destroy)
     __return_value = LibGLib.datalist_id_replace_data(datalist.to_unsafe.as(LibGLib::Data*), UInt32.new(key_id), oldval && oldval, newval && newval, destroy && destroy, old_destroy && old_destroy.to_unsafe.as(LibGLib::DestroyNotify*))
     __return_value
   end
 
-  def self.datalist_id_set_data_full(datalist, key_id, data, destroy_func : LibGLib::DestroyNotify)
+  def self.datalist_id_set_data_full(datalist, key_id, data, destroy_func)
     __return_value = LibGLib.datalist_id_set_data_full(datalist.to_unsafe.as(LibGLib::Data*), UInt32.new(key_id), data && data, destroy_func)
     __return_value
   end
@@ -439,12 +439,12 @@ module GLib
     __return_value if __return_value
   end
 
-  def self.dataset_id_set_data_full(dataset_location, key_id, data, destroy_func : LibGLib::DestroyNotify)
+  def self.dataset_id_set_data_full(dataset_location, key_id, data, destroy_func)
     __return_value = LibGLib.dataset_id_set_data_full(dataset_location, UInt32.new(key_id), data && data, destroy_func)
     __return_value
   end
 
-  def self.date_get_days_in_month(month, year)
+  def self.date_get_days_in_month(month : GLib::DateMonth, year)
     __return_value = LibGLib.date_get_days_in_month(month, UInt16.new(year))
     __return_value
   end
@@ -489,7 +489,7 @@ module GLib
     __return_value
   end
 
-  def self.date_valid_dmy(day, month, year)
+  def self.date_valid_dmy(day, month : GLib::DateMonth, year)
     __return_value = LibGLib.date_valid_dmy(UInt8.new(day), month, UInt16.new(year))
     __return_value
   end
@@ -499,12 +499,12 @@ module GLib
     __return_value
   end
 
-  def self.date_valid_month(month)
+  def self.date_valid_month(month : GLib::DateMonth)
     __return_value = LibGLib.date_valid_month(month)
     __return_value
   end
 
-  def self.date_valid_weekday(weekday)
+  def self.date_valid_weekday(weekday : GLib::DateWeekday)
     __return_value = LibGLib.date_valid_weekday(weekday)
     __return_value
   end
@@ -619,7 +619,7 @@ module GLib
     __return_value
   end
 
-  def self.file_test(filename, test)
+  def self.file_test(filename, test : GLib::FileTest)
     __return_value = LibGLib.file_test(filename.to_unsafe, test)
     __return_value
   end
@@ -677,7 +677,7 @@ module GLib
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.format_size_full(size, flags)
+  def self.format_size_full(size, flags : GLib::FormatSizeFlags)
     __return_value = LibGLib.format_size_full(UInt64.new(size), flags)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
@@ -807,7 +807,7 @@ module GLib
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.user_special_dir(directory)
+  def self.user_special_dir(directory : GLib::UserDirectory)
     __return_value = LibGLib.get_user_special_dir(directory)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
@@ -942,7 +942,7 @@ module GLib
     __return_value
   end
 
-  def self.idle_add(priority, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
+  def self.idle_add(priority, function, data, notify)
     __return_value = LibGLib.idle_add(Int32.new(priority), function, data && data, notify && notify)
     __return_value
   end
@@ -987,7 +987,7 @@ module GLib
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.io_add_watch(channel, priority, condition, func : LibGLib::IOFunc, user_data, notify : LibGLib::DestroyNotify)
+  def self.io_add_watch(channel, priority, condition : GLib::IOCondition, func, user_data, notify)
     __return_value = LibGLib.io_add_watch(channel.to_unsafe.as(LibGLib::IOChannel*), Int32.new(priority), condition, func, user_data && user_data, notify)
     __return_value
   end
@@ -1002,7 +1002,7 @@ module GLib
     __return_value
   end
 
-  def self.io_create_watch(channel, condition)
+  def self.io_create_watch(channel, condition : GLib::IOCondition)
     __return_value = LibGLib.io_create_watch(channel.to_unsafe.as(LibGLib::IOChannel*), condition)
     GLib::Source.new(__return_value)
   end
@@ -1031,7 +1031,7 @@ module GLib
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.log_default_handler(log_domain, log_level, message, unused_data)
+  def self.log_default_handler(log_domain, log_level : GLib::LogLevelFlags, message, unused_data)
     __return_value = LibGLib.log_default_handler(log_domain && log_domain.to_unsafe, log_level, message && message.to_unsafe, unused_data && unused_data)
     __return_value
   end
@@ -1041,17 +1041,17 @@ module GLib
     __return_value
   end
 
-  def self.log_set_always_fatal(fatal_mask)
+  def self.log_set_always_fatal(fatal_mask : GLib::LogLevelFlags)
     __return_value = LibGLib.log_set_always_fatal(fatal_mask)
     __return_value
   end
 
-  def self.log_set_fatal_mask(log_domain, fatal_mask)
+  def self.log_set_fatal_mask(log_domain, fatal_mask : GLib::LogLevelFlags)
     __return_value = LibGLib.log_set_fatal_mask(log_domain.to_unsafe, fatal_mask)
     __return_value
   end
 
-  def self.log_set_handler(log_domain, log_levels, log_func : LibGLib::LogFunc, user_data, destroy : LibGLib::DestroyNotify)
+  def self.log_set_handler(log_domain, log_levels : GLib::LogLevelFlags, log_func, user_data, destroy)
     __return_value = LibGLib.log_set_handler(log_domain && log_domain.to_unsafe, log_levels, log_func, user_data && user_data, destroy)
     __return_value
   end
@@ -1328,12 +1328,12 @@ module GLib
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.regex_match_simple(pattern, string, compile_options, match_options)
+  def self.regex_match_simple(pattern, string, compile_options : GLib::RegexCompileFlags, match_options : GLib::RegexMatchFlags)
     __return_value = LibGLib.regex_match_simple(pattern.to_unsafe, string.to_unsafe, compile_options, match_options)
     __return_value
   end
 
-  def self.regex_split_simple(pattern, string, compile_options, match_options)
+  def self.regex_split_simple(pattern, string, compile_options : GLib::RegexCompileFlags, match_options : GLib::RegexMatchFlags)
     __return_value = LibGLib.regex_split_simple(pattern.to_unsafe, string.to_unsafe, compile_options, match_options)
     PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
   end
@@ -1452,17 +1452,17 @@ module GLib
     __return_value
   end
 
-  def self.slice_get_config(ckey)
+  def self.slice_get_config(ckey : GLib::SliceConfig)
     __return_value = LibGLib.slice_get_config(ckey)
     __return_value
   end
 
-  def self.slice_get_config_state(ckey, address, n_values)
+  def self.slice_get_config_state(ckey : GLib::SliceConfig, address, n_values)
     __return_value = LibGLib.slice_get_config_state(ckey, Int64.new(address), n_values)
     __return_value
   end
 
-  def self.slice_set_config(ckey, value)
+  def self.slice_set_config(ckey : GLib::SliceConfig, value)
     __return_value = LibGLib.slice_set_config(ckey, Int64.new(value))
     __return_value
   end
@@ -1492,14 +1492,14 @@ module GLib
     __return_value
   end
 
-  def self.spawn_async(working_directory, argv, envp, flags, child_setup : LibGLib::SpawnChildSetupFunc?, user_data, child_pid)
+  def self.spawn_async(working_directory, argv, envp, flags : GLib::SpawnFlags, child_setup, user_data, child_pid)
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.spawn_async(working_directory && working_directory.to_unsafe, argv, envp && envp, flags, child_setup && child_setup, user_data && user_data, child_pid, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
-  def self.spawn_async_with_pipes(working_directory, argv, envp, flags, child_setup : LibGLib::SpawnChildSetupFunc?, user_data, child_pid, standard_input, standard_output, standard_error)
+  def self.spawn_async_with_pipes(working_directory, argv, envp, flags : GLib::SpawnFlags, child_setup, user_data, child_pid, standard_input, standard_output, standard_error)
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.spawn_async_with_pipes(working_directory && working_directory.to_unsafe, argv, envp && envp, flags, child_setup && child_setup, user_data && user_data, child_pid, standard_input, standard_output, standard_error, pointerof(__error))
     GLib::Error.assert __error
@@ -1542,7 +1542,7 @@ module GLib
     __return_value
   end
 
-  def self.spawn_sync(working_directory, argv, envp, flags, child_setup : LibGLib::SpawnChildSetupFunc?, user_data, standard_output, standard_error, exit_status)
+  def self.spawn_sync(working_directory, argv, envp, flags : GLib::SpawnFlags, child_setup, user_data, standard_output, standard_error, exit_status)
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.spawn_sync(working_directory && working_directory.to_unsafe, argv, envp && envp, flags, child_setup && child_setup, user_data && user_data, standard_output, standard_error, exit_status, pointerof(__error))
     GLib::Error.assert __error
@@ -1754,17 +1754,17 @@ module GLib
     __return_value
   end
 
-  def self.test_add_data_func(testpath, test_data, test_func : LibGLib::TestDataFunc)
+  def self.test_add_data_func(testpath, test_data, test_func)
     __return_value = LibGLib.test_add_data_func(testpath.to_unsafe, test_data && test_data, test_func)
     __return_value
   end
 
-  def self.test_add_data_func_full(testpath, test_data, test_func : LibGLib::TestDataFunc, data_free_func : LibGLib::DestroyNotify)
+  def self.test_add_data_func_full(testpath, test_data, test_func, data_free_func)
     __return_value = LibGLib.test_add_data_func_full(testpath.to_unsafe, test_data && test_data, test_func, data_free_func)
     __return_value
   end
 
-  def self.test_add_func(testpath, test_func : LibGLib::TestFunc)
+  def self.test_add_func(testpath, test_func)
     __return_value = LibGLib.test_add_func(testpath.to_unsafe, test_func)
     __return_value
   end
@@ -1784,7 +1784,7 @@ module GLib
     __return_value
   end
 
-  def self.test_expect_message(log_domain, log_level, pattern)
+  def self.test_expect_message(log_domain, log_level : GLib::LogLevelFlags, pattern)
     __return_value = LibGLib.test_expect_message(log_domain && log_domain.to_unsafe, log_level, pattern.to_unsafe)
     __return_value
   end
@@ -1799,7 +1799,7 @@ module GLib
     __return_value
   end
 
-  def self.test_get_dir(file_type)
+  def self.test_get_dir(file_type : GLib::TestFileType)
     __return_value = LibGLib.test_get_dir(file_type)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
@@ -1809,12 +1809,12 @@ module GLib
     __return_value
   end
 
-  def self.test_log_type_name(log_type)
+  def self.test_log_type_name(log_type : GLib::TestLogType)
     __return_value = LibGLib.test_log_type_name(log_type)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.test_queue_destroy(destroy_func : LibGLib::DestroyNotify, destroy_data)
+  def self.test_queue_destroy(destroy_func, destroy_data)
     __return_value = LibGLib.test_queue_destroy(destroy_func, destroy_data && destroy_data)
     __return_value
   end
@@ -1889,7 +1889,7 @@ module GLib
     __return_value
   end
 
-  def self.test_trap_fork(usec_timeout, test_trap_flags)
+  def self.test_trap_fork(usec_timeout, test_trap_flags : GLib::TestTrapFlags)
     __return_value = LibGLib.test_trap_fork(UInt64.new(usec_timeout), test_trap_flags)
     __return_value
   end
@@ -1904,7 +1904,7 @@ module GLib
     __return_value
   end
 
-  def self.test_trap_subprocess(test_path, usec_timeout, test_flags)
+  def self.test_trap_subprocess(test_path, usec_timeout, test_flags : GLib::TestSubprocessFlags)
     __return_value = LibGLib.test_trap_subprocess(test_path && test_path.to_unsafe, UInt64.new(usec_timeout), test_flags)
     __return_value
   end
@@ -1964,12 +1964,12 @@ module GLib
     __return_value
   end
 
-  def self.timeout_add(priority, interval, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
+  def self.timeout_add(priority, interval, function, data, notify)
     __return_value = LibGLib.timeout_add(Int32.new(priority), UInt32.new(interval), function, data && data, notify && notify)
     __return_value
   end
 
-  def self.timeout_add_seconds(priority, interval, function : LibGLib::SourceFunc, data, notify : LibGLib::DestroyNotify?)
+  def self.timeout_add_seconds(priority, interval, function, data, notify)
     __return_value = LibGLib.timeout_add_seconds(Int32.new(priority), UInt32.new(interval), function, data && data, notify && notify)
     __return_value
   end
@@ -2223,7 +2223,7 @@ module GLib
     __return_value
   end
 
-  def self.unicode_script_to_iso15924(script)
+  def self.unicode_script_to_iso15924(script : GLib::UnicodeScript)
     __return_value = LibGLib.unicode_script_to_iso15924(script)
     __return_value
   end
@@ -2233,12 +2233,12 @@ module GLib
     __return_value
   end
 
-  def self.unix_fd_add_full(priority, fd, condition, function : LibGLib::UnixFDSourceFunc, user_data, notify : LibGLib::DestroyNotify)
+  def self.unix_fd_add_full(priority, fd, condition : GLib::IOCondition, function, user_data, notify)
     __return_value = LibGLib.unix_fd_add_full(Int32.new(priority), Int32.new(fd), condition, function, user_data && user_data, notify)
     __return_value
   end
 
-  def self.unix_fd_source_new(fd, condition)
+  def self.unix_fd_source_new(fd, condition : GLib::IOCondition)
     __return_value = LibGLib.unix_fd_source_new(Int32.new(fd), condition)
     GLib::Source.new(__return_value)
   end
@@ -2257,7 +2257,7 @@ module GLib
     __return_value
   end
 
-  def self.unix_signal_add(priority, signum, handler : LibGLib::SourceFunc, user_data, notify : LibGLib::DestroyNotify)
+  def self.unix_signal_add(priority, signum, handler, user_data, notify)
     __return_value = LibGLib.unix_signal_add(Int32.new(priority), Int32.new(signum), handler, user_data && user_data, notify)
     __return_value
   end
@@ -2361,7 +2361,7 @@ module GLib
     __return_value
   end
 
-  def self.utf8_normalize(str, len, mode)
+  def self.utf8_normalize(str, len, mode : GLib::NormalizeMode)
     __return_value = LibGLib.utf8_normalize(str.to_unsafe, Int64.new(len), mode)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end

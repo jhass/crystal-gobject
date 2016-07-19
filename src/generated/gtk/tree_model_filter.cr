@@ -47,7 +47,7 @@ module Gtk
       __return_value
     end
 
-    def set_modify_func(n_columns, types, func : LibGtk::TreeModelFilterModifyFunc, data, destroy : LibGLib::DestroyNotify?)
+    def set_modify_func(n_columns, types, func, data, destroy)
       __return_value = LibGtk.tree_model_filter_set_modify_func(to_unsafe.as(LibGtk::TreeModelFilter*), Int32.new(n_columns), types, func, data && data, destroy && destroy)
       __return_value
     end
@@ -57,7 +57,7 @@ module Gtk
       __return_value
     end
 
-    def set_visible_func(func : LibGtk::TreeModelFilterVisibleFunc, data, destroy : LibGLib::DestroyNotify?)
+    def set_visible_func(func, data, destroy)
       __return_value = LibGtk.tree_model_filter_set_visible_func(to_unsafe.as(LibGtk::TreeModelFilter*), func, data && data, destroy && destroy)
       __return_value
     end

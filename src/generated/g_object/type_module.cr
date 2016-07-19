@@ -26,7 +26,7 @@ module GObject
       __return_value
     end
 
-    def register_type(parent_type, type_name, type_info, flags)
+    def register_type(parent_type, type_name, type_info, flags : GObject::TypeFlags)
       __return_value = LibGObject.type_module_register_type(to_unsafe.as(LibGObject::TypeModule*), UInt64.new(parent_type), type_name.to_unsafe, type_info.to_unsafe.as(LibGObject::TypeInfo*), flags)
       __return_value
     end

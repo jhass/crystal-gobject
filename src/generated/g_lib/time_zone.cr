@@ -25,12 +25,12 @@ module GLib
       cast GLib::TimeZone.new(__return_value)
     end
 
-    def adjust_time(type, time)
+    def adjust_time(type : GLib::TimeType, time)
       __return_value = LibGLib.time_zone_adjust_time(to_unsafe.as(LibGLib::TimeZone*), type, time)
       __return_value
     end
 
-    def find_interval(type, time)
+    def find_interval(type : GLib::TimeType, time)
       __return_value = LibGLib.time_zone_find_interval(to_unsafe.as(LibGLib::TimeZone*), type, Int64.new(time))
       __return_value
     end

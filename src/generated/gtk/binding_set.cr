@@ -24,12 +24,12 @@ module Gtk
       @gtk_binding_set.not_nil!.as(Void*)
     end
 
-    def activate(keyval, modifiers, object)
+    def activate(keyval, modifiers : Gdk::ModifierType, object)
       __return_value = LibGtk.binding_set_activate(to_unsafe.as(LibGtk::BindingSet*), UInt32.new(keyval), modifiers, object.to_unsafe.as(LibGObject::Object*))
       __return_value
     end
 
-    def add_path(path_type, path_pattern, priority)
+    def add_path(path_type : Gtk::PathType, path_pattern, priority : Gtk::PathPriorityType)
       __return_value = LibGtk.binding_set_add_path(to_unsafe.as(LibGtk::BindingSet*), path_type, path_pattern.to_unsafe, priority)
       __return_value
     end

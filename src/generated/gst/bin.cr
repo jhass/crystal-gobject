@@ -23,7 +23,7 @@ module Gst
       __return_value
     end
 
-    def find_unlinked_pad(direction)
+    def find_unlinked_pad(direction : Gst::PadDirection)
       __return_value = LibGst.bin_find_unlinked_pad(to_unsafe.as(LibGst::Bin*), direction)
       Gst::Pad.new(__return_value) if __return_value
     end

@@ -16,7 +16,7 @@ module Gio
       cast Gio::Emblem.new(__return_value)
     end
 
-    def self.new_with_origin(icon, origin) : self
+    def self.new_with_origin(icon, origin : Gio::EmblemOrigin) : self
       __return_value = LibGio.emblem_new_with_origin(icon.to_unsafe.as(LibGio::Icon*), origin)
       cast Gio::Emblem.new(__return_value)
     end

@@ -42,7 +42,7 @@ module Gst
       Gst::Structure.new(__return_value)
     end
 
-    def filter_and_map_in_place(func : LibGst::StructureFilterMapFunc, user_data)
+    def filter_and_map_in_place(func, user_data)
       __return_value = LibGst.structure_filter_and_map_in_place(to_unsafe.as(LibGst::Structure*), func, user_data && user_data)
       __return_value
     end
@@ -82,7 +82,7 @@ module Gst
       __return_value
     end
 
-    def foreach(func : LibGst::StructureForeachFunc, user_data)
+    def foreach(func, user_data)
       __return_value = LibGst.structure_foreach(to_unsafe.as(LibGst::Structure*), func, user_data && user_data)
       __return_value
     end
@@ -232,7 +232,7 @@ module Gst
       __return_value
     end
 
-    def map_in_place(func : LibGst::StructureMapFunc, user_data)
+    def map_in_place(func, user_data)
       __return_value = LibGst.structure_map_in_place(to_unsafe.as(LibGst::Structure*), func, user_data && user_data)
       __return_value
     end

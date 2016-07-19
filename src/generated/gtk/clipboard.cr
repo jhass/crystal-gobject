@@ -38,32 +38,32 @@ module Gtk
       GObject::Object.new(__return_value) if __return_value
     end
 
-    def request_contents(target, callback : LibGtk::ClipboardReceivedFunc, user_data)
+    def request_contents(target, callback, user_data)
       __return_value = LibGtk.clipboard_request_contents(to_unsafe.as(LibGtk::Clipboard*), target.to_unsafe.as(LibGdk::Atom*), callback, user_data && user_data)
       __return_value
     end
 
-    def request_image(callback : LibGtk::ClipboardImageReceivedFunc, user_data)
+    def request_image(callback, user_data)
       __return_value = LibGtk.clipboard_request_image(to_unsafe.as(LibGtk::Clipboard*), callback, user_data && user_data)
       __return_value
     end
 
-    def request_rich_text(buffer, callback : LibGtk::ClipboardRichTextReceivedFunc, user_data)
+    def request_rich_text(buffer, callback, user_data)
       __return_value = LibGtk.clipboard_request_rich_text(to_unsafe.as(LibGtk::Clipboard*), buffer.to_unsafe.as(LibGtk::TextBuffer*), callback, user_data && user_data)
       __return_value
     end
 
-    def request_targets(callback : LibGtk::ClipboardTargetsReceivedFunc, user_data)
+    def request_targets(callback, user_data)
       __return_value = LibGtk.clipboard_request_targets(to_unsafe.as(LibGtk::Clipboard*), callback, user_data && user_data)
       __return_value
     end
 
-    def request_text(callback : LibGtk::ClipboardTextReceivedFunc, user_data)
+    def request_text(callback, user_data)
       __return_value = LibGtk.clipboard_request_text(to_unsafe.as(LibGtk::Clipboard*), callback, user_data && user_data)
       __return_value
     end
 
-    def request_uris(callback : LibGtk::ClipboardURIReceivedFunc, user_data)
+    def request_uris(callback, user_data)
       __return_value = LibGtk.clipboard_request_uris(to_unsafe.as(LibGtk::Clipboard*), callback, user_data && user_data)
       __return_value
     end

@@ -208,7 +208,7 @@ module Pango
       __return_value
     end
 
-    def alignment=(alignment)
+    def alignment=(alignment : Pango::Alignment)
       __return_value = LibPango.layout_set_alignment(to_unsafe.as(LibPango::Layout*), alignment)
       __return_value
     end
@@ -223,7 +223,7 @@ module Pango
       __return_value
     end
 
-    def ellipsize=(ellipsize)
+    def ellipsize=(ellipsize : Pango::EllipsizeMode)
       __return_value = LibPango.layout_set_ellipsize(to_unsafe.as(LibPango::Layout*), ellipsize)
       __return_value
     end
@@ -283,7 +283,7 @@ module Pango
       __return_value
     end
 
-    def wrap=(wrap)
+    def wrap=(wrap : Pango::WrapMode)
       __return_value = LibPango.layout_set_wrap(to_unsafe.as(LibPango::Layout*), wrap)
       __return_value
     end

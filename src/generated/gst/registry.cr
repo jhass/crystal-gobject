@@ -40,7 +40,7 @@ module Gst
       __return_value
     end
 
-    def feature_filter(filter : LibGst::PluginFeatureFilter, first, user_data)
+    def feature_filter(filter, first, user_data)
       __return_value = LibGst.registry_feature_filter(to_unsafe.as(LibGst::Registry*), filter, first, user_data && user_data)
       GLib::ListIterator(Gst::PluginFeature, LibGst::PluginFeature*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
@@ -85,7 +85,7 @@ module Gst
       Gst::PluginFeature.new(__return_value)
     end
 
-    def plugin_filter(filter : LibGst::PluginFilter, first, user_data)
+    def plugin_filter(filter, first, user_data)
       __return_value = LibGst.registry_plugin_filter(to_unsafe.as(LibGst::Registry*), filter, first, user_data && user_data)
       GLib::ListIterator(Gst::Plugin, LibGst::Plugin*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end

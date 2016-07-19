@@ -37,22 +37,22 @@ module Gst
       Gst::Iterator.new(__return_value)
     end
 
-    def filter(func : LibGLib::CompareFunc, user_data)
+    def filter(func, user_data)
       __return_value = LibGst.iterator_filter(to_unsafe.as(LibGst::Iterator*), func, user_data.to_unsafe.as(LibGObject::Value*))
       Gst::Iterator.new(__return_value)
     end
 
-    def find_custom(func : LibGLib::CompareFunc, elem, user_data)
+    def find_custom(func, elem, user_data)
       __return_value = LibGst.iterator_find_custom(to_unsafe.as(LibGst::Iterator*), func, elem, user_data && user_data)
       __return_value
     end
 
-    def fold(func : LibGst::IteratorFoldFunction, ret, user_data)
+    def fold(func, ret, user_data)
       __return_value = LibGst.iterator_fold(to_unsafe.as(LibGst::Iterator*), func, ret.to_unsafe.as(LibGObject::Value*), user_data && user_data)
       __return_value
     end
 
-    def foreach(func : LibGst::IteratorForeachFunction, user_data)
+    def foreach(func, user_data)
       __return_value = LibGst.iterator_foreach(to_unsafe.as(LibGst::Iterator*), func, user_data && user_data)
       __return_value
     end
@@ -134,7 +134,7 @@ module Gst
     end
 
     def lock
-      (to_unsafe.as(LibGst::Iterator*).value.lock)
+      GLib::Mutex.new((to_unsafe.as(LibGst::Iterator*).value.lock))
     end
 
     def lock=(value : GLib::Mutex)

@@ -20,7 +20,7 @@ module Gst
       @gst_event.not_nil!.as(Void*)
     end
 
-    def self.new_buffer_size(format, minsize, maxsize, async) : self
+    def self.new_buffer_size(format : Gst::Format, minsize, maxsize, async) : self
       __return_value = LibGst.event_new_buffer_size(format, Int64.new(minsize), Int64.new(maxsize), async)
       cast Gst::Event.new(__return_value)
     end
@@ -30,7 +30,7 @@ module Gst
       cast Gst::Event.new(__return_value)
     end
 
-    def self.new_custom(type, structure) : self
+    def self.new_custom(type : Gst::EventType, structure) : self
       __return_value = LibGst.event_new_custom(type, structure.to_unsafe.as(LibGst::Structure*))
       cast Gst::Event.new(__return_value)
     end
@@ -70,7 +70,7 @@ module Gst
       cast Gst::Event.new(__return_value)
     end
 
-    def self.new_qos(type, proportion, diff, timestamp) : self
+    def self.new_qos(type : Gst::QOSType, proportion, diff, timestamp) : self
       __return_value = LibGst.event_new_qos(type, Float64.new(proportion), Int64.new(diff), UInt64.new(timestamp))
       cast Gst::Event.new(__return_value)
     end
@@ -80,7 +80,7 @@ module Gst
       cast Gst::Event.new(__return_value)
     end
 
-    def self.new_seek(rate, format, flags, start_type, start, stop_type, stop) : self
+    def self.new_seek(rate, format : Gst::Format, flags : Gst::SeekFlags, start_type : Gst::SeekType, start, stop_type : Gst::SeekType, stop) : self
       __return_value = LibGst.event_new_seek(Float64.new(rate), format, flags, start_type, Int64.new(start), stop_type, Int64.new(stop))
       cast Gst::Event.new(__return_value)
     end
@@ -90,7 +90,7 @@ module Gst
       cast Gst::Event.new(__return_value)
     end
 
-    def self.new_segment_done(format, position) : self
+    def self.new_segment_done(format : Gst::Format, position) : self
       __return_value = LibGst.event_new_segment_done(format, Int64.new(position))
       cast Gst::Event.new(__return_value)
     end
@@ -100,7 +100,7 @@ module Gst
       cast Gst::Event.new(__return_value)
     end
 
-    def self.new_step(format, amount, rate, flush, intermediate) : self
+    def self.new_step(format : Gst::Format, amount, rate, flush, intermediate) : self
       __return_value = LibGst.event_new_step(format, UInt64.new(amount), Float64.new(rate), flush, intermediate)
       cast Gst::Event.new(__return_value)
     end
@@ -150,7 +150,7 @@ module Gst
       __return_value
     end
 
-    def parse_buffer_size(format, minsize, maxsize, async)
+    def parse_buffer_size(format : Gst::Format, minsize, maxsize, async)
       __return_value = LibGst.event_parse_buffer_size(to_unsafe.as(LibGst::Event*), format, minsize, maxsize, async)
       __return_value
     end
@@ -185,12 +185,12 @@ module Gst
       __return_value
     end
 
-    def parse_qos(type, proportion, diff, timestamp)
+    def parse_qos(type : Gst::QOSType, proportion, diff, timestamp)
       __return_value = LibGst.event_parse_qos(to_unsafe.as(LibGst::Event*), type, proportion, diff, timestamp)
       __return_value
     end
 
-    def parse_seek(rate, format, flags, start_type, start, stop_type, stop)
+    def parse_seek(rate, format : Gst::Format, flags : Gst::SeekFlags, start_type : Gst::SeekType, start, stop_type : Gst::SeekType, stop)
       __return_value = LibGst.event_parse_seek(to_unsafe.as(LibGst::Event*), rate, format, flags, start_type, start, stop_type, stop)
       __return_value
     end
@@ -200,7 +200,7 @@ module Gst
       __return_value
     end
 
-    def parse_segment_done(format, position)
+    def parse_segment_done(format : Gst::Format?, position)
       __return_value = LibGst.event_parse_segment_done(to_unsafe.as(LibGst::Event*), format, position)
       __return_value
     end
@@ -210,12 +210,12 @@ module Gst
       __return_value
     end
 
-    def parse_step(format, amount, rate, flush, intermediate)
+    def parse_step(format : Gst::Format?, amount, rate, flush, intermediate)
       __return_value = LibGst.event_parse_step(to_unsafe.as(LibGst::Event*), format, amount, rate, flush, intermediate)
       __return_value
     end
 
-    def parse_stream_flags(flags)
+    def parse_stream_flags(flags : Gst::StreamFlags)
       __return_value = LibGst.event_parse_stream_flags(to_unsafe.as(LibGst::Event*), flags)
       __return_value
     end
@@ -255,7 +255,7 @@ module Gst
       __return_value
     end
 
-    def stream_flags=(flags)
+    def stream_flags=(flags : Gst::StreamFlags)
       __return_value = LibGst.event_set_stream_flags(to_unsafe.as(LibGst::Event*), flags)
       __return_value
     end

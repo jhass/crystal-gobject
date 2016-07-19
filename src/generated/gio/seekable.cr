@@ -10,7 +10,7 @@ module Gio
       __return_value
     end
 
-    def seek(offset, type, cancellable)
+    def seek(offset, type : GLib::SeekType, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.seekable_seek(to_unsafe.as(LibGio::Seekable*), Int64.new(offset), type, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error

@@ -70,7 +70,7 @@ module Gtk
       __return_value
     end
 
-    def direction=(direction)
+    def direction=(direction : Gtk::TextDirection)
       __return_value = LibGtk.icon_source_set_direction(to_unsafe.as(LibGtk::IconSource*), direction)
       __return_value
     end
@@ -105,7 +105,7 @@ module Gtk
       __return_value
     end
 
-    def state=(state)
+    def state=(state : Gtk::StateType)
       __return_value = LibGtk.icon_source_set_state(to_unsafe.as(LibGtk::IconSource*), state)
       __return_value
     end

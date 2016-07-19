@@ -11,7 +11,7 @@ module Gtk
     # Implements Buildable
 
 
-    def self.new(mode) : self
+    def self.new(mode : Gtk::SizeGroupMode) : self
       __return_value = LibGtk.size_group_new(mode)
       cast Gtk::SizeGroup.new(__return_value)
     end
@@ -46,7 +46,7 @@ module Gtk
       __return_value
     end
 
-    def mode=(mode)
+    def mode=(mode : Gtk::SizeGroupMode)
       __return_value = LibGtk.size_group_set_mode(to_unsafe.as(LibGtk::SizeGroup*), mode)
       __return_value
     end

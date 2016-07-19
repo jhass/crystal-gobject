@@ -32,7 +32,7 @@ module Gst
       __return_value
     end
 
-    def push(func : LibGst::TaskPoolFunction, user_data)
+    def push(func, user_data)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGst.task_pool_push(to_unsafe.as(LibGst::TaskPool*), func, user_data && user_data, pointerof(__error))
       GLib::Error.assert __error

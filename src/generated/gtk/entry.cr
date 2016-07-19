@@ -113,12 +113,12 @@ module Gtk
       __return_value
     end
 
-    def icon_activatable(icon_pos)
+    def icon_activatable(icon_pos : Gtk::EntryIconPosition)
       __return_value = LibGtk.entry_get_icon_activatable(to_unsafe.as(LibGtk::Entry*), icon_pos)
       __return_value
     end
 
-    def icon_area(icon_pos, icon_area)
+    def icon_area(icon_pos : Gtk::EntryIconPosition, icon_area)
       __return_value = LibGtk.entry_get_icon_area(to_unsafe.as(LibGtk::Entry*), icon_pos, icon_area)
       __return_value
     end
@@ -128,42 +128,42 @@ module Gtk
       __return_value
     end
 
-    def icon_gicon(icon_pos)
+    def icon_gicon(icon_pos : Gtk::EntryIconPosition)
       __return_value = LibGtk.entry_get_icon_gicon(to_unsafe.as(LibGtk::Entry*), icon_pos)
       __return_value if __return_value
     end
 
-    def icon_name(icon_pos)
+    def icon_name(icon_pos : Gtk::EntryIconPosition)
       __return_value = LibGtk.entry_get_icon_name(to_unsafe.as(LibGtk::Entry*), icon_pos)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
-    def icon_pixbuf(icon_pos)
+    def icon_pixbuf(icon_pos : Gtk::EntryIconPosition)
       __return_value = LibGtk.entry_get_icon_pixbuf(to_unsafe.as(LibGtk::Entry*), icon_pos)
       GdkPixbuf::Pixbuf.new(__return_value) if __return_value
     end
 
-    def icon_sensitive(icon_pos)
+    def icon_sensitive(icon_pos : Gtk::EntryIconPosition)
       __return_value = LibGtk.entry_get_icon_sensitive(to_unsafe.as(LibGtk::Entry*), icon_pos)
       __return_value
     end
 
-    def icon_stock(icon_pos)
+    def icon_stock(icon_pos : Gtk::EntryIconPosition)
       __return_value = LibGtk.entry_get_icon_stock(to_unsafe.as(LibGtk::Entry*), icon_pos)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def icon_storage_type(icon_pos)
+    def icon_storage_type(icon_pos : Gtk::EntryIconPosition)
       __return_value = LibGtk.entry_get_icon_storage_type(to_unsafe.as(LibGtk::Entry*), icon_pos)
       __return_value
     end
 
-    def icon_tooltip_markup(icon_pos)
+    def icon_tooltip_markup(icon_pos : Gtk::EntryIconPosition)
       __return_value = LibGtk.entry_get_icon_tooltip_markup(to_unsafe.as(LibGtk::Entry*), icon_pos)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
-    def icon_tooltip_text(icon_pos)
+    def icon_tooltip_text(icon_pos : Gtk::EntryIconPosition)
       __return_value = LibGtk.entry_get_icon_tooltip_text(to_unsafe.as(LibGtk::Entry*), icon_pos)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
@@ -318,47 +318,47 @@ module Gtk
       __return_value
     end
 
-    def set_icon_activatable(icon_pos, activatable)
+    def set_icon_activatable(icon_pos : Gtk::EntryIconPosition, activatable)
       __return_value = LibGtk.entry_set_icon_activatable(to_unsafe.as(LibGtk::Entry*), icon_pos, activatable)
       __return_value
     end
 
-    def set_icon_drag_source(icon_pos, target_list, actions)
+    def set_icon_drag_source(icon_pos : Gtk::EntryIconPosition, target_list, actions : Gdk::DragAction)
       __return_value = LibGtk.entry_set_icon_drag_source(to_unsafe.as(LibGtk::Entry*), icon_pos, target_list.to_unsafe.as(LibGtk::TargetList*), actions)
       __return_value
     end
 
-    def set_icon_from_gicon(icon_pos, icon)
+    def set_icon_from_gicon(icon_pos : Gtk::EntryIconPosition, icon)
       __return_value = LibGtk.entry_set_icon_from_gicon(to_unsafe.as(LibGtk::Entry*), icon_pos, icon && icon.to_unsafe.as(LibGio::Icon*))
       __return_value
     end
 
-    def set_icon_from_icon_name(icon_pos, icon_name)
+    def set_icon_from_icon_name(icon_pos : Gtk::EntryIconPosition, icon_name)
       __return_value = LibGtk.entry_set_icon_from_icon_name(to_unsafe.as(LibGtk::Entry*), icon_pos, icon_name && icon_name.to_unsafe)
       __return_value
     end
 
-    def set_icon_from_pixbuf(icon_pos, pixbuf)
+    def set_icon_from_pixbuf(icon_pos : Gtk::EntryIconPosition, pixbuf)
       __return_value = LibGtk.entry_set_icon_from_pixbuf(to_unsafe.as(LibGtk::Entry*), icon_pos, pixbuf && pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*))
       __return_value
     end
 
-    def set_icon_from_stock(icon_pos, stock_id)
+    def set_icon_from_stock(icon_pos : Gtk::EntryIconPosition, stock_id)
       __return_value = LibGtk.entry_set_icon_from_stock(to_unsafe.as(LibGtk::Entry*), icon_pos, stock_id && stock_id.to_unsafe)
       __return_value
     end
 
-    def set_icon_sensitive(icon_pos, sensitive)
+    def set_icon_sensitive(icon_pos : Gtk::EntryIconPosition, sensitive)
       __return_value = LibGtk.entry_set_icon_sensitive(to_unsafe.as(LibGtk::Entry*), icon_pos, sensitive)
       __return_value
     end
 
-    def set_icon_tooltip_markup(icon_pos, tooltip)
+    def set_icon_tooltip_markup(icon_pos : Gtk::EntryIconPosition, tooltip)
       __return_value = LibGtk.entry_set_icon_tooltip_markup(to_unsafe.as(LibGtk::Entry*), icon_pos, tooltip && tooltip.to_unsafe)
       __return_value
     end
 
-    def set_icon_tooltip_text(icon_pos, tooltip)
+    def set_icon_tooltip_text(icon_pos : Gtk::EntryIconPosition, tooltip)
       __return_value = LibGtk.entry_set_icon_tooltip_text(to_unsafe.as(LibGtk::Entry*), icon_pos, tooltip && tooltip.to_unsafe)
       __return_value
     end
@@ -368,12 +368,12 @@ module Gtk
       __return_value
     end
 
-    def input_hints=(hints)
+    def input_hints=(hints : Gtk::InputHints)
       __return_value = LibGtk.entry_set_input_hints(to_unsafe.as(LibGtk::Entry*), hints)
       __return_value
     end
 
-    def input_purpose=(purpose)
+    def input_purpose=(purpose : Gtk::InputPurpose)
       __return_value = LibGtk.entry_set_input_purpose(to_unsafe.as(LibGtk::Entry*), purpose)
       __return_value
     end

@@ -49,7 +49,7 @@ module Gtk
       __return_value
     end
 
-    def add_child_in_window(child, which_window, xpos, ypos)
+    def add_child_in_window(child, which_window : Gtk::TextWindowType, xpos, ypos)
       __return_value = LibGtk.text_view_add_child_in_window(to_unsafe.as(LibGtk::TextView*), child.to_unsafe.as(LibGtk::Widget*), which_window, Int32.new(xpos), Int32.new(ypos))
       __return_value
     end
@@ -64,7 +64,7 @@ module Gtk
       __return_value
     end
 
-    def buffer_to_window_coords(win, buffer_x, buffer_y, window_x, window_y)
+    def buffer_to_window_coords(win : Gtk::TextWindowType, buffer_x, buffer_y, window_x, window_y)
       __return_value = LibGtk.text_view_buffer_to_window_coords(to_unsafe.as(LibGtk::TextView*), win, Int32.new(buffer_x), Int32.new(buffer_y), window_x, window_y)
       __return_value
     end
@@ -84,7 +84,7 @@ module Gtk
       __return_value
     end
 
-    def border_window_size(type)
+    def border_window_size(type : Gtk::TextWindowType)
       __return_value = LibGtk.text_view_get_border_window_size(to_unsafe.as(LibGtk::TextView*), type)
       __return_value
     end
@@ -224,7 +224,7 @@ module Gtk
       __return_value
     end
 
-    def window(win)
+    def window(win : Gtk::TextWindowType)
       __return_value = LibGtk.text_view_get_window(to_unsafe.as(LibGtk::TextView*), win)
       Gdk::Window.new(__return_value) if __return_value
     end
@@ -294,7 +294,7 @@ module Gtk
       __return_value
     end
 
-    def set_border_window_size(type, size)
+    def set_border_window_size(type : Gtk::TextWindowType, size)
       __return_value = LibGtk.text_view_set_border_window_size(to_unsafe.as(LibGtk::TextView*), type, Int32.new(size))
       __return_value
     end
@@ -324,17 +324,17 @@ module Gtk
       __return_value
     end
 
-    def input_hints=(hints)
+    def input_hints=(hints : Gtk::InputHints)
       __return_value = LibGtk.text_view_set_input_hints(to_unsafe.as(LibGtk::TextView*), hints)
       __return_value
     end
 
-    def input_purpose=(purpose)
+    def input_purpose=(purpose : Gtk::InputPurpose)
       __return_value = LibGtk.text_view_set_input_purpose(to_unsafe.as(LibGtk::TextView*), purpose)
       __return_value
     end
 
-    def justification=(justification)
+    def justification=(justification : Gtk::Justification)
       __return_value = LibGtk.text_view_set_justification(to_unsafe.as(LibGtk::TextView*), justification)
       __return_value
     end
@@ -384,7 +384,7 @@ module Gtk
       __return_value
     end
 
-    def wrap_mode=(wrap_mode)
+    def wrap_mode=(wrap_mode : Gtk::WrapMode)
       __return_value = LibGtk.text_view_set_wrap_mode(to_unsafe.as(LibGtk::TextView*), wrap_mode)
       __return_value
     end
@@ -394,7 +394,7 @@ module Gtk
       __return_value
     end
 
-    def window_to_buffer_coords(win, window_x, window_y, buffer_x, buffer_y)
+    def window_to_buffer_coords(win : Gtk::TextWindowType, window_x, window_y, buffer_x, buffer_y)
       __return_value = LibGtk.text_view_window_to_buffer_coords(to_unsafe.as(LibGtk::TextView*), win, Int32.new(window_x), Int32.new(window_y), buffer_x, buffer_y)
       __return_value
     end

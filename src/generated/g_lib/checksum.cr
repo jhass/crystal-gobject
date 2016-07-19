@@ -10,7 +10,7 @@ module GLib
       @g_lib_checksum.not_nil!.as(Void*)
     end
 
-    def self.new(checksum_type) : self
+    def self.new(checksum_type : GLib::ChecksumType) : self
       __return_value = LibGLib.checksum_new(checksum_type)
       cast GLib::Checksum.new(__return_value)
     end
@@ -40,7 +40,7 @@ module GLib
       __return_value
     end
 
-    def self.type_get_length(checksum_type)
+    def self.type_get_length(checksum_type : GLib::ChecksumType)
       __return_value = LibGLib.checksum_type_get_length(checksum_type)
       __return_value
     end

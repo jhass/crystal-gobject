@@ -28,7 +28,7 @@ module Gst
       cast Gst::Query.new(__return_value)
     end
 
-    def self.new_buffering(format) : self
+    def self.new_buffering(format : Gst::Format) : self
       __return_value = LibGst.query_new_buffering(format)
       cast Gst::Query.new(__return_value)
     end
@@ -43,12 +43,12 @@ module Gst
       cast Gst::Query.new(__return_value)
     end
 
-    def self.new_convert(src_format, value, dest_format) : self
+    def self.new_convert(src_format : Gst::Format, value, dest_format : Gst::Format) : self
       __return_value = LibGst.query_new_convert(src_format, Int64.new(value), dest_format)
       cast Gst::Query.new(__return_value)
     end
 
-    def self.new_custom(type, structure) : self
+    def self.new_custom(type : Gst::QueryType, structure) : self
       __return_value = LibGst.query_new_custom(type, structure && structure.to_unsafe.as(LibGst::Structure*))
       cast Gst::Query.new(__return_value)
     end
@@ -58,7 +58,7 @@ module Gst
       cast Gst::Query.new(__return_value)
     end
 
-    def self.new_duration(format) : self
+    def self.new_duration(format : Gst::Format) : self
       __return_value = LibGst.query_new_duration(format)
       cast Gst::Query.new(__return_value)
     end
@@ -73,7 +73,7 @@ module Gst
       cast Gst::Query.new(__return_value)
     end
 
-    def self.new_position(format) : self
+    def self.new_position(format : Gst::Format) : self
       __return_value = LibGst.query_new_position(format)
       cast Gst::Query.new(__return_value)
     end
@@ -83,12 +83,12 @@ module Gst
       cast Gst::Query.new(__return_value)
     end
 
-    def self.new_seeking(format) : self
+    def self.new_seeking(format : Gst::Format) : self
       __return_value = LibGst.query_new_seeking(format)
       cast Gst::Query.new(__return_value)
     end
 
-    def self.new_segment(format) : self
+    def self.new_segment(format : Gst::Format) : self
       __return_value = LibGst.query_new_segment(format)
       cast Gst::Query.new(__return_value)
     end
@@ -118,7 +118,7 @@ module Gst
       __return_value
     end
 
-    def add_scheduling_mode(mode)
+    def add_scheduling_mode(mode : Gst::PadMode)
       __return_value = LibGst.query_add_scheduling_mode(to_unsafe.as(LibGst::Query*), mode)
       __return_value
     end
@@ -158,12 +158,12 @@ module Gst
       Gst::Structure.new(__return_value)
     end
 
-    def has_scheduling_mode(mode)
+    def has_scheduling_mode(mode : Gst::PadMode)
       __return_value = LibGst.query_has_scheduling_mode(to_unsafe.as(LibGst::Query*), mode)
       __return_value
     end
 
-    def has_scheduling_mode_with_flags(mode, flags)
+    def has_scheduling_mode_with_flags(mode : Gst::PadMode, flags : Gst::SchedulingFlags)
       __return_value = LibGst.query_has_scheduling_mode_with_flags(to_unsafe.as(LibGst::Query*), mode, flags)
       __return_value
     end
@@ -188,12 +188,12 @@ module Gst
       __return_value
     end
 
-    def parse_buffering_range(format, start, stop, estimated_total)
+    def parse_buffering_range(format : Gst::Format?, start, stop, estimated_total)
       __return_value = LibGst.query_parse_buffering_range(to_unsafe.as(LibGst::Query*), format, start, stop, estimated_total)
       __return_value
     end
 
-    def parse_buffering_stats(mode, avg_in, avg_out, buffering_left)
+    def parse_buffering_stats(mode : Gst::BufferingMode?, avg_in, avg_out, buffering_left)
       __return_value = LibGst.query_parse_buffering_stats(to_unsafe.as(LibGst::Query*), mode, avg_in, avg_out, buffering_left)
       __return_value
     end
@@ -218,12 +218,12 @@ module Gst
       __return_value
     end
 
-    def parse_convert(src_format, src_value, dest_format, dest_value)
+    def parse_convert(src_format : Gst::Format?, src_value, dest_format : Gst::Format?, dest_value)
       __return_value = LibGst.query_parse_convert(to_unsafe.as(LibGst::Query*), src_format, src_value, dest_format, dest_value)
       __return_value
     end
 
-    def parse_duration(format, duration)
+    def parse_duration(format : Gst::Format?, duration)
       __return_value = LibGst.query_parse_duration(to_unsafe.as(LibGst::Query*), format, duration)
       __return_value
     end
@@ -258,7 +258,7 @@ module Gst
       __return_value
     end
 
-    def parse_nth_format(nth, format)
+    def parse_nth_format(nth, format : Gst::Format?)
       __return_value = LibGst.query_parse_nth_format(to_unsafe.as(LibGst::Query*), nth, format)
       __return_value
     end
@@ -268,22 +268,22 @@ module Gst
       __return_value
     end
 
-    def parse_position(format, cur)
+    def parse_position(format : Gst::Format?, cur)
       __return_value = LibGst.query_parse_position(to_unsafe.as(LibGst::Query*), format, cur)
       __return_value
     end
 
-    def parse_scheduling(flags, minsize, maxsize, align)
+    def parse_scheduling(flags : Gst::SchedulingFlags?, minsize, maxsize, align)
       __return_value = LibGst.query_parse_scheduling(to_unsafe.as(LibGst::Query*), flags, minsize, maxsize, align)
       __return_value
     end
 
-    def parse_seeking(format, seekable, segment_start, segment_end)
+    def parse_seeking(format : Gst::Format?, seekable, segment_start, segment_end)
       __return_value = LibGst.query_parse_seeking(to_unsafe.as(LibGst::Query*), format, seekable, segment_start, segment_end)
       __return_value
     end
 
-    def parse_segment(rate, format, start_value, stop_value)
+    def parse_segment(rate, format : Gst::Format?, start_value, stop_value)
       __return_value = LibGst.query_parse_segment(to_unsafe.as(LibGst::Query*), rate, format, start_value, stop_value)
       __return_value
     end
@@ -328,12 +328,12 @@ module Gst
       __return_value
     end
 
-    def set_buffering_range(format, start, stop, estimated_total)
+    def set_buffering_range(format : Gst::Format, start, stop, estimated_total)
       __return_value = LibGst.query_set_buffering_range(to_unsafe.as(LibGst::Query*), format, Int64.new(start), Int64.new(stop), Int64.new(estimated_total))
       __return_value
     end
 
-    def set_buffering_stats(mode, avg_in, avg_out, buffering_left)
+    def set_buffering_stats(mode : Gst::BufferingMode, avg_in, avg_out, buffering_left)
       __return_value = LibGst.query_set_buffering_stats(to_unsafe.as(LibGst::Query*), mode, Int32.new(avg_in), Int32.new(avg_out), Int64.new(buffering_left))
       __return_value
     end
@@ -348,12 +348,12 @@ module Gst
       __return_value
     end
 
-    def set_convert(src_format, src_value, dest_format, dest_value)
+    def set_convert(src_format : Gst::Format, src_value, dest_format : Gst::Format, dest_value)
       __return_value = LibGst.query_set_convert(to_unsafe.as(LibGst::Query*), src_format, Int64.new(src_value), dest_format, Int64.new(dest_value))
       __return_value
     end
 
-    def set_duration(format, duration)
+    def set_duration(format : Gst::Format, duration)
       __return_value = LibGst.query_set_duration(to_unsafe.as(LibGst::Query*), format, Int64.new(duration))
       __return_value
     end
@@ -378,22 +378,22 @@ module Gst
       __return_value
     end
 
-    def set_position(format, cur)
+    def set_position(format : Gst::Format, cur)
       __return_value = LibGst.query_set_position(to_unsafe.as(LibGst::Query*), format, Int64.new(cur))
       __return_value
     end
 
-    def set_scheduling(flags, minsize, maxsize, align)
+    def set_scheduling(flags : Gst::SchedulingFlags, minsize, maxsize, align)
       __return_value = LibGst.query_set_scheduling(to_unsafe.as(LibGst::Query*), flags, Int32.new(minsize), Int32.new(maxsize), Int32.new(align))
       __return_value
     end
 
-    def set_seeking(format, seekable, segment_start, segment_end)
+    def set_seeking(format : Gst::Format, seekable, segment_start, segment_end)
       __return_value = LibGst.query_set_seeking(to_unsafe.as(LibGst::Query*), format, seekable, Int64.new(segment_start), Int64.new(segment_end))
       __return_value
     end
 
-    def set_segment(rate, format, start_value, stop_value)
+    def set_segment(rate, format : Gst::Format, start_value, stop_value)
       __return_value = LibGst.query_set_segment(to_unsafe.as(LibGst::Query*), Float64.new(rate), format, Int64.new(start_value), Int64.new(stop_value))
       __return_value
     end

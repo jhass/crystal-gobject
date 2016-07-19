@@ -56,7 +56,7 @@ module GLib
       __return_value
     end
 
-    def n_nodes(flags)
+    def n_nodes(flags : GLib::TraverseFlags)
       __return_value = LibGLib.node_n_nodes(to_unsafe.as(LibGLib::Node*), flags)
       __return_value
     end

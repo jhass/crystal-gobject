@@ -1,5 +1,5 @@
 module Pango
-  def self.attr_type_get_name(type)
+  def self.attr_type_get_name(type : Pango::AttrType)
     __return_value = LibPango.attr_type_get_name(type)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
@@ -79,17 +79,17 @@ module Pango
     __return_value
   end
 
-  def self.gravity_get_for_script(script, base_gravity, hint)
+  def self.gravity_get_for_script(script : Pango::Script, base_gravity : Pango::Gravity, hint : Pango::GravityHint)
     __return_value = LibPango.gravity_get_for_script(script, base_gravity, hint)
     __return_value
   end
 
-  def self.gravity_get_for_script_and_width(script, wide, base_gravity, hint)
+  def self.gravity_get_for_script_and_width(script : Pango::Script, wide, base_gravity : Pango::Gravity, hint : Pango::GravityHint)
     __return_value = LibPango.gravity_get_for_script_and_width(script, wide, base_gravity, hint)
     __return_value
   end
 
-  def self.gravity_to_rotation(gravity)
+  def self.gravity_to_rotation(gravity : Pango::Gravity)
     __return_value = LibPango.gravity_to_rotation(gravity)
     __return_value
   end
@@ -104,7 +104,7 @@ module Pango
     GLib::ListIterator(Pango::Item, LibPango::Item*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
   end
 
-  def self.itemize_with_base_dir(context, base_dir, text, start_index, length, attrs, cached_iter)
+  def self.itemize_with_base_dir(context, base_dir : Pango::Direction, text, start_index, length, attrs, cached_iter)
     __return_value = LibPango.itemize_with_base_dir(context.to_unsafe.as(LibPango::Context*), base_dir, text.to_unsafe, Int32.new(start_index), Int32.new(length), attrs.to_unsafe.as(LibPango::AttrList*), cached_iter && cached_iter.to_unsafe.as(LibPango::AttrIterator*))
     GLib::ListIterator(Pango::Item, LibPango::Item*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
   end
@@ -119,7 +119,7 @@ module Pango
     Pango::Language.new(__return_value)
   end
 
-  def self.log2vis_get_embedding_levels(text, length, pbase_dir)
+  def self.log2vis_get_embedding_levels(text, length, pbase_dir : Pango::Direction)
     __return_value = LibPango.log2vis_get_embedding_levels(text.to_unsafe, Int32.new(length), pbase_dir.to_unsafe.as(LibPango::Direction*))
     __return_value
   end
@@ -158,22 +158,22 @@ module Pango
     __return_value
   end
 
-  def self.parse_stretch(str, stretch, warn)
+  def self.parse_stretch(str, stretch : Pango::Stretch, warn)
     __return_value = LibPango.parse_stretch(str.to_unsafe, stretch, warn)
     __return_value
   end
 
-  def self.parse_style(str, style, warn)
+  def self.parse_style(str, style : Pango::Style, warn)
     __return_value = LibPango.parse_style(str.to_unsafe, style, warn)
     __return_value
   end
 
-  def self.parse_variant(str, variant, warn)
+  def self.parse_variant(str, variant : Pango::Variant, warn)
     __return_value = LibPango.parse_variant(str.to_unsafe, variant, warn)
     __return_value
   end
 
-  def self.parse_weight(str, weight, warn)
+  def self.parse_weight(str, weight : Pango::Weight, warn)
     __return_value = LibPango.parse_weight(str.to_unsafe, weight, warn)
     __return_value
   end
@@ -213,7 +213,7 @@ module Pango
     __return_value
   end
 
-  def self.script_get_sample_language(script)
+  def self.script_get_sample_language(script : Pango::Script)
     __return_value = LibPango.script_get_sample_language(script)
     Pango::Language.new(__return_value) if __return_value
   end

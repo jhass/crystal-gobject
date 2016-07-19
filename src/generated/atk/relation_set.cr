@@ -18,17 +18,17 @@ module Atk
       __return_value
     end
 
-    def add_relation_by_type(relationship, target)
+    def add_relation_by_type(relationship : Atk::RelationType, target)
       __return_value = LibAtk.relation_set_add_relation_by_type(to_unsafe.as(LibAtk::RelationSet*), relationship, target.to_unsafe.as(LibAtk::Object*))
       __return_value
     end
 
-    def contains(relationship)
+    def contains(relationship : Atk::RelationType)
       __return_value = LibAtk.relation_set_contains(to_unsafe.as(LibAtk::RelationSet*), relationship)
       __return_value
     end
 
-    def contains_target(relationship, target)
+    def contains_target(relationship : Atk::RelationType, target)
       __return_value = LibAtk.relation_set_contains_target(to_unsafe.as(LibAtk::RelationSet*), relationship, target.to_unsafe.as(LibAtk::Object*))
       __return_value
     end
@@ -43,7 +43,7 @@ module Atk
       Atk::Relation.new(__return_value)
     end
 
-    def relation_by_type(relationship)
+    def relation_by_type(relationship : Atk::RelationType)
       __return_value = LibAtk.relation_set_get_relation_by_type(to_unsafe.as(LibAtk::RelationSet*), relationship)
       Atk::Relation.new(__return_value)
     end

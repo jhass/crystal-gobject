@@ -1,4 +1,15 @@
 module GLib
-  alias FloatIEEE754 = LibGLib::FloatIEEE754
+  class FloatIEEE754
+    include GObject::WrappedType
+
+    @g_lib_float_i_e_e_e754 : LibGLib::FloatIEEE754*?
+    def initialize(@g_lib_float_i_e_e_e754 : LibGLib::FloatIEEE754*)
+    end
+
+    def to_unsafe
+      @g_lib_float_i_e_e_e754.not_nil!.as(Void*)
+    end
+
+  end
 end
 
