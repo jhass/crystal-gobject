@@ -34,6 +34,20 @@ module GIRepository
         io.puts "#{indent}  include GObject::WrappedType"
         io.puts
 
+        each_field do |field|
+          if field.readable?
+            if field.type.tag.interface? && !field.type.pointer?
+              field_access = "to_unsafe.as(Lib#{field.type.namespace}::#{field.type.interface.name}*)"
+            else
+              field_access = "to_unsafe.as(#{ptr_type(libname)}).value.#{field.name}"
+            end
+            io.puts "#{indent}  def #{field.name(false)}"
+            io.puts "#{indent}    #{field.type.convert_to_crystal("(#{field_access})")}"
+            io.puts "#{indent}  end"
+            io.puts
+          end
+        end
+
         write_constructor libname, io, indent
         write_to_unsafe libname, io, indent
         write_methods libname, io, indent

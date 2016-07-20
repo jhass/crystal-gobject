@@ -18,7 +18,14 @@ window.events = Gdk::EventMask::ZERO_NONE
 window.show
 
 Gdk::Event.on_event do |event|
-  puts event.event_type
+  case event.event_type
+  when .expose?
+    puts "Expose count: #{event.expose.count}"
+  when .setting?
+    puts "Setting #{event.setting.name} is #{event.setting.action}"
+  else
+    puts "Unhandled event: #{event.event_type}"
+  end
 end
 
 GLib::MainLoop.new(nil, true).run
