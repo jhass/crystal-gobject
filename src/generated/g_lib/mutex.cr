@@ -2,6 +2,14 @@ module GLib
   class Mutex
     include GObject::WrappedType
 
+    def p
+      (to_unsafe.as(LibGLib::Mutex*).value.p)
+    end
+
+    def i
+      PointerIterator.new((to_unsafe.as(LibGLib::Mutex*).value.i)) {|__item| __item }
+    end
+
     @g_lib_mutex : LibGLib::Mutex*?
     def initialize(@g_lib_mutex : LibGLib::Mutex*)
     end

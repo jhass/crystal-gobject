@@ -2,6 +2,94 @@ module Gdk
   class Event
     include GObject::WrappedType
 
+    def type
+      (to_unsafe.as(LibGdk::EventType*))
+    end
+
+    def any
+      Gdk::EventAny.new((to_unsafe.as(LibGdk::EventAny*)))
+    end
+
+    def expose
+      Gdk::EventExpose.new((to_unsafe.as(LibGdk::EventExpose*)))
+    end
+
+    def visibility
+      Gdk::EventVisibility.new((to_unsafe.as(LibGdk::EventVisibility*)))
+    end
+
+    def motion
+      Gdk::EventMotion.new((to_unsafe.as(LibGdk::EventMotion*)))
+    end
+
+    def button
+      Gdk::EventButton.new((to_unsafe.as(LibGdk::EventButton*)))
+    end
+
+    def touch
+      Gdk::EventTouch.new((to_unsafe.as(LibGdk::EventTouch*)))
+    end
+
+    def scroll
+      Gdk::EventScroll.new((to_unsafe.as(LibGdk::EventScroll*)))
+    end
+
+    def key
+      Gdk::EventKey.new((to_unsafe.as(LibGdk::EventKey*)))
+    end
+
+    def crossing
+      Gdk::EventCrossing.new((to_unsafe.as(LibGdk::EventCrossing*)))
+    end
+
+    def focus_change
+      Gdk::EventFocus.new((to_unsafe.as(LibGdk::EventFocus*)))
+    end
+
+    def configure
+      Gdk::EventConfigure.new((to_unsafe.as(LibGdk::EventConfigure*)))
+    end
+
+    def property
+      Gdk::EventProperty.new((to_unsafe.as(LibGdk::EventProperty*)))
+    end
+
+    def selection
+      Gdk::EventSelection.new((to_unsafe.as(LibGdk::EventSelection*)))
+    end
+
+    def owner_change
+      Gdk::EventOwnerChange.new((to_unsafe.as(LibGdk::EventOwnerChange*)))
+    end
+
+    def proximity
+      Gdk::EventProximity.new((to_unsafe.as(LibGdk::EventProximity*)))
+    end
+
+    def dnd
+      Gdk::EventDND.new((to_unsafe.as(LibGdk::EventDND*)))
+    end
+
+    def window_state
+      Gdk::EventWindowState.new((to_unsafe.as(LibGdk::EventWindowState*)))
+    end
+
+    def setting
+      Gdk::EventSetting.new((to_unsafe.as(LibGdk::EventSetting*)))
+    end
+
+    def grab_broken
+      Gdk::EventGrabBroken.new((to_unsafe.as(LibGdk::EventGrabBroken*)))
+    end
+
+    def touchpad_swipe
+      Gdk::EventTouchpadSwipe.new((to_unsafe.as(LibGdk::EventTouchpadSwipe*)))
+    end
+
+    def touchpad_pinch
+      Gdk::EventTouchpadPinch.new((to_unsafe.as(LibGdk::EventTouchpadPinch*)))
+    end
+
     @gdk_event : LibGdk::Event*?
     def initialize(@gdk_event : LibGdk::Event*)
     end
