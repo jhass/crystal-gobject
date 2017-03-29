@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_text_tag_table.not_nil!.as(Void*)
+      @gtk_text_tag_table.not_nil!
     end
 
     # Implements Buildable
@@ -30,7 +30,7 @@ module Gtk
     end
 
     def lookup(name)
-      __return_value = LibGtk.text_tag_table_lookup(to_unsafe.as(LibGtk::TextTagTable*), name.to_unsafe)
+      __return_value = LibGtk.text_tag_table_lookup(to_unsafe.as(LibGtk::TextTagTable*), name)
       Gtk::TextTag.new(__return_value) if __return_value
     end
 

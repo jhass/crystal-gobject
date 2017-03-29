@@ -14,7 +14,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_value.not_nil!.as(Void*)
+      @g_object_value.not_nil!
     end
 
     def copy(dest_value)
@@ -258,17 +258,17 @@ module GObject
     end
 
     def static_string=(v_string)
-      __return_value = LibGObject.value_set_static_string(to_unsafe.as(LibGObject::Value*), v_string && v_string.to_unsafe)
+      __return_value = LibGObject.value_set_static_string(to_unsafe.as(LibGObject::Value*), v_string)
       __return_value
     end
 
     def string=(v_string)
-      __return_value = LibGObject.value_set_string(to_unsafe.as(LibGObject::Value*), v_string && v_string.to_unsafe)
+      __return_value = LibGObject.value_set_string(to_unsafe.as(LibGObject::Value*), v_string)
       __return_value
     end
 
     def string_take_ownership=(v_string)
-      __return_value = LibGObject.value_set_string_take_ownership(to_unsafe.as(LibGObject::Value*), v_string && v_string.to_unsafe)
+      __return_value = LibGObject.value_set_string_take_ownership(to_unsafe.as(LibGObject::Value*), v_string)
       __return_value
     end
 
@@ -303,7 +303,7 @@ module GObject
     end
 
     def take_string(v_string)
-      __return_value = LibGObject.value_take_string(to_unsafe.as(LibGObject::Value*), v_string && v_string.to_unsafe)
+      __return_value = LibGObject.value_take_string(to_unsafe.as(LibGObject::Value*), v_string)
       __return_value
     end
 

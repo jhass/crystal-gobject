@@ -5,13 +5,13 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_text_mark.not_nil!.as(Void*)
+      @gtk_text_mark.not_nil!
     end
 
 
 
     def self.new(name, left_gravity) : self
-      __return_value = LibGtk.text_mark_new(name && name.to_unsafe, left_gravity)
+      __return_value = LibGtk.text_mark_new(name, left_gravity)
       cast Gtk::TextMark.new(__return_value)
     end
 

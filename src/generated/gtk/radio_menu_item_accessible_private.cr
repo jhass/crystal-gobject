@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_radio_menu_item_accessible_private.not_nil!.as(Void*)
+      @gtk_radio_menu_item_accessible_private.not_nil!
     end
 
   end

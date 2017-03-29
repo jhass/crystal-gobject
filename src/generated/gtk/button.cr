@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_button.not_nil!.as(Void*)
+      @gtk_button.not_nil!
     end
 
     # Implements ImplementorIface
@@ -29,22 +29,22 @@ module Gtk
     end
 
     def self.new_from_icon_name(icon_name, size) : self
-      __return_value = LibGtk.button_new_from_icon_name(icon_name.to_unsafe, Int32.new(size))
+      __return_value = LibGtk.button_new_from_icon_name(icon_name, Int32.new(size))
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_from_stock(stock_id) : self
-      __return_value = LibGtk.button_new_from_stock(stock_id.to_unsafe)
+      __return_value = LibGtk.button_new_from_stock(stock_id)
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_label(label) : self
-      __return_value = LibGtk.button_new_with_label(label.to_unsafe)
+      __return_value = LibGtk.button_new_with_label(label)
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_mnemonic(label) : self
-      __return_value = LibGtk.button_new_with_mnemonic(label.to_unsafe)
+      __return_value = LibGtk.button_new_with_mnemonic(label)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -149,7 +149,7 @@ module Gtk
     end
 
     def label=(label)
-      __return_value = LibGtk.button_set_label(to_unsafe.as(LibGtk::Button*), label.to_unsafe)
+      __return_value = LibGtk.button_set_label(to_unsafe.as(LibGtk::Button*), label)
       __return_value
     end
 

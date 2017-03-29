@@ -5,21 +5,21 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_accel_map.not_nil!.as(Void*)
+      @gtk_accel_map.not_nil!
     end
 
     def self.add_entry(accel_path, accel_key, accel_mods : Gdk::ModifierType)
-      __return_value = LibGtk.accel_map_add_entry(accel_path.to_unsafe, UInt32.new(accel_key), accel_mods)
+      __return_value = LibGtk.accel_map_add_entry(accel_path, UInt32.new(accel_key), accel_mods)
       __return_value
     end
 
     def self.add_filter(filter_pattern)
-      __return_value = LibGtk.accel_map_add_filter(filter_pattern.to_unsafe)
+      __return_value = LibGtk.accel_map_add_filter(filter_pattern)
       __return_value
     end
 
     def self.change_entry(accel_path, accel_key, accel_mods : Gdk::ModifierType, replace)
-      __return_value = LibGtk.accel_map_change_entry(accel_path.to_unsafe, UInt32.new(accel_key), accel_mods, replace)
+      __return_value = LibGtk.accel_map_change_entry(accel_path, UInt32.new(accel_key), accel_mods, replace)
       __return_value
     end
 
@@ -39,7 +39,7 @@ module Gtk
     end
 
     def self.load(file_name)
-      __return_value = LibGtk.accel_map_load(file_name.to_unsafe)
+      __return_value = LibGtk.accel_map_load(file_name)
       __return_value
     end
 
@@ -54,17 +54,17 @@ module Gtk
     end
 
     def self.lock_path(accel_path)
-      __return_value = LibGtk.accel_map_lock_path(accel_path.to_unsafe)
+      __return_value = LibGtk.accel_map_lock_path(accel_path)
       __return_value
     end
 
     def self.lookup_entry(accel_path, key)
-      __return_value = LibGtk.accel_map_lookup_entry(accel_path.to_unsafe, key)
+      __return_value = LibGtk.accel_map_lookup_entry(accel_path, key)
       __return_value
     end
 
     def self.save(file_name)
-      __return_value = LibGtk.accel_map_save(file_name.to_unsafe)
+      __return_value = LibGtk.accel_map_save(file_name)
       __return_value
     end
 
@@ -74,7 +74,7 @@ module Gtk
     end
 
     def self.unlock_path(accel_path)
-      __return_value = LibGtk.accel_map_unlock_path(accel_path.to_unsafe)
+      __return_value = LibGtk.accel_map_unlock_path(accel_path)
       __return_value
     end
 

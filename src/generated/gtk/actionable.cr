@@ -11,7 +11,7 @@ module Gtk
     end
 
     def action_name=(action_name)
-      __return_value = LibGtk.actionable_set_action_name(to_unsafe.as(LibGtk::Actionable*), action_name.to_unsafe)
+      __return_value = LibGtk.actionable_set_action_name(to_unsafe.as(LibGtk::Actionable*), action_name)
       __return_value
     end
 
@@ -21,7 +21,7 @@ module Gtk
     end
 
     def detailed_action_name=(detailed_action_name)
-      __return_value = LibGtk.actionable_set_detailed_action_name(to_unsafe.as(LibGtk::Actionable*), detailed_action_name.to_unsafe)
+      __return_value = LibGtk.actionable_set_detailed_action_name(to_unsafe.as(LibGtk::Actionable*), detailed_action_name)
       __return_value
     end
 

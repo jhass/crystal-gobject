@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_bus.not_nil!.as(Void*)
+      @gst_bus.not_nil!
     end
 
 

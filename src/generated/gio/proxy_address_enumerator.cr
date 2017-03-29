@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_proxy_address_enumerator.not_nil!.as(Void*)
+      @gio_proxy_address_enumerator.not_nil!
     end
 
 

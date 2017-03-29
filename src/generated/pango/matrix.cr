@@ -19,7 +19,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_matrix.not_nil!.as(Void*)
+      @pango_matrix.not_nil!
     end
 
     def concat(new_matrix)

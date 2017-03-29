@@ -5,14 +5,14 @@ module Gio
     end
 
     def to_unsafe
-      @gio_d_bus_object_manager_server.not_nil!.as(Void*)
+      @gio_d_bus_object_manager_server.not_nil!
     end
 
     # Implements DBusObjectManager
 
 
     def self.new(object_path) : self
-      __return_value = LibGio.d_bus_object_manager_server_new(object_path.to_unsafe)
+      __return_value = LibGio.d_bus_object_manager_server_new(object_path)
       cast Gio::DBusObjectManagerServer.new(__return_value)
     end
 
@@ -42,7 +42,7 @@ module Gio
     end
 
     def unexport(object_path)
-      __return_value = LibGio.d_bus_object_manager_server_unexport(to_unsafe.as(LibGio::DBusObjectManagerServer*), object_path.to_unsafe)
+      __return_value = LibGio.d_bus_object_manager_server_unexport(to_unsafe.as(LibGio::DBusObjectManagerServer*), object_path)
       __return_value
     end
 

@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_expander.not_nil!.as(Void*)
+      @gtk_expander.not_nil!
     end
 
     # Implements ImplementorIface
@@ -21,12 +21,12 @@ module Gtk
 
 
     def self.new(label) : self
-      __return_value = LibGtk.expander_new(label.to_unsafe)
+      __return_value = LibGtk.expander_new(label)
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_mnemonic(label) : self
-      __return_value = LibGtk.expander_new_with_mnemonic(label && label.to_unsafe)
+      __return_value = LibGtk.expander_new_with_mnemonic(label)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -76,7 +76,7 @@ module Gtk
     end
 
     def label=(label)
-      __return_value = LibGtk.expander_set_label(to_unsafe.as(LibGtk::Expander*), label && label.to_unsafe)
+      __return_value = LibGtk.expander_set_label(to_unsafe.as(LibGtk::Expander*), label)
       __return_value
     end
 

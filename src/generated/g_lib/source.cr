@@ -12,7 +12,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_source.not_nil!.as(Void*)
+      @g_lib_source.not_nil!
     end
 
     def self.new(source_funcs, struct_size) : self
@@ -141,7 +141,7 @@ module GLib
     end
 
     def name=(name)
-      __return_value = LibGLib.source_set_name(to_unsafe.as(LibGLib::Source*), name.to_unsafe)
+      __return_value = LibGLib.source_set_name(to_unsafe.as(LibGLib::Source*), name)
       __return_value
     end
 
@@ -176,7 +176,7 @@ module GLib
     end
 
     def self.name_by_id=(tag, name)
-      __return_value = LibGLib.source_set_name_by_id(UInt32.new(tag), name.to_unsafe)
+      __return_value = LibGLib.source_set_name_by_id(UInt32.new(tag), name)
       __return_value
     end
 

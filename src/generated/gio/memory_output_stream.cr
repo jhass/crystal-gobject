@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_memory_output_stream.not_nil!.as(Void*)
+      @gio_memory_output_stream.not_nil!
     end
 
     # Implements PollableOutputStream

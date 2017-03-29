@@ -16,7 +16,7 @@ module Atk
     end
 
     def insert_text(string, length, position)
-      __return_value = LibAtk.editable_text_insert_text(to_unsafe.as(LibAtk::EditableText*), string.to_unsafe, Int32.new(length), position)
+      __return_value = LibAtk.editable_text_insert_text(to_unsafe.as(LibAtk::EditableText*), string, Int32.new(length), position)
       __return_value
     end
 
@@ -31,7 +31,7 @@ module Atk
     end
 
     def text_contents=(string)
-      __return_value = LibAtk.editable_text_set_text_contents(to_unsafe.as(LibAtk::EditableText*), string.to_unsafe)
+      __return_value = LibAtk.editable_text_set_text_contents(to_unsafe.as(LibAtk::EditableText*), string)
       __return_value
     end
 

@@ -20,7 +20,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_buffer.not_nil!.as(Void*)
+      @gst_buffer.not_nil!
     end
 
     def self.new : self
@@ -118,6 +118,11 @@ module Gst
       Gst::Memory.new(__return_value)
     end
 
+    def flags
+      __return_value = LibGst.buffer_get_flags(to_unsafe.as(LibGst::Buffer*))
+      __return_value
+    end
+
     def memory(idx)
       __return_value = LibGst.buffer_get_memory(to_unsafe.as(LibGst::Buffer*), UInt32.new(idx))
       Gst::Memory.new(__return_value)
@@ -145,6 +150,11 @@ module Gst
 
     def sizes_range(idx, length, offset, maxsize)
       __return_value = LibGst.buffer_get_sizes_range(to_unsafe.as(LibGst::Buffer*), UInt32.new(idx), Int32.new(length), offset, maxsize)
+      __return_value
+    end
+
+    def has_flags(flags : Gst::BufferFlags)
+      __return_value = LibGst.buffer_has_flags(to_unsafe.as(LibGst::Buffer*), flags)
       __return_value
     end
 
@@ -248,6 +258,11 @@ module Gst
       __return_value
     end
 
+    def flags=(flags : Gst::BufferFlags)
+      __return_value = LibGst.buffer_set_flags(to_unsafe.as(LibGst::Buffer*), flags)
+      __return_value
+    end
+
     def size=(size)
       __return_value = LibGst.buffer_set_size(to_unsafe.as(LibGst::Buffer*), Int64.new(size))
       __return_value
@@ -255,6 +270,11 @@ module Gst
 
     def unmap(info)
       __return_value = LibGst.buffer_unmap(to_unsafe.as(LibGst::Buffer*), info.to_unsafe.as(LibGst::MapInfo*))
+      __return_value
+    end
+
+    def unset_flags(flags : Gst::BufferFlags)
+      __return_value = LibGst.buffer_unset_flags(to_unsafe.as(LibGst::Buffer*), flags)
       __return_value
     end
 

@@ -14,7 +14,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_caps.not_nil!.as(Void*)
+      @gst_caps.not_nil!
     end
 
     def self.new_any : self
@@ -28,7 +28,7 @@ module Gst
     end
 
     def self.new_empty_simple(media_type) : self
-      __return_value = LibGst.caps_new_empty_simple(media_type.to_unsafe)
+      __return_value = LibGst.caps_new_empty_simple(media_type)
       cast Gst::Caps.new(__return_value)
     end
 
@@ -183,7 +183,7 @@ module Gst
     end
 
     def set_value(field, value)
-      __return_value = LibGst.caps_set_value(to_unsafe.as(LibGst::Caps*), field.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGst.caps_set_value(to_unsafe.as(LibGst::Caps*), field, value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 
@@ -213,7 +213,7 @@ module Gst
     end
 
     def self.from_string(string)
-      __return_value = LibGst.caps_from_string(string.to_unsafe)
+      __return_value = LibGst.caps_from_string(string)
       Gst::Caps.new(__return_value)
     end
 

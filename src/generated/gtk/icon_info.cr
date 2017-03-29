@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_icon_info.not_nil!.as(Void*)
+      @gtk_icon_info.not_nil!
     end
 
     def self.new_for_pixbuf(icon_theme, pixbuf) : self
@@ -30,7 +30,7 @@ module Gtk
 
     def builtin_pixbuf
       __return_value = LibGtk.icon_info_get_builtin_pixbuf(to_unsafe.as(LibGtk::IconInfo*))
-      GdkPixbuf::Pixbuf.new(__return_value)
+      GdkPixbuf::Pixbuf.new(__return_value) if __return_value
     end
 
     def display_name

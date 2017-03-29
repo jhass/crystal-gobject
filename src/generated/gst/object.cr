@@ -5,13 +5,13 @@ module Gst
     end
 
     def to_unsafe
-      @gst_object.not_nil!.as(Void*)
+      @gst_object.not_nil!
     end
 
 
 
     def self.check_uniqueness(list, name)
-      __return_value = LibGst.object_check_uniqueness(list, name.to_unsafe)
+      __return_value = LibGst.object_check_uniqueness(list, name)
       __return_value
     end
 
@@ -31,12 +31,12 @@ module Gst
     end
 
     def default_error(error, debug)
-      __return_value = LibGst.object_default_error(to_unsafe.as(LibGst::Object*), error, debug && debug.to_unsafe)
+      __return_value = LibGst.object_default_error(to_unsafe.as(LibGst::Object*), error, debug)
       __return_value
     end
 
     def control_binding(property_name)
-      __return_value = LibGst.object_get_control_binding(to_unsafe.as(LibGst::Object*), property_name.to_unsafe)
+      __return_value = LibGst.object_get_control_binding(to_unsafe.as(LibGst::Object*), property_name)
       Gst::ControlBinding.new(__return_value) if __return_value
     end
 
@@ -46,7 +46,7 @@ module Gst
     end
 
     def g_value_array(property_name, timestamp, interval, n_values, values)
-      __return_value = LibGst.object_get_g_value_array(to_unsafe.as(LibGst::Object*), property_name.to_unsafe, UInt64.new(timestamp), UInt64.new(interval), UInt32.new(n_values), values.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGst.object_get_g_value_array(to_unsafe.as(LibGst::Object*), property_name, UInt64.new(timestamp), UInt64.new(interval), UInt32.new(n_values), values.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 
@@ -66,12 +66,12 @@ module Gst
     end
 
     def value(property_name, timestamp)
-      __return_value = LibGst.object_get_value(to_unsafe.as(LibGst::Object*), property_name.to_unsafe, UInt64.new(timestamp))
+      __return_value = LibGst.object_get_value(to_unsafe.as(LibGst::Object*), property_name, UInt64.new(timestamp))
       GObject::Value.new(__return_value) if __return_value
     end
 
     def value_array(property_name, timestamp, interval, n_values, values)
-      __return_value = LibGst.object_get_value_array(to_unsafe.as(LibGst::Object*), property_name.to_unsafe, UInt64.new(timestamp), UInt64.new(interval), UInt32.new(n_values), values && values)
+      __return_value = LibGst.object_get_value_array(to_unsafe.as(LibGst::Object*), property_name, UInt64.new(timestamp), UInt64.new(interval), UInt32.new(n_values), values && values)
       __return_value
     end
 
@@ -106,7 +106,7 @@ module Gst
     end
 
     def set_control_binding_disabled(property_name, disabled)
-      __return_value = LibGst.object_set_control_binding_disabled(to_unsafe.as(LibGst::Object*), property_name.to_unsafe, disabled)
+      __return_value = LibGst.object_set_control_binding_disabled(to_unsafe.as(LibGst::Object*), property_name, disabled)
       __return_value
     end
 
@@ -121,7 +121,7 @@ module Gst
     end
 
     def name=(name)
-      __return_value = LibGst.object_set_name(to_unsafe.as(LibGst::Object*), name && name.to_unsafe)
+      __return_value = LibGst.object_set_name(to_unsafe.as(LibGst::Object*), name)
       __return_value
     end
 

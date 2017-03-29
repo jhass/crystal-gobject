@@ -31,7 +31,7 @@ module Atk
     end
 
     def set_description(i, desc)
-      __return_value = LibAtk.action_set_description(to_unsafe.as(LibAtk::Action*), Int32.new(i), desc.to_unsafe)
+      __return_value = LibAtk.action_set_description(to_unsafe.as(LibAtk::Action*), Int32.new(i), desc)
       __return_value
     end
 

@@ -5,7 +5,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_font.not_nil!.as(Void*)
+      @pango_font.not_nil!
     end
 
     def self.descriptions_free(descs, n_descs)

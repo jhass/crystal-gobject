@@ -7,7 +7,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_timer.not_nil!.as(Void*)
+      @g_lib_timer.not_nil!
     end
 
     def continue

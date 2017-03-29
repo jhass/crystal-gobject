@@ -7,7 +7,7 @@ module GIRepository
     end
 
     def to_unsafe
-      @g_i_repository_repository_private.not_nil!.as(Void*)
+      @g_i_repository_repository_private.not_nil!
     end
 
   end

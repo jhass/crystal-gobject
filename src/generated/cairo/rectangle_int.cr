@@ -17,7 +17,7 @@ module Cairo
     end
 
     def to_unsafe
-      @cairo_rectangle_int.not_nil!.as(Void*)
+      @cairo_rectangle_int.not_nil!
     end
 
     def x

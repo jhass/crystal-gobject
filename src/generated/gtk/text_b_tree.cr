@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_text_b_tree.not_nil!.as(Void*)
+      @gtk_text_b_tree.not_nil!
     end
 
   end

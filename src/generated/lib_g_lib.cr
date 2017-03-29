@@ -86,16 +86,17 @@ lib LibGLib
   MAXUINT32 = 4294967295 # : UInt32
   MAXUINT64 = 18446744073709551615 # : UInt64
   MAXUINT8 = 255 # : UInt8
-  MICRO_VERSION = 0 # : Int32
+  MICRO_VERSION = 1 # : Int32
   MININT16 = -32768 # : Int16
   MININT32 = -2147483648 # : Int32
   MININT64 = -9223372036854775808 # : Int64
   MININT8 = -128 # : Int8
-  MINOR_VERSION = 48 # : Int32
+  MINOR_VERSION = 50 # : Int32
   MODULE_SUFFIX = "so" # : UInt8*
   OPTION_REMAINING = "" # : UInt8*
   PDP_ENDIAN = 3412 # : Int32
   PI = 3.141593 # : Float64
+  PID_FORMAT = "i" # : UInt8*
   PI_2 = 1.570796 # : Float64
   PI_4 = 0.785398 # : Float64
   POLLFD_FORMAT = "%d" # : UInt8*
@@ -561,6 +562,7 @@ lib LibGLib
   fun key_file_get_uint64 = g_key_file_get_uint64(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : UInt64
   fun key_file_get_value = g_key_file_get_value(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : UInt8*
   fun key_file_has_group = g_key_file_has_group(this : KeyFile*, group_name : UInt8*) : Bool
+  fun key_file_load_from_bytes = g_key_file_load_from_bytes(this : KeyFile*, bytes : LibGLib::Bytes*, flags : LibGLib::KeyFileFlags, error : LibGLib::Error**) : Bool
   fun key_file_load_from_data = g_key_file_load_from_data(this : KeyFile*, data : UInt8*, length : UInt64, flags : LibGLib::KeyFileFlags, error : LibGLib::Error**) : Bool
   fun key_file_load_from_data_dirs = g_key_file_load_from_data_dirs(this : KeyFile*, file : UInt8*, full_path : UInt8**, flags : LibGLib::KeyFileFlags, error : LibGLib::Error**) : Bool
   fun key_file_load_from_dirs = g_key_file_load_from_dirs(this : KeyFile*, file : UInt8*, search_dirs : UInt8**, full_path : UInt8**, flags : LibGLib::KeyFileFlags, error : LibGLib::Error**) : Bool
@@ -592,6 +594,12 @@ lib LibGLib
     data : Void*
     next_ : Void**
     prev : Void**
+  end
+
+  struct LogField # struct
+    key : UInt8*
+    value : Void*
+    length : Int64
   end
 
   struct MainContext # struct
@@ -1294,7 +1302,7 @@ lib LibGLib
   fun variant_parser_get_error_quark = g_variant_parser_get_error_quark() : UInt32
 
   struct VariantBuilder # struct
-    x : UInt64
+    _data : UInt8[0]
   end
   fun variant_builder_new = g_variant_builder_new(type : LibGLib::VariantType*) : LibGLib::VariantBuilder*
   fun variant_builder_add_value = g_variant_builder_add_value(this : VariantBuilder*, value : LibGLib::Variant*) : Void
@@ -1305,7 +1313,7 @@ lib LibGLib
   fun variant_builder_unref = g_variant_builder_unref(this : VariantBuilder*) : Void
 
   struct VariantDict # struct
-    x : UInt64
+    _data : UInt8[0]
   end
   fun variant_dict_new = g_variant_dict_new(from_asv : LibGLib::Variant*) : LibGLib::VariantDict*
   fun variant_dict_clear = g_variant_dict_clear(this : VariantDict*) : Void
@@ -1714,6 +1722,12 @@ lib LibGLib
     INVALID_VALUE = 5
   end
 
+  enum LogWriterOutput : UInt32
+    ZERO_NONE = 0
+    HANDLED = 1
+    UNHANDLED = 0
+  end
+
   enum MarkupError : UInt32
     ZERO_NONE = 0
     BAD_UTF8 = 0
@@ -1985,6 +1999,9 @@ lib LibGLib
     CONDITIONAL_JAPANESE_STARTER = 37
     HEBREW_LETTER = 38
     REGIONAL_INDICATOR = 39
+    EMOJI_BASE = 40
+    EMOJI_MODIFIER = 41
+    ZERO_WIDTH_JOINER = 42
   end
 
   enum UnicodeScript : Int32
@@ -2122,6 +2139,12 @@ lib LibGLib
     MULTANI = 129
     OLD_HUNGARIAN = 130
     SIGNWRITING = 131
+    ADLAM = 132
+    BHAIKSUKI = 133
+    MARCHEN = 134
+    NEWA = 135
+    OSAGE = 136
+    TANGUT = 137
   end
 
   enum UnicodeType : UInt32
@@ -2325,6 +2348,7 @@ lib LibGLib
   fun compute_checksum_for_bytes = g_compute_checksum_for_bytes(checksum_type : LibGLib::ChecksumType, data : LibGLib::Bytes*) : UInt8*
   fun compute_checksum_for_data = g_compute_checksum_for_data(checksum_type : LibGLib::ChecksumType, data : UInt8*, length : UInt64) : UInt8*
   fun compute_checksum_for_string = g_compute_checksum_for_string(checksum_type : LibGLib::ChecksumType, str : UInt8*, length : Int64) : UInt8*
+  fun compute_hmac_for_bytes = g_compute_hmac_for_bytes(digest_type : LibGLib::ChecksumType, key : LibGLib::Bytes*, data : LibGLib::Bytes*) : UInt8*
   fun compute_hmac_for_data = g_compute_hmac_for_data(digest_type : LibGLib::ChecksumType, key : UInt8*, key_len : UInt64, data : UInt8*, length : UInt64) : UInt8*
   fun compute_hmac_for_string = g_compute_hmac_for_string(digest_type : LibGLib::ChecksumType, key : UInt8*, key_len : UInt64, str : UInt8*, length : Int64) : UInt8*
   fun convert = g_convert(str : UInt8*, len : Int64, to_codeset : UInt8*, from_codeset : UInt8*, bytes_read : UInt64*, bytes_written : UInt64*, error : LibGLib::Error**) : UInt8*
@@ -2463,6 +2487,15 @@ lib LibGLib
   fun log_set_always_fatal = g_log_set_always_fatal(fatal_mask : LibGLib::LogLevelFlags) : LibGLib::LogLevelFlags
   fun log_set_fatal_mask = g_log_set_fatal_mask(log_domain : UInt8*, fatal_mask : LibGLib::LogLevelFlags) : LibGLib::LogLevelFlags
   fun log_set_handler = g_log_set_handler_full(log_domain : UInt8*, log_levels : LibGLib::LogLevelFlags, log_func : LibGLib::LogFunc, user_data : Void*, destroy : LibGLib::DestroyNotify) : UInt32
+  fun log_set_writer_func = g_log_set_writer_func(func : LibGLib::LogWriterFunc, user_data : Void*, user_data_free : LibGLib::DestroyNotify) : Void
+  fun log_structured_array = g_log_structured_array(log_level : LibGLib::LogLevelFlags, fields : LibGLib::LogField*, n_fields : UInt64) : Void
+  fun log_variant = g_log_variant(log_domain : UInt8*, log_level : LibGLib::LogLevelFlags, fields : LibGLib::Variant*) : Void
+  fun log_writer_default = g_log_writer_default(log_level : LibGLib::LogLevelFlags, fields : LibGLib::LogField*, n_fields : UInt64, user_data : Void*) : LibGLib::LogWriterOutput
+  fun log_writer_format_fields = g_log_writer_format_fields(log_level : LibGLib::LogLevelFlags, fields : LibGLib::LogField*, n_fields : UInt64, use_color : Bool) : UInt8*
+  fun log_writer_is_journald = g_log_writer_is_journald(output_fd : Int32) : Bool
+  fun log_writer_journald = g_log_writer_journald(log_level : LibGLib::LogLevelFlags, fields : LibGLib::LogField*, n_fields : UInt64, user_data : Void*) : LibGLib::LogWriterOutput
+  fun log_writer_standard_streams = g_log_writer_standard_streams(log_level : LibGLib::LogLevelFlags, fields : LibGLib::LogField*, n_fields : UInt64, user_data : Void*) : LibGLib::LogWriterOutput
+  fun log_writer_supports_color = g_log_writer_supports_color(output_fd : Int32) : Bool
   fun main_context_default = g_main_context_default() : LibGLib::MainContext*
   fun main_context_get_thread_default = g_main_context_get_thread_default() : LibGLib::MainContext*
   fun main_context_ref_thread_default = g_main_context_ref_thread_default() : LibGLib::MainContext*
@@ -2771,6 +2804,7 @@ lib LibGLib
  alias HookMarshaller = LibGLib::Hook*, Void* -> Void
  alias IOFunc = LibGLib::IOChannel*, LibGLib::IOCondition, Void* -> Bool
  alias LogFunc = UInt8*, LibGLib::LogLevelFlags, UInt8*, Void* -> Void
+ alias LogWriterFunc = LibGLib::LogLevelFlags, LibGLib::LogField*, UInt64, Void* -> LibGLib::LogWriterOutput
  alias NodeForeachFunc = LibGLib::Node*, Void* -> Void
  alias NodeTraverseFunc = LibGLib::Node*, Void* -> Bool
  alias OptionArgFunc = UInt8*, UInt8*, Void*, LibGLib::Error** -> Bool

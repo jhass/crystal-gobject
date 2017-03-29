@@ -20,7 +20,7 @@ module Atk
     end
 
     def to_unsafe
-      @atk_key_event_struct.not_nil!.as(Void*)
+      @atk_key_event_struct.not_nil!
     end
 
     def type
@@ -60,7 +60,7 @@ module Atk
     end
 
     def string=(value : String)
-      to_unsafe.as(LibAtk::KeyEventStruct*).value.string = value.to_unsafe
+      to_unsafe.as(LibAtk::KeyEventStruct*).value.string = value
     end
 
     def keycode

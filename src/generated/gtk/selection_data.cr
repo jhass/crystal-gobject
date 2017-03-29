@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_selection_data.not_nil!.as(Void*)
+      @gtk_selection_data.not_nil!
     end
 
     def copy
@@ -86,7 +86,7 @@ module Gtk
     end
 
     def set_text(str, len)
-      __return_value = LibGtk.selection_data_set_text(to_unsafe.as(LibGtk::SelectionData*), str.to_unsafe, Int32.new(len))
+      __return_value = LibGtk.selection_data_set_text(to_unsafe.as(LibGtk::SelectionData*), str, Int32.new(len))
       __return_value
     end
 

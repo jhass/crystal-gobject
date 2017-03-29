@@ -15,7 +15,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_engine_script_info.not_nil!.as(Void*)
+      @pango_engine_script_info.not_nil!
     end
 
     def script
@@ -31,7 +31,7 @@ module Pango
     end
 
     def langs=(value : String)
-      to_unsafe.as(LibPango::EngineScriptInfo*).value.langs = value.to_unsafe
+      to_unsafe.as(LibPango::EngineScriptInfo*).value.langs = value
     end
 
   end

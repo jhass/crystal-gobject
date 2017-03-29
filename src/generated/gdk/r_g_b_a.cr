@@ -17,7 +17,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_r_g_b_a.not_nil!.as(Void*)
+      @gdk_r_g_b_a.not_nil!
     end
 
     def copy
@@ -41,7 +41,7 @@ module Gdk
     end
 
     def parse(spec)
-      __return_value = LibGdk.r_g_b_a_parse(to_unsafe.as(LibGdk::RGBA*), spec.to_unsafe)
+      __return_value = LibGdk.r_g_b_a_parse(to_unsafe.as(LibGdk::RGBA*), spec)
       __return_value
     end
 

@@ -5,14 +5,14 @@ module Gio
     end
 
     def to_unsafe
-      @gio_tls_password.not_nil!.as(Void*)
+      @gio_tls_password.not_nil!
     end
 
 
 
 
     def self.new(flags : Gio::TlsPasswordFlags, description) : self
-      __return_value = LibGio.tls_password_new(flags, description.to_unsafe)
+      __return_value = LibGio.tls_password_new(flags, description)
       cast Gio::TlsPassword.new(__return_value)
     end
 
@@ -37,7 +37,7 @@ module Gio
     end
 
     def description=(description)
-      __return_value = LibGio.tls_password_set_description(to_unsafe.as(LibGio::TlsPassword*), description.to_unsafe)
+      __return_value = LibGio.tls_password_set_description(to_unsafe.as(LibGio::TlsPassword*), description)
       __return_value
     end
 
@@ -57,7 +57,7 @@ module Gio
     end
 
     def warning=(warning)
-      __return_value = LibGio.tls_password_set_warning(to_unsafe.as(LibGio::TlsPassword*), warning.to_unsafe)
+      __return_value = LibGio.tls_password_set_warning(to_unsafe.as(LibGio::TlsPassword*), warning)
       __return_value
     end
 

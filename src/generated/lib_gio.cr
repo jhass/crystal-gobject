@@ -165,6 +165,8 @@ lib LibGio
   fun app_info_get_fallback_for_type = g_app_info_get_fallback_for_type(content_type : UInt8*) : Void**
   fun app_info_get_recommended_for_type = g_app_info_get_recommended_for_type(content_type : UInt8*) : Void**
   fun app_info_launch_default_for_uri = g_app_info_launch_default_for_uri(uri : UInt8*, launch_context : LibGio::AppLaunchContext*, error : LibGLib::Error**) : Bool
+  fun app_info_launch_default_for_uri_async = g_app_info_launch_default_for_uri_async(uri : UInt8*, launch_context : LibGio::AppLaunchContext*, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
+  fun app_info_launch_default_for_uri_finish = g_app_info_launch_default_for_uri_finish(result : LibGio::AsyncResult*, error : LibGLib::Error**) : Bool
   fun app_info_reset_type_associations = g_app_info_reset_type_associations(content_type : UInt8*) : Void
   fun app_info_add_supports_type = g_app_info_add_supports_type(this : AppInfo*, content_type : UInt8*, error : LibGLib::Error**) : Bool
   fun app_info_can_delete = g_app_info_can_delete(this : AppInfo*) : Bool
@@ -346,6 +348,7 @@ lib LibGio
     eject_with_operation_finish : -> Void
     get_sort_key : -> Void
     get_symbolic_icon : -> Void
+    is_removable : -> Void
     # Signal changed
     # Signal disconnected
     # Signal eject-button
@@ -374,6 +377,7 @@ lib LibGio
     # Virtual function has_volumes
     # Virtual function is_media_check_automatic
     # Virtual function is_media_removable
+    # Virtual function is_removable
     # Virtual function poll_for_media
     # Virtual function poll_for_media_finish
     # Virtual function start
@@ -403,6 +407,7 @@ lib LibGio
   fun drive_has_volumes = g_drive_has_volumes(this : Drive*) : Bool
   fun drive_is_media_check_automatic = g_drive_is_media_check_automatic(this : Drive*) : Bool
   fun drive_is_media_removable = g_drive_is_media_removable(this : Drive*) : Bool
+  fun drive_is_removable = g_drive_is_removable(this : Drive*) : Bool
   fun drive_poll_for_media = g_drive_poll_for_media(this : Drive*, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun drive_poll_for_media_finish = g_drive_poll_for_media_finish(this : Drive*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : Bool
   fun drive_start = g_drive_start(this : Drive*, flags : LibGio::DriveStartFlags, mount_operation : LibGio::MountOperation*, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
@@ -1596,7 +1601,7 @@ lib LibGio
   fun resource_unref = g_resource_unref(this : Resource*) : Void
   fun resource_load = g_resource_load(filename : UInt8*, error : LibGLib::Error**) : LibGio::Resource*
 
-  struct SettingsBackend # struct
+  struct SettingsBackendPrivate # struct
     _data : UInt8[0]
   end
 
@@ -3271,11 +3276,13 @@ lib LibGio
   fun settings_get_flags = g_settings_get_flags(this : Settings*, key : UInt8*) : UInt32
   fun settings_get_has_unapplied = g_settings_get_has_unapplied(this : Settings*) : Bool
   fun settings_get_int = g_settings_get_int(this : Settings*, key : UInt8*) : Int32
+  fun settings_get_int64 = g_settings_get_int64(this : Settings*, key : UInt8*) : Int64
   fun settings_get_mapped = g_settings_get_mapped(this : Settings*, key : UInt8*, mapping : LibGio::SettingsGetMapping, user_data : Void*) : Void*
   fun settings_get_range = g_settings_get_range(this : Settings*, key : UInt8*) : LibGLib::Variant*
   fun settings_get_string = g_settings_get_string(this : Settings*, key : UInt8*) : UInt8*
   fun settings_get_strv = g_settings_get_strv(this : Settings*, key : UInt8*) : UInt8**
   fun settings_get_uint = g_settings_get_uint(this : Settings*, key : UInt8*) : UInt32
+  fun settings_get_uint64 = g_settings_get_uint64(this : Settings*, key : UInt8*) : UInt64
   fun settings_get_user_value = g_settings_get_user_value(this : Settings*, key : UInt8*) : LibGLib::Variant*
   fun settings_get_value = g_settings_get_value(this : Settings*, key : UInt8*) : LibGLib::Variant*
   fun settings_is_writable = g_settings_is_writable(this : Settings*, name : UInt8*) : Bool
@@ -3289,10 +3296,34 @@ lib LibGio
   fun settings_set_enum = g_settings_set_enum(this : Settings*, key : UInt8*, value : Int32) : Bool
   fun settings_set_flags = g_settings_set_flags(this : Settings*, key : UInt8*, value : UInt32) : Bool
   fun settings_set_int = g_settings_set_int(this : Settings*, key : UInt8*, value : Int32) : Bool
+  fun settings_set_int64 = g_settings_set_int64(this : Settings*, key : UInt8*, value : Int64) : Bool
   fun settings_set_string = g_settings_set_string(this : Settings*, key : UInt8*, value : UInt8*) : Bool
   fun settings_set_strv = g_settings_set_strv(this : Settings*, key : UInt8*, value : UInt8**) : Bool
   fun settings_set_uint = g_settings_set_uint(this : Settings*, key : UInt8*, value : UInt32) : Bool
+  fun settings_set_uint64 = g_settings_set_uint64(this : Settings*, key : UInt8*, value : UInt64) : Bool
   fun settings_set_value = g_settings_set_value(this : Settings*, key : UInt8*, value : LibGLib::Variant*) : Bool
+
+  struct SettingsBackend # object
+    parent_instance : LibGObject::Object
+    priv : LibGio::SettingsBackendPrivate*
+    # Virtual function get_writable
+    # Virtual function read
+    # Virtual function read_user_value
+    # Virtual function reset
+    # Virtual function subscribe
+    # Virtual function sync
+    # Virtual function unsubscribe
+    # Virtual function write
+    # Virtual function write_tree
+  end
+  fun settings_backend_flatten_tree = g_settings_backend_flatten_tree(tree : LibGLib::Tree*, path : UInt8**, keys : UInt8***, values : LibGLib::Variant***) : Void
+  fun settings_backend_get_default = g_settings_backend_get_default() : LibGio::SettingsBackend*
+  fun settings_backend_changed = g_settings_backend_changed(this : SettingsBackend*, key : UInt8*, origin_tag : Void*) : Void
+  fun settings_backend_changed_tree = g_settings_backend_changed_tree(this : SettingsBackend*, tree : LibGLib::Tree*, origin_tag : Void*) : Void
+  fun settings_backend_keys_changed = g_settings_backend_keys_changed(this : SettingsBackend*, path : UInt8*, items : UInt8**, origin_tag : Void*) : Void
+  fun settings_backend_path_changed = g_settings_backend_path_changed(this : SettingsBackend*, path : UInt8*, origin_tag : Void*) : Void
+  fun settings_backend_path_writable_changed = g_settings_backend_path_writable_changed(this : SettingsBackend*, path : UInt8*) : Void
+  fun settings_backend_writable_changed = g_settings_backend_writable_changed(this : SettingsBackend*, key : UInt8*) : Void
 
   struct SimpleAction # object
     _data : UInt8[0]
@@ -3566,7 +3597,7 @@ lib LibGio
   fun subprocess_launcher_getenv = g_subprocess_launcher_getenv(this : SubprocessLauncher*, variable : UInt8*) : UInt8*
   fun subprocess_launcher_set_child_setup = g_subprocess_launcher_set_child_setup(this : SubprocessLauncher*, child_setup : LibGLib::SpawnChildSetupFunc, user_data : Void*, destroy_notify : LibGLib::DestroyNotify) : Void
   fun subprocess_launcher_set_cwd = g_subprocess_launcher_set_cwd(this : SubprocessLauncher*, cwd : UInt8*) : Void
-  fun subprocess_launcher_set_environ = g_subprocess_launcher_set_environ(this : SubprocessLauncher*, env : UInt8*) : Void
+  fun subprocess_launcher_set_environ = g_subprocess_launcher_set_environ(this : SubprocessLauncher*, env : UInt8**) : Void
   fun subprocess_launcher_set_flags = g_subprocess_launcher_set_flags(this : SubprocessLauncher*, flags : LibGio::SubprocessFlags) : Void
   fun subprocess_launcher_set_stderr_file_path = g_subprocess_launcher_set_stderr_file_path(this : SubprocessLauncher*, path : UInt8*) : Void
   fun subprocess_launcher_set_stdin_file_path = g_subprocess_launcher_set_stdin_file_path(this : SubprocessLauncher*, path : UInt8*) : Void
@@ -3866,6 +3897,8 @@ lib LibGio
   fun vfs_get_supported_uri_schemes = g_vfs_get_supported_uri_schemes(this : Vfs*) : UInt8**
   fun vfs_is_active = g_vfs_is_active(this : Vfs*) : Bool
   fun vfs_parse_name = g_vfs_parse_name(this : Vfs*, parse_name : UInt8*) : LibGio::File*
+  fun vfs_register_uri_scheme = g_vfs_register_uri_scheme(this : Vfs*, scheme : UInt8*, uri_func : LibGio::VfsFileLookupFunc, uri_data : Void*, uri_destroy : LibGLib::DestroyNotify, parse_name_func : LibGio::VfsFileLookupFunc, parse_name_data : Void*, parse_name_destroy : LibGLib::DestroyNotify) : Bool
+  fun vfs_unregister_uri_scheme = g_vfs_unregister_uri_scheme(this : Vfs*, scheme : UInt8*) : Bool
 
   struct VolumeMonitor # object
     parent_instance : LibGObject::Object
@@ -4360,6 +4393,7 @@ lib LibGio
   FILE_ATTRIBUTE_ETAG_VALUE = "etag::value" # : UInt8*
   FILE_ATTRIBUTE_FILESYSTEM_FREE = "filesystem::free" # : UInt8*
   FILE_ATTRIBUTE_FILESYSTEM_READONLY = "filesystem::readonly" # : UInt8*
+  FILE_ATTRIBUTE_FILESYSTEM_REMOTE = "filesystem::remote" # : UInt8*
   FILE_ATTRIBUTE_FILESYSTEM_SIZE = "filesystem::size" # : UInt8*
   FILE_ATTRIBUTE_FILESYSTEM_TYPE = "filesystem::type" # : UInt8*
   FILE_ATTRIBUTE_FILESYSTEM_USED = "filesystem::used" # : UInt8*
@@ -4439,6 +4473,7 @@ lib LibGio
   NETWORK_MONITOR_EXTENSION_POINT_NAME = "gio-network-monitor" # : UInt8*
   PROXY_EXTENSION_POINT_NAME = "gio-proxy" # : UInt8*
   PROXY_RESOLVER_EXTENSION_POINT_NAME = "gio-proxy-resolver" # : UInt8*
+  SETTINGS_BACKEND_EXTENSION_POINT_NAME = "gsettings-backend" # : UInt8*
   TLS_BACKEND_EXTENSION_POINT_NAME = "gio-tls-backend" # : UInt8*
   TLS_DATABASE_PURPOSE_AUTHENTICATE_CLIENT = "1.3.6.1.5.5.7.3.2" # : UInt8*
   TLS_DATABASE_PURPOSE_AUTHENTICATE_SERVER = "1.3.6.1.5.5.7.3.1" # : UInt8*
@@ -4466,6 +4501,8 @@ lib LibGio
   fun app_info_get_fallback_for_type = g_app_info_get_fallback_for_type(content_type : UInt8*) : Void**
   fun app_info_get_recommended_for_type = g_app_info_get_recommended_for_type(content_type : UInt8*) : Void**
   fun app_info_launch_default_for_uri = g_app_info_launch_default_for_uri(uri : UInt8*, launch_context : LibGio::AppLaunchContext*, error : LibGLib::Error**) : Bool
+  fun app_info_launch_default_for_uri_async = g_app_info_launch_default_for_uri_async(uri : UInt8*, launch_context : LibGio::AppLaunchContext*, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
+  fun app_info_launch_default_for_uri_finish = g_app_info_launch_default_for_uri_finish(result : LibGio::AsyncResult*, error : LibGLib::Error**) : Bool
   fun app_info_reset_type_associations = g_app_info_reset_type_associations(content_type : UInt8*) : Void
   fun async_initable_newv_async = g_async_initable_newv_async(object_type : UInt64, n_parameters : UInt32, parameters : LibGObject::Parameter*, io_priority : Int32, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun bus_get = g_bus_get(bus_type : LibGio::BusType, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
@@ -4538,8 +4575,11 @@ lib LibGio
   fun io_modules_scan_all_in_directory_with_scope = g_io_modules_scan_all_in_directory_with_scope(dirname : UInt8*, scope : LibGio::IOModuleScope*) : Void
   fun io_scheduler_cancel_all_jobs = g_io_scheduler_cancel_all_jobs() : Void
   fun io_scheduler_push_job = g_io_scheduler_push_job(job_func : LibGio::IOSchedulerJobFunc, user_data : Void*, notify : LibGLib::DestroyNotify, io_priority : Int32, cancellable : LibGio::Cancellable*) : Void
+  fun keyfile_settings_backend_new = g_keyfile_settings_backend_new(filename : UInt8*, root_path : UInt8*, root_group : UInt8*) : LibGio::SettingsBackend*
+  fun memory_settings_backend_new = g_memory_settings_backend_new() : LibGio::SettingsBackend*
   fun network_monitor_get_default = g_network_monitor_get_default() : LibGio::NetworkMonitor*
   fun networking_init = g_networking_init() : Void
+  fun null_settings_backend_new = g_null_settings_backend_new() : LibGio::SettingsBackend*
   fun pollable_source_new = g_pollable_source_new(pollable_stream : LibGObject::Object*) : LibGLib::Source*
   fun pollable_source_new_full = g_pollable_source_new_full(pollable_stream : LibGObject::Object*, child_source : LibGLib::Source*, cancellable : LibGio::Cancellable*) : LibGLib::Source*
   fun pollable_stream_read = g_pollable_stream_read(stream : LibGio::InputStream*, buffer : UInt8*, count : UInt64, blocking : Bool, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int64
@@ -4612,5 +4652,6 @@ lib LibGio
  alias SimpleAsyncThreadFunc = LibGio::SimpleAsyncResult*, LibGObject::Object*, LibGio::Cancellable* -> Void
  alias SocketSourceFunc = LibGio::Socket*, LibGLib::IOCondition, Void* -> Bool
  alias TaskThreadFunc = LibGio::Task*, LibGObject::Object*, Void*, LibGio::Cancellable* -> Void
+ alias VfsFileLookupFunc = LibGio::Vfs*, UInt8*, Void* -> LibGio::File*
 end
 

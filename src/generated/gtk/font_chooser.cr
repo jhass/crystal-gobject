@@ -46,7 +46,7 @@ module Gtk
     end
 
     def font=(fontname)
-      __return_value = LibGtk.font_chooser_set_font(to_unsafe.as(LibGtk::FontChooser*), fontname.to_unsafe)
+      __return_value = LibGtk.font_chooser_set_font(to_unsafe.as(LibGtk::FontChooser*), fontname)
       __return_value
     end
 
@@ -61,7 +61,7 @@ module Gtk
     end
 
     def preview_text=(text)
-      __return_value = LibGtk.font_chooser_set_preview_text(to_unsafe.as(LibGtk::FontChooser*), text.to_unsafe)
+      __return_value = LibGtk.font_chooser_set_preview_text(to_unsafe.as(LibGtk::FontChooser*), text)
       __return_value
     end
 

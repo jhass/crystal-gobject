@@ -7,7 +7,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_markup_parse_context.not_nil!.as(Void*)
+      @g_lib_markup_parse_context.not_nil!
     end
 
     def self.new(parser, flags : GLib::MarkupParseFlags, user_data, user_data_dnotify) : self
@@ -44,7 +44,7 @@ module GLib
 
     def parse(text, text_len)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.markup_parse_context_parse(to_unsafe.as(LibGLib::MarkupParseContext*), text.to_unsafe, Int64.new(text_len), pointerof(__error))
+      __return_value = LibGLib.markup_parse_context_parse(to_unsafe.as(LibGLib::MarkupParseContext*), text, Int64.new(text_len), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

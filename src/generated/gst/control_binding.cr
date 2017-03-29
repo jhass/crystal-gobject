@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_control_binding.not_nil!.as(Void*)
+      @gst_control_binding.not_nil!
     end
 
 

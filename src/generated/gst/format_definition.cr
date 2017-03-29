@@ -17,7 +17,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_format_definition.not_nil!.as(Void*)
+      @gst_format_definition.not_nil!
     end
 
     def value
@@ -33,7 +33,7 @@ module Gst
     end
 
     def nick=(value : String)
-      to_unsafe.as(LibGst::FormatDefinition*).value.nick = value.to_unsafe
+      to_unsafe.as(LibGst::FormatDefinition*).value.nick = value
     end
 
     def description
@@ -41,7 +41,7 @@ module Gst
     end
 
     def description=(value : String)
-      to_unsafe.as(LibGst::FormatDefinition*).value.description = value.to_unsafe
+      to_unsafe.as(LibGst::FormatDefinition*).value.description = value
     end
 
     def quark

@@ -17,7 +17,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_allocation_params.not_nil!.as(Void*)
+      @gst_allocation_params.not_nil!
     end
 
     def copy

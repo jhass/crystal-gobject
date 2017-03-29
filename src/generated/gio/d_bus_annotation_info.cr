@@ -17,7 +17,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_d_bus_annotation_info.not_nil!.as(Void*)
+      @gio_d_bus_annotation_info.not_nil!
     end
 
     def ref
@@ -31,7 +31,7 @@ module Gio
     end
 
     def self.lookup(annotations, name)
-      __return_value = LibGio.d_bus_annotation_info_lookup(annotations && annotations, name.to_unsafe)
+      __return_value = LibGio.d_bus_annotation_info_lookup(annotations && annotations, name)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
@@ -48,7 +48,7 @@ module Gio
     end
 
     def key=(value : String)
-      to_unsafe.as(LibGio::DBusAnnotationInfo*).value.key = value.to_unsafe
+      to_unsafe.as(LibGio::DBusAnnotationInfo*).value.key = value
     end
 
     def value
@@ -56,7 +56,7 @@ module Gio
     end
 
     def value=(value : String)
-      to_unsafe.as(LibGio::DBusAnnotationInfo*).value.value = value.to_unsafe
+      to_unsafe.as(LibGio::DBusAnnotationInfo*).value.value = value
     end
 
     def annotations

@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_radio_action.not_nil!.as(Void*)
+      @gtk_radio_action.not_nil!
     end
 
     # Implements Buildable
@@ -15,7 +15,7 @@ module Gtk
 
 
     def self.new(name, label, tooltip, stock_id, value) : self
-      __return_value = LibGtk.radio_action_new(name.to_unsafe, label && label.to_unsafe, tooltip && tooltip.to_unsafe, stock_id && stock_id.to_unsafe, Int32.new(value))
+      __return_value = LibGtk.radio_action_new(name, label, tooltip, stock_id, Int32.new(value))
       cast Gtk::RadioAction.new(__return_value)
     end
 

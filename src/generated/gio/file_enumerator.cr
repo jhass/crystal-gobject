@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_file_enumerator.not_nil!.as(Void*)
+      @gio_file_enumerator.not_nil!
     end
 
 

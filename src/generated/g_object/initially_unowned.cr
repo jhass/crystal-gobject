@@ -7,7 +7,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_initially_unowned.not_nil!.as(Void*)
+      @g_object_initially_unowned.not_nil!
     end
 
   end

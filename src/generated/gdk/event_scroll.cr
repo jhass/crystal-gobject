@@ -27,7 +27,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_event_scroll.not_nil!.as(Void*)
+      @gdk_event_scroll.not_nil!
     end
 
     def type

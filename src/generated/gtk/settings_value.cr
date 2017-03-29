@@ -15,7 +15,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_settings_value.not_nil!.as(Void*)
+      @gtk_settings_value.not_nil!
     end
 
     def origin
@@ -23,7 +23,7 @@ module Gtk
     end
 
     def origin=(value : String)
-      to_unsafe.as(LibGtk::SettingsValue*).value.origin = value.to_unsafe
+      to_unsafe.as(LibGtk::SettingsValue*).value.origin = value
     end
 
     def value

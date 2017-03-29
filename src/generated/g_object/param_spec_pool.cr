@@ -7,7 +7,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_param_spec_pool.not_nil!.as(Void*)
+      @g_object_param_spec_pool.not_nil!
     end
 
     def insert(pspec, owner_type)
@@ -26,7 +26,7 @@ module GObject
     end
 
     def lookup(param_name, owner_type, walk_ancestors)
-      __return_value = LibGObject.param_spec_pool_lookup(to_unsafe.as(LibGObject::ParamSpecPool*), param_name.to_unsafe, UInt64.new(owner_type), walk_ancestors)
+      __return_value = LibGObject.param_spec_pool_lookup(to_unsafe.as(LibGObject::ParamSpecPool*), param_name, UInt64.new(owner_type), walk_ancestors)
       GObject::ParamSpec.new(__return_value)
     end
 

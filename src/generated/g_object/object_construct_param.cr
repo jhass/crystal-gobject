@@ -15,7 +15,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_object_construct_param.not_nil!.as(Void*)
+      @g_object_object_construct_param.not_nil!
     end
 
     def pspec

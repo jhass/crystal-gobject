@@ -12,7 +12,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_type_interface.not_nil!.as(Void*)
+      @g_object_type_interface.not_nil!
     end
 
     def peek_parent

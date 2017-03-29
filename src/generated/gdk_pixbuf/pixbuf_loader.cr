@@ -5,7 +5,7 @@ module GdkPixbuf
     end
 
     def to_unsafe
-      @gdk_pixbuf_pixbuf_loader.not_nil!.as(Void*)
+      @gdk_pixbuf_pixbuf_loader.not_nil!
     end
 
     def self.new : self
@@ -15,14 +15,14 @@ module GdkPixbuf
 
     def self.new_with_mime_type(mime_type) : self
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGdkPixbuf.pixbuf_loader_new_with_mime_type(mime_type.to_unsafe, pointerof(__error))
+      __return_value = LibGdkPixbuf.pixbuf_loader_new_with_mime_type(mime_type, pointerof(__error))
       GLib::Error.assert __error
       cast GdkPixbuf::PixbufLoader.new(__return_value)
     end
 
     def self.new_with_type(image_type) : self
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGdkPixbuf.pixbuf_loader_new_with_type(image_type.to_unsafe, pointerof(__error))
+      __return_value = LibGdkPixbuf.pixbuf_loader_new_with_type(image_type, pointerof(__error))
       GLib::Error.assert __error
       cast GdkPixbuf::PixbufLoader.new(__return_value)
     end

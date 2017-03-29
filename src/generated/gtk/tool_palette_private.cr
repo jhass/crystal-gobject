@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_tool_palette_private.not_nil!.as(Void*)
+      @gtk_tool_palette_private.not_nil!
     end
 
   end

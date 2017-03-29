@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_socket_address_enumerator.not_nil!.as(Void*)
+      @gio_socket_address_enumerator.not_nil!
     end
 
     def next(cancellable)

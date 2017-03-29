@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_caps_features.not_nil!.as(Void*)
+      @gst_caps_features.not_nil!
     end
 
     def self.new_any : self
@@ -21,7 +21,7 @@ module Gst
     end
 
     def add(feature)
-      __return_value = LibGst.caps_features_add(to_unsafe.as(LibGst::CapsFeatures*), feature.to_unsafe)
+      __return_value = LibGst.caps_features_add(to_unsafe.as(LibGst::CapsFeatures*), feature)
       __return_value
     end
 
@@ -31,7 +31,7 @@ module Gst
     end
 
     def contains(feature)
-      __return_value = LibGst.caps_features_contains(to_unsafe.as(LibGst::CapsFeatures*), feature.to_unsafe)
+      __return_value = LibGst.caps_features_contains(to_unsafe.as(LibGst::CapsFeatures*), feature)
       __return_value
     end
 
@@ -76,7 +76,7 @@ module Gst
     end
 
     def remove(feature)
-      __return_value = LibGst.caps_features_remove(to_unsafe.as(LibGst::CapsFeatures*), feature.to_unsafe)
+      __return_value = LibGst.caps_features_remove(to_unsafe.as(LibGst::CapsFeatures*), feature)
       __return_value
     end
 
@@ -96,7 +96,7 @@ module Gst
     end
 
     def self.from_string(features)
-      __return_value = LibGst.caps_features_from_string(features.to_unsafe)
+      __return_value = LibGst.caps_features_from_string(features)
       Gst::CapsFeatures.new(__return_value) if __return_value
     end
 

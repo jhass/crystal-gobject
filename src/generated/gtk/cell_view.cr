@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_cell_view.not_nil!.as(Void*)
+      @gtk_cell_view.not_nil!
     end
 
     # Implements ImplementorIface
@@ -34,7 +34,7 @@ module Gtk
     end
 
     def self.new_with_markup(markup) : self
-      __return_value = LibGtk.cell_view_new_with_markup(markup.to_unsafe)
+      __return_value = LibGtk.cell_view_new_with_markup(markup)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -44,7 +44,7 @@ module Gtk
     end
 
     def self.new_with_text(text) : self
-      __return_value = LibGtk.cell_view_new_with_text(text.to_unsafe)
+      __return_value = LibGtk.cell_view_new_with_text(text)
       cast Gtk::Widget.new(__return_value)
     end
 

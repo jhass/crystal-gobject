@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_i_m_context_simple.not_nil!.as(Void*)
+      @gtk_i_m_context_simple.not_nil!
     end
 
     def self.new : self
@@ -16,7 +16,7 @@ module Gtk
     end
 
     def add_compose_file(compose_file)
-      __return_value = LibGtk.i_m_context_simple_add_compose_file(to_unsafe.as(LibGtk::IMContextSimple*), compose_file.to_unsafe)
+      __return_value = LibGtk.i_m_context_simple_add_compose_file(to_unsafe.as(LibGtk::IMContextSimple*), compose_file)
       __return_value
     end
 

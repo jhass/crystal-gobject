@@ -16,7 +16,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_keymap_key.not_nil!.as(Void*)
+      @gdk_keymap_key.not_nil!
     end
 
     def keycode

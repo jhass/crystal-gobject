@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_app_chooser_widget.not_nil!.as(Void*)
+      @gtk_app_chooser_widget.not_nil!
     end
 
     # Implements ImplementorIface
@@ -21,7 +21,7 @@ module Gtk
 
 
     def self.new(content_type) : self
-      __return_value = LibGtk.app_chooser_widget_new(content_type.to_unsafe)
+      __return_value = LibGtk.app_chooser_widget_new(content_type)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -56,7 +56,7 @@ module Gtk
     end
 
     def default_text=(text)
-      __return_value = LibGtk.app_chooser_widget_set_default_text(to_unsafe.as(LibGtk::AppChooserWidget*), text.to_unsafe)
+      __return_value = LibGtk.app_chooser_widget_set_default_text(to_unsafe.as(LibGtk::AppChooserWidget*), text)
       __return_value
     end
 

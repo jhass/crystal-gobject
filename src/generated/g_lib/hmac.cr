@@ -7,7 +7,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_hmac.not_nil!.as(Void*)
+      @g_lib_hmac.not_nil!
     end
 
     def digest(buffer, digest_len)

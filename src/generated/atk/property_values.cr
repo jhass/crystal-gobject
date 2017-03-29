@@ -16,7 +16,7 @@ module Atk
     end
 
     def to_unsafe
-      @atk_property_values.not_nil!.as(Void*)
+      @atk_property_values.not_nil!
     end
 
     def property_name
@@ -24,7 +24,7 @@ module Atk
     end
 
     def property_name=(value : String)
-      to_unsafe.as(LibAtk::PropertyValues*).value.property_name = value.to_unsafe
+      to_unsafe.as(LibAtk::PropertyValues*).value.property_name = value
     end
 
     def old_value

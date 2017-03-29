@@ -7,11 +7,11 @@ module Gio
     end
 
     def to_unsafe
-      @gio_srv_target.not_nil!.as(Void*)
+      @gio_srv_target.not_nil!
     end
 
     def self.new(hostname, port, priority, weight) : self
-      __return_value = LibGio.srv_target_new(hostname.to_unsafe, UInt16.new(port), UInt16.new(priority), UInt16.new(weight))
+      __return_value = LibGio.srv_target_new(hostname, UInt16.new(port), UInt16.new(priority), UInt16.new(weight))
       cast Gio::SrvTarget.new(__return_value)
     end
 

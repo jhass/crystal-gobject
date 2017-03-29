@@ -55,7 +55,7 @@ module Gio
     end
 
     def identifier(kind)
-      __return_value = LibGio.volume_get_identifier(to_unsafe.as(LibGio::Volume*), kind.to_unsafe)
+      __return_value = LibGio.volume_get_identifier(to_unsafe.as(LibGio::Volume*), kind)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

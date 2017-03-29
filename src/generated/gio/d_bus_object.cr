@@ -1,7 +1,7 @@
 module Gio
   module DBusObject
     def interface(interface_name)
-      __return_value = LibGio.d_bus_object_get_interface(to_unsafe.as(LibGio::DBusObject*), interface_name.to_unsafe)
+      __return_value = LibGio.d_bus_object_get_interface(to_unsafe.as(LibGio::DBusObject*), interface_name)
       __return_value
     end
 

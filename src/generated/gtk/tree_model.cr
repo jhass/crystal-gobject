@@ -31,7 +31,7 @@ module Gtk
     end
 
     def iter_from_string(iter, path_string)
-      __return_value = LibGtk.tree_model_get_iter_from_string(to_unsafe.as(LibGtk::TreeModel*), iter, path_string.to_unsafe)
+      __return_value = LibGtk.tree_model_get_iter_from_string(to_unsafe.as(LibGtk::TreeModel*), iter, path_string)
       __return_value
     end
 

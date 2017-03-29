@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_i_o_scheduler_job.not_nil!.as(Void*)
+      @gio_i_o_scheduler_job.not_nil!
     end
 
     def send_to_mainloop(func, user_data, notify)

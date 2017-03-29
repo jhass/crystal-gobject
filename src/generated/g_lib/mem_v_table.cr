@@ -12,7 +12,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_mem_v_table.not_nil!.as(Void*)
+      @g_lib_mem_v_table.not_nil!
     end
 
     def malloc

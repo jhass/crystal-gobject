@@ -20,7 +20,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_param_spec_fraction.not_nil!.as(Void*)
+      @gst_param_spec_fraction.not_nil!
     end
 
     def parent_instance

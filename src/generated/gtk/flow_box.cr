@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_flow_box.not_nil!.as(Void*)
+      @gtk_flow_box.not_nil!
     end
 
     # Implements ImplementorIface
@@ -37,6 +37,11 @@ module Gtk
 
     def child_at_index(idx)
       __return_value = LibGtk.flow_box_get_child_at_index(to_unsafe.as(LibGtk::FlowBox*), Int32.new(idx))
+      Gtk::FlowBoxChild.new(__return_value) if __return_value
+    end
+
+    def child_at_pos(x, y)
+      __return_value = LibGtk.flow_box_get_child_at_pos(to_unsafe.as(LibGtk::FlowBox*), Int32.new(x), Int32.new(y))
       Gtk::FlowBoxChild.new(__return_value) if __return_value
     end
 

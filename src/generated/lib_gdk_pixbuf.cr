@@ -57,9 +57,9 @@ lib LibGdkPixbuf
   PIXBUF_FEATURES_H = 1 # : Int32
   PIXBUF_MAGIC_NUMBER = 1197763408 # : Int32
   PIXBUF_MAJOR = 2 # : Int32
-  PIXBUF_MICRO = 0 # : Int32
-  PIXBUF_MINOR = 34 # : Int32
-  PIXBUF_VERSION = "2.34.0" # : UInt8*
+  PIXBUF_MICRO = 5 # : Int32
+  PIXBUF_MINOR = 36 # : Int32
+  PIXBUF_VERSION = "2.36.5" # : UInt8*
   PIXDATA_HEADER_LENGTH = 24 # : Int32
 
   ###########################################
@@ -97,6 +97,7 @@ lib LibGdkPixbuf
   fun pixbuf_composite_color_simple = gdk_pixbuf_composite_color_simple(this : Pixbuf*, dest_width : Int32, dest_height : Int32, interp_type : LibGdkPixbuf::InterpType, overall_alpha : Int32, check_size : Int32, color1 : UInt32, color2 : UInt32) : LibGdkPixbuf::Pixbuf*
   fun pixbuf_copy = gdk_pixbuf_copy(this : Pixbuf*) : LibGdkPixbuf::Pixbuf*
   fun pixbuf_copy_area = gdk_pixbuf_copy_area(this : Pixbuf*, src_x : Int32, src_y : Int32, width : Int32, height : Int32, dest_pixbuf : LibGdkPixbuf::Pixbuf*, dest_x : Int32, dest_y : Int32) : Void
+  fun pixbuf_copy_options = gdk_pixbuf_copy_options(this : Pixbuf*, dest_pixbuf : LibGdkPixbuf::Pixbuf*) : Bool
   fun pixbuf_fill = gdk_pixbuf_fill(this : Pixbuf*, pixel : UInt32) : Void
   fun pixbuf_flip = gdk_pixbuf_flip(this : Pixbuf*, horizontal : Bool) : LibGdkPixbuf::Pixbuf*
   fun pixbuf_get_bits_per_sample = gdk_pixbuf_get_bits_per_sample(this : Pixbuf*) : Int32
@@ -113,13 +114,17 @@ lib LibGdkPixbuf
   fun pixbuf_new_subpixbuf = gdk_pixbuf_new_subpixbuf(this : Pixbuf*, src_x : Int32, src_y : Int32, width : Int32, height : Int32) : LibGdkPixbuf::Pixbuf*
   fun pixbuf_read_pixel_bytes = gdk_pixbuf_read_pixel_bytes(this : Pixbuf*) : LibGLib::Bytes*
   fun pixbuf_read_pixels = gdk_pixbuf_read_pixels(this : Pixbuf*) : UInt8*
+  fun pixbuf_remove_option = gdk_pixbuf_remove_option(this : Pixbuf*, key : UInt8*) : Bool
   fun pixbuf_rotate_simple = gdk_pixbuf_rotate_simple(this : Pixbuf*, angle : LibGdkPixbuf::PixbufRotation) : LibGdkPixbuf::Pixbuf*
   fun pixbuf_saturate_and_pixelate = gdk_pixbuf_saturate_and_pixelate(this : Pixbuf*, dest : LibGdkPixbuf::Pixbuf*, saturation : Float32, pixelate : Bool) : Void
   fun pixbuf_save_to_bufferv = gdk_pixbuf_save_to_bufferv(this : Pixbuf*, buffer : UInt8**, buffer_size : UInt64*, type : UInt8*, option_keys : UInt8**, option_values : UInt8**, error : LibGLib::Error**) : Bool
   fun pixbuf_save_to_callbackv = gdk_pixbuf_save_to_callbackv(this : Pixbuf*, save_func : LibGdkPixbuf::PixbufSaveFunc, user_data : Void*, type : UInt8*, option_keys : UInt8**, option_values : UInt8**, error : LibGLib::Error**) : Bool
+  fun pixbuf_save_to_streamv = gdk_pixbuf_save_to_streamv(this : Pixbuf*, stream : LibGio::OutputStream*, type : UInt8*, option_keys : UInt8**, option_values : UInt8**, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Bool
+  fun pixbuf_save_to_streamv_async = gdk_pixbuf_save_to_streamv_async(this : Pixbuf*, stream : LibGio::OutputStream*, type : UInt8*, option_keys : UInt8**, option_values : UInt8**, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun pixbuf_savev = gdk_pixbuf_savev(this : Pixbuf*, filename : UInt8*, type : UInt8*, option_keys : UInt8**, option_values : UInt8**, error : LibGLib::Error**) : Bool
   fun pixbuf_scale = gdk_pixbuf_scale(this : Pixbuf*, dest : LibGdkPixbuf::Pixbuf*, dest_x : Int32, dest_y : Int32, dest_width : Int32, dest_height : Int32, offset_x : Float64, offset_y : Float64, scale_x : Float64, scale_y : Float64, interp_type : LibGdkPixbuf::InterpType) : Void
   fun pixbuf_scale_simple = gdk_pixbuf_scale_simple(this : Pixbuf*, dest_width : Int32, dest_height : Int32, interp_type : LibGdkPixbuf::InterpType) : LibGdkPixbuf::Pixbuf*
+  fun pixbuf_set_option = gdk_pixbuf_set_option(this : Pixbuf*, key : UInt8*, value : UInt8*) : Bool
 
   struct PixbufAnimation # object
     _data : UInt8[0]
@@ -194,6 +199,7 @@ lib LibGdkPixbuf
   fun pixbuf_format_get_mime_types = gdk_pixbuf_format_get_mime_types(this : PixbufFormat*) : UInt8**
   fun pixbuf_format_get_name = gdk_pixbuf_format_get_name(this : PixbufFormat*) : UInt8*
   fun pixbuf_format_is_disabled = gdk_pixbuf_format_is_disabled(this : PixbufFormat*) : Bool
+  fun pixbuf_format_is_save_option_supported = gdk_pixbuf_format_is_save_option_supported(this : PixbufFormat*, option_key : UInt8*) : Bool
   fun pixbuf_format_is_scalable = gdk_pixbuf_format_is_scalable(this : PixbufFormat*) : Bool
   fun pixbuf_format_is_writable = gdk_pixbuf_format_is_writable(this : PixbufFormat*) : Bool
   fun pixbuf_format_set_disabled = gdk_pixbuf_format_set_disabled(this : PixbufFormat*, disabled : Bool) : Void

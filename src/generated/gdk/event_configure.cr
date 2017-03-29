@@ -20,7 +20,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_event_configure.not_nil!.as(Void*)
+      @gdk_event_configure.not_nil!
     end
 
     def type

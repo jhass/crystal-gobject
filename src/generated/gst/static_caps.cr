@@ -15,7 +15,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_static_caps.not_nil!.as(Void*)
+      @gst_static_caps.not_nil!
     end
 
     def cleanup
@@ -41,7 +41,7 @@ module Gst
     end
 
     def string=(value : String)
-      to_unsafe.as(LibGst::StaticCaps*).value.string = value.to_unsafe
+      to_unsafe.as(LibGst::StaticCaps*).value.string = value
     end
 
     def _gst_reserved

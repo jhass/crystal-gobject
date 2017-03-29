@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_flag_set.not_nil!.as(Void*)
+      @gst_flag_set.not_nil!
     end
 
     def self.register(flags_type)

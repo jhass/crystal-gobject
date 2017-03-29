@@ -5,7 +5,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_renderer.not_nil!.as(Void*)
+      @pango_renderer.not_nil!
     end
 
     def activate
@@ -29,7 +29,7 @@ module Pango
     end
 
     def draw_glyph_item(text, glyph_item, x, y)
-      __return_value = LibPango.renderer_draw_glyph_item(to_unsafe.as(LibPango::Renderer*), text && text.to_unsafe, glyph_item.to_unsafe.as(LibPango::GlyphItem*), Int32.new(x), Int32.new(y))
+      __return_value = LibPango.renderer_draw_glyph_item(to_unsafe.as(LibPango::Renderer*), text, glyph_item.to_unsafe.as(LibPango::GlyphItem*), Int32.new(x), Int32.new(y))
       __return_value
     end
 

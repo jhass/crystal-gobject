@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_simple_action_group.not_nil!.as(Void*)
+      @gio_simple_action_group.not_nil!
     end
 
     # Implements ActionGroup
@@ -26,12 +26,12 @@ module Gio
     end
 
     def lookup(action_name)
-      __return_value = LibGio.simple_action_group_lookup(to_unsafe.as(LibGio::SimpleActionGroup*), action_name.to_unsafe)
+      __return_value = LibGio.simple_action_group_lookup(to_unsafe.as(LibGio::SimpleActionGroup*), action_name)
       __return_value
     end
 
     def remove(action_name)
-      __return_value = LibGio.simple_action_group_remove(to_unsafe.as(LibGio::SimpleActionGroup*), action_name.to_unsafe)
+      __return_value = LibGio.simple_action_group_remove(to_unsafe.as(LibGio::SimpleActionGroup*), action_name)
       __return_value
     end
 

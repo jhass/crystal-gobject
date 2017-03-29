@@ -43,7 +43,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_g_value__data__union.not_nil!.as(Void*)
+      @g_object_g_value__data__union.not_nil!
     end
 
   end

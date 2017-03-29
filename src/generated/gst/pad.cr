@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_pad.not_nil!.as(Void*)
+      @gst_pad.not_nil!
     end
 
 
@@ -15,17 +15,17 @@ module Gst
 
 
     def self.new(name, direction : Gst::PadDirection) : self
-      __return_value = LibGst.pad_new(name && name.to_unsafe, direction)
+      __return_value = LibGst.pad_new(name, direction)
       cast Gst::Pad.new(__return_value) if __return_value
     end
 
     def self.new_from_static_template(templ, name) : self
-      __return_value = LibGst.pad_new_from_static_template(templ.to_unsafe.as(LibGst::StaticPadTemplate*), name.to_unsafe)
+      __return_value = LibGst.pad_new_from_static_template(templ.to_unsafe.as(LibGst::StaticPadTemplate*), name)
       cast Gst::Pad.new(__return_value) if __return_value
     end
 
     def self.new_from_template(templ, name) : self
-      __return_value = LibGst.pad_new_from_template(templ.to_unsafe.as(LibGst::PadTemplate*), name && name.to_unsafe)
+      __return_value = LibGst.pad_new_from_template(templ.to_unsafe.as(LibGst::PadTemplate*), name)
       cast Gst::Pad.new(__return_value) if __return_value
     end
 
@@ -65,7 +65,7 @@ module Gst
     end
 
     def create_stream_id(parent, stream_id)
-      __return_value = LibGst.pad_create_stream_id(to_unsafe.as(LibGst::Pad*), parent.to_unsafe.as(LibGst::Element*), stream_id && stream_id.to_unsafe)
+      __return_value = LibGst.pad_create_stream_id(to_unsafe.as(LibGst::Pad*), parent.to_unsafe.as(LibGst::Element*), stream_id)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
@@ -139,6 +139,11 @@ module Gst
       Gst::Event.new(__return_value) if __return_value
     end
 
+    def stream
+      __return_value = LibGst.pad_get_stream(to_unsafe.as(LibGst::Pad*))
+      Gst::Stream.new(__return_value) if __return_value
+    end
+
     def stream_id
       __return_value = LibGst.pad_get_stream_id(to_unsafe.as(LibGst::Pad*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
@@ -186,6 +191,16 @@ module Gst
 
     def link_full(sinkpad, flags : Gst::PadLinkCheck)
       __return_value = LibGst.pad_link_full(to_unsafe.as(LibGst::Pad*), sinkpad.to_unsafe.as(LibGst::Pad*), flags)
+      __return_value
+    end
+
+    def link_maybe_ghosting(sink)
+      __return_value = LibGst.pad_link_maybe_ghosting(to_unsafe.as(LibGst::Pad*), sink.to_unsafe.as(LibGst::Pad*))
+      __return_value
+    end
+
+    def link_maybe_ghosting_full(sink, flags : Gst::PadLinkCheck)
+      __return_value = LibGst.pad_link_maybe_ghosting_full(to_unsafe.as(LibGst::Pad*), sink.to_unsafe.as(LibGst::Pad*), flags)
       __return_value
     end
 

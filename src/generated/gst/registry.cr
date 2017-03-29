@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_registry.not_nil!.as(Void*)
+      @gst_registry.not_nil!
     end
 
     def self.fork_is_enabled
@@ -36,7 +36,7 @@ module Gst
     end
 
     def check_feature_version(feature_name, min_major, min_minor, min_micro)
-      __return_value = LibGst.registry_check_feature_version(to_unsafe.as(LibGst::Registry*), feature_name.to_unsafe, UInt32.new(min_major), UInt32.new(min_minor), UInt32.new(min_micro))
+      __return_value = LibGst.registry_check_feature_version(to_unsafe.as(LibGst::Registry*), feature_name, UInt32.new(min_major), UInt32.new(min_minor), UInt32.new(min_micro))
       __return_value
     end
 
@@ -46,12 +46,12 @@ module Gst
     end
 
     def find_feature(name, type)
-      __return_value = LibGst.registry_find_feature(to_unsafe.as(LibGst::Registry*), name.to_unsafe, UInt64.new(type))
+      __return_value = LibGst.registry_find_feature(to_unsafe.as(LibGst::Registry*), name, UInt64.new(type))
       Gst::PluginFeature.new(__return_value) if __return_value
     end
 
     def find_plugin(name)
-      __return_value = LibGst.registry_find_plugin(to_unsafe.as(LibGst::Registry*), name.to_unsafe)
+      __return_value = LibGst.registry_find_plugin(to_unsafe.as(LibGst::Registry*), name)
       Gst::Plugin.new(__return_value) if __return_value
     end
 
@@ -61,7 +61,7 @@ module Gst
     end
 
     def feature_list_by_plugin(name)
-      __return_value = LibGst.registry_get_feature_list_by_plugin(to_unsafe.as(LibGst::Registry*), name.to_unsafe)
+      __return_value = LibGst.registry_get_feature_list_by_plugin(to_unsafe.as(LibGst::Registry*), name)
       GLib::ListIterator(Gst::PluginFeature, LibGst::PluginFeature*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
@@ -76,12 +76,12 @@ module Gst
     end
 
     def lookup(filename)
-      __return_value = LibGst.registry_lookup(to_unsafe.as(LibGst::Registry*), filename.to_unsafe)
+      __return_value = LibGst.registry_lookup(to_unsafe.as(LibGst::Registry*), filename)
       Gst::Plugin.new(__return_value) if __return_value
     end
 
     def lookup_feature(name)
-      __return_value = LibGst.registry_lookup_feature(to_unsafe.as(LibGst::Registry*), name.to_unsafe)
+      __return_value = LibGst.registry_lookup_feature(to_unsafe.as(LibGst::Registry*), name)
       Gst::PluginFeature.new(__return_value)
     end
 
@@ -101,7 +101,7 @@ module Gst
     end
 
     def scan_path(path)
-      __return_value = LibGst.registry_scan_path(to_unsafe.as(LibGst::Registry*), path.to_unsafe)
+      __return_value = LibGst.registry_scan_path(to_unsafe.as(LibGst::Registry*), path)
       __return_value
     end
 

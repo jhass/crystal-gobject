@@ -7,7 +7,7 @@ module Atk
     end
 
     def to_unsafe
-      @atk_plug.not_nil!.as(Void*)
+      @atk_plug.not_nil!
     end
 
     # Implements Component

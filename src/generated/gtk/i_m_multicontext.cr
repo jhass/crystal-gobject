@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_i_m_multicontext.not_nil!.as(Void*)
+      @gtk_i_m_multicontext.not_nil!
     end
 
     def self.new : self
@@ -26,7 +26,7 @@ module Gtk
     end
 
     def context_id=(context_id)
-      __return_value = LibGtk.i_m_multicontext_set_context_id(to_unsafe.as(LibGtk::IMMulticontext*), context_id.to_unsafe)
+      __return_value = LibGtk.i_m_multicontext_set_context_id(to_unsafe.as(LibGtk::IMMulticontext*), context_id)
       __return_value
     end
 

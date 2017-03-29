@@ -5,7 +5,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_window.not_nil!.as(Void*)
+      @gdk_window.not_nil!
     end
 
 
@@ -37,6 +37,11 @@ module Gdk
     def beep
       __return_value = LibGdk.window_beep(to_unsafe.as(LibGdk::Window*))
       __return_value
+    end
+
+    def begin_draw_frame(region)
+      __return_value = LibGdk.window_begin_draw_frame(to_unsafe.as(LibGdk::Window*), region.to_unsafe.as(LibCairo::Region*))
+      Gdk::DrawingContext.new(__return_value)
     end
 
     def begin_move_drag(button, root_x, root_y, timestamp)
@@ -118,6 +123,11 @@ module Gdk
 
     def enable_synchronized_configure
       __return_value = LibGdk.window_enable_synchronized_configure(to_unsafe.as(LibGdk::Window*))
+      __return_value
+    end
+
+    def end_draw_frame(context)
+      __return_value = LibGdk.window_end_draw_frame(to_unsafe.as(LibGdk::Window*), context.to_unsafe.as(LibGdk::DrawingContext*))
       __return_value
     end
 
@@ -632,7 +642,7 @@ module Gdk
     end
 
     def icon_name=(name)
-      __return_value = LibGdk.window_set_icon_name(to_unsafe.as(LibGdk::Window*), name && name.to_unsafe)
+      __return_value = LibGdk.window_set_icon_name(to_unsafe.as(LibGdk::Window*), name)
       __return_value
     end
 
@@ -672,7 +682,7 @@ module Gdk
     end
 
     def role=(role)
-      __return_value = LibGdk.window_set_role(to_unsafe.as(LibGdk::Window*), role.to_unsafe)
+      __return_value = LibGdk.window_set_role(to_unsafe.as(LibGdk::Window*), role)
       __return_value
     end
 
@@ -697,7 +707,7 @@ module Gdk
     end
 
     def startup_id=(startup_id)
-      __return_value = LibGdk.window_set_startup_id(to_unsafe.as(LibGdk::Window*), startup_id.to_unsafe)
+      __return_value = LibGdk.window_set_startup_id(to_unsafe.as(LibGdk::Window*), startup_id)
       __return_value
     end
 
@@ -712,7 +722,7 @@ module Gdk
     end
 
     def title=(title)
-      __return_value = LibGdk.window_set_title(to_unsafe.as(LibGdk::Window*), title.to_unsafe)
+      __return_value = LibGdk.window_set_title(to_unsafe.as(LibGdk::Window*), title)
       __return_value
     end
 
@@ -807,6 +817,15 @@ module Gdk
        __return_value
       }
       connect("from-embedder", __callback)
+    end
+
+    alias MovedToRectSignal = Window, Void*, Void*, Bool, Bool ->
+    def on_moved_to_rect(&__block : MovedToRectSignal)
+      __callback = ->(_arg0 : LibGdk::Window*, _arg1 : LibGdk::Void**, _arg2 : LibGdk::Void**, _arg3 : LibGdk::Bool*, _arg4 : LibGdk::Bool*) {
+       __return_value = __block.call(Window.new(_arg0), _arg1, _arg2, _arg3, _arg4)
+       __return_value
+      }
+      connect("moved-to-rect", __callback)
     end
 
     alias PickEmbeddedChildSignal = Window, Float64, Float64 -> Gdk::Window

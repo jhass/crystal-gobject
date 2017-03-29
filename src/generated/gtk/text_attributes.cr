@@ -32,7 +32,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_text_attributes.not_nil!.as(Void*)
+      @gtk_text_attributes.not_nil!
     end
 
     def self.new : self

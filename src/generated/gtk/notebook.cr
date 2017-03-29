@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_notebook.not_nil!.as(Void*)
+      @gtk_notebook.not_nil!
     end
 
     # Implements ImplementorIface
@@ -190,7 +190,7 @@ module Gtk
     end
 
     def group_name=(group_name)
-      __return_value = LibGtk.notebook_set_group_name(to_unsafe.as(LibGtk::Notebook*), group_name && group_name.to_unsafe)
+      __return_value = LibGtk.notebook_set_group_name(to_unsafe.as(LibGtk::Notebook*), group_name)
       __return_value
     end
 
@@ -200,7 +200,7 @@ module Gtk
     end
 
     def set_menu_label_text(child, menu_text)
-      __return_value = LibGtk.notebook_set_menu_label_text(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), menu_text.to_unsafe)
+      __return_value = LibGtk.notebook_set_menu_label_text(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), menu_text)
       __return_value
     end
 
@@ -230,7 +230,7 @@ module Gtk
     end
 
     def set_tab_label_text(child, tab_text)
-      __return_value = LibGtk.notebook_set_tab_label_text(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_text.to_unsafe)
+      __return_value = LibGtk.notebook_set_tab_label_text(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_text)
       __return_value
     end
 

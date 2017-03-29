@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_h_scale.not_nil!.as(Void*)
+      @gtk_h_scale.not_nil!
     end
 
     # Implements ImplementorIface

@@ -5,7 +5,7 @@ module Atk
     end
 
     def to_unsafe
-      @atk_registry.not_nil!.as(Void*)
+      @atk_registry.not_nil!
     end
 
     def factory(type)

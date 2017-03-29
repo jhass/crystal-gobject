@@ -7,7 +7,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_test_suite.not_nil!.as(Void*)
+      @g_lib_test_suite.not_nil!
     end
 
     def add(test_case)

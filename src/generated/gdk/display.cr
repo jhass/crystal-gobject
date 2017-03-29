@@ -5,7 +5,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_display.not_nil!.as(Void*)
+      @gdk_display.not_nil!
     end
 
     def self.default
@@ -14,7 +14,7 @@ module Gdk
     end
 
     def self.open(display_name)
-      __return_value = LibGdk.display_open(display_name.to_unsafe)
+      __return_value = LibGdk.display_open(display_name)
       Gdk::Display.new(__return_value) if __return_value
     end
 
@@ -83,6 +83,26 @@ module Gdk
       __return_value
     end
 
+    def monitor(monitor_num)
+      __return_value = LibGdk.display_get_monitor(to_unsafe.as(LibGdk::Display*), Int32.new(monitor_num))
+      Gdk::Monitor.new(__return_value) if __return_value
+    end
+
+    def monitor_at_point(x, y)
+      __return_value = LibGdk.display_get_monitor_at_point(to_unsafe.as(LibGdk::Display*), Int32.new(x), Int32.new(y))
+      Gdk::Monitor.new(__return_value)
+    end
+
+    def monitor_at_window(window)
+      __return_value = LibGdk.display_get_monitor_at_window(to_unsafe.as(LibGdk::Display*), window.to_unsafe.as(LibGdk::Window*))
+      Gdk::Monitor.new(__return_value)
+    end
+
+    def n_monitors
+      __return_value = LibGdk.display_get_n_monitors(to_unsafe.as(LibGdk::Display*))
+      __return_value
+    end
+
     def n_screens
       __return_value = LibGdk.display_get_n_screens(to_unsafe.as(LibGdk::Display*))
       __return_value
@@ -96,6 +116,11 @@ module Gdk
     def pointer(screen, x, y, mask : Gdk::ModifierType?)
       __return_value = LibGdk.display_get_pointer(to_unsafe.as(LibGdk::Display*), screen, x, y, mask)
       __return_value
+    end
+
+    def primary_monitor
+      __return_value = LibGdk.display_get_primary_monitor(to_unsafe.as(LibGdk::Display*))
+      Gdk::Monitor.new(__return_value) if __return_value
     end
 
     def screen(screen_num)
@@ -134,7 +159,7 @@ module Gdk
     end
 
     def notify_startup_complete(startup_id)
-      __return_value = LibGdk.display_notify_startup_complete(to_unsafe.as(LibGdk::Display*), startup_id.to_unsafe)
+      __return_value = LibGdk.display_notify_startup_complete(to_unsafe.as(LibGdk::Display*), startup_id)
       __return_value
     end
 
@@ -174,7 +199,7 @@ module Gdk
     end
 
     def store_clipboard(clipboard_window, time, targets, n_targets)
-      __return_value = LibGdk.display_store_clipboard(to_unsafe.as(LibGdk::Display*), clipboard_window.to_unsafe.as(LibGdk::Window*), UInt32.new(time), targets, Int32.new(n_targets))
+      __return_value = LibGdk.display_store_clipboard(to_unsafe.as(LibGdk::Display*), clipboard_window.to_unsafe.as(LibGdk::Window*), UInt32.new(time), targets && targets, Int32.new(n_targets))
       __return_value
     end
 
@@ -230,6 +255,24 @@ module Gdk
        __return_value
       }
       connect("closed", __callback)
+    end
+
+    alias MonitorAddedSignal = Display, Gdk::Monitor ->
+    def on_monitor_added(&__block : MonitorAddedSignal)
+      __callback = ->(_arg0 : LibGdk::Display*, _arg1 : LibGdk::LibGdk::Monitor*) {
+       __return_value = __block.call(Display.new(_arg0), Gdk::Monitor.new(_arg1))
+       __return_value
+      }
+      connect("monitor-added", __callback)
+    end
+
+    alias MonitorRemovedSignal = Display, Gdk::Monitor ->
+    def on_monitor_removed(&__block : MonitorRemovedSignal)
+      __callback = ->(_arg0 : LibGdk::Display*, _arg1 : LibGdk::LibGdk::Monitor*) {
+       __return_value = __block.call(Display.new(_arg0), Gdk::Monitor.new(_arg1))
+       __return_value
+      }
+      connect("monitor-removed", __callback)
     end
 
     alias OpenedSignal = Display ->

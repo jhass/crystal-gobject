@@ -7,13 +7,13 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_font_selection_dialog.not_nil!.as(Void*)
+      @gtk_font_selection_dialog.not_nil!
     end
 
     # Implements ImplementorIface
     # Implements Buildable
     def self.new(title) : self
-      __return_value = LibGtk.font_selection_dialog_new(title.to_unsafe)
+      __return_value = LibGtk.font_selection_dialog_new(title)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -43,12 +43,12 @@ module Gtk
     end
 
     def font_name=(fontname)
-      __return_value = LibGtk.font_selection_dialog_set_font_name(to_unsafe.as(LibGtk::FontSelectionDialog*), fontname.to_unsafe)
+      __return_value = LibGtk.font_selection_dialog_set_font_name(to_unsafe.as(LibGtk::FontSelectionDialog*), fontname)
       __return_value
     end
 
     def preview_text=(text)
-      __return_value = LibGtk.font_selection_dialog_set_preview_text(to_unsafe.as(LibGtk::FontSelectionDialog*), text.to_unsafe)
+      __return_value = LibGtk.font_selection_dialog_set_preview_text(to_unsafe.as(LibGtk::FontSelectionDialog*), text)
       __return_value
     end
 

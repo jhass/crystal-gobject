@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_rc_style.not_nil!.as(Void*)
+      @gtk_rc_style.not_nil!
     end
 
     def self.new : self

@@ -16,7 +16,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_target_pair.not_nil!.as(Void*)
+      @gtk_target_pair.not_nil!
     end
 
     def target

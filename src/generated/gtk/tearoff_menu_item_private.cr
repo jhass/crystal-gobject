@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_tearoff_menu_item_private.not_nil!.as(Void*)
+      @gtk_tearoff_menu_item_private.not_nil!
     end
 
   end

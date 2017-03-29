@@ -7,7 +7,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_tab_array.not_nil!.as(Void*)
+      @pango_tab_array.not_nil!
     end
 
     def self.new(initial_size, positions_in_pixels) : self

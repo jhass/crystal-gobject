@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_misc_private.not_nil!.as(Void*)
+      @gtk_misc_private.not_nil!
     end
 
   end

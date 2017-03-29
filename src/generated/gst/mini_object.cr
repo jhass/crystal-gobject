@@ -20,7 +20,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_mini_object.not_nil!.as(Void*)
+      @gst_mini_object.not_nil!
     end
 
     def qdata(quark)

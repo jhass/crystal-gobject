@@ -12,7 +12,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_included_module.not_nil!.as(Void*)
+      @pango_included_module.not_nil!
     end
 
     def list

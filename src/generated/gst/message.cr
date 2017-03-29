@@ -18,7 +18,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_message.not_nil!.as(Void*)
+      @gst_message.not_nil!
     end
 
     def self.new_application(src, structure) : self
@@ -82,7 +82,12 @@ module Gst
     end
 
     def self.new_error(src, error, debug) : self
-      __return_value = LibGst.message_new_error(src && src.to_unsafe.as(LibGst::Object*), error, debug.to_unsafe)
+      __return_value = LibGst.message_new_error(src && src.to_unsafe.as(LibGst::Object*), error, debug)
+      cast Gst::Message.new(__return_value)
+    end
+
+    def self.new_error_with_details(src, error, debug, details) : self
+      __return_value = LibGst.message_new_error_with_details(src && src.to_unsafe.as(LibGst::Object*), error, debug, details.to_unsafe.as(LibGst::Structure*))
       cast Gst::Message.new(__return_value)
     end
 
@@ -92,7 +97,12 @@ module Gst
     end
 
     def self.new_info(src, error, debug) : self
-      __return_value = LibGst.message_new_info(src && src.to_unsafe.as(LibGst::Object*), error, debug.to_unsafe)
+      __return_value = LibGst.message_new_info(src && src.to_unsafe.as(LibGst::Object*), error, debug)
+      cast Gst::Message.new(__return_value)
+    end
+
+    def self.new_info_with_details(src, error, debug, details) : self
+      __return_value = LibGst.message_new_info_with_details(src && src.to_unsafe.as(LibGst::Object*), error, debug, details.to_unsafe.as(LibGst::Structure*))
       cast Gst::Message.new(__return_value)
     end
 
@@ -102,7 +112,7 @@ module Gst
     end
 
     def self.new_need_context(src, context_type) : self
-      __return_value = LibGst.message_new_need_context(src && src.to_unsafe.as(LibGst::Object*), context_type.to_unsafe)
+      __return_value = LibGst.message_new_need_context(src && src.to_unsafe.as(LibGst::Object*), context_type)
       cast Gst::Message.new(__return_value)
     end
 
@@ -112,12 +122,22 @@ module Gst
     end
 
     def self.new_progress(src, type : Gst::ProgressType, code, text) : self
-      __return_value = LibGst.message_new_progress(src.to_unsafe.as(LibGst::Object*), type, code.to_unsafe, text.to_unsafe)
+      __return_value = LibGst.message_new_progress(src.to_unsafe.as(LibGst::Object*), type, code, text)
+      cast Gst::Message.new(__return_value)
+    end
+
+    def self.new_property_notify(src, property_name, val) : self
+      __return_value = LibGst.message_new_property_notify(src.to_unsafe.as(LibGst::Object*), property_name, val && val.to_unsafe.as(LibGObject::Value*))
       cast Gst::Message.new(__return_value)
     end
 
     def self.new_qos(src, live, running_time, stream_time, timestamp, duration) : self
       __return_value = LibGst.message_new_qos(src.to_unsafe.as(LibGst::Object*), live, UInt64.new(running_time), UInt64.new(stream_time), UInt64.new(timestamp), UInt64.new(duration))
+      cast Gst::Message.new(__return_value)
+    end
+
+    def self.new_redirect(src, location, tag_list, entry_struct) : self
+      __return_value = LibGst.message_new_redirect(src.to_unsafe.as(LibGst::Object*), location, tag_list && tag_list.to_unsafe.as(LibGst::TagList*), entry_struct && entry_struct.to_unsafe.as(LibGst::Structure*))
       cast Gst::Message.new(__return_value)
     end
 
@@ -161,6 +181,11 @@ module Gst
       cast Gst::Message.new(__return_value)
     end
 
+    def self.new_stream_collection(src, collection) : self
+      __return_value = LibGst.message_new_stream_collection(src.to_unsafe.as(LibGst::Object*), collection.to_unsafe.as(LibGst::StreamCollection*))
+      cast Gst::Message.new(__return_value)
+    end
+
     def self.new_stream_start(src) : self
       __return_value = LibGst.message_new_stream_start(src && src.to_unsafe.as(LibGst::Object*))
       cast Gst::Message.new(__return_value)
@@ -168,6 +193,11 @@ module Gst
 
     def self.new_stream_status(src, type : Gst::StreamStatusType, owner) : self
       __return_value = LibGst.message_new_stream_status(src.to_unsafe.as(LibGst::Object*), type, owner.to_unsafe.as(LibGst::Element*))
+      cast Gst::Message.new(__return_value)
+    end
+
+    def self.new_streams_selected(src, collection) : self
+      __return_value = LibGst.message_new_streams_selected(src.to_unsafe.as(LibGst::Object*), collection.to_unsafe.as(LibGst::StreamCollection*))
       cast Gst::Message.new(__return_value)
     end
 
@@ -187,8 +217,23 @@ module Gst
     end
 
     def self.new_warning(src, error, debug) : self
-      __return_value = LibGst.message_new_warning(src && src.to_unsafe.as(LibGst::Object*), error, debug.to_unsafe)
+      __return_value = LibGst.message_new_warning(src && src.to_unsafe.as(LibGst::Object*), error, debug)
       cast Gst::Message.new(__return_value)
+    end
+
+    def self.new_warning_with_details(src, error, debug, details) : self
+      __return_value = LibGst.message_new_warning_with_details(src && src.to_unsafe.as(LibGst::Object*), error, debug, details.to_unsafe.as(LibGst::Structure*))
+      cast Gst::Message.new(__return_value)
+    end
+
+    def add_redirect_entry(location, tag_list, entry_struct)
+      __return_value = LibGst.message_add_redirect_entry(to_unsafe.as(LibGst::Message*), location, tag_list && tag_list.to_unsafe.as(LibGst::TagList*), entry_struct && entry_struct.to_unsafe.as(LibGst::Structure*))
+      __return_value
+    end
+
+    def num_redirect_entries
+      __return_value = LibGst.message_get_num_redirect_entries(to_unsafe.as(LibGst::Message*))
+      __return_value
     end
 
     def seqnum
@@ -207,7 +252,7 @@ module Gst
     end
 
     def has_name(name)
-      __return_value = LibGst.message_has_name(to_unsafe.as(LibGst::Message*), name.to_unsafe)
+      __return_value = LibGst.message_has_name(to_unsafe.as(LibGst::Message*), name)
       __return_value
     end
 
@@ -256,6 +301,11 @@ module Gst
       __return_value
     end
 
+    def parse_error_details(structure)
+      __return_value = LibGst.message_parse_error_details(to_unsafe.as(LibGst::Message*), structure)
+      __return_value
+    end
+
     def parse_group_id(group_id)
       __return_value = LibGst.message_parse_group_id(to_unsafe.as(LibGst::Message*), group_id)
       __return_value
@@ -271,6 +321,11 @@ module Gst
       __return_value
     end
 
+    def parse_info_details(structure)
+      __return_value = LibGst.message_parse_info_details(to_unsafe.as(LibGst::Message*), structure)
+      __return_value
+    end
+
     def parse_new_clock(clock)
       __return_value = LibGst.message_parse_new_clock(to_unsafe.as(LibGst::Message*), clock)
       __return_value
@@ -278,6 +333,11 @@ module Gst
 
     def parse_progress(type : Gst::ProgressType?, code, text)
       __return_value = LibGst.message_parse_progress(to_unsafe.as(LibGst::Message*), type, code, text)
+      __return_value
+    end
+
+    def parse_property_notify(object, property_name, property_value)
+      __return_value = LibGst.message_parse_property_notify(to_unsafe.as(LibGst::Message*), object, property_name, property_value)
       __return_value
     end
 
@@ -293,6 +353,11 @@ module Gst
 
     def parse_qos_values(jitter, proportion, quality)
       __return_value = LibGst.message_parse_qos_values(to_unsafe.as(LibGst::Message*), jitter, proportion, quality)
+      __return_value
+    end
+
+    def parse_redirect_entry(entry_index, location, tag_list, entry_struct)
+      __return_value = LibGst.message_parse_redirect_entry(to_unsafe.as(LibGst::Message*), UInt64.new(entry_index), location, tag_list, entry_struct)
       __return_value
     end
 
@@ -331,8 +396,18 @@ module Gst
       __return_value
     end
 
+    def parse_stream_collection(collection)
+      __return_value = LibGst.message_parse_stream_collection(to_unsafe.as(LibGst::Message*), collection)
+      __return_value
+    end
+
     def parse_stream_status(type : Gst::StreamStatusType, owner)
       __return_value = LibGst.message_parse_stream_status(to_unsafe.as(LibGst::Message*), type, owner)
+      __return_value
+    end
+
+    def parse_streams_selected(collection)
+      __return_value = LibGst.message_parse_streams_selected(to_unsafe.as(LibGst::Message*), collection)
       __return_value
     end
 
@@ -353,6 +428,11 @@ module Gst
 
     def parse_warning(gerror, debug)
       __return_value = LibGst.message_parse_warning(to_unsafe.as(LibGst::Message*), gerror, debug)
+      __return_value
+    end
+
+    def parse_warning_details(structure)
+      __return_value = LibGst.message_parse_warning_details(to_unsafe.as(LibGst::Message*), structure)
       __return_value
     end
 
@@ -384,6 +464,21 @@ module Gst
     def stream_status_object=(object)
       __return_value = LibGst.message_set_stream_status_object(to_unsafe.as(LibGst::Message*), object.to_unsafe.as(LibGObject::Value*))
       __return_value
+    end
+
+    def streams_selected_add(stream)
+      __return_value = LibGst.message_streams_selected_add(to_unsafe.as(LibGst::Message*), stream.to_unsafe.as(LibGst::Stream*))
+      __return_value
+    end
+
+    def streams_selected_get_size
+      __return_value = LibGst.message_streams_selected_get_size(to_unsafe.as(LibGst::Message*))
+      __return_value
+    end
+
+    def streams_selected_get_stream(idx)
+      __return_value = LibGst.message_streams_selected_get_stream(to_unsafe.as(LibGst::Message*), UInt32.new(idx))
+      Gst::Stream.new(__return_value)
     end
 
     def mini_object

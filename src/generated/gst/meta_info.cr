@@ -19,7 +19,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_meta_info.not_nil!.as(Void*)
+      @gst_meta_info.not_nil!
     end
 
     def api

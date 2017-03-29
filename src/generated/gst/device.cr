@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_device.not_nil!.as(Void*)
+      @gst_device.not_nil!
     end
 
 
@@ -15,7 +15,7 @@ module Gst
 
 
     def create_element(name)
-      __return_value = LibGst.device_create_element(to_unsafe.as(LibGst::Device*), name && name.to_unsafe)
+      __return_value = LibGst.device_create_element(to_unsafe.as(LibGst::Device*), name)
       Gst::Element.new(__return_value)
     end
 
@@ -40,7 +40,7 @@ module Gst
     end
 
     def has_classes(classes)
-      __return_value = LibGst.device_has_classes(to_unsafe.as(LibGst::Device*), classes.to_unsafe)
+      __return_value = LibGst.device_has_classes(to_unsafe.as(LibGst::Device*), classes)
       __return_value
     end
 

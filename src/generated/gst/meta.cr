@@ -15,7 +15,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_meta.not_nil!.as(Void*)
+      @gst_meta.not_nil!
     end
 
     def self.api_type_get_tags(api)
@@ -29,17 +29,17 @@ module Gst
     end
 
     def self.api_type_register(api, tags)
-      __return_value = LibGst.meta_api_type_register(api.to_unsafe, tags.to_unsafe)
+      __return_value = LibGst.meta_api_type_register(api, tags)
       __return_value
     end
 
     def self.info(impl)
-      __return_value = LibGst.meta_get_info(impl.to_unsafe)
+      __return_value = LibGst.meta_get_info(impl)
       Gst::MetaInfo.new(__return_value) if __return_value
     end
 
     def self.register(api, impl, size, init_func, free_func, transform_func)
-      __return_value = LibGst.meta_register(UInt64.new(api), impl.to_unsafe, UInt64.new(size), init_func, free_func, transform_func)
+      __return_value = LibGst.meta_register(UInt64.new(api), impl, UInt64.new(size), init_func, free_func, transform_func)
       Gst::MetaInfo.new(__return_value)
     end
 

@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_color_chooser_dialog.not_nil!.as(Void*)
+      @gtk_color_chooser_dialog.not_nil!
     end
 
     # Implements ImplementorIface
@@ -15,7 +15,7 @@ module Gtk
     # Implements ColorChooser
 
     def self.new(title, parent) : self
-      __return_value = LibGtk.color_chooser_dialog_new(title && title.to_unsafe, parent && parent.to_unsafe.as(LibGtk::Window*))
+      __return_value = LibGtk.color_chooser_dialog_new(title, parent && parent.to_unsafe.as(LibGtk::Window*))
       cast Gtk::Widget.new(__return_value)
     end
 

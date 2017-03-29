@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_tree_view.not_nil!.as(Void*)
+      @gtk_tree_view.not_nil!
     end
 
     # Implements ImplementorIface
@@ -302,7 +302,7 @@ module Gtk
     end
 
     def insert_column_with_data_func(position, title, cell, func, data, dnotify)
-      __return_value = LibGtk.tree_view_insert_column_with_data_func(to_unsafe.as(LibGtk::TreeView*), Int32.new(position), title.to_unsafe, cell.to_unsafe.as(LibGtk::CellRenderer*), func, data && data, dnotify)
+      __return_value = LibGtk.tree_view_insert_column_with_data_func(to_unsafe.as(LibGtk::TreeView*), Int32.new(position), title, cell.to_unsafe.as(LibGtk::CellRenderer*), func, data && data, dnotify)
       __return_value
     end
 

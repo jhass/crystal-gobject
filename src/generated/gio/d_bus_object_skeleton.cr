@@ -5,13 +5,13 @@ module Gio
     end
 
     def to_unsafe
-      @gio_d_bus_object_skeleton.not_nil!.as(Void*)
+      @gio_d_bus_object_skeleton.not_nil!
     end
 
     # Implements DBusObject
 
     def self.new(object_path) : self
-      __return_value = LibGio.d_bus_object_skeleton_new(object_path.to_unsafe)
+      __return_value = LibGio.d_bus_object_skeleton_new(object_path)
       cast Gio::DBusObjectSkeleton.new(__return_value)
     end
 
@@ -31,12 +31,12 @@ module Gio
     end
 
     def remove_interface_by_name(interface_name)
-      __return_value = LibGio.d_bus_object_skeleton_remove_interface_by_name(to_unsafe.as(LibGio::DBusObjectSkeleton*), interface_name.to_unsafe)
+      __return_value = LibGio.d_bus_object_skeleton_remove_interface_by_name(to_unsafe.as(LibGio::DBusObjectSkeleton*), interface_name)
       __return_value
     end
 
     def object_path=(object_path)
-      __return_value = LibGio.d_bus_object_skeleton_set_object_path(to_unsafe.as(LibGio::DBusObjectSkeleton*), object_path.to_unsafe)
+      __return_value = LibGio.d_bus_object_skeleton_set_object_path(to_unsafe.as(LibGio::DBusObjectSkeleton*), object_path)
       __return_value
     end
 

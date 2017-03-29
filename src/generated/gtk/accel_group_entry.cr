@@ -16,7 +16,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_accel_group_entry.not_nil!.as(Void*)
+      @gtk_accel_group_entry.not_nil!
     end
 
     def key

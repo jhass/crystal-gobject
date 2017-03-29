@@ -12,7 +12,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_test_log_buffer.not_nil!.as(Void*)
+      @g_lib_test_log_buffer.not_nil!
     end
 
     def free

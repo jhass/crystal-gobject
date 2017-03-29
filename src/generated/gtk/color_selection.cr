@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_color_selection.not_nil!.as(Void*)
+      @gtk_color_selection.not_nil!
     end
 
     # Implements ImplementorIface
@@ -24,7 +24,7 @@ module Gtk
     end
 
     def self.palette_from_string(str, colors, n_colors)
-      __return_value = LibGtk.color_selection_palette_from_string(str.to_unsafe, colors, n_colors)
+      __return_value = LibGtk.color_selection_palette_from_string(str, colors, n_colors)
       __return_value
     end
 

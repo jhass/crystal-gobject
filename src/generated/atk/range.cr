@@ -7,11 +7,11 @@ module Atk
     end
 
     def to_unsafe
-      @atk_range.not_nil!.as(Void*)
+      @atk_range.not_nil!
     end
 
     def self.new(lower_limit, upper_limit, description) : self
-      __return_value = LibAtk.range_new(Float64.new(lower_limit), Float64.new(upper_limit), description.to_unsafe)
+      __return_value = LibAtk.range_new(Float64.new(lower_limit), Float64.new(upper_limit), description)
       cast Atk::Range.new(__return_value)
     end
 

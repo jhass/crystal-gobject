@@ -1370,6 +1370,7 @@ lib LibGtk
     _data : UInt8[0]
   end
   fun file_filter_new = gtk_file_filter_new() : LibGtk::FileFilter*
+  fun file_filter_new_from_gvariant = gtk_file_filter_new_from_gvariant(variant : LibGLib::Variant*) : LibGtk::FileFilter*
   fun file_filter_add_custom = gtk_file_filter_add_custom(this : FileFilter*, needed : LibGtk::FileFilterFlags, func : LibGtk::FileFilterFunc, data : Void*, notify : LibGLib::DestroyNotify) : Void
   fun file_filter_add_mime_type = gtk_file_filter_add_mime_type(this : FileFilter*, mime_type : UInt8*) : Void
   fun file_filter_add_pattern = gtk_file_filter_add_pattern(this : FileFilter*, pattern : UInt8*) : Void
@@ -1378,6 +1379,7 @@ lib LibGtk
   fun file_filter_get_name = gtk_file_filter_get_name(this : FileFilter*) : UInt8*
   fun file_filter_get_needed = gtk_file_filter_get_needed(this : FileFilter*) : LibGtk::FileFilterFlags
   fun file_filter_set_name = gtk_file_filter_set_name(this : FileFilter*, name : UInt8*) : Void
+  fun file_filter_to_gvariant = gtk_file_filter_to_gvariant(this : FileFilter*) : LibGLib::Variant*
 
   struct Fixed # object
     container : LibGtk::Container
@@ -1408,6 +1410,7 @@ lib LibGtk
   fun flow_box_bind_model = gtk_flow_box_bind_model(this : FlowBox*, model : LibGio::ListModel*, create_widget_func : LibGtk::FlowBoxCreateWidgetFunc, user_data : Void*, user_data_free_func : LibGLib::DestroyNotify) : Void
   fun flow_box_get_activate_on_single_click = gtk_flow_box_get_activate_on_single_click(this : FlowBox*) : Bool
   fun flow_box_get_child_at_index = gtk_flow_box_get_child_at_index(this : FlowBox*, idx : Int32) : LibGtk::FlowBoxChild*
+  fun flow_box_get_child_at_pos = gtk_flow_box_get_child_at_pos(this : FlowBox*, x : Int32, y : Int32) : LibGtk::FlowBoxChild*
   fun flow_box_get_column_spacing = gtk_flow_box_get_column_spacing(this : FlowBox*) : UInt32
   fun flow_box_get_homogeneous = gtk_flow_box_get_homogeneous(this : FlowBox*) : Bool
   fun flow_box_get_max_children_per_line = gtk_flow_box_get_max_children_per_line(this : FlowBox*) : UInt32
@@ -1555,6 +1558,7 @@ lib LibGtk
   fun g_l_area_get_has_depth_buffer = gtk_gl_area_get_has_depth_buffer(this : GLArea*) : Bool
   fun g_l_area_get_has_stencil_buffer = gtk_gl_area_get_has_stencil_buffer(this : GLArea*) : Bool
   fun g_l_area_get_required_version = gtk_gl_area_get_required_version(this : GLArea*, major : Int32*, minor : Int32*) : Void
+  fun g_l_area_get_use_es = gtk_gl_area_get_use_es(this : GLArea*) : Bool
   fun g_l_area_make_current = gtk_gl_area_make_current(this : GLArea*) : Void
   fun g_l_area_queue_render = gtk_gl_area_queue_render(this : GLArea*) : Void
   fun g_l_area_set_auto_render = gtk_gl_area_set_auto_render(this : GLArea*, auto_render : Bool) : Void
@@ -1563,6 +1567,7 @@ lib LibGtk
   fun g_l_area_set_has_depth_buffer = gtk_gl_area_set_has_depth_buffer(this : GLArea*, has_depth_buffer : Bool) : Void
   fun g_l_area_set_has_stencil_buffer = gtk_gl_area_set_has_stencil_buffer(this : GLArea*, has_stencil_buffer : Bool) : Void
   fun g_l_area_set_required_version = gtk_gl_area_set_required_version(this : GLArea*, major : Int32, minor : Int32) : Void
+  fun g_l_area_set_use_es = gtk_gl_area_set_use_es(this : GLArea*, use_es : Bool) : Void
 
   struct Gesture # object
     _data : UInt8[0]
@@ -2312,6 +2317,7 @@ lib LibGtk
     menu_shell : LibGtk::MenuShell
     priv : LibGtk::MenuPrivate*
     # Signal move-scroll
+    # Signal popped-up
   end
   fun menu_new = gtk_menu_new() : LibGtk::Widget*
   fun menu_new_from_model = gtk_menu_new_from_model(model : LibGio::MenuModel*) : LibGtk::Widget*
@@ -2327,8 +2333,12 @@ lib LibGtk
   fun menu_get_reserve_toggle_size = gtk_menu_get_reserve_toggle_size(this : Menu*) : Bool
   fun menu_get_tearoff_state = gtk_menu_get_tearoff_state(this : Menu*) : Bool
   fun menu_get_title = gtk_menu_get_title(this : Menu*) : UInt8*
+  fun menu_place_on_monitor = gtk_menu_place_on_monitor(this : Menu*, monitor : LibGdk::Monitor*) : Void
   fun menu_popdown = gtk_menu_popdown(this : Menu*) : Void
   fun menu_popup = gtk_menu_popup(this : Menu*, parent_menu_shell : LibGtk::Widget*, parent_menu_item : LibGtk::Widget*, func : LibGtk::MenuPositionFunc, data : Void*, button : UInt32, activate_time : UInt32) : Void
+  fun menu_popup_at_pointer = gtk_menu_popup_at_pointer(this : Menu*, trigger_event : LibGdk::Event*) : Void
+  fun menu_popup_at_rect = gtk_menu_popup_at_rect(this : Menu*, rect_window : LibGdk::Window*, rect : LibGdk::Rectangle*, rect_anchor : LibGdk::Gravity, menu_anchor : LibGdk::Gravity, trigger_event : LibGdk::Event*) : Void
+  fun menu_popup_at_widget = gtk_menu_popup_at_widget(this : Menu*, widget : LibGtk::Widget*, widget_anchor : LibGdk::Gravity, menu_anchor : LibGdk::Gravity, trigger_event : LibGdk::Event*) : Void
   fun menu_popup_for_device = gtk_menu_popup_for_device(this : Menu*, device : LibGdk::Device*, parent_menu_shell : LibGtk::Widget*, parent_menu_item : LibGtk::Widget*, func : LibGtk::MenuPositionFunc, data : Void*, destroy : LibGLib::DestroyNotify, button : UInt32, activate_time : UInt32) : Void
   fun menu_reorder_child = gtk_menu_reorder_child(this : Menu*, child : LibGtk::Widget*, position : Int32) : Void
   fun menu_reposition = gtk_menu_reposition(this : Menu*) : Void
@@ -2649,11 +2659,19 @@ lib LibGtk
   fun overlay_reorder_overlay = gtk_overlay_reorder_overlay(this : Overlay*, child : LibGtk::Widget*, position : Int32) : Void
   fun overlay_set_overlay_pass_through = gtk_overlay_set_overlay_pass_through(this : Overlay*, widget : LibGtk::Widget*, pass_through : Bool) : Void
 
+  struct PadController # object
+    _data : UInt8[0]
+  end
+  fun pad_controller_new = gtk_pad_controller_new(window : LibGtk::Window*, group : LibGio::ActionGroup*, pad : LibGdk::Device*) : LibGtk::PadController*
+  fun pad_controller_set_action = gtk_pad_controller_set_action(this : PadController*, type : LibGtk::PadActionType, index : Int32, mode : Int32, label : UInt8*, action_name : UInt8*) : Void
+  fun pad_controller_set_action_entries = gtk_pad_controller_set_action_entries(this : PadController*, entries : LibGtk::PadActionEntry*, n_entries : Int32) : Void
+
   struct PageSetup # object
     _data : UInt8[0]
   end
   fun page_setup_new = gtk_page_setup_new() : LibGtk::PageSetup*
   fun page_setup_new_from_file = gtk_page_setup_new_from_file(file_name : UInt8*, error : LibGLib::Error**) : LibGtk::PageSetup*
+  fun page_setup_new_from_gvariant = gtk_page_setup_new_from_gvariant(variant : LibGLib::Variant*) : LibGtk::PageSetup*
   fun page_setup_new_from_key_file = gtk_page_setup_new_from_key_file(key_file : LibGLib::KeyFile*, group_name : UInt8*, error : LibGLib::Error**) : LibGtk::PageSetup*
   fun page_setup_copy = gtk_page_setup_copy(this : PageSetup*) : LibGtk::PageSetup*
   fun page_setup_get_bottom_margin = gtk_page_setup_get_bottom_margin(this : PageSetup*, unit : LibGtk::Unit) : Float64
@@ -2676,6 +2694,7 @@ lib LibGtk
   fun page_setup_set_right_margin = gtk_page_setup_set_right_margin(this : PageSetup*, margin : Float64, unit : LibGtk::Unit) : Void
   fun page_setup_set_top_margin = gtk_page_setup_set_top_margin(this : PageSetup*, margin : Float64, unit : LibGtk::Unit) : Void
   fun page_setup_to_file = gtk_page_setup_to_file(this : PageSetup*, file_name : UInt8*, error : LibGLib::Error**) : Bool
+  fun page_setup_to_gvariant = gtk_page_setup_to_gvariant(this : PageSetup*) : LibGLib::Variant*
   fun page_setup_to_key_file = gtk_page_setup_to_key_file(this : PageSetup*, key_file : LibGLib::KeyFile*, group_name : UInt8*) : Void
 
   struct Paned # object
@@ -2782,6 +2801,8 @@ lib LibGtk
   fun popover_get_position = gtk_popover_get_position(this : Popover*) : LibGtk::PositionType
   fun popover_get_relative_to = gtk_popover_get_relative_to(this : Popover*) : LibGtk::Widget*
   fun popover_get_transitions_enabled = gtk_popover_get_transitions_enabled(this : Popover*) : Bool
+  fun popover_popdown = gtk_popover_popdown(this : Popover*) : Void
+  fun popover_popup = gtk_popover_popup(this : Popover*) : Void
   fun popover_set_constrain_to = gtk_popover_set_constrain_to(this : Popover*, constraint : LibGtk::PopoverConstraint) : Void
   fun popover_set_default_widget = gtk_popover_set_default_widget(this : Popover*, widget : LibGtk::Widget*) : Void
   fun popover_set_modal = gtk_popover_set_modal(this : Popover*, modal : Bool) : Void
@@ -2876,6 +2897,7 @@ lib LibGtk
   end
   fun print_settings_new = gtk_print_settings_new() : LibGtk::PrintSettings*
   fun print_settings_new_from_file = gtk_print_settings_new_from_file(file_name : UInt8*, error : LibGLib::Error**) : LibGtk::PrintSettings*
+  fun print_settings_new_from_gvariant = gtk_print_settings_new_from_gvariant(variant : LibGLib::Variant*) : LibGtk::PrintSettings*
   fun print_settings_new_from_key_file = gtk_print_settings_new_from_key_file(key_file : LibGLib::KeyFile*, group_name : UInt8*, error : LibGLib::Error**) : LibGtk::PrintSettings*
   fun print_settings_copy = gtk_print_settings_copy(this : PrintSettings*) : LibGtk::PrintSettings*
   fun print_settings_foreach = gtk_print_settings_foreach(this : PrintSettings*, func : LibGtk::PrintSettingsFunc, user_data : Void*) : Void
@@ -2946,6 +2968,7 @@ lib LibGtk
   fun print_settings_set_scale = gtk_print_settings_set_scale(this : PrintSettings*, scale : Float64) : Void
   fun print_settings_set_use_color = gtk_print_settings_set_use_color(this : PrintSettings*, use_color : Bool) : Void
   fun print_settings_to_file = gtk_print_settings_to_file(this : PrintSettings*, file_name : UInt8*, error : LibGLib::Error**) : Bool
+  fun print_settings_to_gvariant = gtk_print_settings_to_gvariant(this : PrintSettings*) : LibGLib::Variant*
   fun print_settings_to_key_file = gtk_print_settings_to_key_file(this : PrintSettings*, key_file : LibGLib::KeyFile*, group_name : UInt8*) : Void
   fun print_settings_unset = gtk_print_settings_unset(this : PrintSettings*, key : UInt8*) : Void
 
@@ -3048,6 +3071,7 @@ lib LibGtk
     # Virtual function adjust_bounds
     # Virtual function change_value
     # Virtual function get_range_border
+    # Virtual function get_range_size_request
     # Virtual function move_slider
     # Virtual function value_changed
   end
@@ -3260,22 +3284,30 @@ lib LibGtk
   fun scrolled_window_get_hadjustment = gtk_scrolled_window_get_hadjustment(this : ScrolledWindow*) : LibGtk::Adjustment*
   fun scrolled_window_get_hscrollbar = gtk_scrolled_window_get_hscrollbar(this : ScrolledWindow*) : LibGtk::Widget*
   fun scrolled_window_get_kinetic_scrolling = gtk_scrolled_window_get_kinetic_scrolling(this : ScrolledWindow*) : Bool
+  fun scrolled_window_get_max_content_height = gtk_scrolled_window_get_max_content_height(this : ScrolledWindow*) : Int32
+  fun scrolled_window_get_max_content_width = gtk_scrolled_window_get_max_content_width(this : ScrolledWindow*) : Int32
   fun scrolled_window_get_min_content_height = gtk_scrolled_window_get_min_content_height(this : ScrolledWindow*) : Int32
   fun scrolled_window_get_min_content_width = gtk_scrolled_window_get_min_content_width(this : ScrolledWindow*) : Int32
   fun scrolled_window_get_overlay_scrolling = gtk_scrolled_window_get_overlay_scrolling(this : ScrolledWindow*) : Bool
   fun scrolled_window_get_placement = gtk_scrolled_window_get_placement(this : ScrolledWindow*) : LibGtk::CornerType
   fun scrolled_window_get_policy = gtk_scrolled_window_get_policy(this : ScrolledWindow*, hscrollbar_policy : LibGtk::PolicyType*, vscrollbar_policy : LibGtk::PolicyType*) : Void
+  fun scrolled_window_get_propagate_natural_height = gtk_scrolled_window_get_propagate_natural_height(this : ScrolledWindow*) : Bool
+  fun scrolled_window_get_propagate_natural_width = gtk_scrolled_window_get_propagate_natural_width(this : ScrolledWindow*) : Bool
   fun scrolled_window_get_shadow_type = gtk_scrolled_window_get_shadow_type(this : ScrolledWindow*) : LibGtk::ShadowType
   fun scrolled_window_get_vadjustment = gtk_scrolled_window_get_vadjustment(this : ScrolledWindow*) : LibGtk::Adjustment*
   fun scrolled_window_get_vscrollbar = gtk_scrolled_window_get_vscrollbar(this : ScrolledWindow*) : LibGtk::Widget*
   fun scrolled_window_set_capture_button_press = gtk_scrolled_window_set_capture_button_press(this : ScrolledWindow*, capture_button_press : Bool) : Void
   fun scrolled_window_set_hadjustment = gtk_scrolled_window_set_hadjustment(this : ScrolledWindow*, hadjustment : LibGtk::Adjustment*) : Void
   fun scrolled_window_set_kinetic_scrolling = gtk_scrolled_window_set_kinetic_scrolling(this : ScrolledWindow*, kinetic_scrolling : Bool) : Void
+  fun scrolled_window_set_max_content_height = gtk_scrolled_window_set_max_content_height(this : ScrolledWindow*, height : Int32) : Void
+  fun scrolled_window_set_max_content_width = gtk_scrolled_window_set_max_content_width(this : ScrolledWindow*, width : Int32) : Void
   fun scrolled_window_set_min_content_height = gtk_scrolled_window_set_min_content_height(this : ScrolledWindow*, height : Int32) : Void
   fun scrolled_window_set_min_content_width = gtk_scrolled_window_set_min_content_width(this : ScrolledWindow*, width : Int32) : Void
   fun scrolled_window_set_overlay_scrolling = gtk_scrolled_window_set_overlay_scrolling(this : ScrolledWindow*, overlay_scrolling : Bool) : Void
   fun scrolled_window_set_placement = gtk_scrolled_window_set_placement(this : ScrolledWindow*, window_placement : LibGtk::CornerType) : Void
   fun scrolled_window_set_policy = gtk_scrolled_window_set_policy(this : ScrolledWindow*, hscrollbar_policy : LibGtk::PolicyType, vscrollbar_policy : LibGtk::PolicyType) : Void
+  fun scrolled_window_set_propagate_natural_height = gtk_scrolled_window_set_propagate_natural_height(this : ScrolledWindow*, propagate : Bool) : Void
+  fun scrolled_window_set_propagate_natural_width = gtk_scrolled_window_set_propagate_natural_width(this : ScrolledWindow*, propagate : Bool) : Void
   fun scrolled_window_set_shadow_type = gtk_scrolled_window_set_shadow_type(this : ScrolledWindow*, type : LibGtk::ShadowType) : Void
   fun scrolled_window_set_vadjustment = gtk_scrolled_window_set_vadjustment(this : ScrolledWindow*, vadjustment : LibGtk::Adjustment*) : Void
   fun scrolled_window_unset_placement = gtk_scrolled_window_unset_placement(this : ScrolledWindow*) : Void
@@ -3342,6 +3374,15 @@ lib LibGtk
   fun settings_set_long_property = gtk_settings_set_long_property(this : Settings*, name : UInt8*, v_long : Int64, origin : UInt8*) : Void
   fun settings_set_property_value = gtk_settings_set_property_value(this : Settings*, name : UInt8*, svalue : LibGtk::SettingsValue*) : Void
   fun settings_set_string_property = gtk_settings_set_string_property(this : Settings*, name : UInt8*, v_string : UInt8*, origin : UInt8*) : Void
+
+  struct ShortcutLabel # object
+    _data : UInt8[0]
+  end
+  fun shortcut_label_new = gtk_shortcut_label_new(accelerator : UInt8*) : LibGtk::Widget*
+  fun shortcut_label_get_accelerator = gtk_shortcut_label_get_accelerator(this : ShortcutLabel*) : UInt8*
+  fun shortcut_label_get_disabled_text = gtk_shortcut_label_get_disabled_text(this : ShortcutLabel*) : UInt8*
+  fun shortcut_label_set_accelerator = gtk_shortcut_label_set_accelerator(this : ShortcutLabel*, accelerator : UInt8*) : Void
+  fun shortcut_label_set_disabled_text = gtk_shortcut_label_set_disabled_text(this : ShortcutLabel*, disabled_text : UInt8*) : Void
 
   struct ShortcutsGroup # object
     _data : UInt8[0]
@@ -3472,6 +3513,10 @@ lib LibGtk
   fun stack_set_visible_child = gtk_stack_set_visible_child(this : Stack*, child : LibGtk::Widget*) : Void
   fun stack_set_visible_child_full = gtk_stack_set_visible_child_full(this : Stack*, name : UInt8*, transition : LibGtk::StackTransitionType) : Void
   fun stack_set_visible_child_name = gtk_stack_set_visible_child_name(this : Stack*, name : UInt8*) : Void
+
+  struct StackAccessible # object
+    parent : LibGtk::ContainerAccessible
+  end
 
   struct StackSidebar # object
     parent : LibGtk::Bin
@@ -5832,6 +5877,14 @@ lib LibGtk
     _data : UInt8[0]
   end
 
+  struct PadActionEntry # struct
+    type : LibGtk::PadActionType
+    index : Int32
+    mode : Int32
+    label : UInt8*
+    action_name : UInt8*
+  end
+
   struct PageRange # struct
     start : Int32
     end_ : Int32
@@ -5850,6 +5903,7 @@ lib LibGtk
   end
   fun paper_size_new = gtk_paper_size_new(name : UInt8*) : LibGtk::PaperSize*
   fun paper_size_new_custom = gtk_paper_size_new_custom(name : UInt8*, display_name : UInt8*, width : Float64, height : Float64, unit : LibGtk::Unit) : LibGtk::PaperSize*
+  fun paper_size_new_from_gvariant = gtk_paper_size_new_from_gvariant(variant : LibGLib::Variant*) : LibGtk::PaperSize*
   fun paper_size_new_from_ipp = gtk_paper_size_new_from_ipp(ipp_name : UInt8*, width : Float64, height : Float64) : LibGtk::PaperSize*
   fun paper_size_new_from_key_file = gtk_paper_size_new_from_key_file(key_file : LibGLib::KeyFile*, group_name : UInt8*, error : LibGLib::Error**) : LibGtk::PaperSize*
   fun paper_size_new_from_ppd = gtk_paper_size_new_from_ppd(ppd_name : UInt8*, ppd_display_name : UInt8*, width : Float64, height : Float64) : LibGtk::PaperSize*
@@ -5868,6 +5922,7 @@ lib LibGtk
   fun paper_size_is_equal = gtk_paper_size_is_equal(this : PaperSize*, size2 : LibGtk::PaperSize*) : Bool
   fun paper_size_is_ipp = gtk_paper_size_is_ipp(this : PaperSize*) : Bool
   fun paper_size_set_size = gtk_paper_size_set_size(this : PaperSize*, width : Float64, height : Float64, unit : LibGtk::Unit) : Void
+  fun paper_size_to_gvariant = gtk_paper_size_to_gvariant(this : PaperSize*) : LibGLib::Variant*
   fun paper_size_to_key_file = gtk_paper_size_to_key_file(this : PaperSize*, key_file : LibGLib::KeyFile*, group_name : UInt8*) : Void
   fun paper_size_get_default = gtk_paper_size_get_default() : UInt8*
   fun paper_size_get_paper_sizes = gtk_paper_size_get_paper_sizes(include_custom : Bool) : Void**
@@ -7132,10 +7187,12 @@ lib LibGtk
     # Signal selection-changed
     # Signal update-preview
   end
+  fun file_chooser_add_choice = gtk_file_chooser_add_choice(this : FileChooser*, id : UInt8*, label : UInt8*, options : UInt8*, option_labels : UInt8*) : Void
   fun file_chooser_add_filter = gtk_file_chooser_add_filter(this : FileChooser*, filter : LibGtk::FileFilter*) : Void
   fun file_chooser_add_shortcut_folder = gtk_file_chooser_add_shortcut_folder(this : FileChooser*, folder : UInt8*, error : LibGLib::Error**) : Bool
   fun file_chooser_add_shortcut_folder_uri = gtk_file_chooser_add_shortcut_folder_uri(this : FileChooser*, uri : UInt8*, error : LibGLib::Error**) : Bool
   fun file_chooser_get_action = gtk_file_chooser_get_action(this : FileChooser*) : LibGtk::FileChooserAction
+  fun file_chooser_get_choice = gtk_file_chooser_get_choice(this : FileChooser*, id : UInt8*) : UInt8*
   fun file_chooser_get_create_folders = gtk_file_chooser_get_create_folders(this : FileChooser*) : Bool
   fun file_chooser_get_current_folder = gtk_file_chooser_get_current_folder(this : FileChooser*) : UInt8*
   fun file_chooser_get_current_folder_file = gtk_file_chooser_get_current_folder_file(this : FileChooser*) : LibGio::File*
@@ -7162,6 +7219,7 @@ lib LibGtk
   fun file_chooser_list_filters = gtk_file_chooser_list_filters(this : FileChooser*) : Void**
   fun file_chooser_list_shortcut_folder_uris = gtk_file_chooser_list_shortcut_folder_uris(this : FileChooser*) : Void**
   fun file_chooser_list_shortcut_folders = gtk_file_chooser_list_shortcut_folders(this : FileChooser*) : Void**
+  fun file_chooser_remove_choice = gtk_file_chooser_remove_choice(this : FileChooser*, id : UInt8*) : Void
   fun file_chooser_remove_filter = gtk_file_chooser_remove_filter(this : FileChooser*, filter : LibGtk::FileFilter*) : Void
   fun file_chooser_remove_shortcut_folder = gtk_file_chooser_remove_shortcut_folder(this : FileChooser*, folder : UInt8*, error : LibGLib::Error**) : Bool
   fun file_chooser_remove_shortcut_folder_uri = gtk_file_chooser_remove_shortcut_folder_uri(this : FileChooser*, uri : UInt8*, error : LibGLib::Error**) : Bool
@@ -7170,6 +7228,7 @@ lib LibGtk
   fun file_chooser_select_filename = gtk_file_chooser_select_filename(this : FileChooser*, filename : UInt8*) : Bool
   fun file_chooser_select_uri = gtk_file_chooser_select_uri(this : FileChooser*, uri : UInt8*) : Bool
   fun file_chooser_set_action = gtk_file_chooser_set_action(this : FileChooser*, action : LibGtk::FileChooserAction) : Void
+  fun file_chooser_set_choice = gtk_file_chooser_set_choice(this : FileChooser*, id : UInt8*, option : UInt8*) : Void
   fun file_chooser_set_create_folders = gtk_file_chooser_set_create_folders(this : FileChooser*, create_folders : Bool) : Void
   fun file_chooser_set_current_folder = gtk_file_chooser_set_current_folder(this : FileChooser*, filename : UInt8*) : Bool
   fun file_chooser_set_current_folder_file = gtk_file_chooser_set_current_folder_file(this : FileChooser*, file : LibGio::File*, error : LibGLib::Error**) : Bool
@@ -7854,6 +7913,7 @@ lib LibGtk
     GPL_3_0_ONLY = 10
     LGPL_2_1_ONLY = 11
     LGPL_3_0_ONLY = 12
+    AGPL_3_0 = 13
   end
 
   enum MenuDirectionType : UInt32
@@ -7923,6 +7983,13 @@ lib LibGtk
     ZERO_NONE = 0
     START = 0
     END = 1
+  end
+
+  enum PadActionType : UInt32
+    ZERO_NONE = 0
+    BUTTON = 0
+    RING = 1
+    STRIP = 2
   end
 
   enum PageOrientation : UInt32
@@ -8429,16 +8496,16 @@ lib LibGtk
   ##    Constants
   ###########################################
 
-  BINARY_AGE = 2006 # : Int32
+  BINARY_AGE = 2210 # : Int32
   INPUT_ERROR = -1 # : Int32
-  INTERFACE_AGE = 6 # : Int32
+  INTERFACE_AGE = 10 # : Int32
   LEVEL_BAR_OFFSET_FULL = "full" # : UInt8*
   LEVEL_BAR_OFFSET_HIGH = "high" # : UInt8*
   LEVEL_BAR_OFFSET_LOW = "low" # : UInt8*
   MAJOR_VERSION = 3 # : Int32
   MAX_COMPOSE_LEN = 7 # : Int32
-  MICRO_VERSION = 6 # : Int32
-  MINOR_VERSION = 20 # : Int32
+  MICRO_VERSION = 10 # : Int32
+  MINOR_VERSION = 22 # : Int32
   PAPER_NAME_A3 = "iso_a3" # : UInt8*
   PAPER_NAME_A4 = "iso_a4" # : UInt8*
   PAPER_NAME_A5 = "iso_a5" # : UInt8*
@@ -8853,6 +8920,7 @@ lib LibGtk
   fun selection_remove_all = gtk_selection_remove_all(widget : LibGtk::Widget*) : Void
   fun set_debug_flags = gtk_set_debug_flags(flags : UInt32) : Void
   fun show_uri = gtk_show_uri(screen : LibGdk::Screen*, uri : UInt8*, timestamp : UInt32, error : LibGLib::Error**) : Bool
+  fun show_uri_on_window = gtk_show_uri_on_window(parent : LibGtk::Window*, uri : UInt8*, timestamp : UInt32, error : LibGLib::Error**) : Bool
   fun stock_add = gtk_stock_add(items : LibGtk::StockItem*, n_items : UInt32) : Void
   fun stock_add_static = gtk_stock_add_static(items : LibGtk::StockItem*, n_items : UInt32) : Void
   fun stock_list_ids = gtk_stock_list_ids() : Void**

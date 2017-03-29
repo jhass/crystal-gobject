@@ -5,7 +5,7 @@ module Atk
     end
 
     def to_unsafe
-      @atk_object.not_nil!.as(Void*)
+      @atk_object.not_nil!
     end
 
 
@@ -119,12 +119,12 @@ module Atk
     end
 
     def description=(description)
-      __return_value = LibAtk.object_set_description(to_unsafe.as(LibAtk::Object*), description.to_unsafe)
+      __return_value = LibAtk.object_set_description(to_unsafe.as(LibAtk::Object*), description)
       __return_value
     end
 
     def name=(name)
-      __return_value = LibAtk.object_set_name(to_unsafe.as(LibAtk::Object*), name.to_unsafe)
+      __return_value = LibAtk.object_set_name(to_unsafe.as(LibAtk::Object*), name)
       __return_value
     end
 

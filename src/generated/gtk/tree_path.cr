@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_tree_path.not_nil!.as(Void*)
+      @gtk_tree_path.not_nil!
     end
 
     def self.new : self
@@ -26,7 +26,7 @@ module Gtk
     end
 
     def self.new_from_string(path) : self
-      __return_value = LibGtk.tree_path_new_from_string(path.to_unsafe)
+      __return_value = LibGtk.tree_path_new_from_string(path)
       cast Gtk::TreePath.new(__return_value)
     end
 

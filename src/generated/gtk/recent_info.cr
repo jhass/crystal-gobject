@@ -7,14 +7,14 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_recent_info.not_nil!.as(Void*)
+      @gtk_recent_info.not_nil!
     end
 
     def create_app_info(app_name)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.recent_info_create_app_info(to_unsafe.as(LibGtk::RecentInfo*), app_name && app_name.to_unsafe, pointerof(__error))
+      __return_value = LibGtk.recent_info_create_app_info(to_unsafe.as(LibGtk::RecentInfo*), app_name, pointerof(__error))
       GLib::Error.assert __error
-      __return_value
+      __return_value if __return_value
     end
 
     def exists
@@ -33,7 +33,7 @@ module Gtk
     end
 
     def application_info(app_name, app_exec, count, time)
-      __return_value = LibGtk.recent_info_get_application_info(to_unsafe.as(LibGtk::RecentInfo*), app_name.to_unsafe, app_exec, count, time)
+      __return_value = LibGtk.recent_info_get_application_info(to_unsafe.as(LibGtk::RecentInfo*), app_name, app_exec, count, time)
       __return_value
     end
 
@@ -54,7 +54,7 @@ module Gtk
 
     def gicon
       __return_value = LibGtk.recent_info_get_gicon(to_unsafe.as(LibGtk::RecentInfo*))
-      __return_value
+      __return_value if __return_value
     end
 
     def groups(length)
@@ -64,7 +64,7 @@ module Gtk
 
     def icon(size)
       __return_value = LibGtk.recent_info_get_icon(to_unsafe.as(LibGtk::RecentInfo*), Int32.new(size))
-      GdkPixbuf::Pixbuf.new(__return_value)
+      GdkPixbuf::Pixbuf.new(__return_value) if __return_value
     end
 
     def mime_type
@@ -94,7 +94,7 @@ module Gtk
 
     def uri_display
       __return_value = LibGtk.recent_info_get_uri_display(to_unsafe.as(LibGtk::RecentInfo*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def visited
@@ -103,12 +103,12 @@ module Gtk
     end
 
     def has_application(app_name)
-      __return_value = LibGtk.recent_info_has_application(to_unsafe.as(LibGtk::RecentInfo*), app_name.to_unsafe)
+      __return_value = LibGtk.recent_info_has_application(to_unsafe.as(LibGtk::RecentInfo*), app_name)
       __return_value
     end
 
     def has_group(group_name)
-      __return_value = LibGtk.recent_info_has_group(to_unsafe.as(LibGtk::RecentInfo*), group_name.to_unsafe)
+      __return_value = LibGtk.recent_info_has_group(to_unsafe.as(LibGtk::RecentInfo*), group_name)
       __return_value
     end
 

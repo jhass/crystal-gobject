@@ -15,7 +15,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_attr_string.not_nil!.as(Void*)
+      @pango_attr_string.not_nil!
     end
 
     def attr
@@ -31,7 +31,7 @@ module Pango
     end
 
     def value=(value : String)
-      to_unsafe.as(LibPango::AttrString*).value.value = value.to_unsafe
+      to_unsafe.as(LibPango::AttrString*).value.value = value
     end
 
   end

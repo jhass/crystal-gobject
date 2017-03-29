@@ -7,7 +7,7 @@ module Cairo
     end
 
     def to_unsafe
-      @cairo_scaled_font.not_nil!.as(Void*)
+      @cairo_scaled_font.not_nil!
     end
 
   end

@@ -7,7 +7,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_hash_table.not_nil!.as(Void*)
+      @g_lib_hash_table.not_nil!
     end
 
     def self.add(hash_table, key)

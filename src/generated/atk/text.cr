@@ -51,7 +51,7 @@ module Atk
     end
 
     def range_extents(start_offset, end_offset, coord_type : Atk::CoordType, rect)
-      __return_value = LibAtk.text_get_range_extents(to_unsafe.as(LibAtk::Text*), Int32.new(start_offset), Int32.new(end_offset), coord_type, rect.to_unsafe.as(LibAtk::TextRectangle*))
+      __return_value = LibAtk.text_get_range_extents(to_unsafe.as(LibAtk::Text*), Int32.new(start_offset), Int32.new(end_offset), coord_type, rect)
       __return_value
     end
 

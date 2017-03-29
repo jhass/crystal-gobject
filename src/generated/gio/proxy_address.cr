@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_proxy_address.not_nil!.as(Void*)
+      @gio_proxy_address.not_nil!
     end
 
     # Implements SocketConnectable
@@ -19,7 +19,7 @@ module Gio
 
 
     def self.new(inetaddr, port, protocol, dest_hostname, dest_port, username, password) : self
-      __return_value = LibGio.proxy_address_new(inetaddr.to_unsafe.as(LibGio::InetAddress*), UInt16.new(port), protocol.to_unsafe, dest_hostname.to_unsafe, UInt16.new(dest_port), username && username.to_unsafe, password && password.to_unsafe)
+      __return_value = LibGio.proxy_address_new(inetaddr.to_unsafe.as(LibGio::InetAddress*), UInt16.new(port), protocol, dest_hostname, UInt16.new(dest_port), username, password)
       cast Gio::SocketAddress.new(__return_value)
     end
 

@@ -10,6 +10,207 @@ require "./lib_g_module"
 lib LibGdk
 
   ###########################################
+  ##    Flags
+  ###########################################
+
+  @[Flags]
+  enum AnchorHints : UInt32
+    ZERO_NONE = 0
+    FLIP_X = 1
+    FLIP_Y = 2
+    SLIDE_X = 4
+    SLIDE_Y = 8
+    RESIZE_X = 16
+    RESIZE_Y = 32
+    FLIP = 3
+    SLIDE = 12
+    RESIZE = 48
+  end
+
+  @[Flags]
+  enum AxisFlags : UInt32
+    ZERO_NONE = 0
+    X = 2
+    Y = 4
+    PRESSURE = 8
+    XTILT = 16
+    YTILT = 32
+    WHEEL = 64
+    DISTANCE = 128
+    ROTATION = 256
+    SLIDER = 512
+  end
+
+  @[Flags]
+  enum DragAction : UInt32
+    ZERO_NONE = 0
+    DEFAULT = 1
+    COPY = 2
+    MOVE = 4
+    LINK = 8
+    PRIVATE = 16
+    ASK = 32
+  end
+
+  @[Flags]
+  enum EventMask : UInt32
+    ZERO_NONE = 0
+    EXPOSURE_MASK = 2
+    POINTER_MOTION_MASK = 4
+    POINTER_MOTION_HINT_MASK = 8
+    BUTTON_MOTION_MASK = 16
+    BUTTON1_MOTION_MASK = 32
+    BUTTON2_MOTION_MASK = 64
+    BUTTON3_MOTION_MASK = 128
+    BUTTON_PRESS_MASK = 256
+    BUTTON_RELEASE_MASK = 512
+    KEY_PRESS_MASK = 1024
+    KEY_RELEASE_MASK = 2048
+    ENTER_NOTIFY_MASK = 4096
+    LEAVE_NOTIFY_MASK = 8192
+    FOCUS_CHANGE_MASK = 16384
+    STRUCTURE_MASK = 32768
+    PROPERTY_CHANGE_MASK = 65536
+    VISIBILITY_NOTIFY_MASK = 131072
+    PROXIMITY_IN_MASK = 262144
+    PROXIMITY_OUT_MASK = 524288
+    SUBSTRUCTURE_MASK = 1048576
+    SCROLL_MASK = 2097152
+    TOUCH_MASK = 4194304
+    SMOOTH_SCROLL_MASK = 8388608
+    TOUCHPAD_GESTURE_MASK = 16777216
+    TABLET_PAD_MASK = 33554432
+    ALL_EVENTS_MASK = 16777214
+  end
+
+  @[Flags]
+  enum FrameClockPhase : UInt32
+    ZERO_NONE = 0
+    NONE = 0
+    FLUSH_EVENTS = 1
+    BEFORE_PAINT = 2
+    UPDATE = 4
+    LAYOUT = 8
+    PAINT = 16
+    RESUME_EVENTS = 32
+    AFTER_PAINT = 64
+  end
+
+  @[Flags]
+  enum ModifierType : UInt32
+    ZERO_NONE = 0
+    SHIFT_MASK = 1
+    LOCK_MASK = 2
+    CONTROL_MASK = 4
+    MOD1_MASK = 8
+    MOD2_MASK = 16
+    MOD3_MASK = 32
+    MOD4_MASK = 64
+    MOD5_MASK = 128
+    BUTTON1_MASK = 256
+    BUTTON2_MASK = 512
+    BUTTON3_MASK = 1024
+    BUTTON4_MASK = 2048
+    BUTTON5_MASK = 4096
+    MODIFIER_RESERVED_13_MASK = 8192
+    MODIFIER_RESERVED_14_MASK = 16384
+    MODIFIER_RESERVED_15_MASK = 32768
+    MODIFIER_RESERVED_16_MASK = 65536
+    MODIFIER_RESERVED_17_MASK = 131072
+    MODIFIER_RESERVED_18_MASK = 262144
+    MODIFIER_RESERVED_19_MASK = 524288
+    MODIFIER_RESERVED_20_MASK = 1048576
+    MODIFIER_RESERVED_21_MASK = 2097152
+    MODIFIER_RESERVED_22_MASK = 4194304
+    MODIFIER_RESERVED_23_MASK = 8388608
+    MODIFIER_RESERVED_24_MASK = 16777216
+    MODIFIER_RESERVED_25_MASK = 33554432
+    SUPER_MASK = 67108864
+    HYPER_MASK = 134217728
+    META_MASK = 268435456
+    MODIFIER_RESERVED_29_MASK = 536870912
+    RELEASE_MASK = 1073741824
+    MODIFIER_MASK = 1543512063
+  end
+
+  @[Flags]
+  enum SeatCapabilities : UInt32
+    ZERO_NONE = 0
+    NONE = 0
+    POINTER = 1
+    TOUCH = 2
+    TABLET_STYLUS = 4
+    KEYBOARD = 8
+    ALL_POINTING = 7
+    ALL = 15
+  end
+
+  @[Flags]
+  enum WMDecoration : UInt32
+    ZERO_NONE = 0
+    ALL = 1
+    BORDER = 2
+    RESIZEH = 4
+    TITLE = 8
+    MENU = 16
+    MINIMIZE = 32
+    MAXIMIZE = 64
+  end
+
+  @[Flags]
+  enum WMFunction : UInt32
+    ZERO_NONE = 0
+    ALL = 1
+    RESIZE = 2
+    MOVE = 4
+    MINIMIZE = 8
+    MAXIMIZE = 16
+    CLOSE = 32
+  end
+
+  @[Flags]
+  enum WindowAttributesType : UInt32
+    ZERO_NONE = 0
+    TITLE = 2
+    X = 4
+    Y = 8
+    CURSOR = 16
+    VISUAL = 32
+    WMCLASS = 64
+    NOREDIR = 128
+    TYPE_HINT = 256
+  end
+
+  @[Flags]
+  enum WindowHints : UInt32
+    ZERO_NONE = 0
+    POS = 1
+    MIN_SIZE = 2
+    MAX_SIZE = 4
+    BASE_SIZE = 8
+    ASPECT = 16
+    RESIZE_INC = 32
+    WIN_GRAVITY = 64
+    USER_POS = 128
+    USER_SIZE = 256
+  end
+
+  @[Flags]
+  enum WindowState : UInt32
+    ZERO_NONE = 0
+    WITHDRAWN = 1
+    ICONIFIED = 2
+    MAXIMIZED = 4
+    STICKY = 8
+    FULLSCREEN = 16
+    ABOVE = 32
+    BELOW = 64
+    FOCUSED = 128
+    TILED = 256
+  end
+
+
+  ###########################################
   ##    Objects
   ###########################################
 
@@ -42,9 +243,11 @@ lib LibGdk
   struct Device # object
     _data : UInt8[0]
     # Signal changed
+    # Signal tool-changed
   end
   fun device_grab_info_libgtk_only = gdk_device_grab_info_libgtk_only(display : LibGdk::Display*, device : LibGdk::Device*, grab_window : LibGdk::Window**, owner_events : Bool*) : Bool
   fun device_get_associated_device = gdk_device_get_associated_device(this : Device*) : LibGdk::Device*
+  fun device_get_axes = gdk_device_get_axes(this : Device*) : LibGdk::AxisFlags
   fun device_get_axis_use = gdk_device_get_axis_use(this : Device*, index : UInt32) : LibGdk::AxisUse
   fun device_get_device_type = gdk_device_get_device_type(this : Device*) : LibGdk::DeviceType
   fun device_get_display = gdk_device_get_display(this : Device*) : LibGdk::Display*
@@ -82,9 +285,18 @@ lib LibGdk
   fun device_manager_get_display = gdk_device_manager_get_display(this : DeviceManager*) : LibGdk::Display*
   fun device_manager_list_devices = gdk_device_manager_list_devices(this : DeviceManager*, type : LibGdk::DeviceType) : Void**
 
+  struct DeviceTool # object
+    _data : UInt8[0]
+  end
+  fun device_tool_get_hardware_id = gdk_device_tool_get_hardware_id(this : DeviceTool*) : UInt64
+  fun device_tool_get_serial = gdk_device_tool_get_serial(this : DeviceTool*) : UInt64
+  fun device_tool_get_tool_type = gdk_device_tool_get_tool_type(this : DeviceTool*) : LibGdk::DeviceToolType
+
   struct Display # object
     _data : UInt8[0]
     # Signal closed
+    # Signal monitor-added
+    # Signal monitor-removed
     # Signal opened
     # Signal seat-added
     # Signal seat-removed
@@ -104,9 +316,14 @@ lib LibGdk
   fun display_get_device_manager = gdk_display_get_device_manager(this : Display*) : LibGdk::DeviceManager*
   fun display_get_event = gdk_display_get_event(this : Display*) : LibGdk::Event*
   fun display_get_maximal_cursor_size = gdk_display_get_maximal_cursor_size(this : Display*, width : UInt32*, height : UInt32*) : Void
+  fun display_get_monitor = gdk_display_get_monitor(this : Display*, monitor_num : Int32) : LibGdk::Monitor*
+  fun display_get_monitor_at_point = gdk_display_get_monitor_at_point(this : Display*, x : Int32, y : Int32) : LibGdk::Monitor*
+  fun display_get_monitor_at_window = gdk_display_get_monitor_at_window(this : Display*, window : LibGdk::Window*) : LibGdk::Monitor*
+  fun display_get_n_monitors = gdk_display_get_n_monitors(this : Display*) : Int32
   fun display_get_n_screens = gdk_display_get_n_screens(this : Display*) : Int32
   fun display_get_name = gdk_display_get_name(this : Display*) : UInt8*
   fun display_get_pointer = gdk_display_get_pointer(this : Display*, screen : LibGdk::Screen**, x : Int32*, y : Int32*, mask : LibGdk::ModifierType*) : Void
+  fun display_get_primary_monitor = gdk_display_get_primary_monitor(this : Display*) : LibGdk::Monitor*
   fun display_get_screen = gdk_display_get_screen(this : Display*, screen_num : Int32) : LibGdk::Screen*
   fun display_get_window_at_pointer = gdk_display_get_window_at_pointer(this : Display*, win_x : Int32*, win_y : Int32*) : LibGdk::Window*
   fun display_has_pending = gdk_display_has_pending(this : Display*) : Bool
@@ -163,6 +380,14 @@ lib LibGdk
   fun drag_context_set_device = gdk_drag_context_set_device(this : DragContext*, device : LibGdk::Device*) : Void
   fun drag_context_set_hotspot = gdk_drag_context_set_hotspot(this : DragContext*, hot_x : Int32, hot_y : Int32) : Void
 
+  struct DrawingContext # object
+    _data : UInt8[0]
+  end
+  fun drawing_context_get_cairo_context = gdk_drawing_context_get_cairo_context(this : DrawingContext*) : LibCairo::Context*
+  fun drawing_context_get_clip = gdk_drawing_context_get_clip(this : DrawingContext*) : LibCairo::Region*
+  fun drawing_context_get_window = gdk_drawing_context_get_window(this : DrawingContext*) : LibGdk::Window*
+  fun drawing_context_is_valid = gdk_drawing_context_is_valid(this : DrawingContext*) : Bool
+
   struct FrameClock # object
     _data : UInt8[0]
     # Signal after-paint
@@ -193,6 +418,7 @@ lib LibGdk
   fun g_l_context_get_forward_compatible = gdk_gl_context_get_forward_compatible(this : GLContext*) : Bool
   fun g_l_context_get_required_version = gdk_gl_context_get_required_version(this : GLContext*, major : Int32*, minor : Int32*) : Void
   fun g_l_context_get_shared_context = gdk_gl_context_get_shared_context(this : GLContext*) : LibGdk::GLContext*
+  fun g_l_context_get_use_es = gdk_gl_context_get_use_es(this : GLContext*) : Bool
   fun g_l_context_get_version = gdk_gl_context_get_version(this : GLContext*, major : Int32*, minor : Int32*) : Void
   fun g_l_context_get_window = gdk_gl_context_get_window(this : GLContext*) : LibGdk::Window*
   fun g_l_context_is_legacy = gdk_gl_context_is_legacy(this : GLContext*) : Bool
@@ -201,6 +427,7 @@ lib LibGdk
   fun g_l_context_set_debug_enabled = gdk_gl_context_set_debug_enabled(this : GLContext*, enabled : Bool) : Void
   fun g_l_context_set_forward_compatible = gdk_gl_context_set_forward_compatible(this : GLContext*, compatible : Bool) : Void
   fun g_l_context_set_required_version = gdk_gl_context_set_required_version(this : GLContext*, major : Int32, minor : Int32) : Void
+  fun g_l_context_set_use_es = gdk_gl_context_set_use_es(this : GLContext*, use_es : Int32) : Void
 
   struct Keymap # object
     _data : UInt8[0]
@@ -223,6 +450,22 @@ lib LibGdk
   fun keymap_lookup_key = gdk_keymap_lookup_key(this : Keymap*, key : LibGdk::KeymapKey*) : UInt32
   fun keymap_map_virtual_modifiers = gdk_keymap_map_virtual_modifiers(this : Keymap*, state : LibGdk::ModifierType*) : Bool
   fun keymap_translate_keyboard_state = gdk_keymap_translate_keyboard_state(this : Keymap*, hardware_keycode : UInt32, state : LibGdk::ModifierType, group : Int32, keyval : UInt32*, effective_group : Int32*, level : Int32*, consumed_modifiers : LibGdk::ModifierType*) : Bool
+
+  struct Monitor # object
+    _data : UInt8[0]
+    # Signal invalidate
+  end
+  fun monitor_get_display = gdk_monitor_get_display(this : Monitor*) : LibGdk::Display*
+  fun monitor_get_geometry = gdk_monitor_get_geometry(this : Monitor*, geometry : LibGdk::Rectangle*) : Void
+  fun monitor_get_height_mm = gdk_monitor_get_height_mm(this : Monitor*) : Int32
+  fun monitor_get_manufacturer = gdk_monitor_get_manufacturer(this : Monitor*) : UInt8*
+  fun monitor_get_model = gdk_monitor_get_model(this : Monitor*) : UInt8*
+  fun monitor_get_refresh_rate = gdk_monitor_get_refresh_rate(this : Monitor*) : Int32
+  fun monitor_get_scale_factor = gdk_monitor_get_scale_factor(this : Monitor*) : Int32
+  fun monitor_get_subpixel_layout = gdk_monitor_get_subpixel_layout(this : Monitor*) : LibGdk::SubpixelLayout
+  fun monitor_get_width_mm = gdk_monitor_get_width_mm(this : Monitor*) : Int32
+  fun monitor_get_workarea = gdk_monitor_get_workarea(this : Monitor*, workarea : LibGdk::Rectangle*) : Void
+  fun monitor_is_primary = gdk_monitor_is_primary(this : Monitor*) : Bool
 
   struct Screen # object
     _data : UInt8[0]
@@ -270,6 +513,8 @@ lib LibGdk
     parent_instance : LibGObject::Object
     # Signal device-added
     # Signal device-removed
+    # Signal tool-added
+    # Signal tool-removed
   end
   fun seat_get_capabilities = gdk_seat_get_capabilities(this : Seat*) : LibGdk::SeatCapabilities
   fun seat_get_display = gdk_seat_get_display(this : Seat*) : LibGdk::Display*
@@ -303,6 +548,7 @@ lib LibGdk
     _data : UInt8[0]
     # Signal create-surface
     # Signal from-embedder
+    # Signal moved-to-rect
     # Signal pick-embedded-child
     # Signal to-embedder
     # Virtual function create_surface
@@ -315,6 +561,7 @@ lib LibGdk
   fun window_process_all_updates = gdk_window_process_all_updates() : Void
   fun window_set_debug_updates = gdk_window_set_debug_updates(setting : Bool) : Void
   fun window_beep = gdk_window_beep(this : Window*) : Void
+  fun window_begin_draw_frame = gdk_window_begin_draw_frame(this : Window*, region : LibCairo::Region*) : LibGdk::DrawingContext*
   fun window_begin_move_drag = gdk_window_begin_move_drag(this : Window*, button : Int32, root_x : Int32, root_y : Int32, timestamp : UInt32) : Void
   fun window_begin_move_drag_for_device = gdk_window_begin_move_drag_for_device(this : Window*, device : LibGdk::Device*, button : Int32, root_x : Int32, root_y : Int32, timestamp : UInt32) : Void
   fun window_begin_paint_rect = gdk_window_begin_paint_rect(this : Window*, rectangle : LibGdk::Rectangle*) : Void
@@ -331,6 +578,7 @@ lib LibGdk
   fun window_destroy = gdk_window_destroy(this : Window*) : Void
   fun window_destroy_notify = gdk_window_destroy_notify(this : Window*) : Void
   fun window_enable_synchronized_configure = gdk_window_enable_synchronized_configure(this : Window*) : Void
+  fun window_end_draw_frame = gdk_window_end_draw_frame(this : Window*, context : LibGdk::DrawingContext*) : Void
   fun window_end_paint = gdk_window_end_paint(this : Window*) : Void
   fun window_ensure_native = gdk_window_ensure_native(this : Window*) : Bool
   fun window_flush = gdk_window_flush(this : Window*) : Void
@@ -613,6 +861,36 @@ lib LibGdk
     selection_time : UInt32
   end
 
+  struct EventPadAxis # struct
+    type : LibGdk::EventType
+    window : LibGdk::Window*
+    send_event : Int8
+    time : UInt32
+    group : UInt32
+    index : UInt32
+    mode : UInt32
+    value : Float64
+  end
+
+  struct EventPadButton # struct
+    type : LibGdk::EventType
+    window : LibGdk::Window*
+    send_event : Int8
+    time : UInt32
+    group : UInt32
+    button : UInt32
+    mode : UInt32
+  end
+
+  struct EventPadGroupMode # struct
+    type : LibGdk::EventType
+    window : LibGdk::Window*
+    send_event : Int8
+    time : UInt32
+    group : UInt32
+    mode : UInt32
+  end
+
   struct EventProperty # struct
     type : LibGdk::EventType
     window : LibGdk::Window*
@@ -839,7 +1117,10 @@ lib LibGdk
     XTILT = 4
     YTILT = 5
     WHEEL = 6
-    LAST = 7
+    DISTANCE = 7
+    ROTATION = 8
+    SLIDER = 9
+    LAST = 10
   end
 
   enum ByteOrder : UInt32
@@ -945,6 +1226,25 @@ lib LibGdk
     CURSOR_IS_PIXMAP = -1
   end
 
+  enum DevicePadFeature : UInt32
+    ZERO_NONE = 0
+    BUTTON = 0
+    RING = 1
+    STRIP = 2
+  end
+
+  enum DeviceToolType : UInt32
+    ZERO_NONE = 0
+    UNKNOWN = 0
+    PEN = 1
+    ERASER = 2
+    BRUSH = 3
+    PENCIL = 4
+    AIRBRUSH = 5
+    MOUSE = 6
+    LENS = 7
+  end
+
   enum DeviceType : UInt32
     ZERO_NONE = 0
     MASTER = 0
@@ -1018,7 +1318,12 @@ lib LibGdk
     TOUCH_CANCEL = 40
     TOUCHPAD_SWIPE = 41
     TOUCHPAD_PINCH = 42
-    EVENT_LAST = 43
+    PAD_BUTTON_PRESS = 43
+    PAD_BUTTON_RELEASE = 44
+    PAD_RING = 45
+    PAD_STRIP = 46
+    PAD_GROUP_MODE = 47
+    EVENT_LAST = 48
   end
 
   enum FilterReturn : UInt32
@@ -1089,6 +1394,8 @@ lib LibGdk
     KEYBOARD = 4
     TOUCHSCREEN = 5
     TOUCHPAD = 6
+    TRACKPOINT = 7
+    TABLET_PAD = 8
   end
 
   enum ModifierIntent : UInt32
@@ -1155,6 +1462,16 @@ lib LibGdk
     ERROR_PARAM = -2
     ERROR_FILE = -3
     ERROR_MEM = -4
+  end
+
+  enum SubpixelLayout : UInt32
+    ZERO_NONE = 0
+    UNKNOWN = 0
+    NONE = 1
+    HORIZONTAL_RGB = 2
+    HORIZONTAL_BGR = 3
+    VERTICAL_RGB = 4
+    VERTICAL_BGR = 5
   end
 
   enum TouchpadGesturePhase : UInt32
@@ -3515,175 +3832,17 @@ lib LibGdk
   PRIORITY_REDRAW = 20 # : Int32
 
   ###########################################
-  ##    Flags
+  ##    Interfaces
   ###########################################
 
-  @[Flags]
-  enum DragAction : UInt32
-    ZERO_NONE = 0
-    DEFAULT = 1
-    COPY = 2
-    MOVE = 4
-    LINK = 8
-    PRIVATE = 16
-    ASK = 32
+  struct DevicePad # interface
+    _data : UInt8[0]
+  # Requires Device
   end
-
-  @[Flags]
-  enum EventMask : UInt32
-    ZERO_NONE = 0
-    EXPOSURE_MASK = 2
-    POINTER_MOTION_MASK = 4
-    POINTER_MOTION_HINT_MASK = 8
-    BUTTON_MOTION_MASK = 16
-    BUTTON1_MOTION_MASK = 32
-    BUTTON2_MOTION_MASK = 64
-    BUTTON3_MOTION_MASK = 128
-    BUTTON_PRESS_MASK = 256
-    BUTTON_RELEASE_MASK = 512
-    KEY_PRESS_MASK = 1024
-    KEY_RELEASE_MASK = 2048
-    ENTER_NOTIFY_MASK = 4096
-    LEAVE_NOTIFY_MASK = 8192
-    FOCUS_CHANGE_MASK = 16384
-    STRUCTURE_MASK = 32768
-    PROPERTY_CHANGE_MASK = 65536
-    VISIBILITY_NOTIFY_MASK = 131072
-    PROXIMITY_IN_MASK = 262144
-    PROXIMITY_OUT_MASK = 524288
-    SUBSTRUCTURE_MASK = 1048576
-    SCROLL_MASK = 2097152
-    TOUCH_MASK = 4194304
-    SMOOTH_SCROLL_MASK = 8388608
-    TOUCHPAD_GESTURE_MASK = 16777216
-    ALL_EVENTS_MASK = 16777214
-  end
-
-  @[Flags]
-  enum FrameClockPhase : UInt32
-    ZERO_NONE = 0
-    NONE = 0
-    FLUSH_EVENTS = 1
-    BEFORE_PAINT = 2
-    UPDATE = 4
-    LAYOUT = 8
-    PAINT = 16
-    RESUME_EVENTS = 32
-    AFTER_PAINT = 64
-  end
-
-  @[Flags]
-  enum ModifierType : UInt32
-    ZERO_NONE = 0
-    SHIFT_MASK = 1
-    LOCK_MASK = 2
-    CONTROL_MASK = 4
-    MOD1_MASK = 8
-    MOD2_MASK = 16
-    MOD3_MASK = 32
-    MOD4_MASK = 64
-    MOD5_MASK = 128
-    BUTTON1_MASK = 256
-    BUTTON2_MASK = 512
-    BUTTON3_MASK = 1024
-    BUTTON4_MASK = 2048
-    BUTTON5_MASK = 4096
-    MODIFIER_RESERVED_13_MASK = 8192
-    MODIFIER_RESERVED_14_MASK = 16384
-    MODIFIER_RESERVED_15_MASK = 32768
-    MODIFIER_RESERVED_16_MASK = 65536
-    MODIFIER_RESERVED_17_MASK = 131072
-    MODIFIER_RESERVED_18_MASK = 262144
-    MODIFIER_RESERVED_19_MASK = 524288
-    MODIFIER_RESERVED_20_MASK = 1048576
-    MODIFIER_RESERVED_21_MASK = 2097152
-    MODIFIER_RESERVED_22_MASK = 4194304
-    MODIFIER_RESERVED_23_MASK = 8388608
-    MODIFIER_RESERVED_24_MASK = 16777216
-    MODIFIER_RESERVED_25_MASK = 33554432
-    SUPER_MASK = 67108864
-    HYPER_MASK = 134217728
-    META_MASK = 268435456
-    MODIFIER_RESERVED_29_MASK = 536870912
-    RELEASE_MASK = 1073741824
-    MODIFIER_MASK = 1543512063
-  end
-
-  @[Flags]
-  enum SeatCapabilities : UInt32
-    ZERO_NONE = 0
-    NONE = 0
-    POINTER = 1
-    TOUCH = 2
-    TABLET_STYLUS = 4
-    KEYBOARD = 8
-    ALL_POINTING = 7
-    ALL = 15
-  end
-
-  @[Flags]
-  enum WMDecoration : UInt32
-    ZERO_NONE = 0
-    ALL = 1
-    BORDER = 2
-    RESIZEH = 4
-    TITLE = 8
-    MENU = 16
-    MINIMIZE = 32
-    MAXIMIZE = 64
-  end
-
-  @[Flags]
-  enum WMFunction : UInt32
-    ZERO_NONE = 0
-    ALL = 1
-    RESIZE = 2
-    MOVE = 4
-    MINIMIZE = 8
-    MAXIMIZE = 16
-    CLOSE = 32
-  end
-
-  @[Flags]
-  enum WindowAttributesType : UInt32
-    ZERO_NONE = 0
-    TITLE = 2
-    X = 4
-    Y = 8
-    CURSOR = 16
-    VISUAL = 32
-    WMCLASS = 64
-    NOREDIR = 128
-    TYPE_HINT = 256
-  end
-
-  @[Flags]
-  enum WindowHints : UInt32
-    ZERO_NONE = 0
-    POS = 1
-    MIN_SIZE = 2
-    MAX_SIZE = 4
-    BASE_SIZE = 8
-    ASPECT = 16
-    RESIZE_INC = 32
-    WIN_GRAVITY = 64
-    USER_POS = 128
-    USER_SIZE = 256
-  end
-
-  @[Flags]
-  enum WindowState : UInt32
-    ZERO_NONE = 0
-    WITHDRAWN = 1
-    ICONIFIED = 2
-    MAXIMIZED = 4
-    STICKY = 8
-    FULLSCREEN = 16
-    ABOVE = 32
-    BELOW = 64
-    FOCUSED = 128
-    TILED = 256
-  end
+  fun device_pad_get_feature_group = gdk_device_pad_get_feature_group(this : DevicePad*, feature : LibGdk::DevicePadFeature, feature_idx : Int32) : Int32
+  fun device_pad_get_group_n_modes = gdk_device_pad_get_group_n_modes(this : DevicePad*, group_idx : Int32) : Int32
+  fun device_pad_get_n_features = gdk_device_pad_get_n_features(this : DevicePad*, feature : LibGdk::DevicePadFeature) : Int32
+  fun device_pad_get_n_groups = gdk_device_pad_get_n_groups(this : DevicePad*) : Int32
 
 
   ###########################################
@@ -3713,6 +3872,9 @@ lib LibGdk
     grab_broken : LibGdk::EventGrabBroken
     touchpad_swipe : LibGdk::EventTouchpadSwipe
     touchpad_pinch : LibGdk::EventTouchpadPinch
+    pad_button : LibGdk::EventPadButton
+    pad_axis : LibGdk::EventPadAxis
+    pad_group_mode : LibGdk::EventPadGroupMode
   end
   fun event_new = gdk_event_new(type : LibGdk::EventType) : LibGdk::Event*
   fun event_get_angle = gdk_events_get_angle(this : Event*, event2 : LibGdk::Event*, angle : Float64*) : Bool
@@ -3725,11 +3887,14 @@ lib LibGdk
   fun event_get_click_count = gdk_event_get_click_count(this : Event*, click_count : UInt32*) : Bool
   fun event_get_coords = gdk_event_get_coords(this : Event*, x_win : Float64*, y_win : Float64*) : Bool
   fun event_get_device = gdk_event_get_device(this : Event*) : LibGdk::Device*
+  fun event_get_device_tool = gdk_event_get_device_tool(this : Event*) : LibGdk::DeviceTool*
   fun event_get_event_sequence = gdk_event_get_event_sequence(this : Event*) : LibGdk::EventSequence*
   fun event_get_event_type = gdk_event_get_event_type(this : Event*) : LibGdk::EventType
   fun event_get_keycode = gdk_event_get_keycode(this : Event*, keycode : UInt16*) : Bool
   fun event_get_keyval = gdk_event_get_keyval(this : Event*, keyval : UInt32*) : Bool
+  fun event_get_pointer_emulated = gdk_event_get_pointer_emulated(this : Event*) : Bool
   fun event_get_root_coords = gdk_event_get_root_coords(this : Event*, x_root : Float64*, y_root : Float64*) : Bool
+  fun event_get_scancode = gdk_event_get_scancode(this : Event*) : Int32
   fun event_get_screen = gdk_event_get_screen(this : Event*) : LibGdk::Screen*
   fun event_get_scroll_deltas = gdk_event_get_scroll_deltas(this : Event*, delta_x : Float64*, delta_y : Float64*) : Bool
   fun event_get_scroll_direction = gdk_event_get_scroll_direction(this : Event*, direction : LibGdk::ScrollDirection*) : Bool
@@ -3741,6 +3906,7 @@ lib LibGdk
   fun event_is_scroll_stop_event = gdk_event_is_scroll_stop_event(this : Event*) : Bool
   fun event_put = gdk_event_put(this : Event*) : Void
   fun event_set_device = gdk_event_set_device(this : Event*, device : LibGdk::Device*) : Void
+  fun event_set_device_tool = gdk_event_set_device_tool(this : Event*, tool : LibGdk::DeviceTool*) : Void
   fun event_set_screen = gdk_event_set_screen(this : Event*, screen : LibGdk::Screen*) : Void
   fun event_set_source_device = gdk_event_set_source_device(this : Event*, device : LibGdk::Device*) : Void
   fun event_triggers_context_menu = gdk_event_triggers_context_menu(this : Event*) : Bool
@@ -3761,6 +3927,7 @@ lib LibGdk
   fun cairo_create = gdk_cairo_create(window : LibGdk::Window*) : LibCairo::Context*
   fun cairo_draw_from_gl = gdk_cairo_draw_from_gl(cr : LibCairo::Context*, window : LibGdk::Window*, source : Int32, source_type : Int32, buffer_scale : Int32, x : Int32, y : Int32, width : Int32, height : Int32) : Void
   fun cairo_get_clip_rectangle = gdk_cairo_get_clip_rectangle(cr : LibCairo::Context*, rect : LibGdk::Rectangle*) : Bool
+  fun cairo_get_drawing_context = gdk_cairo_get_drawing_context(cr : LibCairo::Context*) : LibGdk::DrawingContext*
   fun cairo_rectangle = gdk_cairo_rectangle(cr : LibCairo::Context*, rectangle : LibGdk::Rectangle*) : Void
   fun cairo_region = gdk_cairo_region(cr : LibCairo::Context*, region : LibCairo::Region*) : Void
   fun cairo_region_create_from_surface = gdk_cairo_region_create_from_surface(surface : LibCairo::Surface*) : LibCairo::Region*
@@ -3821,6 +3988,7 @@ lib LibGdk
   fun offscreen_window_get_surface = gdk_offscreen_window_get_surface(window : LibGdk::Window*) : LibCairo::Surface*
   fun offscreen_window_set_embedder = gdk_offscreen_window_set_embedder(window : LibGdk::Window*, embedder : LibGdk::Window*) : Void
   fun pango_context_get = gdk_pango_context_get() : LibPango::Context*
+  fun pango_context_get_for_display = gdk_pango_context_get_for_display(display : LibGdk::Display*) : LibPango::Context*
   fun pango_context_get_for_screen = gdk_pango_context_get_for_screen(screen : LibGdk::Screen*) : LibPango::Context*
   fun parse_args = gdk_parse_args(argc : Int32*, argv : UInt8***) : Void
   fun pixbuf_get_from_surface = gdk_pixbuf_get_from_surface(surface : LibCairo::Surface*, src_x : Int32, src_y : Int32, width : Int32, height : Int32) : LibGdkPixbuf::Pixbuf*

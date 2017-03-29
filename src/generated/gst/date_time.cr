@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_date_time.not_nil!.as(Void*)
+      @gst_date_time.not_nil!
     end
 
     def self.new(tzoffset, year, month, day, hour, minute, seconds) : self
@@ -21,7 +21,7 @@ module Gst
     end
 
     def self.new_from_iso8601_string(string) : self
-      __return_value = LibGst.date_time_new_from_iso8601_string(string.to_unsafe)
+      __return_value = LibGst.date_time_new_from_iso8601_string(string)
       cast Gst::DateTime.new(__return_value) if __return_value
     end
 

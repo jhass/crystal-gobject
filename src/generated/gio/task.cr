@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_task.not_nil!.as(Void*)
+      @gio_task.not_nil!
     end
 
     # Implements AsyncResult

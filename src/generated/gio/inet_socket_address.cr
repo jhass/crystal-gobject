@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_inet_socket_address.not_nil!.as(Void*)
+      @gio_inet_socket_address.not_nil!
     end
 
     # Implements SocketConnectable
@@ -21,7 +21,7 @@ module Gio
     end
 
     def self.new_from_string(address, port) : self
-      __return_value = LibGio.inet_socket_address_new_from_string(address.to_unsafe, UInt32.new(port))
+      __return_value = LibGio.inet_socket_address_new_from_string(address, UInt32.new(port))
       cast Gio::SocketAddress.new(__return_value)
     end
 

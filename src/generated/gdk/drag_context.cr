@@ -5,7 +5,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_drag_context.not_nil!.as(Void*)
+      @gdk_drag_context.not_nil!
     end
 
     def actions
@@ -25,7 +25,7 @@ module Gdk
 
     def drag_window
       __return_value = LibGdk.drag_context_get_drag_window(to_unsafe.as(LibGdk::DragContext*))
-      Gdk::Window.new(__return_value)
+      Gdk::Window.new(__return_value) if __return_value
     end
 
     def protocol

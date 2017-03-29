@@ -17,7 +17,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_event.not_nil!.as(Void*)
+      @gst_event.not_nil!
     end
 
     def self.new_buffer_size(format : Gst::Format, minsize, maxsize, async) : self
@@ -66,7 +66,7 @@ module Gst
     end
 
     def self.new_protection(system_id, data, origin) : self
-      __return_value = LibGst.event_new_protection(system_id.to_unsafe, data.to_unsafe.as(LibGst::Buffer*), origin.to_unsafe)
+      __return_value = LibGst.event_new_protection(system_id, data.to_unsafe.as(LibGst::Buffer*), origin)
       cast Gst::Event.new(__return_value)
     end
 
@@ -95,8 +95,13 @@ module Gst
       cast Gst::Event.new(__return_value)
     end
 
+    def self.new_select_streams(streams) : self
+      __return_value = LibGst.event_new_select_streams(streams)
+      cast Gst::Event.new(__return_value)
+    end
+
     def self.new_sink_message(name, msg) : self
-      __return_value = LibGst.event_new_sink_message(name.to_unsafe, msg.to_unsafe.as(LibGst::Message*))
+      __return_value = LibGst.event_new_sink_message(name, msg.to_unsafe.as(LibGst::Message*))
       cast Gst::Event.new(__return_value)
     end
 
@@ -105,8 +110,18 @@ module Gst
       cast Gst::Event.new(__return_value)
     end
 
+    def self.new_stream_collection(collection) : self
+      __return_value = LibGst.event_new_stream_collection(collection.to_unsafe.as(LibGst::StreamCollection*))
+      cast Gst::Event.new(__return_value)
+    end
+
+    def self.new_stream_group_done(group_id) : self
+      __return_value = LibGst.event_new_stream_group_done(UInt32.new(group_id))
+      cast Gst::Event.new(__return_value)
+    end
+
     def self.new_stream_start(stream_id) : self
-      __return_value = LibGst.event_new_stream_start(stream_id.to_unsafe)
+      __return_value = LibGst.event_new_stream_start(stream_id)
       cast Gst::Event.new(__return_value)
     end
 
@@ -121,7 +136,7 @@ module Gst
     end
 
     def self.new_toc_select(uid) : self
-      __return_value = LibGst.event_new_toc_select(uid.to_unsafe)
+      __return_value = LibGst.event_new_toc_select(uid)
       cast Gst::Event.new(__return_value)
     end
 
@@ -146,7 +161,7 @@ module Gst
     end
 
     def has_name(name)
-      __return_value = LibGst.event_has_name(to_unsafe.as(LibGst::Event*), name.to_unsafe)
+      __return_value = LibGst.event_has_name(to_unsafe.as(LibGst::Event*), name)
       __return_value
     end
 
@@ -181,7 +196,7 @@ module Gst
     end
 
     def parse_protection(system_id, data, origin)
-      __return_value = LibGst.event_parse_protection(to_unsafe.as(LibGst::Event*), system_id, data, origin && origin.to_unsafe)
+      __return_value = LibGst.event_parse_protection(to_unsafe.as(LibGst::Event*), system_id, data, origin)
       __return_value
     end
 
@@ -205,6 +220,11 @@ module Gst
       __return_value
     end
 
+    def parse_select_streams(streams)
+      __return_value = LibGst.event_parse_select_streams(to_unsafe.as(LibGst::Event*), streams)
+      __return_value
+    end
+
     def parse_sink_message(msg)
       __return_value = LibGst.event_parse_sink_message(to_unsafe.as(LibGst::Event*), msg)
       __return_value
@@ -215,8 +235,23 @@ module Gst
       __return_value
     end
 
+    def parse_stream(stream)
+      __return_value = LibGst.event_parse_stream(to_unsafe.as(LibGst::Event*), stream)
+      __return_value
+    end
+
+    def parse_stream_collection(collection)
+      __return_value = LibGst.event_parse_stream_collection(to_unsafe.as(LibGst::Event*), collection)
+      __return_value
+    end
+
     def parse_stream_flags(flags : Gst::StreamFlags)
       __return_value = LibGst.event_parse_stream_flags(to_unsafe.as(LibGst::Event*), flags)
+      __return_value
+    end
+
+    def parse_stream_group_done(group_id)
+      __return_value = LibGst.event_parse_stream_group_done(to_unsafe.as(LibGst::Event*), group_id)
       __return_value
     end
 
@@ -252,6 +287,11 @@ module Gst
 
     def seqnum=(seqnum)
       __return_value = LibGst.event_set_seqnum(to_unsafe.as(LibGst::Event*), UInt32.new(seqnum))
+      __return_value
+    end
+
+    def stream=(stream)
+      __return_value = LibGst.event_set_stream(to_unsafe.as(LibGst::Event*), stream.to_unsafe.as(LibGst::Stream*))
       __return_value
     end
 

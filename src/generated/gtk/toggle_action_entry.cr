@@ -20,7 +20,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_toggle_action_entry.not_nil!.as(Void*)
+      @gtk_toggle_action_entry.not_nil!
     end
 
     def name
@@ -28,7 +28,7 @@ module Gtk
     end
 
     def name=(value : String)
-      to_unsafe.as(LibGtk::ToggleActionEntry*).value.name = value.to_unsafe
+      to_unsafe.as(LibGtk::ToggleActionEntry*).value.name = value
     end
 
     def stock_id
@@ -36,7 +36,7 @@ module Gtk
     end
 
     def stock_id=(value : String)
-      to_unsafe.as(LibGtk::ToggleActionEntry*).value.stock_id = value.to_unsafe
+      to_unsafe.as(LibGtk::ToggleActionEntry*).value.stock_id = value
     end
 
     def label
@@ -44,7 +44,7 @@ module Gtk
     end
 
     def label=(value : String)
-      to_unsafe.as(LibGtk::ToggleActionEntry*).value.label = value.to_unsafe
+      to_unsafe.as(LibGtk::ToggleActionEntry*).value.label = value
     end
 
     def accelerator
@@ -52,7 +52,7 @@ module Gtk
     end
 
     def accelerator=(value : String)
-      to_unsafe.as(LibGtk::ToggleActionEntry*).value.accelerator = value.to_unsafe
+      to_unsafe.as(LibGtk::ToggleActionEntry*).value.accelerator = value
     end
 
     def tooltip
@@ -60,7 +60,7 @@ module Gtk
     end
 
     def tooltip=(value : String)
-      to_unsafe.as(LibGtk::ToggleActionEntry*).value.tooltip = value.to_unsafe
+      to_unsafe.as(LibGtk::ToggleActionEntry*).value.tooltip = value
     end
 
     def callback

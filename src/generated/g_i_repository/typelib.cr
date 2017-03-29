@@ -7,7 +7,7 @@ module GIRepository
     end
 
     def to_unsafe
-      @g_i_repository_typelib.not_nil!.as(Void*)
+      @g_i_repository_typelib.not_nil!
     end
 
     def free
@@ -21,7 +21,7 @@ module GIRepository
     end
 
     def symbol(symbol_name, symbol)
-      __return_value = LibGIRepository.typelib_symbol(to_unsafe.as(LibGIRepository::Typelib*), symbol_name.to_unsafe, symbol && symbol)
+      __return_value = LibGIRepository.typelib_symbol(to_unsafe.as(LibGIRepository::Typelib*), symbol_name, symbol && symbol)
       __return_value
     end
 

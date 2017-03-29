@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_aspect_frame.not_nil!.as(Void*)
+      @gtk_aspect_frame.not_nil!
     end
 
     # Implements ImplementorIface
@@ -17,7 +17,7 @@ module Gtk
 
 
     def self.new(label, xalign, yalign, ratio, obey_child) : self
-      __return_value = LibGtk.aspect_frame_new(label && label.to_unsafe, Float32.new(xalign), Float32.new(yalign), Float32.new(ratio), obey_child)
+      __return_value = LibGtk.aspect_frame_new(label, Float32.new(xalign), Float32.new(yalign), Float32.new(ratio), obey_child)
       cast Gtk::Widget.new(__return_value)
     end
 

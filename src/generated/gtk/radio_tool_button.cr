@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_radio_tool_button.not_nil!.as(Void*)
+      @gtk_radio_tool_button.not_nil!
     end
 
     # Implements ImplementorIface
@@ -21,7 +21,7 @@ module Gtk
     end
 
     def self.new_from_stock(group, stock_id) : self
-      __return_value = LibGtk.radio_tool_button_new_from_stock(group && group, stock_id.to_unsafe)
+      __return_value = LibGtk.radio_tool_button_new_from_stock(group && group, stock_id)
       cast Gtk::ToolItem.new(__return_value)
     end
 
@@ -31,7 +31,7 @@ module Gtk
     end
 
     def self.new_with_stock_from_widget(group, stock_id) : self
-      __return_value = LibGtk.radio_tool_button_new_with_stock_from_widget(group && group.to_unsafe.as(LibGtk::RadioToolButton*), stock_id.to_unsafe)
+      __return_value = LibGtk.radio_tool_button_new_with_stock_from_widget(group && group.to_unsafe.as(LibGtk::RadioToolButton*), stock_id)
       cast Gtk::ToolItem.new(__return_value)
     end
 

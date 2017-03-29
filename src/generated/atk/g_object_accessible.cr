@@ -7,7 +7,7 @@ module Atk
     end
 
     def to_unsafe
-      @atk_g_object_accessible.not_nil!.as(Void*)
+      @atk_g_object_accessible.not_nil!
     end
 
     def self.for_object(obj)

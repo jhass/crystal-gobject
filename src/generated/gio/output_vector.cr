@@ -15,7 +15,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_output_vector.not_nil!.as(Void*)
+      @gio_output_vector.not_nil!
     end
 
     def buffer

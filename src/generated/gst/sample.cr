@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_sample.not_nil!.as(Void*)
+      @gst_sample.not_nil!
     end
 
     def self.new(buffer, caps, segment, info) : self

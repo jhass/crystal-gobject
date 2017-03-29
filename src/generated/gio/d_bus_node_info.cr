@@ -18,12 +18,12 @@ module Gio
     end
 
     def to_unsafe
-      @gio_d_bus_node_info.not_nil!.as(Void*)
+      @gio_d_bus_node_info.not_nil!
     end
 
     def self.new_for_xml(xml_data) : self
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.d_bus_node_info_new_for_xml(xml_data.to_unsafe, pointerof(__error))
+      __return_value = LibGio.d_bus_node_info_new_for_xml(xml_data, pointerof(__error))
       GLib::Error.assert __error
       cast Gio::DBusNodeInfo.new(__return_value)
     end
@@ -34,7 +34,7 @@ module Gio
     end
 
     def lookup_interface(name)
-      __return_value = LibGio.d_bus_node_info_lookup_interface(to_unsafe.as(LibGio::DBusNodeInfo*), name.to_unsafe)
+      __return_value = LibGio.d_bus_node_info_lookup_interface(to_unsafe.as(LibGio::DBusNodeInfo*), name)
       Gio::DBusInterfaceInfo.new(__return_value)
     end
 
@@ -61,7 +61,7 @@ module Gio
     end
 
     def path=(value : String)
-      to_unsafe.as(LibGio::DBusNodeInfo*).value.path = value.to_unsafe
+      to_unsafe.as(LibGio::DBusNodeInfo*).value.path = value
     end
 
     def interfaces

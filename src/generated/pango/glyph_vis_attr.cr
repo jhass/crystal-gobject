@@ -14,7 +14,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_glyph_vis_attr.not_nil!.as(Void*)
+      @pango_glyph_vis_attr.not_nil!
     end
 
     def is_cluster_start

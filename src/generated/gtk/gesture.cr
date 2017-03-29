@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_gesture.not_nil!.as(Void*)
+      @gtk_gesture.not_nil!
     end
 
 
@@ -68,7 +68,7 @@ module Gtk
     end
 
     def handles_sequence(sequence)
-      __return_value = LibGtk.gesture_handles_sequence(to_unsafe.as(LibGtk::Gesture*), sequence.to_unsafe.as(LibGdk::EventSequence*))
+      __return_value = LibGtk.gesture_handles_sequence(to_unsafe.as(LibGtk::Gesture*), sequence && sequence.to_unsafe.as(LibGdk::EventSequence*))
       __return_value
     end
 

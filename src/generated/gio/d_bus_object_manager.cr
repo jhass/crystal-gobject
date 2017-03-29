@@ -1,12 +1,12 @@
 module Gio
   module DBusObjectManager
     def interface(object_path, interface_name)
-      __return_value = LibGio.d_bus_object_manager_get_interface(to_unsafe.as(LibGio::DBusObjectManager*), object_path.to_unsafe, interface_name.to_unsafe)
+      __return_value = LibGio.d_bus_object_manager_get_interface(to_unsafe.as(LibGio::DBusObjectManager*), object_path, interface_name)
       __return_value
     end
 
     def object(object_path)
-      __return_value = LibGio.d_bus_object_manager_get_object(to_unsafe.as(LibGio::DBusObjectManager*), object_path.to_unsafe)
+      __return_value = LibGio.d_bus_object_manager_get_object(to_unsafe.as(LibGio::DBusObjectManager*), object_path)
       __return_value
     end
 

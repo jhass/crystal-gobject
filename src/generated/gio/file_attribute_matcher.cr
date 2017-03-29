@@ -7,16 +7,16 @@ module Gio
     end
 
     def to_unsafe
-      @gio_file_attribute_matcher.not_nil!.as(Void*)
+      @gio_file_attribute_matcher.not_nil!
     end
 
     def self.new(attributes) : self
-      __return_value = LibGio.file_attribute_matcher_new(attributes.to_unsafe)
+      __return_value = LibGio.file_attribute_matcher_new(attributes)
       cast Gio::FileAttributeMatcher.new(__return_value)
     end
 
     def enumerate_namespace(ns)
-      __return_value = LibGio.file_attribute_matcher_enumerate_namespace(to_unsafe.as(LibGio::FileAttributeMatcher*), ns.to_unsafe)
+      __return_value = LibGio.file_attribute_matcher_enumerate_namespace(to_unsafe.as(LibGio::FileAttributeMatcher*), ns)
       __return_value
     end
 
@@ -26,12 +26,12 @@ module Gio
     end
 
     def matches(attribute)
-      __return_value = LibGio.file_attribute_matcher_matches(to_unsafe.as(LibGio::FileAttributeMatcher*), attribute.to_unsafe)
+      __return_value = LibGio.file_attribute_matcher_matches(to_unsafe.as(LibGio::FileAttributeMatcher*), attribute)
       __return_value
     end
 
     def matches_only(attribute)
-      __return_value = LibGio.file_attribute_matcher_matches_only(to_unsafe.as(LibGio::FileAttributeMatcher*), attribute.to_unsafe)
+      __return_value = LibGio.file_attribute_matcher_matches_only(to_unsafe.as(LibGio::FileAttributeMatcher*), attribute)
       __return_value
     end
 

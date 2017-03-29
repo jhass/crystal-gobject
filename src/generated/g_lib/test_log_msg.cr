@@ -18,7 +18,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_test_log_msg.not_nil!.as(Void*)
+      @g_lib_test_log_msg.not_nil!
     end
 
     def free
@@ -47,7 +47,7 @@ module GLib
     end
 
     def strings=(value : String)
-      to_unsafe.as(LibGLib::TestLogMsg*).value.strings = value.to_unsafe
+      to_unsafe.as(LibGLib::TestLogMsg*).value.strings = value
     end
 
     def n_nums

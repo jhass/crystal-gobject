@@ -7,7 +7,7 @@ module GdkPixbuf
     end
 
     def to_unsafe
-      @gdk_pixbuf_pixbuf_format.not_nil!.as(Void*)
+      @gdk_pixbuf_pixbuf_format.not_nil!
     end
 
     def copy
@@ -47,6 +47,11 @@ module GdkPixbuf
 
     def disabled?
       __return_value = LibGdkPixbuf.pixbuf_format_is_disabled(to_unsafe.as(LibGdkPixbuf::PixbufFormat*))
+      __return_value
+    end
+
+    def save_option_supported?(option_key)
+      __return_value = LibGdkPixbuf.pixbuf_format_is_save_option_supported(to_unsafe.as(LibGdkPixbuf::PixbufFormat*), option_key)
       __return_value
     end
 

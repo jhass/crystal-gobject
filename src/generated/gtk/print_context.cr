@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_print_context.not_nil!.as(Void*)
+      @gtk_print_context.not_nil!
     end
 
     def create_pango_context

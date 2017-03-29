@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_i_o_extension.not_nil!.as(Void*)
+      @gio_i_o_extension.not_nil!
     end
 
     def name

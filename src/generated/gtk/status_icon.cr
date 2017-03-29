@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_status_icon.not_nil!.as(Void*)
+      @gtk_status_icon.not_nil!
     end
 
 
@@ -29,7 +29,7 @@ module Gtk
     end
 
     def self.new_from_file(filename) : self
-      __return_value = LibGtk.status_icon_new_from_file(filename.to_unsafe)
+      __return_value = LibGtk.status_icon_new_from_file(filename)
       cast Gtk::StatusIcon.new(__return_value)
     end
 
@@ -39,7 +39,7 @@ module Gtk
     end
 
     def self.new_from_icon_name(icon_name) : self
-      __return_value = LibGtk.status_icon_new_from_icon_name(icon_name.to_unsafe)
+      __return_value = LibGtk.status_icon_new_from_icon_name(icon_name)
       cast Gtk::StatusIcon.new(__return_value)
     end
 
@@ -49,7 +49,7 @@ module Gtk
     end
 
     def self.new_from_stock(stock_id) : self
-      __return_value = LibGtk.status_icon_new_from_stock(stock_id.to_unsafe)
+      __return_value = LibGtk.status_icon_new_from_stock(stock_id)
       cast Gtk::StatusIcon.new(__return_value)
     end
 
@@ -65,7 +65,7 @@ module Gtk
 
     def gicon
       __return_value = LibGtk.status_icon_get_gicon(to_unsafe.as(LibGtk::StatusIcon*))
-      __return_value
+      __return_value if __return_value
     end
 
     def has_tooltip
@@ -75,12 +75,12 @@ module Gtk
 
     def icon_name
       __return_value = LibGtk.status_icon_get_icon_name(to_unsafe.as(LibGtk::StatusIcon*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def pixbuf
       __return_value = LibGtk.status_icon_get_pixbuf(to_unsafe.as(LibGtk::StatusIcon*))
-      GdkPixbuf::Pixbuf.new(__return_value)
+      GdkPixbuf::Pixbuf.new(__return_value) if __return_value
     end
 
     def screen
@@ -95,7 +95,7 @@ module Gtk
 
     def stock
       __return_value = LibGtk.status_icon_get_stock(to_unsafe.as(LibGtk::StatusIcon*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def storage_type
@@ -110,12 +110,12 @@ module Gtk
 
     def tooltip_markup
       __return_value = LibGtk.status_icon_get_tooltip_markup(to_unsafe.as(LibGtk::StatusIcon*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def tooltip_text
       __return_value = LibGtk.status_icon_get_tooltip_text(to_unsafe.as(LibGtk::StatusIcon*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def visible
@@ -134,7 +134,7 @@ module Gtk
     end
 
     def from_file=(filename)
-      __return_value = LibGtk.status_icon_set_from_file(to_unsafe.as(LibGtk::StatusIcon*), filename.to_unsafe)
+      __return_value = LibGtk.status_icon_set_from_file(to_unsafe.as(LibGtk::StatusIcon*), filename)
       __return_value
     end
 
@@ -144,7 +144,7 @@ module Gtk
     end
 
     def from_icon_name=(icon_name)
-      __return_value = LibGtk.status_icon_set_from_icon_name(to_unsafe.as(LibGtk::StatusIcon*), icon_name.to_unsafe)
+      __return_value = LibGtk.status_icon_set_from_icon_name(to_unsafe.as(LibGtk::StatusIcon*), icon_name)
       __return_value
     end
 
@@ -154,7 +154,7 @@ module Gtk
     end
 
     def from_stock=(stock_id)
-      __return_value = LibGtk.status_icon_set_from_stock(to_unsafe.as(LibGtk::StatusIcon*), stock_id.to_unsafe)
+      __return_value = LibGtk.status_icon_set_from_stock(to_unsafe.as(LibGtk::StatusIcon*), stock_id)
       __return_value
     end
 
@@ -164,7 +164,7 @@ module Gtk
     end
 
     def name=(name)
-      __return_value = LibGtk.status_icon_set_name(to_unsafe.as(LibGtk::StatusIcon*), name.to_unsafe)
+      __return_value = LibGtk.status_icon_set_name(to_unsafe.as(LibGtk::StatusIcon*), name)
       __return_value
     end
 
@@ -174,17 +174,17 @@ module Gtk
     end
 
     def title=(title)
-      __return_value = LibGtk.status_icon_set_title(to_unsafe.as(LibGtk::StatusIcon*), title.to_unsafe)
+      __return_value = LibGtk.status_icon_set_title(to_unsafe.as(LibGtk::StatusIcon*), title)
       __return_value
     end
 
     def tooltip_markup=(markup)
-      __return_value = LibGtk.status_icon_set_tooltip_markup(to_unsafe.as(LibGtk::StatusIcon*), markup && markup.to_unsafe)
+      __return_value = LibGtk.status_icon_set_tooltip_markup(to_unsafe.as(LibGtk::StatusIcon*), markup)
       __return_value
     end
 
     def tooltip_text=(text)
-      __return_value = LibGtk.status_icon_set_tooltip_text(to_unsafe.as(LibGtk::StatusIcon*), text.to_unsafe)
+      __return_value = LibGtk.status_icon_set_tooltip_text(to_unsafe.as(LibGtk::StatusIcon*), text)
       __return_value
     end
 

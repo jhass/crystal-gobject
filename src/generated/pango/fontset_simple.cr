@@ -7,7 +7,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_fontset_simple.not_nil!.as(Void*)
+      @pango_fontset_simple.not_nil!
     end
 
     def self.new(language) : self

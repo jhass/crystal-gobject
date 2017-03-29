@@ -12,12 +12,12 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_i_o_channel.not_nil!.as(Void*)
+      @g_lib_i_o_channel.not_nil!
     end
 
     def self.new_file(filename, mode) : self
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.i_o_channel_new_file(filename.to_unsafe, mode.to_unsafe, pointerof(__error))
+      __return_value = LibGLib.i_o_channel_new_file(filename, mode, pointerof(__error))
       GLib::Error.assert __error
       cast GLib::IOChannel.new(__return_value)
     end
@@ -80,7 +80,7 @@ module GLib
     end
 
     def read(buf, count, bytes_read)
-      __return_value = LibGLib.i_o_channel_read(to_unsafe.as(LibGLib::IOChannel*), buf.to_unsafe, UInt64.new(count), bytes_read)
+      __return_value = LibGLib.i_o_channel_read(to_unsafe.as(LibGLib::IOChannel*), buf, UInt64.new(count), bytes_read)
       __return_value
     end
 
@@ -153,7 +153,7 @@ module GLib
 
     def set_encoding(encoding)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.i_o_channel_set_encoding(to_unsafe.as(LibGLib::IOChannel*), encoding && encoding.to_unsafe, pointerof(__error))
+      __return_value = LibGLib.i_o_channel_set_encoding(to_unsafe.as(LibGLib::IOChannel*), encoding, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -166,7 +166,7 @@ module GLib
     end
 
     def set_line_term(line_term, length)
-      __return_value = LibGLib.i_o_channel_set_line_term(to_unsafe.as(LibGLib::IOChannel*), line_term && line_term.to_unsafe, Int32.new(length))
+      __return_value = LibGLib.i_o_channel_set_line_term(to_unsafe.as(LibGLib::IOChannel*), line_term, Int32.new(length))
       __return_value
     end
 
@@ -188,7 +188,7 @@ module GLib
     end
 
     def write(buf, count, bytes_written)
-      __return_value = LibGLib.i_o_channel_write(to_unsafe.as(LibGLib::IOChannel*), buf.to_unsafe, UInt64.new(count), bytes_written)
+      __return_value = LibGLib.i_o_channel_write(to_unsafe.as(LibGLib::IOChannel*), buf, UInt64.new(count), bytes_written)
       __return_value
     end
 

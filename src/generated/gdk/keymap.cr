@@ -5,7 +5,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_keymap.not_nil!.as(Void*)
+      @gdk_keymap.not_nil!
     end
 
     def self.default

@@ -90,12 +90,24 @@ module Gdk
       Gdk::EventTouchpadPinch.new((to_unsafe.as(LibGdk::EventTouchpadPinch*)))
     end
 
+    def pad_button
+      Gdk::EventPadButton.new((to_unsafe.as(LibGdk::EventPadButton*)))
+    end
+
+    def pad_axis
+      Gdk::EventPadAxis.new((to_unsafe.as(LibGdk::EventPadAxis*)))
+    end
+
+    def pad_group_mode
+      Gdk::EventPadGroupMode.new((to_unsafe.as(LibGdk::EventPadGroupMode*)))
+    end
+
     @gdk_event : LibGdk::Event*?
     def initialize(@gdk_event : LibGdk::Event*)
     end
 
     def to_unsafe
-      @gdk_event.not_nil!.as(Void*)
+      @gdk_event.not_nil!
     end
 
     def self.new(type : Gdk::EventType) : self
@@ -153,6 +165,11 @@ module Gdk
       Gdk::Device.new(__return_value) if __return_value
     end
 
+    def device_tool
+      __return_value = LibGdk.event_get_device_tool(to_unsafe.as(LibGdk::Event*))
+      Gdk::DeviceTool.new(__return_value)
+    end
+
     def event_sequence
       __return_value = LibGdk.event_get_event_sequence(to_unsafe.as(LibGdk::Event*))
       Gdk::EventSequence.new(__return_value)
@@ -173,8 +190,18 @@ module Gdk
       __return_value
     end
 
+    def pointer_emulated
+      __return_value = LibGdk.event_get_pointer_emulated(to_unsafe.as(LibGdk::Event*))
+      __return_value
+    end
+
     def root_coords(x_root, y_root)
       __return_value = LibGdk.event_get_root_coords(to_unsafe.as(LibGdk::Event*), x_root, y_root)
+      __return_value
+    end
+
+    def scancode
+      __return_value = LibGdk.event_get_scancode(to_unsafe.as(LibGdk::Event*))
       __return_value
     end
 
@@ -230,6 +257,11 @@ module Gdk
 
     def device=(device)
       __return_value = LibGdk.event_set_device(to_unsafe.as(LibGdk::Event*), device.to_unsafe.as(LibGdk::Device*))
+      __return_value
+    end
+
+    def device_tool=(tool)
+      __return_value = LibGdk.event_set_device_tool(to_unsafe.as(LibGdk::Event*), tool && tool.to_unsafe.as(LibGdk::DeviceTool*))
       __return_value
     end
 

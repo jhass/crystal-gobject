@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_converter_input_stream.not_nil!.as(Void*)
+      @gio_converter_input_stream.not_nil!
     end
 
     # Implements PollableInputStream

@@ -7,7 +7,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_layout_iter.not_nil!.as(Void*)
+      @pango_layout_iter.not_nil!
     end
 
     def at_last_line

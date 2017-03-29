@@ -7,7 +7,7 @@ module Atk
     end
 
     def to_unsafe
-      @atk_no_op_object_factory.not_nil!.as(Void*)
+      @atk_no_op_object_factory.not_nil!
     end
 
     def self.new : self

@@ -17,7 +17,7 @@ module Atk
     end
 
     def to_unsafe
-      @atk_text_range.not_nil!.as(Void*)
+      @atk_text_range.not_nil!
     end
 
     def bounds
@@ -49,7 +49,7 @@ module Atk
     end
 
     def content=(value : String)
-      to_unsafe.as(LibAtk::TextRange*).value.content = value.to_unsafe
+      to_unsafe.as(LibAtk::TextRange*).value.content = value
     end
 
   end

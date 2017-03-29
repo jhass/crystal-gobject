@@ -7,11 +7,15 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_scrolled_window.not_nil!.as(Void*)
+      @gtk_scrolled_window.not_nil!
     end
 
     # Implements ImplementorIface
     # Implements Buildable
+
+
+
+
 
 
 
@@ -53,6 +57,16 @@ module Gtk
       __return_value
     end
 
+    def max_content_height
+      __return_value = LibGtk.scrolled_window_get_max_content_height(to_unsafe.as(LibGtk::ScrolledWindow*))
+      __return_value
+    end
+
+    def max_content_width
+      __return_value = LibGtk.scrolled_window_get_max_content_width(to_unsafe.as(LibGtk::ScrolledWindow*))
+      __return_value
+    end
+
     def min_content_height
       __return_value = LibGtk.scrolled_window_get_min_content_height(to_unsafe.as(LibGtk::ScrolledWindow*))
       __return_value
@@ -75,6 +89,16 @@ module Gtk
 
     def policy(hscrollbar_policy : Gtk::PolicyType?, vscrollbar_policy : Gtk::PolicyType?)
       __return_value = LibGtk.scrolled_window_get_policy(to_unsafe.as(LibGtk::ScrolledWindow*), hscrollbar_policy, vscrollbar_policy)
+      __return_value
+    end
+
+    def propagate_natural_height
+      __return_value = LibGtk.scrolled_window_get_propagate_natural_height(to_unsafe.as(LibGtk::ScrolledWindow*))
+      __return_value
+    end
+
+    def propagate_natural_width
+      __return_value = LibGtk.scrolled_window_get_propagate_natural_width(to_unsafe.as(LibGtk::ScrolledWindow*))
       __return_value
     end
 
@@ -108,6 +132,16 @@ module Gtk
       __return_value
     end
 
+    def max_content_height=(height)
+      __return_value = LibGtk.scrolled_window_set_max_content_height(to_unsafe.as(LibGtk::ScrolledWindow*), Int32.new(height))
+      __return_value
+    end
+
+    def max_content_width=(width)
+      __return_value = LibGtk.scrolled_window_set_max_content_width(to_unsafe.as(LibGtk::ScrolledWindow*), Int32.new(width))
+      __return_value
+    end
+
     def min_content_height=(height)
       __return_value = LibGtk.scrolled_window_set_min_content_height(to_unsafe.as(LibGtk::ScrolledWindow*), Int32.new(height))
       __return_value
@@ -130,6 +164,16 @@ module Gtk
 
     def set_policy(hscrollbar_policy : Gtk::PolicyType, vscrollbar_policy : Gtk::PolicyType)
       __return_value = LibGtk.scrolled_window_set_policy(to_unsafe.as(LibGtk::ScrolledWindow*), hscrollbar_policy, vscrollbar_policy)
+      __return_value
+    end
+
+    def propagate_natural_height=(propagate)
+      __return_value = LibGtk.scrolled_window_set_propagate_natural_height(to_unsafe.as(LibGtk::ScrolledWindow*), propagate)
+      __return_value
+    end
+
+    def propagate_natural_width=(propagate)
+      __return_value = LibGtk.scrolled_window_set_propagate_natural_width(to_unsafe.as(LibGtk::ScrolledWindow*), propagate)
       __return_value
     end
 

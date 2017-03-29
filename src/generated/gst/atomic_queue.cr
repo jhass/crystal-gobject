@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_atomic_queue.not_nil!.as(Void*)
+      @gst_atomic_queue.not_nil!
     end
 
     def self.new(initial_size) : self

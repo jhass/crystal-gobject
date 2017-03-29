@@ -14,7 +14,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_type_fundamental_info.not_nil!.as(Void*)
+      @g_object_type_fundamental_info.not_nil!
     end
 
     def type_flags

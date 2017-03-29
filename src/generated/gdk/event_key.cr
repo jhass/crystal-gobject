@@ -24,7 +24,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_event_key.not_nil!.as(Void*)
+      @gdk_event_key.not_nil!
     end
 
     def type
@@ -88,7 +88,7 @@ module Gdk
     end
 
     def string=(value : String)
-      to_unsafe.as(LibGdk::EventKey*).value.string = value.to_unsafe
+      to_unsafe.as(LibGdk::EventKey*).value.string = value
     end
 
     def hardware_keycode

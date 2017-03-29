@@ -7,11 +7,11 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_variant_type.not_nil!.as(Void*)
+      @g_lib_variant_type.not_nil!
     end
 
     def self.new(type_string) : self
-      __return_value = LibGLib.variant_type_new(type_string.to_unsafe)
+      __return_value = LibGLib.variant_type_new(type_string)
       cast GLib::VariantType.new(__return_value)
     end
 
@@ -141,17 +141,17 @@ module GLib
     end
 
     def self.checked_(arg0)
-      __return_value = LibGLib.variant_type_checked_(arg0.to_unsafe)
+      __return_value = LibGLib.variant_type_checked_(arg0)
       GLib::VariantType.new(__return_value)
     end
 
     def self.string_is_valid(type_string)
-      __return_value = LibGLib.variant_type_string_is_valid(type_string.to_unsafe)
+      __return_value = LibGLib.variant_type_string_is_valid(type_string)
       __return_value
     end
 
     def self.string_scan(string, limit, endptr)
-      __return_value = LibGLib.variant_type_string_scan(string.to_unsafe, limit && limit.to_unsafe, endptr)
+      __return_value = LibGLib.variant_type_string_scan(string, limit, endptr)
       __return_value
     end
 

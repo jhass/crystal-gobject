@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_combo_box_text_private.not_nil!.as(Void*)
+      @gtk_combo_box_text_private.not_nil!
     end
 
   end

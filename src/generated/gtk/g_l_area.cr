@@ -7,11 +7,12 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_g_l_area.not_nil!.as(Void*)
+      @gtk_g_l_area.not_nil!
     end
 
     # Implements ImplementorIface
     # Implements Buildable
+
 
 
 
@@ -62,6 +63,11 @@ module Gtk
       __return_value
     end
 
+    def use_es
+      __return_value = LibGtk.g_l_area_get_use_es(to_unsafe.as(LibGtk::GLArea*))
+      __return_value
+    end
+
     def make_current
       __return_value = LibGtk.g_l_area_make_current(to_unsafe.as(LibGtk::GLArea*))
       __return_value
@@ -99,6 +105,11 @@ module Gtk
 
     def set_required_version(major, minor)
       __return_value = LibGtk.g_l_area_set_required_version(to_unsafe.as(LibGtk::GLArea*), Int32.new(major), Int32.new(minor))
+      __return_value
+    end
+
+    def use_es=(use_es)
+      __return_value = LibGtk.g_l_area_set_use_es(to_unsafe.as(LibGtk::GLArea*), use_es)
       __return_value
     end
 

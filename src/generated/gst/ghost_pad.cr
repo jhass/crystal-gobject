@@ -7,26 +7,26 @@ module Gst
     end
 
     def to_unsafe
-      @gst_ghost_pad.not_nil!.as(Void*)
+      @gst_ghost_pad.not_nil!
     end
 
     def self.new(name, target) : self
-      __return_value = LibGst.ghost_pad_new(name && name.to_unsafe, target.to_unsafe.as(LibGst::Pad*))
+      __return_value = LibGst.ghost_pad_new(name, target.to_unsafe.as(LibGst::Pad*))
       cast Gst::Pad.new(__return_value) if __return_value
     end
 
     def self.new_from_template(name, target, templ) : self
-      __return_value = LibGst.ghost_pad_new_from_template(name && name.to_unsafe, target.to_unsafe.as(LibGst::Pad*), templ.to_unsafe.as(LibGst::PadTemplate*))
+      __return_value = LibGst.ghost_pad_new_from_template(name, target.to_unsafe.as(LibGst::Pad*), templ.to_unsafe.as(LibGst::PadTemplate*))
       cast Gst::Pad.new(__return_value) if __return_value
     end
 
     def self.new_no_target(name, dir : Gst::PadDirection) : self
-      __return_value = LibGst.ghost_pad_new_no_target(name && name.to_unsafe, dir)
+      __return_value = LibGst.ghost_pad_new_no_target(name, dir)
       cast Gst::Pad.new(__return_value) if __return_value
     end
 
     def self.new_no_target_from_template(name, templ) : self
-      __return_value = LibGst.ghost_pad_new_no_target_from_template(name && name.to_unsafe, templ.to_unsafe.as(LibGst::PadTemplate*))
+      __return_value = LibGst.ghost_pad_new_no_target_from_template(name, templ.to_unsafe.as(LibGst::PadTemplate*))
       cast Gst::Pad.new(__return_value) if __return_value
     end
 

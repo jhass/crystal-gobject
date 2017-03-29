@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_plugin_feature.not_nil!.as(Void*)
+      @gst_plugin_feature.not_nil!
     end
 
     def self.list_copy(list)

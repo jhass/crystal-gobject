@@ -16,7 +16,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_enum_value.not_nil!.as(Void*)
+      @g_object_enum_value.not_nil!
     end
 
     def value
@@ -32,7 +32,7 @@ module GObject
     end
 
     def value_name=(value : String)
-      to_unsafe.as(LibGObject::EnumValue*).value.value_name = value.to_unsafe
+      to_unsafe.as(LibGObject::EnumValue*).value.value_name = value
     end
 
     def value_nick
@@ -40,7 +40,7 @@ module GObject
     end
 
     def value_nick=(value : String)
-      to_unsafe.as(LibGObject::EnumValue*).value.value_nick = value.to_unsafe
+      to_unsafe.as(LibGObject::EnumValue*).value.value_nick = value
     end
 
   end

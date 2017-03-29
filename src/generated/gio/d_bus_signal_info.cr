@@ -17,7 +17,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_d_bus_signal_info.not_nil!.as(Void*)
+      @gio_d_bus_signal_info.not_nil!
     end
 
     def ref
@@ -43,7 +43,7 @@ module Gio
     end
 
     def name=(value : String)
-      to_unsafe.as(LibGio::DBusSignalInfo*).value.name = value.to_unsafe
+      to_unsafe.as(LibGio::DBusSignalInfo*).value.name = value
     end
 
     def args

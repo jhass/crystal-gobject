@@ -7,12 +7,12 @@ module Gio
     end
 
     def to_unsafe
-      @gio_settings_schema_source.not_nil!.as(Void*)
+      @gio_settings_schema_source.not_nil!
     end
 
     def self.new_from_directory(directory, parent, trusted) : self
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.settings_schema_source_new_from_directory(directory.to_unsafe, parent && parent.to_unsafe.as(LibGio::SettingsSchemaSource*), trusted, pointerof(__error))
+      __return_value = LibGio.settings_schema_source_new_from_directory(directory, parent && parent.to_unsafe.as(LibGio::SettingsSchemaSource*), trusted, pointerof(__error))
       GLib::Error.assert __error
       cast Gio::SettingsSchemaSource.new(__return_value)
     end
@@ -23,7 +23,7 @@ module Gio
     end
 
     def lookup(schema_id, recursive)
-      __return_value = LibGio.settings_schema_source_lookup(to_unsafe.as(LibGio::SettingsSchemaSource*), schema_id.to_unsafe, recursive)
+      __return_value = LibGio.settings_schema_source_lookup(to_unsafe.as(LibGio::SettingsSchemaSource*), schema_id, recursive)
       Gio::SettingsSchema.new(__return_value) if __return_value
     end
 

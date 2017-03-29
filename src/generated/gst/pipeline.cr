@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_pipeline.not_nil!.as(Void*)
+      @gst_pipeline.not_nil!
     end
 
     # Implements ChildProxy
@@ -15,7 +15,7 @@ module Gst
 
 
     def self.new(name) : self
-      __return_value = LibGst.pipeline_new(name && name.to_unsafe)
+      __return_value = LibGst.pipeline_new(name)
       cast Gst::Element.new(__return_value)
     end
 

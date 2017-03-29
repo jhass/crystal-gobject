@@ -5,7 +5,7 @@ module Atk
     end
 
     def to_unsafe
-      @atk_object_factory.not_nil!.as(Void*)
+      @atk_object_factory.not_nil!
     end
 
     def create_accessible(obj)

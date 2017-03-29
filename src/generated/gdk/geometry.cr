@@ -24,7 +24,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_geometry.not_nil!.as(Void*)
+      @gdk_geometry.not_nil!
     end
 
     def min_width

@@ -15,7 +15,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_file_attribute_info_list.not_nil!.as(Void*)
+      @gio_file_attribute_info_list.not_nil!
     end
 
     def self.new : self
@@ -24,7 +24,7 @@ module Gio
     end
 
     def add(name, type : Gio::FileAttributeType, flags : Gio::FileAttributeInfoFlags)
-      __return_value = LibGio.file_attribute_info_list_add(to_unsafe.as(LibGio::FileAttributeInfoList*), name.to_unsafe, type, flags)
+      __return_value = LibGio.file_attribute_info_list_add(to_unsafe.as(LibGio::FileAttributeInfoList*), name, type, flags)
       __return_value
     end
 
@@ -34,7 +34,7 @@ module Gio
     end
 
     def lookup(name)
-      __return_value = LibGio.file_attribute_info_list_lookup(to_unsafe.as(LibGio::FileAttributeInfoList*), name.to_unsafe)
+      __return_value = LibGio.file_attribute_info_list_lookup(to_unsafe.as(LibGio::FileAttributeInfoList*), name)
       Gio::FileAttributeInfo.new(__return_value)
     end
 

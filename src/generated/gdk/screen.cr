@@ -5,7 +5,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_screen.not_nil!.as(Void*)
+      @gdk_screen.not_nil!
     end
 
 
@@ -131,7 +131,7 @@ module Gdk
     end
 
     def setting(name, value)
-      __return_value = LibGdk.screen_get_setting(to_unsafe.as(LibGdk::Screen*), name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGdk.screen_get_setting(to_unsafe.as(LibGdk::Screen*), name, value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 

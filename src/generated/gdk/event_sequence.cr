@@ -7,7 +7,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_event_sequence.not_nil!.as(Void*)
+      @gdk_event_sequence.not_nil!
     end
 
   end

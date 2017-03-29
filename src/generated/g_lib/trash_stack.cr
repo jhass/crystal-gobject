@@ -14,7 +14,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_trash_stack.not_nil!.as(Void*)
+      @g_lib_trash_stack.not_nil!
     end
 
     def self.height(stack_p)

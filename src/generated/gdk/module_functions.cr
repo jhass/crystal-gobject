@@ -5,12 +5,12 @@ module Gdk
   end
 
   def self.atom_intern(atom_name, only_if_exists)
-    __return_value = LibGdk.atom_intern(atom_name.to_unsafe, only_if_exists)
+    __return_value = LibGdk.atom_intern(atom_name, only_if_exists)
     Gdk::Atom.new(__return_value)
   end
 
   def self.atom_intern_static_string(atom_name)
-    __return_value = LibGdk.atom_intern_static_string(atom_name.to_unsafe)
+    __return_value = LibGdk.atom_intern_static_string(atom_name)
     Gdk::Atom.new(__return_value)
   end
 
@@ -32,6 +32,11 @@ module Gdk
   def self.cairo_get_clip_rectangle(cr, rect)
     __return_value = LibGdk.cairo_get_clip_rectangle(cr.to_unsafe.as(LibCairo::Context*), rect)
     __return_value
+  end
+
+  def self.cairo_get_drawing_context(cr)
+    __return_value = LibGdk.cairo_get_drawing_context(cr.to_unsafe.as(LibCairo::Context*))
+    Gdk::DrawingContext.new(__return_value) if __return_value
   end
 
   def self.cairo_rectangle(cr, rectangle)
@@ -75,7 +80,7 @@ module Gdk
   end
 
   def self.color_parse(spec, color)
-    __return_value = LibGdk.color_parse(spec.to_unsafe, color)
+    __return_value = LibGdk.color_parse(spec, color)
     __return_value
   end
 
@@ -265,7 +270,7 @@ module Gdk
   end
 
   def self.keyval_from_name(keyval_name)
-    __return_value = LibGdk.keyval_from_name(keyval_name.to_unsafe)
+    __return_value = LibGdk.keyval_from_name(keyval_name)
     __return_value
   end
 
@@ -310,7 +315,7 @@ module Gdk
   end
 
   def self.notify_startup_complete_with_id(startup_id)
-    __return_value = LibGdk.notify_startup_complete_with_id(startup_id.to_unsafe)
+    __return_value = LibGdk.notify_startup_complete_with_id(startup_id)
     __return_value
   end
 
@@ -331,6 +336,11 @@ module Gdk
 
   def self.pango_context_get
     __return_value = LibGdk.pango_context_get
+    Pango::Context.new(__return_value)
+  end
+
+  def self.pango_context_get_for_display(display)
+    __return_value = LibGdk.pango_context_get_for_display(display.to_unsafe.as(LibGdk::Display*))
     Pango::Context.new(__return_value)
   end
 
@@ -430,7 +440,7 @@ module Gdk
   end
 
   def self.set_allowed_backends(backends)
-    __return_value = LibGdk.set_allowed_backends(backends.to_unsafe)
+    __return_value = LibGdk.set_allowed_backends(backends)
     __return_value
   end
 
@@ -440,7 +450,7 @@ module Gdk
   end
 
   def self.set_program_class(program_class)
-    __return_value = LibGdk.set_program_class(program_class.to_unsafe)
+    __return_value = LibGdk.set_program_class(program_class)
     __return_value
   end
 
@@ -450,7 +460,7 @@ module Gdk
   end
 
   def self.setting_get(name, value)
-    __return_value = LibGdk.setting_get(name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
+    __return_value = LibGdk.setting_get(name, value.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
@@ -515,7 +525,7 @@ module Gdk
   end
 
   def self.utf8_to_string_target(str)
-    __return_value = LibGdk.utf8_to_string_target(str.to_unsafe)
+    __return_value = LibGdk.utf8_to_string_target(str)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 end

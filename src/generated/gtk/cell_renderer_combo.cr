@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_cell_renderer_combo.not_nil!.as(Void*)
+      @gtk_cell_renderer_combo.not_nil!
     end
 
 

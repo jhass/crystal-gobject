@@ -5,12 +5,12 @@ module Gio
     end
 
     def to_unsafe
-      @gio_i_o_module.not_nil!.as(Void*)
+      @gio_i_o_module.not_nil!
     end
 
     # Implements TypePlugin
     def self.new(filename) : self
-      __return_value = LibGio.i_o_module_new(filename.to_unsafe)
+      __return_value = LibGio.i_o_module_new(filename)
       cast Gio::IOModule.new(__return_value)
     end
 

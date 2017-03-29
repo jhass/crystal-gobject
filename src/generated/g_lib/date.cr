@@ -19,7 +19,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_date.not_nil!.as(Void*)
+      @g_lib_date.not_nil!
     end
 
     def self.new : self
@@ -158,7 +158,7 @@ module GLib
     end
 
     def parse=(str)
-      __return_value = LibGLib.date_set_parse(to_unsafe.as(LibGLib::Date*), str.to_unsafe)
+      __return_value = LibGLib.date_set_parse(to_unsafe.as(LibGLib::Date*), str)
       __return_value
     end
 
@@ -228,7 +228,7 @@ module GLib
     end
 
     def self.strftime(s, slen, format, date)
-      __return_value = LibGLib.date_strftime(s.to_unsafe, UInt64.new(slen), format.to_unsafe, date.to_unsafe.as(LibGLib::Date*))
+      __return_value = LibGLib.date_strftime(s, UInt64.new(slen), format, date.to_unsafe.as(LibGLib::Date*))
       __return_value
     end
 

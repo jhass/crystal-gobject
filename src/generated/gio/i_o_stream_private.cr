@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_i_o_stream_private.not_nil!.as(Void*)
+      @gio_i_o_stream_private.not_nil!
     end
 
   end

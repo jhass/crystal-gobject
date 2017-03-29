@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_value_list.not_nil!.as(Void*)
+      @gst_value_list.not_nil!
     end
 
     def self.append_and_take_value(value, append_value)

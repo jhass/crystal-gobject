@@ -19,7 +19,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_radio_action_entry.not_nil!.as(Void*)
+      @gtk_radio_action_entry.not_nil!
     end
 
     def name
@@ -27,7 +27,7 @@ module Gtk
     end
 
     def name=(value : String)
-      to_unsafe.as(LibGtk::RadioActionEntry*).value.name = value.to_unsafe
+      to_unsafe.as(LibGtk::RadioActionEntry*).value.name = value
     end
 
     def stock_id
@@ -35,7 +35,7 @@ module Gtk
     end
 
     def stock_id=(value : String)
-      to_unsafe.as(LibGtk::RadioActionEntry*).value.stock_id = value.to_unsafe
+      to_unsafe.as(LibGtk::RadioActionEntry*).value.stock_id = value
     end
 
     def label
@@ -43,7 +43,7 @@ module Gtk
     end
 
     def label=(value : String)
-      to_unsafe.as(LibGtk::RadioActionEntry*).value.label = value.to_unsafe
+      to_unsafe.as(LibGtk::RadioActionEntry*).value.label = value
     end
 
     def accelerator
@@ -51,7 +51,7 @@ module Gtk
     end
 
     def accelerator=(value : String)
-      to_unsafe.as(LibGtk::RadioActionEntry*).value.accelerator = value.to_unsafe
+      to_unsafe.as(LibGtk::RadioActionEntry*).value.accelerator = value
     end
 
     def tooltip
@@ -59,7 +59,7 @@ module Gtk
     end
 
     def tooltip=(value : String)
-      to_unsafe.as(LibGtk::RadioActionEntry*).value.tooltip = value.to_unsafe
+      to_unsafe.as(LibGtk::RadioActionEntry*).value.tooltip = value
     end
 
     def value

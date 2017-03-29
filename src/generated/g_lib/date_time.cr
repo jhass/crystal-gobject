@@ -7,7 +7,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_date_time.not_nil!.as(Void*)
+      @g_lib_date_time.not_nil!
     end
 
     def self.new(tz, year, month, day, hour, minute, seconds) : self
@@ -111,7 +111,7 @@ module GLib
     end
 
     def format(format)
-      __return_value = LibGLib.date_time_format(to_unsafe.as(LibGLib::DateTime*), format.to_unsafe)
+      __return_value = LibGLib.date_time_format(to_unsafe.as(LibGLib::DateTime*), format)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

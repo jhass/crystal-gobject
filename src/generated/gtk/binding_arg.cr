@@ -14,7 +14,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_binding_arg.not_nil!.as(Void*)
+      @gtk_binding_arg.not_nil!
     end
 
     def arg_type

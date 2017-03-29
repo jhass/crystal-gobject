@@ -18,7 +18,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_event_window_state.not_nil!.as(Void*)
+      @gdk_event_window_state.not_nil!
     end
 
     def type

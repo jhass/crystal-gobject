@@ -26,7 +26,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_log_attr.not_nil!.as(Void*)
+      @pango_log_attr.not_nil!
     end
 
     def is_line_break

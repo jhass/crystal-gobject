@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_tree_view_column.not_nil!.as(Void*)
+      @gtk_tree_view_column.not_nil!
     end
 
     # Implements Buildable
@@ -40,7 +40,7 @@ module Gtk
     end
 
     def add_attribute(cell_renderer, attribute, column)
-      __return_value = LibGtk.tree_view_column_add_attribute(to_unsafe.as(LibGtk::TreeViewColumn*), cell_renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute.to_unsafe, Int32.new(column))
+      __return_value = LibGtk.tree_view_column_add_attribute(to_unsafe.as(LibGtk::TreeViewColumn*), cell_renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute, Int32.new(column))
       __return_value
     end
 
@@ -270,7 +270,7 @@ module Gtk
     end
 
     def title=(title)
-      __return_value = LibGtk.tree_view_column_set_title(to_unsafe.as(LibGtk::TreeViewColumn*), title.to_unsafe)
+      __return_value = LibGtk.tree_view_column_set_title(to_unsafe.as(LibGtk::TreeViewColumn*), title)
       __return_value
     end
 

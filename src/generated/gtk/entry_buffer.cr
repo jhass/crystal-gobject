@@ -5,14 +5,14 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_entry_buffer.not_nil!.as(Void*)
+      @gtk_entry_buffer.not_nil!
     end
 
 
 
 
     def self.new(initial_chars, n_initial_chars) : self
-      __return_value = LibGtk.entry_buffer_new(initial_chars && initial_chars.to_unsafe, Int32.new(n_initial_chars))
+      __return_value = LibGtk.entry_buffer_new(initial_chars, Int32.new(n_initial_chars))
       cast Gtk::EntryBuffer.new(__return_value)
     end
 
@@ -27,7 +27,7 @@ module Gtk
     end
 
     def emit_inserted_text(position, chars, n_chars)
-      __return_value = LibGtk.entry_buffer_emit_inserted_text(to_unsafe.as(LibGtk::EntryBuffer*), UInt32.new(position), chars.to_unsafe, UInt32.new(n_chars))
+      __return_value = LibGtk.entry_buffer_emit_inserted_text(to_unsafe.as(LibGtk::EntryBuffer*), UInt32.new(position), chars, UInt32.new(n_chars))
       __return_value
     end
 
@@ -52,7 +52,7 @@ module Gtk
     end
 
     def insert_text(position, chars, n_chars)
-      __return_value = LibGtk.entry_buffer_insert_text(to_unsafe.as(LibGtk::EntryBuffer*), UInt32.new(position), chars.to_unsafe, Int32.new(n_chars))
+      __return_value = LibGtk.entry_buffer_insert_text(to_unsafe.as(LibGtk::EntryBuffer*), UInt32.new(position), chars, Int32.new(n_chars))
       __return_value
     end
 
@@ -62,7 +62,7 @@ module Gtk
     end
 
     def set_text(chars, n_chars)
-      __return_value = LibGtk.entry_buffer_set_text(to_unsafe.as(LibGtk::EntryBuffer*), chars.to_unsafe, Int32.new(n_chars))
+      __return_value = LibGtk.entry_buffer_set_text(to_unsafe.as(LibGtk::EntryBuffer*), chars, Int32.new(n_chars))
       __return_value
     end
 

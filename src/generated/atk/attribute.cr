@@ -15,7 +15,7 @@ module Atk
     end
 
     def to_unsafe
-      @atk_attribute.not_nil!.as(Void*)
+      @atk_attribute.not_nil!
     end
 
     def self.set_free(attrib_set)
@@ -28,7 +28,7 @@ module Atk
     end
 
     def name=(value : String)
-      to_unsafe.as(LibAtk::Attribute*).value.name = value.to_unsafe
+      to_unsafe.as(LibAtk::Attribute*).value.name = value
     end
 
     def value
@@ -36,7 +36,7 @@ module Atk
     end
 
     def value=(value : String)
-      to_unsafe.as(LibAtk::Attribute*).value.value = value.to_unsafe
+      to_unsafe.as(LibAtk::Attribute*).value.value = value
     end
 
   end

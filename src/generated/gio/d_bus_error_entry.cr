@@ -15,7 +15,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_d_bus_error_entry.not_nil!.as(Void*)
+      @gio_d_bus_error_entry.not_nil!
     end
 
     def error_code
@@ -31,7 +31,7 @@ module Gio
     end
 
     def dbus_error_name=(value : String)
-      to_unsafe.as(LibGio::DBusErrorEntry*).value.dbus_error_name = value.to_unsafe
+      to_unsafe.as(LibGio::DBusErrorEntry*).value.dbus_error_name = value
     end
 
   end

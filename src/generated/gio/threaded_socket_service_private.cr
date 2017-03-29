@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_threaded_socket_service_private.not_nil!.as(Void*)
+      @gio_threaded_socket_service_private.not_nil!
     end
 
   end

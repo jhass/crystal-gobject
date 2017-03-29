@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_themed_icon.not_nil!.as(Void*)
+      @gio_themed_icon.not_nil!
     end
 
     # Implements Icon
@@ -13,7 +13,7 @@ module Gio
 
 
     def self.new(iconname) : self
-      __return_value = LibGio.themed_icon_new(iconname.to_unsafe)
+      __return_value = LibGio.themed_icon_new(iconname)
       cast Gio::ThemedIcon.new(__return_value)
     end
 
@@ -23,12 +23,12 @@ module Gio
     end
 
     def self.new_with_default_fallbacks(iconname) : self
-      __return_value = LibGio.themed_icon_new_with_default_fallbacks(iconname.to_unsafe)
+      __return_value = LibGio.themed_icon_new_with_default_fallbacks(iconname)
       cast Gio::ThemedIcon.new(__return_value)
     end
 
     def append_name(iconname)
-      __return_value = LibGio.themed_icon_append_name(to_unsafe.as(LibGio::ThemedIcon*), iconname.to_unsafe)
+      __return_value = LibGio.themed_icon_append_name(to_unsafe.as(LibGio::ThemedIcon*), iconname)
       __return_value
     end
 
@@ -38,7 +38,7 @@ module Gio
     end
 
     def prepend_name(iconname)
-      __return_value = LibGio.themed_icon_prepend_name(to_unsafe.as(LibGio::ThemedIcon*), iconname.to_unsafe)
+      __return_value = LibGio.themed_icon_prepend_name(to_unsafe.as(LibGio::ThemedIcon*), iconname)
       __return_value
     end
 

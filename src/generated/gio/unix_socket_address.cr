@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_unix_socket_address.not_nil!.as(Void*)
+      @gio_unix_socket_address.not_nil!
     end
 
     # Implements SocketConnectable
@@ -16,7 +16,7 @@ module Gio
 
 
     def self.new(path) : self
-      __return_value = LibGio.unix_socket_address_new(path.to_unsafe)
+      __return_value = LibGio.unix_socket_address_new(path)
       cast Gio::SocketAddress.new(__return_value)
     end
 

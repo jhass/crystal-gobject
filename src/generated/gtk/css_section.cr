@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_css_section.not_nil!.as(Void*)
+      @gtk_css_section.not_nil!
     end
 
     def end_line

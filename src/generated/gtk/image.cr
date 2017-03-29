@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_image.not_nil!.as(Void*)
+      @gtk_image.not_nil!
     end
 
     # Implements ImplementorIface
@@ -36,7 +36,7 @@ module Gtk
     end
 
     def self.new_from_file(filename) : self
-      __return_value = LibGtk.image_new_from_file(filename.to_unsafe)
+      __return_value = LibGtk.image_new_from_file(filename)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -46,7 +46,7 @@ module Gtk
     end
 
     def self.new_from_icon_name(icon_name, size) : self
-      __return_value = LibGtk.image_new_from_icon_name(icon_name.to_unsafe, Int32.new(size))
+      __return_value = LibGtk.image_new_from_icon_name(icon_name, Int32.new(size))
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -61,12 +61,12 @@ module Gtk
     end
 
     def self.new_from_resource(resource_path) : self
-      __return_value = LibGtk.image_new_from_resource(resource_path.to_unsafe)
+      __return_value = LibGtk.image_new_from_resource(resource_path)
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_from_stock(stock_id, size) : self
-      __return_value = LibGtk.image_new_from_stock(stock_id.to_unsafe, Int32.new(size))
+      __return_value = LibGtk.image_new_from_stock(stock_id, Int32.new(size))
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -126,7 +126,7 @@ module Gtk
     end
 
     def from_file=(filename)
-      __return_value = LibGtk.image_set_from_file(to_unsafe.as(LibGtk::Image*), filename && filename.to_unsafe)
+      __return_value = LibGtk.image_set_from_file(to_unsafe.as(LibGtk::Image*), filename)
       __return_value
     end
 
@@ -136,7 +136,7 @@ module Gtk
     end
 
     def set_from_icon_name(icon_name, size)
-      __return_value = LibGtk.image_set_from_icon_name(to_unsafe.as(LibGtk::Image*), icon_name.to_unsafe, Int32.new(size))
+      __return_value = LibGtk.image_set_from_icon_name(to_unsafe.as(LibGtk::Image*), icon_name, Int32.new(size))
       __return_value
     end
 
@@ -151,17 +151,17 @@ module Gtk
     end
 
     def from_resource=(resource_path)
-      __return_value = LibGtk.image_set_from_resource(to_unsafe.as(LibGtk::Image*), resource_path && resource_path.to_unsafe)
+      __return_value = LibGtk.image_set_from_resource(to_unsafe.as(LibGtk::Image*), resource_path)
       __return_value
     end
 
     def set_from_stock(stock_id, size)
-      __return_value = LibGtk.image_set_from_stock(to_unsafe.as(LibGtk::Image*), stock_id.to_unsafe, Int32.new(size))
+      __return_value = LibGtk.image_set_from_stock(to_unsafe.as(LibGtk::Image*), stock_id, Int32.new(size))
       __return_value
     end
 
     def from_surface=(surface)
-      __return_value = LibGtk.image_set_from_surface(to_unsafe.as(LibGtk::Image*), surface.to_unsafe.as(LibCairo::Surface*))
+      __return_value = LibGtk.image_set_from_surface(to_unsafe.as(LibGtk::Image*), surface && surface.to_unsafe.as(LibCairo::Surface*))
       __return_value
     end
 

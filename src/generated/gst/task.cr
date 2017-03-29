@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_task.not_nil!.as(Void*)
+      @gst_task.not_nil!
     end
 
     def self.new(func, user_data, notify) : self

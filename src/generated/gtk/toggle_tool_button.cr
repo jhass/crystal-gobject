@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_toggle_tool_button.not_nil!.as(Void*)
+      @gtk_toggle_tool_button.not_nil!
     end
 
     # Implements ImplementorIface
@@ -21,7 +21,7 @@ module Gtk
     end
 
     def self.new_from_stock(stock_id) : self
-      __return_value = LibGtk.toggle_tool_button_new_from_stock(stock_id.to_unsafe)
+      __return_value = LibGtk.toggle_tool_button_new_from_stock(stock_id)
       cast Gtk::ToolItem.new(__return_value)
     end
 

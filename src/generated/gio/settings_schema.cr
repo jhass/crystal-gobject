@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_settings_schema.not_nil!.as(Void*)
+      @gio_settings_schema.not_nil!
     end
 
     def id
@@ -16,7 +16,7 @@ module Gio
     end
 
     def key(name)
-      __return_value = LibGio.settings_schema_get_key(to_unsafe.as(LibGio::SettingsSchema*), name.to_unsafe)
+      __return_value = LibGio.settings_schema_get_key(to_unsafe.as(LibGio::SettingsSchema*), name)
       Gio::SettingsSchemaKey.new(__return_value)
     end
 
@@ -26,7 +26,7 @@ module Gio
     end
 
     def has_key(name)
-      __return_value = LibGio.settings_schema_has_key(to_unsafe.as(LibGio::SettingsSchema*), name.to_unsafe)
+      __return_value = LibGio.settings_schema_has_key(to_unsafe.as(LibGio::SettingsSchema*), name)
       __return_value
     end
 

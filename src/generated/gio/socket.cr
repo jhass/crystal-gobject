@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_socket.not_nil!.as(Void*)
+      @gio_socket.not_nil!
     end
 
     # Implements DatagramBased
@@ -202,14 +202,14 @@ module Gio
 
     def join_multicast_group(group, source_specific, iface)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.socket_join_multicast_group(to_unsafe.as(LibGio::Socket*), group.to_unsafe.as(LibGio::InetAddress*), source_specific, iface && iface.to_unsafe, pointerof(__error))
+      __return_value = LibGio.socket_join_multicast_group(to_unsafe.as(LibGio::Socket*), group.to_unsafe.as(LibGio::InetAddress*), source_specific, iface, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def leave_multicast_group(group, source_specific, iface)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.socket_leave_multicast_group(to_unsafe.as(LibGio::Socket*), group.to_unsafe.as(LibGio::InetAddress*), source_specific, iface && iface.to_unsafe, pointerof(__error))
+      __return_value = LibGio.socket_leave_multicast_group(to_unsafe.as(LibGio::Socket*), group.to_unsafe.as(LibGio::InetAddress*), source_specific, iface, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

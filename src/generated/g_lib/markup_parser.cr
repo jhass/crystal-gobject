@@ -12,7 +12,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_markup_parser.not_nil!.as(Void*)
+      @g_lib_markup_parser.not_nil!
     end
 
     def start_element

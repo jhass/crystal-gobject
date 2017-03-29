@@ -5,7 +5,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_fontset.not_nil!.as(Void*)
+      @pango_fontset.not_nil!
     end
 
     def foreach(func, data)

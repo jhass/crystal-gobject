@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_combo_box.not_nil!.as(Void*)
+      @gtk_combo_box.not_nil!
     end
 
     # Implements ImplementorIface
@@ -161,7 +161,7 @@ module Gtk
     end
 
     def active_id=(active_id)
-      __return_value = LibGtk.combo_box_set_active_id(to_unsafe.as(LibGtk::ComboBox*), active_id && active_id.to_unsafe)
+      __return_value = LibGtk.combo_box_set_active_id(to_unsafe.as(LibGtk::ComboBox*), active_id)
       __return_value
     end
 
@@ -221,7 +221,7 @@ module Gtk
     end
 
     def title=(title)
-      __return_value = LibGtk.combo_box_set_title(to_unsafe.as(LibGtk::ComboBox*), title.to_unsafe)
+      __return_value = LibGtk.combo_box_set_title(to_unsafe.as(LibGtk::ComboBox*), title)
       __return_value
     end
 
@@ -243,7 +243,7 @@ module Gtk
     def on_format_entry_text(&__block : FormatEntryTextSignal)
       __callback = ->(_arg0 : LibGtk::ComboBox*, _arg1 : LibGtk::UInt8**) {
        __return_value = __block.call(ComboBox.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
-       __return_value.to_unsafe
+       __return_value
       }
       connect("format-entry-text", __callback)
     end

@@ -7,7 +7,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_weak_ref.not_nil!.as(Void*)
+      @g_object_weak_ref.not_nil!
     end
 
   end

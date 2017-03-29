@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_numerable_icon.not_nil!.as(Void*)
+      @gtk_numerable_icon.not_nil!
     end
 
     # Implements Icon
@@ -26,12 +26,12 @@ module Gtk
 
     def background_gicon
       __return_value = LibGtk.numerable_icon_get_background_gicon(to_unsafe.as(LibGtk::NumerableIcon*))
-      __return_value
+      __return_value if __return_value
     end
 
     def background_icon_name
       __return_value = LibGtk.numerable_icon_get_background_icon_name(to_unsafe.as(LibGtk::NumerableIcon*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def count
@@ -41,12 +41,12 @@ module Gtk
 
     def label
       __return_value = LibGtk.numerable_icon_get_label(to_unsafe.as(LibGtk::NumerableIcon*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def style_context
       __return_value = LibGtk.numerable_icon_get_style_context(to_unsafe.as(LibGtk::NumerableIcon*))
-      Gtk::StyleContext.new(__return_value)
+      Gtk::StyleContext.new(__return_value) if __return_value
     end
 
     def background_gicon=(icon)
@@ -55,7 +55,7 @@ module Gtk
     end
 
     def background_icon_name=(icon_name)
-      __return_value = LibGtk.numerable_icon_set_background_icon_name(to_unsafe.as(LibGtk::NumerableIcon*), icon_name && icon_name.to_unsafe)
+      __return_value = LibGtk.numerable_icon_set_background_icon_name(to_unsafe.as(LibGtk::NumerableIcon*), icon_name)
       __return_value
     end
 
@@ -65,7 +65,7 @@ module Gtk
     end
 
     def label=(label)
-      __return_value = LibGtk.numerable_icon_set_label(to_unsafe.as(LibGtk::NumerableIcon*), label && label.to_unsafe)
+      __return_value = LibGtk.numerable_icon_set_label(to_unsafe.as(LibGtk::NumerableIcon*), label)
       __return_value
     end
 

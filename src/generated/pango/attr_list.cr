@@ -7,7 +7,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_attr_list.not_nil!.as(Void*)
+      @pango_attr_list.not_nil!
     end
 
     def self.new : self

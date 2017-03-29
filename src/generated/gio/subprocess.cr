@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_subprocess.not_nil!.as(Void*)
+      @gio_subprocess.not_nil!
     end
 
     # Implements Initable
@@ -39,13 +39,13 @@ module Gio
 
     def communicate_utf8(stdin_buf, cancellable, stdout_buf, stderr_buf)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.subprocess_communicate_utf8(to_unsafe.as(LibGio::Subprocess*), stdin_buf && stdin_buf.to_unsafe, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), stdout_buf, stderr_buf, pointerof(__error))
+      __return_value = LibGio.subprocess_communicate_utf8(to_unsafe.as(LibGio::Subprocess*), stdin_buf, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), stdout_buf, stderr_buf, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def communicate_utf8_async(stdin_buf, cancellable, callback, user_data)
-      __return_value = LibGio.subprocess_communicate_utf8_async(to_unsafe.as(LibGio::Subprocess*), stdin_buf && stdin_buf.to_unsafe, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
+      __return_value = LibGio.subprocess_communicate_utf8_async(to_unsafe.as(LibGio::Subprocess*), stdin_buf, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
       __return_value
     end
 

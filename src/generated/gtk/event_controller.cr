@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_event_controller.not_nil!.as(Void*)
+      @gtk_event_controller.not_nil!
     end
 
 

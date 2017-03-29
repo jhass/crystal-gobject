@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_entry.not_nil!.as(Void*)
+      @gtk_entry.not_nil!
     end
 
     # Implements ImplementorIface
@@ -334,7 +334,7 @@ module Gtk
     end
 
     def set_icon_from_icon_name(icon_pos : Gtk::EntryIconPosition, icon_name)
-      __return_value = LibGtk.entry_set_icon_from_icon_name(to_unsafe.as(LibGtk::Entry*), icon_pos, icon_name && icon_name.to_unsafe)
+      __return_value = LibGtk.entry_set_icon_from_icon_name(to_unsafe.as(LibGtk::Entry*), icon_pos, icon_name)
       __return_value
     end
 
@@ -344,7 +344,7 @@ module Gtk
     end
 
     def set_icon_from_stock(icon_pos : Gtk::EntryIconPosition, stock_id)
-      __return_value = LibGtk.entry_set_icon_from_stock(to_unsafe.as(LibGtk::Entry*), icon_pos, stock_id && stock_id.to_unsafe)
+      __return_value = LibGtk.entry_set_icon_from_stock(to_unsafe.as(LibGtk::Entry*), icon_pos, stock_id)
       __return_value
     end
 
@@ -354,12 +354,12 @@ module Gtk
     end
 
     def set_icon_tooltip_markup(icon_pos : Gtk::EntryIconPosition, tooltip)
-      __return_value = LibGtk.entry_set_icon_tooltip_markup(to_unsafe.as(LibGtk::Entry*), icon_pos, tooltip && tooltip.to_unsafe)
+      __return_value = LibGtk.entry_set_icon_tooltip_markup(to_unsafe.as(LibGtk::Entry*), icon_pos, tooltip)
       __return_value
     end
 
     def set_icon_tooltip_text(icon_pos : Gtk::EntryIconPosition, tooltip)
-      __return_value = LibGtk.entry_set_icon_tooltip_text(to_unsafe.as(LibGtk::Entry*), icon_pos, tooltip && tooltip.to_unsafe)
+      __return_value = LibGtk.entry_set_icon_tooltip_text(to_unsafe.as(LibGtk::Entry*), icon_pos, tooltip)
       __return_value
     end
 
@@ -399,7 +399,7 @@ module Gtk
     end
 
     def placeholder_text=(text)
-      __return_value = LibGtk.entry_set_placeholder_text(to_unsafe.as(LibGtk::Entry*), text && text.to_unsafe)
+      __return_value = LibGtk.entry_set_placeholder_text(to_unsafe.as(LibGtk::Entry*), text)
       __return_value
     end
 
@@ -419,7 +419,7 @@ module Gtk
     end
 
     def text=(text)
-      __return_value = LibGtk.entry_set_text(to_unsafe.as(LibGtk::Entry*), text.to_unsafe)
+      __return_value = LibGtk.entry_set_text(to_unsafe.as(LibGtk::Entry*), text)
       __return_value
     end
 

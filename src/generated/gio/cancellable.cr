@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_cancellable.not_nil!.as(Void*)
+      @gio_cancellable.not_nil!
     end
 
     def self.new : self

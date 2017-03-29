@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_gesture_rotate.not_nil!.as(Void*)
+      @gtk_gesture_rotate.not_nil!
     end
 
     def self.new(widget) : self

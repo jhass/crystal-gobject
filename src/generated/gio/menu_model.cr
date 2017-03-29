@@ -5,16 +5,16 @@ module Gio
     end
 
     def to_unsafe
-      @gio_menu_model.not_nil!.as(Void*)
+      @gio_menu_model.not_nil!
     end
 
     def item_attribute_value(item_index, attribute, expected_type)
-      __return_value = LibGio.menu_model_get_item_attribute_value(to_unsafe.as(LibGio::MenuModel*), Int32.new(item_index), attribute.to_unsafe, expected_type && expected_type.to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGio.menu_model_get_item_attribute_value(to_unsafe.as(LibGio::MenuModel*), Int32.new(item_index), attribute, expected_type && expected_type.to_unsafe.as(LibGLib::VariantType*))
       GLib::Variant.new(__return_value)
     end
 
     def item_link(item_index, link)
-      __return_value = LibGio.menu_model_get_item_link(to_unsafe.as(LibGio::MenuModel*), Int32.new(item_index), link.to_unsafe)
+      __return_value = LibGio.menu_model_get_item_link(to_unsafe.as(LibGio::MenuModel*), Int32.new(item_index), link)
       Gio::MenuModel.new(__return_value)
     end
 

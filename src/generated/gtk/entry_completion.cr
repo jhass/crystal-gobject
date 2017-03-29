@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_entry_completion.not_nil!.as(Void*)
+      @gtk_entry_completion.not_nil!
     end
 
     # Implements Buildable
@@ -35,7 +35,7 @@ module Gtk
     end
 
     def compute_prefix(key)
-      __return_value = LibGtk.entry_completion_compute_prefix(to_unsafe.as(LibGtk::EntryCompletion*), key.to_unsafe)
+      __return_value = LibGtk.entry_completion_compute_prefix(to_unsafe.as(LibGtk::EntryCompletion*), key)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
@@ -95,12 +95,12 @@ module Gtk
     end
 
     def insert_action_markup(index, markup)
-      __return_value = LibGtk.entry_completion_insert_action_markup(to_unsafe.as(LibGtk::EntryCompletion*), Int32.new(index), markup.to_unsafe)
+      __return_value = LibGtk.entry_completion_insert_action_markup(to_unsafe.as(LibGtk::EntryCompletion*), Int32.new(index), markup)
       __return_value
     end
 
     def insert_action_text(index, text)
-      __return_value = LibGtk.entry_completion_insert_action_text(to_unsafe.as(LibGtk::EntryCompletion*), Int32.new(index), text.to_unsafe)
+      __return_value = LibGtk.entry_completion_insert_action_text(to_unsafe.as(LibGtk::EntryCompletion*), Int32.new(index), text)
       __return_value
     end
 

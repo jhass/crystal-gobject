@@ -91,7 +91,7 @@ module GIRepository
     end
 
     def to_unsafe
-      @g_i_repository_argument.not_nil!.as(Void*)
+      @g_i_repository_argument.not_nil!
     end
 
   end

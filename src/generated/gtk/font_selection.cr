@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_font_selection.not_nil!.as(Void*)
+      @gtk_font_selection.not_nil!
     end
 
     # Implements ImplementorIface
@@ -71,12 +71,12 @@ module Gtk
     end
 
     def font_name=(fontname)
-      __return_value = LibGtk.font_selection_set_font_name(to_unsafe.as(LibGtk::FontSelection*), fontname.to_unsafe)
+      __return_value = LibGtk.font_selection_set_font_name(to_unsafe.as(LibGtk::FontSelection*), fontname)
       __return_value
     end
 
     def preview_text=(text)
-      __return_value = LibGtk.font_selection_set_preview_text(to_unsafe.as(LibGtk::FontSelection*), text.to_unsafe)
+      __return_value = LibGtk.font_selection_set_preview_text(to_unsafe.as(LibGtk::FontSelection*), text)
       __return_value
     end
 

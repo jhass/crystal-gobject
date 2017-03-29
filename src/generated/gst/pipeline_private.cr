@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_pipeline_private.not_nil!.as(Void*)
+      @gst_pipeline_private.not_nil!
     end
 
   end

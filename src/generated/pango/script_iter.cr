@@ -7,7 +7,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_script_iter.not_nil!.as(Void*)
+      @pango_script_iter.not_nil!
     end
 
     def free

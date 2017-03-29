@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_network_service.not_nil!.as(Void*)
+      @gio_network_service.not_nil!
     end
 
     # Implements SocketConnectable
@@ -14,7 +14,7 @@ module Gio
 
 
     def self.new(service, protocol, domain) : self
-      __return_value = LibGio.network_service_new(service.to_unsafe, protocol.to_unsafe, domain.to_unsafe)
+      __return_value = LibGio.network_service_new(service, protocol, domain)
       cast Gio::NetworkService.new(__return_value)
     end
 
@@ -39,7 +39,7 @@ module Gio
     end
 
     def scheme=(scheme)
-      __return_value = LibGio.network_service_set_scheme(to_unsafe.as(LibGio::NetworkService*), scheme.to_unsafe)
+      __return_value = LibGio.network_service_set_scheme(to_unsafe.as(LibGio::NetworkService*), scheme)
       __return_value
     end
 

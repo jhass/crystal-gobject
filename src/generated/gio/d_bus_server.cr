@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_d_bus_server.not_nil!.as(Void*)
+      @gio_d_bus_server.not_nil!
     end
 
     # Implements Initable
@@ -17,7 +17,7 @@ module Gio
 
     def self.new_sync(address, flags : Gio::DBusServerFlags, guid, observer, cancellable) : self
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.d_bus_server_new_sync(address.to_unsafe, flags, guid.to_unsafe, observer && observer.to_unsafe.as(LibGio::DBusAuthObserver*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.d_bus_server_new_sync(address, flags, guid, observer && observer.to_unsafe.as(LibGio::DBusAuthObserver*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error
       cast Gio::DBusServer.new(__return_value)
     end

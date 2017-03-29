@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_list_box_accessible_private.not_nil!.as(Void*)
+      @gtk_list_box_accessible_private.not_nil!
     end
 
   end

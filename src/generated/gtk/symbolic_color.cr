@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_symbolic_color.not_nil!.as(Void*)
+      @gtk_symbolic_color.not_nil!
     end
 
     def self.new_alpha(color, factor) : self
@@ -26,7 +26,7 @@ module Gtk
     end
 
     def self.new_name(name) : self
-      __return_value = LibGtk.symbolic_color_new_name(name.to_unsafe)
+      __return_value = LibGtk.symbolic_color_new_name(name)
       cast Gtk::SymbolicColor.new(__return_value)
     end
 
@@ -36,7 +36,7 @@ module Gtk
     end
 
     def self.new_win32(theme_class, id) : self
-      __return_value = LibGtk.symbolic_color_new_win32(theme_class.to_unsafe, Int32.new(id))
+      __return_value = LibGtk.symbolic_color_new_win32(theme_class, Int32.new(id))
       cast Gtk::SymbolicColor.new(__return_value)
     end
 

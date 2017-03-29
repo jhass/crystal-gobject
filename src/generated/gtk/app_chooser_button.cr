@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_app_chooser_button.not_nil!.as(Void*)
+      @gtk_app_chooser_button.not_nil!
     end
 
     # Implements ImplementorIface
@@ -19,12 +19,12 @@ module Gtk
 
 
     def self.new(content_type) : self
-      __return_value = LibGtk.app_chooser_button_new(content_type.to_unsafe)
+      __return_value = LibGtk.app_chooser_button_new(content_type)
       cast Gtk::Widget.new(__return_value)
     end
 
     def append_custom_item(name, label, icon)
-      __return_value = LibGtk.app_chooser_button_append_custom_item(to_unsafe.as(LibGtk::AppChooserButton*), name.to_unsafe, label.to_unsafe, icon.to_unsafe.as(LibGio::Icon*))
+      __return_value = LibGtk.app_chooser_button_append_custom_item(to_unsafe.as(LibGtk::AppChooserButton*), name, label, icon.to_unsafe.as(LibGio::Icon*))
       __return_value
     end
 
@@ -49,12 +49,12 @@ module Gtk
     end
 
     def active_custom_item=(name)
-      __return_value = LibGtk.app_chooser_button_set_active_custom_item(to_unsafe.as(LibGtk::AppChooserButton*), name.to_unsafe)
+      __return_value = LibGtk.app_chooser_button_set_active_custom_item(to_unsafe.as(LibGtk::AppChooserButton*), name)
       __return_value
     end
 
     def heading=(heading)
-      __return_value = LibGtk.app_chooser_button_set_heading(to_unsafe.as(LibGtk::AppChooserButton*), heading.to_unsafe)
+      __return_value = LibGtk.app_chooser_button_set_heading(to_unsafe.as(LibGtk::AppChooserButton*), heading)
       __return_value
     end
 

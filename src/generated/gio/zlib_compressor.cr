@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_zlib_compressor.not_nil!.as(Void*)
+      @gio_zlib_compressor.not_nil!
     end
 
     # Implements Converter

@@ -12,7 +12,7 @@ module GIRepository
     end
 
     def to_unsafe
-      @g_i_repository_base_info.not_nil!.as(Void*)
+      @g_i_repository_base_info.not_nil!
     end
 
     def equal(info2)
@@ -21,7 +21,7 @@ module GIRepository
     end
 
     def attribute(name)
-      __return_value = LibGIRepository.base_info_get_attribute(to_unsafe.as(LibGIRepository::BaseInfo*), name.to_unsafe)
+      __return_value = LibGIRepository.base_info_get_attribute(to_unsafe.as(LibGIRepository::BaseInfo*), name)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
@@ -56,7 +56,7 @@ module GIRepository
     end
 
     def iterate_attributes(iterator, name, value)
-      __return_value = LibGIRepository.base_info_iterate_attributes(to_unsafe.as(LibGIRepository::BaseInfo*), iterator.to_unsafe.as(LibGIRepository::AttributeIter*), name, value)
+      __return_value = LibGIRepository.base_info_iterate_attributes(to_unsafe.as(LibGIRepository::BaseInfo*), iterator, name, value)
       __return_value
     end
 

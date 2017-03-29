@@ -7,11 +7,11 @@ module Gio
     end
 
     def to_unsafe
-      @gio_i_o_module_scope.not_nil!.as(Void*)
+      @gio_i_o_module_scope.not_nil!
     end
 
     def block(basename)
-      __return_value = LibGio.i_o_module_scope_block(to_unsafe.as(LibGio::IOModuleScope*), basename.to_unsafe)
+      __return_value = LibGio.i_o_module_scope_block(to_unsafe.as(LibGio::IOModuleScope*), basename)
       __return_value
     end
 

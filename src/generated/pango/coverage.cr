@@ -7,7 +7,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_coverage.not_nil!.as(Void*)
+      @pango_coverage.not_nil!
     end
 
     def get(index)

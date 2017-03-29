@@ -7,11 +7,11 @@ module Gst
     end
 
     def to_unsafe
-      @gst_toc_entry.not_nil!.as(Void*)
+      @gst_toc_entry.not_nil!
     end
 
     def self.new(type : Gst::TocEntryType, uid) : self
-      __return_value = LibGst.toc_entry_new(type, uid.to_unsafe)
+      __return_value = LibGst.toc_entry_new(type, uid)
       cast Gst::TocEntry.new(__return_value)
     end
 

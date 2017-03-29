@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_flow_box_child.not_nil!.as(Void*)
+      @gtk_flow_box_child.not_nil!
     end
 
     # Implements ImplementorIface

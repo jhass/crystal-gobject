@@ -7,7 +7,7 @@ module Cairo
     end
 
     def to_unsafe
-      @cairo_pattern.not_nil!.as(Void*)
+      @cairo_pattern.not_nil!
     end
 
   end

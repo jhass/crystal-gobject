@@ -15,7 +15,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_query.not_nil!.as(Void*)
+      @gst_query.not_nil!
     end
 
     def self.new_accept_caps(caps) : self
@@ -39,7 +39,7 @@ module Gst
     end
 
     def self.new_context(context_type) : self
-      __return_value = LibGst.query_new_context(context_type.to_unsafe)
+      __return_value = LibGst.query_new_context(context_type)
       cast Gst::Query.new(__return_value)
     end
 
@@ -399,12 +399,12 @@ module Gst
     end
 
     def uri=(uri)
-      __return_value = LibGst.query_set_uri(to_unsafe.as(LibGst::Query*), uri.to_unsafe)
+      __return_value = LibGst.query_set_uri(to_unsafe.as(LibGst::Query*), uri)
       __return_value
     end
 
     def uri_redirection=(uri)
-      __return_value = LibGst.query_set_uri_redirection(to_unsafe.as(LibGst::Query*), uri.to_unsafe)
+      __return_value = LibGst.query_set_uri_redirection(to_unsafe.as(LibGst::Query*), uri)
       __return_value
     end
 

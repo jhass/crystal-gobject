@@ -20,7 +20,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_memory.not_nil!.as(Void*)
+      @gst_memory.not_nil!
     end
 
     def self.new_wrapped(flags : Gst::MemoryFlags, data, maxsize, offset, size, user_data, notify) : self
@@ -44,7 +44,7 @@ module Gst
     end
 
     def type?(mem_type)
-      __return_value = LibGst.memory_is_type(to_unsafe.as(LibGst::Memory*), mem_type.to_unsafe)
+      __return_value = LibGst.memory_is_type(to_unsafe.as(LibGst::Memory*), mem_type)
       __return_value
     end
 

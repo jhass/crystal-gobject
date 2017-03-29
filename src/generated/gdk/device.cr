@@ -5,8 +5,10 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_device.not_nil!.as(Void*)
+      @gdk_device.not_nil!
     end
+
+
 
 
 
@@ -29,6 +31,11 @@ module Gdk
     def associated_device
       __return_value = LibGdk.device_get_associated_device(to_unsafe.as(LibGdk::Device*))
       Gdk::Device.new(__return_value) if __return_value
+    end
+
+    def axes
+      __return_value = LibGdk.device_get_axes(to_unsafe.as(LibGdk::Device*))
+      __return_value
     end
 
     def axis_use(index)
@@ -168,6 +175,15 @@ module Gdk
        __return_value
       }
       connect("changed", __callback)
+    end
+
+    alias ToolChangedSignal = Device, Gdk::DeviceTool ->
+    def on_tool_changed(&__block : ToolChangedSignal)
+      __callback = ->(_arg0 : LibGdk::Device*, _arg1 : LibGdk::LibGdk::DeviceTool*) {
+       __return_value = __block.call(Device.new(_arg0), Gdk::DeviceTool.new(_arg1))
+       __return_value
+      }
+      connect("tool-changed", __callback)
     end
 
   end

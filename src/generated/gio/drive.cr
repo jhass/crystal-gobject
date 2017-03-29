@@ -60,7 +60,7 @@ module Gio
     end
 
     def identifier(kind)
-      __return_value = LibGio.drive_get_identifier(to_unsafe.as(LibGio::Drive*), kind.to_unsafe)
+      __return_value = LibGio.drive_get_identifier(to_unsafe.as(LibGio::Drive*), kind)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
@@ -106,6 +106,11 @@ module Gio
 
     def media_removable?
       __return_value = LibGio.drive_is_media_removable(to_unsafe.as(LibGio::Drive*))
+      __return_value
+    end
+
+    def removable?
+      __return_value = LibGio.drive_is_removable(to_unsafe.as(LibGio::Drive*))
       __return_value
     end
 

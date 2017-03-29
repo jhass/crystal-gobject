@@ -7,7 +7,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_frame_clock_private.not_nil!.as(Void*)
+      @gdk_frame_clock_private.not_nil!
     end
 
   end

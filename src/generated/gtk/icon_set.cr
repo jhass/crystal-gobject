@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_icon_set.not_nil!.as(Void*)
+      @gtk_icon_set.not_nil!
     end
 
     def self.new : self
@@ -41,7 +41,7 @@ module Gtk
     end
 
     def render_icon(style, direction : Gtk::TextDirection, state : Gtk::StateType, size, widget, detail)
-      __return_value = LibGtk.icon_set_render_icon(to_unsafe.as(LibGtk::IconSet*), style && style.to_unsafe.as(LibGtk::Style*), direction, state, Int32.new(size), widget && widget.to_unsafe.as(LibGtk::Widget*), detail && detail.to_unsafe)
+      __return_value = LibGtk.icon_set_render_icon(to_unsafe.as(LibGtk::IconSet*), style && style.to_unsafe.as(LibGtk::Style*), direction, state, Int32.new(size), widget && widget.to_unsafe.as(LibGtk::Widget*), detail)
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 

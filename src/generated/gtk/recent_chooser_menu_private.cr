@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_recent_chooser_menu_private.not_nil!.as(Void*)
+      @gtk_recent_chooser_menu_private.not_nil!
     end
 
   end

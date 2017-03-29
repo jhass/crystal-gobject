@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_d_bus_method_invocation.not_nil!.as(Void*)
+      @gio_d_bus_method_invocation.not_nil!
     end
 
     def connection
@@ -54,12 +54,12 @@ module Gio
     end
 
     def return_dbus_error(error_name, error_message)
-      __return_value = LibGio.d_bus_method_invocation_return_dbus_error(to_unsafe.as(LibGio::DBusMethodInvocation*), error_name.to_unsafe, error_message.to_unsafe)
+      __return_value = LibGio.d_bus_method_invocation_return_dbus_error(to_unsafe.as(LibGio::DBusMethodInvocation*), error_name, error_message)
       __return_value
     end
 
     def return_error_literal(domain, code, message)
-      __return_value = LibGio.d_bus_method_invocation_return_error_literal(to_unsafe.as(LibGio::DBusMethodInvocation*), UInt32.new(domain), Int32.new(code), message.to_unsafe)
+      __return_value = LibGio.d_bus_method_invocation_return_error_literal(to_unsafe.as(LibGio::DBusMethodInvocation*), UInt32.new(domain), Int32.new(code), message)
       __return_value
     end
 

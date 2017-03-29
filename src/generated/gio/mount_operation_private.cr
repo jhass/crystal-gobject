@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_mount_operation_private.not_nil!.as(Void*)
+      @gio_mount_operation_private.not_nil!
     end
 
   end

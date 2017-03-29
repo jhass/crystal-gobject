@@ -5,14 +5,14 @@ module Gio
     end
 
     def to_unsafe
-      @gio_d_bus_object_proxy.not_nil!.as(Void*)
+      @gio_d_bus_object_proxy.not_nil!
     end
 
     # Implements DBusObject
 
 
     def self.new(connection, object_path) : self
-      __return_value = LibGio.d_bus_object_proxy_new(connection.to_unsafe.as(LibGio::DBusConnection*), object_path.to_unsafe)
+      __return_value = LibGio.d_bus_object_proxy_new(connection.to_unsafe.as(LibGio::DBusConnection*), object_path)
       cast Gio::DBusObjectProxy.new(__return_value)
     end
 

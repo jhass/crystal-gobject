@@ -20,7 +20,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_hook_list.not_nil!.as(Void*)
+      @g_lib_hook_list.not_nil!
     end
 
     def clear

@@ -17,7 +17,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_d_bus_arg_info.not_nil!.as(Void*)
+      @gio_d_bus_arg_info.not_nil!
     end
 
     def ref
@@ -43,7 +43,7 @@ module Gio
     end
 
     def name=(value : String)
-      to_unsafe.as(LibGio::DBusArgInfo*).value.name = value.to_unsafe
+      to_unsafe.as(LibGio::DBusArgInfo*).value.name = value
     end
 
     def signature
@@ -51,7 +51,7 @@ module Gio
     end
 
     def signature=(value : String)
-      to_unsafe.as(LibGio::DBusArgInfo*).value.signature = value.to_unsafe
+      to_unsafe.as(LibGio::DBusArgInfo*).value.signature = value
     end
 
     def annotations

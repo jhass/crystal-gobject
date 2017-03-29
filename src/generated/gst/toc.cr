@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_toc.not_nil!.as(Void*)
+      @gst_toc.not_nil!
     end
 
     def self.new(scope : Gst::TocScope) : self
@@ -26,7 +26,7 @@ module Gst
     end
 
     def find_entry(uid)
-      __return_value = LibGst.toc_find_entry(to_unsafe.as(LibGst::Toc*), uid.to_unsafe)
+      __return_value = LibGst.toc_find_entry(to_unsafe.as(LibGst::Toc*), uid)
       Gst::TocEntry.new(__return_value) if __return_value
     end
 

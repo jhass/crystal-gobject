@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_print_operation.not_nil!.as(Void*)
+      @gtk_print_operation.not_nil!
     end
 
     # Implements PrintOperationPreview
@@ -112,7 +112,7 @@ module Gtk
     end
 
     def custom_tab_label=(label)
-      __return_value = LibGtk.print_operation_set_custom_tab_label(to_unsafe.as(LibGtk::PrintOperation*), label && label.to_unsafe)
+      __return_value = LibGtk.print_operation_set_custom_tab_label(to_unsafe.as(LibGtk::PrintOperation*), label)
       __return_value
     end
 
@@ -132,7 +132,7 @@ module Gtk
     end
 
     def export_filename=(filename)
-      __return_value = LibGtk.print_operation_set_export_filename(to_unsafe.as(LibGtk::PrintOperation*), filename.to_unsafe)
+      __return_value = LibGtk.print_operation_set_export_filename(to_unsafe.as(LibGtk::PrintOperation*), filename)
       __return_value
     end
 
@@ -142,7 +142,7 @@ module Gtk
     end
 
     def job_name=(job_name)
-      __return_value = LibGtk.print_operation_set_job_name(to_unsafe.as(LibGtk::PrintOperation*), job_name.to_unsafe)
+      __return_value = LibGtk.print_operation_set_job_name(to_unsafe.as(LibGtk::PrintOperation*), job_name)
       __return_value
     end
 

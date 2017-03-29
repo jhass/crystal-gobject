@@ -28,7 +28,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_event_touchpad_pinch.not_nil!.as(Void*)
+      @gdk_event_touchpad_pinch.not_nil!
     end
 
     def type

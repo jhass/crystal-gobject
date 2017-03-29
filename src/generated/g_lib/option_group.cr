@@ -7,11 +7,11 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_option_group.not_nil!.as(Void*)
+      @g_lib_option_group.not_nil!
     end
 
     def self.new(name, description, help_description, user_data, destroy) : self
-      __return_value = LibGLib.option_group_new(name.to_unsafe, description.to_unsafe, help_description.to_unsafe, user_data && user_data, destroy && destroy)
+      __return_value = LibGLib.option_group_new(name, description, help_description, user_data && user_data, destroy && destroy)
       cast GLib::OptionGroup.new(__return_value)
     end
 
@@ -36,7 +36,7 @@ module GLib
     end
 
     def translation_domain=(domain)
-      __return_value = LibGLib.option_group_set_translation_domain(to_unsafe.as(LibGLib::OptionGroup*), domain.to_unsafe)
+      __return_value = LibGLib.option_group_set_translation_domain(to_unsafe.as(LibGLib::OptionGroup*), domain)
       __return_value
     end
 

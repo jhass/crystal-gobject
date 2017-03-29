@@ -24,7 +24,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_plugin_desc.not_nil!.as(Void*)
+      @gst_plugin_desc.not_nil!
     end
 
     def major_version
@@ -48,7 +48,7 @@ module Gst
     end
 
     def name=(value : String)
-      to_unsafe.as(LibGst::PluginDesc*).value.name = value.to_unsafe
+      to_unsafe.as(LibGst::PluginDesc*).value.name = value
     end
 
     def description
@@ -56,7 +56,7 @@ module Gst
     end
 
     def description=(value : String)
-      to_unsafe.as(LibGst::PluginDesc*).value.description = value.to_unsafe
+      to_unsafe.as(LibGst::PluginDesc*).value.description = value
     end
 
     def plugin_init
@@ -72,7 +72,7 @@ module Gst
     end
 
     def version=(value : String)
-      to_unsafe.as(LibGst::PluginDesc*).value.version = value.to_unsafe
+      to_unsafe.as(LibGst::PluginDesc*).value.version = value
     end
 
     def license
@@ -80,7 +80,7 @@ module Gst
     end
 
     def license=(value : String)
-      to_unsafe.as(LibGst::PluginDesc*).value.license = value.to_unsafe
+      to_unsafe.as(LibGst::PluginDesc*).value.license = value
     end
 
     def source
@@ -88,7 +88,7 @@ module Gst
     end
 
     def source=(value : String)
-      to_unsafe.as(LibGst::PluginDesc*).value.source = value.to_unsafe
+      to_unsafe.as(LibGst::PluginDesc*).value.source = value
     end
 
     def package
@@ -96,7 +96,7 @@ module Gst
     end
 
     def package=(value : String)
-      to_unsafe.as(LibGst::PluginDesc*).value.package = value.to_unsafe
+      to_unsafe.as(LibGst::PluginDesc*).value.package = value
     end
 
     def origin
@@ -104,7 +104,7 @@ module Gst
     end
 
     def origin=(value : String)
-      to_unsafe.as(LibGst::PluginDesc*).value.origin = value.to_unsafe
+      to_unsafe.as(LibGst::PluginDesc*).value.origin = value
     end
 
     def release_datetime
@@ -112,7 +112,7 @@ module Gst
     end
 
     def release_datetime=(value : String)
-      to_unsafe.as(LibGst::PluginDesc*).value.release_datetime = value.to_unsafe
+      to_unsafe.as(LibGst::PluginDesc*).value.release_datetime = value
     end
 
     def _gst_reserved

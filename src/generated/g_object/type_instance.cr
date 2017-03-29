@@ -12,7 +12,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_type_instance.not_nil!.as(Void*)
+      @g_object_type_instance.not_nil!
     end
 
     def private(private_type)

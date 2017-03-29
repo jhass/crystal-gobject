@@ -26,7 +26,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_event_touch.not_nil!.as(Void*)
+      @gdk_event_touch.not_nil!
     end
 
     def type

@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_progress_bar.not_nil!.as(Void*)
+      @gtk_progress_bar.not_nil!
     end
 
     # Implements ImplementorIface
@@ -85,7 +85,7 @@ module Gtk
     end
 
     def text=(text)
-      __return_value = LibGtk.progress_bar_set_text(to_unsafe.as(LibGtk::ProgressBar*), text && text.to_unsafe)
+      __return_value = LibGtk.progress_bar_set_text(to_unsafe.as(LibGtk::ProgressBar*), text)
       __return_value
     end
 

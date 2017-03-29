@@ -20,7 +20,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_recent_filter_info.not_nil!.as(Void*)
+      @gtk_recent_filter_info.not_nil!
     end
 
     def contains
@@ -36,7 +36,7 @@ module Gtk
     end
 
     def uri=(value : String)
-      to_unsafe.as(LibGtk::RecentFilterInfo*).value.uri = value.to_unsafe
+      to_unsafe.as(LibGtk::RecentFilterInfo*).value.uri = value
     end
 
     def display_name
@@ -44,7 +44,7 @@ module Gtk
     end
 
     def display_name=(value : String)
-      to_unsafe.as(LibGtk::RecentFilterInfo*).value.display_name = value.to_unsafe
+      to_unsafe.as(LibGtk::RecentFilterInfo*).value.display_name = value
     end
 
     def mime_type
@@ -52,7 +52,7 @@ module Gtk
     end
 
     def mime_type=(value : String)
-      to_unsafe.as(LibGtk::RecentFilterInfo*).value.mime_type = value.to_unsafe
+      to_unsafe.as(LibGtk::RecentFilterInfo*).value.mime_type = value
     end
 
     def applications

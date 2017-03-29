@@ -135,17 +135,17 @@ module GObject
   end
 
   def self.enum_get_value_by_name(enum_class, name)
-    __return_value = LibGObject.enum_get_value_by_name(enum_class.to_unsafe.as(LibGObject::EnumClass*), name.to_unsafe)
+    __return_value = LibGObject.enum_get_value_by_name(enum_class.to_unsafe.as(LibGObject::EnumClass*), name)
     GObject::EnumValue.new(__return_value)
   end
 
   def self.enum_get_value_by_nick(enum_class, nick)
-    __return_value = LibGObject.enum_get_value_by_nick(enum_class.to_unsafe.as(LibGObject::EnumClass*), nick.to_unsafe)
+    __return_value = LibGObject.enum_get_value_by_nick(enum_class.to_unsafe.as(LibGObject::EnumClass*), nick)
     GObject::EnumValue.new(__return_value)
   end
 
   def self.enum_register_static(name, const_static_values)
-    __return_value = LibGObject.enum_register_static(name.to_unsafe, const_static_values.to_unsafe.as(LibGObject::EnumValue*))
+    __return_value = LibGObject.enum_register_static(name, const_static_values.to_unsafe.as(LibGObject::EnumValue*))
     __return_value
   end
 
@@ -160,17 +160,17 @@ module GObject
   end
 
   def self.flags_get_value_by_name(flags_class, name)
-    __return_value = LibGObject.flags_get_value_by_name(flags_class.to_unsafe.as(LibGObject::FlagsClass*), name.to_unsafe)
+    __return_value = LibGObject.flags_get_value_by_name(flags_class.to_unsafe.as(LibGObject::FlagsClass*), name)
     GObject::FlagsValue.new(__return_value)
   end
 
   def self.flags_get_value_by_nick(flags_class, nick)
-    __return_value = LibGObject.flags_get_value_by_nick(flags_class.to_unsafe.as(LibGObject::FlagsClass*), nick.to_unsafe)
+    __return_value = LibGObject.flags_get_value_by_nick(flags_class.to_unsafe.as(LibGObject::FlagsClass*), nick)
     GObject::FlagsValue.new(__return_value)
   end
 
   def self.flags_register_static(name, const_static_values)
-    __return_value = LibGObject.flags_register_static(name.to_unsafe, const_static_values.to_unsafe.as(LibGObject::FlagsValue*))
+    __return_value = LibGObject.flags_register_static(name, const_static_values.to_unsafe.as(LibGObject::FlagsValue*))
     __return_value
   end
 
@@ -180,72 +180,72 @@ module GObject
   end
 
   def self.param_spec_boolean(name, nick, blurb, default_value, flags : GObject::ParamFlags)
-    __return_value = LibGObject.param_spec_boolean(name.to_unsafe, nick.to_unsafe, blurb.to_unsafe, default_value, flags)
+    __return_value = LibGObject.param_spec_boolean(name, nick, blurb, default_value, flags)
     GObject::ParamSpec.new(__return_value)
   end
 
   def self.param_spec_boxed(name, nick, blurb, boxed_type, flags : GObject::ParamFlags)
-    __return_value = LibGObject.param_spec_boxed(name.to_unsafe, nick.to_unsafe, blurb.to_unsafe, UInt64.new(boxed_type), flags)
+    __return_value = LibGObject.param_spec_boxed(name, nick, blurb, UInt64.new(boxed_type), flags)
     GObject::ParamSpec.new(__return_value)
   end
 
   def self.param_spec_char(name, nick, blurb, minimum, maximum, default_value, flags : GObject::ParamFlags)
-    __return_value = LibGObject.param_spec_char(name.to_unsafe, nick.to_unsafe, blurb.to_unsafe, Int8.new(minimum), Int8.new(maximum), Int8.new(default_value), flags)
+    __return_value = LibGObject.param_spec_char(name, nick, blurb, Int8.new(minimum), Int8.new(maximum), Int8.new(default_value), flags)
     GObject::ParamSpec.new(__return_value)
   end
 
   def self.param_spec_double(name, nick, blurb, minimum, maximum, default_value, flags : GObject::ParamFlags)
-    __return_value = LibGObject.param_spec_double(name.to_unsafe, nick.to_unsafe, blurb.to_unsafe, Float64.new(minimum), Float64.new(maximum), Float64.new(default_value), flags)
+    __return_value = LibGObject.param_spec_double(name, nick, blurb, Float64.new(minimum), Float64.new(maximum), Float64.new(default_value), flags)
     GObject::ParamSpec.new(__return_value)
   end
 
   def self.param_spec_enum(name, nick, blurb, enum_type, default_value, flags : GObject::ParamFlags)
-    __return_value = LibGObject.param_spec_enum(name.to_unsafe, nick.to_unsafe, blurb.to_unsafe, UInt64.new(enum_type), Int32.new(default_value), flags)
+    __return_value = LibGObject.param_spec_enum(name, nick, blurb, UInt64.new(enum_type), Int32.new(default_value), flags)
     GObject::ParamSpec.new(__return_value)
   end
 
   def self.param_spec_flags(name, nick, blurb, flags_type, default_value, flags : GObject::ParamFlags)
-    __return_value = LibGObject.param_spec_flags(name.to_unsafe, nick.to_unsafe, blurb.to_unsafe, UInt64.new(flags_type), UInt32.new(default_value), flags)
+    __return_value = LibGObject.param_spec_flags(name, nick, blurb, UInt64.new(flags_type), UInt32.new(default_value), flags)
     GObject::ParamSpec.new(__return_value)
   end
 
   def self.param_spec_float(name, nick, blurb, minimum, maximum, default_value, flags : GObject::ParamFlags)
-    __return_value = LibGObject.param_spec_float(name.to_unsafe, nick.to_unsafe, blurb.to_unsafe, Float32.new(minimum), Float32.new(maximum), Float32.new(default_value), flags)
+    __return_value = LibGObject.param_spec_float(name, nick, blurb, Float32.new(minimum), Float32.new(maximum), Float32.new(default_value), flags)
     GObject::ParamSpec.new(__return_value)
   end
 
   def self.param_spec_gtype(name, nick, blurb, is_a_type, flags : GObject::ParamFlags)
-    __return_value = LibGObject.param_spec_gtype(name.to_unsafe, nick.to_unsafe, blurb.to_unsafe, UInt64.new(is_a_type), flags)
+    __return_value = LibGObject.param_spec_gtype(name, nick, blurb, UInt64.new(is_a_type), flags)
     GObject::ParamSpec.new(__return_value)
   end
 
   def self.param_spec_int(name, nick, blurb, minimum, maximum, default_value, flags : GObject::ParamFlags)
-    __return_value = LibGObject.param_spec_int(name.to_unsafe, nick.to_unsafe, blurb.to_unsafe, Int32.new(minimum), Int32.new(maximum), Int32.new(default_value), flags)
+    __return_value = LibGObject.param_spec_int(name, nick, blurb, Int32.new(minimum), Int32.new(maximum), Int32.new(default_value), flags)
     GObject::ParamSpec.new(__return_value)
   end
 
   def self.param_spec_int64(name, nick, blurb, minimum, maximum, default_value, flags : GObject::ParamFlags)
-    __return_value = LibGObject.param_spec_int64(name.to_unsafe, nick.to_unsafe, blurb.to_unsafe, Int64.new(minimum), Int64.new(maximum), Int64.new(default_value), flags)
+    __return_value = LibGObject.param_spec_int64(name, nick, blurb, Int64.new(minimum), Int64.new(maximum), Int64.new(default_value), flags)
     GObject::ParamSpec.new(__return_value)
   end
 
   def self.param_spec_long(name, nick, blurb, minimum, maximum, default_value, flags : GObject::ParamFlags)
-    __return_value = LibGObject.param_spec_long(name.to_unsafe, nick.to_unsafe, blurb.to_unsafe, Int64.new(minimum), Int64.new(maximum), Int64.new(default_value), flags)
+    __return_value = LibGObject.param_spec_long(name, nick, blurb, Int64.new(minimum), Int64.new(maximum), Int64.new(default_value), flags)
     GObject::ParamSpec.new(__return_value)
   end
 
   def self.param_spec_object(name, nick, blurb, object_type, flags : GObject::ParamFlags)
-    __return_value = LibGObject.param_spec_object(name.to_unsafe, nick.to_unsafe, blurb.to_unsafe, UInt64.new(object_type), flags)
+    __return_value = LibGObject.param_spec_object(name, nick, blurb, UInt64.new(object_type), flags)
     GObject::ParamSpec.new(__return_value)
   end
 
   def self.param_spec_param(name, nick, blurb, param_type, flags : GObject::ParamFlags)
-    __return_value = LibGObject.param_spec_param(name.to_unsafe, nick.to_unsafe, blurb.to_unsafe, UInt64.new(param_type), flags)
+    __return_value = LibGObject.param_spec_param(name, nick, blurb, UInt64.new(param_type), flags)
     GObject::ParamSpec.new(__return_value)
   end
 
   def self.param_spec_pointer(name, nick, blurb, flags : GObject::ParamFlags)
-    __return_value = LibGObject.param_spec_pointer(name.to_unsafe, nick.to_unsafe, blurb.to_unsafe, flags)
+    __return_value = LibGObject.param_spec_pointer(name, nick, blurb, flags)
     GObject::ParamSpec.new(__return_value)
   end
 
@@ -255,42 +255,42 @@ module GObject
   end
 
   def self.param_spec_string(name, nick, blurb, default_value, flags : GObject::ParamFlags)
-    __return_value = LibGObject.param_spec_string(name.to_unsafe, nick.to_unsafe, blurb.to_unsafe, default_value && default_value.to_unsafe, flags)
+    __return_value = LibGObject.param_spec_string(name, nick, blurb, default_value, flags)
     GObject::ParamSpec.new(__return_value)
   end
 
   def self.param_spec_uchar(name, nick, blurb, minimum, maximum, default_value, flags : GObject::ParamFlags)
-    __return_value = LibGObject.param_spec_uchar(name.to_unsafe, nick.to_unsafe, blurb.to_unsafe, UInt8.new(minimum), UInt8.new(maximum), UInt8.new(default_value), flags)
+    __return_value = LibGObject.param_spec_uchar(name, nick, blurb, UInt8.new(minimum), UInt8.new(maximum), UInt8.new(default_value), flags)
     GObject::ParamSpec.new(__return_value)
   end
 
   def self.param_spec_uint(name, nick, blurb, minimum, maximum, default_value, flags : GObject::ParamFlags)
-    __return_value = LibGObject.param_spec_uint(name.to_unsafe, nick.to_unsafe, blurb.to_unsafe, UInt32.new(minimum), UInt32.new(maximum), UInt32.new(default_value), flags)
+    __return_value = LibGObject.param_spec_uint(name, nick, blurb, UInt32.new(minimum), UInt32.new(maximum), UInt32.new(default_value), flags)
     GObject::ParamSpec.new(__return_value)
   end
 
   def self.param_spec_uint64(name, nick, blurb, minimum, maximum, default_value, flags : GObject::ParamFlags)
-    __return_value = LibGObject.param_spec_uint64(name.to_unsafe, nick.to_unsafe, blurb.to_unsafe, UInt64.new(minimum), UInt64.new(maximum), UInt64.new(default_value), flags)
+    __return_value = LibGObject.param_spec_uint64(name, nick, blurb, UInt64.new(minimum), UInt64.new(maximum), UInt64.new(default_value), flags)
     GObject::ParamSpec.new(__return_value)
   end
 
   def self.param_spec_ulong(name, nick, blurb, minimum, maximum, default_value, flags : GObject::ParamFlags)
-    __return_value = LibGObject.param_spec_ulong(name.to_unsafe, nick.to_unsafe, blurb.to_unsafe, UInt64.new(minimum), UInt64.new(maximum), UInt64.new(default_value), flags)
+    __return_value = LibGObject.param_spec_ulong(name, nick, blurb, UInt64.new(minimum), UInt64.new(maximum), UInt64.new(default_value), flags)
     GObject::ParamSpec.new(__return_value)
   end
 
   def self.param_spec_unichar(name, nick, blurb, default_value, flags : GObject::ParamFlags)
-    __return_value = LibGObject.param_spec_unichar(name.to_unsafe, nick.to_unsafe, blurb.to_unsafe, UInt8.new(default_value), flags)
+    __return_value = LibGObject.param_spec_unichar(name, nick, blurb, UInt8.new(default_value), flags)
     GObject::ParamSpec.new(__return_value)
   end
 
   def self.param_spec_variant(name, nick, blurb, type, default_value, flags : GObject::ParamFlags)
-    __return_value = LibGObject.param_spec_variant(name.to_unsafe, nick.to_unsafe, blurb.to_unsafe, type.to_unsafe.as(LibGLib::VariantType*), default_value && default_value.to_unsafe.as(LibGLib::Variant*), flags)
+    __return_value = LibGObject.param_spec_variant(name, nick, blurb, type.to_unsafe.as(LibGLib::VariantType*), default_value && default_value.to_unsafe.as(LibGLib::Variant*), flags)
     GObject::ParamSpec.new(__return_value)
   end
 
   def self.param_type_register_static(name, pspec_info)
-    __return_value = LibGObject.param_type_register_static(name.to_unsafe, pspec_info.to_unsafe.as(LibGObject::ParamSpecTypeInfo*))
+    __return_value = LibGObject.param_type_register_static(name, pspec_info.to_unsafe.as(LibGObject::ParamSpecTypeInfo*))
     __return_value
   end
 
@@ -320,7 +320,7 @@ module GObject
   end
 
   def self.pointer_type_register_static(name)
-    __return_value = LibGObject.pointer_type_register_static(name.to_unsafe)
+    __return_value = LibGObject.pointer_type_register_static(name)
     __return_value
   end
 
@@ -345,7 +345,7 @@ module GObject
   end
 
   def self.signal_connect_closure(instance, detailed_signal, closure, after)
-    __return_value = LibGObject.signal_connect_closure(instance.to_unsafe.as(LibGObject::Object*), detailed_signal.to_unsafe, closure.to_unsafe.as(LibGObject::Closure*), after)
+    __return_value = LibGObject.signal_connect_closure(instance.to_unsafe.as(LibGObject::Object*), detailed_signal, closure.to_unsafe.as(LibGObject::Closure*), after)
     __return_value
   end
 
@@ -420,7 +420,7 @@ module GObject
   end
 
   def self.signal_lookup(name, itype)
-    __return_value = LibGObject.signal_lookup(name.to_unsafe, UInt64.new(itype))
+    __return_value = LibGObject.signal_lookup(name, UInt64.new(itype))
     __return_value
   end
 
@@ -435,7 +435,7 @@ module GObject
   end
 
   def self.signal_parse_name(detailed_signal, itype, signal_id_p, detail_p, force_detail_quark)
-    __return_value = LibGObject.signal_parse_name(detailed_signal.to_unsafe, UInt64.new(itype), signal_id_p, detail_p, force_detail_quark)
+    __return_value = LibGObject.signal_parse_name(detailed_signal, UInt64.new(itype), signal_id_p, detail_p, force_detail_quark)
     __return_value
   end
 
@@ -460,7 +460,7 @@ module GObject
   end
 
   def self.signal_stop_emission_by_name(instance, detailed_signal)
-    __return_value = LibGObject.signal_stop_emission_by_name(instance.to_unsafe.as(LibGObject::Object*), detailed_signal.to_unsafe)
+    __return_value = LibGObject.signal_stop_emission_by_name(instance.to_unsafe.as(LibGObject::Object*), detailed_signal)
     __return_value
   end
 
@@ -595,7 +595,7 @@ module GObject
   end
 
   def self.type_from_name(name)
-    __return_value = LibGObject.type_from_name(name.to_unsafe)
+    __return_value = LibGObject.type_from_name(name)
     __return_value
   end
 
@@ -705,17 +705,17 @@ module GObject
   end
 
   def self.type_register_dynamic(parent_type, type_name, plugin, flags : GObject::TypeFlags)
-    __return_value = LibGObject.type_register_dynamic(UInt64.new(parent_type), type_name.to_unsafe, plugin.to_unsafe.as(LibGObject::TypePlugin*), flags)
+    __return_value = LibGObject.type_register_dynamic(UInt64.new(parent_type), type_name, plugin.to_unsafe.as(LibGObject::TypePlugin*), flags)
     __return_value
   end
 
   def self.type_register_fundamental(type_id, type_name, info, finfo, flags : GObject::TypeFlags)
-    __return_value = LibGObject.type_register_fundamental(UInt64.new(type_id), type_name.to_unsafe, info.to_unsafe.as(LibGObject::TypeInfo*), finfo.to_unsafe.as(LibGObject::TypeFundamentalInfo*), flags)
+    __return_value = LibGObject.type_register_fundamental(UInt64.new(type_id), type_name, info.to_unsafe.as(LibGObject::TypeInfo*), finfo.to_unsafe.as(LibGObject::TypeFundamentalInfo*), flags)
     __return_value
   end
 
   def self.type_register_static(parent_type, type_name, info, flags : GObject::TypeFlags)
-    __return_value = LibGObject.type_register_static(UInt64.new(parent_type), type_name.to_unsafe, info.to_unsafe.as(LibGObject::TypeInfo*), flags)
+    __return_value = LibGObject.type_register_static(UInt64.new(parent_type), type_name, info.to_unsafe.as(LibGObject::TypeInfo*), flags)
     __return_value
   end
 

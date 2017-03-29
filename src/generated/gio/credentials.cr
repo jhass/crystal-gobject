@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_credentials.not_nil!.as(Void*)
+      @gio_credentials.not_nil!
     end
 
     def self.new : self

@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_image_menu_item.not_nil!.as(Void*)
+      @gtk_image_menu_item.not_nil!
     end
 
     # Implements ImplementorIface
@@ -24,17 +24,17 @@ module Gtk
     end
 
     def self.new_from_stock(stock_id, accel_group) : self
-      __return_value = LibGtk.image_menu_item_new_from_stock(stock_id.to_unsafe, accel_group && accel_group.to_unsafe.as(LibGtk::AccelGroup*))
+      __return_value = LibGtk.image_menu_item_new_from_stock(stock_id, accel_group && accel_group.to_unsafe.as(LibGtk::AccelGroup*))
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_label(label) : self
-      __return_value = LibGtk.image_menu_item_new_with_label(label.to_unsafe)
+      __return_value = LibGtk.image_menu_item_new_with_label(label)
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_mnemonic(label) : self
-      __return_value = LibGtk.image_menu_item_new_with_mnemonic(label.to_unsafe)
+      __return_value = LibGtk.image_menu_item_new_with_mnemonic(label)
       cast Gtk::Widget.new(__return_value)
     end
 

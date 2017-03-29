@@ -5,18 +5,18 @@ module Gio
     end
 
     def to_unsafe
-      @gio_desktop_app_info.not_nil!.as(Void*)
+      @gio_desktop_app_info.not_nil!
     end
 
     # Implements AppInfo
 
     def self.new(desktop_id) : self
-      __return_value = LibGio.desktop_app_info_new(desktop_id.to_unsafe)
+      __return_value = LibGio.desktop_app_info_new(desktop_id)
       cast Gio::DesktopAppInfo.new(__return_value)
     end
 
     def self.new_from_filename(filename) : self
-      __return_value = LibGio.desktop_app_info_new_from_filename(filename.to_unsafe)
+      __return_value = LibGio.desktop_app_info_new_from_filename(filename)
       cast Gio::DesktopAppInfo.new(__return_value)
     end
 
@@ -26,27 +26,27 @@ module Gio
     end
 
     def self.implementations(interface)
-      __return_value = LibGio.desktop_app_info_get_implementations(interface.to_unsafe)
+      __return_value = LibGio.desktop_app_info_get_implementations(interface)
       GLib::ListIterator(Gio::DesktopAppInfo, LibGio::DesktopAppInfo*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def self.search(search_string)
-      __return_value = LibGio.desktop_app_info_search(search_string.to_unsafe)
+      __return_value = LibGio.desktop_app_info_search(search_string)
       PointerIterator.new(__return_value) {|__item| PointerIterator.new(__item) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) } }
     end
 
     def self.set_desktop_env(desktop_env)
-      __return_value = LibGio.desktop_app_info_set_desktop_env(desktop_env.to_unsafe)
+      __return_value = LibGio.desktop_app_info_set_desktop_env(desktop_env)
       __return_value
     end
 
     def action_name(action_name)
-      __return_value = LibGio.desktop_app_info_get_action_name(to_unsafe.as(LibGio::DesktopAppInfo*), action_name.to_unsafe)
+      __return_value = LibGio.desktop_app_info_get_action_name(to_unsafe.as(LibGio::DesktopAppInfo*), action_name)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def boolean(key)
-      __return_value = LibGio.desktop_app_info_get_boolean(to_unsafe.as(LibGio::DesktopAppInfo*), key.to_unsafe)
+      __return_value = LibGio.desktop_app_info_get_boolean(to_unsafe.as(LibGio::DesktopAppInfo*), key)
       __return_value
     end
 
@@ -81,7 +81,7 @@ module Gio
     end
 
     def show_in(desktop_env)
-      __return_value = LibGio.desktop_app_info_get_show_in(to_unsafe.as(LibGio::DesktopAppInfo*), desktop_env && desktop_env.to_unsafe)
+      __return_value = LibGio.desktop_app_info_get_show_in(to_unsafe.as(LibGio::DesktopAppInfo*), desktop_env)
       __return_value
     end
 
@@ -91,17 +91,17 @@ module Gio
     end
 
     def string(key)
-      __return_value = LibGio.desktop_app_info_get_string(to_unsafe.as(LibGio::DesktopAppInfo*), key.to_unsafe)
+      __return_value = LibGio.desktop_app_info_get_string(to_unsafe.as(LibGio::DesktopAppInfo*), key)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def has_key(key)
-      __return_value = LibGio.desktop_app_info_has_key(to_unsafe.as(LibGio::DesktopAppInfo*), key.to_unsafe)
+      __return_value = LibGio.desktop_app_info_has_key(to_unsafe.as(LibGio::DesktopAppInfo*), key)
       __return_value
     end
 
     def launch_action(action_name, launch_context)
-      __return_value = LibGio.desktop_app_info_launch_action(to_unsafe.as(LibGio::DesktopAppInfo*), action_name.to_unsafe, launch_context && launch_context.to_unsafe.as(LibGio::AppLaunchContext*))
+      __return_value = LibGio.desktop_app_info_launch_action(to_unsafe.as(LibGio::DesktopAppInfo*), action_name, launch_context && launch_context.to_unsafe.as(LibGio::AppLaunchContext*))
       __return_value
     end
 

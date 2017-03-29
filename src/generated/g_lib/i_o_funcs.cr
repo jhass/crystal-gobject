@@ -12,7 +12,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_i_o_funcs.not_nil!.as(Void*)
+      @g_lib_i_o_funcs.not_nil!
     end
 
     def io_read

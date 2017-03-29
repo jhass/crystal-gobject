@@ -24,7 +24,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_iterator.not_nil!.as(Void*)
+      @gst_iterator.not_nil!
     end
 
     def self.new_single(type, object) : self

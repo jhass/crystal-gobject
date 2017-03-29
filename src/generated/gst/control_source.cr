@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_control_source.not_nil!.as(Void*)
+      @gst_control_source.not_nil!
     end
 
     def control_source_get_value(timestamp, value)

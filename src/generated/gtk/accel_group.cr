@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_accel_group.not_nil!.as(Void*)
+      @gtk_accel_group.not_nil!
     end
 
 
@@ -31,7 +31,7 @@ module Gtk
     end
 
     def connect_by_path(accel_path, closure)
-      __return_value = LibGtk.accel_group_connect_by_path(to_unsafe.as(LibGtk::AccelGroup*), accel_path.to_unsafe, closure.to_unsafe.as(LibGObject::Closure*))
+      __return_value = LibGtk.accel_group_connect_by_path(to_unsafe.as(LibGtk::AccelGroup*), accel_path, closure.to_unsafe.as(LibGObject::Closure*))
       __return_value
     end
 

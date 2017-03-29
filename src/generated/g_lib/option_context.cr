@@ -7,7 +7,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_option_context.not_nil!.as(Void*)
+      @g_lib_option_context.not_nil!
     end
 
     def add_group(group)
@@ -16,7 +16,7 @@ module GLib
     end
 
     def add_main_entries(entries, translation_domain)
-      __return_value = LibGLib.option_context_add_main_entries(to_unsafe.as(LibGLib::OptionContext*), entries.to_unsafe.as(LibGLib::OptionEntry*), translation_domain && translation_domain.to_unsafe)
+      __return_value = LibGLib.option_context_add_main_entries(to_unsafe.as(LibGLib::OptionContext*), entries.to_unsafe.as(LibGLib::OptionEntry*), translation_domain)
       __return_value
     end
 
@@ -75,7 +75,7 @@ module GLib
     end
 
     def description=(description)
-      __return_value = LibGLib.option_context_set_description(to_unsafe.as(LibGLib::OptionContext*), description && description.to_unsafe)
+      __return_value = LibGLib.option_context_set_description(to_unsafe.as(LibGLib::OptionContext*), description)
       __return_value
     end
 
@@ -100,7 +100,7 @@ module GLib
     end
 
     def summary=(summary)
-      __return_value = LibGLib.option_context_set_summary(to_unsafe.as(LibGLib::OptionContext*), summary && summary.to_unsafe)
+      __return_value = LibGLib.option_context_set_summary(to_unsafe.as(LibGLib::OptionContext*), summary)
       __return_value
     end
 
@@ -110,7 +110,7 @@ module GLib
     end
 
     def translation_domain=(domain)
-      __return_value = LibGLib.option_context_set_translation_domain(to_unsafe.as(LibGLib::OptionContext*), domain.to_unsafe)
+      __return_value = LibGLib.option_context_set_translation_domain(to_unsafe.as(LibGLib::OptionContext*), domain)
       __return_value
     end
 

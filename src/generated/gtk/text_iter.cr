@@ -12,7 +12,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_text_iter.not_nil!.as(Void*)
+      @gtk_text_iter.not_nil!
     end
 
     def assign(other)
@@ -56,7 +56,7 @@ module Gtk
     end
 
     def backward_search(str, flags : Gtk::TextSearchFlags, match_start, match_end, limit)
-      __return_value = LibGtk.text_iter_backward_search(to_unsafe.as(LibGtk::TextIter*), str.to_unsafe, flags, match_start, match_end, limit && limit.to_unsafe.as(LibGtk::TextIter*))
+      __return_value = LibGtk.text_iter_backward_search(to_unsafe.as(LibGtk::TextIter*), str, flags, match_start, match_end, limit && limit.to_unsafe.as(LibGtk::TextIter*))
       __return_value
     end
 
@@ -201,7 +201,7 @@ module Gtk
     end
 
     def forward_search(str, flags : Gtk::TextSearchFlags, match_start, match_end, limit)
-      __return_value = LibGtk.text_iter_forward_search(to_unsafe.as(LibGtk::TextIter*), str.to_unsafe, flags, match_start, match_end, limit && limit.to_unsafe.as(LibGtk::TextIter*))
+      __return_value = LibGtk.text_iter_forward_search(to_unsafe.as(LibGtk::TextIter*), str, flags, match_start, match_end, limit && limit.to_unsafe.as(LibGtk::TextIter*))
       __return_value
     end
 

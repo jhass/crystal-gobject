@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_cell_renderer_spinner.not_nil!.as(Void*)
+      @gtk_cell_renderer_spinner.not_nil!
     end
 
 

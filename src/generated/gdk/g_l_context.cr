@@ -5,7 +5,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_g_l_context.not_nil!.as(Void*)
+      @gdk_g_l_context.not_nil!
     end
 
 
@@ -18,7 +18,7 @@ module Gdk
 
     def self.current
       __return_value = LibGdk.g_l_context_get_current
-      Gdk::GLContext.new(__return_value)
+      Gdk::GLContext.new(__return_value) if __return_value
     end
 
     def debug_enabled
@@ -28,7 +28,7 @@ module Gdk
 
     def display
       __return_value = LibGdk.g_l_context_get_display(to_unsafe.as(LibGdk::GLContext*))
-      Gdk::Display.new(__return_value)
+      Gdk::Display.new(__return_value) if __return_value
     end
 
     def forward_compatible
@@ -43,7 +43,12 @@ module Gdk
 
     def shared_context
       __return_value = LibGdk.g_l_context_get_shared_context(to_unsafe.as(LibGdk::GLContext*))
-      Gdk::GLContext.new(__return_value)
+      Gdk::GLContext.new(__return_value) if __return_value
+    end
+
+    def use_es
+      __return_value = LibGdk.g_l_context_get_use_es(to_unsafe.as(LibGdk::GLContext*))
+      __return_value
     end
 
     def version(major, minor)
@@ -53,7 +58,7 @@ module Gdk
 
     def window
       __return_value = LibGdk.g_l_context_get_window(to_unsafe.as(LibGdk::GLContext*))
-      Gdk::Window.new(__return_value)
+      Gdk::Window.new(__return_value) if __return_value
     end
 
     def legacy?
@@ -85,6 +90,11 @@ module Gdk
 
     def set_required_version(major, minor)
       __return_value = LibGdk.g_l_context_set_required_version(to_unsafe.as(LibGdk::GLContext*), Int32.new(major), Int32.new(minor))
+      __return_value
+    end
+
+    def use_es=(use_es)
+      __return_value = LibGdk.g_l_context_set_use_es(to_unsafe.as(LibGdk::GLContext*), Int32.new(use_es))
       __return_value
     end
 

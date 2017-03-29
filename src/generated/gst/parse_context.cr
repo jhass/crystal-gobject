@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_parse_context.not_nil!.as(Void*)
+      @gst_parse_context.not_nil!
     end
 
     def self.new : self

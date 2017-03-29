@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_fraction_range.not_nil!.as(Void*)
+      @gst_fraction_range.not_nil!
     end
 
   end

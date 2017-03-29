@@ -17,7 +17,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_event_visibility.not_nil!.as(Void*)
+      @gdk_event_visibility.not_nil!
     end
 
     def type

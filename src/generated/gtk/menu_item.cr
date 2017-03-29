@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_menu_item.not_nil!.as(Void*)
+      @gtk_menu_item.not_nil!
     end
 
     # Implements ImplementorIface
@@ -25,12 +25,12 @@ module Gtk
     end
 
     def self.new_with_label(label) : self
-      __return_value = LibGtk.menu_item_new_with_label(label.to_unsafe)
+      __return_value = LibGtk.menu_item_new_with_label(label)
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_mnemonic(label) : self
-      __return_value = LibGtk.menu_item_new_with_mnemonic(label.to_unsafe)
+      __return_value = LibGtk.menu_item_new_with_mnemonic(label)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -80,12 +80,12 @@ module Gtk
     end
 
     def accel_path=(accel_path)
-      __return_value = LibGtk.menu_item_set_accel_path(to_unsafe.as(LibGtk::MenuItem*), accel_path && accel_path.to_unsafe)
+      __return_value = LibGtk.menu_item_set_accel_path(to_unsafe.as(LibGtk::MenuItem*), accel_path)
       __return_value
     end
 
     def label=(label)
-      __return_value = LibGtk.menu_item_set_label(to_unsafe.as(LibGtk::MenuItem*), label.to_unsafe)
+      __return_value = LibGtk.menu_item_set_label(to_unsafe.as(LibGtk::MenuItem*), label)
       __return_value
     end
 

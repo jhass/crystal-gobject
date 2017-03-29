@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_tooltip.not_nil!.as(Void*)
+      @gtk_tooltip.not_nil!
     end
 
     def self.trigger_tooltip_query(display)
@@ -29,22 +29,22 @@ module Gtk
     end
 
     def set_icon_from_icon_name(icon_name, size)
-      __return_value = LibGtk.tooltip_set_icon_from_icon_name(to_unsafe.as(LibGtk::Tooltip*), icon_name && icon_name.to_unsafe, Int32.new(size))
+      __return_value = LibGtk.tooltip_set_icon_from_icon_name(to_unsafe.as(LibGtk::Tooltip*), icon_name, Int32.new(size))
       __return_value
     end
 
     def set_icon_from_stock(stock_id, size)
-      __return_value = LibGtk.tooltip_set_icon_from_stock(to_unsafe.as(LibGtk::Tooltip*), stock_id && stock_id.to_unsafe, Int32.new(size))
+      __return_value = LibGtk.tooltip_set_icon_from_stock(to_unsafe.as(LibGtk::Tooltip*), stock_id, Int32.new(size))
       __return_value
     end
 
     def markup=(markup)
-      __return_value = LibGtk.tooltip_set_markup(to_unsafe.as(LibGtk::Tooltip*), markup && markup.to_unsafe)
+      __return_value = LibGtk.tooltip_set_markup(to_unsafe.as(LibGtk::Tooltip*), markup)
       __return_value
     end
 
     def text=(text)
-      __return_value = LibGtk.tooltip_set_text(to_unsafe.as(LibGtk::Tooltip*), text && text.to_unsafe)
+      __return_value = LibGtk.tooltip_set_text(to_unsafe.as(LibGtk::Tooltip*), text)
       __return_value
     end
 

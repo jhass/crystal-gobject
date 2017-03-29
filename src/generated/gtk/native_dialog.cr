@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_native_dialog.not_nil!.as(Void*)
+      @gtk_native_dialog.not_nil!
     end
 
 
@@ -53,7 +53,7 @@ module Gtk
     end
 
     def title=(title)
-      __return_value = LibGtk.native_dialog_set_title(to_unsafe.as(LibGtk::NativeDialog*), title.to_unsafe)
+      __return_value = LibGtk.native_dialog_set_title(to_unsafe.as(LibGtk::NativeDialog*), title)
       __return_value
     end
 

@@ -7,14 +7,14 @@ module Gst
     end
 
     def to_unsafe
-      @gst_bin.not_nil!.as(Void*)
+      @gst_bin.not_nil!
     end
 
     # Implements ChildProxy
 
 
     def self.new(name) : self
-      __return_value = LibGst.bin_new(name && name.to_unsafe)
+      __return_value = LibGst.bin_new(name)
       cast Gst::Element.new(__return_value)
     end
 
@@ -34,13 +34,18 @@ module Gst
     end
 
     def by_name(name)
-      __return_value = LibGst.bin_get_by_name(to_unsafe.as(LibGst::Bin*), name.to_unsafe)
+      __return_value = LibGst.bin_get_by_name(to_unsafe.as(LibGst::Bin*), name)
       Gst::Element.new(__return_value) if __return_value
     end
 
     def by_name_recurse_up(name)
-      __return_value = LibGst.bin_get_by_name_recurse_up(to_unsafe.as(LibGst::Bin*), name.to_unsafe)
+      __return_value = LibGst.bin_get_by_name_recurse_up(to_unsafe.as(LibGst::Bin*), name)
       Gst::Element.new(__return_value) if __return_value
+    end
+
+    def suppressed_flags
+      __return_value = LibGst.bin_get_suppressed_flags(to_unsafe.as(LibGst::Bin*))
+      __return_value
     end
 
     def iterate_all_by_interface(iface)
@@ -83,9 +88,32 @@ module Gst
       __return_value
     end
 
+    def suppressed_flags=(flags : Gst::ElementFlags)
+      __return_value = LibGst.bin_set_suppressed_flags(to_unsafe.as(LibGst::Bin*), flags)
+      __return_value
+    end
+
     def sync_children_states
       __return_value = LibGst.bin_sync_children_states(to_unsafe.as(LibGst::Bin*))
       __return_value
+    end
+
+    alias DeepElementAddedSignal = Bin, Gst::Bin, Gst::Element ->
+    def on_deep_element_added(&__block : DeepElementAddedSignal)
+      __callback = ->(_arg0 : LibGst::Bin*, _arg1 : LibGst::LibGst::Bin*, _arg2 : LibGst::LibGst::Element*) {
+       __return_value = __block.call(Bin.new(_arg0), Gst::Bin.new(_arg1), Gst::Element.new(_arg2))
+       __return_value
+      }
+      connect("deep-element-added", __callback)
+    end
+
+    alias DeepElementRemovedSignal = Bin, Gst::Bin, Gst::Element ->
+    def on_deep_element_removed(&__block : DeepElementRemovedSignal)
+      __callback = ->(_arg0 : LibGst::Bin*, _arg1 : LibGst::LibGst::Bin*, _arg2 : LibGst::LibGst::Element*) {
+       __return_value = __block.call(Bin.new(_arg0), Gst::Bin.new(_arg1), Gst::Element.new(_arg2))
+       __return_value
+      }
+      connect("deep-element-removed", __callback)
     end
 
     alias DoLatencySignal = Bin -> Bool

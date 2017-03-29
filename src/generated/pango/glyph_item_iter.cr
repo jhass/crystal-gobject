@@ -21,7 +21,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_glyph_item_iter.not_nil!.as(Void*)
+      @pango_glyph_item_iter.not_nil!
     end
 
     def copy
@@ -35,12 +35,12 @@ module Pango
     end
 
     def init_end(glyph_item, text)
-      __return_value = LibPango.glyph_item_iter_init_end(to_unsafe.as(LibPango::GlyphItemIter*), glyph_item.to_unsafe.as(LibPango::GlyphItem*), text.to_unsafe)
+      __return_value = LibPango.glyph_item_iter_init_end(to_unsafe.as(LibPango::GlyphItemIter*), glyph_item.to_unsafe.as(LibPango::GlyphItem*), text)
       __return_value
     end
 
     def init_start(glyph_item, text)
-      __return_value = LibPango.glyph_item_iter_init_start(to_unsafe.as(LibPango::GlyphItemIter*), glyph_item.to_unsafe.as(LibPango::GlyphItem*), text.to_unsafe)
+      __return_value = LibPango.glyph_item_iter_init_start(to_unsafe.as(LibPango::GlyphItemIter*), glyph_item.to_unsafe.as(LibPango::GlyphItem*), text)
       __return_value
     end
 
@@ -67,7 +67,7 @@ module Pango
     end
 
     def text=(value : String)
-      to_unsafe.as(LibPango::GlyphItemIter*).value.text = value.to_unsafe
+      to_unsafe.as(LibPango::GlyphItemIter*).value.text = value
     end
 
     def start_glyph

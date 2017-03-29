@@ -7,21 +7,21 @@ module Gst
     end
 
     def to_unsafe
-      @gst_uri.not_nil!.as(Void*)
+      @gst_uri.not_nil!
     end
 
     def self.new(scheme, userinfo, host, port, path, query, fragment) : self
-      __return_value = LibGst.uri_new(scheme && scheme.to_unsafe, userinfo && userinfo.to_unsafe, host && host.to_unsafe, UInt32.new(port), path && path.to_unsafe, query && query.to_unsafe, fragment && fragment.to_unsafe)
+      __return_value = LibGst.uri_new(scheme, userinfo, host, UInt32.new(port), path, query, fragment)
       cast Gst::Uri.new(__return_value)
     end
 
     def append_path(relative_path)
-      __return_value = LibGst.uri_append_path(to_unsafe.as(LibGst::Uri*), relative_path.to_unsafe)
+      __return_value = LibGst.uri_append_path(to_unsafe.as(LibGst::Uri*), relative_path)
       __return_value
     end
 
     def append_path_segment(path_segment)
-      __return_value = LibGst.uri_append_path_segment(to_unsafe.as(LibGst::Uri*), path_segment.to_unsafe)
+      __return_value = LibGst.uri_append_path_segment(to_unsafe.as(LibGst::Uri*), path_segment)
       __return_value
     end
 
@@ -31,7 +31,7 @@ module Gst
     end
 
     def from_string_with_base(uri)
-      __return_value = LibGst.uri_from_string_with_base(to_unsafe.as(LibGst::Uri*), uri.to_unsafe)
+      __return_value = LibGst.uri_from_string_with_base(to_unsafe.as(LibGst::Uri*), uri)
       Gst::Uri.new(__return_value)
     end
 
@@ -81,7 +81,7 @@ module Gst
     end
 
     def query_value(query_key)
-      __return_value = LibGst.uri_get_query_value(to_unsafe.as(LibGst::Uri*), query_key.to_unsafe)
+      __return_value = LibGst.uri_get_query_value(to_unsafe.as(LibGst::Uri*), query_key)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
@@ -116,7 +116,7 @@ module Gst
     end
 
     def new_with_base(scheme, userinfo, host, port, path, query, fragment)
-      __return_value = LibGst.uri_new_with_base(to_unsafe.as(LibGst::Uri*), scheme && scheme.to_unsafe, userinfo && userinfo.to_unsafe, host && host.to_unsafe, UInt32.new(port), path && path.to_unsafe, query && query.to_unsafe, fragment && fragment.to_unsafe)
+      __return_value = LibGst.uri_new_with_base(to_unsafe.as(LibGst::Uri*), scheme, userinfo, host, UInt32.new(port), path, query, fragment)
       Gst::Uri.new(__return_value)
     end
 
@@ -126,27 +126,27 @@ module Gst
     end
 
     def query_has_key(query_key)
-      __return_value = LibGst.uri_query_has_key(to_unsafe.as(LibGst::Uri*), query_key.to_unsafe)
+      __return_value = LibGst.uri_query_has_key(to_unsafe.as(LibGst::Uri*), query_key)
       __return_value
     end
 
     def remove_query_key(query_key)
-      __return_value = LibGst.uri_remove_query_key(to_unsafe.as(LibGst::Uri*), query_key.to_unsafe)
+      __return_value = LibGst.uri_remove_query_key(to_unsafe.as(LibGst::Uri*), query_key)
       __return_value
     end
 
     def fragment=(fragment)
-      __return_value = LibGst.uri_set_fragment(to_unsafe.as(LibGst::Uri*), fragment && fragment.to_unsafe)
+      __return_value = LibGst.uri_set_fragment(to_unsafe.as(LibGst::Uri*), fragment)
       __return_value
     end
 
     def host=(host)
-      __return_value = LibGst.uri_set_host(to_unsafe.as(LibGst::Uri*), host.to_unsafe)
+      __return_value = LibGst.uri_set_host(to_unsafe.as(LibGst::Uri*), host)
       __return_value
     end
 
     def path=(path)
-      __return_value = LibGst.uri_set_path(to_unsafe.as(LibGst::Uri*), path.to_unsafe)
+      __return_value = LibGst.uri_set_path(to_unsafe.as(LibGst::Uri*), path)
       __return_value
     end
 
@@ -156,7 +156,7 @@ module Gst
     end
 
     def path_string=(path)
-      __return_value = LibGst.uri_set_path_string(to_unsafe.as(LibGst::Uri*), path.to_unsafe)
+      __return_value = LibGst.uri_set_path_string(to_unsafe.as(LibGst::Uri*), path)
       __return_value
     end
 
@@ -166,7 +166,7 @@ module Gst
     end
 
     def query_string=(query)
-      __return_value = LibGst.uri_set_query_string(to_unsafe.as(LibGst::Uri*), query.to_unsafe)
+      __return_value = LibGst.uri_set_query_string(to_unsafe.as(LibGst::Uri*), query)
       __return_value
     end
 
@@ -176,17 +176,17 @@ module Gst
     end
 
     def set_query_value(query_key, query_value)
-      __return_value = LibGst.uri_set_query_value(to_unsafe.as(LibGst::Uri*), query_key.to_unsafe, query_value && query_value.to_unsafe)
+      __return_value = LibGst.uri_set_query_value(to_unsafe.as(LibGst::Uri*), query_key, query_value)
       __return_value
     end
 
     def scheme=(scheme)
-      __return_value = LibGst.uri_set_scheme(to_unsafe.as(LibGst::Uri*), scheme.to_unsafe)
+      __return_value = LibGst.uri_set_scheme(to_unsafe.as(LibGst::Uri*), scheme)
       __return_value
     end
 
     def userinfo=(userinfo)
-      __return_value = LibGst.uri_set_userinfo(to_unsafe.as(LibGst::Uri*), userinfo.to_unsafe)
+      __return_value = LibGst.uri_set_userinfo(to_unsafe.as(LibGst::Uri*), userinfo)
       __return_value
     end
 
@@ -196,47 +196,47 @@ module Gst
     end
 
     def self.construct(protocol, location)
-      __return_value = LibGst.uri_construct(protocol.to_unsafe, location.to_unsafe)
+      __return_value = LibGst.uri_construct(protocol, location)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def self.from_string(uri)
-      __return_value = LibGst.uri_from_string(uri.to_unsafe)
+      __return_value = LibGst.uri_from_string(uri)
       Gst::Uri.new(__return_value) if __return_value
     end
 
     def self.location(uri)
-      __return_value = LibGst.uri_get_location(uri.to_unsafe)
+      __return_value = LibGst.uri_get_location(uri)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def self.protocol(uri)
-      __return_value = LibGst.uri_get_protocol(uri.to_unsafe)
+      __return_value = LibGst.uri_get_protocol(uri)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def self.has_protocol(uri, protocol)
-      __return_value = LibGst.uri_has_protocol(uri.to_unsafe, protocol.to_unsafe)
+      __return_value = LibGst.uri_has_protocol(uri, protocol)
       __return_value
     end
 
     def self.valid?(uri)
-      __return_value = LibGst.uri_is_valid(uri.to_unsafe)
+      __return_value = LibGst.uri_is_valid(uri)
       __return_value
     end
 
     def self.join_strings(base_uri, ref_uri)
-      __return_value = LibGst.uri_join_strings(base_uri.to_unsafe, ref_uri.to_unsafe)
+      __return_value = LibGst.uri_join_strings(base_uri, ref_uri)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def self.protocol_is_supported(type : Gst::URIType, protocol)
-      __return_value = LibGst.uri_protocol_is_supported(type, protocol.to_unsafe)
+      __return_value = LibGst.uri_protocol_is_supported(type, protocol)
       __return_value
     end
 
     def self.protocol_is_valid(protocol)
-      __return_value = LibGst.uri_protocol_is_valid(protocol.to_unsafe)
+      __return_value = LibGst.uri_protocol_is_valid(protocol)
       __return_value
     end
 

@@ -20,7 +20,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_signal_query.not_nil!.as(Void*)
+      @g_object_signal_query.not_nil!
     end
 
     def signal_id
@@ -36,7 +36,7 @@ module GObject
     end
 
     def signal_name=(value : String)
-      to_unsafe.as(LibGObject::SignalQuery*).value.signal_name = value.to_unsafe
+      to_unsafe.as(LibGObject::SignalQuery*).value.signal_name = value
     end
 
     def itype

@@ -7,11 +7,11 @@ module Gst
     end
 
     def to_unsafe
-      @gst_device_provider.not_nil!.as(Void*)
+      @gst_device_provider.not_nil!
     end
 
     def self.register(plugin, name, rank, type)
-      __return_value = LibGst.device_provider_register(plugin && plugin.to_unsafe.as(LibGst::Plugin*), name.to_unsafe, UInt32.new(rank), UInt64.new(type))
+      __return_value = LibGst.device_provider_register(plugin && plugin.to_unsafe.as(LibGst::Plugin*), name, UInt32.new(rank), UInt64.new(type))
       __return_value
     end
 
@@ -51,7 +51,7 @@ module Gst
     end
 
     def hide_provider(name)
-      __return_value = LibGst.device_provider_hide_provider(to_unsafe.as(LibGst::DeviceProvider*), name.to_unsafe)
+      __return_value = LibGst.device_provider_hide_provider(to_unsafe.as(LibGst::DeviceProvider*), name)
       __return_value
     end
 
@@ -66,7 +66,7 @@ module Gst
     end
 
     def unhide_provider(name)
-      __return_value = LibGst.device_provider_unhide_provider(to_unsafe.as(LibGst::DeviceProvider*), name.to_unsafe)
+      __return_value = LibGst.device_provider_unhide_provider(to_unsafe.as(LibGst::DeviceProvider*), name)
       __return_value
     end
 

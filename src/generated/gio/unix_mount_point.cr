@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_unix_mount_point.not_nil!.as(Void*)
+      @gio_unix_mount_point.not_nil!
     end
 
     def compare(mount2)

@@ -21,7 +21,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_event_owner_change.not_nil!.as(Void*)
+      @gdk_event_owner_change.not_nil!
     end
 
     def type

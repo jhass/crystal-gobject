@@ -15,7 +15,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_parameter.not_nil!.as(Void*)
+      @g_object_parameter.not_nil!
     end
 
     def name
@@ -23,7 +23,7 @@ module GObject
     end
 
     def name=(value : String)
-      to_unsafe.as(LibGObject::Parameter*).value.name = value.to_unsafe
+      to_unsafe.as(LibGObject::Parameter*).value.name = value
     end
 
     def value

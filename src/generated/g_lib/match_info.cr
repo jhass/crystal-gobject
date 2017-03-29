@@ -7,12 +7,12 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_match_info.not_nil!.as(Void*)
+      @g_lib_match_info.not_nil!
     end
 
     def expand_references(string_to_expand)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.match_info_expand_references(to_unsafe.as(LibGLib::MatchInfo*), string_to_expand.to_unsafe, pointerof(__error))
+      __return_value = LibGLib.match_info_expand_references(to_unsafe.as(LibGLib::MatchInfo*), string_to_expand, pointerof(__error))
       GLib::Error.assert __error
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
@@ -28,12 +28,12 @@ module GLib
     end
 
     def fetch_named(name)
-      __return_value = LibGLib.match_info_fetch_named(to_unsafe.as(LibGLib::MatchInfo*), name.to_unsafe)
+      __return_value = LibGLib.match_info_fetch_named(to_unsafe.as(LibGLib::MatchInfo*), name)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def fetch_named_pos(name, start_pos, end_pos)
-      __return_value = LibGLib.match_info_fetch_named_pos(to_unsafe.as(LibGLib::MatchInfo*), name.to_unsafe, start_pos, end_pos)
+      __return_value = LibGLib.match_info_fetch_named_pos(to_unsafe.as(LibGLib::MatchInfo*), name, start_pos, end_pos)
       __return_value
     end
 

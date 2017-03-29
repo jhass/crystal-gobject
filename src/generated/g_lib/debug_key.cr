@@ -15,7 +15,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_debug_key.not_nil!.as(Void*)
+      @g_lib_debug_key.not_nil!
     end
 
     def key
@@ -23,7 +23,7 @@ module GLib
     end
 
     def key=(value : String)
-      to_unsafe.as(LibGLib::DebugKey*).value.key = value.to_unsafe
+      to_unsafe.as(LibGLib::DebugKey*).value.key = value
     end
 
     def value

@@ -1,7 +1,7 @@
 module Atk
   module Value
     def current_value(value)
-      __return_value = LibAtk.value_get_current_value(to_unsafe.as(LibAtk::Value*), value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibAtk.value_get_current_value(to_unsafe.as(LibAtk::Value*), value)
       __return_value
     end
 
@@ -11,17 +11,17 @@ module Atk
     end
 
     def maximum_value(value)
-      __return_value = LibAtk.value_get_maximum_value(to_unsafe.as(LibAtk::Value*), value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibAtk.value_get_maximum_value(to_unsafe.as(LibAtk::Value*), value)
       __return_value
     end
 
     def minimum_increment(value)
-      __return_value = LibAtk.value_get_minimum_increment(to_unsafe.as(LibAtk::Value*), value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibAtk.value_get_minimum_increment(to_unsafe.as(LibAtk::Value*), value)
       __return_value
     end
 
     def minimum_value(value)
-      __return_value = LibAtk.value_get_minimum_value(to_unsafe.as(LibAtk::Value*), value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibAtk.value_get_minimum_value(to_unsafe.as(LibAtk::Value*), value)
       __return_value
     end
 

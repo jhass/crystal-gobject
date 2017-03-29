@@ -7,7 +7,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_checksum.not_nil!.as(Void*)
+      @g_lib_checksum.not_nil!
     end
 
     def self.new(checksum_type : GLib::ChecksumType) : self

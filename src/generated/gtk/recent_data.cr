@@ -20,7 +20,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_recent_data.not_nil!.as(Void*)
+      @gtk_recent_data.not_nil!
     end
 
     def display_name
@@ -28,7 +28,7 @@ module Gtk
     end
 
     def display_name=(value : String)
-      to_unsafe.as(LibGtk::RecentData*).value.display_name = value.to_unsafe
+      to_unsafe.as(LibGtk::RecentData*).value.display_name = value
     end
 
     def description
@@ -36,7 +36,7 @@ module Gtk
     end
 
     def description=(value : String)
-      to_unsafe.as(LibGtk::RecentData*).value.description = value.to_unsafe
+      to_unsafe.as(LibGtk::RecentData*).value.description = value
     end
 
     def mime_type
@@ -44,7 +44,7 @@ module Gtk
     end
 
     def mime_type=(value : String)
-      to_unsafe.as(LibGtk::RecentData*).value.mime_type = value.to_unsafe
+      to_unsafe.as(LibGtk::RecentData*).value.mime_type = value
     end
 
     def app_name
@@ -52,7 +52,7 @@ module Gtk
     end
 
     def app_name=(value : String)
-      to_unsafe.as(LibGtk::RecentData*).value.app_name = value.to_unsafe
+      to_unsafe.as(LibGtk::RecentData*).value.app_name = value
     end
 
     def app_exec
@@ -60,7 +60,7 @@ module Gtk
     end
 
     def app_exec=(value : String)
-      to_unsafe.as(LibGtk::RecentData*).value.app_exec = value.to_unsafe
+      to_unsafe.as(LibGtk::RecentData*).value.app_exec = value
     end
 
     def groups

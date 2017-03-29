@@ -5,7 +5,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_cursor.not_nil!.as(Void*)
+      @gdk_cursor.not_nil!
     end
 
 
@@ -21,7 +21,7 @@ module Gdk
     end
 
     def self.new_from_name(display, name) : self
-      __return_value = LibGdk.cursor_new_from_name(display.to_unsafe.as(LibGdk::Display*), name.to_unsafe)
+      __return_value = LibGdk.cursor_new_from_name(display.to_unsafe.as(LibGdk::Display*), name)
       cast Gdk::Cursor.new(__return_value) if __return_value
     end
 

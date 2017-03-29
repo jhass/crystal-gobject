@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_stack_switcher.not_nil!.as(Void*)
+      @gtk_stack_switcher.not_nil!
     end
 
     # Implements ImplementorIface

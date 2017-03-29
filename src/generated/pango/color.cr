@@ -16,7 +16,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_color.not_nil!.as(Void*)
+      @pango_color.not_nil!
     end
 
     def copy
@@ -30,7 +30,7 @@ module Pango
     end
 
     def parse(spec)
-      __return_value = LibPango.color_parse(to_unsafe.as(LibPango::Color*), spec.to_unsafe)
+      __return_value = LibPango.color_parse(to_unsafe.as(LibPango::Color*), spec)
       __return_value
     end
 

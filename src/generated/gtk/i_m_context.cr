@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_i_m_context.not_nil!.as(Void*)
+      @gtk_i_m_context.not_nil!
     end
 
 
@@ -56,7 +56,7 @@ module Gtk
     end
 
     def set_surrounding(text, len, cursor_index)
-      __return_value = LibGtk.i_m_context_set_surrounding(to_unsafe.as(LibGtk::IMContext*), text.to_unsafe, Int32.new(len), Int32.new(cursor_index))
+      __return_value = LibGtk.i_m_context_set_surrounding(to_unsafe.as(LibGtk::IMContext*), text, Int32.new(len), Int32.new(cursor_index))
       __return_value
     end
 

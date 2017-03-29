@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_cell_renderer.not_nil!.as(Void*)
+      @gtk_cell_renderer.not_nil!
     end
 
 
@@ -25,7 +25,7 @@ module Gtk
 
 
     def activate(event, widget, path, background_area, cell_area, flags : Gtk::CellRendererState)
-      __return_value = LibGtk.cell_renderer_activate(to_unsafe.as(LibGtk::CellRenderer*), event.to_unsafe.as(LibGdk::Event*), widget.to_unsafe.as(LibGtk::Widget*), path.to_unsafe, background_area.to_unsafe.as(LibGdk::Rectangle*), cell_area.to_unsafe.as(LibGdk::Rectangle*), flags)
+      __return_value = LibGtk.cell_renderer_activate(to_unsafe.as(LibGtk::CellRenderer*), event.to_unsafe.as(LibGdk::Event*), widget.to_unsafe.as(LibGtk::Widget*), path, background_area.to_unsafe.as(LibGdk::Rectangle*), cell_area.to_unsafe.as(LibGdk::Rectangle*), flags)
       __return_value
     end
 
@@ -90,7 +90,7 @@ module Gtk
     end
 
     def state(widget, cell_state : Gtk::CellRendererState)
-      __return_value = LibGtk.cell_renderer_get_state(to_unsafe.as(LibGtk::CellRenderer*), widget.to_unsafe.as(LibGtk::Widget*), cell_state)
+      __return_value = LibGtk.cell_renderer_get_state(to_unsafe.as(LibGtk::CellRenderer*), widget && widget.to_unsafe.as(LibGtk::Widget*), cell_state)
       __return_value
     end
 
@@ -135,7 +135,7 @@ module Gtk
     end
 
     def start_editing(event, widget, path, background_area, cell_area, flags : Gtk::CellRendererState)
-      __return_value = LibGtk.cell_renderer_start_editing(to_unsafe.as(LibGtk::CellRenderer*), event.to_unsafe.as(LibGdk::Event*), widget.to_unsafe.as(LibGtk::Widget*), path.to_unsafe, background_area.to_unsafe.as(LibGdk::Rectangle*), cell_area.to_unsafe.as(LibGdk::Rectangle*), flags)
+      __return_value = LibGtk.cell_renderer_start_editing(to_unsafe.as(LibGtk::CellRenderer*), event && event.to_unsafe.as(LibGdk::Event*), widget.to_unsafe.as(LibGtk::Widget*), path, background_area.to_unsafe.as(LibGdk::Rectangle*), cell_area.to_unsafe.as(LibGdk::Rectangle*), flags)
       __return_value if __return_value
     end
 

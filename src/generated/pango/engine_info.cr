@@ -18,7 +18,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_engine_info.not_nil!.as(Void*)
+      @pango_engine_info.not_nil!
     end
 
     def id
@@ -26,7 +26,7 @@ module Pango
     end
 
     def id=(value : String)
-      to_unsafe.as(LibPango::EngineInfo*).value.id = value.to_unsafe
+      to_unsafe.as(LibPango::EngineInfo*).value.id = value
     end
 
     def engine_type
@@ -34,7 +34,7 @@ module Pango
     end
 
     def engine_type=(value : String)
-      to_unsafe.as(LibPango::EngineInfo*).value.engine_type = value.to_unsafe
+      to_unsafe.as(LibPango::EngineInfo*).value.engine_type = value
     end
 
     def render_type
@@ -42,7 +42,7 @@ module Pango
     end
 
     def render_type=(value : String)
-      to_unsafe.as(LibPango::EngineInfo*).value.render_type = value.to_unsafe
+      to_unsafe.as(LibPango::EngineInfo*).value.render_type = value
     end
 
     def scripts

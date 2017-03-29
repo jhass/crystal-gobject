@@ -17,7 +17,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_color.not_nil!.as(Void*)
+      @gdk_color.not_nil!
     end
 
     def copy
@@ -46,7 +46,7 @@ module Gdk
     end
 
     def self.parse(spec, color)
-      __return_value = LibGdk.color_parse(spec.to_unsafe, color)
+      __return_value = LibGdk.color_parse(spec, color)
       __return_value
     end
 

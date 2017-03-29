@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_text_tag.not_nil!.as(Void*)
+      @gtk_text_tag.not_nil!
     end
 
 
@@ -83,7 +83,7 @@ module Gtk
 
 
     def self.new(name) : self
-      __return_value = LibGtk.text_tag_new(name && name.to_unsafe)
+      __return_value = LibGtk.text_tag_new(name)
       cast Gtk::TextTag.new(__return_value)
     end
 

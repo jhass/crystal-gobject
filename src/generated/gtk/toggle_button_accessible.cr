@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_toggle_button_accessible.not_nil!.as(Void*)
+      @gtk_toggle_button_accessible.not_nil!
     end
 
     # Implements Action

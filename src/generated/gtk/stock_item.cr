@@ -18,7 +18,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_stock_item.not_nil!.as(Void*)
+      @gtk_stock_item.not_nil!
     end
 
     def free
@@ -31,7 +31,7 @@ module Gtk
     end
 
     def stock_id=(value : String)
-      to_unsafe.as(LibGtk::StockItem*).value.stock_id = value.to_unsafe
+      to_unsafe.as(LibGtk::StockItem*).value.stock_id = value
     end
 
     def label
@@ -39,7 +39,7 @@ module Gtk
     end
 
     def label=(value : String)
-      to_unsafe.as(LibGtk::StockItem*).value.label = value.to_unsafe
+      to_unsafe.as(LibGtk::StockItem*).value.label = value
     end
 
     def modifier
@@ -63,7 +63,7 @@ module Gtk
     end
 
     def translation_domain=(value : String)
-      to_unsafe.as(LibGtk::StockItem*).value.translation_domain = value.to_unsafe
+      to_unsafe.as(LibGtk::StockItem*).value.translation_domain = value
     end
 
   end

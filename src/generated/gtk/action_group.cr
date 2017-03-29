@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_action_group.not_nil!.as(Void*)
+      @gtk_action_group.not_nil!
     end
 
     # Implements Buildable
@@ -14,7 +14,7 @@ module Gtk
 
 
     def self.new(name) : self
-      __return_value = LibGtk.action_group_new(name.to_unsafe)
+      __return_value = LibGtk.action_group_new(name)
       cast Gtk::ActionGroup.new(__return_value)
     end
 
@@ -24,7 +24,7 @@ module Gtk
     end
 
     def add_action_with_accel(action, accelerator)
-      __return_value = LibGtk.action_group_add_action_with_accel(to_unsafe.as(LibGtk::ActionGroup*), action.to_unsafe.as(LibGtk::Action*), accelerator && accelerator.to_unsafe)
+      __return_value = LibGtk.action_group_add_action_with_accel(to_unsafe.as(LibGtk::ActionGroup*), action.to_unsafe.as(LibGtk::Action*), accelerator)
       __return_value
     end
 
@@ -34,7 +34,7 @@ module Gtk
     end
 
     def action(action_name)
-      __return_value = LibGtk.action_group_get_action(to_unsafe.as(LibGtk::ActionGroup*), action_name.to_unsafe)
+      __return_value = LibGtk.action_group_get_action(to_unsafe.as(LibGtk::ActionGroup*), action_name)
       Gtk::Action.new(__return_value)
     end
 
@@ -79,7 +79,7 @@ module Gtk
     end
 
     def translation_domain=(domain)
-      __return_value = LibGtk.action_group_set_translation_domain(to_unsafe.as(LibGtk::ActionGroup*), domain && domain.to_unsafe)
+      __return_value = LibGtk.action_group_set_translation_domain(to_unsafe.as(LibGtk::ActionGroup*), domain)
       __return_value
     end
 
@@ -89,7 +89,7 @@ module Gtk
     end
 
     def translate_string(string)
-      __return_value = LibGtk.action_group_translate_string(to_unsafe.as(LibGtk::ActionGroup*), string.to_unsafe)
+      __return_value = LibGtk.action_group_translate_string(to_unsafe.as(LibGtk::ActionGroup*), string)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

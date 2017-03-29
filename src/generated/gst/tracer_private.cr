@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_tracer_private.not_nil!.as(Void*)
+      @gst_tracer_private.not_nil!
     end
 
   end

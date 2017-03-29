@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_cell_area.not_nil!.as(Void*)
+      @gtk_cell_area.not_nil!
     end
 
     # Implements Buildable
@@ -39,27 +39,27 @@ module Gtk
     end
 
     def attribute_connect(renderer, attribute, column)
-      __return_value = LibGtk.cell_area_attribute_connect(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute.to_unsafe, Int32.new(column))
+      __return_value = LibGtk.cell_area_attribute_connect(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute, Int32.new(column))
       __return_value
     end
 
     def attribute_disconnect(renderer, attribute)
-      __return_value = LibGtk.cell_area_attribute_disconnect(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute.to_unsafe)
+      __return_value = LibGtk.cell_area_attribute_disconnect(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute)
       __return_value
     end
 
     def attribute_get_column(renderer, attribute)
-      __return_value = LibGtk.cell_area_attribute_get_column(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute.to_unsafe)
+      __return_value = LibGtk.cell_area_attribute_get_column(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute)
       __return_value
     end
 
     def cell_get_property(renderer, property_name, value)
-      __return_value = LibGtk.cell_area_cell_get_property(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), property_name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGtk.cell_area_cell_get_property(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), property_name, value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 
     def cell_set_property(renderer, property_name, value)
-      __return_value = LibGtk.cell_area_cell_set_property(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), property_name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGtk.cell_area_cell_set_property(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), property_name, value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 

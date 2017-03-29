@@ -7,16 +7,16 @@ module Gst
     end
 
     def to_unsafe
-      @gst_allocator.not_nil!.as(Void*)
+      @gst_allocator.not_nil!
     end
 
     def self.find(name)
-      __return_value = LibGst.allocator_find(name && name.to_unsafe)
+      __return_value = LibGst.allocator_find(name)
       Gst::Allocator.new(__return_value) if __return_value
     end
 
     def self.register(name, allocator)
-      __return_value = LibGst.allocator_register(name.to_unsafe, allocator.to_unsafe.as(LibGst::Allocator*))
+      __return_value = LibGst.allocator_register(name, allocator.to_unsafe.as(LibGst::Allocator*))
       __return_value
     end
 

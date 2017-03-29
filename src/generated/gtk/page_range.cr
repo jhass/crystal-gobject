@@ -15,7 +15,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_page_range.not_nil!.as(Void*)
+      @gtk_page_range.not_nil!
     end
 
     def start

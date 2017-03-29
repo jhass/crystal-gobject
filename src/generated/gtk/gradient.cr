@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_gradient.not_nil!.as(Void*)
+      @gtk_gradient.not_nil!
     end
 
     def self.new_linear(x0, y0, x1, y1) : self

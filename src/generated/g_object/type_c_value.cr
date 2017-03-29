@@ -27,7 +27,7 @@ module GObject
     end
 
     def to_unsafe
-      @g_object_type_c_value.not_nil!.as(Void*)
+      @g_object_type_c_value.not_nil!
     end
 
   end

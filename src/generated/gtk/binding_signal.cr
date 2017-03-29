@@ -17,7 +17,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_binding_signal.not_nil!.as(Void*)
+      @gtk_binding_signal.not_nil!
     end
 
     def next
@@ -33,7 +33,7 @@ module Gtk
     end
 
     def signal_name=(value : String)
-      to_unsafe.as(LibGtk::BindingSignal*).value.signal_name = value.to_unsafe
+      to_unsafe.as(LibGtk::BindingSignal*).value.signal_name = value
     end
 
     def n_args

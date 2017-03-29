@@ -7,7 +7,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_font_description.not_nil!.as(Void*)
+      @pango_font_description.not_nil!
     end
 
     def self.new : self
@@ -106,12 +106,12 @@ module Pango
     end
 
     def family=(family)
-      __return_value = LibPango.font_description_set_family(to_unsafe.as(LibPango::FontDescription*), family.to_unsafe)
+      __return_value = LibPango.font_description_set_family(to_unsafe.as(LibPango::FontDescription*), family)
       __return_value
     end
 
     def family_static=(family)
-      __return_value = LibPango.font_description_set_family_static(to_unsafe.as(LibPango::FontDescription*), family.to_unsafe)
+      __return_value = LibPango.font_description_set_family_static(to_unsafe.as(LibPango::FontDescription*), family)
       __return_value
     end
 
@@ -161,7 +161,7 @@ module Pango
     end
 
     def self.from_string(str)
-      __return_value = LibPango.font_description_from_string(str.to_unsafe)
+      __return_value = LibPango.font_description_from_string(str)
       Pango::FontDescription.new(__return_value)
     end
 

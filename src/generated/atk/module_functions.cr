@@ -65,7 +65,7 @@ module Atk
   end
 
   def self.relation_type_for_name(name)
-    __return_value = LibAtk.relation_type_for_name(name.to_unsafe)
+    __return_value = LibAtk.relation_type_for_name(name)
     __return_value
   end
 
@@ -75,7 +75,7 @@ module Atk
   end
 
   def self.relation_type_register(name)
-    __return_value = LibAtk.relation_type_register(name.to_unsafe)
+    __return_value = LibAtk.relation_type_register(name)
     __return_value
   end
 
@@ -95,7 +95,7 @@ module Atk
   end
 
   def self.role_for_name(name)
-    __return_value = LibAtk.role_for_name(name.to_unsafe)
+    __return_value = LibAtk.role_for_name(name)
     __return_value
   end
 
@@ -110,12 +110,12 @@ module Atk
   end
 
   def self.role_register(name)
-    __return_value = LibAtk.role_register(name.to_unsafe)
+    __return_value = LibAtk.role_register(name)
     __return_value
   end
 
   def self.state_type_for_name(name)
-    __return_value = LibAtk.state_type_for_name(name.to_unsafe)
+    __return_value = LibAtk.state_type_for_name(name)
     __return_value
   end
 
@@ -125,12 +125,12 @@ module Atk
   end
 
   def self.state_type_register(name)
-    __return_value = LibAtk.state_type_register(name.to_unsafe)
+    __return_value = LibAtk.state_type_register(name)
     __return_value
   end
 
   def self.text_attribute_for_name(name)
-    __return_value = LibAtk.text_attribute_for_name(name.to_unsafe)
+    __return_value = LibAtk.text_attribute_for_name(name)
     __return_value
   end
 
@@ -145,7 +145,7 @@ module Atk
   end
 
   def self.text_attribute_register(name)
-    __return_value = LibAtk.text_attribute_register(name.to_unsafe)
+    __return_value = LibAtk.text_attribute_register(name)
     __return_value
   end
 

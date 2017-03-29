@@ -19,7 +19,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_layout_line.not_nil!.as(Void*)
+      @pango_layout_line.not_nil!
     end
 
     def extents(ink_rect, logical_rect)

@@ -185,8 +185,8 @@ lib LibGst
   VALUE_LESS_THAN = -1 # : Int32
   VALUE_UNORDERED = 2 # : Int32
   VERSION_MAJOR = 1 # : Int32
-  VERSION_MICRO = 2 # : Int32
-  VERSION_MINOR = 8 # : Int32
+  VERSION_MICRO = 4 # : Int32
+  VERSION_MINOR = 10 # : Int32
   VERSION_NANO = 0 # : Int32
 
   ###########################################
@@ -251,12 +251,14 @@ lib LibGst
   fun buffer_find_memory = gst_buffer_find_memory(this : Buffer*, offset : UInt64, size : UInt64, idx : UInt32*, length : UInt32*, skip : UInt64*) : Bool
   fun buffer_foreach_meta = gst_buffer_foreach_meta(this : Buffer*, func : LibGst::BufferForeachMetaFunc, user_data : Void*) : Bool
   fun buffer_get_all_memory = gst_buffer_get_all_memory(this : Buffer*) : LibGst::Memory*
+  fun buffer_get_flags = gst_buffer_get_flags(this : Buffer*) : LibGst::BufferFlags
   fun buffer_get_memory = gst_buffer_get_memory(this : Buffer*, idx : UInt32) : LibGst::Memory*
   fun buffer_get_memory_range = gst_buffer_get_memory_range(this : Buffer*, idx : UInt32, length : Int32) : LibGst::Memory*
   fun buffer_get_meta = gst_buffer_get_meta(this : Buffer*, api : UInt64) : LibGst::Meta*
   fun buffer_get_size = gst_buffer_get_size(this : Buffer*) : UInt64
   fun buffer_get_sizes = gst_buffer_get_sizes(this : Buffer*, offset : UInt64*, maxsize : UInt64*) : UInt64
   fun buffer_get_sizes_range = gst_buffer_get_sizes_range(this : Buffer*, idx : UInt32, length : Int32, offset : UInt64*, maxsize : UInt64*) : UInt64
+  fun buffer_has_flags = gst_buffer_has_flags(this : Buffer*, flags : LibGst::BufferFlags) : Bool
   fun buffer_insert_memory = gst_buffer_insert_memory(this : Buffer*, idx : Int32, mem : LibGst::Memory*) : Void
   fun buffer_is_all_memory_writable = gst_buffer_is_all_memory_writable(this : Buffer*) : Bool
   fun buffer_is_memory_range_writable = gst_buffer_is_memory_range_writable(this : Buffer*, idx : UInt32, length : Int32) : Bool
@@ -277,8 +279,10 @@ lib LibGst
   fun buffer_replace_memory_range = gst_buffer_replace_memory_range(this : Buffer*, idx : UInt32, length : Int32, mem : LibGst::Memory*) : Void
   fun buffer_resize = gst_buffer_resize(this : Buffer*, offset : Int64, size : Int64) : Void
   fun buffer_resize_range = gst_buffer_resize_range(this : Buffer*, idx : UInt32, length : Int32, offset : Int64, size : Int64) : Bool
+  fun buffer_set_flags = gst_buffer_set_flags(this : Buffer*, flags : LibGst::BufferFlags) : Bool
   fun buffer_set_size = gst_buffer_set_size(this : Buffer*, size : Int64) : Void
   fun buffer_unmap = gst_buffer_unmap(this : Buffer*, info : LibGst::MapInfo*) : Void
+  fun buffer_unset_flags = gst_buffer_unset_flags(this : Buffer*, flags : LibGst::BufferFlags) : Bool
   fun buffer_get_max_memory = gst_buffer_get_max_memory() : UInt32
 
   struct BufferList # struct
@@ -404,6 +408,10 @@ lib LibGst
   fun context_is_persistent = gst_context_is_persistent(this : Context*) : Bool
   fun context_writable_structure = gst_context_writable_structure(this : Context*) : LibGst::Structure*
 
+  struct ControlBindingPrivate # struct
+    _data : UInt8[0]
+  end
+
   struct DateTime # struct
     _data : UInt8[0]
   end
@@ -488,8 +496,11 @@ lib LibGst
   fun event_new_seek = gst_event_new_seek(rate : Float64, format : LibGst::Format, flags : LibGst::SeekFlags, start_type : LibGst::SeekType, start : Int64, stop_type : LibGst::SeekType, stop : Int64) : LibGst::Event*
   fun event_new_segment = gst_event_new_segment(segment : LibGst::Segment*) : LibGst::Event*
   fun event_new_segment_done = gst_event_new_segment_done(format : LibGst::Format, position : Int64) : LibGst::Event*
+  fun event_new_select_streams = gst_event_new_select_streams(streams : Void**) : LibGst::Event*
   fun event_new_sink_message = gst_event_new_sink_message(name : UInt8*, msg : LibGst::Message*) : LibGst::Event*
   fun event_new_step = gst_event_new_step(format : LibGst::Format, amount : UInt64, rate : Float64, flush : Bool, intermediate : Bool) : LibGst::Event*
+  fun event_new_stream_collection = gst_event_new_stream_collection(collection : LibGst::StreamCollection*) : LibGst::Event*
+  fun event_new_stream_group_done = gst_event_new_stream_group_done(group_id : UInt32) : LibGst::Event*
   fun event_new_stream_start = gst_event_new_stream_start(stream_id : UInt8*) : LibGst::Event*
   fun event_new_tag = gst_event_new_tag(taglist : LibGst::TagList*) : LibGst::Event*
   fun event_new_toc = gst_event_new_toc(toc : LibGst::Toc*, updated : Bool) : LibGst::Event*
@@ -510,9 +521,13 @@ lib LibGst
   fun event_parse_seek = gst_event_parse_seek(this : Event*, rate : Float64*, format : LibGst::Format*, flags : LibGst::SeekFlags*, start_type : LibGst::SeekType*, start : Int64*, stop_type : LibGst::SeekType*, stop : Int64*) : Void
   fun event_parse_segment = gst_event_parse_segment(this : Event*, segment : LibGst::Segment**) : Void
   fun event_parse_segment_done = gst_event_parse_segment_done(this : Event*, format : LibGst::Format*, position : Int64*) : Void
+  fun event_parse_select_streams = gst_event_parse_select_streams(this : Event*, streams : Void***) : Void
   fun event_parse_sink_message = gst_event_parse_sink_message(this : Event*, msg : LibGst::Message**) : Void
   fun event_parse_step = gst_event_parse_step(this : Event*, format : LibGst::Format*, amount : UInt64*, rate : Float64*, flush : Bool*, intermediate : Bool*) : Void
+  fun event_parse_stream = gst_event_parse_stream(this : Event*, stream : LibGst::Stream**) : Void
+  fun event_parse_stream_collection = gst_event_parse_stream_collection(this : Event*, collection : LibGst::StreamCollection**) : Void
   fun event_parse_stream_flags = gst_event_parse_stream_flags(this : Event*, flags : LibGst::StreamFlags*) : Void
+  fun event_parse_stream_group_done = gst_event_parse_stream_group_done(this : Event*, group_id : UInt32*) : Void
   fun event_parse_stream_start = gst_event_parse_stream_start(this : Event*, stream_id : UInt8**) : Void
   fun event_parse_tag = gst_event_parse_tag(this : Event*, taglist : LibGst::TagList**) : Void
   fun event_parse_toc = gst_event_parse_toc(this : Event*, toc : LibGst::Toc**, updated : Bool*) : Void
@@ -520,6 +535,7 @@ lib LibGst
   fun event_set_group_id = gst_event_set_group_id(this : Event*, group_id : UInt32) : Void
   fun event_set_running_time_offset = gst_event_set_running_time_offset(this : Event*, offset : Int64) : Void
   fun event_set_seqnum = gst_event_set_seqnum(this : Event*, seqnum : UInt32) : Void
+  fun event_set_stream = gst_event_set_stream(this : Event*, stream : LibGst::Stream*) : Void
   fun event_set_stream_flags = gst_event_set_stream_flags(this : Event*, flags : LibGst::StreamFlags) : Void
   fun event_writable_structure = gst_event_writable_structure(this : Event*) : LibGst::Structure*
 
@@ -611,13 +627,17 @@ lib LibGst
   fun message_new_element = gst_message_new_element(src : LibGst::Object*, structure : LibGst::Structure*) : LibGst::Message*
   fun message_new_eos = gst_message_new_eos(src : LibGst::Object*) : LibGst::Message*
   fun message_new_error = gst_message_new_error(src : LibGst::Object*, error : LibGLib::Error**, debug : UInt8*) : LibGst::Message*
+  fun message_new_error_with_details = gst_message_new_error_with_details(src : LibGst::Object*, error : LibGLib::Error**, debug : UInt8*, details : LibGst::Structure*) : LibGst::Message*
   fun message_new_have_context = gst_message_new_have_context(src : LibGst::Object*, context : LibGst::Context*) : LibGst::Message*
   fun message_new_info = gst_message_new_info(src : LibGst::Object*, error : LibGLib::Error**, debug : UInt8*) : LibGst::Message*
+  fun message_new_info_with_details = gst_message_new_info_with_details(src : LibGst::Object*, error : LibGLib::Error**, debug : UInt8*, details : LibGst::Structure*) : LibGst::Message*
   fun message_new_latency = gst_message_new_latency(src : LibGst::Object*) : LibGst::Message*
   fun message_new_need_context = gst_message_new_need_context(src : LibGst::Object*, context_type : UInt8*) : LibGst::Message*
   fun message_new_new_clock = gst_message_new_new_clock(src : LibGst::Object*, clock : LibGst::Clock*) : LibGst::Message*
   fun message_new_progress = gst_message_new_progress(src : LibGst::Object*, type : LibGst::ProgressType, code : UInt8*, text : UInt8*) : LibGst::Message*
+  fun message_new_property_notify = gst_message_new_property_notify(src : LibGst::Object*, property_name : UInt8*, val : LibGObject::Value*) : LibGst::Message*
   fun message_new_qos = gst_message_new_qos(src : LibGst::Object*, live : Bool, running_time : UInt64, stream_time : UInt64, timestamp : UInt64, duration : UInt64) : LibGst::Message*
+  fun message_new_redirect = gst_message_new_redirect(src : LibGst::Object*, location : UInt8*, tag_list : LibGst::TagList*, entry_struct : LibGst::Structure*) : LibGst::Message*
   fun message_new_request_state = gst_message_new_request_state(src : LibGst::Object*, state : LibGst::State) : LibGst::Message*
   fun message_new_reset_time = gst_message_new_reset_time(src : LibGst::Object*, running_time : UInt64) : LibGst::Message*
   fun message_new_segment_done = gst_message_new_segment_done(src : LibGst::Object*, format : LibGst::Format, position : Int64) : LibGst::Message*
@@ -626,12 +646,17 @@ lib LibGst
   fun message_new_state_dirty = gst_message_new_state_dirty(src : LibGst::Object*) : LibGst::Message*
   fun message_new_step_done = gst_message_new_step_done(src : LibGst::Object*, format : LibGst::Format, amount : UInt64, rate : Float64, flush : Bool, intermediate : Bool, duration : UInt64, eos : Bool) : LibGst::Message*
   fun message_new_step_start = gst_message_new_step_start(src : LibGst::Object*, active : Bool, format : LibGst::Format, amount : UInt64, rate : Float64, flush : Bool, intermediate : Bool) : LibGst::Message*
+  fun message_new_stream_collection = gst_message_new_stream_collection(src : LibGst::Object*, collection : LibGst::StreamCollection*) : LibGst::Message*
   fun message_new_stream_start = gst_message_new_stream_start(src : LibGst::Object*) : LibGst::Message*
   fun message_new_stream_status = gst_message_new_stream_status(src : LibGst::Object*, type : LibGst::StreamStatusType, owner : LibGst::Element*) : LibGst::Message*
+  fun message_new_streams_selected = gst_message_new_streams_selected(src : LibGst::Object*, collection : LibGst::StreamCollection*) : LibGst::Message*
   fun message_new_structure_change = gst_message_new_structure_change(src : LibGst::Object*, type : LibGst::StructureChangeType, owner : LibGst::Element*, busy : Bool) : LibGst::Message*
   fun message_new_tag = gst_message_new_tag(src : LibGst::Object*, tag_list : LibGst::TagList*) : LibGst::Message*
   fun message_new_toc = gst_message_new_toc(src : LibGst::Object*, toc : LibGst::Toc*, updated : Bool) : LibGst::Message*
   fun message_new_warning = gst_message_new_warning(src : LibGst::Object*, error : LibGLib::Error**, debug : UInt8*) : LibGst::Message*
+  fun message_new_warning_with_details = gst_message_new_warning_with_details(src : LibGst::Object*, error : LibGLib::Error**, debug : UInt8*, details : LibGst::Structure*) : LibGst::Message*
+  fun message_add_redirect_entry = gst_message_add_redirect_entry(this : Message*, location : UInt8*, tag_list : LibGst::TagList*, entry_struct : LibGst::Structure*) : Void
+  fun message_get_num_redirect_entries = gst_message_get_num_redirect_entries(this : Message*) : UInt64
   fun message_get_seqnum = gst_message_get_seqnum(this : Message*) : UInt32
   fun message_get_stream_status_object = gst_message_get_stream_status_object(this : Message*) : LibGObject::Value*
   fun message_get_structure = gst_message_get_structure(this : Message*) : LibGst::Structure*
@@ -645,14 +670,18 @@ lib LibGst
   fun message_parse_device_added = gst_message_parse_device_added(this : Message*, device : LibGst::Device**) : Void
   fun message_parse_device_removed = gst_message_parse_device_removed(this : Message*, device : LibGst::Device**) : Void
   fun message_parse_error = gst_message_parse_error(this : Message*, gerror : LibGLib::Error***, debug : UInt8**) : Void
+  fun message_parse_error_details = gst_message_parse_error_details(this : Message*, structure : LibGst::Structure**) : Void
   fun message_parse_group_id = gst_message_parse_group_id(this : Message*, group_id : UInt32*) : Bool
   fun message_parse_have_context = gst_message_parse_have_context(this : Message*, context : LibGst::Context**) : Void
   fun message_parse_info = gst_message_parse_info(this : Message*, gerror : LibGLib::Error***, debug : UInt8**) : Void
+  fun message_parse_info_details = gst_message_parse_info_details(this : Message*, structure : LibGst::Structure**) : Void
   fun message_parse_new_clock = gst_message_parse_new_clock(this : Message*, clock : LibGst::Clock**) : Void
   fun message_parse_progress = gst_message_parse_progress(this : Message*, type : LibGst::ProgressType*, code : UInt8**, text : UInt8**) : Void
+  fun message_parse_property_notify = gst_message_parse_property_notify(this : Message*, object : LibGst::Object**, property_name : UInt8**, property_value : LibGObject::Value**) : Void
   fun message_parse_qos = gst_message_parse_qos(this : Message*, live : Bool*, running_time : UInt64*, stream_time : UInt64*, timestamp : UInt64*, duration : UInt64*) : Void
   fun message_parse_qos_stats = gst_message_parse_qos_stats(this : Message*, format : LibGst::Format*, processed : UInt64*, dropped : UInt64*) : Void
   fun message_parse_qos_values = gst_message_parse_qos_values(this : Message*, jitter : Int64*, proportion : Float64*, quality : Int32*) : Void
+  fun message_parse_redirect_entry = gst_message_parse_redirect_entry(this : Message*, entry_index : UInt64, location : UInt8**, tag_list : LibGst::TagList**, entry_struct : LibGst::Structure**) : Void
   fun message_parse_request_state = gst_message_parse_request_state(this : Message*, state : LibGst::State*) : Void
   fun message_parse_reset_time = gst_message_parse_reset_time(this : Message*, running_time : UInt64*) : Void
   fun message_parse_segment_done = gst_message_parse_segment_done(this : Message*, format : LibGst::Format*, position : Int64*) : Void
@@ -660,17 +689,23 @@ lib LibGst
   fun message_parse_state_changed = gst_message_parse_state_changed(this : Message*, oldstate : LibGst::State*, newstate : LibGst::State*, pending : LibGst::State*) : Void
   fun message_parse_step_done = gst_message_parse_step_done(this : Message*, format : LibGst::Format*, amount : UInt64*, rate : Float64*, flush : Bool*, intermediate : Bool*, duration : UInt64*, eos : Bool*) : Void
   fun message_parse_step_start = gst_message_parse_step_start(this : Message*, active : Bool*, format : LibGst::Format*, amount : UInt64*, rate : Float64*, flush : Bool*, intermediate : Bool*) : Void
+  fun message_parse_stream_collection = gst_message_parse_stream_collection(this : Message*, collection : LibGst::StreamCollection**) : Void
   fun message_parse_stream_status = gst_message_parse_stream_status(this : Message*, type : LibGst::StreamStatusType*, owner : LibGst::Element**) : Void
+  fun message_parse_streams_selected = gst_message_parse_streams_selected(this : Message*, collection : LibGst::StreamCollection**) : Void
   fun message_parse_structure_change = gst_message_parse_structure_change(this : Message*, type : LibGst::StructureChangeType*, owner : LibGst::Element**, busy : Bool*) : Void
   fun message_parse_tag = gst_message_parse_tag(this : Message*, tag_list : LibGst::TagList**) : Void
   fun message_parse_toc = gst_message_parse_toc(this : Message*, toc : LibGst::Toc**, updated : Bool*) : Void
   fun message_parse_warning = gst_message_parse_warning(this : Message*, gerror : LibGLib::Error***, debug : UInt8**) : Void
+  fun message_parse_warning_details = gst_message_parse_warning_details(this : Message*, structure : LibGst::Structure**) : Void
   fun message_set_buffering_stats = gst_message_set_buffering_stats(this : Message*, mode : LibGst::BufferingMode, avg_in : Int32, avg_out : Int32, buffering_left : Int64) : Void
   fun message_set_group_id = gst_message_set_group_id(this : Message*, group_id : UInt32) : Void
   fun message_set_qos_stats = gst_message_set_qos_stats(this : Message*, format : LibGst::Format, processed : UInt64, dropped : UInt64) : Void
   fun message_set_qos_values = gst_message_set_qos_values(this : Message*, jitter : Int64, proportion : Float64, quality : Int32) : Void
   fun message_set_seqnum = gst_message_set_seqnum(this : Message*, seqnum : UInt32) : Void
   fun message_set_stream_status_object = gst_message_set_stream_status_object(this : Message*, object : LibGObject::Value*) : Void
+  fun message_streams_selected_add = gst_message_streams_selected_add(this : Message*, stream : LibGst::Stream*) : Void
+  fun message_streams_selected_get_size = gst_message_streams_selected_get_size(this : Message*) : UInt32
+  fun message_streams_selected_get_stream = gst_message_streams_selected_get_stream(this : Message*, idx : UInt32) : LibGst::Stream*
 
   struct Meta # struct
     flags : LibGst::MetaFlags
@@ -964,6 +999,14 @@ lib LibGst
   fun static_pad_template_get = gst_static_pad_template_get(this : StaticPadTemplate*) : LibGst::PadTemplate*
   fun static_pad_template_get_caps = gst_static_pad_template_get_caps(this : StaticPadTemplate*) : LibGst::Caps*
 
+  struct StreamCollectionPrivate # struct
+    _data : UInt8[0]
+  end
+
+  struct StreamPrivate # struct
+    _data : UInt8[0]
+  end
+
   struct Structure # struct
     type : UInt64
     name : UInt32
@@ -1229,10 +1272,14 @@ lib LibGst
     clock_provider : LibGst::Element*
     priv : LibGst::BinPrivate*
     _gst_reserved : Void*
+    # Signal deep-element-added
+    # Signal deep-element-removed
     # Signal do-latency
     # Signal element-added
     # Signal element-removed
     # Virtual function add_element
+    # Virtual function deep_element_added
+    # Virtual function deep_element_removed
     # Virtual function do_latency
     # Virtual function element_added
     # Virtual function element_removed
@@ -1245,6 +1292,7 @@ lib LibGst
   fun bin_get_by_interface = gst_bin_get_by_interface(this : Bin*, iface : UInt64) : LibGst::Element*
   fun bin_get_by_name = gst_bin_get_by_name(this : Bin*, name : UInt8*) : LibGst::Element*
   fun bin_get_by_name_recurse_up = gst_bin_get_by_name_recurse_up(this : Bin*, name : UInt8*) : LibGst::Element*
+  fun bin_get_suppressed_flags = gst_bin_get_suppressed_flags(this : Bin*) : LibGst::ElementFlags
   fun bin_iterate_all_by_interface = gst_bin_iterate_all_by_interface(this : Bin*, iface : UInt64) : LibGst::Iterator*
   fun bin_iterate_elements = gst_bin_iterate_elements(this : Bin*) : LibGst::Iterator*
   fun bin_iterate_recurse = gst_bin_iterate_recurse(this : Bin*) : LibGst::Iterator*
@@ -1253,6 +1301,7 @@ lib LibGst
   fun bin_iterate_sources = gst_bin_iterate_sources(this : Bin*) : LibGst::Iterator*
   fun bin_recalculate_latency = gst_bin_recalculate_latency(this : Bin*) : Bool
   fun bin_remove = gst_bin_remove(this : Bin*, element : LibGst::Element*) : Bool
+  fun bin_set_suppressed_flags = gst_bin_set_suppressed_flags(this : Bin*, flags : LibGst::ElementFlags) : Void
   fun bin_sync_children_states = gst_bin_sync_children_states(this : Bin*) : Bool
 
   struct Bitmask # object
@@ -1376,7 +1425,6 @@ lib LibGst
     pspec : LibGObject::ParamSpec*
     object : LibGst::Object*
     disabled : Bool
-    _gst_reserved : Void*
     # Virtual function get_g_value_array
     # Virtual function get_value
     # Virtual function sync_values
@@ -1518,6 +1566,9 @@ lib LibGst
   fun element_state_get_name = gst_element_state_get_name(state : LibGst::State) : UInt8*
   fun element_abort_state = gst_element_abort_state(this : Element*) : Void
   fun element_add_pad = gst_element_add_pad(this : Element*, pad : LibGst::Pad*) : Bool
+  fun element_add_property_deep_notify_watch = gst_element_add_property_deep_notify_watch(this : Element*, property_name : UInt8*, include_value : Bool) : UInt64
+  fun element_add_property_notify_watch = gst_element_add_property_notify_watch(this : Element*, property_name : UInt8*, include_value : Bool) : UInt64
+  fun element_call_async = gst_element_call_async(this : Element*, func : LibGst::ElementCallAsyncFunc, user_data : Void*, destroy_notify : LibGLib::DestroyNotify) : Void
   fun element_change_state = gst_element_change_state(this : Element*, transition : LibGst::StateChange) : LibGst::StateChangeReturn
   fun element_continue_state = gst_element_continue_state(this : Element*, ret : LibGst::StateChangeReturn) : LibGst::StateChangeReturn
   fun element_create_all_pads = gst_element_create_all_pads(this : Element*) : Void
@@ -1545,6 +1596,7 @@ lib LibGst
   fun element_link_pads_full = gst_element_link_pads_full(this : Element*, srcpadname : UInt8*, dest : LibGst::Element*, destpadname : UInt8*, flags : LibGst::PadLinkCheck) : Bool
   fun element_lost_state = gst_element_lost_state(this : Element*) : Void
   fun element_message_full = gst_element_message_full(this : Element*, type : LibGst::MessageType, domain : UInt32, code : Int32, text : UInt8*, debug : UInt8*, file : UInt8*, function : UInt8*, line : Int32) : Void
+  fun element_message_full_with_details = gst_element_message_full_with_details(this : Element*, type : LibGst::MessageType, domain : UInt32, code : Int32, text : UInt8*, debug : UInt8*, file : UInt8*, function : UInt8*, line : Int32, structure : LibGst::Structure*) : Void
   fun element_no_more_pads = gst_element_no_more_pads(this : Element*) : Void
   fun element_post_message = gst_element_post_message(this : Element*, message : LibGst::Message*) : Bool
   fun element_provide_clock = gst_element_provide_clock(this : Element*) : LibGst::Clock*
@@ -1554,6 +1606,7 @@ lib LibGst
   fun element_query_position = gst_element_query_position(this : Element*, format : LibGst::Format, cur : Int64*) : Bool
   fun element_release_request_pad = gst_element_release_request_pad(this : Element*, pad : LibGst::Pad*) : Void
   fun element_remove_pad = gst_element_remove_pad(this : Element*, pad : LibGst::Pad*) : Bool
+  fun element_remove_property_notify_watch = gst_element_remove_property_notify_watch(this : Element*, watch_id : UInt64) : Void
   fun element_request_pad = gst_element_request_pad(this : Element*, templ : LibGst::PadTemplate*, name : UInt8*, caps : LibGst::Caps*) : LibGst::Pad*
   fun element_seek = gst_element_seek(this : Element*, rate : Float64, format : LibGst::Format, flags : LibGst::SeekFlags, start_type : LibGst::SeekType, start : Int64, stop_type : LibGst::SeekType, stop : Int64) : Bool
   fun element_seek_simple = gst_element_seek_simple(this : Element*, format : LibGst::Format, seek_flags : LibGst::SeekFlags, seek_pos : Int64) : Bool
@@ -1743,6 +1796,7 @@ lib LibGst
   fun pad_get_peer = gst_pad_get_peer(this : Pad*) : LibGst::Pad*
   fun pad_get_range = gst_pad_get_range(this : Pad*, offset : UInt64, size : UInt32, buffer : LibGst::Buffer**) : LibGst::FlowReturn
   fun pad_get_sticky_event = gst_pad_get_sticky_event(this : Pad*, event_type : LibGst::EventType, idx : UInt32) : LibGst::Event*
+  fun pad_get_stream = gst_pad_get_stream(this : Pad*) : LibGst::Stream*
   fun pad_get_stream_id = gst_pad_get_stream_id(this : Pad*) : UInt8*
   fun pad_has_current_caps = gst_pad_has_current_caps(this : Pad*) : Bool
   fun pad_is_active = gst_pad_is_active(this : Pad*) : Bool
@@ -1753,6 +1807,8 @@ lib LibGst
   fun pad_iterate_internal_links_default = gst_pad_iterate_internal_links_default(this : Pad*, parent : LibGst::Object*) : LibGst::Iterator*
   fun pad_link = gst_pad_link(this : Pad*, sinkpad : LibGst::Pad*) : LibGst::PadLinkReturn
   fun pad_link_full = gst_pad_link_full(this : Pad*, sinkpad : LibGst::Pad*, flags : LibGst::PadLinkCheck) : LibGst::PadLinkReturn
+  fun pad_link_maybe_ghosting = gst_pad_link_maybe_ghosting(this : Pad*, sink : LibGst::Pad*) : Bool
+  fun pad_link_maybe_ghosting_full = gst_pad_link_maybe_ghosting_full(this : Pad*, sink : LibGst::Pad*, flags : LibGst::PadLinkCheck) : Bool
   fun pad_mark_reconfigure = gst_pad_mark_reconfigure(this : Pad*) : Void
   fun pad_needs_reconfigure = gst_pad_needs_reconfigure(this : Pad*) : Bool
   fun pad_pause_task = gst_pad_pause_task(this : Pad*) : Bool
@@ -1910,6 +1966,37 @@ lib LibGst
   fun registry_remove_plugin = gst_registry_remove_plugin(this : Registry*, plugin : LibGst::Plugin*) : Void
   fun registry_scan_path = gst_registry_scan_path(this : Registry*, path : UInt8*) : Bool
 
+  struct Stream # object
+    object : LibGst::Object
+    stream_id : UInt8*
+    priv : LibGst::StreamPrivate*
+    _gst_reserved : Void*
+  end
+  fun stream_new = gst_stream_new(stream_id : UInt8*, caps : LibGst::Caps*, type : LibGst::StreamType, flags : LibGst::StreamFlags) : LibGst::Stream*
+  fun stream_get_caps = gst_stream_get_caps(this : Stream*) : LibGst::Caps*
+  fun stream_get_stream_flags = gst_stream_get_stream_flags(this : Stream*) : LibGst::StreamFlags
+  fun stream_get_stream_id = gst_stream_get_stream_id(this : Stream*) : UInt8*
+  fun stream_get_stream_type = gst_stream_get_stream_type(this : Stream*) : LibGst::StreamType
+  fun stream_get_tags = gst_stream_get_tags(this : Stream*) : LibGst::TagList*
+  fun stream_set_caps = gst_stream_set_caps(this : Stream*, caps : LibGst::Caps*) : Void
+  fun stream_set_stream_flags = gst_stream_set_stream_flags(this : Stream*, flags : LibGst::StreamFlags) : Void
+  fun stream_set_stream_type = gst_stream_set_stream_type(this : Stream*, stream_type : LibGst::StreamType) : Void
+  fun stream_set_tags = gst_stream_set_tags(this : Stream*, tags : LibGst::TagList*) : Void
+
+  struct StreamCollection # object
+    object : LibGst::Object
+    upstream_id : UInt8*
+    priv : LibGst::StreamCollectionPrivate*
+    _gst_reserved : Void*
+    # Signal stream-notify
+    # Virtual function stream_notify
+  end
+  fun stream_collection_new = gst_stream_collection_new(upstream_id : UInt8*) : LibGst::StreamCollection*
+  fun stream_collection_add_stream = gst_stream_collection_add_stream(this : StreamCollection*, stream : LibGst::Stream*) : Bool
+  fun stream_collection_get_size = gst_stream_collection_get_size(this : StreamCollection*) : UInt32
+  fun stream_collection_get_stream = gst_stream_collection_get_stream(this : StreamCollection*, index : UInt32) : LibGst::Stream*
+  fun stream_collection_get_upstream_id = gst_stream_collection_get_upstream_id(this : StreamCollection*) : UInt8*
+
   struct SystemClock # object
     clock : LibGst::Clock
     priv : LibGst::SystemClockPrivate*
@@ -2020,6 +2107,7 @@ lib LibGst
   enum BinFlags : UInt32
     ZERO_NONE = 0
     NO_RESYNC = 16384
+    STREAMS_AWARE = 32768
     LAST = 524288
   end
 
@@ -2190,6 +2278,10 @@ lib LibGst
     EXTENDED = 2147483648
     DEVICE_ADDED = 2147483649
     DEVICE_REMOVED = 2147483650
+    PROPERTY_NOTIFY = 2147483651
+    STREAM_COLLECTION = 2147483652
+    STREAMS_SELECTED = 2147483653
+    REDIRECT = 2147483654
     ANY = 4294967295
   end
   fun message_type_get_name = gst_message_type_get_name(type : LibGst::MessageType) : UInt8*
@@ -2210,12 +2302,14 @@ lib LibGst
     ZERO_NONE = 0
     LOCKABLE = 1
     LOCK_READONLY = 2
+    MAY_BE_LEAKED = 4
     LAST = 16
   end
 
   @[Flags]
   enum ObjectFlags : UInt32
     ZERO_NONE = 0
+    MAY_BE_LEAKED = 1
     LAST = 16
   end
 
@@ -2287,6 +2381,7 @@ lib LibGst
     NONE = 0
     FATAL_ERRORS = 1
     NO_SINGLE_ELEMENT_BINS = 2
+    PLACE_IN_BIN = 4
   end
 
   @[Flags]
@@ -2366,6 +2461,17 @@ lib LibGst
     SELECT = 2
     UNSELECT = 4
   end
+
+  @[Flags]
+  enum StreamType : UInt32
+    ZERO_NONE = 0
+    UNKNOWN = 1
+    AUDIO = 2
+    VIDEO = 4
+    CONTAINER = 8
+    TEXT = 16
+  end
+  fun stream_type_get_name = gst_stream_type_get_name(stype : LibGst::StreamType) : UInt8*
 
   @[Flags]
   enum TracerValueFlags : UInt32
@@ -2498,9 +2604,11 @@ lib LibGst
     STREAM_START = 10254
     CAPS = 12814
     SEGMENT = 17934
+    STREAM_COLLECTION = 19230
     TAG = 20510
     BUFFERSIZE = 23054
     SINK_MESSAGE = 25630
+    STREAM_GROUP_DONE = 26894
     EOS = 28174
     TOC = 30750
     PROTECTION = 33310
@@ -2513,6 +2621,7 @@ lib LibGst
     STEP = 58881
     RECONFIGURE = 61441
     TOC_SELECT = 64001
+    SELECT_STREAMS = 66561
     CUSTOM_UPSTREAM = 69121
     CUSTOM_DOWNSTREAM = 71686
     CUSTOM_DOWNSTREAM_OOB = 74242
@@ -3072,6 +3181,7 @@ lib LibGst
   fun static_caps_get_type = gst_static_caps_get_type() : UInt64
   fun static_pad_template_get_type = gst_static_pad_template_get_type() : UInt64
   fun stream_error_quark = gst_stream_error_quark() : UInt32
+  fun stream_type_get_name = gst_stream_type_get_name(stype : LibGst::StreamType) : UInt8*
   fun structure_from_string = gst_structure_from_string(string : UInt8*, end : UInt8**) : LibGst::Structure*
   fun tag_exists = gst_tag_exists(tag : UInt8*) : Bool
   fun tag_get_description = gst_tag_get_description(tag : UInt8*) : UInt8*
@@ -3188,6 +3298,7 @@ lib LibGst
  alias ControlSourceGetValue = LibGst::ControlSource*, UInt64, Float64* -> Bool
  alias ControlSourceGetValueArray = LibGst::ControlSource*, UInt64, UInt64, UInt32, Float64* -> Bool
  alias DebugFuncPtr =  -> Void
+ alias ElementCallAsyncFunc = LibGst::Element*, Void* -> Void
  alias IteratorCopyFunction = LibGst::Iterator*, LibGst::Iterator* -> Void
  alias IteratorFoldFunction = LibGObject::Value*, LibGObject::Value*, Void* -> Bool
  alias IteratorForeachFunction = LibGObject::Value*, Void* -> Void

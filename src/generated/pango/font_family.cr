@@ -5,7 +5,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_font_family.not_nil!.as(Void*)
+      @pango_font_family.not_nil!
     end
 
     def name

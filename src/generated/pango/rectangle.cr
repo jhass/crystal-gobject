@@ -17,7 +17,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_rectangle.not_nil!.as(Void*)
+      @pango_rectangle.not_nil!
     end
 
     def x

@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_accel_label.not_nil!.as(Void*)
+      @gtk_accel_label.not_nil!
     end
 
     # Implements ImplementorIface
@@ -15,7 +15,7 @@ module Gtk
 
 
     def self.new(string) : self
-      __return_value = LibGtk.accel_label_new(string.to_unsafe)
+      __return_value = LibGtk.accel_label_new(string)
       cast Gtk::Widget.new(__return_value)
     end
 

@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_volume_button.not_nil!.as(Void*)
+      @gtk_volume_button.not_nil!
     end
 
     # Implements ImplementorIface

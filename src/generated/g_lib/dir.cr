@@ -7,7 +7,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_dir.not_nil!.as(Void*)
+      @g_lib_dir.not_nil!
     end
 
     def close
@@ -27,7 +27,7 @@ module GLib
 
     def self.make_tmp(tmpl)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.dir_make_tmp(tmpl && tmpl.to_unsafe, pointerof(__error))
+      __return_value = LibGLib.dir_make_tmp(tmpl, pointerof(__error))
       GLib::Error.assert __error
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end

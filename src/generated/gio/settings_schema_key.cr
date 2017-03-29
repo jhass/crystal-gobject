@@ -7,7 +7,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_settings_schema_key.not_nil!.as(Void*)
+      @gio_settings_schema_key.not_nil!
     end
 
     def default_value

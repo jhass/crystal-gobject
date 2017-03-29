@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_separator_tool_item.not_nil!.as(Void*)
+      @gtk_separator_tool_item.not_nil!
     end
 
     # Implements ImplementorIface

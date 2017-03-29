@@ -7,7 +7,7 @@ module Pango
     end
 
     def to_unsafe
-      @pango_renderer_private.not_nil!.as(Void*)
+      @pango_renderer_private.not_nil!
     end
 
   end

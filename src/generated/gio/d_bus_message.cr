@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_d_bus_message.not_nil!.as(Void*)
+      @gio_d_bus_message.not_nil!
     end
 
 
@@ -22,12 +22,12 @@ module Gio
     end
 
     def self.new_method_call(name, path, interface, method) : self
-      __return_value = LibGio.d_bus_message_new_method_call(name && name.to_unsafe, path.to_unsafe, interface && interface.to_unsafe, method.to_unsafe)
+      __return_value = LibGio.d_bus_message_new_method_call(name, path, interface, method)
       cast Gio::DBusMessage.new(__return_value)
     end
 
     def self.new_signal(path, interface, signal) : self
-      __return_value = LibGio.d_bus_message_new_signal(path.to_unsafe, interface.to_unsafe, signal.to_unsafe)
+      __return_value = LibGio.d_bus_message_new_signal(path, interface, signal)
       cast Gio::DBusMessage.new(__return_value)
     end
 
@@ -146,7 +146,7 @@ module Gio
     end
 
     def new_method_error_literal(error_name, error_message)
-      __return_value = LibGio.d_bus_message_new_method_error_literal(to_unsafe.as(LibGio::DBusMessage*), error_name.to_unsafe, error_message.to_unsafe)
+      __return_value = LibGio.d_bus_message_new_method_error_literal(to_unsafe.as(LibGio::DBusMessage*), error_name, error_message)
       Gio::DBusMessage.new(__return_value)
     end
 
@@ -171,12 +171,12 @@ module Gio
     end
 
     def destination=(value)
-      __return_value = LibGio.d_bus_message_set_destination(to_unsafe.as(LibGio::DBusMessage*), value.to_unsafe)
+      __return_value = LibGio.d_bus_message_set_destination(to_unsafe.as(LibGio::DBusMessage*), value)
       __return_value
     end
 
     def error_name=(value)
-      __return_value = LibGio.d_bus_message_set_error_name(to_unsafe.as(LibGio::DBusMessage*), value.to_unsafe)
+      __return_value = LibGio.d_bus_message_set_error_name(to_unsafe.as(LibGio::DBusMessage*), value)
       __return_value
     end
 
@@ -191,12 +191,12 @@ module Gio
     end
 
     def interface=(value)
-      __return_value = LibGio.d_bus_message_set_interface(to_unsafe.as(LibGio::DBusMessage*), value.to_unsafe)
+      __return_value = LibGio.d_bus_message_set_interface(to_unsafe.as(LibGio::DBusMessage*), value)
       __return_value
     end
 
     def member=(value)
-      __return_value = LibGio.d_bus_message_set_member(to_unsafe.as(LibGio::DBusMessage*), value.to_unsafe)
+      __return_value = LibGio.d_bus_message_set_member(to_unsafe.as(LibGio::DBusMessage*), value)
       __return_value
     end
 
@@ -211,7 +211,7 @@ module Gio
     end
 
     def path=(value)
-      __return_value = LibGio.d_bus_message_set_path(to_unsafe.as(LibGio::DBusMessage*), value.to_unsafe)
+      __return_value = LibGio.d_bus_message_set_path(to_unsafe.as(LibGio::DBusMessage*), value)
       __return_value
     end
 
@@ -221,7 +221,7 @@ module Gio
     end
 
     def sender=(value)
-      __return_value = LibGio.d_bus_message_set_sender(to_unsafe.as(LibGio::DBusMessage*), value.to_unsafe)
+      __return_value = LibGio.d_bus_message_set_sender(to_unsafe.as(LibGio::DBusMessage*), value)
       __return_value
     end
 
@@ -231,7 +231,7 @@ module Gio
     end
 
     def signature=(value)
-      __return_value = LibGio.d_bus_message_set_signature(to_unsafe.as(LibGio::DBusMessage*), value.to_unsafe)
+      __return_value = LibGio.d_bus_message_set_signature(to_unsafe.as(LibGio::DBusMessage*), value)
       __return_value
     end
 

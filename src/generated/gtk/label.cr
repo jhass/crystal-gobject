@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_label.not_nil!.as(Void*)
+      @gtk_label.not_nil!
     end
 
     # Implements ImplementorIface
@@ -35,12 +35,12 @@ module Gtk
 
 
     def self.new(str) : self
-      __return_value = LibGtk.label_new(str && str.to_unsafe)
+      __return_value = LibGtk.label_new(str)
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_mnemonic(str) : self
-      __return_value = LibGtk.label_new_with_mnemonic(str && str.to_unsafe)
+      __return_value = LibGtk.label_new_with_mnemonic(str)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -190,7 +190,7 @@ module Gtk
     end
 
     def label=(str)
-      __return_value = LibGtk.label_set_label(to_unsafe.as(LibGtk::Label*), str.to_unsafe)
+      __return_value = LibGtk.label_set_label(to_unsafe.as(LibGtk::Label*), str)
       __return_value
     end
 
@@ -210,12 +210,12 @@ module Gtk
     end
 
     def markup=(str)
-      __return_value = LibGtk.label_set_markup(to_unsafe.as(LibGtk::Label*), str.to_unsafe)
+      __return_value = LibGtk.label_set_markup(to_unsafe.as(LibGtk::Label*), str)
       __return_value
     end
 
     def markup_with_mnemonic=(str)
-      __return_value = LibGtk.label_set_markup_with_mnemonic(to_unsafe.as(LibGtk::Label*), str.to_unsafe)
+      __return_value = LibGtk.label_set_markup_with_mnemonic(to_unsafe.as(LibGtk::Label*), str)
       __return_value
     end
 
@@ -230,7 +230,7 @@ module Gtk
     end
 
     def pattern=(pattern)
-      __return_value = LibGtk.label_set_pattern(to_unsafe.as(LibGtk::Label*), pattern.to_unsafe)
+      __return_value = LibGtk.label_set_pattern(to_unsafe.as(LibGtk::Label*), pattern)
       __return_value
     end
 
@@ -245,12 +245,12 @@ module Gtk
     end
 
     def text=(str)
-      __return_value = LibGtk.label_set_text(to_unsafe.as(LibGtk::Label*), str.to_unsafe)
+      __return_value = LibGtk.label_set_text(to_unsafe.as(LibGtk::Label*), str)
       __return_value
     end
 
     def text_with_mnemonic=(str)
-      __return_value = LibGtk.label_set_text_with_mnemonic(to_unsafe.as(LibGtk::Label*), str.to_unsafe)
+      __return_value = LibGtk.label_set_text_with_mnemonic(to_unsafe.as(LibGtk::Label*), str)
       __return_value
     end
 

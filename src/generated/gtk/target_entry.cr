@@ -16,11 +16,11 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_target_entry.not_nil!.as(Void*)
+      @gtk_target_entry.not_nil!
     end
 
     def self.new(target, flags, info) : self
-      __return_value = LibGtk.target_entry_new(target.to_unsafe, UInt32.new(flags), UInt32.new(info))
+      __return_value = LibGtk.target_entry_new(target, UInt32.new(flags), UInt32.new(info))
       cast Gtk::TargetEntry.new(__return_value)
     end
 
@@ -39,7 +39,7 @@ module Gtk
     end
 
     def target=(value : String)
-      to_unsafe.as(LibGtk::TargetEntry*).value.target = value.to_unsafe
+      to_unsafe.as(LibGtk::TargetEntry*).value.target = value
     end
 
     def flags

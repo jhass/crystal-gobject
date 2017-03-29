@@ -39,7 +39,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_scanner_config.not_nil!.as(Void*)
+      @g_lib_scanner_config.not_nil!
     end
 
     def cset_skip_characters
@@ -47,7 +47,7 @@ module GLib
     end
 
     def cset_skip_characters=(value : String)
-      to_unsafe.as(LibGLib::ScannerConfig*).value.cset_skip_characters = value.to_unsafe
+      to_unsafe.as(LibGLib::ScannerConfig*).value.cset_skip_characters = value
     end
 
     def cset_identifier_first
@@ -55,7 +55,7 @@ module GLib
     end
 
     def cset_identifier_first=(value : String)
-      to_unsafe.as(LibGLib::ScannerConfig*).value.cset_identifier_first = value.to_unsafe
+      to_unsafe.as(LibGLib::ScannerConfig*).value.cset_identifier_first = value
     end
 
     def cset_identifier_nth
@@ -63,7 +63,7 @@ module GLib
     end
 
     def cset_identifier_nth=(value : String)
-      to_unsafe.as(LibGLib::ScannerConfig*).value.cset_identifier_nth = value.to_unsafe
+      to_unsafe.as(LibGLib::ScannerConfig*).value.cset_identifier_nth = value
     end
 
     def cpair_comment_single
@@ -71,7 +71,7 @@ module GLib
     end
 
     def cpair_comment_single=(value : String)
-      to_unsafe.as(LibGLib::ScannerConfig*).value.cpair_comment_single = value.to_unsafe
+      to_unsafe.as(LibGLib::ScannerConfig*).value.cpair_comment_single = value
     end
 
     def case_sensitive

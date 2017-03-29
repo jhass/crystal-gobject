@@ -17,7 +17,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_static_pad_template.not_nil!.as(Void*)
+      @gst_static_pad_template.not_nil!
     end
 
     def get
@@ -35,7 +35,7 @@ module Gst
     end
 
     def name_template=(value : String)
-      to_unsafe.as(LibGst::StaticPadTemplate*).value.name_template = value.to_unsafe
+      to_unsafe.as(LibGst::StaticPadTemplate*).value.name_template = value
     end
 
     def direction

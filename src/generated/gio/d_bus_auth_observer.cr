@@ -5,7 +5,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_d_bus_auth_observer.not_nil!.as(Void*)
+      @gio_d_bus_auth_observer.not_nil!
     end
 
     def self.new : self
@@ -14,7 +14,7 @@ module Gio
     end
 
     def allow_mechanism(mechanism)
-      __return_value = LibGio.d_bus_auth_observer_allow_mechanism(to_unsafe.as(LibGio::DBusAuthObserver*), mechanism.to_unsafe)
+      __return_value = LibGio.d_bus_auth_observer_allow_mechanism(to_unsafe.as(LibGio::DBusAuthObserver*), mechanism)
       __return_value
     end
 

@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_font_button.not_nil!.as(Void*)
+      @gtk_font_button.not_nil!
     end
 
     # Implements ImplementorIface
@@ -27,7 +27,7 @@ module Gtk
     end
 
     def self.new_with_font(fontname) : self
-      __return_value = LibGtk.font_button_new_with_font(fontname.to_unsafe)
+      __return_value = LibGtk.font_button_new_with_font(fontname)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -62,7 +62,7 @@ module Gtk
     end
 
     def font_name=(fontname)
-      __return_value = LibGtk.font_button_set_font_name(to_unsafe.as(LibGtk::FontButton*), fontname.to_unsafe)
+      __return_value = LibGtk.font_button_set_font_name(to_unsafe.as(LibGtk::FontButton*), fontname)
       __return_value
     end
 
@@ -77,7 +77,7 @@ module Gtk
     end
 
     def title=(title)
-      __return_value = LibGtk.font_button_set_title(to_unsafe.as(LibGtk::FontButton*), title.to_unsafe)
+      __return_value = LibGtk.font_button_set_title(to_unsafe.as(LibGtk::FontButton*), title)
       __return_value
     end
 

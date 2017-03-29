@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_scale.not_nil!.as(Void*)
+      @gtk_scale.not_nil!
     end
 
     # Implements ImplementorIface
@@ -28,7 +28,7 @@ module Gtk
     end
 
     def add_mark(value, position : Gtk::PositionType, markup)
-      __return_value = LibGtk.scale_add_mark(to_unsafe.as(LibGtk::Scale*), Float64.new(value), position, markup && markup.to_unsafe)
+      __return_value = LibGtk.scale_add_mark(to_unsafe.as(LibGtk::Scale*), Float64.new(value), position, markup)
       __return_value
     end
 
@@ -91,7 +91,7 @@ module Gtk
     def on_format_value(&__block : FormatValueSignal)
       __callback = ->(_arg0 : LibGtk::Scale*, _arg1 : LibGtk::Float64*) {
        __return_value = __block.call(Scale.new(_arg0), _arg1)
-       __return_value.to_unsafe
+       __return_value
       }
       connect("format-value", __callback)
     end

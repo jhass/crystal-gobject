@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_tree_row_reference.not_nil!.as(Void*)
+      @gtk_tree_row_reference.not_nil!
     end
 
     def self.new(model, path) : self

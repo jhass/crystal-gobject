@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_buffer_list.not_nil!.as(Void*)
+      @gst_buffer_list.not_nil!
     end
 
     def self.new : self

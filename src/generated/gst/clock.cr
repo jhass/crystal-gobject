@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_clock.not_nil!.as(Void*)
+      @gst_clock.not_nil!
     end
 
 

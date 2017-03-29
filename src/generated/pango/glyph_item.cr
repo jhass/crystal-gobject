@@ -15,11 +15,11 @@ module Pango
     end
 
     def to_unsafe
-      @pango_glyph_item.not_nil!.as(Void*)
+      @pango_glyph_item.not_nil!
     end
 
     def apply_attrs(text, list)
-      __return_value = LibPango.glyph_item_apply_attrs(to_unsafe.as(LibPango::GlyphItem*), text.to_unsafe, list.to_unsafe.as(LibPango::AttrList*))
+      __return_value = LibPango.glyph_item_apply_attrs(to_unsafe.as(LibPango::GlyphItem*), text, list.to_unsafe.as(LibPango::AttrList*))
       GLib::SListIterator(Pango::GlyphItem, LibPango::GlyphItem*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
@@ -34,17 +34,17 @@ module Pango
     end
 
     def logical_widths(text, logical_widths)
-      __return_value = LibPango.glyph_item_get_logical_widths(to_unsafe.as(LibPango::GlyphItem*), text.to_unsafe, logical_widths)
+      __return_value = LibPango.glyph_item_get_logical_widths(to_unsafe.as(LibPango::GlyphItem*), text, logical_widths)
       __return_value
     end
 
     def letter_space(text, log_attrs, letter_spacing)
-      __return_value = LibPango.glyph_item_letter_space(to_unsafe.as(LibPango::GlyphItem*), text.to_unsafe, log_attrs, Int32.new(letter_spacing))
+      __return_value = LibPango.glyph_item_letter_space(to_unsafe.as(LibPango::GlyphItem*), text, log_attrs, Int32.new(letter_spacing))
       __return_value
     end
 
     def split(text, split_index)
-      __return_value = LibPango.glyph_item_split(to_unsafe.as(LibPango::GlyphItem*), text.to_unsafe, Int32.new(split_index))
+      __return_value = LibPango.glyph_item_split(to_unsafe.as(LibPango::GlyphItem*), text, Int32.new(split_index))
       Pango::GlyphItem.new(__return_value)
     end
 

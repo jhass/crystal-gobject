@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_radio_menu_item.not_nil!.as(Void*)
+      @gtk_radio_menu_item.not_nil!
     end
 
     # Implements ImplementorIface
@@ -26,22 +26,22 @@ module Gtk
     end
 
     def self.new_with_label(group, label) : self
-      __return_value = LibGtk.radio_menu_item_new_with_label(group && group, label.to_unsafe)
+      __return_value = LibGtk.radio_menu_item_new_with_label(group && group, label)
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_label_from_widget(group, label) : self
-      __return_value = LibGtk.radio_menu_item_new_with_label_from_widget(group && group.to_unsafe.as(LibGtk::RadioMenuItem*), label && label.to_unsafe)
+      __return_value = LibGtk.radio_menu_item_new_with_label_from_widget(group && group.to_unsafe.as(LibGtk::RadioMenuItem*), label)
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_mnemonic(group, label) : self
-      __return_value = LibGtk.radio_menu_item_new_with_mnemonic(group && group, label.to_unsafe)
+      __return_value = LibGtk.radio_menu_item_new_with_mnemonic(group && group, label)
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_mnemonic_from_widget(group, label) : self
-      __return_value = LibGtk.radio_menu_item_new_with_mnemonic_from_widget(group && group.to_unsafe.as(LibGtk::RadioMenuItem*), label && label.to_unsafe)
+      __return_value = LibGtk.radio_menu_item_new_with_mnemonic_from_widget(group && group.to_unsafe.as(LibGtk::RadioMenuItem*), label)
       cast Gtk::Widget.new(__return_value)
     end
 

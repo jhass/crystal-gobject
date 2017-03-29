@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_popover.not_nil!.as(Void*)
+      @gtk_popover.not_nil!
     end
 
     # Implements ImplementorIface
@@ -29,7 +29,7 @@ module Gtk
     end
 
     def bind_model(model, action_namespace)
-      __return_value = LibGtk.popover_bind_model(to_unsafe.as(LibGtk::Popover*), model && model.to_unsafe.as(LibGio::MenuModel*), action_namespace && action_namespace.to_unsafe)
+      __return_value = LibGtk.popover_bind_model(to_unsafe.as(LibGtk::Popover*), model && model.to_unsafe.as(LibGio::MenuModel*), action_namespace)
       __return_value
     end
 
@@ -65,6 +65,16 @@ module Gtk
 
     def transitions_enabled
       __return_value = LibGtk.popover_get_transitions_enabled(to_unsafe.as(LibGtk::Popover*))
+      __return_value
+    end
+
+    def popdown
+      __return_value = LibGtk.popover_popdown(to_unsafe.as(LibGtk::Popover*))
+      __return_value
+    end
+
+    def popup
+      __return_value = LibGtk.popover_popup(to_unsafe.as(LibGtk::Popover*))
       __return_value
     end
 

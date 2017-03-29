@@ -55,7 +55,7 @@ module GLib
     end
 
     def to_unsafe
-      @g_lib_token_value.not_nil!.as(Void*)
+      @g_lib_token_value.not_nil!
     end
 
   end

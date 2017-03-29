@@ -5,7 +5,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_clipboard.not_nil!.as(Void*)
+      @gtk_clipboard.not_nil!
     end
 
     def self.get(selection)
@@ -79,7 +79,7 @@ module Gtk
     end
 
     def set_text(text, len)
-      __return_value = LibGtk.clipboard_set_text(to_unsafe.as(LibGtk::Clipboard*), text.to_unsafe, Int32.new(len))
+      __return_value = LibGtk.clipboard_set_text(to_unsafe.as(LibGtk::Clipboard*), text, Int32.new(len))
       __return_value
     end
 

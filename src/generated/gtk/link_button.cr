@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_link_button.not_nil!.as(Void*)
+      @gtk_link_button.not_nil!
     end
 
     # Implements ImplementorIface
@@ -17,12 +17,12 @@ module Gtk
 
 
     def self.new(uri) : self
-      __return_value = LibGtk.link_button_new(uri.to_unsafe)
+      __return_value = LibGtk.link_button_new(uri)
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_label(uri, label) : self
-      __return_value = LibGtk.link_button_new_with_label(uri.to_unsafe, label && label.to_unsafe)
+      __return_value = LibGtk.link_button_new_with_label(uri, label)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -37,7 +37,7 @@ module Gtk
     end
 
     def uri=(uri)
-      __return_value = LibGtk.link_button_set_uri(to_unsafe.as(LibGtk::LinkButton*), uri.to_unsafe)
+      __return_value = LibGtk.link_button_set_uri(to_unsafe.as(LibGtk::LinkButton*), uri)
       __return_value
     end
 

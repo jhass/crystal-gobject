@@ -17,7 +17,7 @@ module Atk
     end
 
     def to_unsafe
-      @atk_text_rectangle.not_nil!.as(Void*)
+      @atk_text_rectangle.not_nil!
     end
 
     def x

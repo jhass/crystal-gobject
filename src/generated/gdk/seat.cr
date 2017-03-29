@@ -5,7 +5,7 @@ module Gdk
     end
 
     def to_unsafe
-      @gdk_seat.not_nil!.as(Void*)
+      @gdk_seat.not_nil!
     end
 
 
@@ -60,6 +60,24 @@ module Gdk
        __return_value
       }
       connect("device-removed", __callback)
+    end
+
+    alias ToolAddedSignal = Seat, Gdk::DeviceTool ->
+    def on_tool_added(&__block : ToolAddedSignal)
+      __callback = ->(_arg0 : LibGdk::Seat*, _arg1 : LibGdk::LibGdk::DeviceTool*) {
+       __return_value = __block.call(Seat.new(_arg0), Gdk::DeviceTool.new(_arg1))
+       __return_value
+      }
+      connect("tool-added", __callback)
+    end
+
+    alias ToolRemovedSignal = Seat, Gdk::DeviceTool ->
+    def on_tool_removed(&__block : ToolRemovedSignal)
+      __callback = ->(_arg0 : LibGdk::Seat*, _arg1 : LibGdk::LibGdk::DeviceTool*) {
+       __return_value = __block.call(Seat.new(_arg0), Gdk::DeviceTool.new(_arg1))
+       __return_value
+      }
+      connect("tool-removed", __callback)
     end
 
   end

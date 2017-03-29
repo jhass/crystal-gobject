@@ -7,7 +7,7 @@ module Gst
     end
 
     def to_unsafe
-      @gst_poll.not_nil!.as(Void*)
+      @gst_poll.not_nil!
     end
 
     def add_fd(fd)

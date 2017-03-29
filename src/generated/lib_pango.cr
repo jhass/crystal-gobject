@@ -21,6 +21,7 @@ lib LibPango
   SCALE = 1024 # : Int32
   UNKNOWN_GLYPH_HEIGHT = 14 # : Int32
   UNKNOWN_GLYPH_WIDTH = 10 # : Int32
+  VERSION_MIN_REQUIRED = 2 # : Int32
 
   ###########################################
   ##    Enums

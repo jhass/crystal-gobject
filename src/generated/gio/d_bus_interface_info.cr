@@ -19,7 +19,7 @@ module Gio
     end
 
     def to_unsafe
-      @gio_d_bus_interface_info.not_nil!.as(Void*)
+      @gio_d_bus_interface_info.not_nil!
     end
 
     def cache_build
@@ -38,17 +38,17 @@ module Gio
     end
 
     def lookup_method(name)
-      __return_value = LibGio.d_bus_interface_info_lookup_method(to_unsafe.as(LibGio::DBusInterfaceInfo*), name.to_unsafe)
+      __return_value = LibGio.d_bus_interface_info_lookup_method(to_unsafe.as(LibGio::DBusInterfaceInfo*), name)
       Gio::DBusMethodInfo.new(__return_value)
     end
 
     def lookup_property(name)
-      __return_value = LibGio.d_bus_interface_info_lookup_property(to_unsafe.as(LibGio::DBusInterfaceInfo*), name.to_unsafe)
+      __return_value = LibGio.d_bus_interface_info_lookup_property(to_unsafe.as(LibGio::DBusInterfaceInfo*), name)
       Gio::DBusPropertyInfo.new(__return_value)
     end
 
     def lookup_signal(name)
-      __return_value = LibGio.d_bus_interface_info_lookup_signal(to_unsafe.as(LibGio::DBusInterfaceInfo*), name.to_unsafe)
+      __return_value = LibGio.d_bus_interface_info_lookup_signal(to_unsafe.as(LibGio::DBusInterfaceInfo*), name)
       Gio::DBusSignalInfo.new(__return_value)
     end
 
@@ -75,7 +75,7 @@ module Gio
     end
 
     def name=(value : String)
-      to_unsafe.as(LibGio::DBusInterfaceInfo*).value.name = value.to_unsafe
+      to_unsafe.as(LibGio::DBusInterfaceInfo*).value.name = value
     end
 
     def methods

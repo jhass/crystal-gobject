@@ -17,7 +17,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_rc_property.not_nil!.as(Void*)
+      @gtk_rc_property.not_nil!
     end
 
     def self.parse_border(pspec, gstring, property_value)
@@ -66,7 +66,7 @@ module Gtk
     end
 
     def origin=(value : String)
-      to_unsafe.as(LibGtk::RcProperty*).value.origin = value.to_unsafe
+      to_unsafe.as(LibGtk::RcProperty*).value.origin = value
     end
 
     def value

@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_dialog.not_nil!.as(Void*)
+      @gtk_dialog.not_nil!
     end
 
     # Implements ImplementorIface
@@ -24,7 +24,7 @@ module Gtk
     end
 
     def add_button(button_text, response_id)
-      __return_value = LibGtk.dialog_add_button(to_unsafe.as(LibGtk::Dialog*), button_text.to_unsafe, Int32.new(response_id))
+      __return_value = LibGtk.dialog_add_button(to_unsafe.as(LibGtk::Dialog*), button_text, Int32.new(response_id))
       Gtk::Widget.new(__return_value)
     end
 

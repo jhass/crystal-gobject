@@ -7,14 +7,14 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_toggle_action.not_nil!.as(Void*)
+      @gtk_toggle_action.not_nil!
     end
 
     # Implements Buildable
 
 
     def self.new(name, label, tooltip, stock_id) : self
-      __return_value = LibGtk.toggle_action_new(name.to_unsafe, label && label.to_unsafe, tooltip && tooltip.to_unsafe, stock_id && stock_id.to_unsafe)
+      __return_value = LibGtk.toggle_action_new(name, label, tooltip, stock_id)
       cast Gtk::ToggleAction.new(__return_value)
     end
 

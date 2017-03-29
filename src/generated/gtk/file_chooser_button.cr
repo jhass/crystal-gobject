@@ -7,7 +7,7 @@ module Gtk
     end
 
     def to_unsafe
-      @gtk_file_chooser_button.not_nil!.as(Void*)
+      @gtk_file_chooser_button.not_nil!
     end
 
     # Implements ImplementorIface
@@ -18,7 +18,7 @@ module Gtk
 
 
     def self.new(title, action : Gtk::FileChooserAction) : self
-      __return_value = LibGtk.file_chooser_button_new(title.to_unsafe, action)
+      __return_value = LibGtk.file_chooser_button_new(title, action)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -48,7 +48,7 @@ module Gtk
     end
 
     def title=(title)
-      __return_value = LibGtk.file_chooser_button_set_title(to_unsafe.as(LibGtk::FileChooserButton*), title.to_unsafe)
+      __return_value = LibGtk.file_chooser_button_set_title(to_unsafe.as(LibGtk::FileChooserButton*), title)
       __return_value
     end
 

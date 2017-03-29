@@ -5,7 +5,7 @@ module Atk
     end
 
     def to_unsafe
-      @atk_hyperlink.not_nil!.as(Void*)
+      @atk_hyperlink.not_nil!
     end
 
     # Implements Action
