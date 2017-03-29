@@ -60,12 +60,11 @@ module GIRepository
         name
       else
         # TODO: workaround https://github.com/crystal-lang/crystal/issues/4209
-        if type.tag == LibGIRepository::TypeTag::UTF8 || type.tag == LibGIRepository::TypeTag::FILENAME
-          nullable = false
+        if nullable?
+          "#{name} ? #{type.convert_from_crystal(name)} : nil"
         else
-          nullable = nullable?
+          type.convert_from_crystal(name)
         end
-        "#{"#{name} && " if nullable}#{type.convert_from_crystal(name)}"
       end
     end
 

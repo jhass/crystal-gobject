@@ -64,10 +64,6 @@ module Notify
       end
     end
 
-    def self.new(summary : String, body : String? = nil, icon : String? = nil)
-      new summary, body, icon
-    end
-
     def action(name, label, &block : ActionCallback)
       LibNotify.notification_add_action(
         self,
@@ -121,7 +117,7 @@ module Notify
           end
       end
 
-      previous_def(urgency)
+      self.urgency = urgency
     end
 
     def update(summary=nil, body=nil, icon=nil)

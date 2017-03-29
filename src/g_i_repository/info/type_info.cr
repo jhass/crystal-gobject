@@ -129,7 +129,7 @@ module GIRepository
            LibGIRepository::TypeTag::VOID
         variable
       when LibGIRepository::TypeTag::UTF8, LibGIRepository::TypeTag::FILENAME
-        variable # We let Crystal invoke to_unsafe for us
+        "#{variable}.to_unsafe"
       else
         if pointer?
           variable
