@@ -59,7 +59,13 @@ module GIRepository
       if out? || inout?
         name
       else
-        "#{"#{name} && " if nullable?}#{type.convert_from_crystal(name)}"
+        # TODO: workaround https://github.com/crystal-lang/crystal/issues/4209
+        if type.tag == LibGIRepository::TypeTag::UTF8 || type.tag == LibGIRepository::TypeTag::FILENAME
+          nullable = false
+        else
+          nullable = nullable?
+        end
+        "#{"#{name} && " if nullable}#{type.convert_from_crystal(name)}"
       end
     end
 

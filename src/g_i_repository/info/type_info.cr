@@ -90,7 +90,7 @@ module GIRepository
     def convert_to_crystal(variable)
       case tag
       when LibGIRepository::TypeTag::INTERFACE
-        interface = interface
+        interface = self.interface
         case interface
         when ObjectInfo, StructInfo, UnionInfo
           "#{interface.full_constant}.new(#{variable})"
@@ -129,7 +129,7 @@ module GIRepository
            LibGIRepository::TypeTag::VOID
         variable
       when LibGIRepository::TypeTag::UTF8, LibGIRepository::TypeTag::FILENAME
-        "#{variable}.to_unsafe"
+        variable # We let Crystal invoke to_unsafe for us
       else
         if pointer?
           variable

@@ -8,10 +8,13 @@ module GIRepository
     end
 
     def with_value
-      size, value = self.value
-      yield size, value
+      size, val = self.value
+      yield size, val
     ensure
-      LibGIRepository.constant_info_free_value(self, pointerof(value))
+      # TODO: compiler bug, gets confused when local is the same name as the method
+      # and can't nil check this somehow
+      foo = val.not_nil!
+      LibGIRepository.constant_info_free_value(self, pointerof(foo))
     end
 
     def type

@@ -17,7 +17,7 @@ module GIRepository
 
     def write_to_unsafe(libname, io, indent="")
       io.puts "#{indent}  def to_unsafe"
-      io.puts "#{indent}    #{ptr_name}.not_nil!.as(Void*)"
+      io.puts "#{indent}    #{ptr_name}.not_nil!"
       io.puts "#{indent}  end"
       io.puts
     end

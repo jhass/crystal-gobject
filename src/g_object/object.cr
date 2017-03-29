@@ -11,7 +11,7 @@ module GObject
     end
 
     def connect(signal, callback)
-      LibGObject.signal_connect_data((to_unsafe as LibGObject::Object*),
+      LibGObject.signal_connect_data(to_unsafe.as(LibGObject::Object*),
                                      signal,
                                      LibGObject::Callback.new(callback.pointer, Pointer(Void).null),
                                      ClosureDataManager.register(callback.closure_data),
@@ -55,7 +55,7 @@ module GObject
 
     # TODO: should perhaps become object.type.id ?
     def type
-      (to_unsafe as LibGObject::Object*).value.g_type_instance.g_class.value.g_type
+      to_unsafe.as(LibGObject::Object*).value.g_type_instance.g_class.value.g_type
     end
 
     # TODO: should perhaps become object.type.name ?
@@ -66,14 +66,14 @@ module GObject
     macro property_getter(name, type)
       def {{name.id.split("-").join("_").id}}
         value = {{type.id}}.new_gvalue
-        LibGObject.object_get_property(self.to_unsafe as LibGObject::Object*, "{{name.id}}", value)
+        LibGObject.object_get_property(self.to_unsafe.as(LibGObject::Object*), "{{name.id}}", value)
         {{type.id}}.from_gvalue value
       end
     end
 
     macro property_setter(name, type)
       def {{name.id.split("-").join("_").id}}=(value : {{type.id}})
-        LibGObject.object_set_property self.to_unsafe as LibGObject::Object*, "{{name.id}}", value.to_gvalue
+        LibGObject.object_set_property self.to_unsafe.as(LibGObject::Object*), "{{name.id}}", value.to_gvalue
       end
      end
 

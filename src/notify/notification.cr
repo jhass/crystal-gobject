@@ -64,9 +64,7 @@ module Notify
       end
     end
 
-    def self.new(summary : String, body : String? =nil, icon : String? = nil)
-      body = body ? body.to_unsafe : Pointer(UInt8).null
-      icon =  icon ? icon.to_unsafe : Pointer(UInt8).null
+    def self.new(summary : String, body : String? = nil, icon : String? = nil)
       new summary, body, icon
     end
 
