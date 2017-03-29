@@ -29,7 +29,7 @@ module GLib
     end
 
     def self.from_iso8601(iso_date, time)
-      __return_value = LibGLib.time_val_from_iso8601(iso_date, time)
+      __return_value = LibGLib.time_val_from_iso8601(iso_date.to_unsafe, time)
       __return_value
     end
 

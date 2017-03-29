@@ -31,7 +31,7 @@ module Gio
     end
 
     def dbus_error_name=(value : String)
-      to_unsafe.as(LibGio::DBusErrorEntry*).value.dbus_error_name = value
+      to_unsafe.as(LibGio::DBusErrorEntry*).value.dbus_error_name = value.to_unsafe
     end
 
   end

@@ -23,7 +23,7 @@ module GLib
     end
 
     def data=(value : String)
-      to_unsafe.as(LibGLib::Array*).value.data = value
+      to_unsafe.as(LibGLib::Array*).value.data = value.to_unsafe
     end
 
     def len

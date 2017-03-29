@@ -46,7 +46,7 @@ module Gtk
     end
 
     def client_window=(window)
-      __return_value = LibGtk.i_m_context_set_client_window(to_unsafe.as(LibGtk::IMContext*), window && window.to_unsafe.as(LibGdk::Window*))
+      __return_value = LibGtk.i_m_context_set_client_window(to_unsafe.as(LibGtk::IMContext*), window ? window.to_unsafe.as(LibGdk::Window*) : nil)
       __return_value
     end
 
@@ -56,7 +56,7 @@ module Gtk
     end
 
     def set_surrounding(text, len, cursor_index)
-      __return_value = LibGtk.i_m_context_set_surrounding(to_unsafe.as(LibGtk::IMContext*), text, Int32.new(len), Int32.new(cursor_index))
+      __return_value = LibGtk.i_m_context_set_surrounding(to_unsafe.as(LibGtk::IMContext*), text.to_unsafe, Int32.new(len), Int32.new(cursor_index))
       __return_value
     end
 

@@ -20,7 +20,7 @@ module GLib
     end
 
     def self.new_literal(domain, code, message) : self
-      __return_value = LibGLib.error_new_literal(UInt32.new(domain), Int32.new(code), message)
+      __return_value = LibGLib.error_new_literal(UInt32.new(domain), Int32.new(code), message.to_unsafe)
       cast __return_value
     end
 
@@ -60,7 +60,7 @@ module GLib
     end
 
     def message=(value : String)
-      to_unsafe.as(LibGLib::Error*).value.message = value
+      to_unsafe.as(LibGLib::Error*).value.message = value.to_unsafe
     end
 
   end

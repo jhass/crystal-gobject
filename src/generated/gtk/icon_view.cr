@@ -72,7 +72,7 @@ module Gtk
     end
 
     def cell_rect(path, cell, rect)
-      __return_value = LibGtk.icon_view_get_cell_rect(to_unsafe.as(LibGtk::IconView*), path.to_unsafe.as(LibGtk::TreePath*), cell && cell.to_unsafe.as(LibGtk::CellRenderer*), rect)
+      __return_value = LibGtk.icon_view_get_cell_rect(to_unsafe.as(LibGtk::IconView*), path.to_unsafe.as(LibGtk::TreePath*), cell ? cell.to_unsafe.as(LibGtk::CellRenderer*) : nil, rect)
       __return_value
     end
 
@@ -227,7 +227,7 @@ module Gtk
     end
 
     def selected_foreach(func, data)
-      __return_value = LibGtk.icon_view_selected_foreach(to_unsafe.as(LibGtk::IconView*), func, data && data)
+      __return_value = LibGtk.icon_view_selected_foreach(to_unsafe.as(LibGtk::IconView*), func, data ? data : nil)
       __return_value
     end
 
@@ -247,12 +247,12 @@ module Gtk
     end
 
     def set_cursor(path, cell, start_editing)
-      __return_value = LibGtk.icon_view_set_cursor(to_unsafe.as(LibGtk::IconView*), path.to_unsafe.as(LibGtk::TreePath*), cell && cell.to_unsafe.as(LibGtk::CellRenderer*), start_editing)
+      __return_value = LibGtk.icon_view_set_cursor(to_unsafe.as(LibGtk::IconView*), path.to_unsafe.as(LibGtk::TreePath*), cell ? cell.to_unsafe.as(LibGtk::CellRenderer*) : nil, start_editing)
       __return_value
     end
 
     def set_drag_dest_item(path, pos : Gtk::IconViewDropPosition)
-      __return_value = LibGtk.icon_view_set_drag_dest_item(to_unsafe.as(LibGtk::IconView*), path && path.to_unsafe.as(LibGtk::TreePath*), pos)
+      __return_value = LibGtk.icon_view_set_drag_dest_item(to_unsafe.as(LibGtk::IconView*), path ? path.to_unsafe.as(LibGtk::TreePath*) : nil, pos)
       __return_value
     end
 
@@ -282,7 +282,7 @@ module Gtk
     end
 
     def model=(model)
-      __return_value = LibGtk.icon_view_set_model(to_unsafe.as(LibGtk::IconView*), model && model.to_unsafe.as(LibGtk::TreeModel*))
+      __return_value = LibGtk.icon_view_set_model(to_unsafe.as(LibGtk::IconView*), model ? model.to_unsafe.as(LibGtk::TreeModel*) : nil)
       __return_value
     end
 
@@ -317,7 +317,7 @@ module Gtk
     end
 
     def set_tooltip_cell(tooltip, path, cell)
-      __return_value = LibGtk.icon_view_set_tooltip_cell(to_unsafe.as(LibGtk::IconView*), tooltip.to_unsafe.as(LibGtk::Tooltip*), path.to_unsafe.as(LibGtk::TreePath*), cell && cell.to_unsafe.as(LibGtk::CellRenderer*))
+      __return_value = LibGtk.icon_view_set_tooltip_cell(to_unsafe.as(LibGtk::IconView*), tooltip.to_unsafe.as(LibGtk::Tooltip*), path.to_unsafe.as(LibGtk::TreePath*), cell ? cell.to_unsafe.as(LibGtk::CellRenderer*) : nil)
       __return_value
     end
 

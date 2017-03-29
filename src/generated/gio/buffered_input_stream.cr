@@ -24,13 +24,13 @@ module Gio
 
     def fill(count, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.buffered_input_stream_fill(to_unsafe.as(LibGio::BufferedInputStream*), Int64.new(count), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.buffered_input_stream_fill(to_unsafe.as(LibGio::BufferedInputStream*), Int64.new(count), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def fill_async(count, io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.buffered_input_stream_fill_async(to_unsafe.as(LibGio::BufferedInputStream*), Int64.new(count), Int32.new(io_priority), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
+      __return_value = LibGio.buffered_input_stream_fill_async(to_unsafe.as(LibGio::BufferedInputStream*), Int64.new(count), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       __return_value
     end
 
@@ -63,7 +63,7 @@ module Gio
 
     def read_byte(cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.buffered_input_stream_read_byte(to_unsafe.as(LibGio::BufferedInputStream*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.buffered_input_stream_read_byte(to_unsafe.as(LibGio::BufferedInputStream*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

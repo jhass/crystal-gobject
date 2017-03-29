@@ -26,12 +26,12 @@ module Gtk
     end
 
     def child_get_property(child, property_name, value)
-      __return_value = LibGtk.container_child_get_property(to_unsafe.as(LibGtk::Container*), child.to_unsafe.as(LibGtk::Widget*), property_name, value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGtk.container_child_get_property(to_unsafe.as(LibGtk::Container*), child.to_unsafe.as(LibGtk::Widget*), property_name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 
     def child_notify(child, child_property)
-      __return_value = LibGtk.container_child_notify(to_unsafe.as(LibGtk::Container*), child.to_unsafe.as(LibGtk::Widget*), child_property)
+      __return_value = LibGtk.container_child_notify(to_unsafe.as(LibGtk::Container*), child.to_unsafe.as(LibGtk::Widget*), child_property.to_unsafe)
       __return_value
     end
 
@@ -41,7 +41,7 @@ module Gtk
     end
 
     def child_set_property(child, property_name, value)
-      __return_value = LibGtk.container_child_set_property(to_unsafe.as(LibGtk::Container*), child.to_unsafe.as(LibGtk::Widget*), property_name, value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGtk.container_child_set_property(to_unsafe.as(LibGtk::Container*), child.to_unsafe.as(LibGtk::Widget*), property_name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 
@@ -51,12 +51,12 @@ module Gtk
     end
 
     def forall(callback, callback_data)
-      __return_value = LibGtk.container_forall(to_unsafe.as(LibGtk::Container*), callback, callback_data && callback_data)
+      __return_value = LibGtk.container_forall(to_unsafe.as(LibGtk::Container*), callback, callback_data ? callback_data : nil)
       __return_value
     end
 
     def foreach(callback, callback_data)
-      __return_value = LibGtk.container_foreach(to_unsafe.as(LibGtk::Container*), callback, callback_data && callback_data)
+      __return_value = LibGtk.container_foreach(to_unsafe.as(LibGtk::Container*), callback, callback_data ? callback_data : nil)
       __return_value
     end
 
@@ -126,7 +126,7 @@ module Gtk
     end
 
     def focus_child=(child)
-      __return_value = LibGtk.container_set_focus_child(to_unsafe.as(LibGtk::Container*), child && child.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.container_set_focus_child(to_unsafe.as(LibGtk::Container*), child ? child.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 

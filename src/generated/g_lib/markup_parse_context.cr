@@ -11,7 +11,7 @@ module GLib
     end
 
     def self.new(parser, flags : GLib::MarkupParseFlags, user_data, user_data_dnotify) : self
-      __return_value = LibGLib.markup_parse_context_new(parser.to_unsafe.as(LibGLib::MarkupParser*), flags, user_data && user_data, user_data_dnotify)
+      __return_value = LibGLib.markup_parse_context_new(parser.to_unsafe.as(LibGLib::MarkupParser*), flags, user_data ? user_data : nil, user_data_dnotify)
       cast GLib::MarkupParseContext.new(__return_value)
     end
 
@@ -33,7 +33,7 @@ module GLib
     end
 
     def position(line_number, char_number)
-      __return_value = LibGLib.markup_parse_context_get_position(to_unsafe.as(LibGLib::MarkupParseContext*), line_number && line_number, char_number && char_number)
+      __return_value = LibGLib.markup_parse_context_get_position(to_unsafe.as(LibGLib::MarkupParseContext*), line_number ? line_number : nil, char_number ? char_number : nil)
       __return_value
     end
 
@@ -44,7 +44,7 @@ module GLib
 
     def parse(text, text_len)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.markup_parse_context_parse(to_unsafe.as(LibGLib::MarkupParseContext*), text, Int64.new(text_len), pointerof(__error))
+      __return_value = LibGLib.markup_parse_context_parse(to_unsafe.as(LibGLib::MarkupParseContext*), text.to_unsafe, Int64.new(text_len), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -55,7 +55,7 @@ module GLib
     end
 
     def push(parser, user_data)
-      __return_value = LibGLib.markup_parse_context_push(to_unsafe.as(LibGLib::MarkupParseContext*), parser.to_unsafe.as(LibGLib::MarkupParser*), user_data && user_data)
+      __return_value = LibGLib.markup_parse_context_push(to_unsafe.as(LibGLib::MarkupParseContext*), parser.to_unsafe.as(LibGLib::MarkupParser*), user_data ? user_data : nil)
       __return_value
     end
 

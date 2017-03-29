@@ -43,17 +43,17 @@ module Gst
     end
 
     def find_custom(func, elem, user_data)
-      __return_value = LibGst.iterator_find_custom(to_unsafe.as(LibGst::Iterator*), func, elem, user_data && user_data)
+      __return_value = LibGst.iterator_find_custom(to_unsafe.as(LibGst::Iterator*), func, elem, user_data ? user_data : nil)
       __return_value
     end
 
     def fold(func, ret, user_data)
-      __return_value = LibGst.iterator_fold(to_unsafe.as(LibGst::Iterator*), func, ret.to_unsafe.as(LibGObject::Value*), user_data && user_data)
+      __return_value = LibGst.iterator_fold(to_unsafe.as(LibGst::Iterator*), func, ret.to_unsafe.as(LibGObject::Value*), user_data ? user_data : nil)
       __return_value
     end
 
     def foreach(func, user_data)
-      __return_value = LibGst.iterator_foreach(to_unsafe.as(LibGst::Iterator*), func, user_data && user_data)
+      __return_value = LibGst.iterator_foreach(to_unsafe.as(LibGst::Iterator*), func, user_data ? user_data : nil)
       __return_value
     end
 

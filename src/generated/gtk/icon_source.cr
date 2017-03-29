@@ -81,12 +81,12 @@ module Gtk
     end
 
     def filename=(filename)
-      __return_value = LibGtk.icon_source_set_filename(to_unsafe.as(LibGtk::IconSource*), filename)
+      __return_value = LibGtk.icon_source_set_filename(to_unsafe.as(LibGtk::IconSource*), filename.to_unsafe)
       __return_value
     end
 
     def icon_name=(icon_name)
-      __return_value = LibGtk.icon_source_set_icon_name(to_unsafe.as(LibGtk::IconSource*), icon_name)
+      __return_value = LibGtk.icon_source_set_icon_name(to_unsafe.as(LibGtk::IconSource*), icon_name ? icon_name.to_unsafe : nil)
       __return_value
     end
 

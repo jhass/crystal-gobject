@@ -20,7 +20,7 @@ module Gtk
     end
 
     def widget=(widget)
-      __return_value = LibGtk.accessible_set_widget(to_unsafe.as(LibGtk::Accessible*), widget && widget.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.accessible_set_widget(to_unsafe.as(LibGtk::Accessible*), widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 

@@ -36,7 +36,7 @@ module GLib
     end
 
     def attach(context)
-      __return_value = LibGLib.source_attach(to_unsafe.as(LibGLib::Source*), context && context.to_unsafe.as(LibGLib::MainContext*))
+      __return_value = LibGLib.source_attach(to_unsafe.as(LibGLib::Source*), context ? context.to_unsafe.as(LibGLib::MainContext*) : nil)
       __return_value
     end
 
@@ -121,12 +121,12 @@ module GLib
     end
 
     def set_callback(func, data, notify)
-      __return_value = LibGLib.source_set_callback(to_unsafe.as(LibGLib::Source*), func, data && data, notify && notify)
+      __return_value = LibGLib.source_set_callback(to_unsafe.as(LibGLib::Source*), func, data ? data : nil, notify ? notify : nil)
       __return_value
     end
 
     def set_callback_indirect(callback_data, callback_funcs)
-      __return_value = LibGLib.source_set_callback_indirect(to_unsafe.as(LibGLib::Source*), callback_data && callback_data, callback_funcs.to_unsafe.as(LibGLib::SourceCallbackFuncs*))
+      __return_value = LibGLib.source_set_callback_indirect(to_unsafe.as(LibGLib::Source*), callback_data ? callback_data : nil, callback_funcs.to_unsafe.as(LibGLib::SourceCallbackFuncs*))
       __return_value
     end
 
@@ -141,7 +141,7 @@ module GLib
     end
 
     def name=(name)
-      __return_value = LibGLib.source_set_name(to_unsafe.as(LibGLib::Source*), name)
+      __return_value = LibGLib.source_set_name(to_unsafe.as(LibGLib::Source*), name.to_unsafe)
       __return_value
     end
 
@@ -166,17 +166,17 @@ module GLib
     end
 
     def self.remove_by_funcs_user_data(funcs, user_data)
-      __return_value = LibGLib.source_remove_by_funcs_user_data(funcs.to_unsafe.as(LibGLib::SourceFuncs*), user_data && user_data)
+      __return_value = LibGLib.source_remove_by_funcs_user_data(funcs.to_unsafe.as(LibGLib::SourceFuncs*), user_data ? user_data : nil)
       __return_value
     end
 
     def self.remove_by_user_data(user_data)
-      __return_value = LibGLib.source_remove_by_user_data(user_data && user_data)
+      __return_value = LibGLib.source_remove_by_user_data(user_data ? user_data : nil)
       __return_value
     end
 
     def self.name_by_id=(tag, name)
-      __return_value = LibGLib.source_set_name_by_id(UInt32.new(tag), name)
+      __return_value = LibGLib.source_set_name_by_id(UInt32.new(tag), name.to_unsafe)
       __return_value
     end
 

@@ -40,7 +40,7 @@ module GLib
     end
 
     def index(data)
-      __return_value = LibGLib.queue_index(to_unsafe.as(LibGLib::Queue*), data && data)
+      __return_value = LibGLib.queue_index(to_unsafe.as(LibGLib::Queue*), data ? data : nil)
       __return_value
     end
 
@@ -85,27 +85,27 @@ module GLib
     end
 
     def push_head(data)
-      __return_value = LibGLib.queue_push_head(to_unsafe.as(LibGLib::Queue*), data && data)
+      __return_value = LibGLib.queue_push_head(to_unsafe.as(LibGLib::Queue*), data ? data : nil)
       __return_value
     end
 
     def push_nth(data, n)
-      __return_value = LibGLib.queue_push_nth(to_unsafe.as(LibGLib::Queue*), data && data, Int32.new(n))
+      __return_value = LibGLib.queue_push_nth(to_unsafe.as(LibGLib::Queue*), data ? data : nil, Int32.new(n))
       __return_value
     end
 
     def push_tail(data)
-      __return_value = LibGLib.queue_push_tail(to_unsafe.as(LibGLib::Queue*), data && data)
+      __return_value = LibGLib.queue_push_tail(to_unsafe.as(LibGLib::Queue*), data ? data : nil)
       __return_value
     end
 
     def remove(data)
-      __return_value = LibGLib.queue_remove(to_unsafe.as(LibGLib::Queue*), data && data)
+      __return_value = LibGLib.queue_remove(to_unsafe.as(LibGLib::Queue*), data ? data : nil)
       __return_value
     end
 
     def remove_all(data)
-      __return_value = LibGLib.queue_remove_all(to_unsafe.as(LibGLib::Queue*), data && data)
+      __return_value = LibGLib.queue_remove_all(to_unsafe.as(LibGLib::Queue*), data ? data : nil)
       __return_value
     end
 

@@ -55,7 +55,7 @@ module Gtk
     end
 
     def header=(header)
-      __return_value = LibGtk.list_box_row_set_header(to_unsafe.as(LibGtk::ListBoxRow*), header && header.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.list_box_row_set_header(to_unsafe.as(LibGtk::ListBoxRow*), header ? header.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 

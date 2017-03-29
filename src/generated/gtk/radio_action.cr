@@ -15,7 +15,7 @@ module Gtk
 
 
     def self.new(name, label, tooltip, stock_id, value) : self
-      __return_value = LibGtk.radio_action_new(name, label, tooltip, stock_id, Int32.new(value))
+      __return_value = LibGtk.radio_action_new(name.to_unsafe, label ? label.to_unsafe : nil, tooltip ? tooltip.to_unsafe : nil, stock_id ? stock_id.to_unsafe : nil, Int32.new(value))
       cast Gtk::RadioAction.new(__return_value)
     end
 
@@ -30,7 +30,7 @@ module Gtk
     end
 
     def join_group(group_source)
-      __return_value = LibGtk.radio_action_join_group(to_unsafe.as(LibGtk::RadioAction*), group_source && group_source.to_unsafe.as(LibGtk::RadioAction*))
+      __return_value = LibGtk.radio_action_join_group(to_unsafe.as(LibGtk::RadioAction*), group_source ? group_source.to_unsafe.as(LibGtk::RadioAction*) : nil)
       __return_value
     end
 
@@ -40,7 +40,7 @@ module Gtk
     end
 
     def group=(group)
-      __return_value = LibGtk.radio_action_set_group(to_unsafe.as(LibGtk::RadioAction*), group && group)
+      __return_value = LibGtk.radio_action_set_group(to_unsafe.as(LibGtk::RadioAction*), group ? group : nil)
       __return_value
     end
 

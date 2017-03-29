@@ -47,7 +47,7 @@ module GLib
     end
 
     def strings=(value : String)
-      to_unsafe.as(LibGLib::TestLogMsg*).value.strings = value
+      to_unsafe.as(LibGLib::TestLogMsg*).value.strings = value.to_unsafe
     end
 
     def n_nums

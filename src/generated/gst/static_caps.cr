@@ -41,7 +41,7 @@ module Gst
     end
 
     def string=(value : String)
-      to_unsafe.as(LibGst::StaticCaps*).value.string = value
+      to_unsafe.as(LibGst::StaticCaps*).value.string = value.to_unsafe
     end
 
     def _gst_reserved

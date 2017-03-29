@@ -114,7 +114,7 @@ module Gtk
     end
 
     def set_forward_page_func(page_func, data, destroy)
-      __return_value = LibGtk.assistant_set_forward_page_func(to_unsafe.as(LibGtk::Assistant*), page_func && page_func, data && data, destroy)
+      __return_value = LibGtk.assistant_set_forward_page_func(to_unsafe.as(LibGtk::Assistant*), page_func ? page_func : nil, data ? data : nil, destroy)
       __return_value
     end
 
@@ -129,17 +129,17 @@ module Gtk
     end
 
     def set_page_header_image(page, pixbuf)
-      __return_value = LibGtk.assistant_set_page_header_image(to_unsafe.as(LibGtk::Assistant*), page.to_unsafe.as(LibGtk::Widget*), pixbuf && pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*))
+      __return_value = LibGtk.assistant_set_page_header_image(to_unsafe.as(LibGtk::Assistant*), page.to_unsafe.as(LibGtk::Widget*), pixbuf ? pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*) : nil)
       __return_value
     end
 
     def set_page_side_image(page, pixbuf)
-      __return_value = LibGtk.assistant_set_page_side_image(to_unsafe.as(LibGtk::Assistant*), page.to_unsafe.as(LibGtk::Widget*), pixbuf && pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*))
+      __return_value = LibGtk.assistant_set_page_side_image(to_unsafe.as(LibGtk::Assistant*), page.to_unsafe.as(LibGtk::Widget*), pixbuf ? pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*) : nil)
       __return_value
     end
 
     def set_page_title(page, title)
-      __return_value = LibGtk.assistant_set_page_title(to_unsafe.as(LibGtk::Assistant*), page.to_unsafe.as(LibGtk::Widget*), title)
+      __return_value = LibGtk.assistant_set_page_title(to_unsafe.as(LibGtk::Assistant*), page.to_unsafe.as(LibGtk::Widget*), title.to_unsafe)
       __return_value
     end
 

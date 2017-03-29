@@ -19,17 +19,17 @@ module Gtk
 
 
     def self.new(relative_to) : self
-      __return_value = LibGtk.popover_new(relative_to && relative_to.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.popover_new(relative_to ? relative_to.to_unsafe.as(LibGtk::Widget*) : nil)
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_from_model(relative_to, model) : self
-      __return_value = LibGtk.popover_new_from_model(relative_to && relative_to.to_unsafe.as(LibGtk::Widget*), model.to_unsafe.as(LibGio::MenuModel*))
+      __return_value = LibGtk.popover_new_from_model(relative_to ? relative_to.to_unsafe.as(LibGtk::Widget*) : nil, model.to_unsafe.as(LibGio::MenuModel*))
       cast Gtk::Widget.new(__return_value)
     end
 
     def bind_model(model, action_namespace)
-      __return_value = LibGtk.popover_bind_model(to_unsafe.as(LibGtk::Popover*), model && model.to_unsafe.as(LibGio::MenuModel*), action_namespace)
+      __return_value = LibGtk.popover_bind_model(to_unsafe.as(LibGtk::Popover*), model ? model.to_unsafe.as(LibGio::MenuModel*) : nil, action_namespace ? action_namespace.to_unsafe : nil)
       __return_value
     end
 
@@ -84,7 +84,7 @@ module Gtk
     end
 
     def default_widget=(widget)
-      __return_value = LibGtk.popover_set_default_widget(to_unsafe.as(LibGtk::Popover*), widget && widget.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.popover_set_default_widget(to_unsafe.as(LibGtk::Popover*), widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 
@@ -104,7 +104,7 @@ module Gtk
     end
 
     def relative_to=(relative_to)
-      __return_value = LibGtk.popover_set_relative_to(to_unsafe.as(LibGtk::Popover*), relative_to && relative_to.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.popover_set_relative_to(to_unsafe.as(LibGtk::Popover*), relative_to ? relative_to.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 

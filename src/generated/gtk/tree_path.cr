@@ -26,7 +26,7 @@ module Gtk
     end
 
     def self.new_from_string(path) : self
-      __return_value = LibGtk.tree_path_new_from_string(path)
+      __return_value = LibGtk.tree_path_new_from_string(path.to_unsafe)
       cast Gtk::TreePath.new(__return_value)
     end
 

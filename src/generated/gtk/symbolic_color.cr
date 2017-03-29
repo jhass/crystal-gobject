@@ -26,7 +26,7 @@ module Gtk
     end
 
     def self.new_name(name) : self
-      __return_value = LibGtk.symbolic_color_new_name(name)
+      __return_value = LibGtk.symbolic_color_new_name(name.to_unsafe)
       cast Gtk::SymbolicColor.new(__return_value)
     end
 
@@ -36,7 +36,7 @@ module Gtk
     end
 
     def self.new_win32(theme_class, id) : self
-      __return_value = LibGtk.symbolic_color_new_win32(theme_class, Int32.new(id))
+      __return_value = LibGtk.symbolic_color_new_win32(theme_class.to_unsafe, Int32.new(id))
       cast Gtk::SymbolicColor.new(__return_value)
     end
 
@@ -46,7 +46,7 @@ module Gtk
     end
 
     def resolve(props, resolved_color)
-      __return_value = LibGtk.symbolic_color_resolve(to_unsafe.as(LibGtk::SymbolicColor*), props && props.to_unsafe.as(LibGtk::StyleProperties*), resolved_color)
+      __return_value = LibGtk.symbolic_color_resolve(to_unsafe.as(LibGtk::SymbolicColor*), props ? props.to_unsafe.as(LibGtk::StyleProperties*) : nil, resolved_color)
       __return_value
     end
 

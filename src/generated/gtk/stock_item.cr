@@ -31,7 +31,7 @@ module Gtk
     end
 
     def stock_id=(value : String)
-      to_unsafe.as(LibGtk::StockItem*).value.stock_id = value
+      to_unsafe.as(LibGtk::StockItem*).value.stock_id = value.to_unsafe
     end
 
     def label
@@ -39,7 +39,7 @@ module Gtk
     end
 
     def label=(value : String)
-      to_unsafe.as(LibGtk::StockItem*).value.label = value
+      to_unsafe.as(LibGtk::StockItem*).value.label = value.to_unsafe
     end
 
     def modifier
@@ -63,7 +63,7 @@ module Gtk
     end
 
     def translation_domain=(value : String)
-      to_unsafe.as(LibGtk::StockItem*).value.translation_domain = value
+      to_unsafe.as(LibGtk::StockItem*).value.translation_domain = value.to_unsafe
     end
 
   end

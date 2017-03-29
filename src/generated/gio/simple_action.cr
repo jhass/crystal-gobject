@@ -15,12 +15,12 @@ module Gio
 
 
     def self.new(name, parameter_type) : self
-      __return_value = LibGio.simple_action_new(name, parameter_type && parameter_type.to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGio.simple_action_new(name.to_unsafe, parameter_type ? parameter_type.to_unsafe.as(LibGLib::VariantType*) : nil)
       cast Gio::SimpleAction.new(__return_value)
     end
 
     def self.new_stateful(name, parameter_type, state) : self
-      __return_value = LibGio.simple_action_new_stateful(name, parameter_type && parameter_type.to_unsafe.as(LibGLib::VariantType*), state.to_unsafe.as(LibGLib::Variant*))
+      __return_value = LibGio.simple_action_new_stateful(name.to_unsafe, parameter_type ? parameter_type.to_unsafe.as(LibGLib::VariantType*) : nil, state.to_unsafe.as(LibGLib::Variant*))
       cast Gio::SimpleAction.new(__return_value)
     end
 
@@ -35,7 +35,7 @@ module Gio
     end
 
     def state_hint=(state_hint)
-      __return_value = LibGio.simple_action_set_state_hint(to_unsafe.as(LibGio::SimpleAction*), state_hint && state_hint.to_unsafe.as(LibGLib::Variant*))
+      __return_value = LibGio.simple_action_set_state_hint(to_unsafe.as(LibGio::SimpleAction*), state_hint ? state_hint.to_unsafe.as(LibGLib::Variant*) : nil)
       __return_value
     end
 

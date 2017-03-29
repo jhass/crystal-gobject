@@ -21,7 +21,7 @@ module Gtk
     end
 
     def self.new_from_stock(stock_id) : self
-      __return_value = LibGtk.toggle_tool_button_new_from_stock(stock_id)
+      __return_value = LibGtk.toggle_tool_button_new_from_stock(stock_id.to_unsafe)
       cast Gtk::ToolItem.new(__return_value)
     end
 

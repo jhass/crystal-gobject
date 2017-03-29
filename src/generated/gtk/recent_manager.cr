@@ -21,12 +21,12 @@ module Gtk
     end
 
     def add_full(uri, recent_data)
-      __return_value = LibGtk.recent_manager_add_full(to_unsafe.as(LibGtk::RecentManager*), uri, recent_data.to_unsafe.as(LibGtk::RecentData*))
+      __return_value = LibGtk.recent_manager_add_full(to_unsafe.as(LibGtk::RecentManager*), uri.to_unsafe, recent_data.to_unsafe.as(LibGtk::RecentData*))
       __return_value
     end
 
     def add_item(uri)
-      __return_value = LibGtk.recent_manager_add_item(to_unsafe.as(LibGtk::RecentManager*), uri)
+      __return_value = LibGtk.recent_manager_add_item(to_unsafe.as(LibGtk::RecentManager*), uri.to_unsafe)
       __return_value
     end
 
@@ -36,20 +36,20 @@ module Gtk
     end
 
     def has_item(uri)
-      __return_value = LibGtk.recent_manager_has_item(to_unsafe.as(LibGtk::RecentManager*), uri)
+      __return_value = LibGtk.recent_manager_has_item(to_unsafe.as(LibGtk::RecentManager*), uri.to_unsafe)
       __return_value
     end
 
     def lookup_item(uri)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.recent_manager_lookup_item(to_unsafe.as(LibGtk::RecentManager*), uri, pointerof(__error))
+      __return_value = LibGtk.recent_manager_lookup_item(to_unsafe.as(LibGtk::RecentManager*), uri.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       Gtk::RecentInfo.new(__return_value) if __return_value
     end
 
     def move_item(uri, new_uri)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.recent_manager_move_item(to_unsafe.as(LibGtk::RecentManager*), uri, new_uri, pointerof(__error))
+      __return_value = LibGtk.recent_manager_move_item(to_unsafe.as(LibGtk::RecentManager*), uri.to_unsafe, new_uri ? new_uri.to_unsafe : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -63,7 +63,7 @@ module Gtk
 
     def remove_item(uri)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.recent_manager_remove_item(to_unsafe.as(LibGtk::RecentManager*), uri, pointerof(__error))
+      __return_value = LibGtk.recent_manager_remove_item(to_unsafe.as(LibGtk::RecentManager*), uri.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

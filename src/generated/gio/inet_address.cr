@@ -31,7 +31,7 @@ module Gio
     end
 
     def self.new_from_string(string) : self
-      __return_value = LibGio.inet_address_new_from_string(string)
+      __return_value = LibGio.inet_address_new_from_string(string.to_unsafe)
       cast Gio::InetAddress.new(__return_value)
     end
 

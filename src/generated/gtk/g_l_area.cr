@@ -84,7 +84,7 @@ module Gtk
     end
 
     def error=(error)
-      __return_value = LibGtk.g_l_area_set_error(to_unsafe.as(LibGtk::GLArea*), error && error)
+      __return_value = LibGtk.g_l_area_set_error(to_unsafe.as(LibGtk::GLArea*), error ? error : nil)
       __return_value
     end
 

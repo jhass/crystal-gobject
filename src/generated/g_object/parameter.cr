@@ -23,7 +23,7 @@ module GObject
     end
 
     def name=(value : String)
-      to_unsafe.as(LibGObject::Parameter*).value.name = value
+      to_unsafe.as(LibGObject::Parameter*).value.name = value.to_unsafe
     end
 
     def value

@@ -31,7 +31,7 @@ module Pango
     end
 
     def langs=(value : String)
-      to_unsafe.as(LibPango::EngineScriptInfo*).value.langs = value
+      to_unsafe.as(LibPango::EngineScriptInfo*).value.langs = value.to_unsafe
     end
 
   end

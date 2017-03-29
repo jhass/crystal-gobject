@@ -14,7 +14,7 @@ module Gst
 
 
     def self.new(name) : self
-      __return_value = LibGst.bin_new(name)
+      __return_value = LibGst.bin_new(name ? name.to_unsafe : nil)
       cast Gst::Element.new(__return_value)
     end
 
@@ -34,12 +34,12 @@ module Gst
     end
 
     def by_name(name)
-      __return_value = LibGst.bin_get_by_name(to_unsafe.as(LibGst::Bin*), name)
+      __return_value = LibGst.bin_get_by_name(to_unsafe.as(LibGst::Bin*), name.to_unsafe)
       Gst::Element.new(__return_value) if __return_value
     end
 
     def by_name_recurse_up(name)
-      __return_value = LibGst.bin_get_by_name_recurse_up(to_unsafe.as(LibGst::Bin*), name)
+      __return_value = LibGst.bin_get_by_name_recurse_up(to_unsafe.as(LibGst::Bin*), name.to_unsafe)
       Gst::Element.new(__return_value) if __return_value
     end
 

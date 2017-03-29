@@ -66,7 +66,7 @@ module Gst
     end
 
     def self.new_protection(system_id, data, origin) : self
-      __return_value = LibGst.event_new_protection(system_id, data.to_unsafe.as(LibGst::Buffer*), origin)
+      __return_value = LibGst.event_new_protection(system_id.to_unsafe, data.to_unsafe.as(LibGst::Buffer*), origin.to_unsafe)
       cast Gst::Event.new(__return_value)
     end
 
@@ -101,7 +101,7 @@ module Gst
     end
 
     def self.new_sink_message(name, msg) : self
-      __return_value = LibGst.event_new_sink_message(name, msg.to_unsafe.as(LibGst::Message*))
+      __return_value = LibGst.event_new_sink_message(name.to_unsafe, msg.to_unsafe.as(LibGst::Message*))
       cast Gst::Event.new(__return_value)
     end
 
@@ -121,7 +121,7 @@ module Gst
     end
 
     def self.new_stream_start(stream_id) : self
-      __return_value = LibGst.event_new_stream_start(stream_id)
+      __return_value = LibGst.event_new_stream_start(stream_id.to_unsafe)
       cast Gst::Event.new(__return_value)
     end
 
@@ -136,7 +136,7 @@ module Gst
     end
 
     def self.new_toc_select(uid) : self
-      __return_value = LibGst.event_new_toc_select(uid)
+      __return_value = LibGst.event_new_toc_select(uid.to_unsafe)
       cast Gst::Event.new(__return_value)
     end
 
@@ -161,7 +161,7 @@ module Gst
     end
 
     def has_name(name)
-      __return_value = LibGst.event_has_name(to_unsafe.as(LibGst::Event*), name)
+      __return_value = LibGst.event_has_name(to_unsafe.as(LibGst::Event*), name.to_unsafe)
       __return_value
     end
 
@@ -196,7 +196,7 @@ module Gst
     end
 
     def parse_protection(system_id, data, origin)
-      __return_value = LibGst.event_parse_protection(to_unsafe.as(LibGst::Event*), system_id, data, origin)
+      __return_value = LibGst.event_parse_protection(to_unsafe.as(LibGst::Event*), system_id, data, origin ? origin.to_unsafe : nil)
       __return_value
     end
 

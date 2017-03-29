@@ -129,7 +129,7 @@ module Gdk
     end
 
     def grab(window, grab_ownership : Gdk::GrabOwnership, owner_events, event_mask : Gdk::EventMask, cursor, time)
-      __return_value = LibGdk.device_grab(to_unsafe.as(LibGdk::Device*), window.to_unsafe.as(LibGdk::Window*), grab_ownership, owner_events, event_mask, cursor && cursor.to_unsafe.as(LibGdk::Cursor*), UInt32.new(time))
+      __return_value = LibGdk.device_grab(to_unsafe.as(LibGdk::Device*), window.to_unsafe.as(LibGdk::Window*), grab_ownership, owner_events, event_mask, cursor ? cursor.to_unsafe.as(LibGdk::Cursor*) : nil, UInt32.new(time))
       __return_value
     end
 

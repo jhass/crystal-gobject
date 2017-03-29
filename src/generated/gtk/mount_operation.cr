@@ -12,7 +12,7 @@ module Gtk
 
 
     def self.new(parent) : self
-      __return_value = LibGtk.mount_operation_new(parent && parent.to_unsafe.as(LibGtk::Window*))
+      __return_value = LibGtk.mount_operation_new(parent ? parent.to_unsafe.as(LibGtk::Window*) : nil)
       cast Gio::MountOperation.new(__return_value)
     end
 
@@ -32,7 +32,7 @@ module Gtk
     end
 
     def parent=(parent)
-      __return_value = LibGtk.mount_operation_set_parent(to_unsafe.as(LibGtk::MountOperation*), parent && parent.to_unsafe.as(LibGtk::Window*))
+      __return_value = LibGtk.mount_operation_set_parent(to_unsafe.as(LibGtk::MountOperation*), parent ? parent.to_unsafe.as(LibGtk::Window*) : nil)
       __return_value
     end
 

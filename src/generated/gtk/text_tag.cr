@@ -83,7 +83,7 @@ module Gtk
 
 
     def self.new(name) : self
-      __return_value = LibGtk.text_tag_new(name)
+      __return_value = LibGtk.text_tag_new(name ? name.to_unsafe : nil)
       cast Gtk::TextTag.new(__return_value)
     end
 

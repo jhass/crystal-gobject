@@ -28,7 +28,7 @@ module Atk
     end
 
     def name=(value : String)
-      to_unsafe.as(LibAtk::Attribute*).value.name = value
+      to_unsafe.as(LibAtk::Attribute*).value.name = value.to_unsafe
     end
 
     def value
@@ -36,7 +36,7 @@ module Atk
     end
 
     def value=(value : String)
-      to_unsafe.as(LibAtk::Attribute*).value.value = value
+      to_unsafe.as(LibAtk::Attribute*).value.value = value.to_unsafe
     end
 
   end

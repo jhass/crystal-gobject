@@ -21,12 +21,12 @@ module GLib
     end
 
     def replace(value)
-      __return_value = LibGLib.private_replace(to_unsafe.as(LibGLib::Private*), value && value)
+      __return_value = LibGLib.private_replace(to_unsafe.as(LibGLib::Private*), value ? value : nil)
       __return_value
     end
 
     def set(value)
-      __return_value = LibGLib.private_set(to_unsafe.as(LibGLib::Private*), value && value)
+      __return_value = LibGLib.private_set(to_unsafe.as(LibGLib::Private*), value ? value : nil)
       __return_value
     end
 

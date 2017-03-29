@@ -35,7 +35,7 @@ module Gdk
     end
 
     def title=(value : String)
-      to_unsafe.as(LibGdk::WindowAttr*).value.title = value
+      to_unsafe.as(LibGdk::WindowAttr*).value.title = value.to_unsafe
     end
 
     def event_mask
@@ -115,7 +115,7 @@ module Gdk
     end
 
     def wmclass_name=(value : String)
-      to_unsafe.as(LibGdk::WindowAttr*).value.wmclass_name = value
+      to_unsafe.as(LibGdk::WindowAttr*).value.wmclass_name = value.to_unsafe
     end
 
     def wmclass_class
@@ -123,7 +123,7 @@ module Gdk
     end
 
     def wmclass_class=(value : String)
-      to_unsafe.as(LibGdk::WindowAttr*).value.wmclass_class = value
+      to_unsafe.as(LibGdk::WindowAttr*).value.wmclass_class = value.to_unsafe
     end
 
     def override_redirect

@@ -261,7 +261,7 @@ module Gdk
     end
 
     def device_tool=(tool)
-      __return_value = LibGdk.event_set_device_tool(to_unsafe.as(LibGdk::Event*), tool && tool.to_unsafe.as(LibGdk::DeviceTool*))
+      __return_value = LibGdk.event_set_device_tool(to_unsafe.as(LibGdk::Event*), tool ? tool.to_unsafe.as(LibGdk::DeviceTool*) : nil)
       __return_value
     end
 
@@ -286,7 +286,7 @@ module Gdk
     end
 
     def self.handler_set(func, data, notify)
-      __return_value = LibGdk.event_handler_set(func, data && data, notify)
+      __return_value = LibGdk.event_handler_set(func, data ? data : nil, notify)
       __return_value
     end
 

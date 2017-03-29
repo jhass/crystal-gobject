@@ -26,7 +26,7 @@ module Gtk
     end
 
     def context_id=(value : String)
-      to_unsafe.as(LibGtk::IMContextInfo*).value.context_id = value
+      to_unsafe.as(LibGtk::IMContextInfo*).value.context_id = value.to_unsafe
     end
 
     def context_name
@@ -34,7 +34,7 @@ module Gtk
     end
 
     def context_name=(value : String)
-      to_unsafe.as(LibGtk::IMContextInfo*).value.context_name = value
+      to_unsafe.as(LibGtk::IMContextInfo*).value.context_name = value.to_unsafe
     end
 
     def domain
@@ -42,7 +42,7 @@ module Gtk
     end
 
     def domain=(value : String)
-      to_unsafe.as(LibGtk::IMContextInfo*).value.domain = value
+      to_unsafe.as(LibGtk::IMContextInfo*).value.domain = value.to_unsafe
     end
 
     def domain_dirname
@@ -50,7 +50,7 @@ module Gtk
     end
 
     def domain_dirname=(value : String)
-      to_unsafe.as(LibGtk::IMContextInfo*).value.domain_dirname = value
+      to_unsafe.as(LibGtk::IMContextInfo*).value.domain_dirname = value.to_unsafe
     end
 
     def default_locales
@@ -58,7 +58,7 @@ module Gtk
     end
 
     def default_locales=(value : String)
-      to_unsafe.as(LibGtk::IMContextInfo*).value.default_locales = value
+      to_unsafe.as(LibGtk::IMContextInfo*).value.default_locales = value.to_unsafe
     end
 
   end

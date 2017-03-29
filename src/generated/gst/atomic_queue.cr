@@ -31,7 +31,7 @@ module Gst
     end
 
     def push(data)
-      __return_value = LibGst.atomic_queue_push(to_unsafe.as(LibGst::AtomicQueue*), data && data)
+      __return_value = LibGst.atomic_queue_push(to_unsafe.as(LibGst::AtomicQueue*), data ? data : nil)
       __return_value
     end
 

@@ -9,7 +9,7 @@ module Pango
     end
 
     def foreach(func, data)
-      __return_value = LibPango.fontset_foreach(to_unsafe.as(LibPango::Fontset*), func, data && data)
+      __return_value = LibPango.fontset_foreach(to_unsafe.as(LibPango::Fontset*), func, data ? data : nil)
       __return_value
     end
 

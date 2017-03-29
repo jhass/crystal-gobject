@@ -49,7 +49,7 @@ module Atk
     end
 
     def content=(value : String)
-      to_unsafe.as(LibAtk::TextRange*).value.content = value
+      to_unsafe.as(LibAtk::TextRange*).value.content = value.to_unsafe
     end
 
   end

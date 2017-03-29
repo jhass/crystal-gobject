@@ -11,7 +11,7 @@ module Gst
     end
 
     def self.new(type : Gst::TocEntryType, uid) : self
-      __return_value = LibGst.toc_entry_new(type, uid)
+      __return_value = LibGst.toc_entry_new(type, uid.to_unsafe)
       cast Gst::TocEntry.new(__return_value)
     end
 
@@ -71,7 +71,7 @@ module Gst
     end
 
     def merge_tags(tags, mode : Gst::TagMergeMode)
-      __return_value = LibGst.toc_entry_merge_tags(to_unsafe.as(LibGst::TocEntry*), tags && tags.to_unsafe.as(LibGst::TagList*), mode)
+      __return_value = LibGst.toc_entry_merge_tags(to_unsafe.as(LibGst::TocEntry*), tags ? tags.to_unsafe.as(LibGst::TagList*) : nil, mode)
       __return_value
     end
 
@@ -86,7 +86,7 @@ module Gst
     end
 
     def tags=(tags)
-      __return_value = LibGst.toc_entry_set_tags(to_unsafe.as(LibGst::TocEntry*), tags && tags.to_unsafe.as(LibGst::TagList*))
+      __return_value = LibGst.toc_entry_set_tags(to_unsafe.as(LibGst::TocEntry*), tags ? tags.to_unsafe.as(LibGst::TagList*) : nil)
       __return_value
     end
 

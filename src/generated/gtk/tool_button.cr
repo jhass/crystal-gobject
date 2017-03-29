@@ -21,12 +21,12 @@ module Gtk
 
 
     def self.new(icon_widget, label) : self
-      __return_value = LibGtk.tool_button_new(icon_widget && icon_widget.to_unsafe.as(LibGtk::Widget*), label)
+      __return_value = LibGtk.tool_button_new(icon_widget ? icon_widget.to_unsafe.as(LibGtk::Widget*) : nil, label ? label.to_unsafe : nil)
       cast Gtk::ToolItem.new(__return_value)
     end
 
     def self.new_from_stock(stock_id) : self
-      __return_value = LibGtk.tool_button_new_from_stock(stock_id)
+      __return_value = LibGtk.tool_button_new_from_stock(stock_id.to_unsafe)
       cast Gtk::ToolItem.new(__return_value)
     end
 
@@ -61,27 +61,27 @@ module Gtk
     end
 
     def icon_name=(icon_name)
-      __return_value = LibGtk.tool_button_set_icon_name(to_unsafe.as(LibGtk::ToolButton*), icon_name)
+      __return_value = LibGtk.tool_button_set_icon_name(to_unsafe.as(LibGtk::ToolButton*), icon_name ? icon_name.to_unsafe : nil)
       __return_value
     end
 
     def icon_widget=(icon_widget)
-      __return_value = LibGtk.tool_button_set_icon_widget(to_unsafe.as(LibGtk::ToolButton*), icon_widget && icon_widget.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.tool_button_set_icon_widget(to_unsafe.as(LibGtk::ToolButton*), icon_widget ? icon_widget.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 
     def label=(label)
-      __return_value = LibGtk.tool_button_set_label(to_unsafe.as(LibGtk::ToolButton*), label)
+      __return_value = LibGtk.tool_button_set_label(to_unsafe.as(LibGtk::ToolButton*), label ? label.to_unsafe : nil)
       __return_value
     end
 
     def label_widget=(label_widget)
-      __return_value = LibGtk.tool_button_set_label_widget(to_unsafe.as(LibGtk::ToolButton*), label_widget && label_widget.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.tool_button_set_label_widget(to_unsafe.as(LibGtk::ToolButton*), label_widget ? label_widget.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 
     def stock_id=(stock_id)
-      __return_value = LibGtk.tool_button_set_stock_id(to_unsafe.as(LibGtk::ToolButton*), stock_id)
+      __return_value = LibGtk.tool_button_set_stock_id(to_unsafe.as(LibGtk::ToolButton*), stock_id ? stock_id.to_unsafe : nil)
       __return_value
     end
 

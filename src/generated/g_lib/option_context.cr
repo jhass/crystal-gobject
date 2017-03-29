@@ -16,7 +16,7 @@ module GLib
     end
 
     def add_main_entries(entries, translation_domain)
-      __return_value = LibGLib.option_context_add_main_entries(to_unsafe.as(LibGLib::OptionContext*), entries.to_unsafe.as(LibGLib::OptionEntry*), translation_domain)
+      __return_value = LibGLib.option_context_add_main_entries(to_unsafe.as(LibGLib::OptionContext*), entries.to_unsafe.as(LibGLib::OptionEntry*), translation_domain ? translation_domain.to_unsafe : nil)
       __return_value
     end
 
@@ -31,7 +31,7 @@ module GLib
     end
 
     def help(main_help, group)
-      __return_value = LibGLib.option_context_get_help(to_unsafe.as(LibGLib::OptionContext*), main_help, group && group.to_unsafe.as(LibGLib::OptionGroup*))
+      __return_value = LibGLib.option_context_get_help(to_unsafe.as(LibGLib::OptionContext*), main_help, group ? group.to_unsafe.as(LibGLib::OptionGroup*) : nil)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
@@ -75,7 +75,7 @@ module GLib
     end
 
     def description=(description)
-      __return_value = LibGLib.option_context_set_description(to_unsafe.as(LibGLib::OptionContext*), description)
+      __return_value = LibGLib.option_context_set_description(to_unsafe.as(LibGLib::OptionContext*), description ? description.to_unsafe : nil)
       __return_value
     end
 
@@ -100,17 +100,17 @@ module GLib
     end
 
     def summary=(summary)
-      __return_value = LibGLib.option_context_set_summary(to_unsafe.as(LibGLib::OptionContext*), summary)
+      __return_value = LibGLib.option_context_set_summary(to_unsafe.as(LibGLib::OptionContext*), summary ? summary.to_unsafe : nil)
       __return_value
     end
 
     def set_translate_func(func, data, destroy_notify)
-      __return_value = LibGLib.option_context_set_translate_func(to_unsafe.as(LibGLib::OptionContext*), func && func, data && data, destroy_notify && destroy_notify)
+      __return_value = LibGLib.option_context_set_translate_func(to_unsafe.as(LibGLib::OptionContext*), func ? func : nil, data ? data : nil, destroy_notify ? destroy_notify : nil)
       __return_value
     end
 
     def translation_domain=(domain)
-      __return_value = LibGLib.option_context_set_translation_domain(to_unsafe.as(LibGLib::OptionContext*), domain)
+      __return_value = LibGLib.option_context_set_translation_domain(to_unsafe.as(LibGLib::OptionContext*), domain.to_unsafe)
       __return_value
     end
 

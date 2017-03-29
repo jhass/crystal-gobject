@@ -11,7 +11,7 @@ module GLib
     end
 
     def self.new(identifier) : self
-      __return_value = LibGLib.time_zone_new(identifier)
+      __return_value = LibGLib.time_zone_new(identifier ? identifier.to_unsafe : nil)
       cast GLib::TimeZone.new(__return_value)
     end
 

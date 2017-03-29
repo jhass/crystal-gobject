@@ -18,13 +18,13 @@ module Gio
 
     def query_info(attributes, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.file_output_stream_query_info(to_unsafe.as(LibGio::FileOutputStream*), attributes, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.file_output_stream_query_info(to_unsafe.as(LibGio::FileOutputStream*), attributes.to_unsafe, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       Gio::FileInfo.new(__return_value)
     end
 
     def query_info_async(attributes, io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.file_output_stream_query_info_async(to_unsafe.as(LibGio::FileOutputStream*), attributes, Int32.new(io_priority), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
+      __return_value = LibGio.file_output_stream_query_info_async(to_unsafe.as(LibGio::FileOutputStream*), attributes.to_unsafe, Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       __return_value
     end
 

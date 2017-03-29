@@ -45,7 +45,7 @@ module Gtk
     end
 
     def attach_to_widget(attach_widget, detacher)
-      __return_value = LibGtk.menu_attach_to_widget(to_unsafe.as(LibGtk::Menu*), attach_widget.to_unsafe.as(LibGtk::Widget*), detacher && detacher)
+      __return_value = LibGtk.menu_attach_to_widget(to_unsafe.as(LibGtk::Menu*), attach_widget.to_unsafe.as(LibGtk::Widget*), detacher ? detacher : nil)
       __return_value
     end
 
@@ -105,27 +105,27 @@ module Gtk
     end
 
     def popup(parent_menu_shell, parent_menu_item, func, data, button, activate_time)
-      __return_value = LibGtk.menu_popup(to_unsafe.as(LibGtk::Menu*), parent_menu_shell && parent_menu_shell.to_unsafe.as(LibGtk::Widget*), parent_menu_item && parent_menu_item.to_unsafe.as(LibGtk::Widget*), func && func, data && data, UInt32.new(button), UInt32.new(activate_time))
+      __return_value = LibGtk.menu_popup(to_unsafe.as(LibGtk::Menu*), parent_menu_shell ? parent_menu_shell.to_unsafe.as(LibGtk::Widget*) : nil, parent_menu_item ? parent_menu_item.to_unsafe.as(LibGtk::Widget*) : nil, func ? func : nil, data ? data : nil, UInt32.new(button), UInt32.new(activate_time))
       __return_value
     end
 
     def popup_at_pointer(trigger_event)
-      __return_value = LibGtk.menu_popup_at_pointer(to_unsafe.as(LibGtk::Menu*), trigger_event && trigger_event.to_unsafe.as(LibGdk::Event*))
+      __return_value = LibGtk.menu_popup_at_pointer(to_unsafe.as(LibGtk::Menu*), trigger_event ? trigger_event.to_unsafe.as(LibGdk::Event*) : nil)
       __return_value
     end
 
     def popup_at_rect(rect_window, rect, rect_anchor : Gdk::Gravity, menu_anchor : Gdk::Gravity, trigger_event)
-      __return_value = LibGtk.menu_popup_at_rect(to_unsafe.as(LibGtk::Menu*), rect_window.to_unsafe.as(LibGdk::Window*), rect.to_unsafe.as(LibGdk::Rectangle*), rect_anchor, menu_anchor, trigger_event && trigger_event.to_unsafe.as(LibGdk::Event*))
+      __return_value = LibGtk.menu_popup_at_rect(to_unsafe.as(LibGtk::Menu*), rect_window.to_unsafe.as(LibGdk::Window*), rect.to_unsafe.as(LibGdk::Rectangle*), rect_anchor, menu_anchor, trigger_event ? trigger_event.to_unsafe.as(LibGdk::Event*) : nil)
       __return_value
     end
 
     def popup_at_widget(widget, widget_anchor : Gdk::Gravity, menu_anchor : Gdk::Gravity, trigger_event)
-      __return_value = LibGtk.menu_popup_at_widget(to_unsafe.as(LibGtk::Menu*), widget.to_unsafe.as(LibGtk::Widget*), widget_anchor, menu_anchor, trigger_event && trigger_event.to_unsafe.as(LibGdk::Event*))
+      __return_value = LibGtk.menu_popup_at_widget(to_unsafe.as(LibGtk::Menu*), widget.to_unsafe.as(LibGtk::Widget*), widget_anchor, menu_anchor, trigger_event ? trigger_event.to_unsafe.as(LibGdk::Event*) : nil)
       __return_value
     end
 
     def popup_for_device(device, parent_menu_shell, parent_menu_item, func, data, destroy, button, activate_time)
-      __return_value = LibGtk.menu_popup_for_device(to_unsafe.as(LibGtk::Menu*), device && device.to_unsafe.as(LibGdk::Device*), parent_menu_shell && parent_menu_shell.to_unsafe.as(LibGtk::Widget*), parent_menu_item && parent_menu_item.to_unsafe.as(LibGtk::Widget*), func && func, data && data, destroy && destroy, UInt32.new(button), UInt32.new(activate_time))
+      __return_value = LibGtk.menu_popup_for_device(to_unsafe.as(LibGtk::Menu*), device ? device.to_unsafe.as(LibGdk::Device*) : nil, parent_menu_shell ? parent_menu_shell.to_unsafe.as(LibGtk::Widget*) : nil, parent_menu_item ? parent_menu_item.to_unsafe.as(LibGtk::Widget*) : nil, func ? func : nil, data ? data : nil, destroy ? destroy : nil, UInt32.new(button), UInt32.new(activate_time))
       __return_value
     end
 
@@ -140,12 +140,12 @@ module Gtk
     end
 
     def accel_group=(accel_group)
-      __return_value = LibGtk.menu_set_accel_group(to_unsafe.as(LibGtk::Menu*), accel_group && accel_group.to_unsafe.as(LibGtk::AccelGroup*))
+      __return_value = LibGtk.menu_set_accel_group(to_unsafe.as(LibGtk::Menu*), accel_group ? accel_group.to_unsafe.as(LibGtk::AccelGroup*) : nil)
       __return_value
     end
 
     def accel_path=(accel_path)
-      __return_value = LibGtk.menu_set_accel_path(to_unsafe.as(LibGtk::Menu*), accel_path)
+      __return_value = LibGtk.menu_set_accel_path(to_unsafe.as(LibGtk::Menu*), accel_path ? accel_path.to_unsafe : nil)
       __return_value
     end
 
@@ -165,7 +165,7 @@ module Gtk
     end
 
     def screen=(screen)
-      __return_value = LibGtk.menu_set_screen(to_unsafe.as(LibGtk::Menu*), screen && screen.to_unsafe.as(LibGdk::Screen*))
+      __return_value = LibGtk.menu_set_screen(to_unsafe.as(LibGtk::Menu*), screen ? screen.to_unsafe.as(LibGdk::Screen*) : nil)
       __return_value
     end
 
@@ -175,7 +175,7 @@ module Gtk
     end
 
     def title=(title)
-      __return_value = LibGtk.menu_set_title(to_unsafe.as(LibGtk::Menu*), title)
+      __return_value = LibGtk.menu_set_title(to_unsafe.as(LibGtk::Menu*), title.to_unsafe)
       __return_value
     end
 

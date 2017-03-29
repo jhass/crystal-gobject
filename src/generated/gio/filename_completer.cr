@@ -14,12 +14,12 @@ module Gio
     end
 
     def completion_suffix(initial_text)
-      __return_value = LibGio.filename_completer_get_completion_suffix(to_unsafe.as(LibGio::FilenameCompleter*), initial_text)
+      __return_value = LibGio.filename_completer_get_completion_suffix(to_unsafe.as(LibGio::FilenameCompleter*), initial_text.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def completions(initial_text)
-      __return_value = LibGio.filename_completer_get_completions(to_unsafe.as(LibGio::FilenameCompleter*), initial_text)
+      __return_value = LibGio.filename_completer_get_completions(to_unsafe.as(LibGio::FilenameCompleter*), initial_text.to_unsafe)
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 

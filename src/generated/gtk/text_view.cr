@@ -100,7 +100,7 @@ module Gtk
     end
 
     def cursor_locations(iter, strong, weak)
-      __return_value = LibGtk.text_view_get_cursor_locations(to_unsafe.as(LibGtk::TextView*), iter && iter.to_unsafe.as(LibGtk::TextIter*), strong, weak)
+      __return_value = LibGtk.text_view_get_cursor_locations(to_unsafe.as(LibGtk::TextView*), iter ? iter.to_unsafe.as(LibGtk::TextIter*) : nil, strong, weak)
       __return_value
     end
 
@@ -305,7 +305,7 @@ module Gtk
     end
 
     def buffer=(buffer)
-      __return_value = LibGtk.text_view_set_buffer(to_unsafe.as(LibGtk::TextView*), buffer && buffer.to_unsafe.as(LibGtk::TextBuffer*))
+      __return_value = LibGtk.text_view_set_buffer(to_unsafe.as(LibGtk::TextView*), buffer ? buffer.to_unsafe.as(LibGtk::TextBuffer*) : nil)
       __return_value
     end
 

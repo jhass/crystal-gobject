@@ -24,7 +24,7 @@ module Gio
     end
 
     def name=(value : String)
-      to_unsafe.as(LibGio::FileAttributeInfo*).value.name = value
+      to_unsafe.as(LibGio::FileAttributeInfo*).value.name = value.to_unsafe
     end
 
     def type

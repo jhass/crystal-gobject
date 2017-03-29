@@ -11,7 +11,7 @@ module Gst
     end
 
     def self.new(buffer, caps, segment, info) : self
-      __return_value = LibGst.sample_new(buffer && buffer.to_unsafe.as(LibGst::Buffer*), caps && caps.to_unsafe.as(LibGst::Caps*), segment && segment.to_unsafe.as(LibGst::Segment*), info && info.to_unsafe.as(LibGst::Structure*))
+      __return_value = LibGst.sample_new(buffer ? buffer.to_unsafe.as(LibGst::Buffer*) : nil, caps ? caps.to_unsafe.as(LibGst::Caps*) : nil, segment ? segment.to_unsafe.as(LibGst::Segment*) : nil, info ? info.to_unsafe.as(LibGst::Structure*) : nil)
       cast Gst::Sample.new(__return_value)
     end
 

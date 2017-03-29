@@ -39,7 +39,7 @@ module Gst
     end
 
     def self.new_context(context_type) : self
-      __return_value = LibGst.query_new_context(context_type)
+      __return_value = LibGst.query_new_context(context_type.to_unsafe)
       cast Gst::Query.new(__return_value)
     end
 
@@ -49,7 +49,7 @@ module Gst
     end
 
     def self.new_custom(type : Gst::QueryType, structure) : self
-      __return_value = LibGst.query_new_custom(type, structure && structure.to_unsafe.as(LibGst::Structure*))
+      __return_value = LibGst.query_new_custom(type, structure ? structure.to_unsafe.as(LibGst::Structure*) : nil)
       cast Gst::Query.new(__return_value)
     end
 
@@ -99,17 +99,17 @@ module Gst
     end
 
     def add_allocation_meta(api, params)
-      __return_value = LibGst.query_add_allocation_meta(to_unsafe.as(LibGst::Query*), UInt64.new(api), params && params.to_unsafe.as(LibGst::Structure*))
+      __return_value = LibGst.query_add_allocation_meta(to_unsafe.as(LibGst::Query*), UInt64.new(api), params ? params.to_unsafe.as(LibGst::Structure*) : nil)
       __return_value
     end
 
     def add_allocation_param(allocator, params)
-      __return_value = LibGst.query_add_allocation_param(to_unsafe.as(LibGst::Query*), allocator && allocator.to_unsafe.as(LibGst::Allocator*), params && params.to_unsafe.as(LibGst::AllocationParams*))
+      __return_value = LibGst.query_add_allocation_param(to_unsafe.as(LibGst::Query*), allocator ? allocator.to_unsafe.as(LibGst::Allocator*) : nil, params ? params.to_unsafe.as(LibGst::AllocationParams*) : nil)
       __return_value
     end
 
     def add_allocation_pool(pool, size, min_buffers, max_buffers)
-      __return_value = LibGst.query_add_allocation_pool(to_unsafe.as(LibGst::Query*), pool && pool.to_unsafe.as(LibGst::BufferPool*), UInt32.new(size), UInt32.new(min_buffers), UInt32.new(max_buffers))
+      __return_value = LibGst.query_add_allocation_pool(to_unsafe.as(LibGst::Query*), pool ? pool.to_unsafe.as(LibGst::BufferPool*) : nil, UInt32.new(size), UInt32.new(min_buffers), UInt32.new(max_buffers))
       __return_value
     end
 
@@ -369,12 +369,12 @@ module Gst
     end
 
     def set_nth_allocation_param(index, allocator, params)
-      __return_value = LibGst.query_set_nth_allocation_param(to_unsafe.as(LibGst::Query*), UInt32.new(index), allocator && allocator.to_unsafe.as(LibGst::Allocator*), params && params.to_unsafe.as(LibGst::AllocationParams*))
+      __return_value = LibGst.query_set_nth_allocation_param(to_unsafe.as(LibGst::Query*), UInt32.new(index), allocator ? allocator.to_unsafe.as(LibGst::Allocator*) : nil, params ? params.to_unsafe.as(LibGst::AllocationParams*) : nil)
       __return_value
     end
 
     def set_nth_allocation_pool(index, pool, size, min_buffers, max_buffers)
-      __return_value = LibGst.query_set_nth_allocation_pool(to_unsafe.as(LibGst::Query*), UInt32.new(index), pool && pool.to_unsafe.as(LibGst::BufferPool*), UInt32.new(size), UInt32.new(min_buffers), UInt32.new(max_buffers))
+      __return_value = LibGst.query_set_nth_allocation_pool(to_unsafe.as(LibGst::Query*), UInt32.new(index), pool ? pool.to_unsafe.as(LibGst::BufferPool*) : nil, UInt32.new(size), UInt32.new(min_buffers), UInt32.new(max_buffers))
       __return_value
     end
 
@@ -399,12 +399,12 @@ module Gst
     end
 
     def uri=(uri)
-      __return_value = LibGst.query_set_uri(to_unsafe.as(LibGst::Query*), uri)
+      __return_value = LibGst.query_set_uri(to_unsafe.as(LibGst::Query*), uri.to_unsafe)
       __return_value
     end
 
     def uri_redirection=(uri)
-      __return_value = LibGst.query_set_uri_redirection(to_unsafe.as(LibGst::Query*), uri)
+      __return_value = LibGst.query_set_uri_redirection(to_unsafe.as(LibGst::Query*), uri.to_unsafe)
       __return_value
     end
 

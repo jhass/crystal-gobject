@@ -29,28 +29,28 @@ module Gio
 
     def enumerate_children(path, lookup_flags : Gio::ResourceLookupFlags)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.resource_enumerate_children(to_unsafe.as(LibGio::Resource*), path, lookup_flags, pointerof(__error))
+      __return_value = LibGio.resource_enumerate_children(to_unsafe.as(LibGio::Resource*), path.to_unsafe, lookup_flags, pointerof(__error))
       GLib::Error.assert __error
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def info(path, lookup_flags : Gio::ResourceLookupFlags, size, flags)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.resource_get_info(to_unsafe.as(LibGio::Resource*), path, lookup_flags, size, flags, pointerof(__error))
+      __return_value = LibGio.resource_get_info(to_unsafe.as(LibGio::Resource*), path.to_unsafe, lookup_flags, size, flags, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def lookup_data(path, lookup_flags : Gio::ResourceLookupFlags)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.resource_lookup_data(to_unsafe.as(LibGio::Resource*), path, lookup_flags, pointerof(__error))
+      __return_value = LibGio.resource_lookup_data(to_unsafe.as(LibGio::Resource*), path.to_unsafe, lookup_flags, pointerof(__error))
       GLib::Error.assert __error
       GLib::Bytes.new(__return_value)
     end
 
     def open_stream(path, lookup_flags : Gio::ResourceLookupFlags)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.resource_open_stream(to_unsafe.as(LibGio::Resource*), path, lookup_flags, pointerof(__error))
+      __return_value = LibGio.resource_open_stream(to_unsafe.as(LibGio::Resource*), path.to_unsafe, lookup_flags, pointerof(__error))
       GLib::Error.assert __error
       Gio::InputStream.new(__return_value)
     end
@@ -67,7 +67,7 @@ module Gio
 
     def self.load(filename)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.resource_load(filename, pointerof(__error))
+      __return_value = LibGio.resource_load(filename.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       Gio::Resource.new(__return_value)
     end

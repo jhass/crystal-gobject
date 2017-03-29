@@ -29,7 +29,7 @@ module Pango
     end
 
     def draw_glyph_item(text, glyph_item, x, y)
-      __return_value = LibPango.renderer_draw_glyph_item(to_unsafe.as(LibPango::Renderer*), text, glyph_item.to_unsafe.as(LibPango::GlyphItem*), Int32.new(x), Int32.new(y))
+      __return_value = LibPango.renderer_draw_glyph_item(to_unsafe.as(LibPango::Renderer*), text ? text.to_unsafe : nil, glyph_item.to_unsafe.as(LibPango::GlyphItem*), Int32.new(x), Int32.new(y))
       __return_value
     end
 
@@ -94,12 +94,12 @@ module Pango
     end
 
     def set_color(part : Pango::RenderPart, color)
-      __return_value = LibPango.renderer_set_color(to_unsafe.as(LibPango::Renderer*), part, color && color.to_unsafe.as(LibPango::Color*))
+      __return_value = LibPango.renderer_set_color(to_unsafe.as(LibPango::Renderer*), part, color ? color.to_unsafe.as(LibPango::Color*) : nil)
       __return_value
     end
 
     def matrix=(matrix)
-      __return_value = LibPango.renderer_set_matrix(to_unsafe.as(LibPango::Renderer*), matrix && matrix.to_unsafe.as(LibPango::Matrix*))
+      __return_value = LibPango.renderer_set_matrix(to_unsafe.as(LibPango::Renderer*), matrix ? matrix.to_unsafe.as(LibPango::Matrix*) : nil)
       __return_value
     end
 

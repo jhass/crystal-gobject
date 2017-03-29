@@ -16,7 +16,7 @@ module Gtk
 
 
     def self.new(hadjustment, vadjustment) : self
-      __return_value = LibGtk.layout_new(hadjustment && hadjustment.to_unsafe.as(LibGtk::Adjustment*), vadjustment && vadjustment.to_unsafe.as(LibGtk::Adjustment*))
+      __return_value = LibGtk.layout_new(hadjustment ? hadjustment.to_unsafe.as(LibGtk::Adjustment*) : nil, vadjustment ? vadjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -51,7 +51,7 @@ module Gtk
     end
 
     def hadjustment=(adjustment)
-      __return_value = LibGtk.layout_set_hadjustment(to_unsafe.as(LibGtk::Layout*), adjustment && adjustment.to_unsafe.as(LibGtk::Adjustment*))
+      __return_value = LibGtk.layout_set_hadjustment(to_unsafe.as(LibGtk::Layout*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
       __return_value
     end
 
@@ -61,7 +61,7 @@ module Gtk
     end
 
     def vadjustment=(adjustment)
-      __return_value = LibGtk.layout_set_vadjustment(to_unsafe.as(LibGtk::Layout*), adjustment && adjustment.to_unsafe.as(LibGtk::Adjustment*))
+      __return_value = LibGtk.layout_set_vadjustment(to_unsafe.as(LibGtk::Layout*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
       __return_value
     end
 

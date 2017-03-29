@@ -46,7 +46,7 @@ module Gdk
     end
 
     def self.parse(spec, color)
-      __return_value = LibGdk.color_parse(spec, color)
+      __return_value = LibGdk.color_parse(spec.to_unsafe, color)
       __return_value
     end
 

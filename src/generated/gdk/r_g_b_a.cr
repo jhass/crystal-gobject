@@ -41,7 +41,7 @@ module Gdk
     end
 
     def parse(spec)
-      __return_value = LibGdk.r_g_b_a_parse(to_unsafe.as(LibGdk::RGBA*), spec)
+      __return_value = LibGdk.r_g_b_a_parse(to_unsafe.as(LibGdk::RGBA*), spec.to_unsafe)
       __return_value
     end
 

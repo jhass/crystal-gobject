@@ -59,7 +59,7 @@ module Pango
     end
 
     def metrics(desc, language)
-      __return_value = LibPango.context_get_metrics(to_unsafe.as(LibPango::Context*), desc && desc.to_unsafe.as(LibPango::FontDescription*), language && language.to_unsafe.as(LibPango::Language*))
+      __return_value = LibPango.context_get_metrics(to_unsafe.as(LibPango::Context*), desc ? desc.to_unsafe.as(LibPango::FontDescription*) : nil, language ? language.to_unsafe.as(LibPango::Language*) : nil)
       Pango::FontMetrics.new(__return_value)
     end
 
@@ -114,7 +114,7 @@ module Pango
     end
 
     def matrix=(matrix)
-      __return_value = LibPango.context_set_matrix(to_unsafe.as(LibPango::Context*), matrix && matrix.to_unsafe.as(LibPango::Matrix*))
+      __return_value = LibPango.context_set_matrix(to_unsafe.as(LibPango::Context*), matrix ? matrix.to_unsafe.as(LibPango::Matrix*) : nil)
       __return_value
     end
 

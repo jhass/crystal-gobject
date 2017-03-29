@@ -39,37 +39,37 @@ module Gtk
     end
 
     def request_contents(target, callback, user_data)
-      __return_value = LibGtk.clipboard_request_contents(to_unsafe.as(LibGtk::Clipboard*), target.to_unsafe.as(LibGdk::Atom*), callback, user_data && user_data)
+      __return_value = LibGtk.clipboard_request_contents(to_unsafe.as(LibGtk::Clipboard*), target.to_unsafe.as(LibGdk::Atom*), callback, user_data ? user_data : nil)
       __return_value
     end
 
     def request_image(callback, user_data)
-      __return_value = LibGtk.clipboard_request_image(to_unsafe.as(LibGtk::Clipboard*), callback, user_data && user_data)
+      __return_value = LibGtk.clipboard_request_image(to_unsafe.as(LibGtk::Clipboard*), callback, user_data ? user_data : nil)
       __return_value
     end
 
     def request_rich_text(buffer, callback, user_data)
-      __return_value = LibGtk.clipboard_request_rich_text(to_unsafe.as(LibGtk::Clipboard*), buffer.to_unsafe.as(LibGtk::TextBuffer*), callback, user_data && user_data)
+      __return_value = LibGtk.clipboard_request_rich_text(to_unsafe.as(LibGtk::Clipboard*), buffer.to_unsafe.as(LibGtk::TextBuffer*), callback, user_data ? user_data : nil)
       __return_value
     end
 
     def request_targets(callback, user_data)
-      __return_value = LibGtk.clipboard_request_targets(to_unsafe.as(LibGtk::Clipboard*), callback, user_data && user_data)
+      __return_value = LibGtk.clipboard_request_targets(to_unsafe.as(LibGtk::Clipboard*), callback, user_data ? user_data : nil)
       __return_value
     end
 
     def request_text(callback, user_data)
-      __return_value = LibGtk.clipboard_request_text(to_unsafe.as(LibGtk::Clipboard*), callback, user_data && user_data)
+      __return_value = LibGtk.clipboard_request_text(to_unsafe.as(LibGtk::Clipboard*), callback, user_data ? user_data : nil)
       __return_value
     end
 
     def request_uris(callback, user_data)
-      __return_value = LibGtk.clipboard_request_uris(to_unsafe.as(LibGtk::Clipboard*), callback, user_data && user_data)
+      __return_value = LibGtk.clipboard_request_uris(to_unsafe.as(LibGtk::Clipboard*), callback, user_data ? user_data : nil)
       __return_value
     end
 
     def set_can_store(targets, n_targets)
-      __return_value = LibGtk.clipboard_set_can_store(to_unsafe.as(LibGtk::Clipboard*), targets && targets, Int32.new(n_targets))
+      __return_value = LibGtk.clipboard_set_can_store(to_unsafe.as(LibGtk::Clipboard*), targets ? targets : nil, Int32.new(n_targets))
       __return_value
     end
 
@@ -79,7 +79,7 @@ module Gtk
     end
 
     def set_text(text, len)
-      __return_value = LibGtk.clipboard_set_text(to_unsafe.as(LibGtk::Clipboard*), text, Int32.new(len))
+      __return_value = LibGtk.clipboard_set_text(to_unsafe.as(LibGtk::Clipboard*), text.to_unsafe, Int32.new(len))
       __return_value
     end
 

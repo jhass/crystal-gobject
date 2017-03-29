@@ -66,7 +66,7 @@ module Gtk
     end
 
     def origin=(value : String)
-      to_unsafe.as(LibGtk::RcProperty*).value.origin = value
+      to_unsafe.as(LibGtk::RcProperty*).value.origin = value.to_unsafe
     end
 
     def value

@@ -33,7 +33,7 @@ module GObject
     end
 
     def type_name=(value : String)
-      to_unsafe.as(LibGObject::TypeQuery*).value.type_name = value
+      to_unsafe.as(LibGObject::TypeQuery*).value.type_name = value.to_unsafe
     end
 
     def class_size

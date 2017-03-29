@@ -9,7 +9,7 @@ module Pango
     end
 
     def self.descriptions_free(descs, n_descs)
-      __return_value = LibPango.font_descriptions_free(descs && descs, Int32.new(n_descs))
+      __return_value = LibPango.font_descriptions_free(descs ? descs : nil, Int32.new(n_descs))
       __return_value
     end
 
@@ -34,7 +34,7 @@ module Pango
     end
 
     def metrics(language)
-      __return_value = LibPango.font_get_metrics(to_unsafe.as(LibPango::Font*), language && language.to_unsafe.as(LibPango::Language*))
+      __return_value = LibPango.font_get_metrics(to_unsafe.as(LibPango::Font*), language ? language.to_unsafe.as(LibPango::Language*) : nil)
       Pango::FontMetrics.new(__return_value)
     end
 

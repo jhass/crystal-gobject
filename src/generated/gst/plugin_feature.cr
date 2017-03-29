@@ -26,7 +26,7 @@ module Gst
     end
 
     def self.rank_compare_func(p1, p2)
-      __return_value = LibGst.plugin_feature_rank_compare_func(p1 && p1, p2 && p2)
+      __return_value = LibGst.plugin_feature_rank_compare_func(p1 ? p1 : nil, p2 ? p2 : nil)
       __return_value
     end
 

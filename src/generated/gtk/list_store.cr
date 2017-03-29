@@ -34,12 +34,12 @@ module Gtk
     end
 
     def insert_after(iter, sibling)
-      __return_value = LibGtk.list_store_insert_after(to_unsafe.as(LibGtk::ListStore*), iter, sibling && sibling.to_unsafe.as(LibGtk::TreeIter*))
+      __return_value = LibGtk.list_store_insert_after(to_unsafe.as(LibGtk::ListStore*), iter, sibling ? sibling.to_unsafe.as(LibGtk::TreeIter*) : nil)
       __return_value
     end
 
     def insert_before(iter, sibling)
-      __return_value = LibGtk.list_store_insert_before(to_unsafe.as(LibGtk::ListStore*), iter, sibling && sibling.to_unsafe.as(LibGtk::TreeIter*))
+      __return_value = LibGtk.list_store_insert_before(to_unsafe.as(LibGtk::ListStore*), iter, sibling ? sibling.to_unsafe.as(LibGtk::TreeIter*) : nil)
       __return_value
     end
 
@@ -54,12 +54,12 @@ module Gtk
     end
 
     def move_after(iter, position)
-      __return_value = LibGtk.list_store_move_after(to_unsafe.as(LibGtk::ListStore*), iter.to_unsafe.as(LibGtk::TreeIter*), position && position.to_unsafe.as(LibGtk::TreeIter*))
+      __return_value = LibGtk.list_store_move_after(to_unsafe.as(LibGtk::ListStore*), iter.to_unsafe.as(LibGtk::TreeIter*), position ? position.to_unsafe.as(LibGtk::TreeIter*) : nil)
       __return_value
     end
 
     def move_before(iter, position)
-      __return_value = LibGtk.list_store_move_before(to_unsafe.as(LibGtk::ListStore*), iter.to_unsafe.as(LibGtk::TreeIter*), position && position.to_unsafe.as(LibGtk::TreeIter*))
+      __return_value = LibGtk.list_store_move_before(to_unsafe.as(LibGtk::ListStore*), iter.to_unsafe.as(LibGtk::TreeIter*), position ? position.to_unsafe.as(LibGtk::TreeIter*) : nil)
       __return_value
     end
 

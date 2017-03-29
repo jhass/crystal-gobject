@@ -13,12 +13,12 @@ module Gtk
 
 
     def self.new(window, group, pad) : self
-      __return_value = LibGtk.pad_controller_new(window.to_unsafe.as(LibGtk::Window*), group.to_unsafe.as(LibGio::ActionGroup*), pad && pad.to_unsafe.as(LibGdk::Device*))
+      __return_value = LibGtk.pad_controller_new(window.to_unsafe.as(LibGtk::Window*), group.to_unsafe.as(LibGio::ActionGroup*), pad ? pad.to_unsafe.as(LibGdk::Device*) : nil)
       cast Gtk::PadController.new(__return_value)
     end
 
     def set_action(type : Gtk::PadActionType, index, mode, label, action_name)
-      __return_value = LibGtk.pad_controller_set_action(to_unsafe.as(LibGtk::PadController*), type, Int32.new(index), Int32.new(mode), label, action_name)
+      __return_value = LibGtk.pad_controller_set_action(to_unsafe.as(LibGtk::PadController*), type, Int32.new(index), Int32.new(mode), label.to_unsafe, action_name.to_unsafe)
       __return_value
     end
 

@@ -39,27 +39,27 @@ module Gtk
     end
 
     def attribute_connect(renderer, attribute, column)
-      __return_value = LibGtk.cell_area_attribute_connect(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute, Int32.new(column))
+      __return_value = LibGtk.cell_area_attribute_connect(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute.to_unsafe, Int32.new(column))
       __return_value
     end
 
     def attribute_disconnect(renderer, attribute)
-      __return_value = LibGtk.cell_area_attribute_disconnect(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute)
+      __return_value = LibGtk.cell_area_attribute_disconnect(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute.to_unsafe)
       __return_value
     end
 
     def attribute_get_column(renderer, attribute)
-      __return_value = LibGtk.cell_area_attribute_get_column(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute)
+      __return_value = LibGtk.cell_area_attribute_get_column(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute.to_unsafe)
       __return_value
     end
 
     def cell_get_property(renderer, property_name, value)
-      __return_value = LibGtk.cell_area_cell_get_property(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), property_name, value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGtk.cell_area_cell_get_property(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), property_name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 
     def cell_set_property(renderer, property_name, value)
-      __return_value = LibGtk.cell_area_cell_set_property(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), property_name, value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGtk.cell_area_cell_set_property(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), property_name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 
@@ -84,12 +84,12 @@ module Gtk
     end
 
     def foreach(callback, callback_data)
-      __return_value = LibGtk.cell_area_foreach(to_unsafe.as(LibGtk::CellArea*), callback, callback_data && callback_data)
+      __return_value = LibGtk.cell_area_foreach(to_unsafe.as(LibGtk::CellArea*), callback, callback_data ? callback_data : nil)
       __return_value
     end
 
     def foreach_alloc(context, widget, cell_area, background_area, callback, callback_data)
-      __return_value = LibGtk.cell_area_foreach_alloc(to_unsafe.as(LibGtk::CellArea*), context.to_unsafe.as(LibGtk::CellAreaContext*), widget.to_unsafe.as(LibGtk::Widget*), cell_area.to_unsafe.as(LibGdk::Rectangle*), background_area.to_unsafe.as(LibGdk::Rectangle*), callback, callback_data && callback_data)
+      __return_value = LibGtk.cell_area_foreach_alloc(to_unsafe.as(LibGtk::CellArea*), context.to_unsafe.as(LibGtk::CellAreaContext*), widget.to_unsafe.as(LibGtk::Widget*), cell_area.to_unsafe.as(LibGdk::Rectangle*), background_area.to_unsafe.as(LibGdk::Rectangle*), callback, callback_data ? callback_data : nil)
       __return_value
     end
 

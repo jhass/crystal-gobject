@@ -12,7 +12,7 @@ module Gio
 
     def export(connection, object_path)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.d_bus_interface_skeleton_export(to_unsafe.as(LibGio::DBusInterfaceSkeleton*), connection.to_unsafe.as(LibGio::DBusConnection*), object_path, pointerof(__error))
+      __return_value = LibGio.d_bus_interface_skeleton_export(to_unsafe.as(LibGio::DBusInterfaceSkeleton*), connection.to_unsafe.as(LibGio::DBusConnection*), object_path.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

@@ -11,7 +11,7 @@ module Gio
     end
 
     def tagged?(source_tag)
-      __return_value = LibGio.async_result_is_tagged(to_unsafe.as(LibGio::AsyncResult*), source_tag && source_tag)
+      __return_value = LibGio.async_result_is_tagged(to_unsafe.as(LibGio::AsyncResult*), source_tag ? source_tag : nil)
       __return_value
     end
 

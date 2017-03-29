@@ -304,12 +304,12 @@ module Gtk
     end
 
     def completion=(completion)
-      __return_value = LibGtk.entry_set_completion(to_unsafe.as(LibGtk::Entry*), completion && completion.to_unsafe.as(LibGtk::EntryCompletion*))
+      __return_value = LibGtk.entry_set_completion(to_unsafe.as(LibGtk::Entry*), completion ? completion.to_unsafe.as(LibGtk::EntryCompletion*) : nil)
       __return_value
     end
 
     def cursor_hadjustment=(adjustment)
-      __return_value = LibGtk.entry_set_cursor_hadjustment(to_unsafe.as(LibGtk::Entry*), adjustment && adjustment.to_unsafe.as(LibGtk::Adjustment*))
+      __return_value = LibGtk.entry_set_cursor_hadjustment(to_unsafe.as(LibGtk::Entry*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
       __return_value
     end
 
@@ -329,22 +329,22 @@ module Gtk
     end
 
     def set_icon_from_gicon(icon_pos : Gtk::EntryIconPosition, icon)
-      __return_value = LibGtk.entry_set_icon_from_gicon(to_unsafe.as(LibGtk::Entry*), icon_pos, icon && icon.to_unsafe.as(LibGio::Icon*))
+      __return_value = LibGtk.entry_set_icon_from_gicon(to_unsafe.as(LibGtk::Entry*), icon_pos, icon ? icon.to_unsafe.as(LibGio::Icon*) : nil)
       __return_value
     end
 
     def set_icon_from_icon_name(icon_pos : Gtk::EntryIconPosition, icon_name)
-      __return_value = LibGtk.entry_set_icon_from_icon_name(to_unsafe.as(LibGtk::Entry*), icon_pos, icon_name)
+      __return_value = LibGtk.entry_set_icon_from_icon_name(to_unsafe.as(LibGtk::Entry*), icon_pos, icon_name ? icon_name.to_unsafe : nil)
       __return_value
     end
 
     def set_icon_from_pixbuf(icon_pos : Gtk::EntryIconPosition, pixbuf)
-      __return_value = LibGtk.entry_set_icon_from_pixbuf(to_unsafe.as(LibGtk::Entry*), icon_pos, pixbuf && pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*))
+      __return_value = LibGtk.entry_set_icon_from_pixbuf(to_unsafe.as(LibGtk::Entry*), icon_pos, pixbuf ? pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*) : nil)
       __return_value
     end
 
     def set_icon_from_stock(icon_pos : Gtk::EntryIconPosition, stock_id)
-      __return_value = LibGtk.entry_set_icon_from_stock(to_unsafe.as(LibGtk::Entry*), icon_pos, stock_id)
+      __return_value = LibGtk.entry_set_icon_from_stock(to_unsafe.as(LibGtk::Entry*), icon_pos, stock_id ? stock_id.to_unsafe : nil)
       __return_value
     end
 
@@ -354,17 +354,17 @@ module Gtk
     end
 
     def set_icon_tooltip_markup(icon_pos : Gtk::EntryIconPosition, tooltip)
-      __return_value = LibGtk.entry_set_icon_tooltip_markup(to_unsafe.as(LibGtk::Entry*), icon_pos, tooltip)
+      __return_value = LibGtk.entry_set_icon_tooltip_markup(to_unsafe.as(LibGtk::Entry*), icon_pos, tooltip ? tooltip.to_unsafe : nil)
       __return_value
     end
 
     def set_icon_tooltip_text(icon_pos : Gtk::EntryIconPosition, tooltip)
-      __return_value = LibGtk.entry_set_icon_tooltip_text(to_unsafe.as(LibGtk::Entry*), icon_pos, tooltip)
+      __return_value = LibGtk.entry_set_icon_tooltip_text(to_unsafe.as(LibGtk::Entry*), icon_pos, tooltip ? tooltip.to_unsafe : nil)
       __return_value
     end
 
     def inner_border=(border)
-      __return_value = LibGtk.entry_set_inner_border(to_unsafe.as(LibGtk::Entry*), border && border.to_unsafe.as(LibGtk::Border*))
+      __return_value = LibGtk.entry_set_inner_border(to_unsafe.as(LibGtk::Entry*), border ? border.to_unsafe.as(LibGtk::Border*) : nil)
       __return_value
     end
 
@@ -399,7 +399,7 @@ module Gtk
     end
 
     def placeholder_text=(text)
-      __return_value = LibGtk.entry_set_placeholder_text(to_unsafe.as(LibGtk::Entry*), text)
+      __return_value = LibGtk.entry_set_placeholder_text(to_unsafe.as(LibGtk::Entry*), text ? text.to_unsafe : nil)
       __return_value
     end
 
@@ -419,7 +419,7 @@ module Gtk
     end
 
     def text=(text)
-      __return_value = LibGtk.entry_set_text(to_unsafe.as(LibGtk::Entry*), text)
+      __return_value = LibGtk.entry_set_text(to_unsafe.as(LibGtk::Entry*), text.to_unsafe)
       __return_value
     end
 

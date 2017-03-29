@@ -14,7 +14,7 @@ module Gst
 
 
     def self.id_compare_func(id1, id2)
-      __return_value = LibGst.clock_id_compare_func(id1 && id1, id2 && id2)
+      __return_value = LibGst.clock_id_compare_func(id1 ? id1 : nil, id2 ? id2 : nil)
       __return_value
     end
 
@@ -44,7 +44,7 @@ module Gst
     end
 
     def self.id_wait_async(id, func, user_data, destroy_data)
-      __return_value = LibGst.clock_id_wait_async(id, func, user_data && user_data, destroy_data)
+      __return_value = LibGst.clock_id_wait_async(id, func, user_data ? user_data : nil, destroy_data)
       __return_value
     end
 
@@ -124,7 +124,7 @@ module Gst
     end
 
     def master=(master)
-      __return_value = LibGst.clock_set_master(to_unsafe.as(LibGst::Clock*), master && master.to_unsafe.as(LibGst::Clock*))
+      __return_value = LibGst.clock_set_master(to_unsafe.as(LibGst::Clock*), master ? master.to_unsafe.as(LibGst::Clock*) : nil)
       __return_value
     end
 

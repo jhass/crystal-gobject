@@ -21,7 +21,7 @@ module Pango
     end
 
     def font(desc, language, extra_attrs)
-      __return_value = LibPango.attr_iterator_get_font(to_unsafe.as(LibPango::AttrIterator*), desc.to_unsafe.as(LibPango::FontDescription*), language && language.to_unsafe.as(LibPango::Language*), extra_attrs && extra_attrs)
+      __return_value = LibPango.attr_iterator_get_font(to_unsafe.as(LibPango::AttrIterator*), desc.to_unsafe.as(LibPango::FontDescription*), language ? language.to_unsafe.as(LibPango::Language*) : nil, extra_attrs ? extra_attrs : nil)
       __return_value
     end
 

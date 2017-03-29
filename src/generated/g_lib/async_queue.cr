@@ -36,22 +36,22 @@ module GLib
     end
 
     def push(data)
-      __return_value = LibGLib.async_queue_push(to_unsafe.as(LibGLib::AsyncQueue*), data && data)
+      __return_value = LibGLib.async_queue_push(to_unsafe.as(LibGLib::AsyncQueue*), data ? data : nil)
       __return_value
     end
 
     def push_front(item)
-      __return_value = LibGLib.async_queue_push_front(to_unsafe.as(LibGLib::AsyncQueue*), item && item)
+      __return_value = LibGLib.async_queue_push_front(to_unsafe.as(LibGLib::AsyncQueue*), item ? item : nil)
       __return_value
     end
 
     def push_front_unlocked(item)
-      __return_value = LibGLib.async_queue_push_front_unlocked(to_unsafe.as(LibGLib::AsyncQueue*), item && item)
+      __return_value = LibGLib.async_queue_push_front_unlocked(to_unsafe.as(LibGLib::AsyncQueue*), item ? item : nil)
       __return_value
     end
 
     def push_unlocked(data)
-      __return_value = LibGLib.async_queue_push_unlocked(to_unsafe.as(LibGLib::AsyncQueue*), data && data)
+      __return_value = LibGLib.async_queue_push_unlocked(to_unsafe.as(LibGLib::AsyncQueue*), data ? data : nil)
       __return_value
     end
 
@@ -61,12 +61,12 @@ module GLib
     end
 
     def remove(item)
-      __return_value = LibGLib.async_queue_remove(to_unsafe.as(LibGLib::AsyncQueue*), item && item)
+      __return_value = LibGLib.async_queue_remove(to_unsafe.as(LibGLib::AsyncQueue*), item ? item : nil)
       __return_value
     end
 
     def remove_unlocked(item)
-      __return_value = LibGLib.async_queue_remove_unlocked(to_unsafe.as(LibGLib::AsyncQueue*), item && item)
+      __return_value = LibGLib.async_queue_remove_unlocked(to_unsafe.as(LibGLib::AsyncQueue*), item ? item : nil)
       __return_value
     end
 

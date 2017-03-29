@@ -35,7 +35,7 @@ module Gdk
     end
 
     def grab(window, capabilities : Gdk::SeatCapabilities, owner_events, cursor, event, prepare_func, prepare_func_data)
-      __return_value = LibGdk.seat_grab(to_unsafe.as(LibGdk::Seat*), window.to_unsafe.as(LibGdk::Window*), capabilities, owner_events, cursor && cursor.to_unsafe.as(LibGdk::Cursor*), event && event.to_unsafe.as(LibGdk::Event*), prepare_func && prepare_func, prepare_func_data && prepare_func_data)
+      __return_value = LibGdk.seat_grab(to_unsafe.as(LibGdk::Seat*), window.to_unsafe.as(LibGdk::Window*), capabilities, owner_events, cursor ? cursor.to_unsafe.as(LibGdk::Cursor*) : nil, event ? event.to_unsafe.as(LibGdk::Event*) : nil, prepare_func ? prepare_func : nil, prepare_func_data ? prepare_func_data : nil)
       __return_value
     end
 

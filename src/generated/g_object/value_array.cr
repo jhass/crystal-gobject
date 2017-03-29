@@ -24,7 +24,7 @@ module GObject
     end
 
     def append(value)
-      __return_value = LibGObject.value_array_append(to_unsafe.as(LibGObject::ValueArray*), value && value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGObject.value_array_append(to_unsafe.as(LibGObject::ValueArray*), value ? value.to_unsafe.as(LibGObject::Value*) : nil)
       GObject::ValueArray.new(__return_value)
     end
 
@@ -44,12 +44,12 @@ module GObject
     end
 
     def insert(index, value)
-      __return_value = LibGObject.value_array_insert(to_unsafe.as(LibGObject::ValueArray*), UInt32.new(index), value && value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGObject.value_array_insert(to_unsafe.as(LibGObject::ValueArray*), UInt32.new(index), value ? value.to_unsafe.as(LibGObject::Value*) : nil)
       GObject::ValueArray.new(__return_value)
     end
 
     def prepend(value)
-      __return_value = LibGObject.value_array_prepend(to_unsafe.as(LibGObject::ValueArray*), value && value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGObject.value_array_prepend(to_unsafe.as(LibGObject::ValueArray*), value ? value.to_unsafe.as(LibGObject::Value*) : nil)
       GObject::ValueArray.new(__return_value)
     end
 
@@ -59,7 +59,7 @@ module GObject
     end
 
     def sort(compare_func, user_data)
-      __return_value = LibGObject.value_array_sort(to_unsafe.as(LibGObject::ValueArray*), compare_func, user_data && user_data)
+      __return_value = LibGObject.value_array_sort(to_unsafe.as(LibGObject::ValueArray*), compare_func, user_data ? user_data : nil)
       GObject::ValueArray.new(__return_value)
     end
 

@@ -2,7 +2,7 @@ module Gio
   module DtlsClientConnection
     def self.new(base_socket, server_identity)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.dtls_client_connection_new(base_socket.to_unsafe.as(LibGio::DatagramBased*), server_identity && server_identity.to_unsafe.as(LibGio::SocketConnectable*), pointerof(__error))
+      __return_value = LibGio.dtls_client_connection_new(base_socket.to_unsafe.as(LibGio::DatagramBased*), server_identity ? server_identity.to_unsafe.as(LibGio::SocketConnectable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

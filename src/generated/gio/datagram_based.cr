@@ -7,26 +7,26 @@ module Gio
 
     def condition_wait(condition : GLib::IOCondition, timeout, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.datagram_based_condition_wait(to_unsafe.as(LibGio::DatagramBased*), condition, Int64.new(timeout), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.datagram_based_condition_wait(to_unsafe.as(LibGio::DatagramBased*), condition, Int64.new(timeout), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def create_source(condition : GLib::IOCondition, cancellable)
-      __return_value = LibGio.datagram_based_create_source(to_unsafe.as(LibGio::DatagramBased*), condition, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*))
+      __return_value = LibGio.datagram_based_create_source(to_unsafe.as(LibGio::DatagramBased*), condition, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil)
       GLib::Source.new(__return_value)
     end
 
     def receive_messages(messages, num_messages, flags, timeout, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.datagram_based_receive_messages(to_unsafe.as(LibGio::DatagramBased*), messages, UInt32.new(num_messages), Int32.new(flags), Int64.new(timeout), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.datagram_based_receive_messages(to_unsafe.as(LibGio::DatagramBased*), messages, UInt32.new(num_messages), Int32.new(flags), Int64.new(timeout), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def send_messages(messages, num_messages, flags, timeout, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.datagram_based_send_messages(to_unsafe.as(LibGio::DatagramBased*), messages, UInt32.new(num_messages), Int32.new(flags), Int64.new(timeout), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.datagram_based_send_messages(to_unsafe.as(LibGio::DatagramBased*), messages, UInt32.new(num_messages), Int32.new(flags), Int64.new(timeout), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

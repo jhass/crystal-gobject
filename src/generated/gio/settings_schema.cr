@@ -16,7 +16,7 @@ module Gio
     end
 
     def key(name)
-      __return_value = LibGio.settings_schema_get_key(to_unsafe.as(LibGio::SettingsSchema*), name)
+      __return_value = LibGio.settings_schema_get_key(to_unsafe.as(LibGio::SettingsSchema*), name.to_unsafe)
       Gio::SettingsSchemaKey.new(__return_value)
     end
 
@@ -26,7 +26,7 @@ module Gio
     end
 
     def has_key(name)
-      __return_value = LibGio.settings_schema_has_key(to_unsafe.as(LibGio::SettingsSchema*), name)
+      __return_value = LibGio.settings_schema_has_key(to_unsafe.as(LibGio::SettingsSchema*), name.to_unsafe)
       __return_value
     end
 

@@ -2,13 +2,13 @@ module Gio
   module DtlsConnection
     def close(cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.dtls_connection_close(to_unsafe.as(LibGio::DtlsConnection*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.dtls_connection_close(to_unsafe.as(LibGio::DtlsConnection*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def close_async(io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.dtls_connection_close_async(to_unsafe.as(LibGio::DtlsConnection*), Int32.new(io_priority), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
+      __return_value = LibGio.dtls_connection_close_async(to_unsafe.as(LibGio::DtlsConnection*), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       __return_value
     end
 
@@ -61,13 +61,13 @@ module Gio
 
     def handshake(cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.dtls_connection_handshake(to_unsafe.as(LibGio::DtlsConnection*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.dtls_connection_handshake(to_unsafe.as(LibGio::DtlsConnection*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def handshake_async(io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.dtls_connection_handshake_async(to_unsafe.as(LibGio::DtlsConnection*), Int32.new(io_priority), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
+      __return_value = LibGio.dtls_connection_handshake_async(to_unsafe.as(LibGio::DtlsConnection*), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       __return_value
     end
 
@@ -89,7 +89,7 @@ module Gio
     end
 
     def interaction=(interaction)
-      __return_value = LibGio.dtls_connection_set_interaction(to_unsafe.as(LibGio::DtlsConnection*), interaction && interaction.to_unsafe.as(LibGio::TlsInteraction*))
+      __return_value = LibGio.dtls_connection_set_interaction(to_unsafe.as(LibGio::DtlsConnection*), interaction ? interaction.to_unsafe.as(LibGio::TlsInteraction*) : nil)
       __return_value
     end
 
@@ -105,13 +105,13 @@ module Gio
 
     def shutdown(shutdown_read, shutdown_write, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.dtls_connection_shutdown(to_unsafe.as(LibGio::DtlsConnection*), shutdown_read, shutdown_write, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.dtls_connection_shutdown(to_unsafe.as(LibGio::DtlsConnection*), shutdown_read, shutdown_write, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def shutdown_async(shutdown_read, shutdown_write, io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.dtls_connection_shutdown_async(to_unsafe.as(LibGio::DtlsConnection*), shutdown_read, shutdown_write, Int32.new(io_priority), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
+      __return_value = LibGio.dtls_connection_shutdown_async(to_unsafe.as(LibGio::DtlsConnection*), shutdown_read, shutdown_write, Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       __return_value
     end
 

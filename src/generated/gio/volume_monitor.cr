@@ -24,7 +24,7 @@ module Gio
     end
 
     def mount_for_uuid(uuid)
-      __return_value = LibGio.volume_monitor_get_mount_for_uuid(to_unsafe.as(LibGio::VolumeMonitor*), uuid)
+      __return_value = LibGio.volume_monitor_get_mount_for_uuid(to_unsafe.as(LibGio::VolumeMonitor*), uuid.to_unsafe)
       __return_value
     end
 
@@ -34,7 +34,7 @@ module Gio
     end
 
     def volume_for_uuid(uuid)
-      __return_value = LibGio.volume_monitor_get_volume_for_uuid(to_unsafe.as(LibGio::VolumeMonitor*), uuid)
+      __return_value = LibGio.volume_monitor_get_volume_for_uuid(to_unsafe.as(LibGio::VolumeMonitor*), uuid.to_unsafe)
       __return_value
     end
 

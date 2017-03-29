@@ -214,7 +214,7 @@ module Pango
     end
 
     def attributes=(attrs)
-      __return_value = LibPango.layout_set_attributes(to_unsafe.as(LibPango::Layout*), attrs && attrs.to_unsafe.as(LibPango::AttrList*))
+      __return_value = LibPango.layout_set_attributes(to_unsafe.as(LibPango::Layout*), attrs ? attrs.to_unsafe.as(LibPango::AttrList*) : nil)
       __return_value
     end
 
@@ -229,7 +229,7 @@ module Pango
     end
 
     def font_description=(desc)
-      __return_value = LibPango.layout_set_font_description(to_unsafe.as(LibPango::Layout*), desc && desc.to_unsafe.as(LibPango::FontDescription*))
+      __return_value = LibPango.layout_set_font_description(to_unsafe.as(LibPango::Layout*), desc ? desc.to_unsafe.as(LibPango::FontDescription*) : nil)
       __return_value
     end
 
@@ -249,12 +249,12 @@ module Pango
     end
 
     def set_markup(markup, length)
-      __return_value = LibPango.layout_set_markup(to_unsafe.as(LibPango::Layout*), markup, Int32.new(length))
+      __return_value = LibPango.layout_set_markup(to_unsafe.as(LibPango::Layout*), markup.to_unsafe, Int32.new(length))
       __return_value
     end
 
     def set_markup_with_accel(markup, length, accel_marker, accel_char)
-      __return_value = LibPango.layout_set_markup_with_accel(to_unsafe.as(LibPango::Layout*), markup, Int32.new(length), UInt8.new(accel_marker), accel_char)
+      __return_value = LibPango.layout_set_markup_with_accel(to_unsafe.as(LibPango::Layout*), markup.to_unsafe, Int32.new(length), UInt8.new(accel_marker), accel_char)
       __return_value
     end
 
@@ -269,12 +269,12 @@ module Pango
     end
 
     def tabs=(tabs)
-      __return_value = LibPango.layout_set_tabs(to_unsafe.as(LibPango::Layout*), tabs && tabs.to_unsafe.as(LibPango::TabArray*))
+      __return_value = LibPango.layout_set_tabs(to_unsafe.as(LibPango::Layout*), tabs ? tabs.to_unsafe.as(LibPango::TabArray*) : nil)
       __return_value
     end
 
     def set_text(text, length)
-      __return_value = LibPango.layout_set_text(to_unsafe.as(LibPango::Layout*), text, Int32.new(length))
+      __return_value = LibPango.layout_set_text(to_unsafe.as(LibPango::Layout*), text.to_unsafe, Int32.new(length))
       __return_value
     end
 

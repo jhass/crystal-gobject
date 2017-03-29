@@ -16,7 +16,7 @@ module Gtk
 
 
     def self.new(accelerator) : self
-      __return_value = LibGtk.shortcut_label_new(accelerator)
+      __return_value = LibGtk.shortcut_label_new(accelerator.to_unsafe)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -31,12 +31,12 @@ module Gtk
     end
 
     def accelerator=(accelerator)
-      __return_value = LibGtk.shortcut_label_set_accelerator(to_unsafe.as(LibGtk::ShortcutLabel*), accelerator)
+      __return_value = LibGtk.shortcut_label_set_accelerator(to_unsafe.as(LibGtk::ShortcutLabel*), accelerator.to_unsafe)
       __return_value
     end
 
     def disabled_text=(disabled_text)
-      __return_value = LibGtk.shortcut_label_set_disabled_text(to_unsafe.as(LibGtk::ShortcutLabel*), disabled_text)
+      __return_value = LibGtk.shortcut_label_set_disabled_text(to_unsafe.as(LibGtk::ShortcutLabel*), disabled_text.to_unsafe)
       __return_value
     end
 

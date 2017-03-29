@@ -39,7 +39,7 @@ module GObject
     end
 
     def collect_format=(value : String)
-      to_unsafe.as(LibGObject::TypeValueTable*).value.collect_format = value
+      to_unsafe.as(LibGObject::TypeValueTable*).value.collect_format = value.to_unsafe
     end
 
     def collect_value
@@ -51,7 +51,7 @@ module GObject
     end
 
     def lcopy_format=(value : String)
-      to_unsafe.as(LibGObject::TypeValueTable*).value.lcopy_format = value
+      to_unsafe.as(LibGObject::TypeValueTable*).value.lcopy_format = value.to_unsafe
     end
 
     def lcopy_value

@@ -26,7 +26,7 @@ module Gtk
 
 
     def self.new(name, label, tooltip, stock_id) : self
-      __return_value = LibGtk.action_new(name, label, tooltip, stock_id)
+      __return_value = LibGtk.action_new(name.to_unsafe, label ? label.to_unsafe : nil, tooltip ? tooltip.to_unsafe : nil, stock_id ? stock_id.to_unsafe : nil)
       cast Gtk::Action.new(__return_value)
     end
 
@@ -161,12 +161,12 @@ module Gtk
     end
 
     def accel_group=(accel_group)
-      __return_value = LibGtk.action_set_accel_group(to_unsafe.as(LibGtk::Action*), accel_group && accel_group.to_unsafe.as(LibGtk::AccelGroup*))
+      __return_value = LibGtk.action_set_accel_group(to_unsafe.as(LibGtk::Action*), accel_group ? accel_group.to_unsafe.as(LibGtk::AccelGroup*) : nil)
       __return_value
     end
 
     def accel_path=(accel_path)
-      __return_value = LibGtk.action_set_accel_path(to_unsafe.as(LibGtk::Action*), accel_path)
+      __return_value = LibGtk.action_set_accel_path(to_unsafe.as(LibGtk::Action*), accel_path.to_unsafe)
       __return_value
     end
 
@@ -181,7 +181,7 @@ module Gtk
     end
 
     def icon_name=(icon_name)
-      __return_value = LibGtk.action_set_icon_name(to_unsafe.as(LibGtk::Action*), icon_name)
+      __return_value = LibGtk.action_set_icon_name(to_unsafe.as(LibGtk::Action*), icon_name.to_unsafe)
       __return_value
     end
 
@@ -191,7 +191,7 @@ module Gtk
     end
 
     def label=(label)
-      __return_value = LibGtk.action_set_label(to_unsafe.as(LibGtk::Action*), label)
+      __return_value = LibGtk.action_set_label(to_unsafe.as(LibGtk::Action*), label.to_unsafe)
       __return_value
     end
 
@@ -201,17 +201,17 @@ module Gtk
     end
 
     def short_label=(short_label)
-      __return_value = LibGtk.action_set_short_label(to_unsafe.as(LibGtk::Action*), short_label)
+      __return_value = LibGtk.action_set_short_label(to_unsafe.as(LibGtk::Action*), short_label.to_unsafe)
       __return_value
     end
 
     def stock_id=(stock_id)
-      __return_value = LibGtk.action_set_stock_id(to_unsafe.as(LibGtk::Action*), stock_id)
+      __return_value = LibGtk.action_set_stock_id(to_unsafe.as(LibGtk::Action*), stock_id.to_unsafe)
       __return_value
     end
 
     def tooltip=(tooltip)
-      __return_value = LibGtk.action_set_tooltip(to_unsafe.as(LibGtk::Action*), tooltip)
+      __return_value = LibGtk.action_set_tooltip(to_unsafe.as(LibGtk::Action*), tooltip.to_unsafe)
       __return_value
     end
 

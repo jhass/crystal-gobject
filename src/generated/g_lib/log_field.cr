@@ -24,7 +24,7 @@ module GLib
     end
 
     def key=(value : String)
-      to_unsafe.as(LibGLib::LogField*).value.key = value
+      to_unsafe.as(LibGLib::LogField*).value.key = value.to_unsafe
     end
 
     def value

@@ -51,7 +51,7 @@ module GLib
     end
 
     def self.set(iter, data)
-      __return_value = LibGLib.sequence_set(iter.to_unsafe.as(LibGLib::SequenceIter*), data && data)
+      __return_value = LibGLib.sequence_set(iter.to_unsafe.as(LibGLib::SequenceIter*), data ? data : nil)
       __return_value
     end
 

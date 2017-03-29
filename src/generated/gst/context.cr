@@ -11,7 +11,7 @@ module Gst
     end
 
     def self.new(context_type, persistent) : self
-      __return_value = LibGst.context_new(context_type, persistent)
+      __return_value = LibGst.context_new(context_type.to_unsafe, persistent)
       cast Gst::Context.new(__return_value)
     end
 
@@ -26,7 +26,7 @@ module Gst
     end
 
     def has_context_type(context_type)
-      __return_value = LibGst.context_has_context_type(to_unsafe.as(LibGst::Context*), context_type)
+      __return_value = LibGst.context_has_context_type(to_unsafe.as(LibGst::Context*), context_type.to_unsafe)
       __return_value
     end
 

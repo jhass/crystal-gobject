@@ -11,7 +11,7 @@ module Gst
     end
 
     def self.find(name)
-      __return_value = LibGst.element_factory_find(name)
+      __return_value = LibGst.element_factory_find(name.to_unsafe)
       Gst::ElementFactory.new(__return_value) if __return_value
     end
 
@@ -26,7 +26,7 @@ module Gst
     end
 
     def self.make(factoryname, name)
-      __return_value = LibGst.element_factory_make(factoryname, name)
+      __return_value = LibGst.element_factory_make(factoryname.to_unsafe, name ? name.to_unsafe : nil)
       Gst::Element.new(__return_value) if __return_value
     end
 
@@ -51,7 +51,7 @@ module Gst
     end
 
     def create(name)
-      __return_value = LibGst.element_factory_create(to_unsafe.as(LibGst::ElementFactory*), name)
+      __return_value = LibGst.element_factory_create(to_unsafe.as(LibGst::ElementFactory*), name ? name.to_unsafe : nil)
       Gst::Element.new(__return_value) if __return_value
     end
 
@@ -61,7 +61,7 @@ module Gst
     end
 
     def metadata(key)
-      __return_value = LibGst.element_factory_get_metadata(to_unsafe.as(LibGst::ElementFactory*), key)
+      __return_value = LibGst.element_factory_get_metadata(to_unsafe.as(LibGst::ElementFactory*), key.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
@@ -91,7 +91,7 @@ module Gst
     end
 
     def has_interface(interfacename)
-      __return_value = LibGst.element_factory_has_interface(to_unsafe.as(LibGst::ElementFactory*), interfacename)
+      __return_value = LibGst.element_factory_has_interface(to_unsafe.as(LibGst::ElementFactory*), interfacename.to_unsafe)
       __return_value
     end
 

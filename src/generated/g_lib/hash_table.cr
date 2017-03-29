@@ -11,12 +11,12 @@ module GLib
     end
 
     def self.add(hash_table, key)
-      __return_value = LibGLib.hash_table_add(hash_table, key && key)
+      __return_value = LibGLib.hash_table_add(hash_table, key ? key : nil)
       __return_value
     end
 
     def self.contains(hash_table, key)
-      __return_value = LibGLib.hash_table_contains(hash_table, key && key)
+      __return_value = LibGLib.hash_table_contains(hash_table, key ? key : nil)
       __return_value
     end
 
@@ -26,22 +26,22 @@ module GLib
     end
 
     def self.insert(hash_table, key, value)
-      __return_value = LibGLib.hash_table_insert(hash_table, key && key, value && value)
+      __return_value = LibGLib.hash_table_insert(hash_table, key ? key : nil, value ? value : nil)
       __return_value
     end
 
     def self.lookup(hash_table, key)
-      __return_value = LibGLib.hash_table_lookup(hash_table, key && key)
+      __return_value = LibGLib.hash_table_lookup(hash_table, key ? key : nil)
       __return_value if __return_value
     end
 
     def self.lookup_extended(hash_table, lookup_key, orig_key, value)
-      __return_value = LibGLib.hash_table_lookup_extended(hash_table, lookup_key && lookup_key, orig_key, value)
+      __return_value = LibGLib.hash_table_lookup_extended(hash_table, lookup_key ? lookup_key : nil, orig_key, value)
       __return_value
     end
 
     def self.remove(hash_table, key)
-      __return_value = LibGLib.hash_table_remove(hash_table, key && key)
+      __return_value = LibGLib.hash_table_remove(hash_table, key ? key : nil)
       __return_value
     end
 
@@ -51,7 +51,7 @@ module GLib
     end
 
     def self.replace(hash_table, key, value)
-      __return_value = LibGLib.hash_table_replace(hash_table, key && key, value && value)
+      __return_value = LibGLib.hash_table_replace(hash_table, key ? key : nil, value ? value : nil)
       __return_value
     end
 
@@ -61,7 +61,7 @@ module GLib
     end
 
     def self.steal(hash_table, key)
-      __return_value = LibGLib.hash_table_steal(hash_table, key && key)
+      __return_value = LibGLib.hash_table_steal(hash_table, key ? key : nil)
       __return_value
     end
 

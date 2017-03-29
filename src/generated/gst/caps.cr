@@ -28,7 +28,7 @@ module Gst
     end
 
     def self.new_empty_simple(media_type) : self
-      __return_value = LibGst.caps_new_empty_simple(media_type)
+      __return_value = LibGst.caps_new_empty_simple(media_type.to_unsafe)
       cast Gst::Caps.new(__return_value)
     end
 
@@ -43,7 +43,7 @@ module Gst
     end
 
     def append_structure_full(structure, features)
-      __return_value = LibGst.caps_append_structure_full(to_unsafe.as(LibGst::Caps*), structure.to_unsafe.as(LibGst::Structure*), features && features.to_unsafe.as(LibGst::CapsFeatures*))
+      __return_value = LibGst.caps_append_structure_full(to_unsafe.as(LibGst::Caps*), structure.to_unsafe.as(LibGst::Structure*), features ? features.to_unsafe.as(LibGst::CapsFeatures*) : nil)
       __return_value
     end
 
@@ -58,7 +58,7 @@ module Gst
     end
 
     def filter_and_map_in_place(func, user_data)
-      __return_value = LibGst.caps_filter_and_map_in_place(to_unsafe.as(LibGst::Caps*), func, user_data && user_data)
+      __return_value = LibGst.caps_filter_and_map_in_place(to_unsafe.as(LibGst::Caps*), func, user_data ? user_data : nil)
       __return_value
     end
 
@@ -68,7 +68,7 @@ module Gst
     end
 
     def foreach(func, user_data)
-      __return_value = LibGst.caps_foreach(to_unsafe.as(LibGst::Caps*), func, user_data && user_data)
+      __return_value = LibGst.caps_foreach(to_unsafe.as(LibGst::Caps*), func, user_data ? user_data : nil)
       __return_value
     end
 
@@ -143,12 +143,12 @@ module Gst
     end
 
     def subset_structure_full?(structure, features)
-      __return_value = LibGst.caps_is_subset_structure_full(to_unsafe.as(LibGst::Caps*), structure.to_unsafe.as(LibGst::Structure*), features && features.to_unsafe.as(LibGst::CapsFeatures*))
+      __return_value = LibGst.caps_is_subset_structure_full(to_unsafe.as(LibGst::Caps*), structure.to_unsafe.as(LibGst::Structure*), features ? features.to_unsafe.as(LibGst::CapsFeatures*) : nil)
       __return_value
     end
 
     def map_in_place(func, user_data)
-      __return_value = LibGst.caps_map_in_place(to_unsafe.as(LibGst::Caps*), func, user_data && user_data)
+      __return_value = LibGst.caps_map_in_place(to_unsafe.as(LibGst::Caps*), func, user_data ? user_data : nil)
       __return_value
     end
 
@@ -163,7 +163,7 @@ module Gst
     end
 
     def merge_structure_full(structure, features)
-      __return_value = LibGst.caps_merge_structure_full(to_unsafe.as(LibGst::Caps*), structure.to_unsafe.as(LibGst::Structure*), features && features.to_unsafe.as(LibGst::CapsFeatures*))
+      __return_value = LibGst.caps_merge_structure_full(to_unsafe.as(LibGst::Caps*), structure.to_unsafe.as(LibGst::Structure*), features ? features.to_unsafe.as(LibGst::CapsFeatures*) : nil)
       Gst::Caps.new(__return_value)
     end
 
@@ -178,12 +178,12 @@ module Gst
     end
 
     def set_features(index, features)
-      __return_value = LibGst.caps_set_features(to_unsafe.as(LibGst::Caps*), UInt32.new(index), features && features.to_unsafe.as(LibGst::CapsFeatures*))
+      __return_value = LibGst.caps_set_features(to_unsafe.as(LibGst::Caps*), UInt32.new(index), features ? features.to_unsafe.as(LibGst::CapsFeatures*) : nil)
       __return_value
     end
 
     def set_value(field, value)
-      __return_value = LibGst.caps_set_value(to_unsafe.as(LibGst::Caps*), field, value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGst.caps_set_value(to_unsafe.as(LibGst::Caps*), field.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 
@@ -213,7 +213,7 @@ module Gst
     end
 
     def self.from_string(string)
-      __return_value = LibGst.caps_from_string(string)
+      __return_value = LibGst.caps_from_string(string.to_unsafe)
       Gst::Caps.new(__return_value)
     end
 

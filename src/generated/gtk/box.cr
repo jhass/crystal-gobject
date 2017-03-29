@@ -67,7 +67,7 @@ module Gtk
     end
 
     def center_widget=(widget)
-      __return_value = LibGtk.box_set_center_widget(to_unsafe.as(LibGtk::Box*), widget && widget.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.box_set_center_widget(to_unsafe.as(LibGtk::Box*), widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 

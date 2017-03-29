@@ -26,7 +26,7 @@ module Gst
     end
 
     def foreach(func, user_data)
-      __return_value = LibGst.buffer_list_foreach(to_unsafe.as(LibGst::BufferList*), func, user_data && user_data)
+      __return_value = LibGst.buffer_list_foreach(to_unsafe.as(LibGst::BufferList*), func, user_data ? user_data : nil)
       __return_value
     end
 

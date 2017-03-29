@@ -27,17 +27,17 @@ module Gtk
     end
 
     def add_named(child, name)
-      __return_value = LibGtk.stack_add_named(to_unsafe.as(LibGtk::Stack*), child.to_unsafe.as(LibGtk::Widget*), name)
+      __return_value = LibGtk.stack_add_named(to_unsafe.as(LibGtk::Stack*), child.to_unsafe.as(LibGtk::Widget*), name.to_unsafe)
       __return_value
     end
 
     def add_titled(child, name, title)
-      __return_value = LibGtk.stack_add_titled(to_unsafe.as(LibGtk::Stack*), child.to_unsafe.as(LibGtk::Widget*), name, title)
+      __return_value = LibGtk.stack_add_titled(to_unsafe.as(LibGtk::Stack*), child.to_unsafe.as(LibGtk::Widget*), name.to_unsafe, title.to_unsafe)
       __return_value
     end
 
     def child_by_name(name)
-      __return_value = LibGtk.stack_get_child_by_name(to_unsafe.as(LibGtk::Stack*), name)
+      __return_value = LibGtk.stack_get_child_by_name(to_unsafe.as(LibGtk::Stack*), name.to_unsafe)
       Gtk::Widget.new(__return_value) if __return_value
     end
 
@@ -122,12 +122,12 @@ module Gtk
     end
 
     def set_visible_child_full(name, transition : Gtk::StackTransitionType)
-      __return_value = LibGtk.stack_set_visible_child_full(to_unsafe.as(LibGtk::Stack*), name, transition)
+      __return_value = LibGtk.stack_set_visible_child_full(to_unsafe.as(LibGtk::Stack*), name.to_unsafe, transition)
       __return_value
     end
 
     def visible_child_name=(name)
-      __return_value = LibGtk.stack_set_visible_child_name(to_unsafe.as(LibGtk::Stack*), name)
+      __return_value = LibGtk.stack_set_visible_child_name(to_unsafe.as(LibGtk::Stack*), name.to_unsafe)
       __return_value
     end
 

@@ -16,7 +16,7 @@ module Gst
 
 
     def self.new(stream_id, caps, type : Gst::StreamType, flags : Gst::StreamFlags) : self
-      __return_value = LibGst.stream_new(stream_id, caps && caps.to_unsafe.as(LibGst::Caps*), type, flags)
+      __return_value = LibGst.stream_new(stream_id ? stream_id.to_unsafe : nil, caps ? caps.to_unsafe.as(LibGst::Caps*) : nil, type, flags)
       cast Gst::Stream.new(__return_value)
     end
 
@@ -46,7 +46,7 @@ module Gst
     end
 
     def caps=(caps)
-      __return_value = LibGst.stream_set_caps(to_unsafe.as(LibGst::Stream*), caps && caps.to_unsafe.as(LibGst::Caps*))
+      __return_value = LibGst.stream_set_caps(to_unsafe.as(LibGst::Stream*), caps ? caps.to_unsafe.as(LibGst::Caps*) : nil)
       __return_value
     end
 
@@ -61,7 +61,7 @@ module Gst
     end
 
     def tags=(tags)
-      __return_value = LibGst.stream_set_tags(to_unsafe.as(LibGst::Stream*), tags && tags.to_unsafe.as(LibGst::TagList*))
+      __return_value = LibGst.stream_set_tags(to_unsafe.as(LibGst::Stream*), tags ? tags.to_unsafe.as(LibGst::TagList*) : nil)
       __return_value
     end
 

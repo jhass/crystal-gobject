@@ -41,7 +41,7 @@ module Gtk
     end
 
     def insert_text(new_text, new_text_length, position)
-      __return_value = LibGtk.editable_insert_text(to_unsafe.as(LibGtk::Editable*), new_text, Int32.new(new_text_length), position)
+      __return_value = LibGtk.editable_insert_text(to_unsafe.as(LibGtk::Editable*), new_text.to_unsafe, Int32.new(new_text_length), position)
       __return_value
     end
 

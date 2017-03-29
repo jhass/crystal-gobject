@@ -11,7 +11,7 @@ module Gtk
     end
 
     def set_default_sort_func(sort_func, user_data, destroy)
-      __return_value = LibGtk.tree_sortable_set_default_sort_func(to_unsafe.as(LibGtk::TreeSortable*), sort_func, user_data && user_data, destroy && destroy)
+      __return_value = LibGtk.tree_sortable_set_default_sort_func(to_unsafe.as(LibGtk::TreeSortable*), sort_func, user_data ? user_data : nil, destroy ? destroy : nil)
       __return_value
     end
 
@@ -21,7 +21,7 @@ module Gtk
     end
 
     def set_sort_func(sort_column_id, sort_func, user_data, destroy)
-      __return_value = LibGtk.tree_sortable_set_sort_func(to_unsafe.as(LibGtk::TreeSortable*), Int32.new(sort_column_id), sort_func, user_data && user_data, destroy && destroy)
+      __return_value = LibGtk.tree_sortable_set_sort_func(to_unsafe.as(LibGtk::TreeSortable*), Int32.new(sort_column_id), sort_func, user_data ? user_data : nil, destroy ? destroy : nil)
       __return_value
     end
 

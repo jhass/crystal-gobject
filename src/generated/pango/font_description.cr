@@ -16,7 +16,7 @@ module Pango
     end
 
     def better_match(old_match, new_match)
-      __return_value = LibPango.font_description_better_match(to_unsafe.as(LibPango::FontDescription*), old_match && old_match.to_unsafe.as(LibPango::FontDescription*), new_match.to_unsafe.as(LibPango::FontDescription*))
+      __return_value = LibPango.font_description_better_match(to_unsafe.as(LibPango::FontDescription*), old_match ? old_match.to_unsafe.as(LibPango::FontDescription*) : nil, new_match.to_unsafe.as(LibPango::FontDescription*))
       __return_value
     end
 
@@ -91,7 +91,7 @@ module Pango
     end
 
     def merge(desc_to_merge, replace_existing)
-      __return_value = LibPango.font_description_merge(to_unsafe.as(LibPango::FontDescription*), desc_to_merge && desc_to_merge.to_unsafe.as(LibPango::FontDescription*), replace_existing)
+      __return_value = LibPango.font_description_merge(to_unsafe.as(LibPango::FontDescription*), desc_to_merge ? desc_to_merge.to_unsafe.as(LibPango::FontDescription*) : nil, replace_existing)
       __return_value
     end
 
@@ -106,12 +106,12 @@ module Pango
     end
 
     def family=(family)
-      __return_value = LibPango.font_description_set_family(to_unsafe.as(LibPango::FontDescription*), family)
+      __return_value = LibPango.font_description_set_family(to_unsafe.as(LibPango::FontDescription*), family.to_unsafe)
       __return_value
     end
 
     def family_static=(family)
-      __return_value = LibPango.font_description_set_family_static(to_unsafe.as(LibPango::FontDescription*), family)
+      __return_value = LibPango.font_description_set_family_static(to_unsafe.as(LibPango::FontDescription*), family.to_unsafe)
       __return_value
     end
 
@@ -161,7 +161,7 @@ module Pango
     end
 
     def self.from_string(str)
-      __return_value = LibPango.font_description_from_string(str)
+      __return_value = LibPango.font_description_from_string(str.to_unsafe)
       Pango::FontDescription.new(__return_value)
     end
 

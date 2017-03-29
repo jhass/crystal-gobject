@@ -87,20 +87,20 @@ module Gtk
 
     def select_uri(uri)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.recent_chooser_select_uri(to_unsafe.as(LibGtk::RecentChooser*), uri, pointerof(__error))
+      __return_value = LibGtk.recent_chooser_select_uri(to_unsafe.as(LibGtk::RecentChooser*), uri.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def set_current_uri(uri)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.recent_chooser_set_current_uri(to_unsafe.as(LibGtk::RecentChooser*), uri, pointerof(__error))
+      __return_value = LibGtk.recent_chooser_set_current_uri(to_unsafe.as(LibGtk::RecentChooser*), uri.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def filter=(filter)
-      __return_value = LibGtk.recent_chooser_set_filter(to_unsafe.as(LibGtk::RecentChooser*), filter && filter.to_unsafe.as(LibGtk::RecentFilter*))
+      __return_value = LibGtk.recent_chooser_set_filter(to_unsafe.as(LibGtk::RecentChooser*), filter ? filter.to_unsafe.as(LibGtk::RecentFilter*) : nil)
       __return_value
     end
 
@@ -140,7 +140,7 @@ module Gtk
     end
 
     def set_sort_func(sort_func, sort_data, data_destroy)
-      __return_value = LibGtk.recent_chooser_set_sort_func(to_unsafe.as(LibGtk::RecentChooser*), sort_func, sort_data && sort_data, data_destroy && data_destroy)
+      __return_value = LibGtk.recent_chooser_set_sort_func(to_unsafe.as(LibGtk::RecentChooser*), sort_func, sort_data ? sort_data : nil, data_destroy ? data_destroy : nil)
       __return_value
     end
 
@@ -155,7 +155,7 @@ module Gtk
     end
 
     def unselect_uri(uri)
-      __return_value = LibGtk.recent_chooser_unselect_uri(to_unsafe.as(LibGtk::RecentChooser*), uri)
+      __return_value = LibGtk.recent_chooser_unselect_uri(to_unsafe.as(LibGtk::RecentChooser*), uri.to_unsafe)
       __return_value
     end
 

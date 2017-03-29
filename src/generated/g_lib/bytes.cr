@@ -11,12 +11,12 @@ module GLib
     end
 
     def self.new(data, size) : self
-      __return_value = LibGLib.bytes_new(data && data, UInt64.new(size))
+      __return_value = LibGLib.bytes_new(data ? data : nil, UInt64.new(size))
       cast GLib::Bytes.new(__return_value)
     end
 
     def self.new_take(data, size) : self
-      __return_value = LibGLib.bytes_new_take(data && data, UInt64.new(size))
+      __return_value = LibGLib.bytes_new_take(data ? data : nil, UInt64.new(size))
       cast GLib::Bytes.new(__return_value)
     end
 

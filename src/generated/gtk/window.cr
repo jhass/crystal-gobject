@@ -77,7 +77,7 @@ module Gtk
 
     def self.default_icon_from_file=(filename)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.window_set_default_icon_from_file(filename, pointerof(__error))
+      __return_value = LibGtk.window_set_default_icon_from_file(filename.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -88,7 +88,7 @@ module Gtk
     end
 
     def self.set_default_icon_name(name)
-      __return_value = LibGtk.window_set_default_icon_name(name)
+      __return_value = LibGtk.window_set_default_icon_name(name.to_unsafe)
       __return_value
     end
 
@@ -373,7 +373,7 @@ module Gtk
     end
 
     def parse_geometry(geometry)
-      __return_value = LibGtk.window_parse_geometry(to_unsafe.as(LibGtk::Window*), geometry)
+      __return_value = LibGtk.window_parse_geometry(to_unsafe.as(LibGtk::Window*), geometry.to_unsafe)
       __return_value
     end
 
@@ -428,12 +428,12 @@ module Gtk
     end
 
     def application=(application)
-      __return_value = LibGtk.window_set_application(to_unsafe.as(LibGtk::Window*), application && application.to_unsafe.as(LibGtk::Application*))
+      __return_value = LibGtk.window_set_application(to_unsafe.as(LibGtk::Window*), application ? application.to_unsafe.as(LibGtk::Application*) : nil)
       __return_value
     end
 
     def attached_to=(attach_widget)
-      __return_value = LibGtk.window_set_attached_to(to_unsafe.as(LibGtk::Window*), attach_widget && attach_widget.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.window_set_attached_to(to_unsafe.as(LibGtk::Window*), attach_widget ? attach_widget.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 
@@ -443,7 +443,7 @@ module Gtk
     end
 
     def default=(default_widget)
-      __return_value = LibGtk.window_set_default(to_unsafe.as(LibGtk::Window*), default_widget && default_widget.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.window_set_default(to_unsafe.as(LibGtk::Window*), default_widget ? default_widget.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 
@@ -468,7 +468,7 @@ module Gtk
     end
 
     def focus=(focus)
-      __return_value = LibGtk.window_set_focus(to_unsafe.as(LibGtk::Window*), focus && focus.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.window_set_focus(to_unsafe.as(LibGtk::Window*), focus ? focus.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 
@@ -483,7 +483,7 @@ module Gtk
     end
 
     def set_geometry_hints(geometry_widget, geometry, geom_mask : Gdk::WindowHints)
-      __return_value = LibGtk.window_set_geometry_hints(to_unsafe.as(LibGtk::Window*), geometry_widget && geometry_widget.to_unsafe.as(LibGtk::Widget*), geometry && geometry.to_unsafe.as(LibGdk::Geometry*), geom_mask)
+      __return_value = LibGtk.window_set_geometry_hints(to_unsafe.as(LibGtk::Window*), geometry_widget ? geometry_widget.to_unsafe.as(LibGtk::Widget*) : nil, geometry ? geometry.to_unsafe.as(LibGdk::Geometry*) : nil, geom_mask)
       __return_value
     end
 
@@ -508,13 +508,13 @@ module Gtk
     end
 
     def icon=(icon)
-      __return_value = LibGtk.window_set_icon(to_unsafe.as(LibGtk::Window*), icon && icon.to_unsafe.as(LibGdkPixbuf::Pixbuf*))
+      __return_value = LibGtk.window_set_icon(to_unsafe.as(LibGtk::Window*), icon ? icon.to_unsafe.as(LibGdkPixbuf::Pixbuf*) : nil)
       __return_value
     end
 
     def set_icon_from_file(filename)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.window_set_icon_from_file(to_unsafe.as(LibGtk::Window*), filename, pointerof(__error))
+      __return_value = LibGtk.window_set_icon_from_file(to_unsafe.as(LibGtk::Window*), filename.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -525,7 +525,7 @@ module Gtk
     end
 
     def icon_name=(name)
-      __return_value = LibGtk.window_set_icon_name(to_unsafe.as(LibGtk::Window*), name)
+      __return_value = LibGtk.window_set_icon_name(to_unsafe.as(LibGtk::Window*), name ? name.to_unsafe : nil)
       __return_value
     end
 
@@ -570,7 +570,7 @@ module Gtk
     end
 
     def role=(role)
-      __return_value = LibGtk.window_set_role(to_unsafe.as(LibGtk::Window*), role)
+      __return_value = LibGtk.window_set_role(to_unsafe.as(LibGtk::Window*), role.to_unsafe)
       __return_value
     end
 
@@ -590,22 +590,22 @@ module Gtk
     end
 
     def startup_id=(startup_id)
-      __return_value = LibGtk.window_set_startup_id(to_unsafe.as(LibGtk::Window*), startup_id)
+      __return_value = LibGtk.window_set_startup_id(to_unsafe.as(LibGtk::Window*), startup_id.to_unsafe)
       __return_value
     end
 
     def title=(title)
-      __return_value = LibGtk.window_set_title(to_unsafe.as(LibGtk::Window*), title)
+      __return_value = LibGtk.window_set_title(to_unsafe.as(LibGtk::Window*), title.to_unsafe)
       __return_value
     end
 
     def titlebar=(titlebar)
-      __return_value = LibGtk.window_set_titlebar(to_unsafe.as(LibGtk::Window*), titlebar && titlebar.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.window_set_titlebar(to_unsafe.as(LibGtk::Window*), titlebar ? titlebar.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 
     def transient_for=(parent)
-      __return_value = LibGtk.window_set_transient_for(to_unsafe.as(LibGtk::Window*), parent && parent.to_unsafe.as(LibGtk::Window*))
+      __return_value = LibGtk.window_set_transient_for(to_unsafe.as(LibGtk::Window*), parent ? parent.to_unsafe.as(LibGtk::Window*) : nil)
       __return_value
     end
 
@@ -620,7 +620,7 @@ module Gtk
     end
 
     def set_wmclass(wmclass_name, wmclass_class)
-      __return_value = LibGtk.window_set_wmclass(to_unsafe.as(LibGtk::Window*), wmclass_name, wmclass_class)
+      __return_value = LibGtk.window_set_wmclass(to_unsafe.as(LibGtk::Window*), wmclass_name.to_unsafe, wmclass_class.to_unsafe)
       __return_value
     end
 

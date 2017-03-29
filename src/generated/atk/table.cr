@@ -121,7 +121,7 @@ module Atk
     end
 
     def set_column_description(column, description)
-      __return_value = LibAtk.table_set_column_description(to_unsafe.as(LibAtk::Table*), Int32.new(column), description)
+      __return_value = LibAtk.table_set_column_description(to_unsafe.as(LibAtk::Table*), Int32.new(column), description.to_unsafe)
       __return_value
     end
 
@@ -131,7 +131,7 @@ module Atk
     end
 
     def set_row_description(row, description)
-      __return_value = LibAtk.table_set_row_description(to_unsafe.as(LibAtk::Table*), Int32.new(row), description)
+      __return_value = LibAtk.table_set_row_description(to_unsafe.as(LibAtk::Table*), Int32.new(row), description.to_unsafe)
       __return_value
     end
 

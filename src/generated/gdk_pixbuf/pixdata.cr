@@ -36,7 +36,7 @@ module GdkPixbuf
     end
 
     def to_csource(name, dump_type : GdkPixbuf::PixdataDumpType)
-      __return_value = LibGdkPixbuf.pixdata_to_csource(to_unsafe.as(LibGdkPixbuf::Pixdata*), name, dump_type)
+      __return_value = LibGdkPixbuf.pixdata_to_csource(to_unsafe.as(LibGdkPixbuf::Pixdata*), name.to_unsafe, dump_type)
       GLib::String.new(__return_value)
     end
 

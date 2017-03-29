@@ -17,7 +17,7 @@ module Gst
 
     def set_uri(uri)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGst.u_r_i_handler_set_uri(to_unsafe.as(LibGst::URIHandler*), uri, pointerof(__error))
+      __return_value = LibGst.u_r_i_handler_set_uri(to_unsafe.as(LibGst::URIHandler*), uri.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

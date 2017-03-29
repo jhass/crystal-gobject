@@ -5,12 +5,12 @@ module Gdk
   end
 
   def self.atom_intern(atom_name, only_if_exists)
-    __return_value = LibGdk.atom_intern(atom_name, only_if_exists)
+    __return_value = LibGdk.atom_intern(atom_name.to_unsafe, only_if_exists)
     Gdk::Atom.new(__return_value)
   end
 
   def self.atom_intern_static_string(atom_name)
-    __return_value = LibGdk.atom_intern_static_string(atom_name)
+    __return_value = LibGdk.atom_intern_static_string(atom_name.to_unsafe)
     Gdk::Atom.new(__return_value)
   end
 
@@ -75,12 +75,12 @@ module Gdk
   end
 
   def self.cairo_surface_create_from_pixbuf(pixbuf, scale, for_window)
-    __return_value = LibGdk.cairo_surface_create_from_pixbuf(pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*), Int32.new(scale), for_window && for_window.to_unsafe.as(LibGdk::Window*))
+    __return_value = LibGdk.cairo_surface_create_from_pixbuf(pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*), Int32.new(scale), for_window ? for_window.to_unsafe.as(LibGdk::Window*) : nil)
     Cairo::Surface.new(__return_value)
   end
 
   def self.color_parse(spec, color)
-    __return_value = LibGdk.color_parse(spec, color)
+    __return_value = LibGdk.color_parse(spec.to_unsafe, color)
     __return_value
   end
 
@@ -175,7 +175,7 @@ module Gdk
   end
 
   def self.event_handler_set(func, data, notify)
-    __return_value = LibGdk.event_handler_set(func, data && data, notify)
+    __return_value = LibGdk.event_handler_set(func, data ? data : nil, notify)
     __return_value
   end
 
@@ -270,7 +270,7 @@ module Gdk
   end
 
   def self.keyval_from_name(keyval_name)
-    __return_value = LibGdk.keyval_from_name(keyval_name)
+    __return_value = LibGdk.keyval_from_name(keyval_name.to_unsafe)
     __return_value
   end
 
@@ -315,7 +315,7 @@ module Gdk
   end
 
   def self.notify_startup_complete_with_id(startup_id)
-    __return_value = LibGdk.notify_startup_complete_with_id(startup_id)
+    __return_value = LibGdk.notify_startup_complete_with_id(startup_id.to_unsafe)
     __return_value
   end
 
@@ -365,7 +365,7 @@ module Gdk
   end
 
   def self.pointer_grab(window, owner_events, event_mask : Gdk::EventMask, confine_to, cursor, time)
-    __return_value = LibGdk.pointer_grab(window.to_unsafe.as(LibGdk::Window*), owner_events, event_mask, confine_to && confine_to.to_unsafe.as(LibGdk::Window*), cursor && cursor.to_unsafe.as(LibGdk::Cursor*), UInt32.new(time))
+    __return_value = LibGdk.pointer_grab(window.to_unsafe.as(LibGdk::Window*), owner_events, event_mask, confine_to ? confine_to.to_unsafe.as(LibGdk::Window*) : nil, cursor ? cursor.to_unsafe.as(LibGdk::Cursor*) : nil, UInt32.new(time))
     __return_value
   end
 
@@ -420,12 +420,12 @@ module Gdk
   end
 
   def self.selection_owner_set(owner, selection, time, send_event)
-    __return_value = LibGdk.selection_owner_set(owner && owner.to_unsafe.as(LibGdk::Window*), selection.to_unsafe.as(LibGdk::Atom*), UInt32.new(time), send_event)
+    __return_value = LibGdk.selection_owner_set(owner ? owner.to_unsafe.as(LibGdk::Window*) : nil, selection.to_unsafe.as(LibGdk::Atom*), UInt32.new(time), send_event)
     __return_value
   end
 
   def self.selection_owner_set_for_display(display, owner, selection, time, send_event)
-    __return_value = LibGdk.selection_owner_set_for_display(display.to_unsafe.as(LibGdk::Display*), owner && owner.to_unsafe.as(LibGdk::Window*), selection.to_unsafe.as(LibGdk::Atom*), UInt32.new(time), send_event)
+    __return_value = LibGdk.selection_owner_set_for_display(display.to_unsafe.as(LibGdk::Display*), owner ? owner.to_unsafe.as(LibGdk::Window*) : nil, selection.to_unsafe.as(LibGdk::Atom*), UInt32.new(time), send_event)
     __return_value
   end
 
@@ -440,7 +440,7 @@ module Gdk
   end
 
   def self.set_allowed_backends(backends)
-    __return_value = LibGdk.set_allowed_backends(backends)
+    __return_value = LibGdk.set_allowed_backends(backends.to_unsafe)
     __return_value
   end
 
@@ -450,7 +450,7 @@ module Gdk
   end
 
   def self.set_program_class(program_class)
-    __return_value = LibGdk.set_program_class(program_class)
+    __return_value = LibGdk.set_program_class(program_class.to_unsafe)
     __return_value
   end
 
@@ -460,7 +460,7 @@ module Gdk
   end
 
   def self.setting_get(name, value)
-    __return_value = LibGdk.setting_get(name, value.to_unsafe.as(LibGObject::Value*))
+    __return_value = LibGdk.setting_get(name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
     __return_value
   end
 
@@ -490,17 +490,17 @@ module Gdk
   end
 
   def self.threads_add_idle(priority, function, data, notify)
-    __return_value = LibGdk.threads_add_idle(Int32.new(priority), function, data && data, notify && notify)
+    __return_value = LibGdk.threads_add_idle(Int32.new(priority), function, data ? data : nil, notify ? notify : nil)
     __return_value
   end
 
   def self.threads_add_timeout(priority, interval, function, data, notify)
-    __return_value = LibGdk.threads_add_timeout(Int32.new(priority), UInt32.new(interval), function, data && data, notify && notify)
+    __return_value = LibGdk.threads_add_timeout(Int32.new(priority), UInt32.new(interval), function, data ? data : nil, notify ? notify : nil)
     __return_value
   end
 
   def self.threads_add_timeout_seconds(priority, interval, function, data, notify)
-    __return_value = LibGdk.threads_add_timeout_seconds(Int32.new(priority), UInt32.new(interval), function, data && data, notify && notify)
+    __return_value = LibGdk.threads_add_timeout_seconds(Int32.new(priority), UInt32.new(interval), function, data ? data : nil, notify ? notify : nil)
     __return_value
   end
 
@@ -525,7 +525,7 @@ module Gdk
   end
 
   def self.utf8_to_string_target(str)
-    __return_value = LibGdk.utf8_to_string_target(str)
+    __return_value = LibGdk.utf8_to_string_target(str.to_unsafe)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 end

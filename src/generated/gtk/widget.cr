@@ -80,7 +80,7 @@ module Gtk
     end
 
     def add_accelerator(accel_signal, accel_group, accel_key, accel_mods : Gdk::ModifierType, accel_flags : Gtk::AccelFlags)
-      __return_value = LibGtk.widget_add_accelerator(to_unsafe.as(LibGtk::Widget*), accel_signal, accel_group.to_unsafe.as(LibGtk::AccelGroup*), UInt32.new(accel_key), accel_mods, accel_flags)
+      __return_value = LibGtk.widget_add_accelerator(to_unsafe.as(LibGtk::Widget*), accel_signal.to_unsafe, accel_group.to_unsafe.as(LibGtk::AccelGroup*), UInt32.new(accel_key), accel_mods, accel_flags)
       __return_value
     end
 
@@ -100,7 +100,7 @@ module Gtk
     end
 
     def add_tick_callback(callback, user_data, notify)
-      __return_value = LibGtk.widget_add_tick_callback(to_unsafe.as(LibGtk::Widget*), callback, user_data && user_data, notify)
+      __return_value = LibGtk.widget_add_tick_callback(to_unsafe.as(LibGtk::Widget*), callback, user_data ? user_data : nil, notify)
       __return_value
     end
 
@@ -115,7 +115,7 @@ module Gtk
     end
 
     def child_notify(child_property)
-      __return_value = LibGtk.widget_child_notify(to_unsafe.as(LibGtk::Widget*), child_property)
+      __return_value = LibGtk.widget_child_notify(to_unsafe.as(LibGtk::Widget*), child_property.to_unsafe)
       __return_value
     end
 
@@ -135,7 +135,7 @@ module Gtk
     end
 
     def create_pango_layout(text)
-      __return_value = LibGtk.widget_create_pango_layout(to_unsafe.as(LibGtk::Widget*), text)
+      __return_value = LibGtk.widget_create_pango_layout(to_unsafe.as(LibGtk::Widget*), text ? text.to_unsafe : nil)
       Pango::Layout.new(__return_value)
     end
 
@@ -155,12 +155,12 @@ module Gtk
     end
 
     def drag_begin(targets, actions : Gdk::DragAction, button, event)
-      __return_value = LibGtk.widget_drag_begin(to_unsafe.as(LibGtk::Widget*), targets.to_unsafe.as(LibGtk::TargetList*), actions, Int32.new(button), event && event.to_unsafe.as(LibGdk::Event*))
+      __return_value = LibGtk.widget_drag_begin(to_unsafe.as(LibGtk::Widget*), targets.to_unsafe.as(LibGtk::TargetList*), actions, Int32.new(button), event ? event.to_unsafe.as(LibGdk::Event*) : nil)
       Gdk::DragContext.new(__return_value)
     end
 
     def drag_begin_with_coordinates(targets, actions : Gdk::DragAction, button, event, x, y)
-      __return_value = LibGtk.widget_drag_begin_with_coordinates(to_unsafe.as(LibGtk::Widget*), targets.to_unsafe.as(LibGtk::TargetList*), actions, Int32.new(button), event && event.to_unsafe.as(LibGdk::Event*), Int32.new(x), Int32.new(y))
+      __return_value = LibGtk.widget_drag_begin_with_coordinates(to_unsafe.as(LibGtk::Widget*), targets.to_unsafe.as(LibGtk::TargetList*), actions, Int32.new(button), event ? event.to_unsafe.as(LibGdk::Event*) : nil, Int32.new(x), Int32.new(y))
       Gdk::DragContext.new(__return_value)
     end
 
@@ -185,7 +185,7 @@ module Gtk
     end
 
     def drag_dest_find_target(context, target_list)
-      __return_value = LibGtk.widget_drag_dest_find_target(to_unsafe.as(LibGtk::Widget*), context.to_unsafe.as(LibGdk::DragContext*), target_list && target_list.to_unsafe.as(LibGtk::TargetList*))
+      __return_value = LibGtk.widget_drag_dest_find_target(to_unsafe.as(LibGtk::Widget*), context.to_unsafe.as(LibGdk::DragContext*), target_list ? target_list.to_unsafe.as(LibGtk::TargetList*) : nil)
       Gdk::Atom.new(__return_value)
     end
 
@@ -200,7 +200,7 @@ module Gtk
     end
 
     def drag_dest_set(flags : Gtk::DestDefaults, targets, n_targets, actions : Gdk::DragAction)
-      __return_value = LibGtk.widget_drag_dest_set(to_unsafe.as(LibGtk::Widget*), flags, targets && targets, Int32.new(n_targets), actions)
+      __return_value = LibGtk.widget_drag_dest_set(to_unsafe.as(LibGtk::Widget*), flags, targets ? targets : nil, Int32.new(n_targets), actions)
       __return_value
     end
 
@@ -210,7 +210,7 @@ module Gtk
     end
 
     def drag_dest_set_target_list(target_list)
-      __return_value = LibGtk.widget_drag_dest_set_target_list(to_unsafe.as(LibGtk::Widget*), target_list && target_list.to_unsafe.as(LibGtk::TargetList*))
+      __return_value = LibGtk.widget_drag_dest_set_target_list(to_unsafe.as(LibGtk::Widget*), target_list ? target_list.to_unsafe.as(LibGtk::TargetList*) : nil)
       __return_value
     end
 
@@ -255,7 +255,7 @@ module Gtk
     end
 
     def drag_source_set(start_button_mask : Gdk::ModifierType, targets, n_targets, actions : Gdk::DragAction)
-      __return_value = LibGtk.widget_drag_source_set(to_unsafe.as(LibGtk::Widget*), start_button_mask, targets && targets, Int32.new(n_targets), actions)
+      __return_value = LibGtk.widget_drag_source_set(to_unsafe.as(LibGtk::Widget*), start_button_mask, targets ? targets : nil, Int32.new(n_targets), actions)
       __return_value
     end
 
@@ -265,7 +265,7 @@ module Gtk
     end
 
     def drag_source_set_icon_name(icon_name)
-      __return_value = LibGtk.widget_drag_source_set_icon_name(to_unsafe.as(LibGtk::Widget*), icon_name)
+      __return_value = LibGtk.widget_drag_source_set_icon_name(to_unsafe.as(LibGtk::Widget*), icon_name.to_unsafe)
       __return_value
     end
 
@@ -275,12 +275,12 @@ module Gtk
     end
 
     def drag_source_set_icon_stock(stock_id)
-      __return_value = LibGtk.widget_drag_source_set_icon_stock(to_unsafe.as(LibGtk::Widget*), stock_id)
+      __return_value = LibGtk.widget_drag_source_set_icon_stock(to_unsafe.as(LibGtk::Widget*), stock_id.to_unsafe)
       __return_value
     end
 
     def drag_source_set_target_list(target_list)
-      __return_value = LibGtk.widget_drag_source_set_target_list(to_unsafe.as(LibGtk::Widget*), target_list && target_list.to_unsafe.as(LibGtk::TargetList*))
+      __return_value = LibGtk.widget_drag_source_set_target_list(to_unsafe.as(LibGtk::Widget*), target_list ? target_list.to_unsafe.as(LibGtk::TargetList*) : nil)
       __return_value
     end
 
@@ -325,7 +325,7 @@ module Gtk
     end
 
     def action_group(prefix)
-      __return_value = LibGtk.widget_get_action_group(to_unsafe.as(LibGtk::Widget*), prefix)
+      __return_value = LibGtk.widget_get_action_group(to_unsafe.as(LibGtk::Widget*), prefix.to_unsafe)
       __return_value if __return_value
     end
 
@@ -665,7 +665,7 @@ module Gtk
     end
 
     def template_child(widget_type, name)
-      __return_value = LibGtk.widget_get_template_child(to_unsafe.as(LibGtk::Widget*), UInt64.new(widget_type), name)
+      __return_value = LibGtk.widget_get_template_child(to_unsafe.as(LibGtk::Widget*), UInt64.new(widget_type), name.to_unsafe)
       GObject::Object.new(__return_value)
     end
 
@@ -795,17 +795,17 @@ module Gtk
     end
 
     def input_shape_combine_region(region)
-      __return_value = LibGtk.widget_input_shape_combine_region(to_unsafe.as(LibGtk::Widget*), region && region.to_unsafe.as(LibCairo::Region*))
+      __return_value = LibGtk.widget_input_shape_combine_region(to_unsafe.as(LibGtk::Widget*), region ? region.to_unsafe.as(LibCairo::Region*) : nil)
       __return_value
     end
 
     def insert_action_group(name, group)
-      __return_value = LibGtk.widget_insert_action_group(to_unsafe.as(LibGtk::Widget*), name, group && group.to_unsafe.as(LibGio::ActionGroup*))
+      __return_value = LibGtk.widget_insert_action_group(to_unsafe.as(LibGtk::Widget*), name.to_unsafe, group ? group.to_unsafe.as(LibGio::ActionGroup*) : nil)
       __return_value
     end
 
     def intersect(area, intersection)
-      __return_value = LibGtk.widget_intersect(to_unsafe.as(LibGtk::Widget*), area.to_unsafe.as(LibGdk::Rectangle*), intersection && intersection.to_unsafe.as(LibGdk::Rectangle*))
+      __return_value = LibGtk.widget_intersect(to_unsafe.as(LibGtk::Widget*), area.to_unsafe.as(LibGdk::Rectangle*), intersection ? intersection.to_unsafe.as(LibGdk::Rectangle*) : nil)
       __return_value
     end
 
@@ -875,27 +875,27 @@ module Gtk
     end
 
     def modify_base(state : Gtk::StateType, color)
-      __return_value = LibGtk.widget_modify_base(to_unsafe.as(LibGtk::Widget*), state, color && color.to_unsafe.as(LibGdk::Color*))
+      __return_value = LibGtk.widget_modify_base(to_unsafe.as(LibGtk::Widget*), state, color ? color.to_unsafe.as(LibGdk::Color*) : nil)
       __return_value
     end
 
     def modify_bg(state : Gtk::StateType, color)
-      __return_value = LibGtk.widget_modify_bg(to_unsafe.as(LibGtk::Widget*), state, color && color.to_unsafe.as(LibGdk::Color*))
+      __return_value = LibGtk.widget_modify_bg(to_unsafe.as(LibGtk::Widget*), state, color ? color.to_unsafe.as(LibGdk::Color*) : nil)
       __return_value
     end
 
     def modify_cursor(primary, secondary)
-      __return_value = LibGtk.widget_modify_cursor(to_unsafe.as(LibGtk::Widget*), primary && primary.to_unsafe.as(LibGdk::Color*), secondary && secondary.to_unsafe.as(LibGdk::Color*))
+      __return_value = LibGtk.widget_modify_cursor(to_unsafe.as(LibGtk::Widget*), primary ? primary.to_unsafe.as(LibGdk::Color*) : nil, secondary ? secondary.to_unsafe.as(LibGdk::Color*) : nil)
       __return_value
     end
 
     def modify_fg(state : Gtk::StateType, color)
-      __return_value = LibGtk.widget_modify_fg(to_unsafe.as(LibGtk::Widget*), state, color && color.to_unsafe.as(LibGdk::Color*))
+      __return_value = LibGtk.widget_modify_fg(to_unsafe.as(LibGtk::Widget*), state, color ? color.to_unsafe.as(LibGdk::Color*) : nil)
       __return_value
     end
 
     def modify_font(font_desc)
-      __return_value = LibGtk.widget_modify_font(to_unsafe.as(LibGtk::Widget*), font_desc && font_desc.to_unsafe.as(LibPango::FontDescription*))
+      __return_value = LibGtk.widget_modify_font(to_unsafe.as(LibGtk::Widget*), font_desc ? font_desc.to_unsafe.as(LibPango::FontDescription*) : nil)
       __return_value
     end
 
@@ -905,32 +905,32 @@ module Gtk
     end
 
     def modify_text(state : Gtk::StateType, color)
-      __return_value = LibGtk.widget_modify_text(to_unsafe.as(LibGtk::Widget*), state, color && color.to_unsafe.as(LibGdk::Color*))
+      __return_value = LibGtk.widget_modify_text(to_unsafe.as(LibGtk::Widget*), state, color ? color.to_unsafe.as(LibGdk::Color*) : nil)
       __return_value
     end
 
     def override_background_color(state : Gtk::StateFlags, color)
-      __return_value = LibGtk.widget_override_background_color(to_unsafe.as(LibGtk::Widget*), state, color && color.to_unsafe.as(LibGdk::RGBA*))
+      __return_value = LibGtk.widget_override_background_color(to_unsafe.as(LibGtk::Widget*), state, color ? color.to_unsafe.as(LibGdk::RGBA*) : nil)
       __return_value
     end
 
     def override_color(state : Gtk::StateFlags, color)
-      __return_value = LibGtk.widget_override_color(to_unsafe.as(LibGtk::Widget*), state, color && color.to_unsafe.as(LibGdk::RGBA*))
+      __return_value = LibGtk.widget_override_color(to_unsafe.as(LibGtk::Widget*), state, color ? color.to_unsafe.as(LibGdk::RGBA*) : nil)
       __return_value
     end
 
     def override_cursor(cursor, secondary_cursor)
-      __return_value = LibGtk.widget_override_cursor(to_unsafe.as(LibGtk::Widget*), cursor && cursor.to_unsafe.as(LibGdk::RGBA*), secondary_cursor && secondary_cursor.to_unsafe.as(LibGdk::RGBA*))
+      __return_value = LibGtk.widget_override_cursor(to_unsafe.as(LibGtk::Widget*), cursor ? cursor.to_unsafe.as(LibGdk::RGBA*) : nil, secondary_cursor ? secondary_cursor.to_unsafe.as(LibGdk::RGBA*) : nil)
       __return_value
     end
 
     def override_font(font_desc)
-      __return_value = LibGtk.widget_override_font(to_unsafe.as(LibGtk::Widget*), font_desc && font_desc.to_unsafe.as(LibPango::FontDescription*))
+      __return_value = LibGtk.widget_override_font(to_unsafe.as(LibGtk::Widget*), font_desc ? font_desc.to_unsafe.as(LibPango::FontDescription*) : nil)
       __return_value
     end
 
     def override_symbolic_color(name, color)
-      __return_value = LibGtk.widget_override_symbolic_color(to_unsafe.as(LibGtk::Widget*), name, color && color.to_unsafe.as(LibGdk::RGBA*))
+      __return_value = LibGtk.widget_override_symbolic_color(to_unsafe.as(LibGtk::Widget*), name.to_unsafe, color ? color.to_unsafe.as(LibGdk::RGBA*) : nil)
       __return_value
     end
 
@@ -1005,12 +1005,12 @@ module Gtk
     end
 
     def render_icon(stock_id, size, detail)
-      __return_value = LibGtk.widget_render_icon(to_unsafe.as(LibGtk::Widget*), stock_id, Int32.new(size), detail)
+      __return_value = LibGtk.widget_render_icon(to_unsafe.as(LibGtk::Widget*), stock_id.to_unsafe, Int32.new(size), detail ? detail.to_unsafe : nil)
       GdkPixbuf::Pixbuf.new(__return_value) if __return_value
     end
 
     def render_icon_pixbuf(stock_id, size)
-      __return_value = LibGtk.widget_render_icon_pixbuf(to_unsafe.as(LibGtk::Widget*), stock_id, Int32.new(size))
+      __return_value = LibGtk.widget_render_icon_pixbuf(to_unsafe.as(LibGtk::Widget*), stock_id.to_unsafe, Int32.new(size))
       GdkPixbuf::Pixbuf.new(__return_value) if __return_value
     end
 
@@ -1040,7 +1040,7 @@ module Gtk
     end
 
     def set_accel_path(accel_path, accel_group)
-      __return_value = LibGtk.widget_set_accel_path(to_unsafe.as(LibGtk::Widget*), accel_path, accel_group && accel_group.to_unsafe.as(LibGtk::AccelGroup*))
+      __return_value = LibGtk.widget_set_accel_path(to_unsafe.as(LibGtk::Widget*), accel_path ? accel_path.to_unsafe : nil, accel_group ? accel_group.to_unsafe.as(LibGtk::AccelGroup*) : nil)
       __return_value
     end
 
@@ -1075,7 +1075,7 @@ module Gtk
     end
 
     def composite_name=(name)
-      __return_value = LibGtk.widget_set_composite_name(to_unsafe.as(LibGtk::Widget*), name)
+      __return_value = LibGtk.widget_set_composite_name(to_unsafe.as(LibGtk::Widget*), name.to_unsafe)
       __return_value
     end
 
@@ -1110,12 +1110,12 @@ module Gtk
     end
 
     def font_map=(font_map)
-      __return_value = LibGtk.widget_set_font_map(to_unsafe.as(LibGtk::Widget*), font_map && font_map.to_unsafe.as(LibPango::FontMap*))
+      __return_value = LibGtk.widget_set_font_map(to_unsafe.as(LibGtk::Widget*), font_map ? font_map.to_unsafe.as(LibPango::FontMap*) : nil)
       __return_value
     end
 
     def font_options=(options)
-      __return_value = LibGtk.widget_set_font_options(to_unsafe.as(LibGtk::Widget*), options && options.to_unsafe.as(LibCairo::FontOptions*))
+      __return_value = LibGtk.widget_set_font_options(to_unsafe.as(LibGtk::Widget*), options ? options.to_unsafe.as(LibCairo::FontOptions*) : nil)
       __return_value
     end
 
@@ -1180,7 +1180,7 @@ module Gtk
     end
 
     def name=(name)
-      __return_value = LibGtk.widget_set_name(to_unsafe.as(LibGtk::Widget*), name)
+      __return_value = LibGtk.widget_set_name(to_unsafe.as(LibGtk::Widget*), name.to_unsafe)
       __return_value
     end
 
@@ -1240,7 +1240,7 @@ module Gtk
     end
 
     def style=(style)
-      __return_value = LibGtk.widget_set_style(to_unsafe.as(LibGtk::Widget*), style && style.to_unsafe.as(LibGtk::Style*))
+      __return_value = LibGtk.widget_set_style(to_unsafe.as(LibGtk::Widget*), style ? style.to_unsafe.as(LibGtk::Style*) : nil)
       __return_value
     end
 
@@ -1250,17 +1250,17 @@ module Gtk
     end
 
     def tooltip_markup=(markup)
-      __return_value = LibGtk.widget_set_tooltip_markup(to_unsafe.as(LibGtk::Widget*), markup)
+      __return_value = LibGtk.widget_set_tooltip_markup(to_unsafe.as(LibGtk::Widget*), markup ? markup.to_unsafe : nil)
       __return_value
     end
 
     def tooltip_text=(text)
-      __return_value = LibGtk.widget_set_tooltip_text(to_unsafe.as(LibGtk::Widget*), text)
+      __return_value = LibGtk.widget_set_tooltip_text(to_unsafe.as(LibGtk::Widget*), text ? text.to_unsafe : nil)
       __return_value
     end
 
     def tooltip_window=(custom_window)
-      __return_value = LibGtk.widget_set_tooltip_window(to_unsafe.as(LibGtk::Widget*), custom_window && custom_window.to_unsafe.as(LibGtk::Window*))
+      __return_value = LibGtk.widget_set_tooltip_window(to_unsafe.as(LibGtk::Widget*), custom_window ? custom_window.to_unsafe.as(LibGtk::Window*) : nil)
       __return_value
     end
 
@@ -1285,7 +1285,7 @@ module Gtk
     end
 
     def visual=(visual)
-      __return_value = LibGtk.widget_set_visual(to_unsafe.as(LibGtk::Widget*), visual && visual.to_unsafe.as(LibGdk::Visual*))
+      __return_value = LibGtk.widget_set_visual(to_unsafe.as(LibGtk::Widget*), visual ? visual.to_unsafe.as(LibGdk::Visual*) : nil)
       __return_value
     end
 
@@ -1295,7 +1295,7 @@ module Gtk
     end
 
     def shape_combine_region(region)
-      __return_value = LibGtk.widget_shape_combine_region(to_unsafe.as(LibGtk::Widget*), region && region.to_unsafe.as(LibCairo::Region*))
+      __return_value = LibGtk.widget_shape_combine_region(to_unsafe.as(LibGtk::Widget*), region ? region.to_unsafe.as(LibCairo::Region*) : nil)
       __return_value
     end
 
@@ -1335,7 +1335,7 @@ module Gtk
     end
 
     def style_get_property(property_name, value)
-      __return_value = LibGtk.widget_style_get_property(to_unsafe.as(LibGtk::Widget*), property_name, value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGtk.widget_style_get_property(to_unsafe.as(LibGtk::Widget*), property_name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 

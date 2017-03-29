@@ -11,7 +11,7 @@ module GLib
     end
 
     def new(inbuf, inbytes_left, outbuf, outbytes_left)
-      __return_value = LibGLib.i_conv_new(to_unsafe.as(LibGLib::IConv*), inbuf, inbytes_left, outbuf, outbytes_left)
+      __return_value = LibGLib.i_conv_new(to_unsafe.as(LibGLib::IConv*), inbuf.to_unsafe, inbytes_left, outbuf.to_unsafe, outbytes_left)
       __return_value
     end
 

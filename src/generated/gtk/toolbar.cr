@@ -69,7 +69,7 @@ module Gtk
     end
 
     def set_drop_highlight_item(tool_item, index)
-      __return_value = LibGtk.toolbar_set_drop_highlight_item(to_unsafe.as(LibGtk::Toolbar*), tool_item && tool_item.to_unsafe.as(LibGtk::ToolItem*), Int32.new(index))
+      __return_value = LibGtk.toolbar_set_drop_highlight_item(to_unsafe.as(LibGtk::Toolbar*), tool_item ? tool_item.to_unsafe.as(LibGtk::ToolItem*) : nil, Int32.new(index))
       __return_value
     end
 

@@ -26,7 +26,7 @@ module Pango
     end
 
     def matches(range_list)
-      __return_value = LibPango.language_matches(to_unsafe.as(LibPango::Language*), range_list)
+      __return_value = LibPango.language_matches(to_unsafe.as(LibPango::Language*), range_list.to_unsafe)
       __return_value
     end
 
@@ -36,7 +36,7 @@ module Pango
     end
 
     def self.from_string(language)
-      __return_value = LibPango.language_from_string(language)
+      __return_value = LibPango.language_from_string(language ? language.to_unsafe : nil)
       Pango::Language.new(__return_value) if __return_value
     end
 

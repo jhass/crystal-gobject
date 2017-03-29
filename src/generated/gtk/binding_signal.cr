@@ -33,7 +33,7 @@ module Gtk
     end
 
     def signal_name=(value : String)
-      to_unsafe.as(LibGtk::BindingSignal*).value.signal_name = value
+      to_unsafe.as(LibGtk::BindingSignal*).value.signal_name = value.to_unsafe
     end
 
     def n_args

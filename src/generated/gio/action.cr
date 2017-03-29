@@ -1,24 +1,24 @@
 module Gio
   module Action
     def self.name_is_valid(action_name)
-      __return_value = LibGio.action_name_is_valid(action_name)
+      __return_value = LibGio.action_name_is_valid(action_name.to_unsafe)
       __return_value
     end
 
     def self.parse_detailed_name(detailed_name, action_name, target_value)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.action_parse_detailed_name(detailed_name, action_name, target_value, pointerof(__error))
+      __return_value = LibGio.action_parse_detailed_name(detailed_name.to_unsafe, action_name, target_value, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def self.print_detailed_name(action_name, target_value)
-      __return_value = LibGio.action_print_detailed_name(action_name, target_value && target_value.to_unsafe.as(LibGLib::Variant*))
+      __return_value = LibGio.action_print_detailed_name(action_name.to_unsafe, target_value ? target_value.to_unsafe.as(LibGLib::Variant*) : nil)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def activate(parameter)
-      __return_value = LibGio.action_activate(to_unsafe.as(LibGio::Action*), parameter && parameter.to_unsafe.as(LibGLib::Variant*))
+      __return_value = LibGio.action_activate(to_unsafe.as(LibGio::Action*), parameter ? parameter.to_unsafe.as(LibGLib::Variant*) : nil)
       __return_value
     end
 

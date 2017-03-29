@@ -66,12 +66,12 @@ module Gtk
     end
 
     def custom_title=(title_widget)
-      __return_value = LibGtk.header_bar_set_custom_title(to_unsafe.as(LibGtk::HeaderBar*), title_widget && title_widget.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.header_bar_set_custom_title(to_unsafe.as(LibGtk::HeaderBar*), title_widget ? title_widget.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 
     def decoration_layout=(layout)
-      __return_value = LibGtk.header_bar_set_decoration_layout(to_unsafe.as(LibGtk::HeaderBar*), layout)
+      __return_value = LibGtk.header_bar_set_decoration_layout(to_unsafe.as(LibGtk::HeaderBar*), layout ? layout.to_unsafe : nil)
       __return_value
     end
 
@@ -86,12 +86,12 @@ module Gtk
     end
 
     def subtitle=(subtitle)
-      __return_value = LibGtk.header_bar_set_subtitle(to_unsafe.as(LibGtk::HeaderBar*), subtitle)
+      __return_value = LibGtk.header_bar_set_subtitle(to_unsafe.as(LibGtk::HeaderBar*), subtitle ? subtitle.to_unsafe : nil)
       __return_value
     end
 
     def title=(title)
-      __return_value = LibGtk.header_bar_set_title(to_unsafe.as(LibGtk::HeaderBar*), title)
+      __return_value = LibGtk.header_bar_set_title(to_unsafe.as(LibGtk::HeaderBar*), title ? title.to_unsafe : nil)
       __return_value
     end
 

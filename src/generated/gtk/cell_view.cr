@@ -34,7 +34,7 @@ module Gtk
     end
 
     def self.new_with_markup(markup) : self
-      __return_value = LibGtk.cell_view_new_with_markup(markup)
+      __return_value = LibGtk.cell_view_new_with_markup(markup.to_unsafe)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -44,7 +44,7 @@ module Gtk
     end
 
     def self.new_with_text(text) : self
-      __return_value = LibGtk.cell_view_new_with_text(text)
+      __return_value = LibGtk.cell_view_new_with_text(text.to_unsafe)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -84,7 +84,7 @@ module Gtk
     end
 
     def displayed_row=(path)
-      __return_value = LibGtk.cell_view_set_displayed_row(to_unsafe.as(LibGtk::CellView*), path && path.to_unsafe.as(LibGtk::TreePath*))
+      __return_value = LibGtk.cell_view_set_displayed_row(to_unsafe.as(LibGtk::CellView*), path ? path.to_unsafe.as(LibGtk::TreePath*) : nil)
       __return_value
     end
 
@@ -99,7 +99,7 @@ module Gtk
     end
 
     def model=(model)
-      __return_value = LibGtk.cell_view_set_model(to_unsafe.as(LibGtk::CellView*), model && model.to_unsafe.as(LibGtk::TreeModel*))
+      __return_value = LibGtk.cell_view_set_model(to_unsafe.as(LibGtk::CellView*), model ? model.to_unsafe.as(LibGtk::TreeModel*) : nil)
       __return_value
     end
 

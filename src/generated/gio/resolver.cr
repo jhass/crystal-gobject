@@ -15,13 +15,13 @@ module Gio
 
     def lookup_by_address(address, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.resolver_lookup_by_address(to_unsafe.as(LibGio::Resolver*), address.to_unsafe.as(LibGio::InetAddress*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.resolver_lookup_by_address(to_unsafe.as(LibGio::Resolver*), address.to_unsafe.as(LibGio::InetAddress*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def lookup_by_address_async(address, cancellable, callback, user_data)
-      __return_value = LibGio.resolver_lookup_by_address_async(to_unsafe.as(LibGio::Resolver*), address.to_unsafe.as(LibGio::InetAddress*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
+      __return_value = LibGio.resolver_lookup_by_address_async(to_unsafe.as(LibGio::Resolver*), address.to_unsafe.as(LibGio::InetAddress*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       __return_value
     end
 
@@ -34,13 +34,13 @@ module Gio
 
     def lookup_by_name(hostname, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.resolver_lookup_by_name(to_unsafe.as(LibGio::Resolver*), hostname, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.resolver_lookup_by_name(to_unsafe.as(LibGio::Resolver*), hostname.to_unsafe, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       GLib::ListIterator(Gio::InetAddress, LibGio::InetAddress*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def lookup_by_name_async(hostname, cancellable, callback, user_data)
-      __return_value = LibGio.resolver_lookup_by_name_async(to_unsafe.as(LibGio::Resolver*), hostname, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
+      __return_value = LibGio.resolver_lookup_by_name_async(to_unsafe.as(LibGio::Resolver*), hostname.to_unsafe, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       __return_value
     end
 
@@ -53,13 +53,13 @@ module Gio
 
     def lookup_records(rrname, record_type : Gio::ResolverRecordType, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.resolver_lookup_records(to_unsafe.as(LibGio::Resolver*), rrname, record_type, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.resolver_lookup_records(to_unsafe.as(LibGio::Resolver*), rrname.to_unsafe, record_type, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       GLib::ListIterator(GLib::Variant, LibGLib::Variant*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def lookup_records_async(rrname, record_type : Gio::ResolverRecordType, cancellable, callback, user_data)
-      __return_value = LibGio.resolver_lookup_records_async(to_unsafe.as(LibGio::Resolver*), rrname, record_type, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
+      __return_value = LibGio.resolver_lookup_records_async(to_unsafe.as(LibGio::Resolver*), rrname.to_unsafe, record_type, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       __return_value
     end
 
@@ -72,13 +72,13 @@ module Gio
 
     def lookup_service(service, protocol, domain, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.resolver_lookup_service(to_unsafe.as(LibGio::Resolver*), service, protocol, domain, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.resolver_lookup_service(to_unsafe.as(LibGio::Resolver*), service.to_unsafe, protocol.to_unsafe, domain.to_unsafe, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       GLib::ListIterator(Gio::SrvTarget, LibGio::SrvTarget*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def lookup_service_async(service, protocol, domain, cancellable, callback, user_data)
-      __return_value = LibGio.resolver_lookup_service_async(to_unsafe.as(LibGio::Resolver*), service, protocol, domain, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
+      __return_value = LibGio.resolver_lookup_service_async(to_unsafe.as(LibGio::Resolver*), service.to_unsafe, protocol.to_unsafe, domain.to_unsafe, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       __return_value
     end
 

@@ -35,7 +35,7 @@ module Gtk
     end
 
     def compute_prefix(key)
-      __return_value = LibGtk.entry_completion_compute_prefix(to_unsafe.as(LibGtk::EntryCompletion*), key)
+      __return_value = LibGtk.entry_completion_compute_prefix(to_unsafe.as(LibGtk::EntryCompletion*), key.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
@@ -95,12 +95,12 @@ module Gtk
     end
 
     def insert_action_markup(index, markup)
-      __return_value = LibGtk.entry_completion_insert_action_markup(to_unsafe.as(LibGtk::EntryCompletion*), Int32.new(index), markup)
+      __return_value = LibGtk.entry_completion_insert_action_markup(to_unsafe.as(LibGtk::EntryCompletion*), Int32.new(index), markup.to_unsafe)
       __return_value
     end
 
     def insert_action_text(index, text)
-      __return_value = LibGtk.entry_completion_insert_action_text(to_unsafe.as(LibGtk::EntryCompletion*), Int32.new(index), text)
+      __return_value = LibGtk.entry_completion_insert_action_text(to_unsafe.as(LibGtk::EntryCompletion*), Int32.new(index), text.to_unsafe)
       __return_value
     end
 
@@ -120,7 +120,7 @@ module Gtk
     end
 
     def set_match_func(func, func_data, func_notify)
-      __return_value = LibGtk.entry_completion_set_match_func(to_unsafe.as(LibGtk::EntryCompletion*), func, func_data && func_data, func_notify)
+      __return_value = LibGtk.entry_completion_set_match_func(to_unsafe.as(LibGtk::EntryCompletion*), func, func_data ? func_data : nil, func_notify)
       __return_value
     end
 
@@ -130,7 +130,7 @@ module Gtk
     end
 
     def model=(model)
-      __return_value = LibGtk.entry_completion_set_model(to_unsafe.as(LibGtk::EntryCompletion*), model && model.to_unsafe.as(LibGtk::TreeModel*))
+      __return_value = LibGtk.entry_completion_set_model(to_unsafe.as(LibGtk::EntryCompletion*), model ? model.to_unsafe.as(LibGtk::TreeModel*) : nil)
       __return_value
     end
 

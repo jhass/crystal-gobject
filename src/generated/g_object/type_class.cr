@@ -36,7 +36,7 @@ module GObject
     end
 
     def self.adjust_private_offset(g_class, private_size_or_offset)
-      __return_value = LibGObject.type_class_adjust_private_offset(g_class && g_class, private_size_or_offset)
+      __return_value = LibGObject.type_class_adjust_private_offset(g_class ? g_class : nil, private_size_or_offset)
       __return_value
     end
 

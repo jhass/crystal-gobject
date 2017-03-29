@@ -44,7 +44,7 @@ module Gio
     end
 
     def name=(value : String)
-      to_unsafe.as(LibGio::DBusMethodInfo*).value.name = value
+      to_unsafe.as(LibGio::DBusMethodInfo*).value.name = value.to_unsafe
     end
 
     def in_args

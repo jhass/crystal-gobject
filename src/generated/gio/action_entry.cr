@@ -24,7 +24,7 @@ module Gio
     end
 
     def name=(value : String)
-      to_unsafe.as(LibGio::ActionEntry*).value.name = value
+      to_unsafe.as(LibGio::ActionEntry*).value.name = value.to_unsafe
     end
 
     def activate
@@ -36,7 +36,7 @@ module Gio
     end
 
     def parameter_type=(value : String)
-      to_unsafe.as(LibGio::ActionEntry*).value.parameter_type = value
+      to_unsafe.as(LibGio::ActionEntry*).value.parameter_type = value.to_unsafe
     end
 
     def state
@@ -44,7 +44,7 @@ module Gio
     end
 
     def state=(value : String)
-      to_unsafe.as(LibGio::ActionEntry*).value.state = value
+      to_unsafe.as(LibGio::ActionEntry*).value.state = value.to_unsafe
     end
 
     def change_state

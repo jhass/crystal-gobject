@@ -51,7 +51,7 @@ module GdkPixbuf
     end
 
     def save_option_supported?(option_key)
-      __return_value = LibGdkPixbuf.pixbuf_format_is_save_option_supported(to_unsafe.as(LibGdkPixbuf::PixbufFormat*), option_key)
+      __return_value = LibGdkPixbuf.pixbuf_format_is_save_option_supported(to_unsafe.as(LibGdkPixbuf::PixbufFormat*), option_key.to_unsafe)
       __return_value
     end
 

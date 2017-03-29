@@ -11,7 +11,7 @@ module Gio
     end
 
     def eject(flags : Gio::MountUnmountFlags, cancellable, callback, user_data)
-      __return_value = LibGio.volume_eject(to_unsafe.as(LibGio::Volume*), flags, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
+      __return_value = LibGio.volume_eject(to_unsafe.as(LibGio::Volume*), flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       __return_value
     end
 
@@ -23,7 +23,7 @@ module Gio
     end
 
     def eject_with_operation(flags : Gio::MountUnmountFlags, mount_operation, cancellable, callback, user_data)
-      __return_value = LibGio.volume_eject_with_operation(to_unsafe.as(LibGio::Volume*), flags, mount_operation && mount_operation.to_unsafe.as(LibGio::MountOperation*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
+      __return_value = LibGio.volume_eject_with_operation(to_unsafe.as(LibGio::Volume*), flags, mount_operation ? mount_operation.to_unsafe.as(LibGio::MountOperation*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       __return_value
     end
 
@@ -55,7 +55,7 @@ module Gio
     end
 
     def identifier(kind)
-      __return_value = LibGio.volume_get_identifier(to_unsafe.as(LibGio::Volume*), kind)
+      __return_value = LibGio.volume_get_identifier(to_unsafe.as(LibGio::Volume*), kind.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
@@ -85,7 +85,7 @@ module Gio
     end
 
     def mount(flags : Gio::MountMountFlags, mount_operation, cancellable, callback, user_data)
-      __return_value = LibGio.volume_mount(to_unsafe.as(LibGio::Volume*), flags, mount_operation && mount_operation.to_unsafe.as(LibGio::MountOperation*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
+      __return_value = LibGio.volume_mount(to_unsafe.as(LibGio::Volume*), flags, mount_operation ? mount_operation.to_unsafe.as(LibGio::MountOperation*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       __return_value
     end
 

@@ -73,7 +73,7 @@ module Gtk
     end
 
     def set_detail_func(func, data, destroy)
-      __return_value = LibGtk.calendar_set_detail_func(to_unsafe.as(LibGtk::Calendar*), func, data && data, destroy)
+      __return_value = LibGtk.calendar_set_detail_func(to_unsafe.as(LibGtk::Calendar*), func, data ? data : nil, destroy)
       __return_value
     end
 

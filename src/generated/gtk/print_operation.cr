@@ -96,7 +96,7 @@ module Gtk
 
     def run(action : Gtk::PrintOperationAction, parent)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.print_operation_run(to_unsafe.as(LibGtk::PrintOperation*), action, parent && parent.to_unsafe.as(LibGtk::Window*), pointerof(__error))
+      __return_value = LibGtk.print_operation_run(to_unsafe.as(LibGtk::PrintOperation*), action, parent ? parent.to_unsafe.as(LibGtk::Window*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -112,12 +112,12 @@ module Gtk
     end
 
     def custom_tab_label=(label)
-      __return_value = LibGtk.print_operation_set_custom_tab_label(to_unsafe.as(LibGtk::PrintOperation*), label)
+      __return_value = LibGtk.print_operation_set_custom_tab_label(to_unsafe.as(LibGtk::PrintOperation*), label ? label.to_unsafe : nil)
       __return_value
     end
 
     def default_page_setup=(default_page_setup)
-      __return_value = LibGtk.print_operation_set_default_page_setup(to_unsafe.as(LibGtk::PrintOperation*), default_page_setup && default_page_setup.to_unsafe.as(LibGtk::PageSetup*))
+      __return_value = LibGtk.print_operation_set_default_page_setup(to_unsafe.as(LibGtk::PrintOperation*), default_page_setup ? default_page_setup.to_unsafe.as(LibGtk::PageSetup*) : nil)
       __return_value
     end
 
@@ -132,7 +132,7 @@ module Gtk
     end
 
     def export_filename=(filename)
-      __return_value = LibGtk.print_operation_set_export_filename(to_unsafe.as(LibGtk::PrintOperation*), filename)
+      __return_value = LibGtk.print_operation_set_export_filename(to_unsafe.as(LibGtk::PrintOperation*), filename.to_unsafe)
       __return_value
     end
 
@@ -142,7 +142,7 @@ module Gtk
     end
 
     def job_name=(job_name)
-      __return_value = LibGtk.print_operation_set_job_name(to_unsafe.as(LibGtk::PrintOperation*), job_name)
+      __return_value = LibGtk.print_operation_set_job_name(to_unsafe.as(LibGtk::PrintOperation*), job_name.to_unsafe)
       __return_value
     end
 
@@ -152,7 +152,7 @@ module Gtk
     end
 
     def print_settings=(print_settings)
-      __return_value = LibGtk.print_operation_set_print_settings(to_unsafe.as(LibGtk::PrintOperation*), print_settings && print_settings.to_unsafe.as(LibGtk::PrintSettings*))
+      __return_value = LibGtk.print_operation_set_print_settings(to_unsafe.as(LibGtk::PrintOperation*), print_settings ? print_settings.to_unsafe.as(LibGtk::PrintSettings*) : nil)
       __return_value
     end
 

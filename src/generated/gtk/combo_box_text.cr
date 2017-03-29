@@ -25,12 +25,12 @@ module Gtk
     end
 
     def append(id, text)
-      __return_value = LibGtk.combo_box_text_append(to_unsafe.as(LibGtk::ComboBoxText*), id, text)
+      __return_value = LibGtk.combo_box_text_append(to_unsafe.as(LibGtk::ComboBoxText*), id ? id.to_unsafe : nil, text.to_unsafe)
       __return_value
     end
 
     def append_text(text)
-      __return_value = LibGtk.combo_box_text_append_text(to_unsafe.as(LibGtk::ComboBoxText*), text)
+      __return_value = LibGtk.combo_box_text_append_text(to_unsafe.as(LibGtk::ComboBoxText*), text.to_unsafe)
       __return_value
     end
 
@@ -40,22 +40,22 @@ module Gtk
     end
 
     def insert(position, id, text)
-      __return_value = LibGtk.combo_box_text_insert(to_unsafe.as(LibGtk::ComboBoxText*), Int32.new(position), id, text)
+      __return_value = LibGtk.combo_box_text_insert(to_unsafe.as(LibGtk::ComboBoxText*), Int32.new(position), id ? id.to_unsafe : nil, text.to_unsafe)
       __return_value
     end
 
     def insert_text(position, text)
-      __return_value = LibGtk.combo_box_text_insert_text(to_unsafe.as(LibGtk::ComboBoxText*), Int32.new(position), text)
+      __return_value = LibGtk.combo_box_text_insert_text(to_unsafe.as(LibGtk::ComboBoxText*), Int32.new(position), text.to_unsafe)
       __return_value
     end
 
     def prepend(id, text)
-      __return_value = LibGtk.combo_box_text_prepend(to_unsafe.as(LibGtk::ComboBoxText*), id, text)
+      __return_value = LibGtk.combo_box_text_prepend(to_unsafe.as(LibGtk::ComboBoxText*), id ? id.to_unsafe : nil, text.to_unsafe)
       __return_value
     end
 
     def prepend_text(text)
-      __return_value = LibGtk.combo_box_text_prepend_text(to_unsafe.as(LibGtk::ComboBoxText*), text)
+      __return_value = LibGtk.combo_box_text_prepend_text(to_unsafe.as(LibGtk::ComboBoxText*), text.to_unsafe)
       __return_value
     end
 

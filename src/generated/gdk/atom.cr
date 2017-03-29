@@ -16,12 +16,12 @@ module Gdk
     end
 
     def self.intern(atom_name, only_if_exists)
-      __return_value = LibGdk.atom_intern(atom_name, only_if_exists)
+      __return_value = LibGdk.atom_intern(atom_name.to_unsafe, only_if_exists)
       Gdk::Atom.new(__return_value)
     end
 
     def self.intern_static_string(atom_name)
-      __return_value = LibGdk.atom_intern_static_string(atom_name)
+      __return_value = LibGdk.atom_intern_static_string(atom_name.to_unsafe)
       Gdk::Atom.new(__return_value)
     end
 

@@ -67,7 +67,7 @@ module Gtk
     end
 
     def title=(title)
-      __return_value = LibGtk.color_button_set_title(to_unsafe.as(LibGtk::ColorButton*), title)
+      __return_value = LibGtk.color_button_set_title(to_unsafe.as(LibGtk::ColorButton*), title.to_unsafe)
       __return_value
     end
 

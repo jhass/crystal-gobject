@@ -11,13 +11,13 @@ module Gio
 
     def close(cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.file_enumerator_close(to_unsafe.as(LibGio::FileEnumerator*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.file_enumerator_close(to_unsafe.as(LibGio::FileEnumerator*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def close_async(io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.file_enumerator_close_async(to_unsafe.as(LibGio::FileEnumerator*), Int32.new(io_priority), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
+      __return_value = LibGio.file_enumerator_close_async(to_unsafe.as(LibGio::FileEnumerator*), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       __return_value
     end
 
@@ -50,20 +50,20 @@ module Gio
 
     def iterate(out_info, out_child, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.file_enumerator_iterate(to_unsafe.as(LibGio::FileEnumerator*), out_info, out_child, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.file_enumerator_iterate(to_unsafe.as(LibGio::FileEnumerator*), out_info, out_child, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def next_file(cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.file_enumerator_next_file(to_unsafe.as(LibGio::FileEnumerator*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.file_enumerator_next_file(to_unsafe.as(LibGio::FileEnumerator*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       Gio::FileInfo.new(__return_value) if __return_value
     end
 
     def next_files_async(num_files, io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.file_enumerator_next_files_async(to_unsafe.as(LibGio::FileEnumerator*), Int32.new(num_files), Int32.new(io_priority), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
+      __return_value = LibGio.file_enumerator_next_files_async(to_unsafe.as(LibGio::FileEnumerator*), Int32.new(num_files), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       __return_value
     end
 

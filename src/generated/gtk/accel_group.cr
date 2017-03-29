@@ -31,12 +31,12 @@ module Gtk
     end
 
     def connect_by_path(accel_path, closure)
-      __return_value = LibGtk.accel_group_connect_by_path(to_unsafe.as(LibGtk::AccelGroup*), accel_path, closure.to_unsafe.as(LibGObject::Closure*))
+      __return_value = LibGtk.accel_group_connect_by_path(to_unsafe.as(LibGtk::AccelGroup*), accel_path.to_unsafe, closure.to_unsafe.as(LibGObject::Closure*))
       __return_value
     end
 
     def disconnect(closure)
-      __return_value = LibGtk.accel_group_disconnect(to_unsafe.as(LibGtk::AccelGroup*), closure && closure.to_unsafe.as(LibGObject::Closure*))
+      __return_value = LibGtk.accel_group_disconnect(to_unsafe.as(LibGtk::AccelGroup*), closure ? closure.to_unsafe.as(LibGObject::Closure*) : nil)
       __return_value
     end
 
@@ -46,7 +46,7 @@ module Gtk
     end
 
     def find(find_func, data)
-      __return_value = LibGtk.accel_group_find(to_unsafe.as(LibGtk::AccelGroup*), find_func, data && data)
+      __return_value = LibGtk.accel_group_find(to_unsafe.as(LibGtk::AccelGroup*), find_func, data ? data : nil)
       Gtk::AccelKey.new(__return_value)
     end
 

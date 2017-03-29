@@ -28,7 +28,7 @@ module Gtk
 
 
     def self.new(hadjustment, vadjustment) : self
-      __return_value = LibGtk.scrolled_window_new(hadjustment && hadjustment.to_unsafe.as(LibGtk::Adjustment*), vadjustment && vadjustment.to_unsafe.as(LibGtk::Adjustment*))
+      __return_value = LibGtk.scrolled_window_new(hadjustment ? hadjustment.to_unsafe.as(LibGtk::Adjustment*) : nil, vadjustment ? vadjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
       cast Gtk::Widget.new(__return_value)
     end
 

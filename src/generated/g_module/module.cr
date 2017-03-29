@@ -26,12 +26,12 @@ module GModule
     end
 
     def symbol(symbol_name, symbol)
-      __return_value = LibGModule.module_symbol(to_unsafe.as(LibGModule::Module*), symbol_name, symbol)
+      __return_value = LibGModule.module_symbol(to_unsafe.as(LibGModule::Module*), symbol_name.to_unsafe, symbol)
       __return_value
     end
 
     def self.build_path(directory, module_name)
-      __return_value = LibGModule.module_build_path(directory, module_name)
+      __return_value = LibGModule.module_build_path(directory ? directory.to_unsafe : nil, module_name.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

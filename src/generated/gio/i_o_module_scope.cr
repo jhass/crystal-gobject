@@ -11,7 +11,7 @@ module Gio
     end
 
     def block(basename)
-      __return_value = LibGio.i_o_module_scope_block(to_unsafe.as(LibGio::IOModuleScope*), basename)
+      __return_value = LibGio.i_o_module_scope_block(to_unsafe.as(LibGio::IOModuleScope*), basename.to_unsafe)
       __return_value
     end
 

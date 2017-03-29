@@ -11,7 +11,7 @@ module Gio
     end
 
     def extension_by_name(name)
-      __return_value = LibGio.i_o_extension_point_get_extension_by_name(to_unsafe.as(LibGio::IOExtensionPoint*), name)
+      __return_value = LibGio.i_o_extension_point_get_extension_by_name(to_unsafe.as(LibGio::IOExtensionPoint*), name.to_unsafe)
       Gio::IOExtension.new(__return_value)
     end
 
@@ -31,17 +31,17 @@ module Gio
     end
 
     def self.implement(extension_point_name, type, extension_name, priority)
-      __return_value = LibGio.i_o_extension_point_implement(extension_point_name, UInt64.new(type), extension_name, Int32.new(priority))
+      __return_value = LibGio.i_o_extension_point_implement(extension_point_name.to_unsafe, UInt64.new(type), extension_name.to_unsafe, Int32.new(priority))
       Gio::IOExtension.new(__return_value)
     end
 
     def self.lookup(name)
-      __return_value = LibGio.i_o_extension_point_lookup(name)
+      __return_value = LibGio.i_o_extension_point_lookup(name.to_unsafe)
       Gio::IOExtensionPoint.new(__return_value)
     end
 
     def self.register(name)
-      __return_value = LibGio.i_o_extension_point_register(name)
+      __return_value = LibGio.i_o_extension_point_register(name.to_unsafe)
       Gio::IOExtensionPoint.new(__return_value)
     end
 

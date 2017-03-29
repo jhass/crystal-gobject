@@ -46,7 +46,7 @@ module GObject
     end
 
     def set_qdata(quark, data)
-      __return_value = LibGObject.param_spec_set_qdata(to_unsafe.as(LibGObject::ParamSpec*), UInt32.new(quark), data && data)
+      __return_value = LibGObject.param_spec_set_qdata(to_unsafe.as(LibGObject::ParamSpec*), UInt32.new(quark), data ? data : nil)
       __return_value
     end
 

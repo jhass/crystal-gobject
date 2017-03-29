@@ -15,7 +15,7 @@ module Gtk
 
 
     def self.new(table) : self
-      __return_value = LibGtk.text_buffer_new(table && table.to_unsafe.as(LibGtk::TextTagTable*))
+      __return_value = LibGtk.text_buffer_new(table ? table.to_unsafe.as(LibGtk::TextTagTable*) : nil)
       cast Gtk::TextBuffer.new(__return_value)
     end
 
@@ -35,7 +35,7 @@ module Gtk
     end
 
     def apply_tag_by_name(name, start, end)
-      __return_value = LibGtk.text_buffer_apply_tag_by_name(to_unsafe.as(LibGtk::TextBuffer*), name, start.to_unsafe.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*))
+      __return_value = LibGtk.text_buffer_apply_tag_by_name(to_unsafe.as(LibGtk::TextBuffer*), name.to_unsafe, start.to_unsafe.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*))
       __return_value
     end
 
@@ -60,7 +60,7 @@ module Gtk
     end
 
     def create_mark(mark_name, where, left_gravity)
-      __return_value = LibGtk.text_buffer_create_mark(to_unsafe.as(LibGtk::TextBuffer*), mark_name, where.to_unsafe.as(LibGtk::TextIter*), left_gravity)
+      __return_value = LibGtk.text_buffer_create_mark(to_unsafe.as(LibGtk::TextBuffer*), mark_name ? mark_name.to_unsafe : nil, where.to_unsafe.as(LibGtk::TextIter*), left_gravity)
       Gtk::TextMark.new(__return_value)
     end
 
@@ -85,7 +85,7 @@ module Gtk
     end
 
     def delete_mark_by_name(name)
-      __return_value = LibGtk.text_buffer_delete_mark_by_name(to_unsafe.as(LibGtk::TextBuffer*), name)
+      __return_value = LibGtk.text_buffer_delete_mark_by_name(to_unsafe.as(LibGtk::TextBuffer*), name.to_unsafe)
       __return_value
     end
 
@@ -187,7 +187,7 @@ module Gtk
     end
 
     def mark(name)
-      __return_value = LibGtk.text_buffer_get_mark(to_unsafe.as(LibGtk::TextBuffer*), name)
+      __return_value = LibGtk.text_buffer_get_mark(to_unsafe.as(LibGtk::TextBuffer*), name.to_unsafe)
       Gtk::TextMark.new(__return_value) if __return_value
     end
 
@@ -237,12 +237,12 @@ module Gtk
     end
 
     def insert(iter, text, len)
-      __return_value = LibGtk.text_buffer_insert(to_unsafe.as(LibGtk::TextBuffer*), iter.to_unsafe.as(LibGtk::TextIter*), text, Int32.new(len))
+      __return_value = LibGtk.text_buffer_insert(to_unsafe.as(LibGtk::TextBuffer*), iter.to_unsafe.as(LibGtk::TextIter*), text.to_unsafe, Int32.new(len))
       __return_value
     end
 
     def insert_at_cursor(text, len)
-      __return_value = LibGtk.text_buffer_insert_at_cursor(to_unsafe.as(LibGtk::TextBuffer*), text, Int32.new(len))
+      __return_value = LibGtk.text_buffer_insert_at_cursor(to_unsafe.as(LibGtk::TextBuffer*), text.to_unsafe, Int32.new(len))
       __return_value
     end
 
@@ -252,17 +252,17 @@ module Gtk
     end
 
     def insert_interactive(iter, text, len, default_editable)
-      __return_value = LibGtk.text_buffer_insert_interactive(to_unsafe.as(LibGtk::TextBuffer*), iter.to_unsafe.as(LibGtk::TextIter*), text, Int32.new(len), default_editable)
+      __return_value = LibGtk.text_buffer_insert_interactive(to_unsafe.as(LibGtk::TextBuffer*), iter.to_unsafe.as(LibGtk::TextIter*), text.to_unsafe, Int32.new(len), default_editable)
       __return_value
     end
 
     def insert_interactive_at_cursor(text, len, default_editable)
-      __return_value = LibGtk.text_buffer_insert_interactive_at_cursor(to_unsafe.as(LibGtk::TextBuffer*), text, Int32.new(len), default_editable)
+      __return_value = LibGtk.text_buffer_insert_interactive_at_cursor(to_unsafe.as(LibGtk::TextBuffer*), text.to_unsafe, Int32.new(len), default_editable)
       __return_value
     end
 
     def insert_markup(iter, markup, len)
-      __return_value = LibGtk.text_buffer_insert_markup(to_unsafe.as(LibGtk::TextBuffer*), iter.to_unsafe.as(LibGtk::TextIter*), markup, Int32.new(len))
+      __return_value = LibGtk.text_buffer_insert_markup(to_unsafe.as(LibGtk::TextBuffer*), iter.to_unsafe.as(LibGtk::TextIter*), markup.to_unsafe, Int32.new(len))
       __return_value
     end
 
@@ -287,12 +287,12 @@ module Gtk
     end
 
     def move_mark_by_name(name, where)
-      __return_value = LibGtk.text_buffer_move_mark_by_name(to_unsafe.as(LibGtk::TextBuffer*), name, where.to_unsafe.as(LibGtk::TextIter*))
+      __return_value = LibGtk.text_buffer_move_mark_by_name(to_unsafe.as(LibGtk::TextBuffer*), name.to_unsafe, where.to_unsafe.as(LibGtk::TextIter*))
       __return_value
     end
 
     def paste_clipboard(clipboard, override_location, default_editable)
-      __return_value = LibGtk.text_buffer_paste_clipboard(to_unsafe.as(LibGtk::TextBuffer*), clipboard.to_unsafe.as(LibGtk::Clipboard*), override_location && override_location.to_unsafe.as(LibGtk::TextIter*), default_editable)
+      __return_value = LibGtk.text_buffer_paste_clipboard(to_unsafe.as(LibGtk::TextBuffer*), clipboard.to_unsafe.as(LibGtk::Clipboard*), override_location ? override_location.to_unsafe.as(LibGtk::TextIter*) : nil, default_editable)
       __return_value
     end
 
@@ -302,22 +302,22 @@ module Gtk
     end
 
     def register_deserialize_format(mime_type, function, user_data, user_data_destroy)
-      __return_value = LibGtk.text_buffer_register_deserialize_format(to_unsafe.as(LibGtk::TextBuffer*), mime_type, function, user_data && user_data, user_data_destroy)
+      __return_value = LibGtk.text_buffer_register_deserialize_format(to_unsafe.as(LibGtk::TextBuffer*), mime_type.to_unsafe, function, user_data ? user_data : nil, user_data_destroy)
       Gdk::Atom.new(__return_value)
     end
 
     def register_deserialize_tagset(tagset_name)
-      __return_value = LibGtk.text_buffer_register_deserialize_tagset(to_unsafe.as(LibGtk::TextBuffer*), tagset_name)
+      __return_value = LibGtk.text_buffer_register_deserialize_tagset(to_unsafe.as(LibGtk::TextBuffer*), tagset_name ? tagset_name.to_unsafe : nil)
       Gdk::Atom.new(__return_value)
     end
 
     def register_serialize_format(mime_type, function, user_data, user_data_destroy)
-      __return_value = LibGtk.text_buffer_register_serialize_format(to_unsafe.as(LibGtk::TextBuffer*), mime_type, function, user_data && user_data, user_data_destroy)
+      __return_value = LibGtk.text_buffer_register_serialize_format(to_unsafe.as(LibGtk::TextBuffer*), mime_type.to_unsafe, function, user_data ? user_data : nil, user_data_destroy)
       Gdk::Atom.new(__return_value)
     end
 
     def register_serialize_tagset(tagset_name)
-      __return_value = LibGtk.text_buffer_register_serialize_tagset(to_unsafe.as(LibGtk::TextBuffer*), tagset_name)
+      __return_value = LibGtk.text_buffer_register_serialize_tagset(to_unsafe.as(LibGtk::TextBuffer*), tagset_name ? tagset_name.to_unsafe : nil)
       Gdk::Atom.new(__return_value)
     end
 
@@ -337,7 +337,7 @@ module Gtk
     end
 
     def remove_tag_by_name(name, start, end)
-      __return_value = LibGtk.text_buffer_remove_tag_by_name(to_unsafe.as(LibGtk::TextBuffer*), name, start.to_unsafe.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*))
+      __return_value = LibGtk.text_buffer_remove_tag_by_name(to_unsafe.as(LibGtk::TextBuffer*), name.to_unsafe, start.to_unsafe.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*))
       __return_value
     end
 
@@ -357,7 +357,7 @@ module Gtk
     end
 
     def set_text(text, len)
-      __return_value = LibGtk.text_buffer_set_text(to_unsafe.as(LibGtk::TextBuffer*), text, Int32.new(len))
+      __return_value = LibGtk.text_buffer_set_text(to_unsafe.as(LibGtk::TextBuffer*), text.to_unsafe, Int32.new(len))
       __return_value
     end
 

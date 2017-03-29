@@ -15,12 +15,12 @@ module Gtk
 
 
     def self.new(application_id, flags : Gio::ApplicationFlags) : self
-      __return_value = LibGtk.application_new(application_id, flags)
+      __return_value = LibGtk.application_new(application_id ? application_id.to_unsafe : nil, flags)
       cast Gtk::Application.new(__return_value)
     end
 
     def add_accelerator(accelerator, action_name, parameter)
-      __return_value = LibGtk.application_add_accelerator(to_unsafe.as(LibGtk::Application*), accelerator, action_name, parameter && parameter.to_unsafe.as(LibGLib::Variant*))
+      __return_value = LibGtk.application_add_accelerator(to_unsafe.as(LibGtk::Application*), accelerator.to_unsafe, action_name.to_unsafe, parameter ? parameter.to_unsafe.as(LibGLib::Variant*) : nil)
       __return_value
     end
 
@@ -30,12 +30,12 @@ module Gtk
     end
 
     def accels_for_action(detailed_action_name)
-      __return_value = LibGtk.application_get_accels_for_action(to_unsafe.as(LibGtk::Application*), detailed_action_name)
+      __return_value = LibGtk.application_get_accels_for_action(to_unsafe.as(LibGtk::Application*), detailed_action_name.to_unsafe)
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def actions_for_accel(accel)
-      __return_value = LibGtk.application_get_actions_for_accel(to_unsafe.as(LibGtk::Application*), accel)
+      __return_value = LibGtk.application_get_actions_for_accel(to_unsafe.as(LibGtk::Application*), accel.to_unsafe)
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
@@ -50,7 +50,7 @@ module Gtk
     end
 
     def menu_by_id(id)
-      __return_value = LibGtk.application_get_menu_by_id(to_unsafe.as(LibGtk::Application*), id)
+      __return_value = LibGtk.application_get_menu_by_id(to_unsafe.as(LibGtk::Application*), id.to_unsafe)
       Gio::Menu.new(__return_value)
     end
 
@@ -70,7 +70,7 @@ module Gtk
     end
 
     def inhibit(window, flags : Gtk::ApplicationInhibitFlags, reason)
-      __return_value = LibGtk.application_inhibit(to_unsafe.as(LibGtk::Application*), window && window.to_unsafe.as(LibGtk::Window*), flags, reason)
+      __return_value = LibGtk.application_inhibit(to_unsafe.as(LibGtk::Application*), window ? window.to_unsafe.as(LibGtk::Window*) : nil, flags, reason ? reason.to_unsafe : nil)
       __return_value
     end
 
@@ -90,7 +90,7 @@ module Gtk
     end
 
     def remove_accelerator(action_name, parameter)
-      __return_value = LibGtk.application_remove_accelerator(to_unsafe.as(LibGtk::Application*), action_name, parameter && parameter.to_unsafe.as(LibGLib::Variant*))
+      __return_value = LibGtk.application_remove_accelerator(to_unsafe.as(LibGtk::Application*), action_name.to_unsafe, parameter ? parameter.to_unsafe.as(LibGLib::Variant*) : nil)
       __return_value
     end
 
@@ -100,17 +100,17 @@ module Gtk
     end
 
     def set_accels_for_action(detailed_action_name, accels)
-      __return_value = LibGtk.application_set_accels_for_action(to_unsafe.as(LibGtk::Application*), detailed_action_name, accels)
+      __return_value = LibGtk.application_set_accels_for_action(to_unsafe.as(LibGtk::Application*), detailed_action_name.to_unsafe, accels)
       __return_value
     end
 
     def app_menu=(app_menu)
-      __return_value = LibGtk.application_set_app_menu(to_unsafe.as(LibGtk::Application*), app_menu && app_menu.to_unsafe.as(LibGio::MenuModel*))
+      __return_value = LibGtk.application_set_app_menu(to_unsafe.as(LibGtk::Application*), app_menu ? app_menu.to_unsafe.as(LibGio::MenuModel*) : nil)
       __return_value
     end
 
     def menubar=(menubar)
-      __return_value = LibGtk.application_set_menubar(to_unsafe.as(LibGtk::Application*), menubar && menubar.to_unsafe.as(LibGio::MenuModel*))
+      __return_value = LibGtk.application_set_menubar(to_unsafe.as(LibGtk::Application*), menubar ? menubar.to_unsafe.as(LibGio::MenuModel*) : nil)
       __return_value
     end
 

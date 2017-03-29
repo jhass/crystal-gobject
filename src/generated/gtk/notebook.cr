@@ -25,12 +25,12 @@ module Gtk
     end
 
     def append_page(child, tab_label)
-      __return_value = LibGtk.notebook_append_page(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label && tab_label.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.notebook_append_page(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label ? tab_label.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 
     def append_page_menu(child, tab_label, menu_label)
-      __return_value = LibGtk.notebook_append_page_menu(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label && tab_label.to_unsafe.as(LibGtk::Widget*), menu_label && menu_label.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.notebook_append_page_menu(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label ? tab_label.to_unsafe.as(LibGtk::Widget*) : nil, menu_label ? menu_label.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 
@@ -125,12 +125,12 @@ module Gtk
     end
 
     def insert_page(child, tab_label, position)
-      __return_value = LibGtk.notebook_insert_page(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label && tab_label.to_unsafe.as(LibGtk::Widget*), Int32.new(position))
+      __return_value = LibGtk.notebook_insert_page(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label ? tab_label.to_unsafe.as(LibGtk::Widget*) : nil, Int32.new(position))
       __return_value
     end
 
     def insert_page_menu(child, tab_label, menu_label, position)
-      __return_value = LibGtk.notebook_insert_page_menu(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label && tab_label.to_unsafe.as(LibGtk::Widget*), menu_label && menu_label.to_unsafe.as(LibGtk::Widget*), Int32.new(position))
+      __return_value = LibGtk.notebook_insert_page_menu(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label ? tab_label.to_unsafe.as(LibGtk::Widget*) : nil, menu_label ? menu_label.to_unsafe.as(LibGtk::Widget*) : nil, Int32.new(position))
       __return_value
     end
 
@@ -155,12 +155,12 @@ module Gtk
     end
 
     def prepend_page(child, tab_label)
-      __return_value = LibGtk.notebook_prepend_page(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label && tab_label.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.notebook_prepend_page(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label ? tab_label.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 
     def prepend_page_menu(child, tab_label, menu_label)
-      __return_value = LibGtk.notebook_prepend_page_menu(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label && tab_label.to_unsafe.as(LibGtk::Widget*), menu_label && menu_label.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.notebook_prepend_page_menu(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label ? tab_label.to_unsafe.as(LibGtk::Widget*) : nil, menu_label ? menu_label.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 
@@ -190,17 +190,17 @@ module Gtk
     end
 
     def group_name=(group_name)
-      __return_value = LibGtk.notebook_set_group_name(to_unsafe.as(LibGtk::Notebook*), group_name)
+      __return_value = LibGtk.notebook_set_group_name(to_unsafe.as(LibGtk::Notebook*), group_name ? group_name.to_unsafe : nil)
       __return_value
     end
 
     def set_menu_label(child, menu_label)
-      __return_value = LibGtk.notebook_set_menu_label(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), menu_label && menu_label.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.notebook_set_menu_label(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), menu_label ? menu_label.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 
     def set_menu_label_text(child, menu_text)
-      __return_value = LibGtk.notebook_set_menu_label_text(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), menu_text)
+      __return_value = LibGtk.notebook_set_menu_label_text(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), menu_text.to_unsafe)
       __return_value
     end
 
@@ -225,12 +225,12 @@ module Gtk
     end
 
     def set_tab_label(child, tab_label)
-      __return_value = LibGtk.notebook_set_tab_label(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label && tab_label.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.notebook_set_tab_label(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label ? tab_label.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 
     def set_tab_label_text(child, tab_text)
-      __return_value = LibGtk.notebook_set_tab_label_text(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_text)
+      __return_value = LibGtk.notebook_set_tab_label_text(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_text.to_unsafe)
       __return_value
     end
 

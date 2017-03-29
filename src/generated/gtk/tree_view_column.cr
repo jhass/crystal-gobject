@@ -40,7 +40,7 @@ module Gtk
     end
 
     def add_attribute(cell_renderer, attribute, column)
-      __return_value = LibGtk.tree_view_column_add_attribute(to_unsafe.as(LibGtk::TreeViewColumn*), cell_renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute, Int32.new(column))
+      __return_value = LibGtk.tree_view_column_add_attribute(to_unsafe.as(LibGtk::TreeViewColumn*), cell_renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute.to_unsafe, Int32.new(column))
       __return_value
     end
 
@@ -50,7 +50,7 @@ module Gtk
     end
 
     def cell_get_size(cell_area, x_offset, y_offset, width, height)
-      __return_value = LibGtk.tree_view_column_cell_get_size(to_unsafe.as(LibGtk::TreeViewColumn*), cell_area && cell_area.to_unsafe.as(LibGdk::Rectangle*), x_offset, y_offset, width, height)
+      __return_value = LibGtk.tree_view_column_cell_get_size(to_unsafe.as(LibGtk::TreeViewColumn*), cell_area ? cell_area.to_unsafe.as(LibGdk::Rectangle*) : nil, x_offset, y_offset, width, height)
       __return_value
     end
 
@@ -205,7 +205,7 @@ module Gtk
     end
 
     def set_cell_data_func(cell_renderer, func, func_data, destroy)
-      __return_value = LibGtk.tree_view_column_set_cell_data_func(to_unsafe.as(LibGtk::TreeViewColumn*), cell_renderer.to_unsafe.as(LibGtk::CellRenderer*), func && func, func_data && func_data, destroy)
+      __return_value = LibGtk.tree_view_column_set_cell_data_func(to_unsafe.as(LibGtk::TreeViewColumn*), cell_renderer.to_unsafe.as(LibGtk::CellRenderer*), func ? func : nil, func_data ? func_data : nil, destroy)
       __return_value
     end
 
@@ -270,7 +270,7 @@ module Gtk
     end
 
     def title=(title)
-      __return_value = LibGtk.tree_view_column_set_title(to_unsafe.as(LibGtk::TreeViewColumn*), title)
+      __return_value = LibGtk.tree_view_column_set_title(to_unsafe.as(LibGtk::TreeViewColumn*), title.to_unsafe)
       __return_value
     end
 
@@ -280,7 +280,7 @@ module Gtk
     end
 
     def widget=(widget)
-      __return_value = LibGtk.tree_view_column_set_widget(to_unsafe.as(LibGtk::TreeViewColumn*), widget && widget.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.tree_view_column_set_widget(to_unsafe.as(LibGtk::TreeViewColumn*), widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 

@@ -10,17 +10,17 @@ module Gio
 
     # Implements AsyncResult
     def self.new(source_object, callback, user_data, source_tag) : self
-      __return_value = LibGio.simple_async_result_new(source_object && source_object.to_unsafe.as(LibGObject::Object*), callback && callback, user_data && user_data, source_tag && source_tag)
+      __return_value = LibGio.simple_async_result_new(source_object ? source_object.to_unsafe.as(LibGObject::Object*) : nil, callback ? callback : nil, user_data ? user_data : nil, source_tag ? source_tag : nil)
       cast Gio::SimpleAsyncResult.new(__return_value)
     end
 
     def self.new_from_error(source_object, callback, user_data, error) : self
-      __return_value = LibGio.simple_async_result_new_from_error(source_object && source_object.to_unsafe.as(LibGObject::Object*), callback && callback, user_data && user_data, error)
+      __return_value = LibGio.simple_async_result_new_from_error(source_object ? source_object.to_unsafe.as(LibGObject::Object*) : nil, callback ? callback : nil, user_data ? user_data : nil, error)
       cast Gio::SimpleAsyncResult.new(__return_value)
     end
 
     def self.valid?(result, source, source_tag)
-      __return_value = LibGio.simple_async_result_is_valid(result.to_unsafe.as(LibGio::AsyncResult*), source && source.to_unsafe.as(LibGObject::Object*), source_tag && source_tag)
+      __return_value = LibGio.simple_async_result_is_valid(result.to_unsafe.as(LibGio::AsyncResult*), source ? source.to_unsafe.as(LibGObject::Object*) : nil, source_tag ? source_tag : nil)
       __return_value
     end
 
@@ -52,7 +52,7 @@ module Gio
     end
 
     def check_cancellable=(check_cancellable)
-      __return_value = LibGio.simple_async_result_set_check_cancellable(to_unsafe.as(LibGio::SimpleAsyncResult*), check_cancellable && check_cancellable.to_unsafe.as(LibGio::Cancellable*))
+      __return_value = LibGio.simple_async_result_set_check_cancellable(to_unsafe.as(LibGio::SimpleAsyncResult*), check_cancellable ? check_cancellable.to_unsafe.as(LibGio::Cancellable*) : nil)
       __return_value
     end
 

@@ -17,7 +17,7 @@ module Gst
     end
 
     def add_filter(classes, caps)
-      __return_value = LibGst.device_monitor_add_filter(to_unsafe.as(LibGst::DeviceMonitor*), classes, caps && caps.to_unsafe.as(LibGst::Caps*))
+      __return_value = LibGst.device_monitor_add_filter(to_unsafe.as(LibGst::DeviceMonitor*), classes ? classes.to_unsafe : nil, caps ? caps.to_unsafe.as(LibGst::Caps*) : nil)
       __return_value
     end
 

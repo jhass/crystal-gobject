@@ -26,7 +26,7 @@ module Gtk
     end
 
     def hadjustment=(hadjustment)
-      __return_value = LibGtk.scrollable_set_hadjustment(to_unsafe.as(LibGtk::Scrollable*), hadjustment && hadjustment.to_unsafe.as(LibGtk::Adjustment*))
+      __return_value = LibGtk.scrollable_set_hadjustment(to_unsafe.as(LibGtk::Scrollable*), hadjustment ? hadjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
       __return_value
     end
 
@@ -36,7 +36,7 @@ module Gtk
     end
 
     def vadjustment=(vadjustment)
-      __return_value = LibGtk.scrollable_set_vadjustment(to_unsafe.as(LibGtk::Scrollable*), vadjustment && vadjustment.to_unsafe.as(LibGtk::Adjustment*))
+      __return_value = LibGtk.scrollable_set_vadjustment(to_unsafe.as(LibGtk::Scrollable*), vadjustment ? vadjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
       __return_value
     end
 

@@ -12,7 +12,7 @@ module Gst
 
 
     def self.new(upstream_id) : self
-      __return_value = LibGst.stream_collection_new(upstream_id)
+      __return_value = LibGst.stream_collection_new(upstream_id ? upstream_id.to_unsafe : nil)
       cast Gst::StreamCollection.new(__return_value)
     end
 

@@ -24,7 +24,7 @@ module Gio
     end
 
     def connect(callback, data, data_destroy_func)
-      __return_value = LibGio.cancellable_connect(to_unsafe.as(LibGio::Cancellable*), callback, data && data, data_destroy_func && data_destroy_func)
+      __return_value = LibGio.cancellable_connect(to_unsafe.as(LibGio::Cancellable*), callback, data ? data : nil, data_destroy_func ? data_destroy_func : nil)
       __return_value
     end
 

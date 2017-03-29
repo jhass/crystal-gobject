@@ -4,13 +4,13 @@ module GObject
       macro inherited
         # Add run-time check
         def self.cast(object) : self
-          new(object.to_unsafe as Lib\{{@type}}*)
+          new(object.to_unsafe.as(Lib\{{@type}}*))
         end
       end
 
       # Add run-time check
       def self.cast(object) : self
-        new(object.to_unsafe as Lib{{@type}}*)
+        new(object.to_unsafe.as(Lib{{@type}}*))
       end
     end
   end

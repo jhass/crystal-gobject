@@ -58,7 +58,7 @@ module Gdk
     end
 
     def name=(value : String)
-      to_unsafe.as(LibGdk::EventSetting*).value.name = value
+      to_unsafe.as(LibGdk::EventSetting*).value.name = value.to_unsafe
     end
 
   end

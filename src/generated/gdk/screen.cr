@@ -131,7 +131,7 @@ module Gdk
     end
 
     def setting(name, value)
-      __return_value = LibGdk.screen_get_setting(to_unsafe.as(LibGdk::Screen*), name, value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGdk.screen_get_setting(to_unsafe.as(LibGdk::Screen*), name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 
@@ -176,7 +176,7 @@ module Gdk
     end
 
     def font_options=(options)
-      __return_value = LibGdk.screen_set_font_options(to_unsafe.as(LibGdk::Screen*), options && options.to_unsafe.as(LibCairo::FontOptions*))
+      __return_value = LibGdk.screen_set_font_options(to_unsafe.as(LibGdk::Screen*), options ? options.to_unsafe.as(LibCairo::FontOptions*) : nil)
       __return_value
     end
 

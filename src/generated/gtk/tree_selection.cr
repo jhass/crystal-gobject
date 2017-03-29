@@ -65,7 +65,7 @@ module Gtk
     end
 
     def selected_foreach(func, data)
-      __return_value = LibGtk.tree_selection_selected_foreach(to_unsafe.as(LibGtk::TreeSelection*), func, data && data)
+      __return_value = LibGtk.tree_selection_selected_foreach(to_unsafe.as(LibGtk::TreeSelection*), func, data ? data : nil)
       __return_value
     end
 
@@ -75,7 +75,7 @@ module Gtk
     end
 
     def set_select_function(func, data, destroy)
-      __return_value = LibGtk.tree_selection_set_select_function(to_unsafe.as(LibGtk::TreeSelection*), func, data && data, destroy)
+      __return_value = LibGtk.tree_selection_set_select_function(to_unsafe.as(LibGtk::TreeSelection*), func, data ? data : nil, destroy)
       __return_value
     end
 

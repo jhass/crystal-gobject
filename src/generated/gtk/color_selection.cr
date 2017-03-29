@@ -24,7 +24,7 @@ module Gtk
     end
 
     def self.palette_from_string(str, colors, n_colors)
-      __return_value = LibGtk.color_selection_palette_from_string(str, colors, n_colors)
+      __return_value = LibGtk.color_selection_palette_from_string(str.to_unsafe, colors, n_colors)
       __return_value
     end
 

@@ -21,12 +21,12 @@ module Gtk
 
 
     def self.new(label) : self
-      __return_value = LibGtk.expander_new(label)
+      __return_value = LibGtk.expander_new(label.to_unsafe)
       cast Gtk::Widget.new(__return_value)
     end
 
     def self.new_with_mnemonic(label) : self
-      __return_value = LibGtk.expander_new_with_mnemonic(label)
+      __return_value = LibGtk.expander_new_with_mnemonic(label ? label.to_unsafe : nil)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -76,7 +76,7 @@ module Gtk
     end
 
     def label=(label)
-      __return_value = LibGtk.expander_set_label(to_unsafe.as(LibGtk::Expander*), label)
+      __return_value = LibGtk.expander_set_label(to_unsafe.as(LibGtk::Expander*), label ? label.to_unsafe : nil)
       __return_value
     end
 
@@ -86,7 +86,7 @@ module Gtk
     end
 
     def label_widget=(label_widget)
-      __return_value = LibGtk.expander_set_label_widget(to_unsafe.as(LibGtk::Expander*), label_widget && label_widget.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.expander_set_label_widget(to_unsafe.as(LibGtk::Expander*), label_widget ? label_widget.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 

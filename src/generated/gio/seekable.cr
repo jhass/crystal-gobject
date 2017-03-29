@@ -12,7 +12,7 @@ module Gio
 
     def seek(offset, type : GLib::SeekType, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.seekable_seek(to_unsafe.as(LibGio::Seekable*), Int64.new(offset), type, cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.seekable_seek(to_unsafe.as(LibGio::Seekable*), Int64.new(offset), type, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -24,7 +24,7 @@ module Gio
 
     def truncate(offset, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.seekable_truncate(to_unsafe.as(LibGio::Seekable*), Int64.new(offset), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.seekable_truncate(to_unsafe.as(LibGio::Seekable*), Int64.new(offset), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

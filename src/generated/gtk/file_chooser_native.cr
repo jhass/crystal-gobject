@@ -14,7 +14,7 @@ module Gtk
 
 
     def self.new(title, parent, action : Gtk::FileChooserAction, accept_label, cancel_label) : self
-      __return_value = LibGtk.file_chooser_native_new(title, parent && parent.to_unsafe.as(LibGtk::Window*), action, accept_label, cancel_label)
+      __return_value = LibGtk.file_chooser_native_new(title ? title.to_unsafe : nil, parent ? parent.to_unsafe.as(LibGtk::Window*) : nil, action, accept_label ? accept_label.to_unsafe : nil, cancel_label ? cancel_label.to_unsafe : nil)
       cast Gtk::FileChooserNative.new(__return_value)
     end
 
@@ -29,12 +29,12 @@ module Gtk
     end
 
     def accept_label=(accept_label)
-      __return_value = LibGtk.file_chooser_native_set_accept_label(to_unsafe.as(LibGtk::FileChooserNative*), accept_label)
+      __return_value = LibGtk.file_chooser_native_set_accept_label(to_unsafe.as(LibGtk::FileChooserNative*), accept_label ? accept_label.to_unsafe : nil)
       __return_value
     end
 
     def cancel_label=(cancel_label)
-      __return_value = LibGtk.file_chooser_native_set_cancel_label(to_unsafe.as(LibGtk::FileChooserNative*), cancel_label)
+      __return_value = LibGtk.file_chooser_native_set_cancel_label(to_unsafe.as(LibGtk::FileChooserNative*), cancel_label ? cancel_label.to_unsafe : nil)
       __return_value
     end
 

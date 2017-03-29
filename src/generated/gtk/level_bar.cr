@@ -29,7 +29,7 @@ module Gtk
     end
 
     def add_offset_value(name, value)
-      __return_value = LibGtk.level_bar_add_offset_value(to_unsafe.as(LibGtk::LevelBar*), name, Float64.new(value))
+      __return_value = LibGtk.level_bar_add_offset_value(to_unsafe.as(LibGtk::LevelBar*), name.to_unsafe, Float64.new(value))
       __return_value
     end
 
@@ -54,7 +54,7 @@ module Gtk
     end
 
     def offset_value(name, value)
-      __return_value = LibGtk.level_bar_get_offset_value(to_unsafe.as(LibGtk::LevelBar*), name, value)
+      __return_value = LibGtk.level_bar_get_offset_value(to_unsafe.as(LibGtk::LevelBar*), name ? name.to_unsafe : nil, value)
       __return_value
     end
 
@@ -64,7 +64,7 @@ module Gtk
     end
 
     def remove_offset_value(name)
-      __return_value = LibGtk.level_bar_remove_offset_value(to_unsafe.as(LibGtk::LevelBar*), name)
+      __return_value = LibGtk.level_bar_remove_offset_value(to_unsafe.as(LibGtk::LevelBar*), name ? name.to_unsafe : nil)
       __return_value
     end
 

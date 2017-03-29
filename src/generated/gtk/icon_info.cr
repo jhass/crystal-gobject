@@ -61,7 +61,7 @@ module Gtk
     end
 
     def load_icon_async(cancellable, callback, user_data)
-      __return_value = LibGtk.icon_info_load_icon_async(to_unsafe.as(LibGtk::IconInfo*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
+      __return_value = LibGtk.icon_info_load_icon_async(to_unsafe.as(LibGtk::IconInfo*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       __return_value
     end
 
@@ -74,20 +74,20 @@ module Gtk
 
     def load_surface(for_window)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.icon_info_load_surface(to_unsafe.as(LibGtk::IconInfo*), for_window && for_window.to_unsafe.as(LibGdk::Window*), pointerof(__error))
+      __return_value = LibGtk.icon_info_load_surface(to_unsafe.as(LibGtk::IconInfo*), for_window ? for_window.to_unsafe.as(LibGdk::Window*) : nil, pointerof(__error))
       GLib::Error.assert __error
       Cairo::Surface.new(__return_value)
     end
 
     def load_symbolic(fg, success_color, warning_color, error_color, was_symbolic)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.icon_info_load_symbolic(to_unsafe.as(LibGtk::IconInfo*), fg.to_unsafe.as(LibGdk::RGBA*), success_color && success_color.to_unsafe.as(LibGdk::RGBA*), warning_color && warning_color.to_unsafe.as(LibGdk::RGBA*), error_color && error_color.to_unsafe.as(LibGdk::RGBA*), was_symbolic, pointerof(__error))
+      __return_value = LibGtk.icon_info_load_symbolic(to_unsafe.as(LibGtk::IconInfo*), fg.to_unsafe.as(LibGdk::RGBA*), success_color ? success_color.to_unsafe.as(LibGdk::RGBA*) : nil, warning_color ? warning_color.to_unsafe.as(LibGdk::RGBA*) : nil, error_color ? error_color.to_unsafe.as(LibGdk::RGBA*) : nil, was_symbolic, pointerof(__error))
       GLib::Error.assert __error
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 
     def load_symbolic_async(fg, success_color, warning_color, error_color, cancellable, callback, user_data)
-      __return_value = LibGtk.icon_info_load_symbolic_async(to_unsafe.as(LibGtk::IconInfo*), fg.to_unsafe.as(LibGdk::RGBA*), success_color && success_color.to_unsafe.as(LibGdk::RGBA*), warning_color && warning_color.to_unsafe.as(LibGdk::RGBA*), error_color && error_color.to_unsafe.as(LibGdk::RGBA*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
+      __return_value = LibGtk.icon_info_load_symbolic_async(to_unsafe.as(LibGtk::IconInfo*), fg.to_unsafe.as(LibGdk::RGBA*), success_color ? success_color.to_unsafe.as(LibGdk::RGBA*) : nil, warning_color ? warning_color.to_unsafe.as(LibGdk::RGBA*) : nil, error_color ? error_color.to_unsafe.as(LibGdk::RGBA*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       __return_value
     end
 
@@ -106,7 +106,7 @@ module Gtk
     end
 
     def load_symbolic_for_context_async(context, cancellable, callback, user_data)
-      __return_value = LibGtk.icon_info_load_symbolic_for_context_async(to_unsafe.as(LibGtk::IconInfo*), context.to_unsafe.as(LibGtk::StyleContext*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
+      __return_value = LibGtk.icon_info_load_symbolic_for_context_async(to_unsafe.as(LibGtk::IconInfo*), context.to_unsafe.as(LibGtk::StyleContext*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       __return_value
     end
 

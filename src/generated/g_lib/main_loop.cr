@@ -11,7 +11,7 @@ module GLib
     end
 
     def self.new(context, is_running) : self
-      __return_value = LibGLib.main_loop_new(context && context.to_unsafe.as(LibGLib::MainContext*), is_running)
+      __return_value = LibGLib.main_loop_new(context ? context.to_unsafe.as(LibGLib::MainContext*) : nil, is_running)
       cast GLib::MainLoop.new(__return_value)
     end
 

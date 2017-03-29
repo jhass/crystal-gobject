@@ -50,7 +50,7 @@ module Gtk
     end
 
     def label=(value : String)
-      to_unsafe.as(LibGtk::PadActionEntry*).value.label = value
+      to_unsafe.as(LibGtk::PadActionEntry*).value.label = value.to_unsafe
     end
 
     def action_name
@@ -58,7 +58,7 @@ module Gtk
     end
 
     def action_name=(value : String)
-      to_unsafe.as(LibGtk::PadActionEntry*).value.action_name = value
+      to_unsafe.as(LibGtk::PadActionEntry*).value.action_name = value.to_unsafe
     end
 
   end

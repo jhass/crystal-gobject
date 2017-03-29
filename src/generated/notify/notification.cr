@@ -15,12 +15,12 @@ module Notify
 
 
     def self.new(summary, body, icon) : self
-      __return_value = LibNotify.notification_new(summary, body, icon)
+      __return_value = LibNotify.notification_new(summary.to_unsafe, body ? body.to_unsafe : nil, icon ? icon.to_unsafe : nil)
       cast Notify::Notification.new(__return_value)
     end
 
     def add_action(action, label, callback, user_data, free_func)
-      __return_value = LibNotify.notification_add_action(to_unsafe.as(LibNotify::Notification*), action, label, callback, user_data && user_data, free_func)
+      __return_value = LibNotify.notification_add_action(to_unsafe.as(LibNotify::Notification*), action.to_unsafe, label.to_unsafe, callback, user_data ? user_data : nil, free_func)
       __return_value
     end
 
@@ -47,47 +47,47 @@ module Notify
     end
 
     def app_name=(app_name)
-      __return_value = LibNotify.notification_set_app_name(to_unsafe.as(LibNotify::Notification*), app_name)
+      __return_value = LibNotify.notification_set_app_name(to_unsafe.as(LibNotify::Notification*), app_name.to_unsafe)
       __return_value
     end
 
     def category=(category)
-      __return_value = LibNotify.notification_set_category(to_unsafe.as(LibNotify::Notification*), category)
+      __return_value = LibNotify.notification_set_category(to_unsafe.as(LibNotify::Notification*), category.to_unsafe)
       __return_value
     end
 
     def set_hint(key, value)
-      __return_value = LibNotify.notification_set_hint(to_unsafe.as(LibNotify::Notification*), key, value && value.to_unsafe.as(LibGLib::Variant*))
+      __return_value = LibNotify.notification_set_hint(to_unsafe.as(LibNotify::Notification*), key.to_unsafe, value ? value.to_unsafe.as(LibGLib::Variant*) : nil)
       __return_value
     end
 
     def set_hint_byte(key, value)
-      __return_value = LibNotify.notification_set_hint_byte(to_unsafe.as(LibNotify::Notification*), key, UInt8.new(value))
+      __return_value = LibNotify.notification_set_hint_byte(to_unsafe.as(LibNotify::Notification*), key.to_unsafe, UInt8.new(value))
       __return_value
     end
 
     def set_hint_byte_array(key, value, len)
-      __return_value = LibNotify.notification_set_hint_byte_array(to_unsafe.as(LibNotify::Notification*), key, value, UInt64.new(len))
+      __return_value = LibNotify.notification_set_hint_byte_array(to_unsafe.as(LibNotify::Notification*), key.to_unsafe, value, UInt64.new(len))
       __return_value
     end
 
     def set_hint_double(key, value)
-      __return_value = LibNotify.notification_set_hint_double(to_unsafe.as(LibNotify::Notification*), key, Float64.new(value))
+      __return_value = LibNotify.notification_set_hint_double(to_unsafe.as(LibNotify::Notification*), key.to_unsafe, Float64.new(value))
       __return_value
     end
 
     def set_hint_int32(key, value)
-      __return_value = LibNotify.notification_set_hint_int32(to_unsafe.as(LibNotify::Notification*), key, Int32.new(value))
+      __return_value = LibNotify.notification_set_hint_int32(to_unsafe.as(LibNotify::Notification*), key.to_unsafe, Int32.new(value))
       __return_value
     end
 
     def set_hint_string(key, value)
-      __return_value = LibNotify.notification_set_hint_string(to_unsafe.as(LibNotify::Notification*), key, value)
+      __return_value = LibNotify.notification_set_hint_string(to_unsafe.as(LibNotify::Notification*), key.to_unsafe, value.to_unsafe)
       __return_value
     end
 
     def set_hint_uint32(key, value)
-      __return_value = LibNotify.notification_set_hint_uint32(to_unsafe.as(LibNotify::Notification*), key, UInt32.new(value))
+      __return_value = LibNotify.notification_set_hint_uint32(to_unsafe.as(LibNotify::Notification*), key.to_unsafe, UInt32.new(value))
       __return_value
     end
 
@@ -119,7 +119,7 @@ module Notify
     end
 
     def update(summary, body, icon)
-      __return_value = LibNotify.notification_update(to_unsafe.as(LibNotify::Notification*), summary, body, icon)
+      __return_value = LibNotify.notification_update(to_unsafe.as(LibNotify::Notification*), summary.to_unsafe, body ? body.to_unsafe : nil, icon ? icon.to_unsafe : nil)
       __return_value
     end
 

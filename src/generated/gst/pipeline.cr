@@ -15,7 +15,7 @@ module Gst
 
 
     def self.new(name) : self
-      __return_value = LibGst.pipeline_new(name)
+      __return_value = LibGst.pipeline_new(name ? name.to_unsafe : nil)
       cast Gst::Element.new(__return_value)
     end
 
@@ -65,7 +65,7 @@ module Gst
     end
 
     def use_clock(clock)
-      __return_value = LibGst.pipeline_use_clock(to_unsafe.as(LibGst::Pipeline*), clock && clock.to_unsafe.as(LibGst::Clock*))
+      __return_value = LibGst.pipeline_use_clock(to_unsafe.as(LibGst::Pipeline*), clock ? clock.to_unsafe.as(LibGst::Clock*) : nil)
       __return_value
     end
 

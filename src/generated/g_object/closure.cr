@@ -24,7 +24,7 @@ module GObject
     end
 
     def self.new_simple(sizeof_closure, data) : self
-      __return_value = LibGObject.closure_new_simple(UInt32.new(sizeof_closure), data && data)
+      __return_value = LibGObject.closure_new_simple(UInt32.new(sizeof_closure), data ? data : nil)
       cast GObject::Closure.new(__return_value)
     end
 
@@ -34,7 +34,7 @@ module GObject
     end
 
     def invoke(return_value, n_param_values, param_values, invocation_hint)
-      __return_value = LibGObject.closure_invoke(to_unsafe.as(LibGObject::Closure*), return_value, UInt32.new(n_param_values), param_values, invocation_hint && invocation_hint)
+      __return_value = LibGObject.closure_invoke(to_unsafe.as(LibGObject::Closure*), return_value, UInt32.new(n_param_values), param_values, invocation_hint ? invocation_hint : nil)
       __return_value
     end
 

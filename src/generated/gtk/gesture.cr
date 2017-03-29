@@ -43,7 +43,7 @@ module Gtk
     end
 
     def point(sequence, x, y)
-      __return_value = LibGtk.gesture_get_point(to_unsafe.as(LibGtk::Gesture*), sequence && sequence.to_unsafe.as(LibGdk::EventSequence*), x, y)
+      __return_value = LibGtk.gesture_get_point(to_unsafe.as(LibGtk::Gesture*), sequence ? sequence.to_unsafe.as(LibGdk::EventSequence*) : nil, x, y)
       __return_value
     end
 
@@ -68,7 +68,7 @@ module Gtk
     end
 
     def handles_sequence(sequence)
-      __return_value = LibGtk.gesture_handles_sequence(to_unsafe.as(LibGtk::Gesture*), sequence && sequence.to_unsafe.as(LibGdk::EventSequence*))
+      __return_value = LibGtk.gesture_handles_sequence(to_unsafe.as(LibGtk::Gesture*), sequence ? sequence.to_unsafe.as(LibGdk::EventSequence*) : nil)
       __return_value
     end
 
@@ -98,7 +98,7 @@ module Gtk
     end
 
     def window=(window)
-      __return_value = LibGtk.gesture_set_window(to_unsafe.as(LibGtk::Gesture*), window && window.to_unsafe.as(LibGdk::Window*))
+      __return_value = LibGtk.gesture_set_window(to_unsafe.as(LibGtk::Gesture*), window ? window.to_unsafe.as(LibGdk::Window*) : nil)
       __return_value
     end
 

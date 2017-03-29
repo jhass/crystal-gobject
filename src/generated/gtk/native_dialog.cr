@@ -53,12 +53,12 @@ module Gtk
     end
 
     def title=(title)
-      __return_value = LibGtk.native_dialog_set_title(to_unsafe.as(LibGtk::NativeDialog*), title)
+      __return_value = LibGtk.native_dialog_set_title(to_unsafe.as(LibGtk::NativeDialog*), title.to_unsafe)
       __return_value
     end
 
     def transient_for=(parent)
-      __return_value = LibGtk.native_dialog_set_transient_for(to_unsafe.as(LibGtk::NativeDialog*), parent && parent.to_unsafe.as(LibGtk::Window*))
+      __return_value = LibGtk.native_dialog_set_transient_for(to_unsafe.as(LibGtk::NativeDialog*), parent ? parent.to_unsafe.as(LibGtk::Window*) : nil)
       __return_value
     end
 

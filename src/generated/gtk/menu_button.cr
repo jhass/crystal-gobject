@@ -56,7 +56,7 @@ module Gtk
     end
 
     def align_widget=(align_widget)
-      __return_value = LibGtk.menu_button_set_align_widget(to_unsafe.as(LibGtk::MenuButton*), align_widget && align_widget.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.menu_button_set_align_widget(to_unsafe.as(LibGtk::MenuButton*), align_widget ? align_widget.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 
@@ -66,17 +66,17 @@ module Gtk
     end
 
     def menu_model=(menu_model)
-      __return_value = LibGtk.menu_button_set_menu_model(to_unsafe.as(LibGtk::MenuButton*), menu_model && menu_model.to_unsafe.as(LibGio::MenuModel*))
+      __return_value = LibGtk.menu_button_set_menu_model(to_unsafe.as(LibGtk::MenuButton*), menu_model ? menu_model.to_unsafe.as(LibGio::MenuModel*) : nil)
       __return_value
     end
 
     def popover=(popover)
-      __return_value = LibGtk.menu_button_set_popover(to_unsafe.as(LibGtk::MenuButton*), popover && popover.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.menu_button_set_popover(to_unsafe.as(LibGtk::MenuButton*), popover ? popover.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 
     def popup=(menu)
-      __return_value = LibGtk.menu_button_set_popup(to_unsafe.as(LibGtk::MenuButton*), menu && menu.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.menu_button_set_popup(to_unsafe.as(LibGtk::MenuButton*), menu ? menu.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 

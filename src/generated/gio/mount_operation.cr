@@ -65,12 +65,12 @@ module Gio
     end
 
     def domain=(domain)
-      __return_value = LibGio.mount_operation_set_domain(to_unsafe.as(LibGio::MountOperation*), domain)
+      __return_value = LibGio.mount_operation_set_domain(to_unsafe.as(LibGio::MountOperation*), domain.to_unsafe)
       __return_value
     end
 
     def password=(password)
-      __return_value = LibGio.mount_operation_set_password(to_unsafe.as(LibGio::MountOperation*), password)
+      __return_value = LibGio.mount_operation_set_password(to_unsafe.as(LibGio::MountOperation*), password.to_unsafe)
       __return_value
     end
 
@@ -80,7 +80,7 @@ module Gio
     end
 
     def username=(username)
-      __return_value = LibGio.mount_operation_set_username(to_unsafe.as(LibGio::MountOperation*), username)
+      __return_value = LibGio.mount_operation_set_username(to_unsafe.as(LibGio::MountOperation*), username.to_unsafe)
       __return_value
     end
 

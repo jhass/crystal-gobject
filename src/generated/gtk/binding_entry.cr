@@ -26,12 +26,12 @@ module Gtk
     end
 
     def self.add_signal_from_string(binding_set, signal_desc)
-      __return_value = LibGtk.binding_entry_add_signal_from_string(binding_set.to_unsafe.as(LibGtk::BindingSet*), signal_desc)
+      __return_value = LibGtk.binding_entry_add_signal_from_string(binding_set.to_unsafe.as(LibGtk::BindingSet*), signal_desc.to_unsafe)
       __return_value
     end
 
     def self.add_signall(binding_set, keyval, modifiers : Gdk::ModifierType, signal_name, binding_args)
-      __return_value = LibGtk.binding_entry_add_signall(binding_set.to_unsafe.as(LibGtk::BindingSet*), UInt32.new(keyval), modifiers, signal_name, binding_args)
+      __return_value = LibGtk.binding_entry_add_signall(binding_set.to_unsafe.as(LibGtk::BindingSet*), UInt32.new(keyval), modifiers, signal_name.to_unsafe, binding_args)
       __return_value
     end
 

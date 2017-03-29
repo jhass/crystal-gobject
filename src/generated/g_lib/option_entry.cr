@@ -28,7 +28,7 @@ module GLib
     end
 
     def long_name=(value : String)
-      to_unsafe.as(LibGLib::OptionEntry*).value.long_name = value
+      to_unsafe.as(LibGLib::OptionEntry*).value.long_name = value.to_unsafe
     end
 
     def short_name
@@ -68,7 +68,7 @@ module GLib
     end
 
     def description=(value : String)
-      to_unsafe.as(LibGLib::OptionEntry*).value.description = value
+      to_unsafe.as(LibGLib::OptionEntry*).value.description = value.to_unsafe
     end
 
     def arg_description
@@ -76,7 +76,7 @@ module GLib
     end
 
     def arg_description=(value : String)
-      to_unsafe.as(LibGLib::OptionEntry*).value.arg_description = value
+      to_unsafe.as(LibGLib::OptionEntry*).value.arg_description = value.to_unsafe
     end
 
   end

@@ -36,7 +36,7 @@ module Gtk
     end
 
     def help_overlay=(help_overlay)
-      __return_value = LibGtk.application_window_set_help_overlay(to_unsafe.as(LibGtk::ApplicationWindow*), help_overlay && help_overlay.to_unsafe.as(LibGtk::ShortcutsWindow*))
+      __return_value = LibGtk.application_window_set_help_overlay(to_unsafe.as(LibGtk::ApplicationWindow*), help_overlay ? help_overlay.to_unsafe.as(LibGtk::ShortcutsWindow*) : nil)
       __return_value
     end
 

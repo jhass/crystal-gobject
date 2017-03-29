@@ -18,12 +18,12 @@ module Gst
     end
 
     def self.new_empty(name) : self
-      __return_value = LibGst.structure_new_empty(name)
+      __return_value = LibGst.structure_new_empty(name.to_unsafe)
       cast Gst::Structure.new(__return_value)
     end
 
     def self.new_from_string(string) : self
-      __return_value = LibGst.structure_new_from_string(string)
+      __return_value = LibGst.structure_new_from_string(string.to_unsafe)
       cast Gst::Structure.new(__return_value) if __return_value
     end
 
@@ -43,7 +43,7 @@ module Gst
     end
 
     def filter_and_map_in_place(func, user_data)
-      __return_value = LibGst.structure_filter_and_map_in_place(to_unsafe.as(LibGst::Structure*), func, user_data && user_data)
+      __return_value = LibGst.structure_filter_and_map_in_place(to_unsafe.as(LibGst::Structure*), func, user_data ? user_data : nil)
       __return_value
     end
 
@@ -53,37 +53,37 @@ module Gst
     end
 
     def fixate_field(field_name)
-      __return_value = LibGst.structure_fixate_field(to_unsafe.as(LibGst::Structure*), field_name)
+      __return_value = LibGst.structure_fixate_field(to_unsafe.as(LibGst::Structure*), field_name.to_unsafe)
       __return_value
     end
 
     def fixate_field_boolean(field_name, target)
-      __return_value = LibGst.structure_fixate_field_boolean(to_unsafe.as(LibGst::Structure*), field_name, target)
+      __return_value = LibGst.structure_fixate_field_boolean(to_unsafe.as(LibGst::Structure*), field_name.to_unsafe, target)
       __return_value
     end
 
     def fixate_field_nearest_double(field_name, target)
-      __return_value = LibGst.structure_fixate_field_nearest_double(to_unsafe.as(LibGst::Structure*), field_name, Float64.new(target))
+      __return_value = LibGst.structure_fixate_field_nearest_double(to_unsafe.as(LibGst::Structure*), field_name.to_unsafe, Float64.new(target))
       __return_value
     end
 
     def fixate_field_nearest_fraction(field_name, target_numerator, target_denominator)
-      __return_value = LibGst.structure_fixate_field_nearest_fraction(to_unsafe.as(LibGst::Structure*), field_name, Int32.new(target_numerator), Int32.new(target_denominator))
+      __return_value = LibGst.structure_fixate_field_nearest_fraction(to_unsafe.as(LibGst::Structure*), field_name.to_unsafe, Int32.new(target_numerator), Int32.new(target_denominator))
       __return_value
     end
 
     def fixate_field_nearest_int(field_name, target)
-      __return_value = LibGst.structure_fixate_field_nearest_int(to_unsafe.as(LibGst::Structure*), field_name, Int32.new(target))
+      __return_value = LibGst.structure_fixate_field_nearest_int(to_unsafe.as(LibGst::Structure*), field_name.to_unsafe, Int32.new(target))
       __return_value
     end
 
     def fixate_field_string(field_name, target)
-      __return_value = LibGst.structure_fixate_field_string(to_unsafe.as(LibGst::Structure*), field_name, target)
+      __return_value = LibGst.structure_fixate_field_string(to_unsafe.as(LibGst::Structure*), field_name.to_unsafe, target.to_unsafe)
       __return_value
     end
 
     def foreach(func, user_data)
-      __return_value = LibGst.structure_foreach(to_unsafe.as(LibGst::Structure*), func, user_data && user_data)
+      __return_value = LibGst.structure_foreach(to_unsafe.as(LibGst::Structure*), func, user_data ? user_data : nil)
       __return_value
     end
 
@@ -93,57 +93,57 @@ module Gst
     end
 
     def boolean(fieldname, value)
-      __return_value = LibGst.structure_get_boolean(to_unsafe.as(LibGst::Structure*), fieldname, value)
+      __return_value = LibGst.structure_get_boolean(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value)
       __return_value
     end
 
     def clock_time(fieldname, value)
-      __return_value = LibGst.structure_get_clock_time(to_unsafe.as(LibGst::Structure*), fieldname, value)
+      __return_value = LibGst.structure_get_clock_time(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value)
       __return_value
     end
 
     def date(fieldname, value)
-      __return_value = LibGst.structure_get_date(to_unsafe.as(LibGst::Structure*), fieldname, value)
+      __return_value = LibGst.structure_get_date(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value)
       __return_value
     end
 
     def date_time(fieldname, value)
-      __return_value = LibGst.structure_get_date_time(to_unsafe.as(LibGst::Structure*), fieldname, value)
+      __return_value = LibGst.structure_get_date_time(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value)
       __return_value
     end
 
     def double(fieldname, value)
-      __return_value = LibGst.structure_get_double(to_unsafe.as(LibGst::Structure*), fieldname, value)
+      __return_value = LibGst.structure_get_double(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value)
       __return_value
     end
 
     def enum(fieldname, enumtype, value)
-      __return_value = LibGst.structure_get_enum(to_unsafe.as(LibGst::Structure*), fieldname, UInt64.new(enumtype), value)
+      __return_value = LibGst.structure_get_enum(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, UInt64.new(enumtype), value)
       __return_value
     end
 
     def field_type(fieldname)
-      __return_value = LibGst.structure_get_field_type(to_unsafe.as(LibGst::Structure*), fieldname)
+      __return_value = LibGst.structure_get_field_type(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe)
       __return_value
     end
 
     def flagset(fieldname, value_flags, value_mask)
-      __return_value = LibGst.structure_get_flagset(to_unsafe.as(LibGst::Structure*), fieldname, value_flags, value_mask)
+      __return_value = LibGst.structure_get_flagset(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value_flags, value_mask)
       __return_value
     end
 
     def fraction(fieldname, value_numerator, value_denominator)
-      __return_value = LibGst.structure_get_fraction(to_unsafe.as(LibGst::Structure*), fieldname, value_numerator, value_denominator)
+      __return_value = LibGst.structure_get_fraction(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value_numerator, value_denominator)
       __return_value
     end
 
     def int(fieldname, value)
-      __return_value = LibGst.structure_get_int(to_unsafe.as(LibGst::Structure*), fieldname, value)
+      __return_value = LibGst.structure_get_int(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value)
       __return_value
     end
 
     def int64(fieldname, value)
-      __return_value = LibGst.structure_get_int64(to_unsafe.as(LibGst::Structure*), fieldname, value)
+      __return_value = LibGst.structure_get_int64(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value)
       __return_value
     end
 
@@ -158,37 +158,37 @@ module Gst
     end
 
     def string(fieldname)
-      __return_value = LibGst.structure_get_string(to_unsafe.as(LibGst::Structure*), fieldname)
+      __return_value = LibGst.structure_get_string(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def uint(fieldname, value)
-      __return_value = LibGst.structure_get_uint(to_unsafe.as(LibGst::Structure*), fieldname, value)
+      __return_value = LibGst.structure_get_uint(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value)
       __return_value
     end
 
     def uint64(fieldname, value)
-      __return_value = LibGst.structure_get_uint64(to_unsafe.as(LibGst::Structure*), fieldname, value)
+      __return_value = LibGst.structure_get_uint64(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value)
       __return_value
     end
 
     def value(fieldname)
-      __return_value = LibGst.structure_get_value(to_unsafe.as(LibGst::Structure*), fieldname)
+      __return_value = LibGst.structure_get_value(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe)
       GObject::Value.new(__return_value)
     end
 
     def has_field(fieldname)
-      __return_value = LibGst.structure_has_field(to_unsafe.as(LibGst::Structure*), fieldname)
+      __return_value = LibGst.structure_has_field(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe)
       __return_value
     end
 
     def has_field_typed(fieldname, type)
-      __return_value = LibGst.structure_has_field_typed(to_unsafe.as(LibGst::Structure*), fieldname, UInt64.new(type))
+      __return_value = LibGst.structure_has_field_typed(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, UInt64.new(type))
       __return_value
     end
 
     def has_name(name)
-      __return_value = LibGst.structure_has_name(to_unsafe.as(LibGst::Structure*), name)
+      __return_value = LibGst.structure_has_name(to_unsafe.as(LibGst::Structure*), name.to_unsafe)
       __return_value
     end
 
@@ -233,7 +233,7 @@ module Gst
     end
 
     def map_in_place(func, user_data)
-      __return_value = LibGst.structure_map_in_place(to_unsafe.as(LibGst::Structure*), func, user_data && user_data)
+      __return_value = LibGst.structure_map_in_place(to_unsafe.as(LibGst::Structure*), func, user_data ? user_data : nil)
       __return_value
     end
 
@@ -253,12 +253,12 @@ module Gst
     end
 
     def remove_field(fieldname)
-      __return_value = LibGst.structure_remove_field(to_unsafe.as(LibGst::Structure*), fieldname)
+      __return_value = LibGst.structure_remove_field(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe)
       __return_value
     end
 
     def name=(name)
-      __return_value = LibGst.structure_set_name(to_unsafe.as(LibGst::Structure*), name)
+      __return_value = LibGst.structure_set_name(to_unsafe.as(LibGst::Structure*), name.to_unsafe)
       __return_value
     end
 
@@ -268,12 +268,12 @@ module Gst
     end
 
     def set_value(fieldname, value)
-      __return_value = LibGst.structure_set_value(to_unsafe.as(LibGst::Structure*), fieldname, value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGst.structure_set_value(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 
     def take_value(fieldname, value)
-      __return_value = LibGst.structure_take_value(to_unsafe.as(LibGst::Structure*), fieldname, value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGst.structure_take_value(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 
@@ -283,7 +283,7 @@ module Gst
     end
 
     def self.from_string(string, end)
-      __return_value = LibGst.structure_from_string(string, end)
+      __return_value = LibGst.structure_from_string(string.to_unsafe, end)
       Gst::Structure.new(__return_value) if __return_value
     end
 

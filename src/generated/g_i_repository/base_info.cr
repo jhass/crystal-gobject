@@ -21,7 +21,7 @@ module GIRepository
     end
 
     def attribute(name)
-      __return_value = LibGIRepository.base_info_get_attribute(to_unsafe.as(LibGIRepository::BaseInfo*), name)
+      __return_value = LibGIRepository.base_info_get_attribute(to_unsafe.as(LibGIRepository::BaseInfo*), name.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

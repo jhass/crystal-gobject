@@ -19,7 +19,7 @@ module Gtk
     end
 
     def append(iter, parent)
-      __return_value = LibGtk.tree_store_append(to_unsafe.as(LibGtk::TreeStore*), iter, parent && parent.to_unsafe.as(LibGtk::TreeIter*))
+      __return_value = LibGtk.tree_store_append(to_unsafe.as(LibGtk::TreeStore*), iter, parent ? parent.to_unsafe.as(LibGtk::TreeIter*) : nil)
       __return_value
     end
 
@@ -29,22 +29,22 @@ module Gtk
     end
 
     def insert(iter, parent, position)
-      __return_value = LibGtk.tree_store_insert(to_unsafe.as(LibGtk::TreeStore*), iter, parent && parent.to_unsafe.as(LibGtk::TreeIter*), Int32.new(position))
+      __return_value = LibGtk.tree_store_insert(to_unsafe.as(LibGtk::TreeStore*), iter, parent ? parent.to_unsafe.as(LibGtk::TreeIter*) : nil, Int32.new(position))
       __return_value
     end
 
     def insert_after(iter, parent, sibling)
-      __return_value = LibGtk.tree_store_insert_after(to_unsafe.as(LibGtk::TreeStore*), iter, parent && parent.to_unsafe.as(LibGtk::TreeIter*), sibling && sibling.to_unsafe.as(LibGtk::TreeIter*))
+      __return_value = LibGtk.tree_store_insert_after(to_unsafe.as(LibGtk::TreeStore*), iter, parent ? parent.to_unsafe.as(LibGtk::TreeIter*) : nil, sibling ? sibling.to_unsafe.as(LibGtk::TreeIter*) : nil)
       __return_value
     end
 
     def insert_before(iter, parent, sibling)
-      __return_value = LibGtk.tree_store_insert_before(to_unsafe.as(LibGtk::TreeStore*), iter, parent && parent.to_unsafe.as(LibGtk::TreeIter*), sibling && sibling.to_unsafe.as(LibGtk::TreeIter*))
+      __return_value = LibGtk.tree_store_insert_before(to_unsafe.as(LibGtk::TreeStore*), iter, parent ? parent.to_unsafe.as(LibGtk::TreeIter*) : nil, sibling ? sibling.to_unsafe.as(LibGtk::TreeIter*) : nil)
       __return_value
     end
 
     def insert_with_values(iter, parent, position, columns, values, n_values)
-      __return_value = LibGtk.tree_store_insert_with_values(to_unsafe.as(LibGtk::TreeStore*), iter, parent && parent.to_unsafe.as(LibGtk::TreeIter*), Int32.new(position), columns, values, Int32.new(n_values))
+      __return_value = LibGtk.tree_store_insert_with_values(to_unsafe.as(LibGtk::TreeStore*), iter, parent ? parent.to_unsafe.as(LibGtk::TreeIter*) : nil, Int32.new(position), columns, values, Int32.new(n_values))
       __return_value
     end
 
@@ -64,17 +64,17 @@ module Gtk
     end
 
     def move_after(iter, position)
-      __return_value = LibGtk.tree_store_move_after(to_unsafe.as(LibGtk::TreeStore*), iter.to_unsafe.as(LibGtk::TreeIter*), position && position.to_unsafe.as(LibGtk::TreeIter*))
+      __return_value = LibGtk.tree_store_move_after(to_unsafe.as(LibGtk::TreeStore*), iter.to_unsafe.as(LibGtk::TreeIter*), position ? position.to_unsafe.as(LibGtk::TreeIter*) : nil)
       __return_value
     end
 
     def move_before(iter, position)
-      __return_value = LibGtk.tree_store_move_before(to_unsafe.as(LibGtk::TreeStore*), iter.to_unsafe.as(LibGtk::TreeIter*), position && position.to_unsafe.as(LibGtk::TreeIter*))
+      __return_value = LibGtk.tree_store_move_before(to_unsafe.as(LibGtk::TreeStore*), iter.to_unsafe.as(LibGtk::TreeIter*), position ? position.to_unsafe.as(LibGtk::TreeIter*) : nil)
       __return_value
     end
 
     def prepend(iter, parent)
-      __return_value = LibGtk.tree_store_prepend(to_unsafe.as(LibGtk::TreeStore*), iter, parent && parent.to_unsafe.as(LibGtk::TreeIter*))
+      __return_value = LibGtk.tree_store_prepend(to_unsafe.as(LibGtk::TreeStore*), iter, parent ? parent.to_unsafe.as(LibGtk::TreeIter*) : nil)
       __return_value
     end
 

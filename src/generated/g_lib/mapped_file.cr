@@ -12,7 +12,7 @@ module GLib
 
     def self.new(filename, writable) : self
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGLib.mapped_file_new(filename, writable, pointerof(__error))
+      __return_value = LibGLib.mapped_file_new(filename.to_unsafe, writable, pointerof(__error))
       GLib::Error.assert __error
       cast GLib::MappedFile.new(__return_value)
     end

@@ -161,12 +161,12 @@ module Gtk
     end
 
     def active_id=(active_id)
-      __return_value = LibGtk.combo_box_set_active_id(to_unsafe.as(LibGtk::ComboBox*), active_id)
+      __return_value = LibGtk.combo_box_set_active_id(to_unsafe.as(LibGtk::ComboBox*), active_id ? active_id.to_unsafe : nil)
       __return_value
     end
 
     def active_iter=(iter)
-      __return_value = LibGtk.combo_box_set_active_iter(to_unsafe.as(LibGtk::ComboBox*), iter && iter.to_unsafe.as(LibGtk::TreeIter*))
+      __return_value = LibGtk.combo_box_set_active_iter(to_unsafe.as(LibGtk::ComboBox*), iter ? iter.to_unsafe.as(LibGtk::TreeIter*) : nil)
       __return_value
     end
 
@@ -201,7 +201,7 @@ module Gtk
     end
 
     def model=(model)
-      __return_value = LibGtk.combo_box_set_model(to_unsafe.as(LibGtk::ComboBox*), model && model.to_unsafe.as(LibGtk::TreeModel*))
+      __return_value = LibGtk.combo_box_set_model(to_unsafe.as(LibGtk::ComboBox*), model ? model.to_unsafe.as(LibGtk::TreeModel*) : nil)
       __return_value
     end
 
@@ -211,7 +211,7 @@ module Gtk
     end
 
     def set_row_separator_func(func, data, destroy)
-      __return_value = LibGtk.combo_box_set_row_separator_func(to_unsafe.as(LibGtk::ComboBox*), func, data && data, destroy && destroy)
+      __return_value = LibGtk.combo_box_set_row_separator_func(to_unsafe.as(LibGtk::ComboBox*), func, data ? data : nil, destroy ? destroy : nil)
       __return_value
     end
 
@@ -221,7 +221,7 @@ module Gtk
     end
 
     def title=(title)
-      __return_value = LibGtk.combo_box_set_title(to_unsafe.as(LibGtk::ComboBox*), title)
+      __return_value = LibGtk.combo_box_set_title(to_unsafe.as(LibGtk::ComboBox*), title.to_unsafe)
       __return_value
     end
 
@@ -243,7 +243,7 @@ module Gtk
     def on_format_entry_text(&__block : FormatEntryTextSignal)
       __callback = ->(_arg0 : LibGtk::ComboBox*, _arg1 : LibGtk::UInt8**) {
        __return_value = __block.call(ComboBox.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
-       __return_value
+       __return_value.to_unsafe
       }
       connect("format-entry-text", __callback)
     end

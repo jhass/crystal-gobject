@@ -1,7 +1,7 @@
 module Atk
   module Document
     def attribute_value(attribute_name)
-      __return_value = LibAtk.document_get_attribute_value(to_unsafe.as(LibAtk::Document*), attribute_name)
+      __return_value = LibAtk.document_get_attribute_value(to_unsafe.as(LibAtk::Document*), attribute_name.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
@@ -36,7 +36,7 @@ module Atk
     end
 
     def set_attribute_value(attribute_name, attribute_value)
-      __return_value = LibAtk.document_set_attribute_value(to_unsafe.as(LibAtk::Document*), attribute_name, attribute_value)
+      __return_value = LibAtk.document_set_attribute_value(to_unsafe.as(LibAtk::Document*), attribute_name.to_unsafe, attribute_value.to_unsafe)
       __return_value
     end
 

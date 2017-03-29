@@ -20,7 +20,7 @@ module Gtk
 
 
     def self.new(size, min, max, step, icons) : self
-      __return_value = LibGtk.scale_button_new(Int32.new(size), Float64.new(min), Float64.new(max), Float64.new(step), icons && icons)
+      __return_value = LibGtk.scale_button_new(Int32.new(size), Float64.new(min), Float64.new(max), Float64.new(step), icons ? icons : nil)
       cast Gtk::Widget.new(__return_value)
     end
 

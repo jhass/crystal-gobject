@@ -11,7 +11,7 @@ module Gtk
 
 
     def self.new(name, left_gravity) : self
-      __return_value = LibGtk.text_mark_new(name, left_gravity)
+      __return_value = LibGtk.text_mark_new(name ? name.to_unsafe : nil, left_gravity)
       cast Gtk::TextMark.new(__return_value)
     end
 

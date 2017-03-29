@@ -111,7 +111,7 @@ module GLib
     end
 
     def format(format)
-      __return_value = LibGLib.date_time_format(to_unsafe.as(LibGLib::DateTime*), format)
+      __return_value = LibGLib.date_time_format(to_unsafe.as(LibGLib::DateTime*), format.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

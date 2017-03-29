@@ -33,7 +33,7 @@ module Gtk
     end
 
     def add_credit_section(section_name, people)
-      __return_value = LibGtk.about_dialog_add_credit_section(to_unsafe.as(LibGtk::AboutDialog*), section_name, people)
+      __return_value = LibGtk.about_dialog_add_credit_section(to_unsafe.as(LibGtk::AboutDialog*), section_name.to_unsafe, people)
       __return_value
     end
 
@@ -123,12 +123,12 @@ module Gtk
     end
 
     def comments=(comments)
-      __return_value = LibGtk.about_dialog_set_comments(to_unsafe.as(LibGtk::AboutDialog*), comments)
+      __return_value = LibGtk.about_dialog_set_comments(to_unsafe.as(LibGtk::AboutDialog*), comments ? comments.to_unsafe : nil)
       __return_value
     end
 
     def copyright=(copyright)
-      __return_value = LibGtk.about_dialog_set_copyright(to_unsafe.as(LibGtk::AboutDialog*), copyright)
+      __return_value = LibGtk.about_dialog_set_copyright(to_unsafe.as(LibGtk::AboutDialog*), copyright ? copyright.to_unsafe : nil)
       __return_value
     end
 
@@ -138,7 +138,7 @@ module Gtk
     end
 
     def license=(license)
-      __return_value = LibGtk.about_dialog_set_license(to_unsafe.as(LibGtk::AboutDialog*), license)
+      __return_value = LibGtk.about_dialog_set_license(to_unsafe.as(LibGtk::AboutDialog*), license ? license.to_unsafe : nil)
       __return_value
     end
 
@@ -148,37 +148,37 @@ module Gtk
     end
 
     def logo=(logo)
-      __return_value = LibGtk.about_dialog_set_logo(to_unsafe.as(LibGtk::AboutDialog*), logo && logo.to_unsafe.as(LibGdkPixbuf::Pixbuf*))
+      __return_value = LibGtk.about_dialog_set_logo(to_unsafe.as(LibGtk::AboutDialog*), logo ? logo.to_unsafe.as(LibGdkPixbuf::Pixbuf*) : nil)
       __return_value
     end
 
     def logo_icon_name=(icon_name)
-      __return_value = LibGtk.about_dialog_set_logo_icon_name(to_unsafe.as(LibGtk::AboutDialog*), icon_name)
+      __return_value = LibGtk.about_dialog_set_logo_icon_name(to_unsafe.as(LibGtk::AboutDialog*), icon_name ? icon_name.to_unsafe : nil)
       __return_value
     end
 
     def program_name=(name)
-      __return_value = LibGtk.about_dialog_set_program_name(to_unsafe.as(LibGtk::AboutDialog*), name)
+      __return_value = LibGtk.about_dialog_set_program_name(to_unsafe.as(LibGtk::AboutDialog*), name.to_unsafe)
       __return_value
     end
 
     def translator_credits=(translator_credits)
-      __return_value = LibGtk.about_dialog_set_translator_credits(to_unsafe.as(LibGtk::AboutDialog*), translator_credits)
+      __return_value = LibGtk.about_dialog_set_translator_credits(to_unsafe.as(LibGtk::AboutDialog*), translator_credits ? translator_credits.to_unsafe : nil)
       __return_value
     end
 
     def version=(version)
-      __return_value = LibGtk.about_dialog_set_version(to_unsafe.as(LibGtk::AboutDialog*), version)
+      __return_value = LibGtk.about_dialog_set_version(to_unsafe.as(LibGtk::AboutDialog*), version ? version.to_unsafe : nil)
       __return_value
     end
 
     def website=(website)
-      __return_value = LibGtk.about_dialog_set_website(to_unsafe.as(LibGtk::AboutDialog*), website)
+      __return_value = LibGtk.about_dialog_set_website(to_unsafe.as(LibGtk::AboutDialog*), website ? website.to_unsafe : nil)
       __return_value
     end
 
     def website_label=(website_label)
-      __return_value = LibGtk.about_dialog_set_website_label(to_unsafe.as(LibGtk::AboutDialog*), website_label)
+      __return_value = LibGtk.about_dialog_set_website_label(to_unsafe.as(LibGtk::AboutDialog*), website_label.to_unsafe)
       __return_value
     end
 

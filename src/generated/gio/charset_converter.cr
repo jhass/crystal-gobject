@@ -15,7 +15,7 @@ module Gio
 
     def self.new(to_charset, from_charset) : self
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.charset_converter_new(to_charset, from_charset, pointerof(__error))
+      __return_value = LibGio.charset_converter_new(to_charset.to_unsafe, from_charset.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       cast Gio::CharsetConverter.new(__return_value)
     end

@@ -60,7 +60,7 @@ module Atk
     end
 
     def string=(value : String)
-      to_unsafe.as(LibAtk::KeyEventStruct*).value.string = value
+      to_unsafe.as(LibAtk::KeyEventStruct*).value.string = value.to_unsafe
     end
 
     def keycode

@@ -14,7 +14,7 @@ module Gdk
     end
 
     def self.open(display_name)
-      __return_value = LibGdk.display_open(display_name)
+      __return_value = LibGdk.display_open(display_name.to_unsafe)
       Gdk::Display.new(__return_value) if __return_value
     end
 
@@ -159,7 +159,7 @@ module Gdk
     end
 
     def notify_startup_complete(startup_id)
-      __return_value = LibGdk.display_notify_startup_complete(to_unsafe.as(LibGdk::Display*), startup_id)
+      __return_value = LibGdk.display_notify_startup_complete(to_unsafe.as(LibGdk::Display*), startup_id.to_unsafe)
       __return_value
     end
 
@@ -199,7 +199,7 @@ module Gdk
     end
 
     def store_clipboard(clipboard_window, time, targets, n_targets)
-      __return_value = LibGdk.display_store_clipboard(to_unsafe.as(LibGdk::Display*), clipboard_window.to_unsafe.as(LibGdk::Window*), UInt32.new(time), targets && targets, Int32.new(n_targets))
+      __return_value = LibGdk.display_store_clipboard(to_unsafe.as(LibGdk::Display*), clipboard_window.to_unsafe.as(LibGdk::Window*), UInt32.new(time), targets ? targets : nil, Int32.new(n_targets))
       __return_value
     end
 

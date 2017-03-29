@@ -26,7 +26,7 @@ module Gtk
     end
 
     def bind_model(model, create_widget_func, user_data, user_data_free_func)
-      __return_value = LibGtk.flow_box_bind_model(to_unsafe.as(LibGtk::FlowBox*), model && model.to_unsafe.as(LibGio::ListModel*), create_widget_func, user_data && user_data, user_data_free_func)
+      __return_value = LibGtk.flow_box_bind_model(to_unsafe.as(LibGtk::FlowBox*), model ? model.to_unsafe.as(LibGio::ListModel*) : nil, create_widget_func, user_data ? user_data : nil, user_data_free_func)
       __return_value
     end
 
@@ -106,7 +106,7 @@ module Gtk
     end
 
     def selected_foreach(func, data)
-      __return_value = LibGtk.flow_box_selected_foreach(to_unsafe.as(LibGtk::FlowBox*), func, data && data)
+      __return_value = LibGtk.flow_box_selected_foreach(to_unsafe.as(LibGtk::FlowBox*), func, data ? data : nil)
       __return_value
     end
 
@@ -121,7 +121,7 @@ module Gtk
     end
 
     def set_filter_func(filter_func, user_data, destroy)
-      __return_value = LibGtk.flow_box_set_filter_func(to_unsafe.as(LibGtk::FlowBox*), filter_func && filter_func, user_data && user_data, destroy)
+      __return_value = LibGtk.flow_box_set_filter_func(to_unsafe.as(LibGtk::FlowBox*), filter_func ? filter_func : nil, user_data ? user_data : nil, destroy)
       __return_value
     end
 
@@ -156,7 +156,7 @@ module Gtk
     end
 
     def set_sort_func(sort_func, user_data, destroy)
-      __return_value = LibGtk.flow_box_set_sort_func(to_unsafe.as(LibGtk::FlowBox*), sort_func && sort_func, user_data && user_data, destroy)
+      __return_value = LibGtk.flow_box_set_sort_func(to_unsafe.as(LibGtk::FlowBox*), sort_func ? sort_func : nil, user_data ? user_data : nil, destroy)
       __return_value
     end
 

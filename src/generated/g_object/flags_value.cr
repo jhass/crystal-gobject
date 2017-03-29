@@ -32,7 +32,7 @@ module GObject
     end
 
     def value_name=(value : String)
-      to_unsafe.as(LibGObject::FlagsValue*).value.value_name = value
+      to_unsafe.as(LibGObject::FlagsValue*).value.value_name = value.to_unsafe
     end
 
     def value_nick
@@ -40,7 +40,7 @@ module GObject
     end
 
     def value_nick=(value : String)
-      to_unsafe.as(LibGObject::FlagsValue*).value.value_nick = value
+      to_unsafe.as(LibGObject::FlagsValue*).value.value_nick = value.to_unsafe
     end
 
   end

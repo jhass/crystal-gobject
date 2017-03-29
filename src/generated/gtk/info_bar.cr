@@ -26,7 +26,7 @@ module Gtk
     end
 
     def add_button(button_text, response_id)
-      __return_value = LibGtk.info_bar_add_button(to_unsafe.as(LibGtk::InfoBar*), button_text, Int32.new(response_id))
+      __return_value = LibGtk.info_bar_add_button(to_unsafe.as(LibGtk::InfoBar*), button_text.to_unsafe, Int32.new(response_id))
       Gtk::Button.new(__return_value)
     end
 

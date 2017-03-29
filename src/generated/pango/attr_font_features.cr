@@ -31,7 +31,7 @@ module Pango
     end
 
     def features=(value : String)
-      to_unsafe.as(LibPango::AttrFontFeatures*).value.features = value
+      to_unsafe.as(LibPango::AttrFontFeatures*).value.features = value.to_unsafe
     end
 
   end

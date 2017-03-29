@@ -103,7 +103,7 @@ module Gtk
     end
 
     def location=(location)
-      __return_value = LibGtk.places_sidebar_set_location(to_unsafe.as(LibGtk::PlacesSidebar*), location && location.to_unsafe.as(LibGio::File*))
+      __return_value = LibGtk.places_sidebar_set_location(to_unsafe.as(LibGtk::PlacesSidebar*), location ? location.to_unsafe.as(LibGio::File*) : nil)
       __return_value
     end
 

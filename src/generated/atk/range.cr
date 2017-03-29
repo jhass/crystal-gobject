@@ -11,7 +11,7 @@ module Atk
     end
 
     def self.new(lower_limit, upper_limit, description) : self
-      __return_value = LibAtk.range_new(Float64.new(lower_limit), Float64.new(upper_limit), description)
+      __return_value = LibAtk.range_new(Float64.new(lower_limit), Float64.new(upper_limit), description.to_unsafe)
       cast Atk::Range.new(__return_value)
     end
 

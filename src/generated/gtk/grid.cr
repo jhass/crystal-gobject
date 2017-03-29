@@ -29,7 +29,7 @@ module Gtk
     end
 
     def attach_next_to(child, sibling, side : Gtk::PositionType, width, height)
-      __return_value = LibGtk.grid_attach_next_to(to_unsafe.as(LibGtk::Grid*), child.to_unsafe.as(LibGtk::Widget*), sibling && sibling.to_unsafe.as(LibGtk::Widget*), side, Int32.new(width), Int32.new(height))
+      __return_value = LibGtk.grid_attach_next_to(to_unsafe.as(LibGtk::Grid*), child.to_unsafe.as(LibGtk::Widget*), sibling ? sibling.to_unsafe.as(LibGtk::Widget*) : nil, side, Int32.new(width), Int32.new(height))
       __return_value
     end
 

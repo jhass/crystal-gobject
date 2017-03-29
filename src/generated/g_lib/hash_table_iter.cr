@@ -31,7 +31,7 @@ module GLib
     end
 
     def replace(value)
-      __return_value = LibGLib.hash_table_iter_replace(to_unsafe.as(LibGLib::HashTableIter*), value && value)
+      __return_value = LibGLib.hash_table_iter_replace(to_unsafe.as(LibGLib::HashTableIter*), value ? value : nil)
       __return_value
     end
 

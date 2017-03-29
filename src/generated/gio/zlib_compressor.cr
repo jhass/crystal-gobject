@@ -23,7 +23,7 @@ module Gio
     end
 
     def file_info=(file_info)
-      __return_value = LibGio.zlib_compressor_set_file_info(to_unsafe.as(LibGio::ZlibCompressor*), file_info && file_info.to_unsafe.as(LibGio::FileInfo*))
+      __return_value = LibGio.zlib_compressor_set_file_info(to_unsafe.as(LibGio::ZlibCompressor*), file_info ? file_info.to_unsafe.as(LibGio::FileInfo*) : nil)
       __return_value
     end
 

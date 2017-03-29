@@ -13,13 +13,13 @@ module Gio
 
     def acquire(cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.permission_acquire(to_unsafe.as(LibGio::Permission*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.permission_acquire(to_unsafe.as(LibGio::Permission*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def acquire_async(cancellable, callback, user_data)
-      __return_value = LibGio.permission_acquire_async(to_unsafe.as(LibGio::Permission*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
+      __return_value = LibGio.permission_acquire_async(to_unsafe.as(LibGio::Permission*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       __return_value
     end
 
@@ -52,13 +52,13 @@ module Gio
 
     def release(cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.permission_release(to_unsafe.as(LibGio::Permission*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), pointerof(__error))
+      __return_value = LibGio.permission_release(to_unsafe.as(LibGio::Permission*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def release_async(cancellable, callback, user_data)
-      __return_value = LibGio.permission_release_async(to_unsafe.as(LibGio::Permission*), cancellable && cancellable.to_unsafe.as(LibGio::Cancellable*), callback && callback, user_data && user_data)
+      __return_value = LibGio.permission_release_async(to_unsafe.as(LibGio::Permission*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       __return_value
     end
 

@@ -86,7 +86,7 @@ module Gtk
     end
 
     def set_text(str, len)
-      __return_value = LibGtk.selection_data_set_text(to_unsafe.as(LibGtk::SelectionData*), str, Int32.new(len))
+      __return_value = LibGtk.selection_data_set_text(to_unsafe.as(LibGtk::SelectionData*), str.to_unsafe, Int32.new(len))
       __return_value
     end
 

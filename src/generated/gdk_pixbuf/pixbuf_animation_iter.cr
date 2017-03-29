@@ -9,7 +9,7 @@ module GdkPixbuf
     end
 
     def advance(current_time)
-      __return_value = LibGdkPixbuf.pixbuf_animation_iter_advance(to_unsafe.as(LibGdkPixbuf::PixbufAnimationIter*), current_time && current_time.to_unsafe.as(LibGLib::TimeVal*))
+      __return_value = LibGdkPixbuf.pixbuf_animation_iter_advance(to_unsafe.as(LibGdkPixbuf::PixbufAnimationIter*), current_time ? current_time.to_unsafe.as(LibGLib::TimeVal*) : nil)
       __return_value
     end
 

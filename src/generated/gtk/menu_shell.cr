@@ -24,7 +24,7 @@ module Gtk
     end
 
     def bind_model(model, action_namespace, with_separators)
-      __return_value = LibGtk.menu_shell_bind_model(to_unsafe.as(LibGtk::MenuShell*), model && model.to_unsafe.as(LibGio::MenuModel*), action_namespace, with_separators)
+      __return_value = LibGtk.menu_shell_bind_model(to_unsafe.as(LibGtk::MenuShell*), model ? model.to_unsafe.as(LibGio::MenuModel*) : nil, action_namespace ? action_namespace.to_unsafe : nil, with_separators)
       __return_value
     end
 

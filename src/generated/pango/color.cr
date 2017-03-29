@@ -30,7 +30,7 @@ module Pango
     end
 
     def parse(spec)
-      __return_value = LibPango.color_parse(to_unsafe.as(LibPango::Color*), spec)
+      __return_value = LibPango.color_parse(to_unsafe.as(LibPango::Color*), spec.to_unsafe)
       __return_value
     end
 

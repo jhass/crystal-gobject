@@ -39,7 +39,7 @@ module Gst
     end
 
     def set_qdata(quark, data, destroy)
-      __return_value = LibGst.mini_object_set_qdata(to_unsafe.as(LibGst::MiniObject*), UInt32.new(quark), data && data, destroy)
+      __return_value = LibGst.mini_object_set_qdata(to_unsafe.as(LibGst::MiniObject*), UInt32.new(quark), data ? data : nil, destroy)
       __return_value
     end
 
@@ -54,7 +54,7 @@ module Gst
     end
 
     def self.replace(olddata, newdata)
-      __return_value = LibGst.mini_object_replace(olddata, newdata && newdata.to_unsafe.as(LibGst::MiniObject*))
+      __return_value = LibGst.mini_object_replace(olddata, newdata ? newdata.to_unsafe.as(LibGst::MiniObject*) : nil)
       __return_value
     end
 

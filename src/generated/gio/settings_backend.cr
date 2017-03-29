@@ -19,32 +19,32 @@ module Gio
     end
 
     def changed(key, origin_tag)
-      __return_value = LibGio.settings_backend_changed(to_unsafe.as(LibGio::SettingsBackend*), key, origin_tag && origin_tag)
+      __return_value = LibGio.settings_backend_changed(to_unsafe.as(LibGio::SettingsBackend*), key.to_unsafe, origin_tag ? origin_tag : nil)
       __return_value
     end
 
     def changed_tree(tree, origin_tag)
-      __return_value = LibGio.settings_backend_changed_tree(to_unsafe.as(LibGio::SettingsBackend*), tree.to_unsafe.as(LibGLib::Tree*), origin_tag && origin_tag)
+      __return_value = LibGio.settings_backend_changed_tree(to_unsafe.as(LibGio::SettingsBackend*), tree.to_unsafe.as(LibGLib::Tree*), origin_tag ? origin_tag : nil)
       __return_value
     end
 
     def keys_changed(path, items, origin_tag)
-      __return_value = LibGio.settings_backend_keys_changed(to_unsafe.as(LibGio::SettingsBackend*), path, items, origin_tag && origin_tag)
+      __return_value = LibGio.settings_backend_keys_changed(to_unsafe.as(LibGio::SettingsBackend*), path.to_unsafe, items, origin_tag ? origin_tag : nil)
       __return_value
     end
 
     def path_changed(path, origin_tag)
-      __return_value = LibGio.settings_backend_path_changed(to_unsafe.as(LibGio::SettingsBackend*), path, origin_tag && origin_tag)
+      __return_value = LibGio.settings_backend_path_changed(to_unsafe.as(LibGio::SettingsBackend*), path.to_unsafe, origin_tag ? origin_tag : nil)
       __return_value
     end
 
     def path_writable_changed(path)
-      __return_value = LibGio.settings_backend_path_writable_changed(to_unsafe.as(LibGio::SettingsBackend*), path)
+      __return_value = LibGio.settings_backend_path_writable_changed(to_unsafe.as(LibGio::SettingsBackend*), path.to_unsafe)
       __return_value
     end
 
     def writable_changed(key)
-      __return_value = LibGio.settings_backend_writable_changed(to_unsafe.as(LibGio::SettingsBackend*), key)
+      __return_value = LibGio.settings_backend_writable_changed(to_unsafe.as(LibGio::SettingsBackend*), key.to_unsafe)
       __return_value
     end
 

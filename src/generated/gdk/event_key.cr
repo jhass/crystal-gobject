@@ -88,7 +88,7 @@ module Gdk
     end
 
     def string=(value : String)
-      to_unsafe.as(LibGdk::EventKey*).value.string = value
+      to_unsafe.as(LibGdk::EventKey*).value.string = value.to_unsafe
     end
 
     def hardware_keycode

@@ -10,7 +10,7 @@ module Gio
 
     # Implements TypePlugin
     def self.new(filename) : self
-      __return_value = LibGio.i_o_module_new(filename)
+      __return_value = LibGio.i_o_module_new(filename.to_unsafe)
       cast Gio::IOModule.new(__return_value)
     end
 

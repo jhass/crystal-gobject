@@ -19,7 +19,7 @@ module Gtk
     end
 
     def context_id(context_description)
-      __return_value = LibGtk.statusbar_get_context_id(to_unsafe.as(LibGtk::Statusbar*), context_description)
+      __return_value = LibGtk.statusbar_get_context_id(to_unsafe.as(LibGtk::Statusbar*), context_description.to_unsafe)
       __return_value
     end
 
@@ -34,7 +34,7 @@ module Gtk
     end
 
     def push(context_id, text)
-      __return_value = LibGtk.statusbar_push(to_unsafe.as(LibGtk::Statusbar*), UInt32.new(context_id), text)
+      __return_value = LibGtk.statusbar_push(to_unsafe.as(LibGtk::Statusbar*), UInt32.new(context_id), text.to_unsafe)
       __return_value
     end
 

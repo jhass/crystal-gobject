@@ -44,7 +44,7 @@ module Gio
     end
 
     def name=(value : String)
-      to_unsafe.as(LibGio::DBusPropertyInfo*).value.name = value
+      to_unsafe.as(LibGio::DBusPropertyInfo*).value.name = value.to_unsafe
     end
 
     def signature
@@ -52,7 +52,7 @@ module Gio
     end
 
     def signature=(value : String)
-      to_unsafe.as(LibGio::DBusPropertyInfo*).value.signature = value
+      to_unsafe.as(LibGio::DBusPropertyInfo*).value.signature = value.to_unsafe
     end
 
     def flags

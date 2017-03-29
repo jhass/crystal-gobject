@@ -11,7 +11,7 @@ module Gtk
     end
 
     def self.new(targets, ntargets) : self
-      __return_value = LibGtk.target_list_new(targets && targets, UInt32.new(ntargets))
+      __return_value = LibGtk.target_list_new(targets ? targets : nil, UInt32.new(ntargets))
       cast Gtk::TargetList.new(__return_value)
     end
 

@@ -26,7 +26,7 @@ module Pango
     end
 
     def filter(func, data)
-      __return_value = LibPango.attr_list_filter(to_unsafe.as(LibPango::AttrList*), func, data && data)
+      __return_value = LibPango.attr_list_filter(to_unsafe.as(LibPango::AttrList*), func, data ? data : nil)
       Pango::AttrList.new(__return_value) if __return_value
     end
 

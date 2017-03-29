@@ -11,7 +11,7 @@ module GLib
     end
 
     def self.new(name, description, help_description, user_data, destroy) : self
-      __return_value = LibGLib.option_group_new(name, description, help_description, user_data && user_data, destroy && destroy)
+      __return_value = LibGLib.option_group_new(name.to_unsafe, description.to_unsafe, help_description.to_unsafe, user_data ? user_data : nil, destroy ? destroy : nil)
       cast GLib::OptionGroup.new(__return_value)
     end
 
@@ -31,12 +31,12 @@ module GLib
     end
 
     def set_translate_func(func, data, destroy_notify)
-      __return_value = LibGLib.option_group_set_translate_func(to_unsafe.as(LibGLib::OptionGroup*), func && func, data && data, destroy_notify && destroy_notify)
+      __return_value = LibGLib.option_group_set_translate_func(to_unsafe.as(LibGLib::OptionGroup*), func ? func : nil, data ? data : nil, destroy_notify ? destroy_notify : nil)
       __return_value
     end
 
     def translation_domain=(domain)
-      __return_value = LibGLib.option_group_set_translation_domain(to_unsafe.as(LibGLib::OptionGroup*), domain)
+      __return_value = LibGLib.option_group_set_translation_domain(to_unsafe.as(LibGLib::OptionGroup*), domain.to_unsafe)
       __return_value
     end
 

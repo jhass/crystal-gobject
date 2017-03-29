@@ -25,7 +25,7 @@ module Gdk
     end
 
     def open_display(name)
-      __return_value = LibGdk.display_manager_open_display(to_unsafe.as(LibGdk::DisplayManager*), name)
+      __return_value = LibGdk.display_manager_open_display(to_unsafe.as(LibGdk::DisplayManager*), name.to_unsafe)
       Gdk::Display.new(__return_value) if __return_value
     end
 

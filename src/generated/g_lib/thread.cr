@@ -31,7 +31,7 @@ module GLib
     end
 
     def self.exit(retval)
-      __return_value = LibGLib.thread_exit(retval && retval)
+      __return_value = LibGLib.thread_exit(retval ? retval : nil)
       __return_value
     end
 

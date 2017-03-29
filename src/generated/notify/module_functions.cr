@@ -15,7 +15,7 @@ module Notify
   end
 
   def self.init(app_name)
-    __return_value = LibNotify.init(app_name)
+    __return_value = LibNotify.init(app_name.to_unsafe)
     __return_value
   end
 
@@ -25,7 +25,7 @@ module Notify
   end
 
   def self.set_app_name(app_name)
-    __return_value = LibNotify.set_app_name(app_name)
+    __return_value = LibNotify.set_app_name(app_name.to_unsafe)
     __return_value
   end
 

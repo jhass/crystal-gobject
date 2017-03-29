@@ -20,7 +20,7 @@ module Gtk
     end
 
     def foreach(func, data)
-      __return_value = LibGtk.text_tag_table_foreach(to_unsafe.as(LibGtk::TextTagTable*), func, data && data)
+      __return_value = LibGtk.text_tag_table_foreach(to_unsafe.as(LibGtk::TextTagTable*), func, data ? data : nil)
       __return_value
     end
 
@@ -30,7 +30,7 @@ module Gtk
     end
 
     def lookup(name)
-      __return_value = LibGtk.text_tag_table_lookup(to_unsafe.as(LibGtk::TextTagTable*), name)
+      __return_value = LibGtk.text_tag_table_lookup(to_unsafe.as(LibGtk::TextTagTable*), name.to_unsafe)
       Gtk::TextTag.new(__return_value) if __return_value
     end
 

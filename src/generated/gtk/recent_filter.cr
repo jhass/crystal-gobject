@@ -20,27 +20,27 @@ module Gtk
     end
 
     def add_application(application)
-      __return_value = LibGtk.recent_filter_add_application(to_unsafe.as(LibGtk::RecentFilter*), application)
+      __return_value = LibGtk.recent_filter_add_application(to_unsafe.as(LibGtk::RecentFilter*), application.to_unsafe)
       __return_value
     end
 
     def add_custom(needed : Gtk::RecentFilterFlags, func, data, data_destroy)
-      __return_value = LibGtk.recent_filter_add_custom(to_unsafe.as(LibGtk::RecentFilter*), needed, func, data && data, data_destroy)
+      __return_value = LibGtk.recent_filter_add_custom(to_unsafe.as(LibGtk::RecentFilter*), needed, func, data ? data : nil, data_destroy)
       __return_value
     end
 
     def add_group(group)
-      __return_value = LibGtk.recent_filter_add_group(to_unsafe.as(LibGtk::RecentFilter*), group)
+      __return_value = LibGtk.recent_filter_add_group(to_unsafe.as(LibGtk::RecentFilter*), group.to_unsafe)
       __return_value
     end
 
     def add_mime_type(mime_type)
-      __return_value = LibGtk.recent_filter_add_mime_type(to_unsafe.as(LibGtk::RecentFilter*), mime_type)
+      __return_value = LibGtk.recent_filter_add_mime_type(to_unsafe.as(LibGtk::RecentFilter*), mime_type.to_unsafe)
       __return_value
     end
 
     def add_pattern(pattern)
-      __return_value = LibGtk.recent_filter_add_pattern(to_unsafe.as(LibGtk::RecentFilter*), pattern)
+      __return_value = LibGtk.recent_filter_add_pattern(to_unsafe.as(LibGtk::RecentFilter*), pattern.to_unsafe)
       __return_value
     end
 
@@ -65,7 +65,7 @@ module Gtk
     end
 
     def name=(name)
-      __return_value = LibGtk.recent_filter_set_name(to_unsafe.as(LibGtk::RecentFilter*), name)
+      __return_value = LibGtk.recent_filter_set_name(to_unsafe.as(LibGtk::RecentFilter*), name.to_unsafe)
       __return_value
     end
 

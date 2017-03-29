@@ -21,7 +21,7 @@ module GIRepository
     end
 
     def symbol(symbol_name, symbol)
-      __return_value = LibGIRepository.typelib_symbol(to_unsafe.as(LibGIRepository::Typelib*), symbol_name, symbol && symbol)
+      __return_value = LibGIRepository.typelib_symbol(to_unsafe.as(LibGIRepository::Typelib*), symbol_name.to_unsafe, symbol ? symbol : nil)
       __return_value
     end
 

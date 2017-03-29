@@ -21,7 +21,7 @@ module Gio
 
     def self.new_from_string(mask_string) : self
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.inet_address_mask_new_from_string(mask_string, pointerof(__error))
+      __return_value = LibGio.inet_address_mask_new_from_string(mask_string.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       cast Gio::InetAddressMask.new(__return_value)
     end

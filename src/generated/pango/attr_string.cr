@@ -31,7 +31,7 @@ module Pango
     end
 
     def value=(value : String)
-      to_unsafe.as(LibPango::AttrString*).value.value = value
+      to_unsafe.as(LibPango::AttrString*).value.value = value.to_unsafe
     end
 
   end

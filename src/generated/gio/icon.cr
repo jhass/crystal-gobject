@@ -12,13 +12,13 @@ module Gio
 
     def self.new_for_string(str)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.icon_new_for_string(str, pointerof(__error))
+      __return_value = LibGio.icon_new_for_string(str.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def equal(icon2)
-      __return_value = LibGio.icon_equal(to_unsafe.as(LibGio::Icon*), icon2 && icon2.to_unsafe.as(LibGio::Icon*))
+      __return_value = LibGio.icon_equal(to_unsafe.as(LibGio::Icon*), icon2 ? icon2.to_unsafe.as(LibGio::Icon*) : nil)
       __return_value
     end
 

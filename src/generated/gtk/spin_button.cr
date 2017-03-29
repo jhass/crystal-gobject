@@ -24,7 +24,7 @@ module Gtk
 
 
     def self.new(adjustment, climb_rate, digits) : self
-      __return_value = LibGtk.spin_button_new(adjustment && adjustment.to_unsafe.as(LibGtk::Adjustment*), Float64.new(climb_rate), UInt32.new(digits))
+      __return_value = LibGtk.spin_button_new(adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil, Float64.new(climb_rate), UInt32.new(digits))
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -34,7 +34,7 @@ module Gtk
     end
 
     def configure(adjustment, climb_rate, digits)
-      __return_value = LibGtk.spin_button_configure(to_unsafe.as(LibGtk::SpinButton*), adjustment && adjustment.to_unsafe.as(LibGtk::Adjustment*), Float64.new(climb_rate), UInt32.new(digits))
+      __return_value = LibGtk.spin_button_configure(to_unsafe.as(LibGtk::SpinButton*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil, Float64.new(climb_rate), UInt32.new(digits))
       __return_value
     end
 

@@ -1,7 +1,7 @@
 module Gtk
   module CellLayout
     def add_attribute(cell, attribute, column)
-      __return_value = LibGtk.cell_layout_add_attribute(to_unsafe.as(LibGtk::CellLayout*), cell.to_unsafe.as(LibGtk::CellRenderer*), attribute, Int32.new(column))
+      __return_value = LibGtk.cell_layout_add_attribute(to_unsafe.as(LibGtk::CellLayout*), cell.to_unsafe.as(LibGtk::CellRenderer*), attribute.to_unsafe, Int32.new(column))
       __return_value
     end
 
@@ -41,7 +41,7 @@ module Gtk
     end
 
     def set_cell_data_func(cell, func, func_data, destroy)
-      __return_value = LibGtk.cell_layout_set_cell_data_func(to_unsafe.as(LibGtk::CellLayout*), cell.to_unsafe.as(LibGtk::CellRenderer*), func && func, func_data && func_data, destroy)
+      __return_value = LibGtk.cell_layout_set_cell_data_func(to_unsafe.as(LibGtk::CellLayout*), cell.to_unsafe.as(LibGtk::CellRenderer*), func ? func : nil, func_data ? func_data : nil, destroy)
       __return_value
     end
 

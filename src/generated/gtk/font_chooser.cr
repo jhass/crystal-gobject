@@ -41,12 +41,12 @@ module Gtk
     end
 
     def set_filter_func(filter, user_data, destroy)
-      __return_value = LibGtk.font_chooser_set_filter_func(to_unsafe.as(LibGtk::FontChooser*), filter && filter, user_data && user_data, destroy)
+      __return_value = LibGtk.font_chooser_set_filter_func(to_unsafe.as(LibGtk::FontChooser*), filter ? filter : nil, user_data ? user_data : nil, destroy)
       __return_value
     end
 
     def font=(fontname)
-      __return_value = LibGtk.font_chooser_set_font(to_unsafe.as(LibGtk::FontChooser*), fontname)
+      __return_value = LibGtk.font_chooser_set_font(to_unsafe.as(LibGtk::FontChooser*), fontname.to_unsafe)
       __return_value
     end
 
@@ -56,12 +56,12 @@ module Gtk
     end
 
     def font_map=(fontmap)
-      __return_value = LibGtk.font_chooser_set_font_map(to_unsafe.as(LibGtk::FontChooser*), fontmap && fontmap.to_unsafe.as(LibPango::FontMap*))
+      __return_value = LibGtk.font_chooser_set_font_map(to_unsafe.as(LibGtk::FontChooser*), fontmap ? fontmap.to_unsafe.as(LibPango::FontMap*) : nil)
       __return_value
     end
 
     def preview_text=(text)
-      __return_value = LibGtk.font_chooser_set_preview_text(to_unsafe.as(LibGtk::FontChooser*), text)
+      __return_value = LibGtk.font_chooser_set_preview_text(to_unsafe.as(LibGtk::FontChooser*), text.to_unsafe)
       __return_value
     end
 
