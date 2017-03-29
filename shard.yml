@@ -5,3 +5,6 @@ authors:
 description: "GObject introspection based binding generator and generated bindings"
 license: Apache-2.0
 crystal: 0.21.1
+targets:
+  generator:
+    main: src/generator/stage3.cr
