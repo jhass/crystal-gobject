@@ -8,8 +8,20 @@ module Gtk
       @gtk_entry_buffer.not_nil!
     end
 
+    def length
+      __return_value = LibGtk.entry_buffer_get_length(to_unsafe.as(LibGtk::EntryBuffer*))
+      __return_value
+    end
 
+    def max_length
+      __return_value = LibGtk.entry_buffer_get_max_length(to_unsafe.as(LibGtk::EntryBuffer*))
+      __return_value
+    end
 
+    def text
+      __return_value = LibGtk.entry_buffer_get_text(to_unsafe.as(LibGtk::EntryBuffer*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new(initial_chars, n_initial_chars) : self
       __return_value = LibGtk.entry_buffer_new(initial_chars ? initial_chars.to_unsafe : nil, Int32.new(n_initial_chars))

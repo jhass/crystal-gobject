@@ -10,6 +10,10 @@ module Gio
       @gio_unix_credentials_message.not_nil!
     end
 
+    def credentials
+      __return_value = LibGio.unix_credentials_message_get_credentials(to_unsafe.as(LibGio::UnixCredentialsMessage*))
+      Gio::Credentials.new(__return_value)
+    end
 
     def self.new : self
       __return_value = LibGio.unix_credentials_message_new

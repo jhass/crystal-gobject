@@ -10,8 +10,20 @@ module Gst
       @gst_clock.not_nil!
     end
 
+    def timeout
+      __return_value = LibGst.clock_get_timeout(to_unsafe.as(LibGst::Clock*))
+      __return_value
+    end
 
+    def window_size
+      __return_value = LibGst.clock_get_window_size(to_unsafe.as(LibGst::Clock*))
+      __return_value
+    end
 
+    def window_threshold
+      __return_value = LibGst.clock_get_window_threshold(to_unsafe.as(LibGst::Clock*))
+      __return_value
+    end
 
     def self.id_compare_func(id1, id2)
       __return_value = LibGst.clock_id_compare_func(id1 ? id1 : nil, id2 ? id2 : nil)

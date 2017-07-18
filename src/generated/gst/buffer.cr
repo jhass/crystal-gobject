@@ -173,11 +173,6 @@ module Gst
       __return_value
     end
 
-    def iterate_meta(state)
-      __return_value = LibGst.buffer_iterate_meta(to_unsafe.as(LibGst::Buffer*), state ? state : nil)
-      Gst::Meta.new(__return_value) if __return_value
-    end
-
     def map(info, flags : Gst::MapFlags)
       __return_value = LibGst.buffer_map(to_unsafe.as(LibGst::Buffer*), info, flags)
       __return_value

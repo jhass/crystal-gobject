@@ -10,8 +10,20 @@ module Gtk
       @gtk_cell_renderer_combo.not_nil!
     end
 
+    def has_entry
+      __return_value = LibGtk.cell_renderer_combo_get_has_entry(to_unsafe.as(LibGtk::CellRendererCombo*))
+      __return_value
+    end
 
+    def model
+      __return_value = LibGtk.cell_renderer_combo_get_model(to_unsafe.as(LibGtk::CellRendererCombo*))
+      __return_value
+    end
 
+    def text_column
+      __return_value = LibGtk.cell_renderer_combo_get_text_column(to_unsafe.as(LibGtk::CellRendererCombo*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.cell_renderer_combo_new

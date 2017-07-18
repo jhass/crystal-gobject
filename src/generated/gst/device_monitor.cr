@@ -10,6 +10,10 @@ module Gst
       @gst_device_monitor.not_nil!
     end
 
+    def show_all
+      __return_value = LibGst.device_monitor_get_show_all(to_unsafe.as(LibGst::DeviceMonitor*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGst.device_monitor_new

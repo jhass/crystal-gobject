@@ -14,11 +14,35 @@ module Gtk
     # Implements AppChooser
     # Implements Buildable
     # Implements Orientable
+    def default_text
+      __return_value = LibGtk.app_chooser_widget_get_default_text(to_unsafe.as(LibGtk::AppChooserWidget*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def show_all
+      __return_value = LibGtk.app_chooser_widget_get_show_all(to_unsafe.as(LibGtk::AppChooserWidget*))
+      __return_value
+    end
 
+    def show_default
+      __return_value = LibGtk.app_chooser_widget_get_show_default(to_unsafe.as(LibGtk::AppChooserWidget*))
+      __return_value
+    end
 
+    def show_fallback
+      __return_value = LibGtk.app_chooser_widget_get_show_fallback(to_unsafe.as(LibGtk::AppChooserWidget*))
+      __return_value
+    end
 
+    def show_other
+      __return_value = LibGtk.app_chooser_widget_get_show_other(to_unsafe.as(LibGtk::AppChooserWidget*))
+      __return_value
+    end
 
+    def show_recommended
+      __return_value = LibGtk.app_chooser_widget_get_show_recommended(to_unsafe.as(LibGtk::AppChooserWidget*))
+      __return_value
+    end
 
     def self.new(content_type) : self
       __return_value = LibGtk.app_chooser_widget_new(content_type.to_unsafe)

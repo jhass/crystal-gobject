@@ -9,6 +9,10 @@ module Gio
     end
 
     # Implements DBusInterface
+    def g_flags
+      __return_value = LibGio.d_bus_interface_skeleton_get_g_flags(to_unsafe.as(LibGio::DBusInterfaceSkeleton*))
+      __return_value
+    end
 
     def export(connection, object_path)
       __error = Pointer(LibGLib::Error).null

@@ -9,10 +9,30 @@ module Gtk
     end
 
     # Implements Icon
+    def background_icon
+      __return_value = LibGtk.numerable_icon_get_background_icon(to_unsafe.as(LibGtk::NumerableIcon*))
+      __return_value
+    end
 
+    def background_icon_name
+      __return_value = LibGtk.numerable_icon_get_background_icon_name(to_unsafe.as(LibGtk::NumerableIcon*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def count
+      __return_value = LibGtk.numerable_icon_get_count(to_unsafe.as(LibGtk::NumerableIcon*))
+      __return_value
+    end
 
+    def label
+      __return_value = LibGtk.numerable_icon_get_label(to_unsafe.as(LibGtk::NumerableIcon*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def style_context
+      __return_value = LibGtk.numerable_icon_get_style_context(to_unsafe.as(LibGtk::NumerableIcon*))
+      Gtk::StyleContext.new(__return_value)
+    end
 
     def self.new(base_icon)
       __return_value = LibGtk.numerable_icon_new(base_icon.to_unsafe.as(LibGio::Icon*))

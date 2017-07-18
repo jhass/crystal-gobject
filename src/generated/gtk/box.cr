@@ -13,8 +13,20 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
+    def baseline_position
+      __return_value = LibGtk.box_get_baseline_position(to_unsafe.as(LibGtk::Box*))
+      __return_value
+    end
 
+    def homogeneous
+      __return_value = LibGtk.box_get_homogeneous(to_unsafe.as(LibGtk::Box*))
+      __return_value
+    end
 
+    def spacing
+      __return_value = LibGtk.box_get_spacing(to_unsafe.as(LibGtk::Box*))
+      __return_value
+    end
 
     def self.new(orientation : Gtk::Orientation, spacing) : self
       __return_value = LibGtk.box_new(orientation, Int32.new(spacing))

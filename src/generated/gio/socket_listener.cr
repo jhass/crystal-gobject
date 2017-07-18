@@ -8,6 +8,10 @@ module Gio
       @gio_socket_listener.not_nil!
     end
 
+    def listen_backlog
+      __return_value = LibGio.socket_listener_get_listen_backlog(to_unsafe.as(LibGio::SocketListener*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGio.socket_listener_new

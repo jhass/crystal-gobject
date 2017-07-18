@@ -8,6 +8,10 @@ module Gtk
       @gtk_builder.not_nil!
     end
 
+    def translation_domain
+      __return_value = LibGtk.builder_get_translation_domain(to_unsafe.as(LibGtk::Builder*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new : self
       __return_value = LibGtk.builder_new

@@ -9,11 +9,35 @@ module Gio
     end
 
     # Implements Initable
+    def active
+      __return_value = LibGio.d_bus_server_get_active(to_unsafe.as(LibGio::DBusServer*))
+      __return_value
+    end
 
+    def address
+      __return_value = LibGio.d_bus_server_get_address(to_unsafe.as(LibGio::DBusServer*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def authentication_observer
+      __return_value = LibGio.d_bus_server_get_authentication_observer(to_unsafe.as(LibGio::DBusServer*))
+      Gio::DBusAuthObserver.new(__return_value)
+    end
 
+    def client_address
+      __return_value = LibGio.d_bus_server_get_client_address(to_unsafe.as(LibGio::DBusServer*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def flags
+      __return_value = LibGio.d_bus_server_get_flags(to_unsafe.as(LibGio::DBusServer*))
+      __return_value
+    end
 
+    def guid
+      __return_value = LibGio.d_bus_server_get_guid(to_unsafe.as(LibGio::DBusServer*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new_sync(address, flags : Gio::DBusServerFlags, guid, observer, cancellable) : self
       __error = Pointer(LibGLib::Error).null

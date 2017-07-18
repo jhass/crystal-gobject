@@ -12,12 +12,36 @@ module Gio
     # Implements Initable
 
 
+    def capabilities
+      __return_value = LibGio.d_bus_connection_get_capabilities(to_unsafe.as(LibGio::DBusConnection*))
+      __return_value
+    end
+
+    def closed
+      __return_value = LibGio.d_bus_connection_get_closed(to_unsafe.as(LibGio::DBusConnection*))
+      __return_value
+    end
+
+    def exit_on_close
+      __return_value = LibGio.d_bus_connection_get_exit_on_close(to_unsafe.as(LibGio::DBusConnection*))
+      __return_value
+    end
 
 
+    def guid
+      __return_value = LibGio.d_bus_connection_get_guid(to_unsafe.as(LibGio::DBusConnection*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def stream
+      __return_value = LibGio.d_bus_connection_get_stream(to_unsafe.as(LibGio::DBusConnection*))
+      Gio::IOStream.new(__return_value)
+    end
 
-
-
+    def unique_name
+      __return_value = LibGio.d_bus_connection_get_unique_name(to_unsafe.as(LibGio::DBusConnection*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new_finish(res) : self
       __error = Pointer(LibGLib::Error).null

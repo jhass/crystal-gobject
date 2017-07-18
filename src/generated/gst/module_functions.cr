@@ -4,6 +4,11 @@ module Gst
     __return_value
   end
 
+  def self.calculate_linear_regression(xy, temp, n, m_num, m_denom, b, xbase, r_squared)
+    __return_value = LibGst.calculate_linear_regression(xy, temp, UInt32.new(n), m_num, m_denom, b, xbase, r_squared)
+    __return_value
+  end
+
   def self.caps_features_from_string(features)
     __return_value = LibGst.caps_features_from_string(features.to_unsafe)
     Gst::CapsFeatures.new(__return_value) if __return_value
@@ -62,6 +67,11 @@ module Gst
   def self.debug_get_default_threshold
     __return_value = LibGst.debug_get_default_threshold
     __return_value
+  end
+
+  def self.debug_get_stack_trace(flags : Gst::StackTraceFlags)
+    __return_value = LibGst.debug_get_stack_trace(flags)
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.debug_is_active
@@ -141,6 +151,11 @@ module Gst
 
   def self.deinit
     __return_value = LibGst.deinit
+    __return_value
+  end
+
+  def self.dynamic_type_register(plugin, type)
+    __return_value = LibGst.dynamic_type_register(plugin.to_unsafe.as(LibGst::Plugin*), UInt64.new(type))
     __return_value
   end
 
@@ -291,6 +306,11 @@ module Gst
   def self.pad_mode_get_name(mode : Gst::PadMode)
     __return_value = LibGst.pad_mode_get_name(mode)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+  end
+
+  def self.param_spec_array(name, nick, blurb, element_spec, flags : GObject::ParamFlags)
+    __return_value = LibGst.param_spec_array(name.to_unsafe, nick.to_unsafe, blurb.to_unsafe, element_spec.to_unsafe.as(LibGObject::ParamSpec*), flags)
+    GObject::ParamSpec.new(__return_value)
   end
 
   def self.param_spec_fraction(name, nick, blurb, min_num, min_denom, max_num, max_denom, default_num, default_denom, flags : GObject::ParamFlags)
@@ -605,6 +625,11 @@ module Gst
     __return_value
   end
 
+  def self.util_get_object_array(object, name, array)
+    __return_value = LibGst.util_get_object_array(object.to_unsafe.as(LibGObject::Object*), name.to_unsafe, array)
+    __return_value
+  end
+
   def self.util_get_timestamp
     __return_value = LibGst.util_get_timestamp
     __return_value
@@ -642,6 +667,11 @@ module Gst
 
   def self.util_set_object_arg(object, name, value)
     __return_value = LibGst.util_set_object_arg(object.to_unsafe.as(LibGObject::Object*), name.to_unsafe, value.to_unsafe)
+    __return_value
+  end
+
+  def self.util_set_object_array(object, name, array)
+    __return_value = LibGst.util_set_object_array(object.to_unsafe.as(LibGObject::Object*), name.to_unsafe, array.to_unsafe.as(LibGObject::ValueArray*))
     __return_value
   end
 

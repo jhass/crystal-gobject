@@ -10,14 +10,50 @@ module Gtk
 
     # Implements Buildable
     # Implements CellLayout
+    def cell_area
+      __return_value = LibGtk.entry_completion_get_cell_area(to_unsafe.as(LibGtk::EntryCompletion*))
+      Gtk::CellArea.new(__return_value)
+    end
 
+    def inline_completion
+      __return_value = LibGtk.entry_completion_get_inline_completion(to_unsafe.as(LibGtk::EntryCompletion*))
+      __return_value
+    end
 
+    def inline_selection
+      __return_value = LibGtk.entry_completion_get_inline_selection(to_unsafe.as(LibGtk::EntryCompletion*))
+      __return_value
+    end
 
+    def minimum_key_length
+      __return_value = LibGtk.entry_completion_get_minimum_key_length(to_unsafe.as(LibGtk::EntryCompletion*))
+      __return_value
+    end
 
+    def model
+      __return_value = LibGtk.entry_completion_get_model(to_unsafe.as(LibGtk::EntryCompletion*))
+      __return_value
+    end
 
+    def popup_completion
+      __return_value = LibGtk.entry_completion_get_popup_completion(to_unsafe.as(LibGtk::EntryCompletion*))
+      __return_value
+    end
 
+    def popup_set_width
+      __return_value = LibGtk.entry_completion_get_popup_set_width(to_unsafe.as(LibGtk::EntryCompletion*))
+      __return_value
+    end
 
+    def popup_single_match
+      __return_value = LibGtk.entry_completion_get_popup_single_match(to_unsafe.as(LibGtk::EntryCompletion*))
+      __return_value
+    end
 
+    def text_column
+      __return_value = LibGtk.entry_completion_get_text_column(to_unsafe.as(LibGtk::EntryCompletion*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.entry_completion_new

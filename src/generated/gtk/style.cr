@@ -8,6 +8,10 @@ module Gtk
       @gtk_style.not_nil!
     end
 
+    def context
+      __return_value = LibGtk.style_get_context(to_unsafe.as(LibGtk::Style*))
+      Gtk::StyleContext.new(__return_value)
+    end
 
     def self.new : self
       __return_value = LibGtk.style_new

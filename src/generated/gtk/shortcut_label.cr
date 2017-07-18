@@ -13,7 +13,15 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
+    def accelerator
+      __return_value = LibGtk.shortcut_label_get_accelerator(to_unsafe.as(LibGtk::ShortcutLabel*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def disabled_text
+      __return_value = LibGtk.shortcut_label_get_disabled_text(to_unsafe.as(LibGtk::ShortcutLabel*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new(accelerator) : self
       __return_value = LibGtk.shortcut_label_new(accelerator.to_unsafe)

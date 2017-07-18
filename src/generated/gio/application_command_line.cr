@@ -9,6 +9,10 @@ module Gio
     end
 
 
+    def is_remote
+      __return_value = LibGio.application_command_line_get_is_remote(to_unsafe.as(LibGio::ApplicationCommandLine*))
+      __return_value
+    end
 
 
 

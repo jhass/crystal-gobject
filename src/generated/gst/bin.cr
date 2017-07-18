@@ -11,7 +11,15 @@ module Gst
     end
 
     # Implements ChildProxy
+    def async_handling
+      __return_value = LibGst.bin_get_async_handling(to_unsafe.as(LibGst::Bin*))
+      __return_value
+    end
 
+    def message_forward
+      __return_value = LibGst.bin_get_message_forward(to_unsafe.as(LibGst::Bin*))
+      __return_value
+    end
 
     def self.new(name) : self
       __return_value = LibGst.bin_new(name ? name.to_unsafe : nil)

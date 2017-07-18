@@ -10,8 +10,20 @@ module Gtk
       @gtk_gesture_single.not_nil!
     end
 
+    def button
+      __return_value = LibGtk.gesture_single_get_button(to_unsafe.as(LibGtk::GestureSingle*))
+      __return_value
+    end
 
+    def exclusive
+      __return_value = LibGtk.gesture_single_get_exclusive(to_unsafe.as(LibGtk::GestureSingle*))
+      __return_value
+    end
 
+    def touch_only
+      __return_value = LibGtk.gesture_single_get_touch_only(to_unsafe.as(LibGtk::GestureSingle*))
+      __return_value
+    end
 
     def button
       __return_value = LibGtk.gesture_single_get_button(to_unsafe.as(LibGtk::GestureSingle*))

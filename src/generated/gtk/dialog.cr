@@ -12,6 +12,10 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def use_header_bar
+      __return_value = LibGtk.dialog_get_use_header_bar(to_unsafe.as(LibGtk::Dialog*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.dialog_new

@@ -14,7 +14,15 @@ module Gtk
     # Implements Buildable
     # Implements FileChooser
     # Implements Orientable
+    def search_mode
+      __return_value = LibGtk.file_chooser_widget_get_search_mode(to_unsafe.as(LibGtk::FileChooserWidget*))
+      __return_value
+    end
 
+    def subtitle
+      __return_value = LibGtk.file_chooser_widget_get_subtitle(to_unsafe.as(LibGtk::FileChooserWidget*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new(action : Gtk::FileChooserAction) : self
       __return_value = LibGtk.file_chooser_widget_new(action)

@@ -8,6 +8,10 @@ module Gdk
       @gdk_app_launch_context.not_nil!
     end
 
+    def display
+      __return_value = LibGdk.app_launch_context_get_display(to_unsafe.as(LibGdk::AppLaunchContext*))
+      Gdk::Display.new(__return_value)
+    end
 
     def self.new : self
       __return_value = LibGdk.app_launch_context_new

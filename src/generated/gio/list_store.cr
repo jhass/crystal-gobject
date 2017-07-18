@@ -9,6 +9,10 @@ module Gio
     end
 
     # Implements ListModel
+    def item_type
+      __return_value = LibGio.list_store_get_item_type(to_unsafe.as(LibGio::ListStore*))
+      __return_value
+    end
 
     def self.new(item_type) : self
       __return_value = LibGio.list_store_new(UInt64.new(item_type))

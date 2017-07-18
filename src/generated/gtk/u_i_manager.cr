@@ -9,7 +9,15 @@ module Gtk
     end
 
     # Implements Buildable
+    def add_tearoffs
+      __return_value = LibGtk.u_i_manager_get_add_tearoffs(to_unsafe.as(LibGtk::UIManager*))
+      __return_value
+    end
 
+    def ui
+      __return_value = LibGtk.u_i_manager_get_ui(to_unsafe.as(LibGtk::UIManager*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new : self
       __return_value = LibGtk.u_i_manager_new

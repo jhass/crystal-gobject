@@ -8,7 +8,15 @@ module Gtk
       @gtk_recent_manager.not_nil!
     end
 
+    def filename
+      __return_value = LibGtk.recent_manager_get_filename(to_unsafe.as(LibGtk::RecentManager*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def size
+      __return_value = LibGtk.recent_manager_get_size(to_unsafe.as(LibGtk::RecentManager*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.recent_manager_new

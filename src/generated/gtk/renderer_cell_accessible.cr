@@ -12,6 +12,10 @@ module Gtk
 
     # Implements Action
     # Implements Component
+    def renderer
+      __return_value = LibGtk.renderer_cell_accessible_get_renderer(to_unsafe.as(LibGtk::RendererCellAccessible*))
+      Gtk::CellRenderer.new(__return_value)
+    end
 
     def self.new(renderer) : self
       __return_value = LibGtk.renderer_cell_accessible_new(renderer.to_unsafe.as(LibGtk::CellRenderer*))

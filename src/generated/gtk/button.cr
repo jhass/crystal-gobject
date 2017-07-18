@@ -14,14 +14,50 @@ module Gtk
     # Implements Actionable
     # Implements Activatable
     # Implements Buildable
+    def always_show_image
+      __return_value = LibGtk.button_get_always_show_image(to_unsafe.as(LibGtk::Button*))
+      __return_value
+    end
 
+    def image
+      __return_value = LibGtk.button_get_image(to_unsafe.as(LibGtk::Button*))
+      Gtk::Widget.new(__return_value)
+    end
 
+    def image_position
+      __return_value = LibGtk.button_get_image_position(to_unsafe.as(LibGtk::Button*))
+      __return_value
+    end
 
+    def label
+      __return_value = LibGtk.button_get_label(to_unsafe.as(LibGtk::Button*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def relief
+      __return_value = LibGtk.button_get_relief(to_unsafe.as(LibGtk::Button*))
+      __return_value
+    end
 
+    def use_stock
+      __return_value = LibGtk.button_get_use_stock(to_unsafe.as(LibGtk::Button*))
+      __return_value
+    end
 
+    def use_underline
+      __return_value = LibGtk.button_get_use_underline(to_unsafe.as(LibGtk::Button*))
+      __return_value
+    end
 
+    def xalign
+      __return_value = LibGtk.button_get_xalign(to_unsafe.as(LibGtk::Button*))
+      __return_value
+    end
 
+    def yalign
+      __return_value = LibGtk.button_get_yalign(to_unsafe.as(LibGtk::Button*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.button_new

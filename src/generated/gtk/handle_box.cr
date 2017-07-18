@@ -12,10 +12,30 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def child_detached
+      __return_value = LibGtk.handle_box_get_child_detached(to_unsafe.as(LibGtk::HandleBox*))
+      __return_value
+    end
 
+    def handle_position
+      __return_value = LibGtk.handle_box_get_handle_position(to_unsafe.as(LibGtk::HandleBox*))
+      __return_value
+    end
 
+    def shadow_type
+      __return_value = LibGtk.handle_box_get_shadow_type(to_unsafe.as(LibGtk::HandleBox*))
+      __return_value
+    end
 
+    def snap_edge
+      __return_value = LibGtk.handle_box_get_snap_edge(to_unsafe.as(LibGtk::HandleBox*))
+      __return_value
+    end
 
+    def snap_edge_set
+      __return_value = LibGtk.handle_box_get_snap_edge_set(to_unsafe.as(LibGtk::HandleBox*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.handle_box_new

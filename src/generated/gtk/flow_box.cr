@@ -13,12 +13,40 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
+    def activate_on_single_click
+      __return_value = LibGtk.flow_box_get_activate_on_single_click(to_unsafe.as(LibGtk::FlowBox*))
+      __return_value
+    end
 
+    def column_spacing
+      __return_value = LibGtk.flow_box_get_column_spacing(to_unsafe.as(LibGtk::FlowBox*))
+      __return_value
+    end
 
+    def homogeneous
+      __return_value = LibGtk.flow_box_get_homogeneous(to_unsafe.as(LibGtk::FlowBox*))
+      __return_value
+    end
 
+    def max_children_per_line
+      __return_value = LibGtk.flow_box_get_max_children_per_line(to_unsafe.as(LibGtk::FlowBox*))
+      __return_value
+    end
 
+    def min_children_per_line
+      __return_value = LibGtk.flow_box_get_min_children_per_line(to_unsafe.as(LibGtk::FlowBox*))
+      __return_value
+    end
 
+    def row_spacing
+      __return_value = LibGtk.flow_box_get_row_spacing(to_unsafe.as(LibGtk::FlowBox*))
+      __return_value
+    end
 
+    def selection_mode
+      __return_value = LibGtk.flow_box_get_selection_mode(to_unsafe.as(LibGtk::FlowBox*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.flow_box_new

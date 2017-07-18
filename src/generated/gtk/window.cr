@@ -12,38 +12,166 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def accept_focus
+      __return_value = LibGtk.window_get_accept_focus(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
+
+    def application
+      __return_value = LibGtk.window_get_application(to_unsafe.as(LibGtk::Window*))
+      Gtk::Application.new(__return_value)
+    end
+
+    def attached_to
+      __return_value = LibGtk.window_get_attached_to(to_unsafe.as(LibGtk::Window*))
+      Gtk::Widget.new(__return_value)
+    end
+
+    def decorated
+      __return_value = LibGtk.window_get_decorated(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
+
+    def default_height
+      __return_value = LibGtk.window_get_default_height(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
+
+    def default_width
+      __return_value = LibGtk.window_get_default_width(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
+
+    def deletable
+      __return_value = LibGtk.window_get_deletable(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
+
+    def destroy_with_parent
+      __return_value = LibGtk.window_get_destroy_with_parent(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
+
+    def focus_on_map
+      __return_value = LibGtk.window_get_focus_on_map(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
+
+    def focus_visible
+      __return_value = LibGtk.window_get_focus_visible(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
+
+    def gravity
+      __return_value = LibGtk.window_get_gravity(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
+
+    def has_resize_grip
+      __return_value = LibGtk.window_get_has_resize_grip(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
+
+    def has_toplevel_focus
+      __return_value = LibGtk.window_get_has_toplevel_focus(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
+
+    def hide_titlebar_when_maximized
+      __return_value = LibGtk.window_get_hide_titlebar_when_maximized(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
+
+    def icon
+      __return_value = LibGtk.window_get_icon(to_unsafe.as(LibGtk::Window*))
+      GdkPixbuf::Pixbuf.new(__return_value)
+    end
+
+    def icon_name
+      __return_value = LibGtk.window_get_icon_name(to_unsafe.as(LibGtk::Window*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
+
+    def is_active
+      __return_value = LibGtk.window_get_is_active(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
+
+    def is_maximized
+      __return_value = LibGtk.window_get_is_maximized(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
+
+    def mnemonics_visible
+      __return_value = LibGtk.window_get_mnemonics_visible(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
+
+    def modal
+      __return_value = LibGtk.window_get_modal(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
+
+    def resizable
+      __return_value = LibGtk.window_get_resizable(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
+
+    def resize_grip_visible
+      __return_value = LibGtk.window_get_resize_grip_visible(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
+
+    def role
+      __return_value = LibGtk.window_get_role(to_unsafe.as(LibGtk::Window*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
+
+    def screen
+      __return_value = LibGtk.window_get_screen(to_unsafe.as(LibGtk::Window*))
+      Gdk::Screen.new(__return_value)
+    end
+
+    def skip_pager_hint
+      __return_value = LibGtk.window_get_skip_pager_hint(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
+
+    def skip_taskbar_hint
+      __return_value = LibGtk.window_get_skip_taskbar_hint(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
 
 
+    def title
+      __return_value = LibGtk.window_get_title(to_unsafe.as(LibGtk::Window*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def transient_for
+      __return_value = LibGtk.window_get_transient_for(to_unsafe.as(LibGtk::Window*))
+      Gtk::Window.new(__return_value)
+    end
 
+    def type
+      __return_value = LibGtk.window_get_type(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
 
+    def type_hint
+      __return_value = LibGtk.window_get_type_hint(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
 
+    def urgency_hint
+      __return_value = LibGtk.window_get_urgency_hint(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+    def window_position
+      __return_value = LibGtk.window_get_window_position(to_unsafe.as(LibGtk::Window*))
+      __return_value
+    end
 
     def self.new(type : Gtk::WindowType) : self
       __return_value = LibGtk.window_new(type)

@@ -15,11 +15,35 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
     # Implements ColorChooser
+    def alpha
+      __return_value = LibGtk.color_button_get_alpha(to_unsafe.as(LibGtk::ColorButton*))
+      __return_value
+    end
 
+    def color
+      __return_value = LibGtk.color_button_get_color(to_unsafe.as(LibGtk::ColorButton*))
+      Gdk::Color.new(__return_value)
+    end
 
+    def rgba
+      __return_value = LibGtk.color_button_get_rgba(to_unsafe.as(LibGtk::ColorButton*))
+      Gdk::RGBA.new(__return_value)
+    end
 
+    def show_editor
+      __return_value = LibGtk.color_button_get_show_editor(to_unsafe.as(LibGtk::ColorButton*))
+      __return_value
+    end
 
+    def title
+      __return_value = LibGtk.color_button_get_title(to_unsafe.as(LibGtk::ColorButton*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def use_alpha
+      __return_value = LibGtk.color_button_get_use_alpha(to_unsafe.as(LibGtk::ColorButton*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.color_button_new

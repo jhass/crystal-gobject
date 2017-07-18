@@ -8,8 +8,20 @@ module Gio
       @gio_permission.not_nil!
     end
 
+    def allowed
+      __return_value = LibGio.permission_get_allowed(to_unsafe.as(LibGio::Permission*))
+      __return_value
+    end
 
+    def can_acquire
+      __return_value = LibGio.permission_get_can_acquire(to_unsafe.as(LibGio::Permission*))
+      __return_value
+    end
 
+    def can_release
+      __return_value = LibGio.permission_get_can_release(to_unsafe.as(LibGio::Permission*))
+      __return_value
+    end
 
     def acquire(cancellable)
       __error = Pointer(LibGLib::Error).null

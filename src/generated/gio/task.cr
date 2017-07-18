@@ -9,6 +9,10 @@ module Gio
     end
 
     # Implements AsyncResult
+    def completed
+      __return_value = LibGio.task_get_completed(to_unsafe.as(LibGio::Task*))
+      __return_value
+    end
 
     def self.new(source_object, cancellable, callback, callback_data) : self
       __return_value = LibGio.task_new(source_object ? source_object.to_unsafe.as(LibGObject::Object*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, callback_data ? callback_data : nil)

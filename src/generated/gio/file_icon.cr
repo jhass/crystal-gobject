@@ -10,6 +10,10 @@ module Gio
 
     # Implements Icon
     # Implements LoadableIcon
+    def file
+      __return_value = LibGio.file_icon_get_file(to_unsafe.as(LibGio::FileIcon*))
+      __return_value
+    end
 
     def self.new(file) : self
       __return_value = LibGio.file_icon_new(file.to_unsafe.as(LibGio::File*))

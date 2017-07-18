@@ -8,9 +8,25 @@ module Gtk
       @gtk_native_dialog.not_nil!
     end
 
+    def modal
+      __return_value = LibGtk.native_dialog_get_modal(to_unsafe.as(LibGtk::NativeDialog*))
+      __return_value
+    end
 
+    def title
+      __return_value = LibGtk.native_dialog_get_title(to_unsafe.as(LibGtk::NativeDialog*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def transient_for
+      __return_value = LibGtk.native_dialog_get_transient_for(to_unsafe.as(LibGtk::NativeDialog*))
+      Gtk::Window.new(__return_value)
+    end
 
+    def visible
+      __return_value = LibGtk.native_dialog_get_visible(to_unsafe.as(LibGtk::NativeDialog*))
+      __return_value
+    end
 
     def destroy
       __return_value = LibGtk.native_dialog_destroy(to_unsafe.as(LibGtk::NativeDialog*))

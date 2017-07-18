@@ -11,12 +11,40 @@ module Gio
     # Implements ActionGroup
     # Implements ActionMap
 
+    def application_id
+      __return_value = LibGio.application_get_application_id(to_unsafe.as(LibGio::Application*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def flags
+      __return_value = LibGio.application_get_flags(to_unsafe.as(LibGio::Application*))
+      __return_value
+    end
 
+    def inactivity_timeout
+      __return_value = LibGio.application_get_inactivity_timeout(to_unsafe.as(LibGio::Application*))
+      __return_value
+    end
 
+    def is_busy
+      __return_value = LibGio.application_get_is_busy(to_unsafe.as(LibGio::Application*))
+      __return_value
+    end
 
+    def is_registered
+      __return_value = LibGio.application_get_is_registered(to_unsafe.as(LibGio::Application*))
+      __return_value
+    end
 
+    def is_remote
+      __return_value = LibGio.application_get_is_remote(to_unsafe.as(LibGio::Application*))
+      __return_value
+    end
 
+    def resource_base_path
+      __return_value = LibGio.application_get_resource_base_path(to_unsafe.as(LibGio::Application*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new(application_id, flags : Gio::ApplicationFlags) : self
       __return_value = LibGio.application_new(application_id ? application_id.to_unsafe : nil, flags)

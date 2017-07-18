@@ -8,10 +8,30 @@ module Gtk
       @gtk_cell_area_context.not_nil!
     end
 
+    def area
+      __return_value = LibGtk.cell_area_context_get_area(to_unsafe.as(LibGtk::CellAreaContext*))
+      Gtk::CellArea.new(__return_value)
+    end
 
+    def minimum_height
+      __return_value = LibGtk.cell_area_context_get_minimum_height(to_unsafe.as(LibGtk::CellAreaContext*))
+      __return_value
+    end
 
+    def minimum_width
+      __return_value = LibGtk.cell_area_context_get_minimum_width(to_unsafe.as(LibGtk::CellAreaContext*))
+      __return_value
+    end
 
+    def natural_height
+      __return_value = LibGtk.cell_area_context_get_natural_height(to_unsafe.as(LibGtk::CellAreaContext*))
+      __return_value
+    end
 
+    def natural_width
+      __return_value = LibGtk.cell_area_context_get_natural_width(to_unsafe.as(LibGtk::CellAreaContext*))
+      __return_value
+    end
 
     def allocate(width, height)
       __return_value = LibGtk.cell_area_context_allocate(to_unsafe.as(LibGtk::CellAreaContext*), Int32.new(width), Int32.new(height))

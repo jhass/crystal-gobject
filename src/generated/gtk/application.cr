@@ -10,9 +10,25 @@ module Gtk
 
     # Implements ActionGroup
     # Implements ActionMap
+    def active_window
+      __return_value = LibGtk.application_get_active_window(to_unsafe.as(LibGtk::Application*))
+      Gtk::Window.new(__return_value)
+    end
 
+    def app_menu
+      __return_value = LibGtk.application_get_app_menu(to_unsafe.as(LibGtk::Application*))
+      Gio::MenuModel.new(__return_value)
+    end
 
+    def menubar
+      __return_value = LibGtk.application_get_menubar(to_unsafe.as(LibGtk::Application*))
+      Gio::MenuModel.new(__return_value)
+    end
 
+    def register_session
+      __return_value = LibGtk.application_get_register_session(to_unsafe.as(LibGtk::Application*))
+      __return_value
+    end
 
     def self.new(application_id, flags : Gio::ApplicationFlags) : self
       __return_value = LibGtk.application_new(application_id ? application_id.to_unsafe : nil, flags)

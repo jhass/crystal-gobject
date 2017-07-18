@@ -11,8 +11,16 @@ module Gtk
     end
 
     # Implements Buildable
+    def current_value
+      __return_value = LibGtk.radio_action_get_current_value(to_unsafe.as(LibGtk::RadioAction*))
+      __return_value
+    end
 
 
+    def value
+      __return_value = LibGtk.radio_action_get_value(to_unsafe.as(LibGtk::RadioAction*))
+      __return_value
+    end
 
     def self.new(name, label, tooltip, stock_id, value) : self
       __return_value = LibGtk.radio_action_new(name.to_unsafe, label ? label.to_unsafe : nil, tooltip ? tooltip.to_unsafe : nil, stock_id ? stock_id.to_unsafe : nil, Int32.new(value))

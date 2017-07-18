@@ -10,7 +10,15 @@ module Gtk
 
     # Implements TreeDragSource
     # Implements TreeModel
+    def child_model
+      __return_value = LibGtk.tree_model_filter_get_child_model(to_unsafe.as(LibGtk::TreeModelFilter*))
+      __return_value
+    end
 
+    def virtual_root
+      __return_value = LibGtk.tree_model_filter_get_virtual_root(to_unsafe.as(LibGtk::TreeModelFilter*))
+      Gtk::TreePath.new(__return_value)
+    end
 
     def clear_cache
       __return_value = LibGtk.tree_model_filter_clear_cache(to_unsafe.as(LibGtk::TreeModelFilter*))

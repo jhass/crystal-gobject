@@ -12,8 +12,16 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def border_width
+      __return_value = LibGtk.container_get_border_width(to_unsafe.as(LibGtk::Container*))
+      __return_value
+    end
 
 
+    def resize_mode
+      __return_value = LibGtk.container_get_resize_mode(to_unsafe.as(LibGtk::Container*))
+      __return_value
+    end
 
     def add(widget)
       __return_value = LibGtk.container_add(to_unsafe.as(LibGtk::Container*), widget.to_unsafe.as(LibGtk::Widget*))

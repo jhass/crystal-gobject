@@ -8,7 +8,15 @@ module Gdk
       @gdk_drawing_context.not_nil!
     end
 
+    def clip
+      __return_value = LibGdk.drawing_context_get_clip(to_unsafe.as(LibGdk::DrawingContext*))
+      Cairo::Region.new(__return_value)
+    end
 
+    def window
+      __return_value = LibGdk.drawing_context_get_window(to_unsafe.as(LibGdk::DrawingContext*))
+      Gdk::Window.new(__return_value)
+    end
 
     def cairo_context
       __return_value = LibGdk.drawing_context_get_cairo_context(to_unsafe.as(LibGdk::DrawingContext*))

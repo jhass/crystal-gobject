@@ -10,19 +10,75 @@ module Gio
 
     # Implements DatagramBased
     # Implements Initable
+    def blocking
+      __return_value = LibGio.socket_get_blocking(to_unsafe.as(LibGio::Socket*))
+      __return_value
+    end
 
+    def broadcast
+      __return_value = LibGio.socket_get_broadcast(to_unsafe.as(LibGio::Socket*))
+      __return_value
+    end
 
+    def family
+      __return_value = LibGio.socket_get_family(to_unsafe.as(LibGio::Socket*))
+      __return_value
+    end
 
+    def fd
+      __return_value = LibGio.socket_get_fd(to_unsafe.as(LibGio::Socket*))
+      __return_value
+    end
 
+    def keepalive
+      __return_value = LibGio.socket_get_keepalive(to_unsafe.as(LibGio::Socket*))
+      __return_value
+    end
 
+    def listen_backlog
+      __return_value = LibGio.socket_get_listen_backlog(to_unsafe.as(LibGio::Socket*))
+      __return_value
+    end
 
+    def local_address
+      __return_value = LibGio.socket_get_local_address(to_unsafe.as(LibGio::Socket*))
+      Gio::SocketAddress.new(__return_value)
+    end
 
+    def multicast_loopback
+      __return_value = LibGio.socket_get_multicast_loopback(to_unsafe.as(LibGio::Socket*))
+      __return_value
+    end
 
+    def multicast_ttl
+      __return_value = LibGio.socket_get_multicast_ttl(to_unsafe.as(LibGio::Socket*))
+      __return_value
+    end
 
+    def protocol
+      __return_value = LibGio.socket_get_protocol(to_unsafe.as(LibGio::Socket*))
+      __return_value
+    end
 
+    def remote_address
+      __return_value = LibGio.socket_get_remote_address(to_unsafe.as(LibGio::Socket*))
+      Gio::SocketAddress.new(__return_value)
+    end
 
+    def timeout
+      __return_value = LibGio.socket_get_timeout(to_unsafe.as(LibGio::Socket*))
+      __return_value
+    end
 
+    def ttl
+      __return_value = LibGio.socket_get_ttl(to_unsafe.as(LibGio::Socket*))
+      __return_value
+    end
 
+    def type
+      __return_value = LibGio.socket_get_type(to_unsafe.as(LibGio::Socket*))
+      __return_value
+    end
 
     def self.new(family : Gio::SocketFamily, type : Gio::SocketType, protocol : Gio::SocketProtocol) : self
       __error = Pointer(LibGLib::Error).null

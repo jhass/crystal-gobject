@@ -13,13 +13,45 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
+    def adjustment
+      __return_value = LibGtk.range_get_adjustment(to_unsafe.as(LibGtk::Range*))
+      Gtk::Adjustment.new(__return_value)
+    end
 
+    def fill_level
+      __return_value = LibGtk.range_get_fill_level(to_unsafe.as(LibGtk::Range*))
+      __return_value
+    end
 
+    def inverted
+      __return_value = LibGtk.range_get_inverted(to_unsafe.as(LibGtk::Range*))
+      __return_value
+    end
 
+    def lower_stepper_sensitivity
+      __return_value = LibGtk.range_get_lower_stepper_sensitivity(to_unsafe.as(LibGtk::Range*))
+      __return_value
+    end
 
+    def restrict_to_fill_level
+      __return_value = LibGtk.range_get_restrict_to_fill_level(to_unsafe.as(LibGtk::Range*))
+      __return_value
+    end
 
+    def round_digits
+      __return_value = LibGtk.range_get_round_digits(to_unsafe.as(LibGtk::Range*))
+      __return_value
+    end
 
+    def show_fill_level
+      __return_value = LibGtk.range_get_show_fill_level(to_unsafe.as(LibGtk::Range*))
+      __return_value
+    end
 
+    def upper_stepper_sensitivity
+      __return_value = LibGtk.range_get_upper_stepper_sensitivity(to_unsafe.as(LibGtk::Range*))
+      __return_value
+    end
 
     def adjustment
       __return_value = LibGtk.range_get_adjustment(to_unsafe.as(LibGtk::Range*))

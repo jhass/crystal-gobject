@@ -8,7 +8,15 @@ module Gio
       @gio_file_monitor.not_nil!
     end
 
+    def cancelled
+      __return_value = LibGio.file_monitor_get_cancelled(to_unsafe.as(LibGio::FileMonitor*))
+      __return_value
+    end
 
+    def rate_limit
+      __return_value = LibGio.file_monitor_get_rate_limit(to_unsafe.as(LibGio::FileMonitor*))
+      __return_value
+    end
 
     def cancel
       __return_value = LibGio.file_monitor_cancel(to_unsafe.as(LibGio::FileMonitor*))

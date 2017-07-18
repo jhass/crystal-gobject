@@ -12,6 +12,10 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def take_focus
+      __return_value = LibGtk.menu_shell_get_take_focus(to_unsafe.as(LibGtk::MenuShell*))
+      __return_value
+    end
 
     def activate_item(menu_item, force_deactivate)
       __return_value = LibGtk.menu_shell_activate_item(to_unsafe.as(LibGtk::MenuShell*), menu_item.to_unsafe.as(LibGtk::Widget*), force_deactivate)

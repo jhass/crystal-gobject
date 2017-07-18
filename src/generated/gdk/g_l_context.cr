@@ -8,8 +8,20 @@ module Gdk
       @gdk_g_l_context.not_nil!
     end
 
+    def display
+      __return_value = LibGdk.g_l_context_get_display(to_unsafe.as(LibGdk::GLContext*))
+      Gdk::Display.new(__return_value)
+    end
 
+    def shared_context
+      __return_value = LibGdk.g_l_context_get_shared_context(to_unsafe.as(LibGdk::GLContext*))
+      Gdk::GLContext.new(__return_value)
+    end
 
+    def window
+      __return_value = LibGdk.g_l_context_get_window(to_unsafe.as(LibGdk::GLContext*))
+      Gdk::Window.new(__return_value)
+    end
 
     def self.clear_current
       __return_value = LibGdk.g_l_context_clear_current

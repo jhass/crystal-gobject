@@ -12,7 +12,15 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def section_name
+      __return_value = LibGtk.shortcuts_window_get_section_name(to_unsafe.as(LibGtk::ShortcutsWindow*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def view_name
+      __return_value = LibGtk.shortcuts_window_get_view_name(to_unsafe.as(LibGtk::ShortcutsWindow*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     alias CloseSignal = ShortcutsWindow ->
     def on_close(&__block : CloseSignal)

@@ -10,14 +10,50 @@ module Gio
       @gio_tls_connection.not_nil!
     end
 
+    def base_io_stream
+      __return_value = LibGio.tls_connection_get_base_io_stream(to_unsafe.as(LibGio::TlsConnection*))
+      Gio::IOStream.new(__return_value)
+    end
 
+    def certificate
+      __return_value = LibGio.tls_connection_get_certificate(to_unsafe.as(LibGio::TlsConnection*))
+      Gio::TlsCertificate.new(__return_value)
+    end
 
+    def database
+      __return_value = LibGio.tls_connection_get_database(to_unsafe.as(LibGio::TlsConnection*))
+      Gio::TlsDatabase.new(__return_value)
+    end
 
+    def interaction
+      __return_value = LibGio.tls_connection_get_interaction(to_unsafe.as(LibGio::TlsConnection*))
+      Gio::TlsInteraction.new(__return_value)
+    end
 
+    def peer_certificate
+      __return_value = LibGio.tls_connection_get_peer_certificate(to_unsafe.as(LibGio::TlsConnection*))
+      Gio::TlsCertificate.new(__return_value)
+    end
 
+    def peer_certificate_errors
+      __return_value = LibGio.tls_connection_get_peer_certificate_errors(to_unsafe.as(LibGio::TlsConnection*))
+      __return_value
+    end
 
+    def rehandshake_mode
+      __return_value = LibGio.tls_connection_get_rehandshake_mode(to_unsafe.as(LibGio::TlsConnection*))
+      __return_value
+    end
 
+    def require_close_notify
+      __return_value = LibGio.tls_connection_get_require_close_notify(to_unsafe.as(LibGio::TlsConnection*))
+      __return_value
+    end
 
+    def use_system_certdb
+      __return_value = LibGio.tls_connection_get_use_system_certdb(to_unsafe.as(LibGio::TlsConnection*))
+      __return_value
+    end
 
     def emit_accept_certificate(peer_cert, errors : Gio::TlsCertificateFlags)
       __return_value = LibGio.tls_connection_emit_accept_certificate(to_unsafe.as(LibGio::TlsConnection*), peer_cert.to_unsafe.as(LibGio::TlsCertificate*), errors)

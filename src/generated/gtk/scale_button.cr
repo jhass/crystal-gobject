@@ -15,9 +15,25 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
     # Implements Orientable
+    def adjustment
+      __return_value = LibGtk.scale_button_get_adjustment(to_unsafe.as(LibGtk::ScaleButton*))
+      Gtk::Adjustment.new(__return_value)
+    end
 
+    def icons
+      __return_value = LibGtk.scale_button_get_icons(to_unsafe.as(LibGtk::ScaleButton*))
+      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
+    end
 
+    def size
+      __return_value = LibGtk.scale_button_get_size(to_unsafe.as(LibGtk::ScaleButton*))
+      __return_value
+    end
 
+    def value
+      __return_value = LibGtk.scale_button_get_value(to_unsafe.as(LibGtk::ScaleButton*))
+      __return_value
+    end
 
     def self.new(size, min, max, step, icons) : self
       __return_value = LibGtk.scale_button_new(Int32.new(size), Float64.new(min), Float64.new(max), Float64.new(step), icons ? icons : nil)

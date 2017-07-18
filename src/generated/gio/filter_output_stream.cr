@@ -10,7 +10,15 @@ module Gio
       @gio_filter_output_stream.not_nil!
     end
 
+    def base_stream
+      __return_value = LibGio.filter_output_stream_get_base_stream(to_unsafe.as(LibGio::FilterOutputStream*))
+      Gio::OutputStream.new(__return_value)
+    end
 
+    def close_base_stream
+      __return_value = LibGio.filter_output_stream_get_close_base_stream(to_unsafe.as(LibGio::FilterOutputStream*))
+      __return_value
+    end
 
     def base_stream
       __return_value = LibGio.filter_output_stream_get_base_stream(to_unsafe.as(LibGio::FilterOutputStream*))

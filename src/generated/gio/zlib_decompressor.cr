@@ -9,7 +9,15 @@ module Gio
     end
 
     # Implements Converter
+    def file_info
+      __return_value = LibGio.zlib_decompressor_get_file_info(to_unsafe.as(LibGio::ZlibDecompressor*))
+      Gio::FileInfo.new(__return_value)
+    end
 
+    def format
+      __return_value = LibGio.zlib_decompressor_get_format(to_unsafe.as(LibGio::ZlibDecompressor*))
+      __return_value
+    end
 
     def self.new(format : Gio::ZlibCompressorFormat) : self
       __return_value = LibGio.zlib_decompressor_new(format)

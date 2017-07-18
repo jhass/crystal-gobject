@@ -12,6 +12,10 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def visible_submenu
+      __return_value = LibGtk.popover_menu_get_visible_submenu(to_unsafe.as(LibGtk::PopoverMenu*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new : self
       __return_value = LibGtk.popover_menu_new

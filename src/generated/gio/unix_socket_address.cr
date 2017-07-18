@@ -11,9 +11,25 @@ module Gio
     end
 
     # Implements SocketConnectable
+    def abstract
+      __return_value = LibGio.unix_socket_address_get_abstract(to_unsafe.as(LibGio::UnixSocketAddress*))
+      __return_value
+    end
 
+    def address_type
+      __return_value = LibGio.unix_socket_address_get_address_type(to_unsafe.as(LibGio::UnixSocketAddress*))
+      __return_value
+    end
 
+    def path
+      __return_value = LibGio.unix_socket_address_get_path(to_unsafe.as(LibGio::UnixSocketAddress*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def path_as_array
+      __return_value = LibGio.unix_socket_address_get_path_as_array(to_unsafe.as(LibGio::UnixSocketAddress*))
+      __return_value
+    end
 
     def self.new(path) : self
       __return_value = LibGio.unix_socket_address_new(path.to_unsafe)

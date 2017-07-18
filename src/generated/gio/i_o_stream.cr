@@ -8,8 +8,20 @@ module Gio
       @gio_i_o_stream.not_nil!
     end
 
+    def closed
+      __return_value = LibGio.i_o_stream_get_closed(to_unsafe.as(LibGio::IOStream*))
+      __return_value
+    end
 
+    def input_stream
+      __return_value = LibGio.i_o_stream_get_input_stream(to_unsafe.as(LibGio::IOStream*))
+      Gio::InputStream.new(__return_value)
+    end
 
+    def output_stream
+      __return_value = LibGio.i_o_stream_get_output_stream(to_unsafe.as(LibGio::IOStream*))
+      Gio::OutputStream.new(__return_value)
+    end
 
     def self.splice_finish(result)
       __error = Pointer(LibGLib::Error).null

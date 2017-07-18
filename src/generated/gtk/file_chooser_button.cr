@@ -15,7 +15,15 @@ module Gtk
     # Implements FileChooser
     # Implements Orientable
 
+    def title
+      __return_value = LibGtk.file_chooser_button_get_title(to_unsafe.as(LibGtk::FileChooserButton*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def width_chars
+      __return_value = LibGtk.file_chooser_button_get_width_chars(to_unsafe.as(LibGtk::FileChooserButton*))
+      __return_value
+    end
 
     def self.new(title, action : Gtk::FileChooserAction) : self
       __return_value = LibGtk.file_chooser_button_new(title.to_unsafe, action)

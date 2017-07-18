@@ -12,13 +12,45 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def bottom_padding
+      __return_value = LibGtk.alignment_get_bottom_padding(to_unsafe.as(LibGtk::Alignment*))
+      __return_value
+    end
 
+    def left_padding
+      __return_value = LibGtk.alignment_get_left_padding(to_unsafe.as(LibGtk::Alignment*))
+      __return_value
+    end
 
+    def right_padding
+      __return_value = LibGtk.alignment_get_right_padding(to_unsafe.as(LibGtk::Alignment*))
+      __return_value
+    end
 
+    def top_padding
+      __return_value = LibGtk.alignment_get_top_padding(to_unsafe.as(LibGtk::Alignment*))
+      __return_value
+    end
 
+    def xalign
+      __return_value = LibGtk.alignment_get_xalign(to_unsafe.as(LibGtk::Alignment*))
+      __return_value
+    end
 
+    def xscale
+      __return_value = LibGtk.alignment_get_xscale(to_unsafe.as(LibGtk::Alignment*))
+      __return_value
+    end
 
+    def yalign
+      __return_value = LibGtk.alignment_get_yalign(to_unsafe.as(LibGtk::Alignment*))
+      __return_value
+    end
 
+    def yscale
+      __return_value = LibGtk.alignment_get_yscale(to_unsafe.as(LibGtk::Alignment*))
+      __return_value
+    end
 
     def self.new(xalign, yalign, xscale, yscale) : self
       __return_value = LibGtk.alignment_new(Float32.new(xalign), Float32.new(yalign), Float32.new(xscale), Float32.new(yscale))

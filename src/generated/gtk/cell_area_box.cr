@@ -13,6 +13,10 @@ module Gtk
     # Implements Buildable
     # Implements CellLayout
     # Implements Orientable
+    def spacing
+      __return_value = LibGtk.cell_area_box_get_spacing(to_unsafe.as(LibGtk::CellAreaBox*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.cell_area_box_new

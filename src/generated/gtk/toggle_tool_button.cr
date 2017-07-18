@@ -14,6 +14,10 @@ module Gtk
     # Implements Actionable
     # Implements Activatable
     # Implements Buildable
+    def active
+      __return_value = LibGtk.toggle_tool_button_get_active(to_unsafe.as(LibGtk::ToggleToolButton*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.toggle_tool_button_new

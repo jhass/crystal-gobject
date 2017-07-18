@@ -23,6 +23,11 @@ module Pango
       Pango::FontDescription.new(__return_value)
     end
 
+    def find_shaper(language, ch)
+      __return_value = LibPango.font_find_shaper(to_unsafe.as(LibPango::Font*), language.to_unsafe.as(LibPango::Language*), UInt32.new(ch))
+      Pango::EngineShape.new(__return_value)
+    end
+
     def font_map
       __return_value = LibPango.font_get_font_map(to_unsafe.as(LibPango::Font*))
       Pango::FontMap.new(__return_value) if __return_value

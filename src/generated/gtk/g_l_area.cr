@@ -12,11 +12,35 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def auto_render
+      __return_value = LibGtk.g_l_area_get_auto_render(to_unsafe.as(LibGtk::GLArea*))
+      __return_value
+    end
 
+    def context
+      __return_value = LibGtk.g_l_area_get_context(to_unsafe.as(LibGtk::GLArea*))
+      Gdk::GLContext.new(__return_value)
+    end
 
+    def has_alpha
+      __return_value = LibGtk.g_l_area_get_has_alpha(to_unsafe.as(LibGtk::GLArea*))
+      __return_value
+    end
 
+    def has_depth_buffer
+      __return_value = LibGtk.g_l_area_get_has_depth_buffer(to_unsafe.as(LibGtk::GLArea*))
+      __return_value
+    end
 
+    def has_stencil_buffer
+      __return_value = LibGtk.g_l_area_get_has_stencil_buffer(to_unsafe.as(LibGtk::GLArea*))
+      __return_value
+    end
 
+    def use_es
+      __return_value = LibGtk.g_l_area_get_use_es(to_unsafe.as(LibGtk::GLArea*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.g_l_area_new

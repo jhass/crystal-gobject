@@ -8,6 +8,10 @@ module Gtk
       @gtk_theming_engine.not_nil!
     end
 
+    def name
+      __return_value = LibGtk.theming_engine_get_name(to_unsafe.as(LibGtk::ThemingEngine*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.load(name)
       __return_value = LibGtk.theming_engine_load(name.to_unsafe)

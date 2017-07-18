@@ -8,9 +8,25 @@ module Gtk
       @gtk_style_context.not_nil!
     end
 
+    def direction
+      __return_value = LibGtk.style_context_get_direction(to_unsafe.as(LibGtk::StyleContext*))
+      __return_value
+    end
 
+    def paint_clock
+      __return_value = LibGtk.style_context_get_paint_clock(to_unsafe.as(LibGtk::StyleContext*))
+      Gdk::FrameClock.new(__return_value)
+    end
 
+    def parent
+      __return_value = LibGtk.style_context_get_parent(to_unsafe.as(LibGtk::StyleContext*))
+      Gtk::StyleContext.new(__return_value)
+    end
 
+    def screen
+      __return_value = LibGtk.style_context_get_screen(to_unsafe.as(LibGtk::StyleContext*))
+      Gdk::Screen.new(__return_value)
+    end
 
     def self.new : self
       __return_value = LibGtk.style_context_new

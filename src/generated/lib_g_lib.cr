@@ -91,7 +91,7 @@ lib LibGLib
   MININT32 = -2147483648 # : Int32
   MININT64 = -9223372036854775808 # : Int64
   MININT8 = -128 # : Int8
-  MINOR_VERSION = 50 # : Int32
+  MINOR_VERSION = 52 # : Int32
   MODULE_SUFFIX = "so" # : UInt8*
   OPTION_REMAINING = "" # : UInt8*
   PDP_ENDIAN = 3412 # : Int32
@@ -608,7 +608,7 @@ lib LibGLib
   fun main_context_new = g_main_context_new() : LibGLib::MainContext*
   fun main_context_acquire = g_main_context_acquire(this : MainContext*) : Bool
   fun main_context_add_poll = g_main_context_add_poll(this : MainContext*, fd : LibGLib::PollFD*, priority : Int32) : Void
-  fun main_context_check = g_main_context_check(this : MainContext*, max_priority : Int32, fds : LibGLib::PollFD*, n_fds : Int32) : Int32
+  fun main_context_check = g_main_context_check(this : MainContext*, max_priority : Int32, fds : LibGLib::PollFD*, n_fds : Int32) : Bool
   fun main_context_dispatch = g_main_context_dispatch(this : MainContext*) : Void
   fun main_context_find_source_by_funcs_user_data = g_main_context_find_source_by_funcs_user_data(this : MainContext*, funcs : LibGLib::SourceFuncs*, user_data : Void*) : LibGLib::Source*
   fun main_context_find_source_by_id = g_main_context_find_source_by_id(this : MainContext*, source_id : UInt32) : LibGLib::Source*
@@ -1593,6 +1593,7 @@ lib LibGLib
     SHA1 = 1
     SHA256 = 2
     SHA512 = 3
+    SHA384 = 4
   end
 
   enum ConvertError : UInt32
@@ -2512,10 +2513,6 @@ lib LibGLib
   fun mem_set_vtable = g_mem_set_vtable(vtable : LibGLib::MemVTable*) : Void
   fun memdup = g_memdup(mem : Void*, byte_size : UInt32) : Void*
   fun mkdir_with_parents = g_mkdir_with_parents(pathname : UInt8*, mode : Int32) : Int32
-  fun mkdtemp = g_mkdtemp(tmpl : UInt8*) : UInt8*
-  fun mkdtemp_full = g_mkdtemp_full(tmpl : UInt8*, mode : Int32) : UInt8*
-  fun mkstemp = g_mkstemp(tmpl : UInt8*) : Int32
-  fun mkstemp_full = g_mkstemp_full(tmpl : UInt8*, flags : Int32, mode : Int32) : Int32
   fun nullify_pointer = g_nullify_pointer(nullify_location : Void*) : Void
   fun on_error_query = g_on_error_query(prg_name : UInt8*) : Void
   fun on_error_stack_trace = g_on_error_stack_trace(prg_name : UInt8*) : Void
@@ -2751,6 +2748,7 @@ lib LibGLib
   fun utf8_find_prev_char = g_utf8_find_prev_char(str : UInt8*, p : UInt8*) : UInt8*
   fun utf8_get_char = g_utf8_get_char(p : UInt8*) : UInt8
   fun utf8_get_char_validated = g_utf8_get_char_validated(p : UInt8*, max_len : Int64) : UInt8
+  fun utf8_make_valid = g_utf8_make_valid(str : UInt8*, len : Int64) : UInt8*
   fun utf8_normalize = g_utf8_normalize(str : UInt8*, len : Int64, mode : LibGLib::NormalizeMode) : UInt8*
   fun utf8_offset_to_pointer = g_utf8_offset_to_pointer(str : UInt8*, offset : Int64) : UInt8*
   fun utf8_pointer_to_offset = g_utf8_pointer_to_offset(str : UInt8*, pos : UInt8*) : Int64
@@ -2767,6 +2765,8 @@ lib LibGLib
   fun utf8_to_ucs4_fast = g_utf8_to_ucs4_fast(str : UInt8*, len : Int64, items_written : Int64*) : UInt8*
   fun utf8_to_utf16 = g_utf8_to_utf16(str : UInt8*, len : Int64, items_read : Int64*, items_written : Int64*, error : LibGLib::Error**) : UInt16*
   fun utf8_validate = g_utf8_validate(str : UInt8*, max_len : Int64, end : UInt8**) : Bool
+  fun uuid_string_is_valid = g_uuid_string_is_valid(str : UInt8*) : Bool
+  fun uuid_string_random = g_uuid_string_random() : UInt8*
   fun variant_get_gtype = g_variant_get_gtype() : UInt64
   fun variant_is_object_path = g_variant_is_object_path(string : UInt8*) : Bool
   fun variant_is_signature = g_variant_is_signature(string : UInt8*) : Bool

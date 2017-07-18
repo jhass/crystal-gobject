@@ -12,15 +12,55 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def local_only
+      __return_value = LibGtk.places_sidebar_get_local_only(to_unsafe.as(LibGtk::PlacesSidebar*))
+      __return_value
+    end
 
+    def location
+      __return_value = LibGtk.places_sidebar_get_location(to_unsafe.as(LibGtk::PlacesSidebar*))
+      __return_value
+    end
 
+    def open_flags
+      __return_value = LibGtk.places_sidebar_get_open_flags(to_unsafe.as(LibGtk::PlacesSidebar*))
+      __return_value
+    end
 
+    def populate_all
+      __return_value = LibGtk.places_sidebar_get_populate_all(to_unsafe.as(LibGtk::PlacesSidebar*))
+      __return_value
+    end
 
+    def show_connect_to_server
+      __return_value = LibGtk.places_sidebar_get_show_connect_to_server(to_unsafe.as(LibGtk::PlacesSidebar*))
+      __return_value
+    end
 
+    def show_desktop
+      __return_value = LibGtk.places_sidebar_get_show_desktop(to_unsafe.as(LibGtk::PlacesSidebar*))
+      __return_value
+    end
 
+    def show_enter_location
+      __return_value = LibGtk.places_sidebar_get_show_enter_location(to_unsafe.as(LibGtk::PlacesSidebar*))
+      __return_value
+    end
 
+    def show_other_locations
+      __return_value = LibGtk.places_sidebar_get_show_other_locations(to_unsafe.as(LibGtk::PlacesSidebar*))
+      __return_value
+    end
 
+    def show_recent
+      __return_value = LibGtk.places_sidebar_get_show_recent(to_unsafe.as(LibGtk::PlacesSidebar*))
+      __return_value
+    end
 
+    def show_trash
+      __return_value = LibGtk.places_sidebar_get_show_trash(to_unsafe.as(LibGtk::PlacesSidebar*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.places_sidebar_new

@@ -9,7 +9,15 @@ module Gio
     end
 
     # Implements Icon
+    def icon
+      __return_value = LibGio.emblem_get_icon(to_unsafe.as(LibGio::Emblem*))
+      GObject::Object.new(__return_value)
+    end
 
+    def origin
+      __return_value = LibGio.emblem_get_origin(to_unsafe.as(LibGio::Emblem*))
+      __return_value
+    end
 
     def self.new(icon) : self
       __return_value = LibGio.emblem_new(icon.to_unsafe.as(LibGio::Icon*))

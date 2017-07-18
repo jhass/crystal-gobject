@@ -3,7 +3,7 @@ module Gst
     include GObject::WrappedType
 
     def self.new(api : UInt64|Nil = nil, type : UInt64|Nil = nil, size : UInt64|Nil = nil, init_func : Gst::MetaInitFunction|Nil = nil, free_func : Gst::MetaFreeFunction|Nil = nil, transform_func : Gst::MetaTransformFunction|Nil = nil) : self
-      ptr = Pointer(UInt8).malloc(80, 0u8)
+      ptr = Pointer(UInt8).malloc(48, 0u8)
       new(ptr.as(LibGst::MetaInfo*)).tap do |object|
         object.api = api unless api.nil?
         object.type = type unless type.nil?
@@ -68,10 +68,6 @@ module Gst
 
     def transform_func=(value : Gst::MetaTransformFunction)
       to_unsafe.as(LibGst::MetaInfo*).value.transform_func = value
-    end
-
-    def _gst_reserved
-      PointerIterator.new((to_unsafe.as(LibGst::MetaInfo*).value._gst_reserved)) {|__item| __item }
     end
 
   end

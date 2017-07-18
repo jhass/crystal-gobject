@@ -13,9 +13,25 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
+    def digits
+      __return_value = LibGtk.scale_get_digits(to_unsafe.as(LibGtk::Scale*))
+      __return_value
+    end
 
+    def draw_value
+      __return_value = LibGtk.scale_get_draw_value(to_unsafe.as(LibGtk::Scale*))
+      __return_value
+    end
 
+    def has_origin
+      __return_value = LibGtk.scale_get_has_origin(to_unsafe.as(LibGtk::Scale*))
+      __return_value
+    end
 
+    def value_pos
+      __return_value = LibGtk.scale_get_value_pos(to_unsafe.as(LibGtk::Scale*))
+      __return_value
+    end
 
     def self.new(orientation : Gtk::Orientation, adjustment) : self
       __return_value = LibGtk.scale_new(orientation, adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)

@@ -8,17 +8,65 @@ module Gio
       @gio_inet_address.not_nil!
     end
 
+    def bytes
+      __return_value = LibGio.inet_address_get_bytes(to_unsafe.as(LibGio::InetAddress*))
+      __return_value
+    end
 
+    def family
+      __return_value = LibGio.inet_address_get_family(to_unsafe.as(LibGio::InetAddress*))
+      __return_value
+    end
 
+    def is_any
+      __return_value = LibGio.inet_address_get_is_any(to_unsafe.as(LibGio::InetAddress*))
+      __return_value
+    end
 
+    def is_link_local
+      __return_value = LibGio.inet_address_get_is_link_local(to_unsafe.as(LibGio::InetAddress*))
+      __return_value
+    end
 
+    def is_loopback
+      __return_value = LibGio.inet_address_get_is_loopback(to_unsafe.as(LibGio::InetAddress*))
+      __return_value
+    end
 
+    def is_mc_global
+      __return_value = LibGio.inet_address_get_is_mc_global(to_unsafe.as(LibGio::InetAddress*))
+      __return_value
+    end
 
+    def is_mc_link_local
+      __return_value = LibGio.inet_address_get_is_mc_link_local(to_unsafe.as(LibGio::InetAddress*))
+      __return_value
+    end
 
+    def is_mc_node_local
+      __return_value = LibGio.inet_address_get_is_mc_node_local(to_unsafe.as(LibGio::InetAddress*))
+      __return_value
+    end
 
+    def is_mc_org_local
+      __return_value = LibGio.inet_address_get_is_mc_org_local(to_unsafe.as(LibGio::InetAddress*))
+      __return_value
+    end
 
+    def is_mc_site_local
+      __return_value = LibGio.inet_address_get_is_mc_site_local(to_unsafe.as(LibGio::InetAddress*))
+      __return_value
+    end
 
+    def is_multicast
+      __return_value = LibGio.inet_address_get_is_multicast(to_unsafe.as(LibGio::InetAddress*))
+      __return_value
+    end
 
+    def is_site_local
+      __return_value = LibGio.inet_address_get_is_site_local(to_unsafe.as(LibGio::InetAddress*))
+      __return_value
+    end
 
     def self.new_any(family : Gio::SocketFamily) : self
       __return_value = LibGio.inet_address_new_any(family)

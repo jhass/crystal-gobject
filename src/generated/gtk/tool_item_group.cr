@@ -13,10 +13,30 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements ToolShell
+    def collapsed
+      __return_value = LibGtk.tool_item_group_get_collapsed(to_unsafe.as(LibGtk::ToolItemGroup*))
+      __return_value
+    end
 
+    def ellipsize
+      __return_value = LibGtk.tool_item_group_get_ellipsize(to_unsafe.as(LibGtk::ToolItemGroup*))
+      __return_value
+    end
 
+    def header_relief
+      __return_value = LibGtk.tool_item_group_get_header_relief(to_unsafe.as(LibGtk::ToolItemGroup*))
+      __return_value
+    end
 
+    def label
+      __return_value = LibGtk.tool_item_group_get_label(to_unsafe.as(LibGtk::ToolItemGroup*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def label_widget
+      __return_value = LibGtk.tool_item_group_get_label_widget(to_unsafe.as(LibGtk::ToolItemGroup*))
+      Gtk::Widget.new(__return_value)
+    end
 
     def self.new(label) : self
       __return_value = LibGtk.tool_item_group_new(label.to_unsafe)

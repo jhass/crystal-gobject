@@ -13,11 +13,35 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
+    def ellipsize
+      __return_value = LibGtk.progress_bar_get_ellipsize(to_unsafe.as(LibGtk::ProgressBar*))
+      __return_value
+    end
 
+    def fraction
+      __return_value = LibGtk.progress_bar_get_fraction(to_unsafe.as(LibGtk::ProgressBar*))
+      __return_value
+    end
 
+    def inverted
+      __return_value = LibGtk.progress_bar_get_inverted(to_unsafe.as(LibGtk::ProgressBar*))
+      __return_value
+    end
 
+    def pulse_step
+      __return_value = LibGtk.progress_bar_get_pulse_step(to_unsafe.as(LibGtk::ProgressBar*))
+      __return_value
+    end
 
+    def show_text
+      __return_value = LibGtk.progress_bar_get_show_text(to_unsafe.as(LibGtk::ProgressBar*))
+      __return_value
+    end
 
+    def text
+      __return_value = LibGtk.progress_bar_get_text(to_unsafe.as(LibGtk::ProgressBar*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new : self
       __return_value = LibGtk.progress_bar_new

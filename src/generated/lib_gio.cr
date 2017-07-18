@@ -4417,6 +4417,7 @@ lib LibGio
   FILE_ATTRIBUTE_OWNER_USER = "owner::user" # : UInt8*
   FILE_ATTRIBUTE_OWNER_USER_REAL = "owner::user-real" # : UInt8*
   FILE_ATTRIBUTE_PREVIEW_ICON = "preview::icon" # : UInt8*
+  FILE_ATTRIBUTE_RECENT_MODIFIED = "recent::modified" # : UInt8*
   FILE_ATTRIBUTE_SELINUX_CONTEXT = "selinux::context" # : UInt8*
   FILE_ATTRIBUTE_STANDARD_ALLOCATED_SIZE = "standard::allocated-size" # : UInt8*
   FILE_ATTRIBUTE_STANDARD_CONTENT_TYPE = "standard::content-type" # : UInt8*
@@ -4525,6 +4526,7 @@ lib LibGio
   fun content_type_guess = g_content_type_guess(filename : UInt8*, data : UInt8*, data_size : UInt64, result_uncertain : Bool*) : UInt8*
   fun content_type_guess_for_tree = g_content_type_guess_for_tree(root : LibGio::File*) : UInt8**
   fun content_type_is_a = g_content_type_is_a(type : UInt8*, supertype : UInt8*) : Bool
+  fun content_type_is_mime_type = g_content_type_is_mime_type(type : UInt8*, mime_type : UInt8*) : Bool
   fun content_type_is_unknown = g_content_type_is_unknown(type : UInt8*) : Bool
   fun content_types_get_registered = g_content_types_get_registered() : Void**
   fun dbus_address_escape_value = g_dbus_address_escape_value(string : UInt8*) : UInt8*

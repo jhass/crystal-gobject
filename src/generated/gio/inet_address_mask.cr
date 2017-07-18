@@ -9,8 +9,20 @@ module Gio
     end
 
     # Implements Initable
+    def address
+      __return_value = LibGio.inet_address_mask_get_address(to_unsafe.as(LibGio::InetAddressMask*))
+      Gio::InetAddress.new(__return_value)
+    end
 
+    def family
+      __return_value = LibGio.inet_address_mask_get_family(to_unsafe.as(LibGio::InetAddressMask*))
+      __return_value
+    end
 
+    def length
+      __return_value = LibGio.inet_address_mask_get_length(to_unsafe.as(LibGio::InetAddressMask*))
+      __return_value
+    end
 
     def self.new(addr, length) : self
       __error = Pointer(LibGLib::Error).null

@@ -8,6 +8,10 @@ module Gtk
       @gtk_tree_selection.not_nil!
     end
 
+    def mode
+      __return_value = LibGtk.tree_selection_get_mode(to_unsafe.as(LibGtk::TreeSelection*))
+      __return_value
+    end
 
     def count_selected_rows
       __return_value = LibGtk.tree_selection_count_selected_rows(to_unsafe.as(LibGtk::TreeSelection*))

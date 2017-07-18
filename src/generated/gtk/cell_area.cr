@@ -10,8 +10,20 @@ module Gtk
 
     # Implements Buildable
     # Implements CellLayout
+    def edit_widget
+      __return_value = LibGtk.cell_area_get_edit_widget(to_unsafe.as(LibGtk::CellArea*))
+      __return_value
+    end
 
+    def edited_cell
+      __return_value = LibGtk.cell_area_get_edited_cell(to_unsafe.as(LibGtk::CellArea*))
+      Gtk::CellRenderer.new(__return_value)
+    end
 
+    def focus_cell
+      __return_value = LibGtk.cell_area_get_focus_cell(to_unsafe.as(LibGtk::CellArea*))
+      Gtk::CellRenderer.new(__return_value)
+    end
 
     def activate(context, widget, cell_area, flags : Gtk::CellRendererState, edit_only)
       __return_value = LibGtk.cell_area_activate(to_unsafe.as(LibGtk::CellArea*), context.to_unsafe.as(LibGtk::CellAreaContext*), widget.to_unsafe.as(LibGtk::Widget*), cell_area.to_unsafe.as(LibGdk::Rectangle*), flags, edit_only)

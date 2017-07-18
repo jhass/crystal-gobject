@@ -13,23 +13,95 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Scrollable
+    def activate_on_single_click
+      __return_value = LibGtk.tree_view_get_activate_on_single_click(to_unsafe.as(LibGtk::TreeView*))
+      __return_value
+    end
 
+    def enable_grid_lines
+      __return_value = LibGtk.tree_view_get_enable_grid_lines(to_unsafe.as(LibGtk::TreeView*))
+      __return_value
+    end
 
+    def enable_search
+      __return_value = LibGtk.tree_view_get_enable_search(to_unsafe.as(LibGtk::TreeView*))
+      __return_value
+    end
 
+    def enable_tree_lines
+      __return_value = LibGtk.tree_view_get_enable_tree_lines(to_unsafe.as(LibGtk::TreeView*))
+      __return_value
+    end
 
+    def expander_column
+      __return_value = LibGtk.tree_view_get_expander_column(to_unsafe.as(LibGtk::TreeView*))
+      Gtk::TreeViewColumn.new(__return_value)
+    end
 
+    def fixed_height_mode
+      __return_value = LibGtk.tree_view_get_fixed_height_mode(to_unsafe.as(LibGtk::TreeView*))
+      __return_value
+    end
 
+    def headers_clickable
+      __return_value = LibGtk.tree_view_get_headers_clickable(to_unsafe.as(LibGtk::TreeView*))
+      __return_value
+    end
 
+    def headers_visible
+      __return_value = LibGtk.tree_view_get_headers_visible(to_unsafe.as(LibGtk::TreeView*))
+      __return_value
+    end
 
+    def hover_expand
+      __return_value = LibGtk.tree_view_get_hover_expand(to_unsafe.as(LibGtk::TreeView*))
+      __return_value
+    end
 
+    def hover_selection
+      __return_value = LibGtk.tree_view_get_hover_selection(to_unsafe.as(LibGtk::TreeView*))
+      __return_value
+    end
 
+    def level_indentation
+      __return_value = LibGtk.tree_view_get_level_indentation(to_unsafe.as(LibGtk::TreeView*))
+      __return_value
+    end
 
+    def model
+      __return_value = LibGtk.tree_view_get_model(to_unsafe.as(LibGtk::TreeView*))
+      __return_value
+    end
 
+    def reorderable
+      __return_value = LibGtk.tree_view_get_reorderable(to_unsafe.as(LibGtk::TreeView*))
+      __return_value
+    end
 
+    def rubber_banding
+      __return_value = LibGtk.tree_view_get_rubber_banding(to_unsafe.as(LibGtk::TreeView*))
+      __return_value
+    end
 
+    def rules_hint
+      __return_value = LibGtk.tree_view_get_rules_hint(to_unsafe.as(LibGtk::TreeView*))
+      __return_value
+    end
 
+    def search_column
+      __return_value = LibGtk.tree_view_get_search_column(to_unsafe.as(LibGtk::TreeView*))
+      __return_value
+    end
 
+    def show_expanders
+      __return_value = LibGtk.tree_view_get_show_expanders(to_unsafe.as(LibGtk::TreeView*))
+      __return_value
+    end
 
+    def tooltip_column
+      __return_value = LibGtk.tree_view_get_tooltip_column(to_unsafe.as(LibGtk::TreeView*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.tree_view_new

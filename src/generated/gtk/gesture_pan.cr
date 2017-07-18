@@ -10,6 +10,10 @@ module Gtk
       @gtk_gesture_pan.not_nil!
     end
 
+    def orientation
+      __return_value = LibGtk.gesture_pan_get_orientation(to_unsafe.as(LibGtk::GesturePan*))
+      __return_value
+    end
 
     def self.new(widget, orientation : Gtk::Orientation) : self
       __return_value = LibGtk.gesture_pan_new(widget.to_unsafe.as(LibGtk::Widget*), orientation)

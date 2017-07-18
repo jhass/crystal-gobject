@@ -12,27 +12,111 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def angle
+      __return_value = LibGtk.label_get_angle(to_unsafe.as(LibGtk::Label*))
+      __return_value
+    end
+
+    def attributes
+      __return_value = LibGtk.label_get_attributes(to_unsafe.as(LibGtk::Label*))
+      Pango::AttrList.new(__return_value)
+    end
+
+    def cursor_position
+      __return_value = LibGtk.label_get_cursor_position(to_unsafe.as(LibGtk::Label*))
+      __return_value
+    end
+
+    def ellipsize
+      __return_value = LibGtk.label_get_ellipsize(to_unsafe.as(LibGtk::Label*))
+      __return_value
+    end
+
+    def justify
+      __return_value = LibGtk.label_get_justify(to_unsafe.as(LibGtk::Label*))
+      __return_value
+    end
+
+    def label
+      __return_value = LibGtk.label_get_label(to_unsafe.as(LibGtk::Label*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
+
+    def lines
+      __return_value = LibGtk.label_get_lines(to_unsafe.as(LibGtk::Label*))
+      __return_value
+    end
+
+    def max_width_chars
+      __return_value = LibGtk.label_get_max_width_chars(to_unsafe.as(LibGtk::Label*))
+      __return_value
+    end
+
+    def mnemonic_keyval
+      __return_value = LibGtk.label_get_mnemonic_keyval(to_unsafe.as(LibGtk::Label*))
+      __return_value
+    end
+
+    def mnemonic_widget
+      __return_value = LibGtk.label_get_mnemonic_widget(to_unsafe.as(LibGtk::Label*))
+      Gtk::Widget.new(__return_value)
+    end
 
 
+    def selectable
+      __return_value = LibGtk.label_get_selectable(to_unsafe.as(LibGtk::Label*))
+      __return_value
+    end
 
+    def selection_bound
+      __return_value = LibGtk.label_get_selection_bound(to_unsafe.as(LibGtk::Label*))
+      __return_value
+    end
 
+    def single_line_mode
+      __return_value = LibGtk.label_get_single_line_mode(to_unsafe.as(LibGtk::Label*))
+      __return_value
+    end
 
+    def track_visited_links
+      __return_value = LibGtk.label_get_track_visited_links(to_unsafe.as(LibGtk::Label*))
+      __return_value
+    end
 
+    def use_markup
+      __return_value = LibGtk.label_get_use_markup(to_unsafe.as(LibGtk::Label*))
+      __return_value
+    end
 
+    def use_underline
+      __return_value = LibGtk.label_get_use_underline(to_unsafe.as(LibGtk::Label*))
+      __return_value
+    end
 
+    def width_chars
+      __return_value = LibGtk.label_get_width_chars(to_unsafe.as(LibGtk::Label*))
+      __return_value
+    end
 
+    def wrap
+      __return_value = LibGtk.label_get_wrap(to_unsafe.as(LibGtk::Label*))
+      __return_value
+    end
 
+    def wrap_mode
+      __return_value = LibGtk.label_get_wrap_mode(to_unsafe.as(LibGtk::Label*))
+      __return_value
+    end
 
+    def xalign
+      __return_value = LibGtk.label_get_xalign(to_unsafe.as(LibGtk::Label*))
+      __return_value
+    end
 
-
-
-
-
-
-
-
-
-
+    def yalign
+      __return_value = LibGtk.label_get_yalign(to_unsafe.as(LibGtk::Label*))
+      __return_value
+    end
 
     def self.new(str) : self
       __return_value = LibGtk.label_new(str ? str.to_unsafe : nil)

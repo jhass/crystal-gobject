@@ -12,7 +12,15 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def activatable
+      __return_value = LibGtk.list_box_row_get_activatable(to_unsafe.as(LibGtk::ListBoxRow*))
+      __return_value
+    end
 
+    def selectable
+      __return_value = LibGtk.list_box_row_get_selectable(to_unsafe.as(LibGtk::ListBoxRow*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.list_box_row_new

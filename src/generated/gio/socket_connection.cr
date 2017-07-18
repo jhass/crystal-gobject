@@ -10,6 +10,10 @@ module Gio
       @gio_socket_connection.not_nil!
     end
 
+    def socket
+      __return_value = LibGio.socket_connection_get_socket(to_unsafe.as(LibGio::SocketConnection*))
+      Gio::Socket.new(__return_value)
+    end
 
     def self.factory_lookup_type(family : Gio::SocketFamily, type : Gio::SocketType, protocol_id)
       __return_value = LibGio.socket_connection_factory_lookup_type(family, type, Int32.new(protocol_id))

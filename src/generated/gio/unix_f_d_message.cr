@@ -10,6 +10,10 @@ module Gio
       @gio_unix_f_d_message.not_nil!
     end
 
+    def fd_list
+      __return_value = LibGio.unix_f_d_message_get_fd_list(to_unsafe.as(LibGio::UnixFDMessage*))
+      Gio::UnixFDList.new(__return_value)
+    end
 
     def self.new : self
       __return_value = LibGio.unix_f_d_message_new

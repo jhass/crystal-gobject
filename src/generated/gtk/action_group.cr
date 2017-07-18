@@ -9,9 +9,25 @@ module Gtk
     end
 
     # Implements Buildable
+    def accel_group
+      __return_value = LibGtk.action_group_get_accel_group(to_unsafe.as(LibGtk::ActionGroup*))
+      Gtk::AccelGroup.new(__return_value)
+    end
 
+    def name
+      __return_value = LibGtk.action_group_get_name(to_unsafe.as(LibGtk::ActionGroup*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def sensitive
+      __return_value = LibGtk.action_group_get_sensitive(to_unsafe.as(LibGtk::ActionGroup*))
+      __return_value
+    end
 
+    def visible
+      __return_value = LibGtk.action_group_get_visible(to_unsafe.as(LibGtk::ActionGroup*))
+      __return_value
+    end
 
     def self.new(name) : self
       __return_value = LibGtk.action_group_new(name.to_unsafe)

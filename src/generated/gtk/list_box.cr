@@ -12,7 +12,15 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def activate_on_single_click
+      __return_value = LibGtk.list_box_get_activate_on_single_click(to_unsafe.as(LibGtk::ListBox*))
+      __return_value
+    end
 
+    def selection_mode
+      __return_value = LibGtk.list_box_get_selection_mode(to_unsafe.as(LibGtk::ListBox*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.list_box_new

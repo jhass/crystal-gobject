@@ -13,6 +13,10 @@ module Gtk
     # Implements ImplementorIface
     # Implements Activatable
     # Implements Buildable
+    def draw
+      __return_value = LibGtk.separator_tool_item_get_draw(to_unsafe.as(LibGtk::SeparatorToolItem*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.separator_tool_item_new

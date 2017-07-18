@@ -9,7 +9,15 @@ module Gio
     end
 
     # Implements DBusObjectManager
+    def connection
+      __return_value = LibGio.d_bus_object_manager_server_get_connection(to_unsafe.as(LibGio::DBusObjectManagerServer*))
+      Gio::DBusConnection.new(__return_value)
+    end
 
+    def object_path
+      __return_value = LibGio.d_bus_object_manager_server_get_object_path(to_unsafe.as(LibGio::DBusObjectManagerServer*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new(object_path) : self
       __return_value = LibGio.d_bus_object_manager_server_new(object_path.to_unsafe)

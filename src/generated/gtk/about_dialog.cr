@@ -12,20 +12,80 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def artists
+      __return_value = LibGtk.about_dialog_get_artists(to_unsafe.as(LibGtk::AboutDialog*))
+      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
+    end
 
+    def authors
+      __return_value = LibGtk.about_dialog_get_authors(to_unsafe.as(LibGtk::AboutDialog*))
+      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
+    end
 
+    def comments
+      __return_value = LibGtk.about_dialog_get_comments(to_unsafe.as(LibGtk::AboutDialog*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def copyright
+      __return_value = LibGtk.about_dialog_get_copyright(to_unsafe.as(LibGtk::AboutDialog*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def documenters
+      __return_value = LibGtk.about_dialog_get_documenters(to_unsafe.as(LibGtk::AboutDialog*))
+      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
+    end
 
+    def license
+      __return_value = LibGtk.about_dialog_get_license(to_unsafe.as(LibGtk::AboutDialog*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def license_type
+      __return_value = LibGtk.about_dialog_get_license_type(to_unsafe.as(LibGtk::AboutDialog*))
+      __return_value
+    end
 
+    def logo
+      __return_value = LibGtk.about_dialog_get_logo(to_unsafe.as(LibGtk::AboutDialog*))
+      GdkPixbuf::Pixbuf.new(__return_value)
+    end
 
+    def logo_icon_name
+      __return_value = LibGtk.about_dialog_get_logo_icon_name(to_unsafe.as(LibGtk::AboutDialog*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def program_name
+      __return_value = LibGtk.about_dialog_get_program_name(to_unsafe.as(LibGtk::AboutDialog*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def translator_credits
+      __return_value = LibGtk.about_dialog_get_translator_credits(to_unsafe.as(LibGtk::AboutDialog*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def version
+      __return_value = LibGtk.about_dialog_get_version(to_unsafe.as(LibGtk::AboutDialog*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def website
+      __return_value = LibGtk.about_dialog_get_website(to_unsafe.as(LibGtk::AboutDialog*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def website_label
+      __return_value = LibGtk.about_dialog_get_website_label(to_unsafe.as(LibGtk::AboutDialog*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def wrap_license
+      __return_value = LibGtk.about_dialog_get_wrap_license(to_unsafe.as(LibGtk::AboutDialog*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.about_dialog_new

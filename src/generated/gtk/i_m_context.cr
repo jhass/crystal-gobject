@@ -8,7 +8,15 @@ module Gtk
       @gtk_i_m_context.not_nil!
     end
 
+    def input_hints
+      __return_value = LibGtk.i_m_context_get_input_hints(to_unsafe.as(LibGtk::IMContext*))
+      __return_value
+    end
 
+    def input_purpose
+      __return_value = LibGtk.i_m_context_get_input_purpose(to_unsafe.as(LibGtk::IMContext*))
+      __return_value
+    end
 
     def delete_surrounding(offset, n_chars)
       __return_value = LibGtk.i_m_context_delete_surrounding(to_unsafe.as(LibGtk::IMContext*), Int32.new(offset), Int32.new(n_chars))

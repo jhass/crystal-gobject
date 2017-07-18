@@ -12,12 +12,40 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def enable_popup
+      __return_value = LibGtk.notebook_get_enable_popup(to_unsafe.as(LibGtk::Notebook*))
+      __return_value
+    end
 
+    def group_name
+      __return_value = LibGtk.notebook_get_group_name(to_unsafe.as(LibGtk::Notebook*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def page
+      __return_value = LibGtk.notebook_get_page(to_unsafe.as(LibGtk::Notebook*))
+      __return_value
+    end
 
+    def scrollable
+      __return_value = LibGtk.notebook_get_scrollable(to_unsafe.as(LibGtk::Notebook*))
+      __return_value
+    end
 
+    def show_border
+      __return_value = LibGtk.notebook_get_show_border(to_unsafe.as(LibGtk::Notebook*))
+      __return_value
+    end
 
+    def show_tabs
+      __return_value = LibGtk.notebook_get_show_tabs(to_unsafe.as(LibGtk::Notebook*))
+      __return_value
+    end
 
+    def tab_pos
+      __return_value = LibGtk.notebook_get_tab_pos(to_unsafe.as(LibGtk::Notebook*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.notebook_new

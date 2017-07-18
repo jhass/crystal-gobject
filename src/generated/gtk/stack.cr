@@ -12,14 +12,50 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def hhomogeneous
+      __return_value = LibGtk.stack_get_hhomogeneous(to_unsafe.as(LibGtk::Stack*))
+      __return_value
+    end
 
+    def homogeneous
+      __return_value = LibGtk.stack_get_homogeneous(to_unsafe.as(LibGtk::Stack*))
+      __return_value
+    end
 
+    def interpolate_size
+      __return_value = LibGtk.stack_get_interpolate_size(to_unsafe.as(LibGtk::Stack*))
+      __return_value
+    end
 
+    def transition_duration
+      __return_value = LibGtk.stack_get_transition_duration(to_unsafe.as(LibGtk::Stack*))
+      __return_value
+    end
 
+    def transition_running
+      __return_value = LibGtk.stack_get_transition_running(to_unsafe.as(LibGtk::Stack*))
+      __return_value
+    end
 
+    def transition_type
+      __return_value = LibGtk.stack_get_transition_type(to_unsafe.as(LibGtk::Stack*))
+      __return_value
+    end
 
+    def vhomogeneous
+      __return_value = LibGtk.stack_get_vhomogeneous(to_unsafe.as(LibGtk::Stack*))
+      __return_value
+    end
 
+    def visible_child
+      __return_value = LibGtk.stack_get_visible_child(to_unsafe.as(LibGtk::Stack*))
+      Gtk::Widget.new(__return_value)
+    end
 
+    def visible_child_name
+      __return_value = LibGtk.stack_get_visible_child_name(to_unsafe.as(LibGtk::Stack*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new : self
       __return_value = LibGtk.stack_new

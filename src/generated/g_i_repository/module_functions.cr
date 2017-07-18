@@ -96,7 +96,7 @@ module GIRepository
 
   def self.callable_info_invoke(info, function, in_args, n_in_args, out_args, n_out_args, return_value, is_method, throws)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGIRepository.callable_info_invoke(info.to_unsafe.as(LibGIRepository::BaseInfo*), function ? function : nil, in_args.to_unsafe.as(LibGIRepository::Argument*), Int32.new(n_in_args), out_args.to_unsafe.as(LibGIRepository::Argument*), Int32.new(n_out_args), return_value.to_unsafe.as(LibGIRepository::Argument*), is_method, throws, pointerof(__error))
+    __return_value = LibGIRepository.callable_info_invoke(info.to_unsafe.as(LibGIRepository::BaseInfo*), function ? function : nil, in_args, Int32.new(n_in_args), out_args, Int32.new(n_out_args), return_value.to_unsafe.as(LibGIRepository::Argument*), is_method, throws, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end

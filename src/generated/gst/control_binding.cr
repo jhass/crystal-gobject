@@ -10,7 +10,15 @@ module Gst
       @gst_control_binding.not_nil!
     end
 
+    def name
+      __return_value = LibGst.control_binding_get_name(to_unsafe.as(LibGst::ControlBinding*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def object
+      __return_value = LibGst.control_binding_get_object(to_unsafe.as(LibGst::ControlBinding*))
+      Gst::Object.new(__return_value)
+    end
 
     def g_value_array(timestamp, interval, n_values, values)
       __return_value = LibGst.control_binding_get_g_value_array(to_unsafe.as(LibGst::ControlBinding*), UInt64.new(timestamp), UInt64.new(interval), UInt32.new(n_values), values)

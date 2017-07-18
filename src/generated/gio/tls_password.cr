@@ -8,8 +8,20 @@ module Gio
       @gio_tls_password.not_nil!
     end
 
+    def description
+      __return_value = LibGio.tls_password_get_description(to_unsafe.as(LibGio::TlsPassword*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def flags
+      __return_value = LibGio.tls_password_get_flags(to_unsafe.as(LibGio::TlsPassword*))
+      __return_value
+    end
 
+    def warning
+      __return_value = LibGio.tls_password_get_warning(to_unsafe.as(LibGio::TlsPassword*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new(flags : Gio::TlsPasswordFlags, description) : self
       __return_value = LibGio.tls_password_new(flags, description.to_unsafe)

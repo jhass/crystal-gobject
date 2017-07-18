@@ -713,11 +713,6 @@ lib LibPango
     _data : UInt8[0]
   end
 
-  struct ScriptForLang # struct
-    lang : Int8
-    scripts : LibPango::Script
-  end
-
   struct ScriptIter # struct
     _data : UInt8[0]
   end
@@ -788,6 +783,7 @@ lib LibPango
     parent_instance : LibGObject::Object
     # Virtual function describe
     # Virtual function describe_absolute
+    # Virtual function find_shaper
     # Virtual function get_font_map
     # Virtual function get_glyph_extents
     # Virtual function get_metrics
@@ -795,6 +791,7 @@ lib LibPango
   fun font_descriptions_free = pango_font_descriptions_free(descs : LibPango::FontDescription**, n_descs : Int32) : Void
   fun font_describe = pango_font_describe(this : Font*) : LibPango::FontDescription*
   fun font_describe_with_absolute_size = pango_font_describe_with_absolute_size(this : Font*) : LibPango::FontDescription*
+  fun font_find_shaper = pango_font_find_shaper(this : Font*, language : LibPango::Language*, ch : UInt32) : LibPango::EngineShape*
   fun font_get_font_map = pango_font_get_font_map(this : Font*) : LibPango::FontMap*
   fun font_get_glyph_extents = pango_font_get_glyph_extents(this : Font*, glyph : UInt32, ink_rect : LibPango::Rectangle*, logical_rect : LibPango::Rectangle*) : Void
   fun font_get_metrics = pango_font_get_metrics(this : Font*, language : LibPango::Language*) : LibPango::FontMetrics*

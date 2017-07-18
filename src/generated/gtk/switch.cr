@@ -14,7 +14,15 @@ module Gtk
     # Implements Actionable
     # Implements Activatable
     # Implements Buildable
+    def active
+      __return_value = LibGtk.switch_get_active(to_unsafe.as(LibGtk::Switch*))
+      __return_value
+    end
 
+    def state
+      __return_value = LibGtk.switch_get_state(to_unsafe.as(LibGtk::Switch*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.switch_new

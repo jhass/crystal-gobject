@@ -82,7 +82,7 @@ module Pango
     end
 
     def runs
-      GLib::SListIterator(Void*, Void**).new(GLib::SList.new((to_unsafe.as(LibPango::LayoutLine*).value.runs).as(LibGLib::SList*)))
+      GLib::SListIterator(Pango::GlyphItem, LibPango::GlyphItem*).new(GLib::SList.new((to_unsafe.as(LibPango::LayoutLine*).value.runs).as(LibGLib::SList*)))
     end
 
     def runs=(value : Void*)

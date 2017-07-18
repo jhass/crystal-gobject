@@ -8,14 +8,50 @@ module Gio
       @gio_socket_client.not_nil!
     end
 
+    def enable_proxy
+      __return_value = LibGio.socket_client_get_enable_proxy(to_unsafe.as(LibGio::SocketClient*))
+      __return_value
+    end
 
+    def family
+      __return_value = LibGio.socket_client_get_family(to_unsafe.as(LibGio::SocketClient*))
+      __return_value
+    end
 
+    def local_address
+      __return_value = LibGio.socket_client_get_local_address(to_unsafe.as(LibGio::SocketClient*))
+      Gio::SocketAddress.new(__return_value)
+    end
 
+    def protocol
+      __return_value = LibGio.socket_client_get_protocol(to_unsafe.as(LibGio::SocketClient*))
+      __return_value
+    end
 
+    def proxy_resolver
+      __return_value = LibGio.socket_client_get_proxy_resolver(to_unsafe.as(LibGio::SocketClient*))
+      __return_value
+    end
 
+    def timeout
+      __return_value = LibGio.socket_client_get_timeout(to_unsafe.as(LibGio::SocketClient*))
+      __return_value
+    end
 
+    def tls
+      __return_value = LibGio.socket_client_get_tls(to_unsafe.as(LibGio::SocketClient*))
+      __return_value
+    end
 
+    def tls_validation_flags
+      __return_value = LibGio.socket_client_get_tls_validation_flags(to_unsafe.as(LibGio::SocketClient*))
+      __return_value
+    end
 
+    def type
+      __return_value = LibGio.socket_client_get_type(to_unsafe.as(LibGio::SocketClient*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGio.socket_client_new

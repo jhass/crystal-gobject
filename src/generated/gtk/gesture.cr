@@ -10,7 +10,15 @@ module Gtk
       @gtk_gesture.not_nil!
     end
 
+    def n_points
+      __return_value = LibGtk.gesture_get_n_points(to_unsafe.as(LibGtk::Gesture*))
+      __return_value
+    end
 
+    def window
+      __return_value = LibGtk.gesture_get_window(to_unsafe.as(LibGtk::Gesture*))
+      Gdk::Window.new(__return_value)
+    end
 
     def bounding_box(rect)
       __return_value = LibGtk.gesture_get_bounding_box(to_unsafe.as(LibGtk::Gesture*), rect)

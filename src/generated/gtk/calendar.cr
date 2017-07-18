@@ -12,15 +12,55 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def day
+      __return_value = LibGtk.calendar_get_day(to_unsafe.as(LibGtk::Calendar*))
+      __return_value
+    end
 
+    def detail_height_rows
+      __return_value = LibGtk.calendar_get_detail_height_rows(to_unsafe.as(LibGtk::Calendar*))
+      __return_value
+    end
 
+    def detail_width_chars
+      __return_value = LibGtk.calendar_get_detail_width_chars(to_unsafe.as(LibGtk::Calendar*))
+      __return_value
+    end
 
+    def month
+      __return_value = LibGtk.calendar_get_month(to_unsafe.as(LibGtk::Calendar*))
+      __return_value
+    end
 
+    def no_month_change
+      __return_value = LibGtk.calendar_get_no_month_change(to_unsafe.as(LibGtk::Calendar*))
+      __return_value
+    end
 
+    def show_day_names
+      __return_value = LibGtk.calendar_get_show_day_names(to_unsafe.as(LibGtk::Calendar*))
+      __return_value
+    end
 
+    def show_details
+      __return_value = LibGtk.calendar_get_show_details(to_unsafe.as(LibGtk::Calendar*))
+      __return_value
+    end
 
+    def show_heading
+      __return_value = LibGtk.calendar_get_show_heading(to_unsafe.as(LibGtk::Calendar*))
+      __return_value
+    end
 
+    def show_week_numbers
+      __return_value = LibGtk.calendar_get_show_week_numbers(to_unsafe.as(LibGtk::Calendar*))
+      __return_value
+    end
 
+    def year
+      __return_value = LibGtk.calendar_get_year(to_unsafe.as(LibGtk::Calendar*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.calendar_new

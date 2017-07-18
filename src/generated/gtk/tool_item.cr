@@ -13,8 +13,20 @@ module Gtk
     # Implements ImplementorIface
     # Implements Activatable
     # Implements Buildable
+    def is_important
+      __return_value = LibGtk.tool_item_get_is_important(to_unsafe.as(LibGtk::ToolItem*))
+      __return_value
+    end
 
+    def visible_horizontal
+      __return_value = LibGtk.tool_item_get_visible_horizontal(to_unsafe.as(LibGtk::ToolItem*))
+      __return_value
+    end
 
+    def visible_vertical
+      __return_value = LibGtk.tool_item_get_visible_vertical(to_unsafe.as(LibGtk::ToolItem*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.tool_item_new

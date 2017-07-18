@@ -9,6 +9,10 @@ module Gio
     end
 
     # Implements Icon
+    def gicon
+      __return_value = LibGio.emblemed_icon_get_gicon(to_unsafe.as(LibGio::EmblemedIcon*))
+      __return_value
+    end
 
     def self.new(icon, emblem) : self
       __return_value = LibGio.emblemed_icon_new(icon.to_unsafe.as(LibGio::Icon*), emblem ? emblem.to_unsafe.as(LibGio::Emblem*) : nil)

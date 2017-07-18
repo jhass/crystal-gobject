@@ -92,6 +92,11 @@ module Gst
       __return_value
     end
 
+    def array(fieldname, array)
+      __return_value = LibGst.structure_get_array(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, array)
+      __return_value
+    end
+
     def boolean(fieldname, value)
       __return_value = LibGst.structure_get_boolean(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value)
       __return_value
@@ -144,6 +149,11 @@ module Gst
 
     def int64(fieldname, value)
       __return_value = LibGst.structure_get_int64(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value)
+      __return_value
+    end
+
+    def list(fieldname, array)
+      __return_value = LibGst.structure_get_list(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, array)
       __return_value
     end
 
@@ -254,6 +264,16 @@ module Gst
 
     def remove_field(fieldname)
       __return_value = LibGst.structure_remove_field(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe)
+      __return_value
+    end
+
+    def set_array(fieldname, array)
+      __return_value = LibGst.structure_set_array(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, array.to_unsafe.as(LibGObject::ValueArray*))
+      __return_value
+    end
+
+    def set_list(fieldname, array)
+      __return_value = LibGst.structure_set_list(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, array.to_unsafe.as(LibGObject::ValueArray*))
       __return_value
     end
 

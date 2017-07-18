@@ -8,11 +8,35 @@ module Gtk
       @gtk_text_buffer.not_nil!
     end
 
+    def copy_target_list
+      __return_value = LibGtk.text_buffer_get_copy_target_list(to_unsafe.as(LibGtk::TextBuffer*))
+      Gtk::TargetList.new(__return_value)
+    end
 
+    def cursor_position
+      __return_value = LibGtk.text_buffer_get_cursor_position(to_unsafe.as(LibGtk::TextBuffer*))
+      __return_value
+    end
 
+    def has_selection
+      __return_value = LibGtk.text_buffer_get_has_selection(to_unsafe.as(LibGtk::TextBuffer*))
+      __return_value
+    end
 
+    def paste_target_list
+      __return_value = LibGtk.text_buffer_get_paste_target_list(to_unsafe.as(LibGtk::TextBuffer*))
+      Gtk::TargetList.new(__return_value)
+    end
 
+    def tag_table
+      __return_value = LibGtk.text_buffer_get_tag_table(to_unsafe.as(LibGtk::TextBuffer*))
+      Gtk::TextTagTable.new(__return_value)
+    end
 
+    def text
+      __return_value = LibGtk.text_buffer_get_text(to_unsafe.as(LibGtk::TextBuffer*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new(table) : self
       __return_value = LibGtk.text_buffer_new(table ? table.to_unsafe.as(LibGtk::TextTagTable*) : nil)

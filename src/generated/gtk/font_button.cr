@@ -15,11 +15,35 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
     # Implements FontChooser
+    def font_name
+      __return_value = LibGtk.font_button_get_font_name(to_unsafe.as(LibGtk::FontButton*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def show_size
+      __return_value = LibGtk.font_button_get_show_size(to_unsafe.as(LibGtk::FontButton*))
+      __return_value
+    end
 
+    def show_style
+      __return_value = LibGtk.font_button_get_show_style(to_unsafe.as(LibGtk::FontButton*))
+      __return_value
+    end
 
+    def title
+      __return_value = LibGtk.font_button_get_title(to_unsafe.as(LibGtk::FontButton*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def use_font
+      __return_value = LibGtk.font_button_get_use_font(to_unsafe.as(LibGtk::FontButton*))
+      __return_value
+    end
 
+    def use_size
+      __return_value = LibGtk.font_button_get_use_size(to_unsafe.as(LibGtk::FontButton*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.font_button_new

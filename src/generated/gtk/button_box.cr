@@ -13,6 +13,10 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
+    def layout_style
+      __return_value = LibGtk.button_box_get_layout_style(to_unsafe.as(LibGtk::ButtonBox*))
+      __return_value
+    end
 
     def self.new(orientation : Gtk::Orientation) : self
       __return_value = LibGtk.button_box_new(orientation)

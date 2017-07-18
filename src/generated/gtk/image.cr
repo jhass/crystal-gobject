@@ -12,18 +12,70 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def file
+      __return_value = LibGtk.image_get_file(to_unsafe.as(LibGtk::Image*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def gicon
+      __return_value = LibGtk.image_get_gicon(to_unsafe.as(LibGtk::Image*))
+      __return_value
+    end
 
+    def icon_name
+      __return_value = LibGtk.image_get_icon_name(to_unsafe.as(LibGtk::Image*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def icon_set
+      __return_value = LibGtk.image_get_icon_set(to_unsafe.as(LibGtk::Image*))
+      Gtk::IconSet.new(__return_value)
+    end
 
+    def icon_size
+      __return_value = LibGtk.image_get_icon_size(to_unsafe.as(LibGtk::Image*))
+      __return_value
+    end
 
+    def pixbuf
+      __return_value = LibGtk.image_get_pixbuf(to_unsafe.as(LibGtk::Image*))
+      GdkPixbuf::Pixbuf.new(__return_value)
+    end
 
+    def pixbuf_animation
+      __return_value = LibGtk.image_get_pixbuf_animation(to_unsafe.as(LibGtk::Image*))
+      GdkPixbuf::PixbufAnimation.new(__return_value)
+    end
 
+    def pixel_size
+      __return_value = LibGtk.image_get_pixel_size(to_unsafe.as(LibGtk::Image*))
+      __return_value
+    end
 
+    def resource
+      __return_value = LibGtk.image_get_resource(to_unsafe.as(LibGtk::Image*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def stock
+      __return_value = LibGtk.image_get_stock(to_unsafe.as(LibGtk::Image*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def storage_type
+      __return_value = LibGtk.image_get_storage_type(to_unsafe.as(LibGtk::Image*))
+      __return_value
+    end
 
+    def surface
+      __return_value = LibGtk.image_get_surface(to_unsafe.as(LibGtk::Image*))
+      Cairo::Surface.new(__return_value)
+    end
 
+    def use_fallback
+      __return_value = LibGtk.image_get_use_fallback(to_unsafe.as(LibGtk::Image*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.image_new

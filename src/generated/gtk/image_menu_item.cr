@@ -15,8 +15,20 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
 
+    def always_show_image
+      __return_value = LibGtk.image_menu_item_get_always_show_image(to_unsafe.as(LibGtk::ImageMenuItem*))
+      __return_value
+    end
 
+    def image
+      __return_value = LibGtk.image_menu_item_get_image(to_unsafe.as(LibGtk::ImageMenuItem*))
+      Gtk::Widget.new(__return_value)
+    end
 
+    def use_stock
+      __return_value = LibGtk.image_menu_item_get_use_stock(to_unsafe.as(LibGtk::ImageMenuItem*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.image_menu_item_new

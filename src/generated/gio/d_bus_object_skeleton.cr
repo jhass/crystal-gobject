@@ -9,6 +9,10 @@ module Gio
     end
 
     # Implements DBusObject
+    def g_object_path
+      __return_value = LibGio.d_bus_object_skeleton_get_g_object_path(to_unsafe.as(LibGio::DBusObjectSkeleton*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new(object_path) : self
       __return_value = LibGio.d_bus_object_skeleton_new(object_path.to_unsafe)

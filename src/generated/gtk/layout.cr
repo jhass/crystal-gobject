@@ -13,7 +13,15 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Scrollable
+    def height
+      __return_value = LibGtk.layout_get_height(to_unsafe.as(LibGtk::Layout*))
+      __return_value
+    end
 
+    def width
+      __return_value = LibGtk.layout_get_width(to_unsafe.as(LibGtk::Layout*))
+      __return_value
+    end
 
     def self.new(hadjustment, vadjustment) : self
       __return_value = LibGtk.layout_new(hadjustment ? hadjustment.to_unsafe.as(LibGtk::Adjustment*) : nil, vadjustment ? vadjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)

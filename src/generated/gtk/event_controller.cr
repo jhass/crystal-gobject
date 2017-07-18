@@ -8,7 +8,15 @@ module Gtk
       @gtk_event_controller.not_nil!
     end
 
+    def propagation_phase
+      __return_value = LibGtk.event_controller_get_propagation_phase(to_unsafe.as(LibGtk::EventController*))
+      __return_value
+    end
 
+    def widget
+      __return_value = LibGtk.event_controller_get_widget(to_unsafe.as(LibGtk::EventController*))
+      Gtk::Widget.new(__return_value)
+    end
 
     def propagation_phase
       __return_value = LibGtk.event_controller_get_propagation_phase(to_unsafe.as(LibGtk::EventController*))

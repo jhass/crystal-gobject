@@ -10,9 +10,25 @@ module Gtk
       @gtk_cell_renderer_accel.not_nil!
     end
 
+    def accel_key
+      __return_value = LibGtk.cell_renderer_accel_get_accel_key(to_unsafe.as(LibGtk::CellRendererAccel*))
+      __return_value
+    end
 
+    def accel_mode
+      __return_value = LibGtk.cell_renderer_accel_get_accel_mode(to_unsafe.as(LibGtk::CellRendererAccel*))
+      __return_value
+    end
 
+    def accel_mods
+      __return_value = LibGtk.cell_renderer_accel_get_accel_mods(to_unsafe.as(LibGtk::CellRendererAccel*))
+      __return_value
+    end
 
+    def keycode
+      __return_value = LibGtk.cell_renderer_accel_get_keycode(to_unsafe.as(LibGtk::CellRendererAccel*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.cell_renderer_accel_new

@@ -9,7 +9,15 @@ module Gio
     end
 
     # Implements ProxyResolver
+    def default_proxy
+      __return_value = LibGio.simple_proxy_resolver_get_default_proxy(to_unsafe.as(LibGio::SimpleProxyResolver*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def ignore_hosts
+      __return_value = LibGio.simple_proxy_resolver_get_ignore_hosts(to_unsafe.as(LibGio::SimpleProxyResolver*))
+      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
+    end
 
     def self.new(default_proxy, ignore_hosts)
       __return_value = LibGio.simple_proxy_resolver_new(default_proxy ? default_proxy.to_unsafe : nil, ignore_hosts ? ignore_hosts.to_unsafe : nil)

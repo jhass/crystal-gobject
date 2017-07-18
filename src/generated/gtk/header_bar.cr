@@ -12,13 +12,45 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def custom_title
+      __return_value = LibGtk.header_bar_get_custom_title(to_unsafe.as(LibGtk::HeaderBar*))
+      Gtk::Widget.new(__return_value)
+    end
 
+    def decoration_layout
+      __return_value = LibGtk.header_bar_get_decoration_layout(to_unsafe.as(LibGtk::HeaderBar*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def decoration_layout_set
+      __return_value = LibGtk.header_bar_get_decoration_layout_set(to_unsafe.as(LibGtk::HeaderBar*))
+      __return_value
+    end
 
+    def has_subtitle
+      __return_value = LibGtk.header_bar_get_has_subtitle(to_unsafe.as(LibGtk::HeaderBar*))
+      __return_value
+    end
 
+    def show_close_button
+      __return_value = LibGtk.header_bar_get_show_close_button(to_unsafe.as(LibGtk::HeaderBar*))
+      __return_value
+    end
 
+    def spacing
+      __return_value = LibGtk.header_bar_get_spacing(to_unsafe.as(LibGtk::HeaderBar*))
+      __return_value
+    end
 
+    def subtitle
+      __return_value = LibGtk.header_bar_get_subtitle(to_unsafe.as(LibGtk::HeaderBar*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def title
+      __return_value = LibGtk.header_bar_get_title(to_unsafe.as(LibGtk::HeaderBar*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new : self
       __return_value = LibGtk.header_bar_new

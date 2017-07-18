@@ -12,6 +12,10 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def screen
+      __return_value = LibGtk.invisible_get_screen(to_unsafe.as(LibGtk::Invisible*))
+      Gdk::Screen.new(__return_value)
+    end
 
     def self.new : self
       __return_value = LibGtk.invisible_new

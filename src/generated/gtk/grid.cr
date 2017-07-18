@@ -13,10 +13,30 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
+    def baseline_row
+      __return_value = LibGtk.grid_get_baseline_row(to_unsafe.as(LibGtk::Grid*))
+      __return_value
+    end
 
+    def column_homogeneous
+      __return_value = LibGtk.grid_get_column_homogeneous(to_unsafe.as(LibGtk::Grid*))
+      __return_value
+    end
 
+    def column_spacing
+      __return_value = LibGtk.grid_get_column_spacing(to_unsafe.as(LibGtk::Grid*))
+      __return_value
+    end
 
+    def row_homogeneous
+      __return_value = LibGtk.grid_get_row_homogeneous(to_unsafe.as(LibGtk::Grid*))
+      __return_value
+    end
 
+    def row_spacing
+      __return_value = LibGtk.grid_get_row_spacing(to_unsafe.as(LibGtk::Grid*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.grid_new

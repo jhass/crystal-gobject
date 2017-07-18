@@ -12,20 +12,80 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def hadjustment
+      __return_value = LibGtk.scrolled_window_get_hadjustment(to_unsafe.as(LibGtk::ScrolledWindow*))
+      Gtk::Adjustment.new(__return_value)
+    end
 
+    def hscrollbar_policy
+      __return_value = LibGtk.scrolled_window_get_hscrollbar_policy(to_unsafe.as(LibGtk::ScrolledWindow*))
+      __return_value
+    end
 
+    def kinetic_scrolling
+      __return_value = LibGtk.scrolled_window_get_kinetic_scrolling(to_unsafe.as(LibGtk::ScrolledWindow*))
+      __return_value
+    end
 
+    def max_content_height
+      __return_value = LibGtk.scrolled_window_get_max_content_height(to_unsafe.as(LibGtk::ScrolledWindow*))
+      __return_value
+    end
 
+    def max_content_width
+      __return_value = LibGtk.scrolled_window_get_max_content_width(to_unsafe.as(LibGtk::ScrolledWindow*))
+      __return_value
+    end
 
+    def min_content_height
+      __return_value = LibGtk.scrolled_window_get_min_content_height(to_unsafe.as(LibGtk::ScrolledWindow*))
+      __return_value
+    end
 
+    def min_content_width
+      __return_value = LibGtk.scrolled_window_get_min_content_width(to_unsafe.as(LibGtk::ScrolledWindow*))
+      __return_value
+    end
 
+    def overlay_scrolling
+      __return_value = LibGtk.scrolled_window_get_overlay_scrolling(to_unsafe.as(LibGtk::ScrolledWindow*))
+      __return_value
+    end
 
+    def propagate_natural_height
+      __return_value = LibGtk.scrolled_window_get_propagate_natural_height(to_unsafe.as(LibGtk::ScrolledWindow*))
+      __return_value
+    end
 
+    def propagate_natural_width
+      __return_value = LibGtk.scrolled_window_get_propagate_natural_width(to_unsafe.as(LibGtk::ScrolledWindow*))
+      __return_value
+    end
 
+    def shadow_type
+      __return_value = LibGtk.scrolled_window_get_shadow_type(to_unsafe.as(LibGtk::ScrolledWindow*))
+      __return_value
+    end
 
+    def vadjustment
+      __return_value = LibGtk.scrolled_window_get_vadjustment(to_unsafe.as(LibGtk::ScrolledWindow*))
+      Gtk::Adjustment.new(__return_value)
+    end
 
+    def vscrollbar_policy
+      __return_value = LibGtk.scrolled_window_get_vscrollbar_policy(to_unsafe.as(LibGtk::ScrolledWindow*))
+      __return_value
+    end
 
+    def window_placement
+      __return_value = LibGtk.scrolled_window_get_window_placement(to_unsafe.as(LibGtk::ScrolledWindow*))
+      __return_value
+    end
 
+    def window_placement_set
+      __return_value = LibGtk.scrolled_window_get_window_placement_set(to_unsafe.as(LibGtk::ScrolledWindow*))
+      __return_value
+    end
 
     def self.new(hadjustment, vadjustment) : self
       __return_value = LibGtk.scrolled_window_new(hadjustment ? hadjustment.to_unsafe.as(LibGtk::Adjustment*) : nil, vadjustment ? vadjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)

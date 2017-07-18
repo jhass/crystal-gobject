@@ -11,7 +11,15 @@ module Gtk
     end
 
     # Implements FileChooser
+    def accept_label
+      __return_value = LibGtk.file_chooser_native_get_accept_label(to_unsafe.as(LibGtk::FileChooserNative*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def cancel_label
+      __return_value = LibGtk.file_chooser_native_get_cancel_label(to_unsafe.as(LibGtk::FileChooserNative*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new(title, parent, action : Gtk::FileChooserAction, accept_label, cancel_label) : self
       __return_value = LibGtk.file_chooser_native_new(title ? title.to_unsafe : nil, parent ? parent.to_unsafe.as(LibGtk::Window*) : nil, action, accept_label ? accept_label.to_unsafe : nil, cancel_label ? cancel_label.to_unsafe : nil)

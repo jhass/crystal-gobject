@@ -10,7 +10,15 @@ module Gtk
       @gtk_pad_controller.not_nil!
     end
 
+    def action_group
+      __return_value = LibGtk.pad_controller_get_action_group(to_unsafe.as(LibGtk::PadController*))
+      __return_value
+    end
 
+    def pad
+      __return_value = LibGtk.pad_controller_get_pad(to_unsafe.as(LibGtk::PadController*))
+      Gdk::Device.new(__return_value)
+    end
 
     def self.new(window, group, pad) : self
       __return_value = LibGtk.pad_controller_new(window.to_unsafe.as(LibGtk::Window*), group.to_unsafe.as(LibGio::ActionGroup*), pad ? pad.to_unsafe.as(LibGdk::Device*) : nil)

@@ -14,54 +14,250 @@ module Gtk
     # Implements Buildable
     # Implements CellEditable
     # Implements Editable
+    def activates_default
+      __return_value = LibGtk.entry_get_activates_default(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def attributes
+      __return_value = LibGtk.entry_get_attributes(to_unsafe.as(LibGtk::Entry*))
+      Pango::AttrList.new(__return_value)
+    end
 
+    def buffer
+      __return_value = LibGtk.entry_get_buffer(to_unsafe.as(LibGtk::Entry*))
+      Gtk::EntryBuffer.new(__return_value)
+    end
 
+    def caps_lock_warning
+      __return_value = LibGtk.entry_get_caps_lock_warning(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def completion
+      __return_value = LibGtk.entry_get_completion(to_unsafe.as(LibGtk::Entry*))
+      Gtk::EntryCompletion.new(__return_value)
+    end
 
+    def cursor_position
+      __return_value = LibGtk.entry_get_cursor_position(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def editable
+      __return_value = LibGtk.entry_get_editable(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def has_frame
+      __return_value = LibGtk.entry_get_has_frame(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def im_module
+      __return_value = LibGtk.entry_get_im_module(to_unsafe.as(LibGtk::Entry*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def inner_border
+      __return_value = LibGtk.entry_get_inner_border(to_unsafe.as(LibGtk::Entry*))
+      Gtk::Border.new(__return_value)
+    end
 
+    def input_hints
+      __return_value = LibGtk.entry_get_input_hints(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def input_purpose
+      __return_value = LibGtk.entry_get_input_purpose(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def invisible_char
+      __return_value = LibGtk.entry_get_invisible_char(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def invisible_char_set
+      __return_value = LibGtk.entry_get_invisible_char_set(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def max_length
+      __return_value = LibGtk.entry_get_max_length(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def max_width_chars
+      __return_value = LibGtk.entry_get_max_width_chars(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def overwrite_mode
+      __return_value = LibGtk.entry_get_overwrite_mode(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def placeholder_text
+      __return_value = LibGtk.entry_get_placeholder_text(to_unsafe.as(LibGtk::Entry*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def populate_all
+      __return_value = LibGtk.entry_get_populate_all(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def primary_icon_activatable
+      __return_value = LibGtk.entry_get_primary_icon_activatable(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def primary_icon_gicon
+      __return_value = LibGtk.entry_get_primary_icon_gicon(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def primary_icon_name
+      __return_value = LibGtk.entry_get_primary_icon_name(to_unsafe.as(LibGtk::Entry*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def primary_icon_pixbuf
+      __return_value = LibGtk.entry_get_primary_icon_pixbuf(to_unsafe.as(LibGtk::Entry*))
+      GdkPixbuf::Pixbuf.new(__return_value)
+    end
 
+    def primary_icon_sensitive
+      __return_value = LibGtk.entry_get_primary_icon_sensitive(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def primary_icon_stock
+      __return_value = LibGtk.entry_get_primary_icon_stock(to_unsafe.as(LibGtk::Entry*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def primary_icon_storage_type
+      __return_value = LibGtk.entry_get_primary_icon_storage_type(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def primary_icon_tooltip_markup
+      __return_value = LibGtk.entry_get_primary_icon_tooltip_markup(to_unsafe.as(LibGtk::Entry*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def primary_icon_tooltip_text
+      __return_value = LibGtk.entry_get_primary_icon_tooltip_text(to_unsafe.as(LibGtk::Entry*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def progress_fraction
+      __return_value = LibGtk.entry_get_progress_fraction(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def progress_pulse_step
+      __return_value = LibGtk.entry_get_progress_pulse_step(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def scroll_offset
+      __return_value = LibGtk.entry_get_scroll_offset(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def secondary_icon_activatable
+      __return_value = LibGtk.entry_get_secondary_icon_activatable(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def secondary_icon_gicon
+      __return_value = LibGtk.entry_get_secondary_icon_gicon(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def secondary_icon_name
+      __return_value = LibGtk.entry_get_secondary_icon_name(to_unsafe.as(LibGtk::Entry*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def secondary_icon_pixbuf
+      __return_value = LibGtk.entry_get_secondary_icon_pixbuf(to_unsafe.as(LibGtk::Entry*))
+      GdkPixbuf::Pixbuf.new(__return_value)
+    end
 
+    def secondary_icon_sensitive
+      __return_value = LibGtk.entry_get_secondary_icon_sensitive(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def secondary_icon_stock
+      __return_value = LibGtk.entry_get_secondary_icon_stock(to_unsafe.as(LibGtk::Entry*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def secondary_icon_storage_type
+      __return_value = LibGtk.entry_get_secondary_icon_storage_type(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def secondary_icon_tooltip_markup
+      __return_value = LibGtk.entry_get_secondary_icon_tooltip_markup(to_unsafe.as(LibGtk::Entry*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def secondary_icon_tooltip_text
+      __return_value = LibGtk.entry_get_secondary_icon_tooltip_text(to_unsafe.as(LibGtk::Entry*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def selection_bound
+      __return_value = LibGtk.entry_get_selection_bound(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def shadow_type
+      __return_value = LibGtk.entry_get_shadow_type(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def tabs
+      __return_value = LibGtk.entry_get_tabs(to_unsafe.as(LibGtk::Entry*))
+      Pango::TabArray.new(__return_value)
+    end
 
+    def text
+      __return_value = LibGtk.entry_get_text(to_unsafe.as(LibGtk::Entry*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def text_length
+      __return_value = LibGtk.entry_get_text_length(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def truncate_multiline
+      __return_value = LibGtk.entry_get_truncate_multiline(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def visibility
+      __return_value = LibGtk.entry_get_visibility(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def width_chars
+      __return_value = LibGtk.entry_get_width_chars(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
+    def xalign
+      __return_value = LibGtk.entry_get_xalign(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.entry_new

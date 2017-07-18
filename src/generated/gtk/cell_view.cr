@@ -15,13 +15,45 @@ module Gtk
     # Implements CellLayout
     # Implements Orientable
 
+    def background_gdk
+      __return_value = LibGtk.cell_view_get_background_gdk(to_unsafe.as(LibGtk::CellView*))
+      Gdk::Color.new(__return_value)
+    end
 
+    def background_rgba
+      __return_value = LibGtk.cell_view_get_background_rgba(to_unsafe.as(LibGtk::CellView*))
+      Gdk::RGBA.new(__return_value)
+    end
 
+    def background_set
+      __return_value = LibGtk.cell_view_get_background_set(to_unsafe.as(LibGtk::CellView*))
+      __return_value
+    end
 
+    def cell_area
+      __return_value = LibGtk.cell_view_get_cell_area(to_unsafe.as(LibGtk::CellView*))
+      Gtk::CellArea.new(__return_value)
+    end
 
+    def cell_area_context
+      __return_value = LibGtk.cell_view_get_cell_area_context(to_unsafe.as(LibGtk::CellView*))
+      Gtk::CellAreaContext.new(__return_value)
+    end
 
+    def draw_sensitive
+      __return_value = LibGtk.cell_view_get_draw_sensitive(to_unsafe.as(LibGtk::CellView*))
+      __return_value
+    end
 
+    def fit_model
+      __return_value = LibGtk.cell_view_get_fit_model(to_unsafe.as(LibGtk::CellView*))
+      __return_value
+    end
 
+    def model
+      __return_value = LibGtk.cell_view_get_model(to_unsafe.as(LibGtk::CellView*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.cell_view_new

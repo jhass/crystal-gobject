@@ -11,6 +11,10 @@ module Gio
     end
 
     # Implements Seekable
+    def byte_order
+      __return_value = LibGio.data_output_stream_get_byte_order(to_unsafe.as(LibGio::DataOutputStream*))
+      __return_value
+    end
 
     def self.new(base_stream) : self
       __return_value = LibGio.data_output_stream_new(base_stream.to_unsafe.as(LibGio::OutputStream*))

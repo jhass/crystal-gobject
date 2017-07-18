@@ -11,8 +11,20 @@ module Gst
     end
 
     # Implements ChildProxy
+    def auto_flush_bus
+      __return_value = LibGst.pipeline_get_auto_flush_bus(to_unsafe.as(LibGst::Pipeline*))
+      __return_value
+    end
 
+    def delay
+      __return_value = LibGst.pipeline_get_delay(to_unsafe.as(LibGst::Pipeline*))
+      __return_value
+    end
 
+    def latency
+      __return_value = LibGst.pipeline_get_latency(to_unsafe.as(LibGst::Pipeline*))
+      __return_value
+    end
 
     def self.new(name) : self
       __return_value = LibGst.pipeline_new(name ? name.to_unsafe : nil)

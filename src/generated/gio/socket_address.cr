@@ -9,6 +9,10 @@ module Gio
     end
 
     # Implements SocketConnectable
+    def family
+      __return_value = LibGio.socket_address_get_family(to_unsafe.as(LibGio::SocketAddress*))
+      __return_value
+    end
 
     def self.new_from_native(native, len) : self
       __return_value = LibGio.socket_address_new_from_native(native, UInt64.new(len))

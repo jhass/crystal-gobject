@@ -186,6 +186,11 @@ module Gio
     __return_value
   end
 
+  def self.content_type_is_mime_type(type, mime_type)
+    __return_value = LibGio.content_type_is_mime_type(type.to_unsafe, mime_type.to_unsafe)
+    __return_value
+  end
+
   def self.content_type_is_unknown(type)
     __return_value = LibGio.content_type_is_unknown(type.to_unsafe)
     __return_value

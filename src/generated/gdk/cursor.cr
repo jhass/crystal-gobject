@@ -8,7 +8,15 @@ module Gdk
       @gdk_cursor.not_nil!
     end
 
+    def cursor_type
+      __return_value = LibGdk.cursor_get_cursor_type(to_unsafe.as(LibGdk::Cursor*))
+      __return_value
+    end
 
+    def display
+      __return_value = LibGdk.cursor_get_display(to_unsafe.as(LibGdk::Cursor*))
+      Gdk::Display.new(__return_value)
+    end
 
     def self.new(cursor_type : Gdk::CursorType) : self
       __return_value = LibGdk.cursor_new(cursor_type)

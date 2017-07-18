@@ -8,6 +8,10 @@ module Gio
       @gio_test_d_bus.not_nil!
     end
 
+    def flags
+      __return_value = LibGio.test_d_bus_get_flags(to_unsafe.as(LibGio::TestDBus*))
+      __return_value
+    end
 
     def self.new(flags : Gio::TestDBusFlags) : self
       __return_value = LibGio.test_d_bus_new(flags)

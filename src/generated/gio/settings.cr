@@ -8,12 +8,40 @@ module Gio
       @gio_settings.not_nil!
     end
 
+    def backend
+      __return_value = LibGio.settings_get_backend(to_unsafe.as(LibGio::Settings*))
+      Gio::SettingsBackend.new(__return_value)
+    end
 
+    def delay_apply
+      __return_value = LibGio.settings_get_delay_apply(to_unsafe.as(LibGio::Settings*))
+      __return_value
+    end
 
+    def has_unapplied
+      __return_value = LibGio.settings_get_has_unapplied(to_unsafe.as(LibGio::Settings*))
+      __return_value
+    end
 
+    def path
+      __return_value = LibGio.settings_get_path(to_unsafe.as(LibGio::Settings*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def schema
+      __return_value = LibGio.settings_get_schema(to_unsafe.as(LibGio::Settings*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def schema_id
+      __return_value = LibGio.settings_get_schema_id(to_unsafe.as(LibGio::Settings*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def settings_schema
+      __return_value = LibGio.settings_get_settings_schema(to_unsafe.as(LibGio::Settings*))
+      Gio::SettingsSchema.new(__return_value)
+    end
 
     def self.new(schema_id) : self
       __return_value = LibGio.settings_new(schema_id.to_unsafe)

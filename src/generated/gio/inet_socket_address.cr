@@ -11,9 +11,25 @@ module Gio
     end
 
     # Implements SocketConnectable
+    def address
+      __return_value = LibGio.inet_socket_address_get_address(to_unsafe.as(LibGio::InetSocketAddress*))
+      Gio::InetAddress.new(__return_value)
+    end
 
+    def flowinfo
+      __return_value = LibGio.inet_socket_address_get_flowinfo(to_unsafe.as(LibGio::InetSocketAddress*))
+      __return_value
+    end
 
+    def port
+      __return_value = LibGio.inet_socket_address_get_port(to_unsafe.as(LibGio::InetSocketAddress*))
+      __return_value
+    end
 
+    def scope_id
+      __return_value = LibGio.inet_socket_address_get_scope_id(to_unsafe.as(LibGio::InetSocketAddress*))
+      __return_value
+    end
 
     def self.new(address, port) : self
       __return_value = LibGio.inet_socket_address_new(address.to_unsafe.as(LibGio::InetAddress*), UInt16.new(port))

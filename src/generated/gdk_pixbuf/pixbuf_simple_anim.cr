@@ -10,6 +10,10 @@ module GdkPixbuf
       @gdk_pixbuf_pixbuf_simple_anim.not_nil!
     end
 
+    def loop
+      __return_value = LibGdkPixbuf.pixbuf_simple_anim_get_loop(to_unsafe.as(LibGdkPixbuf::PixbufSimpleAnim*))
+      __return_value
+    end
 
     def self.new(width, height, rate) : self
       __return_value = LibGdkPixbuf.pixbuf_simple_anim_new(Int32.new(width), Int32.new(height), Float32.new(rate))

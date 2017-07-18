@@ -15,8 +15,20 @@ module Gtk
     # Implements Buildable
     # Implements CellEditable
     # Implements CellLayout
+    def heading
+      __return_value = LibGtk.app_chooser_button_get_heading(to_unsafe.as(LibGtk::AppChooserButton*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def show_default_item
+      __return_value = LibGtk.app_chooser_button_get_show_default_item(to_unsafe.as(LibGtk::AppChooserButton*))
+      __return_value
+    end
 
+    def show_dialog_item
+      __return_value = LibGtk.app_chooser_button_get_show_dialog_item(to_unsafe.as(LibGtk::AppChooserButton*))
+      __return_value
+    end
 
     def self.new(content_type) : self
       __return_value = LibGtk.app_chooser_button_new(content_type.to_unsafe)

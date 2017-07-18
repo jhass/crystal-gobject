@@ -14,21 +14,85 @@ module Gtk
     # Implements Buildable
     # Implements CellEditable
     # Implements CellLayout
+    def active
+      __return_value = LibGtk.combo_box_get_active(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value
+    end
 
+    def active_id
+      __return_value = LibGtk.combo_box_get_active_id(to_unsafe.as(LibGtk::ComboBox*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def add_tearoffs
+      __return_value = LibGtk.combo_box_get_add_tearoffs(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value
+    end
 
+    def button_sensitivity
+      __return_value = LibGtk.combo_box_get_button_sensitivity(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value
+    end
 
+    def cell_area
+      __return_value = LibGtk.combo_box_get_cell_area(to_unsafe.as(LibGtk::ComboBox*))
+      Gtk::CellArea.new(__return_value)
+    end
 
+    def column_span_column
+      __return_value = LibGtk.combo_box_get_column_span_column(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value
+    end
 
+    def entry_text_column
+      __return_value = LibGtk.combo_box_get_entry_text_column(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value
+    end
 
+    def has_entry
+      __return_value = LibGtk.combo_box_get_has_entry(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value
+    end
 
+    def has_frame
+      __return_value = LibGtk.combo_box_get_has_frame(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value
+    end
 
+    def id_column
+      __return_value = LibGtk.combo_box_get_id_column(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value
+    end
 
+    def model
+      __return_value = LibGtk.combo_box_get_model(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value
+    end
 
+    def popup_fixed_width
+      __return_value = LibGtk.combo_box_get_popup_fixed_width(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value
+    end
 
+    def popup_shown
+      __return_value = LibGtk.combo_box_get_popup_shown(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value
+    end
 
+    def row_span_column
+      __return_value = LibGtk.combo_box_get_row_span_column(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value
+    end
 
+    def tearoff_title
+      __return_value = LibGtk.combo_box_get_tearoff_title(to_unsafe.as(LibGtk::ComboBox*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def wrap_width
+      __return_value = LibGtk.combo_box_get_wrap_width(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.combo_box_new

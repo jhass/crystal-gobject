@@ -10,44 +10,200 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def app_paintable
+      __return_value = LibGtk.widget_get_app_paintable(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def can_default
+      __return_value = LibGtk.widget_get_can_default(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def can_focus
+      __return_value = LibGtk.widget_get_can_focus(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def composite_child
+      __return_value = LibGtk.widget_get_composite_child(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def double_buffered
+      __return_value = LibGtk.widget_get_double_buffered(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def events
+      __return_value = LibGtk.widget_get_events(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def expand
+      __return_value = LibGtk.widget_get_expand(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def focus_on_click
+      __return_value = LibGtk.widget_get_focus_on_click(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def halign
+      __return_value = LibGtk.widget_get_halign(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def has_default
+      __return_value = LibGtk.widget_get_has_default(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def has_focus
+      __return_value = LibGtk.widget_get_has_focus(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def has_tooltip
+      __return_value = LibGtk.widget_get_has_tooltip(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def height_request
+      __return_value = LibGtk.widget_get_height_request(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def hexpand
+      __return_value = LibGtk.widget_get_hexpand(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def hexpand_set
+      __return_value = LibGtk.widget_get_hexpand_set(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def is_focus
+      __return_value = LibGtk.widget_get_is_focus(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def margin
+      __return_value = LibGtk.widget_get_margin(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def margin_bottom
+      __return_value = LibGtk.widget_get_margin_bottom(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def margin_end
+      __return_value = LibGtk.widget_get_margin_end(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def margin_left
+      __return_value = LibGtk.widget_get_margin_left(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def margin_right
+      __return_value = LibGtk.widget_get_margin_right(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def margin_start
+      __return_value = LibGtk.widget_get_margin_start(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def margin_top
+      __return_value = LibGtk.widget_get_margin_top(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def name
+      __return_value = LibGtk.widget_get_name(to_unsafe.as(LibGtk::Widget*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def no_show_all
+      __return_value = LibGtk.widget_get_no_show_all(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def opacity
+      __return_value = LibGtk.widget_get_opacity(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def parent
+      __return_value = LibGtk.widget_get_parent(to_unsafe.as(LibGtk::Widget*))
+      Gtk::Container.new(__return_value)
+    end
 
+    def receives_default
+      __return_value = LibGtk.widget_get_receives_default(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def scale_factor
+      __return_value = LibGtk.widget_get_scale_factor(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def sensitive
+      __return_value = LibGtk.widget_get_sensitive(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def style
+      __return_value = LibGtk.widget_get_style(to_unsafe.as(LibGtk::Widget*))
+      Gtk::Style.new(__return_value)
+    end
 
+    def tooltip_markup
+      __return_value = LibGtk.widget_get_tooltip_markup(to_unsafe.as(LibGtk::Widget*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def tooltip_text
+      __return_value = LibGtk.widget_get_tooltip_text(to_unsafe.as(LibGtk::Widget*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def valign
+      __return_value = LibGtk.widget_get_valign(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def vexpand
+      __return_value = LibGtk.widget_get_vexpand(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def vexpand_set
+      __return_value = LibGtk.widget_get_vexpand_set(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def visible
+      __return_value = LibGtk.widget_get_visible(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def width_request
+      __return_value = LibGtk.widget_get_width_request(to_unsafe.as(LibGtk::Widget*))
+      __return_value
+    end
 
+    def window
+      __return_value = LibGtk.widget_get_window(to_unsafe.as(LibGtk::Widget*))
+      Gdk::Window.new(__return_value)
+    end
 
     def self.default_direction
       __return_value = LibGtk.widget_get_default_direction
@@ -805,7 +961,7 @@ module Gtk
     end
 
     def intersect(area, intersection)
-      __return_value = LibGtk.widget_intersect(to_unsafe.as(LibGtk::Widget*), area.to_unsafe.as(LibGdk::Rectangle*), intersection ? intersection.to_unsafe.as(LibGdk::Rectangle*) : nil)
+      __return_value = LibGtk.widget_intersect(to_unsafe.as(LibGtk::Widget*), area.to_unsafe.as(LibGdk::Rectangle*), intersection)
       __return_value
     end
 

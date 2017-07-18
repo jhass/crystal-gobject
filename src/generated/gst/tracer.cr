@@ -10,6 +10,10 @@ module Gst
       @gst_tracer.not_nil!
     end
 
+    def params
+      __return_value = LibGst.tracer_get_params(to_unsafe.as(LibGst::Tracer*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
   end
 end

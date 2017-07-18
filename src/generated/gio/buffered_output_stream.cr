@@ -11,7 +11,15 @@ module Gio
     end
 
     # Implements Seekable
+    def auto_grow
+      __return_value = LibGio.buffered_output_stream_get_auto_grow(to_unsafe.as(LibGio::BufferedOutputStream*))
+      __return_value
+    end
 
+    def buffer_size
+      __return_value = LibGio.buffered_output_stream_get_buffer_size(to_unsafe.as(LibGio::BufferedOutputStream*))
+      __return_value
+    end
 
     def self.new(base_stream) : self
       __return_value = LibGio.buffered_output_stream_new(base_stream.to_unsafe.as(LibGio::OutputStream*))

@@ -12,13 +12,45 @@ module Gio
     # Implements DBusInterface
     # Implements Initable
 
+    def g_connection
+      __return_value = LibGio.d_bus_proxy_get_g_connection(to_unsafe.as(LibGio::DBusProxy*))
+      Gio::DBusConnection.new(__return_value)
+    end
 
+    def g_default_timeout
+      __return_value = LibGio.d_bus_proxy_get_g_default_timeout(to_unsafe.as(LibGio::DBusProxy*))
+      __return_value
+    end
 
+    def g_flags
+      __return_value = LibGio.d_bus_proxy_get_g_flags(to_unsafe.as(LibGio::DBusProxy*))
+      __return_value
+    end
 
+    def g_interface_info
+      __return_value = LibGio.d_bus_proxy_get_g_interface_info(to_unsafe.as(LibGio::DBusProxy*))
+      Gio::DBusInterfaceInfo.new(__return_value)
+    end
 
+    def g_interface_name
+      __return_value = LibGio.d_bus_proxy_get_g_interface_name(to_unsafe.as(LibGio::DBusProxy*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def g_name
+      __return_value = LibGio.d_bus_proxy_get_g_name(to_unsafe.as(LibGio::DBusProxy*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def g_name_owner
+      __return_value = LibGio.d_bus_proxy_get_g_name_owner(to_unsafe.as(LibGio::DBusProxy*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def g_object_path
+      __return_value = LibGio.d_bus_proxy_get_g_object_path(to_unsafe.as(LibGio::DBusProxy*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new_finish(res) : self
       __error = Pointer(LibGLib::Error).null

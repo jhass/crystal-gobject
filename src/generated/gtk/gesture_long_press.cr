@@ -10,6 +10,10 @@ module Gtk
       @gtk_gesture_long_press.not_nil!
     end
 
+    def delay_factor
+      __return_value = LibGtk.gesture_long_press_get_delay_factor(to_unsafe.as(LibGtk::GestureLongPress*))
+      __return_value
+    end
 
     def self.new(widget) : self
       __return_value = LibGtk.gesture_long_press_new(widget.to_unsafe.as(LibGtk::Widget*))

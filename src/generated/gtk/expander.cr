@@ -12,13 +12,45 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def expanded
+      __return_value = LibGtk.expander_get_expanded(to_unsafe.as(LibGtk::Expander*))
+      __return_value
+    end
 
+    def label
+      __return_value = LibGtk.expander_get_label(to_unsafe.as(LibGtk::Expander*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def label_fill
+      __return_value = LibGtk.expander_get_label_fill(to_unsafe.as(LibGtk::Expander*))
+      __return_value
+    end
 
+    def label_widget
+      __return_value = LibGtk.expander_get_label_widget(to_unsafe.as(LibGtk::Expander*))
+      Gtk::Widget.new(__return_value)
+    end
 
+    def resize_toplevel
+      __return_value = LibGtk.expander_get_resize_toplevel(to_unsafe.as(LibGtk::Expander*))
+      __return_value
+    end
 
+    def spacing
+      __return_value = LibGtk.expander_get_spacing(to_unsafe.as(LibGtk::Expander*))
+      __return_value
+    end
 
+    def use_markup
+      __return_value = LibGtk.expander_get_use_markup(to_unsafe.as(LibGtk::Expander*))
+      __return_value
+    end
 
+    def use_underline
+      __return_value = LibGtk.expander_get_use_underline(to_unsafe.as(LibGtk::Expander*))
+      __return_value
+    end
 
     def self.new(label) : self
       __return_value = LibGtk.expander_new(label.to_unsafe)

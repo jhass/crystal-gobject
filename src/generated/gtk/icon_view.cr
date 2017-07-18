@@ -14,22 +14,90 @@ module Gtk
     # Implements Buildable
     # Implements CellLayout
     # Implements Scrollable
+    def activate_on_single_click
+      __return_value = LibGtk.icon_view_get_activate_on_single_click(to_unsafe.as(LibGtk::IconView*))
+      __return_value
+    end
 
+    def cell_area
+      __return_value = LibGtk.icon_view_get_cell_area(to_unsafe.as(LibGtk::IconView*))
+      Gtk::CellArea.new(__return_value)
+    end
 
+    def column_spacing
+      __return_value = LibGtk.icon_view_get_column_spacing(to_unsafe.as(LibGtk::IconView*))
+      __return_value
+    end
 
+    def columns
+      __return_value = LibGtk.icon_view_get_columns(to_unsafe.as(LibGtk::IconView*))
+      __return_value
+    end
 
+    def item_orientation
+      __return_value = LibGtk.icon_view_get_item_orientation(to_unsafe.as(LibGtk::IconView*))
+      __return_value
+    end
 
+    def item_padding
+      __return_value = LibGtk.icon_view_get_item_padding(to_unsafe.as(LibGtk::IconView*))
+      __return_value
+    end
 
+    def item_width
+      __return_value = LibGtk.icon_view_get_item_width(to_unsafe.as(LibGtk::IconView*))
+      __return_value
+    end
 
+    def margin
+      __return_value = LibGtk.icon_view_get_margin(to_unsafe.as(LibGtk::IconView*))
+      __return_value
+    end
 
+    def markup_column
+      __return_value = LibGtk.icon_view_get_markup_column(to_unsafe.as(LibGtk::IconView*))
+      __return_value
+    end
 
+    def model
+      __return_value = LibGtk.icon_view_get_model(to_unsafe.as(LibGtk::IconView*))
+      __return_value
+    end
 
+    def pixbuf_column
+      __return_value = LibGtk.icon_view_get_pixbuf_column(to_unsafe.as(LibGtk::IconView*))
+      __return_value
+    end
 
+    def reorderable
+      __return_value = LibGtk.icon_view_get_reorderable(to_unsafe.as(LibGtk::IconView*))
+      __return_value
+    end
 
+    def row_spacing
+      __return_value = LibGtk.icon_view_get_row_spacing(to_unsafe.as(LibGtk::IconView*))
+      __return_value
+    end
 
+    def selection_mode
+      __return_value = LibGtk.icon_view_get_selection_mode(to_unsafe.as(LibGtk::IconView*))
+      __return_value
+    end
 
+    def spacing
+      __return_value = LibGtk.icon_view_get_spacing(to_unsafe.as(LibGtk::IconView*))
+      __return_value
+    end
 
+    def text_column
+      __return_value = LibGtk.icon_view_get_text_column(to_unsafe.as(LibGtk::IconView*))
+      __return_value
+    end
 
+    def tooltip_column
+      __return_value = LibGtk.icon_view_get_tooltip_column(to_unsafe.as(LibGtk::IconView*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.icon_view_new

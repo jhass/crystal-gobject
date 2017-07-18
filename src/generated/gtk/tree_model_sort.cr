@@ -11,6 +11,10 @@ module Gtk
     # Implements TreeDragSource
     # Implements TreeModel
     # Implements TreeSortable
+    def model
+      __return_value = LibGtk.tree_model_sort_get_model(to_unsafe.as(LibGtk::TreeModelSort*))
+      __return_value
+    end
 
     def clear_cache
       __return_value = LibGtk.tree_model_sort_clear_cache(to_unsafe.as(LibGtk::TreeModelSort*))

@@ -14,11 +14,35 @@ module Gtk
     # Implements Actionable
     # Implements Activatable
     # Implements Buildable
+    def align_widget
+      __return_value = LibGtk.menu_button_get_align_widget(to_unsafe.as(LibGtk::MenuButton*))
+      Gtk::Container.new(__return_value)
+    end
 
+    def direction
+      __return_value = LibGtk.menu_button_get_direction(to_unsafe.as(LibGtk::MenuButton*))
+      __return_value
+    end
 
+    def menu_model
+      __return_value = LibGtk.menu_button_get_menu_model(to_unsafe.as(LibGtk::MenuButton*))
+      Gio::MenuModel.new(__return_value)
+    end
 
+    def popover
+      __return_value = LibGtk.menu_button_get_popover(to_unsafe.as(LibGtk::MenuButton*))
+      Gtk::Popover.new(__return_value)
+    end
 
+    def popup
+      __return_value = LibGtk.menu_button_get_popup(to_unsafe.as(LibGtk::MenuButton*))
+      Gtk::Menu.new(__return_value)
+    end
 
+    def use_popover
+      __return_value = LibGtk.menu_button_get_use_popover(to_unsafe.as(LibGtk::MenuButton*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.menu_button_new

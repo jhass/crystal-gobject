@@ -8,20 +8,80 @@ module Gdk
       @gdk_device.not_nil!
     end
 
+    def associated_device
+      __return_value = LibGdk.device_get_associated_device(to_unsafe.as(LibGdk::Device*))
+      Gdk::Device.new(__return_value)
+    end
 
+    def axes
+      __return_value = LibGdk.device_get_axes(to_unsafe.as(LibGdk::Device*))
+      __return_value
+    end
 
+    def device_manager
+      __return_value = LibGdk.device_get_device_manager(to_unsafe.as(LibGdk::Device*))
+      Gdk::DeviceManager.new(__return_value)
+    end
 
+    def display
+      __return_value = LibGdk.device_get_display(to_unsafe.as(LibGdk::Device*))
+      Gdk::Display.new(__return_value)
+    end
 
+    def has_cursor
+      __return_value = LibGdk.device_get_has_cursor(to_unsafe.as(LibGdk::Device*))
+      __return_value
+    end
 
+    def input_mode
+      __return_value = LibGdk.device_get_input_mode(to_unsafe.as(LibGdk::Device*))
+      __return_value
+    end
 
+    def input_source
+      __return_value = LibGdk.device_get_input_source(to_unsafe.as(LibGdk::Device*))
+      __return_value
+    end
 
+    def n_axes
+      __return_value = LibGdk.device_get_n_axes(to_unsafe.as(LibGdk::Device*))
+      __return_value
+    end
 
+    def name
+      __return_value = LibGdk.device_get_name(to_unsafe.as(LibGdk::Device*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def num_touches
+      __return_value = LibGdk.device_get_num_touches(to_unsafe.as(LibGdk::Device*))
+      __return_value
+    end
 
+    def product_id
+      __return_value = LibGdk.device_get_product_id(to_unsafe.as(LibGdk::Device*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def seat
+      __return_value = LibGdk.device_get_seat(to_unsafe.as(LibGdk::Device*))
+      Gdk::Seat.new(__return_value)
+    end
 
+    def tool
+      __return_value = LibGdk.device_get_tool(to_unsafe.as(LibGdk::Device*))
+      Gdk::DeviceTool.new(__return_value)
+    end
 
+    def type
+      __return_value = LibGdk.device_get_type(to_unsafe.as(LibGdk::Device*))
+      __return_value
+    end
 
+    def vendor_id
+      __return_value = LibGdk.device_get_vendor_id(to_unsafe.as(LibGdk::Device*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.grab_info_libgtk_only(display, device, grab_window, owner_events)
       __return_value = LibGdk.device_grab_info_libgtk_only(display.to_unsafe.as(LibGdk::Display*), device.to_unsafe.as(LibGdk::Device*), grab_window, owner_events)

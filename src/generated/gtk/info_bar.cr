@@ -13,7 +13,15 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
+    def message_type
+      __return_value = LibGtk.info_bar_get_message_type(to_unsafe.as(LibGtk::InfoBar*))
+      __return_value
+    end
 
+    def show_close_button
+      __return_value = LibGtk.info_bar_get_show_close_button(to_unsafe.as(LibGtk::InfoBar*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.info_bar_new

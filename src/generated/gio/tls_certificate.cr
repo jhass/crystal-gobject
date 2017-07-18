@@ -8,8 +8,20 @@ module Gio
       @gio_tls_certificate.not_nil!
     end
 
+    def certificate
+      __return_value = LibGio.tls_certificate_get_certificate(to_unsafe.as(LibGio::TlsCertificate*))
+      __return_value
+    end
 
+    def certificate_pem
+      __return_value = LibGio.tls_certificate_get_certificate_pem(to_unsafe.as(LibGio::TlsCertificate*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def issuer
+      __return_value = LibGio.tls_certificate_get_issuer(to_unsafe.as(LibGio::TlsCertificate*))
+      Gio::TlsCertificate.new(__return_value)
+    end
 
 
 

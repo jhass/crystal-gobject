@@ -8,7 +8,15 @@ module Gst
       @gst_object.not_nil!
     end
 
+    def name
+      __return_value = LibGst.object_get_name(to_unsafe.as(LibGst::Object*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def parent
+      __return_value = LibGst.object_get_parent(to_unsafe.as(LibGst::Object*))
+      Gst::Object.new(__return_value)
+    end
 
     def self.check_uniqueness(list, name)
       __return_value = LibGst.object_check_uniqueness(list, name.to_unsafe)
@@ -46,7 +54,7 @@ module Gst
     end
 
     def g_value_array(property_name, timestamp, interval, n_values, values)
-      __return_value = LibGst.object_get_g_value_array(to_unsafe.as(LibGst::Object*), property_name.to_unsafe, UInt64.new(timestamp), UInt64.new(interval), UInt32.new(n_values), values.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGst.object_get_g_value_array(to_unsafe.as(LibGst::Object*), property_name.to_unsafe, UInt64.new(timestamp), UInt64.new(interval), UInt32.new(n_values), values)
       __return_value
     end
 
@@ -68,11 +76,6 @@ module Gst
     def value(property_name, timestamp)
       __return_value = LibGst.object_get_value(to_unsafe.as(LibGst::Object*), property_name.to_unsafe, UInt64.new(timestamp))
       GObject::Value.new(__return_value) if __return_value
-    end
-
-    def value_array(property_name, timestamp, interval, n_values, values)
-      __return_value = LibGst.object_get_value_array(to_unsafe.as(LibGst::Object*), property_name.to_unsafe, UInt64.new(timestamp), UInt64.new(interval), UInt32.new(n_values), values ? values : nil)
-      __return_value
     end
 
     def has_active_control_bindings

@@ -8,11 +8,35 @@ module Notify
       @notify_notification.not_nil!
     end
 
+    def app_name
+      __return_value = LibNotify.notification_get_app_name(to_unsafe.as(LibNotify::Notification*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def body
+      __return_value = LibNotify.notification_get_body(to_unsafe.as(LibNotify::Notification*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def closed_reason
+      __return_value = LibNotify.notification_get_closed_reason(to_unsafe.as(LibNotify::Notification*))
+      __return_value
+    end
 
+    def icon_name
+      __return_value = LibNotify.notification_get_icon_name(to_unsafe.as(LibNotify::Notification*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def id
+      __return_value = LibNotify.notification_get_id(to_unsafe.as(LibNotify::Notification*))
+      __return_value
+    end
 
+    def summary
+      __return_value = LibNotify.notification_get_summary(to_unsafe.as(LibNotify::Notification*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new(summary, body, icon) : self
       __return_value = LibNotify.notification_new(summary.to_unsafe, body ? body.to_unsafe : nil, icon ? icon.to_unsafe : nil)

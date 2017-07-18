@@ -13,7 +13,15 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
+    def icon_size
+      __return_value = LibGtk.stack_switcher_get_icon_size(to_unsafe.as(LibGtk::StackSwitcher*))
+      __return_value
+    end
 
+    def stack
+      __return_value = LibGtk.stack_switcher_get_stack(to_unsafe.as(LibGtk::StackSwitcher*))
+      Gtk::Stack.new(__return_value)
+    end
 
     def self.new : self
       __return_value = LibGtk.stack_switcher_new

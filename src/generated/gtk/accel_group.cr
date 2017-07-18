@@ -8,7 +8,15 @@ module Gtk
       @gtk_accel_group.not_nil!
     end
 
+    def is_locked
+      __return_value = LibGtk.accel_group_get_is_locked(to_unsafe.as(LibGtk::AccelGroup*))
+      __return_value
+    end
 
+    def modifier_mask
+      __return_value = LibGtk.accel_group_get_modifier_mask(to_unsafe.as(LibGtk::AccelGroup*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.accel_group_new

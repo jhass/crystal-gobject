@@ -12,7 +12,15 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def search_mode_enabled
+      __return_value = LibGtk.search_bar_get_search_mode_enabled(to_unsafe.as(LibGtk::SearchBar*))
+      __return_value
+    end
 
+    def show_close_button
+      __return_value = LibGtk.search_bar_get_show_close_button(to_unsafe.as(LibGtk::SearchBar*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.search_bar_new

@@ -14,6 +14,10 @@ module Gtk
     # Implements ActionGroup
     # Implements ActionMap
     # Implements Buildable
+    def show_menubar
+      __return_value = LibGtk.application_window_get_show_menubar(to_unsafe.as(LibGtk::ApplicationWindow*))
+      __return_value
+    end
 
     def self.new(application) : self
       __return_value = LibGtk.application_window_new(application.to_unsafe.as(LibGtk::Application*))

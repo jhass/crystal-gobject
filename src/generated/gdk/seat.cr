@@ -8,6 +8,10 @@ module Gdk
       @gdk_seat.not_nil!
     end
 
+    def display
+      __return_value = LibGdk.seat_get_display(to_unsafe.as(LibGdk::Seat*))
+      Gdk::Display.new(__return_value)
+    end
 
     def capabilities
       __return_value = LibGdk.seat_get_capabilities(to_unsafe.as(LibGdk::Seat*))

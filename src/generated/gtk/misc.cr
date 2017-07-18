@@ -12,9 +12,25 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def xalign
+      __return_value = LibGtk.misc_get_xalign(to_unsafe.as(LibGtk::Misc*))
+      __return_value
+    end
 
+    def xpad
+      __return_value = LibGtk.misc_get_xpad(to_unsafe.as(LibGtk::Misc*))
+      __return_value
+    end
 
+    def yalign
+      __return_value = LibGtk.misc_get_yalign(to_unsafe.as(LibGtk::Misc*))
+      __return_value
+    end
 
+    def ypad
+      __return_value = LibGtk.misc_get_ypad(to_unsafe.as(LibGtk::Misc*))
+      __return_value
+    end
 
     def alignment(xalign, yalign)
       __return_value = LibGtk.misc_get_alignment(to_unsafe.as(LibGtk::Misc*), xalign, yalign)

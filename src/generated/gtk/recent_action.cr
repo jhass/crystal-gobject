@@ -12,6 +12,10 @@ module Gtk
 
     # Implements Buildable
     # Implements RecentChooser
+    def show_numbers
+      __return_value = LibGtk.recent_action_get_show_numbers(to_unsafe.as(LibGtk::RecentAction*))
+      __return_value
+    end
 
     def self.new(name, label, tooltip, stock_id) : self
       __return_value = LibGtk.recent_action_new(name.to_unsafe, label ? label.to_unsafe : nil, tooltip ? tooltip.to_unsafe : nil, stock_id ? stock_id.to_unsafe : nil)

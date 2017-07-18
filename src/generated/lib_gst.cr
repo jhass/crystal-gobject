@@ -11,7 +11,7 @@ lib LibGst
 
   ALLOCATOR_SYSMEM = "SystemMemory" # : UInt8*
   # BUFFER_COPY_ALL = ungeneratable value
-  BUFFER_COPY_METADATA = 0 # : Int32
+  # BUFFER_COPY_METADATA = ungeneratable value
   BUFFER_OFFSET_NONE = 18446744073709551615 # : UInt64
   CAN_INLINE = 1 # : Int32
   CAPS_FEATURE_MEMORY_SYSTEM_MEMORY = "memory:SystemMemory" # : UInt8*
@@ -36,30 +36,30 @@ lib LibGst
   ELEMENT_FACTORY_KLASS_PAYLOADER = "Payloader" # : UInt8*
   ELEMENT_FACTORY_KLASS_SINK = "Sink" # : UInt8*
   ELEMENT_FACTORY_KLASS_SRC = "Source" # : UInt8*
-  ELEMENT_FACTORY_TYPE_ANY = -1 # : Int32
-  ELEMENT_FACTORY_TYPE_AUDIOVIDEO_SINKS = 4 # : Int32
-  ELEMENT_FACTORY_TYPE_AUDIO_ENCODER = 2 # : Int32
-  ELEMENT_FACTORY_TYPE_DECODABLE = 353 # : Int32
-  ELEMENT_FACTORY_TYPE_DECODER = 1 # : Int32
-  ELEMENT_FACTORY_TYPE_DECRYPTOR = 1024 # : Int32
-  ELEMENT_FACTORY_TYPE_DEMUXER = 32 # : Int32
-  ELEMENT_FACTORY_TYPE_DEPAYLOADER = 256 # : Int32
-  ELEMENT_FACTORY_TYPE_ENCODER = 2 # : Int32
-  ELEMENT_FACTORY_TYPE_ENCRYPTOR = 2048 # : Int32
-  ELEMENT_FACTORY_TYPE_FORMATTER = 512 # : Int32
-  ELEMENT_FACTORY_TYPE_MAX_ELEMENTS = 0 # : Int32
-  ELEMENT_FACTORY_TYPE_MEDIA_ANY = -1 # : Int32
-  ELEMENT_FACTORY_TYPE_MEDIA_AUDIO = 0 # : Int32
-  ELEMENT_FACTORY_TYPE_MEDIA_IMAGE = 0 # : Int32
-  ELEMENT_FACTORY_TYPE_MEDIA_METADATA = 0 # : Int32
-  ELEMENT_FACTORY_TYPE_MEDIA_SUBTITLE = 0 # : Int32
-  ELEMENT_FACTORY_TYPE_MEDIA_VIDEO = 0 # : Int32
-  ELEMENT_FACTORY_TYPE_MUXER = 16 # : Int32
-  ELEMENT_FACTORY_TYPE_PARSER = 64 # : Int32
-  ELEMENT_FACTORY_TYPE_PAYLOADER = 128 # : Int32
-  ELEMENT_FACTORY_TYPE_SINK = 4 # : Int32
-  ELEMENT_FACTORY_TYPE_SRC = 8 # : Int32
-  ELEMENT_FACTORY_TYPE_VIDEO_ENCODER = 2 # : Int32
+  ELEMENT_FACTORY_TYPE_ANY = 562949953421311 # : UInt64
+  ELEMENT_FACTORY_TYPE_AUDIOVIDEO_SINKS = 3940649673949188 # : UInt64
+  ELEMENT_FACTORY_TYPE_AUDIO_ENCODER = 1125899906842626 # : UInt64
+  ELEMENT_FACTORY_TYPE_DECODABLE = 353 # : UInt64
+  ELEMENT_FACTORY_TYPE_DECODER = 1 # : UInt64
+  ELEMENT_FACTORY_TYPE_DECRYPTOR = 1024 # : UInt64
+  ELEMENT_FACTORY_TYPE_DEMUXER = 32 # : UInt64
+  ELEMENT_FACTORY_TYPE_DEPAYLOADER = 256 # : UInt64
+  ELEMENT_FACTORY_TYPE_ENCODER = 2 # : UInt64
+  ELEMENT_FACTORY_TYPE_ENCRYPTOR = 2048 # : UInt64
+  ELEMENT_FACTORY_TYPE_FORMATTER = 512 # : UInt64
+  ELEMENT_FACTORY_TYPE_MAX_ELEMENTS = 281474976710656 # : UInt64
+  ELEMENT_FACTORY_TYPE_MEDIA_ANY = 18446462598732840960 # : UInt64
+  ELEMENT_FACTORY_TYPE_MEDIA_AUDIO = 1125899906842624 # : UInt64
+  ELEMENT_FACTORY_TYPE_MEDIA_IMAGE = 2251799813685248 # : UInt64
+  ELEMENT_FACTORY_TYPE_MEDIA_METADATA = 9007199254740992 # : UInt64
+  ELEMENT_FACTORY_TYPE_MEDIA_SUBTITLE = 4503599627370496 # : UInt64
+  ELEMENT_FACTORY_TYPE_MEDIA_VIDEO = 562949953421312 # : UInt64
+  ELEMENT_FACTORY_TYPE_MUXER = 16 # : UInt64
+  ELEMENT_FACTORY_TYPE_PARSER = 64 # : UInt64
+  ELEMENT_FACTORY_TYPE_PAYLOADER = 128 # : UInt64
+  ELEMENT_FACTORY_TYPE_SINK = 4 # : UInt64
+  ELEMENT_FACTORY_TYPE_SRC = 8 # : UInt64
+  ELEMENT_FACTORY_TYPE_VIDEO_ENCODER = 2814749767106562 # : UInt64
   ELEMENT_METADATA_AUTHOR = "author" # : UInt8*
   ELEMENT_METADATA_DESCRIPTION = "description" # : UInt8*
   ELEMENT_METADATA_DOC_URI = "doc-uri" # : UInt8*
@@ -68,17 +68,17 @@ lib LibGst
   ELEMENT_METADATA_LONGNAME = "long-name" # : UInt8*
   ERROR_SYSTEM = "system error: %s" # : UInt8*
   EVENT_NUM_SHIFT = 8 # : Int32
-  EVENT_TYPE_BOTH = 0 # : Int32
+  # EVENT_TYPE_BOTH = ungeneratable value
   FLAG_SET_MASK_EXACT = 4294967295 # : UInt32
   FORMAT_PERCENT_MAX = 1000000 # : Int64
   FORMAT_PERCENT_SCALE = 10000 # : Int64
   FOURCC_FORMAT = "c%c%c%c" # : UInt8*
   LICENSE_UNKNOWN = "unknown" # : UInt8*
-  LOCK_FLAG_READWRITE = 0 # : Int32
-  MAP_READWRITE = 0 # : Int32
+  # LOCK_FLAG_READWRITE = ungeneratable value
+  # MAP_READWRITE = ungeneratable value
   META_TAG_MEMORY_STR = "memory" # : UInt8*
-  MSECOND = 1000000 # : Int32
-  NSECOND = 1 # : Int32
+  MSECOND = 1000000 # : Int64
+  NSECOND = 1 # : Int64
   PARAM_CONTROLLABLE = 2 # : Int32
   PARAM_MUTABLE_PAUSED = 8 # : Int32
   PARAM_MUTABLE_PLAYING = 16 # : Int32
@@ -87,8 +87,8 @@ lib LibGst
   PROTECTION_SYSTEM_ID_CAPS_FIELD = "protection-system" # : UInt8*
   PTR_FORMAT = "paA" # : UInt8*
   QUERY_NUM_SHIFT = 8 # : Int32
-  QUERY_TYPE_BOTH = 0 # : Int32
-  SECOND = 1000000000 # : Int32
+  # QUERY_TYPE_BOTH = ungeneratable value
+  SECOND = 1000000000 # : Int64
   SEGMENT_FORMAT = "paB" # : UInt8*
   STIME_FORMAT = "c%" # : UInt8*
   TAG_ALBUM = "album" # : UInt8*
@@ -179,14 +179,14 @@ lib LibGst
   TIME_FORMAT = "u:%02u:%02u.%09u" # : UInt8*
   TOC_REPEAT_COUNT_INFINITE = -1 # : Int32
   URI_NO_PORT = 0 # : Int32
-  USECOND = 1000 # : Int32
+  USECOND = 1000 # : Int64
   VALUE_EQUAL = 0 # : Int32
   VALUE_GREATER_THAN = 1 # : Int32
   VALUE_LESS_THAN = -1 # : Int32
   VALUE_UNORDERED = 2 # : Int32
   VERSION_MAJOR = 1 # : Int32
-  VERSION_MICRO = 4 # : Int32
-  VERSION_MINOR = 10 # : Int32
+  VERSION_MICRO = 2 # : Int32
+  VERSION_MINOR = 12 # : Int32
   VERSION_NANO = 0 # : Int32
 
   ###########################################
@@ -262,7 +262,6 @@ lib LibGst
   fun buffer_insert_memory = gst_buffer_insert_memory(this : Buffer*, idx : Int32, mem : LibGst::Memory*) : Void
   fun buffer_is_all_memory_writable = gst_buffer_is_all_memory_writable(this : Buffer*) : Bool
   fun buffer_is_memory_range_writable = gst_buffer_is_memory_range_writable(this : Buffer*, idx : UInt32, length : Int32) : Bool
-  fun buffer_iterate_meta = gst_buffer_iterate_meta(this : Buffer*, state : Void*) : LibGst::Meta*
   fun buffer_map = gst_buffer_map(this : Buffer*, info : LibGst::MapInfo*, flags : LibGst::MapFlags) : Bool
   fun buffer_map_range = gst_buffer_map_range(this : Buffer*, idx : UInt32, length : Int32, info : LibGst::MapInfo*, flags : LibGst::MapFlags) : Bool
   fun buffer_memcmp = gst_buffer_memcmp(this : Buffer*, offset : UInt64, mem : UInt8*, size : UInt64) : Int32
@@ -724,7 +723,6 @@ lib LibGst
     init_func : LibGst::MetaInitFunction
     free_func : LibGst::MetaFreeFunction
     transform_func : LibGst::MetaTransformFunction
-    _gst_reserved : Void*
   end
 
   struct MetaTransformCopy # struct
@@ -769,6 +767,11 @@ lib LibGst
   fun pad_probe_info_get_event = gst_pad_probe_info_get_event(this : PadProbeInfo*) : LibGst::Event*
   fun pad_probe_info_get_query = gst_pad_probe_info_get_query(this : PadProbeInfo*) : LibGst::Query*
 
+  struct ParamSpecArray # struct
+    parent_instance : LibGObject::ParamSpec
+    element_spec : LibGObject::ParamSpec*
+  end
+
   struct ParamSpecFraction # struct
     parent_instance : LibGObject::ParamSpec
     min_num : Int32
@@ -789,6 +792,7 @@ lib LibGst
     _data : UInt8[0]
   end
   fun parse_context_new = gst_parse_context_new() : LibGst::ParseContext*
+  fun parse_context_copy = gst_parse_context_copy(this : ParseContext*) : LibGst::ParseContext*
   fun parse_context_free = gst_parse_context_free(this : ParseContext*) : Void
   fun parse_context_get_missing_elements = gst_parse_context_get_missing_elements(this : ParseContext*) : UInt8**
 
@@ -1026,6 +1030,7 @@ lib LibGst
   fun structure_fixate_field_string = gst_structure_fixate_field_string(this : Structure*, field_name : UInt8*, target : UInt8*) : Bool
   fun structure_foreach = gst_structure_foreach(this : Structure*, func : LibGst::StructureForeachFunc, user_data : Void*) : Bool
   fun structure_free = gst_structure_free(this : Structure*) : Void
+  fun structure_get_array = gst_structure_get_array(this : Structure*, fieldname : UInt8*, array : LibGObject::ValueArray**) : Bool
   fun structure_get_boolean = gst_structure_get_boolean(this : Structure*, fieldname : UInt8*, value : Bool*) : Bool
   fun structure_get_clock_time = gst_structure_get_clock_time(this : Structure*, fieldname : UInt8*, value : UInt64*) : Bool
   fun structure_get_date = gst_structure_get_date(this : Structure*, fieldname : UInt8*, value : LibGLib::Date**) : Bool
@@ -1037,6 +1042,7 @@ lib LibGst
   fun structure_get_fraction = gst_structure_get_fraction(this : Structure*, fieldname : UInt8*, value_numerator : Int32*, value_denominator : Int32*) : Bool
   fun structure_get_int = gst_structure_get_int(this : Structure*, fieldname : UInt8*, value : Int32*) : Bool
   fun structure_get_int64 = gst_structure_get_int64(this : Structure*, fieldname : UInt8*, value : Int64*) : Bool
+  fun structure_get_list = gst_structure_get_list(this : Structure*, fieldname : UInt8*, array : LibGObject::ValueArray**) : Bool
   fun structure_get_name = gst_structure_get_name(this : Structure*) : UInt8*
   fun structure_get_name_id = gst_structure_get_name_id(this : Structure*) : UInt32
   fun structure_get_string = gst_structure_get_string(this : Structure*, fieldname : UInt8*) : UInt8*
@@ -1059,6 +1065,8 @@ lib LibGst
   fun structure_nth_field_name = gst_structure_nth_field_name(this : Structure*, index : UInt32) : UInt8*
   fun structure_remove_all_fields = gst_structure_remove_all_fields(this : Structure*) : Void
   fun structure_remove_field = gst_structure_remove_field(this : Structure*, fieldname : UInt8*) : Void
+  fun structure_set_array = gst_structure_set_array(this : Structure*, fieldname : UInt8*, array : LibGObject::ValueArray*) : Void
+  fun structure_set_list = gst_structure_set_list(this : Structure*, fieldname : UInt8*, array : LibGObject::ValueArray*) : Void
   fun structure_set_name = gst_structure_set_name(this : Structure*, name : UInt8*) : Void
   fun structure_set_parent_refcount = gst_structure_set_parent_refcount(this : Structure*, refcount : Int32*) : Bool
   fun structure_set_value = gst_structure_set_value(this : Structure*, fieldname : UInt8*, value : LibGObject::Value*) : Void
@@ -1184,6 +1192,7 @@ lib LibGst
   fun uri_from_string_with_base = gst_uri_from_string_with_base(this : Uri*, uri : UInt8*) : LibGst::Uri*
   fun uri_get_fragment = gst_uri_get_fragment(this : Uri*) : UInt8*
   fun uri_get_host = gst_uri_get_host(this : Uri*) : UInt8*
+  fun uri_get_media_fragment_table = gst_uri_get_media_fragment_table(this : Uri*) : Void**
   fun uri_get_path = gst_uri_get_path(this : Uri*) : UInt8*
   fun uri_get_path_segments = gst_uri_get_path_segments(this : Uri*) : Void**
   fun uri_get_path_string = gst_uri_get_path_string(this : Uri*) : UInt8*
@@ -1517,6 +1526,11 @@ lib LibGst
     _data : UInt8[0]
   end
 
+  struct DynamicTypeFactory # object
+    _data : UInt8[0]
+  end
+  fun dynamic_type_factory_load = gst_dynamic_type_factory_load(factoryname : UInt8*) : UInt64
+
   struct Element # object
     object : LibGst::Object
     state_lock : LibGLib::RecMutex
@@ -1704,7 +1718,6 @@ lib LibGst
   fun object_get_parent = gst_object_get_parent(this : Object*) : LibGst::Object*
   fun object_get_path_string = gst_object_get_path_string(this : Object*) : UInt8*
   fun object_get_value = gst_object_get_value(this : Object*, property_name : UInt8*, timestamp : UInt64) : LibGObject::Value*
-  fun object_get_value_array = gst_object_get_value_array(this : Object*, property_name : UInt8*, timestamp : UInt64, interval : UInt64, n_values : UInt32, values : Void*) : Bool
   fun object_has_active_control_bindings = gst_object_has_active_control_bindings(this : Object*) : Bool
   fun object_has_ancestor = gst_object_has_ancestor(this : Object*, ancestor : LibGst::Object*) : Bool
   fun object_has_as_ancestor = gst_object_has_as_ancestor(this : Object*, ancestor : LibGst::Object*) : Bool
@@ -1798,6 +1811,7 @@ lib LibGst
   fun pad_get_sticky_event = gst_pad_get_sticky_event(this : Pad*, event_type : LibGst::EventType, idx : UInt32) : LibGst::Event*
   fun pad_get_stream = gst_pad_get_stream(this : Pad*) : LibGst::Stream*
   fun pad_get_stream_id = gst_pad_get_stream_id(this : Pad*) : UInt8*
+  fun pad_get_task_state = gst_pad_get_task_state(this : Pad*) : LibGst::TaskState
   fun pad_has_current_caps = gst_pad_has_current_caps(this : Pad*) : Bool
   fun pad_is_active = gst_pad_is_active(this : Pad*) : Bool
   fun pad_is_blocked = gst_pad_is_blocked(this : Pad*) : Bool
@@ -1867,6 +1881,10 @@ lib LibGst
   fun pad_template_new = gst_pad_template_new(name_template : UInt8*, direction : LibGst::PadDirection, presence : LibGst::PadPresence, caps : LibGst::Caps*) : LibGst::PadTemplate*
   fun pad_template_get_caps = gst_pad_template_get_caps(this : PadTemplate*) : LibGst::Caps*
   fun pad_template_pad_created = gst_pad_template_pad_created(this : PadTemplate*, pad : LibGst::Pad*) : Void
+
+  struct ParamArray # object
+    _data : UInt8[0]
+  end
 
   struct ParamFraction # object
     _data : UInt8[0]
@@ -2339,6 +2357,7 @@ lib LibGst
     HIERARCHY = 1
     TEMPLATE_CAPS = 2
     CAPS = 4
+    NO_RECONFIGURE = 8
     DEFAULT = 5
   end
 
@@ -2451,6 +2470,12 @@ lib LibGst
     SEGMENT = 8
     TRICKMODE_KEY_UNITS = 128
     TRICKMODE_NO_AUDIO = 256
+  end
+
+  @[Flags]
+  enum StackTraceFlags : UInt32
+    ZERO_NONE = 0
+    FULL = 1
   end
 
   @[Flags]
@@ -3099,6 +3124,7 @@ lib LibGst
   ###########################################
 
   fun buffer_get_max_memory = gst_buffer_get_max_memory() : UInt32
+  fun calculate_linear_regression = gst_calculate_linear_regression(xy : UInt64*, temp : UInt64*, n : UInt32, m_num : UInt64*, m_denom : UInt64*, b : UInt64*, xbase : UInt64*, r_squared : Float64*) : Bool
   fun caps_features_from_string = gst_caps_features_from_string(features : UInt8*) : LibGst::CapsFeatures*
   fun caps_from_string = gst_caps_from_string(string : UInt8*) : LibGst::Caps*
   fun core_error_quark = gst_core_error_quark() : UInt32
@@ -3111,6 +3137,7 @@ lib LibGst
   fun debug_get_all_categories = gst_debug_get_all_categories() : Void**
   fun debug_get_color_mode = gst_debug_get_color_mode() : LibGst::DebugColorMode
   fun debug_get_default_threshold = gst_debug_get_default_threshold() : LibGst::DebugLevel
+  fun debug_get_stack_trace = gst_debug_get_stack_trace(flags : LibGst::StackTraceFlags) : UInt8*
   fun debug_is_active = gst_debug_is_active() : Bool
   fun debug_is_colored = gst_debug_is_colored() : Bool
   fun debug_level_get_name = gst_debug_level_get_name(level : LibGst::DebugLevel) : UInt8*
@@ -3127,6 +3154,7 @@ lib LibGst
   fun debug_set_threshold_from_string = gst_debug_set_threshold_from_string(list : UInt8*, reset : Bool) : Void
   fun debug_unset_threshold_for_name = gst_debug_unset_threshold_for_name(name : UInt8*) : Void
   fun deinit = gst_deinit() : Void
+  fun dynamic_type_register = gst_dynamic_type_register(plugin : LibGst::Plugin*, type : UInt64) : Bool
   fun error_get_message = gst_error_get_message(domain : UInt32, code : Int32) : UInt8*
   fun event_type_get_flags = gst_event_type_get_flags(type : LibGst::EventType) : LibGst::EventTypeFlags
   fun event_type_get_name = gst_event_type_get_name(type : LibGst::EventType) : UInt8*
@@ -3156,6 +3184,7 @@ lib LibGst
   fun mini_object_replace = gst_mini_object_replace(olddata : LibGst::MiniObject**, newdata : LibGst::MiniObject*) : Bool
   fun mini_object_take = gst_mini_object_take(olddata : LibGst::MiniObject**, newdata : LibGst::MiniObject*) : Bool
   fun pad_mode_get_name = gst_pad_mode_get_name(mode : LibGst::PadMode) : UInt8*
+  fun param_spec_array = gst_param_spec_array(name : UInt8*, nick : UInt8*, blurb : UInt8*, element_spec : LibGObject::ParamSpec*, flags : LibGObject::ParamFlags) : LibGObject::ParamSpec*
   fun param_spec_fraction = gst_param_spec_fraction(name : UInt8*, nick : UInt8*, blurb : UInt8*, min_num : Int32, min_denom : Int32, max_num : Int32, max_denom : Int32, default_num : Int32, default_denom : Int32, flags : LibGObject::ParamFlags) : LibGObject::ParamSpec*
   fun parent_buffer_meta_api_get_type = gst_parent_buffer_meta_api_get_type() : UInt64
   fun parent_buffer_meta_get_info = gst_parent_buffer_meta_get_info() : LibGst::MetaInfo*
@@ -3216,6 +3245,7 @@ lib LibGst
   fun util_fraction_multiply = gst_util_fraction_multiply(a_n : Int32, a_d : Int32, b_n : Int32, b_d : Int32, res_n : Int32*, res_d : Int32*) : Bool
   fun util_fraction_to_double = gst_util_fraction_to_double(src_n : Int32, src_d : Int32, dest : Float64*) : Void
   fun util_gdouble_to_guint64 = gst_util_gdouble_to_guint64(value : Float64) : UInt64
+  fun util_get_object_array = gst_util_get_object_array(object : LibGObject::Object*, name : UInt8*, array : LibGObject::ValueArray**) : Bool
   fun util_get_timestamp = gst_util_get_timestamp() : UInt64
   fun util_greatest_common_divisor = gst_util_greatest_common_divisor(a : Int32, b : Int32) : Int32
   fun util_greatest_common_divisor_int64 = gst_util_greatest_common_divisor_int64(a : Int64, b : Int64) : Int64
@@ -3224,6 +3254,7 @@ lib LibGst
   fun util_seqnum_compare = gst_util_seqnum_compare(s1 : UInt32, s2 : UInt32) : Int32
   fun util_seqnum_next = gst_util_seqnum_next() : UInt32
   fun util_set_object_arg = gst_util_set_object_arg(object : LibGObject::Object*, name : UInt8*, value : UInt8*) : Void
+  fun util_set_object_array = gst_util_set_object_array(object : LibGObject::Object*, name : UInt8*, array : LibGObject::ValueArray*) : Bool
   fun util_set_value_from_string = gst_util_set_value_from_string(value : LibGObject::Value*, value_str : UInt8*) : Void
   fun util_uint64_scale = gst_util_uint64_scale(val : UInt64, num : UInt64, denom : UInt64) : UInt64
   fun util_uint64_scale_ceil = gst_util_uint64_scale_ceil(val : UInt64, num : UInt64, denom : UInt64) : UInt64

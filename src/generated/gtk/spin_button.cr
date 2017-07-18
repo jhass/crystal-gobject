@@ -15,13 +15,45 @@ module Gtk
     # Implements CellEditable
     # Implements Editable
     # Implements Orientable
+    def adjustment
+      __return_value = LibGtk.spin_button_get_adjustment(to_unsafe.as(LibGtk::SpinButton*))
+      Gtk::Adjustment.new(__return_value)
+    end
 
+    def climb_rate
+      __return_value = LibGtk.spin_button_get_climb_rate(to_unsafe.as(LibGtk::SpinButton*))
+      __return_value
+    end
 
+    def digits
+      __return_value = LibGtk.spin_button_get_digits(to_unsafe.as(LibGtk::SpinButton*))
+      __return_value
+    end
 
+    def numeric
+      __return_value = LibGtk.spin_button_get_numeric(to_unsafe.as(LibGtk::SpinButton*))
+      __return_value
+    end
 
+    def snap_to_ticks
+      __return_value = LibGtk.spin_button_get_snap_to_ticks(to_unsafe.as(LibGtk::SpinButton*))
+      __return_value
+    end
 
+    def update_policy
+      __return_value = LibGtk.spin_button_get_update_policy(to_unsafe.as(LibGtk::SpinButton*))
+      __return_value
+    end
 
+    def value
+      __return_value = LibGtk.spin_button_get_value(to_unsafe.as(LibGtk::SpinButton*))
+      __return_value
+    end
 
+    def wrap
+      __return_value = LibGtk.spin_button_get_wrap(to_unsafe.as(LibGtk::SpinButton*))
+      __return_value
+    end
 
     def self.new(adjustment, climb_rate, digits) : self
       __return_value = LibGtk.spin_button_new(adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil, Float64.new(climb_rate), UInt32.new(digits))

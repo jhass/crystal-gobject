@@ -8,6 +8,10 @@ module Gdk
       @gdk_device_manager.not_nil!
     end
 
+    def display
+      __return_value = LibGdk.device_manager_get_display(to_unsafe.as(LibGdk::DeviceManager*))
+      Gdk::Display.new(__return_value)
+    end
 
     def client_pointer
       __return_value = LibGdk.device_manager_get_client_pointer(to_unsafe.as(LibGdk::DeviceManager*))

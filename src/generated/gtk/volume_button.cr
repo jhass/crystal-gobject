@@ -15,6 +15,10 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
     # Implements Orientable
+    def use_symbolic
+      __return_value = LibGtk.volume_button_get_use_symbolic(to_unsafe.as(LibGtk::VolumeButton*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.volume_button_new

@@ -14,10 +14,30 @@ module Gtk
     # Implements Actionable
     # Implements Activatable
     # Implements Buildable
+    def accel_path
+      __return_value = LibGtk.menu_item_get_accel_path(to_unsafe.as(LibGtk::MenuItem*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def label
+      __return_value = LibGtk.menu_item_get_label(to_unsafe.as(LibGtk::MenuItem*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def right_justified
+      __return_value = LibGtk.menu_item_get_right_justified(to_unsafe.as(LibGtk::MenuItem*))
+      __return_value
+    end
 
+    def submenu
+      __return_value = LibGtk.menu_item_get_submenu(to_unsafe.as(LibGtk::MenuItem*))
+      Gtk::Menu.new(__return_value)
+    end
 
+    def use_underline
+      __return_value = LibGtk.menu_item_get_use_underline(to_unsafe.as(LibGtk::MenuItem*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.menu_item_new

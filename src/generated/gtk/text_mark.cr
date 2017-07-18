@@ -8,7 +8,15 @@ module Gtk
       @gtk_text_mark.not_nil!
     end
 
+    def left_gravity
+      __return_value = LibGtk.text_mark_get_left_gravity(to_unsafe.as(LibGtk::TextMark*))
+      __return_value
+    end
 
+    def name
+      __return_value = LibGtk.text_mark_get_name(to_unsafe.as(LibGtk::TextMark*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new(name, left_gravity) : self
       __return_value = LibGtk.text_mark_new(name ? name.to_unsafe : nil, left_gravity)

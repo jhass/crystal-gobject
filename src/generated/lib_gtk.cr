@@ -8496,15 +8496,15 @@ lib LibGtk
   ##    Constants
   ###########################################
 
-  BINARY_AGE = 2210 # : Int32
+  BINARY_AGE = 2216 # : Int32
   INPUT_ERROR = -1 # : Int32
-  INTERFACE_AGE = 10 # : Int32
+  INTERFACE_AGE = 16 # : Int32
   LEVEL_BAR_OFFSET_FULL = "full" # : UInt8*
   LEVEL_BAR_OFFSET_HIGH = "high" # : UInt8*
   LEVEL_BAR_OFFSET_LOW = "low" # : UInt8*
   MAJOR_VERSION = 3 # : Int32
   MAX_COMPOSE_LEN = 7 # : Int32
-  MICRO_VERSION = 10 # : Int32
+  MICRO_VERSION = 16 # : Int32
   MINOR_VERSION = 22 # : Int32
   PAPER_NAME_A3 = "iso_a3" # : UInt8*
   PAPER_NAME_A4 = "iso_a4" # : UInt8*

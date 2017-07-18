@@ -12,6 +12,10 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def use_header_bar
+      __return_value = LibGtk.assistant_get_use_header_bar(to_unsafe.as(LibGtk::Assistant*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.assistant_new

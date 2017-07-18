@@ -10,9 +10,25 @@ module Gst
       @gst_pad.not_nil!
     end
 
+    def caps
+      __return_value = LibGst.pad_get_caps(to_unsafe.as(LibGst::Pad*))
+      Gst::Caps.new(__return_value)
+    end
 
+    def direction
+      __return_value = LibGst.pad_get_direction(to_unsafe.as(LibGst::Pad*))
+      __return_value
+    end
 
+    def offset
+      __return_value = LibGst.pad_get_offset(to_unsafe.as(LibGst::Pad*))
+      __return_value
+    end
 
+    def template
+      __return_value = LibGst.pad_get_template(to_unsafe.as(LibGst::Pad*))
+      Gst::PadTemplate.new(__return_value)
+    end
 
     def self.new(name, direction : Gst::PadDirection) : self
       __return_value = LibGst.pad_new(name ? name.to_unsafe : nil, direction)
@@ -147,6 +163,11 @@ module Gst
     def stream_id
       __return_value = LibGst.pad_get_stream_id(to_unsafe.as(LibGst::Pad*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
+    end
+
+    def task_state
+      __return_value = LibGst.pad_get_task_state(to_unsafe.as(LibGst::Pad*))
+      __return_value
     end
 
     def has_current_caps

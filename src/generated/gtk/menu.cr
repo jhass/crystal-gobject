@@ -12,17 +12,65 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def accel_group
+      __return_value = LibGtk.menu_get_accel_group(to_unsafe.as(LibGtk::Menu*))
+      Gtk::AccelGroup.new(__return_value)
+    end
 
+    def accel_path
+      __return_value = LibGtk.menu_get_accel_path(to_unsafe.as(LibGtk::Menu*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def active
+      __return_value = LibGtk.menu_get_active(to_unsafe.as(LibGtk::Menu*))
+      __return_value
+    end
 
+    def anchor_hints
+      __return_value = LibGtk.menu_get_anchor_hints(to_unsafe.as(LibGtk::Menu*))
+      __return_value
+    end
 
+    def attach_widget
+      __return_value = LibGtk.menu_get_attach_widget(to_unsafe.as(LibGtk::Menu*))
+      Gtk::Widget.new(__return_value)
+    end
 
+    def menu_type_hint
+      __return_value = LibGtk.menu_get_menu_type_hint(to_unsafe.as(LibGtk::Menu*))
+      __return_value
+    end
 
+    def monitor
+      __return_value = LibGtk.menu_get_monitor(to_unsafe.as(LibGtk::Menu*))
+      __return_value
+    end
 
+    def rect_anchor_dx
+      __return_value = LibGtk.menu_get_rect_anchor_dx(to_unsafe.as(LibGtk::Menu*))
+      __return_value
+    end
 
+    def rect_anchor_dy
+      __return_value = LibGtk.menu_get_rect_anchor_dy(to_unsafe.as(LibGtk::Menu*))
+      __return_value
+    end
 
+    def reserve_toggle_size
+      __return_value = LibGtk.menu_get_reserve_toggle_size(to_unsafe.as(LibGtk::Menu*))
+      __return_value
+    end
 
+    def tearoff_state
+      __return_value = LibGtk.menu_get_tearoff_state(to_unsafe.as(LibGtk::Menu*))
+      __return_value
+    end
 
+    def tearoff_title
+      __return_value = LibGtk.menu_get_tearoff_title(to_unsafe.as(LibGtk::Menu*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new : self
       __return_value = LibGtk.menu_new

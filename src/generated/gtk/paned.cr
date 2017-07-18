@@ -13,10 +13,30 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
+    def max_position
+      __return_value = LibGtk.paned_get_max_position(to_unsafe.as(LibGtk::Paned*))
+      __return_value
+    end
 
+    def min_position
+      __return_value = LibGtk.paned_get_min_position(to_unsafe.as(LibGtk::Paned*))
+      __return_value
+    end
 
+    def position
+      __return_value = LibGtk.paned_get_position(to_unsafe.as(LibGtk::Paned*))
+      __return_value
+    end
 
+    def position_set
+      __return_value = LibGtk.paned_get_position_set(to_unsafe.as(LibGtk::Paned*))
+      __return_value
+    end
 
+    def wide_handle
+      __return_value = LibGtk.paned_get_wide_handle(to_unsafe.as(LibGtk::Paned*))
+      __return_value
+    end
 
     def self.new(orientation : Gtk::Orientation) : self
       __return_value = LibGtk.paned_new(orientation)

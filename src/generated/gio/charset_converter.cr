@@ -10,8 +10,20 @@ module Gio
 
     # Implements Converter
     # Implements Initable
+    def from_charset
+      __return_value = LibGio.charset_converter_get_from_charset(to_unsafe.as(LibGio::CharsetConverter*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def to_charset
+      __return_value = LibGio.charset_converter_get_to_charset(to_unsafe.as(LibGio::CharsetConverter*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def use_fallback
+      __return_value = LibGio.charset_converter_get_use_fallback(to_unsafe.as(LibGio::CharsetConverter*))
+      __return_value
+    end
 
     def self.new(to_charset, from_charset) : self
       __error = Pointer(LibGLib::Error).null

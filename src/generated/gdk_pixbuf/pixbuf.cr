@@ -10,14 +10,50 @@ module GdkPixbuf
 
     # Implements Icon
     # Implements LoadableIcon
+    def bits_per_sample
+      __return_value = LibGdkPixbuf.pixbuf_get_bits_per_sample(to_unsafe.as(LibGdkPixbuf::Pixbuf*))
+      __return_value
+    end
 
+    def colorspace
+      __return_value = LibGdkPixbuf.pixbuf_get_colorspace(to_unsafe.as(LibGdkPixbuf::Pixbuf*))
+      __return_value
+    end
 
+    def has_alpha
+      __return_value = LibGdkPixbuf.pixbuf_get_has_alpha(to_unsafe.as(LibGdkPixbuf::Pixbuf*))
+      __return_value
+    end
 
+    def height
+      __return_value = LibGdkPixbuf.pixbuf_get_height(to_unsafe.as(LibGdkPixbuf::Pixbuf*))
+      __return_value
+    end
 
+    def n_channels
+      __return_value = LibGdkPixbuf.pixbuf_get_n_channels(to_unsafe.as(LibGdkPixbuf::Pixbuf*))
+      __return_value
+    end
 
+    def pixel_bytes
+      __return_value = LibGdkPixbuf.pixbuf_get_pixel_bytes(to_unsafe.as(LibGdkPixbuf::Pixbuf*))
+      GLib::Bytes.new(__return_value)
+    end
 
+    def pixels
+      __return_value = LibGdkPixbuf.pixbuf_get_pixels(to_unsafe.as(LibGdkPixbuf::Pixbuf*))
+      __return_value
+    end
 
+    def rowstride
+      __return_value = LibGdkPixbuf.pixbuf_get_rowstride(to_unsafe.as(LibGdkPixbuf::Pixbuf*))
+      __return_value
+    end
 
+    def width
+      __return_value = LibGdkPixbuf.pixbuf_get_width(to_unsafe.as(LibGdkPixbuf::Pixbuf*))
+      __return_value
+    end
 
     def self.new(colorspace : GdkPixbuf::Colorspace, has_alpha, bits_per_sample, width, height) : self
       __return_value = LibGdkPixbuf.pixbuf_new(colorspace, has_alpha, Int32.new(bits_per_sample), Int32.new(width), Int32.new(height))

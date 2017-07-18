@@ -9,6 +9,10 @@ module Gio
     end
 
     # Implements AppInfo
+    def filename
+      __return_value = LibGio.desktop_app_info_get_filename(to_unsafe.as(LibGio::DesktopAppInfo*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new(desktop_id) : self
       __return_value = LibGio.desktop_app_info_new(desktop_id.to_unsafe)

@@ -12,7 +12,15 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def child_pack_direction
+      __return_value = LibGtk.menu_bar_get_child_pack_direction(to_unsafe.as(LibGtk::MenuBar*))
+      __return_value
+    end
 
+    def pack_direction
+      __return_value = LibGtk.menu_bar_get_pack_direction(to_unsafe.as(LibGtk::MenuBar*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.menu_bar_new

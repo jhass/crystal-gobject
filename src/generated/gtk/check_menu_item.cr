@@ -14,8 +14,20 @@ module Gtk
     # Implements Actionable
     # Implements Activatable
     # Implements Buildable
+    def active
+      __return_value = LibGtk.check_menu_item_get_active(to_unsafe.as(LibGtk::CheckMenuItem*))
+      __return_value
+    end
 
+    def draw_as_radio
+      __return_value = LibGtk.check_menu_item_get_draw_as_radio(to_unsafe.as(LibGtk::CheckMenuItem*))
+      __return_value
+    end
 
+    def inconsistent
+      __return_value = LibGtk.check_menu_item_get_inconsistent(to_unsafe.as(LibGtk::CheckMenuItem*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.check_menu_item_new

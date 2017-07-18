@@ -12,13 +12,45 @@ module Gio
     # Implements DBusObjectManager
     # Implements Initable
 
+    def connection
+      __return_value = LibGio.d_bus_object_manager_client_get_connection(to_unsafe.as(LibGio::DBusObjectManagerClient*))
+      Gio::DBusConnection.new(__return_value)
+    end
 
+    def flags
+      __return_value = LibGio.d_bus_object_manager_client_get_flags(to_unsafe.as(LibGio::DBusObjectManagerClient*))
+      __return_value
+    end
 
+    def get_proxy_type_destroy_notify
+      __return_value = LibGio.d_bus_object_manager_client_get_get_proxy_type_destroy_notify(to_unsafe.as(LibGio::DBusObjectManagerClient*))
+      __return_value
+    end
 
+    def get_proxy_type_func
+      __return_value = LibGio.d_bus_object_manager_client_get_get_proxy_type_func(to_unsafe.as(LibGio::DBusObjectManagerClient*))
+      __return_value
+    end
 
+    def get_proxy_type_user_data
+      __return_value = LibGio.d_bus_object_manager_client_get_get_proxy_type_user_data(to_unsafe.as(LibGio::DBusObjectManagerClient*))
+      __return_value
+    end
 
+    def name
+      __return_value = LibGio.d_bus_object_manager_client_get_name(to_unsafe.as(LibGio::DBusObjectManagerClient*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def name_owner
+      __return_value = LibGio.d_bus_object_manager_client_get_name_owner(to_unsafe.as(LibGio::DBusObjectManagerClient*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def object_path
+      __return_value = LibGio.d_bus_object_manager_client_get_object_path(to_unsafe.as(LibGio::DBusObjectManagerClient*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new_finish(res) : self
       __error = Pointer(LibGLib::Error).null

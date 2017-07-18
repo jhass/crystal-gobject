@@ -13,7 +13,15 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
+    def font_name
+      __return_value = LibGtk.font_selection_get_font_name(to_unsafe.as(LibGtk::FontSelection*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def preview_text
+      __return_value = LibGtk.font_selection_get_preview_text(to_unsafe.as(LibGtk::FontSelection*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new : self
       __return_value = LibGtk.font_selection_new

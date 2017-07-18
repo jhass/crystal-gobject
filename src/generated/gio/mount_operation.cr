@@ -8,11 +8,35 @@ module Gio
       @gio_mount_operation.not_nil!
     end
 
+    def anonymous
+      __return_value = LibGio.mount_operation_get_anonymous(to_unsafe.as(LibGio::MountOperation*))
+      __return_value
+    end
 
+    def choice
+      __return_value = LibGio.mount_operation_get_choice(to_unsafe.as(LibGio::MountOperation*))
+      __return_value
+    end
 
+    def domain
+      __return_value = LibGio.mount_operation_get_domain(to_unsafe.as(LibGio::MountOperation*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def password
+      __return_value = LibGio.mount_operation_get_password(to_unsafe.as(LibGio::MountOperation*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def password_save
+      __return_value = LibGio.mount_operation_get_password_save(to_unsafe.as(LibGio::MountOperation*))
+      __return_value
+    end
 
+    def username
+      __return_value = LibGio.mount_operation_get_username(to_unsafe.as(LibGio::MountOperation*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new : self
       __return_value = LibGio.mount_operation_new

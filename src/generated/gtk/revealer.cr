@@ -12,9 +12,25 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def child_revealed
+      __return_value = LibGtk.revealer_get_child_revealed(to_unsafe.as(LibGtk::Revealer*))
+      __return_value
+    end
 
+    def reveal_child
+      __return_value = LibGtk.revealer_get_reveal_child(to_unsafe.as(LibGtk::Revealer*))
+      __return_value
+    end
 
+    def transition_duration
+      __return_value = LibGtk.revealer_get_transition_duration(to_unsafe.as(LibGtk::Revealer*))
+      __return_value
+    end
 
+    def transition_type
+      __return_value = LibGtk.revealer_get_transition_type(to_unsafe.as(LibGtk::Revealer*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.revealer_new

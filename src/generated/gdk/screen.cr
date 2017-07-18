@@ -8,7 +8,15 @@ module Gdk
       @gdk_screen.not_nil!
     end
 
+    def font_options
+      __return_value = LibGdk.screen_get_font_options(to_unsafe.as(LibGdk::Screen*))
+      __return_value
+    end
 
+    def resolution
+      __return_value = LibGdk.screen_get_resolution(to_unsafe.as(LibGdk::Screen*))
+      __return_value
+    end
 
     def self.default
       __return_value = LibGdk.screen_get_default

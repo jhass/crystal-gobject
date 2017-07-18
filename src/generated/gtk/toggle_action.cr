@@ -11,7 +11,15 @@ module Gtk
     end
 
     # Implements Buildable
+    def active
+      __return_value = LibGtk.toggle_action_get_active(to_unsafe.as(LibGtk::ToggleAction*))
+      __return_value
+    end
 
+    def draw_as_radio
+      __return_value = LibGtk.toggle_action_get_draw_as_radio(to_unsafe.as(LibGtk::ToggleAction*))
+      __return_value
+    end
 
     def self.new(name, label, tooltip, stock_id) : self
       __return_value = LibGtk.toggle_action_new(name.to_unsafe, label ? label.to_unsafe : nil, tooltip ? tooltip.to_unsafe : nil, stock_id ? stock_id.to_unsafe : nil)

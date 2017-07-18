@@ -9,7 +9,15 @@ module Gio
     end
 
     # Implements DBusObject
+    def g_connection
+      __return_value = LibGio.d_bus_object_proxy_get_g_connection(to_unsafe.as(LibGio::DBusObjectProxy*))
+      Gio::DBusConnection.new(__return_value)
+    end
 
+    def g_object_path
+      __return_value = LibGio.d_bus_object_proxy_get_g_object_path(to_unsafe.as(LibGio::DBusObjectProxy*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new(connection, object_path) : self
       __return_value = LibGio.d_bus_object_proxy_new(connection.to_unsafe.as(LibGio::DBusConnection*), object_path.to_unsafe)

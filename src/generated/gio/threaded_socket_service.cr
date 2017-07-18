@@ -10,6 +10,10 @@ module Gio
       @gio_threaded_socket_service.not_nil!
     end
 
+    def max_threads
+      __return_value = LibGio.threaded_socket_service_get_max_threads(to_unsafe.as(LibGio::ThreadedSocketService*))
+      __return_value
+    end
 
     def self.new(max_threads) : self
       __return_value = LibGio.threaded_socket_service_new(Int32.new(max_threads))

@@ -10,6 +10,10 @@ module Gio
       @gio_socket_service.not_nil!
     end
 
+    def active
+      __return_value = LibGio.socket_service_get_active(to_unsafe.as(LibGio::SocketService*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGio.socket_service_new

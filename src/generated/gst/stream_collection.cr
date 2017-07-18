@@ -10,6 +10,10 @@ module Gst
       @gst_stream_collection.not_nil!
     end
 
+    def upstream_id
+      __return_value = LibGst.stream_collection_get_upstream_id(to_unsafe.as(LibGst::StreamCollection*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new(upstream_id) : self
       __return_value = LibGst.stream_collection_new(upstream_id ? upstream_id.to_unsafe : nil)

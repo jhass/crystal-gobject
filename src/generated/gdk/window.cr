@@ -8,6 +8,10 @@ module Gdk
       @gdk_window.not_nil!
     end
 
+    def cursor
+      __return_value = LibGdk.window_get_cursor(to_unsafe.as(LibGdk::Window*))
+      Gdk::Cursor.new(__return_value)
+    end
 
     def self.new(parent, attributes, attributes_mask : Gdk::WindowAttributesType) : self
       __return_value = LibGdk.window_new(parent ? parent.to_unsafe.as(LibGdk::Window*) : nil, attributes.to_unsafe.as(LibGdk::WindowAttr*), attributes_mask)

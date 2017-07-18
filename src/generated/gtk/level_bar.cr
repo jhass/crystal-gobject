@@ -13,10 +13,30 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Orientable
+    def inverted
+      __return_value = LibGtk.level_bar_get_inverted(to_unsafe.as(LibGtk::LevelBar*))
+      __return_value
+    end
 
+    def max_value
+      __return_value = LibGtk.level_bar_get_max_value(to_unsafe.as(LibGtk::LevelBar*))
+      __return_value
+    end
 
+    def min_value
+      __return_value = LibGtk.level_bar_get_min_value(to_unsafe.as(LibGtk::LevelBar*))
+      __return_value
+    end
 
+    def mode
+      __return_value = LibGtk.level_bar_get_mode(to_unsafe.as(LibGtk::LevelBar*))
+      __return_value
+    end
 
+    def value
+      __return_value = LibGtk.level_bar_get_value(to_unsafe.as(LibGtk::LevelBar*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.level_bar_new

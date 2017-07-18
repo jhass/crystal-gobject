@@ -13,26 +13,110 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     # Implements Scrollable
+    def accepts_tab
+      __return_value = LibGtk.text_view_get_accepts_tab(to_unsafe.as(LibGtk::TextView*))
+      __return_value
+    end
 
+    def bottom_margin
+      __return_value = LibGtk.text_view_get_bottom_margin(to_unsafe.as(LibGtk::TextView*))
+      __return_value
+    end
 
+    def buffer
+      __return_value = LibGtk.text_view_get_buffer(to_unsafe.as(LibGtk::TextView*))
+      Gtk::TextBuffer.new(__return_value)
+    end
 
+    def cursor_visible
+      __return_value = LibGtk.text_view_get_cursor_visible(to_unsafe.as(LibGtk::TextView*))
+      __return_value
+    end
 
+    def editable
+      __return_value = LibGtk.text_view_get_editable(to_unsafe.as(LibGtk::TextView*))
+      __return_value
+    end
 
+    def im_module
+      __return_value = LibGtk.text_view_get_im_module(to_unsafe.as(LibGtk::TextView*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def indent
+      __return_value = LibGtk.text_view_get_indent(to_unsafe.as(LibGtk::TextView*))
+      __return_value
+    end
 
+    def input_hints
+      __return_value = LibGtk.text_view_get_input_hints(to_unsafe.as(LibGtk::TextView*))
+      __return_value
+    end
 
+    def input_purpose
+      __return_value = LibGtk.text_view_get_input_purpose(to_unsafe.as(LibGtk::TextView*))
+      __return_value
+    end
 
+    def justification
+      __return_value = LibGtk.text_view_get_justification(to_unsafe.as(LibGtk::TextView*))
+      __return_value
+    end
 
+    def left_margin
+      __return_value = LibGtk.text_view_get_left_margin(to_unsafe.as(LibGtk::TextView*))
+      __return_value
+    end
 
+    def monospace
+      __return_value = LibGtk.text_view_get_monospace(to_unsafe.as(LibGtk::TextView*))
+      __return_value
+    end
 
+    def overwrite
+      __return_value = LibGtk.text_view_get_overwrite(to_unsafe.as(LibGtk::TextView*))
+      __return_value
+    end
 
+    def pixels_above_lines
+      __return_value = LibGtk.text_view_get_pixels_above_lines(to_unsafe.as(LibGtk::TextView*))
+      __return_value
+    end
 
+    def pixels_below_lines
+      __return_value = LibGtk.text_view_get_pixels_below_lines(to_unsafe.as(LibGtk::TextView*))
+      __return_value
+    end
 
+    def pixels_inside_wrap
+      __return_value = LibGtk.text_view_get_pixels_inside_wrap(to_unsafe.as(LibGtk::TextView*))
+      __return_value
+    end
 
+    def populate_all
+      __return_value = LibGtk.text_view_get_populate_all(to_unsafe.as(LibGtk::TextView*))
+      __return_value
+    end
 
+    def right_margin
+      __return_value = LibGtk.text_view_get_right_margin(to_unsafe.as(LibGtk::TextView*))
+      __return_value
+    end
 
+    def tabs
+      __return_value = LibGtk.text_view_get_tabs(to_unsafe.as(LibGtk::TextView*))
+      Pango::TabArray.new(__return_value)
+    end
 
+    def top_margin
+      __return_value = LibGtk.text_view_get_top_margin(to_unsafe.as(LibGtk::TextView*))
+      __return_value
+    end
 
+    def wrap_mode
+      __return_value = LibGtk.text_view_get_wrap_mode(to_unsafe.as(LibGtk::TextView*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.text_view_new

@@ -8,8 +8,20 @@ module Gtk
       @gtk_mount_operation.not_nil!
     end
 
+    def is_showing
+      __return_value = LibGtk.mount_operation_get_is_showing(to_unsafe.as(LibGtk::MountOperation*))
+      __return_value
+    end
 
+    def parent
+      __return_value = LibGtk.mount_operation_get_parent(to_unsafe.as(LibGtk::MountOperation*))
+      Gtk::Window.new(__return_value)
+    end
 
+    def screen
+      __return_value = LibGtk.mount_operation_get_screen(to_unsafe.as(LibGtk::MountOperation*))
+      Gdk::Screen.new(__return_value)
+    end
 
     def self.new(parent) : self
       __return_value = LibGtk.mount_operation_new(parent ? parent.to_unsafe.as(LibGtk::Window*) : nil)

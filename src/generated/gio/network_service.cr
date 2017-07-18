@@ -9,9 +9,25 @@ module Gio
     end
 
     # Implements SocketConnectable
+    def domain
+      __return_value = LibGio.network_service_get_domain(to_unsafe.as(LibGio::NetworkService*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def protocol
+      __return_value = LibGio.network_service_get_protocol(to_unsafe.as(LibGio::NetworkService*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def scheme
+      __return_value = LibGio.network_service_get_scheme(to_unsafe.as(LibGio::NetworkService*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def service
+      __return_value = LibGio.network_service_get_service(to_unsafe.as(LibGio::NetworkService*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
     def self.new(service, protocol, domain) : self
       __return_value = LibGio.network_service_new(service.to_unsafe, protocol.to_unsafe, domain.to_unsafe)

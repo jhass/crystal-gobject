@@ -12,10 +12,30 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def column_spacing
+      __return_value = LibGtk.table_get_column_spacing(to_unsafe.as(LibGtk::Table*))
+      __return_value
+    end
 
+    def homogeneous
+      __return_value = LibGtk.table_get_homogeneous(to_unsafe.as(LibGtk::Table*))
+      __return_value
+    end
 
+    def n_columns
+      __return_value = LibGtk.table_get_n_columns(to_unsafe.as(LibGtk::Table*))
+      __return_value
+    end
 
+    def n_rows
+      __return_value = LibGtk.table_get_n_rows(to_unsafe.as(LibGtk::Table*))
+      __return_value
+    end
 
+    def row_spacing
+      __return_value = LibGtk.table_get_row_spacing(to_unsafe.as(LibGtk::Table*))
+      __return_value
+    end
 
     def self.new(rows, columns, homogeneous) : self
       __return_value = LibGtk.table_new(UInt32.new(rows), UInt32.new(columns), homogeneous)

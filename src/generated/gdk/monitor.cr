@@ -8,15 +8,55 @@ module Gdk
       @gdk_monitor.not_nil!
     end
 
+    def display
+      __return_value = LibGdk.monitor_get_display(to_unsafe.as(LibGdk::Monitor*))
+      Gdk::Display.new(__return_value)
+    end
 
+    def geometry
+      __return_value = LibGdk.monitor_get_geometry(to_unsafe.as(LibGdk::Monitor*))
+      Gdk::Rectangle.new(__return_value)
+    end
 
+    def height_mm
+      __return_value = LibGdk.monitor_get_height_mm(to_unsafe.as(LibGdk::Monitor*))
+      __return_value
+    end
 
+    def manufacturer
+      __return_value = LibGdk.monitor_get_manufacturer(to_unsafe.as(LibGdk::Monitor*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def model
+      __return_value = LibGdk.monitor_get_model(to_unsafe.as(LibGdk::Monitor*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def refresh_rate
+      __return_value = LibGdk.monitor_get_refresh_rate(to_unsafe.as(LibGdk::Monitor*))
+      __return_value
+    end
 
+    def scale_factor
+      __return_value = LibGdk.monitor_get_scale_factor(to_unsafe.as(LibGdk::Monitor*))
+      __return_value
+    end
 
+    def subpixel_layout
+      __return_value = LibGdk.monitor_get_subpixel_layout(to_unsafe.as(LibGdk::Monitor*))
+      __return_value
+    end
 
+    def width_mm
+      __return_value = LibGdk.monitor_get_width_mm(to_unsafe.as(LibGdk::Monitor*))
+      __return_value
+    end
 
+    def workarea
+      __return_value = LibGdk.monitor_get_workarea(to_unsafe.as(LibGdk::Monitor*))
+      Gdk::Rectangle.new(__return_value)
+    end
 
     def display
       __return_value = LibGdk.monitor_get_display(to_unsafe.as(LibGdk::Monitor*))

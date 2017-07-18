@@ -12,6 +12,10 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def stack
+      __return_value = LibGtk.stack_sidebar_get_stack(to_unsafe.as(LibGtk::StackSidebar*))
+      Gtk::Stack.new(__return_value)
+    end
 
     def self.new : self
       __return_value = LibGtk.stack_sidebar_new

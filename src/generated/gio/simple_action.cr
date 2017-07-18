@@ -9,10 +9,30 @@ module Gio
     end
 
     # Implements Action
+    def enabled
+      __return_value = LibGio.simple_action_get_enabled(to_unsafe.as(LibGio::SimpleAction*))
+      __return_value
+    end
 
+    def name
+      __return_value = LibGio.simple_action_get_name(to_unsafe.as(LibGio::SimpleAction*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def parameter_type
+      __return_value = LibGio.simple_action_get_parameter_type(to_unsafe.as(LibGio::SimpleAction*))
+      GLib::VariantType.new(__return_value)
+    end
 
+    def state
+      __return_value = LibGio.simple_action_get_state(to_unsafe.as(LibGio::SimpleAction*))
+      GLib::Variant.new(__return_value)
+    end
 
+    def state_type
+      __return_value = LibGio.simple_action_get_state_type(to_unsafe.as(LibGio::SimpleAction*))
+      GLib::VariantType.new(__return_value)
+    end
 
     def self.new(name, parameter_type) : self
       __return_value = LibGio.simple_action_new(name.to_unsafe, parameter_type ? parameter_type.to_unsafe.as(LibGLib::VariantType*) : nil)

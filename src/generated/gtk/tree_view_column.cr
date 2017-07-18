@@ -10,24 +10,100 @@ module Gtk
 
     # Implements Buildable
     # Implements CellLayout
+    def alignment
+      __return_value = LibGtk.tree_view_column_get_alignment(to_unsafe.as(LibGtk::TreeViewColumn*))
+      __return_value
+    end
 
+    def cell_area
+      __return_value = LibGtk.tree_view_column_get_cell_area(to_unsafe.as(LibGtk::TreeViewColumn*))
+      Gtk::CellArea.new(__return_value)
+    end
 
+    def clickable
+      __return_value = LibGtk.tree_view_column_get_clickable(to_unsafe.as(LibGtk::TreeViewColumn*))
+      __return_value
+    end
 
+    def expand
+      __return_value = LibGtk.tree_view_column_get_expand(to_unsafe.as(LibGtk::TreeViewColumn*))
+      __return_value
+    end
 
+    def fixed_width
+      __return_value = LibGtk.tree_view_column_get_fixed_width(to_unsafe.as(LibGtk::TreeViewColumn*))
+      __return_value
+    end
 
+    def max_width
+      __return_value = LibGtk.tree_view_column_get_max_width(to_unsafe.as(LibGtk::TreeViewColumn*))
+      __return_value
+    end
 
+    def min_width
+      __return_value = LibGtk.tree_view_column_get_min_width(to_unsafe.as(LibGtk::TreeViewColumn*))
+      __return_value
+    end
 
+    def reorderable
+      __return_value = LibGtk.tree_view_column_get_reorderable(to_unsafe.as(LibGtk::TreeViewColumn*))
+      __return_value
+    end
 
+    def resizable
+      __return_value = LibGtk.tree_view_column_get_resizable(to_unsafe.as(LibGtk::TreeViewColumn*))
+      __return_value
+    end
 
+    def sizing
+      __return_value = LibGtk.tree_view_column_get_sizing(to_unsafe.as(LibGtk::TreeViewColumn*))
+      __return_value
+    end
 
+    def sort_column_id
+      __return_value = LibGtk.tree_view_column_get_sort_column_id(to_unsafe.as(LibGtk::TreeViewColumn*))
+      __return_value
+    end
 
+    def sort_indicator
+      __return_value = LibGtk.tree_view_column_get_sort_indicator(to_unsafe.as(LibGtk::TreeViewColumn*))
+      __return_value
+    end
 
+    def sort_order
+      __return_value = LibGtk.tree_view_column_get_sort_order(to_unsafe.as(LibGtk::TreeViewColumn*))
+      __return_value
+    end
 
+    def spacing
+      __return_value = LibGtk.tree_view_column_get_spacing(to_unsafe.as(LibGtk::TreeViewColumn*))
+      __return_value
+    end
 
+    def title
+      __return_value = LibGtk.tree_view_column_get_title(to_unsafe.as(LibGtk::TreeViewColumn*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def visible
+      __return_value = LibGtk.tree_view_column_get_visible(to_unsafe.as(LibGtk::TreeViewColumn*))
+      __return_value
+    end
 
+    def widget
+      __return_value = LibGtk.tree_view_column_get_widget(to_unsafe.as(LibGtk::TreeViewColumn*))
+      Gtk::Widget.new(__return_value)
+    end
 
+    def width
+      __return_value = LibGtk.tree_view_column_get_width(to_unsafe.as(LibGtk::TreeViewColumn*))
+      __return_value
+    end
 
+    def x_offset
+      __return_value = LibGtk.tree_view_column_get_x_offset(to_unsafe.as(LibGtk::TreeViewColumn*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.tree_view_column_new

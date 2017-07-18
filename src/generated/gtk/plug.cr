@@ -12,7 +12,15 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def embedded
+      __return_value = LibGtk.plug_get_embedded(to_unsafe.as(LibGtk::Plug*))
+      __return_value
+    end
 
+    def socket_window
+      __return_value = LibGtk.plug_get_socket_window(to_unsafe.as(LibGtk::Plug*))
+      Gdk::Window.new(__return_value)
+    end
 
     def self.new(socket_id) : self
       __return_value = LibGtk.plug_new(UInt64.new(socket_id))

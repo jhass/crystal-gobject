@@ -9,9 +9,25 @@ module Atk
     end
 
     # Implements Action
+    def end_index
+      __return_value = LibAtk.hyperlink_get_end_index(to_unsafe.as(LibAtk::Hyperlink*))
+      __return_value
+    end
 
+    def number_of_anchors
+      __return_value = LibAtk.hyperlink_get_number_of_anchors(to_unsafe.as(LibAtk::Hyperlink*))
+      __return_value
+    end
 
+    def selected_link
+      __return_value = LibAtk.hyperlink_get_selected_link(to_unsafe.as(LibAtk::Hyperlink*))
+      __return_value
+    end
 
+    def start_index
+      __return_value = LibAtk.hyperlink_get_start_index(to_unsafe.as(LibAtk::Hyperlink*))
+      __return_value
+    end
 
     def end_index
       __return_value = LibAtk.hyperlink_get_end_index(to_unsafe.as(LibAtk::Hyperlink*))

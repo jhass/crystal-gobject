@@ -45,6 +45,11 @@ module Gst
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
+    def media_fragment_table
+      __return_value = LibGst.uri_get_media_fragment_table(to_unsafe.as(LibGst::Uri*))
+      __return_value
+    end
+
     def path
       __return_value = LibGst.uri_get_path(to_unsafe.as(LibGst::Uri*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))

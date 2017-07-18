@@ -9,23 +9,95 @@ module Gtk
     end
 
     # Implements PrintOperationPreview
+    def allow_async
+      __return_value = LibGtk.print_operation_get_allow_async(to_unsafe.as(LibGtk::PrintOperation*))
+      __return_value
+    end
 
+    def current_page
+      __return_value = LibGtk.print_operation_get_current_page(to_unsafe.as(LibGtk::PrintOperation*))
+      __return_value
+    end
 
+    def custom_tab_label
+      __return_value = LibGtk.print_operation_get_custom_tab_label(to_unsafe.as(LibGtk::PrintOperation*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def default_page_setup
+      __return_value = LibGtk.print_operation_get_default_page_setup(to_unsafe.as(LibGtk::PrintOperation*))
+      Gtk::PageSetup.new(__return_value)
+    end
 
+    def embed_page_setup
+      __return_value = LibGtk.print_operation_get_embed_page_setup(to_unsafe.as(LibGtk::PrintOperation*))
+      __return_value
+    end
 
+    def export_filename
+      __return_value = LibGtk.print_operation_get_export_filename(to_unsafe.as(LibGtk::PrintOperation*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def has_selection
+      __return_value = LibGtk.print_operation_get_has_selection(to_unsafe.as(LibGtk::PrintOperation*))
+      __return_value
+    end
 
+    def job_name
+      __return_value = LibGtk.print_operation_get_job_name(to_unsafe.as(LibGtk::PrintOperation*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def n_pages
+      __return_value = LibGtk.print_operation_get_n_pages(to_unsafe.as(LibGtk::PrintOperation*))
+      __return_value
+    end
 
+    def n_pages_to_print
+      __return_value = LibGtk.print_operation_get_n_pages_to_print(to_unsafe.as(LibGtk::PrintOperation*))
+      __return_value
+    end
 
+    def print_settings
+      __return_value = LibGtk.print_operation_get_print_settings(to_unsafe.as(LibGtk::PrintOperation*))
+      Gtk::PrintSettings.new(__return_value)
+    end
 
+    def show_progress
+      __return_value = LibGtk.print_operation_get_show_progress(to_unsafe.as(LibGtk::PrintOperation*))
+      __return_value
+    end
 
+    def status
+      __return_value = LibGtk.print_operation_get_status(to_unsafe.as(LibGtk::PrintOperation*))
+      __return_value
+    end
 
+    def status_string
+      __return_value = LibGtk.print_operation_get_status_string(to_unsafe.as(LibGtk::PrintOperation*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def support_selection
+      __return_value = LibGtk.print_operation_get_support_selection(to_unsafe.as(LibGtk::PrintOperation*))
+      __return_value
+    end
 
+    def track_print_status
+      __return_value = LibGtk.print_operation_get_track_print_status(to_unsafe.as(LibGtk::PrintOperation*))
+      __return_value
+    end
 
+    def unit
+      __return_value = LibGtk.print_operation_get_unit(to_unsafe.as(LibGtk::PrintOperation*))
+      __return_value
+    end
 
+    def use_full_page
+      __return_value = LibGtk.print_operation_get_use_full_page(to_unsafe.as(LibGtk::PrintOperation*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGtk.print_operation_new

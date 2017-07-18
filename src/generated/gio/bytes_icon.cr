@@ -10,6 +10,10 @@ module Gio
 
     # Implements Icon
     # Implements LoadableIcon
+    def bytes
+      __return_value = LibGio.bytes_icon_get_bytes(to_unsafe.as(LibGio::BytesIcon*))
+      GLib::Bytes.new(__return_value)
+    end
 
     def self.new(bytes) : self
       __return_value = LibGio.bytes_icon_new(bytes.to_unsafe.as(LibGLib::Bytes*))

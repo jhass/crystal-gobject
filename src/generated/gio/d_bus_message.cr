@@ -8,6 +8,10 @@ module Gio
       @gio_d_bus_message.not_nil!
     end
 
+    def locked
+      __return_value = LibGio.d_bus_message_get_locked(to_unsafe.as(LibGio::DBusMessage*))
+      __return_value
+    end
 
     def self.new : self
       __return_value = LibGio.d_bus_message_new

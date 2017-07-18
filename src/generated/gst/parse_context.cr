@@ -15,6 +15,11 @@ module Gst
       cast Gst::ParseContext.new(__return_value)
     end
 
+    def copy
+      __return_value = LibGst.parse_context_copy(to_unsafe.as(LibGst::ParseContext*))
+      Gst::ParseContext.new(__return_value)
+    end
+
     def free
       __return_value = LibGst.parse_context_free(to_unsafe.as(LibGst::ParseContext*))
       __return_value

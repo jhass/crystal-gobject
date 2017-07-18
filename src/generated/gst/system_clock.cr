@@ -10,6 +10,10 @@ module Gst
       @gst_system_clock.not_nil!
     end
 
+    def clock_type
+      __return_value = LibGst.system_clock_get_clock_type(to_unsafe.as(LibGst::SystemClock*))
+      __return_value
+    end
 
     def self.obtain
       __return_value = LibGst.system_clock_obtain

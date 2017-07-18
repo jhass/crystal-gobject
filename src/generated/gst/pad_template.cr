@@ -10,9 +10,25 @@ module Gst
       @gst_pad_template.not_nil!
     end
 
+    def caps
+      __return_value = LibGst.pad_template_get_caps(to_unsafe.as(LibGst::PadTemplate*))
+      Gst::Caps.new(__return_value)
+    end
 
+    def direction
+      __return_value = LibGst.pad_template_get_direction(to_unsafe.as(LibGst::PadTemplate*))
+      __return_value
+    end
 
+    def name_template
+      __return_value = LibGst.pad_template_get_name_template(to_unsafe.as(LibGst::PadTemplate*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def presence
+      __return_value = LibGst.pad_template_get_presence(to_unsafe.as(LibGst::PadTemplate*))
+      __return_value
+    end
 
     def self.new(name_template, direction : Gst::PadDirection, presence : Gst::PadPresence, caps) : self
       __return_value = LibGst.pad_template_new(name_template.to_unsafe, direction, presence, caps.to_unsafe.as(LibGst::Caps*))

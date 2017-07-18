@@ -12,10 +12,30 @@ module Gtk
 
     # Implements ImplementorIface
     # Implements Buildable
+    def label
+      __return_value = LibGtk.frame_get_label(to_unsafe.as(LibGtk::Frame*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
 
+    def label_widget
+      __return_value = LibGtk.frame_get_label_widget(to_unsafe.as(LibGtk::Frame*))
+      Gtk::Widget.new(__return_value)
+    end
 
+    def label_xalign
+      __return_value = LibGtk.frame_get_label_xalign(to_unsafe.as(LibGtk::Frame*))
+      __return_value
+    end
 
+    def label_yalign
+      __return_value = LibGtk.frame_get_label_yalign(to_unsafe.as(LibGtk::Frame*))
+      __return_value
+    end
 
+    def shadow_type
+      __return_value = LibGtk.frame_get_shadow_type(to_unsafe.as(LibGtk::Frame*))
+      __return_value
+    end
 
     def self.new(label) : self
       __return_value = LibGtk.frame_new(label ? label.to_unsafe : nil)

@@ -1186,26 +1186,6 @@ module GLib
     __return_value
   end
 
-  def self.mkdtemp(tmpl)
-    __return_value = LibGLib.mkdtemp(tmpl.to_unsafe)
-    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
-  end
-
-  def self.mkdtemp_full(tmpl, mode)
-    __return_value = LibGLib.mkdtemp_full(tmpl.to_unsafe, Int32.new(mode))
-    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
-  end
-
-  def self.mkstemp(tmpl)
-    __return_value = LibGLib.mkstemp(tmpl.to_unsafe)
-    __return_value
-  end
-
-  def self.mkstemp_full(tmpl, flags, mode)
-    __return_value = LibGLib.mkstemp_full(tmpl.to_unsafe, Int32.new(flags), Int32.new(mode))
-    __return_value
-  end
-
   def self.nullify_pointer(nullify_location)
     __return_value = LibGLib.nullify_pointer(nullify_location)
     __return_value
@@ -2411,6 +2391,11 @@ module GLib
     __return_value
   end
 
+  def self.utf8_make_valid(str, len)
+    __return_value = LibGLib.utf8_make_valid(str.to_unsafe, Int64.new(len))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+  end
+
   def self.utf8_normalize(str, len, mode : GLib::NormalizeMode)
     __return_value = LibGLib.utf8_normalize(str.to_unsafe, Int64.new(len), mode)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
@@ -2493,6 +2478,16 @@ module GLib
   def self.utf8_validate(str, max_len, end)
     __return_value = LibGLib.utf8_validate(str, Int64.new(max_len), end)
     __return_value
+  end
+
+  def self.uuid_string_is_valid(str)
+    __return_value = LibGLib.uuid_string_is_valid(str.to_unsafe)
+    __return_value
+  end
+
+  def self.uuid_string_random
+    __return_value = LibGLib.uuid_string_random
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.variant_get_gtype

@@ -57,9 +57,9 @@ lib LibGdkPixbuf
   PIXBUF_FEATURES_H = 1 # : Int32
   PIXBUF_MAGIC_NUMBER = 1197763408 # : Int32
   PIXBUF_MAJOR = 2 # : Int32
-  PIXBUF_MICRO = 5 # : Int32
+  PIXBUF_MICRO = 6 # : Int32
   PIXBUF_MINOR = 36 # : Int32
-  PIXBUF_VERSION = "2.36.5" # : UInt8*
+  PIXBUF_VERSION = "2.36.6" # : UInt8*
   PIXDATA_HEADER_LENGTH = 24 # : Int32
 
   ###########################################
