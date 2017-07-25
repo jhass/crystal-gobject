@@ -67,7 +67,7 @@ class Namespace
     io.puts if requires
 
     libraries = GIRepository::Repository.instance.shared_library(@namespace).split(',')
-    libraries.map! {|library| library[/lib(.+)\.so.+/, 1] }
+    libraries.map! {|library| library[/lib([^\/]+)\.(?:so|.+?\.dylib).*/, 1] }
 
     libraries.each do |library|
       io.puts %(@[Link("#{library}")])
