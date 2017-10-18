@@ -70,28 +70,28 @@ module Gtk
     end
 
     def background_gicon=(icon)
-      __return_value = LibGtk.numerable_icon_set_background_gicon(to_unsafe.as(LibGtk::NumerableIcon*), icon ? icon.to_unsafe.as(LibGio::Icon*) : nil)
-      __return_value
+      LibGtk.numerable_icon_set_background_gicon(to_unsafe.as(LibGtk::NumerableIcon*), icon ? icon.to_unsafe.as(LibGio::Icon*) : nil)
+      nil
     end
 
     def background_icon_name=(icon_name)
-      __return_value = LibGtk.numerable_icon_set_background_icon_name(to_unsafe.as(LibGtk::NumerableIcon*), icon_name ? icon_name.to_unsafe : nil)
-      __return_value
+      LibGtk.numerable_icon_set_background_icon_name(to_unsafe.as(LibGtk::NumerableIcon*), icon_name ? icon_name.to_unsafe : nil)
+      nil
     end
 
     def count=(count)
-      __return_value = LibGtk.numerable_icon_set_count(to_unsafe.as(LibGtk::NumerableIcon*), Int32.new(count))
-      __return_value
+      LibGtk.numerable_icon_set_count(to_unsafe.as(LibGtk::NumerableIcon*), Int32.new(count))
+      nil
     end
 
     def label=(label)
-      __return_value = LibGtk.numerable_icon_set_label(to_unsafe.as(LibGtk::NumerableIcon*), label ? label.to_unsafe : nil)
-      __return_value
+      LibGtk.numerable_icon_set_label(to_unsafe.as(LibGtk::NumerableIcon*), label ? label.to_unsafe : nil)
+      nil
     end
 
     def style_context=(style)
-      __return_value = LibGtk.numerable_icon_set_style_context(to_unsafe.as(LibGtk::NumerableIcon*), style.to_unsafe.as(LibGtk::StyleContext*))
-      __return_value
+      LibGtk.numerable_icon_set_style_context(to_unsafe.as(LibGtk::NumerableIcon*), style.to_unsafe.as(LibGtk::StyleContext*))
+      nil
     end
 
   end

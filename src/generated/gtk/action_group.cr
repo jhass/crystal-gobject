@@ -35,13 +35,13 @@ module Gtk
     end
 
     def add_action(action)
-      __return_value = LibGtk.action_group_add_action(to_unsafe.as(LibGtk::ActionGroup*), action.to_unsafe.as(LibGtk::Action*))
-      __return_value
+      LibGtk.action_group_add_action(to_unsafe.as(LibGtk::ActionGroup*), action.to_unsafe.as(LibGtk::Action*))
+      nil
     end
 
     def add_action_with_accel(action, accelerator)
-      __return_value = LibGtk.action_group_add_action_with_accel(to_unsafe.as(LibGtk::ActionGroup*), action.to_unsafe.as(LibGtk::Action*), accelerator ? accelerator.to_unsafe : nil)
-      __return_value
+      LibGtk.action_group_add_action_with_accel(to_unsafe.as(LibGtk::ActionGroup*), action.to_unsafe.as(LibGtk::Action*), accelerator ? accelerator.to_unsafe : nil)
+      nil
     end
 
     def accel_group
@@ -75,33 +75,33 @@ module Gtk
     end
 
     def remove_action(action)
-      __return_value = LibGtk.action_group_remove_action(to_unsafe.as(LibGtk::ActionGroup*), action.to_unsafe.as(LibGtk::Action*))
-      __return_value
+      LibGtk.action_group_remove_action(to_unsafe.as(LibGtk::ActionGroup*), action.to_unsafe.as(LibGtk::Action*))
+      nil
     end
 
     def accel_group=(accel_group)
-      __return_value = LibGtk.action_group_set_accel_group(to_unsafe.as(LibGtk::ActionGroup*), accel_group ? accel_group.to_unsafe.as(LibGtk::AccelGroup*) : nil)
-      __return_value
+      LibGtk.action_group_set_accel_group(to_unsafe.as(LibGtk::ActionGroup*), accel_group ? accel_group.to_unsafe.as(LibGtk::AccelGroup*) : nil)
+      nil
     end
 
     def sensitive=(sensitive)
-      __return_value = LibGtk.action_group_set_sensitive(to_unsafe.as(LibGtk::ActionGroup*), sensitive)
-      __return_value
+      LibGtk.action_group_set_sensitive(to_unsafe.as(LibGtk::ActionGroup*), sensitive)
+      nil
     end
 
     def set_translate_func(func, data, notify)
-      __return_value = LibGtk.action_group_set_translate_func(to_unsafe.as(LibGtk::ActionGroup*), func, data ? data : nil, notify)
-      __return_value
+      LibGtk.action_group_set_translate_func(to_unsafe.as(LibGtk::ActionGroup*), func, data ? data : nil, notify)
+      nil
     end
 
     def translation_domain=(domain)
-      __return_value = LibGtk.action_group_set_translation_domain(to_unsafe.as(LibGtk::ActionGroup*), domain ? domain.to_unsafe : nil)
-      __return_value
+      LibGtk.action_group_set_translation_domain(to_unsafe.as(LibGtk::ActionGroup*), domain ? domain.to_unsafe : nil)
+      nil
     end
 
     def visible=(visible)
-      __return_value = LibGtk.action_group_set_visible(to_unsafe.as(LibGtk::ActionGroup*), visible)
-      __return_value
+      LibGtk.action_group_set_visible(to_unsafe.as(LibGtk::ActionGroup*), visible)
+      nil
     end
 
     def translate_string(string)

@@ -15,8 +15,8 @@ module Gtk
     end
 
     def clear
-      __return_value = LibGtk.style_properties_clear(to_unsafe.as(LibGtk::StyleProperties*))
-      __return_value
+      LibGtk.style_properties_clear(to_unsafe.as(LibGtk::StyleProperties*))
+      nil
     end
 
     def property(property, state : Gtk::StateFlags, value)
@@ -30,23 +30,23 @@ module Gtk
     end
 
     def map_color(name, color)
-      __return_value = LibGtk.style_properties_map_color(to_unsafe.as(LibGtk::StyleProperties*), name.to_unsafe, color.to_unsafe.as(LibGtk::SymbolicColor*))
-      __return_value
+      LibGtk.style_properties_map_color(to_unsafe.as(LibGtk::StyleProperties*), name.to_unsafe, color.to_unsafe.as(LibGtk::SymbolicColor*))
+      nil
     end
 
     def merge(props_to_merge, replace)
-      __return_value = LibGtk.style_properties_merge(to_unsafe.as(LibGtk::StyleProperties*), props_to_merge.to_unsafe.as(LibGtk::StyleProperties*), replace)
-      __return_value
+      LibGtk.style_properties_merge(to_unsafe.as(LibGtk::StyleProperties*), props_to_merge.to_unsafe.as(LibGtk::StyleProperties*), replace)
+      nil
     end
 
     def set_property(property, state : Gtk::StateFlags, value)
-      __return_value = LibGtk.style_properties_set_property(to_unsafe.as(LibGtk::StyleProperties*), property.to_unsafe, state, value.to_unsafe.as(LibGObject::Value*))
-      __return_value
+      LibGtk.style_properties_set_property(to_unsafe.as(LibGtk::StyleProperties*), property.to_unsafe, state, value.to_unsafe.as(LibGObject::Value*))
+      nil
     end
 
     def unset_property(property, state : Gtk::StateFlags)
-      __return_value = LibGtk.style_properties_unset_property(to_unsafe.as(LibGtk::StyleProperties*), property.to_unsafe, state)
-      __return_value
+      LibGtk.style_properties_unset_property(to_unsafe.as(LibGtk::StyleProperties*), property.to_unsafe, state)
+      nil
     end
 
   end

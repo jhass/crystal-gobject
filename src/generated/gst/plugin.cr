@@ -11,8 +11,8 @@ module Gst
     end
 
     def self.list_free(list)
-      __return_value = LibGst.plugin_list_free(list)
-      __return_value
+      LibGst.plugin_list_free(list)
+      nil
     end
 
     def self.load_by_name(name)
@@ -38,13 +38,13 @@ module Gst
     end
 
     def add_dependency(env_vars, paths, names, flags : Gst::PluginDependencyFlags)
-      __return_value = LibGst.plugin_add_dependency(to_unsafe.as(LibGst::Plugin*), env_vars ? env_vars.to_unsafe : nil, paths ? paths.to_unsafe : nil, names ? names.to_unsafe : nil, flags)
-      __return_value
+      LibGst.plugin_add_dependency(to_unsafe.as(LibGst::Plugin*), env_vars ? env_vars.to_unsafe : nil, paths ? paths.to_unsafe : nil, names ? names.to_unsafe : nil, flags)
+      nil
     end
 
     def add_dependency_simple(env_vars, paths, names, flags : Gst::PluginDependencyFlags)
-      __return_value = LibGst.plugin_add_dependency_simple(to_unsafe.as(LibGst::Plugin*), env_vars ? env_vars.to_unsafe : nil, paths ? paths.to_unsafe : nil, names ? names.to_unsafe : nil, flags)
-      __return_value
+      LibGst.plugin_add_dependency_simple(to_unsafe.as(LibGst::Plugin*), env_vars ? env_vars.to_unsafe : nil, paths ? paths.to_unsafe : nil, names ? names.to_unsafe : nil, flags)
+      nil
     end
 
     def cache_data
@@ -108,8 +108,8 @@ module Gst
     end
 
     def cache_data=(cache_data)
-      __return_value = LibGst.plugin_set_cache_data(to_unsafe.as(LibGst::Plugin*), cache_data.to_unsafe.as(LibGst::Structure*))
-      __return_value
+      LibGst.plugin_set_cache_data(to_unsafe.as(LibGst::Plugin*), cache_data.to_unsafe.as(LibGst::Structure*))
+      nil
     end
 
   end

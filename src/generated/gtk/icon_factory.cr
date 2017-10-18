@@ -20,13 +20,13 @@ module Gtk
     end
 
     def add(stock_id, icon_set)
-      __return_value = LibGtk.icon_factory_add(to_unsafe.as(LibGtk::IconFactory*), stock_id.to_unsafe, icon_set.to_unsafe.as(LibGtk::IconSet*))
-      __return_value
+      LibGtk.icon_factory_add(to_unsafe.as(LibGtk::IconFactory*), stock_id.to_unsafe, icon_set.to_unsafe.as(LibGtk::IconSet*))
+      nil
     end
 
     def add_default
-      __return_value = LibGtk.icon_factory_add_default(to_unsafe.as(LibGtk::IconFactory*))
-      __return_value
+      LibGtk.icon_factory_add_default(to_unsafe.as(LibGtk::IconFactory*))
+      nil
     end
 
     def lookup(stock_id)
@@ -35,8 +35,8 @@ module Gtk
     end
 
     def remove_default
-      __return_value = LibGtk.icon_factory_remove_default(to_unsafe.as(LibGtk::IconFactory*))
-      __return_value
+      LibGtk.icon_factory_remove_default(to_unsafe.as(LibGtk::IconFactory*))
+      nil
     end
 
   end

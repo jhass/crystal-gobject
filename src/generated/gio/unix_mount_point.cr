@@ -15,9 +15,14 @@ module Gio
       __return_value
     end
 
+    def copy
+      __return_value = LibGio.unix_mount_point_copy(to_unsafe.as(LibGio::UnixMountPoint*))
+      Gio::UnixMountPoint.new(__return_value)
+    end
+
     def free
-      __return_value = LibGio.unix_mount_point_free(to_unsafe.as(LibGio::UnixMountPoint*))
-      __return_value
+      LibGio.unix_mount_point_free(to_unsafe.as(LibGio::UnixMountPoint*))
+      nil
     end
 
     def device_path

@@ -66,23 +66,23 @@ module Gtk
     end
 
     def accel_group=(accel_group)
-      __return_value = LibGtk.image_menu_item_set_accel_group(to_unsafe.as(LibGtk::ImageMenuItem*), accel_group.to_unsafe.as(LibGtk::AccelGroup*))
-      __return_value
+      LibGtk.image_menu_item_set_accel_group(to_unsafe.as(LibGtk::ImageMenuItem*), accel_group.to_unsafe.as(LibGtk::AccelGroup*))
+      nil
     end
 
     def always_show_image=(always_show)
-      __return_value = LibGtk.image_menu_item_set_always_show_image(to_unsafe.as(LibGtk::ImageMenuItem*), always_show)
-      __return_value
+      LibGtk.image_menu_item_set_always_show_image(to_unsafe.as(LibGtk::ImageMenuItem*), always_show)
+      nil
     end
 
     def image=(image)
-      __return_value = LibGtk.image_menu_item_set_image(to_unsafe.as(LibGtk::ImageMenuItem*), image ? image.to_unsafe.as(LibGtk::Widget*) : nil)
-      __return_value
+      LibGtk.image_menu_item_set_image(to_unsafe.as(LibGtk::ImageMenuItem*), image ? image.to_unsafe.as(LibGtk::Widget*) : nil)
+      nil
     end
 
     def use_stock=(use_stock)
-      __return_value = LibGtk.image_menu_item_set_use_stock(to_unsafe.as(LibGtk::ImageMenuItem*), use_stock)
-      __return_value
+      LibGtk.image_menu_item_set_use_stock(to_unsafe.as(LibGtk::ImageMenuItem*), use_stock)
+      nil
     end
 
   end

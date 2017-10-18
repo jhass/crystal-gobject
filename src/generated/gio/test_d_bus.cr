@@ -19,18 +19,18 @@ module Gio
     end
 
     def self.unset
-      __return_value = LibGio.test_d_bus_unset
-      __return_value
+      LibGio.test_d_bus_unset
+      nil
     end
 
     def add_service_dir(path)
-      __return_value = LibGio.test_d_bus_add_service_dir(to_unsafe.as(LibGio::TestDBus*), path.to_unsafe)
-      __return_value
+      LibGio.test_d_bus_add_service_dir(to_unsafe.as(LibGio::TestDBus*), path.to_unsafe)
+      nil
     end
 
     def down
-      __return_value = LibGio.test_d_bus_down(to_unsafe.as(LibGio::TestDBus*))
-      __return_value
+      LibGio.test_d_bus_down(to_unsafe.as(LibGio::TestDBus*))
+      nil
     end
 
     def bus_address
@@ -44,13 +44,13 @@ module Gio
     end
 
     def stop
-      __return_value = LibGio.test_d_bus_stop(to_unsafe.as(LibGio::TestDBus*))
-      __return_value
+      LibGio.test_d_bus_stop(to_unsafe.as(LibGio::TestDBus*))
+      nil
     end
 
     def up
-      __return_value = LibGio.test_d_bus_up(to_unsafe.as(LibGio::TestDBus*))
-      __return_value
+      LibGio.test_d_bus_up(to_unsafe.as(LibGio::TestDBus*))
+      nil
     end
 
   end

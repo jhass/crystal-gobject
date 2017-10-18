@@ -17,13 +17,13 @@ module Gst
     end
 
     def add_signal_watch
-      __return_value = LibGst.bus_add_signal_watch(to_unsafe.as(LibGst::Bus*))
-      __return_value
+      LibGst.bus_add_signal_watch(to_unsafe.as(LibGst::Bus*))
+      nil
     end
 
     def add_signal_watch_full(priority)
-      __return_value = LibGst.bus_add_signal_watch_full(to_unsafe.as(LibGst::Bus*), Int32.new(priority))
-      __return_value
+      LibGst.bus_add_signal_watch_full(to_unsafe.as(LibGst::Bus*), Int32.new(priority))
+      nil
     end
 
     def add_watch(priority, func, user_data, notify)
@@ -42,13 +42,13 @@ module Gst
     end
 
     def disable_sync_message_emission
-      __return_value = LibGst.bus_disable_sync_message_emission(to_unsafe.as(LibGst::Bus*))
-      __return_value
+      LibGst.bus_disable_sync_message_emission(to_unsafe.as(LibGst::Bus*))
+      nil
     end
 
     def enable_sync_message_emission
-      __return_value = LibGst.bus_enable_sync_message_emission(to_unsafe.as(LibGst::Bus*))
-      __return_value
+      LibGst.bus_enable_sync_message_emission(to_unsafe.as(LibGst::Bus*))
+      nil
     end
 
     def have_pending
@@ -82,8 +82,8 @@ module Gst
     end
 
     def remove_signal_watch
-      __return_value = LibGst.bus_remove_signal_watch(to_unsafe.as(LibGst::Bus*))
-      __return_value
+      LibGst.bus_remove_signal_watch(to_unsafe.as(LibGst::Bus*))
+      nil
     end
 
     def remove_watch
@@ -92,13 +92,13 @@ module Gst
     end
 
     def flushing=(flushing)
-      __return_value = LibGst.bus_set_flushing(to_unsafe.as(LibGst::Bus*), flushing)
-      __return_value
+      LibGst.bus_set_flushing(to_unsafe.as(LibGst::Bus*), flushing)
+      nil
     end
 
     def set_sync_handler(func, user_data, notify)
-      __return_value = LibGst.bus_set_sync_handler(to_unsafe.as(LibGst::Bus*), func ? func : nil, user_data ? user_data : nil, notify)
-      __return_value
+      LibGst.bus_set_sync_handler(to_unsafe.as(LibGst::Bus*), func ? func : nil, user_data ? user_data : nil, notify)
+      nil
     end
 
     def sync_signal_handler(message, data)

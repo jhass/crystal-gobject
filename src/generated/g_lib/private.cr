@@ -16,18 +16,18 @@ module GLib
     end
 
     def get
-      __return_value = LibGLib.private_get(to_unsafe.as(LibGLib::Private*))
-      __return_value if __return_value
+      LibGLib.private_get(to_unsafe.as(LibGLib::Private*))
+      nil
     end
 
     def replace(value)
-      __return_value = LibGLib.private_replace(to_unsafe.as(LibGLib::Private*), value ? value : nil)
-      __return_value
+      LibGLib.private_replace(to_unsafe.as(LibGLib::Private*), value ? value : nil)
+      nil
     end
 
     def set(value)
-      __return_value = LibGLib.private_set(to_unsafe.as(LibGLib::Private*), value ? value : nil)
-      __return_value
+      LibGLib.private_set(to_unsafe.as(LibGLib::Private*), value ? value : nil)
+      nil
     end
 
     def p

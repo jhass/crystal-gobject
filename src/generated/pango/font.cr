@@ -9,8 +9,8 @@ module Pango
     end
 
     def self.descriptions_free(descs, n_descs)
-      __return_value = LibPango.font_descriptions_free(descs ? descs : nil, Int32.new(n_descs))
-      __return_value
+      LibPango.font_descriptions_free(descs ? descs : nil, Int32.new(n_descs))
+      nil
     end
 
     def describe
@@ -34,8 +34,8 @@ module Pango
     end
 
     def glyph_extents(glyph, ink_rect, logical_rect)
-      __return_value = LibPango.font_get_glyph_extents(to_unsafe.as(LibPango::Font*), UInt32.new(glyph), ink_rect, logical_rect)
-      __return_value
+      LibPango.font_get_glyph_extents(to_unsafe.as(LibPango::Font*), UInt32.new(glyph), ink_rect, logical_rect)
+      nil
     end
 
     def metrics(language)

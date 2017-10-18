@@ -149,13 +149,13 @@ module Gdk
     end
 
     def position(screen, x, y)
-      __return_value = LibGdk.device_get_position(to_unsafe.as(LibGdk::Device*), screen, x, y)
-      __return_value
+      LibGdk.device_get_position(to_unsafe.as(LibGdk::Device*), screen, x, y)
+      nil
     end
 
     def position_double(screen, x, y)
-      __return_value = LibGdk.device_get_position_double(to_unsafe.as(LibGdk::Device*), screen, x, y)
-      __return_value
+      LibGdk.device_get_position_double(to_unsafe.as(LibGdk::Device*), screen, x, y)
+      nil
     end
 
     def product_id
@@ -204,13 +204,13 @@ module Gdk
     end
 
     def set_axis_use(index, use : Gdk::AxisUse)
-      __return_value = LibGdk.device_set_axis_use(to_unsafe.as(LibGdk::Device*), UInt32.new(index), use)
-      __return_value
+      LibGdk.device_set_axis_use(to_unsafe.as(LibGdk::Device*), UInt32.new(index), use)
+      nil
     end
 
     def set_key(index, keyval, modifiers : Gdk::ModifierType)
-      __return_value = LibGdk.device_set_key(to_unsafe.as(LibGdk::Device*), UInt32.new(index), UInt32.new(keyval), modifiers)
-      __return_value
+      LibGdk.device_set_key(to_unsafe.as(LibGdk::Device*), UInt32.new(index), UInt32.new(keyval), modifiers)
+      nil
     end
 
     def mode=(mode : Gdk::InputMode)
@@ -219,13 +219,13 @@ module Gdk
     end
 
     def ungrab(time)
-      __return_value = LibGdk.device_ungrab(to_unsafe.as(LibGdk::Device*), UInt32.new(time))
-      __return_value
+      LibGdk.device_ungrab(to_unsafe.as(LibGdk::Device*), UInt32.new(time))
+      nil
     end
 
     def warp(screen, x, y)
-      __return_value = LibGdk.device_warp(to_unsafe.as(LibGdk::Device*), screen.to_unsafe.as(LibGdk::Screen*), Int32.new(x), Int32.new(y))
-      __return_value
+      LibGdk.device_warp(to_unsafe.as(LibGdk::Device*), screen.to_unsafe.as(LibGdk::Screen*), Int32.new(x), Int32.new(y))
+      nil
     end
 
     alias ChangedSignal = Device ->

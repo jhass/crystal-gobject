@@ -38,18 +38,18 @@ module Gtk
     end
 
     def join_group(group_source)
-      __return_value = LibGtk.radio_action_join_group(to_unsafe.as(LibGtk::RadioAction*), group_source ? group_source.to_unsafe.as(LibGtk::RadioAction*) : nil)
-      __return_value
+      LibGtk.radio_action_join_group(to_unsafe.as(LibGtk::RadioAction*), group_source ? group_source.to_unsafe.as(LibGtk::RadioAction*) : nil)
+      nil
     end
 
     def current_value=(current_value)
-      __return_value = LibGtk.radio_action_set_current_value(to_unsafe.as(LibGtk::RadioAction*), Int32.new(current_value))
-      __return_value
+      LibGtk.radio_action_set_current_value(to_unsafe.as(LibGtk::RadioAction*), Int32.new(current_value))
+      nil
     end
 
     def group=(group)
-      __return_value = LibGtk.radio_action_set_group(to_unsafe.as(LibGtk::RadioAction*), group ? group : nil)
-      __return_value
+      LibGtk.radio_action_set_group(to_unsafe.as(LibGtk::RadioAction*), group ? group : nil)
+      nil
     end
 
     alias ChangedSignal = RadioAction, Gtk::RadioAction ->

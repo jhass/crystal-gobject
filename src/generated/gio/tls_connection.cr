@@ -108,8 +108,8 @@ module Gio
     end
 
     def handshake_async(io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.tls_connection_handshake_async(to_unsafe.as(LibGio::TlsConnection*), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.tls_connection_handshake_async(to_unsafe.as(LibGio::TlsConnection*), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def handshake_finish(result)
@@ -120,33 +120,33 @@ module Gio
     end
 
     def certificate=(certificate)
-      __return_value = LibGio.tls_connection_set_certificate(to_unsafe.as(LibGio::TlsConnection*), certificate.to_unsafe.as(LibGio::TlsCertificate*))
-      __return_value
+      LibGio.tls_connection_set_certificate(to_unsafe.as(LibGio::TlsConnection*), certificate.to_unsafe.as(LibGio::TlsCertificate*))
+      nil
     end
 
     def database=(database)
-      __return_value = LibGio.tls_connection_set_database(to_unsafe.as(LibGio::TlsConnection*), database.to_unsafe.as(LibGio::TlsDatabase*))
-      __return_value
+      LibGio.tls_connection_set_database(to_unsafe.as(LibGio::TlsConnection*), database.to_unsafe.as(LibGio::TlsDatabase*))
+      nil
     end
 
     def interaction=(interaction)
-      __return_value = LibGio.tls_connection_set_interaction(to_unsafe.as(LibGio::TlsConnection*), interaction ? interaction.to_unsafe.as(LibGio::TlsInteraction*) : nil)
-      __return_value
+      LibGio.tls_connection_set_interaction(to_unsafe.as(LibGio::TlsConnection*), interaction ? interaction.to_unsafe.as(LibGio::TlsInteraction*) : nil)
+      nil
     end
 
     def rehandshake_mode=(mode : Gio::TlsRehandshakeMode)
-      __return_value = LibGio.tls_connection_set_rehandshake_mode(to_unsafe.as(LibGio::TlsConnection*), mode)
-      __return_value
+      LibGio.tls_connection_set_rehandshake_mode(to_unsafe.as(LibGio::TlsConnection*), mode)
+      nil
     end
 
     def require_close_notify=(require_close_notify)
-      __return_value = LibGio.tls_connection_set_require_close_notify(to_unsafe.as(LibGio::TlsConnection*), require_close_notify)
-      __return_value
+      LibGio.tls_connection_set_require_close_notify(to_unsafe.as(LibGio::TlsConnection*), require_close_notify)
+      nil
     end
 
     def use_system_certdb=(use_system_certdb)
-      __return_value = LibGio.tls_connection_set_use_system_certdb(to_unsafe.as(LibGio::TlsConnection*), use_system_certdb)
-      __return_value
+      LibGio.tls_connection_set_use_system_certdb(to_unsafe.as(LibGio::TlsConnection*), use_system_certdb)
+      nil
     end
 
     alias AcceptCertificateSignal = TlsConnection, Gio::TlsCertificate, Gio::TlsCertificateFlags -> Bool

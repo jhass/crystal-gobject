@@ -68,8 +68,8 @@ module Gtk
     end
 
     def add_shortcut(location)
-      __return_value = LibGtk.places_sidebar_add_shortcut(to_unsafe.as(LibGtk::PlacesSidebar*), location.to_unsafe.as(LibGio::File*))
-      __return_value
+      LibGtk.places_sidebar_add_shortcut(to_unsafe.as(LibGtk::PlacesSidebar*), location.to_unsafe.as(LibGio::File*))
+      nil
     end
 
     def local_only
@@ -128,58 +128,58 @@ module Gtk
     end
 
     def remove_shortcut(location)
-      __return_value = LibGtk.places_sidebar_remove_shortcut(to_unsafe.as(LibGtk::PlacesSidebar*), location.to_unsafe.as(LibGio::File*))
-      __return_value
+      LibGtk.places_sidebar_remove_shortcut(to_unsafe.as(LibGtk::PlacesSidebar*), location.to_unsafe.as(LibGio::File*))
+      nil
     end
 
     def set_drop_targets_visible(visible, context)
-      __return_value = LibGtk.places_sidebar_set_drop_targets_visible(to_unsafe.as(LibGtk::PlacesSidebar*), visible, context.to_unsafe.as(LibGdk::DragContext*))
-      __return_value
+      LibGtk.places_sidebar_set_drop_targets_visible(to_unsafe.as(LibGtk::PlacesSidebar*), visible, context.to_unsafe.as(LibGdk::DragContext*))
+      nil
     end
 
     def local_only=(local_only)
-      __return_value = LibGtk.places_sidebar_set_local_only(to_unsafe.as(LibGtk::PlacesSidebar*), local_only)
-      __return_value
+      LibGtk.places_sidebar_set_local_only(to_unsafe.as(LibGtk::PlacesSidebar*), local_only)
+      nil
     end
 
     def location=(location)
-      __return_value = LibGtk.places_sidebar_set_location(to_unsafe.as(LibGtk::PlacesSidebar*), location ? location.to_unsafe.as(LibGio::File*) : nil)
-      __return_value
+      LibGtk.places_sidebar_set_location(to_unsafe.as(LibGtk::PlacesSidebar*), location ? location.to_unsafe.as(LibGio::File*) : nil)
+      nil
     end
 
     def open_flags=(flags : Gtk::PlacesOpenFlags)
-      __return_value = LibGtk.places_sidebar_set_open_flags(to_unsafe.as(LibGtk::PlacesSidebar*), flags)
-      __return_value
+      LibGtk.places_sidebar_set_open_flags(to_unsafe.as(LibGtk::PlacesSidebar*), flags)
+      nil
     end
 
     def show_connect_to_server=(show_connect_to_server)
-      __return_value = LibGtk.places_sidebar_set_show_connect_to_server(to_unsafe.as(LibGtk::PlacesSidebar*), show_connect_to_server)
-      __return_value
+      LibGtk.places_sidebar_set_show_connect_to_server(to_unsafe.as(LibGtk::PlacesSidebar*), show_connect_to_server)
+      nil
     end
 
     def show_desktop=(show_desktop)
-      __return_value = LibGtk.places_sidebar_set_show_desktop(to_unsafe.as(LibGtk::PlacesSidebar*), show_desktop)
-      __return_value
+      LibGtk.places_sidebar_set_show_desktop(to_unsafe.as(LibGtk::PlacesSidebar*), show_desktop)
+      nil
     end
 
     def show_enter_location=(show_enter_location)
-      __return_value = LibGtk.places_sidebar_set_show_enter_location(to_unsafe.as(LibGtk::PlacesSidebar*), show_enter_location)
-      __return_value
+      LibGtk.places_sidebar_set_show_enter_location(to_unsafe.as(LibGtk::PlacesSidebar*), show_enter_location)
+      nil
     end
 
     def show_other_locations=(show_other_locations)
-      __return_value = LibGtk.places_sidebar_set_show_other_locations(to_unsafe.as(LibGtk::PlacesSidebar*), show_other_locations)
-      __return_value
+      LibGtk.places_sidebar_set_show_other_locations(to_unsafe.as(LibGtk::PlacesSidebar*), show_other_locations)
+      nil
     end
 
     def show_recent=(show_recent)
-      __return_value = LibGtk.places_sidebar_set_show_recent(to_unsafe.as(LibGtk::PlacesSidebar*), show_recent)
-      __return_value
+      LibGtk.places_sidebar_set_show_recent(to_unsafe.as(LibGtk::PlacesSidebar*), show_recent)
+      nil
     end
 
     def show_trash=(show_trash)
-      __return_value = LibGtk.places_sidebar_set_show_trash(to_unsafe.as(LibGtk::PlacesSidebar*), show_trash)
-      __return_value
+      LibGtk.places_sidebar_set_show_trash(to_unsafe.as(LibGtk::PlacesSidebar*), show_trash)
+      nil
     end
 
     alias DragActionAskSignal = PlacesSidebar, Int32 -> Int32

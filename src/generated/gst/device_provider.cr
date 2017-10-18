@@ -21,13 +21,13 @@ module Gst
     end
 
     def device_add(device)
-      __return_value = LibGst.device_provider_device_add(to_unsafe.as(LibGst::DeviceProvider*), device.to_unsafe.as(LibGst::Device*))
-      __return_value
+      LibGst.device_provider_device_add(to_unsafe.as(LibGst::DeviceProvider*), device.to_unsafe.as(LibGst::Device*))
+      nil
     end
 
     def device_remove(device)
-      __return_value = LibGst.device_provider_device_remove(to_unsafe.as(LibGst::DeviceProvider*), device.to_unsafe.as(LibGst::Device*))
-      __return_value
+      LibGst.device_provider_device_remove(to_unsafe.as(LibGst::DeviceProvider*), device.to_unsafe.as(LibGst::Device*))
+      nil
     end
 
     def bus
@@ -51,8 +51,8 @@ module Gst
     end
 
     def hide_provider(name)
-      __return_value = LibGst.device_provider_hide_provider(to_unsafe.as(LibGst::DeviceProvider*), name.to_unsafe)
-      __return_value
+      LibGst.device_provider_hide_provider(to_unsafe.as(LibGst::DeviceProvider*), name.to_unsafe)
+      nil
     end
 
     def start
@@ -61,13 +61,13 @@ module Gst
     end
 
     def stop
-      __return_value = LibGst.device_provider_stop(to_unsafe.as(LibGst::DeviceProvider*))
-      __return_value
+      LibGst.device_provider_stop(to_unsafe.as(LibGst::DeviceProvider*))
+      nil
     end
 
     def unhide_provider(name)
-      __return_value = LibGst.device_provider_unhide_provider(to_unsafe.as(LibGst::DeviceProvider*), name.to_unsafe)
-      __return_value
+      LibGst.device_provider_unhide_provider(to_unsafe.as(LibGst::DeviceProvider*), name.to_unsafe)
+      nil
     end
 
     alias ProviderHiddenSignal = DeviceProvider, String ->

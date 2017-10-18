@@ -16,8 +16,8 @@ module Pango
     end
 
     def append(font)
-      __return_value = LibPango.fontset_simple_append(to_unsafe.as(LibPango::FontsetSimple*), font.to_unsafe.as(LibPango::Font*))
-      __return_value
+      LibPango.fontset_simple_append(to_unsafe.as(LibPango::FontsetSimple*), font.to_unsafe.as(LibPango::Font*))
+      nil
     end
 
     def size

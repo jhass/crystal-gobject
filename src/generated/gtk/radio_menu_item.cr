@@ -51,13 +51,13 @@ module Gtk
     end
 
     def join_group(group_source)
-      __return_value = LibGtk.radio_menu_item_join_group(to_unsafe.as(LibGtk::RadioMenuItem*), group_source ? group_source.to_unsafe.as(LibGtk::RadioMenuItem*) : nil)
-      __return_value
+      LibGtk.radio_menu_item_join_group(to_unsafe.as(LibGtk::RadioMenuItem*), group_source ? group_source.to_unsafe.as(LibGtk::RadioMenuItem*) : nil)
+      nil
     end
 
     def group=(group)
-      __return_value = LibGtk.radio_menu_item_set_group(to_unsafe.as(LibGtk::RadioMenuItem*), group ? group : nil)
-      __return_value
+      LibGtk.radio_menu_item_set_group(to_unsafe.as(LibGtk::RadioMenuItem*), group ? group : nil)
+      nil
     end
 
     alias GroupChangedSignal = RadioMenuItem ->

@@ -48,8 +48,8 @@ module Gtk
     end
 
     def attach_buffers
-      __return_value = LibGtk.g_l_area_attach_buffers(to_unsafe.as(LibGtk::GLArea*))
-      __return_value
+      LibGtk.g_l_area_attach_buffers(to_unsafe.as(LibGtk::GLArea*))
+      nil
     end
 
     def auto_render
@@ -83,8 +83,8 @@ module Gtk
     end
 
     def required_version(major, minor)
-      __return_value = LibGtk.g_l_area_get_required_version(to_unsafe.as(LibGtk::GLArea*), major, minor)
-      __return_value
+      LibGtk.g_l_area_get_required_version(to_unsafe.as(LibGtk::GLArea*), major, minor)
+      nil
     end
 
     def use_es
@@ -93,48 +93,48 @@ module Gtk
     end
 
     def make_current
-      __return_value = LibGtk.g_l_area_make_current(to_unsafe.as(LibGtk::GLArea*))
-      __return_value
+      LibGtk.g_l_area_make_current(to_unsafe.as(LibGtk::GLArea*))
+      nil
     end
 
     def queue_render
-      __return_value = LibGtk.g_l_area_queue_render(to_unsafe.as(LibGtk::GLArea*))
-      __return_value
+      LibGtk.g_l_area_queue_render(to_unsafe.as(LibGtk::GLArea*))
+      nil
     end
 
     def auto_render=(auto_render)
-      __return_value = LibGtk.g_l_area_set_auto_render(to_unsafe.as(LibGtk::GLArea*), auto_render)
-      __return_value
+      LibGtk.g_l_area_set_auto_render(to_unsafe.as(LibGtk::GLArea*), auto_render)
+      nil
     end
 
     def error=(error)
-      __return_value = LibGtk.g_l_area_set_error(to_unsafe.as(LibGtk::GLArea*), error ? error : nil)
-      __return_value
+      LibGtk.g_l_area_set_error(to_unsafe.as(LibGtk::GLArea*), error ? error : nil)
+      nil
     end
 
     def has_alpha=(has_alpha)
-      __return_value = LibGtk.g_l_area_set_has_alpha(to_unsafe.as(LibGtk::GLArea*), has_alpha)
-      __return_value
+      LibGtk.g_l_area_set_has_alpha(to_unsafe.as(LibGtk::GLArea*), has_alpha)
+      nil
     end
 
     def has_depth_buffer=(has_depth_buffer)
-      __return_value = LibGtk.g_l_area_set_has_depth_buffer(to_unsafe.as(LibGtk::GLArea*), has_depth_buffer)
-      __return_value
+      LibGtk.g_l_area_set_has_depth_buffer(to_unsafe.as(LibGtk::GLArea*), has_depth_buffer)
+      nil
     end
 
     def has_stencil_buffer=(has_stencil_buffer)
-      __return_value = LibGtk.g_l_area_set_has_stencil_buffer(to_unsafe.as(LibGtk::GLArea*), has_stencil_buffer)
-      __return_value
+      LibGtk.g_l_area_set_has_stencil_buffer(to_unsafe.as(LibGtk::GLArea*), has_stencil_buffer)
+      nil
     end
 
     def set_required_version(major, minor)
-      __return_value = LibGtk.g_l_area_set_required_version(to_unsafe.as(LibGtk::GLArea*), Int32.new(major), Int32.new(minor))
-      __return_value
+      LibGtk.g_l_area_set_required_version(to_unsafe.as(LibGtk::GLArea*), Int32.new(major), Int32.new(minor))
+      nil
     end
 
     def use_es=(use_es)
-      __return_value = LibGtk.g_l_area_set_use_es(to_unsafe.as(LibGtk::GLArea*), use_es)
-      __return_value
+      LibGtk.g_l_area_set_use_es(to_unsafe.as(LibGtk::GLArea*), use_es)
+      nil
     end
 
     alias CreateContextSignal = GLArea -> Gdk::GLContext

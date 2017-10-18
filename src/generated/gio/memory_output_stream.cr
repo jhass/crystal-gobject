@@ -33,8 +33,8 @@ module Gio
     end
 
     def data
-      __return_value = LibGio.memory_output_stream_get_data(to_unsafe.as(LibGio::MemoryOutputStream*))
-      __return_value if __return_value
+      LibGio.memory_output_stream_get_data(to_unsafe.as(LibGio::MemoryOutputStream*))
+      nil
     end
 
     def data_size
@@ -53,8 +53,8 @@ module Gio
     end
 
     def steal_data
-      __return_value = LibGio.memory_output_stream_steal_data(to_unsafe.as(LibGio::MemoryOutputStream*))
-      __return_value if __return_value
+      LibGio.memory_output_stream_steal_data(to_unsafe.as(LibGio::MemoryOutputStream*))
+      nil
     end
 
   end

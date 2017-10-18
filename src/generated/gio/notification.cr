@@ -14,48 +14,48 @@ module Gio
     end
 
     def add_button(label, detailed_action)
-      __return_value = LibGio.notification_add_button(to_unsafe.as(LibGio::Notification*), label.to_unsafe, detailed_action.to_unsafe)
-      __return_value
+      LibGio.notification_add_button(to_unsafe.as(LibGio::Notification*), label.to_unsafe, detailed_action.to_unsafe)
+      nil
     end
 
     def add_button_with_target(label, action, target)
-      __return_value = LibGio.notification_add_button_with_target(to_unsafe.as(LibGio::Notification*), label.to_unsafe, action.to_unsafe, target ? target.to_unsafe.as(LibGLib::Variant*) : nil)
-      __return_value
+      LibGio.notification_add_button_with_target(to_unsafe.as(LibGio::Notification*), label.to_unsafe, action.to_unsafe, target ? target.to_unsafe.as(LibGLib::Variant*) : nil)
+      nil
     end
 
     def body=(body)
-      __return_value = LibGio.notification_set_body(to_unsafe.as(LibGio::Notification*), body ? body.to_unsafe : nil)
-      __return_value
+      LibGio.notification_set_body(to_unsafe.as(LibGio::Notification*), body ? body.to_unsafe : nil)
+      nil
     end
 
     def default_action=(detailed_action)
-      __return_value = LibGio.notification_set_default_action(to_unsafe.as(LibGio::Notification*), detailed_action.to_unsafe)
-      __return_value
+      LibGio.notification_set_default_action(to_unsafe.as(LibGio::Notification*), detailed_action.to_unsafe)
+      nil
     end
 
     def set_default_action_and_target(action, target)
-      __return_value = LibGio.notification_set_default_action_and_target(to_unsafe.as(LibGio::Notification*), action.to_unsafe, target ? target.to_unsafe.as(LibGLib::Variant*) : nil)
-      __return_value
+      LibGio.notification_set_default_action_and_target(to_unsafe.as(LibGio::Notification*), action.to_unsafe, target ? target.to_unsafe.as(LibGLib::Variant*) : nil)
+      nil
     end
 
     def icon=(icon)
-      __return_value = LibGio.notification_set_icon(to_unsafe.as(LibGio::Notification*), icon.to_unsafe.as(LibGio::Icon*))
-      __return_value
+      LibGio.notification_set_icon(to_unsafe.as(LibGio::Notification*), icon.to_unsafe.as(LibGio::Icon*))
+      nil
     end
 
     def priority=(priority : Gio::NotificationPriority)
-      __return_value = LibGio.notification_set_priority(to_unsafe.as(LibGio::Notification*), priority)
-      __return_value
+      LibGio.notification_set_priority(to_unsafe.as(LibGio::Notification*), priority)
+      nil
     end
 
     def title=(title)
-      __return_value = LibGio.notification_set_title(to_unsafe.as(LibGio::Notification*), title.to_unsafe)
-      __return_value
+      LibGio.notification_set_title(to_unsafe.as(LibGio::Notification*), title.to_unsafe)
+      nil
     end
 
     def urgent=(urgent)
-      __return_value = LibGio.notification_set_urgent(to_unsafe.as(LibGio::Notification*), urgent)
-      __return_value
+      LibGio.notification_set_urgent(to_unsafe.as(LibGio::Notification*), urgent)
+      nil
     end
 
   end

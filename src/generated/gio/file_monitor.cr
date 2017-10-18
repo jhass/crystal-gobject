@@ -24,8 +24,8 @@ module Gio
     end
 
     def emit_event(child, other_file, event_type : Gio::FileMonitorEvent)
-      __return_value = LibGio.file_monitor_emit_event(to_unsafe.as(LibGio::FileMonitor*), child.to_unsafe.as(LibGio::File*), other_file.to_unsafe.as(LibGio::File*), event_type)
-      __return_value
+      LibGio.file_monitor_emit_event(to_unsafe.as(LibGio::FileMonitor*), child.to_unsafe.as(LibGio::File*), other_file.to_unsafe.as(LibGio::File*), event_type)
+      nil
     end
 
     def cancelled?
@@ -34,8 +34,8 @@ module Gio
     end
 
     def rate_limit=(limit_msecs)
-      __return_value = LibGio.file_monitor_set_rate_limit(to_unsafe.as(LibGio::FileMonitor*), Int32.new(limit_msecs))
-      __return_value
+      LibGio.file_monitor_set_rate_limit(to_unsafe.as(LibGio::FileMonitor*), Int32.new(limit_msecs))
+      nil
     end
 
     alias ChangedSignal = FileMonitor, Gio::File, Gio::File, Gio::FileMonitorEvent ->

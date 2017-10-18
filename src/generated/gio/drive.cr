@@ -26,8 +26,8 @@ module Gio
     end
 
     def eject(flags : Gio::MountUnmountFlags, cancellable, callback, user_data)
-      __return_value = LibGio.drive_eject(to_unsafe.as(LibGio::Drive*), flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.drive_eject(to_unsafe.as(LibGio::Drive*), flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def eject_finish(result)
@@ -38,8 +38,8 @@ module Gio
     end
 
     def eject_with_operation(flags : Gio::MountUnmountFlags, mount_operation, cancellable, callback, user_data)
-      __return_value = LibGio.drive_eject_with_operation(to_unsafe.as(LibGio::Drive*), flags, mount_operation ? mount_operation.to_unsafe.as(LibGio::MountOperation*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.drive_eject_with_operation(to_unsafe.as(LibGio::Drive*), flags, mount_operation ? mount_operation.to_unsafe.as(LibGio::MountOperation*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def eject_with_operation_finish(result)
@@ -115,8 +115,8 @@ module Gio
     end
 
     def poll_for_media(cancellable, callback, user_data)
-      __return_value = LibGio.drive_poll_for_media(to_unsafe.as(LibGio::Drive*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.drive_poll_for_media(to_unsafe.as(LibGio::Drive*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def poll_for_media_finish(result)
@@ -127,8 +127,8 @@ module Gio
     end
 
     def start(flags : Gio::DriveStartFlags, mount_operation, cancellable, callback, user_data)
-      __return_value = LibGio.drive_start(to_unsafe.as(LibGio::Drive*), flags, mount_operation ? mount_operation.to_unsafe.as(LibGio::MountOperation*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.drive_start(to_unsafe.as(LibGio::Drive*), flags, mount_operation ? mount_operation.to_unsafe.as(LibGio::MountOperation*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def start_finish(result)
@@ -139,8 +139,8 @@ module Gio
     end
 
     def stop(flags : Gio::MountUnmountFlags, mount_operation, cancellable, callback, user_data)
-      __return_value = LibGio.drive_stop(to_unsafe.as(LibGio::Drive*), flags, mount_operation ? mount_operation.to_unsafe.as(LibGio::MountOperation*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.drive_stop(to_unsafe.as(LibGio::Drive*), flags, mount_operation ? mount_operation.to_unsafe.as(LibGio::MountOperation*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def stop_finish(result)

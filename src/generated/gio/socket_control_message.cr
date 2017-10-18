@@ -29,8 +29,8 @@ module Gio
     end
 
     def serialize(data)
-      __return_value = LibGio.socket_control_message_serialize(to_unsafe.as(LibGio::SocketControlMessage*), data)
-      __return_value
+      LibGio.socket_control_message_serialize(to_unsafe.as(LibGio::SocketControlMessage*), data)
+      nil
     end
 
   end

@@ -66,18 +66,18 @@ module Gtk
     end
 
     def adjustment=(adjustment)
-      __return_value = LibGtk.scale_button_set_adjustment(to_unsafe.as(LibGtk::ScaleButton*), adjustment.to_unsafe.as(LibGtk::Adjustment*))
-      __return_value
+      LibGtk.scale_button_set_adjustment(to_unsafe.as(LibGtk::ScaleButton*), adjustment.to_unsafe.as(LibGtk::Adjustment*))
+      nil
     end
 
     def icons=(icons)
-      __return_value = LibGtk.scale_button_set_icons(to_unsafe.as(LibGtk::ScaleButton*), icons)
-      __return_value
+      LibGtk.scale_button_set_icons(to_unsafe.as(LibGtk::ScaleButton*), icons)
+      nil
     end
 
     def value=(value)
-      __return_value = LibGtk.scale_button_set_value(to_unsafe.as(LibGtk::ScaleButton*), Float64.new(value))
-      __return_value
+      LibGtk.scale_button_set_value(to_unsafe.as(LibGtk::ScaleButton*), Float64.new(value))
+      nil
     end
 
     alias PopdownSignal = ScaleButton ->

@@ -29,8 +29,8 @@ module Gio
     end
 
     def items_changed(position, removed, added)
-      __return_value = LibGio.menu_model_items_changed(to_unsafe.as(LibGio::MenuModel*), Int32.new(position), Int32.new(removed), Int32.new(added))
-      __return_value
+      LibGio.menu_model_items_changed(to_unsafe.as(LibGio::MenuModel*), Int32.new(position), Int32.new(removed), Int32.new(added))
+      nil
     end
 
     def iterate_item_attributes(item_index)

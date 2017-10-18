@@ -30,8 +30,8 @@ module GLib
     end
 
     def free
-      __return_value = LibGLib.error_free(to_unsafe.as(LibGLib::Error*))
-      __return_value
+      LibGLib.error_free(to_unsafe.as(LibGLib::Error*))
+      nil
     end
 
     def matches(domain, code)

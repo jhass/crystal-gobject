@@ -55,8 +55,8 @@ module Gtk
     end
 
     def permission=(permission)
-      __return_value = LibGtk.lock_button_set_permission(to_unsafe.as(LibGtk::LockButton*), permission ? permission.to_unsafe.as(LibGio::Permission*) : nil)
-      __return_value
+      LibGtk.lock_button_set_permission(to_unsafe.as(LibGtk::LockButton*), permission ? permission.to_unsafe.as(LibGio::Permission*) : nil)
+      nil
     end
 
   end

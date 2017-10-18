@@ -16,8 +16,8 @@ module Gio
     end
 
     def fini
-      __return_value = LibGio.static_resource_fini(to_unsafe.as(LibGio::StaticResource*))
-      __return_value
+      LibGio.static_resource_fini(to_unsafe.as(LibGio::StaticResource*))
+      nil
     end
 
     def resource
@@ -26,8 +26,8 @@ module Gio
     end
 
     def init
-      __return_value = LibGio.static_resource_init(to_unsafe.as(LibGio::StaticResource*))
-      __return_value
+      LibGio.static_resource_init(to_unsafe.as(LibGio::StaticResource*))
+      nil
     end
 
     def data

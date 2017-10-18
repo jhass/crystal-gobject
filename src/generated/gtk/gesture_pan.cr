@@ -26,8 +26,8 @@ module Gtk
     end
 
     def orientation=(orientation : Gtk::Orientation)
-      __return_value = LibGtk.gesture_pan_set_orientation(to_unsafe.as(LibGtk::GesturePan*), orientation)
-      __return_value
+      LibGtk.gesture_pan_set_orientation(to_unsafe.as(LibGtk::GesturePan*), orientation)
+      nil
     end
 
     alias PanSignal = GesturePan, Gtk::PanDirection, Float64 ->

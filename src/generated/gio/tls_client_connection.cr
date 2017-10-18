@@ -8,8 +8,8 @@ module Gio
     end
 
     def copy_session_state(source)
-      __return_value = LibGio.tls_client_connection_copy_session_state(to_unsafe.as(LibGio::TlsClientConnection*), source.to_unsafe.as(LibGio::TlsClientConnection*))
-      __return_value
+      LibGio.tls_client_connection_copy_session_state(to_unsafe.as(LibGio::TlsClientConnection*), source.to_unsafe.as(LibGio::TlsClientConnection*))
+      nil
     end
 
     def accepted_cas
@@ -33,18 +33,18 @@ module Gio
     end
 
     def server_identity=(identity)
-      __return_value = LibGio.tls_client_connection_set_server_identity(to_unsafe.as(LibGio::TlsClientConnection*), identity.to_unsafe.as(LibGio::SocketConnectable*))
-      __return_value
+      LibGio.tls_client_connection_set_server_identity(to_unsafe.as(LibGio::TlsClientConnection*), identity.to_unsafe.as(LibGio::SocketConnectable*))
+      nil
     end
 
     def use_ssl3=(use_ssl3)
-      __return_value = LibGio.tls_client_connection_set_use_ssl3(to_unsafe.as(LibGio::TlsClientConnection*), use_ssl3)
-      __return_value
+      LibGio.tls_client_connection_set_use_ssl3(to_unsafe.as(LibGio::TlsClientConnection*), use_ssl3)
+      nil
     end
 
     def validation_flags=(flags : Gio::TlsCertificateFlags)
-      __return_value = LibGio.tls_client_connection_set_validation_flags(to_unsafe.as(LibGio::TlsClientConnection*), flags)
-      __return_value
+      LibGio.tls_client_connection_set_validation_flags(to_unsafe.as(LibGio::TlsClientConnection*), flags)
+      nil
     end
 
   end

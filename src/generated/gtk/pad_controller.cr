@@ -26,13 +26,13 @@ module Gtk
     end
 
     def set_action(type : Gtk::PadActionType, index, mode, label, action_name)
-      __return_value = LibGtk.pad_controller_set_action(to_unsafe.as(LibGtk::PadController*), type, Int32.new(index), Int32.new(mode), label.to_unsafe, action_name.to_unsafe)
-      __return_value
+      LibGtk.pad_controller_set_action(to_unsafe.as(LibGtk::PadController*), type, Int32.new(index), Int32.new(mode), label.to_unsafe, action_name.to_unsafe)
+      nil
     end
 
     def set_action_entries(entries, n_entries)
-      __return_value = LibGtk.pad_controller_set_action_entries(to_unsafe.as(LibGtk::PadController*), entries, Int32.new(n_entries))
-      __return_value
+      LibGtk.pad_controller_set_action_entries(to_unsafe.as(LibGtk::PadController*), entries, Int32.new(n_entries))
+      nil
     end
 
   end

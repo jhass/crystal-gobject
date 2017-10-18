@@ -6,8 +6,8 @@ module Gtk
     end
 
     def foreach(func, user_data)
-      __return_value = LibGtk.tree_model_foreach(to_unsafe.as(LibGtk::TreeModel*), func, user_data ? user_data : nil)
-      __return_value
+      LibGtk.tree_model_foreach(to_unsafe.as(LibGtk::TreeModel*), func, user_data ? user_data : nil)
+      nil
     end
 
     def column_type(index)
@@ -51,8 +51,8 @@ module Gtk
     end
 
     def value(iter, column, value)
-      __return_value = LibGtk.tree_model_get_value(to_unsafe.as(LibGtk::TreeModel*), iter.to_unsafe.as(LibGtk::TreeIter*), Int32.new(column), value)
-      __return_value
+      LibGtk.tree_model_get_value(to_unsafe.as(LibGtk::TreeModel*), iter.to_unsafe.as(LibGtk::TreeIter*), Int32.new(column), value)
+      nil
     end
 
     def iter_children(iter, parent)
@@ -91,33 +91,33 @@ module Gtk
     end
 
     def ref_node(iter)
-      __return_value = LibGtk.tree_model_ref_node(to_unsafe.as(LibGtk::TreeModel*), iter.to_unsafe.as(LibGtk::TreeIter*))
-      __return_value
+      LibGtk.tree_model_ref_node(to_unsafe.as(LibGtk::TreeModel*), iter.to_unsafe.as(LibGtk::TreeIter*))
+      nil
     end
 
     def row_changed(path, iter)
-      __return_value = LibGtk.tree_model_row_changed(to_unsafe.as(LibGtk::TreeModel*), path.to_unsafe.as(LibGtk::TreePath*), iter.to_unsafe.as(LibGtk::TreeIter*))
-      __return_value
+      LibGtk.tree_model_row_changed(to_unsafe.as(LibGtk::TreeModel*), path.to_unsafe.as(LibGtk::TreePath*), iter.to_unsafe.as(LibGtk::TreeIter*))
+      nil
     end
 
     def row_deleted(path)
-      __return_value = LibGtk.tree_model_row_deleted(to_unsafe.as(LibGtk::TreeModel*), path.to_unsafe.as(LibGtk::TreePath*))
-      __return_value
+      LibGtk.tree_model_row_deleted(to_unsafe.as(LibGtk::TreeModel*), path.to_unsafe.as(LibGtk::TreePath*))
+      nil
     end
 
     def row_has_child_toggled(path, iter)
-      __return_value = LibGtk.tree_model_row_has_child_toggled(to_unsafe.as(LibGtk::TreeModel*), path.to_unsafe.as(LibGtk::TreePath*), iter.to_unsafe.as(LibGtk::TreeIter*))
-      __return_value
+      LibGtk.tree_model_row_has_child_toggled(to_unsafe.as(LibGtk::TreeModel*), path.to_unsafe.as(LibGtk::TreePath*), iter.to_unsafe.as(LibGtk::TreeIter*))
+      nil
     end
 
     def row_inserted(path, iter)
-      __return_value = LibGtk.tree_model_row_inserted(to_unsafe.as(LibGtk::TreeModel*), path.to_unsafe.as(LibGtk::TreePath*), iter.to_unsafe.as(LibGtk::TreeIter*))
-      __return_value
+      LibGtk.tree_model_row_inserted(to_unsafe.as(LibGtk::TreeModel*), path.to_unsafe.as(LibGtk::TreePath*), iter.to_unsafe.as(LibGtk::TreeIter*))
+      nil
     end
 
     def rows_reordered(path, iter, new_order, length)
-      __return_value = LibGtk.tree_model_rows_reordered(to_unsafe.as(LibGtk::TreeModel*), path.to_unsafe.as(LibGtk::TreePath*), iter ? iter.to_unsafe.as(LibGtk::TreeIter*) : nil, new_order, Int32.new(length))
-      __return_value
+      LibGtk.tree_model_rows_reordered(to_unsafe.as(LibGtk::TreeModel*), path.to_unsafe.as(LibGtk::TreePath*), iter ? iter.to_unsafe.as(LibGtk::TreeIter*) : nil, new_order, Int32.new(length))
+      nil
     end
 
     def sort_new_with_model
@@ -126,8 +126,8 @@ module Gtk
     end
 
     def unref_node(iter)
-      __return_value = LibGtk.tree_model_unref_node(to_unsafe.as(LibGtk::TreeModel*), iter.to_unsafe.as(LibGtk::TreeIter*))
-      __return_value
+      LibGtk.tree_model_unref_node(to_unsafe.as(LibGtk::TreeModel*), iter.to_unsafe.as(LibGtk::TreeIter*))
+      nil
     end
 
     alias RowChangedSignal = TreeModel, Gtk::TreePath, Gtk::TreeIter ->

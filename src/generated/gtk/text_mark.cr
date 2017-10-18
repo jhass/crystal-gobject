@@ -40,7 +40,7 @@ module Gtk
 
     def name
       __return_value = LibGtk.text_mark_get_name(to_unsafe.as(LibGtk::TextMark*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def visible
@@ -49,8 +49,8 @@ module Gtk
     end
 
     def visible=(setting)
-      __return_value = LibGtk.text_mark_set_visible(to_unsafe.as(LibGtk::TextMark*), setting)
-      __return_value
+      LibGtk.text_mark_set_visible(to_unsafe.as(LibGtk::TextMark*), setting)
+      nil
     end
 
   end

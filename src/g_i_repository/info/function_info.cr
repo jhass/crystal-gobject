@@ -50,7 +50,9 @@ module GIRepository
 
         io << "\n#{indent}  __error = Pointer(LibGLib::Error).null" if throws?
 
-        io << "\n#{indent}  __return_value = #{libname}.#{prefix}#{name}"
+        io << "\n#{indent}  "
+        io << "__return_value = " unless skip_return?
+        io << "#{libname}.#{prefix}#{name}"
 
         lib_args = args.map(&.for_wrapper_pass(libname)).compact.join(", ")
         io << "(#{lib_args})" unless lib_args.empty?
@@ -62,7 +64,7 @@ module GIRepository
           io << " if __return_value" if may_return_null?
           io << '\n'
         else
-          io << "\n#{indent} nil\n"
+          io << "\n#{indent}  nil\n"
         end
 
         io << "#{indent}end\n"

@@ -18,8 +18,8 @@ module Gio
     end
 
     def lookup_async(uri, cancellable, callback, user_data)
-      __return_value = LibGio.proxy_resolver_lookup_async(to_unsafe.as(LibGio::ProxyResolver*), uri.to_unsafe, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.proxy_resolver_lookup_async(to_unsafe.as(LibGio::ProxyResolver*), uri.to_unsafe, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def lookup_finish(result)

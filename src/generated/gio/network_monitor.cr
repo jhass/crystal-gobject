@@ -13,8 +13,8 @@ module Gio
     end
 
     def can_reach_async(connectable, cancellable, callback, user_data)
-      __return_value = LibGio.network_monitor_can_reach_async(to_unsafe.as(LibGio::NetworkMonitor*), connectable.to_unsafe.as(LibGio::SocketConnectable*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.network_monitor_can_reach_async(to_unsafe.as(LibGio::NetworkMonitor*), connectable.to_unsafe.as(LibGio::SocketConnectable*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def can_reach_finish(result)

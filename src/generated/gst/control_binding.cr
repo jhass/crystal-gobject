@@ -36,8 +36,8 @@ module Gst
     end
 
     def disabled=(disabled)
-      __return_value = LibGst.control_binding_set_disabled(to_unsafe.as(LibGst::ControlBinding*), disabled)
-      __return_value
+      LibGst.control_binding_set_disabled(to_unsafe.as(LibGst::ControlBinding*), disabled)
+      nil
     end
 
     def sync_values(object, timestamp, last_sync)

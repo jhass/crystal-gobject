@@ -16,8 +16,8 @@ module GObject
     end
 
     def private(private_type)
-      __return_value = LibGObject.type_instance_get_private(to_unsafe.as(LibGObject::TypeInstance*), UInt64.new(private_type))
-      __return_value if __return_value
+      LibGObject.type_instance_get_private(to_unsafe.as(LibGObject::TypeInstance*), UInt64.new(private_type))
+      nil
     end
 
     def g_class

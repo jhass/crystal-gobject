@@ -74,38 +74,38 @@ module Gio
     end
 
     def reply(result : Gio::MountOperationResult)
-      __return_value = LibGio.mount_operation_reply(to_unsafe.as(LibGio::MountOperation*), result)
-      __return_value
+      LibGio.mount_operation_reply(to_unsafe.as(LibGio::MountOperation*), result)
+      nil
     end
 
     def anonymous=(anonymous)
-      __return_value = LibGio.mount_operation_set_anonymous(to_unsafe.as(LibGio::MountOperation*), anonymous)
-      __return_value
+      LibGio.mount_operation_set_anonymous(to_unsafe.as(LibGio::MountOperation*), anonymous)
+      nil
     end
 
     def choice=(choice)
-      __return_value = LibGio.mount_operation_set_choice(to_unsafe.as(LibGio::MountOperation*), Int32.new(choice))
-      __return_value
+      LibGio.mount_operation_set_choice(to_unsafe.as(LibGio::MountOperation*), Int32.new(choice))
+      nil
     end
 
     def domain=(domain)
-      __return_value = LibGio.mount_operation_set_domain(to_unsafe.as(LibGio::MountOperation*), domain.to_unsafe)
-      __return_value
+      LibGio.mount_operation_set_domain(to_unsafe.as(LibGio::MountOperation*), domain.to_unsafe)
+      nil
     end
 
     def password=(password)
-      __return_value = LibGio.mount_operation_set_password(to_unsafe.as(LibGio::MountOperation*), password.to_unsafe)
-      __return_value
+      LibGio.mount_operation_set_password(to_unsafe.as(LibGio::MountOperation*), password.to_unsafe)
+      nil
     end
 
     def password_save=(save : Gio::PasswordSave)
-      __return_value = LibGio.mount_operation_set_password_save(to_unsafe.as(LibGio::MountOperation*), save)
-      __return_value
+      LibGio.mount_operation_set_password_save(to_unsafe.as(LibGio::MountOperation*), save)
+      nil
     end
 
     def username=(username)
-      __return_value = LibGio.mount_operation_set_username(to_unsafe.as(LibGio::MountOperation*), username.to_unsafe)
-      __return_value
+      LibGio.mount_operation_set_username(to_unsafe.as(LibGio::MountOperation*), username.to_unsafe)
+      nil
     end
 
     alias AbortedSignal = MountOperation ->

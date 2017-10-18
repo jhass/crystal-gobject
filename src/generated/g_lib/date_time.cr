@@ -186,8 +186,8 @@ module GLib
     end
 
     def ymd(year, month, day)
-      __return_value = LibGLib.date_time_get_ymd(to_unsafe.as(LibGLib::DateTime*), year, month, day)
-      __return_value
+      LibGLib.date_time_get_ymd(to_unsafe.as(LibGLib::DateTime*), year, month, day)
+      nil
     end
 
     def daylight_savings?
@@ -226,8 +226,8 @@ module GLib
     end
 
     def unref
-      __return_value = LibGLib.date_time_unref(to_unsafe.as(LibGLib::DateTime*))
-      __return_value
+      LibGLib.date_time_unref(to_unsafe.as(LibGLib::DateTime*))
+      nil
     end
 
     def self.compare(dt1, dt2)

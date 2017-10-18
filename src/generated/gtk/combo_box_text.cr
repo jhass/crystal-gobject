@@ -25,13 +25,13 @@ module Gtk
     end
 
     def append(id, text)
-      __return_value = LibGtk.combo_box_text_append(to_unsafe.as(LibGtk::ComboBoxText*), id ? id.to_unsafe : nil, text.to_unsafe)
-      __return_value
+      LibGtk.combo_box_text_append(to_unsafe.as(LibGtk::ComboBoxText*), id ? id.to_unsafe : nil, text.to_unsafe)
+      nil
     end
 
     def append_text(text)
-      __return_value = LibGtk.combo_box_text_append_text(to_unsafe.as(LibGtk::ComboBoxText*), text.to_unsafe)
-      __return_value
+      LibGtk.combo_box_text_append_text(to_unsafe.as(LibGtk::ComboBoxText*), text.to_unsafe)
+      nil
     end
 
     def active_text
@@ -40,33 +40,33 @@ module Gtk
     end
 
     def insert(position, id, text)
-      __return_value = LibGtk.combo_box_text_insert(to_unsafe.as(LibGtk::ComboBoxText*), Int32.new(position), id ? id.to_unsafe : nil, text.to_unsafe)
-      __return_value
+      LibGtk.combo_box_text_insert(to_unsafe.as(LibGtk::ComboBoxText*), Int32.new(position), id ? id.to_unsafe : nil, text.to_unsafe)
+      nil
     end
 
     def insert_text(position, text)
-      __return_value = LibGtk.combo_box_text_insert_text(to_unsafe.as(LibGtk::ComboBoxText*), Int32.new(position), text.to_unsafe)
-      __return_value
+      LibGtk.combo_box_text_insert_text(to_unsafe.as(LibGtk::ComboBoxText*), Int32.new(position), text.to_unsafe)
+      nil
     end
 
     def prepend(id, text)
-      __return_value = LibGtk.combo_box_text_prepend(to_unsafe.as(LibGtk::ComboBoxText*), id ? id.to_unsafe : nil, text.to_unsafe)
-      __return_value
+      LibGtk.combo_box_text_prepend(to_unsafe.as(LibGtk::ComboBoxText*), id ? id.to_unsafe : nil, text.to_unsafe)
+      nil
     end
 
     def prepend_text(text)
-      __return_value = LibGtk.combo_box_text_prepend_text(to_unsafe.as(LibGtk::ComboBoxText*), text.to_unsafe)
-      __return_value
+      LibGtk.combo_box_text_prepend_text(to_unsafe.as(LibGtk::ComboBoxText*), text.to_unsafe)
+      nil
     end
 
     def remove(position)
-      __return_value = LibGtk.combo_box_text_remove(to_unsafe.as(LibGtk::ComboBoxText*), Int32.new(position))
-      __return_value
+      LibGtk.combo_box_text_remove(to_unsafe.as(LibGtk::ComboBoxText*), Int32.new(position))
+      nil
     end
 
     def remove_all
-      __return_value = LibGtk.combo_box_text_remove_all(to_unsafe.as(LibGtk::ComboBoxText*))
-      __return_value
+      LibGtk.combo_box_text_remove_all(to_unsafe.as(LibGtk::ComboBoxText*))
+      nil
     end
 
   end

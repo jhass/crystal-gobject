@@ -59,8 +59,8 @@ module Gst
     end
 
     def resize(offset, size)
-      __return_value = LibGst.memory_resize(to_unsafe.as(LibGst::Memory*), Int64.new(offset), UInt64.new(size))
-      __return_value
+      LibGst.memory_resize(to_unsafe.as(LibGst::Memory*), Int64.new(offset), UInt64.new(size))
+      nil
     end
 
     def share(offset, size)
@@ -69,8 +69,8 @@ module Gst
     end
 
     def unmap(info)
-      __return_value = LibGst.memory_unmap(to_unsafe.as(LibGst::Memory*), info.to_unsafe.as(LibGst::MapInfo*))
-      __return_value
+      LibGst.memory_unmap(to_unsafe.as(LibGst::Memory*), info.to_unsafe.as(LibGst::MapInfo*))
+      nil
     end
 
     def mini_object

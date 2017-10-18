@@ -59,13 +59,13 @@ module Gtk
     end
 
     def image=(image)
-      __return_value = LibGtk.message_dialog_set_image(to_unsafe.as(LibGtk::MessageDialog*), image.to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      LibGtk.message_dialog_set_image(to_unsafe.as(LibGtk::MessageDialog*), image.to_unsafe.as(LibGtk::Widget*))
+      nil
     end
 
     def markup=(str)
-      __return_value = LibGtk.message_dialog_set_markup(to_unsafe.as(LibGtk::MessageDialog*), str.to_unsafe)
-      __return_value
+      LibGtk.message_dialog_set_markup(to_unsafe.as(LibGtk::MessageDialog*), str.to_unsafe)
+      nil
     end
 
   end

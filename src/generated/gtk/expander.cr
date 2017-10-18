@@ -53,7 +53,7 @@ module Gtk
     end
 
     def self.new(label) : self
-      __return_value = LibGtk.expander_new(label.to_unsafe)
+      __return_value = LibGtk.expander_new(label ? label.to_unsafe : nil)
       cast Gtk::Widget.new(__return_value)
     end
 
@@ -69,7 +69,7 @@ module Gtk
 
     def label
       __return_value = LibGtk.expander_get_label(to_unsafe.as(LibGtk::Expander*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def label_fill
@@ -103,43 +103,43 @@ module Gtk
     end
 
     def expanded=(expanded)
-      __return_value = LibGtk.expander_set_expanded(to_unsafe.as(LibGtk::Expander*), expanded)
-      __return_value
+      LibGtk.expander_set_expanded(to_unsafe.as(LibGtk::Expander*), expanded)
+      nil
     end
 
     def label=(label)
-      __return_value = LibGtk.expander_set_label(to_unsafe.as(LibGtk::Expander*), label ? label.to_unsafe : nil)
-      __return_value
+      LibGtk.expander_set_label(to_unsafe.as(LibGtk::Expander*), label ? label.to_unsafe : nil)
+      nil
     end
 
     def label_fill=(label_fill)
-      __return_value = LibGtk.expander_set_label_fill(to_unsafe.as(LibGtk::Expander*), label_fill)
-      __return_value
+      LibGtk.expander_set_label_fill(to_unsafe.as(LibGtk::Expander*), label_fill)
+      nil
     end
 
     def label_widget=(label_widget)
-      __return_value = LibGtk.expander_set_label_widget(to_unsafe.as(LibGtk::Expander*), label_widget ? label_widget.to_unsafe.as(LibGtk::Widget*) : nil)
-      __return_value
+      LibGtk.expander_set_label_widget(to_unsafe.as(LibGtk::Expander*), label_widget ? label_widget.to_unsafe.as(LibGtk::Widget*) : nil)
+      nil
     end
 
     def resize_toplevel=(resize_toplevel)
-      __return_value = LibGtk.expander_set_resize_toplevel(to_unsafe.as(LibGtk::Expander*), resize_toplevel)
-      __return_value
+      LibGtk.expander_set_resize_toplevel(to_unsafe.as(LibGtk::Expander*), resize_toplevel)
+      nil
     end
 
     def spacing=(spacing)
-      __return_value = LibGtk.expander_set_spacing(to_unsafe.as(LibGtk::Expander*), Int32.new(spacing))
-      __return_value
+      LibGtk.expander_set_spacing(to_unsafe.as(LibGtk::Expander*), Int32.new(spacing))
+      nil
     end
 
     def use_markup=(use_markup)
-      __return_value = LibGtk.expander_set_use_markup(to_unsafe.as(LibGtk::Expander*), use_markup)
-      __return_value
+      LibGtk.expander_set_use_markup(to_unsafe.as(LibGtk::Expander*), use_markup)
+      nil
     end
 
     def use_underline=(use_underline)
-      __return_value = LibGtk.expander_set_use_underline(to_unsafe.as(LibGtk::Expander*), use_underline)
-      __return_value
+      LibGtk.expander_set_use_underline(to_unsafe.as(LibGtk::Expander*), use_underline)
+      nil
     end
 
     alias ActivateSignal = Expander ->

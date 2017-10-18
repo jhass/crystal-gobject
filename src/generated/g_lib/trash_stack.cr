@@ -23,18 +23,18 @@ module GLib
     end
 
     def self.peek(stack_p)
-      __return_value = LibGLib.trash_stack_peek(stack_p.to_unsafe.as(LibGLib::TrashStack*))
-      __return_value if __return_value
+      LibGLib.trash_stack_peek(stack_p.to_unsafe.as(LibGLib::TrashStack*))
+      nil
     end
 
     def self.pop(stack_p)
-      __return_value = LibGLib.trash_stack_pop(stack_p.to_unsafe.as(LibGLib::TrashStack*))
-      __return_value if __return_value
+      LibGLib.trash_stack_pop(stack_p.to_unsafe.as(LibGLib::TrashStack*))
+      nil
     end
 
     def self.push(stack_p, data_p)
-      __return_value = LibGLib.trash_stack_push(stack_p.to_unsafe.as(LibGLib::TrashStack*), data_p)
-      __return_value
+      LibGLib.trash_stack_push(stack_p.to_unsafe.as(LibGLib::TrashStack*), data_p)
+      nil
     end
 
     def next

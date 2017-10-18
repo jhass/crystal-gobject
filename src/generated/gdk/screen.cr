@@ -79,8 +79,8 @@ module Gdk
     end
 
     def monitor_geometry(monitor_num, dest)
-      __return_value = LibGdk.screen_get_monitor_geometry(to_unsafe.as(LibGdk::Screen*), Int32.new(monitor_num), dest)
-      __return_value
+      LibGdk.screen_get_monitor_geometry(to_unsafe.as(LibGdk::Screen*), Int32.new(monitor_num), dest)
+      nil
     end
 
     def monitor_height_mm(monitor_num)
@@ -104,8 +104,8 @@ module Gdk
     end
 
     def monitor_workarea(monitor_num, dest)
-      __return_value = LibGdk.screen_get_monitor_workarea(to_unsafe.as(LibGdk::Screen*), Int32.new(monitor_num), dest)
-      __return_value
+      LibGdk.screen_get_monitor_workarea(to_unsafe.as(LibGdk::Screen*), Int32.new(monitor_num), dest)
+      nil
     end
 
     def n_monitors
@@ -184,13 +184,13 @@ module Gdk
     end
 
     def font_options=(options)
-      __return_value = LibGdk.screen_set_font_options(to_unsafe.as(LibGdk::Screen*), options ? options.to_unsafe.as(LibCairo::FontOptions*) : nil)
-      __return_value
+      LibGdk.screen_set_font_options(to_unsafe.as(LibGdk::Screen*), options ? options.to_unsafe.as(LibCairo::FontOptions*) : nil)
+      nil
     end
 
     def resolution=(dpi)
-      __return_value = LibGdk.screen_set_resolution(to_unsafe.as(LibGdk::Screen*), Float64.new(dpi))
-      __return_value
+      LibGdk.screen_set_resolution(to_unsafe.as(LibGdk::Screen*), Float64.new(dpi))
+      nil
     end
 
     alias CompositedChangedSignal = Screen ->

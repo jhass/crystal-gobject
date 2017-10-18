@@ -18,13 +18,13 @@ module Gio
     end
 
     def activate(parameter)
-      __return_value = LibGio.action_activate(to_unsafe.as(LibGio::Action*), parameter ? parameter.to_unsafe.as(LibGLib::Variant*) : nil)
-      __return_value
+      LibGio.action_activate(to_unsafe.as(LibGio::Action*), parameter ? parameter.to_unsafe.as(LibGLib::Variant*) : nil)
+      nil
     end
 
     def change_state(value)
-      __return_value = LibGio.action_change_state(to_unsafe.as(LibGio::Action*), value.to_unsafe.as(LibGLib::Variant*))
-      __return_value
+      LibGio.action_change_state(to_unsafe.as(LibGio::Action*), value.to_unsafe.as(LibGLib::Variant*))
+      nil
     end
 
     def enabled

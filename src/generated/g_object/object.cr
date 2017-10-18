@@ -10,8 +10,13 @@ module GObject
       @g_object_object.not_nil!
     end
 
-    def self.new(object_type, n_parameters, parameters) : self
-      __return_value = LibGObject.object_new(UInt64.new(object_type), UInt32.new(n_parameters), parameters)
+    def self.new(object_type, n_properties, names, values) : self
+      __return_value = LibGObject.object_new(UInt64.new(object_type), UInt32.new(n_properties), names, values)
+      cast GObject::Object.new(__return_value)
+    end
+
+    def self.newv(object_type, n_parameters, parameters) : self
+      __return_value = LibGObject.object_newv(UInt64.new(object_type), UInt32.new(n_parameters), parameters)
       cast GObject::Object.new(__return_value)
     end
 
@@ -26,8 +31,8 @@ module GObject
     end
 
     def self.interface_install_property(g_iface, pspec)
-      __return_value = LibGObject.object_interface_install_property(g_iface.to_unsafe.as(LibGObject::TypeInterface*), pspec.to_unsafe.as(LibGObject::ParamSpec*))
-      __return_value
+      LibGObject.object_interface_install_property(g_iface.to_unsafe.as(LibGObject::TypeInterface*), pspec.to_unsafe.as(LibGObject::ParamSpec*))
+      nil
     end
 
     def self.interface_list_properties(g_iface, n_properties_p)
@@ -46,28 +51,33 @@ module GObject
     end
 
     def force_floating
-      __return_value = LibGObject.object_force_floating(to_unsafe.as(LibGObject::Object*))
-      __return_value
+      LibGObject.object_force_floating(to_unsafe.as(LibGObject::Object*))
+      nil
     end
 
     def freeze_notify
-      __return_value = LibGObject.object_freeze_notify(to_unsafe.as(LibGObject::Object*))
-      __return_value
+      LibGObject.object_freeze_notify(to_unsafe.as(LibGObject::Object*))
+      nil
     end
 
     def data(key)
-      __return_value = LibGObject.object_get_data(to_unsafe.as(LibGObject::Object*), key.to_unsafe)
-      __return_value if __return_value
+      LibGObject.object_get_data(to_unsafe.as(LibGObject::Object*), key.to_unsafe)
+      nil
     end
 
     def property(property_name, value)
-      __return_value = LibGObject.object_get_property(to_unsafe.as(LibGObject::Object*), property_name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
-      __return_value
+      LibGObject.object_get_property(to_unsafe.as(LibGObject::Object*), property_name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
+      nil
     end
 
     def qdata(quark)
-      __return_value = LibGObject.object_get_qdata(to_unsafe.as(LibGObject::Object*), UInt32.new(quark))
-      __return_value if __return_value
+      LibGObject.object_get_qdata(to_unsafe.as(LibGObject::Object*), UInt32.new(quark))
+      nil
+    end
+
+    def getv(n_properties, names, values)
+      LibGObject.object_getv(to_unsafe.as(LibGObject::Object*), UInt32.new(n_properties), names, values)
+      nil
     end
 
     def floating?
@@ -76,13 +86,13 @@ module GObject
     end
 
     def notify(property_name)
-      __return_value = LibGObject.object_notify(to_unsafe.as(LibGObject::Object*), property_name.to_unsafe)
-      __return_value
+      LibGObject.object_notify(to_unsafe.as(LibGObject::Object*), property_name.to_unsafe)
+      nil
     end
 
     def notify_by_pspec(pspec)
-      __return_value = LibGObject.object_notify_by_pspec(to_unsafe.as(LibGObject::Object*), pspec.to_unsafe.as(LibGObject::ParamSpec*))
-      __return_value
+      LibGObject.object_notify_by_pspec(to_unsafe.as(LibGObject::Object*), pspec.to_unsafe.as(LibGObject::ParamSpec*))
+      nil
     end
 
     def ref
@@ -106,43 +116,43 @@ module GObject
     end
 
     def run_dispose
-      __return_value = LibGObject.object_run_dispose(to_unsafe.as(LibGObject::Object*))
-      __return_value
+      LibGObject.object_run_dispose(to_unsafe.as(LibGObject::Object*))
+      nil
     end
 
     def set_data(key, data)
-      __return_value = LibGObject.object_set_data(to_unsafe.as(LibGObject::Object*), key.to_unsafe, data ? data : nil)
-      __return_value
+      LibGObject.object_set_data(to_unsafe.as(LibGObject::Object*), key.to_unsafe, data ? data : nil)
+      nil
     end
 
     def set_property(property_name, value)
-      __return_value = LibGObject.object_set_property(to_unsafe.as(LibGObject::Object*), property_name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
-      __return_value
+      LibGObject.object_set_property(to_unsafe.as(LibGObject::Object*), property_name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
+      nil
     end
 
     def steal_data(key)
-      __return_value = LibGObject.object_steal_data(to_unsafe.as(LibGObject::Object*), key.to_unsafe)
-      __return_value if __return_value
+      LibGObject.object_steal_data(to_unsafe.as(LibGObject::Object*), key.to_unsafe)
+      nil
     end
 
     def steal_qdata(quark)
-      __return_value = LibGObject.object_steal_qdata(to_unsafe.as(LibGObject::Object*), UInt32.new(quark))
-      __return_value if __return_value
+      LibGObject.object_steal_qdata(to_unsafe.as(LibGObject::Object*), UInt32.new(quark))
+      nil
     end
 
     def thaw_notify
-      __return_value = LibGObject.object_thaw_notify(to_unsafe.as(LibGObject::Object*))
-      __return_value
+      LibGObject.object_thaw_notify(to_unsafe.as(LibGObject::Object*))
+      nil
     end
 
     def unref
-      __return_value = LibGObject.object_unref(to_unsafe.as(LibGObject::Object*))
-      __return_value
+      LibGObject.object_unref(to_unsafe.as(LibGObject::Object*))
+      nil
     end
 
     def watch_closure(closure)
-      __return_value = LibGObject.object_watch_closure(to_unsafe.as(LibGObject::Object*), closure.to_unsafe.as(LibGObject::Closure*))
-      __return_value
+      LibGObject.object_watch_closure(to_unsafe.as(LibGObject::Object*), closure.to_unsafe.as(LibGObject::Closure*))
+      nil
     end
 
     alias NotifySignal = Object, GObject::ParamSpec ->

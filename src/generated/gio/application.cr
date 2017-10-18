@@ -62,28 +62,28 @@ module Gio
     end
 
     def activate
-      __return_value = LibGio.application_activate(to_unsafe.as(LibGio::Application*))
-      __return_value
+      LibGio.application_activate(to_unsafe.as(LibGio::Application*))
+      nil
     end
 
     def add_main_option(long_name, short_name, flags : GLib::OptionFlags, arg : GLib::OptionArg, description, arg_description)
-      __return_value = LibGio.application_add_main_option(to_unsafe.as(LibGio::Application*), long_name.to_unsafe, Int8.new(short_name), flags, arg, description.to_unsafe, arg_description ? arg_description.to_unsafe : nil)
-      __return_value
+      LibGio.application_add_main_option(to_unsafe.as(LibGio::Application*), long_name.to_unsafe, Int8.new(short_name), flags, arg, description.to_unsafe, arg_description ? arg_description.to_unsafe : nil)
+      nil
     end
 
     def add_main_option_entries(entries)
-      __return_value = LibGio.application_add_main_option_entries(to_unsafe.as(LibGio::Application*), entries)
-      __return_value
+      LibGio.application_add_main_option_entries(to_unsafe.as(LibGio::Application*), entries)
+      nil
     end
 
     def add_option_group(group)
-      __return_value = LibGio.application_add_option_group(to_unsafe.as(LibGio::Application*), group.to_unsafe.as(LibGLib::OptionGroup*))
-      __return_value
+      LibGio.application_add_option_group(to_unsafe.as(LibGio::Application*), group.to_unsafe.as(LibGLib::OptionGroup*))
+      nil
     end
 
     def bind_busy_property(object, property)
-      __return_value = LibGio.application_bind_busy_property(to_unsafe.as(LibGio::Application*), object.to_unsafe.as(LibGObject::Object*), property.to_unsafe)
-      __return_value
+      LibGio.application_bind_busy_property(to_unsafe.as(LibGio::Application*), object.to_unsafe.as(LibGObject::Object*), property.to_unsafe)
+      nil
     end
 
     def application_id
@@ -132,23 +132,23 @@ module Gio
     end
 
     def hold
-      __return_value = LibGio.application_hold(to_unsafe.as(LibGio::Application*))
-      __return_value
+      LibGio.application_hold(to_unsafe.as(LibGio::Application*))
+      nil
     end
 
     def mark_busy
-      __return_value = LibGio.application_mark_busy(to_unsafe.as(LibGio::Application*))
-      __return_value
+      LibGio.application_mark_busy(to_unsafe.as(LibGio::Application*))
+      nil
     end
 
     def open(files, n_files, hint)
-      __return_value = LibGio.application_open(to_unsafe.as(LibGio::Application*), files, Int32.new(n_files), hint.to_unsafe)
-      __return_value
+      LibGio.application_open(to_unsafe.as(LibGio::Application*), files, Int32.new(n_files), hint.to_unsafe)
+      nil
     end
 
     def quit
-      __return_value = LibGio.application_quit(to_unsafe.as(LibGio::Application*))
-      __return_value
+      LibGio.application_quit(to_unsafe.as(LibGio::Application*))
+      nil
     end
 
     def register(cancellable)
@@ -159,8 +159,8 @@ module Gio
     end
 
     def release
-      __return_value = LibGio.application_release(to_unsafe.as(LibGio::Application*))
-      __return_value
+      LibGio.application_release(to_unsafe.as(LibGio::Application*))
+      nil
     end
 
     def run(argc, argv)
@@ -169,53 +169,53 @@ module Gio
     end
 
     def send_notification(id, notification)
-      __return_value = LibGio.application_send_notification(to_unsafe.as(LibGio::Application*), id ? id.to_unsafe : nil, notification.to_unsafe.as(LibGio::Notification*))
-      __return_value
+      LibGio.application_send_notification(to_unsafe.as(LibGio::Application*), id ? id.to_unsafe : nil, notification.to_unsafe.as(LibGio::Notification*))
+      nil
     end
 
     def action_group=(action_group)
-      __return_value = LibGio.application_set_action_group(to_unsafe.as(LibGio::Application*), action_group ? action_group.to_unsafe.as(LibGio::ActionGroup*) : nil)
-      __return_value
+      LibGio.application_set_action_group(to_unsafe.as(LibGio::Application*), action_group ? action_group.to_unsafe.as(LibGio::ActionGroup*) : nil)
+      nil
     end
 
     def application_id=(application_id)
-      __return_value = LibGio.application_set_application_id(to_unsafe.as(LibGio::Application*), application_id ? application_id.to_unsafe : nil)
-      __return_value
+      LibGio.application_set_application_id(to_unsafe.as(LibGio::Application*), application_id ? application_id.to_unsafe : nil)
+      nil
     end
 
     def set_default
-      __return_value = LibGio.application_set_default(to_unsafe.as(LibGio::Application*))
-      __return_value
+      LibGio.application_set_default(to_unsafe.as(LibGio::Application*))
+      nil
     end
 
     def flags=(flags : Gio::ApplicationFlags)
-      __return_value = LibGio.application_set_flags(to_unsafe.as(LibGio::Application*), flags)
-      __return_value
+      LibGio.application_set_flags(to_unsafe.as(LibGio::Application*), flags)
+      nil
     end
 
     def inactivity_timeout=(inactivity_timeout)
-      __return_value = LibGio.application_set_inactivity_timeout(to_unsafe.as(LibGio::Application*), UInt32.new(inactivity_timeout))
-      __return_value
+      LibGio.application_set_inactivity_timeout(to_unsafe.as(LibGio::Application*), UInt32.new(inactivity_timeout))
+      nil
     end
 
     def resource_base_path=(resource_path)
-      __return_value = LibGio.application_set_resource_base_path(to_unsafe.as(LibGio::Application*), resource_path ? resource_path.to_unsafe : nil)
-      __return_value
+      LibGio.application_set_resource_base_path(to_unsafe.as(LibGio::Application*), resource_path ? resource_path.to_unsafe : nil)
+      nil
     end
 
     def unbind_busy_property(object, property)
-      __return_value = LibGio.application_unbind_busy_property(to_unsafe.as(LibGio::Application*), object.to_unsafe.as(LibGObject::Object*), property.to_unsafe)
-      __return_value
+      LibGio.application_unbind_busy_property(to_unsafe.as(LibGio::Application*), object.to_unsafe.as(LibGObject::Object*), property.to_unsafe)
+      nil
     end
 
     def unmark_busy
-      __return_value = LibGio.application_unmark_busy(to_unsafe.as(LibGio::Application*))
-      __return_value
+      LibGio.application_unmark_busy(to_unsafe.as(LibGio::Application*))
+      nil
     end
 
     def withdraw_notification(id)
-      __return_value = LibGio.application_withdraw_notification(to_unsafe.as(LibGio::Application*), id.to_unsafe)
-      __return_value
+      LibGio.application_withdraw_notification(to_unsafe.as(LibGio::Application*), id.to_unsafe)
+      nil
     end
 
     alias ActivateSignal = Application ->

@@ -102,38 +102,38 @@ module Gtk
     end
 
     def set_bottom_margin(margin, unit : Gtk::Unit)
-      __return_value = LibGtk.page_setup_set_bottom_margin(to_unsafe.as(LibGtk::PageSetup*), Float64.new(margin), unit)
-      __return_value
+      LibGtk.page_setup_set_bottom_margin(to_unsafe.as(LibGtk::PageSetup*), Float64.new(margin), unit)
+      nil
     end
 
     def set_left_margin(margin, unit : Gtk::Unit)
-      __return_value = LibGtk.page_setup_set_left_margin(to_unsafe.as(LibGtk::PageSetup*), Float64.new(margin), unit)
-      __return_value
+      LibGtk.page_setup_set_left_margin(to_unsafe.as(LibGtk::PageSetup*), Float64.new(margin), unit)
+      nil
     end
 
     def orientation=(orientation : Gtk::PageOrientation)
-      __return_value = LibGtk.page_setup_set_orientation(to_unsafe.as(LibGtk::PageSetup*), orientation)
-      __return_value
+      LibGtk.page_setup_set_orientation(to_unsafe.as(LibGtk::PageSetup*), orientation)
+      nil
     end
 
     def paper_size=(size)
-      __return_value = LibGtk.page_setup_set_paper_size(to_unsafe.as(LibGtk::PageSetup*), size.to_unsafe.as(LibGtk::PaperSize*))
-      __return_value
+      LibGtk.page_setup_set_paper_size(to_unsafe.as(LibGtk::PageSetup*), size.to_unsafe.as(LibGtk::PaperSize*))
+      nil
     end
 
     def paper_size_and_default_margins=(size)
-      __return_value = LibGtk.page_setup_set_paper_size_and_default_margins(to_unsafe.as(LibGtk::PageSetup*), size.to_unsafe.as(LibGtk::PaperSize*))
-      __return_value
+      LibGtk.page_setup_set_paper_size_and_default_margins(to_unsafe.as(LibGtk::PageSetup*), size.to_unsafe.as(LibGtk::PaperSize*))
+      nil
     end
 
     def set_right_margin(margin, unit : Gtk::Unit)
-      __return_value = LibGtk.page_setup_set_right_margin(to_unsafe.as(LibGtk::PageSetup*), Float64.new(margin), unit)
-      __return_value
+      LibGtk.page_setup_set_right_margin(to_unsafe.as(LibGtk::PageSetup*), Float64.new(margin), unit)
+      nil
     end
 
     def set_top_margin(margin, unit : Gtk::Unit)
-      __return_value = LibGtk.page_setup_set_top_margin(to_unsafe.as(LibGtk::PageSetup*), Float64.new(margin), unit)
-      __return_value
+      LibGtk.page_setup_set_top_margin(to_unsafe.as(LibGtk::PageSetup*), Float64.new(margin), unit)
+      nil
     end
 
     def to_file(file_name)
@@ -149,8 +149,8 @@ module Gtk
     end
 
     def to_key_file(key_file, group_name)
-      __return_value = LibGtk.page_setup_to_key_file(to_unsafe.as(LibGtk::PageSetup*), key_file.to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe)
-      __return_value
+      LibGtk.page_setup_to_key_file(to_unsafe.as(LibGtk::PageSetup*), key_file.to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe)
+      nil
     end
 
   end

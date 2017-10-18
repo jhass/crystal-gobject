@@ -14,8 +14,8 @@ module Pango
     end
 
     def changed
-      __return_value = LibPango.context_changed(to_unsafe.as(LibPango::Context*))
-      __return_value
+      LibPango.context_changed(to_unsafe.as(LibPango::Context*))
+      nil
     end
 
     def base_dir
@@ -69,8 +69,8 @@ module Pango
     end
 
     def list_families(families, n_families)
-      __return_value = LibPango.context_list_families(to_unsafe.as(LibPango::Context*), families, n_families)
-      __return_value
+      LibPango.context_list_families(to_unsafe.as(LibPango::Context*), families, n_families)
+      nil
     end
 
     def load_font(desc)
@@ -84,38 +84,38 @@ module Pango
     end
 
     def base_dir=(direction : Pango::Direction)
-      __return_value = LibPango.context_set_base_dir(to_unsafe.as(LibPango::Context*), direction)
-      __return_value
+      LibPango.context_set_base_dir(to_unsafe.as(LibPango::Context*), direction)
+      nil
     end
 
     def base_gravity=(gravity : Pango::Gravity)
-      __return_value = LibPango.context_set_base_gravity(to_unsafe.as(LibPango::Context*), gravity)
-      __return_value
+      LibPango.context_set_base_gravity(to_unsafe.as(LibPango::Context*), gravity)
+      nil
     end
 
     def font_description=(desc)
-      __return_value = LibPango.context_set_font_description(to_unsafe.as(LibPango::Context*), desc.to_unsafe.as(LibPango::FontDescription*))
-      __return_value
+      LibPango.context_set_font_description(to_unsafe.as(LibPango::Context*), desc.to_unsafe.as(LibPango::FontDescription*))
+      nil
     end
 
     def font_map=(font_map)
-      __return_value = LibPango.context_set_font_map(to_unsafe.as(LibPango::Context*), font_map.to_unsafe.as(LibPango::FontMap*))
-      __return_value
+      LibPango.context_set_font_map(to_unsafe.as(LibPango::Context*), font_map.to_unsafe.as(LibPango::FontMap*))
+      nil
     end
 
     def gravity_hint=(hint : Pango::GravityHint)
-      __return_value = LibPango.context_set_gravity_hint(to_unsafe.as(LibPango::Context*), hint)
-      __return_value
+      LibPango.context_set_gravity_hint(to_unsafe.as(LibPango::Context*), hint)
+      nil
     end
 
     def language=(language)
-      __return_value = LibPango.context_set_language(to_unsafe.as(LibPango::Context*), language.to_unsafe.as(LibPango::Language*))
-      __return_value
+      LibPango.context_set_language(to_unsafe.as(LibPango::Context*), language.to_unsafe.as(LibPango::Language*))
+      nil
     end
 
     def matrix=(matrix)
-      __return_value = LibPango.context_set_matrix(to_unsafe.as(LibPango::Context*), matrix ? matrix.to_unsafe.as(LibPango::Matrix*) : nil)
-      __return_value
+      LibPango.context_set_matrix(to_unsafe.as(LibPango::Context*), matrix ? matrix.to_unsafe.as(LibPango::Matrix*) : nil)
+      nil
     end
 
   end

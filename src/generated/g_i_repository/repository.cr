@@ -31,13 +31,13 @@ module GIRepository
     end
 
     def self.prepend_library_path(directory)
-      __return_value = LibGIRepository.repository_prepend_library_path(directory.to_unsafe)
-      __return_value
+      LibGIRepository.repository_prepend_library_path(directory.to_unsafe)
+      nil
     end
 
     def self.prepend_search_path(directory)
-      __return_value = LibGIRepository.repository_prepend_search_path(directory.to_unsafe)
-      __return_value
+      LibGIRepository.repository_prepend_search_path(directory.to_unsafe)
+      nil
     end
 
     def enumerate_versions(namespace)

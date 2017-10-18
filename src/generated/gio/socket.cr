@@ -348,33 +348,33 @@ module Gio
     end
 
     def blocking=(blocking)
-      __return_value = LibGio.socket_set_blocking(to_unsafe.as(LibGio::Socket*), blocking)
-      __return_value
+      LibGio.socket_set_blocking(to_unsafe.as(LibGio::Socket*), blocking)
+      nil
     end
 
     def broadcast=(broadcast)
-      __return_value = LibGio.socket_set_broadcast(to_unsafe.as(LibGio::Socket*), broadcast)
-      __return_value
+      LibGio.socket_set_broadcast(to_unsafe.as(LibGio::Socket*), broadcast)
+      nil
     end
 
     def keepalive=(keepalive)
-      __return_value = LibGio.socket_set_keepalive(to_unsafe.as(LibGio::Socket*), keepalive)
-      __return_value
+      LibGio.socket_set_keepalive(to_unsafe.as(LibGio::Socket*), keepalive)
+      nil
     end
 
     def listen_backlog=(backlog)
-      __return_value = LibGio.socket_set_listen_backlog(to_unsafe.as(LibGio::Socket*), Int32.new(backlog))
-      __return_value
+      LibGio.socket_set_listen_backlog(to_unsafe.as(LibGio::Socket*), Int32.new(backlog))
+      nil
     end
 
     def multicast_loopback=(loopback)
-      __return_value = LibGio.socket_set_multicast_loopback(to_unsafe.as(LibGio::Socket*), loopback)
-      __return_value
+      LibGio.socket_set_multicast_loopback(to_unsafe.as(LibGio::Socket*), loopback)
+      nil
     end
 
     def multicast_ttl=(ttl)
-      __return_value = LibGio.socket_set_multicast_ttl(to_unsafe.as(LibGio::Socket*), UInt32.new(ttl))
-      __return_value
+      LibGio.socket_set_multicast_ttl(to_unsafe.as(LibGio::Socket*), UInt32.new(ttl))
+      nil
     end
 
     def set_option(level, optname, value)
@@ -385,13 +385,13 @@ module Gio
     end
 
     def timeout=(timeout)
-      __return_value = LibGio.socket_set_timeout(to_unsafe.as(LibGio::Socket*), UInt32.new(timeout))
-      __return_value
+      LibGio.socket_set_timeout(to_unsafe.as(LibGio::Socket*), UInt32.new(timeout))
+      nil
     end
 
     def ttl=(ttl)
-      __return_value = LibGio.socket_set_ttl(to_unsafe.as(LibGio::Socket*), UInt32.new(ttl))
-      __return_value
+      LibGio.socket_set_ttl(to_unsafe.as(LibGio::Socket*), UInt32.new(ttl))
+      nil
     end
 
     def shutdown(shutdown_read, shutdown_write)

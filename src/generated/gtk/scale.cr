@@ -44,13 +44,13 @@ module Gtk
     end
 
     def add_mark(value, position : Gtk::PositionType, markup)
-      __return_value = LibGtk.scale_add_mark(to_unsafe.as(LibGtk::Scale*), Float64.new(value), position, markup ? markup.to_unsafe : nil)
-      __return_value
+      LibGtk.scale_add_mark(to_unsafe.as(LibGtk::Scale*), Float64.new(value), position, markup ? markup.to_unsafe : nil)
+      nil
     end
 
     def clear_marks
-      __return_value = LibGtk.scale_clear_marks(to_unsafe.as(LibGtk::Scale*))
-      __return_value
+      LibGtk.scale_clear_marks(to_unsafe.as(LibGtk::Scale*))
+      nil
     end
 
     def digits
@@ -74,8 +74,8 @@ module Gtk
     end
 
     def layout_offsets(x, y)
-      __return_value = LibGtk.scale_get_layout_offsets(to_unsafe.as(LibGtk::Scale*), x, y)
-      __return_value
+      LibGtk.scale_get_layout_offsets(to_unsafe.as(LibGtk::Scale*), x, y)
+      nil
     end
 
     def value_pos
@@ -84,23 +84,23 @@ module Gtk
     end
 
     def digits=(digits)
-      __return_value = LibGtk.scale_set_digits(to_unsafe.as(LibGtk::Scale*), Int32.new(digits))
-      __return_value
+      LibGtk.scale_set_digits(to_unsafe.as(LibGtk::Scale*), Int32.new(digits))
+      nil
     end
 
     def draw_value=(draw_value)
-      __return_value = LibGtk.scale_set_draw_value(to_unsafe.as(LibGtk::Scale*), draw_value)
-      __return_value
+      LibGtk.scale_set_draw_value(to_unsafe.as(LibGtk::Scale*), draw_value)
+      nil
     end
 
     def has_origin=(has_origin)
-      __return_value = LibGtk.scale_set_has_origin(to_unsafe.as(LibGtk::Scale*), has_origin)
-      __return_value
+      LibGtk.scale_set_has_origin(to_unsafe.as(LibGtk::Scale*), has_origin)
+      nil
     end
 
     def value_pos=(pos : Gtk::PositionType)
-      __return_value = LibGtk.scale_set_value_pos(to_unsafe.as(LibGtk::Scale*), pos)
-      __return_value
+      LibGtk.scale_set_value_pos(to_unsafe.as(LibGtk::Scale*), pos)
+      nil
     end
 
     alias FormatValueSignal = Scale, Float64 -> String

@@ -34,58 +34,58 @@ module Gtk
     end
 
     def self.add_provider_for_screen(screen, provider, priority)
-      __return_value = LibGtk.style_context_add_provider_for_screen(screen.to_unsafe.as(LibGdk::Screen*), provider.to_unsafe.as(LibGtk::StyleProvider*), UInt32.new(priority))
-      __return_value
+      LibGtk.style_context_add_provider_for_screen(screen.to_unsafe.as(LibGdk::Screen*), provider.to_unsafe.as(LibGtk::StyleProvider*), UInt32.new(priority))
+      nil
     end
 
     def self.remove_provider_for_screen(screen, provider)
-      __return_value = LibGtk.style_context_remove_provider_for_screen(screen.to_unsafe.as(LibGdk::Screen*), provider.to_unsafe.as(LibGtk::StyleProvider*))
-      __return_value
+      LibGtk.style_context_remove_provider_for_screen(screen.to_unsafe.as(LibGdk::Screen*), provider.to_unsafe.as(LibGtk::StyleProvider*))
+      nil
     end
 
     def self.reset_widgets(screen)
-      __return_value = LibGtk.style_context_reset_widgets(screen.to_unsafe.as(LibGdk::Screen*))
-      __return_value
+      LibGtk.style_context_reset_widgets(screen.to_unsafe.as(LibGdk::Screen*))
+      nil
     end
 
     def add_class(class_name)
-      __return_value = LibGtk.style_context_add_class(to_unsafe.as(LibGtk::StyleContext*), class_name.to_unsafe)
-      __return_value
+      LibGtk.style_context_add_class(to_unsafe.as(LibGtk::StyleContext*), class_name.to_unsafe)
+      nil
     end
 
     def add_provider(provider, priority)
-      __return_value = LibGtk.style_context_add_provider(to_unsafe.as(LibGtk::StyleContext*), provider.to_unsafe.as(LibGtk::StyleProvider*), UInt32.new(priority))
-      __return_value
+      LibGtk.style_context_add_provider(to_unsafe.as(LibGtk::StyleContext*), provider.to_unsafe.as(LibGtk::StyleProvider*), UInt32.new(priority))
+      nil
     end
 
     def add_region(region_name, flags : Gtk::RegionFlags)
-      __return_value = LibGtk.style_context_add_region(to_unsafe.as(LibGtk::StyleContext*), region_name.to_unsafe, flags)
-      __return_value
+      LibGtk.style_context_add_region(to_unsafe.as(LibGtk::StyleContext*), region_name.to_unsafe, flags)
+      nil
     end
 
     def cancel_animations(region_id)
-      __return_value = LibGtk.style_context_cancel_animations(to_unsafe.as(LibGtk::StyleContext*), region_id ? region_id : nil)
-      __return_value
+      LibGtk.style_context_cancel_animations(to_unsafe.as(LibGtk::StyleContext*), region_id ? region_id : nil)
+      nil
     end
 
     def background_color(state : Gtk::StateFlags, color)
-      __return_value = LibGtk.style_context_get_background_color(to_unsafe.as(LibGtk::StyleContext*), state, color)
-      __return_value
+      LibGtk.style_context_get_background_color(to_unsafe.as(LibGtk::StyleContext*), state, color)
+      nil
     end
 
     def border(state : Gtk::StateFlags, border)
-      __return_value = LibGtk.style_context_get_border(to_unsafe.as(LibGtk::StyleContext*), state, border)
-      __return_value
+      LibGtk.style_context_get_border(to_unsafe.as(LibGtk::StyleContext*), state, border)
+      nil
     end
 
     def border_color(state : Gtk::StateFlags, color)
-      __return_value = LibGtk.style_context_get_border_color(to_unsafe.as(LibGtk::StyleContext*), state, color)
-      __return_value
+      LibGtk.style_context_get_border_color(to_unsafe.as(LibGtk::StyleContext*), state, color)
+      nil
     end
 
     def color(state : Gtk::StateFlags, color)
-      __return_value = LibGtk.style_context_get_color(to_unsafe.as(LibGtk::StyleContext*), state, color)
-      __return_value
+      LibGtk.style_context_get_color(to_unsafe.as(LibGtk::StyleContext*), state, color)
+      nil
     end
 
     def direction
@@ -109,13 +109,13 @@ module Gtk
     end
 
     def margin(state : Gtk::StateFlags, margin)
-      __return_value = LibGtk.style_context_get_margin(to_unsafe.as(LibGtk::StyleContext*), state, margin)
-      __return_value
+      LibGtk.style_context_get_margin(to_unsafe.as(LibGtk::StyleContext*), state, margin)
+      nil
     end
 
     def padding(state : Gtk::StateFlags, padding)
-      __return_value = LibGtk.style_context_get_padding(to_unsafe.as(LibGtk::StyleContext*), state, padding)
-      __return_value
+      LibGtk.style_context_get_padding(to_unsafe.as(LibGtk::StyleContext*), state, padding)
+      nil
     end
 
     def parent
@@ -129,8 +129,8 @@ module Gtk
     end
 
     def property(property, state : Gtk::StateFlags, value)
-      __return_value = LibGtk.style_context_get_property(to_unsafe.as(LibGtk::StyleContext*), property.to_unsafe, state, value)
-      __return_value
+      LibGtk.style_context_get_property(to_unsafe.as(LibGtk::StyleContext*), property.to_unsafe, state, value)
+      nil
     end
 
     def scale
@@ -154,8 +154,8 @@ module Gtk
     end
 
     def style_property(property_name, value)
-      __return_value = LibGtk.style_context_get_style_property(to_unsafe.as(LibGtk::StyleContext*), property_name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
-      __return_value
+      LibGtk.style_context_get_style_property(to_unsafe.as(LibGtk::StyleContext*), property_name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
+      nil
     end
 
     def has_class(class_name)
@@ -169,8 +169,8 @@ module Gtk
     end
 
     def invalidate
-      __return_value = LibGtk.style_context_invalidate(to_unsafe.as(LibGtk::StyleContext*))
-      __return_value
+      LibGtk.style_context_invalidate(to_unsafe.as(LibGtk::StyleContext*))
+      nil
     end
 
     def list_classes
@@ -194,93 +194,93 @@ module Gtk
     end
 
     def notify_state_change(window, region_id, state : Gtk::StateType, state_value)
-      __return_value = LibGtk.style_context_notify_state_change(to_unsafe.as(LibGtk::StyleContext*), window.to_unsafe.as(LibGdk::Window*), region_id ? region_id : nil, state, state_value)
-      __return_value
+      LibGtk.style_context_notify_state_change(to_unsafe.as(LibGtk::StyleContext*), window.to_unsafe.as(LibGdk::Window*), region_id ? region_id : nil, state, state_value)
+      nil
     end
 
     def pop_animatable_region
-      __return_value = LibGtk.style_context_pop_animatable_region(to_unsafe.as(LibGtk::StyleContext*))
-      __return_value
+      LibGtk.style_context_pop_animatable_region(to_unsafe.as(LibGtk::StyleContext*))
+      nil
     end
 
     def push_animatable_region(region_id)
-      __return_value = LibGtk.style_context_push_animatable_region(to_unsafe.as(LibGtk::StyleContext*), region_id ? region_id : nil)
-      __return_value
+      LibGtk.style_context_push_animatable_region(to_unsafe.as(LibGtk::StyleContext*), region_id ? region_id : nil)
+      nil
     end
 
     def remove_class(class_name)
-      __return_value = LibGtk.style_context_remove_class(to_unsafe.as(LibGtk::StyleContext*), class_name.to_unsafe)
-      __return_value
+      LibGtk.style_context_remove_class(to_unsafe.as(LibGtk::StyleContext*), class_name.to_unsafe)
+      nil
     end
 
     def remove_provider(provider)
-      __return_value = LibGtk.style_context_remove_provider(to_unsafe.as(LibGtk::StyleContext*), provider.to_unsafe.as(LibGtk::StyleProvider*))
-      __return_value
+      LibGtk.style_context_remove_provider(to_unsafe.as(LibGtk::StyleContext*), provider.to_unsafe.as(LibGtk::StyleProvider*))
+      nil
     end
 
     def remove_region(region_name)
-      __return_value = LibGtk.style_context_remove_region(to_unsafe.as(LibGtk::StyleContext*), region_name.to_unsafe)
-      __return_value
+      LibGtk.style_context_remove_region(to_unsafe.as(LibGtk::StyleContext*), region_name.to_unsafe)
+      nil
     end
 
     def restore
-      __return_value = LibGtk.style_context_restore(to_unsafe.as(LibGtk::StyleContext*))
-      __return_value
+      LibGtk.style_context_restore(to_unsafe.as(LibGtk::StyleContext*))
+      nil
     end
 
     def save
-      __return_value = LibGtk.style_context_save(to_unsafe.as(LibGtk::StyleContext*))
-      __return_value
+      LibGtk.style_context_save(to_unsafe.as(LibGtk::StyleContext*))
+      nil
     end
 
     def scroll_animations(window, dx, dy)
-      __return_value = LibGtk.style_context_scroll_animations(to_unsafe.as(LibGtk::StyleContext*), window.to_unsafe.as(LibGdk::Window*), Int32.new(dx), Int32.new(dy))
-      __return_value
+      LibGtk.style_context_scroll_animations(to_unsafe.as(LibGtk::StyleContext*), window.to_unsafe.as(LibGdk::Window*), Int32.new(dx), Int32.new(dy))
+      nil
     end
 
     def background=(window)
-      __return_value = LibGtk.style_context_set_background(to_unsafe.as(LibGtk::StyleContext*), window.to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGtk.style_context_set_background(to_unsafe.as(LibGtk::StyleContext*), window.to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def direction=(direction : Gtk::TextDirection)
-      __return_value = LibGtk.style_context_set_direction(to_unsafe.as(LibGtk::StyleContext*), direction)
-      __return_value
+      LibGtk.style_context_set_direction(to_unsafe.as(LibGtk::StyleContext*), direction)
+      nil
     end
 
     def frame_clock=(frame_clock)
-      __return_value = LibGtk.style_context_set_frame_clock(to_unsafe.as(LibGtk::StyleContext*), frame_clock.to_unsafe.as(LibGdk::FrameClock*))
-      __return_value
+      LibGtk.style_context_set_frame_clock(to_unsafe.as(LibGtk::StyleContext*), frame_clock.to_unsafe.as(LibGdk::FrameClock*))
+      nil
     end
 
     def junction_sides=(sides : Gtk::JunctionSides)
-      __return_value = LibGtk.style_context_set_junction_sides(to_unsafe.as(LibGtk::StyleContext*), sides)
-      __return_value
+      LibGtk.style_context_set_junction_sides(to_unsafe.as(LibGtk::StyleContext*), sides)
+      nil
     end
 
     def parent=(parent)
-      __return_value = LibGtk.style_context_set_parent(to_unsafe.as(LibGtk::StyleContext*), parent ? parent.to_unsafe.as(LibGtk::StyleContext*) : nil)
-      __return_value
+      LibGtk.style_context_set_parent(to_unsafe.as(LibGtk::StyleContext*), parent ? parent.to_unsafe.as(LibGtk::StyleContext*) : nil)
+      nil
     end
 
     def path=(path)
-      __return_value = LibGtk.style_context_set_path(to_unsafe.as(LibGtk::StyleContext*), path.to_unsafe.as(LibGtk::WidgetPath*))
-      __return_value
+      LibGtk.style_context_set_path(to_unsafe.as(LibGtk::StyleContext*), path.to_unsafe.as(LibGtk::WidgetPath*))
+      nil
     end
 
     def scale=(scale)
-      __return_value = LibGtk.style_context_set_scale(to_unsafe.as(LibGtk::StyleContext*), Int32.new(scale))
-      __return_value
+      LibGtk.style_context_set_scale(to_unsafe.as(LibGtk::StyleContext*), Int32.new(scale))
+      nil
     end
 
     def screen=(screen)
-      __return_value = LibGtk.style_context_set_screen(to_unsafe.as(LibGtk::StyleContext*), screen.to_unsafe.as(LibGdk::Screen*))
-      __return_value
+      LibGtk.style_context_set_screen(to_unsafe.as(LibGtk::StyleContext*), screen.to_unsafe.as(LibGdk::Screen*))
+      nil
     end
 
     def state=(flags : Gtk::StateFlags)
-      __return_value = LibGtk.style_context_set_state(to_unsafe.as(LibGtk::StyleContext*), flags)
-      __return_value
+      LibGtk.style_context_set_state(to_unsafe.as(LibGtk::StyleContext*), flags)
+      nil
     end
 
     def state_is_running(state : Gtk::StateType, progress)

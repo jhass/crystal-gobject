@@ -28,8 +28,8 @@ module Gtk
     end
 
     def changed
-      __return_value = LibGtk.list_box_row_changed(to_unsafe.as(LibGtk::ListBoxRow*))
-      __return_value
+      LibGtk.list_box_row_changed(to_unsafe.as(LibGtk::ListBoxRow*))
+      nil
     end
 
     def activatable
@@ -58,18 +58,18 @@ module Gtk
     end
 
     def activatable=(activatable)
-      __return_value = LibGtk.list_box_row_set_activatable(to_unsafe.as(LibGtk::ListBoxRow*), activatable)
-      __return_value
+      LibGtk.list_box_row_set_activatable(to_unsafe.as(LibGtk::ListBoxRow*), activatable)
+      nil
     end
 
     def header=(header)
-      __return_value = LibGtk.list_box_row_set_header(to_unsafe.as(LibGtk::ListBoxRow*), header ? header.to_unsafe.as(LibGtk::Widget*) : nil)
-      __return_value
+      LibGtk.list_box_row_set_header(to_unsafe.as(LibGtk::ListBoxRow*), header ? header.to_unsafe.as(LibGtk::Widget*) : nil)
+      nil
     end
 
     def selectable=(selectable)
-      __return_value = LibGtk.list_box_row_set_selectable(to_unsafe.as(LibGtk::ListBoxRow*), selectable)
-      __return_value
+      LibGtk.list_box_row_set_selectable(to_unsafe.as(LibGtk::ListBoxRow*), selectable)
+      nil
     end
 
     alias ActivateSignal = ListBoxRow ->

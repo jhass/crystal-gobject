@@ -26,8 +26,8 @@ module Gio
     end
 
     def unref
-      __return_value = LibGio.d_bus_signal_info_unref(to_unsafe.as(LibGio::DBusSignalInfo*))
-      __return_value
+      LibGio.d_bus_signal_info_unref(to_unsafe.as(LibGio::DBusSignalInfo*))
+      nil
     end
 
     def ref_count

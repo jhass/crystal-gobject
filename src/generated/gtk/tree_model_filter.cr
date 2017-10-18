@@ -21,8 +21,8 @@ module Gtk
     end
 
     def clear_cache
-      __return_value = LibGtk.tree_model_filter_clear_cache(to_unsafe.as(LibGtk::TreeModelFilter*))
-      __return_value
+      LibGtk.tree_model_filter_clear_cache(to_unsafe.as(LibGtk::TreeModelFilter*))
+      nil
     end
 
     def convert_child_iter_to_iter(filter_iter, child_iter)
@@ -36,8 +36,8 @@ module Gtk
     end
 
     def convert_iter_to_child_iter(child_iter, filter_iter)
-      __return_value = LibGtk.tree_model_filter_convert_iter_to_child_iter(to_unsafe.as(LibGtk::TreeModelFilter*), child_iter, filter_iter.to_unsafe.as(LibGtk::TreeIter*))
-      __return_value
+      LibGtk.tree_model_filter_convert_iter_to_child_iter(to_unsafe.as(LibGtk::TreeModelFilter*), child_iter, filter_iter.to_unsafe.as(LibGtk::TreeIter*))
+      nil
     end
 
     def convert_path_to_child_path(filter_path)
@@ -51,23 +51,23 @@ module Gtk
     end
 
     def refilter
-      __return_value = LibGtk.tree_model_filter_refilter(to_unsafe.as(LibGtk::TreeModelFilter*))
-      __return_value
+      LibGtk.tree_model_filter_refilter(to_unsafe.as(LibGtk::TreeModelFilter*))
+      nil
     end
 
     def set_modify_func(n_columns, types, func, data, destroy)
-      __return_value = LibGtk.tree_model_filter_set_modify_func(to_unsafe.as(LibGtk::TreeModelFilter*), Int32.new(n_columns), types, func, data ? data : nil, destroy ? destroy : nil)
-      __return_value
+      LibGtk.tree_model_filter_set_modify_func(to_unsafe.as(LibGtk::TreeModelFilter*), Int32.new(n_columns), types, func, data ? data : nil, destroy ? destroy : nil)
+      nil
     end
 
     def visible_column=(column)
-      __return_value = LibGtk.tree_model_filter_set_visible_column(to_unsafe.as(LibGtk::TreeModelFilter*), Int32.new(column))
-      __return_value
+      LibGtk.tree_model_filter_set_visible_column(to_unsafe.as(LibGtk::TreeModelFilter*), Int32.new(column))
+      nil
     end
 
     def set_visible_func(func, data, destroy)
-      __return_value = LibGtk.tree_model_filter_set_visible_func(to_unsafe.as(LibGtk::TreeModelFilter*), func, data ? data : nil, destroy ? destroy : nil)
-      __return_value
+      LibGtk.tree_model_filter_set_visible_func(to_unsafe.as(LibGtk::TreeModelFilter*), func, data ? data : nil, destroy ? destroy : nil)
+      nil
     end
 
   end

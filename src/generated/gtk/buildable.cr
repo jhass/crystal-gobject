@@ -1,8 +1,8 @@
 module Gtk
   module Buildable
     def add_child(builder, child, type)
-      __return_value = LibGtk.buildable_add_child(to_unsafe.as(LibGtk::Buildable*), builder.to_unsafe.as(LibGtk::Builder*), child.to_unsafe.as(LibGObject::Object*), type ? type.to_unsafe : nil)
-      __return_value
+      LibGtk.buildable_add_child(to_unsafe.as(LibGtk::Buildable*), builder.to_unsafe.as(LibGtk::Builder*), child.to_unsafe.as(LibGObject::Object*), type ? type.to_unsafe : nil)
+      nil
     end
 
     def construct_child(builder, name)
@@ -11,13 +11,13 @@ module Gtk
     end
 
     def custom_finished(builder, child, tagname, data)
-      __return_value = LibGtk.buildable_custom_finished(to_unsafe.as(LibGtk::Buildable*), builder.to_unsafe.as(LibGtk::Builder*), child ? child.to_unsafe.as(LibGObject::Object*) : nil, tagname.to_unsafe, data ? data : nil)
-      __return_value
+      LibGtk.buildable_custom_finished(to_unsafe.as(LibGtk::Buildable*), builder.to_unsafe.as(LibGtk::Builder*), child ? child.to_unsafe.as(LibGObject::Object*) : nil, tagname.to_unsafe, data ? data : nil)
+      nil
     end
 
     def custom_tag_end(builder, child, tagname, data)
-      __return_value = LibGtk.buildable_custom_tag_end(to_unsafe.as(LibGtk::Buildable*), builder.to_unsafe.as(LibGtk::Builder*), child ? child.to_unsafe.as(LibGObject::Object*) : nil, tagname.to_unsafe, data ? data : nil)
-      __return_value
+      LibGtk.buildable_custom_tag_end(to_unsafe.as(LibGtk::Buildable*), builder.to_unsafe.as(LibGtk::Builder*), child ? child.to_unsafe.as(LibGObject::Object*) : nil, tagname.to_unsafe, data ? data : nil)
+      nil
     end
 
     def custom_tag_start(builder, child, tagname, parser, data)
@@ -36,18 +36,18 @@ module Gtk
     end
 
     def parser_finished(builder)
-      __return_value = LibGtk.buildable_parser_finished(to_unsafe.as(LibGtk::Buildable*), builder.to_unsafe.as(LibGtk::Builder*))
-      __return_value
+      LibGtk.buildable_parser_finished(to_unsafe.as(LibGtk::Buildable*), builder.to_unsafe.as(LibGtk::Builder*))
+      nil
     end
 
     def set_buildable_property(builder, name, value)
-      __return_value = LibGtk.buildable_set_buildable_property(to_unsafe.as(LibGtk::Buildable*), builder.to_unsafe.as(LibGtk::Builder*), name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
-      __return_value
+      LibGtk.buildable_set_buildable_property(to_unsafe.as(LibGtk::Buildable*), builder.to_unsafe.as(LibGtk::Builder*), name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
+      nil
     end
 
     def name=(name)
-      __return_value = LibGtk.buildable_set_name(to_unsafe.as(LibGtk::Buildable*), name.to_unsafe)
-      __return_value
+      LibGtk.buildable_set_name(to_unsafe.as(LibGtk::Buildable*), name.to_unsafe)
+      nil
     end
 
   end

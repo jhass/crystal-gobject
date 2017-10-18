@@ -20,6 +20,11 @@ module GLib
       __return_value
     end
 
+    def sequence
+      __return_value = LibGLib.sequence_iter_get_sequence(to_unsafe.as(LibGLib::SequenceIter*))
+      GLib::Sequence.new(__return_value)
+    end
+
     def begin?
       __return_value = LibGLib.sequence_iter_is_begin(to_unsafe.as(LibGLib::SequenceIter*))
       __return_value
@@ -28,6 +33,21 @@ module GLib
     def end?
       __return_value = LibGLib.sequence_iter_is_end(to_unsafe.as(LibGLib::SequenceIter*))
       __return_value
+    end
+
+    def move(delta)
+      __return_value = LibGLib.sequence_iter_move(to_unsafe.as(LibGLib::SequenceIter*), Int32.new(delta))
+      GLib::SequenceIter.new(__return_value)
+    end
+
+    def next
+      __return_value = LibGLib.sequence_iter_next(to_unsafe.as(LibGLib::SequenceIter*))
+      GLib::SequenceIter.new(__return_value)
+    end
+
+    def prev
+      __return_value = LibGLib.sequence_iter_prev(to_unsafe.as(LibGLib::SequenceIter*))
+      GLib::SequenceIter.new(__return_value)
     end
 
   end

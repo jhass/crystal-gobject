@@ -16,23 +16,23 @@ module Pango
     end
 
     def max(other)
-      __return_value = LibPango.coverage_max(to_unsafe.as(LibPango::Coverage*), other.to_unsafe.as(LibPango::Coverage*))
-      __return_value
+      LibPango.coverage_max(to_unsafe.as(LibPango::Coverage*), other.to_unsafe.as(LibPango::Coverage*))
+      nil
     end
 
     def set(index, level : Pango::CoverageLevel)
-      __return_value = LibPango.coverage_set(to_unsafe.as(LibPango::Coverage*), Int32.new(index), level)
-      __return_value
+      LibPango.coverage_set(to_unsafe.as(LibPango::Coverage*), Int32.new(index), level)
+      nil
     end
 
     def to_bytes(bytes, n_bytes)
-      __return_value = LibPango.coverage_to_bytes(to_unsafe.as(LibPango::Coverage*), bytes, n_bytes)
-      __return_value
+      LibPango.coverage_to_bytes(to_unsafe.as(LibPango::Coverage*), bytes, n_bytes)
+      nil
     end
 
     def unref
-      __return_value = LibPango.coverage_unref(to_unsafe.as(LibPango::Coverage*))
-      __return_value
+      LibPango.coverage_unref(to_unsafe.as(LibPango::Coverage*))
+      nil
     end
 
   end

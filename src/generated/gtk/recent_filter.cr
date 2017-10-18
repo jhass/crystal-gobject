@@ -15,38 +15,38 @@ module Gtk
     end
 
     def add_age(days)
-      __return_value = LibGtk.recent_filter_add_age(to_unsafe.as(LibGtk::RecentFilter*), Int32.new(days))
-      __return_value
+      LibGtk.recent_filter_add_age(to_unsafe.as(LibGtk::RecentFilter*), Int32.new(days))
+      nil
     end
 
     def add_application(application)
-      __return_value = LibGtk.recent_filter_add_application(to_unsafe.as(LibGtk::RecentFilter*), application.to_unsafe)
-      __return_value
+      LibGtk.recent_filter_add_application(to_unsafe.as(LibGtk::RecentFilter*), application.to_unsafe)
+      nil
     end
 
     def add_custom(needed : Gtk::RecentFilterFlags, func, data, data_destroy)
-      __return_value = LibGtk.recent_filter_add_custom(to_unsafe.as(LibGtk::RecentFilter*), needed, func, data ? data : nil, data_destroy)
-      __return_value
+      LibGtk.recent_filter_add_custom(to_unsafe.as(LibGtk::RecentFilter*), needed, func, data ? data : nil, data_destroy)
+      nil
     end
 
     def add_group(group)
-      __return_value = LibGtk.recent_filter_add_group(to_unsafe.as(LibGtk::RecentFilter*), group.to_unsafe)
-      __return_value
+      LibGtk.recent_filter_add_group(to_unsafe.as(LibGtk::RecentFilter*), group.to_unsafe)
+      nil
     end
 
     def add_mime_type(mime_type)
-      __return_value = LibGtk.recent_filter_add_mime_type(to_unsafe.as(LibGtk::RecentFilter*), mime_type.to_unsafe)
-      __return_value
+      LibGtk.recent_filter_add_mime_type(to_unsafe.as(LibGtk::RecentFilter*), mime_type.to_unsafe)
+      nil
     end
 
     def add_pattern(pattern)
-      __return_value = LibGtk.recent_filter_add_pattern(to_unsafe.as(LibGtk::RecentFilter*), pattern.to_unsafe)
-      __return_value
+      LibGtk.recent_filter_add_pattern(to_unsafe.as(LibGtk::RecentFilter*), pattern.to_unsafe)
+      nil
     end
 
     def add_pixbuf_formats
-      __return_value = LibGtk.recent_filter_add_pixbuf_formats(to_unsafe.as(LibGtk::RecentFilter*))
-      __return_value
+      LibGtk.recent_filter_add_pixbuf_formats(to_unsafe.as(LibGtk::RecentFilter*))
+      nil
     end
 
     def filter(filter_info)
@@ -65,8 +65,8 @@ module Gtk
     end
 
     def name=(name)
-      __return_value = LibGtk.recent_filter_set_name(to_unsafe.as(LibGtk::RecentFilter*), name.to_unsafe)
-      __return_value
+      LibGtk.recent_filter_set_name(to_unsafe.as(LibGtk::RecentFilter*), name.to_unsafe)
+      nil
     end
 
   end

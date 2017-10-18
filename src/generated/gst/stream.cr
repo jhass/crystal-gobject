@@ -66,23 +66,23 @@ module Gst
     end
 
     def caps=(caps)
-      __return_value = LibGst.stream_set_caps(to_unsafe.as(LibGst::Stream*), caps ? caps.to_unsafe.as(LibGst::Caps*) : nil)
-      __return_value
+      LibGst.stream_set_caps(to_unsafe.as(LibGst::Stream*), caps ? caps.to_unsafe.as(LibGst::Caps*) : nil)
+      nil
     end
 
     def stream_flags=(flags : Gst::StreamFlags)
-      __return_value = LibGst.stream_set_stream_flags(to_unsafe.as(LibGst::Stream*), flags)
-      __return_value
+      LibGst.stream_set_stream_flags(to_unsafe.as(LibGst::Stream*), flags)
+      nil
     end
 
     def stream_type=(stream_type : Gst::StreamType)
-      __return_value = LibGst.stream_set_stream_type(to_unsafe.as(LibGst::Stream*), stream_type)
-      __return_value
+      LibGst.stream_set_stream_type(to_unsafe.as(LibGst::Stream*), stream_type)
+      nil
     end
 
     def tags=(tags)
-      __return_value = LibGst.stream_set_tags(to_unsafe.as(LibGst::Stream*), tags ? tags.to_unsafe.as(LibGst::TagList*) : nil)
-      __return_value
+      LibGst.stream_set_tags(to_unsafe.as(LibGst::Stream*), tags ? tags.to_unsafe.as(LibGst::TagList*) : nil)
+      nil
     end
 
   end

@@ -33,8 +33,8 @@ module Gst
     end
 
     def abort_state
-      __return_value = LibGst.element_abort_state(to_unsafe.as(LibGst::Element*))
-      __return_value
+      LibGst.element_abort_state(to_unsafe.as(LibGst::Element*))
+      nil
     end
 
     def add_pad(pad)
@@ -53,8 +53,8 @@ module Gst
     end
 
     def call_async(func, user_data, destroy_notify)
-      __return_value = LibGst.element_call_async(to_unsafe.as(LibGst::Element*), func, user_data ? user_data : nil, destroy_notify)
-      __return_value
+      LibGst.element_call_async(to_unsafe.as(LibGst::Element*), func, user_data ? user_data : nil, destroy_notify)
+      nil
     end
 
     def change_state(transition : Gst::StateChange)
@@ -68,8 +68,8 @@ module Gst
     end
 
     def create_all_pads
-      __return_value = LibGst.element_create_all_pads(to_unsafe.as(LibGst::Element*))
-      __return_value
+      LibGst.element_create_all_pads(to_unsafe.as(LibGst::Element*))
+      nil
     end
 
     def base_time
@@ -183,23 +183,23 @@ module Gst
     end
 
     def lost_state
-      __return_value = LibGst.element_lost_state(to_unsafe.as(LibGst::Element*))
-      __return_value
+      LibGst.element_lost_state(to_unsafe.as(LibGst::Element*))
+      nil
     end
 
     def message_full(type : Gst::MessageType, domain, code, text, debug, file, function, line)
-      __return_value = LibGst.element_message_full(to_unsafe.as(LibGst::Element*), type, UInt32.new(domain), Int32.new(code), text ? text.to_unsafe : nil, debug ? debug.to_unsafe : nil, file.to_unsafe, function.to_unsafe, Int32.new(line))
-      __return_value
+      LibGst.element_message_full(to_unsafe.as(LibGst::Element*), type, UInt32.new(domain), Int32.new(code), text ? text.to_unsafe : nil, debug ? debug.to_unsafe : nil, file.to_unsafe, function.to_unsafe, Int32.new(line))
+      nil
     end
 
     def message_full_with_details(type : Gst::MessageType, domain, code, text, debug, file, function, line, structure)
-      __return_value = LibGst.element_message_full_with_details(to_unsafe.as(LibGst::Element*), type, UInt32.new(domain), Int32.new(code), text ? text.to_unsafe : nil, debug ? debug.to_unsafe : nil, file.to_unsafe, function.to_unsafe, Int32.new(line), structure.to_unsafe.as(LibGst::Structure*))
-      __return_value
+      LibGst.element_message_full_with_details(to_unsafe.as(LibGst::Element*), type, UInt32.new(domain), Int32.new(code), text ? text.to_unsafe : nil, debug ? debug.to_unsafe : nil, file.to_unsafe, function.to_unsafe, Int32.new(line), structure.to_unsafe.as(LibGst::Structure*))
+      nil
     end
 
     def no_more_pads
-      __return_value = LibGst.element_no_more_pads(to_unsafe.as(LibGst::Element*))
-      __return_value
+      LibGst.element_no_more_pads(to_unsafe.as(LibGst::Element*))
+      nil
     end
 
     def post_message(message)
@@ -233,8 +233,8 @@ module Gst
     end
 
     def release_request_pad(pad)
-      __return_value = LibGst.element_release_request_pad(to_unsafe.as(LibGst::Element*), pad.to_unsafe.as(LibGst::Pad*))
-      __return_value
+      LibGst.element_release_request_pad(to_unsafe.as(LibGst::Element*), pad.to_unsafe.as(LibGst::Pad*))
+      nil
     end
 
     def remove_pad(pad)
@@ -243,8 +243,8 @@ module Gst
     end
 
     def remove_property_notify_watch(watch_id)
-      __return_value = LibGst.element_remove_property_notify_watch(to_unsafe.as(LibGst::Element*), UInt64.new(watch_id))
-      __return_value
+      LibGst.element_remove_property_notify_watch(to_unsafe.as(LibGst::Element*), UInt64.new(watch_id))
+      nil
     end
 
     def request_pad(templ, name, caps)
@@ -268,13 +268,13 @@ module Gst
     end
 
     def base_time=(time)
-      __return_value = LibGst.element_set_base_time(to_unsafe.as(LibGst::Element*), UInt64.new(time))
-      __return_value
+      LibGst.element_set_base_time(to_unsafe.as(LibGst::Element*), UInt64.new(time))
+      nil
     end
 
     def bus=(bus)
-      __return_value = LibGst.element_set_bus(to_unsafe.as(LibGst::Element*), bus.to_unsafe.as(LibGst::Bus*))
-      __return_value
+      LibGst.element_set_bus(to_unsafe.as(LibGst::Element*), bus.to_unsafe.as(LibGst::Bus*))
+      nil
     end
 
     def clock=(clock)
@@ -283,8 +283,8 @@ module Gst
     end
 
     def context=(context)
-      __return_value = LibGst.element_set_context(to_unsafe.as(LibGst::Element*), context.to_unsafe.as(LibGst::Context*))
-      __return_value
+      LibGst.element_set_context(to_unsafe.as(LibGst::Element*), context.to_unsafe.as(LibGst::Context*))
+      nil
     end
 
     def locked_state=(locked_state)
@@ -293,8 +293,8 @@ module Gst
     end
 
     def start_time=(time)
-      __return_value = LibGst.element_set_start_time(to_unsafe.as(LibGst::Element*), UInt64.new(time))
-      __return_value
+      LibGst.element_set_start_time(to_unsafe.as(LibGst::Element*), UInt64.new(time))
+      nil
     end
 
     def state=(state : Gst::State)
@@ -308,13 +308,13 @@ module Gst
     end
 
     def unlink(dest)
-      __return_value = LibGst.element_unlink(to_unsafe.as(LibGst::Element*), dest.to_unsafe.as(LibGst::Element*))
-      __return_value
+      LibGst.element_unlink(to_unsafe.as(LibGst::Element*), dest.to_unsafe.as(LibGst::Element*))
+      nil
     end
 
     def unlink_pads(srcpadname, dest, destpadname)
-      __return_value = LibGst.element_unlink_pads(to_unsafe.as(LibGst::Element*), srcpadname.to_unsafe, dest.to_unsafe.as(LibGst::Element*), destpadname.to_unsafe)
-      __return_value
+      LibGst.element_unlink_pads(to_unsafe.as(LibGst::Element*), srcpadname.to_unsafe, dest.to_unsafe.as(LibGst::Element*), destpadname.to_unsafe)
+      nil
     end
 
     alias NoMorePadsSignal = Element ->

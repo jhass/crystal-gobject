@@ -72,8 +72,8 @@ module Gio
     end
 
     def read_line_async(io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.data_input_stream_read_line_async(to_unsafe.as(LibGio::DataInputStream*), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.data_input_stream_read_line_async(to_unsafe.as(LibGio::DataInputStream*), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def read_line_finish(result, length)
@@ -126,8 +126,8 @@ module Gio
     end
 
     def read_until_async(stop_chars, io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.data_input_stream_read_until_async(to_unsafe.as(LibGio::DataInputStream*), stop_chars.to_unsafe, Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.data_input_stream_read_until_async(to_unsafe.as(LibGio::DataInputStream*), stop_chars.to_unsafe, Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def read_until_finish(result, length)
@@ -145,8 +145,8 @@ module Gio
     end
 
     def read_upto_async(stop_chars, stop_chars_len, io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.data_input_stream_read_upto_async(to_unsafe.as(LibGio::DataInputStream*), stop_chars.to_unsafe, Int64.new(stop_chars_len), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.data_input_stream_read_upto_async(to_unsafe.as(LibGio::DataInputStream*), stop_chars.to_unsafe, Int64.new(stop_chars_len), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def read_upto_finish(result, length)
@@ -157,13 +157,13 @@ module Gio
     end
 
     def byte_order=(order : Gio::DataStreamByteOrder)
-      __return_value = LibGio.data_input_stream_set_byte_order(to_unsafe.as(LibGio::DataInputStream*), order)
-      __return_value
+      LibGio.data_input_stream_set_byte_order(to_unsafe.as(LibGio::DataInputStream*), order)
+      nil
     end
 
     def newline_type=(type : Gio::DataStreamNewlineType)
-      __return_value = LibGio.data_input_stream_set_newline_type(to_unsafe.as(LibGio::DataInputStream*), type)
-      __return_value
+      LibGio.data_input_stream_set_newline_type(to_unsafe.as(LibGio::DataInputStream*), type)
+      nil
     end
 
   end

@@ -79,28 +79,28 @@ module Gio
     end
 
     def self.sync
-      __return_value = LibGio.settings_sync
-      __return_value
+      LibGio.settings_sync
+      nil
     end
 
     def self.unbind(object, property)
-      __return_value = LibGio.settings_unbind(object.to_unsafe.as(LibGObject::Object*), property.to_unsafe)
-      __return_value
+      LibGio.settings_unbind(object.to_unsafe.as(LibGObject::Object*), property.to_unsafe)
+      nil
     end
 
     def apply
-      __return_value = LibGio.settings_apply(to_unsafe.as(LibGio::Settings*))
-      __return_value
+      LibGio.settings_apply(to_unsafe.as(LibGio::Settings*))
+      nil
     end
 
     def bind(key, object, property, flags : Gio::SettingsBindFlags)
-      __return_value = LibGio.settings_bind(to_unsafe.as(LibGio::Settings*), key.to_unsafe, object.to_unsafe.as(LibGObject::Object*), property.to_unsafe, flags)
-      __return_value
+      LibGio.settings_bind(to_unsafe.as(LibGio::Settings*), key.to_unsafe, object.to_unsafe.as(LibGObject::Object*), property.to_unsafe, flags)
+      nil
     end
 
     def bind_writable(key, object, property, inverted)
-      __return_value = LibGio.settings_bind_writable(to_unsafe.as(LibGio::Settings*), key.to_unsafe, object.to_unsafe.as(LibGObject::Object*), property.to_unsafe, inverted)
-      __return_value
+      LibGio.settings_bind_writable(to_unsafe.as(LibGio::Settings*), key.to_unsafe, object.to_unsafe.as(LibGObject::Object*), property.to_unsafe, inverted)
+      nil
     end
 
     def create_action(key)
@@ -109,8 +109,8 @@ module Gio
     end
 
     def delay
-      __return_value = LibGio.settings_delay(to_unsafe.as(LibGio::Settings*))
-      __return_value
+      LibGio.settings_delay(to_unsafe.as(LibGio::Settings*))
+      nil
     end
 
     def boolean(key)
@@ -159,8 +159,8 @@ module Gio
     end
 
     def mapped(key, mapping, user_data)
-      __return_value = LibGio.settings_get_mapped(to_unsafe.as(LibGio::Settings*), key.to_unsafe, mapping, user_data ? user_data : nil)
-      __return_value if __return_value
+      LibGio.settings_get_mapped(to_unsafe.as(LibGio::Settings*), key.to_unsafe, mapping, user_data ? user_data : nil)
+      nil
     end
 
     def range(key)
@@ -219,13 +219,13 @@ module Gio
     end
 
     def reset(key)
-      __return_value = LibGio.settings_reset(to_unsafe.as(LibGio::Settings*), key.to_unsafe)
-      __return_value
+      LibGio.settings_reset(to_unsafe.as(LibGio::Settings*), key.to_unsafe)
+      nil
     end
 
     def revert
-      __return_value = LibGio.settings_revert(to_unsafe.as(LibGio::Settings*))
-      __return_value
+      LibGio.settings_revert(to_unsafe.as(LibGio::Settings*))
+      nil
     end
 
     def set_boolean(key, value)

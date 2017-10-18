@@ -111,8 +111,8 @@ module Gst
     end
 
     def element_private
-      __return_value = LibGst.pad_get_element_private(to_unsafe.as(LibGst::Pad*))
-      __return_value if __return_value
+      LibGst.pad_get_element_private(to_unsafe.as(LibGst::Pad*))
+      nil
     end
 
     def last_flow_return
@@ -226,8 +226,8 @@ module Gst
     end
 
     def mark_reconfigure
-      __return_value = LibGst.pad_mark_reconfigure(to_unsafe.as(LibGst::Pad*))
-      __return_value
+      LibGst.pad_mark_reconfigure(to_unsafe.as(LibGst::Pad*))
+      nil
     end
 
     def needs_reconfigure
@@ -336,8 +336,8 @@ module Gst
     end
 
     def remove_probe(id)
-      __return_value = LibGst.pad_remove_probe(to_unsafe.as(LibGst::Pad*), UInt64.new(id))
-      __return_value
+      LibGst.pad_remove_probe(to_unsafe.as(LibGst::Pad*), UInt64.new(id))
+      nil
     end
 
     def send_event(event)
@@ -346,13 +346,13 @@ module Gst
     end
 
     def set_activate_function_full(activate, user_data, notify)
-      __return_value = LibGst.pad_set_activate_function_full(to_unsafe.as(LibGst::Pad*), activate, user_data ? user_data : nil, notify)
-      __return_value
+      LibGst.pad_set_activate_function_full(to_unsafe.as(LibGst::Pad*), activate, user_data ? user_data : nil, notify)
+      nil
     end
 
     def set_activatemode_function_full(activatemode, user_data, notify)
-      __return_value = LibGst.pad_set_activatemode_function_full(to_unsafe.as(LibGst::Pad*), activatemode, user_data ? user_data : nil, notify)
-      __return_value
+      LibGst.pad_set_activatemode_function_full(to_unsafe.as(LibGst::Pad*), activatemode, user_data ? user_data : nil, notify)
+      nil
     end
 
     def active=(active)
@@ -361,58 +361,58 @@ module Gst
     end
 
     def set_chain_function_full(chain, user_data, notify)
-      __return_value = LibGst.pad_set_chain_function_full(to_unsafe.as(LibGst::Pad*), chain, user_data ? user_data : nil, notify)
-      __return_value
+      LibGst.pad_set_chain_function_full(to_unsafe.as(LibGst::Pad*), chain, user_data ? user_data : nil, notify)
+      nil
     end
 
     def set_chain_list_function_full(chainlist, user_data, notify)
-      __return_value = LibGst.pad_set_chain_list_function_full(to_unsafe.as(LibGst::Pad*), chainlist, user_data ? user_data : nil, notify)
-      __return_value
+      LibGst.pad_set_chain_list_function_full(to_unsafe.as(LibGst::Pad*), chainlist, user_data ? user_data : nil, notify)
+      nil
     end
 
     def element_private=(priv)
-      __return_value = LibGst.pad_set_element_private(to_unsafe.as(LibGst::Pad*), priv ? priv : nil)
-      __return_value
+      LibGst.pad_set_element_private(to_unsafe.as(LibGst::Pad*), priv ? priv : nil)
+      nil
     end
 
     def set_event_full_function_full(event, user_data, notify)
-      __return_value = LibGst.pad_set_event_full_function_full(to_unsafe.as(LibGst::Pad*), event, user_data ? user_data : nil, notify)
-      __return_value
+      LibGst.pad_set_event_full_function_full(to_unsafe.as(LibGst::Pad*), event, user_data ? user_data : nil, notify)
+      nil
     end
 
     def set_event_function_full(event, user_data, notify)
-      __return_value = LibGst.pad_set_event_function_full(to_unsafe.as(LibGst::Pad*), event, user_data ? user_data : nil, notify)
-      __return_value
+      LibGst.pad_set_event_function_full(to_unsafe.as(LibGst::Pad*), event, user_data ? user_data : nil, notify)
+      nil
     end
 
     def set_getrange_function_full(get, user_data, notify)
-      __return_value = LibGst.pad_set_getrange_function_full(to_unsafe.as(LibGst::Pad*), get, user_data ? user_data : nil, notify)
-      __return_value
+      LibGst.pad_set_getrange_function_full(to_unsafe.as(LibGst::Pad*), get, user_data ? user_data : nil, notify)
+      nil
     end
 
     def set_iterate_internal_links_function_full(iterintlink, user_data, notify)
-      __return_value = LibGst.pad_set_iterate_internal_links_function_full(to_unsafe.as(LibGst::Pad*), iterintlink, user_data ? user_data : nil, notify)
-      __return_value
+      LibGst.pad_set_iterate_internal_links_function_full(to_unsafe.as(LibGst::Pad*), iterintlink, user_data ? user_data : nil, notify)
+      nil
     end
 
     def set_link_function_full(link, user_data, notify)
-      __return_value = LibGst.pad_set_link_function_full(to_unsafe.as(LibGst::Pad*), link, user_data ? user_data : nil, notify)
-      __return_value
+      LibGst.pad_set_link_function_full(to_unsafe.as(LibGst::Pad*), link, user_data ? user_data : nil, notify)
+      nil
     end
 
     def offset=(offset)
-      __return_value = LibGst.pad_set_offset(to_unsafe.as(LibGst::Pad*), Int64.new(offset))
-      __return_value
+      LibGst.pad_set_offset(to_unsafe.as(LibGst::Pad*), Int64.new(offset))
+      nil
     end
 
     def set_query_function_full(query, user_data, notify)
-      __return_value = LibGst.pad_set_query_function_full(to_unsafe.as(LibGst::Pad*), query, user_data ? user_data : nil, notify)
-      __return_value
+      LibGst.pad_set_query_function_full(to_unsafe.as(LibGst::Pad*), query, user_data ? user_data : nil, notify)
+      nil
     end
 
     def set_unlink_function_full(unlink, user_data, notify)
-      __return_value = LibGst.pad_set_unlink_function_full(to_unsafe.as(LibGst::Pad*), unlink, user_data ? user_data : nil, notify)
-      __return_value
+      LibGst.pad_set_unlink_function_full(to_unsafe.as(LibGst::Pad*), unlink, user_data ? user_data : nil, notify)
+      nil
     end
 
     def start_task(func, user_data, notify)
@@ -421,8 +421,8 @@ module Gst
     end
 
     def sticky_events_foreach(foreach_func, user_data)
-      __return_value = LibGst.pad_sticky_events_foreach(to_unsafe.as(LibGst::Pad*), foreach_func, user_data ? user_data : nil)
-      __return_value
+      LibGst.pad_sticky_events_foreach(to_unsafe.as(LibGst::Pad*), foreach_func, user_data ? user_data : nil)
+      nil
     end
 
     def stop_task
@@ -441,8 +441,8 @@ module Gst
     end
 
     def use_fixed_caps
-      __return_value = LibGst.pad_use_fixed_caps(to_unsafe.as(LibGst::Pad*))
-      __return_value
+      LibGst.pad_use_fixed_caps(to_unsafe.as(LibGst::Pad*))
+      nil
     end
 
     alias LinkedSignal = Pad, Gst::Pad ->

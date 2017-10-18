@@ -16,13 +16,13 @@ module GLib
     end
 
     def add_value(value)
-      __return_value = LibGLib.variant_builder_add_value(to_unsafe.as(LibGLib::VariantBuilder*), value.to_unsafe.as(LibGLib::Variant*))
-      __return_value
+      LibGLib.variant_builder_add_value(to_unsafe.as(LibGLib::VariantBuilder*), value.to_unsafe.as(LibGLib::Variant*))
+      nil
     end
 
     def close
-      __return_value = LibGLib.variant_builder_close(to_unsafe.as(LibGLib::VariantBuilder*))
-      __return_value
+      LibGLib.variant_builder_close(to_unsafe.as(LibGLib::VariantBuilder*))
+      nil
     end
 
     def end
@@ -31,8 +31,8 @@ module GLib
     end
 
     def open(type)
-      __return_value = LibGLib.variant_builder_open(to_unsafe.as(LibGLib::VariantBuilder*), type.to_unsafe.as(LibGLib::VariantType*))
-      __return_value
+      LibGLib.variant_builder_open(to_unsafe.as(LibGLib::VariantBuilder*), type.to_unsafe.as(LibGLib::VariantType*))
+      nil
     end
 
     def ref
@@ -41,8 +41,8 @@ module GLib
     end
 
     def unref
-      __return_value = LibGLib.variant_builder_unref(to_unsafe.as(LibGLib::VariantBuilder*))
-      __return_value
+      LibGLib.variant_builder_unref(to_unsafe.as(LibGLib::VariantBuilder*))
+      nil
     end
 
   end

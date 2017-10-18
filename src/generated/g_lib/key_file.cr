@@ -199,13 +199,13 @@ module GLib
     end
 
     def set_boolean(group_name, key, value)
-      __return_value = LibGLib.key_file_set_boolean(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, value)
-      __return_value
+      LibGLib.key_file_set_boolean(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, value)
+      nil
     end
 
     def set_boolean_list(group_name, key, list, length)
-      __return_value = LibGLib.key_file_set_boolean_list(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, list, UInt64.new(length))
-      __return_value
+      LibGLib.key_file_set_boolean_list(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, list, UInt64.new(length))
+      nil
     end
 
     def set_comment(group_name, key, comment)
@@ -216,63 +216,63 @@ module GLib
     end
 
     def set_double(group_name, key, value)
-      __return_value = LibGLib.key_file_set_double(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, Float64.new(value))
-      __return_value
+      LibGLib.key_file_set_double(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, Float64.new(value))
+      nil
     end
 
     def set_double_list(group_name, key, list, length)
-      __return_value = LibGLib.key_file_set_double_list(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, list, UInt64.new(length))
-      __return_value
+      LibGLib.key_file_set_double_list(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, list, UInt64.new(length))
+      nil
     end
 
     def set_int64(group_name, key, value)
-      __return_value = LibGLib.key_file_set_int64(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, Int64.new(value))
-      __return_value
+      LibGLib.key_file_set_int64(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, Int64.new(value))
+      nil
     end
 
     def set_integer(group_name, key, value)
-      __return_value = LibGLib.key_file_set_integer(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, Int32.new(value))
-      __return_value
+      LibGLib.key_file_set_integer(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, Int32.new(value))
+      nil
     end
 
     def set_integer_list(group_name, key, list, length)
-      __return_value = LibGLib.key_file_set_integer_list(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, list, UInt64.new(length))
-      __return_value
+      LibGLib.key_file_set_integer_list(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, list, UInt64.new(length))
+      nil
     end
 
     def list_separator=(separator)
-      __return_value = LibGLib.key_file_set_list_separator(to_unsafe.as(LibGLib::KeyFile*), Int8.new(separator))
-      __return_value
+      LibGLib.key_file_set_list_separator(to_unsafe.as(LibGLib::KeyFile*), Int8.new(separator))
+      nil
     end
 
     def set_locale_string(group_name, key, locale, string)
-      __return_value = LibGLib.key_file_set_locale_string(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, locale.to_unsafe, string.to_unsafe)
-      __return_value
+      LibGLib.key_file_set_locale_string(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, locale.to_unsafe, string.to_unsafe)
+      nil
     end
 
     def set_locale_string_list(group_name, key, locale, list, length)
-      __return_value = LibGLib.key_file_set_locale_string_list(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, locale.to_unsafe, list, UInt64.new(length))
-      __return_value
+      LibGLib.key_file_set_locale_string_list(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, locale.to_unsafe, list, UInt64.new(length))
+      nil
     end
 
     def set_string(group_name, key, string)
-      __return_value = LibGLib.key_file_set_string(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, string.to_unsafe)
-      __return_value
+      LibGLib.key_file_set_string(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, string.to_unsafe)
+      nil
     end
 
     def set_string_list(group_name, key, list, length)
-      __return_value = LibGLib.key_file_set_string_list(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, list, UInt64.new(length))
-      __return_value
+      LibGLib.key_file_set_string_list(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, list, UInt64.new(length))
+      nil
     end
 
     def set_uint64(group_name, key, value)
-      __return_value = LibGLib.key_file_set_uint64(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, UInt64.new(value))
-      __return_value
+      LibGLib.key_file_set_uint64(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, UInt64.new(value))
+      nil
     end
 
     def set_value(group_name, key, value)
-      __return_value = LibGLib.key_file_set_value(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, value.to_unsafe)
-      __return_value
+      LibGLib.key_file_set_value(to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, key.to_unsafe, value.to_unsafe)
+      nil
     end
 
     def to_data(length)
@@ -283,8 +283,8 @@ module GLib
     end
 
     def unref
-      __return_value = LibGLib.key_file_unref(to_unsafe.as(LibGLib::KeyFile*))
-      __return_value
+      LibGLib.key_file_unref(to_unsafe.as(LibGLib::KeyFile*))
+      nil
     end
 
     def self.error_quark

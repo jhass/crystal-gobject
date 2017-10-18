@@ -34,8 +34,8 @@ module Gtk
     end
 
     def add_callback_symbol(callback_name, callback_symbol)
-      __return_value = LibGtk.builder_add_callback_symbol(to_unsafe.as(LibGtk::Builder*), callback_name.to_unsafe, callback_symbol)
-      __return_value
+      LibGtk.builder_add_callback_symbol(to_unsafe.as(LibGtk::Builder*), callback_name.to_unsafe, callback_symbol)
+      nil
     end
 
     def add_from_file(filename)
@@ -81,18 +81,18 @@ module Gtk
     end
 
     def connect_signals(user_data)
-      __return_value = LibGtk.builder_connect_signals(to_unsafe.as(LibGtk::Builder*), user_data ? user_data : nil)
-      __return_value
+      LibGtk.builder_connect_signals(to_unsafe.as(LibGtk::Builder*), user_data ? user_data : nil)
+      nil
     end
 
     def connect_signals_full(func, user_data)
-      __return_value = LibGtk.builder_connect_signals_full(to_unsafe.as(LibGtk::Builder*), func, user_data ? user_data : nil)
-      __return_value
+      LibGtk.builder_connect_signals_full(to_unsafe.as(LibGtk::Builder*), func, user_data ? user_data : nil)
+      nil
     end
 
     def expose_object(name, object)
-      __return_value = LibGtk.builder_expose_object(to_unsafe.as(LibGtk::Builder*), name.to_unsafe, object.to_unsafe.as(LibGObject::Object*))
-      __return_value
+      LibGtk.builder_expose_object(to_unsafe.as(LibGtk::Builder*), name.to_unsafe, object.to_unsafe.as(LibGObject::Object*))
+      nil
     end
 
     def extend_with_template(widget, template_type, buffer, length)
@@ -128,13 +128,13 @@ module Gtk
     end
 
     def application=(application)
-      __return_value = LibGtk.builder_set_application(to_unsafe.as(LibGtk::Builder*), application.to_unsafe.as(LibGtk::Application*))
-      __return_value
+      LibGtk.builder_set_application(to_unsafe.as(LibGtk::Builder*), application.to_unsafe.as(LibGtk::Application*))
+      nil
     end
 
     def translation_domain=(domain)
-      __return_value = LibGtk.builder_set_translation_domain(to_unsafe.as(LibGtk::Builder*), domain ? domain.to_unsafe : nil)
-      __return_value
+      LibGtk.builder_set_translation_domain(to_unsafe.as(LibGtk::Builder*), domain ? domain.to_unsafe : nil)
+      nil
     end
 
     def value_from_string(pspec, string, value)

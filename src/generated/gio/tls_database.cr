@@ -21,8 +21,8 @@ module Gio
     end
 
     def lookup_certificate_for_handle_async(handle, interaction, flags : Gio::TlsDatabaseLookupFlags, cancellable, callback, user_data)
-      __return_value = LibGio.tls_database_lookup_certificate_for_handle_async(to_unsafe.as(LibGio::TlsDatabase*), handle.to_unsafe, interaction ? interaction.to_unsafe.as(LibGio::TlsInteraction*) : nil, flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.tls_database_lookup_certificate_for_handle_async(to_unsafe.as(LibGio::TlsDatabase*), handle.to_unsafe, interaction ? interaction.to_unsafe.as(LibGio::TlsInteraction*) : nil, flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def lookup_certificate_for_handle_finish(result)
@@ -40,8 +40,8 @@ module Gio
     end
 
     def lookup_certificate_issuer_async(certificate, interaction, flags : Gio::TlsDatabaseLookupFlags, cancellable, callback, user_data)
-      __return_value = LibGio.tls_database_lookup_certificate_issuer_async(to_unsafe.as(LibGio::TlsDatabase*), certificate.to_unsafe.as(LibGio::TlsCertificate*), interaction ? interaction.to_unsafe.as(LibGio::TlsInteraction*) : nil, flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.tls_database_lookup_certificate_issuer_async(to_unsafe.as(LibGio::TlsDatabase*), certificate.to_unsafe.as(LibGio::TlsCertificate*), interaction ? interaction.to_unsafe.as(LibGio::TlsInteraction*) : nil, flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def lookup_certificate_issuer_finish(result)
@@ -59,8 +59,8 @@ module Gio
     end
 
     def lookup_certificates_issued_by_async(issuer_raw_dn, interaction, flags : Gio::TlsDatabaseLookupFlags, cancellable, callback, user_data)
-      __return_value = LibGio.tls_database_lookup_certificates_issued_by_async(to_unsafe.as(LibGio::TlsDatabase*), issuer_raw_dn, interaction ? interaction.to_unsafe.as(LibGio::TlsInteraction*) : nil, flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.tls_database_lookup_certificates_issued_by_async(to_unsafe.as(LibGio::TlsDatabase*), issuer_raw_dn, interaction ? interaction.to_unsafe.as(LibGio::TlsInteraction*) : nil, flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def lookup_certificates_issued_by_finish(result)
@@ -78,8 +78,8 @@ module Gio
     end
 
     def verify_chain_async(chain, purpose, identity, interaction, flags : Gio::TlsDatabaseVerifyFlags, cancellable, callback, user_data)
-      __return_value = LibGio.tls_database_verify_chain_async(to_unsafe.as(LibGio::TlsDatabase*), chain.to_unsafe.as(LibGio::TlsCertificate*), purpose.to_unsafe, identity ? identity.to_unsafe.as(LibGio::SocketConnectable*) : nil, interaction ? interaction.to_unsafe.as(LibGio::TlsInteraction*) : nil, flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.tls_database_verify_chain_async(to_unsafe.as(LibGio::TlsDatabase*), chain.to_unsafe.as(LibGio::TlsCertificate*), purpose.to_unsafe, identity ? identity.to_unsafe.as(LibGio::SocketConnectable*) : nil, interaction ? interaction.to_unsafe.as(LibGio::TlsInteraction*) : nil, flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def verify_chain_finish(result)

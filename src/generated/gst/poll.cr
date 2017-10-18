@@ -46,18 +46,18 @@ module Gst
     end
 
     def fd_ignored(fd)
-      __return_value = LibGst.poll_fd_ignored(to_unsafe.as(LibGst::Poll*), fd.to_unsafe.as(LibGst::PollFD*))
-      __return_value
+      LibGst.poll_fd_ignored(to_unsafe.as(LibGst::Poll*), fd.to_unsafe.as(LibGst::PollFD*))
+      nil
     end
 
     def free
-      __return_value = LibGst.poll_free(to_unsafe.as(LibGst::Poll*))
-      __return_value
+      LibGst.poll_free(to_unsafe.as(LibGst::Poll*))
+      nil
     end
 
     def read_gpollfd(fd)
-      __return_value = LibGst.poll_get_read_gpollfd(to_unsafe.as(LibGst::Poll*), fd.to_unsafe.as(LibGLib::PollFD*))
-      __return_value
+      LibGst.poll_get_read_gpollfd(to_unsafe.as(LibGst::Poll*), fd.to_unsafe.as(LibGLib::PollFD*))
+      nil
     end
 
     def read_control
@@ -71,8 +71,8 @@ module Gst
     end
 
     def restart
-      __return_value = LibGst.poll_restart(to_unsafe.as(LibGst::Poll*))
-      __return_value
+      LibGst.poll_restart(to_unsafe.as(LibGst::Poll*))
+      nil
     end
 
     def controllable=(controllable)
@@ -81,8 +81,8 @@ module Gst
     end
 
     def flushing=(flushing)
-      __return_value = LibGst.poll_set_flushing(to_unsafe.as(LibGst::Poll*), flushing)
-      __return_value
+      LibGst.poll_set_flushing(to_unsafe.as(LibGst::Poll*), flushing)
+      nil
     end
 
     def wait(timeout)

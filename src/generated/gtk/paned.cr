@@ -44,13 +44,13 @@ module Gtk
     end
 
     def add1(child)
-      __return_value = LibGtk.paned_add1(to_unsafe.as(LibGtk::Paned*), child.to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      LibGtk.paned_add1(to_unsafe.as(LibGtk::Paned*), child.to_unsafe.as(LibGtk::Widget*))
+      nil
     end
 
     def add2(child)
-      __return_value = LibGtk.paned_add2(to_unsafe.as(LibGtk::Paned*), child.to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      LibGtk.paned_add2(to_unsafe.as(LibGtk::Paned*), child.to_unsafe.as(LibGtk::Widget*))
+      nil
     end
 
     def child1
@@ -79,23 +79,23 @@ module Gtk
     end
 
     def pack1(child, resize, shrink)
-      __return_value = LibGtk.paned_pack1(to_unsafe.as(LibGtk::Paned*), child.to_unsafe.as(LibGtk::Widget*), resize, shrink)
-      __return_value
+      LibGtk.paned_pack1(to_unsafe.as(LibGtk::Paned*), child.to_unsafe.as(LibGtk::Widget*), resize, shrink)
+      nil
     end
 
     def pack2(child, resize, shrink)
-      __return_value = LibGtk.paned_pack2(to_unsafe.as(LibGtk::Paned*), child.to_unsafe.as(LibGtk::Widget*), resize, shrink)
-      __return_value
+      LibGtk.paned_pack2(to_unsafe.as(LibGtk::Paned*), child.to_unsafe.as(LibGtk::Widget*), resize, shrink)
+      nil
     end
 
     def position=(position)
-      __return_value = LibGtk.paned_set_position(to_unsafe.as(LibGtk::Paned*), Int32.new(position))
-      __return_value
+      LibGtk.paned_set_position(to_unsafe.as(LibGtk::Paned*), Int32.new(position))
+      nil
     end
 
     def wide_handle=(wide)
-      __return_value = LibGtk.paned_set_wide_handle(to_unsafe.as(LibGtk::Paned*), wide)
-      __return_value
+      LibGtk.paned_set_wide_handle(to_unsafe.as(LibGtk::Paned*), wide)
+      nil
     end
 
     alias AcceptPositionSignal = Paned -> Bool

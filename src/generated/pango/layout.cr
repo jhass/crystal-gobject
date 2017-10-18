@@ -14,8 +14,8 @@ module Pango
     end
 
     def context_changed
-      __return_value = LibPango.layout_context_changed(to_unsafe.as(LibPango::Layout*))
-      __return_value
+      LibPango.layout_context_changed(to_unsafe.as(LibPango::Layout*))
+      nil
     end
 
     def copy
@@ -54,8 +54,8 @@ module Pango
     end
 
     def cursor_pos(index, strong_pos, weak_pos)
-      __return_value = LibPango.layout_get_cursor_pos(to_unsafe.as(LibPango::Layout*), Int32.new(index), strong_pos, weak_pos)
-      __return_value
+      LibPango.layout_get_cursor_pos(to_unsafe.as(LibPango::Layout*), Int32.new(index), strong_pos, weak_pos)
+      nil
     end
 
     def ellipsize
@@ -64,8 +64,8 @@ module Pango
     end
 
     def extents(ink_rect, logical_rect)
-      __return_value = LibPango.layout_get_extents(to_unsafe.as(LibPango::Layout*), ink_rect, logical_rect)
-      __return_value
+      LibPango.layout_get_extents(to_unsafe.as(LibPango::Layout*), ink_rect, logical_rect)
+      nil
     end
 
     def font_description
@@ -119,8 +119,8 @@ module Pango
     end
 
     def log_attrs(attrs, n_attrs)
-      __return_value = LibPango.layout_get_log_attrs(to_unsafe.as(LibPango::Layout*), attrs, n_attrs)
-      __return_value
+      LibPango.layout_get_log_attrs(to_unsafe.as(LibPango::Layout*), attrs, n_attrs)
+      nil
     end
 
     def log_attrs_readonly(n_attrs)
@@ -129,13 +129,13 @@ module Pango
     end
 
     def pixel_extents(ink_rect, logical_rect)
-      __return_value = LibPango.layout_get_pixel_extents(to_unsafe.as(LibPango::Layout*), ink_rect, logical_rect)
-      __return_value
+      LibPango.layout_get_pixel_extents(to_unsafe.as(LibPango::Layout*), ink_rect, logical_rect)
+      nil
     end
 
     def pixel_size(width, height)
-      __return_value = LibPango.layout_get_pixel_size(to_unsafe.as(LibPango::Layout*), width, height)
-      __return_value
+      LibPango.layout_get_pixel_size(to_unsafe.as(LibPango::Layout*), width, height)
+      nil
     end
 
     def serial
@@ -149,8 +149,8 @@ module Pango
     end
 
     def size(width, height)
-      __return_value = LibPango.layout_get_size(to_unsafe.as(LibPango::Layout*), width, height)
-      __return_value
+      LibPango.layout_get_size(to_unsafe.as(LibPango::Layout*), width, height)
+      nil
     end
 
     def spacing
@@ -184,13 +184,13 @@ module Pango
     end
 
     def index_to_line_x(index, trailing, line, x_pos)
-      __return_value = LibPango.layout_index_to_line_x(to_unsafe.as(LibPango::Layout*), Int32.new(index), trailing, line, x_pos)
-      __return_value
+      LibPango.layout_index_to_line_x(to_unsafe.as(LibPango::Layout*), Int32.new(index), trailing, line, x_pos)
+      nil
     end
 
     def index_to_pos(index, pos)
-      __return_value = LibPango.layout_index_to_pos(to_unsafe.as(LibPango::Layout*), Int32.new(index), pos)
-      __return_value
+      LibPango.layout_index_to_pos(to_unsafe.as(LibPango::Layout*), Int32.new(index), pos)
+      nil
     end
 
     def ellipsized?
@@ -204,88 +204,88 @@ module Pango
     end
 
     def move_cursor_visually(strong, old_index, old_trailing, direction, new_index, new_trailing)
-      __return_value = LibPango.layout_move_cursor_visually(to_unsafe.as(LibPango::Layout*), strong, Int32.new(old_index), Int32.new(old_trailing), Int32.new(direction), new_index, new_trailing)
-      __return_value
+      LibPango.layout_move_cursor_visually(to_unsafe.as(LibPango::Layout*), strong, Int32.new(old_index), Int32.new(old_trailing), Int32.new(direction), new_index, new_trailing)
+      nil
     end
 
     def alignment=(alignment : Pango::Alignment)
-      __return_value = LibPango.layout_set_alignment(to_unsafe.as(LibPango::Layout*), alignment)
-      __return_value
+      LibPango.layout_set_alignment(to_unsafe.as(LibPango::Layout*), alignment)
+      nil
     end
 
     def attributes=(attrs)
-      __return_value = LibPango.layout_set_attributes(to_unsafe.as(LibPango::Layout*), attrs ? attrs.to_unsafe.as(LibPango::AttrList*) : nil)
-      __return_value
+      LibPango.layout_set_attributes(to_unsafe.as(LibPango::Layout*), attrs ? attrs.to_unsafe.as(LibPango::AttrList*) : nil)
+      nil
     end
 
     def auto_dir=(auto_dir)
-      __return_value = LibPango.layout_set_auto_dir(to_unsafe.as(LibPango::Layout*), auto_dir)
-      __return_value
+      LibPango.layout_set_auto_dir(to_unsafe.as(LibPango::Layout*), auto_dir)
+      nil
     end
 
     def ellipsize=(ellipsize : Pango::EllipsizeMode)
-      __return_value = LibPango.layout_set_ellipsize(to_unsafe.as(LibPango::Layout*), ellipsize)
-      __return_value
+      LibPango.layout_set_ellipsize(to_unsafe.as(LibPango::Layout*), ellipsize)
+      nil
     end
 
     def font_description=(desc)
-      __return_value = LibPango.layout_set_font_description(to_unsafe.as(LibPango::Layout*), desc ? desc.to_unsafe.as(LibPango::FontDescription*) : nil)
-      __return_value
+      LibPango.layout_set_font_description(to_unsafe.as(LibPango::Layout*), desc ? desc.to_unsafe.as(LibPango::FontDescription*) : nil)
+      nil
     end
 
     def height=(height)
-      __return_value = LibPango.layout_set_height(to_unsafe.as(LibPango::Layout*), Int32.new(height))
-      __return_value
+      LibPango.layout_set_height(to_unsafe.as(LibPango::Layout*), Int32.new(height))
+      nil
     end
 
     def indent=(indent)
-      __return_value = LibPango.layout_set_indent(to_unsafe.as(LibPango::Layout*), Int32.new(indent))
-      __return_value
+      LibPango.layout_set_indent(to_unsafe.as(LibPango::Layout*), Int32.new(indent))
+      nil
     end
 
     def justify=(justify)
-      __return_value = LibPango.layout_set_justify(to_unsafe.as(LibPango::Layout*), justify)
-      __return_value
+      LibPango.layout_set_justify(to_unsafe.as(LibPango::Layout*), justify)
+      nil
     end
 
     def set_markup(markup, length)
-      __return_value = LibPango.layout_set_markup(to_unsafe.as(LibPango::Layout*), markup.to_unsafe, Int32.new(length))
-      __return_value
+      LibPango.layout_set_markup(to_unsafe.as(LibPango::Layout*), markup.to_unsafe, Int32.new(length))
+      nil
     end
 
     def set_markup_with_accel(markup, length, accel_marker, accel_char)
-      __return_value = LibPango.layout_set_markup_with_accel(to_unsafe.as(LibPango::Layout*), markup.to_unsafe, Int32.new(length), UInt8.new(accel_marker), accel_char)
-      __return_value
+      LibPango.layout_set_markup_with_accel(to_unsafe.as(LibPango::Layout*), markup.to_unsafe, Int32.new(length), UInt8.new(accel_marker), accel_char)
+      nil
     end
 
     def single_paragraph_mode=(setting)
-      __return_value = LibPango.layout_set_single_paragraph_mode(to_unsafe.as(LibPango::Layout*), setting)
-      __return_value
+      LibPango.layout_set_single_paragraph_mode(to_unsafe.as(LibPango::Layout*), setting)
+      nil
     end
 
     def spacing=(spacing)
-      __return_value = LibPango.layout_set_spacing(to_unsafe.as(LibPango::Layout*), Int32.new(spacing))
-      __return_value
+      LibPango.layout_set_spacing(to_unsafe.as(LibPango::Layout*), Int32.new(spacing))
+      nil
     end
 
     def tabs=(tabs)
-      __return_value = LibPango.layout_set_tabs(to_unsafe.as(LibPango::Layout*), tabs ? tabs.to_unsafe.as(LibPango::TabArray*) : nil)
-      __return_value
+      LibPango.layout_set_tabs(to_unsafe.as(LibPango::Layout*), tabs ? tabs.to_unsafe.as(LibPango::TabArray*) : nil)
+      nil
     end
 
     def set_text(text, length)
-      __return_value = LibPango.layout_set_text(to_unsafe.as(LibPango::Layout*), text.to_unsafe, Int32.new(length))
-      __return_value
+      LibPango.layout_set_text(to_unsafe.as(LibPango::Layout*), text.to_unsafe, Int32.new(length))
+      nil
     end
 
     def width=(width)
-      __return_value = LibPango.layout_set_width(to_unsafe.as(LibPango::Layout*), Int32.new(width))
-      __return_value
+      LibPango.layout_set_width(to_unsafe.as(LibPango::Layout*), Int32.new(width))
+      nil
     end
 
     def wrap=(wrap : Pango::WrapMode)
-      __return_value = LibPango.layout_set_wrap(to_unsafe.as(LibPango::Layout*), wrap)
-      __return_value
+      LibPango.layout_set_wrap(to_unsafe.as(LibPango::Layout*), wrap)
+      nil
     end
 
     def xy_to_index(x, y, index, trailing)

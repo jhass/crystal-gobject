@@ -53,8 +53,8 @@ module Gtk
     end
 
     def bind_model(model, action_namespace)
-      __return_value = LibGtk.popover_bind_model(to_unsafe.as(LibGtk::Popover*), model ? model.to_unsafe.as(LibGio::MenuModel*) : nil, action_namespace ? action_namespace.to_unsafe : nil)
-      __return_value
+      LibGtk.popover_bind_model(to_unsafe.as(LibGtk::Popover*), model ? model.to_unsafe.as(LibGio::MenuModel*) : nil, action_namespace ? action_namespace.to_unsafe : nil)
+      nil
     end
 
     def constrain_to
@@ -93,48 +93,48 @@ module Gtk
     end
 
     def popdown
-      __return_value = LibGtk.popover_popdown(to_unsafe.as(LibGtk::Popover*))
-      __return_value
+      LibGtk.popover_popdown(to_unsafe.as(LibGtk::Popover*))
+      nil
     end
 
     def popup
-      __return_value = LibGtk.popover_popup(to_unsafe.as(LibGtk::Popover*))
-      __return_value
+      LibGtk.popover_popup(to_unsafe.as(LibGtk::Popover*))
+      nil
     end
 
     def constrain_to=(constraint : Gtk::PopoverConstraint)
-      __return_value = LibGtk.popover_set_constrain_to(to_unsafe.as(LibGtk::Popover*), constraint)
-      __return_value
+      LibGtk.popover_set_constrain_to(to_unsafe.as(LibGtk::Popover*), constraint)
+      nil
     end
 
     def default_widget=(widget)
-      __return_value = LibGtk.popover_set_default_widget(to_unsafe.as(LibGtk::Popover*), widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil)
-      __return_value
+      LibGtk.popover_set_default_widget(to_unsafe.as(LibGtk::Popover*), widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil)
+      nil
     end
 
     def modal=(modal)
-      __return_value = LibGtk.popover_set_modal(to_unsafe.as(LibGtk::Popover*), modal)
-      __return_value
+      LibGtk.popover_set_modal(to_unsafe.as(LibGtk::Popover*), modal)
+      nil
     end
 
     def pointing_to=(rect)
-      __return_value = LibGtk.popover_set_pointing_to(to_unsafe.as(LibGtk::Popover*), rect.to_unsafe.as(LibGdk::Rectangle*))
-      __return_value
+      LibGtk.popover_set_pointing_to(to_unsafe.as(LibGtk::Popover*), rect.to_unsafe.as(LibGdk::Rectangle*))
+      nil
     end
 
     def position=(position : Gtk::PositionType)
-      __return_value = LibGtk.popover_set_position(to_unsafe.as(LibGtk::Popover*), position)
-      __return_value
+      LibGtk.popover_set_position(to_unsafe.as(LibGtk::Popover*), position)
+      nil
     end
 
     def relative_to=(relative_to)
-      __return_value = LibGtk.popover_set_relative_to(to_unsafe.as(LibGtk::Popover*), relative_to ? relative_to.to_unsafe.as(LibGtk::Widget*) : nil)
-      __return_value
+      LibGtk.popover_set_relative_to(to_unsafe.as(LibGtk::Popover*), relative_to ? relative_to.to_unsafe.as(LibGtk::Widget*) : nil)
+      nil
     end
 
     def transitions_enabled=(transitions_enabled)
-      __return_value = LibGtk.popover_set_transitions_enabled(to_unsafe.as(LibGtk::Popover*), transitions_enabled)
-      __return_value
+      LibGtk.popover_set_transitions_enabled(to_unsafe.as(LibGtk::Popover*), transitions_enabled)
+      nil
     end
 
     alias ClosedSignal = Popover ->

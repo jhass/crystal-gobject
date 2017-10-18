@@ -63,18 +63,18 @@ module Gtk
     end
 
     def handle_position=(position : Gtk::PositionType)
-      __return_value = LibGtk.handle_box_set_handle_position(to_unsafe.as(LibGtk::HandleBox*), position)
-      __return_value
+      LibGtk.handle_box_set_handle_position(to_unsafe.as(LibGtk::HandleBox*), position)
+      nil
     end
 
     def shadow_type=(type : Gtk::ShadowType)
-      __return_value = LibGtk.handle_box_set_shadow_type(to_unsafe.as(LibGtk::HandleBox*), type)
-      __return_value
+      LibGtk.handle_box_set_shadow_type(to_unsafe.as(LibGtk::HandleBox*), type)
+      nil
     end
 
     def snap_edge=(edge : Gtk::PositionType)
-      __return_value = LibGtk.handle_box_set_snap_edge(to_unsafe.as(LibGtk::HandleBox*), edge)
-      __return_value
+      LibGtk.handle_box_set_snap_edge(to_unsafe.as(LibGtk::HandleBox*), edge)
+      nil
     end
 
     alias ChildAttachedSignal = HandleBox, Gtk::Widget ->

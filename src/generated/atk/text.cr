@@ -1,8 +1,8 @@
 module Atk
   module Text
     def self.free_ranges(ranges)
-      __return_value = LibAtk.text_free_ranges(ranges)
-      __return_value
+      LibAtk.text_free_ranges(ranges)
+      nil
     end
 
     def add_selection(start_offset, end_offset)
@@ -31,8 +31,8 @@ module Atk
     end
 
     def character_extents(offset, x, y, width, height, coords : Atk::CoordType)
-      __return_value = LibAtk.text_get_character_extents(to_unsafe.as(LibAtk::Text*), Int32.new(offset), x, y, width, height, coords)
-      __return_value
+      LibAtk.text_get_character_extents(to_unsafe.as(LibAtk::Text*), Int32.new(offset), x, y, width, height, coords)
+      nil
     end
 
     def default_attributes
@@ -51,8 +51,8 @@ module Atk
     end
 
     def range_extents(start_offset, end_offset, coord_type : Atk::CoordType, rect)
-      __return_value = LibAtk.text_get_range_extents(to_unsafe.as(LibAtk::Text*), Int32.new(start_offset), Int32.new(end_offset), coord_type, rect)
-      __return_value
+      LibAtk.text_get_range_extents(to_unsafe.as(LibAtk::Text*), Int32.new(start_offset), Int32.new(end_offset), coord_type, rect)
+      nil
     end
 
     def run_attributes(offset, start_offset, end_offset)

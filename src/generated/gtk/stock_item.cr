@@ -22,8 +22,8 @@ module Gtk
     end
 
     def free
-      __return_value = LibGtk.stock_item_free(to_unsafe.as(LibGtk::StockItem*))
-      __return_value
+      LibGtk.stock_item_free(to_unsafe.as(LibGtk::StockItem*))
+      nil
     end
 
     def stock_id

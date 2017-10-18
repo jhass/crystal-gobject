@@ -16,18 +16,18 @@ module GLib
     end
 
     def clear
-      __return_value = LibGLib.rec_mutex_clear(to_unsafe.as(LibGLib::RecMutex*))
-      __return_value
+      LibGLib.rec_mutex_clear(to_unsafe.as(LibGLib::RecMutex*))
+      nil
     end
 
     def init
-      __return_value = LibGLib.rec_mutex_init(to_unsafe.as(LibGLib::RecMutex*))
-      __return_value
+      LibGLib.rec_mutex_init(to_unsafe.as(LibGLib::RecMutex*))
+      nil
     end
 
     def lock
-      __return_value = LibGLib.rec_mutex_lock(to_unsafe.as(LibGLib::RecMutex*))
-      __return_value
+      LibGLib.rec_mutex_lock(to_unsafe.as(LibGLib::RecMutex*))
+      nil
     end
 
     def trylock
@@ -36,8 +36,8 @@ module GLib
     end
 
     def unlock
-      __return_value = LibGLib.rec_mutex_unlock(to_unsafe.as(LibGLib::RecMutex*))
-      __return_value
+      LibGLib.rec_mutex_unlock(to_unsafe.as(LibGLib::RecMutex*))
+      nil
     end
 
     def p

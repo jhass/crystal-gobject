@@ -21,8 +21,8 @@ module Gtk
     end
 
     def area=(rect)
-      __return_value = LibGtk.gesture_multi_press_set_area(to_unsafe.as(LibGtk::GestureMultiPress*), rect ? rect.to_unsafe.as(LibGdk::Rectangle*) : nil)
-      __return_value
+      LibGtk.gesture_multi_press_set_area(to_unsafe.as(LibGtk::GestureMultiPress*), rect ? rect.to_unsafe.as(LibGdk::Rectangle*) : nil)
+      nil
     end
 
     alias PressedSignal = GestureMultiPress, Int32, Float64, Float64 ->

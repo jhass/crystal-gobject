@@ -26,8 +26,8 @@ module Gio
     end
 
     def unref
-      __return_value = LibGio.d_bus_annotation_info_unref(to_unsafe.as(LibGio::DBusAnnotationInfo*))
-      __return_value
+      LibGio.d_bus_annotation_info_unref(to_unsafe.as(LibGio::DBusAnnotationInfo*))
+      nil
     end
 
     def self.lookup(annotations, name)

@@ -18,8 +18,8 @@ module Gtk
     end
 
     def changed
-      __return_value = LibGtk.flow_box_child_changed(to_unsafe.as(LibGtk::FlowBoxChild*))
-      __return_value
+      LibGtk.flow_box_child_changed(to_unsafe.as(LibGtk::FlowBoxChild*))
+      nil
     end
 
     def index

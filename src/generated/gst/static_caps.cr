@@ -19,8 +19,8 @@ module Gst
     end
 
     def cleanup
-      __return_value = LibGst.static_caps_cleanup(to_unsafe.as(LibGst::StaticCaps*))
-      __return_value
+      LibGst.static_caps_cleanup(to_unsafe.as(LibGst::StaticCaps*))
+      nil
     end
 
     def get

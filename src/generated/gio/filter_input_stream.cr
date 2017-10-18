@@ -31,8 +31,8 @@ module Gio
     end
 
     def close_base_stream=(close_base)
-      __return_value = LibGio.filter_input_stream_set_close_base_stream(to_unsafe.as(LibGio::FilterInputStream*), close_base)
-      __return_value
+      LibGio.filter_input_stream_set_close_base_stream(to_unsafe.as(LibGio::FilterInputStream*), close_base)
+      nil
     end
 
   end

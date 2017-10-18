@@ -8,8 +8,8 @@ module Gio
     end
 
     def close_async(io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.dtls_connection_close_async(to_unsafe.as(LibGio::DtlsConnection*), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.dtls_connection_close_async(to_unsafe.as(LibGio::DtlsConnection*), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def close_finish(result)
@@ -67,8 +67,8 @@ module Gio
     end
 
     def handshake_async(io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.dtls_connection_handshake_async(to_unsafe.as(LibGio::DtlsConnection*), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.dtls_connection_handshake_async(to_unsafe.as(LibGio::DtlsConnection*), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def handshake_finish(result)
@@ -79,28 +79,28 @@ module Gio
     end
 
     def certificate=(certificate)
-      __return_value = LibGio.dtls_connection_set_certificate(to_unsafe.as(LibGio::DtlsConnection*), certificate.to_unsafe.as(LibGio::TlsCertificate*))
-      __return_value
+      LibGio.dtls_connection_set_certificate(to_unsafe.as(LibGio::DtlsConnection*), certificate.to_unsafe.as(LibGio::TlsCertificate*))
+      nil
     end
 
     def database=(database)
-      __return_value = LibGio.dtls_connection_set_database(to_unsafe.as(LibGio::DtlsConnection*), database.to_unsafe.as(LibGio::TlsDatabase*))
-      __return_value
+      LibGio.dtls_connection_set_database(to_unsafe.as(LibGio::DtlsConnection*), database.to_unsafe.as(LibGio::TlsDatabase*))
+      nil
     end
 
     def interaction=(interaction)
-      __return_value = LibGio.dtls_connection_set_interaction(to_unsafe.as(LibGio::DtlsConnection*), interaction ? interaction.to_unsafe.as(LibGio::TlsInteraction*) : nil)
-      __return_value
+      LibGio.dtls_connection_set_interaction(to_unsafe.as(LibGio::DtlsConnection*), interaction ? interaction.to_unsafe.as(LibGio::TlsInteraction*) : nil)
+      nil
     end
 
     def rehandshake_mode=(mode : Gio::TlsRehandshakeMode)
-      __return_value = LibGio.dtls_connection_set_rehandshake_mode(to_unsafe.as(LibGio::DtlsConnection*), mode)
-      __return_value
+      LibGio.dtls_connection_set_rehandshake_mode(to_unsafe.as(LibGio::DtlsConnection*), mode)
+      nil
     end
 
     def require_close_notify=(require_close_notify)
-      __return_value = LibGio.dtls_connection_set_require_close_notify(to_unsafe.as(LibGio::DtlsConnection*), require_close_notify)
-      __return_value
+      LibGio.dtls_connection_set_require_close_notify(to_unsafe.as(LibGio::DtlsConnection*), require_close_notify)
+      nil
     end
 
     def shutdown(shutdown_read, shutdown_write, cancellable)
@@ -111,8 +111,8 @@ module Gio
     end
 
     def shutdown_async(shutdown_read, shutdown_write, io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.dtls_connection_shutdown_async(to_unsafe.as(LibGio::DtlsConnection*), shutdown_read, shutdown_write, Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.dtls_connection_shutdown_async(to_unsafe.as(LibGio::DtlsConnection*), shutdown_read, shutdown_write, Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def shutdown_finish(result)

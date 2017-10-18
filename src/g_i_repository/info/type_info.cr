@@ -35,6 +35,10 @@ module GIRepository
       LibGIRepository.type_info_is_pointer(self)
     end
 
+    def void?
+      tag == LibGIRepository::TypeTag::VOID
+    end
+
     def interface
       BaseInfo.wrap BaseInfo.new LibGIRepository.type_info_get_interface(self)
     end

@@ -34,8 +34,8 @@ module Gtk
     end
 
     def stack=(stack)
-      __return_value = LibGtk.stack_switcher_set_stack(to_unsafe.as(LibGtk::StackSwitcher*), stack ? stack.to_unsafe.as(LibGtk::Stack*) : nil)
-      __return_value
+      LibGtk.stack_switcher_set_stack(to_unsafe.as(LibGtk::StackSwitcher*), stack ? stack.to_unsafe.as(LibGtk::Stack*) : nil)
+      nil
     end
 
   end

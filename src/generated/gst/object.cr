@@ -24,8 +24,8 @@ module Gst
     end
 
     def self.default_deep_notify(object, orig, pspec, excluded_props)
-      __return_value = LibGst.object_default_deep_notify(object.to_unsafe.as(LibGObject::Object*), orig.to_unsafe.as(LibGst::Object*), pspec.to_unsafe.as(LibGObject::ParamSpec*), excluded_props ? excluded_props : nil)
-      __return_value
+      LibGst.object_default_deep_notify(object.to_unsafe.as(LibGObject::Object*), orig.to_unsafe.as(LibGst::Object*), pspec.to_unsafe.as(LibGObject::ParamSpec*), excluded_props ? excluded_props : nil)
+      nil
     end
 
     def self.replace(oldobj, newobj)
@@ -39,8 +39,8 @@ module Gst
     end
 
     def default_error(error, debug)
-      __return_value = LibGst.object_default_error(to_unsafe.as(LibGst::Object*), error, debug ? debug.to_unsafe : nil)
-      __return_value
+      LibGst.object_default_error(to_unsafe.as(LibGst::Object*), error, debug ? debug.to_unsafe : nil)
+      nil
     end
 
     def control_binding(property_name)
@@ -109,18 +109,18 @@ module Gst
     end
 
     def set_control_binding_disabled(property_name, disabled)
-      __return_value = LibGst.object_set_control_binding_disabled(to_unsafe.as(LibGst::Object*), property_name.to_unsafe, disabled)
-      __return_value
+      LibGst.object_set_control_binding_disabled(to_unsafe.as(LibGst::Object*), property_name.to_unsafe, disabled)
+      nil
     end
 
     def control_bindings_disabled=(disabled)
-      __return_value = LibGst.object_set_control_bindings_disabled(to_unsafe.as(LibGst::Object*), disabled)
-      __return_value
+      LibGst.object_set_control_bindings_disabled(to_unsafe.as(LibGst::Object*), disabled)
+      nil
     end
 
     def control_rate=(control_rate)
-      __return_value = LibGst.object_set_control_rate(to_unsafe.as(LibGst::Object*), UInt64.new(control_rate))
-      __return_value
+      LibGst.object_set_control_rate(to_unsafe.as(LibGst::Object*), UInt64.new(control_rate))
+      nil
     end
 
     def name=(name)
@@ -144,13 +144,13 @@ module Gst
     end
 
     def unparent
-      __return_value = LibGst.object_unparent(to_unsafe.as(LibGst::Object*))
-      __return_value
+      LibGst.object_unparent(to_unsafe.as(LibGst::Object*))
+      nil
     end
 
     def unref
-      __return_value = LibGst.object_unref(to_unsafe.as(LibGst::Object*))
-      __return_value
+      LibGst.object_unref(to_unsafe.as(LibGst::Object*))
+      nil
     end
 
     alias DeepNotifySignal = Object, Gst::Object, GObject::ParamSpec ->

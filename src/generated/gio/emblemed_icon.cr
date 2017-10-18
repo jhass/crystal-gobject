@@ -20,13 +20,13 @@ module Gio
     end
 
     def add_emblem(emblem)
-      __return_value = LibGio.emblemed_icon_add_emblem(to_unsafe.as(LibGio::EmblemedIcon*), emblem.to_unsafe.as(LibGio::Emblem*))
-      __return_value
+      LibGio.emblemed_icon_add_emblem(to_unsafe.as(LibGio::EmblemedIcon*), emblem.to_unsafe.as(LibGio::Emblem*))
+      nil
     end
 
     def clear_emblems
-      __return_value = LibGio.emblemed_icon_clear_emblems(to_unsafe.as(LibGio::EmblemedIcon*))
-      __return_value
+      LibGio.emblemed_icon_clear_emblems(to_unsafe.as(LibGio::EmblemedIcon*))
+      nil
     end
 
     def emblems

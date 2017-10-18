@@ -81,13 +81,13 @@ module Gio
     end
 
     def self.new(connection, flags : Gio::DBusObjectManagerClientFlags, name, object_path, get_proxy_type_func, get_proxy_type_user_data, get_proxy_type_destroy_notify, cancellable, callback, user_data)
-      __return_value = LibGio.d_bus_object_manager_client_new(connection.to_unsafe.as(LibGio::DBusConnection*), flags, name.to_unsafe, object_path.to_unsafe, get_proxy_type_func ? get_proxy_type_func : nil, get_proxy_type_user_data ? get_proxy_type_user_data : nil, get_proxy_type_destroy_notify ? get_proxy_type_destroy_notify : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.d_bus_object_manager_client_new(connection.to_unsafe.as(LibGio::DBusConnection*), flags, name.to_unsafe, object_path.to_unsafe, get_proxy_type_func ? get_proxy_type_func : nil, get_proxy_type_user_data ? get_proxy_type_user_data : nil, get_proxy_type_destroy_notify ? get_proxy_type_destroy_notify : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def self.new_for_bus(bus_type : Gio::BusType, flags : Gio::DBusObjectManagerClientFlags, name, object_path, get_proxy_type_func, get_proxy_type_user_data, get_proxy_type_destroy_notify, cancellable, callback, user_data)
-      __return_value = LibGio.d_bus_object_manager_client_new_for_bus(bus_type, flags, name.to_unsafe, object_path.to_unsafe, get_proxy_type_func ? get_proxy_type_func : nil, get_proxy_type_user_data ? get_proxy_type_user_data : nil, get_proxy_type_destroy_notify ? get_proxy_type_destroy_notify : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.d_bus_object_manager_client_new_for_bus(bus_type, flags, name.to_unsafe, object_path.to_unsafe, get_proxy_type_func ? get_proxy_type_func : nil, get_proxy_type_user_data ? get_proxy_type_user_data : nil, get_proxy_type_destroy_notify ? get_proxy_type_destroy_notify : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def connection

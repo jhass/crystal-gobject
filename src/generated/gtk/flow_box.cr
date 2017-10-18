@@ -54,8 +54,8 @@ module Gtk
     end
 
     def bind_model(model, create_widget_func, user_data, user_data_free_func)
-      __return_value = LibGtk.flow_box_bind_model(to_unsafe.as(LibGtk::FlowBox*), model ? model.to_unsafe.as(LibGio::ListModel*) : nil, create_widget_func, user_data ? user_data : nil, user_data_free_func)
-      __return_value
+      LibGtk.flow_box_bind_model(to_unsafe.as(LibGtk::FlowBox*), model ? model.to_unsafe.as(LibGio::ListModel*) : nil, create_widget_func, user_data ? user_data : nil, user_data_free_func)
+      nil
     end
 
     def activate_on_single_click
@@ -109,98 +109,98 @@ module Gtk
     end
 
     def insert(widget, position)
-      __return_value = LibGtk.flow_box_insert(to_unsafe.as(LibGtk::FlowBox*), widget.to_unsafe.as(LibGtk::Widget*), Int32.new(position))
-      __return_value
+      LibGtk.flow_box_insert(to_unsafe.as(LibGtk::FlowBox*), widget.to_unsafe.as(LibGtk::Widget*), Int32.new(position))
+      nil
     end
 
     def invalidate_filter
-      __return_value = LibGtk.flow_box_invalidate_filter(to_unsafe.as(LibGtk::FlowBox*))
-      __return_value
+      LibGtk.flow_box_invalidate_filter(to_unsafe.as(LibGtk::FlowBox*))
+      nil
     end
 
     def invalidate_sort
-      __return_value = LibGtk.flow_box_invalidate_sort(to_unsafe.as(LibGtk::FlowBox*))
-      __return_value
+      LibGtk.flow_box_invalidate_sort(to_unsafe.as(LibGtk::FlowBox*))
+      nil
     end
 
     def select_all
-      __return_value = LibGtk.flow_box_select_all(to_unsafe.as(LibGtk::FlowBox*))
-      __return_value
+      LibGtk.flow_box_select_all(to_unsafe.as(LibGtk::FlowBox*))
+      nil
     end
 
     def select_child(child)
-      __return_value = LibGtk.flow_box_select_child(to_unsafe.as(LibGtk::FlowBox*), child.to_unsafe.as(LibGtk::FlowBoxChild*))
-      __return_value
+      LibGtk.flow_box_select_child(to_unsafe.as(LibGtk::FlowBox*), child.to_unsafe.as(LibGtk::FlowBoxChild*))
+      nil
     end
 
     def selected_foreach(func, data)
-      __return_value = LibGtk.flow_box_selected_foreach(to_unsafe.as(LibGtk::FlowBox*), func, data ? data : nil)
-      __return_value
+      LibGtk.flow_box_selected_foreach(to_unsafe.as(LibGtk::FlowBox*), func, data ? data : nil)
+      nil
     end
 
     def activate_on_single_click=(single)
-      __return_value = LibGtk.flow_box_set_activate_on_single_click(to_unsafe.as(LibGtk::FlowBox*), single)
-      __return_value
+      LibGtk.flow_box_set_activate_on_single_click(to_unsafe.as(LibGtk::FlowBox*), single)
+      nil
     end
 
     def column_spacing=(spacing)
-      __return_value = LibGtk.flow_box_set_column_spacing(to_unsafe.as(LibGtk::FlowBox*), UInt32.new(spacing))
-      __return_value
+      LibGtk.flow_box_set_column_spacing(to_unsafe.as(LibGtk::FlowBox*), UInt32.new(spacing))
+      nil
     end
 
     def set_filter_func(filter_func, user_data, destroy)
-      __return_value = LibGtk.flow_box_set_filter_func(to_unsafe.as(LibGtk::FlowBox*), filter_func ? filter_func : nil, user_data ? user_data : nil, destroy)
-      __return_value
+      LibGtk.flow_box_set_filter_func(to_unsafe.as(LibGtk::FlowBox*), filter_func ? filter_func : nil, user_data ? user_data : nil, destroy)
+      nil
     end
 
     def hadjustment=(adjustment)
-      __return_value = LibGtk.flow_box_set_hadjustment(to_unsafe.as(LibGtk::FlowBox*), adjustment.to_unsafe.as(LibGtk::Adjustment*))
-      __return_value
+      LibGtk.flow_box_set_hadjustment(to_unsafe.as(LibGtk::FlowBox*), adjustment.to_unsafe.as(LibGtk::Adjustment*))
+      nil
     end
 
     def homogeneous=(homogeneous)
-      __return_value = LibGtk.flow_box_set_homogeneous(to_unsafe.as(LibGtk::FlowBox*), homogeneous)
-      __return_value
+      LibGtk.flow_box_set_homogeneous(to_unsafe.as(LibGtk::FlowBox*), homogeneous)
+      nil
     end
 
     def max_children_per_line=(n_children)
-      __return_value = LibGtk.flow_box_set_max_children_per_line(to_unsafe.as(LibGtk::FlowBox*), UInt32.new(n_children))
-      __return_value
+      LibGtk.flow_box_set_max_children_per_line(to_unsafe.as(LibGtk::FlowBox*), UInt32.new(n_children))
+      nil
     end
 
     def min_children_per_line=(n_children)
-      __return_value = LibGtk.flow_box_set_min_children_per_line(to_unsafe.as(LibGtk::FlowBox*), UInt32.new(n_children))
-      __return_value
+      LibGtk.flow_box_set_min_children_per_line(to_unsafe.as(LibGtk::FlowBox*), UInt32.new(n_children))
+      nil
     end
 
     def row_spacing=(spacing)
-      __return_value = LibGtk.flow_box_set_row_spacing(to_unsafe.as(LibGtk::FlowBox*), UInt32.new(spacing))
-      __return_value
+      LibGtk.flow_box_set_row_spacing(to_unsafe.as(LibGtk::FlowBox*), UInt32.new(spacing))
+      nil
     end
 
     def selection_mode=(mode : Gtk::SelectionMode)
-      __return_value = LibGtk.flow_box_set_selection_mode(to_unsafe.as(LibGtk::FlowBox*), mode)
-      __return_value
+      LibGtk.flow_box_set_selection_mode(to_unsafe.as(LibGtk::FlowBox*), mode)
+      nil
     end
 
     def set_sort_func(sort_func, user_data, destroy)
-      __return_value = LibGtk.flow_box_set_sort_func(to_unsafe.as(LibGtk::FlowBox*), sort_func ? sort_func : nil, user_data ? user_data : nil, destroy)
-      __return_value
+      LibGtk.flow_box_set_sort_func(to_unsafe.as(LibGtk::FlowBox*), sort_func ? sort_func : nil, user_data ? user_data : nil, destroy)
+      nil
     end
 
     def vadjustment=(adjustment)
-      __return_value = LibGtk.flow_box_set_vadjustment(to_unsafe.as(LibGtk::FlowBox*), adjustment.to_unsafe.as(LibGtk::Adjustment*))
-      __return_value
+      LibGtk.flow_box_set_vadjustment(to_unsafe.as(LibGtk::FlowBox*), adjustment.to_unsafe.as(LibGtk::Adjustment*))
+      nil
     end
 
     def unselect_all
-      __return_value = LibGtk.flow_box_unselect_all(to_unsafe.as(LibGtk::FlowBox*))
-      __return_value
+      LibGtk.flow_box_unselect_all(to_unsafe.as(LibGtk::FlowBox*))
+      nil
     end
 
     def unselect_child(child)
-      __return_value = LibGtk.flow_box_unselect_child(to_unsafe.as(LibGtk::FlowBox*), child.to_unsafe.as(LibGtk::FlowBoxChild*))
-      __return_value
+      LibGtk.flow_box_unselect_child(to_unsafe.as(LibGtk::FlowBox*), child.to_unsafe.as(LibGtk::FlowBoxChild*))
+      nil
     end
 
     alias ActivateCursorChildSignal = FlowBox ->

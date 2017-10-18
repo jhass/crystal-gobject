@@ -18,13 +18,13 @@ module Gio
     end
 
     def register
-      __return_value = LibGio.resource_register(to_unsafe.as(LibGio::Resource*))
-      __return_value
+      LibGio.resource_register(to_unsafe.as(LibGio::Resource*))
+      nil
     end
 
     def unregister
-      __return_value = LibGio.resource_unregister(to_unsafe.as(LibGio::Resource*))
-      __return_value
+      LibGio.resource_unregister(to_unsafe.as(LibGio::Resource*))
+      nil
     end
 
     def enumerate_children(path, lookup_flags : Gio::ResourceLookupFlags)
@@ -61,8 +61,8 @@ module Gio
     end
 
     def unref
-      __return_value = LibGio.resource_unref(to_unsafe.as(LibGio::Resource*))
-      __return_value
+      LibGio.resource_unref(to_unsafe.as(LibGio::Resource*))
+      nil
     end
 
     def self.load(filename)

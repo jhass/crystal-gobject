@@ -20,28 +20,28 @@ module Gio
     end
 
     def add_interface(interface)
-      __return_value = LibGio.d_bus_object_skeleton_add_interface(to_unsafe.as(LibGio::DBusObjectSkeleton*), interface.to_unsafe.as(LibGio::DBusInterfaceSkeleton*))
-      __return_value
+      LibGio.d_bus_object_skeleton_add_interface(to_unsafe.as(LibGio::DBusObjectSkeleton*), interface.to_unsafe.as(LibGio::DBusInterfaceSkeleton*))
+      nil
     end
 
     def flush
-      __return_value = LibGio.d_bus_object_skeleton_flush(to_unsafe.as(LibGio::DBusObjectSkeleton*))
-      __return_value
+      LibGio.d_bus_object_skeleton_flush(to_unsafe.as(LibGio::DBusObjectSkeleton*))
+      nil
     end
 
     def remove_interface(interface)
-      __return_value = LibGio.d_bus_object_skeleton_remove_interface(to_unsafe.as(LibGio::DBusObjectSkeleton*), interface.to_unsafe.as(LibGio::DBusInterfaceSkeleton*))
-      __return_value
+      LibGio.d_bus_object_skeleton_remove_interface(to_unsafe.as(LibGio::DBusObjectSkeleton*), interface.to_unsafe.as(LibGio::DBusInterfaceSkeleton*))
+      nil
     end
 
     def remove_interface_by_name(interface_name)
-      __return_value = LibGio.d_bus_object_skeleton_remove_interface_by_name(to_unsafe.as(LibGio::DBusObjectSkeleton*), interface_name.to_unsafe)
-      __return_value
+      LibGio.d_bus_object_skeleton_remove_interface_by_name(to_unsafe.as(LibGio::DBusObjectSkeleton*), interface_name.to_unsafe)
+      nil
     end
 
     def object_path=(object_path)
-      __return_value = LibGio.d_bus_object_skeleton_set_object_path(to_unsafe.as(LibGio::DBusObjectSkeleton*), object_path.to_unsafe)
-      __return_value
+      LibGio.d_bus_object_skeleton_set_object_path(to_unsafe.as(LibGio::DBusObjectSkeleton*), object_path.to_unsafe)
+      nil
     end
 
     alias AuthorizeMethodSignal = DBusObjectSkeleton, Gio::DBusInterfaceSkeleton, Gio::DBusMethodInvocation -> Bool

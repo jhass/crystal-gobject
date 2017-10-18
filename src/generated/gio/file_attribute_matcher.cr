@@ -51,8 +51,8 @@ module Gio
     end
 
     def unref
-      __return_value = LibGio.file_attribute_matcher_unref(to_unsafe.as(LibGio::FileAttributeMatcher*))
-      __return_value
+      LibGio.file_attribute_matcher_unref(to_unsafe.as(LibGio::FileAttributeMatcher*))
+      nil
     end
 
   end

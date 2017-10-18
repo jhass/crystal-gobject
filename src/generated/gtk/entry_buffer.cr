@@ -34,13 +34,13 @@ module Gtk
     end
 
     def emit_deleted_text(position, n_chars)
-      __return_value = LibGtk.entry_buffer_emit_deleted_text(to_unsafe.as(LibGtk::EntryBuffer*), UInt32.new(position), UInt32.new(n_chars))
-      __return_value
+      LibGtk.entry_buffer_emit_deleted_text(to_unsafe.as(LibGtk::EntryBuffer*), UInt32.new(position), UInt32.new(n_chars))
+      nil
     end
 
     def emit_inserted_text(position, chars, n_chars)
-      __return_value = LibGtk.entry_buffer_emit_inserted_text(to_unsafe.as(LibGtk::EntryBuffer*), UInt32.new(position), chars.to_unsafe, UInt32.new(n_chars))
-      __return_value
+      LibGtk.entry_buffer_emit_inserted_text(to_unsafe.as(LibGtk::EntryBuffer*), UInt32.new(position), chars.to_unsafe, UInt32.new(n_chars))
+      nil
     end
 
     def bytes
@@ -69,13 +69,13 @@ module Gtk
     end
 
     def max_length=(max_length)
-      __return_value = LibGtk.entry_buffer_set_max_length(to_unsafe.as(LibGtk::EntryBuffer*), Int32.new(max_length))
-      __return_value
+      LibGtk.entry_buffer_set_max_length(to_unsafe.as(LibGtk::EntryBuffer*), Int32.new(max_length))
+      nil
     end
 
     def set_text(chars, n_chars)
-      __return_value = LibGtk.entry_buffer_set_text(to_unsafe.as(LibGtk::EntryBuffer*), chars.to_unsafe, Int32.new(n_chars))
-      __return_value
+      LibGtk.entry_buffer_set_text(to_unsafe.as(LibGtk::EntryBuffer*), chars.to_unsafe, Int32.new(n_chars))
+      nil
     end
 
     alias DeletedTextSignal = EntryBuffer, UInt32, UInt32 ->

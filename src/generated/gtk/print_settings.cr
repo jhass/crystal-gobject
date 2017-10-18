@@ -38,8 +38,8 @@ module Gtk
     end
 
     def foreach(func, user_data)
-      __return_value = LibGtk.print_settings_foreach(to_unsafe.as(LibGtk::PrintSettings*), func, user_data ? user_data : nil)
-      __return_value
+      LibGtk.print_settings_foreach(to_unsafe.as(LibGtk::PrintSettings*), func, user_data ? user_data : nil)
+      nil
     end
 
     def get(key)
@@ -227,153 +227,153 @@ module Gtk
     end
 
     def set(key, value)
-      __return_value = LibGtk.print_settings_set(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe, value ? value.to_unsafe : nil)
-      __return_value
+      LibGtk.print_settings_set(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe, value ? value.to_unsafe : nil)
+      nil
     end
 
     def set_bool(key, value)
-      __return_value = LibGtk.print_settings_set_bool(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe, value)
-      __return_value
+      LibGtk.print_settings_set_bool(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe, value)
+      nil
     end
 
     def collate=(collate)
-      __return_value = LibGtk.print_settings_set_collate(to_unsafe.as(LibGtk::PrintSettings*), collate)
-      __return_value
+      LibGtk.print_settings_set_collate(to_unsafe.as(LibGtk::PrintSettings*), collate)
+      nil
     end
 
     def default_source=(default_source)
-      __return_value = LibGtk.print_settings_set_default_source(to_unsafe.as(LibGtk::PrintSettings*), default_source.to_unsafe)
-      __return_value
+      LibGtk.print_settings_set_default_source(to_unsafe.as(LibGtk::PrintSettings*), default_source.to_unsafe)
+      nil
     end
 
     def dither=(dither)
-      __return_value = LibGtk.print_settings_set_dither(to_unsafe.as(LibGtk::PrintSettings*), dither.to_unsafe)
-      __return_value
+      LibGtk.print_settings_set_dither(to_unsafe.as(LibGtk::PrintSettings*), dither.to_unsafe)
+      nil
     end
 
     def set_double(key, value)
-      __return_value = LibGtk.print_settings_set_double(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe, Float64.new(value))
-      __return_value
+      LibGtk.print_settings_set_double(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe, Float64.new(value))
+      nil
     end
 
     def duplex=(duplex : Gtk::PrintDuplex)
-      __return_value = LibGtk.print_settings_set_duplex(to_unsafe.as(LibGtk::PrintSettings*), duplex)
-      __return_value
+      LibGtk.print_settings_set_duplex(to_unsafe.as(LibGtk::PrintSettings*), duplex)
+      nil
     end
 
     def finishings=(finishings)
-      __return_value = LibGtk.print_settings_set_finishings(to_unsafe.as(LibGtk::PrintSettings*), finishings.to_unsafe)
-      __return_value
+      LibGtk.print_settings_set_finishings(to_unsafe.as(LibGtk::PrintSettings*), finishings.to_unsafe)
+      nil
     end
 
     def set_int(key, value)
-      __return_value = LibGtk.print_settings_set_int(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe, Int32.new(value))
-      __return_value
+      LibGtk.print_settings_set_int(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe, Int32.new(value))
+      nil
     end
 
     def set_length(key, value, unit : Gtk::Unit)
-      __return_value = LibGtk.print_settings_set_length(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe, Float64.new(value), unit)
-      __return_value
+      LibGtk.print_settings_set_length(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe, Float64.new(value), unit)
+      nil
     end
 
     def media_type=(media_type)
-      __return_value = LibGtk.print_settings_set_media_type(to_unsafe.as(LibGtk::PrintSettings*), media_type.to_unsafe)
-      __return_value
+      LibGtk.print_settings_set_media_type(to_unsafe.as(LibGtk::PrintSettings*), media_type.to_unsafe)
+      nil
     end
 
     def n_copies=(num_copies)
-      __return_value = LibGtk.print_settings_set_n_copies(to_unsafe.as(LibGtk::PrintSettings*), Int32.new(num_copies))
-      __return_value
+      LibGtk.print_settings_set_n_copies(to_unsafe.as(LibGtk::PrintSettings*), Int32.new(num_copies))
+      nil
     end
 
     def number_up=(number_up)
-      __return_value = LibGtk.print_settings_set_number_up(to_unsafe.as(LibGtk::PrintSettings*), Int32.new(number_up))
-      __return_value
+      LibGtk.print_settings_set_number_up(to_unsafe.as(LibGtk::PrintSettings*), Int32.new(number_up))
+      nil
     end
 
     def number_up_layout=(number_up_layout : Gtk::NumberUpLayout)
-      __return_value = LibGtk.print_settings_set_number_up_layout(to_unsafe.as(LibGtk::PrintSettings*), number_up_layout)
-      __return_value
+      LibGtk.print_settings_set_number_up_layout(to_unsafe.as(LibGtk::PrintSettings*), number_up_layout)
+      nil
     end
 
     def orientation=(orientation : Gtk::PageOrientation)
-      __return_value = LibGtk.print_settings_set_orientation(to_unsafe.as(LibGtk::PrintSettings*), orientation)
-      __return_value
+      LibGtk.print_settings_set_orientation(to_unsafe.as(LibGtk::PrintSettings*), orientation)
+      nil
     end
 
     def output_bin=(output_bin)
-      __return_value = LibGtk.print_settings_set_output_bin(to_unsafe.as(LibGtk::PrintSettings*), output_bin.to_unsafe)
-      __return_value
+      LibGtk.print_settings_set_output_bin(to_unsafe.as(LibGtk::PrintSettings*), output_bin.to_unsafe)
+      nil
     end
 
     def set_page_ranges(page_ranges, num_ranges)
-      __return_value = LibGtk.print_settings_set_page_ranges(to_unsafe.as(LibGtk::PrintSettings*), page_ranges, Int32.new(num_ranges))
-      __return_value
+      LibGtk.print_settings_set_page_ranges(to_unsafe.as(LibGtk::PrintSettings*), page_ranges, Int32.new(num_ranges))
+      nil
     end
 
     def page_set=(page_set : Gtk::PageSet)
-      __return_value = LibGtk.print_settings_set_page_set(to_unsafe.as(LibGtk::PrintSettings*), page_set)
-      __return_value
+      LibGtk.print_settings_set_page_set(to_unsafe.as(LibGtk::PrintSettings*), page_set)
+      nil
     end
 
     def set_paper_height(height, unit : Gtk::Unit)
-      __return_value = LibGtk.print_settings_set_paper_height(to_unsafe.as(LibGtk::PrintSettings*), Float64.new(height), unit)
-      __return_value
+      LibGtk.print_settings_set_paper_height(to_unsafe.as(LibGtk::PrintSettings*), Float64.new(height), unit)
+      nil
     end
 
     def paper_size=(paper_size)
-      __return_value = LibGtk.print_settings_set_paper_size(to_unsafe.as(LibGtk::PrintSettings*), paper_size.to_unsafe.as(LibGtk::PaperSize*))
-      __return_value
+      LibGtk.print_settings_set_paper_size(to_unsafe.as(LibGtk::PrintSettings*), paper_size.to_unsafe.as(LibGtk::PaperSize*))
+      nil
     end
 
     def set_paper_width(width, unit : Gtk::Unit)
-      __return_value = LibGtk.print_settings_set_paper_width(to_unsafe.as(LibGtk::PrintSettings*), Float64.new(width), unit)
-      __return_value
+      LibGtk.print_settings_set_paper_width(to_unsafe.as(LibGtk::PrintSettings*), Float64.new(width), unit)
+      nil
     end
 
     def print_pages=(pages : Gtk::PrintPages)
-      __return_value = LibGtk.print_settings_set_print_pages(to_unsafe.as(LibGtk::PrintSettings*), pages)
-      __return_value
+      LibGtk.print_settings_set_print_pages(to_unsafe.as(LibGtk::PrintSettings*), pages)
+      nil
     end
 
     def printer=(printer)
-      __return_value = LibGtk.print_settings_set_printer(to_unsafe.as(LibGtk::PrintSettings*), printer.to_unsafe)
-      __return_value
+      LibGtk.print_settings_set_printer(to_unsafe.as(LibGtk::PrintSettings*), printer.to_unsafe)
+      nil
     end
 
     def printer_lpi=(lpi)
-      __return_value = LibGtk.print_settings_set_printer_lpi(to_unsafe.as(LibGtk::PrintSettings*), Float64.new(lpi))
-      __return_value
+      LibGtk.print_settings_set_printer_lpi(to_unsafe.as(LibGtk::PrintSettings*), Float64.new(lpi))
+      nil
     end
 
     def quality=(quality : Gtk::PrintQuality)
-      __return_value = LibGtk.print_settings_set_quality(to_unsafe.as(LibGtk::PrintSettings*), quality)
-      __return_value
+      LibGtk.print_settings_set_quality(to_unsafe.as(LibGtk::PrintSettings*), quality)
+      nil
     end
 
     def resolution=(resolution)
-      __return_value = LibGtk.print_settings_set_resolution(to_unsafe.as(LibGtk::PrintSettings*), Int32.new(resolution))
-      __return_value
+      LibGtk.print_settings_set_resolution(to_unsafe.as(LibGtk::PrintSettings*), Int32.new(resolution))
+      nil
     end
 
     def set_resolution_xy(resolution_x, resolution_y)
-      __return_value = LibGtk.print_settings_set_resolution_xy(to_unsafe.as(LibGtk::PrintSettings*), Int32.new(resolution_x), Int32.new(resolution_y))
-      __return_value
+      LibGtk.print_settings_set_resolution_xy(to_unsafe.as(LibGtk::PrintSettings*), Int32.new(resolution_x), Int32.new(resolution_y))
+      nil
     end
 
     def reverse=(reverse)
-      __return_value = LibGtk.print_settings_set_reverse(to_unsafe.as(LibGtk::PrintSettings*), reverse)
-      __return_value
+      LibGtk.print_settings_set_reverse(to_unsafe.as(LibGtk::PrintSettings*), reverse)
+      nil
     end
 
     def scale=(scale)
-      __return_value = LibGtk.print_settings_set_scale(to_unsafe.as(LibGtk::PrintSettings*), Float64.new(scale))
-      __return_value
+      LibGtk.print_settings_set_scale(to_unsafe.as(LibGtk::PrintSettings*), Float64.new(scale))
+      nil
     end
 
     def use_color=(use_color)
-      __return_value = LibGtk.print_settings_set_use_color(to_unsafe.as(LibGtk::PrintSettings*), use_color)
-      __return_value
+      LibGtk.print_settings_set_use_color(to_unsafe.as(LibGtk::PrintSettings*), use_color)
+      nil
     end
 
     def to_file(file_name)
@@ -389,13 +389,13 @@ module Gtk
     end
 
     def to_key_file(key_file, group_name)
-      __return_value = LibGtk.print_settings_to_key_file(to_unsafe.as(LibGtk::PrintSettings*), key_file.to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe)
-      __return_value
+      LibGtk.print_settings_to_key_file(to_unsafe.as(LibGtk::PrintSettings*), key_file.to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe)
+      nil
     end
 
     def unset(key)
-      __return_value = LibGtk.print_settings_unset(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe)
-      __return_value
+      LibGtk.print_settings_unset(to_unsafe.as(LibGtk::PrintSettings*), key.to_unsafe)
+      nil
     end
 
   end

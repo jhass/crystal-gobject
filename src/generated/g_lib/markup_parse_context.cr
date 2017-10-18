@@ -23,8 +23,8 @@ module GLib
     end
 
     def free
-      __return_value = LibGLib.markup_parse_context_free(to_unsafe.as(LibGLib::MarkupParseContext*))
-      __return_value
+      LibGLib.markup_parse_context_free(to_unsafe.as(LibGLib::MarkupParseContext*))
+      nil
     end
 
     def element
@@ -33,13 +33,13 @@ module GLib
     end
 
     def position(line_number, char_number)
-      __return_value = LibGLib.markup_parse_context_get_position(to_unsafe.as(LibGLib::MarkupParseContext*), line_number ? line_number : nil, char_number ? char_number : nil)
-      __return_value
+      LibGLib.markup_parse_context_get_position(to_unsafe.as(LibGLib::MarkupParseContext*), line_number ? line_number : nil, char_number ? char_number : nil)
+      nil
     end
 
     def user_data
-      __return_value = LibGLib.markup_parse_context_get_user_data(to_unsafe.as(LibGLib::MarkupParseContext*))
-      __return_value if __return_value
+      LibGLib.markup_parse_context_get_user_data(to_unsafe.as(LibGLib::MarkupParseContext*))
+      nil
     end
 
     def parse(text, text_len)
@@ -50,13 +50,13 @@ module GLib
     end
 
     def pop
-      __return_value = LibGLib.markup_parse_context_pop(to_unsafe.as(LibGLib::MarkupParseContext*))
-      __return_value if __return_value
+      LibGLib.markup_parse_context_pop(to_unsafe.as(LibGLib::MarkupParseContext*))
+      nil
     end
 
     def push(parser, user_data)
-      __return_value = LibGLib.markup_parse_context_push(to_unsafe.as(LibGLib::MarkupParseContext*), parser.to_unsafe.as(LibGLib::MarkupParser*), user_data ? user_data : nil)
-      __return_value
+      LibGLib.markup_parse_context_push(to_unsafe.as(LibGLib::MarkupParseContext*), parser.to_unsafe.as(LibGLib::MarkupParser*), user_data ? user_data : nil)
+      nil
     end
 
     def ref
@@ -65,8 +65,8 @@ module GLib
     end
 
     def unref
-      __return_value = LibGLib.markup_parse_context_unref(to_unsafe.as(LibGLib::MarkupParseContext*))
-      __return_value
+      LibGLib.markup_parse_context_unref(to_unsafe.as(LibGLib::MarkupParseContext*))
+      nil
     end
 
   end

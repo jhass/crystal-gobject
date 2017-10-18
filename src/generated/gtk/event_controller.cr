@@ -34,13 +34,13 @@ module Gtk
     end
 
     def reset
-      __return_value = LibGtk.event_controller_reset(to_unsafe.as(LibGtk::EventController*))
-      __return_value
+      LibGtk.event_controller_reset(to_unsafe.as(LibGtk::EventController*))
+      nil
     end
 
     def propagation_phase=(phase : Gtk::PropagationPhase)
-      __return_value = LibGtk.event_controller_set_propagation_phase(to_unsafe.as(LibGtk::EventController*), phase)
-      __return_value
+      LibGtk.event_controller_set_propagation_phase(to_unsafe.as(LibGtk::EventController*), phase)
+      nil
     end
 
   end

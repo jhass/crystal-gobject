@@ -16,8 +16,8 @@ module Gtk
     end
 
     def free
-      __return_value = LibGtk.selection_data_free(to_unsafe.as(LibGtk::SelectionData*))
-      __return_value
+      LibGtk.selection_data_free(to_unsafe.as(LibGtk::SelectionData*))
+      nil
     end
 
     def data_type
@@ -76,8 +76,8 @@ module Gtk
     end
 
     def set(type, format, data, length)
-      __return_value = LibGtk.selection_data_set(to_unsafe.as(LibGtk::SelectionData*), type.to_unsafe.as(LibGdk::Atom*), Int32.new(format), data, Int32.new(length))
-      __return_value
+      LibGtk.selection_data_set(to_unsafe.as(LibGtk::SelectionData*), type.to_unsafe.as(LibGdk::Atom*), Int32.new(format), data, Int32.new(length))
+      nil
     end
 
     def pixbuf=(pixbuf)

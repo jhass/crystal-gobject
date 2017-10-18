@@ -11,8 +11,8 @@ module Atk
     end
 
     def extents(x, y, width, height, coord_type : Atk::CoordType)
-      __return_value = LibAtk.component_get_extents(to_unsafe.as(LibAtk::Component*), x, y, width, height, coord_type)
-      __return_value
+      LibAtk.component_get_extents(to_unsafe.as(LibAtk::Component*), x, y, width, height, coord_type)
+      nil
     end
 
     def layer
@@ -26,13 +26,13 @@ module Atk
     end
 
     def position(x, y, coord_type : Atk::CoordType)
-      __return_value = LibAtk.component_get_position(to_unsafe.as(LibAtk::Component*), x, y, coord_type)
-      __return_value
+      LibAtk.component_get_position(to_unsafe.as(LibAtk::Component*), x, y, coord_type)
+      nil
     end
 
     def size(width, height)
-      __return_value = LibAtk.component_get_size(to_unsafe.as(LibAtk::Component*), width, height)
-      __return_value
+      LibAtk.component_get_size(to_unsafe.as(LibAtk::Component*), width, height)
+      nil
     end
 
     def grab_focus
@@ -46,8 +46,8 @@ module Atk
     end
 
     def remove_focus_handler(handler_id)
-      __return_value = LibAtk.component_remove_focus_handler(to_unsafe.as(LibAtk::Component*), UInt32.new(handler_id))
-      __return_value
+      LibAtk.component_remove_focus_handler(to_unsafe.as(LibAtk::Component*), UInt32.new(handler_id))
+      nil
     end
 
     def set_extents(x, y, width, height, coord_type : Atk::CoordType)

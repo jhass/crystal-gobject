@@ -1,33 +1,33 @@
 module Gio
   module ActionGroup
     def action_added(action_name)
-      __return_value = LibGio.action_group_action_added(to_unsafe.as(LibGio::ActionGroup*), action_name.to_unsafe)
-      __return_value
+      LibGio.action_group_action_added(to_unsafe.as(LibGio::ActionGroup*), action_name.to_unsafe)
+      nil
     end
 
     def action_enabled_changed(action_name, enabled)
-      __return_value = LibGio.action_group_action_enabled_changed(to_unsafe.as(LibGio::ActionGroup*), action_name.to_unsafe, enabled)
-      __return_value
+      LibGio.action_group_action_enabled_changed(to_unsafe.as(LibGio::ActionGroup*), action_name.to_unsafe, enabled)
+      nil
     end
 
     def action_removed(action_name)
-      __return_value = LibGio.action_group_action_removed(to_unsafe.as(LibGio::ActionGroup*), action_name.to_unsafe)
-      __return_value
+      LibGio.action_group_action_removed(to_unsafe.as(LibGio::ActionGroup*), action_name.to_unsafe)
+      nil
     end
 
     def action_state_changed(action_name, state)
-      __return_value = LibGio.action_group_action_state_changed(to_unsafe.as(LibGio::ActionGroup*), action_name.to_unsafe, state.to_unsafe.as(LibGLib::Variant*))
-      __return_value
+      LibGio.action_group_action_state_changed(to_unsafe.as(LibGio::ActionGroup*), action_name.to_unsafe, state.to_unsafe.as(LibGLib::Variant*))
+      nil
     end
 
     def activate_action(action_name, parameter)
-      __return_value = LibGio.action_group_activate_action(to_unsafe.as(LibGio::ActionGroup*), action_name.to_unsafe, parameter ? parameter.to_unsafe.as(LibGLib::Variant*) : nil)
-      __return_value
+      LibGio.action_group_activate_action(to_unsafe.as(LibGio::ActionGroup*), action_name.to_unsafe, parameter ? parameter.to_unsafe.as(LibGLib::Variant*) : nil)
+      nil
     end
 
     def change_action_state(action_name, value)
-      __return_value = LibGio.action_group_change_action_state(to_unsafe.as(LibGio::ActionGroup*), action_name.to_unsafe, value.to_unsafe.as(LibGLib::Variant*))
-      __return_value
+      LibGio.action_group_change_action_state(to_unsafe.as(LibGio::ActionGroup*), action_name.to_unsafe, value.to_unsafe.as(LibGLib::Variant*))
+      nil
     end
 
     def action_enabled(action_name)

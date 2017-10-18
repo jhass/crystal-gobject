@@ -9,13 +9,13 @@ module Gtk
     end
 
     def self.add_entry(accel_path, accel_key, accel_mods : Gdk::ModifierType)
-      __return_value = LibGtk.accel_map_add_entry(accel_path.to_unsafe, UInt32.new(accel_key), accel_mods)
-      __return_value
+      LibGtk.accel_map_add_entry(accel_path.to_unsafe, UInt32.new(accel_key), accel_mods)
+      nil
     end
 
     def self.add_filter(filter_pattern)
-      __return_value = LibGtk.accel_map_add_filter(filter_pattern.to_unsafe)
-      __return_value
+      LibGtk.accel_map_add_filter(filter_pattern.to_unsafe)
+      nil
     end
 
     def self.change_entry(accel_path, accel_key, accel_mods : Gdk::ModifierType, replace)
@@ -24,13 +24,13 @@ module Gtk
     end
 
     def self.foreach(data, foreach_func)
-      __return_value = LibGtk.accel_map_foreach(data ? data : nil, foreach_func)
-      __return_value
+      LibGtk.accel_map_foreach(data ? data : nil, foreach_func)
+      nil
     end
 
     def self.foreach_unfiltered(data, foreach_func)
-      __return_value = LibGtk.accel_map_foreach_unfiltered(data ? data : nil, foreach_func)
-      __return_value
+      LibGtk.accel_map_foreach_unfiltered(data ? data : nil, foreach_func)
+      nil
     end
 
     def self.get
@@ -39,23 +39,23 @@ module Gtk
     end
 
     def self.load(file_name)
-      __return_value = LibGtk.accel_map_load(file_name.to_unsafe)
-      __return_value
+      LibGtk.accel_map_load(file_name.to_unsafe)
+      nil
     end
 
     def self.load_fd(fd)
-      __return_value = LibGtk.accel_map_load_fd(Int32.new(fd))
-      __return_value
+      LibGtk.accel_map_load_fd(Int32.new(fd))
+      nil
     end
 
     def self.load_scanner(scanner)
-      __return_value = LibGtk.accel_map_load_scanner(scanner.to_unsafe.as(LibGLib::Scanner*))
-      __return_value
+      LibGtk.accel_map_load_scanner(scanner.to_unsafe.as(LibGLib::Scanner*))
+      nil
     end
 
     def self.lock_path(accel_path)
-      __return_value = LibGtk.accel_map_lock_path(accel_path.to_unsafe)
-      __return_value
+      LibGtk.accel_map_lock_path(accel_path.to_unsafe)
+      nil
     end
 
     def self.lookup_entry(accel_path, key)
@@ -64,18 +64,18 @@ module Gtk
     end
 
     def self.save(file_name)
-      __return_value = LibGtk.accel_map_save(file_name.to_unsafe)
-      __return_value
+      LibGtk.accel_map_save(file_name.to_unsafe)
+      nil
     end
 
     def self.save_fd(fd)
-      __return_value = LibGtk.accel_map_save_fd(Int32.new(fd))
-      __return_value
+      LibGtk.accel_map_save_fd(Int32.new(fd))
+      nil
     end
 
     def self.unlock_path(accel_path)
-      __return_value = LibGtk.accel_map_unlock_path(accel_path.to_unsafe)
-      __return_value
+      LibGtk.accel_map_unlock_path(accel_path.to_unsafe)
+      nil
     end
 
     alias ChangedSignal = AccelMap, String, UInt32, Gdk::ModifierType ->

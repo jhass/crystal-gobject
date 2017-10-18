@@ -31,8 +31,8 @@ module Gdk
     end
 
     def free
-      __return_value = LibGdk.r_g_b_a_free(to_unsafe.as(LibGdk::RGBA*))
-      __return_value
+      LibGdk.r_g_b_a_free(to_unsafe.as(LibGdk::RGBA*))
+      nil
     end
 
     def hash

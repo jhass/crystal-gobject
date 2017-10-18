@@ -26,23 +26,23 @@ module Gtk
     end
 
     def hadjustment=(hadjustment)
-      __return_value = LibGtk.scrollable_set_hadjustment(to_unsafe.as(LibGtk::Scrollable*), hadjustment ? hadjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
-      __return_value
+      LibGtk.scrollable_set_hadjustment(to_unsafe.as(LibGtk::Scrollable*), hadjustment ? hadjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
+      nil
     end
 
     def hscroll_policy=(policy : Gtk::ScrollablePolicy)
-      __return_value = LibGtk.scrollable_set_hscroll_policy(to_unsafe.as(LibGtk::Scrollable*), policy)
-      __return_value
+      LibGtk.scrollable_set_hscroll_policy(to_unsafe.as(LibGtk::Scrollable*), policy)
+      nil
     end
 
     def vadjustment=(vadjustment)
-      __return_value = LibGtk.scrollable_set_vadjustment(to_unsafe.as(LibGtk::Scrollable*), vadjustment ? vadjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
-      __return_value
+      LibGtk.scrollable_set_vadjustment(to_unsafe.as(LibGtk::Scrollable*), vadjustment ? vadjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
+      nil
     end
 
     def vscroll_policy=(policy : Gtk::ScrollablePolicy)
-      __return_value = LibGtk.scrollable_set_vscroll_policy(to_unsafe.as(LibGtk::Scrollable*), policy)
-      __return_value
+      LibGtk.scrollable_set_vscroll_policy(to_unsafe.as(LibGtk::Scrollable*), policy)
+      nil
     end
 
   end

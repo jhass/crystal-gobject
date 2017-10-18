@@ -44,13 +44,13 @@ module Gtk
     end
 
     def parent=(parent)
-      __return_value = LibGtk.mount_operation_set_parent(to_unsafe.as(LibGtk::MountOperation*), parent ? parent.to_unsafe.as(LibGtk::Window*) : nil)
-      __return_value
+      LibGtk.mount_operation_set_parent(to_unsafe.as(LibGtk::MountOperation*), parent ? parent.to_unsafe.as(LibGtk::Window*) : nil)
+      nil
     end
 
     def screen=(screen)
-      __return_value = LibGtk.mount_operation_set_screen(to_unsafe.as(LibGtk::MountOperation*), screen.to_unsafe.as(LibGdk::Screen*))
-      __return_value
+      LibGtk.mount_operation_set_screen(to_unsafe.as(LibGtk::MountOperation*), screen.to_unsafe.as(LibGdk::Screen*))
+      nil
     end
 
   end

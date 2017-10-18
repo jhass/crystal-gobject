@@ -138,6 +138,11 @@ module GdkPixbuf
       cast GdkPixbuf::Pixbuf.new(__return_value)
     end
 
+    def self.calculate_rowstride(colorspace : GdkPixbuf::Colorspace, has_alpha, bits_per_sample, width, height)
+      __return_value = LibGdkPixbuf.pixbuf_calculate_rowstride(colorspace, has_alpha, Int32.new(bits_per_sample), Int32.new(width), Int32.new(height))
+      __return_value
+    end
+
     def self.from_pixdata(pixdata, copy_pixels)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixbuf_from_pixdata(pixdata.to_unsafe.as(LibGdkPixbuf::Pixdata*), copy_pixels, pointerof(__error))
@@ -151,8 +156,8 @@ module GdkPixbuf
     end
 
     def self.file_info_async(filename, cancellable, callback, user_data)
-      __return_value = LibGdkPixbuf.pixbuf_get_file_info_async(filename.to_unsafe, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGdkPixbuf.pixbuf_get_file_info_async(filename.to_unsafe, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def self.file_info_finish(async_result, width, height)
@@ -168,13 +173,13 @@ module GdkPixbuf
     end
 
     def self.new_from_stream_async(stream, cancellable, callback, user_data)
-      __return_value = LibGdkPixbuf.pixbuf_new_from_stream_async(stream.to_unsafe.as(LibGio::InputStream*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGdkPixbuf.pixbuf_new_from_stream_async(stream.to_unsafe.as(LibGio::InputStream*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def self.new_from_stream_at_scale_async(stream, width, height, preserve_aspect_ratio, cancellable, callback, user_data)
-      __return_value = LibGdkPixbuf.pixbuf_new_from_stream_at_scale_async(stream.to_unsafe.as(LibGio::InputStream*), Int32.new(width), Int32.new(height), preserve_aspect_ratio, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGdkPixbuf.pixbuf_new_from_stream_at_scale_async(stream.to_unsafe.as(LibGio::InputStream*), Int32.new(width), Int32.new(height), preserve_aspect_ratio, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def self.save_to_stream_finish(async_result)
@@ -195,13 +200,13 @@ module GdkPixbuf
     end
 
     def composite(dest, dest_x, dest_y, dest_width, dest_height, offset_x, offset_y, scale_x, scale_y, interp_type : GdkPixbuf::InterpType, overall_alpha)
-      __return_value = LibGdkPixbuf.pixbuf_composite(to_unsafe.as(LibGdkPixbuf::Pixbuf*), dest.to_unsafe.as(LibGdkPixbuf::Pixbuf*), Int32.new(dest_x), Int32.new(dest_y), Int32.new(dest_width), Int32.new(dest_height), Float64.new(offset_x), Float64.new(offset_y), Float64.new(scale_x), Float64.new(scale_y), interp_type, Int32.new(overall_alpha))
-      __return_value
+      LibGdkPixbuf.pixbuf_composite(to_unsafe.as(LibGdkPixbuf::Pixbuf*), dest.to_unsafe.as(LibGdkPixbuf::Pixbuf*), Int32.new(dest_x), Int32.new(dest_y), Int32.new(dest_width), Int32.new(dest_height), Float64.new(offset_x), Float64.new(offset_y), Float64.new(scale_x), Float64.new(scale_y), interp_type, Int32.new(overall_alpha))
+      nil
     end
 
     def composite_color(dest, dest_x, dest_y, dest_width, dest_height, offset_x, offset_y, scale_x, scale_y, interp_type : GdkPixbuf::InterpType, overall_alpha, check_x, check_y, check_size, color1, color2)
-      __return_value = LibGdkPixbuf.pixbuf_composite_color(to_unsafe.as(LibGdkPixbuf::Pixbuf*), dest.to_unsafe.as(LibGdkPixbuf::Pixbuf*), Int32.new(dest_x), Int32.new(dest_y), Int32.new(dest_width), Int32.new(dest_height), Float64.new(offset_x), Float64.new(offset_y), Float64.new(scale_x), Float64.new(scale_y), interp_type, Int32.new(overall_alpha), Int32.new(check_x), Int32.new(check_y), Int32.new(check_size), UInt32.new(color1), UInt32.new(color2))
-      __return_value
+      LibGdkPixbuf.pixbuf_composite_color(to_unsafe.as(LibGdkPixbuf::Pixbuf*), dest.to_unsafe.as(LibGdkPixbuf::Pixbuf*), Int32.new(dest_x), Int32.new(dest_y), Int32.new(dest_width), Int32.new(dest_height), Float64.new(offset_x), Float64.new(offset_y), Float64.new(scale_x), Float64.new(scale_y), interp_type, Int32.new(overall_alpha), Int32.new(check_x), Int32.new(check_y), Int32.new(check_size), UInt32.new(color1), UInt32.new(color2))
+      nil
     end
 
     def composite_color_simple(dest_width, dest_height, interp_type : GdkPixbuf::InterpType, overall_alpha, check_size, color1, color2)
@@ -215,8 +220,8 @@ module GdkPixbuf
     end
 
     def copy_area(src_x, src_y, width, height, dest_pixbuf, dest_x, dest_y)
-      __return_value = LibGdkPixbuf.pixbuf_copy_area(to_unsafe.as(LibGdkPixbuf::Pixbuf*), Int32.new(src_x), Int32.new(src_y), Int32.new(width), Int32.new(height), dest_pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*), Int32.new(dest_x), Int32.new(dest_y))
-      __return_value
+      LibGdkPixbuf.pixbuf_copy_area(to_unsafe.as(LibGdkPixbuf::Pixbuf*), Int32.new(src_x), Int32.new(src_y), Int32.new(width), Int32.new(height), dest_pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*), Int32.new(dest_x), Int32.new(dest_y))
+      nil
     end
 
     def copy_options(dest_pixbuf)
@@ -225,8 +230,8 @@ module GdkPixbuf
     end
 
     def fill(pixel)
-      __return_value = LibGdkPixbuf.pixbuf_fill(to_unsafe.as(LibGdkPixbuf::Pixbuf*), UInt32.new(pixel))
-      __return_value
+      LibGdkPixbuf.pixbuf_fill(to_unsafe.as(LibGdkPixbuf::Pixbuf*), UInt32.new(pixel))
+      nil
     end
 
     def flip(horizontal)
@@ -315,8 +320,8 @@ module GdkPixbuf
     end
 
     def saturate_and_pixelate(dest, saturation, pixelate)
-      __return_value = LibGdkPixbuf.pixbuf_saturate_and_pixelate(to_unsafe.as(LibGdkPixbuf::Pixbuf*), dest.to_unsafe.as(LibGdkPixbuf::Pixbuf*), Float32.new(saturation), pixelate)
-      __return_value
+      LibGdkPixbuf.pixbuf_saturate_and_pixelate(to_unsafe.as(LibGdkPixbuf::Pixbuf*), dest.to_unsafe.as(LibGdkPixbuf::Pixbuf*), Float32.new(saturation), pixelate)
+      nil
     end
 
     def save_to_bufferv(buffer, buffer_size, type, option_keys, option_values)
@@ -341,8 +346,8 @@ module GdkPixbuf
     end
 
     def save_to_streamv_async(stream, type, option_keys, option_values, cancellable, callback, user_data)
-      __return_value = LibGdkPixbuf.pixbuf_save_to_streamv_async(to_unsafe.as(LibGdkPixbuf::Pixbuf*), stream.to_unsafe.as(LibGio::OutputStream*), type.to_unsafe, option_keys, option_values, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGdkPixbuf.pixbuf_save_to_streamv_async(to_unsafe.as(LibGdkPixbuf::Pixbuf*), stream.to_unsafe.as(LibGio::OutputStream*), type.to_unsafe, option_keys, option_values, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def savev(filename, type, option_keys, option_values)
@@ -353,8 +358,8 @@ module GdkPixbuf
     end
 
     def scale(dest, dest_x, dest_y, dest_width, dest_height, offset_x, offset_y, scale_x, scale_y, interp_type : GdkPixbuf::InterpType)
-      __return_value = LibGdkPixbuf.pixbuf_scale(to_unsafe.as(LibGdkPixbuf::Pixbuf*), dest.to_unsafe.as(LibGdkPixbuf::Pixbuf*), Int32.new(dest_x), Int32.new(dest_y), Int32.new(dest_width), Int32.new(dest_height), Float64.new(offset_x), Float64.new(offset_y), Float64.new(scale_x), Float64.new(scale_y), interp_type)
-      __return_value
+      LibGdkPixbuf.pixbuf_scale(to_unsafe.as(LibGdkPixbuf::Pixbuf*), dest.to_unsafe.as(LibGdkPixbuf::Pixbuf*), Int32.new(dest_x), Int32.new(dest_y), Int32.new(dest_width), Int32.new(dest_height), Float64.new(offset_x), Float64.new(offset_y), Float64.new(scale_x), Float64.new(scale_y), interp_type)
+      nil
     end
 
     def scale_simple(dest_width, dest_height, interp_type : GdkPixbuf::InterpType)

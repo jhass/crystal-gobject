@@ -16,8 +16,8 @@ module GLib
     end
 
     def init(hash_table)
-      __return_value = LibGLib.hash_table_iter_init(to_unsafe.as(LibGLib::HashTableIter*), hash_table)
-      __return_value
+      LibGLib.hash_table_iter_init(to_unsafe.as(LibGLib::HashTableIter*), hash_table)
+      nil
     end
 
     def next(key, value)
@@ -26,18 +26,18 @@ module GLib
     end
 
     def remove
-      __return_value = LibGLib.hash_table_iter_remove(to_unsafe.as(LibGLib::HashTableIter*))
-      __return_value
+      LibGLib.hash_table_iter_remove(to_unsafe.as(LibGLib::HashTableIter*))
+      nil
     end
 
     def replace(value)
-      __return_value = LibGLib.hash_table_iter_replace(to_unsafe.as(LibGLib::HashTableIter*), value ? value : nil)
-      __return_value
+      LibGLib.hash_table_iter_replace(to_unsafe.as(LibGLib::HashTableIter*), value ? value : nil)
+      nil
     end
 
     def steal
-      __return_value = LibGLib.hash_table_iter_steal(to_unsafe.as(LibGLib::HashTableIter*))
-      __return_value
+      LibGLib.hash_table_iter_steal(to_unsafe.as(LibGLib::HashTableIter*))
+      nil
     end
 
     def dummy1

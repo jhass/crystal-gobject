@@ -11,8 +11,8 @@ module GLib
     end
 
     def join
-      __return_value = LibGLib.thread_join(to_unsafe.as(LibGLib::Thread*))
-      __return_value if __return_value
+      LibGLib.thread_join(to_unsafe.as(LibGLib::Thread*))
+      nil
     end
 
     def ref
@@ -21,8 +21,8 @@ module GLib
     end
 
     def unref
-      __return_value = LibGLib.thread_unref(to_unsafe.as(LibGLib::Thread*))
-      __return_value
+      LibGLib.thread_unref(to_unsafe.as(LibGLib::Thread*))
+      nil
     end
 
     def self.error_quark
@@ -31,8 +31,8 @@ module GLib
     end
 
     def self.exit(retval)
-      __return_value = LibGLib.thread_exit(retval ? retval : nil)
-      __return_value
+      LibGLib.thread_exit(retval ? retval : nil)
+      nil
     end
 
     def self.self
@@ -41,8 +41,8 @@ module GLib
     end
 
     def self.yield
-      __return_value = LibGLib.thread_yield
-      __return_value
+      LibGLib.thread_yield
+      nil
     end
 
   end

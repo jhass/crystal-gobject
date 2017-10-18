@@ -43,13 +43,13 @@ module Gst
     end
 
     def filter_and_map_in_place(func, user_data)
-      __return_value = LibGst.structure_filter_and_map_in_place(to_unsafe.as(LibGst::Structure*), func, user_data ? user_data : nil)
-      __return_value
+      LibGst.structure_filter_and_map_in_place(to_unsafe.as(LibGst::Structure*), func, user_data ? user_data : nil)
+      nil
     end
 
     def fixate
-      __return_value = LibGst.structure_fixate(to_unsafe.as(LibGst::Structure*))
-      __return_value
+      LibGst.structure_fixate(to_unsafe.as(LibGst::Structure*))
+      nil
     end
 
     def fixate_field(field_name)
@@ -88,8 +88,8 @@ module Gst
     end
 
     def free
-      __return_value = LibGst.structure_free(to_unsafe.as(LibGst::Structure*))
-      __return_value
+      LibGst.structure_free(to_unsafe.as(LibGst::Structure*))
+      nil
     end
 
     def array(fieldname, array)
@@ -218,13 +218,13 @@ module Gst
     end
 
     def id_set_value(field, value)
-      __return_value = LibGst.structure_id_set_value(to_unsafe.as(LibGst::Structure*), UInt32.new(field), value.to_unsafe.as(LibGObject::Value*))
-      __return_value
+      LibGst.structure_id_set_value(to_unsafe.as(LibGst::Structure*), UInt32.new(field), value.to_unsafe.as(LibGObject::Value*))
+      nil
     end
 
     def id_take_value(field, value)
-      __return_value = LibGst.structure_id_take_value(to_unsafe.as(LibGst::Structure*), UInt32.new(field), value.to_unsafe.as(LibGObject::Value*))
-      __return_value
+      LibGst.structure_id_take_value(to_unsafe.as(LibGst::Structure*), UInt32.new(field), value.to_unsafe.as(LibGObject::Value*))
+      nil
     end
 
     def intersect(struct2)
@@ -258,28 +258,28 @@ module Gst
     end
 
     def remove_all_fields
-      __return_value = LibGst.structure_remove_all_fields(to_unsafe.as(LibGst::Structure*))
-      __return_value
+      LibGst.structure_remove_all_fields(to_unsafe.as(LibGst::Structure*))
+      nil
     end
 
     def remove_field(fieldname)
-      __return_value = LibGst.structure_remove_field(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe)
-      __return_value
+      LibGst.structure_remove_field(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe)
+      nil
     end
 
     def set_array(fieldname, array)
-      __return_value = LibGst.structure_set_array(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, array.to_unsafe.as(LibGObject::ValueArray*))
-      __return_value
+      LibGst.structure_set_array(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, array.to_unsafe.as(LibGObject::ValueArray*))
+      nil
     end
 
     def set_list(fieldname, array)
-      __return_value = LibGst.structure_set_list(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, array.to_unsafe.as(LibGObject::ValueArray*))
-      __return_value
+      LibGst.structure_set_list(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, array.to_unsafe.as(LibGObject::ValueArray*))
+      nil
     end
 
     def name=(name)
-      __return_value = LibGst.structure_set_name(to_unsafe.as(LibGst::Structure*), name.to_unsafe)
-      __return_value
+      LibGst.structure_set_name(to_unsafe.as(LibGst::Structure*), name.to_unsafe)
+      nil
     end
 
     def parent_refcount=(refcount)
@@ -288,13 +288,13 @@ module Gst
     end
 
     def set_value(fieldname, value)
-      __return_value = LibGst.structure_set_value(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
-      __return_value
+      LibGst.structure_set_value(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
+      nil
     end
 
     def take_value(fieldname, value)
-      __return_value = LibGst.structure_take_value(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
-      __return_value
+      LibGst.structure_take_value(to_unsafe.as(LibGst::Structure*), fieldname.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
+      nil
     end
 
     def to_string

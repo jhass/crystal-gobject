@@ -29,18 +29,18 @@ module Pango
     end
 
     def free
-      __return_value = LibPango.glyph_item_free(to_unsafe.as(LibPango::GlyphItem*))
-      __return_value
+      LibPango.glyph_item_free(to_unsafe.as(LibPango::GlyphItem*))
+      nil
     end
 
     def logical_widths(text, logical_widths)
-      __return_value = LibPango.glyph_item_get_logical_widths(to_unsafe.as(LibPango::GlyphItem*), text.to_unsafe, logical_widths)
-      __return_value
+      LibPango.glyph_item_get_logical_widths(to_unsafe.as(LibPango::GlyphItem*), text.to_unsafe, logical_widths)
+      nil
     end
 
     def letter_space(text, log_attrs, letter_spacing)
-      __return_value = LibPango.glyph_item_letter_space(to_unsafe.as(LibPango::GlyphItem*), text.to_unsafe, log_attrs, Int32.new(letter_spacing))
-      __return_value
+      LibPango.glyph_item_letter_space(to_unsafe.as(LibPango::GlyphItem*), text.to_unsafe, log_attrs, Int32.new(letter_spacing))
+      nil
     end
 
     def split(text, split_index)

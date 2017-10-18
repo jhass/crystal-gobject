@@ -41,8 +41,8 @@ module Gtk
     end
 
     def group=(group)
-      __return_value = LibGtk.radio_tool_button_set_group(to_unsafe.as(LibGtk::RadioToolButton*), group ? group : nil)
-      __return_value
+      LibGtk.radio_tool_button_set_group(to_unsafe.as(LibGtk::RadioToolButton*), group ? group : nil)
+      nil
     end
 
   end

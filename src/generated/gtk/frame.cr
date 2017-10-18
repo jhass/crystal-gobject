@@ -48,8 +48,8 @@ module Gtk
     end
 
     def label_align(xalign, yalign)
-      __return_value = LibGtk.frame_get_label_align(to_unsafe.as(LibGtk::Frame*), xalign, yalign)
-      __return_value
+      LibGtk.frame_get_label_align(to_unsafe.as(LibGtk::Frame*), xalign, yalign)
+      nil
     end
 
     def label_widget
@@ -63,23 +63,23 @@ module Gtk
     end
 
     def label=(label)
-      __return_value = LibGtk.frame_set_label(to_unsafe.as(LibGtk::Frame*), label ? label.to_unsafe : nil)
-      __return_value
+      LibGtk.frame_set_label(to_unsafe.as(LibGtk::Frame*), label ? label.to_unsafe : nil)
+      nil
     end
 
     def set_label_align(xalign, yalign)
-      __return_value = LibGtk.frame_set_label_align(to_unsafe.as(LibGtk::Frame*), Float32.new(xalign), Float32.new(yalign))
-      __return_value
+      LibGtk.frame_set_label_align(to_unsafe.as(LibGtk::Frame*), Float32.new(xalign), Float32.new(yalign))
+      nil
     end
 
     def label_widget=(label_widget)
-      __return_value = LibGtk.frame_set_label_widget(to_unsafe.as(LibGtk::Frame*), label_widget ? label_widget.to_unsafe.as(LibGtk::Widget*) : nil)
-      __return_value
+      LibGtk.frame_set_label_widget(to_unsafe.as(LibGtk::Frame*), label_widget ? label_widget.to_unsafe.as(LibGtk::Widget*) : nil)
+      nil
     end
 
     def shadow_type=(type : Gtk::ShadowType)
-      __return_value = LibGtk.frame_set_shadow_type(to_unsafe.as(LibGtk::Frame*), type)
-      __return_value
+      LibGtk.frame_set_shadow_type(to_unsafe.as(LibGtk::Frame*), type)
+      nil
     end
 
   end

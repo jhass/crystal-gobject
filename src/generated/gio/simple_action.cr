@@ -45,18 +45,18 @@ module Gio
     end
 
     def enabled=(enabled)
-      __return_value = LibGio.simple_action_set_enabled(to_unsafe.as(LibGio::SimpleAction*), enabled)
-      __return_value
+      LibGio.simple_action_set_enabled(to_unsafe.as(LibGio::SimpleAction*), enabled)
+      nil
     end
 
     def state=(value)
-      __return_value = LibGio.simple_action_set_state(to_unsafe.as(LibGio::SimpleAction*), value.to_unsafe.as(LibGLib::Variant*))
-      __return_value
+      LibGio.simple_action_set_state(to_unsafe.as(LibGio::SimpleAction*), value.to_unsafe.as(LibGLib::Variant*))
+      nil
     end
 
     def state_hint=(state_hint)
-      __return_value = LibGio.simple_action_set_state_hint(to_unsafe.as(LibGio::SimpleAction*), state_hint ? state_hint.to_unsafe.as(LibGLib::Variant*) : nil)
-      __return_value
+      LibGio.simple_action_set_state_hint(to_unsafe.as(LibGio::SimpleAction*), state_hint ? state_hint.to_unsafe.as(LibGLib::Variant*) : nil)
+      nil
     end
 
     alias ActivateSignal = SimpleAction, GLib::Variant ->

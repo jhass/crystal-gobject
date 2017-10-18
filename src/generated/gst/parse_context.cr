@@ -21,8 +21,8 @@ module Gst
     end
 
     def free
-      __return_value = LibGst.parse_context_free(to_unsafe.as(LibGst::ParseContext*))
-      __return_value
+      LibGst.parse_context_free(to_unsafe.as(LibGst::ParseContext*))
+      nil
     end
 
     def missing_elements

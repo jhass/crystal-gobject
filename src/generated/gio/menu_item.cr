@@ -39,43 +39,43 @@ module Gio
     end
 
     def set_action_and_target_value(action, target_value)
-      __return_value = LibGio.menu_item_set_action_and_target_value(to_unsafe.as(LibGio::MenuItem*), action ? action.to_unsafe : nil, target_value ? target_value.to_unsafe.as(LibGLib::Variant*) : nil)
-      __return_value
+      LibGio.menu_item_set_action_and_target_value(to_unsafe.as(LibGio::MenuItem*), action ? action.to_unsafe : nil, target_value ? target_value.to_unsafe.as(LibGLib::Variant*) : nil)
+      nil
     end
 
     def set_attribute_value(attribute, value)
-      __return_value = LibGio.menu_item_set_attribute_value(to_unsafe.as(LibGio::MenuItem*), attribute.to_unsafe, value ? value.to_unsafe.as(LibGLib::Variant*) : nil)
-      __return_value
+      LibGio.menu_item_set_attribute_value(to_unsafe.as(LibGio::MenuItem*), attribute.to_unsafe, value ? value.to_unsafe.as(LibGLib::Variant*) : nil)
+      nil
     end
 
     def detailed_action=(detailed_action)
-      __return_value = LibGio.menu_item_set_detailed_action(to_unsafe.as(LibGio::MenuItem*), detailed_action.to_unsafe)
-      __return_value
+      LibGio.menu_item_set_detailed_action(to_unsafe.as(LibGio::MenuItem*), detailed_action.to_unsafe)
+      nil
     end
 
     def icon=(icon)
-      __return_value = LibGio.menu_item_set_icon(to_unsafe.as(LibGio::MenuItem*), icon.to_unsafe.as(LibGio::Icon*))
-      __return_value
+      LibGio.menu_item_set_icon(to_unsafe.as(LibGio::MenuItem*), icon.to_unsafe.as(LibGio::Icon*))
+      nil
     end
 
     def label=(label)
-      __return_value = LibGio.menu_item_set_label(to_unsafe.as(LibGio::MenuItem*), label ? label.to_unsafe : nil)
-      __return_value
+      LibGio.menu_item_set_label(to_unsafe.as(LibGio::MenuItem*), label ? label.to_unsafe : nil)
+      nil
     end
 
     def set_link(link, model)
-      __return_value = LibGio.menu_item_set_link(to_unsafe.as(LibGio::MenuItem*), link.to_unsafe, model ? model.to_unsafe.as(LibGio::MenuModel*) : nil)
-      __return_value
+      LibGio.menu_item_set_link(to_unsafe.as(LibGio::MenuItem*), link.to_unsafe, model ? model.to_unsafe.as(LibGio::MenuModel*) : nil)
+      nil
     end
 
     def section=(section)
-      __return_value = LibGio.menu_item_set_section(to_unsafe.as(LibGio::MenuItem*), section ? section.to_unsafe.as(LibGio::MenuModel*) : nil)
-      __return_value
+      LibGio.menu_item_set_section(to_unsafe.as(LibGio::MenuItem*), section ? section.to_unsafe.as(LibGio::MenuModel*) : nil)
+      nil
     end
 
     def submenu=(submenu)
-      __return_value = LibGio.menu_item_set_submenu(to_unsafe.as(LibGio::MenuItem*), submenu ? submenu.to_unsafe.as(LibGio::MenuModel*) : nil)
-      __return_value
+      LibGio.menu_item_set_submenu(to_unsafe.as(LibGio::MenuItem*), submenu ? submenu.to_unsafe.as(LibGio::MenuModel*) : nil)
+      nil
     end
 
   end

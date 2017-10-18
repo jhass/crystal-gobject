@@ -23,8 +23,8 @@ module Gtk
     end
 
     def open_submenu(name)
-      __return_value = LibGtk.popover_menu_open_submenu(to_unsafe.as(LibGtk::PopoverMenu*), name.to_unsafe)
-      __return_value
+      LibGtk.popover_menu_open_submenu(to_unsafe.as(LibGtk::PopoverMenu*), name.to_unsafe)
+      nil
     end
 
   end

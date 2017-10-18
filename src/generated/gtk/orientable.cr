@@ -6,8 +6,8 @@ module Gtk
     end
 
     def orientation=(orientation : Gtk::Orientation)
-      __return_value = LibGtk.orientable_set_orientation(to_unsafe.as(LibGtk::Orientable*), orientation)
-      __return_value
+      LibGtk.orientable_set_orientation(to_unsafe.as(LibGtk::Orientable*), orientation)
+      nil
     end
 
   end

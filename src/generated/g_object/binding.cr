@@ -61,8 +61,8 @@ module GObject
     end
 
     def unbind
-      __return_value = LibGObject.binding_unbind(to_unsafe.as(LibGObject::Binding*))
-      __return_value
+      LibGObject.binding_unbind(to_unsafe.as(LibGObject::Binding*))
+      nil
     end
 
   end

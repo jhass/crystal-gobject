@@ -6815,6 +6815,8 @@ lib LibGtk
     UPPERCASE_SENTENCES = 64
     INHIBIT_OSK = 128
     VERTICAL_WRITING = 256
+    EMOJI = 512
+    NO_EMOJI = 1024
   end
 
   @[Flags]
@@ -8496,15 +8498,15 @@ lib LibGtk
   ##    Constants
   ###########################################
 
-  BINARY_AGE = 2216 # : Int32
+  BINARY_AGE = 2224 # : Int32
   INPUT_ERROR = -1 # : Int32
-  INTERFACE_AGE = 16 # : Int32
+  INTERFACE_AGE = 24 # : Int32
   LEVEL_BAR_OFFSET_FULL = "full" # : UInt8*
   LEVEL_BAR_OFFSET_HIGH = "high" # : UInt8*
   LEVEL_BAR_OFFSET_LOW = "low" # : UInt8*
   MAJOR_VERSION = 3 # : Int32
   MAX_COMPOSE_LEN = 7 # : Int32
-  MICRO_VERSION = 16 # : Int32
+  MICRO_VERSION = 24 # : Int32
   MINOR_VERSION = 22 # : Int32
   PAPER_NAME_A3 = "iso_a3" # : UInt8*
   PAPER_NAME_A4 = "iso_a4" # : UInt8*
@@ -8978,7 +8980,7 @@ lib LibGtk
  alias ColorSelectionChangePaletteWithScreenFunc = LibGdk::Screen*, LibGdk::Color*, Int32 -> Void
  alias EntryCompletionMatchFunc = LibGtk::EntryCompletion*, UInt8*, LibGtk::TreeIter*, Void* -> Bool
  alias FileFilterFunc = LibGtk::FileFilterInfo*, Void* -> Bool
- alias FlowBoxCreateWidgetFunc = Void*, Void* -> LibGtk::Widget*
+ alias FlowBoxCreateWidgetFunc = LibGObject::Object*, Void* -> LibGtk::Widget*
  alias FlowBoxFilterFunc = LibGtk::FlowBoxChild*, Void* -> Bool
  alias FlowBoxForeachFunc = LibGtk::FlowBox*, LibGtk::FlowBoxChild*, Void* -> Void
  alias FlowBoxSortFunc = LibGtk::FlowBoxChild*, LibGtk::FlowBoxChild*, Void* -> Int32

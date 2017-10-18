@@ -71,8 +71,8 @@ module Gtk
     end
 
     def group(gesture)
-      __return_value = LibGtk.gesture_group(to_unsafe.as(LibGtk::Gesture*), gesture.to_unsafe.as(LibGtk::Gesture*))
-      __return_value
+      LibGtk.gesture_group(to_unsafe.as(LibGtk::Gesture*), gesture.to_unsafe.as(LibGtk::Gesture*))
+      nil
     end
 
     def handles_sequence(sequence)
@@ -106,13 +106,13 @@ module Gtk
     end
 
     def window=(window)
-      __return_value = LibGtk.gesture_set_window(to_unsafe.as(LibGtk::Gesture*), window ? window.to_unsafe.as(LibGdk::Window*) : nil)
-      __return_value
+      LibGtk.gesture_set_window(to_unsafe.as(LibGtk::Gesture*), window ? window.to_unsafe.as(LibGdk::Window*) : nil)
+      nil
     end
 
     def ungroup
-      __return_value = LibGtk.gesture_ungroup(to_unsafe.as(LibGtk::Gesture*))
-      __return_value
+      LibGtk.gesture_ungroup(to_unsafe.as(LibGtk::Gesture*))
+      nil
     end
 
     alias BeginSignal = Gesture, Gdk::EventSequence ->

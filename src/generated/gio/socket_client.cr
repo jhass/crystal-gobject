@@ -59,8 +59,8 @@ module Gio
     end
 
     def add_application_proxy(protocol)
-      __return_value = LibGio.socket_client_add_application_proxy(to_unsafe.as(LibGio::SocketClient*), protocol.to_unsafe)
-      __return_value
+      LibGio.socket_client_add_application_proxy(to_unsafe.as(LibGio::SocketClient*), protocol.to_unsafe)
+      nil
     end
 
     def connect(connectable, cancellable)
@@ -71,8 +71,8 @@ module Gio
     end
 
     def connect_async(connectable, cancellable, callback, user_data)
-      __return_value = LibGio.socket_client_connect_async(to_unsafe.as(LibGio::SocketClient*), connectable.to_unsafe.as(LibGio::SocketConnectable*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.socket_client_connect_async(to_unsafe.as(LibGio::SocketClient*), connectable.to_unsafe.as(LibGio::SocketConnectable*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def connect_finish(result)
@@ -90,8 +90,8 @@ module Gio
     end
 
     def connect_to_host_async(host_and_port, default_port, cancellable, callback, user_data)
-      __return_value = LibGio.socket_client_connect_to_host_async(to_unsafe.as(LibGio::SocketClient*), host_and_port.to_unsafe, UInt16.new(default_port), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.socket_client_connect_to_host_async(to_unsafe.as(LibGio::SocketClient*), host_and_port.to_unsafe, UInt16.new(default_port), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def connect_to_host_finish(result)
@@ -109,8 +109,8 @@ module Gio
     end
 
     def connect_to_service_async(domain, service, cancellable, callback, user_data)
-      __return_value = LibGio.socket_client_connect_to_service_async(to_unsafe.as(LibGio::SocketClient*), domain.to_unsafe, service.to_unsafe, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.socket_client_connect_to_service_async(to_unsafe.as(LibGio::SocketClient*), domain.to_unsafe, service.to_unsafe, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def connect_to_service_finish(result)
@@ -128,8 +128,8 @@ module Gio
     end
 
     def connect_to_uri_async(uri, default_port, cancellable, callback, user_data)
-      __return_value = LibGio.socket_client_connect_to_uri_async(to_unsafe.as(LibGio::SocketClient*), uri.to_unsafe, UInt16.new(default_port), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.socket_client_connect_to_uri_async(to_unsafe.as(LibGio::SocketClient*), uri.to_unsafe, UInt16.new(default_port), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def connect_to_uri_finish(result)
@@ -185,48 +185,48 @@ module Gio
     end
 
     def enable_proxy=(enable)
-      __return_value = LibGio.socket_client_set_enable_proxy(to_unsafe.as(LibGio::SocketClient*), enable)
-      __return_value
+      LibGio.socket_client_set_enable_proxy(to_unsafe.as(LibGio::SocketClient*), enable)
+      nil
     end
 
     def family=(family : Gio::SocketFamily)
-      __return_value = LibGio.socket_client_set_family(to_unsafe.as(LibGio::SocketClient*), family)
-      __return_value
+      LibGio.socket_client_set_family(to_unsafe.as(LibGio::SocketClient*), family)
+      nil
     end
 
     def local_address=(address)
-      __return_value = LibGio.socket_client_set_local_address(to_unsafe.as(LibGio::SocketClient*), address ? address.to_unsafe.as(LibGio::SocketAddress*) : nil)
-      __return_value
+      LibGio.socket_client_set_local_address(to_unsafe.as(LibGio::SocketClient*), address ? address.to_unsafe.as(LibGio::SocketAddress*) : nil)
+      nil
     end
 
     def protocol=(protocol : Gio::SocketProtocol)
-      __return_value = LibGio.socket_client_set_protocol(to_unsafe.as(LibGio::SocketClient*), protocol)
-      __return_value
+      LibGio.socket_client_set_protocol(to_unsafe.as(LibGio::SocketClient*), protocol)
+      nil
     end
 
     def proxy_resolver=(proxy_resolver)
-      __return_value = LibGio.socket_client_set_proxy_resolver(to_unsafe.as(LibGio::SocketClient*), proxy_resolver ? proxy_resolver.to_unsafe.as(LibGio::ProxyResolver*) : nil)
-      __return_value
+      LibGio.socket_client_set_proxy_resolver(to_unsafe.as(LibGio::SocketClient*), proxy_resolver ? proxy_resolver.to_unsafe.as(LibGio::ProxyResolver*) : nil)
+      nil
     end
 
     def socket_type=(type : Gio::SocketType)
-      __return_value = LibGio.socket_client_set_socket_type(to_unsafe.as(LibGio::SocketClient*), type)
-      __return_value
+      LibGio.socket_client_set_socket_type(to_unsafe.as(LibGio::SocketClient*), type)
+      nil
     end
 
     def timeout=(timeout)
-      __return_value = LibGio.socket_client_set_timeout(to_unsafe.as(LibGio::SocketClient*), UInt32.new(timeout))
-      __return_value
+      LibGio.socket_client_set_timeout(to_unsafe.as(LibGio::SocketClient*), UInt32.new(timeout))
+      nil
     end
 
     def tls=(tls)
-      __return_value = LibGio.socket_client_set_tls(to_unsafe.as(LibGio::SocketClient*), tls)
-      __return_value
+      LibGio.socket_client_set_tls(to_unsafe.as(LibGio::SocketClient*), tls)
+      nil
     end
 
     def tls_validation_flags=(flags : Gio::TlsCertificateFlags)
-      __return_value = LibGio.socket_client_set_tls_validation_flags(to_unsafe.as(LibGio::SocketClient*), flags)
-      __return_value
+      LibGio.socket_client_set_tls_validation_flags(to_unsafe.as(LibGio::SocketClient*), flags)
+      nil
     end
 
     alias EventSignal = SocketClient, Gio::SocketClientEvent, Gio::SocketConnectable, Gio::IOStream ->

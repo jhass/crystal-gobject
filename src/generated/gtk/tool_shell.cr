@@ -41,8 +41,8 @@ module Gtk
     end
 
     def rebuild_menu
-      __return_value = LibGtk.tool_shell_rebuild_menu(to_unsafe.as(LibGtk::ToolShell*))
-      __return_value
+      LibGtk.tool_shell_rebuild_menu(to_unsafe.as(LibGtk::ToolShell*))
+      nil
     end
 
   end

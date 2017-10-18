@@ -34,8 +34,8 @@ module Gdk
     end
 
     def default_display=(display)
-      __return_value = LibGdk.display_manager_set_default_display(to_unsafe.as(LibGdk::DisplayManager*), display.to_unsafe.as(LibGdk::Display*))
-      __return_value
+      LibGdk.display_manager_set_default_display(to_unsafe.as(LibGdk::DisplayManager*), display.to_unsafe.as(LibGdk::Display*))
+      nil
     end
 
     alias DisplayOpenedSignal = DisplayManager, Gdk::Display ->

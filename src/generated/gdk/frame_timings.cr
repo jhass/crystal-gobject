@@ -46,8 +46,8 @@ module Gdk
     end
 
     def unref
-      __return_value = LibGdk.frame_timings_unref(to_unsafe.as(LibGdk::FrameTimings*))
-      __return_value
+      LibGdk.frame_timings_unref(to_unsafe.as(LibGdk::FrameTimings*))
+      nil
     end
 
   end

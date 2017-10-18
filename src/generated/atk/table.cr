@@ -116,33 +116,33 @@ module Atk
     end
 
     def caption=(caption)
-      __return_value = LibAtk.table_set_caption(to_unsafe.as(LibAtk::Table*), caption.to_unsafe.as(LibAtk::Object*))
-      __return_value
+      LibAtk.table_set_caption(to_unsafe.as(LibAtk::Table*), caption.to_unsafe.as(LibAtk::Object*))
+      nil
     end
 
     def set_column_description(column, description)
-      __return_value = LibAtk.table_set_column_description(to_unsafe.as(LibAtk::Table*), Int32.new(column), description.to_unsafe)
-      __return_value
+      LibAtk.table_set_column_description(to_unsafe.as(LibAtk::Table*), Int32.new(column), description.to_unsafe)
+      nil
     end
 
     def set_column_header(column, header)
-      __return_value = LibAtk.table_set_column_header(to_unsafe.as(LibAtk::Table*), Int32.new(column), header.to_unsafe.as(LibAtk::Object*))
-      __return_value
+      LibAtk.table_set_column_header(to_unsafe.as(LibAtk::Table*), Int32.new(column), header.to_unsafe.as(LibAtk::Object*))
+      nil
     end
 
     def set_row_description(row, description)
-      __return_value = LibAtk.table_set_row_description(to_unsafe.as(LibAtk::Table*), Int32.new(row), description.to_unsafe)
-      __return_value
+      LibAtk.table_set_row_description(to_unsafe.as(LibAtk::Table*), Int32.new(row), description.to_unsafe)
+      nil
     end
 
     def set_row_header(row, header)
-      __return_value = LibAtk.table_set_row_header(to_unsafe.as(LibAtk::Table*), Int32.new(row), header.to_unsafe.as(LibAtk::Object*))
-      __return_value
+      LibAtk.table_set_row_header(to_unsafe.as(LibAtk::Table*), Int32.new(row), header.to_unsafe.as(LibAtk::Object*))
+      nil
     end
 
     def summary=(accessible)
-      __return_value = LibAtk.table_set_summary(to_unsafe.as(LibAtk::Table*), accessible.to_unsafe.as(LibAtk::Object*))
-      __return_value
+      LibAtk.table_set_summary(to_unsafe.as(LibAtk::Table*), accessible.to_unsafe.as(LibAtk::Object*))
+      nil
     end
 
     alias ColumnDeletedSignal = Table, Int32, Int32 ->

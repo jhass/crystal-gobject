@@ -36,13 +36,13 @@ module Gtk
     end
 
     def add_accelerator(accelerator, action_name, parameter)
-      __return_value = LibGtk.application_add_accelerator(to_unsafe.as(LibGtk::Application*), accelerator.to_unsafe, action_name.to_unsafe, parameter ? parameter.to_unsafe.as(LibGLib::Variant*) : nil)
-      __return_value
+      LibGtk.application_add_accelerator(to_unsafe.as(LibGtk::Application*), accelerator.to_unsafe, action_name.to_unsafe, parameter ? parameter.to_unsafe.as(LibGLib::Variant*) : nil)
+      nil
     end
 
     def add_window(window)
-      __return_value = LibGtk.application_add_window(to_unsafe.as(LibGtk::Application*), window.to_unsafe.as(LibGtk::Window*))
-      __return_value
+      LibGtk.application_add_window(to_unsafe.as(LibGtk::Application*), window.to_unsafe.as(LibGtk::Window*))
+      nil
     end
 
     def accels_for_action(detailed_action_name)
@@ -57,7 +57,7 @@ module Gtk
 
     def active_window
       __return_value = LibGtk.application_get_active_window(to_unsafe.as(LibGtk::Application*))
-      Gtk::Window.new(__return_value)
+      Gtk::Window.new(__return_value) if __return_value
     end
 
     def app_menu
@@ -106,33 +106,33 @@ module Gtk
     end
 
     def remove_accelerator(action_name, parameter)
-      __return_value = LibGtk.application_remove_accelerator(to_unsafe.as(LibGtk::Application*), action_name.to_unsafe, parameter ? parameter.to_unsafe.as(LibGLib::Variant*) : nil)
-      __return_value
+      LibGtk.application_remove_accelerator(to_unsafe.as(LibGtk::Application*), action_name.to_unsafe, parameter ? parameter.to_unsafe.as(LibGLib::Variant*) : nil)
+      nil
     end
 
     def remove_window(window)
-      __return_value = LibGtk.application_remove_window(to_unsafe.as(LibGtk::Application*), window.to_unsafe.as(LibGtk::Window*))
-      __return_value
+      LibGtk.application_remove_window(to_unsafe.as(LibGtk::Application*), window.to_unsafe.as(LibGtk::Window*))
+      nil
     end
 
     def set_accels_for_action(detailed_action_name, accels)
-      __return_value = LibGtk.application_set_accels_for_action(to_unsafe.as(LibGtk::Application*), detailed_action_name.to_unsafe, accels)
-      __return_value
+      LibGtk.application_set_accels_for_action(to_unsafe.as(LibGtk::Application*), detailed_action_name.to_unsafe, accels)
+      nil
     end
 
     def app_menu=(app_menu)
-      __return_value = LibGtk.application_set_app_menu(to_unsafe.as(LibGtk::Application*), app_menu ? app_menu.to_unsafe.as(LibGio::MenuModel*) : nil)
-      __return_value
+      LibGtk.application_set_app_menu(to_unsafe.as(LibGtk::Application*), app_menu ? app_menu.to_unsafe.as(LibGio::MenuModel*) : nil)
+      nil
     end
 
     def menubar=(menubar)
-      __return_value = LibGtk.application_set_menubar(to_unsafe.as(LibGtk::Application*), menubar ? menubar.to_unsafe.as(LibGio::MenuModel*) : nil)
-      __return_value
+      LibGtk.application_set_menubar(to_unsafe.as(LibGtk::Application*), menubar ? menubar.to_unsafe.as(LibGio::MenuModel*) : nil)
+      nil
     end
 
     def uninhibit(cookie)
-      __return_value = LibGtk.application_uninhibit(to_unsafe.as(LibGtk::Application*), UInt32.new(cookie))
-      __return_value
+      LibGtk.application_uninhibit(to_unsafe.as(LibGtk::Application*), UInt32.new(cookie))
+      nil
     end
 
     alias WindowAddedSignal = Application, Gtk::Window ->

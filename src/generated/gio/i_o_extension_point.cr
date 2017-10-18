@@ -26,8 +26,8 @@ module Gio
     end
 
     def required_type=(type)
-      __return_value = LibGio.i_o_extension_point_set_required_type(to_unsafe.as(LibGio::IOExtensionPoint*), UInt64.new(type))
-      __return_value
+      LibGio.i_o_extension_point_set_required_type(to_unsafe.as(LibGio::IOExtensionPoint*), UInt64.new(type))
+      nil
     end
 
     def self.implement(extension_point_name, type, extension_name, priority)

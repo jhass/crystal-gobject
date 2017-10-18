@@ -1,28 +1,28 @@
 module Gtk
   module CellAccessibleParent
     def activate(cell)
-      __return_value = LibGtk.cell_accessible_parent_activate(to_unsafe.as(LibGtk::CellAccessibleParent*), cell.to_unsafe.as(LibGtk::CellAccessible*))
-      __return_value
+      LibGtk.cell_accessible_parent_activate(to_unsafe.as(LibGtk::CellAccessibleParent*), cell.to_unsafe.as(LibGtk::CellAccessible*))
+      nil
     end
 
     def edit(cell)
-      __return_value = LibGtk.cell_accessible_parent_edit(to_unsafe.as(LibGtk::CellAccessibleParent*), cell.to_unsafe.as(LibGtk::CellAccessible*))
-      __return_value
+      LibGtk.cell_accessible_parent_edit(to_unsafe.as(LibGtk::CellAccessibleParent*), cell.to_unsafe.as(LibGtk::CellAccessible*))
+      nil
     end
 
     def expand_collapse(cell)
-      __return_value = LibGtk.cell_accessible_parent_expand_collapse(to_unsafe.as(LibGtk::CellAccessibleParent*), cell.to_unsafe.as(LibGtk::CellAccessible*))
-      __return_value
+      LibGtk.cell_accessible_parent_expand_collapse(to_unsafe.as(LibGtk::CellAccessibleParent*), cell.to_unsafe.as(LibGtk::CellAccessible*))
+      nil
     end
 
     def cell_area(cell, cell_rect)
-      __return_value = LibGtk.cell_accessible_parent_get_cell_area(to_unsafe.as(LibGtk::CellAccessibleParent*), cell.to_unsafe.as(LibGtk::CellAccessible*), cell_rect.to_unsafe.as(LibGdk::Rectangle*))
-      __return_value
+      LibGtk.cell_accessible_parent_get_cell_area(to_unsafe.as(LibGtk::CellAccessibleParent*), cell.to_unsafe.as(LibGtk::CellAccessible*), cell_rect.to_unsafe.as(LibGdk::Rectangle*))
+      nil
     end
 
     def cell_extents(cell, x, y, width, height, coord_type : Atk::CoordType)
-      __return_value = LibGtk.cell_accessible_parent_get_cell_extents(to_unsafe.as(LibGtk::CellAccessibleParent*), cell.to_unsafe.as(LibGtk::CellAccessible*), x, y, width, height, coord_type)
-      __return_value
+      LibGtk.cell_accessible_parent_get_cell_extents(to_unsafe.as(LibGtk::CellAccessibleParent*), cell.to_unsafe.as(LibGtk::CellAccessible*), x, y, width, height, coord_type)
+      nil
     end
 
     def child_index(cell)
@@ -41,8 +41,8 @@ module Gtk
     end
 
     def update_relationset(cell, relationset)
-      __return_value = LibGtk.cell_accessible_parent_update_relationset(to_unsafe.as(LibGtk::CellAccessibleParent*), cell.to_unsafe.as(LibGtk::CellAccessible*), relationset.to_unsafe.as(LibAtk::RelationSet*))
-      __return_value
+      LibGtk.cell_accessible_parent_update_relationset(to_unsafe.as(LibGtk::CellAccessibleParent*), cell.to_unsafe.as(LibGtk::CellAccessible*), relationset.to_unsafe.as(LibAtk::RelationSet*))
+      nil
     end
 
   end

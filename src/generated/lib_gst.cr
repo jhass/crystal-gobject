@@ -185,7 +185,7 @@ lib LibGst
   VALUE_LESS_THAN = -1 # : Int32
   VALUE_UNORDERED = 2 # : Int32
   VERSION_MAJOR = 1 # : Int32
-  VERSION_MICRO = 2 # : Int32
+  VERSION_MICRO = 3 # : Int32
   VERSION_MINOR = 12 # : Int32
   VERSION_NANO = 0 # : Int32
 

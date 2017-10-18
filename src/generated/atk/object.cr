@@ -139,13 +139,13 @@ module Atk
     end
 
     def init(data)
-      __return_value = LibAtk.object_init(to_unsafe.as(LibAtk::Object*), data ? data : nil)
-      __return_value
+      LibAtk.object_init(to_unsafe.as(LibAtk::Object*), data ? data : nil)
+      nil
     end
 
     def notify_state_change(state, value)
-      __return_value = LibAtk.object_notify_state_change(to_unsafe.as(LibAtk::Object*), UInt64.new(state), value)
-      __return_value
+      LibAtk.object_notify_state_change(to_unsafe.as(LibAtk::Object*), UInt64.new(state), value)
+      nil
     end
 
     def peek_parent
@@ -169,8 +169,8 @@ module Atk
     end
 
     def remove_property_change_handler(handler_id)
-      __return_value = LibAtk.object_remove_property_change_handler(to_unsafe.as(LibAtk::Object*), UInt32.new(handler_id))
-      __return_value
+      LibAtk.object_remove_property_change_handler(to_unsafe.as(LibAtk::Object*), UInt32.new(handler_id))
+      nil
     end
 
     def remove_relationship(relationship : Atk::RelationType, target)
@@ -179,23 +179,23 @@ module Atk
     end
 
     def description=(description)
-      __return_value = LibAtk.object_set_description(to_unsafe.as(LibAtk::Object*), description.to_unsafe)
-      __return_value
+      LibAtk.object_set_description(to_unsafe.as(LibAtk::Object*), description.to_unsafe)
+      nil
     end
 
     def name=(name)
-      __return_value = LibAtk.object_set_name(to_unsafe.as(LibAtk::Object*), name.to_unsafe)
-      __return_value
+      LibAtk.object_set_name(to_unsafe.as(LibAtk::Object*), name.to_unsafe)
+      nil
     end
 
     def parent=(parent)
-      __return_value = LibAtk.object_set_parent(to_unsafe.as(LibAtk::Object*), parent.to_unsafe.as(LibAtk::Object*))
-      __return_value
+      LibAtk.object_set_parent(to_unsafe.as(LibAtk::Object*), parent.to_unsafe.as(LibAtk::Object*))
+      nil
     end
 
     def role=(role : Atk::Role)
-      __return_value = LibAtk.object_set_role(to_unsafe.as(LibAtk::Object*), role)
-      __return_value
+      LibAtk.object_set_role(to_unsafe.as(LibAtk::Object*), role)
+      nil
     end
 
     alias ActiveDescendantChangedSignal = Object, Void* ->

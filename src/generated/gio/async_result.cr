@@ -6,8 +6,8 @@ module Gio
     end
 
     def user_data
-      __return_value = LibGio.async_result_get_user_data(to_unsafe.as(LibGio::AsyncResult*))
-      __return_value if __return_value
+      LibGio.async_result_get_user_data(to_unsafe.as(LibGio::AsyncResult*))
+      nil
     end
 
     def tagged?(source_tag)

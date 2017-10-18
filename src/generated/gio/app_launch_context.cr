@@ -29,18 +29,18 @@ module Gio
     end
 
     def launch_failed(startup_notify_id)
-      __return_value = LibGio.app_launch_context_launch_failed(to_unsafe.as(LibGio::AppLaunchContext*), startup_notify_id.to_unsafe)
-      __return_value
+      LibGio.app_launch_context_launch_failed(to_unsafe.as(LibGio::AppLaunchContext*), startup_notify_id.to_unsafe)
+      nil
     end
 
     def setenv(variable, value)
-      __return_value = LibGio.app_launch_context_setenv(to_unsafe.as(LibGio::AppLaunchContext*), variable.to_unsafe, value.to_unsafe)
-      __return_value
+      LibGio.app_launch_context_setenv(to_unsafe.as(LibGio::AppLaunchContext*), variable.to_unsafe, value.to_unsafe)
+      nil
     end
 
     def unsetenv(variable)
-      __return_value = LibGio.app_launch_context_unsetenv(to_unsafe.as(LibGio::AppLaunchContext*), variable.to_unsafe)
-      __return_value
+      LibGio.app_launch_context_unsetenv(to_unsafe.as(LibGio::AppLaunchContext*), variable.to_unsafe)
+      nil
     end
 
     alias LaunchFailedSignal = AppLaunchContext, String ->

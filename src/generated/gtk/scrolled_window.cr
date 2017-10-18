@@ -93,8 +93,8 @@ module Gtk
     end
 
     def add_with_viewport(child)
-      __return_value = LibGtk.scrolled_window_add_with_viewport(to_unsafe.as(LibGtk::ScrolledWindow*), child.to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      LibGtk.scrolled_window_add_with_viewport(to_unsafe.as(LibGtk::ScrolledWindow*), child.to_unsafe.as(LibGtk::Widget*))
+      nil
     end
 
     def capture_button_press
@@ -148,8 +148,8 @@ module Gtk
     end
 
     def policy(hscrollbar_policy : Gtk::PolicyType?, vscrollbar_policy : Gtk::PolicyType?)
-      __return_value = LibGtk.scrolled_window_get_policy(to_unsafe.as(LibGtk::ScrolledWindow*), hscrollbar_policy, vscrollbar_policy)
-      __return_value
+      LibGtk.scrolled_window_get_policy(to_unsafe.as(LibGtk::ScrolledWindow*), hscrollbar_policy, vscrollbar_policy)
+      nil
     end
 
     def propagate_natural_height
@@ -178,78 +178,78 @@ module Gtk
     end
 
     def capture_button_press=(capture_button_press)
-      __return_value = LibGtk.scrolled_window_set_capture_button_press(to_unsafe.as(LibGtk::ScrolledWindow*), capture_button_press)
-      __return_value
+      LibGtk.scrolled_window_set_capture_button_press(to_unsafe.as(LibGtk::ScrolledWindow*), capture_button_press)
+      nil
     end
 
     def hadjustment=(hadjustment)
-      __return_value = LibGtk.scrolled_window_set_hadjustment(to_unsafe.as(LibGtk::ScrolledWindow*), hadjustment.to_unsafe.as(LibGtk::Adjustment*))
-      __return_value
+      LibGtk.scrolled_window_set_hadjustment(to_unsafe.as(LibGtk::ScrolledWindow*), hadjustment.to_unsafe.as(LibGtk::Adjustment*))
+      nil
     end
 
     def kinetic_scrolling=(kinetic_scrolling)
-      __return_value = LibGtk.scrolled_window_set_kinetic_scrolling(to_unsafe.as(LibGtk::ScrolledWindow*), kinetic_scrolling)
-      __return_value
+      LibGtk.scrolled_window_set_kinetic_scrolling(to_unsafe.as(LibGtk::ScrolledWindow*), kinetic_scrolling)
+      nil
     end
 
     def max_content_height=(height)
-      __return_value = LibGtk.scrolled_window_set_max_content_height(to_unsafe.as(LibGtk::ScrolledWindow*), Int32.new(height))
-      __return_value
+      LibGtk.scrolled_window_set_max_content_height(to_unsafe.as(LibGtk::ScrolledWindow*), Int32.new(height))
+      nil
     end
 
     def max_content_width=(width)
-      __return_value = LibGtk.scrolled_window_set_max_content_width(to_unsafe.as(LibGtk::ScrolledWindow*), Int32.new(width))
-      __return_value
+      LibGtk.scrolled_window_set_max_content_width(to_unsafe.as(LibGtk::ScrolledWindow*), Int32.new(width))
+      nil
     end
 
     def min_content_height=(height)
-      __return_value = LibGtk.scrolled_window_set_min_content_height(to_unsafe.as(LibGtk::ScrolledWindow*), Int32.new(height))
-      __return_value
+      LibGtk.scrolled_window_set_min_content_height(to_unsafe.as(LibGtk::ScrolledWindow*), Int32.new(height))
+      nil
     end
 
     def min_content_width=(width)
-      __return_value = LibGtk.scrolled_window_set_min_content_width(to_unsafe.as(LibGtk::ScrolledWindow*), Int32.new(width))
-      __return_value
+      LibGtk.scrolled_window_set_min_content_width(to_unsafe.as(LibGtk::ScrolledWindow*), Int32.new(width))
+      nil
     end
 
     def overlay_scrolling=(overlay_scrolling)
-      __return_value = LibGtk.scrolled_window_set_overlay_scrolling(to_unsafe.as(LibGtk::ScrolledWindow*), overlay_scrolling)
-      __return_value
+      LibGtk.scrolled_window_set_overlay_scrolling(to_unsafe.as(LibGtk::ScrolledWindow*), overlay_scrolling)
+      nil
     end
 
     def placement=(window_placement : Gtk::CornerType)
-      __return_value = LibGtk.scrolled_window_set_placement(to_unsafe.as(LibGtk::ScrolledWindow*), window_placement)
-      __return_value
+      LibGtk.scrolled_window_set_placement(to_unsafe.as(LibGtk::ScrolledWindow*), window_placement)
+      nil
     end
 
     def set_policy(hscrollbar_policy : Gtk::PolicyType, vscrollbar_policy : Gtk::PolicyType)
-      __return_value = LibGtk.scrolled_window_set_policy(to_unsafe.as(LibGtk::ScrolledWindow*), hscrollbar_policy, vscrollbar_policy)
-      __return_value
+      LibGtk.scrolled_window_set_policy(to_unsafe.as(LibGtk::ScrolledWindow*), hscrollbar_policy, vscrollbar_policy)
+      nil
     end
 
     def propagate_natural_height=(propagate)
-      __return_value = LibGtk.scrolled_window_set_propagate_natural_height(to_unsafe.as(LibGtk::ScrolledWindow*), propagate)
-      __return_value
+      LibGtk.scrolled_window_set_propagate_natural_height(to_unsafe.as(LibGtk::ScrolledWindow*), propagate)
+      nil
     end
 
     def propagate_natural_width=(propagate)
-      __return_value = LibGtk.scrolled_window_set_propagate_natural_width(to_unsafe.as(LibGtk::ScrolledWindow*), propagate)
-      __return_value
+      LibGtk.scrolled_window_set_propagate_natural_width(to_unsafe.as(LibGtk::ScrolledWindow*), propagate)
+      nil
     end
 
     def shadow_type=(type : Gtk::ShadowType)
-      __return_value = LibGtk.scrolled_window_set_shadow_type(to_unsafe.as(LibGtk::ScrolledWindow*), type)
-      __return_value
+      LibGtk.scrolled_window_set_shadow_type(to_unsafe.as(LibGtk::ScrolledWindow*), type)
+      nil
     end
 
     def vadjustment=(vadjustment)
-      __return_value = LibGtk.scrolled_window_set_vadjustment(to_unsafe.as(LibGtk::ScrolledWindow*), vadjustment.to_unsafe.as(LibGtk::Adjustment*))
-      __return_value
+      LibGtk.scrolled_window_set_vadjustment(to_unsafe.as(LibGtk::ScrolledWindow*), vadjustment.to_unsafe.as(LibGtk::Adjustment*))
+      nil
     end
 
     def unset_placement
-      __return_value = LibGtk.scrolled_window_unset_placement(to_unsafe.as(LibGtk::ScrolledWindow*))
-      __return_value
+      LibGtk.scrolled_window_unset_placement(to_unsafe.as(LibGtk::ScrolledWindow*))
+      nil
     end
 
     alias EdgeOvershotSignal = ScrolledWindow, Gtk::PositionType ->

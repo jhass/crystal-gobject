@@ -19,13 +19,13 @@ module GLib
     end
 
     def add(microseconds)
-      __return_value = LibGLib.time_val_add(to_unsafe.as(LibGLib::TimeVal*), Int64.new(microseconds))
-      __return_value
+      LibGLib.time_val_add(to_unsafe.as(LibGLib::TimeVal*), Int64.new(microseconds))
+      nil
     end
 
     def to_iso8601
       __return_value = LibGLib.time_val_to_iso8601(to_unsafe.as(LibGLib::TimeVal*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def self.from_iso8601(iso_date, time)

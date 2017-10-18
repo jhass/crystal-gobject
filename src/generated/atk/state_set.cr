@@ -19,8 +19,8 @@ module Atk
     end
 
     def add_states(types, n_types)
-      __return_value = LibAtk.state_set_add_states(to_unsafe.as(LibAtk::StateSet*), types, Int32.new(n_types))
-      __return_value
+      LibAtk.state_set_add_states(to_unsafe.as(LibAtk::StateSet*), types, Int32.new(n_types))
+      nil
     end
 
     def and_sets(compare_set)
@@ -29,8 +29,8 @@ module Atk
     end
 
     def clear_states
-      __return_value = LibAtk.state_set_clear_states(to_unsafe.as(LibAtk::StateSet*))
-      __return_value
+      LibAtk.state_set_clear_states(to_unsafe.as(LibAtk::StateSet*))
+      nil
     end
 
     def contains_state(type : Atk::StateType)

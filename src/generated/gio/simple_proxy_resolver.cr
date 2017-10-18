@@ -25,18 +25,18 @@ module Gio
     end
 
     def default_proxy=(default_proxy)
-      __return_value = LibGio.simple_proxy_resolver_set_default_proxy(to_unsafe.as(LibGio::SimpleProxyResolver*), default_proxy.to_unsafe)
-      __return_value
+      LibGio.simple_proxy_resolver_set_default_proxy(to_unsafe.as(LibGio::SimpleProxyResolver*), default_proxy.to_unsafe)
+      nil
     end
 
     def ignore_hosts=(ignore_hosts)
-      __return_value = LibGio.simple_proxy_resolver_set_ignore_hosts(to_unsafe.as(LibGio::SimpleProxyResolver*), ignore_hosts.to_unsafe)
-      __return_value
+      LibGio.simple_proxy_resolver_set_ignore_hosts(to_unsafe.as(LibGio::SimpleProxyResolver*), ignore_hosts.to_unsafe)
+      nil
     end
 
     def set_uri_proxy(uri_scheme, proxy)
-      __return_value = LibGio.simple_proxy_resolver_set_uri_proxy(to_unsafe.as(LibGio::SimpleProxyResolver*), uri_scheme.to_unsafe, proxy.to_unsafe)
-      __return_value
+      LibGio.simple_proxy_resolver_set_uri_proxy(to_unsafe.as(LibGio::SimpleProxyResolver*), uri_scheme.to_unsafe, proxy.to_unsafe)
+      nil
     end
 
   end

@@ -11,13 +11,13 @@ module Gio
     end
 
     def block(basename)
-      __return_value = LibGio.i_o_module_scope_block(to_unsafe.as(LibGio::IOModuleScope*), basename.to_unsafe)
-      __return_value
+      LibGio.i_o_module_scope_block(to_unsafe.as(LibGio::IOModuleScope*), basename.to_unsafe)
+      nil
     end
 
     def free
-      __return_value = LibGio.i_o_module_scope_free(to_unsafe.as(LibGio::IOModuleScope*))
-      __return_value
+      LibGio.i_o_module_scope_free(to_unsafe.as(LibGio::IOModuleScope*))
+      nil
     end
 
   end

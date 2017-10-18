@@ -21,28 +21,28 @@ module Gst
     end
 
     def peek
-      __return_value = LibGst.atomic_queue_peek(to_unsafe.as(LibGst::AtomicQueue*))
-      __return_value if __return_value
+      LibGst.atomic_queue_peek(to_unsafe.as(LibGst::AtomicQueue*))
+      nil
     end
 
     def pop
-      __return_value = LibGst.atomic_queue_pop(to_unsafe.as(LibGst::AtomicQueue*))
-      __return_value if __return_value
+      LibGst.atomic_queue_pop(to_unsafe.as(LibGst::AtomicQueue*))
+      nil
     end
 
     def push(data)
-      __return_value = LibGst.atomic_queue_push(to_unsafe.as(LibGst::AtomicQueue*), data ? data : nil)
-      __return_value
+      LibGst.atomic_queue_push(to_unsafe.as(LibGst::AtomicQueue*), data ? data : nil)
+      nil
     end
 
     def ref
-      __return_value = LibGst.atomic_queue_ref(to_unsafe.as(LibGst::AtomicQueue*))
-      __return_value
+      LibGst.atomic_queue_ref(to_unsafe.as(LibGst::AtomicQueue*))
+      nil
     end
 
     def unref
-      __return_value = LibGst.atomic_queue_unref(to_unsafe.as(LibGst::AtomicQueue*))
-      __return_value
+      LibGst.atomic_queue_unref(to_unsafe.as(LibGst::AtomicQueue*))
+      nil
     end
 
   end

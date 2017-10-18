@@ -34,8 +34,8 @@ module GObject
     end
 
     def free
-      __return_value = LibGObject.value_array_free(to_unsafe.as(LibGObject::ValueArray*))
-      __return_value
+      LibGObject.value_array_free(to_unsafe.as(LibGObject::ValueArray*))
+      nil
     end
 
     def nth(index)

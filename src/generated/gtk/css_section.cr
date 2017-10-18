@@ -51,8 +51,8 @@ module Gtk
     end
 
     def unref
-      __return_value = LibGtk.css_section_unref(to_unsafe.as(LibGtk::CssSection*))
-      __return_value
+      LibGtk.css_section_unref(to_unsafe.as(LibGtk::CssSection*))
+      nil
     end
 
   end

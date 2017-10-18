@@ -113,8 +113,8 @@ module GLib
     end
 
     def unref
-      __return_value = LibGLib.regex_unref(to_unsafe.as(LibGLib::Regex*))
-      __return_value
+      LibGLib.regex_unref(to_unsafe.as(LibGLib::Regex*))
+      nil
     end
 
     def self.check_replacement(replacement, has_references)

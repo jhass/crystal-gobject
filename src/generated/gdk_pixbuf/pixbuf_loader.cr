@@ -50,8 +50,8 @@ module GdkPixbuf
     end
 
     def set_size(width, height)
-      __return_value = LibGdkPixbuf.pixbuf_loader_set_size(to_unsafe.as(LibGdkPixbuf::PixbufLoader*), Int32.new(width), Int32.new(height))
-      __return_value
+      LibGdkPixbuf.pixbuf_loader_set_size(to_unsafe.as(LibGdkPixbuf::PixbufLoader*), Int32.new(width), Int32.new(height))
+      nil
     end
 
     def write(buf, count)

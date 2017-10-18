@@ -31,8 +31,8 @@ module Gio
     end
 
     def clear_pending
-      __return_value = LibGio.i_o_stream_clear_pending(to_unsafe.as(LibGio::IOStream*))
-      __return_value
+      LibGio.i_o_stream_clear_pending(to_unsafe.as(LibGio::IOStream*))
+      nil
     end
 
     def close(cancellable)
@@ -43,8 +43,8 @@ module Gio
     end
 
     def close_async(io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.i_o_stream_close_async(to_unsafe.as(LibGio::IOStream*), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.i_o_stream_close_async(to_unsafe.as(LibGio::IOStream*), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def close_finish(result)
@@ -82,8 +82,8 @@ module Gio
     end
 
     def splice_async(stream2, flags : Gio::IOStreamSpliceFlags, io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.i_o_stream_splice_async(to_unsafe.as(LibGio::IOStream*), stream2.to_unsafe.as(LibGio::IOStream*), flags, Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.i_o_stream_splice_async(to_unsafe.as(LibGio::IOStream*), stream2.to_unsafe.as(LibGio::IOStream*), flags, Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
   end

@@ -16,8 +16,8 @@ module GdkPixbuf
     end
 
     def free
-      __return_value = LibGdkPixbuf.pixbuf_format_free(to_unsafe.as(LibGdkPixbuf::PixbufFormat*))
-      __return_value
+      LibGdkPixbuf.pixbuf_format_free(to_unsafe.as(LibGdkPixbuf::PixbufFormat*))
+      nil
     end
 
     def description
@@ -66,8 +66,8 @@ module GdkPixbuf
     end
 
     def disabled=(disabled)
-      __return_value = LibGdkPixbuf.pixbuf_format_set_disabled(to_unsafe.as(LibGdkPixbuf::PixbufFormat*), disabled)
-      __return_value
+      LibGdkPixbuf.pixbuf_format_set_disabled(to_unsafe.as(LibGdkPixbuf::PixbufFormat*), disabled)
+      nil
     end
 
   end

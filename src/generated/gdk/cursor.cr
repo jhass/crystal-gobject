@@ -69,8 +69,8 @@ module Gdk
     end
 
     def unref
-      __return_value = LibGdk.cursor_unref(to_unsafe.as(LibGdk::Cursor*))
-      __return_value
+      LibGdk.cursor_unref(to_unsafe.as(LibGdk::Cursor*))
+      nil
     end
 
   end

@@ -25,8 +25,8 @@ module Gtk
     end
 
     def add_widget(widget)
-      __return_value = LibGtk.size_group_add_widget(to_unsafe.as(LibGtk::SizeGroup*), widget.to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      LibGtk.size_group_add_widget(to_unsafe.as(LibGtk::SizeGroup*), widget.to_unsafe.as(LibGtk::Widget*))
+      nil
     end
 
     def ignore_hidden
@@ -45,18 +45,18 @@ module Gtk
     end
 
     def remove_widget(widget)
-      __return_value = LibGtk.size_group_remove_widget(to_unsafe.as(LibGtk::SizeGroup*), widget.to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      LibGtk.size_group_remove_widget(to_unsafe.as(LibGtk::SizeGroup*), widget.to_unsafe.as(LibGtk::Widget*))
+      nil
     end
 
     def ignore_hidden=(ignore_hidden)
-      __return_value = LibGtk.size_group_set_ignore_hidden(to_unsafe.as(LibGtk::SizeGroup*), ignore_hidden)
-      __return_value
+      LibGtk.size_group_set_ignore_hidden(to_unsafe.as(LibGtk::SizeGroup*), ignore_hidden)
+      nil
     end
 
     def mode=(mode : Gtk::SizeGroupMode)
-      __return_value = LibGtk.size_group_set_mode(to_unsafe.as(LibGtk::SizeGroup*), mode)
-      __return_value
+      LibGtk.size_group_set_mode(to_unsafe.as(LibGtk::SizeGroup*), mode)
+      nil
     end
 
   end

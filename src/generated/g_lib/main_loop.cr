@@ -26,8 +26,8 @@ module GLib
     end
 
     def quit
-      __return_value = LibGLib.main_loop_quit(to_unsafe.as(LibGLib::MainLoop*))
-      __return_value
+      LibGLib.main_loop_quit(to_unsafe.as(LibGLib::MainLoop*))
+      nil
     end
 
     def ref
@@ -36,13 +36,13 @@ module GLib
     end
 
     def run
-      __return_value = LibGLib.main_loop_run(to_unsafe.as(LibGLib::MainLoop*))
-      __return_value
+      LibGLib.main_loop_run(to_unsafe.as(LibGLib::MainLoop*))
+      nil
     end
 
     def unref
-      __return_value = LibGLib.main_loop_unref(to_unsafe.as(LibGLib::MainLoop*))
-      __return_value
+      LibGLib.main_loop_unref(to_unsafe.as(LibGLib::MainLoop*))
+      nil
     end
 
   end

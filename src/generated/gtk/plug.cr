@@ -33,13 +33,13 @@ module Gtk
     end
 
     def construct(socket_id)
-      __return_value = LibGtk.plug_construct(to_unsafe.as(LibGtk::Plug*), UInt64.new(socket_id))
-      __return_value
+      LibGtk.plug_construct(to_unsafe.as(LibGtk::Plug*), UInt64.new(socket_id))
+      nil
     end
 
     def construct_for_display(display, socket_id)
-      __return_value = LibGtk.plug_construct_for_display(to_unsafe.as(LibGtk::Plug*), display.to_unsafe.as(LibGdk::Display*), UInt64.new(socket_id))
-      __return_value
+      LibGtk.plug_construct_for_display(to_unsafe.as(LibGtk::Plug*), display.to_unsafe.as(LibGdk::Display*), UInt64.new(socket_id))
+      nil
     end
 
     def embedded

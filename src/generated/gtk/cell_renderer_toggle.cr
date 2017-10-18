@@ -56,18 +56,18 @@ module Gtk
     end
 
     def activatable=(setting)
-      __return_value = LibGtk.cell_renderer_toggle_set_activatable(to_unsafe.as(LibGtk::CellRendererToggle*), setting)
-      __return_value
+      LibGtk.cell_renderer_toggle_set_activatable(to_unsafe.as(LibGtk::CellRendererToggle*), setting)
+      nil
     end
 
     def active=(setting)
-      __return_value = LibGtk.cell_renderer_toggle_set_active(to_unsafe.as(LibGtk::CellRendererToggle*), setting)
-      __return_value
+      LibGtk.cell_renderer_toggle_set_active(to_unsafe.as(LibGtk::CellRendererToggle*), setting)
+      nil
     end
 
     def radio=(radio)
-      __return_value = LibGtk.cell_renderer_toggle_set_radio(to_unsafe.as(LibGtk::CellRendererToggle*), radio)
-      __return_value
+      LibGtk.cell_renderer_toggle_set_radio(to_unsafe.as(LibGtk::CellRendererToggle*), radio)
+      nil
     end
 
     alias ToggledSignal = CellRendererToggle, String ->

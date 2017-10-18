@@ -35,8 +35,8 @@ module Gtk
     end
 
     def show_numbers=(show_numbers)
-      __return_value = LibGtk.recent_chooser_menu_set_show_numbers(to_unsafe.as(LibGtk::RecentChooserMenu*), show_numbers)
-      __return_value
+      LibGtk.recent_chooser_menu_set_show_numbers(to_unsafe.as(LibGtk::RecentChooserMenu*), show_numbers)
+      nil
     end
 
   end

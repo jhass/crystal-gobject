@@ -28,8 +28,8 @@ module Gtk
     end
 
     def connect_entry(entry)
-      __return_value = LibGtk.search_bar_connect_entry(to_unsafe.as(LibGtk::SearchBar*), entry.to_unsafe.as(LibGtk::Entry*))
-      __return_value
+      LibGtk.search_bar_connect_entry(to_unsafe.as(LibGtk::SearchBar*), entry.to_unsafe.as(LibGtk::Entry*))
+      nil
     end
 
     def search_mode
@@ -48,13 +48,13 @@ module Gtk
     end
 
     def search_mode=(search_mode)
-      __return_value = LibGtk.search_bar_set_search_mode(to_unsafe.as(LibGtk::SearchBar*), search_mode)
-      __return_value
+      LibGtk.search_bar_set_search_mode(to_unsafe.as(LibGtk::SearchBar*), search_mode)
+      nil
     end
 
     def show_close_button=(visible)
-      __return_value = LibGtk.search_bar_set_show_close_button(to_unsafe.as(LibGtk::SearchBar*), visible)
-      __return_value
+      LibGtk.search_bar_set_show_close_button(to_unsafe.as(LibGtk::SearchBar*), visible)
+      nil
     end
 
   end

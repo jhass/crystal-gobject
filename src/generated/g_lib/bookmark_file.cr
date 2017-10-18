@@ -11,18 +11,18 @@ module GLib
     end
 
     def add_application(uri, name, exec)
-      __return_value = LibGLib.bookmark_file_add_application(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, name ? name.to_unsafe : nil, exec ? exec.to_unsafe : nil)
-      __return_value
+      LibGLib.bookmark_file_add_application(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, name ? name.to_unsafe : nil, exec ? exec.to_unsafe : nil)
+      nil
     end
 
     def add_group(uri, group)
-      __return_value = LibGLib.bookmark_file_add_group(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, group.to_unsafe)
-      __return_value
+      LibGLib.bookmark_file_add_group(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, group.to_unsafe)
+      nil
     end
 
     def free
-      __return_value = LibGLib.bookmark_file_free(to_unsafe.as(LibGLib::BookmarkFile*))
-      __return_value
+      LibGLib.bookmark_file_free(to_unsafe.as(LibGLib::BookmarkFile*))
+      nil
     end
 
     def added(uri)
@@ -181,8 +181,8 @@ module GLib
     end
 
     def set_added(uri, added)
-      __return_value = LibGLib.bookmark_file_set_added(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, Int64.new(added))
-      __return_value
+      LibGLib.bookmark_file_set_added(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, Int64.new(added))
+      nil
     end
 
     def set_app_info(uri, name, exec, count, stamp)
@@ -193,43 +193,43 @@ module GLib
     end
 
     def set_description(uri, description)
-      __return_value = LibGLib.bookmark_file_set_description(to_unsafe.as(LibGLib::BookmarkFile*), uri ? uri.to_unsafe : nil, description.to_unsafe)
-      __return_value
+      LibGLib.bookmark_file_set_description(to_unsafe.as(LibGLib::BookmarkFile*), uri ? uri.to_unsafe : nil, description.to_unsafe)
+      nil
     end
 
     def set_groups(uri, groups, length)
-      __return_value = LibGLib.bookmark_file_set_groups(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, groups ? groups.to_unsafe : nil, UInt64.new(length))
-      __return_value
+      LibGLib.bookmark_file_set_groups(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, groups ? groups.to_unsafe : nil, UInt64.new(length))
+      nil
     end
 
     def set_icon(uri, href, mime_type)
-      __return_value = LibGLib.bookmark_file_set_icon(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, href ? href.to_unsafe : nil, mime_type.to_unsafe)
-      __return_value
+      LibGLib.bookmark_file_set_icon(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, href ? href.to_unsafe : nil, mime_type.to_unsafe)
+      nil
     end
 
     def set_is_private(uri, is_private)
-      __return_value = LibGLib.bookmark_file_set_is_private(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, is_private)
-      __return_value
+      LibGLib.bookmark_file_set_is_private(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, is_private)
+      nil
     end
 
     def set_mime_type(uri, mime_type)
-      __return_value = LibGLib.bookmark_file_set_mime_type(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, mime_type.to_unsafe)
-      __return_value
+      LibGLib.bookmark_file_set_mime_type(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, mime_type.to_unsafe)
+      nil
     end
 
     def set_modified(uri, modified)
-      __return_value = LibGLib.bookmark_file_set_modified(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, Int64.new(modified))
-      __return_value
+      LibGLib.bookmark_file_set_modified(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, Int64.new(modified))
+      nil
     end
 
     def set_title(uri, title)
-      __return_value = LibGLib.bookmark_file_set_title(to_unsafe.as(LibGLib::BookmarkFile*), uri ? uri.to_unsafe : nil, title.to_unsafe)
-      __return_value
+      LibGLib.bookmark_file_set_title(to_unsafe.as(LibGLib::BookmarkFile*), uri ? uri.to_unsafe : nil, title.to_unsafe)
+      nil
     end
 
     def set_visited(uri, visited)
-      __return_value = LibGLib.bookmark_file_set_visited(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, Int64.new(visited))
-      __return_value
+      LibGLib.bookmark_file_set_visited(to_unsafe.as(LibGLib::BookmarkFile*), uri.to_unsafe, Int64.new(visited))
+      nil
     end
 
     def to_data(length)

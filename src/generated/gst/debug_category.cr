@@ -16,8 +16,8 @@ module Gst
     end
 
     def free
-      __return_value = LibGst.debug_category_free(to_unsafe.as(LibGst::DebugCategory*))
-      __return_value
+      LibGst.debug_category_free(to_unsafe.as(LibGst::DebugCategory*))
+      nil
     end
 
     def color
@@ -41,13 +41,13 @@ module Gst
     end
 
     def reset_threshold
-      __return_value = LibGst.debug_category_reset_threshold(to_unsafe.as(LibGst::DebugCategory*))
-      __return_value
+      LibGst.debug_category_reset_threshold(to_unsafe.as(LibGst::DebugCategory*))
+      nil
     end
 
     def threshold=(level : Gst::DebugLevel)
-      __return_value = LibGst.debug_category_set_threshold(to_unsafe.as(LibGst::DebugCategory*), level)
-      __return_value
+      LibGst.debug_category_set_threshold(to_unsafe.as(LibGst::DebugCategory*), level)
+      nil
     end
 
     def threshold

@@ -110,8 +110,8 @@ module Gtk
     end
 
     def self.position_menu(menu, x, y, push_in, user_data)
-      __return_value = LibGtk.status_icon_position_menu(menu.to_unsafe.as(LibGtk::Menu*), x, y, push_in, user_data.to_unsafe.as(LibGtk::StatusIcon*))
-      __return_value
+      LibGtk.status_icon_position_menu(menu.to_unsafe.as(LibGtk::Menu*), x, y, push_in, user_data.to_unsafe.as(LibGtk::StatusIcon*))
+      nil
     end
 
     def geometry(screen, area, orientation : Gtk::Orientation?)
@@ -190,63 +190,63 @@ module Gtk
     end
 
     def from_file=(filename)
-      __return_value = LibGtk.status_icon_set_from_file(to_unsafe.as(LibGtk::StatusIcon*), filename.to_unsafe)
-      __return_value
+      LibGtk.status_icon_set_from_file(to_unsafe.as(LibGtk::StatusIcon*), filename.to_unsafe)
+      nil
     end
 
     def from_gicon=(icon)
-      __return_value = LibGtk.status_icon_set_from_gicon(to_unsafe.as(LibGtk::StatusIcon*), icon.to_unsafe.as(LibGio::Icon*))
-      __return_value
+      LibGtk.status_icon_set_from_gicon(to_unsafe.as(LibGtk::StatusIcon*), icon.to_unsafe.as(LibGio::Icon*))
+      nil
     end
 
     def from_icon_name=(icon_name)
-      __return_value = LibGtk.status_icon_set_from_icon_name(to_unsafe.as(LibGtk::StatusIcon*), icon_name.to_unsafe)
-      __return_value
+      LibGtk.status_icon_set_from_icon_name(to_unsafe.as(LibGtk::StatusIcon*), icon_name.to_unsafe)
+      nil
     end
 
     def from_pixbuf=(pixbuf)
-      __return_value = LibGtk.status_icon_set_from_pixbuf(to_unsafe.as(LibGtk::StatusIcon*), pixbuf ? pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*) : nil)
-      __return_value
+      LibGtk.status_icon_set_from_pixbuf(to_unsafe.as(LibGtk::StatusIcon*), pixbuf ? pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*) : nil)
+      nil
     end
 
     def from_stock=(stock_id)
-      __return_value = LibGtk.status_icon_set_from_stock(to_unsafe.as(LibGtk::StatusIcon*), stock_id.to_unsafe)
-      __return_value
+      LibGtk.status_icon_set_from_stock(to_unsafe.as(LibGtk::StatusIcon*), stock_id.to_unsafe)
+      nil
     end
 
     def has_tooltip=(has_tooltip)
-      __return_value = LibGtk.status_icon_set_has_tooltip(to_unsafe.as(LibGtk::StatusIcon*), has_tooltip)
-      __return_value
+      LibGtk.status_icon_set_has_tooltip(to_unsafe.as(LibGtk::StatusIcon*), has_tooltip)
+      nil
     end
 
     def name=(name)
-      __return_value = LibGtk.status_icon_set_name(to_unsafe.as(LibGtk::StatusIcon*), name.to_unsafe)
-      __return_value
+      LibGtk.status_icon_set_name(to_unsafe.as(LibGtk::StatusIcon*), name.to_unsafe)
+      nil
     end
 
     def screen=(screen)
-      __return_value = LibGtk.status_icon_set_screen(to_unsafe.as(LibGtk::StatusIcon*), screen.to_unsafe.as(LibGdk::Screen*))
-      __return_value
+      LibGtk.status_icon_set_screen(to_unsafe.as(LibGtk::StatusIcon*), screen.to_unsafe.as(LibGdk::Screen*))
+      nil
     end
 
     def title=(title)
-      __return_value = LibGtk.status_icon_set_title(to_unsafe.as(LibGtk::StatusIcon*), title.to_unsafe)
-      __return_value
+      LibGtk.status_icon_set_title(to_unsafe.as(LibGtk::StatusIcon*), title.to_unsafe)
+      nil
     end
 
     def tooltip_markup=(markup)
-      __return_value = LibGtk.status_icon_set_tooltip_markup(to_unsafe.as(LibGtk::StatusIcon*), markup ? markup.to_unsafe : nil)
-      __return_value
+      LibGtk.status_icon_set_tooltip_markup(to_unsafe.as(LibGtk::StatusIcon*), markup ? markup.to_unsafe : nil)
+      nil
     end
 
     def tooltip_text=(text)
-      __return_value = LibGtk.status_icon_set_tooltip_text(to_unsafe.as(LibGtk::StatusIcon*), text.to_unsafe)
-      __return_value
+      LibGtk.status_icon_set_tooltip_text(to_unsafe.as(LibGtk::StatusIcon*), text.to_unsafe)
+      nil
     end
 
     def visible=(visible)
-      __return_value = LibGtk.status_icon_set_visible(to_unsafe.as(LibGtk::StatusIcon*), visible)
-      __return_value
+      LibGtk.status_icon_set_visible(to_unsafe.as(LibGtk::StatusIcon*), visible)
+      nil
     end
 
     alias ActivateSignal = StatusIcon ->

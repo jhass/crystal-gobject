@@ -40,13 +40,13 @@ module Gtk
     end
 
     def help_overlay=(help_overlay)
-      __return_value = LibGtk.application_window_set_help_overlay(to_unsafe.as(LibGtk::ApplicationWindow*), help_overlay ? help_overlay.to_unsafe.as(LibGtk::ShortcutsWindow*) : nil)
-      __return_value
+      LibGtk.application_window_set_help_overlay(to_unsafe.as(LibGtk::ApplicationWindow*), help_overlay ? help_overlay.to_unsafe.as(LibGtk::ShortcutsWindow*) : nil)
+      nil
     end
 
     def show_menubar=(show_menubar)
-      __return_value = LibGtk.application_window_set_show_menubar(to_unsafe.as(LibGtk::ApplicationWindow*), show_menubar)
-      __return_value
+      LibGtk.application_window_set_show_menubar(to_unsafe.as(LibGtk::ApplicationWindow*), show_menubar)
+      nil
     end
 
   end

@@ -25,13 +25,13 @@ module Gio
     end
 
     def complete
-      __return_value = LibGio.simple_async_result_complete(to_unsafe.as(LibGio::SimpleAsyncResult*))
-      __return_value
+      LibGio.simple_async_result_complete(to_unsafe.as(LibGio::SimpleAsyncResult*))
+      nil
     end
 
     def complete_in_idle
-      __return_value = LibGio.simple_async_result_complete_in_idle(to_unsafe.as(LibGio::SimpleAsyncResult*))
-      __return_value
+      LibGio.simple_async_result_complete_in_idle(to_unsafe.as(LibGio::SimpleAsyncResult*))
+      nil
     end
 
     def op_res_gboolean
@@ -52,28 +52,28 @@ module Gio
     end
 
     def check_cancellable=(check_cancellable)
-      __return_value = LibGio.simple_async_result_set_check_cancellable(to_unsafe.as(LibGio::SimpleAsyncResult*), check_cancellable ? check_cancellable.to_unsafe.as(LibGio::Cancellable*) : nil)
-      __return_value
+      LibGio.simple_async_result_set_check_cancellable(to_unsafe.as(LibGio::SimpleAsyncResult*), check_cancellable ? check_cancellable.to_unsafe.as(LibGio::Cancellable*) : nil)
+      nil
     end
 
     def from_error=(error)
-      __return_value = LibGio.simple_async_result_set_from_error(to_unsafe.as(LibGio::SimpleAsyncResult*), error)
-      __return_value
+      LibGio.simple_async_result_set_from_error(to_unsafe.as(LibGio::SimpleAsyncResult*), error)
+      nil
     end
 
     def handle_cancellation=(handle_cancellation)
-      __return_value = LibGio.simple_async_result_set_handle_cancellation(to_unsafe.as(LibGio::SimpleAsyncResult*), handle_cancellation)
-      __return_value
+      LibGio.simple_async_result_set_handle_cancellation(to_unsafe.as(LibGio::SimpleAsyncResult*), handle_cancellation)
+      nil
     end
 
     def op_res_gboolean=(op_res)
-      __return_value = LibGio.simple_async_result_set_op_res_gboolean(to_unsafe.as(LibGio::SimpleAsyncResult*), op_res)
-      __return_value
+      LibGio.simple_async_result_set_op_res_gboolean(to_unsafe.as(LibGio::SimpleAsyncResult*), op_res)
+      nil
     end
 
     def op_res_gssize=(op_res)
-      __return_value = LibGio.simple_async_result_set_op_res_gssize(to_unsafe.as(LibGio::SimpleAsyncResult*), Int64.new(op_res))
-      __return_value
+      LibGio.simple_async_result_set_op_res_gssize(to_unsafe.as(LibGio::SimpleAsyncResult*), Int64.new(op_res))
+      nil
     end
 
   end

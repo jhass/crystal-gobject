@@ -36,8 +36,8 @@ module Gio
     end
 
     def append_name(iconname)
-      __return_value = LibGio.themed_icon_append_name(to_unsafe.as(LibGio::ThemedIcon*), iconname.to_unsafe)
-      __return_value
+      LibGio.themed_icon_append_name(to_unsafe.as(LibGio::ThemedIcon*), iconname.to_unsafe)
+      nil
     end
 
     def names
@@ -46,8 +46,8 @@ module Gio
     end
 
     def prepend_name(iconname)
-      __return_value = LibGio.themed_icon_prepend_name(to_unsafe.as(LibGio::ThemedIcon*), iconname.to_unsafe)
-      __return_value
+      LibGio.themed_icon_prepend_name(to_unsafe.as(LibGio::ThemedIcon*), iconname.to_unsafe)
+      nil
     end
 
   end

@@ -19,8 +19,8 @@ module Atk
     end
 
     def self.set_free(attrib_set)
-      __return_value = LibAtk.attribute_set_free(attrib_set)
-      __return_value
+      LibAtk.attribute_set_free(attrib_set)
+      nil
     end
 
     def name

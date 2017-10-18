@@ -11,8 +11,8 @@ module GObject
     end
 
     def insert(pspec, owner_type)
-      __return_value = LibGObject.param_spec_pool_insert(to_unsafe.as(LibGObject::ParamSpecPool*), pspec.to_unsafe.as(LibGObject::ParamSpec*), UInt64.new(owner_type))
-      __return_value
+      LibGObject.param_spec_pool_insert(to_unsafe.as(LibGObject::ParamSpecPool*), pspec.to_unsafe.as(LibGObject::ParamSpec*), UInt64.new(owner_type))
+      nil
     end
 
     def list(owner_type, n_pspecs_p)
@@ -31,8 +31,8 @@ module GObject
     end
 
     def remove(pspec)
-      __return_value = LibGObject.param_spec_pool_remove(to_unsafe.as(LibGObject::ParamSpecPool*), pspec.to_unsafe.as(LibGObject::ParamSpec*))
-      __return_value
+      LibGObject.param_spec_pool_remove(to_unsafe.as(LibGObject::ParamSpecPool*), pspec.to_unsafe.as(LibGObject::ParamSpec*))
+      nil
     end
 
     def self.new(type_prefixing)

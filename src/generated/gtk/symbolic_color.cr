@@ -56,8 +56,8 @@ module Gtk
     end
 
     def unref
-      __return_value = LibGtk.symbolic_color_unref(to_unsafe.as(LibGtk::SymbolicColor*))
-      __return_value
+      LibGtk.symbolic_color_unref(to_unsafe.as(LibGtk::SymbolicColor*))
+      nil
     end
 
   end

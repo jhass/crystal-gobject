@@ -25,13 +25,13 @@ module Gio
     end
 
     def export(object)
-      __return_value = LibGio.d_bus_object_manager_server_export(to_unsafe.as(LibGio::DBusObjectManagerServer*), object.to_unsafe.as(LibGio::DBusObjectSkeleton*))
-      __return_value
+      LibGio.d_bus_object_manager_server_export(to_unsafe.as(LibGio::DBusObjectManagerServer*), object.to_unsafe.as(LibGio::DBusObjectSkeleton*))
+      nil
     end
 
     def export_uniquely(object)
-      __return_value = LibGio.d_bus_object_manager_server_export_uniquely(to_unsafe.as(LibGio::DBusObjectManagerServer*), object.to_unsafe.as(LibGio::DBusObjectSkeleton*))
-      __return_value
+      LibGio.d_bus_object_manager_server_export_uniquely(to_unsafe.as(LibGio::DBusObjectManagerServer*), object.to_unsafe.as(LibGio::DBusObjectSkeleton*))
+      nil
     end
 
     def connection
@@ -45,8 +45,8 @@ module Gio
     end
 
     def connection=(connection)
-      __return_value = LibGio.d_bus_object_manager_server_set_connection(to_unsafe.as(LibGio::DBusObjectManagerServer*), connection ? connection.to_unsafe.as(LibGio::DBusConnection*) : nil)
-      __return_value
+      LibGio.d_bus_object_manager_server_set_connection(to_unsafe.as(LibGio::DBusObjectManagerServer*), connection ? connection.to_unsafe.as(LibGio::DBusConnection*) : nil)
+      nil
     end
 
     def unexport(object_path)

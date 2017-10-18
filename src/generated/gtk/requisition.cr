@@ -29,8 +29,8 @@ module Gtk
     end
 
     def free
-      __return_value = LibGtk.requisition_free(to_unsafe.as(LibGtk::Requisition*))
-      __return_value
+      LibGtk.requisition_free(to_unsafe.as(LibGtk::Requisition*))
+      nil
     end
 
     def width

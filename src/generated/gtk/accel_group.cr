@@ -34,13 +34,13 @@ module Gtk
     end
 
     def connect(accel_key, accel_mods : Gdk::ModifierType, accel_flags : Gtk::AccelFlags, closure)
-      __return_value = LibGtk.accel_group_connect(to_unsafe.as(LibGtk::AccelGroup*), UInt32.new(accel_key), accel_mods, accel_flags, closure.to_unsafe.as(LibGObject::Closure*))
-      __return_value
+      LibGtk.accel_group_connect(to_unsafe.as(LibGtk::AccelGroup*), UInt32.new(accel_key), accel_mods, accel_flags, closure.to_unsafe.as(LibGObject::Closure*))
+      nil
     end
 
     def connect_by_path(accel_path, closure)
-      __return_value = LibGtk.accel_group_connect_by_path(to_unsafe.as(LibGtk::AccelGroup*), accel_path.to_unsafe, closure.to_unsafe.as(LibGObject::Closure*))
-      __return_value
+      LibGtk.accel_group_connect_by_path(to_unsafe.as(LibGtk::AccelGroup*), accel_path.to_unsafe, closure.to_unsafe.as(LibGObject::Closure*))
+      nil
     end
 
     def disconnect(closure)
@@ -69,8 +69,8 @@ module Gtk
     end
 
     def lock
-      __return_value = LibGtk.accel_group_lock(to_unsafe.as(LibGtk::AccelGroup*))
-      __return_value
+      LibGtk.accel_group_lock(to_unsafe.as(LibGtk::AccelGroup*))
+      nil
     end
 
     def query(accel_key, accel_mods : Gdk::ModifierType, n_entries)
@@ -79,8 +79,8 @@ module Gtk
     end
 
     def unlock
-      __return_value = LibGtk.accel_group_unlock(to_unsafe.as(LibGtk::AccelGroup*))
-      __return_value
+      LibGtk.accel_group_unlock(to_unsafe.as(LibGtk::AccelGroup*))
+      nil
     end
 
     alias AccelActivateSignal = AccelGroup, GObject::Object, UInt32, Gdk::ModifierType -> Bool

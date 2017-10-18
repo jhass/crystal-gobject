@@ -12,8 +12,8 @@ module GObject
 
     # Implements TypePlugin
     def add_interface(instance_type, interface_type, interface_info)
-      __return_value = LibGObject.type_module_add_interface(to_unsafe.as(LibGObject::TypeModule*), UInt64.new(instance_type), UInt64.new(interface_type), interface_info.to_unsafe.as(LibGObject::InterfaceInfo*))
-      __return_value
+      LibGObject.type_module_add_interface(to_unsafe.as(LibGObject::TypeModule*), UInt64.new(instance_type), UInt64.new(interface_type), interface_info.to_unsafe.as(LibGObject::InterfaceInfo*))
+      nil
     end
 
     def register_enum(name, const_static_values)
@@ -32,13 +32,13 @@ module GObject
     end
 
     def name=(name)
-      __return_value = LibGObject.type_module_set_name(to_unsafe.as(LibGObject::TypeModule*), name.to_unsafe)
-      __return_value
+      LibGObject.type_module_set_name(to_unsafe.as(LibGObject::TypeModule*), name.to_unsafe)
+      nil
     end
 
     def unuse
-      __return_value = LibGObject.type_module_unuse(to_unsafe.as(LibGObject::TypeModule*))
-      __return_value
+      LibGObject.type_module_unuse(to_unsafe.as(LibGObject::TypeModule*))
+      nil
     end
 
     def use

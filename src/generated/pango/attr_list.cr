@@ -16,8 +16,8 @@ module Pango
     end
 
     def change(attr)
-      __return_value = LibPango.attr_list_change(to_unsafe.as(LibPango::AttrList*), attr.to_unsafe.as(LibPango::Attribute*))
-      __return_value
+      LibPango.attr_list_change(to_unsafe.as(LibPango::AttrList*), attr.to_unsafe.as(LibPango::Attribute*))
+      nil
     end
 
     def copy
@@ -31,13 +31,13 @@ module Pango
     end
 
     def insert(attr)
-      __return_value = LibPango.attr_list_insert(to_unsafe.as(LibPango::AttrList*), attr.to_unsafe.as(LibPango::Attribute*))
-      __return_value
+      LibPango.attr_list_insert(to_unsafe.as(LibPango::AttrList*), attr.to_unsafe.as(LibPango::Attribute*))
+      nil
     end
 
     def insert_before(attr)
-      __return_value = LibPango.attr_list_insert_before(to_unsafe.as(LibPango::AttrList*), attr.to_unsafe.as(LibPango::Attribute*))
-      __return_value
+      LibPango.attr_list_insert_before(to_unsafe.as(LibPango::AttrList*), attr.to_unsafe.as(LibPango::Attribute*))
+      nil
     end
 
     def ref
@@ -46,13 +46,13 @@ module Pango
     end
 
     def splice(other, pos, len)
-      __return_value = LibPango.attr_list_splice(to_unsafe.as(LibPango::AttrList*), other.to_unsafe.as(LibPango::AttrList*), Int32.new(pos), Int32.new(len))
-      __return_value
+      LibPango.attr_list_splice(to_unsafe.as(LibPango::AttrList*), other.to_unsafe.as(LibPango::AttrList*), Int32.new(pos), Int32.new(len))
+      nil
     end
 
     def unref
-      __return_value = LibPango.attr_list_unref(to_unsafe.as(LibPango::AttrList*))
-      __return_value
+      LibPango.attr_list_unref(to_unsafe.as(LibPango::AttrList*))
+      nil
     end
 
   end

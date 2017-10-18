@@ -38,8 +38,8 @@ module Gio
     end
 
     def close_fd=(close_fd)
-      __return_value = LibGio.unix_output_stream_set_close_fd(to_unsafe.as(LibGio::UnixOutputStream*), close_fd)
-      __return_value
+      LibGio.unix_output_stream_set_close_fd(to_unsafe.as(LibGio::UnixOutputStream*), close_fd)
+      nil
     end
 
   end

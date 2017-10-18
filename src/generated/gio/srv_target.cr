@@ -21,8 +21,8 @@ module Gio
     end
 
     def free
-      __return_value = LibGio.srv_target_free(to_unsafe.as(LibGio::SrvTarget*))
-      __return_value
+      LibGio.srv_target_free(to_unsafe.as(LibGio::SrvTarget*))
+      nil
     end
 
     def hostname

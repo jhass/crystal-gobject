@@ -33,8 +33,8 @@ module Gtk
     end
 
     def screen=(screen)
-      __return_value = LibGtk.invisible_set_screen(to_unsafe.as(LibGtk::Invisible*), screen.to_unsafe.as(LibGdk::Screen*))
-      __return_value
+      LibGtk.invisible_set_screen(to_unsafe.as(LibGtk::Invisible*), screen.to_unsafe.as(LibGdk::Screen*))
+      nil
     end
 
   end

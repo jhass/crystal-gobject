@@ -63,8 +63,8 @@ module Gtk
     end
 
     def detach_tab(child)
-      __return_value = LibGtk.notebook_detach_tab(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      LibGtk.notebook_detach_tab(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*))
+      nil
     end
 
     def action_widget(pack_type : Gtk::PackType)
@@ -129,7 +129,7 @@ module Gtk
 
     def tab_label(child)
       __return_value = LibGtk.notebook_get_tab_label(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*))
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def tab_label_text(child)
@@ -163,8 +163,8 @@ module Gtk
     end
 
     def next_page
-      __return_value = LibGtk.notebook_next_page(to_unsafe.as(LibGtk::Notebook*))
-      __return_value
+      LibGtk.notebook_next_page(to_unsafe.as(LibGtk::Notebook*))
+      nil
     end
 
     def page_num(child)
@@ -173,13 +173,13 @@ module Gtk
     end
 
     def popup_disable
-      __return_value = LibGtk.notebook_popup_disable(to_unsafe.as(LibGtk::Notebook*))
-      __return_value
+      LibGtk.notebook_popup_disable(to_unsafe.as(LibGtk::Notebook*))
+      nil
     end
 
     def popup_enable
-      __return_value = LibGtk.notebook_popup_enable(to_unsafe.as(LibGtk::Notebook*))
-      __return_value
+      LibGtk.notebook_popup_enable(to_unsafe.as(LibGtk::Notebook*))
+      nil
     end
 
     def prepend_page(child, tab_label)
@@ -193,83 +193,83 @@ module Gtk
     end
 
     def prev_page
-      __return_value = LibGtk.notebook_prev_page(to_unsafe.as(LibGtk::Notebook*))
-      __return_value
+      LibGtk.notebook_prev_page(to_unsafe.as(LibGtk::Notebook*))
+      nil
     end
 
     def remove_page(page_num)
-      __return_value = LibGtk.notebook_remove_page(to_unsafe.as(LibGtk::Notebook*), Int32.new(page_num))
-      __return_value
+      LibGtk.notebook_remove_page(to_unsafe.as(LibGtk::Notebook*), Int32.new(page_num))
+      nil
     end
 
     def reorder_child(child, position)
-      __return_value = LibGtk.notebook_reorder_child(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), Int32.new(position))
-      __return_value
+      LibGtk.notebook_reorder_child(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), Int32.new(position))
+      nil
     end
 
     def set_action_widget(widget, pack_type : Gtk::PackType)
-      __return_value = LibGtk.notebook_set_action_widget(to_unsafe.as(LibGtk::Notebook*), widget.to_unsafe.as(LibGtk::Widget*), pack_type)
-      __return_value
+      LibGtk.notebook_set_action_widget(to_unsafe.as(LibGtk::Notebook*), widget.to_unsafe.as(LibGtk::Widget*), pack_type)
+      nil
     end
 
     def current_page=(page_num)
-      __return_value = LibGtk.notebook_set_current_page(to_unsafe.as(LibGtk::Notebook*), Int32.new(page_num))
-      __return_value
+      LibGtk.notebook_set_current_page(to_unsafe.as(LibGtk::Notebook*), Int32.new(page_num))
+      nil
     end
 
     def group_name=(group_name)
-      __return_value = LibGtk.notebook_set_group_name(to_unsafe.as(LibGtk::Notebook*), group_name ? group_name.to_unsafe : nil)
-      __return_value
+      LibGtk.notebook_set_group_name(to_unsafe.as(LibGtk::Notebook*), group_name ? group_name.to_unsafe : nil)
+      nil
     end
 
     def set_menu_label(child, menu_label)
-      __return_value = LibGtk.notebook_set_menu_label(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), menu_label ? menu_label.to_unsafe.as(LibGtk::Widget*) : nil)
-      __return_value
+      LibGtk.notebook_set_menu_label(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), menu_label ? menu_label.to_unsafe.as(LibGtk::Widget*) : nil)
+      nil
     end
 
     def set_menu_label_text(child, menu_text)
-      __return_value = LibGtk.notebook_set_menu_label_text(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), menu_text.to_unsafe)
-      __return_value
+      LibGtk.notebook_set_menu_label_text(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), menu_text.to_unsafe)
+      nil
     end
 
     def scrollable=(scrollable)
-      __return_value = LibGtk.notebook_set_scrollable(to_unsafe.as(LibGtk::Notebook*), scrollable)
-      __return_value
+      LibGtk.notebook_set_scrollable(to_unsafe.as(LibGtk::Notebook*), scrollable)
+      nil
     end
 
     def show_border=(show_border)
-      __return_value = LibGtk.notebook_set_show_border(to_unsafe.as(LibGtk::Notebook*), show_border)
-      __return_value
+      LibGtk.notebook_set_show_border(to_unsafe.as(LibGtk::Notebook*), show_border)
+      nil
     end
 
     def show_tabs=(show_tabs)
-      __return_value = LibGtk.notebook_set_show_tabs(to_unsafe.as(LibGtk::Notebook*), show_tabs)
-      __return_value
+      LibGtk.notebook_set_show_tabs(to_unsafe.as(LibGtk::Notebook*), show_tabs)
+      nil
     end
 
     def set_tab_detachable(child, detachable)
-      __return_value = LibGtk.notebook_set_tab_detachable(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), detachable)
-      __return_value
+      LibGtk.notebook_set_tab_detachable(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), detachable)
+      nil
     end
 
     def set_tab_label(child, tab_label)
-      __return_value = LibGtk.notebook_set_tab_label(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label ? tab_label.to_unsafe.as(LibGtk::Widget*) : nil)
-      __return_value
+      LibGtk.notebook_set_tab_label(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label ? tab_label.to_unsafe.as(LibGtk::Widget*) : nil)
+      nil
     end
 
     def set_tab_label_text(child, tab_text)
-      __return_value = LibGtk.notebook_set_tab_label_text(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_text.to_unsafe)
-      __return_value
+      LibGtk.notebook_set_tab_label_text(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_text.to_unsafe)
+      nil
     end
 
     def tab_pos=(pos : Gtk::PositionType)
-      __return_value = LibGtk.notebook_set_tab_pos(to_unsafe.as(LibGtk::Notebook*), pos)
-      __return_value
+      LibGtk.notebook_set_tab_pos(to_unsafe.as(LibGtk::Notebook*), pos)
+      nil
     end
 
     def set_tab_reorderable(child, reorderable)
-      __return_value = LibGtk.notebook_set_tab_reorderable(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), reorderable)
-      __return_value
+      LibGtk.notebook_set_tab_reorderable(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), reorderable)
+      nil
     end
 
     alias ChangeCurrentPageSignal = Notebook, Int32 -> Bool

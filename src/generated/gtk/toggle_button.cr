@@ -60,23 +60,23 @@ module Gtk
     end
 
     def active=(is_active)
-      __return_value = LibGtk.toggle_button_set_active(to_unsafe.as(LibGtk::ToggleButton*), is_active)
-      __return_value
+      LibGtk.toggle_button_set_active(to_unsafe.as(LibGtk::ToggleButton*), is_active)
+      nil
     end
 
     def inconsistent=(setting)
-      __return_value = LibGtk.toggle_button_set_inconsistent(to_unsafe.as(LibGtk::ToggleButton*), setting)
-      __return_value
+      LibGtk.toggle_button_set_inconsistent(to_unsafe.as(LibGtk::ToggleButton*), setting)
+      nil
     end
 
     def mode=(draw_indicator)
-      __return_value = LibGtk.toggle_button_set_mode(to_unsafe.as(LibGtk::ToggleButton*), draw_indicator)
-      __return_value
+      LibGtk.toggle_button_set_mode(to_unsafe.as(LibGtk::ToggleButton*), draw_indicator)
+      nil
     end
 
     def toggled
-      __return_value = LibGtk.toggle_button_toggled(to_unsafe.as(LibGtk::ToggleButton*))
-      __return_value
+      LibGtk.toggle_button_toggled(to_unsafe.as(LibGtk::ToggleButton*))
+      nil
     end
 
     alias ToggledSignal = ToggleButton ->

@@ -41,8 +41,8 @@ module Gst
     end
 
     def pad_created(pad)
-      __return_value = LibGst.pad_template_pad_created(to_unsafe.as(LibGst::PadTemplate*), pad.to_unsafe.as(LibGst::Pad*))
-      __return_value
+      LibGst.pad_template_pad_created(to_unsafe.as(LibGst::PadTemplate*), pad.to_unsafe.as(LibGst::Pad*))
+      nil
     end
 
     alias PadCreatedSignal = PadTemplate, Gst::Pad ->

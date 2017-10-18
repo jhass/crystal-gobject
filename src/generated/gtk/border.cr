@@ -31,8 +31,8 @@ module Gtk
     end
 
     def free
-      __return_value = LibGtk.border_free(to_unsafe.as(LibGtk::Border*))
-      __return_value
+      LibGtk.border_free(to_unsafe.as(LibGtk::Border*))
+      nil
     end
 
     def left

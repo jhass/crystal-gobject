@@ -35,8 +35,8 @@ module Gtk
     end
 
     def active=(is_active)
-      __return_value = LibGtk.toggle_tool_button_set_active(to_unsafe.as(LibGtk::ToggleToolButton*), is_active)
-      __return_value
+      LibGtk.toggle_tool_button_set_active(to_unsafe.as(LibGtk::ToggleToolButton*), is_active)
+      nil
     end
 
     alias ToggledSignal = ToggleToolButton ->

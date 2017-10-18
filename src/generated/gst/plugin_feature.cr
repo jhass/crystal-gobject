@@ -16,13 +16,13 @@ module Gst
     end
 
     def self.list_debug(list)
-      __return_value = LibGst.plugin_feature_list_debug(list)
-      __return_value
+      LibGst.plugin_feature_list_debug(list)
+      nil
     end
 
     def self.list_free(list)
-      __return_value = LibGst.plugin_feature_list_free(list)
-      __return_value
+      LibGst.plugin_feature_list_free(list)
+      nil
     end
 
     def self.rank_compare_func(p1, p2)
@@ -56,8 +56,8 @@ module Gst
     end
 
     def rank=(rank)
-      __return_value = LibGst.plugin_feature_set_rank(to_unsafe.as(LibGst::PluginFeature*), UInt32.new(rank))
-      __return_value
+      LibGst.plugin_feature_set_rank(to_unsafe.as(LibGst::PluginFeature*), UInt32.new(rank))
+      nil
     end
 
   end

@@ -86,12 +86,12 @@ lib LibGLib
   MAXUINT32 = 4294967295 # : UInt32
   MAXUINT64 = 18446744073709551615 # : UInt64
   MAXUINT8 = 255 # : UInt8
-  MICRO_VERSION = 1 # : Int32
+  MICRO_VERSION = 0 # : Int32
   MININT16 = -32768 # : Int16
   MININT32 = -2147483648 # : Int32
   MININT64 = -9223372036854775808 # : Int64
   MININT8 = -128 # : Int8
-  MINOR_VERSION = 52 # : Int32
+  MINOR_VERSION = 54 # : Int32
   MODULE_SUFFIX = "so" # : UInt8*
   OPTION_REMAINING = "" # : UInt8*
   PDP_ENDIAN = 3412 # : Int32
@@ -967,12 +967,19 @@ lib LibGLib
   struct Sequence # struct
     _data : UInt8[0]
   end
+  fun sequence_append = g_sequence_append(this : Sequence*, data : Void*) : LibGLib::SequenceIter*
   fun sequence_free = g_sequence_free(this : Sequence*) : Void
+  fun sequence_get_begin_iter = g_sequence_get_begin_iter(this : Sequence*) : LibGLib::SequenceIter*
+  fun sequence_get_end_iter = g_sequence_get_end_iter(this : Sequence*) : LibGLib::SequenceIter*
+  fun sequence_get_iter_at_pos = g_sequence_get_iter_at_pos(this : Sequence*, pos : Int32) : LibGLib::SequenceIter*
   fun sequence_get_length = g_sequence_get_length(this : Sequence*) : Int32
   fun sequence_is_empty = g_sequence_is_empty(this : Sequence*) : Bool
+  fun sequence_prepend = g_sequence_prepend(this : Sequence*, data : Void*) : LibGLib::SequenceIter*
   fun sequence_get = g_sequence_get(iter : LibGLib::SequenceIter*) : Void*
+  fun sequence_insert_before = g_sequence_insert_before(iter : LibGLib::SequenceIter*, data : Void*) : LibGLib::SequenceIter*
   fun sequence_move = g_sequence_move(src : LibGLib::SequenceIter*, dest : LibGLib::SequenceIter*) : Void
   fun sequence_move_range = g_sequence_move_range(dest : LibGLib::SequenceIter*, _begin : LibGLib::SequenceIter*, end : LibGLib::SequenceIter*) : Void
+  fun sequence_range_get_midpoint = g_sequence_range_get_midpoint(_begin : LibGLib::SequenceIter*, end : LibGLib::SequenceIter*) : LibGLib::SequenceIter*
   fun sequence_remove = g_sequence_remove(iter : LibGLib::SequenceIter*) : Void
   fun sequence_remove_range = g_sequence_remove_range(_begin : LibGLib::SequenceIter*, end : LibGLib::SequenceIter*) : Void
   fun sequence_set = g_sequence_set(iter : LibGLib::SequenceIter*, data : Void*) : Void
@@ -983,8 +990,12 @@ lib LibGLib
   end
   fun sequence_iter_compare = g_sequence_iter_compare(this : SequenceIter*, b : LibGLib::SequenceIter*) : Int32
   fun sequence_iter_get_position = g_sequence_iter_get_position(this : SequenceIter*) : Int32
+  fun sequence_iter_get_sequence = g_sequence_iter_get_sequence(this : SequenceIter*) : LibGLib::Sequence*
   fun sequence_iter_is_begin = g_sequence_iter_is_begin(this : SequenceIter*) : Bool
   fun sequence_iter_is_end = g_sequence_iter_is_end(this : SequenceIter*) : Bool
+  fun sequence_iter_move = g_sequence_iter_move(this : SequenceIter*, delta : Int32) : LibGLib::SequenceIter*
+  fun sequence_iter_next = g_sequence_iter_next(this : SequenceIter*) : LibGLib::SequenceIter*
+  fun sequence_iter_prev = g_sequence_iter_prev(this : SequenceIter*) : LibGLib::SequenceIter*
 
   struct Source # struct
     callback_data : Void*
@@ -1752,6 +1763,12 @@ lib LibGLib
     NFKC = 3
   end
 
+  enum NumberParserError : UInt32
+    ZERO_NONE = 0
+    INVALID = 0
+    OUT_OF_BOUNDS = 1
+  end
+
   enum OnceStatus : UInt32
     ZERO_NONE = 0
     NOTCALLED = 0
@@ -2146,6 +2163,10 @@ lib LibGLib
     NEWA = 135
     OSAGE = 136
     TANGUT = 137
+    MASARAM_GONDI = 138
+    NUSHU = 139
+    SOYOMBO = 140
+    ZANABAZAR_SQUARE = 141
   end
 
   enum UnicodeType : UInt32
@@ -2288,6 +2309,8 @@ lib LibGLib
   fun ascii_formatd = g_ascii_formatd(buffer : UInt8*, buf_len : Int32, format : UInt8*, d : Float64) : UInt8*
   fun ascii_strcasecmp = g_ascii_strcasecmp(s1 : UInt8*, s2 : UInt8*) : Int32
   fun ascii_strdown = g_ascii_strdown(str : UInt8*, len : Int64) : UInt8*
+  fun ascii_string_to_signed = g_ascii_string_to_signed(str : UInt8*, base : UInt32, min : Int64, max : Int64, out_num : Int64*, error : LibGLib::Error**) : Bool
+  fun ascii_string_to_unsigned = g_ascii_string_to_unsigned(str : UInt8*, base : UInt32, min : UInt64, max : UInt64, out_num : UInt64*, error : LibGLib::Error**) : Bool
   fun ascii_strncasecmp = g_ascii_strncasecmp(s1 : UInt8*, s2 : UInt8*, n : UInt64) : Int32
   fun ascii_strtod = g_ascii_strtod(nptr : UInt8*, endptr : UInt8**) : Float64
   fun ascii_strtoll = g_ascii_strtoll(nptr : UInt8*, endptr : UInt8**, base : UInt32) : Int64
@@ -2514,6 +2537,7 @@ lib LibGLib
   fun memdup = g_memdup(mem : Void*, byte_size : UInt32) : Void*
   fun mkdir_with_parents = g_mkdir_with_parents(pathname : UInt8*, mode : Int32) : Int32
   fun nullify_pointer = g_nullify_pointer(nullify_location : Void*) : Void
+  fun number_parser_error_quark = g_number_parser_error_quark() : UInt32
   fun on_error_query = g_on_error_query(prg_name : UInt8*) : Void
   fun on_error_stack_trace = g_on_error_stack_trace(prg_name : UInt8*) : Void
   fun once_init_enter = g_once_init_enter(location : Void*) : Bool
@@ -2552,8 +2576,10 @@ lib LibGLib
   fun reload_user_special_dirs_cache = g_reload_user_special_dirs_cache() : Void
   fun rmdir = g_rmdir(filename : UInt8*) : Int32
   fun sequence_get = g_sequence_get(iter : LibGLib::SequenceIter*) : Void*
+  fun sequence_insert_before = g_sequence_insert_before(iter : LibGLib::SequenceIter*, data : Void*) : LibGLib::SequenceIter*
   fun sequence_move = g_sequence_move(src : LibGLib::SequenceIter*, dest : LibGLib::SequenceIter*) : Void
   fun sequence_move_range = g_sequence_move_range(dest : LibGLib::SequenceIter*, _begin : LibGLib::SequenceIter*, end : LibGLib::SequenceIter*) : Void
+  fun sequence_range_get_midpoint = g_sequence_range_get_midpoint(_begin : LibGLib::SequenceIter*, end : LibGLib::SequenceIter*) : LibGLib::SequenceIter*
   fun sequence_remove = g_sequence_remove(iter : LibGLib::SequenceIter*) : Void
   fun sequence_remove_range = g_sequence_remove_range(_begin : LibGLib::SequenceIter*, end : LibGLib::SequenceIter*) : Void
   fun sequence_set = g_sequence_set(iter : LibGLib::SequenceIter*, data : Void*) : Void

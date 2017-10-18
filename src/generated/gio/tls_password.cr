@@ -49,28 +49,28 @@ module Gio
     end
 
     def description=(description)
-      __return_value = LibGio.tls_password_set_description(to_unsafe.as(LibGio::TlsPassword*), description.to_unsafe)
-      __return_value
+      LibGio.tls_password_set_description(to_unsafe.as(LibGio::TlsPassword*), description.to_unsafe)
+      nil
     end
 
     def flags=(flags : Gio::TlsPasswordFlags)
-      __return_value = LibGio.tls_password_set_flags(to_unsafe.as(LibGio::TlsPassword*), flags)
-      __return_value
+      LibGio.tls_password_set_flags(to_unsafe.as(LibGio::TlsPassword*), flags)
+      nil
     end
 
     def set_value(value, length)
-      __return_value = LibGio.tls_password_set_value(to_unsafe.as(LibGio::TlsPassword*), value, Int64.new(length))
-      __return_value
+      LibGio.tls_password_set_value(to_unsafe.as(LibGio::TlsPassword*), value, Int64.new(length))
+      nil
     end
 
     def set_value_full(value, length, destroy)
-      __return_value = LibGio.tls_password_set_value_full(to_unsafe.as(LibGio::TlsPassword*), value, Int64.new(length), destroy ? destroy : nil)
-      __return_value
+      LibGio.tls_password_set_value_full(to_unsafe.as(LibGio::TlsPassword*), value, Int64.new(length), destroy ? destroy : nil)
+      nil
     end
 
     def warning=(warning)
-      __return_value = LibGio.tls_password_set_warning(to_unsafe.as(LibGio::TlsPassword*), warning.to_unsafe)
-      __return_value
+      LibGio.tls_password_set_warning(to_unsafe.as(LibGio::TlsPassword*), warning.to_unsafe)
+      nil
     end
 
   end

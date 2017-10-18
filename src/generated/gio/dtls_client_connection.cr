@@ -23,13 +23,13 @@ module Gio
     end
 
     def server_identity=(identity)
-      __return_value = LibGio.dtls_client_connection_set_server_identity(to_unsafe.as(LibGio::DtlsClientConnection*), identity.to_unsafe.as(LibGio::SocketConnectable*))
-      __return_value
+      LibGio.dtls_client_connection_set_server_identity(to_unsafe.as(LibGio::DtlsClientConnection*), identity.to_unsafe.as(LibGio::SocketConnectable*))
+      nil
     end
 
     def validation_flags=(flags : Gio::TlsCertificateFlags)
-      __return_value = LibGio.dtls_client_connection_set_validation_flags(to_unsafe.as(LibGio::DtlsClientConnection*), flags)
-      __return_value
+      LibGio.dtls_client_connection_set_validation_flags(to_unsafe.as(LibGio::DtlsClientConnection*), flags)
+      nil
     end
 
   end

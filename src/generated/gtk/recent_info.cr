@@ -133,8 +133,8 @@ module Gtk
     end
 
     def unref
-      __return_value = LibGtk.recent_info_unref(to_unsafe.as(LibGtk::RecentInfo*))
-      __return_value
+      LibGtk.recent_info_unref(to_unsafe.as(LibGtk::RecentInfo*))
+      nil
     end
 
   end

@@ -28,8 +28,8 @@ module Gtk
     end
 
     def set(arrow_type : Gtk::ArrowType, shadow_type : Gtk::ShadowType)
-      __return_value = LibGtk.arrow_set(to_unsafe.as(LibGtk::Arrow*), arrow_type, shadow_type)
-      __return_value
+      LibGtk.arrow_set(to_unsafe.as(LibGtk::Arrow*), arrow_type, shadow_type)
+      nil
     end
 
   end

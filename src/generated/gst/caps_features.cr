@@ -21,13 +21,13 @@ module Gst
     end
 
     def add(feature)
-      __return_value = LibGst.caps_features_add(to_unsafe.as(LibGst::CapsFeatures*), feature.to_unsafe)
-      __return_value
+      LibGst.caps_features_add(to_unsafe.as(LibGst::CapsFeatures*), feature.to_unsafe)
+      nil
     end
 
     def add_id(feature)
-      __return_value = LibGst.caps_features_add_id(to_unsafe.as(LibGst::CapsFeatures*), UInt32.new(feature))
-      __return_value
+      LibGst.caps_features_add_id(to_unsafe.as(LibGst::CapsFeatures*), UInt32.new(feature))
+      nil
     end
 
     def contains(feature)
@@ -46,8 +46,8 @@ module Gst
     end
 
     def free
-      __return_value = LibGst.caps_features_free(to_unsafe.as(LibGst::CapsFeatures*))
-      __return_value
+      LibGst.caps_features_free(to_unsafe.as(LibGst::CapsFeatures*))
+      nil
     end
 
     def nth(i)
@@ -76,13 +76,13 @@ module Gst
     end
 
     def remove(feature)
-      __return_value = LibGst.caps_features_remove(to_unsafe.as(LibGst::CapsFeatures*), feature.to_unsafe)
-      __return_value
+      LibGst.caps_features_remove(to_unsafe.as(LibGst::CapsFeatures*), feature.to_unsafe)
+      nil
     end
 
     def remove_id(feature)
-      __return_value = LibGst.caps_features_remove_id(to_unsafe.as(LibGst::CapsFeatures*), UInt32.new(feature))
-      __return_value
+      LibGst.caps_features_remove_id(to_unsafe.as(LibGst::CapsFeatures*), UInt32.new(feature))
+      nil
     end
 
     def parent_refcount=(refcount)

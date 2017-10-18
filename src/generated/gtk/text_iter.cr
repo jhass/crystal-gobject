@@ -16,8 +16,8 @@ module Gtk
     end
 
     def assign(other)
-      __return_value = LibGtk.text_iter_assign(to_unsafe.as(LibGtk::TextIter*), other.to_unsafe.as(LibGtk::TextIter*))
-      __return_value
+      LibGtk.text_iter_assign(to_unsafe.as(LibGtk::TextIter*), other.to_unsafe.as(LibGtk::TextIter*))
+      nil
     end
 
     def backward_char
@@ -216,8 +216,8 @@ module Gtk
     end
 
     def forward_to_end
-      __return_value = LibGtk.text_iter_forward_to_end(to_unsafe.as(LibGtk::TextIter*))
-      __return_value
+      LibGtk.text_iter_forward_to_end(to_unsafe.as(LibGtk::TextIter*))
+      nil
     end
 
     def forward_to_line_end
@@ -271,8 +271,8 @@ module Gtk
     end
 
     def free
-      __return_value = LibGtk.text_iter_free(to_unsafe.as(LibGtk::TextIter*))
-      __return_value
+      LibGtk.text_iter_free(to_unsafe.as(LibGtk::TextIter*))
+      nil
     end
 
     def attributes(values)
@@ -416,38 +416,38 @@ module Gtk
     end
 
     def order(second)
-      __return_value = LibGtk.text_iter_order(to_unsafe.as(LibGtk::TextIter*), second.to_unsafe.as(LibGtk::TextIter*))
-      __return_value
+      LibGtk.text_iter_order(to_unsafe.as(LibGtk::TextIter*), second.to_unsafe.as(LibGtk::TextIter*))
+      nil
     end
 
     def line=(line_number)
-      __return_value = LibGtk.text_iter_set_line(to_unsafe.as(LibGtk::TextIter*), Int32.new(line_number))
-      __return_value
+      LibGtk.text_iter_set_line(to_unsafe.as(LibGtk::TextIter*), Int32.new(line_number))
+      nil
     end
 
     def line_index=(byte_on_line)
-      __return_value = LibGtk.text_iter_set_line_index(to_unsafe.as(LibGtk::TextIter*), Int32.new(byte_on_line))
-      __return_value
+      LibGtk.text_iter_set_line_index(to_unsafe.as(LibGtk::TextIter*), Int32.new(byte_on_line))
+      nil
     end
 
     def line_offset=(char_on_line)
-      __return_value = LibGtk.text_iter_set_line_offset(to_unsafe.as(LibGtk::TextIter*), Int32.new(char_on_line))
-      __return_value
+      LibGtk.text_iter_set_line_offset(to_unsafe.as(LibGtk::TextIter*), Int32.new(char_on_line))
+      nil
     end
 
     def offset=(char_offset)
-      __return_value = LibGtk.text_iter_set_offset(to_unsafe.as(LibGtk::TextIter*), Int32.new(char_offset))
-      __return_value
+      LibGtk.text_iter_set_offset(to_unsafe.as(LibGtk::TextIter*), Int32.new(char_offset))
+      nil
     end
 
     def visible_line_index=(byte_on_line)
-      __return_value = LibGtk.text_iter_set_visible_line_index(to_unsafe.as(LibGtk::TextIter*), Int32.new(byte_on_line))
-      __return_value
+      LibGtk.text_iter_set_visible_line_index(to_unsafe.as(LibGtk::TextIter*), Int32.new(byte_on_line))
+      nil
     end
 
     def visible_line_offset=(char_on_line)
-      __return_value = LibGtk.text_iter_set_visible_line_offset(to_unsafe.as(LibGtk::TextIter*), Int32.new(char_on_line))
-      __return_value
+      LibGtk.text_iter_set_visible_line_offset(to_unsafe.as(LibGtk::TextIter*), Int32.new(char_on_line))
+      nil
     end
 
     def starts_line

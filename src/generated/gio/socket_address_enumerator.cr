@@ -16,8 +16,8 @@ module Gio
     end
 
     def next_async(cancellable, callback, user_data)
-      __return_value = LibGio.socket_address_enumerator_next_async(to_unsafe.as(LibGio::SocketAddressEnumerator*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.socket_address_enumerator_next_async(to_unsafe.as(LibGio::SocketAddressEnumerator*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def next_finish(result)

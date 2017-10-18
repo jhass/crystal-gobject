@@ -13,8 +13,8 @@ module Gio
     end
 
     def connect_async(connection, proxy_address, cancellable, callback, user_data)
-      __return_value = LibGio.proxy_connect_async(to_unsafe.as(LibGio::Proxy*), connection.to_unsafe.as(LibGio::IOStream*), proxy_address.to_unsafe.as(LibGio::ProxyAddress*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.proxy_connect_async(to_unsafe.as(LibGio::Proxy*), connection.to_unsafe.as(LibGio::IOStream*), proxy_address.to_unsafe.as(LibGio::ProxyAddress*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def connect_finish(result)

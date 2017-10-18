@@ -31,8 +31,8 @@ module Gio
     end
 
     def acquire_async(cancellable, callback, user_data)
-      __return_value = LibGio.permission_acquire_async(to_unsafe.as(LibGio::Permission*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.permission_acquire_async(to_unsafe.as(LibGio::Permission*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def acquire_finish(result)
@@ -58,8 +58,8 @@ module Gio
     end
 
     def impl_update(allowed, can_acquire, can_release)
-      __return_value = LibGio.permission_impl_update(to_unsafe.as(LibGio::Permission*), allowed, can_acquire, can_release)
-      __return_value
+      LibGio.permission_impl_update(to_unsafe.as(LibGio::Permission*), allowed, can_acquire, can_release)
+      nil
     end
 
     def release(cancellable)
@@ -70,8 +70,8 @@ module Gio
     end
 
     def release_async(cancellable, callback, user_data)
-      __return_value = LibGio.permission_release_async(to_unsafe.as(LibGio::Permission*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.permission_release_async(to_unsafe.as(LibGio::Permission*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def release_finish(result)

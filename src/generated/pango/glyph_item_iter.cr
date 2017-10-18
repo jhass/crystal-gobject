@@ -30,8 +30,8 @@ module Pango
     end
 
     def free
-      __return_value = LibPango.glyph_item_iter_free(to_unsafe.as(LibPango::GlyphItemIter*))
-      __return_value
+      LibPango.glyph_item_iter_free(to_unsafe.as(LibPango::GlyphItemIter*))
+      nil
     end
 
     def init_end(glyph_item, text)

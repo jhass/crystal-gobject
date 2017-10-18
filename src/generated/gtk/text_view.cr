@@ -129,13 +129,13 @@ module Gtk
     end
 
     def add_child_at_anchor(child, anchor)
-      __return_value = LibGtk.text_view_add_child_at_anchor(to_unsafe.as(LibGtk::TextView*), child.to_unsafe.as(LibGtk::Widget*), anchor.to_unsafe.as(LibGtk::TextChildAnchor*))
-      __return_value
+      LibGtk.text_view_add_child_at_anchor(to_unsafe.as(LibGtk::TextView*), child.to_unsafe.as(LibGtk::Widget*), anchor.to_unsafe.as(LibGtk::TextChildAnchor*))
+      nil
     end
 
     def add_child_in_window(child, which_window : Gtk::TextWindowType, xpos, ypos)
-      __return_value = LibGtk.text_view_add_child_in_window(to_unsafe.as(LibGtk::TextView*), child.to_unsafe.as(LibGtk::Widget*), which_window, Int32.new(xpos), Int32.new(ypos))
-      __return_value
+      LibGtk.text_view_add_child_in_window(to_unsafe.as(LibGtk::TextView*), child.to_unsafe.as(LibGtk::Widget*), which_window, Int32.new(xpos), Int32.new(ypos))
+      nil
     end
 
     def backward_display_line(iter)
@@ -149,8 +149,8 @@ module Gtk
     end
 
     def buffer_to_window_coords(win : Gtk::TextWindowType, buffer_x, buffer_y, window_x, window_y)
-      __return_value = LibGtk.text_view_buffer_to_window_coords(to_unsafe.as(LibGtk::TextView*), win, Int32.new(buffer_x), Int32.new(buffer_y), window_x, window_y)
-      __return_value
+      LibGtk.text_view_buffer_to_window_coords(to_unsafe.as(LibGtk::TextView*), win, Int32.new(buffer_x), Int32.new(buffer_y), window_x, window_y)
+      nil
     end
 
     def forward_display_line(iter)
@@ -184,8 +184,8 @@ module Gtk
     end
 
     def cursor_locations(iter, strong, weak)
-      __return_value = LibGtk.text_view_get_cursor_locations(to_unsafe.as(LibGtk::TextView*), iter ? iter.to_unsafe.as(LibGtk::TextIter*) : nil, strong, weak)
-      __return_value
+      LibGtk.text_view_get_cursor_locations(to_unsafe.as(LibGtk::TextView*), iter ? iter.to_unsafe.as(LibGtk::TextIter*) : nil, strong, weak)
+      nil
     end
 
     def cursor_visible
@@ -234,8 +234,8 @@ module Gtk
     end
 
     def iter_location(iter, location)
-      __return_value = LibGtk.text_view_get_iter_location(to_unsafe.as(LibGtk::TextView*), iter.to_unsafe.as(LibGtk::TextIter*), location)
-      __return_value
+      LibGtk.text_view_get_iter_location(to_unsafe.as(LibGtk::TextView*), iter.to_unsafe.as(LibGtk::TextIter*), location)
+      nil
     end
 
     def justification
@@ -249,13 +249,13 @@ module Gtk
     end
 
     def line_at_y(target_iter, y, line_top)
-      __return_value = LibGtk.text_view_get_line_at_y(to_unsafe.as(LibGtk::TextView*), target_iter, Int32.new(y), line_top)
-      __return_value
+      LibGtk.text_view_get_line_at_y(to_unsafe.as(LibGtk::TextView*), target_iter, Int32.new(y), line_top)
+      nil
     end
 
     def line_yrange(iter, y, height)
-      __return_value = LibGtk.text_view_get_line_yrange(to_unsafe.as(LibGtk::TextView*), iter.to_unsafe.as(LibGtk::TextIter*), y, height)
-      __return_value
+      LibGtk.text_view_get_line_yrange(to_unsafe.as(LibGtk::TextView*), iter.to_unsafe.as(LibGtk::TextIter*), y, height)
+      nil
     end
 
     def monospace
@@ -304,8 +304,8 @@ module Gtk
     end
 
     def visible_rect(visible_rect)
-      __return_value = LibGtk.text_view_get_visible_rect(to_unsafe.as(LibGtk::TextView*), visible_rect)
-      __return_value
+      LibGtk.text_view_get_visible_rect(to_unsafe.as(LibGtk::TextView*), visible_rect)
+      nil
     end
 
     def window(win : Gtk::TextWindowType)
@@ -329,8 +329,8 @@ module Gtk
     end
 
     def move_child(child, xpos, ypos)
-      __return_value = LibGtk.text_view_move_child(to_unsafe.as(LibGtk::TextView*), child.to_unsafe.as(LibGtk::Widget*), Int32.new(xpos), Int32.new(ypos))
-      __return_value
+      LibGtk.text_view_move_child(to_unsafe.as(LibGtk::TextView*), child.to_unsafe.as(LibGtk::Widget*), Int32.new(xpos), Int32.new(ypos))
+      nil
     end
 
     def move_mark_onscreen(mark)
@@ -349,18 +349,18 @@ module Gtk
     end
 
     def reset_cursor_blink
-      __return_value = LibGtk.text_view_reset_cursor_blink(to_unsafe.as(LibGtk::TextView*))
-      __return_value
+      LibGtk.text_view_reset_cursor_blink(to_unsafe.as(LibGtk::TextView*))
+      nil
     end
 
     def reset_im_context
-      __return_value = LibGtk.text_view_reset_im_context(to_unsafe.as(LibGtk::TextView*))
-      __return_value
+      LibGtk.text_view_reset_im_context(to_unsafe.as(LibGtk::TextView*))
+      nil
     end
 
     def scroll_mark_onscreen(mark)
-      __return_value = LibGtk.text_view_scroll_mark_onscreen(to_unsafe.as(LibGtk::TextView*), mark.to_unsafe.as(LibGtk::TextMark*))
-      __return_value
+      LibGtk.text_view_scroll_mark_onscreen(to_unsafe.as(LibGtk::TextView*), mark.to_unsafe.as(LibGtk::TextMark*))
+      nil
     end
 
     def scroll_to_iter(iter, within_margin, use_align, xalign, yalign)
@@ -369,108 +369,108 @@ module Gtk
     end
 
     def scroll_to_mark(mark, within_margin, use_align, xalign, yalign)
-      __return_value = LibGtk.text_view_scroll_to_mark(to_unsafe.as(LibGtk::TextView*), mark.to_unsafe.as(LibGtk::TextMark*), Float64.new(within_margin), use_align, Float64.new(xalign), Float64.new(yalign))
-      __return_value
+      LibGtk.text_view_scroll_to_mark(to_unsafe.as(LibGtk::TextView*), mark.to_unsafe.as(LibGtk::TextMark*), Float64.new(within_margin), use_align, Float64.new(xalign), Float64.new(yalign))
+      nil
     end
 
     def accepts_tab=(accepts_tab)
-      __return_value = LibGtk.text_view_set_accepts_tab(to_unsafe.as(LibGtk::TextView*), accepts_tab)
-      __return_value
+      LibGtk.text_view_set_accepts_tab(to_unsafe.as(LibGtk::TextView*), accepts_tab)
+      nil
     end
 
     def set_border_window_size(type : Gtk::TextWindowType, size)
-      __return_value = LibGtk.text_view_set_border_window_size(to_unsafe.as(LibGtk::TextView*), type, Int32.new(size))
-      __return_value
+      LibGtk.text_view_set_border_window_size(to_unsafe.as(LibGtk::TextView*), type, Int32.new(size))
+      nil
     end
 
     def bottom_margin=(bottom_margin)
-      __return_value = LibGtk.text_view_set_bottom_margin(to_unsafe.as(LibGtk::TextView*), Int32.new(bottom_margin))
-      __return_value
+      LibGtk.text_view_set_bottom_margin(to_unsafe.as(LibGtk::TextView*), Int32.new(bottom_margin))
+      nil
     end
 
     def buffer=(buffer)
-      __return_value = LibGtk.text_view_set_buffer(to_unsafe.as(LibGtk::TextView*), buffer ? buffer.to_unsafe.as(LibGtk::TextBuffer*) : nil)
-      __return_value
+      LibGtk.text_view_set_buffer(to_unsafe.as(LibGtk::TextView*), buffer ? buffer.to_unsafe.as(LibGtk::TextBuffer*) : nil)
+      nil
     end
 
     def cursor_visible=(setting)
-      __return_value = LibGtk.text_view_set_cursor_visible(to_unsafe.as(LibGtk::TextView*), setting)
-      __return_value
+      LibGtk.text_view_set_cursor_visible(to_unsafe.as(LibGtk::TextView*), setting)
+      nil
     end
 
     def editable=(setting)
-      __return_value = LibGtk.text_view_set_editable(to_unsafe.as(LibGtk::TextView*), setting)
-      __return_value
+      LibGtk.text_view_set_editable(to_unsafe.as(LibGtk::TextView*), setting)
+      nil
     end
 
     def indent=(indent)
-      __return_value = LibGtk.text_view_set_indent(to_unsafe.as(LibGtk::TextView*), Int32.new(indent))
-      __return_value
+      LibGtk.text_view_set_indent(to_unsafe.as(LibGtk::TextView*), Int32.new(indent))
+      nil
     end
 
     def input_hints=(hints : Gtk::InputHints)
-      __return_value = LibGtk.text_view_set_input_hints(to_unsafe.as(LibGtk::TextView*), hints)
-      __return_value
+      LibGtk.text_view_set_input_hints(to_unsafe.as(LibGtk::TextView*), hints)
+      nil
     end
 
     def input_purpose=(purpose : Gtk::InputPurpose)
-      __return_value = LibGtk.text_view_set_input_purpose(to_unsafe.as(LibGtk::TextView*), purpose)
-      __return_value
+      LibGtk.text_view_set_input_purpose(to_unsafe.as(LibGtk::TextView*), purpose)
+      nil
     end
 
     def justification=(justification : Gtk::Justification)
-      __return_value = LibGtk.text_view_set_justification(to_unsafe.as(LibGtk::TextView*), justification)
-      __return_value
+      LibGtk.text_view_set_justification(to_unsafe.as(LibGtk::TextView*), justification)
+      nil
     end
 
     def left_margin=(left_margin)
-      __return_value = LibGtk.text_view_set_left_margin(to_unsafe.as(LibGtk::TextView*), Int32.new(left_margin))
-      __return_value
+      LibGtk.text_view_set_left_margin(to_unsafe.as(LibGtk::TextView*), Int32.new(left_margin))
+      nil
     end
 
     def monospace=(monospace)
-      __return_value = LibGtk.text_view_set_monospace(to_unsafe.as(LibGtk::TextView*), monospace)
-      __return_value
+      LibGtk.text_view_set_monospace(to_unsafe.as(LibGtk::TextView*), monospace)
+      nil
     end
 
     def overwrite=(overwrite)
-      __return_value = LibGtk.text_view_set_overwrite(to_unsafe.as(LibGtk::TextView*), overwrite)
-      __return_value
+      LibGtk.text_view_set_overwrite(to_unsafe.as(LibGtk::TextView*), overwrite)
+      nil
     end
 
     def pixels_above_lines=(pixels_above_lines)
-      __return_value = LibGtk.text_view_set_pixels_above_lines(to_unsafe.as(LibGtk::TextView*), Int32.new(pixels_above_lines))
-      __return_value
+      LibGtk.text_view_set_pixels_above_lines(to_unsafe.as(LibGtk::TextView*), Int32.new(pixels_above_lines))
+      nil
     end
 
     def pixels_below_lines=(pixels_below_lines)
-      __return_value = LibGtk.text_view_set_pixels_below_lines(to_unsafe.as(LibGtk::TextView*), Int32.new(pixels_below_lines))
-      __return_value
+      LibGtk.text_view_set_pixels_below_lines(to_unsafe.as(LibGtk::TextView*), Int32.new(pixels_below_lines))
+      nil
     end
 
     def pixels_inside_wrap=(pixels_inside_wrap)
-      __return_value = LibGtk.text_view_set_pixels_inside_wrap(to_unsafe.as(LibGtk::TextView*), Int32.new(pixels_inside_wrap))
-      __return_value
+      LibGtk.text_view_set_pixels_inside_wrap(to_unsafe.as(LibGtk::TextView*), Int32.new(pixels_inside_wrap))
+      nil
     end
 
     def right_margin=(right_margin)
-      __return_value = LibGtk.text_view_set_right_margin(to_unsafe.as(LibGtk::TextView*), Int32.new(right_margin))
-      __return_value
+      LibGtk.text_view_set_right_margin(to_unsafe.as(LibGtk::TextView*), Int32.new(right_margin))
+      nil
     end
 
     def tabs=(tabs)
-      __return_value = LibGtk.text_view_set_tabs(to_unsafe.as(LibGtk::TextView*), tabs.to_unsafe.as(LibPango::TabArray*))
-      __return_value
+      LibGtk.text_view_set_tabs(to_unsafe.as(LibGtk::TextView*), tabs.to_unsafe.as(LibPango::TabArray*))
+      nil
     end
 
     def top_margin=(top_margin)
-      __return_value = LibGtk.text_view_set_top_margin(to_unsafe.as(LibGtk::TextView*), Int32.new(top_margin))
-      __return_value
+      LibGtk.text_view_set_top_margin(to_unsafe.as(LibGtk::TextView*), Int32.new(top_margin))
+      nil
     end
 
     def wrap_mode=(wrap_mode : Gtk::WrapMode)
-      __return_value = LibGtk.text_view_set_wrap_mode(to_unsafe.as(LibGtk::TextView*), wrap_mode)
-      __return_value
+      LibGtk.text_view_set_wrap_mode(to_unsafe.as(LibGtk::TextView*), wrap_mode)
+      nil
     end
 
     def starts_display_line(iter)
@@ -479,8 +479,8 @@ module Gtk
     end
 
     def window_to_buffer_coords(win : Gtk::TextWindowType, window_x, window_y, buffer_x, buffer_y)
-      __return_value = LibGtk.text_view_window_to_buffer_coords(to_unsafe.as(LibGtk::TextView*), win, Int32.new(window_x), Int32.new(window_y), buffer_x, buffer_y)
-      __return_value
+      LibGtk.text_view_window_to_buffer_coords(to_unsafe.as(LibGtk::TextView*), win, Int32.new(window_x), Int32.new(window_y), buffer_x, buffer_y)
+      nil
     end
 
     alias BackspaceSignal = TextView ->

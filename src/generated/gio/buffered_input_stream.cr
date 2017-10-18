@@ -34,8 +34,8 @@ module Gio
     end
 
     def fill_async(count, io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.buffered_input_stream_fill_async(to_unsafe.as(LibGio::BufferedInputStream*), Int64.new(count), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.buffered_input_stream_fill_async(to_unsafe.as(LibGio::BufferedInputStream*), Int64.new(count), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def fill_finish(result)
@@ -73,8 +73,8 @@ module Gio
     end
 
     def buffer_size=(size)
-      __return_value = LibGio.buffered_input_stream_set_buffer_size(to_unsafe.as(LibGio::BufferedInputStream*), UInt64.new(size))
-      __return_value
+      LibGio.buffered_input_stream_set_buffer_size(to_unsafe.as(LibGio::BufferedInputStream*), UInt64.new(size))
+      nil
     end
 
   end

@@ -21,8 +21,8 @@ module Pango
     end
 
     def free
-      __return_value = LibPango.layout_iter_free(to_unsafe.as(LibPango::LayoutIter*))
-      __return_value
+      LibPango.layout_iter_free(to_unsafe.as(LibPango::LayoutIter*))
+      nil
     end
 
     def baseline
@@ -31,13 +31,13 @@ module Pango
     end
 
     def char_extents(logical_rect)
-      __return_value = LibPango.layout_iter_get_char_extents(to_unsafe.as(LibPango::LayoutIter*), logical_rect)
-      __return_value
+      LibPango.layout_iter_get_char_extents(to_unsafe.as(LibPango::LayoutIter*), logical_rect)
+      nil
     end
 
     def cluster_extents(ink_rect, logical_rect)
-      __return_value = LibPango.layout_iter_get_cluster_extents(to_unsafe.as(LibPango::LayoutIter*), ink_rect, logical_rect)
-      __return_value
+      LibPango.layout_iter_get_cluster_extents(to_unsafe.as(LibPango::LayoutIter*), ink_rect, logical_rect)
+      nil
     end
 
     def index
@@ -51,8 +51,8 @@ module Pango
     end
 
     def layout_extents(ink_rect, logical_rect)
-      __return_value = LibPango.layout_iter_get_layout_extents(to_unsafe.as(LibPango::LayoutIter*), ink_rect, logical_rect)
-      __return_value
+      LibPango.layout_iter_get_layout_extents(to_unsafe.as(LibPango::LayoutIter*), ink_rect, logical_rect)
+      nil
     end
 
     def line
@@ -61,8 +61,8 @@ module Pango
     end
 
     def line_extents(ink_rect, logical_rect)
-      __return_value = LibPango.layout_iter_get_line_extents(to_unsafe.as(LibPango::LayoutIter*), ink_rect, logical_rect)
-      __return_value
+      LibPango.layout_iter_get_line_extents(to_unsafe.as(LibPango::LayoutIter*), ink_rect, logical_rect)
+      nil
     end
 
     def line_readonly
@@ -71,8 +71,8 @@ module Pango
     end
 
     def line_yrange(y0, y1)
-      __return_value = LibPango.layout_iter_get_line_yrange(to_unsafe.as(LibPango::LayoutIter*), y0, y1)
-      __return_value
+      LibPango.layout_iter_get_line_yrange(to_unsafe.as(LibPango::LayoutIter*), y0, y1)
+      nil
     end
 
     def run
@@ -81,8 +81,8 @@ module Pango
     end
 
     def run_extents(ink_rect, logical_rect)
-      __return_value = LibPango.layout_iter_get_run_extents(to_unsafe.as(LibPango::LayoutIter*), ink_rect, logical_rect)
-      __return_value
+      LibPango.layout_iter_get_run_extents(to_unsafe.as(LibPango::LayoutIter*), ink_rect, logical_rect)
+      nil
     end
 
     def run_readonly

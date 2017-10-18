@@ -19,8 +19,8 @@ module Gdk
     end
 
     def add_virtual_modifiers(state : Gdk::ModifierType)
-      __return_value = LibGdk.keymap_add_virtual_modifiers(to_unsafe.as(LibGdk::Keymap*), state)
-      __return_value
+      LibGdk.keymap_add_virtual_modifiers(to_unsafe.as(LibGdk::Keymap*), state)
+      nil
     end
 
     def caps_lock_state

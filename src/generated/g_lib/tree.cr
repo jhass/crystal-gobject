@@ -11,8 +11,8 @@ module GLib
     end
 
     def destroy
-      __return_value = LibGLib.tree_destroy(to_unsafe.as(LibGLib::Tree*))
-      __return_value
+      LibGLib.tree_destroy(to_unsafe.as(LibGLib::Tree*))
+      nil
     end
 
     def height
@@ -21,13 +21,13 @@ module GLib
     end
 
     def insert(key, value)
-      __return_value = LibGLib.tree_insert(to_unsafe.as(LibGLib::Tree*), key ? key : nil, value ? value : nil)
-      __return_value
+      LibGLib.tree_insert(to_unsafe.as(LibGLib::Tree*), key ? key : nil, value ? value : nil)
+      nil
     end
 
     def lookup(key)
-      __return_value = LibGLib.tree_lookup(to_unsafe.as(LibGLib::Tree*), key ? key : nil)
-      __return_value if __return_value
+      LibGLib.tree_lookup(to_unsafe.as(LibGLib::Tree*), key ? key : nil)
+      nil
     end
 
     def lookup_extended(lookup_key, orig_key, value)
@@ -46,8 +46,8 @@ module GLib
     end
 
     def replace(key, value)
-      __return_value = LibGLib.tree_replace(to_unsafe.as(LibGLib::Tree*), key ? key : nil, value ? value : nil)
-      __return_value
+      LibGLib.tree_replace(to_unsafe.as(LibGLib::Tree*), key ? key : nil, value ? value : nil)
+      nil
     end
 
     def steal(key)
@@ -56,8 +56,8 @@ module GLib
     end
 
     def unref
-      __return_value = LibGLib.tree_unref(to_unsafe.as(LibGLib::Tree*))
-      __return_value
+      LibGLib.tree_unref(to_unsafe.as(LibGLib::Tree*))
+      nil
     end
 
   end

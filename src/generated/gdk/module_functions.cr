@@ -1,7 +1,7 @@
 module Gdk
   def self.add_option_entries_libgtk_only(group)
-    __return_value = LibGdk.add_option_entries_libgtk_only(group.to_unsafe.as(LibGLib::OptionGroup*))
-    __return_value
+    LibGdk.add_option_entries_libgtk_only(group.to_unsafe.as(LibGLib::OptionGroup*))
+    nil
   end
 
   def self.atom_intern(atom_name, only_if_exists)
@@ -15,8 +15,8 @@ module Gdk
   end
 
   def self.beep
-    __return_value = LibGdk.beep
-    __return_value
+    LibGdk.beep
+    nil
   end
 
   def self.cairo_create(window)
@@ -25,8 +25,8 @@ module Gdk
   end
 
   def self.cairo_draw_from_gl(cr, window, source, source_type, buffer_scale, x, y, width, height)
-    __return_value = LibGdk.cairo_draw_from_gl(cr.to_unsafe.as(LibCairo::Context*), window.to_unsafe.as(LibGdk::Window*), Int32.new(source), Int32.new(source_type), Int32.new(buffer_scale), Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
-    __return_value
+    LibGdk.cairo_draw_from_gl(cr.to_unsafe.as(LibCairo::Context*), window.to_unsafe.as(LibGdk::Window*), Int32.new(source), Int32.new(source_type), Int32.new(buffer_scale), Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
+    nil
   end
 
   def self.cairo_get_clip_rectangle(cr, rect)
@@ -40,13 +40,13 @@ module Gdk
   end
 
   def self.cairo_rectangle(cr, rectangle)
-    __return_value = LibGdk.cairo_rectangle(cr.to_unsafe.as(LibCairo::Context*), rectangle.to_unsafe.as(LibGdk::Rectangle*))
-    __return_value
+    LibGdk.cairo_rectangle(cr.to_unsafe.as(LibCairo::Context*), rectangle.to_unsafe.as(LibGdk::Rectangle*))
+    nil
   end
 
   def self.cairo_region(cr, region)
-    __return_value = LibGdk.cairo_region(cr.to_unsafe.as(LibCairo::Context*), region.to_unsafe.as(LibCairo::Region*))
-    __return_value
+    LibGdk.cairo_region(cr.to_unsafe.as(LibCairo::Context*), region.to_unsafe.as(LibCairo::Region*))
+    nil
   end
 
   def self.cairo_region_create_from_surface(surface)
@@ -55,23 +55,23 @@ module Gdk
   end
 
   def self.cairo_set_source_color(cr, color)
-    __return_value = LibGdk.cairo_set_source_color(cr.to_unsafe.as(LibCairo::Context*), color.to_unsafe.as(LibGdk::Color*))
-    __return_value
+    LibGdk.cairo_set_source_color(cr.to_unsafe.as(LibCairo::Context*), color.to_unsafe.as(LibGdk::Color*))
+    nil
   end
 
   def self.cairo_set_source_pixbuf(cr, pixbuf, pixbuf_x, pixbuf_y)
-    __return_value = LibGdk.cairo_set_source_pixbuf(cr.to_unsafe.as(LibCairo::Context*), pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*), Float64.new(pixbuf_x), Float64.new(pixbuf_y))
-    __return_value
+    LibGdk.cairo_set_source_pixbuf(cr.to_unsafe.as(LibCairo::Context*), pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*), Float64.new(pixbuf_x), Float64.new(pixbuf_y))
+    nil
   end
 
   def self.cairo_set_source_rgba(cr, rgba)
-    __return_value = LibGdk.cairo_set_source_rgba(cr.to_unsafe.as(LibCairo::Context*), rgba.to_unsafe.as(LibGdk::RGBA*))
-    __return_value
+    LibGdk.cairo_set_source_rgba(cr.to_unsafe.as(LibCairo::Context*), rgba.to_unsafe.as(LibGdk::RGBA*))
+    nil
   end
 
   def self.cairo_set_source_window(cr, window, x, y)
-    __return_value = LibGdk.cairo_set_source_window(cr.to_unsafe.as(LibCairo::Context*), window.to_unsafe.as(LibGdk::Window*), Float64.new(x), Float64.new(y))
-    __return_value
+    LibGdk.cairo_set_source_window(cr.to_unsafe.as(LibCairo::Context*), window.to_unsafe.as(LibGdk::Window*), Float64.new(x), Float64.new(y))
+    nil
   end
 
   def self.cairo_surface_create_from_pixbuf(pixbuf, scale, for_window)
@@ -85,13 +85,13 @@ module Gdk
   end
 
   def self.disable_multidevice
-    __return_value = LibGdk.disable_multidevice
-    __return_value
+    LibGdk.disable_multidevice
+    nil
   end
 
   def self.drag_abort(context, time)
-    __return_value = LibGdk.drag_abort(context.to_unsafe.as(LibGdk::DragContext*), UInt32.new(time))
-    __return_value
+    LibGdk.drag_abort(context.to_unsafe.as(LibGdk::DragContext*), UInt32.new(time))
+    nil
   end
 
   def self.drag_begin(window, targets)
@@ -110,13 +110,13 @@ module Gdk
   end
 
   def self.drag_drop(context, time)
-    __return_value = LibGdk.drag_drop(context.to_unsafe.as(LibGdk::DragContext*), UInt32.new(time))
-    __return_value
+    LibGdk.drag_drop(context.to_unsafe.as(LibGdk::DragContext*), UInt32.new(time))
+    nil
   end
 
   def self.drag_drop_done(context, success)
-    __return_value = LibGdk.drag_drop_done(context.to_unsafe.as(LibGdk::DragContext*), success)
-    __return_value
+    LibGdk.drag_drop_done(context.to_unsafe.as(LibGdk::DragContext*), success)
+    nil
   end
 
   def self.drag_drop_succeeded(context)
@@ -125,8 +125,8 @@ module Gdk
   end
 
   def self.drag_find_window_for_screen(context, drag_window, screen, x_root, y_root, dest_window, protocol : Gdk::DragProtocol)
-    __return_value = LibGdk.drag_find_window_for_screen(context.to_unsafe.as(LibGdk::DragContext*), drag_window.to_unsafe.as(LibGdk::Window*), screen.to_unsafe.as(LibGdk::Screen*), Int32.new(x_root), Int32.new(y_root), dest_window, protocol)
-    __return_value
+    LibGdk.drag_find_window_for_screen(context.to_unsafe.as(LibGdk::DragContext*), drag_window.to_unsafe.as(LibGdk::Window*), screen.to_unsafe.as(LibGdk::Screen*), Int32.new(x_root), Int32.new(y_root), dest_window, protocol)
+    nil
   end
 
   def self.drag_get_selection(context)
@@ -140,18 +140,18 @@ module Gdk
   end
 
   def self.drag_status(context, action : Gdk::DragAction, time)
-    __return_value = LibGdk.drag_status(context.to_unsafe.as(LibGdk::DragContext*), action, UInt32.new(time))
-    __return_value
+    LibGdk.drag_status(context.to_unsafe.as(LibGdk::DragContext*), action, UInt32.new(time))
+    nil
   end
 
   def self.drop_finish(context, success, time)
-    __return_value = LibGdk.drop_finish(context.to_unsafe.as(LibGdk::DragContext*), success, UInt32.new(time))
-    __return_value
+    LibGdk.drop_finish(context.to_unsafe.as(LibGdk::DragContext*), success, UInt32.new(time))
+    nil
   end
 
   def self.drop_reply(context, accepted, time)
-    __return_value = LibGdk.drop_reply(context.to_unsafe.as(LibGdk::DragContext*), accepted, UInt32.new(time))
-    __return_value
+    LibGdk.drop_reply(context.to_unsafe.as(LibGdk::DragContext*), accepted, UInt32.new(time))
+    nil
   end
 
   def self.error_trap_pop
@@ -160,13 +160,13 @@ module Gdk
   end
 
   def self.error_trap_pop_ignored
-    __return_value = LibGdk.error_trap_pop_ignored
-    __return_value
+    LibGdk.error_trap_pop_ignored
+    nil
   end
 
   def self.error_trap_push
-    __return_value = LibGdk.error_trap_push
-    __return_value
+    LibGdk.error_trap_push
+    nil
   end
 
   def self.event_get
@@ -175,8 +175,8 @@ module Gdk
   end
 
   def self.event_handler_set(func, data, notify)
-    __return_value = LibGdk.event_handler_set(func, data ? data : nil, notify)
-    __return_value
+    LibGdk.event_handler_set(func, data ? data : nil, notify)
+    nil
   end
 
   def self.event_peek
@@ -185,8 +185,8 @@ module Gdk
   end
 
   def self.event_request_motions(event)
-    __return_value = LibGdk.event_request_motions(event.to_unsafe.as(LibGdk::EventMotion*))
-    __return_value
+    LibGdk.event_request_motions(event.to_unsafe.as(LibGdk::EventMotion*))
+    nil
   end
 
   def self.events_get_angle(event1, event2, angle)
@@ -210,8 +210,8 @@ module Gdk
   end
 
   def self.flush
-    __return_value = LibGdk.flush
-    __return_value
+    LibGdk.flush
+    nil
   end
 
   def self.default_root_window
@@ -245,8 +245,8 @@ module Gdk
   end
 
   def self.init(argc, argv)
-    __return_value = LibGdk.init(argc, argv)
-    __return_value
+    LibGdk.init(argc, argv)
+    nil
   end
 
   def self.init_check(argc, argv)
@@ -260,13 +260,13 @@ module Gdk
   end
 
   def self.keyboard_ungrab(time)
-    __return_value = LibGdk.keyboard_ungrab(UInt32.new(time))
-    __return_value
+    LibGdk.keyboard_ungrab(UInt32.new(time))
+    nil
   end
 
   def self.keyval_convert_case(symbol, lower, upper)
-    __return_value = LibGdk.keyval_convert_case(UInt32.new(symbol), lower, upper)
-    __return_value
+    LibGdk.keyval_convert_case(UInt32.new(symbol), lower, upper)
+    nil
   end
 
   def self.keyval_from_name(keyval_name)
@@ -310,13 +310,13 @@ module Gdk
   end
 
   def self.notify_startup_complete
-    __return_value = LibGdk.notify_startup_complete
-    __return_value
+    LibGdk.notify_startup_complete
+    nil
   end
 
   def self.notify_startup_complete_with_id(startup_id)
-    __return_value = LibGdk.notify_startup_complete_with_id(startup_id.to_unsafe)
-    __return_value
+    LibGdk.notify_startup_complete_with_id(startup_id.to_unsafe)
+    nil
   end
 
   def self.offscreen_window_get_embedder(window)
@@ -330,8 +330,8 @@ module Gdk
   end
 
   def self.offscreen_window_set_embedder(window, embedder)
-    __return_value = LibGdk.offscreen_window_set_embedder(window.to_unsafe.as(LibGdk::Window*), embedder.to_unsafe.as(LibGdk::Window*))
-    __return_value
+    LibGdk.offscreen_window_set_embedder(window.to_unsafe.as(LibGdk::Window*), embedder.to_unsafe.as(LibGdk::Window*))
+    nil
   end
 
   def self.pango_context_get
@@ -350,8 +350,8 @@ module Gdk
   end
 
   def self.parse_args(argc, argv)
-    __return_value = LibGdk.parse_args(argc, argv)
-    __return_value
+    LibGdk.parse_args(argc, argv)
+    nil
   end
 
   def self.pixbuf_get_from_surface(surface, src_x, src_y, width, height)
@@ -375,18 +375,18 @@ module Gdk
   end
 
   def self.pointer_ungrab(time)
-    __return_value = LibGdk.pointer_ungrab(UInt32.new(time))
-    __return_value
+    LibGdk.pointer_ungrab(UInt32.new(time))
+    nil
   end
 
   def self.pre_parse_libgtk_only
-    __return_value = LibGdk.pre_parse_libgtk_only
-    __return_value
+    LibGdk.pre_parse_libgtk_only
+    nil
   end
 
   def self.property_delete(window, property)
-    __return_value = LibGdk.property_delete(window.to_unsafe.as(LibGdk::Window*), property.to_unsafe.as(LibGdk::Atom*))
-    __return_value
+    LibGdk.property_delete(window.to_unsafe.as(LibGdk::Window*), property.to_unsafe.as(LibGdk::Atom*))
+    nil
   end
 
   def self.property_get(window, property, type, offset, length, pdelete, actual_property_type, actual_format, actual_length, data)
@@ -395,18 +395,18 @@ module Gdk
   end
 
   def self.query_depths(depths, count)
-    __return_value = LibGdk.query_depths(depths, count)
-    __return_value
+    LibGdk.query_depths(depths, count)
+    nil
   end
 
   def self.query_visual_types(visual_types, count)
-    __return_value = LibGdk.query_visual_types(visual_types, count)
-    __return_value
+    LibGdk.query_visual_types(visual_types, count)
+    nil
   end
 
   def self.selection_convert(requestor, selection, target, time)
-    __return_value = LibGdk.selection_convert(requestor.to_unsafe.as(LibGdk::Window*), selection.to_unsafe.as(LibGdk::Atom*), target.to_unsafe.as(LibGdk::Atom*), UInt32.new(time))
-    __return_value
+    LibGdk.selection_convert(requestor.to_unsafe.as(LibGdk::Window*), selection.to_unsafe.as(LibGdk::Atom*), target.to_unsafe.as(LibGdk::Atom*), UInt32.new(time))
+    nil
   end
 
   def self.selection_owner_get(selection)
@@ -430,33 +430,33 @@ module Gdk
   end
 
   def self.selection_send_notify(requestor, selection, target, property, time)
-    __return_value = LibGdk.selection_send_notify(requestor.to_unsafe.as(LibGdk::Window*), selection.to_unsafe.as(LibGdk::Atom*), target.to_unsafe.as(LibGdk::Atom*), property.to_unsafe.as(LibGdk::Atom*), UInt32.new(time))
-    __return_value
+    LibGdk.selection_send_notify(requestor.to_unsafe.as(LibGdk::Window*), selection.to_unsafe.as(LibGdk::Atom*), target.to_unsafe.as(LibGdk::Atom*), property.to_unsafe.as(LibGdk::Atom*), UInt32.new(time))
+    nil
   end
 
   def self.selection_send_notify_for_display(display, requestor, selection, target, property, time)
-    __return_value = LibGdk.selection_send_notify_for_display(display.to_unsafe.as(LibGdk::Display*), requestor.to_unsafe.as(LibGdk::Window*), selection.to_unsafe.as(LibGdk::Atom*), target.to_unsafe.as(LibGdk::Atom*), property.to_unsafe.as(LibGdk::Atom*), UInt32.new(time))
-    __return_value
+    LibGdk.selection_send_notify_for_display(display.to_unsafe.as(LibGdk::Display*), requestor.to_unsafe.as(LibGdk::Window*), selection.to_unsafe.as(LibGdk::Atom*), target.to_unsafe.as(LibGdk::Atom*), property.to_unsafe.as(LibGdk::Atom*), UInt32.new(time))
+    nil
   end
 
   def self.set_allowed_backends(backends)
-    __return_value = LibGdk.set_allowed_backends(backends.to_unsafe)
-    __return_value
+    LibGdk.set_allowed_backends(backends.to_unsafe)
+    nil
   end
 
   def self.set_double_click_time(msec)
-    __return_value = LibGdk.set_double_click_time(UInt32.new(msec))
-    __return_value
+    LibGdk.set_double_click_time(UInt32.new(msec))
+    nil
   end
 
   def self.set_program_class(program_class)
-    __return_value = LibGdk.set_program_class(program_class.to_unsafe)
-    __return_value
+    LibGdk.set_program_class(program_class.to_unsafe)
+    nil
   end
 
   def self.set_show_events(show_events)
-    __return_value = LibGdk.set_show_events(show_events)
-    __return_value
+    LibGdk.set_show_events(show_events)
+    nil
   end
 
   def self.setting_get(name, value)
@@ -465,13 +465,13 @@ module Gdk
   end
 
   def self.synthesize_window_state(window, unset_flags : Gdk::WindowState, set_flags : Gdk::WindowState)
-    __return_value = LibGdk.synthesize_window_state(window.to_unsafe.as(LibGdk::Window*), unset_flags, set_flags)
-    __return_value
+    LibGdk.synthesize_window_state(window.to_unsafe.as(LibGdk::Window*), unset_flags, set_flags)
+    nil
   end
 
   def self.test_render_sync(window)
-    __return_value = LibGdk.test_render_sync(window.to_unsafe.as(LibGdk::Window*))
-    __return_value
+    LibGdk.test_render_sync(window.to_unsafe.as(LibGdk::Window*))
+    nil
   end
 
   def self.test_simulate_button(window, x, y, button, modifiers : Gdk::ModifierType, button_pressrelease : Gdk::EventType)
@@ -505,18 +505,18 @@ module Gdk
   end
 
   def self.threads_enter
-    __return_value = LibGdk.threads_enter
-    __return_value
+    LibGdk.threads_enter
+    nil
   end
 
   def self.threads_init
-    __return_value = LibGdk.threads_init
-    __return_value
+    LibGdk.threads_init
+    nil
   end
 
   def self.threads_leave
-    __return_value = LibGdk.threads_leave
-    __return_value
+    LibGdk.threads_leave
+    nil
   end
 
   def self.unicode_to_keyval(wc)

@@ -9,13 +9,13 @@ module Gdk
     end
 
     def begin_updating
-      __return_value = LibGdk.frame_clock_begin_updating(to_unsafe.as(LibGdk::FrameClock*))
-      __return_value
+      LibGdk.frame_clock_begin_updating(to_unsafe.as(LibGdk::FrameClock*))
+      nil
     end
 
     def end_updating
-      __return_value = LibGdk.frame_clock_end_updating(to_unsafe.as(LibGdk::FrameClock*))
-      __return_value
+      LibGdk.frame_clock_end_updating(to_unsafe.as(LibGdk::FrameClock*))
+      nil
     end
 
     def current_timings
@@ -39,8 +39,8 @@ module Gdk
     end
 
     def refresh_info(base_time, refresh_interval_return, presentation_time_return)
-      __return_value = LibGdk.frame_clock_get_refresh_info(to_unsafe.as(LibGdk::FrameClock*), Int64.new(base_time), refresh_interval_return, presentation_time_return)
-      __return_value
+      LibGdk.frame_clock_get_refresh_info(to_unsafe.as(LibGdk::FrameClock*), Int64.new(base_time), refresh_interval_return, presentation_time_return)
+      nil
     end
 
     def timings(frame_counter)
@@ -49,8 +49,8 @@ module Gdk
     end
 
     def request_phase(phase : Gdk::FrameClockPhase)
-      __return_value = LibGdk.frame_clock_request_phase(to_unsafe.as(LibGdk::FrameClock*), phase)
-      __return_value
+      LibGdk.frame_clock_request_phase(to_unsafe.as(LibGdk::FrameClock*), phase)
+      nil
     end
 
     alias AfterPaintSignal = FrameClock ->

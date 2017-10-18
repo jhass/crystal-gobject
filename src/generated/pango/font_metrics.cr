@@ -66,8 +66,8 @@ module Pango
     end
 
     def unref
-      __return_value = LibPango.font_metrics_unref(to_unsafe.as(LibPango::FontMetrics*))
-      __return_value
+      LibPango.font_metrics_unref(to_unsafe.as(LibPango::FontMetrics*))
+      nil
     end
 
     def ref_count

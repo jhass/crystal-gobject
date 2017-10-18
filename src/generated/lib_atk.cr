@@ -563,11 +563,11 @@ lib LibAtk
   ##    Constants
   ###########################################
 
-  BINARY_AGE = 22410 # : Int32
+  BINARY_AGE = 22610 # : Int32
   INTERFACE_AGE = 1 # : Int32
   MAJOR_VERSION = 2 # : Int32
   MICRO_VERSION = 0 # : Int32
-  MINOR_VERSION = 24 # : Int32
+  MINOR_VERSION = 26 # : Int32
   VERSION_MIN_REQUIRED = 2 # : Int32
 
   ###########################################
@@ -618,7 +618,11 @@ lib LibAtk
     DESCRIBED_BY = 14
     DESCRIPTION_FOR = 15
     NODE_PARENT_OF = 16
-    LAST_DEFINED = 17
+    DETAILS = 17
+    DETAILS_FOR = 18
+    ERROR_MESSAGE = 19
+    ERROR_FOR = 20
+    LAST_DEFINED = 21
   end
   fun relation_type_for_name = atk_relation_type_for_name(name : UInt8*) : LibAtk::RelationType
   fun relation_type_get_name = atk_relation_type_get_name(type : LibAtk::RelationType) : UInt8*
@@ -748,7 +752,8 @@ lib LibAtk
     MATH_ROOT = 119
     SUBSCRIPT = 120
     SUPERSCRIPT = 121
-    LAST_DEFINED = 122
+    FOOTNOTE = 122
+    LAST_DEFINED = 123
   end
   fun role_for_name = atk_role_for_name(name : UInt8*) : LibAtk::Role
   fun role_get_localized_name = atk_role_get_localized_name(role : LibAtk::Role) : UInt8*

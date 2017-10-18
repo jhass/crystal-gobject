@@ -36,7 +36,8 @@ lib LibGObject
     # Virtual function notify
     # Virtual function set_property
   end
-  fun object_new = g_object_newv(object_type : UInt64, n_parameters : UInt32, parameters : LibGObject::Parameter*) : LibGObject::Object*
+  fun object_new = g_object_new_with_properties(object_type : UInt64, n_properties : UInt32, names : UInt8**, values : LibGObject::Value*) : LibGObject::Object*
+  fun object_newv = g_object_newv(object_type : UInt64, n_parameters : UInt32, parameters : LibGObject::Parameter*) : LibGObject::Object*
   fun object_compat_control = g_object_compat_control(what : UInt64, data : Void*) : UInt64
   fun object_interface_find_property = g_object_interface_find_property(g_iface : LibGObject::TypeInterface*, property_name : UInt8*) : LibGObject::ParamSpec*
   fun object_interface_install_property = g_object_interface_install_property(g_iface : LibGObject::TypeInterface*, pspec : LibGObject::ParamSpec*) : Void
@@ -48,6 +49,7 @@ lib LibGObject
   fun object_get_data = g_object_get_data(this : Object*, key : UInt8*) : Void*
   fun object_get_property = g_object_get_property(this : Object*, property_name : UInt8*, value : LibGObject::Value*) : Void
   fun object_get_qdata = g_object_get_qdata(this : Object*, quark : UInt32) : Void*
+  fun object_getv = g_object_getv(this : Object*, n_properties : UInt32, names : UInt8**, values : LibGObject::Value*) : Void
   fun object_is_floating = g_object_is_floating(this : Object*) : Bool
   fun object_notify = g_object_notify(this : Object*, property_name : UInt8*) : Void
   fun object_notify_by_pspec = g_object_notify_by_pspec(this : Object*, pspec : LibGObject::ParamSpec*) : Void
@@ -731,11 +733,13 @@ lib LibGObject
   fun enum_get_value_by_name = g_enum_get_value_by_name(enum_class : LibGObject::EnumClass*, name : UInt8*) : LibGObject::EnumValue*
   fun enum_get_value_by_nick = g_enum_get_value_by_nick(enum_class : LibGObject::EnumClass*, nick : UInt8*) : LibGObject::EnumValue*
   fun enum_register_static = g_enum_register_static(name : UInt8*, const_static_values : LibGObject::EnumValue*) : UInt64
+  fun enum_to_string = g_enum_to_string(g_enum_type : UInt64, value : Int32) : UInt8*
   fun flags_complete_type_info = g_flags_complete_type_info(g_flags_type : UInt64, info : LibGObject::TypeInfo*, const_values : LibGObject::FlagsValue*) : Void
   fun flags_get_first_value = g_flags_get_first_value(flags_class : LibGObject::FlagsClass*, value : UInt32) : LibGObject::FlagsValue*
   fun flags_get_value_by_name = g_flags_get_value_by_name(flags_class : LibGObject::FlagsClass*, name : UInt8*) : LibGObject::FlagsValue*
   fun flags_get_value_by_nick = g_flags_get_value_by_nick(flags_class : LibGObject::FlagsClass*, nick : UInt8*) : LibGObject::FlagsValue*
   fun flags_register_static = g_flags_register_static(name : UInt8*, const_static_values : LibGObject::FlagsValue*) : UInt64
+  fun flags_to_string = g_flags_to_string(flags_type : UInt64, value : UInt32) : UInt8*
   fun gtype_get_type = g_gtype_get_type() : UInt64
   fun param_spec_boolean = g_param_spec_boolean(name : UInt8*, nick : UInt8*, blurb : UInt8*, default_value : Bool, flags : LibGObject::ParamFlags) : LibGObject::ParamSpec*
   fun param_spec_boxed = g_param_spec_boxed(name : UInt8*, nick : UInt8*, blurb : UInt8*, boxed_type : UInt64, flags : LibGObject::ParamFlags) : LibGObject::ParamSpec*

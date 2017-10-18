@@ -28,8 +28,8 @@ module Gst
     end
 
     def suggest(probability, caps)
-      __return_value = LibGst.type_find_suggest(to_unsafe.as(LibGst::TypeFind*), UInt32.new(probability), caps.to_unsafe.as(LibGst::Caps*))
-      __return_value
+      LibGst.type_find_suggest(to_unsafe.as(LibGst::TypeFind*), UInt32.new(probability), caps.to_unsafe.as(LibGst::Caps*))
+      nil
     end
 
     def self.register(plugin, name, rank, func, extensions, possible_caps, data, data_notify)

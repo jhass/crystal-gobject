@@ -21,8 +21,8 @@ module Atk
     end
 
     def free
-      __return_value = LibAtk.range_free(to_unsafe.as(LibAtk::Range*))
-      __return_value
+      LibAtk.range_free(to_unsafe.as(LibAtk::Range*))
+      nil
     end
 
     def description

@@ -372,8 +372,8 @@ module Gtk
     end
 
     def changed(size_changed)
-      __return_value = LibGtk.text_tag_changed(to_unsafe.as(LibGtk::TextTag*), size_changed)
-      __return_value
+      LibGtk.text_tag_changed(to_unsafe.as(LibGtk::TextTag*), size_changed)
+      nil
     end
 
     def event(event_object, event, iter)
@@ -387,8 +387,8 @@ module Gtk
     end
 
     def priority=(priority)
-      __return_value = LibGtk.text_tag_set_priority(to_unsafe.as(LibGtk::TextTag*), Int32.new(priority))
-      __return_value
+      LibGtk.text_tag_set_priority(to_unsafe.as(LibGtk::TextTag*), Int32.new(priority))
+      nil
     end
 
     alias EventSignal = TextTag, GObject::Object, Gdk::Event, Gtk::TextIter -> Bool

@@ -9,8 +9,8 @@ module Pango
     end
 
     def changed
-      __return_value = LibPango.font_map_changed(to_unsafe.as(LibPango::FontMap*))
-      __return_value
+      LibPango.font_map_changed(to_unsafe.as(LibPango::FontMap*))
+      nil
     end
 
     def create_context
@@ -29,8 +29,8 @@ module Pango
     end
 
     def list_families(families, n_families)
-      __return_value = LibPango.font_map_list_families(to_unsafe.as(LibPango::FontMap*), families, n_families)
-      __return_value
+      LibPango.font_map_list_families(to_unsafe.as(LibPango::FontMap*), families, n_families)
+      nil
     end
 
     def load_font(context, desc)

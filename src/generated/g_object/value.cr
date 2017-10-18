@@ -18,8 +18,8 @@ module GObject
     end
 
     def copy(dest_value)
-      __return_value = LibGObject.value_copy(to_unsafe.as(LibGObject::Value*), dest_value.to_unsafe.as(LibGObject::Value*))
-      __return_value
+      LibGObject.value_copy(to_unsafe.as(LibGObject::Value*), dest_value.to_unsafe.as(LibGObject::Value*))
+      nil
     end
 
     def dup_object
@@ -48,8 +48,8 @@ module GObject
     end
 
     def boxed
-      __return_value = LibGObject.value_get_boxed(to_unsafe.as(LibGObject::Value*))
-      __return_value if __return_value
+      LibGObject.value_get_boxed(to_unsafe.as(LibGObject::Value*))
+      nil
     end
 
     def char
@@ -108,8 +108,8 @@ module GObject
     end
 
     def pointer
-      __return_value = LibGObject.value_get_pointer(to_unsafe.as(LibGObject::Value*))
-      __return_value if __return_value
+      LibGObject.value_get_pointer(to_unsafe.as(LibGObject::Value*))
+      nil
     end
 
     def schar
@@ -153,13 +153,13 @@ module GObject
     end
 
     def init_from_instance(instance)
-      __return_value = LibGObject.value_init_from_instance(to_unsafe.as(LibGObject::Value*), instance.to_unsafe.as(LibGObject::TypeInstance*))
-      __return_value
+      LibGObject.value_init_from_instance(to_unsafe.as(LibGObject::Value*), instance.to_unsafe.as(LibGObject::TypeInstance*))
+      nil
     end
 
     def peek_pointer
-      __return_value = LibGObject.value_peek_pointer(to_unsafe.as(LibGObject::Value*))
-      __return_value if __return_value
+      LibGObject.value_peek_pointer(to_unsafe.as(LibGObject::Value*))
+      nil
     end
 
     def reset
@@ -168,148 +168,148 @@ module GObject
     end
 
     def boolean=(v_boolean)
-      __return_value = LibGObject.value_set_boolean(to_unsafe.as(LibGObject::Value*), v_boolean)
-      __return_value
+      LibGObject.value_set_boolean(to_unsafe.as(LibGObject::Value*), v_boolean)
+      nil
     end
 
     def boxed=(v_boxed)
-      __return_value = LibGObject.value_set_boxed(to_unsafe.as(LibGObject::Value*), v_boxed ? v_boxed : nil)
-      __return_value
+      LibGObject.value_set_boxed(to_unsafe.as(LibGObject::Value*), v_boxed ? v_boxed : nil)
+      nil
     end
 
     def boxed_take_ownership=(v_boxed)
-      __return_value = LibGObject.value_set_boxed_take_ownership(to_unsafe.as(LibGObject::Value*), v_boxed ? v_boxed : nil)
-      __return_value
+      LibGObject.value_set_boxed_take_ownership(to_unsafe.as(LibGObject::Value*), v_boxed ? v_boxed : nil)
+      nil
     end
 
     def char=(v_char)
-      __return_value = LibGObject.value_set_char(to_unsafe.as(LibGObject::Value*), Int8.new(v_char))
-      __return_value
+      LibGObject.value_set_char(to_unsafe.as(LibGObject::Value*), Int8.new(v_char))
+      nil
     end
 
     def double=(v_double)
-      __return_value = LibGObject.value_set_double(to_unsafe.as(LibGObject::Value*), Float64.new(v_double))
-      __return_value
+      LibGObject.value_set_double(to_unsafe.as(LibGObject::Value*), Float64.new(v_double))
+      nil
     end
 
     def enum=(v_enum)
-      __return_value = LibGObject.value_set_enum(to_unsafe.as(LibGObject::Value*), Int32.new(v_enum))
-      __return_value
+      LibGObject.value_set_enum(to_unsafe.as(LibGObject::Value*), Int32.new(v_enum))
+      nil
     end
 
     def flags=(v_flags)
-      __return_value = LibGObject.value_set_flags(to_unsafe.as(LibGObject::Value*), UInt32.new(v_flags))
-      __return_value
+      LibGObject.value_set_flags(to_unsafe.as(LibGObject::Value*), UInt32.new(v_flags))
+      nil
     end
 
     def float=(v_float)
-      __return_value = LibGObject.value_set_float(to_unsafe.as(LibGObject::Value*), Float32.new(v_float))
-      __return_value
+      LibGObject.value_set_float(to_unsafe.as(LibGObject::Value*), Float32.new(v_float))
+      nil
     end
 
     def gtype=(v_gtype)
-      __return_value = LibGObject.value_set_gtype(to_unsafe.as(LibGObject::Value*), UInt64.new(v_gtype))
-      __return_value
+      LibGObject.value_set_gtype(to_unsafe.as(LibGObject::Value*), UInt64.new(v_gtype))
+      nil
     end
 
     def instance=(instance)
-      __return_value = LibGObject.value_set_instance(to_unsafe.as(LibGObject::Value*), instance ? instance : nil)
-      __return_value
+      LibGObject.value_set_instance(to_unsafe.as(LibGObject::Value*), instance ? instance : nil)
+      nil
     end
 
     def int=(v_int)
-      __return_value = LibGObject.value_set_int(to_unsafe.as(LibGObject::Value*), Int32.new(v_int))
-      __return_value
+      LibGObject.value_set_int(to_unsafe.as(LibGObject::Value*), Int32.new(v_int))
+      nil
     end
 
     def int64=(v_int64)
-      __return_value = LibGObject.value_set_int64(to_unsafe.as(LibGObject::Value*), Int64.new(v_int64))
-      __return_value
+      LibGObject.value_set_int64(to_unsafe.as(LibGObject::Value*), Int64.new(v_int64))
+      nil
     end
 
     def long=(v_long)
-      __return_value = LibGObject.value_set_long(to_unsafe.as(LibGObject::Value*), Int64.new(v_long))
-      __return_value
+      LibGObject.value_set_long(to_unsafe.as(LibGObject::Value*), Int64.new(v_long))
+      nil
     end
 
     def object=(v_object)
-      __return_value = LibGObject.value_set_object(to_unsafe.as(LibGObject::Value*), v_object ? v_object.to_unsafe.as(LibGObject::Object*) : nil)
-      __return_value
+      LibGObject.value_set_object(to_unsafe.as(LibGObject::Value*), v_object ? v_object.to_unsafe.as(LibGObject::Object*) : nil)
+      nil
     end
 
     def param=(param)
-      __return_value = LibGObject.value_set_param(to_unsafe.as(LibGObject::Value*), param ? param.to_unsafe.as(LibGObject::ParamSpec*) : nil)
-      __return_value
+      LibGObject.value_set_param(to_unsafe.as(LibGObject::Value*), param ? param.to_unsafe.as(LibGObject::ParamSpec*) : nil)
+      nil
     end
 
     def pointer=(v_pointer)
-      __return_value = LibGObject.value_set_pointer(to_unsafe.as(LibGObject::Value*), v_pointer ? v_pointer : nil)
-      __return_value
+      LibGObject.value_set_pointer(to_unsafe.as(LibGObject::Value*), v_pointer ? v_pointer : nil)
+      nil
     end
 
     def schar=(v_char)
-      __return_value = LibGObject.value_set_schar(to_unsafe.as(LibGObject::Value*), Int8.new(v_char))
-      __return_value
+      LibGObject.value_set_schar(to_unsafe.as(LibGObject::Value*), Int8.new(v_char))
+      nil
     end
 
     def static_boxed=(v_boxed)
-      __return_value = LibGObject.value_set_static_boxed(to_unsafe.as(LibGObject::Value*), v_boxed ? v_boxed : nil)
-      __return_value
+      LibGObject.value_set_static_boxed(to_unsafe.as(LibGObject::Value*), v_boxed ? v_boxed : nil)
+      nil
     end
 
     def static_string=(v_string)
-      __return_value = LibGObject.value_set_static_string(to_unsafe.as(LibGObject::Value*), v_string ? v_string.to_unsafe : nil)
-      __return_value
+      LibGObject.value_set_static_string(to_unsafe.as(LibGObject::Value*), v_string ? v_string.to_unsafe : nil)
+      nil
     end
 
     def string=(v_string)
-      __return_value = LibGObject.value_set_string(to_unsafe.as(LibGObject::Value*), v_string ? v_string.to_unsafe : nil)
-      __return_value
+      LibGObject.value_set_string(to_unsafe.as(LibGObject::Value*), v_string ? v_string.to_unsafe : nil)
+      nil
     end
 
     def string_take_ownership=(v_string)
-      __return_value = LibGObject.value_set_string_take_ownership(to_unsafe.as(LibGObject::Value*), v_string ? v_string.to_unsafe : nil)
-      __return_value
+      LibGObject.value_set_string_take_ownership(to_unsafe.as(LibGObject::Value*), v_string ? v_string.to_unsafe : nil)
+      nil
     end
 
     def uchar=(v_uchar)
-      __return_value = LibGObject.value_set_uchar(to_unsafe.as(LibGObject::Value*), UInt8.new(v_uchar))
-      __return_value
+      LibGObject.value_set_uchar(to_unsafe.as(LibGObject::Value*), UInt8.new(v_uchar))
+      nil
     end
 
     def uint=(v_uint)
-      __return_value = LibGObject.value_set_uint(to_unsafe.as(LibGObject::Value*), UInt32.new(v_uint))
-      __return_value
+      LibGObject.value_set_uint(to_unsafe.as(LibGObject::Value*), UInt32.new(v_uint))
+      nil
     end
 
     def uint64=(v_uint64)
-      __return_value = LibGObject.value_set_uint64(to_unsafe.as(LibGObject::Value*), UInt64.new(v_uint64))
-      __return_value
+      LibGObject.value_set_uint64(to_unsafe.as(LibGObject::Value*), UInt64.new(v_uint64))
+      nil
     end
 
     def ulong=(v_ulong)
-      __return_value = LibGObject.value_set_ulong(to_unsafe.as(LibGObject::Value*), UInt64.new(v_ulong))
-      __return_value
+      LibGObject.value_set_ulong(to_unsafe.as(LibGObject::Value*), UInt64.new(v_ulong))
+      nil
     end
 
     def variant=(variant)
-      __return_value = LibGObject.value_set_variant(to_unsafe.as(LibGObject::Value*), variant ? variant.to_unsafe.as(LibGLib::Variant*) : nil)
-      __return_value
+      LibGObject.value_set_variant(to_unsafe.as(LibGObject::Value*), variant ? variant.to_unsafe.as(LibGLib::Variant*) : nil)
+      nil
     end
 
     def take_boxed(v_boxed)
-      __return_value = LibGObject.value_take_boxed(to_unsafe.as(LibGObject::Value*), v_boxed ? v_boxed : nil)
-      __return_value
+      LibGObject.value_take_boxed(to_unsafe.as(LibGObject::Value*), v_boxed ? v_boxed : nil)
+      nil
     end
 
     def take_string(v_string)
-      __return_value = LibGObject.value_take_string(to_unsafe.as(LibGObject::Value*), v_string ? v_string.to_unsafe : nil)
-      __return_value
+      LibGObject.value_take_string(to_unsafe.as(LibGObject::Value*), v_string ? v_string.to_unsafe : nil)
+      nil
     end
 
     def take_variant(variant)
-      __return_value = LibGObject.value_take_variant(to_unsafe.as(LibGObject::Value*), variant ? variant.to_unsafe.as(LibGLib::Variant*) : nil)
-      __return_value
+      LibGObject.value_take_variant(to_unsafe.as(LibGObject::Value*), variant ? variant.to_unsafe.as(LibGLib::Variant*) : nil)
+      nil
     end
 
     def transform(dest_value)
@@ -318,8 +318,8 @@ module GObject
     end
 
     def unset
-      __return_value = LibGObject.value_unset(to_unsafe.as(LibGObject::Value*))
-      __return_value
+      LibGObject.value_unset(to_unsafe.as(LibGObject::Value*))
+      nil
     end
 
     def self.type_compatible(src_type, dest_type)

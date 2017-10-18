@@ -1,8 +1,8 @@
 module Gtk
   module PrintOperationPreview
     def end_preview
-      __return_value = LibGtk.print_operation_preview_end_preview(to_unsafe.as(LibGtk::PrintOperationPreview*))
-      __return_value
+      LibGtk.print_operation_preview_end_preview(to_unsafe.as(LibGtk::PrintOperationPreview*))
+      nil
     end
 
     def selected?(page_nr)
@@ -11,8 +11,8 @@ module Gtk
     end
 
     def render_page(page_nr)
-      __return_value = LibGtk.print_operation_preview_render_page(to_unsafe.as(LibGtk::PrintOperationPreview*), Int32.new(page_nr))
-      __return_value
+      LibGtk.print_operation_preview_render_page(to_unsafe.as(LibGtk::PrintOperationPreview*), Int32.new(page_nr))
+      nil
     end
 
     alias GotPageSizeSignal = PrintOperationPreview, Gtk::PrintContext, Gtk::PageSetup ->

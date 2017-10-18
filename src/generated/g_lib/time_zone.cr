@@ -56,8 +56,8 @@ module GLib
     end
 
     def unref
-      __return_value = LibGLib.time_zone_unref(to_unsafe.as(LibGLib::TimeZone*))
-      __return_value
+      LibGLib.time_zone_unref(to_unsafe.as(LibGLib::TimeZone*))
+      nil
     end
 
   end

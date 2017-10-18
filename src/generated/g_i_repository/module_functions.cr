@@ -50,8 +50,8 @@ module GIRepository
   end
 
   def self.arg_info_load_type(info, type)
-    __return_value = LibGIRepository.arg_info_load_type(info.to_unsafe.as(LibGIRepository::BaseInfo*), type)
-    __return_value
+    LibGIRepository.arg_info_load_type(info.to_unsafe.as(LibGIRepository::BaseInfo*), type)
+    nil
   end
 
   def self.arg_info_may_be_null(info)
@@ -112,13 +112,13 @@ module GIRepository
   end
 
   def self.callable_info_load_arg(info, n, arg)
-    __return_value = LibGIRepository.callable_info_load_arg(info.to_unsafe.as(LibGIRepository::BaseInfo*), Int32.new(n), arg)
-    __return_value
+    LibGIRepository.callable_info_load_arg(info.to_unsafe.as(LibGIRepository::BaseInfo*), Int32.new(n), arg)
+    nil
   end
 
   def self.callable_info_load_return_type(info, type)
-    __return_value = LibGIRepository.callable_info_load_return_type(info.to_unsafe.as(LibGIRepository::BaseInfo*), type)
-    __return_value
+    LibGIRepository.callable_info_load_return_type(info.to_unsafe.as(LibGIRepository::BaseInfo*), type)
+    nil
   end
 
   def self.callable_info_may_return_null(info)
@@ -648,9 +648,9 @@ module GIRepository
 
   def self.vfunc_info_get_address(info, implementor_gtype)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGIRepository.vfunc_info_get_address(info.to_unsafe.as(LibGIRepository::BaseInfo*), UInt64.new(implementor_gtype), pointerof(__error))
+    LibGIRepository.vfunc_info_get_address(info.to_unsafe.as(LibGIRepository::BaseInfo*), UInt64.new(implementor_gtype), pointerof(__error))
     GLib::Error.assert __error
-    __return_value if __return_value
+    nil
   end
 
   def self.vfunc_info_get_flags(info)

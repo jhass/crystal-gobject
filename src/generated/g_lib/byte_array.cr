@@ -39,8 +39,8 @@ module GLib
     end
 
     def self.unref(array)
-      __return_value = LibGLib.byte_array_unref(array)
-      __return_value
+      LibGLib.byte_array_unref(array)
+      nil
     end
 
     def data

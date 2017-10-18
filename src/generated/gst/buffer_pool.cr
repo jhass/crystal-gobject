@@ -16,8 +16,8 @@ module Gst
     end
 
     def self.config_add_option(config, option)
-      __return_value = LibGst.buffer_pool_config_add_option(config.to_unsafe.as(LibGst::Structure*), option.to_unsafe)
-      __return_value
+      LibGst.buffer_pool_config_add_option(config.to_unsafe.as(LibGst::Structure*), option.to_unsafe)
+      nil
     end
 
     def self.config_get_allocator(config, allocator, params)
@@ -46,13 +46,13 @@ module Gst
     end
 
     def self.config_set_allocator(config, allocator, params)
-      __return_value = LibGst.buffer_pool_config_set_allocator(config.to_unsafe.as(LibGst::Structure*), allocator ? allocator.to_unsafe.as(LibGst::Allocator*) : nil, params ? params.to_unsafe.as(LibGst::AllocationParams*) : nil)
-      __return_value
+      LibGst.buffer_pool_config_set_allocator(config.to_unsafe.as(LibGst::Structure*), allocator ? allocator.to_unsafe.as(LibGst::Allocator*) : nil, params ? params.to_unsafe.as(LibGst::AllocationParams*) : nil)
+      nil
     end
 
     def self.config_set_params(config, caps, size, min_buffers, max_buffers)
-      __return_value = LibGst.buffer_pool_config_set_params(config.to_unsafe.as(LibGst::Structure*), caps.to_unsafe.as(LibGst::Caps*), UInt32.new(size), UInt32.new(min_buffers), UInt32.new(max_buffers))
-      __return_value
+      LibGst.buffer_pool_config_set_params(config.to_unsafe.as(LibGst::Structure*), caps.to_unsafe.as(LibGst::Caps*), UInt32.new(size), UInt32.new(min_buffers), UInt32.new(max_buffers))
+      nil
     end
 
     def self.config_validate_params(config, caps, size, min_buffers, max_buffers)
@@ -86,8 +86,8 @@ module Gst
     end
 
     def release_buffer(buffer)
-      __return_value = LibGst.buffer_pool_release_buffer(to_unsafe.as(LibGst::BufferPool*), buffer.to_unsafe.as(LibGst::Buffer*))
-      __return_value
+      LibGst.buffer_pool_release_buffer(to_unsafe.as(LibGst::BufferPool*), buffer.to_unsafe.as(LibGst::Buffer*))
+      nil
     end
 
     def active=(active)
@@ -101,8 +101,8 @@ module Gst
     end
 
     def flushing=(flushing)
-      __return_value = LibGst.buffer_pool_set_flushing(to_unsafe.as(LibGst::BufferPool*), flushing)
-      __return_value
+      LibGst.buffer_pool_set_flushing(to_unsafe.as(LibGst::BufferPool*), flushing)
+      nil
     end
 
   end

@@ -65,7 +65,7 @@ module Gtk
 
     def proxy_menu_item(menu_item_id)
       __return_value = LibGtk.tool_item_get_proxy_menu_item(to_unsafe.as(LibGtk::ToolItem*), menu_item_id.to_unsafe)
-      Gtk::Widget.new(__return_value)
+      Gtk::Widget.new(__return_value) if __return_value
     end
 
     def relief_style
@@ -109,8 +109,8 @@ module Gtk
     end
 
     def rebuild_menu
-      __return_value = LibGtk.tool_item_rebuild_menu(to_unsafe.as(LibGtk::ToolItem*))
-      __return_value
+      LibGtk.tool_item_rebuild_menu(to_unsafe.as(LibGtk::ToolItem*))
+      nil
     end
 
     def retrieve_proxy_menu_item
@@ -119,53 +119,53 @@ module Gtk
     end
 
     def expand=(expand)
-      __return_value = LibGtk.tool_item_set_expand(to_unsafe.as(LibGtk::ToolItem*), expand)
-      __return_value
+      LibGtk.tool_item_set_expand(to_unsafe.as(LibGtk::ToolItem*), expand)
+      nil
     end
 
     def homogeneous=(homogeneous)
-      __return_value = LibGtk.tool_item_set_homogeneous(to_unsafe.as(LibGtk::ToolItem*), homogeneous)
-      __return_value
+      LibGtk.tool_item_set_homogeneous(to_unsafe.as(LibGtk::ToolItem*), homogeneous)
+      nil
     end
 
     def is_important=(is_important)
-      __return_value = LibGtk.tool_item_set_is_important(to_unsafe.as(LibGtk::ToolItem*), is_important)
-      __return_value
+      LibGtk.tool_item_set_is_important(to_unsafe.as(LibGtk::ToolItem*), is_important)
+      nil
     end
 
     def set_proxy_menu_item(menu_item_id, menu_item)
-      __return_value = LibGtk.tool_item_set_proxy_menu_item(to_unsafe.as(LibGtk::ToolItem*), menu_item_id.to_unsafe, menu_item.to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      LibGtk.tool_item_set_proxy_menu_item(to_unsafe.as(LibGtk::ToolItem*), menu_item_id.to_unsafe, menu_item ? menu_item.to_unsafe.as(LibGtk::Widget*) : nil)
+      nil
     end
 
     def tooltip_markup=(markup)
-      __return_value = LibGtk.tool_item_set_tooltip_markup(to_unsafe.as(LibGtk::ToolItem*), markup.to_unsafe)
-      __return_value
+      LibGtk.tool_item_set_tooltip_markup(to_unsafe.as(LibGtk::ToolItem*), markup.to_unsafe)
+      nil
     end
 
     def tooltip_text=(text)
-      __return_value = LibGtk.tool_item_set_tooltip_text(to_unsafe.as(LibGtk::ToolItem*), text.to_unsafe)
-      __return_value
+      LibGtk.tool_item_set_tooltip_text(to_unsafe.as(LibGtk::ToolItem*), text.to_unsafe)
+      nil
     end
 
     def use_drag_window=(use_drag_window)
-      __return_value = LibGtk.tool_item_set_use_drag_window(to_unsafe.as(LibGtk::ToolItem*), use_drag_window)
-      __return_value
+      LibGtk.tool_item_set_use_drag_window(to_unsafe.as(LibGtk::ToolItem*), use_drag_window)
+      nil
     end
 
     def visible_horizontal=(visible_horizontal)
-      __return_value = LibGtk.tool_item_set_visible_horizontal(to_unsafe.as(LibGtk::ToolItem*), visible_horizontal)
-      __return_value
+      LibGtk.tool_item_set_visible_horizontal(to_unsafe.as(LibGtk::ToolItem*), visible_horizontal)
+      nil
     end
 
     def visible_vertical=(visible_vertical)
-      __return_value = LibGtk.tool_item_set_visible_vertical(to_unsafe.as(LibGtk::ToolItem*), visible_vertical)
-      __return_value
+      LibGtk.tool_item_set_visible_vertical(to_unsafe.as(LibGtk::ToolItem*), visible_vertical)
+      nil
     end
 
     def toolbar_reconfigured
-      __return_value = LibGtk.tool_item_toolbar_reconfigured(to_unsafe.as(LibGtk::ToolItem*))
-      __return_value
+      LibGtk.tool_item_toolbar_reconfigured(to_unsafe.as(LibGtk::ToolItem*))
+      nil
     end
 
     alias CreateMenuProxySignal = ToolItem -> Bool

@@ -116,8 +116,8 @@ module Gtk
     end
 
     def add_attribute(cell_renderer, attribute, column)
-      __return_value = LibGtk.tree_view_column_add_attribute(to_unsafe.as(LibGtk::TreeViewColumn*), cell_renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute.to_unsafe, Int32.new(column))
-      __return_value
+      LibGtk.tree_view_column_add_attribute(to_unsafe.as(LibGtk::TreeViewColumn*), cell_renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute.to_unsafe, Int32.new(column))
+      nil
     end
 
     def cell_get_position(cell_renderer, x_offset, width)
@@ -126,8 +126,8 @@ module Gtk
     end
 
     def cell_get_size(cell_area, x_offset, y_offset, width, height)
-      __return_value = LibGtk.tree_view_column_cell_get_size(to_unsafe.as(LibGtk::TreeViewColumn*), cell_area ? cell_area.to_unsafe.as(LibGdk::Rectangle*) : nil, x_offset, y_offset, width, height)
-      __return_value
+      LibGtk.tree_view_column_cell_get_size(to_unsafe.as(LibGtk::TreeViewColumn*), cell_area ? cell_area.to_unsafe.as(LibGdk::Rectangle*) : nil, x_offset, y_offset, width, height)
+      nil
     end
 
     def cell_is_visible
@@ -136,28 +136,28 @@ module Gtk
     end
 
     def cell_set_cell_data(tree_model, iter, is_expander, is_expanded)
-      __return_value = LibGtk.tree_view_column_cell_set_cell_data(to_unsafe.as(LibGtk::TreeViewColumn*), tree_model.to_unsafe.as(LibGtk::TreeModel*), iter.to_unsafe.as(LibGtk::TreeIter*), is_expander, is_expanded)
-      __return_value
+      LibGtk.tree_view_column_cell_set_cell_data(to_unsafe.as(LibGtk::TreeViewColumn*), tree_model.to_unsafe.as(LibGtk::TreeModel*), iter.to_unsafe.as(LibGtk::TreeIter*), is_expander, is_expanded)
+      nil
     end
 
     def clear
-      __return_value = LibGtk.tree_view_column_clear(to_unsafe.as(LibGtk::TreeViewColumn*))
-      __return_value
+      LibGtk.tree_view_column_clear(to_unsafe.as(LibGtk::TreeViewColumn*))
+      nil
     end
 
     def clear_attributes(cell_renderer)
-      __return_value = LibGtk.tree_view_column_clear_attributes(to_unsafe.as(LibGtk::TreeViewColumn*), cell_renderer.to_unsafe.as(LibGtk::CellRenderer*))
-      __return_value
+      LibGtk.tree_view_column_clear_attributes(to_unsafe.as(LibGtk::TreeViewColumn*), cell_renderer.to_unsafe.as(LibGtk::CellRenderer*))
+      nil
     end
 
     def clicked
-      __return_value = LibGtk.tree_view_column_clicked(to_unsafe.as(LibGtk::TreeViewColumn*))
-      __return_value
+      LibGtk.tree_view_column_clicked(to_unsafe.as(LibGtk::TreeViewColumn*))
+      nil
     end
 
     def focus_cell(cell)
-      __return_value = LibGtk.tree_view_column_focus_cell(to_unsafe.as(LibGtk::TreeViewColumn*), cell.to_unsafe.as(LibGtk::CellRenderer*))
-      __return_value
+      LibGtk.tree_view_column_focus_cell(to_unsafe.as(LibGtk::TreeViewColumn*), cell.to_unsafe.as(LibGtk::CellRenderer*))
+      nil
     end
 
     def alignment
@@ -261,103 +261,103 @@ module Gtk
     end
 
     def pack_end(cell, expand)
-      __return_value = LibGtk.tree_view_column_pack_end(to_unsafe.as(LibGtk::TreeViewColumn*), cell.to_unsafe.as(LibGtk::CellRenderer*), expand)
-      __return_value
+      LibGtk.tree_view_column_pack_end(to_unsafe.as(LibGtk::TreeViewColumn*), cell.to_unsafe.as(LibGtk::CellRenderer*), expand)
+      nil
     end
 
     def pack_start(cell, expand)
-      __return_value = LibGtk.tree_view_column_pack_start(to_unsafe.as(LibGtk::TreeViewColumn*), cell.to_unsafe.as(LibGtk::CellRenderer*), expand)
-      __return_value
+      LibGtk.tree_view_column_pack_start(to_unsafe.as(LibGtk::TreeViewColumn*), cell.to_unsafe.as(LibGtk::CellRenderer*), expand)
+      nil
     end
 
     def queue_resize
-      __return_value = LibGtk.tree_view_column_queue_resize(to_unsafe.as(LibGtk::TreeViewColumn*))
-      __return_value
+      LibGtk.tree_view_column_queue_resize(to_unsafe.as(LibGtk::TreeViewColumn*))
+      nil
     end
 
     def alignment=(xalign)
-      __return_value = LibGtk.tree_view_column_set_alignment(to_unsafe.as(LibGtk::TreeViewColumn*), Float32.new(xalign))
-      __return_value
+      LibGtk.tree_view_column_set_alignment(to_unsafe.as(LibGtk::TreeViewColumn*), Float32.new(xalign))
+      nil
     end
 
     def set_cell_data_func(cell_renderer, func, func_data, destroy)
-      __return_value = LibGtk.tree_view_column_set_cell_data_func(to_unsafe.as(LibGtk::TreeViewColumn*), cell_renderer.to_unsafe.as(LibGtk::CellRenderer*), func ? func : nil, func_data ? func_data : nil, destroy)
-      __return_value
+      LibGtk.tree_view_column_set_cell_data_func(to_unsafe.as(LibGtk::TreeViewColumn*), cell_renderer.to_unsafe.as(LibGtk::CellRenderer*), func ? func : nil, func_data ? func_data : nil, destroy)
+      nil
     end
 
     def clickable=(clickable)
-      __return_value = LibGtk.tree_view_column_set_clickable(to_unsafe.as(LibGtk::TreeViewColumn*), clickable)
-      __return_value
+      LibGtk.tree_view_column_set_clickable(to_unsafe.as(LibGtk::TreeViewColumn*), clickable)
+      nil
     end
 
     def expand=(expand)
-      __return_value = LibGtk.tree_view_column_set_expand(to_unsafe.as(LibGtk::TreeViewColumn*), expand)
-      __return_value
+      LibGtk.tree_view_column_set_expand(to_unsafe.as(LibGtk::TreeViewColumn*), expand)
+      nil
     end
 
     def fixed_width=(fixed_width)
-      __return_value = LibGtk.tree_view_column_set_fixed_width(to_unsafe.as(LibGtk::TreeViewColumn*), Int32.new(fixed_width))
-      __return_value
+      LibGtk.tree_view_column_set_fixed_width(to_unsafe.as(LibGtk::TreeViewColumn*), Int32.new(fixed_width))
+      nil
     end
 
     def max_width=(max_width)
-      __return_value = LibGtk.tree_view_column_set_max_width(to_unsafe.as(LibGtk::TreeViewColumn*), Int32.new(max_width))
-      __return_value
+      LibGtk.tree_view_column_set_max_width(to_unsafe.as(LibGtk::TreeViewColumn*), Int32.new(max_width))
+      nil
     end
 
     def min_width=(min_width)
-      __return_value = LibGtk.tree_view_column_set_min_width(to_unsafe.as(LibGtk::TreeViewColumn*), Int32.new(min_width))
-      __return_value
+      LibGtk.tree_view_column_set_min_width(to_unsafe.as(LibGtk::TreeViewColumn*), Int32.new(min_width))
+      nil
     end
 
     def reorderable=(reorderable)
-      __return_value = LibGtk.tree_view_column_set_reorderable(to_unsafe.as(LibGtk::TreeViewColumn*), reorderable)
-      __return_value
+      LibGtk.tree_view_column_set_reorderable(to_unsafe.as(LibGtk::TreeViewColumn*), reorderable)
+      nil
     end
 
     def resizable=(resizable)
-      __return_value = LibGtk.tree_view_column_set_resizable(to_unsafe.as(LibGtk::TreeViewColumn*), resizable)
-      __return_value
+      LibGtk.tree_view_column_set_resizable(to_unsafe.as(LibGtk::TreeViewColumn*), resizable)
+      nil
     end
 
     def sizing=(type : Gtk::TreeViewColumnSizing)
-      __return_value = LibGtk.tree_view_column_set_sizing(to_unsafe.as(LibGtk::TreeViewColumn*), type)
-      __return_value
+      LibGtk.tree_view_column_set_sizing(to_unsafe.as(LibGtk::TreeViewColumn*), type)
+      nil
     end
 
     def sort_column_id=(sort_column_id)
-      __return_value = LibGtk.tree_view_column_set_sort_column_id(to_unsafe.as(LibGtk::TreeViewColumn*), Int32.new(sort_column_id))
-      __return_value
+      LibGtk.tree_view_column_set_sort_column_id(to_unsafe.as(LibGtk::TreeViewColumn*), Int32.new(sort_column_id))
+      nil
     end
 
     def sort_indicator=(setting)
-      __return_value = LibGtk.tree_view_column_set_sort_indicator(to_unsafe.as(LibGtk::TreeViewColumn*), setting)
-      __return_value
+      LibGtk.tree_view_column_set_sort_indicator(to_unsafe.as(LibGtk::TreeViewColumn*), setting)
+      nil
     end
 
     def sort_order=(order : Gtk::SortType)
-      __return_value = LibGtk.tree_view_column_set_sort_order(to_unsafe.as(LibGtk::TreeViewColumn*), order)
-      __return_value
+      LibGtk.tree_view_column_set_sort_order(to_unsafe.as(LibGtk::TreeViewColumn*), order)
+      nil
     end
 
     def spacing=(spacing)
-      __return_value = LibGtk.tree_view_column_set_spacing(to_unsafe.as(LibGtk::TreeViewColumn*), Int32.new(spacing))
-      __return_value
+      LibGtk.tree_view_column_set_spacing(to_unsafe.as(LibGtk::TreeViewColumn*), Int32.new(spacing))
+      nil
     end
 
     def title=(title)
-      __return_value = LibGtk.tree_view_column_set_title(to_unsafe.as(LibGtk::TreeViewColumn*), title.to_unsafe)
-      __return_value
+      LibGtk.tree_view_column_set_title(to_unsafe.as(LibGtk::TreeViewColumn*), title.to_unsafe)
+      nil
     end
 
     def visible=(visible)
-      __return_value = LibGtk.tree_view_column_set_visible(to_unsafe.as(LibGtk::TreeViewColumn*), visible)
-      __return_value
+      LibGtk.tree_view_column_set_visible(to_unsafe.as(LibGtk::TreeViewColumn*), visible)
+      nil
     end
 
     def widget=(widget)
-      __return_value = LibGtk.tree_view_column_set_widget(to_unsafe.as(LibGtk::TreeViewColumn*), widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil)
-      __return_value
+      LibGtk.tree_view_column_set_widget(to_unsafe.as(LibGtk::TreeViewColumn*), widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil)
+      nil
     end
 
     alias ClickedSignal = TreeViewColumn ->

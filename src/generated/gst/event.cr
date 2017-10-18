@@ -141,8 +141,8 @@ module Gst
     end
 
     def copy_segment(segment)
-      __return_value = LibGst.event_copy_segment(to_unsafe.as(LibGst::Event*), segment.to_unsafe.as(LibGst::Segment*))
-      __return_value
+      LibGst.event_copy_segment(to_unsafe.as(LibGst::Event*), segment.to_unsafe.as(LibGst::Segment*))
+      nil
     end
 
     def running_time_offset
@@ -166,23 +166,23 @@ module Gst
     end
 
     def parse_buffer_size(format : Gst::Format, minsize, maxsize, async)
-      __return_value = LibGst.event_parse_buffer_size(to_unsafe.as(LibGst::Event*), format, minsize, maxsize, async)
-      __return_value
+      LibGst.event_parse_buffer_size(to_unsafe.as(LibGst::Event*), format, minsize, maxsize, async)
+      nil
     end
 
     def parse_caps(caps)
-      __return_value = LibGst.event_parse_caps(to_unsafe.as(LibGst::Event*), caps)
-      __return_value
+      LibGst.event_parse_caps(to_unsafe.as(LibGst::Event*), caps)
+      nil
     end
 
     def parse_flush_stop(reset_time)
-      __return_value = LibGst.event_parse_flush_stop(to_unsafe.as(LibGst::Event*), reset_time)
-      __return_value
+      LibGst.event_parse_flush_stop(to_unsafe.as(LibGst::Event*), reset_time)
+      nil
     end
 
     def parse_gap(timestamp, duration)
-      __return_value = LibGst.event_parse_gap(to_unsafe.as(LibGst::Event*), timestamp, duration)
-      __return_value
+      LibGst.event_parse_gap(to_unsafe.as(LibGst::Event*), timestamp, duration)
+      nil
     end
 
     def parse_group_id(group_id)
@@ -191,113 +191,113 @@ module Gst
     end
 
     def parse_latency(latency)
-      __return_value = LibGst.event_parse_latency(to_unsafe.as(LibGst::Event*), latency)
-      __return_value
+      LibGst.event_parse_latency(to_unsafe.as(LibGst::Event*), latency)
+      nil
     end
 
     def parse_protection(system_id, data, origin)
-      __return_value = LibGst.event_parse_protection(to_unsafe.as(LibGst::Event*), system_id, data, origin ? origin.to_unsafe : nil)
-      __return_value
+      LibGst.event_parse_protection(to_unsafe.as(LibGst::Event*), system_id, data, origin ? origin.to_unsafe : nil)
+      nil
     end
 
     def parse_qos(type : Gst::QOSType, proportion, diff, timestamp)
-      __return_value = LibGst.event_parse_qos(to_unsafe.as(LibGst::Event*), type, proportion, diff, timestamp)
-      __return_value
+      LibGst.event_parse_qos(to_unsafe.as(LibGst::Event*), type, proportion, diff, timestamp)
+      nil
     end
 
     def parse_seek(rate, format : Gst::Format, flags : Gst::SeekFlags, start_type : Gst::SeekType, start, stop_type : Gst::SeekType, stop)
-      __return_value = LibGst.event_parse_seek(to_unsafe.as(LibGst::Event*), rate, format, flags, start_type, start, stop_type, stop)
-      __return_value
+      LibGst.event_parse_seek(to_unsafe.as(LibGst::Event*), rate, format, flags, start_type, start, stop_type, stop)
+      nil
     end
 
     def parse_segment(segment)
-      __return_value = LibGst.event_parse_segment(to_unsafe.as(LibGst::Event*), segment)
-      __return_value
+      LibGst.event_parse_segment(to_unsafe.as(LibGst::Event*), segment)
+      nil
     end
 
     def parse_segment_done(format : Gst::Format?, position)
-      __return_value = LibGst.event_parse_segment_done(to_unsafe.as(LibGst::Event*), format, position)
-      __return_value
+      LibGst.event_parse_segment_done(to_unsafe.as(LibGst::Event*), format, position)
+      nil
     end
 
     def parse_select_streams(streams)
-      __return_value = LibGst.event_parse_select_streams(to_unsafe.as(LibGst::Event*), streams)
-      __return_value
+      LibGst.event_parse_select_streams(to_unsafe.as(LibGst::Event*), streams)
+      nil
     end
 
     def parse_sink_message(msg)
-      __return_value = LibGst.event_parse_sink_message(to_unsafe.as(LibGst::Event*), msg)
-      __return_value
+      LibGst.event_parse_sink_message(to_unsafe.as(LibGst::Event*), msg)
+      nil
     end
 
     def parse_step(format : Gst::Format?, amount, rate, flush, intermediate)
-      __return_value = LibGst.event_parse_step(to_unsafe.as(LibGst::Event*), format, amount, rate, flush, intermediate)
-      __return_value
+      LibGst.event_parse_step(to_unsafe.as(LibGst::Event*), format, amount, rate, flush, intermediate)
+      nil
     end
 
     def parse_stream(stream)
-      __return_value = LibGst.event_parse_stream(to_unsafe.as(LibGst::Event*), stream)
-      __return_value
+      LibGst.event_parse_stream(to_unsafe.as(LibGst::Event*), stream)
+      nil
     end
 
     def parse_stream_collection(collection)
-      __return_value = LibGst.event_parse_stream_collection(to_unsafe.as(LibGst::Event*), collection)
-      __return_value
+      LibGst.event_parse_stream_collection(to_unsafe.as(LibGst::Event*), collection)
+      nil
     end
 
     def parse_stream_flags(flags : Gst::StreamFlags)
-      __return_value = LibGst.event_parse_stream_flags(to_unsafe.as(LibGst::Event*), flags)
-      __return_value
+      LibGst.event_parse_stream_flags(to_unsafe.as(LibGst::Event*), flags)
+      nil
     end
 
     def parse_stream_group_done(group_id)
-      __return_value = LibGst.event_parse_stream_group_done(to_unsafe.as(LibGst::Event*), group_id)
-      __return_value
+      LibGst.event_parse_stream_group_done(to_unsafe.as(LibGst::Event*), group_id)
+      nil
     end
 
     def parse_stream_start(stream_id)
-      __return_value = LibGst.event_parse_stream_start(to_unsafe.as(LibGst::Event*), stream_id)
-      __return_value
+      LibGst.event_parse_stream_start(to_unsafe.as(LibGst::Event*), stream_id)
+      nil
     end
 
     def parse_tag(taglist)
-      __return_value = LibGst.event_parse_tag(to_unsafe.as(LibGst::Event*), taglist)
-      __return_value
+      LibGst.event_parse_tag(to_unsafe.as(LibGst::Event*), taglist)
+      nil
     end
 
     def parse_toc(toc, updated)
-      __return_value = LibGst.event_parse_toc(to_unsafe.as(LibGst::Event*), toc, updated)
-      __return_value
+      LibGst.event_parse_toc(to_unsafe.as(LibGst::Event*), toc, updated)
+      nil
     end
 
     def parse_toc_select(uid)
-      __return_value = LibGst.event_parse_toc_select(to_unsafe.as(LibGst::Event*), uid)
-      __return_value
+      LibGst.event_parse_toc_select(to_unsafe.as(LibGst::Event*), uid)
+      nil
     end
 
     def group_id=(group_id)
-      __return_value = LibGst.event_set_group_id(to_unsafe.as(LibGst::Event*), UInt32.new(group_id))
-      __return_value
+      LibGst.event_set_group_id(to_unsafe.as(LibGst::Event*), UInt32.new(group_id))
+      nil
     end
 
     def running_time_offset=(offset)
-      __return_value = LibGst.event_set_running_time_offset(to_unsafe.as(LibGst::Event*), Int64.new(offset))
-      __return_value
+      LibGst.event_set_running_time_offset(to_unsafe.as(LibGst::Event*), Int64.new(offset))
+      nil
     end
 
     def seqnum=(seqnum)
-      __return_value = LibGst.event_set_seqnum(to_unsafe.as(LibGst::Event*), UInt32.new(seqnum))
-      __return_value
+      LibGst.event_set_seqnum(to_unsafe.as(LibGst::Event*), UInt32.new(seqnum))
+      nil
     end
 
     def stream=(stream)
-      __return_value = LibGst.event_set_stream(to_unsafe.as(LibGst::Event*), stream.to_unsafe.as(LibGst::Stream*))
-      __return_value
+      LibGst.event_set_stream(to_unsafe.as(LibGst::Event*), stream.to_unsafe.as(LibGst::Stream*))
+      nil
     end
 
     def stream_flags=(flags : Gst::StreamFlags)
-      __return_value = LibGst.event_set_stream_flags(to_unsafe.as(LibGst::Event*), flags)
-      __return_value
+      LibGst.event_set_stream_flags(to_unsafe.as(LibGst::Event*), flags)
+      nil
     end
 
     def writable_structure

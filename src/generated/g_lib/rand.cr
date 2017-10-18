@@ -21,8 +21,8 @@ module GLib
     end
 
     def free
-      __return_value = LibGLib.rand_free(to_unsafe.as(LibGLib::Rand*))
-      __return_value
+      LibGLib.rand_free(to_unsafe.as(LibGLib::Rand*))
+      nil
     end
 
     def int
@@ -36,13 +36,13 @@ module GLib
     end
 
     def seed=(seed)
-      __return_value = LibGLib.rand_set_seed(to_unsafe.as(LibGLib::Rand*), UInt32.new(seed))
-      __return_value
+      LibGLib.rand_set_seed(to_unsafe.as(LibGLib::Rand*), UInt32.new(seed))
+      nil
     end
 
     def set_seed_array(seed, seed_length)
-      __return_value = LibGLib.rand_set_seed_array(to_unsafe.as(LibGLib::Rand*), seed, UInt32.new(seed_length))
-      __return_value
+      LibGLib.rand_set_seed_array(to_unsafe.as(LibGLib::Rand*), seed, UInt32.new(seed_length))
+      nil
     end
 
   end

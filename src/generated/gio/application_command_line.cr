@@ -67,8 +67,8 @@ module Gio
     end
 
     def exit_status=(exit_status)
-      __return_value = LibGio.application_command_line_set_exit_status(to_unsafe.as(LibGio::ApplicationCommandLine*), Int32.new(exit_status))
-      __return_value
+      LibGio.application_command_line_set_exit_status(to_unsafe.as(LibGio::ApplicationCommandLine*), Int32.new(exit_status))
+      nil
     end
 
   end

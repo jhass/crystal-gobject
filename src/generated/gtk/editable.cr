@@ -1,23 +1,23 @@
 module Gtk
   module Editable
     def copy_clipboard
-      __return_value = LibGtk.editable_copy_clipboard(to_unsafe.as(LibGtk::Editable*))
-      __return_value
+      LibGtk.editable_copy_clipboard(to_unsafe.as(LibGtk::Editable*))
+      nil
     end
 
     def cut_clipboard
-      __return_value = LibGtk.editable_cut_clipboard(to_unsafe.as(LibGtk::Editable*))
-      __return_value
+      LibGtk.editable_cut_clipboard(to_unsafe.as(LibGtk::Editable*))
+      nil
     end
 
     def delete_selection
-      __return_value = LibGtk.editable_delete_selection(to_unsafe.as(LibGtk::Editable*))
-      __return_value
+      LibGtk.editable_delete_selection(to_unsafe.as(LibGtk::Editable*))
+      nil
     end
 
     def delete_text(start_pos, end_pos)
-      __return_value = LibGtk.editable_delete_text(to_unsafe.as(LibGtk::Editable*), Int32.new(start_pos), Int32.new(end_pos))
-      __return_value
+      LibGtk.editable_delete_text(to_unsafe.as(LibGtk::Editable*), Int32.new(start_pos), Int32.new(end_pos))
+      nil
     end
 
     def chars(start_pos, end_pos)
@@ -41,28 +41,28 @@ module Gtk
     end
 
     def insert_text(new_text, new_text_length, position)
-      __return_value = LibGtk.editable_insert_text(to_unsafe.as(LibGtk::Editable*), new_text.to_unsafe, Int32.new(new_text_length), position)
-      __return_value
+      LibGtk.editable_insert_text(to_unsafe.as(LibGtk::Editable*), new_text.to_unsafe, Int32.new(new_text_length), position)
+      nil
     end
 
     def paste_clipboard
-      __return_value = LibGtk.editable_paste_clipboard(to_unsafe.as(LibGtk::Editable*))
-      __return_value
+      LibGtk.editable_paste_clipboard(to_unsafe.as(LibGtk::Editable*))
+      nil
     end
 
     def select_region(start_pos, end_pos)
-      __return_value = LibGtk.editable_select_region(to_unsafe.as(LibGtk::Editable*), Int32.new(start_pos), Int32.new(end_pos))
-      __return_value
+      LibGtk.editable_select_region(to_unsafe.as(LibGtk::Editable*), Int32.new(start_pos), Int32.new(end_pos))
+      nil
     end
 
     def editable=(is_editable)
-      __return_value = LibGtk.editable_set_editable(to_unsafe.as(LibGtk::Editable*), is_editable)
-      __return_value
+      LibGtk.editable_set_editable(to_unsafe.as(LibGtk::Editable*), is_editable)
+      nil
     end
 
     def position=(position)
-      __return_value = LibGtk.editable_set_position(to_unsafe.as(LibGtk::Editable*), Int32.new(position))
-      __return_value
+      LibGtk.editable_set_position(to_unsafe.as(LibGtk::Editable*), Int32.new(position))
+      nil
     end
 
     alias ChangedSignal = Editable ->

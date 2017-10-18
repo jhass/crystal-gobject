@@ -26,13 +26,13 @@ module Gst
     end
 
     def free
-      __return_value = LibGst.allocation_params_free(to_unsafe.as(LibGst::AllocationParams*))
-      __return_value
+      LibGst.allocation_params_free(to_unsafe.as(LibGst::AllocationParams*))
+      nil
     end
 
     def init
-      __return_value = LibGst.allocation_params_init(to_unsafe.as(LibGst::AllocationParams*))
-      __return_value
+      LibGst.allocation_params_init(to_unsafe.as(LibGst::AllocationParams*))
+      nil
     end
 
     def flags

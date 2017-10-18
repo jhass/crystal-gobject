@@ -16,8 +16,8 @@ module Gst
     end
 
     def call_function(find)
-      __return_value = LibGst.type_find_factory_call_function(to_unsafe.as(LibGst::TypeFindFactory*), find.to_unsafe.as(LibGst::TypeFind*))
-      __return_value
+      LibGst.type_find_factory_call_function(to_unsafe.as(LibGst::TypeFindFactory*), find.to_unsafe.as(LibGst::TypeFind*))
+      nil
     end
 
     def caps

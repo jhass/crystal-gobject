@@ -14,8 +14,8 @@ module Gtk
     end
 
     def add_window(window)
-      __return_value = LibGtk.window_group_add_window(to_unsafe.as(LibGtk::WindowGroup*), window.to_unsafe.as(LibGtk::Window*))
-      __return_value
+      LibGtk.window_group_add_window(to_unsafe.as(LibGtk::WindowGroup*), window.to_unsafe.as(LibGtk::Window*))
+      nil
     end
 
     def current_device_grab(device)
@@ -34,8 +34,8 @@ module Gtk
     end
 
     def remove_window(window)
-      __return_value = LibGtk.window_group_remove_window(to_unsafe.as(LibGtk::WindowGroup*), window.to_unsafe.as(LibGtk::Window*))
-      __return_value
+      LibGtk.window_group_remove_window(to_unsafe.as(LibGtk::WindowGroup*), window.to_unsafe.as(LibGtk::Window*))
+      nil
     end
 
   end

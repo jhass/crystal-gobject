@@ -79,38 +79,38 @@ module Gtk
     end
 
     def pulse
-      __return_value = LibGtk.progress_bar_pulse(to_unsafe.as(LibGtk::ProgressBar*))
-      __return_value
+      LibGtk.progress_bar_pulse(to_unsafe.as(LibGtk::ProgressBar*))
+      nil
     end
 
     def ellipsize=(mode : Pango::EllipsizeMode)
-      __return_value = LibGtk.progress_bar_set_ellipsize(to_unsafe.as(LibGtk::ProgressBar*), mode)
-      __return_value
+      LibGtk.progress_bar_set_ellipsize(to_unsafe.as(LibGtk::ProgressBar*), mode)
+      nil
     end
 
     def fraction=(fraction)
-      __return_value = LibGtk.progress_bar_set_fraction(to_unsafe.as(LibGtk::ProgressBar*), Float64.new(fraction))
-      __return_value
+      LibGtk.progress_bar_set_fraction(to_unsafe.as(LibGtk::ProgressBar*), Float64.new(fraction))
+      nil
     end
 
     def inverted=(inverted)
-      __return_value = LibGtk.progress_bar_set_inverted(to_unsafe.as(LibGtk::ProgressBar*), inverted)
-      __return_value
+      LibGtk.progress_bar_set_inverted(to_unsafe.as(LibGtk::ProgressBar*), inverted)
+      nil
     end
 
     def pulse_step=(fraction)
-      __return_value = LibGtk.progress_bar_set_pulse_step(to_unsafe.as(LibGtk::ProgressBar*), Float64.new(fraction))
-      __return_value
+      LibGtk.progress_bar_set_pulse_step(to_unsafe.as(LibGtk::ProgressBar*), Float64.new(fraction))
+      nil
     end
 
     def show_text=(show_text)
-      __return_value = LibGtk.progress_bar_set_show_text(to_unsafe.as(LibGtk::ProgressBar*), show_text)
-      __return_value
+      LibGtk.progress_bar_set_show_text(to_unsafe.as(LibGtk::ProgressBar*), show_text)
+      nil
     end
 
     def text=(text)
-      __return_value = LibGtk.progress_bar_set_text(to_unsafe.as(LibGtk::ProgressBar*), text ? text.to_unsafe : nil)
-      __return_value
+      LibGtk.progress_bar_set_text(to_unsafe.as(LibGtk::ProgressBar*), text ? text.to_unsafe : nil)
+      nil
     end
 
   end

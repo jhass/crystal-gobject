@@ -31,8 +31,8 @@ module Gdk
     end
 
     def free
-      __return_value = LibGdk.color_free(to_unsafe.as(LibGdk::Color*))
-      __return_value
+      LibGdk.color_free(to_unsafe.as(LibGdk::Color*))
+      nil
     end
 
     def hash

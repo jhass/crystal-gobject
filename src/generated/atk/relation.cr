@@ -24,8 +24,8 @@ module Atk
     end
 
     def add_target(target)
-      __return_value = LibAtk.relation_add_target(to_unsafe.as(LibAtk::Relation*), target.to_unsafe.as(LibAtk::Object*))
-      __return_value
+      LibAtk.relation_add_target(to_unsafe.as(LibAtk::Relation*), target.to_unsafe.as(LibAtk::Object*))
+      nil
     end
 
     def relation_type

@@ -24,8 +24,8 @@ module Gio
     end
 
     def add(name, type : Gio::FileAttributeType, flags : Gio::FileAttributeInfoFlags)
-      __return_value = LibGio.file_attribute_info_list_add(to_unsafe.as(LibGio::FileAttributeInfoList*), name.to_unsafe, type, flags)
-      __return_value
+      LibGio.file_attribute_info_list_add(to_unsafe.as(LibGio::FileAttributeInfoList*), name.to_unsafe, type, flags)
+      nil
     end
 
     def dup
@@ -44,8 +44,8 @@ module Gio
     end
 
     def unref
-      __return_value = LibGio.file_attribute_info_list_unref(to_unsafe.as(LibGio::FileAttributeInfoList*))
-      __return_value
+      LibGio.file_attribute_info_list_unref(to_unsafe.as(LibGio::FileAttributeInfoList*))
+      nil
     end
 
     def infos

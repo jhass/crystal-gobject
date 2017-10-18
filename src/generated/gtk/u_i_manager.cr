@@ -25,8 +25,8 @@ module Gtk
     end
 
     def add_ui(merge_id, path, name, action, type : Gtk::UIManagerItemType, top)
-      __return_value = LibGtk.u_i_manager_add_ui(to_unsafe.as(LibGtk::UIManager*), UInt32.new(merge_id), path.to_unsafe, name.to_unsafe, action ? action.to_unsafe : nil, type, top)
-      __return_value
+      LibGtk.u_i_manager_add_ui(to_unsafe.as(LibGtk::UIManager*), UInt32.new(merge_id), path.to_unsafe, name.to_unsafe, action ? action.to_unsafe : nil, type, top)
+      nil
     end
 
     def add_ui_from_file(filename)
@@ -51,8 +51,8 @@ module Gtk
     end
 
     def ensure_update
-      __return_value = LibGtk.u_i_manager_ensure_update(to_unsafe.as(LibGtk::UIManager*))
-      __return_value
+      LibGtk.u_i_manager_ensure_update(to_unsafe.as(LibGtk::UIManager*))
+      nil
     end
 
     def accel_group
@@ -91,8 +91,8 @@ module Gtk
     end
 
     def insert_action_group(action_group, pos)
-      __return_value = LibGtk.u_i_manager_insert_action_group(to_unsafe.as(LibGtk::UIManager*), action_group.to_unsafe.as(LibGtk::ActionGroup*), Int32.new(pos))
-      __return_value
+      LibGtk.u_i_manager_insert_action_group(to_unsafe.as(LibGtk::UIManager*), action_group.to_unsafe.as(LibGtk::ActionGroup*), Int32.new(pos))
+      nil
     end
 
     def new_merge_id
@@ -101,18 +101,18 @@ module Gtk
     end
 
     def remove_action_group(action_group)
-      __return_value = LibGtk.u_i_manager_remove_action_group(to_unsafe.as(LibGtk::UIManager*), action_group.to_unsafe.as(LibGtk::ActionGroup*))
-      __return_value
+      LibGtk.u_i_manager_remove_action_group(to_unsafe.as(LibGtk::UIManager*), action_group.to_unsafe.as(LibGtk::ActionGroup*))
+      nil
     end
 
     def remove_ui(merge_id)
-      __return_value = LibGtk.u_i_manager_remove_ui(to_unsafe.as(LibGtk::UIManager*), UInt32.new(merge_id))
-      __return_value
+      LibGtk.u_i_manager_remove_ui(to_unsafe.as(LibGtk::UIManager*), UInt32.new(merge_id))
+      nil
     end
 
     def add_tearoffs=(add_tearoffs)
-      __return_value = LibGtk.u_i_manager_set_add_tearoffs(to_unsafe.as(LibGtk::UIManager*), add_tearoffs)
-      __return_value
+      LibGtk.u_i_manager_set_add_tearoffs(to_unsafe.as(LibGtk::UIManager*), add_tearoffs)
+      nil
     end
 
     alias ActionsChangedSignal = UIManager ->

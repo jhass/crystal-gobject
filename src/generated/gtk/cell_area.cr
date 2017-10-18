@@ -36,28 +36,28 @@ module Gtk
     end
 
     def add(renderer)
-      __return_value = LibGtk.cell_area_add(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*))
-      __return_value
+      LibGtk.cell_area_add(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*))
+      nil
     end
 
     def add_focus_sibling(renderer, sibling)
-      __return_value = LibGtk.cell_area_add_focus_sibling(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), sibling.to_unsafe.as(LibGtk::CellRenderer*))
-      __return_value
+      LibGtk.cell_area_add_focus_sibling(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), sibling.to_unsafe.as(LibGtk::CellRenderer*))
+      nil
     end
 
     def apply_attributes(tree_model, iter, is_expander, is_expanded)
-      __return_value = LibGtk.cell_area_apply_attributes(to_unsafe.as(LibGtk::CellArea*), tree_model.to_unsafe.as(LibGtk::TreeModel*), iter.to_unsafe.as(LibGtk::TreeIter*), is_expander, is_expanded)
-      __return_value
+      LibGtk.cell_area_apply_attributes(to_unsafe.as(LibGtk::CellArea*), tree_model.to_unsafe.as(LibGtk::TreeModel*), iter.to_unsafe.as(LibGtk::TreeIter*), is_expander, is_expanded)
+      nil
     end
 
     def attribute_connect(renderer, attribute, column)
-      __return_value = LibGtk.cell_area_attribute_connect(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute.to_unsafe, Int32.new(column))
-      __return_value
+      LibGtk.cell_area_attribute_connect(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute.to_unsafe, Int32.new(column))
+      nil
     end
 
     def attribute_disconnect(renderer, attribute)
-      __return_value = LibGtk.cell_area_attribute_disconnect(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute.to_unsafe)
-      __return_value
+      LibGtk.cell_area_attribute_disconnect(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), attribute.to_unsafe)
+      nil
     end
 
     def attribute_get_column(renderer, attribute)
@@ -66,13 +66,13 @@ module Gtk
     end
 
     def cell_get_property(renderer, property_name, value)
-      __return_value = LibGtk.cell_area_cell_get_property(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), property_name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
-      __return_value
+      LibGtk.cell_area_cell_get_property(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), property_name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
+      nil
     end
 
     def cell_set_property(renderer, property_name, value)
-      __return_value = LibGtk.cell_area_cell_set_property(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), property_name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
-      __return_value
+      LibGtk.cell_area_cell_set_property(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), property_name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
+      nil
     end
 
     def copy_context(context)
@@ -96,18 +96,18 @@ module Gtk
     end
 
     def foreach(callback, callback_data)
-      __return_value = LibGtk.cell_area_foreach(to_unsafe.as(LibGtk::CellArea*), callback, callback_data ? callback_data : nil)
-      __return_value
+      LibGtk.cell_area_foreach(to_unsafe.as(LibGtk::CellArea*), callback, callback_data ? callback_data : nil)
+      nil
     end
 
     def foreach_alloc(context, widget, cell_area, background_area, callback, callback_data)
-      __return_value = LibGtk.cell_area_foreach_alloc(to_unsafe.as(LibGtk::CellArea*), context.to_unsafe.as(LibGtk::CellAreaContext*), widget.to_unsafe.as(LibGtk::Widget*), cell_area.to_unsafe.as(LibGdk::Rectangle*), background_area.to_unsafe.as(LibGdk::Rectangle*), callback, callback_data ? callback_data : nil)
-      __return_value
+      LibGtk.cell_area_foreach_alloc(to_unsafe.as(LibGtk::CellArea*), context.to_unsafe.as(LibGtk::CellAreaContext*), widget.to_unsafe.as(LibGtk::Widget*), cell_area.to_unsafe.as(LibGdk::Rectangle*), background_area.to_unsafe.as(LibGdk::Rectangle*), callback, callback_data ? callback_data : nil)
+      nil
     end
 
     def cell_allocation(context, widget, renderer, cell_area, allocation)
-      __return_value = LibGtk.cell_area_get_cell_allocation(to_unsafe.as(LibGtk::CellArea*), context.to_unsafe.as(LibGtk::CellAreaContext*), widget.to_unsafe.as(LibGtk::Widget*), renderer.to_unsafe.as(LibGtk::CellRenderer*), cell_area.to_unsafe.as(LibGdk::Rectangle*), allocation)
-      __return_value
+      LibGtk.cell_area_get_cell_allocation(to_unsafe.as(LibGtk::CellArea*), context.to_unsafe.as(LibGtk::CellAreaContext*), widget.to_unsafe.as(LibGtk::Widget*), renderer.to_unsafe.as(LibGtk::CellRenderer*), cell_area.to_unsafe.as(LibGdk::Rectangle*), allocation)
+      nil
     end
 
     def cell_at_position(context, widget, cell_area, x, y, alloc_area)
@@ -146,23 +146,23 @@ module Gtk
     end
 
     def preferred_height(context, widget, minimum_height, natural_height)
-      __return_value = LibGtk.cell_area_get_preferred_height(to_unsafe.as(LibGtk::CellArea*), context.to_unsafe.as(LibGtk::CellAreaContext*), widget.to_unsafe.as(LibGtk::Widget*), minimum_height, natural_height)
-      __return_value
+      LibGtk.cell_area_get_preferred_height(to_unsafe.as(LibGtk::CellArea*), context.to_unsafe.as(LibGtk::CellAreaContext*), widget.to_unsafe.as(LibGtk::Widget*), minimum_height, natural_height)
+      nil
     end
 
     def preferred_height_for_width(context, widget, width, minimum_height, natural_height)
-      __return_value = LibGtk.cell_area_get_preferred_height_for_width(to_unsafe.as(LibGtk::CellArea*), context.to_unsafe.as(LibGtk::CellAreaContext*), widget.to_unsafe.as(LibGtk::Widget*), Int32.new(width), minimum_height, natural_height)
-      __return_value
+      LibGtk.cell_area_get_preferred_height_for_width(to_unsafe.as(LibGtk::CellArea*), context.to_unsafe.as(LibGtk::CellAreaContext*), widget.to_unsafe.as(LibGtk::Widget*), Int32.new(width), minimum_height, natural_height)
+      nil
     end
 
     def preferred_width(context, widget, minimum_width, natural_width)
-      __return_value = LibGtk.cell_area_get_preferred_width(to_unsafe.as(LibGtk::CellArea*), context.to_unsafe.as(LibGtk::CellAreaContext*), widget.to_unsafe.as(LibGtk::Widget*), minimum_width, natural_width)
-      __return_value
+      LibGtk.cell_area_get_preferred_width(to_unsafe.as(LibGtk::CellArea*), context.to_unsafe.as(LibGtk::CellAreaContext*), widget.to_unsafe.as(LibGtk::Widget*), minimum_width, natural_width)
+      nil
     end
 
     def preferred_width_for_height(context, widget, height, minimum_width, natural_width)
-      __return_value = LibGtk.cell_area_get_preferred_width_for_height(to_unsafe.as(LibGtk::CellArea*), context.to_unsafe.as(LibGtk::CellAreaContext*), widget.to_unsafe.as(LibGtk::Widget*), Int32.new(height), minimum_width, natural_width)
-      __return_value
+      LibGtk.cell_area_get_preferred_width_for_height(to_unsafe.as(LibGtk::CellArea*), context.to_unsafe.as(LibGtk::CellAreaContext*), widget.to_unsafe.as(LibGtk::Widget*), Int32.new(height), minimum_width, natural_width)
+      nil
     end
 
     def request_mode
@@ -176,8 +176,8 @@ module Gtk
     end
 
     def inner_cell_area(widget, cell_area, inner_area)
-      __return_value = LibGtk.cell_area_inner_cell_area(to_unsafe.as(LibGtk::CellArea*), widget.to_unsafe.as(LibGtk::Widget*), cell_area.to_unsafe.as(LibGdk::Rectangle*), inner_area)
-      __return_value
+      LibGtk.cell_area_inner_cell_area(to_unsafe.as(LibGtk::CellArea*), widget.to_unsafe.as(LibGtk::Widget*), cell_area.to_unsafe.as(LibGdk::Rectangle*), inner_area)
+      nil
     end
 
     def activatable?
@@ -191,33 +191,33 @@ module Gtk
     end
 
     def remove(renderer)
-      __return_value = LibGtk.cell_area_remove(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*))
-      __return_value
+      LibGtk.cell_area_remove(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*))
+      nil
     end
 
     def remove_focus_sibling(renderer, sibling)
-      __return_value = LibGtk.cell_area_remove_focus_sibling(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), sibling.to_unsafe.as(LibGtk::CellRenderer*))
-      __return_value
+      LibGtk.cell_area_remove_focus_sibling(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), sibling.to_unsafe.as(LibGtk::CellRenderer*))
+      nil
     end
 
     def render(context, widget, cr, background_area, cell_area, flags : Gtk::CellRendererState, paint_focus)
-      __return_value = LibGtk.cell_area_render(to_unsafe.as(LibGtk::CellArea*), context.to_unsafe.as(LibGtk::CellAreaContext*), widget.to_unsafe.as(LibGtk::Widget*), cr.to_unsafe.as(LibCairo::Context*), background_area.to_unsafe.as(LibGdk::Rectangle*), cell_area.to_unsafe.as(LibGdk::Rectangle*), flags, paint_focus)
-      __return_value
+      LibGtk.cell_area_render(to_unsafe.as(LibGtk::CellArea*), context.to_unsafe.as(LibGtk::CellAreaContext*), widget.to_unsafe.as(LibGtk::Widget*), cr.to_unsafe.as(LibCairo::Context*), background_area.to_unsafe.as(LibGdk::Rectangle*), cell_area.to_unsafe.as(LibGdk::Rectangle*), flags, paint_focus)
+      nil
     end
 
     def request_renderer(renderer, orientation : Gtk::Orientation, widget, for_size, minimum_size, natural_size)
-      __return_value = LibGtk.cell_area_request_renderer(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), orientation, widget.to_unsafe.as(LibGtk::Widget*), Int32.new(for_size), minimum_size, natural_size)
-      __return_value
+      LibGtk.cell_area_request_renderer(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*), orientation, widget.to_unsafe.as(LibGtk::Widget*), Int32.new(for_size), minimum_size, natural_size)
+      nil
     end
 
     def focus_cell=(renderer)
-      __return_value = LibGtk.cell_area_set_focus_cell(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*))
-      __return_value
+      LibGtk.cell_area_set_focus_cell(to_unsafe.as(LibGtk::CellArea*), renderer.to_unsafe.as(LibGtk::CellRenderer*))
+      nil
     end
 
     def stop_editing(canceled)
-      __return_value = LibGtk.cell_area_stop_editing(to_unsafe.as(LibGtk::CellArea*), canceled)
-      __return_value
+      LibGtk.cell_area_stop_editing(to_unsafe.as(LibGtk::CellArea*), canceled)
+      nil
     end
 
     alias AddEditableSignal = CellArea, Gtk::CellRenderer, Gtk::CellEditable, Gdk::Rectangle, String ->

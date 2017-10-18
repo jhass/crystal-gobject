@@ -33,18 +33,18 @@ module Gst
     end
 
     def append(caps2)
-      __return_value = LibGst.caps_append(to_unsafe.as(LibGst::Caps*), caps2.to_unsafe.as(LibGst::Caps*))
-      __return_value
+      LibGst.caps_append(to_unsafe.as(LibGst::Caps*), caps2.to_unsafe.as(LibGst::Caps*))
+      nil
     end
 
     def append_structure(structure)
-      __return_value = LibGst.caps_append_structure(to_unsafe.as(LibGst::Caps*), structure.to_unsafe.as(LibGst::Structure*))
-      __return_value
+      LibGst.caps_append_structure(to_unsafe.as(LibGst::Caps*), structure.to_unsafe.as(LibGst::Structure*))
+      nil
     end
 
     def append_structure_full(structure, features)
-      __return_value = LibGst.caps_append_structure_full(to_unsafe.as(LibGst::Caps*), structure.to_unsafe.as(LibGst::Structure*), features ? features.to_unsafe.as(LibGst::CapsFeatures*) : nil)
-      __return_value
+      LibGst.caps_append_structure_full(to_unsafe.as(LibGst::Caps*), structure.to_unsafe.as(LibGst::Structure*), features ? features.to_unsafe.as(LibGst::CapsFeatures*) : nil)
+      nil
     end
 
     def can_intersect(caps2)
@@ -58,8 +58,8 @@ module Gst
     end
 
     def filter_and_map_in_place(func, user_data)
-      __return_value = LibGst.caps_filter_and_map_in_place(to_unsafe.as(LibGst::Caps*), func, user_data ? user_data : nil)
-      __return_value
+      LibGst.caps_filter_and_map_in_place(to_unsafe.as(LibGst::Caps*), func, user_data ? user_data : nil)
+      nil
     end
 
     def fixate
@@ -173,18 +173,18 @@ module Gst
     end
 
     def remove_structure(idx)
-      __return_value = LibGst.caps_remove_structure(to_unsafe.as(LibGst::Caps*), UInt32.new(idx))
-      __return_value
+      LibGst.caps_remove_structure(to_unsafe.as(LibGst::Caps*), UInt32.new(idx))
+      nil
     end
 
     def set_features(index, features)
-      __return_value = LibGst.caps_set_features(to_unsafe.as(LibGst::Caps*), UInt32.new(index), features ? features.to_unsafe.as(LibGst::CapsFeatures*) : nil)
-      __return_value
+      LibGst.caps_set_features(to_unsafe.as(LibGst::Caps*), UInt32.new(index), features ? features.to_unsafe.as(LibGst::CapsFeatures*) : nil)
+      nil
     end
 
     def set_value(field, value)
-      __return_value = LibGst.caps_set_value(to_unsafe.as(LibGst::Caps*), field.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
-      __return_value
+      LibGst.caps_set_value(to_unsafe.as(LibGst::Caps*), field.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
+      nil
     end
 
     def simplify

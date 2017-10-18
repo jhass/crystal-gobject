@@ -18,8 +18,8 @@ module Gtk
     end
 
     def add_child(child)
-      __return_value = LibGtk.container_cell_accessible_add_child(to_unsafe.as(LibGtk::ContainerCellAccessible*), child.to_unsafe.as(LibGtk::CellAccessible*))
-      __return_value
+      LibGtk.container_cell_accessible_add_child(to_unsafe.as(LibGtk::ContainerCellAccessible*), child.to_unsafe.as(LibGtk::CellAccessible*))
+      nil
     end
 
     def children
@@ -28,8 +28,8 @@ module Gtk
     end
 
     def remove_child(child)
-      __return_value = LibGtk.container_cell_accessible_remove_child(to_unsafe.as(LibGtk::ContainerCellAccessible*), child.to_unsafe.as(LibGtk::CellAccessible*))
-      __return_value
+      LibGtk.container_cell_accessible_remove_child(to_unsafe.as(LibGtk::ContainerCellAccessible*), child.to_unsafe.as(LibGtk::CellAccessible*))
+      nil
     end
 
   end

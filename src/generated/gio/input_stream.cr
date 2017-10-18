@@ -9,8 +9,8 @@ module Gio
     end
 
     def clear_pending
-      __return_value = LibGio.input_stream_clear_pending(to_unsafe.as(LibGio::InputStream*))
-      __return_value
+      LibGio.input_stream_clear_pending(to_unsafe.as(LibGio::InputStream*))
+      nil
     end
 
     def close(cancellable)
@@ -21,8 +21,8 @@ module Gio
     end
 
     def close_async(io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.input_stream_close_async(to_unsafe.as(LibGio::InputStream*), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.input_stream_close_async(to_unsafe.as(LibGio::InputStream*), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def close_finish(result)
@@ -57,8 +57,8 @@ module Gio
     end
 
     def read_all_async(buffer, count, io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.input_stream_read_all_async(to_unsafe.as(LibGio::InputStream*), buffer, UInt64.new(count), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.input_stream_read_all_async(to_unsafe.as(LibGio::InputStream*), buffer, UInt64.new(count), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def read_all_finish(result, bytes_read)
@@ -69,8 +69,8 @@ module Gio
     end
 
     def read_async(buffer, count, io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.input_stream_read_async(to_unsafe.as(LibGio::InputStream*), buffer, UInt64.new(count), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.input_stream_read_async(to_unsafe.as(LibGio::InputStream*), buffer, UInt64.new(count), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def read_bytes(count, cancellable)
@@ -81,8 +81,8 @@ module Gio
     end
 
     def read_bytes_async(count, io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.input_stream_read_bytes_async(to_unsafe.as(LibGio::InputStream*), UInt64.new(count), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.input_stream_read_bytes_async(to_unsafe.as(LibGio::InputStream*), UInt64.new(count), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def read_bytes_finish(result)
@@ -114,8 +114,8 @@ module Gio
     end
 
     def skip_async(count, io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.input_stream_skip_async(to_unsafe.as(LibGio::InputStream*), UInt64.new(count), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.input_stream_skip_async(to_unsafe.as(LibGio::InputStream*), UInt64.new(count), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def skip_finish(result)

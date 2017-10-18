@@ -15,8 +15,8 @@ module Pango
   end
 
   def self.break(text, length, analysis, attrs, attrs_len)
-    __return_value = LibPango.break(text.to_unsafe, Int32.new(length), analysis.to_unsafe.as(LibPango::Analysis*), attrs, Int32.new(attrs_len))
-    __return_value
+    LibPango.break(text.to_unsafe, Int32.new(length), analysis.to_unsafe.as(LibPango::Analysis*), attrs, Int32.new(attrs_len))
+    nil
   end
 
   def self.config_key_get(key)
@@ -30,13 +30,13 @@ module Pango
   end
 
   def self.default_break(text, length, analysis, attrs, attrs_len)
-    __return_value = LibPango.default_break(text.to_unsafe, Int32.new(length), analysis ? analysis.to_unsafe.as(LibPango::Analysis*) : nil, attrs.to_unsafe.as(LibPango::LogAttr*), Int32.new(attrs_len))
-    __return_value
+    LibPango.default_break(text.to_unsafe, Int32.new(length), analysis ? analysis.to_unsafe.as(LibPango::Analysis*) : nil, attrs.to_unsafe.as(LibPango::LogAttr*), Int32.new(attrs_len))
+    nil
   end
 
   def self.extents_to_pixels(inclusive, nearest)
-    __return_value = LibPango.extents_to_pixels(inclusive ? inclusive.to_unsafe.as(LibPango::Rectangle*) : nil, nearest ? nearest.to_unsafe.as(LibPango::Rectangle*) : nil)
-    __return_value
+    LibPango.extents_to_pixels(inclusive ? inclusive.to_unsafe.as(LibPango::Rectangle*) : nil, nearest ? nearest.to_unsafe.as(LibPango::Rectangle*) : nil)
+    nil
   end
 
   def self.find_base_dir(text, length)
@@ -45,8 +45,8 @@ module Pango
   end
 
   def self.find_paragraph_boundary(text, length, paragraph_delimiter_index, next_paragraph_start)
-    __return_value = LibPango.find_paragraph_boundary(text.to_unsafe, Int32.new(length), paragraph_delimiter_index, next_paragraph_start)
-    __return_value
+    LibPango.find_paragraph_boundary(text.to_unsafe, Int32.new(length), paragraph_delimiter_index, next_paragraph_start)
+    nil
   end
 
   def self.font_description_from_string(str)
@@ -60,8 +60,8 @@ module Pango
   end
 
   def self.log_attrs(text, length, level, language, log_attrs, attrs_len)
-    __return_value = LibPango.get_log_attrs(text.to_unsafe, Int32.new(length), Int32.new(level), language.to_unsafe.as(LibPango::Language*), log_attrs, Int32.new(attrs_len))
-    __return_value
+    LibPango.get_log_attrs(text.to_unsafe, Int32.new(length), Int32.new(level), language.to_unsafe.as(LibPango::Language*), log_attrs, Int32.new(attrs_len))
+    nil
   end
 
   def self.mirror_char(ch, mirrored_ch)
@@ -125,8 +125,8 @@ module Pango
   end
 
   def self.lookup_aliases(fontname, families, n_families)
-    __return_value = LibPango.lookup_aliases(fontname.to_unsafe, families, n_families)
-    __return_value
+    LibPango.lookup_aliases(fontname.to_unsafe, families, n_families)
+    nil
   end
 
   def self.markup_parser_finish(context, attr_list, text, accel_char)
@@ -142,8 +142,8 @@ module Pango
   end
 
   def self.module_register(_module)
-    __return_value = LibPango.module_register(_module.to_unsafe.as(LibPango::IncludedModule*))
-    __return_value
+    LibPango.module_register(_module.to_unsafe.as(LibPango::IncludedModule*))
+    nil
   end
 
   def self.parse_enum(type, str, value, warn, possible_values)
@@ -179,8 +179,8 @@ module Pango
   end
 
   def self.quantize_line_geometry(thickness, position)
-    __return_value = LibPango.quantize_line_geometry(thickness, position)
-    __return_value
+    LibPango.quantize_line_geometry(thickness, position)
+    nil
   end
 
   def self.read_line(stream, str)
@@ -219,13 +219,13 @@ module Pango
   end
 
   def self.shape(text, length, analysis, glyphs)
-    __return_value = LibPango.shape(text.to_unsafe, Int32.new(length), analysis.to_unsafe.as(LibPango::Analysis*), glyphs.to_unsafe.as(LibPango::GlyphString*))
-    __return_value
+    LibPango.shape(text.to_unsafe, Int32.new(length), analysis.to_unsafe.as(LibPango::Analysis*), glyphs.to_unsafe.as(LibPango::GlyphString*))
+    nil
   end
 
   def self.shape_full(item_text, item_length, paragraph_text, paragraph_length, analysis, glyphs)
-    __return_value = LibPango.shape_full(item_text.to_unsafe, Int32.new(item_length), paragraph_text ? paragraph_text.to_unsafe : nil, Int32.new(paragraph_length), analysis.to_unsafe.as(LibPango::Analysis*), glyphs.to_unsafe.as(LibPango::GlyphString*))
-    __return_value
+    LibPango.shape_full(item_text.to_unsafe, Int32.new(item_length), paragraph_text ? paragraph_text.to_unsafe : nil, Int32.new(paragraph_length), analysis.to_unsafe.as(LibPango::Analysis*), glyphs.to_unsafe.as(LibPango::GlyphString*))
+    nil
   end
 
   def self.skip_space(pos)

@@ -46,8 +46,8 @@ module Gtk
     end
 
     def load_from_resource(resource_path)
-      __return_value = LibGtk.css_provider_load_from_resource(to_unsafe.as(LibGtk::CssProvider*), resource_path.to_unsafe)
-      __return_value
+      LibGtk.css_provider_load_from_resource(to_unsafe.as(LibGtk::CssProvider*), resource_path.to_unsafe)
+      nil
     end
 
     def to_string

@@ -31,8 +31,8 @@ module Gdk
     end
 
     def union(src2, dest)
-      __return_value = LibGdk.rectangle_union(to_unsafe.as(LibGdk::Rectangle*), src2.to_unsafe.as(LibGdk::Rectangle*), dest)
-      __return_value
+      LibGdk.rectangle_union(to_unsafe.as(LibGdk::Rectangle*), src2.to_unsafe.as(LibGdk::Rectangle*), dest)
+      nil
     end
 
     def x

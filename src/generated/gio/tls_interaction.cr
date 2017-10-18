@@ -16,8 +16,8 @@ module Gio
     end
 
     def ask_password_async(password, cancellable, callback, user_data)
-      __return_value = LibGio.tls_interaction_ask_password_async(to_unsafe.as(LibGio::TlsInteraction*), password.to_unsafe.as(LibGio::TlsPassword*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.tls_interaction_ask_password_async(to_unsafe.as(LibGio::TlsInteraction*), password.to_unsafe.as(LibGio::TlsPassword*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def ask_password_finish(result)
@@ -49,8 +49,8 @@ module Gio
     end
 
     def request_certificate_async(connection, flags : Gio::TlsCertificateRequestFlags, cancellable, callback, user_data)
-      __return_value = LibGio.tls_interaction_request_certificate_async(to_unsafe.as(LibGio::TlsInteraction*), connection.to_unsafe.as(LibGio::TlsConnection*), flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.tls_interaction_request_certificate_async(to_unsafe.as(LibGio::TlsInteraction*), connection.to_unsafe.as(LibGio::TlsConnection*), flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def request_certificate_finish(result)

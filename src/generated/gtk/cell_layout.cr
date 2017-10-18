@@ -1,18 +1,18 @@
 module Gtk
   module CellLayout
     def add_attribute(cell, attribute, column)
-      __return_value = LibGtk.cell_layout_add_attribute(to_unsafe.as(LibGtk::CellLayout*), cell.to_unsafe.as(LibGtk::CellRenderer*), attribute.to_unsafe, Int32.new(column))
-      __return_value
+      LibGtk.cell_layout_add_attribute(to_unsafe.as(LibGtk::CellLayout*), cell.to_unsafe.as(LibGtk::CellRenderer*), attribute.to_unsafe, Int32.new(column))
+      nil
     end
 
     def clear
-      __return_value = LibGtk.cell_layout_clear(to_unsafe.as(LibGtk::CellLayout*))
-      __return_value
+      LibGtk.cell_layout_clear(to_unsafe.as(LibGtk::CellLayout*))
+      nil
     end
 
     def clear_attributes(cell)
-      __return_value = LibGtk.cell_layout_clear_attributes(to_unsafe.as(LibGtk::CellLayout*), cell.to_unsafe.as(LibGtk::CellRenderer*))
-      __return_value
+      LibGtk.cell_layout_clear_attributes(to_unsafe.as(LibGtk::CellLayout*), cell.to_unsafe.as(LibGtk::CellRenderer*))
+      nil
     end
 
     def area
@@ -26,23 +26,23 @@ module Gtk
     end
 
     def pack_end(cell, expand)
-      __return_value = LibGtk.cell_layout_pack_end(to_unsafe.as(LibGtk::CellLayout*), cell.to_unsafe.as(LibGtk::CellRenderer*), expand)
-      __return_value
+      LibGtk.cell_layout_pack_end(to_unsafe.as(LibGtk::CellLayout*), cell.to_unsafe.as(LibGtk::CellRenderer*), expand)
+      nil
     end
 
     def pack_start(cell, expand)
-      __return_value = LibGtk.cell_layout_pack_start(to_unsafe.as(LibGtk::CellLayout*), cell.to_unsafe.as(LibGtk::CellRenderer*), expand)
-      __return_value
+      LibGtk.cell_layout_pack_start(to_unsafe.as(LibGtk::CellLayout*), cell.to_unsafe.as(LibGtk::CellRenderer*), expand)
+      nil
     end
 
     def reorder(cell, position)
-      __return_value = LibGtk.cell_layout_reorder(to_unsafe.as(LibGtk::CellLayout*), cell.to_unsafe.as(LibGtk::CellRenderer*), Int32.new(position))
-      __return_value
+      LibGtk.cell_layout_reorder(to_unsafe.as(LibGtk::CellLayout*), cell.to_unsafe.as(LibGtk::CellRenderer*), Int32.new(position))
+      nil
     end
 
     def set_cell_data_func(cell, func, func_data, destroy)
-      __return_value = LibGtk.cell_layout_set_cell_data_func(to_unsafe.as(LibGtk::CellLayout*), cell.to_unsafe.as(LibGtk::CellRenderer*), func ? func : nil, func_data ? func_data : nil, destroy)
-      __return_value
+      LibGtk.cell_layout_set_cell_data_func(to_unsafe.as(LibGtk::CellLayout*), cell.to_unsafe.as(LibGtk::CellRenderer*), func ? func : nil, func_data ? func_data : nil, destroy)
+      nil
     end
 
   end

@@ -44,8 +44,8 @@ module Gdk
     end
 
     def ungrab
-      __return_value = LibGdk.seat_ungrab(to_unsafe.as(LibGdk::Seat*))
-      __return_value
+      LibGdk.seat_ungrab(to_unsafe.as(LibGdk::Seat*))
+      nil
     end
 
     alias DeviceAddedSignal = Seat, Gdk::Device ->

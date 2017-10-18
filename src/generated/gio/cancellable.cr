@@ -19,8 +19,8 @@ module Gio
     end
 
     def cancel
-      __return_value = LibGio.cancellable_cancel(to_unsafe.as(LibGio::Cancellable*))
-      __return_value
+      LibGio.cancellable_cancel(to_unsafe.as(LibGio::Cancellable*))
+      nil
     end
 
     def connect(callback, data, data_destroy_func)
@@ -29,8 +29,8 @@ module Gio
     end
 
     def disconnect(handler_id)
-      __return_value = LibGio.cancellable_disconnect(to_unsafe.as(LibGio::Cancellable*), UInt64.new(handler_id))
-      __return_value
+      LibGio.cancellable_disconnect(to_unsafe.as(LibGio::Cancellable*), UInt64.new(handler_id))
+      nil
     end
 
     def fd
@@ -49,23 +49,23 @@ module Gio
     end
 
     def pop_current
-      __return_value = LibGio.cancellable_pop_current(to_unsafe.as(LibGio::Cancellable*))
-      __return_value
+      LibGio.cancellable_pop_current(to_unsafe.as(LibGio::Cancellable*))
+      nil
     end
 
     def push_current
-      __return_value = LibGio.cancellable_push_current(to_unsafe.as(LibGio::Cancellable*))
-      __return_value
+      LibGio.cancellable_push_current(to_unsafe.as(LibGio::Cancellable*))
+      nil
     end
 
     def release_fd
-      __return_value = LibGio.cancellable_release_fd(to_unsafe.as(LibGio::Cancellable*))
-      __return_value
+      LibGio.cancellable_release_fd(to_unsafe.as(LibGio::Cancellable*))
+      nil
     end
 
     def reset
-      __return_value = LibGio.cancellable_reset(to_unsafe.as(LibGio::Cancellable*))
-      __return_value
+      LibGio.cancellable_reset(to_unsafe.as(LibGio::Cancellable*))
+      nil
     end
 
     def error_if_cancelled=

@@ -26,8 +26,8 @@ module Gio
     end
 
     def accept_async(cancellable, callback, user_data)
-      __return_value = LibGio.socket_listener_accept_async(to_unsafe.as(LibGio::SocketListener*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.socket_listener_accept_async(to_unsafe.as(LibGio::SocketListener*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def accept_finish(result, source_object)
@@ -45,8 +45,8 @@ module Gio
     end
 
     def accept_socket_async(cancellable, callback, user_data)
-      __return_value = LibGio.socket_listener_accept_socket_async(to_unsafe.as(LibGio::SocketListener*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.socket_listener_accept_socket_async(to_unsafe.as(LibGio::SocketListener*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def accept_socket_finish(result, source_object)
@@ -85,13 +85,13 @@ module Gio
     end
 
     def close
-      __return_value = LibGio.socket_listener_close(to_unsafe.as(LibGio::SocketListener*))
-      __return_value
+      LibGio.socket_listener_close(to_unsafe.as(LibGio::SocketListener*))
+      nil
     end
 
     def backlog=(listen_backlog)
-      __return_value = LibGio.socket_listener_set_backlog(to_unsafe.as(LibGio::SocketListener*), Int32.new(listen_backlog))
-      __return_value
+      LibGio.socket_listener_set_backlog(to_unsafe.as(LibGio::SocketListener*), Int32.new(listen_backlog))
+      nil
     end
 
     alias EventSignal = SocketListener, Gio::SocketListenerEvent, Gio::Socket ->

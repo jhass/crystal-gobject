@@ -59,13 +59,13 @@ module Gtk
     end
 
     def current_color(color)
-      __return_value = LibGtk.color_selection_get_current_color(to_unsafe.as(LibGtk::ColorSelection*), color)
-      __return_value
+      LibGtk.color_selection_get_current_color(to_unsafe.as(LibGtk::ColorSelection*), color)
+      nil
     end
 
     def current_rgba(rgba)
-      __return_value = LibGtk.color_selection_get_current_rgba(to_unsafe.as(LibGtk::ColorSelection*), rgba)
-      __return_value
+      LibGtk.color_selection_get_current_rgba(to_unsafe.as(LibGtk::ColorSelection*), rgba)
+      nil
     end
 
     def has_opacity_control
@@ -84,13 +84,13 @@ module Gtk
     end
 
     def previous_color(color)
-      __return_value = LibGtk.color_selection_get_previous_color(to_unsafe.as(LibGtk::ColorSelection*), color)
-      __return_value
+      LibGtk.color_selection_get_previous_color(to_unsafe.as(LibGtk::ColorSelection*), color)
+      nil
     end
 
     def previous_rgba(rgba)
-      __return_value = LibGtk.color_selection_get_previous_rgba(to_unsafe.as(LibGtk::ColorSelection*), rgba)
-      __return_value
+      LibGtk.color_selection_get_previous_rgba(to_unsafe.as(LibGtk::ColorSelection*), rgba)
+      nil
     end
 
     def adjusting?
@@ -99,43 +99,43 @@ module Gtk
     end
 
     def current_alpha=(alpha)
-      __return_value = LibGtk.color_selection_set_current_alpha(to_unsafe.as(LibGtk::ColorSelection*), UInt16.new(alpha))
-      __return_value
+      LibGtk.color_selection_set_current_alpha(to_unsafe.as(LibGtk::ColorSelection*), UInt16.new(alpha))
+      nil
     end
 
     def current_color=(color)
-      __return_value = LibGtk.color_selection_set_current_color(to_unsafe.as(LibGtk::ColorSelection*), color.to_unsafe.as(LibGdk::Color*))
-      __return_value
+      LibGtk.color_selection_set_current_color(to_unsafe.as(LibGtk::ColorSelection*), color.to_unsafe.as(LibGdk::Color*))
+      nil
     end
 
     def current_rgba=(rgba)
-      __return_value = LibGtk.color_selection_set_current_rgba(to_unsafe.as(LibGtk::ColorSelection*), rgba.to_unsafe.as(LibGdk::RGBA*))
-      __return_value
+      LibGtk.color_selection_set_current_rgba(to_unsafe.as(LibGtk::ColorSelection*), rgba.to_unsafe.as(LibGdk::RGBA*))
+      nil
     end
 
     def has_opacity_control=(has_opacity)
-      __return_value = LibGtk.color_selection_set_has_opacity_control(to_unsafe.as(LibGtk::ColorSelection*), has_opacity)
-      __return_value
+      LibGtk.color_selection_set_has_opacity_control(to_unsafe.as(LibGtk::ColorSelection*), has_opacity)
+      nil
     end
 
     def has_palette=(has_palette)
-      __return_value = LibGtk.color_selection_set_has_palette(to_unsafe.as(LibGtk::ColorSelection*), has_palette)
-      __return_value
+      LibGtk.color_selection_set_has_palette(to_unsafe.as(LibGtk::ColorSelection*), has_palette)
+      nil
     end
 
     def previous_alpha=(alpha)
-      __return_value = LibGtk.color_selection_set_previous_alpha(to_unsafe.as(LibGtk::ColorSelection*), UInt16.new(alpha))
-      __return_value
+      LibGtk.color_selection_set_previous_alpha(to_unsafe.as(LibGtk::ColorSelection*), UInt16.new(alpha))
+      nil
     end
 
     def previous_color=(color)
-      __return_value = LibGtk.color_selection_set_previous_color(to_unsafe.as(LibGtk::ColorSelection*), color.to_unsafe.as(LibGdk::Color*))
-      __return_value
+      LibGtk.color_selection_set_previous_color(to_unsafe.as(LibGtk::ColorSelection*), color.to_unsafe.as(LibGdk::Color*))
+      nil
     end
 
     def previous_rgba=(rgba)
-      __return_value = LibGtk.color_selection_set_previous_rgba(to_unsafe.as(LibGtk::ColorSelection*), rgba.to_unsafe.as(LibGdk::RGBA*))
-      __return_value
+      LibGtk.color_selection_set_previous_rgba(to_unsafe.as(LibGtk::ColorSelection*), rgba.to_unsafe.as(LibGdk::RGBA*))
+      nil
     end
 
     alias ColorChangedSignal = ColorSelection ->

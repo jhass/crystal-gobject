@@ -16,27 +16,27 @@ module Gst
     end
 
     def cleanup
-      __return_value = LibGst.task_pool_cleanup(to_unsafe.as(LibGst::TaskPool*))
-      __return_value
+      LibGst.task_pool_cleanup(to_unsafe.as(LibGst::TaskPool*))
+      nil
     end
 
     def join(id)
-      __return_value = LibGst.task_pool_join(to_unsafe.as(LibGst::TaskPool*), id ? id : nil)
-      __return_value
+      LibGst.task_pool_join(to_unsafe.as(LibGst::TaskPool*), id ? id : nil)
+      nil
     end
 
     def prepare
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGst.task_pool_prepare(to_unsafe.as(LibGst::TaskPool*), pointerof(__error))
+      LibGst.task_pool_prepare(to_unsafe.as(LibGst::TaskPool*), pointerof(__error))
       GLib::Error.assert __error
-      __return_value
+      nil
     end
 
     def push(func, user_data)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGst.task_pool_push(to_unsafe.as(LibGst::TaskPool*), func, user_data ? user_data : nil, pointerof(__error))
+      LibGst.task_pool_push(to_unsafe.as(LibGst::TaskPool*), func, user_data ? user_data : nil, pointerof(__error))
       GLib::Error.assert __error
-      __return_value if __return_value
+      nil
     end
 
   end

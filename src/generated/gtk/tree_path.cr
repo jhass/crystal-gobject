@@ -31,8 +31,8 @@ module Gtk
     end
 
     def append_index(index)
-      __return_value = LibGtk.tree_path_append_index(to_unsafe.as(LibGtk::TreePath*), Int32.new(index))
-      __return_value
+      LibGtk.tree_path_append_index(to_unsafe.as(LibGtk::TreePath*), Int32.new(index))
+      nil
     end
 
     def compare(b)
@@ -46,13 +46,13 @@ module Gtk
     end
 
     def down
-      __return_value = LibGtk.tree_path_down(to_unsafe.as(LibGtk::TreePath*))
-      __return_value
+      LibGtk.tree_path_down(to_unsafe.as(LibGtk::TreePath*))
+      nil
     end
 
     def free
-      __return_value = LibGtk.tree_path_free(to_unsafe.as(LibGtk::TreePath*))
-      __return_value
+      LibGtk.tree_path_free(to_unsafe.as(LibGtk::TreePath*))
+      nil
     end
 
     def depth
@@ -76,13 +76,13 @@ module Gtk
     end
 
     def next
-      __return_value = LibGtk.tree_path_next(to_unsafe.as(LibGtk::TreePath*))
-      __return_value
+      LibGtk.tree_path_next(to_unsafe.as(LibGtk::TreePath*))
+      nil
     end
 
     def prepend_index(index)
-      __return_value = LibGtk.tree_path_prepend_index(to_unsafe.as(LibGtk::TreePath*), Int32.new(index))
-      __return_value
+      LibGtk.tree_path_prepend_index(to_unsafe.as(LibGtk::TreePath*), Int32.new(index))
+      nil
     end
 
     def prev

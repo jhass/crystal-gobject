@@ -49,58 +49,58 @@ module Gtk
     end
 
     def select_all
-      __return_value = LibGtk.tree_selection_select_all(to_unsafe.as(LibGtk::TreeSelection*))
-      __return_value
+      LibGtk.tree_selection_select_all(to_unsafe.as(LibGtk::TreeSelection*))
+      nil
     end
 
     def select_iter(iter)
-      __return_value = LibGtk.tree_selection_select_iter(to_unsafe.as(LibGtk::TreeSelection*), iter.to_unsafe.as(LibGtk::TreeIter*))
-      __return_value
+      LibGtk.tree_selection_select_iter(to_unsafe.as(LibGtk::TreeSelection*), iter.to_unsafe.as(LibGtk::TreeIter*))
+      nil
     end
 
     def select_path(path)
-      __return_value = LibGtk.tree_selection_select_path(to_unsafe.as(LibGtk::TreeSelection*), path.to_unsafe.as(LibGtk::TreePath*))
-      __return_value
+      LibGtk.tree_selection_select_path(to_unsafe.as(LibGtk::TreeSelection*), path.to_unsafe.as(LibGtk::TreePath*))
+      nil
     end
 
     def select_range(start_path, end_path)
-      __return_value = LibGtk.tree_selection_select_range(to_unsafe.as(LibGtk::TreeSelection*), start_path.to_unsafe.as(LibGtk::TreePath*), end_path.to_unsafe.as(LibGtk::TreePath*))
-      __return_value
+      LibGtk.tree_selection_select_range(to_unsafe.as(LibGtk::TreeSelection*), start_path.to_unsafe.as(LibGtk::TreePath*), end_path.to_unsafe.as(LibGtk::TreePath*))
+      nil
     end
 
     def selected_foreach(func, data)
-      __return_value = LibGtk.tree_selection_selected_foreach(to_unsafe.as(LibGtk::TreeSelection*), func, data ? data : nil)
-      __return_value
+      LibGtk.tree_selection_selected_foreach(to_unsafe.as(LibGtk::TreeSelection*), func, data ? data : nil)
+      nil
     end
 
     def mode=(type : Gtk::SelectionMode)
-      __return_value = LibGtk.tree_selection_set_mode(to_unsafe.as(LibGtk::TreeSelection*), type)
-      __return_value
+      LibGtk.tree_selection_set_mode(to_unsafe.as(LibGtk::TreeSelection*), type)
+      nil
     end
 
     def set_select_function(func, data, destroy)
-      __return_value = LibGtk.tree_selection_set_select_function(to_unsafe.as(LibGtk::TreeSelection*), func, data ? data : nil, destroy)
-      __return_value
+      LibGtk.tree_selection_set_select_function(to_unsafe.as(LibGtk::TreeSelection*), func, data ? data : nil, destroy)
+      nil
     end
 
     def unselect_all
-      __return_value = LibGtk.tree_selection_unselect_all(to_unsafe.as(LibGtk::TreeSelection*))
-      __return_value
+      LibGtk.tree_selection_unselect_all(to_unsafe.as(LibGtk::TreeSelection*))
+      nil
     end
 
     def unselect_iter(iter)
-      __return_value = LibGtk.tree_selection_unselect_iter(to_unsafe.as(LibGtk::TreeSelection*), iter.to_unsafe.as(LibGtk::TreeIter*))
-      __return_value
+      LibGtk.tree_selection_unselect_iter(to_unsafe.as(LibGtk::TreeSelection*), iter.to_unsafe.as(LibGtk::TreeIter*))
+      nil
     end
 
     def unselect_path(path)
-      __return_value = LibGtk.tree_selection_unselect_path(to_unsafe.as(LibGtk::TreeSelection*), path.to_unsafe.as(LibGtk::TreePath*))
-      __return_value
+      LibGtk.tree_selection_unselect_path(to_unsafe.as(LibGtk::TreeSelection*), path.to_unsafe.as(LibGtk::TreePath*))
+      nil
     end
 
     def unselect_range(start_path, end_path)
-      __return_value = LibGtk.tree_selection_unselect_range(to_unsafe.as(LibGtk::TreeSelection*), start_path.to_unsafe.as(LibGtk::TreePath*), end_path.to_unsafe.as(LibGtk::TreePath*))
-      __return_value
+      LibGtk.tree_selection_unselect_range(to_unsafe.as(LibGtk::TreeSelection*), start_path.to_unsafe.as(LibGtk::TreePath*), end_path.to_unsafe.as(LibGtk::TreePath*))
+      nil
     end
 
     alias ChangedSignal = TreeSelection ->

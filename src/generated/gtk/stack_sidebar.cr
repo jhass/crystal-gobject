@@ -28,8 +28,8 @@ module Gtk
     end
 
     def stack=(stack)
-      __return_value = LibGtk.stack_sidebar_set_stack(to_unsafe.as(LibGtk::StackSidebar*), stack.to_unsafe.as(LibGtk::Stack*))
-      __return_value
+      LibGtk.stack_sidebar_set_stack(to_unsafe.as(LibGtk::StackSidebar*), stack.to_unsafe.as(LibGtk::Stack*))
+      nil
     end
 
   end

@@ -20,18 +20,18 @@ module GLib
     end
 
     def clear
-      __return_value = LibGLib.queue_clear(to_unsafe.as(LibGLib::Queue*))
-      __return_value
+      LibGLib.queue_clear(to_unsafe.as(LibGLib::Queue*))
+      nil
     end
 
     def free
-      __return_value = LibGLib.queue_free(to_unsafe.as(LibGLib::Queue*))
-      __return_value
+      LibGLib.queue_free(to_unsafe.as(LibGLib::Queue*))
+      nil
     end
 
     def free_full(free_func)
-      __return_value = LibGLib.queue_free_full(to_unsafe.as(LibGLib::Queue*), free_func)
-      __return_value
+      LibGLib.queue_free_full(to_unsafe.as(LibGLib::Queue*), free_func)
+      nil
     end
 
     def length
@@ -45,8 +45,8 @@ module GLib
     end
 
     def init
-      __return_value = LibGLib.queue_init(to_unsafe.as(LibGLib::Queue*))
-      __return_value
+      LibGLib.queue_init(to_unsafe.as(LibGLib::Queue*))
+      nil
     end
 
     def empty?
@@ -55,48 +55,48 @@ module GLib
     end
 
     def peek_head
-      __return_value = LibGLib.queue_peek_head(to_unsafe.as(LibGLib::Queue*))
-      __return_value if __return_value
+      LibGLib.queue_peek_head(to_unsafe.as(LibGLib::Queue*))
+      nil
     end
 
     def peek_nth(n)
-      __return_value = LibGLib.queue_peek_nth(to_unsafe.as(LibGLib::Queue*), UInt32.new(n))
-      __return_value if __return_value
+      LibGLib.queue_peek_nth(to_unsafe.as(LibGLib::Queue*), UInt32.new(n))
+      nil
     end
 
     def peek_tail
-      __return_value = LibGLib.queue_peek_tail(to_unsafe.as(LibGLib::Queue*))
-      __return_value if __return_value
+      LibGLib.queue_peek_tail(to_unsafe.as(LibGLib::Queue*))
+      nil
     end
 
     def pop_head
-      __return_value = LibGLib.queue_pop_head(to_unsafe.as(LibGLib::Queue*))
-      __return_value if __return_value
+      LibGLib.queue_pop_head(to_unsafe.as(LibGLib::Queue*))
+      nil
     end
 
     def pop_nth(n)
-      __return_value = LibGLib.queue_pop_nth(to_unsafe.as(LibGLib::Queue*), UInt32.new(n))
-      __return_value if __return_value
+      LibGLib.queue_pop_nth(to_unsafe.as(LibGLib::Queue*), UInt32.new(n))
+      nil
     end
 
     def pop_tail
-      __return_value = LibGLib.queue_pop_tail(to_unsafe.as(LibGLib::Queue*))
-      __return_value if __return_value
+      LibGLib.queue_pop_tail(to_unsafe.as(LibGLib::Queue*))
+      nil
     end
 
     def push_head(data)
-      __return_value = LibGLib.queue_push_head(to_unsafe.as(LibGLib::Queue*), data ? data : nil)
-      __return_value
+      LibGLib.queue_push_head(to_unsafe.as(LibGLib::Queue*), data ? data : nil)
+      nil
     end
 
     def push_nth(data, n)
-      __return_value = LibGLib.queue_push_nth(to_unsafe.as(LibGLib::Queue*), data ? data : nil, Int32.new(n))
-      __return_value
+      LibGLib.queue_push_nth(to_unsafe.as(LibGLib::Queue*), data ? data : nil, Int32.new(n))
+      nil
     end
 
     def push_tail(data)
-      __return_value = LibGLib.queue_push_tail(to_unsafe.as(LibGLib::Queue*), data ? data : nil)
-      __return_value
+      LibGLib.queue_push_tail(to_unsafe.as(LibGLib::Queue*), data ? data : nil)
+      nil
     end
 
     def remove(data)
@@ -110,8 +110,8 @@ module GLib
     end
 
     def reverse
-      __return_value = LibGLib.queue_reverse(to_unsafe.as(LibGLib::Queue*))
-      __return_value
+      LibGLib.queue_reverse(to_unsafe.as(LibGLib::Queue*))
+      nil
     end
 
     def head

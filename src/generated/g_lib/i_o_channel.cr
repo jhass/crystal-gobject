@@ -28,8 +28,8 @@ module GLib
     end
 
     def close
-      __return_value = LibGLib.i_o_channel_close(to_unsafe.as(LibGLib::IOChannel*))
-      __return_value
+      LibGLib.i_o_channel_close(to_unsafe.as(LibGLib::IOChannel*))
+      nil
     end
 
     def flush
@@ -75,8 +75,8 @@ module GLib
     end
 
     def init
-      __return_value = LibGLib.i_o_channel_init(to_unsafe.as(LibGLib::IOChannel*))
-      __return_value
+      LibGLib.i_o_channel_init(to_unsafe.as(LibGLib::IOChannel*))
+      nil
     end
 
     def read(buf, count, bytes_read)
@@ -137,18 +137,18 @@ module GLib
     end
 
     def buffer_size=(size)
-      __return_value = LibGLib.i_o_channel_set_buffer_size(to_unsafe.as(LibGLib::IOChannel*), UInt64.new(size))
-      __return_value
+      LibGLib.i_o_channel_set_buffer_size(to_unsafe.as(LibGLib::IOChannel*), UInt64.new(size))
+      nil
     end
 
     def buffered=(buffered)
-      __return_value = LibGLib.i_o_channel_set_buffered(to_unsafe.as(LibGLib::IOChannel*), buffered)
-      __return_value
+      LibGLib.i_o_channel_set_buffered(to_unsafe.as(LibGLib::IOChannel*), buffered)
+      nil
     end
 
     def close_on_unref=(do_close)
-      __return_value = LibGLib.i_o_channel_set_close_on_unref(to_unsafe.as(LibGLib::IOChannel*), do_close)
-      __return_value
+      LibGLib.i_o_channel_set_close_on_unref(to_unsafe.as(LibGLib::IOChannel*), do_close)
+      nil
     end
 
     def set_encoding(encoding)
@@ -166,8 +166,8 @@ module GLib
     end
 
     def set_line_term(line_term, length)
-      __return_value = LibGLib.i_o_channel_set_line_term(to_unsafe.as(LibGLib::IOChannel*), line_term ? line_term.to_unsafe : nil, Int32.new(length))
-      __return_value
+      LibGLib.i_o_channel_set_line_term(to_unsafe.as(LibGLib::IOChannel*), line_term ? line_term.to_unsafe : nil, Int32.new(length))
+      nil
     end
 
     def shutdown(flush)
@@ -183,8 +183,8 @@ module GLib
     end
 
     def unref
-      __return_value = LibGLib.i_o_channel_unref(to_unsafe.as(LibGLib::IOChannel*))
-      __return_value
+      LibGLib.i_o_channel_unref(to_unsafe.as(LibGLib::IOChannel*))
+      nil
     end
 
     def write(buf, count, bytes_written)

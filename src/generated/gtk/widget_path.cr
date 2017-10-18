@@ -36,8 +36,8 @@ module Gtk
     end
 
     def free
-      __return_value = LibGtk.widget_path_free(to_unsafe.as(LibGtk::WidgetPath*))
-      __return_value
+      LibGtk.widget_path_free(to_unsafe.as(LibGtk::WidgetPath*))
+      nil
     end
 
     def object_type
@@ -56,23 +56,23 @@ module Gtk
     end
 
     def iter_add_class(pos, name)
-      __return_value = LibGtk.widget_path_iter_add_class(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name.to_unsafe)
-      __return_value
+      LibGtk.widget_path_iter_add_class(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name.to_unsafe)
+      nil
     end
 
     def iter_add_region(pos, name, flags : Gtk::RegionFlags)
-      __return_value = LibGtk.widget_path_iter_add_region(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name.to_unsafe, flags)
-      __return_value
+      LibGtk.widget_path_iter_add_region(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name.to_unsafe, flags)
+      nil
     end
 
     def iter_clear_classes(pos)
-      __return_value = LibGtk.widget_path_iter_clear_classes(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos))
-      __return_value
+      LibGtk.widget_path_iter_clear_classes(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos))
+      nil
     end
 
     def iter_clear_regions(pos)
-      __return_value = LibGtk.widget_path_iter_clear_regions(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos))
-      __return_value
+      LibGtk.widget_path_iter_clear_regions(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos))
+      nil
     end
 
     def iter_get_name(pos)
@@ -146,33 +146,33 @@ module Gtk
     end
 
     def iter_remove_class(pos, name)
-      __return_value = LibGtk.widget_path_iter_remove_class(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name.to_unsafe)
-      __return_value
+      LibGtk.widget_path_iter_remove_class(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name.to_unsafe)
+      nil
     end
 
     def iter_remove_region(pos, name)
-      __return_value = LibGtk.widget_path_iter_remove_region(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name.to_unsafe)
-      __return_value
+      LibGtk.widget_path_iter_remove_region(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name.to_unsafe)
+      nil
     end
 
     def iter_set_name(pos, name)
-      __return_value = LibGtk.widget_path_iter_set_name(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name.to_unsafe)
-      __return_value
+      LibGtk.widget_path_iter_set_name(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name.to_unsafe)
+      nil
     end
 
     def iter_set_object_name(pos, name)
-      __return_value = LibGtk.widget_path_iter_set_object_name(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name ? name.to_unsafe : nil)
-      __return_value
+      LibGtk.widget_path_iter_set_object_name(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), name ? name.to_unsafe : nil)
+      nil
     end
 
     def iter_set_object_type(pos, type)
-      __return_value = LibGtk.widget_path_iter_set_object_type(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), UInt64.new(type))
-      __return_value
+      LibGtk.widget_path_iter_set_object_type(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), UInt64.new(type))
+      nil
     end
 
     def iter_set_state(pos, state : Gtk::StateFlags)
-      __return_value = LibGtk.widget_path_iter_set_state(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), state)
-      __return_value
+      LibGtk.widget_path_iter_set_state(to_unsafe.as(LibGtk::WidgetPath*), Int32.new(pos), state)
+      nil
     end
 
     def length
@@ -181,8 +181,8 @@ module Gtk
     end
 
     def prepend_type(type)
-      __return_value = LibGtk.widget_path_prepend_type(to_unsafe.as(LibGtk::WidgetPath*), UInt64.new(type))
-      __return_value
+      LibGtk.widget_path_prepend_type(to_unsafe.as(LibGtk::WidgetPath*), UInt64.new(type))
+      nil
     end
 
     def ref
@@ -196,8 +196,8 @@ module Gtk
     end
 
     def unref
-      __return_value = LibGtk.widget_path_unref(to_unsafe.as(LibGtk::WidgetPath*))
-      __return_value
+      LibGtk.widget_path_unref(to_unsafe.as(LibGtk::WidgetPath*))
+      nil
     end
 
   end

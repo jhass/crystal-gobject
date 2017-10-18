@@ -146,8 +146,8 @@ module Gst
     end
 
     def unref
-      __return_value = LibGst.date_time_unref(to_unsafe.as(LibGst::DateTime*))
-      __return_value
+      LibGst.date_time_unref(to_unsafe.as(LibGst::DateTime*))
+      nil
     end
 
   end

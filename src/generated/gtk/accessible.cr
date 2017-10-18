@@ -14,8 +14,8 @@ module Gtk
     end
 
     def connect_widget_destroyed
-      __return_value = LibGtk.accessible_connect_widget_destroyed(to_unsafe.as(LibGtk::Accessible*))
-      __return_value
+      LibGtk.accessible_connect_widget_destroyed(to_unsafe.as(LibGtk::Accessible*))
+      nil
     end
 
     def widget
@@ -24,8 +24,8 @@ module Gtk
     end
 
     def widget=(widget)
-      __return_value = LibGtk.accessible_set_widget(to_unsafe.as(LibGtk::Accessible*), widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil)
-      __return_value
+      LibGtk.accessible_set_widget(to_unsafe.as(LibGtk::Accessible*), widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil)
+      nil
     end
 
   end

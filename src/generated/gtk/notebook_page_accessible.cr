@@ -15,8 +15,8 @@ module Gtk
     end
 
     def invalidate
-      __return_value = LibGtk.notebook_page_accessible_invalidate(to_unsafe.as(LibGtk::NotebookPageAccessible*))
-      __return_value
+      LibGtk.notebook_page_accessible_invalidate(to_unsafe.as(LibGtk::NotebookPageAccessible*))
+      nil
     end
 
   end

@@ -24,8 +24,8 @@ module Gdk
     end
 
     def self.clear_current
-      __return_value = LibGdk.g_l_context_clear_current
-      __return_value
+      LibGdk.g_l_context_clear_current
+      nil
     end
 
     def self.current
@@ -49,8 +49,8 @@ module Gdk
     end
 
     def required_version(major, minor)
-      __return_value = LibGdk.g_l_context_get_required_version(to_unsafe.as(LibGdk::GLContext*), major, minor)
-      __return_value
+      LibGdk.g_l_context_get_required_version(to_unsafe.as(LibGdk::GLContext*), major, minor)
+      nil
     end
 
     def shared_context
@@ -64,8 +64,8 @@ module Gdk
     end
 
     def version(major, minor)
-      __return_value = LibGdk.g_l_context_get_version(to_unsafe.as(LibGdk::GLContext*), major, minor)
-      __return_value
+      LibGdk.g_l_context_get_version(to_unsafe.as(LibGdk::GLContext*), major, minor)
+      nil
     end
 
     def window
@@ -79,8 +79,8 @@ module Gdk
     end
 
     def make_current
-      __return_value = LibGdk.g_l_context_make_current(to_unsafe.as(LibGdk::GLContext*))
-      __return_value
+      LibGdk.g_l_context_make_current(to_unsafe.as(LibGdk::GLContext*))
+      nil
     end
 
     def realize
@@ -91,23 +91,23 @@ module Gdk
     end
 
     def debug_enabled=(enabled)
-      __return_value = LibGdk.g_l_context_set_debug_enabled(to_unsafe.as(LibGdk::GLContext*), enabled)
-      __return_value
+      LibGdk.g_l_context_set_debug_enabled(to_unsafe.as(LibGdk::GLContext*), enabled)
+      nil
     end
 
     def forward_compatible=(compatible)
-      __return_value = LibGdk.g_l_context_set_forward_compatible(to_unsafe.as(LibGdk::GLContext*), compatible)
-      __return_value
+      LibGdk.g_l_context_set_forward_compatible(to_unsafe.as(LibGdk::GLContext*), compatible)
+      nil
     end
 
     def set_required_version(major, minor)
-      __return_value = LibGdk.g_l_context_set_required_version(to_unsafe.as(LibGdk::GLContext*), Int32.new(major), Int32.new(minor))
-      __return_value
+      LibGdk.g_l_context_set_required_version(to_unsafe.as(LibGdk::GLContext*), Int32.new(major), Int32.new(minor))
+      nil
     end
 
     def use_es=(use_es)
-      __return_value = LibGdk.g_l_context_set_use_es(to_unsafe.as(LibGdk::GLContext*), Int32.new(use_es))
-      __return_value
+      LibGdk.g_l_context_set_use_es(to_unsafe.as(LibGdk::GLContext*), Int32.new(use_es))
+      nil
     end
 
   end

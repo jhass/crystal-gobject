@@ -1,8 +1,8 @@
 module Gtk
   module RecentChooser
     def add_filter(filter)
-      __return_value = LibGtk.recent_chooser_add_filter(to_unsafe.as(LibGtk::RecentChooser*), filter.to_unsafe.as(LibGtk::RecentFilter*))
-      __return_value
+      LibGtk.recent_chooser_add_filter(to_unsafe.as(LibGtk::RecentChooser*), filter.to_unsafe.as(LibGtk::RecentFilter*))
+      nil
     end
 
     def current_item
@@ -76,13 +76,13 @@ module Gtk
     end
 
     def remove_filter(filter)
-      __return_value = LibGtk.recent_chooser_remove_filter(to_unsafe.as(LibGtk::RecentChooser*), filter.to_unsafe.as(LibGtk::RecentFilter*))
-      __return_value
+      LibGtk.recent_chooser_remove_filter(to_unsafe.as(LibGtk::RecentChooser*), filter.to_unsafe.as(LibGtk::RecentFilter*))
+      nil
     end
 
     def select_all
-      __return_value = LibGtk.recent_chooser_select_all(to_unsafe.as(LibGtk::RecentChooser*))
-      __return_value
+      LibGtk.recent_chooser_select_all(to_unsafe.as(LibGtk::RecentChooser*))
+      nil
     end
 
     def select_uri(uri)
@@ -100,63 +100,63 @@ module Gtk
     end
 
     def filter=(filter)
-      __return_value = LibGtk.recent_chooser_set_filter(to_unsafe.as(LibGtk::RecentChooser*), filter ? filter.to_unsafe.as(LibGtk::RecentFilter*) : nil)
-      __return_value
+      LibGtk.recent_chooser_set_filter(to_unsafe.as(LibGtk::RecentChooser*), filter ? filter.to_unsafe.as(LibGtk::RecentFilter*) : nil)
+      nil
     end
 
     def limit=(limit)
-      __return_value = LibGtk.recent_chooser_set_limit(to_unsafe.as(LibGtk::RecentChooser*), Int32.new(limit))
-      __return_value
+      LibGtk.recent_chooser_set_limit(to_unsafe.as(LibGtk::RecentChooser*), Int32.new(limit))
+      nil
     end
 
     def local_only=(local_only)
-      __return_value = LibGtk.recent_chooser_set_local_only(to_unsafe.as(LibGtk::RecentChooser*), local_only)
-      __return_value
+      LibGtk.recent_chooser_set_local_only(to_unsafe.as(LibGtk::RecentChooser*), local_only)
+      nil
     end
 
     def select_multiple=(select_multiple)
-      __return_value = LibGtk.recent_chooser_set_select_multiple(to_unsafe.as(LibGtk::RecentChooser*), select_multiple)
-      __return_value
+      LibGtk.recent_chooser_set_select_multiple(to_unsafe.as(LibGtk::RecentChooser*), select_multiple)
+      nil
     end
 
     def show_icons=(show_icons)
-      __return_value = LibGtk.recent_chooser_set_show_icons(to_unsafe.as(LibGtk::RecentChooser*), show_icons)
-      __return_value
+      LibGtk.recent_chooser_set_show_icons(to_unsafe.as(LibGtk::RecentChooser*), show_icons)
+      nil
     end
 
     def show_not_found=(show_not_found)
-      __return_value = LibGtk.recent_chooser_set_show_not_found(to_unsafe.as(LibGtk::RecentChooser*), show_not_found)
-      __return_value
+      LibGtk.recent_chooser_set_show_not_found(to_unsafe.as(LibGtk::RecentChooser*), show_not_found)
+      nil
     end
 
     def show_private=(show_private)
-      __return_value = LibGtk.recent_chooser_set_show_private(to_unsafe.as(LibGtk::RecentChooser*), show_private)
-      __return_value
+      LibGtk.recent_chooser_set_show_private(to_unsafe.as(LibGtk::RecentChooser*), show_private)
+      nil
     end
 
     def show_tips=(show_tips)
-      __return_value = LibGtk.recent_chooser_set_show_tips(to_unsafe.as(LibGtk::RecentChooser*), show_tips)
-      __return_value
+      LibGtk.recent_chooser_set_show_tips(to_unsafe.as(LibGtk::RecentChooser*), show_tips)
+      nil
     end
 
     def set_sort_func(sort_func, sort_data, data_destroy)
-      __return_value = LibGtk.recent_chooser_set_sort_func(to_unsafe.as(LibGtk::RecentChooser*), sort_func, sort_data ? sort_data : nil, data_destroy ? data_destroy : nil)
-      __return_value
+      LibGtk.recent_chooser_set_sort_func(to_unsafe.as(LibGtk::RecentChooser*), sort_func, sort_data ? sort_data : nil, data_destroy ? data_destroy : nil)
+      nil
     end
 
     def sort_type=(sort_type : Gtk::RecentSortType)
-      __return_value = LibGtk.recent_chooser_set_sort_type(to_unsafe.as(LibGtk::RecentChooser*), sort_type)
-      __return_value
+      LibGtk.recent_chooser_set_sort_type(to_unsafe.as(LibGtk::RecentChooser*), sort_type)
+      nil
     end
 
     def unselect_all
-      __return_value = LibGtk.recent_chooser_unselect_all(to_unsafe.as(LibGtk::RecentChooser*))
-      __return_value
+      LibGtk.recent_chooser_unselect_all(to_unsafe.as(LibGtk::RecentChooser*))
+      nil
     end
 
     def unselect_uri(uri)
-      __return_value = LibGtk.recent_chooser_unselect_uri(to_unsafe.as(LibGtk::RecentChooser*), uri.to_unsafe)
-      __return_value
+      LibGtk.recent_chooser_unselect_uri(to_unsafe.as(LibGtk::RecentChooser*), uri.to_unsafe)
+      nil
     end
 
     alias ItemActivatedSignal = RecentChooser ->

@@ -16,8 +16,8 @@ module GLib
     end
 
     def free
-      __return_value = LibGLib.pattern_spec_free(to_unsafe.as(LibGLib::PatternSpec*))
-      __return_value
+      LibGLib.pattern_spec_free(to_unsafe.as(LibGLib::PatternSpec*))
+      nil
     end
 
   end

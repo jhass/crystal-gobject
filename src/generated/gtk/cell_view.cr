@@ -106,33 +106,33 @@ module Gtk
     end
 
     def background_color=(color)
-      __return_value = LibGtk.cell_view_set_background_color(to_unsafe.as(LibGtk::CellView*), color.to_unsafe.as(LibGdk::Color*))
-      __return_value
+      LibGtk.cell_view_set_background_color(to_unsafe.as(LibGtk::CellView*), color.to_unsafe.as(LibGdk::Color*))
+      nil
     end
 
     def background_rgba=(rgba)
-      __return_value = LibGtk.cell_view_set_background_rgba(to_unsafe.as(LibGtk::CellView*), rgba.to_unsafe.as(LibGdk::RGBA*))
-      __return_value
+      LibGtk.cell_view_set_background_rgba(to_unsafe.as(LibGtk::CellView*), rgba.to_unsafe.as(LibGdk::RGBA*))
+      nil
     end
 
     def displayed_row=(path)
-      __return_value = LibGtk.cell_view_set_displayed_row(to_unsafe.as(LibGtk::CellView*), path ? path.to_unsafe.as(LibGtk::TreePath*) : nil)
-      __return_value
+      LibGtk.cell_view_set_displayed_row(to_unsafe.as(LibGtk::CellView*), path ? path.to_unsafe.as(LibGtk::TreePath*) : nil)
+      nil
     end
 
     def draw_sensitive=(draw_sensitive)
-      __return_value = LibGtk.cell_view_set_draw_sensitive(to_unsafe.as(LibGtk::CellView*), draw_sensitive)
-      __return_value
+      LibGtk.cell_view_set_draw_sensitive(to_unsafe.as(LibGtk::CellView*), draw_sensitive)
+      nil
     end
 
     def fit_model=(fit_model)
-      __return_value = LibGtk.cell_view_set_fit_model(to_unsafe.as(LibGtk::CellView*), fit_model)
-      __return_value
+      LibGtk.cell_view_set_fit_model(to_unsafe.as(LibGtk::CellView*), fit_model)
+      nil
     end
 
     def model=(model)
-      __return_value = LibGtk.cell_view_set_model(to_unsafe.as(LibGtk::CellView*), model ? model.to_unsafe.as(LibGtk::TreeModel*) : nil)
-      __return_value
+      LibGtk.cell_view_set_model(to_unsafe.as(LibGtk::CellView*), model ? model.to_unsafe.as(LibGtk::TreeModel*) : nil)
+      nil
     end
 
   end

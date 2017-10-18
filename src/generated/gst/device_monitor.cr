@@ -51,8 +51,8 @@ module Gst
     end
 
     def show_all_devices=(show_all)
-      __return_value = LibGst.device_monitor_set_show_all_devices(to_unsafe.as(LibGst::DeviceMonitor*), show_all)
-      __return_value
+      LibGst.device_monitor_set_show_all_devices(to_unsafe.as(LibGst::DeviceMonitor*), show_all)
+      nil
     end
 
     def start
@@ -61,8 +61,8 @@ module Gst
     end
 
     def stop
-      __return_value = LibGst.device_monitor_stop(to_unsafe.as(LibGst::DeviceMonitor*))
-      __return_value
+      LibGst.device_monitor_stop(to_unsafe.as(LibGst::DeviceMonitor*))
+      nil
     end
 
   end

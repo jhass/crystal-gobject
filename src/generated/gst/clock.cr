@@ -36,18 +36,18 @@ module Gst
     end
 
     def self.id_ref(id)
-      __return_value = LibGst.clock_id_ref(id)
-      __return_value
+      LibGst.clock_id_ref(id)
+      nil
     end
 
     def self.id_unref(id)
-      __return_value = LibGst.clock_id_unref(id)
-      __return_value
+      LibGst.clock_id_unref(id)
+      nil
     end
 
     def self.id_unschedule(id)
-      __return_value = LibGst.clock_id_unschedule(id)
-      __return_value
+      LibGst.clock_id_unschedule(id)
+      nil
     end
 
     def self.id_wait(id, jitter)
@@ -81,8 +81,8 @@ module Gst
     end
 
     def calibration(internal, external, rate_num, rate_denom)
-      __return_value = LibGst.clock_get_calibration(to_unsafe.as(LibGst::Clock*), internal, external, rate_num, rate_denom)
-      __return_value
+      LibGst.clock_get_calibration(to_unsafe.as(LibGst::Clock*), internal, external, rate_num, rate_denom)
+      nil
     end
 
     def internal_time
@@ -116,13 +116,13 @@ module Gst
     end
 
     def new_periodic_id(start_time, interval)
-      __return_value = LibGst.clock_new_periodic_id(to_unsafe.as(LibGst::Clock*), UInt64.new(start_time), UInt64.new(interval))
-      __return_value
+      LibGst.clock_new_periodic_id(to_unsafe.as(LibGst::Clock*), UInt64.new(start_time), UInt64.new(interval))
+      nil
     end
 
     def new_single_shot_id(time)
-      __return_value = LibGst.clock_new_single_shot_id(to_unsafe.as(LibGst::Clock*), UInt64.new(time))
-      __return_value
+      LibGst.clock_new_single_shot_id(to_unsafe.as(LibGst::Clock*), UInt64.new(time))
+      nil
     end
 
     def periodic_id_reinit(id, start_time, interval)
@@ -131,8 +131,8 @@ module Gst
     end
 
     def set_calibration(internal, external, rate_num, rate_denom)
-      __return_value = LibGst.clock_set_calibration(to_unsafe.as(LibGst::Clock*), UInt64.new(internal), UInt64.new(external), UInt64.new(rate_num), UInt64.new(rate_denom))
-      __return_value
+      LibGst.clock_set_calibration(to_unsafe.as(LibGst::Clock*), UInt64.new(internal), UInt64.new(external), UInt64.new(rate_num), UInt64.new(rate_denom))
+      nil
     end
 
     def master=(master)
@@ -146,13 +146,13 @@ module Gst
     end
 
     def synced=(synced)
-      __return_value = LibGst.clock_set_synced(to_unsafe.as(LibGst::Clock*), synced)
-      __return_value
+      LibGst.clock_set_synced(to_unsafe.as(LibGst::Clock*), synced)
+      nil
     end
 
     def timeout=(timeout)
-      __return_value = LibGst.clock_set_timeout(to_unsafe.as(LibGst::Clock*), UInt64.new(timeout))
-      __return_value
+      LibGst.clock_set_timeout(to_unsafe.as(LibGst::Clock*), UInt64.new(timeout))
+      nil
     end
 
     def single_shot_id_reinit(id, time)

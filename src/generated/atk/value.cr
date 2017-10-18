@@ -1,8 +1,8 @@
 module Atk
   module Value
     def current_value(value)
-      __return_value = LibAtk.value_get_current_value(to_unsafe.as(LibAtk::Value*), value)
-      __return_value
+      LibAtk.value_get_current_value(to_unsafe.as(LibAtk::Value*), value)
+      nil
     end
 
     def increment
@@ -11,18 +11,18 @@ module Atk
     end
 
     def maximum_value(value)
-      __return_value = LibAtk.value_get_maximum_value(to_unsafe.as(LibAtk::Value*), value)
-      __return_value
+      LibAtk.value_get_maximum_value(to_unsafe.as(LibAtk::Value*), value)
+      nil
     end
 
     def minimum_increment(value)
-      __return_value = LibAtk.value_get_minimum_increment(to_unsafe.as(LibAtk::Value*), value)
-      __return_value
+      LibAtk.value_get_minimum_increment(to_unsafe.as(LibAtk::Value*), value)
+      nil
     end
 
     def minimum_value(value)
-      __return_value = LibAtk.value_get_minimum_value(to_unsafe.as(LibAtk::Value*), value)
-      __return_value
+      LibAtk.value_get_minimum_value(to_unsafe.as(LibAtk::Value*), value)
+      nil
     end
 
     def range
@@ -36,8 +36,8 @@ module Atk
     end
 
     def value_and_text(value, text)
-      __return_value = LibAtk.value_get_value_and_text(to_unsafe.as(LibAtk::Value*), value, text)
-      __return_value
+      LibAtk.value_get_value_and_text(to_unsafe.as(LibAtk::Value*), value, text)
+      nil
     end
 
     def current_value=(value)
@@ -46,8 +46,8 @@ module Atk
     end
 
     def value=(new_value)
-      __return_value = LibAtk.value_set_value(to_unsafe.as(LibAtk::Value*), Float64.new(new_value))
-      __return_value
+      LibAtk.value_set_value(to_unsafe.as(LibAtk::Value*), Float64.new(new_value))
+      nil
     end
 
     alias ValueChangedSignal = Value, Float64, String ->

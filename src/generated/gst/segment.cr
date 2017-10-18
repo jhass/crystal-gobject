@@ -43,8 +43,8 @@ module Gst
     end
 
     def copy_into(dest)
-      __return_value = LibGst.segment_copy_into(to_unsafe.as(LibGst::Segment*), dest.to_unsafe.as(LibGst::Segment*))
-      __return_value
+      LibGst.segment_copy_into(to_unsafe.as(LibGst::Segment*), dest.to_unsafe.as(LibGst::Segment*))
+      nil
     end
 
     def do_seek(rate, format : Gst::Format, flags : Gst::SeekFlags, start_type : Gst::SeekType, start, stop_type : Gst::SeekType, stop, update)
@@ -53,13 +53,13 @@ module Gst
     end
 
     def free
-      __return_value = LibGst.segment_free(to_unsafe.as(LibGst::Segment*))
-      __return_value
+      LibGst.segment_free(to_unsafe.as(LibGst::Segment*))
+      nil
     end
 
     def init(format : Gst::Format)
-      __return_value = LibGst.segment_init(to_unsafe.as(LibGst::Segment*), format)
-      __return_value
+      LibGst.segment_init(to_unsafe.as(LibGst::Segment*), format)
+      nil
     end
 
     def equal?(s1)

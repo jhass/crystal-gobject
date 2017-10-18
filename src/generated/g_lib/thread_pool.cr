@@ -20,8 +20,8 @@ module GLib
     end
 
     def free(immediate, wait)
-      __return_value = LibGLib.thread_pool_free(to_unsafe.as(LibGLib::ThreadPool*), immediate, wait)
-      __return_value
+      LibGLib.thread_pool_free(to_unsafe.as(LibGLib::ThreadPool*), immediate, wait)
+      nil
     end
 
     def max_threads
@@ -74,18 +74,18 @@ module GLib
     end
 
     def self.set_max_idle_time(interval)
-      __return_value = LibGLib.thread_pool_set_max_idle_time(UInt32.new(interval))
-      __return_value
+      LibGLib.thread_pool_set_max_idle_time(UInt32.new(interval))
+      nil
     end
 
     def self.set_max_unused_threads(max_threads)
-      __return_value = LibGLib.thread_pool_set_max_unused_threads(Int32.new(max_threads))
-      __return_value
+      LibGLib.thread_pool_set_max_unused_threads(Int32.new(max_threads))
+      nil
     end
 
     def self.stop_unused_threads
-      __return_value = LibGLib.thread_pool_stop_unused_threads
-      __return_value
+      LibGLib.thread_pool_stop_unused_threads
+      nil
     end
 
     def func

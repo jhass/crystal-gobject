@@ -45,8 +45,8 @@ module Gio
     end
 
     def self.launch_default_for_uri_async(uri, launch_context, cancellable, callback, user_data)
-      __return_value = LibGio.app_info_launch_default_for_uri_async(uri.to_unsafe, launch_context.to_unsafe.as(LibGio::AppLaunchContext*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.app_info_launch_default_for_uri_async(uri.to_unsafe, launch_context.to_unsafe.as(LibGio::AppLaunchContext*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def self.launch_default_for_uri_finish(result)
@@ -57,8 +57,8 @@ module Gio
     end
 
     def self.reset_type_associations(content_type)
-      __return_value = LibGio.app_info_reset_type_associations(content_type.to_unsafe)
-      __return_value
+      LibGio.app_info_reset_type_associations(content_type.to_unsafe)
+      nil
     end
 
     def add_supports_type(content_type)

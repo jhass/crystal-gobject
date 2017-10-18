@@ -25,8 +25,8 @@ module Pango
     end
 
     def free
-      __return_value = LibPango.color_free(to_unsafe.as(LibPango::Color*))
-      __return_value
+      LibPango.color_free(to_unsafe.as(LibPango::Color*))
+      nil
     end
 
     def parse(spec)

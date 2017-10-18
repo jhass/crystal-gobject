@@ -14,8 +14,8 @@ module Gtk
     end
 
     def self.add_builtin_icon(icon_name, size, pixbuf)
-      __return_value = LibGtk.icon_theme_add_builtin_icon(icon_name.to_unsafe, Int32.new(size), pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*))
-      __return_value
+      LibGtk.icon_theme_add_builtin_icon(icon_name.to_unsafe, Int32.new(size), pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*))
+      nil
     end
 
     def self.default
@@ -29,13 +29,13 @@ module Gtk
     end
 
     def add_resource_path(path)
-      __return_value = LibGtk.icon_theme_add_resource_path(to_unsafe.as(LibGtk::IconTheme*), path.to_unsafe)
-      __return_value
+      LibGtk.icon_theme_add_resource_path(to_unsafe.as(LibGtk::IconTheme*), path.to_unsafe)
+      nil
     end
 
     def append_search_path(path)
-      __return_value = LibGtk.icon_theme_append_search_path(to_unsafe.as(LibGtk::IconTheme*), path.to_unsafe)
-      __return_value
+      LibGtk.icon_theme_append_search_path(to_unsafe.as(LibGtk::IconTheme*), path.to_unsafe)
+      nil
     end
 
     def choose_icon(icon_names, size, flags : Gtk::IconLookupFlags)
@@ -59,8 +59,8 @@ module Gtk
     end
 
     def search_path(path, n_elements)
-      __return_value = LibGtk.icon_theme_get_search_path(to_unsafe.as(LibGtk::IconTheme*), path, n_elements)
-      __return_value
+      LibGtk.icon_theme_get_search_path(to_unsafe.as(LibGtk::IconTheme*), path, n_elements)
+      nil
     end
 
     def has_icon(icon_name)
@@ -120,8 +120,8 @@ module Gtk
     end
 
     def prepend_search_path(path)
-      __return_value = LibGtk.icon_theme_prepend_search_path(to_unsafe.as(LibGtk::IconTheme*), path.to_unsafe)
-      __return_value
+      LibGtk.icon_theme_prepend_search_path(to_unsafe.as(LibGtk::IconTheme*), path.to_unsafe)
+      nil
     end
 
     def rescan_if_needed
@@ -130,18 +130,18 @@ module Gtk
     end
 
     def custom_theme=(theme_name)
-      __return_value = LibGtk.icon_theme_set_custom_theme(to_unsafe.as(LibGtk::IconTheme*), theme_name ? theme_name.to_unsafe : nil)
-      __return_value
+      LibGtk.icon_theme_set_custom_theme(to_unsafe.as(LibGtk::IconTheme*), theme_name ? theme_name.to_unsafe : nil)
+      nil
     end
 
     def screen=(screen)
-      __return_value = LibGtk.icon_theme_set_screen(to_unsafe.as(LibGtk::IconTheme*), screen.to_unsafe.as(LibGdk::Screen*))
-      __return_value
+      LibGtk.icon_theme_set_screen(to_unsafe.as(LibGtk::IconTheme*), screen.to_unsafe.as(LibGdk::Screen*))
+      nil
     end
 
     def set_search_path(path, n_elements)
-      __return_value = LibGtk.icon_theme_set_search_path(to_unsafe.as(LibGtk::IconTheme*), path, Int32.new(n_elements))
-      __return_value
+      LibGtk.icon_theme_set_search_path(to_unsafe.as(LibGtk::IconTheme*), path, Int32.new(n_elements))
+      nil
     end
 
     alias ChangedSignal = IconTheme ->

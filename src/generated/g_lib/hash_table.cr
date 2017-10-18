@@ -21,8 +21,8 @@ module GLib
     end
 
     def self.destroy(hash_table)
-      __return_value = LibGLib.hash_table_destroy(hash_table)
-      __return_value
+      LibGLib.hash_table_destroy(hash_table)
+      nil
     end
 
     def self.insert(hash_table, key, value)
@@ -31,8 +31,8 @@ module GLib
     end
 
     def self.lookup(hash_table, key)
-      __return_value = LibGLib.hash_table_lookup(hash_table, key ? key : nil)
-      __return_value if __return_value
+      LibGLib.hash_table_lookup(hash_table, key ? key : nil)
+      nil
     end
 
     def self.lookup_extended(hash_table, lookup_key, orig_key, value)
@@ -46,8 +46,8 @@ module GLib
     end
 
     def self.remove_all(hash_table)
-      __return_value = LibGLib.hash_table_remove_all(hash_table)
-      __return_value
+      LibGLib.hash_table_remove_all(hash_table)
+      nil
     end
 
     def self.replace(hash_table, key, value)
@@ -66,13 +66,13 @@ module GLib
     end
 
     def self.steal_all(hash_table)
-      __return_value = LibGLib.hash_table_steal_all(hash_table)
-      __return_value
+      LibGLib.hash_table_steal_all(hash_table)
+      nil
     end
 
     def self.unref(hash_table)
-      __return_value = LibGLib.hash_table_unref(hash_table)
-      __return_value
+      LibGLib.hash_table_unref(hash_table)
+      nil
     end
 
   end

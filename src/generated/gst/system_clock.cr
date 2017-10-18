@@ -21,8 +21,8 @@ module Gst
     end
 
     def self.set_default(new_clock)
-      __return_value = LibGst.system_clock_set_default(new_clock.to_unsafe.as(LibGst::Clock*))
-      __return_value
+      LibGst.system_clock_set_default(new_clock.to_unsafe.as(LibGst::Clock*))
+      nil
     end
 
   end

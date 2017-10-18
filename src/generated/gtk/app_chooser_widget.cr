@@ -80,33 +80,33 @@ module Gtk
     end
 
     def default_text=(text)
-      __return_value = LibGtk.app_chooser_widget_set_default_text(to_unsafe.as(LibGtk::AppChooserWidget*), text.to_unsafe)
-      __return_value
+      LibGtk.app_chooser_widget_set_default_text(to_unsafe.as(LibGtk::AppChooserWidget*), text.to_unsafe)
+      nil
     end
 
     def show_all=(setting)
-      __return_value = LibGtk.app_chooser_widget_set_show_all(to_unsafe.as(LibGtk::AppChooserWidget*), setting)
-      __return_value
+      LibGtk.app_chooser_widget_set_show_all(to_unsafe.as(LibGtk::AppChooserWidget*), setting)
+      nil
     end
 
     def show_default=(setting)
-      __return_value = LibGtk.app_chooser_widget_set_show_default(to_unsafe.as(LibGtk::AppChooserWidget*), setting)
-      __return_value
+      LibGtk.app_chooser_widget_set_show_default(to_unsafe.as(LibGtk::AppChooserWidget*), setting)
+      nil
     end
 
     def show_fallback=(setting)
-      __return_value = LibGtk.app_chooser_widget_set_show_fallback(to_unsafe.as(LibGtk::AppChooserWidget*), setting)
-      __return_value
+      LibGtk.app_chooser_widget_set_show_fallback(to_unsafe.as(LibGtk::AppChooserWidget*), setting)
+      nil
     end
 
     def show_other=(setting)
-      __return_value = LibGtk.app_chooser_widget_set_show_other(to_unsafe.as(LibGtk::AppChooserWidget*), setting)
-      __return_value
+      LibGtk.app_chooser_widget_set_show_other(to_unsafe.as(LibGtk::AppChooserWidget*), setting)
+      nil
     end
 
     def show_recommended=(setting)
-      __return_value = LibGtk.app_chooser_widget_set_show_recommended(to_unsafe.as(LibGtk::AppChooserWidget*), setting)
-      __return_value
+      LibGtk.app_chooser_widget_set_show_recommended(to_unsafe.as(LibGtk::AppChooserWidget*), setting)
+      nil
     end
 
     alias ApplicationActivatedSignal = AppChooserWidget, Gio::AppInfo ->

@@ -72,13 +72,13 @@ module Gio
     end
 
     def self.new(stream, guid, flags : Gio::DBusConnectionFlags, observer, cancellable, callback, user_data)
-      __return_value = LibGio.d_bus_connection_new(stream.to_unsafe.as(LibGio::IOStream*), guid ? guid.to_unsafe : nil, flags, observer ? observer.to_unsafe.as(LibGio::DBusAuthObserver*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.d_bus_connection_new(stream.to_unsafe.as(LibGio::IOStream*), guid ? guid.to_unsafe : nil, flags, observer ? observer.to_unsafe.as(LibGio::DBusAuthObserver*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def self.new_for_address(address, flags : Gio::DBusConnectionFlags, observer, cancellable, callback, user_data)
-      __return_value = LibGio.d_bus_connection_new_for_address(address.to_unsafe, flags, observer ? observer.to_unsafe.as(LibGio::DBusAuthObserver*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.d_bus_connection_new_for_address(address.to_unsafe, flags, observer ? observer.to_unsafe.as(LibGio::DBusAuthObserver*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def add_filter(filter_function, user_data, user_data_free_func)
@@ -87,8 +87,8 @@ module Gio
     end
 
     def call(bus_name, object_path, interface_name, method_name, parameters, reply_type, flags : Gio::DBusCallFlags, timeout_msec, cancellable, callback, user_data)
-      __return_value = LibGio.d_bus_connection_call(to_unsafe.as(LibGio::DBusConnection*), bus_name ? bus_name.to_unsafe : nil, object_path.to_unsafe, interface_name.to_unsafe, method_name.to_unsafe, parameters ? parameters.to_unsafe.as(LibGLib::Variant*) : nil, reply_type ? reply_type.to_unsafe.as(LibGLib::VariantType*) : nil, flags, Int32.new(timeout_msec), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.d_bus_connection_call(to_unsafe.as(LibGio::DBusConnection*), bus_name ? bus_name.to_unsafe : nil, object_path.to_unsafe, interface_name.to_unsafe, method_name.to_unsafe, parameters ? parameters.to_unsafe.as(LibGLib::Variant*) : nil, reply_type ? reply_type.to_unsafe.as(LibGLib::VariantType*) : nil, flags, Int32.new(timeout_msec), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def call_finish(res)
@@ -106,8 +106,8 @@ module Gio
     end
 
     def call_with_unix_fd_list(bus_name, object_path, interface_name, method_name, parameters, reply_type, flags : Gio::DBusCallFlags, timeout_msec, fd_list, cancellable, callback, user_data)
-      __return_value = LibGio.d_bus_connection_call_with_unix_fd_list(to_unsafe.as(LibGio::DBusConnection*), bus_name ? bus_name.to_unsafe : nil, object_path.to_unsafe, interface_name.to_unsafe, method_name.to_unsafe, parameters ? parameters.to_unsafe.as(LibGLib::Variant*) : nil, reply_type ? reply_type.to_unsafe.as(LibGLib::VariantType*) : nil, flags, Int32.new(timeout_msec), fd_list ? fd_list.to_unsafe.as(LibGio::UnixFDList*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.d_bus_connection_call_with_unix_fd_list(to_unsafe.as(LibGio::DBusConnection*), bus_name ? bus_name.to_unsafe : nil, object_path.to_unsafe, interface_name.to_unsafe, method_name.to_unsafe, parameters ? parameters.to_unsafe.as(LibGLib::Variant*) : nil, reply_type ? reply_type.to_unsafe.as(LibGLib::VariantType*) : nil, flags, Int32.new(timeout_msec), fd_list ? fd_list.to_unsafe.as(LibGio::UnixFDList*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def call_with_unix_fd_list_finish(out_fd_list, res)
@@ -125,8 +125,8 @@ module Gio
     end
 
     def close(cancellable, callback, user_data)
-      __return_value = LibGio.d_bus_connection_close(to_unsafe.as(LibGio::DBusConnection*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.d_bus_connection_close(to_unsafe.as(LibGio::DBusConnection*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def close_finish(res)
@@ -165,8 +165,8 @@ module Gio
     end
 
     def flush(cancellable, callback, user_data)
-      __return_value = LibGio.d_bus_connection_flush(to_unsafe.as(LibGio::DBusConnection*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.d_bus_connection_flush(to_unsafe.as(LibGio::DBusConnection*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def flush_finish(res)
@@ -238,8 +238,8 @@ module Gio
     end
 
     def remove_filter(filter_id)
-      __return_value = LibGio.d_bus_connection_remove_filter(to_unsafe.as(LibGio::DBusConnection*), UInt32.new(filter_id))
-      __return_value
+      LibGio.d_bus_connection_remove_filter(to_unsafe.as(LibGio::DBusConnection*), UInt32.new(filter_id))
+      nil
     end
 
     def send_message(message, flags : Gio::DBusSendMessageFlags, out_serial)
@@ -250,8 +250,8 @@ module Gio
     end
 
     def send_message_with_reply(message, flags : Gio::DBusSendMessageFlags, timeout_msec, out_serial, cancellable, callback, user_data)
-      __return_value = LibGio.d_bus_connection_send_message_with_reply(to_unsafe.as(LibGio::DBusConnection*), message.to_unsafe.as(LibGio::DBusMessage*), flags, Int32.new(timeout_msec), out_serial, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.d_bus_connection_send_message_with_reply(to_unsafe.as(LibGio::DBusConnection*), message.to_unsafe.as(LibGio::DBusMessage*), flags, Int32.new(timeout_msec), out_serial, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def send_message_with_reply_finish(res)
@@ -269,8 +269,8 @@ module Gio
     end
 
     def exit_on_close=(exit_on_close)
-      __return_value = LibGio.d_bus_connection_set_exit_on_close(to_unsafe.as(LibGio::DBusConnection*), exit_on_close)
-      __return_value
+      LibGio.d_bus_connection_set_exit_on_close(to_unsafe.as(LibGio::DBusConnection*), exit_on_close)
+      nil
     end
 
     def signal_subscribe(sender, interface_name, member, object_path, arg0, flags : Gio::DBusSignalFlags, callback, user_data, user_data_free_func)
@@ -279,23 +279,23 @@ module Gio
     end
 
     def signal_unsubscribe(subscription_id)
-      __return_value = LibGio.d_bus_connection_signal_unsubscribe(to_unsafe.as(LibGio::DBusConnection*), UInt32.new(subscription_id))
-      __return_value
+      LibGio.d_bus_connection_signal_unsubscribe(to_unsafe.as(LibGio::DBusConnection*), UInt32.new(subscription_id))
+      nil
     end
 
     def start_message_processing
-      __return_value = LibGio.d_bus_connection_start_message_processing(to_unsafe.as(LibGio::DBusConnection*))
-      __return_value
+      LibGio.d_bus_connection_start_message_processing(to_unsafe.as(LibGio::DBusConnection*))
+      nil
     end
 
     def unexport_action_group(export_id)
-      __return_value = LibGio.d_bus_connection_unexport_action_group(to_unsafe.as(LibGio::DBusConnection*), UInt32.new(export_id))
-      __return_value
+      LibGio.d_bus_connection_unexport_action_group(to_unsafe.as(LibGio::DBusConnection*), UInt32.new(export_id))
+      nil
     end
 
     def unexport_menu_model(export_id)
-      __return_value = LibGio.d_bus_connection_unexport_menu_model(to_unsafe.as(LibGio::DBusConnection*), UInt32.new(export_id))
-      __return_value
+      LibGio.d_bus_connection_unexport_menu_model(to_unsafe.as(LibGio::DBusConnection*), UInt32.new(export_id))
+      nil
     end
 
     def unregister_object(registration_id)

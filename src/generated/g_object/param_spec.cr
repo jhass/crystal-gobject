@@ -36,8 +36,8 @@ module GObject
     end
 
     def qdata(quark)
-      __return_value = LibGObject.param_spec_get_qdata(to_unsafe.as(LibGObject::ParamSpec*), UInt32.new(quark))
-      __return_value if __return_value
+      LibGObject.param_spec_get_qdata(to_unsafe.as(LibGObject::ParamSpec*), UInt32.new(quark))
+      nil
     end
 
     def redirect_target
@@ -46,18 +46,18 @@ module GObject
     end
 
     def set_qdata(quark, data)
-      __return_value = LibGObject.param_spec_set_qdata(to_unsafe.as(LibGObject::ParamSpec*), UInt32.new(quark), data ? data : nil)
-      __return_value
+      LibGObject.param_spec_set_qdata(to_unsafe.as(LibGObject::ParamSpec*), UInt32.new(quark), data ? data : nil)
+      nil
     end
 
     def sink
-      __return_value = LibGObject.param_spec_sink(to_unsafe.as(LibGObject::ParamSpec*))
-      __return_value
+      LibGObject.param_spec_sink(to_unsafe.as(LibGObject::ParamSpec*))
+      nil
     end
 
     def steal_qdata(quark)
-      __return_value = LibGObject.param_spec_steal_qdata(to_unsafe.as(LibGObject::ParamSpec*), UInt32.new(quark))
-      __return_value if __return_value
+      LibGObject.param_spec_steal_qdata(to_unsafe.as(LibGObject::ParamSpec*), UInt32.new(quark))
+      nil
     end
 
   end

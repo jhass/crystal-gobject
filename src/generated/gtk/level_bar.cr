@@ -49,8 +49,8 @@ module Gtk
     end
 
     def add_offset_value(name, value)
-      __return_value = LibGtk.level_bar_add_offset_value(to_unsafe.as(LibGtk::LevelBar*), name.to_unsafe, Float64.new(value))
-      __return_value
+      LibGtk.level_bar_add_offset_value(to_unsafe.as(LibGtk::LevelBar*), name.to_unsafe, Float64.new(value))
+      nil
     end
 
     def inverted
@@ -84,33 +84,33 @@ module Gtk
     end
 
     def remove_offset_value(name)
-      __return_value = LibGtk.level_bar_remove_offset_value(to_unsafe.as(LibGtk::LevelBar*), name ? name.to_unsafe : nil)
-      __return_value
+      LibGtk.level_bar_remove_offset_value(to_unsafe.as(LibGtk::LevelBar*), name ? name.to_unsafe : nil)
+      nil
     end
 
     def inverted=(inverted)
-      __return_value = LibGtk.level_bar_set_inverted(to_unsafe.as(LibGtk::LevelBar*), inverted)
-      __return_value
+      LibGtk.level_bar_set_inverted(to_unsafe.as(LibGtk::LevelBar*), inverted)
+      nil
     end
 
     def max_value=(value)
-      __return_value = LibGtk.level_bar_set_max_value(to_unsafe.as(LibGtk::LevelBar*), Float64.new(value))
-      __return_value
+      LibGtk.level_bar_set_max_value(to_unsafe.as(LibGtk::LevelBar*), Float64.new(value))
+      nil
     end
 
     def min_value=(value)
-      __return_value = LibGtk.level_bar_set_min_value(to_unsafe.as(LibGtk::LevelBar*), Float64.new(value))
-      __return_value
+      LibGtk.level_bar_set_min_value(to_unsafe.as(LibGtk::LevelBar*), Float64.new(value))
+      nil
     end
 
     def mode=(mode : Gtk::LevelBarMode)
-      __return_value = LibGtk.level_bar_set_mode(to_unsafe.as(LibGtk::LevelBar*), mode)
-      __return_value
+      LibGtk.level_bar_set_mode(to_unsafe.as(LibGtk::LevelBar*), mode)
+      nil
     end
 
     def value=(value)
-      __return_value = LibGtk.level_bar_set_value(to_unsafe.as(LibGtk::LevelBar*), Float64.new(value))
-      __return_value
+      LibGtk.level_bar_set_value(to_unsafe.as(LibGtk::LevelBar*), Float64.new(value))
+      nil
     end
 
     alias OffsetChangedSignal = LevelBar, String ->

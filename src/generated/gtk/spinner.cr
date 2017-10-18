@@ -23,13 +23,13 @@ module Gtk
     end
 
     def start
-      __return_value = LibGtk.spinner_start(to_unsafe.as(LibGtk::Spinner*))
-      __return_value
+      LibGtk.spinner_start(to_unsafe.as(LibGtk::Spinner*))
+      nil
     end
 
     def stop
-      __return_value = LibGtk.spinner_stop(to_unsafe.as(LibGtk::Spinner*))
-      __return_value
+      LibGtk.spinner_stop(to_unsafe.as(LibGtk::Spinner*))
+      nil
     end
 
   end

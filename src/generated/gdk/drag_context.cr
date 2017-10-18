@@ -59,13 +59,13 @@ module Gdk
     end
 
     def device=(device)
-      __return_value = LibGdk.drag_context_set_device(to_unsafe.as(LibGdk::DragContext*), device.to_unsafe.as(LibGdk::Device*))
-      __return_value
+      LibGdk.drag_context_set_device(to_unsafe.as(LibGdk::DragContext*), device.to_unsafe.as(LibGdk::Device*))
+      nil
     end
 
     def set_hotspot(hot_x, hot_y)
-      __return_value = LibGdk.drag_context_set_hotspot(to_unsafe.as(LibGdk::DragContext*), Int32.new(hot_x), Int32.new(hot_y))
-      __return_value
+      LibGdk.drag_context_set_hotspot(to_unsafe.as(LibGdk::DragContext*), Int32.new(hot_x), Int32.new(hot_y))
+      nil
     end
 
     alias ActionChangedSignal = DragContext, Gdk::DragAction ->

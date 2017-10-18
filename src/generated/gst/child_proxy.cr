@@ -1,13 +1,13 @@
 module Gst
   module ChildProxy
     def child_added(child, name)
-      __return_value = LibGst.child_proxy_child_added(to_unsafe.as(LibGst::ChildProxy*), child.to_unsafe.as(LibGObject::Object*), name.to_unsafe)
-      __return_value
+      LibGst.child_proxy_child_added(to_unsafe.as(LibGst::ChildProxy*), child.to_unsafe.as(LibGObject::Object*), name.to_unsafe)
+      nil
     end
 
     def child_removed(child, name)
-      __return_value = LibGst.child_proxy_child_removed(to_unsafe.as(LibGst::ChildProxy*), child.to_unsafe.as(LibGObject::Object*), name.to_unsafe)
-      __return_value
+      LibGst.child_proxy_child_removed(to_unsafe.as(LibGst::ChildProxy*), child.to_unsafe.as(LibGObject::Object*), name.to_unsafe)
+      nil
     end
 
     def child_by_index(index)
@@ -26,8 +26,8 @@ module Gst
     end
 
     def property(name, value)
-      __return_value = LibGst.child_proxy_get_property(to_unsafe.as(LibGst::ChildProxy*), name.to_unsafe, value)
-      __return_value
+      LibGst.child_proxy_get_property(to_unsafe.as(LibGst::ChildProxy*), name.to_unsafe, value)
+      nil
     end
 
     def lookup(name, target, pspec)
@@ -36,8 +36,8 @@ module Gst
     end
 
     def set_property(name, value)
-      __return_value = LibGst.child_proxy_set_property(to_unsafe.as(LibGst::ChildProxy*), name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
-      __return_value
+      LibGst.child_proxy_set_property(to_unsafe.as(LibGst::ChildProxy*), name.to_unsafe, value.to_unsafe.as(LibGObject::Value*))
+      nil
     end
 
     alias ChildAddedSignal = ChildProxy, GObject::Object, String ->

@@ -16,8 +16,8 @@ module Gio
     end
 
     def items_changed(position, removed, added)
-      __return_value = LibGio.list_model_items_changed(to_unsafe.as(LibGio::ListModel*), UInt32.new(position), UInt32.new(removed), UInt32.new(added))
-      __return_value
+      LibGio.list_model_items_changed(to_unsafe.as(LibGio::ListModel*), UInt32.new(position), UInt32.new(removed), UInt32.new(added))
+      nil
     end
 
     alias ItemsChangedSignal = ListModel, UInt32, UInt32, UInt32 ->

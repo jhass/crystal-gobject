@@ -21,8 +21,8 @@ module Gtk
     end
 
     def free
-      __return_value = LibGtk.icon_source_free(to_unsafe.as(LibGtk::IconSource*))
-      __return_value
+      LibGtk.icon_source_free(to_unsafe.as(LibGtk::IconSource*))
+      nil
     end
 
     def direction
@@ -71,48 +71,48 @@ module Gtk
     end
 
     def direction=(direction : Gtk::TextDirection)
-      __return_value = LibGtk.icon_source_set_direction(to_unsafe.as(LibGtk::IconSource*), direction)
-      __return_value
+      LibGtk.icon_source_set_direction(to_unsafe.as(LibGtk::IconSource*), direction)
+      nil
     end
 
     def direction_wildcarded=(setting)
-      __return_value = LibGtk.icon_source_set_direction_wildcarded(to_unsafe.as(LibGtk::IconSource*), setting)
-      __return_value
+      LibGtk.icon_source_set_direction_wildcarded(to_unsafe.as(LibGtk::IconSource*), setting)
+      nil
     end
 
     def filename=(filename)
-      __return_value = LibGtk.icon_source_set_filename(to_unsafe.as(LibGtk::IconSource*), filename.to_unsafe)
-      __return_value
+      LibGtk.icon_source_set_filename(to_unsafe.as(LibGtk::IconSource*), filename.to_unsafe)
+      nil
     end
 
     def icon_name=(icon_name)
-      __return_value = LibGtk.icon_source_set_icon_name(to_unsafe.as(LibGtk::IconSource*), icon_name ? icon_name.to_unsafe : nil)
-      __return_value
+      LibGtk.icon_source_set_icon_name(to_unsafe.as(LibGtk::IconSource*), icon_name ? icon_name.to_unsafe : nil)
+      nil
     end
 
     def pixbuf=(pixbuf)
-      __return_value = LibGtk.icon_source_set_pixbuf(to_unsafe.as(LibGtk::IconSource*), pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*))
-      __return_value
+      LibGtk.icon_source_set_pixbuf(to_unsafe.as(LibGtk::IconSource*), pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*))
+      nil
     end
 
     def size=(size)
-      __return_value = LibGtk.icon_source_set_size(to_unsafe.as(LibGtk::IconSource*), Int32.new(size))
-      __return_value
+      LibGtk.icon_source_set_size(to_unsafe.as(LibGtk::IconSource*), Int32.new(size))
+      nil
     end
 
     def size_wildcarded=(setting)
-      __return_value = LibGtk.icon_source_set_size_wildcarded(to_unsafe.as(LibGtk::IconSource*), setting)
-      __return_value
+      LibGtk.icon_source_set_size_wildcarded(to_unsafe.as(LibGtk::IconSource*), setting)
+      nil
     end
 
     def state=(state : Gtk::StateType)
-      __return_value = LibGtk.icon_source_set_state(to_unsafe.as(LibGtk::IconSource*), state)
-      __return_value
+      LibGtk.icon_source_set_state(to_unsafe.as(LibGtk::IconSource*), state)
+      nil
     end
 
     def state_wildcarded=(setting)
-      __return_value = LibGtk.icon_source_set_state_wildcarded(to_unsafe.as(LibGtk::IconSource*), setting)
-      __return_value
+      LibGtk.icon_source_set_state_wildcarded(to_unsafe.as(LibGtk::IconSource*), setting)
+      nil
     end
 
   end

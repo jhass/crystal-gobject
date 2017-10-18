@@ -16,8 +16,8 @@ module Atk
     end
 
     def document
-      __return_value = LibAtk.document_get_document(to_unsafe.as(LibAtk::Document*))
-      __return_value if __return_value
+      LibAtk.document_get_document(to_unsafe.as(LibAtk::Document*))
+      nil
     end
 
     def document_type

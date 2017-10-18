@@ -57,9 +57,9 @@ lib LibGdkPixbuf
   PIXBUF_FEATURES_H = 1 # : Int32
   PIXBUF_MAGIC_NUMBER = 1197763408 # : Int32
   PIXBUF_MAJOR = 2 # : Int32
-  PIXBUF_MICRO = 6 # : Int32
+  PIXBUF_MICRO = 10 # : Int32
   PIXBUF_MINOR = 36 # : Int32
-  PIXBUF_VERSION = "2.36.6" # : UInt8*
+  PIXBUF_VERSION = "2.36.10" # : UInt8*
   PIXDATA_HEADER_LENGTH = 24 # : Int32
 
   ###########################################
@@ -82,6 +82,7 @@ lib LibGdkPixbuf
   fun pixbuf_new_from_stream_at_scale = gdk_pixbuf_new_from_stream_at_scale(stream : LibGio::InputStream*, width : Int32, height : Int32, preserve_aspect_ratio : Bool, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : LibGdkPixbuf::Pixbuf*
   fun pixbuf_new_from_stream_finish = gdk_pixbuf_new_from_stream_finish(async_result : LibGio::AsyncResult*, error : LibGLib::Error**) : LibGdkPixbuf::Pixbuf*
   fun pixbuf_new_from_xpm_data = gdk_pixbuf_new_from_xpm_data(data : UInt8**) : LibGdkPixbuf::Pixbuf*
+  fun pixbuf_calculate_rowstride = gdk_pixbuf_calculate_rowstride(colorspace : LibGdkPixbuf::Colorspace, has_alpha : Bool, bits_per_sample : Int32, width : Int32, height : Int32) : Int32
   fun pixbuf_from_pixdata = gdk_pixbuf_from_pixdata(pixdata : LibGdkPixbuf::Pixdata*, copy_pixels : Bool, error : LibGLib::Error**) : LibGdkPixbuf::Pixbuf*
   fun pixbuf_get_file_info = gdk_pixbuf_get_file_info(filename : UInt8*, width : Int32*, height : Int32*) : LibGdkPixbuf::PixbufFormat*
   fun pixbuf_get_file_info_async = gdk_pixbuf_get_file_info_async(filename : UInt8*, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void

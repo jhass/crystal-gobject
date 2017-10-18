@@ -164,8 +164,8 @@ module Gtk
     end
 
     def layout_offsets(x, y)
-      __return_value = LibGtk.label_get_layout_offsets(to_unsafe.as(LibGtk::Label*), x, y)
-      __return_value
+      LibGtk.label_get_layout_offsets(to_unsafe.as(LibGtk::Label*), x, y)
+      nil
     end
 
     def line_wrap
@@ -249,123 +249,123 @@ module Gtk
     end
 
     def select_region(start_offset, end_offset)
-      __return_value = LibGtk.label_select_region(to_unsafe.as(LibGtk::Label*), Int32.new(start_offset), Int32.new(end_offset))
-      __return_value
+      LibGtk.label_select_region(to_unsafe.as(LibGtk::Label*), Int32.new(start_offset), Int32.new(end_offset))
+      nil
     end
 
     def angle=(angle)
-      __return_value = LibGtk.label_set_angle(to_unsafe.as(LibGtk::Label*), Float64.new(angle))
-      __return_value
+      LibGtk.label_set_angle(to_unsafe.as(LibGtk::Label*), Float64.new(angle))
+      nil
     end
 
     def attributes=(attrs)
-      __return_value = LibGtk.label_set_attributes(to_unsafe.as(LibGtk::Label*), attrs ? attrs.to_unsafe.as(LibPango::AttrList*) : nil)
-      __return_value
+      LibGtk.label_set_attributes(to_unsafe.as(LibGtk::Label*), attrs ? attrs.to_unsafe.as(LibPango::AttrList*) : nil)
+      nil
     end
 
     def ellipsize=(mode : Pango::EllipsizeMode)
-      __return_value = LibGtk.label_set_ellipsize(to_unsafe.as(LibGtk::Label*), mode)
-      __return_value
+      LibGtk.label_set_ellipsize(to_unsafe.as(LibGtk::Label*), mode)
+      nil
     end
 
     def justify=(jtype : Gtk::Justification)
-      __return_value = LibGtk.label_set_justify(to_unsafe.as(LibGtk::Label*), jtype)
-      __return_value
+      LibGtk.label_set_justify(to_unsafe.as(LibGtk::Label*), jtype)
+      nil
     end
 
     def label=(str)
-      __return_value = LibGtk.label_set_label(to_unsafe.as(LibGtk::Label*), str.to_unsafe)
-      __return_value
+      LibGtk.label_set_label(to_unsafe.as(LibGtk::Label*), str.to_unsafe)
+      nil
     end
 
     def line_wrap=(wrap)
-      __return_value = LibGtk.label_set_line_wrap(to_unsafe.as(LibGtk::Label*), wrap)
-      __return_value
+      LibGtk.label_set_line_wrap(to_unsafe.as(LibGtk::Label*), wrap)
+      nil
     end
 
     def line_wrap_mode=(wrap_mode : Pango::WrapMode)
-      __return_value = LibGtk.label_set_line_wrap_mode(to_unsafe.as(LibGtk::Label*), wrap_mode)
-      __return_value
+      LibGtk.label_set_line_wrap_mode(to_unsafe.as(LibGtk::Label*), wrap_mode)
+      nil
     end
 
     def lines=(lines)
-      __return_value = LibGtk.label_set_lines(to_unsafe.as(LibGtk::Label*), Int32.new(lines))
-      __return_value
+      LibGtk.label_set_lines(to_unsafe.as(LibGtk::Label*), Int32.new(lines))
+      nil
     end
 
     def markup=(str)
-      __return_value = LibGtk.label_set_markup(to_unsafe.as(LibGtk::Label*), str.to_unsafe)
-      __return_value
+      LibGtk.label_set_markup(to_unsafe.as(LibGtk::Label*), str.to_unsafe)
+      nil
     end
 
     def markup_with_mnemonic=(str)
-      __return_value = LibGtk.label_set_markup_with_mnemonic(to_unsafe.as(LibGtk::Label*), str.to_unsafe)
-      __return_value
+      LibGtk.label_set_markup_with_mnemonic(to_unsafe.as(LibGtk::Label*), str.to_unsafe)
+      nil
     end
 
     def max_width_chars=(n_chars)
-      __return_value = LibGtk.label_set_max_width_chars(to_unsafe.as(LibGtk::Label*), Int32.new(n_chars))
-      __return_value
+      LibGtk.label_set_max_width_chars(to_unsafe.as(LibGtk::Label*), Int32.new(n_chars))
+      nil
     end
 
     def mnemonic_widget=(widget)
-      __return_value = LibGtk.label_set_mnemonic_widget(to_unsafe.as(LibGtk::Label*), widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil)
-      __return_value
+      LibGtk.label_set_mnemonic_widget(to_unsafe.as(LibGtk::Label*), widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil)
+      nil
     end
 
     def pattern=(pattern)
-      __return_value = LibGtk.label_set_pattern(to_unsafe.as(LibGtk::Label*), pattern.to_unsafe)
-      __return_value
+      LibGtk.label_set_pattern(to_unsafe.as(LibGtk::Label*), pattern.to_unsafe)
+      nil
     end
 
     def selectable=(setting)
-      __return_value = LibGtk.label_set_selectable(to_unsafe.as(LibGtk::Label*), setting)
-      __return_value
+      LibGtk.label_set_selectable(to_unsafe.as(LibGtk::Label*), setting)
+      nil
     end
 
     def single_line_mode=(single_line_mode)
-      __return_value = LibGtk.label_set_single_line_mode(to_unsafe.as(LibGtk::Label*), single_line_mode)
-      __return_value
+      LibGtk.label_set_single_line_mode(to_unsafe.as(LibGtk::Label*), single_line_mode)
+      nil
     end
 
     def text=(str)
-      __return_value = LibGtk.label_set_text(to_unsafe.as(LibGtk::Label*), str.to_unsafe)
-      __return_value
+      LibGtk.label_set_text(to_unsafe.as(LibGtk::Label*), str.to_unsafe)
+      nil
     end
 
     def text_with_mnemonic=(str)
-      __return_value = LibGtk.label_set_text_with_mnemonic(to_unsafe.as(LibGtk::Label*), str.to_unsafe)
-      __return_value
+      LibGtk.label_set_text_with_mnemonic(to_unsafe.as(LibGtk::Label*), str.to_unsafe)
+      nil
     end
 
     def track_visited_links=(track_links)
-      __return_value = LibGtk.label_set_track_visited_links(to_unsafe.as(LibGtk::Label*), track_links)
-      __return_value
+      LibGtk.label_set_track_visited_links(to_unsafe.as(LibGtk::Label*), track_links)
+      nil
     end
 
     def use_markup=(setting)
-      __return_value = LibGtk.label_set_use_markup(to_unsafe.as(LibGtk::Label*), setting)
-      __return_value
+      LibGtk.label_set_use_markup(to_unsafe.as(LibGtk::Label*), setting)
+      nil
     end
 
     def use_underline=(setting)
-      __return_value = LibGtk.label_set_use_underline(to_unsafe.as(LibGtk::Label*), setting)
-      __return_value
+      LibGtk.label_set_use_underline(to_unsafe.as(LibGtk::Label*), setting)
+      nil
     end
 
     def width_chars=(n_chars)
-      __return_value = LibGtk.label_set_width_chars(to_unsafe.as(LibGtk::Label*), Int32.new(n_chars))
-      __return_value
+      LibGtk.label_set_width_chars(to_unsafe.as(LibGtk::Label*), Int32.new(n_chars))
+      nil
     end
 
     def xalign=(xalign)
-      __return_value = LibGtk.label_set_xalign(to_unsafe.as(LibGtk::Label*), Float32.new(xalign))
-      __return_value
+      LibGtk.label_set_xalign(to_unsafe.as(LibGtk::Label*), Float32.new(xalign))
+      nil
     end
 
     def yalign=(yalign)
-      __return_value = LibGtk.label_set_yalign(to_unsafe.as(LibGtk::Label*), Float32.new(yalign))
-      __return_value
+      LibGtk.label_set_yalign(to_unsafe.as(LibGtk::Label*), Float32.new(yalign))
+      nil
     end
 
     alias ActivateCurrentLinkSignal = Label ->

@@ -1,132 +1,132 @@
 module GObject
   def self.boxed_copy(boxed_type, src_boxed)
-    __return_value = LibGObject.boxed_copy(UInt64.new(boxed_type), src_boxed)
-    __return_value
+    LibGObject.boxed_copy(UInt64.new(boxed_type), src_boxed)
+    nil
   end
 
   def self.boxed_free(boxed_type, boxed)
-    __return_value = LibGObject.boxed_free(UInt64.new(boxed_type), boxed)
-    __return_value
+    LibGObject.boxed_free(UInt64.new(boxed_type), boxed)
+    nil
   end
 
   def self.cclosure_marshal_BOOLEAN__BOXED_BOXED(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)
-    __return_value = LibGObject.cclosure_marshal_BOOLEAN__BOXED_BOXED(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
-    __return_value
+    LibGObject.cclosure_marshal_BOOLEAN__BOXED_BOXED(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
   end
 
   def self.cclosure_marshal_BOOLEAN__FLAGS(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)
-    __return_value = LibGObject.cclosure_marshal_BOOLEAN__FLAGS(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
-    __return_value
+    LibGObject.cclosure_marshal_BOOLEAN__FLAGS(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
   end
 
   def self.cclosure_marshal_STRING__OBJECT_POINTER(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)
-    __return_value = LibGObject.cclosure_marshal_STRING__OBJECT_POINTER(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
-    __return_value
+    LibGObject.cclosure_marshal_STRING__OBJECT_POINTER(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
   end
 
   def self.cclosure_marshal_VOID__BOOLEAN(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)
-    __return_value = LibGObject.cclosure_marshal_VOID__BOOLEAN(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
-    __return_value
+    LibGObject.cclosure_marshal_VOID__BOOLEAN(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
   end
 
   def self.cclosure_marshal_VOID__BOXED(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)
-    __return_value = LibGObject.cclosure_marshal_VOID__BOXED(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
-    __return_value
+    LibGObject.cclosure_marshal_VOID__BOXED(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
   end
 
   def self.cclosure_marshal_VOID__CHAR(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)
-    __return_value = LibGObject.cclosure_marshal_VOID__CHAR(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
-    __return_value
+    LibGObject.cclosure_marshal_VOID__CHAR(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
   end
 
   def self.cclosure_marshal_VOID__DOUBLE(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)
-    __return_value = LibGObject.cclosure_marshal_VOID__DOUBLE(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
-    __return_value
+    LibGObject.cclosure_marshal_VOID__DOUBLE(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
   end
 
   def self.cclosure_marshal_VOID__ENUM(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)
-    __return_value = LibGObject.cclosure_marshal_VOID__ENUM(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
-    __return_value
+    LibGObject.cclosure_marshal_VOID__ENUM(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
   end
 
   def self.cclosure_marshal_VOID__FLAGS(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)
-    __return_value = LibGObject.cclosure_marshal_VOID__FLAGS(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
-    __return_value
+    LibGObject.cclosure_marshal_VOID__FLAGS(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
   end
 
   def self.cclosure_marshal_VOID__FLOAT(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)
-    __return_value = LibGObject.cclosure_marshal_VOID__FLOAT(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
-    __return_value
+    LibGObject.cclosure_marshal_VOID__FLOAT(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
   end
 
   def self.cclosure_marshal_VOID__INT(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)
-    __return_value = LibGObject.cclosure_marshal_VOID__INT(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
-    __return_value
+    LibGObject.cclosure_marshal_VOID__INT(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
   end
 
   def self.cclosure_marshal_VOID__LONG(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)
-    __return_value = LibGObject.cclosure_marshal_VOID__LONG(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
-    __return_value
+    LibGObject.cclosure_marshal_VOID__LONG(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
   end
 
   def self.cclosure_marshal_VOID__OBJECT(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)
-    __return_value = LibGObject.cclosure_marshal_VOID__OBJECT(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
-    __return_value
+    LibGObject.cclosure_marshal_VOID__OBJECT(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
   end
 
   def self.cclosure_marshal_VOID__PARAM(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)
-    __return_value = LibGObject.cclosure_marshal_VOID__PARAM(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
-    __return_value
+    LibGObject.cclosure_marshal_VOID__PARAM(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
   end
 
   def self.cclosure_marshal_VOID__POINTER(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)
-    __return_value = LibGObject.cclosure_marshal_VOID__POINTER(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
-    __return_value
+    LibGObject.cclosure_marshal_VOID__POINTER(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
   end
 
   def self.cclosure_marshal_VOID__STRING(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)
-    __return_value = LibGObject.cclosure_marshal_VOID__STRING(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
-    __return_value
+    LibGObject.cclosure_marshal_VOID__STRING(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
   end
 
   def self.cclosure_marshal_VOID__UCHAR(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)
-    __return_value = LibGObject.cclosure_marshal_VOID__UCHAR(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
-    __return_value
+    LibGObject.cclosure_marshal_VOID__UCHAR(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
   end
 
   def self.cclosure_marshal_VOID__UINT(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)
-    __return_value = LibGObject.cclosure_marshal_VOID__UINT(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
-    __return_value
+    LibGObject.cclosure_marshal_VOID__UINT(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
   end
 
   def self.cclosure_marshal_VOID__UINT_POINTER(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)
-    __return_value = LibGObject.cclosure_marshal_VOID__UINT_POINTER(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
-    __return_value
+    LibGObject.cclosure_marshal_VOID__UINT_POINTER(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
   end
 
   def self.cclosure_marshal_VOID__ULONG(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)
-    __return_value = LibGObject.cclosure_marshal_VOID__ULONG(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
-    __return_value
+    LibGObject.cclosure_marshal_VOID__ULONG(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
   end
 
   def self.cclosure_marshal_VOID__VARIANT(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)
-    __return_value = LibGObject.cclosure_marshal_VOID__VARIANT(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
-    __return_value
+    LibGObject.cclosure_marshal_VOID__VARIANT(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
   end
 
   def self.cclosure_marshal_VOID__VOID(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)
-    __return_value = LibGObject.cclosure_marshal_VOID__VOID(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
-    __return_value
+    LibGObject.cclosure_marshal_VOID__VOID(closure.to_unsafe.as(LibGObject::Closure*), return_value.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
   end
 
   def self.cclosure_marshal_generic(closure, return_gvalue, n_param_values, param_values, invocation_hint, marshal_data)
-    __return_value = LibGObject.cclosure_marshal_generic(closure.to_unsafe.as(LibGObject::Closure*), return_gvalue.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
-    __return_value
+    LibGObject.cclosure_marshal_generic(closure.to_unsafe.as(LibGObject::Closure*), return_gvalue.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
   end
 
   def self.enum_complete_type_info(g_enum_type, info, const_values)
-    __return_value = LibGObject.enum_complete_type_info(UInt64.new(g_enum_type), info, const_values.to_unsafe.as(LibGObject::EnumValue*))
-    __return_value
+    LibGObject.enum_complete_type_info(UInt64.new(g_enum_type), info, const_values.to_unsafe.as(LibGObject::EnumValue*))
+    nil
   end
 
   def self.enum_get_value(enum_class, value)
@@ -149,9 +149,14 @@ module GObject
     __return_value
   end
 
+  def self.enum_to_string(g_enum_type, value)
+    __return_value = LibGObject.enum_to_string(UInt64.new(g_enum_type), Int32.new(value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+  end
+
   def self.flags_complete_type_info(g_flags_type, info, const_values)
-    __return_value = LibGObject.flags_complete_type_info(UInt64.new(g_flags_type), info, const_values.to_unsafe.as(LibGObject::FlagsValue*))
-    __return_value
+    LibGObject.flags_complete_type_info(UInt64.new(g_flags_type), info, const_values.to_unsafe.as(LibGObject::FlagsValue*))
+    nil
   end
 
   def self.flags_get_first_value(flags_class, value)
@@ -172,6 +177,11 @@ module GObject
   def self.flags_register_static(name, const_static_values)
     __return_value = LibGObject.flags_register_static(name.to_unsafe, const_static_values.to_unsafe.as(LibGObject::FlagsValue*))
     __return_value
+  end
+
+  def self.flags_to_string(flags_type, value)
+    __return_value = LibGObject.flags_to_string(UInt64.new(flags_type), UInt32.new(value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.gtype_get_type
@@ -305,8 +315,8 @@ module GObject
   end
 
   def self.param_value_set_default(pspec, value)
-    __return_value = LibGObject.param_value_set_default(pspec.to_unsafe.as(LibGObject::ParamSpec*), value.to_unsafe.as(LibGObject::Value*))
-    __return_value
+    LibGObject.param_value_set_default(pspec.to_unsafe.as(LibGObject::ParamSpec*), value.to_unsafe.as(LibGObject::Value*))
+    nil
   end
 
   def self.param_value_validate(pspec, value)
@@ -340,8 +350,8 @@ module GObject
   end
 
   def self.signal_chain_from_overridden(instance_and_params, return_value)
-    __return_value = LibGObject.signal_chain_from_overridden(instance_and_params, return_value.to_unsafe.as(LibGObject::Value*))
-    __return_value
+    LibGObject.signal_chain_from_overridden(instance_and_params, return_value.to_unsafe.as(LibGObject::Value*))
+    nil
   end
 
   def self.signal_connect_closure(instance, detailed_signal, closure, after)
@@ -355,8 +365,8 @@ module GObject
   end
 
   def self.signal_emitv(instance_and_params, signal_id, detail, return_value)
-    __return_value = LibGObject.signal_emitv(instance_and_params, UInt32.new(signal_id), UInt32.new(detail), return_value)
-    __return_value
+    LibGObject.signal_emitv(instance_and_params, UInt32.new(signal_id), UInt32.new(detail), return_value)
+    nil
   end
 
   def self.signal_get_invocation_hint(instance)
@@ -365,13 +375,13 @@ module GObject
   end
 
   def self.signal_handler_block(instance, handler_id)
-    __return_value = LibGObject.signal_handler_block(instance.to_unsafe.as(LibGObject::Object*), UInt64.new(handler_id))
-    __return_value
+    LibGObject.signal_handler_block(instance.to_unsafe.as(LibGObject::Object*), UInt64.new(handler_id))
+    nil
   end
 
   def self.signal_handler_disconnect(instance, handler_id)
-    __return_value = LibGObject.signal_handler_disconnect(instance.to_unsafe.as(LibGObject::Object*), UInt64.new(handler_id))
-    __return_value
+    LibGObject.signal_handler_disconnect(instance.to_unsafe.as(LibGObject::Object*), UInt64.new(handler_id))
+    nil
   end
 
   def self.signal_handler_find(instance, mask : GObject::SignalMatchType, signal_id, detail, closure, func, data)
@@ -385,8 +395,8 @@ module GObject
   end
 
   def self.signal_handler_unblock(instance, handler_id)
-    __return_value = LibGObject.signal_handler_unblock(instance.to_unsafe.as(LibGObject::Object*), UInt64.new(handler_id))
-    __return_value
+    LibGObject.signal_handler_unblock(instance.to_unsafe.as(LibGObject::Object*), UInt64.new(handler_id))
+    nil
   end
 
   def self.signal_handlers_block_matched(instance, mask : GObject::SignalMatchType, signal_id, detail, closure, func, data)
@@ -395,8 +405,8 @@ module GObject
   end
 
   def self.signal_handlers_destroy(instance)
-    __return_value = LibGObject.signal_handlers_destroy(instance.to_unsafe.as(LibGObject::Object*))
-    __return_value
+    LibGObject.signal_handlers_destroy(instance.to_unsafe.as(LibGObject::Object*))
+    nil
   end
 
   def self.signal_handlers_disconnect_matched(instance, mask : GObject::SignalMatchType, signal_id, detail, closure, func, data)
@@ -430,8 +440,8 @@ module GObject
   end
 
   def self.signal_override_class_closure(signal_id, instance_type, class_closure)
-    __return_value = LibGObject.signal_override_class_closure(UInt32.new(signal_id), UInt64.new(instance_type), class_closure.to_unsafe.as(LibGObject::Closure*))
-    __return_value
+    LibGObject.signal_override_class_closure(UInt32.new(signal_id), UInt64.new(instance_type), class_closure.to_unsafe.as(LibGObject::Closure*))
+    nil
   end
 
   def self.signal_parse_name(detailed_signal, itype, signal_id_p, detail_p, force_detail_quark)
@@ -440,28 +450,28 @@ module GObject
   end
 
   def self.signal_query(signal_id, query)
-    __return_value = LibGObject.signal_query(UInt32.new(signal_id), query)
-    __return_value
+    LibGObject.signal_query(UInt32.new(signal_id), query)
+    nil
   end
 
   def self.signal_remove_emission_hook(signal_id, hook_id)
-    __return_value = LibGObject.signal_remove_emission_hook(UInt32.new(signal_id), UInt64.new(hook_id))
-    __return_value
+    LibGObject.signal_remove_emission_hook(UInt32.new(signal_id), UInt64.new(hook_id))
+    nil
   end
 
   def self.signal_set_va_marshaller(signal_id, instance_type, va_marshaller)
-    __return_value = LibGObject.signal_set_va_marshaller(UInt32.new(signal_id), UInt64.new(instance_type), va_marshaller)
-    __return_value
+    LibGObject.signal_set_va_marshaller(UInt32.new(signal_id), UInt64.new(instance_type), va_marshaller)
+    nil
   end
 
   def self.signal_stop_emission(instance, signal_id, detail)
-    __return_value = LibGObject.signal_stop_emission(instance.to_unsafe.as(LibGObject::Object*), UInt32.new(signal_id), UInt32.new(detail))
-    __return_value
+    LibGObject.signal_stop_emission(instance.to_unsafe.as(LibGObject::Object*), UInt32.new(signal_id), UInt32.new(detail))
+    nil
   end
 
   def self.signal_stop_emission_by_name(instance, detailed_signal)
-    __return_value = LibGObject.signal_stop_emission_by_name(instance.to_unsafe.as(LibGObject::Object*), detailed_signal.to_unsafe)
-    __return_value
+    LibGObject.signal_stop_emission_by_name(instance.to_unsafe.as(LibGObject::Object*), detailed_signal.to_unsafe)
+    nil
   end
 
   def self.signal_type_cclosure_new(itype, struct_offset)
@@ -470,13 +480,13 @@ module GObject
   end
 
   def self.source_set_closure(source, closure)
-    __return_value = LibGObject.source_set_closure(source.to_unsafe.as(LibGLib::Source*), closure.to_unsafe.as(LibGObject::Closure*))
-    __return_value
+    LibGObject.source_set_closure(source.to_unsafe.as(LibGLib::Source*), closure.to_unsafe.as(LibGObject::Closure*))
+    nil
   end
 
   def self.source_set_dummy_callback(source)
-    __return_value = LibGObject.source_set_dummy_callback(source.to_unsafe.as(LibGLib::Source*))
-    __return_value
+    LibGObject.source_set_dummy_callback(source.to_unsafe.as(LibGLib::Source*))
+    nil
   end
 
   def self.strdup_value_contents(value)
@@ -485,8 +495,8 @@ module GObject
   end
 
   def self.type_add_class_private(class_type, private_size)
-    __return_value = LibGObject.type_add_class_private(UInt64.new(class_type), UInt64.new(private_size))
-    __return_value
+    LibGObject.type_add_class_private(UInt64.new(class_type), UInt64.new(private_size))
+    nil
   end
 
   def self.type_add_instance_private(class_type, private_size)
@@ -495,13 +505,13 @@ module GObject
   end
 
   def self.type_add_interface_dynamic(instance_type, interface_type, plugin)
-    __return_value = LibGObject.type_add_interface_dynamic(UInt64.new(instance_type), UInt64.new(interface_type), plugin.to_unsafe.as(LibGObject::TypePlugin*))
-    __return_value
+    LibGObject.type_add_interface_dynamic(UInt64.new(instance_type), UInt64.new(interface_type), plugin.to_unsafe.as(LibGObject::TypePlugin*))
+    nil
   end
 
   def self.type_add_interface_static(instance_type, interface_type, info)
-    __return_value = LibGObject.type_add_interface_static(UInt64.new(instance_type), UInt64.new(interface_type), info.to_unsafe.as(LibGObject::InterfaceInfo*))
-    __return_value
+    LibGObject.type_add_interface_static(UInt64.new(instance_type), UInt64.new(interface_type), info.to_unsafe.as(LibGObject::InterfaceInfo*))
+    nil
   end
 
   def self.type_check_class_is_a(g_class, is_a_type)
@@ -545,8 +555,8 @@ module GObject
   end
 
   def self.type_class_adjust_private_offset(g_class, private_size_or_offset)
-    __return_value = LibGObject.type_class_adjust_private_offset(g_class ? g_class : nil, private_size_or_offset)
-    __return_value
+    LibGObject.type_class_adjust_private_offset(g_class ? g_class : nil, private_size_or_offset)
+    nil
   end
 
   def self.type_class_peek(type)
@@ -575,8 +585,8 @@ module GObject
   end
 
   def self.type_default_interface_unref(g_iface)
-    __return_value = LibGObject.type_default_interface_unref(g_iface.to_unsafe.as(LibGObject::TypeInterface*))
-    __return_value
+    LibGObject.type_default_interface_unref(g_iface.to_unsafe.as(LibGObject::TypeInterface*))
+    nil
   end
 
   def self.type_depth(type)
@@ -585,13 +595,13 @@ module GObject
   end
 
   def self.type_ensure(type)
-    __return_value = LibGObject.type_ensure(UInt64.new(type))
-    __return_value
+    LibGObject.type_ensure(UInt64.new(type))
+    nil
   end
 
   def self.type_free_instance(instance)
-    __return_value = LibGObject.type_free_instance(instance.to_unsafe.as(LibGObject::TypeInstance*))
-    __return_value
+    LibGObject.type_free_instance(instance.to_unsafe.as(LibGObject::TypeInstance*))
+    nil
   end
 
   def self.type_from_name(name)
@@ -620,8 +630,8 @@ module GObject
   end
 
   def self.type_get_qdata(type, quark)
-    __return_value = LibGObject.type_get_qdata(UInt64.new(type), UInt32.new(quark))
-    __return_value if __return_value
+    LibGObject.type_get_qdata(UInt64.new(type), UInt32.new(quark))
+    nil
   end
 
   def self.type_get_type_registration_serial
@@ -630,18 +640,18 @@ module GObject
   end
 
   def self.type_init
-    __return_value = LibGObject.type_init
-    __return_value
+    LibGObject.type_init
+    nil
   end
 
   def self.type_init_with_debug_flags(debug_flags : GObject::TypeDebugFlags)
-    __return_value = LibGObject.type_init_with_debug_flags(debug_flags)
-    __return_value
+    LibGObject.type_init_with_debug_flags(debug_flags)
+    nil
   end
 
   def self.type_interface_add_prerequisite(interface_type, prerequisite_type)
-    __return_value = LibGObject.type_interface_add_prerequisite(UInt64.new(interface_type), UInt64.new(prerequisite_type))
-    __return_value
+    LibGObject.type_interface_add_prerequisite(UInt64.new(interface_type), UInt64.new(prerequisite_type))
+    nil
   end
 
   def self.type_interface_get_plugin(instance_type, interface_type)
@@ -700,8 +710,8 @@ module GObject
   end
 
   def self.type_query(type, query)
-    __return_value = LibGObject.type_query(UInt64.new(type), query)
-    __return_value
+    LibGObject.type_query(UInt64.new(type), query)
+    nil
   end
 
   def self.type_register_dynamic(parent_type, type_name, plugin, flags : GObject::TypeFlags)
@@ -720,8 +730,8 @@ module GObject
   end
 
   def self.type_set_qdata(type, quark, data)
-    __return_value = LibGObject.type_set_qdata(UInt64.new(type), UInt32.new(quark), data ? data : nil)
-    __return_value
+    LibGObject.type_set_qdata(UInt64.new(type), UInt32.new(quark), data ? data : nil)
+    nil
   end
 
   def self.type_test_flags(type, flags)

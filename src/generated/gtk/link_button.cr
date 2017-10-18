@@ -45,13 +45,13 @@ module Gtk
     end
 
     def uri=(uri)
-      __return_value = LibGtk.link_button_set_uri(to_unsafe.as(LibGtk::LinkButton*), uri.to_unsafe)
-      __return_value
+      LibGtk.link_button_set_uri(to_unsafe.as(LibGtk::LinkButton*), uri.to_unsafe)
+      nil
     end
 
     def visited=(visited)
-      __return_value = LibGtk.link_button_set_visited(to_unsafe.as(LibGtk::LinkButton*), visited)
-      __return_value
+      LibGtk.link_button_set_visited(to_unsafe.as(LibGtk::LinkButton*), visited)
+      nil
     end
 
     alias ActivateLinkSignal = LinkButton -> Bool

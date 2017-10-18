@@ -16,8 +16,8 @@ module Gst
     end
 
     def self.register(name, allocator)
-      __return_value = LibGst.allocator_register(name.to_unsafe, allocator.to_unsafe.as(LibGst::Allocator*))
-      __return_value
+      LibGst.allocator_register(name.to_unsafe, allocator.to_unsafe.as(LibGst::Allocator*))
+      nil
     end
 
     def alloc(size, params)
@@ -26,13 +26,13 @@ module Gst
     end
 
     def free(memory)
-      __return_value = LibGst.allocator_free(to_unsafe.as(LibGst::Allocator*), memory.to_unsafe.as(LibGst::Memory*))
-      __return_value
+      LibGst.allocator_free(to_unsafe.as(LibGst::Allocator*), memory.to_unsafe.as(LibGst::Memory*))
+      nil
     end
 
     def set_default
-      __return_value = LibGst.allocator_set_default(to_unsafe.as(LibGst::Allocator*))
-      __return_value
+      LibGst.allocator_set_default(to_unsafe.as(LibGst::Allocator*))
+      nil
     end
 
   end

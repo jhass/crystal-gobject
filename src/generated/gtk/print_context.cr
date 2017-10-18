@@ -59,8 +59,8 @@ module Gtk
     end
 
     def set_cairo_context(cr, dpi_x, dpi_y)
-      __return_value = LibGtk.print_context_set_cairo_context(to_unsafe.as(LibGtk::PrintContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(dpi_x), Float64.new(dpi_y))
-      __return_value
+      LibGtk.print_context_set_cairo_context(to_unsafe.as(LibGtk::PrintContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(dpi_x), Float64.new(dpi_y))
+      nil
     end
 
   end

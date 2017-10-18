@@ -56,8 +56,8 @@ module GLib
     end
 
     def unref
-      __return_value = LibGLib.bytes_unref(to_unsafe.as(LibGLib::Bytes*))
-      __return_value
+      LibGLib.bytes_unref(to_unsafe.as(LibGLib::Bytes*))
+      nil
     end
 
     def unref_to_array

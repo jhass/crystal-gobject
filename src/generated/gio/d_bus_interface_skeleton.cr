@@ -22,8 +22,8 @@ module Gio
     end
 
     def flush
-      __return_value = LibGio.d_bus_interface_skeleton_flush(to_unsafe.as(LibGio::DBusInterfaceSkeleton*))
-      __return_value
+      LibGio.d_bus_interface_skeleton_flush(to_unsafe.as(LibGio::DBusInterfaceSkeleton*))
+      nil
     end
 
     def connection
@@ -62,18 +62,18 @@ module Gio
     end
 
     def flags=(flags : Gio::DBusInterfaceSkeletonFlags)
-      __return_value = LibGio.d_bus_interface_skeleton_set_flags(to_unsafe.as(LibGio::DBusInterfaceSkeleton*), flags)
-      __return_value
+      LibGio.d_bus_interface_skeleton_set_flags(to_unsafe.as(LibGio::DBusInterfaceSkeleton*), flags)
+      nil
     end
 
     def unexport
-      __return_value = LibGio.d_bus_interface_skeleton_unexport(to_unsafe.as(LibGio::DBusInterfaceSkeleton*))
-      __return_value
+      LibGio.d_bus_interface_skeleton_unexport(to_unsafe.as(LibGio::DBusInterfaceSkeleton*))
+      nil
     end
 
     def unexport_from_connection(connection)
-      __return_value = LibGio.d_bus_interface_skeleton_unexport_from_connection(to_unsafe.as(LibGio::DBusInterfaceSkeleton*), connection.to_unsafe.as(LibGio::DBusConnection*))
-      __return_value
+      LibGio.d_bus_interface_skeleton_unexport_from_connection(to_unsafe.as(LibGio::DBusInterfaceSkeleton*), connection.to_unsafe.as(LibGio::DBusConnection*))
+      nil
     end
 
     alias GAuthorizeMethodSignal = DBusInterfaceSkeleton, Gio::DBusMethodInvocation -> Bool

@@ -29,8 +29,8 @@ module Gtk
     end
 
     def destroy
-      __return_value = LibGtk.native_dialog_destroy(to_unsafe.as(LibGtk::NativeDialog*))
-      __return_value
+      LibGtk.native_dialog_destroy(to_unsafe.as(LibGtk::NativeDialog*))
+      nil
     end
 
     def modal
@@ -54,8 +54,8 @@ module Gtk
     end
 
     def hide
-      __return_value = LibGtk.native_dialog_hide(to_unsafe.as(LibGtk::NativeDialog*))
-      __return_value
+      LibGtk.native_dialog_hide(to_unsafe.as(LibGtk::NativeDialog*))
+      nil
     end
 
     def run
@@ -64,23 +64,23 @@ module Gtk
     end
 
     def modal=(modal)
-      __return_value = LibGtk.native_dialog_set_modal(to_unsafe.as(LibGtk::NativeDialog*), modal)
-      __return_value
+      LibGtk.native_dialog_set_modal(to_unsafe.as(LibGtk::NativeDialog*), modal)
+      nil
     end
 
     def title=(title)
-      __return_value = LibGtk.native_dialog_set_title(to_unsafe.as(LibGtk::NativeDialog*), title.to_unsafe)
-      __return_value
+      LibGtk.native_dialog_set_title(to_unsafe.as(LibGtk::NativeDialog*), title.to_unsafe)
+      nil
     end
 
     def transient_for=(parent)
-      __return_value = LibGtk.native_dialog_set_transient_for(to_unsafe.as(LibGtk::NativeDialog*), parent ? parent.to_unsafe.as(LibGtk::Window*) : nil)
-      __return_value
+      LibGtk.native_dialog_set_transient_for(to_unsafe.as(LibGtk::NativeDialog*), parent ? parent.to_unsafe.as(LibGtk::Window*) : nil)
+      nil
     end
 
     def show
-      __return_value = LibGtk.native_dialog_show(to_unsafe.as(LibGtk::NativeDialog*))
-      __return_value
+      LibGtk.native_dialog_show(to_unsafe.as(LibGtk::NativeDialog*))
+      nil
     end
 
     alias ResponseSignal = NativeDialog, Int32 ->

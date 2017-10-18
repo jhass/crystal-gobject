@@ -18,8 +18,8 @@ module Gtk
     end
 
     def add_id(window)
-      __return_value = LibGtk.socket_add_id(to_unsafe.as(LibGtk::Socket*), UInt64.new(window))
-      __return_value
+      LibGtk.socket_add_id(to_unsafe.as(LibGtk::Socket*), UInt64.new(window))
+      nil
     end
 
     def id

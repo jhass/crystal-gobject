@@ -19,8 +19,8 @@ module Atk
     end
 
     def invalidate
-      __return_value = LibAtk.object_factory_invalidate(to_unsafe.as(LibAtk::ObjectFactory*))
-      __return_value
+      LibAtk.object_factory_invalidate(to_unsafe.as(LibAtk::ObjectFactory*))
+      nil
     end
 
   end

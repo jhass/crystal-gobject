@@ -19,23 +19,23 @@ module Gtk
     end
 
     def background_color(state : Gtk::StateFlags, color)
-      __return_value = LibGtk.theming_engine_get_background_color(to_unsafe.as(LibGtk::ThemingEngine*), state, color)
-      __return_value
+      LibGtk.theming_engine_get_background_color(to_unsafe.as(LibGtk::ThemingEngine*), state, color)
+      nil
     end
 
     def border(state : Gtk::StateFlags, border)
-      __return_value = LibGtk.theming_engine_get_border(to_unsafe.as(LibGtk::ThemingEngine*), state, border)
-      __return_value
+      LibGtk.theming_engine_get_border(to_unsafe.as(LibGtk::ThemingEngine*), state, border)
+      nil
     end
 
     def border_color(state : Gtk::StateFlags, color)
-      __return_value = LibGtk.theming_engine_get_border_color(to_unsafe.as(LibGtk::ThemingEngine*), state, color)
-      __return_value
+      LibGtk.theming_engine_get_border_color(to_unsafe.as(LibGtk::ThemingEngine*), state, color)
+      nil
     end
 
     def color(state : Gtk::StateFlags, color)
-      __return_value = LibGtk.theming_engine_get_color(to_unsafe.as(LibGtk::ThemingEngine*), state, color)
-      __return_value
+      LibGtk.theming_engine_get_color(to_unsafe.as(LibGtk::ThemingEngine*), state, color)
+      nil
     end
 
     def direction
@@ -54,13 +54,13 @@ module Gtk
     end
 
     def margin(state : Gtk::StateFlags, margin)
-      __return_value = LibGtk.theming_engine_get_margin(to_unsafe.as(LibGtk::ThemingEngine*), state, margin)
-      __return_value
+      LibGtk.theming_engine_get_margin(to_unsafe.as(LibGtk::ThemingEngine*), state, margin)
+      nil
     end
 
     def padding(state : Gtk::StateFlags, padding)
-      __return_value = LibGtk.theming_engine_get_padding(to_unsafe.as(LibGtk::ThemingEngine*), state, padding)
-      __return_value
+      LibGtk.theming_engine_get_padding(to_unsafe.as(LibGtk::ThemingEngine*), state, padding)
+      nil
     end
 
     def path
@@ -69,8 +69,8 @@ module Gtk
     end
 
     def property(property, state : Gtk::StateFlags, value)
-      __return_value = LibGtk.theming_engine_get_property(to_unsafe.as(LibGtk::ThemingEngine*), property.to_unsafe, state, value)
-      __return_value
+      LibGtk.theming_engine_get_property(to_unsafe.as(LibGtk::ThemingEngine*), property.to_unsafe, state, value)
+      nil
     end
 
     def screen
@@ -84,8 +84,8 @@ module Gtk
     end
 
     def style_property(property_name, value)
-      __return_value = LibGtk.theming_engine_get_style_property(to_unsafe.as(LibGtk::ThemingEngine*), property_name.to_unsafe, value)
-      __return_value
+      LibGtk.theming_engine_get_style_property(to_unsafe.as(LibGtk::ThemingEngine*), property_name.to_unsafe, value)
+      nil
     end
 
     def has_class(style_class)

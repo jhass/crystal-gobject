@@ -23,8 +23,8 @@ module Gtk
     end
 
     def add_action_widget(child)
-      __return_value = LibGtk.assistant_add_action_widget(to_unsafe.as(LibGtk::Assistant*), child.to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      LibGtk.assistant_add_action_widget(to_unsafe.as(LibGtk::Assistant*), child.to_unsafe.as(LibGtk::Widget*))
+      nil
     end
 
     def append_page(page)
@@ -33,8 +33,8 @@ module Gtk
     end
 
     def commit
-      __return_value = LibGtk.assistant_commit(to_unsafe.as(LibGtk::Assistant*))
-      __return_value
+      LibGtk.assistant_commit(to_unsafe.as(LibGtk::Assistant*))
+      nil
     end
 
     def current_page
@@ -88,8 +88,8 @@ module Gtk
     end
 
     def next_page
-      __return_value = LibGtk.assistant_next_page(to_unsafe.as(LibGtk::Assistant*))
-      __return_value
+      LibGtk.assistant_next_page(to_unsafe.as(LibGtk::Assistant*))
+      nil
     end
 
     def prepend_page(page)
@@ -98,63 +98,63 @@ module Gtk
     end
 
     def previous_page
-      __return_value = LibGtk.assistant_previous_page(to_unsafe.as(LibGtk::Assistant*))
-      __return_value
+      LibGtk.assistant_previous_page(to_unsafe.as(LibGtk::Assistant*))
+      nil
     end
 
     def remove_action_widget(child)
-      __return_value = LibGtk.assistant_remove_action_widget(to_unsafe.as(LibGtk::Assistant*), child.to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      LibGtk.assistant_remove_action_widget(to_unsafe.as(LibGtk::Assistant*), child.to_unsafe.as(LibGtk::Widget*))
+      nil
     end
 
     def remove_page(page_num)
-      __return_value = LibGtk.assistant_remove_page(to_unsafe.as(LibGtk::Assistant*), Int32.new(page_num))
-      __return_value
+      LibGtk.assistant_remove_page(to_unsafe.as(LibGtk::Assistant*), Int32.new(page_num))
+      nil
     end
 
     def current_page=(page_num)
-      __return_value = LibGtk.assistant_set_current_page(to_unsafe.as(LibGtk::Assistant*), Int32.new(page_num))
-      __return_value
+      LibGtk.assistant_set_current_page(to_unsafe.as(LibGtk::Assistant*), Int32.new(page_num))
+      nil
     end
 
     def set_forward_page_func(page_func, data, destroy)
-      __return_value = LibGtk.assistant_set_forward_page_func(to_unsafe.as(LibGtk::Assistant*), page_func ? page_func : nil, data ? data : nil, destroy)
-      __return_value
+      LibGtk.assistant_set_forward_page_func(to_unsafe.as(LibGtk::Assistant*), page_func ? page_func : nil, data ? data : nil, destroy)
+      nil
     end
 
     def set_page_complete(page, complete)
-      __return_value = LibGtk.assistant_set_page_complete(to_unsafe.as(LibGtk::Assistant*), page.to_unsafe.as(LibGtk::Widget*), complete)
-      __return_value
+      LibGtk.assistant_set_page_complete(to_unsafe.as(LibGtk::Assistant*), page.to_unsafe.as(LibGtk::Widget*), complete)
+      nil
     end
 
     def set_page_has_padding(page, has_padding)
-      __return_value = LibGtk.assistant_set_page_has_padding(to_unsafe.as(LibGtk::Assistant*), page.to_unsafe.as(LibGtk::Widget*), has_padding)
-      __return_value
+      LibGtk.assistant_set_page_has_padding(to_unsafe.as(LibGtk::Assistant*), page.to_unsafe.as(LibGtk::Widget*), has_padding)
+      nil
     end
 
     def set_page_header_image(page, pixbuf)
-      __return_value = LibGtk.assistant_set_page_header_image(to_unsafe.as(LibGtk::Assistant*), page.to_unsafe.as(LibGtk::Widget*), pixbuf ? pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*) : nil)
-      __return_value
+      LibGtk.assistant_set_page_header_image(to_unsafe.as(LibGtk::Assistant*), page.to_unsafe.as(LibGtk::Widget*), pixbuf ? pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*) : nil)
+      nil
     end
 
     def set_page_side_image(page, pixbuf)
-      __return_value = LibGtk.assistant_set_page_side_image(to_unsafe.as(LibGtk::Assistant*), page.to_unsafe.as(LibGtk::Widget*), pixbuf ? pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*) : nil)
-      __return_value
+      LibGtk.assistant_set_page_side_image(to_unsafe.as(LibGtk::Assistant*), page.to_unsafe.as(LibGtk::Widget*), pixbuf ? pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*) : nil)
+      nil
     end
 
     def set_page_title(page, title)
-      __return_value = LibGtk.assistant_set_page_title(to_unsafe.as(LibGtk::Assistant*), page.to_unsafe.as(LibGtk::Widget*), title.to_unsafe)
-      __return_value
+      LibGtk.assistant_set_page_title(to_unsafe.as(LibGtk::Assistant*), page.to_unsafe.as(LibGtk::Widget*), title.to_unsafe)
+      nil
     end
 
     def set_page_type(page, type : Gtk::AssistantPageType)
-      __return_value = LibGtk.assistant_set_page_type(to_unsafe.as(LibGtk::Assistant*), page.to_unsafe.as(LibGtk::Widget*), type)
-      __return_value
+      LibGtk.assistant_set_page_type(to_unsafe.as(LibGtk::Assistant*), page.to_unsafe.as(LibGtk::Widget*), type)
+      nil
     end
 
     def update_buttons_state
-      __return_value = LibGtk.assistant_update_buttons_state(to_unsafe.as(LibGtk::Assistant*))
-      __return_value
+      LibGtk.assistant_update_buttons_state(to_unsafe.as(LibGtk::Assistant*))
+      nil
     end
 
     alias ApplySignal = Assistant ->

@@ -26,8 +26,8 @@ module Gtk
     end
 
     def free
-      __return_value = LibGtk.tree_row_reference_free(to_unsafe.as(LibGtk::TreeRowReference*))
-      __return_value
+      LibGtk.tree_row_reference_free(to_unsafe.as(LibGtk::TreeRowReference*))
+      nil
     end
 
     def model
@@ -46,13 +46,13 @@ module Gtk
     end
 
     def self.deleted(proxy, path)
-      __return_value = LibGtk.tree_row_reference_deleted(proxy.to_unsafe.as(LibGObject::Object*), path.to_unsafe.as(LibGtk::TreePath*))
-      __return_value
+      LibGtk.tree_row_reference_deleted(proxy.to_unsafe.as(LibGObject::Object*), path.to_unsafe.as(LibGtk::TreePath*))
+      nil
     end
 
     def self.inserted(proxy, path)
-      __return_value = LibGtk.tree_row_reference_inserted(proxy.to_unsafe.as(LibGObject::Object*), path.to_unsafe.as(LibGtk::TreePath*))
-      __return_value
+      LibGtk.tree_row_reference_inserted(proxy.to_unsafe.as(LibGObject::Object*), path.to_unsafe.as(LibGtk::TreePath*))
+      nil
     end
 
   end

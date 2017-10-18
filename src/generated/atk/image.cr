@@ -11,13 +11,13 @@ module Atk
     end
 
     def image_position(x, y, coord_type : Atk::CoordType)
-      __return_value = LibAtk.image_get_image_position(to_unsafe.as(LibAtk::Image*), x, y, coord_type)
-      __return_value
+      LibAtk.image_get_image_position(to_unsafe.as(LibAtk::Image*), x, y, coord_type)
+      nil
     end
 
     def image_size(width, height)
-      __return_value = LibAtk.image_get_image_size(to_unsafe.as(LibAtk::Image*), width, height)
-      __return_value
+      LibAtk.image_get_image_size(to_unsafe.as(LibAtk::Image*), width, height)
+      nil
     end
 
     def image_description=(description)

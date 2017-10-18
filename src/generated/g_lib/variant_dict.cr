@@ -16,8 +16,8 @@ module GLib
     end
 
     def clear
-      __return_value = LibGLib.variant_dict_clear(to_unsafe.as(LibGLib::VariantDict*))
-      __return_value
+      LibGLib.variant_dict_clear(to_unsafe.as(LibGLib::VariantDict*))
+      nil
     end
 
     def contains(key)
@@ -31,8 +31,8 @@ module GLib
     end
 
     def insert_value(key, value)
-      __return_value = LibGLib.variant_dict_insert_value(to_unsafe.as(LibGLib::VariantDict*), key.to_unsafe, value.to_unsafe.as(LibGLib::Variant*))
-      __return_value
+      LibGLib.variant_dict_insert_value(to_unsafe.as(LibGLib::VariantDict*), key.to_unsafe, value.to_unsafe.as(LibGLib::Variant*))
+      nil
     end
 
     def lookup_value(key, expected_type)
@@ -51,8 +51,8 @@ module GLib
     end
 
     def unref
-      __return_value = LibGLib.variant_dict_unref(to_unsafe.as(LibGLib::VariantDict*))
-      __return_value
+      LibGLib.variant_dict_unref(to_unsafe.as(LibGLib::VariantDict*))
+      nil
     end
 
   end

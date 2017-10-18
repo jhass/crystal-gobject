@@ -11,13 +11,13 @@ module GLib
     end
 
     def clear
-      __return_value = LibGLib.string_chunk_clear(to_unsafe.as(LibGLib::StringChunk*))
-      __return_value
+      LibGLib.string_chunk_clear(to_unsafe.as(LibGLib::StringChunk*))
+      nil
     end
 
     def free
-      __return_value = LibGLib.string_chunk_free(to_unsafe.as(LibGLib::StringChunk*))
-      __return_value
+      LibGLib.string_chunk_free(to_unsafe.as(LibGLib::StringChunk*))
+      nil
     end
 
     def insert(string)

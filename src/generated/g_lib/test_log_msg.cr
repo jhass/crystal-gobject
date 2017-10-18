@@ -22,8 +22,8 @@ module GLib
     end
 
     def free
-      __return_value = LibGLib.test_log_msg_free(to_unsafe.as(LibGLib::TestLogMsg*))
-      __return_value
+      LibGLib.test_log_msg_free(to_unsafe.as(LibGLib::TestLogMsg*))
+      nil
     end
 
     def log_type

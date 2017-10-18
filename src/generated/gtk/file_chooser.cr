@@ -1,13 +1,13 @@
 module Gtk
   module FileChooser
     def add_choice(id, label, options, option_labels)
-      __return_value = LibGtk.file_chooser_add_choice(to_unsafe.as(LibGtk::FileChooser*), id.to_unsafe, label.to_unsafe, options.to_unsafe, option_labels.to_unsafe)
-      __return_value
+      LibGtk.file_chooser_add_choice(to_unsafe.as(LibGtk::FileChooser*), id.to_unsafe, label.to_unsafe, options.to_unsafe, option_labels.to_unsafe)
+      nil
     end
 
     def add_filter(filter)
-      __return_value = LibGtk.file_chooser_add_filter(to_unsafe.as(LibGtk::FileChooser*), filter.to_unsafe.as(LibGtk::FileFilter*))
-      __return_value
+      LibGtk.file_chooser_add_filter(to_unsafe.as(LibGtk::FileChooser*), filter.to_unsafe.as(LibGtk::FileFilter*))
+      nil
     end
 
     def add_shortcut_folder(folder)
@@ -165,13 +165,13 @@ module Gtk
     end
 
     def remove_choice(id)
-      __return_value = LibGtk.file_chooser_remove_choice(to_unsafe.as(LibGtk::FileChooser*), id.to_unsafe)
-      __return_value
+      LibGtk.file_chooser_remove_choice(to_unsafe.as(LibGtk::FileChooser*), id.to_unsafe)
+      nil
     end
 
     def remove_filter(filter)
-      __return_value = LibGtk.file_chooser_remove_filter(to_unsafe.as(LibGtk::FileChooser*), filter.to_unsafe.as(LibGtk::FileFilter*))
-      __return_value
+      LibGtk.file_chooser_remove_filter(to_unsafe.as(LibGtk::FileChooser*), filter.to_unsafe.as(LibGtk::FileFilter*))
+      nil
     end
 
     def remove_shortcut_folder(folder)
@@ -189,8 +189,8 @@ module Gtk
     end
 
     def select_all
-      __return_value = LibGtk.file_chooser_select_all(to_unsafe.as(LibGtk::FileChooser*))
-      __return_value
+      LibGtk.file_chooser_select_all(to_unsafe.as(LibGtk::FileChooser*))
+      nil
     end
 
     def select_file(file)
@@ -211,18 +211,18 @@ module Gtk
     end
 
     def action=(action : Gtk::FileChooserAction)
-      __return_value = LibGtk.file_chooser_set_action(to_unsafe.as(LibGtk::FileChooser*), action)
-      __return_value
+      LibGtk.file_chooser_set_action(to_unsafe.as(LibGtk::FileChooser*), action)
+      nil
     end
 
     def set_choice(id, option)
-      __return_value = LibGtk.file_chooser_set_choice(to_unsafe.as(LibGtk::FileChooser*), id.to_unsafe, option.to_unsafe)
-      __return_value
+      LibGtk.file_chooser_set_choice(to_unsafe.as(LibGtk::FileChooser*), id.to_unsafe, option.to_unsafe)
+      nil
     end
 
     def create_folders=(create_folders)
-      __return_value = LibGtk.file_chooser_set_create_folders(to_unsafe.as(LibGtk::FileChooser*), create_folders)
-      __return_value
+      LibGtk.file_chooser_set_create_folders(to_unsafe.as(LibGtk::FileChooser*), create_folders)
+      nil
     end
 
     def current_folder=(filename)
@@ -243,18 +243,18 @@ module Gtk
     end
 
     def current_name=(name)
-      __return_value = LibGtk.file_chooser_set_current_name(to_unsafe.as(LibGtk::FileChooser*), name.to_unsafe)
-      __return_value
+      LibGtk.file_chooser_set_current_name(to_unsafe.as(LibGtk::FileChooser*), name.to_unsafe)
+      nil
     end
 
     def do_overwrite_confirmation=(do_overwrite_confirmation)
-      __return_value = LibGtk.file_chooser_set_do_overwrite_confirmation(to_unsafe.as(LibGtk::FileChooser*), do_overwrite_confirmation)
-      __return_value
+      LibGtk.file_chooser_set_do_overwrite_confirmation(to_unsafe.as(LibGtk::FileChooser*), do_overwrite_confirmation)
+      nil
     end
 
     def extra_widget=(extra_widget)
-      __return_value = LibGtk.file_chooser_set_extra_widget(to_unsafe.as(LibGtk::FileChooser*), extra_widget.to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      LibGtk.file_chooser_set_extra_widget(to_unsafe.as(LibGtk::FileChooser*), extra_widget.to_unsafe.as(LibGtk::Widget*))
+      nil
     end
 
     def set_file(file)
@@ -270,33 +270,33 @@ module Gtk
     end
 
     def filter=(filter)
-      __return_value = LibGtk.file_chooser_set_filter(to_unsafe.as(LibGtk::FileChooser*), filter.to_unsafe.as(LibGtk::FileFilter*))
-      __return_value
+      LibGtk.file_chooser_set_filter(to_unsafe.as(LibGtk::FileChooser*), filter.to_unsafe.as(LibGtk::FileFilter*))
+      nil
     end
 
     def local_only=(local_only)
-      __return_value = LibGtk.file_chooser_set_local_only(to_unsafe.as(LibGtk::FileChooser*), local_only)
-      __return_value
+      LibGtk.file_chooser_set_local_only(to_unsafe.as(LibGtk::FileChooser*), local_only)
+      nil
     end
 
     def preview_widget=(preview_widget)
-      __return_value = LibGtk.file_chooser_set_preview_widget(to_unsafe.as(LibGtk::FileChooser*), preview_widget.to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      LibGtk.file_chooser_set_preview_widget(to_unsafe.as(LibGtk::FileChooser*), preview_widget.to_unsafe.as(LibGtk::Widget*))
+      nil
     end
 
     def preview_widget_active=(active)
-      __return_value = LibGtk.file_chooser_set_preview_widget_active(to_unsafe.as(LibGtk::FileChooser*), active)
-      __return_value
+      LibGtk.file_chooser_set_preview_widget_active(to_unsafe.as(LibGtk::FileChooser*), active)
+      nil
     end
 
     def select_multiple=(select_multiple)
-      __return_value = LibGtk.file_chooser_set_select_multiple(to_unsafe.as(LibGtk::FileChooser*), select_multiple)
-      __return_value
+      LibGtk.file_chooser_set_select_multiple(to_unsafe.as(LibGtk::FileChooser*), select_multiple)
+      nil
     end
 
     def show_hidden=(show_hidden)
-      __return_value = LibGtk.file_chooser_set_show_hidden(to_unsafe.as(LibGtk::FileChooser*), show_hidden)
-      __return_value
+      LibGtk.file_chooser_set_show_hidden(to_unsafe.as(LibGtk::FileChooser*), show_hidden)
+      nil
     end
 
     def uri=(uri)
@@ -305,28 +305,28 @@ module Gtk
     end
 
     def use_preview_label=(use_label)
-      __return_value = LibGtk.file_chooser_set_use_preview_label(to_unsafe.as(LibGtk::FileChooser*), use_label)
-      __return_value
+      LibGtk.file_chooser_set_use_preview_label(to_unsafe.as(LibGtk::FileChooser*), use_label)
+      nil
     end
 
     def unselect_all
-      __return_value = LibGtk.file_chooser_unselect_all(to_unsafe.as(LibGtk::FileChooser*))
-      __return_value
+      LibGtk.file_chooser_unselect_all(to_unsafe.as(LibGtk::FileChooser*))
+      nil
     end
 
     def unselect_file(file)
-      __return_value = LibGtk.file_chooser_unselect_file(to_unsafe.as(LibGtk::FileChooser*), file.to_unsafe.as(LibGio::File*))
-      __return_value
+      LibGtk.file_chooser_unselect_file(to_unsafe.as(LibGtk::FileChooser*), file.to_unsafe.as(LibGio::File*))
+      nil
     end
 
     def unselect_filename(filename)
-      __return_value = LibGtk.file_chooser_unselect_filename(to_unsafe.as(LibGtk::FileChooser*), filename.to_unsafe)
-      __return_value
+      LibGtk.file_chooser_unselect_filename(to_unsafe.as(LibGtk::FileChooser*), filename.to_unsafe)
+      nil
     end
 
     def unselect_uri(uri)
-      __return_value = LibGtk.file_chooser_unselect_uri(to_unsafe.as(LibGtk::FileChooser*), uri.to_unsafe)
-      __return_value
+      LibGtk.file_chooser_unselect_uri(to_unsafe.as(LibGtk::FileChooser*), uri.to_unsafe)
+      nil
     end
 
     alias ConfirmOverwriteSignal = FileChooser -> Gtk::FileChooserConfirmation

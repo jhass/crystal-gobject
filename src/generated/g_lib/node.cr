@@ -37,8 +37,8 @@ module GLib
     end
 
     def destroy
-      __return_value = LibGLib.node_destroy(to_unsafe.as(LibGLib::Node*))
-      __return_value
+      LibGLib.node_destroy(to_unsafe.as(LibGLib::Node*))
+      nil
     end
 
     def ancestor?(descendant)
@@ -62,13 +62,13 @@ module GLib
     end
 
     def reverse_children
-      __return_value = LibGLib.node_reverse_children(to_unsafe.as(LibGLib::Node*))
-      __return_value
+      LibGLib.node_reverse_children(to_unsafe.as(LibGLib::Node*))
+      nil
     end
 
     def unlink
-      __return_value = LibGLib.node_unlink(to_unsafe.as(LibGLib::Node*))
-      __return_value
+      LibGLib.node_unlink(to_unsafe.as(LibGLib::Node*))
+      nil
     end
 
     def data

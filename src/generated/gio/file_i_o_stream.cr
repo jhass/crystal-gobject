@@ -24,8 +24,8 @@ module Gio
     end
 
     def query_info_async(attributes, io_priority, cancellable, callback, user_data)
-      __return_value = LibGio.file_i_o_stream_query_info_async(to_unsafe.as(LibGio::FileIOStream*), attributes.to_unsafe, Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.file_i_o_stream_query_info_async(to_unsafe.as(LibGio::FileIOStream*), attributes.to_unsafe, Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def query_info_finish(result)

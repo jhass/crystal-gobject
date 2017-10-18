@@ -36,8 +36,8 @@ module Pango
     end
 
     def free
-      __return_value = LibPango.font_description_free(to_unsafe.as(LibPango::FontDescription*))
-      __return_value
+      LibPango.font_description_free(to_unsafe.as(LibPango::FontDescription*))
+      nil
     end
 
     def family
@@ -91,58 +91,58 @@ module Pango
     end
 
     def merge(desc_to_merge, replace_existing)
-      __return_value = LibPango.font_description_merge(to_unsafe.as(LibPango::FontDescription*), desc_to_merge ? desc_to_merge.to_unsafe.as(LibPango::FontDescription*) : nil, replace_existing)
-      __return_value
+      LibPango.font_description_merge(to_unsafe.as(LibPango::FontDescription*), desc_to_merge ? desc_to_merge.to_unsafe.as(LibPango::FontDescription*) : nil, replace_existing)
+      nil
     end
 
     def merge_static(desc_to_merge, replace_existing)
-      __return_value = LibPango.font_description_merge_static(to_unsafe.as(LibPango::FontDescription*), desc_to_merge.to_unsafe.as(LibPango::FontDescription*), replace_existing)
-      __return_value
+      LibPango.font_description_merge_static(to_unsafe.as(LibPango::FontDescription*), desc_to_merge.to_unsafe.as(LibPango::FontDescription*), replace_existing)
+      nil
     end
 
     def absolute_size=(size)
-      __return_value = LibPango.font_description_set_absolute_size(to_unsafe.as(LibPango::FontDescription*), Float64.new(size))
-      __return_value
+      LibPango.font_description_set_absolute_size(to_unsafe.as(LibPango::FontDescription*), Float64.new(size))
+      nil
     end
 
     def family=(family)
-      __return_value = LibPango.font_description_set_family(to_unsafe.as(LibPango::FontDescription*), family.to_unsafe)
-      __return_value
+      LibPango.font_description_set_family(to_unsafe.as(LibPango::FontDescription*), family.to_unsafe)
+      nil
     end
 
     def family_static=(family)
-      __return_value = LibPango.font_description_set_family_static(to_unsafe.as(LibPango::FontDescription*), family.to_unsafe)
-      __return_value
+      LibPango.font_description_set_family_static(to_unsafe.as(LibPango::FontDescription*), family.to_unsafe)
+      nil
     end
 
     def gravity=(gravity : Pango::Gravity)
-      __return_value = LibPango.font_description_set_gravity(to_unsafe.as(LibPango::FontDescription*), gravity)
-      __return_value
+      LibPango.font_description_set_gravity(to_unsafe.as(LibPango::FontDescription*), gravity)
+      nil
     end
 
     def size=(size)
-      __return_value = LibPango.font_description_set_size(to_unsafe.as(LibPango::FontDescription*), Int32.new(size))
-      __return_value
+      LibPango.font_description_set_size(to_unsafe.as(LibPango::FontDescription*), Int32.new(size))
+      nil
     end
 
     def stretch=(stretch : Pango::Stretch)
-      __return_value = LibPango.font_description_set_stretch(to_unsafe.as(LibPango::FontDescription*), stretch)
-      __return_value
+      LibPango.font_description_set_stretch(to_unsafe.as(LibPango::FontDescription*), stretch)
+      nil
     end
 
     def style=(style : Pango::Style)
-      __return_value = LibPango.font_description_set_style(to_unsafe.as(LibPango::FontDescription*), style)
-      __return_value
+      LibPango.font_description_set_style(to_unsafe.as(LibPango::FontDescription*), style)
+      nil
     end
 
     def variant=(variant : Pango::Variant)
-      __return_value = LibPango.font_description_set_variant(to_unsafe.as(LibPango::FontDescription*), variant)
-      __return_value
+      LibPango.font_description_set_variant(to_unsafe.as(LibPango::FontDescription*), variant)
+      nil
     end
 
     def weight=(weight : Pango::Weight)
-      __return_value = LibPango.font_description_set_weight(to_unsafe.as(LibPango::FontDescription*), weight)
-      __return_value
+      LibPango.font_description_set_weight(to_unsafe.as(LibPango::FontDescription*), weight)
+      nil
     end
 
     def to_filename
@@ -156,8 +156,8 @@ module Pango
     end
 
     def unset_fields(to_unset : Pango::FontMask)
-      __return_value = LibPango.font_description_unset_fields(to_unsafe.as(LibPango::FontDescription*), to_unset)
-      __return_value
+      LibPango.font_description_unset_fields(to_unsafe.as(LibPango::FontDescription*), to_unset)
+      nil
     end
 
     def self.from_string(str)

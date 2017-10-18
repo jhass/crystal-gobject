@@ -29,18 +29,18 @@ module Gtk
     end
 
     def focus_in
-      __return_value = LibGtk.i_m_context_focus_in(to_unsafe.as(LibGtk::IMContext*))
-      __return_value
+      LibGtk.i_m_context_focus_in(to_unsafe.as(LibGtk::IMContext*))
+      nil
     end
 
     def focus_out
-      __return_value = LibGtk.i_m_context_focus_out(to_unsafe.as(LibGtk::IMContext*))
-      __return_value
+      LibGtk.i_m_context_focus_out(to_unsafe.as(LibGtk::IMContext*))
+      nil
     end
 
     def preedit_string(str, attrs, cursor_pos)
-      __return_value = LibGtk.i_m_context_get_preedit_string(to_unsafe.as(LibGtk::IMContext*), str, attrs, cursor_pos)
-      __return_value
+      LibGtk.i_m_context_get_preedit_string(to_unsafe.as(LibGtk::IMContext*), str, attrs, cursor_pos)
+      nil
     end
 
     def surrounding(text, cursor_index)
@@ -49,28 +49,28 @@ module Gtk
     end
 
     def reset
-      __return_value = LibGtk.i_m_context_reset(to_unsafe.as(LibGtk::IMContext*))
-      __return_value
+      LibGtk.i_m_context_reset(to_unsafe.as(LibGtk::IMContext*))
+      nil
     end
 
     def client_window=(window)
-      __return_value = LibGtk.i_m_context_set_client_window(to_unsafe.as(LibGtk::IMContext*), window ? window.to_unsafe.as(LibGdk::Window*) : nil)
-      __return_value
+      LibGtk.i_m_context_set_client_window(to_unsafe.as(LibGtk::IMContext*), window ? window.to_unsafe.as(LibGdk::Window*) : nil)
+      nil
     end
 
     def cursor_location=(area)
-      __return_value = LibGtk.i_m_context_set_cursor_location(to_unsafe.as(LibGtk::IMContext*), area.to_unsafe.as(LibGdk::Rectangle*))
-      __return_value
+      LibGtk.i_m_context_set_cursor_location(to_unsafe.as(LibGtk::IMContext*), area.to_unsafe.as(LibGdk::Rectangle*))
+      nil
     end
 
     def set_surrounding(text, len, cursor_index)
-      __return_value = LibGtk.i_m_context_set_surrounding(to_unsafe.as(LibGtk::IMContext*), text.to_unsafe, Int32.new(len), Int32.new(cursor_index))
-      __return_value
+      LibGtk.i_m_context_set_surrounding(to_unsafe.as(LibGtk::IMContext*), text.to_unsafe, Int32.new(len), Int32.new(cursor_index))
+      nil
     end
 
     def use_preedit=(use_preedit)
-      __return_value = LibGtk.i_m_context_set_use_preedit(to_unsafe.as(LibGtk::IMContext*), use_preedit)
-      __return_value
+      LibGtk.i_m_context_set_use_preedit(to_unsafe.as(LibGtk::IMContext*), use_preedit)
+      nil
     end
 
     alias CommitSignal = IMContext, String ->

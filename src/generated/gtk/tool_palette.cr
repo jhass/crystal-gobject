@@ -45,8 +45,8 @@ module Gtk
     end
 
     def add_drag_dest(widget, flags : Gtk::DestDefaults, targets : Gtk::ToolPaletteDragTargets, actions : Gdk::DragAction)
-      __return_value = LibGtk.tool_palette_add_drag_dest(to_unsafe.as(LibGtk::ToolPalette*), widget.to_unsafe.as(LibGtk::Widget*), flags, targets, actions)
-      __return_value
+      LibGtk.tool_palette_add_drag_dest(to_unsafe.as(LibGtk::ToolPalette*), widget.to_unsafe.as(LibGtk::Widget*), flags, targets, actions)
+      nil
     end
 
     def drag_item(selection)
@@ -100,43 +100,43 @@ module Gtk
     end
 
     def drag_source=(targets : Gtk::ToolPaletteDragTargets)
-      __return_value = LibGtk.tool_palette_set_drag_source(to_unsafe.as(LibGtk::ToolPalette*), targets)
-      __return_value
+      LibGtk.tool_palette_set_drag_source(to_unsafe.as(LibGtk::ToolPalette*), targets)
+      nil
     end
 
     def set_exclusive(group, exclusive)
-      __return_value = LibGtk.tool_palette_set_exclusive(to_unsafe.as(LibGtk::ToolPalette*), group.to_unsafe.as(LibGtk::ToolItemGroup*), exclusive)
-      __return_value
+      LibGtk.tool_palette_set_exclusive(to_unsafe.as(LibGtk::ToolPalette*), group.to_unsafe.as(LibGtk::ToolItemGroup*), exclusive)
+      nil
     end
 
     def set_expand(group, expand)
-      __return_value = LibGtk.tool_palette_set_expand(to_unsafe.as(LibGtk::ToolPalette*), group.to_unsafe.as(LibGtk::ToolItemGroup*), expand)
-      __return_value
+      LibGtk.tool_palette_set_expand(to_unsafe.as(LibGtk::ToolPalette*), group.to_unsafe.as(LibGtk::ToolItemGroup*), expand)
+      nil
     end
 
     def set_group_position(group, position)
-      __return_value = LibGtk.tool_palette_set_group_position(to_unsafe.as(LibGtk::ToolPalette*), group.to_unsafe.as(LibGtk::ToolItemGroup*), Int32.new(position))
-      __return_value
+      LibGtk.tool_palette_set_group_position(to_unsafe.as(LibGtk::ToolPalette*), group.to_unsafe.as(LibGtk::ToolItemGroup*), Int32.new(position))
+      nil
     end
 
     def icon_size=(icon_size)
-      __return_value = LibGtk.tool_palette_set_icon_size(to_unsafe.as(LibGtk::ToolPalette*), Int32.new(icon_size))
-      __return_value
+      LibGtk.tool_palette_set_icon_size(to_unsafe.as(LibGtk::ToolPalette*), Int32.new(icon_size))
+      nil
     end
 
     def style=(style : Gtk::ToolbarStyle)
-      __return_value = LibGtk.tool_palette_set_style(to_unsafe.as(LibGtk::ToolPalette*), style)
-      __return_value
+      LibGtk.tool_palette_set_style(to_unsafe.as(LibGtk::ToolPalette*), style)
+      nil
     end
 
     def unset_icon_size
-      __return_value = LibGtk.tool_palette_unset_icon_size(to_unsafe.as(LibGtk::ToolPalette*))
-      __return_value
+      LibGtk.tool_palette_unset_icon_size(to_unsafe.as(LibGtk::ToolPalette*))
+      nil
     end
 
     def unset_style
-      __return_value = LibGtk.tool_palette_unset_style(to_unsafe.as(LibGtk::ToolPalette*))
-      __return_value
+      LibGtk.tool_palette_unset_style(to_unsafe.as(LibGtk::ToolPalette*))
+      nil
     end
 
   end

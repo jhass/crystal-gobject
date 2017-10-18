@@ -8,8 +8,8 @@ module Gio
     end
 
     def reset
-      __return_value = LibGio.converter_reset(to_unsafe.as(LibGio::Converter*))
-      __return_value
+      LibGio.converter_reset(to_unsafe.as(LibGio::Converter*))
+      nil
     end
 
   end

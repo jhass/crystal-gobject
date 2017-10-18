@@ -36,8 +36,8 @@ module Gst
     end
 
     def insert(idx, buffer)
-      __return_value = LibGst.buffer_list_insert(to_unsafe.as(LibGst::BufferList*), Int32.new(idx), buffer.to_unsafe.as(LibGst::Buffer*))
-      __return_value
+      LibGst.buffer_list_insert(to_unsafe.as(LibGst::BufferList*), Int32.new(idx), buffer.to_unsafe.as(LibGst::Buffer*))
+      nil
     end
 
     def length
@@ -46,8 +46,8 @@ module Gst
     end
 
     def remove(idx, length)
-      __return_value = LibGst.buffer_list_remove(to_unsafe.as(LibGst::BufferList*), UInt32.new(idx), UInt32.new(length))
-      __return_value
+      LibGst.buffer_list_remove(to_unsafe.as(LibGst::BufferList*), UInt32.new(idx), UInt32.new(length))
+      nil
     end
 
   end

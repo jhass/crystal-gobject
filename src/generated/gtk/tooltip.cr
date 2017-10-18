@@ -9,48 +9,48 @@ module Gtk
     end
 
     def self.trigger_tooltip_query(display)
-      __return_value = LibGtk.tooltip_trigger_tooltip_query(display.to_unsafe.as(LibGdk::Display*))
-      __return_value
+      LibGtk.tooltip_trigger_tooltip_query(display.to_unsafe.as(LibGdk::Display*))
+      nil
     end
 
     def custom=(custom_widget)
-      __return_value = LibGtk.tooltip_set_custom(to_unsafe.as(LibGtk::Tooltip*), custom_widget ? custom_widget.to_unsafe.as(LibGtk::Widget*) : nil)
-      __return_value
+      LibGtk.tooltip_set_custom(to_unsafe.as(LibGtk::Tooltip*), custom_widget ? custom_widget.to_unsafe.as(LibGtk::Widget*) : nil)
+      nil
     end
 
     def icon=(pixbuf)
-      __return_value = LibGtk.tooltip_set_icon(to_unsafe.as(LibGtk::Tooltip*), pixbuf ? pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*) : nil)
-      __return_value
+      LibGtk.tooltip_set_icon(to_unsafe.as(LibGtk::Tooltip*), pixbuf ? pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*) : nil)
+      nil
     end
 
     def set_icon_from_gicon(gicon, size)
-      __return_value = LibGtk.tooltip_set_icon_from_gicon(to_unsafe.as(LibGtk::Tooltip*), gicon ? gicon.to_unsafe.as(LibGio::Icon*) : nil, Int32.new(size))
-      __return_value
+      LibGtk.tooltip_set_icon_from_gicon(to_unsafe.as(LibGtk::Tooltip*), gicon ? gicon.to_unsafe.as(LibGio::Icon*) : nil, Int32.new(size))
+      nil
     end
 
     def set_icon_from_icon_name(icon_name, size)
-      __return_value = LibGtk.tooltip_set_icon_from_icon_name(to_unsafe.as(LibGtk::Tooltip*), icon_name ? icon_name.to_unsafe : nil, Int32.new(size))
-      __return_value
+      LibGtk.tooltip_set_icon_from_icon_name(to_unsafe.as(LibGtk::Tooltip*), icon_name ? icon_name.to_unsafe : nil, Int32.new(size))
+      nil
     end
 
     def set_icon_from_stock(stock_id, size)
-      __return_value = LibGtk.tooltip_set_icon_from_stock(to_unsafe.as(LibGtk::Tooltip*), stock_id ? stock_id.to_unsafe : nil, Int32.new(size))
-      __return_value
+      LibGtk.tooltip_set_icon_from_stock(to_unsafe.as(LibGtk::Tooltip*), stock_id ? stock_id.to_unsafe : nil, Int32.new(size))
+      nil
     end
 
     def markup=(markup)
-      __return_value = LibGtk.tooltip_set_markup(to_unsafe.as(LibGtk::Tooltip*), markup ? markup.to_unsafe : nil)
-      __return_value
+      LibGtk.tooltip_set_markup(to_unsafe.as(LibGtk::Tooltip*), markup ? markup.to_unsafe : nil)
+      nil
     end
 
     def text=(text)
-      __return_value = LibGtk.tooltip_set_text(to_unsafe.as(LibGtk::Tooltip*), text ? text.to_unsafe : nil)
-      __return_value
+      LibGtk.tooltip_set_text(to_unsafe.as(LibGtk::Tooltip*), text ? text.to_unsafe : nil)
+      nil
     end
 
     def tip_area=(rect)
-      __return_value = LibGtk.tooltip_set_tip_area(to_unsafe.as(LibGtk::Tooltip*), rect.to_unsafe.as(LibGdk::Rectangle*))
-      __return_value
+      LibGtk.tooltip_set_tip_area(to_unsafe.as(LibGtk::Tooltip*), rect.to_unsafe.as(LibGdk::Rectangle*))
+      nil
     end
 
   end

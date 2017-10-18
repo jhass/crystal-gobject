@@ -61,8 +61,8 @@ module GLib
     end
 
     def free
-      __return_value = LibGLib.variant_type_free(to_unsafe.as(LibGLib::VariantType*))
-      __return_value
+      LibGLib.variant_type_free(to_unsafe.as(LibGLib::VariantType*))
+      nil
     end
 
     def string_length

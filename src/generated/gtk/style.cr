@@ -19,8 +19,8 @@ module Gtk
     end
 
     def apply_default_background(cr, window, state_type : Gtk::StateType, x, y, width, height)
-      __return_value = LibGtk.style_apply_default_background(to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), window.to_unsafe.as(LibGdk::Window*), state_type, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
-      __return_value
+      LibGtk.style_apply_default_background(to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), window.to_unsafe.as(LibGdk::Window*), state_type, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
+      nil
     end
 
     def copy
@@ -29,13 +29,13 @@ module Gtk
     end
 
     def detach
-      __return_value = LibGtk.style_detach(to_unsafe.as(LibGtk::Style*))
-      __return_value
+      LibGtk.style_detach(to_unsafe.as(LibGtk::Style*))
+      nil
     end
 
     def style_property(widget_type, property_name, value)
-      __return_value = LibGtk.style_get_style_property(to_unsafe.as(LibGtk::Style*), UInt64.new(widget_type), property_name.to_unsafe, value)
-      __return_value
+      LibGtk.style_get_style_property(to_unsafe.as(LibGtk::Style*), UInt64.new(widget_type), property_name.to_unsafe, value)
+      nil
     end
 
     def has_context
@@ -59,8 +59,8 @@ module Gtk
     end
 
     def set_background(window, state_type : Gtk::StateType)
-      __return_value = LibGtk.style_set_background(to_unsafe.as(LibGtk::Style*), window.to_unsafe.as(LibGdk::Window*), state_type)
-      __return_value
+      LibGtk.style_set_background(to_unsafe.as(LibGtk::Style*), window.to_unsafe.as(LibGdk::Window*), state_type)
+      nil
     end
 
     alias RealizeSignal = Style ->

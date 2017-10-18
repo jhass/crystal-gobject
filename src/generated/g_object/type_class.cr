@@ -16,13 +16,13 @@ module GObject
     end
 
     def add_private(private_size)
-      __return_value = LibGObject.type_class_add_private(to_unsafe.as(LibGObject::TypeClass*), UInt64.new(private_size))
-      __return_value
+      LibGObject.type_class_add_private(to_unsafe.as(LibGObject::TypeClass*), UInt64.new(private_size))
+      nil
     end
 
     def private(private_type)
-      __return_value = LibGObject.type_class_get_private(to_unsafe.as(LibGObject::TypeClass*), UInt64.new(private_type))
-      __return_value if __return_value
+      LibGObject.type_class_get_private(to_unsafe.as(LibGObject::TypeClass*), UInt64.new(private_type))
+      nil
     end
 
     def peek_parent
@@ -31,13 +31,13 @@ module GObject
     end
 
     def unref
-      __return_value = LibGObject.type_class_unref(to_unsafe.as(LibGObject::TypeClass*))
-      __return_value
+      LibGObject.type_class_unref(to_unsafe.as(LibGObject::TypeClass*))
+      nil
     end
 
     def self.adjust_private_offset(g_class, private_size_or_offset)
-      __return_value = LibGObject.type_class_adjust_private_offset(g_class ? g_class : nil, private_size_or_offset)
-      __return_value
+      LibGObject.type_class_adjust_private_offset(g_class ? g_class : nil, private_size_or_offset)
+      nil
     end
 
     def self.peek(type)

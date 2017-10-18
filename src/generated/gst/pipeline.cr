@@ -32,8 +32,8 @@ module Gst
     end
 
     def auto_clock
-      __return_value = LibGst.pipeline_auto_clock(to_unsafe.as(LibGst::Pipeline*))
-      __return_value
+      LibGst.pipeline_auto_clock(to_unsafe.as(LibGst::Pipeline*))
+      nil
     end
 
     def auto_flush_bus
@@ -62,23 +62,23 @@ module Gst
     end
 
     def auto_flush_bus=(auto_flush)
-      __return_value = LibGst.pipeline_set_auto_flush_bus(to_unsafe.as(LibGst::Pipeline*), auto_flush)
-      __return_value
+      LibGst.pipeline_set_auto_flush_bus(to_unsafe.as(LibGst::Pipeline*), auto_flush)
+      nil
     end
 
     def delay=(delay)
-      __return_value = LibGst.pipeline_set_delay(to_unsafe.as(LibGst::Pipeline*), UInt64.new(delay))
-      __return_value
+      LibGst.pipeline_set_delay(to_unsafe.as(LibGst::Pipeline*), UInt64.new(delay))
+      nil
     end
 
     def latency=(latency)
-      __return_value = LibGst.pipeline_set_latency(to_unsafe.as(LibGst::Pipeline*), UInt64.new(latency))
-      __return_value
+      LibGst.pipeline_set_latency(to_unsafe.as(LibGst::Pipeline*), UInt64.new(latency))
+      nil
     end
 
     def use_clock(clock)
-      __return_value = LibGst.pipeline_use_clock(to_unsafe.as(LibGst::Pipeline*), clock ? clock.to_unsafe.as(LibGst::Clock*) : nil)
-      __return_value
+      LibGst.pipeline_use_clock(to_unsafe.as(LibGst::Pipeline*), clock ? clock.to_unsafe.as(LibGst::Clock*) : nil)
+      nil
     end
 
   end

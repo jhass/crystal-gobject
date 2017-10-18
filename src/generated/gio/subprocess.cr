@@ -26,8 +26,8 @@ module Gio
     end
 
     def communicate_async(stdin_buf, cancellable, callback, user_data)
-      __return_value = LibGio.subprocess_communicate_async(to_unsafe.as(LibGio::Subprocess*), stdin_buf ? stdin_buf.to_unsafe.as(LibGLib::Bytes*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.subprocess_communicate_async(to_unsafe.as(LibGio::Subprocess*), stdin_buf ? stdin_buf.to_unsafe.as(LibGLib::Bytes*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def communicate_finish(result, stdout_buf, stderr_buf)
@@ -45,8 +45,8 @@ module Gio
     end
 
     def communicate_utf8_async(stdin_buf, cancellable, callback, user_data)
-      __return_value = LibGio.subprocess_communicate_utf8_async(to_unsafe.as(LibGio::Subprocess*), stdin_buf ? stdin_buf.to_unsafe : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.subprocess_communicate_utf8_async(to_unsafe.as(LibGio::Subprocess*), stdin_buf ? stdin_buf.to_unsafe : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def communicate_utf8_finish(result, stdout_buf, stderr_buf)
@@ -57,8 +57,8 @@ module Gio
     end
 
     def force_exit
-      __return_value = LibGio.subprocess_force_exit(to_unsafe.as(LibGio::Subprocess*))
-      __return_value
+      LibGio.subprocess_force_exit(to_unsafe.as(LibGio::Subprocess*))
+      nil
     end
 
     def exit_status
@@ -112,8 +112,8 @@ module Gio
     end
 
     def send_signal(signal_num)
-      __return_value = LibGio.subprocess_send_signal(to_unsafe.as(LibGio::Subprocess*), Int32.new(signal_num))
-      __return_value
+      LibGio.subprocess_send_signal(to_unsafe.as(LibGio::Subprocess*), Int32.new(signal_num))
+      nil
     end
 
     def wait(cancellable)
@@ -124,8 +124,8 @@ module Gio
     end
 
     def wait_async(cancellable, callback, user_data)
-      __return_value = LibGio.subprocess_wait_async(to_unsafe.as(LibGio::Subprocess*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.subprocess_wait_async(to_unsafe.as(LibGio::Subprocess*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def wait_check(cancellable)
@@ -136,8 +136,8 @@ module Gio
     end
 
     def wait_check_async(cancellable, callback, user_data)
-      __return_value = LibGio.subprocess_wait_check_async(to_unsafe.as(LibGio::Subprocess*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.subprocess_wait_check_async(to_unsafe.as(LibGio::Subprocess*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def wait_check_finish(result)

@@ -16,13 +16,13 @@ module Gst
     end
 
     def append_entry(entry)
-      __return_value = LibGst.toc_append_entry(to_unsafe.as(LibGst::Toc*), entry.to_unsafe.as(LibGst::TocEntry*))
-      __return_value
+      LibGst.toc_append_entry(to_unsafe.as(LibGst::Toc*), entry.to_unsafe.as(LibGst::TocEntry*))
+      nil
     end
 
     def dump
-      __return_value = LibGst.toc_dump(to_unsafe.as(LibGst::Toc*))
-      __return_value
+      LibGst.toc_dump(to_unsafe.as(LibGst::Toc*))
+      nil
     end
 
     def find_entry(uid)
@@ -46,13 +46,13 @@ module Gst
     end
 
     def merge_tags(tags, mode : Gst::TagMergeMode)
-      __return_value = LibGst.toc_merge_tags(to_unsafe.as(LibGst::Toc*), tags ? tags.to_unsafe.as(LibGst::TagList*) : nil, mode)
-      __return_value
+      LibGst.toc_merge_tags(to_unsafe.as(LibGst::Toc*), tags ? tags.to_unsafe.as(LibGst::TagList*) : nil, mode)
+      nil
     end
 
     def tags=(tags)
-      __return_value = LibGst.toc_set_tags(to_unsafe.as(LibGst::Toc*), tags ? tags.to_unsafe.as(LibGst::TagList*) : nil)
-      __return_value
+      LibGst.toc_set_tags(to_unsafe.as(LibGst::Toc*), tags ? tags.to_unsafe.as(LibGst::TagList*) : nil)
+      nil
     end
 
   end

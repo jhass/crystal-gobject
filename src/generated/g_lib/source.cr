@@ -21,18 +21,18 @@ module GLib
     end
 
     def add_child_source(child_source)
-      __return_value = LibGLib.source_add_child_source(to_unsafe.as(LibGLib::Source*), child_source.to_unsafe.as(LibGLib::Source*))
-      __return_value
+      LibGLib.source_add_child_source(to_unsafe.as(LibGLib::Source*), child_source.to_unsafe.as(LibGLib::Source*))
+      nil
     end
 
     def add_poll(fd)
-      __return_value = LibGLib.source_add_poll(to_unsafe.as(LibGLib::Source*), fd.to_unsafe.as(LibGLib::PollFD*))
-      __return_value
+      LibGLib.source_add_poll(to_unsafe.as(LibGLib::Source*), fd.to_unsafe.as(LibGLib::PollFD*))
+      nil
     end
 
     def add_unix_fd(fd, events : GLib::IOCondition)
-      __return_value = LibGLib.source_add_unix_fd(to_unsafe.as(LibGLib::Source*), Int32.new(fd), events)
-      __return_value
+      LibGLib.source_add_unix_fd(to_unsafe.as(LibGLib::Source*), Int32.new(fd), events)
+      nil
     end
 
     def attach(context)
@@ -41,8 +41,8 @@ module GLib
     end
 
     def destroy
-      __return_value = LibGLib.source_destroy(to_unsafe.as(LibGLib::Source*))
-      __return_value
+      LibGLib.source_destroy(to_unsafe.as(LibGLib::Source*))
+      nil
     end
 
     def can_recurse
@@ -56,8 +56,8 @@ module GLib
     end
 
     def current_time(timeval)
-      __return_value = LibGLib.source_get_current_time(to_unsafe.as(LibGLib::Source*), timeval.to_unsafe.as(LibGLib::TimeVal*))
-      __return_value
+      LibGLib.source_get_current_time(to_unsafe.as(LibGLib::Source*), timeval.to_unsafe.as(LibGLib::TimeVal*))
+      nil
     end
 
     def id
@@ -91,8 +91,8 @@ module GLib
     end
 
     def modify_unix_fd(tag, new_events : GLib::IOCondition)
-      __return_value = LibGLib.source_modify_unix_fd(to_unsafe.as(LibGLib::Source*), tag, new_events)
-      __return_value
+      LibGLib.source_modify_unix_fd(to_unsafe.as(LibGLib::Source*), tag, new_events)
+      nil
     end
 
     def query_unix_fd(tag)
@@ -106,58 +106,58 @@ module GLib
     end
 
     def remove_child_source(child_source)
-      __return_value = LibGLib.source_remove_child_source(to_unsafe.as(LibGLib::Source*), child_source.to_unsafe.as(LibGLib::Source*))
-      __return_value
+      LibGLib.source_remove_child_source(to_unsafe.as(LibGLib::Source*), child_source.to_unsafe.as(LibGLib::Source*))
+      nil
     end
 
     def remove_poll(fd)
-      __return_value = LibGLib.source_remove_poll(to_unsafe.as(LibGLib::Source*), fd.to_unsafe.as(LibGLib::PollFD*))
-      __return_value
+      LibGLib.source_remove_poll(to_unsafe.as(LibGLib::Source*), fd.to_unsafe.as(LibGLib::PollFD*))
+      nil
     end
 
     def remove_unix_fd(tag)
-      __return_value = LibGLib.source_remove_unix_fd(to_unsafe.as(LibGLib::Source*), tag)
-      __return_value
+      LibGLib.source_remove_unix_fd(to_unsafe.as(LibGLib::Source*), tag)
+      nil
     end
 
     def set_callback(func, data, notify)
-      __return_value = LibGLib.source_set_callback(to_unsafe.as(LibGLib::Source*), func, data ? data : nil, notify ? notify : nil)
-      __return_value
+      LibGLib.source_set_callback(to_unsafe.as(LibGLib::Source*), func, data ? data : nil, notify ? notify : nil)
+      nil
     end
 
     def set_callback_indirect(callback_data, callback_funcs)
-      __return_value = LibGLib.source_set_callback_indirect(to_unsafe.as(LibGLib::Source*), callback_data ? callback_data : nil, callback_funcs.to_unsafe.as(LibGLib::SourceCallbackFuncs*))
-      __return_value
+      LibGLib.source_set_callback_indirect(to_unsafe.as(LibGLib::Source*), callback_data ? callback_data : nil, callback_funcs.to_unsafe.as(LibGLib::SourceCallbackFuncs*))
+      nil
     end
 
     def can_recurse=(can_recurse)
-      __return_value = LibGLib.source_set_can_recurse(to_unsafe.as(LibGLib::Source*), can_recurse)
-      __return_value
+      LibGLib.source_set_can_recurse(to_unsafe.as(LibGLib::Source*), can_recurse)
+      nil
     end
 
     def funcs=(funcs)
-      __return_value = LibGLib.source_set_funcs(to_unsafe.as(LibGLib::Source*), funcs.to_unsafe.as(LibGLib::SourceFuncs*))
-      __return_value
+      LibGLib.source_set_funcs(to_unsafe.as(LibGLib::Source*), funcs.to_unsafe.as(LibGLib::SourceFuncs*))
+      nil
     end
 
     def name=(name)
-      __return_value = LibGLib.source_set_name(to_unsafe.as(LibGLib::Source*), name.to_unsafe)
-      __return_value
+      LibGLib.source_set_name(to_unsafe.as(LibGLib::Source*), name.to_unsafe)
+      nil
     end
 
     def priority=(priority)
-      __return_value = LibGLib.source_set_priority(to_unsafe.as(LibGLib::Source*), Int32.new(priority))
-      __return_value
+      LibGLib.source_set_priority(to_unsafe.as(LibGLib::Source*), Int32.new(priority))
+      nil
     end
 
     def ready_time=(ready_time)
-      __return_value = LibGLib.source_set_ready_time(to_unsafe.as(LibGLib::Source*), Int64.new(ready_time))
-      __return_value
+      LibGLib.source_set_ready_time(to_unsafe.as(LibGLib::Source*), Int64.new(ready_time))
+      nil
     end
 
     def unref
-      __return_value = LibGLib.source_unref(to_unsafe.as(LibGLib::Source*))
-      __return_value
+      LibGLib.source_unref(to_unsafe.as(LibGLib::Source*))
+      nil
     end
 
     def self.remove(tag)
@@ -176,8 +176,8 @@ module GLib
     end
 
     def self.name_by_id=(tag, name)
-      __return_value = LibGLib.source_set_name_by_id(UInt32.new(tag), name.to_unsafe)
-      __return_value
+      LibGLib.source_set_name_by_id(UInt32.new(tag), name.to_unsafe)
+      nil
     end
 
     def callback_data

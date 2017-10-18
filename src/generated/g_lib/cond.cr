@@ -16,28 +16,28 @@ module GLib
     end
 
     def broadcast
-      __return_value = LibGLib.cond_broadcast(to_unsafe.as(LibGLib::Cond*))
-      __return_value
+      LibGLib.cond_broadcast(to_unsafe.as(LibGLib::Cond*))
+      nil
     end
 
     def clear
-      __return_value = LibGLib.cond_clear(to_unsafe.as(LibGLib::Cond*))
-      __return_value
+      LibGLib.cond_clear(to_unsafe.as(LibGLib::Cond*))
+      nil
     end
 
     def init
-      __return_value = LibGLib.cond_init(to_unsafe.as(LibGLib::Cond*))
-      __return_value
+      LibGLib.cond_init(to_unsafe.as(LibGLib::Cond*))
+      nil
     end
 
     def signal
-      __return_value = LibGLib.cond_signal(to_unsafe.as(LibGLib::Cond*))
-      __return_value
+      LibGLib.cond_signal(to_unsafe.as(LibGLib::Cond*))
+      nil
     end
 
     def wait(mutex)
-      __return_value = LibGLib.cond_wait(to_unsafe.as(LibGLib::Cond*), mutex.to_unsafe.as(LibGLib::Mutex*))
-      __return_value
+      LibGLib.cond_wait(to_unsafe.as(LibGLib::Cond*), mutex.to_unsafe.as(LibGLib::Mutex*))
+      nil
     end
 
     def wait_until(mutex, end_time)

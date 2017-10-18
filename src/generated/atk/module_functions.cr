@@ -1,12 +1,12 @@
 module Atk
   def self.attribute_set_free(attrib_set)
-    __return_value = LibAtk.attribute_set_free(attrib_set)
-    __return_value
+    LibAtk.attribute_set_free(attrib_set)
+    nil
   end
 
   def self.focus_tracker_notify(object)
-    __return_value = LibAtk.focus_tracker_notify(object.to_unsafe.as(LibAtk::Object*))
-    __return_value
+    LibAtk.focus_tracker_notify(object.to_unsafe.as(LibAtk::Object*))
+    nil
   end
 
   def self.binary_age
@@ -80,18 +80,18 @@ module Atk
   end
 
   def self.remove_focus_tracker(tracker_id)
-    __return_value = LibAtk.remove_focus_tracker(UInt32.new(tracker_id))
-    __return_value
+    LibAtk.remove_focus_tracker(UInt32.new(tracker_id))
+    nil
   end
 
   def self.remove_global_event_listener(listener_id)
-    __return_value = LibAtk.remove_global_event_listener(UInt32.new(listener_id))
-    __return_value
+    LibAtk.remove_global_event_listener(UInt32.new(listener_id))
+    nil
   end
 
   def self.remove_key_event_listener(listener_id)
-    __return_value = LibAtk.remove_key_event_listener(UInt32.new(listener_id))
-    __return_value
+    LibAtk.remove_key_event_listener(UInt32.new(listener_id))
+    nil
   end
 
   def self.role_for_name(name)
@@ -150,8 +150,8 @@ module Atk
   end
 
   def self.text_free_ranges(ranges)
-    __return_value = LibAtk.text_free_ranges(ranges)
-    __return_value
+    LibAtk.text_free_ranges(ranges)
+    nil
   end
 
   def self.value_type_get_localized_name(value_type : Atk::ValueType)

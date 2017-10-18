@@ -23,8 +23,8 @@ module Gtk
     end
 
     def add_action_widget(child, response_id)
-      __return_value = LibGtk.dialog_add_action_widget(to_unsafe.as(LibGtk::Dialog*), child.to_unsafe.as(LibGtk::Widget*), Int32.new(response_id))
-      __return_value
+      LibGtk.dialog_add_action_widget(to_unsafe.as(LibGtk::Dialog*), child.to_unsafe.as(LibGtk::Widget*), Int32.new(response_id))
+      nil
     end
 
     def add_button(button_text, response_id)
@@ -58,8 +58,8 @@ module Gtk
     end
 
     def response(response_id)
-      __return_value = LibGtk.dialog_response(to_unsafe.as(LibGtk::Dialog*), Int32.new(response_id))
-      __return_value
+      LibGtk.dialog_response(to_unsafe.as(LibGtk::Dialog*), Int32.new(response_id))
+      nil
     end
 
     def run
@@ -68,18 +68,18 @@ module Gtk
     end
 
     def set_alternative_button_order_from_array(n_params, new_order)
-      __return_value = LibGtk.dialog_set_alternative_button_order_from_array(to_unsafe.as(LibGtk::Dialog*), Int32.new(n_params), new_order)
-      __return_value
+      LibGtk.dialog_set_alternative_button_order_from_array(to_unsafe.as(LibGtk::Dialog*), Int32.new(n_params), new_order)
+      nil
     end
 
     def default_response=(response_id)
-      __return_value = LibGtk.dialog_set_default_response(to_unsafe.as(LibGtk::Dialog*), Int32.new(response_id))
-      __return_value
+      LibGtk.dialog_set_default_response(to_unsafe.as(LibGtk::Dialog*), Int32.new(response_id))
+      nil
     end
 
     def set_response_sensitive(response_id, setting)
-      __return_value = LibGtk.dialog_set_response_sensitive(to_unsafe.as(LibGtk::Dialog*), Int32.new(response_id), setting)
-      __return_value
+      LibGtk.dialog_set_response_sensitive(to_unsafe.as(LibGtk::Dialog*), Int32.new(response_id), setting)
+      nil
     end
 
     alias CloseSignal = Dialog ->

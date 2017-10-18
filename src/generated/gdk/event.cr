@@ -136,8 +136,8 @@ module Gdk
     end
 
     def free
-      __return_value = LibGdk.event_free(to_unsafe.as(LibGdk::Event*))
-      __return_value
+      LibGdk.event_free(to_unsafe.as(LibGdk::Event*))
+      nil
     end
 
     def axis(axis_use : Gdk::AxisUse, value)
@@ -251,28 +251,28 @@ module Gdk
     end
 
     def put
-      __return_value = LibGdk.event_put(to_unsafe.as(LibGdk::Event*))
-      __return_value
+      LibGdk.event_put(to_unsafe.as(LibGdk::Event*))
+      nil
     end
 
     def device=(device)
-      __return_value = LibGdk.event_set_device(to_unsafe.as(LibGdk::Event*), device.to_unsafe.as(LibGdk::Device*))
-      __return_value
+      LibGdk.event_set_device(to_unsafe.as(LibGdk::Event*), device.to_unsafe.as(LibGdk::Device*))
+      nil
     end
 
     def device_tool=(tool)
-      __return_value = LibGdk.event_set_device_tool(to_unsafe.as(LibGdk::Event*), tool ? tool.to_unsafe.as(LibGdk::DeviceTool*) : nil)
-      __return_value
+      LibGdk.event_set_device_tool(to_unsafe.as(LibGdk::Event*), tool ? tool.to_unsafe.as(LibGdk::DeviceTool*) : nil)
+      nil
     end
 
     def screen=(screen)
-      __return_value = LibGdk.event_set_screen(to_unsafe.as(LibGdk::Event*), screen.to_unsafe.as(LibGdk::Screen*))
-      __return_value
+      LibGdk.event_set_screen(to_unsafe.as(LibGdk::Event*), screen.to_unsafe.as(LibGdk::Screen*))
+      nil
     end
 
     def source_device=(device)
-      __return_value = LibGdk.event_set_source_device(to_unsafe.as(LibGdk::Event*), device.to_unsafe.as(LibGdk::Device*))
-      __return_value
+      LibGdk.event_set_source_device(to_unsafe.as(LibGdk::Event*), device.to_unsafe.as(LibGdk::Device*))
+      nil
     end
 
     def triggers_context_menu
@@ -286,8 +286,8 @@ module Gdk
     end
 
     def self.handler_set(func, data, notify)
-      __return_value = LibGdk.event_handler_set(func, data ? data : nil, notify)
-      __return_value
+      LibGdk.event_handler_set(func, data ? data : nil, notify)
+      nil
     end
 
     def self.peek
@@ -296,8 +296,8 @@ module Gdk
     end
 
     def self.request_motions(event)
-      __return_value = LibGdk.event_request_motions(event.to_unsafe.as(LibGdk::EventMotion*))
-      __return_value
+      LibGdk.event_request_motions(event.to_unsafe.as(LibGdk::EventMotion*))
+      nil
     end
 
   end

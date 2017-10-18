@@ -24,23 +24,23 @@ module Gdk
     end
 
     def self.constrain_size(geometry, flags : Gdk::WindowHints, width, height, new_width, new_height)
-      __return_value = LibGdk.window_constrain_size(geometry.to_unsafe.as(LibGdk::Geometry*), flags, Int32.new(width), Int32.new(height), new_width, new_height)
-      __return_value
+      LibGdk.window_constrain_size(geometry.to_unsafe.as(LibGdk::Geometry*), flags, Int32.new(width), Int32.new(height), new_width, new_height)
+      nil
     end
 
     def self.process_all_updates
-      __return_value = LibGdk.window_process_all_updates
-      __return_value
+      LibGdk.window_process_all_updates
+      nil
     end
 
     def self.set_debug_updates(setting)
-      __return_value = LibGdk.window_set_debug_updates(setting)
-      __return_value
+      LibGdk.window_set_debug_updates(setting)
+      nil
     end
 
     def beep
-      __return_value = LibGdk.window_beep(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_beep(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def begin_draw_frame(region)
@@ -49,48 +49,48 @@ module Gdk
     end
 
     def begin_move_drag(button, root_x, root_y, timestamp)
-      __return_value = LibGdk.window_begin_move_drag(to_unsafe.as(LibGdk::Window*), Int32.new(button), Int32.new(root_x), Int32.new(root_y), UInt32.new(timestamp))
-      __return_value
+      LibGdk.window_begin_move_drag(to_unsafe.as(LibGdk::Window*), Int32.new(button), Int32.new(root_x), Int32.new(root_y), UInt32.new(timestamp))
+      nil
     end
 
     def begin_move_drag_for_device(device, button, root_x, root_y, timestamp)
-      __return_value = LibGdk.window_begin_move_drag_for_device(to_unsafe.as(LibGdk::Window*), device.to_unsafe.as(LibGdk::Device*), Int32.new(button), Int32.new(root_x), Int32.new(root_y), UInt32.new(timestamp))
-      __return_value
+      LibGdk.window_begin_move_drag_for_device(to_unsafe.as(LibGdk::Window*), device.to_unsafe.as(LibGdk::Device*), Int32.new(button), Int32.new(root_x), Int32.new(root_y), UInt32.new(timestamp))
+      nil
     end
 
     def begin_paint_rect(rectangle)
-      __return_value = LibGdk.window_begin_paint_rect(to_unsafe.as(LibGdk::Window*), rectangle.to_unsafe.as(LibGdk::Rectangle*))
-      __return_value
+      LibGdk.window_begin_paint_rect(to_unsafe.as(LibGdk::Window*), rectangle.to_unsafe.as(LibGdk::Rectangle*))
+      nil
     end
 
     def begin_paint_region(region)
-      __return_value = LibGdk.window_begin_paint_region(to_unsafe.as(LibGdk::Window*), region.to_unsafe.as(LibCairo::Region*))
-      __return_value
+      LibGdk.window_begin_paint_region(to_unsafe.as(LibGdk::Window*), region.to_unsafe.as(LibCairo::Region*))
+      nil
     end
 
     def begin_resize_drag(edge : Gdk::WindowEdge, button, root_x, root_y, timestamp)
-      __return_value = LibGdk.window_begin_resize_drag(to_unsafe.as(LibGdk::Window*), edge, Int32.new(button), Int32.new(root_x), Int32.new(root_y), UInt32.new(timestamp))
-      __return_value
+      LibGdk.window_begin_resize_drag(to_unsafe.as(LibGdk::Window*), edge, Int32.new(button), Int32.new(root_x), Int32.new(root_y), UInt32.new(timestamp))
+      nil
     end
 
     def begin_resize_drag_for_device(edge : Gdk::WindowEdge, device, button, root_x, root_y, timestamp)
-      __return_value = LibGdk.window_begin_resize_drag_for_device(to_unsafe.as(LibGdk::Window*), edge, device.to_unsafe.as(LibGdk::Device*), Int32.new(button), Int32.new(root_x), Int32.new(root_y), UInt32.new(timestamp))
-      __return_value
+      LibGdk.window_begin_resize_drag_for_device(to_unsafe.as(LibGdk::Window*), edge, device.to_unsafe.as(LibGdk::Device*), Int32.new(button), Int32.new(root_x), Int32.new(root_y), UInt32.new(timestamp))
+      nil
     end
 
     def configure_finished
-      __return_value = LibGdk.window_configure_finished(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_configure_finished(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def coords_from_parent(parent_x, parent_y, x, y)
-      __return_value = LibGdk.window_coords_from_parent(to_unsafe.as(LibGdk::Window*), Float64.new(parent_x), Float64.new(parent_y), x, y)
-      __return_value
+      LibGdk.window_coords_from_parent(to_unsafe.as(LibGdk::Window*), Float64.new(parent_x), Float64.new(parent_y), x, y)
+      nil
     end
 
     def coords_to_parent(x, y, parent_x, parent_y)
-      __return_value = LibGdk.window_coords_to_parent(to_unsafe.as(LibGdk::Window*), Float64.new(x), Float64.new(y), parent_x, parent_y)
-      __return_value
+      LibGdk.window_coords_to_parent(to_unsafe.as(LibGdk::Window*), Float64.new(x), Float64.new(y), parent_x, parent_y)
+      nil
     end
 
     def create_gl_context
@@ -111,33 +111,33 @@ module Gdk
     end
 
     def deiconify
-      __return_value = LibGdk.window_deiconify(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_deiconify(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def destroy
-      __return_value = LibGdk.window_destroy(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_destroy(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def destroy_notify
-      __return_value = LibGdk.window_destroy_notify(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_destroy_notify(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def enable_synchronized_configure
-      __return_value = LibGdk.window_enable_synchronized_configure(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_enable_synchronized_configure(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def end_draw_frame(context)
-      __return_value = LibGdk.window_end_draw_frame(to_unsafe.as(LibGdk::Window*), context.to_unsafe.as(LibGdk::DrawingContext*))
-      __return_value
+      LibGdk.window_end_draw_frame(to_unsafe.as(LibGdk::Window*), context.to_unsafe.as(LibGdk::DrawingContext*))
+      nil
     end
 
     def end_paint
-      __return_value = LibGdk.window_end_paint(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_end_paint(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def ensure_native
@@ -146,38 +146,38 @@ module Gdk
     end
 
     def flush
-      __return_value = LibGdk.window_flush(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_flush(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def focus(timestamp)
-      __return_value = LibGdk.window_focus(to_unsafe.as(LibGdk::Window*), UInt32.new(timestamp))
-      __return_value
+      LibGdk.window_focus(to_unsafe.as(LibGdk::Window*), UInt32.new(timestamp))
+      nil
     end
 
     def freeze_toplevel_updates_libgtk_only
-      __return_value = LibGdk.window_freeze_toplevel_updates_libgtk_only(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_freeze_toplevel_updates_libgtk_only(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def freeze_updates
-      __return_value = LibGdk.window_freeze_updates(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_freeze_updates(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def fullscreen
-      __return_value = LibGdk.window_fullscreen(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_fullscreen(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def fullscreen_on_monitor(monitor)
-      __return_value = LibGdk.window_fullscreen_on_monitor(to_unsafe.as(LibGdk::Window*), Int32.new(monitor))
-      __return_value
+      LibGdk.window_fullscreen_on_monitor(to_unsafe.as(LibGdk::Window*), Int32.new(monitor))
+      nil
     end
 
     def geometry_changed
-      __return_value = LibGdk.window_geometry_changed(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_geometry_changed(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def accept_focus
@@ -281,8 +281,8 @@ module Gdk
     end
 
     def frame_extents(rect)
-      __return_value = LibGdk.window_get_frame_extents(to_unsafe.as(LibGdk::Window*), rect)
-      __return_value
+      LibGdk.window_get_frame_extents(to_unsafe.as(LibGdk::Window*), rect)
+      nil
     end
 
     def fullscreen_mode
@@ -291,8 +291,8 @@ module Gdk
     end
 
     def geometry(x, y, width, height)
-      __return_value = LibGdk.window_get_geometry(to_unsafe.as(LibGdk::Window*), x, y, width, height)
-      __return_value
+      LibGdk.window_get_geometry(to_unsafe.as(LibGdk::Window*), x, y, width, height)
+      nil
     end
 
     def group
@@ -331,18 +331,18 @@ module Gdk
     end
 
     def position(x, y)
-      __return_value = LibGdk.window_get_position(to_unsafe.as(LibGdk::Window*), x, y)
-      __return_value
+      LibGdk.window_get_position(to_unsafe.as(LibGdk::Window*), x, y)
+      nil
     end
 
     def root_coords(x, y, root_x, root_y)
-      __return_value = LibGdk.window_get_root_coords(to_unsafe.as(LibGdk::Window*), Int32.new(x), Int32.new(y), root_x, root_y)
-      __return_value
+      LibGdk.window_get_root_coords(to_unsafe.as(LibGdk::Window*), Int32.new(x), Int32.new(y), root_x, root_y)
+      nil
     end
 
     def root_origin(x, y)
-      __return_value = LibGdk.window_get_root_origin(to_unsafe.as(LibGdk::Window*), x, y)
-      __return_value
+      LibGdk.window_get_root_origin(to_unsafe.as(LibGdk::Window*), x, y)
+      nil
     end
 
     def scale_factor
@@ -386,8 +386,8 @@ module Gdk
     end
 
     def user_data(data)
-      __return_value = LibGdk.window_get_user_data(to_unsafe.as(LibGdk::Window*), data)
-      __return_value
+      LibGdk.window_get_user_data(to_unsafe.as(LibGdk::Window*), data)
+      nil
     end
 
     def visible_region
@@ -416,33 +416,33 @@ module Gdk
     end
 
     def hide
-      __return_value = LibGdk.window_hide(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_hide(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def iconify
-      __return_value = LibGdk.window_iconify(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_iconify(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def input_shape_combine_region(shape_region, offset_x, offset_y)
-      __return_value = LibGdk.window_input_shape_combine_region(to_unsafe.as(LibGdk::Window*), shape_region.to_unsafe.as(LibCairo::Region*), Int32.new(offset_x), Int32.new(offset_y))
-      __return_value
+      LibGdk.window_input_shape_combine_region(to_unsafe.as(LibGdk::Window*), shape_region.to_unsafe.as(LibCairo::Region*), Int32.new(offset_x), Int32.new(offset_y))
+      nil
     end
 
     def invalidate_maybe_recurse(region, child_func, user_data)
-      __return_value = LibGdk.window_invalidate_maybe_recurse(to_unsafe.as(LibGdk::Window*), region.to_unsafe.as(LibCairo::Region*), child_func ? child_func : nil, user_data ? user_data : nil)
-      __return_value
+      LibGdk.window_invalidate_maybe_recurse(to_unsafe.as(LibGdk::Window*), region.to_unsafe.as(LibCairo::Region*), child_func ? child_func : nil, user_data ? user_data : nil)
+      nil
     end
 
     def invalidate_rect(rect, invalidate_children)
-      __return_value = LibGdk.window_invalidate_rect(to_unsafe.as(LibGdk::Window*), rect ? rect.to_unsafe.as(LibGdk::Rectangle*) : nil, invalidate_children)
-      __return_value
+      LibGdk.window_invalidate_rect(to_unsafe.as(LibGdk::Window*), rect ? rect.to_unsafe.as(LibGdk::Rectangle*) : nil, invalidate_children)
+      nil
     end
 
     def invalidate_region(region, invalidate_children)
-      __return_value = LibGdk.window_invalidate_region(to_unsafe.as(LibGdk::Window*), region.to_unsafe.as(LibCairo::Region*), invalidate_children)
-      __return_value
+      LibGdk.window_invalidate_region(to_unsafe.as(LibGdk::Window*), region.to_unsafe.as(LibCairo::Region*), invalidate_children)
+      nil
     end
 
     def destroyed?
@@ -471,43 +471,43 @@ module Gdk
     end
 
     def lower
-      __return_value = LibGdk.window_lower(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_lower(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def mark_paint_from_clip(cr)
-      __return_value = LibGdk.window_mark_paint_from_clip(to_unsafe.as(LibGdk::Window*), cr.to_unsafe.as(LibCairo::Context*))
-      __return_value
+      LibGdk.window_mark_paint_from_clip(to_unsafe.as(LibGdk::Window*), cr.to_unsafe.as(LibCairo::Context*))
+      nil
     end
 
     def maximize
-      __return_value = LibGdk.window_maximize(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_maximize(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def merge_child_input_shapes
-      __return_value = LibGdk.window_merge_child_input_shapes(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_merge_child_input_shapes(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def merge_child_shapes
-      __return_value = LibGdk.window_merge_child_shapes(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_merge_child_shapes(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def move(x, y)
-      __return_value = LibGdk.window_move(to_unsafe.as(LibGdk::Window*), Int32.new(x), Int32.new(y))
-      __return_value
+      LibGdk.window_move(to_unsafe.as(LibGdk::Window*), Int32.new(x), Int32.new(y))
+      nil
     end
 
     def move_region(region, dx, dy)
-      __return_value = LibGdk.window_move_region(to_unsafe.as(LibGdk::Window*), region.to_unsafe.as(LibCairo::Region*), Int32.new(dx), Int32.new(dy))
-      __return_value
+      LibGdk.window_move_region(to_unsafe.as(LibGdk::Window*), region.to_unsafe.as(LibCairo::Region*), Int32.new(dx), Int32.new(dy))
+      nil
     end
 
     def move_resize(x, y, width, height)
-      __return_value = LibGdk.window_move_resize(to_unsafe.as(LibGdk::Window*), Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
-      __return_value
+      LibGdk.window_move_resize(to_unsafe.as(LibGdk::Window*), Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
+      nil
     end
 
     def peek_children
@@ -516,203 +516,203 @@ module Gdk
     end
 
     def process_updates(update_children)
-      __return_value = LibGdk.window_process_updates(to_unsafe.as(LibGdk::Window*), update_children)
-      __return_value
+      LibGdk.window_process_updates(to_unsafe.as(LibGdk::Window*), update_children)
+      nil
     end
 
     def raise
-      __return_value = LibGdk.window_raise(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_raise(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def register_dnd
-      __return_value = LibGdk.window_register_dnd(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_register_dnd(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def reparent(new_parent, x, y)
-      __return_value = LibGdk.window_reparent(to_unsafe.as(LibGdk::Window*), new_parent.to_unsafe.as(LibGdk::Window*), Int32.new(x), Int32.new(y))
-      __return_value
+      LibGdk.window_reparent(to_unsafe.as(LibGdk::Window*), new_parent.to_unsafe.as(LibGdk::Window*), Int32.new(x), Int32.new(y))
+      nil
     end
 
     def resize(width, height)
-      __return_value = LibGdk.window_resize(to_unsafe.as(LibGdk::Window*), Int32.new(width), Int32.new(height))
-      __return_value
+      LibGdk.window_resize(to_unsafe.as(LibGdk::Window*), Int32.new(width), Int32.new(height))
+      nil
     end
 
     def restack(sibling, above)
-      __return_value = LibGdk.window_restack(to_unsafe.as(LibGdk::Window*), sibling ? sibling.to_unsafe.as(LibGdk::Window*) : nil, above)
-      __return_value
+      LibGdk.window_restack(to_unsafe.as(LibGdk::Window*), sibling ? sibling.to_unsafe.as(LibGdk::Window*) : nil, above)
+      nil
     end
 
     def scroll(dx, dy)
-      __return_value = LibGdk.window_scroll(to_unsafe.as(LibGdk::Window*), Int32.new(dx), Int32.new(dy))
-      __return_value
+      LibGdk.window_scroll(to_unsafe.as(LibGdk::Window*), Int32.new(dx), Int32.new(dy))
+      nil
     end
 
     def accept_focus=(accept_focus)
-      __return_value = LibGdk.window_set_accept_focus(to_unsafe.as(LibGdk::Window*), accept_focus)
-      __return_value
+      LibGdk.window_set_accept_focus(to_unsafe.as(LibGdk::Window*), accept_focus)
+      nil
     end
 
     def background=(color)
-      __return_value = LibGdk.window_set_background(to_unsafe.as(LibGdk::Window*), color.to_unsafe.as(LibGdk::Color*))
-      __return_value
+      LibGdk.window_set_background(to_unsafe.as(LibGdk::Window*), color.to_unsafe.as(LibGdk::Color*))
+      nil
     end
 
     def background_pattern=(pattern)
-      __return_value = LibGdk.window_set_background_pattern(to_unsafe.as(LibGdk::Window*), pattern ? pattern.to_unsafe.as(LibCairo::Pattern*) : nil)
-      __return_value
+      LibGdk.window_set_background_pattern(to_unsafe.as(LibGdk::Window*), pattern ? pattern.to_unsafe.as(LibCairo::Pattern*) : nil)
+      nil
     end
 
     def background_rgba=(rgba)
-      __return_value = LibGdk.window_set_background_rgba(to_unsafe.as(LibGdk::Window*), rgba.to_unsafe.as(LibGdk::RGBA*))
-      __return_value
+      LibGdk.window_set_background_rgba(to_unsafe.as(LibGdk::Window*), rgba.to_unsafe.as(LibGdk::RGBA*))
+      nil
     end
 
     def set_child_input_shapes
-      __return_value = LibGdk.window_set_child_input_shapes(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_set_child_input_shapes(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def set_child_shapes
-      __return_value = LibGdk.window_set_child_shapes(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_set_child_shapes(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def composited=(composited)
-      __return_value = LibGdk.window_set_composited(to_unsafe.as(LibGdk::Window*), composited)
-      __return_value
+      LibGdk.window_set_composited(to_unsafe.as(LibGdk::Window*), composited)
+      nil
     end
 
     def cursor=(cursor)
-      __return_value = LibGdk.window_set_cursor(to_unsafe.as(LibGdk::Window*), cursor ? cursor.to_unsafe.as(LibGdk::Cursor*) : nil)
-      __return_value
+      LibGdk.window_set_cursor(to_unsafe.as(LibGdk::Window*), cursor ? cursor.to_unsafe.as(LibGdk::Cursor*) : nil)
+      nil
     end
 
     def decorations=(decorations : Gdk::WMDecoration)
-      __return_value = LibGdk.window_set_decorations(to_unsafe.as(LibGdk::Window*), decorations)
-      __return_value
+      LibGdk.window_set_decorations(to_unsafe.as(LibGdk::Window*), decorations)
+      nil
     end
 
     def set_device_cursor(device, cursor)
-      __return_value = LibGdk.window_set_device_cursor(to_unsafe.as(LibGdk::Window*), device.to_unsafe.as(LibGdk::Device*), cursor.to_unsafe.as(LibGdk::Cursor*))
-      __return_value
+      LibGdk.window_set_device_cursor(to_unsafe.as(LibGdk::Window*), device.to_unsafe.as(LibGdk::Device*), cursor.to_unsafe.as(LibGdk::Cursor*))
+      nil
     end
 
     def set_device_events(device, event_mask : Gdk::EventMask)
-      __return_value = LibGdk.window_set_device_events(to_unsafe.as(LibGdk::Window*), device.to_unsafe.as(LibGdk::Device*), event_mask)
-      __return_value
+      LibGdk.window_set_device_events(to_unsafe.as(LibGdk::Window*), device.to_unsafe.as(LibGdk::Device*), event_mask)
+      nil
     end
 
     def event_compression=(event_compression)
-      __return_value = LibGdk.window_set_event_compression(to_unsafe.as(LibGdk::Window*), event_compression)
-      __return_value
+      LibGdk.window_set_event_compression(to_unsafe.as(LibGdk::Window*), event_compression)
+      nil
     end
 
     def events=(event_mask : Gdk::EventMask)
-      __return_value = LibGdk.window_set_events(to_unsafe.as(LibGdk::Window*), event_mask)
-      __return_value
+      LibGdk.window_set_events(to_unsafe.as(LibGdk::Window*), event_mask)
+      nil
     end
 
     def focus_on_map=(focus_on_map)
-      __return_value = LibGdk.window_set_focus_on_map(to_unsafe.as(LibGdk::Window*), focus_on_map)
-      __return_value
+      LibGdk.window_set_focus_on_map(to_unsafe.as(LibGdk::Window*), focus_on_map)
+      nil
     end
 
     def fullscreen_mode=(mode : Gdk::FullscreenMode)
-      __return_value = LibGdk.window_set_fullscreen_mode(to_unsafe.as(LibGdk::Window*), mode)
-      __return_value
+      LibGdk.window_set_fullscreen_mode(to_unsafe.as(LibGdk::Window*), mode)
+      nil
     end
 
     def functions=(functions : Gdk::WMFunction)
-      __return_value = LibGdk.window_set_functions(to_unsafe.as(LibGdk::Window*), functions)
-      __return_value
+      LibGdk.window_set_functions(to_unsafe.as(LibGdk::Window*), functions)
+      nil
     end
 
     def set_geometry_hints(geometry, geom_mask : Gdk::WindowHints)
-      __return_value = LibGdk.window_set_geometry_hints(to_unsafe.as(LibGdk::Window*), geometry.to_unsafe.as(LibGdk::Geometry*), geom_mask)
-      __return_value
+      LibGdk.window_set_geometry_hints(to_unsafe.as(LibGdk::Window*), geometry.to_unsafe.as(LibGdk::Geometry*), geom_mask)
+      nil
     end
 
     def group=(leader)
-      __return_value = LibGdk.window_set_group(to_unsafe.as(LibGdk::Window*), leader ? leader.to_unsafe.as(LibGdk::Window*) : nil)
-      __return_value
+      LibGdk.window_set_group(to_unsafe.as(LibGdk::Window*), leader ? leader.to_unsafe.as(LibGdk::Window*) : nil)
+      nil
     end
 
     def icon_list=(pixbufs)
-      __return_value = LibGdk.window_set_icon_list(to_unsafe.as(LibGdk::Window*), pixbufs)
-      __return_value
+      LibGdk.window_set_icon_list(to_unsafe.as(LibGdk::Window*), pixbufs)
+      nil
     end
 
     def icon_name=(name)
-      __return_value = LibGdk.window_set_icon_name(to_unsafe.as(LibGdk::Window*), name ? name.to_unsafe : nil)
-      __return_value
+      LibGdk.window_set_icon_name(to_unsafe.as(LibGdk::Window*), name ? name.to_unsafe : nil)
+      nil
     end
 
     def keep_above=(setting)
-      __return_value = LibGdk.window_set_keep_above(to_unsafe.as(LibGdk::Window*), setting)
-      __return_value
+      LibGdk.window_set_keep_above(to_unsafe.as(LibGdk::Window*), setting)
+      nil
     end
 
     def keep_below=(setting)
-      __return_value = LibGdk.window_set_keep_below(to_unsafe.as(LibGdk::Window*), setting)
-      __return_value
+      LibGdk.window_set_keep_below(to_unsafe.as(LibGdk::Window*), setting)
+      nil
     end
 
     def modal_hint=(modal)
-      __return_value = LibGdk.window_set_modal_hint(to_unsafe.as(LibGdk::Window*), modal)
-      __return_value
+      LibGdk.window_set_modal_hint(to_unsafe.as(LibGdk::Window*), modal)
+      nil
     end
 
     def opacity=(opacity)
-      __return_value = LibGdk.window_set_opacity(to_unsafe.as(LibGdk::Window*), Float64.new(opacity))
-      __return_value
+      LibGdk.window_set_opacity(to_unsafe.as(LibGdk::Window*), Float64.new(opacity))
+      nil
     end
 
     def opaque_region=(region)
-      __return_value = LibGdk.window_set_opaque_region(to_unsafe.as(LibGdk::Window*), region ? region.to_unsafe.as(LibCairo::Region*) : nil)
-      __return_value
+      LibGdk.window_set_opaque_region(to_unsafe.as(LibGdk::Window*), region ? region.to_unsafe.as(LibCairo::Region*) : nil)
+      nil
     end
 
     def override_redirect=(override_redirect)
-      __return_value = LibGdk.window_set_override_redirect(to_unsafe.as(LibGdk::Window*), override_redirect)
-      __return_value
+      LibGdk.window_set_override_redirect(to_unsafe.as(LibGdk::Window*), override_redirect)
+      nil
     end
 
     def pass_through=(pass_through)
-      __return_value = LibGdk.window_set_pass_through(to_unsafe.as(LibGdk::Window*), pass_through)
-      __return_value
+      LibGdk.window_set_pass_through(to_unsafe.as(LibGdk::Window*), pass_through)
+      nil
     end
 
     def role=(role)
-      __return_value = LibGdk.window_set_role(to_unsafe.as(LibGdk::Window*), role.to_unsafe)
-      __return_value
+      LibGdk.window_set_role(to_unsafe.as(LibGdk::Window*), role.to_unsafe)
+      nil
     end
 
     def set_shadow_width(left, right, top, bottom)
-      __return_value = LibGdk.window_set_shadow_width(to_unsafe.as(LibGdk::Window*), Int32.new(left), Int32.new(right), Int32.new(top), Int32.new(bottom))
-      __return_value
+      LibGdk.window_set_shadow_width(to_unsafe.as(LibGdk::Window*), Int32.new(left), Int32.new(right), Int32.new(top), Int32.new(bottom))
+      nil
     end
 
     def skip_pager_hint=(skips_pager)
-      __return_value = LibGdk.window_set_skip_pager_hint(to_unsafe.as(LibGdk::Window*), skips_pager)
-      __return_value
+      LibGdk.window_set_skip_pager_hint(to_unsafe.as(LibGdk::Window*), skips_pager)
+      nil
     end
 
     def skip_taskbar_hint=(skips_taskbar)
-      __return_value = LibGdk.window_set_skip_taskbar_hint(to_unsafe.as(LibGdk::Window*), skips_taskbar)
-      __return_value
+      LibGdk.window_set_skip_taskbar_hint(to_unsafe.as(LibGdk::Window*), skips_taskbar)
+      nil
     end
 
     def set_source_events(source : Gdk::InputSource, event_mask : Gdk::EventMask)
-      __return_value = LibGdk.window_set_source_events(to_unsafe.as(LibGdk::Window*), source, event_mask)
-      __return_value
+      LibGdk.window_set_source_events(to_unsafe.as(LibGdk::Window*), source, event_mask)
+      nil
     end
 
     def startup_id=(startup_id)
-      __return_value = LibGdk.window_set_startup_id(to_unsafe.as(LibGdk::Window*), startup_id.to_unsafe)
-      __return_value
+      LibGdk.window_set_startup_id(to_unsafe.as(LibGdk::Window*), startup_id.to_unsafe)
+      nil
     end
 
     def static_gravities=(use_static)
@@ -721,48 +721,48 @@ module Gdk
     end
 
     def support_multidevice=(support_multidevice)
-      __return_value = LibGdk.window_set_support_multidevice(to_unsafe.as(LibGdk::Window*), support_multidevice)
-      __return_value
+      LibGdk.window_set_support_multidevice(to_unsafe.as(LibGdk::Window*), support_multidevice)
+      nil
     end
 
     def title=(title)
-      __return_value = LibGdk.window_set_title(to_unsafe.as(LibGdk::Window*), title.to_unsafe)
-      __return_value
+      LibGdk.window_set_title(to_unsafe.as(LibGdk::Window*), title.to_unsafe)
+      nil
     end
 
     def transient_for=(parent)
-      __return_value = LibGdk.window_set_transient_for(to_unsafe.as(LibGdk::Window*), parent.to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_set_transient_for(to_unsafe.as(LibGdk::Window*), parent.to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def type_hint=(hint : Gdk::WindowTypeHint)
-      __return_value = LibGdk.window_set_type_hint(to_unsafe.as(LibGdk::Window*), hint)
-      __return_value
+      LibGdk.window_set_type_hint(to_unsafe.as(LibGdk::Window*), hint)
+      nil
     end
 
     def urgency_hint=(urgent)
-      __return_value = LibGdk.window_set_urgency_hint(to_unsafe.as(LibGdk::Window*), urgent)
-      __return_value
+      LibGdk.window_set_urgency_hint(to_unsafe.as(LibGdk::Window*), urgent)
+      nil
     end
 
     def user_data=(user_data)
-      __return_value = LibGdk.window_set_user_data(to_unsafe.as(LibGdk::Window*), user_data ? user_data.to_unsafe.as(LibGObject::Object*) : nil)
-      __return_value
+      LibGdk.window_set_user_data(to_unsafe.as(LibGdk::Window*), user_data ? user_data.to_unsafe.as(LibGObject::Object*) : nil)
+      nil
     end
 
     def shape_combine_region(shape_region, offset_x, offset_y)
-      __return_value = LibGdk.window_shape_combine_region(to_unsafe.as(LibGdk::Window*), shape_region ? shape_region.to_unsafe.as(LibCairo::Region*) : nil, Int32.new(offset_x), Int32.new(offset_y))
-      __return_value
+      LibGdk.window_shape_combine_region(to_unsafe.as(LibGdk::Window*), shape_region ? shape_region.to_unsafe.as(LibCairo::Region*) : nil, Int32.new(offset_x), Int32.new(offset_y))
+      nil
     end
 
     def show
-      __return_value = LibGdk.window_show(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_show(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def show_unraised
-      __return_value = LibGdk.window_show_unraised(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_show_unraised(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def show_window_menu(event)
@@ -771,38 +771,38 @@ module Gdk
     end
 
     def stick
-      __return_value = LibGdk.window_stick(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_stick(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def thaw_toplevel_updates_libgtk_only
-      __return_value = LibGdk.window_thaw_toplevel_updates_libgtk_only(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_thaw_toplevel_updates_libgtk_only(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def thaw_updates
-      __return_value = LibGdk.window_thaw_updates(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_thaw_updates(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def unfullscreen
-      __return_value = LibGdk.window_unfullscreen(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_unfullscreen(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def unmaximize
-      __return_value = LibGdk.window_unmaximize(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_unmaximize(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def unstick
-      __return_value = LibGdk.window_unstick(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_unstick(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     def withdraw
-      __return_value = LibGdk.window_withdraw(to_unsafe.as(LibGdk::Window*))
-      __return_value
+      LibGdk.window_withdraw(to_unsafe.as(LibGdk::Window*))
+      nil
     end
 
     alias CreateSurfaceSignal = Window, Int32, Int32 -> Cairo::Surface

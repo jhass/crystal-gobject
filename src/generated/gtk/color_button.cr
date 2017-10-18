@@ -66,8 +66,8 @@ module Gtk
     end
 
     def color(color)
-      __return_value = LibGtk.color_button_get_color(to_unsafe.as(LibGtk::ColorButton*), color)
-      __return_value
+      LibGtk.color_button_get_color(to_unsafe.as(LibGtk::ColorButton*), color)
+      nil
     end
 
     def title
@@ -81,23 +81,23 @@ module Gtk
     end
 
     def alpha=(alpha)
-      __return_value = LibGtk.color_button_set_alpha(to_unsafe.as(LibGtk::ColorButton*), UInt16.new(alpha))
-      __return_value
+      LibGtk.color_button_set_alpha(to_unsafe.as(LibGtk::ColorButton*), UInt16.new(alpha))
+      nil
     end
 
     def color=(color)
-      __return_value = LibGtk.color_button_set_color(to_unsafe.as(LibGtk::ColorButton*), color.to_unsafe.as(LibGdk::Color*))
-      __return_value
+      LibGtk.color_button_set_color(to_unsafe.as(LibGtk::ColorButton*), color.to_unsafe.as(LibGdk::Color*))
+      nil
     end
 
     def title=(title)
-      __return_value = LibGtk.color_button_set_title(to_unsafe.as(LibGtk::ColorButton*), title.to_unsafe)
-      __return_value
+      LibGtk.color_button_set_title(to_unsafe.as(LibGtk::ColorButton*), title.to_unsafe)
+      nil
     end
 
     def use_alpha=(use_alpha)
-      __return_value = LibGtk.color_button_set_use_alpha(to_unsafe.as(LibGtk::ColorButton*), use_alpha)
-      __return_value
+      LibGtk.color_button_set_use_alpha(to_unsafe.as(LibGtk::ColorButton*), use_alpha)
+      nil
     end
 
     alias ColorSetSignal = ColorButton ->

@@ -64,8 +64,8 @@ module Gdk
     end
 
     def geometry(geometry)
-      __return_value = LibGdk.monitor_get_geometry(to_unsafe.as(LibGdk::Monitor*), geometry)
-      __return_value
+      LibGdk.monitor_get_geometry(to_unsafe.as(LibGdk::Monitor*), geometry)
+      nil
     end
 
     def height_mm
@@ -104,8 +104,8 @@ module Gdk
     end
 
     def workarea(workarea)
-      __return_value = LibGdk.monitor_get_workarea(to_unsafe.as(LibGdk::Monitor*), workarea)
-      __return_value
+      LibGdk.monitor_get_workarea(to_unsafe.as(LibGdk::Monitor*), workarea)
+      nil
     end
 
     def primary?

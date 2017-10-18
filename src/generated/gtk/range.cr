@@ -84,8 +84,8 @@ module Gtk
     end
 
     def range_rect(range_rect)
-      __return_value = LibGtk.range_get_range_rect(to_unsafe.as(LibGtk::Range*), range_rect)
-      __return_value
+      LibGtk.range_get_range_rect(to_unsafe.as(LibGtk::Range*), range_rect)
+      nil
     end
 
     def restrict_to_fill_level
@@ -104,8 +104,8 @@ module Gtk
     end
 
     def slider_range(slider_start, slider_end)
-      __return_value = LibGtk.range_get_slider_range(to_unsafe.as(LibGtk::Range*), slider_start, slider_end)
-      __return_value
+      LibGtk.range_get_slider_range(to_unsafe.as(LibGtk::Range*), slider_start, slider_end)
+      nil
     end
 
     def slider_size_fixed
@@ -124,73 +124,73 @@ module Gtk
     end
 
     def adjustment=(adjustment)
-      __return_value = LibGtk.range_set_adjustment(to_unsafe.as(LibGtk::Range*), adjustment.to_unsafe.as(LibGtk::Adjustment*))
-      __return_value
+      LibGtk.range_set_adjustment(to_unsafe.as(LibGtk::Range*), adjustment.to_unsafe.as(LibGtk::Adjustment*))
+      nil
     end
 
     def fill_level=(fill_level)
-      __return_value = LibGtk.range_set_fill_level(to_unsafe.as(LibGtk::Range*), Float64.new(fill_level))
-      __return_value
+      LibGtk.range_set_fill_level(to_unsafe.as(LibGtk::Range*), Float64.new(fill_level))
+      nil
     end
 
     def flippable=(flippable)
-      __return_value = LibGtk.range_set_flippable(to_unsafe.as(LibGtk::Range*), flippable)
-      __return_value
+      LibGtk.range_set_flippable(to_unsafe.as(LibGtk::Range*), flippable)
+      nil
     end
 
     def set_increments(step, page)
-      __return_value = LibGtk.range_set_increments(to_unsafe.as(LibGtk::Range*), Float64.new(step), Float64.new(page))
-      __return_value
+      LibGtk.range_set_increments(to_unsafe.as(LibGtk::Range*), Float64.new(step), Float64.new(page))
+      nil
     end
 
     def inverted=(setting)
-      __return_value = LibGtk.range_set_inverted(to_unsafe.as(LibGtk::Range*), setting)
-      __return_value
+      LibGtk.range_set_inverted(to_unsafe.as(LibGtk::Range*), setting)
+      nil
     end
 
     def lower_stepper_sensitivity=(sensitivity : Gtk::SensitivityType)
-      __return_value = LibGtk.range_set_lower_stepper_sensitivity(to_unsafe.as(LibGtk::Range*), sensitivity)
-      __return_value
+      LibGtk.range_set_lower_stepper_sensitivity(to_unsafe.as(LibGtk::Range*), sensitivity)
+      nil
     end
 
     def min_slider_size=(min_size)
-      __return_value = LibGtk.range_set_min_slider_size(to_unsafe.as(LibGtk::Range*), Int32.new(min_size))
-      __return_value
+      LibGtk.range_set_min_slider_size(to_unsafe.as(LibGtk::Range*), Int32.new(min_size))
+      nil
     end
 
     def set_range(min, max)
-      __return_value = LibGtk.range_set_range(to_unsafe.as(LibGtk::Range*), Float64.new(min), Float64.new(max))
-      __return_value
+      LibGtk.range_set_range(to_unsafe.as(LibGtk::Range*), Float64.new(min), Float64.new(max))
+      nil
     end
 
     def restrict_to_fill_level=(restrict_to_fill_level)
-      __return_value = LibGtk.range_set_restrict_to_fill_level(to_unsafe.as(LibGtk::Range*), restrict_to_fill_level)
-      __return_value
+      LibGtk.range_set_restrict_to_fill_level(to_unsafe.as(LibGtk::Range*), restrict_to_fill_level)
+      nil
     end
 
     def round_digits=(round_digits)
-      __return_value = LibGtk.range_set_round_digits(to_unsafe.as(LibGtk::Range*), Int32.new(round_digits))
-      __return_value
+      LibGtk.range_set_round_digits(to_unsafe.as(LibGtk::Range*), Int32.new(round_digits))
+      nil
     end
 
     def show_fill_level=(show_fill_level)
-      __return_value = LibGtk.range_set_show_fill_level(to_unsafe.as(LibGtk::Range*), show_fill_level)
-      __return_value
+      LibGtk.range_set_show_fill_level(to_unsafe.as(LibGtk::Range*), show_fill_level)
+      nil
     end
 
     def slider_size_fixed=(size_fixed)
-      __return_value = LibGtk.range_set_slider_size_fixed(to_unsafe.as(LibGtk::Range*), size_fixed)
-      __return_value
+      LibGtk.range_set_slider_size_fixed(to_unsafe.as(LibGtk::Range*), size_fixed)
+      nil
     end
 
     def upper_stepper_sensitivity=(sensitivity : Gtk::SensitivityType)
-      __return_value = LibGtk.range_set_upper_stepper_sensitivity(to_unsafe.as(LibGtk::Range*), sensitivity)
-      __return_value
+      LibGtk.range_set_upper_stepper_sensitivity(to_unsafe.as(LibGtk::Range*), sensitivity)
+      nil
     end
 
     def value=(value)
-      __return_value = LibGtk.range_set_value(to_unsafe.as(LibGtk::Range*), Float64.new(value))
-      __return_value
+      LibGtk.range_set_value(to_unsafe.as(LibGtk::Range*), Float64.new(value))
+      nil
     end
 
     alias AdjustBoundsSignal = Range, Float64 ->

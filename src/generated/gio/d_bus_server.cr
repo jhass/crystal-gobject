@@ -67,13 +67,13 @@ module Gio
     end
 
     def start
-      __return_value = LibGio.d_bus_server_start(to_unsafe.as(LibGio::DBusServer*))
-      __return_value
+      LibGio.d_bus_server_start(to_unsafe.as(LibGio::DBusServer*))
+      nil
     end
 
     def stop
-      __return_value = LibGio.d_bus_server_stop(to_unsafe.as(LibGio::DBusServer*))
-      __return_value
+      LibGio.d_bus_server_stop(to_unsafe.as(LibGio::DBusServer*))
+      nil
     end
 
     alias NewConnectionSignal = DBusServer, Gio::DBusConnection -> Bool

@@ -16,8 +16,8 @@ module GModule
     end
 
     def make_resident
-      __return_value = LibGModule.module_make_resident(to_unsafe.as(LibGModule::Module*))
-      __return_value
+      LibGModule.module_make_resident(to_unsafe.as(LibGModule::Module*))
+      nil
     end
 
     def name

@@ -24,13 +24,13 @@ module Gdk
     end
 
     def beep
-      __return_value = LibGdk.display_beep(to_unsafe.as(LibGdk::Display*))
-      __return_value
+      LibGdk.display_beep(to_unsafe.as(LibGdk::Display*))
+      nil
     end
 
     def close
-      __return_value = LibGdk.display_close(to_unsafe.as(LibGdk::Display*))
-      __return_value
+      LibGdk.display_close(to_unsafe.as(LibGdk::Display*))
+      nil
     end
 
     def device_is_grabbed(device)
@@ -39,8 +39,8 @@ module Gdk
     end
 
     def flush
-      __return_value = LibGdk.display_flush(to_unsafe.as(LibGdk::Display*))
-      __return_value
+      LibGdk.display_flush(to_unsafe.as(LibGdk::Display*))
+      nil
     end
 
     def app_launch_context
@@ -79,8 +79,8 @@ module Gdk
     end
 
     def maximal_cursor_size(width, height)
-      __return_value = LibGdk.display_get_maximal_cursor_size(to_unsafe.as(LibGdk::Display*), width, height)
-      __return_value
+      LibGdk.display_get_maximal_cursor_size(to_unsafe.as(LibGdk::Display*), width, height)
+      nil
     end
 
     def monitor(monitor_num)
@@ -114,8 +114,8 @@ module Gdk
     end
 
     def pointer(screen, x, y, mask : Gdk::ModifierType?)
-      __return_value = LibGdk.display_get_pointer(to_unsafe.as(LibGdk::Display*), screen, x, y, mask)
-      __return_value
+      LibGdk.display_get_pointer(to_unsafe.as(LibGdk::Display*), screen, x, y, mask)
+      nil
     end
 
     def primary_monitor
@@ -144,8 +144,8 @@ module Gdk
     end
 
     def keyboard_ungrab(time)
-      __return_value = LibGdk.display_keyboard_ungrab(to_unsafe.as(LibGdk::Display*), UInt32.new(time))
-      __return_value
+      LibGdk.display_keyboard_ungrab(to_unsafe.as(LibGdk::Display*), UInt32.new(time))
+      nil
     end
 
     def list_devices
@@ -159,8 +159,8 @@ module Gdk
     end
 
     def notify_startup_complete(startup_id)
-      __return_value = LibGdk.display_notify_startup_complete(to_unsafe.as(LibGdk::Display*), startup_id.to_unsafe)
-      __return_value
+      LibGdk.display_notify_startup_complete(to_unsafe.as(LibGdk::Display*), startup_id.to_unsafe)
+      nil
     end
 
     def peek_event
@@ -174,13 +174,13 @@ module Gdk
     end
 
     def pointer_ungrab(time)
-      __return_value = LibGdk.display_pointer_ungrab(to_unsafe.as(LibGdk::Display*), UInt32.new(time))
-      __return_value
+      LibGdk.display_pointer_ungrab(to_unsafe.as(LibGdk::Display*), UInt32.new(time))
+      nil
     end
 
     def put_event(event)
-      __return_value = LibGdk.display_put_event(to_unsafe.as(LibGdk::Display*), event.to_unsafe.as(LibGdk::Event*))
-      __return_value
+      LibGdk.display_put_event(to_unsafe.as(LibGdk::Display*), event.to_unsafe.as(LibGdk::Event*))
+      nil
     end
 
     def request_selection_notification(selection)
@@ -189,18 +189,18 @@ module Gdk
     end
 
     def double_click_distance=(distance)
-      __return_value = LibGdk.display_set_double_click_distance(to_unsafe.as(LibGdk::Display*), UInt32.new(distance))
-      __return_value
+      LibGdk.display_set_double_click_distance(to_unsafe.as(LibGdk::Display*), UInt32.new(distance))
+      nil
     end
 
     def double_click_time=(msec)
-      __return_value = LibGdk.display_set_double_click_time(to_unsafe.as(LibGdk::Display*), UInt32.new(msec))
-      __return_value
+      LibGdk.display_set_double_click_time(to_unsafe.as(LibGdk::Display*), UInt32.new(msec))
+      nil
     end
 
     def store_clipboard(clipboard_window, time, targets, n_targets)
-      __return_value = LibGdk.display_store_clipboard(to_unsafe.as(LibGdk::Display*), clipboard_window.to_unsafe.as(LibGdk::Window*), UInt32.new(time), targets ? targets : nil, Int32.new(n_targets))
-      __return_value
+      LibGdk.display_store_clipboard(to_unsafe.as(LibGdk::Display*), clipboard_window.to_unsafe.as(LibGdk::Window*), UInt32.new(time), targets ? targets : nil, Int32.new(n_targets))
+      nil
     end
 
     def supports_clipboard_persistence
@@ -239,13 +239,13 @@ module Gdk
     end
 
     def sync
-      __return_value = LibGdk.display_sync(to_unsafe.as(LibGdk::Display*))
-      __return_value
+      LibGdk.display_sync(to_unsafe.as(LibGdk::Display*))
+      nil
     end
 
     def warp_pointer(screen, x, y)
-      __return_value = LibGdk.display_warp_pointer(to_unsafe.as(LibGdk::Display*), screen.to_unsafe.as(LibGdk::Screen*), Int32.new(x), Int32.new(y))
-      __return_value
+      LibGdk.display_warp_pointer(to_unsafe.as(LibGdk::Display*), screen.to_unsafe.as(LibGdk::Screen*), Int32.new(x), Int32.new(y))
+      nil
     end
 
     alias ClosedSignal = Display, Bool ->

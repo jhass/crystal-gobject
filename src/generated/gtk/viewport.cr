@@ -49,18 +49,18 @@ module Gtk
     end
 
     def hadjustment=(adjustment)
-      __return_value = LibGtk.viewport_set_hadjustment(to_unsafe.as(LibGtk::Viewport*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
-      __return_value
+      LibGtk.viewport_set_hadjustment(to_unsafe.as(LibGtk::Viewport*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
+      nil
     end
 
     def shadow_type=(type : Gtk::ShadowType)
-      __return_value = LibGtk.viewport_set_shadow_type(to_unsafe.as(LibGtk::Viewport*), type)
-      __return_value
+      LibGtk.viewport_set_shadow_type(to_unsafe.as(LibGtk::Viewport*), type)
+      nil
     end
 
     def vadjustment=(adjustment)
-      __return_value = LibGtk.viewport_set_vadjustment(to_unsafe.as(LibGtk::Viewport*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
-      __return_value
+      LibGtk.viewport_set_vadjustment(to_unsafe.as(LibGtk::Viewport*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
+      nil
     end
 
   end

@@ -29,6 +29,20 @@ module GLib
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
+  def self.ascii_string_to_signed(str, base, min, max, out_num)
+    __error = Pointer(LibGLib::Error).null
+    __return_value = LibGLib.ascii_string_to_signed(str.to_unsafe, UInt32.new(base), Int64.new(min), Int64.new(max), out_num, pointerof(__error))
+    GLib::Error.assert __error
+    __return_value
+  end
+
+  def self.ascii_string_to_unsigned(str, base, min, max, out_num)
+    __error = Pointer(LibGLib::Error).null
+    __return_value = LibGLib.ascii_string_to_unsigned(str.to_unsafe, UInt32.new(base), UInt64.new(min), UInt64.new(max), out_num, pointerof(__error))
+    GLib::Error.assert __error
+    __return_value
+  end
+
   def self.ascii_strncasecmp(s1, s2, n)
     __return_value = LibGLib.ascii_strncasecmp(s1.to_unsafe, s2.to_unsafe, UInt64.new(n))
     __return_value
@@ -70,28 +84,28 @@ module GLib
   end
 
   def self.assert_warning(log_domain, file, line, pretty_function, expression)
-    __return_value = LibGLib.assert_warning(log_domain.to_unsafe, file.to_unsafe, Int32.new(line), pretty_function.to_unsafe, expression.to_unsafe)
-    __return_value
+    LibGLib.assert_warning(log_domain.to_unsafe, file.to_unsafe, Int32.new(line), pretty_function.to_unsafe, expression.to_unsafe)
+    nil
   end
 
   def self.assertion_message(domain, file, line, func, message)
-    __return_value = LibGLib.assertion_message(domain.to_unsafe, file.to_unsafe, Int32.new(line), func.to_unsafe, message.to_unsafe)
-    __return_value
+    LibGLib.assertion_message(domain.to_unsafe, file.to_unsafe, Int32.new(line), func.to_unsafe, message.to_unsafe)
+    nil
   end
 
   def self.assertion_message_cmpstr(domain, file, line, func, expr, arg1, cmp, arg2)
-    __return_value = LibGLib.assertion_message_cmpstr(domain.to_unsafe, file.to_unsafe, Int32.new(line), func.to_unsafe, expr.to_unsafe, arg1.to_unsafe, cmp.to_unsafe, arg2.to_unsafe)
-    __return_value
+    LibGLib.assertion_message_cmpstr(domain.to_unsafe, file.to_unsafe, Int32.new(line), func.to_unsafe, expr.to_unsafe, arg1.to_unsafe, cmp.to_unsafe, arg2.to_unsafe)
+    nil
   end
 
   def self.assertion_message_error(domain, file, line, func, expr, error, error_domain, error_code)
-    __return_value = LibGLib.assertion_message_error(domain.to_unsafe, file.to_unsafe, Int32.new(line), func.to_unsafe, expr.to_unsafe, error, UInt32.new(error_domain), Int32.new(error_code))
-    __return_value
+    LibGLib.assertion_message_error(domain.to_unsafe, file.to_unsafe, Int32.new(line), func.to_unsafe, expr.to_unsafe, error, UInt32.new(error_domain), Int32.new(error_code))
+    nil
   end
 
   def self.atexit(func)
-    __return_value = LibGLib.atexit(func)
-    __return_value
+    LibGLib.atexit(func)
+    nil
   end
 
   def self.atomic_int_add(atomic, val)
@@ -125,8 +139,8 @@ module GLib
   end
 
   def self.atomic_int_inc(atomic)
-    __return_value = LibGLib.atomic_int_inc(atomic)
-    __return_value
+    LibGLib.atomic_int_inc(atomic)
+    nil
   end
 
   def self.atomic_int_or(atomic, val)
@@ -135,8 +149,8 @@ module GLib
   end
 
   def self.atomic_int_set(atomic, newval)
-    __return_value = LibGLib.atomic_int_set(atomic, Int32.new(newval))
-    __return_value
+    LibGLib.atomic_int_set(atomic, Int32.new(newval))
+    nil
   end
 
   def self.atomic_int_xor(atomic, val)
@@ -160,8 +174,8 @@ module GLib
   end
 
   def self.atomic_pointer_get(atomic)
-    __return_value = LibGLib.atomic_pointer_get(atomic)
-    __return_value if __return_value
+    LibGLib.atomic_pointer_get(atomic)
+    nil
   end
 
   def self.atomic_pointer_or(atomic, val)
@@ -170,8 +184,8 @@ module GLib
   end
 
   def self.atomic_pointer_set(atomic, newval)
-    __return_value = LibGLib.atomic_pointer_set(atomic, newval ? newval : nil)
-    __return_value
+    LibGLib.atomic_pointer_set(atomic, newval ? newval : nil)
+    nil
   end
 
   def self.atomic_pointer_xor(atomic, val)
@@ -215,8 +229,8 @@ module GLib
   end
 
   def self.bit_lock(address, lock_bit)
-    __return_value = LibGLib.bit_lock(address, Int32.new(lock_bit))
-    __return_value
+    LibGLib.bit_lock(address, Int32.new(lock_bit))
+    nil
   end
 
   def self.bit_nth_lsf(mask, nth_bit)
@@ -240,8 +254,8 @@ module GLib
   end
 
   def self.bit_unlock(address, lock_bit)
-    __return_value = LibGLib.bit_unlock(address, Int32.new(lock_bit))
-    __return_value
+    LibGLib.bit_unlock(address, Int32.new(lock_bit))
+    nil
   end
 
   def self.bookmark_file_error_quark
@@ -280,8 +294,8 @@ module GLib
   end
 
   def self.byte_array_unref(array)
-    __return_value = LibGLib.byte_array_unref(array)
-    __return_value
+    LibGLib.byte_array_unref(array)
+    nil
   end
 
   def self.chdir(path)
@@ -311,9 +325,9 @@ module GLib
 
   def self.clear_error
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGLib.clear_error(pointerof(__error))
+    LibGLib.clear_error(pointerof(__error))
     GLib::Error.assert __error
-    __return_value
+    nil
   end
 
   def self.close(fd)
@@ -380,13 +394,13 @@ module GLib
   end
 
   def self.datalist_clear(datalist)
-    __return_value = LibGLib.datalist_clear(datalist.to_unsafe.as(LibGLib::Data*))
-    __return_value
+    LibGLib.datalist_clear(datalist.to_unsafe.as(LibGLib::Data*))
+    nil
   end
 
   def self.datalist_get_data(datalist, key)
-    __return_value = LibGLib.datalist_get_data(datalist.to_unsafe.as(LibGLib::Data*), key.to_unsafe)
-    __return_value if __return_value
+    LibGLib.datalist_get_data(datalist.to_unsafe.as(LibGLib::Data*), key.to_unsafe)
+    nil
   end
 
   def self.datalist_get_flags(datalist)
@@ -395,13 +409,13 @@ module GLib
   end
 
   def self.datalist_id_get_data(datalist, key_id)
-    __return_value = LibGLib.datalist_id_get_data(datalist.to_unsafe.as(LibGLib::Data*), UInt32.new(key_id))
-    __return_value if __return_value
+    LibGLib.datalist_id_get_data(datalist.to_unsafe.as(LibGLib::Data*), UInt32.new(key_id))
+    nil
   end
 
   def self.datalist_id_remove_no_notify(datalist, key_id)
-    __return_value = LibGLib.datalist_id_remove_no_notify(datalist.to_unsafe.as(LibGLib::Data*), UInt32.new(key_id))
-    __return_value if __return_value
+    LibGLib.datalist_id_remove_no_notify(datalist.to_unsafe.as(LibGLib::Data*), UInt32.new(key_id))
+    nil
   end
 
   def self.datalist_id_replace_data(datalist, key_id, oldval, newval, destroy, old_destroy)
@@ -410,43 +424,43 @@ module GLib
   end
 
   def self.datalist_id_set_data_full(datalist, key_id, data, destroy_func)
-    __return_value = LibGLib.datalist_id_set_data_full(datalist.to_unsafe.as(LibGLib::Data*), UInt32.new(key_id), data ? data : nil, destroy_func)
-    __return_value
+    LibGLib.datalist_id_set_data_full(datalist.to_unsafe.as(LibGLib::Data*), UInt32.new(key_id), data ? data : nil, destroy_func)
+    nil
   end
 
   def self.datalist_init(datalist)
-    __return_value = LibGLib.datalist_init(datalist.to_unsafe.as(LibGLib::Data*))
-    __return_value
+    LibGLib.datalist_init(datalist.to_unsafe.as(LibGLib::Data*))
+    nil
   end
 
   def self.datalist_set_flags(datalist, flags)
-    __return_value = LibGLib.datalist_set_flags(datalist.to_unsafe.as(LibGLib::Data*), UInt32.new(flags))
-    __return_value
+    LibGLib.datalist_set_flags(datalist.to_unsafe.as(LibGLib::Data*), UInt32.new(flags))
+    nil
   end
 
   def self.datalist_unset_flags(datalist, flags)
-    __return_value = LibGLib.datalist_unset_flags(datalist.to_unsafe.as(LibGLib::Data*), UInt32.new(flags))
-    __return_value
+    LibGLib.datalist_unset_flags(datalist.to_unsafe.as(LibGLib::Data*), UInt32.new(flags))
+    nil
   end
 
   def self.dataset_destroy(dataset_location)
-    __return_value = LibGLib.dataset_destroy(dataset_location)
-    __return_value
+    LibGLib.dataset_destroy(dataset_location)
+    nil
   end
 
   def self.dataset_id_get_data(dataset_location, key_id)
-    __return_value = LibGLib.dataset_id_get_data(dataset_location, UInt32.new(key_id))
-    __return_value if __return_value
+    LibGLib.dataset_id_get_data(dataset_location, UInt32.new(key_id))
+    nil
   end
 
   def self.dataset_id_remove_no_notify(dataset_location, key_id)
-    __return_value = LibGLib.dataset_id_remove_no_notify(dataset_location, UInt32.new(key_id))
-    __return_value if __return_value
+    LibGLib.dataset_id_remove_no_notify(dataset_location, UInt32.new(key_id))
+    nil
   end
 
   def self.dataset_id_set_data_full(dataset_location, key_id, data, destroy_func)
-    __return_value = LibGLib.dataset_id_set_data_full(dataset_location, UInt32.new(key_id), data ? data : nil, destroy_func)
-    __return_value
+    LibGLib.dataset_id_set_data_full(dataset_location, UInt32.new(key_id), data ? data : nil, destroy_func)
+    nil
   end
 
   def self.date_get_days_in_month(month : GLib::DateMonth, year)
@@ -688,8 +702,8 @@ module GLib
   end
 
   def self.free(mem)
-    __return_value = LibGLib.free(mem ? mem : nil)
-    __return_value
+    LibGLib.free(mem ? mem : nil)
+    nil
   end
 
   def self.application_name
@@ -713,8 +727,8 @@ module GLib
   end
 
   def self.current_time(result)
-    __return_value = LibGLib.get_current_time(result.to_unsafe.as(LibGLib::TimeVal*))
-    __return_value
+    LibGLib.get_current_time(result.to_unsafe.as(LibGLib::TimeVal*))
+    nil
   end
 
   def self.environ
@@ -833,8 +847,8 @@ module GLib
   end
 
   def self.hash_table_destroy(hash_table)
-    __return_value = LibGLib.hash_table_destroy(hash_table)
-    __return_value
+    LibGLib.hash_table_destroy(hash_table)
+    nil
   end
 
   def self.hash_table_insert(hash_table, key, value)
@@ -843,8 +857,8 @@ module GLib
   end
 
   def self.hash_table_lookup(hash_table, key)
-    __return_value = LibGLib.hash_table_lookup(hash_table, key ? key : nil)
-    __return_value if __return_value
+    LibGLib.hash_table_lookup(hash_table, key ? key : nil)
+    nil
   end
 
   def self.hash_table_lookup_extended(hash_table, lookup_key, orig_key, value)
@@ -858,8 +872,8 @@ module GLib
   end
 
   def self.hash_table_remove_all(hash_table)
-    __return_value = LibGLib.hash_table_remove_all(hash_table)
-    __return_value
+    LibGLib.hash_table_remove_all(hash_table)
+    nil
   end
 
   def self.hash_table_replace(hash_table, key, value)
@@ -878,13 +892,13 @@ module GLib
   end
 
   def self.hash_table_steal_all(hash_table)
-    __return_value = LibGLib.hash_table_steal_all(hash_table)
-    __return_value
+    LibGLib.hash_table_steal_all(hash_table)
+    nil
   end
 
   def self.hash_table_unref(hash_table)
-    __return_value = LibGLib.hash_table_unref(hash_table)
-    __return_value
+    LibGLib.hash_table_unref(hash_table)
+    nil
   end
 
   def self.hook_destroy(hook_list, hook_id)
@@ -893,28 +907,28 @@ module GLib
   end
 
   def self.hook_destroy_link(hook_list, hook)
-    __return_value = LibGLib.hook_destroy_link(hook_list.to_unsafe.as(LibGLib::HookList*), hook.to_unsafe.as(LibGLib::Hook*))
-    __return_value
+    LibGLib.hook_destroy_link(hook_list.to_unsafe.as(LibGLib::HookList*), hook.to_unsafe.as(LibGLib::Hook*))
+    nil
   end
 
   def self.hook_free(hook_list, hook)
-    __return_value = LibGLib.hook_free(hook_list.to_unsafe.as(LibGLib::HookList*), hook.to_unsafe.as(LibGLib::Hook*))
-    __return_value
+    LibGLib.hook_free(hook_list.to_unsafe.as(LibGLib::HookList*), hook.to_unsafe.as(LibGLib::Hook*))
+    nil
   end
 
   def self.hook_insert_before(hook_list, sibling, hook)
-    __return_value = LibGLib.hook_insert_before(hook_list.to_unsafe.as(LibGLib::HookList*), sibling ? sibling.to_unsafe.as(LibGLib::Hook*) : nil, hook.to_unsafe.as(LibGLib::Hook*))
-    __return_value
+    LibGLib.hook_insert_before(hook_list.to_unsafe.as(LibGLib::HookList*), sibling ? sibling.to_unsafe.as(LibGLib::Hook*) : nil, hook.to_unsafe.as(LibGLib::Hook*))
+    nil
   end
 
   def self.hook_prepend(hook_list, hook)
-    __return_value = LibGLib.hook_prepend(hook_list.to_unsafe.as(LibGLib::HookList*), hook.to_unsafe.as(LibGLib::Hook*))
-    __return_value
+    LibGLib.hook_prepend(hook_list.to_unsafe.as(LibGLib::HookList*), hook.to_unsafe.as(LibGLib::Hook*))
+    nil
   end
 
   def self.hook_unref(hook_list, hook)
-    __return_value = LibGLib.hook_unref(hook_list.to_unsafe.as(LibGLib::HookList*), hook.to_unsafe.as(LibGLib::Hook*))
-    __return_value
+    LibGLib.hook_unref(hook_list.to_unsafe.as(LibGLib::HookList*), hook.to_unsafe.as(LibGLib::Hook*))
+    nil
   end
 
   def self.hostname_is_ascii_encoded(hostname)
@@ -1037,13 +1051,13 @@ module GLib
   end
 
   def self.log_default_handler(log_domain, log_level : GLib::LogLevelFlags, message, unused_data)
-    __return_value = LibGLib.log_default_handler(log_domain ? log_domain.to_unsafe : nil, log_level, message ? message.to_unsafe : nil, unused_data ? unused_data : nil)
-    __return_value
+    LibGLib.log_default_handler(log_domain ? log_domain.to_unsafe : nil, log_level, message ? message.to_unsafe : nil, unused_data ? unused_data : nil)
+    nil
   end
 
   def self.log_remove_handler(log_domain, handler_id)
-    __return_value = LibGLib.log_remove_handler(log_domain.to_unsafe, UInt32.new(handler_id))
-    __return_value
+    LibGLib.log_remove_handler(log_domain.to_unsafe, UInt32.new(handler_id))
+    nil
   end
 
   def self.log_set_always_fatal(fatal_mask : GLib::LogLevelFlags)
@@ -1062,18 +1076,18 @@ module GLib
   end
 
   def self.log_set_writer_func(func, user_data, user_data_free)
-    __return_value = LibGLib.log_set_writer_func(func ? func : nil, user_data ? user_data : nil, user_data_free)
-    __return_value
+    LibGLib.log_set_writer_func(func ? func : nil, user_data ? user_data : nil, user_data_free)
+    nil
   end
 
   def self.log_structured_array(log_level : GLib::LogLevelFlags, fields, n_fields)
-    __return_value = LibGLib.log_structured_array(log_level, fields, UInt64.new(n_fields))
-    __return_value
+    LibGLib.log_structured_array(log_level, fields, UInt64.new(n_fields))
+    nil
   end
 
   def self.log_variant(log_domain, log_level : GLib::LogLevelFlags, fields)
-    __return_value = LibGLib.log_variant(log_domain ? log_domain.to_unsafe : nil, log_level, fields.to_unsafe.as(LibGLib::Variant*))
-    __return_value
+    LibGLib.log_variant(log_domain ? log_domain.to_unsafe : nil, log_level, fields.to_unsafe.as(LibGLib::Variant*))
+    nil
   end
 
   def self.log_writer_default(log_level : GLib::LogLevelFlags, fields, n_fields, user_data)
@@ -1132,23 +1146,23 @@ module GLib
   end
 
   def self.malloc(n_bytes)
-    __return_value = LibGLib.malloc(UInt64.new(n_bytes))
-    __return_value if __return_value
+    LibGLib.malloc(UInt64.new(n_bytes))
+    nil
   end
 
   def self.malloc0(n_bytes)
-    __return_value = LibGLib.malloc0(UInt64.new(n_bytes))
-    __return_value if __return_value
+    LibGLib.malloc0(UInt64.new(n_bytes))
+    nil
   end
 
   def self.malloc0_n(n_blocks, n_block_bytes)
-    __return_value = LibGLib.malloc0_n(UInt64.new(n_blocks), UInt64.new(n_block_bytes))
-    __return_value if __return_value
+    LibGLib.malloc0_n(UInt64.new(n_blocks), UInt64.new(n_block_bytes))
+    nil
   end
 
   def self.malloc_n(n_blocks, n_block_bytes)
-    __return_value = LibGLib.malloc_n(UInt64.new(n_blocks), UInt64.new(n_block_bytes))
-    __return_value if __return_value
+    LibGLib.malloc_n(UInt64.new(n_blocks), UInt64.new(n_block_bytes))
+    nil
   end
 
   def self.markup_error_quark
@@ -1167,18 +1181,18 @@ module GLib
   end
 
   def self.mem_profile
-    __return_value = LibGLib.mem_profile
-    __return_value
+    LibGLib.mem_profile
+    nil
   end
 
   def self.mem_set_vtable(vtable)
-    __return_value = LibGLib.mem_set_vtable(vtable.to_unsafe.as(LibGLib::MemVTable*))
-    __return_value
+    LibGLib.mem_set_vtable(vtable.to_unsafe.as(LibGLib::MemVTable*))
+    nil
   end
 
   def self.memdup(mem, byte_size)
-    __return_value = LibGLib.memdup(mem ? mem : nil, UInt32.new(byte_size))
-    __return_value if __return_value
+    LibGLib.memdup(mem ? mem : nil, UInt32.new(byte_size))
+    nil
   end
 
   def self.mkdir_with_parents(pathname, mode)
@@ -1187,18 +1201,23 @@ module GLib
   end
 
   def self.nullify_pointer(nullify_location)
-    __return_value = LibGLib.nullify_pointer(nullify_location)
+    LibGLib.nullify_pointer(nullify_location)
+    nil
+  end
+
+  def self.number_parser_error_quark
+    __return_value = LibGLib.number_parser_error_quark
     __return_value
   end
 
   def self.on_error_query(prg_name)
-    __return_value = LibGLib.on_error_query(prg_name.to_unsafe)
-    __return_value
+    LibGLib.on_error_query(prg_name.to_unsafe)
+    nil
   end
 
   def self.on_error_stack_trace(prg_name)
-    __return_value = LibGLib.on_error_stack_trace(prg_name.to_unsafe)
-    __return_value
+    LibGLib.on_error_stack_trace(prg_name.to_unsafe)
+    nil
   end
 
   def self.once_init_enter(location)
@@ -1207,8 +1226,8 @@ module GLib
   end
 
   def self.once_init_leave(location, result)
-    __return_value = LibGLib.once_init_leave(location, UInt64.new(result))
-    __return_value
+    LibGLib.once_init_leave(location, UInt64.new(result))
+    nil
   end
 
   def self.option_error_quark
@@ -1257,8 +1276,8 @@ module GLib
   end
 
   def self.pointer_bit_lock(address, lock_bit)
-    __return_value = LibGLib.pointer_bit_lock(address, Int32.new(lock_bit))
-    __return_value
+    LibGLib.pointer_bit_lock(address, Int32.new(lock_bit))
+    nil
   end
 
   def self.pointer_bit_trylock(address, lock_bit)
@@ -1267,8 +1286,8 @@ module GLib
   end
 
   def self.pointer_bit_unlock(address, lock_bit)
-    __return_value = LibGLib.pointer_bit_unlock(address, Int32.new(lock_bit))
-    __return_value
+    LibGLib.pointer_bit_unlock(address, Int32.new(lock_bit))
+    nil
   end
 
   def self.poll(fds, nfds, timeout)
@@ -1277,8 +1296,8 @@ module GLib
   end
 
   def self.propagate_error(dest, src)
-    __return_value = LibGLib.propagate_error(dest, src)
-    __return_value
+    LibGLib.propagate_error(dest, src)
+    nil
   end
 
   def self.quark_from_static_string(string)
@@ -1322,18 +1341,18 @@ module GLib
   end
 
   def self.random_set_seed(seed)
-    __return_value = LibGLib.random_set_seed(UInt32.new(seed))
-    __return_value
+    LibGLib.random_set_seed(UInt32.new(seed))
+    nil
   end
 
   def self.realloc(mem, n_bytes)
-    __return_value = LibGLib.realloc(mem ? mem : nil, UInt64.new(n_bytes))
-    __return_value if __return_value
+    LibGLib.realloc(mem ? mem : nil, UInt64.new(n_bytes))
+    nil
   end
 
   def self.realloc_n(mem, n_blocks, n_block_bytes)
-    __return_value = LibGLib.realloc_n(mem ? mem : nil, UInt64.new(n_blocks), UInt64.new(n_block_bytes))
-    __return_value if __return_value
+    LibGLib.realloc_n(mem ? mem : nil, UInt64.new(n_blocks), UInt64.new(n_block_bytes))
+    nil
   end
 
   def self.regex_check_replacement(replacement, has_references)
@@ -1369,8 +1388,8 @@ module GLib
   end
 
   def self.reload_user_special_dirs_cache
-    __return_value = LibGLib.reload_user_special_dirs_cache
-    __return_value
+    LibGLib.reload_user_special_dirs_cache
+    nil
   end
 
   def self.rmdir(filename)
@@ -1379,53 +1398,63 @@ module GLib
   end
 
   def self.sequence_get(iter)
-    __return_value = LibGLib.sequence_get(iter.to_unsafe.as(LibGLib::SequenceIter*))
-    __return_value if __return_value
+    LibGLib.sequence_get(iter.to_unsafe.as(LibGLib::SequenceIter*))
+    nil
+  end
+
+  def self.sequence_insert_before(iter, data)
+    __return_value = LibGLib.sequence_insert_before(iter.to_unsafe.as(LibGLib::SequenceIter*), data ? data : nil)
+    GLib::SequenceIter.new(__return_value)
   end
 
   def self.sequence_move(src, dest)
-    __return_value = LibGLib.sequence_move(src.to_unsafe.as(LibGLib::SequenceIter*), dest.to_unsafe.as(LibGLib::SequenceIter*))
-    __return_value
+    LibGLib.sequence_move(src.to_unsafe.as(LibGLib::SequenceIter*), dest.to_unsafe.as(LibGLib::SequenceIter*))
+    nil
   end
 
   def self.sequence_move_range(dest, _begin, end)
-    __return_value = LibGLib.sequence_move_range(dest.to_unsafe.as(LibGLib::SequenceIter*), _begin.to_unsafe.as(LibGLib::SequenceIter*), end.to_unsafe.as(LibGLib::SequenceIter*))
-    __return_value
+    LibGLib.sequence_move_range(dest.to_unsafe.as(LibGLib::SequenceIter*), _begin.to_unsafe.as(LibGLib::SequenceIter*), end.to_unsafe.as(LibGLib::SequenceIter*))
+    nil
+  end
+
+  def self.sequence_range_get_midpoint(_begin, end)
+    __return_value = LibGLib.sequence_range_get_midpoint(_begin.to_unsafe.as(LibGLib::SequenceIter*), end.to_unsafe.as(LibGLib::SequenceIter*))
+    GLib::SequenceIter.new(__return_value)
   end
 
   def self.sequence_remove(iter)
-    __return_value = LibGLib.sequence_remove(iter.to_unsafe.as(LibGLib::SequenceIter*))
-    __return_value
+    LibGLib.sequence_remove(iter.to_unsafe.as(LibGLib::SequenceIter*))
+    nil
   end
 
   def self.sequence_remove_range(_begin, end)
-    __return_value = LibGLib.sequence_remove_range(_begin.to_unsafe.as(LibGLib::SequenceIter*), end.to_unsafe.as(LibGLib::SequenceIter*))
-    __return_value
+    LibGLib.sequence_remove_range(_begin.to_unsafe.as(LibGLib::SequenceIter*), end.to_unsafe.as(LibGLib::SequenceIter*))
+    nil
   end
 
   def self.sequence_set(iter, data)
-    __return_value = LibGLib.sequence_set(iter.to_unsafe.as(LibGLib::SequenceIter*), data ? data : nil)
-    __return_value
+    LibGLib.sequence_set(iter.to_unsafe.as(LibGLib::SequenceIter*), data ? data : nil)
+    nil
   end
 
   def self.sequence_swap(a, b)
-    __return_value = LibGLib.sequence_swap(a.to_unsafe.as(LibGLib::SequenceIter*), b.to_unsafe.as(LibGLib::SequenceIter*))
-    __return_value
+    LibGLib.sequence_swap(a.to_unsafe.as(LibGLib::SequenceIter*), b.to_unsafe.as(LibGLib::SequenceIter*))
+    nil
   end
 
   def self.set_application_name(application_name)
-    __return_value = LibGLib.set_application_name(application_name.to_unsafe)
-    __return_value
+    LibGLib.set_application_name(application_name.to_unsafe)
+    nil
   end
 
   def self.set_error_literal(err, domain, code, message)
-    __return_value = LibGLib.set_error_literal(err, UInt32.new(domain), Int32.new(code), message.to_unsafe)
-    __return_value
+    LibGLib.set_error_literal(err, UInt32.new(domain), Int32.new(code), message.to_unsafe)
+    nil
   end
 
   def self.set_prgname(prgname)
-    __return_value = LibGLib.set_prgname(prgname.to_unsafe)
-    __return_value
+    LibGLib.set_prgname(prgname.to_unsafe)
+    nil
   end
 
   def self.setenv(variable, value, overwrite)
@@ -1458,28 +1487,28 @@ module GLib
   end
 
   def self.slice_alloc(block_size)
-    __return_value = LibGLib.slice_alloc(UInt64.new(block_size))
-    __return_value if __return_value
+    LibGLib.slice_alloc(UInt64.new(block_size))
+    nil
   end
 
   def self.slice_alloc0(block_size)
-    __return_value = LibGLib.slice_alloc0(UInt64.new(block_size))
-    __return_value if __return_value
+    LibGLib.slice_alloc0(UInt64.new(block_size))
+    nil
   end
 
   def self.slice_copy(block_size, mem_block)
-    __return_value = LibGLib.slice_copy(UInt64.new(block_size), mem_block ? mem_block : nil)
-    __return_value if __return_value
+    LibGLib.slice_copy(UInt64.new(block_size), mem_block ? mem_block : nil)
+    nil
   end
 
   def self.slice_free1(block_size, mem_block)
-    __return_value = LibGLib.slice_free1(UInt64.new(block_size), mem_block ? mem_block : nil)
-    __return_value
+    LibGLib.slice_free1(UInt64.new(block_size), mem_block ? mem_block : nil)
+    nil
   end
 
   def self.slice_free_chain_with_offset(block_size, mem_chain, next_offset)
-    __return_value = LibGLib.slice_free_chain_with_offset(UInt64.new(block_size), mem_chain ? mem_chain : nil, UInt64.new(next_offset))
-    __return_value
+    LibGLib.slice_free_chain_with_offset(UInt64.new(block_size), mem_chain ? mem_chain : nil, UInt64.new(next_offset))
+    nil
   end
 
   def self.slice_get_config(ckey : GLib::SliceConfig)
@@ -1493,8 +1522,8 @@ module GLib
   end
 
   def self.slice_set_config(ckey : GLib::SliceConfig, value)
-    __return_value = LibGLib.slice_set_config(ckey, Int64.new(value))
-    __return_value
+    LibGLib.slice_set_config(ckey, Int64.new(value))
+    nil
   end
 
   def self.source_remove(tag)
@@ -1513,8 +1542,8 @@ module GLib
   end
 
   def self.source_set_name_by_id(tag, name)
-    __return_value = LibGLib.source_set_name_by_id(UInt32.new(tag), name.to_unsafe)
-    __return_value
+    LibGLib.source_set_name_by_id(UInt32.new(tag), name.to_unsafe)
+    nil
   end
 
   def self.spaced_primes_closest(num)
@@ -1544,8 +1573,8 @@ module GLib
   end
 
   def self.spawn_close_pid(pid)
-    __return_value = LibGLib.spawn_close_pid(Int32.new(pid))
-    __return_value
+    LibGLib.spawn_close_pid(Int32.new(pid))
+    nil
   end
 
   def self.spawn_command_line_async(command_line)
@@ -1680,8 +1709,8 @@ module GLib
   end
 
   def self.strfreev(str_array)
-    __return_value = LibGLib.strfreev(str_array ? str_array.to_unsafe : nil)
-    __return_value
+    LibGLib.strfreev(str_array ? str_array.to_unsafe : nil)
+    nil
   end
 
   def self.string_new(init)
@@ -1785,43 +1814,43 @@ module GLib
   end
 
   def self.test_add_data_func(testpath, test_data, test_func)
-    __return_value = LibGLib.test_add_data_func(testpath.to_unsafe, test_data ? test_data : nil, test_func)
-    __return_value
+    LibGLib.test_add_data_func(testpath.to_unsafe, test_data ? test_data : nil, test_func)
+    nil
   end
 
   def self.test_add_data_func_full(testpath, test_data, test_func, data_free_func)
-    __return_value = LibGLib.test_add_data_func_full(testpath.to_unsafe, test_data ? test_data : nil, test_func, data_free_func)
-    __return_value
+    LibGLib.test_add_data_func_full(testpath.to_unsafe, test_data ? test_data : nil, test_func, data_free_func)
+    nil
   end
 
   def self.test_add_func(testpath, test_func)
-    __return_value = LibGLib.test_add_func(testpath.to_unsafe, test_func)
-    __return_value
+    LibGLib.test_add_func(testpath.to_unsafe, test_func)
+    nil
   end
 
   def self.test_assert_expected_messages_internal(domain, file, line, func)
-    __return_value = LibGLib.test_assert_expected_messages_internal(domain.to_unsafe, file.to_unsafe, Int32.new(line), func.to_unsafe)
-    __return_value
+    LibGLib.test_assert_expected_messages_internal(domain.to_unsafe, file.to_unsafe, Int32.new(line), func.to_unsafe)
+    nil
   end
 
   def self.test_bug(bug_uri_snippet)
-    __return_value = LibGLib.test_bug(bug_uri_snippet.to_unsafe)
-    __return_value
+    LibGLib.test_bug(bug_uri_snippet.to_unsafe)
+    nil
   end
 
   def self.test_bug_base(uri_pattern)
-    __return_value = LibGLib.test_bug_base(uri_pattern.to_unsafe)
-    __return_value
+    LibGLib.test_bug_base(uri_pattern.to_unsafe)
+    nil
   end
 
   def self.test_expect_message(log_domain, log_level : GLib::LogLevelFlags, pattern)
-    __return_value = LibGLib.test_expect_message(log_domain ? log_domain.to_unsafe : nil, log_level, pattern.to_unsafe)
-    __return_value
+    LibGLib.test_expect_message(log_domain ? log_domain.to_unsafe : nil, log_level, pattern.to_unsafe)
+    nil
   end
 
   def self.test_fail
-    __return_value = LibGLib.test_fail
-    __return_value
+    LibGLib.test_fail
+    nil
   end
 
   def self.test_failed
@@ -1835,8 +1864,8 @@ module GLib
   end
 
   def self.test_incomplete(msg)
-    __return_value = LibGLib.test_incomplete(msg ? msg.to_unsafe : nil)
-    __return_value
+    LibGLib.test_incomplete(msg ? msg.to_unsafe : nil)
+    nil
   end
 
   def self.test_log_type_name(log_type : GLib::TestLogType)
@@ -1845,13 +1874,13 @@ module GLib
   end
 
   def self.test_queue_destroy(destroy_func, destroy_data)
-    __return_value = LibGLib.test_queue_destroy(destroy_func, destroy_data ? destroy_data : nil)
-    __return_value
+    LibGLib.test_queue_destroy(destroy_func, destroy_data ? destroy_data : nil)
+    nil
   end
 
   def self.test_queue_free(gfree_pointer)
-    __return_value = LibGLib.test_queue_free(gfree_pointer ? gfree_pointer : nil)
-    __return_value
+    LibGLib.test_queue_free(gfree_pointer ? gfree_pointer : nil)
+    nil
   end
 
   def self.test_rand_double
@@ -1885,13 +1914,13 @@ module GLib
   end
 
   def self.test_set_nonfatal_assertions
-    __return_value = LibGLib.test_set_nonfatal_assertions
-    __return_value
+    LibGLib.test_set_nonfatal_assertions
+    nil
   end
 
   def self.test_skip(msg)
-    __return_value = LibGLib.test_skip(msg ? msg.to_unsafe : nil)
-    __return_value
+    LibGLib.test_skip(msg ? msg.to_unsafe : nil)
+    nil
   end
 
   def self.test_subprocess
@@ -1910,13 +1939,13 @@ module GLib
   end
 
   def self.test_timer_start
-    __return_value = LibGLib.test_timer_start
-    __return_value
+    LibGLib.test_timer_start
+    nil
   end
 
   def self.test_trap_assertions(domain, file, line, func, assertion_flags, pattern)
-    __return_value = LibGLib.test_trap_assertions(domain.to_unsafe, file.to_unsafe, Int32.new(line), func.to_unsafe, UInt64.new(assertion_flags), pattern.to_unsafe)
-    __return_value
+    LibGLib.test_trap_assertions(domain.to_unsafe, file.to_unsafe, Int32.new(line), func.to_unsafe, UInt64.new(assertion_flags), pattern.to_unsafe)
+    nil
   end
 
   def self.test_trap_fork(usec_timeout, test_trap_flags : GLib::TestTrapFlags)
@@ -1935,8 +1964,8 @@ module GLib
   end
 
   def self.test_trap_subprocess(test_path, usec_timeout, test_flags : GLib::TestSubprocessFlags)
-    __return_value = LibGLib.test_trap_subprocess(test_path ? test_path.to_unsafe : nil, UInt64.new(usec_timeout), test_flags)
-    __return_value
+    LibGLib.test_trap_subprocess(test_path ? test_path.to_unsafe : nil, UInt64.new(usec_timeout), test_flags)
+    nil
   end
 
   def self.thread_error_quark
@@ -1945,8 +1974,8 @@ module GLib
   end
 
   def self.thread_exit(retval)
-    __return_value = LibGLib.thread_exit(retval ? retval : nil)
-    __return_value
+    LibGLib.thread_exit(retval ? retval : nil)
+    nil
   end
 
   def self.thread_pool_get_max_idle_time
@@ -1965,18 +1994,18 @@ module GLib
   end
 
   def self.thread_pool_set_max_idle_time(interval)
-    __return_value = LibGLib.thread_pool_set_max_idle_time(UInt32.new(interval))
-    __return_value
+    LibGLib.thread_pool_set_max_idle_time(UInt32.new(interval))
+    nil
   end
 
   def self.thread_pool_set_max_unused_threads(max_threads)
-    __return_value = LibGLib.thread_pool_set_max_unused_threads(Int32.new(max_threads))
-    __return_value
+    LibGLib.thread_pool_set_max_unused_threads(Int32.new(max_threads))
+    nil
   end
 
   def self.thread_pool_stop_unused_threads
-    __return_value = LibGLib.thread_pool_stop_unused_threads
-    __return_value
+    LibGLib.thread_pool_stop_unused_threads
+    nil
   end
 
   def self.thread_self
@@ -1985,8 +2014,8 @@ module GLib
   end
 
   def self.thread_yield
-    __return_value = LibGLib.thread_yield
-    __return_value
+    LibGLib.thread_yield
+    nil
   end
 
   def self.time_val_from_iso8601(iso_date, time)
@@ -2020,48 +2049,48 @@ module GLib
   end
 
   def self.trash_stack_peek(stack_p)
-    __return_value = LibGLib.trash_stack_peek(stack_p.to_unsafe.as(LibGLib::TrashStack*))
-    __return_value if __return_value
+    LibGLib.trash_stack_peek(stack_p.to_unsafe.as(LibGLib::TrashStack*))
+    nil
   end
 
   def self.trash_stack_pop(stack_p)
-    __return_value = LibGLib.trash_stack_pop(stack_p.to_unsafe.as(LibGLib::TrashStack*))
-    __return_value if __return_value
+    LibGLib.trash_stack_pop(stack_p.to_unsafe.as(LibGLib::TrashStack*))
+    nil
   end
 
   def self.trash_stack_push(stack_p, data_p)
-    __return_value = LibGLib.trash_stack_push(stack_p.to_unsafe.as(LibGLib::TrashStack*), data_p)
-    __return_value
+    LibGLib.trash_stack_push(stack_p.to_unsafe.as(LibGLib::TrashStack*), data_p)
+    nil
   end
 
   def self.try_malloc(n_bytes)
-    __return_value = LibGLib.try_malloc(UInt64.new(n_bytes))
-    __return_value if __return_value
+    LibGLib.try_malloc(UInt64.new(n_bytes))
+    nil
   end
 
   def self.try_malloc0(n_bytes)
-    __return_value = LibGLib.try_malloc0(UInt64.new(n_bytes))
-    __return_value if __return_value
+    LibGLib.try_malloc0(UInt64.new(n_bytes))
+    nil
   end
 
   def self.try_malloc0_n(n_blocks, n_block_bytes)
-    __return_value = LibGLib.try_malloc0_n(UInt64.new(n_blocks), UInt64.new(n_block_bytes))
-    __return_value if __return_value
+    LibGLib.try_malloc0_n(UInt64.new(n_blocks), UInt64.new(n_block_bytes))
+    nil
   end
 
   def self.try_malloc_n(n_blocks, n_block_bytes)
-    __return_value = LibGLib.try_malloc_n(UInt64.new(n_blocks), UInt64.new(n_block_bytes))
-    __return_value if __return_value
+    LibGLib.try_malloc_n(UInt64.new(n_blocks), UInt64.new(n_block_bytes))
+    nil
   end
 
   def self.try_realloc(mem, n_bytes)
-    __return_value = LibGLib.try_realloc(mem ? mem : nil, UInt64.new(n_bytes))
-    __return_value if __return_value
+    LibGLib.try_realloc(mem ? mem : nil, UInt64.new(n_bytes))
+    nil
   end
 
   def self.try_realloc_n(mem, n_blocks, n_block_bytes)
-    __return_value = LibGLib.try_realloc_n(mem ? mem : nil, UInt64.new(n_blocks), UInt64.new(n_block_bytes))
-    __return_value if __return_value
+    LibGLib.try_realloc_n(mem ? mem : nil, UInt64.new(n_blocks), UInt64.new(n_block_bytes))
+    nil
   end
 
   def self.ucs4_to_utf16(str, len, items_read, items_written)
@@ -2244,8 +2273,8 @@ module GLib
   end
 
   def self.unicode_canonical_ordering(string, len)
-    __return_value = LibGLib.unicode_canonical_ordering(string, UInt64.new(len))
-    __return_value
+    LibGLib.unicode_canonical_ordering(string, UInt64.new(len))
+    nil
   end
 
   def self.unicode_script_from_iso15924(iso15924)
@@ -2303,8 +2332,8 @@ module GLib
   end
 
   def self.unsetenv(variable)
-    __return_value = LibGLib.unsetenv(variable.to_unsafe)
-    __return_value
+    LibGLib.unsetenv(variable.to_unsafe)
+    nil
   end
 
   def self.uri_escape_string(unescaped, reserved_chars_allowed, allow_utf8)
@@ -2333,8 +2362,8 @@ module GLib
   end
 
   def self.usleep(microseconds)
-    __return_value = LibGLib.usleep(UInt64.new(microseconds))
-    __return_value
+    LibGLib.usleep(UInt64.new(microseconds))
+    nil
   end
 
   def self.utf16_to_ucs4(str, len, items_read, items_written)
@@ -2373,7 +2402,7 @@ module GLib
 
   def self.utf8_find_next_char(p, end)
     __return_value = LibGLib.utf8_find_next_char(p.to_unsafe, end ? end.to_unsafe : nil)
-    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.utf8_find_prev_char(str, p)

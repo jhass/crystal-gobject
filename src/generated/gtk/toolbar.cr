@@ -80,38 +80,38 @@ module Gtk
     end
 
     def insert(item, pos)
-      __return_value = LibGtk.toolbar_insert(to_unsafe.as(LibGtk::Toolbar*), item.to_unsafe.as(LibGtk::ToolItem*), Int32.new(pos))
-      __return_value
+      LibGtk.toolbar_insert(to_unsafe.as(LibGtk::Toolbar*), item.to_unsafe.as(LibGtk::ToolItem*), Int32.new(pos))
+      nil
     end
 
     def set_drop_highlight_item(tool_item, index)
-      __return_value = LibGtk.toolbar_set_drop_highlight_item(to_unsafe.as(LibGtk::Toolbar*), tool_item ? tool_item.to_unsafe.as(LibGtk::ToolItem*) : nil, Int32.new(index))
-      __return_value
+      LibGtk.toolbar_set_drop_highlight_item(to_unsafe.as(LibGtk::Toolbar*), tool_item ? tool_item.to_unsafe.as(LibGtk::ToolItem*) : nil, Int32.new(index))
+      nil
     end
 
     def icon_size=(icon_size : Gtk::IconSize)
-      __return_value = LibGtk.toolbar_set_icon_size(to_unsafe.as(LibGtk::Toolbar*), icon_size)
-      __return_value
+      LibGtk.toolbar_set_icon_size(to_unsafe.as(LibGtk::Toolbar*), icon_size)
+      nil
     end
 
     def show_arrow=(show_arrow)
-      __return_value = LibGtk.toolbar_set_show_arrow(to_unsafe.as(LibGtk::Toolbar*), show_arrow)
-      __return_value
+      LibGtk.toolbar_set_show_arrow(to_unsafe.as(LibGtk::Toolbar*), show_arrow)
+      nil
     end
 
     def style=(style : Gtk::ToolbarStyle)
-      __return_value = LibGtk.toolbar_set_style(to_unsafe.as(LibGtk::Toolbar*), style)
-      __return_value
+      LibGtk.toolbar_set_style(to_unsafe.as(LibGtk::Toolbar*), style)
+      nil
     end
 
     def unset_icon_size
-      __return_value = LibGtk.toolbar_unset_icon_size(to_unsafe.as(LibGtk::Toolbar*))
-      __return_value
+      LibGtk.toolbar_unset_icon_size(to_unsafe.as(LibGtk::Toolbar*))
+      nil
     end
 
     def unset_style
-      __return_value = LibGtk.toolbar_unset_style(to_unsafe.as(LibGtk::Toolbar*))
-      __return_value
+      LibGtk.toolbar_unset_style(to_unsafe.as(LibGtk::Toolbar*))
+      nil
     end
 
     alias FocusHomeOrEndSignal = Toolbar, Bool -> Bool

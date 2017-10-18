@@ -28,13 +28,13 @@ module Gio
     end
 
     def add_bytes(bytes)
-      __return_value = LibGio.memory_input_stream_add_bytes(to_unsafe.as(LibGio::MemoryInputStream*), bytes.to_unsafe.as(LibGLib::Bytes*))
-      __return_value
+      LibGio.memory_input_stream_add_bytes(to_unsafe.as(LibGio::MemoryInputStream*), bytes.to_unsafe.as(LibGLib::Bytes*))
+      nil
     end
 
     def add_data(data, len, destroy)
-      __return_value = LibGio.memory_input_stream_add_data(to_unsafe.as(LibGio::MemoryInputStream*), data, Int64.new(len), destroy ? destroy : nil)
-      __return_value
+      LibGio.memory_input_stream_add_data(to_unsafe.as(LibGio::MemoryInputStream*), data, Int64.new(len), destroy ? destroy : nil)
+      nil
     end
 
   end

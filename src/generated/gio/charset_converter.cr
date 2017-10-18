@@ -43,8 +43,8 @@ module Gio
     end
 
     def use_fallback=(use_fallback)
-      __return_value = LibGio.charset_converter_set_use_fallback(to_unsafe.as(LibGio::CharsetConverter*), use_fallback)
-      __return_value
+      LibGio.charset_converter_set_use_fallback(to_unsafe.as(LibGio::CharsetConverter*), use_fallback)
+      nil
     end
 
   end

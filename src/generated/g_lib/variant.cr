@@ -211,8 +211,8 @@ module GLib
     end
 
     def data
-      __return_value = LibGLib.variant_get_data(to_unsafe.as(LibGLib::Variant*))
-      __return_value if __return_value
+      LibGLib.variant_get_data(to_unsafe.as(LibGLib::Variant*))
+      nil
     end
 
     def data_as_bytes
@@ -356,8 +356,8 @@ module GLib
     end
 
     def store(data)
-      __return_value = LibGLib.variant_store(to_unsafe.as(LibGLib::Variant*), data)
-      __return_value
+      LibGLib.variant_store(to_unsafe.as(LibGLib::Variant*), data)
+      nil
     end
 
     def take_ref
@@ -366,8 +366,8 @@ module GLib
     end
 
     def unref
-      __return_value = LibGLib.variant_unref(to_unsafe.as(LibGLib::Variant*))
-      __return_value
+      LibGLib.variant_unref(to_unsafe.as(LibGLib::Variant*))
+      nil
     end
 
     def self.object_path?(string)

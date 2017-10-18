@@ -58,8 +58,8 @@ module Gst
     end
 
     def free
-      __return_value = LibGst.iterator_free(to_unsafe.as(LibGst::Iterator*))
-      __return_value
+      LibGst.iterator_free(to_unsafe.as(LibGst::Iterator*))
+      nil
     end
 
     def next(elem)
@@ -68,13 +68,13 @@ module Gst
     end
 
     def push(other)
-      __return_value = LibGst.iterator_push(to_unsafe.as(LibGst::Iterator*), other.to_unsafe.as(LibGst::Iterator*))
-      __return_value
+      LibGst.iterator_push(to_unsafe.as(LibGst::Iterator*), other.to_unsafe.as(LibGst::Iterator*))
+      nil
     end
 
     def resync
-      __return_value = LibGst.iterator_resync(to_unsafe.as(LibGst::Iterator*))
-      __return_value
+      LibGst.iterator_resync(to_unsafe.as(LibGst::Iterator*))
+      nil
     end
 
     def copy

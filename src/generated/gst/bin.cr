@@ -97,8 +97,8 @@ module Gst
     end
 
     def suppressed_flags=(flags : Gst::ElementFlags)
-      __return_value = LibGst.bin_set_suppressed_flags(to_unsafe.as(LibGst::Bin*), flags)
-      __return_value
+      LibGst.bin_set_suppressed_flags(to_unsafe.as(LibGst::Bin*), flags)
+      nil
     end
 
     def sync_children_states

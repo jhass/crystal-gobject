@@ -16,13 +16,13 @@ module GLib
     end
 
     def add_entries(entries)
-      __return_value = LibGLib.option_group_add_entries(to_unsafe.as(LibGLib::OptionGroup*), entries.to_unsafe.as(LibGLib::OptionEntry*))
-      __return_value
+      LibGLib.option_group_add_entries(to_unsafe.as(LibGLib::OptionGroup*), entries.to_unsafe.as(LibGLib::OptionEntry*))
+      nil
     end
 
     def free
-      __return_value = LibGLib.option_group_free(to_unsafe.as(LibGLib::OptionGroup*))
-      __return_value
+      LibGLib.option_group_free(to_unsafe.as(LibGLib::OptionGroup*))
+      nil
     end
 
     def ref
@@ -31,18 +31,18 @@ module GLib
     end
 
     def set_translate_func(func, data, destroy_notify)
-      __return_value = LibGLib.option_group_set_translate_func(to_unsafe.as(LibGLib::OptionGroup*), func ? func : nil, data ? data : nil, destroy_notify ? destroy_notify : nil)
-      __return_value
+      LibGLib.option_group_set_translate_func(to_unsafe.as(LibGLib::OptionGroup*), func ? func : nil, data ? data : nil, destroy_notify ? destroy_notify : nil)
+      nil
     end
 
     def translation_domain=(domain)
-      __return_value = LibGLib.option_group_set_translation_domain(to_unsafe.as(LibGLib::OptionGroup*), domain.to_unsafe)
-      __return_value
+      LibGLib.option_group_set_translation_domain(to_unsafe.as(LibGLib::OptionGroup*), domain.to_unsafe)
+      nil
     end
 
     def unref
-      __return_value = LibGLib.option_group_unref(to_unsafe.as(LibGLib::OptionGroup*))
-      __return_value
+      LibGLib.option_group_unref(to_unsafe.as(LibGLib::OptionGroup*))
+      nil
     end
 
   end

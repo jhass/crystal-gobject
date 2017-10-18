@@ -61,8 +61,8 @@ module Gio
   end
 
   def self.app_info_launch_default_for_uri_async(uri, launch_context, cancellable, callback, user_data)
-    __return_value = LibGio.app_info_launch_default_for_uri_async(uri.to_unsafe, launch_context.to_unsafe.as(LibGio::AppLaunchContext*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-    __return_value
+    LibGio.app_info_launch_default_for_uri_async(uri.to_unsafe, launch_context.to_unsafe.as(LibGio::AppLaunchContext*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+    nil
   end
 
   def self.app_info_launch_default_for_uri_finish(result)
@@ -73,18 +73,18 @@ module Gio
   end
 
   def self.app_info_reset_type_associations(content_type)
-    __return_value = LibGio.app_info_reset_type_associations(content_type.to_unsafe)
-    __return_value
+    LibGio.app_info_reset_type_associations(content_type.to_unsafe)
+    nil
   end
 
   def self.async_initable_newv_async(object_type, n_parameters, parameters, io_priority, cancellable, callback, user_data)
-    __return_value = LibGio.async_initable_newv_async(UInt64.new(object_type), UInt32.new(n_parameters), parameters.to_unsafe.as(LibGObject::Parameter*), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-    __return_value
+    LibGio.async_initable_newv_async(UInt64.new(object_type), UInt32.new(n_parameters), parameters.to_unsafe.as(LibGObject::Parameter*), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+    nil
   end
 
   def self.bus_get(bus_type : Gio::BusType, cancellable, callback, user_data)
-    __return_value = LibGio.bus_get(bus_type, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-    __return_value
+    LibGio.bus_get(bus_type, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+    nil
   end
 
   def self.bus_get_finish(res)
@@ -112,13 +112,13 @@ module Gio
   end
 
   def self.bus_unown_name(owner_id)
-    __return_value = LibGio.bus_unown_name(UInt32.new(owner_id))
-    __return_value
+    LibGio.bus_unown_name(UInt32.new(owner_id))
+    nil
   end
 
   def self.bus_unwatch_name(watcher_id)
-    __return_value = LibGio.bus_unwatch_name(UInt32.new(watcher_id))
-    __return_value
+    LibGio.bus_unwatch_name(UInt32.new(watcher_id))
+    nil
   end
 
   def self.bus_watch_name_on_connection(connection, name, flags : Gio::BusNameWatcherFlags, name_appeared_closure, name_vanished_closure)
@@ -214,8 +214,8 @@ module Gio
   end
 
   def self.dbus_address_get_stream(address, cancellable, callback, user_data)
-    __return_value = LibGio.dbus_address_get_stream(address.to_unsafe, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-    __return_value
+    LibGio.dbus_address_get_stream(address.to_unsafe, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+    nil
   end
 
   def self.dbus_address_get_stream_finish(res, out_guid)
@@ -268,8 +268,8 @@ module Gio
   end
 
   def self.dbus_error_register_error_domain(error_domain_quark_name, quark_volatile, entries, num_entries)
-    __return_value = LibGio.dbus_error_register_error_domain(error_domain_quark_name.to_unsafe, quark_volatile, entries.to_unsafe.as(LibGio::DBusErrorEntry*), UInt32.new(num_entries))
-    __return_value
+    LibGio.dbus_error_register_error_domain(error_domain_quark_name.to_unsafe, quark_volatile, entries.to_unsafe.as(LibGio::DBusErrorEntry*), UInt32.new(num_entries))
+    nil
   end
 
   def self.dbus_error_strip_remote_error(error)
@@ -293,8 +293,8 @@ module Gio
   end
 
   def self.dbus_gvariant_to_gvalue(value, out_gvalue)
-    __return_value = LibGio.dbus_gvariant_to_gvalue(value.to_unsafe.as(LibGLib::Variant*), out_gvalue)
-    __return_value
+    LibGio.dbus_gvariant_to_gvalue(value.to_unsafe.as(LibGLib::Variant*), out_gvalue)
+    nil
   end
 
   def self.dbus_is_address(string)
@@ -440,23 +440,23 @@ module Gio
   end
 
   def self.io_modules_scan_all_in_directory(dirname)
-    __return_value = LibGio.io_modules_scan_all_in_directory(dirname.to_unsafe)
-    __return_value
+    LibGio.io_modules_scan_all_in_directory(dirname.to_unsafe)
+    nil
   end
 
   def self.io_modules_scan_all_in_directory_with_scope(dirname, scope)
-    __return_value = LibGio.io_modules_scan_all_in_directory_with_scope(dirname.to_unsafe, scope.to_unsafe.as(LibGio::IOModuleScope*))
-    __return_value
+    LibGio.io_modules_scan_all_in_directory_with_scope(dirname.to_unsafe, scope.to_unsafe.as(LibGio::IOModuleScope*))
+    nil
   end
 
   def self.io_scheduler_cancel_all_jobs
-    __return_value = LibGio.io_scheduler_cancel_all_jobs
-    __return_value
+    LibGio.io_scheduler_cancel_all_jobs
+    nil
   end
 
   def self.io_scheduler_push_job(job_func, user_data, notify, io_priority, cancellable)
-    __return_value = LibGio.io_scheduler_push_job(job_func, user_data ? user_data : nil, notify ? notify : nil, Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil)
-    __return_value
+    LibGio.io_scheduler_push_job(job_func, user_data ? user_data : nil, notify ? notify : nil, Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil)
+    nil
   end
 
   def self.keyfile_settings_backend_new(filename, root_path, root_group)
@@ -475,8 +475,8 @@ module Gio
   end
 
   def self.networking_init
-    __return_value = LibGio.networking_init
-    __return_value
+    LibGio.networking_init
+    nil
   end
 
   def self.null_settings_backend_new
@@ -571,13 +571,13 @@ module Gio
   end
 
   def self.resources_register(resource)
-    __return_value = LibGio.resources_register(resource.to_unsafe.as(LibGio::Resource*))
-    __return_value
+    LibGio.resources_register(resource.to_unsafe.as(LibGio::Resource*))
+    nil
   end
 
   def self.resources_unregister(resource)
-    __return_value = LibGio.resources_unregister(resource.to_unsafe.as(LibGio::Resource*))
-    __return_value
+    LibGio.resources_unregister(resource.to_unsafe.as(LibGio::Resource*))
+    nil
   end
 
   def self.settings_schema_source_get_default
@@ -586,8 +586,8 @@ module Gio
   end
 
   def self.simple_async_report_gerror_in_idle(object, callback, user_data, error)
-    __return_value = LibGio.simple_async_report_gerror_in_idle(object ? object.to_unsafe.as(LibGObject::Object*) : nil, callback ? callback : nil, user_data ? user_data : nil, error)
-    __return_value
+    LibGio.simple_async_report_gerror_in_idle(object ? object.to_unsafe.as(LibGObject::Object*) : nil, callback ? callback : nil, user_data ? user_data : nil, error)
+    nil
   end
 
   def self.tls_backend_get_default
@@ -626,14 +626,29 @@ module Gio
     __return_value
   end
 
+  def self.unix_mount_at(mount_path, time_read)
+    __return_value = LibGio.unix_mount_at(mount_path.to_unsafe, time_read)
+    Gio::UnixMountEntry.new(__return_value)
+  end
+
   def self.unix_mount_compare(mount1, mount2)
     __return_value = LibGio.unix_mount_compare(mount1.to_unsafe.as(LibGio::UnixMountEntry*), mount2.to_unsafe.as(LibGio::UnixMountEntry*))
     __return_value
   end
 
+  def self.unix_mount_copy(mount_entry)
+    __return_value = LibGio.unix_mount_copy(mount_entry.to_unsafe.as(LibGio::UnixMountEntry*))
+    Gio::UnixMountEntry.new(__return_value)
+  end
+
+  def self.unix_mount_for(file_path, time_read)
+    __return_value = LibGio.unix_mount_for(file_path.to_unsafe, time_read)
+    Gio::UnixMountEntry.new(__return_value)
+  end
+
   def self.unix_mount_free(mount_entry)
-    __return_value = LibGio.unix_mount_free(mount_entry.to_unsafe.as(LibGio::UnixMountEntry*))
-    __return_value
+    LibGio.unix_mount_free(mount_entry.to_unsafe.as(LibGio::UnixMountEntry*))
+    nil
   end
 
   def self.unix_mount_get_device_path(mount_entry)
@@ -691,9 +706,19 @@ module Gio
     __return_value
   end
 
+  def self.unix_mount_points_get(time_read)
+    __return_value = LibGio.unix_mount_points_get(time_read)
+    GLib::ListIterator(Gio::UnixMountPoint, LibGio::UnixMountPoint*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+  end
+
   def self.unix_mounts_changed_since(time)
     __return_value = LibGio.unix_mounts_changed_since(UInt64.new(time))
     __return_value
+  end
+
+  def self.unix_mounts_get(time_read)
+    __return_value = LibGio.unix_mounts_get(time_read)
+    GLib::ListIterator(Gio::UnixMountEntry, LibGio::UnixMountEntry*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
   end
 end
 

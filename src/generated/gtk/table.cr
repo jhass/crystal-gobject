@@ -43,13 +43,13 @@ module Gtk
     end
 
     def attach(child, left_attach, right_attach, top_attach, bottom_attach, xoptions : Gtk::AttachOptions, yoptions : Gtk::AttachOptions, xpadding, ypadding)
-      __return_value = LibGtk.table_attach(to_unsafe.as(LibGtk::Table*), child.to_unsafe.as(LibGtk::Widget*), UInt32.new(left_attach), UInt32.new(right_attach), UInt32.new(top_attach), UInt32.new(bottom_attach), xoptions, yoptions, UInt32.new(xpadding), UInt32.new(ypadding))
-      __return_value
+      LibGtk.table_attach(to_unsafe.as(LibGtk::Table*), child.to_unsafe.as(LibGtk::Widget*), UInt32.new(left_attach), UInt32.new(right_attach), UInt32.new(top_attach), UInt32.new(bottom_attach), xoptions, yoptions, UInt32.new(xpadding), UInt32.new(ypadding))
+      nil
     end
 
     def attach_defaults(widget, left_attach, right_attach, top_attach, bottom_attach)
-      __return_value = LibGtk.table_attach_defaults(to_unsafe.as(LibGtk::Table*), widget.to_unsafe.as(LibGtk::Widget*), UInt32.new(left_attach), UInt32.new(right_attach), UInt32.new(top_attach), UInt32.new(bottom_attach))
-      __return_value
+      LibGtk.table_attach_defaults(to_unsafe.as(LibGtk::Table*), widget.to_unsafe.as(LibGtk::Widget*), UInt32.new(left_attach), UInt32.new(right_attach), UInt32.new(top_attach), UInt32.new(bottom_attach))
+      nil
     end
 
     def col_spacing(column)
@@ -78,38 +78,38 @@ module Gtk
     end
 
     def size(rows, columns)
-      __return_value = LibGtk.table_get_size(to_unsafe.as(LibGtk::Table*), rows, columns)
-      __return_value
+      LibGtk.table_get_size(to_unsafe.as(LibGtk::Table*), rows, columns)
+      nil
     end
 
     def resize(rows, columns)
-      __return_value = LibGtk.table_resize(to_unsafe.as(LibGtk::Table*), UInt32.new(rows), UInt32.new(columns))
-      __return_value
+      LibGtk.table_resize(to_unsafe.as(LibGtk::Table*), UInt32.new(rows), UInt32.new(columns))
+      nil
     end
 
     def set_col_spacing(column, spacing)
-      __return_value = LibGtk.table_set_col_spacing(to_unsafe.as(LibGtk::Table*), UInt32.new(column), UInt32.new(spacing))
-      __return_value
+      LibGtk.table_set_col_spacing(to_unsafe.as(LibGtk::Table*), UInt32.new(column), UInt32.new(spacing))
+      nil
     end
 
     def col_spacings=(spacing)
-      __return_value = LibGtk.table_set_col_spacings(to_unsafe.as(LibGtk::Table*), UInt32.new(spacing))
-      __return_value
+      LibGtk.table_set_col_spacings(to_unsafe.as(LibGtk::Table*), UInt32.new(spacing))
+      nil
     end
 
     def homogeneous=(homogeneous)
-      __return_value = LibGtk.table_set_homogeneous(to_unsafe.as(LibGtk::Table*), homogeneous)
-      __return_value
+      LibGtk.table_set_homogeneous(to_unsafe.as(LibGtk::Table*), homogeneous)
+      nil
     end
 
     def set_row_spacing(row, spacing)
-      __return_value = LibGtk.table_set_row_spacing(to_unsafe.as(LibGtk::Table*), UInt32.new(row), UInt32.new(spacing))
-      __return_value
+      LibGtk.table_set_row_spacing(to_unsafe.as(LibGtk::Table*), UInt32.new(row), UInt32.new(spacing))
+      nil
     end
 
     def row_spacings=(spacing)
-      __return_value = LibGtk.table_set_row_spacings(to_unsafe.as(LibGtk::Table*), UInt32.new(spacing))
-      __return_value
+      LibGtk.table_set_row_spacings(to_unsafe.as(LibGtk::Table*), UInt32.new(spacing))
+      nil
     end
 
   end

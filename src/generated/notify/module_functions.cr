@@ -25,13 +25,13 @@ module Notify
   end
 
   def self.set_app_name(app_name)
-    __return_value = LibNotify.set_app_name(app_name.to_unsafe)
-    __return_value
+    LibNotify.set_app_name(app_name.to_unsafe)
+    nil
   end
 
   def self.uninit
-    __return_value = LibNotify.uninit
-    __return_value
+    LibNotify.uninit
+    nil
   end
 end
 

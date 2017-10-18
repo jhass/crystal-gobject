@@ -16,13 +16,13 @@ module GLib
     end
 
     def free
-      __return_value = LibGLib.test_log_buffer_free(to_unsafe.as(LibGLib::TestLogBuffer*))
-      __return_value
+      LibGLib.test_log_buffer_free(to_unsafe.as(LibGLib::TestLogBuffer*))
+      nil
     end
 
     def push(n_bytes, bytes)
-      __return_value = LibGLib.test_log_buffer_push(to_unsafe.as(LibGLib::TestLogBuffer*), UInt32.new(n_bytes), bytes)
-      __return_value
+      LibGLib.test_log_buffer_push(to_unsafe.as(LibGLib::TestLogBuffer*), UInt32.new(n_bytes), bytes)
+      nil
     end
 
     def data

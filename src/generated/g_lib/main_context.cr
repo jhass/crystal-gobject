@@ -21,8 +21,8 @@ module GLib
     end
 
     def add_poll(fd, priority)
-      __return_value = LibGLib.main_context_add_poll(to_unsafe.as(LibGLib::MainContext*), fd.to_unsafe.as(LibGLib::PollFD*), Int32.new(priority))
-      __return_value
+      LibGLib.main_context_add_poll(to_unsafe.as(LibGLib::MainContext*), fd.to_unsafe.as(LibGLib::PollFD*), Int32.new(priority))
+      nil
     end
 
     def check(max_priority, fds, n_fds)
@@ -31,8 +31,8 @@ module GLib
     end
 
     def dispatch
-      __return_value = LibGLib.main_context_dispatch(to_unsafe.as(LibGLib::MainContext*))
-      __return_value
+      LibGLib.main_context_dispatch(to_unsafe.as(LibGLib::MainContext*))
+      nil
     end
 
     def find_source_by_funcs_user_data(funcs, user_data)
@@ -51,8 +51,8 @@ module GLib
     end
 
     def invoke_full(priority, function, data, notify)
-      __return_value = LibGLib.main_context_invoke_full(to_unsafe.as(LibGLib::MainContext*), Int32.new(priority), function, data ? data : nil, notify ? notify : nil)
-      __return_value
+      LibGLib.main_context_invoke_full(to_unsafe.as(LibGLib::MainContext*), Int32.new(priority), function, data ? data : nil, notify ? notify : nil)
+      nil
     end
 
     def owner?
@@ -71,8 +71,8 @@ module GLib
     end
 
     def pop_thread_default
-      __return_value = LibGLib.main_context_pop_thread_default(to_unsafe.as(LibGLib::MainContext*))
-      __return_value
+      LibGLib.main_context_pop_thread_default(to_unsafe.as(LibGLib::MainContext*))
+      nil
     end
 
     def prepare(priority)
@@ -81,8 +81,8 @@ module GLib
     end
 
     def push_thread_default
-      __return_value = LibGLib.main_context_push_thread_default(to_unsafe.as(LibGLib::MainContext*))
-      __return_value
+      LibGLib.main_context_push_thread_default(to_unsafe.as(LibGLib::MainContext*))
+      nil
     end
 
     def query(max_priority, timeout, fds, n_fds)
@@ -96,18 +96,18 @@ module GLib
     end
 
     def release
-      __return_value = LibGLib.main_context_release(to_unsafe.as(LibGLib::MainContext*))
-      __return_value
+      LibGLib.main_context_release(to_unsafe.as(LibGLib::MainContext*))
+      nil
     end
 
     def remove_poll(fd)
-      __return_value = LibGLib.main_context_remove_poll(to_unsafe.as(LibGLib::MainContext*), fd.to_unsafe.as(LibGLib::PollFD*))
-      __return_value
+      LibGLib.main_context_remove_poll(to_unsafe.as(LibGLib::MainContext*), fd.to_unsafe.as(LibGLib::PollFD*))
+      nil
     end
 
     def unref
-      __return_value = LibGLib.main_context_unref(to_unsafe.as(LibGLib::MainContext*))
-      __return_value
+      LibGLib.main_context_unref(to_unsafe.as(LibGLib::MainContext*))
+      nil
     end
 
     def wait(cond, mutex)
@@ -116,8 +116,8 @@ module GLib
     end
 
     def wakeup
-      __return_value = LibGLib.main_context_wakeup(to_unsafe.as(LibGLib::MainContext*))
-      __return_value
+      LibGLib.main_context_wakeup(to_unsafe.as(LibGLib::MainContext*))
+      nil
     end
 
     def self.default

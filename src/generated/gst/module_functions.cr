@@ -25,8 +25,8 @@ module Gst
   end
 
   def self.debug_add_log_function(func, user_data, notify)
-    __return_value = LibGst.debug_add_log_function(func, user_data ? user_data : nil, notify)
-    __return_value
+    LibGst.debug_add_log_function(func, user_data ? user_data : nil, notify)
+    nil
   end
 
   def self.debug_bin_to_dot_data(bin, details : Gst::DebugGraphDetails)
@@ -35,13 +35,13 @@ module Gst
   end
 
   def self.debug_bin_to_dot_file(bin, details : Gst::DebugGraphDetails, file_name)
-    __return_value = LibGst.debug_bin_to_dot_file(bin.to_unsafe.as(LibGst::Bin*), details, file_name.to_unsafe)
-    __return_value
+    LibGst.debug_bin_to_dot_file(bin.to_unsafe.as(LibGst::Bin*), details, file_name.to_unsafe)
+    nil
   end
 
   def self.debug_bin_to_dot_file_with_ts(bin, details : Gst::DebugGraphDetails, file_name)
-    __return_value = LibGst.debug_bin_to_dot_file_with_ts(bin.to_unsafe.as(LibGst::Bin*), details, file_name.to_unsafe)
-    __return_value
+    LibGst.debug_bin_to_dot_file_with_ts(bin.to_unsafe.as(LibGst::Bin*), details, file_name.to_unsafe)
+    nil
   end
 
   def self.debug_construct_term_color(colorinfo)
@@ -90,13 +90,13 @@ module Gst
   end
 
   def self.debug_log_default(category, level : Gst::DebugLevel, file, function, line, object, message, user_data)
-    __return_value = LibGst.debug_log_default(category.to_unsafe.as(LibGst::DebugCategory*), level, file.to_unsafe, function.to_unsafe, Int32.new(line), object ? object.to_unsafe.as(LibGObject::Object*) : nil, message.to_unsafe.as(LibGst::DebugMessage*), user_data ? user_data : nil)
-    __return_value
+    LibGst.debug_log_default(category.to_unsafe.as(LibGst::DebugCategory*), level, file.to_unsafe, function.to_unsafe, Int32.new(line), object ? object.to_unsafe.as(LibGObject::Object*) : nil, message.to_unsafe.as(LibGst::DebugMessage*), user_data ? user_data : nil)
+    nil
   end
 
   def self.debug_print_stack_trace
-    __return_value = LibGst.debug_print_stack_trace
-    __return_value
+    LibGst.debug_print_stack_trace
+    nil
   end
 
   def self.debug_remove_log_function(func)
@@ -110,48 +110,48 @@ module Gst
   end
 
   def self.debug_set_active(active)
-    __return_value = LibGst.debug_set_active(active)
-    __return_value
+    LibGst.debug_set_active(active)
+    nil
   end
 
   def self.debug_set_color_mode(mode : Gst::DebugColorMode)
-    __return_value = LibGst.debug_set_color_mode(mode)
-    __return_value
+    LibGst.debug_set_color_mode(mode)
+    nil
   end
 
   def self.debug_set_color_mode_from_string(mode)
-    __return_value = LibGst.debug_set_color_mode_from_string(mode.to_unsafe)
-    __return_value
+    LibGst.debug_set_color_mode_from_string(mode.to_unsafe)
+    nil
   end
 
   def self.debug_set_colored(colored)
-    __return_value = LibGst.debug_set_colored(colored)
-    __return_value
+    LibGst.debug_set_colored(colored)
+    nil
   end
 
   def self.debug_set_default_threshold(level : Gst::DebugLevel)
-    __return_value = LibGst.debug_set_default_threshold(level)
-    __return_value
+    LibGst.debug_set_default_threshold(level)
+    nil
   end
 
   def self.debug_set_threshold_for_name(name, level : Gst::DebugLevel)
-    __return_value = LibGst.debug_set_threshold_for_name(name.to_unsafe, level)
-    __return_value
+    LibGst.debug_set_threshold_for_name(name.to_unsafe, level)
+    nil
   end
 
   def self.debug_set_threshold_from_string(list, reset)
-    __return_value = LibGst.debug_set_threshold_from_string(list.to_unsafe, reset)
-    __return_value
+    LibGst.debug_set_threshold_from_string(list.to_unsafe, reset)
+    nil
   end
 
   def self.debug_unset_threshold_for_name(name)
-    __return_value = LibGst.debug_unset_threshold_for_name(name.to_unsafe)
-    __return_value
+    LibGst.debug_unset_threshold_for_name(name.to_unsafe)
+    nil
   end
 
   def self.deinit
-    __return_value = LibGst.deinit
-    __return_value
+    LibGst.deinit
+    nil
   end
 
   def self.dynamic_type_register(plugin, type)
@@ -232,8 +232,8 @@ module Gst
   end
 
   def self.init(argc, argv)
-    __return_value = LibGst.init(argc, argv)
-    __return_value
+    LibGst.init(argc, argv)
+    nil
   end
 
   def self.init_check(argc, argv)
@@ -431,8 +431,8 @@ module Gst
   end
 
   def self.segtrap_set_enabled(enabled)
-    __return_value = LibGst.segtrap_set_enabled(enabled)
-    __return_value
+    LibGst.segtrap_set_enabled(enabled)
+    nil
   end
 
   def self.static_caps_get_type
@@ -496,23 +496,23 @@ module Gst
   end
 
   def self.tag_merge_strings_with_comma(dest, src)
-    __return_value = LibGst.tag_merge_strings_with_comma(dest, src.to_unsafe.as(LibGObject::Value*))
-    __return_value
+    LibGst.tag_merge_strings_with_comma(dest, src.to_unsafe.as(LibGObject::Value*))
+    nil
   end
 
   def self.tag_merge_use_first(dest, src)
-    __return_value = LibGst.tag_merge_use_first(dest, src.to_unsafe.as(LibGObject::Value*))
-    __return_value
+    LibGst.tag_merge_use_first(dest, src.to_unsafe.as(LibGObject::Value*))
+    nil
   end
 
   def self.tag_register(name, flag : Gst::TagFlag, type, nick, blurb, func)
-    __return_value = LibGst.tag_register(name.to_unsafe, flag, UInt64.new(type), nick.to_unsafe, blurb.to_unsafe, func ? func : nil)
-    __return_value
+    LibGst.tag_register(name.to_unsafe, flag, UInt64.new(type), nick.to_unsafe, blurb.to_unsafe, func ? func : nil)
+    nil
   end
 
   def self.tag_register_static(name, flag : Gst::TagFlag, type, nick, blurb, func)
-    __return_value = LibGst.tag_register_static(name.to_unsafe, flag, UInt64.new(type), nick.to_unsafe, blurb.to_unsafe, func ? func : nil)
-    __return_value
+    LibGst.tag_register_static(name.to_unsafe, flag, UInt64.new(type), nick.to_unsafe, blurb.to_unsafe, func ? func : nil)
+    nil
   end
 
   def self.toc_entry_type_get_nick(type : Gst::TocEntryType)
@@ -586,18 +586,18 @@ module Gst
   end
 
   def self.util_array_binary_search(array, num_elements, element_size, search_func, mode : Gst::SearchMode, search_data, user_data)
-    __return_value = LibGst.util_array_binary_search(array ? array : nil, UInt32.new(num_elements), UInt64.new(element_size), search_func, mode, search_data ? search_data : nil, user_data ? user_data : nil)
-    __return_value if __return_value
+    LibGst.util_array_binary_search(array ? array : nil, UInt32.new(num_elements), UInt64.new(element_size), search_func, mode, search_data ? search_data : nil, user_data ? user_data : nil)
+    nil
   end
 
   def self.util_double_to_fraction(src, dest_n, dest_d)
-    __return_value = LibGst.util_double_to_fraction(Float64.new(src), dest_n, dest_d)
-    __return_value
+    LibGst.util_double_to_fraction(Float64.new(src), dest_n, dest_d)
+    nil
   end
 
   def self.util_dump_mem(mem, size)
-    __return_value = LibGst.util_dump_mem(mem, UInt32.new(size))
-    __return_value
+    LibGst.util_dump_mem(mem, UInt32.new(size))
+    nil
   end
 
   def self.util_fraction_add(a_n, a_d, b_n, b_d, res_n, res_d)
@@ -616,8 +616,8 @@ module Gst
   end
 
   def self.util_fraction_to_double(src_n, src_d, dest)
-    __return_value = LibGst.util_fraction_to_double(Int32.new(src_n), Int32.new(src_d), dest)
-    __return_value
+    LibGst.util_fraction_to_double(Int32.new(src_n), Int32.new(src_d), dest)
+    nil
   end
 
   def self.util_gdouble_to_guint64(value)
@@ -666,8 +666,8 @@ module Gst
   end
 
   def self.util_set_object_arg(object, name, value)
-    __return_value = LibGst.util_set_object_arg(object.to_unsafe.as(LibGObject::Object*), name.to_unsafe, value.to_unsafe)
-    __return_value
+    LibGst.util_set_object_arg(object.to_unsafe.as(LibGObject::Object*), name.to_unsafe, value.to_unsafe)
+    nil
   end
 
   def self.util_set_object_array(object, name, array)
@@ -676,8 +676,8 @@ module Gst
   end
 
   def self.util_set_value_from_string(value, value_str)
-    __return_value = LibGst.util_set_value_from_string(value, value_str.to_unsafe)
-    __return_value
+    LibGst.util_set_value_from_string(value, value_str.to_unsafe)
+    nil
   end
 
   def self.util_uint64_scale(val, num, denom)
@@ -846,8 +846,8 @@ module Gst
   end
 
   def self.value_init_and_copy(dest, src)
-    __return_value = LibGst.value_init_and_copy(dest, src.to_unsafe.as(LibGObject::Value*))
-    __return_value
+    LibGst.value_init_and_copy(dest, src.to_unsafe.as(LibGObject::Value*))
+    nil
   end
 
   def self.value_intersect(dest, value1, value2)
@@ -866,8 +866,8 @@ module Gst
   end
 
   def self.value_register(table)
-    __return_value = LibGst.value_register(table.to_unsafe.as(LibGst::ValueTable*))
-    __return_value
+    LibGst.value_register(table.to_unsafe.as(LibGst::ValueTable*))
+    nil
   end
 
   def self.value_serialize(value)
@@ -876,68 +876,68 @@ module Gst
   end
 
   def self.value_set_bitmask(value, bitmask)
-    __return_value = LibGst.value_set_bitmask(value.to_unsafe.as(LibGObject::Value*), UInt64.new(bitmask))
-    __return_value
+    LibGst.value_set_bitmask(value.to_unsafe.as(LibGObject::Value*), UInt64.new(bitmask))
+    nil
   end
 
   def self.value_set_caps(value, caps)
-    __return_value = LibGst.value_set_caps(value.to_unsafe.as(LibGObject::Value*), caps.to_unsafe.as(LibGst::Caps*))
-    __return_value
+    LibGst.value_set_caps(value.to_unsafe.as(LibGObject::Value*), caps.to_unsafe.as(LibGst::Caps*))
+    nil
   end
 
   def self.value_set_caps_features(value, features)
-    __return_value = LibGst.value_set_caps_features(value.to_unsafe.as(LibGObject::Value*), features.to_unsafe.as(LibGst::CapsFeatures*))
-    __return_value
+    LibGst.value_set_caps_features(value.to_unsafe.as(LibGObject::Value*), features.to_unsafe.as(LibGst::CapsFeatures*))
+    nil
   end
 
   def self.value_set_double_range(value, start, end)
-    __return_value = LibGst.value_set_double_range(value.to_unsafe.as(LibGObject::Value*), Float64.new(start), Float64.new(end))
-    __return_value
+    LibGst.value_set_double_range(value.to_unsafe.as(LibGObject::Value*), Float64.new(start), Float64.new(end))
+    nil
   end
 
   def self.value_set_flagset(value, flags, mask)
-    __return_value = LibGst.value_set_flagset(value.to_unsafe.as(LibGObject::Value*), UInt32.new(flags), UInt32.new(mask))
-    __return_value
+    LibGst.value_set_flagset(value.to_unsafe.as(LibGObject::Value*), UInt32.new(flags), UInt32.new(mask))
+    nil
   end
 
   def self.value_set_fraction(value, numerator, denominator)
-    __return_value = LibGst.value_set_fraction(value.to_unsafe.as(LibGObject::Value*), Int32.new(numerator), Int32.new(denominator))
-    __return_value
+    LibGst.value_set_fraction(value.to_unsafe.as(LibGObject::Value*), Int32.new(numerator), Int32.new(denominator))
+    nil
   end
 
   def self.value_set_fraction_range(value, start, end)
-    __return_value = LibGst.value_set_fraction_range(value.to_unsafe.as(LibGObject::Value*), start.to_unsafe.as(LibGObject::Value*), end.to_unsafe.as(LibGObject::Value*))
-    __return_value
+    LibGst.value_set_fraction_range(value.to_unsafe.as(LibGObject::Value*), start.to_unsafe.as(LibGObject::Value*), end.to_unsafe.as(LibGObject::Value*))
+    nil
   end
 
   def self.value_set_fraction_range_full(value, numerator_start, denominator_start, numerator_end, denominator_end)
-    __return_value = LibGst.value_set_fraction_range_full(value.to_unsafe.as(LibGObject::Value*), Int32.new(numerator_start), Int32.new(denominator_start), Int32.new(numerator_end), Int32.new(denominator_end))
-    __return_value
+    LibGst.value_set_fraction_range_full(value.to_unsafe.as(LibGObject::Value*), Int32.new(numerator_start), Int32.new(denominator_start), Int32.new(numerator_end), Int32.new(denominator_end))
+    nil
   end
 
   def self.value_set_int64_range(value, start, end)
-    __return_value = LibGst.value_set_int64_range(value.to_unsafe.as(LibGObject::Value*), Int64.new(start), Int64.new(end))
-    __return_value
+    LibGst.value_set_int64_range(value.to_unsafe.as(LibGObject::Value*), Int64.new(start), Int64.new(end))
+    nil
   end
 
   def self.value_set_int64_range_step(value, start, end, step)
-    __return_value = LibGst.value_set_int64_range_step(value.to_unsafe.as(LibGObject::Value*), Int64.new(start), Int64.new(end), Int64.new(step))
-    __return_value
+    LibGst.value_set_int64_range_step(value.to_unsafe.as(LibGObject::Value*), Int64.new(start), Int64.new(end), Int64.new(step))
+    nil
   end
 
   def self.value_set_int_range(value, start, end)
-    __return_value = LibGst.value_set_int_range(value.to_unsafe.as(LibGObject::Value*), Int32.new(start), Int32.new(end))
-    __return_value
+    LibGst.value_set_int_range(value.to_unsafe.as(LibGObject::Value*), Int32.new(start), Int32.new(end))
+    nil
   end
 
   def self.value_set_int_range_step(value, start, end, step)
-    __return_value = LibGst.value_set_int_range_step(value.to_unsafe.as(LibGObject::Value*), Int32.new(start), Int32.new(end), Int32.new(step))
-    __return_value
+    LibGst.value_set_int_range_step(value.to_unsafe.as(LibGObject::Value*), Int32.new(start), Int32.new(end), Int32.new(step))
+    nil
   end
 
   def self.value_set_structure(value, structure)
-    __return_value = LibGst.value_set_structure(value.to_unsafe.as(LibGObject::Value*), structure.to_unsafe.as(LibGst::Structure*))
-    __return_value
+    LibGst.value_set_structure(value.to_unsafe.as(LibGObject::Value*), structure.to_unsafe.as(LibGst::Structure*))
+    nil
   end
 
   def self.value_subtract(dest, minuend, subtrahend)
@@ -951,8 +951,8 @@ module Gst
   end
 
   def self.version(major, minor, micro, nano)
-    __return_value = LibGst.version(major, minor, micro, nano)
-    __return_value
+    LibGst.version(major, minor, micro, nano)
+    nil
   end
 
   def self.version_string

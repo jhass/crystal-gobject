@@ -30,8 +30,8 @@ module Gtk
     end
 
     def free
-      __return_value = LibGtk.target_entry_free(to_unsafe.as(LibGtk::TargetEntry*))
-      __return_value
+      LibGtk.target_entry_free(to_unsafe.as(LibGtk::TargetEntry*))
+      nil
     end
 
     def target

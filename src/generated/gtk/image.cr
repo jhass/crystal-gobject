@@ -128,8 +128,8 @@ module Gtk
     end
 
     def clear
-      __return_value = LibGtk.image_clear(to_unsafe.as(LibGtk::Image*))
-      __return_value
+      LibGtk.image_clear(to_unsafe.as(LibGtk::Image*))
+      nil
     end
 
     def animation
@@ -138,18 +138,18 @@ module Gtk
     end
 
     def gicon(gicon, size)
-      __return_value = LibGtk.image_get_gicon(to_unsafe.as(LibGtk::Image*), gicon, size)
-      __return_value
+      LibGtk.image_get_gicon(to_unsafe.as(LibGtk::Image*), gicon, size)
+      nil
     end
 
     def icon_name(icon_name, size)
-      __return_value = LibGtk.image_get_icon_name(to_unsafe.as(LibGtk::Image*), icon_name, size)
-      __return_value
+      LibGtk.image_get_icon_name(to_unsafe.as(LibGtk::Image*), icon_name, size)
+      nil
     end
 
     def icon_set(icon_set, size)
-      __return_value = LibGtk.image_get_icon_set(to_unsafe.as(LibGtk::Image*), icon_set, size)
-      __return_value
+      LibGtk.image_get_icon_set(to_unsafe.as(LibGtk::Image*), icon_set, size)
+      nil
     end
 
     def pixbuf
@@ -163,8 +163,8 @@ module Gtk
     end
 
     def stock(stock_id, size)
-      __return_value = LibGtk.image_get_stock(to_unsafe.as(LibGtk::Image*), stock_id, size)
-      __return_value
+      LibGtk.image_get_stock(to_unsafe.as(LibGtk::Image*), stock_id, size)
+      nil
     end
 
     def storage_type
@@ -173,53 +173,53 @@ module Gtk
     end
 
     def from_animation=(animation)
-      __return_value = LibGtk.image_set_from_animation(to_unsafe.as(LibGtk::Image*), animation.to_unsafe.as(LibGdkPixbuf::PixbufAnimation*))
-      __return_value
+      LibGtk.image_set_from_animation(to_unsafe.as(LibGtk::Image*), animation.to_unsafe.as(LibGdkPixbuf::PixbufAnimation*))
+      nil
     end
 
     def from_file=(filename)
-      __return_value = LibGtk.image_set_from_file(to_unsafe.as(LibGtk::Image*), filename ? filename.to_unsafe : nil)
-      __return_value
+      LibGtk.image_set_from_file(to_unsafe.as(LibGtk::Image*), filename ? filename.to_unsafe : nil)
+      nil
     end
 
     def set_from_gicon(icon, size)
-      __return_value = LibGtk.image_set_from_gicon(to_unsafe.as(LibGtk::Image*), icon.to_unsafe.as(LibGio::Icon*), Int32.new(size))
-      __return_value
+      LibGtk.image_set_from_gicon(to_unsafe.as(LibGtk::Image*), icon.to_unsafe.as(LibGio::Icon*), Int32.new(size))
+      nil
     end
 
     def set_from_icon_name(icon_name, size)
-      __return_value = LibGtk.image_set_from_icon_name(to_unsafe.as(LibGtk::Image*), icon_name ? icon_name.to_unsafe : nil, Int32.new(size))
-      __return_value
+      LibGtk.image_set_from_icon_name(to_unsafe.as(LibGtk::Image*), icon_name ? icon_name.to_unsafe : nil, Int32.new(size))
+      nil
     end
 
     def set_from_icon_set(icon_set, size)
-      __return_value = LibGtk.image_set_from_icon_set(to_unsafe.as(LibGtk::Image*), icon_set.to_unsafe.as(LibGtk::IconSet*), Int32.new(size))
-      __return_value
+      LibGtk.image_set_from_icon_set(to_unsafe.as(LibGtk::Image*), icon_set.to_unsafe.as(LibGtk::IconSet*), Int32.new(size))
+      nil
     end
 
     def from_pixbuf=(pixbuf)
-      __return_value = LibGtk.image_set_from_pixbuf(to_unsafe.as(LibGtk::Image*), pixbuf ? pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*) : nil)
-      __return_value
+      LibGtk.image_set_from_pixbuf(to_unsafe.as(LibGtk::Image*), pixbuf ? pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*) : nil)
+      nil
     end
 
     def from_resource=(resource_path)
-      __return_value = LibGtk.image_set_from_resource(to_unsafe.as(LibGtk::Image*), resource_path ? resource_path.to_unsafe : nil)
-      __return_value
+      LibGtk.image_set_from_resource(to_unsafe.as(LibGtk::Image*), resource_path ? resource_path.to_unsafe : nil)
+      nil
     end
 
     def set_from_stock(stock_id, size)
-      __return_value = LibGtk.image_set_from_stock(to_unsafe.as(LibGtk::Image*), stock_id.to_unsafe, Int32.new(size))
-      __return_value
+      LibGtk.image_set_from_stock(to_unsafe.as(LibGtk::Image*), stock_id.to_unsafe, Int32.new(size))
+      nil
     end
 
     def from_surface=(surface)
-      __return_value = LibGtk.image_set_from_surface(to_unsafe.as(LibGtk::Image*), surface ? surface.to_unsafe.as(LibCairo::Surface*) : nil)
-      __return_value
+      LibGtk.image_set_from_surface(to_unsafe.as(LibGtk::Image*), surface ? surface.to_unsafe.as(LibCairo::Surface*) : nil)
+      nil
     end
 
     def pixel_size=(pixel_size)
-      __return_value = LibGtk.image_set_pixel_size(to_unsafe.as(LibGtk::Image*), Int32.new(pixel_size))
-      __return_value
+      LibGtk.image_set_pixel_size(to_unsafe.as(LibGtk::Image*), Int32.new(pixel_size))
+      nil
     end
 
   end

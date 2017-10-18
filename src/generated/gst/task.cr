@@ -16,8 +16,8 @@ module Gst
     end
 
     def self.cleanup_all
-      __return_value = LibGst.task_cleanup_all
-      __return_value
+      LibGst.task_cleanup_all
+      nil
     end
 
     def pool
@@ -41,23 +41,23 @@ module Gst
     end
 
     def set_enter_callback(enter_func, user_data, notify)
-      __return_value = LibGst.task_set_enter_callback(to_unsafe.as(LibGst::Task*), enter_func, user_data ? user_data : nil, notify)
-      __return_value
+      LibGst.task_set_enter_callback(to_unsafe.as(LibGst::Task*), enter_func, user_data ? user_data : nil, notify)
+      nil
     end
 
     def set_leave_callback(leave_func, user_data, notify)
-      __return_value = LibGst.task_set_leave_callback(to_unsafe.as(LibGst::Task*), leave_func, user_data ? user_data : nil, notify)
-      __return_value
+      LibGst.task_set_leave_callback(to_unsafe.as(LibGst::Task*), leave_func, user_data ? user_data : nil, notify)
+      nil
     end
 
     def lock=(mutex)
-      __return_value = LibGst.task_set_lock(to_unsafe.as(LibGst::Task*), mutex.to_unsafe.as(LibGLib::RecMutex*))
-      __return_value
+      LibGst.task_set_lock(to_unsafe.as(LibGst::Task*), mutex.to_unsafe.as(LibGLib::RecMutex*))
+      nil
     end
 
     def pool=(pool)
-      __return_value = LibGst.task_set_pool(to_unsafe.as(LibGst::Task*), pool.to_unsafe.as(LibGst::TaskPool*))
-      __return_value
+      LibGst.task_set_pool(to_unsafe.as(LibGst::Task*), pool.to_unsafe.as(LibGst::TaskPool*))
+      nil
     end
 
     def state=(state : Gst::TaskState)

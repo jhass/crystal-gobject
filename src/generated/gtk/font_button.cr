@@ -91,28 +91,28 @@ module Gtk
     end
 
     def show_size=(show_size)
-      __return_value = LibGtk.font_button_set_show_size(to_unsafe.as(LibGtk::FontButton*), show_size)
-      __return_value
+      LibGtk.font_button_set_show_size(to_unsafe.as(LibGtk::FontButton*), show_size)
+      nil
     end
 
     def show_style=(show_style)
-      __return_value = LibGtk.font_button_set_show_style(to_unsafe.as(LibGtk::FontButton*), show_style)
-      __return_value
+      LibGtk.font_button_set_show_style(to_unsafe.as(LibGtk::FontButton*), show_style)
+      nil
     end
 
     def title=(title)
-      __return_value = LibGtk.font_button_set_title(to_unsafe.as(LibGtk::FontButton*), title.to_unsafe)
-      __return_value
+      LibGtk.font_button_set_title(to_unsafe.as(LibGtk::FontButton*), title.to_unsafe)
+      nil
     end
 
     def use_font=(use_font)
-      __return_value = LibGtk.font_button_set_use_font(to_unsafe.as(LibGtk::FontButton*), use_font)
-      __return_value
+      LibGtk.font_button_set_use_font(to_unsafe.as(LibGtk::FontButton*), use_font)
+      nil
     end
 
     def use_size=(use_size)
-      __return_value = LibGtk.font_button_set_use_size(to_unsafe.as(LibGtk::FontButton*), use_size)
-      __return_value
+      LibGtk.font_button_set_use_size(to_unsafe.as(LibGtk::FontButton*), use_size)
+      nil
     end
 
     alias FontSetSignal = FontButton ->

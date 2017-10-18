@@ -89,38 +89,38 @@ module Gtk
     end
 
     def insert(item, position)
-      __return_value = LibGtk.tool_item_group_insert(to_unsafe.as(LibGtk::ToolItemGroup*), item.to_unsafe.as(LibGtk::ToolItem*), Int32.new(position))
-      __return_value
+      LibGtk.tool_item_group_insert(to_unsafe.as(LibGtk::ToolItemGroup*), item.to_unsafe.as(LibGtk::ToolItem*), Int32.new(position))
+      nil
     end
 
     def collapsed=(collapsed)
-      __return_value = LibGtk.tool_item_group_set_collapsed(to_unsafe.as(LibGtk::ToolItemGroup*), collapsed)
-      __return_value
+      LibGtk.tool_item_group_set_collapsed(to_unsafe.as(LibGtk::ToolItemGroup*), collapsed)
+      nil
     end
 
     def ellipsize=(ellipsize : Pango::EllipsizeMode)
-      __return_value = LibGtk.tool_item_group_set_ellipsize(to_unsafe.as(LibGtk::ToolItemGroup*), ellipsize)
-      __return_value
+      LibGtk.tool_item_group_set_ellipsize(to_unsafe.as(LibGtk::ToolItemGroup*), ellipsize)
+      nil
     end
 
     def header_relief=(style : Gtk::ReliefStyle)
-      __return_value = LibGtk.tool_item_group_set_header_relief(to_unsafe.as(LibGtk::ToolItemGroup*), style)
-      __return_value
+      LibGtk.tool_item_group_set_header_relief(to_unsafe.as(LibGtk::ToolItemGroup*), style)
+      nil
     end
 
     def set_item_position(item, position)
-      __return_value = LibGtk.tool_item_group_set_item_position(to_unsafe.as(LibGtk::ToolItemGroup*), item.to_unsafe.as(LibGtk::ToolItem*), Int32.new(position))
-      __return_value
+      LibGtk.tool_item_group_set_item_position(to_unsafe.as(LibGtk::ToolItemGroup*), item.to_unsafe.as(LibGtk::ToolItem*), Int32.new(position))
+      nil
     end
 
     def label=(label)
-      __return_value = LibGtk.tool_item_group_set_label(to_unsafe.as(LibGtk::ToolItemGroup*), label.to_unsafe)
-      __return_value
+      LibGtk.tool_item_group_set_label(to_unsafe.as(LibGtk::ToolItemGroup*), label.to_unsafe)
+      nil
     end
 
     def label_widget=(label_widget)
-      __return_value = LibGtk.tool_item_group_set_label_widget(to_unsafe.as(LibGtk::ToolItemGroup*), label_widget.to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      LibGtk.tool_item_group_set_label_widget(to_unsafe.as(LibGtk::ToolItemGroup*), label_widget.to_unsafe.as(LibGtk::Widget*))
+      nil
     end
 
   end

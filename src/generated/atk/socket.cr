@@ -17,8 +17,8 @@ module Atk
     end
 
     def embed(plug_id)
-      __return_value = LibAtk.socket_embed(to_unsafe.as(LibAtk::Socket*), plug_id.to_unsafe)
-      __return_value
+      LibAtk.socket_embed(to_unsafe.as(LibAtk::Socket*), plug_id.to_unsafe)
+      nil
     end
 
     def occupied?

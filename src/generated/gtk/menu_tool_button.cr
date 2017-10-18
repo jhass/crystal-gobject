@@ -35,18 +35,18 @@ module Gtk
     end
 
     def arrow_tooltip_markup=(markup)
-      __return_value = LibGtk.menu_tool_button_set_arrow_tooltip_markup(to_unsafe.as(LibGtk::MenuToolButton*), markup.to_unsafe)
-      __return_value
+      LibGtk.menu_tool_button_set_arrow_tooltip_markup(to_unsafe.as(LibGtk::MenuToolButton*), markup.to_unsafe)
+      nil
     end
 
     def arrow_tooltip_text=(text)
-      __return_value = LibGtk.menu_tool_button_set_arrow_tooltip_text(to_unsafe.as(LibGtk::MenuToolButton*), text.to_unsafe)
-      __return_value
+      LibGtk.menu_tool_button_set_arrow_tooltip_text(to_unsafe.as(LibGtk::MenuToolButton*), text.to_unsafe)
+      nil
     end
 
     def menu=(menu)
-      __return_value = LibGtk.menu_tool_button_set_menu(to_unsafe.as(LibGtk::MenuToolButton*), menu.to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      LibGtk.menu_tool_button_set_menu(to_unsafe.as(LibGtk::MenuToolButton*), menu.to_unsafe.as(LibGtk::Widget*))
+      nil
     end
 
     alias ShowMenuSignal = MenuToolButton ->

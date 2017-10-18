@@ -40,8 +40,8 @@ module Gio
     end
 
     def self.set_desktop_env(desktop_env)
-      __return_value = LibGio.desktop_app_info_set_desktop_env(desktop_env.to_unsafe)
-      __return_value
+      LibGio.desktop_app_info_set_desktop_env(desktop_env.to_unsafe)
+      nil
     end
 
     def action_name(action_name)
@@ -105,8 +105,8 @@ module Gio
     end
 
     def launch_action(action_name, launch_context)
-      __return_value = LibGio.desktop_app_info_launch_action(to_unsafe.as(LibGio::DesktopAppInfo*), action_name.to_unsafe, launch_context ? launch_context.to_unsafe.as(LibGio::AppLaunchContext*) : nil)
-      __return_value
+      LibGio.desktop_app_info_launch_action(to_unsafe.as(LibGio::DesktopAppInfo*), action_name.to_unsafe, launch_context ? launch_context.to_unsafe.as(LibGio::AppLaunchContext*) : nil)
+      nil
     end
 
     def launch_uris_as_manager(uris, launch_context, spawn_flags : GLib::SpawnFlags, user_setup, user_setup_data, pid_callback, pid_callback_data)

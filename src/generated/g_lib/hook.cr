@@ -35,28 +35,28 @@ module GLib
     end
 
     def self.destroy_link(hook_list, hook)
-      __return_value = LibGLib.hook_destroy_link(hook_list.to_unsafe.as(LibGLib::HookList*), hook.to_unsafe.as(LibGLib::Hook*))
-      __return_value
+      LibGLib.hook_destroy_link(hook_list.to_unsafe.as(LibGLib::HookList*), hook.to_unsafe.as(LibGLib::Hook*))
+      nil
     end
 
     def self.free(hook_list, hook)
-      __return_value = LibGLib.hook_free(hook_list.to_unsafe.as(LibGLib::HookList*), hook.to_unsafe.as(LibGLib::Hook*))
-      __return_value
+      LibGLib.hook_free(hook_list.to_unsafe.as(LibGLib::HookList*), hook.to_unsafe.as(LibGLib::Hook*))
+      nil
     end
 
     def self.insert_before(hook_list, sibling, hook)
-      __return_value = LibGLib.hook_insert_before(hook_list.to_unsafe.as(LibGLib::HookList*), sibling ? sibling.to_unsafe.as(LibGLib::Hook*) : nil, hook.to_unsafe.as(LibGLib::Hook*))
-      __return_value
+      LibGLib.hook_insert_before(hook_list.to_unsafe.as(LibGLib::HookList*), sibling ? sibling.to_unsafe.as(LibGLib::Hook*) : nil, hook.to_unsafe.as(LibGLib::Hook*))
+      nil
     end
 
     def self.prepend(hook_list, hook)
-      __return_value = LibGLib.hook_prepend(hook_list.to_unsafe.as(LibGLib::HookList*), hook.to_unsafe.as(LibGLib::Hook*))
-      __return_value
+      LibGLib.hook_prepend(hook_list.to_unsafe.as(LibGLib::HookList*), hook.to_unsafe.as(LibGLib::Hook*))
+      nil
     end
 
     def self.unref(hook_list, hook)
-      __return_value = LibGLib.hook_unref(hook_list.to_unsafe.as(LibGLib::HookList*), hook.to_unsafe.as(LibGLib::Hook*))
-      __return_value
+      LibGLib.hook_unref(hook_list.to_unsafe.as(LibGLib::HookList*), hook.to_unsafe.as(LibGLib::Hook*))
+      nil
     end
 
     def data

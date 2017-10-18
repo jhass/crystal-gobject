@@ -11,18 +11,18 @@ module Gst
     end
 
     def self.append_and_take_value(value, append_value)
-      __return_value = LibGst.value_list_append_and_take_value(value.to_unsafe.as(LibGObject::Value*), append_value.to_unsafe.as(LibGObject::Value*))
-      __return_value
+      LibGst.value_list_append_and_take_value(value.to_unsafe.as(LibGObject::Value*), append_value.to_unsafe.as(LibGObject::Value*))
+      nil
     end
 
     def self.append_value(value, append_value)
-      __return_value = LibGst.value_list_append_value(value.to_unsafe.as(LibGObject::Value*), append_value.to_unsafe.as(LibGObject::Value*))
-      __return_value
+      LibGst.value_list_append_value(value.to_unsafe.as(LibGObject::Value*), append_value.to_unsafe.as(LibGObject::Value*))
+      nil
     end
 
     def self.concat(dest, value1, value2)
-      __return_value = LibGst.value_list_concat(dest, value1.to_unsafe.as(LibGObject::Value*), value2.to_unsafe.as(LibGObject::Value*))
-      __return_value
+      LibGst.value_list_concat(dest, value1.to_unsafe.as(LibGObject::Value*), value2.to_unsafe.as(LibGObject::Value*))
+      nil
     end
 
     def self.size(value)
@@ -36,13 +36,13 @@ module Gst
     end
 
     def self.merge(dest, value1, value2)
-      __return_value = LibGst.value_list_merge(dest, value1.to_unsafe.as(LibGObject::Value*), value2.to_unsafe.as(LibGObject::Value*))
-      __return_value
+      LibGst.value_list_merge(dest, value1.to_unsafe.as(LibGObject::Value*), value2.to_unsafe.as(LibGObject::Value*))
+      nil
     end
 
     def self.prepend_value(value, prepend_value)
-      __return_value = LibGst.value_list_prepend_value(value.to_unsafe.as(LibGObject::Value*), prepend_value.to_unsafe.as(LibGObject::Value*))
-      __return_value
+      LibGst.value_list_prepend_value(value.to_unsafe.as(LibGObject::Value*), prepend_value.to_unsafe.as(LibGObject::Value*))
+      nil
     end
 
   end

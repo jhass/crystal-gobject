@@ -26,13 +26,13 @@ module Gio
     end
 
     def start
-      __return_value = LibGio.socket_service_start(to_unsafe.as(LibGio::SocketService*))
-      __return_value
+      LibGio.socket_service_start(to_unsafe.as(LibGio::SocketService*))
+      nil
     end
 
     def stop
-      __return_value = LibGio.socket_service_stop(to_unsafe.as(LibGio::SocketService*))
-      __return_value
+      LibGio.socket_service_stop(to_unsafe.as(LibGio::SocketService*))
+      nil
     end
 
     alias IncomingSignal = SocketService, Gio::SocketConnection, GObject::Object -> Bool

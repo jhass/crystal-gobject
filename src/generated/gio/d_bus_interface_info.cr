@@ -23,18 +23,18 @@ module Gio
     end
 
     def cache_build
-      __return_value = LibGio.d_bus_interface_info_cache_build(to_unsafe.as(LibGio::DBusInterfaceInfo*))
-      __return_value
+      LibGio.d_bus_interface_info_cache_build(to_unsafe.as(LibGio::DBusInterfaceInfo*))
+      nil
     end
 
     def cache_release
-      __return_value = LibGio.d_bus_interface_info_cache_release(to_unsafe.as(LibGio::DBusInterfaceInfo*))
-      __return_value
+      LibGio.d_bus_interface_info_cache_release(to_unsafe.as(LibGio::DBusInterfaceInfo*))
+      nil
     end
 
     def generate_xml(indent, string_builder)
-      __return_value = LibGio.d_bus_interface_info_generate_xml(to_unsafe.as(LibGio::DBusInterfaceInfo*), UInt32.new(indent), string_builder)
-      __return_value
+      LibGio.d_bus_interface_info_generate_xml(to_unsafe.as(LibGio::DBusInterfaceInfo*), UInt32.new(indent), string_builder.to_unsafe.as(LibGLib::String*))
+      nil
     end
 
     def lookup_method(name)
@@ -58,8 +58,8 @@ module Gio
     end
 
     def unref
-      __return_value = LibGio.d_bus_interface_info_unref(to_unsafe.as(LibGio::DBusInterfaceInfo*))
-      __return_value
+      LibGio.d_bus_interface_info_unref(to_unsafe.as(LibGio::DBusInterfaceInfo*))
+      nil
     end
 
     def ref_count

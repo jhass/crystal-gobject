@@ -224,6 +224,11 @@ module Gtk
       __return_value
     end
 
+    def show_emoji_icon
+      __return_value = LibGtk.entry_get_show_emoji_icon(to_unsafe.as(LibGtk::Entry*))
+      __return_value
+    end
+
     def tabs
       __return_value = LibGtk.entry_get_tabs(to_unsafe.as(LibGtk::Entry*))
       Pango::TabArray.new(__return_value)
@@ -315,8 +320,8 @@ module Gtk
     end
 
     def icon_area(icon_pos : Gtk::EntryIconPosition, icon_area)
-      __return_value = LibGtk.entry_get_icon_area(to_unsafe.as(LibGtk::Entry*), icon_pos, icon_area)
-      __return_value
+      LibGtk.entry_get_icon_area(to_unsafe.as(LibGtk::Entry*), icon_pos, icon_area)
+      nil
     end
 
     def icon_at_pos(x, y)
@@ -390,8 +395,8 @@ module Gtk
     end
 
     def layout_offsets(x, y)
-      __return_value = LibGtk.entry_get_layout_offsets(to_unsafe.as(LibGtk::Entry*), x, y)
-      __return_value
+      LibGtk.entry_get_layout_offsets(to_unsafe.as(LibGtk::Entry*), x, y)
+      nil
     end
 
     def max_length
@@ -435,8 +440,8 @@ module Gtk
     end
 
     def text_area(text_area)
-      __return_value = LibGtk.entry_get_text_area(to_unsafe.as(LibGtk::Entry*), text_area)
-      __return_value
+      LibGtk.entry_get_text_area(to_unsafe.as(LibGtk::Entry*), text_area)
+      nil
     end
 
     def text_length
@@ -455,8 +460,8 @@ module Gtk
     end
 
     def grab_focus_without_selecting
-      __return_value = LibGtk.entry_grab_focus_without_selecting(to_unsafe.as(LibGtk::Entry*))
-      __return_value
+      LibGtk.entry_grab_focus_without_selecting(to_unsafe.as(LibGtk::Entry*))
+      nil
     end
 
     def im_context_filter_keypress(event)
@@ -470,163 +475,163 @@ module Gtk
     end
 
     def progress_pulse
-      __return_value = LibGtk.entry_progress_pulse(to_unsafe.as(LibGtk::Entry*))
-      __return_value
+      LibGtk.entry_progress_pulse(to_unsafe.as(LibGtk::Entry*))
+      nil
     end
 
     def reset_im_context
-      __return_value = LibGtk.entry_reset_im_context(to_unsafe.as(LibGtk::Entry*))
-      __return_value
+      LibGtk.entry_reset_im_context(to_unsafe.as(LibGtk::Entry*))
+      nil
     end
 
     def activates_default=(setting)
-      __return_value = LibGtk.entry_set_activates_default(to_unsafe.as(LibGtk::Entry*), setting)
-      __return_value
+      LibGtk.entry_set_activates_default(to_unsafe.as(LibGtk::Entry*), setting)
+      nil
     end
 
     def alignment=(xalign)
-      __return_value = LibGtk.entry_set_alignment(to_unsafe.as(LibGtk::Entry*), Float32.new(xalign))
-      __return_value
+      LibGtk.entry_set_alignment(to_unsafe.as(LibGtk::Entry*), Float32.new(xalign))
+      nil
     end
 
     def attributes=(attrs)
-      __return_value = LibGtk.entry_set_attributes(to_unsafe.as(LibGtk::Entry*), attrs.to_unsafe.as(LibPango::AttrList*))
-      __return_value
+      LibGtk.entry_set_attributes(to_unsafe.as(LibGtk::Entry*), attrs.to_unsafe.as(LibPango::AttrList*))
+      nil
     end
 
     def buffer=(buffer)
-      __return_value = LibGtk.entry_set_buffer(to_unsafe.as(LibGtk::Entry*), buffer.to_unsafe.as(LibGtk::EntryBuffer*))
-      __return_value
+      LibGtk.entry_set_buffer(to_unsafe.as(LibGtk::Entry*), buffer.to_unsafe.as(LibGtk::EntryBuffer*))
+      nil
     end
 
     def completion=(completion)
-      __return_value = LibGtk.entry_set_completion(to_unsafe.as(LibGtk::Entry*), completion ? completion.to_unsafe.as(LibGtk::EntryCompletion*) : nil)
-      __return_value
+      LibGtk.entry_set_completion(to_unsafe.as(LibGtk::Entry*), completion ? completion.to_unsafe.as(LibGtk::EntryCompletion*) : nil)
+      nil
     end
 
     def cursor_hadjustment=(adjustment)
-      __return_value = LibGtk.entry_set_cursor_hadjustment(to_unsafe.as(LibGtk::Entry*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
-      __return_value
+      LibGtk.entry_set_cursor_hadjustment(to_unsafe.as(LibGtk::Entry*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
+      nil
     end
 
     def has_frame=(setting)
-      __return_value = LibGtk.entry_set_has_frame(to_unsafe.as(LibGtk::Entry*), setting)
-      __return_value
+      LibGtk.entry_set_has_frame(to_unsafe.as(LibGtk::Entry*), setting)
+      nil
     end
 
     def set_icon_activatable(icon_pos : Gtk::EntryIconPosition, activatable)
-      __return_value = LibGtk.entry_set_icon_activatable(to_unsafe.as(LibGtk::Entry*), icon_pos, activatable)
-      __return_value
+      LibGtk.entry_set_icon_activatable(to_unsafe.as(LibGtk::Entry*), icon_pos, activatable)
+      nil
     end
 
     def set_icon_drag_source(icon_pos : Gtk::EntryIconPosition, target_list, actions : Gdk::DragAction)
-      __return_value = LibGtk.entry_set_icon_drag_source(to_unsafe.as(LibGtk::Entry*), icon_pos, target_list.to_unsafe.as(LibGtk::TargetList*), actions)
-      __return_value
+      LibGtk.entry_set_icon_drag_source(to_unsafe.as(LibGtk::Entry*), icon_pos, target_list.to_unsafe.as(LibGtk::TargetList*), actions)
+      nil
     end
 
     def set_icon_from_gicon(icon_pos : Gtk::EntryIconPosition, icon)
-      __return_value = LibGtk.entry_set_icon_from_gicon(to_unsafe.as(LibGtk::Entry*), icon_pos, icon ? icon.to_unsafe.as(LibGio::Icon*) : nil)
-      __return_value
+      LibGtk.entry_set_icon_from_gicon(to_unsafe.as(LibGtk::Entry*), icon_pos, icon ? icon.to_unsafe.as(LibGio::Icon*) : nil)
+      nil
     end
 
     def set_icon_from_icon_name(icon_pos : Gtk::EntryIconPosition, icon_name)
-      __return_value = LibGtk.entry_set_icon_from_icon_name(to_unsafe.as(LibGtk::Entry*), icon_pos, icon_name ? icon_name.to_unsafe : nil)
-      __return_value
+      LibGtk.entry_set_icon_from_icon_name(to_unsafe.as(LibGtk::Entry*), icon_pos, icon_name ? icon_name.to_unsafe : nil)
+      nil
     end
 
     def set_icon_from_pixbuf(icon_pos : Gtk::EntryIconPosition, pixbuf)
-      __return_value = LibGtk.entry_set_icon_from_pixbuf(to_unsafe.as(LibGtk::Entry*), icon_pos, pixbuf ? pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*) : nil)
-      __return_value
+      LibGtk.entry_set_icon_from_pixbuf(to_unsafe.as(LibGtk::Entry*), icon_pos, pixbuf ? pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*) : nil)
+      nil
     end
 
     def set_icon_from_stock(icon_pos : Gtk::EntryIconPosition, stock_id)
-      __return_value = LibGtk.entry_set_icon_from_stock(to_unsafe.as(LibGtk::Entry*), icon_pos, stock_id ? stock_id.to_unsafe : nil)
-      __return_value
+      LibGtk.entry_set_icon_from_stock(to_unsafe.as(LibGtk::Entry*), icon_pos, stock_id ? stock_id.to_unsafe : nil)
+      nil
     end
 
     def set_icon_sensitive(icon_pos : Gtk::EntryIconPosition, sensitive)
-      __return_value = LibGtk.entry_set_icon_sensitive(to_unsafe.as(LibGtk::Entry*), icon_pos, sensitive)
-      __return_value
+      LibGtk.entry_set_icon_sensitive(to_unsafe.as(LibGtk::Entry*), icon_pos, sensitive)
+      nil
     end
 
     def set_icon_tooltip_markup(icon_pos : Gtk::EntryIconPosition, tooltip)
-      __return_value = LibGtk.entry_set_icon_tooltip_markup(to_unsafe.as(LibGtk::Entry*), icon_pos, tooltip ? tooltip.to_unsafe : nil)
-      __return_value
+      LibGtk.entry_set_icon_tooltip_markup(to_unsafe.as(LibGtk::Entry*), icon_pos, tooltip ? tooltip.to_unsafe : nil)
+      nil
     end
 
     def set_icon_tooltip_text(icon_pos : Gtk::EntryIconPosition, tooltip)
-      __return_value = LibGtk.entry_set_icon_tooltip_text(to_unsafe.as(LibGtk::Entry*), icon_pos, tooltip ? tooltip.to_unsafe : nil)
-      __return_value
+      LibGtk.entry_set_icon_tooltip_text(to_unsafe.as(LibGtk::Entry*), icon_pos, tooltip ? tooltip.to_unsafe : nil)
+      nil
     end
 
     def inner_border=(border)
-      __return_value = LibGtk.entry_set_inner_border(to_unsafe.as(LibGtk::Entry*), border ? border.to_unsafe.as(LibGtk::Border*) : nil)
-      __return_value
+      LibGtk.entry_set_inner_border(to_unsafe.as(LibGtk::Entry*), border ? border.to_unsafe.as(LibGtk::Border*) : nil)
+      nil
     end
 
     def input_hints=(hints : Gtk::InputHints)
-      __return_value = LibGtk.entry_set_input_hints(to_unsafe.as(LibGtk::Entry*), hints)
-      __return_value
+      LibGtk.entry_set_input_hints(to_unsafe.as(LibGtk::Entry*), hints)
+      nil
     end
 
     def input_purpose=(purpose : Gtk::InputPurpose)
-      __return_value = LibGtk.entry_set_input_purpose(to_unsafe.as(LibGtk::Entry*), purpose)
-      __return_value
+      LibGtk.entry_set_input_purpose(to_unsafe.as(LibGtk::Entry*), purpose)
+      nil
     end
 
     def invisible_char=(ch)
-      __return_value = LibGtk.entry_set_invisible_char(to_unsafe.as(LibGtk::Entry*), UInt8.new(ch))
-      __return_value
+      LibGtk.entry_set_invisible_char(to_unsafe.as(LibGtk::Entry*), UInt8.new(ch))
+      nil
     end
 
     def max_length=(max)
-      __return_value = LibGtk.entry_set_max_length(to_unsafe.as(LibGtk::Entry*), Int32.new(max))
-      __return_value
+      LibGtk.entry_set_max_length(to_unsafe.as(LibGtk::Entry*), Int32.new(max))
+      nil
     end
 
     def max_width_chars=(n_chars)
-      __return_value = LibGtk.entry_set_max_width_chars(to_unsafe.as(LibGtk::Entry*), Int32.new(n_chars))
-      __return_value
+      LibGtk.entry_set_max_width_chars(to_unsafe.as(LibGtk::Entry*), Int32.new(n_chars))
+      nil
     end
 
     def overwrite_mode=(overwrite)
-      __return_value = LibGtk.entry_set_overwrite_mode(to_unsafe.as(LibGtk::Entry*), overwrite)
-      __return_value
+      LibGtk.entry_set_overwrite_mode(to_unsafe.as(LibGtk::Entry*), overwrite)
+      nil
     end
 
     def placeholder_text=(text)
-      __return_value = LibGtk.entry_set_placeholder_text(to_unsafe.as(LibGtk::Entry*), text ? text.to_unsafe : nil)
-      __return_value
+      LibGtk.entry_set_placeholder_text(to_unsafe.as(LibGtk::Entry*), text ? text.to_unsafe : nil)
+      nil
     end
 
     def progress_fraction=(fraction)
-      __return_value = LibGtk.entry_set_progress_fraction(to_unsafe.as(LibGtk::Entry*), Float64.new(fraction))
-      __return_value
+      LibGtk.entry_set_progress_fraction(to_unsafe.as(LibGtk::Entry*), Float64.new(fraction))
+      nil
     end
 
     def progress_pulse_step=(fraction)
-      __return_value = LibGtk.entry_set_progress_pulse_step(to_unsafe.as(LibGtk::Entry*), Float64.new(fraction))
-      __return_value
+      LibGtk.entry_set_progress_pulse_step(to_unsafe.as(LibGtk::Entry*), Float64.new(fraction))
+      nil
     end
 
     def tabs=(tabs)
-      __return_value = LibGtk.entry_set_tabs(to_unsafe.as(LibGtk::Entry*), tabs.to_unsafe.as(LibPango::TabArray*))
-      __return_value
+      LibGtk.entry_set_tabs(to_unsafe.as(LibGtk::Entry*), tabs.to_unsafe.as(LibPango::TabArray*))
+      nil
     end
 
     def text=(text)
-      __return_value = LibGtk.entry_set_text(to_unsafe.as(LibGtk::Entry*), text.to_unsafe)
-      __return_value
+      LibGtk.entry_set_text(to_unsafe.as(LibGtk::Entry*), text.to_unsafe)
+      nil
     end
 
     def visibility=(visible)
-      __return_value = LibGtk.entry_set_visibility(to_unsafe.as(LibGtk::Entry*), visible)
-      __return_value
+      LibGtk.entry_set_visibility(to_unsafe.as(LibGtk::Entry*), visible)
+      nil
     end
 
     def width_chars=(n_chars)
-      __return_value = LibGtk.entry_set_width_chars(to_unsafe.as(LibGtk::Entry*), Int32.new(n_chars))
-      __return_value
+      LibGtk.entry_set_width_chars(to_unsafe.as(LibGtk::Entry*), Int32.new(n_chars))
+      nil
     end
 
     def text_index_to_layout_index(text_index)
@@ -635,8 +640,8 @@ module Gtk
     end
 
     def unset_invisible_char
-      __return_value = LibGtk.entry_unset_invisible_char(to_unsafe.as(LibGtk::Entry*))
-      __return_value
+      LibGtk.entry_unset_invisible_char(to_unsafe.as(LibGtk::Entry*))
+      nil
     end
 
     alias ActivateSignal = Entry ->

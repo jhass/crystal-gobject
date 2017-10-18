@@ -46,8 +46,8 @@ module Gtk
     end
 
     def copy_values(dest)
-      __return_value = LibGtk.text_attributes_copy_values(to_unsafe.as(LibGtk::TextAttributes*), dest.to_unsafe.as(LibGtk::TextAttributes*))
-      __return_value
+      LibGtk.text_attributes_copy_values(to_unsafe.as(LibGtk::TextAttributes*), dest.to_unsafe.as(LibGtk::TextAttributes*))
+      nil
     end
 
     def ref
@@ -56,8 +56,8 @@ module Gtk
     end
 
     def unref
-      __return_value = LibGtk.text_attributes_unref(to_unsafe.as(LibGtk::TextAttributes*))
-      __return_value
+      LibGtk.text_attributes_unref(to_unsafe.as(LibGtk::TextAttributes*))
+      nil
     end
 
     def refcount

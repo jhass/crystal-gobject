@@ -14,13 +14,13 @@ module Atk
     end
 
     def add(relation)
-      __return_value = LibAtk.relation_set_add(to_unsafe.as(LibAtk::RelationSet*), relation.to_unsafe.as(LibAtk::Relation*))
-      __return_value
+      LibAtk.relation_set_add(to_unsafe.as(LibAtk::RelationSet*), relation.to_unsafe.as(LibAtk::Relation*))
+      nil
     end
 
     def add_relation_by_type(relationship : Atk::RelationType, target)
-      __return_value = LibAtk.relation_set_add_relation_by_type(to_unsafe.as(LibAtk::RelationSet*), relationship, target.to_unsafe.as(LibAtk::Object*))
-      __return_value
+      LibAtk.relation_set_add_relation_by_type(to_unsafe.as(LibAtk::RelationSet*), relationship, target.to_unsafe.as(LibAtk::Object*))
+      nil
     end
 
     def contains(relationship : Atk::RelationType)
@@ -49,8 +49,8 @@ module Atk
     end
 
     def remove(relation)
-      __return_value = LibAtk.relation_set_remove(to_unsafe.as(LibAtk::RelationSet*), relation.to_unsafe.as(LibAtk::Relation*))
-      __return_value
+      LibAtk.relation_set_remove(to_unsafe.as(LibAtk::RelationSet*), relation.to_unsafe.as(LibAtk::Relation*))
+      nil
     end
 
   end

@@ -36,13 +36,13 @@ module Gtk
     end
 
     def append_custom_item(name, label, icon)
-      __return_value = LibGtk.app_chooser_button_append_custom_item(to_unsafe.as(LibGtk::AppChooserButton*), name.to_unsafe, label.to_unsafe, icon.to_unsafe.as(LibGio::Icon*))
-      __return_value
+      LibGtk.app_chooser_button_append_custom_item(to_unsafe.as(LibGtk::AppChooserButton*), name.to_unsafe, label.to_unsafe, icon.to_unsafe.as(LibGio::Icon*))
+      nil
     end
 
     def append_separator
-      __return_value = LibGtk.app_chooser_button_append_separator(to_unsafe.as(LibGtk::AppChooserButton*))
-      __return_value
+      LibGtk.app_chooser_button_append_separator(to_unsafe.as(LibGtk::AppChooserButton*))
+      nil
     end
 
     def heading
@@ -61,23 +61,23 @@ module Gtk
     end
 
     def active_custom_item=(name)
-      __return_value = LibGtk.app_chooser_button_set_active_custom_item(to_unsafe.as(LibGtk::AppChooserButton*), name.to_unsafe)
-      __return_value
+      LibGtk.app_chooser_button_set_active_custom_item(to_unsafe.as(LibGtk::AppChooserButton*), name.to_unsafe)
+      nil
     end
 
     def heading=(heading)
-      __return_value = LibGtk.app_chooser_button_set_heading(to_unsafe.as(LibGtk::AppChooserButton*), heading.to_unsafe)
-      __return_value
+      LibGtk.app_chooser_button_set_heading(to_unsafe.as(LibGtk::AppChooserButton*), heading.to_unsafe)
+      nil
     end
 
     def show_default_item=(setting)
-      __return_value = LibGtk.app_chooser_button_set_show_default_item(to_unsafe.as(LibGtk::AppChooserButton*), setting)
-      __return_value
+      LibGtk.app_chooser_button_set_show_default_item(to_unsafe.as(LibGtk::AppChooserButton*), setting)
+      nil
     end
 
     def show_dialog_item=(setting)
-      __return_value = LibGtk.app_chooser_button_set_show_dialog_item(to_unsafe.as(LibGtk::AppChooserButton*), setting)
-      __return_value
+      LibGtk.app_chooser_button_set_show_dialog_item(to_unsafe.as(LibGtk::AppChooserButton*), setting)
+      nil
     end
 
     alias CustomItemActivatedSignal = AppChooserButton, String ->

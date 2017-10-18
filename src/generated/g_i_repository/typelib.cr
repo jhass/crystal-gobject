@@ -11,8 +11,8 @@ module GIRepository
     end
 
     def free
-      __return_value = LibGIRepository.typelib_free(to_unsafe.as(LibGIRepository::Typelib*))
-      __return_value
+      LibGIRepository.typelib_free(to_unsafe.as(LibGIRepository::Typelib*))
+      nil
     end
 
     def namespace

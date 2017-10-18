@@ -64,8 +64,8 @@ module Gst
     end
 
     def append_memory(mem)
-      __return_value = LibGst.buffer_append_memory(to_unsafe.as(LibGst::Buffer*), mem.to_unsafe.as(LibGst::Memory*))
-      __return_value
+      LibGst.buffer_append_memory(to_unsafe.as(LibGst::Buffer*), mem.to_unsafe.as(LibGst::Memory*))
+      nil
     end
 
     def append_region(buf2, offset, size)
@@ -94,8 +94,8 @@ module Gst
     end
 
     def extract_dup(offset, size, dest, dest_size)
-      __return_value = LibGst.buffer_extract_dup(to_unsafe.as(LibGst::Buffer*), UInt64.new(offset), UInt64.new(size), dest, dest_size)
-      __return_value
+      LibGst.buffer_extract_dup(to_unsafe.as(LibGst::Buffer*), UInt64.new(offset), UInt64.new(size), dest, dest_size)
+      nil
     end
 
     def fill(offset, src, size)
@@ -159,8 +159,8 @@ module Gst
     end
 
     def insert_memory(idx, mem)
-      __return_value = LibGst.buffer_insert_memory(to_unsafe.as(LibGst::Buffer*), Int32.new(idx), mem.to_unsafe.as(LibGst::Memory*))
-      __return_value
+      LibGst.buffer_insert_memory(to_unsafe.as(LibGst::Buffer*), Int32.new(idx), mem.to_unsafe.as(LibGst::Memory*))
+      nil
     end
 
     def all_memory_writable?
@@ -204,23 +204,23 @@ module Gst
     end
 
     def prepend_memory(mem)
-      __return_value = LibGst.buffer_prepend_memory(to_unsafe.as(LibGst::Buffer*), mem.to_unsafe.as(LibGst::Memory*))
-      __return_value
+      LibGst.buffer_prepend_memory(to_unsafe.as(LibGst::Buffer*), mem.to_unsafe.as(LibGst::Memory*))
+      nil
     end
 
     def remove_all_memory
-      __return_value = LibGst.buffer_remove_all_memory(to_unsafe.as(LibGst::Buffer*))
-      __return_value
+      LibGst.buffer_remove_all_memory(to_unsafe.as(LibGst::Buffer*))
+      nil
     end
 
     def remove_memory(idx)
-      __return_value = LibGst.buffer_remove_memory(to_unsafe.as(LibGst::Buffer*), UInt32.new(idx))
-      __return_value
+      LibGst.buffer_remove_memory(to_unsafe.as(LibGst::Buffer*), UInt32.new(idx))
+      nil
     end
 
     def remove_memory_range(idx, length)
-      __return_value = LibGst.buffer_remove_memory_range(to_unsafe.as(LibGst::Buffer*), UInt32.new(idx), Int32.new(length))
-      __return_value
+      LibGst.buffer_remove_memory_range(to_unsafe.as(LibGst::Buffer*), UInt32.new(idx), Int32.new(length))
+      nil
     end
 
     def remove_meta(meta)
@@ -229,23 +229,23 @@ module Gst
     end
 
     def replace_all_memory(mem)
-      __return_value = LibGst.buffer_replace_all_memory(to_unsafe.as(LibGst::Buffer*), mem.to_unsafe.as(LibGst::Memory*))
-      __return_value
+      LibGst.buffer_replace_all_memory(to_unsafe.as(LibGst::Buffer*), mem.to_unsafe.as(LibGst::Memory*))
+      nil
     end
 
     def replace_memory(idx, mem)
-      __return_value = LibGst.buffer_replace_memory(to_unsafe.as(LibGst::Buffer*), UInt32.new(idx), mem.to_unsafe.as(LibGst::Memory*))
-      __return_value
+      LibGst.buffer_replace_memory(to_unsafe.as(LibGst::Buffer*), UInt32.new(idx), mem.to_unsafe.as(LibGst::Memory*))
+      nil
     end
 
     def replace_memory_range(idx, length, mem)
-      __return_value = LibGst.buffer_replace_memory_range(to_unsafe.as(LibGst::Buffer*), UInt32.new(idx), Int32.new(length), mem.to_unsafe.as(LibGst::Memory*))
-      __return_value
+      LibGst.buffer_replace_memory_range(to_unsafe.as(LibGst::Buffer*), UInt32.new(idx), Int32.new(length), mem.to_unsafe.as(LibGst::Memory*))
+      nil
     end
 
     def resize(offset, size)
-      __return_value = LibGst.buffer_resize(to_unsafe.as(LibGst::Buffer*), Int64.new(offset), Int64.new(size))
-      __return_value
+      LibGst.buffer_resize(to_unsafe.as(LibGst::Buffer*), Int64.new(offset), Int64.new(size))
+      nil
     end
 
     def resize_range(idx, length, offset, size)
@@ -259,13 +259,13 @@ module Gst
     end
 
     def size=(size)
-      __return_value = LibGst.buffer_set_size(to_unsafe.as(LibGst::Buffer*), Int64.new(size))
-      __return_value
+      LibGst.buffer_set_size(to_unsafe.as(LibGst::Buffer*), Int64.new(size))
+      nil
     end
 
     def unmap(info)
-      __return_value = LibGst.buffer_unmap(to_unsafe.as(LibGst::Buffer*), info.to_unsafe.as(LibGst::MapInfo*))
-      __return_value
+      LibGst.buffer_unmap(to_unsafe.as(LibGst::Buffer*), info.to_unsafe.as(LibGst::MapInfo*))
+      nil
     end
 
     def unset_flags(flags : Gst::BufferFlags)

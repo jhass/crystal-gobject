@@ -48,8 +48,8 @@ module Gtk
     end
 
     def preview_text=(text)
-      __return_value = LibGtk.font_selection_dialog_set_preview_text(to_unsafe.as(LibGtk::FontSelectionDialog*), text.to_unsafe)
-      __return_value
+      LibGtk.font_selection_dialog_set_preview_text(to_unsafe.as(LibGtk::FontSelectionDialog*), text.to_unsafe)
+      nil
     end
 
   end

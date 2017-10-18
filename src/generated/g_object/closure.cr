@@ -29,13 +29,13 @@ module GObject
     end
 
     def invalidate
-      __return_value = LibGObject.closure_invalidate(to_unsafe.as(LibGObject::Closure*))
-      __return_value
+      LibGObject.closure_invalidate(to_unsafe.as(LibGObject::Closure*))
+      nil
     end
 
     def invoke(return_value, n_param_values, param_values, invocation_hint)
-      __return_value = LibGObject.closure_invoke(to_unsafe.as(LibGObject::Closure*), return_value, UInt32.new(n_param_values), param_values, invocation_hint ? invocation_hint : nil)
-      __return_value
+      LibGObject.closure_invoke(to_unsafe.as(LibGObject::Closure*), return_value, UInt32.new(n_param_values), param_values, invocation_hint ? invocation_hint : nil)
+      nil
     end
 
     def ref
@@ -44,13 +44,13 @@ module GObject
     end
 
     def sink
-      __return_value = LibGObject.closure_sink(to_unsafe.as(LibGObject::Closure*))
-      __return_value
+      LibGObject.closure_sink(to_unsafe.as(LibGObject::Closure*))
+      nil
     end
 
     def unref
-      __return_value = LibGObject.closure_unref(to_unsafe.as(LibGObject::Closure*))
-      __return_value
+      LibGObject.closure_unref(to_unsafe.as(LibGObject::Closure*))
+      nil
     end
 
     def ref_count

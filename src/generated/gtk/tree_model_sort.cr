@@ -17,8 +17,8 @@ module Gtk
     end
 
     def clear_cache
-      __return_value = LibGtk.tree_model_sort_clear_cache(to_unsafe.as(LibGtk::TreeModelSort*))
-      __return_value
+      LibGtk.tree_model_sort_clear_cache(to_unsafe.as(LibGtk::TreeModelSort*))
+      nil
     end
 
     def convert_child_iter_to_iter(sort_iter, child_iter)
@@ -32,8 +32,8 @@ module Gtk
     end
 
     def convert_iter_to_child_iter(child_iter, sorted_iter)
-      __return_value = LibGtk.tree_model_sort_convert_iter_to_child_iter(to_unsafe.as(LibGtk::TreeModelSort*), child_iter, sorted_iter.to_unsafe.as(LibGtk::TreeIter*))
-      __return_value
+      LibGtk.tree_model_sort_convert_iter_to_child_iter(to_unsafe.as(LibGtk::TreeModelSort*), child_iter, sorted_iter.to_unsafe.as(LibGtk::TreeIter*))
+      nil
     end
 
     def convert_path_to_child_path(sorted_path)
@@ -52,8 +52,8 @@ module Gtk
     end
 
     def reset_default_sort_func
-      __return_value = LibGtk.tree_model_sort_reset_default_sort_func(to_unsafe.as(LibGtk::TreeModelSort*))
-      __return_value
+      LibGtk.tree_model_sort_reset_default_sort_func(to_unsafe.as(LibGtk::TreeModelSort*))
+      nil
     end
 
   end

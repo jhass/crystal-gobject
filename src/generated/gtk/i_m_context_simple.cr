@@ -16,8 +16,8 @@ module Gtk
     end
 
     def add_compose_file(compose_file)
-      __return_value = LibGtk.i_m_context_simple_add_compose_file(to_unsafe.as(LibGtk::IMContextSimple*), compose_file.to_unsafe)
-      __return_value
+      LibGtk.i_m_context_simple_add_compose_file(to_unsafe.as(LibGtk::IMContextSimple*), compose_file.to_unsafe)
+      nil
     end
 
   end

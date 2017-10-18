@@ -55,8 +55,8 @@ module Gio
     end
 
     def scheme=(scheme)
-      __return_value = LibGio.network_service_set_scheme(to_unsafe.as(LibGio::NetworkService*), scheme.to_unsafe)
-      __return_value
+      LibGio.network_service_set_scheme(to_unsafe.as(LibGio::NetworkService*), scheme.to_unsafe)
+      nil
     end
 
   end

@@ -48,8 +48,8 @@ module Gtk
     end
 
     def free
-      __return_value = LibGtk.paper_size_free(to_unsafe.as(LibGtk::PaperSize*))
-      __return_value
+      LibGtk.paper_size_free(to_unsafe.as(LibGtk::PaperSize*))
+      nil
     end
 
     def default_bottom_margin(unit : Gtk::Unit)
@@ -113,8 +113,8 @@ module Gtk
     end
 
     def set_size(width, height, unit : Gtk::Unit)
-      __return_value = LibGtk.paper_size_set_size(to_unsafe.as(LibGtk::PaperSize*), Float64.new(width), Float64.new(height), unit)
-      __return_value
+      LibGtk.paper_size_set_size(to_unsafe.as(LibGtk::PaperSize*), Float64.new(width), Float64.new(height), unit)
+      nil
     end
 
     def to_gvariant
@@ -123,8 +123,8 @@ module Gtk
     end
 
     def to_key_file(key_file, group_name)
-      __return_value = LibGtk.paper_size_to_key_file(to_unsafe.as(LibGtk::PaperSize*), key_file.to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe)
-      __return_value
+      LibGtk.paper_size_to_key_file(to_unsafe.as(LibGtk::PaperSize*), key_file.to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe)
+      nil
     end
 
     def self.default

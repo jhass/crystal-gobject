@@ -89,7 +89,7 @@ module GIRepository
     end
 
     def skip_return?
-      LibGIRepository.callable_info_skip_return(self)
+      LibGIRepository.callable_info_skip_return(self) || return_type.void?
     end
 
     def may_return_null?

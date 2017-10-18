@@ -244,8 +244,8 @@ module Gtk
     end
 
     def fixed_height_from_font=(number_of_rows)
-      __return_value = LibGtk.cell_renderer_text_set_fixed_height_from_font(to_unsafe.as(LibGtk::CellRendererText*), Int32.new(number_of_rows))
-      __return_value
+      LibGtk.cell_renderer_text_set_fixed_height_from_font(to_unsafe.as(LibGtk::CellRendererText*), Int32.new(number_of_rows))
+      nil
     end
 
     alias EditedSignal = CellRendererText, String, String ->

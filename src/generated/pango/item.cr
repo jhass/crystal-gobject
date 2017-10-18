@@ -31,8 +31,8 @@ module Pango
     end
 
     def free
-      __return_value = LibPango.item_free(to_unsafe.as(LibPango::Item*))
-      __return_value
+      LibPango.item_free(to_unsafe.as(LibPango::Item*))
+      nil
     end
 
     def split(split_index, split_offset)

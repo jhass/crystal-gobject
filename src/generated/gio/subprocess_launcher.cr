@@ -20,43 +20,43 @@ module Gio
     end
 
     def set_child_setup(child_setup, user_data, destroy_notify)
-      __return_value = LibGio.subprocess_launcher_set_child_setup(to_unsafe.as(LibGio::SubprocessLauncher*), child_setup, user_data ? user_data : nil, destroy_notify)
-      __return_value
+      LibGio.subprocess_launcher_set_child_setup(to_unsafe.as(LibGio::SubprocessLauncher*), child_setup, user_data ? user_data : nil, destroy_notify)
+      nil
     end
 
     def cwd=(cwd)
-      __return_value = LibGio.subprocess_launcher_set_cwd(to_unsafe.as(LibGio::SubprocessLauncher*), cwd.to_unsafe)
-      __return_value
+      LibGio.subprocess_launcher_set_cwd(to_unsafe.as(LibGio::SubprocessLauncher*), cwd.to_unsafe)
+      nil
     end
 
     def environ=(env)
-      __return_value = LibGio.subprocess_launcher_set_environ(to_unsafe.as(LibGio::SubprocessLauncher*), env)
-      __return_value
+      LibGio.subprocess_launcher_set_environ(to_unsafe.as(LibGio::SubprocessLauncher*), env)
+      nil
     end
 
     def flags=(flags : Gio::SubprocessFlags)
-      __return_value = LibGio.subprocess_launcher_set_flags(to_unsafe.as(LibGio::SubprocessLauncher*), flags)
-      __return_value
+      LibGio.subprocess_launcher_set_flags(to_unsafe.as(LibGio::SubprocessLauncher*), flags)
+      nil
     end
 
     def stderr_file_path=(path)
-      __return_value = LibGio.subprocess_launcher_set_stderr_file_path(to_unsafe.as(LibGio::SubprocessLauncher*), path ? path.to_unsafe : nil)
-      __return_value
+      LibGio.subprocess_launcher_set_stderr_file_path(to_unsafe.as(LibGio::SubprocessLauncher*), path ? path.to_unsafe : nil)
+      nil
     end
 
     def stdin_file_path=(path)
-      __return_value = LibGio.subprocess_launcher_set_stdin_file_path(to_unsafe.as(LibGio::SubprocessLauncher*), path.to_unsafe)
-      __return_value
+      LibGio.subprocess_launcher_set_stdin_file_path(to_unsafe.as(LibGio::SubprocessLauncher*), path.to_unsafe)
+      nil
     end
 
     def stdout_file_path=(path)
-      __return_value = LibGio.subprocess_launcher_set_stdout_file_path(to_unsafe.as(LibGio::SubprocessLauncher*), path ? path.to_unsafe : nil)
-      __return_value
+      LibGio.subprocess_launcher_set_stdout_file_path(to_unsafe.as(LibGio::SubprocessLauncher*), path ? path.to_unsafe : nil)
+      nil
     end
 
     def setenv(variable, value, overwrite)
-      __return_value = LibGio.subprocess_launcher_setenv(to_unsafe.as(LibGio::SubprocessLauncher*), variable.to_unsafe, value.to_unsafe, overwrite)
-      __return_value
+      LibGio.subprocess_launcher_setenv(to_unsafe.as(LibGio::SubprocessLauncher*), variable.to_unsafe, value.to_unsafe, overwrite)
+      nil
     end
 
     def spawnv(argv)
@@ -67,28 +67,28 @@ module Gio
     end
 
     def take_fd(source_fd, target_fd)
-      __return_value = LibGio.subprocess_launcher_take_fd(to_unsafe.as(LibGio::SubprocessLauncher*), Int32.new(source_fd), Int32.new(target_fd))
-      __return_value
+      LibGio.subprocess_launcher_take_fd(to_unsafe.as(LibGio::SubprocessLauncher*), Int32.new(source_fd), Int32.new(target_fd))
+      nil
     end
 
     def take_stderr_fd(fd)
-      __return_value = LibGio.subprocess_launcher_take_stderr_fd(to_unsafe.as(LibGio::SubprocessLauncher*), Int32.new(fd))
-      __return_value
+      LibGio.subprocess_launcher_take_stderr_fd(to_unsafe.as(LibGio::SubprocessLauncher*), Int32.new(fd))
+      nil
     end
 
     def take_stdin_fd(fd)
-      __return_value = LibGio.subprocess_launcher_take_stdin_fd(to_unsafe.as(LibGio::SubprocessLauncher*), Int32.new(fd))
-      __return_value
+      LibGio.subprocess_launcher_take_stdin_fd(to_unsafe.as(LibGio::SubprocessLauncher*), Int32.new(fd))
+      nil
     end
 
     def take_stdout_fd(fd)
-      __return_value = LibGio.subprocess_launcher_take_stdout_fd(to_unsafe.as(LibGio::SubprocessLauncher*), Int32.new(fd))
-      __return_value
+      LibGio.subprocess_launcher_take_stdout_fd(to_unsafe.as(LibGio::SubprocessLauncher*), Int32.new(fd))
+      nil
     end
 
     def unsetenv(variable)
-      __return_value = LibGio.subprocess_launcher_unsetenv(to_unsafe.as(LibGio::SubprocessLauncher*), variable.to_unsafe)
-      __return_value
+      LibGio.subprocess_launcher_unsetenv(to_unsafe.as(LibGio::SubprocessLauncher*), variable.to_unsafe)
+      nil
     end
 
   end

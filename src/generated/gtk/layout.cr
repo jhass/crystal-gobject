@@ -39,8 +39,8 @@ module Gtk
     end
 
     def size(width, height)
-      __return_value = LibGtk.layout_get_size(to_unsafe.as(LibGtk::Layout*), width, height)
-      __return_value
+      LibGtk.layout_get_size(to_unsafe.as(LibGtk::Layout*), width, height)
+      nil
     end
 
     def vadjustment
@@ -49,28 +49,28 @@ module Gtk
     end
 
     def move(child_widget, x, y)
-      __return_value = LibGtk.layout_move(to_unsafe.as(LibGtk::Layout*), child_widget.to_unsafe.as(LibGtk::Widget*), Int32.new(x), Int32.new(y))
-      __return_value
+      LibGtk.layout_move(to_unsafe.as(LibGtk::Layout*), child_widget.to_unsafe.as(LibGtk::Widget*), Int32.new(x), Int32.new(y))
+      nil
     end
 
     def put(child_widget, x, y)
-      __return_value = LibGtk.layout_put(to_unsafe.as(LibGtk::Layout*), child_widget.to_unsafe.as(LibGtk::Widget*), Int32.new(x), Int32.new(y))
-      __return_value
+      LibGtk.layout_put(to_unsafe.as(LibGtk::Layout*), child_widget.to_unsafe.as(LibGtk::Widget*), Int32.new(x), Int32.new(y))
+      nil
     end
 
     def hadjustment=(adjustment)
-      __return_value = LibGtk.layout_set_hadjustment(to_unsafe.as(LibGtk::Layout*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
-      __return_value
+      LibGtk.layout_set_hadjustment(to_unsafe.as(LibGtk::Layout*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
+      nil
     end
 
     def set_size(width, height)
-      __return_value = LibGtk.layout_set_size(to_unsafe.as(LibGtk::Layout*), UInt32.new(width), UInt32.new(height))
-      __return_value
+      LibGtk.layout_set_size(to_unsafe.as(LibGtk::Layout*), UInt32.new(width), UInt32.new(height))
+      nil
     end
 
     def vadjustment=(adjustment)
-      __return_value = LibGtk.layout_set_vadjustment(to_unsafe.as(LibGtk::Layout*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
-      __return_value
+      LibGtk.layout_set_vadjustment(to_unsafe.as(LibGtk::Layout*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
+      nil
     end
 
   end

@@ -21,8 +21,8 @@ module Gio
     end
 
     def self.factory_register_type(g_type, family : Gio::SocketFamily, type : Gio::SocketType, protocol)
-      __return_value = LibGio.socket_connection_factory_register_type(UInt64.new(g_type), family, type, Int32.new(protocol))
-      __return_value
+      LibGio.socket_connection_factory_register_type(UInt64.new(g_type), family, type, Int32.new(protocol))
+      nil
     end
 
     def connect(address, cancellable)
@@ -33,8 +33,8 @@ module Gio
     end
 
     def connect_async(address, cancellable, callback, user_data)
-      __return_value = LibGio.socket_connection_connect_async(to_unsafe.as(LibGio::SocketConnection*), address.to_unsafe.as(LibGio::SocketAddress*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
-      __return_value
+      LibGio.socket_connection_connect_async(to_unsafe.as(LibGio::SocketConnection*), address.to_unsafe.as(LibGio::SocketAddress*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
     end
 
     def connect_finish(result)

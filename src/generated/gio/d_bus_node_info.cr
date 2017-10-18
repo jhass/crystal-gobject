@@ -29,8 +29,8 @@ module Gio
     end
 
     def generate_xml(indent, string_builder)
-      __return_value = LibGio.d_bus_node_info_generate_xml(to_unsafe.as(LibGio::DBusNodeInfo*), UInt32.new(indent), string_builder)
-      __return_value
+      LibGio.d_bus_node_info_generate_xml(to_unsafe.as(LibGio::DBusNodeInfo*), UInt32.new(indent), string_builder.to_unsafe.as(LibGLib::String*))
+      nil
     end
 
     def lookup_interface(name)
@@ -44,8 +44,8 @@ module Gio
     end
 
     def unref
-      __return_value = LibGio.d_bus_node_info_unref(to_unsafe.as(LibGio::DBusNodeInfo*))
-      __return_value
+      LibGio.d_bus_node_info_unref(to_unsafe.as(LibGio::DBusNodeInfo*))
+      nil
     end
 
     def ref_count

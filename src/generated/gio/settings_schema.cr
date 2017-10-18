@@ -46,8 +46,8 @@ module Gio
     end
 
     def unref
-      __return_value = LibGio.settings_schema_unref(to_unsafe.as(LibGio::SettingsSchema*))
-      __return_value
+      LibGio.settings_schema_unref(to_unsafe.as(LibGio::SettingsSchema*))
+      nil
     end
 
   end

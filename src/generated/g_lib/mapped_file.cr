@@ -25,8 +25,8 @@ module GLib
     end
 
     def free
-      __return_value = LibGLib.mapped_file_free(to_unsafe.as(LibGLib::MappedFile*))
-      __return_value
+      LibGLib.mapped_file_free(to_unsafe.as(LibGLib::MappedFile*))
+      nil
     end
 
     def bytes
@@ -50,8 +50,8 @@ module GLib
     end
 
     def unref
-      __return_value = LibGLib.mapped_file_unref(to_unsafe.as(LibGLib::MappedFile*))
-      __return_value
+      LibGLib.mapped_file_unref(to_unsafe.as(LibGLib::MappedFile*))
+      nil
     end
 
   end

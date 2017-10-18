@@ -11,8 +11,8 @@ module GLib
     end
 
     def close
-      __return_value = LibGLib.dir_close(to_unsafe.as(LibGLib::Dir*))
-      __return_value
+      LibGLib.dir_close(to_unsafe.as(LibGLib::Dir*))
+      nil
     end
 
     def read_name
@@ -21,8 +21,8 @@ module GLib
     end
 
     def rewind
-      __return_value = LibGLib.dir_rewind(to_unsafe.as(LibGLib::Dir*))
-      __return_value
+      LibGLib.dir_rewind(to_unsafe.as(LibGLib::Dir*))
+      nil
     end
 
     def self.make_tmp(tmpl)

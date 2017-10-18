@@ -44,18 +44,18 @@ module Gtk
     end
 
     def changed
-      __return_value = LibGtk.adjustment_changed(to_unsafe.as(LibGtk::Adjustment*))
-      __return_value
+      LibGtk.adjustment_changed(to_unsafe.as(LibGtk::Adjustment*))
+      nil
     end
 
     def clamp_page(lower, upper)
-      __return_value = LibGtk.adjustment_clamp_page(to_unsafe.as(LibGtk::Adjustment*), Float64.new(lower), Float64.new(upper))
-      __return_value
+      LibGtk.adjustment_clamp_page(to_unsafe.as(LibGtk::Adjustment*), Float64.new(lower), Float64.new(upper))
+      nil
     end
 
     def configure(value, lower, upper, step_increment, page_increment, page_size)
-      __return_value = LibGtk.adjustment_configure(to_unsafe.as(LibGtk::Adjustment*), Float64.new(value), Float64.new(lower), Float64.new(upper), Float64.new(step_increment), Float64.new(page_increment), Float64.new(page_size))
-      __return_value
+      LibGtk.adjustment_configure(to_unsafe.as(LibGtk::Adjustment*), Float64.new(value), Float64.new(lower), Float64.new(upper), Float64.new(step_increment), Float64.new(page_increment), Float64.new(page_size))
+      nil
     end
 
     def lower
@@ -94,38 +94,38 @@ module Gtk
     end
 
     def lower=(lower)
-      __return_value = LibGtk.adjustment_set_lower(to_unsafe.as(LibGtk::Adjustment*), Float64.new(lower))
-      __return_value
+      LibGtk.adjustment_set_lower(to_unsafe.as(LibGtk::Adjustment*), Float64.new(lower))
+      nil
     end
 
     def page_increment=(page_increment)
-      __return_value = LibGtk.adjustment_set_page_increment(to_unsafe.as(LibGtk::Adjustment*), Float64.new(page_increment))
-      __return_value
+      LibGtk.adjustment_set_page_increment(to_unsafe.as(LibGtk::Adjustment*), Float64.new(page_increment))
+      nil
     end
 
     def page_size=(page_size)
-      __return_value = LibGtk.adjustment_set_page_size(to_unsafe.as(LibGtk::Adjustment*), Float64.new(page_size))
-      __return_value
+      LibGtk.adjustment_set_page_size(to_unsafe.as(LibGtk::Adjustment*), Float64.new(page_size))
+      nil
     end
 
     def step_increment=(step_increment)
-      __return_value = LibGtk.adjustment_set_step_increment(to_unsafe.as(LibGtk::Adjustment*), Float64.new(step_increment))
-      __return_value
+      LibGtk.adjustment_set_step_increment(to_unsafe.as(LibGtk::Adjustment*), Float64.new(step_increment))
+      nil
     end
 
     def upper=(upper)
-      __return_value = LibGtk.adjustment_set_upper(to_unsafe.as(LibGtk::Adjustment*), Float64.new(upper))
-      __return_value
+      LibGtk.adjustment_set_upper(to_unsafe.as(LibGtk::Adjustment*), Float64.new(upper))
+      nil
     end
 
     def value=(value)
-      __return_value = LibGtk.adjustment_set_value(to_unsafe.as(LibGtk::Adjustment*), Float64.new(value))
-      __return_value
+      LibGtk.adjustment_set_value(to_unsafe.as(LibGtk::Adjustment*), Float64.new(value))
+      nil
     end
 
     def value_changed
-      __return_value = LibGtk.adjustment_value_changed(to_unsafe.as(LibGtk::Adjustment*))
-      __return_value
+      LibGtk.adjustment_value_changed(to_unsafe.as(LibGtk::Adjustment*))
+      nil
     end
 
     alias ChangedSignal = Adjustment ->

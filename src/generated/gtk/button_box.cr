@@ -39,18 +39,18 @@ module Gtk
     end
 
     def set_child_non_homogeneous(child, non_homogeneous)
-      __return_value = LibGtk.button_box_set_child_non_homogeneous(to_unsafe.as(LibGtk::ButtonBox*), child.to_unsafe.as(LibGtk::Widget*), non_homogeneous)
-      __return_value
+      LibGtk.button_box_set_child_non_homogeneous(to_unsafe.as(LibGtk::ButtonBox*), child.to_unsafe.as(LibGtk::Widget*), non_homogeneous)
+      nil
     end
 
     def set_child_secondary(child, is_secondary)
-      __return_value = LibGtk.button_box_set_child_secondary(to_unsafe.as(LibGtk::ButtonBox*), child.to_unsafe.as(LibGtk::Widget*), is_secondary)
-      __return_value
+      LibGtk.button_box_set_child_secondary(to_unsafe.as(LibGtk::ButtonBox*), child.to_unsafe.as(LibGtk::Widget*), is_secondary)
+      nil
     end
 
     def layout=(layout_style : Gtk::ButtonBoxStyle)
-      __return_value = LibGtk.button_box_set_layout(to_unsafe.as(LibGtk::ButtonBox*), layout_style)
-      __return_value
+      LibGtk.button_box_set_layout(to_unsafe.as(LibGtk::ButtonBox*), layout_style)
+      nil
     end
 
   end

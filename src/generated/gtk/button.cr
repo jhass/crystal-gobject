@@ -85,18 +85,18 @@ module Gtk
     end
 
     def clicked
-      __return_value = LibGtk.button_clicked(to_unsafe.as(LibGtk::Button*))
-      __return_value
+      LibGtk.button_clicked(to_unsafe.as(LibGtk::Button*))
+      nil
     end
 
     def enter
-      __return_value = LibGtk.button_enter(to_unsafe.as(LibGtk::Button*))
-      __return_value
+      LibGtk.button_enter(to_unsafe.as(LibGtk::Button*))
+      nil
     end
 
     def alignment(xalign, yalign)
-      __return_value = LibGtk.button_get_alignment(to_unsafe.as(LibGtk::Button*), xalign, yalign)
-      __return_value
+      LibGtk.button_get_alignment(to_unsafe.as(LibGtk::Button*), xalign, yalign)
+      nil
     end
 
     def always_show_image
@@ -145,63 +145,63 @@ module Gtk
     end
 
     def leave
-      __return_value = LibGtk.button_leave(to_unsafe.as(LibGtk::Button*))
-      __return_value
+      LibGtk.button_leave(to_unsafe.as(LibGtk::Button*))
+      nil
     end
 
     def pressed
-      __return_value = LibGtk.button_pressed(to_unsafe.as(LibGtk::Button*))
-      __return_value
+      LibGtk.button_pressed(to_unsafe.as(LibGtk::Button*))
+      nil
     end
 
     def released
-      __return_value = LibGtk.button_released(to_unsafe.as(LibGtk::Button*))
-      __return_value
+      LibGtk.button_released(to_unsafe.as(LibGtk::Button*))
+      nil
     end
 
     def set_alignment(xalign, yalign)
-      __return_value = LibGtk.button_set_alignment(to_unsafe.as(LibGtk::Button*), Float32.new(xalign), Float32.new(yalign))
-      __return_value
+      LibGtk.button_set_alignment(to_unsafe.as(LibGtk::Button*), Float32.new(xalign), Float32.new(yalign))
+      nil
     end
 
     def always_show_image=(always_show)
-      __return_value = LibGtk.button_set_always_show_image(to_unsafe.as(LibGtk::Button*), always_show)
-      __return_value
+      LibGtk.button_set_always_show_image(to_unsafe.as(LibGtk::Button*), always_show)
+      nil
     end
 
     def focus_on_click=(focus_on_click)
-      __return_value = LibGtk.button_set_focus_on_click(to_unsafe.as(LibGtk::Button*), focus_on_click)
-      __return_value
+      LibGtk.button_set_focus_on_click(to_unsafe.as(LibGtk::Button*), focus_on_click)
+      nil
     end
 
     def image=(image)
-      __return_value = LibGtk.button_set_image(to_unsafe.as(LibGtk::Button*), image.to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      LibGtk.button_set_image(to_unsafe.as(LibGtk::Button*), image ? image.to_unsafe.as(LibGtk::Widget*) : nil)
+      nil
     end
 
     def image_position=(position : Gtk::PositionType)
-      __return_value = LibGtk.button_set_image_position(to_unsafe.as(LibGtk::Button*), position)
-      __return_value
+      LibGtk.button_set_image_position(to_unsafe.as(LibGtk::Button*), position)
+      nil
     end
 
     def label=(label)
-      __return_value = LibGtk.button_set_label(to_unsafe.as(LibGtk::Button*), label.to_unsafe)
-      __return_value
+      LibGtk.button_set_label(to_unsafe.as(LibGtk::Button*), label.to_unsafe)
+      nil
     end
 
     def relief=(relief : Gtk::ReliefStyle)
-      __return_value = LibGtk.button_set_relief(to_unsafe.as(LibGtk::Button*), relief)
-      __return_value
+      LibGtk.button_set_relief(to_unsafe.as(LibGtk::Button*), relief)
+      nil
     end
 
     def use_stock=(use_stock)
-      __return_value = LibGtk.button_set_use_stock(to_unsafe.as(LibGtk::Button*), use_stock)
-      __return_value
+      LibGtk.button_set_use_stock(to_unsafe.as(LibGtk::Button*), use_stock)
+      nil
     end
 
     def use_underline=(use_underline)
-      __return_value = LibGtk.button_set_use_underline(to_unsafe.as(LibGtk::Button*), use_underline)
-      __return_value
+      LibGtk.button_set_use_underline(to_unsafe.as(LibGtk::Button*), use_underline)
+      nil
     end
 
     alias ActivateSignal = Button ->

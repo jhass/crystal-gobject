@@ -11,8 +11,8 @@ module Gtk
     end
 
     def refresh
-      __return_value = LibGtk.app_chooser_refresh(to_unsafe.as(LibGtk::AppChooser*))
-      __return_value
+      LibGtk.app_chooser_refresh(to_unsafe.as(LibGtk::AppChooser*))
+      nil
     end
 
   end

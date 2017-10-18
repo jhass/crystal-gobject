@@ -16,8 +16,8 @@ module Gst
     end
 
     def self.fork_set_enabled(enabled)
-      __return_value = LibGst.registry_fork_set_enabled(enabled)
-      __return_value
+      LibGst.registry_fork_set_enabled(enabled)
+      nil
     end
 
     def self.get
@@ -91,13 +91,13 @@ module Gst
     end
 
     def remove_feature(feature)
-      __return_value = LibGst.registry_remove_feature(to_unsafe.as(LibGst::Registry*), feature.to_unsafe.as(LibGst::PluginFeature*))
-      __return_value
+      LibGst.registry_remove_feature(to_unsafe.as(LibGst::Registry*), feature.to_unsafe.as(LibGst::PluginFeature*))
+      nil
     end
 
     def remove_plugin(plugin)
-      __return_value = LibGst.registry_remove_plugin(to_unsafe.as(LibGst::Registry*), plugin.to_unsafe.as(LibGst::Plugin*))
-      __return_value
+      LibGst.registry_remove_plugin(to_unsafe.as(LibGst::Registry*), plugin.to_unsafe.as(LibGst::Plugin*))
+      nil
     end
 
     def scan_path(path)

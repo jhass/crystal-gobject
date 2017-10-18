@@ -20,8 +20,8 @@ module Gtk
     end
 
     def foreach(func, data)
-      __return_value = LibGtk.text_tag_table_foreach(to_unsafe.as(LibGtk::TextTagTable*), func, data ? data : nil)
-      __return_value
+      LibGtk.text_tag_table_foreach(to_unsafe.as(LibGtk::TextTagTable*), func, data ? data : nil)
+      nil
     end
 
     def size
@@ -35,8 +35,8 @@ module Gtk
     end
 
     def remove(tag)
-      __return_value = LibGtk.text_tag_table_remove(to_unsafe.as(LibGtk::TextTagTable*), tag.to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      LibGtk.text_tag_table_remove(to_unsafe.as(LibGtk::TextTagTable*), tag.to_unsafe.as(LibGtk::TextTag*))
+      nil
     end
 
     alias TagAddedSignal = TextTagTable, Gtk::TextTag ->

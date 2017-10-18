@@ -21,8 +21,8 @@ module Gtk
     end
 
     def add_color_stop(offset, color)
-      __return_value = LibGtk.gradient_add_color_stop(to_unsafe.as(LibGtk::Gradient*), Float64.new(offset), color.to_unsafe.as(LibGtk::SymbolicColor*))
-      __return_value
+      LibGtk.gradient_add_color_stop(to_unsafe.as(LibGtk::Gradient*), Float64.new(offset), color.to_unsafe.as(LibGtk::SymbolicColor*))
+      nil
     end
 
     def ref
@@ -46,8 +46,8 @@ module Gtk
     end
 
     def unref
-      __return_value = LibGtk.gradient_unref(to_unsafe.as(LibGtk::Gradient*))
-      __return_value
+      LibGtk.gradient_unref(to_unsafe.as(LibGtk::Gradient*))
+      nil
     end
 
   end

@@ -21,8 +21,8 @@ module GLib
     end
 
     def free
-      __return_value = LibGLib.checksum_free(to_unsafe.as(LibGLib::Checksum*))
-      __return_value
+      LibGLib.checksum_free(to_unsafe.as(LibGLib::Checksum*))
+      nil
     end
 
     def string
@@ -31,13 +31,13 @@ module GLib
     end
 
     def reset
-      __return_value = LibGLib.checksum_reset(to_unsafe.as(LibGLib::Checksum*))
-      __return_value
+      LibGLib.checksum_reset(to_unsafe.as(LibGLib::Checksum*))
+      nil
     end
 
     def update(data, length)
-      __return_value = LibGLib.checksum_update(to_unsafe.as(LibGLib::Checksum*), data, Int64.new(length))
-      __return_value
+      LibGLib.checksum_update(to_unsafe.as(LibGLib::Checksum*), data, Int64.new(length))
+      nil
     end
 
     def self.type_get_length(checksum_type : GLib::ChecksumType)

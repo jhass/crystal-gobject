@@ -18,33 +18,33 @@ module Gtk
     end
 
     def activate_item(menu_item, force_deactivate)
-      __return_value = LibGtk.menu_shell_activate_item(to_unsafe.as(LibGtk::MenuShell*), menu_item.to_unsafe.as(LibGtk::Widget*), force_deactivate)
-      __return_value
+      LibGtk.menu_shell_activate_item(to_unsafe.as(LibGtk::MenuShell*), menu_item.to_unsafe.as(LibGtk::Widget*), force_deactivate)
+      nil
     end
 
     def append(child)
-      __return_value = LibGtk.menu_shell_append(to_unsafe.as(LibGtk::MenuShell*), child.to_unsafe.as(LibGtk::MenuItem*))
-      __return_value
+      LibGtk.menu_shell_append(to_unsafe.as(LibGtk::MenuShell*), child.to_unsafe.as(LibGtk::MenuItem*))
+      nil
     end
 
     def bind_model(model, action_namespace, with_separators)
-      __return_value = LibGtk.menu_shell_bind_model(to_unsafe.as(LibGtk::MenuShell*), model ? model.to_unsafe.as(LibGio::MenuModel*) : nil, action_namespace ? action_namespace.to_unsafe : nil, with_separators)
-      __return_value
+      LibGtk.menu_shell_bind_model(to_unsafe.as(LibGtk::MenuShell*), model ? model.to_unsafe.as(LibGio::MenuModel*) : nil, action_namespace ? action_namespace.to_unsafe : nil, with_separators)
+      nil
     end
 
     def cancel
-      __return_value = LibGtk.menu_shell_cancel(to_unsafe.as(LibGtk::MenuShell*))
-      __return_value
+      LibGtk.menu_shell_cancel(to_unsafe.as(LibGtk::MenuShell*))
+      nil
     end
 
     def deactivate
-      __return_value = LibGtk.menu_shell_deactivate(to_unsafe.as(LibGtk::MenuShell*))
-      __return_value
+      LibGtk.menu_shell_deactivate(to_unsafe.as(LibGtk::MenuShell*))
+      nil
     end
 
     def deselect
-      __return_value = LibGtk.menu_shell_deselect(to_unsafe.as(LibGtk::MenuShell*))
-      __return_value
+      LibGtk.menu_shell_deselect(to_unsafe.as(LibGtk::MenuShell*))
+      nil
     end
 
     def parent_shell
@@ -63,28 +63,28 @@ module Gtk
     end
 
     def insert(child, position)
-      __return_value = LibGtk.menu_shell_insert(to_unsafe.as(LibGtk::MenuShell*), child.to_unsafe.as(LibGtk::Widget*), Int32.new(position))
-      __return_value
+      LibGtk.menu_shell_insert(to_unsafe.as(LibGtk::MenuShell*), child.to_unsafe.as(LibGtk::Widget*), Int32.new(position))
+      nil
     end
 
     def prepend(child)
-      __return_value = LibGtk.menu_shell_prepend(to_unsafe.as(LibGtk::MenuShell*), child.to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      LibGtk.menu_shell_prepend(to_unsafe.as(LibGtk::MenuShell*), child.to_unsafe.as(LibGtk::Widget*))
+      nil
     end
 
     def select_first(search_sensitive)
-      __return_value = LibGtk.menu_shell_select_first(to_unsafe.as(LibGtk::MenuShell*), search_sensitive)
-      __return_value
+      LibGtk.menu_shell_select_first(to_unsafe.as(LibGtk::MenuShell*), search_sensitive)
+      nil
     end
 
     def select_item(menu_item)
-      __return_value = LibGtk.menu_shell_select_item(to_unsafe.as(LibGtk::MenuShell*), menu_item.to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      LibGtk.menu_shell_select_item(to_unsafe.as(LibGtk::MenuShell*), menu_item.to_unsafe.as(LibGtk::Widget*))
+      nil
     end
 
     def take_focus=(take_focus)
-      __return_value = LibGtk.menu_shell_set_take_focus(to_unsafe.as(LibGtk::MenuShell*), take_focus)
-      __return_value
+      LibGtk.menu_shell_set_take_focus(to_unsafe.as(LibGtk::MenuShell*), take_focus)
+      nil
     end
 
     alias ActivateCurrentSignal = MenuShell, Bool ->

@@ -115,8 +115,8 @@ module Gtk
     end
 
     def convert_widget_to_bin_window_coords(wx, wy, bx, by)
-      __return_value = LibGtk.icon_view_convert_widget_to_bin_window_coords(to_unsafe.as(LibGtk::IconView*), Int32.new(wx), Int32.new(wy), bx, by)
-      __return_value
+      LibGtk.icon_view_convert_widget_to_bin_window_coords(to_unsafe.as(LibGtk::IconView*), Int32.new(wx), Int32.new(wy), bx, by)
+      nil
     end
 
     def create_drag_icon(path)
@@ -125,13 +125,13 @@ module Gtk
     end
 
     def enable_model_drag_dest(targets, n_targets, actions : Gdk::DragAction)
-      __return_value = LibGtk.icon_view_enable_model_drag_dest(to_unsafe.as(LibGtk::IconView*), targets, Int32.new(n_targets), actions)
-      __return_value
+      LibGtk.icon_view_enable_model_drag_dest(to_unsafe.as(LibGtk::IconView*), targets, Int32.new(n_targets), actions)
+      nil
     end
 
     def enable_model_drag_source(start_button_mask : Gdk::ModifierType, targets, n_targets, actions : Gdk::DragAction)
-      __return_value = LibGtk.icon_view_enable_model_drag_source(to_unsafe.as(LibGtk::IconView*), start_button_mask, targets, Int32.new(n_targets), actions)
-      __return_value
+      LibGtk.icon_view_enable_model_drag_source(to_unsafe.as(LibGtk::IconView*), start_button_mask, targets, Int32.new(n_targets), actions)
+      nil
     end
 
     def activate_on_single_click
@@ -165,8 +165,8 @@ module Gtk
     end
 
     def drag_dest_item(path, pos : Gtk::IconViewDropPosition?)
-      __return_value = LibGtk.icon_view_get_drag_dest_item(to_unsafe.as(LibGtk::IconView*), path, pos)
-      __return_value
+      LibGtk.icon_view_get_drag_dest_item(to_unsafe.as(LibGtk::IconView*), path, pos)
+      nil
     end
 
     def item_at_pos(x, y, path, cell)
@@ -270,8 +270,8 @@ module Gtk
     end
 
     def item_activated(path)
-      __return_value = LibGtk.icon_view_item_activated(to_unsafe.as(LibGtk::IconView*), path.to_unsafe.as(LibGtk::TreePath*))
-      __return_value
+      LibGtk.icon_view_item_activated(to_unsafe.as(LibGtk::IconView*), path.to_unsafe.as(LibGtk::TreePath*))
+      nil
     end
 
     def path_is_selected(path)
@@ -280,143 +280,143 @@ module Gtk
     end
 
     def scroll_to_path(path, use_align, row_align, col_align)
-      __return_value = LibGtk.icon_view_scroll_to_path(to_unsafe.as(LibGtk::IconView*), path.to_unsafe.as(LibGtk::TreePath*), use_align, Float32.new(row_align), Float32.new(col_align))
-      __return_value
+      LibGtk.icon_view_scroll_to_path(to_unsafe.as(LibGtk::IconView*), path.to_unsafe.as(LibGtk::TreePath*), use_align, Float32.new(row_align), Float32.new(col_align))
+      nil
     end
 
     def select_all
-      __return_value = LibGtk.icon_view_select_all(to_unsafe.as(LibGtk::IconView*))
-      __return_value
+      LibGtk.icon_view_select_all(to_unsafe.as(LibGtk::IconView*))
+      nil
     end
 
     def select_path(path)
-      __return_value = LibGtk.icon_view_select_path(to_unsafe.as(LibGtk::IconView*), path.to_unsafe.as(LibGtk::TreePath*))
-      __return_value
+      LibGtk.icon_view_select_path(to_unsafe.as(LibGtk::IconView*), path.to_unsafe.as(LibGtk::TreePath*))
+      nil
     end
 
     def selected_foreach(func, data)
-      __return_value = LibGtk.icon_view_selected_foreach(to_unsafe.as(LibGtk::IconView*), func, data ? data : nil)
-      __return_value
+      LibGtk.icon_view_selected_foreach(to_unsafe.as(LibGtk::IconView*), func, data ? data : nil)
+      nil
     end
 
     def activate_on_single_click=(single)
-      __return_value = LibGtk.icon_view_set_activate_on_single_click(to_unsafe.as(LibGtk::IconView*), single)
-      __return_value
+      LibGtk.icon_view_set_activate_on_single_click(to_unsafe.as(LibGtk::IconView*), single)
+      nil
     end
 
     def column_spacing=(column_spacing)
-      __return_value = LibGtk.icon_view_set_column_spacing(to_unsafe.as(LibGtk::IconView*), Int32.new(column_spacing))
-      __return_value
+      LibGtk.icon_view_set_column_spacing(to_unsafe.as(LibGtk::IconView*), Int32.new(column_spacing))
+      nil
     end
 
     def columns=(columns)
-      __return_value = LibGtk.icon_view_set_columns(to_unsafe.as(LibGtk::IconView*), Int32.new(columns))
-      __return_value
+      LibGtk.icon_view_set_columns(to_unsafe.as(LibGtk::IconView*), Int32.new(columns))
+      nil
     end
 
     def set_cursor(path, cell, start_editing)
-      __return_value = LibGtk.icon_view_set_cursor(to_unsafe.as(LibGtk::IconView*), path.to_unsafe.as(LibGtk::TreePath*), cell ? cell.to_unsafe.as(LibGtk::CellRenderer*) : nil, start_editing)
-      __return_value
+      LibGtk.icon_view_set_cursor(to_unsafe.as(LibGtk::IconView*), path.to_unsafe.as(LibGtk::TreePath*), cell ? cell.to_unsafe.as(LibGtk::CellRenderer*) : nil, start_editing)
+      nil
     end
 
     def set_drag_dest_item(path, pos : Gtk::IconViewDropPosition)
-      __return_value = LibGtk.icon_view_set_drag_dest_item(to_unsafe.as(LibGtk::IconView*), path ? path.to_unsafe.as(LibGtk::TreePath*) : nil, pos)
-      __return_value
+      LibGtk.icon_view_set_drag_dest_item(to_unsafe.as(LibGtk::IconView*), path ? path.to_unsafe.as(LibGtk::TreePath*) : nil, pos)
+      nil
     end
 
     def item_orientation=(orientation : Gtk::Orientation)
-      __return_value = LibGtk.icon_view_set_item_orientation(to_unsafe.as(LibGtk::IconView*), orientation)
-      __return_value
+      LibGtk.icon_view_set_item_orientation(to_unsafe.as(LibGtk::IconView*), orientation)
+      nil
     end
 
     def item_padding=(item_padding)
-      __return_value = LibGtk.icon_view_set_item_padding(to_unsafe.as(LibGtk::IconView*), Int32.new(item_padding))
-      __return_value
+      LibGtk.icon_view_set_item_padding(to_unsafe.as(LibGtk::IconView*), Int32.new(item_padding))
+      nil
     end
 
     def item_width=(item_width)
-      __return_value = LibGtk.icon_view_set_item_width(to_unsafe.as(LibGtk::IconView*), Int32.new(item_width))
-      __return_value
+      LibGtk.icon_view_set_item_width(to_unsafe.as(LibGtk::IconView*), Int32.new(item_width))
+      nil
     end
 
     def margin=(margin)
-      __return_value = LibGtk.icon_view_set_margin(to_unsafe.as(LibGtk::IconView*), Int32.new(margin))
-      __return_value
+      LibGtk.icon_view_set_margin(to_unsafe.as(LibGtk::IconView*), Int32.new(margin))
+      nil
     end
 
     def markup_column=(column)
-      __return_value = LibGtk.icon_view_set_markup_column(to_unsafe.as(LibGtk::IconView*), Int32.new(column))
-      __return_value
+      LibGtk.icon_view_set_markup_column(to_unsafe.as(LibGtk::IconView*), Int32.new(column))
+      nil
     end
 
     def model=(model)
-      __return_value = LibGtk.icon_view_set_model(to_unsafe.as(LibGtk::IconView*), model ? model.to_unsafe.as(LibGtk::TreeModel*) : nil)
-      __return_value
+      LibGtk.icon_view_set_model(to_unsafe.as(LibGtk::IconView*), model ? model.to_unsafe.as(LibGtk::TreeModel*) : nil)
+      nil
     end
 
     def pixbuf_column=(column)
-      __return_value = LibGtk.icon_view_set_pixbuf_column(to_unsafe.as(LibGtk::IconView*), Int32.new(column))
-      __return_value
+      LibGtk.icon_view_set_pixbuf_column(to_unsafe.as(LibGtk::IconView*), Int32.new(column))
+      nil
     end
 
     def reorderable=(reorderable)
-      __return_value = LibGtk.icon_view_set_reorderable(to_unsafe.as(LibGtk::IconView*), reorderable)
-      __return_value
+      LibGtk.icon_view_set_reorderable(to_unsafe.as(LibGtk::IconView*), reorderable)
+      nil
     end
 
     def row_spacing=(row_spacing)
-      __return_value = LibGtk.icon_view_set_row_spacing(to_unsafe.as(LibGtk::IconView*), Int32.new(row_spacing))
-      __return_value
+      LibGtk.icon_view_set_row_spacing(to_unsafe.as(LibGtk::IconView*), Int32.new(row_spacing))
+      nil
     end
 
     def selection_mode=(mode : Gtk::SelectionMode)
-      __return_value = LibGtk.icon_view_set_selection_mode(to_unsafe.as(LibGtk::IconView*), mode)
-      __return_value
+      LibGtk.icon_view_set_selection_mode(to_unsafe.as(LibGtk::IconView*), mode)
+      nil
     end
 
     def spacing=(spacing)
-      __return_value = LibGtk.icon_view_set_spacing(to_unsafe.as(LibGtk::IconView*), Int32.new(spacing))
-      __return_value
+      LibGtk.icon_view_set_spacing(to_unsafe.as(LibGtk::IconView*), Int32.new(spacing))
+      nil
     end
 
     def text_column=(column)
-      __return_value = LibGtk.icon_view_set_text_column(to_unsafe.as(LibGtk::IconView*), Int32.new(column))
-      __return_value
+      LibGtk.icon_view_set_text_column(to_unsafe.as(LibGtk::IconView*), Int32.new(column))
+      nil
     end
 
     def set_tooltip_cell(tooltip, path, cell)
-      __return_value = LibGtk.icon_view_set_tooltip_cell(to_unsafe.as(LibGtk::IconView*), tooltip.to_unsafe.as(LibGtk::Tooltip*), path.to_unsafe.as(LibGtk::TreePath*), cell ? cell.to_unsafe.as(LibGtk::CellRenderer*) : nil)
-      __return_value
+      LibGtk.icon_view_set_tooltip_cell(to_unsafe.as(LibGtk::IconView*), tooltip.to_unsafe.as(LibGtk::Tooltip*), path.to_unsafe.as(LibGtk::TreePath*), cell ? cell.to_unsafe.as(LibGtk::CellRenderer*) : nil)
+      nil
     end
 
     def tooltip_column=(column)
-      __return_value = LibGtk.icon_view_set_tooltip_column(to_unsafe.as(LibGtk::IconView*), Int32.new(column))
-      __return_value
+      LibGtk.icon_view_set_tooltip_column(to_unsafe.as(LibGtk::IconView*), Int32.new(column))
+      nil
     end
 
     def set_tooltip_item(tooltip, path)
-      __return_value = LibGtk.icon_view_set_tooltip_item(to_unsafe.as(LibGtk::IconView*), tooltip.to_unsafe.as(LibGtk::Tooltip*), path.to_unsafe.as(LibGtk::TreePath*))
-      __return_value
+      LibGtk.icon_view_set_tooltip_item(to_unsafe.as(LibGtk::IconView*), tooltip.to_unsafe.as(LibGtk::Tooltip*), path.to_unsafe.as(LibGtk::TreePath*))
+      nil
     end
 
     def unselect_all
-      __return_value = LibGtk.icon_view_unselect_all(to_unsafe.as(LibGtk::IconView*))
-      __return_value
+      LibGtk.icon_view_unselect_all(to_unsafe.as(LibGtk::IconView*))
+      nil
     end
 
     def unselect_path(path)
-      __return_value = LibGtk.icon_view_unselect_path(to_unsafe.as(LibGtk::IconView*), path.to_unsafe.as(LibGtk::TreePath*))
-      __return_value
+      LibGtk.icon_view_unselect_path(to_unsafe.as(LibGtk::IconView*), path.to_unsafe.as(LibGtk::TreePath*))
+      nil
     end
 
     def unset_model_drag_dest
-      __return_value = LibGtk.icon_view_unset_model_drag_dest(to_unsafe.as(LibGtk::IconView*))
-      __return_value
+      LibGtk.icon_view_unset_model_drag_dest(to_unsafe.as(LibGtk::IconView*))
+      nil
     end
 
     def unset_model_drag_source
-      __return_value = LibGtk.icon_view_unset_model_drag_source(to_unsafe.as(LibGtk::IconView*))
-      __return_value
+      LibGtk.icon_view_unset_model_drag_source(to_unsafe.as(LibGtk::IconView*))
+      nil
     end
 
     alias ActivateCursorItemSignal = IconView -> Bool

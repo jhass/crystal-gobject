@@ -41,8 +41,8 @@ module Gst
     end
 
     def buffer_list=(buffer_list)
-      __return_value = LibGst.sample_set_buffer_list(to_unsafe.as(LibGst::Sample*), buffer_list.to_unsafe.as(LibGst::BufferList*))
-      __return_value
+      LibGst.sample_set_buffer_list(to_unsafe.as(LibGst::Sample*), buffer_list.to_unsafe.as(LibGst::BufferList*))
+      nil
     end
 
   end

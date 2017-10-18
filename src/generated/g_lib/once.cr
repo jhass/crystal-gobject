@@ -24,8 +24,8 @@ module GLib
     end
 
     def self.init_leave(location, result)
-      __return_value = LibGLib.once_init_leave(location, UInt64.new(result))
-      __return_value
+      LibGLib.once_init_leave(location, UInt64.new(result))
+      nil
     end
 
     def status

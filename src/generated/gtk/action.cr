@@ -95,18 +95,18 @@ module Gtk
     end
 
     def activate
-      __return_value = LibGtk.action_activate(to_unsafe.as(LibGtk::Action*))
-      __return_value
+      LibGtk.action_activate(to_unsafe.as(LibGtk::Action*))
+      nil
     end
 
     def block_activate
-      __return_value = LibGtk.action_block_activate(to_unsafe.as(LibGtk::Action*))
-      __return_value
+      LibGtk.action_block_activate(to_unsafe.as(LibGtk::Action*))
+      nil
     end
 
     def connect_accelerator
-      __return_value = LibGtk.action_connect_accelerator(to_unsafe.as(LibGtk::Action*))
-      __return_value
+      LibGtk.action_connect_accelerator(to_unsafe.as(LibGtk::Action*))
+      nil
     end
 
     def create_icon(icon_size)
@@ -130,8 +130,8 @@ module Gtk
     end
 
     def disconnect_accelerator
-      __return_value = LibGtk.action_disconnect_accelerator(to_unsafe.as(LibGtk::Action*))
-      __return_value
+      LibGtk.action_disconnect_accelerator(to_unsafe.as(LibGtk::Action*))
+      nil
     end
 
     def accel_closure
@@ -225,78 +225,78 @@ module Gtk
     end
 
     def accel_group=(accel_group)
-      __return_value = LibGtk.action_set_accel_group(to_unsafe.as(LibGtk::Action*), accel_group ? accel_group.to_unsafe.as(LibGtk::AccelGroup*) : nil)
-      __return_value
+      LibGtk.action_set_accel_group(to_unsafe.as(LibGtk::Action*), accel_group ? accel_group.to_unsafe.as(LibGtk::AccelGroup*) : nil)
+      nil
     end
 
     def accel_path=(accel_path)
-      __return_value = LibGtk.action_set_accel_path(to_unsafe.as(LibGtk::Action*), accel_path.to_unsafe)
-      __return_value
+      LibGtk.action_set_accel_path(to_unsafe.as(LibGtk::Action*), accel_path.to_unsafe)
+      nil
     end
 
     def always_show_image=(always_show)
-      __return_value = LibGtk.action_set_always_show_image(to_unsafe.as(LibGtk::Action*), always_show)
-      __return_value
+      LibGtk.action_set_always_show_image(to_unsafe.as(LibGtk::Action*), always_show)
+      nil
     end
 
     def gicon=(icon)
-      __return_value = LibGtk.action_set_gicon(to_unsafe.as(LibGtk::Action*), icon.to_unsafe.as(LibGio::Icon*))
-      __return_value
+      LibGtk.action_set_gicon(to_unsafe.as(LibGtk::Action*), icon.to_unsafe.as(LibGio::Icon*))
+      nil
     end
 
     def icon_name=(icon_name)
-      __return_value = LibGtk.action_set_icon_name(to_unsafe.as(LibGtk::Action*), icon_name.to_unsafe)
-      __return_value
+      LibGtk.action_set_icon_name(to_unsafe.as(LibGtk::Action*), icon_name.to_unsafe)
+      nil
     end
 
     def is_important=(is_important)
-      __return_value = LibGtk.action_set_is_important(to_unsafe.as(LibGtk::Action*), is_important)
-      __return_value
+      LibGtk.action_set_is_important(to_unsafe.as(LibGtk::Action*), is_important)
+      nil
     end
 
     def label=(label)
-      __return_value = LibGtk.action_set_label(to_unsafe.as(LibGtk::Action*), label.to_unsafe)
-      __return_value
+      LibGtk.action_set_label(to_unsafe.as(LibGtk::Action*), label.to_unsafe)
+      nil
     end
 
     def sensitive=(sensitive)
-      __return_value = LibGtk.action_set_sensitive(to_unsafe.as(LibGtk::Action*), sensitive)
-      __return_value
+      LibGtk.action_set_sensitive(to_unsafe.as(LibGtk::Action*), sensitive)
+      nil
     end
 
     def short_label=(short_label)
-      __return_value = LibGtk.action_set_short_label(to_unsafe.as(LibGtk::Action*), short_label.to_unsafe)
-      __return_value
+      LibGtk.action_set_short_label(to_unsafe.as(LibGtk::Action*), short_label.to_unsafe)
+      nil
     end
 
     def stock_id=(stock_id)
-      __return_value = LibGtk.action_set_stock_id(to_unsafe.as(LibGtk::Action*), stock_id.to_unsafe)
-      __return_value
+      LibGtk.action_set_stock_id(to_unsafe.as(LibGtk::Action*), stock_id.to_unsafe)
+      nil
     end
 
     def tooltip=(tooltip)
-      __return_value = LibGtk.action_set_tooltip(to_unsafe.as(LibGtk::Action*), tooltip.to_unsafe)
-      __return_value
+      LibGtk.action_set_tooltip(to_unsafe.as(LibGtk::Action*), tooltip.to_unsafe)
+      nil
     end
 
     def visible=(visible)
-      __return_value = LibGtk.action_set_visible(to_unsafe.as(LibGtk::Action*), visible)
-      __return_value
+      LibGtk.action_set_visible(to_unsafe.as(LibGtk::Action*), visible)
+      nil
     end
 
     def visible_horizontal=(visible_horizontal)
-      __return_value = LibGtk.action_set_visible_horizontal(to_unsafe.as(LibGtk::Action*), visible_horizontal)
-      __return_value
+      LibGtk.action_set_visible_horizontal(to_unsafe.as(LibGtk::Action*), visible_horizontal)
+      nil
     end
 
     def visible_vertical=(visible_vertical)
-      __return_value = LibGtk.action_set_visible_vertical(to_unsafe.as(LibGtk::Action*), visible_vertical)
-      __return_value
+      LibGtk.action_set_visible_vertical(to_unsafe.as(LibGtk::Action*), visible_vertical)
+      nil
     end
 
     def unblock_activate
-      __return_value = LibGtk.action_unblock_activate(to_unsafe.as(LibGtk::Action*))
-      __return_value
+      LibGtk.action_unblock_activate(to_unsafe.as(LibGtk::Action*))
+      nil
     end
 
     alias ActivateSignal = Action ->

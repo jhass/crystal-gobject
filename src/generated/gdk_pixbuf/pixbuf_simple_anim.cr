@@ -21,8 +21,8 @@ module GdkPixbuf
     end
 
     def add_frame(pixbuf)
-      __return_value = LibGdkPixbuf.pixbuf_simple_anim_add_frame(to_unsafe.as(LibGdkPixbuf::PixbufSimpleAnim*), pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*))
-      __return_value
+      LibGdkPixbuf.pixbuf_simple_anim_add_frame(to_unsafe.as(LibGdkPixbuf::PixbufSimpleAnim*), pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*))
+      nil
     end
 
     def loop
@@ -31,8 +31,8 @@ module GdkPixbuf
     end
 
     def loop=(loop)
-      __return_value = LibGdkPixbuf.pixbuf_simple_anim_set_loop(to_unsafe.as(LibGdkPixbuf::PixbufSimpleAnim*), loop)
-      __return_value
+      LibGdkPixbuf.pixbuf_simple_anim_set_loop(to_unsafe.as(LibGdkPixbuf::PixbufSimpleAnim*), loop)
+      nil
     end
 
   end

@@ -29,8 +29,8 @@ module Gtk
     end
 
     def add_action_widget(child, response_id)
-      __return_value = LibGtk.info_bar_add_action_widget(to_unsafe.as(LibGtk::InfoBar*), child.to_unsafe.as(LibGtk::Widget*), Int32.new(response_id))
-      __return_value
+      LibGtk.info_bar_add_action_widget(to_unsafe.as(LibGtk::InfoBar*), child.to_unsafe.as(LibGtk::Widget*), Int32.new(response_id))
+      nil
     end
 
     def add_button(button_text, response_id)
@@ -59,28 +59,28 @@ module Gtk
     end
 
     def response(response_id)
-      __return_value = LibGtk.info_bar_response(to_unsafe.as(LibGtk::InfoBar*), Int32.new(response_id))
-      __return_value
+      LibGtk.info_bar_response(to_unsafe.as(LibGtk::InfoBar*), Int32.new(response_id))
+      nil
     end
 
     def default_response=(response_id)
-      __return_value = LibGtk.info_bar_set_default_response(to_unsafe.as(LibGtk::InfoBar*), Int32.new(response_id))
-      __return_value
+      LibGtk.info_bar_set_default_response(to_unsafe.as(LibGtk::InfoBar*), Int32.new(response_id))
+      nil
     end
 
     def message_type=(message_type : Gtk::MessageType)
-      __return_value = LibGtk.info_bar_set_message_type(to_unsafe.as(LibGtk::InfoBar*), message_type)
-      __return_value
+      LibGtk.info_bar_set_message_type(to_unsafe.as(LibGtk::InfoBar*), message_type)
+      nil
     end
 
     def set_response_sensitive(response_id, setting)
-      __return_value = LibGtk.info_bar_set_response_sensitive(to_unsafe.as(LibGtk::InfoBar*), Int32.new(response_id), setting)
-      __return_value
+      LibGtk.info_bar_set_response_sensitive(to_unsafe.as(LibGtk::InfoBar*), Int32.new(response_id), setting)
+      nil
     end
 
     def show_close_button=(setting)
-      __return_value = LibGtk.info_bar_set_show_close_button(to_unsafe.as(LibGtk::InfoBar*), setting)
-      __return_value
+      LibGtk.info_bar_set_show_close_button(to_unsafe.as(LibGtk::InfoBar*), setting)
+      nil
     end
 
     alias CloseSignal = InfoBar ->

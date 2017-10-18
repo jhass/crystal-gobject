@@ -18,8 +18,8 @@ module Gio
     end
 
     def list_schemas(recursive, non_relocatable, relocatable)
-      __return_value = LibGio.settings_schema_source_list_schemas(to_unsafe.as(LibGio::SettingsSchemaSource*), recursive, non_relocatable, relocatable)
-      __return_value
+      LibGio.settings_schema_source_list_schemas(to_unsafe.as(LibGio::SettingsSchemaSource*), recursive, non_relocatable, relocatable)
+      nil
     end
 
     def lookup(schema_id, recursive)
@@ -33,8 +33,8 @@ module Gio
     end
 
     def unref
-      __return_value = LibGio.settings_schema_source_unref(to_unsafe.as(LibGio::SettingsSchemaSource*))
-      __return_value
+      LibGio.settings_schema_source_unref(to_unsafe.as(LibGio::SettingsSchemaSource*))
+      nil
     end
 
     def self.default

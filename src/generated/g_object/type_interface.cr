@@ -21,8 +21,8 @@ module GObject
     end
 
     def self.add_prerequisite(interface_type, prerequisite_type)
-      __return_value = LibGObject.type_interface_add_prerequisite(UInt64.new(interface_type), UInt64.new(prerequisite_type))
-      __return_value
+      LibGObject.type_interface_add_prerequisite(UInt64.new(interface_type), UInt64.new(prerequisite_type))
+      nil
     end
 
     def self.plugin(instance_type, interface_type)

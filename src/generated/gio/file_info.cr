@@ -14,13 +14,13 @@ module Gio
     end
 
     def clear_status
-      __return_value = LibGio.file_info_clear_status(to_unsafe.as(LibGio::FileInfo*))
-      __return_value
+      LibGio.file_info_clear_status(to_unsafe.as(LibGio::FileInfo*))
+      nil
     end
 
     def copy_into(dest_info)
-      __return_value = LibGio.file_info_copy_into(to_unsafe.as(LibGio::FileInfo*), dest_info.to_unsafe.as(LibGio::FileInfo*))
-      __return_value
+      LibGio.file_info_copy_into(to_unsafe.as(LibGio::FileInfo*), dest_info.to_unsafe.as(LibGio::FileInfo*))
+      nil
     end
 
     def dup
@@ -144,8 +144,8 @@ module Gio
     end
 
     def modification_time(result)
-      __return_value = LibGio.file_info_get_modification_time(to_unsafe.as(LibGio::FileInfo*), result)
-      __return_value
+      LibGio.file_info_get_modification_time(to_unsafe.as(LibGio::FileInfo*), result)
+      nil
     end
 
     def name
@@ -189,43 +189,43 @@ module Gio
     end
 
     def remove_attribute(attribute)
-      __return_value = LibGio.file_info_remove_attribute(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe)
-      __return_value
+      LibGio.file_info_remove_attribute(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe)
+      nil
     end
 
     def set_attribute(attribute, type : Gio::FileAttributeType, value_p)
-      __return_value = LibGio.file_info_set_attribute(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe, type, value_p)
-      __return_value
+      LibGio.file_info_set_attribute(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe, type, value_p)
+      nil
     end
 
     def set_attribute_boolean(attribute, attr_value)
-      __return_value = LibGio.file_info_set_attribute_boolean(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe, attr_value)
-      __return_value
+      LibGio.file_info_set_attribute_boolean(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe, attr_value)
+      nil
     end
 
     def set_attribute_byte_string(attribute, attr_value)
-      __return_value = LibGio.file_info_set_attribute_byte_string(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe, attr_value.to_unsafe)
-      __return_value
+      LibGio.file_info_set_attribute_byte_string(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe, attr_value.to_unsafe)
+      nil
     end
 
     def set_attribute_int32(attribute, attr_value)
-      __return_value = LibGio.file_info_set_attribute_int32(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe, Int32.new(attr_value))
-      __return_value
+      LibGio.file_info_set_attribute_int32(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe, Int32.new(attr_value))
+      nil
     end
 
     def set_attribute_int64(attribute, attr_value)
-      __return_value = LibGio.file_info_set_attribute_int64(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe, Int64.new(attr_value))
-      __return_value
+      LibGio.file_info_set_attribute_int64(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe, Int64.new(attr_value))
+      nil
     end
 
     def attribute_mask=(mask)
-      __return_value = LibGio.file_info_set_attribute_mask(to_unsafe.as(LibGio::FileInfo*), mask.to_unsafe.as(LibGio::FileAttributeMatcher*))
-      __return_value
+      LibGio.file_info_set_attribute_mask(to_unsafe.as(LibGio::FileInfo*), mask.to_unsafe.as(LibGio::FileAttributeMatcher*))
+      nil
     end
 
     def set_attribute_object(attribute, attr_value)
-      __return_value = LibGio.file_info_set_attribute_object(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe, attr_value.to_unsafe.as(LibGObject::Object*))
-      __return_value
+      LibGio.file_info_set_attribute_object(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe, attr_value.to_unsafe.as(LibGObject::Object*))
+      nil
     end
 
     def set_attribute_status(attribute, status : Gio::FileAttributeStatus)
@@ -234,93 +234,93 @@ module Gio
     end
 
     def set_attribute_string(attribute, attr_value)
-      __return_value = LibGio.file_info_set_attribute_string(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe, attr_value.to_unsafe)
-      __return_value
+      LibGio.file_info_set_attribute_string(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe, attr_value.to_unsafe)
+      nil
     end
 
     def set_attribute_stringv(attribute, attr_value)
-      __return_value = LibGio.file_info_set_attribute_stringv(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe, attr_value)
-      __return_value
+      LibGio.file_info_set_attribute_stringv(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe, attr_value)
+      nil
     end
 
     def set_attribute_uint32(attribute, attr_value)
-      __return_value = LibGio.file_info_set_attribute_uint32(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe, UInt32.new(attr_value))
-      __return_value
+      LibGio.file_info_set_attribute_uint32(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe, UInt32.new(attr_value))
+      nil
     end
 
     def set_attribute_uint64(attribute, attr_value)
-      __return_value = LibGio.file_info_set_attribute_uint64(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe, UInt64.new(attr_value))
-      __return_value
+      LibGio.file_info_set_attribute_uint64(to_unsafe.as(LibGio::FileInfo*), attribute.to_unsafe, UInt64.new(attr_value))
+      nil
     end
 
     def content_type=(content_type)
-      __return_value = LibGio.file_info_set_content_type(to_unsafe.as(LibGio::FileInfo*), content_type.to_unsafe)
-      __return_value
+      LibGio.file_info_set_content_type(to_unsafe.as(LibGio::FileInfo*), content_type.to_unsafe)
+      nil
     end
 
     def display_name=(display_name)
-      __return_value = LibGio.file_info_set_display_name(to_unsafe.as(LibGio::FileInfo*), display_name.to_unsafe)
-      __return_value
+      LibGio.file_info_set_display_name(to_unsafe.as(LibGio::FileInfo*), display_name.to_unsafe)
+      nil
     end
 
     def edit_name=(edit_name)
-      __return_value = LibGio.file_info_set_edit_name(to_unsafe.as(LibGio::FileInfo*), edit_name.to_unsafe)
-      __return_value
+      LibGio.file_info_set_edit_name(to_unsafe.as(LibGio::FileInfo*), edit_name.to_unsafe)
+      nil
     end
 
     def file_type=(type : Gio::FileType)
-      __return_value = LibGio.file_info_set_file_type(to_unsafe.as(LibGio::FileInfo*), type)
-      __return_value
+      LibGio.file_info_set_file_type(to_unsafe.as(LibGio::FileInfo*), type)
+      nil
     end
 
     def icon=(icon)
-      __return_value = LibGio.file_info_set_icon(to_unsafe.as(LibGio::FileInfo*), icon.to_unsafe.as(LibGio::Icon*))
-      __return_value
+      LibGio.file_info_set_icon(to_unsafe.as(LibGio::FileInfo*), icon.to_unsafe.as(LibGio::Icon*))
+      nil
     end
 
     def is_hidden=(is_hidden)
-      __return_value = LibGio.file_info_set_is_hidden(to_unsafe.as(LibGio::FileInfo*), is_hidden)
-      __return_value
+      LibGio.file_info_set_is_hidden(to_unsafe.as(LibGio::FileInfo*), is_hidden)
+      nil
     end
 
     def is_symlink=(is_symlink)
-      __return_value = LibGio.file_info_set_is_symlink(to_unsafe.as(LibGio::FileInfo*), is_symlink)
-      __return_value
+      LibGio.file_info_set_is_symlink(to_unsafe.as(LibGio::FileInfo*), is_symlink)
+      nil
     end
 
     def modification_time=(mtime)
-      __return_value = LibGio.file_info_set_modification_time(to_unsafe.as(LibGio::FileInfo*), mtime.to_unsafe.as(LibGLib::TimeVal*))
-      __return_value
+      LibGio.file_info_set_modification_time(to_unsafe.as(LibGio::FileInfo*), mtime.to_unsafe.as(LibGLib::TimeVal*))
+      nil
     end
 
     def name=(name)
-      __return_value = LibGio.file_info_set_name(to_unsafe.as(LibGio::FileInfo*), name.to_unsafe)
-      __return_value
+      LibGio.file_info_set_name(to_unsafe.as(LibGio::FileInfo*), name.to_unsafe)
+      nil
     end
 
     def size=(size)
-      __return_value = LibGio.file_info_set_size(to_unsafe.as(LibGio::FileInfo*), Int64.new(size))
-      __return_value
+      LibGio.file_info_set_size(to_unsafe.as(LibGio::FileInfo*), Int64.new(size))
+      nil
     end
 
     def sort_order=(sort_order)
-      __return_value = LibGio.file_info_set_sort_order(to_unsafe.as(LibGio::FileInfo*), Int32.new(sort_order))
-      __return_value
+      LibGio.file_info_set_sort_order(to_unsafe.as(LibGio::FileInfo*), Int32.new(sort_order))
+      nil
     end
 
     def symbolic_icon=(icon)
-      __return_value = LibGio.file_info_set_symbolic_icon(to_unsafe.as(LibGio::FileInfo*), icon.to_unsafe.as(LibGio::Icon*))
-      __return_value
+      LibGio.file_info_set_symbolic_icon(to_unsafe.as(LibGio::FileInfo*), icon.to_unsafe.as(LibGio::Icon*))
+      nil
     end
 
     def symlink_target=(symlink_target)
-      __return_value = LibGio.file_info_set_symlink_target(to_unsafe.as(LibGio::FileInfo*), symlink_target.to_unsafe)
-      __return_value
+      LibGio.file_info_set_symlink_target(to_unsafe.as(LibGio::FileInfo*), symlink_target.to_unsafe)
+      nil
     end
 
     def unset_attribute_mask
-      __return_value = LibGio.file_info_unset_attribute_mask(to_unsafe.as(LibGio::FileInfo*))
-      __return_value
+      LibGio.file_info_unset_attribute_mask(to_unsafe.as(LibGio::FileInfo*))
+      nil
     end
 
   end

@@ -51,18 +51,18 @@ module Gtk
     end
 
     def button=(button)
-      __return_value = LibGtk.gesture_single_set_button(to_unsafe.as(LibGtk::GestureSingle*), UInt32.new(button))
-      __return_value
+      LibGtk.gesture_single_set_button(to_unsafe.as(LibGtk::GestureSingle*), UInt32.new(button))
+      nil
     end
 
     def exclusive=(exclusive)
-      __return_value = LibGtk.gesture_single_set_exclusive(to_unsafe.as(LibGtk::GestureSingle*), exclusive)
-      __return_value
+      LibGtk.gesture_single_set_exclusive(to_unsafe.as(LibGtk::GestureSingle*), exclusive)
+      nil
     end
 
     def touch_only=(touch_only)
-      __return_value = LibGtk.gesture_single_set_touch_only(to_unsafe.as(LibGtk::GestureSingle*), touch_only)
-      __return_value
+      LibGtk.gesture_single_set_touch_only(to_unsafe.as(LibGtk::GestureSingle*), touch_only)
+      nil
     end
 
   end

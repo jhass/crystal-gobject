@@ -44,8 +44,8 @@ module Gtk
     end
 
     def heading=(heading)
-      __return_value = LibGtk.app_chooser_dialog_set_heading(to_unsafe.as(LibGtk::AppChooserDialog*), heading.to_unsafe)
-      __return_value
+      LibGtk.app_chooser_dialog_set_heading(to_unsafe.as(LibGtk::AppChooserDialog*), heading.to_unsafe)
+      nil
     end
 
   end

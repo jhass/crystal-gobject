@@ -43,8 +43,8 @@ module GLib
     end
 
     def free
-      __return_value = LibGLib.match_info_free(to_unsafe.as(LibGLib::MatchInfo*))
-      __return_value
+      LibGLib.match_info_free(to_unsafe.as(LibGLib::MatchInfo*))
+      nil
     end
 
     def match_count
@@ -85,8 +85,8 @@ module GLib
     end
 
     def unref
-      __return_value = LibGLib.match_info_unref(to_unsafe.as(LibGLib::MatchInfo*))
-      __return_value
+      LibGLib.match_info_unref(to_unsafe.as(LibGLib::MatchInfo*))
+      nil
     end
 
   end

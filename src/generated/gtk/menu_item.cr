@@ -55,13 +55,13 @@ module Gtk
     end
 
     def activate
-      __return_value = LibGtk.menu_item_activate(to_unsafe.as(LibGtk::MenuItem*))
-      __return_value
+      LibGtk.menu_item_activate(to_unsafe.as(LibGtk::MenuItem*))
+      nil
     end
 
     def deselect
-      __return_value = LibGtk.menu_item_deselect(to_unsafe.as(LibGtk::MenuItem*))
-      __return_value
+      LibGtk.menu_item_deselect(to_unsafe.as(LibGtk::MenuItem*))
+      nil
     end
 
     def accel_path
@@ -95,48 +95,48 @@ module Gtk
     end
 
     def select
-      __return_value = LibGtk.menu_item_select(to_unsafe.as(LibGtk::MenuItem*))
-      __return_value
+      LibGtk.menu_item_select(to_unsafe.as(LibGtk::MenuItem*))
+      nil
     end
 
     def accel_path=(accel_path)
-      __return_value = LibGtk.menu_item_set_accel_path(to_unsafe.as(LibGtk::MenuItem*), accel_path ? accel_path.to_unsafe : nil)
-      __return_value
+      LibGtk.menu_item_set_accel_path(to_unsafe.as(LibGtk::MenuItem*), accel_path ? accel_path.to_unsafe : nil)
+      nil
     end
 
     def label=(label)
-      __return_value = LibGtk.menu_item_set_label(to_unsafe.as(LibGtk::MenuItem*), label.to_unsafe)
-      __return_value
+      LibGtk.menu_item_set_label(to_unsafe.as(LibGtk::MenuItem*), label.to_unsafe)
+      nil
     end
 
     def reserve_indicator=(reserve)
-      __return_value = LibGtk.menu_item_set_reserve_indicator(to_unsafe.as(LibGtk::MenuItem*), reserve)
-      __return_value
+      LibGtk.menu_item_set_reserve_indicator(to_unsafe.as(LibGtk::MenuItem*), reserve)
+      nil
     end
 
     def right_justified=(right_justified)
-      __return_value = LibGtk.menu_item_set_right_justified(to_unsafe.as(LibGtk::MenuItem*), right_justified)
-      __return_value
+      LibGtk.menu_item_set_right_justified(to_unsafe.as(LibGtk::MenuItem*), right_justified)
+      nil
     end
 
     def submenu=(submenu)
-      __return_value = LibGtk.menu_item_set_submenu(to_unsafe.as(LibGtk::MenuItem*), submenu ? submenu.to_unsafe.as(LibGtk::Menu*) : nil)
-      __return_value
+      LibGtk.menu_item_set_submenu(to_unsafe.as(LibGtk::MenuItem*), submenu ? submenu.to_unsafe.as(LibGtk::Menu*) : nil)
+      nil
     end
 
     def use_underline=(setting)
-      __return_value = LibGtk.menu_item_set_use_underline(to_unsafe.as(LibGtk::MenuItem*), setting)
-      __return_value
+      LibGtk.menu_item_set_use_underline(to_unsafe.as(LibGtk::MenuItem*), setting)
+      nil
     end
 
     def toggle_size_allocate(allocation)
-      __return_value = LibGtk.menu_item_toggle_size_allocate(to_unsafe.as(LibGtk::MenuItem*), Int32.new(allocation))
-      __return_value
+      LibGtk.menu_item_toggle_size_allocate(to_unsafe.as(LibGtk::MenuItem*), Int32.new(allocation))
+      nil
     end
 
     def toggle_size_request(requisition)
-      __return_value = LibGtk.menu_item_toggle_size_request(to_unsafe.as(LibGtk::MenuItem*), requisition)
-      __return_value
+      LibGtk.menu_item_toggle_size_request(to_unsafe.as(LibGtk::MenuItem*), requisition)
+      nil
     end
 
     alias ActivateSignal = MenuItem ->

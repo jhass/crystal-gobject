@@ -555,7 +555,7 @@ lib LibGio
     _make_symbolic_link_async : Void*
     _make_symbolic_link_finish : Void*
     copy : -> Void
-    copy_async : Void*
+    copy_async : -> Void
     copy_finish : -> Void
     move : -> Void
     _move_async : Void*
@@ -597,6 +597,7 @@ lib LibGio
     # Virtual function append_to_async
     # Virtual function append_to_finish
     # Virtual function copy
+    # Virtual function copy_async
     # Virtual function copy_finish
     # Virtual function create
     # Virtual function create_async
@@ -695,6 +696,7 @@ lib LibGio
   fun file_append_to_async = g_file_append_to_async(this : File*, flags : LibGio::FileCreateFlags, io_priority : Int32, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun file_append_to_finish = g_file_append_to_finish(this : File*, res : LibGio::AsyncResult*, error : LibGLib::Error**) : LibGio::FileOutputStream*
   fun file_copy = g_file_copy(this : File*, destination : LibGio::File*, flags : LibGio::FileCopyFlags, cancellable : LibGio::Cancellable*, progress_callback : LibGio::FileProgressCallback, progress_callback_data : Void*, error : LibGLib::Error**) : Bool
+  fun file_copy_async = g_file_copy_async(this : File*, destination : LibGio::File*, flags : LibGio::FileCopyFlags, io_priority : Int32, cancellable : LibGio::Cancellable*, progress_callback : LibGio::FileProgressCallback, progress_callback_data : Void*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun file_copy_attributes = g_file_copy_attributes(this : File*, destination : LibGio::File*, flags : LibGio::FileCopyFlags, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Bool
   fun file_copy_finish = g_file_copy_finish(this : File*, res : LibGio::AsyncResult*, error : LibGLib::Error**) : Bool
   fun file_create = g_file_create(this : File*, flags : LibGio::FileCreateFlags, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : LibGio::FileOutputStream*
@@ -1758,6 +1760,7 @@ lib LibGio
     _data : UInt8[0]
   end
   fun unix_mount_point_compare = g_unix_mount_point_compare(this : UnixMountPoint*, mount2 : LibGio::UnixMountPoint*) : Int32
+  fun unix_mount_point_copy = g_unix_mount_point_copy(this : UnixMountPoint*) : LibGio::UnixMountPoint*
   fun unix_mount_point_free = g_unix_mount_point_free(this : UnixMountPoint*) : Void
   fun unix_mount_point_get_device_path = g_unix_mount_point_get_device_path(this : UnixMountPoint*) : UInt8*
   fun unix_mount_point_get_fs_type = g_unix_mount_point_get_fs_type(this : UnixMountPoint*) : UInt8*
@@ -1822,6 +1825,7 @@ lib LibGio
     NONE = 0
     ALLOW_REPLACEMENT = 1
     REPLACE = 2
+    DO_NOT_QUEUE = 4
   end
 
   @[Flags]
@@ -4606,7 +4610,10 @@ lib LibGio
   fun tls_file_database_new = g_tls_file_database_new(anchors : UInt8*, error : LibGLib::Error**) : LibGio::TlsFileDatabase*
   fun tls_server_connection_new = g_tls_server_connection_new(base_io_stream : LibGio::IOStream*, certificate : LibGio::TlsCertificate*, error : LibGLib::Error**) : LibGio::TlsServerConnection*
   fun unix_is_mount_path_system_internal = g_unix_is_mount_path_system_internal(mount_path : UInt8*) : Bool
+  fun unix_mount_at = g_unix_mount_at(mount_path : UInt8*, time_read : UInt64*) : LibGio::UnixMountEntry*
   fun unix_mount_compare = g_unix_mount_compare(mount1 : LibGio::UnixMountEntry*, mount2 : LibGio::UnixMountEntry*) : Int32
+  fun unix_mount_copy = g_unix_mount_copy(mount_entry : LibGio::UnixMountEntry*) : LibGio::UnixMountEntry*
+  fun unix_mount_for = g_unix_mount_for(file_path : UInt8*, time_read : UInt64*) : LibGio::UnixMountEntry*
   fun unix_mount_free = g_unix_mount_free(mount_entry : LibGio::UnixMountEntry*) : Void
   fun unix_mount_get_device_path = g_unix_mount_get_device_path(mount_entry : LibGio::UnixMountEntry*) : UInt8*
   fun unix_mount_get_fs_type = g_unix_mount_get_fs_type(mount_entry : LibGio::UnixMountEntry*) : UInt8*
@@ -4619,7 +4626,9 @@ lib LibGio
   fun unix_mount_is_readonly = g_unix_mount_is_readonly(mount_entry : LibGio::UnixMountEntry*) : Bool
   fun unix_mount_is_system_internal = g_unix_mount_is_system_internal(mount_entry : LibGio::UnixMountEntry*) : Bool
   fun unix_mount_points_changed_since = g_unix_mount_points_changed_since(time : UInt64) : Bool
+  fun unix_mount_points_get = g_unix_mount_points_get(time_read : UInt64*) : Void**
   fun unix_mounts_changed_since = g_unix_mounts_changed_since(time : UInt64) : Bool
+  fun unix_mounts_get = g_unix_mounts_get(time_read : UInt64*) : Void**
 
   ###########################################
   ##    Callbacks

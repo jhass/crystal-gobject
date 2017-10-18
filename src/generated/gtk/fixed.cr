@@ -18,13 +18,13 @@ module Gtk
     end
 
     def move(widget, x, y)
-      __return_value = LibGtk.fixed_move(to_unsafe.as(LibGtk::Fixed*), widget.to_unsafe.as(LibGtk::Widget*), Int32.new(x), Int32.new(y))
-      __return_value
+      LibGtk.fixed_move(to_unsafe.as(LibGtk::Fixed*), widget.to_unsafe.as(LibGtk::Widget*), Int32.new(x), Int32.new(y))
+      nil
     end
 
     def put(widget, x, y)
-      __return_value = LibGtk.fixed_put(to_unsafe.as(LibGtk::Fixed*), widget.to_unsafe.as(LibGtk::Widget*), Int32.new(x), Int32.new(y))
-      __return_value
+      LibGtk.fixed_put(to_unsafe.as(LibGtk::Fixed*), widget.to_unsafe.as(LibGtk::Widget*), Int32.new(x), Int32.new(y))
+      nil
     end
 
   end

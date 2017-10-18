@@ -21,8 +21,8 @@ module Gio
     end
 
     def graceful_disconnect=(graceful_disconnect)
-      __return_value = LibGio.tcp_connection_set_graceful_disconnect(to_unsafe.as(LibGio::TcpConnection*), graceful_disconnect)
-      __return_value
+      LibGio.tcp_connection_set_graceful_disconnect(to_unsafe.as(LibGio::TcpConnection*), graceful_disconnect)
+      nil
     end
 
   end

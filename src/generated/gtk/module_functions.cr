@@ -35,18 +35,18 @@ module Gtk
   end
 
   def self.accelerator_parse(accelerator, accelerator_key, accelerator_mods : Gdk::ModifierType?)
-    __return_value = LibGtk.accelerator_parse(accelerator.to_unsafe, accelerator_key, accelerator_mods)
-    __return_value
+    LibGtk.accelerator_parse(accelerator.to_unsafe, accelerator_key, accelerator_mods)
+    nil
   end
 
   def self.accelerator_parse_with_keycode(accelerator, accelerator_key, accelerator_codes, accelerator_mods : Gdk::ModifierType?)
-    __return_value = LibGtk.accelerator_parse_with_keycode(accelerator.to_unsafe, accelerator_key, accelerator_codes, accelerator_mods)
-    __return_value
+    LibGtk.accelerator_parse_with_keycode(accelerator.to_unsafe, accelerator_key, accelerator_codes, accelerator_mods)
+    nil
   end
 
   def self.accelerator_set_default_mod_mask(default_mod_mask : Gdk::ModifierType)
-    __return_value = LibGtk.accelerator_set_default_mod_mask(default_mod_mask)
-    __return_value
+    LibGtk.accelerator_set_default_mod_mask(default_mod_mask)
+    nil
   end
 
   def self.accelerator_valid(keyval, modifiers : Gdk::ModifierType)
@@ -65,18 +65,18 @@ module Gtk
   end
 
   def self.binding_entry_add_signall(binding_set, keyval, modifiers : Gdk::ModifierType, signal_name, binding_args)
-    __return_value = LibGtk.binding_entry_add_signall(binding_set.to_unsafe.as(LibGtk::BindingSet*), UInt32.new(keyval), modifiers, signal_name.to_unsafe, binding_args)
-    __return_value
+    LibGtk.binding_entry_add_signall(binding_set.to_unsafe.as(LibGtk::BindingSet*), UInt32.new(keyval), modifiers, signal_name.to_unsafe, binding_args)
+    nil
   end
 
   def self.binding_entry_remove(binding_set, keyval, modifiers : Gdk::ModifierType)
-    __return_value = LibGtk.binding_entry_remove(binding_set.to_unsafe.as(LibGtk::BindingSet*), UInt32.new(keyval), modifiers)
-    __return_value
+    LibGtk.binding_entry_remove(binding_set.to_unsafe.as(LibGtk::BindingSet*), UInt32.new(keyval), modifiers)
+    nil
   end
 
   def self.binding_entry_skip(binding_set, keyval, modifiers : Gdk::ModifierType)
-    __return_value = LibGtk.binding_entry_skip(binding_set.to_unsafe.as(LibGtk::BindingSet*), UInt32.new(keyval), modifiers)
-    __return_value
+    LibGtk.binding_entry_skip(binding_set.to_unsafe.as(LibGtk::BindingSet*), UInt32.new(keyval), modifiers)
+    nil
   end
 
   def self.binding_set_find(set_name)
@@ -105,8 +105,8 @@ module Gtk
   end
 
   def self.cairo_transform_to_window(cr, widget, window)
-    __return_value = LibGtk.cairo_transform_to_window(cr.to_unsafe.as(LibCairo::Context*), widget.to_unsafe.as(LibGtk::Widget*), window.to_unsafe.as(LibGdk::Window*))
-    __return_value
+    LibGtk.cairo_transform_to_window(cr.to_unsafe.as(LibCairo::Context*), widget.to_unsafe.as(LibGtk::Widget*), window.to_unsafe.as(LibGdk::Window*))
+    nil
   end
 
   def self.check_version(required_major, required_minor, required_micro)
@@ -120,18 +120,18 @@ module Gtk
   end
 
   def self.device_grab_add(widget, device, block_others)
-    __return_value = LibGtk.device_grab_add(widget.to_unsafe.as(LibGtk::Widget*), device.to_unsafe.as(LibGdk::Device*), block_others)
-    __return_value
+    LibGtk.device_grab_add(widget.to_unsafe.as(LibGtk::Widget*), device.to_unsafe.as(LibGdk::Device*), block_others)
+    nil
   end
 
   def self.device_grab_remove(widget, device)
-    __return_value = LibGtk.device_grab_remove(widget.to_unsafe.as(LibGtk::Widget*), device.to_unsafe.as(LibGdk::Device*))
-    __return_value
+    LibGtk.device_grab_remove(widget.to_unsafe.as(LibGtk::Widget*), device.to_unsafe.as(LibGdk::Device*))
+    nil
   end
 
   def self.disable_setlocale
-    __return_value = LibGtk.disable_setlocale
-    __return_value
+    LibGtk.disable_setlocale
+    nil
   end
 
   def self.distribute_natural_allocation(extra_space, n_requested_sizes, sizes)
@@ -140,13 +140,13 @@ module Gtk
   end
 
   def self.drag_cancel(context)
-    __return_value = LibGtk.drag_cancel(context.to_unsafe.as(LibGdk::DragContext*))
-    __return_value
+    LibGtk.drag_cancel(context.to_unsafe.as(LibGdk::DragContext*))
+    nil
   end
 
   def self.drag_finish(context, success, del, time)
-    __return_value = LibGtk.drag_finish(context.to_unsafe.as(LibGdk::DragContext*), success, del, UInt32.new(time))
-    __return_value
+    LibGtk.drag_finish(context.to_unsafe.as(LibGdk::DragContext*), success, del, UInt32.new(time))
+    nil
   end
 
   def self.drag_get_source_widget(context)
@@ -155,43 +155,43 @@ module Gtk
   end
 
   def self.drag_set_icon_default(context)
-    __return_value = LibGtk.drag_set_icon_default(context.to_unsafe.as(LibGdk::DragContext*))
-    __return_value
+    LibGtk.drag_set_icon_default(context.to_unsafe.as(LibGdk::DragContext*))
+    nil
   end
 
   def self.drag_set_icon_gicon(context, icon, hot_x, hot_y)
-    __return_value = LibGtk.drag_set_icon_gicon(context.to_unsafe.as(LibGdk::DragContext*), icon.to_unsafe.as(LibGio::Icon*), Int32.new(hot_x), Int32.new(hot_y))
-    __return_value
+    LibGtk.drag_set_icon_gicon(context.to_unsafe.as(LibGdk::DragContext*), icon.to_unsafe.as(LibGio::Icon*), Int32.new(hot_x), Int32.new(hot_y))
+    nil
   end
 
   def self.drag_set_icon_name(context, icon_name, hot_x, hot_y)
-    __return_value = LibGtk.drag_set_icon_name(context.to_unsafe.as(LibGdk::DragContext*), icon_name.to_unsafe, Int32.new(hot_x), Int32.new(hot_y))
-    __return_value
+    LibGtk.drag_set_icon_name(context.to_unsafe.as(LibGdk::DragContext*), icon_name.to_unsafe, Int32.new(hot_x), Int32.new(hot_y))
+    nil
   end
 
   def self.drag_set_icon_pixbuf(context, pixbuf, hot_x, hot_y)
-    __return_value = LibGtk.drag_set_icon_pixbuf(context.to_unsafe.as(LibGdk::DragContext*), pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*), Int32.new(hot_x), Int32.new(hot_y))
-    __return_value
+    LibGtk.drag_set_icon_pixbuf(context.to_unsafe.as(LibGdk::DragContext*), pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*), Int32.new(hot_x), Int32.new(hot_y))
+    nil
   end
 
   def self.drag_set_icon_stock(context, stock_id, hot_x, hot_y)
-    __return_value = LibGtk.drag_set_icon_stock(context.to_unsafe.as(LibGdk::DragContext*), stock_id.to_unsafe, Int32.new(hot_x), Int32.new(hot_y))
-    __return_value
+    LibGtk.drag_set_icon_stock(context.to_unsafe.as(LibGdk::DragContext*), stock_id.to_unsafe, Int32.new(hot_x), Int32.new(hot_y))
+    nil
   end
 
   def self.drag_set_icon_surface(context, surface)
-    __return_value = LibGtk.drag_set_icon_surface(context.to_unsafe.as(LibGdk::DragContext*), surface.to_unsafe.as(LibCairo::Surface*))
-    __return_value
+    LibGtk.drag_set_icon_surface(context.to_unsafe.as(LibGdk::DragContext*), surface.to_unsafe.as(LibCairo::Surface*))
+    nil
   end
 
   def self.drag_set_icon_widget(context, widget, hot_x, hot_y)
-    __return_value = LibGtk.drag_set_icon_widget(context.to_unsafe.as(LibGdk::DragContext*), widget.to_unsafe.as(LibGtk::Widget*), Int32.new(hot_x), Int32.new(hot_y))
-    __return_value
+    LibGtk.drag_set_icon_widget(context.to_unsafe.as(LibGdk::DragContext*), widget.to_unsafe.as(LibGtk::Widget*), Int32.new(hot_x), Int32.new(hot_y))
+    nil
   end
 
   def self.draw_insertion_cursor(widget, cr, location, is_primary, direction : Gtk::TextDirection, draw_arrow)
-    __return_value = LibGtk.draw_insertion_cursor(widget.to_unsafe.as(LibGtk::Widget*), cr.to_unsafe.as(LibCairo::Context*), location.to_unsafe.as(LibGdk::Rectangle*), is_primary, direction, draw_arrow)
-    __return_value
+    LibGtk.draw_insertion_cursor(widget.to_unsafe.as(LibGtk::Widget*), cr.to_unsafe.as(LibCairo::Context*), location.to_unsafe.as(LibGdk::Rectangle*), is_primary, direction, draw_arrow)
+    nil
   end
 
   def self.events_pending
@@ -310,8 +310,8 @@ module Gtk
   end
 
   def self.icon_size_register_alias(_alias, target)
-    __return_value = LibGtk.icon_size_register_alias(_alias.to_unsafe, Int32.new(target))
-    __return_value
+    LibGtk.icon_size_register_alias(_alias.to_unsafe, Int32.new(target))
+    nil
   end
 
   def self.icon_theme_error_quark
@@ -320,8 +320,8 @@ module Gtk
   end
 
   def self.init(argc, argv)
-    __return_value = LibGtk.init(argc, argv)
-    __return_value
+    LibGtk.init(argc, argv)
+    nil
   end
 
   def self.init_check(argc, argv)
@@ -337,18 +337,18 @@ module Gtk
   end
 
   def self.key_snooper_remove(snooper_handler_id)
-    __return_value = LibGtk.key_snooper_remove(UInt32.new(snooper_handler_id))
-    __return_value
+    LibGtk.key_snooper_remove(UInt32.new(snooper_handler_id))
+    nil
   end
 
   def self.main
-    __return_value = LibGtk.main
-    __return_value
+    LibGtk.main
+    nil
   end
 
   def self.main_do_event(event)
-    __return_value = LibGtk.main_do_event(event.to_unsafe.as(LibGdk::Event*))
-    __return_value
+    LibGtk.main_do_event(event.to_unsafe.as(LibGdk::Event*))
+    nil
   end
 
   def self.main_iteration
@@ -367,108 +367,108 @@ module Gtk
   end
 
   def self.main_quit
-    __return_value = LibGtk.main_quit
-    __return_value
+    LibGtk.main_quit
+    nil
   end
 
   def self.paint_arrow(style, cr, state_type : Gtk::StateType, shadow_type : Gtk::ShadowType, widget, detail, arrow_type : Gtk::ArrowType, fill, x, y, width, height)
-    __return_value = LibGtk.paint_arrow(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, arrow_type, fill, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
-    __return_value
+    LibGtk.paint_arrow(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, arrow_type, fill, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
+    nil
   end
 
   def self.paint_box(style, cr, state_type : Gtk::StateType, shadow_type : Gtk::ShadowType, widget, detail, x, y, width, height)
-    __return_value = LibGtk.paint_box(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
-    __return_value
+    LibGtk.paint_box(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
+    nil
   end
 
   def self.paint_box_gap(style, cr, state_type : Gtk::StateType, shadow_type : Gtk::ShadowType, widget, detail, x, y, width, height, gap_side : Gtk::PositionType, gap_x, gap_width)
-    __return_value = LibGtk.paint_box_gap(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height), gap_side, Int32.new(gap_x), Int32.new(gap_width))
-    __return_value
+    LibGtk.paint_box_gap(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height), gap_side, Int32.new(gap_x), Int32.new(gap_width))
+    nil
   end
 
   def self.paint_check(style, cr, state_type : Gtk::StateType, shadow_type : Gtk::ShadowType, widget, detail, x, y, width, height)
-    __return_value = LibGtk.paint_check(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
-    __return_value
+    LibGtk.paint_check(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
+    nil
   end
 
   def self.paint_diamond(style, cr, state_type : Gtk::StateType, shadow_type : Gtk::ShadowType, widget, detail, x, y, width, height)
-    __return_value = LibGtk.paint_diamond(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
-    __return_value
+    LibGtk.paint_diamond(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
+    nil
   end
 
   def self.paint_expander(style, cr, state_type : Gtk::StateType, widget, detail, x, y, expander_style : Gtk::ExpanderStyle)
-    __return_value = LibGtk.paint_expander(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), expander_style)
-    __return_value
+    LibGtk.paint_expander(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), expander_style)
+    nil
   end
 
   def self.paint_extension(style, cr, state_type : Gtk::StateType, shadow_type : Gtk::ShadowType, widget, detail, x, y, width, height, gap_side : Gtk::PositionType)
-    __return_value = LibGtk.paint_extension(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height), gap_side)
-    __return_value
+    LibGtk.paint_extension(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height), gap_side)
+    nil
   end
 
   def self.paint_flat_box(style, cr, state_type : Gtk::StateType, shadow_type : Gtk::ShadowType, widget, detail, x, y, width, height)
-    __return_value = LibGtk.paint_flat_box(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
-    __return_value
+    LibGtk.paint_flat_box(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
+    nil
   end
 
   def self.paint_focus(style, cr, state_type : Gtk::StateType, widget, detail, x, y, width, height)
-    __return_value = LibGtk.paint_focus(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
-    __return_value
+    LibGtk.paint_focus(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
+    nil
   end
 
   def self.paint_handle(style, cr, state_type : Gtk::StateType, shadow_type : Gtk::ShadowType, widget, detail, x, y, width, height, orientation : Gtk::Orientation)
-    __return_value = LibGtk.paint_handle(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height), orientation)
-    __return_value
+    LibGtk.paint_handle(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height), orientation)
+    nil
   end
 
   def self.paint_hline(style, cr, state_type : Gtk::StateType, widget, detail, x1, x2, y)
-    __return_value = LibGtk.paint_hline(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x1), Int32.new(x2), Int32.new(y))
-    __return_value
+    LibGtk.paint_hline(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x1), Int32.new(x2), Int32.new(y))
+    nil
   end
 
   def self.paint_layout(style, cr, state_type : Gtk::StateType, use_text, widget, detail, x, y, layout)
-    __return_value = LibGtk.paint_layout(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, use_text, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), layout.to_unsafe.as(LibPango::Layout*))
-    __return_value
+    LibGtk.paint_layout(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, use_text, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), layout.to_unsafe.as(LibPango::Layout*))
+    nil
   end
 
   def self.paint_option(style, cr, state_type : Gtk::StateType, shadow_type : Gtk::ShadowType, widget, detail, x, y, width, height)
-    __return_value = LibGtk.paint_option(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
-    __return_value
+    LibGtk.paint_option(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
+    nil
   end
 
   def self.paint_resize_grip(style, cr, state_type : Gtk::StateType, widget, detail, edge : Gdk::WindowEdge, x, y, width, height)
-    __return_value = LibGtk.paint_resize_grip(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, edge, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
-    __return_value
+    LibGtk.paint_resize_grip(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, edge, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
+    nil
   end
 
   def self.paint_shadow(style, cr, state_type : Gtk::StateType, shadow_type : Gtk::ShadowType, widget, detail, x, y, width, height)
-    __return_value = LibGtk.paint_shadow(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
-    __return_value
+    LibGtk.paint_shadow(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
+    nil
   end
 
   def self.paint_shadow_gap(style, cr, state_type : Gtk::StateType, shadow_type : Gtk::ShadowType, widget, detail, x, y, width, height, gap_side : Gtk::PositionType, gap_x, gap_width)
-    __return_value = LibGtk.paint_shadow_gap(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height), gap_side, Int32.new(gap_x), Int32.new(gap_width))
-    __return_value
+    LibGtk.paint_shadow_gap(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height), gap_side, Int32.new(gap_x), Int32.new(gap_width))
+    nil
   end
 
   def self.paint_slider(style, cr, state_type : Gtk::StateType, shadow_type : Gtk::ShadowType, widget, detail, x, y, width, height, orientation : Gtk::Orientation)
-    __return_value = LibGtk.paint_slider(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height), orientation)
-    __return_value
+    LibGtk.paint_slider(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height), orientation)
+    nil
   end
 
   def self.paint_spinner(style, cr, state_type : Gtk::StateType, widget, detail, step, x, y, width, height)
-    __return_value = LibGtk.paint_spinner(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, UInt32.new(step), Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
-    __return_value
+    LibGtk.paint_spinner(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, UInt32.new(step), Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
+    nil
   end
 
   def self.paint_tab(style, cr, state_type : Gtk::StateType, shadow_type : Gtk::ShadowType, widget, detail, x, y, width, height)
-    __return_value = LibGtk.paint_tab(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
-    __return_value
+    LibGtk.paint_tab(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, shadow_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height))
+    nil
   end
 
   def self.paint_vline(style, cr, state_type : Gtk::StateType, widget, detail, y1, y2, x)
-    __return_value = LibGtk.paint_vline(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(y1), Int32.new(y2), Int32.new(x))
-    __return_value
+    LibGtk.paint_vline(style.to_unsafe.as(LibGtk::Style*), cr.to_unsafe.as(LibCairo::Context*), state_type, widget ? widget.to_unsafe.as(LibGtk::Widget*) : nil, detail ? detail.to_unsafe : nil, Int32.new(y1), Int32.new(y2), Int32.new(x))
+    nil
   end
 
   def self.paper_size_get_default
@@ -497,18 +497,18 @@ module Gtk
   end
 
   def self.print_run_page_setup_dialog_async(parent, page_setup, settings, done_cb, data)
-    __return_value = LibGtk.print_run_page_setup_dialog_async(parent ? parent.to_unsafe.as(LibGtk::Window*) : nil, page_setup ? page_setup.to_unsafe.as(LibGtk::PageSetup*) : nil, settings.to_unsafe.as(LibGtk::PrintSettings*), done_cb, data ? data : nil)
-    __return_value
+    LibGtk.print_run_page_setup_dialog_async(parent ? parent.to_unsafe.as(LibGtk::Window*) : nil, page_setup ? page_setup.to_unsafe.as(LibGtk::PageSetup*) : nil, settings.to_unsafe.as(LibGtk::PrintSettings*), done_cb, data ? data : nil)
+    nil
   end
 
   def self.propagate_event(widget, event)
-    __return_value = LibGtk.propagate_event(widget.to_unsafe.as(LibGtk::Widget*), event.to_unsafe.as(LibGdk::Event*))
-    __return_value
+    LibGtk.propagate_event(widget.to_unsafe.as(LibGtk::Widget*), event.to_unsafe.as(LibGdk::Event*))
+    nil
   end
 
   def self.rc_add_default_file(filename)
-    __return_value = LibGtk.rc_add_default_file(filename.to_unsafe)
-    __return_value
+    LibGtk.rc_add_default_file(filename.to_unsafe)
+    nil
   end
 
   def self.rc_find_module_in_path(module_file)
@@ -557,8 +557,8 @@ module Gtk
   end
 
   def self.rc_parse(filename)
-    __return_value = LibGtk.rc_parse(filename.to_unsafe)
-    __return_value
+    LibGtk.rc_parse(filename.to_unsafe)
+    nil
   end
 
   def self.rc_parse_color(scanner, color)
@@ -582,8 +582,8 @@ module Gtk
   end
 
   def self.rc_parse_string(rc_string)
-    __return_value = LibGtk.rc_parse_string(rc_string.to_unsafe)
-    __return_value
+    LibGtk.rc_parse_string(rc_string.to_unsafe)
+    nil
   end
 
   def self.rc_property_parse_border(pspec, gstring, property_value)
@@ -622,13 +622,13 @@ module Gtk
   end
 
   def self.rc_reset_styles(settings)
-    __return_value = LibGtk.rc_reset_styles(settings.to_unsafe.as(LibGtk::Settings*))
-    __return_value
+    LibGtk.rc_reset_styles(settings.to_unsafe.as(LibGtk::Settings*))
+    nil
   end
 
   def self.rc_set_default_files(filenames)
-    __return_value = LibGtk.rc_set_default_files(filenames)
-    __return_value
+    LibGtk.rc_set_default_files(filenames)
+    nil
   end
 
   def self.recent_chooser_error_quark
@@ -642,63 +642,63 @@ module Gtk
   end
 
   def self.render_activity(context, cr, x, y, width, height)
-    __return_value = LibGtk.render_activity(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height))
-    __return_value
+    LibGtk.render_activity(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height))
+    nil
   end
 
   def self.render_arrow(context, cr, angle, x, y, size)
-    __return_value = LibGtk.render_arrow(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(angle), Float64.new(x), Float64.new(y), Float64.new(size))
-    __return_value
+    LibGtk.render_arrow(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(angle), Float64.new(x), Float64.new(y), Float64.new(size))
+    nil
   end
 
   def self.render_background(context, cr, x, y, width, height)
-    __return_value = LibGtk.render_background(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height))
-    __return_value
+    LibGtk.render_background(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height))
+    nil
   end
 
   def self.render_background_get_clip(context, x, y, width, height, out_clip)
-    __return_value = LibGtk.render_background_get_clip(context.to_unsafe.as(LibGtk::StyleContext*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height), out_clip)
-    __return_value
+    LibGtk.render_background_get_clip(context.to_unsafe.as(LibGtk::StyleContext*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height), out_clip)
+    nil
   end
 
   def self.render_check(context, cr, x, y, width, height)
-    __return_value = LibGtk.render_check(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height))
-    __return_value
+    LibGtk.render_check(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height))
+    nil
   end
 
   def self.render_expander(context, cr, x, y, width, height)
-    __return_value = LibGtk.render_expander(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height))
-    __return_value
+    LibGtk.render_expander(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height))
+    nil
   end
 
   def self.render_extension(context, cr, x, y, width, height, gap_side : Gtk::PositionType)
-    __return_value = LibGtk.render_extension(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height), gap_side)
-    __return_value
+    LibGtk.render_extension(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height), gap_side)
+    nil
   end
 
   def self.render_focus(context, cr, x, y, width, height)
-    __return_value = LibGtk.render_focus(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height))
-    __return_value
+    LibGtk.render_focus(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height))
+    nil
   end
 
   def self.render_frame(context, cr, x, y, width, height)
-    __return_value = LibGtk.render_frame(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height))
-    __return_value
+    LibGtk.render_frame(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height))
+    nil
   end
 
   def self.render_frame_gap(context, cr, x, y, width, height, gap_side : Gtk::PositionType, xy0_gap, xy1_gap)
-    __return_value = LibGtk.render_frame_gap(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height), gap_side, Float64.new(xy0_gap), Float64.new(xy1_gap))
-    __return_value
+    LibGtk.render_frame_gap(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height), gap_side, Float64.new(xy0_gap), Float64.new(xy1_gap))
+    nil
   end
 
   def self.render_handle(context, cr, x, y, width, height)
-    __return_value = LibGtk.render_handle(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height))
-    __return_value
+    LibGtk.render_handle(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height))
+    nil
   end
 
   def self.render_icon(context, cr, pixbuf, x, y)
-    __return_value = LibGtk.render_icon(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*), Float64.new(x), Float64.new(y))
-    __return_value
+    LibGtk.render_icon(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*), Float64.new(x), Float64.new(y))
+    nil
   end
 
   def self.render_icon_pixbuf(context, source, size)
@@ -707,53 +707,53 @@ module Gtk
   end
 
   def self.render_icon_surface(context, cr, surface, x, y)
-    __return_value = LibGtk.render_icon_surface(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), surface.to_unsafe.as(LibCairo::Surface*), Float64.new(x), Float64.new(y))
-    __return_value
+    LibGtk.render_icon_surface(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), surface.to_unsafe.as(LibCairo::Surface*), Float64.new(x), Float64.new(y))
+    nil
   end
 
   def self.render_insertion_cursor(context, cr, x, y, layout, index, direction : Pango::Direction)
-    __return_value = LibGtk.render_insertion_cursor(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), layout.to_unsafe.as(LibPango::Layout*), Int32.new(index), direction)
-    __return_value
+    LibGtk.render_insertion_cursor(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), layout.to_unsafe.as(LibPango::Layout*), Int32.new(index), direction)
+    nil
   end
 
   def self.render_layout(context, cr, x, y, layout)
-    __return_value = LibGtk.render_layout(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), layout.to_unsafe.as(LibPango::Layout*))
-    __return_value
+    LibGtk.render_layout(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), layout.to_unsafe.as(LibPango::Layout*))
+    nil
   end
 
   def self.render_line(context, cr, x0, y0, x1, y1)
-    __return_value = LibGtk.render_line(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x0), Float64.new(y0), Float64.new(x1), Float64.new(y1))
-    __return_value
+    LibGtk.render_line(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x0), Float64.new(y0), Float64.new(x1), Float64.new(y1))
+    nil
   end
 
   def self.render_option(context, cr, x, y, width, height)
-    __return_value = LibGtk.render_option(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height))
-    __return_value
+    LibGtk.render_option(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height))
+    nil
   end
 
   def self.render_slider(context, cr, x, y, width, height, orientation : Gtk::Orientation)
-    __return_value = LibGtk.render_slider(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height), orientation)
-    __return_value
+    LibGtk.render_slider(context.to_unsafe.as(LibGtk::StyleContext*), cr.to_unsafe.as(LibCairo::Context*), Float64.new(x), Float64.new(y), Float64.new(width), Float64.new(height), orientation)
+    nil
   end
 
   def self.rgb_to_hsv(r, g, b, h, s, v)
-    __return_value = LibGtk.rgb_to_hsv(Float64.new(r), Float64.new(g), Float64.new(b), h, s, v)
-    __return_value
+    LibGtk.rgb_to_hsv(Float64.new(r), Float64.new(g), Float64.new(b), h, s, v)
+    nil
   end
 
   def self.selection_add_target(widget, selection, target, info)
-    __return_value = LibGtk.selection_add_target(widget.to_unsafe.as(LibGtk::Widget*), selection.to_unsafe.as(LibGdk::Atom*), target.to_unsafe.as(LibGdk::Atom*), UInt32.new(info))
-    __return_value
+    LibGtk.selection_add_target(widget.to_unsafe.as(LibGtk::Widget*), selection.to_unsafe.as(LibGdk::Atom*), target.to_unsafe.as(LibGdk::Atom*), UInt32.new(info))
+    nil
   end
 
   def self.selection_add_targets(widget, selection, targets, ntargets)
-    __return_value = LibGtk.selection_add_targets(widget.to_unsafe.as(LibGtk::Widget*), selection.to_unsafe.as(LibGdk::Atom*), targets, UInt32.new(ntargets))
-    __return_value
+    LibGtk.selection_add_targets(widget.to_unsafe.as(LibGtk::Widget*), selection.to_unsafe.as(LibGdk::Atom*), targets, UInt32.new(ntargets))
+    nil
   end
 
   def self.selection_clear_targets(widget, selection)
-    __return_value = LibGtk.selection_clear_targets(widget.to_unsafe.as(LibGtk::Widget*), selection.to_unsafe.as(LibGdk::Atom*))
-    __return_value
+    LibGtk.selection_clear_targets(widget.to_unsafe.as(LibGtk::Widget*), selection.to_unsafe.as(LibGdk::Atom*))
+    nil
   end
 
   def self.selection_convert(widget, selection, target, time)
@@ -772,13 +772,13 @@ module Gtk
   end
 
   def self.selection_remove_all(widget)
-    __return_value = LibGtk.selection_remove_all(widget.to_unsafe.as(LibGtk::Widget*))
-    __return_value
+    LibGtk.selection_remove_all(widget.to_unsafe.as(LibGtk::Widget*))
+    nil
   end
 
   def self.set_debug_flags(flags)
-    __return_value = LibGtk.set_debug_flags(UInt32.new(flags))
-    __return_value
+    LibGtk.set_debug_flags(UInt32.new(flags))
+    nil
   end
 
   def self.show_uri(screen, uri, timestamp)
@@ -796,13 +796,13 @@ module Gtk
   end
 
   def self.stock_add(items, n_items)
-    __return_value = LibGtk.stock_add(items, UInt32.new(n_items))
-    __return_value
+    LibGtk.stock_add(items, UInt32.new(n_items))
+    nil
   end
 
   def self.stock_add_static(items, n_items)
-    __return_value = LibGtk.stock_add_static(items, UInt32.new(n_items))
-    __return_value
+    LibGtk.stock_add_static(items, UInt32.new(n_items))
+    nil
   end
 
   def self.stock_list_ids
@@ -816,13 +816,13 @@ module Gtk
   end
 
   def self.stock_set_translate_func(domain, func, data, notify)
-    __return_value = LibGtk.stock_set_translate_func(domain.to_unsafe, func, data ? data : nil, notify)
-    __return_value
+    LibGtk.stock_set_translate_func(domain.to_unsafe, func, data ? data : nil, notify)
+    nil
   end
 
   def self.target_table_free(targets, n_targets)
-    __return_value = LibGtk.target_table_free(targets, Int32.new(n_targets))
-    __return_value
+    LibGtk.target_table_free(targets, Int32.new(n_targets))
+    nil
   end
 
   def self.target_table_new_from_list(list, n_targets)
@@ -876,8 +876,8 @@ module Gtk
   end
 
   def self.test_register_all_types
-    __return_value = LibGtk.test_register_all_types
-    __return_value
+    LibGtk.test_register_all_types
+    nil
   end
 
   def self.test_slider_get_value(widget)
@@ -886,8 +886,8 @@ module Gtk
   end
 
   def self.test_slider_set_perc(widget, percentage)
-    __return_value = LibGtk.test_slider_set_perc(widget.to_unsafe.as(LibGtk::Widget*), Float64.new(percentage))
-    __return_value
+    LibGtk.test_slider_set_perc(widget.to_unsafe.as(LibGtk::Widget*), Float64.new(percentage))
+    nil
   end
 
   def self.test_spin_button_click(spinner, button, upwards)
@@ -901,8 +901,8 @@ module Gtk
   end
 
   def self.test_text_set(widget, string)
-    __return_value = LibGtk.test_text_set(widget.to_unsafe.as(LibGtk::Widget*), string.to_unsafe)
-    __return_value
+    LibGtk.test_text_set(widget.to_unsafe.as(LibGtk::Widget*), string.to_unsafe)
+    nil
   end
 
   def self.test_widget_click(widget, button, modifiers : Gdk::ModifierType)
@@ -916,8 +916,8 @@ module Gtk
   end
 
   def self.test_widget_wait_for_draw(widget)
-    __return_value = LibGtk.test_widget_wait_for_draw(widget.to_unsafe.as(LibGtk::Widget*))
-    __return_value
+    LibGtk.test_widget_wait_for_draw(widget.to_unsafe.as(LibGtk::Widget*))
+    nil
   end
 
   def self.tree_get_row_drag_data(selection_data, tree_model, path)
@@ -926,13 +926,13 @@ module Gtk
   end
 
   def self.tree_row_reference_deleted(proxy, path)
-    __return_value = LibGtk.tree_row_reference_deleted(proxy.to_unsafe.as(LibGObject::Object*), path.to_unsafe.as(LibGtk::TreePath*))
-    __return_value
+    LibGtk.tree_row_reference_deleted(proxy.to_unsafe.as(LibGObject::Object*), path.to_unsafe.as(LibGtk::TreePath*))
+    nil
   end
 
   def self.tree_row_reference_inserted(proxy, path)
-    __return_value = LibGtk.tree_row_reference_inserted(proxy.to_unsafe.as(LibGObject::Object*), path.to_unsafe.as(LibGtk::TreePath*))
-    __return_value
+    LibGtk.tree_row_reference_inserted(proxy.to_unsafe.as(LibGObject::Object*), path.to_unsafe.as(LibGtk::TreePath*))
+    nil
   end
 
   def self.tree_set_row_drag_data(selection_data, tree_model, path)

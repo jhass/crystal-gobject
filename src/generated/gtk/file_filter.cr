@@ -20,23 +20,23 @@ module Gtk
     end
 
     def add_custom(needed : Gtk::FileFilterFlags, func, data, notify)
-      __return_value = LibGtk.file_filter_add_custom(to_unsafe.as(LibGtk::FileFilter*), needed, func, data ? data : nil, notify)
-      __return_value
+      LibGtk.file_filter_add_custom(to_unsafe.as(LibGtk::FileFilter*), needed, func, data ? data : nil, notify)
+      nil
     end
 
     def add_mime_type(mime_type)
-      __return_value = LibGtk.file_filter_add_mime_type(to_unsafe.as(LibGtk::FileFilter*), mime_type.to_unsafe)
-      __return_value
+      LibGtk.file_filter_add_mime_type(to_unsafe.as(LibGtk::FileFilter*), mime_type.to_unsafe)
+      nil
     end
 
     def add_pattern(pattern)
-      __return_value = LibGtk.file_filter_add_pattern(to_unsafe.as(LibGtk::FileFilter*), pattern.to_unsafe)
-      __return_value
+      LibGtk.file_filter_add_pattern(to_unsafe.as(LibGtk::FileFilter*), pattern.to_unsafe)
+      nil
     end
 
     def add_pixbuf_formats
-      __return_value = LibGtk.file_filter_add_pixbuf_formats(to_unsafe.as(LibGtk::FileFilter*))
-      __return_value
+      LibGtk.file_filter_add_pixbuf_formats(to_unsafe.as(LibGtk::FileFilter*))
+      nil
     end
 
     def filter(filter_info)
@@ -55,8 +55,8 @@ module Gtk
     end
 
     def name=(name)
-      __return_value = LibGtk.file_filter_set_name(to_unsafe.as(LibGtk::FileFilter*), name ? name.to_unsafe : nil)
-      __return_value
+      LibGtk.file_filter_set_name(to_unsafe.as(LibGtk::FileFilter*), name ? name.to_unsafe : nil)
+      nil
     end
 
     def to_gvariant

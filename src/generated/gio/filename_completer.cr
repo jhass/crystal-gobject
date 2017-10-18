@@ -24,8 +24,8 @@ module Gio
     end
 
     def dirs_only=(dirs_only)
-      __return_value = LibGio.filename_completer_set_dirs_only(to_unsafe.as(LibGio::FilenameCompleter*), dirs_only)
-      __return_value
+      LibGio.filename_completer_set_dirs_only(to_unsafe.as(LibGio::FilenameCompleter*), dirs_only)
+      nil
     end
 
     alias GotCompletionDataSignal = FilenameCompleter ->

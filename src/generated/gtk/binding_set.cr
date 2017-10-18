@@ -30,8 +30,8 @@ module Gtk
     end
 
     def add_path(path_type : Gtk::PathType, path_pattern, priority : Gtk::PathPriorityType)
-      __return_value = LibGtk.binding_set_add_path(to_unsafe.as(LibGtk::BindingSet*), path_type, path_pattern.to_unsafe, priority)
-      __return_value
+      LibGtk.binding_set_add_path(to_unsafe.as(LibGtk::BindingSet*), path_type, path_pattern.to_unsafe, priority)
+      nil
     end
 
     def self.find(set_name)

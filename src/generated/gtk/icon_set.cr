@@ -21,8 +21,8 @@ module Gtk
     end
 
     def add_source(source)
-      __return_value = LibGtk.icon_set_add_source(to_unsafe.as(LibGtk::IconSet*), source.to_unsafe.as(LibGtk::IconSource*))
-      __return_value
+      LibGtk.icon_set_add_source(to_unsafe.as(LibGtk::IconSet*), source.to_unsafe.as(LibGtk::IconSource*))
+      nil
     end
 
     def copy
@@ -31,8 +31,8 @@ module Gtk
     end
 
     def sizes(sizes, n_sizes)
-      __return_value = LibGtk.icon_set_get_sizes(to_unsafe.as(LibGtk::IconSet*), sizes, n_sizes)
-      __return_value
+      LibGtk.icon_set_get_sizes(to_unsafe.as(LibGtk::IconSet*), sizes, n_sizes)
+      nil
     end
 
     def ref
@@ -56,8 +56,8 @@ module Gtk
     end
 
     def unref
-      __return_value = LibGtk.icon_set_unref(to_unsafe.as(LibGtk::IconSet*))
-      __return_value
+      LibGtk.icon_set_unref(to_unsafe.as(LibGtk::IconSet*))
+      nil
     end
 
   end

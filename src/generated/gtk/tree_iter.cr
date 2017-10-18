@@ -26,8 +26,8 @@ module Gtk
     end
 
     def free
-      __return_value = LibGtk.tree_iter_free(to_unsafe.as(LibGtk::TreeIter*))
-      __return_value
+      LibGtk.tree_iter_free(to_unsafe.as(LibGtk::TreeIter*))
+      nil
     end
 
     def stamp

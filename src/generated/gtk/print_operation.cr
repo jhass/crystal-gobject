@@ -105,13 +105,13 @@ module Gtk
     end
 
     def cancel
-      __return_value = LibGtk.print_operation_cancel(to_unsafe.as(LibGtk::PrintOperation*))
-      __return_value
+      LibGtk.print_operation_cancel(to_unsafe.as(LibGtk::PrintOperation*))
+      nil
     end
 
     def draw_page_finish
-      __return_value = LibGtk.print_operation_draw_page_finish(to_unsafe.as(LibGtk::PrintOperation*))
-      __return_value
+      LibGtk.print_operation_draw_page_finish(to_unsafe.as(LibGtk::PrintOperation*))
+      nil
     end
 
     def default_page_setup
@@ -126,9 +126,9 @@ module Gtk
 
     def error
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.print_operation_get_error(to_unsafe.as(LibGtk::PrintOperation*), pointerof(__error))
+      LibGtk.print_operation_get_error(to_unsafe.as(LibGtk::PrintOperation*), pointerof(__error))
       GLib::Error.assert __error
-      __return_value
+      nil
     end
 
     def has_selection
@@ -174,83 +174,83 @@ module Gtk
     end
 
     def allow_async=(allow_async)
-      __return_value = LibGtk.print_operation_set_allow_async(to_unsafe.as(LibGtk::PrintOperation*), allow_async)
-      __return_value
+      LibGtk.print_operation_set_allow_async(to_unsafe.as(LibGtk::PrintOperation*), allow_async)
+      nil
     end
 
     def current_page=(current_page)
-      __return_value = LibGtk.print_operation_set_current_page(to_unsafe.as(LibGtk::PrintOperation*), Int32.new(current_page))
-      __return_value
+      LibGtk.print_operation_set_current_page(to_unsafe.as(LibGtk::PrintOperation*), Int32.new(current_page))
+      nil
     end
 
     def custom_tab_label=(label)
-      __return_value = LibGtk.print_operation_set_custom_tab_label(to_unsafe.as(LibGtk::PrintOperation*), label ? label.to_unsafe : nil)
-      __return_value
+      LibGtk.print_operation_set_custom_tab_label(to_unsafe.as(LibGtk::PrintOperation*), label ? label.to_unsafe : nil)
+      nil
     end
 
     def default_page_setup=(default_page_setup)
-      __return_value = LibGtk.print_operation_set_default_page_setup(to_unsafe.as(LibGtk::PrintOperation*), default_page_setup ? default_page_setup.to_unsafe.as(LibGtk::PageSetup*) : nil)
-      __return_value
+      LibGtk.print_operation_set_default_page_setup(to_unsafe.as(LibGtk::PrintOperation*), default_page_setup ? default_page_setup.to_unsafe.as(LibGtk::PageSetup*) : nil)
+      nil
     end
 
     def set_defer_drawing
-      __return_value = LibGtk.print_operation_set_defer_drawing(to_unsafe.as(LibGtk::PrintOperation*))
-      __return_value
+      LibGtk.print_operation_set_defer_drawing(to_unsafe.as(LibGtk::PrintOperation*))
+      nil
     end
 
     def embed_page_setup=(embed)
-      __return_value = LibGtk.print_operation_set_embed_page_setup(to_unsafe.as(LibGtk::PrintOperation*), embed)
-      __return_value
+      LibGtk.print_operation_set_embed_page_setup(to_unsafe.as(LibGtk::PrintOperation*), embed)
+      nil
     end
 
     def export_filename=(filename)
-      __return_value = LibGtk.print_operation_set_export_filename(to_unsafe.as(LibGtk::PrintOperation*), filename.to_unsafe)
-      __return_value
+      LibGtk.print_operation_set_export_filename(to_unsafe.as(LibGtk::PrintOperation*), filename.to_unsafe)
+      nil
     end
 
     def has_selection=(has_selection)
-      __return_value = LibGtk.print_operation_set_has_selection(to_unsafe.as(LibGtk::PrintOperation*), has_selection)
-      __return_value
+      LibGtk.print_operation_set_has_selection(to_unsafe.as(LibGtk::PrintOperation*), has_selection)
+      nil
     end
 
     def job_name=(job_name)
-      __return_value = LibGtk.print_operation_set_job_name(to_unsafe.as(LibGtk::PrintOperation*), job_name.to_unsafe)
-      __return_value
+      LibGtk.print_operation_set_job_name(to_unsafe.as(LibGtk::PrintOperation*), job_name.to_unsafe)
+      nil
     end
 
     def n_pages=(n_pages)
-      __return_value = LibGtk.print_operation_set_n_pages(to_unsafe.as(LibGtk::PrintOperation*), Int32.new(n_pages))
-      __return_value
+      LibGtk.print_operation_set_n_pages(to_unsafe.as(LibGtk::PrintOperation*), Int32.new(n_pages))
+      nil
     end
 
     def print_settings=(print_settings)
-      __return_value = LibGtk.print_operation_set_print_settings(to_unsafe.as(LibGtk::PrintOperation*), print_settings ? print_settings.to_unsafe.as(LibGtk::PrintSettings*) : nil)
-      __return_value
+      LibGtk.print_operation_set_print_settings(to_unsafe.as(LibGtk::PrintOperation*), print_settings ? print_settings.to_unsafe.as(LibGtk::PrintSettings*) : nil)
+      nil
     end
 
     def show_progress=(show_progress)
-      __return_value = LibGtk.print_operation_set_show_progress(to_unsafe.as(LibGtk::PrintOperation*), show_progress)
-      __return_value
+      LibGtk.print_operation_set_show_progress(to_unsafe.as(LibGtk::PrintOperation*), show_progress)
+      nil
     end
 
     def support_selection=(support_selection)
-      __return_value = LibGtk.print_operation_set_support_selection(to_unsafe.as(LibGtk::PrintOperation*), support_selection)
-      __return_value
+      LibGtk.print_operation_set_support_selection(to_unsafe.as(LibGtk::PrintOperation*), support_selection)
+      nil
     end
 
     def track_print_status=(track_status)
-      __return_value = LibGtk.print_operation_set_track_print_status(to_unsafe.as(LibGtk::PrintOperation*), track_status)
-      __return_value
+      LibGtk.print_operation_set_track_print_status(to_unsafe.as(LibGtk::PrintOperation*), track_status)
+      nil
     end
 
     def unit=(unit : Gtk::Unit)
-      __return_value = LibGtk.print_operation_set_unit(to_unsafe.as(LibGtk::PrintOperation*), unit)
-      __return_value
+      LibGtk.print_operation_set_unit(to_unsafe.as(LibGtk::PrintOperation*), unit)
+      nil
     end
 
     def use_full_page=(full_page)
-      __return_value = LibGtk.print_operation_set_use_full_page(to_unsafe.as(LibGtk::PrintOperation*), full_page)
-      __return_value
+      LibGtk.print_operation_set_use_full_page(to_unsafe.as(LibGtk::PrintOperation*), full_page)
+      nil
     end
 
     alias BeginPrintSignal = PrintOperation, Gtk::PrintContext ->
