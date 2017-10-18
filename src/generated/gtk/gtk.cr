@@ -1,7 +1,6 @@
 require "../../g_object/wrapped_type"
 require "../lib_gtk"
 
-require "../pango"
 require "../../g_object"
 require "../cairo"
 require "../../gdk"

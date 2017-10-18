@@ -1,3 +1,5 @@
+require "file_utils"
+
 require "./namespace"
 
 # namespace = ARGV[0]
@@ -20,10 +22,13 @@ GIRepository::Repository.instance.require namespace
 # puts Namespace.new(namespace).lib_definition
 
 print "Generate #{namespace}... "
-Namespace.new(namespace).write "src/generated"
+Namespace.new(namespace).write "src/generated-next"
 puts "done."
 
 end
+
+FileUtils.rm_r "src/generated"
+File.rename "src/generated-next", "src/generated"
 
 # Repository.instance.loaded_namespaces.each do |name|
   # print "Generate #{name}... "
