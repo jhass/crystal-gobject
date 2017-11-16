@@ -2,12 +2,13 @@ require "./paned"
 
 module Gtk
   class HPaned < Paned
-    @gtk_h_paned : LibGtk::HPaned*?
-    def initialize(@gtk_h_paned : LibGtk::HPaned*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::HPaned*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_h_paned.not_nil!
+      @pointer.not_nil!.as(LibGtk::HPaned*)
     end
 
     # Implements ImplementorIface

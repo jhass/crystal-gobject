@@ -13,12 +13,13 @@ module Gdk
       end
     end
 
-    @gdk_event_window_state : LibGdk::EventWindowState*?
-    def initialize(@gdk_event_window_state : LibGdk::EventWindowState*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::EventWindowState*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_event_window_state.not_nil!
+      @pointer.not_nil!.as(LibGdk::EventWindowState*)
     end
 
     def type

@@ -2,12 +2,13 @@ module Gst
   class DevicePrivate
     include GObject::WrappedType
 
-    @gst_device_private : LibGst::DevicePrivate*?
-    def initialize(@gst_device_private : LibGst::DevicePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::DevicePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_device_private.not_nil!
+      @pointer.not_nil!.as(LibGst::DevicePrivate*)
     end
 
   end

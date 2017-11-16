@@ -2,12 +2,13 @@ module Gst
   class IntRange
     include GObject::WrappedType
 
-    @gst_int_range : LibGst::IntRange*?
-    def initialize(@gst_int_range : LibGst::IntRange*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::IntRange*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_int_range.not_nil!
+      @pointer.not_nil!.as(LibGst::IntRange*)
     end
 
   end

@@ -2,12 +2,13 @@ module Gst
   class BusPrivate
     include GObject::WrappedType
 
-    @gst_bus_private : LibGst::BusPrivate*?
-    def initialize(@gst_bus_private : LibGst::BusPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::BusPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_bus_private.not_nil!
+      @pointer.not_nil!.as(LibGst::BusPrivate*)
     end
 
   end

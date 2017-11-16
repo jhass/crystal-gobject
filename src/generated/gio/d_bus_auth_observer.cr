@@ -1,11 +1,12 @@
 module Gio
   class DBusAuthObserver < GObject::Object
-    @gio_d_bus_auth_observer : LibGio::DBusAuthObserver*?
-    def initialize(@gio_d_bus_auth_observer : LibGio::DBusAuthObserver*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::DBusAuthObserver*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_d_bus_auth_observer.not_nil!
+      @pointer.not_nil!.as(LibGio::DBusAuthObserver*)
     end
 
     def self.new : self
@@ -14,12 +15,12 @@ module Gio
     end
 
     def allow_mechanism(mechanism)
-      __return_value = LibGio.d_bus_auth_observer_allow_mechanism(to_unsafe.as(LibGio::DBusAuthObserver*), mechanism.to_unsafe)
+      __return_value = LibGio.d_bus_auth_observer_allow_mechanism(@pointer.as(LibGio::DBusAuthObserver*), mechanism.to_unsafe)
       __return_value
     end
 
     def authorize_authenticated_peer(stream, credentials)
-      __return_value = LibGio.d_bus_auth_observer_authorize_authenticated_peer(to_unsafe.as(LibGio::DBusAuthObserver*), stream.to_unsafe.as(LibGio::IOStream*), credentials ? credentials.to_unsafe.as(LibGio::Credentials*) : nil)
+      __return_value = LibGio.d_bus_auth_observer_authorize_authenticated_peer(@pointer.as(LibGio::DBusAuthObserver*), stream.to_unsafe.as(LibGio::IOStream*), credentials ? credentials.to_unsafe.as(LibGio::Credentials*) : nil)
       __return_value
     end
 

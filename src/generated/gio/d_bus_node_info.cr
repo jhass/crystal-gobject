@@ -13,12 +13,13 @@ module Gio
       end
     end
 
-    @gio_d_bus_node_info : LibGio::DBusNodeInfo*?
-    def initialize(@gio_d_bus_node_info : LibGio::DBusNodeInfo*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::DBusNodeInfo*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_d_bus_node_info.not_nil!
+      @pointer.not_nil!.as(LibGio::DBusNodeInfo*)
     end
 
     def self.new_for_xml(xml_data) : self
@@ -29,22 +30,22 @@ module Gio
     end
 
     def generate_xml(indent, string_builder)
-      LibGio.d_bus_node_info_generate_xml(to_unsafe.as(LibGio::DBusNodeInfo*), UInt32.new(indent), string_builder.to_unsafe.as(LibGLib::String*))
+      LibGio.d_bus_node_info_generate_xml(@pointer.as(LibGio::DBusNodeInfo*), UInt32.new(indent), string_builder.to_unsafe.as(LibGLib::String*))
       nil
     end
 
     def lookup_interface(name)
-      __return_value = LibGio.d_bus_node_info_lookup_interface(to_unsafe.as(LibGio::DBusNodeInfo*), name.to_unsafe)
+      __return_value = LibGio.d_bus_node_info_lookup_interface(@pointer.as(LibGio::DBusNodeInfo*), name.to_unsafe)
       Gio::DBusInterfaceInfo.new(__return_value)
     end
 
     def ref
-      __return_value = LibGio.d_bus_node_info_ref(to_unsafe.as(LibGio::DBusNodeInfo*))
+      __return_value = LibGio.d_bus_node_info_ref(@pointer.as(LibGio::DBusNodeInfo*))
       Gio::DBusNodeInfo.new(__return_value)
     end
 
     def unref
-      LibGio.d_bus_node_info_unref(to_unsafe.as(LibGio::DBusNodeInfo*))
+      LibGio.d_bus_node_info_unref(@pointer.as(LibGio::DBusNodeInfo*))
       nil
     end
 

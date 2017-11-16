@@ -34,12 +34,13 @@ module GLib
       end
     end
 
-    @g_lib_scanner_config : LibGLib::ScannerConfig*?
-    def initialize(@g_lib_scanner_config : LibGLib::ScannerConfig*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::ScannerConfig*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_scanner_config.not_nil!
+      @pointer.not_nil!.as(LibGLib::ScannerConfig*)
     end
 
     def cset_skip_characters

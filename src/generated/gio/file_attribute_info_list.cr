@@ -10,12 +10,13 @@ module Gio
       end
     end
 
-    @gio_file_attribute_info_list : LibGio::FileAttributeInfoList*?
-    def initialize(@gio_file_attribute_info_list : LibGio::FileAttributeInfoList*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::FileAttributeInfoList*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_file_attribute_info_list.not_nil!
+      @pointer.not_nil!.as(LibGio::FileAttributeInfoList*)
     end
 
     def self.new : self
@@ -24,27 +25,27 @@ module Gio
     end
 
     def add(name, type : Gio::FileAttributeType, flags : Gio::FileAttributeInfoFlags)
-      LibGio.file_attribute_info_list_add(to_unsafe.as(LibGio::FileAttributeInfoList*), name.to_unsafe, type, flags)
+      LibGio.file_attribute_info_list_add(@pointer.as(LibGio::FileAttributeInfoList*), name.to_unsafe, type, flags)
       nil
     end
 
     def dup
-      __return_value = LibGio.file_attribute_info_list_dup(to_unsafe.as(LibGio::FileAttributeInfoList*))
+      __return_value = LibGio.file_attribute_info_list_dup(@pointer.as(LibGio::FileAttributeInfoList*))
       Gio::FileAttributeInfoList.new(__return_value)
     end
 
     def lookup(name)
-      __return_value = LibGio.file_attribute_info_list_lookup(to_unsafe.as(LibGio::FileAttributeInfoList*), name.to_unsafe)
+      __return_value = LibGio.file_attribute_info_list_lookup(@pointer.as(LibGio::FileAttributeInfoList*), name.to_unsafe)
       Gio::FileAttributeInfo.new(__return_value)
     end
 
     def ref
-      __return_value = LibGio.file_attribute_info_list_ref(to_unsafe.as(LibGio::FileAttributeInfoList*))
+      __return_value = LibGio.file_attribute_info_list_ref(@pointer.as(LibGio::FileAttributeInfoList*))
       Gio::FileAttributeInfoList.new(__return_value)
     end
 
     def unref
-      LibGio.file_attribute_info_list_unref(to_unsafe.as(LibGio::FileAttributeInfoList*))
+      LibGio.file_attribute_info_list_unref(@pointer.as(LibGio::FileAttributeInfoList*))
       nil
     end
 

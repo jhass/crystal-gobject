@@ -15,12 +15,13 @@ module Gtk
       end
     end
 
-    @gtk_toggle_action_entry : LibGtk::ToggleActionEntry*?
-    def initialize(@gtk_toggle_action_entry : LibGtk::ToggleActionEntry*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ToggleActionEntry*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_toggle_action_entry.not_nil!
+      @pointer.not_nil!.as(LibGtk::ToggleActionEntry*)
     end
 
     def name

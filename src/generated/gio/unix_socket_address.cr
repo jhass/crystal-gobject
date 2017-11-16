@@ -2,12 +2,13 @@ require "./socket_address"
 
 module Gio
   class UnixSocketAddress < SocketAddress
-    @gio_unix_socket_address : LibGio::UnixSocketAddress*?
-    def initialize(@gio_unix_socket_address : LibGio::UnixSocketAddress*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::UnixSocketAddress*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_unix_socket_address.not_nil!
+      @pointer.not_nil!.as(LibGio::UnixSocketAddress*)
     end
 
     # Implements SocketConnectable
@@ -52,22 +53,22 @@ module Gio
     end
 
     def address_type
-      __return_value = LibGio.unix_socket_address_get_address_type(to_unsafe.as(LibGio::UnixSocketAddress*))
+      __return_value = LibGio.unix_socket_address_get_address_type(@pointer.as(LibGio::UnixSocketAddress*))
       __return_value
     end
 
     def is_abstract
-      __return_value = LibGio.unix_socket_address_get_is_abstract(to_unsafe.as(LibGio::UnixSocketAddress*))
+      __return_value = LibGio.unix_socket_address_get_is_abstract(@pointer.as(LibGio::UnixSocketAddress*))
       __return_value
     end
 
     def path
-      __return_value = LibGio.unix_socket_address_get_path(to_unsafe.as(LibGio::UnixSocketAddress*))
+      __return_value = LibGio.unix_socket_address_get_path(@pointer.as(LibGio::UnixSocketAddress*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def path_len
-      __return_value = LibGio.unix_socket_address_get_path_len(to_unsafe.as(LibGio::UnixSocketAddress*))
+      __return_value = LibGio.unix_socket_address_get_path_len(@pointer.as(LibGio::UnixSocketAddress*))
       __return_value
     end
 

@@ -2,12 +2,13 @@ module Gio
   class CancellablePrivate
     include GObject::WrappedType
 
-    @gio_cancellable_private : LibGio::CancellablePrivate*?
-    def initialize(@gio_cancellable_private : LibGio::CancellablePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::CancellablePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_cancellable_private.not_nil!
+      @pointer.not_nil!.as(LibGio::CancellablePrivate*)
     end
 
   end

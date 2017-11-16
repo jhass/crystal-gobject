@@ -2,12 +2,13 @@ module Gst
   class ClockPrivate
     include GObject::WrappedType
 
-    @gst_clock_private : LibGst::ClockPrivate*?
-    def initialize(@gst_clock_private : LibGst::ClockPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::ClockPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_clock_private.not_nil!
+      @pointer.not_nil!.as(LibGst::ClockPrivate*)
     end
 
   end

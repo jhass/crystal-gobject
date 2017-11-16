@@ -1,11 +1,12 @@
 module Gio
   class Emblem < GObject::Object
-    @gio_emblem : LibGio::Emblem*?
-    def initialize(@gio_emblem : LibGio::Emblem*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::Emblem*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_emblem.not_nil!
+      @pointer.not_nil!.as(LibGio::Emblem*)
     end
 
     # Implements Icon
@@ -30,12 +31,12 @@ module Gio
     end
 
     def icon
-      __return_value = LibGio.emblem_get_icon(to_unsafe.as(LibGio::Emblem*))
+      __return_value = LibGio.emblem_get_icon(@pointer.as(LibGio::Emblem*))
       __return_value
     end
 
     def origin
-      __return_value = LibGio.emblem_get_origin(to_unsafe.as(LibGio::Emblem*))
+      __return_value = LibGio.emblem_get_origin(@pointer.as(LibGio::Emblem*))
       __return_value
     end
 

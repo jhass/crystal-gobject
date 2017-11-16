@@ -2,12 +2,13 @@ module Gtk
   class BoxPrivate
     include GObject::WrappedType
 
-    @gtk_box_private : LibGtk::BoxPrivate*?
-    def initialize(@gtk_box_private : LibGtk::BoxPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::BoxPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_box_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::BoxPrivate*)
     end
 
   end

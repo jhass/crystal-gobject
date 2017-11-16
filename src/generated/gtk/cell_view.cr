@@ -2,12 +2,13 @@ require "./widget"
 
 module Gtk
   class CellView < Widget
-    @gtk_cell_view : LibGtk::CellView*?
-    def initialize(@gtk_cell_view : LibGtk::CellView*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::CellView*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_cell_view.not_nil!
+      @pointer.not_nil!.as(LibGtk::CellView*)
     end
 
     # Implements ImplementorIface
@@ -81,57 +82,57 @@ module Gtk
     end
 
     def displayed_row
-      __return_value = LibGtk.cell_view_get_displayed_row(to_unsafe.as(LibGtk::CellView*))
+      __return_value = LibGtk.cell_view_get_displayed_row(@pointer.as(LibGtk::CellView*))
       Gtk::TreePath.new(__return_value) if __return_value
     end
 
     def draw_sensitive
-      __return_value = LibGtk.cell_view_get_draw_sensitive(to_unsafe.as(LibGtk::CellView*))
+      __return_value = LibGtk.cell_view_get_draw_sensitive(@pointer.as(LibGtk::CellView*))
       __return_value
     end
 
     def fit_model
-      __return_value = LibGtk.cell_view_get_fit_model(to_unsafe.as(LibGtk::CellView*))
+      __return_value = LibGtk.cell_view_get_fit_model(@pointer.as(LibGtk::CellView*))
       __return_value
     end
 
     def model
-      __return_value = LibGtk.cell_view_get_model(to_unsafe.as(LibGtk::CellView*))
+      __return_value = LibGtk.cell_view_get_model(@pointer.as(LibGtk::CellView*))
       __return_value if __return_value
     end
 
     def size_of_row(path, requisition)
-      __return_value = LibGtk.cell_view_get_size_of_row(to_unsafe.as(LibGtk::CellView*), path.to_unsafe.as(LibGtk::TreePath*), requisition)
+      __return_value = LibGtk.cell_view_get_size_of_row(@pointer.as(LibGtk::CellView*), path.to_unsafe.as(LibGtk::TreePath*), requisition)
       __return_value
     end
 
     def background_color=(color)
-      LibGtk.cell_view_set_background_color(to_unsafe.as(LibGtk::CellView*), color.to_unsafe.as(LibGdk::Color*))
+      LibGtk.cell_view_set_background_color(@pointer.as(LibGtk::CellView*), color.to_unsafe.as(LibGdk::Color*))
       nil
     end
 
     def background_rgba=(rgba)
-      LibGtk.cell_view_set_background_rgba(to_unsafe.as(LibGtk::CellView*), rgba.to_unsafe.as(LibGdk::RGBA*))
+      LibGtk.cell_view_set_background_rgba(@pointer.as(LibGtk::CellView*), rgba.to_unsafe.as(LibGdk::RGBA*))
       nil
     end
 
     def displayed_row=(path)
-      LibGtk.cell_view_set_displayed_row(to_unsafe.as(LibGtk::CellView*), path ? path.to_unsafe.as(LibGtk::TreePath*) : nil)
+      LibGtk.cell_view_set_displayed_row(@pointer.as(LibGtk::CellView*), path ? path.to_unsafe.as(LibGtk::TreePath*) : nil)
       nil
     end
 
     def draw_sensitive=(draw_sensitive)
-      LibGtk.cell_view_set_draw_sensitive(to_unsafe.as(LibGtk::CellView*), draw_sensitive)
+      LibGtk.cell_view_set_draw_sensitive(@pointer.as(LibGtk::CellView*), draw_sensitive)
       nil
     end
 
     def fit_model=(fit_model)
-      LibGtk.cell_view_set_fit_model(to_unsafe.as(LibGtk::CellView*), fit_model)
+      LibGtk.cell_view_set_fit_model(@pointer.as(LibGtk::CellView*), fit_model)
       nil
     end
 
     def model=(model)
-      LibGtk.cell_view_set_model(to_unsafe.as(LibGtk::CellView*), model ? model.to_unsafe.as(LibGtk::TreeModel*) : nil)
+      LibGtk.cell_view_set_model(@pointer.as(LibGtk::CellView*), model ? model.to_unsafe.as(LibGtk::TreeModel*) : nil)
       nil
     end
 

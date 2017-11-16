@@ -2,12 +2,13 @@ require "./cell_renderer"
 
 module Gtk
   class CellRendererSpinner < CellRenderer
-    @gtk_cell_renderer_spinner : LibGtk::CellRendererSpinner*?
-    def initialize(@gtk_cell_renderer_spinner : LibGtk::CellRendererSpinner*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::CellRendererSpinner*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_cell_renderer_spinner.not_nil!
+      @pointer.not_nil!.as(LibGtk::CellRendererSpinner*)
     end
 
     def active

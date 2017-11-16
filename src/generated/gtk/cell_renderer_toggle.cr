@@ -2,12 +2,13 @@ require "./cell_renderer"
 
 module Gtk
   class CellRendererToggle < CellRenderer
-    @gtk_cell_renderer_toggle : LibGtk::CellRendererToggle*?
-    def initialize(@gtk_cell_renderer_toggle : LibGtk::CellRendererToggle*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::CellRendererToggle*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_cell_renderer_toggle.not_nil!
+      @pointer.not_nil!.as(LibGtk::CellRendererToggle*)
     end
 
     def activatable
@@ -41,32 +42,32 @@ module Gtk
     end
 
     def activatable
-      __return_value = LibGtk.cell_renderer_toggle_get_activatable(to_unsafe.as(LibGtk::CellRendererToggle*))
+      __return_value = LibGtk.cell_renderer_toggle_get_activatable(@pointer.as(LibGtk::CellRendererToggle*))
       __return_value
     end
 
     def active
-      __return_value = LibGtk.cell_renderer_toggle_get_active(to_unsafe.as(LibGtk::CellRendererToggle*))
+      __return_value = LibGtk.cell_renderer_toggle_get_active(@pointer.as(LibGtk::CellRendererToggle*))
       __return_value
     end
 
     def radio
-      __return_value = LibGtk.cell_renderer_toggle_get_radio(to_unsafe.as(LibGtk::CellRendererToggle*))
+      __return_value = LibGtk.cell_renderer_toggle_get_radio(@pointer.as(LibGtk::CellRendererToggle*))
       __return_value
     end
 
     def activatable=(setting)
-      LibGtk.cell_renderer_toggle_set_activatable(to_unsafe.as(LibGtk::CellRendererToggle*), setting)
+      LibGtk.cell_renderer_toggle_set_activatable(@pointer.as(LibGtk::CellRendererToggle*), setting)
       nil
     end
 
     def active=(setting)
-      LibGtk.cell_renderer_toggle_set_active(to_unsafe.as(LibGtk::CellRendererToggle*), setting)
+      LibGtk.cell_renderer_toggle_set_active(@pointer.as(LibGtk::CellRendererToggle*), setting)
       nil
     end
 
     def radio=(radio)
-      LibGtk.cell_renderer_toggle_set_radio(to_unsafe.as(LibGtk::CellRendererToggle*), radio)
+      LibGtk.cell_renderer_toggle_set_radio(@pointer.as(LibGtk::CellRendererToggle*), radio)
       nil
     end
 

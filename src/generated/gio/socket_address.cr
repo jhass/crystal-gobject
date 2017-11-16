@@ -1,11 +1,12 @@
 module Gio
   class SocketAddress < GObject::Object
-    @gio_socket_address : LibGio::SocketAddress*?
-    def initialize(@gio_socket_address : LibGio::SocketAddress*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::SocketAddress*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_socket_address.not_nil!
+      @pointer.not_nil!.as(LibGio::SocketAddress*)
     end
 
     # Implements SocketConnectable
@@ -20,18 +21,18 @@ module Gio
     end
 
     def family
-      __return_value = LibGio.socket_address_get_family(to_unsafe.as(LibGio::SocketAddress*))
+      __return_value = LibGio.socket_address_get_family(@pointer.as(LibGio::SocketAddress*))
       __return_value
     end
 
     def native_size
-      __return_value = LibGio.socket_address_get_native_size(to_unsafe.as(LibGio::SocketAddress*))
+      __return_value = LibGio.socket_address_get_native_size(@pointer.as(LibGio::SocketAddress*))
       __return_value
     end
 
     def to_native(dest, destlen)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.socket_address_to_native(to_unsafe.as(LibGio::SocketAddress*), dest ? dest : nil, UInt64.new(destlen), pointerof(__error))
+      __return_value = LibGio.socket_address_to_native(@pointer.as(LibGio::SocketAddress*), dest ? dest : nil, UInt64.new(destlen), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

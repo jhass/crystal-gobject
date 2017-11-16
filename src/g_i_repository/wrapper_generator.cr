@@ -1,23 +1,20 @@
 module GIRepository
   module WrapperGenerator
-    def ptr_name
-      "@#{GIRepository.filename(full_constant)}"
-    end
-
     def ptr_type(libname)
       "#{libname}::#{name}*"
     end
 
     def write_constructor(libname, io, indent="")
-      io.puts "#{indent}  #{ptr_name} : #{ptr_type(libname)}?"
-      io.puts "#{indent}  def initialize(#{ptr_name} : #{ptr_type(libname)})"
+      io.puts "#{indent}  @pointer : Void*"
+      io.puts "#{indent}  def initialize(pointer : #{ptr_type(libname)})"
+      io.puts "#{indent}    @pointer = pointer.as(Void*)"
       io.puts "#{indent}  end"
       io.puts
     end
 
     def write_to_unsafe(libname, io, indent="")
       io.puts "#{indent}  def to_unsafe"
-      io.puts "#{indent}    #{ptr_name}.not_nil!"
+      io.puts "#{indent}    @pointer.not_nil!.as(#{ptr_type(libname)})"
       io.puts "#{indent}  end"
       io.puts
     end

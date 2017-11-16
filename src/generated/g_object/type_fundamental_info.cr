@@ -9,12 +9,13 @@ module GObject
       end
     end
 
-    @g_object_type_fundamental_info : LibGObject::TypeFundamentalInfo*?
-    def initialize(@g_object_type_fundamental_info : LibGObject::TypeFundamentalInfo*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::TypeFundamentalInfo*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_type_fundamental_info.not_nil!
+      @pointer.not_nil!.as(LibGObject::TypeFundamentalInfo*)
     end
 
     def type_flags

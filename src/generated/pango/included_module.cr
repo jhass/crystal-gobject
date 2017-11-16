@@ -7,12 +7,13 @@ module Pango
       super(ptr.as(LibPango::IncludedModule*))
     end
 
-    @pango_included_module : LibPango::IncludedModule*?
-    def initialize(@pango_included_module : LibPango::IncludedModule*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::IncludedModule*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_included_module.not_nil!
+      @pointer.not_nil!.as(LibPango::IncludedModule*)
     end
 
     def list

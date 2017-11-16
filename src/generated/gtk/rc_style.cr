@@ -1,11 +1,12 @@
 module Gtk
   class RcStyle < GObject::Object
-    @gtk_rc_style : LibGtk::RcStyle*?
-    def initialize(@gtk_rc_style : LibGtk::RcStyle*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::RcStyle*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_rc_style.not_nil!
+      @pointer.not_nil!.as(LibGtk::RcStyle*)
     end
 
     def self.new : self
@@ -14,7 +15,7 @@ module Gtk
     end
 
     def copy
-      __return_value = LibGtk.rc_style_copy(to_unsafe.as(LibGtk::RcStyle*))
+      __return_value = LibGtk.rc_style_copy(@pointer.as(LibGtk::RcStyle*))
       Gtk::RcStyle.new(__return_value)
     end
 

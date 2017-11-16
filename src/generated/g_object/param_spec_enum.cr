@@ -2,12 +2,13 @@ require "./param_spec"
 
 module GObject
   class ParamSpecEnum < ParamSpec
-    @g_object_param_spec_enum : LibGObject::ParamSpecEnum*?
-    def initialize(@g_object_param_spec_enum : LibGObject::ParamSpecEnum*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::ParamSpecEnum*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_param_spec_enum.not_nil!
+      @pointer.not_nil!.as(LibGObject::ParamSpecEnum*)
     end
 
   end

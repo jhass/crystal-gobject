@@ -2,12 +2,13 @@ module Cairo
   class Region
     include GObject::WrappedType
 
-    @cairo_region : LibCairo::Region*?
-    def initialize(@cairo_region : LibCairo::Region*)
+    @pointer : Void*
+    def initialize(pointer : LibCairo::Region*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @cairo_region.not_nil!
+      @pointer.not_nil!.as(LibCairo::Region*)
     end
 
   end

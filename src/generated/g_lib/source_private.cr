@@ -2,12 +2,13 @@ module GLib
   class SourcePrivate
     include GObject::WrappedType
 
-    @g_lib_source_private : LibGLib::SourcePrivate*?
-    def initialize(@g_lib_source_private : LibGLib::SourcePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::SourcePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_source_private.not_nil!
+      @pointer.not_nil!.as(LibGLib::SourcePrivate*)
     end
 
   end

@@ -2,12 +2,13 @@ module Gio
   class EmblemedIconPrivate
     include GObject::WrappedType
 
-    @gio_emblemed_icon_private : LibGio::EmblemedIconPrivate*?
-    def initialize(@gio_emblemed_icon_private : LibGio::EmblemedIconPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::EmblemedIconPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_emblemed_icon_private.not_nil!
+      @pointer.not_nil!.as(LibGio::EmblemedIconPrivate*)
     end
 
   end

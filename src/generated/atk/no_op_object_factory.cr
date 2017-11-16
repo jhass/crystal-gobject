@@ -2,12 +2,13 @@ require "./object_factory"
 
 module Atk
   class NoOpObjectFactory < ObjectFactory
-    @atk_no_op_object_factory : LibAtk::NoOpObjectFactory*?
-    def initialize(@atk_no_op_object_factory : LibAtk::NoOpObjectFactory*)
+    @pointer : Void*
+    def initialize(pointer : LibAtk::NoOpObjectFactory*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @atk_no_op_object_factory.not_nil!
+      @pointer.not_nil!.as(LibAtk::NoOpObjectFactory*)
     end
 
     def self.new : self

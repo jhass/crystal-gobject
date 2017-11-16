@@ -9,12 +9,13 @@ module Pango
       end
     end
 
-    @pango_attr_class : LibPango::AttrClass*?
-    def initialize(@pango_attr_class : LibPango::AttrClass*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::AttrClass*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_attr_class.not_nil!
+      @pointer.not_nil!.as(LibPango::AttrClass*)
     end
 
     def type

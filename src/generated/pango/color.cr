@@ -11,31 +11,32 @@ module Pango
       end
     end
 
-    @pango_color : LibPango::Color*?
-    def initialize(@pango_color : LibPango::Color*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::Color*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_color.not_nil!
+      @pointer.not_nil!.as(LibPango::Color*)
     end
 
     def copy
-      __return_value = LibPango.color_copy(to_unsafe.as(LibPango::Color*))
+      __return_value = LibPango.color_copy(@pointer.as(LibPango::Color*))
       Pango::Color.new(__return_value) if __return_value
     end
 
     def free
-      LibPango.color_free(to_unsafe.as(LibPango::Color*))
+      LibPango.color_free(@pointer.as(LibPango::Color*))
       nil
     end
 
     def parse(spec)
-      __return_value = LibPango.color_parse(to_unsafe.as(LibPango::Color*), spec.to_unsafe)
+      __return_value = LibPango.color_parse(@pointer.as(LibPango::Color*), spec.to_unsafe)
       __return_value
     end
 
     def to_string
-      __return_value = LibPango.color_to_string(to_unsafe.as(LibPango::Color*))
+      __return_value = LibPango.color_to_string(@pointer.as(LibPango::Color*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

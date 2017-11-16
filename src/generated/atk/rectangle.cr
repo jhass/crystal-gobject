@@ -12,12 +12,13 @@ module Atk
       end
     end
 
-    @atk_rectangle : LibAtk::Rectangle*?
-    def initialize(@atk_rectangle : LibAtk::Rectangle*)
+    @pointer : Void*
+    def initialize(pointer : LibAtk::Rectangle*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @atk_rectangle.not_nil!
+      @pointer.not_nil!.as(LibAtk::Rectangle*)
     end
 
     def x

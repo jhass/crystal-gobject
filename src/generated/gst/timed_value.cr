@@ -10,12 +10,13 @@ module Gst
       end
     end
 
-    @gst_timed_value : LibGst::TimedValue*?
-    def initialize(@gst_timed_value : LibGst::TimedValue*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::TimedValue*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_timed_value.not_nil!
+      @pointer.not_nil!.as(LibGst::TimedValue*)
     end
 
     def timestamp

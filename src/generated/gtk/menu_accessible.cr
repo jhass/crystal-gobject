@@ -2,12 +2,13 @@ require "./menu_shell_accessible"
 
 module Gtk
   class MenuAccessible < MenuShellAccessible
-    @gtk_menu_accessible : LibGtk::MenuAccessible*?
-    def initialize(@gtk_menu_accessible : LibGtk::MenuAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::MenuAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_menu_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::MenuAccessible*)
     end
 
     # Implements Component

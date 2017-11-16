@@ -1,11 +1,12 @@
 module Gtk
   class TextTag < GObject::Object
-    @gtk_text_tag : LibGtk::TextTag*?
-    def initialize(@gtk_text_tag : LibGtk::TextTag*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::TextTag*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_text_tag.not_nil!
+      @pointer.not_nil!.as(LibGtk::TextTag*)
     end
 
     def accumulative_margin
@@ -372,22 +373,22 @@ module Gtk
     end
 
     def changed(size_changed)
-      LibGtk.text_tag_changed(to_unsafe.as(LibGtk::TextTag*), size_changed)
+      LibGtk.text_tag_changed(@pointer.as(LibGtk::TextTag*), size_changed)
       nil
     end
 
     def event(event_object, event, iter)
-      __return_value = LibGtk.text_tag_event(to_unsafe.as(LibGtk::TextTag*), event_object.to_unsafe.as(LibGObject::Object*), event.to_unsafe.as(LibGdk::Event*), iter.to_unsafe.as(LibGtk::TextIter*))
+      __return_value = LibGtk.text_tag_event(@pointer.as(LibGtk::TextTag*), event_object.to_unsafe.as(LibGObject::Object*), event.to_unsafe.as(LibGdk::Event*), iter.to_unsafe.as(LibGtk::TextIter*))
       __return_value
     end
 
     def priority
-      __return_value = LibGtk.text_tag_get_priority(to_unsafe.as(LibGtk::TextTag*))
+      __return_value = LibGtk.text_tag_get_priority(@pointer.as(LibGtk::TextTag*))
       __return_value
     end
 
     def priority=(priority)
-      LibGtk.text_tag_set_priority(to_unsafe.as(LibGtk::TextTag*), Int32.new(priority))
+      LibGtk.text_tag_set_priority(@pointer.as(LibGtk::TextTag*), Int32.new(priority))
       nil
     end
 

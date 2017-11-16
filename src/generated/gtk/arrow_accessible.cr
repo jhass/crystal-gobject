@@ -2,12 +2,13 @@ require "./widget_accessible"
 
 module Gtk
   class ArrowAccessible < WidgetAccessible
-    @gtk_arrow_accessible : LibGtk::ArrowAccessible*?
-    def initialize(@gtk_arrow_accessible : LibGtk::ArrowAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ArrowAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_arrow_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::ArrowAccessible*)
     end
 
     # Implements Component

@@ -2,12 +2,13 @@ require "./container_accessible"
 
 module Gtk
   class TreeViewAccessible < ContainerAccessible
-    @gtk_tree_view_accessible : LibGtk::TreeViewAccessible*?
-    def initialize(@gtk_tree_view_accessible : LibGtk::TreeViewAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::TreeViewAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_tree_view_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::TreeViewAccessible*)
     end
 
     # Implements Component

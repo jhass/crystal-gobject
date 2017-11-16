@@ -2,12 +2,13 @@ require "./toggle_action"
 
 module Gtk
   class RadioAction < ToggleAction
-    @gtk_radio_action : LibGtk::RadioAction*?
-    def initialize(@gtk_radio_action : LibGtk::RadioAction*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::RadioAction*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_radio_action.not_nil!
+      @pointer.not_nil!.as(LibGtk::RadioAction*)
     end
 
     # Implements Buildable
@@ -28,27 +29,27 @@ module Gtk
     end
 
     def current_value
-      __return_value = LibGtk.radio_action_get_current_value(to_unsafe.as(LibGtk::RadioAction*))
+      __return_value = LibGtk.radio_action_get_current_value(@pointer.as(LibGtk::RadioAction*))
       __return_value
     end
 
     def group
-      __return_value = LibGtk.radio_action_get_group(to_unsafe.as(LibGtk::RadioAction*))
+      __return_value = LibGtk.radio_action_get_group(@pointer.as(LibGtk::RadioAction*))
       GLib::SListIterator(Gtk::RadioAction, LibGtk::RadioAction*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def join_group(group_source)
-      LibGtk.radio_action_join_group(to_unsafe.as(LibGtk::RadioAction*), group_source ? group_source.to_unsafe.as(LibGtk::RadioAction*) : nil)
+      LibGtk.radio_action_join_group(@pointer.as(LibGtk::RadioAction*), group_source ? group_source.to_unsafe.as(LibGtk::RadioAction*) : nil)
       nil
     end
 
     def current_value=(current_value)
-      LibGtk.radio_action_set_current_value(to_unsafe.as(LibGtk::RadioAction*), Int32.new(current_value))
+      LibGtk.radio_action_set_current_value(@pointer.as(LibGtk::RadioAction*), Int32.new(current_value))
       nil
     end
 
     def group=(group)
-      LibGtk.radio_action_set_group(to_unsafe.as(LibGtk::RadioAction*), group ? group : nil)
+      LibGtk.radio_action_set_group(@pointer.as(LibGtk::RadioAction*), group ? group : nil)
       nil
     end
 

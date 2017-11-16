@@ -1,11 +1,12 @@
 module Gio
   class DBusActionGroup < GObject::Object
-    @gio_d_bus_action_group : LibGio::DBusActionGroup*?
-    def initialize(@gio_d_bus_action_group : LibGio::DBusActionGroup*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::DBusActionGroup*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_d_bus_action_group.not_nil!
+      @pointer.not_nil!.as(LibGio::DBusActionGroup*)
     end
 
     # Implements ActionGroup

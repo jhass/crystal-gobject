@@ -2,12 +2,13 @@ require "./cell_renderer"
 
 module Gtk
   class CellRendererProgress < CellRenderer
-    @gtk_cell_renderer_progress : LibGtk::CellRendererProgress*?
-    def initialize(@gtk_cell_renderer_progress : LibGtk::CellRendererProgress*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::CellRendererProgress*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_cell_renderer_progress.not_nil!
+      @pointer.not_nil!.as(LibGtk::CellRendererProgress*)
     end
 
     # Implements Orientable

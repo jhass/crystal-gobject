@@ -2,12 +2,13 @@ require "./misc"
 
 module Gtk
   class Arrow < Misc
-    @gtk_arrow : LibGtk::Arrow*?
-    def initialize(@gtk_arrow : LibGtk::Arrow*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Arrow*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_arrow.not_nil!
+      @pointer.not_nil!.as(LibGtk::Arrow*)
     end
 
     # Implements ImplementorIface
@@ -28,7 +29,7 @@ module Gtk
     end
 
     def set(arrow_type : Gtk::ArrowType, shadow_type : Gtk::ShadowType)
-      LibGtk.arrow_set(to_unsafe.as(LibGtk::Arrow*), arrow_type, shadow_type)
+      LibGtk.arrow_set(@pointer.as(LibGtk::Arrow*), arrow_type, shadow_type)
       nil
     end
 

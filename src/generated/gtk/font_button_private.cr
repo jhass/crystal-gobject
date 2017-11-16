@@ -2,12 +2,13 @@ module Gtk
   class FontButtonPrivate
     include GObject::WrappedType
 
-    @gtk_font_button_private : LibGtk::FontButtonPrivate*?
-    def initialize(@gtk_font_button_private : LibGtk::FontButtonPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::FontButtonPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_font_button_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::FontButtonPrivate*)
     end
 
   end

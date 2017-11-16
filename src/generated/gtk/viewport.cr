@@ -2,12 +2,13 @@ require "./bin"
 
 module Gtk
   class Viewport < Bin
-    @gtk_viewport : LibGtk::Viewport*?
-    def initialize(@gtk_viewport : LibGtk::Viewport*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Viewport*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_viewport.not_nil!
+      @pointer.not_nil!.as(LibGtk::Viewport*)
     end
 
     # Implements ImplementorIface
@@ -24,42 +25,42 @@ module Gtk
     end
 
     def bin_window
-      __return_value = LibGtk.viewport_get_bin_window(to_unsafe.as(LibGtk::Viewport*))
+      __return_value = LibGtk.viewport_get_bin_window(@pointer.as(LibGtk::Viewport*))
       Gdk::Window.new(__return_value)
     end
 
     def hadjustment
-      __return_value = LibGtk.viewport_get_hadjustment(to_unsafe.as(LibGtk::Viewport*))
+      __return_value = LibGtk.viewport_get_hadjustment(@pointer.as(LibGtk::Viewport*))
       Gtk::Adjustment.new(__return_value)
     end
 
     def shadow_type
-      __return_value = LibGtk.viewport_get_shadow_type(to_unsafe.as(LibGtk::Viewport*))
+      __return_value = LibGtk.viewport_get_shadow_type(@pointer.as(LibGtk::Viewport*))
       __return_value
     end
 
     def vadjustment
-      __return_value = LibGtk.viewport_get_vadjustment(to_unsafe.as(LibGtk::Viewport*))
+      __return_value = LibGtk.viewport_get_vadjustment(@pointer.as(LibGtk::Viewport*))
       Gtk::Adjustment.new(__return_value)
     end
 
     def view_window
-      __return_value = LibGtk.viewport_get_view_window(to_unsafe.as(LibGtk::Viewport*))
+      __return_value = LibGtk.viewport_get_view_window(@pointer.as(LibGtk::Viewport*))
       Gdk::Window.new(__return_value)
     end
 
     def hadjustment=(adjustment)
-      LibGtk.viewport_set_hadjustment(to_unsafe.as(LibGtk::Viewport*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
+      LibGtk.viewport_set_hadjustment(@pointer.as(LibGtk::Viewport*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
       nil
     end
 
     def shadow_type=(type : Gtk::ShadowType)
-      LibGtk.viewport_set_shadow_type(to_unsafe.as(LibGtk::Viewport*), type)
+      LibGtk.viewport_set_shadow_type(@pointer.as(LibGtk::Viewport*), type)
       nil
     end
 
     def vadjustment=(adjustment)
-      LibGtk.viewport_set_vadjustment(to_unsafe.as(LibGtk::Viewport*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
+      LibGtk.viewport_set_vadjustment(@pointer.as(LibGtk::Viewport*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
       nil
     end
 

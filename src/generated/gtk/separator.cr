@@ -2,12 +2,13 @@ require "./widget"
 
 module Gtk
   class Separator < Widget
-    @gtk_separator : LibGtk::Separator*?
-    def initialize(@gtk_separator : LibGtk::Separator*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Separator*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_separator.not_nil!
+      @pointer.not_nil!.as(LibGtk::Separator*)
     end
 
     # Implements ImplementorIface

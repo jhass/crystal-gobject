@@ -2,12 +2,13 @@ module Gtk
   class TextBufferPrivate
     include GObject::WrappedType
 
-    @gtk_text_buffer_private : LibGtk::TextBufferPrivate*?
-    def initialize(@gtk_text_buffer_private : LibGtk::TextBufferPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::TextBufferPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_text_buffer_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::TextBufferPrivate*)
     end
 
   end

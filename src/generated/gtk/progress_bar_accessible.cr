@@ -2,12 +2,13 @@ require "./widget_accessible"
 
 module Gtk
   class ProgressBarAccessible < WidgetAccessible
-    @gtk_progress_bar_accessible : LibGtk::ProgressBarAccessible*?
-    def initialize(@gtk_progress_bar_accessible : LibGtk::ProgressBarAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ProgressBarAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_progress_bar_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::ProgressBarAccessible*)
     end
 
     # Implements Component

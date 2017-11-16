@@ -2,12 +2,13 @@ require "./widget_accessible"
 
 module Gtk
   class LabelAccessible < WidgetAccessible
-    @gtk_label_accessible : LibGtk::LabelAccessible*?
-    def initialize(@gtk_label_accessible : LibGtk::LabelAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::LabelAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_label_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::LabelAccessible*)
     end
 
     # Implements Component

@@ -2,12 +2,13 @@ module GLib
   class TimeZone
     include GObject::WrappedType
 
-    @g_lib_time_zone : LibGLib::TimeZone*?
-    def initialize(@g_lib_time_zone : LibGLib::TimeZone*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::TimeZone*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_time_zone.not_nil!
+      @pointer.not_nil!.as(LibGLib::TimeZone*)
     end
 
     def self.new(identifier) : self
@@ -26,37 +27,37 @@ module GLib
     end
 
     def adjust_time(type : GLib::TimeType, time)
-      __return_value = LibGLib.time_zone_adjust_time(to_unsafe.as(LibGLib::TimeZone*), type, time)
+      __return_value = LibGLib.time_zone_adjust_time(@pointer.as(LibGLib::TimeZone*), type, time)
       __return_value
     end
 
     def find_interval(type : GLib::TimeType, time)
-      __return_value = LibGLib.time_zone_find_interval(to_unsafe.as(LibGLib::TimeZone*), type, Int64.new(time))
+      __return_value = LibGLib.time_zone_find_interval(@pointer.as(LibGLib::TimeZone*), type, Int64.new(time))
       __return_value
     end
 
     def abbreviation(interval)
-      __return_value = LibGLib.time_zone_get_abbreviation(to_unsafe.as(LibGLib::TimeZone*), Int32.new(interval))
+      __return_value = LibGLib.time_zone_get_abbreviation(@pointer.as(LibGLib::TimeZone*), Int32.new(interval))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def offset(interval)
-      __return_value = LibGLib.time_zone_get_offset(to_unsafe.as(LibGLib::TimeZone*), Int32.new(interval))
+      __return_value = LibGLib.time_zone_get_offset(@pointer.as(LibGLib::TimeZone*), Int32.new(interval))
       __return_value
     end
 
     def dst?(interval)
-      __return_value = LibGLib.time_zone_is_dst(to_unsafe.as(LibGLib::TimeZone*), Int32.new(interval))
+      __return_value = LibGLib.time_zone_is_dst(@pointer.as(LibGLib::TimeZone*), Int32.new(interval))
       __return_value
     end
 
     def ref
-      __return_value = LibGLib.time_zone_ref(to_unsafe.as(LibGLib::TimeZone*))
+      __return_value = LibGLib.time_zone_ref(@pointer.as(LibGLib::TimeZone*))
       GLib::TimeZone.new(__return_value)
     end
 
     def unref
-      LibGLib.time_zone_unref(to_unsafe.as(LibGLib::TimeZone*))
+      LibGLib.time_zone_unref(@pointer.as(LibGLib::TimeZone*))
       nil
     end
 

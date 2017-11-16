@@ -2,12 +2,13 @@ require "./bin"
 
 module Gtk
   class Frame < Bin
-    @gtk_frame : LibGtk::Frame*?
-    def initialize(@gtk_frame : LibGtk::Frame*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Frame*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_frame.not_nil!
+      @pointer.not_nil!.as(LibGtk::Frame*)
     end
 
     # Implements ImplementorIface
@@ -43,42 +44,42 @@ module Gtk
     end
 
     def label
-      __return_value = LibGtk.frame_get_label(to_unsafe.as(LibGtk::Frame*))
+      __return_value = LibGtk.frame_get_label(@pointer.as(LibGtk::Frame*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def label_align(xalign, yalign)
-      LibGtk.frame_get_label_align(to_unsafe.as(LibGtk::Frame*), xalign, yalign)
+      LibGtk.frame_get_label_align(@pointer.as(LibGtk::Frame*), xalign, yalign)
       nil
     end
 
     def label_widget
-      __return_value = LibGtk.frame_get_label_widget(to_unsafe.as(LibGtk::Frame*))
+      __return_value = LibGtk.frame_get_label_widget(@pointer.as(LibGtk::Frame*))
       Gtk::Widget.new(__return_value) if __return_value
     end
 
     def shadow_type
-      __return_value = LibGtk.frame_get_shadow_type(to_unsafe.as(LibGtk::Frame*))
+      __return_value = LibGtk.frame_get_shadow_type(@pointer.as(LibGtk::Frame*))
       __return_value
     end
 
     def label=(label)
-      LibGtk.frame_set_label(to_unsafe.as(LibGtk::Frame*), label ? label.to_unsafe : nil)
+      LibGtk.frame_set_label(@pointer.as(LibGtk::Frame*), label ? label.to_unsafe : nil)
       nil
     end
 
     def set_label_align(xalign, yalign)
-      LibGtk.frame_set_label_align(to_unsafe.as(LibGtk::Frame*), Float32.new(xalign), Float32.new(yalign))
+      LibGtk.frame_set_label_align(@pointer.as(LibGtk::Frame*), Float32.new(xalign), Float32.new(yalign))
       nil
     end
 
     def label_widget=(label_widget)
-      LibGtk.frame_set_label_widget(to_unsafe.as(LibGtk::Frame*), label_widget ? label_widget.to_unsafe.as(LibGtk::Widget*) : nil)
+      LibGtk.frame_set_label_widget(@pointer.as(LibGtk::Frame*), label_widget ? label_widget.to_unsafe.as(LibGtk::Widget*) : nil)
       nil
     end
 
     def shadow_type=(type : Gtk::ShadowType)
-      LibGtk.frame_set_shadow_type(to_unsafe.as(LibGtk::Frame*), type)
+      LibGtk.frame_set_shadow_type(@pointer.as(LibGtk::Frame*), type)
       nil
     end
 

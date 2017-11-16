@@ -10,12 +10,13 @@ module GObject
       end
     end
 
-    @g_object_closure_notify_data : LibGObject::ClosureNotifyData*?
-    def initialize(@g_object_closure_notify_data : LibGObject::ClosureNotifyData*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::ClosureNotifyData*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_closure_notify_data.not_nil!
+      @pointer.not_nil!.as(LibGObject::ClosureNotifyData*)
     end
 
     def data

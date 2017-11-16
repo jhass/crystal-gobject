@@ -2,12 +2,13 @@ require "./scale"
 
 module Gtk
   class VScale < Scale
-    @gtk_v_scale : LibGtk::VScale*?
-    def initialize(@gtk_v_scale : LibGtk::VScale*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::VScale*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_v_scale.not_nil!
+      @pointer.not_nil!.as(LibGtk::VScale*)
     end
 
     # Implements ImplementorIface

@@ -12,26 +12,27 @@ module Gdk
       end
     end
 
-    @gdk_rectangle : LibGdk::Rectangle*?
-    def initialize(@gdk_rectangle : LibGdk::Rectangle*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::Rectangle*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_rectangle.not_nil!
+      @pointer.not_nil!.as(LibGdk::Rectangle*)
     end
 
     def equal(rect2)
-      __return_value = LibGdk.rectangle_equal(to_unsafe.as(LibGdk::Rectangle*), rect2.to_unsafe.as(LibGdk::Rectangle*))
+      __return_value = LibGdk.rectangle_equal(@pointer.as(LibGdk::Rectangle*), rect2.to_unsafe.as(LibGdk::Rectangle*))
       __return_value
     end
 
     def intersect(src2, dest)
-      __return_value = LibGdk.rectangle_intersect(to_unsafe.as(LibGdk::Rectangle*), src2.to_unsafe.as(LibGdk::Rectangle*), dest)
+      __return_value = LibGdk.rectangle_intersect(@pointer.as(LibGdk::Rectangle*), src2.to_unsafe.as(LibGdk::Rectangle*), dest)
       __return_value
     end
 
     def union(src2, dest)
-      LibGdk.rectangle_union(to_unsafe.as(LibGdk::Rectangle*), src2.to_unsafe.as(LibGdk::Rectangle*), dest)
+      LibGdk.rectangle_union(@pointer.as(LibGdk::Rectangle*), src2.to_unsafe.as(LibGdk::Rectangle*), dest)
       nil
     end
 

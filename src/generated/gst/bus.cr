@@ -2,12 +2,13 @@ require "./object"
 
 module Gst
   class Bus < Object
-    @gst_bus : LibGst::Bus*?
-    def initialize(@gst_bus : LibGst::Bus*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::Bus*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_bus.not_nil!
+      @pointer.not_nil!.as(LibGst::Bus*)
     end
 
 
@@ -17,102 +18,102 @@ module Gst
     end
 
     def add_signal_watch
-      LibGst.bus_add_signal_watch(to_unsafe.as(LibGst::Bus*))
+      LibGst.bus_add_signal_watch(@pointer.as(LibGst::Bus*))
       nil
     end
 
     def add_signal_watch_full(priority)
-      LibGst.bus_add_signal_watch_full(to_unsafe.as(LibGst::Bus*), Int32.new(priority))
+      LibGst.bus_add_signal_watch_full(@pointer.as(LibGst::Bus*), Int32.new(priority))
       nil
     end
 
     def add_watch(priority, func, user_data, notify)
-      __return_value = LibGst.bus_add_watch(to_unsafe.as(LibGst::Bus*), Int32.new(priority), func, user_data ? user_data : nil, notify)
+      __return_value = LibGst.bus_add_watch(@pointer.as(LibGst::Bus*), Int32.new(priority), func, user_data ? user_data : nil, notify)
       __return_value
     end
 
     def async_signal_func(message, data)
-      __return_value = LibGst.bus_async_signal_func(to_unsafe.as(LibGst::Bus*), message.to_unsafe.as(LibGst::Message*), data ? data : nil)
+      __return_value = LibGst.bus_async_signal_func(@pointer.as(LibGst::Bus*), message.to_unsafe.as(LibGst::Message*), data ? data : nil)
       __return_value
     end
 
     def create_watch
-      __return_value = LibGst.bus_create_watch(to_unsafe.as(LibGst::Bus*))
+      __return_value = LibGst.bus_create_watch(@pointer.as(LibGst::Bus*))
       GLib::Source.new(__return_value)
     end
 
     def disable_sync_message_emission
-      LibGst.bus_disable_sync_message_emission(to_unsafe.as(LibGst::Bus*))
+      LibGst.bus_disable_sync_message_emission(@pointer.as(LibGst::Bus*))
       nil
     end
 
     def enable_sync_message_emission
-      LibGst.bus_enable_sync_message_emission(to_unsafe.as(LibGst::Bus*))
+      LibGst.bus_enable_sync_message_emission(@pointer.as(LibGst::Bus*))
       nil
     end
 
     def have_pending
-      __return_value = LibGst.bus_have_pending(to_unsafe.as(LibGst::Bus*))
+      __return_value = LibGst.bus_have_pending(@pointer.as(LibGst::Bus*))
       __return_value
     end
 
     def peek
-      __return_value = LibGst.bus_peek(to_unsafe.as(LibGst::Bus*))
+      __return_value = LibGst.bus_peek(@pointer.as(LibGst::Bus*))
       Gst::Message.new(__return_value) if __return_value
     end
 
     def poll(events : Gst::MessageType, timeout)
-      __return_value = LibGst.bus_poll(to_unsafe.as(LibGst::Bus*), events, UInt64.new(timeout))
+      __return_value = LibGst.bus_poll(@pointer.as(LibGst::Bus*), events, UInt64.new(timeout))
       Gst::Message.new(__return_value) if __return_value
     end
 
     def pop
-      __return_value = LibGst.bus_pop(to_unsafe.as(LibGst::Bus*))
+      __return_value = LibGst.bus_pop(@pointer.as(LibGst::Bus*))
       Gst::Message.new(__return_value) if __return_value
     end
 
     def pop_filtered(types : Gst::MessageType)
-      __return_value = LibGst.bus_pop_filtered(to_unsafe.as(LibGst::Bus*), types)
+      __return_value = LibGst.bus_pop_filtered(@pointer.as(LibGst::Bus*), types)
       Gst::Message.new(__return_value) if __return_value
     end
 
     def post(message)
-      __return_value = LibGst.bus_post(to_unsafe.as(LibGst::Bus*), message.to_unsafe.as(LibGst::Message*))
+      __return_value = LibGst.bus_post(@pointer.as(LibGst::Bus*), message.to_unsafe.as(LibGst::Message*))
       __return_value
     end
 
     def remove_signal_watch
-      LibGst.bus_remove_signal_watch(to_unsafe.as(LibGst::Bus*))
+      LibGst.bus_remove_signal_watch(@pointer.as(LibGst::Bus*))
       nil
     end
 
     def remove_watch
-      __return_value = LibGst.bus_remove_watch(to_unsafe.as(LibGst::Bus*))
+      __return_value = LibGst.bus_remove_watch(@pointer.as(LibGst::Bus*))
       __return_value
     end
 
     def flushing=(flushing)
-      LibGst.bus_set_flushing(to_unsafe.as(LibGst::Bus*), flushing)
+      LibGst.bus_set_flushing(@pointer.as(LibGst::Bus*), flushing)
       nil
     end
 
     def set_sync_handler(func, user_data, notify)
-      LibGst.bus_set_sync_handler(to_unsafe.as(LibGst::Bus*), func ? func : nil, user_data ? user_data : nil, notify)
+      LibGst.bus_set_sync_handler(@pointer.as(LibGst::Bus*), func ? func : nil, user_data ? user_data : nil, notify)
       nil
     end
 
     def sync_signal_handler(message, data)
-      __return_value = LibGst.bus_sync_signal_handler(to_unsafe.as(LibGst::Bus*), message.to_unsafe.as(LibGst::Message*), data ? data : nil)
+      __return_value = LibGst.bus_sync_signal_handler(@pointer.as(LibGst::Bus*), message.to_unsafe.as(LibGst::Message*), data ? data : nil)
       __return_value
     end
 
     def timed_pop(timeout)
-      __return_value = LibGst.bus_timed_pop(to_unsafe.as(LibGst::Bus*), UInt64.new(timeout))
+      __return_value = LibGst.bus_timed_pop(@pointer.as(LibGst::Bus*), UInt64.new(timeout))
       Gst::Message.new(__return_value) if __return_value
     end
 
     def timed_pop_filtered(timeout, types : Gst::MessageType)
-      __return_value = LibGst.bus_timed_pop_filtered(to_unsafe.as(LibGst::Bus*), UInt64.new(timeout), types)
+      __return_value = LibGst.bus_timed_pop_filtered(@pointer.as(LibGst::Bus*), UInt64.new(timeout), types)
       Gst::Message.new(__return_value) if __return_value
     end
 

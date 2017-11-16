@@ -2,12 +2,13 @@ require "./socket_control_message"
 
 module Gio
   class UnixCredentialsMessage < SocketControlMessage
-    @gio_unix_credentials_message : LibGio::UnixCredentialsMessage*?
-    def initialize(@gio_unix_credentials_message : LibGio::UnixCredentialsMessage*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::UnixCredentialsMessage*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_unix_credentials_message.not_nil!
+      @pointer.not_nil!.as(LibGio::UnixCredentialsMessage*)
     end
 
     def credentials
@@ -31,7 +32,7 @@ module Gio
     end
 
     def credentials
-      __return_value = LibGio.unix_credentials_message_get_credentials(to_unsafe.as(LibGio::UnixCredentialsMessage*))
+      __return_value = LibGio.unix_credentials_message_get_credentials(@pointer.as(LibGio::UnixCredentialsMessage*))
       Gio::Credentials.new(__return_value)
     end
 

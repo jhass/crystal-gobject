@@ -12,12 +12,13 @@ module Gst
       end
     end
 
-    @gst_value_table : LibGst::ValueTable*?
-    def initialize(@gst_value_table : LibGst::ValueTable*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::ValueTable*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_value_table.not_nil!
+      @pointer.not_nil!.as(LibGst::ValueTable*)
     end
 
     def type

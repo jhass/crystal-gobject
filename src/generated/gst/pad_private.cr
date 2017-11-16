@@ -2,12 +2,13 @@ module Gst
   class PadPrivate
     include GObject::WrappedType
 
-    @gst_pad_private : LibGst::PadPrivate*?
-    def initialize(@gst_pad_private : LibGst::PadPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::PadPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_pad_private.not_nil!
+      @pointer.not_nil!.as(LibGst::PadPrivate*)
     end
 
   end

@@ -11,12 +11,13 @@ module Pango
       end
     end
 
-    @pango_attr_size : LibPango::AttrSize*?
-    def initialize(@pango_attr_size : LibPango::AttrSize*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::AttrSize*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_attr_size.not_nil!
+      @pointer.not_nil!.as(LibPango::AttrSize*)
     end
 
     def attr

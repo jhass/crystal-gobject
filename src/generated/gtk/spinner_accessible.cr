@@ -2,12 +2,13 @@ require "./widget_accessible"
 
 module Gtk
   class SpinnerAccessible < WidgetAccessible
-    @gtk_spinner_accessible : LibGtk::SpinnerAccessible*?
-    def initialize(@gtk_spinner_accessible : LibGtk::SpinnerAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::SpinnerAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_spinner_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::SpinnerAccessible*)
     end
 
     # Implements Component

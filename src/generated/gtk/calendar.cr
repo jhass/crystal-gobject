@@ -2,12 +2,13 @@ require "./widget"
 
 module Gtk
   class Calendar < Widget
-    @gtk_calendar : LibGtk::Calendar*?
-    def initialize(@gtk_calendar : LibGtk::Calendar*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Calendar*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_calendar.not_nil!
+      @pointer.not_nil!.as(LibGtk::Calendar*)
     end
 
     # Implements ImplementorIface
@@ -68,72 +69,72 @@ module Gtk
     end
 
     def clear_marks
-      LibGtk.calendar_clear_marks(to_unsafe.as(LibGtk::Calendar*))
+      LibGtk.calendar_clear_marks(@pointer.as(LibGtk::Calendar*))
       nil
     end
 
     def date(year, month, day)
-      LibGtk.calendar_get_date(to_unsafe.as(LibGtk::Calendar*), year, month, day)
+      LibGtk.calendar_get_date(@pointer.as(LibGtk::Calendar*), year, month, day)
       nil
     end
 
     def day_is_marked(day)
-      __return_value = LibGtk.calendar_get_day_is_marked(to_unsafe.as(LibGtk::Calendar*), UInt32.new(day))
+      __return_value = LibGtk.calendar_get_day_is_marked(@pointer.as(LibGtk::Calendar*), UInt32.new(day))
       __return_value
     end
 
     def detail_height_rows
-      __return_value = LibGtk.calendar_get_detail_height_rows(to_unsafe.as(LibGtk::Calendar*))
+      __return_value = LibGtk.calendar_get_detail_height_rows(@pointer.as(LibGtk::Calendar*))
       __return_value
     end
 
     def detail_width_chars
-      __return_value = LibGtk.calendar_get_detail_width_chars(to_unsafe.as(LibGtk::Calendar*))
+      __return_value = LibGtk.calendar_get_detail_width_chars(@pointer.as(LibGtk::Calendar*))
       __return_value
     end
 
     def display_options
-      __return_value = LibGtk.calendar_get_display_options(to_unsafe.as(LibGtk::Calendar*))
+      __return_value = LibGtk.calendar_get_display_options(@pointer.as(LibGtk::Calendar*))
       __return_value
     end
 
     def mark_day(day)
-      LibGtk.calendar_mark_day(to_unsafe.as(LibGtk::Calendar*), UInt32.new(day))
+      LibGtk.calendar_mark_day(@pointer.as(LibGtk::Calendar*), UInt32.new(day))
       nil
     end
 
     def select_day(day)
-      LibGtk.calendar_select_day(to_unsafe.as(LibGtk::Calendar*), UInt32.new(day))
+      LibGtk.calendar_select_day(@pointer.as(LibGtk::Calendar*), UInt32.new(day))
       nil
     end
 
     def select_month(month, year)
-      LibGtk.calendar_select_month(to_unsafe.as(LibGtk::Calendar*), UInt32.new(month), UInt32.new(year))
+      LibGtk.calendar_select_month(@pointer.as(LibGtk::Calendar*), UInt32.new(month), UInt32.new(year))
       nil
     end
 
     def set_detail_func(func, data, destroy)
-      LibGtk.calendar_set_detail_func(to_unsafe.as(LibGtk::Calendar*), func, data ? data : nil, destroy)
+      LibGtk.calendar_set_detail_func(@pointer.as(LibGtk::Calendar*), func, data ? data : nil, destroy)
       nil
     end
 
     def detail_height_rows=(rows)
-      LibGtk.calendar_set_detail_height_rows(to_unsafe.as(LibGtk::Calendar*), Int32.new(rows))
+      LibGtk.calendar_set_detail_height_rows(@pointer.as(LibGtk::Calendar*), Int32.new(rows))
       nil
     end
 
     def detail_width_chars=(chars)
-      LibGtk.calendar_set_detail_width_chars(to_unsafe.as(LibGtk::Calendar*), Int32.new(chars))
+      LibGtk.calendar_set_detail_width_chars(@pointer.as(LibGtk::Calendar*), Int32.new(chars))
       nil
     end
 
     def display_options=(flags : Gtk::CalendarDisplayOptions)
-      LibGtk.calendar_set_display_options(to_unsafe.as(LibGtk::Calendar*), flags)
+      LibGtk.calendar_set_display_options(@pointer.as(LibGtk::Calendar*), flags)
       nil
     end
 
     def unmark_day(day)
-      LibGtk.calendar_unmark_day(to_unsafe.as(LibGtk::Calendar*), UInt32.new(day))
+      LibGtk.calendar_unmark_day(@pointer.as(LibGtk::Calendar*), UInt32.new(day))
       nil
     end
 

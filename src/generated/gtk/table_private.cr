@@ -2,12 +2,13 @@ module Gtk
   class TablePrivate
     include GObject::WrappedType
 
-    @gtk_table_private : LibGtk::TablePrivate*?
-    def initialize(@gtk_table_private : LibGtk::TablePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::TablePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_table_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::TablePrivate*)
     end
 
   end

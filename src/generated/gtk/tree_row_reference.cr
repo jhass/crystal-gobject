@@ -2,12 +2,13 @@ module Gtk
   class TreeRowReference
     include GObject::WrappedType
 
-    @gtk_tree_row_reference : LibGtk::TreeRowReference*?
-    def initialize(@gtk_tree_row_reference : LibGtk::TreeRowReference*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::TreeRowReference*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_tree_row_reference.not_nil!
+      @pointer.not_nil!.as(LibGtk::TreeRowReference*)
     end
 
     def self.new(model, path) : self
@@ -21,27 +22,27 @@ module Gtk
     end
 
     def copy
-      __return_value = LibGtk.tree_row_reference_copy(to_unsafe.as(LibGtk::TreeRowReference*))
+      __return_value = LibGtk.tree_row_reference_copy(@pointer.as(LibGtk::TreeRowReference*))
       Gtk::TreeRowReference.new(__return_value)
     end
 
     def free
-      LibGtk.tree_row_reference_free(to_unsafe.as(LibGtk::TreeRowReference*))
+      LibGtk.tree_row_reference_free(@pointer.as(LibGtk::TreeRowReference*))
       nil
     end
 
     def model
-      __return_value = LibGtk.tree_row_reference_get_model(to_unsafe.as(LibGtk::TreeRowReference*))
+      __return_value = LibGtk.tree_row_reference_get_model(@pointer.as(LibGtk::TreeRowReference*))
       __return_value
     end
 
     def path
-      __return_value = LibGtk.tree_row_reference_get_path(to_unsafe.as(LibGtk::TreeRowReference*))
+      __return_value = LibGtk.tree_row_reference_get_path(@pointer.as(LibGtk::TreeRowReference*))
       Gtk::TreePath.new(__return_value) if __return_value
     end
 
     def valid
-      __return_value = LibGtk.tree_row_reference_valid(to_unsafe.as(LibGtk::TreeRowReference*))
+      __return_value = LibGtk.tree_row_reference_valid(@pointer.as(LibGtk::TreeRowReference*))
       __return_value
     end
 

@@ -2,12 +2,13 @@ module Gio
   class TlsPasswordPrivate
     include GObject::WrappedType
 
-    @gio_tls_password_private : LibGio::TlsPasswordPrivate*?
-    def initialize(@gio_tls_password_private : LibGio::TlsPasswordPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::TlsPasswordPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_tls_password_private.not_nil!
+      @pointer.not_nil!.as(LibGio::TlsPasswordPrivate*)
     end
 
   end

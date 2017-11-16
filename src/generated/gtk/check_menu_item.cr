@@ -2,12 +2,13 @@ require "./menu_item"
 
 module Gtk
   class CheckMenuItem < MenuItem
-    @gtk_check_menu_item : LibGtk::CheckMenuItem*?
-    def initialize(@gtk_check_menu_item : LibGtk::CheckMenuItem*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::CheckMenuItem*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_check_menu_item.not_nil!
+      @pointer.not_nil!.as(LibGtk::CheckMenuItem*)
     end
 
     # Implements ImplementorIface
@@ -45,37 +46,37 @@ module Gtk
     end
 
     def active
-      __return_value = LibGtk.check_menu_item_get_active(to_unsafe.as(LibGtk::CheckMenuItem*))
+      __return_value = LibGtk.check_menu_item_get_active(@pointer.as(LibGtk::CheckMenuItem*))
       __return_value
     end
 
     def draw_as_radio
-      __return_value = LibGtk.check_menu_item_get_draw_as_radio(to_unsafe.as(LibGtk::CheckMenuItem*))
+      __return_value = LibGtk.check_menu_item_get_draw_as_radio(@pointer.as(LibGtk::CheckMenuItem*))
       __return_value
     end
 
     def inconsistent
-      __return_value = LibGtk.check_menu_item_get_inconsistent(to_unsafe.as(LibGtk::CheckMenuItem*))
+      __return_value = LibGtk.check_menu_item_get_inconsistent(@pointer.as(LibGtk::CheckMenuItem*))
       __return_value
     end
 
     def active=(is_active)
-      LibGtk.check_menu_item_set_active(to_unsafe.as(LibGtk::CheckMenuItem*), is_active)
+      LibGtk.check_menu_item_set_active(@pointer.as(LibGtk::CheckMenuItem*), is_active)
       nil
     end
 
     def draw_as_radio=(draw_as_radio)
-      LibGtk.check_menu_item_set_draw_as_radio(to_unsafe.as(LibGtk::CheckMenuItem*), draw_as_radio)
+      LibGtk.check_menu_item_set_draw_as_radio(@pointer.as(LibGtk::CheckMenuItem*), draw_as_radio)
       nil
     end
 
     def inconsistent=(setting)
-      LibGtk.check_menu_item_set_inconsistent(to_unsafe.as(LibGtk::CheckMenuItem*), setting)
+      LibGtk.check_menu_item_set_inconsistent(@pointer.as(LibGtk::CheckMenuItem*), setting)
       nil
     end
 
     def toggled
-      LibGtk.check_menu_item_toggled(to_unsafe.as(LibGtk::CheckMenuItem*))
+      LibGtk.check_menu_item_toggled(@pointer.as(LibGtk::CheckMenuItem*))
       nil
     end
 

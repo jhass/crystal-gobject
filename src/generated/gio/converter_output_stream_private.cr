@@ -2,12 +2,13 @@ module Gio
   class ConverterOutputStreamPrivate
     include GObject::WrappedType
 
-    @gio_converter_output_stream_private : LibGio::ConverterOutputStreamPrivate*?
-    def initialize(@gio_converter_output_stream_private : LibGio::ConverterOutputStreamPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::ConverterOutputStreamPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_converter_output_stream_private.not_nil!
+      @pointer.not_nil!.as(LibGio::ConverterOutputStreamPrivate*)
     end
 
   end

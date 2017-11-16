@@ -2,12 +2,13 @@ module Gtk
   class StatusbarAccessiblePrivate
     include GObject::WrappedType
 
-    @gtk_statusbar_accessible_private : LibGtk::StatusbarAccessiblePrivate*?
-    def initialize(@gtk_statusbar_accessible_private : LibGtk::StatusbarAccessiblePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::StatusbarAccessiblePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_statusbar_accessible_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::StatusbarAccessiblePrivate*)
     end
 
   end

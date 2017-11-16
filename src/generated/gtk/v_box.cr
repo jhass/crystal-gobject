@@ -2,12 +2,13 @@ require "./box"
 
 module Gtk
   class VBox < Box
-    @gtk_v_box : LibGtk::VBox*?
-    def initialize(@gtk_v_box : LibGtk::VBox*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::VBox*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_v_box.not_nil!
+      @pointer.not_nil!.as(LibGtk::VBox*)
     end
 
     # Implements ImplementorIface

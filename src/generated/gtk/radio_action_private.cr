@@ -2,12 +2,13 @@ module Gtk
   class RadioActionPrivate
     include GObject::WrappedType
 
-    @gtk_radio_action_private : LibGtk::RadioActionPrivate*?
-    def initialize(@gtk_radio_action_private : LibGtk::RadioActionPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::RadioActionPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_radio_action_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::RadioActionPrivate*)
     end
 
   end

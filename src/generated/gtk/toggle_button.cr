@@ -2,12 +2,13 @@ require "./button"
 
 module Gtk
   class ToggleButton < Button
-    @gtk_toggle_button : LibGtk::ToggleButton*?
-    def initialize(@gtk_toggle_button : LibGtk::ToggleButton*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ToggleButton*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_toggle_button.not_nil!
+      @pointer.not_nil!.as(LibGtk::ToggleButton*)
     end
 
     # Implements ImplementorIface
@@ -45,37 +46,37 @@ module Gtk
     end
 
     def active
-      __return_value = LibGtk.toggle_button_get_active(to_unsafe.as(LibGtk::ToggleButton*))
+      __return_value = LibGtk.toggle_button_get_active(@pointer.as(LibGtk::ToggleButton*))
       __return_value
     end
 
     def inconsistent
-      __return_value = LibGtk.toggle_button_get_inconsistent(to_unsafe.as(LibGtk::ToggleButton*))
+      __return_value = LibGtk.toggle_button_get_inconsistent(@pointer.as(LibGtk::ToggleButton*))
       __return_value
     end
 
     def mode
-      __return_value = LibGtk.toggle_button_get_mode(to_unsafe.as(LibGtk::ToggleButton*))
+      __return_value = LibGtk.toggle_button_get_mode(@pointer.as(LibGtk::ToggleButton*))
       __return_value
     end
 
     def active=(is_active)
-      LibGtk.toggle_button_set_active(to_unsafe.as(LibGtk::ToggleButton*), is_active)
+      LibGtk.toggle_button_set_active(@pointer.as(LibGtk::ToggleButton*), is_active)
       nil
     end
 
     def inconsistent=(setting)
-      LibGtk.toggle_button_set_inconsistent(to_unsafe.as(LibGtk::ToggleButton*), setting)
+      LibGtk.toggle_button_set_inconsistent(@pointer.as(LibGtk::ToggleButton*), setting)
       nil
     end
 
     def mode=(draw_indicator)
-      LibGtk.toggle_button_set_mode(to_unsafe.as(LibGtk::ToggleButton*), draw_indicator)
+      LibGtk.toggle_button_set_mode(@pointer.as(LibGtk::ToggleButton*), draw_indicator)
       nil
     end
 
     def toggled
-      LibGtk.toggle_button_toggled(to_unsafe.as(LibGtk::ToggleButton*))
+      LibGtk.toggle_button_toggled(@pointer.as(LibGtk::ToggleButton*))
       nil
     end
 

@@ -2,12 +2,13 @@ require "./button_accessible"
 
 module Gtk
   class ScaleButtonAccessible < ButtonAccessible
-    @gtk_scale_button_accessible : LibGtk::ScaleButtonAccessible*?
-    def initialize(@gtk_scale_button_accessible : LibGtk::ScaleButtonAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ScaleButtonAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_scale_button_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::ScaleButtonAccessible*)
     end
 
     # Implements Action

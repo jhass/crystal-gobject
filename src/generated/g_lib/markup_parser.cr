@@ -7,12 +7,13 @@ module GLib
       super(ptr.as(LibGLib::MarkupParser*))
     end
 
-    @g_lib_markup_parser : LibGLib::MarkupParser*?
-    def initialize(@g_lib_markup_parser : LibGLib::MarkupParser*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::MarkupParser*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_markup_parser.not_nil!
+      @pointer.not_nil!.as(LibGLib::MarkupParser*)
     end
 
     def start_element

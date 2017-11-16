@@ -2,12 +2,13 @@ require "./object"
 
 module Gst
   class BufferPool < Object
-    @gst_buffer_pool : LibGst::BufferPool*?
-    def initialize(@gst_buffer_pool : LibGst::BufferPool*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::BufferPool*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_buffer_pool.not_nil!
+      @pointer.not_nil!.as(LibGst::BufferPool*)
     end
 
     def self.new : self
@@ -61,47 +62,47 @@ module Gst
     end
 
     def acquire_buffer(buffer, params)
-      __return_value = LibGst.buffer_pool_acquire_buffer(to_unsafe.as(LibGst::BufferPool*), buffer, params ? params.to_unsafe.as(LibGst::BufferPoolAcquireParams*) : nil)
+      __return_value = LibGst.buffer_pool_acquire_buffer(@pointer.as(LibGst::BufferPool*), buffer, params ? params.to_unsafe.as(LibGst::BufferPoolAcquireParams*) : nil)
       __return_value
     end
 
     def config
-      __return_value = LibGst.buffer_pool_get_config(to_unsafe.as(LibGst::BufferPool*))
+      __return_value = LibGst.buffer_pool_get_config(@pointer.as(LibGst::BufferPool*))
       Gst::Structure.new(__return_value)
     end
 
     def options
-      __return_value = LibGst.buffer_pool_get_options(to_unsafe.as(LibGst::BufferPool*))
+      __return_value = LibGst.buffer_pool_get_options(@pointer.as(LibGst::BufferPool*))
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def has_option(option)
-      __return_value = LibGst.buffer_pool_has_option(to_unsafe.as(LibGst::BufferPool*), option.to_unsafe)
+      __return_value = LibGst.buffer_pool_has_option(@pointer.as(LibGst::BufferPool*), option.to_unsafe)
       __return_value
     end
 
     def active?
-      __return_value = LibGst.buffer_pool_is_active(to_unsafe.as(LibGst::BufferPool*))
+      __return_value = LibGst.buffer_pool_is_active(@pointer.as(LibGst::BufferPool*))
       __return_value
     end
 
     def release_buffer(buffer)
-      LibGst.buffer_pool_release_buffer(to_unsafe.as(LibGst::BufferPool*), buffer.to_unsafe.as(LibGst::Buffer*))
+      LibGst.buffer_pool_release_buffer(@pointer.as(LibGst::BufferPool*), buffer.to_unsafe.as(LibGst::Buffer*))
       nil
     end
 
     def active=(active)
-      __return_value = LibGst.buffer_pool_set_active(to_unsafe.as(LibGst::BufferPool*), active)
+      __return_value = LibGst.buffer_pool_set_active(@pointer.as(LibGst::BufferPool*), active)
       __return_value
     end
 
     def config=(config)
-      __return_value = LibGst.buffer_pool_set_config(to_unsafe.as(LibGst::BufferPool*), config.to_unsafe.as(LibGst::Structure*))
+      __return_value = LibGst.buffer_pool_set_config(@pointer.as(LibGst::BufferPool*), config.to_unsafe.as(LibGst::Structure*))
       __return_value
     end
 
     def flushing=(flushing)
-      LibGst.buffer_pool_set_flushing(to_unsafe.as(LibGst::BufferPool*), flushing)
+      LibGst.buffer_pool_set_flushing(@pointer.as(LibGst::BufferPool*), flushing)
       nil
     end
 

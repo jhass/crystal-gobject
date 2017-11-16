@@ -1,11 +1,12 @@
 module Gdk
   class Cursor < GObject::Object
-    @gdk_cursor : LibGdk::Cursor*?
-    def initialize(@gdk_cursor : LibGdk::Cursor*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::Cursor*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_cursor.not_nil!
+      @pointer.not_nil!.as(LibGdk::Cursor*)
     end
 
     def cursor_type
@@ -44,32 +45,32 @@ module Gdk
     end
 
     def cursor_type
-      __return_value = LibGdk.cursor_get_cursor_type(to_unsafe.as(LibGdk::Cursor*))
+      __return_value = LibGdk.cursor_get_cursor_type(@pointer.as(LibGdk::Cursor*))
       __return_value
     end
 
     def display
-      __return_value = LibGdk.cursor_get_display(to_unsafe.as(LibGdk::Cursor*))
+      __return_value = LibGdk.cursor_get_display(@pointer.as(LibGdk::Cursor*))
       Gdk::Display.new(__return_value)
     end
 
     def image
-      __return_value = LibGdk.cursor_get_image(to_unsafe.as(LibGdk::Cursor*))
+      __return_value = LibGdk.cursor_get_image(@pointer.as(LibGdk::Cursor*))
       GdkPixbuf::Pixbuf.new(__return_value) if __return_value
     end
 
     def surface(x_hot, y_hot)
-      __return_value = LibGdk.cursor_get_surface(to_unsafe.as(LibGdk::Cursor*), x_hot, y_hot)
+      __return_value = LibGdk.cursor_get_surface(@pointer.as(LibGdk::Cursor*), x_hot, y_hot)
       Cairo::Surface.new(__return_value) if __return_value
     end
 
     def ref
-      __return_value = LibGdk.cursor_ref(to_unsafe.as(LibGdk::Cursor*))
+      __return_value = LibGdk.cursor_ref(@pointer.as(LibGdk::Cursor*))
       Gdk::Cursor.new(__return_value)
     end
 
     def unref
-      LibGdk.cursor_unref(to_unsafe.as(LibGdk::Cursor*))
+      LibGdk.cursor_unref(@pointer.as(LibGdk::Cursor*))
       nil
     end
 

@@ -2,12 +2,13 @@ module Gtk
   class SwitchAccessiblePrivate
     include GObject::WrappedType
 
-    @gtk_switch_accessible_private : LibGtk::SwitchAccessiblePrivate*?
-    def initialize(@gtk_switch_accessible_private : LibGtk::SwitchAccessiblePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::SwitchAccessiblePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_switch_accessible_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::SwitchAccessiblePrivate*)
     end
 
   end

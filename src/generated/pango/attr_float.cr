@@ -10,12 +10,13 @@ module Pango
       end
     end
 
-    @pango_attr_float : LibPango::AttrFloat*?
-    def initialize(@pango_attr_float : LibPango::AttrFloat*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::AttrFloat*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_attr_float.not_nil!
+      @pointer.not_nil!.as(LibPango::AttrFloat*)
     end
 
     def attr

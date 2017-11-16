@@ -15,12 +15,13 @@ module Atk
       end
     end
 
-    @atk_key_event_struct : LibAtk::KeyEventStruct*?
-    def initialize(@atk_key_event_struct : LibAtk::KeyEventStruct*)
+    @pointer : Void*
+    def initialize(pointer : LibAtk::KeyEventStruct*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @atk_key_event_struct.not_nil!
+      @pointer.not_nil!.as(LibAtk::KeyEventStruct*)
     end
 
     def type

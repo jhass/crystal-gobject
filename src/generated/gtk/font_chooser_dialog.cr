@@ -2,12 +2,13 @@ require "./dialog"
 
 module Gtk
   class FontChooserDialog < Dialog
-    @gtk_font_chooser_dialog : LibGtk::FontChooserDialog*?
-    def initialize(@gtk_font_chooser_dialog : LibGtk::FontChooserDialog*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::FontChooserDialog*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_font_chooser_dialog.not_nil!
+      @pointer.not_nil!.as(LibGtk::FontChooserDialog*)
     end
 
     # Implements ImplementorIface

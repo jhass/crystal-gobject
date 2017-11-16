@@ -7,12 +7,13 @@ module GLib
       super(ptr.as(LibGLib::Source*))
     end
 
-    @g_lib_source : LibGLib::Source*?
-    def initialize(@g_lib_source : LibGLib::Source*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::Source*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_source.not_nil!
+      @pointer.not_nil!.as(LibGLib::Source*)
     end
 
     def self.new(source_funcs, struct_size) : self
@@ -21,142 +22,142 @@ module GLib
     end
 
     def add_child_source(child_source)
-      LibGLib.source_add_child_source(to_unsafe.as(LibGLib::Source*), child_source.to_unsafe.as(LibGLib::Source*))
+      LibGLib.source_add_child_source(@pointer.as(LibGLib::Source*), child_source.to_unsafe.as(LibGLib::Source*))
       nil
     end
 
     def add_poll(fd)
-      LibGLib.source_add_poll(to_unsafe.as(LibGLib::Source*), fd.to_unsafe.as(LibGLib::PollFD*))
+      LibGLib.source_add_poll(@pointer.as(LibGLib::Source*), fd.to_unsafe.as(LibGLib::PollFD*))
       nil
     end
 
     def add_unix_fd(fd, events : GLib::IOCondition)
-      LibGLib.source_add_unix_fd(to_unsafe.as(LibGLib::Source*), Int32.new(fd), events)
+      LibGLib.source_add_unix_fd(@pointer.as(LibGLib::Source*), Int32.new(fd), events)
       nil
     end
 
     def attach(context)
-      __return_value = LibGLib.source_attach(to_unsafe.as(LibGLib::Source*), context ? context.to_unsafe.as(LibGLib::MainContext*) : nil)
+      __return_value = LibGLib.source_attach(@pointer.as(LibGLib::Source*), context ? context.to_unsafe.as(LibGLib::MainContext*) : nil)
       __return_value
     end
 
     def destroy
-      LibGLib.source_destroy(to_unsafe.as(LibGLib::Source*))
+      LibGLib.source_destroy(@pointer.as(LibGLib::Source*))
       nil
     end
 
     def can_recurse
-      __return_value = LibGLib.source_get_can_recurse(to_unsafe.as(LibGLib::Source*))
+      __return_value = LibGLib.source_get_can_recurse(@pointer.as(LibGLib::Source*))
       __return_value
     end
 
     def context
-      __return_value = LibGLib.source_get_context(to_unsafe.as(LibGLib::Source*))
+      __return_value = LibGLib.source_get_context(@pointer.as(LibGLib::Source*))
       GLib::MainContext.new(__return_value) if __return_value
     end
 
     def current_time(timeval)
-      LibGLib.source_get_current_time(to_unsafe.as(LibGLib::Source*), timeval.to_unsafe.as(LibGLib::TimeVal*))
+      LibGLib.source_get_current_time(@pointer.as(LibGLib::Source*), timeval.to_unsafe.as(LibGLib::TimeVal*))
       nil
     end
 
     def id
-      __return_value = LibGLib.source_get_id(to_unsafe.as(LibGLib::Source*))
+      __return_value = LibGLib.source_get_id(@pointer.as(LibGLib::Source*))
       __return_value
     end
 
     def name
-      __return_value = LibGLib.source_get_name(to_unsafe.as(LibGLib::Source*))
+      __return_value = LibGLib.source_get_name(@pointer.as(LibGLib::Source*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def priority
-      __return_value = LibGLib.source_get_priority(to_unsafe.as(LibGLib::Source*))
+      __return_value = LibGLib.source_get_priority(@pointer.as(LibGLib::Source*))
       __return_value
     end
 
     def ready_time
-      __return_value = LibGLib.source_get_ready_time(to_unsafe.as(LibGLib::Source*))
+      __return_value = LibGLib.source_get_ready_time(@pointer.as(LibGLib::Source*))
       __return_value
     end
 
     def time
-      __return_value = LibGLib.source_get_time(to_unsafe.as(LibGLib::Source*))
+      __return_value = LibGLib.source_get_time(@pointer.as(LibGLib::Source*))
       __return_value
     end
 
     def destroyed?
-      __return_value = LibGLib.source_is_destroyed(to_unsafe.as(LibGLib::Source*))
+      __return_value = LibGLib.source_is_destroyed(@pointer.as(LibGLib::Source*))
       __return_value
     end
 
     def modify_unix_fd(tag, new_events : GLib::IOCondition)
-      LibGLib.source_modify_unix_fd(to_unsafe.as(LibGLib::Source*), tag, new_events)
+      LibGLib.source_modify_unix_fd(@pointer.as(LibGLib::Source*), tag, new_events)
       nil
     end
 
     def query_unix_fd(tag)
-      __return_value = LibGLib.source_query_unix_fd(to_unsafe.as(LibGLib::Source*), tag)
+      __return_value = LibGLib.source_query_unix_fd(@pointer.as(LibGLib::Source*), tag)
       __return_value
     end
 
     def ref
-      __return_value = LibGLib.source_ref(to_unsafe.as(LibGLib::Source*))
+      __return_value = LibGLib.source_ref(@pointer.as(LibGLib::Source*))
       GLib::Source.new(__return_value)
     end
 
     def remove_child_source(child_source)
-      LibGLib.source_remove_child_source(to_unsafe.as(LibGLib::Source*), child_source.to_unsafe.as(LibGLib::Source*))
+      LibGLib.source_remove_child_source(@pointer.as(LibGLib::Source*), child_source.to_unsafe.as(LibGLib::Source*))
       nil
     end
 
     def remove_poll(fd)
-      LibGLib.source_remove_poll(to_unsafe.as(LibGLib::Source*), fd.to_unsafe.as(LibGLib::PollFD*))
+      LibGLib.source_remove_poll(@pointer.as(LibGLib::Source*), fd.to_unsafe.as(LibGLib::PollFD*))
       nil
     end
 
     def remove_unix_fd(tag)
-      LibGLib.source_remove_unix_fd(to_unsafe.as(LibGLib::Source*), tag)
+      LibGLib.source_remove_unix_fd(@pointer.as(LibGLib::Source*), tag)
       nil
     end
 
     def set_callback(func, data, notify)
-      LibGLib.source_set_callback(to_unsafe.as(LibGLib::Source*), func, data ? data : nil, notify ? notify : nil)
+      LibGLib.source_set_callback(@pointer.as(LibGLib::Source*), func, data ? data : nil, notify ? notify : nil)
       nil
     end
 
     def set_callback_indirect(callback_data, callback_funcs)
-      LibGLib.source_set_callback_indirect(to_unsafe.as(LibGLib::Source*), callback_data ? callback_data : nil, callback_funcs.to_unsafe.as(LibGLib::SourceCallbackFuncs*))
+      LibGLib.source_set_callback_indirect(@pointer.as(LibGLib::Source*), callback_data ? callback_data : nil, callback_funcs.to_unsafe.as(LibGLib::SourceCallbackFuncs*))
       nil
     end
 
     def can_recurse=(can_recurse)
-      LibGLib.source_set_can_recurse(to_unsafe.as(LibGLib::Source*), can_recurse)
+      LibGLib.source_set_can_recurse(@pointer.as(LibGLib::Source*), can_recurse)
       nil
     end
 
     def funcs=(funcs)
-      LibGLib.source_set_funcs(to_unsafe.as(LibGLib::Source*), funcs.to_unsafe.as(LibGLib::SourceFuncs*))
+      LibGLib.source_set_funcs(@pointer.as(LibGLib::Source*), funcs.to_unsafe.as(LibGLib::SourceFuncs*))
       nil
     end
 
     def name=(name)
-      LibGLib.source_set_name(to_unsafe.as(LibGLib::Source*), name.to_unsafe)
+      LibGLib.source_set_name(@pointer.as(LibGLib::Source*), name.to_unsafe)
       nil
     end
 
     def priority=(priority)
-      LibGLib.source_set_priority(to_unsafe.as(LibGLib::Source*), Int32.new(priority))
+      LibGLib.source_set_priority(@pointer.as(LibGLib::Source*), Int32.new(priority))
       nil
     end
 
     def ready_time=(ready_time)
-      LibGLib.source_set_ready_time(to_unsafe.as(LibGLib::Source*), Int64.new(ready_time))
+      LibGLib.source_set_ready_time(@pointer.as(LibGLib::Source*), Int64.new(ready_time))
       nil
     end
 
     def unref
-      LibGLib.source_unref(to_unsafe.as(LibGLib::Source*))
+      LibGLib.source_unref(@pointer.as(LibGLib::Source*))
       nil
     end
 

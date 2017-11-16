@@ -2,12 +2,13 @@ require "./container_accessible"
 
 module Gtk
   class ExpanderAccessible < ContainerAccessible
-    @gtk_expander_accessible : LibGtk::ExpanderAccessible*?
-    def initialize(@gtk_expander_accessible : LibGtk::ExpanderAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ExpanderAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_expander_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::ExpanderAccessible*)
     end
 
     # Implements Action

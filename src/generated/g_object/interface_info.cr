@@ -11,12 +11,13 @@ module GObject
       end
     end
 
-    @g_object_interface_info : LibGObject::InterfaceInfo*?
-    def initialize(@g_object_interface_info : LibGObject::InterfaceInfo*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::InterfaceInfo*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_interface_info.not_nil!
+      @pointer.not_nil!.as(LibGObject::InterfaceInfo*)
     end
 
     def interface_init

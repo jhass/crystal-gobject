@@ -2,12 +2,13 @@ module Gtk
   class UIManagerPrivate
     include GObject::WrappedType
 
-    @gtk_u_i_manager_private : LibGtk::UIManagerPrivate*?
-    def initialize(@gtk_u_i_manager_private : LibGtk::UIManagerPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::UIManagerPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_u_i_manager_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::UIManagerPrivate*)
     end
 
   end

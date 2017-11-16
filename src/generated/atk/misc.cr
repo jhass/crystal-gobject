@@ -1,11 +1,12 @@
 module Atk
   class Misc < GObject::Object
-    @atk_misc : LibAtk::Misc*?
-    def initialize(@atk_misc : LibAtk::Misc*)
+    @pointer : Void*
+    def initialize(pointer : LibAtk::Misc*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @atk_misc.not_nil!
+      @pointer.not_nil!.as(LibAtk::Misc*)
     end
 
     def self.instance
@@ -14,12 +15,12 @@ module Atk
     end
 
     def threads_enter
-      LibAtk.misc_threads_enter(to_unsafe.as(LibAtk::Misc*))
+      LibAtk.misc_threads_enter(@pointer.as(LibAtk::Misc*))
       nil
     end
 
     def threads_leave
-      LibAtk.misc_threads_leave(to_unsafe.as(LibAtk::Misc*))
+      LibAtk.misc_threads_leave(@pointer.as(LibAtk::Misc*))
       nil
     end
 

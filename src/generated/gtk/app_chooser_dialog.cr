@@ -2,12 +2,13 @@ require "./dialog"
 
 module Gtk
   class AppChooserDialog < Dialog
-    @gtk_app_chooser_dialog : LibGtk::AppChooserDialog*?
-    def initialize(@gtk_app_chooser_dialog : LibGtk::AppChooserDialog*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::AppChooserDialog*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_app_chooser_dialog.not_nil!
+      @pointer.not_nil!.as(LibGtk::AppChooserDialog*)
     end
 
     # Implements ImplementorIface
@@ -34,17 +35,17 @@ module Gtk
     end
 
     def heading
-      __return_value = LibGtk.app_chooser_dialog_get_heading(to_unsafe.as(LibGtk::AppChooserDialog*))
+      __return_value = LibGtk.app_chooser_dialog_get_heading(@pointer.as(LibGtk::AppChooserDialog*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def widget
-      __return_value = LibGtk.app_chooser_dialog_get_widget(to_unsafe.as(LibGtk::AppChooserDialog*))
+      __return_value = LibGtk.app_chooser_dialog_get_widget(@pointer.as(LibGtk::AppChooserDialog*))
       Gtk::Widget.new(__return_value)
     end
 
     def heading=(heading)
-      LibGtk.app_chooser_dialog_set_heading(to_unsafe.as(LibGtk::AppChooserDialog*), heading.to_unsafe)
+      LibGtk.app_chooser_dialog_set_heading(@pointer.as(LibGtk::AppChooserDialog*), heading.to_unsafe)
       nil
     end
 

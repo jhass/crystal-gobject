@@ -2,12 +2,13 @@ require "./param_spec"
 
 module GObject
   class ParamSpecFloat < ParamSpec
-    @g_object_param_spec_float : LibGObject::ParamSpecFloat*?
-    def initialize(@g_object_param_spec_float : LibGObject::ParamSpecFloat*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::ParamSpecFloat*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_param_spec_float.not_nil!
+      @pointer.not_nil!.as(LibGObject::ParamSpecFloat*)
     end
 
   end

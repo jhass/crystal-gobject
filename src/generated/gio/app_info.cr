@@ -63,130 +63,130 @@ module Gio
 
     def add_supports_type(content_type)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.app_info_add_supports_type(to_unsafe.as(LibGio::AppInfo*), content_type.to_unsafe, pointerof(__error))
+      __return_value = LibGio.app_info_add_supports_type(@pointer.as(LibGio::AppInfo*), content_type.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def can_delete
-      __return_value = LibGio.app_info_can_delete(to_unsafe.as(LibGio::AppInfo*))
+      __return_value = LibGio.app_info_can_delete(@pointer.as(LibGio::AppInfo*))
       __return_value
     end
 
     def can_remove_supports_type
-      __return_value = LibGio.app_info_can_remove_supports_type(to_unsafe.as(LibGio::AppInfo*))
+      __return_value = LibGio.app_info_can_remove_supports_type(@pointer.as(LibGio::AppInfo*))
       __return_value
     end
 
     def delete
-      __return_value = LibGio.app_info_delete(to_unsafe.as(LibGio::AppInfo*))
+      __return_value = LibGio.app_info_delete(@pointer.as(LibGio::AppInfo*))
       __return_value
     end
 
     def dup
-      __return_value = LibGio.app_info_dup(to_unsafe.as(LibGio::AppInfo*))
+      __return_value = LibGio.app_info_dup(@pointer.as(LibGio::AppInfo*))
       __return_value
     end
 
     def equal(appinfo2)
-      __return_value = LibGio.app_info_equal(to_unsafe.as(LibGio::AppInfo*), appinfo2.to_unsafe.as(LibGio::AppInfo*))
+      __return_value = LibGio.app_info_equal(@pointer.as(LibGio::AppInfo*), appinfo2.to_unsafe.as(LibGio::AppInfo*))
       __return_value
     end
 
     def commandline
-      __return_value = LibGio.app_info_get_commandline(to_unsafe.as(LibGio::AppInfo*))
+      __return_value = LibGio.app_info_get_commandline(@pointer.as(LibGio::AppInfo*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def description
-      __return_value = LibGio.app_info_get_description(to_unsafe.as(LibGio::AppInfo*))
+      __return_value = LibGio.app_info_get_description(@pointer.as(LibGio::AppInfo*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def display_name
-      __return_value = LibGio.app_info_get_display_name(to_unsafe.as(LibGio::AppInfo*))
+      __return_value = LibGio.app_info_get_display_name(@pointer.as(LibGio::AppInfo*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def executable
-      __return_value = LibGio.app_info_get_executable(to_unsafe.as(LibGio::AppInfo*))
+      __return_value = LibGio.app_info_get_executable(@pointer.as(LibGio::AppInfo*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def icon
-      __return_value = LibGio.app_info_get_icon(to_unsafe.as(LibGio::AppInfo*))
+      __return_value = LibGio.app_info_get_icon(@pointer.as(LibGio::AppInfo*))
       __return_value
     end
 
     def id
-      __return_value = LibGio.app_info_get_id(to_unsafe.as(LibGio::AppInfo*))
+      __return_value = LibGio.app_info_get_id(@pointer.as(LibGio::AppInfo*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def name
-      __return_value = LibGio.app_info_get_name(to_unsafe.as(LibGio::AppInfo*))
+      __return_value = LibGio.app_info_get_name(@pointer.as(LibGio::AppInfo*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def supported_types
-      __return_value = LibGio.app_info_get_supported_types(to_unsafe.as(LibGio::AppInfo*))
+      __return_value = LibGio.app_info_get_supported_types(@pointer.as(LibGio::AppInfo*))
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def launch(files, launch_context)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.app_info_launch(to_unsafe.as(LibGio::AppInfo*), files ? files : nil, launch_context ? launch_context.to_unsafe.as(LibGio::AppLaunchContext*) : nil, pointerof(__error))
+      __return_value = LibGio.app_info_launch(@pointer.as(LibGio::AppInfo*), files ? files : nil, launch_context ? launch_context.to_unsafe.as(LibGio::AppLaunchContext*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def launch_uris(uris, launch_context)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.app_info_launch_uris(to_unsafe.as(LibGio::AppInfo*), uris ? uris : nil, launch_context ? launch_context.to_unsafe.as(LibGio::AppLaunchContext*) : nil, pointerof(__error))
+      __return_value = LibGio.app_info_launch_uris(@pointer.as(LibGio::AppInfo*), uris ? uris : nil, launch_context ? launch_context.to_unsafe.as(LibGio::AppLaunchContext*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def remove_supports_type(content_type)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.app_info_remove_supports_type(to_unsafe.as(LibGio::AppInfo*), content_type.to_unsafe, pointerof(__error))
+      __return_value = LibGio.app_info_remove_supports_type(@pointer.as(LibGio::AppInfo*), content_type.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def set_as_default_for_extension(extension)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.app_info_set_as_default_for_extension(to_unsafe.as(LibGio::AppInfo*), extension.to_unsafe, pointerof(__error))
+      __return_value = LibGio.app_info_set_as_default_for_extension(@pointer.as(LibGio::AppInfo*), extension.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def set_as_default_for_type(content_type)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.app_info_set_as_default_for_type(to_unsafe.as(LibGio::AppInfo*), content_type.to_unsafe, pointerof(__error))
+      __return_value = LibGio.app_info_set_as_default_for_type(@pointer.as(LibGio::AppInfo*), content_type.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def set_as_last_used_for_type(content_type)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.app_info_set_as_last_used_for_type(to_unsafe.as(LibGio::AppInfo*), content_type.to_unsafe, pointerof(__error))
+      __return_value = LibGio.app_info_set_as_last_used_for_type(@pointer.as(LibGio::AppInfo*), content_type.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def should_show
-      __return_value = LibGio.app_info_should_show(to_unsafe.as(LibGio::AppInfo*))
+      __return_value = LibGio.app_info_should_show(@pointer.as(LibGio::AppInfo*))
       __return_value
     end
 
     def supports_files
-      __return_value = LibGio.app_info_supports_files(to_unsafe.as(LibGio::AppInfo*))
+      __return_value = LibGio.app_info_supports_files(@pointer.as(LibGio::AppInfo*))
       __return_value
     end
 
     def supports_uris
-      __return_value = LibGio.app_info_supports_uris(to_unsafe.as(LibGio::AppInfo*))
+      __return_value = LibGio.app_info_supports_uris(@pointer.as(LibGio::AppInfo*))
       __return_value
     end
 

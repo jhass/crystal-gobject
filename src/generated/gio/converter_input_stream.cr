@@ -2,12 +2,13 @@ require "./filter_input_stream"
 
 module Gio
   class ConverterInputStream < FilterInputStream
-    @gio_converter_input_stream : LibGio::ConverterInputStream*?
-    def initialize(@gio_converter_input_stream : LibGio::ConverterInputStream*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::ConverterInputStream*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_converter_input_stream.not_nil!
+      @pointer.not_nil!.as(LibGio::ConverterInputStream*)
     end
 
     # Implements PollableInputStream
@@ -22,7 +23,7 @@ module Gio
     end
 
     def converter
-      __return_value = LibGio.converter_input_stream_get_converter(to_unsafe.as(LibGio::ConverterInputStream*))
+      __return_value = LibGio.converter_input_stream_get_converter(@pointer.as(LibGio::ConverterInputStream*))
       __return_value
     end
 

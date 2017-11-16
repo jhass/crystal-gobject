@@ -2,12 +2,13 @@ require "./dialog"
 
 module Gtk
   class ColorChooserDialog < Dialog
-    @gtk_color_chooser_dialog : LibGtk::ColorChooserDialog*?
-    def initialize(@gtk_color_chooser_dialog : LibGtk::ColorChooserDialog*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ColorChooserDialog*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_color_chooser_dialog.not_nil!
+      @pointer.not_nil!.as(LibGtk::ColorChooserDialog*)
     end
 
     # Implements ImplementorIface

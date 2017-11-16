@@ -2,12 +2,13 @@ require "./socket_listener"
 
 module Gio
   class SocketService < SocketListener
-    @gio_socket_service : LibGio::SocketService*?
-    def initialize(@gio_socket_service : LibGio::SocketService*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::SocketService*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_socket_service.not_nil!
+      @pointer.not_nil!.as(LibGio::SocketService*)
     end
 
     def active
@@ -21,17 +22,17 @@ module Gio
     end
 
     def active?
-      __return_value = LibGio.socket_service_is_active(to_unsafe.as(LibGio::SocketService*))
+      __return_value = LibGio.socket_service_is_active(@pointer.as(LibGio::SocketService*))
       __return_value
     end
 
     def start
-      LibGio.socket_service_start(to_unsafe.as(LibGio::SocketService*))
+      LibGio.socket_service_start(@pointer.as(LibGio::SocketService*))
       nil
     end
 
     def stop
-      LibGio.socket_service_stop(to_unsafe.as(LibGio::SocketService*))
+      LibGio.socket_service_stop(@pointer.as(LibGio::SocketService*))
       nil
     end
 

@@ -2,12 +2,13 @@ require "./i_m_context"
 
 module Gtk
   class IMContextSimple < IMContext
-    @gtk_i_m_context_simple : LibGtk::IMContextSimple*?
-    def initialize(@gtk_i_m_context_simple : LibGtk::IMContextSimple*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::IMContextSimple*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_i_m_context_simple.not_nil!
+      @pointer.not_nil!.as(LibGtk::IMContextSimple*)
     end
 
     def self.new : self
@@ -16,7 +17,7 @@ module Gtk
     end
 
     def add_compose_file(compose_file)
-      LibGtk.i_m_context_simple_add_compose_file(to_unsafe.as(LibGtk::IMContextSimple*), compose_file.to_unsafe)
+      LibGtk.i_m_context_simple_add_compose_file(@pointer.as(LibGtk::IMContextSimple*), compose_file.to_unsafe)
       nil
     end
 

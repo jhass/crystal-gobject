@@ -2,12 +2,13 @@ require "./menu_model"
 
 module Gio
   class DBusMenuModel < MenuModel
-    @gio_d_bus_menu_model : LibGio::DBusMenuModel*?
-    def initialize(@gio_d_bus_menu_model : LibGio::DBusMenuModel*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::DBusMenuModel*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_d_bus_menu_model.not_nil!
+      @pointer.not_nil!.as(LibGio::DBusMenuModel*)
     end
 
     def self.get(connection, bus_name, object_path)

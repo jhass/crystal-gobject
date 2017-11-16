@@ -1,11 +1,12 @@
 module Gtk
   class Settings < GObject::Object
-    @gtk_settings : LibGtk::Settings*?
-    def initialize(@gtk_settings : LibGtk::Settings*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Settings*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_settings.not_nil!
+      @pointer.not_nil!.as(LibGtk::Settings*)
     end
 
     # Implements StyleProvider
@@ -445,27 +446,27 @@ module Gtk
     end
 
     def reset_property(name)
-      LibGtk.settings_reset_property(to_unsafe.as(LibGtk::Settings*), name.to_unsafe)
+      LibGtk.settings_reset_property(@pointer.as(LibGtk::Settings*), name.to_unsafe)
       nil
     end
 
     def set_double_property(name, v_double, origin)
-      LibGtk.settings_set_double_property(to_unsafe.as(LibGtk::Settings*), name.to_unsafe, Float64.new(v_double), origin.to_unsafe)
+      LibGtk.settings_set_double_property(@pointer.as(LibGtk::Settings*), name.to_unsafe, Float64.new(v_double), origin.to_unsafe)
       nil
     end
 
     def set_long_property(name, v_long, origin)
-      LibGtk.settings_set_long_property(to_unsafe.as(LibGtk::Settings*), name.to_unsafe, Int64.new(v_long), origin.to_unsafe)
+      LibGtk.settings_set_long_property(@pointer.as(LibGtk::Settings*), name.to_unsafe, Int64.new(v_long), origin.to_unsafe)
       nil
     end
 
     def set_property_value(name, svalue)
-      LibGtk.settings_set_property_value(to_unsafe.as(LibGtk::Settings*), name.to_unsafe, svalue.to_unsafe.as(LibGtk::SettingsValue*))
+      LibGtk.settings_set_property_value(@pointer.as(LibGtk::Settings*), name.to_unsafe, svalue.to_unsafe.as(LibGtk::SettingsValue*))
       nil
     end
 
     def set_string_property(name, v_string, origin)
-      LibGtk.settings_set_string_property(to_unsafe.as(LibGtk::Settings*), name.to_unsafe, v_string.to_unsafe, origin.to_unsafe)
+      LibGtk.settings_set_string_property(@pointer.as(LibGtk::Settings*), name.to_unsafe, v_string.to_unsafe, origin.to_unsafe)
       nil
     end
 

@@ -2,12 +2,13 @@ module Gtk
   class RadioButtonPrivate
     include GObject::WrappedType
 
-    @gtk_radio_button_private : LibGtk::RadioButtonPrivate*?
-    def initialize(@gtk_radio_button_private : LibGtk::RadioButtonPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::RadioButtonPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_radio_button_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::RadioButtonPrivate*)
     end
 
   end

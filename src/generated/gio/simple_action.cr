@@ -1,11 +1,12 @@
 module Gio
   class SimpleAction < GObject::Object
-    @gio_simple_action : LibGio::SimpleAction*?
-    def initialize(@gio_simple_action : LibGio::SimpleAction*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::SimpleAction*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_simple_action.not_nil!
+      @pointer.not_nil!.as(LibGio::SimpleAction*)
     end
 
     # Implements Action
@@ -45,17 +46,17 @@ module Gio
     end
 
     def enabled=(enabled)
-      LibGio.simple_action_set_enabled(to_unsafe.as(LibGio::SimpleAction*), enabled)
+      LibGio.simple_action_set_enabled(@pointer.as(LibGio::SimpleAction*), enabled)
       nil
     end
 
     def state=(value)
-      LibGio.simple_action_set_state(to_unsafe.as(LibGio::SimpleAction*), value.to_unsafe.as(LibGLib::Variant*))
+      LibGio.simple_action_set_state(@pointer.as(LibGio::SimpleAction*), value.to_unsafe.as(LibGLib::Variant*))
       nil
     end
 
     def state_hint=(state_hint)
-      LibGio.simple_action_set_state_hint(to_unsafe.as(LibGio::SimpleAction*), state_hint ? state_hint.to_unsafe.as(LibGLib::Variant*) : nil)
+      LibGio.simple_action_set_state_hint(@pointer.as(LibGio::SimpleAction*), state_hint ? state_hint.to_unsafe.as(LibGLib::Variant*) : nil)
       nil
     end
 

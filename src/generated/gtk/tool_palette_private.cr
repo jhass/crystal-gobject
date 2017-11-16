@@ -2,12 +2,13 @@ module Gtk
   class ToolPalettePrivate
     include GObject::WrappedType
 
-    @gtk_tool_palette_private : LibGtk::ToolPalettePrivate*?
-    def initialize(@gtk_tool_palette_private : LibGtk::ToolPalettePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ToolPalettePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_tool_palette_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::ToolPalettePrivate*)
     end
 
   end

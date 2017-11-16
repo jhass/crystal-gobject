@@ -2,12 +2,13 @@ require "./range"
 
 module Gtk
   class Scale < Range
-    @gtk_scale : LibGtk::Scale*?
-    def initialize(@gtk_scale : LibGtk::Scale*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Scale*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_scale.not_nil!
+      @pointer.not_nil!.as(LibGtk::Scale*)
     end
 
     # Implements ImplementorIface
@@ -44,62 +45,62 @@ module Gtk
     end
 
     def add_mark(value, position : Gtk::PositionType, markup)
-      LibGtk.scale_add_mark(to_unsafe.as(LibGtk::Scale*), Float64.new(value), position, markup ? markup.to_unsafe : nil)
+      LibGtk.scale_add_mark(@pointer.as(LibGtk::Scale*), Float64.new(value), position, markup ? markup.to_unsafe : nil)
       nil
     end
 
     def clear_marks
-      LibGtk.scale_clear_marks(to_unsafe.as(LibGtk::Scale*))
+      LibGtk.scale_clear_marks(@pointer.as(LibGtk::Scale*))
       nil
     end
 
     def digits
-      __return_value = LibGtk.scale_get_digits(to_unsafe.as(LibGtk::Scale*))
+      __return_value = LibGtk.scale_get_digits(@pointer.as(LibGtk::Scale*))
       __return_value
     end
 
     def draw_value
-      __return_value = LibGtk.scale_get_draw_value(to_unsafe.as(LibGtk::Scale*))
+      __return_value = LibGtk.scale_get_draw_value(@pointer.as(LibGtk::Scale*))
       __return_value
     end
 
     def has_origin
-      __return_value = LibGtk.scale_get_has_origin(to_unsafe.as(LibGtk::Scale*))
+      __return_value = LibGtk.scale_get_has_origin(@pointer.as(LibGtk::Scale*))
       __return_value
     end
 
     def layout
-      __return_value = LibGtk.scale_get_layout(to_unsafe.as(LibGtk::Scale*))
+      __return_value = LibGtk.scale_get_layout(@pointer.as(LibGtk::Scale*))
       Pango::Layout.new(__return_value) if __return_value
     end
 
     def layout_offsets(x, y)
-      LibGtk.scale_get_layout_offsets(to_unsafe.as(LibGtk::Scale*), x, y)
+      LibGtk.scale_get_layout_offsets(@pointer.as(LibGtk::Scale*), x, y)
       nil
     end
 
     def value_pos
-      __return_value = LibGtk.scale_get_value_pos(to_unsafe.as(LibGtk::Scale*))
+      __return_value = LibGtk.scale_get_value_pos(@pointer.as(LibGtk::Scale*))
       __return_value
     end
 
     def digits=(digits)
-      LibGtk.scale_set_digits(to_unsafe.as(LibGtk::Scale*), Int32.new(digits))
+      LibGtk.scale_set_digits(@pointer.as(LibGtk::Scale*), Int32.new(digits))
       nil
     end
 
     def draw_value=(draw_value)
-      LibGtk.scale_set_draw_value(to_unsafe.as(LibGtk::Scale*), draw_value)
+      LibGtk.scale_set_draw_value(@pointer.as(LibGtk::Scale*), draw_value)
       nil
     end
 
     def has_origin=(has_origin)
-      LibGtk.scale_set_has_origin(to_unsafe.as(LibGtk::Scale*), has_origin)
+      LibGtk.scale_set_has_origin(@pointer.as(LibGtk::Scale*), has_origin)
       nil
     end
 
     def value_pos=(pos : Gtk::PositionType)
-      LibGtk.scale_set_value_pos(to_unsafe.as(LibGtk::Scale*), pos)
+      LibGtk.scale_set_value_pos(@pointer.as(LibGtk::Scale*), pos)
       nil
     end
 

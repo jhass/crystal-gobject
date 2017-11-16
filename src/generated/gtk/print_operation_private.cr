@@ -2,12 +2,13 @@ module Gtk
   class PrintOperationPrivate
     include GObject::WrappedType
 
-    @gtk_print_operation_private : LibGtk::PrintOperationPrivate*?
-    def initialize(@gtk_print_operation_private : LibGtk::PrintOperationPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::PrintOperationPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_print_operation_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::PrintOperationPrivate*)
     end
 
   end

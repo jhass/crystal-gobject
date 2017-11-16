@@ -2,12 +2,13 @@ require "./plugin_feature"
 
 module Gst
   class DeviceProviderFactory < PluginFeature
-    @gst_device_provider_factory : LibGst::DeviceProviderFactory*?
-    def initialize(@gst_device_provider_factory : LibGst::DeviceProviderFactory*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::DeviceProviderFactory*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_device_provider_factory.not_nil!
+      @pointer.not_nil!.as(LibGst::DeviceProviderFactory*)
     end
 
     def self.find(name)
@@ -26,32 +27,32 @@ module Gst
     end
 
     def get
-      __return_value = LibGst.device_provider_factory_get(to_unsafe.as(LibGst::DeviceProviderFactory*))
+      __return_value = LibGst.device_provider_factory_get(@pointer.as(LibGst::DeviceProviderFactory*))
       Gst::DeviceProvider.new(__return_value) if __return_value
     end
 
     def device_provider_type
-      __return_value = LibGst.device_provider_factory_get_device_provider_type(to_unsafe.as(LibGst::DeviceProviderFactory*))
+      __return_value = LibGst.device_provider_factory_get_device_provider_type(@pointer.as(LibGst::DeviceProviderFactory*))
       __return_value
     end
 
     def metadata(key)
-      __return_value = LibGst.device_provider_factory_get_metadata(to_unsafe.as(LibGst::DeviceProviderFactory*), key.to_unsafe)
+      __return_value = LibGst.device_provider_factory_get_metadata(@pointer.as(LibGst::DeviceProviderFactory*), key.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def metadata_keys
-      __return_value = LibGst.device_provider_factory_get_metadata_keys(to_unsafe.as(LibGst::DeviceProviderFactory*))
+      __return_value = LibGst.device_provider_factory_get_metadata_keys(@pointer.as(LibGst::DeviceProviderFactory*))
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) } if __return_value
     end
 
     def has_classes(classes)
-      __return_value = LibGst.device_provider_factory_has_classes(to_unsafe.as(LibGst::DeviceProviderFactory*), classes ? classes.to_unsafe : nil)
+      __return_value = LibGst.device_provider_factory_has_classes(@pointer.as(LibGst::DeviceProviderFactory*), classes ? classes.to_unsafe : nil)
       __return_value
     end
 
     def has_classesv(classes)
-      __return_value = LibGst.device_provider_factory_has_classesv(to_unsafe.as(LibGst::DeviceProviderFactory*), classes ? classes : nil)
+      __return_value = LibGst.device_provider_factory_has_classesv(@pointer.as(LibGst::DeviceProviderFactory*), classes ? classes : nil)
       __return_value
     end
 

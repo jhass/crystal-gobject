@@ -11,12 +11,13 @@ module GLib
       end
     end
 
-    @g_lib_error : LibGLib::Error*?
-    def initialize(@g_lib_error : LibGLib::Error*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::Error*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_error.not_nil!
+      @pointer.not_nil!.as(LibGLib::Error*)
     end
 
     def self.new_literal(domain, code, message) : self
@@ -25,17 +26,17 @@ module GLib
     end
 
     def copy
-      __return_value = LibGLib.error_copy(to_unsafe.as(LibGLib::Error*))
+      __return_value = LibGLib.error_copy(@pointer.as(LibGLib::Error*))
       __return_value
     end
 
     def free
-      LibGLib.error_free(to_unsafe.as(LibGLib::Error*))
+      LibGLib.error_free(@pointer.as(LibGLib::Error*))
       nil
     end
 
     def matches(domain, code)
-      __return_value = LibGLib.error_matches(to_unsafe.as(LibGLib::Error*), UInt32.new(domain), Int32.new(code))
+      __return_value = LibGLib.error_matches(@pointer.as(LibGLib::Error*), UInt32.new(domain), Int32.new(code))
       __return_value
     end
 

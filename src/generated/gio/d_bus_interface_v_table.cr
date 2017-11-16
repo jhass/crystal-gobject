@@ -11,12 +11,13 @@ module Gio
       end
     end
 
-    @gio_d_bus_interface_v_table : LibGio::DBusInterfaceVTable*?
-    def initialize(@gio_d_bus_interface_v_table : LibGio::DBusInterfaceVTable*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::DBusInterfaceVTable*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_d_bus_interface_v_table.not_nil!
+      @pointer.not_nil!.as(LibGio::DBusInterfaceVTable*)
     end
 
     def method_call

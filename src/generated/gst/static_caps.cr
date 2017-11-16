@@ -10,21 +10,22 @@ module Gst
       end
     end
 
-    @gst_static_caps : LibGst::StaticCaps*?
-    def initialize(@gst_static_caps : LibGst::StaticCaps*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::StaticCaps*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_static_caps.not_nil!
+      @pointer.not_nil!.as(LibGst::StaticCaps*)
     end
 
     def cleanup
-      LibGst.static_caps_cleanup(to_unsafe.as(LibGst::StaticCaps*))
+      LibGst.static_caps_cleanup(@pointer.as(LibGst::StaticCaps*))
       nil
     end
 
     def get
-      __return_value = LibGst.static_caps_get(to_unsafe.as(LibGst::StaticCaps*))
+      __return_value = LibGst.static_caps_get(@pointer.as(LibGst::StaticCaps*))
       Gst::Caps.new(__return_value)
     end
 

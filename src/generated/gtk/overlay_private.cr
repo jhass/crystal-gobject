@@ -2,12 +2,13 @@ module Gtk
   class OverlayPrivate
     include GObject::WrappedType
 
-    @gtk_overlay_private : LibGtk::OverlayPrivate*?
-    def initialize(@gtk_overlay_private : LibGtk::OverlayPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::OverlayPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_overlay_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::OverlayPrivate*)
     end
 
   end

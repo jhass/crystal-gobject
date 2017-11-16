@@ -2,12 +2,13 @@ module Gtk
   class MenuShellAccessiblePrivate
     include GObject::WrappedType
 
-    @gtk_menu_shell_accessible_private : LibGtk::MenuShellAccessiblePrivate*?
-    def initialize(@gtk_menu_shell_accessible_private : LibGtk::MenuShellAccessiblePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::MenuShellAccessiblePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_menu_shell_accessible_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::MenuShellAccessiblePrivate*)
     end
 
   end

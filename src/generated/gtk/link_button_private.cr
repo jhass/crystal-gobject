@@ -2,12 +2,13 @@ module Gtk
   class LinkButtonPrivate
     include GObject::WrappedType
 
-    @gtk_link_button_private : LibGtk::LinkButtonPrivate*?
-    def initialize(@gtk_link_button_private : LibGtk::LinkButtonPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::LinkButtonPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_link_button_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::LinkButtonPrivate*)
     end
 
   end

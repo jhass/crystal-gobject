@@ -2,12 +2,13 @@ module Gst
   class PipelinePrivate
     include GObject::WrappedType
 
-    @gst_pipeline_private : LibGst::PipelinePrivate*?
-    def initialize(@gst_pipeline_private : LibGst::PipelinePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::PipelinePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_pipeline_private.not_nil!
+      @pointer.not_nil!.as(LibGst::PipelinePrivate*)
     end
 
   end

@@ -12,21 +12,22 @@ module Gio
       end
     end
 
-    @gio_d_bus_annotation_info : LibGio::DBusAnnotationInfo*?
-    def initialize(@gio_d_bus_annotation_info : LibGio::DBusAnnotationInfo*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::DBusAnnotationInfo*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_d_bus_annotation_info.not_nil!
+      @pointer.not_nil!.as(LibGio::DBusAnnotationInfo*)
     end
 
     def ref
-      __return_value = LibGio.d_bus_annotation_info_ref(to_unsafe.as(LibGio::DBusAnnotationInfo*))
+      __return_value = LibGio.d_bus_annotation_info_ref(@pointer.as(LibGio::DBusAnnotationInfo*))
       Gio::DBusAnnotationInfo.new(__return_value)
     end
 
     def unref
-      LibGio.d_bus_annotation_info_unref(to_unsafe.as(LibGio::DBusAnnotationInfo*))
+      LibGio.d_bus_annotation_info_unref(@pointer.as(LibGio::DBusAnnotationInfo*))
       nil
     end
 

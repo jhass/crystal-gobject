@@ -2,12 +2,13 @@ module Gtk
   class FlowBoxAccessiblePrivate
     include GObject::WrappedType
 
-    @gtk_flow_box_accessible_private : LibGtk::FlowBoxAccessiblePrivate*?
-    def initialize(@gtk_flow_box_accessible_private : LibGtk::FlowBoxAccessiblePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::FlowBoxAccessiblePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_flow_box_accessible_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::FlowBoxAccessiblePrivate*)
     end
 
   end

@@ -2,12 +2,13 @@ require "./widget"
 
 module Gtk
   class Spinner < Widget
-    @gtk_spinner : LibGtk::Spinner*?
-    def initialize(@gtk_spinner : LibGtk::Spinner*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Spinner*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_spinner.not_nil!
+      @pointer.not_nil!.as(LibGtk::Spinner*)
     end
 
     # Implements ImplementorIface
@@ -23,12 +24,12 @@ module Gtk
     end
 
     def start
-      LibGtk.spinner_start(to_unsafe.as(LibGtk::Spinner*))
+      LibGtk.spinner_start(@pointer.as(LibGtk::Spinner*))
       nil
     end
 
     def stop
-      LibGtk.spinner_stop(to_unsafe.as(LibGtk::Spinner*))
+      LibGtk.spinner_stop(@pointer.as(LibGtk::Spinner*))
       nil
     end
 

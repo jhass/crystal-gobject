@@ -10,36 +10,37 @@ module GLib
       PointerIterator.new((to_unsafe.as(LibGLib::Mutex*).value.i)) {|__item| __item }
     end
 
-    @g_lib_mutex : LibGLib::Mutex*?
-    def initialize(@g_lib_mutex : LibGLib::Mutex*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::Mutex*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_mutex.not_nil!
+      @pointer.not_nil!.as(LibGLib::Mutex*)
     end
 
     def clear
-      LibGLib.mutex_clear(to_unsafe.as(LibGLib::Mutex*))
+      LibGLib.mutex_clear(@pointer.as(LibGLib::Mutex*))
       nil
     end
 
     def init
-      LibGLib.mutex_init(to_unsafe.as(LibGLib::Mutex*))
+      LibGLib.mutex_init(@pointer.as(LibGLib::Mutex*))
       nil
     end
 
     def lock
-      LibGLib.mutex_lock(to_unsafe.as(LibGLib::Mutex*))
+      LibGLib.mutex_lock(@pointer.as(LibGLib::Mutex*))
       nil
     end
 
     def trylock
-      __return_value = LibGLib.mutex_trylock(to_unsafe.as(LibGLib::Mutex*))
+      __return_value = LibGLib.mutex_trylock(@pointer.as(LibGLib::Mutex*))
       __return_value
     end
 
     def unlock
-      LibGLib.mutex_unlock(to_unsafe.as(LibGLib::Mutex*))
+      LibGLib.mutex_unlock(@pointer.as(LibGLib::Mutex*))
       nil
     end
 

@@ -2,12 +2,13 @@ require "./bin"
 
 module Gtk
   class ComboBox < Bin
-    @gtk_combo_box : LibGtk::ComboBox*?
-    def initialize(@gtk_combo_box : LibGtk::ComboBox*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ComboBox*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_combo_box.not_nil!
+      @pointer.not_nil!.as(LibGtk::ComboBox*)
     end
 
     # Implements ImplementorIface
@@ -125,172 +126,172 @@ module Gtk
     end
 
     def active
-      __return_value = LibGtk.combo_box_get_active(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value = LibGtk.combo_box_get_active(@pointer.as(LibGtk::ComboBox*))
       __return_value
     end
 
     def active_id
-      __return_value = LibGtk.combo_box_get_active_id(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value = LibGtk.combo_box_get_active_id(@pointer.as(LibGtk::ComboBox*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def active_iter(iter)
-      __return_value = LibGtk.combo_box_get_active_iter(to_unsafe.as(LibGtk::ComboBox*), iter)
+      __return_value = LibGtk.combo_box_get_active_iter(@pointer.as(LibGtk::ComboBox*), iter)
       __return_value
     end
 
     def add_tearoffs
-      __return_value = LibGtk.combo_box_get_add_tearoffs(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value = LibGtk.combo_box_get_add_tearoffs(@pointer.as(LibGtk::ComboBox*))
       __return_value
     end
 
     def button_sensitivity
-      __return_value = LibGtk.combo_box_get_button_sensitivity(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value = LibGtk.combo_box_get_button_sensitivity(@pointer.as(LibGtk::ComboBox*))
       __return_value
     end
 
     def column_span_column
-      __return_value = LibGtk.combo_box_get_column_span_column(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value = LibGtk.combo_box_get_column_span_column(@pointer.as(LibGtk::ComboBox*))
       __return_value
     end
 
     def entry_text_column
-      __return_value = LibGtk.combo_box_get_entry_text_column(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value = LibGtk.combo_box_get_entry_text_column(@pointer.as(LibGtk::ComboBox*))
       __return_value
     end
 
     def focus_on_click
-      __return_value = LibGtk.combo_box_get_focus_on_click(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value = LibGtk.combo_box_get_focus_on_click(@pointer.as(LibGtk::ComboBox*))
       __return_value
     end
 
     def has_entry
-      __return_value = LibGtk.combo_box_get_has_entry(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value = LibGtk.combo_box_get_has_entry(@pointer.as(LibGtk::ComboBox*))
       __return_value
     end
 
     def id_column
-      __return_value = LibGtk.combo_box_get_id_column(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value = LibGtk.combo_box_get_id_column(@pointer.as(LibGtk::ComboBox*))
       __return_value
     end
 
     def model
-      __return_value = LibGtk.combo_box_get_model(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value = LibGtk.combo_box_get_model(@pointer.as(LibGtk::ComboBox*))
       __return_value
     end
 
     def popup_accessible
-      __return_value = LibGtk.combo_box_get_popup_accessible(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value = LibGtk.combo_box_get_popup_accessible(@pointer.as(LibGtk::ComboBox*))
       Atk::Object.new(__return_value)
     end
 
     def popup_fixed_width
-      __return_value = LibGtk.combo_box_get_popup_fixed_width(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value = LibGtk.combo_box_get_popup_fixed_width(@pointer.as(LibGtk::ComboBox*))
       __return_value
     end
 
     def row_span_column
-      __return_value = LibGtk.combo_box_get_row_span_column(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value = LibGtk.combo_box_get_row_span_column(@pointer.as(LibGtk::ComboBox*))
       __return_value
     end
 
     def title
-      __return_value = LibGtk.combo_box_get_title(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value = LibGtk.combo_box_get_title(@pointer.as(LibGtk::ComboBox*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def wrap_width
-      __return_value = LibGtk.combo_box_get_wrap_width(to_unsafe.as(LibGtk::ComboBox*))
+      __return_value = LibGtk.combo_box_get_wrap_width(@pointer.as(LibGtk::ComboBox*))
       __return_value
     end
 
     def popdown
-      LibGtk.combo_box_popdown(to_unsafe.as(LibGtk::ComboBox*))
+      LibGtk.combo_box_popdown(@pointer.as(LibGtk::ComboBox*))
       nil
     end
 
     def popup
-      LibGtk.combo_box_popup(to_unsafe.as(LibGtk::ComboBox*))
+      LibGtk.combo_box_popup(@pointer.as(LibGtk::ComboBox*))
       nil
     end
 
     def popup_for_device(device)
-      LibGtk.combo_box_popup_for_device(to_unsafe.as(LibGtk::ComboBox*), device.to_unsafe.as(LibGdk::Device*))
+      LibGtk.combo_box_popup_for_device(@pointer.as(LibGtk::ComboBox*), device.to_unsafe.as(LibGdk::Device*))
       nil
     end
 
     def active=(index)
-      LibGtk.combo_box_set_active(to_unsafe.as(LibGtk::ComboBox*), Int32.new(index))
+      LibGtk.combo_box_set_active(@pointer.as(LibGtk::ComboBox*), Int32.new(index))
       nil
     end
 
     def active_id=(active_id)
-      __return_value = LibGtk.combo_box_set_active_id(to_unsafe.as(LibGtk::ComboBox*), active_id ? active_id.to_unsafe : nil)
+      __return_value = LibGtk.combo_box_set_active_id(@pointer.as(LibGtk::ComboBox*), active_id ? active_id.to_unsafe : nil)
       __return_value
     end
 
     def active_iter=(iter)
-      LibGtk.combo_box_set_active_iter(to_unsafe.as(LibGtk::ComboBox*), iter ? iter.to_unsafe.as(LibGtk::TreeIter*) : nil)
+      LibGtk.combo_box_set_active_iter(@pointer.as(LibGtk::ComboBox*), iter ? iter.to_unsafe.as(LibGtk::TreeIter*) : nil)
       nil
     end
 
     def add_tearoffs=(add_tearoffs)
-      LibGtk.combo_box_set_add_tearoffs(to_unsafe.as(LibGtk::ComboBox*), add_tearoffs)
+      LibGtk.combo_box_set_add_tearoffs(@pointer.as(LibGtk::ComboBox*), add_tearoffs)
       nil
     end
 
     def button_sensitivity=(sensitivity : Gtk::SensitivityType)
-      LibGtk.combo_box_set_button_sensitivity(to_unsafe.as(LibGtk::ComboBox*), sensitivity)
+      LibGtk.combo_box_set_button_sensitivity(@pointer.as(LibGtk::ComboBox*), sensitivity)
       nil
     end
 
     def column_span_column=(column_span)
-      LibGtk.combo_box_set_column_span_column(to_unsafe.as(LibGtk::ComboBox*), Int32.new(column_span))
+      LibGtk.combo_box_set_column_span_column(@pointer.as(LibGtk::ComboBox*), Int32.new(column_span))
       nil
     end
 
     def entry_text_column=(text_column)
-      LibGtk.combo_box_set_entry_text_column(to_unsafe.as(LibGtk::ComboBox*), Int32.new(text_column))
+      LibGtk.combo_box_set_entry_text_column(@pointer.as(LibGtk::ComboBox*), Int32.new(text_column))
       nil
     end
 
     def focus_on_click=(focus_on_click)
-      LibGtk.combo_box_set_focus_on_click(to_unsafe.as(LibGtk::ComboBox*), focus_on_click)
+      LibGtk.combo_box_set_focus_on_click(@pointer.as(LibGtk::ComboBox*), focus_on_click)
       nil
     end
 
     def id_column=(id_column)
-      LibGtk.combo_box_set_id_column(to_unsafe.as(LibGtk::ComboBox*), Int32.new(id_column))
+      LibGtk.combo_box_set_id_column(@pointer.as(LibGtk::ComboBox*), Int32.new(id_column))
       nil
     end
 
     def model=(model)
-      LibGtk.combo_box_set_model(to_unsafe.as(LibGtk::ComboBox*), model ? model.to_unsafe.as(LibGtk::TreeModel*) : nil)
+      LibGtk.combo_box_set_model(@pointer.as(LibGtk::ComboBox*), model ? model.to_unsafe.as(LibGtk::TreeModel*) : nil)
       nil
     end
 
     def popup_fixed_width=(fixed)
-      LibGtk.combo_box_set_popup_fixed_width(to_unsafe.as(LibGtk::ComboBox*), fixed)
+      LibGtk.combo_box_set_popup_fixed_width(@pointer.as(LibGtk::ComboBox*), fixed)
       nil
     end
 
     def set_row_separator_func(func, data, destroy)
-      LibGtk.combo_box_set_row_separator_func(to_unsafe.as(LibGtk::ComboBox*), func, data ? data : nil, destroy ? destroy : nil)
+      LibGtk.combo_box_set_row_separator_func(@pointer.as(LibGtk::ComboBox*), func, data ? data : nil, destroy ? destroy : nil)
       nil
     end
 
     def row_span_column=(row_span)
-      LibGtk.combo_box_set_row_span_column(to_unsafe.as(LibGtk::ComboBox*), Int32.new(row_span))
+      LibGtk.combo_box_set_row_span_column(@pointer.as(LibGtk::ComboBox*), Int32.new(row_span))
       nil
     end
 
     def title=(title)
-      LibGtk.combo_box_set_title(to_unsafe.as(LibGtk::ComboBox*), title.to_unsafe)
+      LibGtk.combo_box_set_title(@pointer.as(LibGtk::ComboBox*), title.to_unsafe)
       nil
     end
 
     def wrap_width=(width)
-      LibGtk.combo_box_set_wrap_width(to_unsafe.as(LibGtk::ComboBox*), Int32.new(width))
+      LibGtk.combo_box_set_wrap_width(@pointer.as(LibGtk::ComboBox*), Int32.new(width))
       nil
     end
 

@@ -10,12 +10,13 @@ module GObject
       end
     end
 
-    @g_object_type_value_table : LibGObject::TypeValueTable*?
-    def initialize(@g_object_type_value_table : LibGObject::TypeValueTable*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::TypeValueTable*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_type_value_table.not_nil!
+      @pointer.not_nil!.as(LibGObject::TypeValueTable*)
     end
 
     def value_init

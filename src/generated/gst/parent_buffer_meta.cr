@@ -10,12 +10,13 @@ module Gst
       end
     end
 
-    @gst_parent_buffer_meta : LibGst::ParentBufferMeta*?
-    def initialize(@gst_parent_buffer_meta : LibGst::ParentBufferMeta*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::ParentBufferMeta*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_parent_buffer_meta.not_nil!
+      @pointer.not_nil!.as(LibGst::ParentBufferMeta*)
     end
 
     def self.info

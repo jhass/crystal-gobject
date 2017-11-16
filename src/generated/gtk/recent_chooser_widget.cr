@@ -2,12 +2,13 @@ require "./box"
 
 module Gtk
   class RecentChooserWidget < Box
-    @gtk_recent_chooser_widget : LibGtk::RecentChooserWidget*?
-    def initialize(@gtk_recent_chooser_widget : LibGtk::RecentChooserWidget*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::RecentChooserWidget*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_recent_chooser_widget.not_nil!
+      @pointer.not_nil!.as(LibGtk::RecentChooserWidget*)
     end
 
     # Implements ImplementorIface

@@ -2,12 +2,13 @@ module Gio
   class DBusObjectManagerServerPrivate
     include GObject::WrappedType
 
-    @gio_d_bus_object_manager_server_private : LibGio::DBusObjectManagerServerPrivate*?
-    def initialize(@gio_d_bus_object_manager_server_private : LibGio::DBusObjectManagerServerPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::DBusObjectManagerServerPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_d_bus_object_manager_server_private.not_nil!
+      @pointer.not_nil!.as(LibGio::DBusObjectManagerServerPrivate*)
     end
 
   end

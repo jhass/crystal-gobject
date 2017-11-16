@@ -10,12 +10,13 @@ module Gio
       end
     end
 
-    @gio_input_vector : LibGio::InputVector*?
-    def initialize(@gio_input_vector : LibGio::InputVector*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::InputVector*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_input_vector.not_nil!
+      @pointer.not_nil!.as(LibGio::InputVector*)
     end
 
     def buffer

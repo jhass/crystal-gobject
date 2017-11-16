@@ -1,11 +1,12 @@
 module Gio
   class PropertyAction < GObject::Object
-    @gio_property_action : LibGio::PropertyAction*?
-    def initialize(@gio_property_action : LibGio::PropertyAction*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::PropertyAction*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_property_action.not_nil!
+      @pointer.not_nil!.as(LibGio::PropertyAction*)
     end
 
     # Implements Action

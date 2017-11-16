@@ -15,12 +15,13 @@ module Gtk
       end
     end
 
-    @gtk_recent_filter_info : LibGtk::RecentFilterInfo*?
-    def initialize(@gtk_recent_filter_info : LibGtk::RecentFilterInfo*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::RecentFilterInfo*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_recent_filter_info.not_nil!
+      @pointer.not_nil!.as(LibGtk::RecentFilterInfo*)
     end
 
     def contains

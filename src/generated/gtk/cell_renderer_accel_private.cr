@@ -2,12 +2,13 @@ module Gtk
   class CellRendererAccelPrivate
     include GObject::WrappedType
 
-    @gtk_cell_renderer_accel_private : LibGtk::CellRendererAccelPrivate*?
-    def initialize(@gtk_cell_renderer_accel_private : LibGtk::CellRendererAccelPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::CellRendererAccelPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_cell_renderer_accel_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::CellRendererAccelPrivate*)
     end
 
   end

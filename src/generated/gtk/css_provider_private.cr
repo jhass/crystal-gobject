@@ -2,12 +2,13 @@ module Gtk
   class CssProviderPrivate
     include GObject::WrappedType
 
-    @gtk_css_provider_private : LibGtk::CssProviderPrivate*?
-    def initialize(@gtk_css_provider_private : LibGtk::CssProviderPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::CssProviderPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_css_provider_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::CssProviderPrivate*)
     end
 
   end

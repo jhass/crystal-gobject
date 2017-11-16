@@ -2,12 +2,13 @@ require "./element"
 
 module Gst
   class Bin < Element
-    @gst_bin : LibGst::Bin*?
-    def initialize(@gst_bin : LibGst::Bin*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::Bin*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_bin.not_nil!
+      @pointer.not_nil!.as(LibGst::Bin*)
     end
 
     # Implements ChildProxy
@@ -27,82 +28,82 @@ module Gst
     end
 
     def add(element)
-      __return_value = LibGst.bin_add(to_unsafe.as(LibGst::Bin*), element.to_unsafe.as(LibGst::Element*))
+      __return_value = LibGst.bin_add(@pointer.as(LibGst::Bin*), element.to_unsafe.as(LibGst::Element*))
       __return_value
     end
 
     def find_unlinked_pad(direction : Gst::PadDirection)
-      __return_value = LibGst.bin_find_unlinked_pad(to_unsafe.as(LibGst::Bin*), direction)
+      __return_value = LibGst.bin_find_unlinked_pad(@pointer.as(LibGst::Bin*), direction)
       Gst::Pad.new(__return_value) if __return_value
     end
 
     def by_interface(iface)
-      __return_value = LibGst.bin_get_by_interface(to_unsafe.as(LibGst::Bin*), UInt64.new(iface))
+      __return_value = LibGst.bin_get_by_interface(@pointer.as(LibGst::Bin*), UInt64.new(iface))
       Gst::Element.new(__return_value)
     end
 
     def by_name(name)
-      __return_value = LibGst.bin_get_by_name(to_unsafe.as(LibGst::Bin*), name.to_unsafe)
+      __return_value = LibGst.bin_get_by_name(@pointer.as(LibGst::Bin*), name.to_unsafe)
       Gst::Element.new(__return_value) if __return_value
     end
 
     def by_name_recurse_up(name)
-      __return_value = LibGst.bin_get_by_name_recurse_up(to_unsafe.as(LibGst::Bin*), name.to_unsafe)
+      __return_value = LibGst.bin_get_by_name_recurse_up(@pointer.as(LibGst::Bin*), name.to_unsafe)
       Gst::Element.new(__return_value) if __return_value
     end
 
     def suppressed_flags
-      __return_value = LibGst.bin_get_suppressed_flags(to_unsafe.as(LibGst::Bin*))
+      __return_value = LibGst.bin_get_suppressed_flags(@pointer.as(LibGst::Bin*))
       __return_value
     end
 
     def iterate_all_by_interface(iface)
-      __return_value = LibGst.bin_iterate_all_by_interface(to_unsafe.as(LibGst::Bin*), UInt64.new(iface))
+      __return_value = LibGst.bin_iterate_all_by_interface(@pointer.as(LibGst::Bin*), UInt64.new(iface))
       Gst::Iterator.new(__return_value) if __return_value
     end
 
     def iterate_elements
-      __return_value = LibGst.bin_iterate_elements(to_unsafe.as(LibGst::Bin*))
+      __return_value = LibGst.bin_iterate_elements(@pointer.as(LibGst::Bin*))
       Gst::Iterator.new(__return_value) if __return_value
     end
 
     def iterate_recurse
-      __return_value = LibGst.bin_iterate_recurse(to_unsafe.as(LibGst::Bin*))
+      __return_value = LibGst.bin_iterate_recurse(@pointer.as(LibGst::Bin*))
       Gst::Iterator.new(__return_value) if __return_value
     end
 
     def iterate_sinks
-      __return_value = LibGst.bin_iterate_sinks(to_unsafe.as(LibGst::Bin*))
+      __return_value = LibGst.bin_iterate_sinks(@pointer.as(LibGst::Bin*))
       Gst::Iterator.new(__return_value) if __return_value
     end
 
     def iterate_sorted
-      __return_value = LibGst.bin_iterate_sorted(to_unsafe.as(LibGst::Bin*))
+      __return_value = LibGst.bin_iterate_sorted(@pointer.as(LibGst::Bin*))
       Gst::Iterator.new(__return_value) if __return_value
     end
 
     def iterate_sources
-      __return_value = LibGst.bin_iterate_sources(to_unsafe.as(LibGst::Bin*))
+      __return_value = LibGst.bin_iterate_sources(@pointer.as(LibGst::Bin*))
       Gst::Iterator.new(__return_value) if __return_value
     end
 
     def recalculate_latency
-      __return_value = LibGst.bin_recalculate_latency(to_unsafe.as(LibGst::Bin*))
+      __return_value = LibGst.bin_recalculate_latency(@pointer.as(LibGst::Bin*))
       __return_value
     end
 
     def remove(element)
-      __return_value = LibGst.bin_remove(to_unsafe.as(LibGst::Bin*), element.to_unsafe.as(LibGst::Element*))
+      __return_value = LibGst.bin_remove(@pointer.as(LibGst::Bin*), element.to_unsafe.as(LibGst::Element*))
       __return_value
     end
 
     def suppressed_flags=(flags : Gst::ElementFlags)
-      LibGst.bin_set_suppressed_flags(to_unsafe.as(LibGst::Bin*), flags)
+      LibGst.bin_set_suppressed_flags(@pointer.as(LibGst::Bin*), flags)
       nil
     end
 
     def sync_children_states
-      __return_value = LibGst.bin_sync_children_states(to_unsafe.as(LibGst::Bin*))
+      __return_value = LibGst.bin_sync_children_states(@pointer.as(LibGst::Bin*))
       __return_value
     end
 

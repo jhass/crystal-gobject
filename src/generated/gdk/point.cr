@@ -10,12 +10,13 @@ module Gdk
       end
     end
 
-    @gdk_point : LibGdk::Point*?
-    def initialize(@gdk_point : LibGdk::Point*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::Point*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_point.not_nil!
+      @pointer.not_nil!.as(LibGdk::Point*)
     end
 
     def x

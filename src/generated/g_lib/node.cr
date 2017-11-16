@@ -13,61 +13,62 @@ module GLib
       end
     end
 
-    @g_lib_node : LibGLib::Node*?
-    def initialize(@g_lib_node : LibGLib::Node*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::Node*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_node.not_nil!
+      @pointer.not_nil!.as(LibGLib::Node*)
     end
 
     def child_index(data)
-      __return_value = LibGLib.node_child_index(to_unsafe.as(LibGLib::Node*), data ? data : nil)
+      __return_value = LibGLib.node_child_index(@pointer.as(LibGLib::Node*), data ? data : nil)
       __return_value
     end
 
     def child_position(child)
-      __return_value = LibGLib.node_child_position(to_unsafe.as(LibGLib::Node*), child.to_unsafe.as(LibGLib::Node*))
+      __return_value = LibGLib.node_child_position(@pointer.as(LibGLib::Node*), child.to_unsafe.as(LibGLib::Node*))
       __return_value
     end
 
     def depth
-      __return_value = LibGLib.node_depth(to_unsafe.as(LibGLib::Node*))
+      __return_value = LibGLib.node_depth(@pointer.as(LibGLib::Node*))
       __return_value
     end
 
     def destroy
-      LibGLib.node_destroy(to_unsafe.as(LibGLib::Node*))
+      LibGLib.node_destroy(@pointer.as(LibGLib::Node*))
       nil
     end
 
     def ancestor?(descendant)
-      __return_value = LibGLib.node_is_ancestor(to_unsafe.as(LibGLib::Node*), descendant.to_unsafe.as(LibGLib::Node*))
+      __return_value = LibGLib.node_is_ancestor(@pointer.as(LibGLib::Node*), descendant.to_unsafe.as(LibGLib::Node*))
       __return_value
     end
 
     def max_height
-      __return_value = LibGLib.node_max_height(to_unsafe.as(LibGLib::Node*))
+      __return_value = LibGLib.node_max_height(@pointer.as(LibGLib::Node*))
       __return_value
     end
 
     def n_children
-      __return_value = LibGLib.node_n_children(to_unsafe.as(LibGLib::Node*))
+      __return_value = LibGLib.node_n_children(@pointer.as(LibGLib::Node*))
       __return_value
     end
 
     def n_nodes(flags : GLib::TraverseFlags)
-      __return_value = LibGLib.node_n_nodes(to_unsafe.as(LibGLib::Node*), flags)
+      __return_value = LibGLib.node_n_nodes(@pointer.as(LibGLib::Node*), flags)
       __return_value
     end
 
     def reverse_children
-      LibGLib.node_reverse_children(to_unsafe.as(LibGLib::Node*))
+      LibGLib.node_reverse_children(@pointer.as(LibGLib::Node*))
       nil
     end
 
     def unlink
-      LibGLib.node_unlink(to_unsafe.as(LibGLib::Node*))
+      LibGLib.node_unlink(@pointer.as(LibGLib::Node*))
       nil
     end
 

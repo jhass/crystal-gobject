@@ -20,12 +20,13 @@ module Gdk
       end
     end
 
-    @gdk_event_button : LibGdk::EventButton*?
-    def initialize(@gdk_event_button : LibGdk::EventButton*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::EventButton*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_event_button.not_nil!
+      @pointer.not_nil!.as(LibGdk::EventButton*)
     end
 
     def type

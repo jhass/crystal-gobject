@@ -2,12 +2,13 @@ require "./entry_accessible"
 
 module Gtk
   class SpinButtonAccessible < EntryAccessible
-    @gtk_spin_button_accessible : LibGtk::SpinButtonAccessible*?
-    def initialize(@gtk_spin_button_accessible : LibGtk::SpinButtonAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::SpinButtonAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_spin_button_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::SpinButtonAccessible*)
     end
 
     # Implements Action

@@ -2,12 +2,13 @@ module Gtk
   class CellAreaContextPrivate
     include GObject::WrappedType
 
-    @gtk_cell_area_context_private : LibGtk::CellAreaContextPrivate*?
-    def initialize(@gtk_cell_area_context_private : LibGtk::CellAreaContextPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::CellAreaContextPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_cell_area_context_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::CellAreaContextPrivate*)
     end
 
   end

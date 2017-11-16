@@ -2,12 +2,13 @@ module GLib
   class VariantType
     include GObject::WrappedType
 
-    @g_lib_variant_type : LibGLib::VariantType*?
-    def initialize(@g_lib_variant_type : LibGLib::VariantType*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::VariantType*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_variant_type.not_nil!
+      @pointer.not_nil!.as(LibGLib::VariantType*)
     end
 
     def self.new(type_string) : self
@@ -36,107 +37,107 @@ module GLib
     end
 
     def copy
-      __return_value = LibGLib.variant_type_copy(to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGLib.variant_type_copy(@pointer.as(LibGLib::VariantType*))
       GLib::VariantType.new(__return_value)
     end
 
     def dup_string
-      __return_value = LibGLib.variant_type_dup_string(to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGLib.variant_type_dup_string(@pointer.as(LibGLib::VariantType*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def element
-      __return_value = LibGLib.variant_type_element(to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGLib.variant_type_element(@pointer.as(LibGLib::VariantType*))
       GLib::VariantType.new(__return_value)
     end
 
     def equal(type2)
-      __return_value = LibGLib.variant_type_equal(to_unsafe.as(LibGLib::VariantType*), type2.to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGLib.variant_type_equal(@pointer.as(LibGLib::VariantType*), type2.to_unsafe.as(LibGLib::VariantType*))
       __return_value
     end
 
     def first
-      __return_value = LibGLib.variant_type_first(to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGLib.variant_type_first(@pointer.as(LibGLib::VariantType*))
       GLib::VariantType.new(__return_value)
     end
 
     def free
-      LibGLib.variant_type_free(to_unsafe.as(LibGLib::VariantType*))
+      LibGLib.variant_type_free(@pointer.as(LibGLib::VariantType*))
       nil
     end
 
     def string_length
-      __return_value = LibGLib.variant_type_get_string_length(to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGLib.variant_type_get_string_length(@pointer.as(LibGLib::VariantType*))
       __return_value
     end
 
     def hash
-      __return_value = LibGLib.variant_type_hash(to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGLib.variant_type_hash(@pointer.as(LibGLib::VariantType*))
       __return_value
     end
 
     def array?
-      __return_value = LibGLib.variant_type_is_array(to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGLib.variant_type_is_array(@pointer.as(LibGLib::VariantType*))
       __return_value
     end
 
     def basic?
-      __return_value = LibGLib.variant_type_is_basic(to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGLib.variant_type_is_basic(@pointer.as(LibGLib::VariantType*))
       __return_value
     end
 
     def container?
-      __return_value = LibGLib.variant_type_is_container(to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGLib.variant_type_is_container(@pointer.as(LibGLib::VariantType*))
       __return_value
     end
 
     def definite?
-      __return_value = LibGLib.variant_type_is_definite(to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGLib.variant_type_is_definite(@pointer.as(LibGLib::VariantType*))
       __return_value
     end
 
     def dict_entry?
-      __return_value = LibGLib.variant_type_is_dict_entry(to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGLib.variant_type_is_dict_entry(@pointer.as(LibGLib::VariantType*))
       __return_value
     end
 
     def maybe?
-      __return_value = LibGLib.variant_type_is_maybe(to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGLib.variant_type_is_maybe(@pointer.as(LibGLib::VariantType*))
       __return_value
     end
 
     def subtype_of?(supertype)
-      __return_value = LibGLib.variant_type_is_subtype_of(to_unsafe.as(LibGLib::VariantType*), supertype.to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGLib.variant_type_is_subtype_of(@pointer.as(LibGLib::VariantType*), supertype.to_unsafe.as(LibGLib::VariantType*))
       __return_value
     end
 
     def tuple?
-      __return_value = LibGLib.variant_type_is_tuple(to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGLib.variant_type_is_tuple(@pointer.as(LibGLib::VariantType*))
       __return_value
     end
 
     def variant?
-      __return_value = LibGLib.variant_type_is_variant(to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGLib.variant_type_is_variant(@pointer.as(LibGLib::VariantType*))
       __return_value
     end
 
     def key
-      __return_value = LibGLib.variant_type_key(to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGLib.variant_type_key(@pointer.as(LibGLib::VariantType*))
       GLib::VariantType.new(__return_value)
     end
 
     def n_items
-      __return_value = LibGLib.variant_type_n_items(to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGLib.variant_type_n_items(@pointer.as(LibGLib::VariantType*))
       __return_value
     end
 
     def next
-      __return_value = LibGLib.variant_type_next(to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGLib.variant_type_next(@pointer.as(LibGLib::VariantType*))
       GLib::VariantType.new(__return_value)
     end
 
     def value
-      __return_value = LibGLib.variant_type_value(to_unsafe.as(LibGLib::VariantType*))
+      __return_value = LibGLib.variant_type_value(@pointer.as(LibGLib::VariantType*))
       GLib::VariantType.new(__return_value)
     end
 

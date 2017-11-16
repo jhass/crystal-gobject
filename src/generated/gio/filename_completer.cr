@@ -1,11 +1,12 @@
 module Gio
   class FilenameCompleter < GObject::Object
-    @gio_filename_completer : LibGio::FilenameCompleter*?
-    def initialize(@gio_filename_completer : LibGio::FilenameCompleter*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::FilenameCompleter*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_filename_completer.not_nil!
+      @pointer.not_nil!.as(LibGio::FilenameCompleter*)
     end
 
     def self.new : self
@@ -14,17 +15,17 @@ module Gio
     end
 
     def completion_suffix(initial_text)
-      __return_value = LibGio.filename_completer_get_completion_suffix(to_unsafe.as(LibGio::FilenameCompleter*), initial_text.to_unsafe)
+      __return_value = LibGio.filename_completer_get_completion_suffix(@pointer.as(LibGio::FilenameCompleter*), initial_text.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def completions(initial_text)
-      __return_value = LibGio.filename_completer_get_completions(to_unsafe.as(LibGio::FilenameCompleter*), initial_text.to_unsafe)
+      __return_value = LibGio.filename_completer_get_completions(@pointer.as(LibGio::FilenameCompleter*), initial_text.to_unsafe)
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def dirs_only=(dirs_only)
-      LibGio.filename_completer_set_dirs_only(to_unsafe.as(LibGio::FilenameCompleter*), dirs_only)
+      LibGio.filename_completer_set_dirs_only(@pointer.as(LibGio::FilenameCompleter*), dirs_only)
       nil
     end
 

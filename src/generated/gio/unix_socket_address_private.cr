@@ -2,12 +2,13 @@ module Gio
   class UnixSocketAddressPrivate
     include GObject::WrappedType
 
-    @gio_unix_socket_address_private : LibGio::UnixSocketAddressPrivate*?
-    def initialize(@gio_unix_socket_address_private : LibGio::UnixSocketAddressPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::UnixSocketAddressPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_unix_socket_address_private.not_nil!
+      @pointer.not_nil!.as(LibGio::UnixSocketAddressPrivate*)
     end
 
   end

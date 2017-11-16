@@ -2,12 +2,13 @@ require "./check_button"
 
 module Gtk
   class RadioButton < CheckButton
-    @gtk_radio_button : LibGtk::RadioButton*?
-    def initialize(@gtk_radio_button : LibGtk::RadioButton*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::RadioButton*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_radio_button.not_nil!
+      @pointer.not_nil!.as(LibGtk::RadioButton*)
     end
 
     # Implements ImplementorIface
@@ -46,17 +47,17 @@ module Gtk
     end
 
     def group
-      __return_value = LibGtk.radio_button_get_group(to_unsafe.as(LibGtk::RadioButton*))
+      __return_value = LibGtk.radio_button_get_group(@pointer.as(LibGtk::RadioButton*))
       GLib::SListIterator(Gtk::RadioButton, LibGtk::RadioButton*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def join_group(group_source)
-      LibGtk.radio_button_join_group(to_unsafe.as(LibGtk::RadioButton*), group_source ? group_source.to_unsafe.as(LibGtk::RadioButton*) : nil)
+      LibGtk.radio_button_join_group(@pointer.as(LibGtk::RadioButton*), group_source ? group_source.to_unsafe.as(LibGtk::RadioButton*) : nil)
       nil
     end
 
     def group=(group)
-      LibGtk.radio_button_set_group(to_unsafe.as(LibGtk::RadioButton*), group ? group : nil)
+      LibGtk.radio_button_set_group(@pointer.as(LibGtk::RadioButton*), group ? group : nil)
       nil
     end
 

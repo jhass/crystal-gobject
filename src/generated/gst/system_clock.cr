@@ -2,12 +2,13 @@ require "./clock"
 
 module Gst
   class SystemClock < Clock
-    @gst_system_clock : LibGst::SystemClock*?
-    def initialize(@gst_system_clock : LibGst::SystemClock*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::SystemClock*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_system_clock.not_nil!
+      @pointer.not_nil!.as(LibGst::SystemClock*)
     end
 
     def clock_type

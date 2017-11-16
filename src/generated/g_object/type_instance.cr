@@ -7,16 +7,17 @@ module GObject
       super(ptr.as(LibGObject::TypeInstance*))
     end
 
-    @g_object_type_instance : LibGObject::TypeInstance*?
-    def initialize(@g_object_type_instance : LibGObject::TypeInstance*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::TypeInstance*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_type_instance.not_nil!
+      @pointer.not_nil!.as(LibGObject::TypeInstance*)
     end
 
     def private(private_type)
-      LibGObject.type_instance_get_private(to_unsafe.as(LibGObject::TypeInstance*), UInt64.new(private_type))
+      LibGObject.type_instance_get_private(@pointer.as(LibGObject::TypeInstance*), UInt64.new(private_type))
       nil
     end
 

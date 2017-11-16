@@ -14,71 +14,72 @@ module Pango
       end
     end
 
-    @pango_matrix : LibPango::Matrix*?
-    def initialize(@pango_matrix : LibPango::Matrix*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::Matrix*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_matrix.not_nil!
+      @pointer.not_nil!.as(LibPango::Matrix*)
     end
 
     def concat(new_matrix)
-      LibPango.matrix_concat(to_unsafe.as(LibPango::Matrix*), new_matrix.to_unsafe.as(LibPango::Matrix*))
+      LibPango.matrix_concat(@pointer.as(LibPango::Matrix*), new_matrix.to_unsafe.as(LibPango::Matrix*))
       nil
     end
 
     def copy
-      __return_value = LibPango.matrix_copy(to_unsafe.as(LibPango::Matrix*))
+      __return_value = LibPango.matrix_copy(@pointer.as(LibPango::Matrix*))
       Pango::Matrix.new(__return_value) if __return_value
     end
 
     def free
-      LibPango.matrix_free(to_unsafe.as(LibPango::Matrix*))
+      LibPango.matrix_free(@pointer.as(LibPango::Matrix*))
       nil
     end
 
     def font_scale_factor
-      __return_value = LibPango.matrix_get_font_scale_factor(to_unsafe.as(LibPango::Matrix*))
+      __return_value = LibPango.matrix_get_font_scale_factor(@pointer.as(LibPango::Matrix*))
       __return_value
     end
 
     def font_scale_factors(xscale, yscale)
-      LibPango.matrix_get_font_scale_factors(to_unsafe.as(LibPango::Matrix*), xscale, yscale)
+      LibPango.matrix_get_font_scale_factors(@pointer.as(LibPango::Matrix*), xscale, yscale)
       nil
     end
 
     def rotate(degrees)
-      LibPango.matrix_rotate(to_unsafe.as(LibPango::Matrix*), Float64.new(degrees))
+      LibPango.matrix_rotate(@pointer.as(LibPango::Matrix*), Float64.new(degrees))
       nil
     end
 
     def scale(scale_x, scale_y)
-      LibPango.matrix_scale(to_unsafe.as(LibPango::Matrix*), Float64.new(scale_x), Float64.new(scale_y))
+      LibPango.matrix_scale(@pointer.as(LibPango::Matrix*), Float64.new(scale_x), Float64.new(scale_y))
       nil
     end
 
     def transform_distance(dx, dy)
-      LibPango.matrix_transform_distance(to_unsafe.as(LibPango::Matrix*), dx, dy)
+      LibPango.matrix_transform_distance(@pointer.as(LibPango::Matrix*), dx, dy)
       nil
     end
 
     def transform_pixel_rectangle(rect)
-      LibPango.matrix_transform_pixel_rectangle(to_unsafe.as(LibPango::Matrix*), rect)
+      LibPango.matrix_transform_pixel_rectangle(@pointer.as(LibPango::Matrix*), rect)
       nil
     end
 
     def transform_point(x, y)
-      LibPango.matrix_transform_point(to_unsafe.as(LibPango::Matrix*), x, y)
+      LibPango.matrix_transform_point(@pointer.as(LibPango::Matrix*), x, y)
       nil
     end
 
     def transform_rectangle(rect)
-      LibPango.matrix_transform_rectangle(to_unsafe.as(LibPango::Matrix*), rect)
+      LibPango.matrix_transform_rectangle(@pointer.as(LibPango::Matrix*), rect)
       nil
     end
 
     def translate(tx, ty)
-      LibPango.matrix_translate(to_unsafe.as(LibPango::Matrix*), Float64.new(tx), Float64.new(ty))
+      LibPango.matrix_translate(@pointer.as(LibPango::Matrix*), Float64.new(tx), Float64.new(ty))
       nil
     end
 

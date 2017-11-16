@@ -2,12 +2,13 @@ require "./inet_socket_address"
 
 module Gio
   class ProxyAddress < InetSocketAddress
-    @gio_proxy_address : LibGio::ProxyAddress*?
-    def initialize(@gio_proxy_address : LibGio::ProxyAddress*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::ProxyAddress*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_proxy_address.not_nil!
+      @pointer.not_nil!.as(LibGio::ProxyAddress*)
     end
 
     # Implements SocketConnectable
@@ -52,37 +53,37 @@ module Gio
     end
 
     def destination_hostname
-      __return_value = LibGio.proxy_address_get_destination_hostname(to_unsafe.as(LibGio::ProxyAddress*))
+      __return_value = LibGio.proxy_address_get_destination_hostname(@pointer.as(LibGio::ProxyAddress*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def destination_port
-      __return_value = LibGio.proxy_address_get_destination_port(to_unsafe.as(LibGio::ProxyAddress*))
+      __return_value = LibGio.proxy_address_get_destination_port(@pointer.as(LibGio::ProxyAddress*))
       __return_value
     end
 
     def destination_protocol
-      __return_value = LibGio.proxy_address_get_destination_protocol(to_unsafe.as(LibGio::ProxyAddress*))
+      __return_value = LibGio.proxy_address_get_destination_protocol(@pointer.as(LibGio::ProxyAddress*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def password
-      __return_value = LibGio.proxy_address_get_password(to_unsafe.as(LibGio::ProxyAddress*))
+      __return_value = LibGio.proxy_address_get_password(@pointer.as(LibGio::ProxyAddress*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def protocol
-      __return_value = LibGio.proxy_address_get_protocol(to_unsafe.as(LibGio::ProxyAddress*))
+      __return_value = LibGio.proxy_address_get_protocol(@pointer.as(LibGio::ProxyAddress*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def uri
-      __return_value = LibGio.proxy_address_get_uri(to_unsafe.as(LibGio::ProxyAddress*))
+      __return_value = LibGio.proxy_address_get_uri(@pointer.as(LibGio::ProxyAddress*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def username
-      __return_value = LibGio.proxy_address_get_username(to_unsafe.as(LibGio::ProxyAddress*))
+      __return_value = LibGio.proxy_address_get_username(@pointer.as(LibGio::ProxyAddress*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

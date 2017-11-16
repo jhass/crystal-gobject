@@ -12,12 +12,13 @@ module Gtk
       end
     end
 
-    @gtk_border : LibGtk::Border*?
-    def initialize(@gtk_border : LibGtk::Border*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Border*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_border.not_nil!
+      @pointer.not_nil!.as(LibGtk::Border*)
     end
 
     def self.new : self
@@ -26,12 +27,12 @@ module Gtk
     end
 
     def copy
-      __return_value = LibGtk.border_copy(to_unsafe.as(LibGtk::Border*))
+      __return_value = LibGtk.border_copy(@pointer.as(LibGtk::Border*))
       Gtk::Border.new(__return_value)
     end
 
     def free
-      LibGtk.border_free(to_unsafe.as(LibGtk::Border*))
+      LibGtk.border_free(@pointer.as(LibGtk::Border*))
       nil
     end
 

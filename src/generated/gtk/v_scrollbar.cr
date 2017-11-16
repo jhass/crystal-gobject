@@ -2,12 +2,13 @@ require "./scrollbar"
 
 module Gtk
   class VScrollbar < Scrollbar
-    @gtk_v_scrollbar : LibGtk::VScrollbar*?
-    def initialize(@gtk_v_scrollbar : LibGtk::VScrollbar*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::VScrollbar*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_v_scrollbar.not_nil!
+      @pointer.not_nil!.as(LibGtk::VScrollbar*)
     end
 
     # Implements ImplementorIface

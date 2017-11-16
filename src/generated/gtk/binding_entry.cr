@@ -17,12 +17,13 @@ module Gtk
       end
     end
 
-    @gtk_binding_entry : LibGtk::BindingEntry*?
-    def initialize(@gtk_binding_entry : LibGtk::BindingEntry*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::BindingEntry*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_binding_entry.not_nil!
+      @pointer.not_nil!.as(LibGtk::BindingEntry*)
     end
 
     def self.add_signal_from_string(binding_set, signal_desc)

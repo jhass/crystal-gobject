@@ -2,12 +2,13 @@ module Gst
   class CapsFeatures
     include GObject::WrappedType
 
-    @gst_caps_features : LibGst::CapsFeatures*?
-    def initialize(@gst_caps_features : LibGst::CapsFeatures*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::CapsFeatures*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_caps_features.not_nil!
+      @pointer.not_nil!.as(LibGst::CapsFeatures*)
     end
 
     def self.new_any : self
@@ -21,77 +22,77 @@ module Gst
     end
 
     def add(feature)
-      LibGst.caps_features_add(to_unsafe.as(LibGst::CapsFeatures*), feature.to_unsafe)
+      LibGst.caps_features_add(@pointer.as(LibGst::CapsFeatures*), feature.to_unsafe)
       nil
     end
 
     def add_id(feature)
-      LibGst.caps_features_add_id(to_unsafe.as(LibGst::CapsFeatures*), UInt32.new(feature))
+      LibGst.caps_features_add_id(@pointer.as(LibGst::CapsFeatures*), UInt32.new(feature))
       nil
     end
 
     def contains(feature)
-      __return_value = LibGst.caps_features_contains(to_unsafe.as(LibGst::CapsFeatures*), feature.to_unsafe)
+      __return_value = LibGst.caps_features_contains(@pointer.as(LibGst::CapsFeatures*), feature.to_unsafe)
       __return_value
     end
 
     def contains_id(feature)
-      __return_value = LibGst.caps_features_contains_id(to_unsafe.as(LibGst::CapsFeatures*), UInt32.new(feature))
+      __return_value = LibGst.caps_features_contains_id(@pointer.as(LibGst::CapsFeatures*), UInt32.new(feature))
       __return_value
     end
 
     def copy
-      __return_value = LibGst.caps_features_copy(to_unsafe.as(LibGst::CapsFeatures*))
+      __return_value = LibGst.caps_features_copy(@pointer.as(LibGst::CapsFeatures*))
       Gst::CapsFeatures.new(__return_value)
     end
 
     def free
-      LibGst.caps_features_free(to_unsafe.as(LibGst::CapsFeatures*))
+      LibGst.caps_features_free(@pointer.as(LibGst::CapsFeatures*))
       nil
     end
 
     def nth(i)
-      __return_value = LibGst.caps_features_get_nth(to_unsafe.as(LibGst::CapsFeatures*), UInt32.new(i))
+      __return_value = LibGst.caps_features_get_nth(@pointer.as(LibGst::CapsFeatures*), UInt32.new(i))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def nth_id(i)
-      __return_value = LibGst.caps_features_get_nth_id(to_unsafe.as(LibGst::CapsFeatures*), UInt32.new(i))
+      __return_value = LibGst.caps_features_get_nth_id(@pointer.as(LibGst::CapsFeatures*), UInt32.new(i))
       __return_value
     end
 
     def size
-      __return_value = LibGst.caps_features_get_size(to_unsafe.as(LibGst::CapsFeatures*))
+      __return_value = LibGst.caps_features_get_size(@pointer.as(LibGst::CapsFeatures*))
       __return_value
     end
 
     def any?
-      __return_value = LibGst.caps_features_is_any(to_unsafe.as(LibGst::CapsFeatures*))
+      __return_value = LibGst.caps_features_is_any(@pointer.as(LibGst::CapsFeatures*))
       __return_value
     end
 
     def equal?(features2)
-      __return_value = LibGst.caps_features_is_equal(to_unsafe.as(LibGst::CapsFeatures*), features2.to_unsafe.as(LibGst::CapsFeatures*))
+      __return_value = LibGst.caps_features_is_equal(@pointer.as(LibGst::CapsFeatures*), features2.to_unsafe.as(LibGst::CapsFeatures*))
       __return_value
     end
 
     def remove(feature)
-      LibGst.caps_features_remove(to_unsafe.as(LibGst::CapsFeatures*), feature.to_unsafe)
+      LibGst.caps_features_remove(@pointer.as(LibGst::CapsFeatures*), feature.to_unsafe)
       nil
     end
 
     def remove_id(feature)
-      LibGst.caps_features_remove_id(to_unsafe.as(LibGst::CapsFeatures*), UInt32.new(feature))
+      LibGst.caps_features_remove_id(@pointer.as(LibGst::CapsFeatures*), UInt32.new(feature))
       nil
     end
 
     def parent_refcount=(refcount)
-      __return_value = LibGst.caps_features_set_parent_refcount(to_unsafe.as(LibGst::CapsFeatures*), refcount)
+      __return_value = LibGst.caps_features_set_parent_refcount(@pointer.as(LibGst::CapsFeatures*), refcount)
       __return_value
     end
 
     def to_string
-      __return_value = LibGst.caps_features_to_string(to_unsafe.as(LibGst::CapsFeatures*))
+      __return_value = LibGst.caps_features_to_string(@pointer.as(LibGst::CapsFeatures*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

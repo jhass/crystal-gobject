@@ -12,12 +12,13 @@ module Pango
       end
     end
 
-    @pango_rectangle : LibPango::Rectangle*?
-    def initialize(@pango_rectangle : LibPango::Rectangle*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::Rectangle*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_rectangle.not_nil!
+      @pointer.not_nil!.as(LibPango::Rectangle*)
     end
 
     def x

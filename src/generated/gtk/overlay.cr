@@ -2,12 +2,13 @@ require "./bin"
 
 module Gtk
   class Overlay < Bin
-    @gtk_overlay : LibGtk::Overlay*?
-    def initialize(@gtk_overlay : LibGtk::Overlay*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Overlay*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_overlay.not_nil!
+      @pointer.not_nil!.as(LibGtk::Overlay*)
     end
 
     # Implements ImplementorIface
@@ -18,22 +19,22 @@ module Gtk
     end
 
     def add_overlay(widget)
-      LibGtk.overlay_add_overlay(to_unsafe.as(LibGtk::Overlay*), widget.to_unsafe.as(LibGtk::Widget*))
+      LibGtk.overlay_add_overlay(@pointer.as(LibGtk::Overlay*), widget.to_unsafe.as(LibGtk::Widget*))
       nil
     end
 
     def overlay_pass_through(widget)
-      __return_value = LibGtk.overlay_get_overlay_pass_through(to_unsafe.as(LibGtk::Overlay*), widget.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.overlay_get_overlay_pass_through(@pointer.as(LibGtk::Overlay*), widget.to_unsafe.as(LibGtk::Widget*))
       __return_value
     end
 
     def reorder_overlay(child, position)
-      LibGtk.overlay_reorder_overlay(to_unsafe.as(LibGtk::Overlay*), child.to_unsafe.as(LibGtk::Widget*), Int32.new(position))
+      LibGtk.overlay_reorder_overlay(@pointer.as(LibGtk::Overlay*), child.to_unsafe.as(LibGtk::Widget*), Int32.new(position))
       nil
     end
 
     def set_overlay_pass_through(widget, pass_through)
-      LibGtk.overlay_set_overlay_pass_through(to_unsafe.as(LibGtk::Overlay*), widget.to_unsafe.as(LibGtk::Widget*), pass_through)
+      LibGtk.overlay_set_overlay_pass_through(@pointer.as(LibGtk::Overlay*), widget.to_unsafe.as(LibGtk::Widget*), pass_through)
       nil
     end
 

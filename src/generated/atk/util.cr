@@ -1,11 +1,12 @@
 module Atk
   class Util < GObject::Object
-    @atk_util : LibAtk::Util*?
-    def initialize(@atk_util : LibAtk::Util*)
+    @pointer : Void*
+    def initialize(pointer : LibAtk::Util*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @atk_util.not_nil!
+      @pointer.not_nil!.as(LibAtk::Util*)
     end
 
   end

@@ -11,12 +11,13 @@ module Gdk
       end
     end
 
-    @gdk_keymap_key : LibGdk::KeymapKey*?
-    def initialize(@gdk_keymap_key : LibGdk::KeymapKey*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::KeymapKey*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_keymap_key.not_nil!
+      @pointer.not_nil!.as(LibGdk::KeymapKey*)
     end
 
     def keycode

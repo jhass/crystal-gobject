@@ -2,12 +2,13 @@ module Gst
   class TracerPrivate
     include GObject::WrappedType
 
-    @gst_tracer_private : LibGst::TracerPrivate*?
-    def initialize(@gst_tracer_private : LibGst::TracerPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::TracerPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_tracer_private.not_nil!
+      @pointer.not_nil!.as(LibGst::TracerPrivate*)
     end
 
   end

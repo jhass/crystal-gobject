@@ -11,12 +11,13 @@ module GObject
       end
     end
 
-    @g_object_signal_invocation_hint : LibGObject::SignalInvocationHint*?
-    def initialize(@g_object_signal_invocation_hint : LibGObject::SignalInvocationHint*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::SignalInvocationHint*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_signal_invocation_hint.not_nil!
+      @pointer.not_nil!.as(LibGObject::SignalInvocationHint*)
     end
 
     def signal_id

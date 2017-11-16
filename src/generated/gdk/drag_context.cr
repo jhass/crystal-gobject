@@ -1,70 +1,71 @@
 module Gdk
   class DragContext < GObject::Object
-    @gdk_drag_context : LibGdk::DragContext*?
-    def initialize(@gdk_drag_context : LibGdk::DragContext*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::DragContext*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_drag_context.not_nil!
+      @pointer.not_nil!.as(LibGdk::DragContext*)
     end
 
     def actions
-      __return_value = LibGdk.drag_context_get_actions(to_unsafe.as(LibGdk::DragContext*))
+      __return_value = LibGdk.drag_context_get_actions(@pointer.as(LibGdk::DragContext*))
       __return_value
     end
 
     def dest_window
-      __return_value = LibGdk.drag_context_get_dest_window(to_unsafe.as(LibGdk::DragContext*))
+      __return_value = LibGdk.drag_context_get_dest_window(@pointer.as(LibGdk::DragContext*))
       Gdk::Window.new(__return_value)
     end
 
     def device
-      __return_value = LibGdk.drag_context_get_device(to_unsafe.as(LibGdk::DragContext*))
+      __return_value = LibGdk.drag_context_get_device(@pointer.as(LibGdk::DragContext*))
       Gdk::Device.new(__return_value)
     end
 
     def drag_window
-      __return_value = LibGdk.drag_context_get_drag_window(to_unsafe.as(LibGdk::DragContext*))
+      __return_value = LibGdk.drag_context_get_drag_window(@pointer.as(LibGdk::DragContext*))
       Gdk::Window.new(__return_value) if __return_value
     end
 
     def protocol
-      __return_value = LibGdk.drag_context_get_protocol(to_unsafe.as(LibGdk::DragContext*))
+      __return_value = LibGdk.drag_context_get_protocol(@pointer.as(LibGdk::DragContext*))
       __return_value
     end
 
     def selected_action
-      __return_value = LibGdk.drag_context_get_selected_action(to_unsafe.as(LibGdk::DragContext*))
+      __return_value = LibGdk.drag_context_get_selected_action(@pointer.as(LibGdk::DragContext*))
       __return_value
     end
 
     def source_window
-      __return_value = LibGdk.drag_context_get_source_window(to_unsafe.as(LibGdk::DragContext*))
+      __return_value = LibGdk.drag_context_get_source_window(@pointer.as(LibGdk::DragContext*))
       Gdk::Window.new(__return_value)
     end
 
     def suggested_action
-      __return_value = LibGdk.drag_context_get_suggested_action(to_unsafe.as(LibGdk::DragContext*))
+      __return_value = LibGdk.drag_context_get_suggested_action(@pointer.as(LibGdk::DragContext*))
       __return_value
     end
 
     def list_targets
-      __return_value = LibGdk.drag_context_list_targets(to_unsafe.as(LibGdk::DragContext*))
+      __return_value = LibGdk.drag_context_list_targets(@pointer.as(LibGdk::DragContext*))
       GLib::ListIterator(Gdk::Atom, LibGdk::Atom**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def manage_dnd(ipc_window, actions : Gdk::DragAction)
-      __return_value = LibGdk.drag_context_manage_dnd(to_unsafe.as(LibGdk::DragContext*), ipc_window.to_unsafe.as(LibGdk::Window*), actions)
+      __return_value = LibGdk.drag_context_manage_dnd(@pointer.as(LibGdk::DragContext*), ipc_window.to_unsafe.as(LibGdk::Window*), actions)
       __return_value
     end
 
     def device=(device)
-      LibGdk.drag_context_set_device(to_unsafe.as(LibGdk::DragContext*), device.to_unsafe.as(LibGdk::Device*))
+      LibGdk.drag_context_set_device(@pointer.as(LibGdk::DragContext*), device.to_unsafe.as(LibGdk::Device*))
       nil
     end
 
     def set_hotspot(hot_x, hot_y)
-      LibGdk.drag_context_set_hotspot(to_unsafe.as(LibGdk::DragContext*), Int32.new(hot_x), Int32.new(hot_y))
+      LibGdk.drag_context_set_hotspot(@pointer.as(LibGdk::DragContext*), Int32.new(hot_x), Int32.new(hot_y))
       nil
     end
 

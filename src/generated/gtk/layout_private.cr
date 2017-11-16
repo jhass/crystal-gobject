@@ -2,12 +2,13 @@ module Gtk
   class LayoutPrivate
     include GObject::WrappedType
 
-    @gtk_layout_private : LibGtk::LayoutPrivate*?
-    def initialize(@gtk_layout_private : LibGtk::LayoutPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::LayoutPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_layout_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::LayoutPrivate*)
     end
 
   end

@@ -21,12 +21,13 @@ module Gdk
       end
     end
 
-    @gdk_event_touch : LibGdk::EventTouch*?
-    def initialize(@gdk_event_touch : LibGdk::EventTouch*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::EventTouch*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_event_touch.not_nil!
+      @pointer.not_nil!.as(LibGdk::EventTouch*)
     end
 
     def type

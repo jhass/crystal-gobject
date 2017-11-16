@@ -2,12 +2,13 @@ require "./widget"
 
 module Gtk
   class Entry < Widget
-    @gtk_entry : LibGtk::Entry*?
-    def initialize(@gtk_entry : LibGtk::Entry*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Entry*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_entry.not_nil!
+      @pointer.not_nil!.as(LibGtk::Entry*)
     end
 
     # Implements ImplementorIface
@@ -275,372 +276,372 @@ module Gtk
     end
 
     def activates_default
-      __return_value = LibGtk.entry_get_activates_default(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_activates_default(@pointer.as(LibGtk::Entry*))
       __return_value
     end
 
     def alignment
-      __return_value = LibGtk.entry_get_alignment(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_alignment(@pointer.as(LibGtk::Entry*))
       __return_value
     end
 
     def attributes
-      __return_value = LibGtk.entry_get_attributes(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_attributes(@pointer.as(LibGtk::Entry*))
       Pango::AttrList.new(__return_value) if __return_value
     end
 
     def buffer
-      __return_value = LibGtk.entry_get_buffer(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_buffer(@pointer.as(LibGtk::Entry*))
       Gtk::EntryBuffer.new(__return_value)
     end
 
     def completion
-      __return_value = LibGtk.entry_get_completion(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_completion(@pointer.as(LibGtk::Entry*))
       Gtk::EntryCompletion.new(__return_value)
     end
 
     def current_icon_drag_source
-      __return_value = LibGtk.entry_get_current_icon_drag_source(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_current_icon_drag_source(@pointer.as(LibGtk::Entry*))
       __return_value
     end
 
     def cursor_hadjustment
-      __return_value = LibGtk.entry_get_cursor_hadjustment(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_cursor_hadjustment(@pointer.as(LibGtk::Entry*))
       Gtk::Adjustment.new(__return_value) if __return_value
     end
 
     def has_frame
-      __return_value = LibGtk.entry_get_has_frame(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_has_frame(@pointer.as(LibGtk::Entry*))
       __return_value
     end
 
     def icon_activatable(icon_pos : Gtk::EntryIconPosition)
-      __return_value = LibGtk.entry_get_icon_activatable(to_unsafe.as(LibGtk::Entry*), icon_pos)
+      __return_value = LibGtk.entry_get_icon_activatable(@pointer.as(LibGtk::Entry*), icon_pos)
       __return_value
     end
 
     def icon_area(icon_pos : Gtk::EntryIconPosition, icon_area)
-      LibGtk.entry_get_icon_area(to_unsafe.as(LibGtk::Entry*), icon_pos, icon_area)
+      LibGtk.entry_get_icon_area(@pointer.as(LibGtk::Entry*), icon_pos, icon_area)
       nil
     end
 
     def icon_at_pos(x, y)
-      __return_value = LibGtk.entry_get_icon_at_pos(to_unsafe.as(LibGtk::Entry*), Int32.new(x), Int32.new(y))
+      __return_value = LibGtk.entry_get_icon_at_pos(@pointer.as(LibGtk::Entry*), Int32.new(x), Int32.new(y))
       __return_value
     end
 
     def icon_gicon(icon_pos : Gtk::EntryIconPosition)
-      __return_value = LibGtk.entry_get_icon_gicon(to_unsafe.as(LibGtk::Entry*), icon_pos)
+      __return_value = LibGtk.entry_get_icon_gicon(@pointer.as(LibGtk::Entry*), icon_pos)
       __return_value if __return_value
     end
 
     def icon_name(icon_pos : Gtk::EntryIconPosition)
-      __return_value = LibGtk.entry_get_icon_name(to_unsafe.as(LibGtk::Entry*), icon_pos)
+      __return_value = LibGtk.entry_get_icon_name(@pointer.as(LibGtk::Entry*), icon_pos)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def icon_pixbuf(icon_pos : Gtk::EntryIconPosition)
-      __return_value = LibGtk.entry_get_icon_pixbuf(to_unsafe.as(LibGtk::Entry*), icon_pos)
+      __return_value = LibGtk.entry_get_icon_pixbuf(@pointer.as(LibGtk::Entry*), icon_pos)
       GdkPixbuf::Pixbuf.new(__return_value) if __return_value
     end
 
     def icon_sensitive(icon_pos : Gtk::EntryIconPosition)
-      __return_value = LibGtk.entry_get_icon_sensitive(to_unsafe.as(LibGtk::Entry*), icon_pos)
+      __return_value = LibGtk.entry_get_icon_sensitive(@pointer.as(LibGtk::Entry*), icon_pos)
       __return_value
     end
 
     def icon_stock(icon_pos : Gtk::EntryIconPosition)
-      __return_value = LibGtk.entry_get_icon_stock(to_unsafe.as(LibGtk::Entry*), icon_pos)
+      __return_value = LibGtk.entry_get_icon_stock(@pointer.as(LibGtk::Entry*), icon_pos)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def icon_storage_type(icon_pos : Gtk::EntryIconPosition)
-      __return_value = LibGtk.entry_get_icon_storage_type(to_unsafe.as(LibGtk::Entry*), icon_pos)
+      __return_value = LibGtk.entry_get_icon_storage_type(@pointer.as(LibGtk::Entry*), icon_pos)
       __return_value
     end
 
     def icon_tooltip_markup(icon_pos : Gtk::EntryIconPosition)
-      __return_value = LibGtk.entry_get_icon_tooltip_markup(to_unsafe.as(LibGtk::Entry*), icon_pos)
+      __return_value = LibGtk.entry_get_icon_tooltip_markup(@pointer.as(LibGtk::Entry*), icon_pos)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def icon_tooltip_text(icon_pos : Gtk::EntryIconPosition)
-      __return_value = LibGtk.entry_get_icon_tooltip_text(to_unsafe.as(LibGtk::Entry*), icon_pos)
+      __return_value = LibGtk.entry_get_icon_tooltip_text(@pointer.as(LibGtk::Entry*), icon_pos)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def inner_border
-      __return_value = LibGtk.entry_get_inner_border(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_inner_border(@pointer.as(LibGtk::Entry*))
       Gtk::Border.new(__return_value) if __return_value
     end
 
     def input_hints
-      __return_value = LibGtk.entry_get_input_hints(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_input_hints(@pointer.as(LibGtk::Entry*))
       __return_value
     end
 
     def input_purpose
-      __return_value = LibGtk.entry_get_input_purpose(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_input_purpose(@pointer.as(LibGtk::Entry*))
       __return_value
     end
 
     def invisible_char
-      __return_value = LibGtk.entry_get_invisible_char(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_invisible_char(@pointer.as(LibGtk::Entry*))
       __return_value
     end
 
     def layout
-      __return_value = LibGtk.entry_get_layout(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_layout(@pointer.as(LibGtk::Entry*))
       Pango::Layout.new(__return_value)
     end
 
     def layout_offsets(x, y)
-      LibGtk.entry_get_layout_offsets(to_unsafe.as(LibGtk::Entry*), x, y)
+      LibGtk.entry_get_layout_offsets(@pointer.as(LibGtk::Entry*), x, y)
       nil
     end
 
     def max_length
-      __return_value = LibGtk.entry_get_max_length(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_max_length(@pointer.as(LibGtk::Entry*))
       __return_value
     end
 
     def max_width_chars
-      __return_value = LibGtk.entry_get_max_width_chars(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_max_width_chars(@pointer.as(LibGtk::Entry*))
       __return_value
     end
 
     def overwrite_mode
-      __return_value = LibGtk.entry_get_overwrite_mode(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_overwrite_mode(@pointer.as(LibGtk::Entry*))
       __return_value
     end
 
     def placeholder_text
-      __return_value = LibGtk.entry_get_placeholder_text(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_placeholder_text(@pointer.as(LibGtk::Entry*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def progress_fraction
-      __return_value = LibGtk.entry_get_progress_fraction(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_progress_fraction(@pointer.as(LibGtk::Entry*))
       __return_value
     end
 
     def progress_pulse_step
-      __return_value = LibGtk.entry_get_progress_pulse_step(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_progress_pulse_step(@pointer.as(LibGtk::Entry*))
       __return_value
     end
 
     def tabs
-      __return_value = LibGtk.entry_get_tabs(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_tabs(@pointer.as(LibGtk::Entry*))
       Pango::TabArray.new(__return_value) if __return_value
     end
 
     def text
-      __return_value = LibGtk.entry_get_text(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_text(@pointer.as(LibGtk::Entry*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def text_area(text_area)
-      LibGtk.entry_get_text_area(to_unsafe.as(LibGtk::Entry*), text_area)
+      LibGtk.entry_get_text_area(@pointer.as(LibGtk::Entry*), text_area)
       nil
     end
 
     def text_length
-      __return_value = LibGtk.entry_get_text_length(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_text_length(@pointer.as(LibGtk::Entry*))
       __return_value
     end
 
     def visibility
-      __return_value = LibGtk.entry_get_visibility(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_visibility(@pointer.as(LibGtk::Entry*))
       __return_value
     end
 
     def width_chars
-      __return_value = LibGtk.entry_get_width_chars(to_unsafe.as(LibGtk::Entry*))
+      __return_value = LibGtk.entry_get_width_chars(@pointer.as(LibGtk::Entry*))
       __return_value
     end
 
     def grab_focus_without_selecting
-      LibGtk.entry_grab_focus_without_selecting(to_unsafe.as(LibGtk::Entry*))
+      LibGtk.entry_grab_focus_without_selecting(@pointer.as(LibGtk::Entry*))
       nil
     end
 
     def im_context_filter_keypress(event)
-      __return_value = LibGtk.entry_im_context_filter_keypress(to_unsafe.as(LibGtk::Entry*), event.to_unsafe.as(LibGdk::EventKey*))
+      __return_value = LibGtk.entry_im_context_filter_keypress(@pointer.as(LibGtk::Entry*), event.to_unsafe.as(LibGdk::EventKey*))
       __return_value
     end
 
     def layout_index_to_text_index(layout_index)
-      __return_value = LibGtk.entry_layout_index_to_text_index(to_unsafe.as(LibGtk::Entry*), Int32.new(layout_index))
+      __return_value = LibGtk.entry_layout_index_to_text_index(@pointer.as(LibGtk::Entry*), Int32.new(layout_index))
       __return_value
     end
 
     def progress_pulse
-      LibGtk.entry_progress_pulse(to_unsafe.as(LibGtk::Entry*))
+      LibGtk.entry_progress_pulse(@pointer.as(LibGtk::Entry*))
       nil
     end
 
     def reset_im_context
-      LibGtk.entry_reset_im_context(to_unsafe.as(LibGtk::Entry*))
+      LibGtk.entry_reset_im_context(@pointer.as(LibGtk::Entry*))
       nil
     end
 
     def activates_default=(setting)
-      LibGtk.entry_set_activates_default(to_unsafe.as(LibGtk::Entry*), setting)
+      LibGtk.entry_set_activates_default(@pointer.as(LibGtk::Entry*), setting)
       nil
     end
 
     def alignment=(xalign)
-      LibGtk.entry_set_alignment(to_unsafe.as(LibGtk::Entry*), Float32.new(xalign))
+      LibGtk.entry_set_alignment(@pointer.as(LibGtk::Entry*), Float32.new(xalign))
       nil
     end
 
     def attributes=(attrs)
-      LibGtk.entry_set_attributes(to_unsafe.as(LibGtk::Entry*), attrs.to_unsafe.as(LibPango::AttrList*))
+      LibGtk.entry_set_attributes(@pointer.as(LibGtk::Entry*), attrs.to_unsafe.as(LibPango::AttrList*))
       nil
     end
 
     def buffer=(buffer)
-      LibGtk.entry_set_buffer(to_unsafe.as(LibGtk::Entry*), buffer.to_unsafe.as(LibGtk::EntryBuffer*))
+      LibGtk.entry_set_buffer(@pointer.as(LibGtk::Entry*), buffer.to_unsafe.as(LibGtk::EntryBuffer*))
       nil
     end
 
     def completion=(completion)
-      LibGtk.entry_set_completion(to_unsafe.as(LibGtk::Entry*), completion ? completion.to_unsafe.as(LibGtk::EntryCompletion*) : nil)
+      LibGtk.entry_set_completion(@pointer.as(LibGtk::Entry*), completion ? completion.to_unsafe.as(LibGtk::EntryCompletion*) : nil)
       nil
     end
 
     def cursor_hadjustment=(adjustment)
-      LibGtk.entry_set_cursor_hadjustment(to_unsafe.as(LibGtk::Entry*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
+      LibGtk.entry_set_cursor_hadjustment(@pointer.as(LibGtk::Entry*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
       nil
     end
 
     def has_frame=(setting)
-      LibGtk.entry_set_has_frame(to_unsafe.as(LibGtk::Entry*), setting)
+      LibGtk.entry_set_has_frame(@pointer.as(LibGtk::Entry*), setting)
       nil
     end
 
     def set_icon_activatable(icon_pos : Gtk::EntryIconPosition, activatable)
-      LibGtk.entry_set_icon_activatable(to_unsafe.as(LibGtk::Entry*), icon_pos, activatable)
+      LibGtk.entry_set_icon_activatable(@pointer.as(LibGtk::Entry*), icon_pos, activatable)
       nil
     end
 
     def set_icon_drag_source(icon_pos : Gtk::EntryIconPosition, target_list, actions : Gdk::DragAction)
-      LibGtk.entry_set_icon_drag_source(to_unsafe.as(LibGtk::Entry*), icon_pos, target_list.to_unsafe.as(LibGtk::TargetList*), actions)
+      LibGtk.entry_set_icon_drag_source(@pointer.as(LibGtk::Entry*), icon_pos, target_list.to_unsafe.as(LibGtk::TargetList*), actions)
       nil
     end
 
     def set_icon_from_gicon(icon_pos : Gtk::EntryIconPosition, icon)
-      LibGtk.entry_set_icon_from_gicon(to_unsafe.as(LibGtk::Entry*), icon_pos, icon ? icon.to_unsafe.as(LibGio::Icon*) : nil)
+      LibGtk.entry_set_icon_from_gicon(@pointer.as(LibGtk::Entry*), icon_pos, icon ? icon.to_unsafe.as(LibGio::Icon*) : nil)
       nil
     end
 
     def set_icon_from_icon_name(icon_pos : Gtk::EntryIconPosition, icon_name)
-      LibGtk.entry_set_icon_from_icon_name(to_unsafe.as(LibGtk::Entry*), icon_pos, icon_name ? icon_name.to_unsafe : nil)
+      LibGtk.entry_set_icon_from_icon_name(@pointer.as(LibGtk::Entry*), icon_pos, icon_name ? icon_name.to_unsafe : nil)
       nil
     end
 
     def set_icon_from_pixbuf(icon_pos : Gtk::EntryIconPosition, pixbuf)
-      LibGtk.entry_set_icon_from_pixbuf(to_unsafe.as(LibGtk::Entry*), icon_pos, pixbuf ? pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*) : nil)
+      LibGtk.entry_set_icon_from_pixbuf(@pointer.as(LibGtk::Entry*), icon_pos, pixbuf ? pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*) : nil)
       nil
     end
 
     def set_icon_from_stock(icon_pos : Gtk::EntryIconPosition, stock_id)
-      LibGtk.entry_set_icon_from_stock(to_unsafe.as(LibGtk::Entry*), icon_pos, stock_id ? stock_id.to_unsafe : nil)
+      LibGtk.entry_set_icon_from_stock(@pointer.as(LibGtk::Entry*), icon_pos, stock_id ? stock_id.to_unsafe : nil)
       nil
     end
 
     def set_icon_sensitive(icon_pos : Gtk::EntryIconPosition, sensitive)
-      LibGtk.entry_set_icon_sensitive(to_unsafe.as(LibGtk::Entry*), icon_pos, sensitive)
+      LibGtk.entry_set_icon_sensitive(@pointer.as(LibGtk::Entry*), icon_pos, sensitive)
       nil
     end
 
     def set_icon_tooltip_markup(icon_pos : Gtk::EntryIconPosition, tooltip)
-      LibGtk.entry_set_icon_tooltip_markup(to_unsafe.as(LibGtk::Entry*), icon_pos, tooltip ? tooltip.to_unsafe : nil)
+      LibGtk.entry_set_icon_tooltip_markup(@pointer.as(LibGtk::Entry*), icon_pos, tooltip ? tooltip.to_unsafe : nil)
       nil
     end
 
     def set_icon_tooltip_text(icon_pos : Gtk::EntryIconPosition, tooltip)
-      LibGtk.entry_set_icon_tooltip_text(to_unsafe.as(LibGtk::Entry*), icon_pos, tooltip ? tooltip.to_unsafe : nil)
+      LibGtk.entry_set_icon_tooltip_text(@pointer.as(LibGtk::Entry*), icon_pos, tooltip ? tooltip.to_unsafe : nil)
       nil
     end
 
     def inner_border=(border)
-      LibGtk.entry_set_inner_border(to_unsafe.as(LibGtk::Entry*), border ? border.to_unsafe.as(LibGtk::Border*) : nil)
+      LibGtk.entry_set_inner_border(@pointer.as(LibGtk::Entry*), border ? border.to_unsafe.as(LibGtk::Border*) : nil)
       nil
     end
 
     def input_hints=(hints : Gtk::InputHints)
-      LibGtk.entry_set_input_hints(to_unsafe.as(LibGtk::Entry*), hints)
+      LibGtk.entry_set_input_hints(@pointer.as(LibGtk::Entry*), hints)
       nil
     end
 
     def input_purpose=(purpose : Gtk::InputPurpose)
-      LibGtk.entry_set_input_purpose(to_unsafe.as(LibGtk::Entry*), purpose)
+      LibGtk.entry_set_input_purpose(@pointer.as(LibGtk::Entry*), purpose)
       nil
     end
 
     def invisible_char=(ch)
-      LibGtk.entry_set_invisible_char(to_unsafe.as(LibGtk::Entry*), UInt8.new(ch))
+      LibGtk.entry_set_invisible_char(@pointer.as(LibGtk::Entry*), UInt8.new(ch))
       nil
     end
 
     def max_length=(max)
-      LibGtk.entry_set_max_length(to_unsafe.as(LibGtk::Entry*), Int32.new(max))
+      LibGtk.entry_set_max_length(@pointer.as(LibGtk::Entry*), Int32.new(max))
       nil
     end
 
     def max_width_chars=(n_chars)
-      LibGtk.entry_set_max_width_chars(to_unsafe.as(LibGtk::Entry*), Int32.new(n_chars))
+      LibGtk.entry_set_max_width_chars(@pointer.as(LibGtk::Entry*), Int32.new(n_chars))
       nil
     end
 
     def overwrite_mode=(overwrite)
-      LibGtk.entry_set_overwrite_mode(to_unsafe.as(LibGtk::Entry*), overwrite)
+      LibGtk.entry_set_overwrite_mode(@pointer.as(LibGtk::Entry*), overwrite)
       nil
     end
 
     def placeholder_text=(text)
-      LibGtk.entry_set_placeholder_text(to_unsafe.as(LibGtk::Entry*), text ? text.to_unsafe : nil)
+      LibGtk.entry_set_placeholder_text(@pointer.as(LibGtk::Entry*), text ? text.to_unsafe : nil)
       nil
     end
 
     def progress_fraction=(fraction)
-      LibGtk.entry_set_progress_fraction(to_unsafe.as(LibGtk::Entry*), Float64.new(fraction))
+      LibGtk.entry_set_progress_fraction(@pointer.as(LibGtk::Entry*), Float64.new(fraction))
       nil
     end
 
     def progress_pulse_step=(fraction)
-      LibGtk.entry_set_progress_pulse_step(to_unsafe.as(LibGtk::Entry*), Float64.new(fraction))
+      LibGtk.entry_set_progress_pulse_step(@pointer.as(LibGtk::Entry*), Float64.new(fraction))
       nil
     end
 
     def tabs=(tabs)
-      LibGtk.entry_set_tabs(to_unsafe.as(LibGtk::Entry*), tabs.to_unsafe.as(LibPango::TabArray*))
+      LibGtk.entry_set_tabs(@pointer.as(LibGtk::Entry*), tabs.to_unsafe.as(LibPango::TabArray*))
       nil
     end
 
     def text=(text)
-      LibGtk.entry_set_text(to_unsafe.as(LibGtk::Entry*), text.to_unsafe)
+      LibGtk.entry_set_text(@pointer.as(LibGtk::Entry*), text.to_unsafe)
       nil
     end
 
     def visibility=(visible)
-      LibGtk.entry_set_visibility(to_unsafe.as(LibGtk::Entry*), visible)
+      LibGtk.entry_set_visibility(@pointer.as(LibGtk::Entry*), visible)
       nil
     end
 
     def width_chars=(n_chars)
-      LibGtk.entry_set_width_chars(to_unsafe.as(LibGtk::Entry*), Int32.new(n_chars))
+      LibGtk.entry_set_width_chars(@pointer.as(LibGtk::Entry*), Int32.new(n_chars))
       nil
     end
 
     def text_index_to_layout_index(text_index)
-      __return_value = LibGtk.entry_text_index_to_layout_index(to_unsafe.as(LibGtk::Entry*), Int32.new(text_index))
+      __return_value = LibGtk.entry_text_index_to_layout_index(@pointer.as(LibGtk::Entry*), Int32.new(text_index))
       __return_value
     end
 
     def unset_invisible_char
-      LibGtk.entry_unset_invisible_char(to_unsafe.as(LibGtk::Entry*))
+      LibGtk.entry_unset_invisible_char(@pointer.as(LibGtk::Entry*))
       nil
     end
 

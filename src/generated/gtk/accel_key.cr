@@ -11,12 +11,13 @@ module Gtk
       end
     end
 
-    @gtk_accel_key : LibGtk::AccelKey*?
-    def initialize(@gtk_accel_key : LibGtk::AccelKey*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::AccelKey*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_accel_key.not_nil!
+      @pointer.not_nil!.as(LibGtk::AccelKey*)
     end
 
     def accel_key

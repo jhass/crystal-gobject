@@ -2,12 +2,13 @@ require "./container"
 
 module Gtk
   class Paned < Container
-    @gtk_paned : LibGtk::Paned*?
-    def initialize(@gtk_paned : LibGtk::Paned*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Paned*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_paned.not_nil!
+      @pointer.not_nil!.as(LibGtk::Paned*)
     end
 
     # Implements ImplementorIface
@@ -44,57 +45,57 @@ module Gtk
     end
 
     def add1(child)
-      LibGtk.paned_add1(to_unsafe.as(LibGtk::Paned*), child.to_unsafe.as(LibGtk::Widget*))
+      LibGtk.paned_add1(@pointer.as(LibGtk::Paned*), child.to_unsafe.as(LibGtk::Widget*))
       nil
     end
 
     def add2(child)
-      LibGtk.paned_add2(to_unsafe.as(LibGtk::Paned*), child.to_unsafe.as(LibGtk::Widget*))
+      LibGtk.paned_add2(@pointer.as(LibGtk::Paned*), child.to_unsafe.as(LibGtk::Widget*))
       nil
     end
 
     def child1
-      __return_value = LibGtk.paned_get_child1(to_unsafe.as(LibGtk::Paned*))
+      __return_value = LibGtk.paned_get_child1(@pointer.as(LibGtk::Paned*))
       Gtk::Widget.new(__return_value) if __return_value
     end
 
     def child2
-      __return_value = LibGtk.paned_get_child2(to_unsafe.as(LibGtk::Paned*))
+      __return_value = LibGtk.paned_get_child2(@pointer.as(LibGtk::Paned*))
       Gtk::Widget.new(__return_value) if __return_value
     end
 
     def handle_window
-      __return_value = LibGtk.paned_get_handle_window(to_unsafe.as(LibGtk::Paned*))
+      __return_value = LibGtk.paned_get_handle_window(@pointer.as(LibGtk::Paned*))
       Gdk::Window.new(__return_value)
     end
 
     def position
-      __return_value = LibGtk.paned_get_position(to_unsafe.as(LibGtk::Paned*))
+      __return_value = LibGtk.paned_get_position(@pointer.as(LibGtk::Paned*))
       __return_value
     end
 
     def wide_handle
-      __return_value = LibGtk.paned_get_wide_handle(to_unsafe.as(LibGtk::Paned*))
+      __return_value = LibGtk.paned_get_wide_handle(@pointer.as(LibGtk::Paned*))
       __return_value
     end
 
     def pack1(child, resize, shrink)
-      LibGtk.paned_pack1(to_unsafe.as(LibGtk::Paned*), child.to_unsafe.as(LibGtk::Widget*), resize, shrink)
+      LibGtk.paned_pack1(@pointer.as(LibGtk::Paned*), child.to_unsafe.as(LibGtk::Widget*), resize, shrink)
       nil
     end
 
     def pack2(child, resize, shrink)
-      LibGtk.paned_pack2(to_unsafe.as(LibGtk::Paned*), child.to_unsafe.as(LibGtk::Widget*), resize, shrink)
+      LibGtk.paned_pack2(@pointer.as(LibGtk::Paned*), child.to_unsafe.as(LibGtk::Widget*), resize, shrink)
       nil
     end
 
     def position=(position)
-      LibGtk.paned_set_position(to_unsafe.as(LibGtk::Paned*), Int32.new(position))
+      LibGtk.paned_set_position(@pointer.as(LibGtk::Paned*), Int32.new(position))
       nil
     end
 
     def wide_handle=(wide)
-      LibGtk.paned_set_wide_handle(to_unsafe.as(LibGtk::Paned*), wide)
+      LibGtk.paned_set_wide_handle(@pointer.as(LibGtk::Paned*), wide)
       nil
     end
 

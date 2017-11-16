@@ -14,12 +14,13 @@ module GLib
       end
     end
 
-    @g_lib_date : LibGLib::Date*?
-    def initialize(@g_lib_date : LibGLib::Date*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::Date*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_date.not_nil!
+      @pointer.not_nil!.as(LibGLib::Date*)
     end
 
     def self.new : self
@@ -38,172 +39,172 @@ module GLib
     end
 
     def add_days(n_days)
-      LibGLib.date_add_days(to_unsafe.as(LibGLib::Date*), UInt32.new(n_days))
+      LibGLib.date_add_days(@pointer.as(LibGLib::Date*), UInt32.new(n_days))
       nil
     end
 
     def add_months(n_months)
-      LibGLib.date_add_months(to_unsafe.as(LibGLib::Date*), UInt32.new(n_months))
+      LibGLib.date_add_months(@pointer.as(LibGLib::Date*), UInt32.new(n_months))
       nil
     end
 
     def add_years(n_years)
-      LibGLib.date_add_years(to_unsafe.as(LibGLib::Date*), UInt32.new(n_years))
+      LibGLib.date_add_years(@pointer.as(LibGLib::Date*), UInt32.new(n_years))
       nil
     end
 
     def clamp(min_date, max_date)
-      LibGLib.date_clamp(to_unsafe.as(LibGLib::Date*), min_date.to_unsafe.as(LibGLib::Date*), max_date.to_unsafe.as(LibGLib::Date*))
+      LibGLib.date_clamp(@pointer.as(LibGLib::Date*), min_date.to_unsafe.as(LibGLib::Date*), max_date.to_unsafe.as(LibGLib::Date*))
       nil
     end
 
     def clear(n_dates)
-      LibGLib.date_clear(to_unsafe.as(LibGLib::Date*), UInt32.new(n_dates))
+      LibGLib.date_clear(@pointer.as(LibGLib::Date*), UInt32.new(n_dates))
       nil
     end
 
     def compare(rhs)
-      __return_value = LibGLib.date_compare(to_unsafe.as(LibGLib::Date*), rhs.to_unsafe.as(LibGLib::Date*))
+      __return_value = LibGLib.date_compare(@pointer.as(LibGLib::Date*), rhs.to_unsafe.as(LibGLib::Date*))
       __return_value
     end
 
     def days_between(date2)
-      __return_value = LibGLib.date_days_between(to_unsafe.as(LibGLib::Date*), date2.to_unsafe.as(LibGLib::Date*))
+      __return_value = LibGLib.date_days_between(@pointer.as(LibGLib::Date*), date2.to_unsafe.as(LibGLib::Date*))
       __return_value
     end
 
     def free
-      LibGLib.date_free(to_unsafe.as(LibGLib::Date*))
+      LibGLib.date_free(@pointer.as(LibGLib::Date*))
       nil
     end
 
     def day
-      __return_value = LibGLib.date_get_day(to_unsafe.as(LibGLib::Date*))
+      __return_value = LibGLib.date_get_day(@pointer.as(LibGLib::Date*))
       __return_value
     end
 
     def day_of_year
-      __return_value = LibGLib.date_get_day_of_year(to_unsafe.as(LibGLib::Date*))
+      __return_value = LibGLib.date_get_day_of_year(@pointer.as(LibGLib::Date*))
       __return_value
     end
 
     def iso8601_week_of_year
-      __return_value = LibGLib.date_get_iso8601_week_of_year(to_unsafe.as(LibGLib::Date*))
+      __return_value = LibGLib.date_get_iso8601_week_of_year(@pointer.as(LibGLib::Date*))
       __return_value
     end
 
     def julian
-      __return_value = LibGLib.date_get_julian(to_unsafe.as(LibGLib::Date*))
+      __return_value = LibGLib.date_get_julian(@pointer.as(LibGLib::Date*))
       __return_value
     end
 
     def monday_week_of_year
-      __return_value = LibGLib.date_get_monday_week_of_year(to_unsafe.as(LibGLib::Date*))
+      __return_value = LibGLib.date_get_monday_week_of_year(@pointer.as(LibGLib::Date*))
       __return_value
     end
 
     def month
-      __return_value = LibGLib.date_get_month(to_unsafe.as(LibGLib::Date*))
+      __return_value = LibGLib.date_get_month(@pointer.as(LibGLib::Date*))
       __return_value
     end
 
     def sunday_week_of_year
-      __return_value = LibGLib.date_get_sunday_week_of_year(to_unsafe.as(LibGLib::Date*))
+      __return_value = LibGLib.date_get_sunday_week_of_year(@pointer.as(LibGLib::Date*))
       __return_value
     end
 
     def weekday
-      __return_value = LibGLib.date_get_weekday(to_unsafe.as(LibGLib::Date*))
+      __return_value = LibGLib.date_get_weekday(@pointer.as(LibGLib::Date*))
       __return_value
     end
 
     def year
-      __return_value = LibGLib.date_get_year(to_unsafe.as(LibGLib::Date*))
+      __return_value = LibGLib.date_get_year(@pointer.as(LibGLib::Date*))
       __return_value
     end
 
     def first_of_month?
-      __return_value = LibGLib.date_is_first_of_month(to_unsafe.as(LibGLib::Date*))
+      __return_value = LibGLib.date_is_first_of_month(@pointer.as(LibGLib::Date*))
       __return_value
     end
 
     def last_of_month?
-      __return_value = LibGLib.date_is_last_of_month(to_unsafe.as(LibGLib::Date*))
+      __return_value = LibGLib.date_is_last_of_month(@pointer.as(LibGLib::Date*))
       __return_value
     end
 
     def order(date2)
-      LibGLib.date_order(to_unsafe.as(LibGLib::Date*), date2.to_unsafe.as(LibGLib::Date*))
+      LibGLib.date_order(@pointer.as(LibGLib::Date*), date2.to_unsafe.as(LibGLib::Date*))
       nil
     end
 
     def day=(day)
-      LibGLib.date_set_day(to_unsafe.as(LibGLib::Date*), UInt8.new(day))
+      LibGLib.date_set_day(@pointer.as(LibGLib::Date*), UInt8.new(day))
       nil
     end
 
     def set_dmy(day, month : GLib::DateMonth, y)
-      LibGLib.date_set_dmy(to_unsafe.as(LibGLib::Date*), UInt8.new(day), month, UInt16.new(y))
+      LibGLib.date_set_dmy(@pointer.as(LibGLib::Date*), UInt8.new(day), month, UInt16.new(y))
       nil
     end
 
     def julian=(julian_date)
-      LibGLib.date_set_julian(to_unsafe.as(LibGLib::Date*), UInt32.new(julian_date))
+      LibGLib.date_set_julian(@pointer.as(LibGLib::Date*), UInt32.new(julian_date))
       nil
     end
 
     def month=(month : GLib::DateMonth)
-      LibGLib.date_set_month(to_unsafe.as(LibGLib::Date*), month)
+      LibGLib.date_set_month(@pointer.as(LibGLib::Date*), month)
       nil
     end
 
     def parse=(str)
-      LibGLib.date_set_parse(to_unsafe.as(LibGLib::Date*), str.to_unsafe)
+      LibGLib.date_set_parse(@pointer.as(LibGLib::Date*), str.to_unsafe)
       nil
     end
 
     def time=(time)
-      LibGLib.date_set_time(to_unsafe.as(LibGLib::Date*), Int32.new(time))
+      LibGLib.date_set_time(@pointer.as(LibGLib::Date*), Int32.new(time))
       nil
     end
 
     def time_t=(timet)
-      LibGLib.date_set_time_t(to_unsafe.as(LibGLib::Date*), Int64.new(timet))
+      LibGLib.date_set_time_t(@pointer.as(LibGLib::Date*), Int64.new(timet))
       nil
     end
 
     def time_val=(timeval)
-      LibGLib.date_set_time_val(to_unsafe.as(LibGLib::Date*), timeval.to_unsafe.as(LibGLib::TimeVal*))
+      LibGLib.date_set_time_val(@pointer.as(LibGLib::Date*), timeval.to_unsafe.as(LibGLib::TimeVal*))
       nil
     end
 
     def year=(year)
-      LibGLib.date_set_year(to_unsafe.as(LibGLib::Date*), UInt16.new(year))
+      LibGLib.date_set_year(@pointer.as(LibGLib::Date*), UInt16.new(year))
       nil
     end
 
     def subtract_days(n_days)
-      LibGLib.date_subtract_days(to_unsafe.as(LibGLib::Date*), UInt32.new(n_days))
+      LibGLib.date_subtract_days(@pointer.as(LibGLib::Date*), UInt32.new(n_days))
       nil
     end
 
     def subtract_months(n_months)
-      LibGLib.date_subtract_months(to_unsafe.as(LibGLib::Date*), UInt32.new(n_months))
+      LibGLib.date_subtract_months(@pointer.as(LibGLib::Date*), UInt32.new(n_months))
       nil
     end
 
     def subtract_years(n_years)
-      LibGLib.date_subtract_years(to_unsafe.as(LibGLib::Date*), UInt32.new(n_years))
+      LibGLib.date_subtract_years(@pointer.as(LibGLib::Date*), UInt32.new(n_years))
       nil
     end
 
     def to_struct_tm(tm)
-      LibGLib.date_to_struct_tm(to_unsafe.as(LibGLib::Date*), tm)
+      LibGLib.date_to_struct_tm(@pointer.as(LibGLib::Date*), tm)
       nil
     end
 
     def valid
-      __return_value = LibGLib.date_valid(to_unsafe.as(LibGLib::Date*))
+      __return_value = LibGLib.date_valid(@pointer.as(LibGLib::Date*))
       __return_value
     end
 

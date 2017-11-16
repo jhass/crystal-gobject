@@ -2,12 +2,13 @@ require "./object"
 
 module Atk
   class NoOpObject < Object
-    @atk_no_op_object : LibAtk::NoOpObject*?
-    def initialize(@atk_no_op_object : LibAtk::NoOpObject*)
+    @pointer : Void*
+    def initialize(pointer : LibAtk::NoOpObject*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @atk_no_op_object.not_nil!
+      @pointer.not_nil!.as(LibAtk::NoOpObject*)
     end
 
     # Implements Action

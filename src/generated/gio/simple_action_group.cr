@@ -1,11 +1,12 @@
 module Gio
   class SimpleActionGroup < GObject::Object
-    @gio_simple_action_group : LibGio::SimpleActionGroup*?
-    def initialize(@gio_simple_action_group : LibGio::SimpleActionGroup*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::SimpleActionGroup*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_simple_action_group.not_nil!
+      @pointer.not_nil!.as(LibGio::SimpleActionGroup*)
     end
 
     # Implements ActionGroup
@@ -16,22 +17,22 @@ module Gio
     end
 
     def add_entries(entries, n_entries, user_data)
-      LibGio.simple_action_group_add_entries(to_unsafe.as(LibGio::SimpleActionGroup*), entries, Int32.new(n_entries), user_data ? user_data : nil)
+      LibGio.simple_action_group_add_entries(@pointer.as(LibGio::SimpleActionGroup*), entries, Int32.new(n_entries), user_data ? user_data : nil)
       nil
     end
 
     def insert(action)
-      LibGio.simple_action_group_insert(to_unsafe.as(LibGio::SimpleActionGroup*), action.to_unsafe.as(LibGio::Action*))
+      LibGio.simple_action_group_insert(@pointer.as(LibGio::SimpleActionGroup*), action.to_unsafe.as(LibGio::Action*))
       nil
     end
 
     def lookup(action_name)
-      __return_value = LibGio.simple_action_group_lookup(to_unsafe.as(LibGio::SimpleActionGroup*), action_name.to_unsafe)
+      __return_value = LibGio.simple_action_group_lookup(@pointer.as(LibGio::SimpleActionGroup*), action_name.to_unsafe)
       __return_value
     end
 
     def remove(action_name)
-      LibGio.simple_action_group_remove(to_unsafe.as(LibGio::SimpleActionGroup*), action_name.to_unsafe)
+      LibGio.simple_action_group_remove(@pointer.as(LibGio::SimpleActionGroup*), action_name.to_unsafe)
       nil
     end
 

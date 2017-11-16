@@ -2,21 +2,22 @@ module Gio
   class IOModuleScope
     include GObject::WrappedType
 
-    @gio_i_o_module_scope : LibGio::IOModuleScope*?
-    def initialize(@gio_i_o_module_scope : LibGio::IOModuleScope*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::IOModuleScope*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_i_o_module_scope.not_nil!
+      @pointer.not_nil!.as(LibGio::IOModuleScope*)
     end
 
     def block(basename)
-      LibGio.i_o_module_scope_block(to_unsafe.as(LibGio::IOModuleScope*), basename.to_unsafe)
+      LibGio.i_o_module_scope_block(@pointer.as(LibGio::IOModuleScope*), basename.to_unsafe)
       nil
     end
 
     def free
-      LibGio.i_o_module_scope_free(to_unsafe.as(LibGio::IOModuleScope*))
+      LibGio.i_o_module_scope_free(@pointer.as(LibGio::IOModuleScope*))
       nil
     end
 

@@ -1,11 +1,12 @@
 module Gdk
   class DisplayManager < GObject::Object
-    @gdk_display_manager : LibGdk::DisplayManager*?
-    def initialize(@gdk_display_manager : LibGdk::DisplayManager*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::DisplayManager*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_display_manager.not_nil!
+      @pointer.not_nil!.as(LibGdk::DisplayManager*)
     end
 
     def default_display
@@ -19,22 +20,22 @@ module Gdk
     end
 
     def default_display
-      __return_value = LibGdk.display_manager_get_default_display(to_unsafe.as(LibGdk::DisplayManager*))
+      __return_value = LibGdk.display_manager_get_default_display(@pointer.as(LibGdk::DisplayManager*))
       Gdk::Display.new(__return_value) if __return_value
     end
 
     def list_displays
-      __return_value = LibGdk.display_manager_list_displays(to_unsafe.as(LibGdk::DisplayManager*))
+      __return_value = LibGdk.display_manager_list_displays(@pointer.as(LibGdk::DisplayManager*))
       GLib::SListIterator(Gdk::Display, LibGdk::Display*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def open_display(name)
-      __return_value = LibGdk.display_manager_open_display(to_unsafe.as(LibGdk::DisplayManager*), name.to_unsafe)
+      __return_value = LibGdk.display_manager_open_display(@pointer.as(LibGdk::DisplayManager*), name.to_unsafe)
       Gdk::Display.new(__return_value) if __return_value
     end
 
     def default_display=(display)
-      LibGdk.display_manager_set_default_display(to_unsafe.as(LibGdk::DisplayManager*), display.to_unsafe.as(LibGdk::Display*))
+      LibGdk.display_manager_set_default_display(@pointer.as(LibGdk::DisplayManager*), display.to_unsafe.as(LibGdk::Display*))
       nil
     end
 

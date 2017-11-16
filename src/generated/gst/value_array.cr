@@ -2,12 +2,13 @@ module Gst
   class ValueArray
     include GObject::WrappedType
 
-    @gst_value_array : LibGst::ValueArray*?
-    def initialize(@gst_value_array : LibGst::ValueArray*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::ValueArray*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_value_array.not_nil!
+      @pointer.not_nil!.as(LibGst::ValueArray*)
     end
 
     def self.append_and_take_value(value, append_value)

@@ -2,12 +2,13 @@ module Gio
   class FileEnumeratorPrivate
     include GObject::WrappedType
 
-    @gio_file_enumerator_private : LibGio::FileEnumeratorPrivate*?
-    def initialize(@gio_file_enumerator_private : LibGio::FileEnumeratorPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::FileEnumeratorPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_file_enumerator_private.not_nil!
+      @pointer.not_nil!.as(LibGio::FileEnumeratorPrivate*)
     end
 
   end

@@ -2,12 +2,13 @@ require "./gesture"
 
 module Gtk
   class GestureRotate < Gesture
-    @gtk_gesture_rotate : LibGtk::GestureRotate*?
-    def initialize(@gtk_gesture_rotate : LibGtk::GestureRotate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::GestureRotate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_gesture_rotate.not_nil!
+      @pointer.not_nil!.as(LibGtk::GestureRotate*)
     end
 
     def self.new(widget) : self
@@ -16,7 +17,7 @@ module Gtk
     end
 
     def angle_delta
-      __return_value = LibGtk.gesture_rotate_get_angle_delta(to_unsafe.as(LibGtk::GestureRotate*))
+      __return_value = LibGtk.gesture_rotate_get_angle_delta(@pointer.as(LibGtk::GestureRotate*))
       __return_value
     end
 

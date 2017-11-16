@@ -10,12 +10,13 @@ module Gst
       end
     end
 
-    @gst_protection_meta : LibGst::ProtectionMeta*?
-    def initialize(@gst_protection_meta : LibGst::ProtectionMeta*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::ProtectionMeta*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_protection_meta.not_nil!
+      @pointer.not_nil!.as(LibGst::ProtectionMeta*)
     end
 
     def self.info

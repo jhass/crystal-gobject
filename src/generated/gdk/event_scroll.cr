@@ -22,12 +22,13 @@ module Gdk
       end
     end
 
-    @gdk_event_scroll : LibGdk::EventScroll*?
-    def initialize(@gdk_event_scroll : LibGdk::EventScroll*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::EventScroll*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_event_scroll.not_nil!
+      @pointer.not_nil!.as(LibGdk::EventScroll*)
     end
 
     def type

@@ -2,12 +2,13 @@ require "./range_accessible"
 
 module Gtk
   class ScaleAccessible < RangeAccessible
-    @gtk_scale_accessible : LibGtk::ScaleAccessible*?
-    def initialize(@gtk_scale_accessible : LibGtk::ScaleAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ScaleAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_scale_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::ScaleAccessible*)
     end
 
     # Implements Component

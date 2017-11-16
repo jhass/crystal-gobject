@@ -2,12 +2,13 @@ require "./menu_item_accessible"
 
 module Gtk
   class CheckMenuItemAccessible < MenuItemAccessible
-    @gtk_check_menu_item_accessible : LibGtk::CheckMenuItemAccessible*?
-    def initialize(@gtk_check_menu_item_accessible : LibGtk::CheckMenuItemAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::CheckMenuItemAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_check_menu_item_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::CheckMenuItemAccessible*)
     end
 
     # Implements Action

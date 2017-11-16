@@ -2,12 +2,13 @@ require "./cell_renderer_text"
 
 module Gtk
   class CellRendererCombo < CellRendererText
-    @gtk_cell_renderer_combo : LibGtk::CellRendererCombo*?
-    def initialize(@gtk_cell_renderer_combo : LibGtk::CellRendererCombo*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::CellRendererCombo*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_cell_renderer_combo.not_nil!
+      @pointer.not_nil!.as(LibGtk::CellRendererCombo*)
     end
 
     def has_entry

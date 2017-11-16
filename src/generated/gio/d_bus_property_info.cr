@@ -13,21 +13,22 @@ module Gio
       end
     end
 
-    @gio_d_bus_property_info : LibGio::DBusPropertyInfo*?
-    def initialize(@gio_d_bus_property_info : LibGio::DBusPropertyInfo*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::DBusPropertyInfo*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_d_bus_property_info.not_nil!
+      @pointer.not_nil!.as(LibGio::DBusPropertyInfo*)
     end
 
     def ref
-      __return_value = LibGio.d_bus_property_info_ref(to_unsafe.as(LibGio::DBusPropertyInfo*))
+      __return_value = LibGio.d_bus_property_info_ref(@pointer.as(LibGio::DBusPropertyInfo*))
       Gio::DBusPropertyInfo.new(__return_value)
     end
 
     def unref
-      LibGio.d_bus_property_info_unref(to_unsafe.as(LibGio::DBusPropertyInfo*))
+      LibGio.d_bus_property_info_unref(@pointer.as(LibGio::DBusPropertyInfo*))
       nil
     end
 

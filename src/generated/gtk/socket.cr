@@ -2,12 +2,13 @@ require "./container"
 
 module Gtk
   class Socket < Container
-    @gtk_socket : LibGtk::Socket*?
-    def initialize(@gtk_socket : LibGtk::Socket*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Socket*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_socket.not_nil!
+      @pointer.not_nil!.as(LibGtk::Socket*)
     end
 
     # Implements ImplementorIface
@@ -18,17 +19,17 @@ module Gtk
     end
 
     def add_id(window)
-      LibGtk.socket_add_id(to_unsafe.as(LibGtk::Socket*), UInt64.new(window))
+      LibGtk.socket_add_id(@pointer.as(LibGtk::Socket*), UInt64.new(window))
       nil
     end
 
     def id
-      __return_value = LibGtk.socket_get_id(to_unsafe.as(LibGtk::Socket*))
+      __return_value = LibGtk.socket_get_id(@pointer.as(LibGtk::Socket*))
       __return_value
     end
 
     def plug_window
-      __return_value = LibGtk.socket_get_plug_window(to_unsafe.as(LibGtk::Socket*))
+      __return_value = LibGtk.socket_get_plug_window(@pointer.as(LibGtk::Socket*))
       Gdk::Window.new(__return_value) if __return_value
     end
 

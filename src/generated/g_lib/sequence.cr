@@ -2,51 +2,52 @@ module GLib
   class Sequence
     include GObject::WrappedType
 
-    @g_lib_sequence : LibGLib::Sequence*?
-    def initialize(@g_lib_sequence : LibGLib::Sequence*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::Sequence*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_sequence.not_nil!
+      @pointer.not_nil!.as(LibGLib::Sequence*)
     end
 
     def append(data)
-      __return_value = LibGLib.sequence_append(to_unsafe.as(LibGLib::Sequence*), data ? data : nil)
+      __return_value = LibGLib.sequence_append(@pointer.as(LibGLib::Sequence*), data ? data : nil)
       GLib::SequenceIter.new(__return_value)
     end
 
     def free
-      LibGLib.sequence_free(to_unsafe.as(LibGLib::Sequence*))
+      LibGLib.sequence_free(@pointer.as(LibGLib::Sequence*))
       nil
     end
 
     def begin_iter
-      __return_value = LibGLib.sequence_get_begin_iter(to_unsafe.as(LibGLib::Sequence*))
+      __return_value = LibGLib.sequence_get_begin_iter(@pointer.as(LibGLib::Sequence*))
       GLib::SequenceIter.new(__return_value)
     end
 
     def end_iter
-      __return_value = LibGLib.sequence_get_end_iter(to_unsafe.as(LibGLib::Sequence*))
+      __return_value = LibGLib.sequence_get_end_iter(@pointer.as(LibGLib::Sequence*))
       GLib::SequenceIter.new(__return_value)
     end
 
     def iter_at_pos(pos)
-      __return_value = LibGLib.sequence_get_iter_at_pos(to_unsafe.as(LibGLib::Sequence*), Int32.new(pos))
+      __return_value = LibGLib.sequence_get_iter_at_pos(@pointer.as(LibGLib::Sequence*), Int32.new(pos))
       GLib::SequenceIter.new(__return_value)
     end
 
     def length
-      __return_value = LibGLib.sequence_get_length(to_unsafe.as(LibGLib::Sequence*))
+      __return_value = LibGLib.sequence_get_length(@pointer.as(LibGLib::Sequence*))
       __return_value
     end
 
     def empty?
-      __return_value = LibGLib.sequence_is_empty(to_unsafe.as(LibGLib::Sequence*))
+      __return_value = LibGLib.sequence_is_empty(@pointer.as(LibGLib::Sequence*))
       __return_value
     end
 
     def prepend(data)
-      __return_value = LibGLib.sequence_prepend(to_unsafe.as(LibGLib::Sequence*), data ? data : nil)
+      __return_value = LibGLib.sequence_prepend(@pointer.as(LibGLib::Sequence*), data ? data : nil)
       GLib::SequenceIter.new(__return_value)
     end
 

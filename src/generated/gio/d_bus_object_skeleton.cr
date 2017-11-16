@@ -1,11 +1,12 @@
 module Gio
   class DBusObjectSkeleton < GObject::Object
-    @gio_d_bus_object_skeleton : LibGio::DBusObjectSkeleton*?
-    def initialize(@gio_d_bus_object_skeleton : LibGio::DBusObjectSkeleton*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::DBusObjectSkeleton*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_d_bus_object_skeleton.not_nil!
+      @pointer.not_nil!.as(LibGio::DBusObjectSkeleton*)
     end
 
     # Implements DBusObject
@@ -20,27 +21,27 @@ module Gio
     end
 
     def add_interface(interface)
-      LibGio.d_bus_object_skeleton_add_interface(to_unsafe.as(LibGio::DBusObjectSkeleton*), interface.to_unsafe.as(LibGio::DBusInterfaceSkeleton*))
+      LibGio.d_bus_object_skeleton_add_interface(@pointer.as(LibGio::DBusObjectSkeleton*), interface.to_unsafe.as(LibGio::DBusInterfaceSkeleton*))
       nil
     end
 
     def flush
-      LibGio.d_bus_object_skeleton_flush(to_unsafe.as(LibGio::DBusObjectSkeleton*))
+      LibGio.d_bus_object_skeleton_flush(@pointer.as(LibGio::DBusObjectSkeleton*))
       nil
     end
 
     def remove_interface(interface)
-      LibGio.d_bus_object_skeleton_remove_interface(to_unsafe.as(LibGio::DBusObjectSkeleton*), interface.to_unsafe.as(LibGio::DBusInterfaceSkeleton*))
+      LibGio.d_bus_object_skeleton_remove_interface(@pointer.as(LibGio::DBusObjectSkeleton*), interface.to_unsafe.as(LibGio::DBusInterfaceSkeleton*))
       nil
     end
 
     def remove_interface_by_name(interface_name)
-      LibGio.d_bus_object_skeleton_remove_interface_by_name(to_unsafe.as(LibGio::DBusObjectSkeleton*), interface_name.to_unsafe)
+      LibGio.d_bus_object_skeleton_remove_interface_by_name(@pointer.as(LibGio::DBusObjectSkeleton*), interface_name.to_unsafe)
       nil
     end
 
     def object_path=(object_path)
-      LibGio.d_bus_object_skeleton_set_object_path(to_unsafe.as(LibGio::DBusObjectSkeleton*), object_path.to_unsafe)
+      LibGio.d_bus_object_skeleton_set_object_path(@pointer.as(LibGio::DBusObjectSkeleton*), object_path.to_unsafe)
       nil
     end
 

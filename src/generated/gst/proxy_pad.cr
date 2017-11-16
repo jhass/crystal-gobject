@@ -2,12 +2,13 @@ require "./pad"
 
 module Gst
   class ProxyPad < Pad
-    @gst_proxy_pad : LibGst::ProxyPad*?
-    def initialize(@gst_proxy_pad : LibGst::ProxyPad*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::ProxyPad*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_proxy_pad.not_nil!
+      @pointer.not_nil!.as(LibGst::ProxyPad*)
     end
 
     def self.chain_default(pad, parent, buffer)
@@ -31,7 +32,7 @@ module Gst
     end
 
     def internal
-      __return_value = LibGst.proxy_pad_get_internal(to_unsafe.as(LibGst::ProxyPad*))
+      __return_value = LibGst.proxy_pad_get_internal(@pointer.as(LibGst::ProxyPad*))
       Gst::ProxyPad.new(__return_value) if __return_value
     end
 

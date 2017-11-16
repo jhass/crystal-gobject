@@ -2,12 +2,13 @@ require "./widget_accessible"
 
 module Gtk
   class RangeAccessible < WidgetAccessible
-    @gtk_range_accessible : LibGtk::RangeAccessible*?
-    def initialize(@gtk_range_accessible : LibGtk::RangeAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::RangeAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_range_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::RangeAccessible*)
     end
 
     # Implements Component

@@ -13,12 +13,13 @@ module Gtk
       end
     end
 
-    @gtk_i_m_context_info : LibGtk::IMContextInfo*?
-    def initialize(@gtk_i_m_context_info : LibGtk::IMContextInfo*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::IMContextInfo*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_i_m_context_info.not_nil!
+      @pointer.not_nil!.as(LibGtk::IMContextInfo*)
     end
 
     def context_id

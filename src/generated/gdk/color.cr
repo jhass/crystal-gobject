@@ -12,36 +12,37 @@ module Gdk
       end
     end
 
-    @gdk_color : LibGdk::Color*?
-    def initialize(@gdk_color : LibGdk::Color*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::Color*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_color.not_nil!
+      @pointer.not_nil!.as(LibGdk::Color*)
     end
 
     def copy
-      __return_value = LibGdk.color_copy(to_unsafe.as(LibGdk::Color*))
+      __return_value = LibGdk.color_copy(@pointer.as(LibGdk::Color*))
       Gdk::Color.new(__return_value)
     end
 
     def equal(colorb)
-      __return_value = LibGdk.color_equal(to_unsafe.as(LibGdk::Color*), colorb.to_unsafe.as(LibGdk::Color*))
+      __return_value = LibGdk.color_equal(@pointer.as(LibGdk::Color*), colorb.to_unsafe.as(LibGdk::Color*))
       __return_value
     end
 
     def free
-      LibGdk.color_free(to_unsafe.as(LibGdk::Color*))
+      LibGdk.color_free(@pointer.as(LibGdk::Color*))
       nil
     end
 
     def hash
-      __return_value = LibGdk.color_hash(to_unsafe.as(LibGdk::Color*))
+      __return_value = LibGdk.color_hash(@pointer.as(LibGdk::Color*))
       __return_value
     end
 
     def to_string
-      __return_value = LibGdk.color_to_string(to_unsafe.as(LibGdk::Color*))
+      __return_value = LibGdk.color_to_string(@pointer.as(LibGdk::Color*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

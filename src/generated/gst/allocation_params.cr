@@ -12,26 +12,27 @@ module Gst
       end
     end
 
-    @gst_allocation_params : LibGst::AllocationParams*?
-    def initialize(@gst_allocation_params : LibGst::AllocationParams*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::AllocationParams*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_allocation_params.not_nil!
+      @pointer.not_nil!.as(LibGst::AllocationParams*)
     end
 
     def copy
-      __return_value = LibGst.allocation_params_copy(to_unsafe.as(LibGst::AllocationParams*))
+      __return_value = LibGst.allocation_params_copy(@pointer.as(LibGst::AllocationParams*))
       Gst::AllocationParams.new(__return_value)
     end
 
     def free
-      LibGst.allocation_params_free(to_unsafe.as(LibGst::AllocationParams*))
+      LibGst.allocation_params_free(@pointer.as(LibGst::AllocationParams*))
       nil
     end
 
     def init
-      LibGst.allocation_params_init(to_unsafe.as(LibGst::AllocationParams*))
+      LibGst.allocation_params_init(@pointer.as(LibGst::AllocationParams*))
       nil
     end
 

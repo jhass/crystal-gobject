@@ -2,12 +2,13 @@ module Gtk
   class CellRendererPixbufPrivate
     include GObject::WrappedType
 
-    @gtk_cell_renderer_pixbuf_private : LibGtk::CellRendererPixbufPrivate*?
-    def initialize(@gtk_cell_renderer_pixbuf_private : LibGtk::CellRendererPixbufPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::CellRendererPixbufPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_cell_renderer_pixbuf_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::CellRendererPixbufPrivate*)
     end
 
   end

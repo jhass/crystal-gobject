@@ -11,12 +11,13 @@ module Gio
       end
     end
 
-    @gio_action_entry : LibGio::ActionEntry*?
-    def initialize(@gio_action_entry : LibGio::ActionEntry*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::ActionEntry*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_action_entry.not_nil!
+      @pointer.not_nil!.as(LibGio::ActionEntry*)
     end
 
     def name

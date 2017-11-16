@@ -10,12 +10,13 @@ module Gtk
       end
     end
 
-    @gtk_page_range : LibGtk::PageRange*?
-    def initialize(@gtk_page_range : LibGtk::PageRange*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::PageRange*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_page_range.not_nil!
+      @pointer.not_nil!.as(LibGtk::PageRange*)
     end
 
     def start

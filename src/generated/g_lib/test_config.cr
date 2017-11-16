@@ -14,12 +14,13 @@ module GLib
       end
     end
 
-    @g_lib_test_config : LibGLib::TestConfig*?
-    def initialize(@g_lib_test_config : LibGLib::TestConfig*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::TestConfig*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_test_config.not_nil!
+      @pointer.not_nil!.as(LibGLib::TestConfig*)
     end
 
     def test_initialized

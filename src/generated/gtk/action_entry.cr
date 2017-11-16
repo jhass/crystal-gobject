@@ -14,12 +14,13 @@ module Gtk
       end
     end
 
-    @gtk_action_entry : LibGtk::ActionEntry*?
-    def initialize(@gtk_action_entry : LibGtk::ActionEntry*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ActionEntry*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_action_entry.not_nil!
+      @pointer.not_nil!.as(LibGtk::ActionEntry*)
     end
 
     def name

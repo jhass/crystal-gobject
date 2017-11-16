@@ -2,12 +2,13 @@ module Notify
   class NotificationPrivate
     include GObject::WrappedType
 
-    @notify_notification_private : LibNotify::NotificationPrivate*?
-    def initialize(@notify_notification_private : LibNotify::NotificationPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibNotify::NotificationPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @notify_notification_private.not_nil!
+      @pointer.not_nil!.as(LibNotify::NotificationPrivate*)
     end
 
   end

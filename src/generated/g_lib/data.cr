@@ -2,12 +2,13 @@ module GLib
   class Data
     include GObject::WrappedType
 
-    @g_lib_data : LibGLib::Data*?
-    def initialize(@g_lib_data : LibGLib::Data*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::Data*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_data.not_nil!
+      @pointer.not_nil!.as(LibGLib::Data*)
     end
 
   end

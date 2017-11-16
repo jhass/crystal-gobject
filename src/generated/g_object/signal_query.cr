@@ -15,12 +15,13 @@ module GObject
       end
     end
 
-    @g_object_signal_query : LibGObject::SignalQuery*?
-    def initialize(@g_object_signal_query : LibGObject::SignalQuery*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::SignalQuery*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_signal_query.not_nil!
+      @pointer.not_nil!.as(LibGObject::SignalQuery*)
     end
 
     def signal_id

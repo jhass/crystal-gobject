@@ -6,12 +6,13 @@ module GLib
       (to_unsafe.as(LibGLib::DoubleIEEE754*).value.v_double)
     end
 
-    @g_lib_double_i_e_e_e754 : LibGLib::DoubleIEEE754*?
-    def initialize(@g_lib_double_i_e_e_e754 : LibGLib::DoubleIEEE754*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::DoubleIEEE754*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_double_i_e_e_e754.not_nil!
+      @pointer.not_nil!.as(LibGLib::DoubleIEEE754*)
     end
 
   end

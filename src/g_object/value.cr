@@ -7,7 +7,7 @@ module GObject
     end
 
     def initialize(type : Type)
-      @g_object_value = Pointer(LibGObject::Value).malloc
+      @pointer = Pointer(LibGObject::Value).malloc.as(Void*)
       init(type)
     end
 

@@ -10,12 +10,13 @@ module Pango
       end
     end
 
-    @pango_attr_string : LibPango::AttrString*?
-    def initialize(@pango_attr_string : LibPango::AttrString*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::AttrString*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_attr_string.not_nil!
+      @pointer.not_nil!.as(LibPango::AttrString*)
     end
 
     def attr

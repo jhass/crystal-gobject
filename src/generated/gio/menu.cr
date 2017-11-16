@@ -2,12 +2,13 @@ require "./menu_model"
 
 module Gio
   class Menu < MenuModel
-    @gio_menu : LibGio::Menu*?
-    def initialize(@gio_menu : LibGio::Menu*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::Menu*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_menu.not_nil!
+      @pointer.not_nil!.as(LibGio::Menu*)
     end
 
     def self.new : self
@@ -16,77 +17,77 @@ module Gio
     end
 
     def append(label, detailed_action)
-      LibGio.menu_append(to_unsafe.as(LibGio::Menu*), label ? label.to_unsafe : nil, detailed_action ? detailed_action.to_unsafe : nil)
+      LibGio.menu_append(@pointer.as(LibGio::Menu*), label ? label.to_unsafe : nil, detailed_action ? detailed_action.to_unsafe : nil)
       nil
     end
 
     def append_item(item)
-      LibGio.menu_append_item(to_unsafe.as(LibGio::Menu*), item.to_unsafe.as(LibGio::MenuItem*))
+      LibGio.menu_append_item(@pointer.as(LibGio::Menu*), item.to_unsafe.as(LibGio::MenuItem*))
       nil
     end
 
     def append_section(label, section)
-      LibGio.menu_append_section(to_unsafe.as(LibGio::Menu*), label ? label.to_unsafe : nil, section.to_unsafe.as(LibGio::MenuModel*))
+      LibGio.menu_append_section(@pointer.as(LibGio::Menu*), label ? label.to_unsafe : nil, section.to_unsafe.as(LibGio::MenuModel*))
       nil
     end
 
     def append_submenu(label, submenu)
-      LibGio.menu_append_submenu(to_unsafe.as(LibGio::Menu*), label ? label.to_unsafe : nil, submenu.to_unsafe.as(LibGio::MenuModel*))
+      LibGio.menu_append_submenu(@pointer.as(LibGio::Menu*), label ? label.to_unsafe : nil, submenu.to_unsafe.as(LibGio::MenuModel*))
       nil
     end
 
     def freeze
-      LibGio.menu_freeze(to_unsafe.as(LibGio::Menu*))
+      LibGio.menu_freeze(@pointer.as(LibGio::Menu*))
       nil
     end
 
     def insert(position, label, detailed_action)
-      LibGio.menu_insert(to_unsafe.as(LibGio::Menu*), Int32.new(position), label ? label.to_unsafe : nil, detailed_action ? detailed_action.to_unsafe : nil)
+      LibGio.menu_insert(@pointer.as(LibGio::Menu*), Int32.new(position), label ? label.to_unsafe : nil, detailed_action ? detailed_action.to_unsafe : nil)
       nil
     end
 
     def insert_item(position, item)
-      LibGio.menu_insert_item(to_unsafe.as(LibGio::Menu*), Int32.new(position), item.to_unsafe.as(LibGio::MenuItem*))
+      LibGio.menu_insert_item(@pointer.as(LibGio::Menu*), Int32.new(position), item.to_unsafe.as(LibGio::MenuItem*))
       nil
     end
 
     def insert_section(position, label, section)
-      LibGio.menu_insert_section(to_unsafe.as(LibGio::Menu*), Int32.new(position), label ? label.to_unsafe : nil, section.to_unsafe.as(LibGio::MenuModel*))
+      LibGio.menu_insert_section(@pointer.as(LibGio::Menu*), Int32.new(position), label ? label.to_unsafe : nil, section.to_unsafe.as(LibGio::MenuModel*))
       nil
     end
 
     def insert_submenu(position, label, submenu)
-      LibGio.menu_insert_submenu(to_unsafe.as(LibGio::Menu*), Int32.new(position), label ? label.to_unsafe : nil, submenu.to_unsafe.as(LibGio::MenuModel*))
+      LibGio.menu_insert_submenu(@pointer.as(LibGio::Menu*), Int32.new(position), label ? label.to_unsafe : nil, submenu.to_unsafe.as(LibGio::MenuModel*))
       nil
     end
 
     def prepend(label, detailed_action)
-      LibGio.menu_prepend(to_unsafe.as(LibGio::Menu*), label ? label.to_unsafe : nil, detailed_action ? detailed_action.to_unsafe : nil)
+      LibGio.menu_prepend(@pointer.as(LibGio::Menu*), label ? label.to_unsafe : nil, detailed_action ? detailed_action.to_unsafe : nil)
       nil
     end
 
     def prepend_item(item)
-      LibGio.menu_prepend_item(to_unsafe.as(LibGio::Menu*), item.to_unsafe.as(LibGio::MenuItem*))
+      LibGio.menu_prepend_item(@pointer.as(LibGio::Menu*), item.to_unsafe.as(LibGio::MenuItem*))
       nil
     end
 
     def prepend_section(label, section)
-      LibGio.menu_prepend_section(to_unsafe.as(LibGio::Menu*), label ? label.to_unsafe : nil, section.to_unsafe.as(LibGio::MenuModel*))
+      LibGio.menu_prepend_section(@pointer.as(LibGio::Menu*), label ? label.to_unsafe : nil, section.to_unsafe.as(LibGio::MenuModel*))
       nil
     end
 
     def prepend_submenu(label, submenu)
-      LibGio.menu_prepend_submenu(to_unsafe.as(LibGio::Menu*), label ? label.to_unsafe : nil, submenu.to_unsafe.as(LibGio::MenuModel*))
+      LibGio.menu_prepend_submenu(@pointer.as(LibGio::Menu*), label ? label.to_unsafe : nil, submenu.to_unsafe.as(LibGio::MenuModel*))
       nil
     end
 
     def remove(position)
-      LibGio.menu_remove(to_unsafe.as(LibGio::Menu*), Int32.new(position))
+      LibGio.menu_remove(@pointer.as(LibGio::Menu*), Int32.new(position))
       nil
     end
 
     def remove_all
-      LibGio.menu_remove_all(to_unsafe.as(LibGio::Menu*))
+      LibGio.menu_remove_all(@pointer.as(LibGio::Menu*))
       nil
     end
 

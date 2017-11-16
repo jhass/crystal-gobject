@@ -2,12 +2,13 @@ require "./tool_button"
 
 module Gtk
   class ToggleToolButton < ToolButton
-    @gtk_toggle_tool_button : LibGtk::ToggleToolButton*?
-    def initialize(@gtk_toggle_tool_button : LibGtk::ToggleToolButton*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ToggleToolButton*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_toggle_tool_button.not_nil!
+      @pointer.not_nil!.as(LibGtk::ToggleToolButton*)
     end
 
     # Implements ImplementorIface
@@ -30,12 +31,12 @@ module Gtk
     end
 
     def active
-      __return_value = LibGtk.toggle_tool_button_get_active(to_unsafe.as(LibGtk::ToggleToolButton*))
+      __return_value = LibGtk.toggle_tool_button_get_active(@pointer.as(LibGtk::ToggleToolButton*))
       __return_value
     end
 
     def active=(is_active)
-      LibGtk.toggle_tool_button_set_active(to_unsafe.as(LibGtk::ToggleToolButton*), is_active)
+      LibGtk.toggle_tool_button_set_active(@pointer.as(LibGtk::ToggleToolButton*), is_active)
       nil
     end
 

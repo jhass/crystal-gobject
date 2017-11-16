@@ -2,12 +2,13 @@ require "./window"
 
 module Gtk
   class Plug < Window
-    @gtk_plug : LibGtk::Plug*?
-    def initialize(@gtk_plug : LibGtk::Plug*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Plug*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_plug.not_nil!
+      @pointer.not_nil!.as(LibGtk::Plug*)
     end
 
     # Implements ImplementorIface
@@ -33,27 +34,27 @@ module Gtk
     end
 
     def construct(socket_id)
-      LibGtk.plug_construct(to_unsafe.as(LibGtk::Plug*), UInt64.new(socket_id))
+      LibGtk.plug_construct(@pointer.as(LibGtk::Plug*), UInt64.new(socket_id))
       nil
     end
 
     def construct_for_display(display, socket_id)
-      LibGtk.plug_construct_for_display(to_unsafe.as(LibGtk::Plug*), display.to_unsafe.as(LibGdk::Display*), UInt64.new(socket_id))
+      LibGtk.plug_construct_for_display(@pointer.as(LibGtk::Plug*), display.to_unsafe.as(LibGdk::Display*), UInt64.new(socket_id))
       nil
     end
 
     def embedded
-      __return_value = LibGtk.plug_get_embedded(to_unsafe.as(LibGtk::Plug*))
+      __return_value = LibGtk.plug_get_embedded(@pointer.as(LibGtk::Plug*))
       __return_value
     end
 
     def id
-      __return_value = LibGtk.plug_get_id(to_unsafe.as(LibGtk::Plug*))
+      __return_value = LibGtk.plug_get_id(@pointer.as(LibGtk::Plug*))
       __return_value
     end
 
     def socket_window
-      __return_value = LibGtk.plug_get_socket_window(to_unsafe.as(LibGtk::Plug*))
+      __return_value = LibGtk.plug_get_socket_window(@pointer.as(LibGtk::Plug*))
       Gdk::Window.new(__return_value) if __return_value
     end
 

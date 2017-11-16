@@ -2,12 +2,13 @@ module Gtk
   class StyleContextPrivate
     include GObject::WrappedType
 
-    @gtk_style_context_private : LibGtk::StyleContextPrivate*?
-    def initialize(@gtk_style_context_private : LibGtk::StyleContextPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::StyleContextPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_style_context_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::StyleContextPrivate*)
     end
 
   end

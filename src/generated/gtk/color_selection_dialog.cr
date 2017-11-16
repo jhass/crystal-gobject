@@ -2,12 +2,13 @@ require "./dialog"
 
 module Gtk
   class ColorSelectionDialog < Dialog
-    @gtk_color_selection_dialog : LibGtk::ColorSelectionDialog*?
-    def initialize(@gtk_color_selection_dialog : LibGtk::ColorSelectionDialog*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ColorSelectionDialog*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_color_selection_dialog.not_nil!
+      @pointer.not_nil!.as(LibGtk::ColorSelectionDialog*)
     end
 
     # Implements ImplementorIface
@@ -38,7 +39,7 @@ module Gtk
     end
 
     def color_selection
-      __return_value = LibGtk.color_selection_dialog_get_color_selection(to_unsafe.as(LibGtk::ColorSelectionDialog*))
+      __return_value = LibGtk.color_selection_dialog_get_color_selection(@pointer.as(LibGtk::ColorSelectionDialog*))
       Gtk::Widget.new(__return_value)
     end
 

@@ -1,11 +1,12 @@
 module Gdk
   class DeviceManager < GObject::Object
-    @gdk_device_manager : LibGdk::DeviceManager*?
-    def initialize(@gdk_device_manager : LibGdk::DeviceManager*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::DeviceManager*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_device_manager.not_nil!
+      @pointer.not_nil!.as(LibGdk::DeviceManager*)
     end
 
     def display
@@ -14,17 +15,17 @@ module Gdk
     end
 
     def client_pointer
-      __return_value = LibGdk.device_manager_get_client_pointer(to_unsafe.as(LibGdk::DeviceManager*))
+      __return_value = LibGdk.device_manager_get_client_pointer(@pointer.as(LibGdk::DeviceManager*))
       Gdk::Device.new(__return_value)
     end
 
     def display
-      __return_value = LibGdk.device_manager_get_display(to_unsafe.as(LibGdk::DeviceManager*))
+      __return_value = LibGdk.device_manager_get_display(@pointer.as(LibGdk::DeviceManager*))
       Gdk::Display.new(__return_value) if __return_value
     end
 
     def list_devices(type : Gdk::DeviceType)
-      __return_value = LibGdk.device_manager_list_devices(to_unsafe.as(LibGdk::DeviceManager*), type)
+      __return_value = LibGdk.device_manager_list_devices(@pointer.as(LibGdk::DeviceManager*), type)
       GLib::ListIterator(Gdk::Device, LibGdk::Device*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 

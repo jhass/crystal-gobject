@@ -1,17 +1,17 @@
 module Gtk
   module PrintOperationPreview
     def end_preview
-      LibGtk.print_operation_preview_end_preview(to_unsafe.as(LibGtk::PrintOperationPreview*))
+      LibGtk.print_operation_preview_end_preview(@pointer.as(LibGtk::PrintOperationPreview*))
       nil
     end
 
     def selected?(page_nr)
-      __return_value = LibGtk.print_operation_preview_is_selected(to_unsafe.as(LibGtk::PrintOperationPreview*), Int32.new(page_nr))
+      __return_value = LibGtk.print_operation_preview_is_selected(@pointer.as(LibGtk::PrintOperationPreview*), Int32.new(page_nr))
       __return_value
     end
 
     def render_page(page_nr)
-      LibGtk.print_operation_preview_render_page(to_unsafe.as(LibGtk::PrintOperationPreview*), Int32.new(page_nr))
+      LibGtk.print_operation_preview_render_page(@pointer.as(LibGtk::PrintOperationPreview*), Int32.new(page_nr))
       nil
     end
 

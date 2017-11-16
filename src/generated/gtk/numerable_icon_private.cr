@@ -2,12 +2,13 @@ module Gtk
   class NumerableIconPrivate
     include GObject::WrappedType
 
-    @gtk_numerable_icon_private : LibGtk::NumerableIconPrivate*?
-    def initialize(@gtk_numerable_icon_private : LibGtk::NumerableIconPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::NumerableIconPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_numerable_icon_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::NumerableIconPrivate*)
     end
 
   end

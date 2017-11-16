@@ -21,12 +21,13 @@ module Gtk
       end
     end
 
-    @gtk_table_child : LibGtk::TableChild*?
-    def initialize(@gtk_table_child : LibGtk::TableChild*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::TableChild*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_table_child.not_nil!
+      @pointer.not_nil!.as(LibGtk::TableChild*)
     end
 
     def widget

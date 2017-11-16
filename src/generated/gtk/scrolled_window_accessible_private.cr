@@ -2,12 +2,13 @@ module Gtk
   class ScrolledWindowAccessiblePrivate
     include GObject::WrappedType
 
-    @gtk_scrolled_window_accessible_private : LibGtk::ScrolledWindowAccessiblePrivate*?
-    def initialize(@gtk_scrolled_window_accessible_private : LibGtk::ScrolledWindowAccessiblePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ScrolledWindowAccessiblePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_scrolled_window_accessible_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::ScrolledWindowAccessiblePrivate*)
     end
 
   end

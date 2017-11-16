@@ -1,11 +1,12 @@
 module Gio
   class FileIcon < GObject::Object
-    @gio_file_icon : LibGio::FileIcon*?
-    def initialize(@gio_file_icon : LibGio::FileIcon*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::FileIcon*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_file_icon.not_nil!
+      @pointer.not_nil!.as(LibGio::FileIcon*)
     end
 
     # Implements Icon
@@ -21,7 +22,7 @@ module Gio
     end
 
     def file
-      __return_value = LibGio.file_icon_get_file(to_unsafe.as(LibGio::FileIcon*))
+      __return_value = LibGio.file_icon_get_file(@pointer.as(LibGio::FileIcon*))
       __return_value
     end
 

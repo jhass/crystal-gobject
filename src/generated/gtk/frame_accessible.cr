@@ -2,12 +2,13 @@ require "./container_accessible"
 
 module Gtk
   class FrameAccessible < ContainerAccessible
-    @gtk_frame_accessible : LibGtk::FrameAccessible*?
-    def initialize(@gtk_frame_accessible : LibGtk::FrameAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::FrameAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_frame_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::FrameAccessible*)
     end
 
     # Implements Component

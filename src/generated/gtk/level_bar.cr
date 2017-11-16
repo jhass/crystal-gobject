@@ -2,12 +2,13 @@ require "./widget"
 
 module Gtk
   class LevelBar < Widget
-    @gtk_level_bar : LibGtk::LevelBar*?
-    def initialize(@gtk_level_bar : LibGtk::LevelBar*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::LevelBar*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_level_bar.not_nil!
+      @pointer.not_nil!.as(LibGtk::LevelBar*)
     end
 
     # Implements ImplementorIface
@@ -49,67 +50,67 @@ module Gtk
     end
 
     def add_offset_value(name, value)
-      LibGtk.level_bar_add_offset_value(to_unsafe.as(LibGtk::LevelBar*), name.to_unsafe, Float64.new(value))
+      LibGtk.level_bar_add_offset_value(@pointer.as(LibGtk::LevelBar*), name.to_unsafe, Float64.new(value))
       nil
     end
 
     def inverted
-      __return_value = LibGtk.level_bar_get_inverted(to_unsafe.as(LibGtk::LevelBar*))
+      __return_value = LibGtk.level_bar_get_inverted(@pointer.as(LibGtk::LevelBar*))
       __return_value
     end
 
     def max_value
-      __return_value = LibGtk.level_bar_get_max_value(to_unsafe.as(LibGtk::LevelBar*))
+      __return_value = LibGtk.level_bar_get_max_value(@pointer.as(LibGtk::LevelBar*))
       __return_value
     end
 
     def min_value
-      __return_value = LibGtk.level_bar_get_min_value(to_unsafe.as(LibGtk::LevelBar*))
+      __return_value = LibGtk.level_bar_get_min_value(@pointer.as(LibGtk::LevelBar*))
       __return_value
     end
 
     def mode
-      __return_value = LibGtk.level_bar_get_mode(to_unsafe.as(LibGtk::LevelBar*))
+      __return_value = LibGtk.level_bar_get_mode(@pointer.as(LibGtk::LevelBar*))
       __return_value
     end
 
     def offset_value(name, value)
-      __return_value = LibGtk.level_bar_get_offset_value(to_unsafe.as(LibGtk::LevelBar*), name ? name.to_unsafe : nil, value)
+      __return_value = LibGtk.level_bar_get_offset_value(@pointer.as(LibGtk::LevelBar*), name ? name.to_unsafe : nil, value)
       __return_value
     end
 
     def value
-      __return_value = LibGtk.level_bar_get_value(to_unsafe.as(LibGtk::LevelBar*))
+      __return_value = LibGtk.level_bar_get_value(@pointer.as(LibGtk::LevelBar*))
       __return_value
     end
 
     def remove_offset_value(name)
-      LibGtk.level_bar_remove_offset_value(to_unsafe.as(LibGtk::LevelBar*), name ? name.to_unsafe : nil)
+      LibGtk.level_bar_remove_offset_value(@pointer.as(LibGtk::LevelBar*), name ? name.to_unsafe : nil)
       nil
     end
 
     def inverted=(inverted)
-      LibGtk.level_bar_set_inverted(to_unsafe.as(LibGtk::LevelBar*), inverted)
+      LibGtk.level_bar_set_inverted(@pointer.as(LibGtk::LevelBar*), inverted)
       nil
     end
 
     def max_value=(value)
-      LibGtk.level_bar_set_max_value(to_unsafe.as(LibGtk::LevelBar*), Float64.new(value))
+      LibGtk.level_bar_set_max_value(@pointer.as(LibGtk::LevelBar*), Float64.new(value))
       nil
     end
 
     def min_value=(value)
-      LibGtk.level_bar_set_min_value(to_unsafe.as(LibGtk::LevelBar*), Float64.new(value))
+      LibGtk.level_bar_set_min_value(@pointer.as(LibGtk::LevelBar*), Float64.new(value))
       nil
     end
 
     def mode=(mode : Gtk::LevelBarMode)
-      LibGtk.level_bar_set_mode(to_unsafe.as(LibGtk::LevelBar*), mode)
+      LibGtk.level_bar_set_mode(@pointer.as(LibGtk::LevelBar*), mode)
       nil
     end
 
     def value=(value)
-      LibGtk.level_bar_set_value(to_unsafe.as(LibGtk::LevelBar*), Float64.new(value))
+      LibGtk.level_bar_set_value(@pointer.as(LibGtk::LevelBar*), Float64.new(value))
       nil
     end
 

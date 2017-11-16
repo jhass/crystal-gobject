@@ -2,12 +2,13 @@ module Cairo
   class FontFace
     include GObject::WrappedType
 
-    @cairo_font_face : LibCairo::FontFace*?
-    def initialize(@cairo_font_face : LibCairo::FontFace*)
+    @pointer : Void*
+    def initialize(pointer : LibCairo::FontFace*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @cairo_font_face.not_nil!
+      @pointer.not_nil!.as(LibCairo::FontFace*)
     end
 
   end

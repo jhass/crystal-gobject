@@ -9,12 +9,13 @@ module Pango
       end
     end
 
-    @pango_glyph_vis_attr : LibPango::GlyphVisAttr*?
-    def initialize(@pango_glyph_vis_attr : LibPango::GlyphVisAttr*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::GlyphVisAttr*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_glyph_vis_attr.not_nil!
+      @pointer.not_nil!.as(LibPango::GlyphVisAttr*)
     end
 
     def is_cluster_start

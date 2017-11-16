@@ -10,12 +10,13 @@ module GObject
       end
     end
 
-    @g_object_object_construct_param : LibGObject::ObjectConstructParam*?
-    def initialize(@g_object_object_construct_param : LibGObject::ObjectConstructParam*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::ObjectConstructParam*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_object_construct_param.not_nil!
+      @pointer.not_nil!.as(LibGObject::ObjectConstructParam*)
     end
 
     def pspec

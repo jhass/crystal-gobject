@@ -2,12 +2,13 @@ module Gst
   class ParseContext
     include GObject::WrappedType
 
-    @gst_parse_context : LibGst::ParseContext*?
-    def initialize(@gst_parse_context : LibGst::ParseContext*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::ParseContext*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_parse_context.not_nil!
+      @pointer.not_nil!.as(LibGst::ParseContext*)
     end
 
     def self.new : self
@@ -16,17 +17,17 @@ module Gst
     end
 
     def copy
-      __return_value = LibGst.parse_context_copy(to_unsafe.as(LibGst::ParseContext*))
+      __return_value = LibGst.parse_context_copy(@pointer.as(LibGst::ParseContext*))
       Gst::ParseContext.new(__return_value)
     end
 
     def free
-      LibGst.parse_context_free(to_unsafe.as(LibGst::ParseContext*))
+      LibGst.parse_context_free(@pointer.as(LibGst::ParseContext*))
       nil
     end
 
     def missing_elements
-      __return_value = LibGst.parse_context_get_missing_elements(to_unsafe.as(LibGst::ParseContext*))
+      __return_value = LibGst.parse_context_get_missing_elements(@pointer.as(LibGst::ParseContext*))
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 

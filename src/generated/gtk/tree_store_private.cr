@@ -2,12 +2,13 @@ module Gtk
   class TreeStorePrivate
     include GObject::WrappedType
 
-    @gtk_tree_store_private : LibGtk::TreeStorePrivate*?
-    def initialize(@gtk_tree_store_private : LibGtk::TreeStorePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::TreeStorePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_tree_store_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::TreeStorePrivate*)
     end
 
   end

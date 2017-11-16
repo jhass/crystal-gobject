@@ -1,11 +1,12 @@
 module Gio
   class InetAddressMask < GObject::Object
-    @gio_inet_address_mask : LibGio::InetAddressMask*?
-    def initialize(@gio_inet_address_mask : LibGio::InetAddressMask*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::InetAddressMask*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_inet_address_mask.not_nil!
+      @pointer.not_nil!.as(LibGio::InetAddressMask*)
     end
 
     # Implements Initable
@@ -39,32 +40,32 @@ module Gio
     end
 
     def equal(mask2)
-      __return_value = LibGio.inet_address_mask_equal(to_unsafe.as(LibGio::InetAddressMask*), mask2.to_unsafe.as(LibGio::InetAddressMask*))
+      __return_value = LibGio.inet_address_mask_equal(@pointer.as(LibGio::InetAddressMask*), mask2.to_unsafe.as(LibGio::InetAddressMask*))
       __return_value
     end
 
     def address
-      __return_value = LibGio.inet_address_mask_get_address(to_unsafe.as(LibGio::InetAddressMask*))
+      __return_value = LibGio.inet_address_mask_get_address(@pointer.as(LibGio::InetAddressMask*))
       Gio::InetAddress.new(__return_value)
     end
 
     def family
-      __return_value = LibGio.inet_address_mask_get_family(to_unsafe.as(LibGio::InetAddressMask*))
+      __return_value = LibGio.inet_address_mask_get_family(@pointer.as(LibGio::InetAddressMask*))
       __return_value
     end
 
     def length
-      __return_value = LibGio.inet_address_mask_get_length(to_unsafe.as(LibGio::InetAddressMask*))
+      __return_value = LibGio.inet_address_mask_get_length(@pointer.as(LibGio::InetAddressMask*))
       __return_value
     end
 
     def matches(address)
-      __return_value = LibGio.inet_address_mask_matches(to_unsafe.as(LibGio::InetAddressMask*), address.to_unsafe.as(LibGio::InetAddress*))
+      __return_value = LibGio.inet_address_mask_matches(@pointer.as(LibGio::InetAddressMask*), address.to_unsafe.as(LibGio::InetAddress*))
       __return_value
     end
 
     def to_string
-      __return_value = LibGio.inet_address_mask_to_string(to_unsafe.as(LibGio::InetAddressMask*))
+      __return_value = LibGio.inet_address_mask_to_string(@pointer.as(LibGio::InetAddressMask*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

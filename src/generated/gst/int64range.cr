@@ -2,12 +2,13 @@ module Gst
   class Int64Range
     include GObject::WrappedType
 
-    @gst_int64range : LibGst::Int64Range*?
-    def initialize(@gst_int64range : LibGst::Int64Range*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::Int64Range*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_int64range.not_nil!
+      @pointer.not_nil!.as(LibGst::Int64Range*)
     end
 
   end

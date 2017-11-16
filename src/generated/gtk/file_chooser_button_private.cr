@@ -2,12 +2,13 @@ module Gtk
   class FileChooserButtonPrivate
     include GObject::WrappedType
 
-    @gtk_file_chooser_button_private : LibGtk::FileChooserButtonPrivate*?
-    def initialize(@gtk_file_chooser_button_private : LibGtk::FileChooserButtonPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::FileChooserButtonPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_file_chooser_button_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::FileChooserButtonPrivate*)
     end
 
   end

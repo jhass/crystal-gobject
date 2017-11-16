@@ -2,12 +2,13 @@ module Gtk
   class BinPrivate
     include GObject::WrappedType
 
-    @gtk_bin_private : LibGtk::BinPrivate*?
-    def initialize(@gtk_bin_private : LibGtk::BinPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::BinPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_bin_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::BinPrivate*)
     end
 
   end

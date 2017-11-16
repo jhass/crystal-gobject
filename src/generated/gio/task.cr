@@ -1,11 +1,12 @@
 module Gio
   class Task < GObject::Object
-    @gio_task : LibGio::Task*?
-    def initialize(@gio_task : LibGio::Task*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::Task*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_task.not_nil!
+      @pointer.not_nil!.as(LibGio::Task*)
     end
 
     # Implements AsyncResult
@@ -30,123 +31,123 @@ module Gio
     end
 
     def cancellable
-      __return_value = LibGio.task_get_cancellable(to_unsafe.as(LibGio::Task*))
+      __return_value = LibGio.task_get_cancellable(@pointer.as(LibGio::Task*))
       Gio::Cancellable.new(__return_value)
     end
 
     def check_cancellable
-      __return_value = LibGio.task_get_check_cancellable(to_unsafe.as(LibGio::Task*))
+      __return_value = LibGio.task_get_check_cancellable(@pointer.as(LibGio::Task*))
       __return_value
     end
 
     def completed
-      __return_value = LibGio.task_get_completed(to_unsafe.as(LibGio::Task*))
+      __return_value = LibGio.task_get_completed(@pointer.as(LibGio::Task*))
       __return_value
     end
 
     def context
-      __return_value = LibGio.task_get_context(to_unsafe.as(LibGio::Task*))
+      __return_value = LibGio.task_get_context(@pointer.as(LibGio::Task*))
       GLib::MainContext.new(__return_value)
     end
 
     def priority
-      __return_value = LibGio.task_get_priority(to_unsafe.as(LibGio::Task*))
+      __return_value = LibGio.task_get_priority(@pointer.as(LibGio::Task*))
       __return_value
     end
 
     def return_on_cancel
-      __return_value = LibGio.task_get_return_on_cancel(to_unsafe.as(LibGio::Task*))
+      __return_value = LibGio.task_get_return_on_cancel(@pointer.as(LibGio::Task*))
       __return_value
     end
 
     def source_object
-      __return_value = LibGio.task_get_source_object(to_unsafe.as(LibGio::Task*))
+      __return_value = LibGio.task_get_source_object(@pointer.as(LibGio::Task*))
       GObject::Object.new(__return_value)
     end
 
     def source_tag
-      LibGio.task_get_source_tag(to_unsafe.as(LibGio::Task*))
+      LibGio.task_get_source_tag(@pointer.as(LibGio::Task*))
       nil
     end
 
     def task_data
-      LibGio.task_get_task_data(to_unsafe.as(LibGio::Task*))
+      LibGio.task_get_task_data(@pointer.as(LibGio::Task*))
       nil
     end
 
     def had_error
-      __return_value = LibGio.task_had_error(to_unsafe.as(LibGio::Task*))
+      __return_value = LibGio.task_had_error(@pointer.as(LibGio::Task*))
       __return_value
     end
 
     def propagate_boolean
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.task_propagate_boolean(to_unsafe.as(LibGio::Task*), pointerof(__error))
+      __return_value = LibGio.task_propagate_boolean(@pointer.as(LibGio::Task*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def propagate_int
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.task_propagate_int(to_unsafe.as(LibGio::Task*), pointerof(__error))
+      __return_value = LibGio.task_propagate_int(@pointer.as(LibGio::Task*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def propagate_pointer
       __error = Pointer(LibGLib::Error).null
-      LibGio.task_propagate_pointer(to_unsafe.as(LibGio::Task*), pointerof(__error))
+      LibGio.task_propagate_pointer(@pointer.as(LibGio::Task*), pointerof(__error))
       GLib::Error.assert __error
       nil
     end
 
     def return_boolean(result)
-      LibGio.task_return_boolean(to_unsafe.as(LibGio::Task*), result)
+      LibGio.task_return_boolean(@pointer.as(LibGio::Task*), result)
       nil
     end
 
     def return_error(error)
-      LibGio.task_return_error(to_unsafe.as(LibGio::Task*), error)
+      LibGio.task_return_error(@pointer.as(LibGio::Task*), error)
       nil
     end
 
     def return_error_if_cancelled
-      __return_value = LibGio.task_return_error_if_cancelled(to_unsafe.as(LibGio::Task*))
+      __return_value = LibGio.task_return_error_if_cancelled(@pointer.as(LibGio::Task*))
       __return_value
     end
 
     def return_int(result)
-      LibGio.task_return_int(to_unsafe.as(LibGio::Task*), Int64.new(result))
+      LibGio.task_return_int(@pointer.as(LibGio::Task*), Int64.new(result))
       nil
     end
 
     def return_pointer(result, result_destroy)
-      LibGio.task_return_pointer(to_unsafe.as(LibGio::Task*), result ? result : nil, result_destroy ? result_destroy : nil)
+      LibGio.task_return_pointer(@pointer.as(LibGio::Task*), result ? result : nil, result_destroy ? result_destroy : nil)
       nil
     end
 
     def check_cancellable=(check_cancellable)
-      LibGio.task_set_check_cancellable(to_unsafe.as(LibGio::Task*), check_cancellable)
+      LibGio.task_set_check_cancellable(@pointer.as(LibGio::Task*), check_cancellable)
       nil
     end
 
     def priority=(priority)
-      LibGio.task_set_priority(to_unsafe.as(LibGio::Task*), Int32.new(priority))
+      LibGio.task_set_priority(@pointer.as(LibGio::Task*), Int32.new(priority))
       nil
     end
 
     def return_on_cancel=(return_on_cancel)
-      __return_value = LibGio.task_set_return_on_cancel(to_unsafe.as(LibGio::Task*), return_on_cancel)
+      __return_value = LibGio.task_set_return_on_cancel(@pointer.as(LibGio::Task*), return_on_cancel)
       __return_value
     end
 
     def source_tag=(source_tag)
-      LibGio.task_set_source_tag(to_unsafe.as(LibGio::Task*), source_tag ? source_tag : nil)
+      LibGio.task_set_source_tag(@pointer.as(LibGio::Task*), source_tag ? source_tag : nil)
       nil
     end
 
     def set_task_data(task_data, task_data_destroy)
-      LibGio.task_set_task_data(to_unsafe.as(LibGio::Task*), task_data ? task_data : nil, task_data_destroy ? task_data_destroy : nil)
+      LibGio.task_set_task_data(@pointer.as(LibGio::Task*), task_data ? task_data : nil, task_data_destroy ? task_data_destroy : nil)
       nil
     end
 

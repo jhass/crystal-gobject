@@ -1,27 +1,27 @@
 module Gtk
   module ColorChooser
     def add_palette(orientation : Gtk::Orientation, colors_per_line, n_colors, colors)
-      LibGtk.color_chooser_add_palette(to_unsafe.as(LibGtk::ColorChooser*), orientation, Int32.new(colors_per_line), Int32.new(n_colors), colors ? colors : nil)
+      LibGtk.color_chooser_add_palette(@pointer.as(LibGtk::ColorChooser*), orientation, Int32.new(colors_per_line), Int32.new(n_colors), colors ? colors : nil)
       nil
     end
 
     def rgba(color)
-      LibGtk.color_chooser_get_rgba(to_unsafe.as(LibGtk::ColorChooser*), color)
+      LibGtk.color_chooser_get_rgba(@pointer.as(LibGtk::ColorChooser*), color)
       nil
     end
 
     def use_alpha
-      __return_value = LibGtk.color_chooser_get_use_alpha(to_unsafe.as(LibGtk::ColorChooser*))
+      __return_value = LibGtk.color_chooser_get_use_alpha(@pointer.as(LibGtk::ColorChooser*))
       __return_value
     end
 
     def rgba=(color)
-      LibGtk.color_chooser_set_rgba(to_unsafe.as(LibGtk::ColorChooser*), color.to_unsafe.as(LibGdk::RGBA*))
+      LibGtk.color_chooser_set_rgba(@pointer.as(LibGtk::ColorChooser*), color.to_unsafe.as(LibGdk::RGBA*))
       nil
     end
 
     def use_alpha=(use_alpha)
-      LibGtk.color_chooser_set_use_alpha(to_unsafe.as(LibGtk::ColorChooser*), use_alpha)
+      LibGtk.color_chooser_set_use_alpha(@pointer.as(LibGtk::ColorChooser*), use_alpha)
       nil
     end
 

@@ -7,26 +7,27 @@ module Gio
       super(ptr.as(LibGio::StaticResource*))
     end
 
-    @gio_static_resource : LibGio::StaticResource*?
-    def initialize(@gio_static_resource : LibGio::StaticResource*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::StaticResource*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_static_resource.not_nil!
+      @pointer.not_nil!.as(LibGio::StaticResource*)
     end
 
     def fini
-      LibGio.static_resource_fini(to_unsafe.as(LibGio::StaticResource*))
+      LibGio.static_resource_fini(@pointer.as(LibGio::StaticResource*))
       nil
     end
 
     def resource
-      __return_value = LibGio.static_resource_get_resource(to_unsafe.as(LibGio::StaticResource*))
+      __return_value = LibGio.static_resource_get_resource(@pointer.as(LibGio::StaticResource*))
       Gio::Resource.new(__return_value)
     end
 
     def init
-      LibGio.static_resource_init(to_unsafe.as(LibGio::StaticResource*))
+      LibGio.static_resource_init(@pointer.as(LibGio::StaticResource*))
       nil
     end
 

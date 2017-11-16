@@ -19,12 +19,13 @@ module Gdk
       end
     end
 
-    @gdk_geometry : LibGdk::Geometry*?
-    def initialize(@gdk_geometry : LibGdk::Geometry*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::Geometry*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_geometry.not_nil!
+      @pointer.not_nil!.as(LibGdk::Geometry*)
     end
 
     def min_width

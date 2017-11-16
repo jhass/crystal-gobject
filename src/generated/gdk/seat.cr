@@ -1,11 +1,12 @@
 module Gdk
   class Seat < GObject::Object
-    @gdk_seat : LibGdk::Seat*?
-    def initialize(@gdk_seat : LibGdk::Seat*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::Seat*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_seat.not_nil!
+      @pointer.not_nil!.as(LibGdk::Seat*)
     end
 
     def display
@@ -14,37 +15,37 @@ module Gdk
     end
 
     def capabilities
-      __return_value = LibGdk.seat_get_capabilities(to_unsafe.as(LibGdk::Seat*))
+      __return_value = LibGdk.seat_get_capabilities(@pointer.as(LibGdk::Seat*))
       __return_value
     end
 
     def display
-      __return_value = LibGdk.seat_get_display(to_unsafe.as(LibGdk::Seat*))
+      __return_value = LibGdk.seat_get_display(@pointer.as(LibGdk::Seat*))
       Gdk::Display.new(__return_value)
     end
 
     def keyboard
-      __return_value = LibGdk.seat_get_keyboard(to_unsafe.as(LibGdk::Seat*))
+      __return_value = LibGdk.seat_get_keyboard(@pointer.as(LibGdk::Seat*))
       Gdk::Device.new(__return_value) if __return_value
     end
 
     def pointer
-      __return_value = LibGdk.seat_get_pointer(to_unsafe.as(LibGdk::Seat*))
+      __return_value = LibGdk.seat_get_pointer(@pointer.as(LibGdk::Seat*))
       Gdk::Device.new(__return_value) if __return_value
     end
 
     def slaves(capabilities : Gdk::SeatCapabilities)
-      __return_value = LibGdk.seat_get_slaves(to_unsafe.as(LibGdk::Seat*), capabilities)
+      __return_value = LibGdk.seat_get_slaves(@pointer.as(LibGdk::Seat*), capabilities)
       GLib::ListIterator(Gdk::Device, LibGdk::Device*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def grab(window, capabilities : Gdk::SeatCapabilities, owner_events, cursor, event, prepare_func, prepare_func_data)
-      __return_value = LibGdk.seat_grab(to_unsafe.as(LibGdk::Seat*), window.to_unsafe.as(LibGdk::Window*), capabilities, owner_events, cursor ? cursor.to_unsafe.as(LibGdk::Cursor*) : nil, event ? event.to_unsafe.as(LibGdk::Event*) : nil, prepare_func ? prepare_func : nil, prepare_func_data ? prepare_func_data : nil)
+      __return_value = LibGdk.seat_grab(@pointer.as(LibGdk::Seat*), window.to_unsafe.as(LibGdk::Window*), capabilities, owner_events, cursor ? cursor.to_unsafe.as(LibGdk::Cursor*) : nil, event ? event.to_unsafe.as(LibGdk::Event*) : nil, prepare_func ? prepare_func : nil, prepare_func_data ? prepare_func_data : nil)
       __return_value
     end
 
     def ungrab
-      LibGdk.seat_ungrab(to_unsafe.as(LibGdk::Seat*))
+      LibGdk.seat_ungrab(@pointer.as(LibGdk::Seat*))
       nil
     end
 

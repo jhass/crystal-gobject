@@ -2,12 +2,13 @@ module Gtk
   class HeaderBarPrivate
     include GObject::WrappedType
 
-    @gtk_header_bar_private : LibGtk::HeaderBarPrivate*?
-    def initialize(@gtk_header_bar_private : LibGtk::HeaderBarPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::HeaderBarPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_header_bar_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::HeaderBarPrivate*)
     end
 
   end

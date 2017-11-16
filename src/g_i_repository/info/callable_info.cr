@@ -47,7 +47,7 @@ module GIRepository
       end
 
       def for_wrapper_pass(libname)
-        "to_unsafe.as(#{libname}::#{@container.name}*)"
+        "@pointer.as(#{libname}::#{@container.name}*)"
       end
 
       def from_wrapper_pass

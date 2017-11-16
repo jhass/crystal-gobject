@@ -2,12 +2,13 @@ require "./button"
 
 module Gtk
   class LinkButton < Button
-    @gtk_link_button : LibGtk::LinkButton*?
-    def initialize(@gtk_link_button : LibGtk::LinkButton*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::LinkButton*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_link_button.not_nil!
+      @pointer.not_nil!.as(LibGtk::LinkButton*)
     end
 
     # Implements ImplementorIface
@@ -35,22 +36,22 @@ module Gtk
     end
 
     def uri
-      __return_value = LibGtk.link_button_get_uri(to_unsafe.as(LibGtk::LinkButton*))
+      __return_value = LibGtk.link_button_get_uri(@pointer.as(LibGtk::LinkButton*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def visited
-      __return_value = LibGtk.link_button_get_visited(to_unsafe.as(LibGtk::LinkButton*))
+      __return_value = LibGtk.link_button_get_visited(@pointer.as(LibGtk::LinkButton*))
       __return_value
     end
 
     def uri=(uri)
-      LibGtk.link_button_set_uri(to_unsafe.as(LibGtk::LinkButton*), uri.to_unsafe)
+      LibGtk.link_button_set_uri(@pointer.as(LibGtk::LinkButton*), uri.to_unsafe)
       nil
     end
 
     def visited=(visited)
-      LibGtk.link_button_set_visited(to_unsafe.as(LibGtk::LinkButton*), visited)
+      LibGtk.link_button_set_visited(@pointer.as(LibGtk::LinkButton*), visited)
       nil
     end
 

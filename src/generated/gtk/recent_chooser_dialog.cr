@@ -2,12 +2,13 @@ require "./dialog"
 
 module Gtk
   class RecentChooserDialog < Dialog
-    @gtk_recent_chooser_dialog : LibGtk::RecentChooserDialog*?
-    def initialize(@gtk_recent_chooser_dialog : LibGtk::RecentChooserDialog*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::RecentChooserDialog*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_recent_chooser_dialog.not_nil!
+      @pointer.not_nil!.as(LibGtk::RecentChooserDialog*)
     end
 
     # Implements ImplementorIface

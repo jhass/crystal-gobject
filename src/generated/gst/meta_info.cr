@@ -14,12 +14,13 @@ module Gst
       end
     end
 
-    @gst_meta_info : LibGst::MetaInfo*?
-    def initialize(@gst_meta_info : LibGst::MetaInfo*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::MetaInfo*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_meta_info.not_nil!
+      @pointer.not_nil!.as(LibGst::MetaInfo*)
     end
 
     def api

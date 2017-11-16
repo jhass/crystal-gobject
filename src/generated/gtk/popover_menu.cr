@@ -2,12 +2,13 @@ require "./popover"
 
 module Gtk
   class PopoverMenu < Popover
-    @gtk_popover_menu : LibGtk::PopoverMenu*?
-    def initialize(@gtk_popover_menu : LibGtk::PopoverMenu*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::PopoverMenu*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_popover_menu.not_nil!
+      @pointer.not_nil!.as(LibGtk::PopoverMenu*)
     end
 
     # Implements ImplementorIface
@@ -23,7 +24,7 @@ module Gtk
     end
 
     def open_submenu(name)
-      LibGtk.popover_menu_open_submenu(to_unsafe.as(LibGtk::PopoverMenu*), name.to_unsafe)
+      LibGtk.popover_menu_open_submenu(@pointer.as(LibGtk::PopoverMenu*), name.to_unsafe)
       nil
     end
 

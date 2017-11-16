@@ -11,12 +11,13 @@ module GLib
       end
     end
 
-    @g_lib_poll_f_d : LibGLib::PollFD*?
-    def initialize(@g_lib_poll_f_d : LibGLib::PollFD*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::PollFD*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_poll_f_d.not_nil!
+      @pointer.not_nil!.as(LibGLib::PollFD*)
     end
 
     def fd

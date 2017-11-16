@@ -2,12 +2,13 @@ module Gtk
   class RendererCellAccessiblePrivate
     include GObject::WrappedType
 
-    @gtk_renderer_cell_accessible_private : LibGtk::RendererCellAccessiblePrivate*?
-    def initialize(@gtk_renderer_cell_accessible_private : LibGtk::RendererCellAccessiblePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::RendererCellAccessiblePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_renderer_cell_accessible_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::RendererCellAccessiblePrivate*)
     end
 
   end

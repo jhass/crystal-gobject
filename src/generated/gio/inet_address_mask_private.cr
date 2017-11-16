@@ -2,12 +2,13 @@ module Gio
   class InetAddressMaskPrivate
     include GObject::WrappedType
 
-    @gio_inet_address_mask_private : LibGio::InetAddressMaskPrivate*?
-    def initialize(@gio_inet_address_mask_private : LibGio::InetAddressMaskPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::InetAddressMaskPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_inet_address_mask_private.not_nil!
+      @pointer.not_nil!.as(LibGio::InetAddressMaskPrivate*)
     end
 
   end

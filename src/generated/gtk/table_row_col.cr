@@ -16,12 +16,13 @@ module Gtk
       end
     end
 
-    @gtk_table_row_col : LibGtk::TableRowCol*?
-    def initialize(@gtk_table_row_col : LibGtk::TableRowCol*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::TableRowCol*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_table_row_col.not_nil!
+      @pointer.not_nil!.as(LibGtk::TableRowCol*)
     end
 
     def requisition

@@ -2,12 +2,13 @@ module Gtk
   class NotebookAccessiblePrivate
     include GObject::WrappedType
 
-    @gtk_notebook_accessible_private : LibGtk::NotebookAccessiblePrivate*?
-    def initialize(@gtk_notebook_accessible_private : LibGtk::NotebookAccessiblePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::NotebookAccessiblePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_notebook_accessible_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::NotebookAccessiblePrivate*)
     end
 
   end

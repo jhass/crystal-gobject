@@ -2,12 +2,13 @@ require "./container"
 
 module Gtk
   class Notebook < Container
-    @gtk_notebook : LibGtk::Notebook*?
-    def initialize(@gtk_notebook : LibGtk::Notebook*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Notebook*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_notebook.not_nil!
+      @pointer.not_nil!.as(LibGtk::Notebook*)
     end
 
     # Implements ImplementorIface
@@ -53,222 +54,222 @@ module Gtk
     end
 
     def append_page(child, tab_label)
-      __return_value = LibGtk.notebook_append_page(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label ? tab_label.to_unsafe.as(LibGtk::Widget*) : nil)
+      __return_value = LibGtk.notebook_append_page(@pointer.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label ? tab_label.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 
     def append_page_menu(child, tab_label, menu_label)
-      __return_value = LibGtk.notebook_append_page_menu(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label ? tab_label.to_unsafe.as(LibGtk::Widget*) : nil, menu_label ? menu_label.to_unsafe.as(LibGtk::Widget*) : nil)
+      __return_value = LibGtk.notebook_append_page_menu(@pointer.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label ? tab_label.to_unsafe.as(LibGtk::Widget*) : nil, menu_label ? menu_label.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 
     def detach_tab(child)
-      LibGtk.notebook_detach_tab(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*))
+      LibGtk.notebook_detach_tab(@pointer.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*))
       nil
     end
 
     def action_widget(pack_type : Gtk::PackType)
-      __return_value = LibGtk.notebook_get_action_widget(to_unsafe.as(LibGtk::Notebook*), pack_type)
+      __return_value = LibGtk.notebook_get_action_widget(@pointer.as(LibGtk::Notebook*), pack_type)
       Gtk::Widget.new(__return_value) if __return_value
     end
 
     def current_page
-      __return_value = LibGtk.notebook_get_current_page(to_unsafe.as(LibGtk::Notebook*))
+      __return_value = LibGtk.notebook_get_current_page(@pointer.as(LibGtk::Notebook*))
       __return_value
     end
 
     def group_name
-      __return_value = LibGtk.notebook_get_group_name(to_unsafe.as(LibGtk::Notebook*))
+      __return_value = LibGtk.notebook_get_group_name(@pointer.as(LibGtk::Notebook*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def menu_label(child)
-      __return_value = LibGtk.notebook_get_menu_label(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.notebook_get_menu_label(@pointer.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*))
       Gtk::Widget.new(__return_value) if __return_value
     end
 
     def menu_label_text(child)
-      __return_value = LibGtk.notebook_get_menu_label_text(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.notebook_get_menu_label_text(@pointer.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def n_pages
-      __return_value = LibGtk.notebook_get_n_pages(to_unsafe.as(LibGtk::Notebook*))
+      __return_value = LibGtk.notebook_get_n_pages(@pointer.as(LibGtk::Notebook*))
       __return_value
     end
 
     def nth_page(page_num)
-      __return_value = LibGtk.notebook_get_nth_page(to_unsafe.as(LibGtk::Notebook*), Int32.new(page_num))
+      __return_value = LibGtk.notebook_get_nth_page(@pointer.as(LibGtk::Notebook*), Int32.new(page_num))
       Gtk::Widget.new(__return_value) if __return_value
     end
 
     def scrollable
-      __return_value = LibGtk.notebook_get_scrollable(to_unsafe.as(LibGtk::Notebook*))
+      __return_value = LibGtk.notebook_get_scrollable(@pointer.as(LibGtk::Notebook*))
       __return_value
     end
 
     def show_border
-      __return_value = LibGtk.notebook_get_show_border(to_unsafe.as(LibGtk::Notebook*))
+      __return_value = LibGtk.notebook_get_show_border(@pointer.as(LibGtk::Notebook*))
       __return_value
     end
 
     def show_tabs
-      __return_value = LibGtk.notebook_get_show_tabs(to_unsafe.as(LibGtk::Notebook*))
+      __return_value = LibGtk.notebook_get_show_tabs(@pointer.as(LibGtk::Notebook*))
       __return_value
     end
 
     def tab_detachable(child)
-      __return_value = LibGtk.notebook_get_tab_detachable(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.notebook_get_tab_detachable(@pointer.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*))
       __return_value
     end
 
     def tab_hborder
-      __return_value = LibGtk.notebook_get_tab_hborder(to_unsafe.as(LibGtk::Notebook*))
+      __return_value = LibGtk.notebook_get_tab_hborder(@pointer.as(LibGtk::Notebook*))
       __return_value
     end
 
     def tab_label(child)
-      __return_value = LibGtk.notebook_get_tab_label(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.notebook_get_tab_label(@pointer.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*))
       Gtk::Widget.new(__return_value) if __return_value
     end
 
     def tab_label_text(child)
-      __return_value = LibGtk.notebook_get_tab_label_text(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.notebook_get_tab_label_text(@pointer.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def tab_pos
-      __return_value = LibGtk.notebook_get_tab_pos(to_unsafe.as(LibGtk::Notebook*))
+      __return_value = LibGtk.notebook_get_tab_pos(@pointer.as(LibGtk::Notebook*))
       __return_value
     end
 
     def tab_reorderable(child)
-      __return_value = LibGtk.notebook_get_tab_reorderable(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.notebook_get_tab_reorderable(@pointer.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*))
       __return_value
     end
 
     def tab_vborder
-      __return_value = LibGtk.notebook_get_tab_vborder(to_unsafe.as(LibGtk::Notebook*))
+      __return_value = LibGtk.notebook_get_tab_vborder(@pointer.as(LibGtk::Notebook*))
       __return_value
     end
 
     def insert_page(child, tab_label, position)
-      __return_value = LibGtk.notebook_insert_page(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label ? tab_label.to_unsafe.as(LibGtk::Widget*) : nil, Int32.new(position))
+      __return_value = LibGtk.notebook_insert_page(@pointer.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label ? tab_label.to_unsafe.as(LibGtk::Widget*) : nil, Int32.new(position))
       __return_value
     end
 
     def insert_page_menu(child, tab_label, menu_label, position)
-      __return_value = LibGtk.notebook_insert_page_menu(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label ? tab_label.to_unsafe.as(LibGtk::Widget*) : nil, menu_label ? menu_label.to_unsafe.as(LibGtk::Widget*) : nil, Int32.new(position))
+      __return_value = LibGtk.notebook_insert_page_menu(@pointer.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label ? tab_label.to_unsafe.as(LibGtk::Widget*) : nil, menu_label ? menu_label.to_unsafe.as(LibGtk::Widget*) : nil, Int32.new(position))
       __return_value
     end
 
     def next_page
-      LibGtk.notebook_next_page(to_unsafe.as(LibGtk::Notebook*))
+      LibGtk.notebook_next_page(@pointer.as(LibGtk::Notebook*))
       nil
     end
 
     def page_num(child)
-      __return_value = LibGtk.notebook_page_num(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*))
+      __return_value = LibGtk.notebook_page_num(@pointer.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*))
       __return_value
     end
 
     def popup_disable
-      LibGtk.notebook_popup_disable(to_unsafe.as(LibGtk::Notebook*))
+      LibGtk.notebook_popup_disable(@pointer.as(LibGtk::Notebook*))
       nil
     end
 
     def popup_enable
-      LibGtk.notebook_popup_enable(to_unsafe.as(LibGtk::Notebook*))
+      LibGtk.notebook_popup_enable(@pointer.as(LibGtk::Notebook*))
       nil
     end
 
     def prepend_page(child, tab_label)
-      __return_value = LibGtk.notebook_prepend_page(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label ? tab_label.to_unsafe.as(LibGtk::Widget*) : nil)
+      __return_value = LibGtk.notebook_prepend_page(@pointer.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label ? tab_label.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 
     def prepend_page_menu(child, tab_label, menu_label)
-      __return_value = LibGtk.notebook_prepend_page_menu(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label ? tab_label.to_unsafe.as(LibGtk::Widget*) : nil, menu_label ? menu_label.to_unsafe.as(LibGtk::Widget*) : nil)
+      __return_value = LibGtk.notebook_prepend_page_menu(@pointer.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label ? tab_label.to_unsafe.as(LibGtk::Widget*) : nil, menu_label ? menu_label.to_unsafe.as(LibGtk::Widget*) : nil)
       __return_value
     end
 
     def prev_page
-      LibGtk.notebook_prev_page(to_unsafe.as(LibGtk::Notebook*))
+      LibGtk.notebook_prev_page(@pointer.as(LibGtk::Notebook*))
       nil
     end
 
     def remove_page(page_num)
-      LibGtk.notebook_remove_page(to_unsafe.as(LibGtk::Notebook*), Int32.new(page_num))
+      LibGtk.notebook_remove_page(@pointer.as(LibGtk::Notebook*), Int32.new(page_num))
       nil
     end
 
     def reorder_child(child, position)
-      LibGtk.notebook_reorder_child(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), Int32.new(position))
+      LibGtk.notebook_reorder_child(@pointer.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), Int32.new(position))
       nil
     end
 
     def set_action_widget(widget, pack_type : Gtk::PackType)
-      LibGtk.notebook_set_action_widget(to_unsafe.as(LibGtk::Notebook*), widget.to_unsafe.as(LibGtk::Widget*), pack_type)
+      LibGtk.notebook_set_action_widget(@pointer.as(LibGtk::Notebook*), widget.to_unsafe.as(LibGtk::Widget*), pack_type)
       nil
     end
 
     def current_page=(page_num)
-      LibGtk.notebook_set_current_page(to_unsafe.as(LibGtk::Notebook*), Int32.new(page_num))
+      LibGtk.notebook_set_current_page(@pointer.as(LibGtk::Notebook*), Int32.new(page_num))
       nil
     end
 
     def group_name=(group_name)
-      LibGtk.notebook_set_group_name(to_unsafe.as(LibGtk::Notebook*), group_name ? group_name.to_unsafe : nil)
+      LibGtk.notebook_set_group_name(@pointer.as(LibGtk::Notebook*), group_name ? group_name.to_unsafe : nil)
       nil
     end
 
     def set_menu_label(child, menu_label)
-      LibGtk.notebook_set_menu_label(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), menu_label ? menu_label.to_unsafe.as(LibGtk::Widget*) : nil)
+      LibGtk.notebook_set_menu_label(@pointer.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), menu_label ? menu_label.to_unsafe.as(LibGtk::Widget*) : nil)
       nil
     end
 
     def set_menu_label_text(child, menu_text)
-      LibGtk.notebook_set_menu_label_text(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), menu_text.to_unsafe)
+      LibGtk.notebook_set_menu_label_text(@pointer.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), menu_text.to_unsafe)
       nil
     end
 
     def scrollable=(scrollable)
-      LibGtk.notebook_set_scrollable(to_unsafe.as(LibGtk::Notebook*), scrollable)
+      LibGtk.notebook_set_scrollable(@pointer.as(LibGtk::Notebook*), scrollable)
       nil
     end
 
     def show_border=(show_border)
-      LibGtk.notebook_set_show_border(to_unsafe.as(LibGtk::Notebook*), show_border)
+      LibGtk.notebook_set_show_border(@pointer.as(LibGtk::Notebook*), show_border)
       nil
     end
 
     def show_tabs=(show_tabs)
-      LibGtk.notebook_set_show_tabs(to_unsafe.as(LibGtk::Notebook*), show_tabs)
+      LibGtk.notebook_set_show_tabs(@pointer.as(LibGtk::Notebook*), show_tabs)
       nil
     end
 
     def set_tab_detachable(child, detachable)
-      LibGtk.notebook_set_tab_detachable(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), detachable)
+      LibGtk.notebook_set_tab_detachable(@pointer.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), detachable)
       nil
     end
 
     def set_tab_label(child, tab_label)
-      LibGtk.notebook_set_tab_label(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label ? tab_label.to_unsafe.as(LibGtk::Widget*) : nil)
+      LibGtk.notebook_set_tab_label(@pointer.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_label ? tab_label.to_unsafe.as(LibGtk::Widget*) : nil)
       nil
     end
 
     def set_tab_label_text(child, tab_text)
-      LibGtk.notebook_set_tab_label_text(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_text.to_unsafe)
+      LibGtk.notebook_set_tab_label_text(@pointer.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), tab_text.to_unsafe)
       nil
     end
 
     def tab_pos=(pos : Gtk::PositionType)
-      LibGtk.notebook_set_tab_pos(to_unsafe.as(LibGtk::Notebook*), pos)
+      LibGtk.notebook_set_tab_pos(@pointer.as(LibGtk::Notebook*), pos)
       nil
     end
 
     def set_tab_reorderable(child, reorderable)
-      LibGtk.notebook_set_tab_reorderable(to_unsafe.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), reorderable)
+      LibGtk.notebook_set_tab_reorderable(@pointer.as(LibGtk::Notebook*), child.to_unsafe.as(LibGtk::Widget*), reorderable)
       nil
     end
 

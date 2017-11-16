@@ -10,12 +10,13 @@ module Gtk
       end
     end
 
-    @gtk_requisition : LibGtk::Requisition*?
-    def initialize(@gtk_requisition : LibGtk::Requisition*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Requisition*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_requisition.not_nil!
+      @pointer.not_nil!.as(LibGtk::Requisition*)
     end
 
     def self.new : self
@@ -24,12 +25,12 @@ module Gtk
     end
 
     def copy
-      __return_value = LibGtk.requisition_copy(to_unsafe.as(LibGtk::Requisition*))
+      __return_value = LibGtk.requisition_copy(@pointer.as(LibGtk::Requisition*))
       Gtk::Requisition.new(__return_value)
     end
 
     def free
-      LibGtk.requisition_free(to_unsafe.as(LibGtk::Requisition*))
+      LibGtk.requisition_free(@pointer.as(LibGtk::Requisition*))
       nil
     end
 

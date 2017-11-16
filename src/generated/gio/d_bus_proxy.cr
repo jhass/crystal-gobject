@@ -1,11 +1,12 @@
 module Gio
   class DBusProxy < GObject::Object
-    @gio_d_bus_proxy : LibGio::DBusProxy*?
-    def initialize(@gio_d_bus_proxy : LibGio::DBusProxy*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::DBusProxy*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_d_bus_proxy.not_nil!
+      @pointer.not_nil!.as(LibGio::DBusProxy*)
     end
 
     # Implements AsyncInitable
@@ -91,105 +92,105 @@ module Gio
     end
 
     def call(method_name, parameters, flags : Gio::DBusCallFlags, timeout_msec, cancellable, callback, user_data)
-      LibGio.d_bus_proxy_call(to_unsafe.as(LibGio::DBusProxy*), method_name.to_unsafe, parameters ? parameters.to_unsafe.as(LibGLib::Variant*) : nil, flags, Int32.new(timeout_msec), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      LibGio.d_bus_proxy_call(@pointer.as(LibGio::DBusProxy*), method_name.to_unsafe, parameters ? parameters.to_unsafe.as(LibGLib::Variant*) : nil, flags, Int32.new(timeout_msec), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       nil
     end
 
     def call_finish(res)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.d_bus_proxy_call_finish(to_unsafe.as(LibGio::DBusProxy*), res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
+      __return_value = LibGio.d_bus_proxy_call_finish(@pointer.as(LibGio::DBusProxy*), res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       GLib::Variant.new(__return_value)
     end
 
     def call_sync(method_name, parameters, flags : Gio::DBusCallFlags, timeout_msec, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.d_bus_proxy_call_sync(to_unsafe.as(LibGio::DBusProxy*), method_name.to_unsafe, parameters ? parameters.to_unsafe.as(LibGLib::Variant*) : nil, flags, Int32.new(timeout_msec), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
+      __return_value = LibGio.d_bus_proxy_call_sync(@pointer.as(LibGio::DBusProxy*), method_name.to_unsafe, parameters ? parameters.to_unsafe.as(LibGLib::Variant*) : nil, flags, Int32.new(timeout_msec), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       GLib::Variant.new(__return_value)
     end
 
     def call_with_unix_fd_list(method_name, parameters, flags : Gio::DBusCallFlags, timeout_msec, fd_list, cancellable, callback, user_data)
-      LibGio.d_bus_proxy_call_with_unix_fd_list(to_unsafe.as(LibGio::DBusProxy*), method_name.to_unsafe, parameters ? parameters.to_unsafe.as(LibGLib::Variant*) : nil, flags, Int32.new(timeout_msec), fd_list ? fd_list.to_unsafe.as(LibGio::UnixFDList*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      LibGio.d_bus_proxy_call_with_unix_fd_list(@pointer.as(LibGio::DBusProxy*), method_name.to_unsafe, parameters ? parameters.to_unsafe.as(LibGLib::Variant*) : nil, flags, Int32.new(timeout_msec), fd_list ? fd_list.to_unsafe.as(LibGio::UnixFDList*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       nil
     end
 
     def call_with_unix_fd_list_finish(out_fd_list, res)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.d_bus_proxy_call_with_unix_fd_list_finish(to_unsafe.as(LibGio::DBusProxy*), out_fd_list, res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
+      __return_value = LibGio.d_bus_proxy_call_with_unix_fd_list_finish(@pointer.as(LibGio::DBusProxy*), out_fd_list, res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       GLib::Variant.new(__return_value)
     end
 
     def call_with_unix_fd_list_sync(method_name, parameters, flags : Gio::DBusCallFlags, timeout_msec, fd_list, out_fd_list, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.d_bus_proxy_call_with_unix_fd_list_sync(to_unsafe.as(LibGio::DBusProxy*), method_name.to_unsafe, parameters ? parameters.to_unsafe.as(LibGLib::Variant*) : nil, flags, Int32.new(timeout_msec), fd_list ? fd_list.to_unsafe.as(LibGio::UnixFDList*) : nil, out_fd_list, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
+      __return_value = LibGio.d_bus_proxy_call_with_unix_fd_list_sync(@pointer.as(LibGio::DBusProxy*), method_name.to_unsafe, parameters ? parameters.to_unsafe.as(LibGLib::Variant*) : nil, flags, Int32.new(timeout_msec), fd_list ? fd_list.to_unsafe.as(LibGio::UnixFDList*) : nil, out_fd_list, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       GLib::Variant.new(__return_value)
     end
 
     def cached_property(property_name)
-      __return_value = LibGio.d_bus_proxy_get_cached_property(to_unsafe.as(LibGio::DBusProxy*), property_name.to_unsafe)
+      __return_value = LibGio.d_bus_proxy_get_cached_property(@pointer.as(LibGio::DBusProxy*), property_name.to_unsafe)
       GLib::Variant.new(__return_value)
     end
 
     def cached_property_names
-      __return_value = LibGio.d_bus_proxy_get_cached_property_names(to_unsafe.as(LibGio::DBusProxy*))
+      __return_value = LibGio.d_bus_proxy_get_cached_property_names(@pointer.as(LibGio::DBusProxy*))
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def connection
-      __return_value = LibGio.d_bus_proxy_get_connection(to_unsafe.as(LibGio::DBusProxy*))
+      __return_value = LibGio.d_bus_proxy_get_connection(@pointer.as(LibGio::DBusProxy*))
       Gio::DBusConnection.new(__return_value)
     end
 
     def default_timeout
-      __return_value = LibGio.d_bus_proxy_get_default_timeout(to_unsafe.as(LibGio::DBusProxy*))
+      __return_value = LibGio.d_bus_proxy_get_default_timeout(@pointer.as(LibGio::DBusProxy*))
       __return_value
     end
 
     def flags
-      __return_value = LibGio.d_bus_proxy_get_flags(to_unsafe.as(LibGio::DBusProxy*))
+      __return_value = LibGio.d_bus_proxy_get_flags(@pointer.as(LibGio::DBusProxy*))
       __return_value
     end
 
     def interface_info
-      __return_value = LibGio.d_bus_proxy_get_interface_info(to_unsafe.as(LibGio::DBusProxy*))
+      __return_value = LibGio.d_bus_proxy_get_interface_info(@pointer.as(LibGio::DBusProxy*))
       Gio::DBusInterfaceInfo.new(__return_value)
     end
 
     def interface_name
-      __return_value = LibGio.d_bus_proxy_get_interface_name(to_unsafe.as(LibGio::DBusProxy*))
+      __return_value = LibGio.d_bus_proxy_get_interface_name(@pointer.as(LibGio::DBusProxy*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def name
-      __return_value = LibGio.d_bus_proxy_get_name(to_unsafe.as(LibGio::DBusProxy*))
+      __return_value = LibGio.d_bus_proxy_get_name(@pointer.as(LibGio::DBusProxy*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def name_owner
-      __return_value = LibGio.d_bus_proxy_get_name_owner(to_unsafe.as(LibGio::DBusProxy*))
+      __return_value = LibGio.d_bus_proxy_get_name_owner(@pointer.as(LibGio::DBusProxy*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def object_path
-      __return_value = LibGio.d_bus_proxy_get_object_path(to_unsafe.as(LibGio::DBusProxy*))
+      __return_value = LibGio.d_bus_proxy_get_object_path(@pointer.as(LibGio::DBusProxy*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def set_cached_property(property_name, value)
-      LibGio.d_bus_proxy_set_cached_property(to_unsafe.as(LibGio::DBusProxy*), property_name.to_unsafe, value ? value.to_unsafe.as(LibGLib::Variant*) : nil)
+      LibGio.d_bus_proxy_set_cached_property(@pointer.as(LibGio::DBusProxy*), property_name.to_unsafe, value ? value.to_unsafe.as(LibGLib::Variant*) : nil)
       nil
     end
 
     def default_timeout=(timeout_msec)
-      LibGio.d_bus_proxy_set_default_timeout(to_unsafe.as(LibGio::DBusProxy*), Int32.new(timeout_msec))
+      LibGio.d_bus_proxy_set_default_timeout(@pointer.as(LibGio::DBusProxy*), Int32.new(timeout_msec))
       nil
     end
 
     def interface_info=(info)
-      LibGio.d_bus_proxy_set_interface_info(to_unsafe.as(LibGio::DBusProxy*), info ? info.to_unsafe.as(LibGio::DBusInterfaceInfo*) : nil)
+      LibGio.d_bus_proxy_set_interface_info(@pointer.as(LibGio::DBusProxy*), info ? info.to_unsafe.as(LibGio::DBusInterfaceInfo*) : nil)
       nil
     end
 

@@ -2,12 +2,13 @@ module Gst
   class Bitmask
     include GObject::WrappedType
 
-    @gst_bitmask : LibGst::Bitmask*?
-    def initialize(@gst_bitmask : LibGst::Bitmask*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::Bitmask*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_bitmask.not_nil!
+      @pointer.not_nil!.as(LibGst::Bitmask*)
     end
 
   end

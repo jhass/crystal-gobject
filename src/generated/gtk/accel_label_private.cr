@@ -2,12 +2,13 @@ module Gtk
   class AccelLabelPrivate
     include GObject::WrappedType
 
-    @gtk_accel_label_private : LibGtk::AccelLabelPrivate*?
-    def initialize(@gtk_accel_label_private : LibGtk::AccelLabelPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::AccelLabelPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_accel_label_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::AccelLabelPrivate*)
     end
 
   end

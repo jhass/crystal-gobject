@@ -2,12 +2,13 @@ require "./cell_renderer"
 
 module Gtk
   class CellRendererText < CellRenderer
-    @gtk_cell_renderer_text : LibGtk::CellRendererText*?
-    def initialize(@gtk_cell_renderer_text : LibGtk::CellRendererText*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::CellRendererText*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_cell_renderer_text.not_nil!
+      @pointer.not_nil!.as(LibGtk::CellRendererText*)
     end
 
     def align_set
@@ -244,7 +245,7 @@ module Gtk
     end
 
     def fixed_height_from_font=(number_of_rows)
-      LibGtk.cell_renderer_text_set_fixed_height_from_font(to_unsafe.as(LibGtk::CellRendererText*), Int32.new(number_of_rows))
+      LibGtk.cell_renderer_text_set_fixed_height_from_font(@pointer.as(LibGtk::CellRendererText*), Int32.new(number_of_rows))
       nil
     end
 

@@ -1,11 +1,12 @@
 module Gio
   class AppInfoMonitor < GObject::Object
-    @gio_app_info_monitor : LibGio::AppInfoMonitor*?
-    def initialize(@gio_app_info_monitor : LibGio::AppInfoMonitor*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::AppInfoMonitor*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_app_info_monitor.not_nil!
+      @pointer.not_nil!.as(LibGio::AppInfoMonitor*)
     end
 
     def self.get

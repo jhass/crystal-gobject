@@ -1,11 +1,12 @@
 module Gio
   class UnixFDList < GObject::Object
-    @gio_unix_f_d_list : LibGio::UnixFDList*?
-    def initialize(@gio_unix_f_d_list : LibGio::UnixFDList*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::UnixFDList*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_unix_f_d_list.not_nil!
+      @pointer.not_nil!.as(LibGio::UnixFDList*)
     end
 
     def self.new : self
@@ -20,30 +21,30 @@ module Gio
 
     def append(fd)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.unix_f_d_list_append(to_unsafe.as(LibGio::UnixFDList*), Int32.new(fd), pointerof(__error))
+      __return_value = LibGio.unix_f_d_list_append(@pointer.as(LibGio::UnixFDList*), Int32.new(fd), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def get(index)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.unix_f_d_list_get(to_unsafe.as(LibGio::UnixFDList*), Int32.new(index), pointerof(__error))
+      __return_value = LibGio.unix_f_d_list_get(@pointer.as(LibGio::UnixFDList*), Int32.new(index), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def length
-      __return_value = LibGio.unix_f_d_list_get_length(to_unsafe.as(LibGio::UnixFDList*))
+      __return_value = LibGio.unix_f_d_list_get_length(@pointer.as(LibGio::UnixFDList*))
       __return_value
     end
 
     def peek_fds(length)
-      __return_value = LibGio.unix_f_d_list_peek_fds(to_unsafe.as(LibGio::UnixFDList*), length)
+      __return_value = LibGio.unix_f_d_list_peek_fds(@pointer.as(LibGio::UnixFDList*), length)
       PointerIterator.new(__return_value) {|__item| __item }
     end
 
     def steal_fds(length)
-      __return_value = LibGio.unix_f_d_list_steal_fds(to_unsafe.as(LibGio::UnixFDList*), length)
+      __return_value = LibGio.unix_f_d_list_steal_fds(@pointer.as(LibGio::UnixFDList*), length)
       PointerIterator.new(__return_value) {|__item| __item }
     end
 

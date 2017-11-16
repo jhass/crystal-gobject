@@ -2,12 +2,13 @@ module Gio
   class BufferedInputStreamPrivate
     include GObject::WrappedType
 
-    @gio_buffered_input_stream_private : LibGio::BufferedInputStreamPrivate*?
-    def initialize(@gio_buffered_input_stream_private : LibGio::BufferedInputStreamPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::BufferedInputStreamPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_buffered_input_stream_private.not_nil!
+      @pointer.not_nil!.as(LibGio::BufferedInputStreamPrivate*)
     end
 
   end

@@ -9,12 +9,13 @@ module GLib
       end
     end
 
-    @g_lib_trash_stack : LibGLib::TrashStack*?
-    def initialize(@g_lib_trash_stack : LibGLib::TrashStack*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::TrashStack*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_trash_stack.not_nil!
+      @pointer.not_nil!.as(LibGLib::TrashStack*)
     end
 
     def self.height(stack_p)

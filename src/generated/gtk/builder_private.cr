@@ -2,12 +2,13 @@ module Gtk
   class BuilderPrivate
     include GObject::WrappedType
 
-    @gtk_builder_private : LibGtk::BuilderPrivate*?
-    def initialize(@gtk_builder_private : LibGtk::BuilderPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::BuilderPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_builder_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::BuilderPrivate*)
     end
 
   end

@@ -2,12 +2,13 @@ require "./cell_renderer_text"
 
 module Gtk
   class CellRendererSpin < CellRendererText
-    @gtk_cell_renderer_spin : LibGtk::CellRendererSpin*?
-    def initialize(@gtk_cell_renderer_spin : LibGtk::CellRendererSpin*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::CellRendererSpin*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_cell_renderer_spin.not_nil!
+      @pointer.not_nil!.as(LibGtk::CellRendererSpin*)
     end
 
     def adjustment

@@ -15,41 +15,42 @@ module Gst
       end
     end
 
-    @gst_mini_object : LibGst::MiniObject*?
-    def initialize(@gst_mini_object : LibGst::MiniObject*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::MiniObject*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_mini_object.not_nil!
+      @pointer.not_nil!.as(LibGst::MiniObject*)
     end
 
     def qdata(quark)
-      LibGst.mini_object_get_qdata(to_unsafe.as(LibGst::MiniObject*), UInt32.new(quark))
+      LibGst.mini_object_get_qdata(@pointer.as(LibGst::MiniObject*), UInt32.new(quark))
       nil
     end
 
     def writable?
-      __return_value = LibGst.mini_object_is_writable(to_unsafe.as(LibGst::MiniObject*))
+      __return_value = LibGst.mini_object_is_writable(@pointer.as(LibGst::MiniObject*))
       __return_value
     end
 
     def lock(flags : Gst::LockFlags)
-      __return_value = LibGst.mini_object_lock(to_unsafe.as(LibGst::MiniObject*), flags)
+      __return_value = LibGst.mini_object_lock(@pointer.as(LibGst::MiniObject*), flags)
       __return_value
     end
 
     def set_qdata(quark, data, destroy)
-      LibGst.mini_object_set_qdata(to_unsafe.as(LibGst::MiniObject*), UInt32.new(quark), data ? data : nil, destroy)
+      LibGst.mini_object_set_qdata(@pointer.as(LibGst::MiniObject*), UInt32.new(quark), data ? data : nil, destroy)
       nil
     end
 
     def steal_qdata(quark)
-      LibGst.mini_object_steal_qdata(to_unsafe.as(LibGst::MiniObject*), UInt32.new(quark))
+      LibGst.mini_object_steal_qdata(@pointer.as(LibGst::MiniObject*), UInt32.new(quark))
       nil
     end
 
     def unlock(flags : Gst::LockFlags)
-      LibGst.mini_object_unlock(to_unsafe.as(LibGst::MiniObject*), flags)
+      LibGst.mini_object_unlock(@pointer.as(LibGst::MiniObject*), flags)
       nil
     end
 

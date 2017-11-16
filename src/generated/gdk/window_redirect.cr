@@ -2,12 +2,13 @@ module Gdk
   class WindowRedirect
     include GObject::WrappedType
 
-    @gdk_window_redirect : LibGdk::WindowRedirect*?
-    def initialize(@gdk_window_redirect : LibGdk::WindowRedirect*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::WindowRedirect*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_window_redirect.not_nil!
+      @pointer.not_nil!.as(LibGdk::WindowRedirect*)
     end
 
   end

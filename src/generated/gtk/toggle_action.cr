@@ -2,12 +2,13 @@ require "./action"
 
 module Gtk
   class ToggleAction < Action
-    @gtk_toggle_action : LibGtk::ToggleAction*?
-    def initialize(@gtk_toggle_action : LibGtk::ToggleAction*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ToggleAction*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_toggle_action.not_nil!
+      @pointer.not_nil!.as(LibGtk::ToggleAction*)
     end
 
     # Implements Buildable
@@ -27,27 +28,27 @@ module Gtk
     end
 
     def active
-      __return_value = LibGtk.toggle_action_get_active(to_unsafe.as(LibGtk::ToggleAction*))
+      __return_value = LibGtk.toggle_action_get_active(@pointer.as(LibGtk::ToggleAction*))
       __return_value
     end
 
     def draw_as_radio
-      __return_value = LibGtk.toggle_action_get_draw_as_radio(to_unsafe.as(LibGtk::ToggleAction*))
+      __return_value = LibGtk.toggle_action_get_draw_as_radio(@pointer.as(LibGtk::ToggleAction*))
       __return_value
     end
 
     def active=(is_active)
-      LibGtk.toggle_action_set_active(to_unsafe.as(LibGtk::ToggleAction*), is_active)
+      LibGtk.toggle_action_set_active(@pointer.as(LibGtk::ToggleAction*), is_active)
       nil
     end
 
     def draw_as_radio=(draw_as_radio)
-      LibGtk.toggle_action_set_draw_as_radio(to_unsafe.as(LibGtk::ToggleAction*), draw_as_radio)
+      LibGtk.toggle_action_set_draw_as_radio(@pointer.as(LibGtk::ToggleAction*), draw_as_radio)
       nil
     end
 
     def toggled
-      LibGtk.toggle_action_toggled(to_unsafe.as(LibGtk::ToggleAction*))
+      LibGtk.toggle_action_toggled(@pointer.as(LibGtk::ToggleAction*))
       nil
     end
 

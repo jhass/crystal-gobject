@@ -7,16 +7,17 @@ module GObject
       super(ptr.as(LibGObject::TypeInterface*))
     end
 
-    @g_object_type_interface : LibGObject::TypeInterface*?
-    def initialize(@g_object_type_interface : LibGObject::TypeInterface*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::TypeInterface*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_type_interface.not_nil!
+      @pointer.not_nil!.as(LibGObject::TypeInterface*)
     end
 
     def peek_parent
-      __return_value = LibGObject.type_interface_peek_parent(to_unsafe.as(LibGObject::TypeInterface*))
+      __return_value = LibGObject.type_interface_peek_parent(@pointer.as(LibGObject::TypeInterface*))
       GObject::TypeInterface.new(__return_value)
     end
 

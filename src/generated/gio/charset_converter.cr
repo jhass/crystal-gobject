@@ -1,11 +1,12 @@
 module Gio
   class CharsetConverter < GObject::Object
-    @gio_charset_converter : LibGio::CharsetConverter*?
-    def initialize(@gio_charset_converter : LibGio::CharsetConverter*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::CharsetConverter*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_charset_converter.not_nil!
+      @pointer.not_nil!.as(LibGio::CharsetConverter*)
     end
 
     # Implements Converter
@@ -33,17 +34,17 @@ module Gio
     end
 
     def num_fallbacks
-      __return_value = LibGio.charset_converter_get_num_fallbacks(to_unsafe.as(LibGio::CharsetConverter*))
+      __return_value = LibGio.charset_converter_get_num_fallbacks(@pointer.as(LibGio::CharsetConverter*))
       __return_value
     end
 
     def use_fallback
-      __return_value = LibGio.charset_converter_get_use_fallback(to_unsafe.as(LibGio::CharsetConverter*))
+      __return_value = LibGio.charset_converter_get_use_fallback(@pointer.as(LibGio::CharsetConverter*))
       __return_value
     end
 
     def use_fallback=(use_fallback)
-      LibGio.charset_converter_set_use_fallback(to_unsafe.as(LibGio::CharsetConverter*), use_fallback)
+      LibGio.charset_converter_set_use_fallback(@pointer.as(LibGio::CharsetConverter*), use_fallback)
       nil
     end
 

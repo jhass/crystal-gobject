@@ -2,16 +2,17 @@ module Atk
   class Implementor
     include GObject::WrappedType
 
-    @atk_implementor : LibAtk::Implementor*?
-    def initialize(@atk_implementor : LibAtk::Implementor*)
+    @pointer : Void*
+    def initialize(pointer : LibAtk::Implementor*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @atk_implementor.not_nil!
+      @pointer.not_nil!.as(LibAtk::Implementor*)
     end
 
     def ref_accessible
-      __return_value = LibAtk.implementor_ref_accessible(to_unsafe.as(LibAtk::Implementor*))
+      __return_value = LibAtk.implementor_ref_accessible(@pointer.as(LibAtk::Implementor*))
       Atk::Object.new(__return_value)
     end
 

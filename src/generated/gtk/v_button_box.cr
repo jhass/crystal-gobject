@@ -2,12 +2,13 @@ require "./button_box"
 
 module Gtk
   class VButtonBox < ButtonBox
-    @gtk_v_button_box : LibGtk::VButtonBox*?
-    def initialize(@gtk_v_button_box : LibGtk::VButtonBox*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::VButtonBox*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_v_button_box.not_nil!
+      @pointer.not_nil!.as(LibGtk::VButtonBox*)
     end
 
     # Implements ImplementorIface

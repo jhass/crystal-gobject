@@ -2,12 +2,13 @@ require "./object"
 
 module Atk
   class Socket < Object
-    @atk_socket : LibAtk::Socket*?
-    def initialize(@atk_socket : LibAtk::Socket*)
+    @pointer : Void*
+    def initialize(pointer : LibAtk::Socket*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @atk_socket.not_nil!
+      @pointer.not_nil!.as(LibAtk::Socket*)
     end
 
     # Implements Component
@@ -17,12 +18,12 @@ module Atk
     end
 
     def embed(plug_id)
-      LibAtk.socket_embed(to_unsafe.as(LibAtk::Socket*), plug_id.to_unsafe)
+      LibAtk.socket_embed(@pointer.as(LibAtk::Socket*), plug_id.to_unsafe)
       nil
     end
 
     def occupied?
-      __return_value = LibAtk.socket_is_occupied(to_unsafe.as(LibAtk::Socket*))
+      __return_value = LibAtk.socket_is_occupied(@pointer.as(LibAtk::Socket*))
       __return_value
     end
 

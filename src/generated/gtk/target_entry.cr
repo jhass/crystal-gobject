@@ -11,12 +11,13 @@ module Gtk
       end
     end
 
-    @gtk_target_entry : LibGtk::TargetEntry*?
-    def initialize(@gtk_target_entry : LibGtk::TargetEntry*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::TargetEntry*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_target_entry.not_nil!
+      @pointer.not_nil!.as(LibGtk::TargetEntry*)
     end
 
     def self.new(target, flags, info) : self
@@ -25,12 +26,12 @@ module Gtk
     end
 
     def copy
-      __return_value = LibGtk.target_entry_copy(to_unsafe.as(LibGtk::TargetEntry*))
+      __return_value = LibGtk.target_entry_copy(@pointer.as(LibGtk::TargetEntry*))
       Gtk::TargetEntry.new(__return_value)
     end
 
     def free
-      LibGtk.target_entry_free(to_unsafe.as(LibGtk::TargetEntry*))
+      LibGtk.target_entry_free(@pointer.as(LibGtk::TargetEntry*))
       nil
     end
 

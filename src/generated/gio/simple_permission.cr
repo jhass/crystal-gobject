@@ -2,12 +2,13 @@ require "./permission"
 
 module Gio
   class SimplePermission < Permission
-    @gio_simple_permission : LibGio::SimplePermission*?
-    def initialize(@gio_simple_permission : LibGio::SimplePermission*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::SimplePermission*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_simple_permission.not_nil!
+      @pointer.not_nil!.as(LibGio::SimplePermission*)
     end
 
     def self.new(allowed) : self

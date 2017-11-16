@@ -8,27 +8,27 @@ module Gio
     end
 
     def accepted_cas
-      __return_value = LibGio.dtls_client_connection_get_accepted_cas(to_unsafe.as(LibGio::DtlsClientConnection*))
+      __return_value = LibGio.dtls_client_connection_get_accepted_cas(@pointer.as(LibGio::DtlsClientConnection*))
       GLib::ListIterator(Array(Void*), Void***).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def server_identity
-      __return_value = LibGio.dtls_client_connection_get_server_identity(to_unsafe.as(LibGio::DtlsClientConnection*))
+      __return_value = LibGio.dtls_client_connection_get_server_identity(@pointer.as(LibGio::DtlsClientConnection*))
       __return_value
     end
 
     def validation_flags
-      __return_value = LibGio.dtls_client_connection_get_validation_flags(to_unsafe.as(LibGio::DtlsClientConnection*))
+      __return_value = LibGio.dtls_client_connection_get_validation_flags(@pointer.as(LibGio::DtlsClientConnection*))
       __return_value
     end
 
     def server_identity=(identity)
-      LibGio.dtls_client_connection_set_server_identity(to_unsafe.as(LibGio::DtlsClientConnection*), identity.to_unsafe.as(LibGio::SocketConnectable*))
+      LibGio.dtls_client_connection_set_server_identity(@pointer.as(LibGio::DtlsClientConnection*), identity.to_unsafe.as(LibGio::SocketConnectable*))
       nil
     end
 
     def validation_flags=(flags : Gio::TlsCertificateFlags)
-      LibGio.dtls_client_connection_set_validation_flags(to_unsafe.as(LibGio::DtlsClientConnection*), flags)
+      LibGio.dtls_client_connection_set_validation_flags(@pointer.as(LibGio::DtlsClientConnection*), flags)
       nil
     end
 

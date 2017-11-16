@@ -2,12 +2,13 @@ module Gtk
   class TearoffMenuItemPrivate
     include GObject::WrappedType
 
-    @gtk_tearoff_menu_item_private : LibGtk::TearoffMenuItemPrivate*?
-    def initialize(@gtk_tearoff_menu_item_private : LibGtk::TearoffMenuItemPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::TearoffMenuItemPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_tearoff_menu_item_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::TearoffMenuItemPrivate*)
     end
 
   end

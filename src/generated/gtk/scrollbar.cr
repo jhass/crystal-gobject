@@ -2,12 +2,13 @@ require "./range"
 
 module Gtk
   class Scrollbar < Range
-    @gtk_scrollbar : LibGtk::Scrollbar*?
-    def initialize(@gtk_scrollbar : LibGtk::Scrollbar*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Scrollbar*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_scrollbar.not_nil!
+      @pointer.not_nil!.as(LibGtk::Scrollbar*)
     end
 
     # Implements ImplementorIface

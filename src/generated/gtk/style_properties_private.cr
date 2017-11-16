@@ -2,12 +2,13 @@ module Gtk
   class StylePropertiesPrivate
     include GObject::WrappedType
 
-    @gtk_style_properties_private : LibGtk::StylePropertiesPrivate*?
-    def initialize(@gtk_style_properties_private : LibGtk::StylePropertiesPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::StylePropertiesPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_style_properties_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::StylePropertiesPrivate*)
     end
 
   end

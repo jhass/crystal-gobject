@@ -2,12 +2,13 @@ require "./widget"
 
 module Gtk
   class DrawingArea < Widget
-    @gtk_drawing_area : LibGtk::DrawingArea*?
-    def initialize(@gtk_drawing_area : LibGtk::DrawingArea*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::DrawingArea*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_drawing_area.not_nil!
+      @pointer.not_nil!.as(LibGtk::DrawingArea*)
     end
 
     # Implements ImplementorIface

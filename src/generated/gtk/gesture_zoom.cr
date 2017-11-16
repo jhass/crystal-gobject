@@ -2,12 +2,13 @@ require "./gesture"
 
 module Gtk
   class GestureZoom < Gesture
-    @gtk_gesture_zoom : LibGtk::GestureZoom*?
-    def initialize(@gtk_gesture_zoom : LibGtk::GestureZoom*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::GestureZoom*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_gesture_zoom.not_nil!
+      @pointer.not_nil!.as(LibGtk::GestureZoom*)
     end
 
     def self.new(widget) : self
@@ -16,7 +17,7 @@ module Gtk
     end
 
     def scale_delta
-      __return_value = LibGtk.gesture_zoom_get_scale_delta(to_unsafe.as(LibGtk::GestureZoom*))
+      __return_value = LibGtk.gesture_zoom_get_scale_delta(@pointer.as(LibGtk::GestureZoom*))
       __return_value
     end
 

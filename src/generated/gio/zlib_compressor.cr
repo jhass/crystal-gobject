@@ -1,11 +1,12 @@
 module Gio
   class ZlibCompressor < GObject::Object
-    @gio_zlib_compressor : LibGio::ZlibCompressor*?
-    def initialize(@gio_zlib_compressor : LibGio::ZlibCompressor*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::ZlibCompressor*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_zlib_compressor.not_nil!
+      @pointer.not_nil!.as(LibGio::ZlibCompressor*)
     end
 
     # Implements Converter
@@ -30,12 +31,12 @@ module Gio
     end
 
     def file_info
-      __return_value = LibGio.zlib_compressor_get_file_info(to_unsafe.as(LibGio::ZlibCompressor*))
+      __return_value = LibGio.zlib_compressor_get_file_info(@pointer.as(LibGio::ZlibCompressor*))
       Gio::FileInfo.new(__return_value)
     end
 
     def file_info=(file_info)
-      LibGio.zlib_compressor_set_file_info(to_unsafe.as(LibGio::ZlibCompressor*), file_info ? file_info.to_unsafe.as(LibGio::FileInfo*) : nil)
+      LibGio.zlib_compressor_set_file_info(@pointer.as(LibGio::ZlibCompressor*), file_info ? file_info.to_unsafe.as(LibGio::FileInfo*) : nil)
       nil
     end
 

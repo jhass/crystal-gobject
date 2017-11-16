@@ -2,12 +2,13 @@ module Gst
   class FractionRange
     include GObject::WrappedType
 
-    @gst_fraction_range : LibGst::FractionRange*?
-    def initialize(@gst_fraction_range : LibGst::FractionRange*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::FractionRange*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_fraction_range.not_nil!
+      @pointer.not_nil!.as(LibGst::FractionRange*)
     end
 
   end

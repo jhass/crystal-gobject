@@ -19,12 +19,13 @@ module Gst
       end
     end
 
-    @gst_iterator : LibGst::Iterator*?
-    def initialize(@gst_iterator : LibGst::Iterator*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::Iterator*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_iterator.not_nil!
+      @pointer.not_nil!.as(LibGst::Iterator*)
     end
 
     def self.new_single(type, object) : self
@@ -33,47 +34,47 @@ module Gst
     end
 
     def copy
-      __return_value = LibGst.iterator_copy(to_unsafe.as(LibGst::Iterator*))
+      __return_value = LibGst.iterator_copy(@pointer.as(LibGst::Iterator*))
       Gst::Iterator.new(__return_value)
     end
 
     def filter(func, user_data)
-      __return_value = LibGst.iterator_filter(to_unsafe.as(LibGst::Iterator*), func, user_data.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibGst.iterator_filter(@pointer.as(LibGst::Iterator*), func, user_data.to_unsafe.as(LibGObject::Value*))
       Gst::Iterator.new(__return_value)
     end
 
     def find_custom(func, elem, user_data)
-      __return_value = LibGst.iterator_find_custom(to_unsafe.as(LibGst::Iterator*), func, elem, user_data ? user_data : nil)
+      __return_value = LibGst.iterator_find_custom(@pointer.as(LibGst::Iterator*), func, elem, user_data ? user_data : nil)
       __return_value
     end
 
     def fold(func, ret, user_data)
-      __return_value = LibGst.iterator_fold(to_unsafe.as(LibGst::Iterator*), func, ret.to_unsafe.as(LibGObject::Value*), user_data ? user_data : nil)
+      __return_value = LibGst.iterator_fold(@pointer.as(LibGst::Iterator*), func, ret.to_unsafe.as(LibGObject::Value*), user_data ? user_data : nil)
       __return_value
     end
 
     def foreach(func, user_data)
-      __return_value = LibGst.iterator_foreach(to_unsafe.as(LibGst::Iterator*), func, user_data ? user_data : nil)
+      __return_value = LibGst.iterator_foreach(@pointer.as(LibGst::Iterator*), func, user_data ? user_data : nil)
       __return_value
     end
 
     def free
-      LibGst.iterator_free(to_unsafe.as(LibGst::Iterator*))
+      LibGst.iterator_free(@pointer.as(LibGst::Iterator*))
       nil
     end
 
     def next(elem)
-      __return_value = LibGst.iterator_next(to_unsafe.as(LibGst::Iterator*), elem)
+      __return_value = LibGst.iterator_next(@pointer.as(LibGst::Iterator*), elem)
       __return_value
     end
 
     def push(other)
-      LibGst.iterator_push(to_unsafe.as(LibGst::Iterator*), other.to_unsafe.as(LibGst::Iterator*))
+      LibGst.iterator_push(@pointer.as(LibGst::Iterator*), other.to_unsafe.as(LibGst::Iterator*))
       nil
     end
 
     def resync
-      LibGst.iterator_resync(to_unsafe.as(LibGst::Iterator*))
+      LibGst.iterator_resync(@pointer.as(LibGst::Iterator*))
       nil
     end
 

@@ -13,31 +13,32 @@ module Gst
       end
     end
 
-    @gst_pad_probe_info : LibGst::PadProbeInfo*?
-    def initialize(@gst_pad_probe_info : LibGst::PadProbeInfo*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::PadProbeInfo*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_pad_probe_info.not_nil!
+      @pointer.not_nil!.as(LibGst::PadProbeInfo*)
     end
 
     def buffer
-      __return_value = LibGst.pad_probe_info_get_buffer(to_unsafe.as(LibGst::PadProbeInfo*))
+      __return_value = LibGst.pad_probe_info_get_buffer(@pointer.as(LibGst::PadProbeInfo*))
       Gst::Buffer.new(__return_value)
     end
 
     def buffer_list
-      __return_value = LibGst.pad_probe_info_get_buffer_list(to_unsafe.as(LibGst::PadProbeInfo*))
+      __return_value = LibGst.pad_probe_info_get_buffer_list(@pointer.as(LibGst::PadProbeInfo*))
       Gst::BufferList.new(__return_value)
     end
 
     def event
-      __return_value = LibGst.pad_probe_info_get_event(to_unsafe.as(LibGst::PadProbeInfo*))
+      __return_value = LibGst.pad_probe_info_get_event(@pointer.as(LibGst::PadProbeInfo*))
       Gst::Event.new(__return_value)
     end
 
     def query
-      __return_value = LibGst.pad_probe_info_get_query(to_unsafe.as(LibGst::PadProbeInfo*))
+      __return_value = LibGst.pad_probe_info_get_query(@pointer.as(LibGst::PadProbeInfo*))
       Gst::Query.new(__return_value)
     end
 

@@ -2,12 +2,13 @@ module GLib
   class HashTable
     include GObject::WrappedType
 
-    @g_lib_hash_table : LibGLib::HashTable*?
-    def initialize(@g_lib_hash_table : LibGLib::HashTable*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::HashTable*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_hash_table.not_nil!
+      @pointer.not_nil!.as(LibGLib::HashTable*)
     end
 
     def self.add(hash_table, key)

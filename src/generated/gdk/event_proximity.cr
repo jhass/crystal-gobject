@@ -13,12 +13,13 @@ module Gdk
       end
     end
 
-    @gdk_event_proximity : LibGdk::EventProximity*?
-    def initialize(@gdk_event_proximity : LibGdk::EventProximity*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::EventProximity*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_event_proximity.not_nil!
+      @pointer.not_nil!.as(LibGdk::EventProximity*)
     end
 
     def type

@@ -2,12 +2,13 @@ require "./proxy_pad"
 
 module Gst
   class GhostPad < ProxyPad
-    @gst_ghost_pad : LibGst::GhostPad*?
-    def initialize(@gst_ghost_pad : LibGst::GhostPad*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::GhostPad*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_ghost_pad.not_nil!
+      @pointer.not_nil!.as(LibGst::GhostPad*)
     end
 
     def self.new(name, target) : self
@@ -41,17 +42,17 @@ module Gst
     end
 
     def construct
-      __return_value = LibGst.ghost_pad_construct(to_unsafe.as(LibGst::GhostPad*))
+      __return_value = LibGst.ghost_pad_construct(@pointer.as(LibGst::GhostPad*))
       __return_value
     end
 
     def target
-      __return_value = LibGst.ghost_pad_get_target(to_unsafe.as(LibGst::GhostPad*))
+      __return_value = LibGst.ghost_pad_get_target(@pointer.as(LibGst::GhostPad*))
       Gst::Pad.new(__return_value) if __return_value
     end
 
     def target=(newtarget)
-      __return_value = LibGst.ghost_pad_set_target(to_unsafe.as(LibGst::GhostPad*), newtarget ? newtarget.to_unsafe.as(LibGst::Pad*) : nil)
+      __return_value = LibGst.ghost_pad_set_target(@pointer.as(LibGst::GhostPad*), newtarget ? newtarget.to_unsafe.as(LibGst::Pad*) : nil)
       __return_value
     end
 

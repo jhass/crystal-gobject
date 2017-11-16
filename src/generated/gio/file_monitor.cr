@@ -1,11 +1,12 @@
 module Gio
   class FileMonitor < GObject::Object
-    @gio_file_monitor : LibGio::FileMonitor*?
-    def initialize(@gio_file_monitor : LibGio::FileMonitor*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::FileMonitor*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_file_monitor.not_nil!
+      @pointer.not_nil!.as(LibGio::FileMonitor*)
     end
 
     def cancelled
@@ -19,22 +20,22 @@ module Gio
     end
 
     def cancel
-      __return_value = LibGio.file_monitor_cancel(to_unsafe.as(LibGio::FileMonitor*))
+      __return_value = LibGio.file_monitor_cancel(@pointer.as(LibGio::FileMonitor*))
       __return_value
     end
 
     def emit_event(child, other_file, event_type : Gio::FileMonitorEvent)
-      LibGio.file_monitor_emit_event(to_unsafe.as(LibGio::FileMonitor*), child.to_unsafe.as(LibGio::File*), other_file.to_unsafe.as(LibGio::File*), event_type)
+      LibGio.file_monitor_emit_event(@pointer.as(LibGio::FileMonitor*), child.to_unsafe.as(LibGio::File*), other_file.to_unsafe.as(LibGio::File*), event_type)
       nil
     end
 
     def cancelled?
-      __return_value = LibGio.file_monitor_is_cancelled(to_unsafe.as(LibGio::FileMonitor*))
+      __return_value = LibGio.file_monitor_is_cancelled(@pointer.as(LibGio::FileMonitor*))
       __return_value
     end
 
     def rate_limit=(limit_msecs)
-      LibGio.file_monitor_set_rate_limit(to_unsafe.as(LibGio::FileMonitor*), Int32.new(limit_msecs))
+      LibGio.file_monitor_set_rate_limit(@pointer.as(LibGio::FileMonitor*), Int32.new(limit_msecs))
       nil
     end
 

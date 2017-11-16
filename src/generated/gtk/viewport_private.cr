@@ -2,12 +2,13 @@ module Gtk
   class ViewportPrivate
     include GObject::WrappedType
 
-    @gtk_viewport_private : LibGtk::ViewportPrivate*?
-    def initialize(@gtk_viewport_private : LibGtk::ViewportPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ViewportPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_viewport_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::ViewportPrivate*)
     end
 
   end

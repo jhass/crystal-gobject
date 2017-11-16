@@ -2,12 +2,13 @@ require "./container_accessible"
 
 module Gtk
   class IconViewAccessible < ContainerAccessible
-    @gtk_icon_view_accessible : LibGtk::IconViewAccessible*?
-    def initialize(@gtk_icon_view_accessible : LibGtk::IconViewAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::IconViewAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_icon_view_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::IconViewAccessible*)
     end
 
     # Implements Component

@@ -38,12 +38,13 @@ module GObject
       (to_unsafe.as(LibGObject::G_Value__data__union*).value.v_pointer)
     end
 
-    @g_object_g_value__data__union : LibGObject::G_Value__data__union*?
-    def initialize(@g_object_g_value__data__union : LibGObject::G_Value__data__union*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::G_Value__data__union*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_g_value__data__union.not_nil!
+      @pointer.not_nil!.as(LibGObject::G_Value__data__union*)
     end
 
   end

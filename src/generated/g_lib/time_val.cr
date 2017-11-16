@@ -10,21 +10,22 @@ module GLib
       end
     end
 
-    @g_lib_time_val : LibGLib::TimeVal*?
-    def initialize(@g_lib_time_val : LibGLib::TimeVal*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::TimeVal*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_time_val.not_nil!
+      @pointer.not_nil!.as(LibGLib::TimeVal*)
     end
 
     def add(microseconds)
-      LibGLib.time_val_add(to_unsafe.as(LibGLib::TimeVal*), Int64.new(microseconds))
+      LibGLib.time_val_add(@pointer.as(LibGLib::TimeVal*), Int64.new(microseconds))
       nil
     end
 
     def to_iso8601
-      __return_value = LibGLib.time_val_to_iso8601(to_unsafe.as(LibGLib::TimeVal*))
+      __return_value = LibGLib.time_val_to_iso8601(@pointer.as(LibGLib::TimeVal*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 

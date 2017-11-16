@@ -1,11 +1,12 @@
 module Gtk
   class AccelGroup < GObject::Object
-    @gtk_accel_group : LibGtk::AccelGroup*?
-    def initialize(@gtk_accel_group : LibGtk::AccelGroup*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::AccelGroup*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_accel_group.not_nil!
+      @pointer.not_nil!.as(LibGtk::AccelGroup*)
     end
 
     def is_locked
@@ -29,57 +30,57 @@ module Gtk
     end
 
     def activate(accel_quark, acceleratable, accel_key, accel_mods : Gdk::ModifierType)
-      __return_value = LibGtk.accel_group_activate(to_unsafe.as(LibGtk::AccelGroup*), UInt32.new(accel_quark), acceleratable.to_unsafe.as(LibGObject::Object*), UInt32.new(accel_key), accel_mods)
+      __return_value = LibGtk.accel_group_activate(@pointer.as(LibGtk::AccelGroup*), UInt32.new(accel_quark), acceleratable.to_unsafe.as(LibGObject::Object*), UInt32.new(accel_key), accel_mods)
       __return_value
     end
 
     def connect(accel_key, accel_mods : Gdk::ModifierType, accel_flags : Gtk::AccelFlags, closure)
-      LibGtk.accel_group_connect(to_unsafe.as(LibGtk::AccelGroup*), UInt32.new(accel_key), accel_mods, accel_flags, closure.to_unsafe.as(LibGObject::Closure*))
+      LibGtk.accel_group_connect(@pointer.as(LibGtk::AccelGroup*), UInt32.new(accel_key), accel_mods, accel_flags, closure.to_unsafe.as(LibGObject::Closure*))
       nil
     end
 
     def connect_by_path(accel_path, closure)
-      LibGtk.accel_group_connect_by_path(to_unsafe.as(LibGtk::AccelGroup*), accel_path.to_unsafe, closure.to_unsafe.as(LibGObject::Closure*))
+      LibGtk.accel_group_connect_by_path(@pointer.as(LibGtk::AccelGroup*), accel_path.to_unsafe, closure.to_unsafe.as(LibGObject::Closure*))
       nil
     end
 
     def disconnect(closure)
-      __return_value = LibGtk.accel_group_disconnect(to_unsafe.as(LibGtk::AccelGroup*), closure ? closure.to_unsafe.as(LibGObject::Closure*) : nil)
+      __return_value = LibGtk.accel_group_disconnect(@pointer.as(LibGtk::AccelGroup*), closure ? closure.to_unsafe.as(LibGObject::Closure*) : nil)
       __return_value
     end
 
     def disconnect_key(accel_key, accel_mods : Gdk::ModifierType)
-      __return_value = LibGtk.accel_group_disconnect_key(to_unsafe.as(LibGtk::AccelGroup*), UInt32.new(accel_key), accel_mods)
+      __return_value = LibGtk.accel_group_disconnect_key(@pointer.as(LibGtk::AccelGroup*), UInt32.new(accel_key), accel_mods)
       __return_value
     end
 
     def find(find_func, data)
-      __return_value = LibGtk.accel_group_find(to_unsafe.as(LibGtk::AccelGroup*), find_func, data ? data : nil)
+      __return_value = LibGtk.accel_group_find(@pointer.as(LibGtk::AccelGroup*), find_func, data ? data : nil)
       Gtk::AccelKey.new(__return_value)
     end
 
     def is_locked
-      __return_value = LibGtk.accel_group_get_is_locked(to_unsafe.as(LibGtk::AccelGroup*))
+      __return_value = LibGtk.accel_group_get_is_locked(@pointer.as(LibGtk::AccelGroup*))
       __return_value
     end
 
     def modifier_mask
-      __return_value = LibGtk.accel_group_get_modifier_mask(to_unsafe.as(LibGtk::AccelGroup*))
+      __return_value = LibGtk.accel_group_get_modifier_mask(@pointer.as(LibGtk::AccelGroup*))
       __return_value
     end
 
     def lock
-      LibGtk.accel_group_lock(to_unsafe.as(LibGtk::AccelGroup*))
+      LibGtk.accel_group_lock(@pointer.as(LibGtk::AccelGroup*))
       nil
     end
 
     def query(accel_key, accel_mods : Gdk::ModifierType, n_entries)
-      __return_value = LibGtk.accel_group_query(to_unsafe.as(LibGtk::AccelGroup*), UInt32.new(accel_key), accel_mods, n_entries)
+      __return_value = LibGtk.accel_group_query(@pointer.as(LibGtk::AccelGroup*), UInt32.new(accel_key), accel_mods, n_entries)
       PointerIterator.new(__return_value) {|__item| Gtk::AccelGroupEntry.new(__item) } if __return_value
     end
 
     def unlock
-      LibGtk.accel_group_unlock(to_unsafe.as(LibGtk::AccelGroup*))
+      LibGtk.accel_group_unlock(@pointer.as(LibGtk::AccelGroup*))
       nil
     end
 

@@ -11,12 +11,13 @@ module GObject
       end
     end
 
-    @g_object_flags_value : LibGObject::FlagsValue*?
-    def initialize(@g_object_flags_value : LibGObject::FlagsValue*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::FlagsValue*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_flags_value.not_nil!
+      @pointer.not_nil!.as(LibGObject::FlagsValue*)
     end
 
     def value

@@ -16,16 +16,17 @@ module GLib
       end
     end
 
-    @g_lib_hook : LibGLib::Hook*?
-    def initialize(@g_lib_hook : LibGLib::Hook*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::Hook*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_hook.not_nil!
+      @pointer.not_nil!.as(LibGLib::Hook*)
     end
 
     def compare_ids(sibling)
-      __return_value = LibGLib.hook_compare_ids(to_unsafe.as(LibGLib::Hook*), sibling.to_unsafe.as(LibGLib::Hook*))
+      __return_value = LibGLib.hook_compare_ids(@pointer.as(LibGLib::Hook*), sibling.to_unsafe.as(LibGLib::Hook*))
       __return_value
     end
 

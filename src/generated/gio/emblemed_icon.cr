@@ -1,11 +1,12 @@
 module Gio
   class EmblemedIcon < GObject::Object
-    @gio_emblemed_icon : LibGio::EmblemedIcon*?
-    def initialize(@gio_emblemed_icon : LibGio::EmblemedIcon*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::EmblemedIcon*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_emblemed_icon.not_nil!
+      @pointer.not_nil!.as(LibGio::EmblemedIcon*)
     end
 
     # Implements Icon
@@ -20,22 +21,22 @@ module Gio
     end
 
     def add_emblem(emblem)
-      LibGio.emblemed_icon_add_emblem(to_unsafe.as(LibGio::EmblemedIcon*), emblem.to_unsafe.as(LibGio::Emblem*))
+      LibGio.emblemed_icon_add_emblem(@pointer.as(LibGio::EmblemedIcon*), emblem.to_unsafe.as(LibGio::Emblem*))
       nil
     end
 
     def clear_emblems
-      LibGio.emblemed_icon_clear_emblems(to_unsafe.as(LibGio::EmblemedIcon*))
+      LibGio.emblemed_icon_clear_emblems(@pointer.as(LibGio::EmblemedIcon*))
       nil
     end
 
     def emblems
-      __return_value = LibGio.emblemed_icon_get_emblems(to_unsafe.as(LibGio::EmblemedIcon*))
+      __return_value = LibGio.emblemed_icon_get_emblems(@pointer.as(LibGio::EmblemedIcon*))
       GLib::ListIterator(Gio::Emblem, LibGio::Emblem*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def icon
-      __return_value = LibGio.emblemed_icon_get_icon(to_unsafe.as(LibGio::EmblemedIcon*))
+      __return_value = LibGio.emblemed_icon_get_icon(@pointer.as(LibGio::EmblemedIcon*))
       __return_value
     end
 

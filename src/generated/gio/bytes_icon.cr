@@ -1,11 +1,12 @@
 module Gio
   class BytesIcon < GObject::Object
-    @gio_bytes_icon : LibGio::BytesIcon*?
-    def initialize(@gio_bytes_icon : LibGio::BytesIcon*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::BytesIcon*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_bytes_icon.not_nil!
+      @pointer.not_nil!.as(LibGio::BytesIcon*)
     end
 
     # Implements Icon
@@ -21,7 +22,7 @@ module Gio
     end
 
     def bytes
-      __return_value = LibGio.bytes_icon_get_bytes(to_unsafe.as(LibGio::BytesIcon*))
+      __return_value = LibGio.bytes_icon_get_bytes(@pointer.as(LibGio::BytesIcon*))
       GLib::Bytes.new(__return_value)
     end
 

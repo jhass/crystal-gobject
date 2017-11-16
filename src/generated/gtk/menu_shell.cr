@@ -2,12 +2,13 @@ require "./container"
 
 module Gtk
   class MenuShell < Container
-    @gtk_menu_shell : LibGtk::MenuShell*?
-    def initialize(@gtk_menu_shell : LibGtk::MenuShell*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::MenuShell*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_menu_shell.not_nil!
+      @pointer.not_nil!.as(LibGtk::MenuShell*)
     end
 
     # Implements ImplementorIface
@@ -18,72 +19,72 @@ module Gtk
     end
 
     def activate_item(menu_item, force_deactivate)
-      LibGtk.menu_shell_activate_item(to_unsafe.as(LibGtk::MenuShell*), menu_item.to_unsafe.as(LibGtk::Widget*), force_deactivate)
+      LibGtk.menu_shell_activate_item(@pointer.as(LibGtk::MenuShell*), menu_item.to_unsafe.as(LibGtk::Widget*), force_deactivate)
       nil
     end
 
     def append(child)
-      LibGtk.menu_shell_append(to_unsafe.as(LibGtk::MenuShell*), child.to_unsafe.as(LibGtk::MenuItem*))
+      LibGtk.menu_shell_append(@pointer.as(LibGtk::MenuShell*), child.to_unsafe.as(LibGtk::MenuItem*))
       nil
     end
 
     def bind_model(model, action_namespace, with_separators)
-      LibGtk.menu_shell_bind_model(to_unsafe.as(LibGtk::MenuShell*), model ? model.to_unsafe.as(LibGio::MenuModel*) : nil, action_namespace ? action_namespace.to_unsafe : nil, with_separators)
+      LibGtk.menu_shell_bind_model(@pointer.as(LibGtk::MenuShell*), model ? model.to_unsafe.as(LibGio::MenuModel*) : nil, action_namespace ? action_namespace.to_unsafe : nil, with_separators)
       nil
     end
 
     def cancel
-      LibGtk.menu_shell_cancel(to_unsafe.as(LibGtk::MenuShell*))
+      LibGtk.menu_shell_cancel(@pointer.as(LibGtk::MenuShell*))
       nil
     end
 
     def deactivate
-      LibGtk.menu_shell_deactivate(to_unsafe.as(LibGtk::MenuShell*))
+      LibGtk.menu_shell_deactivate(@pointer.as(LibGtk::MenuShell*))
       nil
     end
 
     def deselect
-      LibGtk.menu_shell_deselect(to_unsafe.as(LibGtk::MenuShell*))
+      LibGtk.menu_shell_deselect(@pointer.as(LibGtk::MenuShell*))
       nil
     end
 
     def parent_shell
-      __return_value = LibGtk.menu_shell_get_parent_shell(to_unsafe.as(LibGtk::MenuShell*))
+      __return_value = LibGtk.menu_shell_get_parent_shell(@pointer.as(LibGtk::MenuShell*))
       Gtk::Widget.new(__return_value)
     end
 
     def selected_item
-      __return_value = LibGtk.menu_shell_get_selected_item(to_unsafe.as(LibGtk::MenuShell*))
+      __return_value = LibGtk.menu_shell_get_selected_item(@pointer.as(LibGtk::MenuShell*))
       Gtk::Widget.new(__return_value)
     end
 
     def take_focus
-      __return_value = LibGtk.menu_shell_get_take_focus(to_unsafe.as(LibGtk::MenuShell*))
+      __return_value = LibGtk.menu_shell_get_take_focus(@pointer.as(LibGtk::MenuShell*))
       __return_value
     end
 
     def insert(child, position)
-      LibGtk.menu_shell_insert(to_unsafe.as(LibGtk::MenuShell*), child.to_unsafe.as(LibGtk::Widget*), Int32.new(position))
+      LibGtk.menu_shell_insert(@pointer.as(LibGtk::MenuShell*), child.to_unsafe.as(LibGtk::Widget*), Int32.new(position))
       nil
     end
 
     def prepend(child)
-      LibGtk.menu_shell_prepend(to_unsafe.as(LibGtk::MenuShell*), child.to_unsafe.as(LibGtk::Widget*))
+      LibGtk.menu_shell_prepend(@pointer.as(LibGtk::MenuShell*), child.to_unsafe.as(LibGtk::Widget*))
       nil
     end
 
     def select_first(search_sensitive)
-      LibGtk.menu_shell_select_first(to_unsafe.as(LibGtk::MenuShell*), search_sensitive)
+      LibGtk.menu_shell_select_first(@pointer.as(LibGtk::MenuShell*), search_sensitive)
       nil
     end
 
     def select_item(menu_item)
-      LibGtk.menu_shell_select_item(to_unsafe.as(LibGtk::MenuShell*), menu_item.to_unsafe.as(LibGtk::Widget*))
+      LibGtk.menu_shell_select_item(@pointer.as(LibGtk::MenuShell*), menu_item.to_unsafe.as(LibGtk::Widget*))
       nil
     end
 
     def take_focus=(take_focus)
-      LibGtk.menu_shell_set_take_focus(to_unsafe.as(LibGtk::MenuShell*), take_focus)
+      LibGtk.menu_shell_set_take_focus(@pointer.as(LibGtk::MenuShell*), take_focus)
       nil
     end
 

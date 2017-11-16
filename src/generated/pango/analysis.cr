@@ -17,12 +17,13 @@ module Pango
       end
     end
 
-    @pango_analysis : LibPango::Analysis*?
-    def initialize(@pango_analysis : LibPango::Analysis*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::Analysis*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_analysis.not_nil!
+      @pointer.not_nil!.as(LibPango::Analysis*)
     end
 
     def shape_engine

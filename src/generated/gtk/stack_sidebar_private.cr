@@ -2,12 +2,13 @@ module Gtk
   class StackSidebarPrivate
     include GObject::WrappedType
 
-    @gtk_stack_sidebar_private : LibGtk::StackSidebarPrivate*?
-    def initialize(@gtk_stack_sidebar_private : LibGtk::StackSidebarPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::StackSidebarPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_stack_sidebar_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::StackSidebarPrivate*)
     end
 
   end

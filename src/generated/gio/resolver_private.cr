@@ -2,12 +2,13 @@ module Gio
   class ResolverPrivate
     include GObject::WrappedType
 
-    @gio_resolver_private : LibGio::ResolverPrivate*?
-    def initialize(@gio_resolver_private : LibGio::ResolverPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::ResolverPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_resolver_private.not_nil!
+      @pointer.not_nil!.as(LibGio::ResolverPrivate*)
     end
 
   end

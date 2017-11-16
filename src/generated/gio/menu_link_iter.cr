@@ -1,30 +1,31 @@
 module Gio
   class MenuLinkIter < GObject::Object
-    @gio_menu_link_iter : LibGio::MenuLinkIter*?
-    def initialize(@gio_menu_link_iter : LibGio::MenuLinkIter*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::MenuLinkIter*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_menu_link_iter.not_nil!
+      @pointer.not_nil!.as(LibGio::MenuLinkIter*)
     end
 
     def name
-      __return_value = LibGio.menu_link_iter_get_name(to_unsafe.as(LibGio::MenuLinkIter*))
+      __return_value = LibGio.menu_link_iter_get_name(@pointer.as(LibGio::MenuLinkIter*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def next(out_link, value)
-      __return_value = LibGio.menu_link_iter_get_next(to_unsafe.as(LibGio::MenuLinkIter*), out_link, value)
+      __return_value = LibGio.menu_link_iter_get_next(@pointer.as(LibGio::MenuLinkIter*), out_link, value)
       __return_value
     end
 
     def value
-      __return_value = LibGio.menu_link_iter_get_value(to_unsafe.as(LibGio::MenuLinkIter*))
+      __return_value = LibGio.menu_link_iter_get_value(@pointer.as(LibGio::MenuLinkIter*))
       Gio::MenuModel.new(__return_value)
     end
 
     def next
-      __return_value = LibGio.menu_link_iter_next(to_unsafe.as(LibGio::MenuLinkIter*))
+      __return_value = LibGio.menu_link_iter_next(@pointer.as(LibGio::MenuLinkIter*))
       __return_value
     end
 

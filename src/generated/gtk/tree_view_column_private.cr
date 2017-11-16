@@ -2,12 +2,13 @@ module Gtk
   class TreeViewColumnPrivate
     include GObject::WrappedType
 
-    @gtk_tree_view_column_private : LibGtk::TreeViewColumnPrivate*?
-    def initialize(@gtk_tree_view_column_private : LibGtk::TreeViewColumnPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::TreeViewColumnPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_tree_view_column_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::TreeViewColumnPrivate*)
     end
 
   end

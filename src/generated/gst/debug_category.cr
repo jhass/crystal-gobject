@@ -7,46 +7,47 @@ module Gst
       super(ptr.as(LibGst::DebugCategory*))
     end
 
-    @gst_debug_category : LibGst::DebugCategory*?
-    def initialize(@gst_debug_category : LibGst::DebugCategory*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::DebugCategory*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_debug_category.not_nil!
+      @pointer.not_nil!.as(LibGst::DebugCategory*)
     end
 
     def free
-      LibGst.debug_category_free(to_unsafe.as(LibGst::DebugCategory*))
+      LibGst.debug_category_free(@pointer.as(LibGst::DebugCategory*))
       nil
     end
 
     def color
-      __return_value = LibGst.debug_category_get_color(to_unsafe.as(LibGst::DebugCategory*))
+      __return_value = LibGst.debug_category_get_color(@pointer.as(LibGst::DebugCategory*))
       __return_value
     end
 
     def description
-      __return_value = LibGst.debug_category_get_description(to_unsafe.as(LibGst::DebugCategory*))
+      __return_value = LibGst.debug_category_get_description(@pointer.as(LibGst::DebugCategory*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def name
-      __return_value = LibGst.debug_category_get_name(to_unsafe.as(LibGst::DebugCategory*))
+      __return_value = LibGst.debug_category_get_name(@pointer.as(LibGst::DebugCategory*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def threshold
-      __return_value = LibGst.debug_category_get_threshold(to_unsafe.as(LibGst::DebugCategory*))
+      __return_value = LibGst.debug_category_get_threshold(@pointer.as(LibGst::DebugCategory*))
       __return_value
     end
 
     def reset_threshold
-      LibGst.debug_category_reset_threshold(to_unsafe.as(LibGst::DebugCategory*))
+      LibGst.debug_category_reset_threshold(@pointer.as(LibGst::DebugCategory*))
       nil
     end
 
     def threshold=(level : Gst::DebugLevel)
-      LibGst.debug_category_set_threshold(to_unsafe.as(LibGst::DebugCategory*), level)
+      LibGst.debug_category_set_threshold(@pointer.as(LibGst::DebugCategory*), level)
       nil
     end
 

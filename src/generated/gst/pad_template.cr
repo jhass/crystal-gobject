@@ -2,12 +2,13 @@ require "./object"
 
 module Gst
   class PadTemplate < Object
-    @gst_pad_template : LibGst::PadTemplate*?
-    def initialize(@gst_pad_template : LibGst::PadTemplate*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::PadTemplate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_pad_template.not_nil!
+      @pointer.not_nil!.as(LibGst::PadTemplate*)
     end
 
     def caps
@@ -36,12 +37,12 @@ module Gst
     end
 
     def caps
-      __return_value = LibGst.pad_template_get_caps(to_unsafe.as(LibGst::PadTemplate*))
+      __return_value = LibGst.pad_template_get_caps(@pointer.as(LibGst::PadTemplate*))
       Gst::Caps.new(__return_value)
     end
 
     def pad_created(pad)
-      LibGst.pad_template_pad_created(to_unsafe.as(LibGst::PadTemplate*), pad.to_unsafe.as(LibGst::Pad*))
+      LibGst.pad_template_pad_created(@pointer.as(LibGst::PadTemplate*), pad.to_unsafe.as(LibGst::Pad*))
       nil
     end
 

@@ -2,12 +2,13 @@ require "./fontset"
 
 module Pango
   class FontsetSimple < Fontset
-    @pango_fontset_simple : LibPango::FontsetSimple*?
-    def initialize(@pango_fontset_simple : LibPango::FontsetSimple*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::FontsetSimple*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_fontset_simple.not_nil!
+      @pointer.not_nil!.as(LibPango::FontsetSimple*)
     end
 
     def self.new(language) : self
@@ -16,12 +17,12 @@ module Pango
     end
 
     def append(font)
-      LibPango.fontset_simple_append(to_unsafe.as(LibPango::FontsetSimple*), font.to_unsafe.as(LibPango::Font*))
+      LibPango.fontset_simple_append(@pointer.as(LibPango::FontsetSimple*), font.to_unsafe.as(LibPango::Font*))
       nil
     end
 
     def size
-      __return_value = LibPango.fontset_simple_size(to_unsafe.as(LibPango::FontsetSimple*))
+      __return_value = LibPango.fontset_simple_size(@pointer.as(LibPango::FontsetSimple*))
       __return_value
     end
 

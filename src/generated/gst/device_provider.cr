@@ -2,12 +2,13 @@ require "./object"
 
 module Gst
   class DeviceProvider < Object
-    @gst_device_provider : LibGst::DeviceProvider*?
-    def initialize(@gst_device_provider : LibGst::DeviceProvider*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::DeviceProvider*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_device_provider.not_nil!
+      @pointer.not_nil!.as(LibGst::DeviceProvider*)
     end
 
     def self.register(plugin, name, rank, type)
@@ -16,57 +17,57 @@ module Gst
     end
 
     def can_monitor
-      __return_value = LibGst.device_provider_can_monitor(to_unsafe.as(LibGst::DeviceProvider*))
+      __return_value = LibGst.device_provider_can_monitor(@pointer.as(LibGst::DeviceProvider*))
       __return_value
     end
 
     def device_add(device)
-      LibGst.device_provider_device_add(to_unsafe.as(LibGst::DeviceProvider*), device.to_unsafe.as(LibGst::Device*))
+      LibGst.device_provider_device_add(@pointer.as(LibGst::DeviceProvider*), device.to_unsafe.as(LibGst::Device*))
       nil
     end
 
     def device_remove(device)
-      LibGst.device_provider_device_remove(to_unsafe.as(LibGst::DeviceProvider*), device.to_unsafe.as(LibGst::Device*))
+      LibGst.device_provider_device_remove(@pointer.as(LibGst::DeviceProvider*), device.to_unsafe.as(LibGst::Device*))
       nil
     end
 
     def bus
-      __return_value = LibGst.device_provider_get_bus(to_unsafe.as(LibGst::DeviceProvider*))
+      __return_value = LibGst.device_provider_get_bus(@pointer.as(LibGst::DeviceProvider*))
       Gst::Bus.new(__return_value)
     end
 
     def devices
-      __return_value = LibGst.device_provider_get_devices(to_unsafe.as(LibGst::DeviceProvider*))
+      __return_value = LibGst.device_provider_get_devices(@pointer.as(LibGst::DeviceProvider*))
       GLib::ListIterator(Gst::Device, LibGst::Device*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def factory
-      __return_value = LibGst.device_provider_get_factory(to_unsafe.as(LibGst::DeviceProvider*))
+      __return_value = LibGst.device_provider_get_factory(@pointer.as(LibGst::DeviceProvider*))
       Gst::DeviceProviderFactory.new(__return_value)
     end
 
     def hidden_providers
-      __return_value = LibGst.device_provider_get_hidden_providers(to_unsafe.as(LibGst::DeviceProvider*))
+      __return_value = LibGst.device_provider_get_hidden_providers(@pointer.as(LibGst::DeviceProvider*))
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def hide_provider(name)
-      LibGst.device_provider_hide_provider(to_unsafe.as(LibGst::DeviceProvider*), name.to_unsafe)
+      LibGst.device_provider_hide_provider(@pointer.as(LibGst::DeviceProvider*), name.to_unsafe)
       nil
     end
 
     def start
-      __return_value = LibGst.device_provider_start(to_unsafe.as(LibGst::DeviceProvider*))
+      __return_value = LibGst.device_provider_start(@pointer.as(LibGst::DeviceProvider*))
       __return_value
     end
 
     def stop
-      LibGst.device_provider_stop(to_unsafe.as(LibGst::DeviceProvider*))
+      LibGst.device_provider_stop(@pointer.as(LibGst::DeviceProvider*))
       nil
     end
 
     def unhide_provider(name)
-      LibGst.device_provider_unhide_provider(to_unsafe.as(LibGst::DeviceProvider*), name.to_unsafe)
+      LibGst.device_provider_unhide_provider(@pointer.as(LibGst::DeviceProvider*), name.to_unsafe)
       nil
     end
 

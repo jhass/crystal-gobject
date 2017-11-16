@@ -2,12 +2,13 @@ require "./container_accessible"
 
 module Gtk
   class PanedAccessible < ContainerAccessible
-    @gtk_paned_accessible : LibGtk::PanedAccessible*?
-    def initialize(@gtk_paned_accessible : LibGtk::PanedAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::PanedAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_paned_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::PanedAccessible*)
     end
 
     # Implements Component

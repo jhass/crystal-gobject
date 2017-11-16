@@ -1,11 +1,12 @@
 module Gtk
   class IconFactory < GObject::Object
-    @gtk_icon_factory : LibGtk::IconFactory*?
-    def initialize(@gtk_icon_factory : LibGtk::IconFactory*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::IconFactory*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_icon_factory.not_nil!
+      @pointer.not_nil!.as(LibGtk::IconFactory*)
     end
 
     # Implements Buildable
@@ -20,22 +21,22 @@ module Gtk
     end
 
     def add(stock_id, icon_set)
-      LibGtk.icon_factory_add(to_unsafe.as(LibGtk::IconFactory*), stock_id.to_unsafe, icon_set.to_unsafe.as(LibGtk::IconSet*))
+      LibGtk.icon_factory_add(@pointer.as(LibGtk::IconFactory*), stock_id.to_unsafe, icon_set.to_unsafe.as(LibGtk::IconSet*))
       nil
     end
 
     def add_default
-      LibGtk.icon_factory_add_default(to_unsafe.as(LibGtk::IconFactory*))
+      LibGtk.icon_factory_add_default(@pointer.as(LibGtk::IconFactory*))
       nil
     end
 
     def lookup(stock_id)
-      __return_value = LibGtk.icon_factory_lookup(to_unsafe.as(LibGtk::IconFactory*), stock_id.to_unsafe)
+      __return_value = LibGtk.icon_factory_lookup(@pointer.as(LibGtk::IconFactory*), stock_id.to_unsafe)
       Gtk::IconSet.new(__return_value)
     end
 
     def remove_default
-      LibGtk.icon_factory_remove_default(to_unsafe.as(LibGtk::IconFactory*))
+      LibGtk.icon_factory_remove_default(@pointer.as(LibGtk::IconFactory*))
       nil
     end
 

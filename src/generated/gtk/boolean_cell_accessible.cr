@@ -2,12 +2,13 @@ require "./renderer_cell_accessible"
 
 module Gtk
   class BooleanCellAccessible < RendererCellAccessible
-    @gtk_boolean_cell_accessible : LibGtk::BooleanCellAccessible*?
-    def initialize(@gtk_boolean_cell_accessible : LibGtk::BooleanCellAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::BooleanCellAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_boolean_cell_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::BooleanCellAccessible*)
     end
 
     # Implements Action

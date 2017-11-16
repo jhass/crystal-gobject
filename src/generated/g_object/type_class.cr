@@ -7,31 +7,32 @@ module GObject
       super(ptr.as(LibGObject::TypeClass*))
     end
 
-    @g_object_type_class : LibGObject::TypeClass*?
-    def initialize(@g_object_type_class : LibGObject::TypeClass*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::TypeClass*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_type_class.not_nil!
+      @pointer.not_nil!.as(LibGObject::TypeClass*)
     end
 
     def add_private(private_size)
-      LibGObject.type_class_add_private(to_unsafe.as(LibGObject::TypeClass*), UInt64.new(private_size))
+      LibGObject.type_class_add_private(@pointer.as(LibGObject::TypeClass*), UInt64.new(private_size))
       nil
     end
 
     def private(private_type)
-      LibGObject.type_class_get_private(to_unsafe.as(LibGObject::TypeClass*), UInt64.new(private_type))
+      LibGObject.type_class_get_private(@pointer.as(LibGObject::TypeClass*), UInt64.new(private_type))
       nil
     end
 
     def peek_parent
-      __return_value = LibGObject.type_class_peek_parent(to_unsafe.as(LibGObject::TypeClass*))
+      __return_value = LibGObject.type_class_peek_parent(@pointer.as(LibGObject::TypeClass*))
       GObject::TypeClass.new(__return_value)
     end
 
     def unref
-      LibGObject.type_class_unref(to_unsafe.as(LibGObject::TypeClass*))
+      LibGObject.type_class_unref(@pointer.as(LibGObject::TypeClass*))
       nil
     end
 

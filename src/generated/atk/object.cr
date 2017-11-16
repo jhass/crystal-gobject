@@ -1,11 +1,12 @@
 module Atk
   class Object < GObject::Object
-    @atk_object : LibAtk::Object*?
-    def initialize(@atk_object : LibAtk::Object*)
+    @pointer : Void*
+    def initialize(pointer : LibAtk::Object*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @atk_object.not_nil!
+      @pointer.not_nil!.as(LibAtk::Object*)
     end
 
     def accessible_component_layer
@@ -84,117 +85,117 @@ module Atk
     end
 
     def add_relationship(relationship : Atk::RelationType, target)
-      __return_value = LibAtk.object_add_relationship(to_unsafe.as(LibAtk::Object*), relationship, target.to_unsafe.as(LibAtk::Object*))
+      __return_value = LibAtk.object_add_relationship(@pointer.as(LibAtk::Object*), relationship, target.to_unsafe.as(LibAtk::Object*))
       __return_value
     end
 
     def attributes
-      __return_value = LibAtk.object_get_attributes(to_unsafe.as(LibAtk::Object*))
+      __return_value = LibAtk.object_get_attributes(@pointer.as(LibAtk::Object*))
       GLib::SListIterator(Void*, Void**).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def description
-      __return_value = LibAtk.object_get_description(to_unsafe.as(LibAtk::Object*))
+      __return_value = LibAtk.object_get_description(@pointer.as(LibAtk::Object*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def index_in_parent
-      __return_value = LibAtk.object_get_index_in_parent(to_unsafe.as(LibAtk::Object*))
+      __return_value = LibAtk.object_get_index_in_parent(@pointer.as(LibAtk::Object*))
       __return_value
     end
 
     def layer
-      __return_value = LibAtk.object_get_layer(to_unsafe.as(LibAtk::Object*))
+      __return_value = LibAtk.object_get_layer(@pointer.as(LibAtk::Object*))
       __return_value
     end
 
     def mdi_zorder
-      __return_value = LibAtk.object_get_mdi_zorder(to_unsafe.as(LibAtk::Object*))
+      __return_value = LibAtk.object_get_mdi_zorder(@pointer.as(LibAtk::Object*))
       __return_value
     end
 
     def n_accessible_children
-      __return_value = LibAtk.object_get_n_accessible_children(to_unsafe.as(LibAtk::Object*))
+      __return_value = LibAtk.object_get_n_accessible_children(@pointer.as(LibAtk::Object*))
       __return_value
     end
 
     def name
-      __return_value = LibAtk.object_get_name(to_unsafe.as(LibAtk::Object*))
+      __return_value = LibAtk.object_get_name(@pointer.as(LibAtk::Object*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def object_locale
-      __return_value = LibAtk.object_get_object_locale(to_unsafe.as(LibAtk::Object*))
+      __return_value = LibAtk.object_get_object_locale(@pointer.as(LibAtk::Object*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def parent
-      __return_value = LibAtk.object_get_parent(to_unsafe.as(LibAtk::Object*))
+      __return_value = LibAtk.object_get_parent(@pointer.as(LibAtk::Object*))
       Atk::Object.new(__return_value)
     end
 
     def role
-      __return_value = LibAtk.object_get_role(to_unsafe.as(LibAtk::Object*))
+      __return_value = LibAtk.object_get_role(@pointer.as(LibAtk::Object*))
       __return_value
     end
 
     def init(data)
-      LibAtk.object_init(to_unsafe.as(LibAtk::Object*), data ? data : nil)
+      LibAtk.object_init(@pointer.as(LibAtk::Object*), data ? data : nil)
       nil
     end
 
     def notify_state_change(state, value)
-      LibAtk.object_notify_state_change(to_unsafe.as(LibAtk::Object*), UInt64.new(state), value)
+      LibAtk.object_notify_state_change(@pointer.as(LibAtk::Object*), UInt64.new(state), value)
       nil
     end
 
     def peek_parent
-      __return_value = LibAtk.object_peek_parent(to_unsafe.as(LibAtk::Object*))
+      __return_value = LibAtk.object_peek_parent(@pointer.as(LibAtk::Object*))
       Atk::Object.new(__return_value)
     end
 
     def ref_accessible_child(i)
-      __return_value = LibAtk.object_ref_accessible_child(to_unsafe.as(LibAtk::Object*), Int32.new(i))
+      __return_value = LibAtk.object_ref_accessible_child(@pointer.as(LibAtk::Object*), Int32.new(i))
       Atk::Object.new(__return_value)
     end
 
     def ref_relation_set
-      __return_value = LibAtk.object_ref_relation_set(to_unsafe.as(LibAtk::Object*))
+      __return_value = LibAtk.object_ref_relation_set(@pointer.as(LibAtk::Object*))
       Atk::RelationSet.new(__return_value)
     end
 
     def ref_state_set
-      __return_value = LibAtk.object_ref_state_set(to_unsafe.as(LibAtk::Object*))
+      __return_value = LibAtk.object_ref_state_set(@pointer.as(LibAtk::Object*))
       Atk::StateSet.new(__return_value)
     end
 
     def remove_property_change_handler(handler_id)
-      LibAtk.object_remove_property_change_handler(to_unsafe.as(LibAtk::Object*), UInt32.new(handler_id))
+      LibAtk.object_remove_property_change_handler(@pointer.as(LibAtk::Object*), UInt32.new(handler_id))
       nil
     end
 
     def remove_relationship(relationship : Atk::RelationType, target)
-      __return_value = LibAtk.object_remove_relationship(to_unsafe.as(LibAtk::Object*), relationship, target.to_unsafe.as(LibAtk::Object*))
+      __return_value = LibAtk.object_remove_relationship(@pointer.as(LibAtk::Object*), relationship, target.to_unsafe.as(LibAtk::Object*))
       __return_value
     end
 
     def description=(description)
-      LibAtk.object_set_description(to_unsafe.as(LibAtk::Object*), description.to_unsafe)
+      LibAtk.object_set_description(@pointer.as(LibAtk::Object*), description.to_unsafe)
       nil
     end
 
     def name=(name)
-      LibAtk.object_set_name(to_unsafe.as(LibAtk::Object*), name.to_unsafe)
+      LibAtk.object_set_name(@pointer.as(LibAtk::Object*), name.to_unsafe)
       nil
     end
 
     def parent=(parent)
-      LibAtk.object_set_parent(to_unsafe.as(LibAtk::Object*), parent.to_unsafe.as(LibAtk::Object*))
+      LibAtk.object_set_parent(@pointer.as(LibAtk::Object*), parent.to_unsafe.as(LibAtk::Object*))
       nil
     end
 
     def role=(role : Atk::Role)
-      LibAtk.object_set_role(to_unsafe.as(LibAtk::Object*), role)
+      LibAtk.object_set_role(@pointer.as(LibAtk::Object*), role)
       nil
     end
 

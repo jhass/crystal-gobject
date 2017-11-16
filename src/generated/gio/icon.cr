@@ -18,17 +18,17 @@ module Gio
     end
 
     def equal(icon2)
-      __return_value = LibGio.icon_equal(to_unsafe.as(LibGio::Icon*), icon2 ? icon2.to_unsafe.as(LibGio::Icon*) : nil)
+      __return_value = LibGio.icon_equal(@pointer.as(LibGio::Icon*), icon2 ? icon2.to_unsafe.as(LibGio::Icon*) : nil)
       __return_value
     end
 
     def serialize
-      __return_value = LibGio.icon_serialize(to_unsafe.as(LibGio::Icon*))
+      __return_value = LibGio.icon_serialize(@pointer.as(LibGio::Icon*))
       GLib::Variant.new(__return_value)
     end
 
     def to_string
-      __return_value = LibGio.icon_to_string(to_unsafe.as(LibGio::Icon*))
+      __return_value = LibGio.icon_to_string(@pointer.as(LibGio::Icon*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 

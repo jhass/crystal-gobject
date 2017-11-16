@@ -21,12 +21,13 @@ module Gdk
       end
     end
 
-    @gdk_event_crossing : LibGdk::EventCrossing*?
-    def initialize(@gdk_event_crossing : LibGdk::EventCrossing*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::EventCrossing*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_event_crossing.not_nil!
+      @pointer.not_nil!.as(LibGdk::EventCrossing*)
     end
 
     def type

@@ -2,12 +2,13 @@ require "./accessible"
 
 module Gtk
   class CellAccessible < Accessible
-    @gtk_cell_accessible : LibGtk::CellAccessible*?
-    def initialize(@gtk_cell_accessible : LibGtk::CellAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::CellAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_cell_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::CellAccessible*)
     end
 
     # Implements Action

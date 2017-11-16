@@ -11,12 +11,13 @@ module GLib
       end
     end
 
-    @g_lib_list : LibGLib::List*?
-    def initialize(@g_lib_list : LibGLib::List*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::List*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_list.not_nil!
+      @pointer.not_nil!.as(LibGLib::List*)
     end
 
     def data

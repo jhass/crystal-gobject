@@ -2,12 +2,13 @@ module Gtk
   class ToggleButtonPrivate
     include GObject::WrappedType
 
-    @gtk_toggle_button_private : LibGtk::ToggleButtonPrivate*?
-    def initialize(@gtk_toggle_button_private : LibGtk::ToggleButtonPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ToggleButtonPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_toggle_button_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::ToggleButtonPrivate*)
     end
 
   end

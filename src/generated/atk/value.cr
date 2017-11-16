@@ -1,52 +1,52 @@
 module Atk
   module Value
     def current_value(value)
-      LibAtk.value_get_current_value(to_unsafe.as(LibAtk::Value*), value)
+      LibAtk.value_get_current_value(@pointer.as(LibAtk::Value*), value)
       nil
     end
 
     def increment
-      __return_value = LibAtk.value_get_increment(to_unsafe.as(LibAtk::Value*))
+      __return_value = LibAtk.value_get_increment(@pointer.as(LibAtk::Value*))
       __return_value
     end
 
     def maximum_value(value)
-      LibAtk.value_get_maximum_value(to_unsafe.as(LibAtk::Value*), value)
+      LibAtk.value_get_maximum_value(@pointer.as(LibAtk::Value*), value)
       nil
     end
 
     def minimum_increment(value)
-      LibAtk.value_get_minimum_increment(to_unsafe.as(LibAtk::Value*), value)
+      LibAtk.value_get_minimum_increment(@pointer.as(LibAtk::Value*), value)
       nil
     end
 
     def minimum_value(value)
-      LibAtk.value_get_minimum_value(to_unsafe.as(LibAtk::Value*), value)
+      LibAtk.value_get_minimum_value(@pointer.as(LibAtk::Value*), value)
       nil
     end
 
     def range
-      __return_value = LibAtk.value_get_range(to_unsafe.as(LibAtk::Value*))
+      __return_value = LibAtk.value_get_range(@pointer.as(LibAtk::Value*))
       Atk::Range.new(__return_value) if __return_value
     end
 
     def sub_ranges
-      __return_value = LibAtk.value_get_sub_ranges(to_unsafe.as(LibAtk::Value*))
+      __return_value = LibAtk.value_get_sub_ranges(@pointer.as(LibAtk::Value*))
       GLib::SListIterator(Atk::Range, LibAtk::Range*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def value_and_text(value, text)
-      LibAtk.value_get_value_and_text(to_unsafe.as(LibAtk::Value*), value, text)
+      LibAtk.value_get_value_and_text(@pointer.as(LibAtk::Value*), value, text)
       nil
     end
 
     def current_value=(value)
-      __return_value = LibAtk.value_set_current_value(to_unsafe.as(LibAtk::Value*), value.to_unsafe.as(LibGObject::Value*))
+      __return_value = LibAtk.value_set_current_value(@pointer.as(LibAtk::Value*), value.to_unsafe.as(LibGObject::Value*))
       __return_value
     end
 
     def value=(new_value)
-      LibAtk.value_set_value(to_unsafe.as(LibAtk::Value*), Float64.new(new_value))
+      LibAtk.value_set_value(@pointer.as(LibAtk::Value*), Float64.new(new_value))
       nil
     end
 

@@ -2,12 +2,13 @@ require "./combo_box"
 
 module Gtk
   class AppChooserButton < ComboBox
-    @gtk_app_chooser_button : LibGtk::AppChooserButton*?
-    def initialize(@gtk_app_chooser_button : LibGtk::AppChooserButton*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::AppChooserButton*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_app_chooser_button.not_nil!
+      @pointer.not_nil!.as(LibGtk::AppChooserButton*)
     end
 
     # Implements ImplementorIface
@@ -36,47 +37,47 @@ module Gtk
     end
 
     def append_custom_item(name, label, icon)
-      LibGtk.app_chooser_button_append_custom_item(to_unsafe.as(LibGtk::AppChooserButton*), name.to_unsafe, label.to_unsafe, icon.to_unsafe.as(LibGio::Icon*))
+      LibGtk.app_chooser_button_append_custom_item(@pointer.as(LibGtk::AppChooserButton*), name.to_unsafe, label.to_unsafe, icon.to_unsafe.as(LibGio::Icon*))
       nil
     end
 
     def append_separator
-      LibGtk.app_chooser_button_append_separator(to_unsafe.as(LibGtk::AppChooserButton*))
+      LibGtk.app_chooser_button_append_separator(@pointer.as(LibGtk::AppChooserButton*))
       nil
     end
 
     def heading
-      __return_value = LibGtk.app_chooser_button_get_heading(to_unsafe.as(LibGtk::AppChooserButton*))
+      __return_value = LibGtk.app_chooser_button_get_heading(@pointer.as(LibGtk::AppChooserButton*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def show_default_item
-      __return_value = LibGtk.app_chooser_button_get_show_default_item(to_unsafe.as(LibGtk::AppChooserButton*))
+      __return_value = LibGtk.app_chooser_button_get_show_default_item(@pointer.as(LibGtk::AppChooserButton*))
       __return_value
     end
 
     def show_dialog_item
-      __return_value = LibGtk.app_chooser_button_get_show_dialog_item(to_unsafe.as(LibGtk::AppChooserButton*))
+      __return_value = LibGtk.app_chooser_button_get_show_dialog_item(@pointer.as(LibGtk::AppChooserButton*))
       __return_value
     end
 
     def active_custom_item=(name)
-      LibGtk.app_chooser_button_set_active_custom_item(to_unsafe.as(LibGtk::AppChooserButton*), name.to_unsafe)
+      LibGtk.app_chooser_button_set_active_custom_item(@pointer.as(LibGtk::AppChooserButton*), name.to_unsafe)
       nil
     end
 
     def heading=(heading)
-      LibGtk.app_chooser_button_set_heading(to_unsafe.as(LibGtk::AppChooserButton*), heading.to_unsafe)
+      LibGtk.app_chooser_button_set_heading(@pointer.as(LibGtk::AppChooserButton*), heading.to_unsafe)
       nil
     end
 
     def show_default_item=(setting)
-      LibGtk.app_chooser_button_set_show_default_item(to_unsafe.as(LibGtk::AppChooserButton*), setting)
+      LibGtk.app_chooser_button_set_show_default_item(@pointer.as(LibGtk::AppChooserButton*), setting)
       nil
     end
 
     def show_dialog_item=(setting)
-      LibGtk.app_chooser_button_set_show_dialog_item(to_unsafe.as(LibGtk::AppChooserButton*), setting)
+      LibGtk.app_chooser_button_set_show_dialog_item(@pointer.as(LibGtk::AppChooserButton*), setting)
       nil
     end
 

@@ -2,12 +2,13 @@ module Gst
   class ControlBindingPrivate
     include GObject::WrappedType
 
-    @gst_control_binding_private : LibGst::ControlBindingPrivate*?
-    def initialize(@gst_control_binding_private : LibGst::ControlBindingPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::ControlBindingPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_control_binding_private.not_nil!
+      @pointer.not_nil!.as(LibGst::ControlBindingPrivate*)
     end
 
   end

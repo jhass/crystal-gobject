@@ -2,12 +2,13 @@ module Gtk
   class PanedPrivate
     include GObject::WrappedType
 
-    @gtk_paned_private : LibGtk::PanedPrivate*?
-    def initialize(@gtk_paned_private : LibGtk::PanedPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::PanedPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_paned_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::PanedPrivate*)
     end
 
   end

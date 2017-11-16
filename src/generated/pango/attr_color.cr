@@ -10,12 +10,13 @@ module Pango
       end
     end
 
-    @pango_attr_color : LibPango::AttrColor*?
-    def initialize(@pango_attr_color : LibPango::AttrColor*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::AttrColor*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_attr_color.not_nil!
+      @pointer.not_nil!.as(LibPango::AttrColor*)
     end
 
     def attr

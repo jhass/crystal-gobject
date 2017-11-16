@@ -16,41 +16,42 @@ module Pango
       end
     end
 
-    @pango_glyph_item_iter : LibPango::GlyphItemIter*?
-    def initialize(@pango_glyph_item_iter : LibPango::GlyphItemIter*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::GlyphItemIter*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_glyph_item_iter.not_nil!
+      @pointer.not_nil!.as(LibPango::GlyphItemIter*)
     end
 
     def copy
-      __return_value = LibPango.glyph_item_iter_copy(to_unsafe.as(LibPango::GlyphItemIter*))
+      __return_value = LibPango.glyph_item_iter_copy(@pointer.as(LibPango::GlyphItemIter*))
       Pango::GlyphItemIter.new(__return_value) if __return_value
     end
 
     def free
-      LibPango.glyph_item_iter_free(to_unsafe.as(LibPango::GlyphItemIter*))
+      LibPango.glyph_item_iter_free(@pointer.as(LibPango::GlyphItemIter*))
       nil
     end
 
     def init_end(glyph_item, text)
-      __return_value = LibPango.glyph_item_iter_init_end(to_unsafe.as(LibPango::GlyphItemIter*), glyph_item.to_unsafe.as(LibPango::GlyphItem*), text.to_unsafe)
+      __return_value = LibPango.glyph_item_iter_init_end(@pointer.as(LibPango::GlyphItemIter*), glyph_item.to_unsafe.as(LibPango::GlyphItem*), text.to_unsafe)
       __return_value
     end
 
     def init_start(glyph_item, text)
-      __return_value = LibPango.glyph_item_iter_init_start(to_unsafe.as(LibPango::GlyphItemIter*), glyph_item.to_unsafe.as(LibPango::GlyphItem*), text.to_unsafe)
+      __return_value = LibPango.glyph_item_iter_init_start(@pointer.as(LibPango::GlyphItemIter*), glyph_item.to_unsafe.as(LibPango::GlyphItem*), text.to_unsafe)
       __return_value
     end
 
     def next_cluster
-      __return_value = LibPango.glyph_item_iter_next_cluster(to_unsafe.as(LibPango::GlyphItemIter*))
+      __return_value = LibPango.glyph_item_iter_next_cluster(@pointer.as(LibPango::GlyphItemIter*))
       __return_value
     end
 
     def prev_cluster
-      __return_value = LibPango.glyph_item_iter_prev_cluster(to_unsafe.as(LibPango::GlyphItemIter*))
+      __return_value = LibPango.glyph_item_iter_prev_cluster(@pointer.as(LibPango::GlyphItemIter*))
       __return_value
     end
 

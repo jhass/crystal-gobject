@@ -2,12 +2,13 @@ module Gio
   class UnixFDListPrivate
     include GObject::WrappedType
 
-    @gio_unix_f_d_list_private : LibGio::UnixFDListPrivate*?
-    def initialize(@gio_unix_f_d_list_private : LibGio::UnixFDListPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::UnixFDListPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_unix_f_d_list_private.not_nil!
+      @pointer.not_nil!.as(LibGio::UnixFDListPrivate*)
     end
 
   end

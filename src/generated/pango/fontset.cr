@@ -1,25 +1,26 @@
 module Pango
   class Fontset < GObject::Object
-    @pango_fontset : LibPango::Fontset*?
-    def initialize(@pango_fontset : LibPango::Fontset*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::Fontset*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_fontset.not_nil!
+      @pointer.not_nil!.as(LibPango::Fontset*)
     end
 
     def foreach(func, data)
-      LibPango.fontset_foreach(to_unsafe.as(LibPango::Fontset*), func, data ? data : nil)
+      LibPango.fontset_foreach(@pointer.as(LibPango::Fontset*), func, data ? data : nil)
       nil
     end
 
     def font(wc)
-      __return_value = LibPango.fontset_get_font(to_unsafe.as(LibPango::Fontset*), UInt32.new(wc))
+      __return_value = LibPango.fontset_get_font(@pointer.as(LibPango::Fontset*), UInt32.new(wc))
       Pango::Font.new(__return_value)
     end
 
     def metrics
-      __return_value = LibPango.fontset_get_metrics(to_unsafe.as(LibPango::Fontset*))
+      __return_value = LibPango.fontset_get_metrics(@pointer.as(LibPango::Fontset*))
       Pango::FontMetrics.new(__return_value)
     end
 

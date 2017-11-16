@@ -2,12 +2,13 @@ require "./widget"
 
 module Gtk
   class Switch < Widget
-    @gtk_switch : LibGtk::Switch*?
-    def initialize(@gtk_switch : LibGtk::Switch*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Switch*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_switch.not_nil!
+      @pointer.not_nil!.as(LibGtk::Switch*)
     end
 
     # Implements ImplementorIface
@@ -30,22 +31,22 @@ module Gtk
     end
 
     def active
-      __return_value = LibGtk.switch_get_active(to_unsafe.as(LibGtk::Switch*))
+      __return_value = LibGtk.switch_get_active(@pointer.as(LibGtk::Switch*))
       __return_value
     end
 
     def state
-      __return_value = LibGtk.switch_get_state(to_unsafe.as(LibGtk::Switch*))
+      __return_value = LibGtk.switch_get_state(@pointer.as(LibGtk::Switch*))
       __return_value
     end
 
     def active=(is_active)
-      LibGtk.switch_set_active(to_unsafe.as(LibGtk::Switch*), is_active)
+      LibGtk.switch_set_active(@pointer.as(LibGtk::Switch*), is_active)
       nil
     end
 
     def state=(state)
-      LibGtk.switch_set_state(to_unsafe.as(LibGtk::Switch*), state)
+      LibGtk.switch_set_state(@pointer.as(LibGtk::Switch*), state)
       nil
     end
 

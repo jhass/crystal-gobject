@@ -2,12 +2,13 @@ require "./paned"
 
 module Gtk
   class VPaned < Paned
-    @gtk_v_paned : LibGtk::VPaned*?
-    def initialize(@gtk_v_paned : LibGtk::VPaned*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::VPaned*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_v_paned.not_nil!
+      @pointer.not_nil!.as(LibGtk::VPaned*)
     end
 
     # Implements ImplementorIface

@@ -10,12 +10,13 @@ module Gio
       end
     end
 
-    @gio_output_vector : LibGio::OutputVector*?
-    def initialize(@gio_output_vector : LibGio::OutputVector*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::OutputVector*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_output_vector.not_nil!
+      @pointer.not_nil!.as(LibGio::OutputVector*)
     end
 
     def buffer

@@ -9,12 +9,13 @@ module Gtk
       end
     end
 
-    @gtk_binding_arg : LibGtk::BindingArg*?
-    def initialize(@gtk_binding_arg : LibGtk::BindingArg*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::BindingArg*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_binding_arg.not_nil!
+      @pointer.not_nil!.as(LibGtk::BindingArg*)
     end
 
     def arg_type

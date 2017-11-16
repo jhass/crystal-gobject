@@ -2,26 +2,27 @@ module GLib
   class Dir
     include GObject::WrappedType
 
-    @g_lib_dir : LibGLib::Dir*?
-    def initialize(@g_lib_dir : LibGLib::Dir*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::Dir*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_dir.not_nil!
+      @pointer.not_nil!.as(LibGLib::Dir*)
     end
 
     def close
-      LibGLib.dir_close(to_unsafe.as(LibGLib::Dir*))
+      LibGLib.dir_close(@pointer.as(LibGLib::Dir*))
       nil
     end
 
     def read_name
-      __return_value = LibGLib.dir_read_name(to_unsafe.as(LibGLib::Dir*))
+      __return_value = LibGLib.dir_read_name(@pointer.as(LibGLib::Dir*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def rewind
-      LibGLib.dir_rewind(to_unsafe.as(LibGLib::Dir*))
+      LibGLib.dir_rewind(@pointer.as(LibGLib::Dir*))
       nil
     end
 

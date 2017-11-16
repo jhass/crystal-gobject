@@ -12,12 +12,13 @@ module GObject
       end
     end
 
-    @g_object_type_query : LibGObject::TypeQuery*?
-    def initialize(@g_object_type_query : LibGObject::TypeQuery*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::TypeQuery*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_type_query.not_nil!
+      @pointer.not_nil!.as(LibGObject::TypeQuery*)
     end
 
     def type

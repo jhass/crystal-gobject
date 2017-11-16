@@ -2,12 +2,13 @@ require "./object"
 
 module Atk
   class GObjectAccessible < Object
-    @atk_g_object_accessible : LibAtk::GObjectAccessible*?
-    def initialize(@atk_g_object_accessible : LibAtk::GObjectAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibAtk::GObjectAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @atk_g_object_accessible.not_nil!
+      @pointer.not_nil!.as(LibAtk::GObjectAccessible*)
     end
 
     def self.for_object(obj)
@@ -16,7 +17,7 @@ module Atk
     end
 
     def object
-      __return_value = LibAtk.g_object_accessible_get_object(to_unsafe.as(LibAtk::GObjectAccessible*))
+      __return_value = LibAtk.g_object_accessible_get_object(@pointer.as(LibAtk::GObjectAccessible*))
       GObject::Object.new(__return_value)
     end
 

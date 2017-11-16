@@ -2,12 +2,13 @@ module Gtk
   class ActionGroupPrivate
     include GObject::WrappedType
 
-    @gtk_action_group_private : LibGtk::ActionGroupPrivate*?
-    def initialize(@gtk_action_group_private : LibGtk::ActionGroupPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ActionGroupPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_action_group_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::ActionGroupPrivate*)
     end
 
   end

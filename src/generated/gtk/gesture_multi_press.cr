@@ -2,12 +2,13 @@ require "./gesture_single"
 
 module Gtk
   class GestureMultiPress < GestureSingle
-    @gtk_gesture_multi_press : LibGtk::GestureMultiPress*?
-    def initialize(@gtk_gesture_multi_press : LibGtk::GestureMultiPress*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::GestureMultiPress*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_gesture_multi_press.not_nil!
+      @pointer.not_nil!.as(LibGtk::GestureMultiPress*)
     end
 
     def self.new(widget) : self
@@ -16,12 +17,12 @@ module Gtk
     end
 
     def area(rect)
-      __return_value = LibGtk.gesture_multi_press_get_area(to_unsafe.as(LibGtk::GestureMultiPress*), rect)
+      __return_value = LibGtk.gesture_multi_press_get_area(@pointer.as(LibGtk::GestureMultiPress*), rect)
       __return_value
     end
 
     def area=(rect)
-      LibGtk.gesture_multi_press_set_area(to_unsafe.as(LibGtk::GestureMultiPress*), rect ? rect.to_unsafe.as(LibGdk::Rectangle*) : nil)
+      LibGtk.gesture_multi_press_set_area(@pointer.as(LibGtk::GestureMultiPress*), rect ? rect.to_unsafe.as(LibGdk::Rectangle*) : nil)
       nil
     end
 

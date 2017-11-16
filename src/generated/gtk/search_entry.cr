@@ -2,12 +2,13 @@ require "./entry"
 
 module Gtk
   class SearchEntry < Entry
-    @gtk_search_entry : LibGtk::SearchEntry*?
-    def initialize(@gtk_search_entry : LibGtk::SearchEntry*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::SearchEntry*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_search_entry.not_nil!
+      @pointer.not_nil!.as(LibGtk::SearchEntry*)
     end
 
     # Implements ImplementorIface
@@ -20,7 +21,7 @@ module Gtk
     end
 
     def handle_event(event)
-      __return_value = LibGtk.search_entry_handle_event(to_unsafe.as(LibGtk::SearchEntry*), event.to_unsafe.as(LibGdk::Event*))
+      __return_value = LibGtk.search_entry_handle_event(@pointer.as(LibGtk::SearchEntry*), event.to_unsafe.as(LibGdk::Event*))
       __return_value
     end
 

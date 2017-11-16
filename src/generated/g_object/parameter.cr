@@ -10,12 +10,13 @@ module GObject
       end
     end
 
-    @g_object_parameter : LibGObject::Parameter*?
-    def initialize(@g_object_parameter : LibGObject::Parameter*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::Parameter*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_parameter.not_nil!
+      @pointer.not_nil!.as(LibGObject::Parameter*)
     end
 
     def name

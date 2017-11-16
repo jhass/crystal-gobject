@@ -2,12 +2,13 @@ require "./check_menu_item_accessible"
 
 module Gtk
   class RadioMenuItemAccessible < CheckMenuItemAccessible
-    @gtk_radio_menu_item_accessible : LibGtk::RadioMenuItemAccessible*?
-    def initialize(@gtk_radio_menu_item_accessible : LibGtk::RadioMenuItemAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::RadioMenuItemAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_radio_menu_item_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::RadioMenuItemAccessible*)
     end
 
     # Implements Action

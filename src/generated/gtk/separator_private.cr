@@ -2,12 +2,13 @@ module Gtk
   class SeparatorPrivate
     include GObject::WrappedType
 
-    @gtk_separator_private : LibGtk::SeparatorPrivate*?
-    def initialize(@gtk_separator_private : LibGtk::SeparatorPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::SeparatorPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_separator_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::SeparatorPrivate*)
     end
 
   end

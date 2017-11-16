@@ -2,12 +2,13 @@ module Gtk
   class SizeGroupPrivate
     include GObject::WrappedType
 
-    @gtk_size_group_private : LibGtk::SizeGroupPrivate*?
-    def initialize(@gtk_size_group_private : LibGtk::SizeGroupPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::SizeGroupPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_size_group_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::SizeGroupPrivate*)
     end
 
   end

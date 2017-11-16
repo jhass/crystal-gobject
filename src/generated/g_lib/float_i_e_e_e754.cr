@@ -6,12 +6,13 @@ module GLib
       (to_unsafe.as(LibGLib::FloatIEEE754*).value.v_float)
     end
 
-    @g_lib_float_i_e_e_e754 : LibGLib::FloatIEEE754*?
-    def initialize(@g_lib_float_i_e_e_e754 : LibGLib::FloatIEEE754*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::FloatIEEE754*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_float_i_e_e_e754.not_nil!
+      @pointer.not_nil!.as(LibGLib::FloatIEEE754*)
     end
 
   end

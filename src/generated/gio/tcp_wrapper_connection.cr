@@ -2,12 +2,13 @@ require "./tcp_connection"
 
 module Gio
   class TcpWrapperConnection < TcpConnection
-    @gio_tcp_wrapper_connection : LibGio::TcpWrapperConnection*?
-    def initialize(@gio_tcp_wrapper_connection : LibGio::TcpWrapperConnection*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::TcpWrapperConnection*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_tcp_wrapper_connection.not_nil!
+      @pointer.not_nil!.as(LibGio::TcpWrapperConnection*)
     end
 
     def base_io_stream
@@ -21,7 +22,7 @@ module Gio
     end
 
     def base_io_stream
-      __return_value = LibGio.tcp_wrapper_connection_get_base_io_stream(to_unsafe.as(LibGio::TcpWrapperConnection*))
+      __return_value = LibGio.tcp_wrapper_connection_get_base_io_stream(@pointer.as(LibGio::TcpWrapperConnection*))
       Gio::IOStream.new(__return_value)
     end
 

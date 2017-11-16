@@ -2,12 +2,13 @@ require "./widget"
 
 module Gtk
   class HSV < Widget
-    @gtk_h_s_v : LibGtk::HSV*?
-    def initialize(@gtk_h_s_v : LibGtk::HSV*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::HSV*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_h_s_v.not_nil!
+      @pointer.not_nil!.as(LibGtk::HSV*)
     end
 
     # Implements ImplementorIface
@@ -23,27 +24,27 @@ module Gtk
     end
 
     def color(h, s, v)
-      LibGtk.h_s_v_get_color(to_unsafe.as(LibGtk::HSV*), h, s, v)
+      LibGtk.h_s_v_get_color(@pointer.as(LibGtk::HSV*), h, s, v)
       nil
     end
 
     def metrics(size, ring_width)
-      LibGtk.h_s_v_get_metrics(to_unsafe.as(LibGtk::HSV*), size, ring_width)
+      LibGtk.h_s_v_get_metrics(@pointer.as(LibGtk::HSV*), size, ring_width)
       nil
     end
 
     def adjusting?
-      __return_value = LibGtk.h_s_v_is_adjusting(to_unsafe.as(LibGtk::HSV*))
+      __return_value = LibGtk.h_s_v_is_adjusting(@pointer.as(LibGtk::HSV*))
       __return_value
     end
 
     def set_color(h, s, v)
-      LibGtk.h_s_v_set_color(to_unsafe.as(LibGtk::HSV*), Float64.new(h), Float64.new(s), Float64.new(v))
+      LibGtk.h_s_v_set_color(@pointer.as(LibGtk::HSV*), Float64.new(h), Float64.new(s), Float64.new(v))
       nil
     end
 
     def set_metrics(size, ring_width)
-      LibGtk.h_s_v_set_metrics(to_unsafe.as(LibGtk::HSV*), Int32.new(size), Int32.new(ring_width))
+      LibGtk.h_s_v_set_metrics(@pointer.as(LibGtk::HSV*), Int32.new(size), Int32.new(ring_width))
       nil
     end
 

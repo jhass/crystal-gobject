@@ -12,12 +12,13 @@ module GObject
       end
     end
 
-    @g_object_flags_class : LibGObject::FlagsClass*?
-    def initialize(@g_object_flags_class : LibGObject::FlagsClass*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::FlagsClass*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_flags_class.not_nil!
+      @pointer.not_nil!.as(LibGObject::FlagsClass*)
     end
 
     def g_type_class

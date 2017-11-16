@@ -10,12 +10,13 @@ module GLib
       end
     end
 
-    @g_lib_debug_key : LibGLib::DebugKey*?
-    def initialize(@g_lib_debug_key : LibGLib::DebugKey*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::DebugKey*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_debug_key.not_nil!
+      @pointer.not_nil!.as(LibGLib::DebugKey*)
     end
 
     def key

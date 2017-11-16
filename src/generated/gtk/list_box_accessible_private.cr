@@ -2,12 +2,13 @@ module Gtk
   class ListBoxAccessiblePrivate
     include GObject::WrappedType
 
-    @gtk_list_box_accessible_private : LibGtk::ListBoxAccessiblePrivate*?
-    def initialize(@gtk_list_box_accessible_private : LibGtk::ListBoxAccessiblePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ListBoxAccessiblePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_list_box_accessible_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::ListBoxAccessiblePrivate*)
     end
 
   end

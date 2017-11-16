@@ -2,12 +2,13 @@ require "./container_accessible"
 
 module Gtk
   class StackAccessible < ContainerAccessible
-    @gtk_stack_accessible : LibGtk::StackAccessible*?
-    def initialize(@gtk_stack_accessible : LibGtk::StackAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::StackAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_stack_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::StackAccessible*)
     end
 
     # Implements Component

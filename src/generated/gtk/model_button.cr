@@ -2,12 +2,13 @@ require "./button"
 
 module Gtk
   class ModelButton < Button
-    @gtk_model_button : LibGtk::ModelButton*?
-    def initialize(@gtk_model_button : LibGtk::ModelButton*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ModelButton*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_model_button.not_nil!
+      @pointer.not_nil!.as(LibGtk::ModelButton*)
     end
 
     # Implements ImplementorIface

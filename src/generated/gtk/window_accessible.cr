@@ -2,12 +2,13 @@ require "./container_accessible"
 
 module Gtk
   class WindowAccessible < ContainerAccessible
-    @gtk_window_accessible : LibGtk::WindowAccessible*?
-    def initialize(@gtk_window_accessible : LibGtk::WindowAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::WindowAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_window_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::WindowAccessible*)
     end
 
     # Implements Component

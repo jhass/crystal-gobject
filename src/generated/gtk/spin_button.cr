@@ -2,12 +2,13 @@ require "./entry"
 
 module Gtk
   class SpinButton < Entry
-    @gtk_spin_button : LibGtk::SpinButton*?
-    def initialize(@gtk_spin_button : LibGtk::SpinButton*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::SpinButton*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_spin_button.not_nil!
+      @pointer.not_nil!.as(LibGtk::SpinButton*)
     end
 
     # Implements ImplementorIface
@@ -66,112 +67,112 @@ module Gtk
     end
 
     def configure(adjustment, climb_rate, digits)
-      LibGtk.spin_button_configure(to_unsafe.as(LibGtk::SpinButton*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil, Float64.new(climb_rate), UInt32.new(digits))
+      LibGtk.spin_button_configure(@pointer.as(LibGtk::SpinButton*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil, Float64.new(climb_rate), UInt32.new(digits))
       nil
     end
 
     def adjustment
-      __return_value = LibGtk.spin_button_get_adjustment(to_unsafe.as(LibGtk::SpinButton*))
+      __return_value = LibGtk.spin_button_get_adjustment(@pointer.as(LibGtk::SpinButton*))
       Gtk::Adjustment.new(__return_value)
     end
 
     def digits
-      __return_value = LibGtk.spin_button_get_digits(to_unsafe.as(LibGtk::SpinButton*))
+      __return_value = LibGtk.spin_button_get_digits(@pointer.as(LibGtk::SpinButton*))
       __return_value
     end
 
     def increments(step, page)
-      LibGtk.spin_button_get_increments(to_unsafe.as(LibGtk::SpinButton*), step, page)
+      LibGtk.spin_button_get_increments(@pointer.as(LibGtk::SpinButton*), step, page)
       nil
     end
 
     def numeric
-      __return_value = LibGtk.spin_button_get_numeric(to_unsafe.as(LibGtk::SpinButton*))
+      __return_value = LibGtk.spin_button_get_numeric(@pointer.as(LibGtk::SpinButton*))
       __return_value
     end
 
     def range(min, max)
-      LibGtk.spin_button_get_range(to_unsafe.as(LibGtk::SpinButton*), min, max)
+      LibGtk.spin_button_get_range(@pointer.as(LibGtk::SpinButton*), min, max)
       nil
     end
 
     def snap_to_ticks
-      __return_value = LibGtk.spin_button_get_snap_to_ticks(to_unsafe.as(LibGtk::SpinButton*))
+      __return_value = LibGtk.spin_button_get_snap_to_ticks(@pointer.as(LibGtk::SpinButton*))
       __return_value
     end
 
     def update_policy
-      __return_value = LibGtk.spin_button_get_update_policy(to_unsafe.as(LibGtk::SpinButton*))
+      __return_value = LibGtk.spin_button_get_update_policy(@pointer.as(LibGtk::SpinButton*))
       __return_value
     end
 
     def value
-      __return_value = LibGtk.spin_button_get_value(to_unsafe.as(LibGtk::SpinButton*))
+      __return_value = LibGtk.spin_button_get_value(@pointer.as(LibGtk::SpinButton*))
       __return_value
     end
 
     def value_as_int
-      __return_value = LibGtk.spin_button_get_value_as_int(to_unsafe.as(LibGtk::SpinButton*))
+      __return_value = LibGtk.spin_button_get_value_as_int(@pointer.as(LibGtk::SpinButton*))
       __return_value
     end
 
     def wrap
-      __return_value = LibGtk.spin_button_get_wrap(to_unsafe.as(LibGtk::SpinButton*))
+      __return_value = LibGtk.spin_button_get_wrap(@pointer.as(LibGtk::SpinButton*))
       __return_value
     end
 
     def adjustment=(adjustment)
-      LibGtk.spin_button_set_adjustment(to_unsafe.as(LibGtk::SpinButton*), adjustment.to_unsafe.as(LibGtk::Adjustment*))
+      LibGtk.spin_button_set_adjustment(@pointer.as(LibGtk::SpinButton*), adjustment.to_unsafe.as(LibGtk::Adjustment*))
       nil
     end
 
     def digits=(digits)
-      LibGtk.spin_button_set_digits(to_unsafe.as(LibGtk::SpinButton*), UInt32.new(digits))
+      LibGtk.spin_button_set_digits(@pointer.as(LibGtk::SpinButton*), UInt32.new(digits))
       nil
     end
 
     def set_increments(step, page)
-      LibGtk.spin_button_set_increments(to_unsafe.as(LibGtk::SpinButton*), Float64.new(step), Float64.new(page))
+      LibGtk.spin_button_set_increments(@pointer.as(LibGtk::SpinButton*), Float64.new(step), Float64.new(page))
       nil
     end
 
     def numeric=(numeric)
-      LibGtk.spin_button_set_numeric(to_unsafe.as(LibGtk::SpinButton*), numeric)
+      LibGtk.spin_button_set_numeric(@pointer.as(LibGtk::SpinButton*), numeric)
       nil
     end
 
     def set_range(min, max)
-      LibGtk.spin_button_set_range(to_unsafe.as(LibGtk::SpinButton*), Float64.new(min), Float64.new(max))
+      LibGtk.spin_button_set_range(@pointer.as(LibGtk::SpinButton*), Float64.new(min), Float64.new(max))
       nil
     end
 
     def snap_to_ticks=(snap_to_ticks)
-      LibGtk.spin_button_set_snap_to_ticks(to_unsafe.as(LibGtk::SpinButton*), snap_to_ticks)
+      LibGtk.spin_button_set_snap_to_ticks(@pointer.as(LibGtk::SpinButton*), snap_to_ticks)
       nil
     end
 
     def update_policy=(policy : Gtk::SpinButtonUpdatePolicy)
-      LibGtk.spin_button_set_update_policy(to_unsafe.as(LibGtk::SpinButton*), policy)
+      LibGtk.spin_button_set_update_policy(@pointer.as(LibGtk::SpinButton*), policy)
       nil
     end
 
     def value=(value)
-      LibGtk.spin_button_set_value(to_unsafe.as(LibGtk::SpinButton*), Float64.new(value))
+      LibGtk.spin_button_set_value(@pointer.as(LibGtk::SpinButton*), Float64.new(value))
       nil
     end
 
     def wrap=(wrap)
-      LibGtk.spin_button_set_wrap(to_unsafe.as(LibGtk::SpinButton*), wrap)
+      LibGtk.spin_button_set_wrap(@pointer.as(LibGtk::SpinButton*), wrap)
       nil
     end
 
     def spin(direction : Gtk::SpinType, increment)
-      LibGtk.spin_button_spin(to_unsafe.as(LibGtk::SpinButton*), direction, Float64.new(increment))
+      LibGtk.spin_button_spin(@pointer.as(LibGtk::SpinButton*), direction, Float64.new(increment))
       nil
     end
 
     def update
-      LibGtk.spin_button_update(to_unsafe.as(LibGtk::SpinButton*))
+      LibGtk.spin_button_update(@pointer.as(LibGtk::SpinButton*))
       nil
     end
 

@@ -10,12 +10,13 @@ module Pango
       end
     end
 
-    @pango_engine_script_info : LibPango::EngineScriptInfo*?
-    def initialize(@pango_engine_script_info : LibPango::EngineScriptInfo*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::EngineScriptInfo*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_engine_script_info.not_nil!
+      @pointer.not_nil!.as(LibPango::EngineScriptInfo*)
     end
 
     def script

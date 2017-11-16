@@ -2,12 +2,13 @@ module Cairo
   class Surface
     include GObject::WrappedType
 
-    @cairo_surface : LibCairo::Surface*?
-    def initialize(@cairo_surface : LibCairo::Surface*)
+    @pointer : Void*
+    def initialize(pointer : LibCairo::Surface*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @cairo_surface.not_nil!
+      @pointer.not_nil!.as(LibCairo::Surface*)
     end
 
   end

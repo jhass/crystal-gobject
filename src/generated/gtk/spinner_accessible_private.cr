@@ -2,12 +2,13 @@ module Gtk
   class SpinnerAccessiblePrivate
     include GObject::WrappedType
 
-    @gtk_spinner_accessible_private : LibGtk::SpinnerAccessiblePrivate*?
-    def initialize(@gtk_spinner_accessible_private : LibGtk::SpinnerAccessiblePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::SpinnerAccessiblePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_spinner_accessible_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::SpinnerAccessiblePrivate*)
     end
 
   end

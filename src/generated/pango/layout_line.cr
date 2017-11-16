@@ -14,46 +14,47 @@ module Pango
       end
     end
 
-    @pango_layout_line : LibPango::LayoutLine*?
-    def initialize(@pango_layout_line : LibPango::LayoutLine*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::LayoutLine*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_layout_line.not_nil!
+      @pointer.not_nil!.as(LibPango::LayoutLine*)
     end
 
     def extents(ink_rect, logical_rect)
-      LibPango.layout_line_get_extents(to_unsafe.as(LibPango::LayoutLine*), ink_rect, logical_rect)
+      LibPango.layout_line_get_extents(@pointer.as(LibPango::LayoutLine*), ink_rect, logical_rect)
       nil
     end
 
     def pixel_extents(ink_rect, logical_rect)
-      LibPango.layout_line_get_pixel_extents(to_unsafe.as(LibPango::LayoutLine*), ink_rect, logical_rect)
+      LibPango.layout_line_get_pixel_extents(@pointer.as(LibPango::LayoutLine*), ink_rect, logical_rect)
       nil
     end
 
     def x_ranges(start_index, end_index, ranges, n_ranges)
-      LibPango.layout_line_get_x_ranges(to_unsafe.as(LibPango::LayoutLine*), Int32.new(start_index), Int32.new(end_index), ranges, n_ranges)
+      LibPango.layout_line_get_x_ranges(@pointer.as(LibPango::LayoutLine*), Int32.new(start_index), Int32.new(end_index), ranges, n_ranges)
       nil
     end
 
     def index_to_x(index, trailing, x_pos)
-      LibPango.layout_line_index_to_x(to_unsafe.as(LibPango::LayoutLine*), Int32.new(index), trailing, x_pos)
+      LibPango.layout_line_index_to_x(@pointer.as(LibPango::LayoutLine*), Int32.new(index), trailing, x_pos)
       nil
     end
 
     def ref
-      __return_value = LibPango.layout_line_ref(to_unsafe.as(LibPango::LayoutLine*))
+      __return_value = LibPango.layout_line_ref(@pointer.as(LibPango::LayoutLine*))
       Pango::LayoutLine.new(__return_value)
     end
 
     def unref
-      LibPango.layout_line_unref(to_unsafe.as(LibPango::LayoutLine*))
+      LibPango.layout_line_unref(@pointer.as(LibPango::LayoutLine*))
       nil
     end
 
     def x_to_index(x_pos, index, trailing)
-      __return_value = LibPango.layout_line_x_to_index(to_unsafe.as(LibPango::LayoutLine*), Int32.new(x_pos), index, trailing)
+      __return_value = LibPango.layout_line_x_to_index(@pointer.as(LibPango::LayoutLine*), Int32.new(x_pos), index, trailing)
       __return_value
     end
 

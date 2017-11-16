@@ -1,11 +1,12 @@
 module Gio
   class UnixMountMonitor < GObject::Object
-    @gio_unix_mount_monitor : LibGio::UnixMountMonitor*?
-    def initialize(@gio_unix_mount_monitor : LibGio::UnixMountMonitor*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::UnixMountMonitor*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_unix_mount_monitor.not_nil!
+      @pointer.not_nil!.as(LibGio::UnixMountMonitor*)
     end
 
     def self.new : self
@@ -19,7 +20,7 @@ module Gio
     end
 
     def rate_limit=(limit_msec)
-      LibGio.unix_mount_monitor_set_rate_limit(to_unsafe.as(LibGio::UnixMountMonitor*), Int32.new(limit_msec))
+      LibGio.unix_mount_monitor_set_rate_limit(@pointer.as(LibGio::UnixMountMonitor*), Int32.new(limit_msec))
       nil
     end
 

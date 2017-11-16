@@ -2,16 +2,17 @@ module Gst
   class DebugMessage
     include GObject::WrappedType
 
-    @gst_debug_message : LibGst::DebugMessage*?
-    def initialize(@gst_debug_message : LibGst::DebugMessage*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::DebugMessage*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_debug_message.not_nil!
+      @pointer.not_nil!.as(LibGst::DebugMessage*)
     end
 
     def get
-      __return_value = LibGst.debug_message_get(to_unsafe.as(LibGst::DebugMessage*))
+      __return_value = LibGst.debug_message_get(@pointer.as(LibGst::DebugMessage*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

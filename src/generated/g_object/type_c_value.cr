@@ -22,12 +22,13 @@ module GObject
       (to_unsafe.as(LibGObject::TypeCValue*).value.v_pointer)
     end
 
-    @g_object_type_c_value : LibGObject::TypeCValue*?
-    def initialize(@g_object_type_c_value : LibGObject::TypeCValue*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::TypeCValue*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_type_c_value.not_nil!
+      @pointer.not_nil!.as(LibGObject::TypeCValue*)
     end
 
   end

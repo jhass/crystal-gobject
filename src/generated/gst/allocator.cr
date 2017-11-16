@@ -2,12 +2,13 @@ require "./object"
 
 module Gst
   class Allocator < Object
-    @gst_allocator : LibGst::Allocator*?
-    def initialize(@gst_allocator : LibGst::Allocator*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::Allocator*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_allocator.not_nil!
+      @pointer.not_nil!.as(LibGst::Allocator*)
     end
 
     def self.find(name)
@@ -21,17 +22,17 @@ module Gst
     end
 
     def alloc(size, params)
-      __return_value = LibGst.allocator_alloc(to_unsafe.as(LibGst::Allocator*), UInt64.new(size), params ? params.to_unsafe.as(LibGst::AllocationParams*) : nil)
+      __return_value = LibGst.allocator_alloc(@pointer.as(LibGst::Allocator*), UInt64.new(size), params ? params.to_unsafe.as(LibGst::AllocationParams*) : nil)
       Gst::Memory.new(__return_value)
     end
 
     def free(memory)
-      LibGst.allocator_free(to_unsafe.as(LibGst::Allocator*), memory.to_unsafe.as(LibGst::Memory*))
+      LibGst.allocator_free(@pointer.as(LibGst::Allocator*), memory.to_unsafe.as(LibGst::Memory*))
       nil
     end
 
     def set_default
-      LibGst.allocator_set_default(to_unsafe.as(LibGst::Allocator*))
+      LibGst.allocator_set_default(@pointer.as(LibGst::Allocator*))
       nil
     end
 

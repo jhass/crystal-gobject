@@ -2,12 +2,13 @@ module Gtk
   class TextViewAccessiblePrivate
     include GObject::WrappedType
 
-    @gtk_text_view_accessible_private : LibGtk::TextViewAccessiblePrivate*?
-    def initialize(@gtk_text_view_accessible_private : LibGtk::TextViewAccessiblePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::TextViewAccessiblePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_text_view_accessible_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::TextViewAccessiblePrivate*)
     end
 
   end

@@ -2,12 +2,13 @@ module Pango
   class Map
     include GObject::WrappedType
 
-    @pango_map : LibPango::Map*?
-    def initialize(@pango_map : LibPango::Map*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::Map*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_map.not_nil!
+      @pointer.not_nil!.as(LibPango::Map*)
     end
 
   end

@@ -21,12 +21,13 @@ module Pango
       end
     end
 
-    @pango_log_attr : LibPango::LogAttr*?
-    def initialize(@pango_log_attr : LibPango::LogAttr*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::LogAttr*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_log_attr.not_nil!
+      @pointer.not_nil!.as(LibPango::LogAttr*)
     end
 
     def is_line_break

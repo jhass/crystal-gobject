@@ -2,12 +2,13 @@ require "./check_menu_item"
 
 module Gtk
   class RadioMenuItem < CheckMenuItem
-    @gtk_radio_menu_item : LibGtk::RadioMenuItem*?
-    def initialize(@gtk_radio_menu_item : LibGtk::RadioMenuItem*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::RadioMenuItem*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_radio_menu_item.not_nil!
+      @pointer.not_nil!.as(LibGtk::RadioMenuItem*)
     end
 
     # Implements ImplementorIface
@@ -46,17 +47,17 @@ module Gtk
     end
 
     def group
-      __return_value = LibGtk.radio_menu_item_get_group(to_unsafe.as(LibGtk::RadioMenuItem*))
+      __return_value = LibGtk.radio_menu_item_get_group(@pointer.as(LibGtk::RadioMenuItem*))
       GLib::SListIterator(Gtk::RadioMenuItem, LibGtk::RadioMenuItem*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def join_group(group_source)
-      LibGtk.radio_menu_item_join_group(to_unsafe.as(LibGtk::RadioMenuItem*), group_source ? group_source.to_unsafe.as(LibGtk::RadioMenuItem*) : nil)
+      LibGtk.radio_menu_item_join_group(@pointer.as(LibGtk::RadioMenuItem*), group_source ? group_source.to_unsafe.as(LibGtk::RadioMenuItem*) : nil)
       nil
     end
 
     def group=(group)
-      LibGtk.radio_menu_item_set_group(to_unsafe.as(LibGtk::RadioMenuItem*), group ? group : nil)
+      LibGtk.radio_menu_item_set_group(@pointer.as(LibGtk::RadioMenuItem*), group ? group : nil)
       nil
     end
 

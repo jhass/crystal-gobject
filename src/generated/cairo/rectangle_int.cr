@@ -12,12 +12,13 @@ module Cairo
       end
     end
 
-    @cairo_rectangle_int : LibCairo::RectangleInt*?
-    def initialize(@cairo_rectangle_int : LibCairo::RectangleInt*)
+    @pointer : Void*
+    def initialize(pointer : LibCairo::RectangleInt*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @cairo_rectangle_int.not_nil!
+      @pointer.not_nil!.as(LibCairo::RectangleInt*)
     end
 
     def x

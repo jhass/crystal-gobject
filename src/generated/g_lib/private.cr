@@ -7,26 +7,27 @@ module GLib
       super(ptr.as(LibGLib::Private*))
     end
 
-    @g_lib_private : LibGLib::Private*?
-    def initialize(@g_lib_private : LibGLib::Private*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::Private*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_private.not_nil!
+      @pointer.not_nil!.as(LibGLib::Private*)
     end
 
     def get
-      LibGLib.private_get(to_unsafe.as(LibGLib::Private*))
+      LibGLib.private_get(@pointer.as(LibGLib::Private*))
       nil
     end
 
     def replace(value)
-      LibGLib.private_replace(to_unsafe.as(LibGLib::Private*), value ? value : nil)
+      LibGLib.private_replace(@pointer.as(LibGLib::Private*), value ? value : nil)
       nil
     end
 
     def set(value)
-      LibGLib.private_set(to_unsafe.as(LibGLib::Private*), value ? value : nil)
+      LibGLib.private_set(@pointer.as(LibGLib::Private*), value ? value : nil)
       nil
     end
 

@@ -2,36 +2,37 @@ module Pango
   class Language
     include GObject::WrappedType
 
-    @pango_language : LibPango::Language*?
-    def initialize(@pango_language : LibPango::Language*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::Language*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_language.not_nil!
+      @pointer.not_nil!.as(LibPango::Language*)
     end
 
     def sample_string
-      __return_value = LibPango.language_get_sample_string(to_unsafe.as(LibPango::Language*))
+      __return_value = LibPango.language_get_sample_string(@pointer.as(LibPango::Language*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def scripts(num_scripts)
-      __return_value = LibPango.language_get_scripts(to_unsafe.as(LibPango::Language*), num_scripts)
+      __return_value = LibPango.language_get_scripts(@pointer.as(LibPango::Language*), num_scripts)
       PointerIterator.new(__return_value) {|__item| __item } if __return_value
     end
 
     def includes_script(script : Pango::Script)
-      __return_value = LibPango.language_includes_script(to_unsafe.as(LibPango::Language*), script)
+      __return_value = LibPango.language_includes_script(@pointer.as(LibPango::Language*), script)
       __return_value
     end
 
     def matches(range_list)
-      __return_value = LibPango.language_matches(to_unsafe.as(LibPango::Language*), range_list.to_unsafe)
+      __return_value = LibPango.language_matches(@pointer.as(LibPango::Language*), range_list.to_unsafe)
       __return_value
     end
 
     def to_string
-      __return_value = LibPango.language_to_string(to_unsafe.as(LibPango::Language*))
+      __return_value = LibPango.language_to_string(@pointer.as(LibPango::Language*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

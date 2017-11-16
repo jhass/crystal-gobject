@@ -1,11 +1,12 @@
 module Gtk
   class UIManager < GObject::Object
-    @gtk_u_i_manager : LibGtk::UIManager*?
-    def initialize(@gtk_u_i_manager : LibGtk::UIManager*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::UIManager*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_u_i_manager.not_nil!
+      @pointer.not_nil!.as(LibGtk::UIManager*)
     end
 
     # Implements Buildable
@@ -25,93 +26,93 @@ module Gtk
     end
 
     def add_ui(merge_id, path, name, action, type : Gtk::UIManagerItemType, top)
-      LibGtk.u_i_manager_add_ui(to_unsafe.as(LibGtk::UIManager*), UInt32.new(merge_id), path.to_unsafe, name.to_unsafe, action ? action.to_unsafe : nil, type, top)
+      LibGtk.u_i_manager_add_ui(@pointer.as(LibGtk::UIManager*), UInt32.new(merge_id), path.to_unsafe, name.to_unsafe, action ? action.to_unsafe : nil, type, top)
       nil
     end
 
     def add_ui_from_file(filename)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.u_i_manager_add_ui_from_file(to_unsafe.as(LibGtk::UIManager*), filename.to_unsafe, pointerof(__error))
+      __return_value = LibGtk.u_i_manager_add_ui_from_file(@pointer.as(LibGtk::UIManager*), filename.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def add_ui_from_resource(resource_path)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.u_i_manager_add_ui_from_resource(to_unsafe.as(LibGtk::UIManager*), resource_path.to_unsafe, pointerof(__error))
+      __return_value = LibGtk.u_i_manager_add_ui_from_resource(@pointer.as(LibGtk::UIManager*), resource_path.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def add_ui_from_string(buffer, length)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.u_i_manager_add_ui_from_string(to_unsafe.as(LibGtk::UIManager*), buffer.to_unsafe, Int64.new(length), pointerof(__error))
+      __return_value = LibGtk.u_i_manager_add_ui_from_string(@pointer.as(LibGtk::UIManager*), buffer.to_unsafe, Int64.new(length), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def ensure_update
-      LibGtk.u_i_manager_ensure_update(to_unsafe.as(LibGtk::UIManager*))
+      LibGtk.u_i_manager_ensure_update(@pointer.as(LibGtk::UIManager*))
       nil
     end
 
     def accel_group
-      __return_value = LibGtk.u_i_manager_get_accel_group(to_unsafe.as(LibGtk::UIManager*))
+      __return_value = LibGtk.u_i_manager_get_accel_group(@pointer.as(LibGtk::UIManager*))
       Gtk::AccelGroup.new(__return_value)
     end
 
     def action(path)
-      __return_value = LibGtk.u_i_manager_get_action(to_unsafe.as(LibGtk::UIManager*), path.to_unsafe)
+      __return_value = LibGtk.u_i_manager_get_action(@pointer.as(LibGtk::UIManager*), path.to_unsafe)
       Gtk::Action.new(__return_value)
     end
 
     def action_groups
-      __return_value = LibGtk.u_i_manager_get_action_groups(to_unsafe.as(LibGtk::UIManager*))
+      __return_value = LibGtk.u_i_manager_get_action_groups(@pointer.as(LibGtk::UIManager*))
       GLib::ListIterator(Gtk::ActionGroup, LibGtk::ActionGroup*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def add_tearoffs
-      __return_value = LibGtk.u_i_manager_get_add_tearoffs(to_unsafe.as(LibGtk::UIManager*))
+      __return_value = LibGtk.u_i_manager_get_add_tearoffs(@pointer.as(LibGtk::UIManager*))
       __return_value
     end
 
     def toplevels(types : Gtk::UIManagerItemType)
-      __return_value = LibGtk.u_i_manager_get_toplevels(to_unsafe.as(LibGtk::UIManager*), types)
+      __return_value = LibGtk.u_i_manager_get_toplevels(@pointer.as(LibGtk::UIManager*), types)
       GLib::SListIterator(Gtk::Widget, LibGtk::Widget*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def ui
-      __return_value = LibGtk.u_i_manager_get_ui(to_unsafe.as(LibGtk::UIManager*))
+      __return_value = LibGtk.u_i_manager_get_ui(@pointer.as(LibGtk::UIManager*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def widget(path)
-      __return_value = LibGtk.u_i_manager_get_widget(to_unsafe.as(LibGtk::UIManager*), path.to_unsafe)
+      __return_value = LibGtk.u_i_manager_get_widget(@pointer.as(LibGtk::UIManager*), path.to_unsafe)
       Gtk::Widget.new(__return_value)
     end
 
     def insert_action_group(action_group, pos)
-      LibGtk.u_i_manager_insert_action_group(to_unsafe.as(LibGtk::UIManager*), action_group.to_unsafe.as(LibGtk::ActionGroup*), Int32.new(pos))
+      LibGtk.u_i_manager_insert_action_group(@pointer.as(LibGtk::UIManager*), action_group.to_unsafe.as(LibGtk::ActionGroup*), Int32.new(pos))
       nil
     end
 
     def new_merge_id
-      __return_value = LibGtk.u_i_manager_new_merge_id(to_unsafe.as(LibGtk::UIManager*))
+      __return_value = LibGtk.u_i_manager_new_merge_id(@pointer.as(LibGtk::UIManager*))
       __return_value
     end
 
     def remove_action_group(action_group)
-      LibGtk.u_i_manager_remove_action_group(to_unsafe.as(LibGtk::UIManager*), action_group.to_unsafe.as(LibGtk::ActionGroup*))
+      LibGtk.u_i_manager_remove_action_group(@pointer.as(LibGtk::UIManager*), action_group.to_unsafe.as(LibGtk::ActionGroup*))
       nil
     end
 
     def remove_ui(merge_id)
-      LibGtk.u_i_manager_remove_ui(to_unsafe.as(LibGtk::UIManager*), UInt32.new(merge_id))
+      LibGtk.u_i_manager_remove_ui(@pointer.as(LibGtk::UIManager*), UInt32.new(merge_id))
       nil
     end
 
     def add_tearoffs=(add_tearoffs)
-      LibGtk.u_i_manager_set_add_tearoffs(to_unsafe.as(LibGtk::UIManager*), add_tearoffs)
+      LibGtk.u_i_manager_set_add_tearoffs(@pointer.as(LibGtk::UIManager*), add_tearoffs)
       nil
     end
 

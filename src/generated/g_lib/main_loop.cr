@@ -2,12 +2,13 @@ module GLib
   class MainLoop
     include GObject::WrappedType
 
-    @g_lib_main_loop : LibGLib::MainLoop*?
-    def initialize(@g_lib_main_loop : LibGLib::MainLoop*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::MainLoop*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_main_loop.not_nil!
+      @pointer.not_nil!.as(LibGLib::MainLoop*)
     end
 
     def self.new(context, is_running) : self
@@ -16,32 +17,32 @@ module GLib
     end
 
     def context
-      __return_value = LibGLib.main_loop_get_context(to_unsafe.as(LibGLib::MainLoop*))
+      __return_value = LibGLib.main_loop_get_context(@pointer.as(LibGLib::MainLoop*))
       GLib::MainContext.new(__return_value)
     end
 
     def running?
-      __return_value = LibGLib.main_loop_is_running(to_unsafe.as(LibGLib::MainLoop*))
+      __return_value = LibGLib.main_loop_is_running(@pointer.as(LibGLib::MainLoop*))
       __return_value
     end
 
     def quit
-      LibGLib.main_loop_quit(to_unsafe.as(LibGLib::MainLoop*))
+      LibGLib.main_loop_quit(@pointer.as(LibGLib::MainLoop*))
       nil
     end
 
     def ref
-      __return_value = LibGLib.main_loop_ref(to_unsafe.as(LibGLib::MainLoop*))
+      __return_value = LibGLib.main_loop_ref(@pointer.as(LibGLib::MainLoop*))
       GLib::MainLoop.new(__return_value)
     end
 
     def run
-      LibGLib.main_loop_run(to_unsafe.as(LibGLib::MainLoop*))
+      LibGLib.main_loop_run(@pointer.as(LibGLib::MainLoop*))
       nil
     end
 
     def unref
-      LibGLib.main_loop_unref(to_unsafe.as(LibGLib::MainLoop*))
+      LibGLib.main_loop_unref(@pointer.as(LibGLib::MainLoop*))
       nil
     end
 

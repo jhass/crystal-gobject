@@ -10,12 +10,13 @@ module GObject
       end
     end
 
-    @g_object_c_closure : LibGObject::CClosure*?
-    def initialize(@g_object_c_closure : LibGObject::CClosure*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::CClosure*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_c_closure.not_nil!
+      @pointer.not_nil!.as(LibGObject::CClosure*)
     end
 
     def self.marshal_BOOLEAN__BOXED_BOXED(closure, return_value, n_param_values, param_values, invocation_hint, marshal_data)

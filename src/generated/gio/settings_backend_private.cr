@@ -2,12 +2,13 @@ module Gio
   class SettingsBackendPrivate
     include GObject::WrappedType
 
-    @gio_settings_backend_private : LibGio::SettingsBackendPrivate*?
-    def initialize(@gio_settings_backend_private : LibGio::SettingsBackendPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::SettingsBackendPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_settings_backend_private.not_nil!
+      @pointer.not_nil!.as(LibGio::SettingsBackendPrivate*)
     end
 
   end

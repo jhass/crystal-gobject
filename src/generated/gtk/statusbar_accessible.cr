@@ -2,12 +2,13 @@ require "./container_accessible"
 
 module Gtk
   class StatusbarAccessible < ContainerAccessible
-    @gtk_statusbar_accessible : LibGtk::StatusbarAccessible*?
-    def initialize(@gtk_statusbar_accessible : LibGtk::StatusbarAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::StatusbarAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_statusbar_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::StatusbarAccessible*)
     end
 
     # Implements Component

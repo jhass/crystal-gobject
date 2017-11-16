@@ -2,12 +2,13 @@ require "./object"
 
 module Gst
   class StreamCollection < Object
-    @gst_stream_collection : LibGst::StreamCollection*?
-    def initialize(@gst_stream_collection : LibGst::StreamCollection*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::StreamCollection*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_stream_collection.not_nil!
+      @pointer.not_nil!.as(LibGst::StreamCollection*)
     end
 
     def upstream_id
@@ -21,22 +22,22 @@ module Gst
     end
 
     def add_stream(stream)
-      __return_value = LibGst.stream_collection_add_stream(to_unsafe.as(LibGst::StreamCollection*), stream.to_unsafe.as(LibGst::Stream*))
+      __return_value = LibGst.stream_collection_add_stream(@pointer.as(LibGst::StreamCollection*), stream.to_unsafe.as(LibGst::Stream*))
       __return_value
     end
 
     def size
-      __return_value = LibGst.stream_collection_get_size(to_unsafe.as(LibGst::StreamCollection*))
+      __return_value = LibGst.stream_collection_get_size(@pointer.as(LibGst::StreamCollection*))
       __return_value
     end
 
     def stream(index)
-      __return_value = LibGst.stream_collection_get_stream(to_unsafe.as(LibGst::StreamCollection*), UInt32.new(index))
+      __return_value = LibGst.stream_collection_get_stream(@pointer.as(LibGst::StreamCollection*), UInt32.new(index))
       Gst::Stream.new(__return_value)
     end
 
     def upstream_id
-      __return_value = LibGst.stream_collection_get_upstream_id(to_unsafe.as(LibGst::StreamCollection*))
+      __return_value = LibGst.stream_collection_get_upstream_id(@pointer.as(LibGst::StreamCollection*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

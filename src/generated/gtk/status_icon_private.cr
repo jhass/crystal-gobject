@@ -2,12 +2,13 @@ module Gtk
   class StatusIconPrivate
     include GObject::WrappedType
 
-    @gtk_status_icon_private : LibGtk::StatusIconPrivate*?
-    def initialize(@gtk_status_icon_private : LibGtk::StatusIconPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::StatusIconPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_status_icon_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::StatusIconPrivate*)
     end
 
   end

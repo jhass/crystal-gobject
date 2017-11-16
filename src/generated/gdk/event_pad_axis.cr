@@ -16,12 +16,13 @@ module Gdk
       end
     end
 
-    @gdk_event_pad_axis : LibGdk::EventPadAxis*?
-    def initialize(@gdk_event_pad_axis : LibGdk::EventPadAxis*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::EventPadAxis*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_event_pad_axis.not_nil!
+      @pointer.not_nil!.as(LibGdk::EventPadAxis*)
     end
 
     def type

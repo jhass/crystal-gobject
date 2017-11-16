@@ -1,11 +1,12 @@
 module Gio
   class IOModule < GObject::TypeModule
-    @gio_i_o_module : LibGio::IOModule*?
-    def initialize(@gio_i_o_module : LibGio::IOModule*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::IOModule*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_i_o_module.not_nil!
+      @pointer.not_nil!.as(LibGio::IOModule*)
     end
 
     # Implements TypePlugin
@@ -20,12 +21,12 @@ module Gio
     end
 
     def load
-      LibGio.i_o_module_load(to_unsafe.as(LibGio::IOModule*))
+      LibGio.i_o_module_load(@pointer.as(LibGio::IOModule*))
       nil
     end
 
     def unload
-      LibGio.i_o_module_unload(to_unsafe.as(LibGio::IOModule*))
+      LibGio.i_o_module_unload(@pointer.as(LibGio::IOModule*))
       nil
     end
 

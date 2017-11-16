@@ -2,12 +2,13 @@ module Gtk
   class ColorSelectionPrivate
     include GObject::WrappedType
 
-    @gtk_color_selection_private : LibGtk::ColorSelectionPrivate*?
-    def initialize(@gtk_color_selection_private : LibGtk::ColorSelectionPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ColorSelectionPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_color_selection_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::ColorSelectionPrivate*)
     end
 
   end

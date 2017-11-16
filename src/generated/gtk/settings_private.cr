@@ -2,12 +2,13 @@ module Gtk
   class SettingsPrivate
     include GObject::WrappedType
 
-    @gtk_settings_private : LibGtk::SettingsPrivate*?
-    def initialize(@gtk_settings_private : LibGtk::SettingsPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::SettingsPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_settings_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::SettingsPrivate*)
     end
 
   end

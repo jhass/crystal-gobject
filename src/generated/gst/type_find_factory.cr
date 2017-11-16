@@ -2,12 +2,13 @@ require "./plugin_feature"
 
 module Gst
   class TypeFindFactory < PluginFeature
-    @gst_type_find_factory : LibGst::TypeFindFactory*?
-    def initialize(@gst_type_find_factory : LibGst::TypeFindFactory*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::TypeFindFactory*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_type_find_factory.not_nil!
+      @pointer.not_nil!.as(LibGst::TypeFindFactory*)
     end
 
     def self.list
@@ -16,22 +17,22 @@ module Gst
     end
 
     def call_function(find)
-      LibGst.type_find_factory_call_function(to_unsafe.as(LibGst::TypeFindFactory*), find.to_unsafe.as(LibGst::TypeFind*))
+      LibGst.type_find_factory_call_function(@pointer.as(LibGst::TypeFindFactory*), find.to_unsafe.as(LibGst::TypeFind*))
       nil
     end
 
     def caps
-      __return_value = LibGst.type_find_factory_get_caps(to_unsafe.as(LibGst::TypeFindFactory*))
+      __return_value = LibGst.type_find_factory_get_caps(@pointer.as(LibGst::TypeFindFactory*))
       Gst::Caps.new(__return_value)
     end
 
     def extensions
-      __return_value = LibGst.type_find_factory_get_extensions(to_unsafe.as(LibGst::TypeFindFactory*))
+      __return_value = LibGst.type_find_factory_get_extensions(@pointer.as(LibGst::TypeFindFactory*))
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) } if __return_value
     end
 
     def has_function
-      __return_value = LibGst.type_find_factory_has_function(to_unsafe.as(LibGst::TypeFindFactory*))
+      __return_value = LibGst.type_find_factory_has_function(@pointer.as(LibGst::TypeFindFactory*))
       __return_value
     end
 

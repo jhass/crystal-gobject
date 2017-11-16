@@ -10,12 +10,13 @@ module GLib
       end
     end
 
-    @g_lib_ptr_array : LibGLib::PtrArray*?
-    def initialize(@g_lib_ptr_array : LibGLib::PtrArray*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::PtrArray*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_ptr_array.not_nil!
+      @pointer.not_nil!.as(LibGLib::PtrArray*)
     end
 
     def pdata

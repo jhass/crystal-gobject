@@ -18,12 +18,13 @@ module GObject
       end
     end
 
-    @g_object_type_info : LibGObject::TypeInfo*?
-    def initialize(@g_object_type_info : LibGObject::TypeInfo*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::TypeInfo*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_type_info.not_nil!
+      @pointer.not_nil!.as(LibGObject::TypeInfo*)
     end
 
     def class_size

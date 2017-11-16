@@ -2,12 +2,13 @@ module Gtk
   class AssistantPrivate
     include GObject::WrappedType
 
-    @gtk_assistant_private : LibGtk::AssistantPrivate*?
-    def initialize(@gtk_assistant_private : LibGtk::AssistantPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::AssistantPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_assistant_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::AssistantPrivate*)
     end
 
   end

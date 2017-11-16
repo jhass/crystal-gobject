@@ -2,12 +2,13 @@ require "./engine"
 
 module Pango
   class EngineLang < Engine
-    @pango_engine_lang : LibPango::EngineLang*?
-    def initialize(@pango_engine_lang : LibPango::EngineLang*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::EngineLang*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_engine_lang.not_nil!
+      @pointer.not_nil!.as(LibPango::EngineLang*)
     end
 
   end

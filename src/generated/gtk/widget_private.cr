@@ -2,12 +2,13 @@ module Gtk
   class WidgetPrivate
     include GObject::WrappedType
 
-    @gtk_widget_private : LibGtk::WidgetPrivate*?
-    def initialize(@gtk_widget_private : LibGtk::WidgetPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::WidgetPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_widget_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::WidgetPrivate*)
     end
 
   end

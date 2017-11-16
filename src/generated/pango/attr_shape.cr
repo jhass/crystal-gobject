@@ -14,12 +14,13 @@ module Pango
       end
     end
 
-    @pango_attr_shape : LibPango::AttrShape*?
-    def initialize(@pango_attr_shape : LibPango::AttrShape*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::AttrShape*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_attr_shape.not_nil!
+      @pointer.not_nil!.as(LibPango::AttrShape*)
     end
 
     def attr

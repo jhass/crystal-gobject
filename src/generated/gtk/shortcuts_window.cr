@@ -2,12 +2,13 @@ require "./window"
 
 module Gtk
   class ShortcutsWindow < Window
-    @gtk_shortcuts_window : LibGtk::ShortcutsWindow*?
-    def initialize(@gtk_shortcuts_window : LibGtk::ShortcutsWindow*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ShortcutsWindow*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_shortcuts_window.not_nil!
+      @pointer.not_nil!.as(LibGtk::ShortcutsWindow*)
     end
 
     # Implements ImplementorIface

@@ -7,12 +7,13 @@ module GLib
       super(ptr.as(LibGLib::IOFuncs*))
     end
 
-    @g_lib_i_o_funcs : LibGLib::IOFuncs*?
-    def initialize(@g_lib_i_o_funcs : LibGLib::IOFuncs*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::IOFuncs*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_i_o_funcs.not_nil!
+      @pointer.not_nil!.as(LibGLib::IOFuncs*)
     end
 
     def io_read

@@ -12,12 +12,13 @@ module Gst
       end
     end
 
-    @gst_format_definition : LibGst::FormatDefinition*?
-    def initialize(@gst_format_definition : LibGst::FormatDefinition*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::FormatDefinition*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_format_definition.not_nil!
+      @pointer.not_nil!.as(LibGst::FormatDefinition*)
     end
 
     def value

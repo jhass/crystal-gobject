@@ -50,12 +50,13 @@ module GLib
       (to_unsafe.as(LibGLib::TokenValue*).value.v_error)
     end
 
-    @g_lib_token_value : LibGLib::TokenValue*?
-    def initialize(@g_lib_token_value : LibGLib::TokenValue*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::TokenValue*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_token_value.not_nil!
+      @pointer.not_nil!.as(LibGLib::TokenValue*)
     end
 
   end

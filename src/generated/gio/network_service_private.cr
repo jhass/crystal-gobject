@@ -2,12 +2,13 @@ module Gio
   class NetworkServicePrivate
     include GObject::WrappedType
 
-    @gio_network_service_private : LibGio::NetworkServicePrivate*?
-    def initialize(@gio_network_service_private : LibGio::NetworkServicePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::NetworkServicePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_network_service_private.not_nil!
+      @pointer.not_nil!.as(LibGio::NetworkServicePrivate*)
     end
 
   end

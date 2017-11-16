@@ -27,12 +27,13 @@ module Gtk
       end
     end
 
-    @gtk_text_attributes : LibGtk::TextAttributes*?
-    def initialize(@gtk_text_attributes : LibGtk::TextAttributes*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::TextAttributes*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_text_attributes.not_nil!
+      @pointer.not_nil!.as(LibGtk::TextAttributes*)
     end
 
     def self.new : self
@@ -41,22 +42,22 @@ module Gtk
     end
 
     def copy
-      __return_value = LibGtk.text_attributes_copy(to_unsafe.as(LibGtk::TextAttributes*))
+      __return_value = LibGtk.text_attributes_copy(@pointer.as(LibGtk::TextAttributes*))
       Gtk::TextAttributes.new(__return_value)
     end
 
     def copy_values(dest)
-      LibGtk.text_attributes_copy_values(to_unsafe.as(LibGtk::TextAttributes*), dest.to_unsafe.as(LibGtk::TextAttributes*))
+      LibGtk.text_attributes_copy_values(@pointer.as(LibGtk::TextAttributes*), dest.to_unsafe.as(LibGtk::TextAttributes*))
       nil
     end
 
     def ref
-      __return_value = LibGtk.text_attributes_ref(to_unsafe.as(LibGtk::TextAttributes*))
+      __return_value = LibGtk.text_attributes_ref(@pointer.as(LibGtk::TextAttributes*))
       Gtk::TextAttributes.new(__return_value)
     end
 
     def unref
-      LibGtk.text_attributes_unref(to_unsafe.as(LibGtk::TextAttributes*))
+      LibGtk.text_attributes_unref(@pointer.as(LibGtk::TextAttributes*))
       nil
     end
 

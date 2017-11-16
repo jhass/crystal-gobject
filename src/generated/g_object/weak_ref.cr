@@ -2,12 +2,13 @@ module GObject
   class WeakRef
     include GObject::WrappedType
 
-    @g_object_weak_ref : LibGObject::WeakRef*?
-    def initialize(@g_object_weak_ref : LibGObject::WeakRef*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::WeakRef*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_weak_ref.not_nil!
+      @pointer.not_nil!.as(LibGObject::WeakRef*)
     end
 
   end

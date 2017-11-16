@@ -2,12 +2,13 @@ module Gtk
   class AppChooserWidgetPrivate
     include GObject::WrappedType
 
-    @gtk_app_chooser_widget_private : LibGtk::AppChooserWidgetPrivate*?
-    def initialize(@gtk_app_chooser_widget_private : LibGtk::AppChooserWidgetPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::AppChooserWidgetPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_app_chooser_widget_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::AppChooserWidgetPrivate*)
     end
 
   end

@@ -2,12 +2,13 @@ module Gst
   class BinPrivate
     include GObject::WrappedType
 
-    @gst_bin_private : LibGst::BinPrivate*?
-    def initialize(@gst_bin_private : LibGst::BinPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::BinPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_bin_private.not_nil!
+      @pointer.not_nil!.as(LibGst::BinPrivate*)
     end
 
   end

@@ -2,12 +2,13 @@ module Gtk
   class RadioMenuItemAccessiblePrivate
     include GObject::WrappedType
 
-    @gtk_radio_menu_item_accessible_private : LibGtk::RadioMenuItemAccessiblePrivate*?
-    def initialize(@gtk_radio_menu_item_accessible_private : LibGtk::RadioMenuItemAccessiblePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::RadioMenuItemAccessiblePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_radio_menu_item_accessible_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::RadioMenuItemAccessiblePrivate*)
     end
 
   end

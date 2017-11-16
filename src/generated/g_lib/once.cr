@@ -10,12 +10,13 @@ module GLib
       end
     end
 
-    @g_lib_once : LibGLib::Once*?
-    def initialize(@g_lib_once : LibGLib::Once*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::Once*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_once.not_nil!
+      @pointer.not_nil!.as(LibGLib::Once*)
     end
 
     def self.init_enter(location)

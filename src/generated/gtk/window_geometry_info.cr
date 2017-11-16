@@ -2,12 +2,13 @@ module Gtk
   class WindowGeometryInfo
     include GObject::WrappedType
 
-    @gtk_window_geometry_info : LibGtk::WindowGeometryInfo*?
-    def initialize(@gtk_window_geometry_info : LibGtk::WindowGeometryInfo*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::WindowGeometryInfo*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_window_geometry_info.not_nil!
+      @pointer.not_nil!.as(LibGtk::WindowGeometryInfo*)
     end
 
   end

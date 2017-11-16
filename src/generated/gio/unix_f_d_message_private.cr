@@ -2,12 +2,13 @@ module Gio
   class UnixFDMessagePrivate
     include GObject::WrappedType
 
-    @gio_unix_f_d_message_private : LibGio::UnixFDMessagePrivate*?
-    def initialize(@gio_unix_f_d_message_private : LibGio::UnixFDMessagePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::UnixFDMessagePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_unix_f_d_message_private.not_nil!
+      @pointer.not_nil!.as(LibGio::UnixFDMessagePrivate*)
     end
 
   end

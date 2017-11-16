@@ -2,12 +2,13 @@ require "./box"
 
 module Gtk
   class FileChooserWidget < Box
-    @gtk_file_chooser_widget : LibGtk::FileChooserWidget*?
-    def initialize(@gtk_file_chooser_widget : LibGtk::FileChooserWidget*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::FileChooserWidget*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_file_chooser_widget.not_nil!
+      @pointer.not_nil!.as(LibGtk::FileChooserWidget*)
     end
 
     # Implements ImplementorIface

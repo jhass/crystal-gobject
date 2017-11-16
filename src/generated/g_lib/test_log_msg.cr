@@ -13,16 +13,17 @@ module GLib
       end
     end
 
-    @g_lib_test_log_msg : LibGLib::TestLogMsg*?
-    def initialize(@g_lib_test_log_msg : LibGLib::TestLogMsg*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::TestLogMsg*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_test_log_msg.not_nil!
+      @pointer.not_nil!.as(LibGLib::TestLogMsg*)
     end
 
     def free
-      LibGLib.test_log_msg_free(to_unsafe.as(LibGLib::TestLogMsg*))
+      LibGLib.test_log_msg_free(@pointer.as(LibGLib::TestLogMsg*))
       nil
     end
 

@@ -2,12 +2,13 @@ module Gio
   class FileIOStreamPrivate
     include GObject::WrappedType
 
-    @gio_file_i_o_stream_private : LibGio::FileIOStreamPrivate*?
-    def initialize(@gio_file_i_o_stream_private : LibGio::FileIOStreamPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::FileIOStreamPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_file_i_o_stream_private.not_nil!
+      @pointer.not_nil!.as(LibGio::FileIOStreamPrivate*)
     end
 
   end

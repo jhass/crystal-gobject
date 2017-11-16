@@ -7,12 +7,13 @@ module GLib
       super(ptr.as(LibGLib::SourceFuncs*))
     end
 
-    @g_lib_source_funcs : LibGLib::SourceFuncs*?
-    def initialize(@g_lib_source_funcs : LibGLib::SourceFuncs*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::SourceFuncs*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_source_funcs.not_nil!
+      @pointer.not_nil!.as(LibGLib::SourceFuncs*)
     end
 
     def prepare

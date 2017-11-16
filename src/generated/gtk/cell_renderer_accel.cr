@@ -2,12 +2,13 @@ require "./cell_renderer_text"
 
 module Gtk
   class CellRendererAccel < CellRendererText
-    @gtk_cell_renderer_accel : LibGtk::CellRendererAccel*?
-    def initialize(@gtk_cell_renderer_accel : LibGtk::CellRendererAccel*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::CellRendererAccel*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_cell_renderer_accel.not_nil!
+      @pointer.not_nil!.as(LibGtk::CellRendererAccel*)
     end
 
     def accel_key

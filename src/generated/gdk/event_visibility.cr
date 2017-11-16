@@ -12,12 +12,13 @@ module Gdk
       end
     end
 
-    @gdk_event_visibility : LibGdk::EventVisibility*?
-    def initialize(@gdk_event_visibility : LibGdk::EventVisibility*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::EventVisibility*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_event_visibility.not_nil!
+      @pointer.not_nil!.as(LibGdk::EventVisibility*)
     end
 
     def type

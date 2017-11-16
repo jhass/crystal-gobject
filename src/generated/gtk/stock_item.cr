@@ -13,16 +13,17 @@ module Gtk
       end
     end
 
-    @gtk_stock_item : LibGtk::StockItem*?
-    def initialize(@gtk_stock_item : LibGtk::StockItem*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::StockItem*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_stock_item.not_nil!
+      @pointer.not_nil!.as(LibGtk::StockItem*)
     end
 
     def free
-      LibGtk.stock_item_free(to_unsafe.as(LibGtk::StockItem*))
+      LibGtk.stock_item_free(@pointer.as(LibGtk::StockItem*))
       nil
     end
 

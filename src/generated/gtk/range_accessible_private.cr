@@ -2,12 +2,13 @@ module Gtk
   class RangeAccessiblePrivate
     include GObject::WrappedType
 
-    @gtk_range_accessible_private : LibGtk::RangeAccessiblePrivate*?
-    def initialize(@gtk_range_accessible_private : LibGtk::RangeAccessiblePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::RangeAccessiblePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_range_accessible_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::RangeAccessiblePrivate*)
     end
 
   end

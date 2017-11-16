@@ -12,21 +12,22 @@ module Gst
       end
     end
 
-    @gst_static_pad_template : LibGst::StaticPadTemplate*?
-    def initialize(@gst_static_pad_template : LibGst::StaticPadTemplate*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::StaticPadTemplate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_static_pad_template.not_nil!
+      @pointer.not_nil!.as(LibGst::StaticPadTemplate*)
     end
 
     def get
-      __return_value = LibGst.static_pad_template_get(to_unsafe.as(LibGst::StaticPadTemplate*))
+      __return_value = LibGst.static_pad_template_get(@pointer.as(LibGst::StaticPadTemplate*))
       Gst::PadTemplate.new(__return_value)
     end
 
     def caps
-      __return_value = LibGst.static_pad_template_get_caps(to_unsafe.as(LibGst::StaticPadTemplate*))
+      __return_value = LibGst.static_pad_template_get_caps(@pointer.as(LibGst::StaticPadTemplate*))
       Gst::Caps.new(__return_value)
     end
 

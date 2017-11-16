@@ -2,12 +2,13 @@ require "./socket_service"
 
 module Gio
   class ThreadedSocketService < SocketService
-    @gio_threaded_socket_service : LibGio::ThreadedSocketService*?
-    def initialize(@gio_threaded_socket_service : LibGio::ThreadedSocketService*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::ThreadedSocketService*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_threaded_socket_service.not_nil!
+      @pointer.not_nil!.as(LibGio::ThreadedSocketService*)
     end
 
     def max_threads

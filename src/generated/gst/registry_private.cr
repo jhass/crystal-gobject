@@ -2,12 +2,13 @@ module Gst
   class RegistryPrivate
     include GObject::WrappedType
 
-    @gst_registry_private : LibGst::RegistryPrivate*?
-    def initialize(@gst_registry_private : LibGst::RegistryPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::RegistryPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_registry_private.not_nil!
+      @pointer.not_nil!.as(LibGst::RegistryPrivate*)
     end
 
   end

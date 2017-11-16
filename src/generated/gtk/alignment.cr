@@ -2,12 +2,13 @@ require "./bin"
 
 module Gtk
   class Alignment < Bin
-    @gtk_alignment : LibGtk::Alignment*?
-    def initialize(@gtk_alignment : LibGtk::Alignment*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Alignment*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_alignment.not_nil!
+      @pointer.not_nil!.as(LibGtk::Alignment*)
     end
 
     # Implements ImplementorIface
@@ -58,17 +59,17 @@ module Gtk
     end
 
     def padding(padding_top, padding_bottom, padding_left, padding_right)
-      LibGtk.alignment_get_padding(to_unsafe.as(LibGtk::Alignment*), padding_top, padding_bottom, padding_left, padding_right)
+      LibGtk.alignment_get_padding(@pointer.as(LibGtk::Alignment*), padding_top, padding_bottom, padding_left, padding_right)
       nil
     end
 
     def set(xalign, yalign, xscale, yscale)
-      LibGtk.alignment_set(to_unsafe.as(LibGtk::Alignment*), Float32.new(xalign), Float32.new(yalign), Float32.new(xscale), Float32.new(yscale))
+      LibGtk.alignment_set(@pointer.as(LibGtk::Alignment*), Float32.new(xalign), Float32.new(yalign), Float32.new(xscale), Float32.new(yscale))
       nil
     end
 
     def set_padding(padding_top, padding_bottom, padding_left, padding_right)
-      LibGtk.alignment_set_padding(to_unsafe.as(LibGtk::Alignment*), UInt32.new(padding_top), UInt32.new(padding_bottom), UInt32.new(padding_left), UInt32.new(padding_right))
+      LibGtk.alignment_set_padding(@pointer.as(LibGtk::Alignment*), UInt32.new(padding_top), UInt32.new(padding_bottom), UInt32.new(padding_left), UInt32.new(padding_right))
       nil
     end
 

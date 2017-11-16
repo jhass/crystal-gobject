@@ -2,12 +2,13 @@ module GIRepository
   class RepositoryPrivate
     include GObject::WrappedType
 
-    @g_i_repository_repository_private : LibGIRepository::RepositoryPrivate*?
-    def initialize(@g_i_repository_repository_private : LibGIRepository::RepositoryPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGIRepository::RepositoryPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_i_repository_repository_private.not_nil!
+      @pointer.not_nil!.as(LibGIRepository::RepositoryPrivate*)
     end
 
   end

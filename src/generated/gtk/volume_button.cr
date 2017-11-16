@@ -2,12 +2,13 @@ require "./scale_button"
 
 module Gtk
   class VolumeButton < ScaleButton
-    @gtk_volume_button : LibGtk::VolumeButton*?
-    def initialize(@gtk_volume_button : LibGtk::VolumeButton*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::VolumeButton*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_volume_button.not_nil!
+      @pointer.not_nil!.as(LibGtk::VolumeButton*)
     end
 
     # Implements ImplementorIface

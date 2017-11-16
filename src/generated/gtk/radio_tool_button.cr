@@ -2,12 +2,13 @@ require "./toggle_tool_button"
 
 module Gtk
   class RadioToolButton < ToggleToolButton
-    @gtk_radio_tool_button : LibGtk::RadioToolButton*?
-    def initialize(@gtk_radio_tool_button : LibGtk::RadioToolButton*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::RadioToolButton*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_radio_tool_button.not_nil!
+      @pointer.not_nil!.as(LibGtk::RadioToolButton*)
     end
 
     # Implements ImplementorIface
@@ -36,12 +37,12 @@ module Gtk
     end
 
     def group
-      __return_value = LibGtk.radio_tool_button_get_group(to_unsafe.as(LibGtk::RadioToolButton*))
+      __return_value = LibGtk.radio_tool_button_get_group(@pointer.as(LibGtk::RadioToolButton*))
       GLib::SListIterator(Gtk::RadioButton, LibGtk::RadioButton*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def group=(group)
-      LibGtk.radio_tool_button_set_group(to_unsafe.as(LibGtk::RadioToolButton*), group ? group : nil)
+      LibGtk.radio_tool_button_set_group(@pointer.as(LibGtk::RadioToolButton*), group ? group : nil)
       nil
     end
 

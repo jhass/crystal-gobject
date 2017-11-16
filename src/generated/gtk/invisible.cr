@@ -2,12 +2,13 @@ require "./widget"
 
 module Gtk
   class Invisible < Widget
-    @gtk_invisible : LibGtk::Invisible*?
-    def initialize(@gtk_invisible : LibGtk::Invisible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Invisible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_invisible.not_nil!
+      @pointer.not_nil!.as(LibGtk::Invisible*)
     end
 
     # Implements ImplementorIface
@@ -28,12 +29,12 @@ module Gtk
     end
 
     def screen
-      __return_value = LibGtk.invisible_get_screen(to_unsafe.as(LibGtk::Invisible*))
+      __return_value = LibGtk.invisible_get_screen(@pointer.as(LibGtk::Invisible*))
       Gdk::Screen.new(__return_value)
     end
 
     def screen=(screen)
-      LibGtk.invisible_set_screen(to_unsafe.as(LibGtk::Invisible*), screen.to_unsafe.as(LibGdk::Screen*))
+      LibGtk.invisible_set_screen(@pointer.as(LibGtk::Invisible*), screen.to_unsafe.as(LibGdk::Screen*))
       nil
     end
 

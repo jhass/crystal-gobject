@@ -1,15 +1,16 @@
 module Gtk
   class ToplevelAccessible < Atk::Object
-    @gtk_toplevel_accessible : LibGtk::ToplevelAccessible*?
-    def initialize(@gtk_toplevel_accessible : LibGtk::ToplevelAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ToplevelAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_toplevel_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::ToplevelAccessible*)
     end
 
     def children
-      __return_value = LibGtk.toplevel_accessible_get_children(to_unsafe.as(LibGtk::ToplevelAccessible*))
+      __return_value = LibGtk.toplevel_accessible_get_children(@pointer.as(LibGtk::ToplevelAccessible*))
       GLib::ListIterator(Gtk::Window, LibGtk::Window*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 

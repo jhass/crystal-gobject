@@ -2,12 +2,13 @@ module Gio
   class MenuAttributeIterPrivate
     include GObject::WrappedType
 
-    @gio_menu_attribute_iter_private : LibGio::MenuAttributeIterPrivate*?
-    def initialize(@gio_menu_attribute_iter_private : LibGio::MenuAttributeIterPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::MenuAttributeIterPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_menu_attribute_iter_private.not_nil!
+      @pointer.not_nil!.as(LibGio::MenuAttributeIterPrivate*)
     end
 
   end

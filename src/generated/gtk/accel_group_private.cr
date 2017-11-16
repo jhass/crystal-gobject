@@ -2,12 +2,13 @@ module Gtk
   class AccelGroupPrivate
     include GObject::WrappedType
 
-    @gtk_accel_group_private : LibGtk::AccelGroupPrivate*?
-    def initialize(@gtk_accel_group_private : LibGtk::AccelGroupPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::AccelGroupPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_accel_group_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::AccelGroupPrivate*)
     end
 
   end

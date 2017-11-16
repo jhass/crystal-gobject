@@ -1,17 +1,17 @@
 module Gtk
   module CellEditable
     def editing_done
-      LibGtk.cell_editable_editing_done(to_unsafe.as(LibGtk::CellEditable*))
+      LibGtk.cell_editable_editing_done(@pointer.as(LibGtk::CellEditable*))
       nil
     end
 
     def remove_widget
-      LibGtk.cell_editable_remove_widget(to_unsafe.as(LibGtk::CellEditable*))
+      LibGtk.cell_editable_remove_widget(@pointer.as(LibGtk::CellEditable*))
       nil
     end
 
     def start_editing(event)
-      LibGtk.cell_editable_start_editing(to_unsafe.as(LibGtk::CellEditable*), event ? event.to_unsafe.as(LibGdk::Event*) : nil)
+      LibGtk.cell_editable_start_editing(@pointer.as(LibGtk::CellEditable*), event ? event.to_unsafe.as(LibGdk::Event*) : nil)
       nil
     end
 

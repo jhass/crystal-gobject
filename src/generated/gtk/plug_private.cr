@@ -2,12 +2,13 @@ module Gtk
   class PlugPrivate
     include GObject::WrappedType
 
-    @gtk_plug_private : LibGtk::PlugPrivate*?
-    def initialize(@gtk_plug_private : LibGtk::PlugPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::PlugPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_plug_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::PlugPrivate*)
     end
 
   end

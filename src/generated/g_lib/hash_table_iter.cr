@@ -7,36 +7,37 @@ module GLib
       super(ptr.as(LibGLib::HashTableIter*))
     end
 
-    @g_lib_hash_table_iter : LibGLib::HashTableIter*?
-    def initialize(@g_lib_hash_table_iter : LibGLib::HashTableIter*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::HashTableIter*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_hash_table_iter.not_nil!
+      @pointer.not_nil!.as(LibGLib::HashTableIter*)
     end
 
     def init(hash_table)
-      LibGLib.hash_table_iter_init(to_unsafe.as(LibGLib::HashTableIter*), hash_table)
+      LibGLib.hash_table_iter_init(@pointer.as(LibGLib::HashTableIter*), hash_table)
       nil
     end
 
     def next(key, value)
-      __return_value = LibGLib.hash_table_iter_next(to_unsafe.as(LibGLib::HashTableIter*), key, value)
+      __return_value = LibGLib.hash_table_iter_next(@pointer.as(LibGLib::HashTableIter*), key, value)
       __return_value
     end
 
     def remove
-      LibGLib.hash_table_iter_remove(to_unsafe.as(LibGLib::HashTableIter*))
+      LibGLib.hash_table_iter_remove(@pointer.as(LibGLib::HashTableIter*))
       nil
     end
 
     def replace(value)
-      LibGLib.hash_table_iter_replace(to_unsafe.as(LibGLib::HashTableIter*), value ? value : nil)
+      LibGLib.hash_table_iter_replace(@pointer.as(LibGLib::HashTableIter*), value ? value : nil)
       nil
     end
 
     def steal
-      LibGLib.hash_table_iter_steal(to_unsafe.as(LibGLib::HashTableIter*))
+      LibGLib.hash_table_iter_steal(@pointer.as(LibGLib::HashTableIter*))
       nil
     end
 

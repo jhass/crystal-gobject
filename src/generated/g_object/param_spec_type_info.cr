@@ -11,12 +11,13 @@ module GObject
       end
     end
 
-    @g_object_param_spec_type_info : LibGObject::ParamSpecTypeInfo*?
-    def initialize(@g_object_param_spec_type_info : LibGObject::ParamSpecTypeInfo*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::ParamSpecTypeInfo*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_param_spec_type_info.not_nil!
+      @pointer.not_nil!.as(LibGObject::ParamSpecTypeInfo*)
     end
 
     def instance_size

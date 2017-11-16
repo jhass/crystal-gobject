@@ -14,12 +14,13 @@ module Gst
       end
     end
 
-    @gst_map_info : LibGst::MapInfo*?
-    def initialize(@gst_map_info : LibGst::MapInfo*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::MapInfo*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_map_info.not_nil!
+      @pointer.not_nil!.as(LibGst::MapInfo*)
     end
 
     def memory

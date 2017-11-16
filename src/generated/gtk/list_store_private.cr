@@ -2,12 +2,13 @@ module Gtk
   class ListStorePrivate
     include GObject::WrappedType
 
-    @gtk_list_store_private : LibGtk::ListStorePrivate*?
-    def initialize(@gtk_list_store_private : LibGtk::ListStorePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ListStorePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_list_store_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::ListStorePrivate*)
     end
 
   end

@@ -2,12 +2,13 @@ module Gst
   class DateTime
     include GObject::WrappedType
 
-    @gst_date_time : LibGst::DateTime*?
-    def initialize(@gst_date_time : LibGst::DateTime*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::DateTime*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_date_time.not_nil!
+      @pointer.not_nil!.as(LibGst::DateTime*)
     end
 
     def self.new(tzoffset, year, month, day, hour, minute, seconds) : self
@@ -66,87 +67,87 @@ module Gst
     end
 
     def day
-      __return_value = LibGst.date_time_get_day(to_unsafe.as(LibGst::DateTime*))
+      __return_value = LibGst.date_time_get_day(@pointer.as(LibGst::DateTime*))
       __return_value
     end
 
     def hour
-      __return_value = LibGst.date_time_get_hour(to_unsafe.as(LibGst::DateTime*))
+      __return_value = LibGst.date_time_get_hour(@pointer.as(LibGst::DateTime*))
       __return_value
     end
 
     def microsecond
-      __return_value = LibGst.date_time_get_microsecond(to_unsafe.as(LibGst::DateTime*))
+      __return_value = LibGst.date_time_get_microsecond(@pointer.as(LibGst::DateTime*))
       __return_value
     end
 
     def minute
-      __return_value = LibGst.date_time_get_minute(to_unsafe.as(LibGst::DateTime*))
+      __return_value = LibGst.date_time_get_minute(@pointer.as(LibGst::DateTime*))
       __return_value
     end
 
     def month
-      __return_value = LibGst.date_time_get_month(to_unsafe.as(LibGst::DateTime*))
+      __return_value = LibGst.date_time_get_month(@pointer.as(LibGst::DateTime*))
       __return_value
     end
 
     def second
-      __return_value = LibGst.date_time_get_second(to_unsafe.as(LibGst::DateTime*))
+      __return_value = LibGst.date_time_get_second(@pointer.as(LibGst::DateTime*))
       __return_value
     end
 
     def time_zone_offset
-      __return_value = LibGst.date_time_get_time_zone_offset(to_unsafe.as(LibGst::DateTime*))
+      __return_value = LibGst.date_time_get_time_zone_offset(@pointer.as(LibGst::DateTime*))
       __return_value
     end
 
     def year
-      __return_value = LibGst.date_time_get_year(to_unsafe.as(LibGst::DateTime*))
+      __return_value = LibGst.date_time_get_year(@pointer.as(LibGst::DateTime*))
       __return_value
     end
 
     def has_day
-      __return_value = LibGst.date_time_has_day(to_unsafe.as(LibGst::DateTime*))
+      __return_value = LibGst.date_time_has_day(@pointer.as(LibGst::DateTime*))
       __return_value
     end
 
     def has_month
-      __return_value = LibGst.date_time_has_month(to_unsafe.as(LibGst::DateTime*))
+      __return_value = LibGst.date_time_has_month(@pointer.as(LibGst::DateTime*))
       __return_value
     end
 
     def has_second
-      __return_value = LibGst.date_time_has_second(to_unsafe.as(LibGst::DateTime*))
+      __return_value = LibGst.date_time_has_second(@pointer.as(LibGst::DateTime*))
       __return_value
     end
 
     def has_time
-      __return_value = LibGst.date_time_has_time(to_unsafe.as(LibGst::DateTime*))
+      __return_value = LibGst.date_time_has_time(@pointer.as(LibGst::DateTime*))
       __return_value
     end
 
     def has_year
-      __return_value = LibGst.date_time_has_year(to_unsafe.as(LibGst::DateTime*))
+      __return_value = LibGst.date_time_has_year(@pointer.as(LibGst::DateTime*))
       __return_value
     end
 
     def ref
-      __return_value = LibGst.date_time_ref(to_unsafe.as(LibGst::DateTime*))
+      __return_value = LibGst.date_time_ref(@pointer.as(LibGst::DateTime*))
       Gst::DateTime.new(__return_value)
     end
 
     def to_g_date_time
-      __return_value = LibGst.date_time_to_g_date_time(to_unsafe.as(LibGst::DateTime*))
+      __return_value = LibGst.date_time_to_g_date_time(@pointer.as(LibGst::DateTime*))
       GLib::DateTime.new(__return_value) if __return_value
     end
 
     def to_iso8601_string
-      __return_value = LibGst.date_time_to_iso8601_string(to_unsafe.as(LibGst::DateTime*))
+      __return_value = LibGst.date_time_to_iso8601_string(@pointer.as(LibGst::DateTime*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def unref
-      LibGst.date_time_unref(to_unsafe.as(LibGst::DateTime*))
+      LibGst.date_time_unref(@pointer.as(LibGst::DateTime*))
       nil
     end
 

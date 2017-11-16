@@ -2,12 +2,13 @@ require "./event_controller"
 
 module Gtk
   class Gesture < EventController
-    @gtk_gesture : LibGtk::Gesture*?
-    def initialize(@gtk_gesture : LibGtk::Gesture*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Gesture*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_gesture.not_nil!
+      @pointer.not_nil!.as(LibGtk::Gesture*)
     end
 
     def n_points
@@ -21,97 +22,97 @@ module Gtk
     end
 
     def bounding_box(rect)
-      __return_value = LibGtk.gesture_get_bounding_box(to_unsafe.as(LibGtk::Gesture*), rect)
+      __return_value = LibGtk.gesture_get_bounding_box(@pointer.as(LibGtk::Gesture*), rect)
       __return_value
     end
 
     def bounding_box_center(x, y)
-      __return_value = LibGtk.gesture_get_bounding_box_center(to_unsafe.as(LibGtk::Gesture*), x, y)
+      __return_value = LibGtk.gesture_get_bounding_box_center(@pointer.as(LibGtk::Gesture*), x, y)
       __return_value
     end
 
     def device
-      __return_value = LibGtk.gesture_get_device(to_unsafe.as(LibGtk::Gesture*))
+      __return_value = LibGtk.gesture_get_device(@pointer.as(LibGtk::Gesture*))
       Gdk::Device.new(__return_value) if __return_value
     end
 
     def group
-      __return_value = LibGtk.gesture_get_group(to_unsafe.as(LibGtk::Gesture*))
+      __return_value = LibGtk.gesture_get_group(@pointer.as(LibGtk::Gesture*))
       GLib::ListIterator(Gtk::Gesture, LibGtk::Gesture*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def last_event(sequence)
-      __return_value = LibGtk.gesture_get_last_event(to_unsafe.as(LibGtk::Gesture*), sequence.to_unsafe.as(LibGdk::EventSequence*))
+      __return_value = LibGtk.gesture_get_last_event(@pointer.as(LibGtk::Gesture*), sequence.to_unsafe.as(LibGdk::EventSequence*))
       Gdk::Event.new(__return_value) if __return_value
     end
 
     def last_updated_sequence
-      __return_value = LibGtk.gesture_get_last_updated_sequence(to_unsafe.as(LibGtk::Gesture*))
+      __return_value = LibGtk.gesture_get_last_updated_sequence(@pointer.as(LibGtk::Gesture*))
       Gdk::EventSequence.new(__return_value) if __return_value
     end
 
     def point(sequence, x, y)
-      __return_value = LibGtk.gesture_get_point(to_unsafe.as(LibGtk::Gesture*), sequence ? sequence.to_unsafe.as(LibGdk::EventSequence*) : nil, x, y)
+      __return_value = LibGtk.gesture_get_point(@pointer.as(LibGtk::Gesture*), sequence ? sequence.to_unsafe.as(LibGdk::EventSequence*) : nil, x, y)
       __return_value
     end
 
     def sequence_state(sequence)
-      __return_value = LibGtk.gesture_get_sequence_state(to_unsafe.as(LibGtk::Gesture*), sequence.to_unsafe.as(LibGdk::EventSequence*))
+      __return_value = LibGtk.gesture_get_sequence_state(@pointer.as(LibGtk::Gesture*), sequence.to_unsafe.as(LibGdk::EventSequence*))
       __return_value
     end
 
     def sequences
-      __return_value = LibGtk.gesture_get_sequences(to_unsafe.as(LibGtk::Gesture*))
+      __return_value = LibGtk.gesture_get_sequences(@pointer.as(LibGtk::Gesture*))
       GLib::ListIterator(Gdk::EventSequence, LibGdk::EventSequence*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def window
-      __return_value = LibGtk.gesture_get_window(to_unsafe.as(LibGtk::Gesture*))
+      __return_value = LibGtk.gesture_get_window(@pointer.as(LibGtk::Gesture*))
       Gdk::Window.new(__return_value) if __return_value
     end
 
     def group(gesture)
-      LibGtk.gesture_group(to_unsafe.as(LibGtk::Gesture*), gesture.to_unsafe.as(LibGtk::Gesture*))
+      LibGtk.gesture_group(@pointer.as(LibGtk::Gesture*), gesture.to_unsafe.as(LibGtk::Gesture*))
       nil
     end
 
     def handles_sequence(sequence)
-      __return_value = LibGtk.gesture_handles_sequence(to_unsafe.as(LibGtk::Gesture*), sequence ? sequence.to_unsafe.as(LibGdk::EventSequence*) : nil)
+      __return_value = LibGtk.gesture_handles_sequence(@pointer.as(LibGtk::Gesture*), sequence ? sequence.to_unsafe.as(LibGdk::EventSequence*) : nil)
       __return_value
     end
 
     def active?
-      __return_value = LibGtk.gesture_is_active(to_unsafe.as(LibGtk::Gesture*))
+      __return_value = LibGtk.gesture_is_active(@pointer.as(LibGtk::Gesture*))
       __return_value
     end
 
     def grouped_with?(other)
-      __return_value = LibGtk.gesture_is_grouped_with(to_unsafe.as(LibGtk::Gesture*), other.to_unsafe.as(LibGtk::Gesture*))
+      __return_value = LibGtk.gesture_is_grouped_with(@pointer.as(LibGtk::Gesture*), other.to_unsafe.as(LibGtk::Gesture*))
       __return_value
     end
 
     def recognized?
-      __return_value = LibGtk.gesture_is_recognized(to_unsafe.as(LibGtk::Gesture*))
+      __return_value = LibGtk.gesture_is_recognized(@pointer.as(LibGtk::Gesture*))
       __return_value
     end
 
     def set_sequence_state(sequence, state : Gtk::EventSequenceState)
-      __return_value = LibGtk.gesture_set_sequence_state(to_unsafe.as(LibGtk::Gesture*), sequence.to_unsafe.as(LibGdk::EventSequence*), state)
+      __return_value = LibGtk.gesture_set_sequence_state(@pointer.as(LibGtk::Gesture*), sequence.to_unsafe.as(LibGdk::EventSequence*), state)
       __return_value
     end
 
     def state=(state : Gtk::EventSequenceState)
-      __return_value = LibGtk.gesture_set_state(to_unsafe.as(LibGtk::Gesture*), state)
+      __return_value = LibGtk.gesture_set_state(@pointer.as(LibGtk::Gesture*), state)
       __return_value
     end
 
     def window=(window)
-      LibGtk.gesture_set_window(to_unsafe.as(LibGtk::Gesture*), window ? window.to_unsafe.as(LibGdk::Window*) : nil)
+      LibGtk.gesture_set_window(@pointer.as(LibGtk::Gesture*), window ? window.to_unsafe.as(LibGdk::Window*) : nil)
       nil
     end
 
     def ungroup
-      LibGtk.gesture_ungroup(to_unsafe.as(LibGtk::Gesture*))
+      LibGtk.gesture_ungroup(@pointer.as(LibGtk::Gesture*))
       nil
     end
 

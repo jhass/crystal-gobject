@@ -2,12 +2,13 @@ require "./box"
 
 module Gtk
   class ShortcutLabel < Box
-    @gtk_shortcut_label : LibGtk::ShortcutLabel*?
-    def initialize(@gtk_shortcut_label : LibGtk::ShortcutLabel*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ShortcutLabel*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_shortcut_label.not_nil!
+      @pointer.not_nil!.as(LibGtk::ShortcutLabel*)
     end
 
     # Implements ImplementorIface
@@ -29,22 +30,22 @@ module Gtk
     end
 
     def accelerator
-      __return_value = LibGtk.shortcut_label_get_accelerator(to_unsafe.as(LibGtk::ShortcutLabel*))
+      __return_value = LibGtk.shortcut_label_get_accelerator(@pointer.as(LibGtk::ShortcutLabel*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def disabled_text
-      __return_value = LibGtk.shortcut_label_get_disabled_text(to_unsafe.as(LibGtk::ShortcutLabel*))
+      __return_value = LibGtk.shortcut_label_get_disabled_text(@pointer.as(LibGtk::ShortcutLabel*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def accelerator=(accelerator)
-      LibGtk.shortcut_label_set_accelerator(to_unsafe.as(LibGtk::ShortcutLabel*), accelerator.to_unsafe)
+      LibGtk.shortcut_label_set_accelerator(@pointer.as(LibGtk::ShortcutLabel*), accelerator.to_unsafe)
       nil
     end
 
     def disabled_text=(disabled_text)
-      LibGtk.shortcut_label_set_disabled_text(to_unsafe.as(LibGtk::ShortcutLabel*), disabled_text.to_unsafe)
+      LibGtk.shortcut_label_set_disabled_text(@pointer.as(LibGtk::ShortcutLabel*), disabled_text.to_unsafe)
       nil
     end
 

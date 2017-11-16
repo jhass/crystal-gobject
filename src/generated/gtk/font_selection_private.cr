@@ -2,12 +2,13 @@ module Gtk
   class FontSelectionPrivate
     include GObject::WrappedType
 
-    @gtk_font_selection_private : LibGtk::FontSelectionPrivate*?
-    def initialize(@gtk_font_selection_private : LibGtk::FontSelectionPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::FontSelectionPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_font_selection_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::FontSelectionPrivate*)
     end
 
   end

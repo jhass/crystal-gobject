@@ -7,51 +7,52 @@ module GLib
       super(ptr.as(LibGLib::RWLock*))
     end
 
-    @g_lib_r_w_lock : LibGLib::RWLock*?
-    def initialize(@g_lib_r_w_lock : LibGLib::RWLock*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::RWLock*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_r_w_lock.not_nil!
+      @pointer.not_nil!.as(LibGLib::RWLock*)
     end
 
     def clear
-      LibGLib.r_w_lock_clear(to_unsafe.as(LibGLib::RWLock*))
+      LibGLib.r_w_lock_clear(@pointer.as(LibGLib::RWLock*))
       nil
     end
 
     def init
-      LibGLib.r_w_lock_init(to_unsafe.as(LibGLib::RWLock*))
+      LibGLib.r_w_lock_init(@pointer.as(LibGLib::RWLock*))
       nil
     end
 
     def reader_lock
-      LibGLib.r_w_lock_reader_lock(to_unsafe.as(LibGLib::RWLock*))
+      LibGLib.r_w_lock_reader_lock(@pointer.as(LibGLib::RWLock*))
       nil
     end
 
     def reader_trylock
-      __return_value = LibGLib.r_w_lock_reader_trylock(to_unsafe.as(LibGLib::RWLock*))
+      __return_value = LibGLib.r_w_lock_reader_trylock(@pointer.as(LibGLib::RWLock*))
       __return_value
     end
 
     def reader_unlock
-      LibGLib.r_w_lock_reader_unlock(to_unsafe.as(LibGLib::RWLock*))
+      LibGLib.r_w_lock_reader_unlock(@pointer.as(LibGLib::RWLock*))
       nil
     end
 
     def writer_lock
-      LibGLib.r_w_lock_writer_lock(to_unsafe.as(LibGLib::RWLock*))
+      LibGLib.r_w_lock_writer_lock(@pointer.as(LibGLib::RWLock*))
       nil
     end
 
     def writer_trylock
-      __return_value = LibGLib.r_w_lock_writer_trylock(to_unsafe.as(LibGLib::RWLock*))
+      __return_value = LibGLib.r_w_lock_writer_trylock(@pointer.as(LibGLib::RWLock*))
       __return_value
     end
 
     def writer_unlock
-      LibGLib.r_w_lock_writer_unlock(to_unsafe.as(LibGLib::RWLock*))
+      LibGLib.r_w_lock_writer_unlock(@pointer.as(LibGLib::RWLock*))
       nil
     end
 

@@ -1,11 +1,12 @@
 module Gio
   class DBusObjectProxy < GObject::Object
-    @gio_d_bus_object_proxy : LibGio::DBusObjectProxy*?
-    def initialize(@gio_d_bus_object_proxy : LibGio::DBusObjectProxy*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::DBusObjectProxy*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_d_bus_object_proxy.not_nil!
+      @pointer.not_nil!.as(LibGio::DBusObjectProxy*)
     end
 
     # Implements DBusObject
@@ -25,7 +26,7 @@ module Gio
     end
 
     def connection
-      __return_value = LibGio.d_bus_object_proxy_get_connection(to_unsafe.as(LibGio::DBusObjectProxy*))
+      __return_value = LibGio.d_bus_object_proxy_get_connection(@pointer.as(LibGio::DBusObjectProxy*))
       Gio::DBusConnection.new(__return_value)
     end
 

@@ -2,12 +2,13 @@ module Gtk
   class ExpanderPrivate
     include GObject::WrappedType
 
-    @gtk_expander_private : LibGtk::ExpanderPrivate*?
-    def initialize(@gtk_expander_private : LibGtk::ExpanderPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ExpanderPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_expander_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::ExpanderPrivate*)
     end
 
   end

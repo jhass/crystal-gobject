@@ -2,12 +2,13 @@ module Gio
   class SimpleProxyResolverPrivate
     include GObject::WrappedType
 
-    @gio_simple_proxy_resolver_private : LibGio::SimpleProxyResolverPrivate*?
-    def initialize(@gio_simple_proxy_resolver_private : LibGio::SimpleProxyResolverPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::SimpleProxyResolverPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_simple_proxy_resolver_private.not_nil!
+      @pointer.not_nil!.as(LibGio::SimpleProxyResolverPrivate*)
     end
 
   end

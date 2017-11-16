@@ -12,21 +12,22 @@ module Gio
       end
     end
 
-    @gio_d_bus_signal_info : LibGio::DBusSignalInfo*?
-    def initialize(@gio_d_bus_signal_info : LibGio::DBusSignalInfo*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::DBusSignalInfo*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_d_bus_signal_info.not_nil!
+      @pointer.not_nil!.as(LibGio::DBusSignalInfo*)
     end
 
     def ref
-      __return_value = LibGio.d_bus_signal_info_ref(to_unsafe.as(LibGio::DBusSignalInfo*))
+      __return_value = LibGio.d_bus_signal_info_ref(@pointer.as(LibGio::DBusSignalInfo*))
       Gio::DBusSignalInfo.new(__return_value)
     end
 
     def unref
-      LibGio.d_bus_signal_info_unref(to_unsafe.as(LibGio::DBusSignalInfo*))
+      LibGio.d_bus_signal_info_unref(@pointer.as(LibGio::DBusSignalInfo*))
       nil
     end
 

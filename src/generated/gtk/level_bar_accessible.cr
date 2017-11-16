@@ -2,12 +2,13 @@ require "./widget_accessible"
 
 module Gtk
   class LevelBarAccessible < WidgetAccessible
-    @gtk_level_bar_accessible : LibGtk::LevelBarAccessible*?
-    def initialize(@gtk_level_bar_accessible : LibGtk::LevelBarAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::LevelBarAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_level_bar_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::LevelBarAccessible*)
     end
 
     # Implements Component

@@ -2,12 +2,13 @@ module Gtk
   class RecentManagerPrivate
     include GObject::WrappedType
 
-    @gtk_recent_manager_private : LibGtk::RecentManagerPrivate*?
-    def initialize(@gtk_recent_manager_private : LibGtk::RecentManagerPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::RecentManagerPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_recent_manager_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::RecentManagerPrivate*)
     end
 
   end

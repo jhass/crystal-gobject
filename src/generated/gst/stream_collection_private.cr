@@ -2,12 +2,13 @@ module Gst
   class StreamCollectionPrivate
     include GObject::WrappedType
 
-    @gst_stream_collection_private : LibGst::StreamCollectionPrivate*?
-    def initialize(@gst_stream_collection_private : LibGst::StreamCollectionPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::StreamCollectionPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_stream_collection_private.not_nil!
+      @pointer.not_nil!.as(LibGst::StreamCollectionPrivate*)
     end
 
   end

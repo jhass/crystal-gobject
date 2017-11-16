@@ -11,12 +11,13 @@ module Gtk
       end
     end
 
-    @gtk_fixed_child : LibGtk::FixedChild*?
-    def initialize(@gtk_fixed_child : LibGtk::FixedChild*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::FixedChild*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_fixed_child.not_nil!
+      @pointer.not_nil!.as(LibGtk::FixedChild*)
     end
 
     def widget

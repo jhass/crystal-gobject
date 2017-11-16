@@ -1,11 +1,12 @@
 module Gio
   class DBusServer < GObject::Object
-    @gio_d_bus_server : LibGio::DBusServer*?
-    def initialize(@gio_d_bus_server : LibGio::DBusServer*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::DBusServer*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_d_bus_server.not_nil!
+      @pointer.not_nil!.as(LibGio::DBusServer*)
     end
 
     # Implements Initable
@@ -47,32 +48,32 @@ module Gio
     end
 
     def client_address
-      __return_value = LibGio.d_bus_server_get_client_address(to_unsafe.as(LibGio::DBusServer*))
+      __return_value = LibGio.d_bus_server_get_client_address(@pointer.as(LibGio::DBusServer*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def flags
-      __return_value = LibGio.d_bus_server_get_flags(to_unsafe.as(LibGio::DBusServer*))
+      __return_value = LibGio.d_bus_server_get_flags(@pointer.as(LibGio::DBusServer*))
       __return_value
     end
 
     def guid
-      __return_value = LibGio.d_bus_server_get_guid(to_unsafe.as(LibGio::DBusServer*))
+      __return_value = LibGio.d_bus_server_get_guid(@pointer.as(LibGio::DBusServer*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def active?
-      __return_value = LibGio.d_bus_server_is_active(to_unsafe.as(LibGio::DBusServer*))
+      __return_value = LibGio.d_bus_server_is_active(@pointer.as(LibGio::DBusServer*))
       __return_value
     end
 
     def start
-      LibGio.d_bus_server_start(to_unsafe.as(LibGio::DBusServer*))
+      LibGio.d_bus_server_start(@pointer.as(LibGio::DBusServer*))
       nil
     end
 
     def stop
-      LibGio.d_bus_server_stop(to_unsafe.as(LibGio::DBusServer*))
+      LibGio.d_bus_server_stop(@pointer.as(LibGio::DBusServer*))
       nil
     end
 

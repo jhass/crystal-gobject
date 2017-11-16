@@ -13,12 +13,13 @@ module Gtk
       end
     end
 
-    @gtk_file_filter_info : LibGtk::FileFilterInfo*?
-    def initialize(@gtk_file_filter_info : LibGtk::FileFilterInfo*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::FileFilterInfo*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_file_filter_info.not_nil!
+      @pointer.not_nil!.as(LibGtk::FileFilterInfo*)
     end
 
     def contains

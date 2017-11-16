@@ -102,12 +102,13 @@ module Gdk
       Gdk::EventPadGroupMode.new((to_unsafe.as(LibGdk::EventPadGroupMode*)))
     end
 
-    @gdk_event : LibGdk::Event*?
-    def initialize(@gdk_event : LibGdk::Event*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::Event*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_event.not_nil!
+      @pointer.not_nil!.as(LibGdk::Event*)
     end
 
     def self.new(type : Gdk::EventType) : self
@@ -116,167 +117,167 @@ module Gdk
     end
 
     def angle(event2, angle)
-      __return_value = LibGdk.event_get_angle(to_unsafe.as(LibGdk::Event*), event2.to_unsafe.as(LibGdk::Event*), angle)
+      __return_value = LibGdk.event_get_angle(@pointer.as(LibGdk::Event*), event2.to_unsafe.as(LibGdk::Event*), angle)
       __return_value
     end
 
     def center(event2, x, y)
-      __return_value = LibGdk.event_get_center(to_unsafe.as(LibGdk::Event*), event2.to_unsafe.as(LibGdk::Event*), x, y)
+      __return_value = LibGdk.event_get_center(@pointer.as(LibGdk::Event*), event2.to_unsafe.as(LibGdk::Event*), x, y)
       __return_value
     end
 
     def distance(event2, distance)
-      __return_value = LibGdk.event_get_distance(to_unsafe.as(LibGdk::Event*), event2.to_unsafe.as(LibGdk::Event*), distance)
+      __return_value = LibGdk.event_get_distance(@pointer.as(LibGdk::Event*), event2.to_unsafe.as(LibGdk::Event*), distance)
       __return_value
     end
 
     def copy
-      __return_value = LibGdk.event_copy(to_unsafe.as(LibGdk::Event*))
+      __return_value = LibGdk.event_copy(@pointer.as(LibGdk::Event*))
       Gdk::Event.new(__return_value)
     end
 
     def free
-      LibGdk.event_free(to_unsafe.as(LibGdk::Event*))
+      LibGdk.event_free(@pointer.as(LibGdk::Event*))
       nil
     end
 
     def axis(axis_use : Gdk::AxisUse, value)
-      __return_value = LibGdk.event_get_axis(to_unsafe.as(LibGdk::Event*), axis_use, value)
+      __return_value = LibGdk.event_get_axis(@pointer.as(LibGdk::Event*), axis_use, value)
       __return_value
     end
 
     def button(button)
-      __return_value = LibGdk.event_get_button(to_unsafe.as(LibGdk::Event*), button)
+      __return_value = LibGdk.event_get_button(@pointer.as(LibGdk::Event*), button)
       __return_value
     end
 
     def click_count(click_count)
-      __return_value = LibGdk.event_get_click_count(to_unsafe.as(LibGdk::Event*), click_count)
+      __return_value = LibGdk.event_get_click_count(@pointer.as(LibGdk::Event*), click_count)
       __return_value
     end
 
     def coords(x_win, y_win)
-      __return_value = LibGdk.event_get_coords(to_unsafe.as(LibGdk::Event*), x_win, y_win)
+      __return_value = LibGdk.event_get_coords(@pointer.as(LibGdk::Event*), x_win, y_win)
       __return_value
     end
 
     def device
-      __return_value = LibGdk.event_get_device(to_unsafe.as(LibGdk::Event*))
+      __return_value = LibGdk.event_get_device(@pointer.as(LibGdk::Event*))
       Gdk::Device.new(__return_value) if __return_value
     end
 
     def device_tool
-      __return_value = LibGdk.event_get_device_tool(to_unsafe.as(LibGdk::Event*))
+      __return_value = LibGdk.event_get_device_tool(@pointer.as(LibGdk::Event*))
       Gdk::DeviceTool.new(__return_value)
     end
 
     def event_sequence
-      __return_value = LibGdk.event_get_event_sequence(to_unsafe.as(LibGdk::Event*))
+      __return_value = LibGdk.event_get_event_sequence(@pointer.as(LibGdk::Event*))
       Gdk::EventSequence.new(__return_value)
     end
 
     def event_type
-      __return_value = LibGdk.event_get_event_type(to_unsafe.as(LibGdk::Event*))
+      __return_value = LibGdk.event_get_event_type(@pointer.as(LibGdk::Event*))
       __return_value
     end
 
     def keycode(keycode)
-      __return_value = LibGdk.event_get_keycode(to_unsafe.as(LibGdk::Event*), keycode)
+      __return_value = LibGdk.event_get_keycode(@pointer.as(LibGdk::Event*), keycode)
       __return_value
     end
 
     def keyval(keyval)
-      __return_value = LibGdk.event_get_keyval(to_unsafe.as(LibGdk::Event*), keyval)
+      __return_value = LibGdk.event_get_keyval(@pointer.as(LibGdk::Event*), keyval)
       __return_value
     end
 
     def pointer_emulated
-      __return_value = LibGdk.event_get_pointer_emulated(to_unsafe.as(LibGdk::Event*))
+      __return_value = LibGdk.event_get_pointer_emulated(@pointer.as(LibGdk::Event*))
       __return_value
     end
 
     def root_coords(x_root, y_root)
-      __return_value = LibGdk.event_get_root_coords(to_unsafe.as(LibGdk::Event*), x_root, y_root)
+      __return_value = LibGdk.event_get_root_coords(@pointer.as(LibGdk::Event*), x_root, y_root)
       __return_value
     end
 
     def scancode
-      __return_value = LibGdk.event_get_scancode(to_unsafe.as(LibGdk::Event*))
+      __return_value = LibGdk.event_get_scancode(@pointer.as(LibGdk::Event*))
       __return_value
     end
 
     def screen
-      __return_value = LibGdk.event_get_screen(to_unsafe.as(LibGdk::Event*))
+      __return_value = LibGdk.event_get_screen(@pointer.as(LibGdk::Event*))
       Gdk::Screen.new(__return_value)
     end
 
     def scroll_deltas(delta_x, delta_y)
-      __return_value = LibGdk.event_get_scroll_deltas(to_unsafe.as(LibGdk::Event*), delta_x, delta_y)
+      __return_value = LibGdk.event_get_scroll_deltas(@pointer.as(LibGdk::Event*), delta_x, delta_y)
       __return_value
     end
 
     def scroll_direction(direction : Gdk::ScrollDirection)
-      __return_value = LibGdk.event_get_scroll_direction(to_unsafe.as(LibGdk::Event*), direction)
+      __return_value = LibGdk.event_get_scroll_direction(@pointer.as(LibGdk::Event*), direction)
       __return_value
     end
 
     def seat
-      __return_value = LibGdk.event_get_seat(to_unsafe.as(LibGdk::Event*))
+      __return_value = LibGdk.event_get_seat(@pointer.as(LibGdk::Event*))
       Gdk::Seat.new(__return_value)
     end
 
     def source_device
-      __return_value = LibGdk.event_get_source_device(to_unsafe.as(LibGdk::Event*))
+      __return_value = LibGdk.event_get_source_device(@pointer.as(LibGdk::Event*))
       Gdk::Device.new(__return_value) if __return_value
     end
 
     def state(state : Gdk::ModifierType)
-      __return_value = LibGdk.event_get_state(to_unsafe.as(LibGdk::Event*), state)
+      __return_value = LibGdk.event_get_state(@pointer.as(LibGdk::Event*), state)
       __return_value
     end
 
     def time
-      __return_value = LibGdk.event_get_time(to_unsafe.as(LibGdk::Event*))
+      __return_value = LibGdk.event_get_time(@pointer.as(LibGdk::Event*))
       __return_value
     end
 
     def window
-      __return_value = LibGdk.event_get_window(to_unsafe.as(LibGdk::Event*))
+      __return_value = LibGdk.event_get_window(@pointer.as(LibGdk::Event*))
       Gdk::Window.new(__return_value)
     end
 
     def scroll_stop_event?
-      __return_value = LibGdk.event_is_scroll_stop_event(to_unsafe.as(LibGdk::Event*))
+      __return_value = LibGdk.event_is_scroll_stop_event(@pointer.as(LibGdk::Event*))
       __return_value
     end
 
     def put
-      LibGdk.event_put(to_unsafe.as(LibGdk::Event*))
+      LibGdk.event_put(@pointer.as(LibGdk::Event*))
       nil
     end
 
     def device=(device)
-      LibGdk.event_set_device(to_unsafe.as(LibGdk::Event*), device.to_unsafe.as(LibGdk::Device*))
+      LibGdk.event_set_device(@pointer.as(LibGdk::Event*), device.to_unsafe.as(LibGdk::Device*))
       nil
     end
 
     def device_tool=(tool)
-      LibGdk.event_set_device_tool(to_unsafe.as(LibGdk::Event*), tool ? tool.to_unsafe.as(LibGdk::DeviceTool*) : nil)
+      LibGdk.event_set_device_tool(@pointer.as(LibGdk::Event*), tool ? tool.to_unsafe.as(LibGdk::DeviceTool*) : nil)
       nil
     end
 
     def screen=(screen)
-      LibGdk.event_set_screen(to_unsafe.as(LibGdk::Event*), screen.to_unsafe.as(LibGdk::Screen*))
+      LibGdk.event_set_screen(@pointer.as(LibGdk::Event*), screen.to_unsafe.as(LibGdk::Screen*))
       nil
     end
 
     def source_device=(device)
-      LibGdk.event_set_source_device(to_unsafe.as(LibGdk::Event*), device.to_unsafe.as(LibGdk::Device*))
+      LibGdk.event_set_source_device(@pointer.as(LibGdk::Event*), device.to_unsafe.as(LibGdk::Device*))
       nil
     end
 
     def triggers_context_menu
-      __return_value = LibGdk.event_triggers_context_menu(to_unsafe.as(LibGdk::Event*))
+      __return_value = LibGdk.event_triggers_context_menu(@pointer.as(LibGdk::Event*))
       __return_value
     end
 

@@ -2,12 +2,13 @@ require "./container"
 
 module Gtk
   class ListBox < Container
-    @gtk_list_box : LibGtk::ListBox*?
-    def initialize(@gtk_list_box : LibGtk::ListBox*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ListBox*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_list_box.not_nil!
+      @pointer.not_nil!.as(LibGtk::ListBox*)
     end
 
     # Implements ImplementorIface
@@ -28,137 +29,137 @@ module Gtk
     end
 
     def bind_model(model, create_widget_func, user_data, user_data_free_func)
-      LibGtk.list_box_bind_model(to_unsafe.as(LibGtk::ListBox*), model ? model.to_unsafe.as(LibGio::ListModel*) : nil, create_widget_func ? create_widget_func : nil, user_data ? user_data : nil, user_data_free_func)
+      LibGtk.list_box_bind_model(@pointer.as(LibGtk::ListBox*), model ? model.to_unsafe.as(LibGio::ListModel*) : nil, create_widget_func ? create_widget_func : nil, user_data ? user_data : nil, user_data_free_func)
       nil
     end
 
     def drag_highlight_row(row)
-      LibGtk.list_box_drag_highlight_row(to_unsafe.as(LibGtk::ListBox*), row.to_unsafe.as(LibGtk::ListBoxRow*))
+      LibGtk.list_box_drag_highlight_row(@pointer.as(LibGtk::ListBox*), row.to_unsafe.as(LibGtk::ListBoxRow*))
       nil
     end
 
     def drag_unhighlight_row
-      LibGtk.list_box_drag_unhighlight_row(to_unsafe.as(LibGtk::ListBox*))
+      LibGtk.list_box_drag_unhighlight_row(@pointer.as(LibGtk::ListBox*))
       nil
     end
 
     def activate_on_single_click
-      __return_value = LibGtk.list_box_get_activate_on_single_click(to_unsafe.as(LibGtk::ListBox*))
+      __return_value = LibGtk.list_box_get_activate_on_single_click(@pointer.as(LibGtk::ListBox*))
       __return_value
     end
 
     def adjustment
-      __return_value = LibGtk.list_box_get_adjustment(to_unsafe.as(LibGtk::ListBox*))
+      __return_value = LibGtk.list_box_get_adjustment(@pointer.as(LibGtk::ListBox*))
       Gtk::Adjustment.new(__return_value)
     end
 
     def row_at_index(index)
-      __return_value = LibGtk.list_box_get_row_at_index(to_unsafe.as(LibGtk::ListBox*), Int32.new(index))
+      __return_value = LibGtk.list_box_get_row_at_index(@pointer.as(LibGtk::ListBox*), Int32.new(index))
       Gtk::ListBoxRow.new(__return_value) if __return_value
     end
 
     def row_at_y(y)
-      __return_value = LibGtk.list_box_get_row_at_y(to_unsafe.as(LibGtk::ListBox*), Int32.new(y))
+      __return_value = LibGtk.list_box_get_row_at_y(@pointer.as(LibGtk::ListBox*), Int32.new(y))
       Gtk::ListBoxRow.new(__return_value) if __return_value
     end
 
     def selected_row
-      __return_value = LibGtk.list_box_get_selected_row(to_unsafe.as(LibGtk::ListBox*))
+      __return_value = LibGtk.list_box_get_selected_row(@pointer.as(LibGtk::ListBox*))
       Gtk::ListBoxRow.new(__return_value)
     end
 
     def selected_rows
-      __return_value = LibGtk.list_box_get_selected_rows(to_unsafe.as(LibGtk::ListBox*))
+      __return_value = LibGtk.list_box_get_selected_rows(@pointer.as(LibGtk::ListBox*))
       GLib::ListIterator(Gtk::ListBoxRow, LibGtk::ListBoxRow*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def selection_mode
-      __return_value = LibGtk.list_box_get_selection_mode(to_unsafe.as(LibGtk::ListBox*))
+      __return_value = LibGtk.list_box_get_selection_mode(@pointer.as(LibGtk::ListBox*))
       __return_value
     end
 
     def insert(child, position)
-      LibGtk.list_box_insert(to_unsafe.as(LibGtk::ListBox*), child.to_unsafe.as(LibGtk::Widget*), Int32.new(position))
+      LibGtk.list_box_insert(@pointer.as(LibGtk::ListBox*), child.to_unsafe.as(LibGtk::Widget*), Int32.new(position))
       nil
     end
 
     def invalidate_filter
-      LibGtk.list_box_invalidate_filter(to_unsafe.as(LibGtk::ListBox*))
+      LibGtk.list_box_invalidate_filter(@pointer.as(LibGtk::ListBox*))
       nil
     end
 
     def invalidate_headers
-      LibGtk.list_box_invalidate_headers(to_unsafe.as(LibGtk::ListBox*))
+      LibGtk.list_box_invalidate_headers(@pointer.as(LibGtk::ListBox*))
       nil
     end
 
     def invalidate_sort
-      LibGtk.list_box_invalidate_sort(to_unsafe.as(LibGtk::ListBox*))
+      LibGtk.list_box_invalidate_sort(@pointer.as(LibGtk::ListBox*))
       nil
     end
 
     def prepend(child)
-      LibGtk.list_box_prepend(to_unsafe.as(LibGtk::ListBox*), child.to_unsafe.as(LibGtk::Widget*))
+      LibGtk.list_box_prepend(@pointer.as(LibGtk::ListBox*), child.to_unsafe.as(LibGtk::Widget*))
       nil
     end
 
     def select_all
-      LibGtk.list_box_select_all(to_unsafe.as(LibGtk::ListBox*))
+      LibGtk.list_box_select_all(@pointer.as(LibGtk::ListBox*))
       nil
     end
 
     def select_row(row)
-      LibGtk.list_box_select_row(to_unsafe.as(LibGtk::ListBox*), row ? row.to_unsafe.as(LibGtk::ListBoxRow*) : nil)
+      LibGtk.list_box_select_row(@pointer.as(LibGtk::ListBox*), row ? row.to_unsafe.as(LibGtk::ListBoxRow*) : nil)
       nil
     end
 
     def selected_foreach(func, data)
-      LibGtk.list_box_selected_foreach(to_unsafe.as(LibGtk::ListBox*), func, data ? data : nil)
+      LibGtk.list_box_selected_foreach(@pointer.as(LibGtk::ListBox*), func, data ? data : nil)
       nil
     end
 
     def activate_on_single_click=(single)
-      LibGtk.list_box_set_activate_on_single_click(to_unsafe.as(LibGtk::ListBox*), single)
+      LibGtk.list_box_set_activate_on_single_click(@pointer.as(LibGtk::ListBox*), single)
       nil
     end
 
     def adjustment=(adjustment)
-      LibGtk.list_box_set_adjustment(to_unsafe.as(LibGtk::ListBox*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
+      LibGtk.list_box_set_adjustment(@pointer.as(LibGtk::ListBox*), adjustment ? adjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
       nil
     end
 
     def set_filter_func(filter_func, user_data, destroy)
-      LibGtk.list_box_set_filter_func(to_unsafe.as(LibGtk::ListBox*), filter_func ? filter_func : nil, user_data ? user_data : nil, destroy)
+      LibGtk.list_box_set_filter_func(@pointer.as(LibGtk::ListBox*), filter_func ? filter_func : nil, user_data ? user_data : nil, destroy)
       nil
     end
 
     def set_header_func(update_header, user_data, destroy)
-      LibGtk.list_box_set_header_func(to_unsafe.as(LibGtk::ListBox*), update_header ? update_header : nil, user_data ? user_data : nil, destroy)
+      LibGtk.list_box_set_header_func(@pointer.as(LibGtk::ListBox*), update_header ? update_header : nil, user_data ? user_data : nil, destroy)
       nil
     end
 
     def placeholder=(placeholder)
-      LibGtk.list_box_set_placeholder(to_unsafe.as(LibGtk::ListBox*), placeholder ? placeholder.to_unsafe.as(LibGtk::Widget*) : nil)
+      LibGtk.list_box_set_placeholder(@pointer.as(LibGtk::ListBox*), placeholder ? placeholder.to_unsafe.as(LibGtk::Widget*) : nil)
       nil
     end
 
     def selection_mode=(mode : Gtk::SelectionMode)
-      LibGtk.list_box_set_selection_mode(to_unsafe.as(LibGtk::ListBox*), mode)
+      LibGtk.list_box_set_selection_mode(@pointer.as(LibGtk::ListBox*), mode)
       nil
     end
 
     def set_sort_func(sort_func, user_data, destroy)
-      LibGtk.list_box_set_sort_func(to_unsafe.as(LibGtk::ListBox*), sort_func ? sort_func : nil, user_data ? user_data : nil, destroy)
+      LibGtk.list_box_set_sort_func(@pointer.as(LibGtk::ListBox*), sort_func ? sort_func : nil, user_data ? user_data : nil, destroy)
       nil
     end
 
     def unselect_all
-      LibGtk.list_box_unselect_all(to_unsafe.as(LibGtk::ListBox*))
+      LibGtk.list_box_unselect_all(@pointer.as(LibGtk::ListBox*))
       nil
     end
 
     def unselect_row(row)
-      LibGtk.list_box_unselect_row(to_unsafe.as(LibGtk::ListBox*), row.to_unsafe.as(LibGtk::ListBoxRow*))
+      LibGtk.list_box_unselect_row(@pointer.as(LibGtk::ListBox*), row.to_unsafe.as(LibGtk::ListBoxRow*))
       nil
     end
 

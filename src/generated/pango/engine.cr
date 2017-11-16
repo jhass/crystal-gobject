@@ -1,11 +1,12 @@
 module Pango
   class Engine < GObject::Object
-    @pango_engine : LibPango::Engine*?
-    def initialize(@pango_engine : LibPango::Engine*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::Engine*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_engine.not_nil!
+      @pointer.not_nil!.as(LibPango::Engine*)
     end
 
   end

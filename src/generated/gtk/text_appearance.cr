@@ -16,12 +16,13 @@ module Gtk
       end
     end
 
-    @gtk_text_appearance : LibGtk::TextAppearance*?
-    def initialize(@gtk_text_appearance : LibGtk::TextAppearance*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::TextAppearance*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_text_appearance.not_nil!
+      @pointer.not_nil!.as(LibGtk::TextAppearance*)
     end
 
     def bg_color

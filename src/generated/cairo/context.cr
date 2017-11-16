@@ -2,12 +2,13 @@ module Cairo
   class Context
     include GObject::WrappedType
 
-    @cairo_context : LibCairo::Context*?
-    def initialize(@cairo_context : LibCairo::Context*)
+    @pointer : Void*
+    def initialize(pointer : LibCairo::Context*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @cairo_context.not_nil!
+      @pointer.not_nil!.as(LibCairo::Context*)
     end
 
   end

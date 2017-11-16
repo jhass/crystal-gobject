@@ -2,12 +2,13 @@ module Gtk
   class MenuToolButtonPrivate
     include GObject::WrappedType
 
-    @gtk_menu_tool_button_private : LibGtk::MenuToolButtonPrivate*?
-    def initialize(@gtk_menu_tool_button_private : LibGtk::MenuToolButtonPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::MenuToolButtonPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_menu_tool_button_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::MenuToolButtonPrivate*)
     end
 
   end

@@ -11,12 +11,13 @@ module Pango
       end
     end
 
-    @pango_glyph_geometry : LibPango::GlyphGeometry*?
-    def initialize(@pango_glyph_geometry : LibPango::GlyphGeometry*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::GlyphGeometry*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_glyph_geometry.not_nil!
+      @pointer.not_nil!.as(LibPango::GlyphGeometry*)
     end
 
     def width

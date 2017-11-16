@@ -10,12 +10,13 @@ module Atk
       end
     end
 
-    @atk_attribute : LibAtk::Attribute*?
-    def initialize(@atk_attribute : LibAtk::Attribute*)
+    @pointer : Void*
+    def initialize(pointer : LibAtk::Attribute*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @atk_attribute.not_nil!
+      @pointer.not_nil!.as(LibAtk::Attribute*)
     end
 
     def self.set_free(attrib_set)

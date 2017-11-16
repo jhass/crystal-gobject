@@ -2,12 +2,13 @@ module Gst
   class Fraction
     include GObject::WrappedType
 
-    @gst_fraction : LibGst::Fraction*?
-    def initialize(@gst_fraction : LibGst::Fraction*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::Fraction*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_fraction.not_nil!
+      @pointer.not_nil!.as(LibGst::Fraction*)
     end
 
   end

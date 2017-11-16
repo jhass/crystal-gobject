@@ -1,11 +1,12 @@
 module Gtk
   class AccelMap < GObject::Object
-    @gtk_accel_map : LibGtk::AccelMap*?
-    def initialize(@gtk_accel_map : LibGtk::AccelMap*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::AccelMap*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_accel_map.not_nil!
+      @pointer.not_nil!.as(LibGtk::AccelMap*)
     end
 
     def self.add_entry(accel_path, accel_key, accel_mods : Gdk::ModifierType)

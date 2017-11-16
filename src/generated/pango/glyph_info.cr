@@ -11,12 +11,13 @@ module Pango
       end
     end
 
-    @pango_glyph_info : LibPango::GlyphInfo*?
-    def initialize(@pango_glyph_info : LibPango::GlyphInfo*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::GlyphInfo*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_glyph_info.not_nil!
+      @pointer.not_nil!.as(LibPango::GlyphInfo*)
     end
 
     def glyph

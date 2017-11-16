@@ -2,12 +2,13 @@ module Gtk
   class IMContextSimplePrivate
     include GObject::WrappedType
 
-    @gtk_i_m_context_simple_private : LibGtk::IMContextSimplePrivate*?
-    def initialize(@gtk_i_m_context_simple_private : LibGtk::IMContextSimplePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::IMContextSimplePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_i_m_context_simple_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::IMContextSimplePrivate*)
     end
 
   end

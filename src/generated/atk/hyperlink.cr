@@ -1,11 +1,12 @@
 module Atk
   class Hyperlink < GObject::Object
-    @atk_hyperlink : LibAtk::Hyperlink*?
-    def initialize(@atk_hyperlink : LibAtk::Hyperlink*)
+    @pointer : Void*
+    def initialize(pointer : LibAtk::Hyperlink*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @atk_hyperlink.not_nil!
+      @pointer.not_nil!.as(LibAtk::Hyperlink*)
     end
 
     # Implements Action
@@ -30,42 +31,42 @@ module Atk
     end
 
     def end_index
-      __return_value = LibAtk.hyperlink_get_end_index(to_unsafe.as(LibAtk::Hyperlink*))
+      __return_value = LibAtk.hyperlink_get_end_index(@pointer.as(LibAtk::Hyperlink*))
       __return_value
     end
 
     def n_anchors
-      __return_value = LibAtk.hyperlink_get_n_anchors(to_unsafe.as(LibAtk::Hyperlink*))
+      __return_value = LibAtk.hyperlink_get_n_anchors(@pointer.as(LibAtk::Hyperlink*))
       __return_value
     end
 
     def object(i)
-      __return_value = LibAtk.hyperlink_get_object(to_unsafe.as(LibAtk::Hyperlink*), Int32.new(i))
+      __return_value = LibAtk.hyperlink_get_object(@pointer.as(LibAtk::Hyperlink*), Int32.new(i))
       Atk::Object.new(__return_value)
     end
 
     def start_index
-      __return_value = LibAtk.hyperlink_get_start_index(to_unsafe.as(LibAtk::Hyperlink*))
+      __return_value = LibAtk.hyperlink_get_start_index(@pointer.as(LibAtk::Hyperlink*))
       __return_value
     end
 
     def uri(i)
-      __return_value = LibAtk.hyperlink_get_uri(to_unsafe.as(LibAtk::Hyperlink*), Int32.new(i))
+      __return_value = LibAtk.hyperlink_get_uri(@pointer.as(LibAtk::Hyperlink*), Int32.new(i))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def inline?
-      __return_value = LibAtk.hyperlink_is_inline(to_unsafe.as(LibAtk::Hyperlink*))
+      __return_value = LibAtk.hyperlink_is_inline(@pointer.as(LibAtk::Hyperlink*))
       __return_value
     end
 
     def selected_link?
-      __return_value = LibAtk.hyperlink_is_selected_link(to_unsafe.as(LibAtk::Hyperlink*))
+      __return_value = LibAtk.hyperlink_is_selected_link(@pointer.as(LibAtk::Hyperlink*))
       __return_value
     end
 
     def valid?
-      __return_value = LibAtk.hyperlink_is_valid(to_unsafe.as(LibAtk::Hyperlink*))
+      __return_value = LibAtk.hyperlink_is_valid(@pointer.as(LibAtk::Hyperlink*))
       __return_value
     end
 

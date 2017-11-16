@@ -10,12 +10,13 @@ module Gio
       end
     end
 
-    @gio_d_bus_error_entry : LibGio::DBusErrorEntry*?
-    def initialize(@gio_d_bus_error_entry : LibGio::DBusErrorEntry*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::DBusErrorEntry*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_d_bus_error_entry.not_nil!
+      @pointer.not_nil!.as(LibGio::DBusErrorEntry*)
     end
 
     def error_code

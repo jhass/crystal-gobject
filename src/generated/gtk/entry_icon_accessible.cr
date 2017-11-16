@@ -1,11 +1,12 @@
 module Gtk
   class EntryIconAccessible < Atk::Object
-    @gtk_entry_icon_accessible : LibGtk::EntryIconAccessible*?
-    def initialize(@gtk_entry_icon_accessible : LibGtk::EntryIconAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::EntryIconAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_entry_icon_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::EntryIconAccessible*)
     end
 
     # Implements Action

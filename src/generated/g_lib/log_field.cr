@@ -11,12 +11,13 @@ module GLib
       end
     end
 
-    @g_lib_log_field : LibGLib::LogField*?
-    def initialize(@g_lib_log_field : LibGLib::LogField*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::LogField*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_log_field.not_nil!
+      @pointer.not_nil!.as(LibGLib::LogField*)
     end
 
     def key

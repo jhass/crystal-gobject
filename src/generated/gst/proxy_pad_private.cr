@@ -2,12 +2,13 @@ module Gst
   class ProxyPadPrivate
     include GObject::WrappedType
 
-    @gst_proxy_pad_private : LibGst::ProxyPadPrivate*?
-    def initialize(@gst_proxy_pad_private : LibGst::ProxyPadPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::ProxyPadPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_proxy_pad_private.not_nil!
+      @pointer.not_nil!.as(LibGst::ProxyPadPrivate*)
     end
 
   end

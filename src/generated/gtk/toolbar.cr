@@ -2,12 +2,13 @@ require "./container"
 
 module Gtk
   class Toolbar < Container
-    @gtk_toolbar : LibGtk::Toolbar*?
-    def initialize(@gtk_toolbar : LibGtk::Toolbar*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Toolbar*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_toolbar.not_nil!
+      @pointer.not_nil!.as(LibGtk::Toolbar*)
     end
 
     # Implements ImplementorIface
@@ -40,77 +41,77 @@ module Gtk
     end
 
     def drop_index(x, y)
-      __return_value = LibGtk.toolbar_get_drop_index(to_unsafe.as(LibGtk::Toolbar*), Int32.new(x), Int32.new(y))
+      __return_value = LibGtk.toolbar_get_drop_index(@pointer.as(LibGtk::Toolbar*), Int32.new(x), Int32.new(y))
       __return_value
     end
 
     def icon_size
-      __return_value = LibGtk.toolbar_get_icon_size(to_unsafe.as(LibGtk::Toolbar*))
+      __return_value = LibGtk.toolbar_get_icon_size(@pointer.as(LibGtk::Toolbar*))
       __return_value
     end
 
     def item_index(item)
-      __return_value = LibGtk.toolbar_get_item_index(to_unsafe.as(LibGtk::Toolbar*), item.to_unsafe.as(LibGtk::ToolItem*))
+      __return_value = LibGtk.toolbar_get_item_index(@pointer.as(LibGtk::Toolbar*), item.to_unsafe.as(LibGtk::ToolItem*))
       __return_value
     end
 
     def n_items
-      __return_value = LibGtk.toolbar_get_n_items(to_unsafe.as(LibGtk::Toolbar*))
+      __return_value = LibGtk.toolbar_get_n_items(@pointer.as(LibGtk::Toolbar*))
       __return_value
     end
 
     def nth_item(n)
-      __return_value = LibGtk.toolbar_get_nth_item(to_unsafe.as(LibGtk::Toolbar*), Int32.new(n))
+      __return_value = LibGtk.toolbar_get_nth_item(@pointer.as(LibGtk::Toolbar*), Int32.new(n))
       Gtk::ToolItem.new(__return_value) if __return_value
     end
 
     def relief_style
-      __return_value = LibGtk.toolbar_get_relief_style(to_unsafe.as(LibGtk::Toolbar*))
+      __return_value = LibGtk.toolbar_get_relief_style(@pointer.as(LibGtk::Toolbar*))
       __return_value
     end
 
     def show_arrow
-      __return_value = LibGtk.toolbar_get_show_arrow(to_unsafe.as(LibGtk::Toolbar*))
+      __return_value = LibGtk.toolbar_get_show_arrow(@pointer.as(LibGtk::Toolbar*))
       __return_value
     end
 
     def style
-      __return_value = LibGtk.toolbar_get_style(to_unsafe.as(LibGtk::Toolbar*))
+      __return_value = LibGtk.toolbar_get_style(@pointer.as(LibGtk::Toolbar*))
       __return_value
     end
 
     def insert(item, pos)
-      LibGtk.toolbar_insert(to_unsafe.as(LibGtk::Toolbar*), item.to_unsafe.as(LibGtk::ToolItem*), Int32.new(pos))
+      LibGtk.toolbar_insert(@pointer.as(LibGtk::Toolbar*), item.to_unsafe.as(LibGtk::ToolItem*), Int32.new(pos))
       nil
     end
 
     def set_drop_highlight_item(tool_item, index)
-      LibGtk.toolbar_set_drop_highlight_item(to_unsafe.as(LibGtk::Toolbar*), tool_item ? tool_item.to_unsafe.as(LibGtk::ToolItem*) : nil, Int32.new(index))
+      LibGtk.toolbar_set_drop_highlight_item(@pointer.as(LibGtk::Toolbar*), tool_item ? tool_item.to_unsafe.as(LibGtk::ToolItem*) : nil, Int32.new(index))
       nil
     end
 
     def icon_size=(icon_size : Gtk::IconSize)
-      LibGtk.toolbar_set_icon_size(to_unsafe.as(LibGtk::Toolbar*), icon_size)
+      LibGtk.toolbar_set_icon_size(@pointer.as(LibGtk::Toolbar*), icon_size)
       nil
     end
 
     def show_arrow=(show_arrow)
-      LibGtk.toolbar_set_show_arrow(to_unsafe.as(LibGtk::Toolbar*), show_arrow)
+      LibGtk.toolbar_set_show_arrow(@pointer.as(LibGtk::Toolbar*), show_arrow)
       nil
     end
 
     def style=(style : Gtk::ToolbarStyle)
-      LibGtk.toolbar_set_style(to_unsafe.as(LibGtk::Toolbar*), style)
+      LibGtk.toolbar_set_style(@pointer.as(LibGtk::Toolbar*), style)
       nil
     end
 
     def unset_icon_size
-      LibGtk.toolbar_unset_icon_size(to_unsafe.as(LibGtk::Toolbar*))
+      LibGtk.toolbar_unset_icon_size(@pointer.as(LibGtk::Toolbar*))
       nil
     end
 
     def unset_style
-      LibGtk.toolbar_unset_style(to_unsafe.as(LibGtk::Toolbar*))
+      LibGtk.toolbar_unset_style(@pointer.as(LibGtk::Toolbar*))
       nil
     end
 

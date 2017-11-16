@@ -2,26 +2,27 @@ module GLib
   class Thread
     include GObject::WrappedType
 
-    @g_lib_thread : LibGLib::Thread*?
-    def initialize(@g_lib_thread : LibGLib::Thread*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::Thread*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_thread.not_nil!
+      @pointer.not_nil!.as(LibGLib::Thread*)
     end
 
     def join
-      LibGLib.thread_join(to_unsafe.as(LibGLib::Thread*))
+      LibGLib.thread_join(@pointer.as(LibGLib::Thread*))
       nil
     end
 
     def ref
-      __return_value = LibGLib.thread_ref(to_unsafe.as(LibGLib::Thread*))
+      __return_value = LibGLib.thread_ref(@pointer.as(LibGLib::Thread*))
       GLib::Thread.new(__return_value)
     end
 
     def unref
-      LibGLib.thread_unref(to_unsafe.as(LibGLib::Thread*))
+      LibGLib.thread_unref(@pointer.as(LibGLib::Thread*))
       nil
     end
 

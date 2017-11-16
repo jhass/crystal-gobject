@@ -2,12 +2,13 @@ require "./menu_item"
 
 module Gtk
   class SeparatorMenuItem < MenuItem
-    @gtk_separator_menu_item : LibGtk::SeparatorMenuItem*?
-    def initialize(@gtk_separator_menu_item : LibGtk::SeparatorMenuItem*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::SeparatorMenuItem*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_separator_menu_item.not_nil!
+      @pointer.not_nil!.as(LibGtk::SeparatorMenuItem*)
     end
 
     # Implements ImplementorIface

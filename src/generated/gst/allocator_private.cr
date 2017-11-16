@@ -2,12 +2,13 @@ module Gst
   class AllocatorPrivate
     include GObject::WrappedType
 
-    @gst_allocator_private : LibGst::AllocatorPrivate*?
-    def initialize(@gst_allocator_private : LibGst::AllocatorPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::AllocatorPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_allocator_private.not_nil!
+      @pointer.not_nil!.as(LibGst::AllocatorPrivate*)
     end
 
   end

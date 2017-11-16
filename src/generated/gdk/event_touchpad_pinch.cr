@@ -23,12 +23,13 @@ module Gdk
       end
     end
 
-    @gdk_event_touchpad_pinch : LibGdk::EventTouchpadPinch*?
-    def initialize(@gdk_event_touchpad_pinch : LibGdk::EventTouchpadPinch*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::EventTouchpadPinch*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_event_touchpad_pinch.not_nil!
+      @pointer.not_nil!.as(LibGdk::EventTouchpadPinch*)
     end
 
     def type

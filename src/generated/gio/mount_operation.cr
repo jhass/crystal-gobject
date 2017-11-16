@@ -1,11 +1,12 @@
 module Gio
   class MountOperation < GObject::Object
-    @gio_mount_operation : LibGio::MountOperation*?
-    def initialize(@gio_mount_operation : LibGio::MountOperation*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::MountOperation*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_mount_operation.not_nil!
+      @pointer.not_nil!.as(LibGio::MountOperation*)
     end
 
     def anonymous
@@ -44,67 +45,67 @@ module Gio
     end
 
     def anonymous
-      __return_value = LibGio.mount_operation_get_anonymous(to_unsafe.as(LibGio::MountOperation*))
+      __return_value = LibGio.mount_operation_get_anonymous(@pointer.as(LibGio::MountOperation*))
       __return_value
     end
 
     def choice
-      __return_value = LibGio.mount_operation_get_choice(to_unsafe.as(LibGio::MountOperation*))
+      __return_value = LibGio.mount_operation_get_choice(@pointer.as(LibGio::MountOperation*))
       __return_value
     end
 
     def domain
-      __return_value = LibGio.mount_operation_get_domain(to_unsafe.as(LibGio::MountOperation*))
+      __return_value = LibGio.mount_operation_get_domain(@pointer.as(LibGio::MountOperation*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def password
-      __return_value = LibGio.mount_operation_get_password(to_unsafe.as(LibGio::MountOperation*))
+      __return_value = LibGio.mount_operation_get_password(@pointer.as(LibGio::MountOperation*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def password_save
-      __return_value = LibGio.mount_operation_get_password_save(to_unsafe.as(LibGio::MountOperation*))
+      __return_value = LibGio.mount_operation_get_password_save(@pointer.as(LibGio::MountOperation*))
       __return_value
     end
 
     def username
-      __return_value = LibGio.mount_operation_get_username(to_unsafe.as(LibGio::MountOperation*))
+      __return_value = LibGio.mount_operation_get_username(@pointer.as(LibGio::MountOperation*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def reply(result : Gio::MountOperationResult)
-      LibGio.mount_operation_reply(to_unsafe.as(LibGio::MountOperation*), result)
+      LibGio.mount_operation_reply(@pointer.as(LibGio::MountOperation*), result)
       nil
     end
 
     def anonymous=(anonymous)
-      LibGio.mount_operation_set_anonymous(to_unsafe.as(LibGio::MountOperation*), anonymous)
+      LibGio.mount_operation_set_anonymous(@pointer.as(LibGio::MountOperation*), anonymous)
       nil
     end
 
     def choice=(choice)
-      LibGio.mount_operation_set_choice(to_unsafe.as(LibGio::MountOperation*), Int32.new(choice))
+      LibGio.mount_operation_set_choice(@pointer.as(LibGio::MountOperation*), Int32.new(choice))
       nil
     end
 
     def domain=(domain)
-      LibGio.mount_operation_set_domain(to_unsafe.as(LibGio::MountOperation*), domain.to_unsafe)
+      LibGio.mount_operation_set_domain(@pointer.as(LibGio::MountOperation*), domain.to_unsafe)
       nil
     end
 
     def password=(password)
-      LibGio.mount_operation_set_password(to_unsafe.as(LibGio::MountOperation*), password.to_unsafe)
+      LibGio.mount_operation_set_password(@pointer.as(LibGio::MountOperation*), password.to_unsafe)
       nil
     end
 
     def password_save=(save : Gio::PasswordSave)
-      LibGio.mount_operation_set_password_save(to_unsafe.as(LibGio::MountOperation*), save)
+      LibGio.mount_operation_set_password_save(@pointer.as(LibGio::MountOperation*), save)
       nil
     end
 
     def username=(username)
-      LibGio.mount_operation_set_username(to_unsafe.as(LibGio::MountOperation*), username.to_unsafe)
+      LibGio.mount_operation_set_username(@pointer.as(LibGio::MountOperation*), username.to_unsafe)
       nil
     end
 

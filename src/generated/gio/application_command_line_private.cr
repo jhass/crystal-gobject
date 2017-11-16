@@ -2,12 +2,13 @@ module Gio
   class ApplicationCommandLinePrivate
     include GObject::WrappedType
 
-    @gio_application_command_line_private : LibGio::ApplicationCommandLinePrivate*?
-    def initialize(@gio_application_command_line_private : LibGio::ApplicationCommandLinePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::ApplicationCommandLinePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_application_command_line_private.not_nil!
+      @pointer.not_nil!.as(LibGio::ApplicationCommandLinePrivate*)
     end
 
   end

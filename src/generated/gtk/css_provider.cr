@@ -1,11 +1,12 @@
 module Gtk
   class CssProvider < GObject::Object
-    @gtk_css_provider : LibGtk::CssProvider*?
-    def initialize(@gtk_css_provider : LibGtk::CssProvider*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::CssProvider*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_css_provider.not_nil!
+      @pointer.not_nil!.as(LibGtk::CssProvider*)
     end
 
     # Implements StyleProvider
@@ -26,32 +27,32 @@ module Gtk
 
     def load_from_data(data, length)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.css_provider_load_from_data(to_unsafe.as(LibGtk::CssProvider*), data, Int64.new(length), pointerof(__error))
+      __return_value = LibGtk.css_provider_load_from_data(@pointer.as(LibGtk::CssProvider*), data, Int64.new(length), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def load_from_file(file)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.css_provider_load_from_file(to_unsafe.as(LibGtk::CssProvider*), file.to_unsafe.as(LibGio::File*), pointerof(__error))
+      __return_value = LibGtk.css_provider_load_from_file(@pointer.as(LibGtk::CssProvider*), file.to_unsafe.as(LibGio::File*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def load_from_path(path)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGtk.css_provider_load_from_path(to_unsafe.as(LibGtk::CssProvider*), path.to_unsafe, pointerof(__error))
+      __return_value = LibGtk.css_provider_load_from_path(@pointer.as(LibGtk::CssProvider*), path.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def load_from_resource(resource_path)
-      LibGtk.css_provider_load_from_resource(to_unsafe.as(LibGtk::CssProvider*), resource_path.to_unsafe)
+      LibGtk.css_provider_load_from_resource(@pointer.as(LibGtk::CssProvider*), resource_path.to_unsafe)
       nil
     end
 
     def to_string
-      __return_value = LibGtk.css_provider_to_string(to_unsafe.as(LibGtk::CssProvider*))
+      __return_value = LibGtk.css_provider_to_string(@pointer.as(LibGtk::CssProvider*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

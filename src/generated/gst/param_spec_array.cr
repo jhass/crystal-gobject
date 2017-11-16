@@ -10,12 +10,13 @@ module Gst
       end
     end
 
-    @gst_param_spec_array : LibGst::ParamSpecArray*?
-    def initialize(@gst_param_spec_array : LibGst::ParamSpecArray*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::ParamSpecArray*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_param_spec_array.not_nil!
+      @pointer.not_nil!.as(LibGst::ParamSpecArray*)
     end
 
     def parent_instance

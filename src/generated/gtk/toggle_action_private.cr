@@ -2,12 +2,13 @@ module Gtk
   class ToggleActionPrivate
     include GObject::WrappedType
 
-    @gtk_toggle_action_private : LibGtk::ToggleActionPrivate*?
-    def initialize(@gtk_toggle_action_private : LibGtk::ToggleActionPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ToggleActionPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_toggle_action_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::ToggleActionPrivate*)
     end
 
   end

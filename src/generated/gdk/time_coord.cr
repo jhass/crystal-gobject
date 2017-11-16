@@ -10,12 +10,13 @@ module Gdk
       end
     end
 
-    @gdk_time_coord : LibGdk::TimeCoord*?
-    def initialize(@gdk_time_coord : LibGdk::TimeCoord*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::TimeCoord*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_time_coord.not_nil!
+      @pointer.not_nil!.as(LibGdk::TimeCoord*)
     end
 
     def time

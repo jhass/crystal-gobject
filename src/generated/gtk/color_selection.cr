@@ -2,12 +2,13 @@ require "./box"
 
 module Gtk
   class ColorSelection < Box
-    @gtk_color_selection : LibGtk::ColorSelection*?
-    def initialize(@gtk_color_selection : LibGtk::ColorSelection*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ColorSelection*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_color_selection.not_nil!
+      @pointer.not_nil!.as(LibGtk::ColorSelection*)
     end
 
     # Implements ImplementorIface
@@ -54,87 +55,87 @@ module Gtk
     end
 
     def current_alpha
-      __return_value = LibGtk.color_selection_get_current_alpha(to_unsafe.as(LibGtk::ColorSelection*))
+      __return_value = LibGtk.color_selection_get_current_alpha(@pointer.as(LibGtk::ColorSelection*))
       __return_value
     end
 
     def current_color(color)
-      LibGtk.color_selection_get_current_color(to_unsafe.as(LibGtk::ColorSelection*), color)
+      LibGtk.color_selection_get_current_color(@pointer.as(LibGtk::ColorSelection*), color)
       nil
     end
 
     def current_rgba(rgba)
-      LibGtk.color_selection_get_current_rgba(to_unsafe.as(LibGtk::ColorSelection*), rgba)
+      LibGtk.color_selection_get_current_rgba(@pointer.as(LibGtk::ColorSelection*), rgba)
       nil
     end
 
     def has_opacity_control
-      __return_value = LibGtk.color_selection_get_has_opacity_control(to_unsafe.as(LibGtk::ColorSelection*))
+      __return_value = LibGtk.color_selection_get_has_opacity_control(@pointer.as(LibGtk::ColorSelection*))
       __return_value
     end
 
     def has_palette
-      __return_value = LibGtk.color_selection_get_has_palette(to_unsafe.as(LibGtk::ColorSelection*))
+      __return_value = LibGtk.color_selection_get_has_palette(@pointer.as(LibGtk::ColorSelection*))
       __return_value
     end
 
     def previous_alpha
-      __return_value = LibGtk.color_selection_get_previous_alpha(to_unsafe.as(LibGtk::ColorSelection*))
+      __return_value = LibGtk.color_selection_get_previous_alpha(@pointer.as(LibGtk::ColorSelection*))
       __return_value
     end
 
     def previous_color(color)
-      LibGtk.color_selection_get_previous_color(to_unsafe.as(LibGtk::ColorSelection*), color)
+      LibGtk.color_selection_get_previous_color(@pointer.as(LibGtk::ColorSelection*), color)
       nil
     end
 
     def previous_rgba(rgba)
-      LibGtk.color_selection_get_previous_rgba(to_unsafe.as(LibGtk::ColorSelection*), rgba)
+      LibGtk.color_selection_get_previous_rgba(@pointer.as(LibGtk::ColorSelection*), rgba)
       nil
     end
 
     def adjusting?
-      __return_value = LibGtk.color_selection_is_adjusting(to_unsafe.as(LibGtk::ColorSelection*))
+      __return_value = LibGtk.color_selection_is_adjusting(@pointer.as(LibGtk::ColorSelection*))
       __return_value
     end
 
     def current_alpha=(alpha)
-      LibGtk.color_selection_set_current_alpha(to_unsafe.as(LibGtk::ColorSelection*), UInt16.new(alpha))
+      LibGtk.color_selection_set_current_alpha(@pointer.as(LibGtk::ColorSelection*), UInt16.new(alpha))
       nil
     end
 
     def current_color=(color)
-      LibGtk.color_selection_set_current_color(to_unsafe.as(LibGtk::ColorSelection*), color.to_unsafe.as(LibGdk::Color*))
+      LibGtk.color_selection_set_current_color(@pointer.as(LibGtk::ColorSelection*), color.to_unsafe.as(LibGdk::Color*))
       nil
     end
 
     def current_rgba=(rgba)
-      LibGtk.color_selection_set_current_rgba(to_unsafe.as(LibGtk::ColorSelection*), rgba.to_unsafe.as(LibGdk::RGBA*))
+      LibGtk.color_selection_set_current_rgba(@pointer.as(LibGtk::ColorSelection*), rgba.to_unsafe.as(LibGdk::RGBA*))
       nil
     end
 
     def has_opacity_control=(has_opacity)
-      LibGtk.color_selection_set_has_opacity_control(to_unsafe.as(LibGtk::ColorSelection*), has_opacity)
+      LibGtk.color_selection_set_has_opacity_control(@pointer.as(LibGtk::ColorSelection*), has_opacity)
       nil
     end
 
     def has_palette=(has_palette)
-      LibGtk.color_selection_set_has_palette(to_unsafe.as(LibGtk::ColorSelection*), has_palette)
+      LibGtk.color_selection_set_has_palette(@pointer.as(LibGtk::ColorSelection*), has_palette)
       nil
     end
 
     def previous_alpha=(alpha)
-      LibGtk.color_selection_set_previous_alpha(to_unsafe.as(LibGtk::ColorSelection*), UInt16.new(alpha))
+      LibGtk.color_selection_set_previous_alpha(@pointer.as(LibGtk::ColorSelection*), UInt16.new(alpha))
       nil
     end
 
     def previous_color=(color)
-      LibGtk.color_selection_set_previous_color(to_unsafe.as(LibGtk::ColorSelection*), color.to_unsafe.as(LibGdk::Color*))
+      LibGtk.color_selection_set_previous_color(@pointer.as(LibGtk::ColorSelection*), color.to_unsafe.as(LibGdk::Color*))
       nil
     end
 
     def previous_rgba=(rgba)
-      LibGtk.color_selection_set_previous_rgba(to_unsafe.as(LibGtk::ColorSelection*), rgba.to_unsafe.as(LibGdk::RGBA*))
+      LibGtk.color_selection_set_previous_rgba(@pointer.as(LibGtk::ColorSelection*), rgba.to_unsafe.as(LibGdk::RGBA*))
       nil
     end
 

@@ -12,41 +12,42 @@ module Gdk
       end
     end
 
-    @gdk_r_g_b_a : LibGdk::RGBA*?
-    def initialize(@gdk_r_g_b_a : LibGdk::RGBA*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::RGBA*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_r_g_b_a.not_nil!
+      @pointer.not_nil!.as(LibGdk::RGBA*)
     end
 
     def copy
-      __return_value = LibGdk.r_g_b_a_copy(to_unsafe.as(LibGdk::RGBA*))
+      __return_value = LibGdk.r_g_b_a_copy(@pointer.as(LibGdk::RGBA*))
       Gdk::RGBA.new(__return_value)
     end
 
     def equal(p2)
-      __return_value = LibGdk.r_g_b_a_equal(to_unsafe.as(LibGdk::RGBA*), p2.to_unsafe.as(LibGdk::RGBA*))
+      __return_value = LibGdk.r_g_b_a_equal(@pointer.as(LibGdk::RGBA*), p2.to_unsafe.as(LibGdk::RGBA*))
       __return_value
     end
 
     def free
-      LibGdk.r_g_b_a_free(to_unsafe.as(LibGdk::RGBA*))
+      LibGdk.r_g_b_a_free(@pointer.as(LibGdk::RGBA*))
       nil
     end
 
     def hash
-      __return_value = LibGdk.r_g_b_a_hash(to_unsafe.as(LibGdk::RGBA*))
+      __return_value = LibGdk.r_g_b_a_hash(@pointer.as(LibGdk::RGBA*))
       __return_value
     end
 
     def parse(spec)
-      __return_value = LibGdk.r_g_b_a_parse(to_unsafe.as(LibGdk::RGBA*), spec.to_unsafe)
+      __return_value = LibGdk.r_g_b_a_parse(@pointer.as(LibGdk::RGBA*), spec.to_unsafe)
       __return_value
     end
 
     def to_string
-      __return_value = LibGdk.r_g_b_a_to_string(to_unsafe.as(LibGdk::RGBA*))
+      __return_value = LibGdk.r_g_b_a_to_string(@pointer.as(LibGdk::RGBA*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

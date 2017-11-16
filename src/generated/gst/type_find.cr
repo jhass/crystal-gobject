@@ -9,26 +9,27 @@ module Gst
       end
     end
 
-    @gst_type_find : LibGst::TypeFind*?
-    def initialize(@gst_type_find : LibGst::TypeFind*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::TypeFind*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_type_find.not_nil!
+      @pointer.not_nil!.as(LibGst::TypeFind*)
     end
 
     def length
-      __return_value = LibGst.type_find_get_length(to_unsafe.as(LibGst::TypeFind*))
+      __return_value = LibGst.type_find_get_length(@pointer.as(LibGst::TypeFind*))
       __return_value
     end
 
     def peek(offset, size)
-      __return_value = LibGst.type_find_peek(to_unsafe.as(LibGst::TypeFind*), Int64.new(offset), size)
+      __return_value = LibGst.type_find_peek(@pointer.as(LibGst::TypeFind*), Int64.new(offset), size)
       PointerIterator.new(__return_value) {|__item| __item } if __return_value
     end
 
     def suggest(probability, caps)
-      LibGst.type_find_suggest(to_unsafe.as(LibGst::TypeFind*), UInt32.new(probability), caps.to_unsafe.as(LibGst::Caps*))
+      LibGst.type_find_suggest(@pointer.as(LibGst::TypeFind*), UInt32.new(probability), caps.to_unsafe.as(LibGst::Caps*))
       nil
     end
 

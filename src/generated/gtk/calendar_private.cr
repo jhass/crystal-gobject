@@ -2,12 +2,13 @@ module Gtk
   class CalendarPrivate
     include GObject::WrappedType
 
-    @gtk_calendar_private : LibGtk::CalendarPrivate*?
-    def initialize(@gtk_calendar_private : LibGtk::CalendarPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::CalendarPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_calendar_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::CalendarPrivate*)
     end
 
   end

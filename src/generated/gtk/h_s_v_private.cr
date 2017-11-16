@@ -2,12 +2,13 @@ module Gtk
   class HSVPrivate
     include GObject::WrappedType
 
-    @gtk_h_s_v_private : LibGtk::HSVPrivate*?
-    def initialize(@gtk_h_s_v_private : LibGtk::HSVPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::HSVPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_h_s_v_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::HSVPrivate*)
     end
 
   end

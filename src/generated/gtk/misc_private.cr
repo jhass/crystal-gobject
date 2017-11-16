@@ -2,12 +2,13 @@ module Gtk
   class MiscPrivate
     include GObject::WrappedType
 
-    @gtk_misc_private : LibGtk::MiscPrivate*?
-    def initialize(@gtk_misc_private : LibGtk::MiscPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::MiscPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_misc_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::MiscPrivate*)
     end
 
   end

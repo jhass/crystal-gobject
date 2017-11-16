@@ -2,12 +2,13 @@ module Cairo
   class Pattern
     include GObject::WrappedType
 
-    @cairo_pattern : LibCairo::Pattern*?
-    def initialize(@cairo_pattern : LibCairo::Pattern*)
+    @pointer : Void*
+    def initialize(pointer : LibCairo::Pattern*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @cairo_pattern.not_nil!
+      @pointer.not_nil!.as(LibCairo::Pattern*)
     end
 
   end

@@ -2,12 +2,13 @@ require "./bin"
 
 module Gtk
   class StackSidebar < Bin
-    @gtk_stack_sidebar : LibGtk::StackSidebar*?
-    def initialize(@gtk_stack_sidebar : LibGtk::StackSidebar*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::StackSidebar*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_stack_sidebar.not_nil!
+      @pointer.not_nil!.as(LibGtk::StackSidebar*)
     end
 
     # Implements ImplementorIface
@@ -23,12 +24,12 @@ module Gtk
     end
 
     def stack
-      __return_value = LibGtk.stack_sidebar_get_stack(to_unsafe.as(LibGtk::StackSidebar*))
+      __return_value = LibGtk.stack_sidebar_get_stack(@pointer.as(LibGtk::StackSidebar*))
       Gtk::Stack.new(__return_value) if __return_value
     end
 
     def stack=(stack)
-      LibGtk.stack_sidebar_set_stack(to_unsafe.as(LibGtk::StackSidebar*), stack.to_unsafe.as(LibGtk::Stack*))
+      LibGtk.stack_sidebar_set_stack(@pointer.as(LibGtk::StackSidebar*), stack.to_unsafe.as(LibGtk::Stack*))
       nil
     end
 

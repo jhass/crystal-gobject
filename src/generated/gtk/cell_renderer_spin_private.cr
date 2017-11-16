@@ -2,12 +2,13 @@ module Gtk
   class CellRendererSpinPrivate
     include GObject::WrappedType
 
-    @gtk_cell_renderer_spin_private : LibGtk::CellRendererSpinPrivate*?
-    def initialize(@gtk_cell_renderer_spin_private : LibGtk::CellRendererSpinPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::CellRendererSpinPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_cell_renderer_spin_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::CellRendererSpinPrivate*)
     end
 
   end

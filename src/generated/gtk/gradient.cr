@@ -2,12 +2,13 @@ module Gtk
   class Gradient
     include GObject::WrappedType
 
-    @gtk_gradient : LibGtk::Gradient*?
-    def initialize(@gtk_gradient : LibGtk::Gradient*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Gradient*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_gradient.not_nil!
+      @pointer.not_nil!.as(LibGtk::Gradient*)
     end
 
     def self.new_linear(x0, y0, x1, y1) : self
@@ -21,32 +22,32 @@ module Gtk
     end
 
     def add_color_stop(offset, color)
-      LibGtk.gradient_add_color_stop(to_unsafe.as(LibGtk::Gradient*), Float64.new(offset), color.to_unsafe.as(LibGtk::SymbolicColor*))
+      LibGtk.gradient_add_color_stop(@pointer.as(LibGtk::Gradient*), Float64.new(offset), color.to_unsafe.as(LibGtk::SymbolicColor*))
       nil
     end
 
     def ref
-      __return_value = LibGtk.gradient_ref(to_unsafe.as(LibGtk::Gradient*))
+      __return_value = LibGtk.gradient_ref(@pointer.as(LibGtk::Gradient*))
       Gtk::Gradient.new(__return_value)
     end
 
     def resolve(props, resolved_gradient)
-      __return_value = LibGtk.gradient_resolve(to_unsafe.as(LibGtk::Gradient*), props.to_unsafe.as(LibGtk::StyleProperties*), resolved_gradient)
+      __return_value = LibGtk.gradient_resolve(@pointer.as(LibGtk::Gradient*), props.to_unsafe.as(LibGtk::StyleProperties*), resolved_gradient)
       __return_value
     end
 
     def resolve_for_context(context)
-      __return_value = LibGtk.gradient_resolve_for_context(to_unsafe.as(LibGtk::Gradient*), context.to_unsafe.as(LibGtk::StyleContext*))
+      __return_value = LibGtk.gradient_resolve_for_context(@pointer.as(LibGtk::Gradient*), context.to_unsafe.as(LibGtk::StyleContext*))
       Cairo::Pattern.new(__return_value)
     end
 
     def to_string
-      __return_value = LibGtk.gradient_to_string(to_unsafe.as(LibGtk::Gradient*))
+      __return_value = LibGtk.gradient_to_string(@pointer.as(LibGtk::Gradient*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def unref
-      LibGtk.gradient_unref(to_unsafe.as(LibGtk::Gradient*))
+      LibGtk.gradient_unref(@pointer.as(LibGtk::Gradient*))
       nil
     end
 

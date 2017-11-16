@@ -2,12 +2,13 @@ module Gtk
   class WindowGroupPrivate
     include GObject::WrappedType
 
-    @gtk_window_group_private : LibGtk::WindowGroupPrivate*?
-    def initialize(@gtk_window_group_private : LibGtk::WindowGroupPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::WindowGroupPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_window_group_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::WindowGroupPrivate*)
     end
 
   end

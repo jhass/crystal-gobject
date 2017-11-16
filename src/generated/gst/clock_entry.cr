@@ -19,12 +19,13 @@ module Gst
       end
     end
 
-    @gst_clock_entry : LibGst::ClockEntry*?
-    def initialize(@gst_clock_entry : LibGst::ClockEntry*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::ClockEntry*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_clock_entry.not_nil!
+      @pointer.not_nil!.as(LibGst::ClockEntry*)
     end
 
     def refcount

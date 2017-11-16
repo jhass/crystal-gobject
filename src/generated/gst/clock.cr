@@ -2,12 +2,13 @@ require "./object"
 
 module Gst
   class Clock < Object
-    @gst_clock : LibGst::Clock*?
-    def initialize(@gst_clock : LibGst::Clock*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::Clock*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_clock.not_nil!
+      @pointer.not_nil!.as(LibGst::Clock*)
     end
 
     def timeout
@@ -61,117 +62,117 @@ module Gst
     end
 
     def add_observation(slave, master, r_squared)
-      __return_value = LibGst.clock_add_observation(to_unsafe.as(LibGst::Clock*), UInt64.new(slave), UInt64.new(master), r_squared)
+      __return_value = LibGst.clock_add_observation(@pointer.as(LibGst::Clock*), UInt64.new(slave), UInt64.new(master), r_squared)
       __return_value
     end
 
     def add_observation_unapplied(slave, master, r_squared, internal, external, rate_num, rate_denom)
-      __return_value = LibGst.clock_add_observation_unapplied(to_unsafe.as(LibGst::Clock*), UInt64.new(slave), UInt64.new(master), r_squared, internal, external, rate_num, rate_denom)
+      __return_value = LibGst.clock_add_observation_unapplied(@pointer.as(LibGst::Clock*), UInt64.new(slave), UInt64.new(master), r_squared, internal, external, rate_num, rate_denom)
       __return_value
     end
 
     def adjust_unlocked(internal)
-      __return_value = LibGst.clock_adjust_unlocked(to_unsafe.as(LibGst::Clock*), UInt64.new(internal))
+      __return_value = LibGst.clock_adjust_unlocked(@pointer.as(LibGst::Clock*), UInt64.new(internal))
       __return_value
     end
 
     def adjust_with_calibration(internal_target, cinternal, cexternal, cnum, cdenom)
-      __return_value = LibGst.clock_adjust_with_calibration(to_unsafe.as(LibGst::Clock*), UInt64.new(internal_target), UInt64.new(cinternal), UInt64.new(cexternal), UInt64.new(cnum), UInt64.new(cdenom))
+      __return_value = LibGst.clock_adjust_with_calibration(@pointer.as(LibGst::Clock*), UInt64.new(internal_target), UInt64.new(cinternal), UInt64.new(cexternal), UInt64.new(cnum), UInt64.new(cdenom))
       __return_value
     end
 
     def calibration(internal, external, rate_num, rate_denom)
-      LibGst.clock_get_calibration(to_unsafe.as(LibGst::Clock*), internal, external, rate_num, rate_denom)
+      LibGst.clock_get_calibration(@pointer.as(LibGst::Clock*), internal, external, rate_num, rate_denom)
       nil
     end
 
     def internal_time
-      __return_value = LibGst.clock_get_internal_time(to_unsafe.as(LibGst::Clock*))
+      __return_value = LibGst.clock_get_internal_time(@pointer.as(LibGst::Clock*))
       __return_value
     end
 
     def master
-      __return_value = LibGst.clock_get_master(to_unsafe.as(LibGst::Clock*))
+      __return_value = LibGst.clock_get_master(@pointer.as(LibGst::Clock*))
       Gst::Clock.new(__return_value) if __return_value
     end
 
     def resolution
-      __return_value = LibGst.clock_get_resolution(to_unsafe.as(LibGst::Clock*))
+      __return_value = LibGst.clock_get_resolution(@pointer.as(LibGst::Clock*))
       __return_value
     end
 
     def time
-      __return_value = LibGst.clock_get_time(to_unsafe.as(LibGst::Clock*))
+      __return_value = LibGst.clock_get_time(@pointer.as(LibGst::Clock*))
       __return_value
     end
 
     def timeout
-      __return_value = LibGst.clock_get_timeout(to_unsafe.as(LibGst::Clock*))
+      __return_value = LibGst.clock_get_timeout(@pointer.as(LibGst::Clock*))
       __return_value
     end
 
     def synced?
-      __return_value = LibGst.clock_is_synced(to_unsafe.as(LibGst::Clock*))
+      __return_value = LibGst.clock_is_synced(@pointer.as(LibGst::Clock*))
       __return_value
     end
 
     def new_periodic_id(start_time, interval)
-      LibGst.clock_new_periodic_id(to_unsafe.as(LibGst::Clock*), UInt64.new(start_time), UInt64.new(interval))
+      LibGst.clock_new_periodic_id(@pointer.as(LibGst::Clock*), UInt64.new(start_time), UInt64.new(interval))
       nil
     end
 
     def new_single_shot_id(time)
-      LibGst.clock_new_single_shot_id(to_unsafe.as(LibGst::Clock*), UInt64.new(time))
+      LibGst.clock_new_single_shot_id(@pointer.as(LibGst::Clock*), UInt64.new(time))
       nil
     end
 
     def periodic_id_reinit(id, start_time, interval)
-      __return_value = LibGst.clock_periodic_id_reinit(to_unsafe.as(LibGst::Clock*), id, UInt64.new(start_time), UInt64.new(interval))
+      __return_value = LibGst.clock_periodic_id_reinit(@pointer.as(LibGst::Clock*), id, UInt64.new(start_time), UInt64.new(interval))
       __return_value
     end
 
     def set_calibration(internal, external, rate_num, rate_denom)
-      LibGst.clock_set_calibration(to_unsafe.as(LibGst::Clock*), UInt64.new(internal), UInt64.new(external), UInt64.new(rate_num), UInt64.new(rate_denom))
+      LibGst.clock_set_calibration(@pointer.as(LibGst::Clock*), UInt64.new(internal), UInt64.new(external), UInt64.new(rate_num), UInt64.new(rate_denom))
       nil
     end
 
     def master=(master)
-      __return_value = LibGst.clock_set_master(to_unsafe.as(LibGst::Clock*), master ? master.to_unsafe.as(LibGst::Clock*) : nil)
+      __return_value = LibGst.clock_set_master(@pointer.as(LibGst::Clock*), master ? master.to_unsafe.as(LibGst::Clock*) : nil)
       __return_value
     end
 
     def resolution=(resolution)
-      __return_value = LibGst.clock_set_resolution(to_unsafe.as(LibGst::Clock*), UInt64.new(resolution))
+      __return_value = LibGst.clock_set_resolution(@pointer.as(LibGst::Clock*), UInt64.new(resolution))
       __return_value
     end
 
     def synced=(synced)
-      LibGst.clock_set_synced(to_unsafe.as(LibGst::Clock*), synced)
+      LibGst.clock_set_synced(@pointer.as(LibGst::Clock*), synced)
       nil
     end
 
     def timeout=(timeout)
-      LibGst.clock_set_timeout(to_unsafe.as(LibGst::Clock*), UInt64.new(timeout))
+      LibGst.clock_set_timeout(@pointer.as(LibGst::Clock*), UInt64.new(timeout))
       nil
     end
 
     def single_shot_id_reinit(id, time)
-      __return_value = LibGst.clock_single_shot_id_reinit(to_unsafe.as(LibGst::Clock*), id, UInt64.new(time))
+      __return_value = LibGst.clock_single_shot_id_reinit(@pointer.as(LibGst::Clock*), id, UInt64.new(time))
       __return_value
     end
 
     def unadjust_unlocked(external)
-      __return_value = LibGst.clock_unadjust_unlocked(to_unsafe.as(LibGst::Clock*), UInt64.new(external))
+      __return_value = LibGst.clock_unadjust_unlocked(@pointer.as(LibGst::Clock*), UInt64.new(external))
       __return_value
     end
 
     def unadjust_with_calibration(external_target, cinternal, cexternal, cnum, cdenom)
-      __return_value = LibGst.clock_unadjust_with_calibration(to_unsafe.as(LibGst::Clock*), UInt64.new(external_target), UInt64.new(cinternal), UInt64.new(cexternal), UInt64.new(cnum), UInt64.new(cdenom))
+      __return_value = LibGst.clock_unadjust_with_calibration(@pointer.as(LibGst::Clock*), UInt64.new(external_target), UInt64.new(cinternal), UInt64.new(cexternal), UInt64.new(cnum), UInt64.new(cdenom))
       __return_value
     end
 
     def wait_for_sync(timeout)
-      __return_value = LibGst.clock_wait_for_sync(to_unsafe.as(LibGst::Clock*), UInt64.new(timeout))
+      __return_value = LibGst.clock_wait_for_sync(@pointer.as(LibGst::Clock*), UInt64.new(timeout))
       __return_value
     end
 

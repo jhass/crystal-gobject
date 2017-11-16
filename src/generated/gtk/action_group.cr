@@ -1,11 +1,12 @@
 module Gtk
   class ActionGroup < GObject::Object
-    @gtk_action_group : LibGtk::ActionGroup*?
-    def initialize(@gtk_action_group : LibGtk::ActionGroup*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ActionGroup*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_action_group.not_nil!
+      @pointer.not_nil!.as(LibGtk::ActionGroup*)
     end
 
     # Implements Buildable
@@ -35,77 +36,77 @@ module Gtk
     end
 
     def add_action(action)
-      LibGtk.action_group_add_action(to_unsafe.as(LibGtk::ActionGroup*), action.to_unsafe.as(LibGtk::Action*))
+      LibGtk.action_group_add_action(@pointer.as(LibGtk::ActionGroup*), action.to_unsafe.as(LibGtk::Action*))
       nil
     end
 
     def add_action_with_accel(action, accelerator)
-      LibGtk.action_group_add_action_with_accel(to_unsafe.as(LibGtk::ActionGroup*), action.to_unsafe.as(LibGtk::Action*), accelerator ? accelerator.to_unsafe : nil)
+      LibGtk.action_group_add_action_with_accel(@pointer.as(LibGtk::ActionGroup*), action.to_unsafe.as(LibGtk::Action*), accelerator ? accelerator.to_unsafe : nil)
       nil
     end
 
     def accel_group
-      __return_value = LibGtk.action_group_get_accel_group(to_unsafe.as(LibGtk::ActionGroup*))
+      __return_value = LibGtk.action_group_get_accel_group(@pointer.as(LibGtk::ActionGroup*))
       Gtk::AccelGroup.new(__return_value)
     end
 
     def action(action_name)
-      __return_value = LibGtk.action_group_get_action(to_unsafe.as(LibGtk::ActionGroup*), action_name.to_unsafe)
+      __return_value = LibGtk.action_group_get_action(@pointer.as(LibGtk::ActionGroup*), action_name.to_unsafe)
       Gtk::Action.new(__return_value)
     end
 
     def name
-      __return_value = LibGtk.action_group_get_name(to_unsafe.as(LibGtk::ActionGroup*))
+      __return_value = LibGtk.action_group_get_name(@pointer.as(LibGtk::ActionGroup*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def sensitive
-      __return_value = LibGtk.action_group_get_sensitive(to_unsafe.as(LibGtk::ActionGroup*))
+      __return_value = LibGtk.action_group_get_sensitive(@pointer.as(LibGtk::ActionGroup*))
       __return_value
     end
 
     def visible
-      __return_value = LibGtk.action_group_get_visible(to_unsafe.as(LibGtk::ActionGroup*))
+      __return_value = LibGtk.action_group_get_visible(@pointer.as(LibGtk::ActionGroup*))
       __return_value
     end
 
     def list_actions
-      __return_value = LibGtk.action_group_list_actions(to_unsafe.as(LibGtk::ActionGroup*))
+      __return_value = LibGtk.action_group_list_actions(@pointer.as(LibGtk::ActionGroup*))
       GLib::ListIterator(Gtk::Action, LibGtk::Action*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def remove_action(action)
-      LibGtk.action_group_remove_action(to_unsafe.as(LibGtk::ActionGroup*), action.to_unsafe.as(LibGtk::Action*))
+      LibGtk.action_group_remove_action(@pointer.as(LibGtk::ActionGroup*), action.to_unsafe.as(LibGtk::Action*))
       nil
     end
 
     def accel_group=(accel_group)
-      LibGtk.action_group_set_accel_group(to_unsafe.as(LibGtk::ActionGroup*), accel_group ? accel_group.to_unsafe.as(LibGtk::AccelGroup*) : nil)
+      LibGtk.action_group_set_accel_group(@pointer.as(LibGtk::ActionGroup*), accel_group ? accel_group.to_unsafe.as(LibGtk::AccelGroup*) : nil)
       nil
     end
 
     def sensitive=(sensitive)
-      LibGtk.action_group_set_sensitive(to_unsafe.as(LibGtk::ActionGroup*), sensitive)
+      LibGtk.action_group_set_sensitive(@pointer.as(LibGtk::ActionGroup*), sensitive)
       nil
     end
 
     def set_translate_func(func, data, notify)
-      LibGtk.action_group_set_translate_func(to_unsafe.as(LibGtk::ActionGroup*), func, data ? data : nil, notify)
+      LibGtk.action_group_set_translate_func(@pointer.as(LibGtk::ActionGroup*), func, data ? data : nil, notify)
       nil
     end
 
     def translation_domain=(domain)
-      LibGtk.action_group_set_translation_domain(to_unsafe.as(LibGtk::ActionGroup*), domain ? domain.to_unsafe : nil)
+      LibGtk.action_group_set_translation_domain(@pointer.as(LibGtk::ActionGroup*), domain ? domain.to_unsafe : nil)
       nil
     end
 
     def visible=(visible)
-      LibGtk.action_group_set_visible(to_unsafe.as(LibGtk::ActionGroup*), visible)
+      LibGtk.action_group_set_visible(@pointer.as(LibGtk::ActionGroup*), visible)
       nil
     end
 
     def translate_string(string)
-      __return_value = LibGtk.action_group_translate_string(to_unsafe.as(LibGtk::ActionGroup*), string.to_unsafe)
+      __return_value = LibGtk.action_group_translate_string(@pointer.as(LibGtk::ActionGroup*), string.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

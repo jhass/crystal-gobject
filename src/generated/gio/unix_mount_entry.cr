@@ -2,12 +2,13 @@ module Gio
   class UnixMountEntry
     include GObject::WrappedType
 
-    @gio_unix_mount_entry : LibGio::UnixMountEntry*?
-    def initialize(@gio_unix_mount_entry : LibGio::UnixMountEntry*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::UnixMountEntry*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_unix_mount_entry.not_nil!
+      @pointer.not_nil!.as(LibGio::UnixMountEntry*)
     end
 
   end

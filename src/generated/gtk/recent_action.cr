@@ -2,12 +2,13 @@ require "./action"
 
 module Gtk
   class RecentAction < Action
-    @gtk_recent_action : LibGtk::RecentAction*?
-    def initialize(@gtk_recent_action : LibGtk::RecentAction*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::RecentAction*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_recent_action.not_nil!
+      @pointer.not_nil!.as(LibGtk::RecentAction*)
     end
 
     # Implements Buildable
@@ -28,12 +29,12 @@ module Gtk
     end
 
     def show_numbers
-      __return_value = LibGtk.recent_action_get_show_numbers(to_unsafe.as(LibGtk::RecentAction*))
+      __return_value = LibGtk.recent_action_get_show_numbers(@pointer.as(LibGtk::RecentAction*))
       __return_value
     end
 
     def show_numbers=(show_numbers)
-      LibGtk.recent_action_set_show_numbers(to_unsafe.as(LibGtk::RecentAction*), show_numbers)
+      LibGtk.recent_action_set_show_numbers(@pointer.as(LibGtk::RecentAction*), show_numbers)
       nil
     end
 

@@ -12,21 +12,22 @@ module Gtk
       end
     end
 
-    @gtk_tree_iter : LibGtk::TreeIter*?
-    def initialize(@gtk_tree_iter : LibGtk::TreeIter*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::TreeIter*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_tree_iter.not_nil!
+      @pointer.not_nil!.as(LibGtk::TreeIter*)
     end
 
     def copy
-      __return_value = LibGtk.tree_iter_copy(to_unsafe.as(LibGtk::TreeIter*))
+      __return_value = LibGtk.tree_iter_copy(@pointer.as(LibGtk::TreeIter*))
       Gtk::TreeIter.new(__return_value)
     end
 
     def free
-      LibGtk.tree_iter_free(to_unsafe.as(LibGtk::TreeIter*))
+      LibGtk.tree_iter_free(@pointer.as(LibGtk::TreeIter*))
       nil
     end
 

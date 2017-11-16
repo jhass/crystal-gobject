@@ -14,12 +14,13 @@ module Gdk
       end
     end
 
-    @gdk_event_expose : LibGdk::EventExpose*?
-    def initialize(@gdk_event_expose : LibGdk::EventExpose*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::EventExpose*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_event_expose.not_nil!
+      @pointer.not_nil!.as(LibGdk::EventExpose*)
     end
 
     def type

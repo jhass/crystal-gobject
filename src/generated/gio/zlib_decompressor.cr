@@ -1,11 +1,12 @@
 module Gio
   class ZlibDecompressor < GObject::Object
-    @gio_zlib_decompressor : LibGio::ZlibDecompressor*?
-    def initialize(@gio_zlib_decompressor : LibGio::ZlibDecompressor*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::ZlibDecompressor*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_zlib_decompressor.not_nil!
+      @pointer.not_nil!.as(LibGio::ZlibDecompressor*)
     end
 
     # Implements Converter
@@ -25,7 +26,7 @@ module Gio
     end
 
     def file_info
-      __return_value = LibGio.zlib_decompressor_get_file_info(to_unsafe.as(LibGio::ZlibDecompressor*))
+      __return_value = LibGio.zlib_decompressor_get_file_info(@pointer.as(LibGio::ZlibDecompressor*))
       Gio::FileInfo.new(__return_value)
     end
 

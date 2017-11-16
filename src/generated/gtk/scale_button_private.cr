@@ -2,12 +2,13 @@ module Gtk
   class ScaleButtonPrivate
     include GObject::WrappedType
 
-    @gtk_scale_button_private : LibGtk::ScaleButtonPrivate*?
-    def initialize(@gtk_scale_button_private : LibGtk::ScaleButtonPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ScaleButtonPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_scale_button_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::ScaleButtonPrivate*)
     end
 
   end

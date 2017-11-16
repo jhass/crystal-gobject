@@ -7,12 +7,13 @@ module GLib
       super(ptr.as(LibGLib::SourceCallbackFuncs*))
     end
 
-    @g_lib_source_callback_funcs : LibGLib::SourceCallbackFuncs*?
-    def initialize(@g_lib_source_callback_funcs : LibGLib::SourceCallbackFuncs*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::SourceCallbackFuncs*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_source_callback_funcs.not_nil!
+      @pointer.not_nil!.as(LibGLib::SourceCallbackFuncs*)
     end
 
     def ref

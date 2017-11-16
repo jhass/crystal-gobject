@@ -2,12 +2,13 @@ module Cairo
   class Matrix
     include GObject::WrappedType
 
-    @cairo_matrix : LibCairo::Matrix*?
-    def initialize(@cairo_matrix : LibCairo::Matrix*)
+    @pointer : Void*
+    def initialize(pointer : LibCairo::Matrix*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @cairo_matrix.not_nil!
+      @pointer.not_nil!.as(LibCairo::Matrix*)
     end
 
   end

@@ -2,12 +2,13 @@ module Gtk
   class ActionBarPrivate
     include GObject::WrappedType
 
-    @gtk_action_bar_private : LibGtk::ActionBarPrivate*?
-    def initialize(@gtk_action_bar_private : LibGtk::ActionBarPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ActionBarPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_action_bar_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::ActionBarPrivate*)
     end
 
   end

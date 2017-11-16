@@ -22,12 +22,13 @@ module Gdk
       end
     end
 
-    @gdk_window_attr : LibGdk::WindowAttr*?
-    def initialize(@gdk_window_attr : LibGdk::WindowAttr*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::WindowAttr*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_window_attr.not_nil!
+      @pointer.not_nil!.as(LibGdk::WindowAttr*)
     end
 
     def title

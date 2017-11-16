@@ -1,11 +1,12 @@
 module Gio
   class VolumeMonitor < GObject::Object
-    @gio_volume_monitor : LibGio::VolumeMonitor*?
-    def initialize(@gio_volume_monitor : LibGio::VolumeMonitor*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::VolumeMonitor*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_volume_monitor.not_nil!
+      @pointer.not_nil!.as(LibGio::VolumeMonitor*)
     end
 
     def self.adopt_orphan_mount(mount)
@@ -19,27 +20,27 @@ module Gio
     end
 
     def connected_drives
-      __return_value = LibGio.volume_monitor_get_connected_drives(to_unsafe.as(LibGio::VolumeMonitor*))
+      __return_value = LibGio.volume_monitor_get_connected_drives(@pointer.as(LibGio::VolumeMonitor*))
       GLib::ListIterator(Gio::Drive, LibGio::Drive*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def mount_for_uuid(uuid)
-      __return_value = LibGio.volume_monitor_get_mount_for_uuid(to_unsafe.as(LibGio::VolumeMonitor*), uuid.to_unsafe)
+      __return_value = LibGio.volume_monitor_get_mount_for_uuid(@pointer.as(LibGio::VolumeMonitor*), uuid.to_unsafe)
       __return_value
     end
 
     def mounts
-      __return_value = LibGio.volume_monitor_get_mounts(to_unsafe.as(LibGio::VolumeMonitor*))
+      __return_value = LibGio.volume_monitor_get_mounts(@pointer.as(LibGio::VolumeMonitor*))
       GLib::ListIterator(Gio::Mount, LibGio::Mount*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def volume_for_uuid(uuid)
-      __return_value = LibGio.volume_monitor_get_volume_for_uuid(to_unsafe.as(LibGio::VolumeMonitor*), uuid.to_unsafe)
+      __return_value = LibGio.volume_monitor_get_volume_for_uuid(@pointer.as(LibGio::VolumeMonitor*), uuid.to_unsafe)
       __return_value
     end
 
     def volumes
-      __return_value = LibGio.volume_monitor_get_volumes(to_unsafe.as(LibGio::VolumeMonitor*))
+      __return_value = LibGio.volume_monitor_get_volumes(@pointer.as(LibGio::VolumeMonitor*))
       GLib::ListIterator(Gio::Volume, LibGio::Volume*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 

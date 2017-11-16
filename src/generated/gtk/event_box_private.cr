@@ -2,12 +2,13 @@ module Gtk
   class EventBoxPrivate
     include GObject::WrappedType
 
-    @gtk_event_box_private : LibGtk::EventBoxPrivate*?
-    def initialize(@gtk_event_box_private : LibGtk::EventBoxPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::EventBoxPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_event_box_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::EventBoxPrivate*)
     end
 
   end

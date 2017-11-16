@@ -2,12 +2,13 @@ require "./cell_renderer"
 
 module Gtk
   class CellRendererPixbuf < CellRenderer
-    @gtk_cell_renderer_pixbuf : LibGtk::CellRendererPixbuf*?
-    def initialize(@gtk_cell_renderer_pixbuf : LibGtk::CellRendererPixbuf*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::CellRendererPixbuf*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_cell_renderer_pixbuf.not_nil!
+      @pointer.not_nil!.as(LibGtk::CellRendererPixbuf*)
     end
 
     def follow_state

@@ -2,12 +2,13 @@ module Gtk
   class ToolbarPrivate
     include GObject::WrappedType
 
-    @gtk_toolbar_private : LibGtk::ToolbarPrivate*?
-    def initialize(@gtk_toolbar_private : LibGtk::ToolbarPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ToolbarPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_toolbar_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::ToolbarPrivate*)
     end
 
   end

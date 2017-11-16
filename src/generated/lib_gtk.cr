@@ -2744,6 +2744,7 @@ lib LibGtk
     # Signal show-error-message
     # Signal show-other-locations
     # Signal show-other-locations-with-flags
+    # Signal show-starred-location
     # Signal unmount
   end
   fun places_sidebar_new = gtk_places_sidebar_new() : LibGtk::Widget*
@@ -2757,6 +2758,7 @@ lib LibGtk
   fun places_sidebar_get_show_enter_location = gtk_places_sidebar_get_show_enter_location(this : PlacesSidebar*) : Bool
   fun places_sidebar_get_show_other_locations = gtk_places_sidebar_get_show_other_locations(this : PlacesSidebar*) : Bool
   fun places_sidebar_get_show_recent = gtk_places_sidebar_get_show_recent(this : PlacesSidebar*) : Bool
+  fun places_sidebar_get_show_starred_location = gtk_places_sidebar_get_show_starred_location(this : PlacesSidebar*) : Bool
   fun places_sidebar_get_show_trash = gtk_places_sidebar_get_show_trash(this : PlacesSidebar*) : Bool
   fun places_sidebar_list_shortcuts = gtk_places_sidebar_list_shortcuts(this : PlacesSidebar*) : Void**
   fun places_sidebar_remove_shortcut = gtk_places_sidebar_remove_shortcut(this : PlacesSidebar*, location : LibGio::File*) : Void
@@ -2769,6 +2771,7 @@ lib LibGtk
   fun places_sidebar_set_show_enter_location = gtk_places_sidebar_set_show_enter_location(this : PlacesSidebar*, show_enter_location : Bool) : Void
   fun places_sidebar_set_show_other_locations = gtk_places_sidebar_set_show_other_locations(this : PlacesSidebar*, show_other_locations : Bool) : Void
   fun places_sidebar_set_show_recent = gtk_places_sidebar_set_show_recent(this : PlacesSidebar*, show_recent : Bool) : Void
+  fun places_sidebar_set_show_starred_location = gtk_places_sidebar_set_show_starred_location(this : PlacesSidebar*, show_starred_location : Bool) : Void
   fun places_sidebar_set_show_trash = gtk_places_sidebar_set_show_trash(this : PlacesSidebar*, show_trash : Bool) : Void
 
   struct Plug # object
@@ -8498,15 +8501,15 @@ lib LibGtk
   ##    Constants
   ###########################################
 
-  BINARY_AGE = 2224 # : Int32
+  BINARY_AGE = 2226 # : Int32
   INPUT_ERROR = -1 # : Int32
-  INTERFACE_AGE = 24 # : Int32
+  INTERFACE_AGE = 26 # : Int32
   LEVEL_BAR_OFFSET_FULL = "full" # : UInt8*
   LEVEL_BAR_OFFSET_HIGH = "high" # : UInt8*
   LEVEL_BAR_OFFSET_LOW = "low" # : UInt8*
   MAJOR_VERSION = 3 # : Int32
   MAX_COMPOSE_LEN = 7 # : Int32
-  MICRO_VERSION = 24 # : Int32
+  MICRO_VERSION = 26 # : Int32
   MINOR_VERSION = 22 # : Int32
   PAPER_NAME_A3 = "iso_a3" # : UInt8*
   PAPER_NAME_A4 = "iso_a4" # : UInt8*

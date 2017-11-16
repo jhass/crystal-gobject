@@ -11,26 +11,27 @@ module Pango
       end
     end
 
-    @pango_attribute : LibPango::Attribute*?
-    def initialize(@pango_attribute : LibPango::Attribute*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::Attribute*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_attribute.not_nil!
+      @pointer.not_nil!.as(LibPango::Attribute*)
     end
 
     def destroy
-      LibPango.attribute_destroy(to_unsafe.as(LibPango::Attribute*))
+      LibPango.attribute_destroy(@pointer.as(LibPango::Attribute*))
       nil
     end
 
     def equal(attr2)
-      __return_value = LibPango.attribute_equal(to_unsafe.as(LibPango::Attribute*), attr2.to_unsafe.as(LibPango::Attribute*))
+      __return_value = LibPango.attribute_equal(@pointer.as(LibPango::Attribute*), attr2.to_unsafe.as(LibPango::Attribute*))
       __return_value
     end
 
     def init(klass)
-      LibPango.attribute_init(to_unsafe.as(LibPango::Attribute*), klass.to_unsafe.as(LibPango::AttrClass*))
+      LibPango.attribute_init(@pointer.as(LibPango::Attribute*), klass.to_unsafe.as(LibPango::AttrClass*))
       nil
     end
 

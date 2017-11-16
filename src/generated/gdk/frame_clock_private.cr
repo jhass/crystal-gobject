@@ -2,12 +2,13 @@ module Gdk
   class FrameClockPrivate
     include GObject::WrappedType
 
-    @gdk_frame_clock_private : LibGdk::FrameClockPrivate*?
-    def initialize(@gdk_frame_clock_private : LibGdk::FrameClockPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::FrameClockPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_frame_clock_private.not_nil!
+      @pointer.not_nil!.as(LibGdk::FrameClockPrivate*)
     end
 
   end

@@ -2,12 +2,13 @@ require "./button"
 
 module Gtk
   class ColorButton < Button
-    @gtk_color_button : LibGtk::ColorButton*?
-    def initialize(@gtk_color_button : LibGtk::ColorButton*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ColorButton*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_color_button.not_nil!
+      @pointer.not_nil!.as(LibGtk::ColorButton*)
     end
 
     # Implements ImplementorIface
@@ -61,42 +62,42 @@ module Gtk
     end
 
     def alpha
-      __return_value = LibGtk.color_button_get_alpha(to_unsafe.as(LibGtk::ColorButton*))
+      __return_value = LibGtk.color_button_get_alpha(@pointer.as(LibGtk::ColorButton*))
       __return_value
     end
 
     def color(color)
-      LibGtk.color_button_get_color(to_unsafe.as(LibGtk::ColorButton*), color)
+      LibGtk.color_button_get_color(@pointer.as(LibGtk::ColorButton*), color)
       nil
     end
 
     def title
-      __return_value = LibGtk.color_button_get_title(to_unsafe.as(LibGtk::ColorButton*))
+      __return_value = LibGtk.color_button_get_title(@pointer.as(LibGtk::ColorButton*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def use_alpha
-      __return_value = LibGtk.color_button_get_use_alpha(to_unsafe.as(LibGtk::ColorButton*))
+      __return_value = LibGtk.color_button_get_use_alpha(@pointer.as(LibGtk::ColorButton*))
       __return_value
     end
 
     def alpha=(alpha)
-      LibGtk.color_button_set_alpha(to_unsafe.as(LibGtk::ColorButton*), UInt16.new(alpha))
+      LibGtk.color_button_set_alpha(@pointer.as(LibGtk::ColorButton*), UInt16.new(alpha))
       nil
     end
 
     def color=(color)
-      LibGtk.color_button_set_color(to_unsafe.as(LibGtk::ColorButton*), color.to_unsafe.as(LibGdk::Color*))
+      LibGtk.color_button_set_color(@pointer.as(LibGtk::ColorButton*), color.to_unsafe.as(LibGdk::Color*))
       nil
     end
 
     def title=(title)
-      LibGtk.color_button_set_title(to_unsafe.as(LibGtk::ColorButton*), title.to_unsafe)
+      LibGtk.color_button_set_title(@pointer.as(LibGtk::ColorButton*), title.to_unsafe)
       nil
     end
 
     def use_alpha=(use_alpha)
-      LibGtk.color_button_set_use_alpha(to_unsafe.as(LibGtk::ColorButton*), use_alpha)
+      LibGtk.color_button_set_use_alpha(@pointer.as(LibGtk::ColorButton*), use_alpha)
       nil
     end
 

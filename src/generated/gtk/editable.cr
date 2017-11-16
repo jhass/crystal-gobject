@@ -1,67 +1,67 @@
 module Gtk
   module Editable
     def copy_clipboard
-      LibGtk.editable_copy_clipboard(to_unsafe.as(LibGtk::Editable*))
+      LibGtk.editable_copy_clipboard(@pointer.as(LibGtk::Editable*))
       nil
     end
 
     def cut_clipboard
-      LibGtk.editable_cut_clipboard(to_unsafe.as(LibGtk::Editable*))
+      LibGtk.editable_cut_clipboard(@pointer.as(LibGtk::Editable*))
       nil
     end
 
     def delete_selection
-      LibGtk.editable_delete_selection(to_unsafe.as(LibGtk::Editable*))
+      LibGtk.editable_delete_selection(@pointer.as(LibGtk::Editable*))
       nil
     end
 
     def delete_text(start_pos, end_pos)
-      LibGtk.editable_delete_text(to_unsafe.as(LibGtk::Editable*), Int32.new(start_pos), Int32.new(end_pos))
+      LibGtk.editable_delete_text(@pointer.as(LibGtk::Editable*), Int32.new(start_pos), Int32.new(end_pos))
       nil
     end
 
     def chars(start_pos, end_pos)
-      __return_value = LibGtk.editable_get_chars(to_unsafe.as(LibGtk::Editable*), Int32.new(start_pos), Int32.new(end_pos))
+      __return_value = LibGtk.editable_get_chars(@pointer.as(LibGtk::Editable*), Int32.new(start_pos), Int32.new(end_pos))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def editable
-      __return_value = LibGtk.editable_get_editable(to_unsafe.as(LibGtk::Editable*))
+      __return_value = LibGtk.editable_get_editable(@pointer.as(LibGtk::Editable*))
       __return_value
     end
 
     def position
-      __return_value = LibGtk.editable_get_position(to_unsafe.as(LibGtk::Editable*))
+      __return_value = LibGtk.editable_get_position(@pointer.as(LibGtk::Editable*))
       __return_value
     end
 
     def selection_bounds(start_pos, end_pos)
-      __return_value = LibGtk.editable_get_selection_bounds(to_unsafe.as(LibGtk::Editable*), start_pos, end_pos)
+      __return_value = LibGtk.editable_get_selection_bounds(@pointer.as(LibGtk::Editable*), start_pos, end_pos)
       __return_value
     end
 
     def insert_text(new_text, new_text_length, position)
-      LibGtk.editable_insert_text(to_unsafe.as(LibGtk::Editable*), new_text.to_unsafe, Int32.new(new_text_length), position)
+      LibGtk.editable_insert_text(@pointer.as(LibGtk::Editable*), new_text.to_unsafe, Int32.new(new_text_length), position)
       nil
     end
 
     def paste_clipboard
-      LibGtk.editable_paste_clipboard(to_unsafe.as(LibGtk::Editable*))
+      LibGtk.editable_paste_clipboard(@pointer.as(LibGtk::Editable*))
       nil
     end
 
     def select_region(start_pos, end_pos)
-      LibGtk.editable_select_region(to_unsafe.as(LibGtk::Editable*), Int32.new(start_pos), Int32.new(end_pos))
+      LibGtk.editable_select_region(@pointer.as(LibGtk::Editable*), Int32.new(start_pos), Int32.new(end_pos))
       nil
     end
 
     def editable=(is_editable)
-      LibGtk.editable_set_editable(to_unsafe.as(LibGtk::Editable*), is_editable)
+      LibGtk.editable_set_editable(@pointer.as(LibGtk::Editable*), is_editable)
       nil
     end
 
     def position=(position)
-      LibGtk.editable_set_position(to_unsafe.as(LibGtk::Editable*), Int32.new(position))
+      LibGtk.editable_set_position(@pointer.as(LibGtk::Editable*), Int32.new(position))
       nil
     end
 

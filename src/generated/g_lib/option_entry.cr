@@ -15,12 +15,13 @@ module GLib
       end
     end
 
-    @g_lib_option_entry : LibGLib::OptionEntry*?
-    def initialize(@g_lib_option_entry : LibGLib::OptionEntry*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::OptionEntry*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_option_entry.not_nil!
+      @pointer.not_nil!.as(LibGLib::OptionEntry*)
     end
 
     def long_name

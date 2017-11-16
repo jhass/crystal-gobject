@@ -2,12 +2,13 @@ require "./bin"
 
 module Gtk
   class FlowBoxChild < Bin
-    @gtk_flow_box_child : LibGtk::FlowBoxChild*?
-    def initialize(@gtk_flow_box_child : LibGtk::FlowBoxChild*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::FlowBoxChild*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_flow_box_child.not_nil!
+      @pointer.not_nil!.as(LibGtk::FlowBoxChild*)
     end
 
     # Implements ImplementorIface
@@ -18,17 +19,17 @@ module Gtk
     end
 
     def changed
-      LibGtk.flow_box_child_changed(to_unsafe.as(LibGtk::FlowBoxChild*))
+      LibGtk.flow_box_child_changed(@pointer.as(LibGtk::FlowBoxChild*))
       nil
     end
 
     def index
-      __return_value = LibGtk.flow_box_child_get_index(to_unsafe.as(LibGtk::FlowBoxChild*))
+      __return_value = LibGtk.flow_box_child_get_index(@pointer.as(LibGtk::FlowBoxChild*))
       __return_value
     end
 
     def selected?
-      __return_value = LibGtk.flow_box_child_is_selected(to_unsafe.as(LibGtk::FlowBoxChild*))
+      __return_value = LibGtk.flow_box_child_is_selected(@pointer.as(LibGtk::FlowBoxChild*))
       __return_value
     end
 

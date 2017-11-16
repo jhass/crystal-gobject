@@ -1,11 +1,12 @@
 module Gtk
   class EntryBuffer < GObject::Object
-    @gtk_entry_buffer : LibGtk::EntryBuffer*?
-    def initialize(@gtk_entry_buffer : LibGtk::EntryBuffer*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::EntryBuffer*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_entry_buffer.not_nil!
+      @pointer.not_nil!.as(LibGtk::EntryBuffer*)
     end
 
     def length
@@ -29,52 +30,52 @@ module Gtk
     end
 
     def delete_text(position, n_chars)
-      __return_value = LibGtk.entry_buffer_delete_text(to_unsafe.as(LibGtk::EntryBuffer*), UInt32.new(position), Int32.new(n_chars))
+      __return_value = LibGtk.entry_buffer_delete_text(@pointer.as(LibGtk::EntryBuffer*), UInt32.new(position), Int32.new(n_chars))
       __return_value
     end
 
     def emit_deleted_text(position, n_chars)
-      LibGtk.entry_buffer_emit_deleted_text(to_unsafe.as(LibGtk::EntryBuffer*), UInt32.new(position), UInt32.new(n_chars))
+      LibGtk.entry_buffer_emit_deleted_text(@pointer.as(LibGtk::EntryBuffer*), UInt32.new(position), UInt32.new(n_chars))
       nil
     end
 
     def emit_inserted_text(position, chars, n_chars)
-      LibGtk.entry_buffer_emit_inserted_text(to_unsafe.as(LibGtk::EntryBuffer*), UInt32.new(position), chars.to_unsafe, UInt32.new(n_chars))
+      LibGtk.entry_buffer_emit_inserted_text(@pointer.as(LibGtk::EntryBuffer*), UInt32.new(position), chars.to_unsafe, UInt32.new(n_chars))
       nil
     end
 
     def bytes
-      __return_value = LibGtk.entry_buffer_get_bytes(to_unsafe.as(LibGtk::EntryBuffer*))
+      __return_value = LibGtk.entry_buffer_get_bytes(@pointer.as(LibGtk::EntryBuffer*))
       __return_value
     end
 
     def length
-      __return_value = LibGtk.entry_buffer_get_length(to_unsafe.as(LibGtk::EntryBuffer*))
+      __return_value = LibGtk.entry_buffer_get_length(@pointer.as(LibGtk::EntryBuffer*))
       __return_value
     end
 
     def max_length
-      __return_value = LibGtk.entry_buffer_get_max_length(to_unsafe.as(LibGtk::EntryBuffer*))
+      __return_value = LibGtk.entry_buffer_get_max_length(@pointer.as(LibGtk::EntryBuffer*))
       __return_value
     end
 
     def text
-      __return_value = LibGtk.entry_buffer_get_text(to_unsafe.as(LibGtk::EntryBuffer*))
+      __return_value = LibGtk.entry_buffer_get_text(@pointer.as(LibGtk::EntryBuffer*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def insert_text(position, chars, n_chars)
-      __return_value = LibGtk.entry_buffer_insert_text(to_unsafe.as(LibGtk::EntryBuffer*), UInt32.new(position), chars.to_unsafe, Int32.new(n_chars))
+      __return_value = LibGtk.entry_buffer_insert_text(@pointer.as(LibGtk::EntryBuffer*), UInt32.new(position), chars.to_unsafe, Int32.new(n_chars))
       __return_value
     end
 
     def max_length=(max_length)
-      LibGtk.entry_buffer_set_max_length(to_unsafe.as(LibGtk::EntryBuffer*), Int32.new(max_length))
+      LibGtk.entry_buffer_set_max_length(@pointer.as(LibGtk::EntryBuffer*), Int32.new(max_length))
       nil
     end
 
     def set_text(chars, n_chars)
-      LibGtk.entry_buffer_set_text(to_unsafe.as(LibGtk::EntryBuffer*), chars.to_unsafe, Int32.new(n_chars))
+      LibGtk.entry_buffer_set_text(@pointer.as(LibGtk::EntryBuffer*), chars.to_unsafe, Int32.new(n_chars))
       nil
     end
 

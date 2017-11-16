@@ -2,12 +2,13 @@ require "./frame"
 
 module Gtk
   class AspectFrame < Frame
-    @gtk_aspect_frame : LibGtk::AspectFrame*?
-    def initialize(@gtk_aspect_frame : LibGtk::AspectFrame*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::AspectFrame*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_aspect_frame.not_nil!
+      @pointer.not_nil!.as(LibGtk::AspectFrame*)
     end
 
     # Implements ImplementorIface
@@ -38,7 +39,7 @@ module Gtk
     end
 
     def set(xalign, yalign, ratio, obey_child)
-      LibGtk.aspect_frame_set(to_unsafe.as(LibGtk::AspectFrame*), Float32.new(xalign), Float32.new(yalign), Float32.new(ratio), obey_child)
+      LibGtk.aspect_frame_set(@pointer.as(LibGtk::AspectFrame*), Float32.new(xalign), Float32.new(yalign), Float32.new(ratio), obey_child)
       nil
     end
 

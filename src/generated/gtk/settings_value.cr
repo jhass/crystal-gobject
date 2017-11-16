@@ -10,12 +10,13 @@ module Gtk
       end
     end
 
-    @gtk_settings_value : LibGtk::SettingsValue*?
-    def initialize(@gtk_settings_value : LibGtk::SettingsValue*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::SettingsValue*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_settings_value.not_nil!
+      @pointer.not_nil!.as(LibGtk::SettingsValue*)
     end
 
     def origin

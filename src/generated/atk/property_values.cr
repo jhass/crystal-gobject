@@ -11,12 +11,13 @@ module Atk
       end
     end
 
-    @atk_property_values : LibAtk::PropertyValues*?
-    def initialize(@atk_property_values : LibAtk::PropertyValues*)
+    @pointer : Void*
+    def initialize(pointer : LibAtk::PropertyValues*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @atk_property_values.not_nil!
+      @pointer.not_nil!.as(LibAtk::PropertyValues*)
     end
 
     def property_name

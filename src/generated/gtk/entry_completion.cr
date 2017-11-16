@@ -1,11 +1,12 @@
 module Gtk
   class EntryCompletion < GObject::Object
-    @gtk_entry_completion : LibGtk::EntryCompletion*?
-    def initialize(@gtk_entry_completion : LibGtk::EntryCompletion*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::EntryCompletion*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_entry_completion.not_nil!
+      @pointer.not_nil!.as(LibGtk::EntryCompletion*)
     end
 
     # Implements Buildable
@@ -66,127 +67,127 @@ module Gtk
     end
 
     def complete
-      LibGtk.entry_completion_complete(to_unsafe.as(LibGtk::EntryCompletion*))
+      LibGtk.entry_completion_complete(@pointer.as(LibGtk::EntryCompletion*))
       nil
     end
 
     def compute_prefix(key)
-      __return_value = LibGtk.entry_completion_compute_prefix(to_unsafe.as(LibGtk::EntryCompletion*), key.to_unsafe)
+      __return_value = LibGtk.entry_completion_compute_prefix(@pointer.as(LibGtk::EntryCompletion*), key.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def delete_action(index)
-      LibGtk.entry_completion_delete_action(to_unsafe.as(LibGtk::EntryCompletion*), Int32.new(index))
+      LibGtk.entry_completion_delete_action(@pointer.as(LibGtk::EntryCompletion*), Int32.new(index))
       nil
     end
 
     def completion_prefix
-      __return_value = LibGtk.entry_completion_get_completion_prefix(to_unsafe.as(LibGtk::EntryCompletion*))
+      __return_value = LibGtk.entry_completion_get_completion_prefix(@pointer.as(LibGtk::EntryCompletion*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def entry
-      __return_value = LibGtk.entry_completion_get_entry(to_unsafe.as(LibGtk::EntryCompletion*))
+      __return_value = LibGtk.entry_completion_get_entry(@pointer.as(LibGtk::EntryCompletion*))
       Gtk::Widget.new(__return_value)
     end
 
     def inline_completion
-      __return_value = LibGtk.entry_completion_get_inline_completion(to_unsafe.as(LibGtk::EntryCompletion*))
+      __return_value = LibGtk.entry_completion_get_inline_completion(@pointer.as(LibGtk::EntryCompletion*))
       __return_value
     end
 
     def inline_selection
-      __return_value = LibGtk.entry_completion_get_inline_selection(to_unsafe.as(LibGtk::EntryCompletion*))
+      __return_value = LibGtk.entry_completion_get_inline_selection(@pointer.as(LibGtk::EntryCompletion*))
       __return_value
     end
 
     def minimum_key_length
-      __return_value = LibGtk.entry_completion_get_minimum_key_length(to_unsafe.as(LibGtk::EntryCompletion*))
+      __return_value = LibGtk.entry_completion_get_minimum_key_length(@pointer.as(LibGtk::EntryCompletion*))
       __return_value
     end
 
     def model
-      __return_value = LibGtk.entry_completion_get_model(to_unsafe.as(LibGtk::EntryCompletion*))
+      __return_value = LibGtk.entry_completion_get_model(@pointer.as(LibGtk::EntryCompletion*))
       __return_value if __return_value
     end
 
     def popup_completion
-      __return_value = LibGtk.entry_completion_get_popup_completion(to_unsafe.as(LibGtk::EntryCompletion*))
+      __return_value = LibGtk.entry_completion_get_popup_completion(@pointer.as(LibGtk::EntryCompletion*))
       __return_value
     end
 
     def popup_set_width
-      __return_value = LibGtk.entry_completion_get_popup_set_width(to_unsafe.as(LibGtk::EntryCompletion*))
+      __return_value = LibGtk.entry_completion_get_popup_set_width(@pointer.as(LibGtk::EntryCompletion*))
       __return_value
     end
 
     def popup_single_match
-      __return_value = LibGtk.entry_completion_get_popup_single_match(to_unsafe.as(LibGtk::EntryCompletion*))
+      __return_value = LibGtk.entry_completion_get_popup_single_match(@pointer.as(LibGtk::EntryCompletion*))
       __return_value
     end
 
     def text_column
-      __return_value = LibGtk.entry_completion_get_text_column(to_unsafe.as(LibGtk::EntryCompletion*))
+      __return_value = LibGtk.entry_completion_get_text_column(@pointer.as(LibGtk::EntryCompletion*))
       __return_value
     end
 
     def insert_action_markup(index, markup)
-      LibGtk.entry_completion_insert_action_markup(to_unsafe.as(LibGtk::EntryCompletion*), Int32.new(index), markup.to_unsafe)
+      LibGtk.entry_completion_insert_action_markup(@pointer.as(LibGtk::EntryCompletion*), Int32.new(index), markup.to_unsafe)
       nil
     end
 
     def insert_action_text(index, text)
-      LibGtk.entry_completion_insert_action_text(to_unsafe.as(LibGtk::EntryCompletion*), Int32.new(index), text.to_unsafe)
+      LibGtk.entry_completion_insert_action_text(@pointer.as(LibGtk::EntryCompletion*), Int32.new(index), text.to_unsafe)
       nil
     end
 
     def insert_prefix
-      LibGtk.entry_completion_insert_prefix(to_unsafe.as(LibGtk::EntryCompletion*))
+      LibGtk.entry_completion_insert_prefix(@pointer.as(LibGtk::EntryCompletion*))
       nil
     end
 
     def inline_completion=(inline_completion)
-      LibGtk.entry_completion_set_inline_completion(to_unsafe.as(LibGtk::EntryCompletion*), inline_completion)
+      LibGtk.entry_completion_set_inline_completion(@pointer.as(LibGtk::EntryCompletion*), inline_completion)
       nil
     end
 
     def inline_selection=(inline_selection)
-      LibGtk.entry_completion_set_inline_selection(to_unsafe.as(LibGtk::EntryCompletion*), inline_selection)
+      LibGtk.entry_completion_set_inline_selection(@pointer.as(LibGtk::EntryCompletion*), inline_selection)
       nil
     end
 
     def set_match_func(func, func_data, func_notify)
-      LibGtk.entry_completion_set_match_func(to_unsafe.as(LibGtk::EntryCompletion*), func, func_data ? func_data : nil, func_notify)
+      LibGtk.entry_completion_set_match_func(@pointer.as(LibGtk::EntryCompletion*), func, func_data ? func_data : nil, func_notify)
       nil
     end
 
     def minimum_key_length=(length)
-      LibGtk.entry_completion_set_minimum_key_length(to_unsafe.as(LibGtk::EntryCompletion*), Int32.new(length))
+      LibGtk.entry_completion_set_minimum_key_length(@pointer.as(LibGtk::EntryCompletion*), Int32.new(length))
       nil
     end
 
     def model=(model)
-      LibGtk.entry_completion_set_model(to_unsafe.as(LibGtk::EntryCompletion*), model ? model.to_unsafe.as(LibGtk::TreeModel*) : nil)
+      LibGtk.entry_completion_set_model(@pointer.as(LibGtk::EntryCompletion*), model ? model.to_unsafe.as(LibGtk::TreeModel*) : nil)
       nil
     end
 
     def popup_completion=(popup_completion)
-      LibGtk.entry_completion_set_popup_completion(to_unsafe.as(LibGtk::EntryCompletion*), popup_completion)
+      LibGtk.entry_completion_set_popup_completion(@pointer.as(LibGtk::EntryCompletion*), popup_completion)
       nil
     end
 
     def popup_set_width=(popup_set_width)
-      LibGtk.entry_completion_set_popup_set_width(to_unsafe.as(LibGtk::EntryCompletion*), popup_set_width)
+      LibGtk.entry_completion_set_popup_set_width(@pointer.as(LibGtk::EntryCompletion*), popup_set_width)
       nil
     end
 
     def popup_single_match=(popup_single_match)
-      LibGtk.entry_completion_set_popup_single_match(to_unsafe.as(LibGtk::EntryCompletion*), popup_single_match)
+      LibGtk.entry_completion_set_popup_single_match(@pointer.as(LibGtk::EntryCompletion*), popup_single_match)
       nil
     end
 
     def text_column=(column)
-      LibGtk.entry_completion_set_text_column(to_unsafe.as(LibGtk::EntryCompletion*), Int32.new(column))
+      LibGtk.entry_completion_set_text_column(@pointer.as(LibGtk::EntryCompletion*), Int32.new(column))
       nil
     end
 

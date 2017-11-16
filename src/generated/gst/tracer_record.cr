@@ -2,12 +2,13 @@ require "./object"
 
 module Gst
   class TracerRecord < Object
-    @gst_tracer_record : LibGst::TracerRecord*?
-    def initialize(@gst_tracer_record : LibGst::TracerRecord*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::TracerRecord*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_tracer_record.not_nil!
+      @pointer.not_nil!.as(LibGst::TracerRecord*)
     end
 
   end

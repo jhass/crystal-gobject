@@ -2,12 +2,13 @@ module Gtk
   class ToplevelAccessiblePrivate
     include GObject::WrappedType
 
-    @gtk_toplevel_accessible_private : LibGtk::ToplevelAccessiblePrivate*?
-    def initialize(@gtk_toplevel_accessible_private : LibGtk::ToplevelAccessiblePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ToplevelAccessiblePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_toplevel_accessible_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::ToplevelAccessiblePrivate*)
     end
 
   end

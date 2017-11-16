@@ -2,12 +2,13 @@ require "./menu"
 
 module Gtk
   class RecentChooserMenu < Menu
-    @gtk_recent_chooser_menu : LibGtk::RecentChooserMenu*?
-    def initialize(@gtk_recent_chooser_menu : LibGtk::RecentChooserMenu*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::RecentChooserMenu*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_recent_chooser_menu.not_nil!
+      @pointer.not_nil!.as(LibGtk::RecentChooserMenu*)
     end
 
     # Implements ImplementorIface
@@ -30,12 +31,12 @@ module Gtk
     end
 
     def show_numbers
-      __return_value = LibGtk.recent_chooser_menu_get_show_numbers(to_unsafe.as(LibGtk::RecentChooserMenu*))
+      __return_value = LibGtk.recent_chooser_menu_get_show_numbers(@pointer.as(LibGtk::RecentChooserMenu*))
       __return_value
     end
 
     def show_numbers=(show_numbers)
-      LibGtk.recent_chooser_menu_set_show_numbers(to_unsafe.as(LibGtk::RecentChooserMenu*), show_numbers)
+      LibGtk.recent_chooser_menu_set_show_numbers(@pointer.as(LibGtk::RecentChooserMenu*), show_numbers)
       nil
     end
 

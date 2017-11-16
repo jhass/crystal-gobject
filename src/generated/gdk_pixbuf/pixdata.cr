@@ -15,28 +15,29 @@ module GdkPixbuf
       end
     end
 
-    @gdk_pixbuf_pixdata : LibGdkPixbuf::Pixdata*?
-    def initialize(@gdk_pixbuf_pixdata : LibGdkPixbuf::Pixdata*)
+    @pointer : Void*
+    def initialize(pointer : LibGdkPixbuf::Pixdata*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_pixbuf_pixdata.not_nil!
+      @pointer.not_nil!.as(LibGdkPixbuf::Pixdata*)
     end
 
     def deserialize(stream_length, stream)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGdkPixbuf.pixdata_deserialize(to_unsafe.as(LibGdkPixbuf::Pixdata*), UInt32.new(stream_length), stream, pointerof(__error))
+      __return_value = LibGdkPixbuf.pixdata_deserialize(@pointer.as(LibGdkPixbuf::Pixdata*), UInt32.new(stream_length), stream, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def serialize(stream_length_p)
-      __return_value = LibGdkPixbuf.pixdata_serialize(to_unsafe.as(LibGdkPixbuf::Pixdata*), stream_length_p)
+      __return_value = LibGdkPixbuf.pixdata_serialize(@pointer.as(LibGdkPixbuf::Pixdata*), stream_length_p)
       PointerIterator.new(__return_value) {|__item| __item }
     end
 
     def to_csource(name, dump_type : GdkPixbuf::PixdataDumpType)
-      __return_value = LibGdkPixbuf.pixdata_to_csource(to_unsafe.as(LibGdkPixbuf::Pixdata*), name.to_unsafe, dump_type)
+      __return_value = LibGdkPixbuf.pixdata_to_csource(@pointer.as(LibGdkPixbuf::Pixdata*), name.to_unsafe, dump_type)
       GLib::String.new(__return_value)
     end
 

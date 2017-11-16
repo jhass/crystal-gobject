@@ -2,12 +2,13 @@ require "./volume_monitor"
 
 module Gio
   class NativeVolumeMonitor < VolumeMonitor
-    @gio_native_volume_monitor : LibGio::NativeVolumeMonitor*?
-    def initialize(@gio_native_volume_monitor : LibGio::NativeVolumeMonitor*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::NativeVolumeMonitor*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_native_volume_monitor.not_nil!
+      @pointer.not_nil!.as(LibGio::NativeVolumeMonitor*)
     end
 
   end

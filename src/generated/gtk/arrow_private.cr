@@ -2,12 +2,13 @@ module Gtk
   class ArrowPrivate
     include GObject::WrappedType
 
-    @gtk_arrow_private : LibGtk::ArrowPrivate*?
-    def initialize(@gtk_arrow_private : LibGtk::ArrowPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ArrowPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_arrow_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::ArrowPrivate*)
     end
 
   end

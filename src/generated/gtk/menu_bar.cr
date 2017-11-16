@@ -2,12 +2,13 @@ require "./menu_shell"
 
 module Gtk
   class MenuBar < MenuShell
-    @gtk_menu_bar : LibGtk::MenuBar*?
-    def initialize(@gtk_menu_bar : LibGtk::MenuBar*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::MenuBar*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_menu_bar.not_nil!
+      @pointer.not_nil!.as(LibGtk::MenuBar*)
     end
 
     # Implements ImplementorIface
@@ -33,22 +34,22 @@ module Gtk
     end
 
     def child_pack_direction
-      __return_value = LibGtk.menu_bar_get_child_pack_direction(to_unsafe.as(LibGtk::MenuBar*))
+      __return_value = LibGtk.menu_bar_get_child_pack_direction(@pointer.as(LibGtk::MenuBar*))
       __return_value
     end
 
     def pack_direction
-      __return_value = LibGtk.menu_bar_get_pack_direction(to_unsafe.as(LibGtk::MenuBar*))
+      __return_value = LibGtk.menu_bar_get_pack_direction(@pointer.as(LibGtk::MenuBar*))
       __return_value
     end
 
     def child_pack_direction=(child_pack_dir : Gtk::PackDirection)
-      LibGtk.menu_bar_set_child_pack_direction(to_unsafe.as(LibGtk::MenuBar*), child_pack_dir)
+      LibGtk.menu_bar_set_child_pack_direction(@pointer.as(LibGtk::MenuBar*), child_pack_dir)
       nil
     end
 
     def pack_direction=(pack_dir : Gtk::PackDirection)
-      LibGtk.menu_bar_set_pack_direction(to_unsafe.as(LibGtk::MenuBar*), pack_dir)
+      LibGtk.menu_bar_set_pack_direction(@pointer.as(LibGtk::MenuBar*), pack_dir)
       nil
     end
 

@@ -2,12 +2,13 @@ module Gst
   class BufferPoolPrivate
     include GObject::WrappedType
 
-    @gst_buffer_pool_private : LibGst::BufferPoolPrivate*?
-    def initialize(@gst_buffer_pool_private : LibGst::BufferPoolPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::BufferPoolPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_buffer_pool_private.not_nil!
+      @pointer.not_nil!.as(LibGst::BufferPoolPrivate*)
     end
 
   end

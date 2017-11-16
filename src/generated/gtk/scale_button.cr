@@ -2,12 +2,13 @@ require "./button"
 
 module Gtk
   class ScaleButton < Button
-    @gtk_scale_button : LibGtk::ScaleButton*?
-    def initialize(@gtk_scale_button : LibGtk::ScaleButton*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ScaleButton*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_scale_button.not_nil!
+      @pointer.not_nil!.as(LibGtk::ScaleButton*)
     end
 
     # Implements ImplementorIface
@@ -41,42 +42,42 @@ module Gtk
     end
 
     def adjustment
-      __return_value = LibGtk.scale_button_get_adjustment(to_unsafe.as(LibGtk::ScaleButton*))
+      __return_value = LibGtk.scale_button_get_adjustment(@pointer.as(LibGtk::ScaleButton*))
       Gtk::Adjustment.new(__return_value)
     end
 
     def minus_button
-      __return_value = LibGtk.scale_button_get_minus_button(to_unsafe.as(LibGtk::ScaleButton*))
+      __return_value = LibGtk.scale_button_get_minus_button(@pointer.as(LibGtk::ScaleButton*))
       Gtk::Button.new(__return_value)
     end
 
     def plus_button
-      __return_value = LibGtk.scale_button_get_plus_button(to_unsafe.as(LibGtk::ScaleButton*))
+      __return_value = LibGtk.scale_button_get_plus_button(@pointer.as(LibGtk::ScaleButton*))
       Gtk::Button.new(__return_value)
     end
 
     def popup
-      __return_value = LibGtk.scale_button_get_popup(to_unsafe.as(LibGtk::ScaleButton*))
+      __return_value = LibGtk.scale_button_get_popup(@pointer.as(LibGtk::ScaleButton*))
       Gtk::Widget.new(__return_value)
     end
 
     def value
-      __return_value = LibGtk.scale_button_get_value(to_unsafe.as(LibGtk::ScaleButton*))
+      __return_value = LibGtk.scale_button_get_value(@pointer.as(LibGtk::ScaleButton*))
       __return_value
     end
 
     def adjustment=(adjustment)
-      LibGtk.scale_button_set_adjustment(to_unsafe.as(LibGtk::ScaleButton*), adjustment.to_unsafe.as(LibGtk::Adjustment*))
+      LibGtk.scale_button_set_adjustment(@pointer.as(LibGtk::ScaleButton*), adjustment.to_unsafe.as(LibGtk::Adjustment*))
       nil
     end
 
     def icons=(icons)
-      LibGtk.scale_button_set_icons(to_unsafe.as(LibGtk::ScaleButton*), icons)
+      LibGtk.scale_button_set_icons(@pointer.as(LibGtk::ScaleButton*), icons)
       nil
     end
 
     def value=(value)
-      LibGtk.scale_button_set_value(to_unsafe.as(LibGtk::ScaleButton*), Float64.new(value))
+      LibGtk.scale_button_set_value(@pointer.as(LibGtk::ScaleButton*), Float64.new(value))
       nil
     end
 

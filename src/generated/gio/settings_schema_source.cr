@@ -2,12 +2,13 @@ module Gio
   class SettingsSchemaSource
     include GObject::WrappedType
 
-    @gio_settings_schema_source : LibGio::SettingsSchemaSource*?
-    def initialize(@gio_settings_schema_source : LibGio::SettingsSchemaSource*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::SettingsSchemaSource*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_settings_schema_source.not_nil!
+      @pointer.not_nil!.as(LibGio::SettingsSchemaSource*)
     end
 
     def self.new_from_directory(directory, parent, trusted) : self
@@ -18,22 +19,22 @@ module Gio
     end
 
     def list_schemas(recursive, non_relocatable, relocatable)
-      LibGio.settings_schema_source_list_schemas(to_unsafe.as(LibGio::SettingsSchemaSource*), recursive, non_relocatable, relocatable)
+      LibGio.settings_schema_source_list_schemas(@pointer.as(LibGio::SettingsSchemaSource*), recursive, non_relocatable, relocatable)
       nil
     end
 
     def lookup(schema_id, recursive)
-      __return_value = LibGio.settings_schema_source_lookup(to_unsafe.as(LibGio::SettingsSchemaSource*), schema_id.to_unsafe, recursive)
+      __return_value = LibGio.settings_schema_source_lookup(@pointer.as(LibGio::SettingsSchemaSource*), schema_id.to_unsafe, recursive)
       Gio::SettingsSchema.new(__return_value) if __return_value
     end
 
     def ref
-      __return_value = LibGio.settings_schema_source_ref(to_unsafe.as(LibGio::SettingsSchemaSource*))
+      __return_value = LibGio.settings_schema_source_ref(@pointer.as(LibGio::SettingsSchemaSource*))
       Gio::SettingsSchemaSource.new(__return_value)
     end
 
     def unref
-      LibGio.settings_schema_source_unref(to_unsafe.as(LibGio::SettingsSchemaSource*))
+      LibGio.settings_schema_source_unref(@pointer.as(LibGio::SettingsSchemaSource*))
       nil
     end
 

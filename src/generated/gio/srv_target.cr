@@ -2,12 +2,13 @@ module Gio
   class SrvTarget
     include GObject::WrappedType
 
-    @gio_srv_target : LibGio::SrvTarget*?
-    def initialize(@gio_srv_target : LibGio::SrvTarget*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::SrvTarget*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_srv_target.not_nil!
+      @pointer.not_nil!.as(LibGio::SrvTarget*)
     end
 
     def self.new(hostname, port, priority, weight) : self
@@ -16,32 +17,32 @@ module Gio
     end
 
     def copy
-      __return_value = LibGio.srv_target_copy(to_unsafe.as(LibGio::SrvTarget*))
+      __return_value = LibGio.srv_target_copy(@pointer.as(LibGio::SrvTarget*))
       Gio::SrvTarget.new(__return_value)
     end
 
     def free
-      LibGio.srv_target_free(to_unsafe.as(LibGio::SrvTarget*))
+      LibGio.srv_target_free(@pointer.as(LibGio::SrvTarget*))
       nil
     end
 
     def hostname
-      __return_value = LibGio.srv_target_get_hostname(to_unsafe.as(LibGio::SrvTarget*))
+      __return_value = LibGio.srv_target_get_hostname(@pointer.as(LibGio::SrvTarget*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def port
-      __return_value = LibGio.srv_target_get_port(to_unsafe.as(LibGio::SrvTarget*))
+      __return_value = LibGio.srv_target_get_port(@pointer.as(LibGio::SrvTarget*))
       __return_value
     end
 
     def priority
-      __return_value = LibGio.srv_target_get_priority(to_unsafe.as(LibGio::SrvTarget*))
+      __return_value = LibGio.srv_target_get_priority(@pointer.as(LibGio::SrvTarget*))
       __return_value
     end
 
     def weight
-      __return_value = LibGio.srv_target_get_weight(to_unsafe.as(LibGio::SrvTarget*))
+      __return_value = LibGio.srv_target_get_weight(@pointer.as(LibGio::SrvTarget*))
       __return_value
     end
 

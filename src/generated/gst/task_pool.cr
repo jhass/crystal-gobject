@@ -2,12 +2,13 @@ require "./object"
 
 module Gst
   class TaskPool < Object
-    @gst_task_pool : LibGst::TaskPool*?
-    def initialize(@gst_task_pool : LibGst::TaskPool*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::TaskPool*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_task_pool.not_nil!
+      @pointer.not_nil!.as(LibGst::TaskPool*)
     end
 
     def self.new : self
@@ -16,25 +17,25 @@ module Gst
     end
 
     def cleanup
-      LibGst.task_pool_cleanup(to_unsafe.as(LibGst::TaskPool*))
+      LibGst.task_pool_cleanup(@pointer.as(LibGst::TaskPool*))
       nil
     end
 
     def join(id)
-      LibGst.task_pool_join(to_unsafe.as(LibGst::TaskPool*), id ? id : nil)
+      LibGst.task_pool_join(@pointer.as(LibGst::TaskPool*), id ? id : nil)
       nil
     end
 
     def prepare
       __error = Pointer(LibGLib::Error).null
-      LibGst.task_pool_prepare(to_unsafe.as(LibGst::TaskPool*), pointerof(__error))
+      LibGst.task_pool_prepare(@pointer.as(LibGst::TaskPool*), pointerof(__error))
       GLib::Error.assert __error
       nil
     end
 
     def push(func, user_data)
       __error = Pointer(LibGLib::Error).null
-      LibGst.task_pool_push(to_unsafe.as(LibGst::TaskPool*), func, user_data ? user_data : nil, pointerof(__error))
+      LibGst.task_pool_push(@pointer.as(LibGst::TaskPool*), func, user_data ? user_data : nil, pointerof(__error))
       GLib::Error.assert __error
       nil
     end

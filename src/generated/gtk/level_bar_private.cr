@@ -2,12 +2,13 @@ module Gtk
   class LevelBarPrivate
     include GObject::WrappedType
 
-    @gtk_level_bar_private : LibGtk::LevelBarPrivate*?
-    def initialize(@gtk_level_bar_private : LibGtk::LevelBarPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::LevelBarPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_level_bar_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::LevelBarPrivate*)
     end
 
   end

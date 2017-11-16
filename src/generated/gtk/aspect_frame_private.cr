@@ -2,12 +2,13 @@ module Gtk
   class AspectFramePrivate
     include GObject::WrappedType
 
-    @gtk_aspect_frame_private : LibGtk::AspectFramePrivate*?
-    def initialize(@gtk_aspect_frame_private : LibGtk::AspectFramePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::AspectFramePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_aspect_frame_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::AspectFramePrivate*)
     end
 
   end

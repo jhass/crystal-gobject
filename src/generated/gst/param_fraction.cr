@@ -1,11 +1,12 @@
 module Gst
   class ParamFraction < GObject::ParamSpec
-    @gst_param_fraction : LibGst::ParamFraction*?
-    def initialize(@gst_param_fraction : LibGst::ParamFraction*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::ParamFraction*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_param_fraction.not_nil!
+      @pointer.not_nil!.as(LibGst::ParamFraction*)
     end
 
   end

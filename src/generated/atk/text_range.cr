@@ -12,12 +12,13 @@ module Atk
       end
     end
 
-    @atk_text_range : LibAtk::TextRange*?
-    def initialize(@atk_text_range : LibAtk::TextRange*)
+    @pointer : Void*
+    def initialize(pointer : LibAtk::TextRange*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @atk_text_range.not_nil!
+      @pointer.not_nil!.as(LibAtk::TextRange*)
     end
 
     def bounds

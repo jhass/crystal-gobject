@@ -2,12 +2,13 @@ module Gst
   class ValueList
     include GObject::WrappedType
 
-    @gst_value_list : LibGst::ValueList*?
-    def initialize(@gst_value_list : LibGst::ValueList*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::ValueList*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_value_list.not_nil!
+      @pointer.not_nil!.as(LibGst::ValueList*)
     end
 
     def self.append_and_take_value(value, append_value)

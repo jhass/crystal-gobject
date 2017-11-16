@@ -2,12 +2,13 @@ module Gtk
   class LabelSelectionInfo
     include GObject::WrappedType
 
-    @gtk_label_selection_info : LibGtk::LabelSelectionInfo*?
-    def initialize(@gtk_label_selection_info : LibGtk::LabelSelectionInfo*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::LabelSelectionInfo*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_label_selection_info.not_nil!
+      @pointer.not_nil!.as(LibGtk::LabelSelectionInfo*)
     end
 
   end

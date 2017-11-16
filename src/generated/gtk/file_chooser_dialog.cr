@@ -2,12 +2,13 @@ require "./dialog"
 
 module Gtk
   class FileChooserDialog < Dialog
-    @gtk_file_chooser_dialog : LibGtk::FileChooserDialog*?
-    def initialize(@gtk_file_chooser_dialog : LibGtk::FileChooserDialog*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::FileChooserDialog*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_file_chooser_dialog.not_nil!
+      @pointer.not_nil!.as(LibGtk::FileChooserDialog*)
     end
 
     # Implements ImplementorIface

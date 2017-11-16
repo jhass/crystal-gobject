@@ -2,12 +2,13 @@ require "./menu_item"
 
 module Gtk
   class TearoffMenuItem < MenuItem
-    @gtk_tearoff_menu_item : LibGtk::TearoffMenuItem*?
-    def initialize(@gtk_tearoff_menu_item : LibGtk::TearoffMenuItem*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::TearoffMenuItem*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_tearoff_menu_item.not_nil!
+      @pointer.not_nil!.as(LibGtk::TearoffMenuItem*)
     end
 
     # Implements ImplementorIface

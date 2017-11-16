@@ -2,12 +2,13 @@ module Gtk
   class SymbolicColor
     include GObject::WrappedType
 
-    @gtk_symbolic_color : LibGtk::SymbolicColor*?
-    def initialize(@gtk_symbolic_color : LibGtk::SymbolicColor*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::SymbolicColor*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_symbolic_color.not_nil!
+      @pointer.not_nil!.as(LibGtk::SymbolicColor*)
     end
 
     def self.new_alpha(color, factor) : self
@@ -41,22 +42,22 @@ module Gtk
     end
 
     def ref
-      __return_value = LibGtk.symbolic_color_ref(to_unsafe.as(LibGtk::SymbolicColor*))
+      __return_value = LibGtk.symbolic_color_ref(@pointer.as(LibGtk::SymbolicColor*))
       Gtk::SymbolicColor.new(__return_value)
     end
 
     def resolve(props, resolved_color)
-      __return_value = LibGtk.symbolic_color_resolve(to_unsafe.as(LibGtk::SymbolicColor*), props ? props.to_unsafe.as(LibGtk::StyleProperties*) : nil, resolved_color)
+      __return_value = LibGtk.symbolic_color_resolve(@pointer.as(LibGtk::SymbolicColor*), props ? props.to_unsafe.as(LibGtk::StyleProperties*) : nil, resolved_color)
       __return_value
     end
 
     def to_string
-      __return_value = LibGtk.symbolic_color_to_string(to_unsafe.as(LibGtk::SymbolicColor*))
+      __return_value = LibGtk.symbolic_color_to_string(@pointer.as(LibGtk::SymbolicColor*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def unref
-      LibGtk.symbolic_color_unref(to_unsafe.as(LibGtk::SymbolicColor*))
+      LibGtk.symbolic_color_unref(@pointer.as(LibGtk::SymbolicColor*))
       nil
     end
 

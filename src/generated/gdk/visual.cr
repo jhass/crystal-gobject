@@ -1,11 +1,12 @@
 module Gdk
   class Visual < GObject::Object
-    @gdk_visual : LibGdk::Visual*?
-    def initialize(@gdk_visual : LibGdk::Visual*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::Visual*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_visual.not_nil!
+      @pointer.not_nil!.as(LibGdk::Visual*)
     end
 
     def self.best
@@ -44,47 +45,47 @@ module Gdk
     end
 
     def bits_per_rgb
-      __return_value = LibGdk.visual_get_bits_per_rgb(to_unsafe.as(LibGdk::Visual*))
+      __return_value = LibGdk.visual_get_bits_per_rgb(@pointer.as(LibGdk::Visual*))
       __return_value
     end
 
     def blue_pixel_details(mask, shift, precision)
-      LibGdk.visual_get_blue_pixel_details(to_unsafe.as(LibGdk::Visual*), mask, shift, precision)
+      LibGdk.visual_get_blue_pixel_details(@pointer.as(LibGdk::Visual*), mask, shift, precision)
       nil
     end
 
     def byte_order
-      __return_value = LibGdk.visual_get_byte_order(to_unsafe.as(LibGdk::Visual*))
+      __return_value = LibGdk.visual_get_byte_order(@pointer.as(LibGdk::Visual*))
       __return_value
     end
 
     def colormap_size
-      __return_value = LibGdk.visual_get_colormap_size(to_unsafe.as(LibGdk::Visual*))
+      __return_value = LibGdk.visual_get_colormap_size(@pointer.as(LibGdk::Visual*))
       __return_value
     end
 
     def depth
-      __return_value = LibGdk.visual_get_depth(to_unsafe.as(LibGdk::Visual*))
+      __return_value = LibGdk.visual_get_depth(@pointer.as(LibGdk::Visual*))
       __return_value
     end
 
     def green_pixel_details(mask, shift, precision)
-      LibGdk.visual_get_green_pixel_details(to_unsafe.as(LibGdk::Visual*), mask, shift, precision)
+      LibGdk.visual_get_green_pixel_details(@pointer.as(LibGdk::Visual*), mask, shift, precision)
       nil
     end
 
     def red_pixel_details(mask, shift, precision)
-      LibGdk.visual_get_red_pixel_details(to_unsafe.as(LibGdk::Visual*), mask, shift, precision)
+      LibGdk.visual_get_red_pixel_details(@pointer.as(LibGdk::Visual*), mask, shift, precision)
       nil
     end
 
     def screen
-      __return_value = LibGdk.visual_get_screen(to_unsafe.as(LibGdk::Visual*))
+      __return_value = LibGdk.visual_get_screen(@pointer.as(LibGdk::Visual*))
       Gdk::Screen.new(__return_value)
     end
 
     def visual_type
-      __return_value = LibGdk.visual_get_visual_type(to_unsafe.as(LibGdk::Visual*))
+      __return_value = LibGdk.visual_get_visual_type(@pointer.as(LibGdk::Visual*))
       __return_value
     end
 

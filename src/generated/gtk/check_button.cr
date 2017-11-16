@@ -2,12 +2,13 @@ require "./toggle_button"
 
 module Gtk
   class CheckButton < ToggleButton
-    @gtk_check_button : LibGtk::CheckButton*?
-    def initialize(@gtk_check_button : LibGtk::CheckButton*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::CheckButton*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_check_button.not_nil!
+      @pointer.not_nil!.as(LibGtk::CheckButton*)
     end
 
     # Implements ImplementorIface

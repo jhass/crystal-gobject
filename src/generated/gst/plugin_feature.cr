@@ -2,12 +2,13 @@ require "./object"
 
 module Gst
   class PluginFeature < Object
-    @gst_plugin_feature : LibGst::PluginFeature*?
-    def initialize(@gst_plugin_feature : LibGst::PluginFeature*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::PluginFeature*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_plugin_feature.not_nil!
+      @pointer.not_nil!.as(LibGst::PluginFeature*)
     end
 
     def self.list_copy(list)
@@ -31,32 +32,32 @@ module Gst
     end
 
     def check_version(min_major, min_minor, min_micro)
-      __return_value = LibGst.plugin_feature_check_version(to_unsafe.as(LibGst::PluginFeature*), UInt32.new(min_major), UInt32.new(min_minor), UInt32.new(min_micro))
+      __return_value = LibGst.plugin_feature_check_version(@pointer.as(LibGst::PluginFeature*), UInt32.new(min_major), UInt32.new(min_minor), UInt32.new(min_micro))
       __return_value
     end
 
     def plugin
-      __return_value = LibGst.plugin_feature_get_plugin(to_unsafe.as(LibGst::PluginFeature*))
+      __return_value = LibGst.plugin_feature_get_plugin(@pointer.as(LibGst::PluginFeature*))
       Gst::Plugin.new(__return_value) if __return_value
     end
 
     def plugin_name
-      __return_value = LibGst.plugin_feature_get_plugin_name(to_unsafe.as(LibGst::PluginFeature*))
+      __return_value = LibGst.plugin_feature_get_plugin_name(@pointer.as(LibGst::PluginFeature*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def rank
-      __return_value = LibGst.plugin_feature_get_rank(to_unsafe.as(LibGst::PluginFeature*))
+      __return_value = LibGst.plugin_feature_get_rank(@pointer.as(LibGst::PluginFeature*))
       __return_value
     end
 
     def load
-      __return_value = LibGst.plugin_feature_load(to_unsafe.as(LibGst::PluginFeature*))
+      __return_value = LibGst.plugin_feature_load(@pointer.as(LibGst::PluginFeature*))
       Gst::PluginFeature.new(__return_value) if __return_value
     end
 
     def rank=(rank)
-      LibGst.plugin_feature_set_rank(to_unsafe.as(LibGst::PluginFeature*), UInt32.new(rank))
+      LibGst.plugin_feature_set_rank(@pointer.as(LibGst::PluginFeature*), UInt32.new(rank))
       nil
     end
 

@@ -11,12 +11,13 @@ module Gio
       end
     end
 
-    @gio_file_attribute_info : LibGio::FileAttributeInfo*?
-    def initialize(@gio_file_attribute_info : LibGio::FileAttributeInfo*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::FileAttributeInfo*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_file_attribute_info.not_nil!
+      @pointer.not_nil!.as(LibGio::FileAttributeInfo*)
     end
 
     def name

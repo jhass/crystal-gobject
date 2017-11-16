@@ -13,12 +13,13 @@ module Gtk
       end
     end
 
-    @gtk_pad_action_entry : LibGtk::PadActionEntry*?
-    def initialize(@gtk_pad_action_entry : LibGtk::PadActionEntry*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::PadActionEntry*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_pad_action_entry.not_nil!
+      @pointer.not_nil!.as(LibGtk::PadActionEntry*)
     end
 
     def type

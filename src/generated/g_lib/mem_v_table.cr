@@ -7,12 +7,13 @@ module GLib
       super(ptr.as(LibGLib::MemVTable*))
     end
 
-    @g_lib_mem_v_table : LibGLib::MemVTable*?
-    def initialize(@g_lib_mem_v_table : LibGLib::MemVTable*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::MemVTable*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_mem_v_table.not_nil!
+      @pointer.not_nil!.as(LibGLib::MemVTable*)
     end
 
     def malloc

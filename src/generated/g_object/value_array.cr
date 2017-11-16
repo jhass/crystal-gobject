@@ -10,12 +10,13 @@ module GObject
       end
     end
 
-    @g_object_value_array : LibGObject::ValueArray*?
-    def initialize(@g_object_value_array : LibGObject::ValueArray*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::ValueArray*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_value_array.not_nil!
+      @pointer.not_nil!.as(LibGObject::ValueArray*)
     end
 
     def self.new(n_prealloced) : self
@@ -24,42 +25,42 @@ module GObject
     end
 
     def append(value)
-      __return_value = LibGObject.value_array_append(to_unsafe.as(LibGObject::ValueArray*), value ? value.to_unsafe.as(LibGObject::Value*) : nil)
+      __return_value = LibGObject.value_array_append(@pointer.as(LibGObject::ValueArray*), value ? value.to_unsafe.as(LibGObject::Value*) : nil)
       GObject::ValueArray.new(__return_value)
     end
 
     def copy
-      __return_value = LibGObject.value_array_copy(to_unsafe.as(LibGObject::ValueArray*))
+      __return_value = LibGObject.value_array_copy(@pointer.as(LibGObject::ValueArray*))
       GObject::ValueArray.new(__return_value)
     end
 
     def free
-      LibGObject.value_array_free(to_unsafe.as(LibGObject::ValueArray*))
+      LibGObject.value_array_free(@pointer.as(LibGObject::ValueArray*))
       nil
     end
 
     def nth(index)
-      __return_value = LibGObject.value_array_get_nth(to_unsafe.as(LibGObject::ValueArray*), UInt32.new(index))
+      __return_value = LibGObject.value_array_get_nth(@pointer.as(LibGObject::ValueArray*), UInt32.new(index))
       GObject::Value.new(__return_value)
     end
 
     def insert(index, value)
-      __return_value = LibGObject.value_array_insert(to_unsafe.as(LibGObject::ValueArray*), UInt32.new(index), value ? value.to_unsafe.as(LibGObject::Value*) : nil)
+      __return_value = LibGObject.value_array_insert(@pointer.as(LibGObject::ValueArray*), UInt32.new(index), value ? value.to_unsafe.as(LibGObject::Value*) : nil)
       GObject::ValueArray.new(__return_value)
     end
 
     def prepend(value)
-      __return_value = LibGObject.value_array_prepend(to_unsafe.as(LibGObject::ValueArray*), value ? value.to_unsafe.as(LibGObject::Value*) : nil)
+      __return_value = LibGObject.value_array_prepend(@pointer.as(LibGObject::ValueArray*), value ? value.to_unsafe.as(LibGObject::Value*) : nil)
       GObject::ValueArray.new(__return_value)
     end
 
     def remove(index)
-      __return_value = LibGObject.value_array_remove(to_unsafe.as(LibGObject::ValueArray*), UInt32.new(index))
+      __return_value = LibGObject.value_array_remove(@pointer.as(LibGObject::ValueArray*), UInt32.new(index))
       GObject::ValueArray.new(__return_value)
     end
 
     def sort(compare_func, user_data)
-      __return_value = LibGObject.value_array_sort(to_unsafe.as(LibGObject::ValueArray*), compare_func, user_data ? user_data : nil)
+      __return_value = LibGObject.value_array_sort(@pointer.as(LibGObject::ValueArray*), compare_func, user_data ? user_data : nil)
       GObject::ValueArray.new(__return_value)
     end
 

@@ -2,12 +2,13 @@ require "./socket_control_message"
 
 module Gio
   class UnixFDMessage < SocketControlMessage
-    @gio_unix_f_d_message : LibGio::UnixFDMessage*?
-    def initialize(@gio_unix_f_d_message : LibGio::UnixFDMessage*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::UnixFDMessage*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_unix_f_d_message.not_nil!
+      @pointer.not_nil!.as(LibGio::UnixFDMessage*)
     end
 
     def fd_list
@@ -27,18 +28,18 @@ module Gio
 
     def append_fd(fd)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.unix_f_d_message_append_fd(to_unsafe.as(LibGio::UnixFDMessage*), Int32.new(fd), pointerof(__error))
+      __return_value = LibGio.unix_f_d_message_append_fd(@pointer.as(LibGio::UnixFDMessage*), Int32.new(fd), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def fd_list
-      __return_value = LibGio.unix_f_d_message_get_fd_list(to_unsafe.as(LibGio::UnixFDMessage*))
+      __return_value = LibGio.unix_f_d_message_get_fd_list(@pointer.as(LibGio::UnixFDMessage*))
       Gio::UnixFDList.new(__return_value)
     end
 
     def steal_fds(length)
-      __return_value = LibGio.unix_f_d_message_steal_fds(to_unsafe.as(LibGio::UnixFDMessage*), length)
+      __return_value = LibGio.unix_f_d_message_steal_fds(@pointer.as(LibGio::UnixFDMessage*), length)
       PointerIterator.new(__return_value) {|__item| __item }
     end
 

@@ -15,12 +15,13 @@ module Gst
       end
     end
 
-    @gst_param_spec_fraction : LibGst::ParamSpecFraction*?
-    def initialize(@gst_param_spec_fraction : LibGst::ParamSpecFraction*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::ParamSpecFraction*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_param_spec_fraction.not_nil!
+      @pointer.not_nil!.as(LibGst::ParamSpecFraction*)
     end
 
     def parent_instance

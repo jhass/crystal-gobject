@@ -2,12 +2,13 @@ module Gtk
   class RecentChooserWidgetPrivate
     include GObject::WrappedType
 
-    @gtk_recent_chooser_widget_private : LibGtk::RecentChooserWidgetPrivate*?
-    def initialize(@gtk_recent_chooser_widget_private : LibGtk::RecentChooserWidgetPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::RecentChooserWidgetPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_recent_chooser_widget_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::RecentChooserWidgetPrivate*)
     end
 
   end

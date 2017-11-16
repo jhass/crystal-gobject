@@ -2,12 +2,13 @@ module Gtk
   class LabelPrivate
     include GObject::WrappedType
 
-    @gtk_label_private : LibGtk::LabelPrivate*?
-    def initialize(@gtk_label_private : LibGtk::LabelPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::LabelPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_label_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::LabelPrivate*)
     end
 
   end

@@ -2,12 +2,13 @@ module Gio
   class MenuModelPrivate
     include GObject::WrappedType
 
-    @gio_menu_model_private : LibGio::MenuModelPrivate*?
-    def initialize(@gio_menu_model_private : LibGio::MenuModelPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::MenuModelPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_menu_model_private.not_nil!
+      @pointer.not_nil!.as(LibGio::MenuModelPrivate*)
     end
 
   end

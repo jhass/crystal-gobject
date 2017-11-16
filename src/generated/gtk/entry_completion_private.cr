@@ -2,12 +2,13 @@ module Gtk
   class EntryCompletionPrivate
     include GObject::WrappedType
 
-    @gtk_entry_completion_private : LibGtk::EntryCompletionPrivate*?
-    def initialize(@gtk_entry_completion_private : LibGtk::EntryCompletionPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::EntryCompletionPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_entry_completion_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::EntryCompletionPrivate*)
     end
 
   end

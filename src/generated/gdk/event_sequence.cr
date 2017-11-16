@@ -2,12 +2,13 @@ module Gdk
   class EventSequence
     include GObject::WrappedType
 
-    @gdk_event_sequence : LibGdk::EventSequence*?
-    def initialize(@gdk_event_sequence : LibGdk::EventSequence*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::EventSequence*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_event_sequence.not_nil!
+      @pointer.not_nil!.as(LibGdk::EventSequence*)
     end
 
   end

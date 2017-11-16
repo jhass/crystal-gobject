@@ -2,12 +2,13 @@ require "./input_stream"
 
 module Gio
   class MemoryInputStream < InputStream
-    @gio_memory_input_stream : LibGio::MemoryInputStream*?
-    def initialize(@gio_memory_input_stream : LibGio::MemoryInputStream*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::MemoryInputStream*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_memory_input_stream.not_nil!
+      @pointer.not_nil!.as(LibGio::MemoryInputStream*)
     end
 
     # Implements PollableInputStream
@@ -28,12 +29,12 @@ module Gio
     end
 
     def add_bytes(bytes)
-      LibGio.memory_input_stream_add_bytes(to_unsafe.as(LibGio::MemoryInputStream*), bytes.to_unsafe.as(LibGLib::Bytes*))
+      LibGio.memory_input_stream_add_bytes(@pointer.as(LibGio::MemoryInputStream*), bytes.to_unsafe.as(LibGLib::Bytes*))
       nil
     end
 
     def add_data(data, len, destroy)
-      LibGio.memory_input_stream_add_data(to_unsafe.as(LibGio::MemoryInputStream*), data, Int64.new(len), destroy ? destroy : nil)
+      LibGio.memory_input_stream_add_data(@pointer.as(LibGio::MemoryInputStream*), data, Int64.new(len), destroy ? destroy : nil)
       nil
     end
 

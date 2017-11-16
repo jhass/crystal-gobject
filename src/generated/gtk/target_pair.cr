@@ -11,12 +11,13 @@ module Gtk
       end
     end
 
-    @gtk_target_pair : LibGtk::TargetPair*?
-    def initialize(@gtk_target_pair : LibGtk::TargetPair*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::TargetPair*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_target_pair.not_nil!
+      @pointer.not_nil!.as(LibGtk::TargetPair*)
     end
 
     def target

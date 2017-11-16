@@ -1,11 +1,12 @@
 module Gst
   class ParamArray < GObject::ParamSpec
-    @gst_param_array : LibGst::ParamArray*?
-    def initialize(@gst_param_array : LibGst::ParamArray*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::ParamArray*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_param_array.not_nil!
+      @pointer.not_nil!.as(LibGst::ParamArray*)
     end
 
   end

@@ -2,12 +2,13 @@ module GLib
   class MappedFile
     include GObject::WrappedType
 
-    @g_lib_mapped_file : LibGLib::MappedFile*?
-    def initialize(@g_lib_mapped_file : LibGLib::MappedFile*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::MappedFile*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_mapped_file.not_nil!
+      @pointer.not_nil!.as(LibGLib::MappedFile*)
     end
 
     def self.new(filename, writable) : self
@@ -25,32 +26,32 @@ module GLib
     end
 
     def free
-      LibGLib.mapped_file_free(to_unsafe.as(LibGLib::MappedFile*))
+      LibGLib.mapped_file_free(@pointer.as(LibGLib::MappedFile*))
       nil
     end
 
     def bytes
-      __return_value = LibGLib.mapped_file_get_bytes(to_unsafe.as(LibGLib::MappedFile*))
+      __return_value = LibGLib.mapped_file_get_bytes(@pointer.as(LibGLib::MappedFile*))
       GLib::Bytes.new(__return_value)
     end
 
     def contents
-      __return_value = LibGLib.mapped_file_get_contents(to_unsafe.as(LibGLib::MappedFile*))
+      __return_value = LibGLib.mapped_file_get_contents(@pointer.as(LibGLib::MappedFile*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def length
-      __return_value = LibGLib.mapped_file_get_length(to_unsafe.as(LibGLib::MappedFile*))
+      __return_value = LibGLib.mapped_file_get_length(@pointer.as(LibGLib::MappedFile*))
       __return_value
     end
 
     def ref
-      __return_value = LibGLib.mapped_file_ref(to_unsafe.as(LibGLib::MappedFile*))
+      __return_value = LibGLib.mapped_file_ref(@pointer.as(LibGLib::MappedFile*))
       GLib::MappedFile.new(__return_value)
     end
 
     def unref
-      LibGLib.mapped_file_unref(to_unsafe.as(LibGLib::MappedFile*))
+      LibGLib.mapped_file_unref(@pointer.as(LibGLib::MappedFile*))
       nil
     end
 

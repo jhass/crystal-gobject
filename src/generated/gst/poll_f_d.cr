@@ -9,16 +9,17 @@ module Gst
       end
     end
 
-    @gst_poll_f_d : LibGst::PollFD*?
-    def initialize(@gst_poll_f_d : LibGst::PollFD*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::PollFD*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_poll_f_d.not_nil!
+      @pointer.not_nil!.as(LibGst::PollFD*)
     end
 
     def init
-      LibGst.poll_f_d_init(to_unsafe.as(LibGst::PollFD*))
+      LibGst.poll_f_d_init(@pointer.as(LibGst::PollFD*))
       nil
     end
 

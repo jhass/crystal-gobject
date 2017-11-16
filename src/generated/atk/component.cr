@@ -1,67 +1,67 @@
 module Atk
   module Component
     def contains(x, y, coord_type : Atk::CoordType)
-      __return_value = LibAtk.component_contains(to_unsafe.as(LibAtk::Component*), Int32.new(x), Int32.new(y), coord_type)
+      __return_value = LibAtk.component_contains(@pointer.as(LibAtk::Component*), Int32.new(x), Int32.new(y), coord_type)
       __return_value
     end
 
     def alpha
-      __return_value = LibAtk.component_get_alpha(to_unsafe.as(LibAtk::Component*))
+      __return_value = LibAtk.component_get_alpha(@pointer.as(LibAtk::Component*))
       __return_value
     end
 
     def extents(x, y, width, height, coord_type : Atk::CoordType)
-      LibAtk.component_get_extents(to_unsafe.as(LibAtk::Component*), x, y, width, height, coord_type)
+      LibAtk.component_get_extents(@pointer.as(LibAtk::Component*), x, y, width, height, coord_type)
       nil
     end
 
     def layer
-      __return_value = LibAtk.component_get_layer(to_unsafe.as(LibAtk::Component*))
+      __return_value = LibAtk.component_get_layer(@pointer.as(LibAtk::Component*))
       __return_value
     end
 
     def mdi_zorder
-      __return_value = LibAtk.component_get_mdi_zorder(to_unsafe.as(LibAtk::Component*))
+      __return_value = LibAtk.component_get_mdi_zorder(@pointer.as(LibAtk::Component*))
       __return_value
     end
 
     def position(x, y, coord_type : Atk::CoordType)
-      LibAtk.component_get_position(to_unsafe.as(LibAtk::Component*), x, y, coord_type)
+      LibAtk.component_get_position(@pointer.as(LibAtk::Component*), x, y, coord_type)
       nil
     end
 
     def size(width, height)
-      LibAtk.component_get_size(to_unsafe.as(LibAtk::Component*), width, height)
+      LibAtk.component_get_size(@pointer.as(LibAtk::Component*), width, height)
       nil
     end
 
     def grab_focus
-      __return_value = LibAtk.component_grab_focus(to_unsafe.as(LibAtk::Component*))
+      __return_value = LibAtk.component_grab_focus(@pointer.as(LibAtk::Component*))
       __return_value
     end
 
     def ref_accessible_at_point(x, y, coord_type : Atk::CoordType)
-      __return_value = LibAtk.component_ref_accessible_at_point(to_unsafe.as(LibAtk::Component*), Int32.new(x), Int32.new(y), coord_type)
+      __return_value = LibAtk.component_ref_accessible_at_point(@pointer.as(LibAtk::Component*), Int32.new(x), Int32.new(y), coord_type)
       Atk::Object.new(__return_value) if __return_value
     end
 
     def remove_focus_handler(handler_id)
-      LibAtk.component_remove_focus_handler(to_unsafe.as(LibAtk::Component*), UInt32.new(handler_id))
+      LibAtk.component_remove_focus_handler(@pointer.as(LibAtk::Component*), UInt32.new(handler_id))
       nil
     end
 
     def set_extents(x, y, width, height, coord_type : Atk::CoordType)
-      __return_value = LibAtk.component_set_extents(to_unsafe.as(LibAtk::Component*), Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height), coord_type)
+      __return_value = LibAtk.component_set_extents(@pointer.as(LibAtk::Component*), Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height), coord_type)
       __return_value
     end
 
     def set_position(x, y, coord_type : Atk::CoordType)
-      __return_value = LibAtk.component_set_position(to_unsafe.as(LibAtk::Component*), Int32.new(x), Int32.new(y), coord_type)
+      __return_value = LibAtk.component_set_position(@pointer.as(LibAtk::Component*), Int32.new(x), Int32.new(y), coord_type)
       __return_value
     end
 
     def set_size(width, height)
-      __return_value = LibAtk.component_set_size(to_unsafe.as(LibAtk::Component*), Int32.new(width), Int32.new(height))
+      __return_value = LibAtk.component_set_size(@pointer.as(LibAtk::Component*), Int32.new(width), Int32.new(height))
       __return_value
     end
 

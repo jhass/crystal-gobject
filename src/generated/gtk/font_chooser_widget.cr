@@ -2,12 +2,13 @@ require "./box"
 
 module Gtk
   class FontChooserWidget < Box
-    @gtk_font_chooser_widget : LibGtk::FontChooserWidget*?
-    def initialize(@gtk_font_chooser_widget : LibGtk::FontChooserWidget*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::FontChooserWidget*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_font_chooser_widget.not_nil!
+      @pointer.not_nil!.as(LibGtk::FontChooserWidget*)
     end
 
     # Implements ImplementorIface

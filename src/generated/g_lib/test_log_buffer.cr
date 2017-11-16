@@ -7,21 +7,22 @@ module GLib
       super(ptr.as(LibGLib::TestLogBuffer*))
     end
 
-    @g_lib_test_log_buffer : LibGLib::TestLogBuffer*?
-    def initialize(@g_lib_test_log_buffer : LibGLib::TestLogBuffer*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::TestLogBuffer*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_test_log_buffer.not_nil!
+      @pointer.not_nil!.as(LibGLib::TestLogBuffer*)
     end
 
     def free
-      LibGLib.test_log_buffer_free(to_unsafe.as(LibGLib::TestLogBuffer*))
+      LibGLib.test_log_buffer_free(@pointer.as(LibGLib::TestLogBuffer*))
       nil
     end
 
     def push(n_bytes, bytes)
-      LibGLib.test_log_buffer_push(to_unsafe.as(LibGLib::TestLogBuffer*), UInt32.new(n_bytes), bytes)
+      LibGLib.test_log_buffer_push(@pointer.as(LibGLib::TestLogBuffer*), UInt32.new(n_bytes), bytes)
       nil
     end
 

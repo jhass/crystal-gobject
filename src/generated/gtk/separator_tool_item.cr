@@ -2,12 +2,13 @@ require "./tool_item"
 
 module Gtk
   class SeparatorToolItem < ToolItem
-    @gtk_separator_tool_item : LibGtk::SeparatorToolItem*?
-    def initialize(@gtk_separator_tool_item : LibGtk::SeparatorToolItem*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::SeparatorToolItem*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_separator_tool_item.not_nil!
+      @pointer.not_nil!.as(LibGtk::SeparatorToolItem*)
     end
 
     # Implements ImplementorIface
@@ -24,12 +25,12 @@ module Gtk
     end
 
     def draw
-      __return_value = LibGtk.separator_tool_item_get_draw(to_unsafe.as(LibGtk::SeparatorToolItem*))
+      __return_value = LibGtk.separator_tool_item_get_draw(@pointer.as(LibGtk::SeparatorToolItem*))
       __return_value
     end
 
     def draw=(draw)
-      LibGtk.separator_tool_item_set_draw(to_unsafe.as(LibGtk::SeparatorToolItem*), draw)
+      LibGtk.separator_tool_item_set_draw(@pointer.as(LibGtk::SeparatorToolItem*), draw)
       nil
     end
 

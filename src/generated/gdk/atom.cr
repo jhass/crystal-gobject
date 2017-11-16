@@ -2,16 +2,17 @@ module Gdk
   class Atom
     include GObject::WrappedType
 
-    @gdk_atom : LibGdk::Atom*?
-    def initialize(@gdk_atom : LibGdk::Atom*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::Atom*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_atom.not_nil!
+      @pointer.not_nil!.as(LibGdk::Atom*)
     end
 
     def name
-      __return_value = LibGdk.atom_name(to_unsafe.as(LibGdk::Atom*))
+      __return_value = LibGdk.atom_name(@pointer.as(LibGdk::Atom*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

@@ -2,12 +2,13 @@ require "./cell_area"
 
 module Gtk
   class CellAreaBox < CellArea
-    @gtk_cell_area_box : LibGtk::CellAreaBox*?
-    def initialize(@gtk_cell_area_box : LibGtk::CellAreaBox*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::CellAreaBox*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_cell_area_box.not_nil!
+      @pointer.not_nil!.as(LibGtk::CellAreaBox*)
     end
 
     # Implements Buildable
@@ -24,22 +25,22 @@ module Gtk
     end
 
     def spacing
-      __return_value = LibGtk.cell_area_box_get_spacing(to_unsafe.as(LibGtk::CellAreaBox*))
+      __return_value = LibGtk.cell_area_box_get_spacing(@pointer.as(LibGtk::CellAreaBox*))
       __return_value
     end
 
     def pack_end(renderer, expand, align, fixed)
-      LibGtk.cell_area_box_pack_end(to_unsafe.as(LibGtk::CellAreaBox*), renderer.to_unsafe.as(LibGtk::CellRenderer*), expand, align, fixed)
+      LibGtk.cell_area_box_pack_end(@pointer.as(LibGtk::CellAreaBox*), renderer.to_unsafe.as(LibGtk::CellRenderer*), expand, align, fixed)
       nil
     end
 
     def pack_start(renderer, expand, align, fixed)
-      LibGtk.cell_area_box_pack_start(to_unsafe.as(LibGtk::CellAreaBox*), renderer.to_unsafe.as(LibGtk::CellRenderer*), expand, align, fixed)
+      LibGtk.cell_area_box_pack_start(@pointer.as(LibGtk::CellAreaBox*), renderer.to_unsafe.as(LibGtk::CellRenderer*), expand, align, fixed)
       nil
     end
 
     def spacing=(spacing)
-      LibGtk.cell_area_box_set_spacing(to_unsafe.as(LibGtk::CellAreaBox*), Int32.new(spacing))
+      LibGtk.cell_area_box_set_spacing(@pointer.as(LibGtk::CellAreaBox*), Int32.new(spacing))
       nil
     end
 

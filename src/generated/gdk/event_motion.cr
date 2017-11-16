@@ -20,12 +20,13 @@ module Gdk
       end
     end
 
-    @gdk_event_motion : LibGdk::EventMotion*?
-    def initialize(@gdk_event_motion : LibGdk::EventMotion*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::EventMotion*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_event_motion.not_nil!
+      @pointer.not_nil!.as(LibGdk::EventMotion*)
     end
 
     def type

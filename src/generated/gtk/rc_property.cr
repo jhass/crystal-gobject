@@ -12,12 +12,13 @@ module Gtk
       end
     end
 
-    @gtk_rc_property : LibGtk::RcProperty*?
-    def initialize(@gtk_rc_property : LibGtk::RcProperty*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::RcProperty*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_rc_property.not_nil!
+      @pointer.not_nil!.as(LibGtk::RcProperty*)
     end
 
     def self.parse_border(pspec, gstring, property_value)

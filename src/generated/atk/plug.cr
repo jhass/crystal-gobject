@@ -2,12 +2,13 @@ require "./object"
 
 module Atk
   class Plug < Object
-    @atk_plug : LibAtk::Plug*?
-    def initialize(@atk_plug : LibAtk::Plug*)
+    @pointer : Void*
+    def initialize(pointer : LibAtk::Plug*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @atk_plug.not_nil!
+      @pointer.not_nil!.as(LibAtk::Plug*)
     end
 
     # Implements Component
@@ -17,7 +18,7 @@ module Atk
     end
 
     def id
-      __return_value = LibAtk.plug_get_id(to_unsafe.as(LibAtk::Plug*))
+      __return_value = LibAtk.plug_get_id(@pointer.as(LibAtk::Plug*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

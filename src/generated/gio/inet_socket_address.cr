@@ -2,12 +2,13 @@ require "./socket_address"
 
 module Gio
   class InetSocketAddress < SocketAddress
-    @gio_inet_socket_address : LibGio::InetSocketAddress*?
-    def initialize(@gio_inet_socket_address : LibGio::InetSocketAddress*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::InetSocketAddress*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_inet_socket_address.not_nil!
+      @pointer.not_nil!.as(LibGio::InetSocketAddress*)
     end
 
     # Implements SocketConnectable
@@ -42,22 +43,22 @@ module Gio
     end
 
     def address
-      __return_value = LibGio.inet_socket_address_get_address(to_unsafe.as(LibGio::InetSocketAddress*))
+      __return_value = LibGio.inet_socket_address_get_address(@pointer.as(LibGio::InetSocketAddress*))
       Gio::InetAddress.new(__return_value)
     end
 
     def flowinfo
-      __return_value = LibGio.inet_socket_address_get_flowinfo(to_unsafe.as(LibGio::InetSocketAddress*))
+      __return_value = LibGio.inet_socket_address_get_flowinfo(@pointer.as(LibGio::InetSocketAddress*))
       __return_value
     end
 
     def port
-      __return_value = LibGio.inet_socket_address_get_port(to_unsafe.as(LibGio::InetSocketAddress*))
+      __return_value = LibGio.inet_socket_address_get_port(@pointer.as(LibGio::InetSocketAddress*))
       __return_value
     end
 
     def scope_id
-      __return_value = LibGio.inet_socket_address_get_scope_id(to_unsafe.as(LibGio::InetSocketAddress*))
+      __return_value = LibGio.inet_socket_address_get_scope_id(@pointer.as(LibGio::InetSocketAddress*))
       __return_value
     end
 

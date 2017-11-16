@@ -2,12 +2,13 @@ require "./gesture_drag"
 
 module Gtk
   class GesturePan < GestureDrag
-    @gtk_gesture_pan : LibGtk::GesturePan*?
-    def initialize(@gtk_gesture_pan : LibGtk::GesturePan*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::GesturePan*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_gesture_pan.not_nil!
+      @pointer.not_nil!.as(LibGtk::GesturePan*)
     end
 
     def orientation
@@ -21,12 +22,12 @@ module Gtk
     end
 
     def orientation
-      __return_value = LibGtk.gesture_pan_get_orientation(to_unsafe.as(LibGtk::GesturePan*))
+      __return_value = LibGtk.gesture_pan_get_orientation(@pointer.as(LibGtk::GesturePan*))
       __return_value
     end
 
     def orientation=(orientation : Gtk::Orientation)
-      LibGtk.gesture_pan_set_orientation(to_unsafe.as(LibGtk::GesturePan*), orientation)
+      LibGtk.gesture_pan_set_orientation(@pointer.as(LibGtk::GesturePan*), orientation)
       nil
     end
 

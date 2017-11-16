@@ -10,12 +10,13 @@ module Pango
       end
     end
 
-    @pango_attr_language : LibPango::AttrLanguage*?
-    def initialize(@pango_attr_language : LibPango::AttrLanguage*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::AttrLanguage*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_attr_language.not_nil!
+      @pointer.not_nil!.as(LibPango::AttrLanguage*)
     end
 
     def attr

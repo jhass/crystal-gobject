@@ -2,12 +2,13 @@ module Gtk
   class CellRendererTogglePrivate
     include GObject::WrappedType
 
-    @gtk_cell_renderer_toggle_private : LibGtk::CellRendererTogglePrivate*?
-    def initialize(@gtk_cell_renderer_toggle_private : LibGtk::CellRendererTogglePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::CellRendererTogglePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_cell_renderer_toggle_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::CellRendererTogglePrivate*)
     end
 
   end

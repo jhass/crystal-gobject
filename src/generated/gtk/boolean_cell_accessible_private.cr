@@ -2,12 +2,13 @@ module Gtk
   class BooleanCellAccessiblePrivate
     include GObject::WrappedType
 
-    @gtk_boolean_cell_accessible_private : LibGtk::BooleanCellAccessiblePrivate*?
-    def initialize(@gtk_boolean_cell_accessible_private : LibGtk::BooleanCellAccessiblePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::BooleanCellAccessiblePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_boolean_cell_accessible_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::BooleanCellAccessiblePrivate*)
     end
 
   end

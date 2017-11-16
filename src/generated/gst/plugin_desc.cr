@@ -19,12 +19,13 @@ module Gst
       end
     end
 
-    @gst_plugin_desc : LibGst::PluginDesc*?
-    def initialize(@gst_plugin_desc : LibGst::PluginDesc*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::PluginDesc*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_plugin_desc.not_nil!
+      @pointer.not_nil!.as(LibGst::PluginDesc*)
     end
 
     def major_version

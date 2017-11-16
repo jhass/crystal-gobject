@@ -1,45 +1,46 @@
 module Gio
   class MenuModel < GObject::Object
-    @gio_menu_model : LibGio::MenuModel*?
-    def initialize(@gio_menu_model : LibGio::MenuModel*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::MenuModel*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_menu_model.not_nil!
+      @pointer.not_nil!.as(LibGio::MenuModel*)
     end
 
     def item_attribute_value(item_index, attribute, expected_type)
-      __return_value = LibGio.menu_model_get_item_attribute_value(to_unsafe.as(LibGio::MenuModel*), Int32.new(item_index), attribute.to_unsafe, expected_type ? expected_type.to_unsafe.as(LibGLib::VariantType*) : nil)
+      __return_value = LibGio.menu_model_get_item_attribute_value(@pointer.as(LibGio::MenuModel*), Int32.new(item_index), attribute.to_unsafe, expected_type ? expected_type.to_unsafe.as(LibGLib::VariantType*) : nil)
       GLib::Variant.new(__return_value)
     end
 
     def item_link(item_index, link)
-      __return_value = LibGio.menu_model_get_item_link(to_unsafe.as(LibGio::MenuModel*), Int32.new(item_index), link.to_unsafe)
+      __return_value = LibGio.menu_model_get_item_link(@pointer.as(LibGio::MenuModel*), Int32.new(item_index), link.to_unsafe)
       Gio::MenuModel.new(__return_value)
     end
 
     def n_items
-      __return_value = LibGio.menu_model_get_n_items(to_unsafe.as(LibGio::MenuModel*))
+      __return_value = LibGio.menu_model_get_n_items(@pointer.as(LibGio::MenuModel*))
       __return_value
     end
 
     def mutable?
-      __return_value = LibGio.menu_model_is_mutable(to_unsafe.as(LibGio::MenuModel*))
+      __return_value = LibGio.menu_model_is_mutable(@pointer.as(LibGio::MenuModel*))
       __return_value
     end
 
     def items_changed(position, removed, added)
-      LibGio.menu_model_items_changed(to_unsafe.as(LibGio::MenuModel*), Int32.new(position), Int32.new(removed), Int32.new(added))
+      LibGio.menu_model_items_changed(@pointer.as(LibGio::MenuModel*), Int32.new(position), Int32.new(removed), Int32.new(added))
       nil
     end
 
     def iterate_item_attributes(item_index)
-      __return_value = LibGio.menu_model_iterate_item_attributes(to_unsafe.as(LibGio::MenuModel*), Int32.new(item_index))
+      __return_value = LibGio.menu_model_iterate_item_attributes(@pointer.as(LibGio::MenuModel*), Int32.new(item_index))
       Gio::MenuAttributeIter.new(__return_value)
     end
 
     def iterate_item_links(item_index)
-      __return_value = LibGio.menu_model_iterate_item_links(to_unsafe.as(LibGio::MenuModel*), Int32.new(item_index))
+      __return_value = LibGio.menu_model_iterate_item_links(@pointer.as(LibGio::MenuModel*), Int32.new(item_index))
       Gio::MenuLinkIter.new(__return_value)
     end
 

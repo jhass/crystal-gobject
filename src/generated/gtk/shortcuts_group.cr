@@ -2,12 +2,13 @@ require "./box"
 
 module Gtk
   class ShortcutsGroup < Box
-    @gtk_shortcuts_group : LibGtk::ShortcutsGroup*?
-    def initialize(@gtk_shortcuts_group : LibGtk::ShortcutsGroup*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ShortcutsGroup*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_shortcuts_group.not_nil!
+      @pointer.not_nil!.as(LibGtk::ShortcutsGroup*)
     end
 
     # Implements ImplementorIface

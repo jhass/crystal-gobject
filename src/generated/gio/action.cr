@@ -18,42 +18,42 @@ module Gio
     end
 
     def activate(parameter)
-      LibGio.action_activate(to_unsafe.as(LibGio::Action*), parameter ? parameter.to_unsafe.as(LibGLib::Variant*) : nil)
+      LibGio.action_activate(@pointer.as(LibGio::Action*), parameter ? parameter.to_unsafe.as(LibGLib::Variant*) : nil)
       nil
     end
 
     def change_state(value)
-      LibGio.action_change_state(to_unsafe.as(LibGio::Action*), value.to_unsafe.as(LibGLib::Variant*))
+      LibGio.action_change_state(@pointer.as(LibGio::Action*), value.to_unsafe.as(LibGLib::Variant*))
       nil
     end
 
     def enabled
-      __return_value = LibGio.action_get_enabled(to_unsafe.as(LibGio::Action*))
+      __return_value = LibGio.action_get_enabled(@pointer.as(LibGio::Action*))
       __return_value
     end
 
     def name
-      __return_value = LibGio.action_get_name(to_unsafe.as(LibGio::Action*))
+      __return_value = LibGio.action_get_name(@pointer.as(LibGio::Action*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def parameter_type
-      __return_value = LibGio.action_get_parameter_type(to_unsafe.as(LibGio::Action*))
+      __return_value = LibGio.action_get_parameter_type(@pointer.as(LibGio::Action*))
       GLib::VariantType.new(__return_value) if __return_value
     end
 
     def state
-      __return_value = LibGio.action_get_state(to_unsafe.as(LibGio::Action*))
+      __return_value = LibGio.action_get_state(@pointer.as(LibGio::Action*))
       GLib::Variant.new(__return_value)
     end
 
     def state_hint
-      __return_value = LibGio.action_get_state_hint(to_unsafe.as(LibGio::Action*))
+      __return_value = LibGio.action_get_state_hint(@pointer.as(LibGio::Action*))
       GLib::Variant.new(__return_value) if __return_value
     end
 
     def state_type
-      __return_value = LibGio.action_get_state_type(to_unsafe.as(LibGio::Action*))
+      __return_value = LibGio.action_get_state_type(@pointer.as(LibGio::Action*))
       GLib::VariantType.new(__return_value) if __return_value
     end
 

@@ -2,12 +2,13 @@ require "./box"
 
 module Gtk
   class HBox < Box
-    @gtk_h_box : LibGtk::HBox*?
-    def initialize(@gtk_h_box : LibGtk::HBox*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::HBox*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_h_box.not_nil!
+      @pointer.not_nil!.as(LibGtk::HBox*)
     end
 
     # Implements ImplementorIface

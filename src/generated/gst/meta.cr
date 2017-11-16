@@ -10,12 +10,13 @@ module Gst
       end
     end
 
-    @gst_meta : LibGst::Meta*?
-    def initialize(@gst_meta : LibGst::Meta*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::Meta*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_meta.not_nil!
+      @pointer.not_nil!.as(LibGst::Meta*)
     end
 
     def self.api_type_get_tags(api)

@@ -1,11 +1,12 @@
 module Gio
   class DBusObjectManagerClient < GObject::Object
-    @gio_d_bus_object_manager_client : LibGio::DBusObjectManagerClient*?
-    def initialize(@gio_d_bus_object_manager_client : LibGio::DBusObjectManagerClient*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::DBusObjectManagerClient*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_d_bus_object_manager_client.not_nil!
+      @pointer.not_nil!.as(LibGio::DBusObjectManagerClient*)
     end
 
     # Implements AsyncInitable
@@ -91,22 +92,22 @@ module Gio
     end
 
     def connection
-      __return_value = LibGio.d_bus_object_manager_client_get_connection(to_unsafe.as(LibGio::DBusObjectManagerClient*))
+      __return_value = LibGio.d_bus_object_manager_client_get_connection(@pointer.as(LibGio::DBusObjectManagerClient*))
       Gio::DBusConnection.new(__return_value)
     end
 
     def flags
-      __return_value = LibGio.d_bus_object_manager_client_get_flags(to_unsafe.as(LibGio::DBusObjectManagerClient*))
+      __return_value = LibGio.d_bus_object_manager_client_get_flags(@pointer.as(LibGio::DBusObjectManagerClient*))
       __return_value
     end
 
     def name
-      __return_value = LibGio.d_bus_object_manager_client_get_name(to_unsafe.as(LibGio::DBusObjectManagerClient*))
+      __return_value = LibGio.d_bus_object_manager_client_get_name(@pointer.as(LibGio::DBusObjectManagerClient*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def name_owner
-      __return_value = LibGio.d_bus_object_manager_client_get_name_owner(to_unsafe.as(LibGio::DBusObjectManagerClient*))
+      __return_value = LibGio.d_bus_object_manager_client_get_name_owner(@pointer.as(LibGio::DBusObjectManagerClient*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 

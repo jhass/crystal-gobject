@@ -2,12 +2,13 @@ module Gio
   class IOStreamAdapter
     include GObject::WrappedType
 
-    @gio_i_o_stream_adapter : LibGio::IOStreamAdapter*?
-    def initialize(@gio_i_o_stream_adapter : LibGio::IOStreamAdapter*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::IOStreamAdapter*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_i_o_stream_adapter.not_nil!
+      @pointer.not_nil!.as(LibGio::IOStreamAdapter*)
     end
 
   end

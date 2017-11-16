@@ -1,11 +1,12 @@
 module Gio
   class DBusObjectManagerServer < GObject::Object
-    @gio_d_bus_object_manager_server : LibGio::DBusObjectManagerServer*?
-    def initialize(@gio_d_bus_object_manager_server : LibGio::DBusObjectManagerServer*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::DBusObjectManagerServer*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_d_bus_object_manager_server.not_nil!
+      @pointer.not_nil!.as(LibGio::DBusObjectManagerServer*)
     end
 
     # Implements DBusObjectManager
@@ -25,32 +26,32 @@ module Gio
     end
 
     def export(object)
-      LibGio.d_bus_object_manager_server_export(to_unsafe.as(LibGio::DBusObjectManagerServer*), object.to_unsafe.as(LibGio::DBusObjectSkeleton*))
+      LibGio.d_bus_object_manager_server_export(@pointer.as(LibGio::DBusObjectManagerServer*), object.to_unsafe.as(LibGio::DBusObjectSkeleton*))
       nil
     end
 
     def export_uniquely(object)
-      LibGio.d_bus_object_manager_server_export_uniquely(to_unsafe.as(LibGio::DBusObjectManagerServer*), object.to_unsafe.as(LibGio::DBusObjectSkeleton*))
+      LibGio.d_bus_object_manager_server_export_uniquely(@pointer.as(LibGio::DBusObjectManagerServer*), object.to_unsafe.as(LibGio::DBusObjectSkeleton*))
       nil
     end
 
     def connection
-      __return_value = LibGio.d_bus_object_manager_server_get_connection(to_unsafe.as(LibGio::DBusObjectManagerServer*))
+      __return_value = LibGio.d_bus_object_manager_server_get_connection(@pointer.as(LibGio::DBusObjectManagerServer*))
       Gio::DBusConnection.new(__return_value)
     end
 
     def exported?(object)
-      __return_value = LibGio.d_bus_object_manager_server_is_exported(to_unsafe.as(LibGio::DBusObjectManagerServer*), object.to_unsafe.as(LibGio::DBusObjectSkeleton*))
+      __return_value = LibGio.d_bus_object_manager_server_is_exported(@pointer.as(LibGio::DBusObjectManagerServer*), object.to_unsafe.as(LibGio::DBusObjectSkeleton*))
       __return_value
     end
 
     def connection=(connection)
-      LibGio.d_bus_object_manager_server_set_connection(to_unsafe.as(LibGio::DBusObjectManagerServer*), connection ? connection.to_unsafe.as(LibGio::DBusConnection*) : nil)
+      LibGio.d_bus_object_manager_server_set_connection(@pointer.as(LibGio::DBusObjectManagerServer*), connection ? connection.to_unsafe.as(LibGio::DBusConnection*) : nil)
       nil
     end
 
     def unexport(object_path)
-      __return_value = LibGio.d_bus_object_manager_server_unexport(to_unsafe.as(LibGio::DBusObjectManagerServer*), object_path.to_unsafe)
+      __return_value = LibGio.d_bus_object_manager_server_unexport(@pointer.as(LibGio::DBusObjectManagerServer*), object_path.to_unsafe)
       __return_value
     end
 

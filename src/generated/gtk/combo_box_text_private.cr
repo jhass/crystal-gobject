@@ -2,12 +2,13 @@ module Gtk
   class ComboBoxTextPrivate
     include GObject::WrappedType
 
-    @gtk_combo_box_text_private : LibGtk::ComboBoxTextPrivate*?
-    def initialize(@gtk_combo_box_text_private : LibGtk::ComboBoxTextPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ComboBoxTextPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_combo_box_text_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::ComboBoxTextPrivate*)
     end
 
   end

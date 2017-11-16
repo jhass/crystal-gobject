@@ -15,31 +15,32 @@ module GLib
       end
     end
 
-    @g_lib_hook_list : LibGLib::HookList*?
-    def initialize(@g_lib_hook_list : LibGLib::HookList*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::HookList*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_hook_list.not_nil!
+      @pointer.not_nil!.as(LibGLib::HookList*)
     end
 
     def clear
-      LibGLib.hook_list_clear(to_unsafe.as(LibGLib::HookList*))
+      LibGLib.hook_list_clear(@pointer.as(LibGLib::HookList*))
       nil
     end
 
     def init(hook_size)
-      LibGLib.hook_list_init(to_unsafe.as(LibGLib::HookList*), UInt32.new(hook_size))
+      LibGLib.hook_list_init(@pointer.as(LibGLib::HookList*), UInt32.new(hook_size))
       nil
     end
 
     def invoke(may_recurse)
-      LibGLib.hook_list_invoke(to_unsafe.as(LibGLib::HookList*), may_recurse)
+      LibGLib.hook_list_invoke(@pointer.as(LibGLib::HookList*), may_recurse)
       nil
     end
 
     def invoke_check(may_recurse)
-      LibGLib.hook_list_invoke_check(to_unsafe.as(LibGLib::HookList*), may_recurse)
+      LibGLib.hook_list_invoke_check(@pointer.as(LibGLib::HookList*), may_recurse)
       nil
     end
 

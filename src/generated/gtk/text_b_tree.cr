@@ -2,12 +2,13 @@ module Gtk
   class TextBTree
     include GObject::WrappedType
 
-    @gtk_text_b_tree : LibGtk::TextBTree*?
-    def initialize(@gtk_text_b_tree : LibGtk::TextBTree*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::TextBTree*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_text_b_tree.not_nil!
+      @pointer.not_nil!.as(LibGtk::TextBTree*)
     end
 
   end

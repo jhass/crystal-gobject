@@ -2,12 +2,13 @@ require "./bin"
 
 module Gtk
   class MenuItem < Bin
-    @gtk_menu_item : LibGtk::MenuItem*?
-    def initialize(@gtk_menu_item : LibGtk::MenuItem*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::MenuItem*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_menu_item.not_nil!
+      @pointer.not_nil!.as(LibGtk::MenuItem*)
     end
 
     # Implements ImplementorIface
@@ -55,87 +56,87 @@ module Gtk
     end
 
     def activate
-      LibGtk.menu_item_activate(to_unsafe.as(LibGtk::MenuItem*))
+      LibGtk.menu_item_activate(@pointer.as(LibGtk::MenuItem*))
       nil
     end
 
     def deselect
-      LibGtk.menu_item_deselect(to_unsafe.as(LibGtk::MenuItem*))
+      LibGtk.menu_item_deselect(@pointer.as(LibGtk::MenuItem*))
       nil
     end
 
     def accel_path
-      __return_value = LibGtk.menu_item_get_accel_path(to_unsafe.as(LibGtk::MenuItem*))
+      __return_value = LibGtk.menu_item_get_accel_path(@pointer.as(LibGtk::MenuItem*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def label
-      __return_value = LibGtk.menu_item_get_label(to_unsafe.as(LibGtk::MenuItem*))
+      __return_value = LibGtk.menu_item_get_label(@pointer.as(LibGtk::MenuItem*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def reserve_indicator
-      __return_value = LibGtk.menu_item_get_reserve_indicator(to_unsafe.as(LibGtk::MenuItem*))
+      __return_value = LibGtk.menu_item_get_reserve_indicator(@pointer.as(LibGtk::MenuItem*))
       __return_value
     end
 
     def right_justified
-      __return_value = LibGtk.menu_item_get_right_justified(to_unsafe.as(LibGtk::MenuItem*))
+      __return_value = LibGtk.menu_item_get_right_justified(@pointer.as(LibGtk::MenuItem*))
       __return_value
     end
 
     def submenu
-      __return_value = LibGtk.menu_item_get_submenu(to_unsafe.as(LibGtk::MenuItem*))
+      __return_value = LibGtk.menu_item_get_submenu(@pointer.as(LibGtk::MenuItem*))
       Gtk::Widget.new(__return_value) if __return_value
     end
 
     def use_underline
-      __return_value = LibGtk.menu_item_get_use_underline(to_unsafe.as(LibGtk::MenuItem*))
+      __return_value = LibGtk.menu_item_get_use_underline(@pointer.as(LibGtk::MenuItem*))
       __return_value
     end
 
     def select
-      LibGtk.menu_item_select(to_unsafe.as(LibGtk::MenuItem*))
+      LibGtk.menu_item_select(@pointer.as(LibGtk::MenuItem*))
       nil
     end
 
     def accel_path=(accel_path)
-      LibGtk.menu_item_set_accel_path(to_unsafe.as(LibGtk::MenuItem*), accel_path ? accel_path.to_unsafe : nil)
+      LibGtk.menu_item_set_accel_path(@pointer.as(LibGtk::MenuItem*), accel_path ? accel_path.to_unsafe : nil)
       nil
     end
 
     def label=(label)
-      LibGtk.menu_item_set_label(to_unsafe.as(LibGtk::MenuItem*), label.to_unsafe)
+      LibGtk.menu_item_set_label(@pointer.as(LibGtk::MenuItem*), label.to_unsafe)
       nil
     end
 
     def reserve_indicator=(reserve)
-      LibGtk.menu_item_set_reserve_indicator(to_unsafe.as(LibGtk::MenuItem*), reserve)
+      LibGtk.menu_item_set_reserve_indicator(@pointer.as(LibGtk::MenuItem*), reserve)
       nil
     end
 
     def right_justified=(right_justified)
-      LibGtk.menu_item_set_right_justified(to_unsafe.as(LibGtk::MenuItem*), right_justified)
+      LibGtk.menu_item_set_right_justified(@pointer.as(LibGtk::MenuItem*), right_justified)
       nil
     end
 
     def submenu=(submenu)
-      LibGtk.menu_item_set_submenu(to_unsafe.as(LibGtk::MenuItem*), submenu ? submenu.to_unsafe.as(LibGtk::Menu*) : nil)
+      LibGtk.menu_item_set_submenu(@pointer.as(LibGtk::MenuItem*), submenu ? submenu.to_unsafe.as(LibGtk::Menu*) : nil)
       nil
     end
 
     def use_underline=(setting)
-      LibGtk.menu_item_set_use_underline(to_unsafe.as(LibGtk::MenuItem*), setting)
+      LibGtk.menu_item_set_use_underline(@pointer.as(LibGtk::MenuItem*), setting)
       nil
     end
 
     def toggle_size_allocate(allocation)
-      LibGtk.menu_item_toggle_size_allocate(to_unsafe.as(LibGtk::MenuItem*), Int32.new(allocation))
+      LibGtk.menu_item_toggle_size_allocate(@pointer.as(LibGtk::MenuItem*), Int32.new(allocation))
       nil
     end
 
     def toggle_size_request(requisition)
-      LibGtk.menu_item_toggle_size_request(to_unsafe.as(LibGtk::MenuItem*), requisition)
+      LibGtk.menu_item_toggle_size_request(@pointer.as(LibGtk::MenuItem*), requisition)
       nil
     end
 

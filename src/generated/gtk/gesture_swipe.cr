@@ -2,12 +2,13 @@ require "./gesture_single"
 
 module Gtk
   class GestureSwipe < GestureSingle
-    @gtk_gesture_swipe : LibGtk::GestureSwipe*?
-    def initialize(@gtk_gesture_swipe : LibGtk::GestureSwipe*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::GestureSwipe*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_gesture_swipe.not_nil!
+      @pointer.not_nil!.as(LibGtk::GestureSwipe*)
     end
 
     def self.new(widget) : self
@@ -16,7 +17,7 @@ module Gtk
     end
 
     def velocity(velocity_x, velocity_y)
-      __return_value = LibGtk.gesture_swipe_get_velocity(to_unsafe.as(LibGtk::GestureSwipe*), velocity_x, velocity_y)
+      __return_value = LibGtk.gesture_swipe_get_velocity(@pointer.as(LibGtk::GestureSwipe*), velocity_x, velocity_y)
       __return_value
     end
 

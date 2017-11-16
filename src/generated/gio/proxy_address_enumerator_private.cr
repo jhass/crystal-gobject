@@ -2,12 +2,13 @@ module Gio
   class ProxyAddressEnumeratorPrivate
     include GObject::WrappedType
 
-    @gio_proxy_address_enumerator_private : LibGio::ProxyAddressEnumeratorPrivate*?
-    def initialize(@gio_proxy_address_enumerator_private : LibGio::ProxyAddressEnumeratorPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::ProxyAddressEnumeratorPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_proxy_address_enumerator_private.not_nil!
+      @pointer.not_nil!.as(LibGio::ProxyAddressEnumeratorPrivate*)
     end
 
   end

@@ -15,12 +15,13 @@ module Gio
       end
     end
 
-    @gio_input_message : LibGio::InputMessage*?
-    def initialize(@gio_input_message : LibGio::InputMessage*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::InputMessage*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_input_message.not_nil!
+      @pointer.not_nil!.as(LibGio::InputMessage*)
     end
 
     def address

@@ -2,12 +2,13 @@ require "./container_accessible"
 
 module Gtk
   class FlowBoxChildAccessible < ContainerAccessible
-    @gtk_flow_box_child_accessible : LibGtk::FlowBoxChildAccessible*?
-    def initialize(@gtk_flow_box_child_accessible : LibGtk::FlowBoxChildAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::FlowBoxChildAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_flow_box_child_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::FlowBoxChildAccessible*)
     end
 
     # Implements Component

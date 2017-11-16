@@ -2,12 +2,13 @@ require "./native_dialog"
 
 module Gtk
   class FileChooserNative < NativeDialog
-    @gtk_file_chooser_native : LibGtk::FileChooserNative*?
-    def initialize(@gtk_file_chooser_native : LibGtk::FileChooserNative*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::FileChooserNative*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_file_chooser_native.not_nil!
+      @pointer.not_nil!.as(LibGtk::FileChooserNative*)
     end
 
     # Implements FileChooser
@@ -27,22 +28,22 @@ module Gtk
     end
 
     def accept_label
-      __return_value = LibGtk.file_chooser_native_get_accept_label(to_unsafe.as(LibGtk::FileChooserNative*))
+      __return_value = LibGtk.file_chooser_native_get_accept_label(@pointer.as(LibGtk::FileChooserNative*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def cancel_label
-      __return_value = LibGtk.file_chooser_native_get_cancel_label(to_unsafe.as(LibGtk::FileChooserNative*))
+      __return_value = LibGtk.file_chooser_native_get_cancel_label(@pointer.as(LibGtk::FileChooserNative*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def accept_label=(accept_label)
-      LibGtk.file_chooser_native_set_accept_label(to_unsafe.as(LibGtk::FileChooserNative*), accept_label ? accept_label.to_unsafe : nil)
+      LibGtk.file_chooser_native_set_accept_label(@pointer.as(LibGtk::FileChooserNative*), accept_label ? accept_label.to_unsafe : nil)
       nil
     end
 
     def cancel_label=(cancel_label)
-      LibGtk.file_chooser_native_set_cancel_label(to_unsafe.as(LibGtk::FileChooserNative*), cancel_label ? cancel_label.to_unsafe : nil)
+      LibGtk.file_chooser_native_set_cancel_label(@pointer.as(LibGtk::FileChooserNative*), cancel_label ? cancel_label.to_unsafe : nil)
       nil
     end
 

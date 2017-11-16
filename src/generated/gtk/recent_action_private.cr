@@ -2,12 +2,13 @@ module Gtk
   class RecentActionPrivate
     include GObject::WrappedType
 
-    @gtk_recent_action_private : LibGtk::RecentActionPrivate*?
-    def initialize(@gtk_recent_action_private : LibGtk::RecentActionPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::RecentActionPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_recent_action_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::RecentActionPrivate*)
     end
 
   end

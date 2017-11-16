@@ -2,12 +2,13 @@ module Gtk
   class TreeSelectionPrivate
     include GObject::WrappedType
 
-    @gtk_tree_selection_private : LibGtk::TreeSelectionPrivate*?
-    def initialize(@gtk_tree_selection_private : LibGtk::TreeSelectionPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::TreeSelectionPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_tree_selection_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::TreeSelectionPrivate*)
     end
 
   end

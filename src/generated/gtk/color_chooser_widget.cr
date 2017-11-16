@@ -2,12 +2,13 @@ require "./box"
 
 module Gtk
   class ColorChooserWidget < Box
-    @gtk_color_chooser_widget : LibGtk::ColorChooserWidget*?
-    def initialize(@gtk_color_chooser_widget : LibGtk::ColorChooserWidget*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ColorChooserWidget*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_color_chooser_widget.not_nil!
+      @pointer.not_nil!.as(LibGtk::ColorChooserWidget*)
     end
 
     # Implements ImplementorIface

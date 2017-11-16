@@ -2,12 +2,13 @@ module Gio
   class MountOperationPrivate
     include GObject::WrappedType
 
-    @gio_mount_operation_private : LibGio::MountOperationPrivate*?
-    def initialize(@gio_mount_operation_private : LibGio::MountOperationPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::MountOperationPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_mount_operation_private.not_nil!
+      @pointer.not_nil!.as(LibGio::MountOperationPrivate*)
     end
 
   end

@@ -11,12 +11,13 @@ module Gtk
       end
     end
 
-    @gtk_requested_size : LibGtk::RequestedSize*?
-    def initialize(@gtk_requested_size : LibGtk::RequestedSize*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::RequestedSize*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_requested_size.not_nil!
+      @pointer.not_nil!.as(LibGtk::RequestedSize*)
     end
 
     def data

@@ -1,11 +1,12 @@
 module GdkPixbuf
   class PixbufAnimation < GObject::Object
-    @gdk_pixbuf_pixbuf_animation : LibGdkPixbuf::PixbufAnimation*?
-    def initialize(@gdk_pixbuf_pixbuf_animation : LibGdkPixbuf::PixbufAnimation*)
+    @pointer : Void*
+    def initialize(pointer : LibGdkPixbuf::PixbufAnimation*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_pixbuf_pixbuf_animation.not_nil!
+      @pointer.not_nil!.as(LibGdkPixbuf::PixbufAnimation*)
     end
 
     def self.new_from_file(filename) : self
@@ -42,27 +43,27 @@ module GdkPixbuf
     end
 
     def height
-      __return_value = LibGdkPixbuf.pixbuf_animation_get_height(to_unsafe.as(LibGdkPixbuf::PixbufAnimation*))
+      __return_value = LibGdkPixbuf.pixbuf_animation_get_height(@pointer.as(LibGdkPixbuf::PixbufAnimation*))
       __return_value
     end
 
     def iter(start_time)
-      __return_value = LibGdkPixbuf.pixbuf_animation_get_iter(to_unsafe.as(LibGdkPixbuf::PixbufAnimation*), start_time ? start_time.to_unsafe.as(LibGLib::TimeVal*) : nil)
+      __return_value = LibGdkPixbuf.pixbuf_animation_get_iter(@pointer.as(LibGdkPixbuf::PixbufAnimation*), start_time ? start_time.to_unsafe.as(LibGLib::TimeVal*) : nil)
       GdkPixbuf::PixbufAnimationIter.new(__return_value)
     end
 
     def static_image
-      __return_value = LibGdkPixbuf.pixbuf_animation_get_static_image(to_unsafe.as(LibGdkPixbuf::PixbufAnimation*))
+      __return_value = LibGdkPixbuf.pixbuf_animation_get_static_image(@pointer.as(LibGdkPixbuf::PixbufAnimation*))
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 
     def width
-      __return_value = LibGdkPixbuf.pixbuf_animation_get_width(to_unsafe.as(LibGdkPixbuf::PixbufAnimation*))
+      __return_value = LibGdkPixbuf.pixbuf_animation_get_width(@pointer.as(LibGdkPixbuf::PixbufAnimation*))
       __return_value
     end
 
     def static_image?
-      __return_value = LibGdkPixbuf.pixbuf_animation_is_static_image(to_unsafe.as(LibGdkPixbuf::PixbufAnimation*))
+      __return_value = LibGdkPixbuf.pixbuf_animation_is_static_image(@pointer.as(LibGdkPixbuf::PixbufAnimation*))
       __return_value
     end
 

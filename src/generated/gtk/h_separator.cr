@@ -2,12 +2,13 @@ require "./separator"
 
 module Gtk
   class HSeparator < Separator
-    @gtk_h_separator : LibGtk::HSeparator*?
-    def initialize(@gtk_h_separator : LibGtk::HSeparator*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::HSeparator*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_h_separator.not_nil!
+      @pointer.not_nil!.as(LibGtk::HSeparator*)
     end
 
     # Implements ImplementorIface

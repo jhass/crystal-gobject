@@ -15,12 +15,13 @@ module Gtk
       end
     end
 
-    @gtk_recent_data : LibGtk::RecentData*?
-    def initialize(@gtk_recent_data : LibGtk::RecentData*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::RecentData*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_recent_data.not_nil!
+      @pointer.not_nil!.as(LibGtk::RecentData*)
     end
 
     def display_name

@@ -2,12 +2,13 @@ require "./container"
 
 module Gtk
   class Fixed < Container
-    @gtk_fixed : LibGtk::Fixed*?
-    def initialize(@gtk_fixed : LibGtk::Fixed*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::Fixed*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_fixed.not_nil!
+      @pointer.not_nil!.as(LibGtk::Fixed*)
     end
 
     # Implements ImplementorIface
@@ -18,12 +19,12 @@ module Gtk
     end
 
     def move(widget, x, y)
-      LibGtk.fixed_move(to_unsafe.as(LibGtk::Fixed*), widget.to_unsafe.as(LibGtk::Widget*), Int32.new(x), Int32.new(y))
+      LibGtk.fixed_move(@pointer.as(LibGtk::Fixed*), widget.to_unsafe.as(LibGtk::Widget*), Int32.new(x), Int32.new(y))
       nil
     end
 
     def put(widget, x, y)
-      LibGtk.fixed_put(to_unsafe.as(LibGtk::Fixed*), widget.to_unsafe.as(LibGtk::Widget*), Int32.new(x), Int32.new(y))
+      LibGtk.fixed_put(@pointer.as(LibGtk::Fixed*), widget.to_unsafe.as(LibGtk::Widget*), Int32.new(x), Int32.new(y))
       nil
     end
 

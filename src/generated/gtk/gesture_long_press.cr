@@ -2,12 +2,13 @@ require "./gesture_single"
 
 module Gtk
   class GestureLongPress < GestureSingle
-    @gtk_gesture_long_press : LibGtk::GestureLongPress*?
-    def initialize(@gtk_gesture_long_press : LibGtk::GestureLongPress*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::GestureLongPress*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_gesture_long_press.not_nil!
+      @pointer.not_nil!.as(LibGtk::GestureLongPress*)
     end
 
     def delay_factor

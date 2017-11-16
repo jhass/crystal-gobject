@@ -7,12 +7,13 @@ module GIRepository
       super(ptr.as(LibGIRepository::AttributeIter*))
     end
 
-    @g_i_repository_attribute_iter : LibGIRepository::AttributeIter*?
-    def initialize(@g_i_repository_attribute_iter : LibGIRepository::AttributeIter*)
+    @pointer : Void*
+    def initialize(pointer : LibGIRepository::AttributeIter*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_i_repository_attribute_iter.not_nil!
+      @pointer.not_nil!.as(LibGIRepository::AttributeIter*)
     end
 
     def data

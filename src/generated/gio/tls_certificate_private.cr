@@ -2,12 +2,13 @@ module Gio
   class TlsCertificatePrivate
     include GObject::WrappedType
 
-    @gio_tls_certificate_private : LibGio::TlsCertificatePrivate*?
-    def initialize(@gio_tls_certificate_private : LibGio::TlsCertificatePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::TlsCertificatePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_tls_certificate_private.not_nil!
+      @pointer.not_nil!.as(LibGio::TlsCertificatePrivate*)
     end
 
   end

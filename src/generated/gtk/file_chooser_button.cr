@@ -2,12 +2,13 @@ require "./box"
 
 module Gtk
   class FileChooserButton < Box
-    @gtk_file_chooser_button : LibGtk::FileChooserButton*?
-    def initialize(@gtk_file_chooser_button : LibGtk::FileChooserButton*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::FileChooserButton*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_file_chooser_button.not_nil!
+      @pointer.not_nil!.as(LibGtk::FileChooserButton*)
     end
 
     # Implements ImplementorIface
@@ -36,32 +37,32 @@ module Gtk
     end
 
     def focus_on_click
-      __return_value = LibGtk.file_chooser_button_get_focus_on_click(to_unsafe.as(LibGtk::FileChooserButton*))
+      __return_value = LibGtk.file_chooser_button_get_focus_on_click(@pointer.as(LibGtk::FileChooserButton*))
       __return_value
     end
 
     def title
-      __return_value = LibGtk.file_chooser_button_get_title(to_unsafe.as(LibGtk::FileChooserButton*))
+      __return_value = LibGtk.file_chooser_button_get_title(@pointer.as(LibGtk::FileChooserButton*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def width_chars
-      __return_value = LibGtk.file_chooser_button_get_width_chars(to_unsafe.as(LibGtk::FileChooserButton*))
+      __return_value = LibGtk.file_chooser_button_get_width_chars(@pointer.as(LibGtk::FileChooserButton*))
       __return_value
     end
 
     def focus_on_click=(focus_on_click)
-      LibGtk.file_chooser_button_set_focus_on_click(to_unsafe.as(LibGtk::FileChooserButton*), focus_on_click)
+      LibGtk.file_chooser_button_set_focus_on_click(@pointer.as(LibGtk::FileChooserButton*), focus_on_click)
       nil
     end
 
     def title=(title)
-      LibGtk.file_chooser_button_set_title(to_unsafe.as(LibGtk::FileChooserButton*), title.to_unsafe)
+      LibGtk.file_chooser_button_set_title(@pointer.as(LibGtk::FileChooserButton*), title.to_unsafe)
       nil
     end
 
     def width_chars=(n_chars)
-      LibGtk.file_chooser_button_set_width_chars(to_unsafe.as(LibGtk::FileChooserButton*), Int32.new(n_chars))
+      LibGtk.file_chooser_button_set_width_chars(@pointer.as(LibGtk::FileChooserButton*), Int32.new(n_chars))
       nil
     end
 

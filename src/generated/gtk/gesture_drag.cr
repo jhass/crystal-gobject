@@ -2,12 +2,13 @@ require "./gesture_single"
 
 module Gtk
   class GestureDrag < GestureSingle
-    @gtk_gesture_drag : LibGtk::GestureDrag*?
-    def initialize(@gtk_gesture_drag : LibGtk::GestureDrag*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::GestureDrag*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_gesture_drag.not_nil!
+      @pointer.not_nil!.as(LibGtk::GestureDrag*)
     end
 
     def self.new(widget) : self
@@ -16,12 +17,12 @@ module Gtk
     end
 
     def offset(x, y)
-      __return_value = LibGtk.gesture_drag_get_offset(to_unsafe.as(LibGtk::GestureDrag*), x, y)
+      __return_value = LibGtk.gesture_drag_get_offset(@pointer.as(LibGtk::GestureDrag*), x, y)
       __return_value
     end
 
     def start_point(x, y)
-      __return_value = LibGtk.gesture_drag_get_start_point(to_unsafe.as(LibGtk::GestureDrag*), x, y)
+      __return_value = LibGtk.gesture_drag_get_start_point(@pointer.as(LibGtk::GestureDrag*), x, y)
       __return_value
     end
 

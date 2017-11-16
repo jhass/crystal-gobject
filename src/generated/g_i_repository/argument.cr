@@ -86,12 +86,13 @@ module GIRepository
       (to_unsafe.as(LibGIRepository::Argument*).value.v_pointer)
     end
 
-    @g_i_repository_argument : LibGIRepository::Argument*?
-    def initialize(@g_i_repository_argument : LibGIRepository::Argument*)
+    @pointer : Void*
+    def initialize(pointer : LibGIRepository::Argument*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_i_repository_argument.not_nil!
+      @pointer.not_nil!.as(LibGIRepository::Argument*)
     end
 
   end

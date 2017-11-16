@@ -1,11 +1,12 @@
 module Gtk
   class NotebookPageAccessible < Atk::Object
-    @gtk_notebook_page_accessible : LibGtk::NotebookPageAccessible*?
-    def initialize(@gtk_notebook_page_accessible : LibGtk::NotebookPageAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::NotebookPageAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_notebook_page_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::NotebookPageAccessible*)
     end
 
     # Implements Component
@@ -15,7 +16,7 @@ module Gtk
     end
 
     def invalidate
-      LibGtk.notebook_page_accessible_invalidate(to_unsafe.as(LibGtk::NotebookPageAccessible*))
+      LibGtk.notebook_page_accessible_invalidate(@pointer.as(LibGtk::NotebookPageAccessible*))
       nil
     end
 

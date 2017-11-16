@@ -2,12 +2,13 @@ require "./pixbuf_animation"
 
 module GdkPixbuf
   class PixbufSimpleAnim < PixbufAnimation
-    @gdk_pixbuf_pixbuf_simple_anim : LibGdkPixbuf::PixbufSimpleAnim*?
-    def initialize(@gdk_pixbuf_pixbuf_simple_anim : LibGdkPixbuf::PixbufSimpleAnim*)
+    @pointer : Void*
+    def initialize(pointer : LibGdkPixbuf::PixbufSimpleAnim*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_pixbuf_pixbuf_simple_anim.not_nil!
+      @pointer.not_nil!.as(LibGdkPixbuf::PixbufSimpleAnim*)
     end
 
     def loop
@@ -21,17 +22,17 @@ module GdkPixbuf
     end
 
     def add_frame(pixbuf)
-      LibGdkPixbuf.pixbuf_simple_anim_add_frame(to_unsafe.as(LibGdkPixbuf::PixbufSimpleAnim*), pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*))
+      LibGdkPixbuf.pixbuf_simple_anim_add_frame(@pointer.as(LibGdkPixbuf::PixbufSimpleAnim*), pixbuf.to_unsafe.as(LibGdkPixbuf::Pixbuf*))
       nil
     end
 
     def loop
-      __return_value = LibGdkPixbuf.pixbuf_simple_anim_get_loop(to_unsafe.as(LibGdkPixbuf::PixbufSimpleAnim*))
+      __return_value = LibGdkPixbuf.pixbuf_simple_anim_get_loop(@pointer.as(LibGdkPixbuf::PixbufSimpleAnim*))
       __return_value
     end
 
     def loop=(loop)
-      LibGdkPixbuf.pixbuf_simple_anim_set_loop(to_unsafe.as(LibGdkPixbuf::PixbufSimpleAnim*), loop)
+      LibGdkPixbuf.pixbuf_simple_anim_set_loop(@pointer.as(LibGdkPixbuf::PixbufSimpleAnim*), loop)
       nil
     end
 

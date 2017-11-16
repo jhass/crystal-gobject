@@ -1,30 +1,31 @@
 module GdkPixbuf
   class PixbufAnimationIter < GObject::Object
-    @gdk_pixbuf_pixbuf_animation_iter : LibGdkPixbuf::PixbufAnimationIter*?
-    def initialize(@gdk_pixbuf_pixbuf_animation_iter : LibGdkPixbuf::PixbufAnimationIter*)
+    @pointer : Void*
+    def initialize(pointer : LibGdkPixbuf::PixbufAnimationIter*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_pixbuf_pixbuf_animation_iter.not_nil!
+      @pointer.not_nil!.as(LibGdkPixbuf::PixbufAnimationIter*)
     end
 
     def advance(current_time)
-      __return_value = LibGdkPixbuf.pixbuf_animation_iter_advance(to_unsafe.as(LibGdkPixbuf::PixbufAnimationIter*), current_time ? current_time.to_unsafe.as(LibGLib::TimeVal*) : nil)
+      __return_value = LibGdkPixbuf.pixbuf_animation_iter_advance(@pointer.as(LibGdkPixbuf::PixbufAnimationIter*), current_time ? current_time.to_unsafe.as(LibGLib::TimeVal*) : nil)
       __return_value
     end
 
     def delay_time
-      __return_value = LibGdkPixbuf.pixbuf_animation_iter_get_delay_time(to_unsafe.as(LibGdkPixbuf::PixbufAnimationIter*))
+      __return_value = LibGdkPixbuf.pixbuf_animation_iter_get_delay_time(@pointer.as(LibGdkPixbuf::PixbufAnimationIter*))
       __return_value
     end
 
     def pixbuf
-      __return_value = LibGdkPixbuf.pixbuf_animation_iter_get_pixbuf(to_unsafe.as(LibGdkPixbuf::PixbufAnimationIter*))
+      __return_value = LibGdkPixbuf.pixbuf_animation_iter_get_pixbuf(@pointer.as(LibGdkPixbuf::PixbufAnimationIter*))
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 
     def on_currently_loading_frame
-      __return_value = LibGdkPixbuf.pixbuf_animation_iter_on_currently_loading_frame(to_unsafe.as(LibGdkPixbuf::PixbufAnimationIter*))
+      __return_value = LibGdkPixbuf.pixbuf_animation_iter_on_currently_loading_frame(@pointer.as(LibGdkPixbuf::PixbufAnimationIter*))
       __return_value
     end
 

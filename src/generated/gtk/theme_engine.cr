@@ -2,12 +2,13 @@ module Gtk
   class ThemeEngine
     include GObject::WrappedType
 
-    @gtk_theme_engine : LibGtk::ThemeEngine*?
-    def initialize(@gtk_theme_engine : LibGtk::ThemeEngine*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ThemeEngine*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_theme_engine.not_nil!
+      @pointer.not_nil!.as(LibGtk::ThemeEngine*)
     end
 
   end

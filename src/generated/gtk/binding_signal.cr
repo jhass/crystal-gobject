@@ -12,12 +12,13 @@ module Gtk
       end
     end
 
-    @gtk_binding_signal : LibGtk::BindingSignal*?
-    def initialize(@gtk_binding_signal : LibGtk::BindingSignal*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::BindingSignal*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_binding_signal.not_nil!
+      @pointer.not_nil!.as(LibGtk::BindingSignal*)
     end
 
     def next

@@ -11,12 +11,13 @@ module Gdk
       end
     end
 
-    @gdk_event_any : LibGdk::EventAny*?
-    def initialize(@gdk_event_any : LibGdk::EventAny*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::EventAny*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_event_any.not_nil!
+      @pointer.not_nil!.as(LibGdk::EventAny*)
     end
 
     def type

@@ -1,11 +1,12 @@
 module Gio
   class ThemedIcon < GObject::Object
-    @gio_themed_icon : LibGio::ThemedIcon*?
-    def initialize(@gio_themed_icon : LibGio::ThemedIcon*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::ThemedIcon*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_themed_icon.not_nil!
+      @pointer.not_nil!.as(LibGio::ThemedIcon*)
     end
 
     # Implements Icon
@@ -36,17 +37,17 @@ module Gio
     end
 
     def append_name(iconname)
-      LibGio.themed_icon_append_name(to_unsafe.as(LibGio::ThemedIcon*), iconname.to_unsafe)
+      LibGio.themed_icon_append_name(@pointer.as(LibGio::ThemedIcon*), iconname.to_unsafe)
       nil
     end
 
     def names
-      __return_value = LibGio.themed_icon_get_names(to_unsafe.as(LibGio::ThemedIcon*))
+      __return_value = LibGio.themed_icon_get_names(@pointer.as(LibGio::ThemedIcon*))
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
     def prepend_name(iconname)
-      LibGio.themed_icon_prepend_name(to_unsafe.as(LibGio::ThemedIcon*), iconname.to_unsafe)
+      LibGio.themed_icon_prepend_name(@pointer.as(LibGio::ThemedIcon*), iconname.to_unsafe)
       nil
     end
 

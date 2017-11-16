@@ -2,12 +2,13 @@ require "./tool_button"
 
 module Gtk
   class MenuToolButton < ToolButton
-    @gtk_menu_tool_button : LibGtk::MenuToolButton*?
-    def initialize(@gtk_menu_tool_button : LibGtk::MenuToolButton*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::MenuToolButton*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_menu_tool_button.not_nil!
+      @pointer.not_nil!.as(LibGtk::MenuToolButton*)
     end
 
     # Implements ImplementorIface
@@ -30,22 +31,22 @@ module Gtk
     end
 
     def menu
-      __return_value = LibGtk.menu_tool_button_get_menu(to_unsafe.as(LibGtk::MenuToolButton*))
+      __return_value = LibGtk.menu_tool_button_get_menu(@pointer.as(LibGtk::MenuToolButton*))
       Gtk::Widget.new(__return_value)
     end
 
     def arrow_tooltip_markup=(markup)
-      LibGtk.menu_tool_button_set_arrow_tooltip_markup(to_unsafe.as(LibGtk::MenuToolButton*), markup.to_unsafe)
+      LibGtk.menu_tool_button_set_arrow_tooltip_markup(@pointer.as(LibGtk::MenuToolButton*), markup.to_unsafe)
       nil
     end
 
     def arrow_tooltip_text=(text)
-      LibGtk.menu_tool_button_set_arrow_tooltip_text(to_unsafe.as(LibGtk::MenuToolButton*), text.to_unsafe)
+      LibGtk.menu_tool_button_set_arrow_tooltip_text(@pointer.as(LibGtk::MenuToolButton*), text.to_unsafe)
       nil
     end
 
     def menu=(menu)
-      LibGtk.menu_tool_button_set_menu(to_unsafe.as(LibGtk::MenuToolButton*), menu.to_unsafe.as(LibGtk::Widget*))
+      LibGtk.menu_tool_button_set_menu(@pointer.as(LibGtk::MenuToolButton*), menu.to_unsafe.as(LibGtk::Widget*))
       nil
     end
 

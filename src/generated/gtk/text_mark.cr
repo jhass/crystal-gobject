@@ -1,11 +1,12 @@
 module Gtk
   class TextMark < GObject::Object
-    @gtk_text_mark : LibGtk::TextMark*?
-    def initialize(@gtk_text_mark : LibGtk::TextMark*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::TextMark*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_text_mark.not_nil!
+      @pointer.not_nil!.as(LibGtk::TextMark*)
     end
 
     def left_gravity
@@ -24,32 +25,32 @@ module Gtk
     end
 
     def buffer
-      __return_value = LibGtk.text_mark_get_buffer(to_unsafe.as(LibGtk::TextMark*))
+      __return_value = LibGtk.text_mark_get_buffer(@pointer.as(LibGtk::TextMark*))
       Gtk::TextBuffer.new(__return_value)
     end
 
     def deleted
-      __return_value = LibGtk.text_mark_get_deleted(to_unsafe.as(LibGtk::TextMark*))
+      __return_value = LibGtk.text_mark_get_deleted(@pointer.as(LibGtk::TextMark*))
       __return_value
     end
 
     def left_gravity
-      __return_value = LibGtk.text_mark_get_left_gravity(to_unsafe.as(LibGtk::TextMark*))
+      __return_value = LibGtk.text_mark_get_left_gravity(@pointer.as(LibGtk::TextMark*))
       __return_value
     end
 
     def name
-      __return_value = LibGtk.text_mark_get_name(to_unsafe.as(LibGtk::TextMark*))
+      __return_value = LibGtk.text_mark_get_name(@pointer.as(LibGtk::TextMark*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def visible
-      __return_value = LibGtk.text_mark_get_visible(to_unsafe.as(LibGtk::TextMark*))
+      __return_value = LibGtk.text_mark_get_visible(@pointer.as(LibGtk::TextMark*))
       __return_value
     end
 
     def visible=(setting)
-      LibGtk.text_mark_set_visible(to_unsafe.as(LibGtk::TextMark*), setting)
+      LibGtk.text_mark_set_visible(@pointer.as(LibGtk::TextMark*), setting)
       nil
     end
 

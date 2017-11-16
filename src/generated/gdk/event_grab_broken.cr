@@ -14,12 +14,13 @@ module Gdk
       end
     end
 
-    @gdk_event_grab_broken : LibGdk::EventGrabBroken*?
-    def initialize(@gdk_event_grab_broken : LibGdk::EventGrabBroken*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::EventGrabBroken*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_event_grab_broken.not_nil!
+      @pointer.not_nil!.as(LibGdk::EventGrabBroken*)
     end
 
     def type

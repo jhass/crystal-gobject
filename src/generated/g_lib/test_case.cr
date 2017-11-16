@@ -2,12 +2,13 @@ module GLib
   class TestCase
     include GObject::WrappedType
 
-    @g_lib_test_case : LibGLib::TestCase*?
-    def initialize(@g_lib_test_case : LibGLib::TestCase*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::TestCase*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_test_case.not_nil!
+      @pointer.not_nil!.as(LibGLib::TestCase*)
     end
 
   end

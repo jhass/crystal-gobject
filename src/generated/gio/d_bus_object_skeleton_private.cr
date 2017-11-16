@@ -2,12 +2,13 @@ module Gio
   class DBusObjectSkeletonPrivate
     include GObject::WrappedType
 
-    @gio_d_bus_object_skeleton_private : LibGio::DBusObjectSkeletonPrivate*?
-    def initialize(@gio_d_bus_object_skeleton_private : LibGio::DBusObjectSkeletonPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::DBusObjectSkeletonPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_d_bus_object_skeleton_private.not_nil!
+      @pointer.not_nil!.as(LibGio::DBusObjectSkeletonPrivate*)
     end
 
   end

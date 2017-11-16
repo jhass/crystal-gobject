@@ -2,12 +2,13 @@ require "./button"
 
 module Gtk
   class LockButton < Button
-    @gtk_lock_button : LibGtk::LockButton*?
-    def initialize(@gtk_lock_button : LibGtk::LockButton*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::LockButton*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_lock_button.not_nil!
+      @pointer.not_nil!.as(LibGtk::LockButton*)
     end
 
     # Implements ImplementorIface
@@ -50,12 +51,12 @@ module Gtk
     end
 
     def permission
-      __return_value = LibGtk.lock_button_get_permission(to_unsafe.as(LibGtk::LockButton*))
+      __return_value = LibGtk.lock_button_get_permission(@pointer.as(LibGtk::LockButton*))
       Gio::Permission.new(__return_value)
     end
 
     def permission=(permission)
-      LibGtk.lock_button_set_permission(to_unsafe.as(LibGtk::LockButton*), permission ? permission.to_unsafe.as(LibGio::Permission*) : nil)
+      LibGtk.lock_button_set_permission(@pointer.as(LibGtk::LockButton*), permission ? permission.to_unsafe.as(LibGio::Permission*) : nil)
       nil
     end
 

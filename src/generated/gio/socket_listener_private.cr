@@ -2,12 +2,13 @@ module Gio
   class SocketListenerPrivate
     include GObject::WrappedType
 
-    @gio_socket_listener_private : LibGio::SocketListenerPrivate*?
-    def initialize(@gio_socket_listener_private : LibGio::SocketListenerPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::SocketListenerPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_socket_listener_private.not_nil!
+      @pointer.not_nil!.as(LibGio::SocketListenerPrivate*)
     end
 
   end

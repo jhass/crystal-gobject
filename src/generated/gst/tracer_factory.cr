@@ -2,12 +2,13 @@ require "./plugin_feature"
 
 module Gst
   class TracerFactory < PluginFeature
-    @gst_tracer_factory : LibGst::TracerFactory*?
-    def initialize(@gst_tracer_factory : LibGst::TracerFactory*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::TracerFactory*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_tracer_factory.not_nil!
+      @pointer.not_nil!.as(LibGst::TracerFactory*)
     end
 
     def self.list

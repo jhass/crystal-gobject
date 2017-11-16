@@ -2,12 +2,13 @@ require "./tool_item"
 
 module Gtk
   class ToolButton < ToolItem
-    @gtk_tool_button : LibGtk::ToolButton*?
-    def initialize(@gtk_tool_button : LibGtk::ToolButton*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ToolButton*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_tool_button.not_nil!
+      @pointer.not_nil!.as(LibGtk::ToolButton*)
     end
 
     # Implements ImplementorIface
@@ -55,62 +56,62 @@ module Gtk
     end
 
     def icon_name
-      __return_value = LibGtk.tool_button_get_icon_name(to_unsafe.as(LibGtk::ToolButton*))
+      __return_value = LibGtk.tool_button_get_icon_name(@pointer.as(LibGtk::ToolButton*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def icon_widget
-      __return_value = LibGtk.tool_button_get_icon_widget(to_unsafe.as(LibGtk::ToolButton*))
+      __return_value = LibGtk.tool_button_get_icon_widget(@pointer.as(LibGtk::ToolButton*))
       Gtk::Widget.new(__return_value) if __return_value
     end
 
     def label
-      __return_value = LibGtk.tool_button_get_label(to_unsafe.as(LibGtk::ToolButton*))
+      __return_value = LibGtk.tool_button_get_label(@pointer.as(LibGtk::ToolButton*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def label_widget
-      __return_value = LibGtk.tool_button_get_label_widget(to_unsafe.as(LibGtk::ToolButton*))
+      __return_value = LibGtk.tool_button_get_label_widget(@pointer.as(LibGtk::ToolButton*))
       Gtk::Widget.new(__return_value) if __return_value
     end
 
     def stock_id
-      __return_value = LibGtk.tool_button_get_stock_id(to_unsafe.as(LibGtk::ToolButton*))
+      __return_value = LibGtk.tool_button_get_stock_id(@pointer.as(LibGtk::ToolButton*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def use_underline
-      __return_value = LibGtk.tool_button_get_use_underline(to_unsafe.as(LibGtk::ToolButton*))
+      __return_value = LibGtk.tool_button_get_use_underline(@pointer.as(LibGtk::ToolButton*))
       __return_value
     end
 
     def icon_name=(icon_name)
-      LibGtk.tool_button_set_icon_name(to_unsafe.as(LibGtk::ToolButton*), icon_name ? icon_name.to_unsafe : nil)
+      LibGtk.tool_button_set_icon_name(@pointer.as(LibGtk::ToolButton*), icon_name ? icon_name.to_unsafe : nil)
       nil
     end
 
     def icon_widget=(icon_widget)
-      LibGtk.tool_button_set_icon_widget(to_unsafe.as(LibGtk::ToolButton*), icon_widget ? icon_widget.to_unsafe.as(LibGtk::Widget*) : nil)
+      LibGtk.tool_button_set_icon_widget(@pointer.as(LibGtk::ToolButton*), icon_widget ? icon_widget.to_unsafe.as(LibGtk::Widget*) : nil)
       nil
     end
 
     def label=(label)
-      LibGtk.tool_button_set_label(to_unsafe.as(LibGtk::ToolButton*), label ? label.to_unsafe : nil)
+      LibGtk.tool_button_set_label(@pointer.as(LibGtk::ToolButton*), label ? label.to_unsafe : nil)
       nil
     end
 
     def label_widget=(label_widget)
-      LibGtk.tool_button_set_label_widget(to_unsafe.as(LibGtk::ToolButton*), label_widget ? label_widget.to_unsafe.as(LibGtk::Widget*) : nil)
+      LibGtk.tool_button_set_label_widget(@pointer.as(LibGtk::ToolButton*), label_widget ? label_widget.to_unsafe.as(LibGtk::Widget*) : nil)
       nil
     end
 
     def stock_id=(stock_id)
-      LibGtk.tool_button_set_stock_id(to_unsafe.as(LibGtk::ToolButton*), stock_id ? stock_id.to_unsafe : nil)
+      LibGtk.tool_button_set_stock_id(@pointer.as(LibGtk::ToolButton*), stock_id ? stock_id.to_unsafe : nil)
       nil
     end
 
     def use_underline=(use_underline)
-      LibGtk.tool_button_set_use_underline(to_unsafe.as(LibGtk::ToolButton*), use_underline)
+      LibGtk.tool_button_set_use_underline(@pointer.as(LibGtk::ToolButton*), use_underline)
       nil
     end
 

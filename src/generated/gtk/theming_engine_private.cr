@@ -2,12 +2,13 @@ module Gtk
   class ThemingEnginePrivate
     include GObject::WrappedType
 
-    @gtk_theming_engine_private : LibGtk::ThemingEnginePrivate*?
-    def initialize(@gtk_theming_engine_private : LibGtk::ThemingEnginePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ThemingEnginePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_theming_engine_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::ThemingEnginePrivate*)
     end
 
   end

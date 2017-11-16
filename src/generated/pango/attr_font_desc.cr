@@ -10,12 +10,13 @@ module Pango
       end
     end
 
-    @pango_attr_font_desc : LibPango::AttrFontDesc*?
-    def initialize(@pango_attr_font_desc : LibPango::AttrFontDesc*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::AttrFontDesc*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_attr_font_desc.not_nil!
+      @pointer.not_nil!.as(LibPango::AttrFontDesc*)
     end
 
     def attr

@@ -1,11 +1,12 @@
 module Gio
   class NetworkService < GObject::Object
-    @gio_network_service : LibGio::NetworkService*?
-    def initialize(@gio_network_service : LibGio::NetworkService*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::NetworkService*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_network_service.not_nil!
+      @pointer.not_nil!.as(LibGio::NetworkService*)
     end
 
     # Implements SocketConnectable
@@ -35,27 +36,27 @@ module Gio
     end
 
     def domain
-      __return_value = LibGio.network_service_get_domain(to_unsafe.as(LibGio::NetworkService*))
+      __return_value = LibGio.network_service_get_domain(@pointer.as(LibGio::NetworkService*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def protocol
-      __return_value = LibGio.network_service_get_protocol(to_unsafe.as(LibGio::NetworkService*))
+      __return_value = LibGio.network_service_get_protocol(@pointer.as(LibGio::NetworkService*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def scheme
-      __return_value = LibGio.network_service_get_scheme(to_unsafe.as(LibGio::NetworkService*))
+      __return_value = LibGio.network_service_get_scheme(@pointer.as(LibGio::NetworkService*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def service
-      __return_value = LibGio.network_service_get_service(to_unsafe.as(LibGio::NetworkService*))
+      __return_value = LibGio.network_service_get_service(@pointer.as(LibGio::NetworkService*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def scheme=(scheme)
-      LibGio.network_service_set_scheme(to_unsafe.as(LibGio::NetworkService*), scheme.to_unsafe)
+      LibGio.network_service_set_scheme(@pointer.as(LibGio::NetworkService*), scheme.to_unsafe)
       nil
     end
 

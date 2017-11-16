@@ -1,11 +1,12 @@
 module Gio
   class SimpleProxyResolver < GObject::Object
-    @gio_simple_proxy_resolver : LibGio::SimpleProxyResolver*?
-    def initialize(@gio_simple_proxy_resolver : LibGio::SimpleProxyResolver*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::SimpleProxyResolver*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_simple_proxy_resolver.not_nil!
+      @pointer.not_nil!.as(LibGio::SimpleProxyResolver*)
     end
 
     # Implements ProxyResolver
@@ -25,17 +26,17 @@ module Gio
     end
 
     def default_proxy=(default_proxy)
-      LibGio.simple_proxy_resolver_set_default_proxy(to_unsafe.as(LibGio::SimpleProxyResolver*), default_proxy.to_unsafe)
+      LibGio.simple_proxy_resolver_set_default_proxy(@pointer.as(LibGio::SimpleProxyResolver*), default_proxy.to_unsafe)
       nil
     end
 
     def ignore_hosts=(ignore_hosts)
-      LibGio.simple_proxy_resolver_set_ignore_hosts(to_unsafe.as(LibGio::SimpleProxyResolver*), ignore_hosts.to_unsafe)
+      LibGio.simple_proxy_resolver_set_ignore_hosts(@pointer.as(LibGio::SimpleProxyResolver*), ignore_hosts.to_unsafe)
       nil
     end
 
     def set_uri_proxy(uri_scheme, proxy)
-      LibGio.simple_proxy_resolver_set_uri_proxy(to_unsafe.as(LibGio::SimpleProxyResolver*), uri_scheme.to_unsafe, proxy.to_unsafe)
+      LibGio.simple_proxy_resolver_set_uri_proxy(@pointer.as(LibGio::SimpleProxyResolver*), uri_scheme.to_unsafe, proxy.to_unsafe)
       nil
     end
 

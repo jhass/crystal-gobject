@@ -2,26 +2,27 @@ module Gio
   class IOExtension
     include GObject::WrappedType
 
-    @gio_i_o_extension : LibGio::IOExtension*?
-    def initialize(@gio_i_o_extension : LibGio::IOExtension*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::IOExtension*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_i_o_extension.not_nil!
+      @pointer.not_nil!.as(LibGio::IOExtension*)
     end
 
     def name
-      __return_value = LibGio.i_o_extension_get_name(to_unsafe.as(LibGio::IOExtension*))
+      __return_value = LibGio.i_o_extension_get_name(@pointer.as(LibGio::IOExtension*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
     def priority
-      __return_value = LibGio.i_o_extension_get_priority(to_unsafe.as(LibGio::IOExtension*))
+      __return_value = LibGio.i_o_extension_get_priority(@pointer.as(LibGio::IOExtension*))
       __return_value
     end
 
     def type
-      __return_value = LibGio.i_o_extension_get_type(to_unsafe.as(LibGio::IOExtension*))
+      __return_value = LibGio.i_o_extension_get_type(@pointer.as(LibGio::IOExtension*))
       __return_value
     end
 

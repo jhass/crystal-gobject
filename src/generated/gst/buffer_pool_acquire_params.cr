@@ -12,12 +12,13 @@ module Gst
       end
     end
 
-    @gst_buffer_pool_acquire_params : LibGst::BufferPoolAcquireParams*?
-    def initialize(@gst_buffer_pool_acquire_params : LibGst::BufferPoolAcquireParams*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::BufferPoolAcquireParams*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_buffer_pool_acquire_params.not_nil!
+      @pointer.not_nil!.as(LibGst::BufferPoolAcquireParams*)
     end
 
     def format

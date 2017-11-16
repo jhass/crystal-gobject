@@ -10,12 +10,13 @@ module GLib
       end
     end
 
-    @g_lib_byte_array : LibGLib::ByteArray*?
-    def initialize(@g_lib_byte_array : LibGLib::ByteArray*)
+    @pointer : Void*
+    def initialize(pointer : LibGLib::ByteArray*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_lib_byte_array.not_nil!
+      @pointer.not_nil!.as(LibGLib::ByteArray*)
     end
 
     def self.free(array, free_segment)

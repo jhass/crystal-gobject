@@ -12,12 +12,13 @@ module Pango
       end
     end
 
-    @pango_item : LibPango::Item*?
-    def initialize(@pango_item : LibPango::Item*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::Item*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_item.not_nil!
+      @pointer.not_nil!.as(LibPango::Item*)
     end
 
     def self.new : self
@@ -26,17 +27,17 @@ module Pango
     end
 
     def copy
-      __return_value = LibPango.item_copy(to_unsafe.as(LibPango::Item*))
+      __return_value = LibPango.item_copy(@pointer.as(LibPango::Item*))
       Pango::Item.new(__return_value) if __return_value
     end
 
     def free
-      LibPango.item_free(to_unsafe.as(LibPango::Item*))
+      LibPango.item_free(@pointer.as(LibPango::Item*))
       nil
     end
 
     def split(split_index, split_offset)
-      __return_value = LibPango.item_split(to_unsafe.as(LibPango::Item*), Int32.new(split_index), Int32.new(split_offset))
+      __return_value = LibPango.item_split(@pointer.as(LibPango::Item*), Int32.new(split_index), Int32.new(split_offset))
       Pango::Item.new(__return_value)
     end
 

@@ -2,12 +2,13 @@ module Gio
   class DBusObjectProxyPrivate
     include GObject::WrappedType
 
-    @gio_d_bus_object_proxy_private : LibGio::DBusObjectProxyPrivate*?
-    def initialize(@gio_d_bus_object_proxy_private : LibGio::DBusObjectProxyPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGio::DBusObjectProxyPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gio_d_bus_object_proxy_private.not_nil!
+      @pointer.not_nil!.as(LibGio::DBusObjectProxyPrivate*)
     end
 
   end

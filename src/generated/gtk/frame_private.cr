@@ -2,12 +2,13 @@ module Gtk
   class FramePrivate
     include GObject::WrappedType
 
-    @gtk_frame_private : LibGtk::FramePrivate*?
-    def initialize(@gtk_frame_private : LibGtk::FramePrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::FramePrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_frame_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::FramePrivate*)
     end
 
   end

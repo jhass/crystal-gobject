@@ -12,12 +12,13 @@ module Gst
       end
     end
 
-    @gst_event : LibGst::Event*?
-    def initialize(@gst_event : LibGst::Event*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::Event*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_event.not_nil!
+      @pointer.not_nil!.as(LibGst::Event*)
     end
 
     def self.new_buffer_size(format : Gst::Format, minsize, maxsize, async) : self
@@ -141,167 +142,167 @@ module Gst
     end
 
     def copy_segment(segment)
-      LibGst.event_copy_segment(to_unsafe.as(LibGst::Event*), segment.to_unsafe.as(LibGst::Segment*))
+      LibGst.event_copy_segment(@pointer.as(LibGst::Event*), segment.to_unsafe.as(LibGst::Segment*))
       nil
     end
 
     def running_time_offset
-      __return_value = LibGst.event_get_running_time_offset(to_unsafe.as(LibGst::Event*))
+      __return_value = LibGst.event_get_running_time_offset(@pointer.as(LibGst::Event*))
       __return_value
     end
 
     def seqnum
-      __return_value = LibGst.event_get_seqnum(to_unsafe.as(LibGst::Event*))
+      __return_value = LibGst.event_get_seqnum(@pointer.as(LibGst::Event*))
       __return_value
     end
 
     def structure
-      __return_value = LibGst.event_get_structure(to_unsafe.as(LibGst::Event*))
+      __return_value = LibGst.event_get_structure(@pointer.as(LibGst::Event*))
       Gst::Structure.new(__return_value)
     end
 
     def has_name(name)
-      __return_value = LibGst.event_has_name(to_unsafe.as(LibGst::Event*), name.to_unsafe)
+      __return_value = LibGst.event_has_name(@pointer.as(LibGst::Event*), name.to_unsafe)
       __return_value
     end
 
     def parse_buffer_size(format : Gst::Format, minsize, maxsize, async)
-      LibGst.event_parse_buffer_size(to_unsafe.as(LibGst::Event*), format, minsize, maxsize, async)
+      LibGst.event_parse_buffer_size(@pointer.as(LibGst::Event*), format, minsize, maxsize, async)
       nil
     end
 
     def parse_caps(caps)
-      LibGst.event_parse_caps(to_unsafe.as(LibGst::Event*), caps)
+      LibGst.event_parse_caps(@pointer.as(LibGst::Event*), caps)
       nil
     end
 
     def parse_flush_stop(reset_time)
-      LibGst.event_parse_flush_stop(to_unsafe.as(LibGst::Event*), reset_time)
+      LibGst.event_parse_flush_stop(@pointer.as(LibGst::Event*), reset_time)
       nil
     end
 
     def parse_gap(timestamp, duration)
-      LibGst.event_parse_gap(to_unsafe.as(LibGst::Event*), timestamp, duration)
+      LibGst.event_parse_gap(@pointer.as(LibGst::Event*), timestamp, duration)
       nil
     end
 
     def parse_group_id(group_id)
-      __return_value = LibGst.event_parse_group_id(to_unsafe.as(LibGst::Event*), group_id)
+      __return_value = LibGst.event_parse_group_id(@pointer.as(LibGst::Event*), group_id)
       __return_value
     end
 
     def parse_latency(latency)
-      LibGst.event_parse_latency(to_unsafe.as(LibGst::Event*), latency)
+      LibGst.event_parse_latency(@pointer.as(LibGst::Event*), latency)
       nil
     end
 
     def parse_protection(system_id, data, origin)
-      LibGst.event_parse_protection(to_unsafe.as(LibGst::Event*), system_id, data, origin ? origin.to_unsafe : nil)
+      LibGst.event_parse_protection(@pointer.as(LibGst::Event*), system_id, data, origin ? origin.to_unsafe : nil)
       nil
     end
 
     def parse_qos(type : Gst::QOSType, proportion, diff, timestamp)
-      LibGst.event_parse_qos(to_unsafe.as(LibGst::Event*), type, proportion, diff, timestamp)
+      LibGst.event_parse_qos(@pointer.as(LibGst::Event*), type, proportion, diff, timestamp)
       nil
     end
 
     def parse_seek(rate, format : Gst::Format, flags : Gst::SeekFlags, start_type : Gst::SeekType, start, stop_type : Gst::SeekType, stop)
-      LibGst.event_parse_seek(to_unsafe.as(LibGst::Event*), rate, format, flags, start_type, start, stop_type, stop)
+      LibGst.event_parse_seek(@pointer.as(LibGst::Event*), rate, format, flags, start_type, start, stop_type, stop)
       nil
     end
 
     def parse_segment(segment)
-      LibGst.event_parse_segment(to_unsafe.as(LibGst::Event*), segment)
+      LibGst.event_parse_segment(@pointer.as(LibGst::Event*), segment)
       nil
     end
 
     def parse_segment_done(format : Gst::Format?, position)
-      LibGst.event_parse_segment_done(to_unsafe.as(LibGst::Event*), format, position)
+      LibGst.event_parse_segment_done(@pointer.as(LibGst::Event*), format, position)
       nil
     end
 
     def parse_select_streams(streams)
-      LibGst.event_parse_select_streams(to_unsafe.as(LibGst::Event*), streams)
+      LibGst.event_parse_select_streams(@pointer.as(LibGst::Event*), streams)
       nil
     end
 
     def parse_sink_message(msg)
-      LibGst.event_parse_sink_message(to_unsafe.as(LibGst::Event*), msg)
+      LibGst.event_parse_sink_message(@pointer.as(LibGst::Event*), msg)
       nil
     end
 
     def parse_step(format : Gst::Format?, amount, rate, flush, intermediate)
-      LibGst.event_parse_step(to_unsafe.as(LibGst::Event*), format, amount, rate, flush, intermediate)
+      LibGst.event_parse_step(@pointer.as(LibGst::Event*), format, amount, rate, flush, intermediate)
       nil
     end
 
     def parse_stream(stream)
-      LibGst.event_parse_stream(to_unsafe.as(LibGst::Event*), stream)
+      LibGst.event_parse_stream(@pointer.as(LibGst::Event*), stream)
       nil
     end
 
     def parse_stream_collection(collection)
-      LibGst.event_parse_stream_collection(to_unsafe.as(LibGst::Event*), collection)
+      LibGst.event_parse_stream_collection(@pointer.as(LibGst::Event*), collection)
       nil
     end
 
     def parse_stream_flags(flags : Gst::StreamFlags)
-      LibGst.event_parse_stream_flags(to_unsafe.as(LibGst::Event*), flags)
+      LibGst.event_parse_stream_flags(@pointer.as(LibGst::Event*), flags)
       nil
     end
 
     def parse_stream_group_done(group_id)
-      LibGst.event_parse_stream_group_done(to_unsafe.as(LibGst::Event*), group_id)
+      LibGst.event_parse_stream_group_done(@pointer.as(LibGst::Event*), group_id)
       nil
     end
 
     def parse_stream_start(stream_id)
-      LibGst.event_parse_stream_start(to_unsafe.as(LibGst::Event*), stream_id)
+      LibGst.event_parse_stream_start(@pointer.as(LibGst::Event*), stream_id)
       nil
     end
 
     def parse_tag(taglist)
-      LibGst.event_parse_tag(to_unsafe.as(LibGst::Event*), taglist)
+      LibGst.event_parse_tag(@pointer.as(LibGst::Event*), taglist)
       nil
     end
 
     def parse_toc(toc, updated)
-      LibGst.event_parse_toc(to_unsafe.as(LibGst::Event*), toc, updated)
+      LibGst.event_parse_toc(@pointer.as(LibGst::Event*), toc, updated)
       nil
     end
 
     def parse_toc_select(uid)
-      LibGst.event_parse_toc_select(to_unsafe.as(LibGst::Event*), uid)
+      LibGst.event_parse_toc_select(@pointer.as(LibGst::Event*), uid)
       nil
     end
 
     def group_id=(group_id)
-      LibGst.event_set_group_id(to_unsafe.as(LibGst::Event*), UInt32.new(group_id))
+      LibGst.event_set_group_id(@pointer.as(LibGst::Event*), UInt32.new(group_id))
       nil
     end
 
     def running_time_offset=(offset)
-      LibGst.event_set_running_time_offset(to_unsafe.as(LibGst::Event*), Int64.new(offset))
+      LibGst.event_set_running_time_offset(@pointer.as(LibGst::Event*), Int64.new(offset))
       nil
     end
 
     def seqnum=(seqnum)
-      LibGst.event_set_seqnum(to_unsafe.as(LibGst::Event*), UInt32.new(seqnum))
+      LibGst.event_set_seqnum(@pointer.as(LibGst::Event*), UInt32.new(seqnum))
       nil
     end
 
     def stream=(stream)
-      LibGst.event_set_stream(to_unsafe.as(LibGst::Event*), stream.to_unsafe.as(LibGst::Stream*))
+      LibGst.event_set_stream(@pointer.as(LibGst::Event*), stream.to_unsafe.as(LibGst::Stream*))
       nil
     end
 
     def stream_flags=(flags : Gst::StreamFlags)
-      LibGst.event_set_stream_flags(to_unsafe.as(LibGst::Event*), flags)
+      LibGst.event_set_stream_flags(@pointer.as(LibGst::Event*), flags)
       nil
     end
 
     def writable_structure
-      __return_value = LibGst.event_writable_structure(to_unsafe.as(LibGst::Event*))
+      __return_value = LibGst.event_writable_structure(@pointer.as(LibGst::Event*))
       Gst::Structure.new(__return_value)
     end
 

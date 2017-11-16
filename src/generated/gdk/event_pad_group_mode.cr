@@ -14,12 +14,13 @@ module Gdk
       end
     end
 
-    @gdk_event_pad_group_mode : LibGdk::EventPadGroupMode*?
-    def initialize(@gdk_event_pad_group_mode : LibGdk::EventPadGroupMode*)
+    @pointer : Void*
+    def initialize(pointer : LibGdk::EventPadGroupMode*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gdk_event_pad_group_mode.not_nil!
+      @pointer.not_nil!.as(LibGdk::EventPadGroupMode*)
     end
 
     def type

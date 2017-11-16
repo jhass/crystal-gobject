@@ -1,17 +1,17 @@
 module Gio
   module DBusObject
     def interface(interface_name)
-      __return_value = LibGio.d_bus_object_get_interface(to_unsafe.as(LibGio::DBusObject*), interface_name.to_unsafe)
+      __return_value = LibGio.d_bus_object_get_interface(@pointer.as(LibGio::DBusObject*), interface_name.to_unsafe)
       __return_value
     end
 
     def interfaces
-      __return_value = LibGio.d_bus_object_get_interfaces(to_unsafe.as(LibGio::DBusObject*))
+      __return_value = LibGio.d_bus_object_get_interfaces(@pointer.as(LibGio::DBusObject*))
       GLib::ListIterator(Gio::DBusInterface, LibGio::DBusInterface*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def object_path
-      __return_value = LibGio.d_bus_object_get_object_path(to_unsafe.as(LibGio::DBusObject*))
+      __return_value = LibGio.d_bus_object_get_object_path(@pointer.as(LibGio::DBusObject*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

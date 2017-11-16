@@ -2,12 +2,13 @@ require "./plugin_feature"
 
 module Gst
   class DynamicTypeFactory < PluginFeature
-    @gst_dynamic_type_factory : LibGst::DynamicTypeFactory*?
-    def initialize(@gst_dynamic_type_factory : LibGst::DynamicTypeFactory*)
+    @pointer : Void*
+    def initialize(pointer : LibGst::DynamicTypeFactory*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gst_dynamic_type_factory.not_nil!
+      @pointer.not_nil!.as(LibGst::DynamicTypeFactory*)
     end
 
     def self.load(factoryname)

@@ -2,12 +2,13 @@ require "./button_accessible"
 
 module Gtk
   class ToggleButtonAccessible < ButtonAccessible
-    @gtk_toggle_button_accessible : LibGtk::ToggleButtonAccessible*?
-    def initialize(@gtk_toggle_button_accessible : LibGtk::ToggleButtonAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::ToggleButtonAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_toggle_button_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::ToggleButtonAccessible*)
     end
 
     # Implements Action

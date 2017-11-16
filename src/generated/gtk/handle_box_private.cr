@@ -2,12 +2,13 @@ module Gtk
   class HandleBoxPrivate
     include GObject::WrappedType
 
-    @gtk_handle_box_private : LibGtk::HandleBoxPrivate*?
-    def initialize(@gtk_handle_box_private : LibGtk::HandleBoxPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::HandleBoxPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_handle_box_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::HandleBoxPrivate*)
     end
 
   end

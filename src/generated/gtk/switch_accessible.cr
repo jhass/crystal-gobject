@@ -2,12 +2,13 @@ require "./widget_accessible"
 
 module Gtk
   class SwitchAccessible < WidgetAccessible
-    @gtk_switch_accessible : LibGtk::SwitchAccessible*?
-    def initialize(@gtk_switch_accessible : LibGtk::SwitchAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::SwitchAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_switch_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::SwitchAccessible*)
     end
 
     # Implements Action

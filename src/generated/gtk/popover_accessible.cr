@@ -2,12 +2,13 @@ require "./container_accessible"
 
 module Gtk
   class PopoverAccessible < ContainerAccessible
-    @gtk_popover_accessible : LibGtk::PopoverAccessible*?
-    def initialize(@gtk_popover_accessible : LibGtk::PopoverAccessible*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::PopoverAccessible*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_popover_accessible.not_nil!
+      @pointer.not_nil!.as(LibGtk::PopoverAccessible*)
     end
 
     # Implements Component

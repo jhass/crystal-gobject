@@ -10,12 +10,13 @@ module GObject
       end
     end
 
-    @g_object_closure : LibGObject::Closure*?
-    def initialize(@g_object_closure : LibGObject::Closure*)
+    @pointer : Void*
+    def initialize(pointer : LibGObject::Closure*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @g_object_closure.not_nil!
+      @pointer.not_nil!.as(LibGObject::Closure*)
     end
 
     def self.new_object(sizeof_closure, object) : self
@@ -29,27 +30,27 @@ module GObject
     end
 
     def invalidate
-      LibGObject.closure_invalidate(to_unsafe.as(LibGObject::Closure*))
+      LibGObject.closure_invalidate(@pointer.as(LibGObject::Closure*))
       nil
     end
 
     def invoke(return_value, n_param_values, param_values, invocation_hint)
-      LibGObject.closure_invoke(to_unsafe.as(LibGObject::Closure*), return_value, UInt32.new(n_param_values), param_values, invocation_hint ? invocation_hint : nil)
+      LibGObject.closure_invoke(@pointer.as(LibGObject::Closure*), return_value, UInt32.new(n_param_values), param_values, invocation_hint ? invocation_hint : nil)
       nil
     end
 
     def ref
-      __return_value = LibGObject.closure_ref(to_unsafe.as(LibGObject::Closure*))
+      __return_value = LibGObject.closure_ref(@pointer.as(LibGObject::Closure*))
       GObject::Closure.new(__return_value)
     end
 
     def sink
-      LibGObject.closure_sink(to_unsafe.as(LibGObject::Closure*))
+      LibGObject.closure_sink(@pointer.as(LibGObject::Closure*))
       nil
     end
 
     def unref
-      LibGObject.closure_unref(to_unsafe.as(LibGObject::Closure*))
+      LibGObject.closure_unref(@pointer.as(LibGObject::Closure*))
       nil
     end
 

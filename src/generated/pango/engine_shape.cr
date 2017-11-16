@@ -2,12 +2,13 @@ require "./engine"
 
 module Pango
   class EngineShape < Engine
-    @pango_engine_shape : LibPango::EngineShape*?
-    def initialize(@pango_engine_shape : LibPango::EngineShape*)
+    @pointer : Void*
+    def initialize(pointer : LibPango::EngineShape*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @pango_engine_shape.not_nil!
+      @pointer.not_nil!.as(LibPango::EngineShape*)
     end
 
   end

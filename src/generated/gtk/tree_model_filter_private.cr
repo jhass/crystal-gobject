@@ -2,12 +2,13 @@ module Gtk
   class TreeModelFilterPrivate
     include GObject::WrappedType
 
-    @gtk_tree_model_filter_private : LibGtk::TreeModelFilterPrivate*?
-    def initialize(@gtk_tree_model_filter_private : LibGtk::TreeModelFilterPrivate*)
+    @pointer : Void*
+    def initialize(pointer : LibGtk::TreeModelFilterPrivate*)
+      @pointer = pointer.as(Void*)
     end
 
     def to_unsafe
-      @gtk_tree_model_filter_private.not_nil!
+      @pointer.not_nil!.as(LibGtk::TreeModelFilterPrivate*)
     end
 
   end
