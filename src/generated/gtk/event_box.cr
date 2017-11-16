@@ -14,13 +14,15 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def above_child
-      __return_value = LibGtk.event_box_get_above_child(to_unsafe.as(LibGtk::EventBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "above_child", gvalue)
+      gvalue.boolean
     end
 
     def visible_window
-      __return_value = LibGtk.event_box_get_visible_window(to_unsafe.as(LibGtk::EventBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "visible_window", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self

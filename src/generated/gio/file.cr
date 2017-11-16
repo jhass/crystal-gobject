@@ -20,7 +20,7 @@ module Gio
       __return_value
     end
 
-    def self.new_tmp(tmpl, iostream)
+    def self.new_tmp(tmpl, iostream) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_new_tmp(tmpl ? tmpl.to_unsafe : nil, iostream, pointerof(__error))
       GLib::Error.assert __error
@@ -32,7 +32,7 @@ module Gio
       __return_value
     end
 
-    def append_to(flags : Gio::FileCreateFlags, cancellable)
+    def append_to(flags : Gio::FileCreateFlags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_append_to(@pointer.as(LibGio::File*), flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -44,14 +44,14 @@ module Gio
       nil
     end
 
-    def append_to_finish(res)
+    def append_to_finish(res) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_append_to_finish(@pointer.as(LibGio::File*), res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       Gio::FileOutputStream.new(__return_value)
     end
 
-    def copy(destination, flags : Gio::FileCopyFlags, cancellable, progress_callback, progress_callback_data)
+    def copy(destination, flags : Gio::FileCopyFlags, cancellable, progress_callback, progress_callback_data) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_copy(@pointer.as(LibGio::File*), destination.to_unsafe.as(LibGio::File*), flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, progress_callback ? progress_callback : nil, progress_callback_data ? progress_callback_data : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -63,21 +63,21 @@ module Gio
       nil
     end
 
-    def copy_attributes(destination, flags : Gio::FileCopyFlags, cancellable)
+    def copy_attributes(destination, flags : Gio::FileCopyFlags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_copy_attributes(@pointer.as(LibGio::File*), destination.to_unsafe.as(LibGio::File*), flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def copy_finish(res)
+    def copy_finish(res) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_copy_finish(@pointer.as(LibGio::File*), res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def create(flags : Gio::FileCreateFlags, cancellable)
+    def create(flags : Gio::FileCreateFlags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_create(@pointer.as(LibGio::File*), flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -89,14 +89,14 @@ module Gio
       nil
     end
 
-    def create_finish(res)
+    def create_finish(res) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_create_finish(@pointer.as(LibGio::File*), res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       Gio::FileOutputStream.new(__return_value)
     end
 
-    def create_readwrite(flags : Gio::FileCreateFlags, cancellable)
+    def create_readwrite(flags : Gio::FileCreateFlags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_create_readwrite(@pointer.as(LibGio::File*), flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -108,14 +108,14 @@ module Gio
       nil
     end
 
-    def create_readwrite_finish(res)
+    def create_readwrite_finish(res) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_create_readwrite_finish(@pointer.as(LibGio::File*), res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       Gio::FileIOStream.new(__return_value)
     end
 
-    def delete(cancellable)
+    def delete(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_delete(@pointer.as(LibGio::File*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -127,7 +127,7 @@ module Gio
       nil
     end
 
-    def delete_finish(result)
+    def delete_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_delete_finish(@pointer.as(LibGio::File*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -144,7 +144,7 @@ module Gio
       nil
     end
 
-    def eject_mountable_finish(result)
+    def eject_mountable_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_eject_mountable_finish(@pointer.as(LibGio::File*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -156,14 +156,14 @@ module Gio
       nil
     end
 
-    def eject_mountable_with_operation_finish(result)
+    def eject_mountable_with_operation_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_eject_mountable_with_operation_finish(@pointer.as(LibGio::File*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def enumerate_children(attributes, flags : Gio::FileQueryInfoFlags, cancellable)
+    def enumerate_children(attributes, flags : Gio::FileQueryInfoFlags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_enumerate_children(@pointer.as(LibGio::File*), attributes.to_unsafe, flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -175,7 +175,7 @@ module Gio
       nil
     end
 
-    def enumerate_children_finish(res)
+    def enumerate_children_finish(res) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_enumerate_children_finish(@pointer.as(LibGio::File*), res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -187,7 +187,7 @@ module Gio
       __return_value
     end
 
-    def find_enclosing_mount(cancellable)
+    def find_enclosing_mount(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_find_enclosing_mount(@pointer.as(LibGio::File*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -199,7 +199,7 @@ module Gio
       nil
     end
 
-    def find_enclosing_mount_finish(res)
+    def find_enclosing_mount_finish(res) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_find_enclosing_mount_finish(@pointer.as(LibGio::File*), res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -216,7 +216,7 @@ module Gio
       __return_value
     end
 
-    def child_for_display_name(display_name)
+    def child_for_display_name(display_name) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_get_child_for_display_name(@pointer.as(LibGio::File*), display_name.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
@@ -278,7 +278,7 @@ module Gio
       __return_value
     end
 
-    def load_contents(cancellable, contents, length, etag_out)
+    def load_contents(cancellable, contents, length, etag_out) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_load_contents(@pointer.as(LibGio::File*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, contents, length, etag_out, pointerof(__error))
       GLib::Error.assert __error
@@ -290,21 +290,21 @@ module Gio
       nil
     end
 
-    def load_contents_finish(res, contents, length, etag_out)
+    def load_contents_finish(res, contents, length, etag_out) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_load_contents_finish(@pointer.as(LibGio::File*), res.to_unsafe.as(LibGio::AsyncResult*), contents, length, etag_out, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def load_partial_contents_finish(res, contents, length, etag_out)
+    def load_partial_contents_finish(res, contents, length, etag_out) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_load_partial_contents_finish(@pointer.as(LibGio::File*), res.to_unsafe.as(LibGio::AsyncResult*), contents, length, etag_out, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def make_directory(cancellable)
+    def make_directory(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_make_directory(@pointer.as(LibGio::File*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -316,49 +316,49 @@ module Gio
       nil
     end
 
-    def make_directory_finish(result)
+    def make_directory_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_make_directory_finish(@pointer.as(LibGio::File*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def make_directory_with_parents(cancellable)
+    def make_directory_with_parents(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_make_directory_with_parents(@pointer.as(LibGio::File*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def make_symbolic_link(symlink_value, cancellable)
+    def make_symbolic_link(symlink_value, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_make_symbolic_link(@pointer.as(LibGio::File*), symlink_value.to_unsafe, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def measure_disk_usage_finish(result, disk_usage, num_dirs, num_files)
+    def measure_disk_usage_finish(result, disk_usage, num_dirs, num_files) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_measure_disk_usage_finish(@pointer.as(LibGio::File*), result.to_unsafe.as(LibGio::AsyncResult*), disk_usage, num_dirs, num_files, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def monitor(flags : Gio::FileMonitorFlags, cancellable)
+    def monitor(flags : Gio::FileMonitorFlags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_monitor(@pointer.as(LibGio::File*), flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       Gio::FileMonitor.new(__return_value)
     end
 
-    def monitor_directory(flags : Gio::FileMonitorFlags, cancellable)
+    def monitor_directory(flags : Gio::FileMonitorFlags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_monitor_directory(@pointer.as(LibGio::File*), flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       Gio::FileMonitor.new(__return_value)
     end
 
-    def monitor_file(flags : Gio::FileMonitorFlags, cancellable)
+    def monitor_file(flags : Gio::FileMonitorFlags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_monitor_file(@pointer.as(LibGio::File*), flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -370,7 +370,7 @@ module Gio
       nil
     end
 
-    def mount_enclosing_volume_finish(result)
+    def mount_enclosing_volume_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_mount_enclosing_volume_finish(@pointer.as(LibGio::File*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -382,21 +382,21 @@ module Gio
       nil
     end
 
-    def mount_mountable_finish(result)
+    def mount_mountable_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_mount_mountable_finish(@pointer.as(LibGio::File*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def move(destination, flags : Gio::FileCopyFlags, cancellable, progress_callback, progress_callback_data)
+    def move(destination, flags : Gio::FileCopyFlags, cancellable, progress_callback, progress_callback_data) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_move(@pointer.as(LibGio::File*), destination.to_unsafe.as(LibGio::File*), flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, progress_callback ? progress_callback : nil, progress_callback_data ? progress_callback_data : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def open_readwrite(cancellable)
+    def open_readwrite(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_open_readwrite(@pointer.as(LibGio::File*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -408,7 +408,7 @@ module Gio
       nil
     end
 
-    def open_readwrite_finish(res)
+    def open_readwrite_finish(res) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_open_readwrite_finish(@pointer.as(LibGio::File*), res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -420,14 +420,14 @@ module Gio
       nil
     end
 
-    def poll_mountable_finish(result)
+    def poll_mountable_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_poll_mountable_finish(@pointer.as(LibGio::File*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def query_default_handler(cancellable)
+    def query_default_handler(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_query_default_handler(@pointer.as(LibGio::File*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -444,7 +444,7 @@ module Gio
       __return_value
     end
 
-    def query_filesystem_info(attributes, cancellable)
+    def query_filesystem_info(attributes, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_query_filesystem_info(@pointer.as(LibGio::File*), attributes.to_unsafe, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -456,14 +456,14 @@ module Gio
       nil
     end
 
-    def query_filesystem_info_finish(res)
+    def query_filesystem_info_finish(res) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_query_filesystem_info_finish(@pointer.as(LibGio::File*), res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       Gio::FileInfo.new(__return_value)
     end
 
-    def query_info(attributes, flags : Gio::FileQueryInfoFlags, cancellable)
+    def query_info(attributes, flags : Gio::FileQueryInfoFlags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_query_info(@pointer.as(LibGio::File*), attributes.to_unsafe, flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -475,28 +475,28 @@ module Gio
       nil
     end
 
-    def query_info_finish(res)
+    def query_info_finish(res) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_query_info_finish(@pointer.as(LibGio::File*), res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       Gio::FileInfo.new(__return_value)
     end
 
-    def query_settable_attributes(cancellable)
+    def query_settable_attributes(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_query_settable_attributes(@pointer.as(LibGio::File*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       Gio::FileAttributeInfoList.new(__return_value)
     end
 
-    def query_writable_namespaces(cancellable)
+    def query_writable_namespaces(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_query_writable_namespaces(@pointer.as(LibGio::File*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       Gio::FileAttributeInfoList.new(__return_value)
     end
 
-    def read(cancellable)
+    def read(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_read(@pointer.as(LibGio::File*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -508,14 +508,14 @@ module Gio
       nil
     end
 
-    def read_finish(res)
+    def read_finish(res) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_read_finish(@pointer.as(LibGio::File*), res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       Gio::FileInputStream.new(__return_value)
     end
 
-    def replace(etag, make_backup, flags : Gio::FileCreateFlags, cancellable)
+    def replace(etag, make_backup, flags : Gio::FileCreateFlags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_replace(@pointer.as(LibGio::File*), etag ? etag.to_unsafe : nil, make_backup, flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -527,7 +527,7 @@ module Gio
       nil
     end
 
-    def replace_contents(contents, length, etag, make_backup, flags : Gio::FileCreateFlags, new_etag, cancellable)
+    def replace_contents(contents, length, etag, make_backup, flags : Gio::FileCreateFlags, new_etag, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_replace_contents(@pointer.as(LibGio::File*), contents, UInt64.new(length), etag ? etag.to_unsafe : nil, make_backup, flags, new_etag, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -544,21 +544,21 @@ module Gio
       nil
     end
 
-    def replace_contents_finish(res, new_etag)
+    def replace_contents_finish(res, new_etag) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_replace_contents_finish(@pointer.as(LibGio::File*), res.to_unsafe.as(LibGio::AsyncResult*), new_etag, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def replace_finish(res)
+    def replace_finish(res) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_replace_finish(@pointer.as(LibGio::File*), res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       Gio::FileOutputStream.new(__return_value)
     end
 
-    def replace_readwrite(etag, make_backup, flags : Gio::FileCreateFlags, cancellable)
+    def replace_readwrite(etag, make_backup, flags : Gio::FileCreateFlags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_replace_readwrite(@pointer.as(LibGio::File*), etag ? etag.to_unsafe : nil, make_backup, flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -570,7 +570,7 @@ module Gio
       nil
     end
 
-    def replace_readwrite_finish(res)
+    def replace_readwrite_finish(res) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_replace_readwrite_finish(@pointer.as(LibGio::File*), res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -582,49 +582,49 @@ module Gio
       __return_value
     end
 
-    def set_attribute(attribute, type : Gio::FileAttributeType, value_p, flags : Gio::FileQueryInfoFlags, cancellable)
+    def set_attribute(attribute, type : Gio::FileAttributeType, value_p, flags : Gio::FileQueryInfoFlags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_set_attribute(@pointer.as(LibGio::File*), attribute.to_unsafe, type, value_p ? value_p : nil, flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def set_attribute_byte_string(attribute, value, flags : Gio::FileQueryInfoFlags, cancellable)
+    def set_attribute_byte_string(attribute, value, flags : Gio::FileQueryInfoFlags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_set_attribute_byte_string(@pointer.as(LibGio::File*), attribute.to_unsafe, value.to_unsafe, flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def set_attribute_int32(attribute, value, flags : Gio::FileQueryInfoFlags, cancellable)
+    def set_attribute_int32(attribute, value, flags : Gio::FileQueryInfoFlags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_set_attribute_int32(@pointer.as(LibGio::File*), attribute.to_unsafe, Int32.new(value), flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def set_attribute_int64(attribute, value, flags : Gio::FileQueryInfoFlags, cancellable)
+    def set_attribute_int64(attribute, value, flags : Gio::FileQueryInfoFlags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_set_attribute_int64(@pointer.as(LibGio::File*), attribute.to_unsafe, Int64.new(value), flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def set_attribute_string(attribute, value, flags : Gio::FileQueryInfoFlags, cancellable)
+    def set_attribute_string(attribute, value, flags : Gio::FileQueryInfoFlags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_set_attribute_string(@pointer.as(LibGio::File*), attribute.to_unsafe, value.to_unsafe, flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def set_attribute_uint32(attribute, value, flags : Gio::FileQueryInfoFlags, cancellable)
+    def set_attribute_uint32(attribute, value, flags : Gio::FileQueryInfoFlags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_set_attribute_uint32(@pointer.as(LibGio::File*), attribute.to_unsafe, UInt32.new(value), flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def set_attribute_uint64(attribute, value, flags : Gio::FileQueryInfoFlags, cancellable)
+    def set_attribute_uint64(attribute, value, flags : Gio::FileQueryInfoFlags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_set_attribute_uint64(@pointer.as(LibGio::File*), attribute.to_unsafe, UInt64.new(value), flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -636,21 +636,21 @@ module Gio
       nil
     end
 
-    def set_attributes_finish(result, info)
+    def set_attributes_finish(result, info) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_set_attributes_finish(@pointer.as(LibGio::File*), result.to_unsafe.as(LibGio::AsyncResult*), info, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def set_attributes_from_info(info, flags : Gio::FileQueryInfoFlags, cancellable)
+    def set_attributes_from_info(info, flags : Gio::FileQueryInfoFlags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_set_attributes_from_info(@pointer.as(LibGio::File*), info.to_unsafe.as(LibGio::FileInfo*), flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def set_display_name(display_name, cancellable)
+    def set_display_name(display_name, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_set_display_name(@pointer.as(LibGio::File*), display_name.to_unsafe, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -662,7 +662,7 @@ module Gio
       nil
     end
 
-    def set_display_name_finish(res)
+    def set_display_name_finish(res) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_set_display_name_finish(@pointer.as(LibGio::File*), res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -674,7 +674,7 @@ module Gio
       nil
     end
 
-    def start_mountable_finish(result)
+    def start_mountable_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_start_mountable_finish(@pointer.as(LibGio::File*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -686,7 +686,7 @@ module Gio
       nil
     end
 
-    def stop_mountable_finish(result)
+    def stop_mountable_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_stop_mountable_finish(@pointer.as(LibGio::File*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -698,7 +698,7 @@ module Gio
       __return_value
     end
 
-    def trash(cancellable)
+    def trash(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_trash(@pointer.as(LibGio::File*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -710,7 +710,7 @@ module Gio
       nil
     end
 
-    def trash_finish(result)
+    def trash_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_trash_finish(@pointer.as(LibGio::File*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -722,7 +722,7 @@ module Gio
       nil
     end
 
-    def unmount_mountable_finish(result)
+    def unmount_mountable_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_unmount_mountable_finish(@pointer.as(LibGio::File*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -734,7 +734,7 @@ module Gio
       nil
     end
 
-    def unmount_mountable_with_operation_finish(result)
+    def unmount_mountable_with_operation_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_unmount_mountable_with_operation_finish(@pointer.as(LibGio::File*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error

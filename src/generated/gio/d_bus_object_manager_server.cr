@@ -11,13 +11,15 @@ module Gio
 
     # Implements DBusObjectManager
     def connection
-      __return_value = LibGio.d_bus_object_manager_server_get_connection(to_unsafe.as(LibGio::DBusObjectManagerServer*))
-      Gio::DBusConnection.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "connection", gvalue)
+      Gio::DBusConnection.cast(gvalue.object)
     end
 
     def object_path
-      __return_value = LibGio.d_bus_object_manager_server_get_object_path(to_unsafe.as(LibGio::DBusObjectManagerServer*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "object_path", gvalue)
+      gvalue.string
     end
 
     def self.new(object_path) : self

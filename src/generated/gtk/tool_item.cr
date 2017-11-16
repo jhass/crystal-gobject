@@ -15,18 +15,21 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
     def is_important
-      __return_value = LibGtk.tool_item_get_is_important(to_unsafe.as(LibGtk::ToolItem*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_important", gvalue)
+      gvalue.boolean
     end
 
     def visible_horizontal
-      __return_value = LibGtk.tool_item_get_visible_horizontal(to_unsafe.as(LibGtk::ToolItem*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "visible_horizontal", gvalue)
+      gvalue.boolean
     end
 
     def visible_vertical
-      __return_value = LibGtk.tool_item_get_visible_vertical(to_unsafe.as(LibGtk::ToolItem*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "visible_vertical", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self

@@ -10,8 +10,9 @@ module Gio
     end
 
     def flags
-      __return_value = LibGio.test_d_bus_get_flags(to_unsafe.as(LibGio::TestDBus*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "flags", gvalue)
+      gvalue.enum
     end
 
     def self.new(flags : Gio::TestDBusFlags) : self

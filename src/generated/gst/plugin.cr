@@ -21,7 +21,7 @@ module Gst
       Gst::Plugin.new(__return_value)
     end
 
-    def self.load_file(filename)
+    def self.load_file(filename) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGst.plugin_load_file(filename.to_unsafe, pointerof(__error))
       GLib::Error.assert __error

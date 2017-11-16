@@ -14,48 +14,57 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def hhomogeneous
-      __return_value = LibGtk.stack_get_hhomogeneous(to_unsafe.as(LibGtk::Stack*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "hhomogeneous", gvalue)
+      gvalue.boolean
     end
 
     def homogeneous
-      __return_value = LibGtk.stack_get_homogeneous(to_unsafe.as(LibGtk::Stack*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "homogeneous", gvalue)
+      gvalue.boolean
     end
 
     def interpolate_size
-      __return_value = LibGtk.stack_get_interpolate_size(to_unsafe.as(LibGtk::Stack*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "interpolate_size", gvalue)
+      gvalue.boolean
     end
 
     def transition_duration
-      __return_value = LibGtk.stack_get_transition_duration(to_unsafe.as(LibGtk::Stack*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "transition_duration", gvalue)
+      gvalue
     end
 
     def transition_running
-      __return_value = LibGtk.stack_get_transition_running(to_unsafe.as(LibGtk::Stack*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "transition_running", gvalue)
+      gvalue.boolean
     end
 
     def transition_type
-      __return_value = LibGtk.stack_get_transition_type(to_unsafe.as(LibGtk::Stack*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "transition_type", gvalue)
+      gvalue.enum
     end
 
     def vhomogeneous
-      __return_value = LibGtk.stack_get_vhomogeneous(to_unsafe.as(LibGtk::Stack*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "vhomogeneous", gvalue)
+      gvalue.boolean
     end
 
     def visible_child
-      __return_value = LibGtk.stack_get_visible_child(to_unsafe.as(LibGtk::Stack*))
-      Gtk::Widget.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "visible_child", gvalue)
+      Gtk::Widget.cast(gvalue.object)
     end
 
     def visible_child_name
-      __return_value = LibGtk.stack_get_visible_child_name(to_unsafe.as(LibGtk::Stack*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "visible_child_name", gvalue)
+      gvalue.string
     end
 
     def self.new : self

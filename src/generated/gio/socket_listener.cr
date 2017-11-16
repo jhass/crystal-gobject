@@ -10,8 +10,9 @@ module Gio
     end
 
     def listen_backlog
-      __return_value = LibGio.socket_listener_get_listen_backlog(to_unsafe.as(LibGio::SocketListener*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "listen_backlog", gvalue)
+      gvalue
     end
 
     def self.new : self
@@ -19,7 +20,7 @@ module Gio
       cast Gio::SocketListener.new(__return_value)
     end
 
-    def accept(source_object, cancellable)
+    def accept(source_object, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_listener_accept(@pointer.as(LibGio::SocketListener*), source_object, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -31,14 +32,14 @@ module Gio
       nil
     end
 
-    def accept_finish(result, source_object)
+    def accept_finish(result, source_object) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_listener_accept_finish(@pointer.as(LibGio::SocketListener*), result.to_unsafe.as(LibGio::AsyncResult*), source_object, pointerof(__error))
       GLib::Error.assert __error
       Gio::SocketConnection.new(__return_value)
     end
 
-    def accept_socket(source_object, cancellable)
+    def accept_socket(source_object, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_listener_accept_socket(@pointer.as(LibGio::SocketListener*), source_object, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -50,35 +51,35 @@ module Gio
       nil
     end
 
-    def accept_socket_finish(result, source_object)
+    def accept_socket_finish(result, source_object) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_listener_accept_socket_finish(@pointer.as(LibGio::SocketListener*), result.to_unsafe.as(LibGio::AsyncResult*), source_object, pointerof(__error))
       GLib::Error.assert __error
       Gio::Socket.new(__return_value)
     end
 
-    def add_address(address, type : Gio::SocketType, protocol : Gio::SocketProtocol, source_object, effective_address)
+    def add_address(address, type : Gio::SocketType, protocol : Gio::SocketProtocol, source_object, effective_address) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_listener_add_address(@pointer.as(LibGio::SocketListener*), address.to_unsafe.as(LibGio::SocketAddress*), type, protocol, source_object ? source_object.to_unsafe.as(LibGObject::Object*) : nil, effective_address, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def add_any_inet_port(source_object)
+    def add_any_inet_port(source_object) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_listener_add_any_inet_port(@pointer.as(LibGio::SocketListener*), source_object ? source_object.to_unsafe.as(LibGObject::Object*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def add_inet_port(port, source_object)
+    def add_inet_port(port, source_object) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_listener_add_inet_port(@pointer.as(LibGio::SocketListener*), UInt16.new(port), source_object ? source_object.to_unsafe.as(LibGObject::Object*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def add_socket(socket, source_object)
+    def add_socket(socket, source_object) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_listener_add_socket(@pointer.as(LibGio::SocketListener*), socket.to_unsafe.as(LibGio::Socket*), source_object ? source_object.to_unsafe.as(LibGObject::Object*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -97,7 +98,7 @@ module Gio
 
     alias EventSignal = SocketListener, Gio::SocketListenerEvent, Gio::Socket ->
     def on_event(&__block : EventSignal)
-      __callback = ->(_arg0 : LibGio::SocketListener*, _arg1 : LibGio::LibGio::SocketListenerEvent*, _arg2 : LibGio::LibGio::Socket*) {
+      __callback = ->(_arg0 : LibGio::SocketListener*, _arg1 : LibGio::LibGio::SocketListenerEvent*, _arg2 : LibGio::LibGio::Socket**) {
        __return_value = __block.call(SocketListener.new(_arg0), _arg1, Gio::Socket.new(_arg2))
        __return_value
       }

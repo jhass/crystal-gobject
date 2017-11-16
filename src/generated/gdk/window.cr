@@ -10,8 +10,9 @@ module Gdk
     end
 
     def cursor
-      __return_value = LibGdk.window_get_cursor(to_unsafe.as(LibGdk::Window*))
-      Gdk::Cursor.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "cursor", gvalue)
+      Gdk::Cursor.cast(gvalue.object)
     end
 
     def self.new(parent, attributes, attributes_mask : Gdk::WindowAttributesType) : self
@@ -94,7 +95,7 @@ module Gdk
       nil
     end
 
-    def create_gl_context
+    def create_gl_context # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdk.window_create_gl_context(@pointer.as(LibGdk::Window*), pointerof(__error))
       GLib::Error.assert __error
@@ -193,12 +194,12 @@ module Gdk
 
     def children
       __return_value = LibGdk.window_get_children(@pointer.as(LibGdk::Window*))
-      GLib::ListIterator(Gdk::Window, LibGdk::Window*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gdk::Window, LibGdk::Window**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def children_with_user_data(user_data)
       __return_value = LibGdk.window_get_children_with_user_data(@pointer.as(LibGdk::Window*), user_data ? user_data : nil)
-      GLib::ListIterator(Gdk::Window, LibGdk::Window*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gdk::Window, LibGdk::Window**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def clip_region
@@ -513,7 +514,7 @@ module Gdk
 
     def peek_children
       __return_value = LibGdk.window_peek_children(@pointer.as(LibGdk::Window*))
-      GLib::ListIterator(Gdk::Window, LibGdk::Window*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gdk::Window, LibGdk::Window**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def process_updates(update_children)

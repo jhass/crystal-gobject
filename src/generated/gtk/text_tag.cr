@@ -10,361 +10,432 @@ module Gtk
     end
 
     def accumulative_margin
-      __return_value = LibGtk.text_tag_get_accumulative_margin(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accumulative_margin", gvalue)
+      gvalue.boolean
     end
 
 
     def background_full_height
-      __return_value = LibGtk.text_tag_get_background_full_height(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "background_full_height", gvalue)
+      gvalue.boolean
     end
 
     def background_full_height_set
-      __return_value = LibGtk.text_tag_get_background_full_height_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "background_full_height_set", gvalue)
+      gvalue.boolean
     end
 
     def background_gdk
-      __return_value = LibGtk.text_tag_get_background_gdk(to_unsafe.as(LibGtk::TextTag*))
-      Gdk::Color.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "background_gdk", gvalue)
+      Gdk::Color.cast(gvalue.object)
     end
 
     def background_rgba
-      __return_value = LibGtk.text_tag_get_background_rgba(to_unsafe.as(LibGtk::TextTag*))
-      Gdk::RGBA.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "background_rgba", gvalue)
+      Gdk::RGBA.cast(gvalue.object)
     end
 
     def background_set
-      __return_value = LibGtk.text_tag_get_background_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "background_set", gvalue)
+      gvalue.boolean
     end
 
     def direction
-      __return_value = LibGtk.text_tag_get_direction(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "direction", gvalue)
+      gvalue.enum
     end
 
     def editable
-      __return_value = LibGtk.text_tag_get_editable(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "editable", gvalue)
+      gvalue.boolean
     end
 
     def editable_set
-      __return_value = LibGtk.text_tag_get_editable_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "editable_set", gvalue)
+      gvalue.boolean
     end
 
     def fallback
-      __return_value = LibGtk.text_tag_get_fallback(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "fallback", gvalue)
+      gvalue.boolean
     end
 
     def fallback_set
-      __return_value = LibGtk.text_tag_get_fallback_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "fallback_set", gvalue)
+      gvalue.boolean
     end
 
     def family
-      __return_value = LibGtk.text_tag_get_family(to_unsafe.as(LibGtk::TextTag*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "family", gvalue)
+      gvalue.string
     end
 
     def family_set
-      __return_value = LibGtk.text_tag_get_family_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "family_set", gvalue)
+      gvalue.boolean
     end
 
     def font
-      __return_value = LibGtk.text_tag_get_font(to_unsafe.as(LibGtk::TextTag*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "font", gvalue)
+      gvalue.string
     end
 
     def font_desc
-      __return_value = LibGtk.text_tag_get_font_desc(to_unsafe.as(LibGtk::TextTag*))
-      Pango::FontDescription.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "font_desc", gvalue)
+      Pango::FontDescription.cast(gvalue.object)
     end
 
     def font_features
-      __return_value = LibGtk.text_tag_get_font_features(to_unsafe.as(LibGtk::TextTag*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "font_features", gvalue)
+      gvalue.string
     end
 
     def font_features_set
-      __return_value = LibGtk.text_tag_get_font_features_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "font_features_set", gvalue)
+      gvalue.boolean
     end
 
 
     def foreground_gdk
-      __return_value = LibGtk.text_tag_get_foreground_gdk(to_unsafe.as(LibGtk::TextTag*))
-      Gdk::Color.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "foreground_gdk", gvalue)
+      Gdk::Color.cast(gvalue.object)
     end
 
     def foreground_rgba
-      __return_value = LibGtk.text_tag_get_foreground_rgba(to_unsafe.as(LibGtk::TextTag*))
-      Gdk::RGBA.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "foreground_rgba", gvalue)
+      Gdk::RGBA.cast(gvalue.object)
     end
 
     def foreground_set
-      __return_value = LibGtk.text_tag_get_foreground_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "foreground_set", gvalue)
+      gvalue.boolean
     end
 
     def indent
-      __return_value = LibGtk.text_tag_get_indent(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "indent", gvalue)
+      gvalue
     end
 
     def indent_set
-      __return_value = LibGtk.text_tag_get_indent_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "indent_set", gvalue)
+      gvalue.boolean
     end
 
     def invisible
-      __return_value = LibGtk.text_tag_get_invisible(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "invisible", gvalue)
+      gvalue.boolean
     end
 
     def invisible_set
-      __return_value = LibGtk.text_tag_get_invisible_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "invisible_set", gvalue)
+      gvalue.boolean
     end
 
     def justification
-      __return_value = LibGtk.text_tag_get_justification(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "justification", gvalue)
+      gvalue.enum
     end
 
     def justification_set
-      __return_value = LibGtk.text_tag_get_justification_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "justification_set", gvalue)
+      gvalue.boolean
     end
 
     def language
-      __return_value = LibGtk.text_tag_get_language(to_unsafe.as(LibGtk::TextTag*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "language", gvalue)
+      gvalue.string
     end
 
     def language_set
-      __return_value = LibGtk.text_tag_get_language_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "language_set", gvalue)
+      gvalue.boolean
     end
 
     def left_margin
-      __return_value = LibGtk.text_tag_get_left_margin(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "left_margin", gvalue)
+      gvalue
     end
 
     def left_margin_set
-      __return_value = LibGtk.text_tag_get_left_margin_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "left_margin_set", gvalue)
+      gvalue.boolean
     end
 
     def letter_spacing
-      __return_value = LibGtk.text_tag_get_letter_spacing(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "letter_spacing", gvalue)
+      gvalue
     end
 
     def letter_spacing_set
-      __return_value = LibGtk.text_tag_get_letter_spacing_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "letter_spacing_set", gvalue)
+      gvalue.boolean
     end
 
     def name
-      __return_value = LibGtk.text_tag_get_name(to_unsafe.as(LibGtk::TextTag*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "name", gvalue)
+      gvalue.string
     end
 
 
     def paragraph_background_gdk
-      __return_value = LibGtk.text_tag_get_paragraph_background_gdk(to_unsafe.as(LibGtk::TextTag*))
-      Gdk::Color.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "paragraph_background_gdk", gvalue)
+      Gdk::Color.cast(gvalue.object)
     end
 
     def paragraph_background_rgba
-      __return_value = LibGtk.text_tag_get_paragraph_background_rgba(to_unsafe.as(LibGtk::TextTag*))
-      Gdk::RGBA.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "paragraph_background_rgba", gvalue)
+      Gdk::RGBA.cast(gvalue.object)
     end
 
     def paragraph_background_set
-      __return_value = LibGtk.text_tag_get_paragraph_background_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "paragraph_background_set", gvalue)
+      gvalue.boolean
     end
 
     def pixels_above_lines
-      __return_value = LibGtk.text_tag_get_pixels_above_lines(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pixels_above_lines", gvalue)
+      gvalue
     end
 
     def pixels_above_lines_set
-      __return_value = LibGtk.text_tag_get_pixels_above_lines_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pixels_above_lines_set", gvalue)
+      gvalue.boolean
     end
 
     def pixels_below_lines
-      __return_value = LibGtk.text_tag_get_pixels_below_lines(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pixels_below_lines", gvalue)
+      gvalue
     end
 
     def pixels_below_lines_set
-      __return_value = LibGtk.text_tag_get_pixels_below_lines_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pixels_below_lines_set", gvalue)
+      gvalue.boolean
     end
 
     def pixels_inside_wrap
-      __return_value = LibGtk.text_tag_get_pixels_inside_wrap(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pixels_inside_wrap", gvalue)
+      gvalue
     end
 
     def pixels_inside_wrap_set
-      __return_value = LibGtk.text_tag_get_pixels_inside_wrap_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pixels_inside_wrap_set", gvalue)
+      gvalue.boolean
     end
 
     def right_margin
-      __return_value = LibGtk.text_tag_get_right_margin(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "right_margin", gvalue)
+      gvalue
     end
 
     def right_margin_set
-      __return_value = LibGtk.text_tag_get_right_margin_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "right_margin_set", gvalue)
+      gvalue.boolean
     end
 
     def rise
-      __return_value = LibGtk.text_tag_get_rise(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "rise", gvalue)
+      gvalue
     end
 
     def rise_set
-      __return_value = LibGtk.text_tag_get_rise_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "rise_set", gvalue)
+      gvalue.boolean
     end
 
     def scale
-      __return_value = LibGtk.text_tag_get_scale(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "scale", gvalue)
+      gvalue
     end
 
     def scale_set
-      __return_value = LibGtk.text_tag_get_scale_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "scale_set", gvalue)
+      gvalue.boolean
     end
 
     def size
-      __return_value = LibGtk.text_tag_get_size(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "size", gvalue)
+      gvalue
     end
 
     def size_points
-      __return_value = LibGtk.text_tag_get_size_points(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "size_points", gvalue)
+      gvalue
     end
 
     def size_set
-      __return_value = LibGtk.text_tag_get_size_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "size_set", gvalue)
+      gvalue.boolean
     end
 
     def stretch
-      __return_value = LibGtk.text_tag_get_stretch(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "stretch", gvalue)
+      gvalue.enum
     end
 
     def stretch_set
-      __return_value = LibGtk.text_tag_get_stretch_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "stretch_set", gvalue)
+      gvalue.boolean
     end
 
     def strikethrough
-      __return_value = LibGtk.text_tag_get_strikethrough(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "strikethrough", gvalue)
+      gvalue.boolean
     end
 
     def strikethrough_rgba
-      __return_value = LibGtk.text_tag_get_strikethrough_rgba(to_unsafe.as(LibGtk::TextTag*))
-      Gdk::RGBA.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "strikethrough_rgba", gvalue)
+      Gdk::RGBA.cast(gvalue.object)
     end
 
     def strikethrough_rgba_set
-      __return_value = LibGtk.text_tag_get_strikethrough_rgba_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "strikethrough_rgba_set", gvalue)
+      gvalue.boolean
     end
 
     def strikethrough_set
-      __return_value = LibGtk.text_tag_get_strikethrough_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "strikethrough_set", gvalue)
+      gvalue.boolean
     end
 
     def style
-      __return_value = LibGtk.text_tag_get_style(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "style", gvalue)
+      gvalue.enum
     end
 
     def style_set
-      __return_value = LibGtk.text_tag_get_style_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "style_set", gvalue)
+      gvalue.boolean
     end
 
     def tabs
-      __return_value = LibGtk.text_tag_get_tabs(to_unsafe.as(LibGtk::TextTag*))
-      Pango::TabArray.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "tabs", gvalue)
+      Pango::TabArray.cast(gvalue.object)
     end
 
     def tabs_set
-      __return_value = LibGtk.text_tag_get_tabs_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "tabs_set", gvalue)
+      gvalue.boolean
     end
 
     def underline
-      __return_value = LibGtk.text_tag_get_underline(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "underline", gvalue)
+      gvalue.enum
     end
 
     def underline_rgba
-      __return_value = LibGtk.text_tag_get_underline_rgba(to_unsafe.as(LibGtk::TextTag*))
-      Gdk::RGBA.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "underline_rgba", gvalue)
+      Gdk::RGBA.cast(gvalue.object)
     end
 
     def underline_rgba_set
-      __return_value = LibGtk.text_tag_get_underline_rgba_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "underline_rgba_set", gvalue)
+      gvalue.boolean
     end
 
     def underline_set
-      __return_value = LibGtk.text_tag_get_underline_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "underline_set", gvalue)
+      gvalue.boolean
     end
 
     def variant
-      __return_value = LibGtk.text_tag_get_variant(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "variant", gvalue)
+      gvalue.enum
     end
 
     def variant_set
-      __return_value = LibGtk.text_tag_get_variant_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "variant_set", gvalue)
+      gvalue.boolean
     end
 
     def weight
-      __return_value = LibGtk.text_tag_get_weight(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "weight", gvalue)
+      gvalue
     end
 
     def weight_set
-      __return_value = LibGtk.text_tag_get_weight_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "weight_set", gvalue)
+      gvalue.boolean
     end
 
     def wrap_mode
-      __return_value = LibGtk.text_tag_get_wrap_mode(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "wrap_mode", gvalue)
+      gvalue.enum
     end
 
     def wrap_mode_set
-      __return_value = LibGtk.text_tag_get_wrap_mode_set(to_unsafe.as(LibGtk::TextTag*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "wrap_mode_set", gvalue)
+      gvalue.boolean
     end
 
     def self.new(name) : self
@@ -394,7 +465,7 @@ module Gtk
 
     alias EventSignal = TextTag, GObject::Object, Gdk::Event, Gtk::TextIter -> Bool
     def on_event(&__block : EventSignal)
-      __callback = ->(_arg0 : LibGtk::TextTag*, _arg1 : LibGtk::LibGObject::Object*, _arg2 : LibGtk::LibGdk::Event*, _arg3 : LibGtk::LibGtk::TextIter*) {
+      __callback = ->(_arg0 : LibGtk::TextTag*, _arg1 : LibGtk::LibGObject::Object**, _arg2 : LibGtk::LibGdk::Event*, _arg3 : LibGtk::LibGtk::TextIter*) {
        __return_value = __block.call(TextTag.new(_arg0), GObject::Object.new(_arg1), Gdk::Event.new(_arg2), Gtk::TextIter.new(_arg3))
        __return_value
       }

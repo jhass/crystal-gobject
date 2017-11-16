@@ -224,6 +224,7 @@ lib LibGdk
 
   struct AppLaunchContext # object
     _data : UInt8[0]
+    # Property display : LibGdk::Display*
   end
   fun app_launch_context_new = gdk_app_launch_context_new() : LibGdk::AppLaunchContext*
   fun app_launch_context_set_desktop = gdk_app_launch_context_set_desktop(this : AppLaunchContext*, desktop : Int32) : Void
@@ -235,6 +236,8 @@ lib LibGdk
 
   struct Cursor # object
     _data : UInt8[0]
+    # Property cursor_type : LibGdk::CursorType
+    # Property display : LibGdk::Display*
   end
   fun cursor_new = gdk_cursor_new(cursor_type : LibGdk::CursorType) : LibGdk::Cursor*
   fun cursor_new_for_display = gdk_cursor_new_for_display(display : LibGdk::Display*, cursor_type : LibGdk::CursorType) : LibGdk::Cursor*
@@ -252,6 +255,21 @@ lib LibGdk
     _data : UInt8[0]
     # Signal changed
     # Signal tool-changed
+    # Property associated_device : LibGdk::Device*
+    # Property axes : LibGdk::AxisFlags
+    # Property device_manager : LibGdk::DeviceManager*
+    # Property display : LibGdk::Display*
+    # Property has_cursor : Bool
+    # Property input_mode : LibGdk::InputMode
+    # Property input_source : LibGdk::InputSource
+    # Property n_axes : UInt32
+    # Property name : UInt8*
+    # Property num_touches : UInt32
+    # Property product_id : UInt8*
+    # Property seat : LibGdk::Seat*
+    # Property tool : LibGdk::DeviceTool*
+    # Property type : LibGdk::DeviceType
+    # Property vendor_id : UInt8*
   end
   fun device_grab_info_libgtk_only = gdk_device_grab_info_libgtk_only(display : LibGdk::Display*, device : LibGdk::Device*, grab_window : LibGdk::Window**, owner_events : Bool*) : Bool
   fun device_get_associated_device = gdk_device_get_associated_device(this : Device*) : LibGdk::Device*
@@ -288,6 +306,7 @@ lib LibGdk
     # Signal device-added
     # Signal device-changed
     # Signal device-removed
+    # Property display : LibGdk::Display*
   end
   fun device_manager_get_client_pointer = gdk_device_manager_get_client_pointer(this : DeviceManager*) : LibGdk::Device*
   fun device_manager_get_display = gdk_device_manager_get_display(this : DeviceManager*) : LibGdk::Display*
@@ -295,6 +314,10 @@ lib LibGdk
 
   struct DeviceTool # object
     _data : UInt8[0]
+    # Property axes : LibGdk::AxisFlags
+    # Property hardware_id : UInt64
+    # Property serial : UInt64
+    # Property tool_type : LibGdk::DeviceToolType
   end
   fun device_tool_get_hardware_id = gdk_device_tool_get_hardware_id(this : DeviceTool*) : UInt64
   fun device_tool_get_serial = gdk_device_tool_get_serial(this : DeviceTool*) : UInt64
@@ -361,6 +384,7 @@ lib LibGdk
   struct DisplayManager # object
     _data : UInt8[0]
     # Signal display-opened
+    # Property default_display : LibGdk::Display*
   end
   fun display_manager_get = gdk_display_manager_get() : LibGdk::DisplayManager*
   fun display_manager_get_default_display = gdk_display_manager_get_default_display(this : DisplayManager*) : LibGdk::Display*
@@ -390,6 +414,8 @@ lib LibGdk
 
   struct DrawingContext # object
     _data : UInt8[0]
+    # Property clip : LibCairo::Region
+    # Property window : LibGdk::Window*
   end
   fun drawing_context_get_cairo_context = gdk_drawing_context_get_cairo_context(this : DrawingContext*) : LibCairo::Context*
   fun drawing_context_get_clip = gdk_drawing_context_get_clip(this : DrawingContext*) : LibCairo::Region*
@@ -418,6 +444,9 @@ lib LibGdk
 
   struct GLContext # object
     _data : UInt8[0]
+    # Property display : LibGdk::Display*
+    # Property shared_context : LibGdk::GLContext*
+    # Property window : LibGdk::Window*
   end
   fun g_l_context_clear_current = gdk_gl_context_clear_current() : Void
   fun g_l_context_get_current = gdk_gl_context_get_current() : LibGdk::GLContext*
@@ -462,6 +491,16 @@ lib LibGdk
   struct Monitor # object
     _data : UInt8[0]
     # Signal invalidate
+    # Property display : LibGdk::Display*
+    # Property geometry : LibGdk::Rectangle
+    # Property height_mm : Int32
+    # Property manufacturer : UInt8*
+    # Property model : UInt8*
+    # Property refresh_rate : Int32
+    # Property scale_factor : Int32
+    # Property subpixel_layout : LibGdk::SubpixelLayout
+    # Property width_mm : Int32
+    # Property workarea : LibGdk::Rectangle
   end
   fun monitor_get_display = gdk_monitor_get_display(this : Monitor*) : LibGdk::Display*
   fun monitor_get_geometry = gdk_monitor_get_geometry(this : Monitor*, geometry : LibGdk::Rectangle*) : Void
@@ -480,6 +519,8 @@ lib LibGdk
     # Signal composited-changed
     # Signal monitors-changed
     # Signal size-changed
+    # Property font_options : Void*
+    # Property resolution : Float64
   end
   fun screen_get_default = gdk_screen_get_default() : LibGdk::Screen*
   fun screen_height = gdk_screen_height() : Int32
@@ -518,11 +559,12 @@ lib LibGdk
   fun screen_set_resolution = gdk_screen_set_resolution(this : Screen*, dpi : Float64) : Void
 
   struct Seat # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     # Signal device-added
     # Signal device-removed
     # Signal tool-added
     # Signal tool-removed
+    # Property display : LibGdk::Display*
   end
   fun seat_get_capabilities = gdk_seat_get_capabilities(this : Seat*) : LibGdk::SeatCapabilities
   fun seat_get_display = gdk_seat_get_display(this : Seat*) : LibGdk::Display*
@@ -562,6 +604,7 @@ lib LibGdk
     # Virtual function create_surface
     # Virtual function from_embedder
     # Virtual function to_embedder
+    # Property cursor : LibGdk::Cursor*
   end
   fun window_new = gdk_window_new(parent : LibGdk::Window*, attributes : LibGdk::WindowAttr*, attributes_mask : LibGdk::WindowAttributesType) : LibGdk::Window*
   fun window_at_pointer = gdk_window_at_pointer(win_x : Int32*, win_y : Int32*) : LibGdk::Window*

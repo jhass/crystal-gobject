@@ -24,7 +24,7 @@ module GdkPixbuf
       @pointer.not_nil!.as(LibGdkPixbuf::Pixdata*)
     end
 
-    def deserialize(stream_length, stream)
+    def deserialize(stream_length, stream) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixdata_deserialize(@pointer.as(LibGdkPixbuf::Pixdata*), UInt32.new(stream_length), stream, pointerof(__error))
       GLib::Error.assert __error

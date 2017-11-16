@@ -14,13 +14,15 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def search_mode_enabled
-      __return_value = LibGtk.search_bar_get_search_mode_enabled(to_unsafe.as(LibGtk::SearchBar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "search_mode_enabled", gvalue)
+      gvalue.boolean
     end
 
     def show_close_button
-      __return_value = LibGtk.search_bar_get_show_close_button(to_unsafe.as(LibGtk::SearchBar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_close_button", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self

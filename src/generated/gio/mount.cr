@@ -15,7 +15,7 @@ module Gio
       nil
     end
 
-    def eject_finish(result)
+    def eject_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.mount_eject_finish(@pointer.as(LibGio::Mount*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -27,7 +27,7 @@ module Gio
       nil
     end
 
-    def eject_with_operation_finish(result)
+    def eject_with_operation_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.mount_eject_with_operation_finish(@pointer.as(LibGio::Mount*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -84,14 +84,14 @@ module Gio
       nil
     end
 
-    def guess_content_type_finish(result)
+    def guess_content_type_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.mount_guess_content_type_finish(@pointer.as(LibGio::Mount*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
-    def guess_content_type_sync(force_rescan, cancellable)
+    def guess_content_type_sync(force_rescan, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.mount_guess_content_type_sync(@pointer.as(LibGio::Mount*), force_rescan, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -108,7 +108,7 @@ module Gio
       nil
     end
 
-    def remount_finish(result)
+    def remount_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.mount_remount_finish(@pointer.as(LibGio::Mount*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -125,7 +125,7 @@ module Gio
       nil
     end
 
-    def unmount_finish(result)
+    def unmount_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.mount_unmount_finish(@pointer.as(LibGio::Mount*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -137,7 +137,7 @@ module Gio
       nil
     end
 
-    def unmount_with_operation_finish(result)
+    def unmount_with_operation_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.mount_unmount_with_operation_finish(@pointer.as(LibGio::Mount*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error

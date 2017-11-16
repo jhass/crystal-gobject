@@ -16,18 +16,21 @@ module Gtk
     # Implements Orientable
     # Implements Scrollable
     def icon_size
-      __return_value = LibGtk.tool_palette_get_icon_size(to_unsafe.as(LibGtk::ToolPalette*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "icon_size", gvalue)
+      gvalue.enum
     end
 
     def icon_size_set
-      __return_value = LibGtk.tool_palette_get_icon_size_set(to_unsafe.as(LibGtk::ToolPalette*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "icon_size_set", gvalue)
+      gvalue.boolean
     end
 
     def toolbar_style
-      __return_value = LibGtk.tool_palette_get_toolbar_style(to_unsafe.as(LibGtk::ToolPalette*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "toolbar_style", gvalue)
+      gvalue.enum
     end
 
     def self.new : self

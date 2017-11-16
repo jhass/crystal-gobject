@@ -10,18 +10,21 @@ module Gdk
     end
 
     def display
-      __return_value = LibGdk.g_l_context_get_display(to_unsafe.as(LibGdk::GLContext*))
-      Gdk::Display.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "display", gvalue)
+      Gdk::Display.cast(gvalue.object)
     end
 
     def shared_context
-      __return_value = LibGdk.g_l_context_get_shared_context(to_unsafe.as(LibGdk::GLContext*))
-      Gdk::GLContext.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "shared_context", gvalue)
+      Gdk::GLContext.cast(gvalue.object)
     end
 
     def window
-      __return_value = LibGdk.g_l_context_get_window(to_unsafe.as(LibGdk::GLContext*))
-      Gdk::Window.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "window", gvalue)
+      Gdk::Window.cast(gvalue.object)
     end
 
     def self.clear_current
@@ -84,7 +87,7 @@ module Gdk
       nil
     end
 
-    def realize
+    def realize # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdk.g_l_context_realize(@pointer.as(LibGdk::GLContext*), pointerof(__error))
       GLib::Error.assert __error

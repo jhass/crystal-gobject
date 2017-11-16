@@ -26,14 +26,14 @@ module Gst
       nil
     end
 
-    def prepare
+    def prepare # function
       __error = Pointer(LibGLib::Error).null
       LibGst.task_pool_prepare(@pointer.as(LibGst::TaskPool*), pointerof(__error))
       GLib::Error.assert __error
       nil
     end
 
-    def push(func, user_data)
+    def push(func, user_data) # function
       __error = Pointer(LibGLib::Error).null
       LibGst.task_pool_push(@pointer.as(LibGst::TaskPool*), func, user_data ? user_data : nil, pointerof(__error))
       GLib::Error.assert __error

@@ -14,23 +14,27 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def child_revealed
-      __return_value = LibGtk.revealer_get_child_revealed(to_unsafe.as(LibGtk::Revealer*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "child_revealed", gvalue)
+      gvalue.boolean
     end
 
     def reveal_child
-      __return_value = LibGtk.revealer_get_reveal_child(to_unsafe.as(LibGtk::Revealer*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "reveal_child", gvalue)
+      gvalue.boolean
     end
 
     def transition_duration
-      __return_value = LibGtk.revealer_get_transition_duration(to_unsafe.as(LibGtk::Revealer*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "transition_duration", gvalue)
+      gvalue
     end
 
     def transition_type
-      __return_value = LibGtk.revealer_get_transition_type(to_unsafe.as(LibGtk::Revealer*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "transition_type", gvalue)
+      gvalue.enum
     end
 
     def self.new : self

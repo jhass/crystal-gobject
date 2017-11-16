@@ -12,18 +12,21 @@ module Gtk
     end
 
     def button
-      __return_value = LibGtk.gesture_single_get_button(to_unsafe.as(LibGtk::GestureSingle*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "button", gvalue)
+      gvalue
     end
 
     def exclusive
-      __return_value = LibGtk.gesture_single_get_exclusive(to_unsafe.as(LibGtk::GestureSingle*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "exclusive", gvalue)
+      gvalue.boolean
     end
 
     def touch_only
-      __return_value = LibGtk.gesture_single_get_touch_only(to_unsafe.as(LibGtk::GestureSingle*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "touch_only", gvalue)
+      gvalue.boolean
     end
 
     def button

@@ -11,7 +11,7 @@ module Gio
       @pointer.not_nil!.as(LibGio::UnixConnection*)
     end
 
-    def receive_credentials(cancellable)
+    def receive_credentials(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.unix_connection_receive_credentials(@pointer.as(LibGio::UnixConnection*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -23,21 +23,21 @@ module Gio
       nil
     end
 
-    def receive_credentials_finish(result)
+    def receive_credentials_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.unix_connection_receive_credentials_finish(@pointer.as(LibGio::UnixConnection*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       Gio::Credentials.new(__return_value)
     end
 
-    def receive_fd(cancellable)
+    def receive_fd(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.unix_connection_receive_fd(@pointer.as(LibGio::UnixConnection*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def send_credentials(cancellable)
+    def send_credentials(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.unix_connection_send_credentials(@pointer.as(LibGio::UnixConnection*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -49,14 +49,14 @@ module Gio
       nil
     end
 
-    def send_credentials_finish(result)
+    def send_credentials_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.unix_connection_send_credentials_finish(@pointer.as(LibGio::UnixConnection*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def send_fd(fd, cancellable)
+    def send_fd(fd, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.unix_connection_send_fd(@pointer.as(LibGio::UnixConnection*), Int32.new(fd), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error

@@ -29,19 +29,21 @@ module GIRepository
     def wrapper_definition(libname, indent="")
       String.build do |io|
         this = "to_unsafe.as(#{libname}::#{container.name}*)"
-
         if getter?
           io.puts "#{indent}def #{name}"
-          io.puts "#{indent}  __return_value = #{libname}.#{prefix}get_#{name}(#{this})"
-          io.puts "#{indent}  #{type.convert_to_crystal("__return_value")}"
+          io.puts "#{indent}  gvalue = GObject::Value.new(GObject::Type::#{type.tag})"
+          io.puts "#{indent}  LibGObject.object_get_property(@pointer.as(LibGObject::Object*), \"#{name}\", gvalue)"
+          io.puts "#{indent}  #{type.unwrap_gvalue("gvalue")}"
           io.puts "#{indent}end"
           io.puts
         end
 
         if setter?
-          io.puts "#{indent}def #{name}=(__value)"
-          io.puts "#{indent}  #{libname}.#{prefix}set_#{name}(#{this}, #{type.convert_from_crystal("__value")})"
-          io.puts "#{indent}end\n"
+          io.puts "#{indent}def #{name}=(value)"
+          io.puts "#{indent}  gvalue = GObject::Value.new(GObject::Type::#{type.tag})"
+          io.puts "#{indent}  #{type.wrap_in_gvalue("gvalue", "value")}"
+          io.puts "#{indent}  LibGObject.object_set_property(@pointer.as(LibGObject::Object*), \"#{name}\", gvalue)"
+          io.puts "#{indent}end"
           io.puts
         end
       end

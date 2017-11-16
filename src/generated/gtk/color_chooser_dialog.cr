@@ -15,8 +15,9 @@ module Gtk
     # Implements Buildable
     # Implements ColorChooser
     def show_editor
-      __return_value = LibGtk.color_chooser_dialog_get_show_editor(to_unsafe.as(LibGtk::ColorChooserDialog*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_editor", gvalue)
+      gvalue.boolean
     end
 
     def self.new(title, parent) : self

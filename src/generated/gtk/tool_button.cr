@@ -16,33 +16,39 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
     def icon_name
-      __return_value = LibGtk.tool_button_get_icon_name(to_unsafe.as(LibGtk::ToolButton*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "icon_name", gvalue)
+      gvalue.string
     end
 
     def icon_widget
-      __return_value = LibGtk.tool_button_get_icon_widget(to_unsafe.as(LibGtk::ToolButton*))
-      Gtk::Widget.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "icon_widget", gvalue)
+      Gtk::Widget.cast(gvalue.object)
     end
 
     def label
-      __return_value = LibGtk.tool_button_get_label(to_unsafe.as(LibGtk::ToolButton*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "label", gvalue)
+      gvalue.string
     end
 
     def label_widget
-      __return_value = LibGtk.tool_button_get_label_widget(to_unsafe.as(LibGtk::ToolButton*))
-      Gtk::Widget.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "label_widget", gvalue)
+      Gtk::Widget.cast(gvalue.object)
     end
 
     def stock_id
-      __return_value = LibGtk.tool_button_get_stock_id(to_unsafe.as(LibGtk::ToolButton*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "stock_id", gvalue)
+      gvalue.string
     end
 
     def use_underline
-      __return_value = LibGtk.tool_button_get_use_underline(to_unsafe.as(LibGtk::ToolButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "use_underline", gvalue)
+      gvalue.boolean
     end
 
     def self.new(icon_widget, label) : self

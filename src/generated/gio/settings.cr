@@ -10,38 +10,45 @@ module Gio
     end
 
     def backend
-      __return_value = LibGio.settings_get_backend(to_unsafe.as(LibGio::Settings*))
-      Gio::SettingsBackend.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "backend", gvalue)
+      Gio::SettingsBackend.cast(gvalue.object)
     end
 
     def delay_apply
-      __return_value = LibGio.settings_get_delay_apply(to_unsafe.as(LibGio::Settings*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "delay_apply", gvalue)
+      gvalue.boolean
     end
 
     def has_unapplied
-      __return_value = LibGio.settings_get_has_unapplied(to_unsafe.as(LibGio::Settings*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "has_unapplied", gvalue)
+      gvalue.boolean
     end
 
     def path
-      __return_value = LibGio.settings_get_path(to_unsafe.as(LibGio::Settings*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "path", gvalue)
+      gvalue.string
     end
 
     def schema
-      __return_value = LibGio.settings_get_schema(to_unsafe.as(LibGio::Settings*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "schema", gvalue)
+      gvalue.string
     end
 
     def schema_id
-      __return_value = LibGio.settings_get_schema_id(to_unsafe.as(LibGio::Settings*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "schema_id", gvalue)
+      gvalue.string
     end
 
     def settings_schema
-      __return_value = LibGio.settings_get_settings_schema(to_unsafe.as(LibGio::Settings*))
-      Gio::SettingsSchema.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "settings_schema", gvalue)
+      Gio::SettingsSchema.cast(gvalue.object)
     end
 
     def self.new(schema_id) : self

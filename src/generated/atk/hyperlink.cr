@@ -11,23 +11,27 @@ module Atk
 
     # Implements Action
     def end_index
-      __return_value = LibAtk.hyperlink_get_end_index(to_unsafe.as(LibAtk::Hyperlink*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "end_index", gvalue)
+      gvalue
     end
 
     def number_of_anchors
-      __return_value = LibAtk.hyperlink_get_number_of_anchors(to_unsafe.as(LibAtk::Hyperlink*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "number_of_anchors", gvalue)
+      gvalue
     end
 
     def selected_link
-      __return_value = LibAtk.hyperlink_get_selected_link(to_unsafe.as(LibAtk::Hyperlink*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "selected_link", gvalue)
+      gvalue.boolean
     end
 
     def start_index
-      __return_value = LibAtk.hyperlink_get_start_index(to_unsafe.as(LibAtk::Hyperlink*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "start_index", gvalue)
+      gvalue
     end
 
     def end_index

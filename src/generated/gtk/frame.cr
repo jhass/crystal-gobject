@@ -14,28 +14,33 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def label
-      __return_value = LibGtk.frame_get_label(to_unsafe.as(LibGtk::Frame*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "label", gvalue)
+      gvalue.string
     end
 
     def label_widget
-      __return_value = LibGtk.frame_get_label_widget(to_unsafe.as(LibGtk::Frame*))
-      Gtk::Widget.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "label_widget", gvalue)
+      Gtk::Widget.cast(gvalue.object)
     end
 
     def label_xalign
-      __return_value = LibGtk.frame_get_label_xalign(to_unsafe.as(LibGtk::Frame*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::FLOAT)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "label_xalign", gvalue)
+      gvalue
     end
 
     def label_yalign
-      __return_value = LibGtk.frame_get_label_yalign(to_unsafe.as(LibGtk::Frame*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::FLOAT)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "label_yalign", gvalue)
+      gvalue
     end
 
     def shadow_type
-      __return_value = LibGtk.frame_get_shadow_type(to_unsafe.as(LibGtk::Frame*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "shadow_type", gvalue)
+      gvalue.enum
     end
 
     def self.new(label) : self

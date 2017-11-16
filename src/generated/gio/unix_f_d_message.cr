@@ -12,8 +12,9 @@ module Gio
     end
 
     def fd_list
-      __return_value = LibGio.unix_f_d_message_get_fd_list(to_unsafe.as(LibGio::UnixFDMessage*))
-      Gio::UnixFDList.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "fd_list", gvalue)
+      Gio::UnixFDList.cast(gvalue.object)
     end
 
     def self.new : self
@@ -26,7 +27,7 @@ module Gio
       cast Gio::SocketControlMessage.new(__return_value)
     end
 
-    def append_fd(fd)
+    def append_fd(fd) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.unix_f_d_message_append_fd(@pointer.as(LibGio::UnixFDMessage*), Int32.new(fd), pointerof(__error))
       GLib::Error.assert __error

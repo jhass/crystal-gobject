@@ -10,18 +10,21 @@ module Gtk
     end
 
     def length
-      __return_value = LibGtk.entry_buffer_get_length(to_unsafe.as(LibGtk::EntryBuffer*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "length", gvalue)
+      gvalue
     end
 
     def max_length
-      __return_value = LibGtk.entry_buffer_get_max_length(to_unsafe.as(LibGtk::EntryBuffer*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "max_length", gvalue)
+      gvalue
     end
 
     def text
-      __return_value = LibGtk.entry_buffer_get_text(to_unsafe.as(LibGtk::EntryBuffer*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "text", gvalue)
+      gvalue.string
     end
 
     def self.new(initial_chars, n_initial_chars) : self

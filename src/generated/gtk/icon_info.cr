@@ -54,7 +54,7 @@ module Gtk
       __return_value
     end
 
-    def load_icon
+    def load_icon # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.icon_info_load_icon(@pointer.as(LibGtk::IconInfo*), pointerof(__error))
       GLib::Error.assert __error
@@ -66,21 +66,21 @@ module Gtk
       nil
     end
 
-    def load_icon_finish(res)
+    def load_icon_finish(res) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.icon_info_load_icon_finish(@pointer.as(LibGtk::IconInfo*), res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 
-    def load_surface(for_window)
+    def load_surface(for_window) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.icon_info_load_surface(@pointer.as(LibGtk::IconInfo*), for_window ? for_window.to_unsafe.as(LibGdk::Window*) : nil, pointerof(__error))
       GLib::Error.assert __error
       Cairo::Surface.new(__return_value)
     end
 
-    def load_symbolic(fg, success_color, warning_color, error_color, was_symbolic)
+    def load_symbolic(fg, success_color, warning_color, error_color, was_symbolic) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.icon_info_load_symbolic(@pointer.as(LibGtk::IconInfo*), fg.to_unsafe.as(LibGdk::RGBA*), success_color ? success_color.to_unsafe.as(LibGdk::RGBA*) : nil, warning_color ? warning_color.to_unsafe.as(LibGdk::RGBA*) : nil, error_color ? error_color.to_unsafe.as(LibGdk::RGBA*) : nil, was_symbolic, pointerof(__error))
       GLib::Error.assert __error
@@ -92,14 +92,14 @@ module Gtk
       nil
     end
 
-    def load_symbolic_finish(res, was_symbolic)
+    def load_symbolic_finish(res, was_symbolic) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.icon_info_load_symbolic_finish(@pointer.as(LibGtk::IconInfo*), res.to_unsafe.as(LibGio::AsyncResult*), was_symbolic, pointerof(__error))
       GLib::Error.assert __error
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 
-    def load_symbolic_for_context(context, was_symbolic)
+    def load_symbolic_for_context(context, was_symbolic) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.icon_info_load_symbolic_for_context(@pointer.as(LibGtk::IconInfo*), context.to_unsafe.as(LibGtk::StyleContext*), was_symbolic, pointerof(__error))
       GLib::Error.assert __error
@@ -111,14 +111,14 @@ module Gtk
       nil
     end
 
-    def load_symbolic_for_context_finish(res, was_symbolic)
+    def load_symbolic_for_context_finish(res, was_symbolic) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.icon_info_load_symbolic_for_context_finish(@pointer.as(LibGtk::IconInfo*), res.to_unsafe.as(LibGio::AsyncResult*), was_symbolic, pointerof(__error))
       GLib::Error.assert __error
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 
-    def load_symbolic_for_style(style, state : Gtk::StateType, was_symbolic)
+    def load_symbolic_for_style(style, state : Gtk::StateType, was_symbolic) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.icon_info_load_symbolic_for_style(@pointer.as(LibGtk::IconInfo*), style.to_unsafe.as(LibGtk::Style*), state, was_symbolic, pointerof(__error))
       GLib::Error.assert __error

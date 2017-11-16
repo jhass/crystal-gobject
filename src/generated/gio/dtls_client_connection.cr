@@ -1,6 +1,6 @@
 module Gio
   module DtlsClientConnection
-    def self.new(base_socket, server_identity)
+    def self.new(base_socket, server_identity) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.dtls_client_connection_new(base_socket.to_unsafe.as(LibGio::DatagramBased*), server_identity ? server_identity.to_unsafe.as(LibGio::SocketConnectable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -9,7 +9,7 @@ module Gio
 
     def accepted_cas
       __return_value = LibGio.dtls_client_connection_get_accepted_cas(@pointer.as(LibGio::DtlsClientConnection*))
-      GLib::ListIterator(Array(Void*), Void***).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Array(Void*), Void**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def server_identity

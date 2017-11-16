@@ -14,13 +14,15 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def activate_on_single_click
-      __return_value = LibGtk.list_box_get_activate_on_single_click(to_unsafe.as(LibGtk::ListBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "activate_on_single_click", gvalue)
+      gvalue.boolean
     end
 
     def selection_mode
-      __return_value = LibGtk.list_box_get_selection_mode(to_unsafe.as(LibGtk::ListBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "selection_mode", gvalue)
+      gvalue.enum
     end
 
     def self.new : self
@@ -70,7 +72,7 @@ module Gtk
 
     def selected_rows
       __return_value = LibGtk.list_box_get_selected_rows(@pointer.as(LibGtk::ListBox*))
-      GLib::ListIterator(Gtk::ListBoxRow, LibGtk::ListBoxRow*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gtk::ListBoxRow, LibGtk::ListBoxRow**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def selection_mode
@@ -183,7 +185,7 @@ module Gtk
 
     alias RowActivatedSignal = ListBox, Gtk::ListBoxRow ->
     def on_row_activated(&__block : RowActivatedSignal)
-      __callback = ->(_arg0 : LibGtk::ListBox*, _arg1 : LibGtk::LibGtk::ListBoxRow*) {
+      __callback = ->(_arg0 : LibGtk::ListBox*, _arg1 : LibGtk::LibGtk::ListBoxRow**) {
        __return_value = __block.call(ListBox.new(_arg0), Gtk::ListBoxRow.new(_arg1))
        __return_value
       }
@@ -192,7 +194,7 @@ module Gtk
 
     alias RowSelectedSignal = ListBox, Gtk::ListBoxRow ->
     def on_row_selected(&__block : RowSelectedSignal)
-      __callback = ->(_arg0 : LibGtk::ListBox*, _arg1 : LibGtk::LibGtk::ListBoxRow*) {
+      __callback = ->(_arg0 : LibGtk::ListBox*, _arg1 : LibGtk::LibGtk::ListBoxRow**) {
        __return_value = __block.call(ListBox.new(_arg0), Gtk::ListBoxRow.new(_arg1))
        __return_value
       }

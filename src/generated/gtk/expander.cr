@@ -14,43 +14,51 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def expanded
-      __return_value = LibGtk.expander_get_expanded(to_unsafe.as(LibGtk::Expander*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "expanded", gvalue)
+      gvalue.boolean
     end
 
     def label
-      __return_value = LibGtk.expander_get_label(to_unsafe.as(LibGtk::Expander*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "label", gvalue)
+      gvalue.string
     end
 
     def label_fill
-      __return_value = LibGtk.expander_get_label_fill(to_unsafe.as(LibGtk::Expander*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "label_fill", gvalue)
+      gvalue.boolean
     end
 
     def label_widget
-      __return_value = LibGtk.expander_get_label_widget(to_unsafe.as(LibGtk::Expander*))
-      Gtk::Widget.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "label_widget", gvalue)
+      Gtk::Widget.cast(gvalue.object)
     end
 
     def resize_toplevel
-      __return_value = LibGtk.expander_get_resize_toplevel(to_unsafe.as(LibGtk::Expander*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "resize_toplevel", gvalue)
+      gvalue.boolean
     end
 
     def spacing
-      __return_value = LibGtk.expander_get_spacing(to_unsafe.as(LibGtk::Expander*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "spacing", gvalue)
+      gvalue
     end
 
     def use_markup
-      __return_value = LibGtk.expander_get_use_markup(to_unsafe.as(LibGtk::Expander*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "use_markup", gvalue)
+      gvalue.boolean
     end
 
     def use_underline
-      __return_value = LibGtk.expander_get_use_underline(to_unsafe.as(LibGtk::Expander*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "use_underline", gvalue)
+      gvalue.boolean
     end
 
     def self.new(label) : self

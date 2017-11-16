@@ -14,13 +14,15 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def embedded
-      __return_value = LibGtk.plug_get_embedded(to_unsafe.as(LibGtk::Plug*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "embedded", gvalue)
+      gvalue.boolean
     end
 
     def socket_window
-      __return_value = LibGtk.plug_get_socket_window(to_unsafe.as(LibGtk::Plug*))
-      Gdk::Window.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "socket_window", gvalue)
+      Gdk::Window.cast(gvalue.object)
     end
 
     def self.new(socket_id) : self

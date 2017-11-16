@@ -13,33 +13,39 @@ module Gtk
 
     # Implements Orientable
     def inverted
-      __return_value = LibGtk.cell_renderer_progress_get_inverted(to_unsafe.as(LibGtk::CellRendererProgress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "inverted", gvalue)
+      gvalue.boolean
     end
 
     def pulse
-      __return_value = LibGtk.cell_renderer_progress_get_pulse(to_unsafe.as(LibGtk::CellRendererProgress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pulse", gvalue)
+      gvalue
     end
 
     def text
-      __return_value = LibGtk.cell_renderer_progress_get_text(to_unsafe.as(LibGtk::CellRendererProgress*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "text", gvalue)
+      gvalue.string
     end
 
     def text_xalign
-      __return_value = LibGtk.cell_renderer_progress_get_text_xalign(to_unsafe.as(LibGtk::CellRendererProgress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::FLOAT)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "text_xalign", gvalue)
+      gvalue
     end
 
     def text_yalign
-      __return_value = LibGtk.cell_renderer_progress_get_text_yalign(to_unsafe.as(LibGtk::CellRendererProgress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::FLOAT)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "text_yalign", gvalue)
+      gvalue
     end
 
     def value
-      __return_value = LibGtk.cell_renderer_progress_get_value(to_unsafe.as(LibGtk::CellRendererProgress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "value", gvalue)
+      gvalue
     end
 
     def self.new : self

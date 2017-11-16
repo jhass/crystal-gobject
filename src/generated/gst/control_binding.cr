@@ -12,13 +12,15 @@ module Gst
     end
 
     def name
-      __return_value = LibGst.control_binding_get_name(to_unsafe.as(LibGst::ControlBinding*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "name", gvalue)
+      gvalue.string
     end
 
     def object
-      __return_value = LibGst.control_binding_get_object(to_unsafe.as(LibGst::ControlBinding*))
-      Gst::Object.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "object", gvalue)
+      Gst::Object.cast(gvalue.object)
     end
 
     def g_value_array(timestamp, interval, n_values, values)

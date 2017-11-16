@@ -12,7 +12,7 @@ module Gio
     end
 
     # Implements Seekable
-    def query_info(attributes, cancellable)
+    def query_info(attributes, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_input_stream_query_info(@pointer.as(LibGio::FileInputStream*), attributes.to_unsafe, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -24,7 +24,7 @@ module Gio
       nil
     end
 
-    def query_info_finish(result)
+    def query_info_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_input_stream_query_info_finish(@pointer.as(LibGio::FileInputStream*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error

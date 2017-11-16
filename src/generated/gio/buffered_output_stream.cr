@@ -13,13 +13,15 @@ module Gio
 
     # Implements Seekable
     def auto_grow
-      __return_value = LibGio.buffered_output_stream_get_auto_grow(to_unsafe.as(LibGio::BufferedOutputStream*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "auto_grow", gvalue)
+      gvalue.boolean
     end
 
     def buffer_size
-      __return_value = LibGio.buffered_output_stream_get_buffer_size(to_unsafe.as(LibGio::BufferedOutputStream*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "buffer_size", gvalue)
+      gvalue
     end
 
     def self.new(base_stream) : self

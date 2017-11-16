@@ -15,93 +15,111 @@ module Gtk
     # Implements Buildable
     # Implements Scrollable
     def activate_on_single_click
-      __return_value = LibGtk.tree_view_get_activate_on_single_click(to_unsafe.as(LibGtk::TreeView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "activate_on_single_click", gvalue)
+      gvalue.boolean
     end
 
     def enable_grid_lines
-      __return_value = LibGtk.tree_view_get_enable_grid_lines(to_unsafe.as(LibGtk::TreeView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "enable_grid_lines", gvalue)
+      gvalue.enum
     end
 
     def enable_search
-      __return_value = LibGtk.tree_view_get_enable_search(to_unsafe.as(LibGtk::TreeView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "enable_search", gvalue)
+      gvalue.boolean
     end
 
     def enable_tree_lines
-      __return_value = LibGtk.tree_view_get_enable_tree_lines(to_unsafe.as(LibGtk::TreeView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "enable_tree_lines", gvalue)
+      gvalue.boolean
     end
 
     def expander_column
-      __return_value = LibGtk.tree_view_get_expander_column(to_unsafe.as(LibGtk::TreeView*))
-      Gtk::TreeViewColumn.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "expander_column", gvalue)
+      Gtk::TreeViewColumn.cast(gvalue.object)
     end
 
     def fixed_height_mode
-      __return_value = LibGtk.tree_view_get_fixed_height_mode(to_unsafe.as(LibGtk::TreeView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "fixed_height_mode", gvalue)
+      gvalue.boolean
     end
 
     def headers_clickable
-      __return_value = LibGtk.tree_view_get_headers_clickable(to_unsafe.as(LibGtk::TreeView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "headers_clickable", gvalue)
+      gvalue.boolean
     end
 
     def headers_visible
-      __return_value = LibGtk.tree_view_get_headers_visible(to_unsafe.as(LibGtk::TreeView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "headers_visible", gvalue)
+      gvalue.boolean
     end
 
     def hover_expand
-      __return_value = LibGtk.tree_view_get_hover_expand(to_unsafe.as(LibGtk::TreeView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "hover_expand", gvalue)
+      gvalue.boolean
     end
 
     def hover_selection
-      __return_value = LibGtk.tree_view_get_hover_selection(to_unsafe.as(LibGtk::TreeView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "hover_selection", gvalue)
+      gvalue.boolean
     end
 
     def level_indentation
-      __return_value = LibGtk.tree_view_get_level_indentation(to_unsafe.as(LibGtk::TreeView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "level_indentation", gvalue)
+      gvalue
     end
 
     def model
-      __return_value = LibGtk.tree_view_get_model(to_unsafe.as(LibGtk::TreeView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "model", gvalue)
+      gvalue
     end
 
     def reorderable
-      __return_value = LibGtk.tree_view_get_reorderable(to_unsafe.as(LibGtk::TreeView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "reorderable", gvalue)
+      gvalue.boolean
     end
 
     def rubber_banding
-      __return_value = LibGtk.tree_view_get_rubber_banding(to_unsafe.as(LibGtk::TreeView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "rubber_banding", gvalue)
+      gvalue.boolean
     end
 
     def rules_hint
-      __return_value = LibGtk.tree_view_get_rules_hint(to_unsafe.as(LibGtk::TreeView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "rules_hint", gvalue)
+      gvalue.boolean
     end
 
     def search_column
-      __return_value = LibGtk.tree_view_get_search_column(to_unsafe.as(LibGtk::TreeView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "search_column", gvalue)
+      gvalue
     end
 
     def show_expanders
-      __return_value = LibGtk.tree_view_get_show_expanders(to_unsafe.as(LibGtk::TreeView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_expanders", gvalue)
+      gvalue.boolean
     end
 
     def tooltip_column
-      __return_value = LibGtk.tree_view_get_tooltip_column(to_unsafe.as(LibGtk::TreeView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "tooltip_column", gvalue)
+      gvalue
     end
 
     def self.new : self
@@ -221,7 +239,7 @@ module Gtk
 
     def columns
       __return_value = LibGtk.tree_view_get_columns(@pointer.as(LibGtk::TreeView*))
-      GLib::ListIterator(Gtk::TreeViewColumn, LibGtk::TreeViewColumn*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gtk::TreeViewColumn, LibGtk::TreeViewColumn**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def cursor(path, focus_column)
@@ -627,7 +645,7 @@ module Gtk
 
     alias RowActivatedSignal = TreeView, Gtk::TreePath, Gtk::TreeViewColumn ->
     def on_row_activated(&__block : RowActivatedSignal)
-      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::LibGtk::TreePath*, _arg2 : LibGtk::LibGtk::TreeViewColumn*) {
+      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::LibGtk::TreePath*, _arg2 : LibGtk::LibGtk::TreeViewColumn**) {
        __return_value = __block.call(TreeView.new(_arg0), Gtk::TreePath.new(_arg1), Gtk::TreeViewColumn.new(_arg2))
        __return_value
       }

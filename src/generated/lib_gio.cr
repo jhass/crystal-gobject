@@ -18,11 +18,6 @@ lib LibGio
     get_state : -> Void
     change_state : -> Void
     activate : -> Void
-    # Property enabled : Bool
-    # Property name : UInt8*
-    # Property parameter_type : LibGLib::VariantType
-    # Property state : LibGLib::Variant
-    # Property state_type : LibGLib::VariantType
     # Virtual function activate
     # Virtual function change_state
     # Virtual function get_enabled
@@ -31,6 +26,11 @@ lib LibGio
     # Virtual function get_state
     # Virtual function get_state_hint
     # Virtual function get_state_type
+    # Property enabled : Bool
+    # Property name : UInt8*
+    # Property parameter_type : LibGLib::VariantType
+    # Property state : LibGLib::Variant
+    # Property state_type : LibGLib::VariantType
   end
   fun action_name_is_valid = g_action_name_is_valid(action_name : UInt8*) : Bool
   fun action_parse_detailed_name = g_action_parse_detailed_name(detailed_name : UInt8*, action_name : UInt8**, target_value : LibGLib::Variant**, error : LibGLib::Error**) : Bool
@@ -440,14 +440,6 @@ lib LibGio
     shutdown_async : -> Void
     shutdown_finish : -> Void
   # Requires DatagramBased
-    # Property base_socket : LibGio::DatagramBased
-    # Property certificate : LibGio::TlsCertificate
-    # Property database : LibGio::TlsDatabase
-    # Property interaction : LibGio::TlsInteraction
-    # Property peer_certificate : LibGio::TlsCertificate
-    # Property peer_certificate_errors : LibGio::TlsCertificateFlags
-    # Property rehandshake_mode : LibGio::TlsRehandshakeMode
-    # Property require_close_notify : Bool
     # Signal accept-certificate
     # Virtual function accept_certificate
     # Virtual function handshake
@@ -456,6 +448,14 @@ lib LibGio
     # Virtual function shutdown
     # Virtual function shutdown_async
     # Virtual function shutdown_finish
+    # Property base_socket : LibGio::DatagramBased
+    # Property certificate : LibGio::TlsCertificate*
+    # Property database : LibGio::TlsDatabase*
+    # Property interaction : LibGio::TlsInteraction*
+    # Property peer_certificate : LibGio::TlsCertificate*
+    # Property peer_certificate_errors : LibGio::TlsCertificateFlags
+    # Property rehandshake_mode : LibGio::TlsRehandshakeMode
+    # Property require_close_notify : Bool
   end
   fun dtls_connection_close = g_dtls_connection_close(this : DtlsConnection*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Bool
   fun dtls_connection_close_async = g_dtls_connection_close_async(this : DtlsConnection*, io_priority : Int32, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
@@ -965,14 +965,14 @@ lib LibGio
     can_reach_async : -> Void
     can_reach_finish : -> Void
   # Requires Initable
-    # Property connectivity : LibGio::NetworkConnectivity
-    # Property network_available : Bool
-    # Property network_metered : Bool
     # Signal network-changed
     # Virtual function can_reach
     # Virtual function can_reach_async
     # Virtual function can_reach_finish
     # Virtual function network_changed
+    # Property connectivity : LibGio::NetworkConnectivity
+    # Property network_available : Bool
+    # Property network_metered : Bool
   end
   fun network_monitor_get_default = g_network_monitor_get_default() : LibGio::NetworkMonitor*
   fun network_monitor_can_reach = g_network_monitor_can_reach(this : NetworkMonitor*, connectable : LibGio::SocketConnectable*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Bool
@@ -1123,11 +1123,11 @@ lib LibGio
     g_iface : LibGObject::TypeInterface
     copy_session_state : -> Void
   # Requires TlsConnection
+    # Virtual function copy_session_state
     # Property accepted_cas : Void**
     # Property server_identity : LibGio::SocketConnectable
     # Property use_ssl3 : Bool
     # Property validation_flags : LibGio::TlsCertificateFlags
-    # Virtual function copy_session_state
   end
   fun tls_client_connection_new = g_tls_client_connection_new(base_io_stream : LibGio::IOStream*, server_identity : LibGio::SocketConnectable*, error : LibGLib::Error**) : LibGio::TlsClientConnection*
   fun tls_client_connection_copy_session_state = g_tls_client_connection_copy_session_state(this : TlsClientConnection*, source : LibGio::TlsClientConnection*) : Void
@@ -2125,7 +2125,7 @@ lib LibGio
   fun app_info_monitor_get = g_app_info_monitor_get() : LibGio::AppInfoMonitor*
 
   struct AppLaunchContext # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::AppLaunchContextPrivate*
     # Signal launch-failed
     # Signal launched
@@ -2143,7 +2143,7 @@ lib LibGio
   fun app_launch_context_unsetenv = g_app_launch_context_unsetenv(this : AppLaunchContext*, variable : UInt8*) : Void
 
   struct Application # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::ApplicationPrivate*
     # Signal activate
     # Signal command-line
@@ -2165,6 +2165,14 @@ lib LibGio
     # Virtual function run_mainloop
     # Virtual function shutdown
     # Virtual function startup
+    # Property action_group : LibGio::ActionGroup
+    # Property application_id : UInt8*
+    # Property flags : LibGio::ApplicationFlags
+    # Property inactivity_timeout : UInt32
+    # Property is_busy : Bool
+    # Property is_registered : Bool
+    # Property is_remote : Bool
+    # Property resource_base_path : UInt8*
   end
   fun application_new = g_application_new(application_id : UInt8*, flags : LibGio::ApplicationFlags) : LibGio::Application*
   fun application_get_default = g_application_get_default() : LibGio::Application*
@@ -2202,11 +2210,15 @@ lib LibGio
   fun application_withdraw_notification = g_application_withdraw_notification(this : Application*, id : UInt8*) : Void
 
   struct ApplicationCommandLine # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::ApplicationCommandLinePrivate*
     # Virtual function get_stdin
     # Virtual function print_literal
     # Virtual function printerr_literal
+    # Property arguments : LibGLib::Variant
+    # Property is_remote : Bool
+    # Property options : LibGLib::Variant
+    # Property platform_data : LibGLib::Variant
   end
   fun application_command_line_create_file_for_arg = g_application_command_line_create_file_for_arg(this : ApplicationCommandLine*, arg : UInt8*) : LibGio::File*
   fun application_command_line_get_arguments = g_application_command_line_get_arguments(this : ApplicationCommandLine*, argc : Int32*) : UInt8**
@@ -2221,11 +2233,12 @@ lib LibGio
   fun application_command_line_set_exit_status = g_application_command_line_set_exit_status(this : ApplicationCommandLine*, exit_status : Int32) : Void
 
   struct BufferedInputStream # object
-    parent_instance : LibGio::FilterInputStream
+    parent_instance : LibGio::FilterInputStream*
     priv : LibGio::BufferedInputStreamPrivate*
     # Virtual function fill
     # Virtual function fill_async
     # Virtual function fill_finish
+    # Property buffer_size : UInt32
   end
   fun buffered_input_stream_new = g_buffered_input_stream_new(base_stream : LibGio::InputStream*) : LibGio::InputStream*
   fun buffered_input_stream_new_sized = g_buffered_input_stream_new_sized(base_stream : LibGio::InputStream*, size : UInt64) : LibGio::InputStream*
@@ -2240,8 +2253,10 @@ lib LibGio
   fun buffered_input_stream_set_buffer_size = g_buffered_input_stream_set_buffer_size(this : BufferedInputStream*, size : UInt64) : Void
 
   struct BufferedOutputStream # object
-    parent_instance : LibGio::FilterOutputStream
+    parent_instance : LibGio::FilterOutputStream*
     priv : LibGio::BufferedOutputStreamPrivate*
+    # Property auto_grow : Bool
+    # Property buffer_size : UInt32
   end
   fun buffered_output_stream_new = g_buffered_output_stream_new(base_stream : LibGio::OutputStream*) : LibGio::OutputStream*
   fun buffered_output_stream_new_sized = g_buffered_output_stream_new_sized(base_stream : LibGio::OutputStream*, size : UInt64) : LibGio::OutputStream*
@@ -2252,12 +2267,13 @@ lib LibGio
 
   struct BytesIcon # object
     _data : UInt8[0]
+    # Property bytes : LibGLib::Bytes
   end
   fun bytes_icon_new = g_bytes_icon_new(bytes : LibGLib::Bytes*) : LibGio::BytesIcon*
   fun bytes_icon_get_bytes = g_bytes_icon_get_bytes(this : BytesIcon*) : LibGLib::Bytes*
 
   struct Cancellable # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::CancellablePrivate*
     # Signal cancelled
     # Virtual function cancelled
@@ -2278,6 +2294,9 @@ lib LibGio
 
   struct CharsetConverter # object
     _data : UInt8[0]
+    # Property from_charset : UInt8*
+    # Property to_charset : UInt8*
+    # Property use_fallback : Bool
   end
   fun charset_converter_new = g_charset_converter_new(to_charset : UInt8*, from_charset : UInt8*, error : LibGLib::Error**) : LibGio::CharsetConverter*
   fun charset_converter_get_num_fallbacks = g_charset_converter_get_num_fallbacks(this : CharsetConverter*) : UInt32
@@ -2285,15 +2304,17 @@ lib LibGio
   fun charset_converter_set_use_fallback = g_charset_converter_set_use_fallback(this : CharsetConverter*, use_fallback : Bool) : Void
 
   struct ConverterInputStream # object
-    parent_instance : LibGio::FilterInputStream
+    parent_instance : LibGio::FilterInputStream*
     priv : LibGio::ConverterInputStreamPrivate*
+    # Property converter : LibGio::Converter
   end
   fun converter_input_stream_new = g_converter_input_stream_new(base_stream : LibGio::InputStream*, converter : LibGio::Converter*) : LibGio::InputStream*
   fun converter_input_stream_get_converter = g_converter_input_stream_get_converter(this : ConverterInputStream*) : LibGio::Converter*
 
   struct ConverterOutputStream # object
-    parent_instance : LibGio::FilterOutputStream
+    parent_instance : LibGio::FilterOutputStream*
     priv : LibGio::ConverterOutputStreamPrivate*
+    # Property converter : LibGio::Converter
   end
   fun converter_output_stream_new = g_converter_output_stream_new(base_stream : LibGio::OutputStream*, converter : LibGio::Converter*) : LibGio::OutputStream*
   fun converter_output_stream_get_converter = g_converter_output_stream_get_converter(this : ConverterOutputStream*) : LibGio::Converter*
@@ -2326,6 +2347,15 @@ lib LibGio
   struct DBusConnection # object
     _data : UInt8[0]
     # Signal closed
+    # Property address : UInt8*
+    # Property authentication_observer : LibGio::DBusAuthObserver*
+    # Property capabilities : LibGio::DBusCapabilityFlags
+    # Property closed : Bool
+    # Property exit_on_close : Bool
+    # Property flags : LibGio::DBusConnectionFlags
+    # Property guid : UInt8*
+    # Property stream : LibGio::IOStream*
+    # Property unique_name : UInt8*
   end
   fun d_bus_connection_new_finish = g_dbus_connection_new_finish(res : LibGio::AsyncResult*, error : LibGLib::Error**) : LibGio::DBusConnection*
   fun d_bus_connection_new_for_address_finish = g_dbus_connection_new_for_address_finish(res : LibGio::AsyncResult*, error : LibGLib::Error**) : LibGio::DBusConnection*
@@ -2374,13 +2404,14 @@ lib LibGio
   fun d_bus_connection_unregister_subtree = g_dbus_connection_unregister_subtree(this : DBusConnection*, registration_id : UInt32) : Bool
 
   struct DBusInterfaceSkeleton # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::DBusInterfaceSkeletonPrivate*
     # Signal g-authorize-method
     # Virtual function flush
     # Virtual function g_authorize_method
     # Virtual function get_info
     # Virtual function get_properties
+    # Property g_flags : LibGio::DBusInterfaceSkeletonFlags
   end
   fun d_bus_interface_skeleton_export = g_dbus_interface_skeleton_export(this : DBusInterfaceSkeleton*, connection : LibGio::DBusConnection*, object_path : UInt8*, error : LibGLib::Error**) : Bool
   fun d_bus_interface_skeleton_flush = g_dbus_interface_skeleton_flush(this : DBusInterfaceSkeleton*) : Void
@@ -2402,6 +2433,7 @@ lib LibGio
 
   struct DBusMessage # object
     _data : UInt8[0]
+    # Property locked : Bool
   end
   fun d_bus_message_new = g_dbus_message_new() : LibGio::DBusMessage*
   fun d_bus_message_new_from_blob = g_dbus_message_new_from_blob(blob : UInt8*, blob_len : UInt64, capabilities : LibGio::DBusCapabilityFlags, error : LibGLib::Error**) : LibGio::DBusMessage*
@@ -2470,12 +2502,21 @@ lib LibGio
   fun d_bus_method_invocation_return_value_with_unix_fd_list = g_dbus_method_invocation_return_value_with_unix_fd_list(this : DBusMethodInvocation*, parameters : LibGLib::Variant*, fd_list : LibGio::UnixFDList*) : Void
 
   struct DBusObjectManagerClient # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::DBusObjectManagerClientPrivate*
     # Signal interface-proxy-properties-changed
     # Signal interface-proxy-signal
     # Virtual function interface_proxy_properties_changed
     # Virtual function interface_proxy_signal
+    # Property bus_type : LibGio::BusType
+    # Property connection : LibGio::DBusConnection*
+    # Property flags : LibGio::DBusObjectManagerClientFlags
+    # Property get_proxy_type_destroy_notify : Void*
+    # Property get_proxy_type_func : Void*
+    # Property get_proxy_type_user_data : Void*
+    # Property name : UInt8*
+    # Property name_owner : UInt8*
+    # Property object_path : UInt8*
   end
   fun d_bus_object_manager_client_new_finish = g_dbus_object_manager_client_new_finish(res : LibGio::AsyncResult*, error : LibGLib::Error**) : LibGio::DBusObjectManagerClient*
   fun d_bus_object_manager_client_new_for_bus_finish = g_dbus_object_manager_client_new_for_bus_finish(res : LibGio::AsyncResult*, error : LibGLib::Error**) : LibGio::DBusObjectManagerClient*
@@ -2489,8 +2530,10 @@ lib LibGio
   fun d_bus_object_manager_client_get_name_owner = g_dbus_object_manager_client_get_name_owner(this : DBusObjectManagerClient*) : UInt8*
 
   struct DBusObjectManagerServer # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::DBusObjectManagerServerPrivate*
+    # Property connection : LibGio::DBusConnection*
+    # Property object_path : UInt8*
   end
   fun d_bus_object_manager_server_new = g_dbus_object_manager_server_new(object_path : UInt8*) : LibGio::DBusObjectManagerServer*
   fun d_bus_object_manager_server_export = g_dbus_object_manager_server_export(this : DBusObjectManagerServer*, object : LibGio::DBusObjectSkeleton*) : Void
@@ -2501,17 +2544,20 @@ lib LibGio
   fun d_bus_object_manager_server_unexport = g_dbus_object_manager_server_unexport(this : DBusObjectManagerServer*, object_path : UInt8*) : Bool
 
   struct DBusObjectProxy # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::DBusObjectProxyPrivate*
+    # Property g_connection : LibGio::DBusConnection*
+    # Property g_object_path : UInt8*
   end
   fun d_bus_object_proxy_new = g_dbus_object_proxy_new(connection : LibGio::DBusConnection*, object_path : UInt8*) : LibGio::DBusObjectProxy*
   fun d_bus_object_proxy_get_connection = g_dbus_object_proxy_get_connection(this : DBusObjectProxy*) : LibGio::DBusConnection*
 
   struct DBusObjectSkeleton # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::DBusObjectSkeletonPrivate*
     # Signal authorize-method
     # Virtual function authorize_method
+    # Property g_object_path : UInt8*
   end
   fun d_bus_object_skeleton_new = g_dbus_object_skeleton_new(object_path : UInt8*) : LibGio::DBusObjectSkeleton*
   fun d_bus_object_skeleton_add_interface = g_dbus_object_skeleton_add_interface(this : DBusObjectSkeleton*, interface : LibGio::DBusInterfaceSkeleton*) : Void
@@ -2521,12 +2567,21 @@ lib LibGio
   fun d_bus_object_skeleton_set_object_path = g_dbus_object_skeleton_set_object_path(this : DBusObjectSkeleton*, object_path : UInt8*) : Void
 
   struct DBusProxy # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::DBusProxyPrivate*
     # Signal g-properties-changed
     # Signal g-signal
     # Virtual function g_properties_changed
     # Virtual function g_signal
+    # Property g_bus_type : LibGio::BusType
+    # Property g_connection : LibGio::DBusConnection*
+    # Property g_default_timeout : Int32
+    # Property g_flags : LibGio::DBusProxyFlags
+    # Property g_interface_info : LibGio::DBusInterfaceInfo
+    # Property g_interface_name : UInt8*
+    # Property g_name : UInt8*
+    # Property g_name_owner : UInt8*
+    # Property g_object_path : UInt8*
   end
   fun d_bus_proxy_new_finish = g_dbus_proxy_new_finish(res : LibGio::AsyncResult*, error : LibGLib::Error**) : LibGio::DBusProxy*
   fun d_bus_proxy_new_for_bus_finish = g_dbus_proxy_new_for_bus_finish(res : LibGio::AsyncResult*, error : LibGLib::Error**) : LibGio::DBusProxy*
@@ -2557,6 +2612,12 @@ lib LibGio
   struct DBusServer # object
     _data : UInt8[0]
     # Signal new-connection
+    # Property active : Bool
+    # Property address : UInt8*
+    # Property authentication_observer : LibGio::DBusAuthObserver*
+    # Property client_address : UInt8*
+    # Property flags : LibGio::DBusServerFlags
+    # Property guid : UInt8*
   end
   fun d_bus_server_new_sync = g_dbus_server_new_sync(address : UInt8*, flags : LibGio::DBusServerFlags, guid : UInt8*, observer : LibGio::DBusAuthObserver*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : LibGio::DBusServer*
   fun d_bus_server_get_client_address = g_dbus_server_get_client_address(this : DBusServer*) : UInt8*
@@ -2567,8 +2628,10 @@ lib LibGio
   fun d_bus_server_stop = g_dbus_server_stop(this : DBusServer*) : Void
 
   struct DataInputStream # object
-    parent_instance : LibGio::BufferedInputStream
+    parent_instance : LibGio::BufferedInputStream*
     priv : LibGio::DataInputStreamPrivate*
+    # Property byte_order : LibGio::DataStreamByteOrder
+    # Property newline_type : LibGio::DataStreamNewlineType
   end
   fun data_input_stream_new = g_data_input_stream_new(base_stream : LibGio::InputStream*) : LibGio::DataInputStream*
   fun data_input_stream_get_byte_order = g_data_input_stream_get_byte_order(this : DataInputStream*) : LibGio::DataStreamByteOrder
@@ -2595,8 +2658,9 @@ lib LibGio
   fun data_input_stream_set_newline_type = g_data_input_stream_set_newline_type(this : DataInputStream*, type : LibGio::DataStreamNewlineType) : Void
 
   struct DataOutputStream # object
-    parent_instance : LibGio::FilterOutputStream
+    parent_instance : LibGio::FilterOutputStream*
     priv : LibGio::DataOutputStreamPrivate*
+    # Property byte_order : LibGio::DataStreamByteOrder
   end
   fun data_output_stream_new = g_data_output_stream_new(base_stream : LibGio::OutputStream*) : LibGio::DataOutputStream*
   fun data_output_stream_get_byte_order = g_data_output_stream_get_byte_order(this : DataOutputStream*) : LibGio::DataStreamByteOrder
@@ -2612,6 +2676,7 @@ lib LibGio
 
   struct DesktopAppInfo # object
     _data : UInt8[0]
+    # Property filename : UInt8*
   end
   fun desktop_app_info_new = g_desktop_app_info_new(desktop_id : UInt8*) : LibGio::DesktopAppInfo*
   fun desktop_app_info_new_from_filename = g_desktop_app_info_new_from_filename(filename : UInt8*) : LibGio::DesktopAppInfo*
@@ -2637,6 +2702,8 @@ lib LibGio
 
   struct Emblem # object
     _data : UInt8[0]
+    # Property icon : LibGObject::Object*
+    # Property origin : LibGio::EmblemOrigin
   end
   fun emblem_new = g_emblem_new(icon : LibGio::Icon*) : LibGio::Emblem*
   fun emblem_new_with_origin = g_emblem_new_with_origin(icon : LibGio::Icon*, origin : LibGio::EmblemOrigin) : LibGio::Emblem*
@@ -2644,8 +2711,9 @@ lib LibGio
   fun emblem_get_origin = g_emblem_get_origin(this : Emblem*) : LibGio::EmblemOrigin
 
   struct EmblemedIcon # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::EmblemedIconPrivate*
+    # Property gicon : LibGio::Icon
   end
   fun emblemed_icon_new = g_emblemed_icon_new(icon : LibGio::Icon*, emblem : LibGio::Emblem*) : LibGio::EmblemedIcon*
   fun emblemed_icon_add_emblem = g_emblemed_icon_add_emblem(this : EmblemedIcon*, emblem : LibGio::Emblem*) : Void
@@ -2654,7 +2722,7 @@ lib LibGio
   fun emblemed_icon_get_icon = g_emblemed_icon_get_icon(this : EmblemedIcon*) : LibGio::Icon*
 
   struct FileEnumerator # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::FileEnumeratorPrivate*
     # Virtual function close_async
     # Virtual function close_finish
@@ -2662,6 +2730,7 @@ lib LibGio
     # Virtual function next_file
     # Virtual function next_files_async
     # Virtual function next_files_finish
+    # Property container : LibGio::File
   end
   fun file_enumerator_close = g_file_enumerator_close(this : FileEnumerator*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Bool
   fun file_enumerator_close_async = g_file_enumerator_close_async(this : FileEnumerator*, io_priority : Int32, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
@@ -2677,7 +2746,7 @@ lib LibGio
   fun file_enumerator_set_pending = g_file_enumerator_set_pending(this : FileEnumerator*, pending : Bool) : Void
 
   struct FileIOStream # object
-    parent_instance : LibGio::IOStream
+    parent_instance : LibGio::IOStream*
     priv : LibGio::FileIOStreamPrivate*
     # Virtual function can_seek
     # Virtual function can_truncate
@@ -2696,6 +2765,7 @@ lib LibGio
 
   struct FileIcon # object
     _data : UInt8[0]
+    # Property file : LibGio::File
   end
   fun file_icon_new = g_file_icon_new(file : LibGio::File*) : LibGio::FileIcon*
   fun file_icon_get_file = g_file_icon_get_file(this : FileIcon*) : LibGio::File*
@@ -2768,7 +2838,7 @@ lib LibGio
   fun file_info_unset_attribute_mask = g_file_info_unset_attribute_mask(this : FileInfo*) : Void
 
   struct FileInputStream # object
-    parent_instance : LibGio::InputStream
+    parent_instance : LibGio::InputStream*
     priv : LibGio::FileInputStreamPrivate*
     # Virtual function can_seek
     # Virtual function query_info
@@ -2782,11 +2852,13 @@ lib LibGio
   fun file_input_stream_query_info_finish = g_file_input_stream_query_info_finish(this : FileInputStream*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : LibGio::FileInfo*
 
   struct FileMonitor # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::FileMonitorPrivate*
     # Signal changed
     # Virtual function cancel
     # Virtual function changed
+    # Property cancelled : Bool
+    # Property rate_limit : Int32
   end
   fun file_monitor_cancel = g_file_monitor_cancel(this : FileMonitor*) : Bool
   fun file_monitor_emit_event = g_file_monitor_emit_event(this : FileMonitor*, child : LibGio::File*, other_file : LibGio::File*, event_type : LibGio::FileMonitorEvent) : Void
@@ -2794,7 +2866,7 @@ lib LibGio
   fun file_monitor_set_rate_limit = g_file_monitor_set_rate_limit(this : FileMonitor*, limit_msecs : Int32) : Void
 
   struct FileOutputStream # object
-    parent_instance : LibGio::OutputStream
+    parent_instance : LibGio::OutputStream*
     priv : LibGio::FileOutputStreamPrivate*
     # Virtual function can_seek
     # Virtual function can_truncate
@@ -2822,16 +2894,20 @@ lib LibGio
   fun filename_completer_set_dirs_only = g_filename_completer_set_dirs_only(this : FilenameCompleter*, dirs_only : Bool) : Void
 
   struct FilterInputStream # object
-    parent_instance : LibGio::InputStream
+    parent_instance : LibGio::InputStream*
     base_stream : LibGio::InputStream*
+    # Property base_stream : LibGio::InputStream*
+    # Property close_base_stream : Bool
   end
   fun filter_input_stream_get_base_stream = g_filter_input_stream_get_base_stream(this : FilterInputStream*) : LibGio::InputStream*
   fun filter_input_stream_get_close_base_stream = g_filter_input_stream_get_close_base_stream(this : FilterInputStream*) : Bool
   fun filter_input_stream_set_close_base_stream = g_filter_input_stream_set_close_base_stream(this : FilterInputStream*, close_base : Bool) : Void
 
   struct FilterOutputStream # object
-    parent_instance : LibGio::OutputStream
+    parent_instance : LibGio::OutputStream*
     base_stream : LibGio::OutputStream*
+    # Property base_stream : LibGio::OutputStream*
+    # Property close_base_stream : Bool
   end
   fun filter_output_stream_get_base_stream = g_filter_output_stream_get_base_stream(this : FilterOutputStream*) : LibGio::OutputStream*
   fun filter_output_stream_get_close_base_stream = g_filter_output_stream_get_close_base_stream(this : FilterOutputStream*) : Bool
@@ -2846,13 +2922,16 @@ lib LibGio
   fun i_o_module_unload = g_io_module_unload(this : IOModule*) : Void
 
   struct IOStream # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::IOStreamPrivate*
     # Virtual function close_async
     # Virtual function close_finish
     # Virtual function close_fn
     # Virtual function get_input_stream
     # Virtual function get_output_stream
+    # Property closed : Bool
+    # Property input_stream : LibGio::InputStream*
+    # Property output_stream : LibGio::OutputStream*
   end
   fun i_o_stream_splice_finish = g_io_stream_splice_finish(result : LibGio::AsyncResult*, error : LibGLib::Error**) : Bool
   fun i_o_stream_clear_pending = g_io_stream_clear_pending(this : IOStream*) : Void
@@ -2867,9 +2946,21 @@ lib LibGio
   fun i_o_stream_splice_async = g_io_stream_splice_async(this : IOStream*, stream2 : LibGio::IOStream*, flags : LibGio::IOStreamSpliceFlags, io_priority : Int32, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
 
   struct InetAddress # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::InetAddressPrivate*
     # Virtual function to_string
+    # Property bytes : Void*
+    # Property family : LibGio::SocketFamily
+    # Property is_any : Bool
+    # Property is_link_local : Bool
+    # Property is_loopback : Bool
+    # Property is_mc_global : Bool
+    # Property is_mc_link_local : Bool
+    # Property is_mc_node_local : Bool
+    # Property is_mc_org_local : Bool
+    # Property is_mc_site_local : Bool
+    # Property is_multicast : Bool
+    # Property is_site_local : Bool
   end
   fun inet_address_new_any = g_inet_address_new_any(family : LibGio::SocketFamily) : LibGio::InetAddress*
   fun inet_address_new_from_bytes = g_inet_address_new_from_bytes(bytes : UInt8*, family : LibGio::SocketFamily) : LibGio::InetAddress*
@@ -2891,8 +2982,11 @@ lib LibGio
   fun inet_address_to_string = g_inet_address_to_string(this : InetAddress*) : UInt8*
 
   struct InetAddressMask # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::InetAddressMaskPrivate*
+    # Property address : LibGio::InetAddress*
+    # Property family : LibGio::SocketFamily
+    # Property length : UInt32
   end
   fun inet_address_mask_new = g_inet_address_mask_new(addr : LibGio::InetAddress*, length : UInt32, error : LibGLib::Error**) : LibGio::InetAddressMask*
   fun inet_address_mask_new_from_string = g_inet_address_mask_new_from_string(mask_string : UInt8*, error : LibGLib::Error**) : LibGio::InetAddressMask*
@@ -2904,8 +2998,12 @@ lib LibGio
   fun inet_address_mask_to_string = g_inet_address_mask_to_string(this : InetAddressMask*) : UInt8*
 
   struct InetSocketAddress # object
-    parent_instance : LibGio::SocketAddress
+    parent_instance : LibGio::SocketAddress*
     priv : LibGio::InetSocketAddressPrivate*
+    # Property address : LibGio::InetAddress*
+    # Property flowinfo : UInt32
+    # Property port : UInt32
+    # Property scope_id : UInt32
   end
   fun inet_socket_address_new = g_inet_socket_address_new(address : LibGio::InetAddress*, port : UInt16) : LibGio::SocketAddress*
   fun inet_socket_address_new_from_string = g_inet_socket_address_new_from_string(address : UInt8*, port : UInt32) : LibGio::SocketAddress*
@@ -2915,7 +3013,7 @@ lib LibGio
   fun inet_socket_address_get_scope_id = g_inet_socket_address_get_scope_id(this : InetSocketAddress*) : UInt32
 
   struct InputStream # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::InputStreamPrivate*
     # Virtual function close_async
     # Virtual function close_finish
@@ -2949,6 +3047,7 @@ lib LibGio
 
   struct ListStore # object
     _data : UInt8[0]
+    # Property item_type : UInt64
   end
   fun list_store_new = g_list_store_new(item_type : UInt64) : LibGio::ListStore*
   fun list_store_append = g_list_store_append(this : ListStore*, item : LibGObject::Object*) : Void
@@ -2957,10 +3056,10 @@ lib LibGio
   fun list_store_remove = g_list_store_remove(this : ListStore*, position : UInt32) : Void
   fun list_store_remove_all = g_list_store_remove_all(this : ListStore*) : Void
   fun list_store_sort = g_list_store_sort(this : ListStore*, compare_func : LibGLib::CompareDataFunc, user_data : Void*) : Void
-  fun list_store_splice = g_list_store_splice(this : ListStore*, position : UInt32, n_removals : UInt32, additions : LibGObject::Object*, n_additions : UInt32) : Void
+  fun list_store_splice = g_list_store_splice(this : ListStore*, position : UInt32, n_removals : UInt32, additions : LibGObject::Object**, n_additions : UInt32) : Void
 
   struct MemoryInputStream # object
-    parent_instance : LibGio::InputStream
+    parent_instance : LibGio::InputStream*
     priv : LibGio::MemoryInputStreamPrivate*
   end
   fun memory_input_stream_new = g_memory_input_stream_new() : LibGio::InputStream*
@@ -2970,8 +3069,11 @@ lib LibGio
   fun memory_input_stream_add_data = g_memory_input_stream_add_data(this : MemoryInputStream*, data : UInt8*, len : Int64, destroy : LibGLib::DestroyNotify) : Void
 
   struct MemoryOutputStream # object
-    parent_instance : LibGio::OutputStream
+    parent_instance : LibGio::OutputStream*
     priv : LibGio::MemoryOutputStreamPrivate*
+    # Property data : Void*
+    # Property data_size : UInt64
+    # Property size : UInt64
   end
   fun memory_output_stream_new_resizable = g_memory_output_stream_new_resizable() : LibGio::OutputStream*
   fun memory_output_stream_get_data = g_memory_output_stream_get_data(this : MemoryOutputStream*) : Void*
@@ -3001,7 +3103,7 @@ lib LibGio
   fun menu_remove_all = g_menu_remove_all(this : Menu*) : Void
 
   struct MenuAttributeIter # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::MenuAttributeIterPrivate*
     # Virtual function get_next
   end
@@ -3029,7 +3131,7 @@ lib LibGio
   fun menu_item_set_submenu = g_menu_item_set_submenu(this : MenuItem*, submenu : LibGio::MenuModel*) : Void
 
   struct MenuLinkIter # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::MenuLinkIterPrivate*
     # Virtual function get_next
   end
@@ -3039,7 +3141,7 @@ lib LibGio
   fun menu_link_iter_next = g_menu_link_iter_next(this : MenuLinkIter*) : Bool
 
   struct MenuModel # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::MenuModelPrivate*
     # Signal items-changed
     # Virtual function get_item_attribute_value
@@ -3060,7 +3162,7 @@ lib LibGio
   fun menu_model_iterate_item_links = g_menu_model_iterate_item_links(this : MenuModel*, item_index : Int32) : LibGio::MenuLinkIter*
 
   struct MountOperation # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::MountOperationPrivate*
     # Signal aborted
     # Signal ask-password
@@ -3073,6 +3175,12 @@ lib LibGio
     # Virtual function ask_question
     # Virtual function reply
     # Virtual function show_unmount_progress
+    # Property anonymous : Bool
+    # Property choice : Int32
+    # Property domain : UInt8*
+    # Property password : UInt8*
+    # Property password_save : LibGio::PasswordSave
+    # Property username : UInt8*
   end
   fun mount_operation_new = g_mount_operation_new() : LibGio::MountOperation*
   fun mount_operation_get_anonymous = g_mount_operation_get_anonymous(this : MountOperation*) : Bool
@@ -3090,12 +3198,15 @@ lib LibGio
   fun mount_operation_set_username = g_mount_operation_set_username(this : MountOperation*, username : UInt8*) : Void
 
   struct NativeVolumeMonitor # object
-    parent_instance : LibGio::VolumeMonitor
+    parent_instance : LibGio::VolumeMonitor*
   end
 
   struct NetworkAddress # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::NetworkAddressPrivate*
+    # Property hostname : UInt8*
+    # Property port : UInt32
+    # Property scheme : UInt8*
   end
   fun network_address_new = g_network_address_new(hostname : UInt8*, port : UInt16) : LibGio::NetworkAddress*
   fun network_address_new_loopback = g_network_address_new_loopback(port : UInt16) : LibGio::NetworkAddress*
@@ -3106,8 +3217,12 @@ lib LibGio
   fun network_address_get_scheme = g_network_address_get_scheme(this : NetworkAddress*) : UInt8*
 
   struct NetworkService # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::NetworkServicePrivate*
+    # Property domain : UInt8*
+    # Property protocol : UInt8*
+    # Property scheme : UInt8*
+    # Property service : UInt8*
   end
   fun network_service_new = g_network_service_new(service : UInt8*, protocol : UInt8*, domain : UInt8*) : LibGio::NetworkService*
   fun network_service_get_domain = g_network_service_get_domain(this : NetworkService*) : UInt8*
@@ -3131,7 +3246,7 @@ lib LibGio
   fun notification_set_urgent = g_notification_set_urgent(this : Notification*, urgent : Bool) : Void
 
   struct OutputStream # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::OutputStreamPrivate*
     # Virtual function close_async
     # Virtual function close_finish
@@ -3171,7 +3286,7 @@ lib LibGio
   fun output_stream_write_finish = g_output_stream_write_finish(this : OutputStream*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : Int64
 
   struct Permission # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::PermissionPrivate*
     # Virtual function acquire
     # Virtual function acquire_async
@@ -3179,6 +3294,9 @@ lib LibGio
     # Virtual function release
     # Virtual function release_async
     # Virtual function release_finish
+    # Property allowed : Bool
+    # Property can_acquire : Bool
+    # Property can_release : Bool
   end
   fun permission_acquire = g_permission_acquire(this : Permission*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Bool
   fun permission_acquire_async = g_permission_acquire_async(this : Permission*, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
@@ -3193,12 +3311,27 @@ lib LibGio
 
   struct PropertyAction # object
     _data : UInt8[0]
+    # Property enabled : Bool
+    # Property invert_boolean : Bool
+    # Property name : UInt8*
+    # Property object : LibGObject::Object*
+    # Property parameter_type : LibGLib::VariantType
+    # Property property_name : UInt8*
+    # Property state : LibGLib::Variant
+    # Property state_type : LibGLib::VariantType
   end
   fun property_action_new = g_property_action_new(name : UInt8*, object : LibGObject::Object*, property_name : UInt8*) : LibGio::PropertyAction*
 
   struct ProxyAddress # object
-    parent_instance : LibGio::InetSocketAddress
+    parent_instance : LibGio::InetSocketAddress*
     priv : LibGio::ProxyAddressPrivate*
+    # Property destination_hostname : UInt8*
+    # Property destination_port : UInt32
+    # Property destination_protocol : UInt8*
+    # Property password : UInt8*
+    # Property protocol : UInt8*
+    # Property uri : UInt8*
+    # Property username : UInt8*
   end
   fun proxy_address_new = g_proxy_address_new(inetaddr : LibGio::InetAddress*, port : UInt16, protocol : UInt8*, dest_hostname : UInt8*, dest_port : UInt16, username : UInt8*, password : UInt8*) : LibGio::SocketAddress*
   fun proxy_address_get_destination_hostname = g_proxy_address_get_destination_hostname(this : ProxyAddress*) : UInt8*
@@ -3210,12 +3343,16 @@ lib LibGio
   fun proxy_address_get_username = g_proxy_address_get_username(this : ProxyAddress*) : UInt8*
 
   struct ProxyAddressEnumerator # object
-    parent_instance : LibGio::SocketAddressEnumerator
+    parent_instance : LibGio::SocketAddressEnumerator*
     priv : LibGio::ProxyAddressEnumeratorPrivate*
+    # Property connectable : LibGio::SocketConnectable
+    # Property default_port : UInt32
+    # Property proxy_resolver : LibGio::ProxyResolver
+    # Property uri : UInt8*
   end
 
   struct Resolver # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::ResolverPrivate*
     # Signal reload
     # Virtual function lookup_by_address
@@ -3247,7 +3384,7 @@ lib LibGio
   fun resolver_set_default = g_resolver_set_default(this : Resolver*) : Void
 
   struct Settings # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::SettingsPrivate*
     # Signal change-event
     # Signal changed
@@ -3257,6 +3394,13 @@ lib LibGio
     # Virtual function changed
     # Virtual function writable_change_event
     # Virtual function writable_changed
+    # Property backend : LibGio::SettingsBackend*
+    # Property delay_apply : Bool
+    # Property has_unapplied : Bool
+    # Property path : UInt8*
+    # Property schema : UInt8*
+    # Property schema_id : UInt8*
+    # Property settings_schema : LibGio::SettingsSchema
   end
   fun settings_new = g_settings_new(schema_id : UInt8*) : LibGio::Settings*
   fun settings_new_full = g_settings_new_full(schema : LibGio::SettingsSchema*, backend : LibGio::SettingsBackend*, path : UInt8*) : LibGio::Settings*
@@ -3308,7 +3452,7 @@ lib LibGio
   fun settings_set_value = g_settings_set_value(this : Settings*, key : UInt8*, value : LibGLib::Variant*) : Bool
 
   struct SettingsBackend # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::SettingsBackendPrivate*
     # Virtual function get_writable
     # Virtual function read
@@ -3333,6 +3477,11 @@ lib LibGio
     _data : UInt8[0]
     # Signal activate
     # Signal change-state
+    # Property enabled : Bool
+    # Property name : UInt8*
+    # Property parameter_type : LibGLib::VariantType
+    # Property state : LibGLib::Variant
+    # Property state_type : LibGLib::VariantType
   end
   fun simple_action_new = g_simple_action_new(name : UInt8*, parameter_type : LibGLib::VariantType*) : LibGio::SimpleAction*
   fun simple_action_new_stateful = g_simple_action_new_stateful(name : UInt8*, parameter_type : LibGLib::VariantType*, state : LibGLib::Variant*) : LibGio::SimpleAction*
@@ -3341,7 +3490,7 @@ lib LibGio
   fun simple_action_set_state_hint = g_simple_action_set_state_hint(this : SimpleAction*, state_hint : LibGLib::Variant*) : Void
 
   struct SimpleActionGroup # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::SimpleActionGroupPrivate*
   end
   fun simple_action_group_new = g_simple_action_group_new() : LibGio::SimpleActionGroup*
@@ -3369,6 +3518,8 @@ lib LibGio
 
   struct SimpleIOStream # object
     _data : UInt8[0]
+    # Property input_stream : LibGio::InputStream*
+    # Property output_stream : LibGio::OutputStream*
   end
   fun simple_i_o_stream_new = g_simple_io_stream_new(input_stream : LibGio::InputStream*, output_stream : LibGio::OutputStream*) : LibGio::IOStream*
 
@@ -3378,8 +3529,10 @@ lib LibGio
   fun simple_permission_new = g_simple_permission_new(allowed : Bool) : LibGio::Permission*
 
   struct SimpleProxyResolver # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::SimpleProxyResolverPrivate*
+    # Property default_proxy : UInt8*
+    # Property ignore_hosts : UInt8**
   end
   fun simple_proxy_resolver_new = g_simple_proxy_resolver_new(default_proxy : UInt8*, ignore_hosts : UInt8*) : LibGio::ProxyResolver*
   fun simple_proxy_resolver_set_default_proxy = g_simple_proxy_resolver_set_default_proxy(this : SimpleProxyResolver*, default_proxy : UInt8*) : Void
@@ -3387,8 +3540,22 @@ lib LibGio
   fun simple_proxy_resolver_set_uri_proxy = g_simple_proxy_resolver_set_uri_proxy(this : SimpleProxyResolver*, uri_scheme : UInt8*, proxy : UInt8*) : Void
 
   struct Socket # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::SocketPrivate*
+    # Property blocking : Bool
+    # Property broadcast : Bool
+    # Property family : LibGio::SocketFamily
+    # Property fd : Int32
+    # Property keepalive : Bool
+    # Property listen_backlog : Int32
+    # Property local_address : LibGio::SocketAddress*
+    # Property multicast_loopback : Bool
+    # Property multicast_ttl : UInt32
+    # Property protocol : LibGio::SocketProtocol
+    # Property remote_address : LibGio::SocketAddress*
+    # Property timeout : UInt32
+    # Property ttl : UInt32
+    # Property type : LibGio::SocketType
   end
   fun socket_new = g_socket_new(family : LibGio::SocketFamily, type : LibGio::SocketType, protocol : LibGio::SocketProtocol, error : LibGLib::Error**) : LibGio::Socket*
   fun socket_new_from_fd = g_socket_new_from_fd(fd : Int32, error : LibGLib::Error**) : LibGio::Socket*
@@ -3446,10 +3613,11 @@ lib LibGio
   fun socket_speaks_ipv4 = g_socket_speaks_ipv4(this : Socket*) : Bool
 
   struct SocketAddress # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     # Virtual function get_family
     # Virtual function get_native_size
     # Virtual function to_native
+    # Property family : LibGio::SocketFamily
   end
   fun socket_address_new_from_native = g_socket_address_new_from_native(native : Void*, len : UInt64) : LibGio::SocketAddress*
   fun socket_address_get_family = g_socket_address_get_family(this : SocketAddress*) : LibGio::SocketFamily
@@ -3457,7 +3625,7 @@ lib LibGio
   fun socket_address_to_native = g_socket_address_to_native(this : SocketAddress*, dest : Void*, destlen : UInt64, error : LibGLib::Error**) : Bool
 
   struct SocketAddressEnumerator # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     # Virtual function next
     # Virtual function next_async
     # Virtual function next_finish
@@ -3467,10 +3635,19 @@ lib LibGio
   fun socket_address_enumerator_next_finish = g_socket_address_enumerator_next_finish(this : SocketAddressEnumerator*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : LibGio::SocketAddress*
 
   struct SocketClient # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::SocketClientPrivate*
     # Signal event
     # Virtual function event
+    # Property enable_proxy : Bool
+    # Property family : LibGio::SocketFamily
+    # Property local_address : LibGio::SocketAddress*
+    # Property protocol : LibGio::SocketProtocol
+    # Property proxy_resolver : LibGio::ProxyResolver
+    # Property timeout : UInt32
+    # Property tls : Bool
+    # Property tls_validation_flags : LibGio::TlsCertificateFlags
+    # Property type : LibGio::SocketType
   end
   fun socket_client_new = g_socket_client_new() : LibGio::SocketClient*
   fun socket_client_add_application_proxy = g_socket_client_add_application_proxy(this : SocketClient*, protocol : UInt8*) : Void
@@ -3506,8 +3683,9 @@ lib LibGio
   fun socket_client_set_tls_validation_flags = g_socket_client_set_tls_validation_flags(this : SocketClient*, flags : LibGio::TlsCertificateFlags) : Void
 
   struct SocketConnection # object
-    parent_instance : LibGio::IOStream
+    parent_instance : LibGio::IOStream*
     priv : LibGio::SocketConnectionPrivate*
+    # Property socket : LibGio::Socket*
   end
   fun socket_connection_factory_lookup_type = g_socket_connection_factory_lookup_type(family : LibGio::SocketFamily, type : LibGio::SocketType, protocol_id : Int32) : UInt64
   fun socket_connection_factory_register_type = g_socket_connection_factory_register_type(g_type : UInt64, family : LibGio::SocketFamily, type : LibGio::SocketType, protocol : Int32) : Void
@@ -3520,7 +3698,7 @@ lib LibGio
   fun socket_connection_is_connected = g_socket_connection_is_connected(this : SocketConnection*) : Bool
 
   struct SocketControlMessage # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::SocketControlMessagePrivate*
     # Virtual function get_level
     # Virtual function get_size
@@ -3534,11 +3712,12 @@ lib LibGio
   fun socket_control_message_serialize = g_socket_control_message_serialize(this : SocketControlMessage*, data : Void*) : Void
 
   struct SocketListener # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::SocketListenerPrivate*
     # Signal event
     # Virtual function changed
     # Virtual function event
+    # Property listen_backlog : Int32
   end
   fun socket_listener_new = g_socket_listener_new() : LibGio::SocketListener*
   fun socket_listener_accept = g_socket_listener_accept(this : SocketListener*, source_object : LibGObject::Object**, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : LibGio::SocketConnection*
@@ -3555,10 +3734,11 @@ lib LibGio
   fun socket_listener_set_backlog = g_socket_listener_set_backlog(this : SocketListener*, listen_backlog : Int32) : Void
 
   struct SocketService # object
-    parent_instance : LibGio::SocketListener
+    parent_instance : LibGio::SocketListener*
     priv : LibGio::SocketServicePrivate*
     # Signal incoming
     # Virtual function incoming
+    # Property active : Bool
   end
   fun socket_service_new = g_socket_service_new() : LibGio::SocketService*
   fun socket_service_is_active = g_socket_service_is_active(this : SocketService*) : Bool
@@ -3567,6 +3747,8 @@ lib LibGio
 
   struct Subprocess # object
     _data : UInt8[0]
+    # Property argv : UInt8**
+    # Property flags : LibGio::SubprocessFlags
   end
   fun subprocess_new = g_subprocess_newv(argv : UInt8**, flags : LibGio::SubprocessFlags, error : LibGLib::Error**) : LibGio::Subprocess*
   fun subprocess_communicate = g_subprocess_communicate(this : Subprocess*, stdin_buf : LibGLib::Bytes*, cancellable : LibGio::Cancellable*, stdout_buf : LibGLib::Bytes**, stderr_buf : LibGLib::Bytes**, error : LibGLib::Error**) : Bool
@@ -3596,6 +3778,7 @@ lib LibGio
 
   struct SubprocessLauncher # object
     _data : UInt8[0]
+    # Property flags : LibGio::SubprocessFlags
   end
   fun subprocess_launcher_new = g_subprocess_launcher_new(flags : LibGio::SubprocessFlags) : LibGio::SubprocessLauncher*
   fun subprocess_launcher_getenv = g_subprocess_launcher_getenv(this : SubprocessLauncher*, variable : UInt8*) : UInt8*
@@ -3616,6 +3799,7 @@ lib LibGio
 
   struct Task # object
     _data : UInt8[0]
+    # Property completed : Bool
   end
   fun task_new = g_task_new(source_object : LibGObject::Object*, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, callback_data : Void*) : LibGio::Task*
   fun task_is_valid = g_task_is_valid(result : LibGio::AsyncResult*, source_object : LibGObject::Object*) : Bool
@@ -3645,21 +3829,24 @@ lib LibGio
   fun task_set_task_data = g_task_set_task_data(this : Task*, task_data : Void*, task_data_destroy : LibGLib::DestroyNotify) : Void
 
   struct TcpConnection # object
-    parent_instance : LibGio::SocketConnection
+    parent_instance : LibGio::SocketConnection*
     priv : LibGio::TcpConnectionPrivate*
+    # Property graceful_disconnect : Bool
   end
   fun tcp_connection_get_graceful_disconnect = g_tcp_connection_get_graceful_disconnect(this : TcpConnection*) : Bool
   fun tcp_connection_set_graceful_disconnect = g_tcp_connection_set_graceful_disconnect(this : TcpConnection*, graceful_disconnect : Bool) : Void
 
   struct TcpWrapperConnection # object
-    parent_instance : LibGio::TcpConnection
+    parent_instance : LibGio::TcpConnection*
     priv : LibGio::TcpWrapperConnectionPrivate*
+    # Property base_io_stream : LibGio::IOStream*
   end
   fun tcp_wrapper_connection_new = g_tcp_wrapper_connection_new(base_io_stream : LibGio::IOStream*, socket : LibGio::Socket*) : LibGio::SocketConnection*
   fun tcp_wrapper_connection_get_base_io_stream = g_tcp_wrapper_connection_get_base_io_stream(this : TcpWrapperConnection*) : LibGio::IOStream*
 
   struct TestDBus # object
     _data : UInt8[0]
+    # Property flags : LibGio::TestDBusFlags
   end
   fun test_d_bus_new = g_test_dbus_new(flags : LibGio::TestDBusFlags) : LibGio::TestDBus*
   fun test_d_bus_unset = g_test_dbus_unset() : Void
@@ -3672,6 +3859,9 @@ lib LibGio
 
   struct ThemedIcon # object
     _data : UInt8[0]
+    # Property name : UInt8*
+    # Property names : UInt8**
+    # Property use_default_fallbacks : Bool
   end
   fun themed_icon_new = g_themed_icon_new(iconname : UInt8*) : LibGio::ThemedIcon*
   fun themed_icon_new_from_names = g_themed_icon_new_from_names(iconnames : UInt8**, len : Int32) : LibGio::ThemedIcon*
@@ -3681,17 +3871,23 @@ lib LibGio
   fun themed_icon_prepend_name = g_themed_icon_prepend_name(this : ThemedIcon*, iconname : UInt8*) : Void
 
   struct ThreadedSocketService # object
-    parent_instance : LibGio::SocketService
+    parent_instance : LibGio::SocketService*
     priv : LibGio::ThreadedSocketServicePrivate*
     # Signal run
     # Virtual function run
+    # Property max_threads : Int32
   end
   fun threaded_socket_service_new = g_threaded_socket_service_new(max_threads : Int32) : LibGio::SocketService*
 
   struct TlsCertificate # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::TlsCertificatePrivate*
     # Virtual function verify
+    # Property certificate : Void*
+    # Property certificate_pem : UInt8*
+    # Property issuer : LibGio::TlsCertificate*
+    # Property private_key : Void*
+    # Property private_key_pem : UInt8*
   end
   fun tls_certificate_new_from_file = g_tls_certificate_new_from_file(file : UInt8*, error : LibGLib::Error**) : LibGio::TlsCertificate*
   fun tls_certificate_new_from_files = g_tls_certificate_new_from_files(cert_file : UInt8*, key_file : UInt8*, error : LibGLib::Error**) : LibGio::TlsCertificate*
@@ -3702,13 +3898,22 @@ lib LibGio
   fun tls_certificate_verify = g_tls_certificate_verify(this : TlsCertificate*, identity : LibGio::SocketConnectable*, trusted_ca : LibGio::TlsCertificate*) : LibGio::TlsCertificateFlags
 
   struct TlsConnection # object
-    parent_instance : LibGio::IOStream
+    parent_instance : LibGio::IOStream*
     priv : LibGio::TlsConnectionPrivate*
     # Signal accept-certificate
     # Virtual function accept_certificate
     # Virtual function handshake
     # Virtual function handshake_async
     # Virtual function handshake_finish
+    # Property base_io_stream : LibGio::IOStream*
+    # Property certificate : LibGio::TlsCertificate*
+    # Property database : LibGio::TlsDatabase*
+    # Property interaction : LibGio::TlsInteraction*
+    # Property peer_certificate : LibGio::TlsCertificate*
+    # Property peer_certificate_errors : LibGio::TlsCertificateFlags
+    # Property rehandshake_mode : LibGio::TlsRehandshakeMode
+    # Property require_close_notify : Bool
+    # Property use_system_certdb : Bool
   end
   fun tls_connection_emit_accept_certificate = g_tls_connection_emit_accept_certificate(this : TlsConnection*, peer_cert : LibGio::TlsCertificate*, errors : LibGio::TlsCertificateFlags) : Bool
   fun tls_connection_get_certificate = g_tls_connection_get_certificate(this : TlsConnection*) : LibGio::TlsCertificate*
@@ -3730,7 +3935,7 @@ lib LibGio
   fun tls_connection_set_use_system_certdb = g_tls_connection_set_use_system_certdb(this : TlsConnection*, use_system_certdb : Bool) : Void
 
   struct TlsDatabase # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::TlsDatabasePrivate*
     # Virtual function create_certificate_handle
     # Virtual function lookup_certificate_for_handle
@@ -3753,15 +3958,15 @@ lib LibGio
   fun tls_database_lookup_certificate_issuer = g_tls_database_lookup_certificate_issuer(this : TlsDatabase*, certificate : LibGio::TlsCertificate*, interaction : LibGio::TlsInteraction*, flags : LibGio::TlsDatabaseLookupFlags, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : LibGio::TlsCertificate*
   fun tls_database_lookup_certificate_issuer_async = g_tls_database_lookup_certificate_issuer_async(this : TlsDatabase*, certificate : LibGio::TlsCertificate*, interaction : LibGio::TlsInteraction*, flags : LibGio::TlsDatabaseLookupFlags, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun tls_database_lookup_certificate_issuer_finish = g_tls_database_lookup_certificate_issuer_finish(this : TlsDatabase*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : LibGio::TlsCertificate*
-  fun tls_database_lookup_certificates_issued_by = g_tls_database_lookup_certificates_issued_by(this : TlsDatabase*, issuer_raw_dn : Void**, interaction : LibGio::TlsInteraction*, flags : LibGio::TlsDatabaseLookupFlags, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Void**
-  fun tls_database_lookup_certificates_issued_by_async = g_tls_database_lookup_certificates_issued_by_async(this : TlsDatabase*, issuer_raw_dn : Void**, interaction : LibGio::TlsInteraction*, flags : LibGio::TlsDatabaseLookupFlags, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
+  fun tls_database_lookup_certificates_issued_by = g_tls_database_lookup_certificates_issued_by(this : TlsDatabase*, issuer_raw_dn : Void*, interaction : LibGio::TlsInteraction*, flags : LibGio::TlsDatabaseLookupFlags, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Void**
+  fun tls_database_lookup_certificates_issued_by_async = g_tls_database_lookup_certificates_issued_by_async(this : TlsDatabase*, issuer_raw_dn : Void*, interaction : LibGio::TlsInteraction*, flags : LibGio::TlsDatabaseLookupFlags, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun tls_database_lookup_certificates_issued_by_finish = g_tls_database_lookup_certificates_issued_by_finish(this : TlsDatabase*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : Void**
   fun tls_database_verify_chain = g_tls_database_verify_chain(this : TlsDatabase*, chain : LibGio::TlsCertificate*, purpose : UInt8*, identity : LibGio::SocketConnectable*, interaction : LibGio::TlsInteraction*, flags : LibGio::TlsDatabaseVerifyFlags, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : LibGio::TlsCertificateFlags
   fun tls_database_verify_chain_async = g_tls_database_verify_chain_async(this : TlsDatabase*, chain : LibGio::TlsCertificate*, purpose : UInt8*, identity : LibGio::SocketConnectable*, interaction : LibGio::TlsInteraction*, flags : LibGio::TlsDatabaseVerifyFlags, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun tls_database_verify_chain_finish = g_tls_database_verify_chain_finish(this : TlsDatabase*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : LibGio::TlsCertificateFlags
 
   struct TlsInteraction # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::TlsInteractionPrivate*
     # Virtual function ask_password
     # Virtual function ask_password_async
@@ -3780,11 +3985,14 @@ lib LibGio
   fun tls_interaction_request_certificate_finish = g_tls_interaction_request_certificate_finish(this : TlsInteraction*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : LibGio::TlsInteractionResult
 
   struct TlsPassword # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::TlsPasswordPrivate*
     # Virtual function get_default_warning
     # Virtual function get_value
     # Virtual function set_value
+    # Property description : UInt8*
+    # Property flags : LibGio::TlsPasswordFlags
+    # Property warning : UInt8*
   end
   fun tls_password_new = g_tls_password_new(flags : LibGio::TlsPasswordFlags, description : UInt8*) : LibGio::TlsPassword*
   fun tls_password_get_description = g_tls_password_get_description(this : TlsPassword*) : UInt8*
@@ -3798,7 +4006,7 @@ lib LibGio
   fun tls_password_set_warning = g_tls_password_set_warning(this : TlsPassword*, warning : UInt8*) : Void
 
   struct UnixConnection # object
-    parent_instance : LibGio::SocketConnection
+    parent_instance : LibGio::SocketConnection*
     priv : LibGio::UnixConnectionPrivate*
   end
   fun unix_connection_receive_credentials = g_unix_connection_receive_credentials(this : UnixConnection*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : LibGio::Credentials*
@@ -3811,8 +4019,9 @@ lib LibGio
   fun unix_connection_send_fd = g_unix_connection_send_fd(this : UnixConnection*, fd : Int32, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Bool
 
   struct UnixCredentialsMessage # object
-    parent_instance : LibGio::SocketControlMessage
+    parent_instance : LibGio::SocketControlMessage*
     priv : LibGio::UnixCredentialsMessagePrivate*
+    # Property credentials : LibGio::Credentials*
   end
   fun unix_credentials_message_new = g_unix_credentials_message_new() : LibGio::SocketControlMessage*
   fun unix_credentials_message_new_with_credentials = g_unix_credentials_message_new_with_credentials(credentials : LibGio::Credentials*) : LibGio::SocketControlMessage*
@@ -3820,7 +4029,7 @@ lib LibGio
   fun unix_credentials_message_get_credentials = g_unix_credentials_message_get_credentials(this : UnixCredentialsMessage*) : LibGio::Credentials*
 
   struct UnixFDList # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : LibGio::UnixFDListPrivate*
   end
   fun unix_f_d_list_new = g_unix_fd_list_new() : LibGio::UnixFDList*
@@ -3832,8 +4041,9 @@ lib LibGio
   fun unix_f_d_list_steal_fds = g_unix_fd_list_steal_fds(this : UnixFDList*, length : Int32*) : Int32*
 
   struct UnixFDMessage # object
-    parent_instance : LibGio::SocketControlMessage
+    parent_instance : LibGio::SocketControlMessage*
     priv : LibGio::UnixFDMessagePrivate*
+    # Property fd_list : LibGio::UnixFDList*
   end
   fun unix_f_d_message_new = g_unix_fd_message_new() : LibGio::SocketControlMessage*
   fun unix_f_d_message_new_with_fd_list = g_unix_fd_message_new_with_fd_list(fd_list : LibGio::UnixFDList*) : LibGio::SocketControlMessage*
@@ -3842,8 +4052,10 @@ lib LibGio
   fun unix_f_d_message_steal_fds = g_unix_fd_message_steal_fds(this : UnixFDMessage*, length : Int32*) : Int32*
 
   struct UnixInputStream # object
-    parent_instance : LibGio::InputStream
+    parent_instance : LibGio::InputStream*
     priv : LibGio::UnixInputStreamPrivate*
+    # Property close_fd : Bool
+    # Property fd : Int32
   end
   fun unix_input_stream_new = g_unix_input_stream_new(fd : Int32, close_fd : Bool) : LibGio::InputStream*
   fun unix_input_stream_get_close_fd = g_unix_input_stream_get_close_fd(this : UnixInputStream*) : Bool
@@ -3860,8 +4072,10 @@ lib LibGio
   fun unix_mount_monitor_set_rate_limit = g_unix_mount_monitor_set_rate_limit(this : UnixMountMonitor*, limit_msec : Int32) : Void
 
   struct UnixOutputStream # object
-    parent_instance : LibGio::OutputStream
+    parent_instance : LibGio::OutputStream*
     priv : LibGio::UnixOutputStreamPrivate*
+    # Property close_fd : Bool
+    # Property fd : Int32
   end
   fun unix_output_stream_new = g_unix_output_stream_new(fd : Int32, close_fd : Bool) : LibGio::OutputStream*
   fun unix_output_stream_get_close_fd = g_unix_output_stream_get_close_fd(this : UnixOutputStream*) : Bool
@@ -3869,8 +4083,12 @@ lib LibGio
   fun unix_output_stream_set_close_fd = g_unix_output_stream_set_close_fd(this : UnixOutputStream*, close_fd : Bool) : Void
 
   struct UnixSocketAddress # object
-    parent_instance : LibGio::SocketAddress
+    parent_instance : LibGio::SocketAddress*
     priv : LibGio::UnixSocketAddressPrivate*
+    # Property abstract : Bool
+    # Property address_type : LibGio::UnixSocketAddressType
+    # Property path : UInt8*
+    # Property path_as_array : Void*
   end
   fun unix_socket_address_new = g_unix_socket_address_new(path : UInt8*) : LibGio::SocketAddress*
   fun unix_socket_address_new_abstract = g_unix_socket_address_new_abstract(path : Int8*, path_len : Int32) : LibGio::SocketAddress*
@@ -3882,7 +4100,7 @@ lib LibGio
   fun unix_socket_address_get_path_len = g_unix_socket_address_get_path_len(this : UnixSocketAddress*) : UInt64
 
   struct Vfs # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     # Virtual function add_writable_namespaces
     # Virtual function get_file_for_path
     # Virtual function get_file_for_uri
@@ -3905,7 +4123,7 @@ lib LibGio
   fun vfs_unregister_uri_scheme = g_vfs_unregister_uri_scheme(this : Vfs*, scheme : UInt8*) : Bool
 
   struct VolumeMonitor # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : Void*
     # Signal drive-changed
     # Signal drive-connected
@@ -3947,6 +4165,9 @@ lib LibGio
 
   struct ZlibCompressor # object
     _data : UInt8[0]
+    # Property file_info : LibGio::FileInfo*
+    # Property format : LibGio::ZlibCompressorFormat
+    # Property level : Int32
   end
   fun zlib_compressor_new = g_zlib_compressor_new(format : LibGio::ZlibCompressorFormat, level : Int32) : LibGio::ZlibCompressor*
   fun zlib_compressor_get_file_info = g_zlib_compressor_get_file_info(this : ZlibCompressor*) : LibGio::FileInfo*
@@ -3954,6 +4175,8 @@ lib LibGio
 
   struct ZlibDecompressor # object
     _data : UInt8[0]
+    # Property file_info : LibGio::FileInfo*
+    # Property format : LibGio::ZlibCompressorFormat
   end
   fun zlib_decompressor_new = g_zlib_decompressor_new(format : LibGio::ZlibCompressorFormat) : LibGio::ZlibDecompressor*
   fun zlib_decompressor_get_file_info = g_zlib_decompressor_get_file_info(this : ZlibDecompressor*) : LibGio::FileInfo*

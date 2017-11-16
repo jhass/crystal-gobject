@@ -12,23 +12,27 @@ module Gst
     end
 
     def caps
-      __return_value = LibGst.device_get_caps(to_unsafe.as(LibGst::Device*))
-      Gst::Caps.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "caps", gvalue)
+      Gst::Caps.cast(gvalue.object)
     end
 
     def device_class
-      __return_value = LibGst.device_get_device_class(to_unsafe.as(LibGst::Device*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "device_class", gvalue)
+      gvalue.string
     end
 
     def display_name
-      __return_value = LibGst.device_get_display_name(to_unsafe.as(LibGst::Device*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "display_name", gvalue)
+      gvalue.string
     end
 
     def properties
-      __return_value = LibGst.device_get_properties(to_unsafe.as(LibGst::Device*))
-      Gst::Structure.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "properties", gvalue)
+      Gst::Structure.cast(gvalue.object)
     end
 
     def create_element(name)

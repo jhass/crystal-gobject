@@ -10,48 +10,51 @@ module Gio
     end
 
     def certificate
-      __return_value = LibGio.tls_certificate_get_certificate(to_unsafe.as(LibGio::TlsCertificate*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::ARRAY)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "certificate", gvalue)
+      gvalue
     end
 
     def certificate_pem
-      __return_value = LibGio.tls_certificate_get_certificate_pem(to_unsafe.as(LibGio::TlsCertificate*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "certificate_pem", gvalue)
+      gvalue.string
     end
 
     def issuer
-      __return_value = LibGio.tls_certificate_get_issuer(to_unsafe.as(LibGio::TlsCertificate*))
-      Gio::TlsCertificate.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "issuer", gvalue)
+      Gio::TlsCertificate.cast(gvalue.object)
     end
 
 
 
-    def self.new_from_file(file) : self
+    def self.new_from_file(file) : self # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.tls_certificate_new_from_file(file.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       cast Gio::TlsCertificate.new(__return_value)
     end
 
-    def self.new_from_files(cert_file, key_file) : self
+    def self.new_from_files(cert_file, key_file) : self # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.tls_certificate_new_from_files(cert_file.to_unsafe, key_file.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       cast Gio::TlsCertificate.new(__return_value)
     end
 
-    def self.new_from_pem(data, length) : self
+    def self.new_from_pem(data, length) : self # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.tls_certificate_new_from_pem(data.to_unsafe, Int64.new(length), pointerof(__error))
       GLib::Error.assert __error
       cast Gio::TlsCertificate.new(__return_value)
     end
 
-    def self.list_new_from_file(file)
+    def self.list_new_from_file(file) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.tls_certificate_list_new_from_file(file.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
-      GLib::ListIterator(Gio::TlsCertificate, LibGio::TlsCertificate*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gio::TlsCertificate, LibGio::TlsCertificate**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def issuer

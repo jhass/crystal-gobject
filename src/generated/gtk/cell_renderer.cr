@@ -11,78 +11,93 @@ module Gtk
 
 
     def cell_background_gdk
-      __return_value = LibGtk.cell_renderer_get_cell_background_gdk(to_unsafe.as(LibGtk::CellRenderer*))
-      Gdk::Color.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "cell_background_gdk", gvalue)
+      Gdk::Color.cast(gvalue.object)
     end
 
     def cell_background_rgba
-      __return_value = LibGtk.cell_renderer_get_cell_background_rgba(to_unsafe.as(LibGtk::CellRenderer*))
-      Gdk::RGBA.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "cell_background_rgba", gvalue)
+      Gdk::RGBA.cast(gvalue.object)
     end
 
     def cell_background_set
-      __return_value = LibGtk.cell_renderer_get_cell_background_set(to_unsafe.as(LibGtk::CellRenderer*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "cell_background_set", gvalue)
+      gvalue.boolean
     end
 
     def editing
-      __return_value = LibGtk.cell_renderer_get_editing(to_unsafe.as(LibGtk::CellRenderer*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "editing", gvalue)
+      gvalue.boolean
     end
 
     def height
-      __return_value = LibGtk.cell_renderer_get_height(to_unsafe.as(LibGtk::CellRenderer*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "height", gvalue)
+      gvalue
     end
 
     def is_expanded
-      __return_value = LibGtk.cell_renderer_get_is_expanded(to_unsafe.as(LibGtk::CellRenderer*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_expanded", gvalue)
+      gvalue.boolean
     end
 
     def is_expander
-      __return_value = LibGtk.cell_renderer_get_is_expander(to_unsafe.as(LibGtk::CellRenderer*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_expander", gvalue)
+      gvalue.boolean
     end
 
     def mode
-      __return_value = LibGtk.cell_renderer_get_mode(to_unsafe.as(LibGtk::CellRenderer*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "mode", gvalue)
+      gvalue.enum
     end
 
     def sensitive
-      __return_value = LibGtk.cell_renderer_get_sensitive(to_unsafe.as(LibGtk::CellRenderer*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "sensitive", gvalue)
+      gvalue.boolean
     end
 
     def visible
-      __return_value = LibGtk.cell_renderer_get_visible(to_unsafe.as(LibGtk::CellRenderer*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "visible", gvalue)
+      gvalue.boolean
     end
 
     def width
-      __return_value = LibGtk.cell_renderer_get_width(to_unsafe.as(LibGtk::CellRenderer*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "width", gvalue)
+      gvalue
     end
 
     def xalign
-      __return_value = LibGtk.cell_renderer_get_xalign(to_unsafe.as(LibGtk::CellRenderer*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::FLOAT)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "xalign", gvalue)
+      gvalue
     end
 
     def xpad
-      __return_value = LibGtk.cell_renderer_get_xpad(to_unsafe.as(LibGtk::CellRenderer*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "xpad", gvalue)
+      gvalue
     end
 
     def yalign
-      __return_value = LibGtk.cell_renderer_get_yalign(to_unsafe.as(LibGtk::CellRenderer*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::FLOAT)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "yalign", gvalue)
+      gvalue
     end
 
     def ypad
-      __return_value = LibGtk.cell_renderer_get_ypad(to_unsafe.as(LibGtk::CellRenderer*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "ypad", gvalue)
+      gvalue
     end
 
     def activate(event, widget, path, background_area, cell_area, flags : Gtk::CellRendererState)

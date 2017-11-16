@@ -13,14 +13,16 @@ module Gtk
 
     # Implements Buildable
     def current_value
-      __return_value = LibGtk.radio_action_get_current_value(to_unsafe.as(LibGtk::RadioAction*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "current_value", gvalue)
+      gvalue
     end
 
 
     def value
-      __return_value = LibGtk.radio_action_get_value(to_unsafe.as(LibGtk::RadioAction*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "value", gvalue)
+      gvalue
     end
 
     def self.new(name, label, tooltip, stock_id, value) : self
@@ -35,7 +37,7 @@ module Gtk
 
     def group
       __return_value = LibGtk.radio_action_get_group(@pointer.as(LibGtk::RadioAction*))
-      GLib::SListIterator(Gtk::RadioAction, LibGtk::RadioAction*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
+      GLib::SListIterator(Gtk::RadioAction, LibGtk::RadioAction**).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def join_group(group_source)
@@ -55,7 +57,7 @@ module Gtk
 
     alias ChangedSignal = RadioAction, Gtk::RadioAction ->
     def on_changed(&__block : ChangedSignal)
-      __callback = ->(_arg0 : LibGtk::RadioAction*, _arg1 : LibGtk::LibGtk::RadioAction*) {
+      __callback = ->(_arg0 : LibGtk::RadioAction*, _arg1 : LibGtk::LibGtk::RadioAction**) {
        __return_value = __block.call(RadioAction.new(_arg0), Gtk::RadioAction.new(_arg1))
        __return_value
       }

@@ -14,109 +14,130 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def angle
-      __return_value = LibGtk.label_get_angle(to_unsafe.as(LibGtk::Label*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "angle", gvalue)
+      gvalue
     end
 
     def attributes
-      __return_value = LibGtk.label_get_attributes(to_unsafe.as(LibGtk::Label*))
-      Pango::AttrList.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "attributes", gvalue)
+      Pango::AttrList.cast(gvalue.object)
     end
 
     def cursor_position
-      __return_value = LibGtk.label_get_cursor_position(to_unsafe.as(LibGtk::Label*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "cursor_position", gvalue)
+      gvalue
     end
 
     def ellipsize
-      __return_value = LibGtk.label_get_ellipsize(to_unsafe.as(LibGtk::Label*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "ellipsize", gvalue)
+      gvalue.enum
     end
 
     def justify
-      __return_value = LibGtk.label_get_justify(to_unsafe.as(LibGtk::Label*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "justify", gvalue)
+      gvalue.enum
     end
 
     def label
-      __return_value = LibGtk.label_get_label(to_unsafe.as(LibGtk::Label*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "label", gvalue)
+      gvalue.string
     end
 
     def lines
-      __return_value = LibGtk.label_get_lines(to_unsafe.as(LibGtk::Label*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "lines", gvalue)
+      gvalue
     end
 
     def max_width_chars
-      __return_value = LibGtk.label_get_max_width_chars(to_unsafe.as(LibGtk::Label*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "max_width_chars", gvalue)
+      gvalue
     end
 
     def mnemonic_keyval
-      __return_value = LibGtk.label_get_mnemonic_keyval(to_unsafe.as(LibGtk::Label*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "mnemonic_keyval", gvalue)
+      gvalue
     end
 
     def mnemonic_widget
-      __return_value = LibGtk.label_get_mnemonic_widget(to_unsafe.as(LibGtk::Label*))
-      Gtk::Widget.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "mnemonic_widget", gvalue)
+      Gtk::Widget.cast(gvalue.object)
     end
 
 
     def selectable
-      __return_value = LibGtk.label_get_selectable(to_unsafe.as(LibGtk::Label*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "selectable", gvalue)
+      gvalue.boolean
     end
 
     def selection_bound
-      __return_value = LibGtk.label_get_selection_bound(to_unsafe.as(LibGtk::Label*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "selection_bound", gvalue)
+      gvalue
     end
 
     def single_line_mode
-      __return_value = LibGtk.label_get_single_line_mode(to_unsafe.as(LibGtk::Label*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "single_line_mode", gvalue)
+      gvalue.boolean
     end
 
     def track_visited_links
-      __return_value = LibGtk.label_get_track_visited_links(to_unsafe.as(LibGtk::Label*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "track_visited_links", gvalue)
+      gvalue.boolean
     end
 
     def use_markup
-      __return_value = LibGtk.label_get_use_markup(to_unsafe.as(LibGtk::Label*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "use_markup", gvalue)
+      gvalue.boolean
     end
 
     def use_underline
-      __return_value = LibGtk.label_get_use_underline(to_unsafe.as(LibGtk::Label*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "use_underline", gvalue)
+      gvalue.boolean
     end
 
     def width_chars
-      __return_value = LibGtk.label_get_width_chars(to_unsafe.as(LibGtk::Label*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "width_chars", gvalue)
+      gvalue
     end
 
     def wrap
-      __return_value = LibGtk.label_get_wrap(to_unsafe.as(LibGtk::Label*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "wrap", gvalue)
+      gvalue.boolean
     end
 
     def wrap_mode
-      __return_value = LibGtk.label_get_wrap_mode(to_unsafe.as(LibGtk::Label*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "wrap_mode", gvalue)
+      gvalue.enum
     end
 
     def xalign
-      __return_value = LibGtk.label_get_xalign(to_unsafe.as(LibGtk::Label*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::FLOAT)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "xalign", gvalue)
+      gvalue
     end
 
     def yalign
-      __return_value = LibGtk.label_get_yalign(to_unsafe.as(LibGtk::Label*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::FLOAT)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "yalign", gvalue)
+      gvalue
     end
 
     def self.new(str) : self
@@ -407,7 +428,7 @@ module Gtk
 
     alias PopulatePopupSignal = Label, Gtk::Menu ->
     def on_populate_popup(&__block : PopulatePopupSignal)
-      __callback = ->(_arg0 : LibGtk::Label*, _arg1 : LibGtk::LibGtk::Menu*) {
+      __callback = ->(_arg0 : LibGtk::Label*, _arg1 : LibGtk::LibGtk::Menu**) {
        __return_value = __block.call(Label.new(_arg0), Gtk::Menu.new(_arg1))
        __return_value
       }

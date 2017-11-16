@@ -11,13 +11,15 @@ module Gtk
 
     # Implements Buildable
     def add_tearoffs
-      __return_value = LibGtk.u_i_manager_get_add_tearoffs(to_unsafe.as(LibGtk::UIManager*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "add_tearoffs", gvalue)
+      gvalue.boolean
     end
 
     def ui
-      __return_value = LibGtk.u_i_manager_get_ui(to_unsafe.as(LibGtk::UIManager*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "ui", gvalue)
+      gvalue.string
     end
 
     def self.new : self
@@ -30,21 +32,21 @@ module Gtk
       nil
     end
 
-    def add_ui_from_file(filename)
+    def add_ui_from_file(filename) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.u_i_manager_add_ui_from_file(@pointer.as(LibGtk::UIManager*), filename.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def add_ui_from_resource(resource_path)
+    def add_ui_from_resource(resource_path) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.u_i_manager_add_ui_from_resource(@pointer.as(LibGtk::UIManager*), resource_path.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def add_ui_from_string(buffer, length)
+    def add_ui_from_string(buffer, length) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.u_i_manager_add_ui_from_string(@pointer.as(LibGtk::UIManager*), buffer.to_unsafe, Int64.new(length), pointerof(__error))
       GLib::Error.assert __error
@@ -68,7 +70,7 @@ module Gtk
 
     def action_groups
       __return_value = LibGtk.u_i_manager_get_action_groups(@pointer.as(LibGtk::UIManager*))
-      GLib::ListIterator(Gtk::ActionGroup, LibGtk::ActionGroup*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gtk::ActionGroup, LibGtk::ActionGroup**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def add_tearoffs
@@ -78,7 +80,7 @@ module Gtk
 
     def toplevels(types : Gtk::UIManagerItemType)
       __return_value = LibGtk.u_i_manager_get_toplevels(@pointer.as(LibGtk::UIManager*), types)
-      GLib::SListIterator(Gtk::Widget, LibGtk::Widget*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
+      GLib::SListIterator(Gtk::Widget, LibGtk::Widget**).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def ui
@@ -127,7 +129,7 @@ module Gtk
 
     alias AddWidgetSignal = UIManager, Gtk::Widget ->
     def on_add_widget(&__block : AddWidgetSignal)
-      __callback = ->(_arg0 : LibGtk::UIManager*, _arg1 : LibGtk::LibGtk::Widget*) {
+      __callback = ->(_arg0 : LibGtk::UIManager*, _arg1 : LibGtk::LibGtk::Widget**) {
        __return_value = __block.call(UIManager.new(_arg0), Gtk::Widget.new(_arg1))
        __return_value
       }
@@ -136,7 +138,7 @@ module Gtk
 
     alias ConnectProxySignal = UIManager, Gtk::Action, Gtk::Widget ->
     def on_connect_proxy(&__block : ConnectProxySignal)
-      __callback = ->(_arg0 : LibGtk::UIManager*, _arg1 : LibGtk::LibGtk::Action*, _arg2 : LibGtk::LibGtk::Widget*) {
+      __callback = ->(_arg0 : LibGtk::UIManager*, _arg1 : LibGtk::LibGtk::Action**, _arg2 : LibGtk::LibGtk::Widget**) {
        __return_value = __block.call(UIManager.new(_arg0), Gtk::Action.new(_arg1), Gtk::Widget.new(_arg2))
        __return_value
       }
@@ -145,7 +147,7 @@ module Gtk
 
     alias DisconnectProxySignal = UIManager, Gtk::Action, Gtk::Widget ->
     def on_disconnect_proxy(&__block : DisconnectProxySignal)
-      __callback = ->(_arg0 : LibGtk::UIManager*, _arg1 : LibGtk::LibGtk::Action*, _arg2 : LibGtk::LibGtk::Widget*) {
+      __callback = ->(_arg0 : LibGtk::UIManager*, _arg1 : LibGtk::LibGtk::Action**, _arg2 : LibGtk::LibGtk::Widget**) {
        __return_value = __block.call(UIManager.new(_arg0), Gtk::Action.new(_arg1), Gtk::Widget.new(_arg2))
        __return_value
       }
@@ -154,7 +156,7 @@ module Gtk
 
     alias PostActivateSignal = UIManager, Gtk::Action ->
     def on_post_activate(&__block : PostActivateSignal)
-      __callback = ->(_arg0 : LibGtk::UIManager*, _arg1 : LibGtk::LibGtk::Action*) {
+      __callback = ->(_arg0 : LibGtk::UIManager*, _arg1 : LibGtk::LibGtk::Action**) {
        __return_value = __block.call(UIManager.new(_arg0), Gtk::Action.new(_arg1))
        __return_value
       }
@@ -163,7 +165,7 @@ module Gtk
 
     alias PreActivateSignal = UIManager, Gtk::Action ->
     def on_pre_activate(&__block : PreActivateSignal)
-      __callback = ->(_arg0 : LibGtk::UIManager*, _arg1 : LibGtk::LibGtk::Action*) {
+      __callback = ->(_arg0 : LibGtk::UIManager*, _arg1 : LibGtk::LibGtk::Action**) {
        __return_value = __block.call(UIManager.new(_arg0), Gtk::Action.new(_arg1))
        __return_value
       }

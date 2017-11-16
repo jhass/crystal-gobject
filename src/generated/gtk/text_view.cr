@@ -15,108 +15,129 @@ module Gtk
     # Implements Buildable
     # Implements Scrollable
     def accepts_tab
-      __return_value = LibGtk.text_view_get_accepts_tab(to_unsafe.as(LibGtk::TextView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accepts_tab", gvalue)
+      gvalue.boolean
     end
 
     def bottom_margin
-      __return_value = LibGtk.text_view_get_bottom_margin(to_unsafe.as(LibGtk::TextView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "bottom_margin", gvalue)
+      gvalue
     end
 
     def buffer
-      __return_value = LibGtk.text_view_get_buffer(to_unsafe.as(LibGtk::TextView*))
-      Gtk::TextBuffer.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "buffer", gvalue)
+      Gtk::TextBuffer.cast(gvalue.object)
     end
 
     def cursor_visible
-      __return_value = LibGtk.text_view_get_cursor_visible(to_unsafe.as(LibGtk::TextView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "cursor_visible", gvalue)
+      gvalue.boolean
     end
 
     def editable
-      __return_value = LibGtk.text_view_get_editable(to_unsafe.as(LibGtk::TextView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "editable", gvalue)
+      gvalue.boolean
     end
 
     def im_module
-      __return_value = LibGtk.text_view_get_im_module(to_unsafe.as(LibGtk::TextView*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "im_module", gvalue)
+      gvalue.string
     end
 
     def indent
-      __return_value = LibGtk.text_view_get_indent(to_unsafe.as(LibGtk::TextView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "indent", gvalue)
+      gvalue
     end
 
     def input_hints
-      __return_value = LibGtk.text_view_get_input_hints(to_unsafe.as(LibGtk::TextView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "input_hints", gvalue)
+      gvalue.enum
     end
 
     def input_purpose
-      __return_value = LibGtk.text_view_get_input_purpose(to_unsafe.as(LibGtk::TextView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "input_purpose", gvalue)
+      gvalue.enum
     end
 
     def justification
-      __return_value = LibGtk.text_view_get_justification(to_unsafe.as(LibGtk::TextView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "justification", gvalue)
+      gvalue.enum
     end
 
     def left_margin
-      __return_value = LibGtk.text_view_get_left_margin(to_unsafe.as(LibGtk::TextView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "left_margin", gvalue)
+      gvalue
     end
 
     def monospace
-      __return_value = LibGtk.text_view_get_monospace(to_unsafe.as(LibGtk::TextView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "monospace", gvalue)
+      gvalue.boolean
     end
 
     def overwrite
-      __return_value = LibGtk.text_view_get_overwrite(to_unsafe.as(LibGtk::TextView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "overwrite", gvalue)
+      gvalue.boolean
     end
 
     def pixels_above_lines
-      __return_value = LibGtk.text_view_get_pixels_above_lines(to_unsafe.as(LibGtk::TextView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pixels_above_lines", gvalue)
+      gvalue
     end
 
     def pixels_below_lines
-      __return_value = LibGtk.text_view_get_pixels_below_lines(to_unsafe.as(LibGtk::TextView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pixels_below_lines", gvalue)
+      gvalue
     end
 
     def pixels_inside_wrap
-      __return_value = LibGtk.text_view_get_pixels_inside_wrap(to_unsafe.as(LibGtk::TextView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pixels_inside_wrap", gvalue)
+      gvalue
     end
 
     def populate_all
-      __return_value = LibGtk.text_view_get_populate_all(to_unsafe.as(LibGtk::TextView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "populate_all", gvalue)
+      gvalue.boolean
     end
 
     def right_margin
-      __return_value = LibGtk.text_view_get_right_margin(to_unsafe.as(LibGtk::TextView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "right_margin", gvalue)
+      gvalue
     end
 
     def tabs
-      __return_value = LibGtk.text_view_get_tabs(to_unsafe.as(LibGtk::TextView*))
-      Pango::TabArray.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "tabs", gvalue)
+      Pango::TabArray.cast(gvalue.object)
     end
 
     def top_margin
-      __return_value = LibGtk.text_view_get_top_margin(to_unsafe.as(LibGtk::TextView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "top_margin", gvalue)
+      gvalue
     end
 
     def wrap_mode
-      __return_value = LibGtk.text_view_get_wrap_mode(to_unsafe.as(LibGtk::TextView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "wrap_mode", gvalue)
+      gvalue.enum
     end
 
     def self.new : self
@@ -567,7 +588,7 @@ module Gtk
 
     alias PopulatePopupSignal = TextView, Gtk::Widget ->
     def on_populate_popup(&__block : PopulatePopupSignal)
-      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::LibGtk::Widget*) {
+      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::LibGtk::Widget**) {
        __return_value = __block.call(TextView.new(_arg0), Gtk::Widget.new(_arg1))
        __return_value
       }

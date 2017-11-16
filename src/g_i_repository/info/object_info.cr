@@ -38,6 +38,10 @@ module GIRepository
           io.puts "  #{vfunc.lib_definition}"
         end
 
+        each_property do |property|
+          io.puts "  #{property.lib_definition}"
+        end
+
         io.puts "  end"
 
         each_method do |method|

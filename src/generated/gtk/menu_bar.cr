@@ -14,13 +14,15 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def child_pack_direction
-      __return_value = LibGtk.menu_bar_get_child_pack_direction(to_unsafe.as(LibGtk::MenuBar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "child_pack_direction", gvalue)
+      gvalue.enum
     end
 
     def pack_direction
-      __return_value = LibGtk.menu_bar_get_pack_direction(to_unsafe.as(LibGtk::MenuBar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pack_direction", gvalue)
+      gvalue.enum
     end
 
     def self.new : self

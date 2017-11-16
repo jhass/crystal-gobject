@@ -15,23 +15,27 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
     def max_height
-      __return_value = LibGtk.shortcuts_section_get_max_height(to_unsafe.as(LibGtk::ShortcutsSection*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "max_height", gvalue)
+      gvalue
     end
 
     def section_name
-      __return_value = LibGtk.shortcuts_section_get_section_name(to_unsafe.as(LibGtk::ShortcutsSection*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "section_name", gvalue)
+      gvalue.string
     end
 
     def title
-      __return_value = LibGtk.shortcuts_section_get_title(to_unsafe.as(LibGtk::ShortcutsSection*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "title", gvalue)
+      gvalue.string
     end
 
     def view_name
-      __return_value = LibGtk.shortcuts_section_get_view_name(to_unsafe.as(LibGtk::ShortcutsSection*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "view_name", gvalue)
+      gvalue.string
     end
 
     alias ChangeCurrentPageSignal = ShortcutsSection, Int32 -> Bool

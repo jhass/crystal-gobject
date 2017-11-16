@@ -16,18 +16,21 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
     def active
-      __return_value = LibGtk.toggle_button_get_active(to_unsafe.as(LibGtk::ToggleButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "active", gvalue)
+      gvalue.boolean
     end
 
     def draw_indicator
-      __return_value = LibGtk.toggle_button_get_draw_indicator(to_unsafe.as(LibGtk::ToggleButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "draw_indicator", gvalue)
+      gvalue.boolean
     end
 
     def inconsistent
-      __return_value = LibGtk.toggle_button_get_inconsistent(to_unsafe.as(LibGtk::ToggleButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "inconsistent", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self

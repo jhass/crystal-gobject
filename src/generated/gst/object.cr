@@ -10,13 +10,15 @@ module Gst
     end
 
     def name
-      __return_value = LibGst.object_get_name(to_unsafe.as(LibGst::Object*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "name", gvalue)
+      gvalue.string
     end
 
     def parent
-      __return_value = LibGst.object_get_parent(to_unsafe.as(LibGst::Object*))
-      Gst::Object.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "parent", gvalue)
+      Gst::Object.cast(gvalue.object)
     end
 
     def self.check_uniqueness(list, name)
@@ -156,7 +158,7 @@ module Gst
 
     alias DeepNotifySignal = Object, Gst::Object, GObject::ParamSpec ->
     def on_deep_notify(&__block : DeepNotifySignal)
-      __callback = ->(_arg0 : LibGst::Object*, _arg1 : LibGst::LibGst::Object*, _arg2 : LibGst::LibGObject::ParamSpec*) {
+      __callback = ->(_arg0 : LibGst::Object*, _arg1 : LibGst::LibGst::Object**, _arg2 : LibGst::LibGObject::ParamSpec**) {
        __return_value = __block.call(Object.new(_arg0), Gst::Object.new(_arg1), GObject::ParamSpec.new(_arg2))
        __return_value
       }

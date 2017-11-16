@@ -12,13 +12,15 @@ module Gio
     # Implements Icon
 
     def names
-      __return_value = LibGio.themed_icon_get_names(to_unsafe.as(LibGio::ThemedIcon*))
-      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
+      gvalue = GObject::Value.new(GObject::Type::ARRAY)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "names", gvalue)
+      gvalue
     end
 
     def use_default_fallbacks
-      __return_value = LibGio.themed_icon_get_use_default_fallbacks(to_unsafe.as(LibGio::ThemedIcon*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "use_default_fallbacks", gvalue)
+      gvalue.boolean
     end
 
     def self.new(iconname) : self

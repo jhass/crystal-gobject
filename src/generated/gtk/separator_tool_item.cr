@@ -15,8 +15,9 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
     def draw
-      __return_value = LibGtk.separator_tool_item_get_draw(to_unsafe.as(LibGtk::SeparatorToolItem*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "draw", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self

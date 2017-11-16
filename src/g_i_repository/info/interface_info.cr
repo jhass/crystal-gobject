@@ -33,16 +33,16 @@ module GIRepository
           io.puts "  # Requires #{prerequisite.name}"
         end
 
-        each_property do |property|
-          io.puts "  #{property.lib_definition}"
-        end
-
         each_signal do |signal|
           io.puts "  #{signal.lib_definition}"
         end
 
         each_vfunc do |vfunc|
           io.puts "  #{vfunc.lib_definition}"
+        end
+
+        each_property do |property|
+          io.puts "  #{property.lib_definition}"
         end
 
         io.puts "  end"

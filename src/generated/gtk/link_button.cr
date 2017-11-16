@@ -16,13 +16,15 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
     def uri
-      __return_value = LibGtk.link_button_get_uri(to_unsafe.as(LibGtk::LinkButton*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "uri", gvalue)
+      gvalue.string
     end
 
     def visited
-      __return_value = LibGtk.link_button_get_visited(to_unsafe.as(LibGtk::LinkButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "visited", gvalue)
+      gvalue.boolean
     end
 
     def self.new(uri) : self

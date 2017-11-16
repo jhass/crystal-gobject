@@ -12,14 +12,14 @@ module Gio
     # Implements Initable
 
 
-    def self.new(argv, flags : Gio::SubprocessFlags) : self
+    def self.new(argv, flags : Gio::SubprocessFlags) : self # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.subprocess_new(argv, flags, pointerof(__error))
       GLib::Error.assert __error
       cast Gio::Subprocess.new(__return_value)
     end
 
-    def communicate(stdin_buf, cancellable, stdout_buf, stderr_buf)
+    def communicate(stdin_buf, cancellable, stdout_buf, stderr_buf) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.subprocess_communicate(@pointer.as(LibGio::Subprocess*), stdin_buf ? stdin_buf.to_unsafe.as(LibGLib::Bytes*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, stdout_buf, stderr_buf, pointerof(__error))
       GLib::Error.assert __error
@@ -31,14 +31,14 @@ module Gio
       nil
     end
 
-    def communicate_finish(result, stdout_buf, stderr_buf)
+    def communicate_finish(result, stdout_buf, stderr_buf) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.subprocess_communicate_finish(@pointer.as(LibGio::Subprocess*), result.to_unsafe.as(LibGio::AsyncResult*), stdout_buf, stderr_buf, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def communicate_utf8(stdin_buf, cancellable, stdout_buf, stderr_buf)
+    def communicate_utf8(stdin_buf, cancellable, stdout_buf, stderr_buf) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.subprocess_communicate_utf8(@pointer.as(LibGio::Subprocess*), stdin_buf ? stdin_buf.to_unsafe : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, stdout_buf, stderr_buf, pointerof(__error))
       GLib::Error.assert __error
@@ -50,7 +50,7 @@ module Gio
       nil
     end
 
-    def communicate_utf8_finish(result, stdout_buf, stderr_buf)
+    def communicate_utf8_finish(result, stdout_buf, stderr_buf) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.subprocess_communicate_utf8_finish(@pointer.as(LibGio::Subprocess*), result.to_unsafe.as(LibGio::AsyncResult*), stdout_buf, stderr_buf, pointerof(__error))
       GLib::Error.assert __error
@@ -117,7 +117,7 @@ module Gio
       nil
     end
 
-    def wait(cancellable)
+    def wait(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.subprocess_wait(@pointer.as(LibGio::Subprocess*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -129,7 +129,7 @@ module Gio
       nil
     end
 
-    def wait_check(cancellable)
+    def wait_check(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.subprocess_wait_check(@pointer.as(LibGio::Subprocess*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -141,14 +141,14 @@ module Gio
       nil
     end
 
-    def wait_check_finish(result)
+    def wait_check_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.subprocess_wait_check_finish(@pointer.as(LibGio::Subprocess*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def wait_finish(result)
+    def wait_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.subprocess_wait_finish(@pointer.as(LibGio::Subprocess*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error

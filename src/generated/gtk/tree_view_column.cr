@@ -12,98 +12,117 @@ module Gtk
     # Implements Buildable
     # Implements CellLayout
     def alignment
-      __return_value = LibGtk.tree_view_column_get_alignment(to_unsafe.as(LibGtk::TreeViewColumn*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::FLOAT)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "alignment", gvalue)
+      gvalue
     end
 
     def cell_area
-      __return_value = LibGtk.tree_view_column_get_cell_area(to_unsafe.as(LibGtk::TreeViewColumn*))
-      Gtk::CellArea.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "cell_area", gvalue)
+      Gtk::CellArea.cast(gvalue.object)
     end
 
     def clickable
-      __return_value = LibGtk.tree_view_column_get_clickable(to_unsafe.as(LibGtk::TreeViewColumn*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "clickable", gvalue)
+      gvalue.boolean
     end
 
     def expand
-      __return_value = LibGtk.tree_view_column_get_expand(to_unsafe.as(LibGtk::TreeViewColumn*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "expand", gvalue)
+      gvalue.boolean
     end
 
     def fixed_width
-      __return_value = LibGtk.tree_view_column_get_fixed_width(to_unsafe.as(LibGtk::TreeViewColumn*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "fixed_width", gvalue)
+      gvalue
     end
 
     def max_width
-      __return_value = LibGtk.tree_view_column_get_max_width(to_unsafe.as(LibGtk::TreeViewColumn*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "max_width", gvalue)
+      gvalue
     end
 
     def min_width
-      __return_value = LibGtk.tree_view_column_get_min_width(to_unsafe.as(LibGtk::TreeViewColumn*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "min_width", gvalue)
+      gvalue
     end
 
     def reorderable
-      __return_value = LibGtk.tree_view_column_get_reorderable(to_unsafe.as(LibGtk::TreeViewColumn*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "reorderable", gvalue)
+      gvalue.boolean
     end
 
     def resizable
-      __return_value = LibGtk.tree_view_column_get_resizable(to_unsafe.as(LibGtk::TreeViewColumn*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "resizable", gvalue)
+      gvalue.boolean
     end
 
     def sizing
-      __return_value = LibGtk.tree_view_column_get_sizing(to_unsafe.as(LibGtk::TreeViewColumn*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "sizing", gvalue)
+      gvalue.enum
     end
 
     def sort_column_id
-      __return_value = LibGtk.tree_view_column_get_sort_column_id(to_unsafe.as(LibGtk::TreeViewColumn*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "sort_column_id", gvalue)
+      gvalue
     end
 
     def sort_indicator
-      __return_value = LibGtk.tree_view_column_get_sort_indicator(to_unsafe.as(LibGtk::TreeViewColumn*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "sort_indicator", gvalue)
+      gvalue.boolean
     end
 
     def sort_order
-      __return_value = LibGtk.tree_view_column_get_sort_order(to_unsafe.as(LibGtk::TreeViewColumn*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "sort_order", gvalue)
+      gvalue.enum
     end
 
     def spacing
-      __return_value = LibGtk.tree_view_column_get_spacing(to_unsafe.as(LibGtk::TreeViewColumn*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "spacing", gvalue)
+      gvalue
     end
 
     def title
-      __return_value = LibGtk.tree_view_column_get_title(to_unsafe.as(LibGtk::TreeViewColumn*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "title", gvalue)
+      gvalue.string
     end
 
     def visible
-      __return_value = LibGtk.tree_view_column_get_visible(to_unsafe.as(LibGtk::TreeViewColumn*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "visible", gvalue)
+      gvalue.boolean
     end
 
     def widget
-      __return_value = LibGtk.tree_view_column_get_widget(to_unsafe.as(LibGtk::TreeViewColumn*))
-      Gtk::Widget.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "widget", gvalue)
+      Gtk::Widget.cast(gvalue.object)
     end
 
     def width
-      __return_value = LibGtk.tree_view_column_get_width(to_unsafe.as(LibGtk::TreeViewColumn*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "width", gvalue)
+      gvalue
     end
 
     def x_offset
-      __return_value = LibGtk.tree_view_column_get_x_offset(to_unsafe.as(LibGtk::TreeViewColumn*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "x_offset", gvalue)
+      gvalue
     end
 
     def self.new : self

@@ -10,53 +10,63 @@ module Gdk
     end
 
     def display
-      __return_value = LibGdk.monitor_get_display(to_unsafe.as(LibGdk::Monitor*))
-      Gdk::Display.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "display", gvalue)
+      Gdk::Display.cast(gvalue.object)
     end
 
     def geometry
-      __return_value = LibGdk.monitor_get_geometry(to_unsafe.as(LibGdk::Monitor*))
-      Gdk::Rectangle.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "geometry", gvalue)
+      Gdk::Rectangle.cast(gvalue.object)
     end
 
     def height_mm
-      __return_value = LibGdk.monitor_get_height_mm(to_unsafe.as(LibGdk::Monitor*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "height_mm", gvalue)
+      gvalue
     end
 
     def manufacturer
-      __return_value = LibGdk.monitor_get_manufacturer(to_unsafe.as(LibGdk::Monitor*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "manufacturer", gvalue)
+      gvalue.string
     end
 
     def model
-      __return_value = LibGdk.monitor_get_model(to_unsafe.as(LibGdk::Monitor*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "model", gvalue)
+      gvalue.string
     end
 
     def refresh_rate
-      __return_value = LibGdk.monitor_get_refresh_rate(to_unsafe.as(LibGdk::Monitor*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "refresh_rate", gvalue)
+      gvalue
     end
 
     def scale_factor
-      __return_value = LibGdk.monitor_get_scale_factor(to_unsafe.as(LibGdk::Monitor*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "scale_factor", gvalue)
+      gvalue
     end
 
     def subpixel_layout
-      __return_value = LibGdk.monitor_get_subpixel_layout(to_unsafe.as(LibGdk::Monitor*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "subpixel_layout", gvalue)
+      gvalue.enum
     end
 
     def width_mm
-      __return_value = LibGdk.monitor_get_width_mm(to_unsafe.as(LibGdk::Monitor*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "width_mm", gvalue)
+      gvalue
     end
 
     def workarea
-      __return_value = LibGdk.monitor_get_workarea(to_unsafe.as(LibGdk::Monitor*))
-      Gdk::Rectangle.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "workarea", gvalue)
+      Gdk::Rectangle.cast(gvalue.object)
     end
 
     def display

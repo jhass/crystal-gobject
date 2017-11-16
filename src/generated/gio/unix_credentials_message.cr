@@ -12,8 +12,9 @@ module Gio
     end
 
     def credentials
-      __return_value = LibGio.unix_credentials_message_get_credentials(to_unsafe.as(LibGio::UnixCredentialsMessage*))
-      Gio::Credentials.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "credentials", gvalue)
+      Gio::Credentials.cast(gvalue.object)
     end
 
     def self.new : self

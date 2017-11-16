@@ -10,8 +10,9 @@ module Gio
     end
 
     def locked
-      __return_value = LibGio.d_bus_message_get_locked(to_unsafe.as(LibGio::DBusMessage*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "locked", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self
@@ -19,7 +20,7 @@ module Gio
       cast Gio::DBusMessage.new(__return_value)
     end
 
-    def self.new_from_blob(blob, blob_len, capabilities : Gio::DBusCapabilityFlags) : self
+    def self.new_from_blob(blob, blob_len, capabilities : Gio::DBusCapabilityFlags) : self # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_message_new_from_blob(blob, UInt64.new(blob_len), capabilities, pointerof(__error))
       GLib::Error.assert __error
@@ -36,14 +37,14 @@ module Gio
       cast Gio::DBusMessage.new(__return_value)
     end
 
-    def self.bytes_needed(blob, blob_len)
+    def self.bytes_needed(blob, blob_len) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_message_bytes_needed(blob, UInt64.new(blob_len), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def copy
+    def copy # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_message_copy(@pointer.as(LibGio::DBusMessage*), pointerof(__error))
       GLib::Error.assert __error
@@ -245,14 +246,14 @@ module Gio
       nil
     end
 
-    def to_blob(out_size, capabilities : Gio::DBusCapabilityFlags)
+    def to_blob(out_size, capabilities : Gio::DBusCapabilityFlags) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_message_to_blob(@pointer.as(LibGio::DBusMessage*), out_size, capabilities, pointerof(__error))
       GLib::Error.assert __error
       PointerIterator.new(__return_value) {|__item| __item }
     end
 
-    def to_gerror
+    def to_gerror # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_message_to_gerror(@pointer.as(LibGio::DBusMessage*), pointerof(__error))
       GLib::Error.assert __error

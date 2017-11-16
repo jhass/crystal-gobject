@@ -40,6 +40,10 @@ module GIRepository
       "#{namespace[0].upcase}#{namespace[1..-1]}"
     end
 
+    def symbol_prefix
+      typelib.namespace.downcase
+    end
+
     def namespace_constant
       namespace.constant
     end

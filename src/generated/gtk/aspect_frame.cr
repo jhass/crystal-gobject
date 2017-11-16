@@ -14,23 +14,27 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def obey_child
-      __return_value = LibGtk.aspect_frame_get_obey_child(to_unsafe.as(LibGtk::AspectFrame*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "obey_child", gvalue)
+      gvalue.boolean
     end
 
     def ratio
-      __return_value = LibGtk.aspect_frame_get_ratio(to_unsafe.as(LibGtk::AspectFrame*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::FLOAT)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "ratio", gvalue)
+      gvalue
     end
 
     def xalign
-      __return_value = LibGtk.aspect_frame_get_xalign(to_unsafe.as(LibGtk::AspectFrame*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::FLOAT)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "xalign", gvalue)
+      gvalue
     end
 
     def yalign
-      __return_value = LibGtk.aspect_frame_get_yalign(to_unsafe.as(LibGtk::AspectFrame*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::FLOAT)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "yalign", gvalue)
+      gvalue
     end
 
     def self.new(label, xalign, yalign, ratio, obey_child) : self

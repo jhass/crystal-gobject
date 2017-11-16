@@ -29,14 +29,14 @@ module GLib
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.ascii_string_to_signed(str, base, min, max, out_num)
+  def self.ascii_string_to_signed(str, base, min, max, out_num) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.ascii_string_to_signed(str.to_unsafe, UInt32.new(base), Int64.new(min), Int64.new(max), out_num, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
-  def self.ascii_string_to_unsigned(str, base, min, max, out_num)
+  def self.ascii_string_to_unsigned(str, base, min, max, out_num) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.ascii_string_to_unsigned(str.to_unsafe, UInt32.new(base), UInt64.new(min), UInt64.new(max), out_num, pointerof(__error))
     GLib::Error.assert __error
@@ -323,14 +323,14 @@ module GLib
     GLib::Source.new(__return_value)
   end
 
-  def self.clear_error
+  def self.clear_error # function
     __error = Pointer(LibGLib::Error).null
     LibGLib.clear_error(pointerof(__error))
     GLib::Error.assert __error
     nil
   end
 
-  def self.close(fd)
+  def self.close(fd) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.close(Int32.new(fd), pointerof(__error))
     GLib::Error.assert __error
@@ -367,7 +367,7 @@ module GLib
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.convert(str, len, to_codeset, from_codeset, bytes_read, bytes_written)
+  def self.convert(str, len, to_codeset, from_codeset, bytes_read, bytes_written) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.convert(str.to_unsafe, Int64.new(len), to_codeset.to_unsafe, from_codeset.to_unsafe, bytes_read, bytes_written, pointerof(__error))
     GLib::Error.assert __error
@@ -379,14 +379,14 @@ module GLib
     __return_value
   end
 
-  def self.convert_with_fallback(str, len, to_codeset, from_codeset, fallback, bytes_read, bytes_written)
+  def self.convert_with_fallback(str, len, to_codeset, from_codeset, fallback, bytes_read, bytes_written) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.convert_with_fallback(str.to_unsafe, Int64.new(len), to_codeset.to_unsafe, from_codeset.to_unsafe, fallback.to_unsafe, bytes_read, bytes_written, pointerof(__error))
     GLib::Error.assert __error
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.convert_with_iconv(str, len, converter, bytes_read, bytes_written)
+  def self.convert_with_iconv(str, len, converter, bytes_read, bytes_written) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.convert_with_iconv(str.to_unsafe, Int64.new(len), converter.to_unsafe.as(LibGLib::IConv*), bytes_read, bytes_written, pointerof(__error))
     GLib::Error.assert __error
@@ -543,7 +543,7 @@ module GLib
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.dir_make_tmp(tmpl)
+  def self.dir_make_tmp(tmpl) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.dir_make_tmp(tmpl ? tmpl.to_unsafe : nil, pointerof(__error))
     GLib::Error.assert __error
@@ -610,28 +610,28 @@ module GLib
     __return_value
   end
 
-  def self.file_get_contents(filename, contents, length)
+  def self.file_get_contents(filename, contents, length) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.file_get_contents(filename.to_unsafe, contents, length, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
-  def self.file_open_tmp(tmpl, name_used)
+  def self.file_open_tmp(tmpl, name_used) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.file_open_tmp(tmpl ? tmpl.to_unsafe : nil, name_used, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
-  def self.file_read_link(filename)
+  def self.file_read_link(filename) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.file_read_link(filename.to_unsafe, pointerof(__error))
     GLib::Error.assert __error
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.file_set_contents(filename, contents, length)
+  def self.file_set_contents(filename, contents, length) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.file_set_contents(filename.to_unsafe, contents, Int64.new(length), pointerof(__error))
     GLib::Error.assert __error
@@ -653,28 +653,28 @@ module GLib
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.filename_from_uri(uri, hostname)
+  def self.filename_from_uri(uri, hostname) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.filename_from_uri(uri.to_unsafe, hostname, pointerof(__error))
     GLib::Error.assert __error
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.filename_from_utf8(utf8string, len, bytes_read, bytes_written)
+  def self.filename_from_utf8(utf8string, len, bytes_read, bytes_written) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.filename_from_utf8(utf8string.to_unsafe, Int64.new(len), bytes_read, bytes_written, pointerof(__error))
     GLib::Error.assert __error
     PointerIterator.new(__return_value) {|__item| __item }
   end
 
-  def self.filename_to_uri(filename, hostname)
+  def self.filename_to_uri(filename, hostname) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.filename_to_uri(filename.to_unsafe, hostname ? hostname.to_unsafe : nil, pointerof(__error))
     GLib::Error.assert __error
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.filename_to_utf8(opsysstring, len, bytes_read, bytes_written)
+  def self.filename_to_utf8(opsysstring, len, bytes_read, bytes_written) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.filename_to_utf8(opsysstring.to_unsafe, Int64.new(len), bytes_read, bytes_written, pointerof(__error))
     GLib::Error.assert __error
@@ -1036,14 +1036,14 @@ module GLib
     PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
   end
 
-  def self.locale_from_utf8(utf8string, len, bytes_read, bytes_written)
+  def self.locale_from_utf8(utf8string, len, bytes_read, bytes_written) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.locale_from_utf8(utf8string.to_unsafe, Int64.new(len), bytes_read, bytes_written, pointerof(__error))
     GLib::Error.assert __error
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.locale_to_utf8(opsysstring, len, bytes_read, bytes_written)
+  def self.locale_to_utf8(opsysstring, len, bytes_read, bytes_written) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.locale_to_utf8(opsysstring.to_unsafe, Int64.new(len), bytes_read, bytes_written, pointerof(__error))
     GLib::Error.assert __error
@@ -1355,7 +1355,7 @@ module GLib
     nil
   end
 
-  def self.regex_check_replacement(replacement, has_references)
+  def self.regex_check_replacement(replacement, has_references) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.regex_check_replacement(replacement.to_unsafe, has_references, pointerof(__error))
     GLib::Error.assert __error
@@ -1467,7 +1467,7 @@ module GLib
     __return_value
   end
 
-  def self.shell_parse_argv(command_line, argcp, argvp)
+  def self.shell_parse_argv(command_line, argcp, argvp) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.shell_parse_argv(command_line.to_unsafe, argcp, argvp, pointerof(__error))
     GLib::Error.assert __error
@@ -1479,7 +1479,7 @@ module GLib
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.shell_unquote(quoted_string)
+  def self.shell_unquote(quoted_string) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.shell_unquote(quoted_string.to_unsafe, pointerof(__error))
     GLib::Error.assert __error
@@ -1551,21 +1551,21 @@ module GLib
     __return_value
   end
 
-  def self.spawn_async(working_directory, argv, envp, flags : GLib::SpawnFlags, child_setup, user_data, child_pid)
+  def self.spawn_async(working_directory, argv, envp, flags : GLib::SpawnFlags, child_setup, user_data, child_pid) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.spawn_async(working_directory ? working_directory.to_unsafe : nil, argv, envp ? envp : nil, flags, child_setup ? child_setup : nil, user_data ? user_data : nil, child_pid, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
-  def self.spawn_async_with_pipes(working_directory, argv, envp, flags : GLib::SpawnFlags, child_setup, user_data, child_pid, standard_input, standard_output, standard_error)
+  def self.spawn_async_with_pipes(working_directory, argv, envp, flags : GLib::SpawnFlags, child_setup, user_data, child_pid, standard_input, standard_output, standard_error) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.spawn_async_with_pipes(working_directory ? working_directory.to_unsafe : nil, argv, envp ? envp : nil, flags, child_setup ? child_setup : nil, user_data ? user_data : nil, child_pid, standard_input, standard_output, standard_error, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
-  def self.spawn_check_exit_status(exit_status)
+  def self.spawn_check_exit_status(exit_status) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.spawn_check_exit_status(Int32.new(exit_status), pointerof(__error))
     GLib::Error.assert __error
@@ -1577,14 +1577,14 @@ module GLib
     nil
   end
 
-  def self.spawn_command_line_async(command_line)
+  def self.spawn_command_line_async(command_line) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.spawn_command_line_async(command_line.to_unsafe, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
-  def self.spawn_command_line_sync(command_line, standard_output, standard_error, exit_status)
+  def self.spawn_command_line_sync(command_line, standard_output, standard_error, exit_status) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.spawn_command_line_sync(command_line.to_unsafe, standard_output, standard_error, exit_status, pointerof(__error))
     GLib::Error.assert __error
@@ -1601,7 +1601,7 @@ module GLib
     __return_value
   end
 
-  def self.spawn_sync(working_directory, argv, envp, flags : GLib::SpawnFlags, child_setup, user_data, standard_output, standard_error, exit_status)
+  def self.spawn_sync(working_directory, argv, envp, flags : GLib::SpawnFlags, child_setup, user_data, standard_output, standard_error, exit_status) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.spawn_sync(working_directory ? working_directory.to_unsafe : nil, argv, envp ? envp : nil, flags, child_setup ? child_setup : nil, user_data ? user_data : nil, standard_output, standard_error, exit_status, pointerof(__error))
     GLib::Error.assert __error
@@ -2093,14 +2093,14 @@ module GLib
     nil
   end
 
-  def self.ucs4_to_utf16(str, len, items_read, items_written)
+  def self.ucs4_to_utf16(str, len, items_read, items_written) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.ucs4_to_utf16(str, Int64.new(len), items_read, items_written, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
-  def self.ucs4_to_utf8(str, len, items_read, items_written)
+  def self.ucs4_to_utf8(str, len, items_read, items_written) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.ucs4_to_utf8(str, Int64.new(len), items_read, items_written, pointerof(__error))
     GLib::Error.assert __error
@@ -2302,14 +2302,14 @@ module GLib
     GLib::Source.new(__return_value)
   end
 
-  def self.unix_open_pipe(fds, flags)
+  def self.unix_open_pipe(fds, flags) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.unix_open_pipe(fds, Int32.new(flags), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
-  def self.unix_set_fd_nonblocking(fd, nonblock)
+  def self.unix_set_fd_nonblocking(fd, nonblock) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.unix_set_fd_nonblocking(Int32.new(fd), nonblock, pointerof(__error))
     GLib::Error.assert __error
@@ -2366,14 +2366,14 @@ module GLib
     nil
   end
 
-  def self.utf16_to_ucs4(str, len, items_read, items_written)
+  def self.utf16_to_ucs4(str, len, items_read, items_written) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.utf16_to_ucs4(str, Int64.new(len), items_read, items_written, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
-  def self.utf16_to_utf8(str, len, items_read, items_written)
+  def self.utf16_to_utf8(str, len, items_read, items_written) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.utf16_to_utf8(str, Int64.new(len), items_read, items_written, pointerof(__error))
     GLib::Error.assert __error
@@ -2485,7 +2485,7 @@ module GLib
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.utf8_to_ucs4(str, len, items_read, items_written)
+  def self.utf8_to_ucs4(str, len, items_read, items_written) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.utf8_to_ucs4(str.to_unsafe, Int64.new(len), items_read, items_written, pointerof(__error))
     GLib::Error.assert __error
@@ -2497,7 +2497,7 @@ module GLib
     __return_value
   end
 
-  def self.utf8_to_utf16(str, len, items_read, items_written)
+  def self.utf8_to_utf16(str, len, items_read, items_written) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.utf8_to_utf16(str.to_unsafe, Int64.new(len), items_read, items_written, pointerof(__error))
     GLib::Error.assert __error
@@ -2534,7 +2534,7 @@ module GLib
     __return_value
   end
 
-  def self.variant_parse(type, text, limit, endptr)
+  def self.variant_parse(type, text, limit, endptr) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.variant_parse(type ? type.to_unsafe.as(LibGLib::VariantType*) : nil, text.to_unsafe, limit ? limit.to_unsafe : nil, endptr ? endptr.to_unsafe : nil, pointerof(__error))
     GLib::Error.assert __error

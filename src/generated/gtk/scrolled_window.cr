@@ -14,78 +14,93 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def hadjustment
-      __return_value = LibGtk.scrolled_window_get_hadjustment(to_unsafe.as(LibGtk::ScrolledWindow*))
-      Gtk::Adjustment.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "hadjustment", gvalue)
+      Gtk::Adjustment.cast(gvalue.object)
     end
 
     def hscrollbar_policy
-      __return_value = LibGtk.scrolled_window_get_hscrollbar_policy(to_unsafe.as(LibGtk::ScrolledWindow*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "hscrollbar_policy", gvalue)
+      gvalue.enum
     end
 
     def kinetic_scrolling
-      __return_value = LibGtk.scrolled_window_get_kinetic_scrolling(to_unsafe.as(LibGtk::ScrolledWindow*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "kinetic_scrolling", gvalue)
+      gvalue.boolean
     end
 
     def max_content_height
-      __return_value = LibGtk.scrolled_window_get_max_content_height(to_unsafe.as(LibGtk::ScrolledWindow*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "max_content_height", gvalue)
+      gvalue
     end
 
     def max_content_width
-      __return_value = LibGtk.scrolled_window_get_max_content_width(to_unsafe.as(LibGtk::ScrolledWindow*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "max_content_width", gvalue)
+      gvalue
     end
 
     def min_content_height
-      __return_value = LibGtk.scrolled_window_get_min_content_height(to_unsafe.as(LibGtk::ScrolledWindow*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "min_content_height", gvalue)
+      gvalue
     end
 
     def min_content_width
-      __return_value = LibGtk.scrolled_window_get_min_content_width(to_unsafe.as(LibGtk::ScrolledWindow*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "min_content_width", gvalue)
+      gvalue
     end
 
     def overlay_scrolling
-      __return_value = LibGtk.scrolled_window_get_overlay_scrolling(to_unsafe.as(LibGtk::ScrolledWindow*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "overlay_scrolling", gvalue)
+      gvalue.boolean
     end
 
     def propagate_natural_height
-      __return_value = LibGtk.scrolled_window_get_propagate_natural_height(to_unsafe.as(LibGtk::ScrolledWindow*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "propagate_natural_height", gvalue)
+      gvalue.boolean
     end
 
     def propagate_natural_width
-      __return_value = LibGtk.scrolled_window_get_propagate_natural_width(to_unsafe.as(LibGtk::ScrolledWindow*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "propagate_natural_width", gvalue)
+      gvalue.boolean
     end
 
     def shadow_type
-      __return_value = LibGtk.scrolled_window_get_shadow_type(to_unsafe.as(LibGtk::ScrolledWindow*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "shadow_type", gvalue)
+      gvalue.enum
     end
 
     def vadjustment
-      __return_value = LibGtk.scrolled_window_get_vadjustment(to_unsafe.as(LibGtk::ScrolledWindow*))
-      Gtk::Adjustment.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "vadjustment", gvalue)
+      Gtk::Adjustment.cast(gvalue.object)
     end
 
     def vscrollbar_policy
-      __return_value = LibGtk.scrolled_window_get_vscrollbar_policy(to_unsafe.as(LibGtk::ScrolledWindow*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "vscrollbar_policy", gvalue)
+      gvalue.enum
     end
 
     def window_placement
-      __return_value = LibGtk.scrolled_window_get_window_placement(to_unsafe.as(LibGtk::ScrolledWindow*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "window_placement", gvalue)
+      gvalue.enum
     end
 
     def window_placement_set
-      __return_value = LibGtk.scrolled_window_get_window_placement_set(to_unsafe.as(LibGtk::ScrolledWindow*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "window_placement_set", gvalue)
+      gvalue.boolean
     end
 
     def self.new(hadjustment, vadjustment) : self

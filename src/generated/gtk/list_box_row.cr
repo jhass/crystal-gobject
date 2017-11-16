@@ -14,13 +14,15 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def activatable
-      __return_value = LibGtk.list_box_row_get_activatable(to_unsafe.as(LibGtk::ListBoxRow*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "activatable", gvalue)
+      gvalue.boolean
     end
 
     def selectable
-      __return_value = LibGtk.list_box_row_get_selectable(to_unsafe.as(LibGtk::ListBoxRow*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "selectable", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self

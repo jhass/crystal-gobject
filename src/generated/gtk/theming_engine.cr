@@ -10,8 +10,9 @@ module Gtk
     end
 
     def name
-      __return_value = LibGtk.theming_engine_get_name(to_unsafe.as(LibGtk::ThemingEngine*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "name", gvalue)
+      gvalue.string
     end
 
     def self.load(name)

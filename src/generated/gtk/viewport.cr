@@ -15,8 +15,9 @@ module Gtk
     # Implements Buildable
     # Implements Scrollable
     def shadow_type
-      __return_value = LibGtk.viewport_get_shadow_type(to_unsafe.as(LibGtk::Viewport*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "shadow_type", gvalue)
+      gvalue.enum
     end
 
     def self.new(hadjustment, vadjustment) : self

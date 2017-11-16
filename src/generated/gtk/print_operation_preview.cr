@@ -17,7 +17,7 @@ module Gtk
 
     alias GotPageSizeSignal = PrintOperationPreview, Gtk::PrintContext, Gtk::PageSetup ->
     def on_got_page_size(&__block : GotPageSizeSignal)
-      __callback = ->(_arg0 : LibGtk::PrintOperationPreview*, _arg1 : LibGtk::LibGtk::PrintContext*, _arg2 : LibGtk::LibGtk::PageSetup*) {
+      __callback = ->(_arg0 : LibGtk::PrintOperationPreview*, _arg1 : LibGtk::LibGtk::PrintContext**, _arg2 : LibGtk::LibGtk::PageSetup**) {
        __return_value = __block.call(PrintOperationPreview.new(_arg0), Gtk::PrintContext.new(_arg1), Gtk::PageSetup.new(_arg2))
        __return_value
       }
@@ -26,7 +26,7 @@ module Gtk
 
     alias ReadySignal = PrintOperationPreview, Gtk::PrintContext ->
     def on_ready(&__block : ReadySignal)
-      __callback = ->(_arg0 : LibGtk::PrintOperationPreview*, _arg1 : LibGtk::LibGtk::PrintContext*) {
+      __callback = ->(_arg0 : LibGtk::PrintOperationPreview*, _arg1 : LibGtk::LibGtk::PrintContext**) {
        __return_value = __block.call(PrintOperationPreview.new(_arg0), Gtk::PrintContext.new(_arg1))
        __return_value
       }

@@ -12,8 +12,9 @@ module Gio
     end
 
     def base_io_stream
-      __return_value = LibGio.tcp_wrapper_connection_get_base_io_stream(to_unsafe.as(LibGio::TcpWrapperConnection*))
-      Gio::IOStream.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "base_io_stream", gvalue)
+      Gio::IOStream.cast(gvalue.object)
     end
 
     def self.new(base_io_stream, socket) : self

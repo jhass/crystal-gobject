@@ -14,68 +14,81 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def file
-      __return_value = LibGtk.image_get_file(to_unsafe.as(LibGtk::Image*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "file", gvalue)
+      gvalue.string
     end
 
     def gicon
-      __return_value = LibGtk.image_get_gicon(to_unsafe.as(LibGtk::Image*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "gicon", gvalue)
+      gvalue
     end
 
     def icon_name
-      __return_value = LibGtk.image_get_icon_name(to_unsafe.as(LibGtk::Image*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "icon_name", gvalue)
+      gvalue.string
     end
 
     def icon_set
-      __return_value = LibGtk.image_get_icon_set(to_unsafe.as(LibGtk::Image*))
-      Gtk::IconSet.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "icon_set", gvalue)
+      Gtk::IconSet.cast(gvalue.object)
     end
 
     def icon_size
-      __return_value = LibGtk.image_get_icon_size(to_unsafe.as(LibGtk::Image*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "icon_size", gvalue)
+      gvalue
     end
 
     def pixbuf
-      __return_value = LibGtk.image_get_pixbuf(to_unsafe.as(LibGtk::Image*))
-      GdkPixbuf::Pixbuf.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pixbuf", gvalue)
+      GdkPixbuf::Pixbuf.cast(gvalue.object)
     end
 
     def pixbuf_animation
-      __return_value = LibGtk.image_get_pixbuf_animation(to_unsafe.as(LibGtk::Image*))
-      GdkPixbuf::PixbufAnimation.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pixbuf_animation", gvalue)
+      GdkPixbuf::PixbufAnimation.cast(gvalue.object)
     end
 
     def pixel_size
-      __return_value = LibGtk.image_get_pixel_size(to_unsafe.as(LibGtk::Image*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pixel_size", gvalue)
+      gvalue
     end
 
     def resource
-      __return_value = LibGtk.image_get_resource(to_unsafe.as(LibGtk::Image*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "resource", gvalue)
+      gvalue.string
     end
 
     def stock
-      __return_value = LibGtk.image_get_stock(to_unsafe.as(LibGtk::Image*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "stock", gvalue)
+      gvalue.string
     end
 
     def storage_type
-      __return_value = LibGtk.image_get_storage_type(to_unsafe.as(LibGtk::Image*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "storage_type", gvalue)
+      gvalue.enum
     end
 
     def surface
-      __return_value = LibGtk.image_get_surface(to_unsafe.as(LibGtk::Image*))
-      Cairo::Surface.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "surface", gvalue)
+      Cairo::Surface.cast(gvalue.object)
     end
 
     def use_fallback
-      __return_value = LibGtk.image_get_use_fallback(to_unsafe.as(LibGtk::Image*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "use_fallback", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self

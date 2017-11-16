@@ -10,14 +10,14 @@ module Gio
       nil
     end
 
-    def init_finish(res)
+    def init_finish(res) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.async_initable_init_finish(@pointer.as(LibGio::AsyncInitable*), res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def new_finish(res)
+    def new_finish(res) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.async_initable_new_finish(@pointer.as(LibGio::AsyncInitable*), res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error

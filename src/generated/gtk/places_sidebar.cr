@@ -14,58 +14,69 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def local_only
-      __return_value = LibGtk.places_sidebar_get_local_only(to_unsafe.as(LibGtk::PlacesSidebar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "local_only", gvalue)
+      gvalue.boolean
     end
 
     def location
-      __return_value = LibGtk.places_sidebar_get_location(to_unsafe.as(LibGtk::PlacesSidebar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "location", gvalue)
+      gvalue
     end
 
     def open_flags
-      __return_value = LibGtk.places_sidebar_get_open_flags(to_unsafe.as(LibGtk::PlacesSidebar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "open_flags", gvalue)
+      gvalue.enum
     end
 
     def populate_all
-      __return_value = LibGtk.places_sidebar_get_populate_all(to_unsafe.as(LibGtk::PlacesSidebar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "populate_all", gvalue)
+      gvalue.boolean
     end
 
     def show_connect_to_server
-      __return_value = LibGtk.places_sidebar_get_show_connect_to_server(to_unsafe.as(LibGtk::PlacesSidebar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_connect_to_server", gvalue)
+      gvalue.boolean
     end
 
     def show_desktop
-      __return_value = LibGtk.places_sidebar_get_show_desktop(to_unsafe.as(LibGtk::PlacesSidebar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_desktop", gvalue)
+      gvalue.boolean
     end
 
     def show_enter_location
-      __return_value = LibGtk.places_sidebar_get_show_enter_location(to_unsafe.as(LibGtk::PlacesSidebar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_enter_location", gvalue)
+      gvalue.boolean
     end
 
     def show_other_locations
-      __return_value = LibGtk.places_sidebar_get_show_other_locations(to_unsafe.as(LibGtk::PlacesSidebar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_other_locations", gvalue)
+      gvalue.boolean
     end
 
     def show_recent
-      __return_value = LibGtk.places_sidebar_get_show_recent(to_unsafe.as(LibGtk::PlacesSidebar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_recent", gvalue)
+      gvalue.boolean
     end
 
     def show_starred_location
-      __return_value = LibGtk.places_sidebar_get_show_starred_location(to_unsafe.as(LibGtk::PlacesSidebar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_starred_location", gvalue)
+      gvalue.boolean
     end
 
     def show_trash
-      __return_value = LibGtk.places_sidebar_get_show_trash(to_unsafe.as(LibGtk::PlacesSidebar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_trash", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self
@@ -209,7 +220,7 @@ module Gtk
 
     alias DragActionRequestedSignal = PlacesSidebar, Gdk::DragContext, Gio::File, Void* -> Int32
     def on_drag_action_requested(&__block : DragActionRequestedSignal)
-      __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGdk::DragContext*, _arg2 : LibGtk::LibGio::File*, _arg3 : LibGtk::Void***) {
+      __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGdk::DragContext**, _arg2 : LibGtk::LibGio::File*, _arg3 : LibGtk::Void***) {
        __return_value = __block.call(PlacesSidebar.new(_arg0), Gdk::DragContext.new(_arg1), _arg2, GLib::ListIterator(Gio::File, LibGio::File*).new(GLib::SList.new(_arg3.as(LibGLib::List*))))
        Int32.new(__return_value)
       }
@@ -227,7 +238,7 @@ module Gtk
 
     alias MountSignal = PlacesSidebar, Gio::MountOperation ->
     def on_mount(&__block : MountSignal)
-      __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGio::MountOperation*) {
+      __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGio::MountOperation**) {
        __return_value = __block.call(PlacesSidebar.new(_arg0), Gio::MountOperation.new(_arg1))
        __return_value
       }
@@ -245,7 +256,7 @@ module Gtk
 
     alias PopulatePopupSignal = PlacesSidebar, Gtk::Widget, Gio::File, Gio::Volume ->
     def on_populate_popup(&__block : PopulatePopupSignal)
-      __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGtk::Widget*, _arg2 : LibGtk::LibGio::File*, _arg3 : LibGtk::LibGio::Volume*) {
+      __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGtk::Widget**, _arg2 : LibGtk::LibGio::File*, _arg3 : LibGtk::LibGio::Volume*) {
        __return_value = __block.call(PlacesSidebar.new(_arg0), Gtk::Widget.new(_arg1), _arg2, _arg3)
        __return_value
       }
@@ -308,7 +319,7 @@ module Gtk
 
     alias UnmountSignal = PlacesSidebar, Gio::MountOperation ->
     def on_unmount(&__block : UnmountSignal)
-      __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGio::MountOperation*) {
+      __callback = ->(_arg0 : LibGtk::PlacesSidebar*, _arg1 : LibGtk::LibGio::MountOperation**) {
        __return_value = __block.call(PlacesSidebar.new(_arg0), Gio::MountOperation.new(_arg1))
        __return_value
       }

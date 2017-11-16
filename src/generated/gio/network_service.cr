@@ -11,23 +11,27 @@ module Gio
 
     # Implements SocketConnectable
     def domain
-      __return_value = LibGio.network_service_get_domain(to_unsafe.as(LibGio::NetworkService*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "domain", gvalue)
+      gvalue.string
     end
 
     def protocol
-      __return_value = LibGio.network_service_get_protocol(to_unsafe.as(LibGio::NetworkService*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "protocol", gvalue)
+      gvalue.string
     end
 
     def scheme
-      __return_value = LibGio.network_service_get_scheme(to_unsafe.as(LibGio::NetworkService*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "scheme", gvalue)
+      gvalue.string
     end
 
     def service
-      __return_value = LibGio.network_service_get_service(to_unsafe.as(LibGio::NetworkService*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "service", gvalue)
+      gvalue.string
     end
 
     def self.new(service, protocol, domain) : self

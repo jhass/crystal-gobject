@@ -22,7 +22,7 @@ module Gio
       @pointer.not_nil!.as(LibGio::DBusNodeInfo*)
     end
 
-    def self.new_for_xml(xml_data) : self
+    def self.new_for_xml(xml_data) : self # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_node_info_new_for_xml(xml_data.to_unsafe, pointerof(__error))
       GLib::Error.assert __error

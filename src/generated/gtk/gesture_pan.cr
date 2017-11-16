@@ -12,8 +12,9 @@ module Gtk
     end
 
     def orientation
-      __return_value = LibGtk.gesture_pan_get_orientation(to_unsafe.as(LibGtk::GesturePan*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "orientation", gvalue)
+      gvalue.enum
     end
 
     def self.new(widget, orientation : Gtk::Orientation) : self

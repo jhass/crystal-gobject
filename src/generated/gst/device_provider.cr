@@ -38,7 +38,7 @@ module Gst
 
     def devices
       __return_value = LibGst.device_provider_get_devices(@pointer.as(LibGst::DeviceProvider*))
-      GLib::ListIterator(Gst::Device, LibGst::Device*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gst::Device, LibGst::Device**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def factory

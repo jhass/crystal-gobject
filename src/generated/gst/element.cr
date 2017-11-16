@@ -11,7 +11,7 @@ module Gst
       @pointer.not_nil!.as(LibGst::Element*)
     end
 
-    def self.make_from_uri(type : Gst::URIType, uri, elementname)
+    def self.make_from_uri(type : Gst::URIType, uri, elementname) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGst.element_make_from_uri(type, uri.to_unsafe, elementname ? elementname.to_unsafe : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -329,7 +329,7 @@ module Gst
 
     alias PadAddedSignal = Element, Gst::Pad ->
     def on_pad_added(&__block : PadAddedSignal)
-      __callback = ->(_arg0 : LibGst::Element*, _arg1 : LibGst::LibGst::Pad*) {
+      __callback = ->(_arg0 : LibGst::Element*, _arg1 : LibGst::LibGst::Pad**) {
        __return_value = __block.call(Element.new(_arg0), Gst::Pad.new(_arg1))
        __return_value
       }
@@ -338,7 +338,7 @@ module Gst
 
     alias PadRemovedSignal = Element, Gst::Pad ->
     def on_pad_removed(&__block : PadRemovedSignal)
-      __callback = ->(_arg0 : LibGst::Element*, _arg1 : LibGst::LibGst::Pad*) {
+      __callback = ->(_arg0 : LibGst::Element*, _arg1 : LibGst::LibGst::Pad**) {
        __return_value = __block.call(Element.new(_arg0), Gst::Pad.new(_arg1))
        __return_value
       }

@@ -11,8 +11,9 @@ module Gio
 
     # Implements Icon
     def gicon
-      __return_value = LibGio.emblemed_icon_get_gicon(to_unsafe.as(LibGio::EmblemedIcon*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "gicon", gvalue)
+      gvalue
     end
 
     def self.new(icon, emblem) : self
@@ -32,7 +33,7 @@ module Gio
 
     def emblems
       __return_value = LibGio.emblemed_icon_get_emblems(@pointer.as(LibGio::EmblemedIcon*))
-      GLib::ListIterator(Gio::Emblem, LibGio::Emblem*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gio::Emblem, LibGio::Emblem**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def icon

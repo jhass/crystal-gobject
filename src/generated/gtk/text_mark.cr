@@ -10,13 +10,15 @@ module Gtk
     end
 
     def left_gravity
-      __return_value = LibGtk.text_mark_get_left_gravity(to_unsafe.as(LibGtk::TextMark*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "left_gravity", gvalue)
+      gvalue.boolean
     end
 
     def name
-      __return_value = LibGtk.text_mark_get_name(to_unsafe.as(LibGtk::TextMark*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "name", gvalue)
+      gvalue.string
     end
 
     def self.new(name, left_gravity) : self

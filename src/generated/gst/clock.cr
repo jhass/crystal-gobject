@@ -12,18 +12,21 @@ module Gst
     end
 
     def timeout
-      __return_value = LibGst.clock_get_timeout(to_unsafe.as(LibGst::Clock*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT64)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "timeout", gvalue)
+      gvalue
     end
 
     def window_size
-      __return_value = LibGst.clock_get_window_size(to_unsafe.as(LibGst::Clock*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "window_size", gvalue)
+      gvalue
     end
 
     def window_threshold
-      __return_value = LibGst.clock_get_window_threshold(to_unsafe.as(LibGst::Clock*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "window_threshold", gvalue)
+      gvalue
     end
 
     def self.id_compare_func(id1, id2)

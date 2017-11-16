@@ -11,8 +11,9 @@ module Gio
 
     # Implements DBusObject
     def g_object_path
-      __return_value = LibGio.d_bus_object_skeleton_get_g_object_path(to_unsafe.as(LibGio::DBusObjectSkeleton*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "g_object_path", gvalue)
+      gvalue.string
     end
 
     def self.new(object_path) : self
@@ -47,7 +48,7 @@ module Gio
 
     alias AuthorizeMethodSignal = DBusObjectSkeleton, Gio::DBusInterfaceSkeleton, Gio::DBusMethodInvocation -> Bool
     def on_authorize_method(&__block : AuthorizeMethodSignal)
-      __callback = ->(_arg0 : LibGio::DBusObjectSkeleton*, _arg1 : LibGio::LibGio::DBusInterfaceSkeleton*, _arg2 : LibGio::LibGio::DBusMethodInvocation*) {
+      __callback = ->(_arg0 : LibGio::DBusObjectSkeleton*, _arg1 : LibGio::LibGio::DBusInterfaceSkeleton**, _arg2 : LibGio::LibGio::DBusMethodInvocation**) {
        __return_value = __block.call(DBusObjectSkeleton.new(_arg0), Gio::DBusInterfaceSkeleton.new(_arg1), Gio::DBusMethodInvocation.new(_arg2))
        __return_value
       }

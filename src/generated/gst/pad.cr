@@ -12,23 +12,27 @@ module Gst
     end
 
     def caps
-      __return_value = LibGst.pad_get_caps(to_unsafe.as(LibGst::Pad*))
-      Gst::Caps.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "caps", gvalue)
+      Gst::Caps.cast(gvalue.object)
     end
 
     def direction
-      __return_value = LibGst.pad_get_direction(to_unsafe.as(LibGst::Pad*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "direction", gvalue)
+      gvalue.enum
     end
 
     def offset
-      __return_value = LibGst.pad_get_offset(to_unsafe.as(LibGst::Pad*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT64)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "offset", gvalue)
+      gvalue
     end
 
     def template
-      __return_value = LibGst.pad_get_template(to_unsafe.as(LibGst::Pad*))
-      Gst::PadTemplate.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "template", gvalue)
+      Gst::PadTemplate.cast(gvalue.object)
     end
 
     def self.new(name, direction : Gst::PadDirection) : self
@@ -448,7 +452,7 @@ module Gst
 
     alias LinkedSignal = Pad, Gst::Pad ->
     def on_linked(&__block : LinkedSignal)
-      __callback = ->(_arg0 : LibGst::Pad*, _arg1 : LibGst::LibGst::Pad*) {
+      __callback = ->(_arg0 : LibGst::Pad*, _arg1 : LibGst::LibGst::Pad**) {
        __return_value = __block.call(Pad.new(_arg0), Gst::Pad.new(_arg1))
        __return_value
       }
@@ -457,7 +461,7 @@ module Gst
 
     alias UnlinkedSignal = Pad, Gst::Pad ->
     def on_unlinked(&__block : UnlinkedSignal)
-      __callback = ->(_arg0 : LibGst::Pad*, _arg1 : LibGst::LibGst::Pad*) {
+      __callback = ->(_arg0 : LibGst::Pad*, _arg1 : LibGst::LibGst::Pad**) {
        __return_value = __block.call(Pad.new(_arg0), Gst::Pad.new(_arg1))
        __return_value
       }

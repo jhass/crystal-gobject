@@ -12,198 +12,237 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def app_paintable
-      __return_value = LibGtk.widget_get_app_paintable(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "app_paintable", gvalue)
+      gvalue.boolean
     end
 
     def can_default
-      __return_value = LibGtk.widget_get_can_default(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "can_default", gvalue)
+      gvalue.boolean
     end
 
     def can_focus
-      __return_value = LibGtk.widget_get_can_focus(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "can_focus", gvalue)
+      gvalue.boolean
     end
 
     def composite_child
-      __return_value = LibGtk.widget_get_composite_child(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "composite_child", gvalue)
+      gvalue.boolean
     end
 
     def double_buffered
-      __return_value = LibGtk.widget_get_double_buffered(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "double_buffered", gvalue)
+      gvalue.boolean
     end
 
     def events
-      __return_value = LibGtk.widget_get_events(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "events", gvalue)
+      gvalue.enum
     end
 
     def expand
-      __return_value = LibGtk.widget_get_expand(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "expand", gvalue)
+      gvalue.boolean
     end
 
     def focus_on_click
-      __return_value = LibGtk.widget_get_focus_on_click(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "focus_on_click", gvalue)
+      gvalue.boolean
     end
 
     def halign
-      __return_value = LibGtk.widget_get_halign(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "halign", gvalue)
+      gvalue.enum
     end
 
     def has_default
-      __return_value = LibGtk.widget_get_has_default(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "has_default", gvalue)
+      gvalue.boolean
     end
 
     def has_focus
-      __return_value = LibGtk.widget_get_has_focus(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "has_focus", gvalue)
+      gvalue.boolean
     end
 
     def has_tooltip
-      __return_value = LibGtk.widget_get_has_tooltip(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "has_tooltip", gvalue)
+      gvalue.boolean
     end
 
     def height_request
-      __return_value = LibGtk.widget_get_height_request(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "height_request", gvalue)
+      gvalue
     end
 
     def hexpand
-      __return_value = LibGtk.widget_get_hexpand(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "hexpand", gvalue)
+      gvalue.boolean
     end
 
     def hexpand_set
-      __return_value = LibGtk.widget_get_hexpand_set(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "hexpand_set", gvalue)
+      gvalue.boolean
     end
 
     def is_focus
-      __return_value = LibGtk.widget_get_is_focus(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_focus", gvalue)
+      gvalue.boolean
     end
 
     def margin
-      __return_value = LibGtk.widget_get_margin(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "margin", gvalue)
+      gvalue
     end
 
     def margin_bottom
-      __return_value = LibGtk.widget_get_margin_bottom(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "margin_bottom", gvalue)
+      gvalue
     end
 
     def margin_end
-      __return_value = LibGtk.widget_get_margin_end(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "margin_end", gvalue)
+      gvalue
     end
 
     def margin_left
-      __return_value = LibGtk.widget_get_margin_left(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "margin_left", gvalue)
+      gvalue
     end
 
     def margin_right
-      __return_value = LibGtk.widget_get_margin_right(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "margin_right", gvalue)
+      gvalue
     end
 
     def margin_start
-      __return_value = LibGtk.widget_get_margin_start(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "margin_start", gvalue)
+      gvalue
     end
 
     def margin_top
-      __return_value = LibGtk.widget_get_margin_top(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "margin_top", gvalue)
+      gvalue
     end
 
     def name
-      __return_value = LibGtk.widget_get_name(to_unsafe.as(LibGtk::Widget*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "name", gvalue)
+      gvalue.string
     end
 
     def no_show_all
-      __return_value = LibGtk.widget_get_no_show_all(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "no_show_all", gvalue)
+      gvalue.boolean
     end
 
     def opacity
-      __return_value = LibGtk.widget_get_opacity(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "opacity", gvalue)
+      gvalue
     end
 
     def parent
-      __return_value = LibGtk.widget_get_parent(to_unsafe.as(LibGtk::Widget*))
-      Gtk::Container.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "parent", gvalue)
+      Gtk::Container.cast(gvalue.object)
     end
 
     def receives_default
-      __return_value = LibGtk.widget_get_receives_default(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "receives_default", gvalue)
+      gvalue.boolean
     end
 
     def scale_factor
-      __return_value = LibGtk.widget_get_scale_factor(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "scale_factor", gvalue)
+      gvalue
     end
 
     def sensitive
-      __return_value = LibGtk.widget_get_sensitive(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "sensitive", gvalue)
+      gvalue.boolean
     end
 
     def style
-      __return_value = LibGtk.widget_get_style(to_unsafe.as(LibGtk::Widget*))
-      Gtk::Style.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "style", gvalue)
+      Gtk::Style.cast(gvalue.object)
     end
 
     def tooltip_markup
-      __return_value = LibGtk.widget_get_tooltip_markup(to_unsafe.as(LibGtk::Widget*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "tooltip_markup", gvalue)
+      gvalue.string
     end
 
     def tooltip_text
-      __return_value = LibGtk.widget_get_tooltip_text(to_unsafe.as(LibGtk::Widget*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "tooltip_text", gvalue)
+      gvalue.string
     end
 
     def valign
-      __return_value = LibGtk.widget_get_valign(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "valign", gvalue)
+      gvalue.enum
     end
 
     def vexpand
-      __return_value = LibGtk.widget_get_vexpand(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "vexpand", gvalue)
+      gvalue.boolean
     end
 
     def vexpand_set
-      __return_value = LibGtk.widget_get_vexpand_set(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "vexpand_set", gvalue)
+      gvalue.boolean
     end
 
     def visible
-      __return_value = LibGtk.widget_get_visible(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "visible", gvalue)
+      gvalue.boolean
     end
 
     def width_request
-      __return_value = LibGtk.widget_get_width_request(to_unsafe.as(LibGtk::Widget*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "width_request", gvalue)
+      gvalue
     end
 
     def window
-      __return_value = LibGtk.widget_get_window(to_unsafe.as(LibGtk::Widget*))
-      Gdk::Window.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "window", gvalue)
+      Gdk::Window.cast(gvalue.object)
     end
 
     def self.default_direction
@@ -1018,7 +1057,7 @@ module Gtk
 
     def list_mnemonic_labels
       __return_value = LibGtk.widget_list_mnemonic_labels(@pointer.as(LibGtk::Widget*))
-      GLib::ListIterator(Gtk::Widget, LibGtk::Widget*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gtk::Widget, LibGtk::Widget**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def map
@@ -1574,7 +1613,7 @@ module Gtk
 
     alias ChildNotifySignal = Widget, GObject::ParamSpec ->
     def on_child_notify(&__block : ChildNotifySignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGObject::ParamSpec*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGObject::ParamSpec**) {
        __return_value = __block.call(Widget.new(_arg0), GObject::ParamSpec.new(_arg1))
        __return_value
       }
@@ -1646,7 +1685,7 @@ module Gtk
 
     alias DragBeginSignal = Widget, Gdk::DragContext ->
     def on_drag_begin(&__block : DragBeginSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext**) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::DragContext.new(_arg1))
        __return_value
       }
@@ -1655,7 +1694,7 @@ module Gtk
 
     alias DragDataDeleteSignal = Widget, Gdk::DragContext ->
     def on_drag_data_delete(&__block : DragDataDeleteSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext**) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::DragContext.new(_arg1))
        __return_value
       }
@@ -1664,7 +1703,7 @@ module Gtk
 
     alias DragDataGetSignal = Widget, Gdk::DragContext, Gtk::SelectionData, UInt32, UInt32 ->
     def on_drag_data_get(&__block : DragDataGetSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext*, _arg2 : LibGtk::LibGtk::SelectionData*, _arg3 : LibGtk::UInt32*, _arg4 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext**, _arg2 : LibGtk::LibGtk::SelectionData*, _arg3 : LibGtk::UInt32*, _arg4 : LibGtk::UInt32*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::DragContext.new(_arg1), Gtk::SelectionData.new(_arg2), _arg3, _arg4)
        __return_value
       }
@@ -1673,7 +1712,7 @@ module Gtk
 
     alias DragDataReceivedSignal = Widget, Gdk::DragContext, Int32, Int32, Gtk::SelectionData, UInt32, UInt32 ->
     def on_drag_data_received(&__block : DragDataReceivedSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext*, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Int32*, _arg4 : LibGtk::LibGtk::SelectionData*, _arg5 : LibGtk::UInt32*, _arg6 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext**, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Int32*, _arg4 : LibGtk::LibGtk::SelectionData*, _arg5 : LibGtk::UInt32*, _arg6 : LibGtk::UInt32*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::DragContext.new(_arg1), _arg2, _arg3, Gtk::SelectionData.new(_arg4), _arg5, _arg6)
        __return_value
       }
@@ -1682,7 +1721,7 @@ module Gtk
 
     alias DragDropSignal = Widget, Gdk::DragContext, Int32, Int32, UInt32 -> Bool
     def on_drag_drop(&__block : DragDropSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext*, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Int32*, _arg4 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext**, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Int32*, _arg4 : LibGtk::UInt32*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::DragContext.new(_arg1), _arg2, _arg3, _arg4)
        __return_value
       }
@@ -1691,7 +1730,7 @@ module Gtk
 
     alias DragEndSignal = Widget, Gdk::DragContext ->
     def on_drag_end(&__block : DragEndSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext**) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::DragContext.new(_arg1))
        __return_value
       }
@@ -1700,7 +1739,7 @@ module Gtk
 
     alias DragFailedSignal = Widget, Gdk::DragContext, Gtk::DragResult -> Bool
     def on_drag_failed(&__block : DragFailedSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext*, _arg2 : LibGtk::LibGtk::DragResult*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext**, _arg2 : LibGtk::LibGtk::DragResult*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::DragContext.new(_arg1), _arg2)
        __return_value
       }
@@ -1709,7 +1748,7 @@ module Gtk
 
     alias DragLeaveSignal = Widget, Gdk::DragContext, UInt32 ->
     def on_drag_leave(&__block : DragLeaveSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext*, _arg2 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext**, _arg2 : LibGtk::UInt32*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::DragContext.new(_arg1), _arg2)
        __return_value
       }
@@ -1718,7 +1757,7 @@ module Gtk
 
     alias DragMotionSignal = Widget, Gdk::DragContext, Int32, Int32, UInt32 -> Bool
     def on_drag_motion(&__block : DragMotionSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext*, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Int32*, _arg4 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext**, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Int32*, _arg4 : LibGtk::UInt32*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::DragContext.new(_arg1), _arg2, _arg3, _arg4)
        __return_value
       }
@@ -1826,7 +1865,7 @@ module Gtk
 
     alias HierarchyChangedSignal = Widget, Gtk::Widget ->
     def on_hierarchy_changed(&__block : HierarchyChangedSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGtk::Widget*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGtk::Widget**) {
        __return_value = __block.call(Widget.new(_arg0), Gtk::Widget.new(_arg1))
        __return_value
       }
@@ -1916,7 +1955,7 @@ module Gtk
 
     alias ParentSetSignal = Widget, Gtk::Widget ->
     def on_parent_set(&__block : ParentSetSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGtk::Widget*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGtk::Widget**) {
        __return_value = __block.call(Widget.new(_arg0), Gtk::Widget.new(_arg1))
        __return_value
       }
@@ -1961,7 +2000,7 @@ module Gtk
 
     alias QueryTooltipSignal = Widget, Int32, Int32, Bool, Gtk::Tooltip -> Bool
     def on_query_tooltip(&__block : QueryTooltipSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::Int32*, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Bool*, _arg4 : LibGtk::LibGtk::Tooltip*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::Int32*, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Bool*, _arg4 : LibGtk::LibGtk::Tooltip**) {
        __return_value = __block.call(Widget.new(_arg0), _arg1, _arg2, _arg3, Gtk::Tooltip.new(_arg4))
        __return_value
       }
@@ -1979,7 +2018,7 @@ module Gtk
 
     alias ScreenChangedSignal = Widget, Gdk::Screen ->
     def on_screen_changed(&__block : ScreenChangedSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::Screen*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::Screen**) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::Screen.new(_arg1))
        __return_value
       }
@@ -2087,7 +2126,7 @@ module Gtk
 
     alias StyleSetSignal = Widget, Gtk::Style ->
     def on_style_set(&__block : StyleSetSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGtk::Style*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGtk::Style**) {
        __return_value = __block.call(Widget.new(_arg0), Gtk::Style.new(_arg1))
        __return_value
       }

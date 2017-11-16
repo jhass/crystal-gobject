@@ -10,14 +10,14 @@ module Gtk
       nil
     end
 
-    def add_shortcut_folder(folder)
+    def add_shortcut_folder(folder) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.file_chooser_add_shortcut_folder(@pointer.as(LibGtk::FileChooser*), folder.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def add_shortcut_folder_uri(uri)
+    def add_shortcut_folder_uri(uri) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.file_chooser_add_shortcut_folder_uri(@pointer.as(LibGtk::FileChooser*), uri.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
@@ -151,7 +151,7 @@ module Gtk
 
     def list_filters
       __return_value = LibGtk.file_chooser_list_filters(@pointer.as(LibGtk::FileChooser*))
-      GLib::SListIterator(Gtk::FileFilter, LibGtk::FileFilter*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
+      GLib::SListIterator(Gtk::FileFilter, LibGtk::FileFilter**).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def list_shortcut_folder_uris
@@ -174,14 +174,14 @@ module Gtk
       nil
     end
 
-    def remove_shortcut_folder(folder)
+    def remove_shortcut_folder(folder) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.file_chooser_remove_shortcut_folder(@pointer.as(LibGtk::FileChooser*), folder.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def remove_shortcut_folder_uri(uri)
+    def remove_shortcut_folder_uri(uri) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.file_chooser_remove_shortcut_folder_uri(@pointer.as(LibGtk::FileChooser*), uri.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
@@ -193,7 +193,7 @@ module Gtk
       nil
     end
 
-    def select_file(file)
+    def select_file(file) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.file_chooser_select_file(@pointer.as(LibGtk::FileChooser*), file.to_unsafe.as(LibGio::File*), pointerof(__error))
       GLib::Error.assert __error
@@ -230,7 +230,7 @@ module Gtk
       __return_value
     end
 
-    def set_current_folder_file(file)
+    def set_current_folder_file(file) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.file_chooser_set_current_folder_file(@pointer.as(LibGtk::FileChooser*), file.to_unsafe.as(LibGio::File*), pointerof(__error))
       GLib::Error.assert __error
@@ -257,7 +257,7 @@ module Gtk
       nil
     end
 
-    def set_file(file)
+    def set_file(file) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.file_chooser_set_file(@pointer.as(LibGtk::FileChooser*), file.to_unsafe.as(LibGio::File*), pointerof(__error))
       GLib::Error.assert __error

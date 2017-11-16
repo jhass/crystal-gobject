@@ -17,13 +17,15 @@ module Gtk
     # Implements Orientable
 
     def title
-      __return_value = LibGtk.file_chooser_button_get_title(to_unsafe.as(LibGtk::FileChooserButton*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "title", gvalue)
+      gvalue.string
     end
 
     def width_chars
-      __return_value = LibGtk.file_chooser_button_get_width_chars(to_unsafe.as(LibGtk::FileChooserButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "width_chars", gvalue)
+      gvalue
     end
 
     def self.new(title, action : Gtk::FileChooserAction) : self

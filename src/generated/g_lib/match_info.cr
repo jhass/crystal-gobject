@@ -11,7 +11,7 @@ module GLib
       @pointer.not_nil!.as(LibGLib::MatchInfo*)
     end
 
-    def expand_references(string_to_expand)
+    def expand_references(string_to_expand) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.match_info_expand_references(@pointer.as(LibGLib::MatchInfo*), string_to_expand.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
@@ -73,7 +73,7 @@ module GLib
       __return_value
     end
 
-    def next
+    def next # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.match_info_next(@pointer.as(LibGLib::MatchInfo*), pointerof(__error))
       GLib::Error.assert __error

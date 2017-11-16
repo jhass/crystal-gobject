@@ -12,28 +12,33 @@ module Gst
     end
 
     def caps
-      __return_value = LibGst.stream_get_caps(to_unsafe.as(LibGst::Stream*))
-      Gst::Caps.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "caps", gvalue)
+      Gst::Caps.cast(gvalue.object)
     end
 
     def stream_flags
-      __return_value = LibGst.stream_get_stream_flags(to_unsafe.as(LibGst::Stream*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "stream_flags", gvalue)
+      gvalue.enum
     end
 
     def stream_id
-      __return_value = LibGst.stream_get_stream_id(to_unsafe.as(LibGst::Stream*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "stream_id", gvalue)
+      gvalue.string
     end
 
     def stream_type
-      __return_value = LibGst.stream_get_stream_type(to_unsafe.as(LibGst::Stream*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "stream_type", gvalue)
+      gvalue.enum
     end
 
     def tags
-      __return_value = LibGst.stream_get_tags(to_unsafe.as(LibGst::Stream*))
-      Gst::TagList.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "tags", gvalue)
+      Gst::TagList.cast(gvalue.object)
     end
 
     def self.new(stream_id, caps, type : Gst::StreamType, flags : Gst::StreamFlags) : self

@@ -17,18 +17,21 @@ module Gtk
     # Implements Buildable
 
     def always_show_image
-      __return_value = LibGtk.image_menu_item_get_always_show_image(to_unsafe.as(LibGtk::ImageMenuItem*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "always_show_image", gvalue)
+      gvalue.boolean
     end
 
     def image
-      __return_value = LibGtk.image_menu_item_get_image(to_unsafe.as(LibGtk::ImageMenuItem*))
-      Gtk::Widget.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "image", gvalue)
+      Gtk::Widget.cast(gvalue.object)
     end
 
     def use_stock
-      __return_value = LibGtk.image_menu_item_get_use_stock(to_unsafe.as(LibGtk::ImageMenuItem*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "use_stock", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self

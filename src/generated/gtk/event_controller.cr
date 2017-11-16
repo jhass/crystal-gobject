@@ -10,13 +10,15 @@ module Gtk
     end
 
     def propagation_phase
-      __return_value = LibGtk.event_controller_get_propagation_phase(to_unsafe.as(LibGtk::EventController*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "propagation_phase", gvalue)
+      gvalue.enum
     end
 
     def widget
-      __return_value = LibGtk.event_controller_get_widget(to_unsafe.as(LibGtk::EventController*))
-      Gtk::Widget.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "widget", gvalue)
+      Gtk::Widget.cast(gvalue.object)
     end
 
     def propagation_phase

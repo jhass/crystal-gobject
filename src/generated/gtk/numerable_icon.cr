@@ -11,28 +11,33 @@ module Gtk
 
     # Implements Icon
     def background_icon
-      __return_value = LibGtk.numerable_icon_get_background_icon(to_unsafe.as(LibGtk::NumerableIcon*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "background_icon", gvalue)
+      gvalue
     end
 
     def background_icon_name
-      __return_value = LibGtk.numerable_icon_get_background_icon_name(to_unsafe.as(LibGtk::NumerableIcon*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "background_icon_name", gvalue)
+      gvalue.string
     end
 
     def count
-      __return_value = LibGtk.numerable_icon_get_count(to_unsafe.as(LibGtk::NumerableIcon*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "count", gvalue)
+      gvalue
     end
 
     def label
-      __return_value = LibGtk.numerable_icon_get_label(to_unsafe.as(LibGtk::NumerableIcon*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "label", gvalue)
+      gvalue.string
     end
 
     def style_context
-      __return_value = LibGtk.numerable_icon_get_style_context(to_unsafe.as(LibGtk::NumerableIcon*))
-      Gtk::StyleContext.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "style_context", gvalue)
+      Gtk::StyleContext.cast(gvalue.object)
     end
 
     def self.new(base_icon)

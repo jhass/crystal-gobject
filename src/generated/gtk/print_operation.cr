@@ -11,93 +11,111 @@ module Gtk
 
     # Implements PrintOperationPreview
     def allow_async
-      __return_value = LibGtk.print_operation_get_allow_async(to_unsafe.as(LibGtk::PrintOperation*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "allow_async", gvalue)
+      gvalue.boolean
     end
 
     def current_page
-      __return_value = LibGtk.print_operation_get_current_page(to_unsafe.as(LibGtk::PrintOperation*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "current_page", gvalue)
+      gvalue
     end
 
     def custom_tab_label
-      __return_value = LibGtk.print_operation_get_custom_tab_label(to_unsafe.as(LibGtk::PrintOperation*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "custom_tab_label", gvalue)
+      gvalue.string
     end
 
     def default_page_setup
-      __return_value = LibGtk.print_operation_get_default_page_setup(to_unsafe.as(LibGtk::PrintOperation*))
-      Gtk::PageSetup.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "default_page_setup", gvalue)
+      Gtk::PageSetup.cast(gvalue.object)
     end
 
     def embed_page_setup
-      __return_value = LibGtk.print_operation_get_embed_page_setup(to_unsafe.as(LibGtk::PrintOperation*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "embed_page_setup", gvalue)
+      gvalue.boolean
     end
 
     def export_filename
-      __return_value = LibGtk.print_operation_get_export_filename(to_unsafe.as(LibGtk::PrintOperation*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "export_filename", gvalue)
+      gvalue.string
     end
 
     def has_selection
-      __return_value = LibGtk.print_operation_get_has_selection(to_unsafe.as(LibGtk::PrintOperation*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "has_selection", gvalue)
+      gvalue.boolean
     end
 
     def job_name
-      __return_value = LibGtk.print_operation_get_job_name(to_unsafe.as(LibGtk::PrintOperation*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "job_name", gvalue)
+      gvalue.string
     end
 
     def n_pages
-      __return_value = LibGtk.print_operation_get_n_pages(to_unsafe.as(LibGtk::PrintOperation*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "n_pages", gvalue)
+      gvalue
     end
 
     def n_pages_to_print
-      __return_value = LibGtk.print_operation_get_n_pages_to_print(to_unsafe.as(LibGtk::PrintOperation*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "n_pages_to_print", gvalue)
+      gvalue
     end
 
     def print_settings
-      __return_value = LibGtk.print_operation_get_print_settings(to_unsafe.as(LibGtk::PrintOperation*))
-      Gtk::PrintSettings.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "print_settings", gvalue)
+      Gtk::PrintSettings.cast(gvalue.object)
     end
 
     def show_progress
-      __return_value = LibGtk.print_operation_get_show_progress(to_unsafe.as(LibGtk::PrintOperation*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_progress", gvalue)
+      gvalue.boolean
     end
 
     def status
-      __return_value = LibGtk.print_operation_get_status(to_unsafe.as(LibGtk::PrintOperation*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "status", gvalue)
+      gvalue.enum
     end
 
     def status_string
-      __return_value = LibGtk.print_operation_get_status_string(to_unsafe.as(LibGtk::PrintOperation*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "status_string", gvalue)
+      gvalue.string
     end
 
     def support_selection
-      __return_value = LibGtk.print_operation_get_support_selection(to_unsafe.as(LibGtk::PrintOperation*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "support_selection", gvalue)
+      gvalue.boolean
     end
 
     def track_print_status
-      __return_value = LibGtk.print_operation_get_track_print_status(to_unsafe.as(LibGtk::PrintOperation*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "track_print_status", gvalue)
+      gvalue.boolean
     end
 
     def unit
-      __return_value = LibGtk.print_operation_get_unit(to_unsafe.as(LibGtk::PrintOperation*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "unit", gvalue)
+      gvalue.enum
     end
 
     def use_full_page
-      __return_value = LibGtk.print_operation_get_use_full_page(to_unsafe.as(LibGtk::PrintOperation*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "use_full_page", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self
@@ -125,7 +143,7 @@ module Gtk
       __return_value
     end
 
-    def error
+    def error # function
       __error = Pointer(LibGLib::Error).null
       LibGtk.print_operation_get_error(@pointer.as(LibGtk::PrintOperation*), pointerof(__error))
       GLib::Error.assert __error
@@ -167,7 +185,7 @@ module Gtk
       __return_value
     end
 
-    def run(action : Gtk::PrintOperationAction, parent)
+    def run(action : Gtk::PrintOperationAction, parent) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.print_operation_run(@pointer.as(LibGtk::PrintOperation*), action, parent ? parent.to_unsafe.as(LibGtk::Window*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -256,7 +274,7 @@ module Gtk
 
     alias BeginPrintSignal = PrintOperation, Gtk::PrintContext ->
     def on_begin_print(&__block : BeginPrintSignal)
-      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintContext*) {
+      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintContext**) {
        __return_value = __block.call(PrintOperation.new(_arg0), Gtk::PrintContext.new(_arg1))
        __return_value
       }
@@ -274,7 +292,7 @@ module Gtk
 
     alias CustomWidgetApplySignal = PrintOperation, Gtk::Widget ->
     def on_custom_widget_apply(&__block : CustomWidgetApplySignal)
-      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::Widget*) {
+      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::Widget**) {
        __return_value = __block.call(PrintOperation.new(_arg0), Gtk::Widget.new(_arg1))
        __return_value
       }
@@ -292,7 +310,7 @@ module Gtk
 
     alias DrawPageSignal = PrintOperation, Gtk::PrintContext, Int32 ->
     def on_draw_page(&__block : DrawPageSignal)
-      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintContext*, _arg2 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintContext**, _arg2 : LibGtk::Int32*) {
        __return_value = __block.call(PrintOperation.new(_arg0), Gtk::PrintContext.new(_arg1), _arg2)
        __return_value
       }
@@ -301,7 +319,7 @@ module Gtk
 
     alias EndPrintSignal = PrintOperation, Gtk::PrintContext ->
     def on_end_print(&__block : EndPrintSignal)
-      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintContext*) {
+      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintContext**) {
        __return_value = __block.call(PrintOperation.new(_arg0), Gtk::PrintContext.new(_arg1))
        __return_value
       }
@@ -310,7 +328,7 @@ module Gtk
 
     alias PaginateSignal = PrintOperation, Gtk::PrintContext -> Bool
     def on_paginate(&__block : PaginateSignal)
-      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintContext*) {
+      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintContext**) {
        __return_value = __block.call(PrintOperation.new(_arg0), Gtk::PrintContext.new(_arg1))
        __return_value
       }
@@ -319,7 +337,7 @@ module Gtk
 
     alias PreviewSignal = PrintOperation, Gtk::PrintOperationPreview, Gtk::PrintContext, Gtk::Window -> Bool
     def on_preview(&__block : PreviewSignal)
-      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintOperationPreview*, _arg2 : LibGtk::LibGtk::PrintContext*, _arg3 : LibGtk::LibGtk::Window*) {
+      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintOperationPreview*, _arg2 : LibGtk::LibGtk::PrintContext**, _arg3 : LibGtk::LibGtk::Window**) {
        __return_value = __block.call(PrintOperation.new(_arg0), _arg1, Gtk::PrintContext.new(_arg2), Gtk::Window.new(_arg3))
        __return_value
       }
@@ -328,7 +346,7 @@ module Gtk
 
     alias RequestPageSetupSignal = PrintOperation, Gtk::PrintContext, Int32, Gtk::PageSetup ->
     def on_request_page_setup(&__block : RequestPageSetupSignal)
-      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintContext*, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::LibGtk::PageSetup*) {
+      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::PrintContext**, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::LibGtk::PageSetup**) {
        __return_value = __block.call(PrintOperation.new(_arg0), Gtk::PrintContext.new(_arg1), _arg2, Gtk::PageSetup.new(_arg3))
        __return_value
       }
@@ -346,7 +364,7 @@ module Gtk
 
     alias UpdateCustomWidgetSignal = PrintOperation, Gtk::Widget, Gtk::PageSetup, Gtk::PrintSettings ->
     def on_update_custom_widget(&__block : UpdateCustomWidgetSignal)
-      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::Widget*, _arg2 : LibGtk::LibGtk::PageSetup*, _arg3 : LibGtk::LibGtk::PrintSettings*) {
+      __callback = ->(_arg0 : LibGtk::PrintOperation*, _arg1 : LibGtk::LibGtk::Widget**, _arg2 : LibGtk::LibGtk::PageSetup**, _arg3 : LibGtk::LibGtk::PrintSettings**) {
        __return_value = __block.call(PrintOperation.new(_arg0), Gtk::Widget.new(_arg1), Gtk::PageSetup.new(_arg2), Gtk::PrintSettings.new(_arg3))
        __return_value
       }

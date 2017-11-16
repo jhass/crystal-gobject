@@ -21,7 +21,7 @@ module Gtk
 
     def widgets
       __return_value = LibGtk.text_child_anchor_get_widgets(@pointer.as(LibGtk::TextChildAnchor*))
-      GLib::ListIterator(Gtk::Widget, LibGtk::Widget*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gtk::Widget, LibGtk::Widget**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
   end

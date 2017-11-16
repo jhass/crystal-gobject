@@ -14,28 +14,33 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def column_spacing
-      __return_value = LibGtk.table_get_column_spacing(to_unsafe.as(LibGtk::Table*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "column_spacing", gvalue)
+      gvalue
     end
 
     def homogeneous
-      __return_value = LibGtk.table_get_homogeneous(to_unsafe.as(LibGtk::Table*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "homogeneous", gvalue)
+      gvalue.boolean
     end
 
     def n_columns
-      __return_value = LibGtk.table_get_n_columns(to_unsafe.as(LibGtk::Table*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "n_columns", gvalue)
+      gvalue
     end
 
     def n_rows
-      __return_value = LibGtk.table_get_n_rows(to_unsafe.as(LibGtk::Table*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "n_rows", gvalue)
+      gvalue
     end
 
     def row_spacing
-      __return_value = LibGtk.table_get_row_spacing(to_unsafe.as(LibGtk::Table*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "row_spacing", gvalue)
+      gvalue
     end
 
     def self.new(rows, columns, homogeneous) : self

@@ -15,28 +15,33 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
     def inverted
-      __return_value = LibGtk.level_bar_get_inverted(to_unsafe.as(LibGtk::LevelBar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "inverted", gvalue)
+      gvalue.boolean
     end
 
     def max_value
-      __return_value = LibGtk.level_bar_get_max_value(to_unsafe.as(LibGtk::LevelBar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "max_value", gvalue)
+      gvalue
     end
 
     def min_value
-      __return_value = LibGtk.level_bar_get_min_value(to_unsafe.as(LibGtk::LevelBar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "min_value", gvalue)
+      gvalue
     end
 
     def mode
-      __return_value = LibGtk.level_bar_get_mode(to_unsafe.as(LibGtk::LevelBar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "mode", gvalue)
+      gvalue.enum
     end
 
     def value
-      __return_value = LibGtk.level_bar_get_value(to_unsafe.as(LibGtk::LevelBar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "value", gvalue)
+      gvalue
     end
 
     def self.new : self

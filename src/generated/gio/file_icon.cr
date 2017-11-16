@@ -12,8 +12,9 @@ module Gio
     # Implements Icon
     # Implements LoadableIcon
     def file
-      __return_value = LibGio.file_icon_get_file(to_unsafe.as(LibGio::FileIcon*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "file", gvalue)
+      gvalue
     end
 
     def self.new(file) : self

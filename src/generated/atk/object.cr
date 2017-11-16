@@ -10,78 +10,93 @@ module Atk
     end
 
     def accessible_component_layer
-      __return_value = LibAtk.object_get_accessible_component_layer(to_unsafe.as(LibAtk::Object*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accessible_component_layer", gvalue)
+      gvalue
     end
 
     def accessible_component_mdi_zorder
-      __return_value = LibAtk.object_get_accessible_component_mdi_zorder(to_unsafe.as(LibAtk::Object*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accessible_component_mdi_zorder", gvalue)
+      gvalue
     end
 
     def accessible_description
-      __return_value = LibAtk.object_get_accessible_description(to_unsafe.as(LibAtk::Object*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accessible_description", gvalue)
+      gvalue.string
     end
 
     def accessible_hypertext_nlinks
-      __return_value = LibAtk.object_get_accessible_hypertext_nlinks(to_unsafe.as(LibAtk::Object*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accessible_hypertext_nlinks", gvalue)
+      gvalue
     end
 
     def accessible_name
-      __return_value = LibAtk.object_get_accessible_name(to_unsafe.as(LibAtk::Object*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accessible_name", gvalue)
+      gvalue.string
     end
 
     def accessible_parent
-      __return_value = LibAtk.object_get_accessible_parent(to_unsafe.as(LibAtk::Object*))
-      Atk::Object.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accessible_parent", gvalue)
+      Atk::Object.cast(gvalue.object)
     end
 
     def accessible_role
-      __return_value = LibAtk.object_get_accessible_role(to_unsafe.as(LibAtk::Object*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accessible_role", gvalue)
+      gvalue
     end
 
     def accessible_table_caption
-      __return_value = LibAtk.object_get_accessible_table_caption(to_unsafe.as(LibAtk::Object*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accessible_table_caption", gvalue)
+      gvalue.string
     end
 
     def accessible_table_caption_object
-      __return_value = LibAtk.object_get_accessible_table_caption_object(to_unsafe.as(LibAtk::Object*))
-      Atk::Object.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accessible_table_caption_object", gvalue)
+      Atk::Object.cast(gvalue.object)
     end
 
     def accessible_table_column_description
-      __return_value = LibAtk.object_get_accessible_table_column_description(to_unsafe.as(LibAtk::Object*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accessible_table_column_description", gvalue)
+      gvalue.string
     end
 
     def accessible_table_column_header
-      __return_value = LibAtk.object_get_accessible_table_column_header(to_unsafe.as(LibAtk::Object*))
-      Atk::Object.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accessible_table_column_header", gvalue)
+      Atk::Object.cast(gvalue.object)
     end
 
     def accessible_table_row_description
-      __return_value = LibAtk.object_get_accessible_table_row_description(to_unsafe.as(LibAtk::Object*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accessible_table_row_description", gvalue)
+      gvalue.string
     end
 
     def accessible_table_row_header
-      __return_value = LibAtk.object_get_accessible_table_row_header(to_unsafe.as(LibAtk::Object*))
-      Atk::Object.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accessible_table_row_header", gvalue)
+      Atk::Object.cast(gvalue.object)
     end
 
     def accessible_table_summary
-      __return_value = LibAtk.object_get_accessible_table_summary(to_unsafe.as(LibAtk::Object*))
-      Atk::Object.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accessible_table_summary", gvalue)
+      Atk::Object.cast(gvalue.object)
     end
 
     def accessible_value
-      __return_value = LibAtk.object_get_accessible_value(to_unsafe.as(LibAtk::Object*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accessible_value", gvalue)
+      gvalue
     end
 
     def add_relationship(relationship : Atk::RelationType, target)

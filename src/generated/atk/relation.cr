@@ -10,13 +10,15 @@ module Atk
     end
 
     def relation_type
-      __return_value = LibAtk.relation_get_relation_type(to_unsafe.as(LibAtk::Relation*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "relation_type", gvalue)
+      gvalue.enum
     end
 
     def target
-      __return_value = LibAtk.relation_get_target(to_unsafe.as(LibAtk::Relation*))
-      GObject::ValueArray.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "target", gvalue)
+      GObject::ValueArray.cast(gvalue.object)
     end
 
     def self.new(targets, n_targets, relationship : Atk::RelationType) : self

@@ -17,23 +17,27 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
     def adjustment
-      __return_value = LibGtk.scale_button_get_adjustment(to_unsafe.as(LibGtk::ScaleButton*))
-      Gtk::Adjustment.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "adjustment", gvalue)
+      Gtk::Adjustment.cast(gvalue.object)
     end
 
     def icons
-      __return_value = LibGtk.scale_button_get_icons(to_unsafe.as(LibGtk::ScaleButton*))
-      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
+      gvalue = GObject::Value.new(GObject::Type::ARRAY)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "icons", gvalue)
+      gvalue
     end
 
     def size
-      __return_value = LibGtk.scale_button_get_size(to_unsafe.as(LibGtk::ScaleButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "size", gvalue)
+      gvalue.enum
     end
 
     def value
-      __return_value = LibGtk.scale_button_get_value(to_unsafe.as(LibGtk::ScaleButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "value", gvalue)
+      gvalue
     end
 
     def self.new(size, min, max, step, icons) : self

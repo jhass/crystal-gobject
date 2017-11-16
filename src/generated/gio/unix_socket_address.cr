@@ -13,23 +13,27 @@ module Gio
 
     # Implements SocketConnectable
     def abstract
-      __return_value = LibGio.unix_socket_address_get_abstract(to_unsafe.as(LibGio::UnixSocketAddress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "abstract", gvalue)
+      gvalue.boolean
     end
 
     def address_type
-      __return_value = LibGio.unix_socket_address_get_address_type(to_unsafe.as(LibGio::UnixSocketAddress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "address_type", gvalue)
+      gvalue.enum
     end
 
     def path
-      __return_value = LibGio.unix_socket_address_get_path(to_unsafe.as(LibGio::UnixSocketAddress*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "path", gvalue)
+      gvalue.string
     end
 
     def path_as_array
-      __return_value = LibGio.unix_socket_address_get_path_as_array(to_unsafe.as(LibGio::UnixSocketAddress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::ARRAY)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "path_as_array", gvalue)
+      gvalue
     end
 
     def self.new(path) : self

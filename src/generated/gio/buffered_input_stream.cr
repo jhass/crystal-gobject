@@ -13,8 +13,9 @@ module Gio
 
     # Implements Seekable
     def buffer_size
-      __return_value = LibGio.buffered_input_stream_get_buffer_size(to_unsafe.as(LibGio::BufferedInputStream*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "buffer_size", gvalue)
+      gvalue
     end
 
     def self.new(base_stream) : self
@@ -27,7 +28,7 @@ module Gio
       cast Gio::InputStream.new(__return_value)
     end
 
-    def fill(count, cancellable)
+    def fill(count, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.buffered_input_stream_fill(@pointer.as(LibGio::BufferedInputStream*), Int64.new(count), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -39,7 +40,7 @@ module Gio
       nil
     end
 
-    def fill_finish(result)
+    def fill_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.buffered_input_stream_fill_finish(@pointer.as(LibGio::BufferedInputStream*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -66,7 +67,7 @@ module Gio
       PointerIterator.new(__return_value) {|__item| __item }
     end
 
-    def read_byte(cancellable)
+    def read_byte(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.buffered_input_stream_read_byte(@pointer.as(LibGio::BufferedInputStream*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error

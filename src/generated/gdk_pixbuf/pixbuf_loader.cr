@@ -14,21 +14,21 @@ module GdkPixbuf
       cast GdkPixbuf::PixbufLoader.new(__return_value)
     end
 
-    def self.new_with_mime_type(mime_type) : self
+    def self.new_with_mime_type(mime_type) : self # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixbuf_loader_new_with_mime_type(mime_type.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       cast GdkPixbuf::PixbufLoader.new(__return_value)
     end
 
-    def self.new_with_type(image_type) : self
+    def self.new_with_type(image_type) : self # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixbuf_loader_new_with_type(image_type.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       cast GdkPixbuf::PixbufLoader.new(__return_value)
     end
 
-    def close
+    def close # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixbuf_loader_close(@pointer.as(LibGdkPixbuf::PixbufLoader*), pointerof(__error))
       GLib::Error.assert __error
@@ -55,14 +55,14 @@ module GdkPixbuf
       nil
     end
 
-    def write(buf, count)
+    def write(buf, count) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixbuf_loader_write(@pointer.as(LibGdkPixbuf::PixbufLoader*), buf, UInt64.new(count), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def write_bytes(buffer)
+    def write_bytes(buffer) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixbuf_loader_write_bytes(@pointer.as(LibGdkPixbuf::PixbufLoader*), buffer.to_unsafe.as(LibGLib::Bytes*), pointerof(__error))
       GLib::Error.assert __error

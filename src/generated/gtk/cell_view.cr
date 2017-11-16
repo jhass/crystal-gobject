@@ -17,43 +17,51 @@ module Gtk
     # Implements Orientable
 
     def background_gdk
-      __return_value = LibGtk.cell_view_get_background_gdk(to_unsafe.as(LibGtk::CellView*))
-      Gdk::Color.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "background_gdk", gvalue)
+      Gdk::Color.cast(gvalue.object)
     end
 
     def background_rgba
-      __return_value = LibGtk.cell_view_get_background_rgba(to_unsafe.as(LibGtk::CellView*))
-      Gdk::RGBA.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "background_rgba", gvalue)
+      Gdk::RGBA.cast(gvalue.object)
     end
 
     def background_set
-      __return_value = LibGtk.cell_view_get_background_set(to_unsafe.as(LibGtk::CellView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "background_set", gvalue)
+      gvalue.boolean
     end
 
     def cell_area
-      __return_value = LibGtk.cell_view_get_cell_area(to_unsafe.as(LibGtk::CellView*))
-      Gtk::CellArea.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "cell_area", gvalue)
+      Gtk::CellArea.cast(gvalue.object)
     end
 
     def cell_area_context
-      __return_value = LibGtk.cell_view_get_cell_area_context(to_unsafe.as(LibGtk::CellView*))
-      Gtk::CellAreaContext.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "cell_area_context", gvalue)
+      Gtk::CellAreaContext.cast(gvalue.object)
     end
 
     def draw_sensitive
-      __return_value = LibGtk.cell_view_get_draw_sensitive(to_unsafe.as(LibGtk::CellView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "draw_sensitive", gvalue)
+      gvalue.boolean
     end
 
     def fit_model
-      __return_value = LibGtk.cell_view_get_fit_model(to_unsafe.as(LibGtk::CellView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "fit_model", gvalue)
+      gvalue.boolean
     end
 
     def model
-      __return_value = LibGtk.cell_view_get_model(to_unsafe.as(LibGtk::CellView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "model", gvalue)
+      gvalue
     end
 
     def self.new : self

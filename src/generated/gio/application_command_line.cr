@@ -11,8 +11,9 @@ module Gio
 
 
     def is_remote
-      __return_value = LibGio.application_command_line_get_is_remote(to_unsafe.as(LibGio::ApplicationCommandLine*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_remote", gvalue)
+      gvalue.boolean
     end
 
 

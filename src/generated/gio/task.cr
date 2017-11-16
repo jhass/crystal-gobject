@@ -11,8 +11,9 @@ module Gio
 
     # Implements AsyncResult
     def completed
-      __return_value = LibGio.task_get_completed(to_unsafe.as(LibGio::Task*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "completed", gvalue)
+      gvalue.boolean
     end
 
     def self.new(source_object, cancellable, callback, callback_data) : self
@@ -80,21 +81,21 @@ module Gio
       __return_value
     end
 
-    def propagate_boolean
+    def propagate_boolean # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.task_propagate_boolean(@pointer.as(LibGio::Task*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def propagate_int
+    def propagate_int # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.task_propagate_int(@pointer.as(LibGio::Task*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def propagate_pointer
+    def propagate_pointer # function
       __error = Pointer(LibGLib::Error).null
       LibGio.task_propagate_pointer(@pointer.as(LibGio::Task*), pointerof(__error))
       GLib::Error.assert __error

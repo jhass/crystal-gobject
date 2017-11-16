@@ -15,13 +15,15 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
     def font_name
-      __return_value = LibGtk.font_selection_get_font_name(to_unsafe.as(LibGtk::FontSelection*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "font_name", gvalue)
+      gvalue.string
     end
 
     def preview_text
-      __return_value = LibGtk.font_selection_get_preview_text(to_unsafe.as(LibGtk::FontSelection*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "preview_text", gvalue)
+      gvalue.string
     end
 
     def self.new : self

@@ -13,23 +13,27 @@ module Gio
 
     # Implements SocketConnectable
     def address
-      __return_value = LibGio.inet_socket_address_get_address(to_unsafe.as(LibGio::InetSocketAddress*))
-      Gio::InetAddress.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "address", gvalue)
+      Gio::InetAddress.cast(gvalue.object)
     end
 
     def flowinfo
-      __return_value = LibGio.inet_socket_address_get_flowinfo(to_unsafe.as(LibGio::InetSocketAddress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "flowinfo", gvalue)
+      gvalue
     end
 
     def port
-      __return_value = LibGio.inet_socket_address_get_port(to_unsafe.as(LibGio::InetSocketAddress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "port", gvalue)
+      gvalue
     end
 
     def scope_id
-      __return_value = LibGio.inet_socket_address_get_scope_id(to_unsafe.as(LibGio::InetSocketAddress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "scope_id", gvalue)
+      gvalue
     end
 
     def self.new(address, port) : self

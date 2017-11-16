@@ -13,8 +13,9 @@ module Gio
 
     # Implements PollableOutputStream
     def converter
-      __return_value = LibGio.converter_output_stream_get_converter(to_unsafe.as(LibGio::ConverterOutputStream*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "converter", gvalue)
+      gvalue
     end
 
     def self.new(base_stream, converter) : self

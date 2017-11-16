@@ -1,6 +1,6 @@
 module Gio
   module AppInfo
-    def self.create_from_commandline(commandline, application_name, flags : Gio::AppInfoCreateFlags)
+    def self.create_from_commandline(commandline, application_name, flags : Gio::AppInfoCreateFlags) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.app_info_create_from_commandline(commandline.to_unsafe, application_name ? application_name.to_unsafe : nil, flags, pointerof(__error))
       GLib::Error.assert __error
@@ -37,7 +37,7 @@ module Gio
       GLib::ListIterator(Gio::AppInfo, LibGio::AppInfo*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
-    def self.launch_default_for_uri(uri, launch_context)
+    def self.launch_default_for_uri(uri, launch_context) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.app_info_launch_default_for_uri(uri.to_unsafe, launch_context ? launch_context.to_unsafe.as(LibGio::AppLaunchContext*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -49,7 +49,7 @@ module Gio
       nil
     end
 
-    def self.launch_default_for_uri_finish(result)
+    def self.launch_default_for_uri_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.app_info_launch_default_for_uri_finish(result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -61,7 +61,7 @@ module Gio
       nil
     end
 
-    def add_supports_type(content_type)
+    def add_supports_type(content_type) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.app_info_add_supports_type(@pointer.as(LibGio::AppInfo*), content_type.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
@@ -133,42 +133,42 @@ module Gio
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
-    def launch(files, launch_context)
+    def launch(files, launch_context) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.app_info_launch(@pointer.as(LibGio::AppInfo*), files ? files : nil, launch_context ? launch_context.to_unsafe.as(LibGio::AppLaunchContext*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def launch_uris(uris, launch_context)
+    def launch_uris(uris, launch_context) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.app_info_launch_uris(@pointer.as(LibGio::AppInfo*), uris ? uris : nil, launch_context ? launch_context.to_unsafe.as(LibGio::AppLaunchContext*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def remove_supports_type(content_type)
+    def remove_supports_type(content_type) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.app_info_remove_supports_type(@pointer.as(LibGio::AppInfo*), content_type.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def set_as_default_for_extension(extension)
+    def set_as_default_for_extension(extension) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.app_info_set_as_default_for_extension(@pointer.as(LibGio::AppInfo*), extension.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def set_as_default_for_type(content_type)
+    def set_as_default_for_type(content_type) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.app_info_set_as_default_for_type(@pointer.as(LibGio::AppInfo*), content_type.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def set_as_last_used_for_type(content_type)
+    def set_as_last_used_for_type(content_type) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.app_info_set_as_last_used_for_type(@pointer.as(LibGio::AppInfo*), content_type.to_unsafe, pointerof(__error))
       GLib::Error.assert __error

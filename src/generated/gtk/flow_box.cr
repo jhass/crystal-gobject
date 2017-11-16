@@ -15,38 +15,45 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
     def activate_on_single_click
-      __return_value = LibGtk.flow_box_get_activate_on_single_click(to_unsafe.as(LibGtk::FlowBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "activate_on_single_click", gvalue)
+      gvalue.boolean
     end
 
     def column_spacing
-      __return_value = LibGtk.flow_box_get_column_spacing(to_unsafe.as(LibGtk::FlowBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "column_spacing", gvalue)
+      gvalue
     end
 
     def homogeneous
-      __return_value = LibGtk.flow_box_get_homogeneous(to_unsafe.as(LibGtk::FlowBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "homogeneous", gvalue)
+      gvalue.boolean
     end
 
     def max_children_per_line
-      __return_value = LibGtk.flow_box_get_max_children_per_line(to_unsafe.as(LibGtk::FlowBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "max_children_per_line", gvalue)
+      gvalue
     end
 
     def min_children_per_line
-      __return_value = LibGtk.flow_box_get_min_children_per_line(to_unsafe.as(LibGtk::FlowBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "min_children_per_line", gvalue)
+      gvalue
     end
 
     def row_spacing
-      __return_value = LibGtk.flow_box_get_row_spacing(to_unsafe.as(LibGtk::FlowBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "row_spacing", gvalue)
+      gvalue
     end
 
     def selection_mode
-      __return_value = LibGtk.flow_box_get_selection_mode(to_unsafe.as(LibGtk::FlowBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "selection_mode", gvalue)
+      gvalue.enum
     end
 
     def self.new : self
@@ -101,7 +108,7 @@ module Gtk
 
     def selected_children
       __return_value = LibGtk.flow_box_get_selected_children(@pointer.as(LibGtk::FlowBox*))
-      GLib::ListIterator(Gtk::FlowBoxChild, LibGtk::FlowBoxChild*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gtk::FlowBoxChild, LibGtk::FlowBoxChild**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def selection_mode
@@ -215,7 +222,7 @@ module Gtk
 
     alias ChildActivatedSignal = FlowBox, Gtk::FlowBoxChild ->
     def on_child_activated(&__block : ChildActivatedSignal)
-      __callback = ->(_arg0 : LibGtk::FlowBox*, _arg1 : LibGtk::LibGtk::FlowBoxChild*) {
+      __callback = ->(_arg0 : LibGtk::FlowBox*, _arg1 : LibGtk::LibGtk::FlowBoxChild**) {
        __return_value = __block.call(FlowBox.new(_arg0), Gtk::FlowBoxChild.new(_arg1))
        __return_value
       }

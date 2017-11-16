@@ -11,36 +11,42 @@ module Gio
 
     # Implements Initable
     def active
-      __return_value = LibGio.d_bus_server_get_active(to_unsafe.as(LibGio::DBusServer*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "active", gvalue)
+      gvalue.boolean
     end
 
     def address
-      __return_value = LibGio.d_bus_server_get_address(to_unsafe.as(LibGio::DBusServer*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "address", gvalue)
+      gvalue.string
     end
 
     def authentication_observer
-      __return_value = LibGio.d_bus_server_get_authentication_observer(to_unsafe.as(LibGio::DBusServer*))
-      Gio::DBusAuthObserver.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "authentication_observer", gvalue)
+      Gio::DBusAuthObserver.cast(gvalue.object)
     end
 
     def client_address
-      __return_value = LibGio.d_bus_server_get_client_address(to_unsafe.as(LibGio::DBusServer*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "client_address", gvalue)
+      gvalue.string
     end
 
     def flags
-      __return_value = LibGio.d_bus_server_get_flags(to_unsafe.as(LibGio::DBusServer*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "flags", gvalue)
+      gvalue.enum
     end
 
     def guid
-      __return_value = LibGio.d_bus_server_get_guid(to_unsafe.as(LibGio::DBusServer*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "guid", gvalue)
+      gvalue.string
     end
 
-    def self.new_sync(address, flags : Gio::DBusServerFlags, guid, observer, cancellable) : self
+    def self.new_sync(address, flags : Gio::DBusServerFlags, guid, observer, cancellable) : self # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_server_new_sync(address.to_unsafe, flags, guid.to_unsafe, observer ? observer.to_unsafe.as(LibGio::DBusAuthObserver*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -79,7 +85,7 @@ module Gio
 
     alias NewConnectionSignal = DBusServer, Gio::DBusConnection -> Bool
     def on_new_connection(&__block : NewConnectionSignal)
-      __callback = ->(_arg0 : LibGio::DBusServer*, _arg1 : LibGio::LibGio::DBusConnection*) {
+      __callback = ->(_arg0 : LibGio::DBusServer*, _arg1 : LibGio::LibGio::DBusConnection**) {
        __return_value = __block.call(DBusServer.new(_arg0), Gio::DBusConnection.new(_arg1))
        __return_value
       }

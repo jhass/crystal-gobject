@@ -11,8 +11,9 @@ module Gio
 
     # Implements SocketConnectable
     def family
-      __return_value = LibGio.socket_address_get_family(to_unsafe.as(LibGio::SocketAddress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "family", gvalue)
+      gvalue.enum
     end
 
     def self.new_from_native(native, len) : self
@@ -30,7 +31,7 @@ module Gio
       __return_value
     end
 
-    def to_native(dest, destlen)
+    def to_native(dest, destlen) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_address_to_native(@pointer.as(LibGio::SocketAddress*), dest ? dest : nil, UInt64.new(destlen), pointerof(__error))
       GLib::Error.assert __error

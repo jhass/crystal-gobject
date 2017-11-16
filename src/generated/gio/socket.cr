@@ -12,111 +12,125 @@ module Gio
     # Implements DatagramBased
     # Implements Initable
     def blocking
-      __return_value = LibGio.socket_get_blocking(to_unsafe.as(LibGio::Socket*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "blocking", gvalue)
+      gvalue.boolean
     end
 
     def broadcast
-      __return_value = LibGio.socket_get_broadcast(to_unsafe.as(LibGio::Socket*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "broadcast", gvalue)
+      gvalue.boolean
     end
 
     def family
-      __return_value = LibGio.socket_get_family(to_unsafe.as(LibGio::Socket*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "family", gvalue)
+      gvalue.enum
     end
 
     def fd
-      __return_value = LibGio.socket_get_fd(to_unsafe.as(LibGio::Socket*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "fd", gvalue)
+      gvalue
     end
 
     def keepalive
-      __return_value = LibGio.socket_get_keepalive(to_unsafe.as(LibGio::Socket*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "keepalive", gvalue)
+      gvalue.boolean
     end
 
     def listen_backlog
-      __return_value = LibGio.socket_get_listen_backlog(to_unsafe.as(LibGio::Socket*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "listen_backlog", gvalue)
+      gvalue
     end
 
     def local_address
-      __return_value = LibGio.socket_get_local_address(to_unsafe.as(LibGio::Socket*))
-      Gio::SocketAddress.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "local_address", gvalue)
+      Gio::SocketAddress.cast(gvalue.object)
     end
 
     def multicast_loopback
-      __return_value = LibGio.socket_get_multicast_loopback(to_unsafe.as(LibGio::Socket*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "multicast_loopback", gvalue)
+      gvalue.boolean
     end
 
     def multicast_ttl
-      __return_value = LibGio.socket_get_multicast_ttl(to_unsafe.as(LibGio::Socket*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "multicast_ttl", gvalue)
+      gvalue
     end
 
     def protocol
-      __return_value = LibGio.socket_get_protocol(to_unsafe.as(LibGio::Socket*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "protocol", gvalue)
+      gvalue.enum
     end
 
     def remote_address
-      __return_value = LibGio.socket_get_remote_address(to_unsafe.as(LibGio::Socket*))
-      Gio::SocketAddress.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "remote_address", gvalue)
+      Gio::SocketAddress.cast(gvalue.object)
     end
 
     def timeout
-      __return_value = LibGio.socket_get_timeout(to_unsafe.as(LibGio::Socket*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "timeout", gvalue)
+      gvalue
     end
 
     def ttl
-      __return_value = LibGio.socket_get_ttl(to_unsafe.as(LibGio::Socket*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "ttl", gvalue)
+      gvalue
     end
 
     def type
-      __return_value = LibGio.socket_get_type(to_unsafe.as(LibGio::Socket*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "type", gvalue)
+      gvalue.enum
     end
 
-    def self.new(family : Gio::SocketFamily, type : Gio::SocketType, protocol : Gio::SocketProtocol) : self
+    def self.new(family : Gio::SocketFamily, type : Gio::SocketType, protocol : Gio::SocketProtocol) : self # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_new(family, type, protocol, pointerof(__error))
       GLib::Error.assert __error
       cast Gio::Socket.new(__return_value)
     end
 
-    def self.new_from_fd(fd) : self
+    def self.new_from_fd(fd) : self # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_new_from_fd(Int32.new(fd), pointerof(__error))
       GLib::Error.assert __error
       cast Gio::Socket.new(__return_value)
     end
 
-    def accept(cancellable)
+    def accept(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_accept(@pointer.as(LibGio::Socket*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       Gio::Socket.new(__return_value)
     end
 
-    def bind(address, allow_reuse)
+    def bind(address, allow_reuse) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_bind(@pointer.as(LibGio::Socket*), address.to_unsafe.as(LibGio::SocketAddress*), allow_reuse, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def check_connect_result
+    def check_connect_result # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_check_connect_result(@pointer.as(LibGio::Socket*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def close
+    def close # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_close(@pointer.as(LibGio::Socket*), pointerof(__error))
       GLib::Error.assert __error
@@ -128,21 +142,21 @@ module Gio
       __return_value
     end
 
-    def condition_timed_wait(condition : GLib::IOCondition, timeout, cancellable)
+    def condition_timed_wait(condition : GLib::IOCondition, timeout, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_condition_timed_wait(@pointer.as(LibGio::Socket*), condition, Int64.new(timeout), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def condition_wait(condition : GLib::IOCondition, cancellable)
+    def condition_wait(condition : GLib::IOCondition, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_condition_wait(@pointer.as(LibGio::Socket*), condition, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def connect(address, cancellable)
+    def connect(address, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_connect(@pointer.as(LibGio::Socket*), address.to_unsafe.as(LibGio::SocketAddress*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -169,7 +183,7 @@ module Gio
       __return_value
     end
 
-    def credentials
+    def credentials # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_get_credentials(@pointer.as(LibGio::Socket*), pointerof(__error))
       GLib::Error.assert __error
@@ -196,7 +210,7 @@ module Gio
       __return_value
     end
 
-    def local_address
+    def local_address # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_get_local_address(@pointer.as(LibGio::Socket*), pointerof(__error))
       GLib::Error.assert __error
@@ -213,7 +227,7 @@ module Gio
       __return_value
     end
 
-    def option(level, optname, value)
+    def option(level, optname, value) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_get_option(@pointer.as(LibGio::Socket*), Int32.new(level), Int32.new(optname), value, pointerof(__error))
       GLib::Error.assert __error
@@ -225,7 +239,7 @@ module Gio
       __return_value
     end
 
-    def remote_address
+    def remote_address # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_get_remote_address(@pointer.as(LibGio::Socket*), pointerof(__error))
       GLib::Error.assert __error
@@ -257,91 +271,91 @@ module Gio
       __return_value
     end
 
-    def join_multicast_group(group, source_specific, iface)
+    def join_multicast_group(group, source_specific, iface) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_join_multicast_group(@pointer.as(LibGio::Socket*), group.to_unsafe.as(LibGio::InetAddress*), source_specific, iface ? iface.to_unsafe : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def leave_multicast_group(group, source_specific, iface)
+    def leave_multicast_group(group, source_specific, iface) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_leave_multicast_group(@pointer.as(LibGio::Socket*), group.to_unsafe.as(LibGio::InetAddress*), source_specific, iface ? iface.to_unsafe : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def listen
+    def listen # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_listen(@pointer.as(LibGio::Socket*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def receive(buffer, size, cancellable)
+    def receive(buffer, size, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_receive(@pointer.as(LibGio::Socket*), buffer, UInt64.new(size), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def receive_from(address, buffer, size, cancellable)
+    def receive_from(address, buffer, size, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_receive_from(@pointer.as(LibGio::Socket*), address, buffer, UInt64.new(size), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def receive_message(address, vectors, num_vectors, messages, num_messages, flags, cancellable)
+    def receive_message(address, vectors, num_vectors, messages, num_messages, flags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_receive_message(@pointer.as(LibGio::Socket*), address, vectors, Int32.new(num_vectors), messages, num_messages, flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def receive_messages(messages, num_messages, flags, cancellable)
+    def receive_messages(messages, num_messages, flags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_receive_messages(@pointer.as(LibGio::Socket*), messages, UInt32.new(num_messages), Int32.new(flags), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def receive_with_blocking(buffer, size, blocking, cancellable)
+    def receive_with_blocking(buffer, size, blocking, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_receive_with_blocking(@pointer.as(LibGio::Socket*), buffer, UInt64.new(size), blocking, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def send(buffer, size, cancellable)
+    def send(buffer, size, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_send(@pointer.as(LibGio::Socket*), buffer, UInt64.new(size), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def send_message(address, vectors, num_vectors, messages, num_messages, flags, cancellable)
+    def send_message(address, vectors, num_vectors, messages, num_messages, flags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_send_message(@pointer.as(LibGio::Socket*), address ? address.to_unsafe.as(LibGio::SocketAddress*) : nil, vectors, Int32.new(num_vectors), messages ? messages : nil, Int32.new(num_messages), Int32.new(flags), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def send_messages(messages, num_messages, flags, cancellable)
+    def send_messages(messages, num_messages, flags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_send_messages(@pointer.as(LibGio::Socket*), messages, UInt32.new(num_messages), Int32.new(flags), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def send_to(address, buffer, size, cancellable)
+    def send_to(address, buffer, size, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_send_to(@pointer.as(LibGio::Socket*), address ? address.to_unsafe.as(LibGio::SocketAddress*) : nil, buffer, UInt64.new(size), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def send_with_blocking(buffer, size, blocking, cancellable)
+    def send_with_blocking(buffer, size, blocking, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_send_with_blocking(@pointer.as(LibGio::Socket*), buffer, UInt64.new(size), blocking, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -378,7 +392,7 @@ module Gio
       nil
     end
 
-    def set_option(level, optname, value)
+    def set_option(level, optname, value) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_set_option(@pointer.as(LibGio::Socket*), Int32.new(level), Int32.new(optname), Int32.new(value), pointerof(__error))
       GLib::Error.assert __error
@@ -395,7 +409,7 @@ module Gio
       nil
     end
 
-    def shutdown(shutdown_read, shutdown_write)
+    def shutdown(shutdown_read, shutdown_write) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_shutdown(@pointer.as(LibGio::Socket*), shutdown_read, shutdown_write, pointerof(__error))
       GLib::Error.assert __error

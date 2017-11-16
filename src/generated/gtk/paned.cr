@@ -15,28 +15,33 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
     def max_position
-      __return_value = LibGtk.paned_get_max_position(to_unsafe.as(LibGtk::Paned*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "max_position", gvalue)
+      gvalue
     end
 
     def min_position
-      __return_value = LibGtk.paned_get_min_position(to_unsafe.as(LibGtk::Paned*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "min_position", gvalue)
+      gvalue
     end
 
     def position
-      __return_value = LibGtk.paned_get_position(to_unsafe.as(LibGtk::Paned*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "position", gvalue)
+      gvalue
     end
 
     def position_set
-      __return_value = LibGtk.paned_get_position_set(to_unsafe.as(LibGtk::Paned*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "position_set", gvalue)
+      gvalue.boolean
     end
 
     def wide_handle
-      __return_value = LibGtk.paned_get_wide_handle(to_unsafe.as(LibGtk::Paned*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "wide_handle", gvalue)
+      gvalue.boolean
     end
 
     def self.new(orientation : Gtk::Orientation) : self

@@ -10,23 +10,27 @@ module Gtk
     end
 
     def direction
-      __return_value = LibGtk.style_context_get_direction(to_unsafe.as(LibGtk::StyleContext*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "direction", gvalue)
+      gvalue.enum
     end
 
     def paint_clock
-      __return_value = LibGtk.style_context_get_paint_clock(to_unsafe.as(LibGtk::StyleContext*))
-      Gdk::FrameClock.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "paint_clock", gvalue)
+      Gdk::FrameClock.cast(gvalue.object)
     end
 
     def parent
-      __return_value = LibGtk.style_context_get_parent(to_unsafe.as(LibGtk::StyleContext*))
-      Gtk::StyleContext.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "parent", gvalue)
+      Gtk::StyleContext.cast(gvalue.object)
     end
 
     def screen
-      __return_value = LibGtk.style_context_get_screen(to_unsafe.as(LibGtk::StyleContext*))
-      Gdk::Screen.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "screen", gvalue)
+      Gdk::Screen.cast(gvalue.object)
     end
 
     def self.new : self

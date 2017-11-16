@@ -129,7 +129,7 @@ module Pango
     nil
   end
 
-  def self.markup_parser_finish(context, attr_list, text, accel_char)
+  def self.markup_parser_finish(context, attr_list, text, accel_char) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibPango.markup_parser_finish(context.to_unsafe.as(LibGLib::MarkupParseContext*), attr_list, text, accel_char, pointerof(__error))
     GLib::Error.assert __error
@@ -151,7 +151,7 @@ module Pango
     __return_value
   end
 
-  def self.parse_markup(markup_text, length, accel_marker, attr_list, text, accel_char)
+  def self.parse_markup(markup_text, length, accel_marker, attr_list, text, accel_char) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibPango.parse_markup(markup_text.to_unsafe, Int32.new(length), UInt8.new(accel_marker), attr_list, text, accel_char, pointerof(__error))
     GLib::Error.assert __error

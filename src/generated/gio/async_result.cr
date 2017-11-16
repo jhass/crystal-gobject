@@ -15,7 +15,7 @@ module Gio
       __return_value
     end
 
-    def legacy_propagate_error
+    def legacy_propagate_error # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.async_result_legacy_propagate_error(@pointer.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error

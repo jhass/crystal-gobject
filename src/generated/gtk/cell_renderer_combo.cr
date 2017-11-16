@@ -12,18 +12,21 @@ module Gtk
     end
 
     def has_entry
-      __return_value = LibGtk.cell_renderer_combo_get_has_entry(to_unsafe.as(LibGtk::CellRendererCombo*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "has_entry", gvalue)
+      gvalue.boolean
     end
 
     def model
-      __return_value = LibGtk.cell_renderer_combo_get_model(to_unsafe.as(LibGtk::CellRendererCombo*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "model", gvalue)
+      gvalue
     end
 
     def text_column
-      __return_value = LibGtk.cell_renderer_combo_get_text_column(to_unsafe.as(LibGtk::CellRendererCombo*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "text_column", gvalue)
+      gvalue
     end
 
     def self.new : self

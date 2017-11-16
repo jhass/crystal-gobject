@@ -15,7 +15,7 @@ module Gio
       __return_value
     end
 
-    def read_nonblocking(buffer, count, cancellable)
+    def read_nonblocking(buffer, count, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.pollable_input_stream_read_nonblocking(@pointer.as(LibGio::PollableInputStream*), buffer, UInt64.new(count), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error

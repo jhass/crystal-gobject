@@ -768,12 +768,12 @@ lib LibGst
   fun pad_probe_info_get_query = gst_pad_probe_info_get_query(this : PadProbeInfo*) : LibGst::Query*
 
   struct ParamSpecArray # struct
-    parent_instance : LibGObject::ParamSpec
+    parent_instance : LibGObject::ParamSpec*
     element_spec : LibGObject::ParamSpec*
   end
 
   struct ParamSpecFraction # struct
-    parent_instance : LibGObject::ParamSpec
+    parent_instance : LibGObject::ParamSpec*
     min_num : Int32
     min_den : Int32
     max_num : Int32
@@ -1247,7 +1247,7 @@ lib LibGst
   ###########################################
 
   struct Allocator # object
-    object : LibGst::Object
+    object : LibGst::Object*
     mem_type : UInt8*
     mem_map : LibGst::MemoryMapFunction
     mem_unmap : LibGst::MemoryUnmapFunction
@@ -1268,7 +1268,7 @@ lib LibGst
   fun allocator_set_default = gst_allocator_set_default(this : Allocator*) : Void
 
   struct Bin # object
-    element : LibGst::Element
+    element : LibGst::Element*
     numchildren : Int32
     children : Void**
     children_cookie : UInt32
@@ -1294,6 +1294,8 @@ lib LibGst
     # Virtual function element_removed
     # Virtual function handle_message
     # Virtual function remove_element
+    # Property async_handling : Bool
+    # Property message_forward : Bool
   end
   fun bin_new = gst_bin_new(name : UInt8*) : LibGst::Element*
   fun bin_add = gst_bin_add(this : Bin*, element : LibGst::Element*) : Bool
@@ -1318,7 +1320,7 @@ lib LibGst
   end
 
   struct BufferPool # object
-    object : LibGst::Object
+    object : LibGst::Object*
     flushing : Int32
     priv : LibGst::BufferPoolPrivate*
     _gst_reserved : Void*
@@ -1355,13 +1357,14 @@ lib LibGst
   fun buffer_pool_set_flushing = gst_buffer_pool_set_flushing(this : BufferPool*, flushing : Bool) : Void
 
   struct Bus # object
-    object : LibGst::Object
+    object : LibGst::Object*
     priv : LibGst::BusPrivate*
     _gst_reserved : Void*
     # Signal message
     # Signal sync-message
     # Virtual function message
     # Virtual function sync_message
+    # Property enable_async : Bool
   end
   fun bus_new = gst_bus_new() : LibGst::Bus*
   fun bus_add_signal_watch = gst_bus_add_signal_watch(this : Bus*) : Void
@@ -1386,7 +1389,7 @@ lib LibGst
   fun bus_timed_pop_filtered = gst_bus_timed_pop_filtered(this : Bus*, timeout : UInt64, types : LibGst::MessageType) : LibGst::Message*
 
   struct Clock # object
-    object : LibGst::Object
+    object : LibGst::Object*
     priv : LibGst::ClockPrivate*
     _gst_reserved : Void*
     # Signal synced
@@ -1396,6 +1399,9 @@ lib LibGst
     # Virtual function unschedule
     # Virtual function wait
     # Virtual function wait_async
+    # Property timeout : UInt64
+    # Property window_size : Int32
+    # Property window_threshold : Int32
   end
   fun clock_id_compare_func = gst_clock_id_compare_func(id1 : Void*, id2 : Void*) : Int32
   fun clock_id_get_time = gst_clock_id_get_time(id : Void*) : UInt64
@@ -1429,7 +1435,7 @@ lib LibGst
   fun clock_wait_for_sync = gst_clock_wait_for_sync(this : Clock*, timeout : UInt64) : Bool
 
   struct ControlBinding # object
-    parent : LibGst::Object
+    parent : LibGst::Object*
     name : UInt8*
     pspec : LibGObject::ParamSpec*
     object : LibGst::Object*
@@ -1437,6 +1443,8 @@ lib LibGst
     # Virtual function get_g_value_array
     # Virtual function get_value
     # Virtual function sync_values
+    # Property name : UInt8*
+    # Property object : LibGst::Object*
   end
   fun control_binding_get_g_value_array = gst_control_binding_get_g_value_array(this : ControlBinding*, timestamp : UInt64, interval : UInt64, n_values : UInt32, values : LibGObject::Value*) : Bool
   fun control_binding_get_value = gst_control_binding_get_value(this : ControlBinding*, timestamp : UInt64) : LibGObject::Value*
@@ -1445,7 +1453,7 @@ lib LibGst
   fun control_binding_sync_values = gst_control_binding_sync_values(this : ControlBinding*, object : LibGst::Object*, timestamp : UInt64, last_sync : UInt64) : Bool
 
   struct ControlSource # object
-    parent : LibGst::Object
+    parent : LibGst::Object*
     get_value : LibGst::ControlSourceGetValue
     get_value_array : LibGst::ControlSourceGetValueArray
     _gst_reserved : Void*
@@ -1454,12 +1462,16 @@ lib LibGst
   fun control_source_control_source_get_value_array = gst_control_source_get_value_array(this : ControlSource*, timestamp : UInt64, interval : UInt64, n_values : UInt32, values : Float64*) : Bool
 
   struct Device # object
-    parent : LibGst::Object
+    parent : LibGst::Object*
     priv : LibGst::DevicePrivate*
     _gst_reserved : Void*
     # Signal removed
     # Virtual function create_element
     # Virtual function reconfigure_element
+    # Property caps : LibGst::Caps
+    # Property device_class : UInt8*
+    # Property display_name : UInt8*
+    # Property properties : LibGst::Structure
   end
   fun device_create_element = gst_device_create_element(this : Device*, name : UInt8*) : LibGst::Element*
   fun device_get_caps = gst_device_get_caps(this : Device*) : LibGst::Caps*
@@ -1471,9 +1483,10 @@ lib LibGst
   fun device_reconfigure_element = gst_device_reconfigure_element(this : Device*, element : LibGst::Element*) : Bool
 
   struct DeviceMonitor # object
-    parent : LibGst::Object
+    parent : LibGst::Object*
     priv : LibGst::DeviceMonitorPrivate*
     _gst_reserved : Void*
+    # Property show_all : Bool
   end
   fun device_monitor_new = gst_device_monitor_new() : LibGst::DeviceMonitor*
   fun device_monitor_add_filter = gst_device_monitor_add_filter(this : DeviceMonitor*, classes : UInt8*, caps : LibGst::Caps*) : UInt32
@@ -1487,7 +1500,7 @@ lib LibGst
   fun device_monitor_stop = gst_device_monitor_stop(this : DeviceMonitor*) : Void
 
   struct DeviceProvider # object
-    parent : LibGst::Object
+    parent : LibGst::Object*
     devices : Void**
     priv : LibGst::DeviceProviderPrivate*
     _gst_reserved : Void*
@@ -1532,7 +1545,7 @@ lib LibGst
   fun dynamic_type_factory_load = gst_dynamic_type_factory_load(factoryname : UInt8*) : UInt64
 
   struct Element # object
-    object : LibGst::Object
+    object : LibGst::Object*
     state_lock : LibGLib::RecMutex
     state_cond : LibGLib::Cond
     state_cookie : UInt32
@@ -1672,7 +1685,7 @@ lib LibGst
   end
 
   struct GhostPad # object
-    pad : LibGst::ProxyPad
+    pad : LibGst::ProxyPad*
     priv : LibGst::GhostPadPrivate*
   end
   fun ghost_pad_new = gst_ghost_pad_new(name : UInt8*, target : LibGst::Pad*) : LibGst::Pad*
@@ -1694,7 +1707,7 @@ lib LibGst
   end
 
   struct Object # object
-    object : LibGObject::InitiallyUnowned
+    object : LibGObject::InitiallyUnowned*
     lock : LibGLib::Mutex
     name : UInt8*
     parent : LibGst::Object*
@@ -1705,6 +1718,8 @@ lib LibGst
     _gst_reserved : Void*
     # Signal deep-notify
     # Virtual function deep_notify
+    # Property name : UInt8*
+    # Property parent : LibGst::Object*
   end
   fun object_check_uniqueness = gst_object_check_uniqueness(list : Void**, name : UInt8*) : Bool
   fun object_default_deep_notify = gst_object_default_deep_notify(object : LibGObject::Object*, orig : LibGst::Object*, pspec : LibGObject::ParamSpec*, excluded_props : UInt8**) : Void
@@ -1735,7 +1750,7 @@ lib LibGst
   fun object_unref = gst_object_unref(this : Object*) : Void
 
   struct Pad # object
-    object : LibGst::Object
+    object : LibGst::Object*
     element_private : Void*
     padtemplate : LibGst::PadTemplate*
     direction : LibGst::PadDirection
@@ -1783,6 +1798,10 @@ lib LibGst
     # Signal unlinked
     # Virtual function linked
     # Virtual function unlinked
+    # Property caps : LibGst::Caps
+    # Property direction : LibGst::PadDirection
+    # Property offset : Int64
+    # Property template : LibGst::PadTemplate*
   end
   fun pad_new = gst_pad_new(name : UInt8*, direction : LibGst::PadDirection) : LibGst::Pad*
   fun pad_new_from_static_template = gst_pad_new_from_static_template(templ : LibGst::StaticPadTemplate*, name : UInt8*) : LibGst::Pad*
@@ -1869,7 +1888,7 @@ lib LibGst
   fun pad_use_fixed_caps = gst_pad_use_fixed_caps(this : Pad*) : Void
 
   struct PadTemplate # object
-    object : LibGst::Object
+    object : LibGst::Object*
     name_template : UInt8*
     direction : LibGst::PadDirection
     presence : LibGst::PadPresence
@@ -1877,6 +1896,10 @@ lib LibGst
     _gst_reserved : Void*
     # Signal pad-created
     # Virtual function pad_created
+    # Property caps : LibGst::Caps
+    # Property direction : LibGst::PadDirection
+    # Property name_template : UInt8*
+    # Property presence : LibGst::PadPresence
   end
   fun pad_template_new = gst_pad_template_new(name_template : UInt8*, direction : LibGst::PadDirection, presence : LibGst::PadPresence, caps : LibGst::Caps*) : LibGst::PadTemplate*
   fun pad_template_get_caps = gst_pad_template_get_caps(this : PadTemplate*) : LibGst::Caps*
@@ -1891,12 +1914,15 @@ lib LibGst
   end
 
   struct Pipeline # object
-    bin : LibGst::Bin
+    bin : LibGst::Bin*
     fixed_clock : LibGst::Clock*
     stream_time : UInt64
     delay : UInt64
     priv : LibGst::PipelinePrivate*
     _gst_reserved : Void*
+    # Property auto_flush_bus : Bool
+    # Property delay : UInt64
+    # Property latency : UInt64
   end
   fun pipeline_new = gst_pipeline_new(name : UInt8*) : LibGst::Element*
   fun pipeline_auto_clock = gst_pipeline_auto_clock(this : Pipeline*) : Void
@@ -1949,7 +1975,7 @@ lib LibGst
   fun plugin_feature_set_rank = gst_plugin_feature_set_rank(this : PluginFeature*, rank : UInt32) : Void
 
   struct ProxyPad # object
-    pad : LibGst::Pad
+    pad : LibGst::Pad*
     priv : LibGst::ProxyPadPrivate*
   end
   fun proxy_pad_chain_default = gst_proxy_pad_chain_default(pad : LibGst::Pad*, parent : LibGst::Object*, buffer : LibGst::Buffer*) : LibGst::FlowReturn
@@ -1959,7 +1985,7 @@ lib LibGst
   fun proxy_pad_get_internal = gst_proxy_pad_get_internal(this : ProxyPad*) : LibGst::ProxyPad*
 
   struct Registry # object
-    object : LibGst::Object
+    object : LibGst::Object*
     priv : LibGst::RegistryPrivate*
     # Signal feature-added
     # Signal plugin-added
@@ -1985,10 +2011,15 @@ lib LibGst
   fun registry_scan_path = gst_registry_scan_path(this : Registry*, path : UInt8*) : Bool
 
   struct Stream # object
-    object : LibGst::Object
+    object : LibGst::Object*
     stream_id : UInt8*
     priv : LibGst::StreamPrivate*
     _gst_reserved : Void*
+    # Property caps : LibGst::Caps
+    # Property stream_flags : LibGst::StreamFlags
+    # Property stream_id : UInt8*
+    # Property stream_type : LibGst::StreamType
+    # Property tags : LibGst::TagList
   end
   fun stream_new = gst_stream_new(stream_id : UInt8*, caps : LibGst::Caps*, type : LibGst::StreamType, flags : LibGst::StreamFlags) : LibGst::Stream*
   fun stream_get_caps = gst_stream_get_caps(this : Stream*) : LibGst::Caps*
@@ -2002,12 +2033,13 @@ lib LibGst
   fun stream_set_tags = gst_stream_set_tags(this : Stream*, tags : LibGst::TagList*) : Void
 
   struct StreamCollection # object
-    object : LibGst::Object
+    object : LibGst::Object*
     upstream_id : UInt8*
     priv : LibGst::StreamCollectionPrivate*
     _gst_reserved : Void*
     # Signal stream-notify
     # Virtual function stream_notify
+    # Property upstream_id : UInt8*
   end
   fun stream_collection_new = gst_stream_collection_new(upstream_id : UInt8*) : LibGst::StreamCollection*
   fun stream_collection_add_stream = gst_stream_collection_add_stream(this : StreamCollection*, stream : LibGst::Stream*) : Bool
@@ -2016,15 +2048,16 @@ lib LibGst
   fun stream_collection_get_upstream_id = gst_stream_collection_get_upstream_id(this : StreamCollection*) : UInt8*
 
   struct SystemClock # object
-    clock : LibGst::Clock
+    clock : LibGst::Clock*
     priv : LibGst::SystemClockPrivate*
     _gst_reserved : Void*
+    # Property clock_type : LibGst::ClockType
   end
   fun system_clock_obtain = gst_system_clock_obtain() : LibGst::Clock*
   fun system_clock_set_default = gst_system_clock_set_default(new_clock : LibGst::Clock*) : Void
 
   struct Task # object
-    object : LibGst::Object
+    object : LibGst::Object*
     state : LibGst::TaskState
     cond : LibGLib::Cond
     lock : LibGLib::RecMutex*
@@ -2051,7 +2084,7 @@ lib LibGst
   fun task_stop = gst_task_stop(this : Task*) : Bool
 
   struct TaskPool # object
-    object : LibGst::Object
+    object : LibGst::Object*
     pool : LibGLib::ThreadPool*
     _gst_reserved : Void*
     # Virtual function cleanup
@@ -2066,9 +2099,10 @@ lib LibGst
   fun task_pool_push = gst_task_pool_push(this : TaskPool*, func : LibGst::TaskPoolFunction, user_data : Void*, error : LibGLib::Error**) : Void*
 
   struct Tracer # object
-    parent : LibGst::Object
+    parent : LibGst::Object*
     priv : LibGst::TracerPrivate*
     _gst_reserved : Void*
+    # Property params : UInt8*
   end
 
   struct TracerFactory # object

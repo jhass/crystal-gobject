@@ -14,53 +14,63 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def day
-      __return_value = LibGtk.calendar_get_day(to_unsafe.as(LibGtk::Calendar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "day", gvalue)
+      gvalue
     end
 
     def detail_height_rows
-      __return_value = LibGtk.calendar_get_detail_height_rows(to_unsafe.as(LibGtk::Calendar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "detail_height_rows", gvalue)
+      gvalue
     end
 
     def detail_width_chars
-      __return_value = LibGtk.calendar_get_detail_width_chars(to_unsafe.as(LibGtk::Calendar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "detail_width_chars", gvalue)
+      gvalue
     end
 
     def month
-      __return_value = LibGtk.calendar_get_month(to_unsafe.as(LibGtk::Calendar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "month", gvalue)
+      gvalue
     end
 
     def no_month_change
-      __return_value = LibGtk.calendar_get_no_month_change(to_unsafe.as(LibGtk::Calendar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "no_month_change", gvalue)
+      gvalue.boolean
     end
 
     def show_day_names
-      __return_value = LibGtk.calendar_get_show_day_names(to_unsafe.as(LibGtk::Calendar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_day_names", gvalue)
+      gvalue.boolean
     end
 
     def show_details
-      __return_value = LibGtk.calendar_get_show_details(to_unsafe.as(LibGtk::Calendar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_details", gvalue)
+      gvalue.boolean
     end
 
     def show_heading
-      __return_value = LibGtk.calendar_get_show_heading(to_unsafe.as(LibGtk::Calendar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_heading", gvalue)
+      gvalue.boolean
     end
 
     def show_week_numbers
-      __return_value = LibGtk.calendar_get_show_week_numbers(to_unsafe.as(LibGtk::Calendar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_week_numbers", gvalue)
+      gvalue.boolean
     end
 
     def year
-      __return_value = LibGtk.calendar_get_year(to_unsafe.as(LibGtk::Calendar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "year", gvalue)
+      gvalue
     end
 
     def self.new : self

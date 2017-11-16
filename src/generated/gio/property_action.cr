@@ -11,35 +11,41 @@ module Gio
 
     # Implements Action
     def enabled
-      __return_value = LibGio.property_action_get_enabled(to_unsafe.as(LibGio::PropertyAction*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "enabled", gvalue)
+      gvalue.boolean
     end
 
     def invert_boolean
-      __return_value = LibGio.property_action_get_invert_boolean(to_unsafe.as(LibGio::PropertyAction*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "invert_boolean", gvalue)
+      gvalue.boolean
     end
 
     def name
-      __return_value = LibGio.property_action_get_name(to_unsafe.as(LibGio::PropertyAction*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "name", gvalue)
+      gvalue.string
     end
 
 
     def parameter_type
-      __return_value = LibGio.property_action_get_parameter_type(to_unsafe.as(LibGio::PropertyAction*))
-      GLib::VariantType.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "parameter_type", gvalue)
+      GLib::VariantType.cast(gvalue.object)
     end
 
 
     def state
-      __return_value = LibGio.property_action_get_state(to_unsafe.as(LibGio::PropertyAction*))
-      GLib::Variant.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "state", gvalue)
+      GLib::Variant.cast(gvalue.object)
     end
 
     def state_type
-      __return_value = LibGio.property_action_get_state_type(to_unsafe.as(LibGio::PropertyAction*))
-      GLib::VariantType.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "state_type", gvalue)
+      GLib::VariantType.cast(gvalue.object)
     end
 
     def self.new(name, object, property_name) : self

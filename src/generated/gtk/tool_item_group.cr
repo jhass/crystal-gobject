@@ -15,28 +15,33 @@ module Gtk
     # Implements Buildable
     # Implements ToolShell
     def collapsed
-      __return_value = LibGtk.tool_item_group_get_collapsed(to_unsafe.as(LibGtk::ToolItemGroup*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "collapsed", gvalue)
+      gvalue.boolean
     end
 
     def ellipsize
-      __return_value = LibGtk.tool_item_group_get_ellipsize(to_unsafe.as(LibGtk::ToolItemGroup*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "ellipsize", gvalue)
+      gvalue.enum
     end
 
     def header_relief
-      __return_value = LibGtk.tool_item_group_get_header_relief(to_unsafe.as(LibGtk::ToolItemGroup*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "header_relief", gvalue)
+      gvalue.enum
     end
 
     def label
-      __return_value = LibGtk.tool_item_group_get_label(to_unsafe.as(LibGtk::ToolItemGroup*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "label", gvalue)
+      gvalue.string
     end
 
     def label_widget
-      __return_value = LibGtk.tool_item_group_get_label_widget(to_unsafe.as(LibGtk::ToolItemGroup*))
-      Gtk::Widget.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "label_widget", gvalue)
+      Gtk::Widget.cast(gvalue.object)
     end
 
     def self.new(label) : self

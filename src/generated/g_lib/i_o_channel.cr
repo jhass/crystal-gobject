@@ -16,7 +16,7 @@ module GLib
       @pointer.not_nil!.as(LibGLib::IOChannel*)
     end
 
-    def self.new_file(filename, mode) : self
+    def self.new_file(filename, mode) : self # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.i_o_channel_new_file(filename.to_unsafe, mode.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
@@ -33,7 +33,7 @@ module GLib
       nil
     end
 
-    def flush
+    def flush # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.i_o_channel_flush(@pointer.as(LibGLib::IOChannel*), pointerof(__error))
       GLib::Error.assert __error
@@ -85,35 +85,35 @@ module GLib
       __return_value
     end
 
-    def read_chars(buf, count, bytes_read)
+    def read_chars(buf, count, bytes_read) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.i_o_channel_read_chars(@pointer.as(LibGLib::IOChannel*), buf, UInt64.new(count), bytes_read, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def read_line(str_return, length, terminator_pos)
+    def read_line(str_return, length, terminator_pos) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.i_o_channel_read_line(@pointer.as(LibGLib::IOChannel*), str_return, length, terminator_pos, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def read_line_string(buffer, terminator_pos)
+    def read_line_string(buffer, terminator_pos) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.i_o_channel_read_line_string(@pointer.as(LibGLib::IOChannel*), buffer.to_unsafe.as(LibGLib::String*), terminator_pos ? terminator_pos : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def read_to_end(str_return, length)
+    def read_to_end(str_return, length) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.i_o_channel_read_to_end(@pointer.as(LibGLib::IOChannel*), str_return, length, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def read_unichar(thechar)
+    def read_unichar(thechar) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.i_o_channel_read_unichar(@pointer.as(LibGLib::IOChannel*), thechar, pointerof(__error))
       GLib::Error.assert __error
@@ -130,7 +130,7 @@ module GLib
       __return_value
     end
 
-    def seek_position(offset, type : GLib::SeekType)
+    def seek_position(offset, type : GLib::SeekType) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.i_o_channel_seek_position(@pointer.as(LibGLib::IOChannel*), Int64.new(offset), type, pointerof(__error))
       GLib::Error.assert __error
@@ -152,14 +152,14 @@ module GLib
       nil
     end
 
-    def set_encoding(encoding)
+    def set_encoding(encoding) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.i_o_channel_set_encoding(@pointer.as(LibGLib::IOChannel*), encoding ? encoding.to_unsafe : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def set_flags(flags : GLib::IOFlags)
+    def set_flags(flags : GLib::IOFlags) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.i_o_channel_set_flags(@pointer.as(LibGLib::IOChannel*), flags, pointerof(__error))
       GLib::Error.assert __error
@@ -171,7 +171,7 @@ module GLib
       nil
     end
 
-    def shutdown(flush)
+    def shutdown(flush) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.i_o_channel_shutdown(@pointer.as(LibGLib::IOChannel*), flush, pointerof(__error))
       GLib::Error.assert __error
@@ -193,14 +193,14 @@ module GLib
       __return_value
     end
 
-    def write_chars(buf, count, bytes_written)
+    def write_chars(buf, count, bytes_written) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.i_o_channel_write_chars(@pointer.as(LibGLib::IOChannel*), buf, Int64.new(count), bytes_written, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def write_unichar(thechar)
+    def write_unichar(thechar) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.i_o_channel_write_unichar(@pointer.as(LibGLib::IOChannel*), UInt8.new(thechar), pointerof(__error))
       GLib::Error.assert __error

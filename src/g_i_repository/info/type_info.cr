@@ -60,14 +60,19 @@ module GIRepository
           else
             namespace = "Lib#{interface.namespace}::"
             namespace = nil if namespace == self.namespace
-            "#{namespace}#{interface.name}"
+            type = "#{namespace}#{interface.name}"
+            case interface
+            when ObjectInfo
+              type = "#{type}*" unless pointer?
+            end
+            type
           end
         when LibGIRepository::TypeTag::ARRAY
           case array_type
           when LibGIRepository::ArrayType::C
             param_type.lib_definition
           else
-            "Void*"
+            "Void"
           end
         else
           TAG_MAP[tag]
@@ -140,6 +145,44 @@ module GIRepository
         else
           "#{TAG_MAP[tag]}.new(#{variable})"
         end
+      end
+    end
+
+    def wrap_in_gvalue(variable, value)
+      case tag
+      when LibGIRepository::TypeTag::INTERFACE
+        interface = self.interface
+        case interface
+        when ObjectInfo, StructInfo, UnionInfo
+          "#{variable}.object = #{value}"
+        when EnumInfo
+          "#{variable}.enum = #{value}"
+        end
+      when LibGIRepository::TypeTag::BOOLEAN
+        "#{variable}.boolean = #{value}"
+      when LibGIRepository::TypeTag::UTF8
+        "#{variable}.string = #{value}"
+      end
+    end
+
+    def unwrap_gvalue(variable)
+      case tag
+      when LibGIRepository::TypeTag::INTERFACE
+        interface = self.interface
+        case interface
+        when ObjectInfo, StructInfo, UnionInfo
+          "#{interface.full_constant}.cast(#{variable}.object)"
+        when EnumInfo
+          "#{variable}.enum"
+        else
+          "#{variable}"
+        end
+      when LibGIRepository::TypeTag::BOOLEAN
+        "#{variable}.boolean"
+      when LibGIRepository::TypeTag::UTF8
+        "#{variable}.string"
+      else
+        variable
       end
     end
   end

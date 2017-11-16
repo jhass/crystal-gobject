@@ -11,8 +11,9 @@ module Gio
 
     # Implements AppInfo
     def filename
-      __return_value = LibGio.desktop_app_info_get_filename(to_unsafe.as(LibGio::DesktopAppInfo*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "filename", gvalue)
+      gvalue.string
     end
 
     def self.new(desktop_id) : self
@@ -32,7 +33,7 @@ module Gio
 
     def self.implementations(interface)
       __return_value = LibGio.desktop_app_info_get_implementations(interface.to_unsafe)
-      GLib::ListIterator(Gio::DesktopAppInfo, LibGio::DesktopAppInfo*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gio::DesktopAppInfo, LibGio::DesktopAppInfo**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def self.search(search_string)
@@ -110,7 +111,7 @@ module Gio
       nil
     end
 
-    def launch_uris_as_manager(uris, launch_context, spawn_flags : GLib::SpawnFlags, user_setup, user_setup_data, pid_callback, pid_callback_data)
+    def launch_uris_as_manager(uris, launch_context, spawn_flags : GLib::SpawnFlags, user_setup, user_setup_data, pid_callback, pid_callback_data) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.desktop_app_info_launch_uris_as_manager(@pointer.as(LibGio::DesktopAppInfo*), uris, launch_context ? launch_context.to_unsafe.as(LibGio::AppLaunchContext*) : nil, spawn_flags, user_setup ? user_setup : nil, user_setup_data ? user_setup_data : nil, pid_callback ? pid_callback : nil, pid_callback_data ? pid_callback_data : nil, pointerof(__error))
       GLib::Error.assert __error

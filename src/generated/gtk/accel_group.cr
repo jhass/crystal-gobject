@@ -10,13 +10,15 @@ module Gtk
     end
 
     def is_locked
-      __return_value = LibGtk.accel_group_get_is_locked(to_unsafe.as(LibGtk::AccelGroup*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_locked", gvalue)
+      gvalue.boolean
     end
 
     def modifier_mask
-      __return_value = LibGtk.accel_group_get_modifier_mask(to_unsafe.as(LibGtk::AccelGroup*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "modifier_mask", gvalue)
+      gvalue.enum
     end
 
     def self.new : self
@@ -86,7 +88,7 @@ module Gtk
 
     alias AccelActivateSignal = AccelGroup, GObject::Object, UInt32, Gdk::ModifierType -> Bool
     def on_accel_activate(&__block : AccelActivateSignal)
-      __callback = ->(_arg0 : LibGtk::AccelGroup*, _arg1 : LibGtk::LibGObject::Object*, _arg2 : LibGtk::UInt32*, _arg3 : LibGtk::LibGdk::ModifierType*) {
+      __callback = ->(_arg0 : LibGtk::AccelGroup*, _arg1 : LibGtk::LibGObject::Object**, _arg2 : LibGtk::UInt32*, _arg3 : LibGtk::LibGdk::ModifierType*) {
        __return_value = __block.call(AccelGroup.new(_arg0), GObject::Object.new(_arg1), _arg2, _arg3)
        __return_value
       }

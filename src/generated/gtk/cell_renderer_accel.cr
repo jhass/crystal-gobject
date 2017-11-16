@@ -12,23 +12,27 @@ module Gtk
     end
 
     def accel_key
-      __return_value = LibGtk.cell_renderer_accel_get_accel_key(to_unsafe.as(LibGtk::CellRendererAccel*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accel_key", gvalue)
+      gvalue
     end
 
     def accel_mode
-      __return_value = LibGtk.cell_renderer_accel_get_accel_mode(to_unsafe.as(LibGtk::CellRendererAccel*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accel_mode", gvalue)
+      gvalue.enum
     end
 
     def accel_mods
-      __return_value = LibGtk.cell_renderer_accel_get_accel_mods(to_unsafe.as(LibGtk::CellRendererAccel*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accel_mods", gvalue)
+      gvalue.enum
     end
 
     def keycode
-      __return_value = LibGtk.cell_renderer_accel_get_keycode(to_unsafe.as(LibGtk::CellRendererAccel*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "keycode", gvalue)
+      gvalue
     end
 
     def self.new : self

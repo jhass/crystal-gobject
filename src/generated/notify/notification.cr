@@ -10,33 +10,39 @@ module Notify
     end
 
     def app_name
-      __return_value = LibNotify.notification_get_app_name(to_unsafe.as(LibNotify::Notification*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "app_name", gvalue)
+      gvalue.string
     end
 
     def body
-      __return_value = LibNotify.notification_get_body(to_unsafe.as(LibNotify::Notification*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "body", gvalue)
+      gvalue.string
     end
 
     def closed_reason
-      __return_value = LibNotify.notification_get_closed_reason(to_unsafe.as(LibNotify::Notification*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "closed_reason", gvalue)
+      gvalue
     end
 
     def icon_name
-      __return_value = LibNotify.notification_get_icon_name(to_unsafe.as(LibNotify::Notification*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "icon_name", gvalue)
+      gvalue.string
     end
 
     def id
-      __return_value = LibNotify.notification_get_id(to_unsafe.as(LibNotify::Notification*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "id", gvalue)
+      gvalue
     end
 
     def summary
-      __return_value = LibNotify.notification_get_summary(to_unsafe.as(LibNotify::Notification*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "summary", gvalue)
+      gvalue.string
     end
 
     def self.new(summary, body, icon) : self
@@ -59,7 +65,7 @@ module Notify
       nil
     end
 
-    def close
+    def close # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibNotify.notification_close(@pointer.as(LibNotify::Notification*), pointerof(__error))
       GLib::Error.assert __error
@@ -136,7 +142,7 @@ module Notify
       nil
     end
 
-    def show
+    def show # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibNotify.notification_show(@pointer.as(LibNotify::Notification*), pointerof(__error))
       GLib::Error.assert __error

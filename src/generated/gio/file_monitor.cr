@@ -10,13 +10,15 @@ module Gio
     end
 
     def cancelled
-      __return_value = LibGio.file_monitor_get_cancelled(to_unsafe.as(LibGio::FileMonitor*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "cancelled", gvalue)
+      gvalue.boolean
     end
 
     def rate_limit
-      __return_value = LibGio.file_monitor_get_rate_limit(to_unsafe.as(LibGio::FileMonitor*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "rate_limit", gvalue)
+      gvalue
     end
 
     def cancel

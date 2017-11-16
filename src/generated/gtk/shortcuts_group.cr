@@ -16,19 +16,22 @@ module Gtk
     # Implements Orientable
 
     def height
-      __return_value = LibGtk.shortcuts_group_get_height(to_unsafe.as(LibGtk::ShortcutsGroup*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "height", gvalue)
+      gvalue
     end
 
     def title
-      __return_value = LibGtk.shortcuts_group_get_title(to_unsafe.as(LibGtk::ShortcutsGroup*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "title", gvalue)
+      gvalue.string
     end
 
 
     def view
-      __return_value = LibGtk.shortcuts_group_get_view(to_unsafe.as(LibGtk::ShortcutsGroup*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "view", gvalue)
+      gvalue.string
     end
 
   end

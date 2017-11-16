@@ -14,38 +14,45 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def enable_popup
-      __return_value = LibGtk.notebook_get_enable_popup(to_unsafe.as(LibGtk::Notebook*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "enable_popup", gvalue)
+      gvalue.boolean
     end
 
     def group_name
-      __return_value = LibGtk.notebook_get_group_name(to_unsafe.as(LibGtk::Notebook*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "group_name", gvalue)
+      gvalue.string
     end
 
     def page
-      __return_value = LibGtk.notebook_get_page(to_unsafe.as(LibGtk::Notebook*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "page", gvalue)
+      gvalue
     end
 
     def scrollable
-      __return_value = LibGtk.notebook_get_scrollable(to_unsafe.as(LibGtk::Notebook*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "scrollable", gvalue)
+      gvalue.boolean
     end
 
     def show_border
-      __return_value = LibGtk.notebook_get_show_border(to_unsafe.as(LibGtk::Notebook*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_border", gvalue)
+      gvalue.boolean
     end
 
     def show_tabs
-      __return_value = LibGtk.notebook_get_show_tabs(to_unsafe.as(LibGtk::Notebook*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_tabs", gvalue)
+      gvalue.boolean
     end
 
     def tab_pos
-      __return_value = LibGtk.notebook_get_tab_pos(to_unsafe.as(LibGtk::Notebook*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "tab_pos", gvalue)
+      gvalue.enum
     end
 
     def self.new : self
@@ -284,7 +291,7 @@ module Gtk
 
     alias CreateWindowSignal = Notebook, Gtk::Widget, Int32, Int32 -> Gtk::Notebook
     def on_create_window(&__block : CreateWindowSignal)
-      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::LibGtk::Widget*, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::LibGtk::Widget**, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Int32*) {
        __return_value = __block.call(Notebook.new(_arg0), Gtk::Widget.new(_arg1), _arg2, _arg3)
        __return_value
       }
@@ -311,7 +318,7 @@ module Gtk
 
     alias PageAddedSignal = Notebook, Gtk::Widget, UInt32 ->
     def on_page_added(&__block : PageAddedSignal)
-      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::LibGtk::Widget*, _arg2 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::LibGtk::Widget**, _arg2 : LibGtk::UInt32*) {
        __return_value = __block.call(Notebook.new(_arg0), Gtk::Widget.new(_arg1), _arg2)
        __return_value
       }
@@ -320,7 +327,7 @@ module Gtk
 
     alias PageRemovedSignal = Notebook, Gtk::Widget, UInt32 ->
     def on_page_removed(&__block : PageRemovedSignal)
-      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::LibGtk::Widget*, _arg2 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::LibGtk::Widget**, _arg2 : LibGtk::UInt32*) {
        __return_value = __block.call(Notebook.new(_arg0), Gtk::Widget.new(_arg1), _arg2)
        __return_value
       }
@@ -329,7 +336,7 @@ module Gtk
 
     alias PageReorderedSignal = Notebook, Gtk::Widget, UInt32 ->
     def on_page_reordered(&__block : PageReorderedSignal)
-      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::LibGtk::Widget*, _arg2 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::LibGtk::Widget**, _arg2 : LibGtk::UInt32*) {
        __return_value = __block.call(Notebook.new(_arg0), Gtk::Widget.new(_arg1), _arg2)
        __return_value
       }
@@ -356,7 +363,7 @@ module Gtk
 
     alias SwitchPageSignal = Notebook, Gtk::Widget, UInt32 ->
     def on_switch_page(&__block : SwitchPageSignal)
-      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::LibGtk::Widget*, _arg2 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::LibGtk::Widget**, _arg2 : LibGtk::UInt32*) {
        __return_value = __block.call(Notebook.new(_arg0), Gtk::Widget.new(_arg1), _arg2)
        __return_value
       }

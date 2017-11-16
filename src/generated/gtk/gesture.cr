@@ -12,13 +12,15 @@ module Gtk
     end
 
     def n_points
-      __return_value = LibGtk.gesture_get_n_points(to_unsafe.as(LibGtk::Gesture*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "n_points", gvalue)
+      gvalue
     end
 
     def window
-      __return_value = LibGtk.gesture_get_window(to_unsafe.as(LibGtk::Gesture*))
-      Gdk::Window.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "window", gvalue)
+      Gdk::Window.cast(gvalue.object)
     end
 
     def bounding_box(rect)
@@ -38,7 +40,7 @@ module Gtk
 
     def group
       __return_value = LibGtk.gesture_get_group(@pointer.as(LibGtk::Gesture*))
-      GLib::ListIterator(Gtk::Gesture, LibGtk::Gesture*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gtk::Gesture, LibGtk::Gesture**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def last_event(sequence)

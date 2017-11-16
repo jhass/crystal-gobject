@@ -16,8 +16,9 @@ module Gtk
     # Implements ActionMap
     # Implements Buildable
     def show_menubar
-      __return_value = LibGtk.application_window_get_show_menubar(to_unsafe.as(LibGtk::ApplicationWindow*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_menubar", gvalue)
+      gvalue.boolean
     end
 
     def self.new(application) : self

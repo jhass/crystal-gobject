@@ -13,13 +13,15 @@ module Gst
 
     # Implements ChildProxy
     def async_handling
-      __return_value = LibGst.bin_get_async_handling(to_unsafe.as(LibGst::Bin*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "async_handling", gvalue)
+      gvalue.boolean
     end
 
     def message_forward
-      __return_value = LibGst.bin_get_message_forward(to_unsafe.as(LibGst::Bin*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "message_forward", gvalue)
+      gvalue.boolean
     end
 
     def self.new(name) : self
@@ -109,7 +111,7 @@ module Gst
 
     alias DeepElementAddedSignal = Bin, Gst::Bin, Gst::Element ->
     def on_deep_element_added(&__block : DeepElementAddedSignal)
-      __callback = ->(_arg0 : LibGst::Bin*, _arg1 : LibGst::LibGst::Bin*, _arg2 : LibGst::LibGst::Element*) {
+      __callback = ->(_arg0 : LibGst::Bin*, _arg1 : LibGst::LibGst::Bin**, _arg2 : LibGst::LibGst::Element**) {
        __return_value = __block.call(Bin.new(_arg0), Gst::Bin.new(_arg1), Gst::Element.new(_arg2))
        __return_value
       }
@@ -118,7 +120,7 @@ module Gst
 
     alias DeepElementRemovedSignal = Bin, Gst::Bin, Gst::Element ->
     def on_deep_element_removed(&__block : DeepElementRemovedSignal)
-      __callback = ->(_arg0 : LibGst::Bin*, _arg1 : LibGst::LibGst::Bin*, _arg2 : LibGst::LibGst::Element*) {
+      __callback = ->(_arg0 : LibGst::Bin*, _arg1 : LibGst::LibGst::Bin**, _arg2 : LibGst::LibGst::Element**) {
        __return_value = __block.call(Bin.new(_arg0), Gst::Bin.new(_arg1), Gst::Element.new(_arg2))
        __return_value
       }
@@ -136,7 +138,7 @@ module Gst
 
     alias ElementAddedSignal = Bin, Gst::Element ->
     def on_element_added(&__block : ElementAddedSignal)
-      __callback = ->(_arg0 : LibGst::Bin*, _arg1 : LibGst::LibGst::Element*) {
+      __callback = ->(_arg0 : LibGst::Bin*, _arg1 : LibGst::LibGst::Element**) {
        __return_value = __block.call(Bin.new(_arg0), Gst::Element.new(_arg1))
        __return_value
       }
@@ -145,7 +147,7 @@ module Gst
 
     alias ElementRemovedSignal = Bin, Gst::Element ->
     def on_element_removed(&__block : ElementRemovedSignal)
-      __callback = ->(_arg0 : LibGst::Bin*, _arg1 : LibGst::LibGst::Element*) {
+      __callback = ->(_arg0 : LibGst::Bin*, _arg1 : LibGst::LibGst::Element**) {
        __return_value = __block.call(Bin.new(_arg0), Gst::Element.new(_arg1))
        __return_value
       }

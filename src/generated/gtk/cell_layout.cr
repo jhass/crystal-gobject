@@ -22,7 +22,7 @@ module Gtk
 
     def cells
       __return_value = LibGtk.cell_layout_get_cells(@pointer.as(LibGtk::CellLayout*))
-      GLib::ListIterator(Gtk::CellRenderer, LibGtk::CellRenderer*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gtk::CellRenderer, LibGtk::CellRenderer**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def pack_end(cell, expand)

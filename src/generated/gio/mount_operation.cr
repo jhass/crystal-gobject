@@ -10,33 +10,39 @@ module Gio
     end
 
     def anonymous
-      __return_value = LibGio.mount_operation_get_anonymous(to_unsafe.as(LibGio::MountOperation*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "anonymous", gvalue)
+      gvalue.boolean
     end
 
     def choice
-      __return_value = LibGio.mount_operation_get_choice(to_unsafe.as(LibGio::MountOperation*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "choice", gvalue)
+      gvalue
     end
 
     def domain
-      __return_value = LibGio.mount_operation_get_domain(to_unsafe.as(LibGio::MountOperation*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "domain", gvalue)
+      gvalue.string
     end
 
     def password
-      __return_value = LibGio.mount_operation_get_password(to_unsafe.as(LibGio::MountOperation*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "password", gvalue)
+      gvalue.string
     end
 
     def password_save
-      __return_value = LibGio.mount_operation_get_password_save(to_unsafe.as(LibGio::MountOperation*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "password_save", gvalue)
+      gvalue.enum
     end
 
     def username
-      __return_value = LibGio.mount_operation_get_username(to_unsafe.as(LibGio::MountOperation*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "username", gvalue)
+      gvalue.string
     end
 
     def self.new : self
@@ -147,7 +153,7 @@ module Gio
 
     alias ShowProcessesSignal = MountOperation, String, Array(Int32), Array(String) ->
     def on_show_processes(&__block : ShowProcessesSignal)
-      __callback = ->(_arg0 : LibGio::MountOperation*, _arg1 : LibGio::UInt8**, _arg2 : LibGio::Void***, _arg3 : LibGio::UInt8***) {
+      __callback = ->(_arg0 : LibGio::MountOperation*, _arg1 : LibGio::UInt8**, _arg2 : LibGio::Void**, _arg3 : LibGio::UInt8***) {
        __return_value = __block.call(MountOperation.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)), _arg2, PointerIterator.new(_arg3) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) })
        __return_value
       }

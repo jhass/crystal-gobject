@@ -10,8 +10,9 @@ module Gtk
     end
 
     def context
-      __return_value = LibGtk.style_get_context(to_unsafe.as(LibGtk::Style*))
-      Gtk::StyleContext.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "context", gvalue)
+      Gtk::StyleContext.cast(gvalue.object)
     end
 
     def self.new : self

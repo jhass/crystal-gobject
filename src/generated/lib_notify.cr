@@ -22,10 +22,16 @@ lib LibNotify
   ###########################################
 
   struct Notification # object
-    parent_object : LibGObject::Object
+    parent_object : LibGObject::Object*
     priv : LibNotify::NotificationPrivate*
     # Signal closed
     # Virtual function closed
+    # Property app_name : UInt8*
+    # Property body : UInt8*
+    # Property closed_reason : Int32
+    # Property icon_name : UInt8*
+    # Property id : Int32
+    # Property summary : UInt8*
   end
   fun notification_new = notify_notification_new(summary : UInt8*, body : UInt8*, icon : UInt8*) : LibNotify::Notification*
   fun notification_add_action = notify_notification_add_action(this : Notification*, action : UInt8*, label : UInt8*, callback : LibNotify::ActionCallback, user_data : Void*, free_func : LibGLib::DestroyNotify) : Void

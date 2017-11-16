@@ -14,18 +14,21 @@ module Gio
     # Implements PollableOutputStream
     # Implements Seekable
     def data
-      __return_value = LibGio.memory_output_stream_get_data(to_unsafe.as(LibGio::MemoryOutputStream*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::ZERO_NONE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "data", gvalue)
+      gvalue
     end
 
     def data_size
-      __return_value = LibGio.memory_output_stream_get_data_size(to_unsafe.as(LibGio::MemoryOutputStream*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT64)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "data_size", gvalue)
+      gvalue
     end
 
     def size
-      __return_value = LibGio.memory_output_stream_get_size(to_unsafe.as(LibGio::MemoryOutputStream*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT64)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "size", gvalue)
+      gvalue
     end
 
     def self.new_resizable : self

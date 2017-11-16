@@ -14,13 +14,15 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def accel_closure
-      __return_value = LibGtk.accel_label_get_accel_closure(to_unsafe.as(LibGtk::AccelLabel*))
-      GObject::Closure.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accel_closure", gvalue)
+      GObject::Closure.cast(gvalue.object)
     end
 
     def accel_widget
-      __return_value = LibGtk.accel_label_get_accel_widget(to_unsafe.as(LibGtk::AccelLabel*))
-      Gtk::Widget.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accel_widget", gvalue)
+      Gtk::Widget.cast(gvalue.object)
     end
 
     def self.new(string) : self

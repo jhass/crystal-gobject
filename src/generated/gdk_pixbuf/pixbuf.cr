@@ -12,48 +12,57 @@ module GdkPixbuf
     # Implements Icon
     # Implements LoadableIcon
     def bits_per_sample
-      __return_value = LibGdkPixbuf.pixbuf_get_bits_per_sample(to_unsafe.as(LibGdkPixbuf::Pixbuf*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "bits_per_sample", gvalue)
+      gvalue
     end
 
     def colorspace
-      __return_value = LibGdkPixbuf.pixbuf_get_colorspace(to_unsafe.as(LibGdkPixbuf::Pixbuf*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "colorspace", gvalue)
+      gvalue.enum
     end
 
     def has_alpha
-      __return_value = LibGdkPixbuf.pixbuf_get_has_alpha(to_unsafe.as(LibGdkPixbuf::Pixbuf*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "has_alpha", gvalue)
+      gvalue.boolean
     end
 
     def height
-      __return_value = LibGdkPixbuf.pixbuf_get_height(to_unsafe.as(LibGdkPixbuf::Pixbuf*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "height", gvalue)
+      gvalue
     end
 
     def n_channels
-      __return_value = LibGdkPixbuf.pixbuf_get_n_channels(to_unsafe.as(LibGdkPixbuf::Pixbuf*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "n_channels", gvalue)
+      gvalue
     end
 
     def pixel_bytes
-      __return_value = LibGdkPixbuf.pixbuf_get_pixel_bytes(to_unsafe.as(LibGdkPixbuf::Pixbuf*))
-      GLib::Bytes.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pixel_bytes", gvalue)
+      GLib::Bytes.cast(gvalue.object)
     end
 
     def pixels
-      __return_value = LibGdkPixbuf.pixbuf_get_pixels(to_unsafe.as(LibGdkPixbuf::Pixbuf*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::ZERO_NONE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pixels", gvalue)
+      gvalue
     end
 
     def rowstride
-      __return_value = LibGdkPixbuf.pixbuf_get_rowstride(to_unsafe.as(LibGdkPixbuf::Pixbuf*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "rowstride", gvalue)
+      gvalue
     end
 
     def width
-      __return_value = LibGdkPixbuf.pixbuf_get_width(to_unsafe.as(LibGdkPixbuf::Pixbuf*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "width", gvalue)
+      gvalue
     end
 
     def self.new(colorspace : GdkPixbuf::Colorspace, has_alpha, bits_per_sample, width, height) : self
@@ -71,63 +80,63 @@ module GdkPixbuf
       cast GdkPixbuf::Pixbuf.new(__return_value)
     end
 
-    def self.new_from_file(filename) : self
+    def self.new_from_file(filename) : self # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixbuf_new_from_file(filename.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       cast GdkPixbuf::Pixbuf.new(__return_value)
     end
 
-    def self.new_from_file_at_scale(filename, width, height, preserve_aspect_ratio) : self
+    def self.new_from_file_at_scale(filename, width, height, preserve_aspect_ratio) : self # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixbuf_new_from_file_at_scale(filename.to_unsafe, Int32.new(width), Int32.new(height), preserve_aspect_ratio, pointerof(__error))
       GLib::Error.assert __error
       cast GdkPixbuf::Pixbuf.new(__return_value)
     end
 
-    def self.new_from_file_at_size(filename, width, height) : self
+    def self.new_from_file_at_size(filename, width, height) : self # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixbuf_new_from_file_at_size(filename.to_unsafe, Int32.new(width), Int32.new(height), pointerof(__error))
       GLib::Error.assert __error
       cast GdkPixbuf::Pixbuf.new(__return_value)
     end
 
-    def self.new_from_inline(data_length, data, copy_pixels) : self
+    def self.new_from_inline(data_length, data, copy_pixels) : self # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixbuf_new_from_inline(Int32.new(data_length), data, copy_pixels, pointerof(__error))
       GLib::Error.assert __error
       cast GdkPixbuf::Pixbuf.new(__return_value)
     end
 
-    def self.new_from_resource(resource_path) : self
+    def self.new_from_resource(resource_path) : self # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixbuf_new_from_resource(resource_path.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       cast GdkPixbuf::Pixbuf.new(__return_value)
     end
 
-    def self.new_from_resource_at_scale(resource_path, width, height, preserve_aspect_ratio) : self
+    def self.new_from_resource_at_scale(resource_path, width, height, preserve_aspect_ratio) : self # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixbuf_new_from_resource_at_scale(resource_path.to_unsafe, Int32.new(width), Int32.new(height), preserve_aspect_ratio, pointerof(__error))
       GLib::Error.assert __error
       cast GdkPixbuf::Pixbuf.new(__return_value)
     end
 
-    def self.new_from_stream(stream, cancellable) : self
+    def self.new_from_stream(stream, cancellable) : self # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixbuf_new_from_stream(stream.to_unsafe.as(LibGio::InputStream*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       cast GdkPixbuf::Pixbuf.new(__return_value)
     end
 
-    def self.new_from_stream_at_scale(stream, width, height, preserve_aspect_ratio, cancellable) : self
+    def self.new_from_stream_at_scale(stream, width, height, preserve_aspect_ratio, cancellable) : self # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixbuf_new_from_stream_at_scale(stream.to_unsafe.as(LibGio::InputStream*), Int32.new(width), Int32.new(height), preserve_aspect_ratio, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       cast GdkPixbuf::Pixbuf.new(__return_value)
     end
 
-    def self.new_from_stream_finish(async_result) : self
+    def self.new_from_stream_finish(async_result) : self # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixbuf_new_from_stream_finish(async_result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -144,7 +153,7 @@ module GdkPixbuf
       __return_value
     end
 
-    def self.from_pixdata(pixdata, copy_pixels)
+    def self.from_pixdata(pixdata, copy_pixels) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixbuf_from_pixdata(pixdata.to_unsafe.as(LibGdkPixbuf::Pixdata*), copy_pixels, pointerof(__error))
       GLib::Error.assert __error
@@ -161,7 +170,7 @@ module GdkPixbuf
       nil
     end
 
-    def self.file_info_finish(async_result, width, height)
+    def self.file_info_finish(async_result, width, height) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixbuf_get_file_info_finish(async_result.to_unsafe.as(LibGio::AsyncResult*), width, height, pointerof(__error))
       GLib::Error.assert __error
@@ -183,7 +192,7 @@ module GdkPixbuf
       nil
     end
 
-    def self.save_to_stream_finish(async_result)
+    def self.save_to_stream_finish(async_result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixbuf_save_to_stream_finish(async_result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -325,21 +334,21 @@ module GdkPixbuf
       nil
     end
 
-    def save_to_bufferv(buffer, buffer_size, type, option_keys, option_values)
+    def save_to_bufferv(buffer, buffer_size, type, option_keys, option_values) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixbuf_save_to_bufferv(@pointer.as(LibGdkPixbuf::Pixbuf*), buffer, buffer_size, type.to_unsafe, option_keys, option_values, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def save_to_callbackv(save_func, user_data, type, option_keys, option_values)
+    def save_to_callbackv(save_func, user_data, type, option_keys, option_values) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixbuf_save_to_callbackv(@pointer.as(LibGdkPixbuf::Pixbuf*), save_func, user_data ? user_data : nil, type.to_unsafe, option_keys, option_values, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def save_to_streamv(stream, type, option_keys, option_values, cancellable)
+    def save_to_streamv(stream, type, option_keys, option_values, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixbuf_save_to_streamv(@pointer.as(LibGdkPixbuf::Pixbuf*), stream.to_unsafe.as(LibGio::OutputStream*), type.to_unsafe, option_keys, option_values, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -351,7 +360,7 @@ module GdkPixbuf
       nil
     end
 
-    def savev(filename, type, option_keys, option_values)
+    def savev(filename, type, option_keys, option_values) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdkPixbuf.pixbuf_savev(@pointer.as(LibGdkPixbuf::Pixbuf*), filename.to_unsafe, type.to_unsafe, option_keys, option_values, pointerof(__error))
       GLib::Error.assert __error

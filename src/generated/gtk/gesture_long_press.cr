@@ -12,8 +12,9 @@ module Gtk
     end
 
     def delay_factor
-      __return_value = LibGtk.gesture_long_press_get_delay_factor(to_unsafe.as(LibGtk::GestureLongPress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "delay_factor", gvalue)
+      gvalue
     end
 
     def self.new(widget) : self

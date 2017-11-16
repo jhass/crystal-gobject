@@ -15,13 +15,15 @@ module Gtk
     # Implements AppChooser
     # Implements Buildable
     def gfile
-      __return_value = LibGtk.app_chooser_dialog_get_gfile(to_unsafe.as(LibGtk::AppChooserDialog*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "gfile", gvalue)
+      gvalue
     end
 
     def heading
-      __return_value = LibGtk.app_chooser_dialog_get_heading(to_unsafe.as(LibGtk::AppChooserDialog*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "heading", gvalue)
+      gvalue.string
     end
 
     def self.new(parent, flags : Gtk::DialogFlags, file) : self

@@ -61,14 +61,14 @@ module GLib
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def parse(argc, argv)
+    def parse(argc, argv) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.option_context_parse(@pointer.as(LibGLib::OptionContext*), argc, argv, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def parse_strv(arguments)
+    def parse_strv(arguments) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.option_context_parse_strv(@pointer.as(LibGLib::OptionContext*), arguments, pointerof(__error))
       GLib::Error.assert __error

@@ -11,13 +11,15 @@ module Gio
 
     # Implements Icon
     def icon
-      __return_value = LibGio.emblem_get_icon(to_unsafe.as(LibGio::Emblem*))
-      GObject::Object.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "icon", gvalue)
+      GObject::Object.cast(gvalue.object)
     end
 
     def origin
-      __return_value = LibGio.emblem_get_origin(to_unsafe.as(LibGio::Emblem*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "origin", gvalue)
+      gvalue.enum
     end
 
     def self.new(icon) : self

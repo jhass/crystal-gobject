@@ -11,8 +11,9 @@ module Gio
 
     # Implements ListModel
     def item_type
-      __return_value = LibGio.list_store_get_item_type(to_unsafe.as(LibGio::ListStore*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::GTYPE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "item_type", gvalue)
+      gvalue
     end
 
     def self.new(item_type) : self

@@ -48,7 +48,7 @@ module GIRepository
 
         io << " : self" if constructor?
 
-        io << "\n#{indent}  __error = Pointer(LibGLib::Error).null" if throws?
+        io << " # function\n#{indent}  __error = Pointer(LibGLib::Error).null" if throws?
 
         io << "\n#{indent}  "
         io << "__return_value = " unless skip_return?

@@ -60,7 +60,7 @@ module Gio
       nil
     end
 
-    def spawnv(argv)
+    def spawnv(argv) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.subprocess_launcher_spawnv(@pointer.as(LibGio::SubprocessLauncher*), argv, pointerof(__error))
       GLib::Error.assert __error

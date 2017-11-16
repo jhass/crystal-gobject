@@ -17,43 +17,51 @@ module Gtk
     # Implements Editable
     # Implements Orientable
     def adjustment
-      __return_value = LibGtk.spin_button_get_adjustment(to_unsafe.as(LibGtk::SpinButton*))
-      Gtk::Adjustment.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "adjustment", gvalue)
+      Gtk::Adjustment.cast(gvalue.object)
     end
 
     def climb_rate
-      __return_value = LibGtk.spin_button_get_climb_rate(to_unsafe.as(LibGtk::SpinButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "climb_rate", gvalue)
+      gvalue
     end
 
     def digits
-      __return_value = LibGtk.spin_button_get_digits(to_unsafe.as(LibGtk::SpinButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "digits", gvalue)
+      gvalue
     end
 
     def numeric
-      __return_value = LibGtk.spin_button_get_numeric(to_unsafe.as(LibGtk::SpinButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "numeric", gvalue)
+      gvalue.boolean
     end
 
     def snap_to_ticks
-      __return_value = LibGtk.spin_button_get_snap_to_ticks(to_unsafe.as(LibGtk::SpinButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "snap_to_ticks", gvalue)
+      gvalue.boolean
     end
 
     def update_policy
-      __return_value = LibGtk.spin_button_get_update_policy(to_unsafe.as(LibGtk::SpinButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "update_policy", gvalue)
+      gvalue.enum
     end
 
     def value
-      __return_value = LibGtk.spin_button_get_value(to_unsafe.as(LibGtk::SpinButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "value", gvalue)
+      gvalue
     end
 
     def wrap
-      __return_value = LibGtk.spin_button_get_wrap(to_unsafe.as(LibGtk::SpinButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "wrap", gvalue)
+      gvalue.boolean
     end
 
     def self.new(adjustment, climb_rate, digits) : self

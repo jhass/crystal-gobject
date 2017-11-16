@@ -10,23 +10,27 @@ module Gtk
     end
 
     def modal
-      __return_value = LibGtk.native_dialog_get_modal(to_unsafe.as(LibGtk::NativeDialog*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "modal", gvalue)
+      gvalue.boolean
     end
 
     def title
-      __return_value = LibGtk.native_dialog_get_title(to_unsafe.as(LibGtk::NativeDialog*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "title", gvalue)
+      gvalue.string
     end
 
     def transient_for
-      __return_value = LibGtk.native_dialog_get_transient_for(to_unsafe.as(LibGtk::NativeDialog*))
-      Gtk::Window.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "transient_for", gvalue)
+      Gtk::Window.cast(gvalue.object)
     end
 
     def visible
-      __return_value = LibGtk.native_dialog_get_visible(to_unsafe.as(LibGtk::NativeDialog*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "visible", gvalue)
+      gvalue.boolean
     end
 
     def destroy

@@ -216,7 +216,7 @@ lib LibGIRepository
   ###########################################
 
   struct Repository # object
-    parent : LibGObject::Object
+    parent : LibGObject::Object*
     priv : LibGIRepository::RepositoryPrivate*
   end
   fun repository_dump = g_irepository_dump(arg : UInt8*, error : LibGLib::Error**) : Bool

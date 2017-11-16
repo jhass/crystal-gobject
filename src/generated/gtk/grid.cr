@@ -15,28 +15,33 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
     def baseline_row
-      __return_value = LibGtk.grid_get_baseline_row(to_unsafe.as(LibGtk::Grid*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "baseline_row", gvalue)
+      gvalue
     end
 
     def column_homogeneous
-      __return_value = LibGtk.grid_get_column_homogeneous(to_unsafe.as(LibGtk::Grid*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "column_homogeneous", gvalue)
+      gvalue.boolean
     end
 
     def column_spacing
-      __return_value = LibGtk.grid_get_column_spacing(to_unsafe.as(LibGtk::Grid*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "column_spacing", gvalue)
+      gvalue
     end
 
     def row_homogeneous
-      __return_value = LibGtk.grid_get_row_homogeneous(to_unsafe.as(LibGtk::Grid*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "row_homogeneous", gvalue)
+      gvalue.boolean
     end
 
     def row_spacing
-      __return_value = LibGtk.grid_get_row_spacing(to_unsafe.as(LibGtk::Grid*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "row_spacing", gvalue)
+      gvalue
     end
 
     def self.new : self

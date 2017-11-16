@@ -14,23 +14,27 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def cancel_button
-      __return_value = LibGtk.color_selection_dialog_get_cancel_button(to_unsafe.as(LibGtk::ColorSelectionDialog*))
-      Gtk::Widget.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "cancel_button", gvalue)
+      Gtk::Widget.cast(gvalue.object)
     end
 
     def color_selection
-      __return_value = LibGtk.color_selection_dialog_get_color_selection(to_unsafe.as(LibGtk::ColorSelectionDialog*))
-      Gtk::Widget.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "color_selection", gvalue)
+      Gtk::Widget.cast(gvalue.object)
     end
 
     def help_button
-      __return_value = LibGtk.color_selection_dialog_get_help_button(to_unsafe.as(LibGtk::ColorSelectionDialog*))
-      Gtk::Widget.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "help_button", gvalue)
+      Gtk::Widget.cast(gvalue.object)
     end
 
     def ok_button
-      __return_value = LibGtk.color_selection_dialog_get_ok_button(to_unsafe.as(LibGtk::ColorSelectionDialog*))
-      Gtk::Widget.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "ok_button", gvalue)
+      Gtk::Widget.cast(gvalue.object)
     end
 
     def self.new(title) : self

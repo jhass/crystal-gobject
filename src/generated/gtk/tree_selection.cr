@@ -10,8 +10,9 @@ module Gtk
     end
 
     def mode
-      __return_value = LibGtk.tree_selection_get_mode(to_unsafe.as(LibGtk::TreeSelection*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "mode", gvalue)
+      gvalue.enum
     end
 
     def count_selected_rows

@@ -215,11 +215,11 @@ lib LibGLib
     data : UInt8*
     len : UInt32
   end
-  fun byte_array_free = g_byte_array_free(array : Void**, free_segment : Bool) : UInt8*
-  fun byte_array_free_to_bytes = g_byte_array_free_to_bytes(array : Void**) : LibGLib::Bytes*
-  fun byte_array_new = g_byte_array_new() : Void**
-  fun byte_array_new_take = g_byte_array_new_take(data : UInt8*, len : UInt64) : Void**
-  fun byte_array_unref = g_byte_array_unref(array : Void**) : Void
+  fun byte_array_free = g_byte_array_free(array : Void*, free_segment : Bool) : UInt8*
+  fun byte_array_free_to_bytes = g_byte_array_free_to_bytes(array : Void*) : LibGLib::Bytes*
+  fun byte_array_new = g_byte_array_new() : Void*
+  fun byte_array_new_take = g_byte_array_new_take(data : UInt8*, len : UInt64) : Void*
+  fun byte_array_unref = g_byte_array_unref(array : Void*) : Void
 
   struct Bytes # struct
     _data : UInt8[0]
@@ -234,7 +234,7 @@ lib LibGLib
   fun bytes_new_from_bytes = g_bytes_new_from_bytes(this : Bytes*, offset : UInt64, length : UInt64) : LibGLib::Bytes*
   fun bytes_ref = g_bytes_ref(this : Bytes*) : LibGLib::Bytes*
   fun bytes_unref = g_bytes_unref(this : Bytes*) : Void
-  fun bytes_unref_to_array = g_bytes_unref_to_array(this : Bytes*) : Void**
+  fun bytes_unref_to_array = g_bytes_unref_to_array(this : Bytes*) : Void*
   fun bytes_unref_to_data = g_bytes_unref_to_data(this : Bytes*, size : UInt64*) : UInt8*
 
   struct Checksum # struct
@@ -2357,11 +2357,11 @@ lib LibGLib
   fun bookmark_file_error_quark = g_bookmark_file_error_quark() : UInt32
   fun build_filenamev = g_build_filenamev(args : UInt8**) : UInt8*
   fun build_pathv = g_build_pathv(separator : UInt8*, args : UInt8**) : UInt8*
-  fun byte_array_free = g_byte_array_free(array : Void**, free_segment : Bool) : UInt8*
-  fun byte_array_free_to_bytes = g_byte_array_free_to_bytes(array : Void**) : LibGLib::Bytes*
-  fun byte_array_new = g_byte_array_new() : Void**
-  fun byte_array_new_take = g_byte_array_new_take(data : UInt8*, len : UInt64) : Void**
-  fun byte_array_unref = g_byte_array_unref(array : Void**) : Void
+  fun byte_array_free = g_byte_array_free(array : Void*, free_segment : Bool) : UInt8*
+  fun byte_array_free_to_bytes = g_byte_array_free_to_bytes(array : Void*) : LibGLib::Bytes*
+  fun byte_array_new = g_byte_array_new() : Void*
+  fun byte_array_new_take = g_byte_array_new_take(data : UInt8*, len : UInt64) : Void*
+  fun byte_array_unref = g_byte_array_unref(array : Void*) : Void
   fun chdir = g_chdir(path : UInt8*) : Int32
   fun check_version = glib_check_version(required_major : UInt32, required_minor : UInt32, required_micro : UInt32) : UInt8*
   fun checksum_type_get_length = g_checksum_type_get_length(checksum_type : LibGLib::ChecksumType) : Int64

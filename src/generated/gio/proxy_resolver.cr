@@ -10,7 +10,7 @@ module Gio
       __return_value
     end
 
-    def lookup(uri, cancellable)
+    def lookup(uri, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.proxy_resolver_lookup(@pointer.as(LibGio::ProxyResolver*), uri.to_unsafe, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -22,7 +22,7 @@ module Gio
       nil
     end
 
-    def lookup_finish(result)
+    def lookup_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.proxy_resolver_lookup_finish(@pointer.as(LibGio::ProxyResolver*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error

@@ -10,78 +10,93 @@ module Gdk
     end
 
     def associated_device
-      __return_value = LibGdk.device_get_associated_device(to_unsafe.as(LibGdk::Device*))
-      Gdk::Device.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "associated_device", gvalue)
+      Gdk::Device.cast(gvalue.object)
     end
 
     def axes
-      __return_value = LibGdk.device_get_axes(to_unsafe.as(LibGdk::Device*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "axes", gvalue)
+      gvalue.enum
     end
 
     def device_manager
-      __return_value = LibGdk.device_get_device_manager(to_unsafe.as(LibGdk::Device*))
-      Gdk::DeviceManager.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "device_manager", gvalue)
+      Gdk::DeviceManager.cast(gvalue.object)
     end
 
     def display
-      __return_value = LibGdk.device_get_display(to_unsafe.as(LibGdk::Device*))
-      Gdk::Display.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "display", gvalue)
+      Gdk::Display.cast(gvalue.object)
     end
 
     def has_cursor
-      __return_value = LibGdk.device_get_has_cursor(to_unsafe.as(LibGdk::Device*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "has_cursor", gvalue)
+      gvalue.boolean
     end
 
     def input_mode
-      __return_value = LibGdk.device_get_input_mode(to_unsafe.as(LibGdk::Device*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "input_mode", gvalue)
+      gvalue.enum
     end
 
     def input_source
-      __return_value = LibGdk.device_get_input_source(to_unsafe.as(LibGdk::Device*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "input_source", gvalue)
+      gvalue.enum
     end
 
     def n_axes
-      __return_value = LibGdk.device_get_n_axes(to_unsafe.as(LibGdk::Device*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "n_axes", gvalue)
+      gvalue
     end
 
     def name
-      __return_value = LibGdk.device_get_name(to_unsafe.as(LibGdk::Device*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "name", gvalue)
+      gvalue.string
     end
 
     def num_touches
-      __return_value = LibGdk.device_get_num_touches(to_unsafe.as(LibGdk::Device*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "num_touches", gvalue)
+      gvalue
     end
 
     def product_id
-      __return_value = LibGdk.device_get_product_id(to_unsafe.as(LibGdk::Device*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "product_id", gvalue)
+      gvalue.string
     end
 
     def seat
-      __return_value = LibGdk.device_get_seat(to_unsafe.as(LibGdk::Device*))
-      Gdk::Seat.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "seat", gvalue)
+      Gdk::Seat.cast(gvalue.object)
     end
 
     def tool
-      __return_value = LibGdk.device_get_tool(to_unsafe.as(LibGdk::Device*))
-      Gdk::DeviceTool.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "tool", gvalue)
+      Gdk::DeviceTool.cast(gvalue.object)
     end
 
     def type
-      __return_value = LibGdk.device_get_type(to_unsafe.as(LibGdk::Device*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "type", gvalue)
+      gvalue.enum
     end
 
     def vendor_id
-      __return_value = LibGdk.device_get_vendor_id(to_unsafe.as(LibGdk::Device*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "vendor_id", gvalue)
+      gvalue.string
     end
 
     def self.grab_info_libgtk_only(display, device, grab_window, owner_events)
@@ -201,7 +216,7 @@ module Gdk
 
     def list_slave_devices
       __return_value = LibGdk.device_list_slave_devices(@pointer.as(LibGdk::Device*))
-      GLib::ListIterator(Gdk::Device, LibGdk::Device*).new(GLib::SList.new(__return_value.as(LibGLib::List*))) if __return_value
+      GLib::ListIterator(Gdk::Device, LibGdk::Device**).new(GLib::SList.new(__return_value.as(LibGLib::List*))) if __return_value
     end
 
     def set_axis_use(index, use : Gdk::AxisUse)
@@ -240,7 +255,7 @@ module Gdk
 
     alias ToolChangedSignal = Device, Gdk::DeviceTool ->
     def on_tool_changed(&__block : ToolChangedSignal)
-      __callback = ->(_arg0 : LibGdk::Device*, _arg1 : LibGdk::LibGdk::DeviceTool*) {
+      __callback = ->(_arg0 : LibGdk::Device*, _arg1 : LibGdk::LibGdk::DeviceTool**) {
        __return_value = __block.call(Device.new(_arg0), Gdk::DeviceTool.new(_arg1))
        __return_value
       }

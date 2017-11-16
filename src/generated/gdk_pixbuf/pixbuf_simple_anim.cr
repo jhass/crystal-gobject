@@ -12,8 +12,9 @@ module GdkPixbuf
     end
 
     def loop
-      __return_value = LibGdkPixbuf.pixbuf_simple_anim_get_loop(to_unsafe.as(LibGdkPixbuf::PixbufSimpleAnim*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "loop", gvalue)
+      gvalue.boolean
     end
 
     def self.new(width, height, rate) : self

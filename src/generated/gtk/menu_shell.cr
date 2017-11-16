@@ -14,8 +14,9 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def take_focus
-      __return_value = LibGtk.menu_shell_get_take_focus(to_unsafe.as(LibGtk::MenuShell*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "take_focus", gvalue)
+      gvalue.boolean
     end
 
     def activate_item(menu_item, force_deactivate)
@@ -126,7 +127,7 @@ module Gtk
 
     alias InsertSignal = MenuShell, Gtk::Widget, Int32 ->
     def on_insert(&__block : InsertSignal)
-      __callback = ->(_arg0 : LibGtk::MenuShell*, _arg1 : LibGtk::LibGtk::Widget*, _arg2 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::MenuShell*, _arg1 : LibGtk::LibGtk::Widget**, _arg2 : LibGtk::Int32*) {
        __return_value = __block.call(MenuShell.new(_arg0), Gtk::Widget.new(_arg1), _arg2)
        __return_value
       }

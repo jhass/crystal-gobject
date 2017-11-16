@@ -10,8 +10,9 @@ module Gdk
     end
 
     def display
-      __return_value = LibGdk.app_launch_context_get_display(to_unsafe.as(LibGdk::AppLaunchContext*))
-      Gdk::Display.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "display", gvalue)
+      Gdk::Display.cast(gvalue.object)
     end
 
     def self.new : self

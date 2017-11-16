@@ -11,18 +11,21 @@ module Gio
 
     # Implements SocketConnectable
     def hostname
-      __return_value = LibGio.network_address_get_hostname(to_unsafe.as(LibGio::NetworkAddress*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "hostname", gvalue)
+      gvalue.string
     end
 
     def port
-      __return_value = LibGio.network_address_get_port(to_unsafe.as(LibGio::NetworkAddress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "port", gvalue)
+      gvalue
     end
 
     def scheme
-      __return_value = LibGio.network_address_get_scheme(to_unsafe.as(LibGio::NetworkAddress*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "scheme", gvalue)
+      gvalue.string
     end
 
     def self.new(hostname, port) : self
@@ -35,14 +38,14 @@ module Gio
       cast Gio::NetworkAddress.new(__return_value)
     end
 
-    def self.parse(host_and_port, default_port)
+    def self.parse(host_and_port, default_port) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.network_address_parse(host_and_port.to_unsafe, UInt16.new(default_port), pointerof(__error))
       GLib::Error.assert __error
       Gio::NetworkAddress.new(__return_value)
     end
 
-    def self.parse_uri(uri, default_port)
+    def self.parse_uri(uri, default_port) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.network_address_parse_uri(uri.to_unsafe, UInt16.new(default_port), pointerof(__error))
       GLib::Error.assert __error

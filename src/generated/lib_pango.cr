@@ -765,22 +765,22 @@ lib LibPango
   fun context_set_matrix = pango_context_set_matrix(this : Context*, matrix : LibPango::Matrix*) : Void
 
   struct Engine # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
   end
 
   struct EngineLang # object
-    parent_instance : LibPango::Engine
+    parent_instance : LibPango::Engine*
     # Virtual function script_break
   end
 
   struct EngineShape # object
-    parent_instance : LibPango::Engine
+    parent_instance : LibPango::Engine*
     # Virtual function covers
     # Virtual function script_shape
   end
 
   struct Font # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     # Virtual function describe
     # Virtual function describe_absolute
     # Virtual function find_shaper
@@ -797,7 +797,7 @@ lib LibPango
   fun font_get_metrics = pango_font_get_metrics(this : Font*, language : LibPango::Language*) : LibPango::FontMetrics*
 
   struct FontFace # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     # Virtual function describe
     # Virtual function get_face_name
     # Virtual function is_synthesized
@@ -809,7 +809,7 @@ lib LibPango
   fun font_face_list_sizes = pango_font_face_list_sizes(this : FontFace*, sizes : Int32**, n_sizes : Int32*) : Void
 
   struct FontFamily # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     # Virtual function get_name
     # Virtual function is_monospace
     # Virtual function list_faces
@@ -819,7 +819,7 @@ lib LibPango
   fun font_family_list_faces = pango_font_family_list_faces(this : FontFamily*, faces : LibPango::FontFace***, n_faces : Int32*) : Void
 
   struct FontMap # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     # Virtual function changed
     # Virtual function get_serial
     # Virtual function list_families
@@ -835,7 +835,7 @@ lib LibPango
   fun font_map_load_fontset = pango_font_map_load_fontset(this : FontMap*, context : LibPango::Context*, desc : LibPango::FontDescription*, language : LibPango::Language*) : LibPango::Fontset*
 
   struct Fontset # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     # Virtual function foreach
     # Virtual function get_font
     # Virtual function get_language
@@ -914,7 +914,7 @@ lib LibPango
   fun layout_xy_to_index = pango_layout_xy_to_index(this : Layout*, x : Int32, y : Int32, index : Int32*, trailing : Int32*) : Bool
 
   struct Renderer # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     underline : LibPango::Underline
     strikethrough : Bool
     active_count : Int32

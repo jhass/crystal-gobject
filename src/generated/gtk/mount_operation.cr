@@ -10,18 +10,21 @@ module Gtk
     end
 
     def is_showing
-      __return_value = LibGtk.mount_operation_get_is_showing(to_unsafe.as(LibGtk::MountOperation*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_showing", gvalue)
+      gvalue.boolean
     end
 
     def parent
-      __return_value = LibGtk.mount_operation_get_parent(to_unsafe.as(LibGtk::MountOperation*))
-      Gtk::Window.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "parent", gvalue)
+      Gtk::Window.cast(gvalue.object)
     end
 
     def screen
-      __return_value = LibGtk.mount_operation_get_screen(to_unsafe.as(LibGtk::MountOperation*))
-      Gdk::Screen.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "screen", gvalue)
+      Gdk::Screen.cast(gvalue.object)
     end
 
     def self.new(parent) : self

@@ -11,13 +11,15 @@ module Gtk
 
     # Implements Buildable
     def ignore_hidden
-      __return_value = LibGtk.size_group_get_ignore_hidden(to_unsafe.as(LibGtk::SizeGroup*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "ignore_hidden", gvalue)
+      gvalue.boolean
     end
 
     def mode
-      __return_value = LibGtk.size_group_get_mode(to_unsafe.as(LibGtk::SizeGroup*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "mode", gvalue)
+      gvalue.enum
     end
 
     def self.new(mode : Gtk::SizeGroupMode) : self
@@ -42,7 +44,7 @@ module Gtk
 
     def widgets
       __return_value = LibGtk.size_group_get_widgets(@pointer.as(LibGtk::SizeGroup*))
-      GLib::SListIterator(Gtk::Widget, LibGtk::Widget*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
+      GLib::SListIterator(Gtk::Widget, LibGtk::Widget**).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def remove_widget(widget)

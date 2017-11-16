@@ -13,18 +13,21 @@ module Gst
 
     # Implements ChildProxy
     def auto_flush_bus
-      __return_value = LibGst.pipeline_get_auto_flush_bus(to_unsafe.as(LibGst::Pipeline*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "auto_flush_bus", gvalue)
+      gvalue.boolean
     end
 
     def delay
-      __return_value = LibGst.pipeline_get_delay(to_unsafe.as(LibGst::Pipeline*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT64)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "delay", gvalue)
+      gvalue
     end
 
     def latency
-      __return_value = LibGst.pipeline_get_latency(to_unsafe.as(LibGst::Pipeline*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT64)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "latency", gvalue)
+      gvalue
     end
 
     def self.new(name) : self

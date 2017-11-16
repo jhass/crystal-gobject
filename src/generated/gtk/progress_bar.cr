@@ -15,33 +15,39 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
     def ellipsize
-      __return_value = LibGtk.progress_bar_get_ellipsize(to_unsafe.as(LibGtk::ProgressBar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "ellipsize", gvalue)
+      gvalue.enum
     end
 
     def fraction
-      __return_value = LibGtk.progress_bar_get_fraction(to_unsafe.as(LibGtk::ProgressBar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "fraction", gvalue)
+      gvalue
     end
 
     def inverted
-      __return_value = LibGtk.progress_bar_get_inverted(to_unsafe.as(LibGtk::ProgressBar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "inverted", gvalue)
+      gvalue.boolean
     end
 
     def pulse_step
-      __return_value = LibGtk.progress_bar_get_pulse_step(to_unsafe.as(LibGtk::ProgressBar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pulse_step", gvalue)
+      gvalue
     end
 
     def show_text
-      __return_value = LibGtk.progress_bar_get_show_text(to_unsafe.as(LibGtk::ProgressBar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_text", gvalue)
+      gvalue.boolean
     end
 
     def text
-      __return_value = LibGtk.progress_bar_get_text(to_unsafe.as(LibGtk::ProgressBar*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "text", gvalue)
+      gvalue.string
     end
 
     def self.new : self

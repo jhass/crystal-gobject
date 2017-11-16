@@ -12,8 +12,9 @@ module Gst
     end
 
     def upstream_id
-      __return_value = LibGst.stream_collection_get_upstream_id(to_unsafe.as(LibGst::StreamCollection*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "upstream_id", gvalue)
+      gvalue.string
     end
 
     def self.new(upstream_id) : self
@@ -43,7 +44,7 @@ module Gst
 
     alias StreamNotifySignal = StreamCollection, Gst::Stream, GObject::ParamSpec ->
     def on_stream_notify(&__block : StreamNotifySignal)
-      __callback = ->(_arg0 : LibGst::StreamCollection*, _arg1 : LibGst::LibGst::Stream*, _arg2 : LibGst::LibGObject::ParamSpec*) {
+      __callback = ->(_arg0 : LibGst::StreamCollection*, _arg1 : LibGst::LibGst::Stream**, _arg2 : LibGst::LibGObject::ParamSpec**) {
        __return_value = __block.call(StreamCollection.new(_arg0), Gst::Stream.new(_arg1), GObject::ParamSpec.new(_arg2))
        __return_value
       }

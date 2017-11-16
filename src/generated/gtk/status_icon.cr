@@ -10,74 +10,88 @@ module Gtk
     end
 
     def embedded
-      __return_value = LibGtk.status_icon_get_embedded(to_unsafe.as(LibGtk::StatusIcon*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "embedded", gvalue)
+      gvalue.boolean
     end
 
 
     def gicon
-      __return_value = LibGtk.status_icon_get_gicon(to_unsafe.as(LibGtk::StatusIcon*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "gicon", gvalue)
+      gvalue
     end
 
     def has_tooltip
-      __return_value = LibGtk.status_icon_get_has_tooltip(to_unsafe.as(LibGtk::StatusIcon*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "has_tooltip", gvalue)
+      gvalue.boolean
     end
 
     def icon_name
-      __return_value = LibGtk.status_icon_get_icon_name(to_unsafe.as(LibGtk::StatusIcon*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "icon_name", gvalue)
+      gvalue.string
     end
 
     def orientation
-      __return_value = LibGtk.status_icon_get_orientation(to_unsafe.as(LibGtk::StatusIcon*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "orientation", gvalue)
+      gvalue.enum
     end
 
     def pixbuf
-      __return_value = LibGtk.status_icon_get_pixbuf(to_unsafe.as(LibGtk::StatusIcon*))
-      GdkPixbuf::Pixbuf.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pixbuf", gvalue)
+      GdkPixbuf::Pixbuf.cast(gvalue.object)
     end
 
     def screen
-      __return_value = LibGtk.status_icon_get_screen(to_unsafe.as(LibGtk::StatusIcon*))
-      Gdk::Screen.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "screen", gvalue)
+      Gdk::Screen.cast(gvalue.object)
     end
 
     def size
-      __return_value = LibGtk.status_icon_get_size(to_unsafe.as(LibGtk::StatusIcon*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "size", gvalue)
+      gvalue
     end
 
     def stock
-      __return_value = LibGtk.status_icon_get_stock(to_unsafe.as(LibGtk::StatusIcon*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "stock", gvalue)
+      gvalue.string
     end
 
     def storage_type
-      __return_value = LibGtk.status_icon_get_storage_type(to_unsafe.as(LibGtk::StatusIcon*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "storage_type", gvalue)
+      gvalue.enum
     end
 
     def title
-      __return_value = LibGtk.status_icon_get_title(to_unsafe.as(LibGtk::StatusIcon*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "title", gvalue)
+      gvalue.string
     end
 
     def tooltip_markup
-      __return_value = LibGtk.status_icon_get_tooltip_markup(to_unsafe.as(LibGtk::StatusIcon*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "tooltip_markup", gvalue)
+      gvalue.string
     end
 
     def tooltip_text
-      __return_value = LibGtk.status_icon_get_tooltip_text(to_unsafe.as(LibGtk::StatusIcon*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "tooltip_text", gvalue)
+      gvalue.string
     end
 
     def visible
-      __return_value = LibGtk.status_icon_get_visible(to_unsafe.as(LibGtk::StatusIcon*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "visible", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self
@@ -288,7 +302,7 @@ module Gtk
 
     alias QueryTooltipSignal = StatusIcon, Int32, Int32, Bool, Gtk::Tooltip -> Bool
     def on_query_tooltip(&__block : QueryTooltipSignal)
-      __callback = ->(_arg0 : LibGtk::StatusIcon*, _arg1 : LibGtk::Int32*, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Bool*, _arg4 : LibGtk::LibGtk::Tooltip*) {
+      __callback = ->(_arg0 : LibGtk::StatusIcon*, _arg1 : LibGtk::Int32*, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Bool*, _arg4 : LibGtk::LibGtk::Tooltip**) {
        __return_value = __block.call(StatusIcon.new(_arg0), _arg1, _arg2, _arg3, Gtk::Tooltip.new(_arg4))
        __return_value
       }

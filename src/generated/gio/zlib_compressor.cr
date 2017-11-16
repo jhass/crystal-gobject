@@ -11,18 +11,21 @@ module Gio
 
     # Implements Converter
     def file_info
-      __return_value = LibGio.zlib_compressor_get_file_info(to_unsafe.as(LibGio::ZlibCompressor*))
-      Gio::FileInfo.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "file_info", gvalue)
+      Gio::FileInfo.cast(gvalue.object)
     end
 
     def format
-      __return_value = LibGio.zlib_compressor_get_format(to_unsafe.as(LibGio::ZlibCompressor*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "format", gvalue)
+      gvalue.enum
     end
 
     def level
-      __return_value = LibGio.zlib_compressor_get_level(to_unsafe.as(LibGio::ZlibCompressor*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "level", gvalue)
+      gvalue
     end
 
     def self.new(format : Gio::ZlibCompressorFormat, level) : self

@@ -10,8 +10,9 @@ module Gdk
     end
 
     def default_display
-      __return_value = LibGdk.display_manager_get_default_display(to_unsafe.as(LibGdk::DisplayManager*))
-      Gdk::Display.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "default_display", gvalue)
+      Gdk::Display.cast(gvalue.object)
     end
 
     def self.get
@@ -26,7 +27,7 @@ module Gdk
 
     def list_displays
       __return_value = LibGdk.display_manager_list_displays(@pointer.as(LibGdk::DisplayManager*))
-      GLib::SListIterator(Gdk::Display, LibGdk::Display*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
+      GLib::SListIterator(Gdk::Display, LibGdk::Display**).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def open_display(name)
@@ -41,7 +42,7 @@ module Gdk
 
     alias DisplayOpenedSignal = DisplayManager, Gdk::Display ->
     def on_display_opened(&__block : DisplayOpenedSignal)
-      __callback = ->(_arg0 : LibGdk::DisplayManager*, _arg1 : LibGdk::LibGdk::Display*) {
+      __callback = ->(_arg0 : LibGdk::DisplayManager*, _arg1 : LibGdk::LibGdk::Display**) {
        __return_value = __block.call(DisplayManager.new(_arg0), Gdk::Display.new(_arg1))
        __return_value
       }

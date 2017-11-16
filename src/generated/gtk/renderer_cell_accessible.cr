@@ -14,8 +14,9 @@ module Gtk
     # Implements Action
     # Implements Component
     def renderer
-      __return_value = LibGtk.renderer_cell_accessible_get_renderer(to_unsafe.as(LibGtk::RendererCellAccessible*))
-      Gtk::CellRenderer.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "renderer", gvalue)
+      Gtk::CellRenderer.cast(gvalue.object)
     end
 
     def self.new(renderer) : self

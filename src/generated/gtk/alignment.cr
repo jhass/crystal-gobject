@@ -14,43 +14,51 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def bottom_padding
-      __return_value = LibGtk.alignment_get_bottom_padding(to_unsafe.as(LibGtk::Alignment*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "bottom_padding", gvalue)
+      gvalue
     end
 
     def left_padding
-      __return_value = LibGtk.alignment_get_left_padding(to_unsafe.as(LibGtk::Alignment*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "left_padding", gvalue)
+      gvalue
     end
 
     def right_padding
-      __return_value = LibGtk.alignment_get_right_padding(to_unsafe.as(LibGtk::Alignment*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "right_padding", gvalue)
+      gvalue
     end
 
     def top_padding
-      __return_value = LibGtk.alignment_get_top_padding(to_unsafe.as(LibGtk::Alignment*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "top_padding", gvalue)
+      gvalue
     end
 
     def xalign
-      __return_value = LibGtk.alignment_get_xalign(to_unsafe.as(LibGtk::Alignment*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::FLOAT)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "xalign", gvalue)
+      gvalue
     end
 
     def xscale
-      __return_value = LibGtk.alignment_get_xscale(to_unsafe.as(LibGtk::Alignment*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::FLOAT)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "xscale", gvalue)
+      gvalue
     end
 
     def yalign
-      __return_value = LibGtk.alignment_get_yalign(to_unsafe.as(LibGtk::Alignment*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::FLOAT)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "yalign", gvalue)
+      gvalue
     end
 
     def yscale
-      __return_value = LibGtk.alignment_get_yscale(to_unsafe.as(LibGtk::Alignment*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::FLOAT)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "yscale", gvalue)
+      gvalue
     end
 
     def self.new(xalign, yalign, xscale, yscale) : self

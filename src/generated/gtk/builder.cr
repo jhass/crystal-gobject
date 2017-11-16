@@ -10,8 +10,9 @@ module Gtk
     end
 
     def translation_domain
-      __return_value = LibGtk.builder_get_translation_domain(to_unsafe.as(LibGtk::Builder*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "translation_domain", gvalue)
+      gvalue.string
     end
 
     def self.new : self
@@ -39,42 +40,42 @@ module Gtk
       nil
     end
 
-    def add_from_file(filename)
+    def add_from_file(filename) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.builder_add_from_file(@pointer.as(LibGtk::Builder*), filename.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def add_from_resource(resource_path)
+    def add_from_resource(resource_path) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.builder_add_from_resource(@pointer.as(LibGtk::Builder*), resource_path.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def add_from_string(buffer, length)
+    def add_from_string(buffer, length) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.builder_add_from_string(@pointer.as(LibGtk::Builder*), buffer.to_unsafe, UInt64.new(length), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def add_objects_from_file(filename, object_ids)
+    def add_objects_from_file(filename, object_ids) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.builder_add_objects_from_file(@pointer.as(LibGtk::Builder*), filename.to_unsafe, object_ids, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def add_objects_from_resource(resource_path, object_ids)
+    def add_objects_from_resource(resource_path, object_ids) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.builder_add_objects_from_resource(@pointer.as(LibGtk::Builder*), resource_path.to_unsafe, object_ids, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def add_objects_from_string(buffer, length, object_ids)
+    def add_objects_from_string(buffer, length, object_ids) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.builder_add_objects_from_string(@pointer.as(LibGtk::Builder*), buffer.to_unsafe, UInt64.new(length), object_ids, pointerof(__error))
       GLib::Error.assert __error
@@ -96,7 +97,7 @@ module Gtk
       nil
     end
 
-    def extend_with_template(widget, template_type, buffer, length)
+    def extend_with_template(widget, template_type, buffer, length) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.builder_extend_with_template(@pointer.as(LibGtk::Builder*), widget.to_unsafe.as(LibGtk::Widget*), UInt64.new(template_type), buffer.to_unsafe, UInt64.new(length), pointerof(__error))
       GLib::Error.assert __error
@@ -115,7 +116,7 @@ module Gtk
 
     def objects
       __return_value = LibGtk.builder_get_objects(@pointer.as(LibGtk::Builder*))
-      GLib::SListIterator(GObject::Object, LibGObject::Object*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
+      GLib::SListIterator(GObject::Object, LibGObject::Object**).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def translation_domain
@@ -138,14 +139,14 @@ module Gtk
       nil
     end
 
-    def value_from_string(pspec, string, value)
+    def value_from_string(pspec, string, value) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.builder_value_from_string(@pointer.as(LibGtk::Builder*), pspec.to_unsafe.as(LibGObject::ParamSpec*), string.to_unsafe, value, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def value_from_string_type(type, string, value)
+    def value_from_string_type(type, string, value) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.builder_value_from_string_type(@pointer.as(LibGtk::Builder*), UInt64.new(type), string.to_unsafe, value, pointerof(__error))
       GLib::Error.assert __error

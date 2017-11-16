@@ -16,33 +16,39 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
     def align_widget
-      __return_value = LibGtk.menu_button_get_align_widget(to_unsafe.as(LibGtk::MenuButton*))
-      Gtk::Container.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "align_widget", gvalue)
+      Gtk::Container.cast(gvalue.object)
     end
 
     def direction
-      __return_value = LibGtk.menu_button_get_direction(to_unsafe.as(LibGtk::MenuButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "direction", gvalue)
+      gvalue.enum
     end
 
     def menu_model
-      __return_value = LibGtk.menu_button_get_menu_model(to_unsafe.as(LibGtk::MenuButton*))
-      Gio::MenuModel.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "menu_model", gvalue)
+      Gio::MenuModel.cast(gvalue.object)
     end
 
     def popover
-      __return_value = LibGtk.menu_button_get_popover(to_unsafe.as(LibGtk::MenuButton*))
-      Gtk::Popover.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "popover", gvalue)
+      Gtk::Popover.cast(gvalue.object)
     end
 
     def popup
-      __return_value = LibGtk.menu_button_get_popup(to_unsafe.as(LibGtk::MenuButton*))
-      Gtk::Menu.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "popup", gvalue)
+      Gtk::Menu.cast(gvalue.object)
     end
 
     def use_popover
-      __return_value = LibGtk.menu_button_get_use_popover(to_unsafe.as(LibGtk::MenuButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "use_popover", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self

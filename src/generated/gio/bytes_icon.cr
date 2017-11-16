@@ -12,8 +12,9 @@ module Gio
     # Implements Icon
     # Implements LoadableIcon
     def bytes
-      __return_value = LibGio.bytes_icon_get_bytes(to_unsafe.as(LibGio::BytesIcon*))
-      GLib::Bytes.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "bytes", gvalue)
+      GLib::Bytes.cast(gvalue.object)
     end
 
     def self.new(bytes) : self

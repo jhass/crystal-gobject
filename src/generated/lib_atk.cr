@@ -359,11 +359,11 @@ lib LibAtk
     # Virtual function get_row_span
     # Virtual function get_table
   end
-  fun table_cell_get_column_header_cells = atk_table_cell_get_column_header_cells(this : TableCell*) : Void**
+  fun table_cell_get_column_header_cells = atk_table_cell_get_column_header_cells(this : TableCell*) : Void*
   fun table_cell_get_column_span = atk_table_cell_get_column_span(this : TableCell*) : Int32
   fun table_cell_get_position = atk_table_cell_get_position(this : TableCell*, row : Int32*, column : Int32*) : Bool
   fun table_cell_get_row_column_span = atk_table_cell_get_row_column_span(this : TableCell*, row : Int32*, column : Int32*, row_span : Int32*, column_span : Int32*) : Bool
-  fun table_cell_get_row_header_cells = atk_table_cell_get_row_header_cells(this : TableCell*) : Void**
+  fun table_cell_get_row_header_cells = atk_table_cell_get_row_header_cells(this : TableCell*) : Void*
   fun table_cell_get_row_span = atk_table_cell_get_row_span(this : TableCell*) : Int32
   fun table_cell_get_table = atk_table_cell_get_table(this : TableCell*) : LibAtk::Object*
 
@@ -904,13 +904,13 @@ lib LibAtk
   ###########################################
 
   struct GObjectAccessible # object
-    parent : LibAtk::Object
+    parent : LibAtk::Object*
   end
   fun g_object_accessible_for_object = atk_gobject_accessible_for_object(obj : LibGObject::Object*) : LibAtk::Object*
   fun g_object_accessible_get_object = atk_gobject_accessible_get_object(this : GObjectAccessible*) : LibGObject::Object*
 
   struct Hyperlink # object
-    parent : LibGObject::Object
+    parent : LibGObject::Object*
     # Signal link-activated
     # Virtual function get_end_index
     # Virtual function get_n_anchors
@@ -921,6 +921,10 @@ lib LibAtk
     # Virtual function is_valid
     # Virtual function link_activated
     # Virtual function link_state
+    # Property end_index : Int32
+    # Property number_of_anchors : Int32
+    # Property selected_link : Bool
+    # Property start_index : Int32
   end
   fun hyperlink_get_end_index = atk_hyperlink_get_end_index(this : Hyperlink*) : Int32
   fun hyperlink_get_n_anchors = atk_hyperlink_get_n_anchors(this : Hyperlink*) : Int32
@@ -932,7 +936,7 @@ lib LibAtk
   fun hyperlink_is_valid = atk_hyperlink_is_valid(this : Hyperlink*) : Bool
 
   struct Misc # object
-    parent : LibGObject::Object
+    parent : LibGObject::Object*
     # Virtual function threads_enter
     # Virtual function threads_leave
   end
@@ -941,17 +945,17 @@ lib LibAtk
   fun misc_threads_leave = atk_misc_threads_leave(this : Misc*) : Void
 
   struct NoOpObject # object
-    parent : LibAtk::Object
+    parent : LibAtk::Object*
   end
   fun no_op_object_new = atk_no_op_object_new(obj : LibGObject::Object*) : LibAtk::Object*
 
   struct NoOpObjectFactory # object
-    parent : LibAtk::ObjectFactory
+    parent : LibAtk::ObjectFactory*
   end
   fun no_op_object_factory_new = atk_no_op_object_factory_new() : LibAtk::ObjectFactory*
 
   struct Object # object
-    parent : LibGObject::Object
+    parent : LibGObject::Object*
     description : UInt8*
     name : UInt8*
     accessible_parent : LibAtk::Object*
@@ -988,6 +992,21 @@ lib LibAtk
     # Virtual function set_role
     # Virtual function state_change
     # Virtual function visible_data_changed
+    # Property accessible_component_layer : Int32
+    # Property accessible_component_mdi_zorder : Int32
+    # Property accessible_description : UInt8*
+    # Property accessible_hypertext_nlinks : Int32
+    # Property accessible_name : UInt8*
+    # Property accessible_parent : LibAtk::Object*
+    # Property accessible_role : Int32
+    # Property accessible_table_caption : UInt8*
+    # Property accessible_table_caption_object : LibAtk::Object*
+    # Property accessible_table_column_description : UInt8*
+    # Property accessible_table_column_header : LibAtk::Object*
+    # Property accessible_table_row_description : UInt8*
+    # Property accessible_table_row_header : LibAtk::Object*
+    # Property accessible_table_summary : LibAtk::Object*
+    # Property accessible_value : Float64
   end
   fun object_add_relationship = atk_object_add_relationship(this : Object*, relationship : LibAtk::RelationType, target : LibAtk::Object*) : Bool
   fun object_get_attributes = atk_object_get_attributes(this : Object*) : Void**
@@ -1014,7 +1033,7 @@ lib LibAtk
   fun object_set_role = atk_object_set_role(this : Object*, role : LibAtk::Role) : Void
 
   struct ObjectFactory # object
-    parent : LibGObject::Object
+    parent : LibGObject::Object*
     # Virtual function invalidate
   end
   fun object_factory_create_accessible = atk_object_factory_create_accessible(this : ObjectFactory*, obj : LibGObject::Object*) : LibAtk::Object*
@@ -1022,14 +1041,14 @@ lib LibAtk
   fun object_factory_invalidate = atk_object_factory_invalidate(this : ObjectFactory*) : Void
 
   struct Plug # object
-    parent : LibAtk::Object
+    parent : LibAtk::Object*
     # Virtual function get_object_id
   end
   fun plug_new = atk_plug_new() : LibAtk::Object*
   fun plug_get_id = atk_plug_get_id(this : Plug*) : UInt8*
 
   struct Registry # object
-    parent : LibGObject::Object
+    parent : LibGObject::Object*
     factory_type_registry : Void**
     factory_singleton_cache : Void**
   end
@@ -1038,19 +1057,21 @@ lib LibAtk
   fun registry_set_factory_type = atk_registry_set_factory_type(this : Registry*, type : UInt64, factory_type : UInt64) : Void
 
   struct Relation # object
-    parent : LibGObject::Object
-    target : Void**
+    parent : LibGObject::Object*
+    target : Void*
     relationship : LibAtk::RelationType
+    # Property relation_type : LibAtk::RelationType
+    # Property target : LibGObject::ValueArray
   end
   fun relation_new = atk_relation_new(targets : LibAtk::Object**, n_targets : Int32, relationship : LibAtk::RelationType) : LibAtk::Relation*
   fun relation_add_target = atk_relation_add_target(this : Relation*, target : LibAtk::Object*) : Void
   fun relation_get_relation_type = atk_relation_get_relation_type(this : Relation*) : LibAtk::RelationType
-  fun relation_get_target = atk_relation_get_target(this : Relation*) : Void**
+  fun relation_get_target = atk_relation_get_target(this : Relation*) : Void*
   fun relation_remove_target = atk_relation_remove_target(this : Relation*, target : LibAtk::Object*) : Bool
 
   struct RelationSet # object
-    parent : LibGObject::Object
-    relations : Void**
+    parent : LibGObject::Object*
+    relations : Void*
   end
   fun relation_set_new = atk_relation_set_new() : LibAtk::RelationSet*
   fun relation_set_add = atk_relation_set_add(this : RelationSet*, relation : LibAtk::Relation*) : Void
@@ -1063,7 +1084,7 @@ lib LibAtk
   fun relation_set_remove = atk_relation_set_remove(this : RelationSet*, relation : LibAtk::Relation*) : Void
 
   struct Socket # object
-    parent : LibAtk::Object
+    parent : LibAtk::Object*
     embedded_plug_id : UInt8*
     # Virtual function embed
   end
@@ -1072,7 +1093,7 @@ lib LibAtk
   fun socket_is_occupied = atk_socket_is_occupied(this : Socket*) : Bool
 
   struct StateSet # object
-    parent : LibGObject::Object
+    parent : LibGObject::Object*
   end
   fun state_set_new = atk_state_set_new() : LibAtk::StateSet*
   fun state_set_add_state = atk_state_set_add_state(this : StateSet*, type : LibAtk::StateType) : Bool
@@ -1087,7 +1108,7 @@ lib LibAtk
   fun state_set_xor_sets = atk_state_set_xor_sets(this : StateSet*, compare_set : LibAtk::StateSet*) : LibAtk::StateSet*
 
   struct Util # object
-    parent : LibGObject::Object
+    parent : LibGObject::Object*
   end
 
 

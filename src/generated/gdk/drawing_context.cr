@@ -10,13 +10,15 @@ module Gdk
     end
 
     def clip
-      __return_value = LibGdk.drawing_context_get_clip(to_unsafe.as(LibGdk::DrawingContext*))
-      Cairo::Region.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "clip", gvalue)
+      Cairo::Region.cast(gvalue.object)
     end
 
     def window
-      __return_value = LibGdk.drawing_context_get_window(to_unsafe.as(LibGdk::DrawingContext*))
-      Gdk::Window.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "window", gvalue)
+      Gdk::Window.cast(gvalue.object)
     end
 
     def cairo_context

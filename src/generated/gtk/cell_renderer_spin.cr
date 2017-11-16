@@ -12,18 +12,21 @@ module Gtk
     end
 
     def adjustment
-      __return_value = LibGtk.cell_renderer_spin_get_adjustment(to_unsafe.as(LibGtk::CellRendererSpin*))
-      Gtk::Adjustment.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "adjustment", gvalue)
+      Gtk::Adjustment.cast(gvalue.object)
     end
 
     def climb_rate
-      __return_value = LibGtk.cell_renderer_spin_get_climb_rate(to_unsafe.as(LibGtk::CellRendererSpin*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "climb_rate", gvalue)
+      gvalue
     end
 
     def digits
-      __return_value = LibGtk.cell_renderer_spin_get_digits(to_unsafe.as(LibGtk::CellRendererSpin*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "digits", gvalue)
+      gvalue
     end
 
     def self.new : self

@@ -17,33 +17,39 @@ module Gtk
     # Implements Buildable
     # Implements ColorChooser
     def alpha
-      __return_value = LibGtk.color_button_get_alpha(to_unsafe.as(LibGtk::ColorButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "alpha", gvalue)
+      gvalue
     end
 
     def color
-      __return_value = LibGtk.color_button_get_color(to_unsafe.as(LibGtk::ColorButton*))
-      Gdk::Color.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "color", gvalue)
+      Gdk::Color.cast(gvalue.object)
     end
 
     def rgba
-      __return_value = LibGtk.color_button_get_rgba(to_unsafe.as(LibGtk::ColorButton*))
-      Gdk::RGBA.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "rgba", gvalue)
+      Gdk::RGBA.cast(gvalue.object)
     end
 
     def show_editor
-      __return_value = LibGtk.color_button_get_show_editor(to_unsafe.as(LibGtk::ColorButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_editor", gvalue)
+      gvalue.boolean
     end
 
     def title
-      __return_value = LibGtk.color_button_get_title(to_unsafe.as(LibGtk::ColorButton*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "title", gvalue)
+      gvalue.string
     end
 
     def use_alpha
-      __return_value = LibGtk.color_button_get_use_alpha(to_unsafe.as(LibGtk::ColorButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "use_alpha", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self

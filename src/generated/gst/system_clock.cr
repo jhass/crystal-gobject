@@ -12,8 +12,9 @@ module Gst
     end
 
     def clock_type
-      __return_value = LibGst.system_clock_get_clock_type(to_unsafe.as(LibGst::SystemClock*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "clock_type", gvalue)
+      gvalue.enum
     end
 
     def self.obtain

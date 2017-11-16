@@ -14,8 +14,9 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def stack
-      __return_value = LibGtk.stack_sidebar_get_stack(to_unsafe.as(LibGtk::StackSidebar*))
-      Gtk::Stack.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "stack", gvalue)
+      Gtk::Stack.cast(gvalue.object)
     end
 
     def self.new : self

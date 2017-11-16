@@ -15,38 +15,45 @@ module Gtk
     # Implements Buildable
 
     def image
-      __return_value = LibGtk.message_dialog_get_image(to_unsafe.as(LibGtk::MessageDialog*))
-      Gtk::Widget.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "image", gvalue)
+      Gtk::Widget.cast(gvalue.object)
     end
 
     def message_area
-      __return_value = LibGtk.message_dialog_get_message_area(to_unsafe.as(LibGtk::MessageDialog*))
-      Gtk::Widget.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "message_area", gvalue)
+      Gtk::Widget.cast(gvalue.object)
     end
 
     def message_type
-      __return_value = LibGtk.message_dialog_get_message_type(to_unsafe.as(LibGtk::MessageDialog*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "message_type", gvalue)
+      gvalue.enum
     end
 
     def secondary_text
-      __return_value = LibGtk.message_dialog_get_secondary_text(to_unsafe.as(LibGtk::MessageDialog*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "secondary_text", gvalue)
+      gvalue.string
     end
 
     def secondary_use_markup
-      __return_value = LibGtk.message_dialog_get_secondary_use_markup(to_unsafe.as(LibGtk::MessageDialog*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "secondary_use_markup", gvalue)
+      gvalue.boolean
     end
 
     def text
-      __return_value = LibGtk.message_dialog_get_text(to_unsafe.as(LibGtk::MessageDialog*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "text", gvalue)
+      gvalue.string
     end
 
     def use_markup
-      __return_value = LibGtk.message_dialog_get_use_markup(to_unsafe.as(LibGtk::MessageDialog*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "use_markup", gvalue)
+      gvalue.boolean
     end
 
     def image

@@ -14,8 +14,9 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def screen
-      __return_value = LibGtk.invisible_get_screen(to_unsafe.as(LibGtk::Invisible*))
-      Gdk::Screen.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "screen", gvalue)
+      Gdk::Screen.cast(gvalue.object)
     end
 
     def self.new : self

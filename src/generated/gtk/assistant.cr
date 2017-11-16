@@ -14,8 +14,9 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def use_header_bar
-      __return_value = LibGtk.assistant_get_use_header_bar(to_unsafe.as(LibGtk::Assistant*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "use_header_bar", gvalue)
+      gvalue
     end
 
     def self.new : self
@@ -196,7 +197,7 @@ module Gtk
 
     alias PrepareSignal = Assistant, Gtk::Widget ->
     def on_prepare(&__block : PrepareSignal)
-      __callback = ->(_arg0 : LibGtk::Assistant*, _arg1 : LibGtk::LibGtk::Widget*) {
+      __callback = ->(_arg0 : LibGtk::Assistant*, _arg1 : LibGtk::LibGtk::Widget**) {
        __return_value = __block.call(Assistant.new(_arg0), Gtk::Widget.new(_arg1))
        __return_value
       }

@@ -13,38 +13,45 @@ module Gio
     # Implements ActionMap
 
     def application_id
-      __return_value = LibGio.application_get_application_id(to_unsafe.as(LibGio::Application*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "application_id", gvalue)
+      gvalue.string
     end
 
     def flags
-      __return_value = LibGio.application_get_flags(to_unsafe.as(LibGio::Application*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "flags", gvalue)
+      gvalue.enum
     end
 
     def inactivity_timeout
-      __return_value = LibGio.application_get_inactivity_timeout(to_unsafe.as(LibGio::Application*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "inactivity_timeout", gvalue)
+      gvalue
     end
 
     def is_busy
-      __return_value = LibGio.application_get_is_busy(to_unsafe.as(LibGio::Application*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_busy", gvalue)
+      gvalue.boolean
     end
 
     def is_registered
-      __return_value = LibGio.application_get_is_registered(to_unsafe.as(LibGio::Application*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_registered", gvalue)
+      gvalue.boolean
     end
 
     def is_remote
-      __return_value = LibGio.application_get_is_remote(to_unsafe.as(LibGio::Application*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_remote", gvalue)
+      gvalue.boolean
     end
 
     def resource_base_path
-      __return_value = LibGio.application_get_resource_base_path(to_unsafe.as(LibGio::Application*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "resource_base_path", gvalue)
+      gvalue.string
     end
 
     def self.new(application_id, flags : Gio::ApplicationFlags) : self
@@ -152,7 +159,7 @@ module Gio
       nil
     end
 
-    def register(cancellable)
+    def register(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.application_register(@pointer.as(LibGio::Application*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -230,7 +237,7 @@ module Gio
 
     alias CommandLineSignal = Application, Gio::ApplicationCommandLine -> Int32
     def on_command_line(&__block : CommandLineSignal)
-      __callback = ->(_arg0 : LibGio::Application*, _arg1 : LibGio::LibGio::ApplicationCommandLine*) {
+      __callback = ->(_arg0 : LibGio::Application*, _arg1 : LibGio::LibGio::ApplicationCommandLine**) {
        __return_value = __block.call(Application.new(_arg0), Gio::ApplicationCommandLine.new(_arg1))
        Int32.new(__return_value)
       }

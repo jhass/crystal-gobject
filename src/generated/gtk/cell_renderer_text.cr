@@ -12,231 +12,276 @@ module Gtk
     end
 
     def align_set
-      __return_value = LibGtk.cell_renderer_text_get_align_set(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "align_set", gvalue)
+      gvalue.boolean
     end
 
     def alignment
-      __return_value = LibGtk.cell_renderer_text_get_alignment(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "alignment", gvalue)
+      gvalue.enum
     end
 
     def attributes
-      __return_value = LibGtk.cell_renderer_text_get_attributes(to_unsafe.as(LibGtk::CellRendererText*))
-      Pango::AttrList.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "attributes", gvalue)
+      Pango::AttrList.cast(gvalue.object)
     end
 
 
     def background_gdk
-      __return_value = LibGtk.cell_renderer_text_get_background_gdk(to_unsafe.as(LibGtk::CellRendererText*))
-      Gdk::Color.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "background_gdk", gvalue)
+      Gdk::Color.cast(gvalue.object)
     end
 
     def background_rgba
-      __return_value = LibGtk.cell_renderer_text_get_background_rgba(to_unsafe.as(LibGtk::CellRendererText*))
-      Gdk::RGBA.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "background_rgba", gvalue)
+      Gdk::RGBA.cast(gvalue.object)
     end
 
     def background_set
-      __return_value = LibGtk.cell_renderer_text_get_background_set(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "background_set", gvalue)
+      gvalue.boolean
     end
 
     def editable
-      __return_value = LibGtk.cell_renderer_text_get_editable(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "editable", gvalue)
+      gvalue.boolean
     end
 
     def editable_set
-      __return_value = LibGtk.cell_renderer_text_get_editable_set(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "editable_set", gvalue)
+      gvalue.boolean
     end
 
     def ellipsize
-      __return_value = LibGtk.cell_renderer_text_get_ellipsize(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "ellipsize", gvalue)
+      gvalue.enum
     end
 
     def ellipsize_set
-      __return_value = LibGtk.cell_renderer_text_get_ellipsize_set(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "ellipsize_set", gvalue)
+      gvalue.boolean
     end
 
     def family
-      __return_value = LibGtk.cell_renderer_text_get_family(to_unsafe.as(LibGtk::CellRendererText*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "family", gvalue)
+      gvalue.string
     end
 
     def family_set
-      __return_value = LibGtk.cell_renderer_text_get_family_set(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "family_set", gvalue)
+      gvalue.boolean
     end
 
     def font
-      __return_value = LibGtk.cell_renderer_text_get_font(to_unsafe.as(LibGtk::CellRendererText*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "font", gvalue)
+      gvalue.string
     end
 
     def font_desc
-      __return_value = LibGtk.cell_renderer_text_get_font_desc(to_unsafe.as(LibGtk::CellRendererText*))
-      Pango::FontDescription.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "font_desc", gvalue)
+      Pango::FontDescription.cast(gvalue.object)
     end
 
 
     def foreground_gdk
-      __return_value = LibGtk.cell_renderer_text_get_foreground_gdk(to_unsafe.as(LibGtk::CellRendererText*))
-      Gdk::Color.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "foreground_gdk", gvalue)
+      Gdk::Color.cast(gvalue.object)
     end
 
     def foreground_rgba
-      __return_value = LibGtk.cell_renderer_text_get_foreground_rgba(to_unsafe.as(LibGtk::CellRendererText*))
-      Gdk::RGBA.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "foreground_rgba", gvalue)
+      Gdk::RGBA.cast(gvalue.object)
     end
 
     def foreground_set
-      __return_value = LibGtk.cell_renderer_text_get_foreground_set(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "foreground_set", gvalue)
+      gvalue.boolean
     end
 
     def language
-      __return_value = LibGtk.cell_renderer_text_get_language(to_unsafe.as(LibGtk::CellRendererText*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "language", gvalue)
+      gvalue.string
     end
 
     def language_set
-      __return_value = LibGtk.cell_renderer_text_get_language_set(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "language_set", gvalue)
+      gvalue.boolean
     end
 
 
     def max_width_chars
-      __return_value = LibGtk.cell_renderer_text_get_max_width_chars(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "max_width_chars", gvalue)
+      gvalue
     end
 
     def placeholder_text
-      __return_value = LibGtk.cell_renderer_text_get_placeholder_text(to_unsafe.as(LibGtk::CellRendererText*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "placeholder_text", gvalue)
+      gvalue.string
     end
 
     def rise
-      __return_value = LibGtk.cell_renderer_text_get_rise(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "rise", gvalue)
+      gvalue
     end
 
     def rise_set
-      __return_value = LibGtk.cell_renderer_text_get_rise_set(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "rise_set", gvalue)
+      gvalue.boolean
     end
 
     def scale
-      __return_value = LibGtk.cell_renderer_text_get_scale(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "scale", gvalue)
+      gvalue
     end
 
     def scale_set
-      __return_value = LibGtk.cell_renderer_text_get_scale_set(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "scale_set", gvalue)
+      gvalue.boolean
     end
 
     def single_paragraph_mode
-      __return_value = LibGtk.cell_renderer_text_get_single_paragraph_mode(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "single_paragraph_mode", gvalue)
+      gvalue.boolean
     end
 
     def size
-      __return_value = LibGtk.cell_renderer_text_get_size(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "size", gvalue)
+      gvalue
     end
 
     def size_points
-      __return_value = LibGtk.cell_renderer_text_get_size_points(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "size_points", gvalue)
+      gvalue
     end
 
     def size_set
-      __return_value = LibGtk.cell_renderer_text_get_size_set(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "size_set", gvalue)
+      gvalue.boolean
     end
 
     def stretch
-      __return_value = LibGtk.cell_renderer_text_get_stretch(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "stretch", gvalue)
+      gvalue.enum
     end
 
     def stretch_set
-      __return_value = LibGtk.cell_renderer_text_get_stretch_set(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "stretch_set", gvalue)
+      gvalue.boolean
     end
 
     def strikethrough
-      __return_value = LibGtk.cell_renderer_text_get_strikethrough(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "strikethrough", gvalue)
+      gvalue.boolean
     end
 
     def strikethrough_set
-      __return_value = LibGtk.cell_renderer_text_get_strikethrough_set(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "strikethrough_set", gvalue)
+      gvalue.boolean
     end
 
     def style
-      __return_value = LibGtk.cell_renderer_text_get_style(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "style", gvalue)
+      gvalue.enum
     end
 
     def style_set
-      __return_value = LibGtk.cell_renderer_text_get_style_set(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "style_set", gvalue)
+      gvalue.boolean
     end
 
     def text
-      __return_value = LibGtk.cell_renderer_text_get_text(to_unsafe.as(LibGtk::CellRendererText*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "text", gvalue)
+      gvalue.string
     end
 
     def underline
-      __return_value = LibGtk.cell_renderer_text_get_underline(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "underline", gvalue)
+      gvalue.enum
     end
 
     def underline_set
-      __return_value = LibGtk.cell_renderer_text_get_underline_set(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "underline_set", gvalue)
+      gvalue.boolean
     end
 
     def variant
-      __return_value = LibGtk.cell_renderer_text_get_variant(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "variant", gvalue)
+      gvalue.enum
     end
 
     def variant_set
-      __return_value = LibGtk.cell_renderer_text_get_variant_set(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "variant_set", gvalue)
+      gvalue.boolean
     end
 
     def weight
-      __return_value = LibGtk.cell_renderer_text_get_weight(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "weight", gvalue)
+      gvalue
     end
 
     def weight_set
-      __return_value = LibGtk.cell_renderer_text_get_weight_set(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "weight_set", gvalue)
+      gvalue.boolean
     end
 
     def width_chars
-      __return_value = LibGtk.cell_renderer_text_get_width_chars(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "width_chars", gvalue)
+      gvalue
     end
 
     def wrap_mode
-      __return_value = LibGtk.cell_renderer_text_get_wrap_mode(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "wrap_mode", gvalue)
+      gvalue.enum
     end
 
     def wrap_width
-      __return_value = LibGtk.cell_renderer_text_get_wrap_width(to_unsafe.as(LibGtk::CellRendererText*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "wrap_width", gvalue)
+      gvalue
     end
 
     def self.new : self

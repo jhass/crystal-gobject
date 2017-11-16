@@ -11,7 +11,7 @@ module GLib
       @pointer.not_nil!.as(LibGLib::Regex*)
     end
 
-    def self.new(pattern, compile_options : GLib::RegexCompileFlags, match_options : GLib::RegexMatchFlags) : self
+    def self.new(pattern, compile_options : GLib::RegexCompileFlags, match_options : GLib::RegexMatchFlags) : self # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.regex_new(pattern.to_unsafe, compile_options, match_options, pointerof(__error))
       GLib::Error.assert __error
@@ -68,14 +68,14 @@ module GLib
       __return_value
     end
 
-    def match_all_full(string, string_len, start_position, match_options : GLib::RegexMatchFlags, match_info)
+    def match_all_full(string, string_len, start_position, match_options : GLib::RegexMatchFlags, match_info) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.regex_match_all_full(@pointer.as(LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), match_options, match_info, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def match_full(string, string_len, start_position, match_options : GLib::RegexMatchFlags, match_info)
+    def match_full(string, string_len, start_position, match_options : GLib::RegexMatchFlags, match_info) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.regex_match_full(@pointer.as(LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), match_options, match_info, pointerof(__error))
       GLib::Error.assert __error
@@ -87,14 +87,14 @@ module GLib
       GLib::Regex.new(__return_value)
     end
 
-    def replace(string, string_len, start_position, replacement, match_options : GLib::RegexMatchFlags)
+    def replace(string, string_len, start_position, replacement, match_options : GLib::RegexMatchFlags) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.regex_replace(@pointer.as(LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), replacement.to_unsafe, match_options, pointerof(__error))
       GLib::Error.assert __error
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def replace_literal(string, string_len, start_position, replacement, match_options : GLib::RegexMatchFlags)
+    def replace_literal(string, string_len, start_position, replacement, match_options : GLib::RegexMatchFlags) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.regex_replace_literal(@pointer.as(LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), replacement.to_unsafe, match_options, pointerof(__error))
       GLib::Error.assert __error
@@ -106,7 +106,7 @@ module GLib
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
-    def split_full(string, string_len, start_position, match_options : GLib::RegexMatchFlags, max_tokens)
+    def split_full(string, string_len, start_position, match_options : GLib::RegexMatchFlags, max_tokens) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.regex_split_full(@pointer.as(LibGLib::Regex*), string, Int64.new(string_len), Int32.new(start_position), match_options, Int32.new(max_tokens), pointerof(__error))
       GLib::Error.assert __error
@@ -118,7 +118,7 @@ module GLib
       nil
     end
 
-    def self.check_replacement(replacement, has_references)
+    def self.check_replacement(replacement, has_references) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.regex_check_replacement(replacement.to_unsafe, has_references, pointerof(__error))
       GLib::Error.assert __error

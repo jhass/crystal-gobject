@@ -17,8 +17,9 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
     def use_symbolic
-      __return_value = LibGtk.volume_button_get_use_symbolic(to_unsafe.as(LibGtk::VolumeButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "use_symbolic", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self

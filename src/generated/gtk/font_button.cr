@@ -17,33 +17,39 @@ module Gtk
     # Implements Buildable
     # Implements FontChooser
     def font_name
-      __return_value = LibGtk.font_button_get_font_name(to_unsafe.as(LibGtk::FontButton*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "font_name", gvalue)
+      gvalue.string
     end
 
     def show_size
-      __return_value = LibGtk.font_button_get_show_size(to_unsafe.as(LibGtk::FontButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_size", gvalue)
+      gvalue.boolean
     end
 
     def show_style
-      __return_value = LibGtk.font_button_get_show_style(to_unsafe.as(LibGtk::FontButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_style", gvalue)
+      gvalue.boolean
     end
 
     def title
-      __return_value = LibGtk.font_button_get_title(to_unsafe.as(LibGtk::FontButton*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "title", gvalue)
+      gvalue.string
     end
 
     def use_font
-      __return_value = LibGtk.font_button_get_use_font(to_unsafe.as(LibGtk::FontButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "use_font", gvalue)
+      gvalue.boolean
     end
 
     def use_size
-      __return_value = LibGtk.font_button_get_use_size(to_unsafe.as(LibGtk::FontButton*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "use_size", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self

@@ -1,6 +1,6 @@
 module Gio
   module DtlsConnection
-    def close(cancellable)
+    def close(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.dtls_connection_close(@pointer.as(LibGio::DtlsConnection*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -12,7 +12,7 @@ module Gio
       nil
     end
 
-    def close_finish(result)
+    def close_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.dtls_connection_close_finish(@pointer.as(LibGio::DtlsConnection*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -59,7 +59,7 @@ module Gio
       __return_value
     end
 
-    def handshake(cancellable)
+    def handshake(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.dtls_connection_handshake(@pointer.as(LibGio::DtlsConnection*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -71,7 +71,7 @@ module Gio
       nil
     end
 
-    def handshake_finish(result)
+    def handshake_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.dtls_connection_handshake_finish(@pointer.as(LibGio::DtlsConnection*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -103,7 +103,7 @@ module Gio
       nil
     end
 
-    def shutdown(shutdown_read, shutdown_write, cancellable)
+    def shutdown(shutdown_read, shutdown_write, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.dtls_connection_shutdown(@pointer.as(LibGio::DtlsConnection*), shutdown_read, shutdown_write, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -115,7 +115,7 @@ module Gio
       nil
     end
 
-    def shutdown_finish(result)
+    def shutdown_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.dtls_connection_shutdown_finish(@pointer.as(LibGio::DtlsConnection*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -124,7 +124,7 @@ module Gio
 
     alias AcceptCertificateSignal = DtlsConnection, Gio::TlsCertificate, Gio::TlsCertificateFlags -> Bool
     def on_accept_certificate(&__block : AcceptCertificateSignal)
-      __callback = ->(_arg0 : LibGio::DtlsConnection*, _arg1 : LibGio::LibGio::TlsCertificate*, _arg2 : LibGio::LibGio::TlsCertificateFlags*) {
+      __callback = ->(_arg0 : LibGio::DtlsConnection*, _arg1 : LibGio::LibGio::TlsCertificate**, _arg2 : LibGio::LibGio::TlsCertificateFlags*) {
        __return_value = __block.call(DtlsConnection.new(_arg0), Gio::TlsCertificate.new(_arg1), _arg2)
        __return_value
       }

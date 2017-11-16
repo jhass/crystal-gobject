@@ -10,13 +10,15 @@ module Gdk
     end
 
     def font_options
-      __return_value = LibGdk.screen_get_font_options(to_unsafe.as(LibGdk::Screen*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::ZERO_NONE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "font_options", gvalue)
+      gvalue
     end
 
     def resolution
-      __return_value = LibGdk.screen_get_resolution(to_unsafe.as(LibGdk::Screen*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "resolution", gvalue)
+      gvalue
     end
 
     def self.default
@@ -151,7 +153,7 @@ module Gdk
 
     def toplevel_windows
       __return_value = LibGdk.screen_get_toplevel_windows(@pointer.as(LibGdk::Screen*))
-      GLib::ListIterator(Gdk::Window, LibGdk::Window*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gdk::Window, LibGdk::Window**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def width
@@ -166,7 +168,7 @@ module Gdk
 
     def window_stack
       __return_value = LibGdk.screen_get_window_stack(@pointer.as(LibGdk::Screen*))
-      GLib::ListIterator(Gdk::Window, LibGdk::Window*).new(GLib::SList.new(__return_value.as(LibGLib::List*))) if __return_value
+      GLib::ListIterator(Gdk::Window, LibGdk::Window**).new(GLib::SList.new(__return_value.as(LibGLib::List*))) if __return_value
     end
 
     def composited?
@@ -176,7 +178,7 @@ module Gdk
 
     def list_visuals
       __return_value = LibGdk.screen_list_visuals(@pointer.as(LibGdk::Screen*))
-      GLib::ListIterator(Gdk::Visual, LibGdk::Visual*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gdk::Visual, LibGdk::Visual**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def make_display_name

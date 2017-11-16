@@ -14,164 +14,196 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def accept_focus
-      __return_value = LibGtk.window_get_accept_focus(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accept_focus", gvalue)
+      gvalue.boolean
     end
 
     def application
-      __return_value = LibGtk.window_get_application(to_unsafe.as(LibGtk::Window*))
-      Gtk::Application.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "application", gvalue)
+      Gtk::Application.cast(gvalue.object)
     end
 
     def attached_to
-      __return_value = LibGtk.window_get_attached_to(to_unsafe.as(LibGtk::Window*))
-      Gtk::Widget.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "attached_to", gvalue)
+      Gtk::Widget.cast(gvalue.object)
     end
 
     def decorated
-      __return_value = LibGtk.window_get_decorated(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "decorated", gvalue)
+      gvalue.boolean
     end
 
     def default_height
-      __return_value = LibGtk.window_get_default_height(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "default_height", gvalue)
+      gvalue
     end
 
     def default_width
-      __return_value = LibGtk.window_get_default_width(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "default_width", gvalue)
+      gvalue
     end
 
     def deletable
-      __return_value = LibGtk.window_get_deletable(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "deletable", gvalue)
+      gvalue.boolean
     end
 
     def destroy_with_parent
-      __return_value = LibGtk.window_get_destroy_with_parent(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "destroy_with_parent", gvalue)
+      gvalue.boolean
     end
 
     def focus_on_map
-      __return_value = LibGtk.window_get_focus_on_map(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "focus_on_map", gvalue)
+      gvalue.boolean
     end
 
     def focus_visible
-      __return_value = LibGtk.window_get_focus_visible(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "focus_visible", gvalue)
+      gvalue.boolean
     end
 
     def gravity
-      __return_value = LibGtk.window_get_gravity(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "gravity", gvalue)
+      gvalue.enum
     end
 
     def has_resize_grip
-      __return_value = LibGtk.window_get_has_resize_grip(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "has_resize_grip", gvalue)
+      gvalue.boolean
     end
 
     def has_toplevel_focus
-      __return_value = LibGtk.window_get_has_toplevel_focus(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "has_toplevel_focus", gvalue)
+      gvalue.boolean
     end
 
     def hide_titlebar_when_maximized
-      __return_value = LibGtk.window_get_hide_titlebar_when_maximized(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "hide_titlebar_when_maximized", gvalue)
+      gvalue.boolean
     end
 
     def icon
-      __return_value = LibGtk.window_get_icon(to_unsafe.as(LibGtk::Window*))
-      GdkPixbuf::Pixbuf.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "icon", gvalue)
+      GdkPixbuf::Pixbuf.cast(gvalue.object)
     end
 
     def icon_name
-      __return_value = LibGtk.window_get_icon_name(to_unsafe.as(LibGtk::Window*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "icon_name", gvalue)
+      gvalue.string
     end
 
     def is_active
-      __return_value = LibGtk.window_get_is_active(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_active", gvalue)
+      gvalue.boolean
     end
 
     def is_maximized
-      __return_value = LibGtk.window_get_is_maximized(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_maximized", gvalue)
+      gvalue.boolean
     end
 
     def mnemonics_visible
-      __return_value = LibGtk.window_get_mnemonics_visible(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "mnemonics_visible", gvalue)
+      gvalue.boolean
     end
 
     def modal
-      __return_value = LibGtk.window_get_modal(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "modal", gvalue)
+      gvalue.boolean
     end
 
     def resizable
-      __return_value = LibGtk.window_get_resizable(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "resizable", gvalue)
+      gvalue.boolean
     end
 
     def resize_grip_visible
-      __return_value = LibGtk.window_get_resize_grip_visible(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "resize_grip_visible", gvalue)
+      gvalue.boolean
     end
 
     def role
-      __return_value = LibGtk.window_get_role(to_unsafe.as(LibGtk::Window*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "role", gvalue)
+      gvalue.string
     end
 
     def screen
-      __return_value = LibGtk.window_get_screen(to_unsafe.as(LibGtk::Window*))
-      Gdk::Screen.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "screen", gvalue)
+      Gdk::Screen.cast(gvalue.object)
     end
 
     def skip_pager_hint
-      __return_value = LibGtk.window_get_skip_pager_hint(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "skip_pager_hint", gvalue)
+      gvalue.boolean
     end
 
     def skip_taskbar_hint
-      __return_value = LibGtk.window_get_skip_taskbar_hint(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "skip_taskbar_hint", gvalue)
+      gvalue.boolean
     end
 
 
     def title
-      __return_value = LibGtk.window_get_title(to_unsafe.as(LibGtk::Window*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "title", gvalue)
+      gvalue.string
     end
 
     def transient_for
-      __return_value = LibGtk.window_get_transient_for(to_unsafe.as(LibGtk::Window*))
-      Gtk::Window.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "transient_for", gvalue)
+      Gtk::Window.cast(gvalue.object)
     end
 
     def type
-      __return_value = LibGtk.window_get_type(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "type", gvalue)
+      gvalue.enum
     end
 
     def type_hint
-      __return_value = LibGtk.window_get_type_hint(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "type_hint", gvalue)
+      gvalue.enum
     end
 
     def urgency_hint
-      __return_value = LibGtk.window_get_urgency_hint(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "urgency_hint", gvalue)
+      gvalue.boolean
     end
 
     def window_position
-      __return_value = LibGtk.window_get_window_position(to_unsafe.as(LibGtk::Window*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "window_position", gvalue)
+      gvalue.enum
     end
 
     def self.new(type : Gtk::WindowType) : self
@@ -181,7 +213,7 @@ module Gtk
 
     def self.default_icon_list
       __return_value = LibGtk.window_get_default_icon_list
-      GLib::ListIterator(GdkPixbuf::Pixbuf, LibGdkPixbuf::Pixbuf*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(GdkPixbuf::Pixbuf, LibGdkPixbuf::Pixbuf**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def self.default_icon_name
@@ -191,7 +223,7 @@ module Gtk
 
     def self.list_toplevels
       __return_value = LibGtk.window_list_toplevels
-      GLib::ListIterator(Gtk::Widget, LibGtk::Widget*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gtk::Widget, LibGtk::Widget**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def self.set_auto_startup_notification(setting)
@@ -204,7 +236,7 @@ module Gtk
       nil
     end
 
-    def self.default_icon_from_file=(filename)
+    def self.default_icon_from_file=(filename) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.window_set_default_icon_from_file(filename.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
@@ -363,7 +395,7 @@ module Gtk
 
     def icon_list
       __return_value = LibGtk.window_get_icon_list(@pointer.as(LibGtk::Window*))
-      GLib::ListIterator(GdkPixbuf::Pixbuf, LibGdkPixbuf::Pixbuf*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(GdkPixbuf::Pixbuf, LibGdkPixbuf::Pixbuf**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def icon_name
@@ -641,7 +673,7 @@ module Gtk
       nil
     end
 
-    def set_icon_from_file(filename)
+    def set_icon_from_file(filename) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.window_set_icon_from_file(@pointer.as(LibGtk::Window*), filename.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
@@ -811,7 +843,7 @@ module Gtk
 
     alias SetFocusSignal = Window, Gtk::Widget ->
     def on_set_focus(&__block : SetFocusSignal)
-      __callback = ->(_arg0 : LibGtk::Window*, _arg1 : LibGtk::LibGtk::Widget*) {
+      __callback = ->(_arg0 : LibGtk::Window*, _arg1 : LibGtk::LibGtk::Widget**) {
        __return_value = __block.call(Window.new(_arg0), Gtk::Widget.new(_arg1))
        __return_value
       }

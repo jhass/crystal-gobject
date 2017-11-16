@@ -10,7 +10,7 @@ module Gio
     end
 
 
-    def close(cancellable)
+    def close(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_enumerator_close(@pointer.as(LibGio::FileEnumerator*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -22,7 +22,7 @@ module Gio
       nil
     end
 
-    def close_finish(result)
+    def close_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_enumerator_close_finish(@pointer.as(LibGio::FileEnumerator*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -49,14 +49,14 @@ module Gio
       __return_value
     end
 
-    def iterate(out_info, out_child, cancellable)
+    def iterate(out_info, out_child, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_enumerator_iterate(@pointer.as(LibGio::FileEnumerator*), out_info, out_child, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def next_file(cancellable)
+    def next_file(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_enumerator_next_file(@pointer.as(LibGio::FileEnumerator*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -68,11 +68,11 @@ module Gio
       nil
     end
 
-    def next_files_finish(result)
+    def next_files_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.file_enumerator_next_files_finish(@pointer.as(LibGio::FileEnumerator*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
-      GLib::ListIterator(Gio::FileInfo, LibGio::FileInfo*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gio::FileInfo, LibGio::FileInfo**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def pending=(pending)

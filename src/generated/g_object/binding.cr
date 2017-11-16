@@ -12,28 +12,33 @@ module GObject
     end
 
     def flags
-      __return_value = LibGObject.binding_get_flags(to_unsafe.as(LibGObject::Binding*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "flags", gvalue)
+      gvalue.enum
     end
 
     def source
-      __return_value = LibGObject.binding_get_source(to_unsafe.as(LibGObject::Binding*))
-      GObject::Object.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "source", gvalue)
+      GObject::Object.cast(gvalue.object)
     end
 
     def source_property
-      __return_value = LibGObject.binding_get_source_property(to_unsafe.as(LibGObject::Binding*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "source_property", gvalue)
+      gvalue.string
     end
 
     def target
-      __return_value = LibGObject.binding_get_target(to_unsafe.as(LibGObject::Binding*))
-      GObject::Object.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "target", gvalue)
+      GObject::Object.cast(gvalue.object)
     end
 
     def target_property
-      __return_value = LibGObject.binding_get_target_property(to_unsafe.as(LibGObject::Binding*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "target_property", gvalue)
+      gvalue.string
     end
 
     def flags

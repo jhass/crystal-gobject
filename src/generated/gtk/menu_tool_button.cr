@@ -16,8 +16,9 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
     def menu
-      __return_value = LibGtk.menu_tool_button_get_menu(to_unsafe.as(LibGtk::MenuToolButton*))
-      Gtk::Menu.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "menu", gvalue)
+      Gtk::Menu.cast(gvalue.object)
     end
 
     def self.new(icon_widget, label) : self

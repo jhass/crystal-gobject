@@ -45,7 +45,7 @@ module Gio
       __return_value
     end
 
-    def propagate_error
+    def propagate_error # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.simple_async_result_propagate_error(@pointer.as(LibGio::SimpleAsyncResult*), pointerof(__error))
       GLib::Error.assert __error

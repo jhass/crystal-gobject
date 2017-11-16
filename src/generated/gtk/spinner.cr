@@ -14,8 +14,9 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def active
-      __return_value = LibGtk.spinner_get_active(to_unsafe.as(LibGtk::Spinner*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "active", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self

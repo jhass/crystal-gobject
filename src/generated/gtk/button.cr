@@ -16,48 +16,57 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
     def always_show_image
-      __return_value = LibGtk.button_get_always_show_image(to_unsafe.as(LibGtk::Button*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "always_show_image", gvalue)
+      gvalue.boolean
     end
 
     def image
-      __return_value = LibGtk.button_get_image(to_unsafe.as(LibGtk::Button*))
-      Gtk::Widget.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "image", gvalue)
+      Gtk::Widget.cast(gvalue.object)
     end
 
     def image_position
-      __return_value = LibGtk.button_get_image_position(to_unsafe.as(LibGtk::Button*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "image_position", gvalue)
+      gvalue.enum
     end
 
     def label
-      __return_value = LibGtk.button_get_label(to_unsafe.as(LibGtk::Button*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "label", gvalue)
+      gvalue.string
     end
 
     def relief
-      __return_value = LibGtk.button_get_relief(to_unsafe.as(LibGtk::Button*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "relief", gvalue)
+      gvalue.enum
     end
 
     def use_stock
-      __return_value = LibGtk.button_get_use_stock(to_unsafe.as(LibGtk::Button*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "use_stock", gvalue)
+      gvalue.boolean
     end
 
     def use_underline
-      __return_value = LibGtk.button_get_use_underline(to_unsafe.as(LibGtk::Button*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "use_underline", gvalue)
+      gvalue.boolean
     end
 
     def xalign
-      __return_value = LibGtk.button_get_xalign(to_unsafe.as(LibGtk::Button*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::FLOAT)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "xalign", gvalue)
+      gvalue
     end
 
     def yalign
-      __return_value = LibGtk.button_get_yalign(to_unsafe.as(LibGtk::Button*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::FLOAT)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "yalign", gvalue)
+      gvalue
     end
 
     def self.new : self

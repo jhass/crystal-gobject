@@ -25,7 +25,7 @@ module Gtk
 
     def children
       __return_value = LibGtk.container_cell_accessible_get_children(@pointer.as(LibGtk::ContainerCellAccessible*))
-      GLib::ListIterator(Gtk::CellAccessible, LibGtk::CellAccessible*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gtk::CellAccessible, LibGtk::CellAccessible**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def remove_child(child)

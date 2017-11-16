@@ -15,13 +15,15 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
     def accelerator
-      __return_value = LibGtk.shortcut_label_get_accelerator(to_unsafe.as(LibGtk::ShortcutLabel*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accelerator", gvalue)
+      gvalue.string
     end
 
     def disabled_text
-      __return_value = LibGtk.shortcut_label_get_disabled_text(to_unsafe.as(LibGtk::ShortcutLabel*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "disabled_text", gvalue)
+      gvalue.string
     end
 
     def self.new(accelerator) : self

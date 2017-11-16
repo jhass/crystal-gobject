@@ -30,7 +30,7 @@ module Gio
       nil
     end
 
-    def eject_finish(result)
+    def eject_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.drive_eject_finish(@pointer.as(LibGio::Drive*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -42,7 +42,7 @@ module Gio
       nil
     end
 
-    def eject_with_operation_finish(result)
+    def eject_with_operation_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.drive_eject_with_operation_finish(@pointer.as(LibGio::Drive*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -119,7 +119,7 @@ module Gio
       nil
     end
 
-    def poll_for_media_finish(result)
+    def poll_for_media_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.drive_poll_for_media_finish(@pointer.as(LibGio::Drive*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -131,7 +131,7 @@ module Gio
       nil
     end
 
-    def start_finish(result)
+    def start_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.drive_start_finish(@pointer.as(LibGio::Drive*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -143,7 +143,7 @@ module Gio
       nil
     end
 
-    def stop_finish(result)
+    def stop_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.drive_stop_finish(@pointer.as(LibGio::Drive*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error

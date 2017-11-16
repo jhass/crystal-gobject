@@ -10,18 +10,21 @@ module Gio
     end
 
     def description
-      __return_value = LibGio.tls_password_get_description(to_unsafe.as(LibGio::TlsPassword*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "description", gvalue)
+      gvalue.string
     end
 
     def flags
-      __return_value = LibGio.tls_password_get_flags(to_unsafe.as(LibGio::TlsPassword*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "flags", gvalue)
+      gvalue.enum
     end
 
     def warning
-      __return_value = LibGio.tls_password_get_warning(to_unsafe.as(LibGio::TlsPassword*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "warning", gvalue)
+      gvalue.string
     end
 
     def self.new(flags : Gio::TlsPasswordFlags, description) : self

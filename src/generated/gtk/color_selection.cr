@@ -15,28 +15,33 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
     def current_alpha
-      __return_value = LibGtk.color_selection_get_current_alpha(to_unsafe.as(LibGtk::ColorSelection*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "current_alpha", gvalue)
+      gvalue
     end
 
     def current_color
-      __return_value = LibGtk.color_selection_get_current_color(to_unsafe.as(LibGtk::ColorSelection*))
-      Gdk::Color.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "current_color", gvalue)
+      Gdk::Color.cast(gvalue.object)
     end
 
     def current_rgba
-      __return_value = LibGtk.color_selection_get_current_rgba(to_unsafe.as(LibGtk::ColorSelection*))
-      Gdk::RGBA.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "current_rgba", gvalue)
+      Gdk::RGBA.cast(gvalue.object)
     end
 
     def has_opacity_control
-      __return_value = LibGtk.color_selection_get_has_opacity_control(to_unsafe.as(LibGtk::ColorSelection*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "has_opacity_control", gvalue)
+      gvalue.boolean
     end
 
     def has_palette
-      __return_value = LibGtk.color_selection_get_has_palette(to_unsafe.as(LibGtk::ColorSelection*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "has_palette", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self

@@ -15,13 +15,15 @@ module Gtk
     # Implements Buildable
     # Implements Scrollable
     def height
-      __return_value = LibGtk.layout_get_height(to_unsafe.as(LibGtk::Layout*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "height", gvalue)
+      gvalue
     end
 
     def width
-      __return_value = LibGtk.layout_get_width(to_unsafe.as(LibGtk::Layout*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "width", gvalue)
+      gvalue
     end
 
     def self.new(hadjustment, vadjustment) : self

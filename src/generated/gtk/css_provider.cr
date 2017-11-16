@@ -25,21 +25,21 @@ module Gtk
       Gtk::CssProvider.new(__return_value)
     end
 
-    def load_from_data(data, length)
+    def load_from_data(data, length) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.css_provider_load_from_data(@pointer.as(LibGtk::CssProvider*), data, Int64.new(length), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def load_from_file(file)
+    def load_from_file(file) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.css_provider_load_from_file(@pointer.as(LibGtk::CssProvider*), file.to_unsafe.as(LibGio::File*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def load_from_path(path)
+    def load_from_path(path) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.css_provider_load_from_path(@pointer.as(LibGtk::CssProvider*), path.to_unsafe, pointerof(__error))
       GLib::Error.assert __error

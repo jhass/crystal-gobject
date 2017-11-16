@@ -10,13 +10,15 @@ module Gdk
     end
 
     def cursor_type
-      __return_value = LibGdk.cursor_get_cursor_type(to_unsafe.as(LibGdk::Cursor*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "cursor_type", gvalue)
+      gvalue.enum
     end
 
     def display
-      __return_value = LibGdk.cursor_get_display(to_unsafe.as(LibGdk::Cursor*))
-      Gdk::Display.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "display", gvalue)
+      Gdk::Display.cast(gvalue.object)
     end
 
     def self.new(cursor_type : Gdk::CursorType) : self

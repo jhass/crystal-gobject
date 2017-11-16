@@ -23,7 +23,7 @@ module Gst
 
     def self.list_get_device_providers(minrank : Gst::Rank)
       __return_value = LibGst.device_provider_factory_list_get_device_providers(minrank)
-      GLib::ListIterator(Gst::DeviceProviderFactory, LibGst::DeviceProviderFactory*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gst::DeviceProviderFactory, LibGst::DeviceProviderFactory**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def get

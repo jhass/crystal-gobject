@@ -12,53 +12,63 @@ module Gtk
     end
 
     def follow_state
-      __return_value = LibGtk.cell_renderer_pixbuf_get_follow_state(to_unsafe.as(LibGtk::CellRendererPixbuf*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "follow_state", gvalue)
+      gvalue.boolean
     end
 
     def gicon
-      __return_value = LibGtk.cell_renderer_pixbuf_get_gicon(to_unsafe.as(LibGtk::CellRendererPixbuf*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "gicon", gvalue)
+      gvalue
     end
 
     def icon_name
-      __return_value = LibGtk.cell_renderer_pixbuf_get_icon_name(to_unsafe.as(LibGtk::CellRendererPixbuf*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "icon_name", gvalue)
+      gvalue.string
     end
 
     def pixbuf
-      __return_value = LibGtk.cell_renderer_pixbuf_get_pixbuf(to_unsafe.as(LibGtk::CellRendererPixbuf*))
-      GdkPixbuf::Pixbuf.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pixbuf", gvalue)
+      GdkPixbuf::Pixbuf.cast(gvalue.object)
     end
 
     def pixbuf_expander_closed
-      __return_value = LibGtk.cell_renderer_pixbuf_get_pixbuf_expander_closed(to_unsafe.as(LibGtk::CellRendererPixbuf*))
-      GdkPixbuf::Pixbuf.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pixbuf_expander_closed", gvalue)
+      GdkPixbuf::Pixbuf.cast(gvalue.object)
     end
 
     def pixbuf_expander_open
-      __return_value = LibGtk.cell_renderer_pixbuf_get_pixbuf_expander_open(to_unsafe.as(LibGtk::CellRendererPixbuf*))
-      GdkPixbuf::Pixbuf.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pixbuf_expander_open", gvalue)
+      GdkPixbuf::Pixbuf.cast(gvalue.object)
     end
 
     def stock_detail
-      __return_value = LibGtk.cell_renderer_pixbuf_get_stock_detail(to_unsafe.as(LibGtk::CellRendererPixbuf*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "stock_detail", gvalue)
+      gvalue.string
     end
 
     def stock_id
-      __return_value = LibGtk.cell_renderer_pixbuf_get_stock_id(to_unsafe.as(LibGtk::CellRendererPixbuf*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "stock_id", gvalue)
+      gvalue.string
     end
 
     def stock_size
-      __return_value = LibGtk.cell_renderer_pixbuf_get_stock_size(to_unsafe.as(LibGtk::CellRendererPixbuf*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "stock_size", gvalue)
+      gvalue
     end
 
     def surface
-      __return_value = LibGtk.cell_renderer_pixbuf_get_surface(to_unsafe.as(LibGtk::CellRendererPixbuf*))
-      Cairo::Surface.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "surface", gvalue)
+      Cairo::Surface.cast(gvalue.object)
     end
 
     def self.new : self

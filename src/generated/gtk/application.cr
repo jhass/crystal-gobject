@@ -12,23 +12,27 @@ module Gtk
     # Implements ActionGroup
     # Implements ActionMap
     def active_window
-      __return_value = LibGtk.application_get_active_window(to_unsafe.as(LibGtk::Application*))
-      Gtk::Window.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "active_window", gvalue)
+      Gtk::Window.cast(gvalue.object)
     end
 
     def app_menu
-      __return_value = LibGtk.application_get_app_menu(to_unsafe.as(LibGtk::Application*))
-      Gio::MenuModel.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "app_menu", gvalue)
+      Gio::MenuModel.cast(gvalue.object)
     end
 
     def menubar
-      __return_value = LibGtk.application_get_menubar(to_unsafe.as(LibGtk::Application*))
-      Gio::MenuModel.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "menubar", gvalue)
+      Gio::MenuModel.cast(gvalue.object)
     end
 
     def register_session
-      __return_value = LibGtk.application_get_register_session(to_unsafe.as(LibGtk::Application*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "register_session", gvalue)
+      gvalue.boolean
     end
 
     def self.new(application_id, flags : Gio::ApplicationFlags) : self
@@ -83,7 +87,7 @@ module Gtk
 
     def windows
       __return_value = LibGtk.application_get_windows(@pointer.as(LibGtk::Application*))
-      GLib::ListIterator(Gtk::Window, LibGtk::Window*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gtk::Window, LibGtk::Window**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def inhibit(window, flags : Gtk::ApplicationInhibitFlags, reason)
@@ -138,7 +142,7 @@ module Gtk
 
     alias WindowAddedSignal = Application, Gtk::Window ->
     def on_window_added(&__block : WindowAddedSignal)
-      __callback = ->(_arg0 : LibGtk::Application*, _arg1 : LibGtk::LibGtk::Window*) {
+      __callback = ->(_arg0 : LibGtk::Application*, _arg1 : LibGtk::LibGtk::Window**) {
        __return_value = __block.call(Application.new(_arg0), Gtk::Window.new(_arg1))
        __return_value
       }
@@ -147,7 +151,7 @@ module Gtk
 
     alias WindowRemovedSignal = Application, Gtk::Window ->
     def on_window_removed(&__block : WindowRemovedSignal)
-      __callback = ->(_arg0 : LibGtk::Application*, _arg1 : LibGtk::LibGtk::Window*) {
+      __callback = ->(_arg0 : LibGtk::Application*, _arg1 : LibGtk::LibGtk::Window**) {
        __return_value = __block.call(Application.new(_arg0), Gtk::Window.new(_arg1))
        __return_value
       }

@@ -12,8 +12,9 @@ module Gst
     end
 
     def show_all
-      __return_value = LibGst.device_monitor_get_show_all(to_unsafe.as(LibGst::DeviceMonitor*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_all", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self
@@ -33,7 +34,7 @@ module Gst
 
     def devices
       __return_value = LibGst.device_monitor_get_devices(@pointer.as(LibGst::DeviceMonitor*))
-      GLib::ListIterator(Gst::Device, LibGst::Device*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gst::Device, LibGst::Device**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def providers

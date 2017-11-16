@@ -15,13 +15,15 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
     def message_type
-      __return_value = LibGtk.info_bar_get_message_type(to_unsafe.as(LibGtk::InfoBar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "message_type", gvalue)
+      gvalue.enum
     end
 
     def show_close_button
-      __return_value = LibGtk.info_bar_get_show_close_button(to_unsafe.as(LibGtk::InfoBar*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_close_button", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self

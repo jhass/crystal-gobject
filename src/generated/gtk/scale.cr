@@ -15,23 +15,27 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
     def digits
-      __return_value = LibGtk.scale_get_digits(to_unsafe.as(LibGtk::Scale*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "digits", gvalue)
+      gvalue
     end
 
     def draw_value
-      __return_value = LibGtk.scale_get_draw_value(to_unsafe.as(LibGtk::Scale*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "draw_value", gvalue)
+      gvalue.boolean
     end
 
     def has_origin
-      __return_value = LibGtk.scale_get_has_origin(to_unsafe.as(LibGtk::Scale*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "has_origin", gvalue)
+      gvalue.boolean
     end
 
     def value_pos
-      __return_value = LibGtk.scale_get_value_pos(to_unsafe.as(LibGtk::Scale*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "value_pos", gvalue)
+      gvalue.enum
     end
 
     def self.new(orientation : Gtk::Orientation, adjustment) : self

@@ -14,14 +14,16 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def border_width
-      __return_value = LibGtk.container_get_border_width(to_unsafe.as(LibGtk::Container*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "border_width", gvalue)
+      gvalue
     end
 
 
     def resize_mode
-      __return_value = LibGtk.container_get_resize_mode(to_unsafe.as(LibGtk::Container*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "resize_mode", gvalue)
+      gvalue.enum
     end
 
     def add(widget)
@@ -76,7 +78,7 @@ module Gtk
 
     def children
       __return_value = LibGtk.container_get_children(@pointer.as(LibGtk::Container*))
-      GLib::ListIterator(Gtk::Widget, LibGtk::Widget*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gtk::Widget, LibGtk::Widget**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def focus_chain(focusable_widgets)
@@ -166,7 +168,7 @@ module Gtk
 
     alias AddSignal = Container, Gtk::Widget ->
     def on_add(&__block : AddSignal)
-      __callback = ->(_arg0 : LibGtk::Container*, _arg1 : LibGtk::LibGtk::Widget*) {
+      __callback = ->(_arg0 : LibGtk::Container*, _arg1 : LibGtk::LibGtk::Widget**) {
        __return_value = __block.call(Container.new(_arg0), Gtk::Widget.new(_arg1))
        __return_value
       }
@@ -184,7 +186,7 @@ module Gtk
 
     alias RemoveSignal = Container, Gtk::Widget ->
     def on_remove(&__block : RemoveSignal)
-      __callback = ->(_arg0 : LibGtk::Container*, _arg1 : LibGtk::LibGtk::Widget*) {
+      __callback = ->(_arg0 : LibGtk::Container*, _arg1 : LibGtk::LibGtk::Widget**) {
        __return_value = __block.call(Container.new(_arg0), Gtk::Widget.new(_arg1))
        __return_value
       }
@@ -193,7 +195,7 @@ module Gtk
 
     alias SetFocusChildSignal = Container, Gtk::Widget ->
     def on_set_focus_child(&__block : SetFocusChildSignal)
-      __callback = ->(_arg0 : LibGtk::Container*, _arg1 : LibGtk::LibGtk::Widget*) {
+      __callback = ->(_arg0 : LibGtk::Container*, _arg1 : LibGtk::LibGtk::Widget**) {
        __return_value = __block.call(Container.new(_arg0), Gtk::Widget.new(_arg1))
        __return_value
       }

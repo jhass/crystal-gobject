@@ -13,13 +13,15 @@ module Gtk
 
     # Implements Buildable
     def active
-      __return_value = LibGtk.toggle_action_get_active(to_unsafe.as(LibGtk::ToggleAction*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "active", gvalue)
+      gvalue.boolean
     end
 
     def draw_as_radio
-      __return_value = LibGtk.toggle_action_get_draw_as_radio(to_unsafe.as(LibGtk::ToggleAction*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "draw_as_radio", gvalue)
+      gvalue.boolean
     end
 
     def self.new(name, label, tooltip, stock_id) : self

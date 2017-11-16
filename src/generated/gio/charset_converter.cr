@@ -12,21 +12,24 @@ module Gio
     # Implements Converter
     # Implements Initable
     def from_charset
-      __return_value = LibGio.charset_converter_get_from_charset(to_unsafe.as(LibGio::CharsetConverter*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "from_charset", gvalue)
+      gvalue.string
     end
 
     def to_charset
-      __return_value = LibGio.charset_converter_get_to_charset(to_unsafe.as(LibGio::CharsetConverter*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "to_charset", gvalue)
+      gvalue.string
     end
 
     def use_fallback
-      __return_value = LibGio.charset_converter_get_use_fallback(to_unsafe.as(LibGio::CharsetConverter*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "use_fallback", gvalue)
+      gvalue.boolean
     end
 
-    def self.new(to_charset, from_charset) : self
+    def self.new(to_charset, from_charset) : self # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.charset_converter_new(to_charset.to_unsafe, from_charset.to_unsafe, pointerof(__error))
       GLib::Error.assert __error

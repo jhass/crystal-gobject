@@ -9,7 +9,7 @@ module Gio
       @pointer.not_nil!.as(LibGio::TlsInteraction*)
     end
 
-    def ask_password(password, cancellable)
+    def ask_password(password, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.tls_interaction_ask_password(@pointer.as(LibGio::TlsInteraction*), password.to_unsafe.as(LibGio::TlsPassword*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -21,28 +21,28 @@ module Gio
       nil
     end
 
-    def ask_password_finish(result)
+    def ask_password_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.tls_interaction_ask_password_finish(@pointer.as(LibGio::TlsInteraction*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def invoke_ask_password(password, cancellable)
+    def invoke_ask_password(password, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.tls_interaction_invoke_ask_password(@pointer.as(LibGio::TlsInteraction*), password.to_unsafe.as(LibGio::TlsPassword*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def invoke_request_certificate(connection, flags : Gio::TlsCertificateRequestFlags, cancellable)
+    def invoke_request_certificate(connection, flags : Gio::TlsCertificateRequestFlags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.tls_interaction_invoke_request_certificate(@pointer.as(LibGio::TlsInteraction*), connection.to_unsafe.as(LibGio::TlsConnection*), flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def request_certificate(connection, flags : Gio::TlsCertificateRequestFlags, cancellable)
+    def request_certificate(connection, flags : Gio::TlsCertificateRequestFlags, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.tls_interaction_request_certificate(@pointer.as(LibGio::TlsInteraction*), connection.to_unsafe.as(LibGio::TlsConnection*), flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -54,7 +54,7 @@ module Gio
       nil
     end
 
-    def request_certificate_finish(result)
+    def request_certificate_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.tls_interaction_request_certificate_finish(@pointer.as(LibGio::TlsInteraction*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error

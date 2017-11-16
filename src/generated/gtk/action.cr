@@ -11,83 +11,99 @@ module Gtk
 
     # Implements Buildable
     def action_group
-      __return_value = LibGtk.action_get_action_group(to_unsafe.as(LibGtk::Action*))
-      Gtk::ActionGroup.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "action_group", gvalue)
+      Gtk::ActionGroup.cast(gvalue.object)
     end
 
     def always_show_image
-      __return_value = LibGtk.action_get_always_show_image(to_unsafe.as(LibGtk::Action*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "always_show_image", gvalue)
+      gvalue.boolean
     end
 
     def gicon
-      __return_value = LibGtk.action_get_gicon(to_unsafe.as(LibGtk::Action*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "gicon", gvalue)
+      gvalue
     end
 
     def hide_if_empty
-      __return_value = LibGtk.action_get_hide_if_empty(to_unsafe.as(LibGtk::Action*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "hide_if_empty", gvalue)
+      gvalue.boolean
     end
 
     def icon_name
-      __return_value = LibGtk.action_get_icon_name(to_unsafe.as(LibGtk::Action*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "icon_name", gvalue)
+      gvalue.string
     end
 
     def is_important
-      __return_value = LibGtk.action_get_is_important(to_unsafe.as(LibGtk::Action*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_important", gvalue)
+      gvalue.boolean
     end
 
     def label
-      __return_value = LibGtk.action_get_label(to_unsafe.as(LibGtk::Action*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "label", gvalue)
+      gvalue.string
     end
 
     def name
-      __return_value = LibGtk.action_get_name(to_unsafe.as(LibGtk::Action*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "name", gvalue)
+      gvalue.string
     end
 
     def sensitive
-      __return_value = LibGtk.action_get_sensitive(to_unsafe.as(LibGtk::Action*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "sensitive", gvalue)
+      gvalue.boolean
     end
 
     def short_label
-      __return_value = LibGtk.action_get_short_label(to_unsafe.as(LibGtk::Action*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "short_label", gvalue)
+      gvalue.string
     end
 
     def stock_id
-      __return_value = LibGtk.action_get_stock_id(to_unsafe.as(LibGtk::Action*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "stock_id", gvalue)
+      gvalue.string
     end
 
     def tooltip
-      __return_value = LibGtk.action_get_tooltip(to_unsafe.as(LibGtk::Action*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "tooltip", gvalue)
+      gvalue.string
     end
 
     def visible
-      __return_value = LibGtk.action_get_visible(to_unsafe.as(LibGtk::Action*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "visible", gvalue)
+      gvalue.boolean
     end
 
     def visible_horizontal
-      __return_value = LibGtk.action_get_visible_horizontal(to_unsafe.as(LibGtk::Action*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "visible_horizontal", gvalue)
+      gvalue.boolean
     end
 
     def visible_overflown
-      __return_value = LibGtk.action_get_visible_overflown(to_unsafe.as(LibGtk::Action*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "visible_overflown", gvalue)
+      gvalue.boolean
     end
 
     def visible_vertical
-      __return_value = LibGtk.action_get_visible_vertical(to_unsafe.as(LibGtk::Action*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "visible_vertical", gvalue)
+      gvalue.boolean
     end
 
     def self.new(name, label, tooltip, stock_id) : self
@@ -177,7 +193,7 @@ module Gtk
 
     def proxies
       __return_value = LibGtk.action_get_proxies(@pointer.as(LibGtk::Action*))
-      GLib::SListIterator(Gtk::Widget, LibGtk::Widget*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
+      GLib::SListIterator(Gtk::Widget, LibGtk::Widget**).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
     def sensitive

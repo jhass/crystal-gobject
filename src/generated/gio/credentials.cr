@@ -14,21 +14,21 @@ module Gio
       cast Gio::Credentials.new(__return_value)
     end
 
-    def unix_pid
+    def unix_pid # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.credentials_get_unix_pid(@pointer.as(LibGio::Credentials*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def unix_user
+    def unix_user # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.credentials_get_unix_user(@pointer.as(LibGio::Credentials*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def same_user?(other_credentials)
+    def same_user?(other_credentials) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.credentials_is_same_user(@pointer.as(LibGio::Credentials*), other_credentials.to_unsafe.as(LibGio::Credentials*), pointerof(__error))
       GLib::Error.assert __error
@@ -40,7 +40,7 @@ module Gio
       nil
     end
 
-    def set_unix_user(uid)
+    def set_unix_user(uid) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.credentials_set_unix_user(@pointer.as(LibGio::Credentials*), UInt32.new(uid), pointerof(__error))
       GLib::Error.assert __error

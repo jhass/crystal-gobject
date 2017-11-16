@@ -16,83 +16,99 @@ module Gtk
     # Implements CellEditable
     # Implements CellLayout
     def active
-      __return_value = LibGtk.combo_box_get_active(to_unsafe.as(LibGtk::ComboBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "active", gvalue)
+      gvalue
     end
 
     def active_id
-      __return_value = LibGtk.combo_box_get_active_id(to_unsafe.as(LibGtk::ComboBox*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "active_id", gvalue)
+      gvalue.string
     end
 
     def add_tearoffs
-      __return_value = LibGtk.combo_box_get_add_tearoffs(to_unsafe.as(LibGtk::ComboBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "add_tearoffs", gvalue)
+      gvalue.boolean
     end
 
     def button_sensitivity
-      __return_value = LibGtk.combo_box_get_button_sensitivity(to_unsafe.as(LibGtk::ComboBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "button_sensitivity", gvalue)
+      gvalue.enum
     end
 
     def cell_area
-      __return_value = LibGtk.combo_box_get_cell_area(to_unsafe.as(LibGtk::ComboBox*))
-      Gtk::CellArea.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "cell_area", gvalue)
+      Gtk::CellArea.cast(gvalue.object)
     end
 
     def column_span_column
-      __return_value = LibGtk.combo_box_get_column_span_column(to_unsafe.as(LibGtk::ComboBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "column_span_column", gvalue)
+      gvalue
     end
 
     def entry_text_column
-      __return_value = LibGtk.combo_box_get_entry_text_column(to_unsafe.as(LibGtk::ComboBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "entry_text_column", gvalue)
+      gvalue
     end
 
     def has_entry
-      __return_value = LibGtk.combo_box_get_has_entry(to_unsafe.as(LibGtk::ComboBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "has_entry", gvalue)
+      gvalue.boolean
     end
 
     def has_frame
-      __return_value = LibGtk.combo_box_get_has_frame(to_unsafe.as(LibGtk::ComboBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "has_frame", gvalue)
+      gvalue.boolean
     end
 
     def id_column
-      __return_value = LibGtk.combo_box_get_id_column(to_unsafe.as(LibGtk::ComboBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "id_column", gvalue)
+      gvalue
     end
 
     def model
-      __return_value = LibGtk.combo_box_get_model(to_unsafe.as(LibGtk::ComboBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "model", gvalue)
+      gvalue
     end
 
     def popup_fixed_width
-      __return_value = LibGtk.combo_box_get_popup_fixed_width(to_unsafe.as(LibGtk::ComboBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "popup_fixed_width", gvalue)
+      gvalue.boolean
     end
 
     def popup_shown
-      __return_value = LibGtk.combo_box_get_popup_shown(to_unsafe.as(LibGtk::ComboBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "popup_shown", gvalue)
+      gvalue.boolean
     end
 
     def row_span_column
-      __return_value = LibGtk.combo_box_get_row_span_column(to_unsafe.as(LibGtk::ComboBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "row_span_column", gvalue)
+      gvalue
     end
 
     def tearoff_title
-      __return_value = LibGtk.combo_box_get_tearoff_title(to_unsafe.as(LibGtk::ComboBox*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "tearoff_title", gvalue)
+      gvalue.string
     end
 
     def wrap_width
-      __return_value = LibGtk.combo_box_get_wrap_width(to_unsafe.as(LibGtk::ComboBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "wrap_width", gvalue)
+      gvalue
     end
 
     def self.new : self

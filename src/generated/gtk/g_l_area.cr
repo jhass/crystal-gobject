@@ -14,33 +14,39 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def auto_render
-      __return_value = LibGtk.g_l_area_get_auto_render(to_unsafe.as(LibGtk::GLArea*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "auto_render", gvalue)
+      gvalue.boolean
     end
 
     def context
-      __return_value = LibGtk.g_l_area_get_context(to_unsafe.as(LibGtk::GLArea*))
-      Gdk::GLContext.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "context", gvalue)
+      Gdk::GLContext.cast(gvalue.object)
     end
 
     def has_alpha
-      __return_value = LibGtk.g_l_area_get_has_alpha(to_unsafe.as(LibGtk::GLArea*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "has_alpha", gvalue)
+      gvalue.boolean
     end
 
     def has_depth_buffer
-      __return_value = LibGtk.g_l_area_get_has_depth_buffer(to_unsafe.as(LibGtk::GLArea*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "has_depth_buffer", gvalue)
+      gvalue.boolean
     end
 
     def has_stencil_buffer
-      __return_value = LibGtk.g_l_area_get_has_stencil_buffer(to_unsafe.as(LibGtk::GLArea*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "has_stencil_buffer", gvalue)
+      gvalue.boolean
     end
 
     def use_es
-      __return_value = LibGtk.g_l_area_get_use_es(to_unsafe.as(LibGtk::GLArea*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "use_es", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self
@@ -149,7 +155,7 @@ module Gtk
 
     alias RenderSignal = GLArea, Gdk::GLContext -> Bool
     def on_render(&__block : RenderSignal)
-      __callback = ->(_arg0 : LibGtk::GLArea*, _arg1 : LibGtk::LibGdk::GLContext*) {
+      __callback = ->(_arg0 : LibGtk::GLArea*, _arg1 : LibGtk::LibGdk::GLContext**) {
        __return_value = __block.call(GLArea.new(_arg0), Gdk::GLContext.new(_arg1))
        __return_value
       }

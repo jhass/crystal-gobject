@@ -10,28 +10,33 @@ module Gtk
     end
 
     def area
-      __return_value = LibGtk.cell_area_context_get_area(to_unsafe.as(LibGtk::CellAreaContext*))
-      Gtk::CellArea.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "area", gvalue)
+      Gtk::CellArea.cast(gvalue.object)
     end
 
     def minimum_height
-      __return_value = LibGtk.cell_area_context_get_minimum_height(to_unsafe.as(LibGtk::CellAreaContext*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "minimum_height", gvalue)
+      gvalue
     end
 
     def minimum_width
-      __return_value = LibGtk.cell_area_context_get_minimum_width(to_unsafe.as(LibGtk::CellAreaContext*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "minimum_width", gvalue)
+      gvalue
     end
 
     def natural_height
-      __return_value = LibGtk.cell_area_context_get_natural_height(to_unsafe.as(LibGtk::CellAreaContext*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "natural_height", gvalue)
+      gvalue
     end
 
     def natural_width
-      __return_value = LibGtk.cell_area_context_get_natural_width(to_unsafe.as(LibGtk::CellAreaContext*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "natural_width", gvalue)
+      gvalue
     end
 
     def allocate(width, height)

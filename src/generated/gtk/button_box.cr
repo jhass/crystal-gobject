@@ -15,8 +15,9 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
     def layout_style
-      __return_value = LibGtk.button_box_get_layout_style(to_unsafe.as(LibGtk::ButtonBox*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "layout_style", gvalue)
+      gvalue.enum
     end
 
     def self.new(orientation : Gtk::Orientation) : self

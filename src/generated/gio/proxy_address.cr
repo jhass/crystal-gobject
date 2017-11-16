@@ -13,38 +13,45 @@ module Gio
 
     # Implements SocketConnectable
     def destination_hostname
-      __return_value = LibGio.proxy_address_get_destination_hostname(to_unsafe.as(LibGio::ProxyAddress*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "destination_hostname", gvalue)
+      gvalue.string
     end
 
     def destination_port
-      __return_value = LibGio.proxy_address_get_destination_port(to_unsafe.as(LibGio::ProxyAddress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "destination_port", gvalue)
+      gvalue
     end
 
     def destination_protocol
-      __return_value = LibGio.proxy_address_get_destination_protocol(to_unsafe.as(LibGio::ProxyAddress*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "destination_protocol", gvalue)
+      gvalue.string
     end
 
     def password
-      __return_value = LibGio.proxy_address_get_password(to_unsafe.as(LibGio::ProxyAddress*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "password", gvalue)
+      gvalue.string
     end
 
     def protocol
-      __return_value = LibGio.proxy_address_get_protocol(to_unsafe.as(LibGio::ProxyAddress*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "protocol", gvalue)
+      gvalue.string
     end
 
     def uri
-      __return_value = LibGio.proxy_address_get_uri(to_unsafe.as(LibGio::ProxyAddress*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "uri", gvalue)
+      gvalue.string
     end
 
     def username
-      __return_value = LibGio.proxy_address_get_username(to_unsafe.as(LibGio::ProxyAddress*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "username", gvalue)
+      gvalue.string
     end
 
     def self.new(inetaddr, port, protocol, dest_hostname, dest_port, username, password) : self

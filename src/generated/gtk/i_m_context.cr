@@ -10,13 +10,15 @@ module Gtk
     end
 
     def input_hints
-      __return_value = LibGtk.i_m_context_get_input_hints(to_unsafe.as(LibGtk::IMContext*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "input_hints", gvalue)
+      gvalue.enum
     end
 
     def input_purpose
-      __return_value = LibGtk.i_m_context_get_input_purpose(to_unsafe.as(LibGtk::IMContext*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "input_purpose", gvalue)
+      gvalue.enum
     end
 
     def delete_surrounding(offset, n_chars)

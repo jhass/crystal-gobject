@@ -12,18 +12,21 @@ module Gtk
     end
 
     def active
-      __return_value = LibGtk.cell_renderer_spinner_get_active(to_unsafe.as(LibGtk::CellRendererSpinner*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "active", gvalue)
+      gvalue.boolean
     end
 
     def pulse
-      __return_value = LibGtk.cell_renderer_spinner_get_pulse(to_unsafe.as(LibGtk::CellRendererSpinner*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pulse", gvalue)
+      gvalue
     end
 
     def size
-      __return_value = LibGtk.cell_renderer_spinner_get_size(to_unsafe.as(LibGtk::CellRendererSpinner*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "size", gvalue)
+      gvalue.enum
     end
 
     def self.new : self

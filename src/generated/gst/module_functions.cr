@@ -179,7 +179,7 @@ module Gst
     __return_value
   end
 
-  def self.filename_to_uri(filename)
+  def self.filename_to_uri(filename) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGst.filename_to_uri(filename.to_unsafe, pointerof(__error))
     GLib::Error.assert __error
@@ -236,7 +236,7 @@ module Gst
     nil
   end
 
-  def self.init_check(argc, argv)
+  def self.init_check(argc, argv) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGst.init_check(argc, argv, pointerof(__error))
     GLib::Error.assert __error
@@ -328,14 +328,14 @@ module Gst
     Gst::MetaInfo.new(__return_value)
   end
 
-  def self.parse_bin_from_description(bin_description, ghost_unlinked_pads)
+  def self.parse_bin_from_description(bin_description, ghost_unlinked_pads) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGst.parse_bin_from_description(bin_description.to_unsafe, ghost_unlinked_pads, pointerof(__error))
     GLib::Error.assert __error
     Gst::Bin.new(__return_value) if __return_value
   end
 
-  def self.parse_bin_from_description_full(bin_description, ghost_unlinked_pads, context, flags : Gst::ParseFlags)
+  def self.parse_bin_from_description_full(bin_description, ghost_unlinked_pads, context, flags : Gst::ParseFlags) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGst.parse_bin_from_description_full(bin_description.to_unsafe, ghost_unlinked_pads, context ? context.to_unsafe.as(LibGst::ParseContext*) : nil, flags, pointerof(__error))
     GLib::Error.assert __error
@@ -347,28 +347,28 @@ module Gst
     __return_value
   end
 
-  def self.parse_launch(pipeline_description)
+  def self.parse_launch(pipeline_description) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGst.parse_launch(pipeline_description.to_unsafe, pointerof(__error))
     GLib::Error.assert __error
     Gst::Element.new(__return_value)
   end
 
-  def self.parse_launch_full(pipeline_description, context, flags : Gst::ParseFlags)
+  def self.parse_launch_full(pipeline_description, context, flags : Gst::ParseFlags) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGst.parse_launch_full(pipeline_description.to_unsafe, context ? context.to_unsafe.as(LibGst::ParseContext*) : nil, flags, pointerof(__error))
     GLib::Error.assert __error
     Gst::Element.new(__return_value)
   end
 
-  def self.parse_launchv(argv)
+  def self.parse_launchv(argv) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGst.parse_launchv(argv, pointerof(__error))
     GLib::Error.assert __error
     Gst::Element.new(__return_value)
   end
 
-  def self.parse_launchv_full(argv, context, flags : Gst::ParseFlags)
+  def self.parse_launchv_full(argv, context, flags : Gst::ParseFlags) # function
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGst.parse_launchv_full(argv, context ? context.to_unsafe.as(LibGst::ParseContext*) : nil, flags, pointerof(__error))
     GLib::Error.assert __error

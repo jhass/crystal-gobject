@@ -14,23 +14,27 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def xalign
-      __return_value = LibGtk.misc_get_xalign(to_unsafe.as(LibGtk::Misc*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::FLOAT)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "xalign", gvalue)
+      gvalue
     end
 
     def xpad
-      __return_value = LibGtk.misc_get_xpad(to_unsafe.as(LibGtk::Misc*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "xpad", gvalue)
+      gvalue
     end
 
     def yalign
-      __return_value = LibGtk.misc_get_yalign(to_unsafe.as(LibGtk::Misc*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::FLOAT)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "yalign", gvalue)
+      gvalue
     end
 
     def ypad
-      __return_value = LibGtk.misc_get_ypad(to_unsafe.as(LibGtk::Misc*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "ypad", gvalue)
+      gvalue
     end
 
     def alignment(xalign, yalign)

@@ -10,33 +10,39 @@ module Gtk
     end
 
     def lower
-      __return_value = LibGtk.adjustment_get_lower(to_unsafe.as(LibGtk::Adjustment*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "lower", gvalue)
+      gvalue
     end
 
     def page_increment
-      __return_value = LibGtk.adjustment_get_page_increment(to_unsafe.as(LibGtk::Adjustment*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "page_increment", gvalue)
+      gvalue
     end
 
     def page_size
-      __return_value = LibGtk.adjustment_get_page_size(to_unsafe.as(LibGtk::Adjustment*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "page_size", gvalue)
+      gvalue
     end
 
     def step_increment
-      __return_value = LibGtk.adjustment_get_step_increment(to_unsafe.as(LibGtk::Adjustment*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "step_increment", gvalue)
+      gvalue
     end
 
     def upper
-      __return_value = LibGtk.adjustment_get_upper(to_unsafe.as(LibGtk::Adjustment*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "upper", gvalue)
+      gvalue
     end
 
     def value
-      __return_value = LibGtk.adjustment_get_value(to_unsafe.as(LibGtk::Adjustment*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "value", gvalue)
+      gvalue
     end
 
     def self.new(value, lower, upper, step_increment, page_increment, page_size) : self

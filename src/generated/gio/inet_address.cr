@@ -10,63 +10,75 @@ module Gio
     end
 
     def bytes
-      __return_value = LibGio.inet_address_get_bytes(to_unsafe.as(LibGio::InetAddress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::ZERO_NONE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "bytes", gvalue)
+      gvalue
     end
 
     def family
-      __return_value = LibGio.inet_address_get_family(to_unsafe.as(LibGio::InetAddress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "family", gvalue)
+      gvalue.enum
     end
 
     def is_any
-      __return_value = LibGio.inet_address_get_is_any(to_unsafe.as(LibGio::InetAddress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_any", gvalue)
+      gvalue.boolean
     end
 
     def is_link_local
-      __return_value = LibGio.inet_address_get_is_link_local(to_unsafe.as(LibGio::InetAddress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_link_local", gvalue)
+      gvalue.boolean
     end
 
     def is_loopback
-      __return_value = LibGio.inet_address_get_is_loopback(to_unsafe.as(LibGio::InetAddress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_loopback", gvalue)
+      gvalue.boolean
     end
 
     def is_mc_global
-      __return_value = LibGio.inet_address_get_is_mc_global(to_unsafe.as(LibGio::InetAddress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_mc_global", gvalue)
+      gvalue.boolean
     end
 
     def is_mc_link_local
-      __return_value = LibGio.inet_address_get_is_mc_link_local(to_unsafe.as(LibGio::InetAddress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_mc_link_local", gvalue)
+      gvalue.boolean
     end
 
     def is_mc_node_local
-      __return_value = LibGio.inet_address_get_is_mc_node_local(to_unsafe.as(LibGio::InetAddress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_mc_node_local", gvalue)
+      gvalue.boolean
     end
 
     def is_mc_org_local
-      __return_value = LibGio.inet_address_get_is_mc_org_local(to_unsafe.as(LibGio::InetAddress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_mc_org_local", gvalue)
+      gvalue.boolean
     end
 
     def is_mc_site_local
-      __return_value = LibGio.inet_address_get_is_mc_site_local(to_unsafe.as(LibGio::InetAddress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_mc_site_local", gvalue)
+      gvalue.boolean
     end
 
     def is_multicast
-      __return_value = LibGio.inet_address_get_is_multicast(to_unsafe.as(LibGio::InetAddress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_multicast", gvalue)
+      gvalue.boolean
     end
 
     def is_site_local
-      __return_value = LibGio.inet_address_get_is_site_local(to_unsafe.as(LibGio::InetAddress*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_site_local", gvalue)
+      gvalue.boolean
     end
 
     def self.new_any(family : Gio::SocketFamily) : self

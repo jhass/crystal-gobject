@@ -5,7 +5,7 @@ module Gio
       __return_value
     end
 
-    def condition_wait(condition : GLib::IOCondition, timeout, cancellable)
+    def condition_wait(condition : GLib::IOCondition, timeout, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.datagram_based_condition_wait(@pointer.as(LibGio::DatagramBased*), condition, Int64.new(timeout), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -17,14 +17,14 @@ module Gio
       GLib::Source.new(__return_value)
     end
 
-    def receive_messages(messages, num_messages, flags, timeout, cancellable)
+    def receive_messages(messages, num_messages, flags, timeout, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.datagram_based_receive_messages(@pointer.as(LibGio::DatagramBased*), messages, UInt32.new(num_messages), Int32.new(flags), Int64.new(timeout), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def send_messages(messages, num_messages, flags, timeout, cancellable)
+    def send_messages(messages, num_messages, flags, timeout, cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.datagram_based_send_messages(@pointer.as(LibGio::DatagramBased*), messages, UInt32.new(num_messages), Int32.new(flags), Int64.new(timeout), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error

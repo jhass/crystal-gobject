@@ -12,48 +12,57 @@ module Gtk
     # Implements Buildable
     # Implements CellLayout
     def cell_area
-      __return_value = LibGtk.entry_completion_get_cell_area(to_unsafe.as(LibGtk::EntryCompletion*))
-      Gtk::CellArea.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "cell_area", gvalue)
+      Gtk::CellArea.cast(gvalue.object)
     end
 
     def inline_completion
-      __return_value = LibGtk.entry_completion_get_inline_completion(to_unsafe.as(LibGtk::EntryCompletion*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "inline_completion", gvalue)
+      gvalue.boolean
     end
 
     def inline_selection
-      __return_value = LibGtk.entry_completion_get_inline_selection(to_unsafe.as(LibGtk::EntryCompletion*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "inline_selection", gvalue)
+      gvalue.boolean
     end
 
     def minimum_key_length
-      __return_value = LibGtk.entry_completion_get_minimum_key_length(to_unsafe.as(LibGtk::EntryCompletion*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "minimum_key_length", gvalue)
+      gvalue
     end
 
     def model
-      __return_value = LibGtk.entry_completion_get_model(to_unsafe.as(LibGtk::EntryCompletion*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "model", gvalue)
+      gvalue
     end
 
     def popup_completion
-      __return_value = LibGtk.entry_completion_get_popup_completion(to_unsafe.as(LibGtk::EntryCompletion*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "popup_completion", gvalue)
+      gvalue.boolean
     end
 
     def popup_set_width
-      __return_value = LibGtk.entry_completion_get_popup_set_width(to_unsafe.as(LibGtk::EntryCompletion*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "popup_set_width", gvalue)
+      gvalue.boolean
     end
 
     def popup_single_match
-      __return_value = LibGtk.entry_completion_get_popup_single_match(to_unsafe.as(LibGtk::EntryCompletion*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "popup_single_match", gvalue)
+      gvalue.boolean
     end
 
     def text_column
-      __return_value = LibGtk.entry_completion_get_text_column(to_unsafe.as(LibGtk::EntryCompletion*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "text_column", gvalue)
+      gvalue
     end
 
     def self.new : self

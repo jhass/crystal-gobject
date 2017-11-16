@@ -10,21 +10,24 @@ module Gio
     end
 
     def closed
-      __return_value = LibGio.i_o_stream_get_closed(to_unsafe.as(LibGio::IOStream*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "closed", gvalue)
+      gvalue.boolean
     end
 
     def input_stream
-      __return_value = LibGio.i_o_stream_get_input_stream(to_unsafe.as(LibGio::IOStream*))
-      Gio::InputStream.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "input_stream", gvalue)
+      Gio::InputStream.cast(gvalue.object)
     end
 
     def output_stream
-      __return_value = LibGio.i_o_stream_get_output_stream(to_unsafe.as(LibGio::IOStream*))
-      Gio::OutputStream.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "output_stream", gvalue)
+      Gio::OutputStream.cast(gvalue.object)
     end
 
-    def self.splice_finish(result)
+    def self.splice_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.i_o_stream_splice_finish(result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -36,7 +39,7 @@ module Gio
       nil
     end
 
-    def close(cancellable)
+    def close(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.i_o_stream_close(@pointer.as(LibGio::IOStream*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -48,7 +51,7 @@ module Gio
       nil
     end
 
-    def close_finish(result)
+    def close_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.i_o_stream_close_finish(@pointer.as(LibGio::IOStream*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -75,7 +78,7 @@ module Gio
       __return_value
     end
 
-    def pending=
+    def pending= # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.i_o_stream_set_pending(@pointer.as(LibGio::IOStream*), pointerof(__error))
       GLib::Error.assert __error

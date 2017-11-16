@@ -12,23 +12,27 @@ module Gst
     end
 
     def caps
-      __return_value = LibGst.pad_template_get_caps(to_unsafe.as(LibGst::PadTemplate*))
-      Gst::Caps.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "caps", gvalue)
+      Gst::Caps.cast(gvalue.object)
     end
 
     def direction
-      __return_value = LibGst.pad_template_get_direction(to_unsafe.as(LibGst::PadTemplate*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "direction", gvalue)
+      gvalue.enum
     end
 
     def name_template
-      __return_value = LibGst.pad_template_get_name_template(to_unsafe.as(LibGst::PadTemplate*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "name_template", gvalue)
+      gvalue.string
     end
 
     def presence
-      __return_value = LibGst.pad_template_get_presence(to_unsafe.as(LibGst::PadTemplate*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "presence", gvalue)
+      gvalue.enum
     end
 
     def self.new(name_template, direction : Gst::PadDirection, presence : Gst::PadPresence, caps) : self
@@ -48,7 +52,7 @@ module Gst
 
     alias PadCreatedSignal = PadTemplate, Gst::Pad ->
     def on_pad_created(&__block : PadCreatedSignal)
-      __callback = ->(_arg0 : LibGst::PadTemplate*, _arg1 : LibGst::LibGst::Pad*) {
+      __callback = ->(_arg0 : LibGst::PadTemplate*, _arg1 : LibGst::LibGst::Pad**) {
        __return_value = __block.call(PadTemplate.new(_arg0), Gst::Pad.new(_arg1))
        __return_value
       }

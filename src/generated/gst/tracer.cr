@@ -12,8 +12,9 @@ module Gst
     end
 
     def params
-      __return_value = LibGst.tracer_get_params(to_unsafe.as(LibGst::Tracer*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "params", gvalue)
+      gvalue.string
     end
 
   end

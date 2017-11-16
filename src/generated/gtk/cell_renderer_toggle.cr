@@ -12,28 +12,33 @@ module Gtk
     end
 
     def activatable
-      __return_value = LibGtk.cell_renderer_toggle_get_activatable(to_unsafe.as(LibGtk::CellRendererToggle*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "activatable", gvalue)
+      gvalue.boolean
     end
 
     def active
-      __return_value = LibGtk.cell_renderer_toggle_get_active(to_unsafe.as(LibGtk::CellRendererToggle*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "active", gvalue)
+      gvalue.boolean
     end
 
     def inconsistent
-      __return_value = LibGtk.cell_renderer_toggle_get_inconsistent(to_unsafe.as(LibGtk::CellRendererToggle*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "inconsistent", gvalue)
+      gvalue.boolean
     end
 
     def indicator_size
-      __return_value = LibGtk.cell_renderer_toggle_get_indicator_size(to_unsafe.as(LibGtk::CellRendererToggle*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "indicator_size", gvalue)
+      gvalue
     end
 
     def radio
-      __return_value = LibGtk.cell_renderer_toggle_get_radio(to_unsafe.as(LibGtk::CellRendererToggle*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "radio", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self

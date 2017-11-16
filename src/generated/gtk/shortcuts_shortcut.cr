@@ -16,48 +16,57 @@ module Gtk
     # Implements Orientable
 
     def accelerator
-      __return_value = LibGtk.shortcuts_shortcut_get_accelerator(to_unsafe.as(LibGtk::ShortcutsShortcut*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accelerator", gvalue)
+      gvalue.string
     end
 
     def action_name
-      __return_value = LibGtk.shortcuts_shortcut_get_action_name(to_unsafe.as(LibGtk::ShortcutsShortcut*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "action_name", gvalue)
+      gvalue.string
     end
 
     def direction
-      __return_value = LibGtk.shortcuts_shortcut_get_direction(to_unsafe.as(LibGtk::ShortcutsShortcut*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "direction", gvalue)
+      gvalue.enum
     end
 
     def icon
-      __return_value = LibGtk.shortcuts_shortcut_get_icon(to_unsafe.as(LibGtk::ShortcutsShortcut*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "icon", gvalue)
+      gvalue
     end
 
     def icon_set
-      __return_value = LibGtk.shortcuts_shortcut_get_icon_set(to_unsafe.as(LibGtk::ShortcutsShortcut*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "icon_set", gvalue)
+      gvalue.boolean
     end
 
     def shortcut_type
-      __return_value = LibGtk.shortcuts_shortcut_get_shortcut_type(to_unsafe.as(LibGtk::ShortcutsShortcut*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "shortcut_type", gvalue)
+      gvalue.enum
     end
 
     def subtitle
-      __return_value = LibGtk.shortcuts_shortcut_get_subtitle(to_unsafe.as(LibGtk::ShortcutsShortcut*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "subtitle", gvalue)
+      gvalue.string
     end
 
     def subtitle_set
-      __return_value = LibGtk.shortcuts_shortcut_get_subtitle_set(to_unsafe.as(LibGtk::ShortcutsShortcut*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "subtitle_set", gvalue)
+      gvalue.boolean
     end
 
     def title
-      __return_value = LibGtk.shortcuts_shortcut_get_title(to_unsafe.as(LibGtk::ShortcutsShortcut*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "title", gvalue)
+      gvalue.string
     end
 
 

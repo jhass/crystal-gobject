@@ -35,7 +35,7 @@ module Gio
 
     alias AuthorizeAuthenticatedPeerSignal = DBusAuthObserver, Gio::IOStream, Gio::Credentials -> Bool
     def on_authorize_authenticated_peer(&__block : AuthorizeAuthenticatedPeerSignal)
-      __callback = ->(_arg0 : LibGio::DBusAuthObserver*, _arg1 : LibGio::LibGio::IOStream*, _arg2 : LibGio::LibGio::Credentials*) {
+      __callback = ->(_arg0 : LibGio::DBusAuthObserver*, _arg1 : LibGio::LibGio::IOStream**, _arg2 : LibGio::LibGio::Credentials**) {
        __return_value = __block.call(DBusAuthObserver.new(_arg0), Gio::IOStream.new(_arg1), Gio::Credentials.new(_arg2))
        __return_value
       }

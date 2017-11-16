@@ -14,63 +14,75 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def accel_group
-      __return_value = LibGtk.menu_get_accel_group(to_unsafe.as(LibGtk::Menu*))
-      Gtk::AccelGroup.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accel_group", gvalue)
+      Gtk::AccelGroup.cast(gvalue.object)
     end
 
     def accel_path
-      __return_value = LibGtk.menu_get_accel_path(to_unsafe.as(LibGtk::Menu*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accel_path", gvalue)
+      gvalue.string
     end
 
     def active
-      __return_value = LibGtk.menu_get_active(to_unsafe.as(LibGtk::Menu*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "active", gvalue)
+      gvalue
     end
 
     def anchor_hints
-      __return_value = LibGtk.menu_get_anchor_hints(to_unsafe.as(LibGtk::Menu*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "anchor_hints", gvalue)
+      gvalue.enum
     end
 
     def attach_widget
-      __return_value = LibGtk.menu_get_attach_widget(to_unsafe.as(LibGtk::Menu*))
-      Gtk::Widget.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "attach_widget", gvalue)
+      Gtk::Widget.cast(gvalue.object)
     end
 
     def menu_type_hint
-      __return_value = LibGtk.menu_get_menu_type_hint(to_unsafe.as(LibGtk::Menu*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "menu_type_hint", gvalue)
+      gvalue.enum
     end
 
     def monitor
-      __return_value = LibGtk.menu_get_monitor(to_unsafe.as(LibGtk::Menu*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "monitor", gvalue)
+      gvalue
     end
 
     def rect_anchor_dx
-      __return_value = LibGtk.menu_get_rect_anchor_dx(to_unsafe.as(LibGtk::Menu*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "rect_anchor_dx", gvalue)
+      gvalue
     end
 
     def rect_anchor_dy
-      __return_value = LibGtk.menu_get_rect_anchor_dy(to_unsafe.as(LibGtk::Menu*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "rect_anchor_dy", gvalue)
+      gvalue
     end
 
     def reserve_toggle_size
-      __return_value = LibGtk.menu_get_reserve_toggle_size(to_unsafe.as(LibGtk::Menu*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "reserve_toggle_size", gvalue)
+      gvalue.boolean
     end
 
     def tearoff_state
-      __return_value = LibGtk.menu_get_tearoff_state(to_unsafe.as(LibGtk::Menu*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "tearoff_state", gvalue)
+      gvalue.boolean
     end
 
     def tearoff_title
-      __return_value = LibGtk.menu_get_tearoff_title(to_unsafe.as(LibGtk::Menu*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "tearoff_title", gvalue)
+      gvalue.string
     end
 
     def self.new : self
@@ -85,7 +97,7 @@ module Gtk
 
     def self.for_attach_widget(widget)
       __return_value = LibGtk.menu_get_for_attach_widget(widget.to_unsafe.as(LibGtk::Widget*))
-      GLib::ListIterator(Gtk::Widget, LibGtk::Widget*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gtk::Widget, LibGtk::Widget**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def attach(child, left_attach, right_attach, top_attach, bottom_attach)

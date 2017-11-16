@@ -15,43 +15,51 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
     def adjustment
-      __return_value = LibGtk.range_get_adjustment(to_unsafe.as(LibGtk::Range*))
-      Gtk::Adjustment.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "adjustment", gvalue)
+      Gtk::Adjustment.cast(gvalue.object)
     end
 
     def fill_level
-      __return_value = LibGtk.range_get_fill_level(to_unsafe.as(LibGtk::Range*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::DOUBLE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "fill_level", gvalue)
+      gvalue
     end
 
     def inverted
-      __return_value = LibGtk.range_get_inverted(to_unsafe.as(LibGtk::Range*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "inverted", gvalue)
+      gvalue.boolean
     end
 
     def lower_stepper_sensitivity
-      __return_value = LibGtk.range_get_lower_stepper_sensitivity(to_unsafe.as(LibGtk::Range*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "lower_stepper_sensitivity", gvalue)
+      gvalue.enum
     end
 
     def restrict_to_fill_level
-      __return_value = LibGtk.range_get_restrict_to_fill_level(to_unsafe.as(LibGtk::Range*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "restrict_to_fill_level", gvalue)
+      gvalue.boolean
     end
 
     def round_digits
-      __return_value = LibGtk.range_get_round_digits(to_unsafe.as(LibGtk::Range*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "round_digits", gvalue)
+      gvalue
     end
 
     def show_fill_level
-      __return_value = LibGtk.range_get_show_fill_level(to_unsafe.as(LibGtk::Range*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_fill_level", gvalue)
+      gvalue.boolean
     end
 
     def upper_stepper_sensitivity
-      __return_value = LibGtk.range_get_upper_stepper_sensitivity(to_unsafe.as(LibGtk::Range*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "upper_stepper_sensitivity", gvalue)
+      gvalue.enum
     end
 
     def adjustment

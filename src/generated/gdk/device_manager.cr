@@ -10,8 +10,9 @@ module Gdk
     end
 
     def display
-      __return_value = LibGdk.device_manager_get_display(to_unsafe.as(LibGdk::DeviceManager*))
-      Gdk::Display.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "display", gvalue)
+      Gdk::Display.cast(gvalue.object)
     end
 
     def client_pointer
@@ -26,12 +27,12 @@ module Gdk
 
     def list_devices(type : Gdk::DeviceType)
       __return_value = LibGdk.device_manager_list_devices(@pointer.as(LibGdk::DeviceManager*), type)
-      GLib::ListIterator(Gdk::Device, LibGdk::Device*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gdk::Device, LibGdk::Device**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     alias DeviceAddedSignal = DeviceManager, Gdk::Device ->
     def on_device_added(&__block : DeviceAddedSignal)
-      __callback = ->(_arg0 : LibGdk::DeviceManager*, _arg1 : LibGdk::LibGdk::Device*) {
+      __callback = ->(_arg0 : LibGdk::DeviceManager*, _arg1 : LibGdk::LibGdk::Device**) {
        __return_value = __block.call(DeviceManager.new(_arg0), Gdk::Device.new(_arg1))
        __return_value
       }
@@ -40,7 +41,7 @@ module Gdk
 
     alias DeviceChangedSignal = DeviceManager, Gdk::Device ->
     def on_device_changed(&__block : DeviceChangedSignal)
-      __callback = ->(_arg0 : LibGdk::DeviceManager*, _arg1 : LibGdk::LibGdk::Device*) {
+      __callback = ->(_arg0 : LibGdk::DeviceManager*, _arg1 : LibGdk::LibGdk::Device**) {
        __return_value = __block.call(DeviceManager.new(_arg0), Gdk::Device.new(_arg1))
        __return_value
       }
@@ -49,7 +50,7 @@ module Gdk
 
     alias DeviceRemovedSignal = DeviceManager, Gdk::Device ->
     def on_device_removed(&__block : DeviceRemovedSignal)
-      __callback = ->(_arg0 : LibGdk::DeviceManager*, _arg1 : LibGdk::LibGdk::Device*) {
+      __callback = ->(_arg0 : LibGdk::DeviceManager*, _arg1 : LibGdk::LibGdk::Device**) {
        __return_value = __block.call(DeviceManager.new(_arg0), Gdk::Device.new(_arg1))
        __return_value
       }

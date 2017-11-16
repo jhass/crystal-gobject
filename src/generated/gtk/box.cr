@@ -15,18 +15,21 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
     def baseline_position
-      __return_value = LibGtk.box_get_baseline_position(to_unsafe.as(LibGtk::Box*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "baseline_position", gvalue)
+      gvalue.enum
     end
 
     def homogeneous
-      __return_value = LibGtk.box_get_homogeneous(to_unsafe.as(LibGtk::Box*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "homogeneous", gvalue)
+      gvalue.boolean
     end
 
     def spacing
-      __return_value = LibGtk.box_get_spacing(to_unsafe.as(LibGtk::Box*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "spacing", gvalue)
+      gvalue
     end
 
     def self.new(orientation : Gtk::Orientation, spacing) : self

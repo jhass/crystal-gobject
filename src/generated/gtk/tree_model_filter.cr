@@ -12,13 +12,15 @@ module Gtk
     # Implements TreeDragSource
     # Implements TreeModel
     def child_model
-      __return_value = LibGtk.tree_model_filter_get_child_model(to_unsafe.as(LibGtk::TreeModelFilter*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "child_model", gvalue)
+      gvalue
     end
 
     def virtual_root
-      __return_value = LibGtk.tree_model_filter_get_virtual_root(to_unsafe.as(LibGtk::TreeModelFilter*))
-      Gtk::TreePath.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "virtual_root", gvalue)
+      Gtk::TreePath.cast(gvalue.object)
     end
 
     def clear_cache

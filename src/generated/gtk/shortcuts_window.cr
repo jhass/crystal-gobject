@@ -14,13 +14,15 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def section_name
-      __return_value = LibGtk.shortcuts_window_get_section_name(to_unsafe.as(LibGtk::ShortcutsWindow*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "section_name", gvalue)
+      gvalue.string
     end
 
     def view_name
-      __return_value = LibGtk.shortcuts_window_get_view_name(to_unsafe.as(LibGtk::ShortcutsWindow*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "view_name", gvalue)
+      gvalue.string
     end
 
     alias CloseSignal = ShortcutsWindow ->

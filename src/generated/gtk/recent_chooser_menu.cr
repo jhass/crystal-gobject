@@ -16,8 +16,9 @@ module Gtk
     # Implements Buildable
     # Implements RecentChooser
     def show_numbers
-      __return_value = LibGtk.recent_chooser_menu_get_show_numbers(to_unsafe.as(LibGtk::RecentChooserMenu*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_numbers", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self

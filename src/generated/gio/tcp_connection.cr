@@ -12,8 +12,9 @@ module Gio
     end
 
     def graceful_disconnect
-      __return_value = LibGio.tcp_connection_get_graceful_disconnect(to_unsafe.as(LibGio::TcpConnection*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "graceful_disconnect", gvalue)
+      gvalue.boolean
     end
 
     def graceful_disconnect

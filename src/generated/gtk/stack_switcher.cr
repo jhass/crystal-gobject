@@ -15,13 +15,15 @@ module Gtk
     # Implements Buildable
     # Implements Orientable
     def icon_size
-      __return_value = LibGtk.stack_switcher_get_icon_size(to_unsafe.as(LibGtk::StackSwitcher*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "icon_size", gvalue)
+      gvalue
     end
 
     def stack
-      __return_value = LibGtk.stack_switcher_get_stack(to_unsafe.as(LibGtk::StackSwitcher*))
-      Gtk::Stack.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "stack", gvalue)
+      Gtk::Stack.cast(gvalue.object)
     end
 
     def self.new : self

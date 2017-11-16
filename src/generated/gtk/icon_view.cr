@@ -16,88 +16,105 @@ module Gtk
     # Implements CellLayout
     # Implements Scrollable
     def activate_on_single_click
-      __return_value = LibGtk.icon_view_get_activate_on_single_click(to_unsafe.as(LibGtk::IconView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "activate_on_single_click", gvalue)
+      gvalue.boolean
     end
 
     def cell_area
-      __return_value = LibGtk.icon_view_get_cell_area(to_unsafe.as(LibGtk::IconView*))
-      Gtk::CellArea.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "cell_area", gvalue)
+      Gtk::CellArea.cast(gvalue.object)
     end
 
     def column_spacing
-      __return_value = LibGtk.icon_view_get_column_spacing(to_unsafe.as(LibGtk::IconView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "column_spacing", gvalue)
+      gvalue
     end
 
     def columns
-      __return_value = LibGtk.icon_view_get_columns(to_unsafe.as(LibGtk::IconView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "columns", gvalue)
+      gvalue
     end
 
     def item_orientation
-      __return_value = LibGtk.icon_view_get_item_orientation(to_unsafe.as(LibGtk::IconView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "item_orientation", gvalue)
+      gvalue.enum
     end
 
     def item_padding
-      __return_value = LibGtk.icon_view_get_item_padding(to_unsafe.as(LibGtk::IconView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "item_padding", gvalue)
+      gvalue
     end
 
     def item_width
-      __return_value = LibGtk.icon_view_get_item_width(to_unsafe.as(LibGtk::IconView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "item_width", gvalue)
+      gvalue
     end
 
     def margin
-      __return_value = LibGtk.icon_view_get_margin(to_unsafe.as(LibGtk::IconView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "margin", gvalue)
+      gvalue
     end
 
     def markup_column
-      __return_value = LibGtk.icon_view_get_markup_column(to_unsafe.as(LibGtk::IconView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "markup_column", gvalue)
+      gvalue
     end
 
     def model
-      __return_value = LibGtk.icon_view_get_model(to_unsafe.as(LibGtk::IconView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "model", gvalue)
+      gvalue
     end
 
     def pixbuf_column
-      __return_value = LibGtk.icon_view_get_pixbuf_column(to_unsafe.as(LibGtk::IconView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pixbuf_column", gvalue)
+      gvalue
     end
 
     def reorderable
-      __return_value = LibGtk.icon_view_get_reorderable(to_unsafe.as(LibGtk::IconView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "reorderable", gvalue)
+      gvalue.boolean
     end
 
     def row_spacing
-      __return_value = LibGtk.icon_view_get_row_spacing(to_unsafe.as(LibGtk::IconView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "row_spacing", gvalue)
+      gvalue
     end
 
     def selection_mode
-      __return_value = LibGtk.icon_view_get_selection_mode(to_unsafe.as(LibGtk::IconView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "selection_mode", gvalue)
+      gvalue.enum
     end
 
     def spacing
-      __return_value = LibGtk.icon_view_get_spacing(to_unsafe.as(LibGtk::IconView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "spacing", gvalue)
+      gvalue
     end
 
     def text_column
-      __return_value = LibGtk.icon_view_get_text_column(to_unsafe.as(LibGtk::IconView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "text_column", gvalue)
+      gvalue
     end
 
     def tooltip_column
-      __return_value = LibGtk.icon_view_get_tooltip_column(to_unsafe.as(LibGtk::IconView*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "tooltip_column", gvalue)
+      gvalue
     end
 
     def self.new : self

@@ -15,7 +15,7 @@ module Gio
       nil
     end
 
-    def eject_finish(result)
+    def eject_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.volume_eject_finish(@pointer.as(LibGio::Volume*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -27,7 +27,7 @@ module Gio
       nil
     end
 
-    def eject_with_operation_finish(result)
+    def eject_with_operation_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.volume_eject_with_operation_finish(@pointer.as(LibGio::Volume*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -89,7 +89,7 @@ module Gio
       nil
     end
 
-    def mount_finish(result)
+    def mount_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.volume_mount_finish(@pointer.as(LibGio::Volume*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error

@@ -16,28 +16,33 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
     def accel_path
-      __return_value = LibGtk.menu_item_get_accel_path(to_unsafe.as(LibGtk::MenuItem*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accel_path", gvalue)
+      gvalue.string
     end
 
     def label
-      __return_value = LibGtk.menu_item_get_label(to_unsafe.as(LibGtk::MenuItem*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "label", gvalue)
+      gvalue.string
     end
 
     def right_justified
-      __return_value = LibGtk.menu_item_get_right_justified(to_unsafe.as(LibGtk::MenuItem*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "right_justified", gvalue)
+      gvalue.boolean
     end
 
     def submenu
-      __return_value = LibGtk.menu_item_get_submenu(to_unsafe.as(LibGtk::MenuItem*))
-      Gtk::Menu.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "submenu", gvalue)
+      Gtk::Menu.cast(gvalue.object)
     end
 
     def use_underline
-      __return_value = LibGtk.menu_item_get_use_underline(to_unsafe.as(LibGtk::MenuItem*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "use_underline", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self

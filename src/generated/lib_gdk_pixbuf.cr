@@ -68,6 +68,15 @@ lib LibGdkPixbuf
 
   struct Pixbuf # object
     _data : UInt8[0]
+    # Property bits_per_sample : Int32
+    # Property colorspace : LibGdkPixbuf::Colorspace
+    # Property has_alpha : Bool
+    # Property height : Int32
+    # Property n_channels : Int32
+    # Property pixel_bytes : LibGLib::Bytes
+    # Property pixels : Void*
+    # Property rowstride : Int32
+    # Property width : Int32
   end
   fun pixbuf_new = gdk_pixbuf_new(colorspace : LibGdkPixbuf::Colorspace, has_alpha : Bool, bits_per_sample : Int32, width : Int32, height : Int32) : LibGdkPixbuf::Pixbuf*
   fun pixbuf_new_from_bytes = gdk_pixbuf_new_from_bytes(data : LibGLib::Bytes*, colorspace : LibGdkPixbuf::Colorspace, has_alpha : Bool, bits_per_sample : Int32, width : Int32, height : Int32, rowstride : Int32) : LibGdkPixbuf::Pixbuf*
@@ -150,7 +159,7 @@ lib LibGdkPixbuf
   fun pixbuf_animation_iter_on_currently_loading_frame = gdk_pixbuf_animation_iter_on_currently_loading_frame(this : PixbufAnimationIter*) : Bool
 
   struct PixbufLoader # object
-    parent_instance : LibGObject::Object
+    parent_instance : LibGObject::Object*
     priv : Void*
     # Signal area-prepared
     # Signal area-updated
@@ -174,6 +183,7 @@ lib LibGdkPixbuf
 
   struct PixbufSimpleAnim # object
     _data : UInt8[0]
+    # Property loop : Bool
   end
   fun pixbuf_simple_anim_new = gdk_pixbuf_simple_anim_new(width : Int32, height : Int32, rate : Float32) : LibGdkPixbuf::PixbufSimpleAnim*
   fun pixbuf_simple_anim_add_frame = gdk_pixbuf_simple_anim_add_frame(this : PixbufSimpleAnim*, pixbuf : LibGdkPixbuf::Pixbuf*) : Void

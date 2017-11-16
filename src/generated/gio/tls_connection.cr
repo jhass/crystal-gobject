@@ -12,48 +12,57 @@ module Gio
     end
 
     def base_io_stream
-      __return_value = LibGio.tls_connection_get_base_io_stream(to_unsafe.as(LibGio::TlsConnection*))
-      Gio::IOStream.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "base_io_stream", gvalue)
+      Gio::IOStream.cast(gvalue.object)
     end
 
     def certificate
-      __return_value = LibGio.tls_connection_get_certificate(to_unsafe.as(LibGio::TlsConnection*))
-      Gio::TlsCertificate.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "certificate", gvalue)
+      Gio::TlsCertificate.cast(gvalue.object)
     end
 
     def database
-      __return_value = LibGio.tls_connection_get_database(to_unsafe.as(LibGio::TlsConnection*))
-      Gio::TlsDatabase.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "database", gvalue)
+      Gio::TlsDatabase.cast(gvalue.object)
     end
 
     def interaction
-      __return_value = LibGio.tls_connection_get_interaction(to_unsafe.as(LibGio::TlsConnection*))
-      Gio::TlsInteraction.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "interaction", gvalue)
+      Gio::TlsInteraction.cast(gvalue.object)
     end
 
     def peer_certificate
-      __return_value = LibGio.tls_connection_get_peer_certificate(to_unsafe.as(LibGio::TlsConnection*))
-      Gio::TlsCertificate.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "peer_certificate", gvalue)
+      Gio::TlsCertificate.cast(gvalue.object)
     end
 
     def peer_certificate_errors
-      __return_value = LibGio.tls_connection_get_peer_certificate_errors(to_unsafe.as(LibGio::TlsConnection*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "peer_certificate_errors", gvalue)
+      gvalue.enum
     end
 
     def rehandshake_mode
-      __return_value = LibGio.tls_connection_get_rehandshake_mode(to_unsafe.as(LibGio::TlsConnection*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "rehandshake_mode", gvalue)
+      gvalue.enum
     end
 
     def require_close_notify
-      __return_value = LibGio.tls_connection_get_require_close_notify(to_unsafe.as(LibGio::TlsConnection*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "require_close_notify", gvalue)
+      gvalue.boolean
     end
 
     def use_system_certdb
-      __return_value = LibGio.tls_connection_get_use_system_certdb(to_unsafe.as(LibGio::TlsConnection*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "use_system_certdb", gvalue)
+      gvalue.boolean
     end
 
     def emit_accept_certificate(peer_cert, errors : Gio::TlsCertificateFlags)
@@ -101,7 +110,7 @@ module Gio
       __return_value
     end
 
-    def handshake(cancellable)
+    def handshake(cancellable) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.tls_connection_handshake(@pointer.as(LibGio::TlsConnection*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -113,7 +122,7 @@ module Gio
       nil
     end
 
-    def handshake_finish(result)
+    def handshake_finish(result) # function
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.tls_connection_handshake_finish(@pointer.as(LibGio::TlsConnection*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -152,7 +161,7 @@ module Gio
 
     alias AcceptCertificateSignal = TlsConnection, Gio::TlsCertificate, Gio::TlsCertificateFlags -> Bool
     def on_accept_certificate(&__block : AcceptCertificateSignal)
-      __callback = ->(_arg0 : LibGio::TlsConnection*, _arg1 : LibGio::LibGio::TlsCertificate*, _arg2 : LibGio::LibGio::TlsCertificateFlags*) {
+      __callback = ->(_arg0 : LibGio::TlsConnection*, _arg1 : LibGio::LibGio::TlsCertificate**, _arg2 : LibGio::LibGio::TlsCertificateFlags*) {
        __return_value = __block.call(TlsConnection.new(_arg0), Gio::TlsCertificate.new(_arg1), _arg2)
        __return_value
       }

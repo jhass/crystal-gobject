@@ -12,13 +12,15 @@ module Gtk
     end
 
     def action_group
-      __return_value = LibGtk.pad_controller_get_action_group(to_unsafe.as(LibGtk::PadController*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "action_group", gvalue)
+      gvalue
     end
 
     def pad
-      __return_value = LibGtk.pad_controller_get_pad(to_unsafe.as(LibGtk::PadController*))
-      Gdk::Device.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pad", gvalue)
+      Gdk::Device.cast(gvalue.object)
     end
 
     def self.new(window, group, pad) : self

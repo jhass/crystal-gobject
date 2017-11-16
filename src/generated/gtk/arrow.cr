@@ -14,13 +14,15 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def arrow_type
-      __return_value = LibGtk.arrow_get_arrow_type(to_unsafe.as(LibGtk::Arrow*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "arrow_type", gvalue)
+      gvalue.enum
     end
 
     def shadow_type
-      __return_value = LibGtk.arrow_get_shadow_type(to_unsafe.as(LibGtk::Arrow*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "shadow_type", gvalue)
+      gvalue.enum
     end
 
     def self.new(arrow_type : Gtk::ArrowType, shadow_type : Gtk::ShadowType) : self

@@ -16,13 +16,15 @@ module Gtk
     # Implements Activatable
     # Implements Buildable
     def active
-      __return_value = LibGtk.switch_get_active(to_unsafe.as(LibGtk::Switch*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "active", gvalue)
+      gvalue.boolean
     end
 
     def state
-      __return_value = LibGtk.switch_get_state(to_unsafe.as(LibGtk::Switch*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "state", gvalue)
+      gvalue.boolean
     end
 
     def self.new : self

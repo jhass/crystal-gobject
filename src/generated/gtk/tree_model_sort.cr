@@ -13,8 +13,9 @@ module Gtk
     # Implements TreeModel
     # Implements TreeSortable
     def model
-      __return_value = LibGtk.tree_model_sort_get_model(to_unsafe.as(LibGtk::TreeModelSort*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "model", gvalue)
+      gvalue
     end
 
     def clear_cache

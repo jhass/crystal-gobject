@@ -14,33 +14,39 @@ module Gtk
     # Implements ImplementorIface
     # Implements Buildable
     def constrain_to
-      __return_value = LibGtk.popover_get_constrain_to(to_unsafe.as(LibGtk::Popover*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "constrain_to", gvalue)
+      gvalue.enum
     end
 
     def modal
-      __return_value = LibGtk.popover_get_modal(to_unsafe.as(LibGtk::Popover*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "modal", gvalue)
+      gvalue.boolean
     end
 
     def pointing_to
-      __return_value = LibGtk.popover_get_pointing_to(to_unsafe.as(LibGtk::Popover*))
-      Gdk::Rectangle.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pointing_to", gvalue)
+      Gdk::Rectangle.cast(gvalue.object)
     end
 
     def position
-      __return_value = LibGtk.popover_get_position(to_unsafe.as(LibGtk::Popover*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "position", gvalue)
+      gvalue.enum
     end
 
     def relative_to
-      __return_value = LibGtk.popover_get_relative_to(to_unsafe.as(LibGtk::Popover*))
-      Gtk::Widget.new(__return_value)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "relative_to", gvalue)
+      Gtk::Widget.cast(gvalue.object)
     end
 
     def transitions_enabled
-      __return_value = LibGtk.popover_get_transitions_enabled(to_unsafe.as(LibGtk::Popover*))
-      __return_value
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "transitions_enabled", gvalue)
+      gvalue.boolean
     end
 
     def self.new(relative_to) : self
