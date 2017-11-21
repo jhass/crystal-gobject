@@ -1,4 +1,4 @@
-require "../src/gtk"
+require "../src/gtk/autorun"
 
 window = Gtk::Window.new
 window.title = "Hello World!"

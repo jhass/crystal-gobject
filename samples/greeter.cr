@@ -1,4 +1,4 @@
-require "../src/gtk"
+require "../src/gtk/autorun"
 
 builder = Gtk::Builder.new_from_file "#{__DIR__}/greeter.glade"
 builder.connect_signals
