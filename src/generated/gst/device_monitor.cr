@@ -34,7 +34,7 @@ module Gst
 
     def devices
       __return_value = LibGst.device_monitor_get_devices(@pointer.as(LibGst::DeviceMonitor*))
-      GLib::ListIterator(Gst::Device, LibGst::Device**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Gst::Device, LibGst::Device**).new(GLib::SList.new(__return_value.as(LibGLib::List*))) if __return_value
     end
 
     def providers

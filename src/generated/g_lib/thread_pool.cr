@@ -40,14 +40,14 @@ module GLib
       __return_value
     end
 
-    def push(data) # function
+    def push(data)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.thread_pool_push(@pointer.as(LibGLib::ThreadPool*), data ? data : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def set_max_threads(max_threads) # function
+    def set_max_threads(max_threads)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.thread_pool_set_max_threads(@pointer.as(LibGLib::ThreadPool*), Int32.new(max_threads), pointerof(__error))
       GLib::Error.assert __error

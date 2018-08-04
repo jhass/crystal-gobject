@@ -68,6 +68,11 @@ module GLib
       __return_value
     end
 
+    def copy
+      __return_value = LibGLib.date_copy(@pointer.as(LibGLib::Date*))
+      GLib::Date.new(__return_value)
+    end
+
     def days_between(date2)
       __return_value = LibGLib.date_days_between(@pointer.as(LibGLib::Date*), date2.to_unsafe.as(LibGLib::Date*))
       __return_value

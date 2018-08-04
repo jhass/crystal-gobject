@@ -20,7 +20,7 @@ module Gio
       cast Gio::DBusMessage.new(__return_value)
     end
 
-    def self.new_from_blob(blob, blob_len, capabilities : Gio::DBusCapabilityFlags) : self # function
+    def self.new_from_blob(blob, blob_len, capabilities : Gio::DBusCapabilityFlags) : self
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_message_new_from_blob(blob, UInt64.new(blob_len), capabilities, pointerof(__error))
       GLib::Error.assert __error
@@ -37,14 +37,14 @@ module Gio
       cast Gio::DBusMessage.new(__return_value)
     end
 
-    def self.bytes_needed(blob, blob_len) # function
+    def self.bytes_needed(blob, blob_len)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_message_bytes_needed(blob, UInt64.new(blob_len), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def copy # function
+    def copy
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_message_copy(@pointer.as(LibGio::DBusMessage*), pointerof(__error))
       GLib::Error.assert __error
@@ -246,14 +246,14 @@ module Gio
       nil
     end
 
-    def to_blob(out_size, capabilities : Gio::DBusCapabilityFlags) # function
+    def to_blob(out_size, capabilities : Gio::DBusCapabilityFlags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_message_to_blob(@pointer.as(LibGio::DBusMessage*), out_size, capabilities, pointerof(__error))
       GLib::Error.assert __error
       PointerIterator.new(__return_value) {|__item| __item }
     end
 
-    def to_gerror # function
+    def to_gerror
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_message_to_gerror(@pointer.as(LibGio::DBusMessage*), pointerof(__error))
       GLib::Error.assert __error

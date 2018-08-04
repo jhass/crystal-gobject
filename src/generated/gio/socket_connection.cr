@@ -27,7 +27,7 @@ module Gio
       nil
     end
 
-    def connect(address, cancellable) # function
+    def connect(address, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_connection_connect(@pointer.as(LibGio::SocketConnection*), address.to_unsafe.as(LibGio::SocketAddress*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -39,21 +39,21 @@ module Gio
       nil
     end
 
-    def connect_finish(result) # function
+    def connect_finish(result)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_connection_connect_finish(@pointer.as(LibGio::SocketConnection*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def local_address # function
+    def local_address
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_connection_get_local_address(@pointer.as(LibGio::SocketConnection*), pointerof(__error))
       GLib::Error.assert __error
       Gio::SocketAddress.new(__return_value)
     end
 
-    def remote_address # function
+    def remote_address
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_connection_get_remote_address(@pointer.as(LibGio::SocketConnection*), pointerof(__error))
       GLib::Error.assert __error

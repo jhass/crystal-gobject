@@ -26,7 +26,7 @@ module Gst
 
     def get
       __return_value = LibGst.static_caps_get(@pointer.as(LibGst::StaticCaps*))
-      Gst::Caps.new(__return_value)
+      Gst::Caps.new(__return_value) if __return_value
     end
 
     def caps

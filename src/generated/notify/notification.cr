@@ -65,7 +65,7 @@ module Notify
       nil
     end
 
-    def close # function
+    def close
       __error = Pointer(LibGLib::Error).null
       __return_value = LibNotify.notification_close(@pointer.as(LibNotify::Notification*), pointerof(__error))
       GLib::Error.assert __error
@@ -142,7 +142,7 @@ module Notify
       nil
     end
 
-    def show # function
+    def show
       __error = Pointer(LibGLib::Error).null
       __return_value = LibNotify.notification_show(@pointer.as(LibNotify::Notification*), pointerof(__error))
       GLib::Error.assert __error

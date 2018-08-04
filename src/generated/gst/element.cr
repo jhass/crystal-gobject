@@ -11,11 +11,11 @@ module Gst
       @pointer.not_nil!.as(LibGst::Element*)
     end
 
-    def self.make_from_uri(type : Gst::URIType, uri, elementname) # function
+    def self.make_from_uri(type : Gst::URIType, uri, elementname)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGst.element_make_from_uri(type, uri.to_unsafe, elementname ? elementname.to_unsafe : nil, pointerof(__error))
       GLib::Error.assert __error
-      Gst::Element.new(__return_value)
+      Gst::Element.new(__return_value) if __return_value
     end
 
     def self.register(plugin, name, rank, type)
@@ -73,6 +73,21 @@ module Gst
       nil
     end
 
+    def foreach_pad(func, user_data)
+      __return_value = LibGst.element_foreach_pad(@pointer.as(LibGst::Element*), func, user_data ? user_data : nil)
+      __return_value
+    end
+
+    def foreach_sink_pad(func, user_data)
+      __return_value = LibGst.element_foreach_sink_pad(@pointer.as(LibGst::Element*), func, user_data ? user_data : nil)
+      __return_value
+    end
+
+    def foreach_src_pad(func, user_data)
+      __return_value = LibGst.element_foreach_src_pad(@pointer.as(LibGst::Element*), func, user_data ? user_data : nil)
+      __return_value
+    end
+
     def base_time
       __return_value = LibGst.element_get_base_time(@pointer.as(LibGst::Element*))
       __return_value
@@ -80,12 +95,12 @@ module Gst
 
     def bus
       __return_value = LibGst.element_get_bus(@pointer.as(LibGst::Element*))
-      Gst::Bus.new(__return_value)
+      Gst::Bus.new(__return_value) if __return_value
     end
 
     def clock
       __return_value = LibGst.element_get_clock(@pointer.as(LibGst::Element*))
-      Gst::Clock.new(__return_value)
+      Gst::Clock.new(__return_value) if __return_value
     end
 
     def compatible_pad(pad, caps)
@@ -105,7 +120,7 @@ module Gst
 
     def context_unlocked(context_type)
       __return_value = LibGst.element_get_context_unlocked(@pointer.as(LibGst::Element*), context_type.to_unsafe)
-      Gst::Context.new(__return_value)
+      Gst::Context.new(__return_value) if __return_value
     end
 
     def contexts
@@ -116,6 +131,21 @@ module Gst
     def factory
       __return_value = LibGst.element_get_factory(@pointer.as(LibGst::Element*))
       Gst::ElementFactory.new(__return_value)
+    end
+
+    def metadata(key)
+      __return_value = LibGst.element_get_metadata(@pointer.as(LibGst::Element*), key.to_unsafe)
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
+
+    def pad_template(name)
+      __return_value = LibGst.element_get_pad_template(@pointer.as(LibGst::Element*), name.to_unsafe)
+      Gst::PadTemplate.new(__return_value) if __return_value
+    end
+
+    def pad_template_list
+      __return_value = LibGst.element_get_pad_template_list(@pointer.as(LibGst::Element*))
+      GLib::ListIterator(Gst::PadTemplate, LibGst::PadTemplate**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def request_pad(name)
@@ -274,12 +304,12 @@ module Gst
     end
 
     def bus=(bus)
-      LibGst.element_set_bus(@pointer.as(LibGst::Element*), bus.to_unsafe.as(LibGst::Bus*))
+      LibGst.element_set_bus(@pointer.as(LibGst::Element*), bus ? bus.to_unsafe.as(LibGst::Bus*) : nil)
       nil
     end
 
     def clock=(clock)
-      __return_value = LibGst.element_set_clock(@pointer.as(LibGst::Element*), clock.to_unsafe.as(LibGst::Clock*))
+      __return_value = LibGst.element_set_clock(@pointer.as(LibGst::Element*), clock ? clock.to_unsafe.as(LibGst::Clock*) : nil)
       __return_value
     end
 

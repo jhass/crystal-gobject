@@ -28,12 +28,12 @@ module Gst
 
     def self.new_caps(caps) : self
       __return_value = LibGst.event_new_caps(caps.to_unsafe.as(LibGst::Caps*))
-      cast Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value) if __return_value
     end
 
     def self.new_custom(type : Gst::EventType, structure) : self
       __return_value = LibGst.event_new_custom(type, structure.to_unsafe.as(LibGst::Structure*))
-      cast Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value) if __return_value
     end
 
     def self.new_eos : self
@@ -73,7 +73,7 @@ module Gst
 
     def self.new_qos(type : Gst::QOSType, proportion, diff, timestamp) : self
       __return_value = LibGst.event_new_qos(type, Float64.new(proportion), Int64.new(diff), UInt64.new(timestamp))
-      cast Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value) if __return_value
     end
 
     def self.new_reconfigure : self
@@ -83,12 +83,12 @@ module Gst
 
     def self.new_seek(rate, format : Gst::Format, flags : Gst::SeekFlags, start_type : Gst::SeekType, start, stop_type : Gst::SeekType, stop) : self
       __return_value = LibGst.event_new_seek(Float64.new(rate), format, flags, start_type, Int64.new(start), stop_type, Int64.new(stop))
-      cast Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value) if __return_value
     end
 
     def self.new_segment(segment) : self
       __return_value = LibGst.event_new_segment(segment.to_unsafe.as(LibGst::Segment*))
-      cast Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value) if __return_value
     end
 
     def self.new_segment_done(format : Gst::Format, position) : self
@@ -108,7 +108,7 @@ module Gst
 
     def self.new_step(format : Gst::Format, amount, rate, flush, intermediate) : self
       __return_value = LibGst.event_new_step(format, UInt64.new(amount), Float64.new(rate), flush, intermediate)
-      cast Gst::Event.new(__return_value)
+      cast Gst::Event.new(__return_value) if __return_value
     end
 
     def self.new_stream_collection(collection) : self
@@ -158,7 +158,7 @@ module Gst
 
     def structure
       __return_value = LibGst.event_get_structure(@pointer.as(LibGst::Event*))
-      Gst::Structure.new(__return_value)
+      Gst::Structure.new(__return_value) if __return_value
     end
 
     def has_name(name)
@@ -197,7 +197,7 @@ module Gst
     end
 
     def parse_protection(system_id, data, origin)
-      LibGst.event_parse_protection(@pointer.as(LibGst::Event*), system_id, data, origin ? origin.to_unsafe : nil)
+      LibGst.event_parse_protection(@pointer.as(LibGst::Event*), system_id, data, origin)
       nil
     end
 

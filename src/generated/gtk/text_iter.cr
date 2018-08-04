@@ -341,8 +341,8 @@ module Gtk
       GdkPixbuf::Pixbuf.new(__return_value)
     end
 
-    def slice(end)
-      __return_value = LibGtk.text_iter_get_slice(@pointer.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*))
+    def slice(_end)
+      __return_value = LibGtk.text_iter_get_slice(@pointer.as(LibGtk::TextIter*), _end.to_unsafe.as(LibGtk::TextIter*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
@@ -351,8 +351,8 @@ module Gtk
       GLib::SListIterator(Gtk::TextTag, LibGtk::TextTag**).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
-    def text(end)
-      __return_value = LibGtk.text_iter_get_text(@pointer.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*))
+    def text(_end)
+      __return_value = LibGtk.text_iter_get_text(@pointer.as(LibGtk::TextIter*), _end.to_unsafe.as(LibGtk::TextIter*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
@@ -371,13 +371,13 @@ module Gtk
       __return_value
     end
 
-    def visible_slice(end)
-      __return_value = LibGtk.text_iter_get_visible_slice(@pointer.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*))
+    def visible_slice(_end)
+      __return_value = LibGtk.text_iter_get_visible_slice(@pointer.as(LibGtk::TextIter*), _end.to_unsafe.as(LibGtk::TextIter*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def visible_text(end)
-      __return_value = LibGtk.text_iter_get_visible_text(@pointer.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*))
+    def visible_text(_end)
+      __return_value = LibGtk.text_iter_get_visible_text(@pointer.as(LibGtk::TextIter*), _end.to_unsafe.as(LibGtk::TextIter*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
@@ -386,8 +386,8 @@ module Gtk
       __return_value
     end
 
-    def in_range(start, end)
-      __return_value = LibGtk.text_iter_in_range(@pointer.as(LibGtk::TextIter*), start.to_unsafe.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*))
+    def in_range(start, _end)
+      __return_value = LibGtk.text_iter_in_range(@pointer.as(LibGtk::TextIter*), start.to_unsafe.as(LibGtk::TextIter*), _end.to_unsafe.as(LibGtk::TextIter*))
       __return_value
     end
 

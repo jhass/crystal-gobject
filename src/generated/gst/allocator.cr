@@ -23,7 +23,7 @@ module Gst
 
     def alloc(size, params)
       __return_value = LibGst.allocator_alloc(@pointer.as(LibGst::Allocator*), UInt64.new(size), params ? params.to_unsafe.as(LibGst::AllocationParams*) : nil)
-      Gst::Memory.new(__return_value)
+      Gst::Memory.new(__return_value) if __return_value
     end
 
     def free(memory)

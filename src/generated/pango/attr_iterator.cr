@@ -31,8 +31,8 @@ module Pango
       __return_value
     end
 
-    def range(start, end)
-      LibPango.attr_iterator_range(@pointer.as(LibPango::AttrIterator*), start, end)
+    def range(start, _end)
+      LibPango.attr_iterator_range(@pointer.as(LibPango::AttrIterator*), start, _end)
       nil
     end
 

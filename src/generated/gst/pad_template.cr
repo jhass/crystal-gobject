@@ -23,6 +23,12 @@ module Gst
       gvalue.enum
     end
 
+    def gtype
+      gvalue = GObject::Value.new(GObject::Type::GTYPE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "gtype", gvalue)
+      gvalue
+    end
+
     def name_template
       gvalue = GObject::Value.new(GObject::Type::UTF8)
       LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "name_template", gvalue)
@@ -37,6 +43,16 @@ module Gst
 
     def self.new(name_template, direction : Gst::PadDirection, presence : Gst::PadPresence, caps) : self
       __return_value = LibGst.pad_template_new(name_template.to_unsafe, direction, presence, caps.to_unsafe.as(LibGst::Caps*))
+      cast Gst::PadTemplate.new(__return_value) if __return_value
+    end
+
+    def self.new_from_static_pad_template_with_gtype(pad_template, pad_type) : self
+      __return_value = LibGst.pad_template_new_from_static_pad_template_with_gtype(pad_template.to_unsafe.as(LibGst::StaticPadTemplate*), UInt64.new(pad_type))
+      cast Gst::PadTemplate.new(__return_value)
+    end
+
+    def self.new_with_gtype(name_template, direction : Gst::PadDirection, presence : Gst::PadPresence, caps, pad_type) : self
+      __return_value = LibGst.pad_template_new_with_gtype(name_template.to_unsafe, direction, presence, caps.to_unsafe.as(LibGst::Caps*), UInt64.new(pad_type))
       cast Gst::PadTemplate.new(__return_value)
     end
 

@@ -79,21 +79,21 @@ module Gtk
       GLib::ListIterator(String, UInt8**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
-    def load_icon(icon_name, size, flags : Gtk::IconLookupFlags) # function
+    def load_icon(icon_name, size, flags : Gtk::IconLookupFlags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.icon_theme_load_icon(@pointer.as(LibGtk::IconTheme*), icon_name.to_unsafe, Int32.new(size), flags, pointerof(__error))
       GLib::Error.assert __error
       GdkPixbuf::Pixbuf.new(__return_value) if __return_value
     end
 
-    def load_icon_for_scale(icon_name, size, scale, flags : Gtk::IconLookupFlags) # function
+    def load_icon_for_scale(icon_name, size, scale, flags : Gtk::IconLookupFlags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.icon_theme_load_icon_for_scale(@pointer.as(LibGtk::IconTheme*), icon_name.to_unsafe, Int32.new(size), Int32.new(scale), flags, pointerof(__error))
       GLib::Error.assert __error
       GdkPixbuf::Pixbuf.new(__return_value) if __return_value
     end
 
-    def load_surface(icon_name, size, scale, for_window, flags : Gtk::IconLookupFlags) # function
+    def load_surface(icon_name, size, scale, for_window, flags : Gtk::IconLookupFlags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.icon_theme_load_surface(@pointer.as(LibGtk::IconTheme*), icon_name.to_unsafe, Int32.new(size), Int32.new(scale), for_window ? for_window.to_unsafe.as(LibGdk::Window*) : nil, flags, pointerof(__error))
       GLib::Error.assert __error

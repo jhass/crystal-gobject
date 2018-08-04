@@ -2,7 +2,7 @@ require "./base_info"
 
 module GIRepository
   class ArgInfo < BaseInfo
-    KEYWORDS = {"def", "alias", "module", "out", "begin", "self"}
+    KEYWORDS = {"def", "alias", "module", "out", "begin", "self", "end"}
 
     def name
       name = super

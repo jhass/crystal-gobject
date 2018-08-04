@@ -51,28 +51,28 @@ module Gtk
       __return_value
     end
 
-    def lookup_item(uri) # function
+    def lookup_item(uri)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.recent_manager_lookup_item(@pointer.as(LibGtk::RecentManager*), uri.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       Gtk::RecentInfo.new(__return_value) if __return_value
     end
 
-    def move_item(uri, new_uri) # function
+    def move_item(uri, new_uri)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.recent_manager_move_item(@pointer.as(LibGtk::RecentManager*), uri.to_unsafe, new_uri ? new_uri.to_unsafe : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def purge_items # function
+    def purge_items
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.recent_manager_purge_items(@pointer.as(LibGtk::RecentManager*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def remove_item(uri) # function
+    def remove_item(uri)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.recent_manager_remove_item(@pointer.as(LibGtk::RecentManager*), uri.to_unsafe, pointerof(__error))
       GLib::Error.assert __error

@@ -39,7 +39,7 @@ module Gst
 
     def create_watch
       __return_value = LibGst.bus_create_watch(@pointer.as(LibGst::Bus*))
-      GLib::Source.new(__return_value)
+      GLib::Source.new(__return_value) if __return_value
     end
 
     def disable_sync_message_emission
@@ -49,6 +49,11 @@ module Gst
 
     def enable_sync_message_emission
       LibGst.bus_enable_sync_message_emission(@pointer.as(LibGst::Bus*))
+      nil
+    end
+
+    def pollfd(fd)
+      LibGst.bus_get_pollfd(@pointer.as(LibGst::Bus*), fd.to_unsafe.as(LibGLib::PollFD*))
       nil
     end
 

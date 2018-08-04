@@ -13,12 +13,12 @@ module Gst
 
     def self.new : self
       __return_value = LibGst.parse_context_new
-      cast Gst::ParseContext.new(__return_value)
+      cast Gst::ParseContext.new(__return_value) if __return_value
     end
 
     def copy
       __return_value = LibGst.parse_context_copy(@pointer.as(LibGst::ParseContext*))
-      Gst::ParseContext.new(__return_value)
+      Gst::ParseContext.new(__return_value) if __return_value
     end
 
     def free
@@ -28,7 +28,7 @@ module Gst
 
     def missing_elements
       __return_value = LibGst.parse_context_get_missing_elements(@pointer.as(LibGst::ParseContext*))
-      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
+      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) } if __return_value
     end
 
   end

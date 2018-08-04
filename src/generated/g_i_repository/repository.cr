@@ -9,7 +9,7 @@ module GIRepository
       @pointer.not_nil!.as(LibGIRepository::Repository*)
     end
 
-    def self.dump(arg) # function
+    def self.dump(arg)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGIRepository.repository_dump(arg.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
@@ -24,6 +24,11 @@ module GIRepository
     def self.default
       __return_value = LibGIRepository.repository_get_default
       GIRepository::Repository.new(__return_value)
+    end
+
+    def self.option_group
+      __return_value = LibGIRepository.repository_get_option_group
+      GLib::OptionGroup.new(__return_value)
     end
 
     def self.search_path
@@ -111,21 +116,21 @@ module GIRepository
       __return_value
     end
 
-    def load_typelib(typelib, flags : GIRepository::RepositoryLoadFlags) # function
+    def load_typelib(typelib, flags : GIRepository::RepositoryLoadFlags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGIRepository.repository_load_typelib(@pointer.as(LibGIRepository::Repository*), typelib.to_unsafe.as(LibGIRepository::Typelib*), flags, pointerof(__error))
       GLib::Error.assert __error
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def require(namespace, version, flags : GIRepository::RepositoryLoadFlags) # function
+    def require(namespace, version, flags : GIRepository::RepositoryLoadFlags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGIRepository.repository_require(@pointer.as(LibGIRepository::Repository*), namespace.to_unsafe, version ? version.to_unsafe : nil, flags, pointerof(__error))
       GLib::Error.assert __error
       GIRepository::Typelib.new(__return_value)
     end
 
-    def require_private(typelib_dir, namespace, version, flags : GIRepository::RepositoryLoadFlags) # function
+    def require_private(typelib_dir, namespace, version, flags : GIRepository::RepositoryLoadFlags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGIRepository.repository_require_private(@pointer.as(LibGIRepository::Repository*), typelib_dir.to_unsafe, namespace.to_unsafe, version ? version.to_unsafe : nil, flags, pointerof(__error))
       GLib::Error.assert __error

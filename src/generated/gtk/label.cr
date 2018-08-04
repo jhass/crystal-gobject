@@ -225,8 +225,8 @@ module Gtk
       __return_value
     end
 
-    def selection_bounds(start, end)
-      __return_value = LibGtk.label_get_selection_bounds(@pointer.as(LibGtk::Label*), start, end)
+    def selection_bounds(start, _end)
+      __return_value = LibGtk.label_get_selection_bounds(@pointer.as(LibGtk::Label*), start, _end)
       __return_value
     end
 

@@ -38,17 +38,17 @@ module Gst
 
     def fragment
       __return_value = LibGst.uri_get_fragment(@pointer.as(LibGst::Uri*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def host
       __return_value = LibGst.uri_get_host(@pointer.as(LibGst::Uri*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def media_fragment_table
       __return_value = LibGst.uri_get_media_fragment_table(@pointer.as(LibGst::Uri*))
-      __return_value
+      __return_value if __return_value
     end
 
     def path
@@ -63,7 +63,7 @@ module Gst
 
     def path_string
       __return_value = LibGst.uri_get_path_string(@pointer.as(LibGst::Uri*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def port
@@ -78,27 +78,27 @@ module Gst
 
     def query_string
       __return_value = LibGst.uri_get_query_string(@pointer.as(LibGst::Uri*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def query_table
       __return_value = LibGst.uri_get_query_table(@pointer.as(LibGst::Uri*))
-      __return_value
+      __return_value if __return_value
     end
 
     def query_value(query_key)
       __return_value = LibGst.uri_get_query_value(@pointer.as(LibGst::Uri*), query_key.to_unsafe)
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def scheme
       __return_value = LibGst.uri_get_scheme(@pointer.as(LibGst::Uri*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def userinfo
       __return_value = LibGst.uri_get_userinfo(@pointer.as(LibGst::Uri*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def normalized?
@@ -113,7 +113,7 @@ module Gst
 
     def join(ref_uri)
       __return_value = LibGst.uri_join(@pointer.as(LibGst::Uri*), ref_uri ? ref_uri.to_unsafe.as(LibGst::Uri*) : nil)
-      Gst::Uri.new(__return_value)
+      Gst::Uri.new(__return_value) if __return_value
     end
 
     def make_writable
@@ -213,12 +213,12 @@ module Gst
 
     def self.location(uri)
       __return_value = LibGst.uri_get_location(uri.to_unsafe)
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def self.protocol(uri)
       __return_value = LibGst.uri_get_protocol(uri.to_unsafe)
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def self.has_protocol(uri, protocol)

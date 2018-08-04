@@ -95,7 +95,7 @@ module Gdk
       nil
     end
 
-    def create_gl_context # function
+    def create_gl_context
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdk.window_create_gl_context(@pointer.as(LibGdk::Window*), pointerof(__error))
       GLib::Error.assert __error

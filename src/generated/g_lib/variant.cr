@@ -381,7 +381,7 @@ module GLib
       __return_value
     end
 
-    def self.parse(type, text, limit, endptr) # function
+    def self.parse(type, text, limit, endptr)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.variant_parse(type ? type.to_unsafe.as(LibGLib::VariantType*) : nil, text.to_unsafe, limit ? limit.to_unsafe : nil, endptr ? endptr.to_unsafe : nil, pointerof(__error))
       GLib::Error.assert __error

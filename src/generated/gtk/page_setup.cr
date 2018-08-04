@@ -14,7 +14,7 @@ module Gtk
       cast Gtk::PageSetup.new(__return_value)
     end
 
-    def self.new_from_file(file_name) : self # function
+    def self.new_from_file(file_name) : self
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.page_setup_new_from_file(file_name.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
@@ -26,7 +26,7 @@ module Gtk
       cast Gtk::PageSetup.new(__return_value)
     end
 
-    def self.new_from_key_file(key_file, group_name) : self # function
+    def self.new_from_key_file(key_file, group_name) : self
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.page_setup_new_from_key_file(key_file.to_unsafe.as(LibGLib::KeyFile*), group_name ? group_name.to_unsafe : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -88,14 +88,14 @@ module Gtk
       __return_value
     end
 
-    def load_file(file_name) # function
+    def load_file(file_name)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.page_setup_load_file(@pointer.as(LibGtk::PageSetup*), file_name.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def load_key_file(key_file, group_name) # function
+    def load_key_file(key_file, group_name)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.page_setup_load_key_file(@pointer.as(LibGtk::PageSetup*), key_file.to_unsafe.as(LibGLib::KeyFile*), group_name ? group_name.to_unsafe : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -137,7 +137,7 @@ module Gtk
       nil
     end
 
-    def to_file(file_name) # function
+    def to_file(file_name)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.page_setup_to_file(@pointer.as(LibGtk::PageSetup*), file_name.to_unsafe, pointerof(__error))
       GLib::Error.assert __error

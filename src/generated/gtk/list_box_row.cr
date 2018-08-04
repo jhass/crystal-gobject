@@ -12,6 +12,7 @@ module Gtk
     end
 
     # Implements ImplementorIface
+    # Implements Actionable
     # Implements Buildable
     def activatable
       gvalue = GObject::Value.new(GObject::Type::BOOLEAN)

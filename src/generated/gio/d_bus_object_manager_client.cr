@@ -61,28 +61,28 @@ module Gio
       gvalue.string
     end
 
-    def self.new_finish(res) : self # function
+    def self.new_finish(res) : self
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_object_manager_client_new_finish(res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       cast Gio::DBusObjectManagerClient.new(__return_value)
     end
 
-    def self.new_for_bus_finish(res) : self # function
+    def self.new_for_bus_finish(res) : self
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_object_manager_client_new_for_bus_finish(res.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       cast Gio::DBusObjectManagerClient.new(__return_value)
     end
 
-    def self.new_for_bus_sync(bus_type : Gio::BusType, flags : Gio::DBusObjectManagerClientFlags, name, object_path, get_proxy_type_func, get_proxy_type_user_data, get_proxy_type_destroy_notify, cancellable) : self # function
+    def self.new_for_bus_sync(bus_type : Gio::BusType, flags : Gio::DBusObjectManagerClientFlags, name, object_path, get_proxy_type_func, get_proxy_type_user_data, get_proxy_type_destroy_notify, cancellable) : self
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_object_manager_client_new_for_bus_sync(bus_type, flags, name.to_unsafe, object_path.to_unsafe, get_proxy_type_func ? get_proxy_type_func : nil, get_proxy_type_user_data ? get_proxy_type_user_data : nil, get_proxy_type_destroy_notify ? get_proxy_type_destroy_notify : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       cast Gio::DBusObjectManagerClient.new(__return_value)
     end
 
-    def self.new_sync(connection, flags : Gio::DBusObjectManagerClientFlags, name, object_path, get_proxy_type_func, get_proxy_type_user_data, get_proxy_type_destroy_notify, cancellable) : self # function
+    def self.new_sync(connection, flags : Gio::DBusObjectManagerClientFlags, name, object_path, get_proxy_type_func, get_proxy_type_user_data, get_proxy_type_destroy_notify, cancellable) : self
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_object_manager_client_new_sync(connection.to_unsafe.as(LibGio::DBusConnection*), flags, name ? name.to_unsafe : nil, object_path.to_unsafe, get_proxy_type_func ? get_proxy_type_func : nil, get_proxy_type_user_data ? get_proxy_type_user_data : nil, get_proxy_type_destroy_notify ? get_proxy_type_destroy_notify : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error

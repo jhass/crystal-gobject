@@ -35,7 +35,7 @@ module GObject
 
     def dup_variant
       __return_value = LibGObject.value_dup_variant(@pointer.as(LibGObject::Value*))
-      GLib::Variant.new(__return_value)
+      GLib::Variant.new(__return_value) if __return_value
     end
 
     def fits_pointer
@@ -145,7 +145,7 @@ module GObject
 
     def variant
       __return_value = LibGObject.value_get_variant(@pointer.as(LibGObject::Value*))
-      GLib::Variant.new(__return_value)
+      GLib::Variant.new(__return_value) if __return_value
     end
 
     def init(g_type)

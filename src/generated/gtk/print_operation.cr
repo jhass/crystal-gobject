@@ -143,7 +143,7 @@ module Gtk
       __return_value
     end
 
-    def error # function
+    def error
       __error = Pointer(LibGLib::Error).null
       LibGtk.print_operation_get_error(@pointer.as(LibGtk::PrintOperation*), pointerof(__error))
       GLib::Error.assert __error
@@ -185,7 +185,7 @@ module Gtk
       __return_value
     end
 
-    def run(action : Gtk::PrintOperationAction, parent) # function
+    def run(action : Gtk::PrintOperationAction, parent)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.print_operation_run(@pointer.as(LibGtk::PrintOperation*), action, parent ? parent.to_unsafe.as(LibGtk::Window*) : nil, pointerof(__error))
       GLib::Error.assert __error

@@ -53,7 +53,7 @@ module Gst
 
     def nth(i)
       __return_value = LibGst.caps_features_get_nth(@pointer.as(LibGst::CapsFeatures*), UInt32.new(i))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def nth_id(i)

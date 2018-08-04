@@ -34,7 +34,7 @@ module Gst
 
     def stream(index)
       __return_value = LibGst.stream_collection_get_stream(@pointer.as(LibGst::StreamCollection*), UInt32.new(index))
-      Gst::Stream.new(__return_value)
+      Gst::Stream.new(__return_value) if __return_value
     end
 
     def upstream_id

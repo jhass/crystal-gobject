@@ -33,7 +33,7 @@ module Gst
 
     def parent
       __return_value = LibGst.toc_entry_get_parent(@pointer.as(LibGst::TocEntry*))
-      Gst::TocEntry.new(__return_value)
+      Gst::TocEntry.new(__return_value) if __return_value
     end
 
     def start_stop_times(start, stop)

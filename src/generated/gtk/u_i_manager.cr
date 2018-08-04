@@ -32,21 +32,21 @@ module Gtk
       nil
     end
 
-    def add_ui_from_file(filename) # function
+    def add_ui_from_file(filename)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.u_i_manager_add_ui_from_file(@pointer.as(LibGtk::UIManager*), filename.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def add_ui_from_resource(resource_path) # function
+    def add_ui_from_resource(resource_path)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.u_i_manager_add_ui_from_resource(@pointer.as(LibGtk::UIManager*), resource_path.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def add_ui_from_string(buffer, length) # function
+    def add_ui_from_string(buffer, length)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.u_i_manager_add_ui_from_string(@pointer.as(LibGtk::UIManager*), buffer.to_unsafe, Int64.new(length), pointerof(__error))
       GLib::Error.assert __error

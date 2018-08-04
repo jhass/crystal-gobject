@@ -27,7 +27,7 @@ module Gio
       cast Gio::SocketControlMessage.new(__return_value)
     end
 
-    def append_fd(fd) # function
+    def append_fd(fd)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.unix_f_d_message_append_fd(@pointer.as(LibGio::UnixFDMessage*), Int32.new(fd), pointerof(__error))
       GLib::Error.assert __error

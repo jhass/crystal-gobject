@@ -41,7 +41,7 @@ module Gst
 
     def by_interface(iface)
       __return_value = LibGst.bin_get_by_interface(@pointer.as(LibGst::Bin*), UInt64.new(iface))
-      Gst::Element.new(__return_value)
+      Gst::Element.new(__return_value) if __return_value
     end
 
     def by_name(name)

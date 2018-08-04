@@ -110,7 +110,7 @@ module Gio
       __return_value
     end
 
-    def handshake(cancellable) # function
+    def handshake(cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.tls_connection_handshake(@pointer.as(LibGio::TlsConnection*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -122,7 +122,7 @@ module Gio
       nil
     end
 
-    def handshake_finish(result) # function
+    def handshake_finish(result)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.tls_connection_handshake_finish(@pointer.as(LibGio::TlsConnection*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error

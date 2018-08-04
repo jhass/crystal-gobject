@@ -81,6 +81,11 @@ module Pango
       __return_value
     end
 
+    def variations
+      __return_value = LibPango.font_description_get_variations(@pointer.as(LibPango::FontDescription*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
+    end
+
     def weight
       __return_value = LibPango.font_description_get_weight(@pointer.as(LibPango::FontDescription*))
       __return_value
@@ -138,6 +143,16 @@ module Pango
 
     def variant=(variant : Pango::Variant)
       LibPango.font_description_set_variant(@pointer.as(LibPango::FontDescription*), variant)
+      nil
+    end
+
+    def variations=(settings)
+      LibPango.font_description_set_variations(@pointer.as(LibPango::FontDescription*), settings.to_unsafe)
+      nil
+    end
+
+    def variations_static=(settings)
+      LibPango.font_description_set_variations_static(@pointer.as(LibPango::FontDescription*), settings.to_unsafe)
       nil
     end
 

@@ -75,7 +75,7 @@ module Gst
 
     def features(index)
       __return_value = LibGst.caps_get_features(@pointer.as(LibGst::Caps*), UInt32.new(index))
-      Gst::CapsFeatures.new(__return_value)
+      Gst::CapsFeatures.new(__return_value) if __return_value
     end
 
     def size
@@ -195,7 +195,7 @@ module Gst
 
     def steal_structure(index)
       __return_value = LibGst.caps_steal_structure(@pointer.as(LibGst::Caps*), UInt32.new(index))
-      Gst::Structure.new(__return_value)
+      Gst::Structure.new(__return_value) if __return_value
     end
 
     def subtract(subtrahend)
@@ -215,7 +215,7 @@ module Gst
 
     def self.from_string(string)
       __return_value = LibGst.caps_from_string(string.to_unsafe)
-      Gst::Caps.new(__return_value)
+      Gst::Caps.new(__return_value) if __return_value
     end
 
     def mini_object

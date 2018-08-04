@@ -33,7 +33,7 @@ module Gst
 
     def info
       __return_value = LibGst.sample_get_info(@pointer.as(LibGst::Sample*))
-      Gst::Structure.new(__return_value)
+      Gst::Structure.new(__return_value) if __return_value
     end
 
     def segment

@@ -21,6 +21,11 @@ module Gst
       cast Gst::BufferList.new(__return_value)
     end
 
+    def calculate_size
+      __return_value = LibGst.buffer_list_calculate_size(@pointer.as(LibGst::BufferList*))
+      __return_value
+    end
+
     def copy_deep
       __return_value = LibGst.buffer_list_copy_deep(@pointer.as(LibGst::BufferList*))
       Gst::BufferList.new(__return_value)
@@ -33,6 +38,11 @@ module Gst
 
     def get(idx)
       __return_value = LibGst.buffer_list_get(@pointer.as(LibGst::BufferList*), UInt32.new(idx))
+      Gst::Buffer.new(__return_value) if __return_value
+    end
+
+    def writable(idx)
+      __return_value = LibGst.buffer_list_get_writable(@pointer.as(LibGst::BufferList*), UInt32.new(idx))
       Gst::Buffer.new(__return_value) if __return_value
     end
 

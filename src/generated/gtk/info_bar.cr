@@ -20,6 +20,12 @@ module Gtk
       gvalue.enum
     end
 
+    def revealed
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "revealed", gvalue)
+      gvalue.boolean
+    end
+
     def show_close_button
       gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
       LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "show_close_button", gvalue)
@@ -56,6 +62,11 @@ module Gtk
       __return_value
     end
 
+    def revealed
+      __return_value = LibGtk.info_bar_get_revealed(@pointer.as(LibGtk::InfoBar*))
+      __return_value
+    end
+
     def show_close_button
       __return_value = LibGtk.info_bar_get_show_close_button(@pointer.as(LibGtk::InfoBar*))
       __return_value
@@ -78,6 +89,11 @@ module Gtk
 
     def set_response_sensitive(response_id, setting)
       LibGtk.info_bar_set_response_sensitive(@pointer.as(LibGtk::InfoBar*), Int32.new(response_id), setting)
+      nil
+    end
+
+    def revealed=(revealed)
+      LibGtk.info_bar_set_revealed(@pointer.as(LibGtk::InfoBar*), revealed)
       nil
     end
 

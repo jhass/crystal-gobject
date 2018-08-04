@@ -80,7 +80,7 @@ lib LibGdk
     SMOOTH_SCROLL_MASK = 8388608
     TOUCHPAD_GESTURE_MASK = 16777216
     TABLET_PAD_MASK = 33554432
-    ALL_EVENTS_MASK = 16777214
+    ALL_EVENTS_MASK = 67108862
   end
 
   @[Flags]
@@ -1019,7 +1019,7 @@ lib LibGdk
     type : LibGdk::EventType
     window : LibGdk::Window*
     send_event : Int8
-    phase : LibGdk::TouchpadGesturePhase
+    phase : Int8
     n_fingers : Int8
     time : UInt32
     x : Float64
@@ -1037,7 +1037,7 @@ lib LibGdk
     type : LibGdk::EventType
     window : LibGdk::Window*
     send_event : Int8
-    phase : LibGdk::TouchpadGesturePhase
+    phase : Int8
     n_fingers : Int8
     time : UInt32
     x : Float64

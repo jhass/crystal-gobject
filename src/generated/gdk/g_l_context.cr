@@ -87,7 +87,7 @@ module Gdk
       nil
     end
 
-    def realize # function
+    def realize
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGdk.g_l_context_realize(@pointer.as(LibGdk::GLContext*), pointerof(__error))
       GLib::Error.assert __error

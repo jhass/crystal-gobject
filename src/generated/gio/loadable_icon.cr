@@ -1,6 +1,6 @@
 module Gio
   module LoadableIcon
-    def load(size, type, cancellable) # function
+    def load(size, type, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.loadable_icon_load(@pointer.as(LibGio::LoadableIcon*), Int32.new(size), type, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -12,7 +12,7 @@ module Gio
       nil
     end
 
-    def load_finish(res, type) # function
+    def load_finish(res, type)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.loadable_icon_load_finish(@pointer.as(LibGio::LoadableIcon*), res.to_unsafe.as(LibGio::AsyncResult*), type, pointerof(__error))
       GLib::Error.assert __error

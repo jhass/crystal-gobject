@@ -51,6 +51,11 @@ module Gst
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
+    def metadata(key)
+      __return_value = LibGst.device_provider_get_metadata(@pointer.as(LibGst::DeviceProvider*), key.to_unsafe)
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
+
     def hide_provider(name)
       LibGst.device_provider_hide_provider(@pointer.as(LibGst::DeviceProvider*), name.to_unsafe)
       nil

@@ -16,8 +16,8 @@ module GLib
       __return_value
     end
 
-    def double_range(_begin, end)
-      __return_value = LibGLib.rand_double_range(@pointer.as(LibGLib::Rand*), Float64.new(_begin), Float64.new(end))
+    def double_range(_begin, _end)
+      __return_value = LibGLib.rand_double_range(@pointer.as(LibGLib::Rand*), Float64.new(_begin), Float64.new(_end))
       __return_value
     end
 
@@ -31,8 +31,8 @@ module GLib
       __return_value
     end
 
-    def int_range(_begin, end)
-      __return_value = LibGLib.rand_int_range(@pointer.as(LibGLib::Rand*), Int32.new(_begin), Int32.new(end))
+    def int_range(_begin, _end)
+      __return_value = LibGLib.rand_int_range(@pointer.as(LibGLib::Rand*), Int32.new(_begin), Int32.new(_end))
       __return_value
     end
 

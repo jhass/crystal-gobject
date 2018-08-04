@@ -185,7 +185,7 @@ module Gst
 
     def value(fieldname)
       __return_value = LibGst.structure_get_value(@pointer.as(LibGst::Structure*), fieldname.to_unsafe)
-      GObject::Value.new(__return_value)
+      GObject::Value.new(__return_value) if __return_value
     end
 
     def has_field(fieldname)
@@ -205,7 +205,7 @@ module Gst
 
     def id_get_value(field)
       __return_value = LibGst.structure_id_get_value(@pointer.as(LibGst::Structure*), UInt32.new(field))
-      GObject::Value.new(__return_value)
+      GObject::Value.new(__return_value) if __return_value
     end
 
     def id_has_field(field)
@@ -230,7 +230,7 @@ module Gst
 
     def intersect(struct2)
       __return_value = LibGst.structure_intersect(@pointer.as(LibGst::Structure*), struct2.to_unsafe.as(LibGst::Structure*))
-      Gst::Structure.new(__return_value)
+      Gst::Structure.new(__return_value) if __return_value
     end
 
     def equal?(structure2)
@@ -303,8 +303,8 @@ module Gst
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def self.from_string(string, end)
-      __return_value = LibGst.structure_from_string(string.to_unsafe, end)
+    def self.from_string(string, _end)
+      __return_value = LibGst.structure_from_string(string.to_unsafe, _end)
       Gst::Structure.new(__return_value) if __return_value
     end
 

@@ -767,6 +767,15 @@ module Gtk
       connect("insert-at-cursor", __callback)
     end
 
+    alias InsertEmojiSignal = Entry ->
+    def on_insert_emoji(&__block : InsertEmojiSignal)
+      __callback = ->(_arg0 : LibGtk::Entry*) {
+       __return_value = __block.call(Entry.new(_arg0))
+       __return_value
+      }
+      connect("insert-emoji", __callback)
+    end
+
     alias MoveCursorSignal = Entry, Gtk::MovementStep, Int32, Bool ->
     def on_move_cursor(&__block : MoveCursorSignal)
       __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : LibGtk::LibGtk::MovementStep*, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Bool*) {

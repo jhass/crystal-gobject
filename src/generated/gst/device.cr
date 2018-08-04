@@ -37,12 +37,12 @@ module Gst
 
     def create_element(name)
       __return_value = LibGst.device_create_element(@pointer.as(LibGst::Device*), name ? name.to_unsafe : nil)
-      Gst::Element.new(__return_value)
+      Gst::Element.new(__return_value) if __return_value
     end
 
     def caps
       __return_value = LibGst.device_get_caps(@pointer.as(LibGst::Device*))
-      Gst::Caps.new(__return_value)
+      Gst::Caps.new(__return_value) if __return_value
     end
 
     def device_class
@@ -57,7 +57,7 @@ module Gst
 
     def properties
       __return_value = LibGst.device_get_properties(@pointer.as(LibGst::Device*))
-      Gst::Structure.new(__return_value)
+      Gst::Structure.new(__return_value) if __return_value
     end
 
     def has_classes(classes)

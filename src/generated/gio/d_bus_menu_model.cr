@@ -12,7 +12,7 @@ module Gio
     end
 
     def self.get(connection, bus_name, object_path)
-      __return_value = LibGio.d_bus_menu_model_get(connection.to_unsafe.as(LibGio::DBusConnection*), bus_name.to_unsafe, object_path.to_unsafe)
+      __return_value = LibGio.d_bus_menu_model_get(connection.to_unsafe.as(LibGio::DBusConnection*), bus_name ? bus_name.to_unsafe : nil, object_path.to_unsafe)
       Gio::DBusMenuModel.new(__return_value)
     end
 

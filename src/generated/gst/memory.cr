@@ -26,7 +26,7 @@ module Gst
 
     def self.new_wrapped(flags : Gst::MemoryFlags, data, maxsize, offset, size, user_data, notify) : self
       __return_value = LibGst.memory_new_wrapped(flags, data, UInt64.new(maxsize), UInt64.new(offset), UInt64.new(size), user_data ? user_data : nil, notify ? notify : nil)
-      cast Gst::Memory.new(__return_value)
+      cast Gst::Memory.new(__return_value) if __return_value
     end
 
     def copy(offset, size)

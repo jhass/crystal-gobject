@@ -66,13 +66,13 @@ module GLib
       nil
     end
 
-    def self.move_range(dest, _begin, end)
-      LibGLib.sequence_move_range(dest.to_unsafe.as(LibGLib::SequenceIter*), _begin.to_unsafe.as(LibGLib::SequenceIter*), end.to_unsafe.as(LibGLib::SequenceIter*))
+    def self.move_range(dest, _begin, _end)
+      LibGLib.sequence_move_range(dest.to_unsafe.as(LibGLib::SequenceIter*), _begin.to_unsafe.as(LibGLib::SequenceIter*), _end.to_unsafe.as(LibGLib::SequenceIter*))
       nil
     end
 
-    def self.range_get_midpoint(_begin, end)
-      __return_value = LibGLib.sequence_range_get_midpoint(_begin.to_unsafe.as(LibGLib::SequenceIter*), end.to_unsafe.as(LibGLib::SequenceIter*))
+    def self.range_get_midpoint(_begin, _end)
+      __return_value = LibGLib.sequence_range_get_midpoint(_begin.to_unsafe.as(LibGLib::SequenceIter*), _end.to_unsafe.as(LibGLib::SequenceIter*))
       GLib::SequenceIter.new(__return_value)
     end
 
@@ -81,8 +81,8 @@ module GLib
       nil
     end
 
-    def self.remove_range(_begin, end)
-      LibGLib.sequence_remove_range(_begin.to_unsafe.as(LibGLib::SequenceIter*), end.to_unsafe.as(LibGLib::SequenceIter*))
+    def self.remove_range(_begin, _end)
+      LibGLib.sequence_remove_range(_begin.to_unsafe.as(LibGLib::SequenceIter*), _end.to_unsafe.as(LibGLib::SequenceIter*))
       nil
     end
 

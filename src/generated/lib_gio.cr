@@ -164,8 +164,8 @@ lib LibGio
   fun app_info_get_default_for_uri_scheme = g_app_info_get_default_for_uri_scheme(uri_scheme : UInt8*) : LibGio::AppInfo*
   fun app_info_get_fallback_for_type = g_app_info_get_fallback_for_type(content_type : UInt8*) : Void**
   fun app_info_get_recommended_for_type = g_app_info_get_recommended_for_type(content_type : UInt8*) : Void**
-  fun app_info_launch_default_for_uri = g_app_info_launch_default_for_uri(uri : UInt8*, launch_context : LibGio::AppLaunchContext*, error : LibGLib::Error**) : Bool
-  fun app_info_launch_default_for_uri_async = g_app_info_launch_default_for_uri_async(uri : UInt8*, launch_context : LibGio::AppLaunchContext*, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
+  fun app_info_launch_default_for_uri = g_app_info_launch_default_for_uri(uri : UInt8*, context : LibGio::AppLaunchContext*, error : LibGLib::Error**) : Bool
+  fun app_info_launch_default_for_uri_async = g_app_info_launch_default_for_uri_async(uri : UInt8*, context : LibGio::AppLaunchContext*, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun app_info_launch_default_for_uri_finish = g_app_info_launch_default_for_uri_finish(result : LibGio::AsyncResult*, error : LibGLib::Error**) : Bool
   fun app_info_reset_type_associations = g_app_info_reset_type_associations(content_type : UInt8*) : Void
   fun app_info_add_supports_type = g_app_info_add_supports_type(this : AppInfo*, content_type : UInt8*, error : LibGLib::Error**) : Bool
@@ -182,8 +182,8 @@ lib LibGio
   fun app_info_get_id = g_app_info_get_id(this : AppInfo*) : UInt8*
   fun app_info_get_name = g_app_info_get_name(this : AppInfo*) : UInt8*
   fun app_info_get_supported_types = g_app_info_get_supported_types(this : AppInfo*) : UInt8**
-  fun app_info_launch = g_app_info_launch(this : AppInfo*, files : Void**, launch_context : LibGio::AppLaunchContext*, error : LibGLib::Error**) : Bool
-  fun app_info_launch_uris = g_app_info_launch_uris(this : AppInfo*, uris : Void**, launch_context : LibGio::AppLaunchContext*, error : LibGLib::Error**) : Bool
+  fun app_info_launch = g_app_info_launch(this : AppInfo*, files : Void**, context : LibGio::AppLaunchContext*, error : LibGLib::Error**) : Bool
+  fun app_info_launch_uris = g_app_info_launch_uris(this : AppInfo*, uris : Void**, context : LibGio::AppLaunchContext*, error : LibGLib::Error**) : Bool
   fun app_info_remove_supports_type = g_app_info_remove_supports_type(this : AppInfo*, content_type : UInt8*, error : LibGLib::Error**) : Bool
   fun app_info_set_as_default_for_extension = g_app_info_set_as_default_for_extension(this : AppInfo*, extension : UInt8*, error : LibGLib::Error**) : Bool
   fun app_info_set_as_default_for_type = g_app_info_set_as_default_for_type(this : AppInfo*, content_type : UInt8*, error : LibGLib::Error**) : Bool
@@ -734,6 +734,9 @@ lib LibGio
   fun file_has_uri_scheme = g_file_has_uri_scheme(this : File*, uri_scheme : UInt8*) : Bool
   fun file_hash = g_file_hash(this : File*) : UInt32
   fun file_is_native = g_file_is_native(this : File*) : Bool
+  fun file_load_bytes = g_file_load_bytes(this : File*, cancellable : LibGio::Cancellable*, etag_out : UInt8**, error : LibGLib::Error**) : LibGLib::Bytes*
+  fun file_load_bytes_async = g_file_load_bytes_async(this : File*, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
+  fun file_load_bytes_finish = g_file_load_bytes_finish(this : File*, result : LibGio::AsyncResult*, etag_out : UInt8**, error : LibGLib::Error**) : LibGLib::Bytes*
   fun file_load_contents = g_file_load_contents(this : File*, cancellable : LibGio::Cancellable*, contents : UInt8**, length : UInt64*, etag_out : UInt8**, error : LibGLib::Error**) : Bool
   fun file_load_contents_async = g_file_load_contents_async(this : File*, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun file_load_contents_finish = g_file_load_contents_finish(this : File*, res : LibGio::AsyncResult*, contents : UInt8**, length : UInt64*, etag_out : UInt8**, error : LibGLib::Error**) : Bool
@@ -755,6 +758,7 @@ lib LibGio
   fun file_open_readwrite = g_file_open_readwrite(this : File*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : LibGio::FileIOStream*
   fun file_open_readwrite_async = g_file_open_readwrite_async(this : File*, io_priority : Int32, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun file_open_readwrite_finish = g_file_open_readwrite_finish(this : File*, res : LibGio::AsyncResult*, error : LibGLib::Error**) : LibGio::FileIOStream*
+  fun file_peek_path = g_file_peek_path(this : File*) : UInt8*
   fun file_poll_mountable = g_file_poll_mountable(this : File*, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun file_poll_mountable_finish = g_file_poll_mountable_finish(this : File*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : Bool
   fun file_query_default_handler = g_file_query_default_handler(this : File*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : LibGio::AppInfo*
@@ -2204,6 +2208,9 @@ lib LibGio
   fun application_set_default = g_application_set_default(this : Application*) : Void
   fun application_set_flags = g_application_set_flags(this : Application*, flags : LibGio::ApplicationFlags) : Void
   fun application_set_inactivity_timeout = g_application_set_inactivity_timeout(this : Application*, inactivity_timeout : UInt32) : Void
+  fun application_set_option_context_description = g_application_set_option_context_description(this : Application*, description : UInt8*) : Void
+  fun application_set_option_context_parameter_string = g_application_set_option_context_parameter_string(this : Application*, parameter_string : UInt8*) : Void
+  fun application_set_option_context_summary = g_application_set_option_context_summary(this : Application*, summary : UInt8*) : Void
   fun application_set_resource_base_path = g_application_set_resource_base_path(this : Application*, resource_path : UInt8*) : Void
   fun application_unbind_busy_property = g_application_unbind_busy_property(this : Application*, object : LibGObject::Object*, property : UInt8*) : Void
   fun application_unmark_busy = g_application_unmark_busy(this : Application*) : Void
@@ -2691,6 +2698,7 @@ lib LibGio
   fun desktop_app_info_get_generic_name = g_desktop_app_info_get_generic_name(this : DesktopAppInfo*) : UInt8*
   fun desktop_app_info_get_is_hidden = g_desktop_app_info_get_is_hidden(this : DesktopAppInfo*) : Bool
   fun desktop_app_info_get_keywords = g_desktop_app_info_get_keywords(this : DesktopAppInfo*) : UInt8**
+  fun desktop_app_info_get_locale_string = g_desktop_app_info_get_locale_string(this : DesktopAppInfo*, key : UInt8*) : UInt8*
   fun desktop_app_info_get_nodisplay = g_desktop_app_info_get_nodisplay(this : DesktopAppInfo*) : Bool
   fun desktop_app_info_get_show_in = g_desktop_app_info_get_show_in(this : DesktopAppInfo*, desktop_env : UInt8*) : Bool
   fun desktop_app_info_get_startup_wm_class = g_desktop_app_info_get_startup_wm_class(this : DesktopAppInfo*) : UInt8*
@@ -3174,6 +3182,7 @@ lib LibGio
     # Virtual function ask_password
     # Virtual function ask_question
     # Virtual function reply
+    # Virtual function show_processes
     # Virtual function show_unmount_progress
     # Property anonymous : Bool
     # Property choice : Int32
@@ -3588,7 +3597,9 @@ lib LibGio
   fun socket_is_closed = g_socket_is_closed(this : Socket*) : Bool
   fun socket_is_connected = g_socket_is_connected(this : Socket*) : Bool
   fun socket_join_multicast_group = g_socket_join_multicast_group(this : Socket*, group : LibGio::InetAddress*, source_specific : Bool, iface : UInt8*, error : LibGLib::Error**) : Bool
+  fun socket_join_multicast_group_ssm = g_socket_join_multicast_group_ssm(this : Socket*, group : LibGio::InetAddress*, source_specific : LibGio::InetAddress*, iface : UInt8*, error : LibGLib::Error**) : Bool
   fun socket_leave_multicast_group = g_socket_leave_multicast_group(this : Socket*, group : LibGio::InetAddress*, source_specific : Bool, iface : UInt8*, error : LibGLib::Error**) : Bool
+  fun socket_leave_multicast_group_ssm = g_socket_leave_multicast_group_ssm(this : Socket*, group : LibGio::InetAddress*, source_specific : LibGio::InetAddress*, iface : UInt8*, error : LibGLib::Error**) : Bool
   fun socket_listen = g_socket_listen(this : Socket*, error : LibGLib::Error**) : Bool
   fun socket_receive = g_socket_receive(this : Socket*, buffer : UInt8*, size : UInt64, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int64
   fun socket_receive_from = g_socket_receive_from(this : Socket*, address : LibGio::SocketAddress**, buffer : UInt8*, size : UInt64, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int64
@@ -3782,7 +3793,6 @@ lib LibGio
   end
   fun subprocess_launcher_new = g_subprocess_launcher_new(flags : LibGio::SubprocessFlags) : LibGio::SubprocessLauncher*
   fun subprocess_launcher_getenv = g_subprocess_launcher_getenv(this : SubprocessLauncher*, variable : UInt8*) : UInt8*
-  fun subprocess_launcher_set_child_setup = g_subprocess_launcher_set_child_setup(this : SubprocessLauncher*, child_setup : LibGLib::SpawnChildSetupFunc, user_data : Void*, destroy_notify : LibGLib::DestroyNotify) : Void
   fun subprocess_launcher_set_cwd = g_subprocess_launcher_set_cwd(this : SubprocessLauncher*, cwd : UInt8*) : Void
   fun subprocess_launcher_set_environ = g_subprocess_launcher_set_environ(this : SubprocessLauncher*, env : UInt8**) : Void
   fun subprocess_launcher_set_flags = g_subprocess_launcher_set_flags(this : SubprocessLauncher*, flags : LibGio::SubprocessFlags) : Void
@@ -4728,8 +4738,8 @@ lib LibGio
   fun app_info_get_default_for_uri_scheme = g_app_info_get_default_for_uri_scheme(uri_scheme : UInt8*) : LibGio::AppInfo*
   fun app_info_get_fallback_for_type = g_app_info_get_fallback_for_type(content_type : UInt8*) : Void**
   fun app_info_get_recommended_for_type = g_app_info_get_recommended_for_type(content_type : UInt8*) : Void**
-  fun app_info_launch_default_for_uri = g_app_info_launch_default_for_uri(uri : UInt8*, launch_context : LibGio::AppLaunchContext*, error : LibGLib::Error**) : Bool
-  fun app_info_launch_default_for_uri_async = g_app_info_launch_default_for_uri_async(uri : UInt8*, launch_context : LibGio::AppLaunchContext*, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
+  fun app_info_launch_default_for_uri = g_app_info_launch_default_for_uri(uri : UInt8*, context : LibGio::AppLaunchContext*, error : LibGLib::Error**) : Bool
+  fun app_info_launch_default_for_uri_async = g_app_info_launch_default_for_uri_async(uri : UInt8*, context : LibGio::AppLaunchContext*, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun app_info_launch_default_for_uri_finish = g_app_info_launch_default_for_uri_finish(result : LibGio::AsyncResult*, error : LibGLib::Error**) : Bool
   fun app_info_reset_type_associations = g_app_info_reset_type_associations(content_type : UInt8*) : Void
   fun async_initable_newv_async = g_async_initable_newv_async(object_type : UInt64, n_parameters : UInt32, parameters : LibGObject::Parameter*, io_priority : Int32, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
@@ -4833,6 +4843,8 @@ lib LibGio
   fun tls_file_database_new = g_tls_file_database_new(anchors : UInt8*, error : LibGLib::Error**) : LibGio::TlsFileDatabase*
   fun tls_server_connection_new = g_tls_server_connection_new(base_io_stream : LibGio::IOStream*, certificate : LibGio::TlsCertificate*, error : LibGLib::Error**) : LibGio::TlsServerConnection*
   fun unix_is_mount_path_system_internal = g_unix_is_mount_path_system_internal(mount_path : UInt8*) : Bool
+  fun unix_is_system_device_path = g_unix_is_system_device_path(device_path : UInt8*) : Bool
+  fun unix_is_system_fs_type = g_unix_is_system_fs_type(fs_type : UInt8*) : Bool
   fun unix_mount_at = g_unix_mount_at(mount_path : UInt8*, time_read : UInt64*) : LibGio::UnixMountEntry*
   fun unix_mount_compare = g_unix_mount_compare(mount1 : LibGio::UnixMountEntry*, mount2 : LibGio::UnixMountEntry*) : Int32
   fun unix_mount_copy = g_unix_mount_copy(mount_entry : LibGio::UnixMountEntry*) : LibGio::UnixMountEntry*
