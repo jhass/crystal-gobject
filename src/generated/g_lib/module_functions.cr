@@ -1325,8 +1325,8 @@ module GLib
     __return_value
   end
 
-  def self.random_double_range(_begin, end)
-    __return_value = LibGLib.random_double_range(Float64.new(_begin), Float64.new(end))
+  def self.random_double_range(_begin, _end)
+    __return_value = LibGLib.random_double_range(Float64.new(_begin), Float64.new(_end))
     __return_value
   end
 
@@ -1335,8 +1335,8 @@ module GLib
     __return_value
   end
 
-  def self.random_int_range(_begin, end)
-    __return_value = LibGLib.random_int_range(Int32.new(_begin), Int32.new(end))
+  def self.random_int_range(_begin, _end)
+    __return_value = LibGLib.random_int_range(Int32.new(_begin), Int32.new(_end))
     __return_value
   end
 
@@ -1412,13 +1412,13 @@ module GLib
     nil
   end
 
-  def self.sequence_move_range(dest, _begin, end)
-    LibGLib.sequence_move_range(dest.to_unsafe.as(LibGLib::SequenceIter*), _begin.to_unsafe.as(LibGLib::SequenceIter*), end.to_unsafe.as(LibGLib::SequenceIter*))
+  def self.sequence_move_range(dest, _begin, _end)
+    LibGLib.sequence_move_range(dest.to_unsafe.as(LibGLib::SequenceIter*), _begin.to_unsafe.as(LibGLib::SequenceIter*), _end.to_unsafe.as(LibGLib::SequenceIter*))
     nil
   end
 
-  def self.sequence_range_get_midpoint(_begin, end)
-    __return_value = LibGLib.sequence_range_get_midpoint(_begin.to_unsafe.as(LibGLib::SequenceIter*), end.to_unsafe.as(LibGLib::SequenceIter*))
+  def self.sequence_range_get_midpoint(_begin, _end)
+    __return_value = LibGLib.sequence_range_get_midpoint(_begin.to_unsafe.as(LibGLib::SequenceIter*), _end.to_unsafe.as(LibGLib::SequenceIter*))
     GLib::SequenceIter.new(__return_value)
   end
 
@@ -1427,8 +1427,8 @@ module GLib
     nil
   end
 
-  def self.sequence_remove_range(_begin, end)
-    LibGLib.sequence_remove_range(_begin.to_unsafe.as(LibGLib::SequenceIter*), end.to_unsafe.as(LibGLib::SequenceIter*))
+  def self.sequence_remove_range(_begin, _end)
+    LibGLib.sequence_remove_range(_begin.to_unsafe.as(LibGLib::SequenceIter*), _end.to_unsafe.as(LibGLib::SequenceIter*))
     nil
   end
 
@@ -1898,8 +1898,8 @@ module GLib
     __return_value
   end
 
-  def self.test_rand_int_range(_begin, end)
-    __return_value = LibGLib.test_rand_int_range(Int32.new(_begin), Int32.new(end))
+  def self.test_rand_int_range(_begin, _end)
+    __return_value = LibGLib.test_rand_int_range(Int32.new(_begin), Int32.new(_end))
     __return_value
   end
 
@@ -2400,8 +2400,8 @@ module GLib
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
-  def self.utf8_find_next_char(p, end)
-    __return_value = LibGLib.utf8_find_next_char(p.to_unsafe, end ? end.to_unsafe : nil)
+  def self.utf8_find_next_char(p, _end)
+    __return_value = LibGLib.utf8_find_next_char(p.to_unsafe, _end ? _end.to_unsafe : nil)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
@@ -2504,8 +2504,8 @@ module GLib
     __return_value
   end
 
-  def self.utf8_validate(str, max_len, end)
-    __return_value = LibGLib.utf8_validate(str, Int64.new(max_len), end)
+  def self.utf8_validate(str, max_len, _end)
+    __return_value = LibGLib.utf8_validate(str, Int64.new(max_len), _end)
     __return_value
   end
 
