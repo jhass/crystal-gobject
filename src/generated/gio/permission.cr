@@ -27,7 +27,7 @@ module Gio
       gvalue.boolean
     end
 
-    def acquire(cancellable) # function
+    def acquire(cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.permission_acquire(@pointer.as(LibGio::Permission*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -39,7 +39,7 @@ module Gio
       nil
     end
 
-    def acquire_finish(result) # function
+    def acquire_finish(result)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.permission_acquire_finish(@pointer.as(LibGio::Permission*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -66,7 +66,7 @@ module Gio
       nil
     end
 
-    def release(cancellable) # function
+    def release(cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.permission_release(@pointer.as(LibGio::Permission*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -78,7 +78,7 @@ module Gio
       nil
     end
 
-    def release_finish(result) # function
+    def release_finish(result)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.permission_release_finish(@pointer.as(LibGio::Permission*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error

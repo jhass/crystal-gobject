@@ -81,6 +81,11 @@ module Gio
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
+    def locale_string(key)
+      __return_value = LibGio.desktop_app_info_get_locale_string(@pointer.as(LibGio::DesktopAppInfo*), key.to_unsafe)
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
+    end
+
     def nodisplay
       __return_value = LibGio.desktop_app_info_get_nodisplay(@pointer.as(LibGio::DesktopAppInfo*))
       __return_value
@@ -111,7 +116,7 @@ module Gio
       nil
     end
 
-    def launch_uris_as_manager(uris, launch_context, spawn_flags : GLib::SpawnFlags, user_setup, user_setup_data, pid_callback, pid_callback_data) # function
+    def launch_uris_as_manager(uris, launch_context, spawn_flags : GLib::SpawnFlags, user_setup, user_setup_data, pid_callback, pid_callback_data)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.desktop_app_info_launch_uris_as_manager(@pointer.as(LibGio::DesktopAppInfo*), uris, launch_context ? launch_context.to_unsafe.as(LibGio::AppLaunchContext*) : nil, spawn_flags, user_setup ? user_setup : nil, user_setup_data ? user_setup_data : nil, pid_callback ? pid_callback : nil, pid_callback_data ? pid_callback_data : nil, pointerof(__error))
       GLib::Error.assert __error

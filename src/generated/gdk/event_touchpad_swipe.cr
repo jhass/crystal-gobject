@@ -2,8 +2,8 @@ module Gdk
   class EventTouchpadSwipe
     include GObject::WrappedType
 
-    def self.new(type : Gdk::EventType|Nil = nil, window : Gdk::Window|Nil = nil, send_event : Int8|Nil = nil, phase : Gdk::TouchpadGesturePhase|Nil = nil, n_fingers : Int8|Nil = nil, time : UInt32|Nil = nil, x : Float64|Nil = nil, y : Float64|Nil = nil, dx : Float64|Nil = nil, dy : Float64|Nil = nil, x_root : Float64|Nil = nil, y_root : Float64|Nil = nil, state : Gdk::ModifierType|Nil = nil) : self
-      ptr = Pointer(UInt8).malloc(88, 0u8)
+    def self.new(type : Gdk::EventType|Nil = nil, window : Gdk::Window|Nil = nil, send_event : Int8|Nil = nil, phase : Int8|Nil = nil, n_fingers : Int8|Nil = nil, time : UInt32|Nil = nil, x : Float64|Nil = nil, y : Float64|Nil = nil, dx : Float64|Nil = nil, dy : Float64|Nil = nil, x_root : Float64|Nil = nil, y_root : Float64|Nil = nil, state : Gdk::ModifierType|Nil = nil) : self
+      ptr = Pointer(UInt8).malloc(80, 0u8)
       new(ptr.as(LibGdk::EventTouchpadSwipe*)).tap do |object|
         object.type = type unless type.nil?
         object.window = window unless window.nil?
@@ -58,8 +58,8 @@ module Gdk
       (to_unsafe.as(LibGdk::EventTouchpadSwipe*).value.phase)
     end
 
-    def phase=(value : Gdk::TouchpadGesturePhase)
-      to_unsafe.as(LibGdk::EventTouchpadSwipe*).value.phase = value
+    def phase=(value : Int8)
+      to_unsafe.as(LibGdk::EventTouchpadSwipe*).value.phase = Int8.new(value)
     end
 
     def n_fingers

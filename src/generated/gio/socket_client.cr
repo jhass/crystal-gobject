@@ -73,7 +73,7 @@ module Gio
       nil
     end
 
-    def connect(connectable, cancellable) # function
+    def connect(connectable, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_client_connect(@pointer.as(LibGio::SocketClient*), connectable.to_unsafe.as(LibGio::SocketConnectable*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -85,14 +85,14 @@ module Gio
       nil
     end
 
-    def connect_finish(result) # function
+    def connect_finish(result)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_client_connect_finish(@pointer.as(LibGio::SocketClient*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       Gio::SocketConnection.new(__return_value)
     end
 
-    def connect_to_host(host_and_port, default_port, cancellable) # function
+    def connect_to_host(host_and_port, default_port, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_client_connect_to_host(@pointer.as(LibGio::SocketClient*), host_and_port.to_unsafe, UInt16.new(default_port), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -104,14 +104,14 @@ module Gio
       nil
     end
 
-    def connect_to_host_finish(result) # function
+    def connect_to_host_finish(result)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_client_connect_to_host_finish(@pointer.as(LibGio::SocketClient*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       Gio::SocketConnection.new(__return_value)
     end
 
-    def connect_to_service(domain, service, cancellable) # function
+    def connect_to_service(domain, service, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_client_connect_to_service(@pointer.as(LibGio::SocketClient*), domain.to_unsafe, service.to_unsafe, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -123,14 +123,14 @@ module Gio
       nil
     end
 
-    def connect_to_service_finish(result) # function
+    def connect_to_service_finish(result)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_client_connect_to_service_finish(@pointer.as(LibGio::SocketClient*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       Gio::SocketConnection.new(__return_value)
     end
 
-    def connect_to_uri(uri, default_port, cancellable) # function
+    def connect_to_uri(uri, default_port, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_client_connect_to_uri(@pointer.as(LibGio::SocketClient*), uri.to_unsafe, UInt16.new(default_port), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -142,7 +142,7 @@ module Gio
       nil
     end
 
-    def connect_to_uri_finish(result) # function
+    def connect_to_uri_finish(result)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_client_connect_to_uri_finish(@pointer.as(LibGio::SocketClient*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error

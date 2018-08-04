@@ -1357,6 +1357,7 @@ lib LibGtk
     # Signal icon-press
     # Signal icon-release
     # Signal insert-at-cursor
+    # Signal insert-emoji
     # Signal move-cursor
     # Signal paste-clipboard
     # Signal populate-popup
@@ -1370,6 +1371,7 @@ lib LibGtk
     # Virtual function get_frame_size
     # Virtual function get_text_area_size
     # Virtual function insert_at_cursor
+    # Virtual function insert_emoji
     # Virtual function move_cursor
     # Virtual function paste_clipboard
     # Virtual function populate_popup
@@ -2479,6 +2481,7 @@ lib LibGtk
     # Virtual function close
     # Virtual function response
     # Property message_type : LibGtk::MessageType
+    # Property revealed : Bool
     # Property show_close_button : Bool
   end
   fun info_bar_new = gtk_info_bar_new() : LibGtk::Widget*
@@ -2487,11 +2490,13 @@ lib LibGtk
   fun info_bar_get_action_area = gtk_info_bar_get_action_area(this : InfoBar*) : LibGtk::Widget*
   fun info_bar_get_content_area = gtk_info_bar_get_content_area(this : InfoBar*) : LibGtk::Widget*
   fun info_bar_get_message_type = gtk_info_bar_get_message_type(this : InfoBar*) : LibGtk::MessageType
+  fun info_bar_get_revealed = gtk_info_bar_get_revealed(this : InfoBar*) : Bool
   fun info_bar_get_show_close_button = gtk_info_bar_get_show_close_button(this : InfoBar*) : Bool
   fun info_bar_response = gtk_info_bar_response(this : InfoBar*, response_id : Int32) : Void
   fun info_bar_set_default_response = gtk_info_bar_set_default_response(this : InfoBar*, response_id : Int32) : Void
   fun info_bar_set_message_type = gtk_info_bar_set_message_type(this : InfoBar*, message_type : LibGtk::MessageType) : Void
   fun info_bar_set_response_sensitive = gtk_info_bar_set_response_sensitive(this : InfoBar*, response_id : Int32, setting : Bool) : Void
+  fun info_bar_set_revealed = gtk_info_bar_set_revealed(this : InfoBar*, revealed : Bool) : Void
   fun info_bar_set_show_close_button = gtk_info_bar_set_show_close_button(this : InfoBar*, setting : Bool) : Void
 
   struct Invisible # object
@@ -2556,7 +2561,7 @@ lib LibGtk
   fun label_get_mnemonic_keyval = gtk_label_get_mnemonic_keyval(this : Label*) : UInt32
   fun label_get_mnemonic_widget = gtk_label_get_mnemonic_widget(this : Label*) : LibGtk::Widget*
   fun label_get_selectable = gtk_label_get_selectable(this : Label*) : Bool
-  fun label_get_selection_bounds = gtk_label_get_selection_bounds(this : Label*, start : Int32*, end : Int32*) : Bool
+  fun label_get_selection_bounds = gtk_label_get_selection_bounds(this : Label*, start : Int32*, _end : Int32*) : Bool
   fun label_get_single_line_mode = gtk_label_get_single_line_mode(this : Label*) : Bool
   fun label_get_text = gtk_label_get_text(this : Label*) : UInt8*
   fun label_get_track_visited_links = gtk_label_get_track_visited_links(this : Label*) : Bool
@@ -4621,15 +4626,15 @@ lib LibGtk
   fun text_buffer_new = gtk_text_buffer_new(table : LibGtk::TextTagTable*) : LibGtk::TextBuffer*
   fun text_buffer_add_mark = gtk_text_buffer_add_mark(this : TextBuffer*, mark : LibGtk::TextMark*, where : LibGtk::TextIter*) : Void
   fun text_buffer_add_selection_clipboard = gtk_text_buffer_add_selection_clipboard(this : TextBuffer*, clipboard : LibGtk::Clipboard*) : Void
-  fun text_buffer_apply_tag = gtk_text_buffer_apply_tag(this : TextBuffer*, tag : LibGtk::TextTag*, start : LibGtk::TextIter*, end : LibGtk::TextIter*) : Void
-  fun text_buffer_apply_tag_by_name = gtk_text_buffer_apply_tag_by_name(this : TextBuffer*, name : UInt8*, start : LibGtk::TextIter*, end : LibGtk::TextIter*) : Void
+  fun text_buffer_apply_tag = gtk_text_buffer_apply_tag(this : TextBuffer*, tag : LibGtk::TextTag*, start : LibGtk::TextIter*, _end : LibGtk::TextIter*) : Void
+  fun text_buffer_apply_tag_by_name = gtk_text_buffer_apply_tag_by_name(this : TextBuffer*, name : UInt8*, start : LibGtk::TextIter*, _end : LibGtk::TextIter*) : Void
   fun text_buffer_backspace = gtk_text_buffer_backspace(this : TextBuffer*, iter : LibGtk::TextIter*, interactive : Bool, default_editable : Bool) : Bool
   fun text_buffer_begin_user_action = gtk_text_buffer_begin_user_action(this : TextBuffer*) : Void
   fun text_buffer_copy_clipboard = gtk_text_buffer_copy_clipboard(this : TextBuffer*, clipboard : LibGtk::Clipboard*) : Void
   fun text_buffer_create_child_anchor = gtk_text_buffer_create_child_anchor(this : TextBuffer*, iter : LibGtk::TextIter*) : LibGtk::TextChildAnchor*
   fun text_buffer_create_mark = gtk_text_buffer_create_mark(this : TextBuffer*, mark_name : UInt8*, where : LibGtk::TextIter*, left_gravity : Bool) : LibGtk::TextMark*
   fun text_buffer_cut_clipboard = gtk_text_buffer_cut_clipboard(this : TextBuffer*, clipboard : LibGtk::Clipboard*, default_editable : Bool) : Void
-  fun text_buffer_delete = gtk_text_buffer_delete(this : TextBuffer*, start : LibGtk::TextIter*, end : LibGtk::TextIter*) : Void
+  fun text_buffer_delete = gtk_text_buffer_delete(this : TextBuffer*, start : LibGtk::TextIter*, _end : LibGtk::TextIter*) : Void
   fun text_buffer_delete_interactive = gtk_text_buffer_delete_interactive(this : TextBuffer*, start_iter : LibGtk::TextIter*, end_iter : LibGtk::TextIter*, default_editable : Bool) : Bool
   fun text_buffer_delete_mark = gtk_text_buffer_delete_mark(this : TextBuffer*, mark : LibGtk::TextMark*) : Void
   fun text_buffer_delete_mark_by_name = gtk_text_buffer_delete_mark_by_name(this : TextBuffer*, name : UInt8*) : Void
@@ -4638,7 +4643,7 @@ lib LibGtk
   fun text_buffer_deserialize_get_can_create_tags = gtk_text_buffer_deserialize_get_can_create_tags(this : TextBuffer*, format : LibGdk::Atom*) : Bool
   fun text_buffer_deserialize_set_can_create_tags = gtk_text_buffer_deserialize_set_can_create_tags(this : TextBuffer*, format : LibGdk::Atom*, can_create_tags : Bool) : Void
   fun text_buffer_end_user_action = gtk_text_buffer_end_user_action(this : TextBuffer*) : Void
-  fun text_buffer_get_bounds = gtk_text_buffer_get_bounds(this : TextBuffer*, start : LibGtk::TextIter*, end : LibGtk::TextIter*) : Void
+  fun text_buffer_get_bounds = gtk_text_buffer_get_bounds(this : TextBuffer*, start : LibGtk::TextIter*, _end : LibGtk::TextIter*) : Void
   fun text_buffer_get_char_count = gtk_text_buffer_get_char_count(this : TextBuffer*) : Int32
   fun text_buffer_get_copy_target_list = gtk_text_buffer_get_copy_target_list(this : TextBuffer*) : LibGtk::TargetList*
   fun text_buffer_get_deserialize_formats = gtk_text_buffer_get_deserialize_formats(this : TextBuffer*, n_formats : Int32*) : LibGdk::Atom**
@@ -4656,12 +4661,12 @@ lib LibGtk
   fun text_buffer_get_modified = gtk_text_buffer_get_modified(this : TextBuffer*) : Bool
   fun text_buffer_get_paste_target_list = gtk_text_buffer_get_paste_target_list(this : TextBuffer*) : LibGtk::TargetList*
   fun text_buffer_get_selection_bound = gtk_text_buffer_get_selection_bound(this : TextBuffer*) : LibGtk::TextMark*
-  fun text_buffer_get_selection_bounds = gtk_text_buffer_get_selection_bounds(this : TextBuffer*, start : LibGtk::TextIter*, end : LibGtk::TextIter*) : Bool
+  fun text_buffer_get_selection_bounds = gtk_text_buffer_get_selection_bounds(this : TextBuffer*, start : LibGtk::TextIter*, _end : LibGtk::TextIter*) : Bool
   fun text_buffer_get_serialize_formats = gtk_text_buffer_get_serialize_formats(this : TextBuffer*, n_formats : Int32*) : LibGdk::Atom**
-  fun text_buffer_get_slice = gtk_text_buffer_get_slice(this : TextBuffer*, start : LibGtk::TextIter*, end : LibGtk::TextIter*, include_hidden_chars : Bool) : UInt8*
+  fun text_buffer_get_slice = gtk_text_buffer_get_slice(this : TextBuffer*, start : LibGtk::TextIter*, _end : LibGtk::TextIter*, include_hidden_chars : Bool) : UInt8*
   fun text_buffer_get_start_iter = gtk_text_buffer_get_start_iter(this : TextBuffer*, iter : LibGtk::TextIter*) : Void
   fun text_buffer_get_tag_table = gtk_text_buffer_get_tag_table(this : TextBuffer*) : LibGtk::TextTagTable*
-  fun text_buffer_get_text = gtk_text_buffer_get_text(this : TextBuffer*, start : LibGtk::TextIter*, end : LibGtk::TextIter*, include_hidden_chars : Bool) : UInt8*
+  fun text_buffer_get_text = gtk_text_buffer_get_text(this : TextBuffer*, start : LibGtk::TextIter*, _end : LibGtk::TextIter*, include_hidden_chars : Bool) : UInt8*
   fun text_buffer_insert = gtk_text_buffer_insert(this : TextBuffer*, iter : LibGtk::TextIter*, text : UInt8*, len : Int32) : Void
   fun text_buffer_insert_at_cursor = gtk_text_buffer_insert_at_cursor(this : TextBuffer*, text : UInt8*, len : Int32) : Void
   fun text_buffer_insert_child_anchor = gtk_text_buffer_insert_child_anchor(this : TextBuffer*, iter : LibGtk::TextIter*, anchor : LibGtk::TextChildAnchor*) : Void
@@ -4669,8 +4674,8 @@ lib LibGtk
   fun text_buffer_insert_interactive_at_cursor = gtk_text_buffer_insert_interactive_at_cursor(this : TextBuffer*, text : UInt8*, len : Int32, default_editable : Bool) : Bool
   fun text_buffer_insert_markup = gtk_text_buffer_insert_markup(this : TextBuffer*, iter : LibGtk::TextIter*, markup : UInt8*, len : Int32) : Void
   fun text_buffer_insert_pixbuf = gtk_text_buffer_insert_pixbuf(this : TextBuffer*, iter : LibGtk::TextIter*, pixbuf : LibGdkPixbuf::Pixbuf*) : Void
-  fun text_buffer_insert_range = gtk_text_buffer_insert_range(this : TextBuffer*, iter : LibGtk::TextIter*, start : LibGtk::TextIter*, end : LibGtk::TextIter*) : Void
-  fun text_buffer_insert_range_interactive = gtk_text_buffer_insert_range_interactive(this : TextBuffer*, iter : LibGtk::TextIter*, start : LibGtk::TextIter*, end : LibGtk::TextIter*, default_editable : Bool) : Bool
+  fun text_buffer_insert_range = gtk_text_buffer_insert_range(this : TextBuffer*, iter : LibGtk::TextIter*, start : LibGtk::TextIter*, _end : LibGtk::TextIter*) : Void
+  fun text_buffer_insert_range_interactive = gtk_text_buffer_insert_range_interactive(this : TextBuffer*, iter : LibGtk::TextIter*, start : LibGtk::TextIter*, _end : LibGtk::TextIter*, default_editable : Bool) : Bool
   fun text_buffer_move_mark = gtk_text_buffer_move_mark(this : TextBuffer*, mark : LibGtk::TextMark*, where : LibGtk::TextIter*) : Void
   fun text_buffer_move_mark_by_name = gtk_text_buffer_move_mark_by_name(this : TextBuffer*, name : UInt8*, where : LibGtk::TextIter*) : Void
   fun text_buffer_paste_clipboard = gtk_text_buffer_paste_clipboard(this : TextBuffer*, clipboard : LibGtk::Clipboard*, override_location : LibGtk::TextIter*, default_editable : Bool) : Void
@@ -4679,12 +4684,12 @@ lib LibGtk
   fun text_buffer_register_deserialize_tagset = gtk_text_buffer_register_deserialize_tagset(this : TextBuffer*, tagset_name : UInt8*) : LibGdk::Atom*
   fun text_buffer_register_serialize_format = gtk_text_buffer_register_serialize_format(this : TextBuffer*, mime_type : UInt8*, function : LibGtk::TextBufferSerializeFunc, user_data : Void*, user_data_destroy : LibGLib::DestroyNotify) : LibGdk::Atom*
   fun text_buffer_register_serialize_tagset = gtk_text_buffer_register_serialize_tagset(this : TextBuffer*, tagset_name : UInt8*) : LibGdk::Atom*
-  fun text_buffer_remove_all_tags = gtk_text_buffer_remove_all_tags(this : TextBuffer*, start : LibGtk::TextIter*, end : LibGtk::TextIter*) : Void
+  fun text_buffer_remove_all_tags = gtk_text_buffer_remove_all_tags(this : TextBuffer*, start : LibGtk::TextIter*, _end : LibGtk::TextIter*) : Void
   fun text_buffer_remove_selection_clipboard = gtk_text_buffer_remove_selection_clipboard(this : TextBuffer*, clipboard : LibGtk::Clipboard*) : Void
-  fun text_buffer_remove_tag = gtk_text_buffer_remove_tag(this : TextBuffer*, tag : LibGtk::TextTag*, start : LibGtk::TextIter*, end : LibGtk::TextIter*) : Void
-  fun text_buffer_remove_tag_by_name = gtk_text_buffer_remove_tag_by_name(this : TextBuffer*, name : UInt8*, start : LibGtk::TextIter*, end : LibGtk::TextIter*) : Void
+  fun text_buffer_remove_tag = gtk_text_buffer_remove_tag(this : TextBuffer*, tag : LibGtk::TextTag*, start : LibGtk::TextIter*, _end : LibGtk::TextIter*) : Void
+  fun text_buffer_remove_tag_by_name = gtk_text_buffer_remove_tag_by_name(this : TextBuffer*, name : UInt8*, start : LibGtk::TextIter*, _end : LibGtk::TextIter*) : Void
   fun text_buffer_select_range = gtk_text_buffer_select_range(this : TextBuffer*, ins : LibGtk::TextIter*, bound : LibGtk::TextIter*) : Void
-  fun text_buffer_serialize = gtk_text_buffer_serialize(this : TextBuffer*, content_buffer : LibGtk::TextBuffer*, format : LibGdk::Atom*, start : LibGtk::TextIter*, end : LibGtk::TextIter*, length : UInt64*) : UInt8*
+  fun text_buffer_serialize = gtk_text_buffer_serialize(this : TextBuffer*, content_buffer : LibGtk::TextBuffer*, format : LibGdk::Atom*, start : LibGtk::TextIter*, _end : LibGtk::TextIter*, length : UInt64*) : UInt8*
   fun text_buffer_set_modified = gtk_text_buffer_set_modified(this : TextBuffer*, setting : Bool) : Void
   fun text_buffer_set_text = gtk_text_buffer_set_text(this : TextBuffer*, text : UInt8*, len : Int32) : Void
   fun text_buffer_unregister_deserialize_format = gtk_text_buffer_unregister_deserialize_format(this : TextBuffer*, format : LibGdk::Atom*) : Void
@@ -4829,6 +4834,7 @@ lib LibGtk
     # Signal delete-from-cursor
     # Signal extend-selection
     # Signal insert-at-cursor
+    # Signal insert-emoji
     # Signal move-cursor
     # Signal move-viewport
     # Signal paste-clipboard
@@ -4845,6 +4851,7 @@ lib LibGtk
     # Virtual function draw_layer
     # Virtual function extend_selection
     # Virtual function insert_at_cursor
+    # Virtual function insert_emoji
     # Virtual function move_cursor
     # Virtual function paste_clipboard
     # Virtual function populate_popup
@@ -7474,16 +7481,16 @@ lib LibGtk
   fun text_iter_get_marks = gtk_text_iter_get_marks(this : TextIter*) : Void**
   fun text_iter_get_offset = gtk_text_iter_get_offset(this : TextIter*) : Int32
   fun text_iter_get_pixbuf = gtk_text_iter_get_pixbuf(this : TextIter*) : LibGdkPixbuf::Pixbuf*
-  fun text_iter_get_slice = gtk_text_iter_get_slice(this : TextIter*, end : LibGtk::TextIter*) : UInt8*
+  fun text_iter_get_slice = gtk_text_iter_get_slice(this : TextIter*, _end : LibGtk::TextIter*) : UInt8*
   fun text_iter_get_tags = gtk_text_iter_get_tags(this : TextIter*) : Void**
-  fun text_iter_get_text = gtk_text_iter_get_text(this : TextIter*, end : LibGtk::TextIter*) : UInt8*
+  fun text_iter_get_text = gtk_text_iter_get_text(this : TextIter*, _end : LibGtk::TextIter*) : UInt8*
   fun text_iter_get_toggled_tags = gtk_text_iter_get_toggled_tags(this : TextIter*, toggled_on : Bool) : Void**
   fun text_iter_get_visible_line_index = gtk_text_iter_get_visible_line_index(this : TextIter*) : Int32
   fun text_iter_get_visible_line_offset = gtk_text_iter_get_visible_line_offset(this : TextIter*) : Int32
-  fun text_iter_get_visible_slice = gtk_text_iter_get_visible_slice(this : TextIter*, end : LibGtk::TextIter*) : UInt8*
-  fun text_iter_get_visible_text = gtk_text_iter_get_visible_text(this : TextIter*, end : LibGtk::TextIter*) : UInt8*
+  fun text_iter_get_visible_slice = gtk_text_iter_get_visible_slice(this : TextIter*, _end : LibGtk::TextIter*) : UInt8*
+  fun text_iter_get_visible_text = gtk_text_iter_get_visible_text(this : TextIter*, _end : LibGtk::TextIter*) : UInt8*
   fun text_iter_has_tag = gtk_text_iter_has_tag(this : TextIter*, tag : LibGtk::TextTag*) : Bool
-  fun text_iter_in_range = gtk_text_iter_in_range(this : TextIter*, start : LibGtk::TextIter*, end : LibGtk::TextIter*) : Bool
+  fun text_iter_in_range = gtk_text_iter_in_range(this : TextIter*, start : LibGtk::TextIter*, _end : LibGtk::TextIter*) : Bool
   fun text_iter_inside_sentence = gtk_text_iter_inside_sentence(this : TextIter*) : Bool
   fun text_iter_inside_word = gtk_text_iter_inside_word(this : TextIter*) : Bool
   fun text_iter_is_cursor_position = gtk_text_iter_is_cursor_position(this : TextIter*) : Bool
@@ -8232,7 +8239,7 @@ lib LibGtk
     # Property show_hidden : Bool
     # Property use_preview_label : Bool
   end
-  fun file_chooser_add_choice = gtk_file_chooser_add_choice(this : FileChooser*, id : UInt8*, label : UInt8*, options : UInt8*, option_labels : UInt8*) : Void
+  fun file_chooser_add_choice = gtk_file_chooser_add_choice(this : FileChooser*, id : UInt8*, label : UInt8*, options : UInt8**, option_labels : UInt8**) : Void
   fun file_chooser_add_filter = gtk_file_chooser_add_filter(this : FileChooser*, filter : LibGtk::FileFilter*) : Void
   fun file_chooser_add_shortcut_folder = gtk_file_chooser_add_shortcut_folder(this : FileChooser*, folder : UInt8*, error : LibGLib::Error**) : Bool
   fun file_chooser_add_shortcut_folder_uri = gtk_file_chooser_add_shortcut_folder_uri(this : FileChooser*, uri : UInt8*, error : LibGLib::Error**) : Bool
@@ -8959,6 +8966,7 @@ lib LibGtk
     LGPL_2_1_ONLY = 11
     LGPL_3_0_ONLY = 12
     AGPL_3_0 = 13
+    AGPL_3_0_ONLY = 14
   end
 
   enum MenuDirectionType : UInt32
@@ -9541,15 +9549,15 @@ lib LibGtk
   ##    Constants
   ###########################################
 
-  BINARY_AGE = 2226 # : Int32
+  BINARY_AGE = 2230 # : Int32
   INPUT_ERROR = -1 # : Int32
-  INTERFACE_AGE = 26 # : Int32
+  INTERFACE_AGE = 30 # : Int32
   LEVEL_BAR_OFFSET_FULL = "full" # : UInt8*
   LEVEL_BAR_OFFSET_HIGH = "high" # : UInt8*
   LEVEL_BAR_OFFSET_LOW = "low" # : UInt8*
   MAJOR_VERSION = 3 # : Int32
   MAX_COMPOSE_LEN = 7 # : Int32
-  MICRO_VERSION = 26 # : Int32
+  MICRO_VERSION = 30 # : Int32
   MINOR_VERSION = 22 # : Int32
   PAPER_NAME_A3 = "iso_a3" # : UInt8*
   PAPER_NAME_A4 = "iso_a4" # : UInt8*

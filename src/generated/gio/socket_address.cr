@@ -31,7 +31,7 @@ module Gio
       __return_value
     end
 
-    def to_native(dest, destlen) # function
+    def to_native(dest, destlen)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_address_to_native(@pointer.as(LibGio::SocketAddress*), dest ? dest : nil, UInt64.new(destlen), pointerof(__error))
       GLib::Error.assert __error

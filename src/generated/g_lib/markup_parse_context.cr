@@ -16,7 +16,7 @@ module GLib
       cast GLib::MarkupParseContext.new(__return_value)
     end
 
-    def end_parse # function
+    def end_parse
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.markup_parse_context_end_parse(@pointer.as(LibGLib::MarkupParseContext*), pointerof(__error))
       GLib::Error.assert __error
@@ -43,7 +43,7 @@ module GLib
       nil
     end
 
-    def parse(text, text_len) # function
+    def parse(text, text_len)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.markup_parse_context_parse(@pointer.as(LibGLib::MarkupParseContext*), text.to_unsafe, Int64.new(text_len), pointerof(__error))
       GLib::Error.assert __error

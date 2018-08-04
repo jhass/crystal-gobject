@@ -35,8 +35,8 @@ module Pango
       nil
     end
 
-    def extents_range(start, end, font, ink_rect, logical_rect)
-      LibPango.glyph_string_extents_range(@pointer.as(LibPango::GlyphString*), Int32.new(start), Int32.new(end), font.to_unsafe.as(LibPango::Font*), ink_rect, logical_rect)
+    def extents_range(start, _end, font, ink_rect, logical_rect)
+      LibPango.glyph_string_extents_range(@pointer.as(LibPango::GlyphString*), Int32.new(start), Int32.new(_end), font.to_unsafe.as(LibPango::Font*), ink_rect, logical_rect)
       nil
     end
 

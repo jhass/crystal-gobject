@@ -60,13 +60,13 @@ module Gtk
       nil
     end
 
-    def apply_tag(tag, start, end)
-      LibGtk.text_buffer_apply_tag(@pointer.as(LibGtk::TextBuffer*), tag.to_unsafe.as(LibGtk::TextTag*), start.to_unsafe.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*))
+    def apply_tag(tag, start, _end)
+      LibGtk.text_buffer_apply_tag(@pointer.as(LibGtk::TextBuffer*), tag.to_unsafe.as(LibGtk::TextTag*), start.to_unsafe.as(LibGtk::TextIter*), _end.to_unsafe.as(LibGtk::TextIter*))
       nil
     end
 
-    def apply_tag_by_name(name, start, end)
-      LibGtk.text_buffer_apply_tag_by_name(@pointer.as(LibGtk::TextBuffer*), name.to_unsafe, start.to_unsafe.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*))
+    def apply_tag_by_name(name, start, _end)
+      LibGtk.text_buffer_apply_tag_by_name(@pointer.as(LibGtk::TextBuffer*), name.to_unsafe, start.to_unsafe.as(LibGtk::TextIter*), _end.to_unsafe.as(LibGtk::TextIter*))
       nil
     end
 
@@ -100,8 +100,8 @@ module Gtk
       nil
     end
 
-    def delete(start, end)
-      LibGtk.text_buffer_delete(@pointer.as(LibGtk::TextBuffer*), start.to_unsafe.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*))
+    def delete(start, _end)
+      LibGtk.text_buffer_delete(@pointer.as(LibGtk::TextBuffer*), start.to_unsafe.as(LibGtk::TextIter*), _end.to_unsafe.as(LibGtk::TextIter*))
       nil
     end
 
@@ -125,7 +125,7 @@ module Gtk
       __return_value
     end
 
-    def deserialize(content_buffer, format, iter, data, length) # function
+    def deserialize(content_buffer, format, iter, data, length)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.text_buffer_deserialize(@pointer.as(LibGtk::TextBuffer*), content_buffer.to_unsafe.as(LibGtk::TextBuffer*), format.to_unsafe.as(LibGdk::Atom*), iter.to_unsafe.as(LibGtk::TextIter*), data, UInt64.new(length), pointerof(__error))
       GLib::Error.assert __error
@@ -147,8 +147,8 @@ module Gtk
       nil
     end
 
-    def bounds(start, end)
-      LibGtk.text_buffer_get_bounds(@pointer.as(LibGtk::TextBuffer*), start, end)
+    def bounds(start, _end)
+      LibGtk.text_buffer_get_bounds(@pointer.as(LibGtk::TextBuffer*), start, _end)
       nil
     end
 
@@ -237,8 +237,8 @@ module Gtk
       Gtk::TextMark.new(__return_value)
     end
 
-    def selection_bounds(start, end)
-      __return_value = LibGtk.text_buffer_get_selection_bounds(@pointer.as(LibGtk::TextBuffer*), start, end)
+    def selection_bounds(start, _end)
+      __return_value = LibGtk.text_buffer_get_selection_bounds(@pointer.as(LibGtk::TextBuffer*), start, _end)
       __return_value
     end
 
@@ -247,8 +247,8 @@ module Gtk
       PointerIterator.new(__return_value) {|__item| Gdk::Atom.new(__item) }
     end
 
-    def slice(start, end, include_hidden_chars)
-      __return_value = LibGtk.text_buffer_get_slice(@pointer.as(LibGtk::TextBuffer*), start.to_unsafe.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*), include_hidden_chars)
+    def slice(start, _end, include_hidden_chars)
+      __return_value = LibGtk.text_buffer_get_slice(@pointer.as(LibGtk::TextBuffer*), start.to_unsafe.as(LibGtk::TextIter*), _end.to_unsafe.as(LibGtk::TextIter*), include_hidden_chars)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
@@ -262,8 +262,8 @@ module Gtk
       Gtk::TextTagTable.new(__return_value)
     end
 
-    def text(start, end, include_hidden_chars)
-      __return_value = LibGtk.text_buffer_get_text(@pointer.as(LibGtk::TextBuffer*), start.to_unsafe.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*), include_hidden_chars)
+    def text(start, _end, include_hidden_chars)
+      __return_value = LibGtk.text_buffer_get_text(@pointer.as(LibGtk::TextBuffer*), start.to_unsafe.as(LibGtk::TextIter*), _end.to_unsafe.as(LibGtk::TextIter*), include_hidden_chars)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
@@ -302,13 +302,13 @@ module Gtk
       nil
     end
 
-    def insert_range(iter, start, end)
-      LibGtk.text_buffer_insert_range(@pointer.as(LibGtk::TextBuffer*), iter.to_unsafe.as(LibGtk::TextIter*), start.to_unsafe.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*))
+    def insert_range(iter, start, _end)
+      LibGtk.text_buffer_insert_range(@pointer.as(LibGtk::TextBuffer*), iter.to_unsafe.as(LibGtk::TextIter*), start.to_unsafe.as(LibGtk::TextIter*), _end.to_unsafe.as(LibGtk::TextIter*))
       nil
     end
 
-    def insert_range_interactive(iter, start, end, default_editable)
-      __return_value = LibGtk.text_buffer_insert_range_interactive(@pointer.as(LibGtk::TextBuffer*), iter.to_unsafe.as(LibGtk::TextIter*), start.to_unsafe.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*), default_editable)
+    def insert_range_interactive(iter, start, _end, default_editable)
+      __return_value = LibGtk.text_buffer_insert_range_interactive(@pointer.as(LibGtk::TextBuffer*), iter.to_unsafe.as(LibGtk::TextIter*), start.to_unsafe.as(LibGtk::TextIter*), _end.to_unsafe.as(LibGtk::TextIter*), default_editable)
       __return_value
     end
 
@@ -352,8 +352,8 @@ module Gtk
       Gdk::Atom.new(__return_value)
     end
 
-    def remove_all_tags(start, end)
-      LibGtk.text_buffer_remove_all_tags(@pointer.as(LibGtk::TextBuffer*), start.to_unsafe.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*))
+    def remove_all_tags(start, _end)
+      LibGtk.text_buffer_remove_all_tags(@pointer.as(LibGtk::TextBuffer*), start.to_unsafe.as(LibGtk::TextIter*), _end.to_unsafe.as(LibGtk::TextIter*))
       nil
     end
 
@@ -362,13 +362,13 @@ module Gtk
       nil
     end
 
-    def remove_tag(tag, start, end)
-      LibGtk.text_buffer_remove_tag(@pointer.as(LibGtk::TextBuffer*), tag.to_unsafe.as(LibGtk::TextTag*), start.to_unsafe.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*))
+    def remove_tag(tag, start, _end)
+      LibGtk.text_buffer_remove_tag(@pointer.as(LibGtk::TextBuffer*), tag.to_unsafe.as(LibGtk::TextTag*), start.to_unsafe.as(LibGtk::TextIter*), _end.to_unsafe.as(LibGtk::TextIter*))
       nil
     end
 
-    def remove_tag_by_name(name, start, end)
-      LibGtk.text_buffer_remove_tag_by_name(@pointer.as(LibGtk::TextBuffer*), name.to_unsafe, start.to_unsafe.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*))
+    def remove_tag_by_name(name, start, _end)
+      LibGtk.text_buffer_remove_tag_by_name(@pointer.as(LibGtk::TextBuffer*), name.to_unsafe, start.to_unsafe.as(LibGtk::TextIter*), _end.to_unsafe.as(LibGtk::TextIter*))
       nil
     end
 
@@ -377,8 +377,8 @@ module Gtk
       nil
     end
 
-    def serialize(content_buffer, format, start, end, length)
-      __return_value = LibGtk.text_buffer_serialize(@pointer.as(LibGtk::TextBuffer*), content_buffer.to_unsafe.as(LibGtk::TextBuffer*), format.to_unsafe.as(LibGdk::Atom*), start.to_unsafe.as(LibGtk::TextIter*), end.to_unsafe.as(LibGtk::TextIter*), length)
+    def serialize(content_buffer, format, start, _end, length)
+      __return_value = LibGtk.text_buffer_serialize(@pointer.as(LibGtk::TextBuffer*), content_buffer.to_unsafe.as(LibGtk::TextBuffer*), format.to_unsafe.as(LibGdk::Atom*), start.to_unsafe.as(LibGtk::TextIter*), _end.to_unsafe.as(LibGtk::TextIter*), length)
       PointerIterator.new(__return_value) {|__item| __item }
     end
 

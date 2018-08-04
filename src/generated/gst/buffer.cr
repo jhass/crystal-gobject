@@ -46,17 +46,22 @@ module Gst
 
     def add_meta(info, params)
       __return_value = LibGst.buffer_add_meta(@pointer.as(LibGst::Buffer*), info.to_unsafe.as(LibGst::MetaInfo*), params ? params : nil)
-      Gst::Meta.new(__return_value)
+      Gst::Meta.new(__return_value) if __return_value
     end
 
     def add_parent_buffer_meta(ref)
       __return_value = LibGst.buffer_add_parent_buffer_meta(@pointer.as(LibGst::Buffer*), ref.to_unsafe.as(LibGst::Buffer*))
-      Gst::ParentBufferMeta.new(__return_value)
+      Gst::ParentBufferMeta.new(__return_value) if __return_value
     end
 
     def add_protection_meta(info)
       __return_value = LibGst.buffer_add_protection_meta(@pointer.as(LibGst::Buffer*), info.to_unsafe.as(LibGst::Structure*))
       Gst::ProtectionMeta.new(__return_value)
+    end
+
+    def add_reference_timestamp_meta(reference, timestamp, duration)
+      __return_value = LibGst.buffer_add_reference_timestamp_meta(@pointer.as(LibGst::Buffer*), reference.to_unsafe.as(LibGst::Caps*), UInt64.new(timestamp), UInt64.new(duration))
+      Gst::ReferenceTimestampMeta.new(__return_value) if __return_value
     end
 
     def append(buf2)
@@ -90,7 +95,7 @@ module Gst
     end
 
     def extract(offset, dest, size)
-      __return_value = LibGst.buffer_extract(@pointer.as(LibGst::Buffer*), UInt64.new(offset), dest ? dest : nil, UInt64.new(size))
+      __return_value = LibGst.buffer_extract(@pointer.as(LibGst::Buffer*), UInt64.new(offset), dest, size)
       __return_value
     end
 
@@ -116,7 +121,7 @@ module Gst
 
     def all_memory
       __return_value = LibGst.buffer_get_all_memory(@pointer.as(LibGst::Buffer*))
-      Gst::Memory.new(__return_value)
+      Gst::Memory.new(__return_value) if __return_value
     end
 
     def flags
@@ -126,17 +131,27 @@ module Gst
 
     def memory(idx)
       __return_value = LibGst.buffer_get_memory(@pointer.as(LibGst::Buffer*), UInt32.new(idx))
-      Gst::Memory.new(__return_value)
+      Gst::Memory.new(__return_value) if __return_value
     end
 
     def memory_range(idx, length)
       __return_value = LibGst.buffer_get_memory_range(@pointer.as(LibGst::Buffer*), UInt32.new(idx), Int32.new(length))
-      Gst::Memory.new(__return_value)
+      Gst::Memory.new(__return_value) if __return_value
     end
 
     def meta(api)
       __return_value = LibGst.buffer_get_meta(@pointer.as(LibGst::Buffer*), UInt64.new(api))
       Gst::Meta.new(__return_value) if __return_value
+    end
+
+    def n_meta(api_type)
+      __return_value = LibGst.buffer_get_n_meta(@pointer.as(LibGst::Buffer*), UInt64.new(api_type))
+      __return_value
+    end
+
+    def reference_timestamp_meta(reference)
+      __return_value = LibGst.buffer_get_reference_timestamp_meta(@pointer.as(LibGst::Buffer*), reference ? reference.to_unsafe.as(LibGst::Caps*) : nil)
+      Gst::ReferenceTimestampMeta.new(__return_value) if __return_value
     end
 
     def size
@@ -201,7 +216,7 @@ module Gst
 
     def peek_memory(idx)
       __return_value = LibGst.buffer_peek_memory(@pointer.as(LibGst::Buffer*), UInt32.new(idx))
-      Gst::Memory.new(__return_value)
+      Gst::Memory.new(__return_value) if __return_value
     end
 
     def prepend_memory(mem)

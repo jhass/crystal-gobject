@@ -1,6 +1,6 @@
 module Gio
   module AppInfo
-    def self.create_from_commandline(commandline, application_name, flags : Gio::AppInfoCreateFlags) # function
+    def self.create_from_commandline(commandline, application_name, flags : Gio::AppInfoCreateFlags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.app_info_create_from_commandline(commandline.to_unsafe, application_name ? application_name.to_unsafe : nil, flags, pointerof(__error))
       GLib::Error.assert __error
@@ -37,19 +37,19 @@ module Gio
       GLib::ListIterator(Gio::AppInfo, LibGio::AppInfo*).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
-    def self.launch_default_for_uri(uri, launch_context) # function
+    def self.launch_default_for_uri(uri, context)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.app_info_launch_default_for_uri(uri.to_unsafe, launch_context ? launch_context.to_unsafe.as(LibGio::AppLaunchContext*) : nil, pointerof(__error))
+      __return_value = LibGio.app_info_launch_default_for_uri(uri.to_unsafe, context ? context.to_unsafe.as(LibGio::AppLaunchContext*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def self.launch_default_for_uri_async(uri, launch_context, cancellable, callback, user_data)
-      LibGio.app_info_launch_default_for_uri_async(uri.to_unsafe, launch_context.to_unsafe.as(LibGio::AppLaunchContext*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+    def self.launch_default_for_uri_async(uri, context, cancellable, callback, user_data)
+      LibGio.app_info_launch_default_for_uri_async(uri.to_unsafe, context ? context.to_unsafe.as(LibGio::AppLaunchContext*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       nil
     end
 
-    def self.launch_default_for_uri_finish(result) # function
+    def self.launch_default_for_uri_finish(result)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.app_info_launch_default_for_uri_finish(result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -61,7 +61,7 @@ module Gio
       nil
     end
 
-    def add_supports_type(content_type) # function
+    def add_supports_type(content_type)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.app_info_add_supports_type(@pointer.as(LibGio::AppInfo*), content_type.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
@@ -133,42 +133,42 @@ module Gio
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
-    def launch(files, launch_context) # function
+    def launch(files, context)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.app_info_launch(@pointer.as(LibGio::AppInfo*), files ? files : nil, launch_context ? launch_context.to_unsafe.as(LibGio::AppLaunchContext*) : nil, pointerof(__error))
+      __return_value = LibGio.app_info_launch(@pointer.as(LibGio::AppInfo*), files ? files : nil, context ? context.to_unsafe.as(LibGio::AppLaunchContext*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def launch_uris(uris, launch_context) # function
+    def launch_uris(uris, context)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.app_info_launch_uris(@pointer.as(LibGio::AppInfo*), uris ? uris : nil, launch_context ? launch_context.to_unsafe.as(LibGio::AppLaunchContext*) : nil, pointerof(__error))
+      __return_value = LibGio.app_info_launch_uris(@pointer.as(LibGio::AppInfo*), uris ? uris : nil, context ? context.to_unsafe.as(LibGio::AppLaunchContext*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def remove_supports_type(content_type) # function
+    def remove_supports_type(content_type)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.app_info_remove_supports_type(@pointer.as(LibGio::AppInfo*), content_type.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def set_as_default_for_extension(extension) # function
+    def set_as_default_for_extension(extension)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.app_info_set_as_default_for_extension(@pointer.as(LibGio::AppInfo*), extension.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def set_as_default_for_type(content_type) # function
+    def set_as_default_for_type(content_type)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.app_info_set_as_default_for_type(@pointer.as(LibGio::AppInfo*), content_type.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def set_as_last_used_for_type(content_type) # function
+    def set_as_last_used_for_type(content_type)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.app_info_set_as_last_used_for_type(@pointer.as(LibGio::AppInfo*), content_type.to_unsafe, pointerof(__error))
       GLib::Error.assert __error

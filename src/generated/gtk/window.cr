@@ -236,7 +236,7 @@ module Gtk
       nil
     end
 
-    def self.default_icon_from_file=(filename) # function
+    def self.default_icon_from_file=(filename)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.window_set_default_icon_from_file(filename.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
@@ -390,7 +390,7 @@ module Gtk
 
     def icon
       __return_value = LibGtk.window_get_icon(@pointer.as(LibGtk::Window*))
-      GdkPixbuf::Pixbuf.new(__return_value)
+      GdkPixbuf::Pixbuf.new(__return_value) if __return_value
     end
 
     def icon_list
@@ -673,7 +673,7 @@ module Gtk
       nil
     end
 
-    def set_icon_from_file(filename) # function
+    def set_icon_from_file(filename)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.window_set_icon_from_file(@pointer.as(LibGtk::Window*), filename.to_unsafe, pointerof(__error))
       GLib::Error.assert __error

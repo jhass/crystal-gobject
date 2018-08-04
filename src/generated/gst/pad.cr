@@ -147,7 +147,7 @@ module Gst
 
     def peer
       __return_value = LibGst.pad_get_peer(@pointer.as(LibGst::Pad*))
-      Gst::Pad.new(__return_value)
+      Gst::Pad.new(__return_value) if __return_value
     end
 
     def range(offset, size, buffer)

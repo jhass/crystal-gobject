@@ -159,7 +159,7 @@ module Gio
       nil
     end
 
-    def register(cancellable) # function
+    def register(cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.application_register(@pointer.as(LibGio::Application*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -203,6 +203,21 @@ module Gio
 
     def inactivity_timeout=(inactivity_timeout)
       LibGio.application_set_inactivity_timeout(@pointer.as(LibGio::Application*), UInt32.new(inactivity_timeout))
+      nil
+    end
+
+    def option_context_description=(description)
+      LibGio.application_set_option_context_description(@pointer.as(LibGio::Application*), description ? description.to_unsafe : nil)
+      nil
+    end
+
+    def option_context_parameter_string=(parameter_string)
+      LibGio.application_set_option_context_parameter_string(@pointer.as(LibGio::Application*), parameter_string ? parameter_string.to_unsafe : nil)
+      nil
+    end
+
+    def option_context_summary=(summary)
+      LibGio.application_set_option_context_summary(@pointer.as(LibGio::Application*), summary ? summary.to_unsafe : nil)
       nil
     end
 

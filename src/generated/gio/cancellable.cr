@@ -69,7 +69,7 @@ module Gio
       nil
     end
 
-    def error_if_cancelled= # function
+    def error_if_cancelled=
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.cancellable_set_error_if_cancelled(@pointer.as(LibGio::Cancellable*), pointerof(__error))
       GLib::Error.assert __error

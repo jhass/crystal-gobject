@@ -222,6 +222,7 @@ lib LibGIRepository
   fun repository_dump = g_irepository_dump(arg : UInt8*, error : LibGLib::Error**) : Bool
   fun repository_error_quark = g_irepository_error_quark() : UInt32
   fun repository_get_default = g_irepository_get_default() : LibGIRepository::Repository*
+  fun repository_get_option_group = g_irepository_get_option_group() : LibGLib::OptionGroup*
   fun repository_get_search_path = g_irepository_get_search_path() : Void**
   fun repository_prepend_library_path = g_irepository_prepend_library_path(directory : UInt8*) : Void
   fun repository_prepend_search_path = g_irepository_prepend_search_path(directory : UInt8*) : Void

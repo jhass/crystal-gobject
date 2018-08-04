@@ -24,22 +24,22 @@ module Gst
 
     def buffer
       __return_value = LibGst.pad_probe_info_get_buffer(@pointer.as(LibGst::PadProbeInfo*))
-      Gst::Buffer.new(__return_value)
+      Gst::Buffer.new(__return_value) if __return_value
     end
 
     def buffer_list
       __return_value = LibGst.pad_probe_info_get_buffer_list(@pointer.as(LibGst::PadProbeInfo*))
-      Gst::BufferList.new(__return_value)
+      Gst::BufferList.new(__return_value) if __return_value
     end
 
     def event
       __return_value = LibGst.pad_probe_info_get_event(@pointer.as(LibGst::PadProbeInfo*))
-      Gst::Event.new(__return_value)
+      Gst::Event.new(__return_value) if __return_value
     end
 
     def query
       __return_value = LibGst.pad_probe_info_get_query(@pointer.as(LibGst::PadProbeInfo*))
-      Gst::Query.new(__return_value)
+      Gst::Query.new(__return_value) if __return_value
     end
 
     def type

@@ -5,7 +5,7 @@ module Gio
       __return_value
     end
 
-    def can_reach(connectable, cancellable) # function
+    def can_reach(connectable, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.network_monitor_can_reach(@pointer.as(LibGio::NetworkMonitor*), connectable.to_unsafe.as(LibGio::SocketConnectable*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -17,7 +17,7 @@ module Gio
       nil
     end
 
-    def can_reach_finish(result) # function
+    def can_reach_finish(result)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.network_monitor_can_reach_finish(@pointer.as(LibGio::NetworkMonitor*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error

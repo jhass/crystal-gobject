@@ -13,7 +13,7 @@ module Gst
 
     def self.new(tzoffset, year, month, day, hour, minute, seconds) : self
       __return_value = LibGst.date_time_new(Float32.new(tzoffset), Int32.new(year), Int32.new(month), Int32.new(day), Int32.new(hour), Int32.new(minute), Float64.new(seconds))
-      cast Gst::DateTime.new(__return_value)
+      cast Gst::DateTime.new(__return_value) if __return_value
     end
 
     def self.new_from_g_date_time(dt) : self
@@ -38,7 +38,7 @@ module Gst
 
     def self.new_local_time(year, month, day, hour, minute, seconds) : self
       __return_value = LibGst.date_time_new_local_time(Int32.new(year), Int32.new(month), Int32.new(day), Int32.new(hour), Int32.new(minute), Float64.new(seconds))
-      cast Gst::DateTime.new(__return_value)
+      cast Gst::DateTime.new(__return_value) if __return_value
     end
 
     def self.new_now_local_time : self

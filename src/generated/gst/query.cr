@@ -51,7 +51,7 @@ module Gst
 
     def self.new_custom(type : Gst::QueryType, structure) : self
       __return_value = LibGst.query_new_custom(type, structure ? structure.to_unsafe.as(LibGst::Structure*) : nil)
-      cast Gst::Query.new(__return_value)
+      cast Gst::Query.new(__return_value) if __return_value
     end
 
     def self.new_drain : self
@@ -156,7 +156,7 @@ module Gst
 
     def structure
       __return_value = LibGst.query_get_structure(@pointer.as(LibGst::Query*))
-      Gst::Structure.new(__return_value)
+      Gst::Structure.new(__return_value) if __return_value
     end
 
     def has_scheduling_mode(mode : Gst::PadMode)
@@ -260,7 +260,7 @@ module Gst
     end
 
     def parse_nth_format(nth, format : Gst::Format?)
-      LibGst.query_parse_nth_format(@pointer.as(LibGst::Query*), nth, format)
+      LibGst.query_parse_nth_format(@pointer.as(LibGst::Query*), UInt32.new(nth), format)
       nil
     end
 

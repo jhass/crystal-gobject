@@ -85,14 +85,14 @@ module Gtk
       nil
     end
 
-    def select_uri(uri) # function
+    def select_uri(uri)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.recent_chooser_select_uri(@pointer.as(LibGtk::RecentChooser*), uri.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def set_current_uri(uri) # function
+    def set_current_uri(uri)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.recent_chooser_set_current_uri(@pointer.as(LibGtk::RecentChooser*), uri.to_unsafe, pointerof(__error))
       GLib::Error.assert __error

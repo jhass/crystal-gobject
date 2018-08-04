@@ -31,7 +31,7 @@ module Gtk
       cast Gtk::PaperSize.new(__return_value)
     end
 
-    def self.new_from_key_file(key_file, group_name) : self # function
+    def self.new_from_key_file(key_file, group_name) : self
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.paper_size_new_from_key_file(key_file.to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe, pointerof(__error))
       GLib::Error.assert __error

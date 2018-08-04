@@ -23,7 +23,7 @@ module Gst
 
     def get
       __return_value = LibGst.static_pad_template_get(@pointer.as(LibGst::StaticPadTemplate*))
-      Gst::PadTemplate.new(__return_value)
+      Gst::PadTemplate.new(__return_value) if __return_value
     end
 
     def caps

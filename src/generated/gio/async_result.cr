@@ -2,7 +2,7 @@ module Gio
   module AsyncResult
     def source_object
       __return_value = LibGio.async_result_get_source_object(@pointer.as(LibGio::AsyncResult*))
-      GObject::Object.new(__return_value)
+      GObject::Object.new(__return_value) if __return_value
     end
 
     def user_data
@@ -15,7 +15,7 @@ module Gio
       __return_value
     end
 
-    def legacy_propagate_error # function
+    def legacy_propagate_error
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.async_result_legacy_propagate_error(@pointer.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error

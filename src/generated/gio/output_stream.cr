@@ -14,7 +14,7 @@ module Gio
       nil
     end
 
-    def close(cancellable) # function
+    def close(cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.output_stream_close(@pointer.as(LibGio::OutputStream*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -26,14 +26,14 @@ module Gio
       nil
     end
 
-    def close_finish(result) # function
+    def close_finish(result)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.output_stream_close_finish(@pointer.as(LibGio::OutputStream*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def flush(cancellable) # function
+    def flush(cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.output_stream_flush(@pointer.as(LibGio::OutputStream*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -45,7 +45,7 @@ module Gio
       nil
     end
 
-    def flush_finish(result) # function
+    def flush_finish(result)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.output_stream_flush_finish(@pointer.as(LibGio::OutputStream*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -67,14 +67,14 @@ module Gio
       __return_value
     end
 
-    def pending= # function
+    def pending=
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.output_stream_set_pending(@pointer.as(LibGio::OutputStream*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def splice(source, flags : Gio::OutputStreamSpliceFlags, cancellable) # function
+    def splice(source, flags : Gio::OutputStreamSpliceFlags, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.output_stream_splice(@pointer.as(LibGio::OutputStream*), source.to_unsafe.as(LibGio::InputStream*), flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -86,21 +86,21 @@ module Gio
       nil
     end
 
-    def splice_finish(result) # function
+    def splice_finish(result)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.output_stream_splice_finish(@pointer.as(LibGio::OutputStream*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def write(buffer, count, cancellable) # function
+    def write(buffer, count, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.output_stream_write(@pointer.as(LibGio::OutputStream*), buffer, UInt64.new(count), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def write_all(buffer, count, bytes_written, cancellable) # function
+    def write_all(buffer, count, bytes_written, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.output_stream_write_all(@pointer.as(LibGio::OutputStream*), buffer, UInt64.new(count), bytes_written, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -112,7 +112,7 @@ module Gio
       nil
     end
 
-    def write_all_finish(result, bytes_written) # function
+    def write_all_finish(result, bytes_written)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.output_stream_write_all_finish(@pointer.as(LibGio::OutputStream*), result.to_unsafe.as(LibGio::AsyncResult*), bytes_written, pointerof(__error))
       GLib::Error.assert __error
@@ -124,7 +124,7 @@ module Gio
       nil
     end
 
-    def write_bytes(bytes, cancellable) # function
+    def write_bytes(bytes, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.output_stream_write_bytes(@pointer.as(LibGio::OutputStream*), bytes.to_unsafe.as(LibGLib::Bytes*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -136,14 +136,14 @@ module Gio
       nil
     end
 
-    def write_bytes_finish(result) # function
+    def write_bytes_finish(result)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.output_stream_write_bytes_finish(@pointer.as(LibGio::OutputStream*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def write_finish(result) # function
+    def write_finish(result)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.output_stream_write_finish(@pointer.as(LibGio::OutputStream*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error

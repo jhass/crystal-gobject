@@ -11,14 +11,14 @@ module GLib
       @pointer.not_nil!.as(LibGLib::MappedFile*)
     end
 
-    def self.new(filename, writable) : self # function
+    def self.new(filename, writable) : self
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.mapped_file_new(filename.to_unsafe, writable, pointerof(__error))
       GLib::Error.assert __error
       cast GLib::MappedFile.new(__return_value)
     end
 
-    def self.new_from_fd(fd, writable) : self # function
+    def self.new_from_fd(fd, writable) : self
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.mapped_file_new_from_fd(Int32.new(fd), writable, pointerof(__error))
       GLib::Error.assert __error

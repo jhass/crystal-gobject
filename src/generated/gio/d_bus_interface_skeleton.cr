@@ -16,7 +16,7 @@ module Gio
       gvalue.enum
     end
 
-    def export(connection, object_path) # function
+    def export(connection, object_path)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.d_bus_interface_skeleton_export(@pointer.as(LibGio::DBusInterfaceSkeleton*), connection.to_unsafe.as(LibGio::DBusConnection*), object_path.to_unsafe, pointerof(__error))
       GLib::Error.assert __error

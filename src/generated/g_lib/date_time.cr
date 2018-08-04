@@ -16,6 +16,11 @@ module GLib
       cast GLib::DateTime.new(__return_value)
     end
 
+    def self.new_from_iso8601(text, default_tz) : self
+      __return_value = LibGLib.date_time_new_from_iso8601(text.to_unsafe, default_tz ? default_tz.to_unsafe.as(LibGLib::TimeZone*) : nil)
+      cast GLib::DateTime.new(__return_value) if __return_value
+    end
+
     def self.new_from_timeval_local(tv) : self
       __return_value = LibGLib.date_time_new_from_timeval_local(tv.to_unsafe.as(LibGLib::TimeVal*))
       cast GLib::DateTime.new(__return_value)

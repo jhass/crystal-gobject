@@ -9,7 +9,7 @@ module Gio
       @pointer.not_nil!.as(LibGio::SocketAddressEnumerator*)
     end
 
-    def next(cancellable) # function
+    def next(cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_address_enumerator_next(@pointer.as(LibGio::SocketAddressEnumerator*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -21,7 +21,7 @@ module Gio
       nil
     end
 
-    def next_finish(result) # function
+    def next_finish(result)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_address_enumerator_next_finish(@pointer.as(LibGio::SocketAddressEnumerator*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error

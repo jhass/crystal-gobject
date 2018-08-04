@@ -16,8 +16,8 @@ lib LibGLib
   DATE_BAD_DAY = 0 # : Int32
   DATE_BAD_JULIAN = 0 # : Int32
   DATE_BAD_YEAR = 0 # : Int32
-  DIR_SEPARATOR = 92 # : Int32
-  DIR_SEPARATOR_S = "\\" # : UInt8*
+  DIR_SEPARATOR = 47 # : Int32
+  DIR_SEPARATOR_S = "/" # : UInt8*
   E = 2.718282 # : Float64
   GINT16_FORMAT = "hi" # : UInt8*
   GINT16_MODIFIER = "h" # : UInt8*
@@ -45,15 +45,19 @@ lib LibGLib
   HOOK_FLAG_USER_SHIFT = 4 # : Int32
   IEEE754_DOUBLE_BIAS = 1023 # : Int32
   IEEE754_FLOAT_BIAS = 127 # : Int32
+  KEY_FILE_DESKTOP_ACTION_GROUP_PREFIX = "Desktop Action" # : UInt8*
   KEY_FILE_DESKTOP_GROUP = "Desktop Entry" # : UInt8*
   KEY_FILE_DESKTOP_KEY_ACTIONS = "Actions" # : UInt8*
   KEY_FILE_DESKTOP_KEY_CATEGORIES = "Categories" # : UInt8*
   KEY_FILE_DESKTOP_KEY_COMMENT = "Comment" # : UInt8*
   KEY_FILE_DESKTOP_KEY_DBUS_ACTIVATABLE = "DBusActivatable" # : UInt8*
   KEY_FILE_DESKTOP_KEY_EXEC = "Exec" # : UInt8*
+  KEY_FILE_DESKTOP_KEY_FULLNAME = "X-GNOME-FullName" # : UInt8*
   KEY_FILE_DESKTOP_KEY_GENERIC_NAME = "GenericName" # : UInt8*
+  KEY_FILE_DESKTOP_KEY_GETTEXT_DOMAIN = "X-GNOME-Gettext-Domain" # : UInt8*
   KEY_FILE_DESKTOP_KEY_HIDDEN = "Hidden" # : UInt8*
   KEY_FILE_DESKTOP_KEY_ICON = "Icon" # : UInt8*
+  KEY_FILE_DESKTOP_KEY_KEYWORDS = "Keywords" # : UInt8*
   KEY_FILE_DESKTOP_KEY_MIME_TYPE = "MimeType" # : UInt8*
   KEY_FILE_DESKTOP_KEY_NAME = "Name" # : UInt8*
   KEY_FILE_DESKTOP_KEY_NOT_SHOW_IN = "NotShowIn" # : UInt8*
@@ -74,24 +78,24 @@ lib LibGLib
   LN10 = 2.302585 # : Float64
   LN2 = 0.693147 # : Float64
   LOG_2_BASE_10 = 0.30103 # : Float64
-  LOG_DOMAIN = 0 # : Int8
-  LOG_FATAL_MASK = 0 # : Int32
+  LOG_DOMAIN = 0_i8 # : Int8
+  LOG_FATAL_MASK = 5 # : Int32
   LOG_LEVEL_USER_SHIFT = 8 # : Int32
   MAJOR_VERSION = 2 # : Int32
-  MAXINT16 = 32767 # : Int16
+  MAXINT16 = 32767_i16 # : Int16
   MAXINT32 = 2147483647 # : Int32
-  MAXINT64 = 9223372036854775807 # : Int64
-  MAXINT8 = 127 # : Int8
-  MAXUINT16 = 65535 # : UInt16
-  MAXUINT32 = 4294967295 # : UInt32
-  MAXUINT64 = 18446744073709551615 # : UInt64
-  MAXUINT8 = 255 # : UInt8
-  MICRO_VERSION = 0 # : Int32
-  MININT16 = -32768 # : Int16
+  MAXINT64 = 9223372036854775807_i64 # : Int64
+  MAXINT8 = 127_i8 # : Int8
+  MAXUINT16 = 65535_u16 # : UInt16
+  MAXUINT32 = 4294967295_u32 # : UInt32
+  MAXUINT64 = 18446744073709551615_u64 # : UInt64
+  MAXUINT8 = 255_u8 # : UInt8
+  MICRO_VERSION = 1 # : Int32
+  MININT16 = -32768_i16 # : Int16
   MININT32 = -2147483648 # : Int32
-  MININT64 = -9223372036854775808 # : Int64
-  MININT8 = -128 # : Int8
-  MINOR_VERSION = 54 # : Int32
+  MININT64 = -9223372036854775808_i64 # : Int64
+  MININT8 = -128_i8 # : Int8
+  MINOR_VERSION = 56 # : Int32
   MODULE_SUFFIX = "so" # : UInt8*
   OPTION_REMAINING = "" # : UInt8*
   PDP_ENDIAN = 3412 # : Int32
@@ -105,8 +109,8 @@ lib LibGLib
   PRIORITY_HIGH = -100 # : Int32
   PRIORITY_HIGH_IDLE = 100 # : Int32
   PRIORITY_LOW = 300 # : Int32
-  SEARCHPATH_SEPARATOR = 59 # : Int32
-  SEARCHPATH_SEPARATOR_S = ";" # : UInt8*
+  SEARCHPATH_SEPARATOR = 58 # : Int32
+  SEARCHPATH_SEPARATOR_S = ":" # : UInt8*
   SIZEOF_LONG = 8 # : Int32
   SIZEOF_SIZE_T = 8 # : Int32
   SIZEOF_SSIZE_T = 8 # : Int32
@@ -121,11 +125,11 @@ lib LibGLib
   SYSDEF_MSG_DONTROUTE = 4 # : Int32
   SYSDEF_MSG_OOB = 1 # : Int32
   SYSDEF_MSG_PEEK = 2 # : Int32
-  TIME_SPAN_DAY = 86400000000 # : Int64
-  TIME_SPAN_HOUR = 3600000000 # : Int64
-  TIME_SPAN_MILLISECOND = 1000 # : Int64
-  TIME_SPAN_MINUTE = 60000000 # : Int64
-  TIME_SPAN_SECOND = 1000000 # : Int64
+  TIME_SPAN_DAY = 86400000000_i64 # : Int64
+  TIME_SPAN_HOUR = 3600000000_i64 # : Int64
+  TIME_SPAN_MILLISECOND = 1000_i64 # : Int64
+  TIME_SPAN_MINUTE = 60000000_i64 # : Int64
+  TIME_SPAN_SECOND = 1000000_i64 # : Int64
   UNICHAR_MAX_DECOMPOSITION_LENGTH = 18 # : Int32
   URI_RESERVED_CHARS_GENERIC_DELIMITERS = ":/?#[]@" # : UInt8*
   URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS = "!$&'()*+,;=" # : UInt8*
@@ -191,7 +195,7 @@ lib LibGLib
   fun bookmark_file_has_group = g_bookmark_file_has_group(this : BookmarkFile*, uri : UInt8*, group : UInt8*, error : LibGLib::Error**) : Bool
   fun bookmark_file_has_item = g_bookmark_file_has_item(this : BookmarkFile*, uri : UInt8*) : Bool
   fun bookmark_file_load_from_data = g_bookmark_file_load_from_data(this : BookmarkFile*, data : UInt8*, length : UInt64, error : LibGLib::Error**) : Bool
-  fun bookmark_file_load_from_data_dirs = g_bookmark_file_load_from_data_dirs(this : BookmarkFile*, file : UInt8*, full_path : UInt8*, error : LibGLib::Error**) : Bool
+  fun bookmark_file_load_from_data_dirs = g_bookmark_file_load_from_data_dirs(this : BookmarkFile*, file : UInt8*, full_path : UInt8**, error : LibGLib::Error**) : Bool
   fun bookmark_file_load_from_file = g_bookmark_file_load_from_file(this : BookmarkFile*, filename : UInt8*, error : LibGLib::Error**) : Bool
   fun bookmark_file_move_item = g_bookmark_file_move_item(this : BookmarkFile*, old_uri : UInt8*, new_uri : UInt8*, error : LibGLib::Error**) : Bool
   fun bookmark_file_remove_application = g_bookmark_file_remove_application(this : BookmarkFile*, uri : UInt8*, name : UInt8*, error : LibGLib::Error**) : Bool
@@ -200,7 +204,7 @@ lib LibGLib
   fun bookmark_file_set_added = g_bookmark_file_set_added(this : BookmarkFile*, uri : UInt8*, added : Int64) : Void
   fun bookmark_file_set_app_info = g_bookmark_file_set_app_info(this : BookmarkFile*, uri : UInt8*, name : UInt8*, exec : UInt8*, count : Int32, stamp : Int64, error : LibGLib::Error**) : Bool
   fun bookmark_file_set_description = g_bookmark_file_set_description(this : BookmarkFile*, uri : UInt8*, description : UInt8*) : Void
-  fun bookmark_file_set_groups = g_bookmark_file_set_groups(this : BookmarkFile*, uri : UInt8*, groups : UInt8*, length : UInt64) : Void
+  fun bookmark_file_set_groups = g_bookmark_file_set_groups(this : BookmarkFile*, uri : UInt8*, groups : UInt8**, length : UInt64) : Void
   fun bookmark_file_set_icon = g_bookmark_file_set_icon(this : BookmarkFile*, uri : UInt8*, href : UInt8*, mime_type : UInt8*) : Void
   fun bookmark_file_set_is_private = g_bookmark_file_set_is_private(this : BookmarkFile*, uri : UInt8*, is_private : Bool) : Void
   fun bookmark_file_set_mime_type = g_bookmark_file_set_mime_type(this : BookmarkFile*, uri : UInt8*, mime_type : UInt8*) : Void
@@ -280,6 +284,7 @@ lib LibGLib
   fun date_clamp = g_date_clamp(this : Date*, min_date : LibGLib::Date*, max_date : LibGLib::Date*) : Void
   fun date_clear = g_date_clear(this : Date*, n_dates : UInt32) : Void
   fun date_compare = g_date_compare(this : Date*, rhs : LibGLib::Date*) : Int32
+  fun date_copy = g_date_copy(this : Date*) : LibGLib::Date*
   fun date_days_between = g_date_days_between(this : Date*, date2 : LibGLib::Date*) : Int32
   fun date_free = g_date_free(this : Date*) : Void
   fun date_get_day = g_date_get_day(this : Date*) : UInt8
@@ -324,6 +329,7 @@ lib LibGLib
     _data : UInt8[0]
   end
   fun date_time_new = g_date_time_new(tz : LibGLib::TimeZone*, year : Int32, month : Int32, day : Int32, hour : Int32, minute : Int32, seconds : Float64) : LibGLib::DateTime*
+  fun date_time_new_from_iso8601 = g_date_time_new_from_iso8601(text : UInt8*, default_tz : LibGLib::TimeZone*) : LibGLib::DateTime*
   fun date_time_new_from_timeval_local = g_date_time_new_from_timeval_local(tv : LibGLib::TimeVal*) : LibGLib::DateTime*
   fun date_time_new_from_timeval_utc = g_date_time_new_from_timeval_utc(tv : LibGLib::TimeVal*) : LibGLib::DateTime*
   fun date_time_new_from_unix_local = g_date_time_new_from_unix_local(t : Int64) : LibGLib::DateTime*
@@ -465,18 +471,12 @@ lib LibGLib
   fun hook_list_invoke = g_hook_list_invoke(this : HookList*, may_recurse : Bool) : Void
   fun hook_list_invoke_check = g_hook_list_invoke_check(this : HookList*, may_recurse : Bool) : Void
 
-  struct IConv # struct
-    _data : UInt8[0]
-  end
-  fun i_conv_new = g_iconv(this : IConv*, inbuf : UInt8*, inbytes_left : UInt64*, outbuf : UInt8*, outbytes_left : UInt64*) : UInt64
-  fun i_conv_close = g_iconv_close(this : IConv*) : Int32
-
   struct IOChannel # struct
     ref_count : Int32
     funcs : LibGLib::IOFuncs*
     encoding : UInt8*
-    read_cd : LibGLib::IConv*
-    write_cd : LibGLib::IConv*
+    read_cd : Void*
+    write_cd : Void*
     line_term : UInt8*
     line_term_len : UInt32
     buf_size : UInt64
@@ -554,6 +554,7 @@ lib LibGLib
   fun key_file_get_integer = g_key_file_get_integer(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : Int32
   fun key_file_get_integer_list = g_key_file_get_integer_list(this : KeyFile*, group_name : UInt8*, key : UInt8*, length : UInt64*, error : LibGLib::Error**) : Int32*
   fun key_file_get_keys = g_key_file_get_keys(this : KeyFile*, group_name : UInt8*, length : UInt64*, error : LibGLib::Error**) : UInt8**
+  fun key_file_get_locale_for_key = g_key_file_get_locale_for_key(this : KeyFile*, group_name : UInt8*, key : UInt8*, locale : UInt8*) : UInt8*
   fun key_file_get_locale_string = g_key_file_get_locale_string(this : KeyFile*, group_name : UInt8*, key : UInt8*, locale : UInt8*, error : LibGLib::Error**) : UInt8*
   fun key_file_get_locale_string_list = g_key_file_get_locale_string_list(this : KeyFile*, group_name : UInt8*, key : UInt8*, locale : UInt8*, length : UInt64*, error : LibGLib::Error**) : UInt8**
   fun key_file_get_start_group = g_key_file_get_start_group(this : KeyFile*) : UInt8*
@@ -843,10 +844,10 @@ lib LibGLib
     _data : UInt8[0]
   end
   fun rand_double = g_rand_double(this : Rand*) : Float64
-  fun rand_double_range = g_rand_double_range(this : Rand*, _begin : Float64, end : Float64) : Float64
+  fun rand_double_range = g_rand_double_range(this : Rand*, _begin : Float64, _end : Float64) : Float64
   fun rand_free = g_rand_free(this : Rand*) : Void
   fun rand_int = g_rand_int(this : Rand*) : UInt32
-  fun rand_int_range = g_rand_int_range(this : Rand*, _begin : Int32, end : Int32) : Int32
+  fun rand_int_range = g_rand_int_range(this : Rand*, _begin : Int32, _end : Int32) : Int32
   fun rand_set_seed = g_rand_set_seed(this : Rand*, seed : UInt32) : Void
   fun rand_set_seed_array = g_rand_set_seed_array(this : Rand*, seed : UInt32*, seed_length : UInt32) : Void
 
@@ -978,10 +979,10 @@ lib LibGLib
   fun sequence_get = g_sequence_get(iter : LibGLib::SequenceIter*) : Void*
   fun sequence_insert_before = g_sequence_insert_before(iter : LibGLib::SequenceIter*, data : Void*) : LibGLib::SequenceIter*
   fun sequence_move = g_sequence_move(src : LibGLib::SequenceIter*, dest : LibGLib::SequenceIter*) : Void
-  fun sequence_move_range = g_sequence_move_range(dest : LibGLib::SequenceIter*, _begin : LibGLib::SequenceIter*, end : LibGLib::SequenceIter*) : Void
-  fun sequence_range_get_midpoint = g_sequence_range_get_midpoint(_begin : LibGLib::SequenceIter*, end : LibGLib::SequenceIter*) : LibGLib::SequenceIter*
+  fun sequence_move_range = g_sequence_move_range(dest : LibGLib::SequenceIter*, _begin : LibGLib::SequenceIter*, _end : LibGLib::SequenceIter*) : Void
+  fun sequence_range_get_midpoint = g_sequence_range_get_midpoint(_begin : LibGLib::SequenceIter*, _end : LibGLib::SequenceIter*) : LibGLib::SequenceIter*
   fun sequence_remove = g_sequence_remove(iter : LibGLib::SequenceIter*) : Void
-  fun sequence_remove_range = g_sequence_remove_range(_begin : LibGLib::SequenceIter*, end : LibGLib::SequenceIter*) : Void
+  fun sequence_remove_range = g_sequence_remove_range(_begin : LibGLib::SequenceIter*, _end : LibGLib::SequenceIter*) : Void
   fun sequence_set = g_sequence_set(iter : LibGLib::SequenceIter*, data : Void*) : Void
   fun sequence_swap = g_sequence_swap(a : LibGLib::SequenceIter*, b : LibGLib::SequenceIter*) : Void
 
@@ -1406,6 +1407,7 @@ lib LibGLib
     DEFAULT = 0
     LONG_FORMAT = 1
     IEC_UNITS = 2
+    BITS = 4
   end
 
   @[Flags]
@@ -1616,6 +1618,7 @@ lib LibGLib
     BAD_URI = 4
     NOT_ABSOLUTE_PATH = 5
     NO_MEMORY = 6
+    EMBEDDED_NUL = 7
   end
 
   enum DateDMY : UInt32
@@ -1926,6 +1929,14 @@ lib LibGLib
     MESSAGE = 9
     START_SUITE = 10
     STOP_SUITE = 11
+  end
+
+  enum TestResult : UInt32
+    ZERO_NONE = 0
+    SUCCESS = 0
+    SKIPPED = 1
+    FAILURE = 2
+    INCOMPLETE = 3
   end
 
   enum ThreadError : UInt32
@@ -2343,7 +2354,6 @@ lib LibGLib
   fun atomic_pointer_xor = g_atomic_pointer_xor(atomic : Void*, val : UInt64) : UInt64
   fun base64_decode = g_base64_decode(text : UInt8*, out_len : UInt64*) : UInt8*
   fun base64_decode_inplace = g_base64_decode_inplace(text : UInt8**, out_len : UInt64*) : UInt8*
-  fun base64_decode_step = g_base64_decode_step(in : UInt8*, len : UInt64, _out : UInt8**, state : Int32*, save : UInt32*) : UInt64
   fun base64_encode = g_base64_encode(data : UInt8*, len : UInt64) : UInt8*
   fun base64_encode_close = g_base64_encode_close(break_lines : Bool, _out : UInt8**, state : Int32*, save : Int32*) : UInt64
   fun base64_encode_step = g_base64_encode_step(in : UInt8*, len : UInt64, break_lines : Bool, _out : UInt8**, state : Int32*, save : Int32*) : UInt64
@@ -2378,21 +2388,15 @@ lib LibGLib
   fun convert = g_convert(str : UInt8*, len : Int64, to_codeset : UInt8*, from_codeset : UInt8*, bytes_read : UInt64*, bytes_written : UInt64*, error : LibGLib::Error**) : UInt8*
   fun convert_error_quark = g_convert_error_quark() : UInt32
   fun convert_with_fallback = g_convert_with_fallback(str : UInt8*, len : Int64, to_codeset : UInt8*, from_codeset : UInt8*, fallback : UInt8*, bytes_read : UInt64*, bytes_written : UInt64*, error : LibGLib::Error**) : UInt8*
-  fun convert_with_iconv = g_convert_with_iconv(str : UInt8*, len : Int64, converter : LibGLib::IConv*, bytes_read : UInt64*, bytes_written : UInt64*, error : LibGLib::Error**) : UInt8*
-  fun datalist_clear = g_datalist_clear(datalist : LibGLib::Data*) : Void
+  fun datalist_foreach = g_datalist_foreach(datalist : LibGLib::Data*, func : LibGLib::DataForeachFunc, user_data : Void*) : Void
   fun datalist_get_data = g_datalist_get_data(datalist : LibGLib::Data*, key : UInt8*) : Void*
   fun datalist_get_flags = g_datalist_get_flags(datalist : LibGLib::Data*) : UInt32
   fun datalist_id_get_data = g_datalist_id_get_data(datalist : LibGLib::Data*, key_id : UInt32) : Void*
-  fun datalist_id_remove_no_notify = g_datalist_id_remove_no_notify(datalist : LibGLib::Data*, key_id : UInt32) : Void*
-  fun datalist_id_replace_data = g_datalist_id_replace_data(datalist : LibGLib::Data*, key_id : UInt32, oldval : Void*, newval : Void*, destroy : LibGLib::DestroyNotify, old_destroy : LibGLib::DestroyNotify*) : Bool
-  fun datalist_id_set_data_full = g_datalist_id_set_data_full(datalist : LibGLib::Data*, key_id : UInt32, data : Void*, destroy_func : LibGLib::DestroyNotify) : Void
-  fun datalist_init = g_datalist_init(datalist : LibGLib::Data*) : Void
   fun datalist_set_flags = g_datalist_set_flags(datalist : LibGLib::Data*, flags : UInt32) : Void
   fun datalist_unset_flags = g_datalist_unset_flags(datalist : LibGLib::Data*, flags : UInt32) : Void
   fun dataset_destroy = g_dataset_destroy(dataset_location : Void*) : Void
+  fun dataset_foreach = g_dataset_foreach(dataset_location : Void*, func : LibGLib::DataForeachFunc, user_data : Void*) : Void
   fun dataset_id_get_data = g_dataset_id_get_data(dataset_location : Void*, key_id : UInt32) : Void*
-  fun dataset_id_remove_no_notify = g_dataset_id_remove_no_notify(dataset_location : Void*, key_id : UInt32) : Void*
-  fun dataset_id_set_data_full = g_dataset_id_set_data_full(dataset_location : Void*, key_id : UInt32, data : Void*, destroy_func : LibGLib::DestroyNotify) : Void
   fun date_get_days_in_month = g_date_get_days_in_month(month : LibGLib::DateMonth, year : UInt16) : UInt8
   fun date_get_monday_weeks_in_year = g_date_get_monday_weeks_in_year(year : UInt16) : UInt8
   fun date_get_sunday_weeks_in_year = g_date_get_sunday_weeks_in_year(year : UInt16) : UInt8
@@ -2488,7 +2492,6 @@ lib LibGLib
   fun hostname_is_non_ascii = g_hostname_is_non_ascii(hostname : UInt8*) : Bool
   fun hostname_to_ascii = g_hostname_to_ascii(hostname : UInt8*) : UInt8*
   fun hostname_to_unicode = g_hostname_to_unicode(hostname : UInt8*) : UInt8*
-  fun iconv = g_iconv(converter : LibGLib::IConv*, inbuf : UInt8*, inbytes_left : UInt64*, outbuf : UInt8*, outbytes_left : UInt64*) : UInt64
   fun idle_add = g_idle_add_full(priority : Int32, function : LibGLib::SourceFunc, data : Void*, notify : LibGLib::DestroyNotify) : UInt32
   fun idle_remove_by_data = g_idle_remove_by_data(data : Void*) : Bool
   fun idle_source_new = g_idle_source_new() : LibGLib::Source*
@@ -2561,9 +2564,9 @@ lib LibGLib
   fun quark_to_string = g_quark_to_string(quark : UInt32) : UInt8*
   fun quark_try_string = g_quark_try_string(string : UInt8*) : UInt32
   fun random_double = g_random_double() : Float64
-  fun random_double_range = g_random_double_range(_begin : Float64, end : Float64) : Float64
+  fun random_double_range = g_random_double_range(_begin : Float64, _end : Float64) : Float64
   fun random_int = g_random_int() : UInt32
-  fun random_int_range = g_random_int_range(_begin : Int32, end : Int32) : Int32
+  fun random_int_range = g_random_int_range(_begin : Int32, _end : Int32) : Int32
   fun random_set_seed = g_random_set_seed(seed : UInt32) : Void
   fun realloc = g_realloc(mem : Void*, n_bytes : UInt64) : Void*
   fun realloc_n = g_realloc_n(mem : Void*, n_blocks : UInt64, n_block_bytes : UInt64) : Void*
@@ -2578,10 +2581,10 @@ lib LibGLib
   fun sequence_get = g_sequence_get(iter : LibGLib::SequenceIter*) : Void*
   fun sequence_insert_before = g_sequence_insert_before(iter : LibGLib::SequenceIter*, data : Void*) : LibGLib::SequenceIter*
   fun sequence_move = g_sequence_move(src : LibGLib::SequenceIter*, dest : LibGLib::SequenceIter*) : Void
-  fun sequence_move_range = g_sequence_move_range(dest : LibGLib::SequenceIter*, _begin : LibGLib::SequenceIter*, end : LibGLib::SequenceIter*) : Void
-  fun sequence_range_get_midpoint = g_sequence_range_get_midpoint(_begin : LibGLib::SequenceIter*, end : LibGLib::SequenceIter*) : LibGLib::SequenceIter*
+  fun sequence_move_range = g_sequence_move_range(dest : LibGLib::SequenceIter*, _begin : LibGLib::SequenceIter*, _end : LibGLib::SequenceIter*) : Void
+  fun sequence_range_get_midpoint = g_sequence_range_get_midpoint(_begin : LibGLib::SequenceIter*, _end : LibGLib::SequenceIter*) : LibGLib::SequenceIter*
   fun sequence_remove = g_sequence_remove(iter : LibGLib::SequenceIter*) : Void
-  fun sequence_remove_range = g_sequence_remove_range(_begin : LibGLib::SequenceIter*, end : LibGLib::SequenceIter*) : Void
+  fun sequence_remove_range = g_sequence_remove_range(_begin : LibGLib::SequenceIter*, _end : LibGLib::SequenceIter*) : Void
   fun sequence_set = g_sequence_set(iter : LibGLib::SequenceIter*, data : Void*) : Void
   fun sequence_swap = g_sequence_swap(a : LibGLib::SequenceIter*, b : LibGLib::SequenceIter*) : Void
   fun set_application_name = g_set_application_name(application_name : UInt8*) : Void
@@ -2672,7 +2675,7 @@ lib LibGLib
   fun test_rand_double = g_test_rand_double() : Float64
   fun test_rand_double_range = g_test_rand_double_range(range_start : Float64, range_end : Float64) : Float64
   fun test_rand_int = g_test_rand_int() : Int32
-  fun test_rand_int_range = g_test_rand_int_range(_begin : Int32, end : Int32) : Int32
+  fun test_rand_int_range = g_test_rand_int_range(_begin : Int32, _end : Int32) : Int32
   fun test_run = g_test_run() : Int32
   fun test_run_suite = g_test_run_suite(suite : LibGLib::TestSuite*) : Int32
   fun test_set_nonfatal_assertions = g_test_set_nonfatal_assertions() : Void
@@ -2770,7 +2773,7 @@ lib LibGLib
   fun utf8_collate = g_utf8_collate(str1 : UInt8*, str2 : UInt8*) : Int32
   fun utf8_collate_key = g_utf8_collate_key(str : UInt8*, len : Int64) : UInt8*
   fun utf8_collate_key_for_filename = g_utf8_collate_key_for_filename(str : UInt8*, len : Int64) : UInt8*
-  fun utf8_find_next_char = g_utf8_find_next_char(p : UInt8*, end : UInt8*) : UInt8*
+  fun utf8_find_next_char = g_utf8_find_next_char(p : UInt8*, _end : UInt8*) : UInt8*
   fun utf8_find_prev_char = g_utf8_find_prev_char(str : UInt8*, p : UInt8*) : UInt8*
   fun utf8_get_char = g_utf8_get_char(p : UInt8*) : UInt8
   fun utf8_get_char_validated = g_utf8_get_char_validated(p : UInt8*, max_len : Int64) : UInt8
@@ -2790,7 +2793,7 @@ lib LibGLib
   fun utf8_to_ucs4 = g_utf8_to_ucs4(str : UInt8*, len : Int64, items_read : Int64*, items_written : Int64*, error : LibGLib::Error**) : UInt8*
   fun utf8_to_ucs4_fast = g_utf8_to_ucs4_fast(str : UInt8*, len : Int64, items_written : Int64*) : UInt8*
   fun utf8_to_utf16 = g_utf8_to_utf16(str : UInt8*, len : Int64, items_read : Int64*, items_written : Int64*, error : LibGLib::Error**) : UInt16*
-  fun utf8_validate = g_utf8_validate(str : UInt8*, max_len : Int64, end : UInt8**) : Bool
+  fun utf8_validate = g_utf8_validate(str : UInt8*, max_len : Int64, _end : UInt8**) : Bool
   fun uuid_string_is_valid = g_uuid_string_is_valid(str : UInt8*) : Bool
   fun uuid_string_random = g_uuid_string_random() : UInt8*
   fun variant_get_gtype = g_variant_get_gtype() : UInt64
@@ -2809,6 +2812,7 @@ lib LibGLib
   ###########################################
 
  alias ChildWatchFunc = Int32, Int32, Void* -> Void
+ alias ClearHandleFunc = UInt32 -> Void
  alias CompareDataFunc = Void*, Void*, Void* -> Int32
  alias CompareFunc = Void*, Void* -> Int32
  alias CopyFunc = Void*, Void* -> Void*

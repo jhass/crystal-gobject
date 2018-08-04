@@ -11,7 +11,7 @@ module Gio
       @pointer.not_nil!.as(LibGio::Resource*)
     end
 
-    def self.new_from_data(data) : self # function
+    def self.new_from_data(data) : self
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.resource_new_from_data(data.to_unsafe.as(LibGLib::Bytes*), pointerof(__error))
       GLib::Error.assert __error
@@ -28,28 +28,28 @@ module Gio
       nil
     end
 
-    def enumerate_children(path, lookup_flags : Gio::ResourceLookupFlags) # function
+    def enumerate_children(path, lookup_flags : Gio::ResourceLookupFlags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.resource_enumerate_children(@pointer.as(LibGio::Resource*), path.to_unsafe, lookup_flags, pointerof(__error))
       GLib::Error.assert __error
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
     end
 
-    def info(path, lookup_flags : Gio::ResourceLookupFlags, size, flags) # function
+    def info(path, lookup_flags : Gio::ResourceLookupFlags, size, flags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.resource_get_info(@pointer.as(LibGio::Resource*), path.to_unsafe, lookup_flags, size, flags, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def lookup_data(path, lookup_flags : Gio::ResourceLookupFlags) # function
+    def lookup_data(path, lookup_flags : Gio::ResourceLookupFlags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.resource_lookup_data(@pointer.as(LibGio::Resource*), path.to_unsafe, lookup_flags, pointerof(__error))
       GLib::Error.assert __error
       GLib::Bytes.new(__return_value)
     end
 
-    def open_stream(path, lookup_flags : Gio::ResourceLookupFlags) # function
+    def open_stream(path, lookup_flags : Gio::ResourceLookupFlags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.resource_open_stream(@pointer.as(LibGio::Resource*), path.to_unsafe, lookup_flags, pointerof(__error))
       GLib::Error.assert __error
@@ -66,7 +66,7 @@ module Gio
       nil
     end
 
-    def self.load(filename) # function
+    def self.load(filename)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.resource_load(filename.to_unsafe, pointerof(__error))
       GLib::Error.assert __error

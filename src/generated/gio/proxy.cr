@@ -5,7 +5,7 @@ module Gio
       __return_value
     end
 
-    def connect(connection, proxy_address, cancellable) # function
+    def connect(connection, proxy_address, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.proxy_connect(@pointer.as(LibGio::Proxy*), connection.to_unsafe.as(LibGio::IOStream*), proxy_address.to_unsafe.as(LibGio::ProxyAddress*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -17,7 +17,7 @@ module Gio
       nil
     end
 
-    def connect_finish(result) # function
+    def connect_finish(result)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.proxy_connect_finish(@pointer.as(LibGio::Proxy*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error

@@ -106,16 +106,6 @@ module GObject
       GObject::Object.new(__return_value)
     end
 
-    def replace_data(key, oldval, newval, destroy, old_destroy)
-      __return_value = LibGObject.object_replace_data(@pointer.as(LibGObject::Object*), key.to_unsafe, oldval ? oldval : nil, newval ? newval : nil, destroy ? destroy : nil, old_destroy ? old_destroy.to_unsafe.as(LibGLib::DestroyNotify*) : nil)
-      __return_value
-    end
-
-    def replace_qdata(quark, oldval, newval, destroy, old_destroy)
-      __return_value = LibGObject.object_replace_qdata(@pointer.as(LibGObject::Object*), UInt32.new(quark), oldval ? oldval : nil, newval ? newval : nil, destroy ? destroy : nil, old_destroy ? old_destroy.to_unsafe.as(LibGLib::DestroyNotify*) : nil)
-      __return_value
-    end
-
     def run_dispose
       LibGObject.object_run_dispose(@pointer.as(LibGObject::Object*))
       nil

@@ -5,7 +5,7 @@ module Gio
       __return_value
     end
 
-    def self.parse_detailed_name(detailed_name, action_name, target_value) # function
+    def self.parse_detailed_name(detailed_name, action_name, target_value)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.action_parse_detailed_name(detailed_name.to_unsafe, action_name, target_value, pointerof(__error))
       GLib::Error.assert __error

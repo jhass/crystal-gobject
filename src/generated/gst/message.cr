@@ -24,7 +24,7 @@ module Gst
 
     def self.new_application(src, structure) : self
       __return_value = LibGst.message_new_application(src ? src.to_unsafe.as(LibGst::Object*) : nil, structure.to_unsafe.as(LibGst::Structure*))
-      cast Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value) if __return_value
     end
 
     def self.new_async_done(src, running_time) : self
@@ -39,7 +39,7 @@ module Gst
 
     def self.new_buffering(src, percent) : self
       __return_value = LibGst.message_new_buffering(src ? src.to_unsafe.as(LibGst::Object*) : nil, Int32.new(percent))
-      cast Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value) if __return_value
     end
 
     def self.new_clock_lost(src, clock) : self
@@ -54,7 +54,7 @@ module Gst
 
     def self.new_custom(type : Gst::MessageType, src, structure) : self
       __return_value = LibGst.message_new_custom(type, src ? src.to_unsafe.as(LibGst::Object*) : nil, structure ? structure.to_unsafe.as(LibGst::Structure*) : nil)
-      cast Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value) if __return_value
     end
 
     def self.new_device_added(src, device) : self
@@ -74,7 +74,7 @@ module Gst
 
     def self.new_element(src, structure) : self
       __return_value = LibGst.message_new_element(src ? src.to_unsafe.as(LibGst::Object*) : nil, structure.to_unsafe.as(LibGst::Structure*))
-      cast Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value) if __return_value
     end
 
     def self.new_eos(src) : self
@@ -89,7 +89,7 @@ module Gst
 
     def self.new_error_with_details(src, error, debug, details) : self
       __return_value = LibGst.message_new_error_with_details(src ? src.to_unsafe.as(LibGst::Object*) : nil, error, debug.to_unsafe, details.to_unsafe.as(LibGst::Structure*))
-      cast Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value) if __return_value
     end
 
     def self.new_have_context(src, context) : self
@@ -104,7 +104,7 @@ module Gst
 
     def self.new_info_with_details(src, error, debug, details) : self
       __return_value = LibGst.message_new_info_with_details(src ? src.to_unsafe.as(LibGst::Object*) : nil, error, debug.to_unsafe, details.to_unsafe.as(LibGst::Structure*))
-      cast Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value) if __return_value
     end
 
     def self.new_latency(src) : self
@@ -124,7 +124,7 @@ module Gst
 
     def self.new_progress(src, type : Gst::ProgressType, code, text) : self
       __return_value = LibGst.message_new_progress(src.to_unsafe.as(LibGst::Object*), type, code.to_unsafe, text.to_unsafe)
-      cast Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value) if __return_value
     end
 
     def self.new_property_notify(src, property_name, val) : self
@@ -224,7 +224,7 @@ module Gst
 
     def self.new_warning_with_details(src, error, debug, details) : self
       __return_value = LibGst.message_new_warning_with_details(src ? src.to_unsafe.as(LibGst::Object*) : nil, error, debug.to_unsafe, details.to_unsafe.as(LibGst::Structure*))
-      cast Gst::Message.new(__return_value)
+      cast Gst::Message.new(__return_value) if __return_value
     end
 
     def add_redirect_entry(location, tag_list, entry_struct)
@@ -244,12 +244,12 @@ module Gst
 
     def stream_status_object
       __return_value = LibGst.message_get_stream_status_object(@pointer.as(LibGst::Message*))
-      GObject::Value.new(__return_value)
+      GObject::Value.new(__return_value) if __return_value
     end
 
     def structure
       __return_value = LibGst.message_get_structure(@pointer.as(LibGst::Message*))
-      Gst::Structure.new(__return_value)
+      Gst::Structure.new(__return_value) if __return_value
     end
 
     def has_name(name)
@@ -479,7 +479,12 @@ module Gst
 
     def streams_selected_get_stream(idx)
       __return_value = LibGst.message_streams_selected_get_stream(@pointer.as(LibGst::Message*), UInt32.new(idx))
-      Gst::Stream.new(__return_value)
+      Gst::Stream.new(__return_value) if __return_value
+    end
+
+    def writable_structure
+      __return_value = LibGst.message_writable_structure(@pointer.as(LibGst::Message*))
+      Gst::Structure.new(__return_value)
     end
 
     def mini_object

@@ -329,7 +329,7 @@ module Gtk
     __return_value
   end
 
-  def self.init_with_args(argc, argv, parameter_string, entries, translation_domain) # function
+  def self.init_with_args(argc, argv, parameter_string, entries, translation_domain)
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGtk.init_with_args(argc, argv, parameter_string ? parameter_string.to_unsafe : nil, entries, translation_domain ? translation_domain.to_unsafe : nil, pointerof(__error))
     GLib::Error.assert __error
@@ -781,14 +781,14 @@ module Gtk
     nil
   end
 
-  def self.show_uri(screen, uri, timestamp) # function
+  def self.show_uri(screen, uri, timestamp)
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGtk.show_uri(screen ? screen.to_unsafe.as(LibGdk::Screen*) : nil, uri.to_unsafe, UInt32.new(timestamp), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
 
-  def self.show_uri_on_window(parent, uri, timestamp) # function
+  def self.show_uri_on_window(parent, uri, timestamp)
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGtk.show_uri_on_window(parent ? parent.to_unsafe.as(LibGtk::Window*) : nil, uri.to_unsafe, UInt32.new(timestamp), pointerof(__error))
     GLib::Error.assert __error

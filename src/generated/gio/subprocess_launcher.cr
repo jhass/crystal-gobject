@@ -20,11 +20,6 @@ module Gio
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def set_child_setup(child_setup, user_data, destroy_notify)
-      LibGio.subprocess_launcher_set_child_setup(@pointer.as(LibGio::SubprocessLauncher*), child_setup, user_data ? user_data : nil, destroy_notify)
-      nil
-    end
-
     def cwd=(cwd)
       LibGio.subprocess_launcher_set_cwd(@pointer.as(LibGio::SubprocessLauncher*), cwd.to_unsafe)
       nil
@@ -60,7 +55,7 @@ module Gio
       nil
     end
 
-    def spawnv(argv) # function
+    def spawnv(argv)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.subprocess_launcher_spawnv(@pointer.as(LibGio::SubprocessLauncher*), argv, pointerof(__error))
       GLib::Error.assert __error

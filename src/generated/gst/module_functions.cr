@@ -4,11 +4,6 @@ module Gst
     __return_value
   end
 
-  def self.calculate_linear_regression(xy, temp, n, m_num, m_denom, b, xbase, r_squared)
-    __return_value = LibGst.calculate_linear_regression(xy, temp, UInt32.new(n), m_num, m_denom, b, xbase, r_squared)
-    __return_value
-  end
-
   def self.caps_features_from_string(features)
     __return_value = LibGst.caps_features_from_string(features.to_unsafe)
     Gst::CapsFeatures.new(__return_value) if __return_value
@@ -16,7 +11,7 @@ module Gst
 
   def self.caps_from_string(string)
     __return_value = LibGst.caps_from_string(string.to_unsafe)
-    Gst::Caps.new(__return_value)
+    Gst::Caps.new(__return_value) if __return_value
   end
 
   def self.core_error_quark
@@ -26,6 +21,11 @@ module Gst
 
   def self.debug_add_log_function(func, user_data, notify)
     LibGst.debug_add_log_function(func, user_data ? user_data : nil, notify)
+    nil
+  end
+
+  def self.debug_add_ring_buffer_logger(max_size_per_thread, thread_timeout)
+    LibGst.debug_add_ring_buffer_logger(UInt32.new(max_size_per_thread), UInt32.new(thread_timeout))
     nil
   end
 
@@ -71,7 +71,7 @@ module Gst
 
   def self.debug_get_stack_trace(flags : Gst::StackTraceFlags)
     __return_value = LibGst.debug_get_stack_trace(flags)
-    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.debug_is_active
@@ -107,6 +107,16 @@ module Gst
   def self.debug_remove_log_function_by_data(data)
     __return_value = LibGst.debug_remove_log_function_by_data(data ? data : nil)
     __return_value
+  end
+
+  def self.debug_remove_ring_buffer_logger
+    LibGst.debug_remove_ring_buffer_logger
+    nil
+  end
+
+  def self.debug_ring_buffer_logger_get_logs
+    __return_value = LibGst.debug_ring_buffer_logger_get_logs
+    PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
   end
 
   def self.debug_set_active(active)
@@ -179,7 +189,7 @@ module Gst
     __return_value
   end
 
-  def self.filename_to_uri(filename) # function
+  def self.filename_to_uri(filename)
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGst.filename_to_uri(filename.to_unsafe, pointerof(__error))
     GLib::Error.assert __error
@@ -231,12 +241,17 @@ module Gst
     __return_value
   end
 
+  def self.main_executable_path
+    __return_value = LibGst.get_main_executable_path
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
+  end
+
   def self.init(argc, argv)
     LibGst.init(argc, argv)
     nil
   end
 
-  def self.init_check(argc, argv) # function
+  def self.init_check(argc, argv)
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGst.init_check(argc, argv, pointerof(__error))
     GLib::Error.assert __error
@@ -279,7 +294,7 @@ module Gst
   end
 
   def self.meta_api_type_register(api, tags)
-    __return_value = LibGst.meta_api_type_register(api.to_unsafe, tags.to_unsafe)
+    __return_value = LibGst.meta_api_type_register(api.to_unsafe, tags)
     __return_value
   end
 
@@ -290,7 +305,7 @@ module Gst
 
   def self.meta_register(api, impl, size, init_func, free_func, transform_func)
     __return_value = LibGst.meta_register(UInt64.new(api), impl.to_unsafe, UInt64.new(size), init_func, free_func, transform_func)
-    Gst::MetaInfo.new(__return_value)
+    Gst::MetaInfo.new(__return_value) if __return_value
   end
 
   def self.mini_object_replace(olddata, newdata)
@@ -315,7 +330,7 @@ module Gst
 
   def self.param_spec_fraction(name, nick, blurb, min_num, min_denom, max_num, max_denom, default_num, default_denom, flags : GObject::ParamFlags)
     __return_value = LibGst.param_spec_fraction(name.to_unsafe, nick.to_unsafe, blurb.to_unsafe, Int32.new(min_num), Int32.new(min_denom), Int32.new(max_num), Int32.new(max_denom), Int32.new(default_num), Int32.new(default_denom), flags)
-    GObject::ParamSpec.new(__return_value)
+    GObject::ParamSpec.new(__return_value) if __return_value
   end
 
   def self.parent_buffer_meta_api_get_type
@@ -328,18 +343,18 @@ module Gst
     Gst::MetaInfo.new(__return_value)
   end
 
-  def self.parse_bin_from_description(bin_description, ghost_unlinked_pads) # function
+  def self.parse_bin_from_description(bin_description, ghost_unlinked_pads)
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGst.parse_bin_from_description(bin_description.to_unsafe, ghost_unlinked_pads, pointerof(__error))
     GLib::Error.assert __error
     Gst::Bin.new(__return_value) if __return_value
   end
 
-  def self.parse_bin_from_description_full(bin_description, ghost_unlinked_pads, context, flags : Gst::ParseFlags) # function
+  def self.parse_bin_from_description_full(bin_description, ghost_unlinked_pads, context, flags : Gst::ParseFlags)
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGst.parse_bin_from_description_full(bin_description.to_unsafe, ghost_unlinked_pads, context ? context.to_unsafe.as(LibGst::ParseContext*) : nil, flags, pointerof(__error))
     GLib::Error.assert __error
-    Gst::Element.new(__return_value)
+    Gst::Element.new(__return_value) if __return_value
   end
 
   def self.parse_error_quark
@@ -347,32 +362,32 @@ module Gst
     __return_value
   end
 
-  def self.parse_launch(pipeline_description) # function
+  def self.parse_launch(pipeline_description)
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGst.parse_launch(pipeline_description.to_unsafe, pointerof(__error))
     GLib::Error.assert __error
-    Gst::Element.new(__return_value)
+    Gst::Element.new(__return_value) if __return_value
   end
 
-  def self.parse_launch_full(pipeline_description, context, flags : Gst::ParseFlags) # function
+  def self.parse_launch_full(pipeline_description, context, flags : Gst::ParseFlags)
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGst.parse_launch_full(pipeline_description.to_unsafe, context ? context.to_unsafe.as(LibGst::ParseContext*) : nil, flags, pointerof(__error))
     GLib::Error.assert __error
-    Gst::Element.new(__return_value)
+    Gst::Element.new(__return_value) if __return_value
   end
 
-  def self.parse_launchv(argv) # function
+  def self.parse_launchv(argv)
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGst.parse_launchv(argv, pointerof(__error))
     GLib::Error.assert __error
-    Gst::Element.new(__return_value)
+    Gst::Element.new(__return_value) if __return_value
   end
 
-  def self.parse_launchv_full(argv, context, flags : Gst::ParseFlags) # function
+  def self.parse_launchv_full(argv, context, flags : Gst::ParseFlags)
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGst.parse_launchv_full(argv, context ? context.to_unsafe.as(LibGst::ParseContext*) : nil, flags, pointerof(__error))
     GLib::Error.assert __error
-    Gst::Element.new(__return_value)
+    Gst::Element.new(__return_value) if __return_value
   end
 
   def self.plugin_error_quark
@@ -390,6 +405,11 @@ module Gst
     __return_value
   end
 
+  def self.protection_filter_systems_by_available_decryptors(system_identifiers)
+    __return_value = LibGst.protection_filter_systems_by_available_decryptors(system_identifiers)
+    PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) } if __return_value
+  end
+
   def self.protection_meta_api_get_type
     __return_value = LibGst.protection_meta_api_get_type
     __return_value
@@ -401,8 +421,8 @@ module Gst
   end
 
   def self.protection_select_system(system_identifiers)
-    __return_value = LibGst.protection_select_system(system_identifiers.to_unsafe)
-    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    __return_value = LibGst.protection_select_system(system_identifiers)
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.query_type_get_flags(type : Gst::QueryType)
@@ -420,6 +440,16 @@ module Gst
     __return_value
   end
 
+  def self.reference_timestamp_meta_api_get_type
+    __return_value = LibGst.reference_timestamp_meta_api_get_type
+    __return_value
+  end
+
+  def self.reference_timestamp_meta_get_info
+    __return_value = LibGst.reference_timestamp_meta_get_info
+    Gst::MetaInfo.new(__return_value)
+  end
+
   def self.resource_error_quark
     __return_value = LibGst.resource_error_quark
     __return_value
@@ -433,6 +463,11 @@ module Gst
   def self.segtrap_set_enabled(enabled)
     LibGst.segtrap_set_enabled(enabled)
     nil
+  end
+
+  def self.state_change_get_name(transition : Gst::StateChange)
+    __return_value = LibGst.state_change_get_name(transition)
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.static_caps_get_type
@@ -452,11 +487,11 @@ module Gst
 
   def self.stream_type_get_name(stype : Gst::StreamType)
     __return_value = LibGst.stream_type_get_name(stype)
-    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
-  def self.structure_from_string(string, end)
-    __return_value = LibGst.structure_from_string(string.to_unsafe, end)
+  def self.structure_from_string(string, _end)
+    __return_value = LibGst.structure_from_string(string.to_unsafe, _end)
     Gst::Structure.new(__return_value) if __return_value
   end
 
@@ -467,7 +502,7 @@ module Gst
 
   def self.tag_get_description(tag)
     __return_value = LibGst.tag_get_description(tag.to_unsafe)
-    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.tag_get_flag(tag)
@@ -477,7 +512,7 @@ module Gst
 
   def self.tag_get_nick(tag)
     __return_value = LibGst.tag_get_nick(tag.to_unsafe)
-    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.tag_get_type(tag)
@@ -552,12 +587,12 @@ module Gst
 
   def self.uri_get_location(uri)
     __return_value = LibGst.uri_get_location(uri.to_unsafe)
-    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.uri_get_protocol(uri)
     __return_value = LibGst.uri_get_protocol(uri.to_unsafe)
-    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.uri_has_protocol(uri, protocol)
@@ -592,6 +627,11 @@ module Gst
 
   def self.util_double_to_fraction(src, dest_n, dest_d)
     LibGst.util_double_to_fraction(Float64.new(src), dest_n, dest_d)
+    nil
+  end
+
+  def self.util_dump_buffer(buf)
+    LibGst.util_dump_buffer(buf.to_unsafe.as(LibGst::Buffer*))
     nil
   end
 
@@ -802,12 +842,12 @@ module Gst
 
   def self.value_get_fraction_range_max(value)
     __return_value = LibGst.value_get_fraction_range_max(value.to_unsafe.as(LibGObject::Value*))
-    GObject::Value.new(__return_value)
+    GObject::Value.new(__return_value) if __return_value
   end
 
   def self.value_get_fraction_range_min(value)
     __return_value = LibGst.value_get_fraction_range_min(value.to_unsafe.as(LibGObject::Value*))
-    GObject::Value.new(__return_value)
+    GObject::Value.new(__return_value) if __return_value
   end
 
   def self.value_get_int64_range_max(value)
@@ -890,8 +930,8 @@ module Gst
     nil
   end
 
-  def self.value_set_double_range(value, start, end)
-    LibGst.value_set_double_range(value.to_unsafe.as(LibGObject::Value*), Float64.new(start), Float64.new(end))
+  def self.value_set_double_range(value, start, _end)
+    LibGst.value_set_double_range(value.to_unsafe.as(LibGObject::Value*), Float64.new(start), Float64.new(_end))
     nil
   end
 
@@ -905,8 +945,8 @@ module Gst
     nil
   end
 
-  def self.value_set_fraction_range(value, start, end)
-    LibGst.value_set_fraction_range(value.to_unsafe.as(LibGObject::Value*), start.to_unsafe.as(LibGObject::Value*), end.to_unsafe.as(LibGObject::Value*))
+  def self.value_set_fraction_range(value, start, _end)
+    LibGst.value_set_fraction_range(value.to_unsafe.as(LibGObject::Value*), start.to_unsafe.as(LibGObject::Value*), _end.to_unsafe.as(LibGObject::Value*))
     nil
   end
 
@@ -915,23 +955,23 @@ module Gst
     nil
   end
 
-  def self.value_set_int64_range(value, start, end)
-    LibGst.value_set_int64_range(value.to_unsafe.as(LibGObject::Value*), Int64.new(start), Int64.new(end))
+  def self.value_set_int64_range(value, start, _end)
+    LibGst.value_set_int64_range(value.to_unsafe.as(LibGObject::Value*), Int64.new(start), Int64.new(_end))
     nil
   end
 
-  def self.value_set_int64_range_step(value, start, end, step)
-    LibGst.value_set_int64_range_step(value.to_unsafe.as(LibGObject::Value*), Int64.new(start), Int64.new(end), Int64.new(step))
+  def self.value_set_int64_range_step(value, start, _end, step)
+    LibGst.value_set_int64_range_step(value.to_unsafe.as(LibGObject::Value*), Int64.new(start), Int64.new(_end), Int64.new(step))
     nil
   end
 
-  def self.value_set_int_range(value, start, end)
-    LibGst.value_set_int_range(value.to_unsafe.as(LibGObject::Value*), Int32.new(start), Int32.new(end))
+  def self.value_set_int_range(value, start, _end)
+    LibGst.value_set_int_range(value.to_unsafe.as(LibGObject::Value*), Int32.new(start), Int32.new(_end))
     nil
   end
 
-  def self.value_set_int_range_step(value, start, end, step)
-    LibGst.value_set_int_range_step(value.to_unsafe.as(LibGObject::Value*), Int32.new(start), Int32.new(end), Int32.new(step))
+  def self.value_set_int_range_step(value, start, _end, step)
+    LibGst.value_set_int_range_step(value.to_unsafe.as(LibGObject::Value*), Int32.new(start), Int32.new(_end), Int32.new(step))
     nil
   end
 

@@ -11,7 +11,7 @@ module Gtk
       @pointer.not_nil!.as(LibGtk::RecentInfo*)
     end
 
-    def create_app_info(app_name) # function
+    def create_app_info(app_name)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.recent_info_create_app_info(@pointer.as(LibGtk::RecentInfo*), app_name ? app_name.to_unsafe : nil, pointerof(__error))
       GLib::Error.assert __error

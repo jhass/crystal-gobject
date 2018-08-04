@@ -18,10 +18,10 @@ module Gst
 
     def self.load_by_name(name)
       __return_value = LibGst.plugin_load_by_name(name.to_unsafe)
-      Gst::Plugin.new(__return_value)
+      Gst::Plugin.new(__return_value) if __return_value
     end
 
-    def self.load_file(filename) # function
+    def self.load_file(filename)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGst.plugin_load_file(filename.to_unsafe, pointerof(__error))
       GLib::Error.assert __error
@@ -39,7 +39,7 @@ module Gst
     end
 
     def add_dependency(env_vars, paths, names, flags : Gst::PluginDependencyFlags)
-      LibGst.plugin_add_dependency(@pointer.as(LibGst::Plugin*), env_vars ? env_vars.to_unsafe : nil, paths ? paths.to_unsafe : nil, names ? names.to_unsafe : nil, flags)
+      LibGst.plugin_add_dependency(@pointer.as(LibGst::Plugin*), env_vars ? env_vars : nil, paths ? paths : nil, names ? names : nil, flags)
       nil
     end
 
@@ -105,7 +105,7 @@ module Gst
 
     def load
       __return_value = LibGst.plugin_load(@pointer.as(LibGst::Plugin*))
-      Gst::Plugin.new(__return_value)
+      Gst::Plugin.new(__return_value) if __return_value
     end
 
     def cache_data=(cache_data)

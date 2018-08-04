@@ -34,11 +34,6 @@ module GObject
       GObject::ValueArray.new(__return_value)
     end
 
-    def free
-      LibGObject.value_array_free(@pointer.as(LibGObject::ValueArray*))
-      nil
-    end
-
     def nth(index)
       __return_value = LibGObject.value_array_get_nth(@pointer.as(LibGObject::ValueArray*), UInt32.new(index))
       GObject::Value.new(__return_value)

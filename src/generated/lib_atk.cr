@@ -563,11 +563,11 @@ lib LibAtk
   ##    Constants
   ###########################################
 
-  BINARY_AGE = 22611 # : Int32
+  BINARY_AGE = 22811 # : Int32
   INTERFACE_AGE = 1 # : Int32
   MAJOR_VERSION = 2 # : Int32
   MICRO_VERSION = 1 # : Int32
-  MINOR_VERSION = 26 # : Int32
+  MINOR_VERSION = 28 # : Int32
   VERSION_MIN_REQUIRED = 2 # : Int32
 
   ###########################################

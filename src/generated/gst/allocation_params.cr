@@ -23,7 +23,7 @@ module Gst
 
     def copy
       __return_value = LibGst.allocation_params_copy(@pointer.as(LibGst::AllocationParams*))
-      Gst::AllocationParams.new(__return_value)
+      Gst::AllocationParams.new(__return_value) if __return_value
     end
 
     def free

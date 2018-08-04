@@ -14,7 +14,7 @@ module Gio
       nil
     end
 
-    def close(cancellable) # function
+    def close(cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.input_stream_close(@pointer.as(LibGio::InputStream*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -26,7 +26,7 @@ module Gio
       nil
     end
 
-    def close_finish(result) # function
+    def close_finish(result)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.input_stream_close_finish(@pointer.as(LibGio::InputStream*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
@@ -43,14 +43,14 @@ module Gio
       __return_value
     end
 
-    def read(buffer, count, cancellable) # function
+    def read(buffer, count, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.input_stream_read(@pointer.as(LibGio::InputStream*), buffer, UInt64.new(count), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def read_all(buffer, count, bytes_read, cancellable) # function
+    def read_all(buffer, count, bytes_read, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.input_stream_read_all(@pointer.as(LibGio::InputStream*), buffer, UInt64.new(count), bytes_read, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -62,7 +62,7 @@ module Gio
       nil
     end
 
-    def read_all_finish(result, bytes_read) # function
+    def read_all_finish(result, bytes_read)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.input_stream_read_all_finish(@pointer.as(LibGio::InputStream*), result.to_unsafe.as(LibGio::AsyncResult*), bytes_read, pointerof(__error))
       GLib::Error.assert __error
@@ -74,7 +74,7 @@ module Gio
       nil
     end
 
-    def read_bytes(count, cancellable) # function
+    def read_bytes(count, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.input_stream_read_bytes(@pointer.as(LibGio::InputStream*), UInt64.new(count), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -86,28 +86,28 @@ module Gio
       nil
     end
 
-    def read_bytes_finish(result) # function
+    def read_bytes_finish(result)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.input_stream_read_bytes_finish(@pointer.as(LibGio::InputStream*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       GLib::Bytes.new(__return_value)
     end
 
-    def read_finish(result) # function
+    def read_finish(result)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.input_stream_read_finish(@pointer.as(LibGio::InputStream*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def pending= # function
+    def pending=
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.input_stream_set_pending(@pointer.as(LibGio::InputStream*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def skip(count, cancellable) # function
+    def skip(count, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.input_stream_skip(@pointer.as(LibGio::InputStream*), UInt64.new(count), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
@@ -119,7 +119,7 @@ module Gio
       nil
     end
 
-    def skip_finish(result) # function
+    def skip_finish(result)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.input_stream_skip_finish(@pointer.as(LibGio::InputStream*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error

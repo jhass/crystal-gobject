@@ -10,7 +10,7 @@ module Gio
       __return_value
     end
 
-    def self.new_for_string(str) # function
+    def self.new_for_string(str)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.icon_new_for_string(str.to_unsafe, pointerof(__error))
       GLib::Error.assert __error

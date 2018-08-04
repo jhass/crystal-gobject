@@ -14,9 +14,9 @@ lib LibPango
   ATTR_INDEX_FROM_TEXT_BEGINNING = 0 # : Int32
   ENGINE_TYPE_LANG = "PangoEngineLang" # : UInt8*
   ENGINE_TYPE_SHAPE = "PangoEngineShape" # : UInt8*
-  GLYPH_EMPTY = 268435455 # : UInt32
-  GLYPH_INVALID_INPUT = 4294967295 # : UInt32
-  GLYPH_UNKNOWN_FLAG = 268435456 # : UInt32
+  GLYPH_EMPTY = 268435455_u32 # : UInt32
+  GLYPH_INVALID_INPUT = 4294967295_u32 # : UInt32
+  GLYPH_UNKNOWN_FLAG = 268435456_u32 # : UInt32
   RENDER_TYPE_NONE = "PangoRenderNone" # : UInt8*
   SCALE = 1024 # : Int32
   UNKNOWN_GLYPH_HEIGHT = 14 # : Int32
@@ -388,7 +388,7 @@ lib LibPango
   fun attr_iterator_get_attrs = pango_attr_iterator_get_attrs(this : AttrIterator*) : Void**
   fun attr_iterator_get_font = pango_attr_iterator_get_font(this : AttrIterator*, desc : LibPango::FontDescription*, language : LibPango::Language*, extra_attrs : Void**) : Void
   fun attr_iterator_next = pango_attr_iterator_next(this : AttrIterator*) : Bool
-  fun attr_iterator_range = pango_attr_iterator_range(this : AttrIterator*, start : Int32*, end : Int32*) : Void
+  fun attr_iterator_range = pango_attr_iterator_range(this : AttrIterator*, start : Int32*, _end : Int32*) : Void
 
   struct AttrLanguage # struct
     attr : LibPango::Attribute
@@ -486,6 +486,7 @@ lib LibPango
   fun font_description_get_stretch = pango_font_description_get_stretch(this : FontDescription*) : LibPango::Stretch
   fun font_description_get_style = pango_font_description_get_style(this : FontDescription*) : LibPango::Style
   fun font_description_get_variant = pango_font_description_get_variant(this : FontDescription*) : LibPango::Variant
+  fun font_description_get_variations = pango_font_description_get_variations(this : FontDescription*) : UInt8*
   fun font_description_get_weight = pango_font_description_get_weight(this : FontDescription*) : LibPango::Weight
   fun font_description_hash = pango_font_description_hash(this : FontDescription*) : UInt32
   fun font_description_merge = pango_font_description_merge(this : FontDescription*, desc_to_merge : LibPango::FontDescription*, replace_existing : Bool) : Void
@@ -498,6 +499,8 @@ lib LibPango
   fun font_description_set_stretch = pango_font_description_set_stretch(this : FontDescription*, stretch : LibPango::Stretch) : Void
   fun font_description_set_style = pango_font_description_set_style(this : FontDescription*, style : LibPango::Style) : Void
   fun font_description_set_variant = pango_font_description_set_variant(this : FontDescription*, variant : LibPango::Variant) : Void
+  fun font_description_set_variations = pango_font_description_set_variations(this : FontDescription*, settings : UInt8*) : Void
+  fun font_description_set_variations_static = pango_font_description_set_variations_static(this : FontDescription*, settings : UInt8*) : Void
   fun font_description_set_weight = pango_font_description_set_weight(this : FontDescription*, weight : LibPango::Weight) : Void
   fun font_description_to_filename = pango_font_description_to_filename(this : FontDescription*) : UInt8*
   fun font_description_to_string = pango_font_description_to_string(this : FontDescription*) : UInt8*
@@ -576,7 +579,7 @@ lib LibPango
   fun glyph_string_new = pango_glyph_string_new() : LibPango::GlyphString*
   fun glyph_string_copy = pango_glyph_string_copy(this : GlyphString*) : LibPango::GlyphString*
   fun glyph_string_extents = pango_glyph_string_extents(this : GlyphString*, font : LibPango::Font*, ink_rect : LibPango::Rectangle*, logical_rect : LibPango::Rectangle*) : Void
-  fun glyph_string_extents_range = pango_glyph_string_extents_range(this : GlyphString*, start : Int32, end : Int32, font : LibPango::Font*, ink_rect : LibPango::Rectangle*, logical_rect : LibPango::Rectangle*) : Void
+  fun glyph_string_extents_range = pango_glyph_string_extents_range(this : GlyphString*, start : Int32, _end : Int32, font : LibPango::Font*, ink_rect : LibPango::Rectangle*, logical_rect : LibPango::Rectangle*) : Void
   fun glyph_string_free = pango_glyph_string_free(this : GlyphString*) : Void
   fun glyph_string_get_logical_widths = pango_glyph_string_get_logical_widths(this : GlyphString*, text : UInt8*, length : Int32, embedding_level : Int32, logical_widths : Int32*) : Void
   fun glyph_string_get_width = pango_glyph_string_get_width(this : GlyphString*) : Int32
@@ -713,11 +716,16 @@ lib LibPango
     _data : UInt8[0]
   end
 
+  struct ScriptForLang # struct
+    lang : Int8
+    scripts : LibPango::Script
+  end
+
   struct ScriptIter # struct
     _data : UInt8[0]
   end
   fun script_iter_free = pango_script_iter_free(this : ScriptIter*) : Void
-  fun script_iter_get_range = pango_script_iter_get_range(this : ScriptIter*, start : UInt8**, end : UInt8**, script : LibPango::Script*) : Void
+  fun script_iter_get_range = pango_script_iter_get_range(this : ScriptIter*, start : UInt8**, _end : UInt8**, script : LibPango::Script*) : Void
   fun script_iter_next = pango_script_iter_next(this : ScriptIter*) : Bool
 
   struct TabArray # struct
@@ -967,6 +975,7 @@ lib LibPango
     STRETCH = 16
     SIZE = 32
     GRAVITY = 64
+    VARIATIONS = 128
   end
 
 

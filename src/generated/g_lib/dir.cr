@@ -26,7 +26,7 @@ module GLib
       nil
     end
 
-    def self.make_tmp(tmpl) # function
+    def self.make_tmp(tmpl)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGLib.dir_make_tmp(tmpl ? tmpl.to_unsafe : nil, pointerof(__error))
       GLib::Error.assert __error

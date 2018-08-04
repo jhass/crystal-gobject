@@ -16,8 +16,8 @@ module Pango
       nil
     end
 
-    def range(start, end, script : Pango::Script?)
-      LibPango.script_iter_get_range(@pointer.as(LibPango::ScriptIter*), start, end, script)
+    def range(start, _end, script : Pango::Script?)
+      LibPango.script_iter_get_range(@pointer.as(LibPango::ScriptIter*), start, _end, script)
       nil
     end
 

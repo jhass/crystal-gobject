@@ -63,7 +63,7 @@ module Gio
 
     def source_object
       __return_value = LibGio.task_get_source_object(@pointer.as(LibGio::Task*))
-      GObject::Object.new(__return_value)
+      GObject::Object.new(__return_value) if __return_value
     end
 
     def source_tag
@@ -81,21 +81,21 @@ module Gio
       __return_value
     end
 
-    def propagate_boolean # function
+    def propagate_boolean
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.task_propagate_boolean(@pointer.as(LibGio::Task*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def propagate_int # function
+    def propagate_int
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.task_propagate_int(@pointer.as(LibGio::Task*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def propagate_pointer # function
+    def propagate_pointer
       __error = Pointer(LibGLib::Error).null
       LibGio.task_propagate_pointer(@pointer.as(LibGio::Task*), pointerof(__error))
       GLib::Error.assert __error

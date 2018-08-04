@@ -19,14 +19,14 @@ module Gio
       cast Gio::UnixFDList.new(__return_value)
     end
 
-    def append(fd) # function
+    def append(fd)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.unix_f_d_list_append(@pointer.as(LibGio::UnixFDList*), Int32.new(fd), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
-    def get(index) # function
+    def get(index)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.unix_f_d_list_get(@pointer.as(LibGio::UnixFDList*), Int32.new(index), pointerof(__error))
       GLib::Error.assert __error

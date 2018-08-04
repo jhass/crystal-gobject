@@ -11,7 +11,7 @@ module Gio
       @pointer.not_nil!.as(LibGio::SettingsSchemaSource*)
     end
 
-    def self.new_from_directory(directory, parent, trusted) : self # function
+    def self.new_from_directory(directory, parent, trusted) : self
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.settings_schema_source_new_from_directory(directory.to_unsafe, parent ? parent.to_unsafe.as(LibGio::SettingsSchemaSource*) : nil, trusted, pointerof(__error))
       GLib::Error.assert __error
@@ -40,7 +40,7 @@ module Gio
 
     def self.default
       __return_value = LibGio.settings_schema_source_get_default
-      Gio::SettingsSchemaSource.new(__return_value)
+      Gio::SettingsSchemaSource.new(__return_value) if __return_value
     end
 
   end

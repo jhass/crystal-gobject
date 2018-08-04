@@ -60,8 +60,6 @@ lib LibGObject
   fun object_notify_by_pspec = g_object_notify_by_pspec(this : Object*, pspec : LibGObject::ParamSpec*) : Void
   fun object_ref = g_object_ref(this : Object*) : LibGObject::Object*
   fun object_ref_sink = g_object_ref_sink(this : Object*) : LibGObject::Object*
-  fun object_replace_data = g_object_replace_data(this : Object*, key : UInt8*, oldval : Void*, newval : Void*, destroy : LibGLib::DestroyNotify, old_destroy : LibGLib::DestroyNotify*) : Bool
-  fun object_replace_qdata = g_object_replace_qdata(this : Object*, quark : UInt32, oldval : Void*, newval : Void*, destroy : LibGLib::DestroyNotify, old_destroy : LibGLib::DestroyNotify*) : Bool
   fun object_run_dispose = g_object_run_dispose(this : Object*) : Void
   fun object_set_data = g_object_set_data(this : Object*, key : UInt8*, data : Void*) : Void
   fun object_set_property = g_object_set_property(this : Object*, property_name : UInt8*, value : LibGObject::Value*) : Void
@@ -634,7 +632,6 @@ lib LibGObject
   fun value_array_new = g_value_array_new(n_prealloced : UInt32) : LibGObject::ValueArray*
   fun value_array_append = g_value_array_append(this : ValueArray*, value : LibGObject::Value*) : LibGObject::ValueArray*
   fun value_array_copy = g_value_array_copy(this : ValueArray*) : LibGObject::ValueArray*
-  fun value_array_free = g_value_array_free(this : ValueArray*) : Void
   fun value_array_get_nth = g_value_array_get_nth(this : ValueArray*, index : UInt32) : LibGObject::Value*
   fun value_array_insert = g_value_array_insert(this : ValueArray*, index : UInt32, value : LibGObject::Value*) : LibGObject::ValueArray*
   fun value_array_prepend = g_value_array_prepend(this : ValueArray*, value : LibGObject::Value*) : LibGObject::ValueArray*
@@ -651,11 +648,11 @@ lib LibGObject
   ###########################################
 
   PARAM_MASK = 255 # : Int32
-  PARAM_STATIC_STRINGS = 0 # : Int32
+  PARAM_STATIC_STRINGS = 224 # : Int32
   PARAM_USER_SHIFT = 8 # : Int32
   SIGNAL_FLAGS_MASK = 511 # : Int32
   SIGNAL_MATCH_MASK = 63 # : Int32
-  TYPE_FLAG_RESERVED_ID_BIT = 1 # : UInt64
+  TYPE_FLAG_RESERVED_ID_BIT = 1_u64 # : UInt64
   TYPE_FUNDAMENTAL_MAX = 255 # : Int32
   TYPE_FUNDAMENTAL_SHIFT = 2 # : Int32
   TYPE_RESERVED_BSE_FIRST = 32 # : Int32
