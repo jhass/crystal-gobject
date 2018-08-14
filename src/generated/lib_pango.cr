@@ -716,11 +716,6 @@ lib LibPango
     _data : UInt8[0]
   end
 
-  struct ScriptForLang # struct
-    lang : Int8
-    scripts : LibPango::Script
-  end
-
   struct ScriptIter # struct
     _data : UInt8[0]
   end

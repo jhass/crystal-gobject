@@ -236,7 +236,7 @@ module Gtk
       nil
     end
 
-    def self.default_icon_from_file=(filename)
+    def self.set_default_icon_from_file(filename)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGtk.window_set_default_icon_from_file(filename.to_unsafe, pointerof(__error))
       GLib::Error.assert __error

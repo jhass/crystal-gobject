@@ -32,7 +32,7 @@ module GIRepository
       method_name = name
       if method_name.starts_with?("get_")
         method_name = method_name[4..-1]
-      elsif method_name.starts_with?("set_") && args.size == 2
+      elsif method_name.starts_with?("set_") && args.size == 2 && method?
         method_name = "#{method_name[4..-1]}="
       elsif method_name.starts_with?("is_")
         method_name = "#{method_name[3..-1]}?"

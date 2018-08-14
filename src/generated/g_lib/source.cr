@@ -176,7 +176,7 @@ module GLib
       __return_value
     end
 
-    def self.name_by_id=(tag, name)
+    def self.set_name_by_id(tag, name)
       LibGLib.source_set_name_by_id(UInt32.new(tag), name.to_unsafe)
       nil
     end
