@@ -11,7 +11,7 @@ module GObject
     end
 
     def connect(signal, callback)
-      LibGObject.signal_connect_data(to_unsafe.as(LibGObject::Object*),
+      LibGObject.signal_connect_data(@pointer.as(LibGObject::Object*),
                                      signal,
                                      LibGObject::Callback.new(callback.pointer, Pointer(Void).null),
                                      ClosureDataManager.register(callback.closure_data),

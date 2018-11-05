@@ -61,4 +61,10 @@ module Gtk
       object(id)
     end
   end
+
+  class CssProvider
+    def load_from_data(string : String)
+      load_from_data(string, string.bytesize)
+    end
+  end
 end
