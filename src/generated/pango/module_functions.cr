@@ -1,4 +1,30 @@
 module Pango
+  ANALYSIS_FLAG_CENTERED_BASELINE = LibPango::ANALYSIS_FLAG_CENTERED_BASELINE
+
+  ANALYSIS_FLAG_IS_ELLIPSIS = LibPango::ANALYSIS_FLAG_IS_ELLIPSIS
+
+  ATTR_INDEX_FROM_TEXT_BEGINNING = LibPango::ATTR_INDEX_FROM_TEXT_BEGINNING
+
+  ENGINE_TYPE_LANG = LibPango::ENGINE_TYPE_LANG
+
+  ENGINE_TYPE_SHAPE = LibPango::ENGINE_TYPE_SHAPE
+
+  GLYPH_EMPTY = LibPango::GLYPH_EMPTY
+
+  GLYPH_INVALID_INPUT = LibPango::GLYPH_INVALID_INPUT
+
+  GLYPH_UNKNOWN_FLAG = LibPango::GLYPH_UNKNOWN_FLAG
+
+  RENDER_TYPE_NONE = LibPango::RENDER_TYPE_NONE
+
+  SCALE = LibPango::SCALE
+
+  UNKNOWN_GLYPH_HEIGHT = LibPango::UNKNOWN_GLYPH_HEIGHT
+
+  UNKNOWN_GLYPH_WIDTH = LibPango::UNKNOWN_GLYPH_WIDTH
+
+  VERSION_MIN_REQUIRED = LibPango::VERSION_MIN_REQUIRED
+
   def self.attr_type_get_name(type : Pango::AttrType)
     __return_value = LibPango.attr_type_get_name(type)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value

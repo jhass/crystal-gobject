@@ -64,5 +64,11 @@ module GIRepository
         "  #{name} = #{literal} # : #{type.lib_definition}"
       end
     end
+
+    def wrapper_definition(libname, indent="")
+      String.build do |io|
+        io.puts "#{indent}#{name} = #{libname}::#{name}"
+      end
+    end
   end
 end

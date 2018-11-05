@@ -1,4 +1,16 @@
 module Atk
+  BINARY_AGE = LibAtk::BINARY_AGE
+
+  INTERFACE_AGE = LibAtk::INTERFACE_AGE
+
+  MAJOR_VERSION = LibAtk::MAJOR_VERSION
+
+  MICRO_VERSION = LibAtk::MICRO_VERSION
+
+  MINOR_VERSION = LibAtk::MINOR_VERSION
+
+  VERSION_MIN_REQUIRED = LibAtk::VERSION_MIN_REQUIRED
+
   def self.attribute_set_free(attrib_set)
     LibAtk.attribute_set_free(attrib_set)
     nil

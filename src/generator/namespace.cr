@@ -133,6 +133,7 @@ class Namespace
     GIRepository::Repository.instance.all_infos(@namespace).each do |info|
       next if skip_info? info
       next if info.is_a? GIRepository::FunctionInfo
+      next if info.is_a? GIRepository::ConstantInfo
 
       definition = info.wrapper_definition libname, "  "
       next unless definition && !definition.empty?
@@ -143,6 +144,7 @@ class Namespace
 
     functions = GIRepository::Repository.instance.all_infos(@namespace).select {|info|
       next false if skip_info?(info)
+      next true if info.is_a? GIRepository::ConstantInfo
       info.is_a?(GIRepository::FunctionInfo) ? !info.method? : false
     }.map(&.wrapper_definition(libname, "  ")).join("\n")
 

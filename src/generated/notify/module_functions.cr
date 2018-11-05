@@ -1,4 +1,14 @@
 module Notify
+  EXPIRES_DEFAULT = LibNotify::EXPIRES_DEFAULT
+
+  EXPIRES_NEVER = LibNotify::EXPIRES_NEVER
+
+  VERSION_MAJOR = LibNotify::VERSION_MAJOR
+
+  VERSION_MICRO = LibNotify::VERSION_MICRO
+
+  VERSION_MINOR = LibNotify::VERSION_MINOR
+
   def self.app_name
     __return_value = LibNotify.get_app_name
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
