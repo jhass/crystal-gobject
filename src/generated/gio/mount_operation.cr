@@ -27,6 +27,18 @@ module Gio
       gvalue.string
     end
 
+    def is_tcrypt_hidden_volume
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_tcrypt_hidden_volume", gvalue)
+      gvalue.boolean
+    end
+
+    def is_tcrypt_system_volume
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "is_tcrypt_system_volume", gvalue)
+      gvalue.boolean
+    end
+
     def password
       gvalue = GObject::Value.new(GObject::Type::UTF8)
       LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "password", gvalue)
@@ -37,6 +49,12 @@ module Gio
       gvalue = GObject::Value.new(GObject::Type::INTERFACE)
       LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "password_save", gvalue)
       gvalue.enum
+    end
+
+    def pim
+      gvalue = GObject::Value.new(GObject::Type::UINT32)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "pim", gvalue)
+      gvalue
     end
 
     def username
@@ -65,6 +83,16 @@ module Gio
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
+    def is_tcrypt_hidden_volume
+      __return_value = LibGio.mount_operation_get_is_tcrypt_hidden_volume(@pointer.as(LibGio::MountOperation*))
+      __return_value
+    end
+
+    def is_tcrypt_system_volume
+      __return_value = LibGio.mount_operation_get_is_tcrypt_system_volume(@pointer.as(LibGio::MountOperation*))
+      __return_value
+    end
+
     def password
       __return_value = LibGio.mount_operation_get_password(@pointer.as(LibGio::MountOperation*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
@@ -72,6 +100,11 @@ module Gio
 
     def password_save
       __return_value = LibGio.mount_operation_get_password_save(@pointer.as(LibGio::MountOperation*))
+      __return_value
+    end
+
+    def pim
+      __return_value = LibGio.mount_operation_get_pim(@pointer.as(LibGio::MountOperation*))
       __return_value
     end
 
@@ -100,6 +133,16 @@ module Gio
       nil
     end
 
+    def is_tcrypt_hidden_volume=(hidden_volume)
+      LibGio.mount_operation_set_is_tcrypt_hidden_volume(@pointer.as(LibGio::MountOperation*), hidden_volume)
+      nil
+    end
+
+    def is_tcrypt_system_volume=(system_volume)
+      LibGio.mount_operation_set_is_tcrypt_system_volume(@pointer.as(LibGio::MountOperation*), system_volume)
+      nil
+    end
+
     def password=(password)
       LibGio.mount_operation_set_password(@pointer.as(LibGio::MountOperation*), password.to_unsafe)
       nil
@@ -107,6 +150,11 @@ module Gio
 
     def password_save=(save : Gio::PasswordSave)
       LibGio.mount_operation_set_password_save(@pointer.as(LibGio::MountOperation*), save)
+      nil
+    end
+
+    def pim=(pim)
+      LibGio.mount_operation_set_pim(@pointer.as(LibGio::MountOperation*), UInt32.new(pim))
       nil
     end
 

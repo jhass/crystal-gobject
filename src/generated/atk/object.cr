@@ -46,9 +46,9 @@ module Atk
     end
 
     def accessible_role
-      gvalue = GObject::Value.new(GObject::Type::INT32)
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
       LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "accessible_role", gvalue)
-      gvalue
+      gvalue.enum
     end
 
     def accessible_table_caption
@@ -214,19 +214,19 @@ module Atk
       nil
     end
 
-    alias ActiveDescendantChangedSignal = Object, Void* ->
+    alias ActiveDescendantChangedSignal = Object, Atk::Object ->
     def on_active_descendant_changed(&__block : ActiveDescendantChangedSignal)
-      __callback = ->(_arg0 : LibAtk::Object*, _arg1 : LibAtk::Void**) {
-       __return_value = __block.call(Object.new(_arg0), _arg1)
+      __callback = ->(_arg0 : LibAtk::Object*, _arg1 : LibAtk::LibAtk::Object**) {
+       __return_value = __block.call(Object.new(_arg0), Atk::Object.new(_arg1))
        __return_value
       }
       connect("active-descendant-changed", __callback)
     end
 
-    alias ChildrenChangedSignal = Object, UInt32, Void* ->
+    alias ChildrenChangedSignal = Object, UInt32, Atk::Object ->
     def on_children_changed(&__block : ChildrenChangedSignal)
-      __callback = ->(_arg0 : LibAtk::Object*, _arg1 : LibAtk::UInt32*, _arg2 : LibAtk::Void**) {
-       __return_value = __block.call(Object.new(_arg0), _arg1, _arg2)
+      __callback = ->(_arg0 : LibAtk::Object*, _arg1 : LibAtk::UInt32*, _arg2 : LibAtk::LibAtk::Object**) {
+       __return_value = __block.call(Object.new(_arg0), _arg1, Atk::Object.new(_arg2))
        __return_value
       }
       connect("children-changed", __callback)
@@ -241,10 +241,10 @@ module Atk
       connect("focus-event", __callback)
     end
 
-    alias PropertyChangeSignal = Object, Void* ->
+    alias PropertyChangeSignal = Object, Atk::PropertyValues ->
     def on_property_change(&__block : PropertyChangeSignal)
-      __callback = ->(_arg0 : LibAtk::Object*, _arg1 : LibAtk::Void**) {
-       __return_value = __block.call(Object.new(_arg0), _arg1)
+      __callback = ->(_arg0 : LibAtk::Object*, _arg1 : LibAtk::LibAtk::PropertyValues**) {
+       __return_value = __block.call(Object.new(_arg0), Atk::PropertyValues.new(_arg1))
        __return_value
       }
       connect("property-change", __callback)

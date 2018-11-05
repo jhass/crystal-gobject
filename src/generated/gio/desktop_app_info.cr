@@ -18,17 +18,17 @@ module Gio
 
     def self.new(desktop_id) : self
       __return_value = LibGio.desktop_app_info_new(desktop_id.to_unsafe)
-      cast Gio::DesktopAppInfo.new(__return_value)
+      cast Gio::DesktopAppInfo.new(__return_value) if __return_value
     end
 
     def self.new_from_filename(filename) : self
       __return_value = LibGio.desktop_app_info_new_from_filename(filename.to_unsafe)
-      cast Gio::DesktopAppInfo.new(__return_value)
+      cast Gio::DesktopAppInfo.new(__return_value) if __return_value
     end
 
     def self.new_from_keyfile(key_file) : self
       __return_value = LibGio.desktop_app_info_new_from_keyfile(key_file.to_unsafe.as(LibGLib::KeyFile*))
-      cast Gio::DesktopAppInfo.new(__return_value)
+      cast Gio::DesktopAppInfo.new(__return_value) if __return_value
     end
 
     def self.implementations(interface)
@@ -119,6 +119,13 @@ module Gio
     def launch_uris_as_manager(uris, launch_context, spawn_flags : GLib::SpawnFlags, user_setup, user_setup_data, pid_callback, pid_callback_data)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.desktop_app_info_launch_uris_as_manager(@pointer.as(LibGio::DesktopAppInfo*), uris, launch_context ? launch_context.to_unsafe.as(LibGio::AppLaunchContext*) : nil, spawn_flags, user_setup ? user_setup : nil, user_setup_data ? user_setup_data : nil, pid_callback ? pid_callback : nil, pid_callback_data ? pid_callback_data : nil, pointerof(__error))
+      GLib::Error.assert __error
+      __return_value
+    end
+
+    def launch_uris_as_manager_with_fds(uris, launch_context, spawn_flags : GLib::SpawnFlags, user_setup, user_setup_data, pid_callback, pid_callback_data, stdin_fd, stdout_fd, stderr_fd)
+      __error = Pointer(LibGLib::Error).null
+      __return_value = LibGio.desktop_app_info_launch_uris_as_manager_with_fds(@pointer.as(LibGio::DesktopAppInfo*), uris, launch_context ? launch_context.to_unsafe.as(LibGio::AppLaunchContext*) : nil, spawn_flags, user_setup ? user_setup : nil, user_setup_data ? user_setup_data : nil, pid_callback ? pid_callback : nil, pid_callback_data ? pid_callback_data : nil, Int32.new(stdin_fd), Int32.new(stdout_fd), Int32.new(stderr_fd), pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

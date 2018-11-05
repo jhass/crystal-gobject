@@ -41,7 +41,7 @@ module Gio
 
     def drive
       __return_value = LibGio.mount_get_drive(@pointer.as(LibGio::Mount*))
-      __return_value
+      __return_value if __return_value
     end
 
     def icon
@@ -61,7 +61,7 @@ module Gio
 
     def sort_key
       __return_value = LibGio.mount_get_sort_key(@pointer.as(LibGio::Mount*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def symbolic_icon
@@ -71,12 +71,12 @@ module Gio
 
     def uuid
       __return_value = LibGio.mount_get_uuid(@pointer.as(LibGio::Mount*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def volume
       __return_value = LibGio.mount_get_volume(@pointer.as(LibGio::Mount*))
-      __return_value
+      __return_value if __return_value
     end
 
     def guess_content_type(force_rescan, cancellable, callback, user_data)

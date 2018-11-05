@@ -705,6 +705,7 @@ lib LibGdk
   fun window_move = gdk_window_move(this : Window*, x : Int32, y : Int32) : Void
   fun window_move_region = gdk_window_move_region(this : Window*, region : LibCairo::Region*, dx : Int32, dy : Int32) : Void
   fun window_move_resize = gdk_window_move_resize(this : Window*, x : Int32, y : Int32, width : Int32, height : Int32) : Void
+  fun window_move_to_rect = gdk_window_move_to_rect(this : Window*, rect : LibGdk::Rectangle*, rect_anchor : LibGdk::Gravity, window_anchor : LibGdk::Gravity, anchor_hints : LibGdk::AnchorHints, rect_anchor_dx : Int32, rect_anchor_dy : Int32) : Void
   fun window_peek_children = gdk_window_peek_children(this : Window*) : Void**
   fun window_process_updates = gdk_window_process_updates(this : Window*, update_children : Bool) : Void
   fun window_raise = gdk_window_raise(this : Window*) : Void

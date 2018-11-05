@@ -20,6 +20,11 @@ module Gtk
       Pango::FontFamily.new(__return_value) if __return_value
     end
 
+    def font_features
+      __return_value = LibGtk.font_chooser_get_font_features(@pointer.as(LibGtk::FontChooser*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
+
     def font_map
       __return_value = LibGtk.font_chooser_get_font_map(@pointer.as(LibGtk::FontChooser*))
       Pango::FontMap.new(__return_value) if __return_value
@@ -27,6 +32,16 @@ module Gtk
 
     def font_size
       __return_value = LibGtk.font_chooser_get_font_size(@pointer.as(LibGtk::FontChooser*))
+      __return_value
+    end
+
+    def language
+      __return_value = LibGtk.font_chooser_get_language(@pointer.as(LibGtk::FontChooser*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
+
+    def level
+      __return_value = LibGtk.font_chooser_get_level(@pointer.as(LibGtk::FontChooser*))
       __return_value
     end
 
@@ -57,6 +72,16 @@ module Gtk
 
     def font_map=(fontmap)
       LibGtk.font_chooser_set_font_map(@pointer.as(LibGtk::FontChooser*), fontmap ? fontmap.to_unsafe.as(LibPango::FontMap*) : nil)
+      nil
+    end
+
+    def language=(language)
+      LibGtk.font_chooser_set_language(@pointer.as(LibGtk::FontChooser*), language.to_unsafe)
+      nil
+    end
+
+    def level=(level : Gtk::FontChooserLevel)
+      LibGtk.font_chooser_set_level(@pointer.as(LibGtk::FontChooser*), level)
       nil
     end
 

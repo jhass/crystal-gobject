@@ -21,6 +21,11 @@ module GLib
       cast GLib::TimeZone.new(__return_value)
     end
 
+    def self.new_offset(seconds) : self
+      __return_value = LibGLib.time_zone_new_offset(Int32.new(seconds))
+      cast GLib::TimeZone.new(__return_value)
+    end
+
     def self.new_utc : self
       __return_value = LibGLib.time_zone_new_utc
       cast GLib::TimeZone.new(__return_value)
@@ -38,6 +43,11 @@ module GLib
 
     def abbreviation(interval)
       __return_value = LibGLib.time_zone_get_abbreviation(@pointer.as(LibGLib::TimeZone*), Int32.new(interval))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
+
+    def identifier
+      __return_value = LibGLib.time_zone_get_identifier(@pointer.as(LibGLib::TimeZone*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 

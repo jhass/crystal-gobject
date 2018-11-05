@@ -71,6 +71,11 @@ module GLib
       nil
     end
 
+    def self.steal_extended(hash_table, lookup_key, stolen_key, stolen_value)
+      __return_value = LibGLib.hash_table_steal_extended(hash_table, lookup_key ? lookup_key : nil, stolen_key, stolen_value)
+      __return_value
+    end
+
     def self.unref(hash_table)
       LibGLib.hash_table_unref(hash_table)
       nil

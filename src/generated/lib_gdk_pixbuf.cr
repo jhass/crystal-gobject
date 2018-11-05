@@ -55,12 +55,10 @@ lib LibGdkPixbuf
   ###########################################
 
   PIXBUF_FEATURES_H = 1 # : Int32
-  PIXBUF_MAGIC_NUMBER = 1197763408 # : Int32
   PIXBUF_MAJOR = 2 # : Int32
-  PIXBUF_MICRO = 12 # : Int32
-  PIXBUF_MINOR = 36 # : Int32
-  PIXBUF_VERSION = "2.36.12" # : UInt8*
-  PIXDATA_HEADER_LENGTH = 24 # : Int32
+  PIXBUF_MICRO = 0 # : Int32
+  PIXBUF_MINOR = 38 # : Int32
+  PIXBUF_VERSION = "2.38.0" # : UInt8*
 
   ###########################################
   ##    Objects
@@ -92,7 +90,6 @@ lib LibGdkPixbuf
   fun pixbuf_new_from_stream_finish = gdk_pixbuf_new_from_stream_finish(async_result : LibGio::AsyncResult*, error : LibGLib::Error**) : LibGdkPixbuf::Pixbuf*
   fun pixbuf_new_from_xpm_data = gdk_pixbuf_new_from_xpm_data(data : UInt8**) : LibGdkPixbuf::Pixbuf*
   fun pixbuf_calculate_rowstride = gdk_pixbuf_calculate_rowstride(colorspace : LibGdkPixbuf::Colorspace, has_alpha : Bool, bits_per_sample : Int32, width : Int32, height : Int32) : Int32
-  fun pixbuf_from_pixdata = gdk_pixbuf_from_pixdata(pixdata : LibGdkPixbuf::Pixdata*, copy_pixels : Bool, error : LibGLib::Error**) : LibGdkPixbuf::Pixbuf*
   fun pixbuf_get_file_info = gdk_pixbuf_get_file_info(filename : UInt8*, width : Int32*, height : Int32*) : LibGdkPixbuf::PixbufFormat*
   fun pixbuf_get_file_info_async = gdk_pixbuf_get_file_info_async(filename : UInt8*, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun pixbuf_get_file_info_finish = gdk_pixbuf_get_file_info_finish(async_result : LibGio::AsyncResult*, width : Int32*, height : Int32*, error : LibGLib::Error**) : LibGdkPixbuf::PixbufFormat*
@@ -214,50 +211,6 @@ lib LibGdkPixbuf
   fun pixbuf_format_is_scalable = gdk_pixbuf_format_is_scalable(this : PixbufFormat*) : Bool
   fun pixbuf_format_is_writable = gdk_pixbuf_format_is_writable(this : PixbufFormat*) : Bool
   fun pixbuf_format_set_disabled = gdk_pixbuf_format_set_disabled(this : PixbufFormat*, disabled : Bool) : Void
-
-  struct Pixdata # struct
-    magic : UInt32
-    length : Int32
-    pixdata_type : UInt32
-    rowstride : UInt32
-    width : UInt32
-    height : UInt32
-    pixel_data : UInt8*
-  end
-  fun pixdata_deserialize = gdk_pixdata_deserialize(this : Pixdata*, stream_length : UInt32, stream : UInt8*, error : LibGLib::Error**) : Bool
-  fun pixdata_serialize = gdk_pixdata_serialize(this : Pixdata*, stream_length_p : UInt32*) : UInt8*
-  fun pixdata_to_csource = gdk_pixdata_to_csource(this : Pixdata*, name : UInt8*, dump_type : LibGdkPixbuf::PixdataDumpType) : LibGLib::String*
-
-
-  ###########################################
-  ##    Flags
-  ###########################################
-
-  @[Flags]
-  enum PixdataDumpType : UInt32
-    ZERO_NONE = 0
-    PIXDATA_STREAM = 0
-    PIXDATA_STRUCT = 1
-    MACROS = 2
-    GTYPES = 0
-    CTYPES = 256
-    STATIC = 512
-    CONST = 1024
-    RLE_DECODER = 65536
-  end
-
-  @[Flags]
-  enum PixdataType : UInt32
-    ZERO_NONE = 0
-    COLOR_TYPE_RGB = 1
-    COLOR_TYPE_RGBA = 2
-    COLOR_TYPE_MASK = 255
-    SAMPLE_WIDTH_8 = 65536
-    SAMPLE_WIDTH_MASK = 983040
-    ENCODING_RAW = 16777216
-    ENCODING_RLE = 33554432
-    ENCODING_MASK = 251658240
-  end
 
 
   ###########################################

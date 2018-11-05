@@ -35,6 +35,12 @@ module Gtk
       gvalue.boolean
     end
 
+    def screensaver_active
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "screensaver_active", gvalue)
+      gvalue.boolean
+    end
+
     def self.new(application_id, flags : Gio::ApplicationFlags) : self
       __return_value = LibGtk.application_new(application_id ? application_id.to_unsafe : nil, flags)
       cast Gtk::Application.new(__return_value)

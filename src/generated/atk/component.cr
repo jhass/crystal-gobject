@@ -50,6 +50,16 @@ module Atk
       nil
     end
 
+    def scroll_to(type : Atk::ScrollType)
+      __return_value = LibAtk.component_scroll_to(@pointer.as(LibAtk::Component*), type)
+      __return_value
+    end
+
+    def scroll_to_point(coords : Atk::CoordType, x, y)
+      __return_value = LibAtk.component_scroll_to_point(@pointer.as(LibAtk::Component*), coords, Int32.new(x), Int32.new(y))
+      __return_value
+    end
+
     def set_extents(x, y, width, height, coord_type : Atk::CoordType)
       __return_value = LibAtk.component_set_extents(@pointer.as(LibAtk::Component*), Int32.new(x), Int32.new(y), Int32.new(width), Int32.new(height), coord_type)
       __return_value

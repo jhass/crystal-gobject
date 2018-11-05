@@ -11,11 +11,6 @@ module GObject
       @pointer.not_nil!.as(LibGObject::Object*)
     end
 
-    def self.new(object_type, n_properties, names, values) : self
-      __return_value = LibGObject.object_new(UInt64.new(object_type), UInt32.new(n_properties), names, values)
-      cast GObject::Object.new(__return_value)
-    end
-
     def self.newv(object_type, n_parameters, parameters) : self
       __return_value = LibGObject.object_newv(UInt64.new(object_type), UInt32.new(n_parameters), parameters)
       cast GObject::Object.new(__return_value)

@@ -63,6 +63,12 @@ module Gtk
       gvalue.string
     end
 
+    def use_markup
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "use_markup", gvalue)
+      gvalue.boolean
+    end
+
     def self.new : self
       __return_value = LibGtk.model_button_new
       cast Gtk::Widget.new(__return_value)

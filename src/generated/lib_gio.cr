@@ -1821,6 +1821,7 @@ lib LibGio
     NEED_DOMAIN = 4
     SAVING_SUPPORTED = 8
     ANONYMOUS_SUPPORTED = 16
+    TCRYPT = 32
   end
 
   @[Flags]
@@ -2706,6 +2707,7 @@ lib LibGio
   fun desktop_app_info_has_key = g_desktop_app_info_has_key(this : DesktopAppInfo*, key : UInt8*) : Bool
   fun desktop_app_info_launch_action = g_desktop_app_info_launch_action(this : DesktopAppInfo*, action_name : UInt8*, launch_context : LibGio::AppLaunchContext*) : Void
   fun desktop_app_info_launch_uris_as_manager = g_desktop_app_info_launch_uris_as_manager(this : DesktopAppInfo*, uris : Void**, launch_context : LibGio::AppLaunchContext*, spawn_flags : LibGLib::SpawnFlags, user_setup : LibGLib::SpawnChildSetupFunc, user_setup_data : Void*, pid_callback : LibGio::DesktopAppLaunchCallback, pid_callback_data : Void*, error : LibGLib::Error**) : Bool
+  fun desktop_app_info_launch_uris_as_manager_with_fds = g_desktop_app_info_launch_uris_as_manager_with_fds(this : DesktopAppInfo*, uris : Void**, launch_context : LibGio::AppLaunchContext*, spawn_flags : LibGLib::SpawnFlags, user_setup : LibGLib::SpawnChildSetupFunc, user_setup_data : Void*, pid_callback : LibGio::DesktopAppLaunchCallback, pid_callback_data : Void*, stdin_fd : Int32, stdout_fd : Int32, stderr_fd : Int32, error : LibGLib::Error**) : Bool
   fun desktop_app_info_list_actions = g_desktop_app_info_list_actions(this : DesktopAppInfo*) : UInt8**
 
   struct Emblem # object
@@ -3187,23 +3189,32 @@ lib LibGio
     # Property anonymous : Bool
     # Property choice : Int32
     # Property domain : UInt8*
+    # Property is_tcrypt_hidden_volume : Bool
+    # Property is_tcrypt_system_volume : Bool
     # Property password : UInt8*
     # Property password_save : LibGio::PasswordSave
+    # Property pim : UInt32
     # Property username : UInt8*
   end
   fun mount_operation_new = g_mount_operation_new() : LibGio::MountOperation*
   fun mount_operation_get_anonymous = g_mount_operation_get_anonymous(this : MountOperation*) : Bool
   fun mount_operation_get_choice = g_mount_operation_get_choice(this : MountOperation*) : Int32
   fun mount_operation_get_domain = g_mount_operation_get_domain(this : MountOperation*) : UInt8*
+  fun mount_operation_get_is_tcrypt_hidden_volume = g_mount_operation_get_is_tcrypt_hidden_volume(this : MountOperation*) : Bool
+  fun mount_operation_get_is_tcrypt_system_volume = g_mount_operation_get_is_tcrypt_system_volume(this : MountOperation*) : Bool
   fun mount_operation_get_password = g_mount_operation_get_password(this : MountOperation*) : UInt8*
   fun mount_operation_get_password_save = g_mount_operation_get_password_save(this : MountOperation*) : LibGio::PasswordSave
+  fun mount_operation_get_pim = g_mount_operation_get_pim(this : MountOperation*) : UInt32
   fun mount_operation_get_username = g_mount_operation_get_username(this : MountOperation*) : UInt8*
   fun mount_operation_reply = g_mount_operation_reply(this : MountOperation*, result : LibGio::MountOperationResult) : Void
   fun mount_operation_set_anonymous = g_mount_operation_set_anonymous(this : MountOperation*, anonymous : Bool) : Void
   fun mount_operation_set_choice = g_mount_operation_set_choice(this : MountOperation*, choice : Int32) : Void
   fun mount_operation_set_domain = g_mount_operation_set_domain(this : MountOperation*, domain : UInt8*) : Void
+  fun mount_operation_set_is_tcrypt_hidden_volume = g_mount_operation_set_is_tcrypt_hidden_volume(this : MountOperation*, hidden_volume : Bool) : Void
+  fun mount_operation_set_is_tcrypt_system_volume = g_mount_operation_set_is_tcrypt_system_volume(this : MountOperation*, system_volume : Bool) : Void
   fun mount_operation_set_password = g_mount_operation_set_password(this : MountOperation*, password : UInt8*) : Void
   fun mount_operation_set_password_save = g_mount_operation_set_password_save(this : MountOperation*, save : LibGio::PasswordSave) : Void
+  fun mount_operation_set_pim = g_mount_operation_set_pim(this : MountOperation*, pim : UInt32) : Void
   fun mount_operation_set_username = g_mount_operation_set_username(this : MountOperation*, username : UInt8*) : Void
 
   struct NativeVolumeMonitor # object
@@ -4619,6 +4630,7 @@ lib LibGio
   ###########################################
 
   DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME = "gio-desktop-app-info-lookup" # : UInt8*
+  DRIVE_IDENTIFIER_KIND_UNIX_DEVICE = "unix-device" # : UInt8*
   FILE_ATTRIBUTE_ACCESS_CAN_DELETE = "access::can-delete" # : UInt8*
   FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE = "access::can-execute" # : UInt8*
   FILE_ATTRIBUTE_ACCESS_CAN_READ = "access::can-read" # : UInt8*
@@ -4853,6 +4865,7 @@ lib LibGio
   fun unix_mount_get_device_path = g_unix_mount_get_device_path(mount_entry : LibGio::UnixMountEntry*) : UInt8*
   fun unix_mount_get_fs_type = g_unix_mount_get_fs_type(mount_entry : LibGio::UnixMountEntry*) : UInt8*
   fun unix_mount_get_mount_path = g_unix_mount_get_mount_path(mount_entry : LibGio::UnixMountEntry*) : UInt8*
+  fun unix_mount_get_options = g_unix_mount_get_options(mount_entry : LibGio::UnixMountEntry*) : UInt8*
   fun unix_mount_guess_can_eject = g_unix_mount_guess_can_eject(mount_entry : LibGio::UnixMountEntry*) : Bool
   fun unix_mount_guess_icon = g_unix_mount_guess_icon(mount_entry : LibGio::UnixMountEntry*) : LibGio::Icon*
   fun unix_mount_guess_name = g_unix_mount_guess_name(mount_entry : LibGio::UnixMountEntry*) : UInt8*

@@ -236,7 +236,7 @@ module Gtk
     end
 
     def title=(title)
-      LibGtk.menu_set_title(@pointer.as(LibGtk::Menu*), title.to_unsafe)
+      LibGtk.menu_set_title(@pointer.as(LibGtk::Menu*), title ? title.to_unsafe : nil)
       nil
     end
 

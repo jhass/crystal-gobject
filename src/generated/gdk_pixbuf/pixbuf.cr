@@ -67,7 +67,7 @@ module GdkPixbuf
 
     def self.new(colorspace : GdkPixbuf::Colorspace, has_alpha, bits_per_sample, width, height) : self
       __return_value = LibGdkPixbuf.pixbuf_new(colorspace, has_alpha, Int32.new(bits_per_sample), Int32.new(width), Int32.new(height))
-      cast GdkPixbuf::Pixbuf.new(__return_value)
+      cast GdkPixbuf::Pixbuf.new(__return_value) if __return_value
     end
 
     def self.new_from_bytes(data, colorspace : GdkPixbuf::Colorspace, has_alpha, bits_per_sample, width, height, rowstride) : self
@@ -153,13 +153,6 @@ module GdkPixbuf
       __return_value
     end
 
-    def self.from_pixdata(pixdata, copy_pixels)
-      __error = Pointer(LibGLib::Error).null
-      __return_value = LibGdkPixbuf.pixbuf_from_pixdata(pixdata.to_unsafe.as(LibGdkPixbuf::Pixdata*), copy_pixels, pointerof(__error))
-      GLib::Error.assert __error
-      GdkPixbuf::Pixbuf.new(__return_value)
-    end
-
     def self.file_info(filename, width, height)
       __return_value = LibGdkPixbuf.pixbuf_get_file_info(filename.to_unsafe, width, height)
       GdkPixbuf::PixbufFormat.new(__return_value) if __return_value
@@ -221,12 +214,12 @@ module GdkPixbuf
 
     def composite_color_simple(dest_width, dest_height, interp_type : GdkPixbuf::InterpType, overall_alpha, check_size, color1, color2)
       __return_value = LibGdkPixbuf.pixbuf_composite_color_simple(@pointer.as(LibGdkPixbuf::Pixbuf*), Int32.new(dest_width), Int32.new(dest_height), interp_type, Int32.new(overall_alpha), Int32.new(check_size), UInt32.new(color1), UInt32.new(color2))
-      GdkPixbuf::Pixbuf.new(__return_value)
+      GdkPixbuf::Pixbuf.new(__return_value) if __return_value
     end
 
     def copy
       __return_value = LibGdkPixbuf.pixbuf_copy(@pointer.as(LibGdkPixbuf::Pixbuf*))
-      GdkPixbuf::Pixbuf.new(__return_value)
+      GdkPixbuf::Pixbuf.new(__return_value) if __return_value
     end
 
     def copy_area(src_x, src_y, width, height, dest_pixbuf, dest_x, dest_y)

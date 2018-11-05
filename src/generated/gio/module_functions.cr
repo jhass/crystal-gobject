@@ -676,6 +676,11 @@ module Gio
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
+  def self.unix_mount_get_options(mount_entry)
+    __return_value = LibGio.unix_mount_get_options(mount_entry.to_unsafe.as(LibGio::UnixMountEntry*))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
+  end
+
   def self.unix_mount_guess_can_eject(mount_entry)
     __return_value = LibGio.unix_mount_guess_can_eject(mount_entry.to_unsafe.as(LibGio::UnixMountEntry*))
     __return_value

@@ -50,6 +50,8 @@ lib LibAtk
     get_mdi_zorder : -> Void
     bounds_changed : -> Void
     get_alpha : -> Void
+    scroll_to : -> Void
+    scroll_to_point : -> Void
     # Signal bounds-changed
     # Virtual function bounds_changed
     # Virtual function contains
@@ -62,6 +64,8 @@ lib LibAtk
     # Virtual function grab_focus
     # Virtual function ref_accessible_at_point
     # Virtual function remove_focus_handler
+    # Virtual function scroll_to
+    # Virtual function scroll_to_point
     # Virtual function set_extents
     # Virtual function set_position
     # Virtual function set_size
@@ -76,6 +80,8 @@ lib LibAtk
   fun component_grab_focus = atk_component_grab_focus(this : Component*) : Bool
   fun component_ref_accessible_at_point = atk_component_ref_accessible_at_point(this : Component*, x : Int32, y : Int32, coord_type : LibAtk::CoordType) : LibAtk::Object*
   fun component_remove_focus_handler = atk_component_remove_focus_handler(this : Component*, handler_id : UInt32) : Void
+  fun component_scroll_to = atk_component_scroll_to(this : Component*, type : LibAtk::ScrollType) : Bool
+  fun component_scroll_to_point = atk_component_scroll_to_point(this : Component*, coords : LibAtk::CoordType, x : Int32, y : Int32) : Bool
   fun component_set_extents = atk_component_set_extents(this : Component*, x : Int32, y : Int32, width : Int32, height : Int32, coord_type : LibAtk::CoordType) : Bool
   fun component_set_position = atk_component_set_position(this : Component*, x : Int32, y : Int32, coord_type : LibAtk::CoordType) : Bool
   fun component_set_size = atk_component_set_size(this : Component*, width : Int32, height : Int32) : Bool
@@ -85,7 +91,7 @@ lib LibAtk
     get_document_type : -> Void
     get_document : -> Void
     get_document_locale : -> Void
-    get_document_attributes : Void*
+    get_document_attributes : -> Void
     get_document_attribute_value : -> Void
     set_document_attribute : -> Void
     get_current_page_number : -> Void
@@ -97,6 +103,7 @@ lib LibAtk
     # Virtual function get_current_page_number
     # Virtual function get_document
     # Virtual function get_document_attribute_value
+    # Virtual function get_document_attributes
     # Virtual function get_document_locale
     # Virtual function get_document_type
     # Virtual function get_page_count
@@ -563,11 +570,11 @@ lib LibAtk
   ##    Constants
   ###########################################
 
-  BINARY_AGE = 22811 # : Int32
+  BINARY_AGE = 23010 # : Int32
   INTERFACE_AGE = 1 # : Int32
   MAJOR_VERSION = 2 # : Int32
-  MICRO_VERSION = 1 # : Int32
-  MINOR_VERSION = 28 # : Int32
+  MICRO_VERSION = 0 # : Int32
+  MINOR_VERSION = 30 # : Int32
   VERSION_MIN_REQUIRED = 2 # : Int32
 
   ###########################################
@@ -578,6 +585,7 @@ lib LibAtk
     ZERO_NONE = 0
     SCREEN = 0
     WINDOW = 1
+    PARENT = 2
   end
 
   enum KeyEventType : UInt32
@@ -759,6 +767,17 @@ lib LibAtk
   fun role_get_localized_name = atk_role_get_localized_name(role : LibAtk::Role) : UInt8*
   fun role_get_name = atk_role_get_name(role : LibAtk::Role) : UInt8*
   fun role_register = atk_role_register(name : UInt8*) : LibAtk::Role
+
+  enum ScrollType : UInt32
+    ZERO_NONE = 0
+    TOP_LEFT = 0
+    BOTTOM_RIGHT = 1
+    TOP_EDGE = 2
+    BOTTOM_EDGE = 3
+    LEFT_EDGE = 4
+    RIGHT_EDGE = 5
+    ANYWHERE = 6
+  end
 
   enum StateType : UInt32
     ZERO_NONE = 0
@@ -998,7 +1017,7 @@ lib LibAtk
     # Property accessible_hypertext_nlinks : Int32
     # Property accessible_name : UInt8*
     # Property accessible_parent : LibAtk::Object*
-    # Property accessible_role : Int32
+    # Property accessible_role : LibAtk::Role
     # Property accessible_table_caption : UInt8*
     # Property accessible_table_caption_object : LibAtk::Object*
     # Property accessible_table_column_description : UInt8*

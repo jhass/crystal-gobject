@@ -372,6 +372,7 @@ lib LibGtk
     # Property app_menu : LibGio::MenuModel*
     # Property menubar : LibGio::MenuModel*
     # Property register_session : Bool
+    # Property screensaver_active : Bool
   end
   fun application_new = gtk_application_new(application_id : UInt8*, flags : LibGio::ApplicationFlags) : LibGtk::Application*
   fun application_add_accelerator = gtk_application_add_accelerator(this : Application*, accelerator : UInt8*, action_name : UInt8*, parameter : LibGLib::Variant*) : Void
@@ -1383,6 +1384,7 @@ lib LibGtk
     # Property completion : LibGtk::EntryCompletion*
     # Property cursor_position : Int32
     # Property editable : Bool
+    # Property enable_emoji_completion : Bool
     # Property has_frame : Bool
     # Property im_module : UInt8*
     # Property inner_border : LibGtk::Border
@@ -1614,6 +1616,41 @@ lib LibGtk
   fun event_controller_reset = gtk_event_controller_reset(this : EventController*) : Void
   fun event_controller_set_propagation_phase = gtk_event_controller_set_propagation_phase(this : EventController*, phase : LibGtk::PropagationPhase) : Void
 
+  struct EventControllerKey # object
+    _data : UInt8[0]
+    # Signal focus-in
+    # Signal focus-out
+    # Signal im-update
+    # Signal key-pressed
+    # Signal key-released
+    # Signal modifiers
+  end
+  fun event_controller_key_new = gtk_event_controller_key_new(widget : LibGtk::Widget*) : LibGtk::EventController*
+  fun event_controller_key_forward = gtk_event_controller_key_forward(this : EventControllerKey*, widget : LibGtk::Widget*) : Bool
+  fun event_controller_key_get_group = gtk_event_controller_key_get_group(this : EventControllerKey*) : UInt32
+  fun event_controller_key_get_im_context = gtk_event_controller_key_get_im_context(this : EventControllerKey*) : LibGtk::IMContext*
+  fun event_controller_key_set_im_context = gtk_event_controller_key_set_im_context(this : EventControllerKey*, im_context : LibGtk::IMContext*) : Void
+
+  struct EventControllerMotion # object
+    _data : UInt8[0]
+    # Signal enter
+    # Signal leave
+    # Signal motion
+  end
+  fun event_controller_motion_new = gtk_event_controller_motion_new(widget : LibGtk::Widget*) : LibGtk::EventController*
+
+  struct EventControllerScroll # object
+    _data : UInt8[0]
+    # Signal decelerate
+    # Signal scroll
+    # Signal scroll-begin
+    # Signal scroll-end
+    # Property flags : LibGtk::EventControllerScrollFlags
+  end
+  fun event_controller_scroll_new = gtk_event_controller_scroll_new(widget : LibGtk::Widget*, flags : LibGtk::EventControllerScrollFlags) : LibGtk::EventController*
+  fun event_controller_scroll_get_flags = gtk_event_controller_scroll_get_flags(this : EventControllerScroll*) : LibGtk::EventControllerScrollFlags
+  fun event_controller_scroll_set_flags = gtk_event_controller_scroll_set_flags(this : EventControllerScroll*, flags : LibGtk::EventControllerScrollFlags) : Void
+
   struct Expander # object
     bin : LibGtk::Bin*
     priv : LibGtk::ExpanderPrivate*
@@ -1840,6 +1877,7 @@ lib LibGtk
   struct FontChooserWidget # object
     parent_instance : LibGtk::Box*
     priv : LibGtk::FontChooserWidgetPrivate*
+    # Property tweak_action : LibGio::Action
   end
   fun font_chooser_widget_new = gtk_font_chooser_widget_new() : LibGtk::Widget*
 
@@ -2023,6 +2061,18 @@ lib LibGtk
   fun gesture_single_set_button = gtk_gesture_single_set_button(this : GestureSingle*, button : UInt32) : Void
   fun gesture_single_set_exclusive = gtk_gesture_single_set_exclusive(this : GestureSingle*, exclusive : Bool) : Void
   fun gesture_single_set_touch_only = gtk_gesture_single_set_touch_only(this : GestureSingle*, touch_only : Bool) : Void
+
+  struct GestureStylus # object
+    _data : UInt8[0]
+    # Signal down
+    # Signal motion
+    # Signal proximity
+    # Signal up
+  end
+  fun gesture_stylus_new = gtk_gesture_stylus_new(widget : LibGtk::Widget*) : LibGtk::Gesture*
+  fun gesture_stylus_get_axes = gtk_gesture_stylus_get_axes(this : GestureStylus*, axes : LibGdk::AxisUse*, values : Float64**) : Bool
+  fun gesture_stylus_get_axis = gtk_gesture_stylus_get_axis(this : GestureStylus*, axis : LibGdk::AxisUse, value : Float64*) : Bool
+  fun gesture_stylus_get_device_tool = gtk_gesture_stylus_get_device_tool(this : GestureStylus*) : LibGdk::DeviceTool*
 
   struct GestureSwipe # object
     _data : UInt8[0]
@@ -3029,6 +3079,7 @@ lib LibGtk
     # Property menu_name : UInt8*
     # Property role : LibGtk::ButtonRole
     # Property text : UInt8*
+    # Property use_markup : Bool
   end
   fun model_button_new = gtk_model_button_new() : LibGtk::Widget*
 
@@ -7830,12 +7881,33 @@ lib LibGtk
   end
 
   @[Flags]
+  enum EventControllerScrollFlags : UInt32
+    ZERO_NONE = 0
+    NONE = 0
+    VERTICAL = 1
+    HORIZONTAL = 2
+    DISCRETE = 4
+    KINETIC = 8
+    BOTH_AXES = 3
+  end
+
+  @[Flags]
   enum FileFilterFlags : UInt32
     ZERO_NONE = 0
     FILENAME = 1
     URI = 2
     DISPLAY_NAME = 4
     MIME_TYPE = 8
+  end
+
+  @[Flags]
+  enum FontChooserLevel : UInt32
+    ZERO_NONE = 0
+    FAMILY = 0
+    STYLE = 1
+    SIZE = 2
+    VARIATIONS = 4
+    FEATURES = 8
   end
 
   @[Flags]
@@ -8323,6 +8395,9 @@ lib LibGtk
     # Virtual function set_font_map
     # Property font : UInt8*
     # Property font_desc : LibPango::FontDescription
+    # Property font_features : UInt8*
+    # Property language : UInt8*
+    # Property level : LibGtk::FontChooserLevel
     # Property preview_text : UInt8*
     # Property show_preview_entry : Bool
   end
@@ -8330,14 +8405,19 @@ lib LibGtk
   fun font_chooser_get_font_desc = gtk_font_chooser_get_font_desc(this : FontChooser*) : LibPango::FontDescription*
   fun font_chooser_get_font_face = gtk_font_chooser_get_font_face(this : FontChooser*) : LibPango::FontFace*
   fun font_chooser_get_font_family = gtk_font_chooser_get_font_family(this : FontChooser*) : LibPango::FontFamily*
+  fun font_chooser_get_font_features = gtk_font_chooser_get_font_features(this : FontChooser*) : UInt8*
   fun font_chooser_get_font_map = gtk_font_chooser_get_font_map(this : FontChooser*) : LibPango::FontMap*
   fun font_chooser_get_font_size = gtk_font_chooser_get_font_size(this : FontChooser*) : Int32
+  fun font_chooser_get_language = gtk_font_chooser_get_language(this : FontChooser*) : UInt8*
+  fun font_chooser_get_level = gtk_font_chooser_get_level(this : FontChooser*) : LibGtk::FontChooserLevel
   fun font_chooser_get_preview_text = gtk_font_chooser_get_preview_text(this : FontChooser*) : UInt8*
   fun font_chooser_get_show_preview_entry = gtk_font_chooser_get_show_preview_entry(this : FontChooser*) : Bool
   fun font_chooser_set_filter_func = gtk_font_chooser_set_filter_func(this : FontChooser*, filter : LibGtk::FontFilterFunc, user_data : Void*, destroy : LibGLib::DestroyNotify) : Void
   fun font_chooser_set_font = gtk_font_chooser_set_font(this : FontChooser*, fontname : UInt8*) : Void
   fun font_chooser_set_font_desc = gtk_font_chooser_set_font_desc(this : FontChooser*, font_desc : LibPango::FontDescription*) : Void
   fun font_chooser_set_font_map = gtk_font_chooser_set_font_map(this : FontChooser*, fontmap : LibPango::FontMap*) : Void
+  fun font_chooser_set_language = gtk_font_chooser_set_language(this : FontChooser*, language : UInt8*) : Void
+  fun font_chooser_set_level = gtk_font_chooser_set_level(this : FontChooser*, level : LibGtk::FontChooserLevel) : Void
   fun font_chooser_set_preview_text = gtk_font_chooser_set_preview_text(this : FontChooser*, text : UInt8*) : Void
   fun font_chooser_set_show_preview_entry = gtk_font_chooser_set_show_preview_entry(this : FontChooser*, show_preview_entry : Bool) : Void
 
@@ -9549,16 +9629,16 @@ lib LibGtk
   ##    Constants
   ###########################################
 
-  BINARY_AGE = 2230 # : Int32
+  BINARY_AGE = 2401 # : Int32
   INPUT_ERROR = -1 # : Int32
-  INTERFACE_AGE = 30 # : Int32
+  INTERFACE_AGE = 1 # : Int32
   LEVEL_BAR_OFFSET_FULL = "full" # : UInt8*
   LEVEL_BAR_OFFSET_HIGH = "high" # : UInt8*
   LEVEL_BAR_OFFSET_LOW = "low" # : UInt8*
   MAJOR_VERSION = 3 # : Int32
   MAX_COMPOSE_LEN = 7 # : Int32
-  MICRO_VERSION = 30 # : Int32
-  MINOR_VERSION = 22 # : Int32
+  MICRO_VERSION = 1 # : Int32
+  MINOR_VERSION = 24 # : Int32
   PAPER_NAME_A3 = "iso_a3" # : UInt8*
   PAPER_NAME_A4 = "iso_a4" # : UInt8*
   PAPER_NAME_A5 = "iso_a5" # : UInt8*

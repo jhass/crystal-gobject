@@ -44,7 +44,7 @@ module Gtk
     end
 
     def last_event(sequence)
-      __return_value = LibGtk.gesture_get_last_event(@pointer.as(LibGtk::Gesture*), sequence.to_unsafe.as(LibGdk::EventSequence*))
+      __return_value = LibGtk.gesture_get_last_event(@pointer.as(LibGtk::Gesture*), sequence ? sequence.to_unsafe.as(LibGdk::EventSequence*) : nil)
       Gdk::Event.new(__return_value) if __return_value
     end
 

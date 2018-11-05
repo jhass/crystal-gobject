@@ -512,6 +512,11 @@ module Gdk
       nil
     end
 
+    def move_to_rect(rect, rect_anchor : Gdk::Gravity, window_anchor : Gdk::Gravity, anchor_hints : Gdk::AnchorHints, rect_anchor_dx, rect_anchor_dy)
+      LibGdk.window_move_to_rect(@pointer.as(LibGdk::Window*), rect.to_unsafe.as(LibGdk::Rectangle*), rect_anchor, window_anchor, anchor_hints, Int32.new(rect_anchor_dx), Int32.new(rect_anchor_dy))
+      nil
+    end
+
     def peek_children
       __return_value = LibGdk.window_peek_children(@pointer.as(LibGdk::Window*))
       GLib::ListIterator(Gdk::Window, LibGdk::Window**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))

@@ -14,7 +14,7 @@ module Gio
 
     def accepted_cas
       __return_value = LibGio.tls_client_connection_get_accepted_cas(@pointer.as(LibGio::TlsClientConnection*))
-      GLib::ListIterator(Array(Void*), Void**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+      GLib::ListIterator(Array(UInt8), Void**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def server_identity

@@ -166,6 +166,11 @@ module GLib
       __return_value
     end
 
+    def timezone
+      __return_value = LibGLib.date_time_get_timezone(@pointer.as(LibGLib::DateTime*))
+      GLib::TimeZone.new(__return_value)
+    end
+
     def timezone_abbreviation
       __return_value = LibGLib.date_time_get_timezone_abbreviation(@pointer.as(LibGLib::DateTime*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))

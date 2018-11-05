@@ -15,6 +15,12 @@ module Gtk
     # Implements Buildable
     # Implements FontChooser
     # Implements Orientable
+    def tweak_action
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "tweak_action", gvalue)
+      gvalue
+    end
+
     def self.new : self
       __return_value = LibGtk.font_chooser_widget_new
       cast Gtk::Widget.new(__return_value)

@@ -61,7 +61,7 @@ module Gio
 
     def identifier(kind)
       __return_value = LibGio.drive_get_identifier(@pointer.as(LibGio::Drive*), kind.to_unsafe)
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def name
@@ -71,7 +71,7 @@ module Gio
 
     def sort_key
       __return_value = LibGio.drive_get_sort_key(@pointer.as(LibGio::Drive*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def start_stop_type

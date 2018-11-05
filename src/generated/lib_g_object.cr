@@ -41,7 +41,6 @@ lib LibGObject
     # Virtual function notify
     # Virtual function set_property
   end
-  fun object_new = g_object_new_with_properties(object_type : UInt64, n_properties : UInt32, names : UInt8**, values : LibGObject::Value*) : LibGObject::Object*
   fun object_newv = g_object_newv(object_type : UInt64, n_parameters : UInt32, parameters : LibGObject::Parameter*) : LibGObject::Object*
   fun object_compat_control = g_object_compat_control(what : UInt64, data : Void*) : UInt64
   fun object_interface_find_property = g_object_interface_find_property(g_iface : LibGObject::TypeInterface*, property_name : UInt8*) : LibGObject::ParamSpec*

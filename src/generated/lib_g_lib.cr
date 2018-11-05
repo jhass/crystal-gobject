@@ -1,5 +1,5 @@
-@[Link("glib-2.0")]
 @[Link("gobject-2.0")]
+@[Link("glib-2.0")]
 lib LibGLib
 
   ###########################################
@@ -40,7 +40,6 @@ lib LibGLib
   HAVE_GINT64 = 1 # : Int32
   HAVE_GNUC_VARARGS = 1 # : Int32
   HAVE_GNUC_VISIBILITY = 1 # : Int32
-  HAVE_GROWING_STACK = 0 # : Int32
   HAVE_ISO_VARARGS = 1 # : Int32
   HOOK_FLAG_USER_SHIFT = 4 # : Int32
   IEEE754_DOUBLE_BIAS = 1023 # : Int32
@@ -86,12 +85,12 @@ lib LibGLib
   MAXUINT32 = 4294967295_u32 # : UInt32
   MAXUINT64 = 18446744073709551615_u64 # : UInt64
   MAXUINT8 = 255_u8 # : UInt8
-  MICRO_VERSION = 1 # : Int32
+  MICRO_VERSION = 0 # : Int32
   MININT16 = -32768_i16 # : Int16
   MININT32 = -2147483648 # : Int32
   MININT64 = -9223372036854775808_i64 # : Int64
   MININT8 = -128_i8 # : Int8
-  MINOR_VERSION = 56 # : Int32
+  MINOR_VERSION = 58 # : Int32
   MODULE_SUFFIX = "so" # : UInt8*
   OPTION_REMAINING = "" # : UInt8*
   PDP_ENDIAN = 3412 # : Int32
@@ -355,6 +354,7 @@ lib LibGLib
   fun date_time_get_month = g_date_time_get_month(this : DateTime*) : Int32
   fun date_time_get_second = g_date_time_get_second(this : DateTime*) : Int32
   fun date_time_get_seconds = g_date_time_get_seconds(this : DateTime*) : Float64
+  fun date_time_get_timezone = g_date_time_get_timezone(this : DateTime*) : LibGLib::TimeZone*
   fun date_time_get_timezone_abbreviation = g_date_time_get_timezone_abbreviation(this : DateTime*) : UInt8*
   fun date_time_get_utc_offset = g_date_time_get_utc_offset(this : DateTime*) : Int64
   fun date_time_get_week_numbering_year = g_date_time_get_week_numbering_year(this : DateTime*) : Int32
@@ -411,6 +411,7 @@ lib LibGLib
   fun hash_table_size = g_hash_table_size(hash_table : Void**) : UInt32
   fun hash_table_steal = g_hash_table_steal(hash_table : Void**, key : Void*) : Bool
   fun hash_table_steal_all = g_hash_table_steal_all(hash_table : Void**) : Void
+  fun hash_table_steal_extended = g_hash_table_steal_extended(hash_table : Void**, lookup_key : Void*, stolen_key : Void**, stolen_value : Void**) : Bool
   fun hash_table_unref = g_hash_table_unref(hash_table : Void**) : Void
 
   struct HashTableIter # struct
@@ -1186,10 +1187,12 @@ lib LibGLib
   end
   fun time_zone_new = g_time_zone_new(identifier : UInt8*) : LibGLib::TimeZone*
   fun time_zone_new_local = g_time_zone_new_local() : LibGLib::TimeZone*
+  fun time_zone_new_offset = g_time_zone_new_offset(seconds : Int32) : LibGLib::TimeZone*
   fun time_zone_new_utc = g_time_zone_new_utc() : LibGLib::TimeZone*
   fun time_zone_adjust_time = g_time_zone_adjust_time(this : TimeZone*, type : LibGLib::TimeType, time : Int64*) : Int32
   fun time_zone_find_interval = g_time_zone_find_interval(this : TimeZone*, type : LibGLib::TimeType, time : Int64) : Int32
   fun time_zone_get_abbreviation = g_time_zone_get_abbreviation(this : TimeZone*, interval : Int32) : UInt8*
+  fun time_zone_get_identifier = g_time_zone_get_identifier(this : TimeZone*) : UInt8*
   fun time_zone_get_offset = g_time_zone_get_offset(this : TimeZone*, interval : Int32) : Int32
   fun time_zone_is_dst = g_time_zone_is_dst(this : TimeZone*, interval : Int32) : Bool
   fun time_zone_ref = g_time_zone_ref(this : TimeZone*) : LibGLib::TimeZone*
@@ -2174,6 +2177,13 @@ lib LibGLib
     NUSHU = 139
     SOYOMBO = 140
     ZANABAZAR_SQUARE = 141
+    DOGRA = 142
+    GUNJALA_GONDI = 143
+    HANIFI_ROHINGYA = 144
+    MAKASAR = 145
+    MEDEFAIDRIN = 146
+    OLD_SOGDIAN = 147
+    SOGDIAN = 148
   end
 
   enum UnicodeType : UInt32
@@ -2348,6 +2358,13 @@ lib LibGLib
   fun atomic_pointer_or = g_atomic_pointer_or(atomic : Void*, val : UInt64) : UInt64
   fun atomic_pointer_set = g_atomic_pointer_set(atomic : Void*, newval : Void*) : Void
   fun atomic_pointer_xor = g_atomic_pointer_xor(atomic : Void*, val : UInt64) : UInt64
+  fun atomic_rc_box_acquire = g_atomic_rc_box_acquire(mem_block : Void*) : Void*
+  fun atomic_rc_box_alloc = g_atomic_rc_box_alloc(block_size : UInt64) : Void*
+  fun atomic_rc_box_alloc0 = g_atomic_rc_box_alloc0(block_size : UInt64) : Void*
+  fun atomic_rc_box_dup = g_atomic_rc_box_dup(block_size : UInt64, mem_block : Void*) : Void*
+  fun atomic_rc_box_get_size = g_atomic_rc_box_get_size(mem_block : Void*) : UInt64
+  fun atomic_rc_box_release = g_atomic_rc_box_release(mem_block : Void*) : Void
+  fun atomic_rc_box_release_full = g_atomic_rc_box_release_full(mem_block : Void*, clear_func : LibGLib::DestroyNotify) : Void
   fun base64_decode = g_base64_decode(text : UInt8*, out_len : UInt64*) : UInt8*
   fun base64_decode_inplace = g_base64_decode_inplace(text : UInt8**, out_len : UInt64*) : UInt8*
   fun base64_encode = g_base64_encode(data : UInt8*, len : UInt64) : UInt8*
@@ -2368,6 +2385,7 @@ lib LibGLib
   fun byte_array_new = g_byte_array_new() : Void*
   fun byte_array_new_take = g_byte_array_new_take(data : UInt8*, len : UInt64) : Void*
   fun byte_array_unref = g_byte_array_unref(array : Void*) : Void
+  fun canonicalize_filename = g_canonicalize_filename(filename : UInt8*, relative_to : UInt8*) : UInt8*
   fun chdir = g_chdir(path : UInt8*) : Int32
   fun check_version = glib_check_version(required_major : UInt32, required_minor : UInt32, required_micro : UInt32) : UInt8*
   fun checksum_type_get_length = g_checksum_type_get_length(checksum_type : LibGLib::ChecksumType) : Int64
@@ -2444,10 +2462,11 @@ lib LibGLib
   fun get_current_dir = g_get_current_dir() : UInt8*
   fun get_current_time = g_get_current_time(result : LibGLib::TimeVal*) : Void
   fun get_environ = g_get_environ() : UInt8**
-  fun get_filename_charsets = g_get_filename_charsets(charsets : UInt8*) : Bool
+  fun get_filename_charsets = g_get_filename_charsets(filename_charsets : UInt8***) : Bool
   fun get_home_dir = g_get_home_dir() : UInt8*
   fun get_host_name = g_get_host_name() : UInt8*
   fun get_language_names = g_get_language_names() : UInt8**
+  fun get_language_names_with_category = g_get_language_names_with_category(category_name : UInt8*) : UInt8**
   fun get_locale_variants = g_get_locale_variants(locale : UInt8*) : UInt8**
   fun get_monotonic_time = g_get_monotonic_time() : Int64
   fun get_num_processors = g_get_num_processors() : UInt32
@@ -2476,6 +2495,7 @@ lib LibGLib
   fun hash_table_size = g_hash_table_size(hash_table : Void**) : UInt32
   fun hash_table_steal = g_hash_table_steal(hash_table : Void**, key : Void*) : Bool
   fun hash_table_steal_all = g_hash_table_steal_all(hash_table : Void**) : Void
+  fun hash_table_steal_extended = g_hash_table_steal_extended(hash_table : Void**, lookup_key : Void*, stolen_key : Void**, stolen_value : Void**) : Bool
   fun hash_table_unref = g_hash_table_unref(hash_table : Void**) : Void
   fun hook_destroy = g_hook_destroy(hook_list : LibGLib::HookList*, hook_id : UInt64) : Bool
   fun hook_destroy_link = g_hook_destroy_link(hook_list : LibGLib::HookList*, hook : LibGLib::Hook*) : Void
@@ -2564,8 +2584,21 @@ lib LibGLib
   fun random_int = g_random_int() : UInt32
   fun random_int_range = g_random_int_range(_begin : Int32, _end : Int32) : Int32
   fun random_set_seed = g_random_set_seed(seed : UInt32) : Void
+  fun rc_box_acquire = g_rc_box_acquire(mem_block : Void*) : Void*
+  fun rc_box_alloc = g_rc_box_alloc(block_size : UInt64) : Void*
+  fun rc_box_alloc0 = g_rc_box_alloc0(block_size : UInt64) : Void*
+  fun rc_box_dup = g_rc_box_dup(block_size : UInt64, mem_block : Void*) : Void*
+  fun rc_box_get_size = g_rc_box_get_size(mem_block : Void*) : UInt64
+  fun rc_box_release = g_rc_box_release(mem_block : Void*) : Void
+  fun rc_box_release_full = g_rc_box_release_full(mem_block : Void*, clear_func : LibGLib::DestroyNotify) : Void
   fun realloc = g_realloc(mem : Void*, n_bytes : UInt64) : Void*
   fun realloc_n = g_realloc_n(mem : Void*, n_blocks : UInt64, n_block_bytes : UInt64) : Void*
+  fun ref_string_acquire = g_ref_string_acquire(str : UInt8*) : UInt8*
+  fun ref_string_length = g_ref_string_length(str : UInt8*) : UInt64
+  fun ref_string_new = g_ref_string_new(str : UInt8*) : UInt8*
+  fun ref_string_new_intern = g_ref_string_new_intern(str : UInt8*) : UInt8*
+  fun ref_string_new_len = g_ref_string_new_len(str : UInt8*, len : Int64) : UInt8*
+  fun ref_string_release = g_ref_string_release(str : UInt8*) : Void
   fun regex_check_replacement = g_regex_check_replacement(replacement : UInt8*, has_references : Bool*, error : LibGLib::Error**) : Bool
   fun regex_error_quark = g_regex_error_quark() : UInt32
   fun regex_escape_nul = g_regex_escape_nul(string : UInt8*, length : Int32) : UInt8*
@@ -2605,6 +2638,7 @@ lib LibGLib
   fun source_set_name_by_id = g_source_set_name_by_id(tag : UInt32, name : UInt8*) : Void
   fun spaced_primes_closest = g_spaced_primes_closest(num : UInt32) : UInt32
   fun spawn_async = g_spawn_async(working_directory : UInt8*, argv : UInt8**, envp : UInt8**, flags : LibGLib::SpawnFlags, child_setup : LibGLib::SpawnChildSetupFunc, user_data : Void*, child_pid : Int32*, error : LibGLib::Error**) : Bool
+  fun spawn_async_with_fds = g_spawn_async_with_fds(working_directory : UInt8*, argv : UInt8**, envp : UInt8**, flags : LibGLib::SpawnFlags, child_setup : LibGLib::SpawnChildSetupFunc, user_data : Void*, child_pid : Int32*, stdin_fd : Int32, stdout_fd : Int32, stderr_fd : Int32, error : LibGLib::Error**) : Bool
   fun spawn_async_with_pipes = g_spawn_async_with_pipes(working_directory : UInt8*, argv : UInt8**, envp : UInt8**, flags : LibGLib::SpawnFlags, child_setup : LibGLib::SpawnChildSetupFunc, user_data : Void*, child_pid : Int32*, standard_input : Int32*, standard_output : Int32*, standard_error : Int32*, error : LibGLib::Error**) : Bool
   fun spawn_check_exit_status = g_spawn_check_exit_status(exit_status : Int32, error : LibGLib::Error**) : Bool
   fun spawn_close_pid = g_spawn_close_pid(pid : Int32) : Void

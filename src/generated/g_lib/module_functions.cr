@@ -193,6 +193,41 @@ module GLib
     __return_value
   end
 
+  def self.atomic_rc_box_acquire(mem_block)
+    LibGLib.atomic_rc_box_acquire(mem_block)
+    nil
+  end
+
+  def self.atomic_rc_box_alloc(block_size)
+    LibGLib.atomic_rc_box_alloc(UInt64.new(block_size))
+    nil
+  end
+
+  def self.atomic_rc_box_alloc0(block_size)
+    LibGLib.atomic_rc_box_alloc0(UInt64.new(block_size))
+    nil
+  end
+
+  def self.atomic_rc_box_dup(block_size, mem_block)
+    LibGLib.atomic_rc_box_dup(UInt64.new(block_size), mem_block)
+    nil
+  end
+
+  def self.atomic_rc_box_get_size(mem_block)
+    __return_value = LibGLib.atomic_rc_box_get_size(mem_block)
+    __return_value
+  end
+
+  def self.atomic_rc_box_release(mem_block)
+    LibGLib.atomic_rc_box_release(mem_block)
+    nil
+  end
+
+  def self.atomic_rc_box_release_full(mem_block, clear_func)
+    LibGLib.atomic_rc_box_release_full(mem_block, clear_func)
+    nil
+  end
+
   def self.base64_decode(text, out_len)
     __return_value = LibGLib.base64_decode(text.to_unsafe, out_len)
     PointerIterator.new(__return_value) {|__item| __item }
@@ -291,6 +326,11 @@ module GLib
   def self.byte_array_unref(array)
     LibGLib.byte_array_unref(array)
     nil
+  end
+
+  def self.canonicalize_filename(filename, relative_to)
+    __return_value = LibGLib.canonicalize_filename(filename.to_unsafe, relative_to ? relative_to.to_unsafe : nil)
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.chdir(path)
@@ -699,8 +739,8 @@ module GLib
     PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
   end
 
-  def self.filename_charsets(charsets)
-    __return_value = LibGLib.get_filename_charsets(charsets.to_unsafe)
+  def self.filename_charsets(filename_charsets)
+    __return_value = LibGLib.get_filename_charsets(filename_charsets)
     __return_value
   end
 
@@ -716,6 +756,11 @@ module GLib
 
   def self.language_names
     __return_value = LibGLib.get_language_names
+    PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
+  end
+
+  def self.language_names_with_category(category_name)
+    __return_value = LibGLib.get_language_names_with_category(category_name.to_unsafe)
     PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
   end
 
@@ -857,6 +902,11 @@ module GLib
   def self.hash_table_steal_all(hash_table)
     LibGLib.hash_table_steal_all(hash_table)
     nil
+  end
+
+  def self.hash_table_steal_extended(hash_table, lookup_key, stolen_key, stolen_value)
+    __return_value = LibGLib.hash_table_steal_extended(hash_table, lookup_key ? lookup_key : nil, stolen_key, stolen_value)
+    __return_value
   end
 
   def self.hash_table_unref(hash_table)
@@ -1303,6 +1353,41 @@ module GLib
     nil
   end
 
+  def self.rc_box_acquire(mem_block)
+    LibGLib.rc_box_acquire(mem_block)
+    nil
+  end
+
+  def self.rc_box_alloc(block_size)
+    LibGLib.rc_box_alloc(UInt64.new(block_size))
+    nil
+  end
+
+  def self.rc_box_alloc0(block_size)
+    LibGLib.rc_box_alloc0(UInt64.new(block_size))
+    nil
+  end
+
+  def self.rc_box_dup(block_size, mem_block)
+    LibGLib.rc_box_dup(UInt64.new(block_size), mem_block)
+    nil
+  end
+
+  def self.rc_box_get_size(mem_block)
+    __return_value = LibGLib.rc_box_get_size(mem_block)
+    __return_value
+  end
+
+  def self.rc_box_release(mem_block)
+    LibGLib.rc_box_release(mem_block)
+    nil
+  end
+
+  def self.rc_box_release_full(mem_block, clear_func)
+    LibGLib.rc_box_release_full(mem_block, clear_func)
+    nil
+  end
+
   def self.realloc(mem, n_bytes)
     LibGLib.realloc(mem ? mem : nil, UInt64.new(n_bytes))
     nil
@@ -1310,6 +1395,36 @@ module GLib
 
   def self.realloc_n(mem, n_blocks, n_block_bytes)
     LibGLib.realloc_n(mem ? mem : nil, UInt64.new(n_blocks), UInt64.new(n_block_bytes))
+    nil
+  end
+
+  def self.ref_string_acquire(str)
+    __return_value = LibGLib.ref_string_acquire(str.to_unsafe)
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+  end
+
+  def self.ref_string_length(str)
+    __return_value = LibGLib.ref_string_length(str.to_unsafe)
+    __return_value
+  end
+
+  def self.ref_string_new(str)
+    __return_value = LibGLib.ref_string_new(str.to_unsafe)
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+  end
+
+  def self.ref_string_new_intern(str)
+    __return_value = LibGLib.ref_string_new_intern(str.to_unsafe)
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+  end
+
+  def self.ref_string_new_len(str, len)
+    __return_value = LibGLib.ref_string_new_len(str.to_unsafe, Int64.new(len))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+  end
+
+  def self.ref_string_release(str)
+    LibGLib.ref_string_release(str.to_unsafe)
     nil
   end
 
@@ -1512,6 +1627,13 @@ module GLib
   def self.spawn_async(working_directory, argv, envp, flags : GLib::SpawnFlags, child_setup, user_data, child_pid)
     __error = Pointer(LibGLib::Error).null
     __return_value = LibGLib.spawn_async(working_directory ? working_directory.to_unsafe : nil, argv, envp ? envp : nil, flags, child_setup ? child_setup : nil, user_data ? user_data : nil, child_pid, pointerof(__error))
+    GLib::Error.assert __error
+    __return_value
+  end
+
+  def self.spawn_async_with_fds(working_directory, argv, envp, flags : GLib::SpawnFlags, child_setup, user_data, child_pid, stdin_fd, stdout_fd, stderr_fd)
+    __error = Pointer(LibGLib::Error).null
+    __return_value = LibGLib.spawn_async_with_fds(working_directory ? working_directory.to_unsafe : nil, argv, envp ? envp : nil, flags, child_setup ? child_setup : nil, user_data ? user_data : nil, child_pid, Int32.new(stdin_fd), Int32.new(stdout_fd), Int32.new(stderr_fd), pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end

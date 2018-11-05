@@ -46,7 +46,7 @@ module Gio
 
     def drive
       __return_value = LibGio.volume_get_drive(@pointer.as(LibGio::Volume*))
-      __return_value
+      __return_value if __return_value
     end
 
     def icon
@@ -56,12 +56,12 @@ module Gio
 
     def identifier(kind)
       __return_value = LibGio.volume_get_identifier(@pointer.as(LibGio::Volume*), kind.to_unsafe)
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def mount
       __return_value = LibGio.volume_get_mount(@pointer.as(LibGio::Volume*))
-      __return_value
+      __return_value if __return_value
     end
 
     def name
@@ -71,7 +71,7 @@ module Gio
 
     def sort_key
       __return_value = LibGio.volume_get_sort_key(@pointer.as(LibGio::Volume*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def symbolic_icon
@@ -81,7 +81,7 @@ module Gio
 
     def uuid
       __return_value = LibGio.volume_get_uuid(@pointer.as(LibGio::Volume*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def mount(flags : Gio::MountMountFlags, mount_operation, cancellable, callback, user_data)

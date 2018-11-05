@@ -57,6 +57,12 @@ module Gtk
       gvalue.boolean
     end
 
+    def enable_emoji_completion
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "enable_emoji_completion", gvalue)
+      gvalue.boolean
+    end
+
     def has_frame
       gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
       LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "has_frame", gvalue)
