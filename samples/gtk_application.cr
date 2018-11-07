@@ -1,6 +1,6 @@
 require "../src/gtk"
 
-application = Gtk::Application.new("org.crystal.sample", Gio::ApplicationFlags::FLAGS_NONE)
+application = Gtk::Application.new("org.crystal.sample", :flags_none)
 
 application.on_activate do
   window = Gtk::ApplicationWindow.new(application)
@@ -11,4 +11,4 @@ application.on_activate do
   window.show_all
 end
 
-application.run(ARGC_UNSAFE, ARGV_UNSAFE)
+application.run

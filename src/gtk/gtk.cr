@@ -67,4 +67,10 @@ module Gtk
       load_from_data(string, string.bytesize)
     end
   end
+
+  class Application
+    def run
+      run ARGC_UNSAFE, ARGV_UNSAFE
+    end
+  end
 end
