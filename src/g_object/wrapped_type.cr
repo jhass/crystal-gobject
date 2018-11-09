@@ -1,5 +1,14 @@
 module GObject
   module WrappedType
+    def construct()
+    end
+
+    macro construct(&b)
+      def construct
+        {{b.body}}
+      end
+    end
+  
     macro def_cast(libtype)
       {% if libtype.resolve? %}
         def self.cast(object) : self
