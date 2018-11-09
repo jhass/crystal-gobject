@@ -22,6 +22,7 @@ module GObject
     BOXED     =  18
     PARAM     =  19
     OBJECT    =  20
+    UTF8      =  16
 
     def fundamental
       value.to_u64 << 2
