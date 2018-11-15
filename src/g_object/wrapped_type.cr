@@ -19,7 +19,11 @@ module GObject
               return ins.as(self)
             end
           end
-          new(object.void_pointer.as({{libtype}}*)).as(self)
+          
+          ins = new(object.void_pointer.as({{libtype}}*)).as(self)
+          ins.set_wrapped
+          ins.instantiate
+          ins
         end
 
        def self.cast(ptr : Pointer({{libtype}}))
