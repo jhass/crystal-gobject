@@ -74,3 +74,23 @@ module Gtk
     end
   end
 end
+
+class Gtk::Container
+  def children
+    a = [] of Gtk::Widget
+
+    foreach(-> (c : LibGtk::Widget*, d : Void*) {
+      d.as(Array(Gtk::Widget)*).value << Gtk::Widget.cast(c)
+      nil
+    }, pointerof(a).as(Void*))
+
+    a
+  end
+
+  def foreach(&cb : Gtk::Widget -> _)
+    foreach(-> (c : LibGtk::Widget*, d : Void*) {
+      Proc(Gtk::Widget, Nil).new(d, Pointer(Void).null).call Gtk::Widget.cast(c)
+      nil
+    }, cb.pointer)
+  end  
+end
