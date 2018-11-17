@@ -17,13 +17,12 @@ module GObject
     FLAGS     =  13
     FLOAT     =  14
     DOUBLE    =  15
-    STRING    =  16
+    UTF8      =  16
     POINTER   =  17
     BOXED     =  18
     PARAM     =  19
     OBJECT    =  20
-    UTF8      =  16
-
+    
     def fundamental
       value.to_u64 << 2
     end

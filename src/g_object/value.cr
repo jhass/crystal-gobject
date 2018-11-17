@@ -3,7 +3,7 @@ require "./type"
 module GObject
   class Value
     def self.new(string : String)
-      new(Type::STRING).tap &.string=(string)
+      new(Type::UTF8).tap &.string=(string)
     end
 
     def initialize(type : Type)
@@ -21,7 +21,7 @@ module GObject
     end
 
     def holds_string?
-      type == Type::STRING
+      type == Type::UTF8
     end
 
     def finalize
@@ -37,7 +37,7 @@ class String
   end
 
   def self.new_gvalue
-    GObject::Value.new GObject::Type::STRING
+    GObject::Value.new GObject::Type::UTF8
   end
 
   def to_gvalue
