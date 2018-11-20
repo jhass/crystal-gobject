@@ -335,5 +335,7 @@ lib LibCairo
   ###########################################
 
   fun image_surface_create = cairo_image_surface_create(format : LibCairo::Format, width : Int32 , height : Int32 ) : LibCairo::Surface*
+  fun pdf_surface_create = cairo_pdf_surface_create(filename : UInt8* , width : Float64 , height : Float64 ) : LibCairo::Surface* 
+  fun svg_surface_create = cairo_svg_surface_create(filename : UInt8* , width : Float64 , height : Float64 ) : LibCairo::Surface* 
 end
 
