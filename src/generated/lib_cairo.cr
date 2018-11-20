@@ -8,6 +8,14 @@ lib LibCairo
   struct Context # struct
     _data : UInt8[0]
   end
+  fun create = cairo_create(target : LibCairo::Surface*) : LibCairo::Context*
+  fun destroy = cairo_destroy(this : LibCairo::Context*)
+  fun set_source_rgb = cairo_set_source_rgb(cr : LibCairo::Context* , red : Float64 , green : Float64 , blue : Float64) : Void 
+  fun set_source_rgba = cairo_set_source_rgba(cr : LibCairo::Context* , red : Float64 , green : Float64 , blue : Float64 , alfa : Float64) : Void 
+  fun select_font_face = cairo_select_font_face(cr : LibCairo::Context* , family : UInt8* , slant : LibCairo::FontSlant , weight : LibCairo::FontWeight) : Void
+  fun set_font_size = cairo_set_font_size(cr : LibCairo::Context* , size : Float64) : Void   
+  fun show_text = cairo_show_text(cr : LibCairo::Context* , text : UInt8*) : Void  
+  fun move_to = cairo_move_to(cr : LibCairo::Context* , x : Float64 , y : Float64) : Void
 
   struct Device # struct
     _data : UInt8[0]
@@ -16,6 +24,8 @@ lib LibCairo
   struct Surface # struct
     _data : UInt8[0]
   end
+  fun surface_destroy = cairo_surface_destroy(this : LibCairo::Surface*) : Void 
+  fun surface_write_to_png = cairo_surface_write_to_png(surface : LibCairo::Surface* , filename : UInt8*) : UInt32
 
   struct Matrix # struct
     _data : UInt8[0]
@@ -324,6 +334,6 @@ lib LibCairo
   ##    Functions
   ###########################################
 
-  fun image_surface_create = cairo_image_surface_create() : Void
+  fun image_surface_create = cairo_image_surface_create(format : LibCairo::Format, width : Int32 , height : Int32 ) : LibCairo::Surface*
 end
 
