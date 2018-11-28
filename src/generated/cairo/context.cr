@@ -3,6 +3,7 @@ module Cairo
     include GObject::WrappedType
 
     @pointer : Void*
+    
     def initialize(pointer : LibCairo::Context*)
       @pointer = pointer.as(Void*)
     end
@@ -45,10 +46,50 @@ module Cairo
       nil
     end
 
+ def show_page()
+      LibCairo.show_page(@pointer.as(LibCairo::Context*))
+      nil
+    end
+
     def move_to(x , y)
       LibCairo.move_to(@pointer.as(LibCairo::Context*) , Float64.new(x) , Float64.new(y))
       nil
     end
+
+    def line_to(x , y)
+      LibCairo.line_to(@pointer.as(LibCairo::Context*) , Float64.new(x) , Float64.new(y))
+      nil
+    end
+
+    def set_line_width(width)
+      LibCairo.set_line_width(@pointer.as(LibCairo::Context*) , Float64.new(width))
+      nil
+    end
+  
+    def fill()
+      LibCairo.fill(@pointer.as(LibCairo::Context*))
+      nil
+    end
+
+    def stroke()
+      LibCairo.stroke(@pointer.as(LibCairo::Context*))
+      nil
+    end
+
+    def stroke_preserve()
+      LibCairo.stroke_preserve(@pointer.as(LibCairo::Context*))
+      nil
+    end
+
+    def translate(x , y)
+      LibCairo.translate(@pointer.as(LibCairo::Context*) , Float64.new(x) , Float64.new(y))
+      nil
+    end
+   
+   def arc(x , y , radius , angle1 , angle2)
+     LibCairo.arc(@pointer.as(LibCairo::Context*) , Float64.new(x) , Float64.new(y) , Float64.new(radius) , Float64.new(angle1) , Float64.new(angle2))
+     nil
+   end 
 
   end
 end

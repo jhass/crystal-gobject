@@ -16,6 +16,14 @@ lib LibCairo
   fun set_font_size = cairo_set_font_size(cr : LibCairo::Context* , size : Float64) : Void   
   fun show_text = cairo_show_text(cr : LibCairo::Context* , text : UInt8*) : Void  
   fun move_to = cairo_move_to(cr : LibCairo::Context* , x : Float64 , y : Float64) : Void
+  fun show_page = cairo_show_page(cr : LibCairo::Context*) : Void
+  fun line_to = cairo_line_to(cr : LibCairo::Context* , x : Float64 , y : Float64) : Void
+  fun set_line_width = cairo_set_line_width(cr : LibCairo::Context* , width : Float64) : Void 
+  fun stroke = cairo_stroke(cr : LibCairo::Context* ) : Void 
+  fun translate = cairo_translate(cr : LibCairo::Context* , x : Float64 , y : Float64) : Void 
+  fun arc = cairo_arc(cr : LibCairo::Context* , x : Float64 , y : Float64 , radius : Float64 , angle1 : Float64 , angle2 : Float64) : Void
+  fun stroke_preserve = cairo_stroke_preserve(cr : LibCairo::Context* ) : Void 
+  fun fill = cairo_fill(cr : LibCairo::Context* ) : Void     
 
   struct Device # struct
     _data : UInt8[0]
