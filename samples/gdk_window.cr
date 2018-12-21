@@ -17,8 +17,13 @@ window.events = Gdk::EventMask::ZERO_NONE
 
 window.show
 
+main_loop=GLib::MainLoop.new(nil, true)
+
 Gdk::Event.on_event do |event|
   case event.event_type
+  when Gdk::EventType::DELETE
+    puts "Close window"
+    main_loop.quit
   when .expose?
     puts "Expose count: #{event.expose.count}"
   when .setting?
@@ -28,4 +33,4 @@ Gdk::Event.on_event do |event|
   end
 end
 
-GLib::MainLoop.new(nil, true).run
+main_loop.run
