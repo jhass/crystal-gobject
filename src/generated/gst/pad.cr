@@ -37,17 +37,17 @@ module Gst
 
     def self.new(name, direction : Gst::PadDirection) : self
       __return_value = LibGst.pad_new(name ? name.to_unsafe : nil, direction)
-      cast Gst::Pad.new(__return_value) if __return_value
+      cast Gst::Pad.new(__return_value)
     end
 
     def self.new_from_static_template(templ, name) : self
       __return_value = LibGst.pad_new_from_static_template(templ.to_unsafe.as(LibGst::StaticPadTemplate*), name.to_unsafe)
-      cast Gst::Pad.new(__return_value) if __return_value
+      cast Gst::Pad.new(__return_value)
     end
 
     def self.new_from_template(templ, name) : self
       __return_value = LibGst.pad_new_from_template(templ.to_unsafe.as(LibGst::PadTemplate*), name ? name.to_unsafe : nil)
-      cast Gst::Pad.new(__return_value) if __return_value
+      cast Gst::Pad.new(__return_value)
     end
 
     def self.link_get_name(ret : Gst::PadLinkReturn)

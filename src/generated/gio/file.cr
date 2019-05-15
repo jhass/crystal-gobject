@@ -458,6 +458,18 @@ module Gio
       __return_value
     end
 
+    def query_default_handler_async(io_priority, cancellable, callback, user_data)
+      LibGio.file_query_default_handler_async(@pointer.as(LibGio::File*), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
+    end
+
+    def query_default_handler_finish(result)
+      __error = Pointer(LibGLib::Error).null
+      __return_value = LibGio.file_query_default_handler_finish(@pointer.as(LibGio::File*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
+      GLib::Error.assert __error
+      __return_value
+    end
+
     def query_exists(cancellable)
       __return_value = LibGio.file_query_exists(@pointer.as(LibGio::File*), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil)
       __return_value

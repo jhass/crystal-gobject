@@ -651,7 +651,7 @@ lib LibGObject
   PARAM_USER_SHIFT = 8 # : Int32
   SIGNAL_FLAGS_MASK = 511 # : Int32
   SIGNAL_MATCH_MASK = 63 # : Int32
-  TYPE_FLAG_RESERVED_ID_BIT = 1_u64 # : UInt64
+  TYPE_FLAG_RESERVED_ID_BIT = 1 # : UInt64
   TYPE_FUNDAMENTAL_MAX = 255 # : Int32
   TYPE_FUNDAMENTAL_SHIFT = 2 # : Int32
   TYPE_RESERVED_BSE_FIRST = 32 # : Int32
@@ -659,20 +659,13 @@ lib LibGObject
   TYPE_RESERVED_GLIB_FIRST = 22 # : Int32
   TYPE_RESERVED_GLIB_LAST = 31 # : Int32
   TYPE_RESERVED_USER_FIRST = 49 # : Int32
-  VALUE_COLLECT_FORMAT_MAX_LENGTH = 8 # : Int32
   VALUE_NOCOPY_CONTENTS = 134217728 # : Int32
 
   ###########################################
   ##    Unions
   ###########################################
 
-  union TypeCValue
-    v_int : Int32
-    v_long : Int64
-    v_int64 : Int64
-    v_double : Float64
-    v_pointer : Void*
-  end
+  alias TypeCValue = Void*
 
   union G_Value__data__union
     v_int : Int32

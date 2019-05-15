@@ -29,6 +29,11 @@ module Gst
       cast Gst::Query.new(__return_value)
     end
 
+    def self.new_bitrate : self
+      __return_value = LibGst.query_new_bitrate
+      cast Gst::Query.new(__return_value)
+    end
+
     def self.new_buffering(format : Gst::Format) : self
       __return_value = LibGst.query_new_buffering(format)
       cast Gst::Query.new(__return_value)
@@ -184,6 +189,11 @@ module Gst
       nil
     end
 
+    def parse_bitrate(nominal_bitrate)
+      LibGst.query_parse_bitrate(@pointer.as(LibGst::Query*), nominal_bitrate)
+      nil
+    end
+
     def parse_buffering_percent(busy, percent)
       LibGst.query_parse_buffering_percent(@pointer.as(LibGst::Query*), busy, percent)
       nil
@@ -321,6 +331,11 @@ module Gst
 
     def accept_caps_result=(result)
       LibGst.query_set_accept_caps_result(@pointer.as(LibGst::Query*), result)
+      nil
+    end
+
+    def bitrate=(nominal_bitrate)
+      LibGst.query_set_bitrate(@pointer.as(LibGst::Query*), UInt32.new(nominal_bitrate))
       nil
     end
 

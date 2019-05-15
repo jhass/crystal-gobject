@@ -83,7 +83,7 @@ module Gio
 
     def header(header_field : Gio::DBusMessageHeaderField)
       __return_value = LibGio.d_bus_message_get_header(@pointer.as(LibGio::DBusMessage*), header_field)
-      GLib::Variant.new(__return_value)
+      GLib::Variant.new(__return_value) if __return_value
     end
 
     def header_fields

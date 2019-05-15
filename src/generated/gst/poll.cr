@@ -26,6 +26,11 @@ module Gst
       __return_value
     end
 
+    def fd_ctl_pri(fd, active)
+      __return_value = LibGst.poll_fd_ctl_pri(@pointer.as(LibGst::Poll*), fd.to_unsafe.as(LibGst::PollFD*), active)
+      __return_value
+    end
+
     def fd_ctl_read(fd, active)
       __return_value = LibGst.poll_fd_ctl_read(@pointer.as(LibGst::Poll*), fd.to_unsafe.as(LibGst::PollFD*), active)
       __return_value
@@ -43,6 +48,11 @@ module Gst
 
     def fd_has_error(fd)
       __return_value = LibGst.poll_fd_has_error(@pointer.as(LibGst::Poll*), fd.to_unsafe.as(LibGst::PollFD*))
+      __return_value
+    end
+
+    def fd_has_pri(fd)
+      __return_value = LibGst.poll_fd_has_pri(@pointer.as(LibGst::Poll*), fd.to_unsafe.as(LibGst::PollFD*))
       __return_value
     end
 

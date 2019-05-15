@@ -16,7 +16,7 @@ module Gtk
     end
 
     def action_target_value=(target_value)
-      LibGtk.actionable_set_action_target_value(@pointer.as(LibGtk::Actionable*), target_value.to_unsafe.as(LibGLib::Variant*))
+      LibGtk.actionable_set_action_target_value(@pointer.as(LibGtk::Actionable*), target_value ? target_value.to_unsafe.as(LibGLib::Variant*) : nil)
       nil
     end
 

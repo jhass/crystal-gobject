@@ -142,9 +142,9 @@ module Gio
       __return_value
     end
 
-    def condition_timed_wait(condition : GLib::IOCondition, timeout, cancellable)
+    def condition_timed_wait(condition : GLib::IOCondition, timeout_us, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.socket_condition_timed_wait(@pointer.as(LibGio::Socket*), condition, Int64.new(timeout), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
+      __return_value = LibGio.socket_condition_timed_wait(@pointer.as(LibGio::Socket*), condition, Int64.new(timeout_us), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
@@ -351,6 +351,13 @@ module Gio
     def send_message(address, vectors, num_vectors, messages, num_messages, flags, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.socket_send_message(@pointer.as(LibGio::Socket*), address ? address.to_unsafe.as(LibGio::SocketAddress*) : nil, vectors, Int32.new(num_vectors), messages ? messages : nil, Int32.new(num_messages), Int32.new(flags), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
+      GLib::Error.assert __error
+      __return_value
+    end
+
+    def send_message_with_timeout(address, vectors, num_vectors, messages, num_messages, flags, timeout_us, bytes_written, cancellable)
+      __error = Pointer(LibGLib::Error).null
+      __return_value = LibGio.socket_send_message_with_timeout(@pointer.as(LibGio::Socket*), address ? address.to_unsafe.as(LibGio::SocketAddress*) : nil, vectors, Int32.new(num_vectors), messages ? messages : nil, Int32.new(num_messages), Int32.new(flags), Int64.new(timeout_us), bytes_written, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end

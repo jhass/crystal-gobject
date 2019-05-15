@@ -40,6 +40,7 @@ lib LibGLib
   HAVE_GINT64 = 1 # : Int32
   HAVE_GNUC_VARARGS = 1 # : Int32
   HAVE_GNUC_VISIBILITY = 1 # : Int32
+  HAVE_GROWING_STACK = 0 # : Int32
   HAVE_ISO_VARARGS = 1 # : Int32
   HOOK_FLAG_USER_SHIFT = 4 # : Int32
   IEEE754_DOUBLE_BIAS = 1023 # : Int32
@@ -73,24 +74,24 @@ lib LibGLib
   LN10 = 2.302585 # : Float64
   LN2 = 0.693147 # : Float64
   LOG_2_BASE_10 = 0.30103 # : Float64
-  LOG_DOMAIN = 0_i8 # : Int8
+  LOG_DOMAIN = 0 # : Int8
   LOG_FATAL_MASK = 5 # : Int32
   LOG_LEVEL_USER_SHIFT = 8 # : Int32
   MAJOR_VERSION = 2 # : Int32
-  MAXINT16 = 32767_i16 # : Int16
+  MAXINT16 = 32767 # : Int16
   MAXINT32 = 2147483647 # : Int32
-  MAXINT64 = 9223372036854775807_i64 # : Int64
-  MAXINT8 = 127_i8 # : Int8
-  MAXUINT16 = 65535_u16 # : UInt16
-  MAXUINT32 = 4294967295_u32 # : UInt32
-  MAXUINT64 = 18446744073709551615_u64 # : UInt64
-  MAXUINT8 = 255_u8 # : UInt8
+  MAXINT64 = 9223372036854775807 # : Int64
+  MAXINT8 = 127 # : Int8
+  MAXUINT16 = 65535 # : UInt16
+  MAXUINT32 = 4294967295 # : UInt32
+  MAXUINT64 = 18446744073709551615 # : UInt64
+  MAXUINT8 = 255 # : UInt8
   MICRO_VERSION = 0 # : Int32
-  MININT16 = -32768_i16 # : Int16
+  MININT16 = -32768 # : Int16
   MININT32 = -2147483648 # : Int32
-  MININT64 = -9223372036854775808_i64 # : Int64
-  MININT8 = -128_i8 # : Int8
-  MINOR_VERSION = 58 # : Int32
+  MININT64 = -9223372036854775808 # : Int64
+  MININT8 = -128 # : Int8
+  MINOR_VERSION = 60 # : Int32
   MODULE_SUFFIX = "so" # : UInt8*
   OPTION_REMAINING = "" # : UInt8*
   PDP_ENDIAN = 3412 # : Int32
@@ -120,11 +121,12 @@ lib LibGLib
   SYSDEF_MSG_DONTROUTE = 4 # : Int32
   SYSDEF_MSG_OOB = 1 # : Int32
   SYSDEF_MSG_PEEK = 2 # : Int32
-  TIME_SPAN_DAY = 86400000000_i64 # : Int64
-  TIME_SPAN_HOUR = 3600000000_i64 # : Int64
-  TIME_SPAN_MILLISECOND = 1000_i64 # : Int64
-  TIME_SPAN_MINUTE = 60000000_i64 # : Int64
-  TIME_SPAN_SECOND = 1000000_i64 # : Int64
+  TEST_OPTION_ISOLATE_DIRS = "isolate_dirs" # : UInt8*
+  TIME_SPAN_DAY = 86400000000 # : Int64
+  TIME_SPAN_HOUR = 3600000000 # : Int64
+  TIME_SPAN_MILLISECOND = 1000 # : Int64
+  TIME_SPAN_MINUTE = 60000000 # : Int64
+  TIME_SPAN_SECOND = 1000000 # : Int64
   UNICHAR_MAX_DECOMPOSITION_LENGTH = 18 # : Int32
   URI_RESERVED_CHARS_GENERIC_DELIMITERS = ":/?#[]@" # : UInt8*
   URI_RESERVED_CHARS_SUBCOMPONENT_DELIMITERS = "!$&'()*+,;=" # : UInt8*
@@ -805,6 +807,7 @@ lib LibGLib
     length : UInt32
   end
   fun queue_clear = g_queue_clear(this : Queue*) : Void
+  fun queue_clear_full = g_queue_clear_full(this : Queue*, free_func : LibGLib::DestroyNotify) : Void
   fun queue_free = g_queue_free(this : Queue*) : Void
   fun queue_free_full = g_queue_free_full(this : Queue*, free_func : LibGLib::DestroyNotify) : Void
   fun queue_get_length = g_queue_get_length(this : Queue*) : UInt32
@@ -1134,7 +1137,7 @@ lib LibGLib
     n_strings : UInt32
     strings : UInt8*
     n_nums : UInt32
-    nums : Int64*
+    nums : Void*
   end
   fun test_log_msg_free = g_test_log_msg_free(this : TestLogMsg*) : Void
 
@@ -1366,6 +1369,7 @@ lib LibGLib
   fun variant_type_next = g_variant_type_next(this : VariantType*) : LibGLib::VariantType*
   fun variant_type_value = g_variant_type_value(this : VariantType*) : LibGLib::VariantType*
   fun variant_type_checked_ = g_variant_type_checked_(arg0 : UInt8*) : LibGLib::VariantType*
+  fun variant_type_string_get_depth_ = g_variant_type_string_get_depth_(type_string : UInt8*) : UInt64
   fun variant_type_string_is_valid = g_variant_type_string_is_valid(type_string : UInt8*) : Bool
   fun variant_type_string_scan = g_variant_type_string_scan(string : UInt8*, limit : UInt8*, endptr : UInt8**) : Bool
 
@@ -2365,6 +2369,10 @@ lib LibGLib
   fun atomic_rc_box_get_size = g_atomic_rc_box_get_size(mem_block : Void*) : UInt64
   fun atomic_rc_box_release = g_atomic_rc_box_release(mem_block : Void*) : Void
   fun atomic_rc_box_release_full = g_atomic_rc_box_release_full(mem_block : Void*, clear_func : LibGLib::DestroyNotify) : Void
+  fun atomic_ref_count_compare = g_atomic_ref_count_compare(arc : Int32*, val : Int32) : Bool
+  fun atomic_ref_count_dec = g_atomic_ref_count_dec(arc : Int32*) : Bool
+  fun atomic_ref_count_inc = g_atomic_ref_count_inc(arc : Int32*) : Void
+  fun atomic_ref_count_init = g_atomic_ref_count_init(arc : Int32*) : Void
   fun base64_decode = g_base64_decode(text : UInt8*, out_len : UInt64*) : UInt8*
   fun base64_decode_inplace = g_base64_decode_inplace(text : UInt8**, out_len : UInt64*) : UInt8*
   fun base64_encode = g_base64_encode(data : UInt8*, len : UInt64) : UInt8*
@@ -2593,6 +2601,10 @@ lib LibGLib
   fun rc_box_release_full = g_rc_box_release_full(mem_block : Void*, clear_func : LibGLib::DestroyNotify) : Void
   fun realloc = g_realloc(mem : Void*, n_bytes : UInt64) : Void*
   fun realloc_n = g_realloc_n(mem : Void*, n_blocks : UInt64, n_block_bytes : UInt64) : Void*
+  fun ref_count_compare = g_ref_count_compare(rc : Int32*, val : Int32) : Bool
+  fun ref_count_dec = g_ref_count_dec(rc : Int32*) : Bool
+  fun ref_count_inc = g_ref_count_inc(rc : Int32*) : Void
+  fun ref_count_init = g_ref_count_init(rc : Int32*) : Void
   fun ref_string_acquire = g_ref_string_acquire(str : UInt8*) : UInt8*
   fun ref_string_length = g_ref_string_length(str : UInt8*) : UInt64
   fun ref_string_new = g_ref_string_new(str : UInt8*) : UInt8*
@@ -2686,6 +2698,7 @@ lib LibGLib
   fun strtod = g_strtod(nptr : UInt8*, endptr : UInt8**) : Float64
   fun strup = g_strup(string : UInt8*) : UInt8*
   fun strv_contains = g_strv_contains(strv : UInt8*, str : UInt8*) : Bool
+  fun strv_equal = g_strv_equal(strv1 : UInt8*, strv2 : UInt8*) : Bool
   fun strv_get_type = g_strv_get_type() : UInt64
   fun strv_length = g_strv_length(str_array : UInt8*) : UInt32
   fun test_add_data_func = g_test_add_data_func(testpath : UInt8*, test_data : Void*, test_func : LibGLib::TestDataFunc) : Void
@@ -2824,6 +2837,7 @@ lib LibGLib
   fun utf8_to_ucs4_fast = g_utf8_to_ucs4_fast(str : UInt8*, len : Int64, items_written : Int64*) : UInt8*
   fun utf8_to_utf16 = g_utf8_to_utf16(str : UInt8*, len : Int64, items_read : Int64*, items_written : Int64*, error : LibGLib::Error**) : UInt16*
   fun utf8_validate = g_utf8_validate(str : UInt8*, max_len : Int64, _end : UInt8**) : Bool
+  fun utf8_validate_len = g_utf8_validate_len(str : UInt8*, max_len : UInt64, _end : UInt8**) : Bool
   fun uuid_string_is_valid = g_uuid_string_is_valid(str : UInt8*) : Bool
   fun uuid_string_random = g_uuid_string_random() : UInt8*
   fun variant_get_gtype = g_variant_get_gtype() : UInt64
@@ -2834,6 +2848,7 @@ lib LibGLib
   fun variant_parse_error_quark = g_variant_parse_error_quark() : UInt32
   fun variant_parser_get_error_quark = g_variant_parser_get_error_quark() : UInt32
   fun variant_type_checked_ = g_variant_type_checked_(arg0 : UInt8*) : LibGLib::VariantType*
+  fun variant_type_string_get_depth_ = g_variant_type_string_get_depth_(type_string : UInt8*) : UInt64
   fun variant_type_string_is_valid = g_variant_type_string_is_valid(type_string : UInt8*) : Bool
   fun variant_type_string_scan = g_variant_type_string_scan(string : UInt8*, limit : UInt8*, endptr : UInt8**) : Bool
 

@@ -390,7 +390,7 @@ module Gtk
     end
 
     def to_key_file(key_file, group_name)
-      LibGtk.print_settings_to_key_file(@pointer.as(LibGtk::PrintSettings*), key_file.to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe)
+      LibGtk.print_settings_to_key_file(@pointer.as(LibGtk::PrintSettings*), key_file.to_unsafe.as(LibGLib::KeyFile*), group_name ? group_name.to_unsafe : nil)
       nil
     end
 

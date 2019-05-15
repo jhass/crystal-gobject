@@ -52,6 +52,25 @@ module Gio
       GLib::ListIterator(Gio::InetAddress, LibGio::InetAddress**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
+    def lookup_by_name_with_flags(hostname, flags : Gio::ResolverNameLookupFlags, cancellable)
+      __error = Pointer(LibGLib::Error).null
+      __return_value = LibGio.resolver_lookup_by_name_with_flags(@pointer.as(LibGio::Resolver*), hostname.to_unsafe, flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
+      GLib::Error.assert __error
+      GLib::ListIterator(Gio::InetAddress, LibGio::InetAddress**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+    end
+
+    def lookup_by_name_with_flags_async(hostname, flags : Gio::ResolverNameLookupFlags, cancellable, callback, user_data)
+      LibGio.resolver_lookup_by_name_with_flags_async(@pointer.as(LibGio::Resolver*), hostname.to_unsafe, flags, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
+    end
+
+    def lookup_by_name_with_flags_finish(result)
+      __error = Pointer(LibGLib::Error).null
+      __return_value = LibGio.resolver_lookup_by_name_with_flags_finish(@pointer.as(LibGio::Resolver*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
+      GLib::Error.assert __error
+      GLib::ListIterator(Gio::InetAddress, LibGio::InetAddress**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
+    end
+
     def lookup_records(rrname, record_type : Gio::ResolverRecordType, cancellable)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.resolver_lookup_records(@pointer.as(LibGio::Resolver*), rrname.to_unsafe, record_type, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))

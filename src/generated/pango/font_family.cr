@@ -19,6 +19,11 @@ module Pango
       __return_value
     end
 
+    def variable?
+      __return_value = LibPango.font_family_is_variable(@pointer.as(LibPango::FontFamily*))
+      __return_value
+    end
+
     def list_faces(faces, n_faces)
       LibPango.font_family_list_faces(@pointer.as(LibPango::FontFamily*), faces, n_faces)
       nil

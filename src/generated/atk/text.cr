@@ -95,6 +95,16 @@ module Atk
       __return_value
     end
 
+    def scroll_substring_to(start_offset, end_offset, type : Atk::ScrollType)
+      __return_value = LibAtk.text_scroll_substring_to(@pointer.as(LibAtk::Text*), Int32.new(start_offset), Int32.new(end_offset), type)
+      __return_value
+    end
+
+    def scroll_substring_to_point(start_offset, end_offset, coords : Atk::CoordType, x, y)
+      __return_value = LibAtk.text_scroll_substring_to_point(@pointer.as(LibAtk::Text*), Int32.new(start_offset), Int32.new(end_offset), coords, Int32.new(x), Int32.new(y))
+      __return_value
+    end
+
     def caret_offset=(offset)
       __return_value = LibAtk.text_set_caret_offset(@pointer.as(LibAtk::Text*), Int32.new(offset))
       __return_value

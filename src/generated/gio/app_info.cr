@@ -147,6 +147,18 @@ module Gio
       __return_value
     end
 
+    def launch_uris_async(uris, context, cancellable, callback, user_data)
+      LibGio.app_info_launch_uris_async(@pointer.as(LibGio::AppInfo*), uris ? uris : nil, context ? context.to_unsafe.as(LibGio::AppLaunchContext*) : nil, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
+    end
+
+    def launch_uris_finish(result)
+      __error = Pointer(LibGLib::Error).null
+      __return_value = LibGio.app_info_launch_uris_finish(@pointer.as(LibGio::AppInfo*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
+      GLib::Error.assert __error
+      __return_value
+    end
+
     def remove_supports_type(content_type)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGio.app_info_remove_supports_type(@pointer.as(LibGio::AppInfo*), content_type.to_unsafe, pointerof(__error))

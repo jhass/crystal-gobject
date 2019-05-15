@@ -146,6 +146,11 @@ module GLib
       GLib::VariantType.new(__return_value)
     end
 
+    def self.string_get_depth_(type_string)
+      __return_value = LibGLib.variant_type_string_get_depth_(type_string.to_unsafe)
+      __return_value
+    end
+
     def self.string_is_valid(type_string)
       __return_value = LibGLib.variant_type_string_is_valid(type_string.to_unsafe)
       __return_value

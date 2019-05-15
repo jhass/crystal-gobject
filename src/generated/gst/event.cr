@@ -211,6 +211,11 @@ module Gst
       nil
     end
 
+    def parse_seek_trickmode_interval(interval)
+      LibGst.event_parse_seek_trickmode_interval(@pointer.as(LibGst::Event*), interval)
+      nil
+    end
+
     def parse_segment(segment)
       LibGst.event_parse_segment(@pointer.as(LibGst::Event*), segment)
       nil
@@ -283,6 +288,11 @@ module Gst
 
     def running_time_offset=(offset)
       LibGst.event_set_running_time_offset(@pointer.as(LibGst::Event*), Int64.new(offset))
+      nil
+    end
+
+    def seek_trickmode_interval=(interval)
+      LibGst.event_set_seek_trickmode_interval(@pointer.as(LibGst::Event*), UInt64.new(interval))
       nil
     end
 

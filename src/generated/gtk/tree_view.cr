@@ -483,7 +483,7 @@ module Gtk
     end
 
     def expander_column=(column)
-      LibGtk.tree_view_set_expander_column(@pointer.as(LibGtk::TreeView*), column.to_unsafe.as(LibGtk::TreeViewColumn*))
+      LibGtk.tree_view_set_expander_column(@pointer.as(LibGtk::TreeView*), column ? column.to_unsafe.as(LibGtk::TreeViewColumn*) : nil)
       nil
     end
 

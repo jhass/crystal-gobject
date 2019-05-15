@@ -81,7 +81,7 @@ module Gtk
     end
 
     def set_select_function(func, data, destroy)
-      LibGtk.tree_selection_set_select_function(@pointer.as(LibGtk::TreeSelection*), func, data ? data : nil, destroy)
+      LibGtk.tree_selection_set_select_function(@pointer.as(LibGtk::TreeSelection*), func ? func : nil, data ? data : nil, destroy)
       nil
     end
 

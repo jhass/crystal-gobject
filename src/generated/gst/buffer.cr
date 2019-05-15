@@ -39,6 +39,11 @@ module Gst
       cast Gst::Buffer.new(__return_value)
     end
 
+    def self.new_wrapped_bytes(bytes) : self
+      __return_value = LibGst.buffer_new_wrapped_bytes(bytes.to_unsafe.as(LibGLib::Bytes*))
+      cast Gst::Buffer.new(__return_value)
+    end
+
     def self.new_wrapped_full(flags : Gst::MemoryFlags, data, maxsize, offset, size, user_data, notify) : self
       __return_value = LibGst.buffer_new_wrapped_full(flags, data, UInt64.new(maxsize), UInt64.new(offset), UInt64.new(size), user_data ? user_data : nil, notify ? notify : nil)
       cast Gst::Buffer.new(__return_value)

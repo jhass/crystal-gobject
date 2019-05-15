@@ -14,11 +14,15 @@ module GIRepository
 
     def lib_definition
       String.build do |io|
-        io.puts "  union #{name}"
-        each_field do |field|
-          io.puts "  #{field.lib_definition}"
+        if fields_size > 0
+          io.puts "  union #{name}"
+          each_field do |field|
+            io.puts "  #{field.lib_definition}"
+          end
+          io.puts "  end"
+        else
+          io.puts "  alias #{name} = Void*"
         end
-        io.puts "  end"
 
         each_method do |method|
           io.puts method.lib_definition

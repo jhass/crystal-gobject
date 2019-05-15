@@ -1,5 +1,5 @@
-require "./lib_g_lib"
 require "./lib_g_object"
+require "./lib_g_lib"
 
 @[Link("atk-1.0")]
 lib LibAtk
@@ -400,6 +400,8 @@ lib LibAtk
     get_range_extents : -> Void
     get_bounded_ranges : -> Void
     get_string_at_offset : -> Void
+    scroll_substring_to : -> Void
+    scroll_substring_to_point : -> Void
     # Signal text-attributes-changed
     # Signal text-caret-moved
     # Signal text-changed
@@ -424,6 +426,8 @@ lib LibAtk
     # Virtual function get_text_at_offset
     # Virtual function get_text_before_offset
     # Virtual function remove_selection
+    # Virtual function scroll_substring_to
+    # Virtual function scroll_substring_to_point
     # Virtual function set_caret_offset
     # Virtual function set_selection
     # Virtual function text_attributes_changed
@@ -450,6 +454,8 @@ lib LibAtk
   fun text_get_text_at_offset = atk_text_get_text_at_offset(this : Text*, offset : Int32, boundary_type : LibAtk::TextBoundary, start_offset : Int32*, end_offset : Int32*) : UInt8*
   fun text_get_text_before_offset = atk_text_get_text_before_offset(this : Text*, offset : Int32, boundary_type : LibAtk::TextBoundary, start_offset : Int32*, end_offset : Int32*) : UInt8*
   fun text_remove_selection = atk_text_remove_selection(this : Text*, selection_num : Int32) : Bool
+  fun text_scroll_substring_to = atk_text_scroll_substring_to(this : Text*, start_offset : Int32, end_offset : Int32, type : LibAtk::ScrollType) : Bool
+  fun text_scroll_substring_to_point = atk_text_scroll_substring_to_point(this : Text*, start_offset : Int32, end_offset : Int32, coords : LibAtk::CoordType, x : Int32, y : Int32) : Bool
   fun text_set_caret_offset = atk_text_set_caret_offset(this : Text*, offset : Int32) : Bool
   fun text_set_selection = atk_text_set_selection(this : Text*, selection_num : Int32, start_offset : Int32, end_offset : Int32) : Bool
 
@@ -570,11 +576,11 @@ lib LibAtk
   ##    Constants
   ###########################################
 
-  BINARY_AGE = 23010 # : Int32
+  BINARY_AGE = 23210 # : Int32
   INTERFACE_AGE = 1 # : Int32
   MAJOR_VERSION = 2 # : Int32
   MICRO_VERSION = 0 # : Int32
-  MINOR_VERSION = 30 # : Int32
+  MINOR_VERSION = 32 # : Int32
   VERSION_MIN_REQUIRED = 2 # : Int32
 
   ###########################################

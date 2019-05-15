@@ -1,6 +1,6 @@
+require "./lib_g_object"
 require "./lib_cairo"
 require "./lib_g_lib"
-require "./lib_g_object"
 
 @[Link("pango-1.0")]
 lib LibPango
@@ -14,9 +14,9 @@ lib LibPango
   ATTR_INDEX_FROM_TEXT_BEGINNING = 0 # : Int32
   ENGINE_TYPE_LANG = "PangoEngineLang" # : UInt8*
   ENGINE_TYPE_SHAPE = "PangoEngineShape" # : UInt8*
-  GLYPH_EMPTY = 268435455_u32 # : UInt32
-  GLYPH_INVALID_INPUT = 4294967295_u32 # : UInt32
-  GLYPH_UNKNOWN_FLAG = 268435456_u32 # : UInt32
+  GLYPH_EMPTY = 268435455 # : UInt32
+  GLYPH_INVALID_INPUT = 4294967295 # : UInt32
+  GLYPH_UNKNOWN_FLAG = 268435456 # : UInt32
   RENDER_TYPE_NONE = "PangoRenderNone" # : UInt8*
   SCALE = 1024 # : Int32
   UNKNOWN_GLYPH_HEIGHT = 14 # : Int32
@@ -815,10 +815,12 @@ lib LibPango
     parent_instance : LibGObject::Object*
     # Virtual function get_name
     # Virtual function is_monospace
+    # Virtual function is_variable
     # Virtual function list_faces
   end
   fun font_family_get_name = pango_font_family_get_name(this : FontFamily*) : UInt8*
   fun font_family_is_monospace = pango_font_family_is_monospace(this : FontFamily*) : Bool
+  fun font_family_is_variable = pango_font_family_is_variable(this : FontFamily*) : Bool
   fun font_family_list_faces = pango_font_family_list_faces(this : FontFamily*, faces : LibPango::FontFace***, n_faces : Int32*) : Void
 
   struct FontMap # object

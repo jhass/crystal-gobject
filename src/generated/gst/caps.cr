@@ -53,6 +53,11 @@ module Gst
       __return_value
     end
 
+    def copy
+      __return_value = LibGst.caps_copy(@pointer.as(LibGst::Caps*))
+      Gst::Caps.new(__return_value)
+    end
+
     def copy_nth(nth)
       __return_value = LibGst.caps_copy_nth(@pointer.as(LibGst::Caps*), UInt32.new(nth))
       Gst::Caps.new(__return_value)
@@ -180,6 +185,11 @@ module Gst
 
     def set_features(index, features)
       LibGst.caps_set_features(@pointer.as(LibGst::Caps*), UInt32.new(index), features ? features.to_unsafe.as(LibGst::CapsFeatures*) : nil)
+      nil
+    end
+
+    def features_simple=(features)
+      LibGst.caps_set_features_simple(@pointer.as(LibGst::Caps*), features ? features.to_unsafe.as(LibGst::CapsFeatures*) : nil)
       nil
     end
 

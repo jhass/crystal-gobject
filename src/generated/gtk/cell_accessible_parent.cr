@@ -25,13 +25,28 @@ module Gtk
       nil
     end
 
+    def cell_position(cell, row, column)
+      LibGtk.cell_accessible_parent_get_cell_position(@pointer.as(LibGtk::CellAccessibleParent*), cell.to_unsafe.as(LibGtk::CellAccessible*), row, column)
+      nil
+    end
+
     def child_index(cell)
       __return_value = LibGtk.cell_accessible_parent_get_child_index(@pointer.as(LibGtk::CellAccessibleParent*), cell.to_unsafe.as(LibGtk::CellAccessible*))
       __return_value
     end
 
+    def column_header_cells(cell)
+      __return_value = LibGtk.cell_accessible_parent_get_column_header_cells(@pointer.as(LibGtk::CellAccessibleParent*), cell.to_unsafe.as(LibGtk::CellAccessible*))
+      __return_value
+    end
+
     def renderer_state(cell)
       __return_value = LibGtk.cell_accessible_parent_get_renderer_state(@pointer.as(LibGtk::CellAccessibleParent*), cell.to_unsafe.as(LibGtk::CellAccessible*))
+      __return_value
+    end
+
+    def row_header_cells(cell)
+      __return_value = LibGtk.cell_accessible_parent_get_row_header_cells(@pointer.as(LibGtk::CellAccessibleParent*), cell.to_unsafe.as(LibGtk::CellAccessible*))
       __return_value
     end
 

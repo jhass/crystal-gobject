@@ -150,7 +150,7 @@ module Gtk
     end
 
     def to_key_file(key_file, group_name)
-      LibGtk.page_setup_to_key_file(@pointer.as(LibGtk::PageSetup*), key_file.to_unsafe.as(LibGLib::KeyFile*), group_name.to_unsafe)
+      LibGtk.page_setup_to_key_file(@pointer.as(LibGtk::PageSetup*), key_file.to_unsafe.as(LibGLib::KeyFile*), group_name ? group_name.to_unsafe : nil)
       nil
     end
 

@@ -150,6 +150,44 @@ module Gio
       __return_value
     end
 
+    def writev(vectors, n_vectors, bytes_written, cancellable)
+      __error = Pointer(LibGLib::Error).null
+      __return_value = LibGio.output_stream_writev(@pointer.as(LibGio::OutputStream*), vectors, UInt64.new(n_vectors), bytes_written, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
+      GLib::Error.assert __error
+      __return_value
+    end
+
+    def writev_all(vectors, n_vectors, bytes_written, cancellable)
+      __error = Pointer(LibGLib::Error).null
+      __return_value = LibGio.output_stream_writev_all(@pointer.as(LibGio::OutputStream*), vectors, UInt64.new(n_vectors), bytes_written, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
+      GLib::Error.assert __error
+      __return_value
+    end
+
+    def writev_all_async(vectors, n_vectors, io_priority, cancellable, callback, user_data)
+      LibGio.output_stream_writev_all_async(@pointer.as(LibGio::OutputStream*), vectors, UInt64.new(n_vectors), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
+    end
+
+    def writev_all_finish(result, bytes_written)
+      __error = Pointer(LibGLib::Error).null
+      __return_value = LibGio.output_stream_writev_all_finish(@pointer.as(LibGio::OutputStream*), result.to_unsafe.as(LibGio::AsyncResult*), bytes_written, pointerof(__error))
+      GLib::Error.assert __error
+      __return_value
+    end
+
+    def writev_async(vectors, n_vectors, io_priority, cancellable, callback, user_data)
+      LibGio.output_stream_writev_async(@pointer.as(LibGio::OutputStream*), vectors, UInt64.new(n_vectors), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      nil
+    end
+
+    def writev_finish(result, bytes_written)
+      __error = Pointer(LibGLib::Error).null
+      __return_value = LibGio.output_stream_writev_finish(@pointer.as(LibGio::OutputStream*), result.to_unsafe.as(LibGio::AsyncResult*), bytes_written, pointerof(__error))
+      GLib::Error.assert __error
+      __return_value
+    end
+
   end
 end
 

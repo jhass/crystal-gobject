@@ -41,8 +41,28 @@ module Gst
       Gst::Segment.new(__return_value)
     end
 
+    def buffer=(buffer)
+      LibGst.sample_set_buffer(@pointer.as(LibGst::Sample*), buffer.to_unsafe.as(LibGst::Buffer*))
+      nil
+    end
+
     def buffer_list=(buffer_list)
       LibGst.sample_set_buffer_list(@pointer.as(LibGst::Sample*), buffer_list.to_unsafe.as(LibGst::BufferList*))
+      nil
+    end
+
+    def caps=(caps)
+      LibGst.sample_set_caps(@pointer.as(LibGst::Sample*), caps.to_unsafe.as(LibGst::Caps*))
+      nil
+    end
+
+    def info=(info)
+      __return_value = LibGst.sample_set_info(@pointer.as(LibGst::Sample*), info.to_unsafe.as(LibGst::Structure*))
+      __return_value
+    end
+
+    def segment=(segment)
+      LibGst.sample_set_segment(@pointer.as(LibGst::Sample*), segment.to_unsafe.as(LibGst::Segment*))
       nil
     end
 

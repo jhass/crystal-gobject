@@ -1,4 +1,12 @@
 module GIRepository
+  MAJOR_VERSION = LibGIRepository::MAJOR_VERSION
+
+  MICRO_VERSION = LibGIRepository::MICRO_VERSION
+
+  MINOR_VERSION = LibGIRepository::MINOR_VERSION
+
+  TYPE_TAG_N_TYPES = LibGIRepository::TYPE_TAG_N_TYPES
+
   def self.arg_info_get_closure(info)
     __return_value = LibGIRepository.arg_info_get_closure(info.to_unsafe.as(LibGIRepository::BaseInfo*))
     __return_value
@@ -131,6 +139,11 @@ module GIRepository
     __return_value
   end
 
+  def self.cclosure_marshal_generic(closure, return_gvalue, n_param_values, param_values, invocation_hint, marshal_data)
+    LibGIRepository.cclosure_marshal_generic(closure.to_unsafe.as(LibGObject::Closure*), return_gvalue.to_unsafe.as(LibGObject::Value*), UInt32.new(n_param_values), param_values.to_unsafe.as(LibGObject::Value*), invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    nil
+  end
+
   def self.constant_info_get_type(info)
     __return_value = LibGIRepository.constant_info_get_type(info.to_unsafe.as(LibGIRepository::BaseInfo*))
     GIRepository::BaseInfo.new(__return_value)
@@ -204,6 +217,21 @@ module GIRepository
   def self.function_info_get_vfunc(info)
     __return_value = LibGIRepository.function_info_get_vfunc(info.to_unsafe.as(LibGIRepository::BaseInfo*))
     GIRepository::BaseInfo.new(__return_value)
+  end
+
+  def self.major_version
+    __return_value = LibGIRepository.get_major_version
+    __return_value
+  end
+
+  def self.micro_version
+    __return_value = LibGIRepository.get_micro_version
+    __return_value
+  end
+
+  def self.minor_version
+    __return_value = LibGIRepository.get_minor_version
+    __return_value
   end
 
   def self.info_new(type : GIRepository::InfoType, container, typelib, offset)

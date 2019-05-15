@@ -51,6 +51,11 @@ module Gio
       GLib::MainContext.new(__return_value)
     end
 
+    def name
+      __return_value = LibGio.task_get_name(@pointer.as(LibGio::Task*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
+    end
+
     def priority
       __return_value = LibGio.task_get_priority(@pointer.as(LibGio::Task*))
       __return_value
@@ -129,6 +134,11 @@ module Gio
 
     def check_cancellable=(check_cancellable)
       LibGio.task_set_check_cancellable(@pointer.as(LibGio::Task*), check_cancellable)
+      nil
+    end
+
+    def name=(name)
+      LibGio.task_set_name(@pointer.as(LibGio::Task*), name ? name.to_unsafe : nil)
       nil
     end
 

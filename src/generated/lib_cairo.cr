@@ -45,6 +45,13 @@ lib LibCairo
     _data : UInt8[0]
   end
 
+  struct Rectangle # struct
+    x : Float64
+    y : Float64
+    width : Float64
+    height : Float64
+  end
+
   struct RectangleInt # struct
     x : Int32
     y : Int32

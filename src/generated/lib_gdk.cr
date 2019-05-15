@@ -1,10 +1,10 @@
-require "./lib_cairo"
-require "./lib_pango"
 require "./lib_g_object"
-require "./lib_gio"
-require "./lib_g_lib"
 require "./lib_gdk_pixbuf"
+require "./lib_pango"
+require "./lib_cairo"
+require "./lib_g_lib"
 require "./lib_g_module"
+require "./lib_gio"
 
 @[Link("gdk-3")]
 lib LibGdk
@@ -3879,9 +3879,12 @@ lib LibGdk
   KEY_zerosubscript = 16785536 # : Int32
   KEY_zerosuperior = 16785520 # : Int32
   KEY_zstroke = 16777654 # : Int32
+  MAJOR_VERSION = 3 # : Int32
   MAX_TIMECOORD_AXES = 128 # : Int32
+  MICRO_VERSION = 8 # : Int32
+  MINOR_VERSION = 24 # : Int32
   PARENT_RELATIVE = 1 # : Int32
-  PRIORITY_REDRAW = 20 # : Int32
+  PRIORITY_REDRAW = 120 # : Int32
 
   ###########################################
   ##    Interfaces

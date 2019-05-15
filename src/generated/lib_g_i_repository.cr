@@ -1,5 +1,5 @@
-require "./lib_g_lib"
 require "./lib_g_object"
+require "./lib_g_lib"
 
 @[Link("girepository-1.0")]
 lib LibGIRepository
@@ -212,6 +212,15 @@ lib LibGIRepository
 
 
   ###########################################
+  ##    Constants
+  ###########################################
+
+  MAJOR_VERSION = 1 # : Int32
+  MICRO_VERSION = 1 # : Int32
+  MINOR_VERSION = 60 # : Int32
+  TYPE_TAG_N_TYPES = 22 # : Int32
+
+  ###########################################
   ##    Objects
   ###########################################
 
@@ -236,6 +245,7 @@ lib LibGIRepository
   fun repository_get_info = g_irepository_get_info(this : Repository*, namespace : UInt8*, index : Int32) : LibGIRepository::BaseInfo*
   fun repository_get_loaded_namespaces = g_irepository_get_loaded_namespaces(this : Repository*) : UInt8**
   fun repository_get_n_infos = g_irepository_get_n_infos(this : Repository*, namespace : UInt8*) : Int32
+  fun repository_get_object_gtype_interfaces = g_irepository_get_object_gtype_interfaces(this : Repository*, gtype : UInt64, n_interfaces_out : UInt32*, interfaces_out : LibGIRepository::BaseInfo**) : Void
   fun repository_get_shared_library = g_irepository_get_shared_library(this : Repository*, namespace : UInt8*) : UInt8*
   fun repository_get_typelib_path = g_irepository_get_typelib_path(this : Repository*, namespace : UInt8*) : UInt8*
   fun repository_get_version = g_irepository_get_version(this : Repository*, namespace : UInt8*) : UInt8*
@@ -275,6 +285,7 @@ lib LibGIRepository
   fun callable_info_load_return_type = g_callable_info_load_return_type(info : LibGIRepository::BaseInfo*, type : LibGIRepository::BaseInfo*) : Void
   fun callable_info_may_return_null = g_callable_info_may_return_null(info : LibGIRepository::BaseInfo*) : Bool
   fun callable_info_skip_return = g_callable_info_skip_return(info : LibGIRepository::BaseInfo*) : Bool
+  fun cclosure_marshal_generic = gi_cclosure_marshal_generic(closure : LibGObject::Closure*, return_gvalue : LibGObject::Value*, n_param_values : UInt32, param_values : LibGObject::Value*, invocation_hint : Void*, marshal_data : Void*) : Void
   fun constant_info_get_type = g_constant_info_get_type(info : LibGIRepository::BaseInfo*) : LibGIRepository::BaseInfo*
   fun enum_info_get_error_domain = g_enum_info_get_error_domain(info : LibGIRepository::BaseInfo*) : UInt8*
   fun enum_info_get_method = g_enum_info_get_method(info : LibGIRepository::BaseInfo*, n : Int32) : LibGIRepository::BaseInfo*
@@ -290,6 +301,9 @@ lib LibGIRepository
   fun function_info_get_property = g_function_info_get_property(info : LibGIRepository::BaseInfo*) : LibGIRepository::BaseInfo*
   fun function_info_get_symbol = g_function_info_get_symbol(info : LibGIRepository::BaseInfo*) : UInt8*
   fun function_info_get_vfunc = g_function_info_get_vfunc(info : LibGIRepository::BaseInfo*) : LibGIRepository::BaseInfo*
+  fun get_major_version = gi_get_major_version() : UInt32
+  fun get_micro_version = gi_get_micro_version() : UInt32
+  fun get_minor_version = gi_get_minor_version() : UInt32
   fun info_new = g_info_new(type : LibGIRepository::InfoType, container : LibGIRepository::BaseInfo*, typelib : LibGIRepository::Typelib*, offset : UInt32) : LibGIRepository::BaseInfo*
   fun info_type_to_string = g_info_type_to_string(type : LibGIRepository::InfoType) : UInt8*
   fun interface_info_find_method = g_interface_info_find_method(info : LibGIRepository::BaseInfo*, name : UInt8*) : LibGIRepository::BaseInfo*

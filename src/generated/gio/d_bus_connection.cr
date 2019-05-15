@@ -31,6 +31,11 @@ module Gio
       gvalue.boolean
     end
 
+    def flags
+      gvalue = GObject::Value.new(GObject::Type::INTERFACE)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "flags", gvalue)
+      gvalue.enum
+    end
 
     def guid
       gvalue = GObject::Value.new(GObject::Type::UTF8)
@@ -200,6 +205,11 @@ module Gio
       __return_value
     end
 
+    def flags
+      __return_value = LibGio.d_bus_connection_get_flags(@pointer.as(LibGio::DBusConnection*))
+      __return_value
+    end
+
     def guid
       __return_value = LibGio.d_bus_connection_get_guid(@pointer.as(LibGio::DBusConnection*))
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
@@ -222,7 +232,7 @@ module Gio
 
     def unique_name
       __return_value = LibGio.d_bus_connection_get_unique_name(@pointer.as(LibGio::DBusConnection*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def closed?

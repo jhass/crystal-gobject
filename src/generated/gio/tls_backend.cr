@@ -40,6 +40,11 @@ module Gio
       __return_value
     end
 
+    def default_database=(database)
+      LibGio.tls_backend_set_default_database(@pointer.as(LibGio::TlsBackend*), database ? database.to_unsafe.as(LibGio::TlsDatabase*) : nil)
+      nil
+    end
+
     def supports_dtls
       __return_value = LibGio.tls_backend_supports_dtls(@pointer.as(LibGio::TlsBackend*))
       __return_value

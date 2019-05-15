@@ -17,7 +17,11 @@ module Gio
 
   FILE_ATTRIBUTE_DOS_IS_ARCHIVE = LibGio::FILE_ATTRIBUTE_DOS_IS_ARCHIVE
 
+  FILE_ATTRIBUTE_DOS_IS_MOUNTPOINT = LibGio::FILE_ATTRIBUTE_DOS_IS_MOUNTPOINT
+
   FILE_ATTRIBUTE_DOS_IS_SYSTEM = LibGio::FILE_ATTRIBUTE_DOS_IS_SYSTEM
+
+  FILE_ATTRIBUTE_DOS_REPARSE_POINT_TAG = LibGio::FILE_ATTRIBUTE_DOS_REPARSE_POINT_TAG
 
   FILE_ATTRIBUTE_ETAG_VALUE = LibGio::FILE_ATTRIBUTE_ETAG_VALUE
 
@@ -373,6 +377,11 @@ module Gio
     __return_value
   end
 
+  def self.content_type_get_mime_dirs
+    __return_value = LibGio.content_type_get_mime_dirs
+    PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
+  end
+
   def self.content_type_get_mime_type(type)
     __return_value = LibGio.content_type_get_mime_type(type.to_unsafe)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
@@ -406,6 +415,11 @@ module Gio
   def self.content_type_is_unknown(type)
     __return_value = LibGio.content_type_is_unknown(type.to_unsafe)
     __return_value
+  end
+
+  def self.content_type_set_mime_dirs(dirs)
+    LibGio.content_type_set_mime_dirs(dirs ? dirs : nil)
+    nil
   end
 
   def self.content_types_get_registered
@@ -890,6 +904,11 @@ module Gio
 
   def self.unix_mount_get_options(mount_entry)
     __return_value = LibGio.unix_mount_get_options(mount_entry.to_unsafe.as(LibGio::UnixMountEntry*))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
+  end
+
+  def self.unix_mount_get_root_path(mount_entry)
+    __return_value = LibGio.unix_mount_get_root_path(mount_entry.to_unsafe.as(LibGio::UnixMountEntry*))
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 

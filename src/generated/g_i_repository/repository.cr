@@ -96,6 +96,11 @@ module GIRepository
       __return_value
     end
 
+    def object_gtype_interfaces(gtype, n_interfaces_out, interfaces_out)
+      LibGIRepository.repository_get_object_gtype_interfaces(@pointer.as(LibGIRepository::Repository*), UInt64.new(gtype), n_interfaces_out, interfaces_out)
+      nil
+    end
+
     def shared_library(namespace)
       __return_value = LibGIRepository.repository_get_shared_library(@pointer.as(LibGIRepository::Repository*), namespace.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))

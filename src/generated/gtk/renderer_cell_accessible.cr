@@ -13,6 +13,7 @@ module Gtk
 
     # Implements Action
     # Implements Component
+    # Implements TableCell
     def renderer
       gvalue = GObject::Value.new(GObject::Type::INTERFACE)
       LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "renderer", gvalue)

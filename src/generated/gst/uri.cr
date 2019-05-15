@@ -53,7 +53,7 @@ module Gst
 
     def path
       __return_value = LibGst.uri_get_path(@pointer.as(LibGst::Uri*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def path_segments

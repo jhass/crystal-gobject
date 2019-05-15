@@ -11,6 +11,12 @@ module Gio
       @pointer.not_nil!.as(LibGio::TlsConnection*)
     end
 
+    def advertised_protocols
+      gvalue = GObject::Value.new(GObject::Type::ARRAY)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "advertised_protocols", gvalue)
+      gvalue
+    end
+
     def base_io_stream
       gvalue = GObject::Value.new(GObject::Type::INTERFACE)
       LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "base_io_stream", gvalue)
@@ -33,6 +39,12 @@ module Gio
       gvalue = GObject::Value.new(GObject::Type::INTERFACE)
       LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "interaction", gvalue)
       Gio::TlsInteraction.cast(gvalue.object)
+    end
+
+    def negotiated_protocol
+      gvalue = GObject::Value.new(GObject::Type::UTF8)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "negotiated_protocol", gvalue)
+      gvalue.string
     end
 
     def peer_certificate
@@ -85,6 +97,11 @@ module Gio
       Gio::TlsInteraction.new(__return_value)
     end
 
+    def negotiated_protocol
+      __return_value = LibGio.tls_connection_get_negotiated_protocol(@pointer.as(LibGio::TlsConnection*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
+    end
+
     def peer_certificate
       __return_value = LibGio.tls_connection_get_peer_certificate(@pointer.as(LibGio::TlsConnection*))
       Gio::TlsCertificate.new(__return_value)
@@ -127,6 +144,11 @@ module Gio
       __return_value = LibGio.tls_connection_handshake_finish(@pointer.as(LibGio::TlsConnection*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
+    end
+
+    def advertised_protocols=(protocols)
+      LibGio.tls_connection_set_advertised_protocols(@pointer.as(LibGio::TlsConnection*), protocols ? protocols : nil)
+      nil
     end
 
     def certificate=(certificate)

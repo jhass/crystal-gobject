@@ -25,6 +25,11 @@ module GLib
       nil
     end
 
+    def clear_full(free_func)
+      LibGLib.queue_clear_full(@pointer.as(LibGLib::Queue*), free_func ? free_func : nil)
+      nil
+    end
+
     def free
       LibGLib.queue_free(@pointer.as(LibGLib::Queue*))
       nil

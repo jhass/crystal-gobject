@@ -1,5 +1,5 @@
-require "./lib_g_lib"
 require "./lib_g_object"
+require "./lib_g_lib"
 require "./lib_g_module"
 
 @[Link("gstreamer-1.0")]
@@ -12,10 +12,10 @@ lib LibGst
   ALLOCATOR_SYSMEM = "SystemMemory" # : UInt8*
   # BUFFER_COPY_ALL = ungeneratable value
   # BUFFER_COPY_METADATA = ungeneratable value
-  BUFFER_OFFSET_NONE = 18446744073709551615_u64 # : UInt64
+  BUFFER_OFFSET_NONE = 18446744073709551615 # : UInt64
   CAN_INLINE = 1 # : Int32
   CAPS_FEATURE_MEMORY_SYSTEM_MEMORY = "memory:SystemMemory" # : UInt8*
-  CLOCK_TIME_NONE = 18446744073709551615_u64 # : UInt64
+  CLOCK_TIME_NONE = 18446744073709551615 # : UInt64
   DEBUG_BG_MASK = 240 # : Int32
   DEBUG_FG_MASK = 15 # : Int32
   DEBUG_FORMAT_MASK = 65280 # : Int32
@@ -26,6 +26,7 @@ lib LibGst
   ELEMENT_FACTORY_KLASS_ENCODER = "Encoder" # : UInt8*
   ELEMENT_FACTORY_KLASS_ENCRYPTOR = "Encryptor" # : UInt8*
   ELEMENT_FACTORY_KLASS_FORMATTER = "Formatter" # : UInt8*
+  ELEMENT_FACTORY_KLASS_HARDWARE = "Hardware" # : UInt8*
   ELEMENT_FACTORY_KLASS_MEDIA_AUDIO = "Audio" # : UInt8*
   ELEMENT_FACTORY_KLASS_MEDIA_IMAGE = "Image" # : UInt8*
   ELEMENT_FACTORY_KLASS_MEDIA_METADATA = "Metadata" # : UInt8*
@@ -36,63 +37,59 @@ lib LibGst
   ELEMENT_FACTORY_KLASS_PAYLOADER = "Payloader" # : UInt8*
   ELEMENT_FACTORY_KLASS_SINK = "Sink" # : UInt8*
   ELEMENT_FACTORY_KLASS_SRC = "Source" # : UInt8*
-  ELEMENT_FACTORY_TYPE_ANY = 562949953421311_u64 # : UInt64
-  ELEMENT_FACTORY_TYPE_AUDIOVIDEO_SINKS = 3940649673949188_u64 # : UInt64
-  ELEMENT_FACTORY_TYPE_AUDIO_ENCODER = 1125899906842626_u64 # : UInt64
-  ELEMENT_FACTORY_TYPE_DECODABLE = 1377_u64 # : UInt64
-  ELEMENT_FACTORY_TYPE_DECODER = 1_u64 # : UInt64
-  ELEMENT_FACTORY_TYPE_DECRYPTOR = 1024_u64 # : UInt64
-  ELEMENT_FACTORY_TYPE_DEMUXER = 32_u64 # : UInt64
-  ELEMENT_FACTORY_TYPE_DEPAYLOADER = 256_u64 # : UInt64
-  ELEMENT_FACTORY_TYPE_ENCODER = 2_u64 # : UInt64
-  ELEMENT_FACTORY_TYPE_ENCRYPTOR = 2048_u64 # : UInt64
-  ELEMENT_FACTORY_TYPE_FORMATTER = 512_u64 # : UInt64
-  ELEMENT_FACTORY_TYPE_MAX_ELEMENTS = 281474976710656_u64 # : UInt64
-  ELEMENT_FACTORY_TYPE_MEDIA_ANY = 18446462598732840960_u64 # : UInt64
-  ELEMENT_FACTORY_TYPE_MEDIA_AUDIO = 1125899906842624_u64 # : UInt64
-  ELEMENT_FACTORY_TYPE_MEDIA_IMAGE = 2251799813685248_u64 # : UInt64
-  ELEMENT_FACTORY_TYPE_MEDIA_METADATA = 9007199254740992_u64 # : UInt64
-  ELEMENT_FACTORY_TYPE_MEDIA_SUBTITLE = 4503599627370496_u64 # : UInt64
-  ELEMENT_FACTORY_TYPE_MEDIA_VIDEO = 562949953421312_u64 # : UInt64
-  ELEMENT_FACTORY_TYPE_MUXER = 16_u64 # : UInt64
-  ELEMENT_FACTORY_TYPE_PARSER = 64_u64 # : UInt64
-  ELEMENT_FACTORY_TYPE_PAYLOADER = 128_u64 # : UInt64
-  ELEMENT_FACTORY_TYPE_SINK = 4_u64 # : UInt64
-  ELEMENT_FACTORY_TYPE_SRC = 8_u64 # : UInt64
-  ELEMENT_FACTORY_TYPE_VIDEO_ENCODER = 2814749767106562_u64 # : UInt64
+  ELEMENT_FACTORY_TYPE_ANY = 562949953421311 # : UInt64
+  ELEMENT_FACTORY_TYPE_AUDIOVIDEO_SINKS = 3940649673949188 # : UInt64
+  ELEMENT_FACTORY_TYPE_AUDIO_ENCODER = 1125899906842626 # : UInt64
+  ELEMENT_FACTORY_TYPE_DECODABLE = 1377 # : UInt64
+  ELEMENT_FACTORY_TYPE_DECODER = 1 # : UInt64
+  ELEMENT_FACTORY_TYPE_DECRYPTOR = 1024 # : UInt64
+  ELEMENT_FACTORY_TYPE_DEMUXER = 32 # : UInt64
+  ELEMENT_FACTORY_TYPE_DEPAYLOADER = 256 # : UInt64
+  ELEMENT_FACTORY_TYPE_ENCODER = 2 # : UInt64
+  ELEMENT_FACTORY_TYPE_ENCRYPTOR = 2048 # : UInt64
+  ELEMENT_FACTORY_TYPE_FORMATTER = 512 # : UInt64
+  ELEMENT_FACTORY_TYPE_MAX_ELEMENTS = 281474976710656 # : UInt64
+  ELEMENT_FACTORY_TYPE_MEDIA_ANY = 18446462598732840960 # : UInt64
+  ELEMENT_FACTORY_TYPE_MEDIA_AUDIO = 1125899906842624 # : UInt64
+  ELEMENT_FACTORY_TYPE_MEDIA_IMAGE = 2251799813685248 # : UInt64
+  ELEMENT_FACTORY_TYPE_MEDIA_METADATA = 9007199254740992 # : UInt64
+  ELEMENT_FACTORY_TYPE_MEDIA_SUBTITLE = 4503599627370496 # : UInt64
+  ELEMENT_FACTORY_TYPE_MEDIA_VIDEO = 562949953421312 # : UInt64
+  ELEMENT_FACTORY_TYPE_MUXER = 16 # : UInt64
+  ELEMENT_FACTORY_TYPE_PARSER = 64 # : UInt64
+  ELEMENT_FACTORY_TYPE_PAYLOADER = 128 # : UInt64
+  ELEMENT_FACTORY_TYPE_SINK = 4 # : UInt64
+  ELEMENT_FACTORY_TYPE_SRC = 8 # : UInt64
+  ELEMENT_FACTORY_TYPE_VIDEO_ENCODER = 2814749767106562 # : UInt64
   ELEMENT_METADATA_AUTHOR = "author" # : UInt8*
   ELEMENT_METADATA_DESCRIPTION = "description" # : UInt8*
   ELEMENT_METADATA_DOC_URI = "doc-uri" # : UInt8*
   ELEMENT_METADATA_ICON_NAME = "icon-name" # : UInt8*
   ELEMENT_METADATA_KLASS = "klass" # : UInt8*
   ELEMENT_METADATA_LONGNAME = "long-name" # : UInt8*
-  ERROR_SYSTEM = "system error: %s" # : UInt8*
   EVENT_NUM_SHIFT = 8 # : Int32
   # EVENT_TYPE_BOTH = ungeneratable value
-  FLAG_SET_MASK_EXACT = 4294967295_u32 # : UInt32
-  FORMAT_PERCENT_MAX = 1000000_i64 # : Int64
-  FORMAT_PERCENT_SCALE = 10000_i64 # : Int64
-  FOURCC_FORMAT = "c%c%c%c" # : UInt8*
+  FLAG_SET_MASK_EXACT = 4294967295 # : UInt32
+  FORMAT_PERCENT_MAX = 1000000 # : Int64
+  FORMAT_PERCENT_SCALE = 10000 # : Int64
   GROUP_ID_INVALID = 0 # : Int32
   LICENSE_UNKNOWN = "unknown" # : UInt8*
   # LOCK_FLAG_READWRITE = ungeneratable value
   # MAP_READWRITE = ungeneratable value
   META_TAG_MEMORY_STR = "memory" # : UInt8*
-  MSECOND = 1000000_i64 # : Int64
-  NSECOND = 1_i64 # : Int64
+  MSECOND = 1000000 # : Int64
+  NSECOND = 1 # : Int64
   PARAM_CONTROLLABLE = 512 # : Int32
   PARAM_MUTABLE_PAUSED = 2048 # : Int32
   PARAM_MUTABLE_PLAYING = 4096 # : Int32
   PARAM_MUTABLE_READY = 1024 # : Int32
   PARAM_USER_SHIFT = 65536 # : Int32
   PROTECTION_SYSTEM_ID_CAPS_FIELD = "protection-system" # : UInt8*
-  PTR_FORMAT = "paA" # : UInt8*
+  PROTECTION_UNSPECIFIED_SYSTEM_ID = "unspecified-system-id" # : UInt8*
   QUERY_NUM_SHIFT = 8 # : Int32
   # QUERY_TYPE_BOTH = ungeneratable value
-  SECOND = 1000000000_i64 # : Int64
-  SEGMENT_FORMAT = "paB" # : UInt8*
+  SECOND = 1000000000 # : Int64
   SEQNUM_INVALID = 0 # : Int32
-  STIME_FORMAT = "c%" # : UInt8*
   TAG_ALBUM = "album" # : UInt8*
   TAG_ALBUM_ARTIST = "album-artist" # : UInt8*
   TAG_ALBUM_ARTIST_SORTNAME = "album-artist-sortname" # : UInt8*
@@ -178,17 +175,16 @@ lib LibGst
   TAG_USER_RATING = "user-rating" # : UInt8*
   TAG_VERSION = "version" # : UInt8*
   TAG_VIDEO_CODEC = "video-codec" # : UInt8*
-  TIME_FORMAT = "u:%02u:%02u.%09u" # : UInt8*
   TOC_REPEAT_COUNT_INFINITE = -1 # : Int32
   URI_NO_PORT = 0 # : Int32
-  USECOND = 1000_i64 # : Int64
+  USECOND = 1000 # : Int64
   VALUE_EQUAL = 0 # : Int32
   VALUE_GREATER_THAN = 1 # : Int32
   VALUE_LESS_THAN = -1 # : Int32
   VALUE_UNORDERED = 2 # : Int32
   VERSION_MAJOR = 1 # : Int32
-  VERSION_MICRO = 4 # : Int32
-  VERSION_MINOR = 14 # : Int32
+  VERSION_MICRO = 0 # : Int32
+  VERSION_MINOR = 16 # : Int32
   VERSION_NANO = 0 # : Int32
 
   ###########################################
@@ -237,6 +233,7 @@ lib LibGst
   fun buffer_new = gst_buffer_new() : LibGst::Buffer*
   fun buffer_new_allocate = gst_buffer_new_allocate(allocator : LibGst::Allocator*, size : UInt64, params : LibGst::AllocationParams*) : LibGst::Buffer*
   fun buffer_new_wrapped = gst_buffer_new_wrapped(data : UInt8*, size : UInt64) : LibGst::Buffer*
+  fun buffer_new_wrapped_bytes = gst_buffer_new_wrapped_bytes(bytes : LibGLib::Bytes*) : LibGst::Buffer*
   fun buffer_new_wrapped_full = gst_buffer_new_wrapped_full(flags : LibGst::MemoryFlags, data : UInt8*, maxsize : UInt64, offset : UInt64, size : UInt64, user_data : Void*, notify : LibGLib::DestroyNotify) : LibGst::Buffer*
   fun buffer_add_meta = gst_buffer_add_meta(this : Buffer*, info : LibGst::MetaInfo*, params : Void*) : LibGst::Meta*
   fun buffer_add_parent_buffer_meta = gst_buffer_add_parent_buffer_meta(this : Buffer*, ref : LibGst::Buffer*) : LibGst::ParentBufferMeta*
@@ -329,6 +326,7 @@ lib LibGst
   fun caps_append_structure = gst_caps_append_structure(this : Caps*, structure : LibGst::Structure*) : Void
   fun caps_append_structure_full = gst_caps_append_structure_full(this : Caps*, structure : LibGst::Structure*, features : LibGst::CapsFeatures*) : Void
   fun caps_can_intersect = gst_caps_can_intersect(this : Caps*, caps2 : LibGst::Caps*) : Bool
+  fun caps_copy = gst_caps_copy(this : Caps*) : LibGst::Caps*
   fun caps_copy_nth = gst_caps_copy_nth(this : Caps*, nth : UInt32) : LibGst::Caps*
   fun caps_filter_and_map_in_place = gst_caps_filter_and_map_in_place(this : Caps*, func : LibGst::CapsFilterMapFunc, user_data : Void*) : Void
   fun caps_fixate = gst_caps_fixate(this : Caps*) : LibGst::Caps*
@@ -355,6 +353,7 @@ lib LibGst
   fun caps_normalize = gst_caps_normalize(this : Caps*) : LibGst::Caps*
   fun caps_remove_structure = gst_caps_remove_structure(this : Caps*, idx : UInt32) : Void
   fun caps_set_features = gst_caps_set_features(this : Caps*, index : UInt32, features : LibGst::CapsFeatures*) : Void
+  fun caps_set_features_simple = gst_caps_set_features_simple(this : Caps*, features : LibGst::CapsFeatures*) : Void
   fun caps_set_value = gst_caps_set_value(this : Caps*, field : UInt8*, value : LibGObject::Value*) : Void
   fun caps_simplify = gst_caps_simplify(this : Caps*) : LibGst::Caps*
   fun caps_steal_structure = gst_caps_steal_structure(this : Caps*, index : UInt32) : LibGst::Structure*
@@ -525,6 +524,7 @@ lib LibGst
   fun event_parse_protection = gst_event_parse_protection(this : Event*, system_id : UInt8**, data : LibGst::Buffer**, origin : UInt8**) : Void
   fun event_parse_qos = gst_event_parse_qos(this : Event*, type : LibGst::QOSType*, proportion : Float64*, diff : Int64*, timestamp : UInt64*) : Void
   fun event_parse_seek = gst_event_parse_seek(this : Event*, rate : Float64*, format : LibGst::Format*, flags : LibGst::SeekFlags*, start_type : LibGst::SeekType*, start : Int64*, stop_type : LibGst::SeekType*, stop : Int64*) : Void
+  fun event_parse_seek_trickmode_interval = gst_event_parse_seek_trickmode_interval(this : Event*, interval : UInt64*) : Void
   fun event_parse_segment = gst_event_parse_segment(this : Event*, segment : LibGst::Segment**) : Void
   fun event_parse_segment_done = gst_event_parse_segment_done(this : Event*, format : LibGst::Format*, position : Int64*) : Void
   fun event_parse_select_streams = gst_event_parse_select_streams(this : Event*, streams : Void***) : Void
@@ -540,6 +540,7 @@ lib LibGst
   fun event_parse_toc_select = gst_event_parse_toc_select(this : Event*, uid : UInt8**) : Void
   fun event_set_group_id = gst_event_set_group_id(this : Event*, group_id : UInt32) : Void
   fun event_set_running_time_offset = gst_event_set_running_time_offset(this : Event*, offset : Int64) : Void
+  fun event_set_seek_trickmode_interval = gst_event_set_seek_trickmode_interval(this : Event*, interval : UInt64) : Void
   fun event_set_seqnum = gst_event_set_seqnum(this : Event*, seqnum : UInt32) : Void
   fun event_set_stream = gst_event_set_stream(this : Event*, stream : LibGst::Stream*) : Void
   fun event_set_stream_flags = gst_event_set_stream_flags(this : Event*, flags : LibGst::StreamFlags) : Void
@@ -628,6 +629,7 @@ lib LibGst
   fun message_new_clock_provide = gst_message_new_clock_provide(src : LibGst::Object*, clock : LibGst::Clock*, ready : Bool) : LibGst::Message*
   fun message_new_custom = gst_message_new_custom(type : LibGst::MessageType, src : LibGst::Object*, structure : LibGst::Structure*) : LibGst::Message*
   fun message_new_device_added = gst_message_new_device_added(src : LibGst::Object*, device : LibGst::Device*) : LibGst::Message*
+  fun message_new_device_changed = gst_message_new_device_changed(src : LibGst::Object*, device : LibGst::Device*, changed_device : LibGst::Device*) : LibGst::Message*
   fun message_new_device_removed = gst_message_new_device_removed(src : LibGst::Object*, device : LibGst::Device*) : LibGst::Message*
   fun message_new_duration_changed = gst_message_new_duration_changed(src : LibGst::Object*) : LibGst::Message*
   fun message_new_element = gst_message_new_element(src : LibGst::Object*, structure : LibGst::Structure*) : LibGst::Message*
@@ -674,6 +676,7 @@ lib LibGst
   fun message_parse_clock_provide = gst_message_parse_clock_provide(this : Message*, clock : LibGst::Clock**, ready : Bool*) : Void
   fun message_parse_context_type = gst_message_parse_context_type(this : Message*, context_type : UInt8**) : Bool
   fun message_parse_device_added = gst_message_parse_device_added(this : Message*, device : LibGst::Device**) : Void
+  fun message_parse_device_changed = gst_message_parse_device_changed(this : Message*, device : LibGst::Device**, changed_device : LibGst::Device**) : Void
   fun message_parse_device_removed = gst_message_parse_device_removed(this : Message*, device : LibGst::Device**) : Void
   fun message_parse_error = gst_message_parse_error(this : Message*, gerror : LibGLib::Error***, debug : UInt8**) : Void
   fun message_parse_error_details = gst_message_parse_error_details(this : Message*, structure : LibGst::Structure**) : Void
@@ -718,6 +721,8 @@ lib LibGst
     flags : LibGst::MetaFlags
     info : LibGst::MetaInfo*
   end
+  fun meta_compare_seqnum = gst_meta_compare_seqnum(this : Meta*, meta2 : LibGst::Meta*) : Int32
+  fun meta_get_seqnum = gst_meta_get_seqnum(this : Meta*) : UInt64
   fun meta_api_type_get_tags = gst_meta_api_type_get_tags(api : UInt64) : UInt8**
   fun meta_api_type_has_tag = gst_meta_api_type_has_tag(api : UInt64, tag : UInt32) : Bool
   fun meta_api_type_register = gst_meta_api_type_register(api : UInt8*, tags : UInt8**) : UInt64
@@ -747,12 +752,14 @@ lib LibGst
     copy : Void*
     dispose : LibGst::MiniObjectDisposeFunction
     free : LibGst::MiniObjectFreeFunction
-    n_qdata : UInt32
-    qdata : Void*
+    priv_uint : UInt32
+    priv_pointer : Void*
   end
+  fun mini_object_add_parent = gst_mini_object_add_parent(this : MiniObject*, parent : LibGst::MiniObject*) : Void
   fun mini_object_get_qdata = gst_mini_object_get_qdata(this : MiniObject*, quark : UInt32) : Void*
   fun mini_object_is_writable = gst_mini_object_is_writable(this : MiniObject*) : Bool
   fun mini_object_lock = gst_mini_object_lock(this : MiniObject*, flags : LibGst::LockFlags) : Bool
+  fun mini_object_remove_parent = gst_mini_object_remove_parent(this : MiniObject*, parent : LibGst::MiniObject*) : Void
   fun mini_object_set_qdata = gst_mini_object_set_qdata(this : MiniObject*, quark : UInt32, data : Void*, destroy : LibGLib::DestroyNotify) : Void
   fun mini_object_steal_qdata = gst_mini_object_steal_qdata(this : MiniObject*, quark : UInt32) : Void*
   fun mini_object_unlock = gst_mini_object_unlock(this : MiniObject*, flags : LibGst::LockFlags) : Void
@@ -829,10 +836,12 @@ lib LibGst
   fun poll_add_fd = gst_poll_add_fd(this : Poll*, fd : LibGst::PollFD*) : Bool
   fun poll_fd_can_read = gst_poll_fd_can_read(this : Poll*, fd : LibGst::PollFD*) : Bool
   fun poll_fd_can_write = gst_poll_fd_can_write(this : Poll*, fd : LibGst::PollFD*) : Bool
+  fun poll_fd_ctl_pri = gst_poll_fd_ctl_pri(this : Poll*, fd : LibGst::PollFD*, active : Bool) : Bool
   fun poll_fd_ctl_read = gst_poll_fd_ctl_read(this : Poll*, fd : LibGst::PollFD*, active : Bool) : Bool
   fun poll_fd_ctl_write = gst_poll_fd_ctl_write(this : Poll*, fd : LibGst::PollFD*, active : Bool) : Bool
   fun poll_fd_has_closed = gst_poll_fd_has_closed(this : Poll*, fd : LibGst::PollFD*) : Bool
   fun poll_fd_has_error = gst_poll_fd_has_error(this : Poll*, fd : LibGst::PollFD*) : Bool
+  fun poll_fd_has_pri = gst_poll_fd_has_pri(this : Poll*, fd : LibGst::PollFD*) : Bool
   fun poll_fd_ignored = gst_poll_fd_ignored(this : Poll*, fd : LibGst::PollFD*) : Void
   fun poll_free = gst_poll_free(this : Poll*) : Void
   fun poll_get_read_gpollfd = gst_poll_get_read_gpollfd(this : Poll*, fd : LibGLib::PollFD*) : Void
@@ -877,6 +886,7 @@ lib LibGst
   end
   fun query_new_accept_caps = gst_query_new_accept_caps(caps : LibGst::Caps*) : LibGst::Query*
   fun query_new_allocation = gst_query_new_allocation(caps : LibGst::Caps*, need_pool : Bool) : LibGst::Query*
+  fun query_new_bitrate = gst_query_new_bitrate() : LibGst::Query*
   fun query_new_buffering = gst_query_new_buffering(format : LibGst::Format) : LibGst::Query*
   fun query_new_caps = gst_query_new_caps(filter : LibGst::Caps*) : LibGst::Query*
   fun query_new_context = gst_query_new_context(context_type : UInt8*) : LibGst::Query*
@@ -908,6 +918,7 @@ lib LibGst
   fun query_parse_accept_caps = gst_query_parse_accept_caps(this : Query*, caps : LibGst::Caps**) : Void
   fun query_parse_accept_caps_result = gst_query_parse_accept_caps_result(this : Query*, result : Bool*) : Void
   fun query_parse_allocation = gst_query_parse_allocation(this : Query*, caps : LibGst::Caps**, need_pool : Bool*) : Void
+  fun query_parse_bitrate = gst_query_parse_bitrate(this : Query*, nominal_bitrate : UInt32*) : Void
   fun query_parse_buffering_percent = gst_query_parse_buffering_percent(this : Query*, busy : Bool*, percent : Int32*) : Void
   fun query_parse_buffering_range = gst_query_parse_buffering_range(this : Query*, format : LibGst::Format*, start : Int64*, stop : Int64*, estimated_total : Int64*) : Void
   fun query_parse_buffering_stats = gst_query_parse_buffering_stats(this : Query*, mode : LibGst::BufferingMode*, avg_in : Int32*, avg_out : Int32*, buffering_left : Int64*) : Void
@@ -936,6 +947,7 @@ lib LibGst
   fun query_remove_nth_allocation_param = gst_query_remove_nth_allocation_param(this : Query*, index : UInt32) : Void
   fun query_remove_nth_allocation_pool = gst_query_remove_nth_allocation_pool(this : Query*, index : UInt32) : Void
   fun query_set_accept_caps_result = gst_query_set_accept_caps_result(this : Query*, result : Bool) : Void
+  fun query_set_bitrate = gst_query_set_bitrate(this : Query*, nominal_bitrate : UInt32) : Void
   fun query_set_buffering_percent = gst_query_set_buffering_percent(this : Query*, busy : Bool, percent : Int32) : Void
   fun query_set_buffering_range = gst_query_set_buffering_range(this : Query*, format : LibGst::Format, start : Int64, stop : Int64, estimated_total : Int64) : Void
   fun query_set_buffering_stats = gst_query_set_buffering_stats(this : Query*, mode : LibGst::BufferingMode, avg_in : Int32, avg_out : Int32, buffering_left : Int64) : Void
@@ -977,7 +989,11 @@ lib LibGst
   fun sample_get_caps = gst_sample_get_caps(this : Sample*) : LibGst::Caps*
   fun sample_get_info = gst_sample_get_info(this : Sample*) : LibGst::Structure*
   fun sample_get_segment = gst_sample_get_segment(this : Sample*) : LibGst::Segment*
+  fun sample_set_buffer = gst_sample_set_buffer(this : Sample*, buffer : LibGst::Buffer*) : Void
   fun sample_set_buffer_list = gst_sample_set_buffer_list(this : Sample*, buffer_list : LibGst::BufferList*) : Void
+  fun sample_set_caps = gst_sample_set_caps(this : Sample*, caps : LibGst::Caps*) : Void
+  fun sample_set_info = gst_sample_set_info(this : Sample*, info : LibGst::Structure*) : Bool
+  fun sample_set_segment = gst_sample_set_segment(this : Sample*, segment : LibGst::Segment*) : Void
 
   struct Segment # struct
     flags : LibGst::SegmentFlags
@@ -1432,10 +1448,12 @@ lib LibGst
     # Property window_threshold : Int32
   end
   fun clock_id_compare_func = gst_clock_id_compare_func(id1 : Void*, id2 : Void*) : Int32
+  fun clock_id_get_clock = gst_clock_id_get_clock(id : Void*) : LibGst::Clock*
   fun clock_id_get_time = gst_clock_id_get_time(id : Void*) : UInt64
   fun clock_id_ref = gst_clock_id_ref(id : Void*) : Void*
   fun clock_id_unref = gst_clock_id_unref(id : Void*) : Void
   fun clock_id_unschedule = gst_clock_id_unschedule(id : Void*) : Void
+  fun clock_id_uses_clock = gst_clock_id_uses_clock(id : Void*, clock : LibGst::Clock*) : Bool
   fun clock_id_wait = gst_clock_id_wait(id : Void*, jitter : Int64*) : LibGst::ClockReturn
   fun clock_id_wait_async = gst_clock_id_wait_async(id : Void*, func : LibGst::ClockCallback, user_data : Void*, destroy_data : LibGLib::DestroyNotify) : LibGst::ClockReturn
   fun clock_add_observation = gst_clock_add_observation(this : Clock*, slave : UInt64, master : UInt64, r_squared : Float64*) : Bool
@@ -1540,6 +1558,7 @@ lib LibGst
   fun device_provider_register = gst_device_provider_register(plugin : LibGst::Plugin*, name : UInt8*, rank : UInt32, type : UInt64) : Bool
   fun device_provider_can_monitor = gst_device_provider_can_monitor(this : DeviceProvider*) : Bool
   fun device_provider_device_add = gst_device_provider_device_add(this : DeviceProvider*, device : LibGst::Device*) : Void
+  fun device_provider_device_changed = gst_device_provider_device_changed(this : DeviceProvider*, device : LibGst::Device*, changed_device : LibGst::Device*) : Void
   fun device_provider_device_remove = gst_device_provider_device_remove(this : DeviceProvider*, device : LibGst::Device*) : Void
   fun device_provider_get_bus = gst_device_provider_get_bus(this : DeviceProvider*) : LibGst::Bus*
   fun device_provider_get_devices = gst_device_provider_get_devices(this : DeviceProvider*) : Void**
@@ -2292,7 +2311,7 @@ lib LibGst
   end
 
   @[Flags]
-  enum DebugGraphDetails : Int32
+  enum DebugGraphDetails : UInt32
     ZERO_NONE = 0
     MEDIA_TYPE = 1
     CAPS_DETAILS = 2
@@ -2300,7 +2319,7 @@ lib LibGst
     STATES = 8
     FULL_PARAMS = 16
     ALL = 15
-    VERBOSE = -1
+    VERBOSE = 4294967295
   end
 
   @[Flags]
@@ -2396,6 +2415,7 @@ lib LibGst
     STREAM_COLLECTION = 2147483652
     STREAMS_SELECTED = 2147483653
     REDIRECT = 2147483654
+    DEVICE_CHANGED = 2147483654
     ANY = 4294967295
   end
   fun message_type_get_name = gst_message_type_get_name(type : LibGst::MessageType) : UInt8*
@@ -2901,6 +2921,7 @@ lib LibGst
     CAPS = 43523
     DRAIN = 46086
     CONTEXT = 48643
+    BITRATE = 51202
   end
   fun query_type_get_flags = gst_query_type_get_flags(type : LibGst::QueryType) : LibGst::QueryTypeFlags
   fun query_type_get_name = gst_query_type_get_name(type : LibGst::QueryType) : UInt8*
@@ -3316,8 +3337,6 @@ lib LibGst
   fun tag_list_copy_value = gst_tag_list_copy_value(dest : LibGObject::Value*, list : LibGst::TagList*, tag : UInt8*) : Bool
   fun tag_merge_strings_with_comma = gst_tag_merge_strings_with_comma(dest : LibGObject::Value*, src : LibGObject::Value*) : Void
   fun tag_merge_use_first = gst_tag_merge_use_first(dest : LibGObject::Value*, src : LibGObject::Value*) : Void
-  fun tag_register = gst_tag_register(name : UInt8*, flag : LibGst::TagFlag, type : UInt64, nick : UInt8*, blurb : UInt8*, func : LibGst::TagMergeFunc) : Void
-  fun tag_register_static = gst_tag_register_static(name : UInt8*, flag : LibGst::TagFlag, type : UInt64, nick : UInt8*, blurb : UInt8*, func : LibGst::TagMergeFunc) : Void
   fun toc_entry_type_get_nick = gst_toc_entry_type_get_nick(type : LibGst::TocEntryType) : UInt8*
   fun type_find_get_type = gst_type_find_get_type() : UInt64
   fun type_find_register = gst_type_find_register(plugin : LibGst::Plugin*, name : UInt8*, rank : UInt32, func : LibGst::TypeFindFunction, extensions : UInt8*, possible_caps : LibGst::Caps*, data : Void*, data_notify : LibGLib::DestroyNotify) : Bool

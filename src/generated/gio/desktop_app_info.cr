@@ -106,6 +106,11 @@ module Gio
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
+    def string_list(key, length)
+      __return_value = LibGio.desktop_app_info_get_string_list(@pointer.as(LibGio::DesktopAppInfo*), key.to_unsafe, length)
+      PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
+    end
+
     def has_key(key)
       __return_value = LibGio.desktop_app_info_has_key(@pointer.as(LibGio::DesktopAppInfo*), key.to_unsafe)
       __return_value

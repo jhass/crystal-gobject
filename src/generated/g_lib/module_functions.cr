@@ -67,6 +67,8 @@ module GLib
 
   HAVE_GNUC_VISIBILITY = LibGLib::HAVE_GNUC_VISIBILITY
 
+  HAVE_GROWING_STACK = LibGLib::HAVE_GROWING_STACK
+
   HAVE_ISO_VARARGS = LibGLib::HAVE_ISO_VARARGS
 
   HOOK_FLAG_USER_SHIFT = LibGLib::HOOK_FLAG_USER_SHIFT
@@ -226,6 +228,8 @@ module GLib
   SYSDEF_MSG_OOB = LibGLib::SYSDEF_MSG_OOB
 
   SYSDEF_MSG_PEEK = LibGLib::SYSDEF_MSG_PEEK
+
+  TEST_OPTION_ISOLATE_DIRS = LibGLib::TEST_OPTION_ISOLATE_DIRS
 
   TIME_SPAN_DAY = LibGLib::TIME_SPAN_DAY
 
@@ -480,6 +484,26 @@ module GLib
     nil
   end
 
+  def self.atomic_ref_count_compare(arc, val)
+    __return_value = LibGLib.atomic_ref_count_compare(arc, Int32.new(val))
+    __return_value
+  end
+
+  def self.atomic_ref_count_dec(arc)
+    __return_value = LibGLib.atomic_ref_count_dec(arc)
+    __return_value
+  end
+
+  def self.atomic_ref_count_inc(arc)
+    LibGLib.atomic_ref_count_inc(arc)
+    nil
+  end
+
+  def self.atomic_ref_count_init(arc)
+    LibGLib.atomic_ref_count_init(arc)
+    nil
+  end
+
   def self.base64_decode(text, out_len)
     __return_value = LibGLib.base64_decode(text.to_unsafe, out_len)
     PointerIterator.new(__return_value) {|__item| __item }
@@ -491,7 +515,7 @@ module GLib
   end
 
   def self.base64_encode(data, len)
-    __return_value = LibGLib.base64_encode(data, UInt64.new(len))
+    __return_value = LibGLib.base64_encode(data ? data : nil, UInt64.new(len))
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
@@ -1650,6 +1674,26 @@ module GLib
     nil
   end
 
+  def self.ref_count_compare(rc, val)
+    __return_value = LibGLib.ref_count_compare(rc, Int32.new(val))
+    __return_value
+  end
+
+  def self.ref_count_dec(rc)
+    __return_value = LibGLib.ref_count_dec(rc)
+    __return_value
+  end
+
+  def self.ref_count_inc(rc)
+    LibGLib.ref_count_inc(rc)
+    nil
+  end
+
+  def self.ref_count_init(rc)
+    LibGLib.ref_count_init(rc)
+    nil
+  end
+
   def self.ref_string_acquire(str)
     __return_value = LibGLib.ref_string_acquire(str.to_unsafe)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
@@ -2132,6 +2176,11 @@ module GLib
 
   def self.strv_contains(strv, str)
     __return_value = LibGLib.strv_contains(strv.to_unsafe, str.to_unsafe)
+    __return_value
+  end
+
+  def self.strv_equal(strv1, strv2)
+    __return_value = LibGLib.strv_equal(strv1.to_unsafe, strv2.to_unsafe)
     __return_value
   end
 
@@ -2841,6 +2890,11 @@ module GLib
     __return_value
   end
 
+  def self.utf8_validate_len(str, max_len, _end)
+    __return_value = LibGLib.utf8_validate_len(str, UInt64.new(max_len), _end)
+    __return_value
+  end
+
   def self.uuid_string_is_valid(str)
     __return_value = LibGLib.uuid_string_is_valid(str.to_unsafe)
     __return_value
@@ -2891,6 +2945,11 @@ module GLib
   def self.variant_type_checked_(arg0)
     __return_value = LibGLib.variant_type_checked_(arg0.to_unsafe)
     GLib::VariantType.new(__return_value)
+  end
+
+  def self.variant_type_string_get_depth_(type_string)
+    __return_value = LibGLib.variant_type_string_get_depth_(type_string.to_unsafe)
+    __return_value
   end
 
   def self.variant_type_string_is_valid(type_string)

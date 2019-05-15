@@ -130,7 +130,7 @@ module Gst
 
     def factory
       __return_value = LibGst.element_get_factory(@pointer.as(LibGst::Element*))
-      Gst::ElementFactory.new(__return_value)
+      Gst::ElementFactory.new(__return_value) if __return_value
     end
 
     def metadata(key)

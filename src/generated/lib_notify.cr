@@ -1,8 +1,8 @@
-require "./lib_g_lib"
+require "./lib_g_object"
 require "./lib_gdk_pixbuf"
 require "./lib_gio"
+require "./lib_g_lib"
 require "./lib_g_module"
-require "./lib_g_object"
 
 @[Link("notify")]
 lib LibNotify
@@ -14,7 +14,7 @@ lib LibNotify
   EXPIRES_DEFAULT = -1 # : Int32
   EXPIRES_NEVER = 0 # : Int32
   VERSION_MAJOR = 0 # : Int32
-  VERSION_MICRO = 7 # : Int32
+  VERSION_MICRO = 8 # : Int32
   VERSION_MINOR = 7 # : Int32
 
   ###########################################

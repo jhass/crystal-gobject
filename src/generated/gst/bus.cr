@@ -53,7 +53,7 @@ module Gst
     end
 
     def pollfd(fd)
-      LibGst.bus_get_pollfd(@pointer.as(LibGst::Bus*), fd.to_unsafe.as(LibGLib::PollFD*))
+      LibGst.bus_get_pollfd(@pointer.as(LibGst::Bus*), fd)
       nil
     end
 

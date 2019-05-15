@@ -2,7 +2,7 @@ module GLib
   class TestLogMsg
     include GObject::WrappedType
 
-    def self.new(log_type : GLib::TestLogType|Nil = nil, n_strings : UInt32|Nil = nil, strings : String|Nil = nil, n_nums : UInt32|Nil = nil, nums : Int64|Nil = nil) : self
+    def self.new(log_type : GLib::TestLogType|Nil = nil, n_strings : UInt32|Nil = nil, strings : String|Nil = nil, n_nums : UInt32|Nil = nil, nums : Void*|Nil = nil) : self
       ptr = Pointer(UInt8).malloc(32, 0u8)
       new(ptr.as(LibGLib::TestLogMsg*)).tap do |object|
         object.log_type = log_type unless log_type.nil?
@@ -63,7 +63,7 @@ module GLib
       (to_unsafe.as(LibGLib::TestLogMsg*).value.nums)
     end
 
-    def nums=(value : Int64)
+    def nums=(value : Void*)
       to_unsafe.as(LibGLib::TestLogMsg*).value.nums = value
     end
 

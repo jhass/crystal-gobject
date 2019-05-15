@@ -33,6 +33,8 @@ module Gst
 
   ELEMENT_FACTORY_KLASS_FORMATTER = LibGst::ELEMENT_FACTORY_KLASS_FORMATTER
 
+  ELEMENT_FACTORY_KLASS_HARDWARE = LibGst::ELEMENT_FACTORY_KLASS_HARDWARE
+
   ELEMENT_FACTORY_KLASS_MEDIA_AUDIO = LibGst::ELEMENT_FACTORY_KLASS_MEDIA_AUDIO
 
   ELEMENT_FACTORY_KLASS_MEDIA_IMAGE = LibGst::ELEMENT_FACTORY_KLASS_MEDIA_IMAGE
@@ -113,8 +115,6 @@ module Gst
 
   ELEMENT_METADATA_LONGNAME = LibGst::ELEMENT_METADATA_LONGNAME
 
-  ERROR_SYSTEM = LibGst::ERROR_SYSTEM
-
   EVENT_NUM_SHIFT = LibGst::EVENT_NUM_SHIFT
 
   EVENT_TYPE_BOTH = LibGst::EVENT_TYPE_BOTH
@@ -124,8 +124,6 @@ module Gst
   FORMAT_PERCENT_MAX = LibGst::FORMAT_PERCENT_MAX
 
   FORMAT_PERCENT_SCALE = LibGst::FORMAT_PERCENT_SCALE
-
-  FOURCC_FORMAT = LibGst::FOURCC_FORMAT
 
   GROUP_ID_INVALID = LibGst::GROUP_ID_INVALID
 
@@ -153,7 +151,7 @@ module Gst
 
   PROTECTION_SYSTEM_ID_CAPS_FIELD = LibGst::PROTECTION_SYSTEM_ID_CAPS_FIELD
 
-  PTR_FORMAT = LibGst::PTR_FORMAT
+  PROTECTION_UNSPECIFIED_SYSTEM_ID = LibGst::PROTECTION_UNSPECIFIED_SYSTEM_ID
 
   QUERY_NUM_SHIFT = LibGst::QUERY_NUM_SHIFT
 
@@ -161,11 +159,7 @@ module Gst
 
   SECOND = LibGst::SECOND
 
-  SEGMENT_FORMAT = LibGst::SEGMENT_FORMAT
-
   SEQNUM_INVALID = LibGst::SEQNUM_INVALID
-
-  STIME_FORMAT = LibGst::STIME_FORMAT
 
   TAG_ALBUM = LibGst::TAG_ALBUM
 
@@ -336,8 +330,6 @@ module Gst
   TAG_VERSION = LibGst::TAG_VERSION
 
   TAG_VIDEO_CODEC = LibGst::TAG_VIDEO_CODEC
-
-  TIME_FORMAT = LibGst::TIME_FORMAT
 
   TOC_REPEAT_COUNT_INFINITE = LibGst::TOC_REPEAT_COUNT_INFINITE
 
@@ -899,16 +891,6 @@ module Gst
 
   def self.tag_merge_use_first(dest, src)
     LibGst.tag_merge_use_first(dest, src.to_unsafe.as(LibGObject::Value*))
-    nil
-  end
-
-  def self.tag_register(name, flag : Gst::TagFlag, type, nick, blurb, func)
-    LibGst.tag_register(name.to_unsafe, flag, UInt64.new(type), nick.to_unsafe, blurb.to_unsafe, func ? func : nil)
-    nil
-  end
-
-  def self.tag_register_static(name, flag : Gst::TagFlag, type, nick, blurb, func)
-    LibGst.tag_register_static(name.to_unsafe, flag, UInt64.new(type), nick.to_unsafe, blurb.to_unsafe, func ? func : nil)
     nil
   end
 

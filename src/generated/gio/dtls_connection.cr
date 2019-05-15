@@ -39,6 +39,11 @@ module Gio
       Gio::TlsInteraction.new(__return_value)
     end
 
+    def negotiated_protocol
+      __return_value = LibGio.dtls_connection_get_negotiated_protocol(@pointer.as(LibGio::DtlsConnection*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
+    end
+
     def peer_certificate
       __return_value = LibGio.dtls_connection_get_peer_certificate(@pointer.as(LibGio::DtlsConnection*))
       Gio::TlsCertificate.new(__return_value)
@@ -76,6 +81,11 @@ module Gio
       __return_value = LibGio.dtls_connection_handshake_finish(@pointer.as(LibGio::DtlsConnection*), result.to_unsafe.as(LibGio::AsyncResult*), pointerof(__error))
       GLib::Error.assert __error
       __return_value
+    end
+
+    def advertised_protocols=(protocols)
+      LibGio.dtls_connection_set_advertised_protocols(@pointer.as(LibGio::DtlsConnection*), protocols ? protocols : nil)
+      nil
     end
 
     def certificate=(certificate)

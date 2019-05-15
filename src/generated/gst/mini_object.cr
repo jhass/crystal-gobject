@@ -24,6 +24,11 @@ module Gst
       @pointer.not_nil!.as(LibGst::MiniObject*)
     end
 
+    def add_parent(parent)
+      LibGst.mini_object_add_parent(@pointer.as(LibGst::MiniObject*), parent.to_unsafe.as(LibGst::MiniObject*))
+      nil
+    end
+
     def qdata(quark)
       LibGst.mini_object_get_qdata(@pointer.as(LibGst::MiniObject*), UInt32.new(quark))
       nil
@@ -37,6 +42,11 @@ module Gst
     def lock(flags : Gst::LockFlags)
       __return_value = LibGst.mini_object_lock(@pointer.as(LibGst::MiniObject*), flags)
       __return_value
+    end
+
+    def remove_parent(parent)
+      LibGst.mini_object_remove_parent(@pointer.as(LibGst::MiniObject*), parent.to_unsafe.as(LibGst::MiniObject*))
+      nil
     end
 
     def set_qdata(quark, data, destroy)
@@ -120,12 +130,12 @@ module Gst
       to_unsafe.as(LibGst::MiniObject*).value.free = value
     end
 
-    def n_qdata
-      (to_unsafe.as(LibGst::MiniObject*).value.n_qdata)
+    def priv_uint
+      (to_unsafe.as(LibGst::MiniObject*).value.priv_uint)
     end
 
-    def qdata
-      (to_unsafe.as(LibGst::MiniObject*).value.qdata)
+    def priv_pointer
+      (to_unsafe.as(LibGst::MiniObject*).value.priv_pointer)
     end
 
   end

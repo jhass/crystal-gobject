@@ -19,6 +19,16 @@ module Gst
       @pointer.not_nil!.as(LibGst::Meta*)
     end
 
+    def compare_seqnum(meta2)
+      __return_value = LibGst.meta_compare_seqnum(@pointer.as(LibGst::Meta*), meta2.to_unsafe.as(LibGst::Meta*))
+      __return_value
+    end
+
+    def seqnum
+      __return_value = LibGst.meta_get_seqnum(@pointer.as(LibGst::Meta*))
+      __return_value
+    end
+
     def self.api_type_get_tags(api)
       __return_value = LibGst.meta_api_type_get_tags(UInt64.new(api))
       PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }

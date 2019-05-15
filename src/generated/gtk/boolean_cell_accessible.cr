@@ -13,6 +13,7 @@ module Gtk
 
     # Implements Action
     # Implements Component
+    # Implements TableCell
   end
 end
 

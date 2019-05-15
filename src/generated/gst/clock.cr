@@ -34,6 +34,11 @@ module Gst
       __return_value
     end
 
+    def self.id_get_clock(id)
+      __return_value = LibGst.clock_id_get_clock(id)
+      Gst::Clock.new(__return_value) if __return_value
+    end
+
     def self.id_get_time(id)
       __return_value = LibGst.clock_id_get_time(id)
       __return_value
@@ -52,6 +57,11 @@ module Gst
     def self.id_unschedule(id)
       LibGst.clock_id_unschedule(id)
       nil
+    end
+
+    def self.id_uses_clock(id, clock)
+      __return_value = LibGst.clock_id_uses_clock(id, clock.to_unsafe.as(LibGst::Clock*))
+      __return_value
     end
 
     def self.id_wait(id, jitter)

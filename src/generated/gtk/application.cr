@@ -146,6 +146,15 @@ module Gtk
       nil
     end
 
+    alias QueryEndSignal = Application ->
+    def on_query_end(&__block : QueryEndSignal)
+      __callback = ->(_arg0 : LibGtk::Application*) {
+       __return_value = __block.call(Application.new(_arg0))
+       __return_value
+      }
+      connect("query-end", __callback)
+    end
+
     alias WindowAddedSignal = Application, Gtk::Window ->
     def on_window_added(&__block : WindowAddedSignal)
       __callback = ->(_arg0 : LibGtk::Application*, _arg1 : LibGtk::LibGtk::Window**) {

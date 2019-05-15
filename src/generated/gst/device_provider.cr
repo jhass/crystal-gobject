@@ -26,6 +26,11 @@ module Gst
       nil
     end
 
+    def device_changed(device, changed_device)
+      LibGst.device_provider_device_changed(@pointer.as(LibGst::DeviceProvider*), device.to_unsafe.as(LibGst::Device*), changed_device.to_unsafe.as(LibGst::Device*))
+      nil
+    end
+
     def device_remove(device)
       LibGst.device_provider_device_remove(@pointer.as(LibGst::DeviceProvider*), device.to_unsafe.as(LibGst::Device*))
       nil

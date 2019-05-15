@@ -14,6 +14,7 @@ module Gtk
     # Implements Action
     # Implements Component
     # Implements Image
+    # Implements TableCell
   end
 end
 

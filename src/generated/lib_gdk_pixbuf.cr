@@ -1,6 +1,6 @@
-require "./lib_g_lib"
-require "./lib_gio"
 require "./lib_g_object"
+require "./lib_gio"
+require "./lib_g_lib"
 require "./lib_g_module"
 
 @[Link("gdk_pixbuf-2.0")]
@@ -56,9 +56,9 @@ lib LibGdkPixbuf
 
   PIXBUF_FEATURES_H = 1 # : Int32
   PIXBUF_MAJOR = 2 # : Int32
-  PIXBUF_MICRO = 0 # : Int32
+  PIXBUF_MICRO = 1 # : Int32
   PIXBUF_MINOR = 38 # : Int32
-  PIXBUF_VERSION = "2.38.0" # : UInt8*
+  PIXBUF_VERSION = "2.38.1" # : UInt8*
 
   ###########################################
   ##    Objects

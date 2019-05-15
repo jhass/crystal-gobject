@@ -62,6 +62,11 @@ module Gst
       cast Gst::Message.new(__return_value)
     end
 
+    def self.new_device_changed(src, device, changed_device) : self
+      __return_value = LibGst.message_new_device_changed(src.to_unsafe.as(LibGst::Object*), device.to_unsafe.as(LibGst::Device*), changed_device.to_unsafe.as(LibGst::Device*))
+      cast Gst::Message.new(__return_value)
+    end
+
     def self.new_device_removed(src, device) : self
       __return_value = LibGst.message_new_device_removed(src.to_unsafe.as(LibGst::Object*), device.to_unsafe.as(LibGst::Device*))
       cast Gst::Message.new(__return_value)
@@ -88,7 +93,7 @@ module Gst
     end
 
     def self.new_error_with_details(src, error, debug, details) : self
-      __return_value = LibGst.message_new_error_with_details(src ? src.to_unsafe.as(LibGst::Object*) : nil, error, debug.to_unsafe, details.to_unsafe.as(LibGst::Structure*))
+      __return_value = LibGst.message_new_error_with_details(src ? src.to_unsafe.as(LibGst::Object*) : nil, error, debug.to_unsafe, details ? details.to_unsafe.as(LibGst::Structure*) : nil)
       cast Gst::Message.new(__return_value) if __return_value
     end
 
@@ -103,7 +108,7 @@ module Gst
     end
 
     def self.new_info_with_details(src, error, debug, details) : self
-      __return_value = LibGst.message_new_info_with_details(src ? src.to_unsafe.as(LibGst::Object*) : nil, error, debug.to_unsafe, details.to_unsafe.as(LibGst::Structure*))
+      __return_value = LibGst.message_new_info_with_details(src ? src.to_unsafe.as(LibGst::Object*) : nil, error, debug.to_unsafe, details ? details.to_unsafe.as(LibGst::Structure*) : nil)
       cast Gst::Message.new(__return_value) if __return_value
     end
 
@@ -223,7 +228,7 @@ module Gst
     end
 
     def self.new_warning_with_details(src, error, debug, details) : self
-      __return_value = LibGst.message_new_warning_with_details(src ? src.to_unsafe.as(LibGst::Object*) : nil, error, debug.to_unsafe, details.to_unsafe.as(LibGst::Structure*))
+      __return_value = LibGst.message_new_warning_with_details(src ? src.to_unsafe.as(LibGst::Object*) : nil, error, debug.to_unsafe, details ? details.to_unsafe.as(LibGst::Structure*) : nil)
       cast Gst::Message.new(__return_value) if __return_value
     end
 
@@ -289,6 +294,11 @@ module Gst
 
     def parse_device_added(device)
       LibGst.message_parse_device_added(@pointer.as(LibGst::Message*), device)
+      nil
+    end
+
+    def parse_device_changed(device, changed_device)
+      LibGst.message_parse_device_changed(@pointer.as(LibGst::Message*), device, changed_device)
       nil
     end
 

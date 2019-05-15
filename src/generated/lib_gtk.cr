@@ -1,13 +1,13 @@
-require "./lib_pango"
-require "./lib_g_object"
 require "./lib_xlib"
-require "./lib_cairo"
-require "./lib_gdk"
-require "./lib_gio"
-require "./lib_atk"
-require "./lib_gdk_pixbuf"
-require "./lib_g_module"
 require "./lib_g_lib"
+require "./lib_gdk"
+require "./lib_gdk_pixbuf"
+require "./lib_cairo"
+require "./lib_g_object"
+require "./lib_pango"
+require "./lib_gio"
+require "./lib_g_module"
+require "./lib_atk"
 
 @[Link("gtk-3")]
 @[Link("gdk-3")]
@@ -364,6 +364,7 @@ lib LibGtk
   struct Application # object
     parent : LibGio::Application*
     priv : LibGtk::ApplicationPrivate*
+    # Signal query-end
     # Signal window-added
     # Signal window-removed
     # Virtual function window_added
@@ -8163,13 +8164,19 @@ lib LibGtk
     activate : -> Void
     edit : -> Void
     update_relationset : -> Void
+    get_cell_position : -> Void
+    get_column_header_cells : -> Void
+    get_row_header_cells : -> Void
     # Virtual function activate
     # Virtual function edit
     # Virtual function expand_collapse
     # Virtual function get_cell_area
     # Virtual function get_cell_extents
+    # Virtual function get_cell_position
     # Virtual function get_child_index
+    # Virtual function get_column_header_cells
     # Virtual function get_renderer_state
+    # Virtual function get_row_header_cells
     # Virtual function grab_focus
     # Virtual function update_relationset
   end
@@ -8178,8 +8185,11 @@ lib LibGtk
   fun cell_accessible_parent_expand_collapse = gtk_cell_accessible_parent_expand_collapse(this : CellAccessibleParent*, cell : LibGtk::CellAccessible*) : Void
   fun cell_accessible_parent_get_cell_area = gtk_cell_accessible_parent_get_cell_area(this : CellAccessibleParent*, cell : LibGtk::CellAccessible*, cell_rect : LibGdk::Rectangle*) : Void
   fun cell_accessible_parent_get_cell_extents = gtk_cell_accessible_parent_get_cell_extents(this : CellAccessibleParent*, cell : LibGtk::CellAccessible*, x : Int32*, y : Int32*, width : Int32*, height : Int32*, coord_type : LibAtk::CoordType) : Void
+  fun cell_accessible_parent_get_cell_position = gtk_cell_accessible_parent_get_cell_position(this : CellAccessibleParent*, cell : LibGtk::CellAccessible*, row : Int32*, column : Int32*) : Void
   fun cell_accessible_parent_get_child_index = gtk_cell_accessible_parent_get_child_index(this : CellAccessibleParent*, cell : LibGtk::CellAccessible*) : Int32
+  fun cell_accessible_parent_get_column_header_cells = gtk_cell_accessible_parent_get_column_header_cells(this : CellAccessibleParent*, cell : LibGtk::CellAccessible*) : Void*
   fun cell_accessible_parent_get_renderer_state = gtk_cell_accessible_parent_get_renderer_state(this : CellAccessibleParent*, cell : LibGtk::CellAccessible*) : LibGtk::CellRendererState
+  fun cell_accessible_parent_get_row_header_cells = gtk_cell_accessible_parent_get_row_header_cells(this : CellAccessibleParent*, cell : LibGtk::CellAccessible*) : Void*
   fun cell_accessible_parent_grab_focus = gtk_cell_accessible_parent_grab_focus(this : CellAccessibleParent*, cell : LibGtk::CellAccessible*) : Bool
   fun cell_accessible_parent_update_relationset = gtk_cell_accessible_parent_update_relationset(this : CellAccessibleParent*, cell : LibGtk::CellAccessible*, relationset : LibAtk::RelationSet*) : Void
 
@@ -9629,15 +9639,15 @@ lib LibGtk
   ##    Constants
   ###########################################
 
-  BINARY_AGE = 2401 # : Int32
+  BINARY_AGE = 2408 # : Int32
   INPUT_ERROR = -1 # : Int32
-  INTERFACE_AGE = 1 # : Int32
+  INTERFACE_AGE = 4 # : Int32
   LEVEL_BAR_OFFSET_FULL = "full" # : UInt8*
   LEVEL_BAR_OFFSET_HIGH = "high" # : UInt8*
   LEVEL_BAR_OFFSET_LOW = "low" # : UInt8*
   MAJOR_VERSION = 3 # : Int32
   MAX_COMPOSE_LEN = 7 # : Int32
-  MICRO_VERSION = 1 # : Int32
+  MICRO_VERSION = 8 # : Int32
   MINOR_VERSION = 24 # : Int32
   PAPER_NAME_A3 = "iso_a3" # : UInt8*
   PAPER_NAME_A4 = "iso_a4" # : UInt8*
@@ -9679,7 +9689,7 @@ lib LibGtk
   PRINT_SETTINGS_USE_COLOR = "use-color" # : UInt8*
   PRINT_SETTINGS_WIN32_DRIVER_EXTRA = "win32-driver-extra" # : UInt8*
   PRINT_SETTINGS_WIN32_DRIVER_VERSION = "win32-driver-version" # : UInt8*
-  PRIORITY_RESIZE = 10 # : Int32
+  PRIORITY_RESIZE = 110 # : Int32
   STOCK_ABOUT = "gtk-about" # : UInt8*
   STOCK_ADD = "gtk-add" # : UInt8*
   STOCK_APPLY = "gtk-apply" # : UInt8*
@@ -9888,7 +9898,7 @@ lib LibGtk
   STYLE_REGION_COLUMN_HEADER = "column-header" # : UInt8*
   STYLE_REGION_ROW = "row" # : UInt8*
   STYLE_REGION_TAB = "tab" # : UInt8*
-  TEXT_VIEW_PRIORITY_VALIDATE = 5 # : Int32
+  TEXT_VIEW_PRIORITY_VALIDATE = 125 # : Int32
   TREE_SORTABLE_DEFAULT_SORT_COLUMN_ID = -1 # : Int32
   TREE_SORTABLE_UNSORTED_SORT_COLUMN_ID = -2 # : Int32
 

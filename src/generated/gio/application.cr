@@ -268,6 +268,15 @@ module Gio
       connect("handle-local-options", __callback)
     end
 
+    alias NameLostSignal = Application -> Bool
+    def on_name_lost(&__block : NameLostSignal)
+      __callback = ->(_arg0 : LibGio::Application*) {
+       __return_value = __block.call(Application.new(_arg0))
+       __return_value
+      }
+      connect("name-lost", __callback)
+    end
+
     alias OpenSignal = Application, Array(Gio::File), Int32, String ->
     def on_open(&__block : OpenSignal)
       __callback = ->(_arg0 : LibGio::Application*, _arg1 : LibGio::LibGio::File**, _arg2 : LibGio::Int32*, _arg3 : LibGio::UInt8**) {

@@ -22,6 +22,13 @@ module Gio
       __return_value
     end
 
+    def writev_nonblocking(vectors, n_vectors, bytes_written, cancellable)
+      __error = Pointer(LibGLib::Error).null
+      __return_value = LibGio.pollable_output_stream_writev_nonblocking(@pointer.as(LibGio::PollableOutputStream*), vectors, UInt64.new(n_vectors), bytes_written, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
+      GLib::Error.assert __error
+      __return_value
+    end
+
   end
 end
 
