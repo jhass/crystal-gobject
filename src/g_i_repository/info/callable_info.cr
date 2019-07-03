@@ -19,7 +19,7 @@ module GIRepository
       end
 
       def convert_to_crystal(variable)
-        "#{@definition}.new(#{variable})"
+        "#{@definition}.cast(#{variable})"
       end
 
       def convert_from_crystal(variable)

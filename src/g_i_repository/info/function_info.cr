@@ -60,8 +60,11 @@ module GIRepository
         io << "\n#{indent}  GLib::Error.assert __error" if throws?
 
         unless skip_return?
-          io << "\n#{indent}  #{"cast " if constructor?}#{return_type.convert_to_crystal("__return_value")}"
+          io << "\n#{indent} ins=#{"cast " if constructor?}#{return_type.convert_to_crystal("__return_value")}"
           io << " if __return_value" if may_return_null?
+          io << "\n#{indent} ins"
+          io << ".as(self)" if constructor?
+          io << " if __return_value" if may_return_null?          
           io << '\n'
         else
           io << "\n#{indent}  nil\n"

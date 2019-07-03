@@ -1,13 +1,7 @@
 require "../src/gtk"
 
 class MyWindow < Gtk::ApplicationWindow
-  def self.new(app : Gtk::Application)
-    super
-  end
-
-  def initialize(ptr)
-    super(ptr)
-
+  def instantiate
     self.border_width = 10
     self.title = "Hello"
     add Gtk::Label.new("Hello")
@@ -15,13 +9,7 @@ class MyWindow < Gtk::ApplicationWindow
 end
 
 class MyApp < Gtk::Application
-  def self.new(id, flags : Gio::ApplicationFlags)
-    super
-  end
-
-  def initialize(ptr)
-    super(ptr)
-
+  def instantiate
     on_activate do |application|
       window = MyWindow.new(self)
       window.connect "destroy", &->quit

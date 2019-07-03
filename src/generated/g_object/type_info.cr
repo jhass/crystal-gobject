@@ -23,7 +23,7 @@ module GObject
       @pointer = pointer.as(Void*)
     end
 
-    def to_unsafe
+    def to_unsafe : LibGObject::TypeInfo*
       @pointer.not_nil!.as(LibGObject::TypeInfo*)
     end
 
@@ -104,7 +104,7 @@ module GObject
     end
 
     def value_table=(value : GObject::TypeValueTable)
-      to_unsafe.as(LibGObject::TypeInfo*).value.value_table = value.to_unsafe.as(LibGObject::TypeValueTable*)
+      to_unsafe.as(LibGObject::TypeInfo*).value.value_table = value.void_pointer.as(LibGObject::TypeValueTable*)
     end
 
   end

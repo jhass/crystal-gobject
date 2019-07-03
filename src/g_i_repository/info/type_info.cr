@@ -101,7 +101,9 @@ module GIRepository
       when LibGIRepository::TypeTag::INTERFACE
         interface = self.interface
         case interface
-        when ObjectInfo, StructInfo, UnionInfo
+        when ObjectInfo
+          "#{interface.full_constant}.cast(#{variable})"
+        when StructInfo, UnionInfo
           "#{interface.full_constant}.new(#{variable})"
         else
           variable
@@ -128,7 +130,7 @@ module GIRepository
     def convert_from_crystal(variable)
       case tag
       when LibGIRepository::TypeTag::INTERFACE
-        pointer? ? "#{variable}.to_unsafe.as(Lib#{interface.full_constant}*)" : variable
+        pointer? ? "#{variable}.void_pointer.as(Lib#{interface.full_constant}*)" : variable
       when LibGIRepository::TypeTag::ARRAY,
            LibGIRepository::TypeTag::GLIST,
            LibGIRepository::TypeTag::GSLIST,
