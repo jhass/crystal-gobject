@@ -13,3 +13,15 @@ require "../generated/gio/socket_connectable"
 require "../generated/gio/socket_listener_event"
 require "../generated/gio"
 require "./*"
+
+module Gio
+    class SimpleAction
+        def on_activate(&__block : ActivateSignal)
+            __callback = ->(_arg0 : LibGio::SimpleAction*, _arg1 : LibGLib::Variant*) {
+             __return_value = __block.call(SimpleAction.new(_arg0), GLib::Variant.new(_arg1))
+             __return_value
+            }
+            connect("activate", __callback)
+        end
+    end
+end
