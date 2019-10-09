@@ -1,8 +1,11 @@
 require "./base_info"
 require "./type_info"
+require "./registered_type_info"
 
 module GIRepository
   class EnumInfo < BaseInfo
+    include RegisteredTypeInfo
+
     each_converted enum_info, value, ValueInfo
     each_converted enum_info, method, FunctionInfo
 

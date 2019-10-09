@@ -1,7 +1,9 @@
 require "./base_info"
+require "./registered_type_info"
 
 module GIRepository
   class ObjectInfo < BaseInfo
+    include RegisteredTypeInfo
     include WrapperGenerator
 
     each_converted object_info, constant, ConstantInfo

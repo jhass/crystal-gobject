@@ -1,7 +1,10 @@
 require "./base_info"
+require "./registered_type_info"
 
 module GIRepository
   class InterfaceInfo < BaseInfo
+    include RegisteredTypeInfo
+
     each_converted interface_info, constant, ConstantInfo
     each_converted interface_info, method, FunctionInfo
     each_converted interface_info, prerequisite, BaseInfo

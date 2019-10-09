@@ -2,16 +2,32 @@ require "./base_info"
 
 module GIRepository
   module CallableInfo
+    class FakeContainer
+      getter name
+
+      def initialize(@name : String)
+      end
+
+      def type_lib_definition
+        name
+      end
+    end
+
     class FakeType
-      def initialize(@definition : String)
+      def initialize(@container : BaseInfo | FakeContainer)
       end
 
       def lib_definition
-        @definition
+        case container = @container
+        when RegisteredTypeInfo
+          container.type_lib_definition
+        else
+          container.name
+        end
       end
 
-      def wrapper_definition(libname, indent="")
-        @definition
+      def wrapper_definition(libname, indent = "")
+        @container.name
       end
 
       def tag
@@ -19,7 +35,7 @@ module GIRepository
       end
 
       def convert_to_crystal(variable)
-        "#{@definition}.new(#{variable})"
+        "#{@container.name}.new(#{variable})"
       end
 
       def convert_from_crystal(variable)
@@ -40,7 +56,7 @@ module GIRepository
       end
 
       def type
-        FakeType.new "#{@container.name}"
+        FakeType.new(@container)
       end
 
       def for_wrapper_definition(libname)
@@ -65,7 +81,7 @@ module GIRepository
       end
 
       def type
-        FakeType.new "LibGLib::Error**"
+        FakeType.new FakeContainer.new("LibGLib::Error*")
       end
 
       def for_wrapper_definition(libname)
