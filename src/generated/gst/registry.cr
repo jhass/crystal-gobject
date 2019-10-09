@@ -108,7 +108,7 @@ module Gst
 
     alias FeatureAddedSignal = Registry, Gst::PluginFeature ->
     def on_feature_added(&__block : FeatureAddedSignal)
-      __callback = ->(_arg0 : LibGst::Registry*, _arg1 : LibGst::LibGst::PluginFeature**) {
+      __callback = ->(_arg0 : LibGst::Registry*, _arg1 : LibGst::PluginFeature**) {
        __return_value = __block.call(Registry.new(_arg0), Gst::PluginFeature.new(_arg1))
        __return_value
       }
@@ -117,7 +117,7 @@ module Gst
 
     alias PluginAddedSignal = Registry, Gst::Plugin ->
     def on_plugin_added(&__block : PluginAddedSignal)
-      __callback = ->(_arg0 : LibGst::Registry*, _arg1 : LibGst::LibGst::Plugin**) {
+      __callback = ->(_arg0 : LibGst::Registry*, _arg1 : LibGst::Plugin**) {
        __return_value = __block.call(Registry.new(_arg0), Gst::Plugin.new(_arg1))
        __return_value
       }

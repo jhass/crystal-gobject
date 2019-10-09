@@ -124,7 +124,7 @@ module Gtk
 
     alias CycleChildFocusSignal = Paned, Bool -> Bool
     def on_cycle_child_focus(&__block : CycleChildFocusSignal)
-      __callback = ->(_arg0 : LibGtk::Paned*, _arg1 : LibGtk::Bool*) {
+      __callback = ->(_arg0 : LibGtk::Paned*, _arg1 : Bool*) {
        __return_value = __block.call(Paned.new(_arg0), _arg1)
        __return_value
       }
@@ -133,7 +133,7 @@ module Gtk
 
     alias CycleHandleFocusSignal = Paned, Bool -> Bool
     def on_cycle_handle_focus(&__block : CycleHandleFocusSignal)
-      __callback = ->(_arg0 : LibGtk::Paned*, _arg1 : LibGtk::Bool*) {
+      __callback = ->(_arg0 : LibGtk::Paned*, _arg1 : Bool*) {
        __return_value = __block.call(Paned.new(_arg0), _arg1)
        __return_value
       }
@@ -142,7 +142,7 @@ module Gtk
 
     alias MoveHandleSignal = Paned, Gtk::ScrollType -> Bool
     def on_move_handle(&__block : MoveHandleSignal)
-      __callback = ->(_arg0 : LibGtk::Paned*, _arg1 : LibGtk::LibGtk::ScrollType*) {
+      __callback = ->(_arg0 : LibGtk::Paned*, _arg1 : LibGtk::ScrollType*) {
        __return_value = __block.call(Paned.new(_arg0), _arg1)
        __return_value
       }

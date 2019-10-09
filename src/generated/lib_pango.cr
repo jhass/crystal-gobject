@@ -11,6 +11,7 @@ lib LibPango
 
   ANALYSIS_FLAG_CENTERED_BASELINE = 1 # : Int32
   ANALYSIS_FLAG_IS_ELLIPSIS = 2 # : Int32
+  ANALYSIS_FLAG_NEED_HYPHEN = 4 # : Int32
   ATTR_INDEX_FROM_TEXT_BEGINNING = 0 # : Int32
   ENGINE_TYPE_LANG = "PangoEngineLang" # : UInt8*
   ENGINE_TYPE_SHAPE = "PangoEngineShape" # : UInt8*
@@ -62,6 +63,9 @@ lib LibPango
     FONT_FEATURES = 23
     FOREGROUND_ALPHA = 24
     BACKGROUND_ALPHA = 25
+    ALLOW_BREAKS = 26
+    SHOW = 27
+    INSERT_HYPHENS = 28
   end
   fun attr_type_get_name = pango_attr_type_get_name(type : LibPango::AttrType) : UInt8*
   fun attr_type_register = pango_attr_type_register(name : UInt8*) : LibPango::AttrType
@@ -351,7 +355,7 @@ lib LibPango
 
   struct AttrClass # struct
     type : LibPango::AttrType
-    copy : Void*
+    copy : -> Void
     destroy : -> Void
     equal : -> Void
   end
@@ -370,11 +374,13 @@ lib LibPango
     attr : LibPango::Attribute
     desc : LibPango::FontDescription*
   end
+  fun attr_font_desc_new = pango_attr_font_desc_new(desc : LibPango::FontDescription*) : LibPango::Attribute*
 
   struct AttrFontFeatures # struct
     attr : LibPango::Attribute
     features : UInt8*
   end
+  fun attr_font_features_new = pango_attr_font_features_new(features : UInt8*) : LibPango::Attribute*
 
   struct AttrInt # struct
     attr : LibPango::Attribute
@@ -384,7 +390,9 @@ lib LibPango
   struct AttrIterator # struct
     _data : UInt8[0]
   end
+  fun attr_iterator_copy = pango_attr_iterator_copy(this : AttrIterator*) : LibPango::AttrIterator*
   fun attr_iterator_destroy = pango_attr_iterator_destroy(this : AttrIterator*) : Void
+  fun attr_iterator_get = pango_attr_iterator_get(this : AttrIterator*, type : LibPango::AttrType) : LibPango::Attribute*
   fun attr_iterator_get_attrs = pango_attr_iterator_get_attrs(this : AttrIterator*) : Void**
   fun attr_iterator_get_font = pango_attr_iterator_get_font(this : AttrIterator*, desc : LibPango::FontDescription*, language : LibPango::Language*, extra_attrs : Void**) : Void
   fun attr_iterator_next = pango_attr_iterator_next(this : AttrIterator*) : Bool
@@ -394,6 +402,7 @@ lib LibPango
     attr : LibPango::Attribute
     value : LibPango::Language*
   end
+  fun attr_language_new = pango_attr_language_new(language : LibPango::Language*) : LibPango::Attribute*
 
   struct AttrList # struct
     _data : UInt8[0]
@@ -402,11 +411,14 @@ lib LibPango
   fun attr_list_change = pango_attr_list_change(this : AttrList*, attr : LibPango::Attribute*) : Void
   fun attr_list_copy = pango_attr_list_copy(this : AttrList*) : LibPango::AttrList*
   fun attr_list_filter = pango_attr_list_filter(this : AttrList*, func : LibPango::AttrFilterFunc, data : Void*) : LibPango::AttrList*
+  fun attr_list_get_attributes = pango_attr_list_get_attributes(this : AttrList*) : Void**
+  fun attr_list_get_iterator = pango_attr_list_get_iterator(this : AttrList*) : LibPango::AttrIterator*
   fun attr_list_insert = pango_attr_list_insert(this : AttrList*, attr : LibPango::Attribute*) : Void
   fun attr_list_insert_before = pango_attr_list_insert_before(this : AttrList*, attr : LibPango::Attribute*) : Void
   fun attr_list_ref = pango_attr_list_ref(this : AttrList*) : LibPango::AttrList*
   fun attr_list_splice = pango_attr_list_splice(this : AttrList*, other : LibPango::AttrList*, pos : Int32, len : Int32) : Void
   fun attr_list_unref = pango_attr_list_unref(this : AttrList*) : Void
+  fun attr_list_update = pango_attr_list_update(this : AttrList*, pos : Int32, remove : Int32, add : Int32) : Void
 
   struct AttrShape # struct
     attr : LibPango::Attribute
@@ -416,12 +428,16 @@ lib LibPango
     copy_func : LibPango::AttrDataCopyFunc
     destroy_func : LibGLib::DestroyNotify
   end
+  fun attr_shape_new = pango_attr_shape_new(ink_rect : LibPango::Rectangle*, logical_rect : LibPango::Rectangle*) : LibPango::Attribute*
+  fun attr_shape_new_with_data = pango_attr_shape_new_with_data(ink_rect : LibPango::Rectangle*, logical_rect : LibPango::Rectangle*, data : Void*, copy_func : LibPango::AttrDataCopyFunc, destroy_func : LibGLib::DestroyNotify) : LibPango::Attribute*
 
   struct AttrSize # struct
     attr : LibPango::Attribute
     size : Int32
     absolute : UInt32
   end
+  fun attr_size_new = pango_attr_size_new(size : Int32) : LibPango::Attribute*
+  fun attr_size_new_absolute = pango_attr_size_new_absolute(size : Int32) : LibPango::Attribute*
 
   struct AttrString # struct
     attr : LibPango::Attribute
@@ -433,6 +449,7 @@ lib LibPango
     start_index : UInt32
     end_index : UInt32
   end
+  fun attribute_copy = pango_attribute_copy(this : Attribute*) : LibPango::Attribute*
   fun attribute_destroy = pango_attribute_destroy(this : Attribute*) : Void
   fun attribute_equal = pango_attribute_equal(this : Attribute*, attr2 : LibPango::Attribute*) : Bool
   fun attribute_init = pango_attribute_init(this : Attribute*, klass : LibPango::AttrClass*) : Void
@@ -446,15 +463,6 @@ lib LibPango
   fun color_free = pango_color_free(this : Color*) : Void
   fun color_parse = pango_color_parse(this : Color*, spec : UInt8*) : Bool
   fun color_to_string = pango_color_to_string(this : Color*) : UInt8*
-
-  struct Coverage # struct
-    _data : UInt8[0]
-  end
-  fun coverage_get = pango_coverage_get(this : Coverage*, index : Int32) : LibPango::CoverageLevel
-  fun coverage_max = pango_coverage_max(this : Coverage*, other : LibPango::Coverage*) : Void
-  fun coverage_set = pango_coverage_set(this : Coverage*, index : Int32, level : LibPango::CoverageLevel) : Void
-  fun coverage_to_bytes = pango_coverage_to_bytes(this : Coverage*, bytes : UInt8**, n_bytes : Int32*) : Void
-  fun coverage_unref = pango_coverage_unref(this : Coverage*) : Void
 
   struct EngineInfo # struct
     id : UInt8*
@@ -499,8 +507,8 @@ lib LibPango
   fun font_description_set_stretch = pango_font_description_set_stretch(this : FontDescription*, stretch : LibPango::Stretch) : Void
   fun font_description_set_style = pango_font_description_set_style(this : FontDescription*, style : LibPango::Style) : Void
   fun font_description_set_variant = pango_font_description_set_variant(this : FontDescription*, variant : LibPango::Variant) : Void
-  fun font_description_set_variations = pango_font_description_set_variations(this : FontDescription*, settings : UInt8*) : Void
-  fun font_description_set_variations_static = pango_font_description_set_variations_static(this : FontDescription*, settings : UInt8*) : Void
+  fun font_description_set_variations = pango_font_description_set_variations(this : FontDescription*, variations : UInt8*) : Void
+  fun font_description_set_variations_static = pango_font_description_set_variations_static(this : FontDescription*, variations : UInt8*) : Void
   fun font_description_set_weight = pango_font_description_set_weight(this : FontDescription*, weight : LibPango::Weight) : Void
   fun font_description_to_filename = pango_font_description_to_filename(this : FontDescription*) : UInt8*
   fun font_description_to_string = pango_font_description_to_string(this : FontDescription*) : UInt8*
@@ -511,6 +519,7 @@ lib LibPango
     ref_count : UInt32
     ascent : Int32
     descent : Int32
+    height : Int32
     approximate_char_width : Int32
     approximate_digit_width : Int32
     underline_position : Int32
@@ -518,11 +527,11 @@ lib LibPango
     strikethrough_position : Int32
     strikethrough_thickness : Int32
   end
-  fun font_metrics_new = pango_font_metrics_new() : LibPango::FontMetrics*
   fun font_metrics_get_approximate_char_width = pango_font_metrics_get_approximate_char_width(this : FontMetrics*) : Int32
   fun font_metrics_get_approximate_digit_width = pango_font_metrics_get_approximate_digit_width(this : FontMetrics*) : Int32
   fun font_metrics_get_ascent = pango_font_metrics_get_ascent(this : FontMetrics*) : Int32
   fun font_metrics_get_descent = pango_font_metrics_get_descent(this : FontMetrics*) : Int32
+  fun font_metrics_get_height = pango_font_metrics_get_height(this : FontMetrics*) : Int32
   fun font_metrics_get_strikethrough_position = pango_font_metrics_get_strikethrough_position(this : FontMetrics*) : Int32
   fun font_metrics_get_strikethrough_thickness = pango_font_metrics_get_strikethrough_thickness(this : FontMetrics*) : Int32
   fun font_metrics_get_underline_position = pango_font_metrics_get_underline_position(this : FontMetrics*) : Int32
@@ -605,6 +614,7 @@ lib LibPango
     analysis : LibPango::Analysis
   end
   fun item_new = pango_item_new() : LibPango::Item*
+  fun item_apply_attrs = pango_item_apply_attrs(this : Item*, iter : LibPango::AttrIterator*) : Void
   fun item_copy = pango_item_copy(this : Item*) : LibPango::Item*
   fun item_free = pango_item_free(this : Item*) : Void
   fun item_split = pango_item_split(this : Item*, split_index : Int32, split_offset : Int32) : LibPango::Item*
@@ -653,6 +663,7 @@ lib LibPango
     resolved_dir : UInt32
   end
   fun layout_line_get_extents = pango_layout_line_get_extents(this : LayoutLine*, ink_rect : LibPango::Rectangle*, logical_rect : LibPango::Rectangle*) : Void
+  fun layout_line_get_height = pango_layout_line_get_height(this : LayoutLine*, height : Int32*) : Void
   fun layout_line_get_pixel_extents = pango_layout_line_get_pixel_extents(this : LayoutLine*, ink_rect : LibPango::Rectangle*, logical_rect : LibPango::Rectangle*) : Void
   fun layout_line_get_x_ranges = pango_layout_line_get_x_ranges(this : LayoutLine*, start_index : Int32, end_index : Int32, ranges : Int32**, n_ranges : Int32*) : Void
   fun layout_line_index_to_x = pango_layout_line_index_to_x(this : LayoutLine*, index : Int32, trailing : Bool, x_pos : Int32*) : Void
@@ -719,6 +730,7 @@ lib LibPango
   struct ScriptIter # struct
     _data : UInt8[0]
   end
+  fun script_iter_new = pango_script_iter_new(text : UInt8*, length : Int32) : LibPango::ScriptIter*
   fun script_iter_free = pango_script_iter_free(this : ScriptIter*) : Void
   fun script_iter_get_range = pango_script_iter_get_range(this : ScriptIter*, start : UInt8**, _end : UInt8**, script : LibPango::Script*) : Void
   fun script_iter_next = pango_script_iter_next(this : ScriptIter*) : Bool
@@ -755,6 +767,7 @@ lib LibPango
   fun context_get_language = pango_context_get_language(this : Context*) : LibPango::Language*
   fun context_get_matrix = pango_context_get_matrix(this : Context*) : LibPango::Matrix*
   fun context_get_metrics = pango_context_get_metrics(this : Context*, desc : LibPango::FontDescription*, language : LibPango::Language*) : LibPango::FontMetrics*
+  fun context_get_round_glyph_positions = pango_context_get_round_glyph_positions(this : Context*) : Bool
   fun context_get_serial = pango_context_get_serial(this : Context*) : UInt32
   fun context_list_families = pango_context_list_families(this : Context*, families : LibPango::FontFamily***, n_families : Int32*) : Void
   fun context_load_font = pango_context_load_font(this : Context*, desc : LibPango::FontDescription*) : LibPango::Font*
@@ -766,6 +779,20 @@ lib LibPango
   fun context_set_gravity_hint = pango_context_set_gravity_hint(this : Context*, hint : LibPango::GravityHint) : Void
   fun context_set_language = pango_context_set_language(this : Context*, language : LibPango::Language*) : Void
   fun context_set_matrix = pango_context_set_matrix(this : Context*, matrix : LibPango::Matrix*) : Void
+  fun context_set_round_glyph_positions = pango_context_set_round_glyph_positions(this : Context*, round_positions : Bool) : Void
+
+  struct Coverage # object
+    _data : UInt8[0]
+  end
+  fun coverage_new = pango_coverage_new() : LibPango::Coverage*
+  fun coverage_from_bytes = pango_coverage_from_bytes(bytes : UInt8*, n_bytes : Int32) : LibPango::Coverage*
+  fun coverage_copy = pango_coverage_copy(this : Coverage*) : LibPango::Coverage*
+  fun coverage_get = pango_coverage_get(this : Coverage*, index : Int32) : LibPango::CoverageLevel
+  fun coverage_max = pango_coverage_max(this : Coverage*, other : LibPango::Coverage*) : Void
+  fun coverage_ref = pango_coverage_ref(this : Coverage*) : LibPango::Coverage*
+  fun coverage_set = pango_coverage_set(this : Coverage*, index : Int32, level : LibPango::CoverageLevel) : Void
+  fun coverage_to_bytes = pango_coverage_to_bytes(this : Coverage*, bytes : UInt8**, n_bytes : Int32*) : Void
+  fun coverage_unref = pango_coverage_unref(this : Coverage*) : Void
 
   struct Engine # object
     parent_instance : LibGObject::Object*
@@ -786,7 +813,7 @@ lib LibPango
     parent_instance : LibGObject::Object*
     # Virtual function describe
     # Virtual function describe_absolute
-    # Virtual function find_shaper
+    # Virtual function get_coverage
     # Virtual function get_font_map
     # Virtual function get_glyph_extents
     # Virtual function get_metrics
@@ -795,9 +822,11 @@ lib LibPango
   fun font_describe = pango_font_describe(this : Font*) : LibPango::FontDescription*
   fun font_describe_with_absolute_size = pango_font_describe_with_absolute_size(this : Font*) : LibPango::FontDescription*
   fun font_find_shaper = pango_font_find_shaper(this : Font*, language : LibPango::Language*, ch : UInt32) : LibPango::EngineShape*
+  fun font_get_coverage = pango_font_get_coverage(this : Font*, language : LibPango::Language*) : LibPango::Coverage*
   fun font_get_font_map = pango_font_get_font_map(this : Font*) : LibPango::FontMap*
   fun font_get_glyph_extents = pango_font_get_glyph_extents(this : Font*, glyph : UInt32, ink_rect : LibPango::Rectangle*, logical_rect : LibPango::Rectangle*) : Void
   fun font_get_metrics = pango_font_get_metrics(this : Font*, language : LibPango::Language*) : LibPango::FontMetrics*
+  fun font_has_char = pango_font_has_char(this : Font*, wc : UInt8) : Bool
 
   struct FontFace # object
     parent_instance : LibGObject::Object*
@@ -834,7 +863,6 @@ lib LibPango
   fun font_map_changed = pango_font_map_changed(this : FontMap*) : Void
   fun font_map_create_context = pango_font_map_create_context(this : FontMap*) : LibPango::Context*
   fun font_map_get_serial = pango_font_map_get_serial(this : FontMap*) : UInt32
-  fun font_map_get_shape_engine_type = pango_font_map_get_shape_engine_type(this : FontMap*) : UInt8*
   fun font_map_list_families = pango_font_map_list_families(this : FontMap*, families : LibPango::FontFamily***, n_families : Int32*) : Void
   fun font_map_load_font = pango_font_map_load_font(this : FontMap*, context : LibPango::Context*, desc : LibPango::FontDescription*) : LibPango::Font*
   fun font_map_load_fontset = pango_font_map_load_fontset(this : FontMap*, context : LibPango::Context*, desc : LibPango::FontDescription*, language : LibPango::Language*) : LibPango::Fontset*
@@ -849,13 +877,6 @@ lib LibPango
   fun fontset_foreach = pango_fontset_foreach(this : Fontset*, func : LibPango::FontsetForeachFunc, data : Void*) : Void
   fun fontset_get_font = pango_fontset_get_font(this : Fontset*, wc : UInt32) : LibPango::Font*
   fun fontset_get_metrics = pango_fontset_get_metrics(this : Fontset*) : LibPango::FontMetrics*
-
-  struct FontsetSimple # object
-    _data : UInt8[0]
-  end
-  fun fontset_simple_new = pango_fontset_simple_new(language : LibPango::Language*) : LibPango::FontsetSimple*
-  fun fontset_simple_append = pango_fontset_simple_append(this : FontsetSimple*, font : LibPango::Font*) : Void
-  fun fontset_simple_size = pango_fontset_simple_size(this : FontsetSimple*) : Int32
 
   struct Layout # object
     _data : UInt8[0]
@@ -880,6 +901,7 @@ lib LibPango
   fun layout_get_line = pango_layout_get_line(this : Layout*, line : Int32) : LibPango::LayoutLine*
   fun layout_get_line_count = pango_layout_get_line_count(this : Layout*) : Int32
   fun layout_get_line_readonly = pango_layout_get_line_readonly(this : Layout*, line : Int32) : LibPango::LayoutLine*
+  fun layout_get_line_spacing = pango_layout_get_line_spacing(this : Layout*) : Float32
   fun layout_get_lines = pango_layout_get_lines(this : Layout*) : Void**
   fun layout_get_lines_readonly = pango_layout_get_lines_readonly(this : Layout*) : Void**
   fun layout_get_log_attrs = pango_layout_get_log_attrs(this : Layout*, attrs : LibPango::LogAttr**, n_attrs : Int32*) : Void
@@ -908,6 +930,7 @@ lib LibPango
   fun layout_set_height = pango_layout_set_height(this : Layout*, height : Int32) : Void
   fun layout_set_indent = pango_layout_set_indent(this : Layout*, indent : Int32) : Void
   fun layout_set_justify = pango_layout_set_justify(this : Layout*, justify : Bool) : Void
+  fun layout_set_line_spacing = pango_layout_set_line_spacing(this : Layout*, factor : Float32) : Void
   fun layout_set_markup = pango_layout_set_markup(this : Layout*, markup : UInt8*, length : Int32) : Void
   fun layout_set_markup_with_accel = pango_layout_set_markup_with_accel(this : Layout*, markup : UInt8*, length : Int32, accel_marker : UInt8, accel_char : UInt8*) : Void
   fun layout_set_single_paragraph_mode = pango_layout_set_single_paragraph_mode(this : Layout*, setting : Bool) : Void
@@ -975,26 +998,67 @@ lib LibPango
     VARIATIONS = 128
   end
 
+  @[Flags]
+  enum ShapeFlags : UInt32
+    ZERO_NONE = 0
+    NONE = 0
+    ROUND_POSITIONS = 1
+  end
+
+  @[Flags]
+  enum ShowFlags : UInt32
+    ZERO_NONE = 0
+    NONE = 0
+    SPACES = 1
+    LINE_BREAKS = 2
+    IGNORABLES = 4
+  end
+
 
   ###########################################
   ##    Functions
   ###########################################
 
+  fun attr_allow_breaks_new = pango_attr_allow_breaks_new(allow_breaks : Bool) : LibPango::Attribute*
+  fun attr_background_alpha_new = pango_attr_background_alpha_new(alpha : UInt16) : LibPango::Attribute*
+  fun attr_background_new = pango_attr_background_new(red : UInt16, green : UInt16, blue : UInt16) : LibPango::Attribute*
+  fun attr_fallback_new = pango_attr_fallback_new(enable_fallback : Bool) : LibPango::Attribute*
+  fun attr_family_new = pango_attr_family_new(family : UInt8*) : LibPango::Attribute*
+  fun attr_font_desc_new = pango_attr_font_desc_new(desc : LibPango::FontDescription*) : LibPango::Attribute*
+  fun attr_font_features_new = pango_attr_font_features_new(features : UInt8*) : LibPango::Attribute*
+  fun attr_foreground_alpha_new = pango_attr_foreground_alpha_new(alpha : UInt16) : LibPango::Attribute*
+  fun attr_foreground_new = pango_attr_foreground_new(red : UInt16, green : UInt16, blue : UInt16) : LibPango::Attribute*
+  fun attr_gravity_hint_new = pango_attr_gravity_hint_new(hint : LibPango::GravityHint) : LibPango::Attribute*
+  fun attr_gravity_new = pango_attr_gravity_new(gravity : LibPango::Gravity) : LibPango::Attribute*
+  fun attr_insert_hyphens_new = pango_attr_insert_hyphens_new(insert_hyphens : Bool) : LibPango::Attribute*
+  fun attr_language_new = pango_attr_language_new(language : LibPango::Language*) : LibPango::Attribute*
+  fun attr_letter_spacing_new = pango_attr_letter_spacing_new(letter_spacing : Int32) : LibPango::Attribute*
+  fun attr_rise_new = pango_attr_rise_new(rise : Int32) : LibPango::Attribute*
+  fun attr_scale_new = pango_attr_scale_new(scale_factor : Float64) : LibPango::Attribute*
+  fun attr_shape_new = pango_attr_shape_new(ink_rect : LibPango::Rectangle*, logical_rect : LibPango::Rectangle*) : LibPango::Attribute*
+  fun attr_shape_new_with_data = pango_attr_shape_new_with_data(ink_rect : LibPango::Rectangle*, logical_rect : LibPango::Rectangle*, data : Void*, copy_func : LibPango::AttrDataCopyFunc, destroy_func : LibGLib::DestroyNotify) : LibPango::Attribute*
+  fun attr_show_new = pango_attr_show_new(flags : LibPango::ShowFlags) : LibPango::Attribute*
+  fun attr_size_new = pango_attr_size_new(size : Int32) : LibPango::Attribute*
+  fun attr_size_new_absolute = pango_attr_size_new_absolute(size : Int32) : LibPango::Attribute*
+  fun attr_stretch_new = pango_attr_stretch_new(stretch : LibPango::Stretch) : LibPango::Attribute*
+  fun attr_strikethrough_color_new = pango_attr_strikethrough_color_new(red : UInt16, green : UInt16, blue : UInt16) : LibPango::Attribute*
+  fun attr_strikethrough_new = pango_attr_strikethrough_new(strikethrough : Bool) : LibPango::Attribute*
+  fun attr_style_new = pango_attr_style_new(style : LibPango::Style) : LibPango::Attribute*
   fun attr_type_get_name = pango_attr_type_get_name(type : LibPango::AttrType) : UInt8*
   fun attr_type_register = pango_attr_type_register(name : UInt8*) : LibPango::AttrType
+  fun attr_underline_color_new = pango_attr_underline_color_new(red : UInt16, green : UInt16, blue : UInt16) : LibPango::Attribute*
+  fun attr_underline_new = pango_attr_underline_new(underline : LibPango::Underline) : LibPango::Attribute*
+  fun attr_variant_new = pango_attr_variant_new(variant : LibPango::Variant) : LibPango::Attribute*
+  fun attr_weight_new = pango_attr_weight_new(weight : LibPango::Weight) : LibPango::Attribute*
   fun bidi_type_for_unichar = pango_bidi_type_for_unichar(ch : UInt8) : LibPango::BidiType
   fun break = pango_break(text : UInt8*, length : Int32, analysis : LibPango::Analysis*, attrs : LibPango::LogAttr*, attrs_len : Int32) : Void
-  fun config_key_get = pango_config_key_get(key : UInt8*) : UInt8*
-  fun config_key_get_system = pango_config_key_get_system(key : UInt8*) : UInt8*
   fun default_break = pango_default_break(text : UInt8*, length : Int32, analysis : LibPango::Analysis*, attrs : LibPango::LogAttr*, attrs_len : Int32) : Void
   fun extents_to_pixels = pango_extents_to_pixels(inclusive : LibPango::Rectangle*, nearest : LibPango::Rectangle*) : Void
   fun find_base_dir = pango_find_base_dir(text : UInt8*, length : Int32) : LibPango::Direction
   fun find_paragraph_boundary = pango_find_paragraph_boundary(text : UInt8*, length : Int32, paragraph_delimiter_index : Int32*, next_paragraph_start : Int32*) : Void
   fun font_description_from_string = pango_font_description_from_string(str : UInt8*) : LibPango::FontDescription*
-  fun get_lib_subdirectory = pango_get_lib_subdirectory() : UInt8*
   fun get_log_attrs = pango_get_log_attrs(text : UInt8*, length : Int32, level : Int32, language : LibPango::Language*, log_attrs : LibPango::LogAttr*, attrs_len : Int32) : Void
   fun get_mirror_char = pango_get_mirror_char(ch : UInt8, mirrored_ch : UInt8*) : Bool
-  fun get_sysconf_subdirectory = pango_get_sysconf_subdirectory() : UInt8*
   fun gravity_get_for_matrix = pango_gravity_get_for_matrix(matrix : LibPango::Matrix*) : LibPango::Gravity
   fun gravity_get_for_script = pango_gravity_get_for_script(script : LibPango::Script, base_gravity : LibPango::Gravity, hint : LibPango::GravityHint) : LibPango::Gravity
   fun gravity_get_for_script_and_width = pango_gravity_get_for_script_and_width(script : LibPango::Script, wide : Bool, base_gravity : LibPango::Gravity, hint : LibPango::GravityHint) : LibPango::Gravity
@@ -1005,10 +1069,8 @@ lib LibPango
   fun language_from_string = pango_language_from_string(language : UInt8*) : LibPango::Language*
   fun language_get_default = pango_language_get_default() : LibPango::Language*
   fun log2vis_get_embedding_levels = pango_log2vis_get_embedding_levels(text : UInt8*, length : Int32, pbase_dir : LibPango::Direction*) : UInt8*
-  fun lookup_aliases = pango_lookup_aliases(fontname : UInt8*, families : UInt8***, n_families : Int32*) : Void
   fun markup_parser_finish = pango_markup_parser_finish(context : LibGLib::MarkupParseContext*, attr_list : LibPango::AttrList**, text : UInt8**, accel_char : UInt8*, error : LibGLib::Error**) : Bool
   fun markup_parser_new = pango_markup_parser_new(accel_marker : UInt8) : LibGLib::MarkupParseContext*
-  fun module_register = pango_module_register(_module : LibPango::IncludedModule*) : Void
   fun parse_enum = pango_parse_enum(type : UInt64, str : UInt8*, value : Int32*, warn : Bool, possible_values : UInt8**) : Bool
   fun parse_markup = pango_parse_markup(markup_text : UInt8*, length : Int32, accel_marker : UInt8, attr_list : LibPango::AttrList**, text : UInt8**, accel_char : UInt8*, error : LibGLib::Error**) : Bool
   fun parse_stretch = pango_parse_stretch(str : UInt8*, stretch : LibPango::Stretch*, warn : Bool) : Bool
@@ -1025,8 +1087,10 @@ lib LibPango
   fun script_get_sample_language = pango_script_get_sample_language(script : LibPango::Script) : LibPango::Language*
   fun shape = pango_shape(text : UInt8*, length : Int32, analysis : LibPango::Analysis*, glyphs : LibPango::GlyphString*) : Void
   fun shape_full = pango_shape_full(item_text : UInt8*, item_length : Int32, paragraph_text : UInt8*, paragraph_length : Int32, analysis : LibPango::Analysis*, glyphs : LibPango::GlyphString*) : Void
+  fun shape_with_flags = pango_shape_with_flags(item_text : UInt8*, item_length : Int32, paragraph_text : UInt8*, paragraph_length : Int32, analysis : LibPango::Analysis*, glyphs : LibPango::GlyphString*, flags : LibPango::ShapeFlags) : Void
   fun skip_space = pango_skip_space(pos : UInt8**) : Bool
   fun split_file_list = pango_split_file_list(str : UInt8*) : UInt8**
+  fun tailor_break = pango_tailor_break(text : UInt8*, length : Int32, analysis : LibPango::Analysis*, offset : Int32, log_attrs : LibPango::LogAttr*, log_attrs_len : Int32) : Void
   fun trim_string = pango_trim_string(str : UInt8*) : UInt8*
   fun unichar_direction = pango_unichar_direction(ch : UInt8) : LibPango::Direction
   fun units_from_double = pango_units_from_double(d : Float64) : Int32

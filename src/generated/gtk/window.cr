@@ -825,7 +825,7 @@ module Gtk
 
     alias EnableDebuggingSignal = Window, Bool -> Bool
     def on_enable_debugging(&__block : EnableDebuggingSignal)
-      __callback = ->(_arg0 : LibGtk::Window*, _arg1 : LibGtk::Bool*) {
+      __callback = ->(_arg0 : LibGtk::Window*, _arg1 : Bool*) {
        __return_value = __block.call(Window.new(_arg0), _arg1)
        __return_value
       }
@@ -843,7 +843,7 @@ module Gtk
 
     alias SetFocusSignal = Window, Gtk::Widget ->
     def on_set_focus(&__block : SetFocusSignal)
-      __callback = ->(_arg0 : LibGtk::Window*, _arg1 : LibGtk::LibGtk::Widget**) {
+      __callback = ->(_arg0 : LibGtk::Window*, _arg1 : LibGtk::Widget**) {
        __return_value = __block.call(Window.new(_arg0), Gtk::Widget.new(_arg1))
        __return_value
       }

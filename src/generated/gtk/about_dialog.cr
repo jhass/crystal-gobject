@@ -265,7 +265,7 @@ module Gtk
 
     alias ActivateLinkSignal = AboutDialog, String -> Bool
     def on_activate_link(&__block : ActivateLinkSignal)
-      __callback = ->(_arg0 : LibGtk::AboutDialog*, _arg1 : LibGtk::UInt8**) {
+      __callback = ->(_arg0 : LibGtk::AboutDialog*, _arg1 : UInt8**) {
        __return_value = __block.call(AboutDialog.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }

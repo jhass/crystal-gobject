@@ -61,7 +61,7 @@ module Gtk
 
     alias LocationPopupSignal = FileChooserWidget, String ->
     def on_location_popup(&__block : LocationPopupSignal)
-      __callback = ->(_arg0 : LibGtk::FileChooserWidget*, _arg1 : LibGtk::UInt8**) {
+      __callback = ->(_arg0 : LibGtk::FileChooserWidget*, _arg1 : UInt8**) {
        __return_value = __block.call(FileChooserWidget.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
@@ -97,7 +97,7 @@ module Gtk
 
     alias QuickBookmarkSignal = FileChooserWidget, Int32 ->
     def on_quick_bookmark(&__block : QuickBookmarkSignal)
-      __callback = ->(_arg0 : LibGtk::FileChooserWidget*, _arg1 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::FileChooserWidget*, _arg1 : Int32*) {
        __return_value = __block.call(FileChooserWidget.new(_arg0), _arg1)
        __return_value
       }

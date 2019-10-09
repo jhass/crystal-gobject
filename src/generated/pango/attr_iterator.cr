@@ -11,9 +11,19 @@ module Pango
       @pointer.not_nil!.as(LibPango::AttrIterator*)
     end
 
+    def copy
+      __return_value = LibPango.attr_iterator_copy(@pointer.as(LibPango::AttrIterator*))
+      Pango::AttrIterator.new(__return_value)
+    end
+
     def destroy
       LibPango.attr_iterator_destroy(@pointer.as(LibPango::AttrIterator*))
       nil
+    end
+
+    def get(type : Pango::AttrType)
+      __return_value = LibPango.attr_iterator_get(@pointer.as(LibPango::AttrIterator*), type)
+      Pango::Attribute.new(__return_value) if __return_value
     end
 
     def attrs

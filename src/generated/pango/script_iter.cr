@@ -11,6 +11,11 @@ module Pango
       @pointer.not_nil!.as(LibPango::ScriptIter*)
     end
 
+    def self.new(text, length) : self
+      __return_value = LibPango.script_iter_new(text.to_unsafe, Int32.new(length))
+      cast Pango::ScriptIter.new(__return_value)
+    end
+
     def free
       LibPango.script_iter_free(@pointer.as(LibPango::ScriptIter*))
       nil

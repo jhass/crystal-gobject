@@ -293,7 +293,7 @@ module Gio
 
     alias ChangeEventSignal = Settings, Array(UInt32), Int32 -> Bool
     def on_change_event(&__block : ChangeEventSignal)
-      __callback = ->(_arg0 : LibGio::Settings*, _arg1 : LibGio::UInt32**, _arg2 : LibGio::Int32*) {
+      __callback = ->(_arg0 : LibGio::Settings*, _arg1 : UInt32**, _arg2 : Int32*) {
        __return_value = __block.call(Settings.new(_arg0), PointerIterator.new(_arg1) {|__item| __item }, _arg2)
        __return_value
       }
@@ -302,7 +302,7 @@ module Gio
 
     alias ChangedSignal = Settings, String ->
     def on_changed(&__block : ChangedSignal)
-      __callback = ->(_arg0 : LibGio::Settings*, _arg1 : LibGio::UInt8**) {
+      __callback = ->(_arg0 : LibGio::Settings*, _arg1 : UInt8**) {
        __return_value = __block.call(Settings.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
@@ -311,7 +311,7 @@ module Gio
 
     alias WritableChangeEventSignal = Settings, UInt32 -> Bool
     def on_writable_change_event(&__block : WritableChangeEventSignal)
-      __callback = ->(_arg0 : LibGio::Settings*, _arg1 : LibGio::UInt32*) {
+      __callback = ->(_arg0 : LibGio::Settings*, _arg1 : UInt32*) {
        __return_value = __block.call(Settings.new(_arg0), _arg1)
        __return_value
       }
@@ -320,7 +320,7 @@ module Gio
 
     alias WritableChangedSignal = Settings, String ->
     def on_writable_changed(&__block : WritableChangedSignal)
-      __callback = ->(_arg0 : LibGio::Settings*, _arg1 : LibGio::UInt8**) {
+      __callback = ->(_arg0 : LibGio::Settings*, _arg1 : UInt8**) {
        __return_value = __block.call(Settings.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }

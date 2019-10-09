@@ -183,7 +183,7 @@ module Gtk
 
     alias ToggleSizeAllocateSignal = MenuItem, Int32 ->
     def on_toggle_size_allocate(&__block : ToggleSizeAllocateSignal)
-      __callback = ->(_arg0 : LibGtk::MenuItem*, _arg1 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::MenuItem*, _arg1 : Int32*) {
        __return_value = __block.call(MenuItem.new(_arg0), _arg1)
        __return_value
       }
@@ -192,7 +192,7 @@ module Gtk
 
     alias ToggleSizeRequestSignal = MenuItem, Void* ->
     def on_toggle_size_request(&__block : ToggleSizeRequestSignal)
-      __callback = ->(_arg0 : LibGtk::MenuItem*, _arg1 : LibGtk::Void**) {
+      __callback = ->(_arg0 : LibGtk::MenuItem*, _arg1 : Void**) {
        __return_value = __block.call(MenuItem.new(_arg0), _arg1)
        __return_value
       }

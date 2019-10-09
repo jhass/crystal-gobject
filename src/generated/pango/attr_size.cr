@@ -20,6 +20,16 @@ module Pango
       @pointer.not_nil!.as(LibPango::AttrSize*)
     end
 
+    def self.new(size)
+      __return_value = LibPango.attr_size_new(Int32.new(size))
+      Pango::Attribute.new(__return_value)
+    end
+
+    def self.new_absolute(size)
+      __return_value = LibPango.attr_size_new_absolute(Int32.new(size))
+      Pango::Attribute.new(__return_value)
+    end
+
     def attr
       Pango::Attribute.new((to_unsafe.as(LibPango::AttrSize*).value.attr))
     end

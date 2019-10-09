@@ -95,7 +95,7 @@ module Gtk
 
     alias ResponseSignal = Dialog, Int32 ->
     def on_response(&__block : ResponseSignal)
-      __callback = ->(_arg0 : LibGtk::Dialog*, _arg1 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::Dialog*, _arg1 : Int32*) {
        __return_value = __block.call(Dialog.new(_arg0), _arg1)
        __return_value
       }

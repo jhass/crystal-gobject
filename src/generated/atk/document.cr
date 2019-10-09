@@ -60,7 +60,7 @@ module Atk
 
     alias PageChangedSignal = Document, Int32 ->
     def on_page_changed(&__block : PageChangedSignal)
-      __callback = ->(_arg0 : LibAtk::Document*, _arg1 : LibAtk::Int32*) {
+      __callback = ->(_arg0 : LibAtk::Document*, _arg1 : Int32*) {
        __return_value = __block.call(Document.new(_arg0), _arg1)
        __return_value
       }

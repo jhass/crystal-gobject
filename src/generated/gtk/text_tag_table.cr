@@ -42,7 +42,7 @@ module Gtk
 
     alias TagAddedSignal = TextTagTable, Gtk::TextTag ->
     def on_tag_added(&__block : TagAddedSignal)
-      __callback = ->(_arg0 : LibGtk::TextTagTable*, _arg1 : LibGtk::LibGtk::TextTag**) {
+      __callback = ->(_arg0 : LibGtk::TextTagTable*, _arg1 : LibGtk::TextTag**) {
        __return_value = __block.call(TextTagTable.new(_arg0), Gtk::TextTag.new(_arg1))
        __return_value
       }
@@ -51,7 +51,7 @@ module Gtk
 
     alias TagChangedSignal = TextTagTable, Gtk::TextTag, Bool ->
     def on_tag_changed(&__block : TagChangedSignal)
-      __callback = ->(_arg0 : LibGtk::TextTagTable*, _arg1 : LibGtk::LibGtk::TextTag**, _arg2 : LibGtk::Bool*) {
+      __callback = ->(_arg0 : LibGtk::TextTagTable*, _arg1 : LibGtk::TextTag**, _arg2 : Bool*) {
        __return_value = __block.call(TextTagTable.new(_arg0), Gtk::TextTag.new(_arg1), _arg2)
        __return_value
       }
@@ -60,7 +60,7 @@ module Gtk
 
     alias TagRemovedSignal = TextTagTable, Gtk::TextTag ->
     def on_tag_removed(&__block : TagRemovedSignal)
-      __callback = ->(_arg0 : LibGtk::TextTagTable*, _arg1 : LibGtk::LibGtk::TextTag**) {
+      __callback = ->(_arg0 : LibGtk::TextTagTable*, _arg1 : LibGtk::TextTag**) {
        __return_value = __block.call(TextTagTable.new(_arg0), Gtk::TextTag.new(_arg1))
        __return_value
       }

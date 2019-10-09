@@ -18,7 +18,7 @@ module Gtk
 
     alias EnterSignal = EventControllerMotion, Float64, Float64 ->
     def on_enter(&__block : EnterSignal)
-      __callback = ->(_arg0 : LibGtk::EventControllerMotion*, _arg1 : LibGtk::Float64*, _arg2 : LibGtk::Float64*) {
+      __callback = ->(_arg0 : LibGtk::EventControllerMotion*, _arg1 : Float64*, _arg2 : Float64*) {
        __return_value = __block.call(EventControllerMotion.new(_arg0), _arg1, _arg2)
        __return_value
       }
@@ -36,7 +36,7 @@ module Gtk
 
     alias MotionSignal = EventControllerMotion, Float64, Float64 ->
     def on_motion(&__block : MotionSignal)
-      __callback = ->(_arg0 : LibGtk::EventControllerMotion*, _arg1 : LibGtk::Float64*, _arg2 : LibGtk::Float64*) {
+      __callback = ->(_arg0 : LibGtk::EventControllerMotion*, _arg1 : Float64*, _arg2 : Float64*) {
        __return_value = __block.call(EventControllerMotion.new(_arg0), _arg1, _arg2)
        __return_value
       }

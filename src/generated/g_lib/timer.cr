@@ -26,6 +26,11 @@ module GLib
       __return_value
     end
 
+    def active?
+      __return_value = LibGLib.timer_is_active(@pointer.as(LibGLib::Timer*))
+      __return_value
+    end
+
     def reset
       LibGLib.timer_reset(@pointer.as(LibGLib::Timer*))
       nil

@@ -310,6 +310,12 @@ module Gtk
       gvalue.string
     end
 
+    def gtk_overlay_scrolling
+      gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
+      LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "gtk_overlay_scrolling", gvalue)
+      gvalue.boolean
+    end
+
     def gtk_primary_button_warps_slider
       gvalue = GObject::Value.new(GObject::Type::BOOLEAN)
       LibGObject.object_get_property(@pointer.as(LibGObject::Object*), "gtk_primary_button_warps_slider", gvalue)

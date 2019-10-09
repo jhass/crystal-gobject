@@ -36,7 +36,7 @@ module Gtk
 
     alias ChangedSignal = CellRendererCombo, String, Gtk::TreeIter ->
     def on_changed(&__block : ChangedSignal)
-      __callback = ->(_arg0 : LibGtk::CellRendererCombo*, _arg1 : LibGtk::UInt8**, _arg2 : LibGtk::LibGtk::TreeIter*) {
+      __callback = ->(_arg0 : LibGtk::CellRendererCombo*, _arg1 : UInt8**, _arg2 : LibGtk::TreeIter*) {
        __return_value = __block.call(CellRendererCombo.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)), Gtk::TreeIter.new(_arg2))
        __return_value
       }

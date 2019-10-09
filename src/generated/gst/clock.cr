@@ -191,7 +191,7 @@ module Gst
 
     alias SyncedSignal = Clock, Bool ->
     def on_synced(&__block : SyncedSignal)
-      __callback = ->(_arg0 : LibGst::Clock*, _arg1 : LibGst::Bool*) {
+      __callback = ->(_arg0 : LibGst::Clock*, _arg1 : Bool*) {
        __return_value = __block.call(Clock.new(_arg0), _arg1)
        __return_value
       }

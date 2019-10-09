@@ -19,6 +19,11 @@ module Pango
       @pointer.not_nil!.as(LibPango::AttrFontDesc*)
     end
 
+    def self.new(desc)
+      __return_value = LibPango.attr_font_desc_new(desc.to_unsafe.as(LibPango::FontDescription*))
+      Pango::Attribute.new(__return_value)
+    end
+
     def attr
       Pango::Attribute.new((to_unsafe.as(LibPango::AttrFontDesc*).value.attr))
     end

@@ -88,7 +88,7 @@ module Gtk
 
     alias AccelActivateSignal = AccelGroup, GObject::Object, UInt32, Gdk::ModifierType -> Bool
     def on_accel_activate(&__block : AccelActivateSignal)
-      __callback = ->(_arg0 : LibGtk::AccelGroup*, _arg1 : LibGtk::LibGObject::Object**, _arg2 : LibGtk::UInt32*, _arg3 : LibGtk::LibGdk::ModifierType*) {
+      __callback = ->(_arg0 : LibGtk::AccelGroup*, _arg1 : LibGObject::Object**, _arg2 : UInt32*, _arg3 : LibGdk::ModifierType*) {
        __return_value = __block.call(AccelGroup.new(_arg0), GObject::Object.new(_arg1), _arg2, _arg3)
        __return_value
       }
@@ -97,7 +97,7 @@ module Gtk
 
     alias AccelChangedSignal = AccelGroup, UInt32, Gdk::ModifierType, GObject::Closure ->
     def on_accel_changed(&__block : AccelChangedSignal)
-      __callback = ->(_arg0 : LibGtk::AccelGroup*, _arg1 : LibGtk::UInt32*, _arg2 : LibGtk::LibGdk::ModifierType*, _arg3 : LibGtk::LibGObject::Closure*) {
+      __callback = ->(_arg0 : LibGtk::AccelGroup*, _arg1 : UInt32*, _arg2 : LibGdk::ModifierType*, _arg3 : LibGObject::Closure*) {
        __return_value = __block.call(AccelGroup.new(_arg0), _arg1, _arg2, GObject::Closure.new(_arg3))
        __return_value
       }

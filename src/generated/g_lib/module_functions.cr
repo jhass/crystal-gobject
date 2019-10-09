@@ -65,8 +65,6 @@ module GLib
 
   HAVE_GNUC_VARARGS = LibGLib::HAVE_GNUC_VARARGS
 
-  HAVE_GNUC_VISIBILITY = LibGLib::HAVE_GNUC_VISIBILITY
-
   HAVE_GROWING_STACK = LibGLib::HAVE_GROWING_STACK
 
   HAVE_ISO_VARARGS = LibGLib::HAVE_ISO_VARARGS
@@ -1000,6 +998,11 @@ module GLib
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
+  def self.console_charset(charset)
+    __return_value = LibGLib.get_console_charset(charset)
+    __return_value
+  end
+
   def self.current_dir
     __return_value = LibGLib.get_current_dir
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
@@ -1057,7 +1060,7 @@ module GLib
 
   def self.prgname
     __return_value = LibGLib.get_prgname
-    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.real_name
@@ -2309,6 +2312,11 @@ module GLib
     __return_value
   end
 
+  def self.test_summary(summary)
+    LibGLib.test_summary(summary.to_unsafe)
+    nil
+  end
+
   def self.test_timer_elapsed
     __return_value = LibGLib.test_timer_elapsed
     __return_value
@@ -2514,7 +2522,7 @@ module GLib
   end
 
   def self.unichar_fully_decompose(ch, compat, result, result_len)
-    __return_value = LibGLib.unichar_fully_decompose(UInt8.new(ch), compat, result ? result : nil, UInt64.new(result_len))
+    __return_value = LibGLib.unichar_fully_decompose(UInt8.new(ch), compat, result, UInt64.new(result_len))
     __return_value
   end
 
@@ -2788,7 +2796,7 @@ module GLib
 
   def self.utf8_find_prev_char(str, p)
     __return_value = LibGLib.utf8_find_prev_char(str.to_unsafe, p.to_unsafe)
-    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.utf8_get_char(p)
@@ -2808,7 +2816,7 @@ module GLib
 
   def self.utf8_normalize(str, len, mode : GLib::NormalizeMode)
     __return_value = LibGLib.utf8_normalize(str.to_unsafe, Int64.new(len), mode)
-    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.utf8_offset_to_pointer(str, offset)
@@ -2828,7 +2836,7 @@ module GLib
 
   def self.utf8_strchr(p, len, c)
     __return_value = LibGLib.utf8_strchr(p.to_unsafe, Int64.new(len), UInt8.new(c))
-    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.utf8_strdown(str, len)
@@ -2848,7 +2856,7 @@ module GLib
 
   def self.utf8_strrchr(p, len, c)
     __return_value = LibGLib.utf8_strrchr(p.to_unsafe, Int64.new(len), UInt8.new(c))
-    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
   end
 
   def self.utf8_strreverse(str, len)

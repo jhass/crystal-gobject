@@ -199,7 +199,7 @@ module Gtk
     end
 
     def hadjustment=(hadjustment)
-      LibGtk.scrolled_window_set_hadjustment(@pointer.as(LibGtk::ScrolledWindow*), hadjustment.to_unsafe.as(LibGtk::Adjustment*))
+      LibGtk.scrolled_window_set_hadjustment(@pointer.as(LibGtk::ScrolledWindow*), hadjustment ? hadjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
       nil
     end
 
@@ -259,7 +259,7 @@ module Gtk
     end
 
     def vadjustment=(vadjustment)
-      LibGtk.scrolled_window_set_vadjustment(@pointer.as(LibGtk::ScrolledWindow*), vadjustment.to_unsafe.as(LibGtk::Adjustment*))
+      LibGtk.scrolled_window_set_vadjustment(@pointer.as(LibGtk::ScrolledWindow*), vadjustment ? vadjustment.to_unsafe.as(LibGtk::Adjustment*) : nil)
       nil
     end
 
@@ -270,7 +270,7 @@ module Gtk
 
     alias EdgeOvershotSignal = ScrolledWindow, Gtk::PositionType ->
     def on_edge_overshot(&__block : EdgeOvershotSignal)
-      __callback = ->(_arg0 : LibGtk::ScrolledWindow*, _arg1 : LibGtk::LibGtk::PositionType*) {
+      __callback = ->(_arg0 : LibGtk::ScrolledWindow*, _arg1 : LibGtk::PositionType*) {
        __return_value = __block.call(ScrolledWindow.new(_arg0), _arg1)
        __return_value
       }
@@ -279,7 +279,7 @@ module Gtk
 
     alias EdgeReachedSignal = ScrolledWindow, Gtk::PositionType ->
     def on_edge_reached(&__block : EdgeReachedSignal)
-      __callback = ->(_arg0 : LibGtk::ScrolledWindow*, _arg1 : LibGtk::LibGtk::PositionType*) {
+      __callback = ->(_arg0 : LibGtk::ScrolledWindow*, _arg1 : LibGtk::PositionType*) {
        __return_value = __block.call(ScrolledWindow.new(_arg0), _arg1)
        __return_value
       }
@@ -288,7 +288,7 @@ module Gtk
 
     alias MoveFocusOutSignal = ScrolledWindow, Gtk::DirectionType ->
     def on_move_focus_out(&__block : MoveFocusOutSignal)
-      __callback = ->(_arg0 : LibGtk::ScrolledWindow*, _arg1 : LibGtk::LibGtk::DirectionType*) {
+      __callback = ->(_arg0 : LibGtk::ScrolledWindow*, _arg1 : LibGtk::DirectionType*) {
        __return_value = __block.call(ScrolledWindow.new(_arg0), _arg1)
        __return_value
       }
@@ -297,7 +297,7 @@ module Gtk
 
     alias ScrollChildSignal = ScrolledWindow, Gtk::ScrollType, Bool -> Bool
     def on_scroll_child(&__block : ScrollChildSignal)
-      __callback = ->(_arg0 : LibGtk::ScrolledWindow*, _arg1 : LibGtk::LibGtk::ScrollType*, _arg2 : LibGtk::Bool*) {
+      __callback = ->(_arg0 : LibGtk::ScrolledWindow*, _arg1 : LibGtk::ScrollType*, _arg2 : Bool*) {
        __return_value = __block.call(ScrolledWindow.new(_arg0), _arg1, _arg2)
        __return_value
       }

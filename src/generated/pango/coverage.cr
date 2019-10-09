@@ -1,7 +1,5 @@
 module Pango
-  class Coverage
-    include GObject::WrappedType
-
+  class Coverage < GObject::Object
     @pointer : Void*
     def initialize(pointer : LibPango::Coverage*)
       @pointer = pointer.as(Void*)
@@ -9,6 +7,21 @@ module Pango
 
     def to_unsafe
       @pointer.not_nil!.as(LibPango::Coverage*)
+    end
+
+    def self.new : self
+      __return_value = LibPango.coverage_new
+      cast Pango::Coverage.new(__return_value)
+    end
+
+    def self.from_bytes(bytes, n_bytes)
+      __return_value = LibPango.coverage_from_bytes(bytes, Int32.new(n_bytes))
+      Pango::Coverage.new(__return_value) if __return_value
+    end
+
+    def copy
+      __return_value = LibPango.coverage_copy(@pointer.as(LibPango::Coverage*))
+      Pango::Coverage.new(__return_value)
     end
 
     def get(index)
@@ -19,6 +32,11 @@ module Pango
     def max(other)
       LibPango.coverage_max(@pointer.as(LibPango::Coverage*), other.to_unsafe.as(LibPango::Coverage*))
       nil
+    end
+
+    def ref
+      __return_value = LibPango.coverage_ref(@pointer.as(LibPango::Coverage*))
+      Pango::Coverage.new(__return_value)
     end
 
     def set(index, level : Pango::CoverageLevel)

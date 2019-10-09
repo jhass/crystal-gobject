@@ -34,7 +34,7 @@ module Gtk
 
     alias DecelerateSignal = EventControllerScroll, Float64, Float64 ->
     def on_decelerate(&__block : DecelerateSignal)
-      __callback = ->(_arg0 : LibGtk::EventControllerScroll*, _arg1 : LibGtk::Float64*, _arg2 : LibGtk::Float64*) {
+      __callback = ->(_arg0 : LibGtk::EventControllerScroll*, _arg1 : Float64*, _arg2 : Float64*) {
        __return_value = __block.call(EventControllerScroll.new(_arg0), _arg1, _arg2)
        __return_value
       }
@@ -43,7 +43,7 @@ module Gtk
 
     alias ScrollSignal = EventControllerScroll, Float64, Float64 ->
     def on_scroll(&__block : ScrollSignal)
-      __callback = ->(_arg0 : LibGtk::EventControllerScroll*, _arg1 : LibGtk::Float64*, _arg2 : LibGtk::Float64*) {
+      __callback = ->(_arg0 : LibGtk::EventControllerScroll*, _arg1 : Float64*, _arg2 : Float64*) {
        __return_value = __block.call(EventControllerScroll.new(_arg0), _arg1, _arg2)
        __return_value
       }

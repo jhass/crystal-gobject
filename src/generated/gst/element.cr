@@ -359,7 +359,7 @@ module Gst
 
     alias PadAddedSignal = Element, Gst::Pad ->
     def on_pad_added(&__block : PadAddedSignal)
-      __callback = ->(_arg0 : LibGst::Element*, _arg1 : LibGst::LibGst::Pad**) {
+      __callback = ->(_arg0 : LibGst::Element*, _arg1 : LibGst::Pad**) {
        __return_value = __block.call(Element.new(_arg0), Gst::Pad.new(_arg1))
        __return_value
       }
@@ -368,7 +368,7 @@ module Gst
 
     alias PadRemovedSignal = Element, Gst::Pad ->
     def on_pad_removed(&__block : PadRemovedSignal)
-      __callback = ->(_arg0 : LibGst::Element*, _arg1 : LibGst::LibGst::Pad**) {
+      __callback = ->(_arg0 : LibGst::Element*, _arg1 : LibGst::Pad**) {
        __return_value = __block.call(Element.new(_arg0), Gst::Pad.new(_arg1))
        __return_value
       }

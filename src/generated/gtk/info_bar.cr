@@ -113,7 +113,7 @@ module Gtk
 
     alias ResponseSignal = InfoBar, Int32 ->
     def on_response(&__block : ResponseSignal)
-      __callback = ->(_arg0 : LibGtk::InfoBar*, _arg1 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::InfoBar*, _arg1 : Int32*) {
        __return_value = __block.call(InfoBar.new(_arg0), _arg1)
        __return_value
       }

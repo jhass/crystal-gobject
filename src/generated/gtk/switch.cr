@@ -63,7 +63,7 @@ module Gtk
 
     alias StateSetSignal = Switch, Bool -> Bool
     def on_state_set(&__block : StateSetSignal)
-      __callback = ->(_arg0 : LibGtk::Switch*, _arg1 : LibGtk::Bool*) {
+      __callback = ->(_arg0 : LibGtk::Switch*, _arg1 : Bool*) {
        __return_value = __block.call(Switch.new(_arg0), _arg1)
        __return_value
       }

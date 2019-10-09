@@ -252,7 +252,7 @@ module Gio
 
     alias CommandLineSignal = Application, Gio::ApplicationCommandLine -> Int32
     def on_command_line(&__block : CommandLineSignal)
-      __callback = ->(_arg0 : LibGio::Application*, _arg1 : LibGio::LibGio::ApplicationCommandLine**) {
+      __callback = ->(_arg0 : LibGio::Application*, _arg1 : LibGio::ApplicationCommandLine**) {
        __return_value = __block.call(Application.new(_arg0), Gio::ApplicationCommandLine.new(_arg1))
        Int32.new(__return_value)
       }
@@ -261,7 +261,7 @@ module Gio
 
     alias HandleLocalOptionsSignal = Application, GLib::VariantDict -> Int32
     def on_handle_local_options(&__block : HandleLocalOptionsSignal)
-      __callback = ->(_arg0 : LibGio::Application*, _arg1 : LibGio::LibGLib::VariantDict*) {
+      __callback = ->(_arg0 : LibGio::Application*, _arg1 : LibGLib::VariantDict*) {
        __return_value = __block.call(Application.new(_arg0), GLib::VariantDict.new(_arg1))
        Int32.new(__return_value)
       }
@@ -279,7 +279,7 @@ module Gio
 
     alias OpenSignal = Application, Array(Gio::File), Int32, String ->
     def on_open(&__block : OpenSignal)
-      __callback = ->(_arg0 : LibGio::Application*, _arg1 : LibGio::LibGio::File**, _arg2 : LibGio::Int32*, _arg3 : LibGio::UInt8**) {
+      __callback = ->(_arg0 : LibGio::Application*, _arg1 : LibGio::File**, _arg2 : Int32*, _arg3 : UInt8**) {
        __return_value = __block.call(Application.new(_arg0), PointerIterator.new(_arg1) {|__item| __item }, _arg2, (raise "Expected string but got null" unless _arg3; ::String.new(_arg3)))
        __return_value
       }

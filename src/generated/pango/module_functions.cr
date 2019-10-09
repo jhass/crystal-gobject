@@ -3,6 +3,8 @@ module Pango
 
   ANALYSIS_FLAG_IS_ELLIPSIS = LibPango::ANALYSIS_FLAG_IS_ELLIPSIS
 
+  ANALYSIS_FLAG_NEED_HYPHEN = LibPango::ANALYSIS_FLAG_NEED_HYPHEN
+
   ATTR_INDEX_FROM_TEXT_BEGINNING = LibPango::ATTR_INDEX_FROM_TEXT_BEGINNING
 
   ENGINE_TYPE_LANG = LibPango::ENGINE_TYPE_LANG
@@ -25,6 +27,131 @@ module Pango
 
   VERSION_MIN_REQUIRED = LibPango::VERSION_MIN_REQUIRED
 
+  def self.attr_allow_breaks_new(allow_breaks)
+    __return_value = LibPango.attr_allow_breaks_new(allow_breaks)
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_background_alpha_new(alpha)
+    __return_value = LibPango.attr_background_alpha_new(UInt16.new(alpha))
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_background_new(red, green, blue)
+    __return_value = LibPango.attr_background_new(UInt16.new(red), UInt16.new(green), UInt16.new(blue))
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_fallback_new(enable_fallback)
+    __return_value = LibPango.attr_fallback_new(enable_fallback)
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_family_new(family)
+    __return_value = LibPango.attr_family_new(family.to_unsafe)
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_font_desc_new(desc)
+    __return_value = LibPango.attr_font_desc_new(desc.to_unsafe.as(LibPango::FontDescription*))
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_font_features_new(features)
+    __return_value = LibPango.attr_font_features_new(features.to_unsafe)
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_foreground_alpha_new(alpha)
+    __return_value = LibPango.attr_foreground_alpha_new(UInt16.new(alpha))
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_foreground_new(red, green, blue)
+    __return_value = LibPango.attr_foreground_new(UInt16.new(red), UInt16.new(green), UInt16.new(blue))
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_gravity_hint_new(hint : Pango::GravityHint)
+    __return_value = LibPango.attr_gravity_hint_new(hint)
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_gravity_new(gravity : Pango::Gravity)
+    __return_value = LibPango.attr_gravity_new(gravity)
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_insert_hyphens_new(insert_hyphens)
+    __return_value = LibPango.attr_insert_hyphens_new(insert_hyphens)
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_language_new(language)
+    __return_value = LibPango.attr_language_new(language.to_unsafe.as(LibPango::Language*))
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_letter_spacing_new(letter_spacing)
+    __return_value = LibPango.attr_letter_spacing_new(Int32.new(letter_spacing))
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_rise_new(rise)
+    __return_value = LibPango.attr_rise_new(Int32.new(rise))
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_scale_new(scale_factor)
+    __return_value = LibPango.attr_scale_new(Float64.new(scale_factor))
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_shape_new(ink_rect, logical_rect)
+    __return_value = LibPango.attr_shape_new(ink_rect.to_unsafe.as(LibPango::Rectangle*), logical_rect.to_unsafe.as(LibPango::Rectangle*))
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_shape_new_with_data(ink_rect, logical_rect, data, copy_func, destroy_func)
+    __return_value = LibPango.attr_shape_new_with_data(ink_rect.to_unsafe.as(LibPango::Rectangle*), logical_rect.to_unsafe.as(LibPango::Rectangle*), data ? data : nil, copy_func ? copy_func : nil, destroy_func ? destroy_func : nil)
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_show_new(flags : Pango::ShowFlags)
+    __return_value = LibPango.attr_show_new(flags)
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_size_new(size)
+    __return_value = LibPango.attr_size_new(Int32.new(size))
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_size_new_absolute(size)
+    __return_value = LibPango.attr_size_new_absolute(Int32.new(size))
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_stretch_new(stretch : Pango::Stretch)
+    __return_value = LibPango.attr_stretch_new(stretch)
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_strikethrough_color_new(red, green, blue)
+    __return_value = LibPango.attr_strikethrough_color_new(UInt16.new(red), UInt16.new(green), UInt16.new(blue))
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_strikethrough_new(strikethrough)
+    __return_value = LibPango.attr_strikethrough_new(strikethrough)
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_style_new(style : Pango::Style)
+    __return_value = LibPango.attr_style_new(style)
+    Pango::Attribute.new(__return_value)
+  end
+
   def self.attr_type_get_name(type : Pango::AttrType)
     __return_value = LibPango.attr_type_get_name(type)
     (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
@@ -35,6 +162,26 @@ module Pango
     __return_value
   end
 
+  def self.attr_underline_color_new(red, green, blue)
+    __return_value = LibPango.attr_underline_color_new(UInt16.new(red), UInt16.new(green), UInt16.new(blue))
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_underline_new(underline : Pango::Underline)
+    __return_value = LibPango.attr_underline_new(underline)
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_variant_new(variant : Pango::Variant)
+    __return_value = LibPango.attr_variant_new(variant)
+    Pango::Attribute.new(__return_value)
+  end
+
+  def self.attr_weight_new(weight : Pango::Weight)
+    __return_value = LibPango.attr_weight_new(weight)
+    Pango::Attribute.new(__return_value)
+  end
+
   def self.bidi_type_for_unichar(ch)
     __return_value = LibPango.bidi_type_for_unichar(UInt8.new(ch))
     __return_value
@@ -43,16 +190,6 @@ module Pango
   def self.break(text, length, analysis, attrs, attrs_len)
     LibPango.break(text.to_unsafe, Int32.new(length), analysis.to_unsafe.as(LibPango::Analysis*), attrs, Int32.new(attrs_len))
     nil
-  end
-
-  def self.config_key_get(key)
-    __return_value = LibPango.config_key_get(key.to_unsafe)
-    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
-  end
-
-  def self.config_key_get_system(key)
-    __return_value = LibPango.config_key_get_system(key.to_unsafe)
-    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.default_break(text, length, analysis, attrs, attrs_len)
@@ -80,11 +217,6 @@ module Pango
     Pango::FontDescription.new(__return_value)
   end
 
-  def self.lib_subdirectory
-    __return_value = LibPango.get_lib_subdirectory
-    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
-  end
-
   def self.log_attrs(text, length, level, language, log_attrs, attrs_len)
     LibPango.get_log_attrs(text.to_unsafe, Int32.new(length), Int32.new(level), language.to_unsafe.as(LibPango::Language*), log_attrs, Int32.new(attrs_len))
     nil
@@ -93,11 +225,6 @@ module Pango
   def self.mirror_char(ch, mirrored_ch)
     __return_value = LibPango.get_mirror_char(UInt8.new(ch), mirrored_ch)
     __return_value
-  end
-
-  def self.sysconf_subdirectory
-    __return_value = LibPango.get_sysconf_subdirectory
-    (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
   end
 
   def self.gravity_get_for_matrix(matrix)
@@ -150,11 +277,6 @@ module Pango
     __return_value
   end
 
-  def self.lookup_aliases(fontname, families, n_families)
-    LibPango.lookup_aliases(fontname.to_unsafe, families, n_families)
-    nil
-  end
-
   def self.markup_parser_finish(context, attr_list, text, accel_char)
     __error = Pointer(LibGLib::Error).null
     __return_value = LibPango.markup_parser_finish(context.to_unsafe.as(LibGLib::MarkupParseContext*), attr_list, text, accel_char, pointerof(__error))
@@ -165,11 +287,6 @@ module Pango
   def self.markup_parser_new(accel_marker)
     __return_value = LibPango.markup_parser_new(UInt8.new(accel_marker))
     GLib::MarkupParseContext.new(__return_value)
-  end
-
-  def self.module_register(_module)
-    LibPango.module_register(_module.to_unsafe.as(LibPango::IncludedModule*))
-    nil
   end
 
   def self.parse_enum(type, str, value, warn, possible_values)
@@ -210,7 +327,7 @@ module Pango
   end
 
   def self.read_line(stream, str)
-    __return_value = LibPango.read_line(stream ? stream : nil, str)
+    __return_value = LibPango.read_line(stream ? stream : nil, str.to_unsafe.as(LibGLib::String*))
     __return_value
   end
 
@@ -225,12 +342,12 @@ module Pango
   end
 
   def self.scan_string(pos, _out)
-    __return_value = LibPango.scan_string(pos, _out)
+    __return_value = LibPango.scan_string(pos, _out.to_unsafe.as(LibGLib::String*))
     __return_value
   end
 
   def self.scan_word(pos, _out)
-    __return_value = LibPango.scan_word(pos, _out)
+    __return_value = LibPango.scan_word(pos, _out.to_unsafe.as(LibGLib::String*))
     __return_value
   end
 
@@ -254,6 +371,11 @@ module Pango
     nil
   end
 
+  def self.shape_with_flags(item_text, item_length, paragraph_text, paragraph_length, analysis, glyphs, flags : Pango::ShapeFlags)
+    LibPango.shape_with_flags(item_text.to_unsafe, Int32.new(item_length), paragraph_text ? paragraph_text.to_unsafe : nil, Int32.new(paragraph_length), analysis.to_unsafe.as(LibPango::Analysis*), glyphs.to_unsafe.as(LibPango::GlyphString*), flags)
+    nil
+  end
+
   def self.skip_space(pos)
     __return_value = LibPango.skip_space(pos)
     __return_value
@@ -262,6 +384,11 @@ module Pango
   def self.split_file_list(str)
     __return_value = LibPango.split_file_list(str.to_unsafe)
     PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
+  end
+
+  def self.tailor_break(text, length, analysis, offset, log_attrs, log_attrs_len)
+    LibPango.tailor_break(text.to_unsafe, Int32.new(length), analysis.to_unsafe.as(LibPango::Analysis*), Int32.new(offset), log_attrs, Int32.new(log_attrs_len))
+    nil
   end
 
   def self.trim_string(str)

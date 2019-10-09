@@ -28,8 +28,8 @@ module Gtk
       __return_value
     end
 
-    def reorder_overlay(child, position)
-      LibGtk.overlay_reorder_overlay(@pointer.as(LibGtk::Overlay*), child.to_unsafe.as(LibGtk::Widget*), Int32.new(position))
+    def reorder_overlay(child, index)
+      LibGtk.overlay_reorder_overlay(@pointer.as(LibGtk::Overlay*), child.to_unsafe.as(LibGtk::Widget*), Int32.new(index))
       nil
     end
 
@@ -40,7 +40,7 @@ module Gtk
 
     alias GetChildPositionSignal = Overlay, Gtk::Widget, Gdk::Rectangle -> Bool
     def on_get_child_position(&__block : GetChildPositionSignal)
-      __callback = ->(_arg0 : LibGtk::Overlay*, _arg1 : LibGtk::LibGtk::Widget**, _arg2 : LibGtk::LibGdk::Rectangle*) {
+      __callback = ->(_arg0 : LibGtk::Overlay*, _arg1 : LibGtk::Widget**, _arg2 : LibGdk::Rectangle*) {
        __return_value = __block.call(Overlay.new(_arg0), Gtk::Widget.new(_arg1), Gdk::Rectangle.new(_arg2))
        __return_value
       }

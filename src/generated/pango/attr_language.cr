@@ -19,6 +19,11 @@ module Pango
       @pointer.not_nil!.as(LibPango::AttrLanguage*)
     end
 
+    def self.new(language)
+      __return_value = LibPango.attr_language_new(language.to_unsafe.as(LibPango::Language*))
+      Pango::Attribute.new(__return_value)
+    end
+
     def attr
       Pango::Attribute.new((to_unsafe.as(LibPango::AttrLanguage*).value.attr))
     end

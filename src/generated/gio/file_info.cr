@@ -31,7 +31,7 @@ module Gio
 
     def attribute_as_string(attribute)
       __return_value = LibGio.file_info_get_attribute_as_string(@pointer.as(LibGio::FileInfo*), attribute.to_unsafe)
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def attribute_boolean(attribute)
@@ -142,6 +142,11 @@ module Gio
     def is_symlink
       __return_value = LibGio.file_info_get_is_symlink(@pointer.as(LibGio::FileInfo*))
       __return_value
+    end
+
+    def modification_date_time
+      __return_value = LibGio.file_info_get_modification_date_time(@pointer.as(LibGio::FileInfo*))
+      GLib::DateTime.new(__return_value) if __return_value
     end
 
     def modification_time(result)
@@ -286,6 +291,11 @@ module Gio
 
     def is_symlink=(is_symlink)
       LibGio.file_info_set_is_symlink(@pointer.as(LibGio::FileInfo*), is_symlink)
+      nil
+    end
+
+    def modification_date_time=(mtime)
+      LibGio.file_info_set_modification_date_time(@pointer.as(LibGio::FileInfo*), mtime.to_unsafe.as(LibGLib::DateTime*))
       nil
     end
 

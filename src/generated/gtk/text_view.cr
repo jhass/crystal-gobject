@@ -534,7 +534,7 @@ module Gtk
 
     alias DeleteFromCursorSignal = TextView, Gtk::DeleteType, Int32 ->
     def on_delete_from_cursor(&__block : DeleteFromCursorSignal)
-      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::LibGtk::DeleteType*, _arg2 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::DeleteType*, _arg2 : Int32*) {
        __return_value = __block.call(TextView.new(_arg0), _arg1, _arg2)
        __return_value
       }
@@ -543,7 +543,7 @@ module Gtk
 
     alias ExtendSelectionSignal = TextView, Gtk::TextExtendSelection, Gtk::TextIter, Gtk::TextIter, Gtk::TextIter -> Bool
     def on_extend_selection(&__block : ExtendSelectionSignal)
-      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::LibGtk::TextExtendSelection*, _arg2 : LibGtk::LibGtk::TextIter*, _arg3 : LibGtk::LibGtk::TextIter*, _arg4 : LibGtk::LibGtk::TextIter*) {
+      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::TextExtendSelection*, _arg2 : LibGtk::TextIter*, _arg3 : LibGtk::TextIter*, _arg4 : LibGtk::TextIter*) {
        __return_value = __block.call(TextView.new(_arg0), _arg1, Gtk::TextIter.new(_arg2), Gtk::TextIter.new(_arg3), Gtk::TextIter.new(_arg4))
        __return_value
       }
@@ -552,7 +552,7 @@ module Gtk
 
     alias InsertAtCursorSignal = TextView, String ->
     def on_insert_at_cursor(&__block : InsertAtCursorSignal)
-      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::UInt8**) {
+      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : UInt8**) {
        __return_value = __block.call(TextView.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
@@ -570,7 +570,7 @@ module Gtk
 
     alias MoveCursorSignal = TextView, Gtk::MovementStep, Int32, Bool ->
     def on_move_cursor(&__block : MoveCursorSignal)
-      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::LibGtk::MovementStep*, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Bool*) {
+      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::MovementStep*, _arg2 : Int32*, _arg3 : Bool*) {
        __return_value = __block.call(TextView.new(_arg0), _arg1, _arg2, _arg3)
        __return_value
       }
@@ -579,7 +579,7 @@ module Gtk
 
     alias MoveViewportSignal = TextView, Gtk::ScrollStep, Int32 ->
     def on_move_viewport(&__block : MoveViewportSignal)
-      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::LibGtk::ScrollStep*, _arg2 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::ScrollStep*, _arg2 : Int32*) {
        __return_value = __block.call(TextView.new(_arg0), _arg1, _arg2)
        __return_value
       }
@@ -597,7 +597,7 @@ module Gtk
 
     alias PopulatePopupSignal = TextView, Gtk::Widget ->
     def on_populate_popup(&__block : PopulatePopupSignal)
-      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::LibGtk::Widget**) {
+      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::Widget**) {
        __return_value = __block.call(TextView.new(_arg0), Gtk::Widget.new(_arg1))
        __return_value
       }
@@ -606,7 +606,7 @@ module Gtk
 
     alias PreeditChangedSignal = TextView, String ->
     def on_preedit_changed(&__block : PreeditChangedSignal)
-      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::UInt8**) {
+      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : UInt8**) {
        __return_value = __block.call(TextView.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
@@ -615,7 +615,7 @@ module Gtk
 
     alias SelectAllSignal = TextView, Bool ->
     def on_select_all(&__block : SelectAllSignal)
-      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : LibGtk::Bool*) {
+      __callback = ->(_arg0 : LibGtk::TextView*, _arg1 : Bool*) {
        __return_value = __block.call(TextView.new(_arg0), _arg1)
        __return_value
       }

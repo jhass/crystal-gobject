@@ -83,7 +83,7 @@ module Gst
 
     alias ProviderHiddenSignal = DeviceProvider, String ->
     def on_provider_hidden(&__block : ProviderHiddenSignal)
-      __callback = ->(_arg0 : LibGst::DeviceProvider*, _arg1 : LibGst::UInt8**) {
+      __callback = ->(_arg0 : LibGst::DeviceProvider*, _arg1 : UInt8**) {
        __return_value = __block.call(DeviceProvider.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
@@ -92,7 +92,7 @@ module Gst
 
     alias ProviderUnhiddenSignal = DeviceProvider, String ->
     def on_provider_unhidden(&__block : ProviderUnhiddenSignal)
-      __callback = ->(_arg0 : LibGst::DeviceProvider*, _arg1 : LibGst::UInt8**) {
+      __callback = ->(_arg0 : LibGst::DeviceProvider*, _arg1 : UInt8**) {
        __return_value = __block.call(DeviceProvider.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }

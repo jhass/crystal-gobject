@@ -739,7 +739,7 @@ module Gtk
 
     alias DeleteFromCursorSignal = Entry, Gtk::DeleteType, Int32 ->
     def on_delete_from_cursor(&__block : DeleteFromCursorSignal)
-      __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : LibGtk::LibGtk::DeleteType*, _arg2 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : LibGtk::DeleteType*, _arg2 : Int32*) {
        __return_value = __block.call(Entry.new(_arg0), _arg1, _arg2)
        __return_value
       }
@@ -748,7 +748,7 @@ module Gtk
 
     alias IconPressSignal = Entry, Gtk::EntryIconPosition, Gdk::EventButton ->
     def on_icon_press(&__block : IconPressSignal)
-      __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : LibGtk::LibGtk::EntryIconPosition*, _arg2 : LibGtk::LibGdk::EventButton*) {
+      __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : LibGtk::EntryIconPosition*, _arg2 : LibGdk::EventButton*) {
        __return_value = __block.call(Entry.new(_arg0), _arg1, Gdk::EventButton.new(_arg2))
        __return_value
       }
@@ -757,7 +757,7 @@ module Gtk
 
     alias IconReleaseSignal = Entry, Gtk::EntryIconPosition, Gdk::EventButton ->
     def on_icon_release(&__block : IconReleaseSignal)
-      __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : LibGtk::LibGtk::EntryIconPosition*, _arg2 : LibGtk::LibGdk::EventButton*) {
+      __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : LibGtk::EntryIconPosition*, _arg2 : LibGdk::EventButton*) {
        __return_value = __block.call(Entry.new(_arg0), _arg1, Gdk::EventButton.new(_arg2))
        __return_value
       }
@@ -766,7 +766,7 @@ module Gtk
 
     alias InsertAtCursorSignal = Entry, String ->
     def on_insert_at_cursor(&__block : InsertAtCursorSignal)
-      __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : LibGtk::UInt8**) {
+      __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : UInt8**) {
        __return_value = __block.call(Entry.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
@@ -784,7 +784,7 @@ module Gtk
 
     alias MoveCursorSignal = Entry, Gtk::MovementStep, Int32, Bool ->
     def on_move_cursor(&__block : MoveCursorSignal)
-      __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : LibGtk::LibGtk::MovementStep*, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Bool*) {
+      __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : LibGtk::MovementStep*, _arg2 : Int32*, _arg3 : Bool*) {
        __return_value = __block.call(Entry.new(_arg0), _arg1, _arg2, _arg3)
        __return_value
       }
@@ -802,7 +802,7 @@ module Gtk
 
     alias PopulatePopupSignal = Entry, Gtk::Widget ->
     def on_populate_popup(&__block : PopulatePopupSignal)
-      __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : LibGtk::LibGtk::Widget**) {
+      __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : LibGtk::Widget**) {
        __return_value = __block.call(Entry.new(_arg0), Gtk::Widget.new(_arg1))
        __return_value
       }
@@ -811,7 +811,7 @@ module Gtk
 
     alias PreeditChangedSignal = Entry, String ->
     def on_preedit_changed(&__block : PreeditChangedSignal)
-      __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : LibGtk::UInt8**) {
+      __callback = ->(_arg0 : LibGtk::Entry*, _arg1 : UInt8**) {
        __return_value = __block.call(Entry.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }

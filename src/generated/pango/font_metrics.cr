@@ -3,7 +3,7 @@ module Pango
     include GObject::WrappedType
 
     def self.new : self
-      ptr = Pointer(UInt8).malloc(36, 0u8)
+      ptr = Pointer(UInt8).malloc(40, 0u8)
       super(ptr.as(LibPango::FontMetrics*))
     end
 
@@ -14,11 +14,6 @@ module Pango
 
     def to_unsafe
       @pointer.not_nil!.as(LibPango::FontMetrics*)
-    end
-
-    def self.new : self
-      __return_value = LibPango.font_metrics_new
-      cast Pango::FontMetrics.new(__return_value)
     end
 
     def approximate_char_width
@@ -38,6 +33,11 @@ module Pango
 
     def descent
       __return_value = LibPango.font_metrics_get_descent(@pointer.as(LibPango::FontMetrics*))
+      __return_value
+    end
+
+    def height
+      __return_value = LibPango.font_metrics_get_height(@pointer.as(LibPango::FontMetrics*))
       __return_value
     end
 
@@ -81,6 +81,10 @@ module Pango
 
     def descent
       (to_unsafe.as(LibPango::FontMetrics*).value.descent)
+    end
+
+    def height
+      (to_unsafe.as(LibPango::FontMetrics*).value.height)
     end
 
     def approximate_char_width

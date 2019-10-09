@@ -251,7 +251,7 @@ module Gdk
 
     alias ClosedSignal = Display, Bool ->
     def on_closed(&__block : ClosedSignal)
-      __callback = ->(_arg0 : LibGdk::Display*, _arg1 : LibGdk::Bool*) {
+      __callback = ->(_arg0 : LibGdk::Display*, _arg1 : Bool*) {
        __return_value = __block.call(Display.new(_arg0), _arg1)
        __return_value
       }
@@ -260,7 +260,7 @@ module Gdk
 
     alias MonitorAddedSignal = Display, Gdk::Monitor ->
     def on_monitor_added(&__block : MonitorAddedSignal)
-      __callback = ->(_arg0 : LibGdk::Display*, _arg1 : LibGdk::LibGdk::Monitor**) {
+      __callback = ->(_arg0 : LibGdk::Display*, _arg1 : LibGdk::Monitor**) {
        __return_value = __block.call(Display.new(_arg0), Gdk::Monitor.new(_arg1))
        __return_value
       }
@@ -269,7 +269,7 @@ module Gdk
 
     alias MonitorRemovedSignal = Display, Gdk::Monitor ->
     def on_monitor_removed(&__block : MonitorRemovedSignal)
-      __callback = ->(_arg0 : LibGdk::Display*, _arg1 : LibGdk::LibGdk::Monitor**) {
+      __callback = ->(_arg0 : LibGdk::Display*, _arg1 : LibGdk::Monitor**) {
        __return_value = __block.call(Display.new(_arg0), Gdk::Monitor.new(_arg1))
        __return_value
       }
@@ -287,7 +287,7 @@ module Gdk
 
     alias SeatAddedSignal = Display, Gdk::Seat ->
     def on_seat_added(&__block : SeatAddedSignal)
-      __callback = ->(_arg0 : LibGdk::Display*, _arg1 : LibGdk::LibGdk::Seat**) {
+      __callback = ->(_arg0 : LibGdk::Display*, _arg1 : LibGdk::Seat**) {
        __return_value = __block.call(Display.new(_arg0), Gdk::Seat.new(_arg1))
        __return_value
       }
@@ -296,7 +296,7 @@ module Gdk
 
     alias SeatRemovedSignal = Display, Gdk::Seat ->
     def on_seat_removed(&__block : SeatRemovedSignal)
-      __callback = ->(_arg0 : LibGdk::Display*, _arg1 : LibGdk::LibGdk::Seat**) {
+      __callback = ->(_arg0 : LibGdk::Display*, _arg1 : LibGdk::Seat**) {
        __return_value = __block.call(Display.new(_arg0), Gdk::Seat.new(_arg1))
        __return_value
       }

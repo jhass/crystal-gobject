@@ -157,7 +157,7 @@ module Gtk
 
     alias WindowAddedSignal = Application, Gtk::Window ->
     def on_window_added(&__block : WindowAddedSignal)
-      __callback = ->(_arg0 : LibGtk::Application*, _arg1 : LibGtk::LibGtk::Window**) {
+      __callback = ->(_arg0 : LibGtk::Application*, _arg1 : LibGtk::Window**) {
        __return_value = __block.call(Application.new(_arg0), Gtk::Window.new(_arg1))
        __return_value
       }
@@ -166,7 +166,7 @@ module Gtk
 
     alias WindowRemovedSignal = Application, Gtk::Window ->
     def on_window_removed(&__block : WindowRemovedSignal)
-      __callback = ->(_arg0 : LibGtk::Application*, _arg1 : LibGtk::LibGtk::Window**) {
+      __callback = ->(_arg0 : LibGtk::Application*, _arg1 : LibGtk::Window**) {
        __return_value = __block.call(Application.new(_arg0), Gtk::Window.new(_arg1))
        __return_value
       }

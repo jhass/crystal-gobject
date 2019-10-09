@@ -314,13 +314,6 @@ lib LibGio
   fun datagram_based_receive_messages = g_datagram_based_receive_messages(this : DatagramBased*, messages : LibGio::InputMessage*, num_messages : UInt32, flags : Int32, timeout : Int64, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int32
   fun datagram_based_send_messages = g_datagram_based_send_messages(this : DatagramBased*, messages : LibGio::OutputMessage*, num_messages : UInt32, flags : Int32, timeout : Int64, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int32
 
-  struct DesktopAppInfoLookup # interface
-    g_iface : LibGObject::TypeInterface
-    get_default_for_uri_scheme : -> Void
-    # Virtual function get_default_for_uri_scheme
-  end
-  fun desktop_app_info_lookup_get_default_for_uri_scheme = g_desktop_app_info_lookup_get_default_for_uri_scheme(this : DesktopAppInfoLookup*, uri_scheme : UInt8*) : LibGio::AppInfo*
-
   struct Drive # interface
     g_iface : LibGObject::TypeInterface
     changed : -> Void
@@ -1567,7 +1560,7 @@ lib LibGio
     _data : UInt8[0]
   end
 
-  struct NativeSocketAddress # struct
+  struct NativeSocketAddressPrivate # struct
     _data : UInt8[0]
   end
 
@@ -2715,35 +2708,6 @@ lib LibGio
   fun data_output_stream_put_uint64 = g_data_output_stream_put_uint64(this : DataOutputStream*, data : UInt64, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Bool
   fun data_output_stream_set_byte_order = g_data_output_stream_set_byte_order(this : DataOutputStream*, order : LibGio::DataStreamByteOrder) : Void
 
-  struct DesktopAppInfo # object
-    _data : UInt8[0]
-    # Property filename : UInt8*
-  end
-  fun desktop_app_info_new = g_desktop_app_info_new(desktop_id : UInt8*) : LibGio::DesktopAppInfo*
-  fun desktop_app_info_new_from_filename = g_desktop_app_info_new_from_filename(filename : UInt8*) : LibGio::DesktopAppInfo*
-  fun desktop_app_info_new_from_keyfile = g_desktop_app_info_new_from_keyfile(key_file : LibGLib::KeyFile*) : LibGio::DesktopAppInfo*
-  fun desktop_app_info_get_implementations = g_desktop_app_info_get_implementations(interface : UInt8*) : Void**
-  fun desktop_app_info_search = g_desktop_app_info_search(search_string : UInt8*) : UInt8***
-  fun desktop_app_info_set_desktop_env = g_desktop_app_info_set_desktop_env(desktop_env : UInt8*) : Void
-  fun desktop_app_info_get_action_name = g_desktop_app_info_get_action_name(this : DesktopAppInfo*, action_name : UInt8*) : UInt8*
-  fun desktop_app_info_get_boolean = g_desktop_app_info_get_boolean(this : DesktopAppInfo*, key : UInt8*) : Bool
-  fun desktop_app_info_get_categories = g_desktop_app_info_get_categories(this : DesktopAppInfo*) : UInt8*
-  fun desktop_app_info_get_filename = g_desktop_app_info_get_filename(this : DesktopAppInfo*) : UInt8*
-  fun desktop_app_info_get_generic_name = g_desktop_app_info_get_generic_name(this : DesktopAppInfo*) : UInt8*
-  fun desktop_app_info_get_is_hidden = g_desktop_app_info_get_is_hidden(this : DesktopAppInfo*) : Bool
-  fun desktop_app_info_get_keywords = g_desktop_app_info_get_keywords(this : DesktopAppInfo*) : UInt8**
-  fun desktop_app_info_get_locale_string = g_desktop_app_info_get_locale_string(this : DesktopAppInfo*, key : UInt8*) : UInt8*
-  fun desktop_app_info_get_nodisplay = g_desktop_app_info_get_nodisplay(this : DesktopAppInfo*) : Bool
-  fun desktop_app_info_get_show_in = g_desktop_app_info_get_show_in(this : DesktopAppInfo*, desktop_env : UInt8*) : Bool
-  fun desktop_app_info_get_startup_wm_class = g_desktop_app_info_get_startup_wm_class(this : DesktopAppInfo*) : UInt8*
-  fun desktop_app_info_get_string = g_desktop_app_info_get_string(this : DesktopAppInfo*, key : UInt8*) : UInt8*
-  fun desktop_app_info_get_string_list = g_desktop_app_info_get_string_list(this : DesktopAppInfo*, key : UInt8*, length : UInt64*) : UInt8**
-  fun desktop_app_info_has_key = g_desktop_app_info_has_key(this : DesktopAppInfo*, key : UInt8*) : Bool
-  fun desktop_app_info_launch_action = g_desktop_app_info_launch_action(this : DesktopAppInfo*, action_name : UInt8*, launch_context : LibGio::AppLaunchContext*) : Void
-  fun desktop_app_info_launch_uris_as_manager = g_desktop_app_info_launch_uris_as_manager(this : DesktopAppInfo*, uris : Void**, launch_context : LibGio::AppLaunchContext*, spawn_flags : LibGLib::SpawnFlags, user_setup : LibGLib::SpawnChildSetupFunc, user_setup_data : Void*, pid_callback : LibGio::DesktopAppLaunchCallback, pid_callback_data : Void*, error : LibGLib::Error**) : Bool
-  fun desktop_app_info_launch_uris_as_manager_with_fds = g_desktop_app_info_launch_uris_as_manager_with_fds(this : DesktopAppInfo*, uris : Void**, launch_context : LibGio::AppLaunchContext*, spawn_flags : LibGLib::SpawnFlags, user_setup : LibGLib::SpawnChildSetupFunc, user_setup_data : Void*, pid_callback : LibGio::DesktopAppLaunchCallback, pid_callback_data : Void*, stdin_fd : Int32, stdout_fd : Int32, stderr_fd : Int32, error : LibGLib::Error**) : Bool
-  fun desktop_app_info_list_actions = g_desktop_app_info_list_actions(this : DesktopAppInfo*) : UInt8**
-
   struct Emblem # object
     _data : UInt8[0]
     # Property icon : LibGObject::Object*
@@ -2844,6 +2808,7 @@ lib LibGio
   fun file_info_get_is_backup = g_file_info_get_is_backup(this : FileInfo*) : Bool
   fun file_info_get_is_hidden = g_file_info_get_is_hidden(this : FileInfo*) : Bool
   fun file_info_get_is_symlink = g_file_info_get_is_symlink(this : FileInfo*) : Bool
+  fun file_info_get_modification_date_time = g_file_info_get_modification_date_time(this : FileInfo*) : LibGLib::DateTime*
   fun file_info_get_modification_time = g_file_info_get_modification_time(this : FileInfo*, result : LibGLib::TimeVal*) : Void
   fun file_info_get_name = g_file_info_get_name(this : FileInfo*) : UInt8*
   fun file_info_get_size = g_file_info_get_size(this : FileInfo*) : Int64
@@ -2873,6 +2838,7 @@ lib LibGio
   fun file_info_set_icon = g_file_info_set_icon(this : FileInfo*, icon : LibGio::Icon*) : Void
   fun file_info_set_is_hidden = g_file_info_set_is_hidden(this : FileInfo*, is_hidden : Bool) : Void
   fun file_info_set_is_symlink = g_file_info_set_is_symlink(this : FileInfo*, is_symlink : Bool) : Void
+  fun file_info_set_modification_date_time = g_file_info_set_modification_date_time(this : FileInfo*, mtime : LibGLib::DateTime*) : Void
   fun file_info_set_modification_time = g_file_info_set_modification_time(this : FileInfo*, mtime : LibGLib::TimeVal*) : Void
   fun file_info_set_name = g_file_info_set_name(this : FileInfo*, name : UInt8*) : Void
   fun file_info_set_size = g_file_info_set_size(this : FileInfo*, size : Int64) : Void
@@ -3075,11 +3041,11 @@ lib LibGio
   fun input_stream_close_finish = g_input_stream_close_finish(this : InputStream*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : Bool
   fun input_stream_has_pending = g_input_stream_has_pending(this : InputStream*) : Bool
   fun input_stream_is_closed = g_input_stream_is_closed(this : InputStream*) : Bool
-  fun input_stream_read = g_input_stream_read(this : InputStream*, buffer : UInt8*, count : UInt64, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int64
-  fun input_stream_read_all = g_input_stream_read_all(this : InputStream*, buffer : UInt8*, count : UInt64, bytes_read : UInt64*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Bool
-  fun input_stream_read_all_async = g_input_stream_read_all_async(this : InputStream*, buffer : UInt8*, count : UInt64, io_priority : Int32, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
+  fun input_stream_read = g_input_stream_read(this : InputStream*, buffer : UInt8**, count : UInt64*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Int64
+  fun input_stream_read_all = g_input_stream_read_all(this : InputStream*, buffer : UInt8**, count : UInt64*, bytes_read : UInt64*, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : Bool
+  fun input_stream_read_all_async = g_input_stream_read_all_async(this : InputStream*, buffer : UInt8**, count : UInt64*, io_priority : Int32, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun input_stream_read_all_finish = g_input_stream_read_all_finish(this : InputStream*, result : LibGio::AsyncResult*, bytes_read : UInt64*, error : LibGLib::Error**) : Bool
-  fun input_stream_read_async = g_input_stream_read_async(this : InputStream*, buffer : UInt8*, count : UInt64, io_priority : Int32, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
+  fun input_stream_read_async = g_input_stream_read_async(this : InputStream*, buffer : UInt8**, count : UInt64*, io_priority : Int32, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun input_stream_read_bytes = g_input_stream_read_bytes(this : InputStream*, count : UInt64, cancellable : LibGio::Cancellable*, error : LibGLib::Error**) : LibGLib::Bytes*
   fun input_stream_read_bytes_async = g_input_stream_read_bytes_async(this : InputStream*, count : UInt64, io_priority : Int32, cancellable : LibGio::Cancellable*, callback : LibGio::AsyncReadyCallback, user_data : Void*) : Void
   fun input_stream_read_bytes_finish = g_input_stream_read_bytes_finish(this : InputStream*, result : LibGio::AsyncResult*, error : LibGLib::Error**) : LibGLib::Bytes*
@@ -3251,6 +3217,12 @@ lib LibGio
   fun mount_operation_set_pim = g_mount_operation_set_pim(this : MountOperation*, pim : UInt32) : Void
   fun mount_operation_set_username = g_mount_operation_set_username(this : MountOperation*, username : UInt8*) : Void
 
+  struct NativeSocketAddress # object
+    parent_instance : LibGio::SocketAddress*
+    priv : LibGio::NativeSocketAddressPrivate*
+  end
+  fun native_socket_address_new = g_native_socket_address_new(native : Void*, len : UInt64) : LibGio::SocketAddress*
+
   struct NativeVolumeMonitor # object
     parent_instance : LibGio::VolumeMonitor*
   end
@@ -3298,6 +3270,11 @@ lib LibGio
   fun notification_set_priority = g_notification_set_priority(this : Notification*, priority : LibGio::NotificationPriority) : Void
   fun notification_set_title = g_notification_set_title(this : Notification*, title : UInt8*) : Void
   fun notification_set_urgent = g_notification_set_urgent(this : Notification*, urgent : Bool) : Void
+
+  struct OsxAppInfo # object
+    _data : UInt8[0]
+  end
+  fun osx_app_info_get_filename = g_osx_app_info_get_filename(this : OsxAppInfo*) : UInt8*
 
   struct OutputStream # object
     parent_instance : LibGObject::Object*
@@ -4599,7 +4576,7 @@ lib LibGio
     INVALID = 0
     UNIX = 1
     IPV4 = 2
-    IPV6 = 10
+    IPV6 = 30
   end
 
   enum SocketListenerEvent : UInt32
@@ -4693,7 +4670,6 @@ lib LibGio
   ##    Constants
   ###########################################
 
-  DESKTOP_APP_INFO_LOOKUP_EXTENSION_POINT_NAME = "gio-desktop-app-info-lookup" # : UInt8*
   DRIVE_IDENTIFIER_KIND_UNIX_DEVICE = "unix-device" # : UInt8*
   FILE_ATTRIBUTE_ACCESS_CAN_DELETE = "access::can-delete" # : UInt8*
   FILE_ATTRIBUTE_ACCESS_CAN_EXECUTE = "access::can-execute" # : UInt8*
@@ -4967,7 +4943,6 @@ lib LibGio
  alias DBusSubtreeDispatchFunc = LibGio::DBusConnection*, UInt8*, UInt8*, UInt8*, UInt8*, Void*, Void* -> LibGio::DBusInterfaceVTable*
  alias DBusSubtreeIntrospectFunc = LibGio::DBusConnection*, UInt8*, UInt8*, UInt8*, Void* -> LibGio::DBusInterfaceInfo*
  alias DatagramBasedSourceFunc = LibGio::DatagramBased*, LibGLib::IOCondition, Void* -> Bool
- alias DesktopAppLaunchCallback = LibGio::DesktopAppInfo*, Int32, Void* -> Void
  alias FileMeasureProgressCallback = Bool, UInt64, UInt64, UInt64, Void* -> Void
  alias FileProgressCallback = Int64, Int64, Void* -> Void
  alias FileReadMoreCallback = UInt8*, Int64, Void* -> Bool

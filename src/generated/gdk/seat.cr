@@ -52,7 +52,7 @@ module Gdk
 
     alias DeviceAddedSignal = Seat, Gdk::Device ->
     def on_device_added(&__block : DeviceAddedSignal)
-      __callback = ->(_arg0 : LibGdk::Seat*, _arg1 : LibGdk::LibGdk::Device**) {
+      __callback = ->(_arg0 : LibGdk::Seat*, _arg1 : LibGdk::Device**) {
        __return_value = __block.call(Seat.new(_arg0), Gdk::Device.new(_arg1))
        __return_value
       }
@@ -61,7 +61,7 @@ module Gdk
 
     alias DeviceRemovedSignal = Seat, Gdk::Device ->
     def on_device_removed(&__block : DeviceRemovedSignal)
-      __callback = ->(_arg0 : LibGdk::Seat*, _arg1 : LibGdk::LibGdk::Device**) {
+      __callback = ->(_arg0 : LibGdk::Seat*, _arg1 : LibGdk::Device**) {
        __return_value = __block.call(Seat.new(_arg0), Gdk::Device.new(_arg1))
        __return_value
       }
@@ -70,7 +70,7 @@ module Gdk
 
     alias ToolAddedSignal = Seat, Gdk::DeviceTool ->
     def on_tool_added(&__block : ToolAddedSignal)
-      __callback = ->(_arg0 : LibGdk::Seat*, _arg1 : LibGdk::LibGdk::DeviceTool**) {
+      __callback = ->(_arg0 : LibGdk::Seat*, _arg1 : LibGdk::DeviceTool**) {
        __return_value = __block.call(Seat.new(_arg0), Gdk::DeviceTool.new(_arg1))
        __return_value
       }
@@ -79,7 +79,7 @@ module Gdk
 
     alias ToolRemovedSignal = Seat, Gdk::DeviceTool ->
     def on_tool_removed(&__block : ToolRemovedSignal)
-      __callback = ->(_arg0 : LibGdk::Seat*, _arg1 : LibGdk::LibGdk::DeviceTool**) {
+      __callback = ->(_arg0 : LibGdk::Seat*, _arg1 : LibGdk::DeviceTool**) {
        __return_value = __block.call(Seat.new(_arg0), Gdk::DeviceTool.new(_arg1))
        __return_value
       }

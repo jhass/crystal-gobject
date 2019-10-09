@@ -118,7 +118,7 @@ module Gtk
 
     alias ApplicationActivatedSignal = AppChooserWidget, Gio::AppInfo ->
     def on_application_activated(&__block : ApplicationActivatedSignal)
-      __callback = ->(_arg0 : LibGtk::AppChooserWidget*, _arg1 : LibGtk::LibGio::AppInfo*) {
+      __callback = ->(_arg0 : LibGtk::AppChooserWidget*, _arg1 : LibGio::AppInfo*) {
        __return_value = __block.call(AppChooserWidget.new(_arg0), _arg1)
        __return_value
       }
@@ -127,7 +127,7 @@ module Gtk
 
     alias ApplicationSelectedSignal = AppChooserWidget, Gio::AppInfo ->
     def on_application_selected(&__block : ApplicationSelectedSignal)
-      __callback = ->(_arg0 : LibGtk::AppChooserWidget*, _arg1 : LibGtk::LibGio::AppInfo*) {
+      __callback = ->(_arg0 : LibGtk::AppChooserWidget*, _arg1 : LibGio::AppInfo*) {
        __return_value = __block.call(AppChooserWidget.new(_arg0), _arg1)
        __return_value
       }
@@ -136,7 +136,7 @@ module Gtk
 
     alias PopulatePopupSignal = AppChooserWidget, Gtk::Menu, Gio::AppInfo ->
     def on_populate_popup(&__block : PopulatePopupSignal)
-      __callback = ->(_arg0 : LibGtk::AppChooserWidget*, _arg1 : LibGtk::LibGtk::Menu**, _arg2 : LibGtk::LibGio::AppInfo*) {
+      __callback = ->(_arg0 : LibGtk::AppChooserWidget*, _arg1 : LibGtk::Menu**, _arg2 : LibGio::AppInfo*) {
        __return_value = __block.call(AppChooserWidget.new(_arg0), Gtk::Menu.new(_arg1), _arg2)
        __return_value
       }

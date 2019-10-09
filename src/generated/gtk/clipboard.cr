@@ -36,7 +36,7 @@ module Gtk
 
     def owner
       __return_value = LibGtk.clipboard_get_owner(@pointer.as(LibGtk::Clipboard*))
-      GObject::Object.new(__return_value) if __return_value
+      GObject::Object.new(__return_value)
     end
 
     def request_contents(target, callback, user_data)
@@ -101,7 +101,7 @@ module Gtk
 
     def wait_for_rich_text(buffer, format, length)
       __return_value = LibGtk.clipboard_wait_for_rich_text(@pointer.as(LibGtk::Clipboard*), buffer.to_unsafe.as(LibGtk::TextBuffer*), format, length)
-      PointerIterator.new(__return_value) {|__item| __item } if __return_value
+      __return_value if __return_value
     end
 
     def wait_for_targets(targets, n_targets)
@@ -146,7 +146,7 @@ module Gtk
 
     alias OwnerChangeSignal = Clipboard, Gdk::EventOwnerChange ->
     def on_owner_change(&__block : OwnerChangeSignal)
-      __callback = ->(_arg0 : LibGtk::Clipboard*, _arg1 : LibGtk::LibGdk::EventOwnerChange*) {
+      __callback = ->(_arg0 : LibGtk::Clipboard*, _arg1 : LibGdk::EventOwnerChange*) {
        __return_value = __block.call(Clipboard.new(_arg0), Gdk::EventOwnerChange.new(_arg1))
        __return_value
       }

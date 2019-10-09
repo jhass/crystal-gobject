@@ -222,7 +222,7 @@ module Gtk
 
     alias ChildActivatedSignal = FlowBox, Gtk::FlowBoxChild ->
     def on_child_activated(&__block : ChildActivatedSignal)
-      __callback = ->(_arg0 : LibGtk::FlowBox*, _arg1 : LibGtk::LibGtk::FlowBoxChild**) {
+      __callback = ->(_arg0 : LibGtk::FlowBox*, _arg1 : LibGtk::FlowBoxChild**) {
        __return_value = __block.call(FlowBox.new(_arg0), Gtk::FlowBoxChild.new(_arg1))
        __return_value
       }
@@ -231,7 +231,7 @@ module Gtk
 
     alias MoveCursorSignal = FlowBox, Gtk::MovementStep, Int32 -> Bool
     def on_move_cursor(&__block : MoveCursorSignal)
-      __callback = ->(_arg0 : LibGtk::FlowBox*, _arg1 : LibGtk::LibGtk::MovementStep*, _arg2 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::FlowBox*, _arg1 : LibGtk::MovementStep*, _arg2 : Int32*) {
        __return_value = __block.call(FlowBox.new(_arg0), _arg1, _arg2)
        __return_value
       }

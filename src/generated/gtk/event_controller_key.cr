@@ -65,7 +65,7 @@ module Gtk
 
     alias KeyPressedSignal = EventControllerKey, UInt32, UInt32, Gdk::ModifierType -> Bool
     def on_key_pressed(&__block : KeyPressedSignal)
-      __callback = ->(_arg0 : LibGtk::EventControllerKey*, _arg1 : LibGtk::UInt32*, _arg2 : LibGtk::UInt32*, _arg3 : LibGtk::LibGdk::ModifierType*) {
+      __callback = ->(_arg0 : LibGtk::EventControllerKey*, _arg1 : UInt32*, _arg2 : UInt32*, _arg3 : LibGdk::ModifierType*) {
        __return_value = __block.call(EventControllerKey.new(_arg0), _arg1, _arg2, _arg3)
        __return_value
       }
@@ -74,7 +74,7 @@ module Gtk
 
     alias KeyReleasedSignal = EventControllerKey, UInt32, UInt32, Gdk::ModifierType ->
     def on_key_released(&__block : KeyReleasedSignal)
-      __callback = ->(_arg0 : LibGtk::EventControllerKey*, _arg1 : LibGtk::UInt32*, _arg2 : LibGtk::UInt32*, _arg3 : LibGtk::LibGdk::ModifierType*) {
+      __callback = ->(_arg0 : LibGtk::EventControllerKey*, _arg1 : UInt32*, _arg2 : UInt32*, _arg3 : LibGdk::ModifierType*) {
        __return_value = __block.call(EventControllerKey.new(_arg0), _arg1, _arg2, _arg3)
        __return_value
       }
@@ -83,7 +83,7 @@ module Gtk
 
     alias ModifiersSignal = EventControllerKey, Gdk::ModifierType -> Bool
     def on_modifiers(&__block : ModifiersSignal)
-      __callback = ->(_arg0 : LibGtk::EventControllerKey*, _arg1 : LibGtk::LibGdk::ModifierType*) {
+      __callback = ->(_arg0 : LibGtk::EventControllerKey*, _arg1 : LibGdk::ModifierType*) {
        __return_value = __block.call(EventControllerKey.new(_arg0), _arg1)
        __return_value
       }

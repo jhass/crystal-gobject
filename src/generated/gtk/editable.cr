@@ -76,7 +76,7 @@ module Gtk
 
     alias DeleteTextSignal = Editable, Int32, Int32 ->
     def on_delete_text(&__block : DeleteTextSignal)
-      __callback = ->(_arg0 : LibGtk::Editable*, _arg1 : LibGtk::Int32*, _arg2 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::Editable*, _arg1 : Int32*, _arg2 : Int32*) {
        __return_value = __block.call(Editable.new(_arg0), _arg1, _arg2)
        __return_value
       }
@@ -85,7 +85,7 @@ module Gtk
 
     alias InsertTextSignal = Editable, String, Int32, Int32 ->
     def on_insert_text(&__block : InsertTextSignal)
-      __callback = ->(_arg0 : LibGtk::Editable*, _arg1 : LibGtk::UInt8**, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::Editable*, _arg1 : UInt8**, _arg2 : Int32*, _arg3 : Int32*) {
        __return_value = __block.call(Editable.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)), _arg2, _arg3)
        __return_value
       }

@@ -452,7 +452,7 @@ module Gst
 
     alias LinkedSignal = Pad, Gst::Pad ->
     def on_linked(&__block : LinkedSignal)
-      __callback = ->(_arg0 : LibGst::Pad*, _arg1 : LibGst::LibGst::Pad**) {
+      __callback = ->(_arg0 : LibGst::Pad*, _arg1 : LibGst::Pad**) {
        __return_value = __block.call(Pad.new(_arg0), Gst::Pad.new(_arg1))
        __return_value
       }
@@ -461,7 +461,7 @@ module Gst
 
     alias UnlinkedSignal = Pad, Gst::Pad ->
     def on_unlinked(&__block : UnlinkedSignal)
-      __callback = ->(_arg0 : LibGst::Pad*, _arg1 : LibGst::LibGst::Pad**) {
+      __callback = ->(_arg0 : LibGst::Pad*, _arg1 : LibGst::Pad**) {
        __return_value = __block.call(Pad.new(_arg0), Gst::Pad.new(_arg1))
        __return_value
       }

@@ -322,7 +322,7 @@ module Gtk
 
     alias FormatEntryTextSignal = ComboBox, String -> String
     def on_format_entry_text(&__block : FormatEntryTextSignal)
-      __callback = ->(_arg0 : LibGtk::ComboBox*, _arg1 : LibGtk::UInt8**) {
+      __callback = ->(_arg0 : LibGtk::ComboBox*, _arg1 : UInt8**) {
        __return_value = __block.call(ComboBox.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value.to_unsafe
       }
@@ -331,7 +331,7 @@ module Gtk
 
     alias MoveActiveSignal = ComboBox, Gtk::ScrollType ->
     def on_move_active(&__block : MoveActiveSignal)
-      __callback = ->(_arg0 : LibGtk::ComboBox*, _arg1 : LibGtk::LibGtk::ScrollType*) {
+      __callback = ->(_arg0 : LibGtk::ComboBox*, _arg1 : LibGtk::ScrollType*) {
        __return_value = __block.call(ComboBox.new(_arg0), _arg1)
        __return_value
       }

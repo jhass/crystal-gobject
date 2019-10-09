@@ -97,7 +97,7 @@ module Gtk
 
     alias FontActivatedSignal = FontChooser, String ->
     def on_font_activated(&__block : FontActivatedSignal)
-      __callback = ->(_arg0 : LibGtk::FontChooser*, _arg1 : LibGtk::UInt8**) {
+      __callback = ->(_arg0 : LibGtk::FontChooser*, _arg1 : UInt8**) {
        __return_value = __block.call(FontChooser.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }

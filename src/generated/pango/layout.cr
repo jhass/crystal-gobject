@@ -109,6 +109,11 @@ module Pango
       Pango::LayoutLine.new(__return_value) if __return_value
     end
 
+    def line_spacing
+      __return_value = LibPango.layout_get_line_spacing(@pointer.as(LibPango::Layout*))
+      __return_value
+    end
+
     def lines
       __return_value = LibPango.layout_get_lines(@pointer.as(LibPango::Layout*))
       GLib::SListIterator(Pango::LayoutLine, LibPango::LayoutLine*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
@@ -246,6 +251,11 @@ module Pango
 
     def justify=(justify)
       LibPango.layout_set_justify(@pointer.as(LibPango::Layout*), justify)
+      nil
+    end
+
+    def line_spacing=(factor)
+      LibPango.layout_set_line_spacing(@pointer.as(LibPango::Layout*), Float32.new(factor))
       nil
     end
 

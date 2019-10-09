@@ -1,16 +1,14 @@
-require "./lib_xlib"
-require "./lib_g_lib"
-require "./lib_gdk"
 require "./lib_gdk_pixbuf"
+require "./lib_gdk"
+require "./lib_g_module"
 require "./lib_cairo"
 require "./lib_g_object"
 require "./lib_pango"
 require "./lib_gio"
-require "./lib_g_module"
 require "./lib_atk"
+require "./lib_g_lib"
 
 @[Link("gtk-3")]
-@[Link("gdk-3")]
 lib LibGtk
 
   ###########################################
@@ -2216,6 +2214,10 @@ lib LibGtk
   fun header_bar_set_subtitle = gtk_header_bar_set_subtitle(this : HeaderBar*, subtitle : UInt8*) : Void
   fun header_bar_set_title = gtk_header_bar_set_title(this : HeaderBar*, title : UInt8*) : Void
 
+  struct HeaderBarAccessible # object
+    parent : LibGtk::ContainerAccessible*
+  end
+
   struct IMContext # object
     parent_instance : LibGObject::Object*
     # Signal commit
@@ -3248,7 +3250,7 @@ lib LibGtk
   fun overlay_new = gtk_overlay_new() : LibGtk::Widget*
   fun overlay_add_overlay = gtk_overlay_add_overlay(this : Overlay*, widget : LibGtk::Widget*) : Void
   fun overlay_get_overlay_pass_through = gtk_overlay_get_overlay_pass_through(this : Overlay*, widget : LibGtk::Widget*) : Bool
-  fun overlay_reorder_overlay = gtk_overlay_reorder_overlay(this : Overlay*, child : LibGtk::Widget*, position : Int32) : Void
+  fun overlay_reorder_overlay = gtk_overlay_reorder_overlay(this : Overlay*, child : LibGtk::Widget*, index : Int32) : Void
   fun overlay_set_overlay_pass_through = gtk_overlay_set_overlay_pass_through(this : Overlay*, widget : LibGtk::Widget*, pass_through : Bool) : Void
 
   struct PadController # object
@@ -3383,22 +3385,6 @@ lib LibGtk
   fun places_sidebar_set_show_recent = gtk_places_sidebar_set_show_recent(this : PlacesSidebar*, show_recent : Bool) : Void
   fun places_sidebar_set_show_starred_location = gtk_places_sidebar_set_show_starred_location(this : PlacesSidebar*, show_starred_location : Bool) : Void
   fun places_sidebar_set_show_trash = gtk_places_sidebar_set_show_trash(this : PlacesSidebar*, show_trash : Bool) : Void
-
-  struct Plug # object
-    window : LibGtk::Window*
-    priv : LibGtk::PlugPrivate*
-    # Signal embedded
-    # Virtual function embedded
-    # Property embedded : Bool
-    # Property socket_window : LibGdk::Window*
-  end
-  fun plug_new = gtk_plug_new(socket_id : UInt64) : LibGtk::Widget*
-  fun plug_new_for_display = gtk_plug_new_for_display(display : LibGdk::Display*, socket_id : UInt64) : LibGtk::Widget*
-  fun plug_construct = gtk_plug_construct(this : Plug*, socket_id : UInt64) : Void
-  fun plug_construct_for_display = gtk_plug_construct_for_display(this : Plug*, display : LibGdk::Display*, socket_id : UInt64) : Void
-  fun plug_get_embedded = gtk_plug_get_embedded(this : Plug*) : Bool
-  fun plug_get_id = gtk_plug_get_id(this : Plug*) : UInt64
-  fun plug_get_socket_window = gtk_plug_get_socket_window(this : Plug*) : LibGdk::Window*
 
   struct Popover # object
     parent_instance : LibGtk::Bin*
@@ -4109,6 +4095,7 @@ lib LibGtk
     # Property gtk_menu_popdown_delay : Int32
     # Property gtk_menu_popup_delay : Int32
     # Property gtk_modules : UInt8*
+    # Property gtk_overlay_scrolling : Bool
     # Property gtk_primary_button_warps_slider : Bool
     # Property gtk_print_backends : UInt8*
     # Property gtk_print_preview_command : UInt8*
@@ -4221,19 +4208,6 @@ lib LibGtk
   fun size_group_remove_widget = gtk_size_group_remove_widget(this : SizeGroup*, widget : LibGtk::Widget*) : Void
   fun size_group_set_ignore_hidden = gtk_size_group_set_ignore_hidden(this : SizeGroup*, ignore_hidden : Bool) : Void
   fun size_group_set_mode = gtk_size_group_set_mode(this : SizeGroup*, mode : LibGtk::SizeGroupMode) : Void
-
-  struct Socket # object
-    container : LibGtk::Container*
-    priv : LibGtk::SocketPrivate*
-    # Signal plug-added
-    # Signal plug-removed
-    # Virtual function plug_added
-    # Virtual function plug_removed
-  end
-  fun socket_new = gtk_socket_new() : LibGtk::Widget*
-  fun socket_add_id = gtk_socket_add_id(this : Socket*, window : UInt64) : Void
-  fun socket_get_id = gtk_socket_get_id(this : Socket*) : UInt64
-  fun socket_get_plug_window = gtk_socket_get_plug_window(this : Socket*) : LibGdk::Window*
 
   struct SpinButton # object
     entry : LibGtk::Entry*
@@ -6760,6 +6734,10 @@ lib LibGtk
     _data : UInt8[0]
   end
 
+  struct HeaderBarAccessiblePrivate # struct
+    _data : UInt8[0]
+  end
+
   struct HeaderBarPrivate # struct
     _data : UInt8[0]
   end
@@ -7029,10 +7007,6 @@ lib LibGtk
   fun paper_size_get_default = gtk_paper_size_get_default() : UInt8*
   fun paper_size_get_paper_sizes = gtk_paper_size_get_paper_sizes(include_custom : Bool) : Void**
 
-  struct PlugPrivate # struct
-    _data : UInt8[0]
-  end
-
   struct PopoverPrivate # struct
     _data : UInt8[0]
   end
@@ -7256,10 +7230,6 @@ lib LibGtk
   end
 
   struct SizeGroupPrivate # struct
-    _data : UInt8[0]
-  end
-
-  struct SocketPrivate # struct
     _data : UInt8[0]
   end
 
@@ -7782,6 +7752,44 @@ lib LibGtk
   end
 
   struct WindowPrivate # struct
+    _data : UInt8[0]
+  end
+
+  struct Gtk_MountOperationHandler # struct
+    _data : UInt8[0]
+  end
+
+  struct Gtk_MountOperationHandlerIface # struct
+    parent_iface : LibGObject::TypeInterface
+    handle_ask_password : Void*
+    handle_ask_question : Void*
+    handle_close : Void*
+    handle_show_processes : Void*
+  end
+
+  struct Gtk_MountOperationHandlerProxy # struct
+    parent_instance : LibGio::DBusProxy*
+    priv : Void*
+  end
+
+  struct Gtk_MountOperationHandlerProxyClass # struct
+    parent_class : Void*
+  end
+
+  struct Gtk_MountOperationHandlerProxyPrivate # struct
+    _data : UInt8[0]
+  end
+
+  struct Gtk_MountOperationHandlerSkeleton # struct
+    parent_instance : LibGio::DBusInterfaceSkeleton*
+    priv : Void*
+  end
+
+  struct Gtk_MountOperationHandlerSkeletonClass # struct
+    parent_class : Void*
+  end
+
+  struct Gtk_MountOperationHandlerSkeletonPrivate # struct
     _data : UInt8[0]
   end
 
@@ -9639,15 +9647,15 @@ lib LibGtk
   ##    Constants
   ###########################################
 
-  BINARY_AGE = 2408 # : Int32
+  BINARY_AGE = 2412 # : Int32
   INPUT_ERROR = -1 # : Int32
-  INTERFACE_AGE = 4 # : Int32
+  INTERFACE_AGE = 7 # : Int32
   LEVEL_BAR_OFFSET_FULL = "full" # : UInt8*
   LEVEL_BAR_OFFSET_HIGH = "high" # : UInt8*
   LEVEL_BAR_OFFSET_LOW = "low" # : UInt8*
   MAJOR_VERSION = 3 # : Int32
   MAX_COMPOSE_LEN = 7 # : Int32
-  MICRO_VERSION = 8 # : Int32
+  MICRO_VERSION = 12 # : Int32
   MINOR_VERSION = 24 # : Int32
   PAPER_NAME_A3 = "iso_a3" # : UInt8*
   PAPER_NAME_A4 = "iso_a4" # : UInt8*
@@ -10142,8 +10150,8 @@ lib LibGtk
  alias RcPropertyParser = LibGObject::ParamSpec*, LibGLib::String*, LibGObject::Value* -> Bool
  alias RecentFilterFunc = LibGtk::RecentFilterInfo*, Void* -> Bool
  alias RecentSortFunc = LibGtk::RecentInfo*, LibGtk::RecentInfo*, Void* -> Int32
- alias StylePropertyParser = UInt8*, LibGObject::Value*, LibGLib::Error** -> Bool
- alias TextBufferDeserializeFunc = LibGtk::TextBuffer*, LibGtk::TextBuffer*, LibGtk::TextIter*, UInt8*, UInt64, Bool, Void*, LibGLib::Error** -> Bool
+ alias StylePropertyParser = UInt8*, LibGObject::Value*, LibGLib::Error* -> Bool
+ alias TextBufferDeserializeFunc = LibGtk::TextBuffer*, LibGtk::TextBuffer*, LibGtk::TextIter*, UInt8*, UInt64, Bool, Void*, LibGLib::Error* -> Bool
  alias TextBufferSerializeFunc = LibGtk::TextBuffer*, LibGtk::TextBuffer*, LibGtk::TextIter*, LibGtk::TextIter*, UInt64*, Void* -> UInt8*
  alias TextCharPredicate = UInt8, Void* -> Bool
  alias TextTagTableForeach = LibGtk::TextTag*, Void* -> Void

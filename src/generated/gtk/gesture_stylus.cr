@@ -33,7 +33,7 @@ module Gtk
 
     alias DownSignal = GestureStylus, Float64, Float64 ->
     def on_down(&__block : DownSignal)
-      __callback = ->(_arg0 : LibGtk::GestureStylus*, _arg1 : LibGtk::Float64*, _arg2 : LibGtk::Float64*) {
+      __callback = ->(_arg0 : LibGtk::GestureStylus*, _arg1 : Float64*, _arg2 : Float64*) {
        __return_value = __block.call(GestureStylus.new(_arg0), _arg1, _arg2)
        __return_value
       }
@@ -42,7 +42,7 @@ module Gtk
 
     alias MotionSignal = GestureStylus, Float64, Float64 ->
     def on_motion(&__block : MotionSignal)
-      __callback = ->(_arg0 : LibGtk::GestureStylus*, _arg1 : LibGtk::Float64*, _arg2 : LibGtk::Float64*) {
+      __callback = ->(_arg0 : LibGtk::GestureStylus*, _arg1 : Float64*, _arg2 : Float64*) {
        __return_value = __block.call(GestureStylus.new(_arg0), _arg1, _arg2)
        __return_value
       }
@@ -51,7 +51,7 @@ module Gtk
 
     alias ProximitySignal = GestureStylus, Float64, Float64 ->
     def on_proximity(&__block : ProximitySignal)
-      __callback = ->(_arg0 : LibGtk::GestureStylus*, _arg1 : LibGtk::Float64*, _arg2 : LibGtk::Float64*) {
+      __callback = ->(_arg0 : LibGtk::GestureStylus*, _arg1 : Float64*, _arg2 : Float64*) {
        __return_value = __block.call(GestureStylus.new(_arg0), _arg1, _arg2)
        __return_value
       }
@@ -60,7 +60,7 @@ module Gtk
 
     alias UpSignal = GestureStylus, Float64, Float64 ->
     def on_up(&__block : UpSignal)
-      __callback = ->(_arg0 : LibGtk::GestureStylus*, _arg1 : LibGtk::Float64*, _arg2 : LibGtk::Float64*) {
+      __callback = ->(_arg0 : LibGtk::GestureStylus*, _arg1 : Float64*, _arg2 : Float64*) {
        __return_value = __block.call(GestureStylus.new(_arg0), _arg1, _arg2)
        __return_value
       }

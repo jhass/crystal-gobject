@@ -46,7 +46,7 @@ module Gio
 
     alias DriveChangedSignal = VolumeMonitor, Gio::Drive ->
     def on_drive_changed(&__block : DriveChangedSignal)
-      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::LibGio::Drive*) {
+      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::Drive*) {
        __return_value = __block.call(VolumeMonitor.new(_arg0), _arg1)
        __return_value
       }
@@ -55,7 +55,7 @@ module Gio
 
     alias DriveConnectedSignal = VolumeMonitor, Gio::Drive ->
     def on_drive_connected(&__block : DriveConnectedSignal)
-      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::LibGio::Drive*) {
+      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::Drive*) {
        __return_value = __block.call(VolumeMonitor.new(_arg0), _arg1)
        __return_value
       }
@@ -64,7 +64,7 @@ module Gio
 
     alias DriveDisconnectedSignal = VolumeMonitor, Gio::Drive ->
     def on_drive_disconnected(&__block : DriveDisconnectedSignal)
-      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::LibGio::Drive*) {
+      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::Drive*) {
        __return_value = __block.call(VolumeMonitor.new(_arg0), _arg1)
        __return_value
       }
@@ -73,7 +73,7 @@ module Gio
 
     alias DriveEjectButtonSignal = VolumeMonitor, Gio::Drive ->
     def on_drive_eject_button(&__block : DriveEjectButtonSignal)
-      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::LibGio::Drive*) {
+      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::Drive*) {
        __return_value = __block.call(VolumeMonitor.new(_arg0), _arg1)
        __return_value
       }
@@ -82,7 +82,7 @@ module Gio
 
     alias DriveStopButtonSignal = VolumeMonitor, Gio::Drive ->
     def on_drive_stop_button(&__block : DriveStopButtonSignal)
-      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::LibGio::Drive*) {
+      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::Drive*) {
        __return_value = __block.call(VolumeMonitor.new(_arg0), _arg1)
        __return_value
       }
@@ -91,7 +91,7 @@ module Gio
 
     alias MountAddedSignal = VolumeMonitor, Gio::Mount ->
     def on_mount_added(&__block : MountAddedSignal)
-      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::LibGio::Mount*) {
+      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::Mount*) {
        __return_value = __block.call(VolumeMonitor.new(_arg0), _arg1)
        __return_value
       }
@@ -100,7 +100,7 @@ module Gio
 
     alias MountChangedSignal = VolumeMonitor, Gio::Mount ->
     def on_mount_changed(&__block : MountChangedSignal)
-      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::LibGio::Mount*) {
+      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::Mount*) {
        __return_value = __block.call(VolumeMonitor.new(_arg0), _arg1)
        __return_value
       }
@@ -109,7 +109,7 @@ module Gio
 
     alias MountPreUnmountSignal = VolumeMonitor, Gio::Mount ->
     def on_mount_pre_unmount(&__block : MountPreUnmountSignal)
-      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::LibGio::Mount*) {
+      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::Mount*) {
        __return_value = __block.call(VolumeMonitor.new(_arg0), _arg1)
        __return_value
       }
@@ -118,7 +118,7 @@ module Gio
 
     alias MountRemovedSignal = VolumeMonitor, Gio::Mount ->
     def on_mount_removed(&__block : MountRemovedSignal)
-      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::LibGio::Mount*) {
+      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::Mount*) {
        __return_value = __block.call(VolumeMonitor.new(_arg0), _arg1)
        __return_value
       }
@@ -127,7 +127,7 @@ module Gio
 
     alias VolumeAddedSignal = VolumeMonitor, Gio::Volume ->
     def on_volume_added(&__block : VolumeAddedSignal)
-      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::LibGio::Volume*) {
+      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::Volume*) {
        __return_value = __block.call(VolumeMonitor.new(_arg0), _arg1)
        __return_value
       }
@@ -136,7 +136,7 @@ module Gio
 
     alias VolumeChangedSignal = VolumeMonitor, Gio::Volume ->
     def on_volume_changed(&__block : VolumeChangedSignal)
-      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::LibGio::Volume*) {
+      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::Volume*) {
        __return_value = __block.call(VolumeMonitor.new(_arg0), _arg1)
        __return_value
       }
@@ -145,7 +145,7 @@ module Gio
 
     alias VolumeRemovedSignal = VolumeMonitor, Gio::Volume ->
     def on_volume_removed(&__block : VolumeRemovedSignal)
-      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::LibGio::Volume*) {
+      __callback = ->(_arg0 : LibGio::VolumeMonitor*, _arg1 : LibGio::Volume*) {
        __return_value = __block.call(VolumeMonitor.new(_arg0), _arg1)
        __return_value
       }

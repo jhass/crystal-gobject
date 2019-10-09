@@ -197,7 +197,7 @@ module Gtk
 
     alias PrepareSignal = Assistant, Gtk::Widget ->
     def on_prepare(&__block : PrepareSignal)
-      __callback = ->(_arg0 : LibGtk::Assistant*, _arg1 : LibGtk::LibGtk::Widget**) {
+      __callback = ->(_arg0 : LibGtk::Assistant*, _arg1 : LibGtk::Widget**) {
        __return_value = __block.call(Assistant.new(_arg0), Gtk::Widget.new(_arg1))
        __return_value
       }

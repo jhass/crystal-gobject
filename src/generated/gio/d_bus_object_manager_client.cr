@@ -121,7 +121,7 @@ module Gio
 
     alias InterfaceProxyPropertiesChangedSignal = DBusObjectManagerClient, Gio::DBusObjectProxy, Gio::DBusProxy, GLib::Variant, Array(String) ->
     def on_interface_proxy_properties_changed(&__block : InterfaceProxyPropertiesChangedSignal)
-      __callback = ->(_arg0 : LibGio::DBusObjectManagerClient*, _arg1 : LibGio::LibGio::DBusObjectProxy**, _arg2 : LibGio::LibGio::DBusProxy**, _arg3 : LibGio::LibGLib::Variant*, _arg4 : LibGio::UInt8***) {
+      __callback = ->(_arg0 : LibGio::DBusObjectManagerClient*, _arg1 : LibGio::DBusObjectProxy**, _arg2 : LibGio::DBusProxy**, _arg3 : LibGLib::Variant*, _arg4 : UInt8***) {
        __return_value = __block.call(DBusObjectManagerClient.new(_arg0), Gio::DBusObjectProxy.new(_arg1), Gio::DBusProxy.new(_arg2), GLib::Variant.new(_arg3), PointerIterator.new(_arg4) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) })
        __return_value
       }
@@ -130,7 +130,7 @@ module Gio
 
     alias InterfaceProxySignalSignal = DBusObjectManagerClient, Gio::DBusObjectProxy, Gio::DBusProxy, String, String, GLib::Variant ->
     def on_interface_proxy_signal(&__block : InterfaceProxySignalSignal)
-      __callback = ->(_arg0 : LibGio::DBusObjectManagerClient*, _arg1 : LibGio::LibGio::DBusObjectProxy**, _arg2 : LibGio::LibGio::DBusProxy**, _arg3 : LibGio::UInt8**, _arg4 : LibGio::UInt8**, _arg5 : LibGio::LibGLib::Variant*) {
+      __callback = ->(_arg0 : LibGio::DBusObjectManagerClient*, _arg1 : LibGio::DBusObjectProxy**, _arg2 : LibGio::DBusProxy**, _arg3 : UInt8**, _arg4 : UInt8**, _arg5 : LibGLib::Variant*) {
        __return_value = __block.call(DBusObjectManagerClient.new(_arg0), Gio::DBusObjectProxy.new(_arg1), Gio::DBusProxy.new(_arg2), (raise "Expected string but got null" unless _arg3; ::String.new(_arg3)), (raise "Expected string but got null" unless _arg4; ::String.new(_arg4)), GLib::Variant.new(_arg5))
        __return_value
       }

@@ -275,7 +275,7 @@ module Gtk
 
     alias ButtonPressEventSignal = StatusIcon, Gdk::EventButton -> Bool
     def on_button_press_event(&__block : ButtonPressEventSignal)
-      __callback = ->(_arg0 : LibGtk::StatusIcon*, _arg1 : LibGtk::LibGdk::EventButton*) {
+      __callback = ->(_arg0 : LibGtk::StatusIcon*, _arg1 : LibGdk::EventButton*) {
        __return_value = __block.call(StatusIcon.new(_arg0), Gdk::EventButton.new(_arg1))
        __return_value
       }
@@ -284,7 +284,7 @@ module Gtk
 
     alias ButtonReleaseEventSignal = StatusIcon, Gdk::EventButton -> Bool
     def on_button_release_event(&__block : ButtonReleaseEventSignal)
-      __callback = ->(_arg0 : LibGtk::StatusIcon*, _arg1 : LibGtk::LibGdk::EventButton*) {
+      __callback = ->(_arg0 : LibGtk::StatusIcon*, _arg1 : LibGdk::EventButton*) {
        __return_value = __block.call(StatusIcon.new(_arg0), Gdk::EventButton.new(_arg1))
        __return_value
       }
@@ -293,7 +293,7 @@ module Gtk
 
     alias PopupMenuSignal = StatusIcon, UInt32, UInt32 ->
     def on_popup_menu(&__block : PopupMenuSignal)
-      __callback = ->(_arg0 : LibGtk::StatusIcon*, _arg1 : LibGtk::UInt32*, _arg2 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::StatusIcon*, _arg1 : UInt32*, _arg2 : UInt32*) {
        __return_value = __block.call(StatusIcon.new(_arg0), _arg1, _arg2)
        __return_value
       }
@@ -302,7 +302,7 @@ module Gtk
 
     alias QueryTooltipSignal = StatusIcon, Int32, Int32, Bool, Gtk::Tooltip -> Bool
     def on_query_tooltip(&__block : QueryTooltipSignal)
-      __callback = ->(_arg0 : LibGtk::StatusIcon*, _arg1 : LibGtk::Int32*, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Bool*, _arg4 : LibGtk::LibGtk::Tooltip**) {
+      __callback = ->(_arg0 : LibGtk::StatusIcon*, _arg1 : Int32*, _arg2 : Int32*, _arg3 : Bool*, _arg4 : LibGtk::Tooltip**) {
        __return_value = __block.call(StatusIcon.new(_arg0), _arg1, _arg2, _arg3, Gtk::Tooltip.new(_arg4))
        __return_value
       }
@@ -311,7 +311,7 @@ module Gtk
 
     alias ScrollEventSignal = StatusIcon, Gdk::EventScroll -> Bool
     def on_scroll_event(&__block : ScrollEventSignal)
-      __callback = ->(_arg0 : LibGtk::StatusIcon*, _arg1 : LibGtk::LibGdk::EventScroll*) {
+      __callback = ->(_arg0 : LibGtk::StatusIcon*, _arg1 : LibGdk::EventScroll*) {
        __return_value = __block.call(StatusIcon.new(_arg0), Gdk::EventScroll.new(_arg1))
        __return_value
       }
@@ -320,7 +320,7 @@ module Gtk
 
     alias SizeChangedSignal = StatusIcon, Int32 -> Bool
     def on_size_changed(&__block : SizeChangedSignal)
-      __callback = ->(_arg0 : LibGtk::StatusIcon*, _arg1 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::StatusIcon*, _arg1 : Int32*) {
        __return_value = __block.call(StatusIcon.new(_arg0), _arg1)
        __return_value
       }

@@ -72,7 +72,7 @@ module Gio
 
     alias ActionAddedSignal = ActionGroup, String ->
     def on_action_added(&__block : ActionAddedSignal)
-      __callback = ->(_arg0 : LibGio::ActionGroup*, _arg1 : LibGio::UInt8**) {
+      __callback = ->(_arg0 : LibGio::ActionGroup*, _arg1 : UInt8**) {
        __return_value = __block.call(ActionGroup.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
@@ -81,7 +81,7 @@ module Gio
 
     alias ActionEnabledChangedSignal = ActionGroup, String, Bool ->
     def on_action_enabled_changed(&__block : ActionEnabledChangedSignal)
-      __callback = ->(_arg0 : LibGio::ActionGroup*, _arg1 : LibGio::UInt8**, _arg2 : LibGio::Bool*) {
+      __callback = ->(_arg0 : LibGio::ActionGroup*, _arg1 : UInt8**, _arg2 : Bool*) {
        __return_value = __block.call(ActionGroup.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)), _arg2)
        __return_value
       }
@@ -90,7 +90,7 @@ module Gio
 
     alias ActionRemovedSignal = ActionGroup, String ->
     def on_action_removed(&__block : ActionRemovedSignal)
-      __callback = ->(_arg0 : LibGio::ActionGroup*, _arg1 : LibGio::UInt8**) {
+      __callback = ->(_arg0 : LibGio::ActionGroup*, _arg1 : UInt8**) {
        __return_value = __block.call(ActionGroup.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
@@ -99,7 +99,7 @@ module Gio
 
     alias ActionStateChangedSignal = ActionGroup, String, GLib::Variant ->
     def on_action_state_changed(&__block : ActionStateChangedSignal)
-      __callback = ->(_arg0 : LibGio::ActionGroup*, _arg1 : LibGio::UInt8**, _arg2 : LibGio::LibGLib::Variant*) {
+      __callback = ->(_arg0 : LibGio::ActionGroup*, _arg1 : UInt8**, _arg2 : LibGLib::Variant*) {
        __return_value = __block.call(ActionGroup.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)), GLib::Variant.new(_arg2))
        __return_value
       }

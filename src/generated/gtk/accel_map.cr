@@ -81,7 +81,7 @@ module Gtk
 
     alias ChangedSignal = AccelMap, String, UInt32, Gdk::ModifierType ->
     def on_changed(&__block : ChangedSignal)
-      __callback = ->(_arg0 : LibGtk::AccelMap*, _arg1 : LibGtk::UInt8**, _arg2 : LibGtk::UInt32*, _arg3 : LibGtk::LibGdk::ModifierType*) {
+      __callback = ->(_arg0 : LibGtk::AccelMap*, _arg1 : UInt8**, _arg2 : UInt32*, _arg3 : LibGdk::ModifierType*) {
        __return_value = __block.call(AccelMap.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)), _arg2, _arg3)
        __return_value
       }

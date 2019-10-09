@@ -19,6 +19,11 @@ module Pango
       @pointer.not_nil!.as(LibPango::AttrFontFeatures*)
     end
 
+    def self.new(features)
+      __return_value = LibPango.attr_font_features_new(features.to_unsafe)
+      Pango::Attribute.new(__return_value)
+    end
+
     def attr
       Pango::Attribute.new((to_unsafe.as(LibPango::AttrFontFeatures*).value.attr))
     end

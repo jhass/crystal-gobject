@@ -722,6 +722,7 @@ lib LibGObject
   fun cclosure_marshal_VOID__VARIANT = g_cclosure_marshal_VOID__VARIANT(closure : LibGObject::Closure*, return_value : LibGObject::Value*, n_param_values : UInt32, param_values : LibGObject::Value*, invocation_hint : Void*, marshal_data : Void*) : Void
   fun cclosure_marshal_VOID__VOID = g_cclosure_marshal_VOID__VOID(closure : LibGObject::Closure*, return_value : LibGObject::Value*, n_param_values : UInt32, param_values : LibGObject::Value*, invocation_hint : Void*, marshal_data : Void*) : Void
   fun cclosure_marshal_generic = g_cclosure_marshal_generic(closure : LibGObject::Closure*, return_gvalue : LibGObject::Value*, n_param_values : UInt32, param_values : LibGObject::Value*, invocation_hint : Void*, marshal_data : Void*) : Void
+  fun clear_signal_handler = g_clear_signal_handler(handler_id_ptr : UInt64*, instance : LibGObject::Object*) : Void
   fun enum_complete_type_info = g_enum_complete_type_info(g_enum_type : UInt64, info : LibGObject::TypeInfo*, const_values : LibGObject::EnumValue*) : Void
   fun enum_get_value = g_enum_get_value(enum_class : LibGObject::EnumClass*, value : Int32) : LibGObject::EnumValue*
   fun enum_get_value_by_name = g_enum_get_value_by_name(enum_class : LibGObject::EnumClass*, name : UInt8*) : LibGObject::EnumValue*

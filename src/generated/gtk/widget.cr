@@ -351,12 +351,12 @@ module Gtk
     end
 
     def drag_begin(targets, actions : Gdk::DragAction, button, event)
-      __return_value = LibGtk.widget_drag_begin(@pointer.as(LibGtk::Widget*), targets.to_unsafe.as(LibGtk::TargetList*), actions, Int32.new(button), event ? event.to_unsafe.as(LibGdk::Event*) : nil)
+      __return_value = LibGtk.widget_drag_begin(@pointer.as(LibGtk::Widget*), targets.to_unsafe.as(LibGtk::TargetList*), actions, Int32.new(button), event.to_unsafe.as(LibGdk::Event*))
       Gdk::DragContext.new(__return_value)
     end
 
     def drag_begin_with_coordinates(targets, actions : Gdk::DragAction, button, event, x, y)
-      __return_value = LibGtk.widget_drag_begin_with_coordinates(@pointer.as(LibGtk::Widget*), targets.to_unsafe.as(LibGtk::TargetList*), actions, Int32.new(button), event ? event.to_unsafe.as(LibGdk::Event*) : nil, Int32.new(x), Int32.new(y))
+      __return_value = LibGtk.widget_drag_begin_with_coordinates(@pointer.as(LibGtk::Widget*), targets.to_unsafe.as(LibGtk::TargetList*), actions, Int32.new(button), event.to_unsafe.as(LibGdk::Event*), Int32.new(x), Int32.new(y))
       Gdk::DragContext.new(__return_value)
     end
 
@@ -387,7 +387,7 @@ module Gtk
 
     def drag_dest_get_target_list
       __return_value = LibGtk.widget_drag_dest_get_target_list(@pointer.as(LibGtk::Widget*))
-      Gtk::TargetList.new(__return_value) if __return_value
+      Gtk::TargetList.new(__return_value)
     end
 
     def drag_dest_get_track_motion
@@ -1586,7 +1586,7 @@ module Gtk
 
     alias ButtonPressEventSignal = Widget, Gdk::EventButton -> Bool
     def on_button_press_event(&__block : ButtonPressEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::EventButton*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::EventButton*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::EventButton.new(_arg1))
        __return_value
       }
@@ -1595,7 +1595,7 @@ module Gtk
 
     alias ButtonReleaseEventSignal = Widget, Gdk::EventButton -> Bool
     def on_button_release_event(&__block : ButtonReleaseEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::EventButton*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::EventButton*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::EventButton.new(_arg1))
        __return_value
       }
@@ -1604,7 +1604,7 @@ module Gtk
 
     alias CanActivateAccelSignal = Widget, UInt32 -> Bool
     def on_can_activate_accel(&__block : CanActivateAccelSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : UInt32*) {
        __return_value = __block.call(Widget.new(_arg0), _arg1)
        __return_value
       }
@@ -1613,7 +1613,7 @@ module Gtk
 
     alias ChildNotifySignal = Widget, GObject::ParamSpec ->
     def on_child_notify(&__block : ChildNotifySignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGObject::ParamSpec**) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGObject::ParamSpec**) {
        __return_value = __block.call(Widget.new(_arg0), GObject::ParamSpec.new(_arg1))
        __return_value
       }
@@ -1631,7 +1631,7 @@ module Gtk
 
     alias ConfigureEventSignal = Widget, Gdk::EventConfigure -> Bool
     def on_configure_event(&__block : ConfigureEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::EventConfigure*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::EventConfigure*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::EventConfigure.new(_arg1))
        __return_value
       }
@@ -1640,7 +1640,7 @@ module Gtk
 
     alias DamageEventSignal = Widget, Gdk::EventExpose -> Bool
     def on_damage_event(&__block : DamageEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::EventExpose*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::EventExpose*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::EventExpose.new(_arg1))
        __return_value
       }
@@ -1649,7 +1649,7 @@ module Gtk
 
     alias DeleteEventSignal = Widget, Gdk::Event -> Bool
     def on_delete_event(&__block : DeleteEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::Event*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::Event*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::Event.new(_arg1))
        __return_value
       }
@@ -1667,7 +1667,7 @@ module Gtk
 
     alias DestroyEventSignal = Widget, Gdk::Event -> Bool
     def on_destroy_event(&__block : DestroyEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::Event*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::Event*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::Event.new(_arg1))
        __return_value
       }
@@ -1676,7 +1676,7 @@ module Gtk
 
     alias DirectionChangedSignal = Widget, Gtk::TextDirection ->
     def on_direction_changed(&__block : DirectionChangedSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGtk::TextDirection*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::TextDirection*) {
        __return_value = __block.call(Widget.new(_arg0), _arg1)
        __return_value
       }
@@ -1685,7 +1685,7 @@ module Gtk
 
     alias DragBeginSignal = Widget, Gdk::DragContext ->
     def on_drag_begin(&__block : DragBeginSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext**) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::DragContext**) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::DragContext.new(_arg1))
        __return_value
       }
@@ -1694,7 +1694,7 @@ module Gtk
 
     alias DragDataDeleteSignal = Widget, Gdk::DragContext ->
     def on_drag_data_delete(&__block : DragDataDeleteSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext**) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::DragContext**) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::DragContext.new(_arg1))
        __return_value
       }
@@ -1703,7 +1703,7 @@ module Gtk
 
     alias DragDataGetSignal = Widget, Gdk::DragContext, Gtk::SelectionData, UInt32, UInt32 ->
     def on_drag_data_get(&__block : DragDataGetSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext**, _arg2 : LibGtk::LibGtk::SelectionData*, _arg3 : LibGtk::UInt32*, _arg4 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::DragContext**, _arg2 : LibGtk::SelectionData*, _arg3 : UInt32*, _arg4 : UInt32*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::DragContext.new(_arg1), Gtk::SelectionData.new(_arg2), _arg3, _arg4)
        __return_value
       }
@@ -1712,7 +1712,7 @@ module Gtk
 
     alias DragDataReceivedSignal = Widget, Gdk::DragContext, Int32, Int32, Gtk::SelectionData, UInt32, UInt32 ->
     def on_drag_data_received(&__block : DragDataReceivedSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext**, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Int32*, _arg4 : LibGtk::LibGtk::SelectionData*, _arg5 : LibGtk::UInt32*, _arg6 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::DragContext**, _arg2 : Int32*, _arg3 : Int32*, _arg4 : LibGtk::SelectionData*, _arg5 : UInt32*, _arg6 : UInt32*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::DragContext.new(_arg1), _arg2, _arg3, Gtk::SelectionData.new(_arg4), _arg5, _arg6)
        __return_value
       }
@@ -1721,7 +1721,7 @@ module Gtk
 
     alias DragDropSignal = Widget, Gdk::DragContext, Int32, Int32, UInt32 -> Bool
     def on_drag_drop(&__block : DragDropSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext**, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Int32*, _arg4 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::DragContext**, _arg2 : Int32*, _arg3 : Int32*, _arg4 : UInt32*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::DragContext.new(_arg1), _arg2, _arg3, _arg4)
        __return_value
       }
@@ -1730,7 +1730,7 @@ module Gtk
 
     alias DragEndSignal = Widget, Gdk::DragContext ->
     def on_drag_end(&__block : DragEndSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext**) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::DragContext**) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::DragContext.new(_arg1))
        __return_value
       }
@@ -1739,7 +1739,7 @@ module Gtk
 
     alias DragFailedSignal = Widget, Gdk::DragContext, Gtk::DragResult -> Bool
     def on_drag_failed(&__block : DragFailedSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext**, _arg2 : LibGtk::LibGtk::DragResult*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::DragContext**, _arg2 : LibGtk::DragResult*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::DragContext.new(_arg1), _arg2)
        __return_value
       }
@@ -1748,7 +1748,7 @@ module Gtk
 
     alias DragLeaveSignal = Widget, Gdk::DragContext, UInt32 ->
     def on_drag_leave(&__block : DragLeaveSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext**, _arg2 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::DragContext**, _arg2 : UInt32*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::DragContext.new(_arg1), _arg2)
        __return_value
       }
@@ -1757,7 +1757,7 @@ module Gtk
 
     alias DragMotionSignal = Widget, Gdk::DragContext, Int32, Int32, UInt32 -> Bool
     def on_drag_motion(&__block : DragMotionSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::DragContext**, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Int32*, _arg4 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::DragContext**, _arg2 : Int32*, _arg3 : Int32*, _arg4 : UInt32*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::DragContext.new(_arg1), _arg2, _arg3, _arg4)
        __return_value
       }
@@ -1766,7 +1766,7 @@ module Gtk
 
     alias DrawSignal = Widget, Cairo::Context -> Bool
     def on_draw(&__block : DrawSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibCairo::Context*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibCairo::Context*) {
        __return_value = __block.call(Widget.new(_arg0), Cairo::Context.new(_arg1))
        __return_value
       }
@@ -1775,7 +1775,7 @@ module Gtk
 
     alias EnterNotifyEventSignal = Widget, Gdk::EventCrossing -> Bool
     def on_enter_notify_event(&__block : EnterNotifyEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::EventCrossing*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::EventCrossing*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::EventCrossing.new(_arg1))
        __return_value
       }
@@ -1784,7 +1784,7 @@ module Gtk
 
     alias EventSignal = Widget, Gdk::Event -> Bool
     def on_event(&__block : EventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::Event*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::Event*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::Event.new(_arg1))
        __return_value
       }
@@ -1793,7 +1793,7 @@ module Gtk
 
     alias EventAfterSignal = Widget, Gdk::Event ->
     def on_event_after(&__block : EventAfterSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::Event*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::Event*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::Event.new(_arg1))
        __return_value
       }
@@ -1802,7 +1802,7 @@ module Gtk
 
     alias FocusSignal = Widget, Gtk::DirectionType -> Bool
     def on_focus(&__block : FocusSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGtk::DirectionType*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::DirectionType*) {
        __return_value = __block.call(Widget.new(_arg0), _arg1)
        __return_value
       }
@@ -1811,7 +1811,7 @@ module Gtk
 
     alias FocusInEventSignal = Widget, Gdk::EventFocus -> Bool
     def on_focus_in_event(&__block : FocusInEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::EventFocus*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::EventFocus*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::EventFocus.new(_arg1))
        __return_value
       }
@@ -1820,7 +1820,7 @@ module Gtk
 
     alias FocusOutEventSignal = Widget, Gdk::EventFocus -> Bool
     def on_focus_out_event(&__block : FocusOutEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::EventFocus*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::EventFocus*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::EventFocus.new(_arg1))
        __return_value
       }
@@ -1829,7 +1829,7 @@ module Gtk
 
     alias GrabBrokenEventSignal = Widget, Gdk::EventGrabBroken -> Bool
     def on_grab_broken_event(&__block : GrabBrokenEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::EventGrabBroken*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::EventGrabBroken*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::EventGrabBroken.new(_arg1))
        __return_value
       }
@@ -1847,7 +1847,7 @@ module Gtk
 
     alias GrabNotifySignal = Widget, Bool ->
     def on_grab_notify(&__block : GrabNotifySignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::Bool*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : Bool*) {
        __return_value = __block.call(Widget.new(_arg0), _arg1)
        __return_value
       }
@@ -1865,7 +1865,7 @@ module Gtk
 
     alias HierarchyChangedSignal = Widget, Gtk::Widget ->
     def on_hierarchy_changed(&__block : HierarchyChangedSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGtk::Widget**) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::Widget**) {
        __return_value = __block.call(Widget.new(_arg0), Gtk::Widget.new(_arg1))
        __return_value
       }
@@ -1874,7 +1874,7 @@ module Gtk
 
     alias KeyPressEventSignal = Widget, Gdk::EventKey -> Bool
     def on_key_press_event(&__block : KeyPressEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::EventKey*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::EventKey*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::EventKey.new(_arg1))
        __return_value
       }
@@ -1883,7 +1883,7 @@ module Gtk
 
     alias KeyReleaseEventSignal = Widget, Gdk::EventKey -> Bool
     def on_key_release_event(&__block : KeyReleaseEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::EventKey*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::EventKey*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::EventKey.new(_arg1))
        __return_value
       }
@@ -1892,7 +1892,7 @@ module Gtk
 
     alias KeynavFailedSignal = Widget, Gtk::DirectionType -> Bool
     def on_keynav_failed(&__block : KeynavFailedSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGtk::DirectionType*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::DirectionType*) {
        __return_value = __block.call(Widget.new(_arg0), _arg1)
        __return_value
       }
@@ -1901,7 +1901,7 @@ module Gtk
 
     alias LeaveNotifyEventSignal = Widget, Gdk::EventCrossing -> Bool
     def on_leave_notify_event(&__block : LeaveNotifyEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::EventCrossing*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::EventCrossing*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::EventCrossing.new(_arg1))
        __return_value
       }
@@ -1919,7 +1919,7 @@ module Gtk
 
     alias MapEventSignal = Widget, Gdk::EventAny -> Bool
     def on_map_event(&__block : MapEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::EventAny*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::EventAny*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::EventAny.new(_arg1))
        __return_value
       }
@@ -1928,7 +1928,7 @@ module Gtk
 
     alias MnemonicActivateSignal = Widget, Bool -> Bool
     def on_mnemonic_activate(&__block : MnemonicActivateSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::Bool*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : Bool*) {
        __return_value = __block.call(Widget.new(_arg0), _arg1)
        __return_value
       }
@@ -1937,7 +1937,7 @@ module Gtk
 
     alias MotionNotifyEventSignal = Widget, Gdk::EventMotion -> Bool
     def on_motion_notify_event(&__block : MotionNotifyEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::EventMotion*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::EventMotion*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::EventMotion.new(_arg1))
        __return_value
       }
@@ -1946,7 +1946,7 @@ module Gtk
 
     alias MoveFocusSignal = Widget, Gtk::DirectionType ->
     def on_move_focus(&__block : MoveFocusSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGtk::DirectionType*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::DirectionType*) {
        __return_value = __block.call(Widget.new(_arg0), _arg1)
        __return_value
       }
@@ -1955,7 +1955,7 @@ module Gtk
 
     alias ParentSetSignal = Widget, Gtk::Widget ->
     def on_parent_set(&__block : ParentSetSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGtk::Widget**) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::Widget**) {
        __return_value = __block.call(Widget.new(_arg0), Gtk::Widget.new(_arg1))
        __return_value
       }
@@ -1973,7 +1973,7 @@ module Gtk
 
     alias PropertyNotifyEventSignal = Widget, Gdk::EventProperty -> Bool
     def on_property_notify_event(&__block : PropertyNotifyEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::EventProperty*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::EventProperty*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::EventProperty.new(_arg1))
        __return_value
       }
@@ -1982,7 +1982,7 @@ module Gtk
 
     alias ProximityInEventSignal = Widget, Gdk::EventProximity -> Bool
     def on_proximity_in_event(&__block : ProximityInEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::EventProximity*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::EventProximity*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::EventProximity.new(_arg1))
        __return_value
       }
@@ -1991,7 +1991,7 @@ module Gtk
 
     alias ProximityOutEventSignal = Widget, Gdk::EventProximity -> Bool
     def on_proximity_out_event(&__block : ProximityOutEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::EventProximity*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::EventProximity*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::EventProximity.new(_arg1))
        __return_value
       }
@@ -2000,7 +2000,7 @@ module Gtk
 
     alias QueryTooltipSignal = Widget, Int32, Int32, Bool, Gtk::Tooltip -> Bool
     def on_query_tooltip(&__block : QueryTooltipSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::Int32*, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Bool*, _arg4 : LibGtk::LibGtk::Tooltip**) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : Int32*, _arg2 : Int32*, _arg3 : Bool*, _arg4 : LibGtk::Tooltip**) {
        __return_value = __block.call(Widget.new(_arg0), _arg1, _arg2, _arg3, Gtk::Tooltip.new(_arg4))
        __return_value
       }
@@ -2018,7 +2018,7 @@ module Gtk
 
     alias ScreenChangedSignal = Widget, Gdk::Screen ->
     def on_screen_changed(&__block : ScreenChangedSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::Screen**) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::Screen**) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::Screen.new(_arg1))
        __return_value
       }
@@ -2027,7 +2027,7 @@ module Gtk
 
     alias ScrollEventSignal = Widget, Gdk::EventScroll -> Bool
     def on_scroll_event(&__block : ScrollEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::EventScroll*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::EventScroll*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::EventScroll.new(_arg1))
        __return_value
       }
@@ -2036,7 +2036,7 @@ module Gtk
 
     alias SelectionClearEventSignal = Widget, Gdk::EventSelection -> Bool
     def on_selection_clear_event(&__block : SelectionClearEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::EventSelection*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::EventSelection*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::EventSelection.new(_arg1))
        __return_value
       }
@@ -2045,7 +2045,7 @@ module Gtk
 
     alias SelectionGetSignal = Widget, Gtk::SelectionData, UInt32, UInt32 ->
     def on_selection_get(&__block : SelectionGetSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGtk::SelectionData*, _arg2 : LibGtk::UInt32*, _arg3 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::SelectionData*, _arg2 : UInt32*, _arg3 : UInt32*) {
        __return_value = __block.call(Widget.new(_arg0), Gtk::SelectionData.new(_arg1), _arg2, _arg3)
        __return_value
       }
@@ -2054,7 +2054,7 @@ module Gtk
 
     alias SelectionNotifyEventSignal = Widget, Gdk::EventSelection -> Bool
     def on_selection_notify_event(&__block : SelectionNotifyEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::EventSelection*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::EventSelection*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::EventSelection.new(_arg1))
        __return_value
       }
@@ -2063,7 +2063,7 @@ module Gtk
 
     alias SelectionReceivedSignal = Widget, Gtk::SelectionData, UInt32 ->
     def on_selection_received(&__block : SelectionReceivedSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGtk::SelectionData*, _arg2 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::SelectionData*, _arg2 : UInt32*) {
        __return_value = __block.call(Widget.new(_arg0), Gtk::SelectionData.new(_arg1), _arg2)
        __return_value
       }
@@ -2072,7 +2072,7 @@ module Gtk
 
     alias SelectionRequestEventSignal = Widget, Gdk::EventSelection -> Bool
     def on_selection_request_event(&__block : SelectionRequestEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::EventSelection*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::EventSelection*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::EventSelection.new(_arg1))
        __return_value
       }
@@ -2090,7 +2090,7 @@ module Gtk
 
     alias ShowHelpSignal = Widget, Gtk::WidgetHelpType -> Bool
     def on_show_help(&__block : ShowHelpSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGtk::WidgetHelpType*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::WidgetHelpType*) {
        __return_value = __block.call(Widget.new(_arg0), _arg1)
        __return_value
       }
@@ -2099,7 +2099,7 @@ module Gtk
 
     alias SizeAllocateSignal = Widget, Gdk::Rectangle ->
     def on_size_allocate(&__block : SizeAllocateSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::Rectangle*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::Rectangle*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::Rectangle.new(_arg1))
        __return_value
       }
@@ -2108,7 +2108,7 @@ module Gtk
 
     alias StateChangedSignal = Widget, Gtk::StateType ->
     def on_state_changed(&__block : StateChangedSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGtk::StateType*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::StateType*) {
        __return_value = __block.call(Widget.new(_arg0), _arg1)
        __return_value
       }
@@ -2117,7 +2117,7 @@ module Gtk
 
     alias StateFlagsChangedSignal = Widget, Gtk::StateFlags ->
     def on_state_flags_changed(&__block : StateFlagsChangedSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGtk::StateFlags*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::StateFlags*) {
        __return_value = __block.call(Widget.new(_arg0), _arg1)
        __return_value
       }
@@ -2126,7 +2126,7 @@ module Gtk
 
     alias StyleSetSignal = Widget, Gtk::Style ->
     def on_style_set(&__block : StyleSetSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGtk::Style**) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::Style**) {
        __return_value = __block.call(Widget.new(_arg0), Gtk::Style.new(_arg1))
        __return_value
       }
@@ -2144,7 +2144,7 @@ module Gtk
 
     alias TouchEventSignal = Widget, Gdk::Event -> Bool
     def on_touch_event(&__block : TouchEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::Event*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::Event*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::Event.new(_arg1))
        __return_value
       }
@@ -2162,7 +2162,7 @@ module Gtk
 
     alias UnmapEventSignal = Widget, Gdk::EventAny -> Bool
     def on_unmap_event(&__block : UnmapEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::EventAny*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::EventAny*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::EventAny.new(_arg1))
        __return_value
       }
@@ -2180,7 +2180,7 @@ module Gtk
 
     alias VisibilityNotifyEventSignal = Widget, Gdk::EventVisibility -> Bool
     def on_visibility_notify_event(&__block : VisibilityNotifyEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::EventVisibility*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::EventVisibility*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::EventVisibility.new(_arg1))
        __return_value
       }
@@ -2189,7 +2189,7 @@ module Gtk
 
     alias WindowStateEventSignal = Widget, Gdk::EventWindowState -> Bool
     def on_window_state_event(&__block : WindowStateEventSignal)
-      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGtk::LibGdk::EventWindowState*) {
+      __callback = ->(_arg0 : LibGtk::Widget*, _arg1 : LibGdk::EventWindowState*) {
        __return_value = __block.call(Widget.new(_arg0), Gdk::EventWindowState.new(_arg1))
        __return_value
       }

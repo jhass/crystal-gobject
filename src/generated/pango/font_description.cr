@@ -146,13 +146,13 @@ module Pango
       nil
     end
 
-    def variations=(settings)
-      LibPango.font_description_set_variations(@pointer.as(LibPango::FontDescription*), settings.to_unsafe)
+    def variations=(variations)
+      LibPango.font_description_set_variations(@pointer.as(LibPango::FontDescription*), variations.to_unsafe)
       nil
     end
 
-    def variations_static=(settings)
-      LibPango.font_description_set_variations_static(@pointer.as(LibPango::FontDescription*), settings.to_unsafe)
+    def variations_static=(variations)
+      LibPango.font_description_set_variations_static(@pointer.as(LibPango::FontDescription*), variations.to_unsafe)
       nil
     end
 

@@ -40,7 +40,7 @@ module Gtk
 
     alias ChangeCurrentPageSignal = ShortcutsSection, Int32 -> Bool
     def on_change_current_page(&__block : ChangeCurrentPageSignal)
-      __callback = ->(_arg0 : LibGtk::ShortcutsSection*, _arg1 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::ShortcutsSection*, _arg1 : Int32*) {
        __return_value = __block.call(ShortcutsSection.new(_arg0), _arg1)
        __return_value
       }

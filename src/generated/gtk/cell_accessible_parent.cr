@@ -16,7 +16,7 @@ module Gtk
     end
 
     def cell_area(cell, cell_rect)
-      LibGtk.cell_accessible_parent_get_cell_area(@pointer.as(LibGtk::CellAccessibleParent*), cell.to_unsafe.as(LibGtk::CellAccessible*), cell_rect.to_unsafe.as(LibGdk::Rectangle*))
+      LibGtk.cell_accessible_parent_get_cell_area(@pointer.as(LibGtk::CellAccessibleParent*), cell.to_unsafe.as(LibGtk::CellAccessible*), cell_rect)
       nil
     end
 

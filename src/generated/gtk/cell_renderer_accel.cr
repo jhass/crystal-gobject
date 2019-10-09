@@ -42,7 +42,7 @@ module Gtk
 
     alias AccelClearedSignal = CellRendererAccel, String ->
     def on_accel_cleared(&__block : AccelClearedSignal)
-      __callback = ->(_arg0 : LibGtk::CellRendererAccel*, _arg1 : LibGtk::UInt8**) {
+      __callback = ->(_arg0 : LibGtk::CellRendererAccel*, _arg1 : UInt8**) {
        __return_value = __block.call(CellRendererAccel.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
@@ -51,7 +51,7 @@ module Gtk
 
     alias AccelEditedSignal = CellRendererAccel, String, UInt32, Gdk::ModifierType, UInt32 ->
     def on_accel_edited(&__block : AccelEditedSignal)
-      __callback = ->(_arg0 : LibGtk::CellRendererAccel*, _arg1 : LibGtk::UInt8**, _arg2 : LibGtk::UInt32*, _arg3 : LibGtk::LibGdk::ModifierType*, _arg4 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::CellRendererAccel*, _arg1 : UInt8**, _arg2 : UInt32*, _arg3 : LibGdk::ModifierType*, _arg4 : UInt32*) {
        __return_value = __block.call(CellRendererAccel.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)), _arg2, _arg3, _arg4)
        __return_value
       }

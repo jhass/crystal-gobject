@@ -282,7 +282,7 @@ module Gtk
 
     alias ChangeCurrentPageSignal = Notebook, Int32 -> Bool
     def on_change_current_page(&__block : ChangeCurrentPageSignal)
-      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : Int32*) {
        __return_value = __block.call(Notebook.new(_arg0), _arg1)
        __return_value
       }
@@ -291,7 +291,7 @@ module Gtk
 
     alias CreateWindowSignal = Notebook, Gtk::Widget, Int32, Int32 -> Gtk::Notebook
     def on_create_window(&__block : CreateWindowSignal)
-      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::LibGtk::Widget**, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::Widget**, _arg2 : Int32*, _arg3 : Int32*) {
        __return_value = __block.call(Notebook.new(_arg0), Gtk::Widget.new(_arg1), _arg2, _arg3)
        __return_value
       }
@@ -300,7 +300,7 @@ module Gtk
 
     alias FocusTabSignal = Notebook, Gtk::NotebookTab -> Bool
     def on_focus_tab(&__block : FocusTabSignal)
-      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::LibGtk::NotebookTab*) {
+      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::NotebookTab*) {
        __return_value = __block.call(Notebook.new(_arg0), _arg1)
        __return_value
       }
@@ -309,7 +309,7 @@ module Gtk
 
     alias MoveFocusOutSignal = Notebook, Gtk::DirectionType ->
     def on_move_focus_out(&__block : MoveFocusOutSignal)
-      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::LibGtk::DirectionType*) {
+      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::DirectionType*) {
        __return_value = __block.call(Notebook.new(_arg0), _arg1)
        __return_value
       }
@@ -318,7 +318,7 @@ module Gtk
 
     alias PageAddedSignal = Notebook, Gtk::Widget, UInt32 ->
     def on_page_added(&__block : PageAddedSignal)
-      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::LibGtk::Widget**, _arg2 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::Widget**, _arg2 : UInt32*) {
        __return_value = __block.call(Notebook.new(_arg0), Gtk::Widget.new(_arg1), _arg2)
        __return_value
       }
@@ -327,7 +327,7 @@ module Gtk
 
     alias PageRemovedSignal = Notebook, Gtk::Widget, UInt32 ->
     def on_page_removed(&__block : PageRemovedSignal)
-      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::LibGtk::Widget**, _arg2 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::Widget**, _arg2 : UInt32*) {
        __return_value = __block.call(Notebook.new(_arg0), Gtk::Widget.new(_arg1), _arg2)
        __return_value
       }
@@ -336,7 +336,7 @@ module Gtk
 
     alias PageReorderedSignal = Notebook, Gtk::Widget, UInt32 ->
     def on_page_reordered(&__block : PageReorderedSignal)
-      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::LibGtk::Widget**, _arg2 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::Widget**, _arg2 : UInt32*) {
        __return_value = __block.call(Notebook.new(_arg0), Gtk::Widget.new(_arg1), _arg2)
        __return_value
       }
@@ -345,7 +345,7 @@ module Gtk
 
     alias ReorderTabSignal = Notebook, Gtk::DirectionType, Bool -> Bool
     def on_reorder_tab(&__block : ReorderTabSignal)
-      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::LibGtk::DirectionType*, _arg2 : LibGtk::Bool*) {
+      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::DirectionType*, _arg2 : Bool*) {
        __return_value = __block.call(Notebook.new(_arg0), _arg1, _arg2)
        __return_value
       }
@@ -354,7 +354,7 @@ module Gtk
 
     alias SelectPageSignal = Notebook, Bool -> Bool
     def on_select_page(&__block : SelectPageSignal)
-      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::Bool*) {
+      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : Bool*) {
        __return_value = __block.call(Notebook.new(_arg0), _arg1)
        __return_value
       }
@@ -363,7 +363,7 @@ module Gtk
 
     alias SwitchPageSignal = Notebook, Gtk::Widget, UInt32 ->
     def on_switch_page(&__block : SwitchPageSignal)
-      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::LibGtk::Widget**, _arg2 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::Notebook*, _arg1 : LibGtk::Widget**, _arg2 : UInt32*) {
        __return_value = __block.call(Notebook.new(_arg0), Gtk::Widget.new(_arg1), _arg2)
        __return_value
       }

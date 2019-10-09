@@ -404,7 +404,7 @@ module Gtk
 
     alias ApplyTagSignal = TextBuffer, Gtk::TextTag, Gtk::TextIter, Gtk::TextIter ->
     def on_apply_tag(&__block : ApplyTagSignal)
-      __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::LibGtk::TextTag**, _arg2 : LibGtk::LibGtk::TextIter*, _arg3 : LibGtk::LibGtk::TextIter*) {
+      __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::TextTag**, _arg2 : LibGtk::TextIter*, _arg3 : LibGtk::TextIter*) {
        __return_value = __block.call(TextBuffer.new(_arg0), Gtk::TextTag.new(_arg1), Gtk::TextIter.new(_arg2), Gtk::TextIter.new(_arg3))
        __return_value
       }
@@ -431,7 +431,7 @@ module Gtk
 
     alias DeleteRangeSignal = TextBuffer, Gtk::TextIter, Gtk::TextIter ->
     def on_delete_range(&__block : DeleteRangeSignal)
-      __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::LibGtk::TextIter*, _arg2 : LibGtk::LibGtk::TextIter*) {
+      __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::TextIter*, _arg2 : LibGtk::TextIter*) {
        __return_value = __block.call(TextBuffer.new(_arg0), Gtk::TextIter.new(_arg1), Gtk::TextIter.new(_arg2))
        __return_value
       }
@@ -449,7 +449,7 @@ module Gtk
 
     alias InsertChildAnchorSignal = TextBuffer, Gtk::TextIter, Gtk::TextChildAnchor ->
     def on_insert_child_anchor(&__block : InsertChildAnchorSignal)
-      __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::LibGtk::TextIter*, _arg2 : LibGtk::LibGtk::TextChildAnchor**) {
+      __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::TextIter*, _arg2 : LibGtk::TextChildAnchor**) {
        __return_value = __block.call(TextBuffer.new(_arg0), Gtk::TextIter.new(_arg1), Gtk::TextChildAnchor.new(_arg2))
        __return_value
       }
@@ -458,7 +458,7 @@ module Gtk
 
     alias InsertPixbufSignal = TextBuffer, Gtk::TextIter, GdkPixbuf::Pixbuf ->
     def on_insert_pixbuf(&__block : InsertPixbufSignal)
-      __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::LibGtk::TextIter*, _arg2 : LibGtk::LibGdkPixbuf::Pixbuf**) {
+      __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::TextIter*, _arg2 : LibGdkPixbuf::Pixbuf**) {
        __return_value = __block.call(TextBuffer.new(_arg0), Gtk::TextIter.new(_arg1), GdkPixbuf::Pixbuf.new(_arg2))
        __return_value
       }
@@ -467,7 +467,7 @@ module Gtk
 
     alias InsertTextSignal = TextBuffer, Gtk::TextIter, String, Int32 ->
     def on_insert_text(&__block : InsertTextSignal)
-      __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::LibGtk::TextIter*, _arg2 : LibGtk::UInt8**, _arg3 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::TextIter*, _arg2 : UInt8**, _arg3 : Int32*) {
        __return_value = __block.call(TextBuffer.new(_arg0), Gtk::TextIter.new(_arg1), (raise "Expected string but got null" unless _arg2; ::String.new(_arg2)), _arg3)
        __return_value
       }
@@ -476,7 +476,7 @@ module Gtk
 
     alias MarkDeletedSignal = TextBuffer, Gtk::TextMark ->
     def on_mark_deleted(&__block : MarkDeletedSignal)
-      __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::LibGtk::TextMark**) {
+      __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::TextMark**) {
        __return_value = __block.call(TextBuffer.new(_arg0), Gtk::TextMark.new(_arg1))
        __return_value
       }
@@ -485,7 +485,7 @@ module Gtk
 
     alias MarkSetSignal = TextBuffer, Gtk::TextIter, Gtk::TextMark ->
     def on_mark_set(&__block : MarkSetSignal)
-      __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::LibGtk::TextIter*, _arg2 : LibGtk::LibGtk::TextMark**) {
+      __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::TextIter*, _arg2 : LibGtk::TextMark**) {
        __return_value = __block.call(TextBuffer.new(_arg0), Gtk::TextIter.new(_arg1), Gtk::TextMark.new(_arg2))
        __return_value
       }
@@ -503,7 +503,7 @@ module Gtk
 
     alias PasteDoneSignal = TextBuffer, Gtk::Clipboard ->
     def on_paste_done(&__block : PasteDoneSignal)
-      __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::LibGtk::Clipboard**) {
+      __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::Clipboard**) {
        __return_value = __block.call(TextBuffer.new(_arg0), Gtk::Clipboard.new(_arg1))
        __return_value
       }
@@ -512,7 +512,7 @@ module Gtk
 
     alias RemoveTagSignal = TextBuffer, Gtk::TextTag, Gtk::TextIter, Gtk::TextIter ->
     def on_remove_tag(&__block : RemoveTagSignal)
-      __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::LibGtk::TextTag**, _arg2 : LibGtk::LibGtk::TextIter*, _arg3 : LibGtk::LibGtk::TextIter*) {
+      __callback = ->(_arg0 : LibGtk::TextBuffer*, _arg1 : LibGtk::TextTag**, _arg2 : LibGtk::TextIter*, _arg3 : LibGtk::TextIter*) {
        __return_value = __block.call(TextBuffer.new(_arg0), Gtk::TextTag.new(_arg1), Gtk::TextIter.new(_arg2), Gtk::TextIter.new(_arg3))
        __return_value
       }

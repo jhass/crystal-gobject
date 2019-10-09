@@ -241,7 +241,7 @@ module Gio
 
     alias EventSignal = SocketClient, Gio::SocketClientEvent, Gio::SocketConnectable, Gio::IOStream ->
     def on_event(&__block : EventSignal)
-      __callback = ->(_arg0 : LibGio::SocketClient*, _arg1 : LibGio::LibGio::SocketClientEvent*, _arg2 : LibGio::LibGio::SocketConnectable*, _arg3 : LibGio::LibGio::IOStream**) {
+      __callback = ->(_arg0 : LibGio::SocketClient*, _arg1 : LibGio::SocketClientEvent*, _arg2 : LibGio::SocketConnectable*, _arg3 : LibGio::IOStream**) {
        __return_value = __block.call(SocketClient.new(_arg0), _arg1, _arg2, Gio::IOStream.new(_arg3))
        __return_value
       }

@@ -814,7 +814,7 @@ module Gdk
 
     alias CreateSurfaceSignal = Window, Int32, Int32 -> Cairo::Surface
     def on_create_surface(&__block : CreateSurfaceSignal)
-      __callback = ->(_arg0 : LibGdk::Window*, _arg1 : LibGdk::Int32*, _arg2 : LibGdk::Int32*) {
+      __callback = ->(_arg0 : LibGdk::Window*, _arg1 : Int32*, _arg2 : Int32*) {
        __return_value = __block.call(Window.new(_arg0), _arg1, _arg2)
        __return_value
       }
@@ -823,7 +823,7 @@ module Gdk
 
     alias FromEmbedderSignal = Window, Float64, Float64, Float64, Float64 ->
     def on_from_embedder(&__block : FromEmbedderSignal)
-      __callback = ->(_arg0 : LibGdk::Window*, _arg1 : LibGdk::Float64*, _arg2 : LibGdk::Float64*, _arg3 : LibGdk::Float64*, _arg4 : LibGdk::Float64*) {
+      __callback = ->(_arg0 : LibGdk::Window*, _arg1 : Float64*, _arg2 : Float64*, _arg3 : Float64*, _arg4 : Float64*) {
        __return_value = __block.call(Window.new(_arg0), _arg1, _arg2, _arg3, _arg4)
        __return_value
       }
@@ -832,7 +832,7 @@ module Gdk
 
     alias MovedToRectSignal = Window, Void*, Void*, Bool, Bool ->
     def on_moved_to_rect(&__block : MovedToRectSignal)
-      __callback = ->(_arg0 : LibGdk::Window*, _arg1 : LibGdk::Void**, _arg2 : LibGdk::Void**, _arg3 : LibGdk::Bool*, _arg4 : LibGdk::Bool*) {
+      __callback = ->(_arg0 : LibGdk::Window*, _arg1 : Void**, _arg2 : Void**, _arg3 : Bool*, _arg4 : Bool*) {
        __return_value = __block.call(Window.new(_arg0), _arg1, _arg2, _arg3, _arg4)
        __return_value
       }
@@ -841,7 +841,7 @@ module Gdk
 
     alias PickEmbeddedChildSignal = Window, Float64, Float64 -> Gdk::Window
     def on_pick_embedded_child(&__block : PickEmbeddedChildSignal)
-      __callback = ->(_arg0 : LibGdk::Window*, _arg1 : LibGdk::Float64*, _arg2 : LibGdk::Float64*) {
+      __callback = ->(_arg0 : LibGdk::Window*, _arg1 : Float64*, _arg2 : Float64*) {
        __return_value = __block.call(Window.new(_arg0), _arg1, _arg2)
        __return_value
       }
@@ -850,7 +850,7 @@ module Gdk
 
     alias ToEmbedderSignal = Window, Float64, Float64, Float64, Float64 ->
     def on_to_embedder(&__block : ToEmbedderSignal)
-      __callback = ->(_arg0 : LibGdk::Window*, _arg1 : LibGdk::Float64*, _arg2 : LibGdk::Float64*, _arg3 : LibGdk::Float64*, _arg4 : LibGdk::Float64*) {
+      __callback = ->(_arg0 : LibGdk::Window*, _arg1 : Float64*, _arg2 : Float64*, _arg3 : Float64*, _arg4 : Float64*) {
        __return_value = __block.call(Window.new(_arg0), _arg1, _arg2, _arg3, _arg4)
        __return_value
       }

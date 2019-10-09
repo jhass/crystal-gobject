@@ -158,7 +158,7 @@ module Gst
 
     alias DeepNotifySignal = Object, Gst::Object, GObject::ParamSpec ->
     def on_deep_notify(&__block : DeepNotifySignal)
-      __callback = ->(_arg0 : LibGst::Object*, _arg1 : LibGst::LibGst::Object**, _arg2 : LibGst::LibGObject::ParamSpec**) {
+      __callback = ->(_arg0 : LibGst::Object*, _arg1 : LibGst::Object**, _arg2 : LibGObject::ParamSpec**) {
        __return_value = __block.call(Object.new(_arg0), Gst::Object.new(_arg1), GObject::ParamSpec.new(_arg2))
        __return_value
       }

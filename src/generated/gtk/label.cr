@@ -401,7 +401,7 @@ module Gtk
 
     alias ActivateLinkSignal = Label, String -> Bool
     def on_activate_link(&__block : ActivateLinkSignal)
-      __callback = ->(_arg0 : LibGtk::Label*, _arg1 : LibGtk::UInt8**) {
+      __callback = ->(_arg0 : LibGtk::Label*, _arg1 : UInt8**) {
        __return_value = __block.call(Label.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
@@ -419,7 +419,7 @@ module Gtk
 
     alias MoveCursorSignal = Label, Gtk::MovementStep, Int32, Bool ->
     def on_move_cursor(&__block : MoveCursorSignal)
-      __callback = ->(_arg0 : LibGtk::Label*, _arg1 : LibGtk::LibGtk::MovementStep*, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Bool*) {
+      __callback = ->(_arg0 : LibGtk::Label*, _arg1 : LibGtk::MovementStep*, _arg2 : Int32*, _arg3 : Bool*) {
        __return_value = __block.call(Label.new(_arg0), _arg1, _arg2, _arg3)
        __return_value
       }
@@ -428,7 +428,7 @@ module Gtk
 
     alias PopulatePopupSignal = Label, Gtk::Menu ->
     def on_populate_popup(&__block : PopulatePopupSignal)
-      __callback = ->(_arg0 : LibGtk::Label*, _arg1 : LibGtk::LibGtk::Menu**) {
+      __callback = ->(_arg0 : LibGtk::Label*, _arg1 : LibGtk::Menu**) {
        __return_value = __block.call(Label.new(_arg0), Gtk::Menu.new(_arg1))
        __return_value
       }

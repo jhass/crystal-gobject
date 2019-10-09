@@ -216,8 +216,8 @@ lib LibGIRepository
   ###########################################
 
   MAJOR_VERSION = 1 # : Int32
-  MICRO_VERSION = 1 # : Int32
-  MINOR_VERSION = 60 # : Int32
+  MICRO_VERSION = 0 # : Int32
+  MINOR_VERSION = 62 # : Int32
   TYPE_TAG_N_TYPES = 22 # : Int32
 
   ###########################################
@@ -245,7 +245,7 @@ lib LibGIRepository
   fun repository_get_info = g_irepository_get_info(this : Repository*, namespace : UInt8*, index : Int32) : LibGIRepository::BaseInfo*
   fun repository_get_loaded_namespaces = g_irepository_get_loaded_namespaces(this : Repository*) : UInt8**
   fun repository_get_n_infos = g_irepository_get_n_infos(this : Repository*, namespace : UInt8*) : Int32
-  fun repository_get_object_gtype_interfaces = g_irepository_get_object_gtype_interfaces(this : Repository*, gtype : UInt64, n_interfaces_out : UInt32*, interfaces_out : LibGIRepository::BaseInfo**) : Void
+  fun repository_get_object_gtype_interfaces = g_irepository_get_object_gtype_interfaces(this : Repository*, gtype : UInt64, n_interfaces_out : UInt32*, interfaces_out : LibGIRepository::BaseInfo***) : Void
   fun repository_get_shared_library = g_irepository_get_shared_library(this : Repository*, namespace : UInt8*) : UInt8*
   fun repository_get_typelib_path = g_irepository_get_typelib_path(this : Repository*, namespace : UInt8*) : UInt8*
   fun repository_get_version = g_irepository_get_version(this : Repository*, namespace : UInt8*) : UInt8*

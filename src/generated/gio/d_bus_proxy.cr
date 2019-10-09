@@ -204,7 +204,7 @@ module Gio
 
     alias GPropertiesChangedSignal = DBusProxy, GLib::Variant, Array(String) ->
     def on_g_properties_changed(&__block : GPropertiesChangedSignal)
-      __callback = ->(_arg0 : LibGio::DBusProxy*, _arg1 : LibGio::LibGLib::Variant*, _arg2 : LibGio::UInt8***) {
+      __callback = ->(_arg0 : LibGio::DBusProxy*, _arg1 : LibGLib::Variant*, _arg2 : UInt8***) {
        __return_value = __block.call(DBusProxy.new(_arg0), GLib::Variant.new(_arg1), PointerIterator.new(_arg2) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) })
        __return_value
       }
@@ -213,7 +213,7 @@ module Gio
 
     alias GSignalSignal = DBusProxy, String, String, GLib::Variant ->
     def on_g_signal(&__block : GSignalSignal)
-      __callback = ->(_arg0 : LibGio::DBusProxy*, _arg1 : LibGio::UInt8**, _arg2 : LibGio::UInt8**, _arg3 : LibGio::LibGLib::Variant*) {
+      __callback = ->(_arg0 : LibGio::DBusProxy*, _arg1 : UInt8**, _arg2 : UInt8**, _arg3 : LibGLib::Variant*) {
        __return_value = __block.call(DBusProxy.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)), (raise "Expected string but got null" unless _arg2; ::String.new(_arg2)), GLib::Variant.new(_arg3))
        __return_value
       }

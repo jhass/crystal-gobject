@@ -59,7 +59,7 @@ module Gtk
 
     alias MoveSignal = HSV, Gtk::DirectionType ->
     def on_move(&__block : MoveSignal)
-      __callback = ->(_arg0 : LibGtk::HSV*, _arg1 : LibGtk::LibGtk::DirectionType*) {
+      __callback = ->(_arg0 : LibGtk::HSV*, _arg1 : LibGtk::DirectionType*) {
        __return_value = __block.call(HSV.new(_arg0), _arg1)
        __return_value
       }

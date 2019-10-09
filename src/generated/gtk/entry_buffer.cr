@@ -84,7 +84,7 @@ module Gtk
 
     alias DeletedTextSignal = EntryBuffer, UInt32, UInt32 ->
     def on_deleted_text(&__block : DeletedTextSignal)
-      __callback = ->(_arg0 : LibGtk::EntryBuffer*, _arg1 : LibGtk::UInt32*, _arg2 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::EntryBuffer*, _arg1 : UInt32*, _arg2 : UInt32*) {
        __return_value = __block.call(EntryBuffer.new(_arg0), _arg1, _arg2)
        __return_value
       }
@@ -93,7 +93,7 @@ module Gtk
 
     alias InsertedTextSignal = EntryBuffer, UInt32, String, UInt32 ->
     def on_inserted_text(&__block : InsertedTextSignal)
-      __callback = ->(_arg0 : LibGtk::EntryBuffer*, _arg1 : LibGtk::UInt32*, _arg2 : LibGtk::UInt8**, _arg3 : LibGtk::UInt32*) {
+      __callback = ->(_arg0 : LibGtk::EntryBuffer*, _arg1 : UInt32*, _arg2 : UInt8**, _arg3 : UInt32*) {
        __return_value = __block.call(EntryBuffer.new(_arg0), _arg1, (raise "Expected string but got null" unless _arg2; ::String.new(_arg2)), _arg3)
        __return_value
       }

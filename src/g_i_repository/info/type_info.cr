@@ -25,7 +25,7 @@ module GIRepository
       LibGIRepository::TypeTag::UNICHAR  => "UInt8",
     }
 
-    BLACKLIST = {"VaClosureMarshal"}
+    BLACKLIST = {"VaClosureMarshal", "DBusProxyClass", "DBusInterfaceSkeletonClass"}
 
     def tag
       LibGIRepository.type_info_get_tag(self)

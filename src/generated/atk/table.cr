@@ -147,7 +147,7 @@ module Atk
 
     alias ColumnDeletedSignal = Table, Int32, Int32 ->
     def on_column_deleted(&__block : ColumnDeletedSignal)
-      __callback = ->(_arg0 : LibAtk::Table*, _arg1 : LibAtk::Int32*, _arg2 : LibAtk::Int32*) {
+      __callback = ->(_arg0 : LibAtk::Table*, _arg1 : Int32*, _arg2 : Int32*) {
        __return_value = __block.call(Table.new(_arg0), _arg1, _arg2)
        __return_value
       }
@@ -156,7 +156,7 @@ module Atk
 
     alias ColumnInsertedSignal = Table, Int32, Int32 ->
     def on_column_inserted(&__block : ColumnInsertedSignal)
-      __callback = ->(_arg0 : LibAtk::Table*, _arg1 : LibAtk::Int32*, _arg2 : LibAtk::Int32*) {
+      __callback = ->(_arg0 : LibAtk::Table*, _arg1 : Int32*, _arg2 : Int32*) {
        __return_value = __block.call(Table.new(_arg0), _arg1, _arg2)
        __return_value
       }
@@ -183,7 +183,7 @@ module Atk
 
     alias RowDeletedSignal = Table, Int32, Int32 ->
     def on_row_deleted(&__block : RowDeletedSignal)
-      __callback = ->(_arg0 : LibAtk::Table*, _arg1 : LibAtk::Int32*, _arg2 : LibAtk::Int32*) {
+      __callback = ->(_arg0 : LibAtk::Table*, _arg1 : Int32*, _arg2 : Int32*) {
        __return_value = __block.call(Table.new(_arg0), _arg1, _arg2)
        __return_value
       }
@@ -192,7 +192,7 @@ module Atk
 
     alias RowInsertedSignal = Table, Int32, Int32 ->
     def on_row_inserted(&__block : RowInsertedSignal)
-      __callback = ->(_arg0 : LibAtk::Table*, _arg1 : LibAtk::Int32*, _arg2 : LibAtk::Int32*) {
+      __callback = ->(_arg0 : LibAtk::Table*, _arg1 : Int32*, _arg2 : Int32*) {
        __return_value = __block.call(Table.new(_arg0), _arg1, _arg2)
        __return_value
       }

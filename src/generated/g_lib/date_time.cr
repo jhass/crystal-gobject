@@ -121,6 +121,11 @@ module GLib
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
+    def format_iso8601
+      __return_value = LibGLib.date_time_format_iso8601(@pointer.as(LibGLib::DateTime*))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+    end
+
     def day_of_month
       __return_value = LibGLib.date_time_get_day_of_month(@pointer.as(LibGLib::DateTime*))
       __return_value

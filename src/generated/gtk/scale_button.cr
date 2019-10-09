@@ -105,7 +105,7 @@ module Gtk
 
     alias ValueChangedSignal = ScaleButton, Float64 ->
     def on_value_changed(&__block : ValueChangedSignal)
-      __callback = ->(_arg0 : LibGtk::ScaleButton*, _arg1 : LibGtk::Float64*) {
+      __callback = ->(_arg0 : LibGtk::ScaleButton*, _arg1 : Float64*) {
        __return_value = __block.call(ScaleButton.new(_arg0), _arg1)
        __return_value
       }

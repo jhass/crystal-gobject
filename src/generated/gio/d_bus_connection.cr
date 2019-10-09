@@ -327,7 +327,7 @@ module Gio
 
     alias ClosedSignal = DBusConnection, Bool, LibGLib::Error* ->
     def on_closed(&__block : ClosedSignal)
-      __callback = ->(_arg0 : LibGio::DBusConnection*, _arg1 : LibGio::Bool*, _arg2 : LibGio::LibGLib::Error***) {
+      __callback = ->(_arg0 : LibGio::DBusConnection*, _arg1 : Bool*, _arg2 : LibGLib::Error***) {
        __return_value = __block.call(DBusConnection.new(_arg0), _arg1, _arg2)
        __return_value
       }

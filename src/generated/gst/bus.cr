@@ -124,7 +124,7 @@ module Gst
 
     alias MessageSignal = Bus, Gst::Message ->
     def on_message(&__block : MessageSignal)
-      __callback = ->(_arg0 : LibGst::Bus*, _arg1 : LibGst::LibGst::Message*) {
+      __callback = ->(_arg0 : LibGst::Bus*, _arg1 : LibGst::Message*) {
        __return_value = __block.call(Bus.new(_arg0), Gst::Message.new(_arg1))
        __return_value
       }
@@ -133,7 +133,7 @@ module Gst
 
     alias SyncMessageSignal = Bus, Gst::Message ->
     def on_sync_message(&__block : SyncMessageSignal)
-      __callback = ->(_arg0 : LibGst::Bus*, _arg1 : LibGst::LibGst::Message*) {
+      __callback = ->(_arg0 : LibGst::Bus*, _arg1 : LibGst::Message*) {
        __return_value = __block.call(Bus.new(_arg0), Gst::Message.new(_arg1))
        __return_value
       }

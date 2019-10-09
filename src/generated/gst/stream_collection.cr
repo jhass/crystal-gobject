@@ -44,7 +44,7 @@ module Gst
 
     alias StreamNotifySignal = StreamCollection, Gst::Stream, GObject::ParamSpec ->
     def on_stream_notify(&__block : StreamNotifySignal)
-      __callback = ->(_arg0 : LibGst::StreamCollection*, _arg1 : LibGst::LibGst::Stream**, _arg2 : LibGst::LibGObject::ParamSpec**) {
+      __callback = ->(_arg0 : LibGst::StreamCollection*, _arg1 : LibGst::Stream**, _arg2 : LibGObject::ParamSpec**) {
        __return_value = __block.call(StreamCollection.new(_arg0), Gst::Stream.new(_arg1), GObject::ParamSpec.new(_arg2))
        __return_value
       }

@@ -675,7 +675,7 @@ module Gtk
 
   def self.drag_get_source_widget(context)
     __return_value = LibGtk.drag_get_source_widget(context.to_unsafe.as(LibGdk::DragContext*))
-    Gtk::Widget.new(__return_value) if __return_value
+    Gtk::Widget.new(__return_value)
   end
 
   def self.drag_set_icon_default(context)

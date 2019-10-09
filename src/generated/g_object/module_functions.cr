@@ -152,6 +152,11 @@ module GObject
     nil
   end
 
+  def self.clear_signal_handler(handler_id_ptr, instance)
+    LibGObject.clear_signal_handler(handler_id_ptr, instance.to_unsafe.as(LibGObject::Object*))
+    nil
+  end
+
   def self.enum_complete_type_info(g_enum_type, info, const_values)
     LibGObject.enum_complete_type_info(UInt64.new(g_enum_type), info, const_values.to_unsafe.as(LibGObject::EnumValue*))
     nil

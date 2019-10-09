@@ -143,7 +143,7 @@ module GObject
 
     alias NotifySignal = Object, GObject::ParamSpec ->
     def on_notify(&__block : NotifySignal)
-      __callback = ->(_arg0 : LibGObject::Object*, _arg1 : LibGObject::LibGObject::ParamSpec**) {
+      __callback = ->(_arg0 : LibGObject::Object*, _arg1 : LibGObject::ParamSpec**) {
        __return_value = __block.call(Object.new(_arg0), GObject::ParamSpec.new(_arg1))
        __return_value
       }

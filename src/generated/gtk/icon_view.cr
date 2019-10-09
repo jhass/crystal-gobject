@@ -448,7 +448,7 @@ module Gtk
 
     alias ItemActivatedSignal = IconView, Gtk::TreePath ->
     def on_item_activated(&__block : ItemActivatedSignal)
-      __callback = ->(_arg0 : LibGtk::IconView*, _arg1 : LibGtk::LibGtk::TreePath*) {
+      __callback = ->(_arg0 : LibGtk::IconView*, _arg1 : LibGtk::TreePath*) {
        __return_value = __block.call(IconView.new(_arg0), Gtk::TreePath.new(_arg1))
        __return_value
       }
@@ -457,7 +457,7 @@ module Gtk
 
     alias MoveCursorSignal = IconView, Gtk::MovementStep, Int32 -> Bool
     def on_move_cursor(&__block : MoveCursorSignal)
-      __callback = ->(_arg0 : LibGtk::IconView*, _arg1 : LibGtk::LibGtk::MovementStep*, _arg2 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::IconView*, _arg1 : LibGtk::MovementStep*, _arg2 : Int32*) {
        __return_value = __block.call(IconView.new(_arg0), _arg1, _arg2)
        __return_value
       }

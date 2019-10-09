@@ -23,6 +23,16 @@ module Pango
       @pointer.not_nil!.as(LibPango::AttrShape*)
     end
 
+    def self.new(ink_rect, logical_rect)
+      __return_value = LibPango.attr_shape_new(ink_rect.to_unsafe.as(LibPango::Rectangle*), logical_rect.to_unsafe.as(LibPango::Rectangle*))
+      Pango::Attribute.new(__return_value)
+    end
+
+    def self.new_with_data(ink_rect, logical_rect, data, copy_func, destroy_func)
+      __return_value = LibPango.attr_shape_new_with_data(ink_rect.to_unsafe.as(LibPango::Rectangle*), logical_rect.to_unsafe.as(LibPango::Rectangle*), data ? data : nil, copy_func ? copy_func : nil, destroy_func ? destroy_func : nil)
+      Pango::Attribute.new(__return_value)
+    end
+
     def attr
       Pango::Attribute.new((to_unsafe.as(LibPango::AttrShape*).value.attr))
     end

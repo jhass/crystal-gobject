@@ -32,7 +32,7 @@ module GLib
     end
 
     def lookup_extended(lookup_key, orig_key, value)
-      __return_value = LibGLib.tree_lookup_extended(@pointer.as(LibGLib::Tree*), lookup_key ? lookup_key : nil, orig_key ? orig_key : nil, value ? value : nil)
+      __return_value = LibGLib.tree_lookup_extended(@pointer.as(LibGLib::Tree*), lookup_key ? lookup_key : nil, orig_key, value)
       __return_value
     end
 

@@ -86,7 +86,7 @@ module Gtk
 
     alias CustomItemActivatedSignal = AppChooserButton, String ->
     def on_custom_item_activated(&__block : CustomItemActivatedSignal)
-      __callback = ->(_arg0 : LibGtk::AppChooserButton*, _arg1 : LibGtk::UInt8**) {
+      __callback = ->(_arg0 : LibGtk::AppChooserButton*, _arg1 : UInt8**) {
        __return_value = __block.call(AppChooserButton.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }

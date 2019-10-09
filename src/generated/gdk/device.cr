@@ -255,7 +255,7 @@ module Gdk
 
     alias ToolChangedSignal = Device, Gdk::DeviceTool ->
     def on_tool_changed(&__block : ToolChangedSignal)
-      __callback = ->(_arg0 : LibGdk::Device*, _arg1 : LibGdk::LibGdk::DeviceTool**) {
+      __callback = ->(_arg0 : LibGdk::Device*, _arg1 : LibGdk::DeviceTool**) {
        __return_value = __block.call(Device.new(_arg0), Gdk::DeviceTool.new(_arg1))
        __return_value
       }

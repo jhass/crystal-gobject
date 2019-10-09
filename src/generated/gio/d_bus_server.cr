@@ -85,7 +85,7 @@ module Gio
 
     alias NewConnectionSignal = DBusServer, Gio::DBusConnection -> Bool
     def on_new_connection(&__block : NewConnectionSignal)
-      __callback = ->(_arg0 : LibGio::DBusServer*, _arg1 : LibGio::LibGio::DBusConnection**) {
+      __callback = ->(_arg0 : LibGio::DBusServer*, _arg1 : LibGio::DBusConnection**) {
        __return_value = __block.call(DBusServer.new(_arg0), Gio::DBusConnection.new(_arg1))
        __return_value
       }

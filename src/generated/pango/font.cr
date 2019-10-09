@@ -29,6 +29,11 @@ module Pango
       Pango::EngineShape.new(__return_value)
     end
 
+    def coverage(language)
+      __return_value = LibPango.font_get_coverage(@pointer.as(LibPango::Font*), language.to_unsafe.as(LibPango::Language*))
+      Pango::Coverage.new(__return_value)
+    end
+
     def font_map
       __return_value = LibPango.font_get_font_map(@pointer.as(LibPango::Font*))
       Pango::FontMap.new(__return_value) if __return_value
@@ -42,6 +47,11 @@ module Pango
     def metrics(language)
       __return_value = LibPango.font_get_metrics(@pointer.as(LibPango::Font*), language ? language.to_unsafe.as(LibPango::Language*) : nil)
       Pango::FontMetrics.new(__return_value)
+    end
+
+    def has_char(wc)
+      __return_value = LibPango.font_has_char(@pointer.as(LibPango::Font*), UInt8.new(wc))
+      __return_value
     end
 
   end

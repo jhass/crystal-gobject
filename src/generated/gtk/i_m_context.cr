@@ -78,7 +78,7 @@ module Gtk
 
     alias CommitSignal = IMContext, String ->
     def on_commit(&__block : CommitSignal)
-      __callback = ->(_arg0 : LibGtk::IMContext*, _arg1 : LibGtk::UInt8**) {
+      __callback = ->(_arg0 : LibGtk::IMContext*, _arg1 : UInt8**) {
        __return_value = __block.call(IMContext.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
@@ -87,7 +87,7 @@ module Gtk
 
     alias DeleteSurroundingSignal = IMContext, Int32, Int32 -> Bool
     def on_delete_surrounding(&__block : DeleteSurroundingSignal)
-      __callback = ->(_arg0 : LibGtk::IMContext*, _arg1 : LibGtk::Int32*, _arg2 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::IMContext*, _arg1 : Int32*, _arg2 : Int32*) {
        __return_value = __block.call(IMContext.new(_arg0), _arg1, _arg2)
        __return_value
       }

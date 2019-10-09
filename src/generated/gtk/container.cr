@@ -168,7 +168,7 @@ module Gtk
 
     alias AddSignal = Container, Gtk::Widget ->
     def on_add(&__block : AddSignal)
-      __callback = ->(_arg0 : LibGtk::Container*, _arg1 : LibGtk::LibGtk::Widget**) {
+      __callback = ->(_arg0 : LibGtk::Container*, _arg1 : LibGtk::Widget**) {
        __return_value = __block.call(Container.new(_arg0), Gtk::Widget.new(_arg1))
        __return_value
       }
@@ -186,7 +186,7 @@ module Gtk
 
     alias RemoveSignal = Container, Gtk::Widget ->
     def on_remove(&__block : RemoveSignal)
-      __callback = ->(_arg0 : LibGtk::Container*, _arg1 : LibGtk::LibGtk::Widget**) {
+      __callback = ->(_arg0 : LibGtk::Container*, _arg1 : LibGtk::Widget**) {
        __return_value = __block.call(Container.new(_arg0), Gtk::Widget.new(_arg1))
        __return_value
       }
@@ -195,7 +195,7 @@ module Gtk
 
     alias SetFocusChildSignal = Container, Gtk::Widget ->
     def on_set_focus_child(&__block : SetFocusChildSignal)
-      __callback = ->(_arg0 : LibGtk::Container*, _arg1 : LibGtk::LibGtk::Widget**) {
+      __callback = ->(_arg0 : LibGtk::Container*, _arg1 : LibGtk::Widget**) {
        __return_value = __block.call(Container.new(_arg0), Gtk::Widget.new(_arg1))
        __return_value
       }

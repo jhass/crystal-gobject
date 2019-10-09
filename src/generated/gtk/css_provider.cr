@@ -58,7 +58,7 @@ module Gtk
 
     alias ParsingErrorSignal = CssProvider, Gtk::CssSection, LibGLib::Error* ->
     def on_parsing_error(&__block : ParsingErrorSignal)
-      __callback = ->(_arg0 : LibGtk::CssProvider*, _arg1 : LibGtk::LibGtk::CssSection*, _arg2 : LibGtk::LibGLib::Error***) {
+      __callback = ->(_arg0 : LibGtk::CssProvider*, _arg1 : LibGtk::CssSection*, _arg2 : LibGLib::Error***) {
        __return_value = __block.call(CssProvider.new(_arg0), Gtk::CssSection.new(_arg1), _arg2)
        __return_value
       }

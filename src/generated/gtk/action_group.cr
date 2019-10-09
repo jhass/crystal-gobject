@@ -116,7 +116,7 @@ module Gtk
 
     alias ConnectProxySignal = ActionGroup, Gtk::Action, Gtk::Widget ->
     def on_connect_proxy(&__block : ConnectProxySignal)
-      __callback = ->(_arg0 : LibGtk::ActionGroup*, _arg1 : LibGtk::LibGtk::Action**, _arg2 : LibGtk::LibGtk::Widget**) {
+      __callback = ->(_arg0 : LibGtk::ActionGroup*, _arg1 : LibGtk::Action**, _arg2 : LibGtk::Widget**) {
        __return_value = __block.call(ActionGroup.new(_arg0), Gtk::Action.new(_arg1), Gtk::Widget.new(_arg2))
        __return_value
       }
@@ -125,7 +125,7 @@ module Gtk
 
     alias DisconnectProxySignal = ActionGroup, Gtk::Action, Gtk::Widget ->
     def on_disconnect_proxy(&__block : DisconnectProxySignal)
-      __callback = ->(_arg0 : LibGtk::ActionGroup*, _arg1 : LibGtk::LibGtk::Action**, _arg2 : LibGtk::LibGtk::Widget**) {
+      __callback = ->(_arg0 : LibGtk::ActionGroup*, _arg1 : LibGtk::Action**, _arg2 : LibGtk::Widget**) {
        __return_value = __block.call(ActionGroup.new(_arg0), Gtk::Action.new(_arg1), Gtk::Widget.new(_arg2))
        __return_value
       }
@@ -134,7 +134,7 @@ module Gtk
 
     alias PostActivateSignal = ActionGroup, Gtk::Action ->
     def on_post_activate(&__block : PostActivateSignal)
-      __callback = ->(_arg0 : LibGtk::ActionGroup*, _arg1 : LibGtk::LibGtk::Action**) {
+      __callback = ->(_arg0 : LibGtk::ActionGroup*, _arg1 : LibGtk::Action**) {
        __return_value = __block.call(ActionGroup.new(_arg0), Gtk::Action.new(_arg1))
        __return_value
       }
@@ -143,7 +143,7 @@ module Gtk
 
     alias PreActivateSignal = ActionGroup, Gtk::Action ->
     def on_pre_activate(&__block : PreActivateSignal)
-      __callback = ->(_arg0 : LibGtk::ActionGroup*, _arg1 : LibGtk::LibGtk::Action**) {
+      __callback = ->(_arg0 : LibGtk::ActionGroup*, _arg1 : LibGtk::Action**) {
        __return_value = __block.call(ActionGroup.new(_arg0), Gtk::Action.new(_arg1))
        __return_value
       }

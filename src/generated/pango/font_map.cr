@@ -24,11 +24,6 @@ module Pango
       __return_value
     end
 
-    def shape_engine_type
-      __return_value = LibPango.font_map_get_shape_engine_type(@pointer.as(LibPango::FontMap*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
-    end
-
     def list_families(families, n_families)
       LibPango.font_map_list_families(@pointer.as(LibPango::FontMap*), families, n_families)
       nil

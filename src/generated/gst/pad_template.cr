@@ -68,7 +68,7 @@ module Gst
 
     alias PadCreatedSignal = PadTemplate, Gst::Pad ->
     def on_pad_created(&__block : PadCreatedSignal)
-      __callback = ->(_arg0 : LibGst::PadTemplate*, _arg1 : LibGst::LibGst::Pad**) {
+      __callback = ->(_arg0 : LibGst::PadTemplate*, _arg1 : LibGst::Pad**) {
        __return_value = __block.call(PadTemplate.new(_arg0), Gst::Pad.new(_arg1))
        __return_value
       }

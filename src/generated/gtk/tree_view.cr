@@ -627,7 +627,7 @@ module Gtk
 
     alias ExpandCollapseCursorRowSignal = TreeView, Bool, Bool, Bool -> Bool
     def on_expand_collapse_cursor_row(&__block : ExpandCollapseCursorRowSignal)
-      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::Bool*, _arg2 : LibGtk::Bool*, _arg3 : LibGtk::Bool*) {
+      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : Bool*, _arg2 : Bool*, _arg3 : Bool*) {
        __return_value = __block.call(TreeView.new(_arg0), _arg1, _arg2, _arg3)
        __return_value
       }
@@ -636,7 +636,7 @@ module Gtk
 
     alias MoveCursorSignal = TreeView, Gtk::MovementStep, Int32 -> Bool
     def on_move_cursor(&__block : MoveCursorSignal)
-      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::LibGtk::MovementStep*, _arg2 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::MovementStep*, _arg2 : Int32*) {
        __return_value = __block.call(TreeView.new(_arg0), _arg1, _arg2)
        __return_value
       }
@@ -645,7 +645,7 @@ module Gtk
 
     alias RowActivatedSignal = TreeView, Gtk::TreePath, Gtk::TreeViewColumn ->
     def on_row_activated(&__block : RowActivatedSignal)
-      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::LibGtk::TreePath*, _arg2 : LibGtk::LibGtk::TreeViewColumn**) {
+      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::TreePath*, _arg2 : LibGtk::TreeViewColumn**) {
        __return_value = __block.call(TreeView.new(_arg0), Gtk::TreePath.new(_arg1), Gtk::TreeViewColumn.new(_arg2))
        __return_value
       }
@@ -654,7 +654,7 @@ module Gtk
 
     alias RowCollapsedSignal = TreeView, Gtk::TreeIter, Gtk::TreePath ->
     def on_row_collapsed(&__block : RowCollapsedSignal)
-      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::LibGtk::TreeIter*, _arg2 : LibGtk::LibGtk::TreePath*) {
+      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::TreeIter*, _arg2 : LibGtk::TreePath*) {
        __return_value = __block.call(TreeView.new(_arg0), Gtk::TreeIter.new(_arg1), Gtk::TreePath.new(_arg2))
        __return_value
       }
@@ -663,7 +663,7 @@ module Gtk
 
     alias RowExpandedSignal = TreeView, Gtk::TreeIter, Gtk::TreePath ->
     def on_row_expanded(&__block : RowExpandedSignal)
-      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::LibGtk::TreeIter*, _arg2 : LibGtk::LibGtk::TreePath*) {
+      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::TreeIter*, _arg2 : LibGtk::TreePath*) {
        __return_value = __block.call(TreeView.new(_arg0), Gtk::TreeIter.new(_arg1), Gtk::TreePath.new(_arg2))
        __return_value
       }
@@ -690,7 +690,7 @@ module Gtk
 
     alias SelectCursorRowSignal = TreeView, Bool -> Bool
     def on_select_cursor_row(&__block : SelectCursorRowSignal)
-      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::Bool*) {
+      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : Bool*) {
        __return_value = __block.call(TreeView.new(_arg0), _arg1)
        __return_value
       }
@@ -708,7 +708,7 @@ module Gtk
 
     alias TestCollapseRowSignal = TreeView, Gtk::TreeIter, Gtk::TreePath -> Bool
     def on_test_collapse_row(&__block : TestCollapseRowSignal)
-      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::LibGtk::TreeIter*, _arg2 : LibGtk::LibGtk::TreePath*) {
+      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::TreeIter*, _arg2 : LibGtk::TreePath*) {
        __return_value = __block.call(TreeView.new(_arg0), Gtk::TreeIter.new(_arg1), Gtk::TreePath.new(_arg2))
        __return_value
       }
@@ -717,7 +717,7 @@ module Gtk
 
     alias TestExpandRowSignal = TreeView, Gtk::TreeIter, Gtk::TreePath -> Bool
     def on_test_expand_row(&__block : TestExpandRowSignal)
-      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::LibGtk::TreeIter*, _arg2 : LibGtk::LibGtk::TreePath*) {
+      __callback = ->(_arg0 : LibGtk::TreeView*, _arg1 : LibGtk::TreeIter*, _arg2 : LibGtk::TreePath*) {
        __return_value = __block.call(TreeView.new(_arg0), Gtk::TreeIter.new(_arg1), Gtk::TreePath.new(_arg2))
        __return_value
       }

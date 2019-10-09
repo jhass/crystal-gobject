@@ -57,7 +57,7 @@ module Gtk
 
     alias ChangedSignal = RadioAction, Gtk::RadioAction ->
     def on_changed(&__block : ChangedSignal)
-      __callback = ->(_arg0 : LibGtk::RadioAction*, _arg1 : LibGtk::LibGtk::RadioAction**) {
+      __callback = ->(_arg0 : LibGtk::RadioAction*, _arg1 : LibGtk::RadioAction**) {
        __return_value = __block.call(RadioAction.new(_arg0), Gtk::RadioAction.new(_arg1))
        __return_value
       }

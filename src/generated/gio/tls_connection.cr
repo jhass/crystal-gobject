@@ -183,7 +183,7 @@ module Gio
 
     alias AcceptCertificateSignal = TlsConnection, Gio::TlsCertificate, Gio::TlsCertificateFlags -> Bool
     def on_accept_certificate(&__block : AcceptCertificateSignal)
-      __callback = ->(_arg0 : LibGio::TlsConnection*, _arg1 : LibGio::LibGio::TlsCertificate**, _arg2 : LibGio::LibGio::TlsCertificateFlags*) {
+      __callback = ->(_arg0 : LibGio::TlsConnection*, _arg1 : LibGio::TlsCertificate**, _arg2 : LibGio::TlsCertificateFlags*) {
        __return_value = __block.call(TlsConnection.new(_arg0), Gio::TlsCertificate.new(_arg1), _arg2)
        __return_value
       }

@@ -126,7 +126,7 @@ module Atk
 
     alias TextCaretMovedSignal = Text, Int32 ->
     def on_text_caret_moved(&__block : TextCaretMovedSignal)
-      __callback = ->(_arg0 : LibAtk::Text*, _arg1 : LibAtk::Int32*) {
+      __callback = ->(_arg0 : LibAtk::Text*, _arg1 : Int32*) {
        __return_value = __block.call(Text.new(_arg0), _arg1)
        __return_value
       }
@@ -135,7 +135,7 @@ module Atk
 
     alias TextChangedSignal = Text, Int32, Int32 ->
     def on_text_changed(&__block : TextChangedSignal)
-      __callback = ->(_arg0 : LibAtk::Text*, _arg1 : LibAtk::Int32*, _arg2 : LibAtk::Int32*) {
+      __callback = ->(_arg0 : LibAtk::Text*, _arg1 : Int32*, _arg2 : Int32*) {
        __return_value = __block.call(Text.new(_arg0), _arg1, _arg2)
        __return_value
       }
@@ -144,7 +144,7 @@ module Atk
 
     alias TextInsertSignal = Text, Int32, Int32, String ->
     def on_text_insert(&__block : TextInsertSignal)
-      __callback = ->(_arg0 : LibAtk::Text*, _arg1 : LibAtk::Int32*, _arg2 : LibAtk::Int32*, _arg3 : LibAtk::UInt8**) {
+      __callback = ->(_arg0 : LibAtk::Text*, _arg1 : Int32*, _arg2 : Int32*, _arg3 : UInt8**) {
        __return_value = __block.call(Text.new(_arg0), _arg1, _arg2, (raise "Expected string but got null" unless _arg3; ::String.new(_arg3)))
        __return_value
       }
@@ -153,7 +153,7 @@ module Atk
 
     alias TextRemoveSignal = Text, Int32, Int32, String ->
     def on_text_remove(&__block : TextRemoveSignal)
-      __callback = ->(_arg0 : LibAtk::Text*, _arg1 : LibAtk::Int32*, _arg2 : LibAtk::Int32*, _arg3 : LibAtk::UInt8**) {
+      __callback = ->(_arg0 : LibAtk::Text*, _arg1 : Int32*, _arg2 : Int32*, _arg3 : UInt8**) {
        __return_value = __block.call(Text.new(_arg0), _arg1, _arg2, (raise "Expected string but got null" unless _arg3; ::String.new(_arg3)))
        __return_value
       }

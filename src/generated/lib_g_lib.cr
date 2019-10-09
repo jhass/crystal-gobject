@@ -23,8 +23,8 @@ lib LibGLib
   GINT16_MODIFIER = "h" # : UInt8*
   GINT32_FORMAT = "i" # : UInt8*
   GINT32_MODIFIER = "" # : UInt8*
-  GINT64_FORMAT = "li" # : UInt8*
-  GINT64_MODIFIER = "l" # : UInt8*
+  GINT64_FORMAT = "lli" # : UInt8*
+  GINT64_MODIFIER = "ll" # : UInt8*
   GINTPTR_FORMAT = "li" # : UInt8*
   GINTPTR_MODIFIER = "l" # : UInt8*
   GNUC_FUNCTION = "" # : UInt8*
@@ -35,11 +35,10 @@ lib LibGLib
   GSSIZE_MODIFIER = "l" # : UInt8*
   GUINT16_FORMAT = "hu" # : UInt8*
   GUINT32_FORMAT = "u" # : UInt8*
-  GUINT64_FORMAT = "lu" # : UInt8*
+  GUINT64_FORMAT = "llu" # : UInt8*
   GUINTPTR_FORMAT = "lu" # : UInt8*
   HAVE_GINT64 = 1 # : Int32
   HAVE_GNUC_VARARGS = 1 # : Int32
-  HAVE_GNUC_VISIBILITY = 1 # : Int32
   HAVE_GROWING_STACK = 0 # : Int32
   HAVE_ISO_VARARGS = 1 # : Int32
   HOOK_FLAG_USER_SHIFT = 4 # : Int32
@@ -91,7 +90,7 @@ lib LibGLib
   MININT32 = -2147483648 # : Int32
   MININT64 = -9223372036854775808 # : Int64
   MININT8 = -128 # : Int8
-  MINOR_VERSION = 60 # : Int32
+  MINOR_VERSION = 62 # : Int32
   MODULE_SUFFIX = "so" # : UInt8*
   OPTION_REMAINING = "" # : UInt8*
   PDP_ENDIAN = 3412 # : Int32
@@ -116,7 +115,7 @@ lib LibGLib
   SQRT2 = 1.414214 # : Float64
   STR_DELIMITERS = "_-|> <." # : UInt8*
   SYSDEF_AF_INET = 2 # : Int32
-  SYSDEF_AF_INET6 = 10 # : Int32
+  SYSDEF_AF_INET6 = 30 # : Int32
   SYSDEF_AF_UNIX = 1 # : Int32
   SYSDEF_MSG_DONTROUTE = 4 # : Int32
   SYSDEF_MSG_OOB = 1 # : Int32
@@ -347,6 +346,7 @@ lib LibGLib
   fun date_time_add_years = g_date_time_add_years(this : DateTime*, years : Int32) : LibGLib::DateTime*
   fun date_time_difference = g_date_time_difference(this : DateTime*, _begin : LibGLib::DateTime*) : Int64
   fun date_time_format = g_date_time_format(this : DateTime*, format : UInt8*) : UInt8*
+  fun date_time_format_iso8601 = g_date_time_format_iso8601(this : DateTime*) : UInt8*
   fun date_time_get_day_of_month = g_date_time_get_day_of_month(this : DateTime*) : Int32
   fun date_time_get_day_of_week = g_date_time_get_day_of_week(this : DateTime*) : Int32
   fun date_time_get_day_of_year = g_date_time_get_day_of_year(this : DateTime*) : Int32
@@ -1207,6 +1207,7 @@ lib LibGLib
   fun timer_continue = g_timer_continue(this : Timer*) : Void
   fun timer_destroy = g_timer_destroy(this : Timer*) : Void
   fun timer_elapsed = g_timer_elapsed(this : Timer*, microseconds : UInt64*) : Float64
+  fun timer_is_active = g_timer_is_active(this : Timer*) : Bool
   fun timer_reset = g_timer_reset(this : Timer*) : Void
   fun timer_start = g_timer_start(this : Timer*) : Void
   fun timer_stop = g_timer_stop(this : Timer*) : Void
@@ -1226,7 +1227,7 @@ lib LibGLib
   fun tree_height = g_tree_height(this : Tree*) : Int32
   fun tree_insert = g_tree_insert(this : Tree*, key : Void*, value : Void*) : Void
   fun tree_lookup = g_tree_lookup(this : Tree*, key : Void*) : Void*
-  fun tree_lookup_extended = g_tree_lookup_extended(this : Tree*, lookup_key : Void*, orig_key : Void*, value : Void*) : Bool
+  fun tree_lookup_extended = g_tree_lookup_extended(this : Tree*, lookup_key : Void*, orig_key : Void**, value : Void**) : Bool
   fun tree_nnodes = g_tree_nnodes(this : Tree*) : Int32
   fun tree_remove = g_tree_remove(this : Tree*, key : Void*) : Bool
   fun tree_replace = g_tree_replace(this : Tree*, key : Void*, value : Void*) : Void
@@ -2188,6 +2189,10 @@ lib LibGLib
     MEDEFAIDRIN = 146
     OLD_SOGDIAN = 147
     SOGDIAN = 148
+    ELYMAIC = 149
+    NANDINAGARI = 150
+    NYIAKENG_PUACHUE_HMONG = 151
+    WANCHO = 152
   end
 
   enum UnicodeType : UInt32
@@ -2467,6 +2472,7 @@ lib LibGLib
   fun get_application_name = g_get_application_name() : UInt8*
   fun get_charset = g_get_charset(charset : UInt8**) : Bool
   fun get_codeset = g_get_codeset() : UInt8*
+  fun get_console_charset = g_get_console_charset(charset : UInt8**) : Bool
   fun get_current_dir = g_get_current_dir() : UInt8*
   fun get_current_time = g_get_current_time(result : LibGLib::TimeVal*) : Void
   fun get_environ = g_get_environ() : UInt8**
@@ -2724,6 +2730,7 @@ lib LibGLib
   fun test_set_nonfatal_assertions = g_test_set_nonfatal_assertions() : Void
   fun test_skip = g_test_skip(msg : UInt8*) : Void
   fun test_subprocess = g_test_subprocess() : Bool
+  fun test_summary = g_test_summary(summary : UInt8*) : Void
   fun test_timer_elapsed = g_test_timer_elapsed() : Float64
   fun test_timer_last = g_test_timer_last() : Float64
   fun test_timer_start = g_test_timer_start() : Void
@@ -2882,9 +2889,9 @@ lib LibGLib
  alias LogWriterFunc = LibGLib::LogLevelFlags, LibGLib::LogField*, UInt64, Void* -> LibGLib::LogWriterOutput
  alias NodeForeachFunc = LibGLib::Node*, Void* -> Void
  alias NodeTraverseFunc = LibGLib::Node*, Void* -> Bool
- alias OptionArgFunc = UInt8*, UInt8*, Void*, LibGLib::Error** -> Bool
- alias OptionErrorFunc = LibGLib::OptionContext*, LibGLib::OptionGroup*, Void*, LibGLib::Error** -> Void
- alias OptionParseFunc = LibGLib::OptionContext*, LibGLib::OptionGroup*, Void*, LibGLib::Error** -> Bool
+ alias OptionArgFunc = UInt8*, UInt8*, Void*, LibGLib::Error* -> Bool
+ alias OptionErrorFunc = LibGLib::OptionContext*, LibGLib::OptionGroup*, Void*, LibGLib::Error* -> Void
+ alias OptionParseFunc = LibGLib::OptionContext*, LibGLib::OptionGroup*, Void*, LibGLib::Error* -> Bool
  alias PollFunc = LibGLib::PollFD*, UInt32, Int32 -> Int32
  alias PrintFunc = UInt8* -> Void
  alias RegexEvalCallback = LibGLib::MatchInfo*, LibGLib::String*, Void* -> Bool

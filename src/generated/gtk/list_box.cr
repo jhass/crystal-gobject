@@ -176,7 +176,7 @@ module Gtk
 
     alias MoveCursorSignal = ListBox, Gtk::MovementStep, Int32 ->
     def on_move_cursor(&__block : MoveCursorSignal)
-      __callback = ->(_arg0 : LibGtk::ListBox*, _arg1 : LibGtk::LibGtk::MovementStep*, _arg2 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::ListBox*, _arg1 : LibGtk::MovementStep*, _arg2 : Int32*) {
        __return_value = __block.call(ListBox.new(_arg0), _arg1, _arg2)
        __return_value
       }
@@ -185,7 +185,7 @@ module Gtk
 
     alias RowActivatedSignal = ListBox, Gtk::ListBoxRow ->
     def on_row_activated(&__block : RowActivatedSignal)
-      __callback = ->(_arg0 : LibGtk::ListBox*, _arg1 : LibGtk::LibGtk::ListBoxRow**) {
+      __callback = ->(_arg0 : LibGtk::ListBox*, _arg1 : LibGtk::ListBoxRow**) {
        __return_value = __block.call(ListBox.new(_arg0), Gtk::ListBoxRow.new(_arg1))
        __return_value
       }
@@ -194,7 +194,7 @@ module Gtk
 
     alias RowSelectedSignal = ListBox, Gtk::ListBoxRow ->
     def on_row_selected(&__block : RowSelectedSignal)
-      __callback = ->(_arg0 : LibGtk::ListBox*, _arg1 : LibGtk::LibGtk::ListBoxRow**) {
+      __callback = ->(_arg0 : LibGtk::ListBox*, _arg1 : LibGtk::ListBoxRow**) {
        __return_value = __block.call(ListBox.new(_arg0), Gtk::ListBoxRow.new(_arg1))
        __return_value
       }

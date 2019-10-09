@@ -121,7 +121,7 @@ module Gtk
 
     alias FocusHomeOrEndSignal = Toolbar, Bool -> Bool
     def on_focus_home_or_end(&__block : FocusHomeOrEndSignal)
-      __callback = ->(_arg0 : LibGtk::Toolbar*, _arg1 : LibGtk::Bool*) {
+      __callback = ->(_arg0 : LibGtk::Toolbar*, _arg1 : Bool*) {
        __return_value = __block.call(Toolbar.new(_arg0), _arg1)
        __return_value
       }
@@ -130,7 +130,7 @@ module Gtk
 
     alias OrientationChangedSignal = Toolbar, Gtk::Orientation ->
     def on_orientation_changed(&__block : OrientationChangedSignal)
-      __callback = ->(_arg0 : LibGtk::Toolbar*, _arg1 : LibGtk::LibGtk::Orientation*) {
+      __callback = ->(_arg0 : LibGtk::Toolbar*, _arg1 : LibGtk::Orientation*) {
        __return_value = __block.call(Toolbar.new(_arg0), _arg1)
        __return_value
       }
@@ -139,7 +139,7 @@ module Gtk
 
     alias PopupContextMenuSignal = Toolbar, Int32, Int32, Int32 -> Bool
     def on_popup_context_menu(&__block : PopupContextMenuSignal)
-      __callback = ->(_arg0 : LibGtk::Toolbar*, _arg1 : LibGtk::Int32*, _arg2 : LibGtk::Int32*, _arg3 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::Toolbar*, _arg1 : Int32*, _arg2 : Int32*, _arg3 : Int32*) {
        __return_value = __block.call(Toolbar.new(_arg0), _arg1, _arg2, _arg3)
        __return_value
       }
@@ -148,7 +148,7 @@ module Gtk
 
     alias StyleChangedSignal = Toolbar, Gtk::ToolbarStyle ->
     def on_style_changed(&__block : StyleChangedSignal)
-      __callback = ->(_arg0 : LibGtk::Toolbar*, _arg1 : LibGtk::LibGtk::ToolbarStyle*) {
+      __callback = ->(_arg0 : LibGtk::Toolbar*, _arg1 : LibGtk::ToolbarStyle*) {
        __return_value = __block.call(Toolbar.new(_arg0), _arg1)
        __return_value
       }

@@ -202,7 +202,7 @@ module Gtk
 
     alias ActionActivatedSignal = EntryCompletion, Int32 ->
     def on_action_activated(&__block : ActionActivatedSignal)
-      __callback = ->(_arg0 : LibGtk::EntryCompletion*, _arg1 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::EntryCompletion*, _arg1 : Int32*) {
        __return_value = __block.call(EntryCompletion.new(_arg0), _arg1)
        __return_value
       }
@@ -211,7 +211,7 @@ module Gtk
 
     alias CursorOnMatchSignal = EntryCompletion, Gtk::TreeModel, Gtk::TreeIter -> Bool
     def on_cursor_on_match(&__block : CursorOnMatchSignal)
-      __callback = ->(_arg0 : LibGtk::EntryCompletion*, _arg1 : LibGtk::LibGtk::TreeModel*, _arg2 : LibGtk::LibGtk::TreeIter*) {
+      __callback = ->(_arg0 : LibGtk::EntryCompletion*, _arg1 : LibGtk::TreeModel*, _arg2 : LibGtk::TreeIter*) {
        __return_value = __block.call(EntryCompletion.new(_arg0), _arg1, Gtk::TreeIter.new(_arg2))
        __return_value
       }
@@ -220,7 +220,7 @@ module Gtk
 
     alias InsertPrefixSignal = EntryCompletion, String -> Bool
     def on_insert_prefix(&__block : InsertPrefixSignal)
-      __callback = ->(_arg0 : LibGtk::EntryCompletion*, _arg1 : LibGtk::UInt8**) {
+      __callback = ->(_arg0 : LibGtk::EntryCompletion*, _arg1 : UInt8**) {
        __return_value = __block.call(EntryCompletion.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
@@ -229,7 +229,7 @@ module Gtk
 
     alias MatchSelectedSignal = EntryCompletion, Gtk::TreeModel, Gtk::TreeIter -> Bool
     def on_match_selected(&__block : MatchSelectedSignal)
-      __callback = ->(_arg0 : LibGtk::EntryCompletion*, _arg1 : LibGtk::LibGtk::TreeModel*, _arg2 : LibGtk::LibGtk::TreeIter*) {
+      __callback = ->(_arg0 : LibGtk::EntryCompletion*, _arg1 : LibGtk::TreeModel*, _arg2 : LibGtk::TreeIter*) {
        __return_value = __block.call(EntryCompletion.new(_arg0), _arg1, Gtk::TreeIter.new(_arg2))
        __return_value
       }

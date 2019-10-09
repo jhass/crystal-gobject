@@ -45,20 +45,20 @@ module Gio
 
     def read(buffer, count, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.input_stream_read(@pointer.as(LibGio::InputStream*), buffer, UInt64.new(count), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
+      __return_value = LibGio.input_stream_read(@pointer.as(LibGio::InputStream*), buffer, count, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def read_all(buffer, count, bytes_read, cancellable)
       __error = Pointer(LibGLib::Error).null
-      __return_value = LibGio.input_stream_read_all(@pointer.as(LibGio::InputStream*), buffer, UInt64.new(count), bytes_read, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
+      __return_value = LibGio.input_stream_read_all(@pointer.as(LibGio::InputStream*), buffer, count, bytes_read, cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, pointerof(__error))
       GLib::Error.assert __error
       __return_value
     end
 
     def read_all_async(buffer, count, io_priority, cancellable, callback, user_data)
-      LibGio.input_stream_read_all_async(@pointer.as(LibGio::InputStream*), buffer, UInt64.new(count), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      LibGio.input_stream_read_all_async(@pointer.as(LibGio::InputStream*), buffer, count, Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       nil
     end
 
@@ -70,7 +70,7 @@ module Gio
     end
 
     def read_async(buffer, count, io_priority, cancellable, callback, user_data)
-      LibGio.input_stream_read_async(@pointer.as(LibGio::InputStream*), buffer, UInt64.new(count), Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
+      LibGio.input_stream_read_async(@pointer.as(LibGio::InputStream*), buffer, count, Int32.new(io_priority), cancellable ? cancellable.to_unsafe.as(LibGio::Cancellable*) : nil, callback ? callback : nil, user_data ? user_data : nil)
       nil
     end
 

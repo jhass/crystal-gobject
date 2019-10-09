@@ -28,7 +28,7 @@ module Gtk
 
     alias PressedSignal = GestureMultiPress, Int32, Float64, Float64 ->
     def on_pressed(&__block : PressedSignal)
-      __callback = ->(_arg0 : LibGtk::GestureMultiPress*, _arg1 : LibGtk::Int32*, _arg2 : LibGtk::Float64*, _arg3 : LibGtk::Float64*) {
+      __callback = ->(_arg0 : LibGtk::GestureMultiPress*, _arg1 : Int32*, _arg2 : Float64*, _arg3 : Float64*) {
        __return_value = __block.call(GestureMultiPress.new(_arg0), _arg1, _arg2, _arg3)
        __return_value
       }
@@ -37,7 +37,7 @@ module Gtk
 
     alias ReleasedSignal = GestureMultiPress, Int32, Float64, Float64 ->
     def on_released(&__block : ReleasedSignal)
-      __callback = ->(_arg0 : LibGtk::GestureMultiPress*, _arg1 : LibGtk::Int32*, _arg2 : LibGtk::Float64*, _arg3 : LibGtk::Float64*) {
+      __callback = ->(_arg0 : LibGtk::GestureMultiPress*, _arg1 : Int32*, _arg2 : Float64*, _arg3 : Float64*) {
        __return_value = __block.call(GestureMultiPress.new(_arg0), _arg1, _arg2, _arg3)
        __return_value
       }

@@ -46,7 +46,7 @@ module Gio
 
     alias LaunchFailedSignal = AppLaunchContext, String ->
     def on_launch_failed(&__block : LaunchFailedSignal)
-      __callback = ->(_arg0 : LibGio::AppLaunchContext*, _arg1 : LibGio::UInt8**) {
+      __callback = ->(_arg0 : LibGio::AppLaunchContext*, _arg1 : UInt8**) {
        __return_value = __block.call(AppLaunchContext.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }
@@ -55,7 +55,7 @@ module Gio
 
     alias LaunchedSignal = AppLaunchContext, Gio::AppInfo, GLib::Variant ->
     def on_launched(&__block : LaunchedSignal)
-      __callback = ->(_arg0 : LibGio::AppLaunchContext*, _arg1 : LibGio::LibGio::AppInfo*, _arg2 : LibGio::LibGLib::Variant*) {
+      __callback = ->(_arg0 : LibGio::AppLaunchContext*, _arg1 : LibGio::AppInfo*, _arg2 : LibGLib::Variant*) {
        __return_value = __block.call(AppLaunchContext.new(_arg0), _arg1, GLib::Variant.new(_arg2))
        __return_value
       }

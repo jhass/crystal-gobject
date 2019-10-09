@@ -110,7 +110,7 @@ module Gtk
 
     alias FormatValueSignal = Scale, Float64 -> String
     def on_format_value(&__block : FormatValueSignal)
-      __callback = ->(_arg0 : LibGtk::Scale*, _arg1 : LibGtk::Float64*) {
+      __callback = ->(_arg0 : LibGtk::Scale*, _arg1 : Float64*) {
        __return_value = __block.call(Scale.new(_arg0), _arg1)
        __return_value.to_unsafe
       }

@@ -14,7 +14,7 @@ lib LibNotify
   EXPIRES_DEFAULT = -1 # : Int32
   EXPIRES_NEVER = 0 # : Int32
   VERSION_MAJOR = 0 # : Int32
-  VERSION_MICRO = 8 # : Int32
+  VERSION_MICRO = 7 # : Int32
   VERSION_MINOR = 7 # : Int32
 
   ###########################################

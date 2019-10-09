@@ -69,7 +69,7 @@ module Gio
 
     def identifier
       __return_value = LibGio.subprocess_get_identifier(@pointer.as(LibGio::Subprocess*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value)) if __return_value
     end
 
     def if_exited

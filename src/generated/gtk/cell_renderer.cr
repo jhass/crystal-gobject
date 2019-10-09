@@ -231,7 +231,7 @@ module Gtk
 
     alias EditingStartedSignal = CellRenderer, Gtk::CellEditable, String ->
     def on_editing_started(&__block : EditingStartedSignal)
-      __callback = ->(_arg0 : LibGtk::CellRenderer*, _arg1 : LibGtk::LibGtk::CellEditable*, _arg2 : LibGtk::UInt8**) {
+      __callback = ->(_arg0 : LibGtk::CellRenderer*, _arg1 : LibGtk::CellEditable*, _arg2 : UInt8**) {
        __return_value = __block.call(CellRenderer.new(_arg0), _arg1, (raise "Expected string but got null" unless _arg2; ::String.new(_arg2)))
        __return_value
       }

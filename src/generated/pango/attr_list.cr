@@ -31,6 +31,16 @@ module Pango
       Pango::AttrList.new(__return_value) if __return_value
     end
 
+    def attributes
+      __return_value = LibPango.attr_list_get_attributes(@pointer.as(LibPango::AttrList*))
+      GLib::SListIterator(Pango::Attribute, LibPango::Attribute*).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
+    end
+
+    def iterator
+      __return_value = LibPango.attr_list_get_iterator(@pointer.as(LibPango::AttrList*))
+      Pango::AttrIterator.new(__return_value)
+    end
+
     def insert(attr)
       LibPango.attr_list_insert(@pointer.as(LibPango::AttrList*), attr.to_unsafe.as(LibPango::Attribute*))
       nil
@@ -53,6 +63,11 @@ module Pango
 
     def unref
       LibPango.attr_list_unref(@pointer.as(LibPango::AttrList*))
+      nil
+    end
+
+    def update(pos, remove, add)
+      LibPango.attr_list_update(@pointer.as(LibPango::AttrList*), Int32.new(pos), Int32.new(remove), Int32.new(add))
       nil
     end
 

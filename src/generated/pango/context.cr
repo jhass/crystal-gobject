@@ -64,6 +64,11 @@ module Pango
       Pango::FontMetrics.new(__return_value)
     end
 
+    def round_glyph_positions
+      __return_value = LibPango.context_get_round_glyph_positions(@pointer.as(LibPango::Context*))
+      __return_value
+    end
+
     def serial
       __return_value = LibPango.context_get_serial(@pointer.as(LibPango::Context*))
       __return_value
@@ -116,6 +121,11 @@ module Pango
 
     def matrix=(matrix)
       LibPango.context_set_matrix(@pointer.as(LibPango::Context*), matrix ? matrix.to_unsafe.as(LibPango::Matrix*) : nil)
+      nil
+    end
+
+    def round_glyph_positions=(round_positions)
+      LibPango.context_set_round_glyph_positions(@pointer.as(LibPango::Context*), round_positions)
       nil
     end
 

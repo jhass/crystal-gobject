@@ -80,7 +80,7 @@ module GdkPixbuf
 
     alias AreaUpdatedSignal = PixbufLoader, Int32, Int32, Int32, Int32 ->
     def on_area_updated(&__block : AreaUpdatedSignal)
-      __callback = ->(_arg0 : LibGdkPixbuf::PixbufLoader*, _arg1 : LibGdkPixbuf::Int32*, _arg2 : LibGdkPixbuf::Int32*, _arg3 : LibGdkPixbuf::Int32*, _arg4 : LibGdkPixbuf::Int32*) {
+      __callback = ->(_arg0 : LibGdkPixbuf::PixbufLoader*, _arg1 : Int32*, _arg2 : Int32*, _arg3 : Int32*, _arg4 : Int32*) {
        __return_value = __block.call(PixbufLoader.new(_arg0), _arg1, _arg2, _arg3, _arg4)
        __return_value
       }
@@ -98,7 +98,7 @@ module GdkPixbuf
 
     alias SizePreparedSignal = PixbufLoader, Int32, Int32 ->
     def on_size_prepared(&__block : SizePreparedSignal)
-      __callback = ->(_arg0 : LibGdkPixbuf::PixbufLoader*, _arg1 : LibGdkPixbuf::Int32*, _arg2 : LibGdkPixbuf::Int32*) {
+      __callback = ->(_arg0 : LibGdkPixbuf::PixbufLoader*, _arg1 : Int32*, _arg2 : Int32*) {
        __return_value = __block.call(PixbufLoader.new(_arg0), _arg1, _arg2)
        __return_value
       }

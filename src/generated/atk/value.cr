@@ -52,7 +52,7 @@ module Atk
 
     alias ValueChangedSignal = Value, Float64, String ->
     def on_value_changed(&__block : ValueChangedSignal)
-      __callback = ->(_arg0 : LibAtk::Value*, _arg1 : LibAtk::Float64*, _arg2 : LibAtk::UInt8**) {
+      __callback = ->(_arg0 : LibAtk::Value*, _arg1 : Float64*, _arg2 : UInt8**) {
        __return_value = __block.call(Value.new(_arg0), _arg1, (raise "Expected string but got null" unless _arg2; ::String.new(_arg2)))
        __return_value
       }

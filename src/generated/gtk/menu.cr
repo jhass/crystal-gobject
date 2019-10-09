@@ -242,7 +242,7 @@ module Gtk
 
     alias MoveScrollSignal = Menu, Gtk::ScrollType ->
     def on_move_scroll(&__block : MoveScrollSignal)
-      __callback = ->(_arg0 : LibGtk::Menu*, _arg1 : LibGtk::LibGtk::ScrollType*) {
+      __callback = ->(_arg0 : LibGtk::Menu*, _arg1 : LibGtk::ScrollType*) {
        __return_value = __block.call(Menu.new(_arg0), _arg1)
        __return_value
       }
@@ -251,7 +251,7 @@ module Gtk
 
     alias PoppedUpSignal = Menu, Void*, Void*, Bool, Bool ->
     def on_popped_up(&__block : PoppedUpSignal)
-      __callback = ->(_arg0 : LibGtk::Menu*, _arg1 : LibGtk::Void**, _arg2 : LibGtk::Void**, _arg3 : LibGtk::Bool*, _arg4 : LibGtk::Bool*) {
+      __callback = ->(_arg0 : LibGtk::Menu*, _arg1 : Void**, _arg2 : Void**, _arg3 : Bool*, _arg4 : Bool*) {
        __return_value = __block.call(Menu.new(_arg0), _arg1, _arg2, _arg3, _arg4)
        __return_value
       }

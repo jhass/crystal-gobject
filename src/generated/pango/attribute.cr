@@ -20,6 +20,11 @@ module Pango
       @pointer.not_nil!.as(LibPango::Attribute*)
     end
 
+    def copy
+      __return_value = LibPango.attribute_copy(@pointer.as(LibPango::Attribute*))
+      Pango::Attribute.new(__return_value)
+    end
+
     def destroy
       LibPango.attribute_destroy(@pointer.as(LibPango::Attribute*))
       nil

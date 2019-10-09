@@ -80,7 +80,7 @@ module Gio
 
     alias GAuthorizeMethodSignal = DBusInterfaceSkeleton, Gio::DBusMethodInvocation -> Bool
     def on_g_authorize_method(&__block : GAuthorizeMethodSignal)
-      __callback = ->(_arg0 : LibGio::DBusInterfaceSkeleton*, _arg1 : LibGio::LibGio::DBusMethodInvocation**) {
+      __callback = ->(_arg0 : LibGio::DBusInterfaceSkeleton*, _arg1 : LibGio::DBusMethodInvocation**) {
        __return_value = __block.call(DBusInterfaceSkeleton.new(_arg0), Gio::DBusMethodInvocation.new(_arg1))
        __return_value
       }

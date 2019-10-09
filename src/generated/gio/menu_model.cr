@@ -46,7 +46,7 @@ module Gio
 
     alias ItemsChangedSignal = MenuModel, Int32, Int32, Int32 ->
     def on_items_changed(&__block : ItemsChangedSignal)
-      __callback = ->(_arg0 : LibGio::MenuModel*, _arg1 : LibGio::Int32*, _arg2 : LibGio::Int32*, _arg3 : LibGio::Int32*) {
+      __callback = ->(_arg0 : LibGio::MenuModel*, _arg1 : Int32*, _arg2 : Int32*, _arg3 : Int32*) {
        __return_value = __block.call(MenuModel.new(_arg0), _arg1, _arg2, _arg3)
        __return_value
       }

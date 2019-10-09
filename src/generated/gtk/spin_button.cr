@@ -186,7 +186,7 @@ module Gtk
 
     alias ChangeValueSignal = SpinButton, Gtk::ScrollType ->
     def on_change_value(&__block : ChangeValueSignal)
-      __callback = ->(_arg0 : LibGtk::SpinButton*, _arg1 : LibGtk::LibGtk::ScrollType*) {
+      __callback = ->(_arg0 : LibGtk::SpinButton*, _arg1 : LibGtk::ScrollType*) {
        __return_value = __block.call(SpinButton.new(_arg0), _arg1)
        __return_value
       }
@@ -195,7 +195,7 @@ module Gtk
 
     alias InputSignal = SpinButton, Float64 -> Int32
     def on_input(&__block : InputSignal)
-      __callback = ->(_arg0 : LibGtk::SpinButton*, _arg1 : LibGtk::Float64*) {
+      __callback = ->(_arg0 : LibGtk::SpinButton*, _arg1 : Float64*) {
        __return_value = __block.call(SpinButton.new(_arg0), _arg1)
        Int32.new(__return_value)
       }

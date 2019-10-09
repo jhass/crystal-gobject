@@ -67,7 +67,7 @@ module Gio
 
     alias ActivateSignal = SimpleAction, GLib::Variant ->
     def on_activate(&__block : ActivateSignal)
-      __callback = ->(_arg0 : LibGio::SimpleAction*, _arg1 : LibGio::LibGLib::Variant*) {
+      __callback = ->(_arg0 : LibGio::SimpleAction*, _arg1 : LibGLib::Variant*) {
        __return_value = __block.call(SimpleAction.new(_arg0), GLib::Variant.new(_arg1))
        __return_value
       }
@@ -76,7 +76,7 @@ module Gio
 
     alias ChangeStateSignal = SimpleAction, GLib::Variant ->
     def on_change_state(&__block : ChangeStateSignal)
-      __callback = ->(_arg0 : LibGio::SimpleAction*, _arg1 : LibGio::LibGLib::Variant*) {
+      __callback = ->(_arg0 : LibGio::SimpleAction*, _arg1 : LibGLib::Variant*) {
        __return_value = __block.call(SimpleAction.new(_arg0), GLib::Variant.new(_arg1))
        __return_value
       }

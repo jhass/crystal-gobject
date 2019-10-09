@@ -26,6 +26,11 @@ module Pango
       cast Pango::Item.new(__return_value)
     end
 
+    def apply_attrs(iter)
+      LibPango.item_apply_attrs(@pointer.as(LibPango::Item*), iter.to_unsafe.as(LibPango::AttrIterator*))
+      nil
+    end
+
     def copy
       __return_value = LibPango.item_copy(@pointer.as(LibPango::Item*))
       Pango::Item.new(__return_value) if __return_value

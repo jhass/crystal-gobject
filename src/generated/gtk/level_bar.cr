@@ -121,7 +121,7 @@ module Gtk
 
     alias OffsetChangedSignal = LevelBar, String ->
     def on_offset_changed(&__block : OffsetChangedSignal)
-      __callback = ->(_arg0 : LibGtk::LevelBar*, _arg1 : LibGtk::UInt8**) {
+      __callback = ->(_arg0 : LibGtk::LevelBar*, _arg1 : UInt8**) {
        __return_value = __block.call(LevelBar.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }

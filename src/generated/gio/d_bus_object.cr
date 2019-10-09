@@ -17,7 +17,7 @@ module Gio
 
     alias InterfaceAddedSignal = DBusObject, Gio::DBusInterface ->
     def on_interface_added(&__block : InterfaceAddedSignal)
-      __callback = ->(_arg0 : LibGio::DBusObject*, _arg1 : LibGio::LibGio::DBusInterface*) {
+      __callback = ->(_arg0 : LibGio::DBusObject*, _arg1 : LibGio::DBusInterface*) {
        __return_value = __block.call(DBusObject.new(_arg0), _arg1)
        __return_value
       }
@@ -26,7 +26,7 @@ module Gio
 
     alias InterfaceRemovedSignal = DBusObject, Gio::DBusInterface ->
     def on_interface_removed(&__block : InterfaceRemovedSignal)
-      __callback = ->(_arg0 : LibGio::DBusObject*, _arg1 : LibGio::LibGio::DBusInterface*) {
+      __callback = ->(_arg0 : LibGio::DBusObject*, _arg1 : LibGio::DBusInterface*) {
        __return_value = __block.call(DBusObject.new(_arg0), _arg1)
        __return_value
       }

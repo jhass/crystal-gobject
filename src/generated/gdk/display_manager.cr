@@ -42,7 +42,7 @@ module Gdk
 
     alias DisplayOpenedSignal = DisplayManager, Gdk::Display ->
     def on_display_opened(&__block : DisplayOpenedSignal)
-      __callback = ->(_arg0 : LibGdk::DisplayManager*, _arg1 : LibGdk::LibGdk::Display**) {
+      __callback = ->(_arg0 : LibGdk::DisplayManager*, _arg1 : LibGdk::Display**) {
        __return_value = __block.call(DisplayManager.new(_arg0), Gdk::Display.new(_arg1))
        __return_value
       }

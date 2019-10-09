@@ -78,7 +78,7 @@ module Gtk
 
     alias ToggledSignal = CellRendererToggle, String ->
     def on_toggled(&__block : ToggledSignal)
-      __callback = ->(_arg0 : LibGtk::CellRendererToggle*, _arg1 : LibGtk::UInt8**) {
+      __callback = ->(_arg0 : LibGtk::CellRendererToggle*, _arg1 : UInt8**) {
        __return_value = __block.call(CellRendererToggle.new(_arg0), (raise "Expected string but got null" unless _arg1; ::String.new(_arg1)))
        __return_value
       }

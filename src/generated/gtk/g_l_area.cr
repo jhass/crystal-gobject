@@ -155,7 +155,7 @@ module Gtk
 
     alias RenderSignal = GLArea, Gdk::GLContext -> Bool
     def on_render(&__block : RenderSignal)
-      __callback = ->(_arg0 : LibGtk::GLArea*, _arg1 : LibGtk::LibGdk::GLContext**) {
+      __callback = ->(_arg0 : LibGtk::GLArea*, _arg1 : LibGdk::GLContext**) {
        __return_value = __block.call(GLArea.new(_arg0), Gdk::GLContext.new(_arg1))
        __return_value
       }
@@ -164,7 +164,7 @@ module Gtk
 
     alias ResizeSignal = GLArea, Int32, Int32 ->
     def on_resize(&__block : ResizeSignal)
-      __callback = ->(_arg0 : LibGtk::GLArea*, _arg1 : LibGtk::Int32*, _arg2 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::GLArea*, _arg1 : Int32*, _arg2 : Int32*) {
        __return_value = __block.call(GLArea.new(_arg0), _arg1, _arg2)
        __return_value
       }

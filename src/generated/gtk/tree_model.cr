@@ -132,7 +132,7 @@ module Gtk
 
     alias RowChangedSignal = TreeModel, Gtk::TreePath, Gtk::TreeIter ->
     def on_row_changed(&__block : RowChangedSignal)
-      __callback = ->(_arg0 : LibGtk::TreeModel*, _arg1 : LibGtk::LibGtk::TreePath*, _arg2 : LibGtk::LibGtk::TreeIter*) {
+      __callback = ->(_arg0 : LibGtk::TreeModel*, _arg1 : LibGtk::TreePath*, _arg2 : LibGtk::TreeIter*) {
        __return_value = __block.call(TreeModel.new(_arg0), Gtk::TreePath.new(_arg1), Gtk::TreeIter.new(_arg2))
        __return_value
       }
@@ -141,7 +141,7 @@ module Gtk
 
     alias RowDeletedSignal = TreeModel, Gtk::TreePath ->
     def on_row_deleted(&__block : RowDeletedSignal)
-      __callback = ->(_arg0 : LibGtk::TreeModel*, _arg1 : LibGtk::LibGtk::TreePath*) {
+      __callback = ->(_arg0 : LibGtk::TreeModel*, _arg1 : LibGtk::TreePath*) {
        __return_value = __block.call(TreeModel.new(_arg0), Gtk::TreePath.new(_arg1))
        __return_value
       }
@@ -150,7 +150,7 @@ module Gtk
 
     alias RowHasChildToggledSignal = TreeModel, Gtk::TreePath, Gtk::TreeIter ->
     def on_row_has_child_toggled(&__block : RowHasChildToggledSignal)
-      __callback = ->(_arg0 : LibGtk::TreeModel*, _arg1 : LibGtk::LibGtk::TreePath*, _arg2 : LibGtk::LibGtk::TreeIter*) {
+      __callback = ->(_arg0 : LibGtk::TreeModel*, _arg1 : LibGtk::TreePath*, _arg2 : LibGtk::TreeIter*) {
        __return_value = __block.call(TreeModel.new(_arg0), Gtk::TreePath.new(_arg1), Gtk::TreeIter.new(_arg2))
        __return_value
       }
@@ -159,7 +159,7 @@ module Gtk
 
     alias RowInsertedSignal = TreeModel, Gtk::TreePath, Gtk::TreeIter ->
     def on_row_inserted(&__block : RowInsertedSignal)
-      __callback = ->(_arg0 : LibGtk::TreeModel*, _arg1 : LibGtk::LibGtk::TreePath*, _arg2 : LibGtk::LibGtk::TreeIter*) {
+      __callback = ->(_arg0 : LibGtk::TreeModel*, _arg1 : LibGtk::TreePath*, _arg2 : LibGtk::TreeIter*) {
        __return_value = __block.call(TreeModel.new(_arg0), Gtk::TreePath.new(_arg1), Gtk::TreeIter.new(_arg2))
        __return_value
       }

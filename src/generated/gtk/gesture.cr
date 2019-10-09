@@ -120,7 +120,7 @@ module Gtk
 
     alias BeginSignal = Gesture, Gdk::EventSequence ->
     def on_begin_(&__block : BeginSignal)
-      __callback = ->(_arg0 : LibGtk::Gesture*, _arg1 : LibGtk::LibGdk::EventSequence*) {
+      __callback = ->(_arg0 : LibGtk::Gesture*, _arg1 : LibGdk::EventSequence*) {
        __return_value = __block.call(Gesture.new(_arg0), Gdk::EventSequence.new(_arg1))
        __return_value
       }
@@ -129,7 +129,7 @@ module Gtk
 
     alias CancelSignal = Gesture, Gdk::EventSequence ->
     def on_cancel(&__block : CancelSignal)
-      __callback = ->(_arg0 : LibGtk::Gesture*, _arg1 : LibGtk::LibGdk::EventSequence*) {
+      __callback = ->(_arg0 : LibGtk::Gesture*, _arg1 : LibGdk::EventSequence*) {
        __return_value = __block.call(Gesture.new(_arg0), Gdk::EventSequence.new(_arg1))
        __return_value
       }
@@ -138,7 +138,7 @@ module Gtk
 
     alias EndSignal = Gesture, Gdk::EventSequence ->
     def on_end_(&__block : EndSignal)
-      __callback = ->(_arg0 : LibGtk::Gesture*, _arg1 : LibGtk::LibGdk::EventSequence*) {
+      __callback = ->(_arg0 : LibGtk::Gesture*, _arg1 : LibGdk::EventSequence*) {
        __return_value = __block.call(Gesture.new(_arg0), Gdk::EventSequence.new(_arg1))
        __return_value
       }
@@ -147,7 +147,7 @@ module Gtk
 
     alias SequenceStateChangedSignal = Gesture, Gdk::EventSequence, Gtk::EventSequenceState ->
     def on_sequence_state_changed(&__block : SequenceStateChangedSignal)
-      __callback = ->(_arg0 : LibGtk::Gesture*, _arg1 : LibGtk::LibGdk::EventSequence*, _arg2 : LibGtk::LibGtk::EventSequenceState*) {
+      __callback = ->(_arg0 : LibGtk::Gesture*, _arg1 : LibGdk::EventSequence*, _arg2 : LibGtk::EventSequenceState*) {
        __return_value = __block.call(Gesture.new(_arg0), Gdk::EventSequence.new(_arg1), _arg2)
        __return_value
       }
@@ -156,7 +156,7 @@ module Gtk
 
     alias UpdateSignal = Gesture, Gdk::EventSequence ->
     def on_update(&__block : UpdateSignal)
-      __callback = ->(_arg0 : LibGtk::Gesture*, _arg1 : LibGtk::LibGdk::EventSequence*) {
+      __callback = ->(_arg0 : LibGtk::Gesture*, _arg1 : LibGdk::EventSequence*) {
        __return_value = __block.call(Gesture.new(_arg0), Gdk::EventSequence.new(_arg1))
        __return_value
       }

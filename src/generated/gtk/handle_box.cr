@@ -85,7 +85,7 @@ module Gtk
 
     alias ChildAttachedSignal = HandleBox, Gtk::Widget ->
     def on_child_attached(&__block : ChildAttachedSignal)
-      __callback = ->(_arg0 : LibGtk::HandleBox*, _arg1 : LibGtk::LibGtk::Widget**) {
+      __callback = ->(_arg0 : LibGtk::HandleBox*, _arg1 : LibGtk::Widget**) {
        __return_value = __block.call(HandleBox.new(_arg0), Gtk::Widget.new(_arg1))
        __return_value
       }
@@ -94,7 +94,7 @@ module Gtk
 
     alias ChildDetachedSignal = HandleBox, Gtk::Widget ->
     def on_child_detached(&__block : ChildDetachedSignal)
-      __callback = ->(_arg0 : LibGtk::HandleBox*, _arg1 : LibGtk::LibGtk::Widget**) {
+      __callback = ->(_arg0 : LibGtk::HandleBox*, _arg1 : LibGtk::Widget**) {
        __return_value = __block.call(HandleBox.new(_arg0), Gtk::Widget.new(_arg1))
        __return_value
       }

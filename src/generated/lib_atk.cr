@@ -576,11 +576,11 @@ lib LibAtk
   ##    Constants
   ###########################################
 
-  BINARY_AGE = 23210 # : Int32
+  BINARY_AGE = 23411 # : Int32
   INTERFACE_AGE = 1 # : Int32
   MAJOR_VERSION = 2 # : Int32
-  MICRO_VERSION = 0 # : Int32
-  MINOR_VERSION = 32 # : Int32
+  MICRO_VERSION = 1 # : Int32
+  MINOR_VERSION = 34 # : Int32
   VERSION_MIN_REQUIRED = 2 # : Int32
 
   ###########################################
@@ -767,7 +767,9 @@ lib LibAtk
     SUBSCRIPT = 120
     SUPERSCRIPT = 121
     FOOTNOTE = 122
-    LAST_DEFINED = 123
+    CONTENT_DELETION = 123
+    CONTENT_INSERTION = 124
+    LAST_DEFINED = 125
   end
   fun role_for_name = atk_role_for_name(name : UInt8*) : LibAtk::Role
   fun role_get_localized_name = atk_role_get_localized_name(role : LibAtk::Role) : UInt8*
@@ -1034,6 +1036,7 @@ lib LibAtk
     # Property accessible_value : Float64
   end
   fun object_add_relationship = atk_object_add_relationship(this : Object*, relationship : LibAtk::RelationType, target : LibAtk::Object*) : Bool
+  fun object_get_accessible_id = atk_object_get_accessible_id(this : Object*) : UInt8*
   fun object_get_attributes = atk_object_get_attributes(this : Object*) : Void**
   fun object_get_description = atk_object_get_description(this : Object*) : UInt8*
   fun object_get_index_in_parent = atk_object_get_index_in_parent(this : Object*) : Int32
@@ -1052,6 +1055,7 @@ lib LibAtk
   fun object_ref_state_set = atk_object_ref_state_set(this : Object*) : LibAtk::StateSet*
   fun object_remove_property_change_handler = atk_object_remove_property_change_handler(this : Object*, handler_id : UInt32) : Void
   fun object_remove_relationship = atk_object_remove_relationship(this : Object*, relationship : LibAtk::RelationType, target : LibAtk::Object*) : Bool
+  fun object_set_accessible_id = atk_object_set_accessible_id(this : Object*, name : UInt8*) : Void
   fun object_set_description = atk_object_set_description(this : Object*, description : UInt8*) : Void
   fun object_set_name = atk_object_set_name(this : Object*, name : UInt8*) : Void
   fun object_set_parent = atk_object_set_parent(this : Object*, parent : LibAtk::Object*) : Void

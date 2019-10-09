@@ -91,7 +91,7 @@ module Gtk
 
     alias ActivateCurrentSignal = MenuShell, Bool ->
     def on_activate_current(&__block : ActivateCurrentSignal)
-      __callback = ->(_arg0 : LibGtk::MenuShell*, _arg1 : LibGtk::Bool*) {
+      __callback = ->(_arg0 : LibGtk::MenuShell*, _arg1 : Bool*) {
        __return_value = __block.call(MenuShell.new(_arg0), _arg1)
        __return_value
       }
@@ -109,7 +109,7 @@ module Gtk
 
     alias CycleFocusSignal = MenuShell, Gtk::DirectionType ->
     def on_cycle_focus(&__block : CycleFocusSignal)
-      __callback = ->(_arg0 : LibGtk::MenuShell*, _arg1 : LibGtk::LibGtk::DirectionType*) {
+      __callback = ->(_arg0 : LibGtk::MenuShell*, _arg1 : LibGtk::DirectionType*) {
        __return_value = __block.call(MenuShell.new(_arg0), _arg1)
        __return_value
       }
@@ -127,7 +127,7 @@ module Gtk
 
     alias InsertSignal = MenuShell, Gtk::Widget, Int32 ->
     def on_insert(&__block : InsertSignal)
-      __callback = ->(_arg0 : LibGtk::MenuShell*, _arg1 : LibGtk::LibGtk::Widget**, _arg2 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::MenuShell*, _arg1 : LibGtk::Widget**, _arg2 : Int32*) {
        __return_value = __block.call(MenuShell.new(_arg0), Gtk::Widget.new(_arg1), _arg2)
        __return_value
       }
@@ -136,7 +136,7 @@ module Gtk
 
     alias MoveCurrentSignal = MenuShell, Gtk::MenuDirectionType ->
     def on_move_current(&__block : MoveCurrentSignal)
-      __callback = ->(_arg0 : LibGtk::MenuShell*, _arg1 : LibGtk::LibGtk::MenuDirectionType*) {
+      __callback = ->(_arg0 : LibGtk::MenuShell*, _arg1 : LibGtk::MenuDirectionType*) {
        __return_value = __block.call(MenuShell.new(_arg0), _arg1)
        __return_value
       }
@@ -145,7 +145,7 @@ module Gtk
 
     alias MoveSelectedSignal = MenuShell, Int32 -> Bool
     def on_move_selected(&__block : MoveSelectedSignal)
-      __callback = ->(_arg0 : LibGtk::MenuShell*, _arg1 : LibGtk::Int32*) {
+      __callback = ->(_arg0 : LibGtk::MenuShell*, _arg1 : Int32*) {
        __return_value = __block.call(MenuShell.new(_arg0), _arg1)
        __return_value
       }

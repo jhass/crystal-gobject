@@ -226,7 +226,7 @@ module Gtk
 
     alias AddEditableSignal = CellArea, Gtk::CellRenderer, Gtk::CellEditable, Gdk::Rectangle, String ->
     def on_add_editable(&__block : AddEditableSignal)
-      __callback = ->(_arg0 : LibGtk::CellArea*, _arg1 : LibGtk::LibGtk::CellRenderer**, _arg2 : LibGtk::LibGtk::CellEditable*, _arg3 : LibGtk::LibGdk::Rectangle*, _arg4 : LibGtk::UInt8**) {
+      __callback = ->(_arg0 : LibGtk::CellArea*, _arg1 : LibGtk::CellRenderer**, _arg2 : LibGtk::CellEditable*, _arg3 : LibGdk::Rectangle*, _arg4 : UInt8**) {
        __return_value = __block.call(CellArea.new(_arg0), Gtk::CellRenderer.new(_arg1), _arg2, Gdk::Rectangle.new(_arg3), (raise "Expected string but got null" unless _arg4; ::String.new(_arg4)))
        __return_value
       }
@@ -235,7 +235,7 @@ module Gtk
 
     alias ApplyAttributesSignal = CellArea, Gtk::TreeModel, Gtk::TreeIter, Bool, Bool ->
     def on_apply_attributes(&__block : ApplyAttributesSignal)
-      __callback = ->(_arg0 : LibGtk::CellArea*, _arg1 : LibGtk::LibGtk::TreeModel*, _arg2 : LibGtk::LibGtk::TreeIter*, _arg3 : LibGtk::Bool*, _arg4 : LibGtk::Bool*) {
+      __callback = ->(_arg0 : LibGtk::CellArea*, _arg1 : LibGtk::TreeModel*, _arg2 : LibGtk::TreeIter*, _arg3 : Bool*, _arg4 : Bool*) {
        __return_value = __block.call(CellArea.new(_arg0), _arg1, Gtk::TreeIter.new(_arg2), _arg3, _arg4)
        __return_value
       }
@@ -244,7 +244,7 @@ module Gtk
 
     alias FocusChangedSignal = CellArea, Gtk::CellRenderer, String ->
     def on_focus_changed(&__block : FocusChangedSignal)
-      __callback = ->(_arg0 : LibGtk::CellArea*, _arg1 : LibGtk::LibGtk::CellRenderer**, _arg2 : LibGtk::UInt8**) {
+      __callback = ->(_arg0 : LibGtk::CellArea*, _arg1 : LibGtk::CellRenderer**, _arg2 : UInt8**) {
        __return_value = __block.call(CellArea.new(_arg0), Gtk::CellRenderer.new(_arg1), (raise "Expected string but got null" unless _arg2; ::String.new(_arg2)))
        __return_value
       }
@@ -253,7 +253,7 @@ module Gtk
 
     alias RemoveEditableSignal = CellArea, Gtk::CellRenderer, Gtk::CellEditable ->
     def on_remove_editable(&__block : RemoveEditableSignal)
-      __callback = ->(_arg0 : LibGtk::CellArea*, _arg1 : LibGtk::LibGtk::CellRenderer**, _arg2 : LibGtk::LibGtk::CellEditable*) {
+      __callback = ->(_arg0 : LibGtk::CellArea*, _arg1 : LibGtk::CellRenderer**, _arg2 : LibGtk::CellEditable*) {
        __return_value = __block.call(CellArea.new(_arg0), Gtk::CellRenderer.new(_arg1), _arg2)
        __return_value
       }

@@ -183,7 +183,7 @@ lib LibGst
   VALUE_LESS_THAN = -1 # : Int32
   VALUE_UNORDERED = 2 # : Int32
   VERSION_MAJOR = 1 # : Int32
-  VERSION_MICRO = 0 # : Int32
+  VERSION_MICRO = 1 # : Int32
   VERSION_MINOR = 16 # : Int32
   VERSION_NANO = 0 # : Int32
 
@@ -2415,7 +2415,7 @@ lib LibGst
     STREAM_COLLECTION = 2147483652
     STREAMS_SELECTED = 2147483653
     REDIRECT = 2147483654
-    DEVICE_CHANGED = 2147483654
+    DEVICE_CHANGED = 2147483655
     ANY = 4294967295
   end
   fun message_type_get_name = gst_message_type_get_name(type : LibGst::MessageType) : UInt8*

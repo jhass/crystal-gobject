@@ -28,6 +28,11 @@ module Pango
       nil
     end
 
+    def height(height)
+      LibPango.layout_line_get_height(@pointer.as(LibPango::LayoutLine*), height)
+      nil
+    end
+
     def pixel_extents(ink_rect, logical_rect)
       LibPango.layout_line_get_pixel_extents(@pointer.as(LibPango::LayoutLine*), ink_rect, logical_rect)
       nil
