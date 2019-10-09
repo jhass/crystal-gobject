@@ -22,7 +22,7 @@ module GIRepository
       LibGIRepository::TypeTag::GSLIST   => "Void*",
       LibGIRepository::TypeTag::GHASH    => "Void*",
       LibGIRepository::TypeTag::ERROR    => "LibGLib::Error*",
-      LibGIRepository::TypeTag::UNICHAR  => "UInt8"
+      LibGIRepository::TypeTag::UNICHAR  => "UInt8",
     }
 
     BLACKLIST = {"VaClosureMarshal"}
@@ -47,41 +47,41 @@ module GIRepository
       LibGIRepository.type_info_get_array_type(self)
     end
 
-    def param_type(n=0)
+    def param_type(n = 0)
       TypeInfo.new LibGIRepository.type_info_get_param_type(self, n)
     end
 
     def lib_definition
       base = case tag
-        when LibGIRepository::TypeTag::INTERFACE
-          interface = self.interface
-          if BLACKLIST.includes?(interface.name) || 'a' <= interface.name[0] <= 'z' # More weird stuff
-            interface.is_a?(CallbackInfo) ? "-> Void" : "Void*"
-          else
-            namespace = "Lib#{interface.namespace}::"
-            namespace = nil if namespace == self.namespace
-            type = "#{namespace}#{interface.name}"
-            case interface
-            when ObjectInfo
-              type = "#{type}*" unless pointer?
-            end
-            type
-          end
-        when LibGIRepository::TypeTag::ARRAY
-          case array_type
-          when LibGIRepository::ArrayType::C
-            param_type.lib_definition
-          else
-            "Void"
-          end
-        else
-          TAG_MAP[tag]
-        end
+             when LibGIRepository::TypeTag::INTERFACE
+               interface = self.interface
+               if BLACKLIST.includes?(interface.name) || 'a' <= interface.name[0] <= 'z' # More weird stuff
+                 interface.is_a?(CallbackInfo) ? "-> Void" : "Void*"
+               else
+                 namespace = "Lib#{interface.namespace}::"
+                 namespace = nil if namespace == self.namespace
+                 type = "#{namespace}#{interface.name}"
+                 case interface
+                 when ObjectInfo
+                   type = "#{type}*" unless pointer?
+                 end
+                 type
+               end
+             when LibGIRepository::TypeTag::ARRAY
+               case array_type
+               when LibGIRepository::ArrayType::C
+                 param_type.lib_definition
+               else
+                 "Void"
+               end
+             else
+               TAG_MAP[tag]
+             end
       base += "*" if pointer?
       base
     end
 
-    def wrapper_definition(libname="", indent="")
+    def wrapper_definition(libname = "", indent = "")
       case tag
       when LibGIRepository::TypeTag::INTERFACE
         interface.full_constant

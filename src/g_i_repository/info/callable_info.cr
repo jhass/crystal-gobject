@@ -99,7 +99,7 @@ module GIRepository
     each_converted callable_info, arg, ArgInfo
 
     def args
-      args = [] of ArgInfo|SelfArgInfo|ErrorArgInfo
+      args = [] of ArgInfo | SelfArgInfo | ErrorArgInfo
       args << SelfArgInfo.new(container) if method?
       each_arg do |arg|
         args << arg

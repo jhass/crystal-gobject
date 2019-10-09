@@ -54,17 +54,17 @@ module GIRepository
       end
     end
 
-    def wrapper_definition(libname, indent="")
+    def wrapper_definition(libname, indent = "")
       String.build do |io|
         io.puts "#{indent}module #{name}"
 
         each_method do |method|
-          io.puts method.wrapper_definition libname, indent+"  "
+          io.puts method.wrapper_definition libname, indent + "  "
           io.puts
         end
 
         each_signal do |signal|
-          io.puts signal.wrapper_definition libname, indent+"  "
+          io.puts signal.wrapper_definition libname, indent + "  "
         end
 
         io.puts "#{indent}end"

@@ -52,7 +52,7 @@ module GIRepository
       end
     end
 
-    def wrapper_definition(libname, indent="")
+    def wrapper_definition(libname, indent = "")
       String.build do |io|
         parent_object = parent
         parent = parent_object.constant if parent_object && parent_object.namespace == namespace
@@ -70,13 +70,13 @@ module GIRepository
         end
 
         each_property do |property|
-          io.puts property.wrapper_definition libname, indent+"  "
+          io.puts property.wrapper_definition libname, indent + "  "
         end
 
         write_methods libname, io, indent
 
         each_signal do |signal|
-          io.puts signal.wrapper_definition libname, indent+"  "
+          io.puts signal.wrapper_definition libname, indent + "  "
         end
 
         io.puts "#{indent}end"

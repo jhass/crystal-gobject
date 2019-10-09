@@ -41,7 +41,7 @@ module GIRepository
       io.puts "    _data : UInt8[#{size}]" if fields_size == 0
     end
 
-    def wrapper_definition(libname, indent="")
+    def wrapper_definition(libname, indent = "")
       String.build do |io|
         io.puts "#{indent}class #{name}"
         io.puts "#{indent}  include GObject::WrappedType"
@@ -50,7 +50,7 @@ module GIRepository
         writable_fields = fields.select(&.writable?)
         if !writable_fields.empty?
           io.print "#{indent}  def self.new("
-          io.print writable_fields.map {|field|
+          io.print writable_fields.map { |field|
             external = "#{field.name(false)} " if field.name(false) != field.name
             "#{external}#{field.name} : #{field.type.wrapper_definition(libname)}|Nil = nil"
           }.join(", ")

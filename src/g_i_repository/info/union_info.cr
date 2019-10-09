@@ -32,7 +32,7 @@ module GIRepository
       end
     end
 
-    def wrapper_definition(libname, indent="")
+    def wrapper_definition(libname, indent = "")
       String.build do |io|
         io.puts "#{indent}class #{name}"
         io.puts "#{indent}  include GObject::WrappedType"

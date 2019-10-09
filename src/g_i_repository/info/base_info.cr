@@ -1,6 +1,5 @@
 module GIRepository
   class BaseInfo
-
     INFO_TYPES = Hash(LibGIRepository::InfoType, BaseInfo.class).new
 
     macro inherited
@@ -67,8 +66,8 @@ module GIRepository
       container = container?
       return "" unless container
       prefix = container.name
-               .gsub(/[A-Z][a-z]*(?=[A-Z])/) {|m| "#{m.downcase}_" }
-               .downcase
+        .gsub(/[A-Z][a-z]*(?=[A-Z])/) { |m| "#{m.downcase}_" }
+        .downcase
       "#{prefix}_"
     end
 
@@ -90,11 +89,11 @@ module GIRepository
       "  # Bug: #{name} : #{info_type}"
     end
 
-    def wrapper_definition(libname, indent="")
+    def wrapper_definition(libname, indent = "")
     end
 
     def to_s(io)
-      io << name << '(' << info_type << ')'
+      io << name << '(' << LibGIRepository.info_type_to_string(info_type) << ')'
     end
 
     def to_unsafe
