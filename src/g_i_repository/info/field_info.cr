@@ -10,7 +10,7 @@ module GIRepository
 
     def name(keyword_safe=true)
       name = super()
-      name += '_' if keyword_safe && KEYWORDS.includes? name
+      name += '_' if keyword_safe && KEYWORDS.includes? name if name
       name
     end
 
@@ -26,8 +26,23 @@ module GIRepository
       flags.writable?
     end
 
+    def size
+      LibGIRepository.field_info_get_size(self)
+    end
+
+    def offset
+      LibGIRepository.field_info_get_offset(self)
+    end
+
     def lib_definition
       "  #{name} : #{type.lib_definition}"
+    end
+
+    Dumper.def do
+      dumper.puts "* flags = #{flags}"
+      dumper.puts "* size = #{size}"
+      dumper.puts "* offset = #{offset}"
+      Dumper.dump_child type
     end
   end
 end

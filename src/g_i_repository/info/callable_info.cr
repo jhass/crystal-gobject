@@ -127,5 +127,14 @@ module GIRepository
     def return_type
       TypeInfo.new LibGIRepository.callable_info_get_return_type(self)
     end
+
+    Dumper.def do
+      dumper.puts "* method = #{method?}"
+      dumper.puts "* throws = #{throws?}"
+      dumper.puts "* skip_return = #{skip_return?}"
+      dumper.puts "* may_return_null = #{may_return_null?}"
+      Dumper.dump_child return_type
+      Dumper.dump_childs arg
+    end
   end
 end

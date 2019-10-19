@@ -15,7 +15,7 @@ module GIRepository
 
     def name
       name = super
-      'A' <= name[0] <= 'Z' ? name : "#{namespace}#{name}"
+      'A' <= name[0] <= 'Z' ? name : "#{namespace}#{name}" if name
     end
 
     def size
@@ -68,7 +68,7 @@ module GIRepository
         elsif size != 0 # if size is 0 it's opaque to us, there should be a constructor function
           io.puts "#{indent}  def self.new : self"
           io.puts "#{indent}    ptr = Pointer(UInt8).malloc(#{size}, 0u8)"
-          io.puts "#{indent}    super(ptr.as(#{ptr_type(libname)}))"
+          io.puts "#{indent}    new(ptr.as(#{ptr_type(libname)}))"
           io.puts "#{indent}  end"
           io.puts
         end
@@ -94,6 +94,13 @@ module GIRepository
         end
         io.puts "#{indent}end"
       end
+    end
+
+    Dumper.def do
+      dumper.puts "* size = #{size}"
+      dumper.puts "* gtype = #{gtype?}"
+      Dumper.dump_childs field
+      Dumper.dump_childs method
     end
   end
 end

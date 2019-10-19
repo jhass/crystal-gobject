@@ -30,12 +30,12 @@ module GIRepository
     end
 
     private def alias_name
-      name.split("-").map(&.capitalize).join
+      name.try &.split("-").map(&.capitalize).join
     end
 
     private def identifier
-      name = self.name.tr("-", "_")
-      name += "_" if {"begin", "end"}.includes? name
+      name = self.name.try &.tr("-", "_")
+      name += "_" if name && {"begin", "end"}.includes? name
       name
     end
   end

@@ -20,6 +20,11 @@ module GIRepository
       }
     end
 
+    def find_by_name(namespace, name)
+      ptr = LibGIRepository.repository_find_by_name(self, namespace, name)
+      BaseInfo.wrap BaseInfo.new(ptr) if ptr
+    end
+
     def all_infos(namespace)
       Array.new(n_infos(namespace)) {|index|
         info namespace, index

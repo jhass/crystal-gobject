@@ -8,6 +8,7 @@ require "../generated/g_i_repository/repository_load_flags"
 require "../generated/g_i_repository/typelib"
 require "../generated/g_i_repository/repository"
 require "../generated/g_i_repository/base_info"
+require "../generated/g_i_repository/attribute_iter"
 
 # Patch up functions that are not generated for a weird reason
 lib LibGIRepository
@@ -42,13 +43,15 @@ end
 
 module GIRepository
   def self.filename(filename)
-    filename.gsub(/[A-Z][a-z]*(?=[A-Z])/) {|m| "#{m.downcase}_" }
-            .gsub(/::/, "_")
-            .downcase
+    filename.not_nil!
+      .gsub(/[A-Z][a-z]*(?=[A-Z])/) {|m| "#{m.downcase}_" }
+      .gsub(/::/, "_")
+      .downcase
   end
 end
 
 require "../helper"
 require "./wrapper_generator"
+require "./dumper"
 require "./info/*"
 require "./repository"

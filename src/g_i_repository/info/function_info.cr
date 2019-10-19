@@ -6,10 +6,16 @@ module GIRepository
 
     def name
       name = super
-      name = name.sub(/^_/, "") unless symbol.includes?("__")
-      name = "new" if name.empty?
-      name = "init" if name == "initialize"
+      if name
+        name = name.sub(/^_/, "") unless symbol.includes?("__")
+        name = "new" if name.empty?
+        name = "init" if name == "initialize"
+      end
       name
+    end
+
+    def flags
+      LibGIRepository.function_info_get_flags(self)
     end
 
     def symbol
@@ -17,7 +23,7 @@ module GIRepository
     end
 
     def constructor?
-      LibGIRepository.function_info_get_flags(self).is_constructor?
+      flags.is_constructor?
     end
 
     def lib_definition
@@ -30,6 +36,7 @@ module GIRepository
 
     def wrapper_definition(libname, indent="")
       method_name = name
+      return unless method_name
       if method_name.starts_with?("get_")
         method_name = method_name[4..-1]
       elsif method_name.starts_with?("set_") && args.size == 2 && method?
@@ -69,6 +76,12 @@ module GIRepository
 
         io << "#{indent}end\n"
       end
+    end
+
+    Dumper.def do
+      dumper.puts "* flags = #{flags}"
+      dumper.puts "* symbol = #{symbol}"
+      dumper.puts "* constructor = #{constructor?}"
     end
   end
 end

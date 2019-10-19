@@ -4,7 +4,7 @@ module GIRepository
 
     def self.new : self
       ptr = Pointer(UInt8).malloc(72, 0u8)
-      super(ptr.as(LibGIRepository::BaseInfo*))
+      new(ptr.as(LibGIRepository::BaseInfo*))
     end
 
     @pointer : Void*

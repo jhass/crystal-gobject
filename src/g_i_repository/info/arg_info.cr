@@ -7,7 +7,7 @@ module GIRepository
     def name
       name = super
       name = "_#{name}" if KEYWORDS.includes? name
-      name.gsub(/_+$/, "")
+      name.gsub(/_+$/, "") if name
     end
 
     def direction
@@ -74,6 +74,13 @@ module GIRepository
       else
         "#{"#{name} && " if nullable?}#{type.convert_to_crystal(name)}"
       end
+    end
+
+    Dumper.def do
+      dumper.puts "* direction = #{direction}"
+      dumper.puts "* optional = #{optional?}"
+      dumper.puts "* nullable = #{nullable?}"
+      Dumper.dump_child type
     end
   end
 end

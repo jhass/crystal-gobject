@@ -73,5 +73,15 @@ module GIRepository
         io.puts "#{indent}end"
       end
     end
+
+    Dumper.def do
+      Dumper.dump_child iface_struct
+      Dumper.dump_childs constant
+      Dumper.dump_childs prerequisite
+      Dumper.dump_childs property, properties
+      Dumper.dump_childs method
+      Dumper.dump_childs signal
+      Dumper.dump_childs vfunc
+    end
   end
 end

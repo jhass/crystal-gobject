@@ -11,7 +11,7 @@ module GIRepository
 
     def name
       name = super
-      'A' <= name[0] <= 'Z' ? name : "#{c_prefix}#{name}"
+      'A' <= name[0] <= 'Z' ? name : "#{c_prefix}#{name}" if name
     end
 
     def lib_definition
@@ -60,6 +60,11 @@ module GIRepository
 
         io.puts "#{indent}end"
       end
+    end
+
+    Dumper.def do
+      Dumper.dump_childs field
+      Dumper.dump_childs method
     end
   end
 end

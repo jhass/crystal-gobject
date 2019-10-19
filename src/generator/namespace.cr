@@ -234,7 +234,9 @@ class Namespace
   private def skip_info?(info)
     case info
     when GIRepository::EnumInfo
-      return true unless 'A' <= info.name[0] <= 'Z' # Bug in typelib?
+      name = info.name
+      return true unless name
+      return true unless 'A' <= name[0] <= 'Z' # Bug in typelib?
     when GIRepository::StructInfo
       return true if info.gtype? # Hide them
     end

@@ -43,6 +43,12 @@ module GIRepository
         end
       end
     end
+
+    Dumper.def do
+      dumper.puts "* type = #{type}"
+      Dumper.dump_childs value
+      Dumper.dump_childs method
+    end
   end
 
   class FlagsInfo < EnumInfo

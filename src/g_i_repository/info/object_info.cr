@@ -84,5 +84,16 @@ module GIRepository
         io.puts "#{indent}end"
       end
     end
+
+    Dumper.def do
+      Dumper.dump_child parent
+      Dumper.dump_childs constant
+      Dumper.dump_childs interface
+      Dumper.dump_childs field
+      Dumper.dump_childs property, properties
+      Dumper.dump_childs method
+      Dumper.dump_childs vfunc
+      Dumper.dump_childs signal
+    end
   end
 end

@@ -55,7 +55,8 @@ module GIRepository
       base = case tag
              when LibGIRepository::TypeTag::INTERFACE
                interface = self.interface
-               if BLACKLIST.includes?(interface.name) || 'a' <= interface.name[0] <= 'z' # More weird stuff
+               name = interface.name
+               if name.nil? || BLACKLIST.includes?(name) || (name && 'a' <= name[0] <= 'z') # More weird stuff, also compiler could be smarter here
                  interface.is_a?(CallbackInfo) ? "-> Void" : "Void*"
                else
                  namespace = "Lib#{interface.namespace}::"
@@ -184,6 +185,13 @@ module GIRepository
       else
         variable
       end
+    end
+
+    Dumper.def do
+      dumper.puts "* tag = #{tag}"
+      dumper.puts "* pointer = #{pointer?}"
+
+      Dumper.dump_child interface if tag.interface?
     end
   end
 end

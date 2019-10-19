@@ -18,16 +18,22 @@ module GIRepository
       info
     end
 
+    def ==(other)
+      return false unless other.is_a?(BaseInfo)
+      LibGIRepository.base_info_equal(self, other)
+    end
+
     def info_type
       LibGIRepository.base_info_get_type self
     end
 
     def name
-      String.new LibGIRepository.base_info_get_name(self)
+      ptr = LibGIRepository.base_info_get_name(self)
+      String.new(ptr) if ptr
     end
 
     def constant
-      name.constant
+      name.try &.constant
     end
 
     def full_constant
@@ -65,16 +71,18 @@ module GIRepository
     def prefix
       container = container?
       return "" unless container
-      prefix = container.name
+      name = container.name
+      return "" unless name
+      prefix = name
         .gsub(/[A-Z][a-z]*(?=[A-Z])/) { |m| "#{m.downcase}_" }
         .downcase
       "#{prefix}_"
     end
 
     def attributes
-      uninitalized iter : LibGIRepository::AttributeIter
+      iter = GIRepository::AttributeIter.new
       attributes = Hash(String, String).new
-      while LibGIRepository.base_info_iterate_attributes(self, pointerof(iter), out name, out value)
+      while LibGIRepository.base_info_iterate_attributes(self, iter, out name, out value)
         attributes[String.new(name)] = String.new(value)
       end
 
@@ -92,8 +100,29 @@ module GIRepository
     def wrapper_definition(libname, indent = "")
     end
 
+    def dump(io : IO)
+      Dumper.new(io).dump(self)
+    end
+
+    def dump(dumper : Dumper)
+      dumper.dump(self)
+    end
+
+    def dump(dumper, & : BaseInfo ->)
+      dump_base(dumper)
+      attributes.each do |name, value|
+        dumper.puts "- #{name} = #{value}"
+      end
+    end
+
+    def dump_base(dumper)
+      dumper.io.print "#{dumper.base_indent}+ "
+      to_s(dumper.io)
+      dumper.io.puts
+    end
+
     def to_s(io)
-      io << name << '(' << LibGIRepository.info_type_to_string(info_type) << ')'
+      io << (name || "<no name>") << " (" << String.new(LibGIRepository.info_type_to_string(info_type)) << ')'
     end
 
     def to_unsafe

@@ -3,7 +3,8 @@ require "./base_info"
 module GIRepository
   class PropertyInfo < BaseInfo
     def name
-      super.tr("-", "_")
+      name = super
+      name.tr("-", "_") if name
     end
 
     def type
@@ -47,6 +48,11 @@ module GIRepository
           io.puts
         end
       end
+    end
+
+    Dumper.def do
+      dumper.puts "* flags = #{flags}"
+      Dumper.dump_child type
     end
   end
 end

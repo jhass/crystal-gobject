@@ -7,9 +7,16 @@ module GIRepository
     end
 
     def lib_definition
-      name = self.name.upcase
+      name = self.name
+      return unless name
+
+      name = name.upcase
       name = "# #{name}"unless 'A' <= name[0] <= 'Z'
       "  #{name} = #{value}"
+    end
+
+    Dumper.def do
+      dumper.puts "* value = #{value}"
     end
   end
 end

@@ -70,5 +70,10 @@ module GIRepository
         io.puts "#{indent}#{name} = #{libname}::#{name}"
       end
     end
+
+    Dumper.def do
+      Dumper.dump_child type
+      dumper.puts "* value = #{literal}"
+    end
   end
 end
