@@ -29,5 +29,11 @@ module GIRepository
     def info(namespace, index)
       BaseInfo.wrap previous_def
     end
+
+    def shared_library(namespace)
+      # Missing may return null annotation in typelib, so we have to redefine it here
+      libs = LibGIRepository.repository_get_shared_library(@pointer.as(LibGIRepository::Repository*), namespace)
+      String.new(libs) if libs
+    end
   end
 end

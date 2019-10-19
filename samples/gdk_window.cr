@@ -1,4 +1,4 @@
-require "../src/gdk"
+require "gobject/gdk"
 
 Gdk.init
 

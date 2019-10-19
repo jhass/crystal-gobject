@@ -9,6 +9,10 @@ class Namespace
     GIRepository::Repository.instance.require @namespace
   end
 
+  def dependencies
+    GIRepository::Repository.instance.dependencies @namespace
+  end
+
   def lib_definition
     String.build do |io|
       lib_definition io
@@ -48,25 +52,27 @@ class Namespace
     GIRepository::Repository.instance.dependencies(@namespace).each do |dependency|
       namespace, version = dependency
       path = File.join(directory, "#{Namespace.new(namespace).lib_filename}.cr")
-      File.write path, "# Dummy" unless File.exists? path
+      #File.write path, "# Dummy" unless File.exists? path
     end
 
     File.open(File.join(directory, lib_filepath), "w") do |file|
-      lib_definition file
+      lib_definition file, false
     end
   end
 
-  private def lib_definition(io)
+  def lib_definition(io, inline=true)
     requires = false
-    GIRepository::Repository.instance.dependencies(@namespace).each do |dependency|
-      namespace, version = dependency
-      io.puts %(require "./#{Namespace.new(namespace).lib_filename}")
-      requires = true
+    unless inline
+      GIRepository::Repository.instance.dependencies(@namespace).each do |dependency|
+        namespace, version = dependency
+        io.puts %(require "./#{Namespace.new(namespace).lib_filename}")
+        requires = true
+      end
     end
 
     io.puts if requires
 
-    libraries = GIRepository::Repository.instance.shared_library(@namespace).split(',')
+    libraries = GIRepository::Repository.instance.shared_library(@namespace).try(&.split(',')) || Array(String).new
     libraries.map! {|library| library[/lib([^\/]+)\.(?:so|.+?\.dylib).*/, 1] }
 
     libraries.each do |library|
@@ -109,6 +115,16 @@ class Namespace
     io.puts
   end
 
+  def wrapper_definitions(io)
+    wrapper_definition(io) do
+      io.puts module_functions_definition
+      io.puts
+      each_info_definition do |info, definition|
+        io.puts definition
+      end
+    end
+  end
+
   def write_wrappers(directory)
     prefix = File.join(directory, GIRepository.filename(@namespace))
     Dir.mkdir_p prefix
@@ -130,28 +146,69 @@ class Namespace
       io.puts %(require "./*")
     end
 
-    GIRepository::Repository.instance.all_infos(@namespace).each do |info|
-      next if skip_info? info
-      next if info.is_a? GIRepository::FunctionInfo
-      next if info.is_a? GIRepository::ConstantInfo
+    each_info_definition do |info, definition|
+      wrapper_path = File.join(directory, GIRepository.filename(@namespace), "#{GIRepository.filename(info.name)}.cr")
+      write_wrapper wrapper_path, info, &.puts(definition)
+    end
 
+    write_wrapper File.join(prefix, "module_functions.cr"), &.puts module_functions_definition
+  end
+
+  private def each_info_definition
+    infos = GIRepository::Repository.instance.all_infos(@namespace).select {|info|
+      next false if skip_info? info
+      next false if info.is_a? GIRepository::FunctionInfo
+      next false if info.is_a? GIRepository::ConstantInfo
+      true
+    }
+
+    sort_childs_before_parents(infos)
+
+    infos.each do |info|
       definition = info.wrapper_definition libname, "  "
       next unless definition && !definition.empty?
 
-      wrapper_path = File.join(directory, GIRepository.filename(@namespace), "#{GIRepository.filename(info.name)}.cr")
-      write_wrapper wrapper_path, definition, info
+      yield info, definition
     end
+  end
 
-    functions = GIRepository::Repository.instance.all_infos(@namespace).select {|info|
+  private def sort_childs_before_parents(infos)
+    names = infos.map {|info| info.full_constant if info.is_a? GIRepository::ObjectInfo }
+    parent_names = infos.map {|info|
+      parent = info.parent if info.is_a? GIRepository::ObjectInfo
+      parent.full_constant if parent
+    }
+
+    child_index = 0
+    while child_index < names.size
+      index = nil
+      parent_name = parent_names[child_index] # child has parent?
+      index = names.index(parent_name) if parent_name # where's child's parent?
+      if index && index > child_index # parent comes after child, swap them
+        swap(infos, child_index, index)
+        swap(names, child_index, index)
+        swap(parent_names, child_index, index)
+      else
+        child_index += 1 # next one
+      end
+    end
+  end
+
+  private def swap(items, a, b)
+    tmp = items[a]
+    items[a] = items[b]
+    items[b] = tmp
+  end
+
+  private def module_functions_definition
+    GIRepository::Repository.instance.all_infos(@namespace).select {|info|
       next false if skip_info?(info)
       next true if info.is_a? GIRepository::ConstantInfo
       info.is_a?(GIRepository::FunctionInfo) ? !info.method? : false
     }.map(&.wrapper_definition(libname, "  ")).join("\n")
-
-    write_wrapper File.join(prefix, "module_functions.cr"), functions
   end
 
-  private def write_wrapper(path, content, info=nil)
+  private def write_wrapper(path, info=nil)
     File.open(path, "w") do |io|
 
       # Not really the right place for this code
@@ -163,11 +220,15 @@ class Namespace
           end
       end
 
-      io.puts "module #{@namespace.constant}"
-      io.puts content
-      io.puts "end"
-      io.puts
+      wrapper_definition(io) {|io| yield io }
     end
+  end
+
+  private def wrapper_definition(io)
+    io.puts "module #{@namespace.constant}"
+    yield io
+    io.puts "end"
+    io.puts
   end
 
   private def skip_info?(info)

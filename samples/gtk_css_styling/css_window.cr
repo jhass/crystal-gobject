@@ -1,4 +1,4 @@
-require "../../src/gtk/autorun"
+require "gobject/gtk/autorun"
 
 class CSSApp
   @window : Gtk::Window

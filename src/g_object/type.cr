@@ -1,4 +1,3 @@
-
 module GObject
   enum Type
     INVALID   =  0

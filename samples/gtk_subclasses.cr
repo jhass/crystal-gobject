@@ -1,4 +1,4 @@
-require "../src/gtk"
+require "gobject/gtk"
 
 class MyWindow < Gtk::ApplicationWindow
   def self.new(app : Gtk::Application)

@@ -1,4 +1,6 @@
-require "../generated/gdk"
+require "../gobject"
+require_gobject "Gdk"
+
 require "./event"
 
 module Gdk

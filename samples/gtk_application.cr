@@ -1,4 +1,4 @@
-require "../src/gtk"
+require "gobject/gtk"
 
 application = Gtk::Application.new("org.crystal.sample", :flags_none)
 

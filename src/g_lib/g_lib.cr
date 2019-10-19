@@ -1,4 +1,6 @@
-require "../generated/g_lib"
+require "../gobject"
+require_gobject "GLib"
+
 require "./*"
 require "../helper"
 

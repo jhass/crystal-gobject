@@ -1,5 +1,5 @@
-require "../src/gtk"
-require "../src/gio"
+require "gobject/gtk"
+require "gobject/gio"
 
 class MyApplication < Gtk::Application
   include Gio::ActionMap

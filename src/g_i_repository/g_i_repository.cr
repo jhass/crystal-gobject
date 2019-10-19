@@ -1,4 +1,13 @@
-require "../generated/g_i_repository"
+# Avoid running require_gobject macro inside itself causing a loop
+# Instead require the minimum of dependencies manually
+require "../g_object/wrapped_type"
+require "../g_object/object"
+require "../g_lib/error"
+require "../generated/lib_g_i_repository"
+require "../generated/g_i_repository/repository_load_flags"
+require "../generated/g_i_repository/typelib"
+require "../generated/g_i_repository/repository"
+require "../generated/g_i_repository/base_info"
 
 # Patch up functions that are not generated for a weird reason
 lib LibGIRepository

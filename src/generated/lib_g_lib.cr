@@ -23,8 +23,8 @@ lib LibGLib
   GINT16_MODIFIER = "h" # : UInt8*
   GINT32_FORMAT = "i" # : UInt8*
   GINT32_MODIFIER = "" # : UInt8*
-  GINT64_FORMAT = "lli" # : UInt8*
-  GINT64_MODIFIER = "ll" # : UInt8*
+  GINT64_FORMAT = "li" # : UInt8*
+  GINT64_MODIFIER = "l" # : UInt8*
   GINTPTR_FORMAT = "li" # : UInt8*
   GINTPTR_MODIFIER = "l" # : UInt8*
   GNUC_FUNCTION = "" # : UInt8*
@@ -35,10 +35,11 @@ lib LibGLib
   GSSIZE_MODIFIER = "l" # : UInt8*
   GUINT16_FORMAT = "hu" # : UInt8*
   GUINT32_FORMAT = "u" # : UInt8*
-  GUINT64_FORMAT = "llu" # : UInt8*
+  GUINT64_FORMAT = "lu" # : UInt8*
   GUINTPTR_FORMAT = "lu" # : UInt8*
   HAVE_GINT64 = 1 # : Int32
   HAVE_GNUC_VARARGS = 1 # : Int32
+  HAVE_GNUC_VISIBILITY = 1 # : Int32
   HAVE_GROWING_STACK = 0 # : Int32
   HAVE_ISO_VARARGS = 1 # : Int32
   HOOK_FLAG_USER_SHIFT = 4 # : Int32
@@ -115,7 +116,7 @@ lib LibGLib
   SQRT2 = 1.414214 # : Float64
   STR_DELIMITERS = "_-|> <." # : UInt8*
   SYSDEF_AF_INET = 2 # : Int32
-  SYSDEF_AF_INET6 = 30 # : Int32
+  SYSDEF_AF_INET6 = 10 # : Int32
   SYSDEF_AF_UNIX = 1 # : Int32
   SYSDEF_MSG_DONTROUTE = 4 # : Int32
   SYSDEF_MSG_OOB = 1 # : Int32

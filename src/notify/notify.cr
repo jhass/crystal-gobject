@@ -1,2 +1,4 @@
-require "../generated/notify"
+require "../gobject"
+require_gobject "Notify"
+
 require "./*"
