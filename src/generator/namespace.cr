@@ -82,7 +82,7 @@ class Namespace
     io.puts "lib #{libname}"
 
     GIRepository::Repository.instance.all_infos(@namespace).group_by(&.info_type).each do |type, infos|
-      next if type == LibGIRepository::InfoType::CALLBACK
+      next if type == GIRepository::InfoType::CALLBACK
       heading = type.to_s.capitalize
       heading += 's' unless heading.ends_with? 's'
       io.puts
@@ -97,7 +97,7 @@ class Namespace
     end
 
     GIRepository::Repository.instance.all_infos(@namespace).group_by(&.info_type).each do |type, infos|
-      next unless type == LibGIRepository::InfoType::CALLBACK
+      next unless type == GIRepository::InfoType::CALLBACK
       heading = type.to_s.capitalize
       heading += 's' unless heading.ends_with? 's'
       io.puts
@@ -125,10 +125,22 @@ class Namespace
     end
   end
 
-  def write_wrappers(directory)
+  def write_wrapper(directory, name)
     prefix = File.join(directory, GIRepository.filename(@namespace))
     Dir.mkdir_p prefix
 
+    info = GIRepository::Repository.instance.find_by_name(@namespace, name)
+    if info
+      wrapper_path = File.join(directory, GIRepository.filename(@namespace), "#{GIRepository.filename(info.name)}.cr")
+      write_wrapper wrapper_path, info, &.puts(info.wrapper_definition(libname, "  "))
+    else
+      STDERR.puts "Warning: Couldn't find #{@namespace}/#{name}"
+    end
+  end
+
+  def write_wrappers(directory)
+    prefix = File.join(directory, GIRepository.filename(@namespace))
+    Dir.mkdir_p prefix
 
     wrapper_path = File.join(prefix, "#{GIRepository.filename(@namespace)}.cr")
     File.open(wrapper_path, "w") do |io|

@@ -1,16 +1,14 @@
 module GIRepository
   class BaseInfo
-    INFO_TYPES = Hash(LibGIRepository::InfoType, BaseInfo.class).new
+    INFO_TYPES = Hash(InfoType, BaseInfo.class).new
 
     macro inherited
-      INFO_TYPES[LibGIRepository::InfoType::{{@type.name[14..-5].upcase.id}}] = {{@type}}
+      INFO_TYPES[InfoType::{{@type.name[14..-5].upcase.id}}] = {{@type}}
     end
 
     def self.wrap(info)
-      # info = new ptr
       upper = INFO_TYPES[info.info_type]?
       if upper
-        LibGIRepository.base_info_ref(info)
         LibGIRepository.base_info_ref(info)
         info = upper.new info.to_unsafe
       end
@@ -18,13 +16,18 @@ module GIRepository
       info
     end
 
+    def initialize(pointer : LibGIRepository::BaseInfo*)
+      @pointer = pointer.as(Void*)
+      LibGIRepository.base_info_ref(pointer)
+    end
+
     def ==(other)
       return false unless other.is_a?(BaseInfo)
-      LibGIRepository.base_info_equal(self, other)
+      equal(other)
     end
 
     def info_type
-      LibGIRepository.base_info_get_type self
+      InfoType.new LibGIRepository.base_info_get_type self
     end
 
     def name
@@ -41,7 +44,7 @@ module GIRepository
     end
 
     def namespace
-      namespace = String.new LibGIRepository.base_info_get_namespace(self)
+      namespace = previous_def
       "#{namespace[0].upcase}#{namespace[1..-1]}"
     end
 
@@ -80,8 +83,9 @@ module GIRepository
     end
 
     def attributes
-      iter = GIRepository::AttributeIter.new
       attributes = Hash(String, String).new
+      return attributes if info_type.unresolved?
+      iter = GIRepository::AttributeIter.new
       while LibGIRepository.base_info_iterate_attributes(self, iter, out name, out value)
         attributes[String.new(name)] = String.new(value)
       end
@@ -122,7 +126,7 @@ module GIRepository
     end
 
     def to_s(io)
-      io << (name || "<no name>") << " (" << String.new(LibGIRepository.info_type_to_string(info_type)) << ')'
+      io << (name || "<no name>") << " (" << GIRepository.info_type_to_string(info_type) << ')'
     end
 
     def to_unsafe

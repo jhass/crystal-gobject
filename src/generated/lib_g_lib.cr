@@ -1380,912 +1380,118 @@ lib LibGLib
   ##    Flags
   ###########################################
 
-  @[Flags]
-  enum AsciiType : UInt32
-    ZERO_NONE = 0
-    ALNUM = 1
-    ALPHA = 2
-    CNTRL = 4
-    DIGIT = 8
-    GRAPH = 16
-    LOWER = 32
-    PRINT = 64
-    PUNCT = 128
-    SPACE = 256
-    UPPER = 512
-    XDIGIT = 1024
-  end
+  alias AsciiType = UInt32
 
-  @[Flags]
-  enum FileTest : UInt32
-    ZERO_NONE = 0
-    IS_REGULAR = 1
-    IS_SYMLINK = 2
-    IS_DIR = 4
-    IS_EXECUTABLE = 8
-    EXISTS = 16
-  end
+  alias FileTest = UInt32
 
-  @[Flags]
-  enum FormatSizeFlags : UInt32
-    ZERO_NONE = 0
-    DEFAULT = 0
-    LONG_FORMAT = 1
-    IEC_UNITS = 2
-    BITS = 4
-  end
+  alias FormatSizeFlags = UInt32
 
-  @[Flags]
-  enum HookFlagMask : UInt32
-    ZERO_NONE = 0
-    ACTIVE = 1
-    IN_CALL = 2
-    MASK = 15
-  end
+  alias HookFlagMask = UInt32
 
-  @[Flags]
-  enum IOCondition : UInt32
-    ZERO_NONE = 0
-    IN = 1
-    OUT = 4
-    PRI = 2
-    ERR = 8
-    HUP = 16
-    NVAL = 32
-  end
+  alias IOCondition = UInt32
 
-  @[Flags]
-  enum IOFlags : UInt32
-    ZERO_NONE = 0
-    APPEND = 1
-    NONBLOCK = 2
-    IS_READABLE = 4
-    IS_WRITABLE = 8
-    IS_WRITEABLE = 8
-    IS_SEEKABLE = 16
-    MASK = 31
-    GET_MASK = 31
-    SET_MASK = 3
-  end
+  alias IOFlags = UInt32
 
-  @[Flags]
-  enum KeyFileFlags : UInt32
-    ZERO_NONE = 0
-    NONE = 0
-    KEEP_COMMENTS = 1
-    KEEP_TRANSLATIONS = 2
-  end
+  alias KeyFileFlags = UInt32
 
-  @[Flags]
-  enum LogLevelFlags : Int32
-    ZERO_NONE = 0
-    FLAG_RECURSION = 1
-    FLAG_FATAL = 2
-    LEVEL_ERROR = 4
-    LEVEL_CRITICAL = 8
-    LEVEL_WARNING = 16
-    LEVEL_MESSAGE = 32
-    LEVEL_INFO = 64
-    LEVEL_DEBUG = 128
-    LEVEL_MASK = -4
-  end
+  alias LogLevelFlags = Int32
 
-  @[Flags]
-  enum MarkupCollectType : UInt32
-    ZERO_NONE = 0
-    INVALID = 0
-    STRING = 1
-    STRDUP = 2
-    BOOLEAN = 3
-    TRISTATE = 4
-    OPTIONAL = 65536
-  end
+  alias MarkupCollectType = UInt32
 
-  @[Flags]
-  enum MarkupParseFlags : UInt32
-    ZERO_NONE = 0
-    DO_NOT_USE_THIS_UNSUPPORTED_FLAG = 1
-    TREAT_CDATA_AS_TEXT = 2
-    PREFIX_ERROR_POSITION = 4
-    IGNORE_QUALIFIED = 8
-  end
+  alias MarkupParseFlags = UInt32
 
-  @[Flags]
-  enum OptionFlags : UInt32
-    ZERO_NONE = 0
-    NONE = 0
-    HIDDEN = 1
-    IN_MAIN = 2
-    REVERSE = 4
-    NO_ARG = 8
-    FILENAME = 16
-    OPTIONAL_ARG = 32
-    NOALIAS = 64
-  end
+  alias OptionFlags = UInt32
 
-  @[Flags]
-  enum RegexCompileFlags : UInt32
-    ZERO_NONE = 0
-    CASELESS = 1
-    MULTILINE = 2
-    DOTALL = 4
-    EXTENDED = 8
-    ANCHORED = 16
-    DOLLAR_ENDONLY = 32
-    UNGREEDY = 512
-    RAW = 2048
-    NO_AUTO_CAPTURE = 4096
-    OPTIMIZE = 8192
-    FIRSTLINE = 262144
-    DUPNAMES = 524288
-    NEWLINE_CR = 1048576
-    NEWLINE_LF = 2097152
-    NEWLINE_CRLF = 3145728
-    NEWLINE_ANYCRLF = 5242880
-    BSR_ANYCRLF = 8388608
-    JAVASCRIPT_COMPAT = 33554432
-  end
+  alias RegexCompileFlags = UInt32
 
-  @[Flags]
-  enum RegexMatchFlags : UInt32
-    ZERO_NONE = 0
-    ANCHORED = 16
-    NOTBOL = 128
-    NOTEOL = 256
-    NOTEMPTY = 1024
-    PARTIAL = 32768
-    NEWLINE_CR = 1048576
-    NEWLINE_LF = 2097152
-    NEWLINE_CRLF = 3145728
-    NEWLINE_ANY = 4194304
-    NEWLINE_ANYCRLF = 5242880
-    BSR_ANYCRLF = 8388608
-    BSR_ANY = 16777216
-    PARTIAL_SOFT = 32768
-    PARTIAL_HARD = 134217728
-    NOTEMPTY_ATSTART = 268435456
-  end
+  alias RegexMatchFlags = UInt32
 
-  @[Flags]
-  enum SpawnFlags : UInt32
-    ZERO_NONE = 0
-    DEFAULT = 0
-    LEAVE_DESCRIPTORS_OPEN = 1
-    DO_NOT_REAP_CHILD = 2
-    SEARCH_PATH = 4
-    STDOUT_TO_DEV_NULL = 8
-    STDERR_TO_DEV_NULL = 16
-    CHILD_INHERITS_STDIN = 32
-    FILE_AND_ARGV_ZERO = 64
-    SEARCH_PATH_FROM_ENVP = 128
-    CLOEXEC_PIPES = 256
-  end
+  alias SpawnFlags = UInt32
 
-  @[Flags]
-  enum TestSubprocessFlags : UInt32
-    ZERO_NONE = 0
-    STDIN = 1
-    STDOUT = 2
-    STDERR = 4
-  end
+  alias TestSubprocessFlags = UInt32
 
-  @[Flags]
-  enum TestTrapFlags : UInt32
-    ZERO_NONE = 0
-    SILENCE_STDOUT = 128
-    SILENCE_STDERR = 256
-    INHERIT_STDIN = 512
-  end
+  alias TestTrapFlags = UInt32
 
-  @[Flags]
-  enum TraverseFlags : UInt32
-    ZERO_NONE = 0
-    LEAVES = 1
-    NON_LEAVES = 2
-    ALL = 3
-    MASK = 3
-    LEAFS = 1
-    NON_LEAFS = 2
-  end
+  alias TraverseFlags = UInt32
 
 
   ###########################################
   ##    Enums
   ###########################################
 
-  enum BookmarkFileError : UInt32
-    ZERO_NONE = 0
-    INVALID_URI = 0
-    INVALID_VALUE = 1
-    APP_NOT_REGISTERED = 2
-    URI_NOT_FOUND = 3
-    READ = 4
-    UNKNOWN_ENCODING = 5
-    WRITE = 6
-    FILE_NOT_FOUND = 7
-  end
+  alias BookmarkFileError = UInt32
 
-  enum ChecksumType : UInt32
-    ZERO_NONE = 0
-    MD5 = 0
-    SHA1 = 1
-    SHA256 = 2
-    SHA512 = 3
-    SHA384 = 4
-  end
+  alias ChecksumType = UInt32
 
-  enum ConvertError : UInt32
-    ZERO_NONE = 0
-    NO_CONVERSION = 0
-    ILLEGAL_SEQUENCE = 1
-    FAILED = 2
-    PARTIAL_INPUT = 3
-    BAD_URI = 4
-    NOT_ABSOLUTE_PATH = 5
-    NO_MEMORY = 6
-    EMBEDDED_NUL = 7
-  end
+  alias ConvertError = UInt32
 
-  enum DateDMY : UInt32
-    ZERO_NONE = 0
-    DAY = 0
-    MONTH = 1
-    YEAR = 2
-  end
+  alias DateDMY = UInt32
 
-  enum DateMonth : UInt32
-    ZERO_NONE = 0
-    BAD_MONTH = 0
-    JANUARY = 1
-    FEBRUARY = 2
-    MARCH = 3
-    APRIL = 4
-    MAY = 5
-    JUNE = 6
-    JULY = 7
-    AUGUST = 8
-    SEPTEMBER = 9
-    OCTOBER = 10
-    NOVEMBER = 11
-    DECEMBER = 12
-  end
+  alias DateMonth = UInt32
 
-  enum DateWeekday : UInt32
-    ZERO_NONE = 0
-    BAD_WEEKDAY = 0
-    MONDAY = 1
-    TUESDAY = 2
-    WEDNESDAY = 3
-    THURSDAY = 4
-    FRIDAY = 5
-    SATURDAY = 6
-    SUNDAY = 7
-  end
+  alias DateWeekday = UInt32
 
-  enum ErrorType : UInt32
-    ZERO_NONE = 0
-    UNKNOWN = 0
-    UNEXP_EOF = 1
-    UNEXP_EOF_IN_STRING = 2
-    UNEXP_EOF_IN_COMMENT = 3
-    NON_DIGIT_IN_CONST = 4
-    DIGIT_RADIX = 5
-    FLOAT_RADIX = 6
-    FLOAT_MALFORMED = 7
-  end
+  alias ErrorType = UInt32
 
-  enum FileError : UInt32
-    ZERO_NONE = 0
-    EXIST = 0
-    ISDIR = 1
-    ACCES = 2
-    NAMETOOLONG = 3
-    NOENT = 4
-    NOTDIR = 5
-    NXIO = 6
-    NODEV = 7
-    ROFS = 8
-    TXTBSY = 9
-    FAULT = 10
-    LOOP = 11
-    NOSPC = 12
-    NOMEM = 13
-    MFILE = 14
-    NFILE = 15
-    BADF = 16
-    INVAL = 17
-    PIPE = 18
-    AGAIN = 19
-    INTR = 20
-    IO = 21
-    PERM = 22
-    NOSYS = 23
-    FAILED = 24
-  end
+  alias FileError = UInt32
 
-  enum IOChannelError : UInt32
-    ZERO_NONE = 0
-    FBIG = 0
-    INVAL = 1
-    IO = 2
-    ISDIR = 3
-    NOSPC = 4
-    NXIO = 5
-    OVERFLOW = 6
-    PIPE = 7
-    FAILED = 8
-  end
+  alias IOChannelError = UInt32
 
-  enum IOError : UInt32
-    ZERO_NONE = 0
-    NONE = 0
-    AGAIN = 1
-    INVAL = 2
-    UNKNOWN = 3
-  end
+  alias IOError = UInt32
 
-  enum IOStatus : UInt32
-    ZERO_NONE = 0
-    ERROR = 0
-    NORMAL = 1
-    EOF = 2
-    AGAIN = 3
-  end
+  alias IOStatus = UInt32
 
-  enum KeyFileError : UInt32
-    ZERO_NONE = 0
-    UNKNOWN_ENCODING = 0
-    PARSE = 1
-    NOT_FOUND = 2
-    KEY_NOT_FOUND = 3
-    GROUP_NOT_FOUND = 4
-    INVALID_VALUE = 5
-  end
+  alias KeyFileError = UInt32
 
-  enum LogWriterOutput : UInt32
-    ZERO_NONE = 0
-    HANDLED = 1
-    UNHANDLED = 0
-  end
+  alias LogWriterOutput = UInt32
 
-  enum MarkupError : UInt32
-    ZERO_NONE = 0
-    BAD_UTF8 = 0
-    EMPTY = 1
-    PARSE = 2
-    UNKNOWN_ELEMENT = 3
-    UNKNOWN_ATTRIBUTE = 4
-    INVALID_CONTENT = 5
-    MISSING_ATTRIBUTE = 6
-  end
+  alias MarkupError = UInt32
 
-  enum NormalizeMode : UInt32
-    ZERO_NONE = 0
-    DEFAULT = 0
-    NFD = 0
-    DEFAULT_COMPOSE = 1
-    NFC = 1
-    ALL = 2
-    NFKD = 2
-    ALL_COMPOSE = 3
-    NFKC = 3
-  end
+  alias NormalizeMode = UInt32
 
-  enum NumberParserError : UInt32
-    ZERO_NONE = 0
-    INVALID = 0
-    OUT_OF_BOUNDS = 1
-  end
+  alias NumberParserError = UInt32
 
-  enum OnceStatus : UInt32
-    ZERO_NONE = 0
-    NOTCALLED = 0
-    PROGRESS = 1
-    READY = 2
-  end
+  alias OnceStatus = UInt32
 
-  enum OptionArg : UInt32
-    ZERO_NONE = 0
-    NONE = 0
-    STRING = 1
-    INT = 2
-    CALLBACK = 3
-    FILENAME = 4
-    STRING_ARRAY = 5
-    FILENAME_ARRAY = 6
-    DOUBLE = 7
-    INT64 = 8
-  end
+  alias OptionArg = UInt32
 
-  enum OptionError : UInt32
-    ZERO_NONE = 0
-    UNKNOWN_OPTION = 0
-    BAD_VALUE = 1
-    FAILED = 2
-  end
+  alias OptionError = UInt32
 
-  enum RegexError : UInt32
-    ZERO_NONE = 0
-    COMPILE = 0
-    OPTIMIZE = 1
-    REPLACE = 2
-    MATCH = 3
-    INTERNAL = 4
-    STRAY_BACKSLASH = 101
-    MISSING_CONTROL_CHAR = 102
-    UNRECOGNIZED_ESCAPE = 103
-    QUANTIFIERS_OUT_OF_ORDER = 104
-    QUANTIFIER_TOO_BIG = 105
-    UNTERMINATED_CHARACTER_CLASS = 106
-    INVALID_ESCAPE_IN_CHARACTER_CLASS = 107
-    RANGE_OUT_OF_ORDER = 108
-    NOTHING_TO_REPEAT = 109
-    UNRECOGNIZED_CHARACTER = 112
-    POSIX_NAMED_CLASS_OUTSIDE_CLASS = 113
-    UNMATCHED_PARENTHESIS = 114
-    INEXISTENT_SUBPATTERN_REFERENCE = 115
-    UNTERMINATED_COMMENT = 118
-    EXPRESSION_TOO_LARGE = 120
-    MEMORY_ERROR = 121
-    VARIABLE_LENGTH_LOOKBEHIND = 125
-    MALFORMED_CONDITION = 126
-    TOO_MANY_CONDITIONAL_BRANCHES = 127
-    ASSERTION_EXPECTED = 128
-    UNKNOWN_POSIX_CLASS_NAME = 130
-    POSIX_COLLATING_ELEMENTS_NOT_SUPPORTED = 131
-    HEX_CODE_TOO_LARGE = 134
-    INVALID_CONDITION = 135
-    SINGLE_BYTE_MATCH_IN_LOOKBEHIND = 136
-    INFINITE_LOOP = 140
-    MISSING_SUBPATTERN_NAME_TERMINATOR = 142
-    DUPLICATE_SUBPATTERN_NAME = 143
-    MALFORMED_PROPERTY = 146
-    UNKNOWN_PROPERTY = 147
-    SUBPATTERN_NAME_TOO_LONG = 148
-    TOO_MANY_SUBPATTERNS = 149
-    INVALID_OCTAL_VALUE = 151
-    TOO_MANY_BRANCHES_IN_DEFINE = 154
-    DEFINE_REPETION = 155
-    INCONSISTENT_NEWLINE_OPTIONS = 156
-    MISSING_BACK_REFERENCE = 157
-    INVALID_RELATIVE_REFERENCE = 158
-    BACKTRACKING_CONTROL_VERB_ARGUMENT_FORBIDDEN = 159
-    UNKNOWN_BACKTRACKING_CONTROL_VERB = 160
-    NUMBER_TOO_BIG = 161
-    MISSING_SUBPATTERN_NAME = 162
-    MISSING_DIGIT = 163
-    INVALID_DATA_CHARACTER = 164
-    EXTRA_SUBPATTERN_NAME = 165
-    BACKTRACKING_CONTROL_VERB_ARGUMENT_REQUIRED = 166
-    INVALID_CONTROL_CHAR = 168
-    MISSING_NAME = 169
-    NOT_SUPPORTED_IN_CLASS = 171
-    TOO_MANY_FORWARD_REFERENCES = 172
-    NAME_TOO_LONG = 175
-    CHARACTER_VALUE_TOO_LARGE = 176
-  end
+  alias RegexError = UInt32
 
-  enum SeekType : UInt32
-    ZERO_NONE = 0
-    CUR = 0
-    SET = 1
-    END = 2
-  end
+  alias SeekType = UInt32
 
-  enum ShellError : UInt32
-    ZERO_NONE = 0
-    BAD_QUOTING = 0
-    EMPTY_STRING = 1
-    FAILED = 2
-  end
+  alias ShellError = UInt32
 
-  enum SliceConfig : UInt32
-    ZERO_NONE = 0
-    ALWAYS_MALLOC = 1
-    BYPASS_MAGAZINES = 2
-    WORKING_SET_MSECS = 3
-    COLOR_INCREMENT = 4
-    CHUNK_SIZES = 5
-    CONTENTION_COUNTER = 6
-  end
+  alias SliceConfig = UInt32
 
-  enum SpawnError : UInt32
-    ZERO_NONE = 0
-    FORK = 0
-    READ = 1
-    CHDIR = 2
-    ACCES = 3
-    PERM = 4
-    TOO_BIG = 5
-    # 2BIG = 5
-    NOEXEC = 6
-    NAMETOOLONG = 7
-    NOENT = 8
-    NOMEM = 9
-    NOTDIR = 10
-    LOOP = 11
-    TXTBUSY = 12
-    IO = 13
-    NFILE = 14
-    MFILE = 15
-    INVAL = 16
-    ISDIR = 17
-    LIBBAD = 18
-    FAILED = 19
-  end
+  alias SpawnError = UInt32
 
-  enum TestFileType : UInt32
-    ZERO_NONE = 0
-    DIST = 0
-    BUILT = 1
-  end
+  alias TestFileType = UInt32
 
-  enum TestLogType : UInt32
-    ZERO_NONE = 0
-    NONE = 0
-    ERROR = 1
-    START_BINARY = 2
-    LIST_CASE = 3
-    SKIP_CASE = 4
-    START_CASE = 5
-    STOP_CASE = 6
-    MIN_RESULT = 7
-    MAX_RESULT = 8
-    MESSAGE = 9
-    START_SUITE = 10
-    STOP_SUITE = 11
-  end
+  alias TestLogType = UInt32
 
-  enum TestResult : UInt32
-    ZERO_NONE = 0
-    SUCCESS = 0
-    SKIPPED = 1
-    FAILURE = 2
-    INCOMPLETE = 3
-  end
+  alias TestResult = UInt32
 
-  enum ThreadError : UInt32
-    ZERO_NONE = 0
-    THREAD_ERROR_AGAIN = 0
-  end
+  alias ThreadError = UInt32
 
-  enum TimeType : UInt32
-    ZERO_NONE = 0
-    STANDARD = 0
-    DAYLIGHT = 1
-    UNIVERSAL = 2
-  end
+  alias TimeType = UInt32
 
-  enum TokenType : UInt32
-    ZERO_NONE = 0
-    EOF = 0
-    LEFT_PAREN = 40
-    RIGHT_PAREN = 41
-    LEFT_CURLY = 123
-    RIGHT_CURLY = 125
-    LEFT_BRACE = 91
-    RIGHT_BRACE = 93
-    EQUAL_SIGN = 61
-    COMMA = 44
-    NONE = 256
-    ERROR = 257
-    CHAR = 258
-    BINARY = 259
-    OCTAL = 260
-    INT = 261
-    HEX = 262
-    FLOAT = 263
-    STRING = 264
-    SYMBOL = 265
-    IDENTIFIER = 266
-    IDENTIFIER_NULL = 267
-    COMMENT_SINGLE = 268
-    COMMENT_MULTI = 269
-  end
+  alias TokenType = UInt32
 
-  enum TraverseType : UInt32
-    ZERO_NONE = 0
-    IN_ORDER = 0
-    PRE_ORDER = 1
-    POST_ORDER = 2
-    LEVEL_ORDER = 3
-  end
+  alias TraverseType = UInt32
 
-  enum UnicodeBreakType : UInt32
-    ZERO_NONE = 0
-    MANDATORY = 0
-    CARRIAGE_RETURN = 1
-    LINE_FEED = 2
-    COMBINING_MARK = 3
-    SURROGATE = 4
-    ZERO_WIDTH_SPACE = 5
-    INSEPARABLE = 6
-    NON_BREAKING_GLUE = 7
-    CONTINGENT = 8
-    SPACE = 9
-    AFTER = 10
-    BEFORE = 11
-    BEFORE_AND_AFTER = 12
-    HYPHEN = 13
-    NON_STARTER = 14
-    OPEN_PUNCTUATION = 15
-    CLOSE_PUNCTUATION = 16
-    QUOTATION = 17
-    EXCLAMATION = 18
-    IDEOGRAPHIC = 19
-    NUMERIC = 20
-    INFIX_SEPARATOR = 21
-    SYMBOL = 22
-    ALPHABETIC = 23
-    PREFIX = 24
-    POSTFIX = 25
-    COMPLEX_CONTEXT = 26
-    AMBIGUOUS = 27
-    UNKNOWN = 28
-    NEXT_LINE = 29
-    WORD_JOINER = 30
-    HANGUL_L_JAMO = 31
-    HANGUL_V_JAMO = 32
-    HANGUL_T_JAMO = 33
-    HANGUL_LV_SYLLABLE = 34
-    HANGUL_LVT_SYLLABLE = 35
-    CLOSE_PARANTHESIS = 36
-    CONDITIONAL_JAPANESE_STARTER = 37
-    HEBREW_LETTER = 38
-    REGIONAL_INDICATOR = 39
-    EMOJI_BASE = 40
-    EMOJI_MODIFIER = 41
-    ZERO_WIDTH_JOINER = 42
-  end
+  alias UnicodeBreakType = UInt32
 
-  enum UnicodeScript : Int32
-    ZERO_NONE = 0
-    INVALID_CODE = -1
-    COMMON = 0
-    INHERITED = 1
-    ARABIC = 2
-    ARMENIAN = 3
-    BENGALI = 4
-    BOPOMOFO = 5
-    CHEROKEE = 6
-    COPTIC = 7
-    CYRILLIC = 8
-    DESERET = 9
-    DEVANAGARI = 10
-    ETHIOPIC = 11
-    GEORGIAN = 12
-    GOTHIC = 13
-    GREEK = 14
-    GUJARATI = 15
-    GURMUKHI = 16
-    HAN = 17
-    HANGUL = 18
-    HEBREW = 19
-    HIRAGANA = 20
-    KANNADA = 21
-    KATAKANA = 22
-    KHMER = 23
-    LAO = 24
-    LATIN = 25
-    MALAYALAM = 26
-    MONGOLIAN = 27
-    MYANMAR = 28
-    OGHAM = 29
-    OLD_ITALIC = 30
-    ORIYA = 31
-    RUNIC = 32
-    SINHALA = 33
-    SYRIAC = 34
-    TAMIL = 35
-    TELUGU = 36
-    THAANA = 37
-    THAI = 38
-    TIBETAN = 39
-    CANADIAN_ABORIGINAL = 40
-    YI = 41
-    TAGALOG = 42
-    HANUNOO = 43
-    BUHID = 44
-    TAGBANWA = 45
-    BRAILLE = 46
-    CYPRIOT = 47
-    LIMBU = 48
-    OSMANYA = 49
-    SHAVIAN = 50
-    LINEAR_B = 51
-    TAI_LE = 52
-    UGARITIC = 53
-    NEW_TAI_LUE = 54
-    BUGINESE = 55
-    GLAGOLITIC = 56
-    TIFINAGH = 57
-    SYLOTI_NAGRI = 58
-    OLD_PERSIAN = 59
-    KHAROSHTHI = 60
-    UNKNOWN = 61
-    BALINESE = 62
-    CUNEIFORM = 63
-    PHOENICIAN = 64
-    PHAGS_PA = 65
-    NKO = 66
-    KAYAH_LI = 67
-    LEPCHA = 68
-    REJANG = 69
-    SUNDANESE = 70
-    SAURASHTRA = 71
-    CHAM = 72
-    OL_CHIKI = 73
-    VAI = 74
-    CARIAN = 75
-    LYCIAN = 76
-    LYDIAN = 77
-    AVESTAN = 78
-    BAMUM = 79
-    EGYPTIAN_HIEROGLYPHS = 80
-    IMPERIAL_ARAMAIC = 81
-    INSCRIPTIONAL_PAHLAVI = 82
-    INSCRIPTIONAL_PARTHIAN = 83
-    JAVANESE = 84
-    KAITHI = 85
-    LISU = 86
-    MEETEI_MAYEK = 87
-    OLD_SOUTH_ARABIAN = 88
-    OLD_TURKIC = 89
-    SAMARITAN = 90
-    TAI_THAM = 91
-    TAI_VIET = 92
-    BATAK = 93
-    BRAHMI = 94
-    MANDAIC = 95
-    CHAKMA = 96
-    MEROITIC_CURSIVE = 97
-    MEROITIC_HIEROGLYPHS = 98
-    MIAO = 99
-    SHARADA = 100
-    SORA_SOMPENG = 101
-    TAKRI = 102
-    BASSA_VAH = 103
-    CAUCASIAN_ALBANIAN = 104
-    DUPLOYAN = 105
-    ELBASAN = 106
-    GRANTHA = 107
-    KHOJKI = 108
-    KHUDAWADI = 109
-    LINEAR_A = 110
-    MAHAJANI = 111
-    MANICHAEAN = 112
-    MENDE_KIKAKUI = 113
-    MODI = 114
-    MRO = 115
-    NABATAEAN = 116
-    OLD_NORTH_ARABIAN = 117
-    OLD_PERMIC = 118
-    PAHAWH_HMONG = 119
-    PALMYRENE = 120
-    PAU_CIN_HAU = 121
-    PSALTER_PAHLAVI = 122
-    SIDDHAM = 123
-    TIRHUTA = 124
-    WARANG_CITI = 125
-    AHOM = 126
-    ANATOLIAN_HIEROGLYPHS = 127
-    HATRAN = 128
-    MULTANI = 129
-    OLD_HUNGARIAN = 130
-    SIGNWRITING = 131
-    ADLAM = 132
-    BHAIKSUKI = 133
-    MARCHEN = 134
-    NEWA = 135
-    OSAGE = 136
-    TANGUT = 137
-    MASARAM_GONDI = 138
-    NUSHU = 139
-    SOYOMBO = 140
-    ZANABAZAR_SQUARE = 141
-    DOGRA = 142
-    GUNJALA_GONDI = 143
-    HANIFI_ROHINGYA = 144
-    MAKASAR = 145
-    MEDEFAIDRIN = 146
-    OLD_SOGDIAN = 147
-    SOGDIAN = 148
-    ELYMAIC = 149
-    NANDINAGARI = 150
-    NYIAKENG_PUACHUE_HMONG = 151
-    WANCHO = 152
-  end
+  alias UnicodeScript = Int32
 
-  enum UnicodeType : UInt32
-    ZERO_NONE = 0
-    CONTROL = 0
-    FORMAT = 1
-    UNASSIGNED = 2
-    PRIVATE_USE = 3
-    SURROGATE = 4
-    LOWERCASE_LETTER = 5
-    MODIFIER_LETTER = 6
-    OTHER_LETTER = 7
-    TITLECASE_LETTER = 8
-    UPPERCASE_LETTER = 9
-    SPACING_MARK = 10
-    ENCLOSING_MARK = 11
-    NON_SPACING_MARK = 12
-    DECIMAL_NUMBER = 13
-    LETTER_NUMBER = 14
-    OTHER_NUMBER = 15
-    CONNECT_PUNCTUATION = 16
-    DASH_PUNCTUATION = 17
-    CLOSE_PUNCTUATION = 18
-    FINAL_PUNCTUATION = 19
-    INITIAL_PUNCTUATION = 20
-    OTHER_PUNCTUATION = 21
-    OPEN_PUNCTUATION = 22
-    CURRENCY_SYMBOL = 23
-    MODIFIER_SYMBOL = 24
-    MATH_SYMBOL = 25
-    OTHER_SYMBOL = 26
-    LINE_SEPARATOR = 27
-    PARAGRAPH_SEPARATOR = 28
-    SPACE_SEPARATOR = 29
-  end
+  alias UnicodeType = UInt32
 
-  enum UserDirectory : UInt32
-    ZERO_NONE = 0
-    DIRECTORY_DESKTOP = 0
-    DIRECTORY_DOCUMENTS = 1
-    DIRECTORY_DOWNLOAD = 2
-    DIRECTORY_MUSIC = 3
-    DIRECTORY_PICTURES = 4
-    DIRECTORY_PUBLIC_SHARE = 5
-    DIRECTORY_TEMPLATES = 6
-    DIRECTORY_VIDEOS = 7
-    N_DIRECTORIES = 8
-  end
+  alias UserDirectory = UInt32
 
-  enum VariantClass : UInt32
-    ZERO_NONE = 0
-    BOOLEAN = 98
-    BYTE = 121
-    INT16 = 110
-    UINT16 = 113
-    INT32 = 105
-    UINT32 = 117
-    INT64 = 120
-    UINT64 = 116
-    HANDLE = 104
-    DOUBLE = 100
-    STRING = 115
-    OBJECT_PATH = 111
-    SIGNATURE = 103
-    VARIANT = 118
-    MAYBE = 109
-    ARRAY = 97
-    TUPLE = 40
-    DICT_ENTRY = 123
-  end
+  alias VariantClass = UInt32
 
-  enum VariantParseError : UInt32
-    ZERO_NONE = 0
-    FAILED = 0
-    BASIC_TYPE_EXPECTED = 1
-    CANNOT_INFER_TYPE = 2
-    DEFINITE_TYPE_EXPECTED = 3
-    INPUT_NOT_AT_END = 4
-    INVALID_CHARACTER = 5
-    INVALID_FORMAT_STRING = 6
-    INVALID_OBJECT_PATH = 7
-    INVALID_SIGNATURE = 8
-    INVALID_TYPE_STRING = 9
-    NO_COMMON_TYPE = 10
-    NUMBER_OUT_OF_RANGE = 11
-    NUMBER_TOO_BIG = 12
-    TYPE_ERROR = 13
-    UNEXPECTED_TOKEN = 14
-    UNKNOWN_KEYWORD = 15
-    UNTERMINATED_STRING_CONSTANT = 16
-    VALUE_EXPECTED = 17
-  end
+  alias VariantParseError = UInt32
 
 
   ###########################################

@@ -18,38 +18,38 @@ module GIRepository
     end
 
     def type
-      TypeInfo.new LibGIRepository.constant_info_get_type(self)
+      BaseInfo.wrap(GIRepository.constant_info_get_type(self)).as(TypeInfo)
     end
 
     def literal
       with_value do |size, value|
         case type.tag
-        when LibGIRepository::TypeTag::BOOLEAN
+        when .boolean?
           value.v_boolean.inspect
-        when LibGIRepository::TypeTag::INT8
+        when .int8?
           value.v_int8.inspect
-        when LibGIRepository::TypeTag::UINT8
+        when .uint8?
           value.v_uint8.inspect
-        when LibGIRepository::TypeTag::INT16
+        when .int16?
           value.v_int16.inspect
-        when LibGIRepository::TypeTag::UINT16
+        when .uint16?
           value.v_uint16.inspect
-        when LibGIRepository::TypeTag::INT32
+        when .int32?
           value.v_int32.inspect
-        when LibGIRepository::TypeTag::UINT32
+        when .uint32?
           value.v_uint32.inspect
-        when LibGIRepository::TypeTag::INT64
+        when .int64?
           value.v_int64.inspect
-        when LibGIRepository::TypeTag::UINT64
+        when .uint64?
           value.v_uint64.inspect
-        when LibGIRepository::TypeTag::FLOAT
+        when .float?
           value.v_float.inspect
-        when LibGIRepository::TypeTag::DOUBLE
+        when .double?
           value.v_double.inspect
-        when LibGIRepository::TypeTag::UTF8
+        when .utf8?
           string = String.new(value.v_string)
           string.inspect
-        when LibGIRepository::TypeTag::INTERFACE
+        when .interface?
           "# INTERFACE CONSTANT #{name} #{size}" # debug, should never end up being generated
         else
           raise "Bug: Unhandled constant type #{type.tag}"
@@ -58,7 +58,7 @@ module GIRepository
     end
 
     def lib_definition
-      if type.tag == LibGIRepository::TypeTag::INTERFACE
+      if type.tag.interface?
         "  # #{name} = ungeneratable value"
       else
         "  #{name} = #{literal} # : #{type.lib_definition}"

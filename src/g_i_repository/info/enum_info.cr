@@ -13,19 +13,13 @@ module GIRepository
     end
 
     def type
-      tag = LibGIRepository.enum_info_get_storage_type(self)
+      tag = GIRepository.enum_info_get_storage_type(self)
       TypeInfo::TAG_MAP[tag]
     end
 
     def lib_definition
       String.build do |io|
-        attributes(io)
-        io.puts "  enum #{name} : #{type}"
-        io.puts "    ZERO_NONE = 0"
-        each_value do |value|
-          io.puts "  #{value.lib_definition}"
-        end
-        io.puts "  end"
+        io.puts "  alias #{name} = #{type}"
 
         each_method do |method|
           io.puts method.lib_definition
@@ -37,10 +31,19 @@ module GIRepository
 
     def wrapper_definition(libname, indent = "")
       String.build do |io|
-        io.puts "#{indent}alias #{name} = #{libname}::#{name}"
-        each_method do |method|
-          io.puts "#{indent}# Function #{method.name}"
+        #io.puts "#{indent}alias #{name} = #{libname}::#{name}"
+        attributes(io)
+        io.puts "#{indent}enum #{name} : #{type}"
+        io.puts "#{indent}  ZERO_NONE = 0"
+
+        each_value do |value|
+          io.puts "#{indent}#{value.lib_definition}"
         end
+
+        each_method do |method|
+          io.puts "#{indent}  # Function #{method.name}"
+        end
+        io.puts "#{indent}end"
       end
     end
 

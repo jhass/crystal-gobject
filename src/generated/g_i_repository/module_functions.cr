@@ -19,17 +19,17 @@ module GIRepository
 
   def self.arg_info_get_direction(info)
     __return_value = LibGIRepository.arg_info_get_direction(info.to_unsafe.as(LibGIRepository::BaseInfo*))
-    __return_value
+    GIRepository::Direction.new(__return_value)
   end
 
   def self.arg_info_get_ownership_transfer(info)
     __return_value = LibGIRepository.arg_info_get_ownership_transfer(info.to_unsafe.as(LibGIRepository::BaseInfo*))
-    __return_value
+    GIRepository::Transfer.new(__return_value)
   end
 
   def self.arg_info_get_scope(info)
     __return_value = LibGIRepository.arg_info_get_scope(info.to_unsafe.as(LibGIRepository::BaseInfo*))
-    __return_value
+    GIRepository::ScopeType.new(__return_value)
   end
 
   def self.arg_info_get_type(info)
@@ -79,12 +79,12 @@ module GIRepository
 
   def self.callable_info_get_caller_owns(info)
     __return_value = LibGIRepository.callable_info_get_caller_owns(info.to_unsafe.as(LibGIRepository::BaseInfo*))
-    __return_value
+    GIRepository::Transfer.new(__return_value)
   end
 
   def self.callable_info_get_instance_ownership_transfer(info)
     __return_value = LibGIRepository.callable_info_get_instance_ownership_transfer(info.to_unsafe.as(LibGIRepository::BaseInfo*))
-    __return_value
+    GIRepository::Transfer.new(__return_value)
   end
 
   def self.callable_info_get_n_args(info)
@@ -171,7 +171,7 @@ module GIRepository
 
   def self.enum_info_get_storage_type(info)
     __return_value = LibGIRepository.enum_info_get_storage_type(info.to_unsafe.as(LibGIRepository::BaseInfo*))
-    __return_value
+    GIRepository::TypeTag.new(__return_value)
   end
 
   def self.enum_info_get_value(info, n)
@@ -181,7 +181,7 @@ module GIRepository
 
   def self.field_info_get_flags(info)
     __return_value = LibGIRepository.field_info_get_flags(info.to_unsafe.as(LibGIRepository::BaseInfo*))
-    __return_value
+    GIRepository::FieldInfoFlags.new(__return_value)
   end
 
   def self.field_info_get_offset(info)
@@ -201,7 +201,7 @@ module GIRepository
 
   def self.function_info_get_flags(info)
     __return_value = LibGIRepository.function_info_get_flags(info.to_unsafe.as(LibGIRepository::BaseInfo*))
-    __return_value
+    GIRepository::FunctionInfoFlags.new(__return_value)
   end
 
   def self.function_info_get_property(info)
@@ -476,12 +476,12 @@ module GIRepository
 
   def self.property_info_get_flags(info)
     __return_value = LibGIRepository.property_info_get_flags(info.to_unsafe.as(LibGIRepository::BaseInfo*))
-    __return_value
+    GObject::ParamFlags.new(__return_value)
   end
 
   def self.property_info_get_ownership_transfer(info)
     __return_value = LibGIRepository.property_info_get_ownership_transfer(info.to_unsafe.as(LibGIRepository::BaseInfo*))
-    __return_value
+    GIRepository::Transfer.new(__return_value)
   end
 
   def self.property_info_get_type(info)
@@ -511,7 +511,7 @@ module GIRepository
 
   def self.signal_info_get_flags(info)
     __return_value = LibGIRepository.signal_info_get_flags(info.to_unsafe.as(LibGIRepository::BaseInfo*))
-    __return_value
+    GObject::SignalFlags.new(__return_value)
   end
 
   def self.signal_info_true_stops_emit(info)
@@ -581,7 +581,7 @@ module GIRepository
 
   def self.type_info_get_array_type(info)
     __return_value = LibGIRepository.type_info_get_array_type(info.to_unsafe.as(LibGIRepository::BaseInfo*))
-    __return_value
+    GIRepository::ArrayType.new(__return_value)
   end
 
   def self.type_info_get_interface(info)
@@ -596,7 +596,7 @@ module GIRepository
 
   def self.type_info_get_tag(info)
     __return_value = LibGIRepository.type_info_get_tag(info.to_unsafe.as(LibGIRepository::BaseInfo*))
-    __return_value
+    GIRepository::TypeTag.new(__return_value)
   end
 
   def self.type_info_is_pointer(info)
@@ -683,7 +683,7 @@ module GIRepository
 
   def self.vfunc_info_get_flags(info)
     __return_value = LibGIRepository.vfunc_info_get_flags(info.to_unsafe.as(LibGIRepository::BaseInfo*))
-    __return_value
+    GIRepository::VFuncInfoFlags.new(__return_value)
   end
 
   def self.vfunc_info_get_invoker(info)

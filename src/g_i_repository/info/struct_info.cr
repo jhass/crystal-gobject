@@ -10,7 +10,7 @@ module GIRepository
     each_converted struct_info, method, FunctionInfo
 
     def gtype?
-      LibGIRepository.struct_info_is_gtype_struct(self)
+      GIRepository.struct_info_is_gtype_struct(self)
     end
 
     def name
@@ -19,7 +19,7 @@ module GIRepository
     end
 
     def size
-      LibGIRepository.struct_info_get_size(self)
+      GIRepository.struct_info_get_size(self)
     end
 
     def lib_definition

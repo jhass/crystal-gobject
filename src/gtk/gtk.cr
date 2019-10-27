@@ -9,7 +9,7 @@ require_gobject "Gtk"
 module Gtk
   class Window
     def self.new : self
-      new LibGtk::WindowType::TOPLEVEL
+      new Gtk::WindowType::TOPLEVEL
     end
   end
 

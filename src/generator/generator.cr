@@ -10,6 +10,9 @@ print "Generate #{name}... "
 namespace.dependencies.each do |dependency, version|
   dependency_namespace = Namespace.new(dependency)
   dependency_namespace.write_lib generation_dir
+  if dependency == "GObject"
+    dependency_namespace.write_wrapper generation_dir, "ParamFlags"
+  end
 end
 namespace.write generation_dir
 puts "done."

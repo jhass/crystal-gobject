@@ -37,93 +37,19 @@ lib LibGIRepository
   ##    Enums
   ###########################################
 
-  enum ArrayType : UInt32
-    ZERO_NONE = 0
-    C = 0
-    ARRAY = 1
-    PTR_ARRAY = 2
-    BYTE_ARRAY = 3
-  end
+  alias ArrayType = UInt32
 
-  enum Direction : UInt32
-    ZERO_NONE = 0
-    IN = 0
-    OUT = 1
-    INOUT = 2
-  end
+  alias Direction = UInt32
 
-  enum InfoType : UInt32
-    ZERO_NONE = 0
-    INVALID = 0
-    FUNCTION = 1
-    CALLBACK = 2
-    STRUCT = 3
-    BOXED = 4
-    ENUM = 5
-    FLAGS = 6
-    OBJECT = 7
-    INTERFACE = 8
-    CONSTANT = 9
-    INVALID_0 = 10
-    UNION = 11
-    VALUE = 12
-    SIGNAL = 13
-    VFUNC = 14
-    PROPERTY = 15
-    FIELD = 16
-    ARG = 17
-    TYPE = 18
-    UNRESOLVED = 19
-  end
+  alias InfoType = UInt32
 
-  enum RepositoryError : UInt32
-    ZERO_NONE = 0
-    TYPELIB_NOT_FOUND = 0
-    NAMESPACE_MISMATCH = 1
-    NAMESPACE_VERSION_CONFLICT = 2
-    LIBRARY_NOT_FOUND = 3
-  end
+  alias RepositoryError = UInt32
 
-  enum ScopeType : UInt32
-    ZERO_NONE = 0
-    INVALID = 0
-    CALL = 1
-    ASYNC = 2
-    NOTIFIED = 3
-  end
+  alias ScopeType = UInt32
 
-  enum Transfer : UInt32
-    ZERO_NONE = 0
-    NOTHING = 0
-    CONTAINER = 1
-    EVERYTHING = 2
-  end
+  alias Transfer = UInt32
 
-  enum TypeTag : UInt32
-    ZERO_NONE = 0
-    VOID = 0
-    BOOLEAN = 1
-    INT8 = 2
-    UINT8 = 3
-    INT16 = 4
-    UINT16 = 5
-    INT32 = 6
-    UINT32 = 7
-    INT64 = 8
-    UINT64 = 9
-    FLOAT = 10
-    DOUBLE = 11
-    GTYPE = 12
-    UTF8 = 13
-    FILENAME = 14
-    ARRAY = 15
-    INTERFACE = 16
-    GLIST = 17
-    GSLIST = 18
-    GHASH = 19
-    ERROR = 20
-    UNICHAR = 21
-  end
+  alias TypeTag = UInt32
 
 
   ###########################################
@@ -177,38 +103,13 @@ lib LibGIRepository
   ##    Flags
   ###########################################
 
-  @[Flags]
-  enum FieldInfoFlags : UInt32
-    ZERO_NONE = 0
-    READABLE = 1
-    WRITABLE = 2
-  end
+  alias FieldInfoFlags = UInt32
 
-  @[Flags]
-  enum FunctionInfoFlags : UInt32
-    ZERO_NONE = 0
-    IS_METHOD = 1
-    IS_CONSTRUCTOR = 2
-    IS_GETTER = 4
-    IS_SETTER = 8
-    WRAPS_VFUNC = 16
-    THROWS = 32
-  end
+  alias FunctionInfoFlags = UInt32
 
-  @[Flags]
-  enum RepositoryLoadFlags : UInt32
-    ZERO_NONE = 0
-    IREPOSITORY_LOAD_FLAG_LAZY = 1
-  end
+  alias RepositoryLoadFlags = UInt32
 
-  @[Flags]
-  enum VFuncInfoFlags : UInt32
-    ZERO_NONE = 0
-    MUST_CHAIN_UP = 1
-    MUST_OVERRIDE = 2
-    MUST_NOT_OVERRIDE = 4
-    THROWS = 8
-  end
+  alias VFuncInfoFlags = UInt32
 
 
   ###########################################

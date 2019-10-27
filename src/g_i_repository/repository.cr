@@ -9,7 +9,7 @@ module GIRepository
     end
 
     def require(namespace, version=nil)
-      self.require namespace, version, LibGIRepository::RepositoryLoadFlags::ZERO_NONE
+      self.require namespace, version, :zero_none
     end
 
     def dependencies(namespace)

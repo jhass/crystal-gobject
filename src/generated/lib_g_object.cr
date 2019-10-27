@@ -260,89 +260,21 @@ lib LibGObject
   ##    Flags
   ###########################################
 
-  @[Flags]
-  enum BindingFlags : UInt32
-    ZERO_NONE = 0
-    DEFAULT = 0
-    BIDIRECTIONAL = 1
-    SYNC_CREATE = 2
-    INVERT_BOOLEAN = 4
-  end
+  alias BindingFlags = UInt32
 
-  @[Flags]
-  enum ConnectFlags : UInt32
-    ZERO_NONE = 0
-    AFTER = 1
-    SWAPPED = 2
-  end
+  alias ConnectFlags = UInt32
 
-  @[Flags]
-  enum ParamFlags : UInt32
-    ZERO_NONE = 0
-    READABLE = 1
-    WRITABLE = 2
-    READWRITE = 3
-    CONSTRUCT = 4
-    CONSTRUCT_ONLY = 8
-    LAX_VALIDATION = 16
-    STATIC_NAME = 32
-    PRIVATE = 32
-    STATIC_NICK = 64
-    STATIC_BLURB = 128
-    EXPLICIT_NOTIFY = 1073741824
-    DEPRECATED = 2147483648
-  end
+  alias ParamFlags = UInt32
 
-  @[Flags]
-  enum SignalFlags : UInt32
-    ZERO_NONE = 0
-    RUN_FIRST = 1
-    RUN_LAST = 2
-    RUN_CLEANUP = 4
-    NO_RECURSE = 8
-    DETAILED = 16
-    ACTION = 32
-    NO_HOOKS = 64
-    MUST_COLLECT = 128
-    DEPRECATED = 256
-  end
+  alias SignalFlags = UInt32
 
-  @[Flags]
-  enum SignalMatchType : UInt32
-    ZERO_NONE = 0
-    ID = 1
-    DETAIL = 2
-    CLOSURE = 4
-    FUNC = 8
-    DATA = 16
-    UNBLOCKED = 32
-  end
+  alias SignalMatchType = UInt32
 
-  @[Flags]
-  enum TypeDebugFlags : UInt32
-    ZERO_NONE = 0
-    NONE = 0
-    OBJECTS = 1
-    SIGNALS = 2
-    INSTANCE_COUNT = 4
-    MASK = 7
-  end
+  alias TypeDebugFlags = UInt32
 
-  @[Flags]
-  enum TypeFlags : UInt32
-    ZERO_NONE = 0
-    ABSTRACT = 16
-    VALUE_ABSTRACT = 32
-  end
+  alias TypeFlags = UInt32
 
-  @[Flags]
-  enum TypeFundamentalFlags : UInt32
-    ZERO_NONE = 0
-    CLASSED = 1
-    INSTANTIATABLE = 2
-    DERIVABLE = 4
-    DEEP_DERIVABLE = 8
-  end
+  alias TypeFundamentalFlags = UInt32
 
 
   ###########################################

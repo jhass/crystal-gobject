@@ -15,11 +15,11 @@ module GIRepository
     end
 
     def flags
-      LibGIRepository.function_info_get_flags(self)
+      GIRepository.function_info_get_flags(self)
     end
 
     def symbol
-      String.new LibGIRepository.function_info_get_symbol(self)
+      GIRepository.function_info_get_symbol(self)
     end
 
     def constructor?

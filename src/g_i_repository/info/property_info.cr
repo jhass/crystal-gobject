@@ -8,19 +8,19 @@ module GIRepository
     end
 
     def type
-      TypeInfo.new LibGIRepository.property_info_get_type(self)
+      BaseInfo.wrap(GIRepository.property_info_get_type(self)).as(TypeInfo)
     end
 
     def flags
-      LibGIRepository.property_info_get_flags self
+      GIRepository.property_info_get_flags self
     end
 
     def getter?
-      (flags.value & LibGObject::ParamFlags::READABLE.value) == 1
+      flags.readable?
     end
 
     def setter?
-      (flags.value & LibGObject::ParamFlags::WRITABLE.value) == 1
+      flags.writable?
     end
 
     def lib_definition

@@ -97,19 +97,19 @@ module GIRepository
     end
 
     def method?
-      LibGIRepository.callable_info_is_method(self)
+      GIRepository.callable_info_is_method(self)
     end
 
     def throws?
-      LibGIRepository.callable_info_can_throw_gerror(self)
+      GIRepository.callable_info_can_throw_gerror(self)
     end
 
     def skip_return?
-      LibGIRepository.callable_info_skip_return(self) || return_type.void?
+      GIRepository.callable_info_skip_return(self) || return_type.void?
     end
 
     def may_return_null?
-      LibGIRepository.callable_info_may_return_null(self)
+      GIRepository.callable_info_may_return_null(self)
     end
 
     each_converted callable_info, arg, ArgInfo

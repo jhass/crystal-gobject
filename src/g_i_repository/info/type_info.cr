@@ -3,57 +3,57 @@ require "./base_info"
 module GIRepository
   class TypeInfo < BaseInfo
     TAG_MAP = {
-      LibGIRepository::TypeTag::VOID     => "Void",
-      LibGIRepository::TypeTag::BOOLEAN  => "Bool",
-      LibGIRepository::TypeTag::INT8     => "Int8",
-      LibGIRepository::TypeTag::UINT8    => "UInt8",
-      LibGIRepository::TypeTag::INT16    => "Int16",
-      LibGIRepository::TypeTag::UINT16   => "UInt16",
-      LibGIRepository::TypeTag::INT32    => "Int32",
-      LibGIRepository::TypeTag::UINT32   => "UInt32",
-      LibGIRepository::TypeTag::INT64    => "Int64",
-      LibGIRepository::TypeTag::UINT64   => "UInt64",
-      LibGIRepository::TypeTag::FLOAT    => "Float32",
-      LibGIRepository::TypeTag::DOUBLE   => "Float64",
-      LibGIRepository::TypeTag::GTYPE    => "UInt64",
-      LibGIRepository::TypeTag::UTF8     => "UInt8",
-      LibGIRepository::TypeTag::FILENAME => "UInt8",
-      LibGIRepository::TypeTag::GLIST    => "Void*",
-      LibGIRepository::TypeTag::GSLIST   => "Void*",
-      LibGIRepository::TypeTag::GHASH    => "Void*",
-      LibGIRepository::TypeTag::ERROR    => "LibGLib::Error*",
-      LibGIRepository::TypeTag::UNICHAR  => "UInt8",
+      TypeTag::VOID     => "Void",
+      TypeTag::BOOLEAN  => "Bool",
+      TypeTag::INT8     => "Int8",
+      TypeTag::UINT8    => "UInt8",
+      TypeTag::INT16    => "Int16",
+      TypeTag::UINT16   => "UInt16",
+      TypeTag::INT32    => "Int32",
+      TypeTag::UINT32   => "UInt32",
+      TypeTag::INT64    => "Int64",
+      TypeTag::UINT64   => "UInt64",
+      TypeTag::FLOAT    => "Float32",
+      TypeTag::DOUBLE   => "Float64",
+      TypeTag::GTYPE    => "UInt64",
+      TypeTag::UTF8     => "UInt8",
+      TypeTag::FILENAME => "UInt8",
+      TypeTag::GLIST    => "Void*",
+      TypeTag::GSLIST   => "Void*",
+      TypeTag::GHASH    => "Void*",
+      TypeTag::ERROR    => "LibGLib::Error*",
+      TypeTag::UNICHAR  => "UInt8",
     }
 
     BLACKLIST = {"VaClosureMarshal", "DBusProxyClass", "DBusInterfaceSkeletonClass"}
 
     def tag
-      LibGIRepository.type_info_get_tag(self)
+      GIRepository.type_info_get_tag(self)
     end
 
     def pointer?
-      LibGIRepository.type_info_is_pointer(self)
+      GIRepository.type_info_is_pointer(self)
     end
 
     def void?
-      tag == LibGIRepository::TypeTag::VOID
+      tag.void?
     end
 
     def interface
-      BaseInfo.wrap BaseInfo.new LibGIRepository.type_info_get_interface(self)
+      BaseInfo.wrap GIRepository.type_info_get_interface(self)
     end
 
     def array_type
-      LibGIRepository.type_info_get_array_type(self)
+      GIRepository.type_info_get_array_type(self)
     end
 
     def param_type(n = 0)
-      TypeInfo.new LibGIRepository.type_info_get_param_type(self, n)
+      BaseInfo.wrap(GIRepository.type_info_get_param_type(self, n)).as(TypeInfo)
     end
 
     def lib_definition
       base = case tag
-             when LibGIRepository::TypeTag::INTERFACE
+             when .interface?
                interface = self.interface
                name = interface.name
                if name.nil? || BLACKLIST.includes?(name) || (name && 'a' <= name[0] <= 'z') # More weird stuff, also compiler could be smarter here
@@ -68,9 +68,9 @@ module GIRepository
                  end
                  type
                end
-             when LibGIRepository::TypeTag::ARRAY
+             when .array?
                case array_type
-               when LibGIRepository::ArrayType::C
+               when ArrayType::C
                  param_type.lib_definition
                else
                  "Void"
@@ -84,13 +84,13 @@ module GIRepository
 
     def wrapper_definition(libname = "", indent = "")
       case tag
-      when LibGIRepository::TypeTag::INTERFACE
+      when .interface?
         interface.full_constant
-      when LibGIRepository::TypeTag::ARRAY
+      when .array?
         "Array(#{param_type.wrapper_definition(libname)})"
-      when LibGIRepository::TypeTag::ZERO_NONE
+      when .zero_none?
         "Void*"
-      when LibGIRepository::TypeTag::UTF8, LibGIRepository::TypeTag::FILENAME
+      when .utf8?, .filename?
         "String"
       else
         TAG_MAP[tag]
@@ -99,27 +99,27 @@ module GIRepository
 
     def convert_to_crystal(variable)
       case tag
-      when LibGIRepository::TypeTag::INTERFACE
+      when .interface?
         interface = self.interface
         case interface
-        when ObjectInfo, StructInfo, UnionInfo
+        when ObjectInfo, StructInfo, UnionInfo, EnumInfo, FlagsInfo
           "#{interface.full_constant}.new(#{variable})"
         else
           variable
         end
-      when LibGIRepository::TypeTag::ARRAY
+      when .array?
         case array_type
-        when LibGIRepository::ArrayType::C
+        when ArrayType::C
           item = "__item"
           "PointerIterator.new(#{variable}) {|#{item}| #{param_type.convert_to_crystal("#{item}")} }"
         else
           variable
         end
-      when LibGIRepository::TypeTag::UTF8, LibGIRepository::TypeTag::FILENAME
+      when .utf8?, .filename?
         %((raise "Expected string but got null" unless #{variable}; ::String.new(#{variable})))
-      when LibGIRepository::TypeTag::GLIST
+      when .glist?
         "GLib::ListIterator(#{param_type.wrapper_definition}, #{param_type.lib_definition}*).new(GLib::SList.new(#{variable}.as(LibGLib::List*)))"
-      when LibGIRepository::TypeTag::GSLIST
+      when .gslist?
         "GLib::SListIterator(#{param_type.wrapper_definition}, #{param_type.lib_definition}*).new(GLib::SList.new(#{variable}.as(LibGLib::SList*)))"
       else
         variable
@@ -128,17 +128,17 @@ module GIRepository
 
     def convert_from_crystal(variable)
       case tag
-      when LibGIRepository::TypeTag::INTERFACE
+      when .interface?
         pointer? ? "#{variable}.to_unsafe.as(Lib#{interface.full_constant}*)" : variable
-      when LibGIRepository::TypeTag::ARRAY,
-           LibGIRepository::TypeTag::GLIST,
-           LibGIRepository::TypeTag::GSLIST,
-           LibGIRepository::TypeTag::GHASH,
-           LibGIRepository::TypeTag::ERROR,
-           LibGIRepository::TypeTag::BOOLEAN,
-           LibGIRepository::TypeTag::VOID
+      when .array?,
+           .glist?,
+           .gslist?,
+           .ghash?,
+           .error?,
+           .boolean?,
+           .void?
         variable
-      when LibGIRepository::TypeTag::UTF8, LibGIRepository::TypeTag::FILENAME
+      when .utf8?, .filename?
         "#{variable}.to_unsafe"
       else
         if pointer?
@@ -151,7 +151,7 @@ module GIRepository
 
     def wrap_in_gvalue(variable, value)
       case tag
-      when LibGIRepository::TypeTag::INTERFACE
+      when .interface?
         interface = self.interface
         case interface
         when ObjectInfo, StructInfo, UnionInfo
@@ -159,16 +159,16 @@ module GIRepository
         when EnumInfo
           "#{variable}.enum = #{value}"
         end
-      when LibGIRepository::TypeTag::BOOLEAN
+      when .boolean?
         "#{variable}.boolean = #{value}"
-      when LibGIRepository::TypeTag::UTF8
+      when .utf8?
         "#{variable}.string = #{value}"
       end
     end
 
     def unwrap_gvalue(variable)
       case tag
-      when LibGIRepository::TypeTag::INTERFACE
+      when .interface?
         interface = self.interface
         case interface
         when ObjectInfo, StructInfo, UnionInfo
@@ -178,9 +178,9 @@ module GIRepository
         else
           "#{variable}"
         end
-      when LibGIRepository::TypeTag::BOOLEAN
+      when .boolean?
         "#{variable}.boolean"
-      when LibGIRepository::TypeTag::UTF8
+      when .utf8?
         "#{variable}.string"
       else
         variable

@@ -16,7 +16,7 @@ module GObject
                                      LibGObject::Callback.new(callback.pointer, Pointer(Void).null),
                                      ClosureDataManager.register(callback.closure_data),
                                      ->ClosureDataManager.deregister,
-                                     LibGObject::ConnectFlags::SWAPPED).tap do |handler_id|
+                                     GObject::ConnectFlags::SWAPPED).tap do |handler_id|
         if handler_id == 0
           raise ArgumentError.new("Couldn't connect signal #{signal} to #{type_name} (#{self.class})")
         end

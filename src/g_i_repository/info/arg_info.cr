@@ -11,27 +11,27 @@ module GIRepository
     end
 
     def direction
-      LibGIRepository.arg_info_get_direction(self)
+      GIRepository.arg_info_get_direction(self)
     end
 
     def out?
-       direction == LibGIRepository::Direction::OUT
+      direction.out?
     end
 
     def inout?
-      direction == LibGIRepository::Direction::INOUT
+      direction.inout?
     end
 
     def optional?
-      LibGIRepository.arg_info_is_optional self
+      GIRepository.arg_info_is_optional self
     end
 
     def nullable?
-      LibGIRepository.arg_info_may_be_null self
+      GIRepository.arg_info_may_be_null self
     end
 
     def type
-      TypeInfo.new LibGIRepository.arg_info_get_type(self)
+      BaseInfo.wrap(GIRepository.arg_info_get_type(self)).as(TypeInfo)
     end
 
     def lib_definition
@@ -42,7 +42,7 @@ module GIRepository
     end
 
     def for_wrapper_definition(libname)
-      if type.tag == LibGIRepository::TypeTag::INTERFACE
+      if type.tag.interface?
         interface = type.interface
         case interface
         when EnumInfo, FlagsInfo

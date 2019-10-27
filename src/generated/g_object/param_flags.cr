@@ -1,0 +1,19 @@
+module GObject
+  @[Flags]
+  enum ParamFlags : UInt32
+    ZERO_NONE = 0
+    READABLE = 1
+    WRITABLE = 2
+    READWRITE = 3
+    CONSTRUCT = 4
+    CONSTRUCT_ONLY = 8
+    LAX_VALIDATION = 16
+    STATIC_NAME = 32
+    PRIVATE = 32
+    STATIC_NICK = 64
+    STATIC_BLURB = 128
+    EXPLICIT_NOTIFY = 1073741824
+    DEPRECATED = 2147483648
+  end
+end
+

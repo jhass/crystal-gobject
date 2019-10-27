@@ -15,7 +15,7 @@ module GIRepository
     end
 
     def flags
-      LibGIRepository.field_info_get_flags(self)
+      GIRepository.field_info_get_flags(self)
     end
 
     def readable?
@@ -27,11 +27,11 @@ module GIRepository
     end
 
     def size
-      LibGIRepository.field_info_get_size(self)
+      GIRepository.field_info_get_size(self)
     end
 
     def offset
-      LibGIRepository.field_info_get_offset(self)
+      GIRepository.field_info_get_offset(self)
     end
 
     def lib_definition

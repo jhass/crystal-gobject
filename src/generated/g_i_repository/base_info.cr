@@ -43,7 +43,7 @@ module GIRepository
 
     def type
       __return_value = LibGIRepository.base_info_get_type(@pointer.as(LibGIRepository::BaseInfo*))
-      __return_value
+      GIRepository::InfoType.new(__return_value)
     end
 
     def typelib

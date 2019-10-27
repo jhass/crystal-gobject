@@ -3,8 +3,16 @@
 require "../g_object/wrapped_type"
 require "../g_object/object"
 require "../g_lib/error"
+require "../generated/g_object/param_flags"
 require "../generated/lib_g_i_repository"
+require "../generated/g_i_repository/info_type"
+require "../generated/g_i_repository/type_tag"
+require "../generated/g_i_repository/array_type"
+require "../generated/g_i_repository/direction"
+require "../generated/g_i_repository/field_info_flags"
+require "../generated/g_i_repository/function_info_flags"
 require "../generated/g_i_repository/repository_load_flags"
+require "../generated/g_i_repository/module_functions"
 require "../generated/g_i_repository/typelib"
 require "../generated/g_i_repository/repository"
 require "../generated/g_i_repository/base_info"
@@ -21,13 +29,13 @@ end
 #module GIRepository
   macro each_converted(prefix, basename, type, plural=nil)
     def {{plural ? plural.id : "#{basename}s".id}}_size
-      n = LibGIRepository.{{prefix.id}}_get_n_{{plural ? plural.id : "#{basename}s".id}}(self)
+      n = GIRepository.{{prefix.id}}_get_n_{{plural ? plural.id : "#{basename}s".id}}(self)
     end
 
     def each_{{basename.id}}
       n = {{plural ? plural.id : "#{basename}s".id}}_size
       0.upto(n-1) do |index|
-        yield {{type.id}}.new LibGIRepository.{{prefix.id}}_get_{{basename.id}}(self, index)
+        yield {{type.id}}.new GIRepository.{{prefix.id}}_get_{{basename.id}}(self, index).to_unsafe
       end
     end
 
