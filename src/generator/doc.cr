@@ -56,6 +56,7 @@ class Generator < Crystal::Doc::Generator
   @girs = {} of String => XML::Node?
   @gir_namespace_cache = {} of String => Bool
 
+  setter gir_namespaces : Array(String) = [] of String
   setter gir_search_paths : Array(String) = ["/usr/share/gir-1.0"]
 
   def is_gir_namespace?(name : String)
@@ -155,7 +156,7 @@ class Generator < Crystal::Doc::Generator
   end
 
   def read_readme
-    ""
+    "# Documentation for #{@gir_namespaces.join(", ")} and dependencies"
   end
 
   def relative_location(location : Crystal::Location?)
@@ -225,6 +226,7 @@ compiler.wants_doc = true
 result = compiler.top_level_semantic sources
 
 generator = Generator.new(result.program, included_dirs, output_directory, "html", nil)
+generator.gir_namespaces = namespaces.map(&.name)
 if paths = gir_search_paths
   generator.gir_search_paths = paths
 end
