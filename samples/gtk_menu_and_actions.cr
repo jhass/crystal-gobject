@@ -2,8 +2,6 @@ require "gobject/gtk"
 require "gobject/gio"
 
 class MyApplication < Gtk::Application
-  include Gio::ActionMap
-
   def self.new
     super "org.example.application", :flags_none
   end

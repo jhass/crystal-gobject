@@ -68,7 +68,7 @@ module GIRepository
         write_to_unsafe libname, io, indent
 
         each_interface do |interface|
-          io.puts "#{indent}  # Implements #{interface.name}"
+          io.puts "#{indent}  include #{interface.full_constant}"
         end
 
         each_property do |property|

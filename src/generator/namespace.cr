@@ -132,7 +132,7 @@ class Namespace
     wrapper_definition(io, source_path) do
       io.puts module_functions_definition
       io.puts
-      each_info_definition do |info, definition|
+      each_info_definition(source_path) do |info, definition|
         io.puts definition
       end
     end
@@ -179,7 +179,7 @@ class Namespace
     write_wrapper File.join(prefix, "module_functions.cr"), &.puts module_functions_definition
   end
 
-  private def each_info_definition
+  private def each_info_definition(source_path=nil)
     infos = GIRepository::Repository.instance.all_infos(@namespace).select {|info|
       next false if skip_info? info
       next false if info.is_a? GIRepository::FunctionInfo
@@ -187,35 +187,50 @@ class Namespace
       true
     }
 
-    sort_childs_before_parents(infos)
+    sort_childs_after_parents(infos)
 
     infos.each do |info|
       definition = info.wrapper_definition libname, "  "
       next unless definition && !definition.empty?
 
+      definition = %(  #<loc:push>#<loc:"#{source_path}/#{info.name}",1,1>\n#{definition.lstrip}#<loc:pop>) if source_path
       yield info, definition
     end
   end
 
-  private def sort_childs_before_parents(infos)
-    names = infos.map {|info| info.full_constant if info.is_a? GIRepository::ObjectInfo }
-    parent_names = infos.map {|info|
-      parent = info.parent if info.is_a? GIRepository::ObjectInfo
-      parent.full_constant if parent
+
+  private def sort_childs_after_parents(infos)
+    names = infos.map {|info|
+      info.full_constant if info.is_a?(GIRepository::ObjectInfo) || info.is_a?(GIRepository::InterfaceInfo)
+    }
+
+    parents = infos.map {|info|
+      parent_names = [] of String
+      if info.is_a?(GIRepository::ObjectInfo)
+        parent = info.parent
+        parent_names << parent.full_constant if parent
+        parent_names.concat info.interfaces.map(&.full_constant)
+      end
+
+      parent_names
     }
 
     child_index = 0
     while child_index < names.size
-      index = nil
-      parent_name = parent_names[child_index] # child has parent?
-      index = names.index(parent_name) if parent_name # where's child's parent?
-      if index && index > child_index # parent comes after child, swap them
-        swap(infos, child_index, index)
-        swap(names, child_index, index)
-        swap(parent_names, child_index, index)
-      else
-        child_index += 1 # next one
+      next child_index += 1 if names[child_index].nil?
+
+      swapped = false
+      child_index.upto(names.size - 1) do |index|
+        if parents[child_index].includes? names[index]
+          swap(infos, child_index, index)
+          swap(names, child_index, index)
+          swap(parents, child_index, index)
+          swapped = true
+          break
+        end
       end
+
+      child_index += 1 unless swapped
     end
   end
 
@@ -250,8 +265,8 @@ class Namespace
   end
 
   private def wrapper_definition(io, source_path=nil)
-    io.print %(#<loc:"#{source_path}",1,1>) if source_path
-    io.puts "module #{@namespace.constant}"
+    io.print %(#<loc:push>#<loc:"#{source_path}",1,1>) if source_path
+    io.puts "module #{@namespace.constant}#<loc:pop>"
     yield io
     io.puts "end"
     io.puts
