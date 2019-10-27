@@ -1,21 +1,88 @@
 # gobject-introspection for [Crystal](http://crystal-lang.org)
 
-This is closer to a proof of concept, than to something real world usable.
-If you want to turn it into something usable, feel free to do so.
-If you want to hack on it and make some
-generally useful progress, pull requests are welcome!
+The primary purpose of this shard is to provide compile-time generated
+bindings to libraries supporting GObject Introspection, so for example Gtk.
 
-## State & Wishlist
+Secondarily this project also aims to provide hand written extensions and
+overrides for the more popular GObject based libraries that make the bindings
+more friendly to use and allow users to write more idiomatic Crystal.
+In the midterm these should be extracted to their own shards that depend on this one.
 
-* Generates bindings that parse, but are probably not complete or bug free.
-* Generates bindings for gobject-introspection that are useable by the glue & generation
-  code that generates them.
-* Generates bindings and wrappers for Gtk that, together with some hand-written glue code
-  can show a blank window and load a glade file.
-* Generates not only the lib code, but also the boilerplate for the glue code (WIP, not complete)
-* Should figure out dependencies the smart way, that is only generate bindings
-  for dependencies that are actually used in the binding.
-* Should figure out link flags for when gi_repository_get_shared_library
-  return NULL, or at least not crash on that.
-* Should have a nice command line interface
-* Decide whether/what generated bindings to keep in this shard and what to move into its own shard (Gtk probably).
+This should be useable for simple projects but usually still requires familarity with
+the C interface and usage of the original library. There's most likely still
+incorrect code generated, some methods may not even compile when invoked as
+Crystal does semantic checks only then. So this should be considered a work in
+progress and contributions are very welcome!
+
+## Install
+
+Install like any other shard. Additionally you'll need gobject-introspection installed
+as well as the GObject based library you want to use and its typelib file needs to be
+available.
+
+## Usage
+
+For libraries that have convenience wrappers you just require them under the `goject`
+namespace. For example:
+
+```cr
+require "gobject/gdk"
+```
+
+Gtk specifically has a convenience wrapper that starts the mainloop automatically:
+
+```cr
+require "gobject/gtk/autorun"
+```
+
+However the main entry point is the `require_gobject` macro:
+
+
+```cr
+require "gobject"
+require_gobject "Gio"
+```
+
+This will replace itself with the entire generated binding code for, in this case,
+Gio and its dependencies.
+
+There's a very work in progress documentation generator under the `gi-doc` target.
+Note it is a modified version of the Crystal compiler's doc generator and thus
+compiles almost the entire compiler, thus compiling this tool takes as much time
+and resources as compiling the compiler does. Also libraries as Gtk are huge! Generating
+for Gtk and its dependencies will take a long time and generate about a gigabyte
+of documentation.
+
+## Contributing
+
+Pull requests are welcome! If you encounter a bug, the first step is to produce
+the most minimal example that reproduces it. Currently this has no testsuite,
+so the samples funciton as a sort of manual testsuite. That means including this minimal
+example into an issue or pull request will not only allow others to verify the bug,
+but also prevent it from reappearing as a regression.
+
+Running `src/generator/build_namespace.cr` directly is a good way to inspect the generated code.
+An alternative is to add `{% debug() %}` to the end of the `require_gobject`
+macro definition in `src/gobject.cr`.
+
+### Architecture
+
+gobject-introspection is itself a C library, so we need to have bindings for it.
+It is itself introspectable and we make use of that, however there's a bootstrapping
+problem if we would try to use the main `require_gobject` macro for that, there are
+no bindings for what it's based on! So we have a second generator that writes the output
+to static files under `src/generated` under the target `gi-generator`. The initial version
+of this was bootstrapped using hand-written bindings. A good quick check whether any changes
+you did still work, is to build and run this target twice, the first time to update the generated
+bindings and the second time to see if they still compile and produce the same output.
+
+`src/generator` has the driver code for any of the generators and tools. `src/g_i_repository`
+contains the classes that define the Crystal code for each of the GObject Introspection info types.
+
+The `gi-dump` target tries to completely map out all info that's present in a typelib, that is
+how the current bindings see that info. Look at its options, you'll need to make use
+of them to drill in, otherwise it's just too much output due to how it displays
+the same infos all over again and again recursively.
+
+For now convenience extensions and overrides go under `src/library_name`,
+so for example `src/gtk` for Gtk or `src/g_lib` for GLib.
