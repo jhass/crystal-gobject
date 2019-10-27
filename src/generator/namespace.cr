@@ -19,6 +19,15 @@ class Namespace
     end
   end
 
+  def name
+    @namespace
+  end
+
+  def girname
+    version = GIRepository::Repository.instance.version(@namespace)
+    "#{@namespace}-#{version}.gir"
+  end
+
   def libname
     namespace = "#{@namespace[0].upcase}#{@namespace[1..-1]}"
     "Lib#{namespace}"
@@ -38,6 +47,10 @@ class Namespace
 
   def wrapper_filepath
     "#{wrapper_filename(@namespace)}.cr"
+  end
+
+  def typelib_path
+    GIRepository::Repository.instance.typelib_path(@namespace)
   end
 
   def write(directory)
@@ -115,8 +128,8 @@ class Namespace
     io.puts
   end
 
-  def wrapper_definitions(io)
-    wrapper_definition(io) do
+  def wrapper_definitions(io, source_path=nil)
+    wrapper_definition(io, source_path) do
       io.puts module_functions_definition
       io.puts
       each_info_definition do |info, definition|
@@ -236,7 +249,8 @@ class Namespace
     end
   end
 
-  private def wrapper_definition(io)
+  private def wrapper_definition(io, source_path=nil)
+    io.print %(#<loc:"#{source_path}",1,1>) if source_path
     io.puts "module #{@namespace.constant}"
     yield io
     io.puts "end"

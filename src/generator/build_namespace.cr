@@ -9,4 +9,4 @@ namespace.dependencies.each do |dependency, version|
 end
 
 namespace.lib_definition(STDOUT)
-namespace.wrapper_definitions(STDOUT)
+namespace.wrapper_definitions(STDOUT, namespace.typelib_path)

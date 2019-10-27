@@ -7,9 +7,14 @@ all = false
 opt_namespace = nil
 
 OptionParser.parse do |p|
+  p.banner = "Usage: gi-dump [opts] NAMESPACE"
   p.on("-r NAME", "--root=NAME", "Only print given toplevel info instead of all") {|name| opt_root = name }
   p.on("-n LIMIT", "--nesting=LIMIT", "Stop after LIMIT recursions (default 3)") {|limit| max_nesting = limit.to_i? }
   p.on("-a", "--all", "Don't limit nesting, print all") { all = true }
+  p.on("-h", "--help", "Show this help") do
+    puts p
+    exit
+  end
   p.unknown_args do |args|
     opt_namespace = args.first?
     if args.size > 1

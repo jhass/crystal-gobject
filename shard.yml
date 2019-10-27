@@ -12,3 +12,5 @@ targets:
     main: src/generator/stage3.cr
   gi-dump:
     main: src/generator/dump.cr
+  gi-doc:
+    main: src/generator/doc.cr

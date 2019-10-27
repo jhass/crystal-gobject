@@ -128,11 +128,24 @@ module GIRepository
       TypeInfo.new LibGIRepository.callable_info_get_return_type(self)
     end
 
+    def each_return_attribute
+      iter = AttributeIter.new
+      while LibGIRepository.callable_info_iterate_return_attributes(self, iter, out name, out value)
+        yield name, value
+      end
+    end
+
     Dumper.def do
       dumper.puts "* method = #{method?}"
       dumper.puts "* throws = #{throws?}"
       dumper.puts "* skip_return = #{skip_return?}"
       dumper.puts "* may_return_null = #{may_return_null?}"
+      print_header = true
+      each_return_attribute do |name, value|
+        dumper.puts "* return_attributes" if print_header
+        print_header = false
+        dumper.puts "  - #{name} = #{value}"
+      end
       Dumper.dump_child return_type
       Dumper.dump_childs arg
     end
