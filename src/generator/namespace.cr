@@ -193,7 +193,7 @@ class Namespace
       definition = info.wrapper_definition libname, "  "
       next unless definition && !definition.empty?
 
-      definition = %(  #<loc:push>#<loc:"#{source_path}/#{info.name}",1,1>\n#{definition.lstrip}#<loc:pop>) if source_path
+      definition = %(  #<loc:push>#<loc:"#{source_path}/#{info.name}",1,1>\n#{definition}  #<loc:pop>\n) if source_path
       yield info, definition
     end
   end
@@ -265,7 +265,7 @@ class Namespace
   end
 
   private def wrapper_definition(io, source_path=nil)
-    io.print %(#<loc:push>#<loc:"#{source_path}",1,1>) if source_path
+    io.puts %(#<loc:push>#<loc:"#{source_path}",1,1>) if source_path
     io.puts "module #{@namespace.constant}#<loc:pop>"
     yield io
     io.puts "end"
