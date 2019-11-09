@@ -1,6 +1,8 @@
-require "gobject/gdk"
+require "../src/gobject"
+require_gobject "Gio"
+require_gobject "Gdk"
 
-Gdk.init
+Gdk.init nil,nil
 
 window = Gdk::Window.new(nil,
   Gdk::WindowAttr.new(
@@ -17,15 +19,6 @@ window.events = Gdk::EventMask::ZERO_NONE
 
 window.show
 
-Gdk::Event.on_event do |event|
-  case event.event_type
-  when .expose?
-    puts "Expose count: #{event.expose.count}"
-  when .setting?
-    puts "Setting #{event.setting.name} is #{event.setting.action}"
-  else
-    puts "Unhandled event: #{event.event_type}"
-  end
-end
+
 
 GLib::MainLoop.new(nil, true).run
