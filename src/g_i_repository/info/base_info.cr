@@ -112,7 +112,7 @@ module GIRepository
       dumper.dump(self)
     end
 
-    def dump(dumper, & : BaseInfo ->)
+    def dump(dumper, &block : BaseInfo ->)
       dump_base(dumper)
       attributes.each do |name, value|
         dumper.puts "- #{name} = #{value}"
