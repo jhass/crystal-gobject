@@ -1,7 +1,7 @@
 module GIRepository
   class Dumper
     macro def
-      def dump(dumper, & : BaseInfo ->)
+      def dump(dumper, &block : BaseInfo ->)
         super(dumper) {|i| yield i }
         {{yield}}
       end
