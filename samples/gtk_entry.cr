@@ -1,4 +1,7 @@
-require "gobject/gtk/autorun"
+require "../src/gobject"
+require_gobject "Gio"
+require_gobject "Gtk"
+require "../src/gtk/autorun"
 
 window = Gtk::Window.new
 window.title = "Enter something!"

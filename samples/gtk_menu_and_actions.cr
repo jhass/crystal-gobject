@@ -1,5 +1,8 @@
-require "gobject/gtk"
-require "gobject/gio"
+require "../src/gobject"
+require_gobject "Gio"
+require_gobject "Gtk"
+require "../src/gio"
+require "../src/gtk"
 
 class MyApplication < Gtk::Application
   def self.new
