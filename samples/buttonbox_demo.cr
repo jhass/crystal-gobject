@@ -1,6 +1,9 @@
 # A ButtonBox should be used to provide a consistent layout of buttons throughout your application.
 # The layout/spacing can be altered by the programmer, or if desired, 
 # by the user to alter the "feel" of a program to a small degree.
+# The main purpose of Gtk::ButtonBox is to make sure the children have all the same size.
+# Gtk::ButtonBox gives all children the same size, 
+# but it does allow 'outliers' to keep their own larger size.
 
 require "gobject/gtk/autorun"
 
