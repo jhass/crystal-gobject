@@ -17,6 +17,7 @@
 #    4. width and height indicate the number of columns and rows the child widget will span, respectively.
 # Finally, Gtk::Grid can be used like a Gtk::Box by just using Gtk::Grid.add(), which will place children
 # next to each other in the direction determined by the “orientation” property
+
 require "gobject/gtk/autorun"
 
 window = Gtk::Window.new

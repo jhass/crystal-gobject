@@ -1,3 +1,10 @@
+# Boxes are invisible containers into which we can pack our widgets.
+# When packing widgets into a horizontal box, the
+# objects are inserted horizontally from left to right or right to left 
+# depending on whether Gtk::Box.pack_start() or Gtk::Box.pack_end() is used.
+# In a vertical box, widgets are packed from top to bottom or vice versa.
+# You may use any combination of boxes inside or beside other boxes to create the desired effect.
+
 require "gobject/gtk/autorun"
 
 window = Gtk::Window.new
@@ -5,8 +12,8 @@ window.title = "Box demo!"
 window.connect "destroy", &->Gtk.main_quit
 window.border_width = 10
 
-box = Gtk::Box.new Gtk::Orientation::VERTICAL,2
-vb = Gtk::Box.new Gtk::Orientation::VERTICAL,2
+box = Gtk::Box.new Gtk::Orientation::VERTICAL, spacing = 2
+vb = Gtk::Box.new Gtk::Orientation::VERTICAL, spacing = 2
 
 lbl = Gtk::Label.new "Enter name"
 vb.pack_start(lbl, expand = true, fill = true, padding = 10)
