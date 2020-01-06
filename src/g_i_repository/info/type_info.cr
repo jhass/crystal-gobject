@@ -56,7 +56,9 @@ module GIRepository
              when .interface?
                interface = self.interface
                name = interface.name
-               if name.nil? || BLACKLIST.includes?(name) || (name && 'a' <= name[0] <= 'z') # More weird stuff, also compiler could be smarter here
+               if interface.info_type.unresolved?
+                 return "Void*"
+               elsif name.nil? || BLACKLIST.includes?(name) || (name && 'a' <= name[0] <= 'z') # More weird stuff, also compiler could be smarter here
                  interface.is_a?(CallbackInfo) ? "-> Void" : "Void*"
                else
                  namespace = "Lib#{interface.namespace}::"
