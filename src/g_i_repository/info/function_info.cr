@@ -34,22 +34,22 @@ module GIRepository
       end
     end
 
-    def wrapper_definition(libname, indent="")
+    def wrapper_definition(libname, indent = "")
       method_name = name
       return unless method_name
 
       if method_name.starts_with?("get_")
-        prefix = "get_"
+        method_prefix = "get_"
         method_name = method_name[4..-1]
       elsif method_name.starts_with?("set_") && args.size == 2 && method?
-        prefix = "set_"
+        method_prefix = "set_"
         method_name = "#{method_name[4..-1]}="
       elsif method_name.starts_with?("is_")
-        prefix = "is_"
+        method_prefix = "is_"
         method_name = "#{method_name[3..-1]}?"
       end
 
-      method_name = "#{prefix}#{method_name}" if ('0'..'9').includes? method_name[0]
+      method_name = "#{method_prefix}#{method_name}" if ('0'..'9').includes? method_name[0]
 
       String.build do |io|
         io << "#{indent}def "
