@@ -23,7 +23,7 @@ available.
 ### Debian
 
 ```
-sudo apt install libgtk-3-dev libgirepository1.0-dev
+sudo apt install libgirepository1.0-dev
 ```
 
 ## Usage
@@ -69,9 +69,16 @@ of documentation.
 
 ### Samples
 
-Give the hello world sample a try:
+Clone the repo and give the samples a try:
 ```
 crystal run samples/gtk_hello_world.cr
+```
+
+To run the samples you will also need the gtk development library.
+
+On Debian you can install it like so:
+```
+sudo apt install libgtk-3-dev
 ```
 
 ## Contributing
