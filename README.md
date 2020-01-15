@@ -20,7 +20,21 @@ Install like any other shard. Additionally you'll need gobject-introspection ins
 as well as the GObject based library you want to use and its typelib file needs to be
 available.
 
+### Debian
+
+```
+sudo apt install libgirepository1.0-dev
+```
+
 ## Usage
+
+Include in your shard.yml:
+```yaml
+dependencies:
+  gobject:
+    github: jhass/crystal-gobject
+    branch: master
+```
 
 For libraries that have convenience wrappers you just require them under the `goject`
 namespace. For example:
@@ -53,6 +67,20 @@ and resources as compiling the compiler does. Also libraries as Gtk are huge! Ge
 for Gtk and its dependencies will take a long time and generate about a gigabyte
 of documentation.
 
+### Samples
+
+Clone the repo and give the samples a try:
+```
+crystal run samples/gtk_hello_world.cr
+```
+
+To run the samples you will also need the gtk development library.
+
+On Debian you can install it like so:
+```
+sudo apt install libgtk-3-dev
+```
+
 ## Contributing
 
 Pull requests are welcome! If you encounter a bug, the first step is to produce
@@ -84,5 +112,4 @@ how the current bindings see that info. Look at its options, you'll need to make
 of them to drill in, otherwise it's just too much output due to how it displays
 the same infos all over again and again recursively.
 
-For now convenience extensions and overrides go under `src/library_name`,
-so for example `src/gtk` for Gtk or `src/g_lib` for GLib.
+For now convenience extensions and overrides go under `src/library_name`, so for example `src/gtk` for Gtk or `src/g_lib` for GLib.

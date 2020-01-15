@@ -2,6 +2,10 @@ require "./base_info"
 
 module GIRepository
   class ConstantInfo < BaseInfo
+    def name
+      super.try &.sub(/\A[a-z]/) { |m| m[0].upcase }
+    end
+
     def value
       size = LibGIRepository.constant_info_get_value(self, out value)
       {size, value}

@@ -19,6 +19,10 @@ module GIRepository
 
     def lib_definition
       String.build do |io|
+        each_constant do |constant|
+          io.puts "#{constant.lib_definition}"
+        end
+
         io.puts "  struct #{name} # interface"
 
         iface_struct = self.iface_struct
@@ -26,10 +30,6 @@ module GIRepository
           iface_struct.field_definition(io)
         else
           io.puts "    _data : UInt8[0]"
-        end
-
-        each_constant do |constant|
-          io.puts "  #{constant.lib_definition}"
         end
 
         each_prerequisite do |prerequisite|
@@ -60,6 +60,10 @@ module GIRepository
     def wrapper_definition(libname, indent = "")
       String.build do |io|
         io.puts "#{indent}module #{name}"
+
+        each_constant do |constant|
+          io.puts constant.wrapper_definition libname, indent + "  "
+        end
 
         each_method do |method|
           io.puts method.wrapper_definition libname, indent + "  "
