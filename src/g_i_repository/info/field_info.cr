@@ -10,6 +10,7 @@ module GIRepository
 
     def name(keyword_safe=true)
       name = super()
+      name = "_#{name}" if name == name.upcase if name
       name += '_' if keyword_safe && KEYWORDS.includes? name if name
       name
     end
