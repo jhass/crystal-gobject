@@ -38,6 +38,8 @@ module GIRepository
       method_name = name
       return unless method_name
 
+      method_name = method_name.underscore
+
       if method_name.starts_with?("get_")
         method_prefix = "get_"
         method_name = method_name[4..-1]

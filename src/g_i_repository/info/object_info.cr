@@ -21,11 +21,11 @@ module GIRepository
 
     def lib_definition
       String.build do |io|
-        io.puts "  struct #{name} # object"
-
         each_constant do |constant|
-          io.puts "  #{constant.lib_definition}"
+          io.puts constant.lib_definition
         end
+
+        io.puts "  struct #{name} # object"
 
         each_field do |field|
           io.puts "  #{field.lib_definition}"
@@ -68,7 +68,7 @@ module GIRepository
         write_to_unsafe libname, io, indent
 
         each_interface do |interface|
-          io.puts "#{indent}  include #{interface.full_constant}"
+          io.puts "#{indent}  include #{interface.full_constant}" unless interface.info_type.unresolved?
         end
 
         each_property do |property|

@@ -53,6 +53,8 @@ module GIRepository
         when .utf8?
           string = String.new(value.v_string)
           string.inspect
+        when .array?
+          "Pointer(StaticArray(#{type.param_type.lib_definition}, #{size})).#{size > 0 ? "new(#{value.v_pointer.address.inspect})" : "null"}"
         when .interface?
           "# INTERFACE CONSTANT #{name} #{size}" # debug, should never end up being generated
         else
