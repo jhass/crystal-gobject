@@ -6,6 +6,7 @@ module GIRepository
 
     def name
       name = super
+      name = "_#{name}" if name[0].uppercase? if name
       name = "_#{name}" if KEYWORDS.includes? name
       name.gsub(/_+$/, "") if name
     end
