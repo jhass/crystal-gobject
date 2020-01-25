@@ -27,12 +27,25 @@ module GIRepository
       "  # Property #{name} : #{type.lib_definition}"
     end
 
+    def gtype
+      tag = type.tag
+      if tag.int32?
+        # G_TYPE_INT is documented to represent gint which is documented as an alias to the
+        # standard C int, which is platform dependent. However there's no fundamental
+        # gtype defined for INT32 and all GIR metadata (such as g_value_set_int's) points
+        # towards mapping INT32 to G_TYPE_INT being correct.
+        "INT"
+      else
+        tag.to_s
+      end
+    end
+
     def wrapper_definition(libname, indent="")
       String.build do |io|
         this = "to_unsafe.as(#{libname}::#{container.name}*)"
         if getter?
           io.puts "#{indent}def #{name}"
-          io.puts "#{indent}  gvalue = GObject::Value.new(GObject::Type::#{type.tag})"
+          io.puts "#{indent}  gvalue = GObject::Value.new(GObject::Type::#{gtype})"
           io.puts "#{indent}  LibGObject.object_get_property(@pointer.as(LibGObject::Object*), \"#{name}\", gvalue)"
           io.puts "#{indent}  #{type.unwrap_gvalue("gvalue")}"
           io.puts "#{indent}end"
@@ -41,7 +54,7 @@ module GIRepository
 
         if setter?
           io.puts "#{indent}def #{name}=(value)"
-          io.puts "#{indent}  gvalue = GObject::Value.new(GObject::Type::#{type.tag})"
+          io.puts "#{indent}  gvalue = GObject::Value.new(GObject::Type::#{gtype})"
           io.puts "#{indent}  #{type.wrap_in_gvalue("gvalue", "value")}"
           io.puts "#{indent}  LibGObject.object_set_property(@pointer.as(LibGObject::Object*), \"#{name}\", gvalue)"
           io.puts "#{indent}end"
