@@ -192,8 +192,10 @@ module GIRepository
     Dumper.def do
       dumper.puts "* tag = #{tag}"
       dumper.puts "* pointer = #{pointer?}"
+      dumper.puts "* array_type = #{array_type}" if tag.array?
 
       Dumper.dump_child interface if tag.interface?
+      Dumper.dump_child param_type if tag.array?
     end
   end
 end

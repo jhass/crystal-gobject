@@ -225,7 +225,7 @@ compiler.flags << "docs"
 compiler.wants_doc = true
 result = compiler.top_level_semantic sources
 
-generator = Generator.new(result.program, included_dirs, output_directory, "html", nil)
+generator = Generator.new(result.program, included_dirs, output_directory, "html", nil, "", "")
 generator.gir_namespaces = namespaces.map(&.name)
 if paths = gir_search_paths
   generator.gir_search_paths = paths

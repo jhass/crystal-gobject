@@ -76,7 +76,7 @@ module GIRepository
             next
           end
 
-          if nesting_limit?
+          if nesting_limit? || child.info_type.unresolved?
             child.dump_base(self)
             next
           end
