@@ -39,10 +39,25 @@ class TextViewWindow < Gtk::ApplicationWindow
     end 
   
     radio_wrapnone = Gtk::RadioButton.new_with_label_from_widget nil, "No Wrapping"
+    radio_wrapnone.on_toggled do |widget|
+      if textview = @textview
+        textview.wrap_mode = Gtk::WrapMode::NONE
+      end
+    end 
 
     radio_wrapchar = Gtk::RadioButton.new_with_label_from_widget radio_wrapnone, "Character Wrapping"
+    radio_wrapchar.on_toggled do |widget|
+      if textview = @textview
+        textview.wrap_mode = Gtk::WrapMode::CHAR
+      end
+    end 
 
     radio_wrapword = Gtk::RadioButton.new_with_label_from_widget radio_wrapnone, "Word Wrapping"
+    radio_wrapword.on_toggled do |widget|
+      if textview = @textview
+        textview.wrap_mode = Gtk::WrapMode::WORD
+      end
+    end 
 
     if grid = @grid
       grid.attach(check_editable, 0, 2, 1, 1)
@@ -75,18 +90,38 @@ class TextViewWindow < Gtk::ApplicationWindow
     radio_justifyleft = Gtk::RadioToolButton.new nil
     radio_justifyleft.icon_name = "format-justify-left-symbolic"
     toolbar.insert radio_justifyleft, 4
+    radio_justifyleft.on_toggled do |widget|
+      if textview = @textview
+        textview.justification = Gtk::Justification::LEFT
+      end
+    end
 
     radio_justifycenter = Gtk::RadioToolButton.new_from_widget(radio_justifyleft)
     radio_justifycenter.icon_name = "format-justify-center-symbolic"
     toolbar.insert radio_justifycenter, 5
+    radio_justifycenter.on_toggled do |widget|
+      if textview = @textview
+        textview.justification = Gtk::Justification::CENTER
+      end
+    end
 
     radio_justifyright = Gtk::RadioToolButton.new_from_widget(radio_justifyleft)
     radio_justifyright.icon_name = "format-justify-right-symbolic"
     toolbar.insert radio_justifyright, 6
+    radio_justifyright.on_toggled do |widget|
+      if textview = @textview
+        textview.justification = Gtk::Justification::RIGHT
+      end
+    end
 
     radio_justifyfill = Gtk::RadioToolButton.new_from_widget(radio_justifyleft)
     radio_justifyfill.icon_name = "format-justify-fill-symbolic"
     toolbar.insert radio_justifyfill, 7
+    radio_justifyfill.on_toggled do |widget|
+      if textview = @textview
+        textview.justification = Gtk::Justification::FILL
+      end
+    end
 
     toolbar.insert Gtk::SeparatorToolItem.new, 8
 
