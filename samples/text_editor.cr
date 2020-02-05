@@ -1,4 +1,5 @@
 require "gobject/gtk"
+require_gobject "Pango"
 
 class TextViewWindow < Gtk::ApplicationWindow
   
@@ -75,14 +76,17 @@ class TextViewWindow < Gtk::ApplicationWindow
     end
     button_bold = Gtk::ToolButton.new nil, nil
     button_bold.icon_name = "format-text-bold-symbolic"
+    button_bold.on_clicked { tag_button_clicked(@tag_bold) }
     toolbar.insert button_bold, 0
 
     button_italic = Gtk::ToolButton.new nil, nil
     button_italic.icon_name = "format-text-italic-symbolic"
+    button_italic.on_clicked { tag_button_clicked(@tag_italic) }
     toolbar.insert button_italic, 1
 
     button_underline = Gtk::ToolButton.new nil, nil
     button_underline.icon_name = "format-text-underline-symbolic"
+    button_underline.on_clicked { tag_button_clicked(@tag_underline) }
     toolbar.insert button_underline, 2
 
     toolbar.insert Gtk::SeparatorToolItem.new, 3
@@ -144,14 +148,45 @@ class TextViewWindow < Gtk::ApplicationWindow
     if grid = @grid
       grid.attach(scrolledwindow, 0, 1, 3, 1)
     end
-    @textview = Gtk::TextView.new
-    if textview = @textview
-      textbuffer = textview.buffer
-      textbuffer.text="This is some text inside of a Gtk::TextView.\n" +
+    textview = Gtk::TextView.new
+    textbuffer = textview.buffer
+    textbuffer.text="This is some text inside of a Gtk::TextView.\n" +
                       "Select text and click one of the buttons 'bold', 'italic',or 'underline' \n" +
                       "to modify the text accordingly."
-      @textbuffer = textview.buffer.as(Gtk::TextBuffer)
-      scrolledwindow.add textview
+    text_tag_table = textbuffer.tag_table
+    tag_bold = Gtk::TextTag.new "bold"
+    tag_bold.weight = Pango::Weight::BOLD  # 700
+    text_tag_table.add tag_bold
+    @tag_bold = tag_bold.as(Gtk::TextTag)
+    tag_italic = Gtk::TextTag.new "italic"
+    tag_italic.style = Pango::Style::ITALIC # 2
+    text_tag_table.add tag_italic
+    @tag_italic = tag_italic.as(Gtk::TextTag)
+    tag_underline = Gtk::TextTag.new "underline"
+    tag_underline.underline = Pango::Underline::SINGLE 
+    text_tag_table.add tag_underline
+    @tag_underline = tag_underline.as(Gtk::TextTag)
+    tag_found = Gtk::TextTag.new "found"
+    tag_found.background = "yellow"
+    text_tag_table.add tag_found
+    @tag_found = tag_found.as(Gtk::TextTag)
+    @textbuffer = textbuffer.as(Gtk::TextBuffer)
+    @textview = textview.as(Gtk::TextView)
+    scrolledwindow.add textview
+  end
+
+  def tag_button_clicked(tag)
+    if textbuffer = @textbuffer
+      if textbuffer.has_selection
+        if s = Gtk::TextIter.new
+          if e = Gtk::TextIter.new
+            if t = tag
+              textbuffer.selection_bounds(s, e)
+              textbuffer.apply_tag(t, s, e)
+            end
+          end 
+        end
+      end
     end
   end
  
