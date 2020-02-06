@@ -1,5 +1,25 @@
 require "gobject/gtk"
 require_gobject "Pango"
+require_gobject "PangoCairo"
+
+class SearchDialog < Gtk::Dialog
+ 
+  def self.new
+    super
+  end
+
+  def initialize(ptr)
+    super(ptr)
+    self.add_button "Find", Gtk::ResponseType::OK
+    self.add_button "Cancel", Gtk::ResponseType::CANCEL
+    box = self.content_area.as(Gtk::Box)
+    box.add Gtk::Label.new("Insert text you want to search for:")
+    entry = Gtk::Entry.new
+    box.add entry
+    @entry = entry.as Gtk::Entry
+  end
+
+end
 
 class TextViewWindow < Gtk::ApplicationWindow
   
@@ -137,6 +157,7 @@ class TextViewWindow < Gtk::ApplicationWindow
 
     button_search = Gtk::ToolButton.new nil, nil
     button_search.icon_name = "system-search-symbolic"
+    button_search.on_clicked { on_search_clicked }
     toolbar.insert button_search, 11
 
   end
@@ -163,7 +184,7 @@ class TextViewWindow < Gtk::ApplicationWindow
     text_tag_table.add tag_italic
     @tag_italic = tag_italic.as(Gtk::TextTag)
     tag_underline = Gtk::TextTag.new "underline"
-    tag_underline.underline = Pango::Underline::SINGLE 
+    tag_underline.underline = Pango::Underline::SINGLE # 1
     text_tag_table.add tag_underline
     @tag_underline = tag_underline.as(Gtk::TextTag)
     tag_found = Gtk::TextTag.new "found"
@@ -188,6 +209,13 @@ class TextViewWindow < Gtk::ApplicationWindow
         end
       end
     end
+  end
+
+  def on_search_clicked
+    dialog = SearchDialog.new
+    response = dialog.run
+    puts response
+    dialog.destroy
   end
  
 end
