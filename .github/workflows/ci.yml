@@ -1,0 +1,22 @@
+name: CI
+
+on: [push, pull_request]
+
+jobs:
+  build:
+
+    runs-on: ubuntu-latest
+
+    container:
+      image: crystallang/crystal
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install packages
+      run: apt update && apt install -y libgirepository1.0-dev libgtk-3-dev xvfb
+    - name: Install dependencies
+      run: shards install
+    - name: Run tests
+      run: xvfb-run -a script/ci.sh
+    - name: Cleanup xvfb pidx
+      uses: bcomnes/cleanup-xvfb@v1

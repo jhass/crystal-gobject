@@ -3,3 +3,4 @@
 shard.lock
 bin/
 docs/
+*swp
