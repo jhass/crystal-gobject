@@ -33,7 +33,7 @@ Include in your shard.yml:
 dependencies:
   gobject:
     github: jhass/crystal-gobject
-    branch: master
+    branch: 0.3.0
 ```
 
 For libraries that have convenience wrappers you just require them under the `goject`
