@@ -113,3 +113,11 @@ of them to drill in, otherwise it's just too much output due to how it displays
 the same infos all over again and again recursively.
 
 For now convenience extensions and overrides go under `src/library_name`, so for example `src/gtk` for Gtk or `src/g_lib` for GLib.
+The future prospect is to have them live in their own shards that depend on this one.
+
+## Library specific shards
+
+Like mentioned above, we want shards that collect any convenience extensions and overrides to the code this library generates.
+Here's a well known list of  them:
+
+- [cairo-gobject](https://github.com/viachpaliy/cairo-gobject) - Cairo bindings for crystal-gobject.
