@@ -1,10 +1,10 @@
 name: gobject
-version: 0.3.0
+version: 0.3.1
 authors:
   - "Jonne Haß <me@jhass.eu>"
 description: "GObject introspection based binding generator and generated bindings"
 license: Apache-2.0
-crystal: 0.31.0
+crystal: 0.34.0
 libraries:
   libgirepository: ~> 1.0
 targets:
