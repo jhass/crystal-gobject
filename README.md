@@ -121,3 +121,4 @@ Like mentioned above, we want shards that collect any convenience extensions and
 Here's a well known list of  them:
 
 - [cairo-gobject](https://github.com/viachpaliy/cairo-gobject) - Cairo bindings for crystal-gobject.
+- [gtk_custom_widgets](https://github.com/viachpaliy/gtk_custom_widgets) - examples of custom widgets.
