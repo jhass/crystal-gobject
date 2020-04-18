@@ -1,21 +1,3 @@
-#require "../g_i_repository"
-#require "./namespace"
-#require "../g_object/object"
-#require "../gobject"
-#require_gobject "GIRepository"
-
-
-#repo = GIRepository::Repository.default
-#type_instance = repo.to_unsafe.as(LibGObject::Object*).value.g_type_instance
-#gclass = type_instance.g_class.value
-#gtype =  repo.type
-#iface = GObject.type_default_interface_ref(gtype)
-#pp iface
-#p LibGObject.object_interface_list_properties(repo, out size)
-#pp {{GObject::Object.methods.map &.name.stringify}}
-#name = ARGV[0]
-#namespace = Namespace.new(name)
-
 require "xml"
 require "option_parser"
 require "../g_i_repository"
@@ -25,6 +7,14 @@ require "compiler/crystal/**"
 module Crystal::Config
   def self.path
     Crystal::PATH
+  end
+end
+
+struct Crystal::CrystalPath
+  def self.default_path
+    default = previous_def
+    gobject = File.expand_path(File.join(__DIR__, "..", "..", "samples", "lib")) # darn hack, is there a better way?
+    "#{default}#{Process::PATH_DELIMITER}#{gobject}"
   end
 end
 
