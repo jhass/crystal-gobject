@@ -7,6 +7,12 @@ license: Apache-2.0
 crystal: 0.34.0
 libraries:
   libgirepository: ~> 1.0
+
+executables:
+  - gi-generator
+  - gi-dump
+  - gi-doc
+
 targets:
   gi-generator:
     main: src/generator/stage3.cr
@@ -14,3 +20,6 @@ targets:
     main: src/generator/dump.cr
   gi-doc:
     main: src/generator/doc.cr
+
+scripts:
+  postinstall: shards build
