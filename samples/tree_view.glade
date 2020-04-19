@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Generated with glade 3.22.2 -->
+<interface>
+  <requires lib="gtk+" version="3.20"/>
+  <!-- Model object with 1 column -->
+  <object class="GtkTreeStore" id="tree_model">
+    <columns>
+      <column type="gchararray"/>
+    </columns>
+  </object>
+  <object class="GtkApplicationWindow" id="main_window">
+    <property name="can_focus">False</property>
+    <property name="default_width">200</property>
+    <property name="default_height">200</property>
+    <!-- Quit on destroy signal -->
+    <signal name="destroy" handler="gtk_main_quit" swapped="no"/>
+    <child type="titlebar">
+      <placeholder/>
+    </child>
+    <child>
+      <object class="GtkTreeView" id="tree_view">
+        <property name="visible">True</property>
+        <property name="can_focus">True</property>
+        <property name="model">tree_model</property>
+        <child>
+          <!-- Column view -->
+          <object class="GtkTreeViewColumn" id="treeviewcolumn">
+            <property name="title" translatable="yes">A column</property>
+            <child>
+              <!-- Column view renderer, going to use column 0 from model -->
+              <object class="GtkCellRendererText" id="renderer"/>
+              <attributes>
+                <attribute name="text">0</attribute>
+              </attributes>
+            </child>
+          </object>
+        </child>
+        <child internal-child="selection">
+          <object class="GtkTreeSelection"/>
+        </child>
+      </object>
+    </child>
+  </object>
+</interface>
