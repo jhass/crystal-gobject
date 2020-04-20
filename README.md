@@ -36,7 +36,7 @@ dependencies:
     version: ~> 0.3.1
 ```
 
-For libraries that have convenience wrappers you just require them under the `goject`
+For libraries that have convenience wrappers you just require them under the `gobject`
 namespace. For example:
 
 ```cr
@@ -63,7 +63,7 @@ Gio and its dependencies.
 There's a very work in progress documentation generator under the `gi-doc` target.
 Note it is a modified version of the Crystal compiler's doc generator and thus
 compiles almost the entire compiler, thus compiling this tool takes as much time
-and resources as compiling the compiler does. Also libraries as Gtk are huge! Generating
+and resources as compiling the compiler does. Also libraries such as Gtk are huge! Generating
 for Gtk and its dependencies will take a long time and generate about a gigabyte
 of documentation.
 
@@ -71,12 +71,13 @@ of documentation.
 
 Clone the repo and give the samples a try:
 ```
-crystal run samples/gtk_hello_world.cr
+cd samples
+crystal run gtk_hello_world.cr
 ```
 
-To run the samples you will also need the gtk development library.
+To run the samples you will also need the Gtk development package. 
 
-On Debian you can install it like so:
+On Debian you can install it with: 
 ```
 sudo apt install libgtk-3-dev
 ```
