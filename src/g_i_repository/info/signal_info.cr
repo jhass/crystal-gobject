@@ -19,7 +19,7 @@ module GIRepository
         io.puts "#{indent}def on_#{identifier}(&__block : #{alias_name}Signal)"
         proc_arguments = args.each.with_index.map { |ai| arg, i = ai; "_arg#{i} : #{arg.type.lib_definition}*" }
         block_arguments = args.each.with_index.map { |ai| arg, i = ai; arg.type.convert_to_crystal("_arg#{i}") }
-        io.puts "#{indent}  __callback = ->(#{proc_arguments.join(", ")}) {"
+        io.puts "#{indent}  __callback = ->(#{proc_arguments.to_a.reverse.join(", ")}) {"
         io.puts "#{indent}   __return_value = __block.call(#{block_arguments.join(", ")})"
         io.puts "#{indent}   #{return_type.convert_from_crystal("__return_value")}"
         io.puts "#{indent}  }"
