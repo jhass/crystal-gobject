@@ -67,6 +67,7 @@ module GIRepository
                  case interface
                  when ObjectInfo
                    type = "#{type}*" unless pointer?
+                 else
                  end
                  type
                end
@@ -160,11 +161,15 @@ module GIRepository
           "#{variable}.object = #{value}"
         when EnumInfo
           "#{variable}.enum = #{value}"
+        else
+          "#{variable} = #{value}"
         end
       when .boolean?
         "#{variable}.boolean = #{value}"
       when .utf8?
         "#{variable}.string = #{value}"
+      else
+        "#{variable} = #{value}"
       end
     end
 
