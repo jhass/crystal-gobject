@@ -23,8 +23,8 @@ lib LibGLib
   GINT16_MODIFIER = "h" # : UInt8*
   GINT32_FORMAT = "i" # : UInt8*
   GINT32_MODIFIER = "" # : UInt8*
-  GINT64_FORMAT = "li" # : UInt8*
-  GINT64_MODIFIER = "l" # : UInt8*
+  GINT64_FORMAT = "lli" # : UInt8*
+  GINT64_MODIFIER = "ll" # : UInt8*
   GINTPTR_FORMAT = "li" # : UInt8*
   GINTPTR_MODIFIER = "l" # : UInt8*
   GNUC_FUNCTION = "" # : UInt8*
@@ -35,7 +35,7 @@ lib LibGLib
   GSSIZE_MODIFIER = "l" # : UInt8*
   GUINT16_FORMAT = "hu" # : UInt8*
   GUINT32_FORMAT = "u" # : UInt8*
-  GUINT64_FORMAT = "lu" # : UInt8*
+  GUINT64_FORMAT = "llu" # : UInt8*
   GUINTPTR_FORMAT = "lu" # : UInt8*
   HAVE_GINT64 = 1 # : Int32
   HAVE_GNUC_VARARGS = 1 # : Int32
@@ -86,12 +86,12 @@ lib LibGLib
   MAXUINT32 = 4294967295 # : UInt32
   MAXUINT64 = 18446744073709551615 # : UInt64
   MAXUINT8 = 255 # : UInt8
-  MICRO_VERSION = 0 # : Int32
+  MICRO_VERSION = 1 # : Int32
   MININT16 = -32768 # : Int16
   MININT32 = -2147483648 # : Int32
   MININT64 = -9223372036854775808 # : Int64
   MININT8 = -128 # : Int8
-  MINOR_VERSION = 62 # : Int32
+  MINOR_VERSION = 64 # : Int32
   MODULE_SUFFIX = "so" # : UInt8*
   OPTION_REMAINING = "" # : UInt8*
   PDP_ENDIAN = 3412 # : Int32
@@ -116,7 +116,7 @@ lib LibGLib
   SQRT2 = 1.414214 # : Float64
   STR_DELIMITERS = "_-|> <." # : UInt8*
   SYSDEF_AF_INET = 2 # : Int32
-  SYSDEF_AF_INET6 = 10 # : Int32
+  SYSDEF_AF_INET6 = 30 # : Int32
   SYSDEF_AF_UNIX = 1 # : Int32
   SYSDEF_MSG_DONTROUTE = 4 # : Int32
   SYSDEF_MSG_OOB = 1 # : Int32
@@ -220,6 +220,7 @@ lib LibGLib
   fun byte_array_free_to_bytes = g_byte_array_free_to_bytes(array : Void*) : LibGLib::Bytes*
   fun byte_array_new = g_byte_array_new() : Void*
   fun byte_array_new_take = g_byte_array_new_take(data : UInt8*, len : UInt64) : Void*
+  fun byte_array_steal = g_byte_array_steal(array : Void*, len : UInt64*) : UInt8*
   fun byte_array_unref = g_byte_array_unref(array : Void*) : Void
 
   struct Bytes # struct
@@ -1604,6 +1605,7 @@ lib LibGLib
   fun byte_array_free_to_bytes = g_byte_array_free_to_bytes(array : Void*) : LibGLib::Bytes*
   fun byte_array_new = g_byte_array_new() : Void*
   fun byte_array_new_take = g_byte_array_new_take(data : UInt8*, len : UInt64) : Void*
+  fun byte_array_steal = g_byte_array_steal(array : Void*, len : UInt64*) : UInt8*
   fun byte_array_unref = g_byte_array_unref(array : Void*) : Void
   fun canonicalize_filename = g_canonicalize_filename(filename : UInt8*, relative_to : UInt8*) : UInt8*
   fun chdir = g_chdir(path : UInt8*) : Int32
@@ -1691,6 +1693,7 @@ lib LibGLib
   fun get_locale_variants = g_get_locale_variants(locale : UInt8*) : UInt8**
   fun get_monotonic_time = g_get_monotonic_time() : Int64
   fun get_num_processors = g_get_num_processors() : UInt32
+  fun get_os_info = g_get_os_info(key_name : UInt8*) : UInt8*
   fun get_prgname = g_get_prgname() : UInt8*
   fun get_real_name = g_get_real_name() : UInt8*
   fun get_real_time = g_get_real_time() : Int64
@@ -2012,6 +2015,7 @@ lib LibGLib
   fun unix_error_quark = g_unix_error_quark() : UInt32
   fun unix_fd_add_full = g_unix_fd_add_full(priority : Int32, fd : Int32, condition : LibGLib::IOCondition, function : LibGLib::UnixFDSourceFunc, user_data : Void*, notify : LibGLib::DestroyNotify) : UInt32
   fun unix_fd_source_new = g_unix_fd_source_new(fd : Int32, condition : LibGLib::IOCondition) : LibGLib::Source*
+  fun unix_get_passwd_entry = g_unix_get_passwd_entry(user_name : UInt8*, error : LibGLib::Error**) : Void*
   fun unix_open_pipe = g_unix_open_pipe(fds : Int32*, flags : Int32, error : LibGLib::Error**) : Bool
   fun unix_set_fd_nonblocking = g_unix_set_fd_nonblocking(fd : Int32, nonblock : Bool, error : LibGLib::Error**) : Bool
   fun unix_signal_add = g_unix_signal_add_full(priority : Int32, signum : Int32, handler : LibGLib::SourceFunc, user_data : Void*, notify : LibGLib::DestroyNotify) : UInt32
@@ -2104,6 +2108,7 @@ lib LibGLib
  alias RegexEvalCallback = LibGLib::MatchInfo*, LibGLib::String*, Void* -> Bool
  alias ScannerMsgFunc = LibGLib::Scanner*, UInt8*, Bool -> Void
  alias SequenceIterCompareFunc = LibGLib::SequenceIter*, LibGLib::SequenceIter*, Void* -> Int32
+ alias SourceDisposeFunc = LibGLib::Source* -> Void
  alias SourceDummyMarshal =  -> Void
  alias SourceFunc = Void* -> Bool
  alias SpawnChildSetupFunc = Void* -> Void

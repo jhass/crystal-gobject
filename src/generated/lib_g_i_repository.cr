@@ -117,8 +117,8 @@ lib LibGIRepository
   ###########################################
 
   MAJOR_VERSION = 1 # : Int32
-  MICRO_VERSION = 0 # : Int32
-  MINOR_VERSION = 62 # : Int32
+  MICRO_VERSION = 1 # : Int32
+  MINOR_VERSION = 64 # : Int32
   TYPE_TAG_N_TYPES = 22 # : Int32
 
   ###########################################

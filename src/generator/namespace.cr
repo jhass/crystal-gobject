@@ -65,7 +65,6 @@ class Namespace
     GIRepository::Repository.instance.dependencies(@namespace).each do |dependency|
       namespace, version = dependency
       path = File.join(directory, "#{Namespace.new(namespace).lib_filename}.cr")
-      #File.write path, "# Dummy" unless File.exists? path
     end
 
     File.open(File.join(directory, lib_filepath), "w") do |file|
@@ -266,7 +265,7 @@ class Namespace
 
   private def wrapper_definition(io, source_path=nil)
     io.puts %(#<loc:push>#<loc:"#{source_path}",1,1>) if source_path
-    io.puts "module #{@namespace.constant}#<loc:pop>"
+    io.puts "module #{@namespace.constant}#{"#<loc:pop>" if source_path}"
     yield io
     io.puts "end"
     io.puts
