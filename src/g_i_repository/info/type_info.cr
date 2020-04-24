@@ -169,9 +169,11 @@ module GIRepository
         interface = self.interface
         case interface
         when ObjectInfo, StructInfo, UnionInfo
-          "#{variable}.object = #{value}"
+          "#{variable}.object = #{value}.to_unsafe.as(LibGObject::Object*)"
+        when InterfaceInfo
+          "#{variable}.instance = #{value}.to_unsafe"
         when EnumInfo
-          "#{variable}.enum = #{value}"
+          "#{variable}.enum = #{value}.value"
         else
           "#{variable} = #{value}"
         end
@@ -179,6 +181,16 @@ module GIRepository
         "#{variable}.boolean = #{value}"
       when .utf8?
         "#{variable}.string = #{value}"
+      when .int32?
+        "#{variable}.int = #{value}"
+      when .uint32?
+        "#{variable}.uint = #{value}"
+      when .float?
+        "#{variable}.float = #{value}"
+      when .double?
+        "#{variable}.double = #{value}"
+      when .ghash?
+        "#{variable}.pointer = #{value}.to_unsafe"
       else
         "#{variable} = #{value}"
       end
@@ -191,8 +203,10 @@ module GIRepository
         case interface
         when ObjectInfo, StructInfo, UnionInfo
           "#{interface.full_constant}.cast(#{variable}.object)"
+        when InterfaceInfo
+          "#{interface.full_constant}::Wrapper.cast(#{variable}.instance)"
         when EnumInfo
-          "#{variable}.enum"
+          "#{interface.full_constant}.new(#{variable}.enum)"
         else
           "#{variable}"
         end
@@ -200,6 +214,16 @@ module GIRepository
         "#{variable}.boolean"
       when .utf8?
         "#{variable}.string"
+      when .int32?
+        "#{variable}.int"
+      when .uint32?
+        "#{variable}.uint"
+      when .float?
+        "#{variable}.float"
+      when .double?
+        "#{variable}.double"
+      when .ghash?
+        "GLib::HashTable.new(#{variable}.pointer.as(LibGLib::HashTable*))"
       else
         variable
       end

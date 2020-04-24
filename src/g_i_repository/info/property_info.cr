@@ -29,18 +29,33 @@ module GIRepository
 
     def gtype
       tag = type.tag
-      if tag.int32?
+      case tag
+      when .int32?
         # G_TYPE_INT is documented to represent gint which is documented as an alias to the
         # standard C int, which is platform dependent. However there's no fundamental
         # gtype defined for INT32 and all GIR metadata (such as g_value_set_int's) points
         # towards mapping INT32 to G_TYPE_INT being correct.
         "INT"
+      when .interface?
+        interface = type.interface
+        case interface
+        when ObjectInfo, StructInfo, UnionInfo
+          "OBJECT"
+        when InterfaceInfo
+          "INTERFACE"
+        when EnumInfo
+          "ENUM"
+        else
+          "INTERFACE"
+        end
+      when .ghash?
+        "POINTER"
       else
         tag.to_s
       end
     end
 
-    def wrapper_definition(libname, indent="")
+    def wrapper_definition(libname, indent = "")
       String.build do |io|
         this = "to_unsafe.as(#{libname}::#{container.name}*)"
         if getter?
