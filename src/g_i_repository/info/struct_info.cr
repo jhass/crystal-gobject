@@ -78,6 +78,8 @@ module GIRepository
         write_methods libname, io, indent
 
         each_field do |field|
+          next if has_method_getter_or_setter?(field.name)
+
           if field.readable?
             io.puts "#{indent}  def #{field.name(false)}"
             io.puts "#{indent}    #{field.type.convert_to_crystal("(to_unsafe.as(#{ptr_type(libname)}).value.#{field.name})")}"

@@ -71,11 +71,12 @@ module GIRepository
           io.puts "#{indent}  include #{interface.full_constant}" unless interface.info_type.unresolved?
         end
 
+        write_methods libname, io, indent
+
         each_property do |property|
+          next if has_method_getter_or_setter?(property.name)
           io.puts property.wrapper_definition libname, indent + "  "
         end
-
-        write_methods libname, io, indent
 
         each_signal do |signal|
           io.puts signal.wrapper_definition libname, indent + "  "
