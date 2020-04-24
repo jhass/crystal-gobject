@@ -26,6 +26,14 @@ module GIRepository
         end
       end
 
+      def signal_lib_definition
+        base = lib_definition
+        if base && @container.is_a?(StructInfo)
+          base += "*"
+        end
+        base
+      end
+
       def wrapper_definition(libname, indent = "")
         @container.name
       end

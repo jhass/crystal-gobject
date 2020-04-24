@@ -51,6 +51,22 @@ class MyApplication < Gtk::Application
     window.set_default_size 600, 400
     window.icon_name = "applications-development"
 
+    menu = Gtk::Menu.new
+    menu.attach_to_widget(window, nil)
+    quit_item = Gtk::MenuItem.new_with_label("Quit")
+    quit_item.on_activate { self.quit }
+    menu.append(quit_item)
+    menu.show_all
+
+    window.on_button_press_event do |_, event|
+      if event.type.button_press? && event.button == Gdk::BUTTON_SECONDARY
+        menu.popup_at_pointer(event)
+        true
+      else
+        false
+      end
+    end
+
     window.show_all
   end
 end

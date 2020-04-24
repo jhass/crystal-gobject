@@ -85,6 +85,15 @@ module GIRepository
       base
     end
 
+    def signal_lib_definition
+      base = lib_definition
+      if tag.interface? && interface.is_a?(StructInfo)
+        # In signal functions, structs are always pointers, even if their TypeInfo disagrees
+        base += "*"
+      end
+      base
+    end
+
     def wrapper_definition(libname = "", indent = "")
       case tag
       when .interface?
