@@ -206,7 +206,7 @@ module GIRepository
         when InterfaceInfo
           "#{interface.full_constant}::Wrapper.cast(#{variable}.instance)"
         when EnumInfo
-          "#{interface.full_constant}.new(#{variable}.enum)"
+          "#{interface.full_constant}.new(#{interface.type}.new(#{variable}.enum))"
         else
           "#{variable}"
         end
