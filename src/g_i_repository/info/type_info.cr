@@ -116,6 +116,8 @@ module GIRepository
         case interface
         when ObjectInfo, StructInfo, UnionInfo, EnumInfo, FlagsInfo
           "#{interface.full_constant}.new(#{variable})"
+        when InterfaceInfo
+          "#{interface.full_constant}::Wrapper.new(#{variable})"
         else
           variable
         end

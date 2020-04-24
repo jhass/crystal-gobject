@@ -4,6 +4,7 @@ require "./registered_type_info"
 module GIRepository
   class InterfaceInfo < BaseInfo
     include RegisteredTypeInfo
+    include WrapperGenerator
 
     each_converted interface_info, constant, ConstantInfo
     each_converted interface_info, method, FunctionInfo
@@ -60,6 +61,13 @@ module GIRepository
     def wrapper_definition(libname, indent = "")
       String.build do |io|
         io.puts "#{indent}module #{name}"
+        io.puts "#{indent}  class Wrapper"
+        io.puts "#{indent}    include GObject::WrappedType"
+        io.puts "#{indent}    include #{name}"
+        io.puts
+        write_constructor libname, io, indent + "  "
+        io.puts "#{indent}  end"
+        io.puts
 
         each_constant do |constant|
           io.puts constant.wrapper_definition libname, indent + "  "

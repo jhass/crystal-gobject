@@ -25,5 +25,12 @@ module GIRepository
         io.puts
       end
     end
+
+    def has_method_getter_or_setter?(name)
+      each_method do |method|
+        return true if method.wrapper_name == name || method.wrapper_name == "#{name}="
+      end
+      false
+    end
   end
 end
