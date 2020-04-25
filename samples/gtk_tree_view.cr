@@ -16,9 +16,14 @@ model.set(child, [0], GObject::Value.new("Child!"), 1)
 
 view = Gtk::TreeView.cast(builder["tree_view"])
 view.on_row_activated do |view, path, column|
-  puts "TreeView: #{view}"
-  puts "Path: #{path.to_string}"
-  puts "Column: #{column.title}"
+  model = view.model.not_nil!
+
+  iter = Gtk::TreeIter.new
+  model.iter(iter, path)
+
+  value = GObject::Value.new
+  model.value(iter, 0, value)
+  puts "You Clicked on #{value.string}"
 end
 
 # Show main view.
