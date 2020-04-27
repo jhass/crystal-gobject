@@ -2,8 +2,8 @@ require "./base_info"
 
 module GIRepository
   class PropertyInfo < BaseInfo
-    def name
-      name = super
+    def crystal_name
+      name = self.name
       name.tr("-", "_") if name
     end
 
@@ -21,6 +21,14 @@ module GIRepository
 
     def setter?
       flags.writable?
+    end
+
+    def construct_only?
+      flags.construct_only?
+    end
+
+    def private?
+      flags.private?
     end
 
     def lib_definition
@@ -55,11 +63,16 @@ module GIRepository
       end
     end
 
+    def wrap_in_gvalue(variable, gvalue, io, indent = "")
+      io.puts "#{indent}#{gvalue} = GObject::Value.new(GObject::Type::#{gtype})"
+      io.puts "#{indent}#{type.wrap_in_gvalue(gvalue, variable)}"
+    end
+
     def wrapper_definition(libname, indent = "")
       String.build do |io|
         this = "to_unsafe.as(#{libname}::#{container.name}*)"
         if getter?
-          io.puts "#{indent}def #{name}"
+          io.puts "#{indent}def #{crystal_name}"
           io.puts "#{indent}  gvalue = GObject::Value.new(GObject::Type::#{gtype})"
           io.puts "#{indent}  LibGObject.object_get_property(@pointer.as(LibGObject::Object*), \"#{name}\", gvalue)"
           io.puts "#{indent}  #{type.unwrap_gvalue("gvalue")}"
@@ -67,10 +80,9 @@ module GIRepository
           io.puts
         end
 
-        if setter?
-          io.puts "#{indent}def #{name}=(value)"
-          io.puts "#{indent}  gvalue = GObject::Value.new(GObject::Type::#{gtype})"
-          io.puts "#{indent}  #{type.wrap_in_gvalue("gvalue", "value")}"
+        if setter? && !construct_only?
+          io.puts "#{indent}def #{crystal_name}=(value)"
+          wrap_in_gvalue("value", "gvalue", io, indent + "  ")
           io.puts "#{indent}  LibGObject.object_set_property(@pointer.as(LibGObject::Object*), \"#{name}\", gvalue)"
           io.puts "#{indent}end"
           io.puts
