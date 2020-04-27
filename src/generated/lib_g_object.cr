@@ -11,9 +11,9 @@ lib LibGObject
     _data : UInt8[0]
     # Property flags : LibGObject::BindingFlags
     # Property source : LibGObject::Object*
-    # Property source_property : UInt8*
+    # Property source-property : UInt8*
     # Property target : LibGObject::Object*
-    # Property target_property : UInt8*
+    # Property target-property : UInt8*
   end
   fun binding_get_flags = g_binding_get_flags(this : Binding*) : LibGObject::BindingFlags
   fun binding_get_source = g_binding_get_source(this : Binding*) : LibGObject::Object*
@@ -235,7 +235,7 @@ lib LibGObject
     parent_instance : LibGObject::ParamSpec*
     type : LibGLib::VariantType*
     default_value : LibGLib::Variant*
-    padding : Void*
+    padding : Void*[4]
   end
 
   struct TypeModule # object
@@ -489,7 +489,7 @@ lib LibGObject
 
   struct Value # struct
     g_type : UInt64
-    data : LibGObject::G_Value__data__union
+    data : LibGObject::G_Value__data__union[2]
   end
   fun value_copy = g_value_copy(this : Value*, dest_value : LibGObject::Value*) : Void
   fun value_dup_object = g_value_dup_object(this : Value*) : LibGObject::Object*

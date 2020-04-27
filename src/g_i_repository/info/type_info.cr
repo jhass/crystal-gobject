@@ -47,6 +47,14 @@ module GIRepository
       GIRepository.type_info_get_array_type(self)
     end
 
+    def array_length
+      GIRepository.type_info_get_array_length(self)
+    end
+
+    def array_fixed_size
+      GIRepository.type_info_get_array_fixed_size(self)
+    end
+
     def param_type(n = 0)
       BaseInfo.wrap(GIRepository.type_info_get_param_type(self, n)).as(TypeInfo)
     end
@@ -74,7 +82,9 @@ module GIRepository
              when .array?
                case array_type
                when ArrayType::C
-                 param_type.lib_definition
+                 param = param_type.lib_definition
+                 param += "[#{array_fixed_size}]" if array_fixed_size > 1
+                 param
                else
                  "Void"
                end
@@ -169,7 +179,7 @@ module GIRepository
         interface = self.interface
         case interface
         when ObjectInfo, StructInfo, UnionInfo
-          "#{variable}.object = #{value}.to_unsafe.as(LibGObject::Object*)"
+          "#{variable}.object = #{value}"
         when InterfaceInfo
           "#{variable}.instance = #{value}.to_unsafe"
         when EnumInfo
@@ -233,6 +243,8 @@ module GIRepository
       dumper.puts "* tag = #{tag}"
       dumper.puts "* pointer = #{pointer?}"
       dumper.puts "* array_type = #{array_type}" if tag.array?
+      dumper.puts "* array_length = #{array_length}" if tag.array?
+      dumper.puts "* array_fixed_size = #{array_fixed_size}" if tag.array?
 
       Dumper.dump_child interface if tag.interface?
       Dumper.dump_child param_type if tag.array?

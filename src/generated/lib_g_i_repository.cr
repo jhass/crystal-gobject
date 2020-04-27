@@ -71,7 +71,7 @@ lib LibGIRepository
     dummy5 : Void*
     dummy6 : UInt32
     dummy7 : UInt32
-    padding : Void*
+    padding : Void*[4]
   end
   fun base_info_equal = g_base_info_equal(this : BaseInfo*, info2 : LibGIRepository::BaseInfo*) : Bool
   fun base_info_get_attribute = g_base_info_get_attribute(this : BaseInfo*, name : UInt8*) : UInt8*

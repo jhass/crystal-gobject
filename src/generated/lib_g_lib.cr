@@ -252,7 +252,7 @@ lib LibGLib
 
   struct Cond # struct
     p : Void*
-    i : UInt32
+    i : UInt32[2]
   end
   fun cond_broadcast = g_cond_broadcast(this : Cond*) : Void
   fun cond_clear = g_cond_clear(this : Cond*) : Void
@@ -465,7 +465,7 @@ lib LibGLib
     hooks : LibGLib::Hook*
     dummy3 : Void*
     finalize_hook : LibGLib::HookFinalizeFunc
-    dummy : Void*
+    dummy : Void*[2]
   end
   fun hook_list_clear = g_hook_list_clear(this : HookList*) : Void
   fun hook_list_init = g_hook_list_init(this : HookList*, hook_size : UInt32) : Void
@@ -484,7 +484,7 @@ lib LibGLib
     read_buf : LibGLib::String*
     encoded_read_buf : LibGLib::String*
     write_buf : LibGLib::String*
-    partial_write_buf : Int8
+    partial_write_buf : Int8[6]
     use_buffer : UInt32
     do_encode : UInt32
     close_on_unref : UInt32
@@ -792,7 +792,7 @@ lib LibGLib
   struct Private # struct
     p : Void*
     notify : LibGLib::DestroyNotify
-    future : Void*
+    future : Void*[2]
   end
   fun private_get = g_private_get(this : Private*) : Void*
   fun private_replace = g_private_replace(this : Private*, value : Void*) : Void
@@ -831,7 +831,7 @@ lib LibGLib
 
   struct RWLock # struct
     p : Void*
-    i : UInt32
+    i : UInt32[2]
   end
   fun r_w_lock_clear = g_rw_lock_clear(this : RWLock*) : Void
   fun r_w_lock_init = g_rw_lock_init(this : RWLock*) : Void
@@ -855,7 +855,7 @@ lib LibGLib
 
   struct RecMutex # struct
     p : Void*
-    i : UInt32
+    i : UInt32[2]
   end
   fun rec_mutex_clear = g_rec_mutex_clear(this : RecMutex*) : Void
   fun rec_mutex_init = g_rec_mutex_init(this : RecMutex*) : Void
@@ -1509,7 +1509,7 @@ lib LibGLib
 
   union Mutex
     p : Void*
-    i : UInt32
+    i : UInt32[2]
   end
   fun mutex_clear = g_mutex_clear(this : Mutex*) : Void
   fun mutex_init = g_mutex_init(this : Mutex*) : Void
