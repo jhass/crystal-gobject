@@ -52,6 +52,9 @@ module GIRepository
         # gtype defined for INT32 and all GIR metadata (such as g_value_set_int's) points
         # towards mapping INT32 to G_TYPE_INT being correct.
         "INT"
+      when .uint32?
+        # Basically same story as above
+        "UINT"
       when .interface?
         interface = type.interface
         case interface
