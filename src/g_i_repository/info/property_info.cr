@@ -7,6 +7,14 @@ module GIRepository
       name.tr("-", "_") if name
     end
 
+    def arg_name
+      name = crystal_name
+      name = "_#{name}" if name[0].uppercase? if name
+      name = "_#{name}" if ArgInfo::KEYWORDS.includes? name
+      name.gsub(/_+$/, "") if name
+      name
+    end
+
     def type
       BaseInfo.wrap(GIRepository.property_info_get_type(self)).as(TypeInfo)
     end

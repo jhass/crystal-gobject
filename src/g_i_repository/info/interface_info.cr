@@ -61,6 +61,7 @@ module GIRepository
     def wrapper_definition(libname, indent = "")
       String.build do |io|
         io.puts "#{indent}module #{name}"
+        io.puts "#{indent}  # :nodoc:"
         io.puts "#{indent}  class Wrapper"
         io.puts "#{indent}    include GObject::WrappedType"
         io.puts "#{indent}    include #{name}"

@@ -20,7 +20,7 @@ name_container.pack_start(name_label, expand: true, fill: true, padding: 10)
 name_entry = Gtk::Entry.new
 name_container.pack_start(name_entry, expand: true, fill: true, padding: 10)
 
-name_submit = Gtk::Button.new_with_label "OK!"
+name_submit = Gtk::Button.new label: "OK!"
 name_submit.on_clicked { puts "Remembering you're called: #{name_entry.text}" }
 name_container.pack_start(name_submit, expand: true, fill: true, padding: 10)
 
@@ -32,7 +32,7 @@ remarks_container.pack_start(remarks_label, expand: true, fill: true, padding: 5
 remarks_entry = Gtk::Entry.new
 remarks_container.pack_start(remarks_entry, expand: true, fill: true, padding: 5)
 
-remarks_submit = Gtk::Button.new_with_label "Save"
+remarks_submit = Gtk::Button.new label: "Save"
 remarks_submit.on_clicked { puts "Stored remarks: #{remarks_entry.text}" }
 remarks_container.pack_start(remarks_submit, expand: true, fill: true, padding: 5)
 

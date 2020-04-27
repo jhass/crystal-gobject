@@ -1,10 +1,17 @@
 require "../helper"
 
 lib LibGObject
+  fun new_with_properties = g_object_new_with_properties(object_type : UInt64, n_properties : UInt32, names : UInt8**, values : Value*) : Object*
   fun signal_connect_data = g_signal_connect_data(instance : LibGObject::Object*, detailed_signal : UInt8*, c_handler : Callback, data : Void*, destroy_data : ClosureNotify, flags : ConnectFlags) : UInt64
 end
 
 module GObject
+  def self.type_from_name(name)
+    gtype = previous_def
+    abort "No GType for #{name} found\n#{caller.join("\n")}" if gtype == 0
+    gtype
+  end
+
   class Object
     def connect(signal, &callback)
       connect signal, callback
@@ -12,11 +19,11 @@ module GObject
 
     def connect(signal, callback)
       LibGObject.signal_connect_data(@pointer.as(LibGObject::Object*),
-                                     signal,
-                                     LibGObject::Callback.new(callback.pointer, Pointer(Void).null),
-                                     ClosureDataManager.register(callback.closure_data),
-                                     ->ClosureDataManager.deregister,
-                                     GObject::ConnectFlags::SWAPPED).tap do |handler_id|
+        signal,
+        LibGObject::Callback.new(callback.pointer, Pointer(Void).null),
+        ClosureDataManager.register(callback.closure_data),
+        ->ClosureDataManager.deregister,
+        GObject::ConnectFlags::SWAPPED).tap do |handler_id|
         if handler_id == 0
           raise ArgumentError.new("Couldn't connect signal #{signal} to #{type_name} (#{self.class})")
         end
@@ -38,12 +45,12 @@ module GObject
 
     private def first_handler_for(signal)
       GObject.signal_handler_find self,
-                                  SignalMatchType::ID,
-                                  signal_lookup(signal),
-                                  0,
-                                  nil,
-                                  nil,
-                                  nil
+        SignalMatchType::ID,
+        signal_lookup(signal),
+        0,
+        nil,
+        nil,
+        nil
     end
 
     # TODO: should perhaps become object.type.signal_lookup ?
