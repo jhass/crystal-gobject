@@ -1,9 +1,7 @@
 require "gobject/gtk/autorun"
 
-window = Gtk::Window.new
-window.title = "Enter something!"
+window = Gtk::Window.new(title: "Enter something!", border_width: 10)
 window.connect "destroy", &->Gtk.main_quit
-window.border_width = 10
 entry = Gtk::Entry.new
 entry.on_activate do |entry|
   puts entry.text

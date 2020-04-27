@@ -2,12 +2,8 @@ require "gobject/gtk"
 require "gobject/gio"
 
 class MyApplication < Gtk::Application
-  def self.new
-    super "org.example.application", :flags_none
-  end
-
-  def initialize(ptr)
-    super(ptr)
+  def initialize
+    super application_id: "org.example.application"
 
     on_activate do
       build_ui
@@ -46,14 +42,12 @@ class MyApplication < Gtk::Application
 
     self.menubar = menu_model
 
-    window = Gtk::ApplicationWindow.new self
-    window.title = "Hello World"
-    window.set_default_size 600, 400
-    window.icon_name = "applications-development"
+    window = Gtk::ApplicationWindow.new application: self, title: "Hello World",
+      default_width: 600, default_height: 400, icon_name: "applications-development"
 
     menu = Gtk::Menu.new
     menu.attach_to_widget(window, nil)
-    quit_item = Gtk::MenuItem.new_with_label("Quit")
+    quit_item = Gtk::MenuItem.new label: "Quit"
     quit_item.on_activate { self.quit }
     menu.append(quit_item)
     menu.show_all

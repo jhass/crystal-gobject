@@ -15,6 +15,7 @@ lib LibGObject
     # Property target : LibGObject::Object*
     # Property target-property : UInt8*
   end
+  fun _init_Binding = g_binding_get_type
   fun binding_get_flags = g_binding_get_flags(this : Binding*) : LibGObject::BindingFlags
   fun binding_get_source = g_binding_get_source(this : Binding*) : LibGObject::Object*
   fun binding_get_source_property = g_binding_get_source_property(this : Binding*) : UInt8*
@@ -27,6 +28,7 @@ lib LibGObject
     ref_count : UInt32
     qdata : LibGLib::Data*
   end
+  fun _init_InitiallyUnowned = g_initially_unowned_get_type
 
   struct Object # object
     g_type_instance : LibGObject::TypeInstance
@@ -41,6 +43,7 @@ lib LibGObject
     # Virtual function notify
     # Virtual function set_property
   end
+  fun _init_Object = g_object_get_type
   fun object_newv = g_object_newv(object_type : UInt64, n_parameters : UInt32, parameters : LibGObject::Parameter*) : LibGObject::Object*
   fun object_compat_control = g_object_compat_control(what : UInt64, data : Void*) : UInt64
   fun object_interface_find_property = g_object_interface_find_property(g_iface : LibGObject::TypeInterface*, property_name : UInt8*) : LibGObject::ParamSpec*
@@ -247,6 +250,7 @@ lib LibGObject
     # Virtual function load
     # Virtual function unload
   end
+  fun _init_TypeModule = g_type_module_get_type
   fun type_module_add_interface = g_type_module_add_interface(this : TypeModule*, instance_type : UInt64, interface_type : UInt64, interface_info : LibGObject::InterfaceInfo*) : Void
   fun type_module_register_enum = g_type_module_register_enum(this : TypeModule*, name : UInt8*, const_static_values : LibGObject::EnumValue*) : UInt64
   fun type_module_register_flags = g_type_module_register_flags(this : TypeModule*, name : UInt8*, const_static_values : LibGObject::FlagsValue*) : UInt64

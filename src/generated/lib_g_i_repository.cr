@@ -129,6 +129,7 @@ lib LibGIRepository
     parent : LibGObject::Object*
     priv : LibGIRepository::RepositoryPrivate*
   end
+  fun _init_Repository = g_irepository_get_type
   fun repository_dump = g_irepository_dump(arg : UInt8*, error : LibGLib::Error**) : Bool
   fun repository_error_quark = g_irepository_error_quark() : UInt32
   fun repository_get_default = g_irepository_get_default() : LibGIRepository::Repository*

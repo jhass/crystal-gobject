@@ -23,6 +23,34 @@ module GIRepository
       LibGIRepository.object_info_get_abstract self
     end
 
+    # Including those of ancestors
+    def all_properties
+      properties = self.properties # start with our own
+
+      # Then walk parents
+      parent = self.parent
+      while parent
+        parent.properties.each do |property|
+          # Avoid duplicates, let child properties of the same name shadow the parent ones
+          properties << property unless properties.any?(&.name.==(property.name))
+        end
+
+        parent = parent.parent
+      end
+
+      # Finally walk interfaces
+      each_interface do |interface|
+        interface.properties.each do |property|
+          # Avoid duplicates, let child properties of the same name shadow the interface ones
+          properties << property unless properties.any?(&.name.==(property.name))
+        end
+
+        # TODO: find an example interface with a prequisite and see if we handle that correctly
+      end
+
+      properties.sort_by(&.name.not_nil!)
+    end
+
     def lib_definition
       String.build do |io|
         each_constant do |constant|
@@ -50,6 +78,8 @@ module GIRepository
 
         io.puts "  end"
 
+        io.puts "  fun _init_#{name} = #{type_init}" unless type_init == "intern"
+
         each_method do |method|
           io.puts method.lib_definition
         end
@@ -76,17 +106,9 @@ module GIRepository
         write_to_unsafe libname, io, indent
 
         unless abstract?
-          constructor_properties = properties.select { |property| property.setter? }
+          constructor_properties = all_properties.select { |property| property.setter? }
           gtype = %(GObject.type_from_name("#{type_name}"))
           constructor_args = constructor_properties.map { |property| "#{property.arg_name} : #{property.type.wrapper_definition}? = nil" }
-
-          if !constructor_properties.empty? || !has_any_constructor?
-            io.puts "#{indent}  # :nodoc:"
-            io.puts "#{indent}  lib LibGType"
-            io.puts "#{indent}    fun init = #{type_init}"
-            io.puts "#{indent}  end"
-            io.puts
-          end
 
           if !constructor_properties.empty?
             io.puts "#{indent}  def initialize(*, #{constructor_args.join(", ")})"
@@ -99,12 +121,12 @@ module GIRepository
               io.puts "#{indent}      __values << gvalue.to_unsafe.value"
               io.puts "#{indent}    end"
             end
-            io.puts "#{indent}    LibGType.init"
+            io.puts "#{indent}    #{libname}._init_#{name}" unless type_init == "intern"
             io.puts "#{indent}    @pointer = LibGObject.new_with_properties(#{gtype}, __names.size, __names, __values).as(Void*)"
             io.puts "#{indent}  end"
           elsif !has_any_constructor?
             io.puts "#{indent}  def initialize"
-            io.puts "#{indent}    LibGType.init"
+            io.puts "#{indent}    #{libname}._init_#{name}" unless type_init == "intern"
             io.puts "#{indent}    @pointer = LibGObject.new_with_properties(#{gtype}, 0, nil, nil).as(Void*)"
             io.puts "#{indent}  end"
           end

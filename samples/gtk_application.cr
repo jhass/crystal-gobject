@@ -1,13 +1,11 @@
 require "gobject/gtk"
 
-application = Gtk::Application.new("org.crystal.sample", :flags_none)
+application = Gtk::Application.new(application_id: "org.crystal.sample")
 
 application.on_activate do
-  window = Gtk::ApplicationWindow.new(application)
-  window.border_width = 10
-  window.title = "Hello"
+  window = Gtk::ApplicationWindow.new(application: application, title: "Hello", border_width: 20)
   window.connect "destroy", &->application.quit
-  window.add Gtk::Label.new("Hello")
+  window.add Gtk::Label.new("Hello World!")
   window.show_all
 end
 

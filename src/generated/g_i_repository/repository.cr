@@ -9,13 +9,8 @@ module GIRepository
       @pointer.not_nil!.as(LibGIRepository::Repository*)
     end
 
-    # :nodoc:
-    lib LibGType
-      fun init = g_irepository_get_type
-    end
-
     def initialize
-      LibGType.init
+      LibGIRepository._init_Repository
       @pointer = LibGObject.new_with_properties(GObject.type_from_name("GIRepository"), 0, nil, nil).as(Void*)
     end
 

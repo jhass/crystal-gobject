@@ -15,12 +15,8 @@ class MyWindow < Gtk::ApplicationWindow
 end
 
 class MyApp < Gtk::Application
-  def self.new(id, flags : Gio::ApplicationFlags)
+  def initialize(**kwargs)
     super
-  end
-
-  def initialize(ptr)
-    super(ptr)
 
     on_activate do |application|
       window = MyWindow.new(self)
@@ -30,5 +26,5 @@ class MyApp < Gtk::Application
   end
 end
 
-app = MyApp.new("org.crystal.mysample", :flags_none)
+app = MyApp.new(application_id: "org.crystal.mysample")
 app.run
