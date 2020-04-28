@@ -126,7 +126,7 @@ module GIRepository
     end
 
     def to_s(io)
-      io << (name || "<no name>") << " (" << GIRepository.info_type_to_string(info_type) << ')'
+      io << (name || "<no name>") << " (" << GIRepository.info_type_to_string(info_type) << ", " << namespace << ')'
     end
 
     def to_unsafe

@@ -31,6 +31,10 @@ module GIRepository
       GIRepository.arg_info_may_be_null self
     end
 
+    def gvalue_out?
+      out? && type.tag.interface? && type.interface.namespace == "GObject" && type.interface.name == "Value"
+    end
+
     def type
       BaseInfo.wrap(GIRepository.arg_info_get_type(self)).as(TypeInfo)
     end

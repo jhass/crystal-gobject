@@ -104,6 +104,36 @@ module GIRepository
       base
     end
 
+    def gvalue_type
+      "GObject::Type::" + case tag
+      when .int32?
+        # G_TYPE_INT is documented to represent gint which is documented as an alias to the
+        # standard C int, which is platform dependent. However there's no fundamental
+        # gtype defined for INT32 and all GIR metadata (such as g_value_set_int's) points
+        # towards mapping INT32 to G_TYPE_INT being correct.
+        "INT"
+      when .uint32?
+        # Basically same story as above
+        "UINT"
+      when .interface?
+        interface = self.interface
+        case interface
+        when ObjectInfo, StructInfo, UnionInfo
+          "OBJECT"
+        when InterfaceInfo
+          "INTERFACE"
+        when EnumInfo
+          "ENUM"
+        else
+          "INTERFACE"
+        end
+      when .ghash?
+        "POINTER"
+      else
+        tag.to_s
+      end
+    end
+
     def wrapper_definition(libname = "", indent = "")
       case tag
       when .interface?
@@ -153,7 +183,11 @@ module GIRepository
     def convert_from_crystal(variable)
       case tag
       when .interface?
-        pointer? ? "#{variable}.to_unsafe.as(Lib#{interface.full_constant}*)" : variable
+        if interface.namespace == "GObject" && interface.name == "Value"
+          "#{variable}.to_gvalue.to_unsafe#{".value" unless pointer?}"
+        else
+          pointer? ? "#{variable}.to_unsafe.as(Lib#{interface.full_constant}*)" : variable
+        end
       when .array?
         if param_type.tag.uint8? # Assume UInt8* (gchar*) is a string for now
           variable
@@ -178,39 +212,6 @@ module GIRepository
       end
     end
 
-    def wrap_in_gvalue(variable, value)
-      case tag
-      when .interface?
-        interface = self.interface
-        case interface
-        when ObjectInfo, StructInfo, UnionInfo
-          "#{variable}.object = #{value}"
-        when InterfaceInfo
-          "#{variable}.instance = #{value}.to_unsafe"
-        when EnumInfo
-          "#{variable}.enum = #{value}.value"
-        else
-          "#{variable} = #{value}"
-        end
-      when .boolean?
-        "#{variable}.boolean = #{value}"
-      when .utf8?
-        "#{variable}.string = #{value}"
-      when .int32?
-        "#{variable}.int = #{value}"
-      when .uint32?
-        "#{variable}.uint = #{value}"
-      when .float?
-        "#{variable}.float = #{value}"
-      when .double?
-        "#{variable}.double = #{value}"
-      when .ghash?
-        "#{variable}.pointer = #{value}.to_unsafe"
-      else
-        "#{variable} = #{value}"
-      end
-    end
-
     def unwrap_gvalue(variable)
       case tag
       when .interface?
@@ -220,6 +221,8 @@ module GIRepository
           "#{interface.full_constant}.cast(#{variable}.object)"
         when InterfaceInfo
           "#{interface.full_constant}::Wrapper.cast(#{variable}.instance)"
+        when FlagsInfo
+          "#{interface.full_constant}.new(#{interface.type}.new(#{variable}.flags))"
         when EnumInfo
           "#{interface.full_constant}.new(#{interface.type}.new(#{variable}.enum))"
         else

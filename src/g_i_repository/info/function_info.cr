@@ -49,6 +49,14 @@ module GIRepository
       flags.is_constructor?
     end
 
+    def gvalue_out?
+      return false if constructor?
+
+      args.count { |arg|
+        arg.gvalue_out?
+      } == 1
+    end
+
     def lib_definition
       String.build do |io|
         io << "  fun #{prefix}#{name} = #{symbol}("
@@ -65,23 +73,28 @@ module GIRepository
         io << "self." unless method?
         io << method_name
 
-        wrapper_args = args.map(&.for_wrapper_definition(libname)).compact.join(", ")
+        gvalue_out_arg = args.find &.gvalue_out? if gvalue_out?
+        wrapper_args = gvalue_out? ? args.tap &.delete(gvalue_out_arg) : args
+        wrapper_args = wrapper_args.map(&.for_wrapper_definition(libname)).compact.join(", ")
         io << "(#{wrapper_args})" unless wrapper_args.empty?
 
         io << " : self" if constructor?
+        io << " : #{gvalue_out_arg.type.wrapper_definition(libname)}" if gvalue_out_arg
 
         io << "\n#{indent}  __error = Pointer(LibGLib::Error).null" if throws?
 
         io << "\n#{indent}  "
+        io << "#{gvalue_out_arg.name} = GObject::Value.new\n#{indent}  " if gvalue_out_arg
         io << "__return_value = " unless skip_return?
         io << "#{libname}.#{prefix}#{name}"
-
         lib_args = args.map(&.for_wrapper_pass(libname)).compact.join(", ")
         io << "(#{lib_args})" unless lib_args.empty?
 
         io << "\n#{indent}  GLib::Error.assert __error" if throws?
 
-        unless skip_return?
+        if gvalue_out_arg
+          io << "\n#{indent}  #{gvalue_out_arg.name}\n"
+        elsif !skip_return?
           io << "\n#{indent}  #{"cast " if constructor?}#{return_type.convert_to_crystal("__return_value")}"
           io << " if __return_value" if may_return_null?
           io << '\n'

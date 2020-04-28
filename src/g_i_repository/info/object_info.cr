@@ -116,9 +116,8 @@ module GIRepository
             io.puts "#{indent}    __values = [] of LibGObject::Value"
             constructor_properties.each do |property|
               io.puts "#{indent}    unless #{property.arg_name}.nil?"
-              io.puts %(#{indent}      __names << "#{property.name}".to_unsafe)
-              property.wrap_in_gvalue(property.arg_name, "gvalue", io, indent + "      ")
-              io.puts "#{indent}      __values << gvalue.to_unsafe.value"
+              io.puts "#{indent}      __names << \"#{property.name}\".to_unsafe"
+              io.puts "#{indent}      __values << #{property.arg_name}.to_gvalue.to_unsafe.value"
               io.puts "#{indent}    end"
             end
             io.puts "#{indent}    #{libname}._init_#{name}" unless type_init == "intern"

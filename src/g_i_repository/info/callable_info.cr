@@ -49,6 +49,15 @@ module GIRepository
       def convert_from_crystal(variable)
         variable
       end
+
+      def gvalue_type
+        case @container
+        when RegisteredTypeInfo
+          "GObject::Type::OBJECT"
+        else
+          "GObject::Type::NONE"
+        end
+      end
     end
 
     class SelfArgInfo
@@ -77,6 +86,10 @@ module GIRepository
       def from_wrapper_pass
         "#{@container.name}.new(this)"
       end
+
+      def gvalue_out?
+        false
+      end
     end
 
     class ErrorArgInfo
@@ -101,6 +114,10 @@ module GIRepository
 
       def from_wrapper_pass
         "error"
+      end
+
+      def gvalue_out?
+        false
       end
     end
 

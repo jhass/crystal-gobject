@@ -8,11 +8,11 @@ model = Gtk::TreeStore.cast(builder["tree_model"])
 
 root = Gtk::TreeIter.new
 model.append(root, nil)
-model.set(root, [0], GObject::Value.new("Root"), 1)
+model.set(root, {0}, {"Root"}, 1)
 
 child = Gtk::TreeIter.new
 model.append(child, root)
-model.set(child, [0], GObject::Value.new("Child!"), 1)
+model.set(child, {0}, {"Child!"}, 1)
 
 view = Gtk::TreeView.cast(builder["tree_view"])
 view.on_row_activated do |view, path, column|
@@ -21,9 +21,8 @@ view.on_row_activated do |view, path, column|
   iter = Gtk::TreeIter.new
   model.iter(iter, path)
 
-  value = GObject::Value.new
-  model.value(iter, 0, value)
-  puts "You Clicked on #{value.string}"
+  value = model.value(iter, 0)
+  puts "You Clicked on #{value.as_s}"
 end
 
 # Show main view.
