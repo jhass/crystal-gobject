@@ -21,7 +21,7 @@ module GIRepository
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
 
-    def symbol(symbol_name, symbol)
+    def symbol(symbol_name : ::String, symbol : Void*?)
       __return_value = LibGIRepository.typelib_symbol(@pointer.as(LibGIRepository::Typelib*), symbol_name.to_unsafe, symbol ? symbol : nil)
       __return_value
     end

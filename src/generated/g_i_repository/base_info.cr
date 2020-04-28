@@ -16,12 +16,12 @@ module GIRepository
       @pointer.not_nil!.as(LibGIRepository::BaseInfo*)
     end
 
-    def equal(info2)
+    def equal(info2 : GIRepository::BaseInfo)
       __return_value = LibGIRepository.base_info_equal(@pointer.as(LibGIRepository::BaseInfo*), info2.to_unsafe.as(LibGIRepository::BaseInfo*))
       __return_value
     end
 
-    def attribute(name)
+    def attribute(name : ::String)
       __return_value = LibGIRepository.base_info_get_attribute(@pointer.as(LibGIRepository::BaseInfo*), name.to_unsafe)
       (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
     end
@@ -56,7 +56,7 @@ module GIRepository
       __return_value
     end
 
-    def iterate_attributes(iterator, name, value)
+    def iterate_attributes(iterator : GIRepository::AttributeIter, name : ::String, value : ::String)
       __return_value = LibGIRepository.base_info_iterate_attributes(@pointer.as(LibGIRepository::BaseInfo*), iterator, name, value)
       __return_value
     end
