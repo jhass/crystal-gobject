@@ -43,17 +43,28 @@ module GIRepository
     end
 
     def for_wrapper_definition(libname)
-      if type.tag.interface?
-        interface = type.interface
-        case interface
-        when EnumInfo, FlagsInfo
-          "#{name} : #{type.wrapper_definition(libname)}#{"?" if nullable? || optional?}"
-        else
-          name
-        end
-      else
-        name
-      end
+      arg = case type.tag
+            when .int8?, .uint8?, .int16?, .uint16?, .int32?, .uint32?, .int64?, .uint64?
+              "#{name} : ::Int"
+            when .float?, .double?
+              "#{name} : ::Float"
+            when .array?
+              if type.param_type.tag.uint8? # Assume UInt8* (gchar*) is a string for now
+                "#{name} : ::String"
+              else
+                "#{name} : ::Enumerable#{"?" if nullable? || optional?}"
+              end
+            when .interface?
+              interface = type.interface
+              if interface.namespace == "GObject" && interface.name == "Value"
+                name
+              elsif interface.is_a?(UnionInfo)
+                "#{name} : #{type.wrapper_definition(libname)}::Union#{"?" if nullable? || optional?}"
+              end
+            else
+            end
+
+      arg || "#{name} : #{type.wrapper_definition(libname)}#{"?" if nullable? || optional?}"
     end
 
     def for_wrapper_pass(libname)

@@ -40,6 +40,10 @@ module GIRepository
         io.puts "#{indent}  include GObject::WrappedType"
         io.puts
 
+        union_members = [name].concat fields.map { |field| field.type.wrapper_definition(libname) }
+        io.puts "#{indent}  alias Union = #{union_members.join("|")}"
+        io.puts
+
         each_field do |field|
           if field.readable?
             if field.type.tag.interface? && !field.type.pointer?

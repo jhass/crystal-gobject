@@ -38,7 +38,7 @@ class MyApplication < Gtk::Application
     "
     menu_builder = Gtk::Builder.new_from_string menu_template, menu_template.size
 
-    menu_model = menu_builder["app_menu"]
+    menu_model = Gio::MenuModel.cast menu_builder["app_menu"]
 
     self.menubar = menu_model
 

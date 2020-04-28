@@ -108,7 +108,7 @@ module GIRepository
         unless abstract?
           constructor_properties = all_properties.select { |property| property.setter? }
           gtype = %(GObject.type_from_name("#{type_name}"))
-          constructor_args = constructor_properties.map { |property| "#{property.arg_name} : #{property.type.wrapper_definition}? = nil" }
+          constructor_args = constructor_properties.map { |property| "#{property.arg_name} : #{property.type.wrapper_definition(libname)}? = nil" }
 
           if !constructor_properties.empty?
             io.puts "#{indent}  def initialize(*, #{constructor_args.join(", ")})"

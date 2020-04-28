@@ -109,11 +109,11 @@ module GIRepository
       when .interface?
         interface.full_constant
       when .array?
-        "Array(#{param_type.wrapper_definition(libname)})"
+        "::Array(#{param_type.wrapper_definition(libname)})"
       when .zero_none?
         "Void*"
       when .utf8?, .filename?
-        "String"
+        "::String"
       else
         TAG_MAP[tag]
       end
@@ -154,8 +154,13 @@ module GIRepository
       case tag
       when .interface?
         pointer? ? "#{variable}.to_unsafe.as(Lib#{interface.full_constant}*)" : variable
-      when .array?,
-           .glist?,
+      when .array?
+        if param_type.tag.uint8? # Assume UInt8* (gchar*) is a string for now
+          variable
+        else
+          "Array.new(#{variable}.size) {|__item| #{param_type.convert_from_crystal("#{variable}[__item]")} }.to_unsafe"
+        end
+      when .glist?,
            .gslist?,
            .ghash?,
            .error?,

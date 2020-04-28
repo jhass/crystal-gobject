@@ -55,19 +55,23 @@ module GObject
 
     # TODO: should perhaps become object.type.signal_lookup ?
     def signal_lookup(name)
-      GObject.signal_lookup(name, type).tap do |signal|
+      GObject.signal_lookup(name, gtype).tap do |signal|
         raise ArgumentError.new "Unknown signal #{name} for #{type_name} (#{self.class})" if signal == 0
       end
     end
 
     # TODO: should perhaps become object.type.id ?
-    def type
-      to_unsafe.as(LibGObject::Object*).value.g_type_instance.g_class.value.g_type
+    def gtype
+      @pointer.as(LibGObject::Object*).value.g_type_instance.g_class.value.g_type
     end
 
     # TODO: should perhaps become object.type.name ?
     def type_name
-      GObject.type_name(type)
+      GObject.type_name(gtype)
+    end
+
+    def inspect(io)
+      io << "GObject(#{type_name}:#{gtype.to_s(16)}:0x#{@pointer.address.to_s(16)})"
     end
 
     macro property_getter(name, type)
