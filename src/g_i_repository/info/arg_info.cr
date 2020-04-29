@@ -31,6 +31,10 @@ module GIRepository
       GIRepository.arg_info_may_be_null self
     end
 
+    def nilable?
+      nullable? || optional?
+    end
+
     def gvalue_out?
       out? && type.tag.interface? && type.interface.namespace == "GObject" && type.interface.name == "Value"
     end
@@ -56,19 +60,19 @@ module GIRepository
               if type.param_type.tag.uint8? # Assume UInt8* (gchar*) is a string for now
                 "#{name} : ::String"
               else
-                "#{name} : ::Enumerable#{"?" if nullable? || optional?}"
+                "#{name} : ::Enumerable#{"?" if nilable?}"
               end
             when .interface?
               interface = type.interface
               if interface.namespace == "GObject" && interface.name == "Value"
                 name
               elsif interface.is_a?(UnionInfo)
-                "#{name} : #{type.wrapper_definition(libname)}::Union#{"?" if nullable? || optional?}"
+                "#{name} : #{type.wrapper_definition(libname)}::Union#{"?" if nilable?}"
               end
             else
             end
 
-      arg || "#{name} : #{type.wrapper_definition(libname)}#{"?" if nullable? || optional?}"
+      arg || "#{name} : #{type.wrapper_definition(libname)}#{"?" if nilable?}"
     end
 
     def for_wrapper_pass(libname)

@@ -102,9 +102,13 @@ module GIRepository
     GIRepository::BaseInfo.new(__return_value)
   end
 
-  def self.callable_info_invoke(info : GIRepository::BaseInfo, function : Void*?, in_args : ::Enumerable, n_in_args : ::Int, out_args : ::Enumerable, n_out_args : ::Int, return_value : GIRepository::Argument::Union, is_method : Bool, throws : Bool)
+  def self.callable_info_invoke(info : GIRepository::BaseInfo, function : Void*?, in_args : ::Enumerable, out_args : ::Enumerable, return_value : GIRepository::Argument::Union, is_method : Bool, throws : Bool)
     __error = Pointer(LibGLib::Error).null
-    __return_value = LibGIRepository.callable_info_invoke(info.to_unsafe.as(LibGIRepository::BaseInfo*), function ? function : nil, Array.new(in_args.size) {|__item| in_args[__item] }.to_unsafe, Int32.new(n_in_args), Array.new(out_args.size) {|__item| out_args[__item] }.to_unsafe, Int32.new(n_out_args), return_value.to_unsafe.as(LibGIRepository::Argument*), is_method, throws, pointerof(__error))
+    __in_args = (__in_args_ary = in_args.map { |__item| __item }.to_a).to_unsafe
+    n_in_args = __in_args_ary.size
+    __out_args = (__out_args_ary = out_args.map { |__item| __item }.to_a).to_unsafe
+    n_out_args = __out_args_ary.size
+    __return_value = LibGIRepository.callable_info_invoke(info.to_unsafe.as(LibGIRepository::BaseInfo*), function ? function : nil, __in_args, Int32.new(n_in_args), __out_args, Int32.new(n_out_args), return_value.to_unsafe.as(LibGIRepository::Argument*), is_method, throws, pointerof(__error))
     GLib::Error.assert __error
     __return_value
   end
@@ -139,8 +143,10 @@ module GIRepository
     __return_value
   end
 
-  def self.cclosure_marshal_generic(closure : GObject::Closure, return_gvalue, n_param_values : ::Int, param_values, invocation_hint : Void*?, marshal_data : Void*?)
-    LibGIRepository.cclosure_marshal_generic(closure.to_unsafe.as(LibGObject::Closure*), return_gvalue.to_gvalue.to_unsafe, UInt32.new(n_param_values), param_values.to_gvalue.to_unsafe, invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+  def self.cclosure_marshal_generic(closure : GObject::Closure, return_gvalue, param_values, invocation_hint : Void*?, marshal_data : Void*?)
+    __param_values = param_values.to_gvalue.to_unsafe
+    n_param_values = __param_values_ary.size
+    LibGIRepository.cclosure_marshal_generic(closure.to_unsafe.as(LibGObject::Closure*), return_gvalue.to_gvalue.to_unsafe, UInt32.new(n_param_values), __param_values, invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
     nil
   end
 

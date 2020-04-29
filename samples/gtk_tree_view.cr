@@ -8,11 +8,11 @@ model = Gtk::TreeStore.cast(builder["tree_model"])
 
 root = Gtk::TreeIter.new
 model.append(root, nil)
-model.set(root, {0}, {"Root"}, 1)
+model.set(root, {0}, {"Root"})
 
 child = Gtk::TreeIter.new
 model.append(child, root)
-model.set(child, {0}, {"Child!"}, 1)
+model.set(child, {0}, {"Child!"})
 
 view = Gtk::TreeView.cast(builder["tree_view"])
 view.on_row_activated do |view, path, column|

@@ -75,19 +75,46 @@ module GIRepository
 
         gvalue_out_arg = args.find &.gvalue_out? if gvalue_out?
         wrapper_args = gvalue_out? ? args.tap &.delete(gvalue_out_arg) : args
-        wrapper_args = wrapper_args.map(&.for_wrapper_definition(libname)).compact.join(", ")
-        io << "(#{wrapper_args})" unless wrapper_args.empty?
+        collection_args = wrapper_args.select { |candidate|
+          !candidate.out? && !candidate.inout? &&
+            wrapper_args.any? { |arg| arg.name == "n_#{candidate.name}" }
+        }
+        collection_args_size_args = collection_args.map { |arg| "n_#{arg.name}" }
+        wrapper_args = wrapper_args.reject { |arg| collection_args_size_args.includes?(arg.name) }
+        wrapper_args = wrapper_args.map(&.for_wrapper_definition(libname)).compact
+        io << "(#{wrapper_args.join(", ")})" unless wrapper_args.empty?
 
         io << " : self" if constructor?
         io << " : #{gvalue_out_arg.type.wrapper_definition(libname)}" if gvalue_out_arg
 
         io << "\n#{indent}  __error = Pointer(LibGLib::Error).null" if throws?
 
+        collection_args.each do |arg|
+          current_indent = indent
+          if arg.nilable?
+            indent += "  "
+            io.puts "\n#{indent}if #{arg.name}"
+          else
+            io.puts
+          end
+
+          io.puts "#{indent}  __#{arg.name} = #{arg.for_wrapper_pass(libname)}"
+          io << "#{indent}  n_#{arg.name} = __#{arg.name}_ary.size"
+
+          if arg.nilable?
+            io.puts "\n#{indent}else"
+            io.puts "#{indent}  n_#{arg.name} = 0"
+            io << "#{indent}  end"
+          end
+
+          indent = current_indent
+        end
+
         io << "\n#{indent}  "
         io << "#{gvalue_out_arg.name} = GObject::Value.new\n#{indent}  " if gvalue_out_arg
         io << "__return_value = " unless skip_return?
         io << "#{libname}.#{prefix}#{name}"
-        lib_args = args.map(&.for_wrapper_pass(libname)).compact.join(", ")
+        lib_args = args.map { |arg| collection_args.includes?(arg) ? "__#{arg.name}" : arg.for_wrapper_pass(libname) }.compact.join(", ")
         io << "(#{lib_args})" unless lib_args.empty?
 
         io << "\n#{indent}  GLib::Error.assert __error" if throws?

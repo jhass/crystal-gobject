@@ -192,7 +192,7 @@ module GIRepository
         if param_type.tag.uint8? # Assume UInt8* (gchar*) is a string for now
           variable
         else
-          "Array.new(#{variable}.size) {|__item| #{param_type.convert_from_crystal("#{variable}[__item]")} }.to_unsafe"
+          "(__#{variable}_ary = #{variable}.map { |__item| #{param_type.convert_from_crystal("__item")} }.to_a).to_unsafe"
         end
       when .glist?,
            .gslist?,

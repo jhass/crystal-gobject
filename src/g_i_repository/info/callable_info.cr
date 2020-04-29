@@ -90,6 +90,18 @@ module GIRepository
       def gvalue_out?
         false
       end
+
+      def nilable?
+        false
+      end
+
+      def out?
+        false
+      end
+
+      def inout?
+        false
+      end
     end
 
     class ErrorArgInfo
@@ -118,6 +130,18 @@ module GIRepository
 
       def gvalue_out?
         false
+      end
+
+      def nilable?
+        false
+      end
+
+      def out?
+        false
+      end
+
+      def inout?
+        true
       end
     end
 
