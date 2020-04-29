@@ -73,24 +73,5 @@ module GObject
     def inspect(io)
       io << "GObject(#{type_name}:#{gtype.to_s(16)}:0x#{@pointer.address.to_s(16)})"
     end
-
-    macro property_getter(name, type)
-      def {{name.id.split("-").join("_").id}}
-        value = {{type.id}}.new_gvalue
-        LibGObject.object_get_property(self.to_unsafe.as(LibGObject::Object*), "{{name.id}}", value)
-        {{type.id}}.from_gvalue value
-      end
-    end
-
-    macro property_setter(name, type)
-      def {{name.id.split("-").join("_").id}}=(value : {{type.id}})
-        LibGObject.object_set_property self.to_unsafe.as(LibGObject::Object*), "{{name.id}}", value.to_gvalue
-      end
-     end
-
-    macro property_property(name, type)
-      property_getter {{name}}, {{type}}
-      property_setter {{name}}, {{type}}
-    end
   end
 end

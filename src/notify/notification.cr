@@ -1,6 +1,5 @@
 module Notify
   class Notification
-
     class Fields
       property! summary : String
       property! body : String
@@ -8,13 +7,13 @@ module Notify
       property! app_name : String
       property! timeout : Int32
       property! category : String
-      property! urgency : Symbol|Notify::Urgency
+      property! urgency : Symbol | Notify::Urgency
       getter actions
 
       def initialize
         @transient = false
-        @resident  = false
-        @actions   = [] of {String, String, ActionCallback}
+        @resident = false
+        @actions = [] of {String, String, ActionCallback}
       end
 
       def transient?
@@ -39,11 +38,6 @@ module Notify
     end
 
     alias ActionCallback = String ->
-
-    property_property body, String
-    property_property "icon-name", String
-    property_property id, Int32
-    property_property summary, String
 
     def self.build
       fields = Fields.new
@@ -106,26 +100,26 @@ module Notify
     def urgency=(urgency)
       if urgency.is_a?(Symbol)
         urgency = case urgency
-          when :low
-            Notify::Urgency::LOW
-          when :normal
-            Notify::Urgency::NORMAL
-          when :critical
-            Notify::Urgency::CRITICAL
-          else
-            raise ArgumentError.new "#{urgency} is not a valid urgency level"
-          end
+                  when :low
+                    Notify::Urgency::LOW
+                  when :normal
+                    Notify::Urgency::NORMAL
+                  when :critical
+                    Notify::Urgency::CRITICAL
+                  else
+                    raise ArgumentError.new "#{urgency} is not a valid urgency level"
+                  end
       end
 
       self.urgency = urgency
     end
 
-    def update(summary=nil, body=nil, icon=nil)
+    def update(summary = nil, body = nil, icon = nil)
       summary ||= self.summary.not_nil!
-      body    ||= self.body
-      icon    ||= self.icon_name
-      body    = body ? body.to_unsafe : Pointer(UInt8).null
-      icon    = icon ? icon.to_unsafe : Pointer(UInt8).null
+      body ||= self.body
+      icon ||= self.icon_name
+      body = body ? body.to_unsafe : Pointer(UInt8).null
+      icon = icon ? icon.to_unsafe : Pointer(UInt8).null
 
       LibNotify.notification_update self, summary, body, icon
 
