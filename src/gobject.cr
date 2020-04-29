@@ -1,7 +1,7 @@
 require "./g_object/wrapped_type"
 
 module GObject
-  VERSION           = "0.5.0"
+  VERSION           = "0.6.0"
   LOADED_NAMESPACES = [] of String
 end
 
