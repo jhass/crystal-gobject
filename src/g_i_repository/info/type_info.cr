@@ -40,7 +40,7 @@ module GIRepository
     end
 
     def interface
-      BaseInfo.wrap GIRepository.type_info_get_interface(self)
+      BaseInfo.wrap(GIRepository.type_info_get_interface(self)).not_nil!
     end
 
     def array_type

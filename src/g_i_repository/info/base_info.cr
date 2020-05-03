@@ -7,6 +7,8 @@ module GIRepository
     end
 
     def self.wrap(info)
+      return unless info
+
       upper = INFO_TYPES[info.info_type]?
       if upper
         LibGIRepository.base_info_ref(info)
@@ -16,9 +18,15 @@ module GIRepository
       info
     end
 
-    def initialize(pointer : LibGIRepository::BaseInfo*)
-      @pointer = pointer.as(Void*)
-      LibGIRepository.base_info_ref(pointer)
+    # Typelib does not properly annotate most functions returning this as nullable,
+    # so we have to handle the null pointer here generally
+    def self.new(pointer : LibGIRepository::BaseInfo*)
+      new(ptr: pointer) if pointer
+    end
+
+    def initialize(*, ptr : LibGIRepository::BaseInfo*)
+      @pointer = ptr.as(Void*)
+      LibGIRepository.base_info_ref(ptr)
     end
 
     def ==(other)

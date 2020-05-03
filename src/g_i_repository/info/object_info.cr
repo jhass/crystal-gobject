@@ -15,12 +15,12 @@ module GIRepository
     each_converted object_info, vfunc, VFuncInfo
 
     def parent
-      ptr = LibGIRepository.object_info_get_parent self
-      ObjectInfo.new ptr if ptr
+      ptr = GIRepository.object_info_get_parent self
+      BaseInfo.wrap(ptr).as(ObjectInfo) if ptr
     end
 
     def abstract?
-      LibGIRepository.object_info_get_abstract self
+      GIRepository.object_info_get_abstract self
     end
 
     # Including those of ancestors

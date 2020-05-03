@@ -27,7 +27,7 @@ module GIRepository
 
     def all_infos(namespace : String)
       Array.new(n_infos(namespace)) { |index|
-        info namespace, index
+        info(namespace, index).not_nil!
       }
     end
 

@@ -5,10 +5,10 @@ module GIRepository
     KEYWORDS = {"end", "next"}
 
     def type
-      TypeInfo.new LibGIRepository.field_info_get_type(self)
+      BaseInfo.wrap(GIRepository.field_info_get_type(self)).as(TypeInfo)
     end
 
-    def name(keyword_safe=true)
+    def name(keyword_safe = true)
       name = super()
       name = "_#{name}" if name[0].uppercase? if name
       name += '_' if keyword_safe && KEYWORDS.includes? name if name

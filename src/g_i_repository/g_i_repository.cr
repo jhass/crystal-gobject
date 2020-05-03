@@ -28,33 +28,32 @@ lib LibGIRepository
   fun constant_info_free_value = g_constant_info_free_value(this : BaseInfo*, argument : Argument*)
 end
 
-#module GIRepository
-  macro each_converted(prefix, basename, type, plural=nil)
-    def {{plural ? plural.id : "#{basename}s".id}}_size
-      n = GIRepository.{{prefix.id}}_get_n_{{plural ? plural.id : "#{basename}s".id}}(self)
-    end
+# Helper
+macro each_converted(prefix, basename, type, plural = nil)
+  def {{plural ? plural.id : "#{basename}s".id}}_size
+    n = GIRepository.{{prefix.id}}_get_n_{{plural ? plural.id : "#{basename}s".id}}(self)
+  end
 
-    def each_{{basename.id}}
-      n = {{plural ? plural.id : "#{basename}s".id}}_size
-      0.upto(n-1) do |index|
-        yield {{type.id}}.new GIRepository.{{prefix.id}}_get_{{basename.id}}(self, index).to_unsafe
-      end
-    end
-
-    def {{plural ? plural.id : "#{basename}s".id}}
-      items = Array({{type}}).new({{plural ? plural.id : "#{basename}s".id}}_size)
-      each_{{basename.id}} do |item|
-        items << item
-      end
-      items
+  def each_{{basename.id}}
+    n = {{plural ? plural.id : "#{basename}s".id}}_size
+    0.upto(n-1) do |index|
+      yield BaseInfo.wrap(GIRepository.{{prefix.id}}_get_{{basename.id}}(self, index)).as({{type.id}})
     end
   end
 
+  def {{plural ? plural.id : "#{basename}s".id}}
+    items = Array({{type}}).new({{plural ? plural.id : "#{basename}s".id}}_size)
+    each_{{basename.id}} do |item|
+      items << item
+    end
+    items
+  end
+end
 
 module GIRepository
   def self.filename(filename)
     filename.not_nil!
-      .gsub(/[A-Z][a-z]*(?=[A-Z])/) {|m| "#{m.downcase}_" }
+      .gsub(/[A-Z][a-z]*(?=[A-Z])/) { |m| "#{m.downcase}_" }
       .gsub(/::/, "_")
       .downcase
   end

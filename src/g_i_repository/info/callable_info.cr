@@ -174,7 +174,7 @@ module GIRepository
     end
 
     def return_type
-      TypeInfo.new LibGIRepository.callable_info_get_return_type(self)
+      BaseInfo.wrap(GIRepository.callable_info_get_return_type(self)).as(TypeInfo)
     end
 
     def each_return_attribute
