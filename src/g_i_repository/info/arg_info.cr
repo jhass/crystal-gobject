@@ -39,8 +39,24 @@ module GIRepository
       out? && type.tag.interface? && type.interface.namespace == "GObject" && type.interface.name == "Value"
     end
 
+    def return_value?
+      GIRepository.arg_info_is_return_value(self)
+    end
+
+    def skip?
+      GIRepository.arg_info_is_skip(self)
+    end
+
     def type
       BaseInfo.wrap(GIRepository.arg_info_get_type(self)).as(TypeInfo)
+    end
+
+    def ownership_transfer
+      GIRepository.arg_info_get_ownership_transfer(self)
+    end
+
+    def caller_allocates?
+      GIRepository.arg_info_is_caller_allocates(self)
     end
 
     def lib_definition
@@ -100,6 +116,10 @@ module GIRepository
       dumper.puts "* direction = #{direction}"
       dumper.puts "* optional = #{optional?}"
       dumper.puts "* nullable = #{nullable?}"
+      dumper.puts "* return_value = #{return_value?}"
+      dumper.puts "* ownership = #{ownership_transfer}"
+      dumper.puts "* caller_allocates = #{caller_allocates?}"
+      dumper.puts "* skip = #{skip?}"
       Dumper.dump_child type
     end
   end

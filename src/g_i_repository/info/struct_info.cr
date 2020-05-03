@@ -22,6 +22,14 @@ module GIRepository
       GIRepository.struct_info_get_size(self)
     end
 
+    def alignment
+      GIRepository.struct_info_get_alignment(self)
+    end
+
+    def foreign?
+      GIRepository.struct_info_is_foreign(self)
+    end
+
     def lib_definition
       String.build do |io|
         io.puts "  struct #{name} # struct"
@@ -100,6 +108,8 @@ module GIRepository
 
     Dumper.def do
       dumper.puts "* size = #{size}"
+      dumper.puts "* alignment = #{alignment}"
+      dumper.puts "* foreign = #{foreign?}"
       dumper.puts "* gtype = #{gtype?}"
       Dumper.dump_childs field
       Dumper.dump_childs method

@@ -72,7 +72,7 @@ class Namespace
     end
   end
 
-  def lib_definition(io, inline=true)
+  def lib_definition(io, inline = true)
     requires = false
     unless inline
       GIRepository::Repository.instance.dependencies(@namespace).each do |dependency|
@@ -85,7 +85,7 @@ class Namespace
     io.puts if requires
 
     libraries = GIRepository::Repository.instance.shared_library(@namespace).try(&.split(',')) || Array(String).new
-    libraries.map! {|library| library[/lib([^\/]+)\.(?:so|.+?\.dylib).*/, 1] }
+    libraries.map! { |library| library[/lib([^\/]+)\.(?:so|.+?\.dylib).*/, 1] }
 
     libraries.each do |library|
       io.puts %(@[Link("#{library}")])
@@ -127,7 +127,7 @@ class Namespace
     io.puts
   end
 
-  def wrapper_definitions(io, source_path=nil)
+  def wrapper_definitions(io, source_path = nil)
     wrapper_definition(io, source_path) do
       io.puts module_functions_definition
       io.puts
@@ -163,7 +163,7 @@ class Namespace
         namespace, version = dependency
         name = Namespace.new(namespace).wrapper_filename
         path = "../../#{name}" if File.exists? File.join(directory, "..", name) # Overrides
-        path ||= "../#{name}" if File.exists? File.join(directory, name) # Wrapper
+        path ||= "../#{name}" if File.exists? File.join(directory, name)        # Wrapper
         io.puts %(require "#{path}") if path
       end
       io.puts
@@ -175,11 +175,17 @@ class Namespace
       write_wrapper wrapper_path, info, &.puts(definition)
     end
 
+    write_module_functions_wrapper(directory)
+  end
+
+  def write_module_functions_wrapper(directory)
+    prefix = File.join(directory, GIRepository.filename(@namespace))
+    Dir.mkdir_p prefix
     write_wrapper File.join(prefix, "module_functions.cr"), &.puts module_functions_definition
   end
 
-  private def each_info_definition(source_path=nil)
-    infos = GIRepository::Repository.instance.all_infos(@namespace).select {|info|
+  private def each_info_definition(source_path = nil)
+    infos = GIRepository::Repository.instance.all_infos(@namespace).select { |info|
       next false if skip_info? info
       next false if info.is_a? GIRepository::FunctionInfo
       next false if info.is_a? GIRepository::ConstantInfo
@@ -192,18 +198,17 @@ class Namespace
       definition = info.wrapper_definition libname, "  "
       next unless definition && !definition.empty?
 
-      definition = %(  #<loc:push>#<loc:"#{source_path}/#{info.name}",1,1>\n#{definition}  #<loc:pop>\n) if source_path
+      # definition = %(  #<loc:push>#<loc:"#{source_path}/#{info.name}",1,1>\n#{definition}  #<loc:pop>\n) if source_path
       yield info, definition
     end
   end
 
-
   private def sort_childs_after_parents(infos)
-    names = infos.map {|info|
+    names = infos.map { |info|
       info.full_constant if info.is_a?(GIRepository::ObjectInfo) || info.is_a?(GIRepository::InterfaceInfo)
     }
 
-    parents = infos.map {|info|
+    parents = infos.map { |info|
       parent_names = [] of String
       if info.is_a?(GIRepository::ObjectInfo)
         parent = info.parent
@@ -240,30 +245,29 @@ class Namespace
   end
 
   private def module_functions_definition
-    GIRepository::Repository.instance.all_infos(@namespace).select {|info|
+    GIRepository::Repository.instance.all_infos(@namespace).select { |info|
       next false if skip_info?(info)
       next true if info.is_a? GIRepository::ConstantInfo
       info.is_a?(GIRepository::FunctionInfo) ? !info.method? : false
     }.map(&.wrapper_definition(libname, "  ")).join("\n")
   end
 
-  private def write_wrapper(path, info=nil)
+  private def write_wrapper(path, info = nil)
     File.open(path, "w") do |io|
-
       # Not really the right place for this code
       if info && info.is_a?(GIRepository::ObjectInfo)
-          parent = info.parent
-          if parent && parent.namespace == @namespace
-            io.puts %(require "./#{GIRepository.filename(parent.name)}")
-            io.puts
-          end
+        parent = info.parent
+        if parent && parent.namespace == @namespace
+          io.puts %(require "./#{GIRepository.filename(parent.name)}")
+          io.puts
+        end
       end
 
-      wrapper_definition(io) {|io| yield io }
+      wrapper_definition(io) { |io| yield io }
     end
   end
 
-  private def wrapper_definition(io, source_path=nil)
+  private def wrapper_definition(io, source_path = nil)
     io.puts %(#<loc:push>#<loc:"#{source_path}",1,1>) if source_path
     io.puts "module #{@namespace.constant}#{"#<loc:pop>" if source_path}"
     yield io

@@ -4,6 +4,14 @@ module GIRepository
   class SignalInfo < BaseInfo
     include CallableInfo
 
+    def flags
+      GIRepository.signal_info_get_flags(self)
+    end
+
+    def true_stops_emit?
+      GIRepository.signal_info_true_stops_emit(self)
+    end
+
     def lib_definition
       "  # Signal #{name}"
     end
@@ -38,6 +46,11 @@ module GIRepository
       name = self.name.try &.tr("-", "_")
       name += "_" if name && {"begin", "end"}.includes? name
       name
+    end
+
+    Dumper.def do
+      dumper.puts "* flags = #{flags}"
+      dumper.puts "* true_stops_emit = #{true_stops_emit?}"
     end
   end
 end

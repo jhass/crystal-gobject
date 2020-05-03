@@ -184,11 +184,21 @@ module GIRepository
       end
     end
 
+    def caller_owns_return_value?
+      GIRepository.callable_info_get_caller_owns(self)
+    end
+
+    def self_arg_ownership
+      GIRepository.callable_info_get_instance_ownership_transfer(self)
+    end
+
     Dumper.def do
       dumper.puts "* method = #{method?}"
       dumper.puts "* throws = #{throws?}"
       dumper.puts "* skip_return = #{skip_return?}"
       dumper.puts "* may_return_null = #{may_return_null?}"
+      dumper.puts "* caller_owns = #{caller_owns_return_value?}"
+      dumper.puts "* self_arg_ownership = #{self_arg_ownership}"
       print_header = true
       each_return_attribute do |name, value|
         dumper.puts "* return_attributes" if print_header

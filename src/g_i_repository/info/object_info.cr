@@ -51,6 +51,11 @@ module GIRepository
       properties.sort_by(&.name.not_nil!)
     end
 
+    def class_struct
+      info = GIRepository.object_info_get_class_struct(self)
+      BaseInfo.wrap(info).as(StructInfo) if info
+    end
+
     def lib_definition
       String.build do |io|
         each_constant do |constant|
@@ -151,6 +156,7 @@ module GIRepository
     Dumper.def do |dumper|
       dumper.puts "* abstract = #{abstract?}"
       Dumper.dump_child parent
+      Dumper.dump_child class_struct
       Dumper.dump_childs constant
       Dumper.dump_childs interface
       Dumper.dump_childs field
