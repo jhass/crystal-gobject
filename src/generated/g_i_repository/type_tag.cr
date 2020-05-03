@@ -1,6 +1,5 @@
 module GIRepository
   enum TypeTag : UInt32
-    ZERO_NONE = 0
     VOID = 0
     BOOLEAN = 1
     INT8 = 2

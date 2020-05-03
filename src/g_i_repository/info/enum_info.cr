@@ -31,10 +31,9 @@ module GIRepository
 
     def wrapper_definition(libname, indent = "")
       String.build do |io|
-        #io.puts "#{indent}alias #{name} = #{libname}::#{name}"
         attributes(io)
         io.puts "#{indent}enum #{name} : #{type}"
-        io.puts "#{indent}  ZERO_NONE = 0"
+        io.puts "#{indent}  ZERO_NONE = 0" unless values.any? { |value| value.value == 0 }
 
         each_value do |value|
           io.puts "#{indent}#{value.lib_definition}"

@@ -1,6 +1,5 @@
 module GIRepository
   enum InfoType : UInt32
-    ZERO_NONE = 0
     INVALID = 0
     FUNCTION = 1
     CALLBACK = 2
