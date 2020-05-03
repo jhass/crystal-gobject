@@ -5,11 +5,13 @@ module GIRepository
     end
 
     def type_name
-      String.new LibGIRepository.registered_type_info_get_type_name(self)
+      ptr = LibGIRepository.registered_type_info_get_type_name(self)
+      String.new ptr if ptr
     end
 
     def type_init
-      String.new LibGIRepository.registered_type_info_get_type_init(self)
+      ptr = LibGIRepository.registered_type_info_get_type_init(self)
+      String.new ptr if ptr
     end
   end
 end

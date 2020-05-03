@@ -8,6 +8,9 @@ module GIRepository
       io.puts "#{indent}  @pointer : Void*"
       io.puts "#{indent}  def initialize(pointer : #{ptr_type(libname)})"
       io.puts "#{indent}    @pointer = pointer.as(Void*)"
+      if self.is_a?(ObjectInfo) || self.is_a?(InterfaceInfo)
+        io.puts "#{indent}    raise ArgumentError.new(\"\#{type_name} is not a #{type_name}\") unless LibGObject.type_check_instance_is_a(pointer.as(LibGObject::TypeInstance*), GObject.type_from_name(\"#{type_name}\"))"
+      end
       io.puts "#{indent}  end"
       io.puts
     end

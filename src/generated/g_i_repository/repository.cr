@@ -3,6 +3,7 @@ module GIRepository
     @pointer : Void*
     def initialize(pointer : LibGIRepository::Repository*)
       @pointer = pointer.as(Void*)
+      raise ArgumentError.new("#{type_name} is not a GIRepository") unless LibGObject.type_check_instance_is_a(pointer.as(LibGObject::TypeInstance*), GObject.type_from_name("GIRepository"))
     end
 
     def to_unsafe
