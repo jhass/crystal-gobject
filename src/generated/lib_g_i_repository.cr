@@ -126,7 +126,7 @@ lib LibGIRepository
   ###########################################
 
   struct Repository # object
-    parent : LibGObject::Object*
+    parent : LibGObject::Object
     priv : LibGIRepository::RepositoryPrivate*
   end
   fun _init_Repository = g_irepository_get_type

@@ -71,13 +71,7 @@ module GIRepository
                else
                  namespace = "Lib#{interface.namespace}::"
                  namespace = nil if namespace == self.namespace
-                 type = "#{namespace}#{interface.name}"
-                 case interface
-                 when ObjectInfo
-                   type = "#{type}*" unless pointer?
-                 else
-                 end
-                 type
+                 "#{namespace}#{interface.name}"
                end
              when .array?
                case array_type
@@ -97,7 +91,7 @@ module GIRepository
 
     def signal_lib_definition
       base = lib_definition
-      if tag.interface? && interface.is_a?(StructInfo)
+      if tag.interface?
         # In signal functions, structs are always pointers, even if their TypeInfo disagrees
         base += "*"
       end

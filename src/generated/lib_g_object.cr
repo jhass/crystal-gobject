@@ -10,9 +10,9 @@ lib LibGObject
   struct Binding # object
     _data : UInt8[0]
     # Property flags : LibGObject::BindingFlags
-    # Property source : LibGObject::Object*
+    # Property source : LibGObject::Object
     # Property source-property : UInt8*
-    # Property target : LibGObject::Object*
+    # Property target : LibGObject::Object
     # Property target-property : UInt8*
   end
   fun _init_Binding = g_binding_get_type
@@ -99,23 +99,23 @@ lib LibGObject
   fun param_spec_steal_qdata = g_param_spec_steal_qdata(this : ParamSpec*, quark : UInt32) : Void*
 
   struct ParamSpecBoolean # object
-    parent_instance : LibGObject::ParamSpec*
+    parent_instance : LibGObject::ParamSpec
     default_value : Bool
   end
 
   struct ParamSpecBoxed # object
-    parent_instance : LibGObject::ParamSpec*
+    parent_instance : LibGObject::ParamSpec
   end
 
   struct ParamSpecChar # object
-    parent_instance : LibGObject::ParamSpec*
+    parent_instance : LibGObject::ParamSpec
     minimum : Int8
     maximum : Int8
     default_value : Int8
   end
 
   struct ParamSpecDouble # object
-    parent_instance : LibGObject::ParamSpec*
+    parent_instance : LibGObject::ParamSpec
     minimum : Float64
     maximum : Float64
     default_value : Float64
@@ -123,19 +123,19 @@ lib LibGObject
   end
 
   struct ParamSpecEnum # object
-    parent_instance : LibGObject::ParamSpec*
+    parent_instance : LibGObject::ParamSpec
     enum_class : LibGObject::EnumClass*
     default_value : Int32
   end
 
   struct ParamSpecFlags # object
-    parent_instance : LibGObject::ParamSpec*
+    parent_instance : LibGObject::ParamSpec
     flags_class : LibGObject::FlagsClass*
     default_value : UInt32
   end
 
   struct ParamSpecFloat # object
-    parent_instance : LibGObject::ParamSpec*
+    parent_instance : LibGObject::ParamSpec
     minimum : Float32
     maximum : Float32
     default_value : Float32
@@ -143,50 +143,50 @@ lib LibGObject
   end
 
   struct ParamSpecGType # object
-    parent_instance : LibGObject::ParamSpec*
+    parent_instance : LibGObject::ParamSpec
     is_a_type : UInt64
   end
 
   struct ParamSpecInt # object
-    parent_instance : LibGObject::ParamSpec*
+    parent_instance : LibGObject::ParamSpec
     minimum : Int32
     maximum : Int32
     default_value : Int32
   end
 
   struct ParamSpecInt64 # object
-    parent_instance : LibGObject::ParamSpec*
+    parent_instance : LibGObject::ParamSpec
     minimum : Int64
     maximum : Int64
     default_value : Int64
   end
 
   struct ParamSpecLong # object
-    parent_instance : LibGObject::ParamSpec*
+    parent_instance : LibGObject::ParamSpec
     minimum : Int64
     maximum : Int64
     default_value : Int64
   end
 
   struct ParamSpecObject # object
-    parent_instance : LibGObject::ParamSpec*
+    parent_instance : LibGObject::ParamSpec
   end
 
   struct ParamSpecOverride # object
-    parent_instance : LibGObject::ParamSpec*
+    parent_instance : LibGObject::ParamSpec
     overridden : LibGObject::ParamSpec*
   end
 
   struct ParamSpecParam # object
-    parent_instance : LibGObject::ParamSpec*
+    parent_instance : LibGObject::ParamSpec
   end
 
   struct ParamSpecPointer # object
-    parent_instance : LibGObject::ParamSpec*
+    parent_instance : LibGObject::ParamSpec
   end
 
   struct ParamSpecString # object
-    parent_instance : LibGObject::ParamSpec*
+    parent_instance : LibGObject::ParamSpec
     default_value : UInt8*
     cset_first : UInt8*
     cset_nth : UInt8*
@@ -196,53 +196,53 @@ lib LibGObject
   end
 
   struct ParamSpecUChar # object
-    parent_instance : LibGObject::ParamSpec*
+    parent_instance : LibGObject::ParamSpec
     minimum : UInt8
     maximum : UInt8
     default_value : UInt8
   end
 
   struct ParamSpecUInt # object
-    parent_instance : LibGObject::ParamSpec*
+    parent_instance : LibGObject::ParamSpec
     minimum : UInt32
     maximum : UInt32
     default_value : UInt32
   end
 
   struct ParamSpecUInt64 # object
-    parent_instance : LibGObject::ParamSpec*
+    parent_instance : LibGObject::ParamSpec
     minimum : UInt64
     maximum : UInt64
     default_value : UInt64
   end
 
   struct ParamSpecULong # object
-    parent_instance : LibGObject::ParamSpec*
+    parent_instance : LibGObject::ParamSpec
     minimum : UInt64
     maximum : UInt64
     default_value : UInt64
   end
 
   struct ParamSpecUnichar # object
-    parent_instance : LibGObject::ParamSpec*
+    parent_instance : LibGObject::ParamSpec
     default_value : UInt8
   end
 
   struct ParamSpecValueArray # object
-    parent_instance : LibGObject::ParamSpec*
+    parent_instance : LibGObject::ParamSpec
     element_spec : LibGObject::ParamSpec*
     fixed_n_elements : UInt32
   end
 
   struct ParamSpecVariant # object
-    parent_instance : LibGObject::ParamSpec*
+    parent_instance : LibGObject::ParamSpec
     type : LibGLib::VariantType*
     default_value : LibGLib::Variant*
     padding : Void*[4]
   end
 
   struct TypeModule # object
-    parent_instance : LibGObject::Object*
+    parent_instance : LibGObject::Object
     use_count : UInt32
     type_infos : Void**
     interface_infos : Void**
