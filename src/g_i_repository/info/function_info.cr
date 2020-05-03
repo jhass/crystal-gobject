@@ -84,8 +84,11 @@ module GIRepository
         wrapper_args = wrapper_args.map(&.for_wrapper_definition(libname)).compact
         io << "(#{wrapper_args.join(", ")})" unless wrapper_args.empty?
 
-        io << " : self" if constructor?
-        io << " : #{gvalue_out_arg.type.wrapper_definition(libname)}" if gvalue_out_arg
+        if constructor?
+          io << " : self"
+        elsif gvalue_out_arg
+          io << " : #{gvalue_out_arg.type.wrapper_definition(libname)}"
+        end
 
         io << "\n#{indent}  __error = Pointer(LibGLib::Error).null" if throws?
 

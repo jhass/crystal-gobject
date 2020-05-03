@@ -139,9 +139,9 @@ module GIRepository
       when .interface?
         interface.full_constant
       when .array?
-        "::Array(#{param_type.wrapper_definition(libname)})"
-      when .zero_none?
-        "Void*"
+        "::Enumerable(#{param_type.wrapper_definition(libname)})"
+      when .void?
+        pointer? ? "Void*" : "Nil"
       when .utf8?, .filename?
         "::String"
       else
