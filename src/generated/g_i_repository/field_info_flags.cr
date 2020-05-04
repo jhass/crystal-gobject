@@ -5,5 +5,6 @@ module GIRepository
     READABLE = 1
     WRITABLE = 2
   end
+
 end
 

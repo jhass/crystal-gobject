@@ -4,4 +4,6 @@ shard.lock
 bin/
 docs/
 *swp
+/samples/*
+!/samples/*.*
 *.dwarf

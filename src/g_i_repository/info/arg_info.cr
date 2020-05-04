@@ -15,6 +15,10 @@ module GIRepository
       GIRepository.arg_info_get_direction(self)
     end
 
+    def in?
+      direction.in?
+    end
+
     def out?
       direction.out?
     end
@@ -37,6 +41,10 @@ module GIRepository
 
     def gvalue_out?
       out? && type.tag.interface? && type.interface.namespace == "GObject" && type.interface.name == "Value"
+    end
+
+    def closure?
+      in? && type.tag.interface? && type.interface.namespace == "GObject" && type.interface.name == "Closure"
     end
 
     def return_value?

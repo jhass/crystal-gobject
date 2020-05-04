@@ -5,5 +5,6 @@ module GIRepository
     PTR_ARRAY = 2
     BYTE_ARRAY = 3
   end
+
 end
 

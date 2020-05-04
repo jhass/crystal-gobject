@@ -5,5 +5,6 @@ module GIRepository
     ASYNC = 2
     NOTIFIED = 3
   end
+
 end
 

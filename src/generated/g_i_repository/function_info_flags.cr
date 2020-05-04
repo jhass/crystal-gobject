@@ -9,5 +9,6 @@ module GIRepository
     WRAPS_VFUNC = 16
     THROWS = 32
   end
+
 end
 

@@ -150,6 +150,11 @@ module GIRepository
     nil
   end
 
+  def self.cclosure_marshal_generic(return_gvalue, param_values, invocation_hint : Void*?, marshal_data : Void*?, &closure)
+    closure = GObject::Closure.new(closure)
+    cclosure_marshal_generic(closure, return_gvalue, param_values, invocation_hint, marshal_data)
+  end
+
   def self.constant_info_get_type(info : GIRepository::BaseInfo)
     __return_value = LibGIRepository.constant_info_get_type(info.to_unsafe.as(LibGIRepository::BaseInfo*))
     GIRepository::BaseInfo.new(__return_value)

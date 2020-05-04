@@ -4,5 +4,6 @@ module GIRepository
     OUT = 1
     INOUT = 2
   end
+
 end
 

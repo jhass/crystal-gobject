@@ -7,5 +7,6 @@ module GIRepository
     MUST_NOT_OVERRIDE = 4
     THROWS = 8
   end
+
 end
 

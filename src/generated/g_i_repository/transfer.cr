@@ -4,5 +4,6 @@ module GIRepository
     CONTAINER = 1
     EVERYTHING = 2
   end
+
 end
 

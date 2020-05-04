@@ -43,6 +43,7 @@ module GIRepository
           io.puts "#{indent}  # Function #{method.name}"
         end
         io.puts "#{indent}end"
+        io.puts
       end
     end
 

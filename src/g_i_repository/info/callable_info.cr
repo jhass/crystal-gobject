@@ -95,11 +95,19 @@ module GIRepository
         false
       end
 
+      def in?
+        true
+      end
+
       def out?
         false
       end
 
       def inout?
+        false
+      end
+
+      def closure?
         false
       end
     end
@@ -136,12 +144,20 @@ module GIRepository
         false
       end
 
+      def in?
+        true
+      end
+
       def out?
-        false
+        true
       end
 
       def inout?
         true
+      end
+
+      def closure?
+        false
       end
     end
 

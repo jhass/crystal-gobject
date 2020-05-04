@@ -12,5 +12,6 @@ module GObject
     MUST_COLLECT = 128
     DEPRECATED = 256
   end
+
 end
 
