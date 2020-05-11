@@ -14,6 +14,38 @@ module GIRepository
       'A' <= name[0] <= 'Z' ? name : "#{c_prefix}#{name}" if name
     end
 
+    def size
+      GIRepository.union_info_get_size(self)
+    end
+
+    def alignment
+      GIRepository.union_info_get_alignment(self)
+    end
+
+    def discriminated?
+      GIRepository.union_info_is_discriminated(self)
+    end
+
+    def discriminators
+      discriminators = Hash(String, ConstantInfo).new
+
+      fields.each_with_index do |field, i|
+        info = ConstantInfo.wrap GIRepository.union_info_get_discriminator(self, i)
+        name = field.name
+        discriminators[name] = info.as(ConstantInfo) if name && info
+      end
+
+      discriminators
+    end
+
+    def discriminator_type
+      TypeInfo.wrap GIRepository.union_info_get_discriminator_type(self)
+    end
+
+    def discriminator_offset
+      GIRepository.union_info_get_discriminator_offset(self)
+    end
+
     def lib_definition
       String.build do |io|
         if fields_size > 0
@@ -67,6 +99,20 @@ module GIRepository
     end
 
     Dumper.def do
+      dumper.puts "* size = #{size}"
+      dumper.puts "* alignment = #{alignment}"
+      dumper.puts "* discriminated = #{discriminated?}"
+      if discriminated?
+        dumper.puts "*  discriminator_offset = #{discriminator_offset}"
+        Dumper.dump_child discriminator_type
+        dumper.puts "* discriminators:"
+        dumper.nest(2) do
+          discriminators.each do |field, constant|
+            dumper.puts "- #{field}"
+            dumper.nest(2) { yield constant }
+          end
+        end
+      end
       Dumper.dump_childs field
       Dumper.dump_childs method
     end
