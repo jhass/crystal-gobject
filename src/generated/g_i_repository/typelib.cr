@@ -11,6 +11,10 @@ module GIRepository
       @pointer.not_nil!.as(LibGIRepository::Typelib*)
     end
 
+    def to_unsafe_typelib
+      @pointer.not_nil!.as(LibGIRepository::Typelib*)
+    end
+
     def free
       LibGIRepository.typelib_free(@pointer.as(LibGIRepository::Typelib*))
       nil

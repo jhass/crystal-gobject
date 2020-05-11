@@ -16,6 +16,10 @@ module GIRepository
       @pointer.not_nil!.as(LibGIRepository::AttributeIter*)
     end
 
+    def to_unsafe_attributeiter
+      @pointer.not_nil!.as(LibGIRepository::AttributeIter*)
+    end
+
     def data
       (to_unsafe.as(LibGIRepository::AttributeIter*).value.data)
     end

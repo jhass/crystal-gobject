@@ -16,6 +16,10 @@ module GIRepository
       @pointer.not_nil!.as(LibGIRepository::BaseInfo*)
     end
 
+    def to_unsafe_baseinfo
+      @pointer.not_nil!.as(LibGIRepository::BaseInfo*)
+    end
+
     def equal(info2 : GIRepository::BaseInfo)
       __return_value = LibGIRepository.base_info_equal(@pointer.as(LibGIRepository::BaseInfo*), info2.to_unsafe.as(LibGIRepository::BaseInfo*))
       __return_value

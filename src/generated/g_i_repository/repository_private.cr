@@ -11,6 +11,10 @@ module GIRepository
       @pointer.not_nil!.as(LibGIRepository::RepositoryPrivate*)
     end
 
+    def to_unsafe_repositoryprivate
+      @pointer.not_nil!.as(LibGIRepository::RepositoryPrivate*)
+    end
+
   end
 end
 

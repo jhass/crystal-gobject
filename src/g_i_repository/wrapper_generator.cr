@@ -4,6 +4,11 @@ module GIRepository
       "#{libname}::#{name}*"
     end
 
+    def to_unsafe_name
+      name = self.name
+      "to_unsafe_#{name.downcase}" if name
+    end
+
     def write_constructor(libname, io, indent = "")
       io.puts "#{indent}  @pointer : Void*"
       io.puts "#{indent}  def initialize(pointer : #{ptr_type(libname)})"
@@ -17,6 +22,17 @@ module GIRepository
 
     def write_to_unsafe(libname, io, indent = "")
       io.puts "#{indent}  def to_unsafe"
+      io.puts "#{indent}    @pointer.not_nil!.as(#{ptr_type(libname)})"
+      io.puts "#{indent}  end"
+      io.puts
+
+      write_interface_to_unsafe(libname, io, indent)
+    end
+
+    def write_interface_to_unsafe(libname, io, indent = "")
+      return unless to_unsafe_name
+
+      io.puts "#{indent}  def #{to_unsafe_name}"
       io.puts "#{indent}    @pointer.not_nil!.as(#{ptr_type(libname)})"
       io.puts "#{indent}  end"
       io.puts

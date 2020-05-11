@@ -97,6 +97,10 @@ module GIRepository
       @pointer.not_nil!.as(LibGIRepository::Argument*)
     end
 
+    def to_unsafe_argument
+      @pointer.not_nil!.as(LibGIRepository::Argument*)
+    end
+
   end
 end
 

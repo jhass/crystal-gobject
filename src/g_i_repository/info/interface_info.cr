@@ -67,8 +67,12 @@ module GIRepository
         io.puts "#{indent}    include #{name}"
         io.puts
         write_constructor libname, io, indent + "  "
+        write_to_unsafe libname, io, indent + "  "
+
         io.puts "#{indent}  end"
         io.puts
+
+        write_interface_to_unsafe libname, io, indent
 
         each_constant do |constant|
           io.puts constant.wrapper_definition libname, indent + "  "

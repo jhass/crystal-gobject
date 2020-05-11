@@ -10,6 +10,10 @@ module GIRepository
       @pointer.not_nil!.as(LibGIRepository::Repository*)
     end
 
+    def to_unsafe_repository
+      @pointer.not_nil!.as(LibGIRepository::Repository*)
+    end
+
     def initialize
       LibGIRepository._init_Repository
       @pointer = LibGObject.new_with_properties(GObject.type_from_name("GIRepository"), 0, nil, nil).as(Void*)

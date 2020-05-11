@@ -177,8 +177,12 @@ module GIRepository
     def convert_from_crystal(variable)
       case tag
       when .interface?
+        interface = self.interface
         if interface.namespace == "GObject" && interface.name == "Value"
           "#{variable}.to_gvalue.to_unsafe#{".value" unless pointer?}"
+        elsif interface.is_a?(ObjectInfo) || interface.is_a?(InterfaceInfo)
+          converter = interface.to_unsafe_name if interface.responds_to?(:to_unsafe_name)
+          pointer? && converter ? "#{variable}.#{converter}" : variable
         else
           pointer? ? "#{variable}.to_unsafe.as(Lib#{interface.full_constant}*)" : variable
         end
