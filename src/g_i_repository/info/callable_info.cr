@@ -43,7 +43,11 @@ module GIRepository
       end
 
       def convert_to_crystal(variable)
-        "#{@container.name}.new(#{variable})"
+        if @container.is_a? InterfaceInfo
+          "#{@container.name}::Wrapper.new(#{variable})"
+        else
+          "#{@container.name}.new(#{variable})"
+        end
       end
 
       def convert_from_crystal(variable)
