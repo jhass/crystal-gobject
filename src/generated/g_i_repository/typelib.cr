@@ -22,7 +22,8 @@ module GIRepository
 
     def namespace
       __return_value = LibGIRepository.typelib_get_namespace(@pointer.as(LibGIRepository::Typelib*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      GObject.raise_unexpected_null("g_typelib_get_namespace") if __return_value.null?
+      ::String.new(__return_value)
     end
 
     def symbol(symbol_name : ::String, symbol : Void*?)

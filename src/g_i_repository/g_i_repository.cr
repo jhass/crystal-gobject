@@ -62,6 +62,12 @@ module GIRepository
       .gsub(/::/, "_")
       .downcase
   end
+
+  def self.object_info_get_parent(info : GIRepository::BaseInfo)
+    # Missing may return null annotation in typelib, so we have to redefine it here
+    parent = LibGIRepository.object_info_get_parent(info.to_unsafe.as(LibGIRepository::BaseInfo*))
+    BaseInfo.new(parent) if parent
+  end
 end
 
 require "./dumper"

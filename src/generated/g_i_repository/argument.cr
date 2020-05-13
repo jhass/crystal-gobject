@@ -81,7 +81,7 @@ module GIRepository
     end
 
     def v_string
-      (raise "Expected string but got null" unless (to_unsafe.as(LibGIRepository::Argument*).value.v_string); ::String.new((to_unsafe.as(LibGIRepository::Argument*).value.v_string)))
+      ::String.new((to_unsafe.as(LibGIRepository::Argument*).value.v_string))
     end
 
     def v_pointer

@@ -33,16 +33,19 @@ module GIRepository
 
     def self.default
       __return_value = LibGIRepository.repository_get_default
+      GObject.raise_unexpected_null("g_irepository_get_default") if __return_value.null?
       GIRepository::Repository.new(__return_value)
     end
 
     def self.option_group
       __return_value = LibGIRepository.repository_get_option_group
+      GObject.raise_unexpected_null("g_irepository_get_option_group") if __return_value.null?
       GLib::OptionGroup.new(__return_value)
     end
 
     def self.search_path
       __return_value = LibGIRepository.repository_get_search_path
+      GObject.raise_unexpected_null("g_irepository_get_search_path") if __return_value.null?
       GLib::SListIterator(::String, UInt8**).new(GLib::SList.new(__return_value.as(LibGLib::SList*)))
     end
 
@@ -58,47 +61,56 @@ module GIRepository
 
     def enumerate_versions(namespace : ::String)
       __return_value = LibGIRepository.repository_enumerate_versions(@pointer.as(LibGIRepository::Repository*), namespace.to_unsafe)
+      GObject.raise_unexpected_null("g_irepository_enumerate_versions") if __return_value.null?
       GLib::ListIterator(::String, UInt8**).new(GLib::SList.new(__return_value.as(LibGLib::List*)))
     end
 
     def find_by_error_domain(domain : ::Int)
       __return_value = LibGIRepository.repository_find_by_error_domain(@pointer.as(LibGIRepository::Repository*), UInt32.new(domain))
+      GObject.raise_unexpected_null("g_irepository_find_by_error_domain") if __return_value.null?
       GIRepository::BaseInfo.new(__return_value)
     end
 
     def find_by_gtype(gtype : UInt64)
       __return_value = LibGIRepository.repository_find_by_gtype(@pointer.as(LibGIRepository::Repository*), UInt64.new(gtype))
+      GObject.raise_unexpected_null("g_irepository_find_by_gtype") if __return_value.null?
       GIRepository::BaseInfo.new(__return_value)
     end
 
     def find_by_name(namespace : ::String, name : ::String)
       __return_value = LibGIRepository.repository_find_by_name(@pointer.as(LibGIRepository::Repository*), namespace.to_unsafe, name.to_unsafe)
+      GObject.raise_unexpected_null("g_irepository_find_by_name") if __return_value.null?
       GIRepository::BaseInfo.new(__return_value)
     end
 
     def c_prefix(namespace : ::String)
       __return_value = LibGIRepository.repository_get_c_prefix(@pointer.as(LibGIRepository::Repository*), namespace.to_unsafe)
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      GObject.raise_unexpected_null("g_irepository_get_c_prefix") if __return_value.null?
+      ::String.new(__return_value)
     end
 
     def dependencies(namespace : ::String)
       __return_value = LibGIRepository.repository_get_dependencies(@pointer.as(LibGIRepository::Repository*), namespace.to_unsafe)
-      GObject::PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
+      GObject.raise_unexpected_null("g_irepository_get_dependencies") if __return_value.null?
+      GObject::PointerIterator.new(__return_value) {|__item| ::String.new(__item) }
     end
 
     def immediate_dependencies(namespace : ::String)
       __return_value = LibGIRepository.repository_get_immediate_dependencies(@pointer.as(LibGIRepository::Repository*), namespace.to_unsafe)
-      GObject::PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
+      GObject.raise_unexpected_null("g_irepository_get_immediate_dependencies") if __return_value.null?
+      GObject::PointerIterator.new(__return_value) {|__item| ::String.new(__item) }
     end
 
     def info(namespace : ::String, index : ::Int)
       __return_value = LibGIRepository.repository_get_info(@pointer.as(LibGIRepository::Repository*), namespace.to_unsafe, Int32.new(index))
+      GObject.raise_unexpected_null("g_irepository_get_info") if __return_value.null?
       GIRepository::BaseInfo.new(__return_value)
     end
 
     def loaded_namespaces
       __return_value = LibGIRepository.repository_get_loaded_namespaces(@pointer.as(LibGIRepository::Repository*))
-      GObject::PointerIterator.new(__return_value) {|__item| (raise "Expected string but got null" unless __item; ::String.new(__item)) }
+      GObject.raise_unexpected_null("g_irepository_get_loaded_namespaces") if __return_value.null?
+      GObject::PointerIterator.new(__return_value) {|__item| ::String.new(__item) }
     end
 
     def n_infos(namespace : ::String)
@@ -113,17 +125,20 @@ module GIRepository
 
     def shared_library(namespace : ::String)
       __return_value = LibGIRepository.repository_get_shared_library(@pointer.as(LibGIRepository::Repository*), namespace.to_unsafe)
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      GObject.raise_unexpected_null("g_irepository_get_shared_library") if __return_value.null?
+      ::String.new(__return_value)
     end
 
     def typelib_path(namespace : ::String)
       __return_value = LibGIRepository.repository_get_typelib_path(@pointer.as(LibGIRepository::Repository*), namespace.to_unsafe)
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      GObject.raise_unexpected_null("g_irepository_get_typelib_path") if __return_value.null?
+      ::String.new(__return_value)
     end
 
     def version(namespace : ::String)
       __return_value = LibGIRepository.repository_get_version(@pointer.as(LibGIRepository::Repository*), namespace.to_unsafe)
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      GObject.raise_unexpected_null("g_irepository_get_version") if __return_value.null?
+      ::String.new(__return_value)
     end
 
     def registered?(namespace : ::String, version : ::String?)
@@ -135,13 +150,15 @@ module GIRepository
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGIRepository.repository_load_typelib(@pointer.as(LibGIRepository::Repository*), typelib.to_unsafe.as(LibGIRepository::Typelib*), flags, pointerof(__error))
       GLib::Error.assert __error
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      GObject.raise_unexpected_null("g_irepository_load_typelib") if __return_value.null?
+      ::String.new(__return_value)
     end
 
     def require(namespace : ::String, version : ::String?, flags : GIRepository::RepositoryLoadFlags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGIRepository.repository_require(@pointer.as(LibGIRepository::Repository*), namespace.to_unsafe, version ? version.to_unsafe : nil, flags, pointerof(__error))
       GLib::Error.assert __error
+      GObject.raise_unexpected_null("g_irepository_require") if __return_value.null?
       GIRepository::Typelib.new(__return_value)
     end
 
@@ -149,6 +166,7 @@ module GIRepository
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGIRepository.repository_require_private(@pointer.as(LibGIRepository::Repository*), typelib_dir.to_unsafe, namespace.to_unsafe, version ? version.to_unsafe : nil, flags, pointerof(__error))
       GLib::Error.assert __error
+      GObject.raise_unexpected_null("g_irepository_require_private") if __return_value.null?
       GIRepository::Typelib.new(__return_value)
     end
 

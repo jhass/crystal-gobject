@@ -124,6 +124,7 @@ module GIRepository
         if gvalue_out_arg
           io << "\n#{indent}  #{gvalue_out_arg.name}\n"
         elsif !skip_return?
+          io << "\n#{indent}  GObject.raise_unexpected_null(\"#{symbol}\") if __return_value.null?" if return_type.pointer? && !may_return_null?
           io << "\n#{indent}  #{"cast " if constructor?}#{return_type.convert_to_crystal("__return_value")}"
           io << " if __return_value" if may_return_null?
           io << '\n'

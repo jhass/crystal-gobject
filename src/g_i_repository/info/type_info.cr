@@ -164,7 +164,7 @@ module GIRepository
           variable
         end
       when .utf8?, .filename?
-        %((raise "Expected string but got null" unless #{variable}; ::String.new(#{variable})))
+        "::String.new(#{variable})"
       when .glist?
         "GLib::ListIterator(#{param_type.wrapper_definition}, #{param_type.lib_definition}*).new(GLib::SList.new(#{variable}.as(LibGLib::List*)))"
       when .gslist?

@@ -27,22 +27,26 @@ module GIRepository
 
     def attribute(name : ::String)
       __return_value = LibGIRepository.base_info_get_attribute(@pointer.as(LibGIRepository::BaseInfo*), name.to_unsafe)
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      GObject.raise_unexpected_null("g_base_info_get_attribute") if __return_value.null?
+      ::String.new(__return_value)
     end
 
     def container
       __return_value = LibGIRepository.base_info_get_container(@pointer.as(LibGIRepository::BaseInfo*))
+      GObject.raise_unexpected_null("g_base_info_get_container") if __return_value.null?
       GIRepository::BaseInfo.new(__return_value)
     end
 
     def name
       __return_value = LibGIRepository.base_info_get_name(@pointer.as(LibGIRepository::BaseInfo*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      GObject.raise_unexpected_null("g_base_info_get_name") if __return_value.null?
+      ::String.new(__return_value)
     end
 
     def namespace
       __return_value = LibGIRepository.base_info_get_namespace(@pointer.as(LibGIRepository::BaseInfo*))
-      (raise "Expected string but got null" unless __return_value; ::String.new(__return_value))
+      GObject.raise_unexpected_null("g_base_info_get_namespace") if __return_value.null?
+      ::String.new(__return_value)
     end
 
     def type
@@ -52,6 +56,7 @@ module GIRepository
 
     def typelib
       __return_value = LibGIRepository.base_info_get_typelib(@pointer.as(LibGIRepository::BaseInfo*))
+      GObject.raise_unexpected_null("g_base_info_get_typelib") if __return_value.null?
       GIRepository::Typelib.new(__return_value)
     end
 
