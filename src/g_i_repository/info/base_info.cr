@@ -44,7 +44,7 @@ module GIRepository
     end
 
     def constant
-      name.try &.constant
+      name.try &->Namespace.constant(String)
     end
 
     def full_constant
@@ -61,7 +61,7 @@ module GIRepository
     end
 
     def namespace_constant
-      namespace.constant
+      Namespace.constant(namespace)
     end
 
     def container?

@@ -159,7 +159,7 @@ module GIRepository
         case array_type
         when ArrayType::C
           item = "__item"
-          "PointerIterator.new(#{variable}) {|#{item}| #{param_type.convert_to_crystal("#{item}")} }"
+          "GObject::PointerIterator.new(#{variable}) {|#{item}| #{param_type.convert_to_crystal("#{item}")} }"
         else
           variable
         end

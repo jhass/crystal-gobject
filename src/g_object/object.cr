@@ -1,4 +1,4 @@
-require "../helper"
+require "../closure_data_manager"
 
 lib LibGObject
   fun new_with_properties = g_object_new_with_properties(object_type : UInt64, n_properties : UInt32, names : UInt8**, values : Value*) : Object*
@@ -6,17 +6,6 @@ lib LibGObject
 end
 
 module GObject
-  def self.type_from_name(name)
-    gtype = LibGObject.type_from_name(name)
-    abort "No GType for #{name} found\n#{caller.join("\n")}" if gtype == 0
-    gtype
-  end
-
-  def self.type_name(gtype)
-    ptr = LibGObject.type_name(gtype)
-    String.new ptr if ptr
-  end
-
   class Object
     def connect(signal, &callback)
       connect signal, callback

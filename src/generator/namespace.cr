@@ -269,10 +269,14 @@ class Namespace
 
   private def wrapper_definition(io, source_path = nil)
     io.puts %(#<loc:push>#<loc:"#{source_path}",1,1>) if source_path
-    io.puts "module #{@namespace.constant}#{"#<loc:pop>" if source_path}"
+    io.puts "module #{Namespace.constant(@namespace)}#{"#<loc:pop>" if source_path}"
     yield io
     io.puts "end"
     io.puts
+  end
+
+  def self.constant(string)
+    "#{string[0].upcase}#{string[1..-1]}"
   end
 
   private def skip_info?(info)

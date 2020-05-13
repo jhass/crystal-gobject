@@ -1,8 +1,13 @@
 # Avoid running require_gobject macro inside itself causing a loop
 # Instead require the minimum of dependencies manually
-require "../g_object/wrapped_type"
+require "../gobject"
+require "../wrapped_type"
+require "../pointer_iterator"
 require "../g_object/object"
+require "../g_object/module_functions"
 require "../g_lib/error"
+require "./wrapper_generator"
+
 require "../generated/g_object/param_flags"
 require "../generated/g_object/signal_flags"
 require "../generated/lib_g_i_repository"
@@ -59,8 +64,6 @@ module GIRepository
   end
 end
 
-require "../helper"
-require "./wrapper_generator"
 require "./dumper"
 require "./info/*"
 require "./repository"

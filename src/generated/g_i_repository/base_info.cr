@@ -94,7 +94,7 @@ module GIRepository
     end
 
     def padding
-      PointerIterator.new((to_unsafe.as(LibGIRepository::BaseInfo*).value.padding)) {|__item| __item }
+      GObject::PointerIterator.new((to_unsafe.as(LibGIRepository::BaseInfo*).value.padding)) {|__item| __item }
     end
 
   end

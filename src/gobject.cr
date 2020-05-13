@@ -1,4 +1,6 @@
-require "./g_object/wrapped_type"
+require "./pointer_iterator"
+require "./closure_data_manager"
+require "./wrapped_type"
 
 module GObject
   VERSION           = "0.6.0"

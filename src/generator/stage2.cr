@@ -20,7 +20,7 @@ module GLib
   end
 end
 
-macro each_converted(prefix, basename, type, plural=nil)
+macro each_converted(prefix, basename, type, plural = nil)
   def each_{{basename.id}}
     n = LibGIRepository.{{prefix.id}}_get_n_{{plural ? plural.id : "#{basename}s".id}}(self)
     0.upto(n-1) do |index|
@@ -51,7 +51,7 @@ module GIRepository
       @ptr
     end
 
-    def require(namespace,(version, flags))
+    def require(namespace, version, flags)
       __error = Pointer(LibGLib::Error).null
       __return_value = LibGIRepository.repository_require((to_unsafe as LibGIRepository::Repository*), namespace, version, flags, pointerof(__error))
       GLib::Error.assert __error
@@ -59,7 +59,7 @@ module GIRepository
 
     def dependencies(namespace)
       __return_value = LibGIRepository.repository_get_dependencies((to_unsafe as LibGIRepository::Repository*), namespace)
-      PointerIterator.new(__return_value) {|__item_76| raise "Expected string but got null" unless __item_76; String.new(__item_76) }
+      GObject::PointerIterator.new(__return_value) { |__item_76| raise "Expected string but got null" unless __item_76; String.new(__item_76) }
     end
 
     def shared_library(namespace)
@@ -72,7 +72,7 @@ module GIRepository
       __return_value
     end
 
-    def info(namespace,(index))
+    def info(namespace, index)
       __return_value = LibGIRepository.repository_get_info((to_unsafe as LibGIRepository::Repository*), namespace, Int32.new(index))
       GIRepository::BaseInfo.new(__return_value)
     end
@@ -87,15 +87,14 @@ module GIRepository
     end
   end
 
-
   def self.filename(filename)
-    filename.gsub(/[A-Z][a-z]*(?=[A-Z])/) {|m| "#{m.downcase}_" }
-            .gsub(/::/, "_")
-            .downcase
+    filename.gsub(/[A-Z][a-z]*(?=[A-Z])/) { |m| "#{m.downcase}_" }
+      .gsub(/::/, "_")
+      .downcase
   end
 end
 
-require "../helper"
+require "../pointer_iterator"
 require "../g_i_repository/info/*"
 require "../g_i_repository/repository"
 require "./generator"
