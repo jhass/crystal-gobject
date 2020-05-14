@@ -67,7 +67,7 @@ and resources as compiling the compiler does. Also libraries such as Gtk are hug
 for Gtk and its dependencies will take a long time and generate about a gigabyte
 of documentation.
 
-### Samples
+## Samples
 
 Clone the repo and give the samples a try:
 ```
@@ -75,12 +75,20 @@ cd samples
 crystal run gtk_hello_world.cr
 ```
 
-To run the samples you will also need the Gtk development package. 
+To run the samples you will also need the Gtk development package.
 
-On Debian you can install it with: 
+On Debian you can install it with:
 ```
 sudo apt install libgtk-3-dev
 ```
+
+
+## I'm on Linux and I'm getting random crashes (segmentation faults)
+
+Using GTK or another library that spawns threads? Please try adding
+[crystal-malloc_pthread_shim](https://github.com/jhass/crystal-malloc_pthread_shim) to your project.
+If that does not help, please open an issue with a, ideally minimal, example to reproduce the crash!
+
 
 ## Contributing
 
