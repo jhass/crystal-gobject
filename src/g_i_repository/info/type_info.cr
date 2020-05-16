@@ -166,7 +166,7 @@ module GIRepository
       when .utf8?, .filename?
         "::String.new(#{variable})"
       when .glist?
-        "GLib::ListIterator(#{param_type.wrapper_definition}, #{param_type.lib_definition}*).new(GLib::SList.new(#{variable}.as(LibGLib::List*)))"
+        "GLib::ListIterator(#{param_type.wrapper_definition}, #{param_type.lib_definition}*).new(GLib::List.new(#{variable}.as(LibGLib::List*)))"
       when .gslist?
         "GLib::SListIterator(#{param_type.wrapper_definition}, #{param_type.lib_definition}*).new(GLib::SList.new(#{variable}.as(LibGLib::SList*)))"
       else

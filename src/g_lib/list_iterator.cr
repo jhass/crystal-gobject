@@ -2,25 +2,40 @@ module GLib
   struct ListIterator(T, L)
     include Iterator(T)
 
+    @start = true
+    @end = false
+
     def initialize(@list : List)
     end
 
     def next
+      return stop if @end
+
+      value = T.new @list.data.as(L)
+
       if has_next?
         @list = GLib::List.new((@list.to_unsafe.as(LibGLib::List*).value.next_).as(LibGLib::List*))
-        T.new @list.data.as(L)
+        @start = false
       else
-        stop
+        @end = true
       end
+
+      value
     end
 
     def prev
+      return stop if @start
+
+      value = T.new @list.data.as(L)
+
       if has_prev?
         @list = GLib::List.new((@list.to_unsafe.as(LibGLib::List*).value.prev).as(LibGLib::List*))
-        T.new @list.data.as(L)
+        @end = false
       else
-        stop
+        @start = true
       end
+
+      value
     end
 
     def rewind
