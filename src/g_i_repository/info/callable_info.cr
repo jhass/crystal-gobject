@@ -39,6 +39,10 @@ module GIRepository
       end
 
       def tag
+        TypeTag.new 0u32
+      end
+
+      def array_length_param
         -1
       end
 

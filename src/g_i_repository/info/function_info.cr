@@ -77,19 +77,43 @@ module GIRepository
       method_name = wrapper_name
 
       String.build do |io|
-        closure_arg = args.find &.closure? if closure_arg?
-        gvalue_out_arg = args.find &.gvalue_out? if gvalue_out?
-        wrapper_args = gvalue_out? ? args.tap &.delete(gvalue_out_arg) : args
+        wrapper_args = args
+
+        sizable_args = wrapper_args.select { |candidate|
+          !candidate.out? && !candidate.inout? &&
+            candidate.type.tag.array? && candidate.type.array_length_param >= 0
+        }
+        offset = wrapper_args.first?.is_a?(SelfArgInfo) ? 1 : 0
+        sizable_args_size_args = sizable_args.map { |arg| wrapper_args[arg.type.array_length_param + offset] }
+
+        closure_arg = wrapper_args.find &.closure? if closure_arg?
+
+        gvalue_out_arg = wrapper_args.find &.gvalue_out? if gvalue_out?
+        wrapper_args.delete(gvalue_out_arg) if gvalue_out?
+
         collection_args = wrapper_args.select { |candidate|
           !candidate.out? && !candidate.inout? &&
             wrapper_args.any? { |arg| arg.name == "n_#{candidate.name}" }
         }
         collection_args_size_args = collection_args.map { |arg| "n_#{arg.name}" }
-        wrapper_args = wrapper_args.reject { |arg| collection_args_size_args.includes?(arg.name) }
+
+        wrapper_args = wrapper_args.reject { |arg|
+          sizable_args_size_args.includes?(arg) ||
+            collection_args_size_args.includes?(arg.name)
+        }
 
         method_header(io, indent, libname, wrapper_args.map(&.for_wrapper_definition(libname)).compact, gvalue_out_arg)
 
         io << "\n#{indent}  __error = Pointer(LibGLib::Error).null" if throws?
+
+        sizable_args.zip(sizable_args_size_args) do |arg, size_arg|
+          io << "\n#{indent}  #{size_arg.name} = "
+          if arg.nilable?
+            io << "#{arg.name} ? #{arg.name}.size : 0"
+          else
+            io << "#{arg.name}.size"
+          end
+        end
 
         collection_args.each do |arg|
           current_indent = indent
