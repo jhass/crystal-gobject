@@ -59,6 +59,10 @@ module GIRepository
       BaseInfo.wrap(GIRepository.type_info_get_param_type(self, n)).as(TypeInfo)
     end
 
+    def zero_terminated?
+      GIRepository.type_info_is_zero_terminated(self)
+    end
+
     def lib_definition
       base = case tag
              when .interface?
@@ -251,6 +255,7 @@ module GIRepository
       dumper.puts "* array_type = #{array_type}" if tag.array?
       dumper.puts "* array_length = #{array_length}" if tag.array?
       dumper.puts "* array_fixed_size = #{array_fixed_size}" if tag.array?
+      dumper.puts "* is_zero_terminated = #{zero_terminated?}" if tag.array?
 
       Dumper.dump_child interface if tag.interface?
       Dumper.dump_child param_type if tag.array?

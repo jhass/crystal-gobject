@@ -81,8 +81,10 @@ module GIRepository
             when .float?, .double?
               "#{name} : ::Float"
             when .array?
-              if type.param_type.tag.uint8? # Assume UInt8* (gchar*) is a string for now
-                "#{name} : ::String"
+              if type.param_type.tag.int8? # Assume Int8* (gchar*) is a string for now
+                "#{name} : ::String#{"?" if nilable?}"
+              elsif type.param_type.tag.uint8?
+                "#{name} : ::Bytes#{"?" if nilable?}"
               else
                 "#{name} : ::Enumerable#{"?" if nilable?}"
               end
