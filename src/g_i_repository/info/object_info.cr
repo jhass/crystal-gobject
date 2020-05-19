@@ -83,7 +83,7 @@ module GIRepository
 
         io.puts "  end"
 
-        io.puts "  fun _init_#{name} = #{type_init}" unless type_init == "intern"
+        io.puts "  fun _#{type_init} = #{type_init} : UInt64" unless type_init == "intern"
 
         each_method do |method|
           io.puts method.lib_definition
@@ -112,7 +112,7 @@ module GIRepository
 
         unless abstract?
           constructor_properties = all_properties.select { |property| property.setter? }
-          gtype = %(GObject.type_from_name("#{type_name}"))
+          gtype = type_init == "intern" ? %(GObject.type_from_name("#{type_name}")) : "#{libname}._#{type_init}"
           constructor_args = constructor_properties.map { |property| "#{property.arg_name} : #{property.type.wrapper_definition(libname)}? = nil" }
 
           if !constructor_properties.empty?
@@ -125,12 +125,10 @@ module GIRepository
               io.puts "#{indent}      __values << #{property.arg_name}.to_gvalue.to_unsafe.value"
               io.puts "#{indent}    end"
             end
-            io.puts "#{indent}    #{libname}._init_#{name}" unless type_init == "intern"
             io.puts "#{indent}    @pointer = LibGObject.new_with_properties(#{gtype}, __names.size, __names, __values).as(Void*)"
             io.puts "#{indent}  end"
           elsif !has_any_constructor?
             io.puts "#{indent}  def initialize"
-            io.puts "#{indent}    #{libname}._init_#{name}" unless type_init == "intern"
             io.puts "#{indent}    @pointer = LibGObject.new_with_properties(#{gtype}, 0, nil, nil).as(Void*)"
             io.puts "#{indent}  end"
           end
