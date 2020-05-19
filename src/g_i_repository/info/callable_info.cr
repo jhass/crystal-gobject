@@ -46,6 +46,10 @@ module GIRepository
         -1
       end
 
+      def primitive?
+        false
+      end
+
       def convert_to_crystal(variable)
         if @container.is_a? InterfaceInfo
           "#{@container.name}::Wrapper.new(#{variable})"

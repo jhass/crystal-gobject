@@ -63,6 +63,26 @@ module GIRepository
       GIRepository.type_info_is_zero_terminated(self)
     end
 
+    def primitive?
+      {
+        TypeTag::BOOLEAN,
+        TypeTag::INT8,
+        TypeTag::UINT8,
+        TypeTag::INT16,
+        TypeTag::UINT16,
+        TypeTag::INT32,
+        TypeTag::UINT32,
+        TypeTag::INT64,
+        TypeTag::UINT64,
+        TypeTag::FLOAT,
+        TypeTag::DOUBLE,
+        TypeTag::GTYPE,
+        TypeTag::UTF8,
+        TypeTag::FILENAME,
+        TypeTag::UNICHAR,
+      }.includes?(tag)
+    end
+
     def lib_definition
       base = case tag
              when .interface?

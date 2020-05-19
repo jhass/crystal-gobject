@@ -97,8 +97,11 @@ module GIRepository
         }
         collection_args_size_args = collection_args.map { |arg| "n_#{arg.name}" }
 
+        primitive_out_args = wrapper_args.select { |candidate| candidate.out? && candidate.type.primitive? }
+
         wrapper_args = wrapper_args.reject { |arg|
           sizable_args_size_args.includes?(arg) ||
+            primitive_out_args.includes?(arg) ||
             collection_args_size_args.includes?(arg.name)
         }
 
@@ -140,23 +143,43 @@ module GIRepository
         io << "#{gvalue_out_arg.name} = GObject::Value.new\n#{indent}  " if gvalue_out_arg
         io << "__return_value = " unless skip_return?
         io << "#{libname}.#{prefix}#{name}"
-        lib_args = args.map { |arg| collection_args.includes?(arg) ? "__#{arg.name}" : arg.for_wrapper_pass(libname) }.compact.join(", ")
+        lib_args = args.map { |arg|
+          if collection_args.includes?(arg)
+            "__#{arg.name}"
+          elsif primitive_out_args.includes?(arg)
+            "out #{arg.name}"
+          else
+            arg.for_wrapper_pass(libname)
+          end
+        }.compact.join(", ")
         io << "(#{lib_args})" unless lib_args.empty?
 
         io << "\n#{indent}  GLib::Error.assert __error" if throws?
 
+        return_value = nil
         if gvalue_out_arg
-          io << "\n#{indent}  #{gvalue_out_arg.name}\n"
+          return_value = gvalue_out_arg.name
         elsif !skip_return?
           io << "\n#{indent}  GObject.raise_unexpected_null(\"#{symbol}\") if __return_value.null?" if return_type.pointer? && !may_return_null?
-          io << "\n#{indent}  #{"cast " if constructor?}#{return_type.convert_to_crystal("__return_value")}"
-          io << " if __return_value" if may_return_null?
-          io << '\n'
+          return_value = "#{"cast " if constructor?}#{return_type.convert_to_crystal("__return_value")}"
+          return_value = "(#{return_value} if __return_value)" if may_return_null?
+
+          if primitive_out_args.any?
+            # TODO arrays could be handled too with a bit more logic (or maybe no additional logic at all? Find a test case)
+            return_value = "{#{return_value}, #{primitive_out_args.map { |arg| arg.type.convert_to_crystal("#{arg.name}") }.join(", ")}}"
+          end
+        elsif primitive_out_args.size == 1
+          arg = primitive_out_args.first
+          return_value = arg.type.convert_to_crystal("#{arg.name}")
+        elsif primitive_out_args.any?
+          return_value = "{#{primitive_out_args.map { |arg| arg.type.convert_to_crystal("#{arg.name}") }.join(", ")}}"
         else
-          io << "\n#{indent}  nil\n"
+          return_value = "nil"
         end
 
-        io << "#{indent}end\n"
+        io.puts "\n#{indent}  #{return_value}"
+
+        io.puts "#{indent}end"
 
         if closure_arg
           io.puts
