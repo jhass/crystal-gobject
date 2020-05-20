@@ -29,8 +29,7 @@ class CSSApp
   end
 
   def change_background(color)
-    # Workaround https://gitlab.gnome.org/GNOME/gtk/-/merge_requests/1939 by calling to_slice
-    @css_provider.load_from_data "#css_window { background-color: #{color}; }".to_slice
+    @css_provider.load_from_data("#css_window { background-color: #{color}; }")
   end
 end
 

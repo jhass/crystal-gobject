@@ -29,7 +29,7 @@ module Gtk
 
   class CssProvider
     def load_from_data(string : String)
-      load_from_data(string, string.bytesize)
+      load_from_data(string.to_slice)
     end
   end
 
