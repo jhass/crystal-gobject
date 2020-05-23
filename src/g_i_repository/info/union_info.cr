@@ -83,7 +83,7 @@ module GIRepository
             else
               field_access = "to_unsafe.as(#{ptr_type(libname)}).value.#{field.name}"
             end
-            io.puts "#{indent}  def #{field.name(false)}"
+            io.puts "#{indent}  def #{field.wrapper_name}"
             io.puts "#{indent}    #{field.type.convert_to_crystal("(#{field_access})")}"
             io.puts "#{indent}  end"
             io.puts

@@ -10,8 +10,14 @@ module GIRepository
 
     def name(keyword_safe = true)
       name = super()
-      name = "_#{name}" if name[0].uppercase? if name
-      name += '_' if keyword_safe && KEYWORDS.includes? name if name
+      name = "#{name[0].downcase}#{name[1..-1]}" if name && name[0].uppercase?
+      name = "_#{name}" if keyword_safe && KEYWORDS.includes? name if name
+      name
+    end
+
+    def wrapper_name
+      name = name(false)
+      name = "_#{name}" if name == "initialize" || name == "finalize"
       name
     end
 

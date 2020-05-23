@@ -14,7 +14,7 @@ module GLib
       value = T.new @list.data.as(L)
 
       if has_next?
-        @list = GLib::List.new((@list.to_unsafe.as(LibGLib::List*).value.next_).as(LibGLib::List*))
+        @list = GLib::List.new((@list.to_unsafe.as(LibGLib::List*).value._next).as(LibGLib::List*))
         @start = false
       else
         @end = true
@@ -45,7 +45,7 @@ module GLib
     end
 
     def has_next?
-      !@list.to_unsafe.as(LibGLib::List*).value.next_.null?
+      !@list.to_unsafe.as(LibGLib::List*).value._next.null?
     end
 
     def has_prev?

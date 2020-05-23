@@ -285,8 +285,6 @@ class Namespace
       name = info.name
       return true unless name
       return true unless 'A' <= name[0] <= 'Z' # Bug in typelib?
-    when GIRepository::StructInfo
-      return true if info.gtype? # Hide them
     else
       false
     end

@@ -61,14 +61,14 @@ module GIRepository
         if !writable_fields.empty?
           io.print "#{indent}  def self.new("
           io.print writable_fields.map { |field|
-            external = "#{field.name(false)} " if field.name(false) != field.name
+            external = "#{field.wrapper_name} " if field.wrapper_name != field.name
             "#{external}#{field.name} : #{field.type.wrapper_definition(libname)}|Nil = nil"
           }.join(", ")
           io.puts ") : self"
           io.puts "#{indent}    ptr = Pointer(UInt8).malloc(#{size}, 0u8)"
           io.puts "#{indent}    new(ptr.as(#{ptr_type(libname)})).tap do |object|"
           writable_fields.each do |field|
-            io.puts "#{indent}      object.#{field.name(false)} = #{field.name} unless #{field.name}.nil?"
+            io.puts "#{indent}      object.#{field.wrapper_name} = #{field.name} unless #{field.name}.nil?"
           end
           io.puts "#{indent}    end"
           io.puts "#{indent}  end"
@@ -89,14 +89,14 @@ module GIRepository
           next if has_method_getter_or_setter?(field.name)
 
           if field.readable?
-            io.puts "#{indent}  def #{field.name(false)}"
+            io.puts "#{indent}  def #{field.wrapper_name}"
             io.puts "#{indent}    #{field.type.convert_to_crystal("(to_unsafe.as(#{ptr_type(libname)}).value.#{field.name})")}"
             io.puts "#{indent}  end"
             io.puts
           end
 
           if field.writable?
-            io.puts "#{indent}  def #{field.name(false)}=(value : #{field.type.wrapper_definition(libname)})"
+            io.puts "#{indent}  def #{field.wrapper_name}=(value : #{field.type.wrapper_definition(libname)})"
             io.puts "#{indent}    to_unsafe.as(#{ptr_type(libname)}).value.#{field.name} = #{field.type.convert_from_crystal("value")}"
             io.puts "#{indent}  end"
             io.puts

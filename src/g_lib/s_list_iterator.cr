@@ -13,7 +13,7 @@ module GLib
       value = T.new @s_list.data.as(L)
 
       if has_next?
-        @s_list = GLib::SList.new((@s_list.to_unsafe.as(LibGLib::SList*).value.next_).as(LibGLib::SList*))
+        @s_list = GLib::SList.new((@s_list.to_unsafe.as(LibGLib::SList*).value._next).as(LibGLib::SList*))
       else
         @end = true
       end
@@ -22,7 +22,7 @@ module GLib
     end
 
     def has_next?
-      !@s_list.to_unsafe.as(LibGLib::SList*).value.next_.null?
+      !@s_list.to_unsafe.as(LibGLib::SList*).value._next.null?
     end
   end
 end
