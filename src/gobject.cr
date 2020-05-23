@@ -21,10 +21,14 @@ module GObject
   end
 end
 
-macro require_gobject(namespace)
+macro require_gobject(namespace, version = nil)
   require "gobject/g_object"
   {% unless GObject::LOADED_NAMESPACES.includes?(namespace) %}
     {% GObject::LOADED_NAMESPACES << namespace %}
-    {{run "gobject/generator/build_namespace", namespace}}
+    {% if version %}
+      {{run "gobject/generator/build_namespace", namespace, version}}
+    {% else %}
+      {{run "gobject/generator/build_namespace", namespace}}
+    {% end %}
   {% end %}
 end

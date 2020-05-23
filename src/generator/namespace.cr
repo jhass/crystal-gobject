@@ -1,12 +1,12 @@
 class Namespace
-  def initialize(@namespace : String)
+  def initialize(@namespace : String, @version : String? = nil)
     self.require
   end
 
   def_equals_and_hash @namespace
 
   def require
-    GIRepository::Repository.instance.require @namespace
+    GIRepository::Repository.instance.require @namespace, @version
   end
 
   def dependencies

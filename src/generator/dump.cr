@@ -7,9 +7,9 @@ all = false
 opt_namespace = nil
 
 OptionParser.parse do |p|
-  p.banner = "Usage: gi-dump [opts] NAMESPACE"
-  p.on("-r NAME", "--root=NAME", "Only print given toplevel info instead of all") {|name| opt_root = name }
-  p.on("-n LIMIT", "--nesting=LIMIT", "Stop after LIMIT recursions (default 3)") {|limit| max_nesting = limit.to_i? }
+  p.banner = "Usage: gi-dump [opts] NAMESPACE[-VERSION]"
+  p.on("-r NAME", "--root=NAME", "Only print given toplevel info instead of all") { |name| opt_root = name }
+  p.on("-n LIMIT", "--nesting=LIMIT", "Stop after LIMIT recursions (default 3)") { |limit| max_nesting = limit.to_i? }
   p.on("-a", "--all", "Don't limit nesting, print all") { all = true }
   p.on("-h", "--help", "Show this help") do
     puts p
@@ -34,8 +34,10 @@ unless max_nesting
   exit 1
 end
 
+namespace, version = namespace.split("-", 2) if namespace.includes?('-')
+
 repo = GIRepository::Repository.instance
-repo.require namespace
+repo.require namespace, version
 dumper = GIRepository::Dumper.new(STDOUT, all ? nil : max_nesting)
 if root = opt_root
   info = repo.find_by_name(namespace, root)
