@@ -68,6 +68,12 @@ module GIRepository
     parent = LibGIRepository.object_info_get_parent(info.to_unsafe.as(LibGIRepository::BaseInfo*))
     BaseInfo.new(parent) if parent
   end
+
+  def self.object_info_get_class_struct(info : GIRepository::BaseInfo)
+    # Missing may return null annotation in typelib, so we have to redefine it here
+    class_struct = LibGIRepository.object_info_get_class_struct(info.to_unsafe.as(LibGIRepository::BaseInfo*))
+    BaseInfo.new(class_struct) if class_struct
+  end
 end
 
 require "./dumper"
