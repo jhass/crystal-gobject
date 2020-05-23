@@ -273,7 +273,7 @@ module GIRepository
       dumper.puts "* tag = #{tag}"
       dumper.puts "* pointer = #{pointer?}"
       dumper.puts "* array_type = #{array_type}" if tag.array?
-      dumper.puts "* array_length_param = #{array_length}" if tag.array?
+      dumper.puts "* array_length_param = #{array_length_param}" if tag.array?
       dumper.puts "* array_fixed_size = #{array_fixed_size}" if tag.array?
       dumper.puts "* is_zero_terminated = #{zero_terminated?}" if tag.array?
 
