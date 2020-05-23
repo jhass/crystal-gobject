@@ -1,10 +1,10 @@
 require "signal"
 
+require "../gobject"
+require_gobject "Gtk", "3.0"
+
 require "../g_object"
 require "../gdk"
-
-require "../gobject"
-require_gobject "Gtk"
 
 module Gtk
   class Window

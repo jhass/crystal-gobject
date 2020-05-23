@@ -1,5 +1,5 @@
 require "../gobject"
-require_gobject "Gdk"
+require_gobject "Gdk", "3.0"
 
 require "./event"
 
