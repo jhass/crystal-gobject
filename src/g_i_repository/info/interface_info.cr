@@ -18,76 +18,42 @@ module GIRepository
       StructInfo.new ptr if ptr
     end
 
-    def lib_definition
-      String.build do |io|
-        each_constant do |constant|
-          io.puts "#{constant.lib_definition}"
-        end
-
-        io.puts "  struct #{name} # interface"
-
+    def lib_definition(builder)
+      builder.end_of_line_comment "interface"
+      builder.def_struct(name) do
         iface_struct = self.iface_struct
         if iface_struct
-          iface_struct.field_definition(io)
+          iface_struct.field_definition(builder)
         else
-          io.puts "    _data : UInt8[0]"
+          field_binding "_data", "UInt8[0]"
         end
 
-        each_prerequisite do |prerequisite|
-          io.puts "  # Requires #{prerequisite.name}"
-        end
-
-        each_signal do |signal|
-          io.puts "  #{signal.lib_definition}"
-        end
-
-        each_vfunc do |vfunc|
-          io.puts "  #{vfunc.lib_definition}"
-        end
-
-        each_property do |property|
-          io.puts "  #{property.lib_definition}"
-        end
-
-        io.puts "  end"
-
-        each_method do |method|
-          io.puts method.lib_definition
-        end
-        io.puts
+        each_prerequisite { |prerequisite| comment("Requires #{prerequisite.name}") }
+        each_signal(&.lib_definition(builder))
+        each_vfunc(&.lib_definition(builder))
+        each_property(&.lib_definition(builder))
       end
+
+      each_constant(&.lib_definition(builder))
+      each_method(&.lib_definition(builder))
     end
 
-    def wrapper_definition(libname, indent = "")
-      String.build do |io|
-        io.puts "#{indent}module #{name}"
-        io.puts "#{indent}  # :nodoc:"
-        io.puts "#{indent}  class Wrapper < GObject::Object"
-        io.puts "#{indent}    include GObject::WrappedType"
-        io.puts "#{indent}    include #{name}"
-        io.puts
-        write_constructor libname, io, indent + "  "
-        write_to_unsafe libname, io, indent + "  "
+    def wrapper_definition(builder, libname)
+      builder.def_module(name) do
+        attach_to_next_section { comment ":nodoc:" }
+        def_class("Wrapper", parent: "GObject::Object") do
+          add_include "GObject::WrappedType"
+          add_include name
 
-        io.puts "#{indent}  end"
-        io.puts
-
-        write_interface_to_unsafe libname, io, indent
-
-        each_constant do |constant|
-          io.puts constant.wrapper_definition libname, indent + "  "
+          write_constructor builder, libname
+          write_to_unsafe builder, libname
         end
 
-        each_method do |method|
-          io.puts method.wrapper_definition libname, indent + "  "
-          io.puts
-        end
+        write_interface_to_unsafe builder, libname
 
-        each_signal do |signal|
-          io.puts signal.wrapper_definition libname, indent + "  "
-        end
-
-        io.puts "#{indent}end"
+        each_constant &.wrapper_definition(builder, libname)
+        each_method &.wrapper_definition(builder, libname)
+        each_signal &.wrapper_definition(builder, libname)
       end
     end
 

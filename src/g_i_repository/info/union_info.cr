@@ -11,7 +11,8 @@ module GIRepository
 
     def name
       name = super
-      'A' <= name[0] <= 'Z' ? name : "#{c_prefix}#{name}" if name
+      name = 'A' <= name[0] <= 'Z' ? name : "#{c_prefix}#{name}" if name
+      name.not_nil!
     end
 
     def size
@@ -46,55 +47,45 @@ module GIRepository
       GIRepository.union_info_get_discriminator_offset(self)
     end
 
-    def lib_definition
-      String.build do |io|
-        if fields_size > 0
-          io.puts "  union #{name}"
-          each_field do |field|
-            io.puts "  #{field.lib_definition}"
-          end
-          io.puts "  end"
-        else
-          io.puts "  alias #{name} = Void*"
+    def lib_definition(builder)
+      if fields_size > 0
+        builder.def_union(name) do
+          each_field &.lib_definition(builder)
         end
-
-        each_method do |method|
-          io.puts method.lib_definition
-        end
-
-        io.puts
+      else
+        builder.def_alias name, "Void*"
       end
+
+      each_method &.lib_definition(builder)
     end
 
-    def wrapper_definition(libname, indent = "")
-      String.build do |io|
-        io.puts "#{indent}class #{name}"
-        io.puts "#{indent}  include GObject::WrappedType"
-        io.puts
+    def wrapper_definition(builder, libname)
+      builder.def_class(name) do
+        section { add_include "GObject::WrappedType" }
 
         union_members = [name].concat fields.map { |field| field.type.wrapper_definition(libname) }
-        io.puts "#{indent}  alias Union = #{union_members.join("|")}"
-        io.puts
+        def_alias "Union", union_members.join("|")
 
         each_field do |field|
           if field.readable?
-            if field.type.tag.interface? && !field.type.pointer?
-              field_access = "to_unsafe.as(Lib#{field.type.namespace}::#{field.type.interface.name}*)"
-            else
-              field_access = "to_unsafe.as(#{ptr_type(libname)}).value.#{field.name}"
+            def_method(field.wrapper_name) do
+              ptr = call("to_unsafe")
+              value = if field.type.tag.interface? && !field.type.pointer?
+                        call("as", "Lib#{field.type.namespace}::#{field.type.interface.name}*", receiver: ptr)
+                      else
+                        ptr = call("as", ptr_type(libname), receiver: ptr)
+                        strct = call("value", receiver: ptr)
+                        call(field.name, receiver: strct)
+                      end
+
+              line field.type.convert_to_crystal(builder, value)
             end
-            io.puts "#{indent}  def #{field.wrapper_name}"
-            io.puts "#{indent}    #{field.type.convert_to_crystal("(#{field_access})")}"
-            io.puts "#{indent}  end"
-            io.puts
           end
         end
 
-        write_constructor libname, io, indent
-        write_to_unsafe libname, io, indent
-        write_methods libname, io, indent
-
-        io.puts "#{indent}end"
+        write_constructor builder, libname
+        write_to_unsafe builder, libname
+        write_methods builder, libname
       end
     end
 

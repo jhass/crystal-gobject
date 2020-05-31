@@ -1,5 +1,5 @@
 module GIRepository
-  @[Flags]
+  @[Flags()]
   enum VFuncInfoFlags : UInt32
     ZERO_NONE = 0
     MUST_CHAIN_UP = 1
@@ -7,6 +7,4 @@ module GIRepository
     MUST_NOT_OVERRIDE = 4
     THROWS = 8
   end
-
 end
-

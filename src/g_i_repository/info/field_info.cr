@@ -12,7 +12,7 @@ module GIRepository
       name = super()
       name = "#{name[0].downcase}#{name[1..-1]}" if name && name[0].uppercase?
       name = "_#{name}" if keyword_safe && KEYWORDS.includes? name if name
-      name
+      name.not_nil!
     end
 
     def wrapper_name
@@ -41,8 +41,8 @@ module GIRepository
       GIRepository.field_info_get_offset(self)
     end
 
-    def lib_definition
-      "  #{name} : #{type.lib_definition}"
+    def lib_definition(builder)
+      builder.field_binding name, type.lib_definition(builder)
     end
 
     Dumper.def do

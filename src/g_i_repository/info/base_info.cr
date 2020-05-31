@@ -105,11 +105,12 @@ module GIRepository
       LibGIRepository.base_info_unref(to_unsafe)
     end
 
-    def lib_definition
-      "  # Bug: #{name} : #{info_type}"
+    def lib_definition(builder)
+      builder.comment "Bug: #{name} : #{info_type}"
     end
 
-    def wrapper_definition(libname, indent = "")
+    def wrapper_definition(builder, libname)
+      builder.comment "Bug: #{name} : #{info_type}"
     end
 
     def dump(io : IO)

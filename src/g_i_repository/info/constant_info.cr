@@ -25,61 +25,69 @@ module GIRepository
       BaseInfo.wrap(GIRepository.constant_info_get_type(self)).as(TypeInfo)
     end
 
-    def literal
+    def literal(builder)
       with_value do |size, value|
         case type.tag
         when .boolean?
-          value.v_boolean.inspect
+          builder.literal value.v_boolean
         when .int8?
-          value.v_int8.inspect
+          builder.literal value.v_int8
         when .uint8?
-          value.v_uint8.inspect
+          builder.literal value.v_uint8
         when .int16?
-          value.v_int16.inspect
+          builder.literal value.v_int16
         when .uint16?
-          value.v_uint16.inspect
+          builder.literal value.v_uint16
         when .int32?
-          value.v_int32.inspect
+          builder.literal value.v_int32
         when .uint32?
-          value.v_uint32.inspect
+          builder.literal value.v_uint32
         when .int64?
-          value.v_int64.inspect
+          builder.literal value.v_int64
         when .uint64?
-          value.v_uint64.inspect
+          builder.literal value.v_uint64
         when .float?
-          value.v_float.inspect
+          builder.literal value.v_float
         when .double?
-          value.v_double.inspect
+          builder.literal value.v_double
         when .utf8?
-          string = String.new(value.v_string)
-          string.inspect
+          builder.literal String.new(value.v_string)
         when .array?
-          "Pointer(StaticArray(#{type.param_type.lib_definition}, #{size})).#{size > 0 ? "new(#{value.v_pointer.address.inspect})" : "null"}.value"
+          pointer_type = "Pointer(StaticArray(#{type.param_type.lib_definition(builder)}, #{size}))"
+          if size > 0
+            pointer = builder.call "new", builder.literal(value.v_pointer), receiver: pointer_type
+            builder.call "value", receiver: pointer
+          else
+            builder.call "null", receiver: pointer_type
+          end
         when .interface?
-          "# INTERFACE CONSTANT #{name} #{size}" # debug, should never end up being generated
+          builder.comment "INTERFACE CONSTANT #{name} #{size}" # debug, should never end up being generated
         else
           raise "Bug: Unhandled constant type #{type.tag}"
         end
       end
     end
 
-    def lib_definition
+    def lib_definition(builder)
       if type.tag.interface?
-        "  # #{name} = ungeneratable value"
+        builder.comment "#{name} = ungeneratable value"
+      elsif name = self.name
+        builder.end_of_line_comment ": #{type.lib_definition(builder)}"
+        builder.line builder.assign name, literal(builder)
       else
-        "  #{name} = #{literal} # : #{type.lib_definition}"
+        builder.comment "# nameless constant for #{literal(builder)}"
       end
     end
 
-    def wrapper_definition(libname, indent="")
-      String.build do |io|
-        io.puts "#{indent}#{name} = #{libname}::#{name}"
+    def wrapper_definition(builder, libname)
+      if name = self.name
+        builder.line builder.assign name, "#{libname}::#{name}"
       end
     end
 
     Dumper.def do
       Dumper.dump_child type
-      dumper.puts "* value = #{literal}"
+      dumper.puts "* value = #{Crout.build { |b| literal(b) }}"
     end
   end
 end

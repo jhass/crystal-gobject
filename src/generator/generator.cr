@@ -1,4 +1,5 @@
 require "file_utils"
+require "../crout"
 require "./namespace"
 
 generation_dir = "src/generated-next"

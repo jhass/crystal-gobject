@@ -9,6 +9,7 @@ module GIRepository
       name = "_#{name}" if name[0].uppercase? if name
       name = "_#{name}" if KEYWORDS.includes? name
       name.gsub(/_+$/, "") if name
+      name.not_nil!
     end
 
     def direction
@@ -67,41 +68,39 @@ module GIRepository
       GIRepository.arg_info_is_caller_allocates(self)
     end
 
-    def lib_definition
-      String.build do |io|
-        io << name << " : " << type.lib_definition
-        io << '*' if out? || inout?
+    def lib_definition(builder)
+      builder.arg name, type: "#{type.lib_definition(builder)}#{'*' if out? || inout?}"
+    end
+
+    def for_wrapper_definition(builder, libname)
+      case type.tag
+      when .int8?, .uint8?, .int16?, .uint16?, .int32?, .uint32?, .int64?, .uint64?
+        builder.arg name, type: "::Int"
+      when .float?, .double?
+        builder.arg name, type: "::Float"
+      when .array?
+        if type.param_type.tag.int8? # Assume Int8* (gchar*) is a string for now
+          builder.arg name, type: "::String#{"?" if nilable?}"
+        elsif type.param_type.tag.uint8?
+          builder.arg name, type: "::Bytes#{"?" if nilable?}"
+        else
+          builder.arg name, type: "::Enumerable#{"?" if nilable?}"
+        end
+      when .interface?
+        interface = type.interface
+        if interface.namespace == "GObject" && interface.name == "Value"
+          builder.arg name
+        elsif interface.is_a?(UnionInfo)
+          builder.arg name, type: "#{type.wrapper_definition(libname)}::Union#{"?" if nilable?}"
+        else
+          builder.arg name, type: "#{type.wrapper_definition(libname)}#{"?" if nilable?}"
+        end
+      else
+        builder.arg name, type: "#{type.wrapper_definition(libname)}#{"?" if nilable?}"
       end
     end
 
-    def for_wrapper_definition(libname)
-      arg = case type.tag
-            when .int8?, .uint8?, .int16?, .uint16?, .int32?, .uint32?, .int64?, .uint64?
-              "#{name} : ::Int"
-            when .float?, .double?
-              "#{name} : ::Float"
-            when .array?
-              if type.param_type.tag.int8? # Assume Int8* (gchar*) is a string for now
-                "#{name} : ::String#{"?" if nilable?}"
-              elsif type.param_type.tag.uint8?
-                "#{name} : ::Bytes#{"?" if nilable?}"
-              else
-                "#{name} : ::Enumerable#{"?" if nilable?}"
-              end
-            when .interface?
-              interface = type.interface
-              if interface.namespace == "GObject" && interface.name == "Value"
-                name
-              elsif interface.is_a?(UnionInfo)
-                "#{name} : #{type.wrapper_definition(libname)}::Union#{"?" if nilable?}"
-              end
-            else
-            end
-
-      arg || "#{name} : #{type.wrapper_definition(libname)}#{"?" if nilable?}"
-    end
-
-    def for_wrapper_pass(libname)
+    def for_wrapper_pass(builder, libname)
       if out? || inout?
         name
       else

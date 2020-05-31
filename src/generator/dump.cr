@@ -1,4 +1,5 @@
 require "option_parser"
+require "../crout"
 require "../g_i_repository"
 
 opt_root = nil

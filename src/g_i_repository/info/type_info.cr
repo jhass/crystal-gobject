@@ -83,7 +83,7 @@ module GIRepository
       }.includes?(tag)
     end
 
-    def lib_definition
+    def lib_definition(builder)
       base = case tag
              when .interface?
                interface = self.interface
@@ -100,7 +100,7 @@ module GIRepository
              when .array?
                case array_type
                when ArrayType::C
-                 param = param_type.lib_definition
+                 param = param_type.lib_definition(builder)
                  param += "[#{array_fixed_size}]" if array_fixed_size > 1
                  param
                else
@@ -113,8 +113,8 @@ module GIRepository
       base
     end
 
-    def signal_lib_definition
-      base = lib_definition
+    def signal_lib_definition(builder)
+      base = lib_definition(builder)
       if tag.interface?
         # In signal functions, structs are always pointers, even if their TypeInfo disagrees
         base += "*"
@@ -152,12 +152,12 @@ module GIRepository
       end
     end
 
-    def wrapper_definition(libname = "", indent = "")
+    def wrapper_definition(builder, libname = "")
       case tag
       when .interface?
         interface.full_constant
       when .array?
-        "::Enumerable(#{param_type.wrapper_definition(libname)})"
+        "::Enumerable(#{param_type.wrapper_definition(builder, libname)})"
       when .void?
         pointer? ? "Void*" : "Nil"
       when .utf8?, .filename?
@@ -167,32 +167,34 @@ module GIRepository
       end
     end
 
-    def convert_to_crystal(variable)
+    def convert_to_crystal(builder, variable) : String | Crout::Expression
       case tag
       when .interface?
         interface = self.interface
         case interface
         when ObjectInfo, StructInfo, UnionInfo, EnumInfo, FlagsInfo
-          "#{interface.full_constant}.new(#{variable})"
+          builder.call "new", variable, receiver: interface.full_constant
         when InterfaceInfo
-          "#{interface.full_constant}::Wrapper.new(#{variable})"
+          builder.call "new", variable, receiver: "#{interface.full_constant}::Wrapper"
         else
           variable
         end
       when .array?
         case array_type
         when ArrayType::C
-          item = "__item"
-          "GObject::PointerIterator.new(#{variable}) {|#{item}| #{param_type.convert_to_crystal("#{item}")} }"
+          item = builder.declare_var
+          builder.call("new", variable, receiver: "GObject::PointerIterator", block_args: {item}) do |b|
+            b.line param_type.convert_to_crystal(builder, item)
+          end
         else
           variable
         end
       when .utf8?, .filename?
-        "::String.new(#{variable})"
+        builder.call "new", variable, receiver: "::String"
       when .glist?
-        "GLib::ListIterator(#{param_type.wrapper_definition}, #{param_type.lib_definition}*).new(GLib::List.new(#{variable}.as(LibGLib::List*)))"
+        "GLib::ListIterator(#{param_type.wrapper_definition(builder)}, #{param_type.lib_definition(builder)}*).new(GLib::List.new(#{variable}.as(LibGLib::List*)))"
       when .gslist?
-        "GLib::SListIterator(#{param_type.wrapper_definition}, #{param_type.lib_definition}*).new(GLib::SList.new(#{variable}.as(LibGLib::SList*)))"
+        "GLib::SListIterator(#{param_type.wrapper_definition(builder)}, #{param_type.lib_definition(builder)}*).new(GLib::SList.new(#{variable}.as(LibGLib::SList*)))"
       else
         variable
       end

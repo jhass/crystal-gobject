@@ -21,6 +21,4 @@ module GIRepository
     TYPE = 18
     UNRESOLVED = 19
   end
-
 end
-

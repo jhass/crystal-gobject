@@ -3,11 +3,11 @@ module GIRepository
     include GObject::WrappedType
 
     def self.new : self
-      ptr = Pointer(UInt8).malloc(72, 0u8)
-      new(ptr.as(LibGIRepository::BaseInfo*))
+      new(Pointer(UInt8).malloc(72u64, 0u8).as(LibGIRepository::BaseInfo*))
     end
 
     @pointer : Void*
+
     def initialize(pointer : LibGIRepository::BaseInfo*)
       @pointer = pointer.as(Void*)
     end
@@ -21,87 +21,87 @@ module GIRepository
     end
 
     def equal(info2 : GIRepository::BaseInfo)
-      __return_value = LibGIRepository.base_info_equal(@pointer.as(LibGIRepository::BaseInfo*), info2.to_unsafe.as(LibGIRepository::BaseInfo*))
-      __return_value
+      __var0 = LibGIRepository.base_info_equal(@pointer.as(LibGIRepository::BaseInfo*), info2.to_unsafe.as(LibGIRepository::BaseInfo*))
+      __var0
     end
 
     def attribute(name : ::String)
-      __return_value = LibGIRepository.base_info_get_attribute(@pointer.as(LibGIRepository::BaseInfo*), name.to_unsafe)
-      GObject.raise_unexpected_null("g_base_info_get_attribute") if __return_value.null?
-      ::String.new(__return_value)
+      __var0 = LibGIRepository.base_info_get_attribute(@pointer.as(LibGIRepository::BaseInfo*), name.to_unsafe)
+      GObject.raise_unexpected_null("g_base_info_get_attribute") if __var0.null?
+      ::String.new(__var0)
     end
 
     def container
-      __return_value = LibGIRepository.base_info_get_container(@pointer.as(LibGIRepository::BaseInfo*))
-      GObject.raise_unexpected_null("g_base_info_get_container") if __return_value.null?
-      GIRepository::BaseInfo.new(__return_value)
+      __var0 = LibGIRepository.base_info_get_container(@pointer.as(LibGIRepository::BaseInfo*))
+      GObject.raise_unexpected_null("g_base_info_get_container") if __var0.null?
+      GIRepository::BaseInfo.new(__var0)
     end
 
     def name
-      __return_value = LibGIRepository.base_info_get_name(@pointer.as(LibGIRepository::BaseInfo*))
-      GObject.raise_unexpected_null("g_base_info_get_name") if __return_value.null?
-      ::String.new(__return_value)
+      __var0 = LibGIRepository.base_info_get_name(@pointer.as(LibGIRepository::BaseInfo*))
+      GObject.raise_unexpected_null("g_base_info_get_name") if __var0.null?
+      ::String.new(__var0)
     end
 
     def namespace
-      __return_value = LibGIRepository.base_info_get_namespace(@pointer.as(LibGIRepository::BaseInfo*))
-      GObject.raise_unexpected_null("g_base_info_get_namespace") if __return_value.null?
-      ::String.new(__return_value)
+      __var0 = LibGIRepository.base_info_get_namespace(@pointer.as(LibGIRepository::BaseInfo*))
+      GObject.raise_unexpected_null("g_base_info_get_namespace") if __var0.null?
+      ::String.new(__var0)
     end
 
     def type
-      __return_value = LibGIRepository.base_info_get_type(@pointer.as(LibGIRepository::BaseInfo*))
-      GIRepository::InfoType.new(__return_value)
+      __var0 = LibGIRepository.base_info_get_type(@pointer.as(LibGIRepository::BaseInfo*))
+      GIRepository::InfoType.new(__var0)
     end
 
     def typelib
-      __return_value = LibGIRepository.base_info_get_typelib(@pointer.as(LibGIRepository::BaseInfo*))
-      GObject.raise_unexpected_null("g_base_info_get_typelib") if __return_value.null?
-      GIRepository::Typelib.new(__return_value)
+      __var0 = LibGIRepository.base_info_get_typelib(@pointer.as(LibGIRepository::BaseInfo*))
+      GObject.raise_unexpected_null("g_base_info_get_typelib") if __var0.null?
+      GIRepository::Typelib.new(__var0)
     end
 
     def deprecated?
-      __return_value = LibGIRepository.base_info_is_deprecated(@pointer.as(LibGIRepository::BaseInfo*))
-      __return_value
+      __var0 = LibGIRepository.base_info_is_deprecated(@pointer.as(LibGIRepository::BaseInfo*))
+      __var0
     end
 
-    def iterate_attributes(iterator : GIRepository::AttributeIter, name : ::String, value : ::String)
-      __return_value = LibGIRepository.base_info_iterate_attributes(@pointer.as(LibGIRepository::BaseInfo*), iterator, name, value)
-      __return_value
+    def iterate_attributes(iterator : GIRepository::AttributeIter)
+      __var0 = LibGIRepository.base_info_iterate_attributes(@pointer.as(LibGIRepository::BaseInfo*), iterator, out name, out value)
+      {__var0, ::String.new(name), ::String.new(value)}
     end
 
     def dummy1
-      (to_unsafe.as(LibGIRepository::BaseInfo*).value.dummy1)
+      to_unsafe.as(LibGIRepository::BaseInfo*).value.dummy1
     end
 
     def dummy2
-      (to_unsafe.as(LibGIRepository::BaseInfo*).value.dummy2)
+      to_unsafe.as(LibGIRepository::BaseInfo*).value.dummy2
     end
 
     def dummy3
-      (to_unsafe.as(LibGIRepository::BaseInfo*).value.dummy3)
+      to_unsafe.as(LibGIRepository::BaseInfo*).value.dummy3
     end
 
     def dummy4
-      (to_unsafe.as(LibGIRepository::BaseInfo*).value.dummy4)
+      to_unsafe.as(LibGIRepository::BaseInfo*).value.dummy4
     end
 
     def dummy5
-      (to_unsafe.as(LibGIRepository::BaseInfo*).value.dummy5)
+      to_unsafe.as(LibGIRepository::BaseInfo*).value.dummy5
     end
 
     def dummy6
-      (to_unsafe.as(LibGIRepository::BaseInfo*).value.dummy6)
+      to_unsafe.as(LibGIRepository::BaseInfo*).value.dummy6
     end
 
     def dummy7
-      (to_unsafe.as(LibGIRepository::BaseInfo*).value.dummy7)
+      to_unsafe.as(LibGIRepository::BaseInfo*).value.dummy7
     end
 
     def padding
-      GObject::PointerIterator.new((to_unsafe.as(LibGIRepository::BaseInfo*).value.padding)) {|__item| __item }
+      GObject::PointerIterator.new(to_unsafe.as(LibGIRepository::BaseInfo*).value.padding) { |__var0|
+        __var0
+}
     end
-
   end
 end
-

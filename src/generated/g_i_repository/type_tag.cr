@@ -23,6 +23,4 @@ module GIRepository
     ERROR = 20
     UNICHAR = 21
   end
-
 end
-

@@ -1,5 +1,5 @@
 module GObject
-  @[Flags]
+  @[Flags()]
   enum SignalFlags : UInt32
     ZERO_NONE = 0
     RUN_FIRST = 1
@@ -12,6 +12,4 @@ module GObject
     MUST_COLLECT = 128
     DEPRECATED = 256
   end
-
 end
-

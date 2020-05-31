@@ -1,5 +1,5 @@
 module GIRepository
-  @[Flags]
+  @[Flags()]
   enum FunctionInfoFlags : UInt32
     ZERO_NONE = 0
     IS_METHOD = 1
@@ -9,6 +9,4 @@ module GIRepository
     WRAPS_VFUNC = 16
     THROWS = 32
   end
-
 end
-

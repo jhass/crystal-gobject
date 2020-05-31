@@ -56,98 +56,84 @@ module GIRepository
       BaseInfo.wrap(info).as(StructInfo) if info
     end
 
-    def lib_definition
-      String.build do |io|
-        each_constant do |constant|
-          io.puts constant.lib_definition
-        end
+    def lib_definition(builder)
+      builder.end_of_line_comment "object"
+      builder.def_struct(name) do
+        each_field &.lib_definition(builder)
+        field_binding "_data", "UInt8[0]" if fields_size == 0
 
-        io.puts "  struct #{name} # object"
-
-        each_field do |field|
-          io.puts "  #{field.lib_definition}"
-        end
-        io.puts "    _data : UInt8[0]" if fields_size == 0
-
-        each_signal do |signal|
-          io.puts "  #{signal.lib_definition}"
-        end
-
-        each_vfunc do |vfunc|
-          io.puts "  #{vfunc.lib_definition}"
-        end
-
-        each_property do |property|
-          io.puts "  #{property.lib_definition}"
-        end
-
-        io.puts "  end"
-
-        io.puts "  fun _#{type_init} = #{type_init} : UInt64" unless type_init == "intern"
-
-        each_method do |method|
-          io.puts method.lib_definition
-        end
-
-        io.puts
+        each_signal &.lib_definition(builder)
+        each_vfunc &.lib_definition(builder)
+        each_property &.lib_definition(builder)
       end
+
+      builder.fun_binding type_init, name: "_#{type_init}", return_type: "UInt64" unless type_init == "intern"
+      each_method &.lib_definition(builder)
     end
 
-    def wrapper_definition(libname, indent = "")
-      String.build do |io|
-        parent_object = parent
-        parent = parent_object.constant if parent_object && parent_object.namespace == namespace
-        parent ||= parent_object.full_constant if parent_object
+    def wrapper_definition(builder, libname)
+      parent_object = parent
+      parent = parent_object.constant if parent_object && parent_object.namespace == namespace
+      parent ||= parent_object.full_constant if parent_object
 
-        io << "#{indent}class #{name}"
-        io << (parent ? " < #{parent}\n" : "\n")
-        io << "#{indent}  include GObject::WrappedType\n\n" unless parent
+      builder.def_class(name, parent: parent) do
+        section do
+          add_include "GObject::WrappedType" unless parent
 
-        each_interface do |interface|
-          io.puts "#{indent}  include #{interface.full_constant}" unless interface.info_type.unresolved?
+          each_interface do |interface|
+            add_include(interface.full_constant) unless interface.info_type.unresolved?
+          end
         end
 
-        write_constructor libname, io, indent
-        write_to_unsafe libname, io, indent
+        write_constructor builder, libname
+        write_to_unsafe builder, libname
 
         unless abstract?
           constructor_properties = all_properties.select { |property| property.setter? }
-          gtype = type_init == "intern" ? %(GObject.type_from_name("#{type_name}")) : "#{libname}._#{type_init}"
-          constructor_args = constructor_properties.map { |property| "#{property.arg_name} : #{property.type.wrapper_definition(libname)}? = nil" }
+          gtype = type_init == "intern" ? call("type_from_name", literal(type_name), receiver: "GObject") : call("_#{type_init}", receiver: libname)
+          constructor_args = constructor_properties.map { |property|
+            arg(property.arg_name, type: "#{property.type.wrapper_definition(libname)}?", default: literal(nil))
+          }
 
           if !constructor_properties.empty?
-            io.puts "#{indent}  def initialize(*, #{constructor_args.join(", ")})"
-            io.puts "#{indent}    __names = [] of UInt8*"
-            io.puts "#{indent}    __values = [] of LibGObject::Value"
-            constructor_properties.each do |property|
-              io.puts "#{indent}    unless #{property.arg_name}.nil?"
-              io.puts "#{indent}      __names << \"#{property.name}\".to_unsafe"
-              io.puts "#{indent}      __values << #{property.arg_name}.to_gvalue.to_unsafe.value"
-              io.puts "#{indent}    end"
+            constructor_args.unshift arg("", prefix: :splat)
+            def_method("initialize", constructor_args) do
+              names = line assign_var "[] of UInt8*"
+              values = line assign_var "[] of LibGObject::Value"
+
+              constructor_properties.each do |property|
+                line def_if(negate(call("nil?", receiver: property.arg_name))) { |b|
+                  b.line b.call("<<", b.call("to_unsafe", receiver: b.literal(property.name)), receiver: names)
+                  gvalue = b.call("to_gvalue", receiver: property.arg_name)
+                  ptr = b.call("to_unsafe", receiver: gvalue)
+                  strct = b.call("value", receiver: ptr)
+                  b.line b.call("<<", strct, receiver: values)
+                }
+              end
+
+              names_size = call "size", receiver: names
+              object = call("new_with_properties", gtype, names_size, names, values, receiver: "LibGObject")
+              ptr = call("as", "Void*", receiver: object)
+              line assign "@pointer", ptr
             end
-            io.puts "#{indent}    @pointer = LibGObject.new_with_properties(#{gtype}, __names.size, __names, __values).as(Void*)"
-            io.puts "#{indent}  end"
           elsif !has_any_constructor?
-            io.puts "#{indent}  def initialize"
-            io.puts "#{indent}    @pointer = LibGObject.new_with_properties(#{gtype}, 0, nil, nil).as(Void*)"
-            io.puts "#{indent}  end"
+            def_method("initialize") do
+              object = call("new_with_properties", gtype, literal(0), literal(nil), literal(nil), receiver: "LibGObject")
+              ptr = call("as", "Void*", receiver: object)
+              line assign "@pointer", ptr
+            end
           end
-          io.puts
         end
 
-        write_methods libname, io, indent
+        write_methods builder, libname
 
         each_property do |property|
           next if has_method_getter_or_setter?(property.crystal_name)
           next if property.private?
-          io.puts property.wrapper_definition libname, indent + "  "
+          property.wrapper_definition builder, libname
         end
 
-        each_signal do |signal|
-          io.puts signal.wrapper_definition libname, indent + "  "
-        end
-
-        io.puts "#{indent}end"
+        each_signal(&.wrapper_definition(builder, libname))
       end
     end
 

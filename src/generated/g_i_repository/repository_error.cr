@@ -5,6 +5,4 @@ module GIRepository
     NAMESPACE_VERSION_CONFLICT = 2
     LIBRARY_NOT_FOUND = 3
   end
-
 end
-

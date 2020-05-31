@@ -9,42 +9,46 @@ module GIRepository
     each_converted enum_info, value, ValueInfo
     each_converted enum_info, method, FunctionInfo
 
-    def attributes(io)
+    def attributes(builder)
+    end
+
+    def name
+      super.not_nil!
+    end
+
+    def type_tag
+      GIRepository.enum_info_get_storage_type(self)
     end
 
     def type
-      tag = GIRepository.enum_info_get_storage_type(self)
-      TypeInfo::TAG_MAP[tag]
+      TypeInfo::TAG_MAP[type_tag]
     end
 
-    def lib_definition
-      String.build do |io|
-        io.puts "  alias #{name} = #{type}"
-
-        each_method do |method|
-          io.puts method.lib_definition
-        end
-
-        io.puts
+    def lib_definition(builder)
+      builder.section do
+        builder.def_alias name, type
+        each_method &.lib_definition(builder)
       end
     end
 
-    def wrapper_definition(libname, indent = "")
-      String.build do |io|
-        attributes(io)
-        io.puts "#{indent}enum #{name} : #{type}"
-        io.puts "#{indent}  ZERO_NONE = 0" unless values.any? { |value| value.value == 0 }
+    def wrapper_definition(builder, libname)
+      attributes(builder)
+      builder.def_enum(name, type: type) do
+        line assign "ZERO_NONE", literal(0) unless values.any? { |value| value.value == 0 }
 
         each_value do |value|
-          io.puts "#{indent}#{value.lib_definition}"
+          if name = value.name
+            name = name.upcase
+            if 'A' <= name[0] <= 'Z'
+              line assign name, literal(value.literal(type_tag))
+            else
+              comment "#{name} = #{literal(value.literal(type_tag))}"
+            end
+          end
         end
-
-        each_method do |method|
-          io.puts "#{indent}  # Function #{method.name}"
-        end
-        io.puts "#{indent}end"
-        io.puts
       end
+
+      each_method { |method| builder.comment "Function #{method.name}" }
     end
 
     Dumper.def do
@@ -55,8 +59,8 @@ module GIRepository
   end
 
   class FlagsInfo < EnumInfo
-    def attributes(io)
-      io.puts "  @[Flags]"
+    def attributes(builder)
+      builder.annotation("Flags")
     end
   end
 end

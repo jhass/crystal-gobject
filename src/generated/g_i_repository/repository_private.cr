@@ -3,6 +3,7 @@ module GIRepository
     include GObject::WrappedType
 
     @pointer : Void*
+
     def initialize(pointer : LibGIRepository::RepositoryPrivate*)
       @pointer = pointer.as(Void*)
     end
@@ -14,7 +15,5 @@ module GIRepository
     def to_unsafe_repositoryprivate
       @pointer.not_nil!.as(LibGIRepository::RepositoryPrivate*)
     end
-
   end
 end
-

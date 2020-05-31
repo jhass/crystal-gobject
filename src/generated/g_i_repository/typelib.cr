@@ -3,6 +3,7 @@ module GIRepository
     include GObject::WrappedType
 
     @pointer : Void*
+
     def initialize(pointer : LibGIRepository::Typelib*)
       @pointer = pointer.as(Void*)
     end
@@ -21,16 +22,14 @@ module GIRepository
     end
 
     def namespace
-      __return_value = LibGIRepository.typelib_get_namespace(@pointer.as(LibGIRepository::Typelib*))
-      GObject.raise_unexpected_null("g_typelib_get_namespace") if __return_value.null?
-      ::String.new(__return_value)
+      __var0 = LibGIRepository.typelib_get_namespace(@pointer.as(LibGIRepository::Typelib*))
+      GObject.raise_unexpected_null("g_typelib_get_namespace") if __var0.null?
+      ::String.new(__var0)
     end
 
     def symbol(symbol_name : ::String, symbol : Void*?)
-      __return_value = LibGIRepository.typelib_symbol(@pointer.as(LibGIRepository::Typelib*), symbol_name.to_unsafe, symbol ? symbol : nil)
-      __return_value
+      __var0 = LibGIRepository.typelib_symbol(@pointer.as(LibGIRepository::Typelib*), symbol_name.to_unsafe, symbol ? symbol : nil)
+      __var0
     end
-
   end
 end
-

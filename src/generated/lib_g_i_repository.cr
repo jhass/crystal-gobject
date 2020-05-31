@@ -3,7 +3,6 @@ require "./lib_g_lib"
 
 @[Link("girepository-1.0")]
 lib LibGIRepository
-
   ###########################################
   ##    Unions
   ###########################################
@@ -32,7 +31,6 @@ lib LibGIRepository
     v_pointer : Void*
   end
 
-
   ###########################################
   ##    Enums
   ###########################################
@@ -50,7 +48,6 @@ lib LibGIRepository
   alias Transfer = UInt32
 
   alias TypeTag = UInt32
-
 
   ###########################################
   ##    Structs
@@ -83,6 +80,10 @@ lib LibGIRepository
   fun base_info_is_deprecated = g_base_info_is_deprecated(this : BaseInfo*) : Bool
   fun base_info_iterate_attributes = g_base_info_iterate_attributes(this : BaseInfo*, iterator : LibGIRepository::AttributeIter*, name : UInt8**, value : UInt8**) : Bool
 
+  struct RepositoryClass # struct
+    parent : LibGObject::ObjectClass
+  end
+
   struct RepositoryPrivate # struct
     _data : UInt8[0]
   end
@@ -98,7 +99,6 @@ lib LibGIRepository
     _data : UInt8[0]
   end
 
-
   ###########################################
   ##    Flags
   ###########################################
@@ -111,11 +111,9 @@ lib LibGIRepository
 
   alias VFuncInfoFlags = UInt32
 
-
   ###########################################
   ##    Constants
   ###########################################
-
   MAJOR_VERSION = 1 # : Int32
   MICRO_VERSION = 1 # : Int32
   MINOR_VERSION = 64 # : Int32
@@ -129,38 +127,36 @@ lib LibGIRepository
     parent : LibGObject::Object
     priv : LibGIRepository::RepositoryPrivate*
   end
-  fun _init_Repository = g_irepository_get_type
+  fun _g_irepository_get_type = g_irepository_get_type : UInt64
   fun repository_dump = g_irepository_dump(arg : UInt8*, error : LibGLib::Error**) : Bool
-  fun repository_error_quark = g_irepository_error_quark() : UInt32
-  fun repository_get_default = g_irepository_get_default() : LibGIRepository::Repository*
-  fun repository_get_option_group = g_irepository_get_option_group() : LibGLib::OptionGroup*
-  fun repository_get_search_path = g_irepository_get_search_path() : Void**
+  fun repository_error_quark = g_irepository_error_quark : UInt32
+  fun repository_get_default = g_irepository_get_default : LibGIRepository::Repository*
+  fun repository_get_option_group = g_irepository_get_option_group : LibGLib::OptionGroup*
+  fun repository_get_search_path = g_irepository_get_search_path : Void**
   fun repository_prepend_library_path = g_irepository_prepend_library_path(directory : UInt8*) : Void
   fun repository_prepend_search_path = g_irepository_prepend_search_path(directory : UInt8*) : Void
-  fun repository_enumerate_versions = g_irepository_enumerate_versions(this : Repository*, namespace : UInt8*) : Void**
+  fun repository_enumerate_versions = g_irepository_enumerate_versions(this : Repository*, namespace_ : UInt8*) : Void**
   fun repository_find_by_error_domain = g_irepository_find_by_error_domain(this : Repository*, domain : UInt32) : LibGIRepository::BaseInfo*
   fun repository_find_by_gtype = g_irepository_find_by_gtype(this : Repository*, gtype : UInt64) : LibGIRepository::BaseInfo*
-  fun repository_find_by_name = g_irepository_find_by_name(this : Repository*, namespace : UInt8*, name : UInt8*) : LibGIRepository::BaseInfo*
-  fun repository_get_c_prefix = g_irepository_get_c_prefix(this : Repository*, namespace : UInt8*) : UInt8*
-  fun repository_get_dependencies = g_irepository_get_dependencies(this : Repository*, namespace : UInt8*) : UInt8**
-  fun repository_get_immediate_dependencies = g_irepository_get_immediate_dependencies(this : Repository*, namespace : UInt8*) : UInt8**
-  fun repository_get_info = g_irepository_get_info(this : Repository*, namespace : UInt8*, index : Int32) : LibGIRepository::BaseInfo*
+  fun repository_find_by_name = g_irepository_find_by_name(this : Repository*, namespace_ : UInt8*, name : UInt8*) : LibGIRepository::BaseInfo*
+  fun repository_get_c_prefix = g_irepository_get_c_prefix(this : Repository*, namespace_ : UInt8*) : UInt8*
+  fun repository_get_dependencies = g_irepository_get_dependencies(this : Repository*, namespace_ : UInt8*) : UInt8**
+  fun repository_get_immediate_dependencies = g_irepository_get_immediate_dependencies(this : Repository*, namespace_ : UInt8*) : UInt8**
+  fun repository_get_info = g_irepository_get_info(this : Repository*, namespace_ : UInt8*, index : Int32) : LibGIRepository::BaseInfo*
   fun repository_get_loaded_namespaces = g_irepository_get_loaded_namespaces(this : Repository*) : UInt8**
-  fun repository_get_n_infos = g_irepository_get_n_infos(this : Repository*, namespace : UInt8*) : Int32
+  fun repository_get_n_infos = g_irepository_get_n_infos(this : Repository*, namespace_ : UInt8*) : Int32
   fun repository_get_object_gtype_interfaces = g_irepository_get_object_gtype_interfaces(this : Repository*, gtype : UInt64, n_interfaces_out : UInt32*, interfaces_out : LibGIRepository::BaseInfo***) : Void
-  fun repository_get_shared_library = g_irepository_get_shared_library(this : Repository*, namespace : UInt8*) : UInt8*
-  fun repository_get_typelib_path = g_irepository_get_typelib_path(this : Repository*, namespace : UInt8*) : UInt8*
-  fun repository_get_version = g_irepository_get_version(this : Repository*, namespace : UInt8*) : UInt8*
-  fun repository_is_registered = g_irepository_is_registered(this : Repository*, namespace : UInt8*, version : UInt8*) : Bool
+  fun repository_get_shared_library = g_irepository_get_shared_library(this : Repository*, namespace_ : UInt8*) : UInt8*
+  fun repository_get_typelib_path = g_irepository_get_typelib_path(this : Repository*, namespace_ : UInt8*) : UInt8*
+  fun repository_get_version = g_irepository_get_version(this : Repository*, namespace_ : UInt8*) : UInt8*
+  fun repository_is_registered = g_irepository_is_registered(this : Repository*, namespace_ : UInt8*, version : UInt8*) : Bool
   fun repository_load_typelib = g_irepository_load_typelib(this : Repository*, typelib : LibGIRepository::Typelib*, flags : LibGIRepository::RepositoryLoadFlags, error : LibGLib::Error**) : UInt8*
-  fun repository_require = g_irepository_require(this : Repository*, namespace : UInt8*, version : UInt8*, flags : LibGIRepository::RepositoryLoadFlags, error : LibGLib::Error**) : LibGIRepository::Typelib*
-  fun repository_require_private = g_irepository_require_private(this : Repository*, typelib_dir : UInt8*, namespace : UInt8*, version : UInt8*, flags : LibGIRepository::RepositoryLoadFlags, error : LibGLib::Error**) : LibGIRepository::Typelib*
-
+  fun repository_require = g_irepository_require(this : Repository*, namespace_ : UInt8*, version : UInt8*, flags : LibGIRepository::RepositoryLoadFlags, error : LibGLib::Error**) : LibGIRepository::Typelib*
+  fun repository_require_private = g_irepository_require_private(this : Repository*, typelib_dir : UInt8*, namespace_ : UInt8*, version : UInt8*, flags : LibGIRepository::RepositoryLoadFlags, error : LibGLib::Error**) : LibGIRepository::Typelib*
 
   ###########################################
   ##    Functions
   ###########################################
-
   fun arg_info_get_closure = g_arg_info_get_closure(info : LibGIRepository::BaseInfo*) : Int32
   fun arg_info_get_destroy = g_arg_info_get_destroy(info : LibGIRepository::BaseInfo*) : Int32
   fun arg_info_get_direction = g_arg_info_get_direction(info : LibGIRepository::BaseInfo*) : LibGIRepository::Direction
@@ -203,9 +199,9 @@ lib LibGIRepository
   fun function_info_get_property = g_function_info_get_property(info : LibGIRepository::BaseInfo*) : LibGIRepository::BaseInfo*
   fun function_info_get_symbol = g_function_info_get_symbol(info : LibGIRepository::BaseInfo*) : UInt8*
   fun function_info_get_vfunc = g_function_info_get_vfunc(info : LibGIRepository::BaseInfo*) : LibGIRepository::BaseInfo*
-  fun get_major_version = gi_get_major_version() : UInt32
-  fun get_micro_version = gi_get_micro_version() : UInt32
-  fun get_minor_version = gi_get_minor_version() : UInt32
+  fun get_major_version = gi_get_major_version : UInt32
+  fun get_micro_version = gi_get_micro_version : UInt32
+  fun get_minor_version = gi_get_minor_version : UInt32
   fun info_new = g_info_new(type : LibGIRepository::InfoType, container : LibGIRepository::BaseInfo*, typelib : LibGIRepository::Typelib*, offset : UInt32) : LibGIRepository::BaseInfo*
   fun info_type_to_string = g_info_type_to_string(type : LibGIRepository::InfoType) : UInt8*
   fun interface_info_find_method = g_interface_info_find_method(info : LibGIRepository::BaseInfo*, name : UInt8*) : LibGIRepository::BaseInfo*
@@ -224,7 +220,7 @@ lib LibGIRepository
   fun interface_info_get_property = g_interface_info_get_property(info : LibGIRepository::BaseInfo*, n : Int32) : LibGIRepository::BaseInfo*
   fun interface_info_get_signal = g_interface_info_get_signal(info : LibGIRepository::BaseInfo*, n : Int32) : LibGIRepository::BaseInfo*
   fun interface_info_get_vfunc = g_interface_info_get_vfunc(info : LibGIRepository::BaseInfo*, n : Int32) : LibGIRepository::BaseInfo*
-  fun invoke_error_quark = g_invoke_error_quark() : UInt32
+  fun invoke_error_quark = g_invoke_error_quark : UInt32
   fun object_info_find_method = g_object_info_find_method(info : LibGIRepository::BaseInfo*, name : UInt8*) : LibGIRepository::BaseInfo*
   fun object_info_find_method_using_interfaces = g_object_info_find_method_using_interfaces(info : LibGIRepository::BaseInfo*, name : UInt8*, implementor : LibGIRepository::BaseInfo**) : LibGIRepository::BaseInfo*
   fun object_info_find_signal = g_object_info_find_signal(info : LibGIRepository::BaseInfo*, name : UInt8*) : LibGIRepository::BaseInfo*
@@ -300,4 +296,3 @@ lib LibGIRepository
   fun vfunc_info_get_offset = g_vfunc_info_get_offset(info : LibGIRepository::BaseInfo*) : Int32
   fun vfunc_info_get_signal = g_vfunc_info_get_signal(info : LibGIRepository::BaseInfo*) : LibGIRepository::BaseInfo*
 end
-

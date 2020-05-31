@@ -1,5 +1,5 @@
 module GObject
-  @[Flags]
+  @[Flags()]
   enum ParamFlags : UInt32
     ZERO_NONE = 0
     READABLE = 1
@@ -15,6 +15,4 @@ module GObject
     EXPLICIT_NOTIFY = 1073741824
     DEPRECATED = 2147483648
   end
-
 end
-

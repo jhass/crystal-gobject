@@ -30,79 +30,75 @@ module GIRepository
       GIRepository.struct_info_is_foreign(self)
     end
 
-    def lib_definition
-      String.build do |io|
-        io.puts "  struct #{name} # struct"
-        field_definition(io)
-        io.puts "  end"
-
-        each_method do |method|
-          io.puts method.lib_definition
-        end
-
-        io.puts
+    def lib_definition(builder)
+      builder.end_of_line_comment "struct"
+      builder.def_struct(name) do
+        field_definition(builder)
       end
+      each_method &.lib_definition(builder)
     end
 
-    def field_definition(io)
-      each_field do |field|
-        io.puts "  #{field.lib_definition}"
-      end
-      io.puts "    _data : UInt8[#{size}]" if fields_size == 0
+    def field_definition(builder)
+      each_field &.lib_definition(builder)
+      builder.field_binding "_data", "UInt8[#{size}]" if fields_size == 0
     end
 
-    def wrapper_definition(libname, indent = "")
-      String.build do |io|
-        io.puts "#{indent}class #{name}"
-        io.puts "#{indent}  include GObject::WrappedType"
-        io.puts
+    def wrapper_definition(builder, libname)
+      builder.def_class(name) do
+        section { add_include "GObject::WrappedType" }
 
         writable_fields = fields.select(&.writable?)
         if !writable_fields.empty?
-          io.print "#{indent}  def self.new("
-          io.print writable_fields.map { |field|
-            external = "#{field.wrapper_name} " if field.wrapper_name != field.name
-            "#{external}#{field.name} : #{field.type.wrapper_definition(libname)}|Nil = nil"
-          }.join(", ")
-          io.puts ") : self"
-          io.puts "#{indent}    ptr = Pointer(UInt8).malloc(#{size}, 0u8)"
-          io.puts "#{indent}    new(ptr.as(#{ptr_type(libname)})).tap do |object|"
-          writable_fields.each do |field|
-            io.puts "#{indent}      object.#{field.wrapper_name} = #{field.name} unless #{field.name}.nil?"
+          constructor_args = writable_fields.map { |field|
+            arg(field.name,
+              external: field.wrapper_name != field.name ? field.wrapper_name : nil,
+              default: literal(nil),
+              type: "#{field.type.wrapper_definition(libname)}?")
+          }
+          def_method("new", constructor_args, class_method: true, return_type: "self") do
+            ptr = call("malloc", literal(size), literal(0u8), receiver: "Pointer(UInt8)")
+            ptr = call("as", ptr_type(libname), receiver: ptr)
+            object = line assign_var call("new", ptr)
+            writable_fields.each do |field|
+              not_nil = negate(call("nil?", receiver: field.name))
+              conditional_line not_nil, assign("#{object}.#{field.wrapper_name}", field.name)
+            end
+            line object
           end
-          io.puts "#{indent}    end"
-          io.puts "#{indent}  end"
-          io.puts
         elsif size != 0 # if size is 0 it's opaque to us, there should be a constructor function
-          io.puts "#{indent}  def self.new : self"
-          io.puts "#{indent}    ptr = Pointer(UInt8).malloc(#{size}, 0u8)"
-          io.puts "#{indent}    new(ptr.as(#{ptr_type(libname)}))"
-          io.puts "#{indent}  end"
-          io.puts
+          def_method("new", class_method: true, return_type: "self") do
+            ptr = call("malloc", literal(size), literal(0u8), receiver: "Pointer(UInt8)")
+            ptr = call("as", ptr_type(libname), receiver: ptr)
+            line call("new", ptr)
+          end
         end
 
-        write_constructor libname, io, indent
-        write_to_unsafe libname, io, indent
-        write_methods libname, io, indent
+        write_constructor builder, libname
+        write_to_unsafe builder, libname
+        write_methods builder, libname
 
         each_field do |field|
           next if has_method_getter_or_setter?(field.name)
 
           if field.readable?
-            io.puts "#{indent}  def #{field.wrapper_name}"
-            io.puts "#{indent}    #{field.type.convert_to_crystal("(to_unsafe.as(#{ptr_type(libname)}).value.#{field.name})")}"
-            io.puts "#{indent}  end"
-            io.puts
+            def_method(field.wrapper_name) do
+              ptr = call("to_unsafe")
+              ptr = call("as", ptr_type(libname), receiver: ptr)
+              strct = call("value", receiver: ptr)
+              value = call(field.name, receiver: strct)
+              line field.type.convert_to_crystal(builder, value)
+            end
           end
 
           if field.writable?
-            io.puts "#{indent}  def #{field.wrapper_name}=(value : #{field.type.wrapper_definition(libname)})"
-            io.puts "#{indent}    to_unsafe.as(#{ptr_type(libname)}).value.#{field.name} = #{field.type.convert_from_crystal("value")}"
-            io.puts "#{indent}  end"
-            io.puts
+            def_method("#{field.wrapper_name}=", arg("value", type: field.type.wrapper_definition(libname))) do
+              ptr = call("to_unsafe")
+              ptr = call("as", ptr_type(libname), receiver: ptr)
+              strct = call("value", receiver: ptr)
+              line assign call(field.name, receiver: strct), field.type.convert_from_crystal("value")
+            end
           end
         end
-        io.puts "#{indent}end"
       end
     end
 

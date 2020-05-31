@@ -17,7 +17,7 @@ module GIRepository
     def wrapper_name
       method_name = name
 
-      return unless method_name
+      raise "Cannot handle method without a name" unless method_name
 
       method_name = method_name.underscore
 
@@ -65,146 +65,143 @@ module GIRepository
       args.count(&.closure?) == 1
     end
 
-    def lib_definition
-      String.build do |io|
-        io << "  fun #{prefix}#{name} = #{symbol}("
-        io << args.map(&.lib_definition).join(", ")
-        io << ") : #{return_type.lib_definition}"
-      end
+    def lib_definition(builder)
+      builder.fun_binding symbol,
+        args.map(&.lib_definition(builder)),
+        name: "#{prefix}#{name}",
+        return_type: return_type.lib_definition(builder)
     end
 
-    def wrapper_definition(libname, indent = "")
+    def wrapper_definition(builder, libname)
       method_name = wrapper_name
 
-      String.build do |io|
-        wrapper_args = args
+      wrapper_args = args
 
-        sizable_args = wrapper_args.select { |candidate|
-          !candidate.out? && !candidate.inout? &&
-            candidate.type.tag.array? && candidate.type.array_length_param >= 0
-        }
-        offset = wrapper_args.first?.is_a?(SelfArgInfo) ? 1 : 0
-        sizable_args_size_args = sizable_args.map { |arg| wrapper_args[arg.type.array_length_param + offset] }
+      sizable_args = wrapper_args.select { |candidate|
+        !candidate.out? && !candidate.inout? &&
+          candidate.type.tag.array? && candidate.type.array_length_param >= 0
+      }
+      offset = wrapper_args.first?.is_a?(SelfArgInfo) ? 1 : 0
+      sizable_args_size_args = sizable_args.map { |arg| wrapper_args[arg.type.array_length_param + offset] }
 
-        closure_arg = wrapper_args.find &.closure? if closure_arg?
+      closure_arg = wrapper_args.find &.closure? if closure_arg?
 
-        gvalue_out_arg = wrapper_args.find &.gvalue_out? if gvalue_out?
-        wrapper_args.delete(gvalue_out_arg) if gvalue_out?
+      gvalue_out_arg = wrapper_args.find &.gvalue_out? if gvalue_out?
+      wrapper_args.delete(gvalue_out_arg) if gvalue_out?
 
-        collection_args = wrapper_args.select { |candidate|
-          !candidate.out? && !candidate.inout? &&
-            wrapper_args.any? { |arg| arg.name == "n_#{candidate.name}" }
-        }
-        collection_args_size_args = collection_args.map { |arg| "n_#{arg.name}" }
+      collection_args = wrapper_args.select { |candidate|
+        !candidate.out? && !candidate.inout? &&
+          wrapper_args.any? { |arg| arg.name == "n_#{candidate.name}" }
+      }
+      collection_args_size_args = collection_args.map { |arg| "n_#{arg.name}" }
 
-        primitive_out_args = wrapper_args.select { |candidate| candidate.out? && candidate.type.primitive? }
+      primitive_out_args = wrapper_args.select { |candidate| candidate.out? && candidate.type.primitive? }
 
-        wrapper_args = wrapper_args.reject { |arg|
-          sizable_args_size_args.includes?(arg) ||
-            primitive_out_args.includes?(arg) ||
-            collection_args_size_args.includes?(arg.name)
-        }
+      wrapper_args = wrapper_args.reject { |arg|
+        sizable_args_size_args.includes?(arg) ||
+          primitive_out_args.includes?(arg) ||
+          collection_args_size_args.includes?(arg.name)
+      }
 
-        method_header(io, indent, libname, wrapper_args.map(&.for_wrapper_definition(libname)).compact, gvalue_out_arg)
-
-        io << "\n#{indent}  __error = Pointer(LibGLib::Error).null" if throws?
-
+      def_method(builder, libname, wrapper_args.map(&.for_wrapper_definition(builder, libname)).compact, gvalue_out_arg) do
         sizable_args.zip(sizable_args_size_args) do |arg, size_arg|
-          io << "\n#{indent}  #{size_arg.name} = "
+          size = call("size", receiver: builder.var(arg.name))
           if arg.nilable?
-            io << "#{arg.name} ? #{arg.name}.size : 0"
+            line assign size_arg.name, ternary(builder.var(arg.name), size, literal(0))
           else
-            io << "#{arg.name}.size"
+            line assign size_arg.name, size
           end
         end
 
         collection_args.each do |arg|
-          current_indent = indent
           if arg.nilable?
-            indent += "  "
-            io.puts "\n#{indent}if #{arg.name}"
+            line def_if(arg.name) { |b|
+              b.line b.assign "__#{arg.name}", arg.for_wrapper_pass(builder, libname)
+              b.line b.assign "n_#{arg.name}", b.call("size", receiver: "__#{arg.name}_ary")
+            }.else { |b|
+              b.line b.assign "n_#{arg.name}", b.literal(0)
+            }
           else
-            io.puts
+            line assign "__#{arg.name}", arg.for_wrapper_pass(builder, libname)
+            line assign "n_#{arg.name}", call("size", receiver: "__#{arg.name}_ary")
           end
-
-          io.puts "#{indent}  __#{arg.name} = #{arg.for_wrapper_pass(libname)}"
-          io << "#{indent}  n_#{arg.name} = __#{arg.name}_ary.size"
-
-          if arg.nilable?
-            io.puts "\n#{indent}else"
-            io.puts "#{indent}  n_#{arg.name} = 0"
-            io << "#{indent}  end"
-          end
-
-          indent = current_indent
         end
 
-        io << "\n#{indent}  "
-        io << "#{gvalue_out_arg.name} = GObject::Value.new\n#{indent}  " if gvalue_out_arg
-        io << "__return_value = " unless skip_return?
-        io << "#{libname}.#{prefix}#{name}"
+        line assign gvalue_out_arg.name, call("new", receiver: "GObject::Value") if gvalue_out_arg
+
+        error = line assign_var call "null", receiver: "Pointer(LibGLib::Error)" if throws?
+
         lib_args = args.map { |arg|
           if collection_args.includes?(arg)
             "__#{arg.name}"
           elsif primitive_out_args.includes?(arg)
             "out #{arg.name}"
+          elsif arg.is_a?(ErrorArgInfo)
+            arg.for_wrapper_pass(builder, error)
           else
-            arg.for_wrapper_pass(libname)
+            arg.for_wrapper_pass(builder, libname)
           end
         }.compact.join(", ")
-        io << "(#{lib_args})" unless lib_args.empty?
 
-        io << "\n#{indent}  GLib::Error.assert __error" if throws?
+        libcall = call("#{prefix}#{name}", lib_args, receiver: libname)
+        if skip_return?
+          line libcall
+        else
+          return_value = line assign_var(libcall)
+        end
 
-        return_value = nil
+        line call("assert", error, receiver: "GLib::Error") if throws?
+
         if gvalue_out_arg
           return_value = gvalue_out_arg.name
-        elsif !skip_return?
-          io << "\n#{indent}  GObject.raise_unexpected_null(\"#{symbol}\") if __return_value.null?" if return_type.pointer? && !may_return_null?
-          return_value = "#{"cast " if constructor?}#{return_type.convert_to_crystal("__return_value")}"
-          return_value = "(#{return_value} if __return_value)" if may_return_null?
+        elsif !skip_return? && return_value
+          if return_type.pointer? && !may_return_null?
+            conditional_line call("null?", receiver: return_value), call("raise_unexpected_null", literal(symbol), receiver: "GObject")
+          end
+
+          ptr = return_value
+          return_value = return_type.convert_to_crystal(builder, ptr)
+          return_value = call("cast", return_value) if constructor?
+          return_value = conditional_line ptr, assign_var(return_value) if may_return_null?
 
           if primitive_out_args.any?
             # TODO arrays could be handled too with a bit more logic (or maybe no additional logic at all? Find a test case)
-            return_value = "{#{return_value}, #{primitive_out_args.map { |arg| arg.type.convert_to_crystal("#{arg.name}") }.join(", ")}}"
+            return_values = primitive_out_args.map { |arg| arg.type.convert_to_crystal(builder, arg.name) }
+            return_values.unshift return_value
+            return_value = tuple(return_values)
           end
         elsif primitive_out_args.size == 1
           arg = primitive_out_args.first
-          return_value = arg.type.convert_to_crystal("#{arg.name}")
+          return_value = arg.type.convert_to_crystal(builder, arg.name)
         elsif primitive_out_args.any?
-          return_value = "{#{primitive_out_args.map { |arg| arg.type.convert_to_crystal("#{arg.name}") }.join(", ")}}"
+          return_value = tuple(primitive_out_args.map { |arg| arg.type.convert_to_crystal(builder, arg.name) })
         else
-          return_value = "nil"
+          return_value = literal(nil)
         end
 
-        io.puts "\n#{indent}  #{return_value}"
+        line return_value if return_value
+      end
 
-        io.puts "#{indent}end"
-
-        if closure_arg
-          io.puts
-          closure_wrapper_args = wrapper_args.reject(&.==(closure_arg)).map(&.for_wrapper_definition(libname)).compact
-          closure_wrapper_args << "&#{closure_arg.name}"
-          method_header(io, indent, libname, closure_wrapper_args, gvalue_out_arg)
-          io << "\n#{indent}  #{closure_arg.name} = GObject::Closure.new(#{closure_arg.name})"
-          io << "\n#{indent}  #{method_name}(#{wrapper_args.reject(&.is_a?(SelfArgInfo)).map(&.name).join(", ")})"
-          io << "\n#{indent}end\n"
+      if closure_arg
+        closure_wrapper_args = wrapper_args.reject(&.==(closure_arg)).map(&.for_wrapper_definition(builder, libname)).compact
+        closure_wrapper_args << builder.arg closure_arg.name, prefix: :block_capture
+        def_method(builder, libname, closure_wrapper_args, gvalue_out_arg) do
+          line assign closure_arg.name, call("new", var(closure_arg.name), receiver: "GObject::Closure")
+          line call method_name, wrapper_args.reject(&.is_a?(SelfArgInfo)).map(&.name)
         end
       end
     end
 
-    def method_header(io, indent, libname, wrapper_args, gvalue_out_arg)
+    def def_method(builder, libname, wrapper_args, gvalue_out_arg)
       method_name = wrapper_name
-      io << "#{indent}def "
-      io << "self." unless method?
-      io << method_name
+      return_type = if constructor?
+                      "self"
+                    elsif gvalue_out_arg
+                      gvalue_out_arg.type.wrapper_definition(builder, libname)
+                    end
 
-      io << "(#{wrapper_args.join(", ")})" unless wrapper_args.empty?
-
-      if constructor?
-        io << " : self"
-      elsif gvalue_out_arg
-        io << " : #{gvalue_out_arg.type.wrapper_definition(libname)}"
+      builder.def_method(method_name, wrapper_args, class_method: !method?, return_type: return_type) do
+        with builder yield builder
       end
     end
 

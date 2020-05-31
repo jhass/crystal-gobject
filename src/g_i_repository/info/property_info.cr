@@ -39,27 +39,23 @@ module GIRepository
       flags.private?
     end
 
-    def lib_definition
-      "  # Property #{name} : #{type.lib_definition}"
+    def lib_definition(builder)
+      builder.comment "Property #{name} : #{type.lib_definition(builder)}"
     end
 
-    def wrapper_definition(libname, indent = "")
-      String.build do |io|
-        this = "to_unsafe.as(#{libname}::#{container.name}*)"
-        if getter?
-          io.puts "#{indent}def #{crystal_name} : #{type.wrapper_definition(libname)}"
-          io.puts "#{indent}  gvalue = GObject::Value.new(type: #{type.gvalue_type})"
-          io.puts "#{indent}  LibGObject.object_get_property(@pointer.as(LibGObject::Object*), \"#{name}\", gvalue)"
-          io.puts "#{indent}  #{type.unwrap_gvalue("gvalue")}"
-          io.puts "#{indent}end"
-          io.puts
+    def wrapper_definition(builder, libname)
+      ptr = builder.call("as", "LibGObject::Object*", receiver: "@pointer")
+      if getter?
+        builder.def_method(crystal_name, return_type: type.wrapper_definition(builder, libname)) do
+          gvalue = line assign_var call("new", {type: type.gvalue_type}, receiver: "GObject::Value")
+          line call("object_get_property", ptr, literal(name), gvalue, receiver: "LibGObject")
+          line type.unwrap_gvalue(gvalue)
         end
+      end
 
-        if setter? && !construct_only?
-          io.puts "#{indent}def #{crystal_name}=(value : #{type.wrapper_definition(libname)})"
-          io.puts "#{indent}  LibGObject.object_set_property(@pointer.as(LibGObject::Object*), \"#{name}\", value.to_gvalue)"
-          io.puts "#{indent}end"
-          io.puts
+      if setter? && !construct_only?
+        builder.def_method("#{crystal_name}=", builder.arg("value", type: type.wrapper_definition(builder, libname))) do
+          line call("object_set_property", ptr, literal(name), call("to_gvalue", receiver: "value"), receiver: "LibGObject")
         end
       end
     end

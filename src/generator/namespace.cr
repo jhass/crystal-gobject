@@ -68,71 +68,58 @@ class Namespace
     end
 
     File.open(File.join(directory, lib_filepath), "w") do |file|
-      lib_definition file, false
+      Crout.build(file) do |builder|
+        lib_definition builder, false
+      end
     end
   end
 
-  def lib_definition(io, inline = true)
-    requires = false
+  def lib_definition(builder, inline = true)
     unless inline
-      GIRepository::Repository.instance.dependencies(@namespace).each do |dependency|
-        namespace, version = dependency
-        io.puts %(require "./#{Namespace.new(namespace).lib_filename}")
-        requires = true
+      builder.section do
+        GIRepository::Repository.instance.dependencies(@namespace).each do |dependency|
+          namespace, version = dependency
+          line call "require", literal("./#{Namespace.new(namespace).lib_filename}")
+        end
       end
     end
-
-    io.puts if requires
 
     libraries = GIRepository::Repository.instance.shared_library(@namespace).try(&.split(',')) || Array(String).new
     libraries.map! { |library| library[/lib([^\/]+)\.(?:so|.+?\.dylib).*/, 1] }
 
     libraries.each do |library|
-      io.puts %(@[Link("#{library}")])
+      builder.annotation "Link", builder.literal(library)
     end
 
-    io.puts "lib #{libname}"
+    builder.def_lib libname do
+      infos_by_type = GIRepository::Repository.instance.all_infos(@namespace).group_by(&.info_type)
+      types = infos_by_type.keys
+      has_callbacks = types.delete(GIRepository::InfoType::CALLBACK)
+      types << GIRepository::InfoType::CALLBACK if has_callbacks # Sort callbacks last
 
-    GIRepository::Repository.instance.all_infos(@namespace).group_by(&.info_type).each do |type, infos|
-      next if type == GIRepository::InfoType::CALLBACK
-      heading = type.to_s.capitalize
-      heading += 's' unless heading.ends_with? 's'
-      io.puts
-      io.puts "  ###########################################"
-      io.puts "  ##    #{heading}"
-      io.puts "  ###########################################"
-      io.puts
-      infos.each do |info|
-        next if skip_info? info
-        io.puts info.lib_definition
+      types.each do |type|
+        heading = type.to_s.capitalize
+        heading += 's' unless heading.ends_with? 's'
+        section do
+          comment "##########################################"
+          comment "#    #{heading}"
+          comment "##########################################"
+        end
+
+        infos_by_type[type].each do |info|
+          next if skip_info? info
+          info.lib_definition(builder)
+        end
       end
     end
-
-    GIRepository::Repository.instance.all_infos(@namespace).group_by(&.info_type).each do |type, infos|
-      next unless type == GIRepository::InfoType::CALLBACK
-      heading = type.to_s.capitalize
-      heading += 's' unless heading.ends_with? 's'
-      io.puts
-      io.puts "  ###########################################"
-      io.puts "  ##    #{heading}"
-      io.puts "  ###########################################"
-      io.puts
-      infos.each do |info|
-        next if skip_info? info
-        io.puts info.lib_definition
-      end
-    end
-
-    io.puts "end"
-    io.puts
   end
 
-  def wrapper_definitions(io, source_path = nil)
-    wrapper_definition(io, source_path) do
-      io.puts module_functions_definition
-      io.puts
-      each_info_definition(source_path) do |info, definition|
-        io.puts definition
+  def wrapper_definitions(builder, source_path = nil)
+    wrapper_definition(builder, source_path) do
+      module_functions_definition(builder)
+
+      each_info do |info|
+        info.wrapper_definition(builder, libname)
       end
     end
   end
@@ -144,7 +131,7 @@ class Namespace
     info = GIRepository::Repository.instance.find_by_name(@namespace, name)
     if info
       wrapper_path = File.join(directory, GIRepository.filename(@namespace), "#{GIRepository.filename(info.name)}.cr")
-      write_wrapper wrapper_path, info, &.puts(info.wrapper_definition(libname, "  "))
+      write_wrapper(wrapper_path, info) { |builder| info.wrapper_definition(builder, libname) }
     else
       STDERR.puts "Warning: Couldn't find #{@namespace}/#{name}"
     end
@@ -170,9 +157,9 @@ class Namespace
       io.puts %(require "./*")
     end
 
-    each_info_definition do |info, definition|
+    each_info do |info|
       wrapper_path = File.join(directory, GIRepository.filename(@namespace), "#{GIRepository.filename(info.name)}.cr")
-      write_wrapper wrapper_path, info, &.puts(definition)
+      write_wrapper(wrapper_path, info) { |builder| info.wrapper_definition(builder, libname) }
     end
 
     write_module_functions_wrapper(directory)
@@ -181,10 +168,10 @@ class Namespace
   def write_module_functions_wrapper(directory)
     prefix = File.join(directory, GIRepository.filename(@namespace))
     Dir.mkdir_p prefix
-    write_wrapper File.join(prefix, "module_functions.cr"), &.puts module_functions_definition
+    write_wrapper(File.join(prefix, "module_functions.cr")) { |builder| module_functions_definition(builder) }
   end
 
-  private def each_info_definition(source_path = nil)
+  private def each_info
     infos = GIRepository::Repository.instance.all_infos(@namespace).select { |info|
       next false if skip_info? info
       next false if info.is_a? GIRepository::FunctionInfo
@@ -195,11 +182,7 @@ class Namespace
     sort_childs_after_parents(infos)
 
     infos.each do |info|
-      definition = info.wrapper_definition libname, "  "
-      next unless definition && !definition.empty?
-
-      # definition = %(  #<loc:push>#<loc:"#{source_path}/#{info.name}",1,1>\n#{definition}  #<loc:pop>\n) if source_path
-      yield info, definition
+      yield info
     end
   end
 
@@ -244,35 +227,44 @@ class Namespace
     items[b] = tmp
   end
 
-  private def module_functions_definition
+  private def module_functions_definition(builder)
+    builder.section do
+      GIRepository::Repository.instance.all_infos(@namespace).select { |info|
+        info.is_a?(GIRepository::ConstantInfo)
+      }.each(&.wrapper_definition(builder, libname))
+    end
+
     GIRepository::Repository.instance.all_infos(@namespace).select { |info|
       next false if skip_info?(info)
-      next true if info.is_a? GIRepository::ConstantInfo
       info.is_a?(GIRepository::FunctionInfo) ? !info.method? : false
-    }.map(&.wrapper_definition(libname, "  ")).join("\n")
+    }.each(&.wrapper_definition(builder, libname))
   end
 
   private def write_wrapper(path, info = nil)
     File.open(path, "w") do |io|
-      # Not really the right place for this code
-      if info && info.is_a?(GIRepository::ObjectInfo)
-        parent = info.parent
-        if parent && parent.namespace == @namespace
-          io.puts %(require "./#{GIRepository.filename(parent.name)}")
-          io.puts
+      Crout.build(io) do |builder|
+        # Not really the right place for this code
+        if info && info.is_a?(GIRepository::ObjectInfo)
+          parent = info.parent
+          if parent && parent.namespace == @namespace
+            io.puts %(require "./#{GIRepository.filename(parent.name)}")
+            io.puts
+          end
         end
-      end
 
-      wrapper_definition(io) { |io| yield io }
+        wrapper_definition(builder) { |builder| yield builder }
+      end
     end
   end
 
-  private def wrapper_definition(io, source_path = nil)
-    io.puts %(#<loc:push>#<loc:"#{source_path}",1,1>) if source_path
-    io.puts "module #{Namespace.constant(@namespace)}#{"#<loc:pop>" if source_path}"
-    yield io
-    io.puts "end"
-    io.puts
+  private def wrapper_definition(builder, source_path = nil)
+    if source_path
+      builder.source_location(source_path) do
+        builder.def_module(Namespace.constant(@namespace)) { yield builder }
+      end
+    else
+      builder.def_module(Namespace.constant(@namespace)) { yield builder }
+    end
   end
 
   def self.constant(string)

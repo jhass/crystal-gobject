@@ -17,25 +17,25 @@ module GIRepository
       def initialize(@container : BaseInfo | FakeContainer)
       end
 
-      def lib_definition
+      def lib_definition(builder)
         case container = @container
         when RegisteredTypeInfo
           container.type_lib_definition
         else
-          container.name
+          container.name.not_nil!
         end
       end
 
-      def signal_lib_definition
-        base = lib_definition
+      def signal_lib_definition(builder)
+        base = lib_definition(builder)
         if base && @container.is_a?(StructInfo)
           base += "*"
         end
         base
       end
 
-      def wrapper_definition(libname, indent = "")
-        @container.name
+      def wrapper_definition(builder, libname)
+        @container.name.not_nil!
       end
 
       def tag
@@ -50,11 +50,11 @@ module GIRepository
         false
       end
 
-      def convert_to_crystal(variable)
+      def convert_to_crystal(builder, variable)
         if @container.is_a? InterfaceInfo
-          "#{@container.name}::Wrapper.new(#{variable})"
+          builder.call "new", variable, receiver: "#{@container.name}::Wrapper"
         else
-          "#{@container.name}.new(#{variable})"
+          builder.call "new", variable, receiver: @container.name
         end
       end
 
@@ -76,8 +76,8 @@ module GIRepository
       def initialize(@container : BaseInfo)
       end
 
-      def lib_definition
-        "this : #{@container.name}*"
+      def lib_definition(builder)
+        builder.arg "this", type: "#{@container.name}*"
       end
 
       def name
@@ -88,11 +88,11 @@ module GIRepository
         FakeType.new(@container)
       end
 
-      def for_wrapper_definition(libname)
+      def for_wrapper_definition(builder, libname)
       end
 
-      def for_wrapper_pass(libname)
-        "@pointer.as(#{libname}::#{@container.name}*)"
+      def for_wrapper_pass(builder, libname)
+        builder.call("as", "#{libname}::#{@container.name}*", receiver: "@pointer")
       end
 
       def from_wrapper_pass
@@ -125,8 +125,8 @@ module GIRepository
     end
 
     class ErrorArgInfo
-      def lib_definition
-        "error : LibGLib::Error**"
+      def lib_definition(builder)
+        builder.arg "error", type: "LibGLib::Error**"
       end
 
       def name
@@ -137,11 +137,11 @@ module GIRepository
         FakeType.new FakeContainer.new("LibGLib::Error*")
       end
 
-      def for_wrapper_definition(libname)
+      def for_wrapper_definition(builder, libname)
       end
 
-      def for_wrapper_pass(libname)
-        "pointerof(__error)"
+      def for_wrapper_pass(builder, var)
+        builder.call("pointerof", var)
       end
 
       def from_wrapper_pass
