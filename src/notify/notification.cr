@@ -64,8 +64,8 @@ module Notify
         name,
         label,
         ->Notification.handle_action,
-        ClosureDataManager.register(Box.box(block)),
-        ->ClosureDataManager.deregister
+        GObject::ClosureDataManager.register(Box.box(block)),
+        ->GObject::ClosureDataManager.deregister
       )
     end
 
