@@ -184,7 +184,7 @@ module GIRepository
         when ArrayType::C
           item = builder.declare_var
           builder.call("new", variable, receiver: "GObject::PointerIterator", block_args: {item}) do |b|
-            b.line param_type.convert_to_crystal(builder, item)
+            b.line param_type.convert_to_crystal(b, item)
           end
         else
           variable

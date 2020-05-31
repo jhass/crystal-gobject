@@ -332,6 +332,7 @@ class Crout
       end
       b.write '\n'
       b.indented { block.call(b) }
+      b.write_indent
       b.write "}"
     end
   end

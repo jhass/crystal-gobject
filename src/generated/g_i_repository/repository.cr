@@ -95,7 +95,7 @@ module GIRepository
       GObject.raise_unexpected_null("g_irepository_get_dependencies") if __var0.null?
       GObject::PointerIterator.new(__var0) { |__var1|
         ::String.new(__var1)
-}
+      }
     end
 
     def immediate_dependencies(namespace_ : ::String)
@@ -103,7 +103,7 @@ module GIRepository
       GObject.raise_unexpected_null("g_irepository_get_immediate_dependencies") if __var0.null?
       GObject::PointerIterator.new(__var0) { |__var1|
         ::String.new(__var1)
-}
+      }
     end
 
     def info(namespace_ : ::String, index : ::Int)
@@ -117,7 +117,7 @@ module GIRepository
       GObject.raise_unexpected_null("g_irepository_get_loaded_namespaces") if __var0.null?
       GObject::PointerIterator.new(__var0) { |__var1|
         ::String.new(__var1)
-}
+      }
     end
 
     def n_infos(namespace_ : ::String)
