@@ -115,11 +115,13 @@ module GIRepository
 
     def signal_lib_definition(builder)
       base = lib_definition(builder)
-      if tag.interface? && !interface.is_a?(EnumInfo)
-        # In signal functions, structs are always pointers, even if their TypeInfo disagrees
-        base += "*"
-      end
+      base += "*" if is_pointer_in_signal?
       base
+    end
+
+    def is_pointer_in_signal?
+      # In signal functions, structs are always pointers, even if their TypeInfo disagrees
+      tag.interface? && !interface.is_a?(EnumInfo)
     end
 
     def gvalue_type

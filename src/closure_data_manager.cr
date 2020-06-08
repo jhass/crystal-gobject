@@ -22,7 +22,7 @@ module GObject
     end
 
     def register(data)
-      @closure_data[data] += 1
+      @closure_data[data] += 1 if data
       data
     end
 

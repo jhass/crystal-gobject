@@ -28,10 +28,12 @@ module GIRepository
 
       def signal_lib_definition(builder)
         base = lib_definition(builder)
-        if base && @container.is_a?(StructInfo)
-          base += "*"
-        end
+        base += "*" if base && is_pointer_in_signal?
         base
+      end
+
+      def is_pointer_in_signal?
+        @container.is_a?(StructInfo)
       end
 
       def wrapper_definition(builder, libname)
