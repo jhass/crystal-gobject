@@ -20,6 +20,13 @@ module GIRepository
           error = call("new", literal("\#{type_name} is not a #{type_name}"), receiver: "ArgumentError")
           throw = call("raise", error)
           conditional_line negate(is_gtype), throw
+          line call("object_ref", call("as", "LibGObject::Object*", receiver: "pointer"), receiver: "LibGObject")
+        end
+      end
+
+      if self.is_a?(ObjectInfo) || self.is_a?(InterfaceInfo)
+        builder.def_method("finalize") do
+          line call("object_unref", call("as", "LibGObject::Object*", receiver: "@pointer"), receiver: "LibGObject")
         end
       end
     end
