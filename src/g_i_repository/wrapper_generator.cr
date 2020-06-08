@@ -16,8 +16,7 @@ module GIRepository
         line assign pointer, call("as", "Void*", receiver: "pointer")
         if self.is_a?(ObjectInfo) || self.is_a?(InterfaceInfo)
           type_instance = call("as", "LibGObject::TypeInstance*", receiver: "pointer")
-          gtype = call("type_from_name", literal(type_name), receiver: "GObject")
-          is_gtype = call("type_check_instance_is_a", type_instance, gtype, receiver: "LibGObject")
+          is_gtype = call("type_check_instance_is_a", type_instance, wrapper_gtype(builder, libname), receiver: "LibGObject")
           error = call("new", literal("\#{type_name} is not a #{type_name}"), receiver: "ArgumentError")
           throw = call("raise", error)
           conditional_line negate(is_gtype), throw

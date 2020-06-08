@@ -55,17 +55,26 @@ module GObject
     end
 
     # TODO: should perhaps become object.type.id ?
+    def gtype?
+      if @pointer
+        @pointer.as(LibGObject::Object*).value.g_type_instance.g_class.value.g_type
+      else
+        nil
+      end
+    end
+
     def gtype
-      @pointer.as(LibGObject::Object*).value.g_type_instance.g_class.value.g_type
+      gtype? || raise ArgumentError.new("No gtype for #{inspect}")
     end
 
     # TODO: should perhaps become object.type.name ?
     def type_name
-      GObject.type_name(gtype)
+      @pointer.null? ? "null pointer" : (gtype = gtype?) ? GObject.type_name(gtype) : "Unknown"
     end
 
     def inspect(io)
-      io << "GObject(#{type_name}:#{gtype.to_s(16)}:0x#{@pointer.address.to_s(16)})"
+      gtype = gtype?
+      io << "GObject(#{type_name}#{":#{gtype.to_s(16)}" if gtype}:0x#{@pointer.address.to_s(16)})"
     end
   end
 end

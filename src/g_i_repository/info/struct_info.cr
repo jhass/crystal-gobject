@@ -35,6 +35,7 @@ module GIRepository
       builder.def_struct(name) do
         field_definition(builder)
       end
+      type_init_lib_definition(builder)
       each_method &.lib_definition(builder)
     end
 

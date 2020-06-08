@@ -142,6 +142,7 @@ lib LibGLib
     data : UInt8*
     len : UInt32
   end
+  fun _g_array_get_type = g_array_get_type : UInt64
 
   struct AsyncQueue # struct
     _data : UInt8[0]
@@ -215,6 +216,7 @@ lib LibGLib
     data : UInt8*
     len : UInt32
   end
+  fun _g_byte_array_get_type = g_byte_array_get_type : UInt64
   fun byte_array_free = g_byte_array_free(array : Void*, free_segment : Bool) : UInt8*
   fun byte_array_free_to_bytes = g_byte_array_free_to_bytes(array : Void*) : LibGLib::Bytes*
   fun byte_array_new = g_byte_array_new : Void*
@@ -225,6 +227,7 @@ lib LibGLib
   struct Bytes # struct
     _data : UInt8[0]
   end
+  fun _g_bytes_get_type = g_bytes_get_type : UInt64
   fun bytes_new = g_bytes_new(data : UInt8*, size : UInt64) : LibGLib::Bytes*
   fun bytes_new_take = g_bytes_new_take(data : UInt8*, size : UInt64) : LibGLib::Bytes*
   fun bytes_compare = g_bytes_compare(this : Bytes*, bytes2 : LibGLib::Bytes*) : Int32
@@ -241,6 +244,7 @@ lib LibGLib
   struct Checksum # struct
     _data : UInt8[0]
   end
+  fun _g_checksum_get_type = g_checksum_get_type : UInt64
   fun checksum_new = g_checksum_new(checksum_type : LibGLib::ChecksumType) : LibGLib::Checksum*
   fun checksum_copy = g_checksum_copy(this : Checksum*) : LibGLib::Checksum*
   fun checksum_free = g_checksum_free(this : Checksum*) : Void
@@ -272,6 +276,7 @@ lib LibGLib
     month : UInt32
     year : UInt32
   end
+  fun _g_date_get_type = g_date_get_type : UInt64
   fun date_new = g_date_new : LibGLib::Date*
   fun date_new_dmy = g_date_new_dmy(day : UInt8, month : LibGLib::DateMonth, year : UInt16) : LibGLib::Date*
   fun date_new_julian = g_date_new_julian(julian_day : UInt32) : LibGLib::Date*
@@ -325,6 +330,7 @@ lib LibGLib
   struct DateTime # struct
     _data : UInt8[0]
   end
+  fun _g_date_time_get_type = g_date_time_get_type : UInt64
   fun date_time_new = g_date_time_new(tz : LibGLib::TimeZone*, year : Int32, month : Int32, day : Int32, hour : Int32, minute : Int32, seconds : Float64) : LibGLib::DateTime*
   fun date_time_new_from_iso8601 = g_date_time_new_from_iso8601(text : UInt8*, default_tz : LibGLib::TimeZone*) : LibGLib::DateTime*
   fun date_time_new_from_timeval_local = g_date_time_new_from_timeval_local(tv : LibGLib::TimeVal*) : LibGLib::DateTime*
@@ -394,6 +400,7 @@ lib LibGLib
     code : Int32
     message : UInt8*
   end
+  fun _g_error_get_type = g_error_get_type : UInt64
   fun error_new_literal = g_error_new_literal(domain : UInt32, code : Int32, message : UInt8*) : LibGLib::Error**
   fun error_copy = g_error_copy(this : Error*) : LibGLib::Error**
   fun error_free = g_error_free(this : Error*) : Void
@@ -402,6 +409,7 @@ lib LibGLib
   struct HashTable # struct
     _data : UInt8[0]
   end
+  fun _g_hash_table_get_type = g_hash_table_get_type : UInt64
   fun hash_table_add = g_hash_table_add(hash_table : Void**, key : Void*) : Bool
   fun hash_table_contains = g_hash_table_contains(hash_table : Void**, key : Void*) : Bool
   fun hash_table_destroy = g_hash_table_destroy(hash_table : Void**) : Void
@@ -493,6 +501,7 @@ lib LibGLib
     reserved1 : Void*
     reserved2 : Void*
   end
+  fun _g_io_channel_get_type = g_io_channel_get_type : UInt64
   fun i_o_channel_new_file = g_io_channel_new_file(filename : UInt8*, mode : UInt8*, error : LibGLib::Error**) : LibGLib::IOChannel*
   fun i_o_channel_unix_new = g_io_channel_unix_new(fd : Int32) : LibGLib::IOChannel*
   fun i_o_channel_close = g_io_channel_close(this : IOChannel*) : Void
@@ -543,6 +552,7 @@ lib LibGLib
   struct KeyFile # struct
     _data : UInt8[0]
   end
+  fun _g_key_file_get_type = g_key_file_get_type : UInt64
   fun key_file_new = g_key_file_new : LibGLib::KeyFile*
   fun key_file_get_boolean = g_key_file_get_boolean(this : KeyFile*, group_name : UInt8*, key : UInt8*, error : LibGLib::Error**) : Bool
   fun key_file_get_boolean_list = g_key_file_get_boolean_list(this : KeyFile*, group_name : UInt8*, key : UInt8*, length : UInt64*, error : LibGLib::Error**) : Bool*
@@ -606,6 +616,7 @@ lib LibGLib
   struct MainContext # struct
     _data : UInt8[0]
   end
+  fun _g_main_context_get_type = g_main_context_get_type : UInt64
   fun main_context_new = g_main_context_new : LibGLib::MainContext*
   fun main_context_acquire = g_main_context_acquire(this : MainContext*) : Bool
   fun main_context_add_poll = g_main_context_add_poll(this : MainContext*, fd : LibGLib::PollFD*, priority : Int32) : Void
@@ -635,6 +646,7 @@ lib LibGLib
   struct MainLoop # struct
     _data : UInt8[0]
   end
+  fun _g_main_loop_get_type = g_main_loop_get_type : UInt64
   fun main_loop_new = g_main_loop_new(context : LibGLib::MainContext*, is_running : Bool) : LibGLib::MainLoop*
   fun main_loop_get_context = g_main_loop_get_context(this : MainLoop*) : LibGLib::MainContext*
   fun main_loop_is_running = g_main_loop_is_running(this : MainLoop*) : Bool
@@ -646,6 +658,7 @@ lib LibGLib
   struct MappedFile # struct
     _data : UInt8[0]
   end
+  fun _g_mapped_file_get_type = g_mapped_file_get_type : UInt64
   fun mapped_file_new = g_mapped_file_new(filename : UInt8*, writable : Bool, error : LibGLib::Error**) : LibGLib::MappedFile*
   fun mapped_file_new_from_fd = g_mapped_file_new_from_fd(fd : Int32, writable : Bool, error : LibGLib::Error**) : LibGLib::MappedFile*
   fun mapped_file_free = g_mapped_file_free(this : MappedFile*) : Void
@@ -658,6 +671,7 @@ lib LibGLib
   struct MarkupParseContext # struct
     _data : UInt8[0]
   end
+  fun _g_markup_parse_context_get_type = g_markup_parse_context_get_type : UInt64
   fun markup_parse_context_new = g_markup_parse_context_new(parser : LibGLib::MarkupParser*, flags : LibGLib::MarkupParseFlags, user_data : Void*, user_data_dnotify : LibGLib::DestroyNotify) : LibGLib::MarkupParseContext*
   fun markup_parse_context_end_parse = g_markup_parse_context_end_parse(this : MarkupParseContext*, error : LibGLib::Error**) : Bool
   fun markup_parse_context_free = g_markup_parse_context_free(this : MarkupParseContext*) : Void
@@ -681,6 +695,7 @@ lib LibGLib
   struct MatchInfo # struct
     _data : UInt8[0]
   end
+  fun _g_match_info_get_type = g_match_info_get_type : UInt64
   fun match_info_expand_references = g_match_info_expand_references(this : MatchInfo*, string_to_expand : UInt8*, error : LibGLib::Error**) : UInt8*
   fun match_info_fetch = g_match_info_fetch(this : MatchInfo*, match_num : Int32) : UInt8*
   fun match_info_fetch_all = g_match_info_fetch_all(this : MatchInfo*) : UInt8**
@@ -768,6 +783,7 @@ lib LibGLib
   struct OptionGroup # struct
     _data : UInt8[0]
   end
+  fun _g_option_group_get_type = g_option_group_get_type : UInt64
   fun option_group_new = g_option_group_new(name : UInt8*, description : UInt8*, help_description : UInt8*, user_data : Void*, destroy : LibGLib::DestroyNotify) : LibGLib::OptionGroup*
   fun option_group_add_entries = g_option_group_add_entries(this : OptionGroup*, entries : LibGLib::OptionEntry*) : Void
   fun option_group_free = g_option_group_free(this : OptionGroup*) : Void
@@ -787,6 +803,7 @@ lib LibGLib
     events : UInt16
     revents : UInt16
   end
+  fun _g_pollfd_get_type = g_pollfd_get_type : UInt64
 
   struct Private # struct
     p : Void*
@@ -801,6 +818,7 @@ lib LibGLib
     pdata : Void*
     len : UInt32
   end
+  fun _g_ptr_array_get_type = g_ptr_array_get_type : UInt64
 
   struct Queue # struct
     head : Void**
@@ -865,6 +883,7 @@ lib LibGLib
   struct Regex # struct
     _data : UInt8[0]
   end
+  fun _g_regex_get_type = g_regex_get_type : UInt64
   fun regex_new = g_regex_new(pattern : UInt8*, compile_options : LibGLib::RegexCompileFlags, match_options : LibGLib::RegexMatchFlags, error : LibGLib::Error**) : LibGLib::Regex*
   fun regex_get_capture_count = g_regex_get_capture_count(this : Regex*) : Int32
   fun regex_get_compile_flags = g_regex_get_compile_flags(this : Regex*) : LibGLib::RegexCompileFlags
@@ -1014,6 +1033,7 @@ lib LibGLib
     name : UInt8*
     priv : LibGLib::SourcePrivate*
   end
+  fun _g_source_get_type = g_source_get_type : UInt64
   fun source_new = g_source_new(source_funcs : LibGLib::SourceFuncs*, struct_size : UInt32) : LibGLib::Source*
   fun source_add_child_source = g_source_add_child_source(this : Source*, child_source : LibGLib::Source*) : Void
   fun source_add_poll = g_source_add_poll(this : Source*, fd : LibGLib::PollFD*) : Void
@@ -1076,6 +1096,7 @@ lib LibGLib
     len : UInt64
     allocated_len : UInt64
   end
+  fun _g_gstring_get_type = g_gstring_get_type : UInt64
   fun string_append = g_string_append(this : String*, val : UInt8*) : LibGLib::String*
   fun string_append_c = g_string_append_c(this : String*, c : Int8) : LibGLib::String*
   fun string_append_len = g_string_append_len(this : String*, val : UInt8*, len : Int64) : LibGLib::String*
@@ -1151,6 +1172,7 @@ lib LibGLib
   struct Thread # struct
     _data : UInt8[0]
   end
+  fun _g_thread_get_type = g_thread_get_type : UInt64
   fun thread_join = g_thread_join(this : Thread*) : Void*
   fun thread_ref = g_thread_ref(this : Thread*) : LibGLib::Thread*
   fun thread_unref = g_thread_unref(this : Thread*) : Void
@@ -1189,6 +1211,7 @@ lib LibGLib
   struct TimeZone # struct
     _data : UInt8[0]
   end
+  fun _g_time_zone_get_type = g_time_zone_get_type : UInt64
   fun time_zone_new = g_time_zone_new(identifier : UInt8*) : LibGLib::TimeZone*
   fun time_zone_new_local = g_time_zone_new_local : LibGLib::TimeZone*
   fun time_zone_new_offset = g_time_zone_new_offset(seconds : Int32) : LibGLib::TimeZone*
@@ -1320,6 +1343,7 @@ lib LibGLib
   struct VariantBuilder # struct
     _data : UInt8[0]
   end
+  fun _g_variant_builder_get_type = g_variant_builder_get_type : UInt64
   fun variant_builder_new = g_variant_builder_new(type : LibGLib::VariantType*) : LibGLib::VariantBuilder*
   fun variant_builder_add_value = g_variant_builder_add_value(this : VariantBuilder*, value : LibGLib::Variant*) : Void
   fun variant_builder_close = g_variant_builder_close(this : VariantBuilder*) : Void
@@ -1331,6 +1355,7 @@ lib LibGLib
   struct VariantDict # struct
     _data : UInt8[0]
   end
+  fun _g_variant_dict_get_type = g_variant_dict_get_type : UInt64
   fun variant_dict_new = g_variant_dict_new(from_asv : LibGLib::Variant*) : LibGLib::VariantDict*
   fun variant_dict_clear = g_variant_dict_clear(this : VariantDict*) : Void
   fun variant_dict_contains = g_variant_dict_contains(this : VariantDict*, key : UInt8*) : Bool
@@ -1344,6 +1369,7 @@ lib LibGLib
   struct VariantType # struct
     _data : UInt8[0]
   end
+  fun _g_variant_type_get_gtype = g_variant_type_get_gtype : UInt64
   fun variant_type_new = g_variant_type_new(type_string : UInt8*) : LibGLib::VariantType*
   fun variant_type_new_array = g_variant_type_new_array(element : LibGLib::VariantType*) : LibGLib::VariantType*
   fun variant_type_new_dict_entry = g_variant_type_new_dict_entry(key : LibGLib::VariantType*, value : LibGLib::VariantType*) : LibGLib::VariantType*

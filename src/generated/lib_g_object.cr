@@ -325,6 +325,7 @@ lib LibGObject
     data : Void*
     notifiers : LibGObject::ClosureNotifyData*
   end
+  fun _g_closure_get_type = g_closure_get_type : UInt64
   fun closure_new_object = g_closure_new_object(sizeof_closure : UInt32, object : LibGObject::Object*) : LibGObject::Closure*
   fun closure_new_simple = g_closure_new_simple(sizeof_closure : UInt32, data : Void*) : LibGObject::Closure*
   fun closure_invalidate = g_closure_invalidate(this : Closure*) : Void
@@ -547,6 +548,7 @@ lib LibGObject
     g_type : UInt64
     data : LibGObject::G_Value__data__union[2]
   end
+  fun _g_value_get_type = g_value_get_type : UInt64
   fun value_copy = g_value_copy(this : Value*, dest_value : LibGObject::Value*) : Void
   fun value_dup_object = g_value_dup_object(this : Value*) : LibGObject::Object*
   fun value_dup_string = g_value_dup_string(this : Value*) : UInt8*
@@ -616,6 +618,7 @@ lib LibGObject
     values : LibGObject::Value*
     n_prealloced : UInt32
   end
+  fun _g_value_array_get_type = g_value_array_get_type : UInt64
   fun value_array_new = g_value_array_new(n_prealloced : UInt32) : LibGObject::ValueArray*
   fun value_array_append = g_value_array_append(this : ValueArray*, value : LibGObject::Value*) : LibGObject::ValueArray*
   fun value_array_copy = g_value_array_copy(this : ValueArray*) : LibGObject::ValueArray*
@@ -671,6 +674,7 @@ lib LibGObject
   struct TypePlugin # interface
     _data : UInt8[0]
   end
+  fun _g_type_plugin_get_type = g_type_plugin_get_type : UInt64
   fun type_plugin_complete_interface_info = g_type_plugin_complete_interface_info(this : TypePlugin*, instance_type : UInt64, interface_type : UInt64, info : LibGObject::InterfaceInfo*) : Void
   fun type_plugin_complete_type_info = g_type_plugin_complete_type_info(this : TypePlugin*, g_type : UInt64, info : LibGObject::TypeInfo*, value_table : LibGObject::TypeValueTable*) : Void
   fun type_plugin_unuse = g_type_plugin_unuse(this : TypePlugin*) : Void

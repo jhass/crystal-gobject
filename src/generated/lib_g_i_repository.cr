@@ -70,6 +70,7 @@ lib LibGIRepository
     dummy7 : UInt32
     padding : Void*[4]
   end
+  fun _g_base_info_gtype_get_type = g_base_info_gtype_get_type : UInt64
   fun base_info_equal = g_base_info_equal(this : BaseInfo*, info2 : LibGIRepository::BaseInfo*) : Bool
   fun base_info_get_attribute = g_base_info_get_attribute(this : BaseInfo*, name : UInt8*) : UInt8*
   fun base_info_get_container = g_base_info_get_container(this : BaseInfo*) : LibGIRepository::BaseInfo*

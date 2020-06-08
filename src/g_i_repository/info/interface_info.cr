@@ -35,6 +35,8 @@ module GIRepository
       end
 
       each_constant(&.lib_definition(builder))
+
+      type_init_lib_definition(builder)
       each_method(&.lib_definition(builder))
     end
 

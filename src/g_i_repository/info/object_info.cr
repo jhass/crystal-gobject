@@ -67,7 +67,7 @@ module GIRepository
         each_property &.lib_definition(builder)
       end
 
-      builder.fun_binding type_init, name: "_#{type_init}", return_type: "UInt64" unless type_init == "intern"
+      type_init_lib_definition(builder)
       each_method &.lib_definition(builder)
     end
 
@@ -90,7 +90,6 @@ module GIRepository
 
         unless abstract?
           constructor_properties = all_properties.select { |property| property.setter? }
-          gtype = type_init == "intern" ? call("type_from_name", literal(type_name), receiver: "GObject") : call("_#{type_init}", receiver: libname)
           constructor_args = constructor_properties.map { |property|
             arg(property.arg_name, type: "#{property.type.wrapper_definition(libname)}?", default: literal(nil))
           }
@@ -112,13 +111,13 @@ module GIRepository
               end
 
               names_size = call "size", receiver: names
-              object = call("new_with_properties", gtype, names_size, names, values, receiver: "LibGObject")
+              object = call("new_with_properties", wrapper_gtype(builder, libname), names_size, names, values, receiver: "LibGObject")
               ptr = call("as", "Void*", receiver: object)
               line assign "@pointer", ptr
             end
           elsif !has_any_constructor?
             def_method("initialize") do
-              object = call("new_with_properties", gtype, literal(0), literal(nil), literal(nil), receiver: "LibGObject")
+              object = call("new_with_properties", wrapper_gtype(builder, libname), literal(0), literal(nil), literal(nil), receiver: "LibGObject")
               ptr = call("as", "Void*", receiver: object)
               line assign "@pointer", ptr
             end
