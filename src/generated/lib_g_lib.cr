@@ -110,8 +110,8 @@ lib LibGLib
   SIZEOF_SIZE_T = 8 # : Int32
   SIZEOF_SSIZE_T = 8 # : Int32
   SIZEOF_VOID_P = 8 # : Int32
-  SOURCE_CONTINUE = true # : LibC::Int
-  SOURCE_REMOVE = false # : LibC::Int
+  SOURCE_CONTINUE = 1 # : LibC::Int
+  SOURCE_REMOVE = 0 # : LibC::Int
   SQRT2 = 1.414214 # : Float64
   STR_DELIMITERS = "_-|> <." # : UInt8*
   SYSDEF_AF_INET = 2 # : Int32

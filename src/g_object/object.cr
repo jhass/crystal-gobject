@@ -7,17 +7,19 @@ end
 
 module GObject
   class Object
-    def connect(signal, &callback)
-      connect signal, callback
+    def connect(signal, *, after = false, &callback)
+      connect signal, callback, after: after
     end
 
-    def connect(signal, callback)
+    def connect(signal, callback, *, after = false)
+      flags = GObject::ConnectFlags::SWAPPED
+      flags |= GObject::ConnectFlags::AFTER if after
       LibGObject.signal_connect_data(@pointer.as(LibGObject::Object*),
         signal,
         LibGObject::Callback.new(callback.pointer, Pointer(Void).null),
         ClosureDataManager.register(callback.closure_data),
         ->ClosureDataManager.deregister,
-        GObject::ConnectFlags::SWAPPED).tap do |handler_id|
+        flags).tap do |handler_id|
         if handler_id == 0
           raise ArgumentError.new("Couldn't connect signal #{signal} to #{type_name} (#{self.class})")
         end

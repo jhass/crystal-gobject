@@ -341,24 +341,38 @@ class Crout
     subscript = receiver && name[0] == '['
     operator = receiver && {'=', '-', '+', '*', '/', '&', '<', '>'}.includes? name[0]
     keyword = receiver.nil? && name == "require"
-    args = args.flat_map { |arg| arg.is_a?(NamedTuple) || arg.is_a?(Hash) ? arg.map { |k, v| "#{k}: #{v}" } : "#{arg}" }
+    call_args = Array(Expression | String).new
+    args.each do |arg|
+      if arg.is_a?(NamedTuple) || arg.is_a?(Hash)
+        arg.each do |k, v|
+          call_args << expression { |b|
+            b.write k
+            b.write ": "
+            b.write v
+          }
+        end
+      elsif arg
+        call_args << arg
+      end
+    end
+
     expression do |b|
       if subscript
         b.write receiver if receiver
         b.write '['
-        b.join(args, sep: ", ")
+        b.join(call_args, sep: ", ")
         b.write name.lchop('[')
       elsif operator
         raise ArgumentError.new "operator call #{name} needs exactly one argument" unless args.size == 1
         b.write receiver, ' ' if receiver
         b.write name
         b.write ' ' if receiver # If no receiver this might be a prefix call like: +foo
-        b.write args.first?
+        b.write call_args.first?
       else
         b.write receiver, '.' if receiver
         b.write name
         b.write keyword ? ' ' : '(' unless args.empty?
-        b.join(args, sep: ", ")
+        b.join(call_args, sep: ", ")
         b.write ')' unless args.empty? || keyword
       end
 
@@ -569,8 +583,12 @@ class Crout
   def join(args, *, sep : String | Char = "") : Nil
     return if args.empty?
 
-    @write_ops &+= 1
-    args.join(sep, @io)
+    first = true
+    args.each do |arg|
+      write sep unless first
+      write arg
+      first = false
+    end
   end
 
   def write(*atoms) : Nil

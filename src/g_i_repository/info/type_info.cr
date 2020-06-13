@@ -193,6 +193,8 @@ module GIRepository
         else
           variable
         end
+      when .boolean?
+        "(#{variable} == 1)"
       when .utf8?, .filename?
         builder.call "new", variable, receiver: "::String"
       when .glist?

@@ -18,7 +18,7 @@ module GIRepository
 
     def wrapper_definition(builder, libname)
       ret_type = return_type.wrapper_definition(libname)
-      ret_type = nil if ret_type == "Void*"
+      ret_type = "Nil" if ret_type == "Void*"
       proc = builder.proc_type(args.map { |arg|
         type = arg.type.wrapper_definition(builder, libname)
         arg.nilable? ? "#{type}?" : type
@@ -43,7 +43,11 @@ module GIRepository
         end
       }.to_a
       trampoline_args = Array.new(args.size) { |i| "arg#{i}" }
-      builder.def_method("on_#{identifier}", builder.arg("block", type: alias_name, prefix: :block_capture)) do
+      builder.def_method(
+        "on_#{identifier}",
+        builder.arg(nil, prefix: :splat),
+        builder.arg("after", default: "false"),
+        builder.arg("block", type: alias_name, prefix: :block_capture)) do
         callback = line assign_var def_proc(proc_arguments) { |b|
           trampoline = b.call("unbox", "box", receiver: "::Box(#{alias_name})")
           return_value = b.call("call", block_arguments, receiver: trampoline)
@@ -64,9 +68,14 @@ module GIRepository
         register_box = call("register", trampoline_box, receiver: "GObject::ClosureDataManager")
         deregister_box = "->#{call("deregister", receiver: "GObject::ClosureDataManager")}"
 
+        flags = ternary("after", "GObject::ConnectFlags::AFTER", "GObject::ConnectFlags::None")
         line call("signal_connect_data",
           this, literal(name), callback_ptr, register_box,
-          deregister_box, "GObject::ConnectFlags::None", receiver: "LibGObject")
+          deregister_box, flags, receiver: "LibGObject")
+      end
+
+      builder.def_method("after_#{identifier}", builder.arg("block", type: alias_name, prefix: :block_capture)) do
+        line call("on_#{identifier}", {after: literal(true)}, "&block")
       end
     end
 
