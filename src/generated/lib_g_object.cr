@@ -56,7 +56,7 @@ lib LibGObject
   fun object_get_property = g_object_get_property(this : Object*, property_name : UInt8*, value : LibGObject::Value*) : Void
   fun object_get_qdata = g_object_get_qdata(this : Object*, quark : UInt32) : Void*
   fun object_getv = g_object_getv(this : Object*, n_properties : UInt32, names : UInt8**, values : LibGObject::Value*) : Void
-  fun object_is_floating = g_object_is_floating(this : Object*) : Bool
+  fun object_is_floating = g_object_is_floating(this : Object*) : LibC::Int
   fun object_notify = g_object_notify(this : Object*, property_name : UInt8*) : Void
   fun object_notify_by_pspec = g_object_notify_by_pspec(this : Object*, pspec : LibGObject::ParamSpec*) : Void
   fun object_ref = g_object_ref(this : Object*) : LibGObject::Object*
@@ -99,7 +99,7 @@ lib LibGObject
 
   struct ParamSpecBoolean # object
     parent_instance : LibGObject::ParamSpec
-    default_value : Bool
+    default_value : LibC::Int
   end
 
   struct ParamSpecBoxed # object
@@ -256,7 +256,7 @@ lib LibGObject
   fun type_module_register_type = g_type_module_register_type(this : TypeModule*, parent_type : UInt64, type_name : UInt8*, type_info : LibGObject::TypeInfo*, flags : LibGObject::TypeFlags) : UInt64
   fun type_module_set_name = g_type_module_set_name(this : TypeModule*, name : UInt8*) : Void
   fun type_module_unuse = g_type_module_unuse(this : TypeModule*) : Void
-  fun type_module_use = g_type_module_use(this : TypeModule*) : Bool
+  fun type_module_use = g_type_module_use(this : TypeModule*) : LibC::Int
 
   ###########################################
   ##    Flags
@@ -428,9 +428,9 @@ lib LibGObject
   fun param_spec_pool_insert = g_param_spec_pool_insert(this : ParamSpecPool*, pspec : LibGObject::ParamSpec*, owner_type : UInt64) : Void
   fun param_spec_pool_list = g_param_spec_pool_list(this : ParamSpecPool*, owner_type : UInt64, n_pspecs_p : UInt32*) : LibGObject::ParamSpec**
   fun param_spec_pool_list_owned = g_param_spec_pool_list_owned(this : ParamSpecPool*, owner_type : UInt64) : Void**
-  fun param_spec_pool_lookup = g_param_spec_pool_lookup(this : ParamSpecPool*, param_name : UInt8*, owner_type : UInt64, walk_ancestors : Bool) : LibGObject::ParamSpec*
+  fun param_spec_pool_lookup = g_param_spec_pool_lookup(this : ParamSpecPool*, param_name : UInt8*, owner_type : UInt64, walk_ancestors : LibC::Int) : LibGObject::ParamSpec*
   fun param_spec_pool_remove = g_param_spec_pool_remove(this : ParamSpecPool*, pspec : LibGObject::ParamSpec*) : Void
-  fun param_spec_pool_new = g_param_spec_pool_new(type_prefixing : Bool) : LibGObject::ParamSpecPool*
+  fun param_spec_pool_new = g_param_spec_pool_new(type_prefixing : LibC::Int) : LibGObject::ParamSpecPool*
 
   struct ParamSpecTypeInfo # struct
     instance_size : UInt16
@@ -553,8 +553,8 @@ lib LibGObject
   fun value_dup_object = g_value_dup_object(this : Value*) : LibGObject::Object*
   fun value_dup_string = g_value_dup_string(this : Value*) : UInt8*
   fun value_dup_variant = g_value_dup_variant(this : Value*) : LibGLib::Variant*
-  fun value_fits_pointer = g_value_fits_pointer(this : Value*) : Bool
-  fun value_get_boolean = g_value_get_boolean(this : Value*) : Bool
+  fun value_fits_pointer = g_value_fits_pointer(this : Value*) : LibC::Int
+  fun value_get_boolean = g_value_get_boolean(this : Value*) : LibC::Int
   fun value_get_boxed = g_value_get_boxed(this : Value*) : Void*
   fun value_get_char = g_value_get_char(this : Value*) : Int8
   fun value_get_double = g_value_get_double(this : Value*) : Float64
@@ -579,7 +579,7 @@ lib LibGObject
   fun value_init_from_instance = g_value_init_from_instance(this : Value*, instance : LibGObject::TypeInstance*) : Void
   fun value_peek_pointer = g_value_peek_pointer(this : Value*) : Void*
   fun value_reset = g_value_reset(this : Value*) : LibGObject::Value*
-  fun value_set_boolean = g_value_set_boolean(this : Value*, v_boolean : Bool) : Void
+  fun value_set_boolean = g_value_set_boolean(this : Value*, v_boolean : LibC::Int) : Void
   fun value_set_boxed = g_value_set_boxed(this : Value*, v_boxed : Void*) : Void
   fun value_set_boxed_take_ownership = g_value_set_boxed_take_ownership(this : Value*, v_boxed : Void*) : Void
   fun value_set_char = g_value_set_char(this : Value*, v_char : Int8) : Void
@@ -608,10 +608,10 @@ lib LibGObject
   fun value_take_boxed = g_value_take_boxed(this : Value*, v_boxed : Void*) : Void
   fun value_take_string = g_value_take_string(this : Value*, v_string : UInt8*) : Void
   fun value_take_variant = g_value_take_variant(this : Value*, variant : LibGLib::Variant*) : Void
-  fun value_transform = g_value_transform(this : Value*, dest_value : LibGObject::Value*) : Bool
+  fun value_transform = g_value_transform(this : Value*, dest_value : LibGObject::Value*) : LibC::Int
   fun value_unset = g_value_unset(this : Value*) : Void
-  fun value_type_compatible = g_value_type_compatible(src_type : UInt64, dest_type : UInt64) : Bool
-  fun value_type_transformable = g_value_type_transformable(src_type : UInt64, dest_type : UInt64) : Bool
+  fun value_type_compatible = g_value_type_compatible(src_type : UInt64, dest_type : UInt64) : LibC::Int
+  fun value_type_transformable = g_value_type_transformable(src_type : UInt64, dest_type : UInt64) : LibC::Int
 
   struct ValueArray # struct
     n_values : UInt32
@@ -722,7 +722,7 @@ lib LibGObject
   fun flags_register_static = g_flags_register_static(name : UInt8*, const_static_values : LibGObject::FlagsValue*) : UInt64
   fun flags_to_string = g_flags_to_string(flags_type : UInt64, value : UInt32) : UInt8*
   fun gtype_get_type = g_gtype_get_type : UInt64
-  fun param_spec_boolean = g_param_spec_boolean(name : UInt8*, nick : UInt8*, blurb : UInt8*, default_value : Bool, flags : LibGObject::ParamFlags) : LibGObject::ParamSpec*
+  fun param_spec_boolean = g_param_spec_boolean(name : UInt8*, nick : UInt8*, blurb : UInt8*, default_value : LibC::Int, flags : LibGObject::ParamFlags) : LibGObject::ParamSpec*
   fun param_spec_boxed = g_param_spec_boxed(name : UInt8*, nick : UInt8*, blurb : UInt8*, boxed_type : UInt64, flags : LibGObject::ParamFlags) : LibGObject::ParamSpec*
   fun param_spec_char = g_param_spec_char(name : UInt8*, nick : UInt8*, blurb : UInt8*, minimum : Int8, maximum : Int8, default_value : Int8, flags : LibGObject::ParamFlags) : LibGObject::ParamSpec*
   fun param_spec_double = g_param_spec_double(name : UInt8*, nick : UInt8*, blurb : UInt8*, minimum : Float64, maximum : Float64, default_value : Float64, flags : LibGObject::ParamFlags) : LibGObject::ParamSpec*
@@ -736,7 +736,7 @@ lib LibGObject
   fun param_spec_object = g_param_spec_object(name : UInt8*, nick : UInt8*, blurb : UInt8*, object_type : UInt64, flags : LibGObject::ParamFlags) : LibGObject::ParamSpec*
   fun param_spec_param = g_param_spec_param(name : UInt8*, nick : UInt8*, blurb : UInt8*, param_type : UInt64, flags : LibGObject::ParamFlags) : LibGObject::ParamSpec*
   fun param_spec_pointer = g_param_spec_pointer(name : UInt8*, nick : UInt8*, blurb : UInt8*, flags : LibGObject::ParamFlags) : LibGObject::ParamSpec*
-  fun param_spec_pool_new = g_param_spec_pool_new(type_prefixing : Bool) : LibGObject::ParamSpecPool*
+  fun param_spec_pool_new = g_param_spec_pool_new(type_prefixing : LibC::Int) : LibGObject::ParamSpecPool*
   fun param_spec_string = g_param_spec_string(name : UInt8*, nick : UInt8*, blurb : UInt8*, default_value : UInt8*, flags : LibGObject::ParamFlags) : LibGObject::ParamSpec*
   fun param_spec_uchar = g_param_spec_uchar(name : UInt8*, nick : UInt8*, blurb : UInt8*, minimum : UInt8, maximum : UInt8, default_value : UInt8, flags : LibGObject::ParamFlags) : LibGObject::ParamSpec*
   fun param_spec_uint = g_param_spec_uint(name : UInt8*, nick : UInt8*, blurb : UInt8*, minimum : UInt32, maximum : UInt32, default_value : UInt32, flags : LibGObject::ParamFlags) : LibGObject::ParamSpec*
@@ -745,35 +745,35 @@ lib LibGObject
   fun param_spec_unichar = g_param_spec_unichar(name : UInt8*, nick : UInt8*, blurb : UInt8*, default_value : UInt8, flags : LibGObject::ParamFlags) : LibGObject::ParamSpec*
   fun param_spec_variant = g_param_spec_variant(name : UInt8*, nick : UInt8*, blurb : UInt8*, type : LibGLib::VariantType*, default_value : LibGLib::Variant*, flags : LibGObject::ParamFlags) : LibGObject::ParamSpec*
   fun param_type_register_static = g_param_type_register_static(name : UInt8*, pspec_info : LibGObject::ParamSpecTypeInfo*) : UInt64
-  fun param_value_convert = g_param_value_convert(pspec : LibGObject::ParamSpec*, src_value : LibGObject::Value*, dest_value : LibGObject::Value*, strict_validation : Bool) : Bool
-  fun param_value_defaults = g_param_value_defaults(pspec : LibGObject::ParamSpec*, value : LibGObject::Value*) : Bool
+  fun param_value_convert = g_param_value_convert(pspec : LibGObject::ParamSpec*, src_value : LibGObject::Value*, dest_value : LibGObject::Value*, strict_validation : LibC::Int) : LibC::Int
+  fun param_value_defaults = g_param_value_defaults(pspec : LibGObject::ParamSpec*, value : LibGObject::Value*) : LibC::Int
   fun param_value_set_default = g_param_value_set_default(pspec : LibGObject::ParamSpec*, value : LibGObject::Value*) : Void
-  fun param_value_validate = g_param_value_validate(pspec : LibGObject::ParamSpec*, value : LibGObject::Value*) : Bool
+  fun param_value_validate = g_param_value_validate(pspec : LibGObject::ParamSpec*, value : LibGObject::Value*) : LibC::Int
   fun param_values_cmp = g_param_values_cmp(pspec : LibGObject::ParamSpec*, value1 : LibGObject::Value*, value2 : LibGObject::Value*) : Int32
   fun pointer_type_register_static = g_pointer_type_register_static(name : UInt8*) : UInt64
-  fun signal_accumulator_first_wins = g_signal_accumulator_first_wins(ihint : LibGObject::SignalInvocationHint*, return_accu : LibGObject::Value*, handler_return : LibGObject::Value*, dummy : Void*) : Bool
-  fun signal_accumulator_true_handled = g_signal_accumulator_true_handled(ihint : LibGObject::SignalInvocationHint*, return_accu : LibGObject::Value*, handler_return : LibGObject::Value*, dummy : Void*) : Bool
+  fun signal_accumulator_first_wins = g_signal_accumulator_first_wins(ihint : LibGObject::SignalInvocationHint*, return_accu : LibGObject::Value*, handler_return : LibGObject::Value*, dummy : Void*) : LibC::Int
+  fun signal_accumulator_true_handled = g_signal_accumulator_true_handled(ihint : LibGObject::SignalInvocationHint*, return_accu : LibGObject::Value*, handler_return : LibGObject::Value*, dummy : Void*) : LibC::Int
   fun signal_add_emission_hook = g_signal_add_emission_hook(signal_id : UInt32, detail : UInt32, hook_func : LibGObject::SignalEmissionHook, hook_data : Void*, data_destroy : LibGLib::DestroyNotify) : UInt64
   fun signal_chain_from_overridden = g_signal_chain_from_overridden(instance_and_params : LibGObject::Value*, return_value : LibGObject::Value*) : Void
-  fun signal_connect_closure = g_signal_connect_closure(instance : LibGObject::Object*, detailed_signal : UInt8*, closure : LibGObject::Closure*, after : Bool) : UInt64
-  fun signal_connect_closure_by_id = g_signal_connect_closure_by_id(instance : LibGObject::Object*, signal_id : UInt32, detail : UInt32, closure : LibGObject::Closure*, after : Bool) : UInt64
+  fun signal_connect_closure = g_signal_connect_closure(instance : LibGObject::Object*, detailed_signal : UInt8*, closure : LibGObject::Closure*, after : LibC::Int) : UInt64
+  fun signal_connect_closure_by_id = g_signal_connect_closure_by_id(instance : LibGObject::Object*, signal_id : UInt32, detail : UInt32, closure : LibGObject::Closure*, after : LibC::Int) : UInt64
   fun signal_emitv = g_signal_emitv(instance_and_params : LibGObject::Value*, signal_id : UInt32, detail : UInt32, return_value : LibGObject::Value*) : Void
   fun signal_get_invocation_hint = g_signal_get_invocation_hint(instance : LibGObject::Object*) : LibGObject::SignalInvocationHint*
   fun signal_handler_block = g_signal_handler_block(instance : LibGObject::Object*, handler_id : UInt64) : Void
   fun signal_handler_disconnect = g_signal_handler_disconnect(instance : LibGObject::Object*, handler_id : UInt64) : Void
   fun signal_handler_find = g_signal_handler_find(instance : LibGObject::Object*, mask : LibGObject::SignalMatchType, signal_id : UInt32, detail : UInt32, closure : LibGObject::Closure*, func : Void*, data : Void*) : UInt64
-  fun signal_handler_is_connected = g_signal_handler_is_connected(instance : LibGObject::Object*, handler_id : UInt64) : Bool
+  fun signal_handler_is_connected = g_signal_handler_is_connected(instance : LibGObject::Object*, handler_id : UInt64) : LibC::Int
   fun signal_handler_unblock = g_signal_handler_unblock(instance : LibGObject::Object*, handler_id : UInt64) : Void
   fun signal_handlers_block_matched = g_signal_handlers_block_matched(instance : LibGObject::Object*, mask : LibGObject::SignalMatchType, signal_id : UInt32, detail : UInt32, closure : LibGObject::Closure*, func : Void*, data : Void*) : UInt32
   fun signal_handlers_destroy = g_signal_handlers_destroy(instance : LibGObject::Object*) : Void
   fun signal_handlers_disconnect_matched = g_signal_handlers_disconnect_matched(instance : LibGObject::Object*, mask : LibGObject::SignalMatchType, signal_id : UInt32, detail : UInt32, closure : LibGObject::Closure*, func : Void*, data : Void*) : UInt32
   fun signal_handlers_unblock_matched = g_signal_handlers_unblock_matched(instance : LibGObject::Object*, mask : LibGObject::SignalMatchType, signal_id : UInt32, detail : UInt32, closure : LibGObject::Closure*, func : Void*, data : Void*) : UInt32
-  fun signal_has_handler_pending = g_signal_has_handler_pending(instance : LibGObject::Object*, signal_id : UInt32, detail : UInt32, may_be_blocked : Bool) : Bool
+  fun signal_has_handler_pending = g_signal_has_handler_pending(instance : LibGObject::Object*, signal_id : UInt32, detail : UInt32, may_be_blocked : LibC::Int) : LibC::Int
   fun signal_list_ids = g_signal_list_ids(itype : UInt64, n_ids : UInt32*) : UInt32*
   fun signal_lookup = g_signal_lookup(name : UInt8*, itype : UInt64) : UInt32
   fun signal_name = g_signal_name(signal_id : UInt32) : UInt8*
   fun signal_override_class_closure = g_signal_override_class_closure(signal_id : UInt32, instance_type : UInt64, class_closure : LibGObject::Closure*) : Void
-  fun signal_parse_name = g_signal_parse_name(detailed_signal : UInt8*, itype : UInt64, signal_id_p : UInt32*, detail_p : UInt32*, force_detail_quark : Bool) : Bool
+  fun signal_parse_name = g_signal_parse_name(detailed_signal : UInt8*, itype : UInt64, signal_id_p : UInt32*, detail_p : UInt32*, force_detail_quark : LibC::Int) : LibC::Int
   fun signal_query = g_signal_query(signal_id : UInt32, query : LibGObject::SignalQuery*) : Void
   fun signal_remove_emission_hook = g_signal_remove_emission_hook(signal_id : UInt32, hook_id : UInt64) : Void
   fun signal_set_va_marshaller = g_signal_set_va_marshaller(signal_id : UInt32, instance_type : UInt64, va_marshaller : Void*) : Void
@@ -787,13 +787,13 @@ lib LibGObject
   fun type_add_instance_private = g_type_add_instance_private(class_type : UInt64, private_size : UInt64) : Int32
   fun type_add_interface_dynamic = g_type_add_interface_dynamic(instance_type : UInt64, interface_type : UInt64, plugin : LibGObject::TypePlugin*) : Void
   fun type_add_interface_static = g_type_add_interface_static(instance_type : UInt64, interface_type : UInt64, info : LibGObject::InterfaceInfo*) : Void
-  fun type_check_class_is_a = g_type_check_class_is_a(g_class : LibGObject::TypeClass*, is_a_type : UInt64) : Bool
-  fun type_check_instance = g_type_check_instance(instance : LibGObject::TypeInstance*) : Bool
-  fun type_check_instance_is_a = g_type_check_instance_is_a(instance : LibGObject::TypeInstance*, iface_type : UInt64) : Bool
-  fun type_check_instance_is_fundamentally_a = g_type_check_instance_is_fundamentally_a(instance : LibGObject::TypeInstance*, fundamental_type : UInt64) : Bool
-  fun type_check_is_value_type = g_type_check_is_value_type(type : UInt64) : Bool
-  fun type_check_value = g_type_check_value(value : LibGObject::Value*) : Bool
-  fun type_check_value_holds = g_type_check_value_holds(value : LibGObject::Value*, type : UInt64) : Bool
+  fun type_check_class_is_a = g_type_check_class_is_a(g_class : LibGObject::TypeClass*, is_a_type : UInt64) : LibC::Int
+  fun type_check_instance = g_type_check_instance(instance : LibGObject::TypeInstance*) : LibC::Int
+  fun type_check_instance_is_a = g_type_check_instance_is_a(instance : LibGObject::TypeInstance*, iface_type : UInt64) : LibC::Int
+  fun type_check_instance_is_fundamentally_a = g_type_check_instance_is_fundamentally_a(instance : LibGObject::TypeInstance*, fundamental_type : UInt64) : LibC::Int
+  fun type_check_is_value_type = g_type_check_is_value_type(type : UInt64) : LibC::Int
+  fun type_check_value = g_type_check_value(value : LibGObject::Value*) : LibC::Int
+  fun type_check_value_holds = g_type_check_value_holds(value : LibGObject::Value*, type : UInt64) : LibC::Int
   fun type_children = g_type_children(type : UInt64, n_children : UInt32*) : UInt64*
   fun type_class_adjust_private_offset = g_type_class_adjust_private_offset(g_class : Void*, private_size_or_offset : Int32*) : Void
   fun type_class_peek = g_type_class_peek(type : UInt64) : LibGObject::TypeClass*
@@ -819,7 +819,7 @@ lib LibGObject
   fun type_interface_peek = g_type_interface_peek(instance_class : LibGObject::TypeClass*, iface_type : UInt64) : LibGObject::TypeInterface*
   fun type_interface_prerequisites = g_type_interface_prerequisites(interface_type : UInt64, n_prerequisites : UInt32*) : UInt64*
   fun type_interfaces = g_type_interfaces(type : UInt64, n_interfaces : UInt32*) : UInt64*
-  fun type_is_a = g_type_is_a(type : UInt64, is_a_type : UInt64) : Bool
+  fun type_is_a = g_type_is_a(type : UInt64, is_a_type : UInt64) : LibC::Int
   fun type_name = g_type_name(type : UInt64) : UInt8*
   fun type_name_from_class = g_type_name_from_class(g_class : LibGObject::TypeClass*) : UInt8*
   fun type_name_from_instance = g_type_name_from_instance(instance : LibGObject::TypeInstance*) : UInt8*
@@ -831,16 +831,16 @@ lib LibGObject
   fun type_register_fundamental = g_type_register_fundamental(type_id : UInt64, type_name : UInt8*, info : LibGObject::TypeInfo*, finfo : LibGObject::TypeFundamentalInfo*, flags : LibGObject::TypeFlags) : UInt64
   fun type_register_static = g_type_register_static(parent_type : UInt64, type_name : UInt8*, info : LibGObject::TypeInfo*, flags : LibGObject::TypeFlags) : UInt64
   fun type_set_qdata = g_type_set_qdata(type : UInt64, quark : UInt32, data : Void*) : Void
-  fun type_test_flags = g_type_test_flags(type : UInt64, flags : UInt32) : Bool
-  fun value_type_compatible = g_value_type_compatible(src_type : UInt64, dest_type : UInt64) : Bool
-  fun value_type_transformable = g_value_type_transformable(src_type : UInt64, dest_type : UInt64) : Bool
+  fun type_test_flags = g_type_test_flags(type : UInt64, flags : UInt32) : LibC::Int
+  fun value_type_compatible = g_value_type_compatible(src_type : UInt64, dest_type : UInt64) : LibC::Int
+  fun value_type_transformable = g_value_type_transformable(src_type : UInt64, dest_type : UInt64) : LibC::Int
 
   ###########################################
   ##    Callbacks
   ###########################################
   alias BaseFinalizeFunc = LibGObject::TypeClass* -> Void
   alias BaseInitFunc = LibGObject::TypeClass* -> Void
-  alias BindingTransformFunc = LibGObject::Binding*, LibGObject::Value*, LibGObject::Value*, Void* -> Bool
+  alias BindingTransformFunc = LibGObject::Binding*, LibGObject::Value*, LibGObject::Value*, Void* -> LibC::Int
   alias BoxedCopyFunc = Void* -> Void*
   alias BoxedFreeFunc = Void* -> Void
   alias Callback = -> Void
@@ -854,10 +854,10 @@ lib LibGObject
   alias ObjectFinalizeFunc = LibGObject::Object* -> Void
   alias ObjectGetPropertyFunc = LibGObject::Object*, UInt32, LibGObject::Value*, LibGObject::ParamSpec* -> Void
   alias ObjectSetPropertyFunc = LibGObject::Object*, UInt32, LibGObject::Value*, LibGObject::ParamSpec* -> Void
-  alias SignalAccumulator = LibGObject::SignalInvocationHint*, LibGObject::Value*, LibGObject::Value*, Void* -> Bool
-  alias SignalEmissionHook = LibGObject::SignalInvocationHint*, UInt32, LibGObject::Value*, Void* -> Bool
-  alias ToggleNotify = Void*, LibGObject::Object*, Bool -> Void
-  alias TypeClassCacheFunc = Void*, LibGObject::TypeClass* -> Bool
+  alias SignalAccumulator = LibGObject::SignalInvocationHint*, LibGObject::Value*, LibGObject::Value*, Void* -> LibC::Int
+  alias SignalEmissionHook = LibGObject::SignalInvocationHint*, UInt32, LibGObject::Value*, Void* -> LibC::Int
+  alias ToggleNotify = Void*, LibGObject::Object*, LibC::Int -> Void
+  alias TypeClassCacheFunc = Void*, LibGObject::TypeClass* -> LibC::Int
   alias TypeInterfaceCheckFunc = Void*, LibGObject::TypeInterface* -> Void
   alias TypePluginCompleteInterfaceInfo = LibGObject::TypePlugin*, UInt64, UInt64, LibGObject::InterfaceInfo* -> Void
   alias TypePluginCompleteTypeInfo = LibGObject::TypePlugin*, UInt64, LibGObject::TypeInfo*, LibGObject::TypeValueTable* -> Void

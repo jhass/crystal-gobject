@@ -1,10 +1,10 @@
 module GIRepository
   class Argument
     include GObject::WrappedType
-    alias Union = Argument|Bool|Int8|UInt8|Int16|UInt16|Int32|UInt32|Int64|UInt64|Float32|Float64|Int16|UInt16|Int32|UInt32|Int64|UInt64|Int64|UInt64|::String|Void*
+    alias Union = Argument|::Bool|Int8|UInt8|Int16|UInt16|Int32|UInt32|Int64|UInt64|Float32|Float64|Int16|UInt16|Int32|UInt32|Int64|UInt64|Int64|UInt64|::String|Void*
 
     def v_boolean
-      to_unsafe.as(LibGIRepository::Argument*).value.v_boolean
+      (to_unsafe.as(LibGIRepository::Argument*).value.v_boolean == 1)
     end
 
     def v_int8

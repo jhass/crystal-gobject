@@ -4,7 +4,7 @@ module GIRepository
   class TypeInfo < BaseInfo
     TAG_MAP = {
       TypeTag::VOID     => "Void",
-      TypeTag::BOOLEAN  => "Bool",
+      TypeTag::BOOLEAN  => "LibC::Int",
       TypeTag::INT8     => "Int8",
       TypeTag::UINT8    => "UInt8",
       TypeTag::INT16    => "Int16",
@@ -164,6 +164,8 @@ module GIRepository
         pointer? ? "Void*" : "Nil"
       when .utf8?, .filename?
         "::String"
+      when .boolean?
+        "::Bool"
       else
         TAG_MAP[tag]
       end
@@ -220,11 +222,12 @@ module GIRepository
         else
           "(__#{variable}_ary = #{variable}.map { |__item| #{param_type.convert_from_crystal("__item")} }.to_a).to_unsafe"
         end
+      when .boolean?
+        "LibC::Int.new(#{variable} ? 1 : 0)"
       when .glist?,
            .gslist?,
            .ghash?,
            .error?,
-           .boolean?,
            .void?
         variable
       when .utf8?, .filename?

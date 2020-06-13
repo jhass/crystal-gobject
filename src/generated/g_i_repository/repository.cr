@@ -29,7 +29,7 @@ module GIRepository
       __var0 = Pointer(LibGLib::Error).null
       __var1 = LibGIRepository.repository_dump(arg.to_unsafe, pointerof(__var0))
       GLib::Error.assert(__var0)
-      __var1
+      (__var1 == 1)
     end
 
     def self.error_quark
@@ -155,7 +155,7 @@ module GIRepository
 
     def registered?(namespace_ : ::String, version : ::String?)
       __var0 = LibGIRepository.repository_is_registered(@pointer.as(LibGIRepository::Repository*), namespace_.to_unsafe, version ? version.to_unsafe : nil)
-      __var0
+      (__var0 == 1)
     end
 
     def load_typelib(typelib : GIRepository::Typelib, flags : GIRepository::RepositoryLoadFlags)

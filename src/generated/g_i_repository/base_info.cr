@@ -22,7 +22,7 @@ module GIRepository
 
     def equal(info2 : GIRepository::BaseInfo)
       __var0 = LibGIRepository.base_info_equal(@pointer.as(LibGIRepository::BaseInfo*), info2.to_unsafe.as(LibGIRepository::BaseInfo*))
-      __var0
+      (__var0 == 1)
     end
 
     def attribute(name : ::String)
@@ -62,12 +62,12 @@ module GIRepository
 
     def deprecated?
       __var0 = LibGIRepository.base_info_is_deprecated(@pointer.as(LibGIRepository::BaseInfo*))
-      __var0
+      (__var0 == 1)
     end
 
     def iterate_attributes(iterator : GIRepository::AttributeIter)
       __var0 = LibGIRepository.base_info_iterate_attributes(@pointer.as(LibGIRepository::BaseInfo*), iterator, out name, out value)
-      {__var0, ::String.new(name), ::String.new(value)}
+      {(__var0 == 1), ::String.new(name), ::String.new(value)}
     end
 
     def dummy1

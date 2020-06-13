@@ -29,7 +29,7 @@ module GIRepository
 
     def symbol(symbol_name : ::String, symbol : Void*?)
       __var0 = LibGIRepository.typelib_symbol(@pointer.as(LibGIRepository::Typelib*), symbol_name.to_unsafe, symbol ? symbol : nil)
-      __var0
+      (__var0 == 1)
     end
   end
 end
