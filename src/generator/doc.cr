@@ -17,8 +17,11 @@ end
 struct Crystal::CrystalPath
   def self.default_path
     default = previous_def
-    gobject = File.expand_path(File.join(__DIR__, "..", "..", "samples", "lib")) # darn hack, is there a better way?
-    "#{default}#{Process::PATH_DELIMITER}#{gobject}"
+    "#{default}#{Process::PATH_DELIMITER}#{gobject_path}"
+  end
+
+  def self.gobject_path
+    File.expand_path(File.join(__DIR__, "..", "..", "samples", "lib")) # darn hack, is there a better way?
   end
 end
 
@@ -59,6 +62,12 @@ class Generator < Crystal::Doc::Generator
     could_load = !GIRepository::Repository.instance.require(name).nil? rescue false
     @gir_namespace_cache[name] = could_load
     could_load
+  end
+
+  def must_include?(location : Crystal::Location)
+    return true if is_gir_namespace?(location.filename.to_s)
+
+    super
   end
 
   def gir(namespace : String)
@@ -214,7 +223,8 @@ sources = [Crystal::Compiler::Source.new("require", %(require "gobject"))]
 sources.concat namespaces.map { |namespace|
   Crystal::Compiler::Source.new(namespace.name, %(require_gobject "#{namespace.name}"))
 }
-included_dirs = namespaces.map {|namespace| File.dirname(namespace.typelib_path) }
+included_dirs = namespaces.map { |namespace| File.dirname(namespace.typelib_path) }
+included_dirs << Crystal::CrystalPath.gobject_path
 compiler.flags << "docs"
 compiler.wants_doc = true
 result = compiler.top_level_semantic sources
