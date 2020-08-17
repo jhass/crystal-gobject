@@ -3,7 +3,8 @@ require "./closure_data_manager"
 require "./wrapped_type"
 
 module GObject
-  VERSION           = "0.8.0"
+  VERSION = "0.8.0"
+  # :nodoc:
   LOADED_NAMESPACES = [] of String
 
   # :nodoc:

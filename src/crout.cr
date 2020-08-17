@@ -202,11 +202,12 @@ class Crout
     end
   end
 
-  def write_annotation(name, *args)
+  def write_annotation(name, *args, **kwargs)
     self.annotation(name, *args)
   end
 
-  def annotation(name, *args)
+  def annotation(name, *args, **kwargs)
+    args = args.to_a + kwargs.map { |k, v| "#{k}: #{v}" }
     attach_to_next_section do
       line do
         write "@[", name, '('

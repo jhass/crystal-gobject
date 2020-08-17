@@ -1,6 +1,6 @@
 require "./lib_g_lib"
 
-@[Link("gobject-2.0")]
+@[Link("gobject-2.0", pkg_config: "gobject-2.0")]
 lib LibGObject
   ###########################################
   ##    Objects

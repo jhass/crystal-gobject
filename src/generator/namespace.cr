@@ -1,4 +1,6 @@
 class Namespace
+  WELL_KNOWN_PKGCONFIGS = {"girepository-1.0" => "gobject-introspection-1.0"}
+
   def initialize(@namespace : String, @version : String? = nil)
     self.require
   end
@@ -88,7 +90,8 @@ class Namespace
     libraries.map! { |library| library[/lib([^\/]+)\.(?:so|.+?\.dylib).*/, 1] }
 
     libraries.each do |library|
-      builder.annotation "Link", builder.literal(library)
+      builder.annotation "Link", builder.literal(library),
+        pkg_config: builder.literal(WELL_KNOWN_PKGCONFIGS.fetch(library, library))
     end
 
     builder.def_lib libname do

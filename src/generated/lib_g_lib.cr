@@ -1,6 +1,6 @@
 
-@[Link("gobject-2.0")]
-@[Link("glib-2.0")]
+@[Link("gobject-2.0", pkg_config: "gobject-2.0")]
+@[Link("glib-2.0", pkg_config: "glib-2.0")]
 lib LibGLib
   ###########################################
   ##    Constants

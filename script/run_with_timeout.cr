@@ -10,5 +10,5 @@ sleep 5
 success = proc.exists?
 puts success ? "ok." : "failed."
 exit 1 unless success
-proc.kill
+proc.signal :term
 proc.wait

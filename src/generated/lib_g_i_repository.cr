@@ -1,7 +1,7 @@
 require "./lib_g_object"
 require "./lib_g_lib"
 
-@[Link("girepository-1.0")]
+@[Link("girepository-1.0", pkg_config: "gobject-introspection-1.0")]
 lib LibGIRepository
   ###########################################
   ##    Unions

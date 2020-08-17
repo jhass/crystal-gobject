@@ -8,6 +8,10 @@ module Crystal::Config
   def self.path
     Crystal::PATH
   end
+
+  def self.library_path
+    {{env("CRYSTAL_CONFIG_LIBRARY_PATH") || env("CRYSTAL_LIBRARY_PATH") || `crystal env CRYSTAL_LIBRARY_PATH`}}
+  end
 end
 
 struct Crystal::CrystalPath
@@ -60,7 +64,7 @@ class Generator < Crystal::Doc::Generator
   def gir(namespace : String)
     @girs[namespace] ||= begin
       file = Namespace.new(namespace).girname
-      path = @gir_search_paths.map {|path| File.join(path, file) }.find {|path| File.exists?(path) }
+      path = @gir_search_paths.map { |path| File.join(path, file) }.find { |path| File.exists?(path) }
       if path
         File.open(path, &->XML.parse(IO)).first_element_child
       else
@@ -118,7 +122,7 @@ class Generator < Crystal::Doc::Generator
     super
   end
 
-  def set_doc(item, gir_kinds, prefixes=Tuple.new, item_namespace=nil, item_gir_kinds={"*"}, *, item_case = :given)
+  def set_doc(item, gir_kinds, prefixes = Tuple.new, item_namespace = nil, item_gir_kinds = {"*"}, *, item_case = :given)
     if item.doc.nil?
       gir = gir(item)
       if gir
@@ -127,12 +131,12 @@ class Generator < Crystal::Doc::Generator
         prefixes = Tuple.new("", *prefixes)
         name = item.name.rchop('?')
         name = name.downcase if item_case == :lower
-        kinds = gir_kinds.map {|kind| "self::gir:#{kind}" }.join(" or ")
-        names = prefixes.map {|prefix| "@name='#{prefix}#{name}'" }.join(" or ")
+        kinds = gir_kinds.map { |kind| "self::gir:#{kind}" }.join(" or ")
+        names = prefixes.map { |prefix| "@name='#{prefix}#{name}'" }.join(" or ")
         xpath = "//gir:*[#{kinds}][#{names}]/gir:doc/text()"
 
         if item_namespace
-          kinds = item_gir_kinds.map {|kind| "self::gir:#{kind}" }.join(" or ")
+          kinds = item_gir_kinds.map { |kind| "self::gir:#{kind}" }.join(" or ")
           xpath = "//gir:*[#{kinds}][@name='#{item_namespace.name}']#{xpath}"
         end
 
@@ -162,7 +166,7 @@ class Generator < Crystal::Doc::Generator
   def relative_locations(type)
     # Keep them absolute
 
-    locations = [] of Crystal::Doc::Generator::RelativeLocation
+    locations = [] of Crystal::Doc::RelativeLocation
     type.locations.try &.each do |location|
       location = relative_location location
       next unless location
@@ -170,7 +174,7 @@ class Generator < Crystal::Doc::Generator
       filename = relative_filename location
       next unless filename
 
-      locations << Crystal::Doc::Generator::RelativeLocation.new(filename, location.line_number, nil, false)
+      locations << Crystal::Doc::RelativeLocation.new(filename, location.line_number)
     end
 
     locations
@@ -183,7 +187,7 @@ gir_search_paths = nil
 
 OptionParser.parse do |p|
   p.banner = "Usage: gi-doc [opts] NAMESPACE ..."
-  p.on("-o DIR", "--output=DIR", "Output directory (defaults to docs/gobject") {|dir| output_directory = dir }
+  p.on("-o DIR", "--output=DIR", "Output directory (defaults to docs/gobject") { |dir| output_directory = dir }
   p.on("-g DIR:DIR:...", "--girs=DIR:DIR:...", "Colon separated list of directories to search .gir files in (defaults to /usr/share/gir-1.0/)") do |paths|
     gir_search_paths = paths.split(":")
   end
@@ -204,10 +208,10 @@ unless namespaces
   exit 1
 end
 
-namespaces = namespaces.map {|namespace| Namespace.new(namespace) }
+namespaces = namespaces.map { |namespace| Namespace.new(namespace) }
 compiler = Crystal::Compiler.new
 sources = [Crystal::Compiler::Source.new("require", %(require "gobject"))]
-sources.concat namespaces.map {|namespace|
+sources.concat namespaces.map { |namespace|
   Crystal::Compiler::Source.new(namespace.name, %(require_gobject "#{namespace.name}"))
 }
 included_dirs = namespaces.map {|namespace| File.dirname(namespace.typelib_path) }
@@ -215,7 +219,8 @@ compiler.flags << "docs"
 compiler.wants_doc = true
 result = compiler.top_level_semantic sources
 
-generator = Generator.new(result.program, included_dirs, output_directory, "html", nil, "", "")
+generator = Generator.new(result.program, included_dirs, output_directory, "html", nil, "", "",
+  Crystal::Doc::ProjectInfo.new(namespaces.map(&.name).join(", "), namespaces.map(&.girname).join("/")))
 generator.gir_namespaces = namespaces.map(&.name)
 if paths = gir_search_paths
   generator.gir_search_paths = paths
