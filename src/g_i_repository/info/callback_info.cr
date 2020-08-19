@@ -5,7 +5,8 @@ module GIRepository
     include CallableInfo
 
     def name
-      super.not_nil!
+      name = super.not_nil!
+      'A' <= name[0] <= 'Z' ? name : "#{name[0].upcase}#{name[1..]}"
     end
 
     def signature(builder)

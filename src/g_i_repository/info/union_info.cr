@@ -12,6 +12,7 @@ module GIRepository
     def name
       name = super
       name = 'A' <= name[0] <= 'Z' ? name : "#{c_prefix}#{name}" if name
+      name = 'A' <= name[0] <= 'Z' ? name : "#{name[0].upcase}#{name[1..]}"  if name
       name.not_nil!
     end
 
