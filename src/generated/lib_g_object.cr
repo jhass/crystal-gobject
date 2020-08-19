@@ -321,7 +321,7 @@ lib LibGObject
     derivative_flag : UInt32
     in_marshal : UInt32
     is_invalid : UInt32
-    marshal : -> Void
+    marshal : LibGObject::Closure*, LibGObject::Value*, UInt32, LibGObject::Value*, Void*, Void* -> Void
     data : Void*
     notifiers : LibGObject::ClosureNotifyData*
   end
@@ -370,13 +370,13 @@ lib LibGObject
     g_type_class : LibGObject::TypeClass
     construct_properties : Void**
     constructor : Void*
-    set_property : -> Void
-    get_property : -> Void
-    dispose : -> Void
-    finalize : -> Void
-    dispatch_properties_changed : -> Void
-    notify : -> Void
-    constructed : -> Void
+    set_property : LibGObject::Object*, UInt32, LibGObject::Value*, LibGObject::ParamSpec* -> Void
+    get_property : LibGObject::Object*, UInt32, LibGObject::Value*, LibGObject::ParamSpec* -> Void
+    dispose : LibGObject::Object* -> Void
+    finalize : LibGObject::Object* -> Void
+    dispatch_properties_changed : LibGObject::Object*, UInt32, LibGObject::ParamSpec* -> Void
+    notify : LibGObject::Object*, LibGObject::ParamSpec* -> Void
+    constructed : LibGObject::Object* -> Void
     flags : UInt64
     pdummy : Void*[6]
   end
@@ -391,13 +391,13 @@ lib LibGObject
     g_type_class : LibGObject::TypeClass
     construct_properties : Void**
     constructor : Void*
-    set_property : -> Void
-    get_property : -> Void
-    dispose : -> Void
-    finalize : -> Void
-    dispatch_properties_changed : -> Void
-    notify : -> Void
-    constructed : -> Void
+    set_property : LibGObject::Object*, UInt32, LibGObject::Value*, LibGObject::ParamSpec* -> Void
+    get_property : LibGObject::Object*, UInt32, LibGObject::Value*, LibGObject::ParamSpec* -> Void
+    dispose : LibGObject::Object* -> Void
+    finalize : LibGObject::Object* -> Void
+    dispatch_properties_changed : LibGObject::Object*, UInt32, LibGObject::ParamSpec* -> Void
+    notify : LibGObject::Object*, LibGObject::ParamSpec* -> Void
+    constructed : LibGObject::Object* -> Void
     flags : UInt64
     pdummy : Void*[6]
   end
@@ -415,10 +415,10 @@ lib LibGObject
   struct ParamSpecClass # struct
     g_type_class : LibGObject::TypeClass
     value_type : UInt64
-    finalize : -> Void
-    value_set_default : -> Void
-    value_validate : -> Void
-    values_cmp : -> Void
+    finalize : LibGObject::ParamSpec* -> Void
+    value_set_default : LibGObject::ParamSpec*, LibGObject::Value* -> Void
+    value_validate : LibGObject::ParamSpec*, LibGObject::Value* -> LibC::Int
+    values_cmp : LibGObject::ParamSpec*, LibGObject::Value*, LibGObject::Value* -> Int32
     dummy : Void*[4]
   end
 
@@ -435,12 +435,12 @@ lib LibGObject
   struct ParamSpecTypeInfo # struct
     instance_size : UInt16
     n_preallocs : UInt16
-    instance_init : -> Void
+    instance_init : LibGObject::ParamSpec* -> Void
     value_type : UInt64
-    finalize : -> Void
-    value_set_default : -> Void
-    value_validate : -> Void
-    values_cmp : -> Void
+    finalize : LibGObject::ParamSpec* -> Void
+    value_set_default : LibGObject::ParamSpec*, LibGObject::Value* -> Void
+    value_validate : LibGObject::ParamSpec*, LibGObject::Value* -> LibC::Int
+    values_cmp : LibGObject::ParamSpec*, LibGObject::Value*, LibGObject::Value* -> Int32
   end
 
   struct Parameter # struct
@@ -510,8 +510,8 @@ lib LibGObject
 
   struct TypeModuleClass # struct
     parent_class : LibGObject::ObjectClass
-    load : -> Void
-    unload : -> Void
+    load : LibGObject::TypeModule* -> LibC::Int
+    unload : LibGObject::TypeModule* -> Void
     reserved1 : -> Void
     reserved2 : -> Void
     reserved3 : -> Void
@@ -534,14 +534,14 @@ lib LibGObject
   end
 
   struct TypeValueTable # struct
-    value_init : -> Void
-    value_free : -> Void
-    value_copy : -> Void
-    value_peek_pointer : -> Void
+    value_init : LibGObject::Value* -> Void
+    value_free : LibGObject::Value* -> Void
+    value_copy : LibGObject::Value*, LibGObject::Value* -> Void
+    value_peek_pointer : LibGObject::Value* -> Void*
     collect_format : UInt8*
-    collect_value : -> Void
+    collect_value : LibGObject::Value*, UInt32, LibGObject::TypeCValue*, UInt32 -> UInt8*
     lcopy_format : UInt8*
-    lcopy_value : -> Void
+    lcopy_value : LibGObject::Value*, UInt32, LibGObject::TypeCValue*, UInt32 -> UInt8*
   end
 
   struct Value # struct

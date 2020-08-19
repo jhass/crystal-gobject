@@ -209,8 +209,8 @@ module GIRepository
 
     def each_return_attribute
       iter = AttributeIter.new
-      while LibGIRepository.callable_info_iterate_return_attributes(self, iter, out name, out value)
-        yield name, value
+      while LibGIRepository.callable_info_iterate_return_attributes(self, iter, out name, out value) == 1
+        yield String.new(name), String.new(value)
       end
     end
 

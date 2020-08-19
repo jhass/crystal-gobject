@@ -7,7 +7,7 @@ module GIRepository
       end
     end
 
-    macro dump_childs(kind, plural=nil)
+    macro dump_childs(kind, plural = nil)
       {% plural = plural ? plural : "#{kind}s".id %}
       if {{plural}}_size > 0
         dumper.puts "* {{plural}}"
@@ -44,7 +44,7 @@ module GIRepository
       @io.puts str
     end
 
-    def nest(inc=1)
+    def nest(inc = 1)
       @indent += inc
       yield
       @indent -= inc

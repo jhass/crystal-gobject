@@ -31,7 +31,7 @@ module GIRepository
 
     def ==(other)
       return false unless other.is_a?(BaseInfo)
-      equal(other)
+      self.class == other.class && equal(other)
     end
 
     def info_type
@@ -94,7 +94,7 @@ module GIRepository
       attributes = Hash(String, String).new
       return attributes if info_type.unresolved?
       iter = GIRepository::AttributeIter.new
-      while LibGIRepository.base_info_iterate_attributes(self, iter, out name, out value)
+      while LibGIRepository.base_info_iterate_attributes(self, iter, out name, out value) == 1
         attributes[String.new(name)] = String.new(value)
       end
 

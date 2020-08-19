@@ -92,6 +92,8 @@ module GIRepository
                  return "Void*"
                elsif name.nil? || BLACKLIST.includes?(name) || (name && 'a' <= name[0] <= 'z') # More weird stuff, also compiler could be smarter here
                  interface.is_a?(CallbackInfo) ? "-> Void" : "Void*"
+               elsif interface.is_a?(CallbackInfo) && inline_type?
+                 return Crout.build { |b| write interface.as(CallbackInfo).signature(b) }
                else
                  namespace = "Lib#{interface.namespace}::"
                  namespace = nil if namespace == self.namespace
@@ -278,9 +280,14 @@ module GIRepository
       end
     end
 
+    def inline_type?
+      tag.interface? && equal(interface)
+    end
+
     Dumper.def do
       dumper.puts "* tag = #{tag}"
       dumper.puts "* pointer = #{pointer?}"
+      dumper.puts "* is_inline_type = #{inline_type?}"
       dumper.puts "* array_type = #{array_type}" if tag.array?
       dumper.puts "* array_length_param = #{array_length_param}" if tag.array?
       dumper.puts "* array_fixed_size = #{array_fixed_size}" if tag.array?

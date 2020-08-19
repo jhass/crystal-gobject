@@ -539,14 +539,14 @@ lib LibGLib
   fun i_o_channel_error_quark = g_io_channel_error_quark : UInt32
 
   struct IOFuncs # struct
-    io_read : -> Void
-    io_write : -> Void
-    io_seek : -> Void
-    io_close : -> Void
-    io_create_watch : -> Void
-    io_free : -> Void
-    io_set_flags : -> Void
-    io_get_flags : -> Void
+    io_read : LibGLib::IOChannel*, UInt8*, UInt64, UInt64*, LibGLib::Error* -> LibGLib::IOStatus
+    io_write : LibGLib::IOChannel*, UInt8*, UInt64, UInt64*, LibGLib::Error* -> LibGLib::IOStatus
+    io_seek : LibGLib::IOChannel*, Int64, LibGLib::SeekType, LibGLib::Error* -> LibGLib::IOStatus
+    io_close : LibGLib::IOChannel*, LibGLib::Error* -> LibGLib::IOStatus
+    io_create_watch : LibGLib::IOChannel*, LibGLib::IOCondition -> LibGLib::Source*
+    io_free : LibGLib::IOChannel* -> Void
+    io_set_flags : LibGLib::IOChannel*, LibGLib::IOFlags, LibGLib::Error* -> LibGLib::IOStatus
+    io_get_flags : LibGLib::IOChannel* -> LibGLib::IOFlags
   end
 
   struct KeyFile # struct
@@ -685,11 +685,11 @@ lib LibGLib
   fun markup_parse_context_unref = g_markup_parse_context_unref(this : MarkupParseContext*) : Void
 
   struct MarkupParser # struct
-    start_element : -> Void
-    end_element : -> Void
-    text : -> Void
-    passthrough : -> Void
-    error : -> Void
+    start_element : LibGLib::MarkupParseContext*, UInt8*, UInt8*, UInt8*, Void*, LibGLib::Error* -> Void
+    end_element : LibGLib::MarkupParseContext*, UInt8*, Void*, LibGLib::Error* -> Void
+    text : LibGLib::MarkupParseContext*, UInt8*, UInt64, Void*, LibGLib::Error* -> Void
+    passthrough : LibGLib::MarkupParseContext*, UInt8*, UInt64, Void*, LibGLib::Error* -> Void
+    error : LibGLib::MarkupParseContext*, LibGLib::Error**, Void* -> Void
   end
 
   struct MatchInfo # struct
@@ -713,12 +713,12 @@ lib LibGLib
   fun match_info_unref = g_match_info_unref(this : MatchInfo*) : Void
 
   struct MemVTable # struct
-    malloc : -> Void
-    realloc : -> Void
-    free : -> Void
-    calloc : -> Void
-    try_malloc : -> Void
-    try_realloc : -> Void
+    malloc : UInt64 -> Void*
+    realloc : Void*, UInt64 -> Void*
+    free : Void* -> Void
+    calloc : UInt64, UInt64 -> Void*
+    try_malloc : UInt64 -> Void*
+    try_realloc : Void*, UInt64 -> Void*
   end
 
   struct Node # struct
@@ -1069,16 +1069,16 @@ lib LibGLib
   fun source_set_name_by_id = g_source_set_name_by_id(tag : UInt32, name : UInt8*) : Void
 
   struct SourceCallbackFuncs # struct
-    ref : -> Void
-    unref : -> Void
+    ref : Void* -> Void
+    unref : Void* -> Void
     get : Void*
   end
 
   struct SourceFuncs # struct
-    prepare : -> Void
-    check : -> Void
+    prepare : LibGLib::Source*, Int32* -> LibC::Int
+    check : LibGLib::Source* -> LibC::Int
     dispatch : Void*
-    finalize : -> Void
+    finalize : LibGLib::Source* -> Void
     closure_callback : LibGLib::SourceFunc
     closure_marshal : LibGLib::SourceDummyMarshal
   end

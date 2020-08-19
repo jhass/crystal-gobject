@@ -8,8 +8,12 @@ module GIRepository
       super.not_nil!
     end
 
+    def signature(builder)
+      builder.proc_type(args.map(&.type.lib_definition(builder)), return_type: return_type.lib_definition(builder))
+    end
+
     def lib_definition(builder)
-      builder.def_alias name, builder.proc_type(args.map(&.type.lib_definition(builder)), return_type: return_type.lib_definition(builder))
+      builder.def_alias name, signature(builder)
     end
 
     def wrapper_definition(builder, libname)
