@@ -1,0 +1,8 @@
+#!/bin/sh
+
+cd ./spec/libsample && make
+cd ../../
+mkdir -p lib
+ln -s ../src lib/gobject
+GI_TYPELIB_PATH=./spec/build LD_LIBRARY_PATH=./spec/build crystal spec $@
+rm -rf lib

@@ -13,3 +13,5 @@ for sample in $(ls *.cr */*.cr | grep -v crout); do
   crystal ../script/run_with_timeout.cr "$sample"
 done
 
+cd ../
+./script/test
