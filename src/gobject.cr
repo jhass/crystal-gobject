@@ -1,3 +1,5 @@
+{% puts "crystal-gobject: WARNING: the master branch is deprecated, please switch to the main branch" %}
+ 
 require "./pointer_iterator"
 require "./closure_data_manager"
 require "./wrapped_type"
