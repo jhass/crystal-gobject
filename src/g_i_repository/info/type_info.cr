@@ -222,7 +222,7 @@ module GIRepository
         end
       when .array?
         if param_type.tag.uint8? # Assume UInt8* (gchar*) is a string for now
-          variable
+          "#{variable}.to_unsafe"
         else
           "(__#{variable}_ary = #{variable}.map { |__item| #{param_type.convert_from_crystal("__item")} }.to_a).to_unsafe"
         end

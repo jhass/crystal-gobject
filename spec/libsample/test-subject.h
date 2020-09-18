@@ -28,4 +28,12 @@ TestSubject *test_subject_new(void);
  */
 gchar *test_subject_receive_string_and_len(TestSubject *self, gchar* str, int len);
 
+/**
+ * test_subject_receive_optional_array_and_len:
+ * @buf: (array length=length) (element-type guint8) (allow-none): a buffer
+ * @length: buffer length
+ * Returns: "buffer length"
+ */
+int test_subject_receive_optional_array_and_len(TestSubject *self, const char* buf, int length);
+
 G_END_DECLS

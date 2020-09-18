@@ -90,3 +90,11 @@ gchar *test_subject_receive_string_and_len(TestSubject *self, gchar* str, int le
   return retval;
 }
 
+int test_subject_receive_optional_array_and_len(TestSubject *self, const char* buf, int len) {
+  if (len == 0 || buf == NULL) {
+    return 0;
+  }
+
+  return len;
+}
+
