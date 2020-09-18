@@ -2,7 +2,7 @@ C_SOURCE=$(wildcard *.c)
 H_SOURCE=$(wildcard *.h)
 OBJ=$(C_SOURCE:.c=.o)
 LIBRARY_NAME=test
-LIBRARY_BIN=../build/lib$(LIBRARY_NAME).so
+LIBRARY_BIN=$(shell crystal eval "puts File.expand_path %(../build/lib$(LIBRARY_NAME).so)")
 GIR=../build/Test-1.0.gir
 TYPELIB=../build/Test-1.0.typelib
 
