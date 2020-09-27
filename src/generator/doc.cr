@@ -10,7 +10,7 @@ module Crystal::Config
   end
 
   def self.library_path
-    {{env("CRYSTAL_CONFIG_LIBRARY_PATH") || env("CRYSTAL_LIBRARY_PATH") || `crystal env CRYSTAL_LIBRARY_PATH`}}
+    {{env("CRYSTAL_CONFIG_LIBRARY_PATH") || env("CRYSTAL_LIBRARY_PATH") || `crystal env CRYSTAL_LIBRARY_PATH`}} || previous_def
   end
 end
 
