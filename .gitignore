@@ -11,3 +11,4 @@ spec/build/
 !/samples/*/*.*
 *.dwarf
 *.o
+/.vscode/
