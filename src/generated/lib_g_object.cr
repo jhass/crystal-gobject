@@ -86,6 +86,7 @@ lib LibGObject
     # Virtual function value_validate
     # Virtual function values_cmp
   end
+  fun param_spec_is_valid_name = g_param_spec_is_valid_name(name : UInt8*) : LibC::Int
   fun param_spec_get_blurb = g_param_spec_get_blurb(this : ParamSpec*) : UInt8*
   fun param_spec_get_default_value = g_param_spec_get_default_value(this : ParamSpec*) : LibGObject::Value*
   fun param_spec_get_name = g_param_spec_get_name(this : ParamSpec*) : UInt8*
@@ -591,6 +592,7 @@ lib LibGObject
   fun value_set_instance = g_value_set_instance(this : Value*, instance : Void*) : Void
   fun value_set_int = g_value_set_int(this : Value*, v_int : Int32) : Void
   fun value_set_int64 = g_value_set_int64(this : Value*, v_int64 : Int64) : Void
+  fun value_set_interned_string = g_value_set_interned_string(this : Value*, v_string : UInt8*) : Void
   fun value_set_long = g_value_set_long(this : Value*, v_long : Int64) : Void
   fun value_set_object = g_value_set_object(this : Value*, v_object : LibGObject::Object*) : Void
   fun value_set_param = g_value_set_param(this : Value*, param : LibGObject::ParamSpec*) : Void
@@ -648,6 +650,7 @@ lib LibGObject
   TYPE_RESERVED_GLIB_FIRST = 22 # : Int32
   TYPE_RESERVED_GLIB_LAST = 31 # : Int32
   TYPE_RESERVED_USER_FIRST = 49 # : Int32
+  VALUE_INTERNED_STRING = 268435456 # : Int32
   VALUE_NOCOPY_CONTENTS = 134217728 # : Int32
 
   ###########################################
@@ -769,6 +772,7 @@ lib LibGObject
   fun signal_handlers_disconnect_matched = g_signal_handlers_disconnect_matched(instance : LibGObject::Object*, mask : LibGObject::SignalMatchType, signal_id : UInt32, detail : UInt32, closure : LibGObject::Closure*, func : Void*, data : Void*) : UInt32
   fun signal_handlers_unblock_matched = g_signal_handlers_unblock_matched(instance : LibGObject::Object*, mask : LibGObject::SignalMatchType, signal_id : UInt32, detail : UInt32, closure : LibGObject::Closure*, func : Void*, data : Void*) : UInt32
   fun signal_has_handler_pending = g_signal_has_handler_pending(instance : LibGObject::Object*, signal_id : UInt32, detail : UInt32, may_be_blocked : LibC::Int) : LibC::Int
+  fun signal_is_valid_name = g_signal_is_valid_name(name : UInt8*) : LibC::Int
   fun signal_list_ids = g_signal_list_ids(itype : UInt64, n_ids : UInt32*) : UInt32*
   fun signal_lookup = g_signal_lookup(name : UInt8*, itype : UInt64) : UInt32
   fun signal_name = g_signal_name(signal_id : UInt32) : UInt8*

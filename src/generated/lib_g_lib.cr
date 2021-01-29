@@ -22,8 +22,8 @@ lib LibGLib
   GINT16_MODIFIER = "h" # : UInt8*
   GINT32_FORMAT = "i" # : UInt8*
   GINT32_MODIFIER = "" # : UInt8*
-  GINT64_FORMAT = "lli" # : UInt8*
-  GINT64_MODIFIER = "ll" # : UInt8*
+  GINT64_FORMAT = "li" # : UInt8*
+  GINT64_MODIFIER = "l" # : UInt8*
   GINTPTR_FORMAT = "li" # : UInt8*
   GINTPTR_MODIFIER = "l" # : UInt8*
   GNUC_FUNCTION = "" # : UInt8*
@@ -34,7 +34,7 @@ lib LibGLib
   GSSIZE_MODIFIER = "l" # : UInt8*
   GUINT16_FORMAT = "hu" # : UInt8*
   GUINT32_FORMAT = "u" # : UInt8*
-  GUINT64_FORMAT = "llu" # : UInt8*
+  GUINT64_FORMAT = "lu" # : UInt8*
   GUINTPTR_FORMAT = "lu" # : UInt8*
   HAVE_GINT64 = 1 # : Int32
   HAVE_GNUC_VARARGS = 1 # : Int32
@@ -85,12 +85,12 @@ lib LibGLib
   MAXUINT32 = 4294967295 # : UInt32
   MAXUINT64 = 18446744073709551615u64 # : UInt64
   MAXUINT8 = 255u8 # : UInt8
-  MICRO_VERSION = 3 # : Int32
+  MICRO_VERSION = 2 # : Int32
   MININT16 = -32768i16 # : Int16
   MININT32 = -2147483648 # : Int32
   MININT64 = -9223372036854775808i64 # : Int64
   MININT8 = -128i8 # : Int8
-  MINOR_VERSION = 64 # : Int32
+  MINOR_VERSION = 66 # : Int32
   MODULE_SUFFIX = "so" # : UInt8*
   OPTION_REMAINING = "" # : UInt8*
   PDP_ENDIAN = 3412 # : Int32
@@ -115,7 +115,7 @@ lib LibGLib
   SQRT2 = 1.414214 # : Float64
   STR_DELIMITERS = "_-|> <." # : UInt8*
   SYSDEF_AF_INET = 2 # : Int32
-  SYSDEF_AF_INET6 = 30 # : Int32
+  SYSDEF_AF_INET6 = 10 # : Int32
   SYSDEF_AF_UNIX = 1 # : Int32
   SYSDEF_MSG_DONTROUTE = 4 # : Int32
   SYSDEF_MSG_OOB = 1 # : Int32
@@ -176,7 +176,9 @@ lib LibGLib
   fun bookmark_file_add_group = g_bookmark_file_add_group(this : BookmarkFile*, uri : UInt8*, group : UInt8*) : Void
   fun bookmark_file_free = g_bookmark_file_free(this : BookmarkFile*) : Void
   fun bookmark_file_get_added = g_bookmark_file_get_added(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : Int64
+  fun bookmark_file_get_added_date_time = g_bookmark_file_get_added_date_time(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : LibGLib::DateTime*
   fun bookmark_file_get_app_info = g_bookmark_file_get_app_info(this : BookmarkFile*, uri : UInt8*, name : UInt8*, exec : UInt8**, count : UInt32*, stamp : Int64*, error : LibGLib::Error**) : LibC::Int
+  fun bookmark_file_get_application_info = g_bookmark_file_get_application_info(this : BookmarkFile*, uri : UInt8*, name : UInt8*, exec : UInt8**, count : UInt32*, stamp : LibGLib::DateTime**, error : LibGLib::Error**) : LibC::Int
   fun bookmark_file_get_applications = g_bookmark_file_get_applications(this : BookmarkFile*, uri : UInt8*, length : UInt64*, error : LibGLib::Error**) : UInt8**
   fun bookmark_file_get_description = g_bookmark_file_get_description(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : UInt8*
   fun bookmark_file_get_groups = g_bookmark_file_get_groups(this : BookmarkFile*, uri : UInt8*, length : UInt64*, error : LibGLib::Error**) : UInt8**
@@ -184,10 +186,12 @@ lib LibGLib
   fun bookmark_file_get_is_private = g_bookmark_file_get_is_private(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : LibC::Int
   fun bookmark_file_get_mime_type = g_bookmark_file_get_mime_type(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : UInt8*
   fun bookmark_file_get_modified = g_bookmark_file_get_modified(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : Int64
+  fun bookmark_file_get_modified_date_time = g_bookmark_file_get_modified_date_time(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : LibGLib::DateTime*
   fun bookmark_file_get_size = g_bookmark_file_get_size(this : BookmarkFile*) : Int32
   fun bookmark_file_get_title = g_bookmark_file_get_title(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : UInt8*
   fun bookmark_file_get_uris = g_bookmark_file_get_uris(this : BookmarkFile*, length : UInt64*) : UInt8**
   fun bookmark_file_get_visited = g_bookmark_file_get_visited(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : Int64
+  fun bookmark_file_get_visited_date_time = g_bookmark_file_get_visited_date_time(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : LibGLib::DateTime*
   fun bookmark_file_has_application = g_bookmark_file_has_application(this : BookmarkFile*, uri : UInt8*, name : UInt8*, error : LibGLib::Error**) : LibC::Int
   fun bookmark_file_has_group = g_bookmark_file_has_group(this : BookmarkFile*, uri : UInt8*, group : UInt8*, error : LibGLib::Error**) : LibC::Int
   fun bookmark_file_has_item = g_bookmark_file_has_item(this : BookmarkFile*, uri : UInt8*) : LibC::Int
@@ -199,15 +203,19 @@ lib LibGLib
   fun bookmark_file_remove_group = g_bookmark_file_remove_group(this : BookmarkFile*, uri : UInt8*, group : UInt8*, error : LibGLib::Error**) : LibC::Int
   fun bookmark_file_remove_item = g_bookmark_file_remove_item(this : BookmarkFile*, uri : UInt8*, error : LibGLib::Error**) : LibC::Int
   fun bookmark_file_set_added = g_bookmark_file_set_added(this : BookmarkFile*, uri : UInt8*, added : Int64) : Void
+  fun bookmark_file_set_added_date_time = g_bookmark_file_set_added_date_time(this : BookmarkFile*, uri : UInt8*, added : LibGLib::DateTime*) : Void
   fun bookmark_file_set_app_info = g_bookmark_file_set_app_info(this : BookmarkFile*, uri : UInt8*, name : UInt8*, exec : UInt8*, count : Int32, stamp : Int64, error : LibGLib::Error**) : LibC::Int
+  fun bookmark_file_set_application_info = g_bookmark_file_set_application_info(this : BookmarkFile*, uri : UInt8*, name : UInt8*, exec : UInt8*, count : Int32, stamp : LibGLib::DateTime*, error : LibGLib::Error**) : LibC::Int
   fun bookmark_file_set_description = g_bookmark_file_set_description(this : BookmarkFile*, uri : UInt8*, description : UInt8*) : Void
   fun bookmark_file_set_groups = g_bookmark_file_set_groups(this : BookmarkFile*, uri : UInt8*, groups : UInt8**, length : UInt64) : Void
   fun bookmark_file_set_icon = g_bookmark_file_set_icon(this : BookmarkFile*, uri : UInt8*, href : UInt8*, mime_type : UInt8*) : Void
   fun bookmark_file_set_is_private = g_bookmark_file_set_is_private(this : BookmarkFile*, uri : UInt8*, is_private : LibC::Int) : Void
   fun bookmark_file_set_mime_type = g_bookmark_file_set_mime_type(this : BookmarkFile*, uri : UInt8*, mime_type : UInt8*) : Void
   fun bookmark_file_set_modified = g_bookmark_file_set_modified(this : BookmarkFile*, uri : UInt8*, modified : Int64) : Void
+  fun bookmark_file_set_modified_date_time = g_bookmark_file_set_modified_date_time(this : BookmarkFile*, uri : UInt8*, modified : LibGLib::DateTime*) : Void
   fun bookmark_file_set_title = g_bookmark_file_set_title(this : BookmarkFile*, uri : UInt8*, title : UInt8*) : Void
   fun bookmark_file_set_visited = g_bookmark_file_set_visited(this : BookmarkFile*, uri : UInt8*, visited : Int64) : Void
+  fun bookmark_file_set_visited_date_time = g_bookmark_file_set_visited_date_time(this : BookmarkFile*, uri : UInt8*, visited : LibGLib::DateTime*) : Void
   fun bookmark_file_to_data = g_bookmark_file_to_data(this : BookmarkFile*, length : UInt64*, error : LibGLib::Error**) : UInt8*
   fun bookmark_file_to_file = g_bookmark_file_to_file(this : BookmarkFile*, filename : UInt8*, error : LibGLib::Error**) : LibC::Int
   fun bookmark_file_error_quark = g_bookmark_file_error_quark : UInt32
@@ -1173,6 +1181,8 @@ lib LibGLib
     _data : UInt8[0]
   end
   fun _g_thread_get_type = g_thread_get_type : UInt64
+  fun thread_new = g_thread_new(name : UInt8*, func : LibGLib::ThreadFunc, data : Void*) : LibGLib::Thread*
+  fun thread_try_new = g_thread_try_new(name : UInt8*, func : LibGLib::ThreadFunc, data : Void*, error : LibGLib::Error**) : LibGLib::Thread*
   fun thread_join = g_thread_join(this : Thread*) : Void*
   fun thread_ref = g_thread_ref(this : Thread*) : LibGLib::Thread*
   fun thread_unref = g_thread_unref(this : Thread*) : Void
@@ -1257,6 +1267,54 @@ lib LibGLib
   fun tree_replace = g_tree_replace(this : Tree*, key : Void*, value : Void*) : Void
   fun tree_steal = g_tree_steal(this : Tree*, key : Void*) : LibC::Int
   fun tree_unref = g_tree_unref(this : Tree*) : Void
+
+  struct Uri # struct
+    _data : UInt8[0]
+  end
+  fun _g_uri_get_type = g_uri_get_type : UInt64
+  fun uri_get_auth_params = g_uri_get_auth_params(this : Uri*) : UInt8*
+  fun uri_get_flags = g_uri_get_flags(this : Uri*) : LibGLib::UriFlags
+  fun uri_get_fragment = g_uri_get_fragment(this : Uri*) : UInt8*
+  fun uri_get_host = g_uri_get_host(this : Uri*) : UInt8*
+  fun uri_get_password = g_uri_get_password(this : Uri*) : UInt8*
+  fun uri_get_path = g_uri_get_path(this : Uri*) : UInt8*
+  fun uri_get_port = g_uri_get_port(this : Uri*) : Int32
+  fun uri_get_query = g_uri_get_query(this : Uri*) : UInt8*
+  fun uri_get_scheme = g_uri_get_scheme(this : Uri*) : UInt8*
+  fun uri_get_user = g_uri_get_user(this : Uri*) : UInt8*
+  fun uri_get_userinfo = g_uri_get_userinfo(this : Uri*) : UInt8*
+  fun uri_parse_relative = g_uri_parse_relative(this : Uri*, uri_ref : UInt8*, flags : LibGLib::UriFlags, error : LibGLib::Error**) : LibGLib::Uri*
+  fun uri_to_string = g_uri_to_string(this : Uri*) : UInt8*
+  fun uri_to_string_partial = g_uri_to_string_partial(this : Uri*, flags : LibGLib::UriHideFlags) : UInt8*
+  fun uri_build = g_uri_build(flags : LibGLib::UriFlags, scheme : UInt8*, userinfo : UInt8*, host : UInt8*, port : Int32, path : UInt8*, query : UInt8*, fragment : UInt8*) : LibGLib::Uri*
+  fun uri_build_with_user = g_uri_build_with_user(flags : LibGLib::UriFlags, scheme : UInt8*, user : UInt8*, password : UInt8*, auth_params : UInt8*, host : UInt8*, port : Int32, path : UInt8*, query : UInt8*, fragment : UInt8*) : LibGLib::Uri*
+  fun uri_error_quark = g_uri_error_quark : UInt32
+  fun uri_escape_bytes = g_uri_escape_bytes(unescaped : UInt8*, length : UInt64, reserved_chars_allowed : UInt8*) : UInt8*
+  fun uri_escape_string = g_uri_escape_string(unescaped : UInt8*, reserved_chars_allowed : UInt8*, allow_utf8 : LibC::Int) : UInt8*
+  fun uri_is_valid = g_uri_is_valid(uri_string : UInt8*, flags : LibGLib::UriFlags, error : LibGLib::Error**) : LibC::Int
+  fun uri_join = g_uri_join(flags : LibGLib::UriFlags, scheme : UInt8*, userinfo : UInt8*, host : UInt8*, port : Int32, path : UInt8*, query : UInt8*, fragment : UInt8*) : UInt8*
+  fun uri_join_with_user = g_uri_join_with_user(flags : LibGLib::UriFlags, scheme : UInt8*, user : UInt8*, password : UInt8*, auth_params : UInt8*, host : UInt8*, port : Int32, path : UInt8*, query : UInt8*, fragment : UInt8*) : UInt8*
+  fun uri_list_extract_uris = g_uri_list_extract_uris(uri_list : UInt8*) : UInt8**
+  fun uri_parse = g_uri_parse(uri_string : UInt8*, flags : LibGLib::UriFlags, error : LibGLib::Error**) : LibGLib::Uri*
+  fun uri_parse_params = g_uri_parse_params(params : UInt8*, length : Int64, separators : UInt8*, flags : LibGLib::UriParamsFlags, error : LibGLib::Error**) : Void**
+  fun uri_parse_scheme = g_uri_parse_scheme(uri : UInt8*) : UInt8*
+  fun uri_peek_scheme = g_uri_peek_scheme(uri : UInt8*) : UInt8*
+  fun uri_resolve_relative = g_uri_resolve_relative(base_uri_string : UInt8*, uri_ref : UInt8*, flags : LibGLib::UriFlags, error : LibGLib::Error**) : UInt8*
+  fun uri_split = g_uri_split(uri_ref : UInt8*, flags : LibGLib::UriFlags, scheme : UInt8**, userinfo : UInt8**, host : UInt8**, port : Int32*, path : UInt8**, query : UInt8**, fragment : UInt8**, error : LibGLib::Error**) : LibC::Int
+  fun uri_split_network = g_uri_split_network(uri_string : UInt8*, flags : LibGLib::UriFlags, scheme : UInt8**, host : UInt8**, port : Int32*, error : LibGLib::Error**) : LibC::Int
+  fun uri_split_with_user = g_uri_split_with_user(uri_ref : UInt8*, flags : LibGLib::UriFlags, scheme : UInt8**, user : UInt8**, password : UInt8**, auth_params : UInt8**, host : UInt8**, port : Int32*, path : UInt8**, query : UInt8**, fragment : UInt8**, error : LibGLib::Error**) : LibC::Int
+  fun uri_unescape_bytes = g_uri_unescape_bytes(escaped_string : UInt8*, length : Int64, illegal_characters : UInt8*, error : LibGLib::Error**) : LibGLib::Bytes*
+  fun uri_unescape_segment = g_uri_unescape_segment(escaped_string : UInt8*, escaped_string_end : UInt8*, illegal_characters : UInt8*) : UInt8*
+  fun uri_unescape_string = g_uri_unescape_string(escaped_string : UInt8*, illegal_characters : UInt8*) : UInt8*
+
+  struct UriParamsIter # struct
+    dummy0 : Int32
+    dummy1 : Void*
+    dummy2 : Void*
+    dummy3 : UInt8[256]
+  end
+  fun uri_params_iter_init = g_uri_params_iter_init(this : UriParamsIter*, params : UInt8*, length : Int64, separators : UInt8*, flags : LibGLib::UriParamsFlags) : Void
+  fun uri_params_iter_next = g_uri_params_iter_next(this : UriParamsIter*, attribute : UInt8**, value : UInt8**, error : LibGLib::Error**) : LibC::Int
 
   struct Variant # struct
     _data : UInt8[0]
@@ -1407,6 +1465,8 @@ lib LibGLib
 
   alias AsciiType = UInt32
 
+  alias FileSetContentsFlags = UInt32
+
   alias FileTest = UInt32
 
   alias FormatSizeFlags = UInt32
@@ -1438,6 +1498,12 @@ lib LibGLib
   alias TestTrapFlags = UInt32
 
   alias TraverseFlags = UInt32
+
+  alias UriFlags = UInt32
+
+  alias UriHideFlags = UInt32
+
+  alias UriParamsFlags = UInt32
 
   ###########################################
   ##    Enums
@@ -1510,6 +1576,8 @@ lib LibGLib
   alias UnicodeScript = Int32
 
   alias UnicodeType = UInt32
+
+  alias UriError = UInt32
 
   alias UserDirectory = UInt32
 
@@ -1686,6 +1754,7 @@ lib LibGLib
   fun file_open_tmp = g_file_open_tmp(tmpl : UInt8*, name_used : UInt8**, error : LibGLib::Error**) : Int32
   fun file_read_link = g_file_read_link(filename : UInt8*, error : LibGLib::Error**) : UInt8*
   fun file_set_contents = g_file_set_contents(filename : UInt8*, contents : UInt8*, length : Int64, error : LibGLib::Error**) : LibC::Int
+  fun file_set_contents_full = g_file_set_contents_full(filename : UInt8*, contents : UInt8*, length : Int64, flags : LibGLib::FileSetContentsFlags, mode : Int32, error : LibGLib::Error**) : LibC::Int
   fun file_test = g_file_test(filename : UInt8*, test : LibGLib::FileTest) : LibC::Int
   fun filename_display_basename = g_filename_display_basename(filename : UInt8*) : UInt8*
   fun filename_display_name = g_filename_display_name(filename : UInt8*) : UInt8*
@@ -2042,9 +2111,24 @@ lib LibGLib
   fun unix_signal_source_new = g_unix_signal_source_new(signum : Int32) : LibGLib::Source*
   fun unlink = g_unlink(filename : UInt8*) : Int32
   fun unsetenv = g_unsetenv(variable : UInt8*) : Void
+  fun uri_build = g_uri_build(flags : LibGLib::UriFlags, scheme : UInt8*, userinfo : UInt8*, host : UInt8*, port : Int32, path : UInt8*, query : UInt8*, fragment : UInt8*) : LibGLib::Uri*
+  fun uri_build_with_user = g_uri_build_with_user(flags : LibGLib::UriFlags, scheme : UInt8*, user : UInt8*, password : UInt8*, auth_params : UInt8*, host : UInt8*, port : Int32, path : UInt8*, query : UInt8*, fragment : UInt8*) : LibGLib::Uri*
+  fun uri_error_quark = g_uri_error_quark : UInt32
+  fun uri_escape_bytes = g_uri_escape_bytes(unescaped : UInt8*, length : UInt64, reserved_chars_allowed : UInt8*) : UInt8*
   fun uri_escape_string = g_uri_escape_string(unescaped : UInt8*, reserved_chars_allowed : UInt8*, allow_utf8 : LibC::Int) : UInt8*
+  fun uri_is_valid = g_uri_is_valid(uri_string : UInt8*, flags : LibGLib::UriFlags, error : LibGLib::Error**) : LibC::Int
+  fun uri_join = g_uri_join(flags : LibGLib::UriFlags, scheme : UInt8*, userinfo : UInt8*, host : UInt8*, port : Int32, path : UInt8*, query : UInt8*, fragment : UInt8*) : UInt8*
+  fun uri_join_with_user = g_uri_join_with_user(flags : LibGLib::UriFlags, scheme : UInt8*, user : UInt8*, password : UInt8*, auth_params : UInt8*, host : UInt8*, port : Int32, path : UInt8*, query : UInt8*, fragment : UInt8*) : UInt8*
   fun uri_list_extract_uris = g_uri_list_extract_uris(uri_list : UInt8*) : UInt8**
+  fun uri_parse = g_uri_parse(uri_string : UInt8*, flags : LibGLib::UriFlags, error : LibGLib::Error**) : LibGLib::Uri*
+  fun uri_parse_params = g_uri_parse_params(params : UInt8*, length : Int64, separators : UInt8*, flags : LibGLib::UriParamsFlags, error : LibGLib::Error**) : Void**
   fun uri_parse_scheme = g_uri_parse_scheme(uri : UInt8*) : UInt8*
+  fun uri_peek_scheme = g_uri_peek_scheme(uri : UInt8*) : UInt8*
+  fun uri_resolve_relative = g_uri_resolve_relative(base_uri_string : UInt8*, uri_ref : UInt8*, flags : LibGLib::UriFlags, error : LibGLib::Error**) : UInt8*
+  fun uri_split = g_uri_split(uri_ref : UInt8*, flags : LibGLib::UriFlags, scheme : UInt8**, userinfo : UInt8**, host : UInt8**, port : Int32*, path : UInt8**, query : UInt8**, fragment : UInt8**, error : LibGLib::Error**) : LibC::Int
+  fun uri_split_network = g_uri_split_network(uri_string : UInt8*, flags : LibGLib::UriFlags, scheme : UInt8**, host : UInt8**, port : Int32*, error : LibGLib::Error**) : LibC::Int
+  fun uri_split_with_user = g_uri_split_with_user(uri_ref : UInt8*, flags : LibGLib::UriFlags, scheme : UInt8**, user : UInt8**, password : UInt8**, auth_params : UInt8**, host : UInt8**, port : Int32*, path : UInt8**, query : UInt8**, fragment : UInt8**, error : LibGLib::Error**) : LibC::Int
+  fun uri_unescape_bytes = g_uri_unescape_bytes(escaped_string : UInt8*, length : Int64, illegal_characters : UInt8*, error : LibGLib::Error**) : LibGLib::Bytes*
   fun uri_unescape_segment = g_uri_unescape_segment(escaped_string : UInt8*, escaped_string_end : UInt8*, illegal_characters : UInt8*) : UInt8*
   fun uri_unescape_string = g_uri_unescape_string(escaped_string : UInt8*, illegal_characters : UInt8*) : UInt8*
   fun usleep = g_usleep(microseconds : UInt64) : Void

@@ -117,7 +117,7 @@ lib LibGIRepository
   ###########################################
   MAJOR_VERSION = 1 # : Int32
   MICRO_VERSION = 1 # : Int32
-  MINOR_VERSION = 64 # : Int32
+  MINOR_VERSION = 66 # : Int32
   TYPE_TAG_N_TYPES = 22 # : Int32
 
   ###########################################
@@ -270,12 +270,15 @@ lib LibGIRepository
   fun struct_info_get_size = g_struct_info_get_size(info : LibGIRepository::BaseInfo*) : UInt64
   fun struct_info_is_foreign = g_struct_info_is_foreign(info : LibGIRepository::BaseInfo*) : LibC::Int
   fun struct_info_is_gtype_struct = g_struct_info_is_gtype_struct(info : LibGIRepository::BaseInfo*) : LibC::Int
+  fun type_info_argument_from_hash_pointer = g_type_info_argument_from_hash_pointer(info : LibGIRepository::BaseInfo*, hash_pointer : Void*, arg : LibGIRepository::Argument*) : Void
   fun type_info_get_array_fixed_size = g_type_info_get_array_fixed_size(info : LibGIRepository::BaseInfo*) : Int32
   fun type_info_get_array_length = g_type_info_get_array_length(info : LibGIRepository::BaseInfo*) : Int32
   fun type_info_get_array_type = g_type_info_get_array_type(info : LibGIRepository::BaseInfo*) : LibGIRepository::ArrayType
   fun type_info_get_interface = g_type_info_get_interface(info : LibGIRepository::BaseInfo*) : LibGIRepository::BaseInfo*
   fun type_info_get_param_type = g_type_info_get_param_type(info : LibGIRepository::BaseInfo*, n : Int32) : LibGIRepository::BaseInfo*
+  fun type_info_get_storage_type = g_type_info_get_storage_type(info : LibGIRepository::BaseInfo*) : LibGIRepository::TypeTag
   fun type_info_get_tag = g_type_info_get_tag(info : LibGIRepository::BaseInfo*) : LibGIRepository::TypeTag
+  fun type_info_hash_pointer_from_argument = g_type_info_hash_pointer_from_argument(info : LibGIRepository::BaseInfo*, arg : LibGIRepository::Argument*) : Void*
   fun type_info_is_pointer = g_type_info_is_pointer(info : LibGIRepository::BaseInfo*) : LibC::Int
   fun type_info_is_zero_terminated = g_type_info_is_zero_terminated(info : LibGIRepository::BaseInfo*) : LibC::Int
   fun type_tag_to_string = g_type_tag_to_string(type : LibGIRepository::TypeTag) : UInt8*

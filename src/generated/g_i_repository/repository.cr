@@ -137,8 +137,8 @@ module GIRepository
 
     def shared_library(namespace_ : ::String)
       __var0 = LibGIRepository.repository_get_shared_library(@pointer.as(LibGIRepository::Repository*), namespace_.to_unsafe)
-      GObject.raise_unexpected_null("g_irepository_get_shared_library") if __var0.null?
-      ::String.new(__var0)
+      __var1 = ::String.new(__var0) if __var0
+      __var1
     end
 
     def typelib_path(namespace_ : ::String)
