@@ -154,7 +154,7 @@ module GIRepository
     end
 
     def registered?(namespace_ : ::String, version : ::String?)
-      __var0 = LibGIRepository.repository_is_registered(@pointer.as(LibGIRepository::Repository*), namespace_.to_unsafe, version ? version.to_unsafe : nil)
+      __var0 = LibGIRepository.repository_is_registered(@pointer.as(LibGIRepository::Repository*), namespace_.to_unsafe, version ? version.to_unsafe : Pointer(UInt8).null)
       (__var0 == 1)
     end
 
@@ -168,7 +168,7 @@ module GIRepository
 
     def require(namespace_ : ::String, version : ::String?, flags : GIRepository::RepositoryLoadFlags)
       __var0 = Pointer(LibGLib::Error).null
-      __var1 = LibGIRepository.repository_require(@pointer.as(LibGIRepository::Repository*), namespace_.to_unsafe, version ? version.to_unsafe : nil, flags, pointerof(__var0))
+      __var1 = LibGIRepository.repository_require(@pointer.as(LibGIRepository::Repository*), namespace_.to_unsafe, version ? version.to_unsafe : Pointer(UInt8).null, flags, pointerof(__var0))
       GLib::Error.assert(__var0)
       GObject.raise_unexpected_null("g_irepository_require") if __var1.null?
       GIRepository::Typelib.new(__var1)
@@ -176,7 +176,7 @@ module GIRepository
 
     def require_private(typelib_dir : ::String, namespace_ : ::String, version : ::String?, flags : GIRepository::RepositoryLoadFlags)
       __var0 = Pointer(LibGLib::Error).null
-      __var1 = LibGIRepository.repository_require_private(@pointer.as(LibGIRepository::Repository*), typelib_dir.to_unsafe, namespace_.to_unsafe, version ? version.to_unsafe : nil, flags, pointerof(__var0))
+      __var1 = LibGIRepository.repository_require_private(@pointer.as(LibGIRepository::Repository*), typelib_dir.to_unsafe, namespace_.to_unsafe, version ? version.to_unsafe : Pointer(UInt8).null, flags, pointerof(__var0))
       GLib::Error.assert(__var0)
       GObject.raise_unexpected_null("g_irepository_require_private") if __var1.null?
       GIRepository::Typelib.new(__var1)

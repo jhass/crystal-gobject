@@ -19,4 +19,28 @@ describe "GObject Binding" do
       subject.receive_optional_array_and_len(buf).should eq 2
     end
   end
+
+  describe "nullable parameters" do
+    it "can receive nil" do
+      subject = Test::Subject.new
+      subject.receive_nullable_object(nil).should eq(1)
+    end
+
+    it "can receive nil" do
+      subject = Test::Subject.new
+      subject.receive_nullable_object(subject).should eq(0)
+    end
+  end
+
+  describe "parameters named using Crystal keywords" do
+    it "works on gobject parameters" do
+      subject = Test::Subject.new
+      subject.receive_arguments_named_as_crystal_keywords(1, 2, 3, 4, 5, 6, 7, 8, 9).should eq(45)
+    end
+
+    it "works on plain structs" do
+      subject = Test::Struct.new(in: 42)
+      subject.in.should eq(42)
+    end
+  end
 end

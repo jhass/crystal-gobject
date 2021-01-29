@@ -1678,7 +1678,7 @@ lib LibGLib
   fun base64_decode_inplace = g_base64_decode_inplace(text : UInt8**, out_len : UInt64*) : UInt8*
   fun base64_encode = g_base64_encode(data : UInt8*, len : UInt64) : UInt8*
   fun base64_encode_close = g_base64_encode_close(break_lines : LibC::Int, _out : UInt8**, state : Int32*, save : Int32*) : UInt64
-  fun base64_encode_step = g_base64_encode_step(in : UInt8*, len : UInt64, break_lines : LibC::Int, _out : UInt8**, state : Int32*, save : Int32*) : UInt64
+  fun base64_encode_step = g_base64_encode_step(_in : UInt8*, len : UInt64, break_lines : LibC::Int, _out : UInt8**, state : Int32*, save : Int32*) : UInt64
   fun basename = g_basename(file_name : UInt8*) : UInt8*
   fun bit_lock = g_bit_lock(address : Int32*, lock_bit : Int32) : Void
   fun bit_nth_lsf = g_bit_nth_lsf(mask : UInt64, nth_bit : Int32) : Int32

@@ -245,6 +245,20 @@ module GIRepository
       end
     end
 
+    def convert_to_null : String
+      case tag
+      when .utf8?, .filename?, .uint8?
+        return "Pointer(UInt8).null"
+      when .array?
+        return "Pointer(UInt8).null" if param_type.tag.uint8?
+      when .interface?
+        return "Pointer(Lib#{interface.full_constant}).null"
+      when .void?
+        return "Pointer(Void).null"
+      end
+      "nil" # this will probably get a compiler error.
+    end
+
     def unwrap_gvalue(variable)
       case tag
       when .interface?
