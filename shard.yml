@@ -4,7 +4,7 @@ authors:
   - "Jonne Haß <me@jhass.eu>"
 description: "GObject introspection based binding generator and generated bindings"
 license: Apache-2.0
-crystal: '>= 0.35.0'
+crystal: '~> 1.0'
 libraries:
   libgirepository: ~> 1.0
 targets:

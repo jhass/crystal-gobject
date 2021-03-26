@@ -2,7 +2,7 @@ require "./base_info"
 
 module GIRepository
   class FieldInfo < BaseInfo
-    KEYWORDS = {"end", "next"}
+    KEYWORDS = ArgInfo::KEYWORDS
 
     def type
       BaseInfo.wrap(GIRepository.field_info_get_type(self)).as(TypeInfo)

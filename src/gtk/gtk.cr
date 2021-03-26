@@ -35,7 +35,9 @@ module Gtk
 
   class Application
     def run
-      run Array.new(ARGC_UNSAFE) { |i| String.new(ARGV_UNSAFE[i]) }
+      argv = [PROGRAM_NAME]
+      argv.concat(ARGV)
+      run argv
     end
   end
 end

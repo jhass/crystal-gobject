@@ -255,11 +255,11 @@ end
 
 struct Enum
   def self.flags?
-    {{@type.has_attribute?("Flags")}}
+    {{@type.annotation(Flags) != nil}}
   end
 
   def self.from_gvalue(value : GObject::Value)
-    {% if @type.has_attribute?("FLAGS") %}
+    {% if @type.annotation(FLAGS) != nil %}
       raise ArgumentError.new("GValue does not contain a flags enum (GObject::Type::FLAGS)") unless value.type.flags?
       new(value.flags)
     {% else %}

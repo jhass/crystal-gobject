@@ -111,8 +111,16 @@ module GIRepository
              else
                TAG_MAP[tag]
              end
-      base += "*" if pointer?
+      base = "Pointer(#{base})" if pointer?
       base
+    end
+
+    def null_value_for_lib(builder)
+      if pointer?
+        "#{lib_definition(builder)}.null"
+      else
+        "nil"
+      end
     end
 
     def signal_lib_definition(builder)

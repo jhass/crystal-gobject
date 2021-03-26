@@ -5,6 +5,10 @@ require "./event"
 
 module Gdk
   def self.init
-    LibGdk.init pointerof(ARGC_UNSAFE), pointerof(ARGV_UNSAFE)
+    argv = [PROGRAM_NAME]
+    argv.concat(ARGV)
+    argc = argv.size
+    unsafe_argv = argv.map(&.to_unsafe).to_unsafe
+    LibGdk.init pointerof(argc), pointerof(unsafe_argv)
   end
 end

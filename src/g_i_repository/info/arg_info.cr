@@ -2,13 +2,12 @@ require "./base_info"
 
 module GIRepository
   class ArgInfo < BaseInfo
-    KEYWORDS = {"def", "alias", "module", "out", "begin", "self", "end", "abstract"}
+    KEYWORDS = {"abstract", "alias", "begin", "def", "end", "in", "module", "next", "out", "self"}
 
     def name
       name = super
       name = "_#{name}" if name[0].uppercase? if name
       name = "_#{name}" if KEYWORDS.includes? name
-      name.gsub(/_+$/, "") if name
       name.not_nil!
     end
 
@@ -106,7 +105,7 @@ module GIRepository
       else
         # TODO: workaround https://github.com/crystal-lang/crystal/issues/4209
         if nullable?
-          "#{name} ? #{type.convert_from_crystal(name)} : nil"
+          "#{name} ? #{type.convert_from_crystal(name)} : #{type.null_value_for_lib(builder)}"
         else
           type.convert_from_crystal(name)
         end
