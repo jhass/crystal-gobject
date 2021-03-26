@@ -111,7 +111,7 @@ module GIRepository
     __out_args = (__out_args_ary = out_args.map { |__item| __item }.to_a).to_unsafe
     n_out_args = __out_args_ary.size
     __var0 = Pointer(LibGLib::Error).null
-    __var1 = LibGIRepository.callable_info_invoke(info.to_unsafe.as(LibGIRepository::BaseInfo*), function ? function : nil, __in_args, Int32.new(n_in_args), __out_args, Int32.new(n_out_args), return_value.to_unsafe.as(LibGIRepository::Argument*), LibC::Int.new(is_method ? 1 : 0), LibC::Int.new(throws ? 1 : 0), pointerof(__var0))
+    __var1 = LibGIRepository.callable_info_invoke(info.to_unsafe.as(LibGIRepository::BaseInfo*), function ? function : Pointer(Void).null, __in_args, Int32.new(n_in_args), __out_args, Int32.new(n_out_args), return_value.to_unsafe.as(LibGIRepository::Argument*), LibC::Int.new(is_method ? 1 : 0), LibC::Int.new(throws ? 1 : 0), pointerof(__var0))
     GLib::Error.assert(__var0)
     (__var1 == 1)
   end
@@ -149,7 +149,7 @@ module GIRepository
   def self.cclosure_marshal_generic(closure : GObject::Closure, return_gvalue, param_values, invocation_hint : Void*?, marshal_data : Void*?)
     __param_values = param_values.to_gvalue.to_unsafe
     n_param_values = __param_values_ary.size
-    LibGIRepository.cclosure_marshal_generic(closure.to_unsafe.as(LibGObject::Closure*), return_gvalue.to_gvalue.to_unsafe, UInt32.new(n_param_values), __param_values, invocation_hint ? invocation_hint : nil, marshal_data ? marshal_data : nil)
+    LibGIRepository.cclosure_marshal_generic(closure.to_unsafe.as(LibGObject::Closure*), return_gvalue.to_gvalue.to_unsafe, UInt32.new(n_param_values), __param_values, invocation_hint ? invocation_hint : Pointer(Void).null, marshal_data ? marshal_data : Pointer(Void).null)
     nil
   end
 
@@ -365,32 +365,32 @@ module GIRepository
 
   def self.object_info_find_method(info : GIRepository::BaseInfo, name : ::String)
     __var0 = LibGIRepository.object_info_find_method(info.to_unsafe.as(LibGIRepository::BaseInfo*), name.to_unsafe)
-    GObject.raise_unexpected_null("g_object_info_find_method") if __var0.null?
-    GIRepository::BaseInfo.new(__var0)
+    __var1 = GIRepository::BaseInfo.new(__var0) if __var0
+    __var1
   end
 
   def self.object_info_find_method_using_interfaces(info : GIRepository::BaseInfo, name : ::String, implementor : GIRepository::BaseInfo)
     __var0 = LibGIRepository.object_info_find_method_using_interfaces(info.to_unsafe.as(LibGIRepository::BaseInfo*), name.to_unsafe, implementor)
-    GObject.raise_unexpected_null("g_object_info_find_method_using_interfaces") if __var0.null?
-    GIRepository::BaseInfo.new(__var0)
+    __var1 = GIRepository::BaseInfo.new(__var0) if __var0
+    __var1
   end
 
   def self.object_info_find_signal(info : GIRepository::BaseInfo, name : ::String)
     __var0 = LibGIRepository.object_info_find_signal(info.to_unsafe.as(LibGIRepository::BaseInfo*), name.to_unsafe)
-    GObject.raise_unexpected_null("g_object_info_find_signal") if __var0.null?
-    GIRepository::BaseInfo.new(__var0)
+    __var1 = GIRepository::BaseInfo.new(__var0) if __var0
+    __var1
   end
 
   def self.object_info_find_vfunc(info : GIRepository::BaseInfo, name : ::String)
     __var0 = LibGIRepository.object_info_find_vfunc(info.to_unsafe.as(LibGIRepository::BaseInfo*), name.to_unsafe)
-    GObject.raise_unexpected_null("g_object_info_find_vfunc") if __var0.null?
-    GIRepository::BaseInfo.new(__var0)
+    __var1 = GIRepository::BaseInfo.new(__var0) if __var0
+    __var1
   end
 
   def self.object_info_find_vfunc_using_interfaces(info : GIRepository::BaseInfo, name : ::String, implementor : GIRepository::BaseInfo)
     __var0 = LibGIRepository.object_info_find_vfunc_using_interfaces(info.to_unsafe.as(LibGIRepository::BaseInfo*), name.to_unsafe, implementor)
-    GObject.raise_unexpected_null("g_object_info_find_vfunc_using_interfaces") if __var0.null?
-    GIRepository::BaseInfo.new(__var0)
+    __var1 = GIRepository::BaseInfo.new(__var0) if __var0
+    __var1
   end
 
   def self.object_info_get_abstract(info : GIRepository::BaseInfo)
@@ -400,8 +400,8 @@ module GIRepository
 
   def self.object_info_get_class_struct(info : GIRepository::BaseInfo)
     __var0 = LibGIRepository.object_info_get_class_struct(info.to_unsafe.as(LibGIRepository::BaseInfo*))
-    GObject.raise_unexpected_null("g_object_info_get_class_struct") if __var0.null?
-    GIRepository::BaseInfo.new(__var0)
+    __var1 = GIRepository::BaseInfo.new(__var0) if __var0
+    __var1
   end
 
   def self.object_info_get_constant(info : GIRepository::BaseInfo, n : ::Int)
@@ -423,8 +423,8 @@ module GIRepository
 
   def self.object_info_get_get_value_function(info : GIRepository::BaseInfo)
     __var0 = LibGIRepository.object_info_get_get_value_function(info.to_unsafe.as(LibGIRepository::BaseInfo*))
-    GObject.raise_unexpected_null("g_object_info_get_get_value_function") if __var0.null?
-    ::String.new(__var0)
+    __var1 = ::String.new(__var0) if __var0
+    __var1
   end
 
   def self.object_info_get_interface(info : GIRepository::BaseInfo, n : ::Int)
@@ -476,8 +476,8 @@ module GIRepository
 
   def self.object_info_get_parent(info : GIRepository::BaseInfo)
     __var0 = LibGIRepository.object_info_get_parent(info.to_unsafe.as(LibGIRepository::BaseInfo*))
-    GObject.raise_unexpected_null("g_object_info_get_parent") if __var0.null?
-    GIRepository::BaseInfo.new(__var0)
+    __var1 = GIRepository::BaseInfo.new(__var0) if __var0
+    __var1
   end
 
   def self.object_info_get_property(info : GIRepository::BaseInfo, n : ::Int)
@@ -488,14 +488,14 @@ module GIRepository
 
   def self.object_info_get_ref_function(info : GIRepository::BaseInfo)
     __var0 = LibGIRepository.object_info_get_ref_function(info.to_unsafe.as(LibGIRepository::BaseInfo*))
-    GObject.raise_unexpected_null("g_object_info_get_ref_function") if __var0.null?
-    ::String.new(__var0)
+    __var1 = ::String.new(__var0) if __var0
+    __var1
   end
 
   def self.object_info_get_set_value_function(info : GIRepository::BaseInfo)
     __var0 = LibGIRepository.object_info_get_set_value_function(info.to_unsafe.as(LibGIRepository::BaseInfo*))
-    GObject.raise_unexpected_null("g_object_info_get_set_value_function") if __var0.null?
-    ::String.new(__var0)
+    __var1 = ::String.new(__var0) if __var0
+    __var1
   end
 
   def self.object_info_get_signal(info : GIRepository::BaseInfo, n : ::Int)
@@ -518,8 +518,8 @@ module GIRepository
 
   def self.object_info_get_unref_function(info : GIRepository::BaseInfo)
     __var0 = LibGIRepository.object_info_get_unref_function(info.to_unsafe.as(LibGIRepository::BaseInfo*))
-    GObject.raise_unexpected_null("g_object_info_get_unref_function") if __var0.null?
-    ::String.new(__var0)
+    __var1 = ::String.new(__var0) if __var0
+    __var1
   end
 
   def self.object_info_get_vfunc(info : GIRepository::BaseInfo, n : ::Int)
@@ -631,6 +631,11 @@ module GIRepository
     (__var0 == 1)
   end
 
+  def self.type_info_argument_from_hash_pointer(info : GIRepository::BaseInfo, hash_pointer : Void*?, arg : GIRepository::Argument::Union)
+    LibGIRepository.type_info_argument_from_hash_pointer(info.to_unsafe.as(LibGIRepository::BaseInfo*), hash_pointer ? hash_pointer : Pointer(Void).null, arg.to_unsafe.as(LibGIRepository::Argument*))
+    nil
+  end
+
   def self.type_info_get_array_fixed_size(info : GIRepository::BaseInfo)
     __var0 = LibGIRepository.type_info_get_array_fixed_size(info.to_unsafe.as(LibGIRepository::BaseInfo*))
     __var0
@@ -658,9 +663,19 @@ module GIRepository
     GIRepository::BaseInfo.new(__var0)
   end
 
+  def self.type_info_get_storage_type(info : GIRepository::BaseInfo)
+    __var0 = LibGIRepository.type_info_get_storage_type(info.to_unsafe.as(LibGIRepository::BaseInfo*))
+    GIRepository::TypeTag.new(__var0)
+  end
+
   def self.type_info_get_tag(info : GIRepository::BaseInfo)
     __var0 = LibGIRepository.type_info_get_tag(info.to_unsafe.as(LibGIRepository::BaseInfo*))
     GIRepository::TypeTag.new(__var0)
+  end
+
+  def self.type_info_hash_pointer_from_argument(info : GIRepository::BaseInfo, arg : GIRepository::Argument::Union)
+    LibGIRepository.type_info_hash_pointer_from_argument(info.to_unsafe.as(LibGIRepository::BaseInfo*), arg.to_unsafe.as(LibGIRepository::Argument*))
+    nil
   end
 
   def self.type_info_is_pointer(info : GIRepository::BaseInfo)

@@ -52,7 +52,7 @@ module GIRepository
     def self.search_path
       __var0 = LibGIRepository.repository_get_search_path()
       GObject.raise_unexpected_null("g_irepository_get_search_path") if __var0.null?
-      GLib::SListIterator(::String, UInt8**).new(GLib::SList.new(__var0.as(LibGLib::SList*)))
+      GLib::SListIterator(::String, Pointer(UInt8)*).new(GLib::SList.new(__var0.as(LibGLib::SList*)))
     end
 
     def self.prepend_library_path(directory : ::String)
@@ -68,7 +68,7 @@ module GIRepository
     def enumerate_versions(namespace_ : ::String)
       __var0 = LibGIRepository.repository_enumerate_versions(@pointer.as(LibGIRepository::Repository*), namespace_.to_unsafe)
       GObject.raise_unexpected_null("g_irepository_enumerate_versions") if __var0.null?
-      GLib::ListIterator(::String, UInt8**).new(GLib::List.new(__var0.as(LibGLib::List*)))
+      GLib::ListIterator(::String, Pointer(UInt8)*).new(GLib::List.new(__var0.as(LibGLib::List*)))
     end
 
     def find_by_error_domain(domain : ::Int)
@@ -137,8 +137,8 @@ module GIRepository
 
     def shared_library(namespace_ : ::String)
       __var0 = LibGIRepository.repository_get_shared_library(@pointer.as(LibGIRepository::Repository*), namespace_.to_unsafe)
-      GObject.raise_unexpected_null("g_irepository_get_shared_library") if __var0.null?
-      ::String.new(__var0)
+      __var1 = ::String.new(__var0) if __var0
+      __var1
     end
 
     def typelib_path(namespace_ : ::String)
@@ -154,7 +154,7 @@ module GIRepository
     end
 
     def registered?(namespace_ : ::String, version : ::String?)
-      __var0 = LibGIRepository.repository_is_registered(@pointer.as(LibGIRepository::Repository*), namespace_.to_unsafe, version ? version.to_unsafe : nil)
+      __var0 = LibGIRepository.repository_is_registered(@pointer.as(LibGIRepository::Repository*), namespace_.to_unsafe, version ? version.to_unsafe : Pointer(UInt8).null)
       (__var0 == 1)
     end
 
@@ -168,7 +168,7 @@ module GIRepository
 
     def require(namespace_ : ::String, version : ::String?, flags : GIRepository::RepositoryLoadFlags)
       __var0 = Pointer(LibGLib::Error).null
-      __var1 = LibGIRepository.repository_require(@pointer.as(LibGIRepository::Repository*), namespace_.to_unsafe, version ? version.to_unsafe : nil, flags, pointerof(__var0))
+      __var1 = LibGIRepository.repository_require(@pointer.as(LibGIRepository::Repository*), namespace_.to_unsafe, version ? version.to_unsafe : Pointer(UInt8).null, flags, pointerof(__var0))
       GLib::Error.assert(__var0)
       GObject.raise_unexpected_null("g_irepository_require") if __var1.null?
       GIRepository::Typelib.new(__var1)
@@ -176,7 +176,7 @@ module GIRepository
 
     def require_private(typelib_dir : ::String, namespace_ : ::String, version : ::String?, flags : GIRepository::RepositoryLoadFlags)
       __var0 = Pointer(LibGLib::Error).null
-      __var1 = LibGIRepository.repository_require_private(@pointer.as(LibGIRepository::Repository*), typelib_dir.to_unsafe, namespace_.to_unsafe, version ? version.to_unsafe : nil, flags, pointerof(__var0))
+      __var1 = LibGIRepository.repository_require_private(@pointer.as(LibGIRepository::Repository*), typelib_dir.to_unsafe, namespace_.to_unsafe, version ? version.to_unsafe : Pointer(UInt8).null, flags, pointerof(__var0))
       GLib::Error.assert(__var0)
       GObject.raise_unexpected_null("g_irepository_require_private") if __var1.null?
       GIRepository::Typelib.new(__var1)

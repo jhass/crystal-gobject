@@ -11,5 +11,6 @@ module GObject
     NO_HOOKS = 64
     MUST_COLLECT = 128
     DEPRECATED = 256
+    ACCUMULATOR_FIRST_RUN = 131072
   end
 end
