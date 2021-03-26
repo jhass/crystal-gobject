@@ -28,4 +28,4 @@ ised "s|VERSION\(.*\)= .*$|VERSION\1= \"$version\"|" src/gobject.cr
 
 git commit -pm "Release v$version"
 git tag "v$version"
-git push origin master "+v$version"
+git push origin main "+v$version"
