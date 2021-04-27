@@ -42,7 +42,8 @@ macro each_converted(prefix, basename, type, plural = nil)
   def each_{{basename.id}}
     n = {{plural ? plural.id : "#{basename}s".id}}_size
     0.upto(n-1) do |index|
-      yield BaseInfo.wrap(GIRepository.{{prefix.id}}_get_{{basename.id}}(self, index)).as({{type.id}})
+      info = BaseInfo.wrap(GIRepository.{{prefix.id}}_get_{{basename.id}}(self, index))
+      yield info.as({{type.id}}) if info.is_a?({{type.id}}) # skip unresolved or otherwise buggy things
     end
   end
 
