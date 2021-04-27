@@ -438,7 +438,7 @@ class Crout
     when UInt64
       "#{value}u64"
     when String
-      %("#{value}")
+      value.inspect
     else
       value.inspect
     end
