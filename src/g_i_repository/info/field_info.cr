@@ -10,9 +10,27 @@ module GIRepository
 
     def name(keyword_safe = true)
       name = super()
-      name = "#{name[0].downcase}#{name[1..-1]}" if name && name[0].uppercase?
+      if name && name[0].uppercase?
+        normalized_name = "#{name[0].downcase}#{name[1..-1]}"
+        neighbour_fields =  case container = self.container
+          when ObjectInfo, StructInfo, UnionInfo
+            container.fields
+          else
+            nil
+          end
+        if neighbour_fields && neighbour_fields.any? &.raw_name.==(normalized_name)
+          name = "_#{name}"
+        else
+          name = normalized_name
+        end
+      end
       name = "_#{name}" if keyword_safe && KEYWORDS.includes? name if name
       name.not_nil!
+    end
+
+    def raw_name
+      ptr = LibGIRepository.base_info_get_name(self)
+      String.new(ptr) if ptr
     end
 
     def wrapper_name
