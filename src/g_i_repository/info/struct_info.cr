@@ -74,6 +74,7 @@ module GIRepository
           end
         end
 
+        write_gtype_constant builder, libname
         write_constructor builder, libname
         write_to_unsafe builder, libname
         write_methods builder, libname

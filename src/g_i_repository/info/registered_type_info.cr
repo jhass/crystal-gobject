@@ -28,7 +28,7 @@ module GIRepository
     def wrapper_gtype(builder, libname)
       if type_init = self.type_init
         builder.call(type_init, receiver: libname)
-      else
+      elsif type_name = self.type_name
         builder.call("type_from_name", builder.literal(type_name), receiver: "GObject")
       end
     end

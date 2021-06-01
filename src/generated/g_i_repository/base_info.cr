@@ -5,6 +5,7 @@ module GIRepository
     def self.new : self
       new(Pointer(UInt8).malloc(72u64, 0u8).as(LibGIRepository::BaseInfo*))
     end
+    GTYPE = LibGIRepository._g_base_info_gtype_get_type
 
     @pointer : Void*
 

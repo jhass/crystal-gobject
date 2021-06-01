@@ -10,6 +10,11 @@ module GIRepository
       "to_unsafe_#{namespace.downcase}_#{name.downcase}" if name
     end
 
+    def write_gtype_constant(builder, libname)
+      gtype = wrapper_gtype(builder, libname)
+      builder.line builder.assign "GTYPE", gtype if gtype
+    end
+
     def write_constructor(builder, libname)
       pointer = nil
       builder.section { pointer = line def_instance_var "@pointer", type: "Void*" }

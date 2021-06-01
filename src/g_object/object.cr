@@ -56,6 +56,12 @@ module GObject
       end
     end
 
+    def get_property(name : String, gtype : T.class) forall T
+      value = GObject::Value.new(type: T::GTYPE)
+      LibGObject.object_get_property(to_unsafe_gobject_object, name, value)
+      T.new(value.object.to_unsafe.as(typeof(T.allocate.to_unsafe)))
+    end
+
     # TODO: should perhaps become object.type.id ?
     def gtype?
       if @pointer

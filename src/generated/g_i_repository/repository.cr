@@ -1,5 +1,6 @@
 module GIRepository
   class Repository < GObject::Object
+    GTYPE = LibGIRepository._g_irepository_get_type
 
     @pointer : Void*
 

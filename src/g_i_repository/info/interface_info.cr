@@ -47,6 +47,7 @@ module GIRepository
           add_include "GObject::WrappedType"
           add_include name
 
+          write_gtype_constant builder, libname
           write_constructor builder, libname
           write_to_unsafe builder, libname
         end
