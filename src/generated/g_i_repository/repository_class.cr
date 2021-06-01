@@ -16,7 +16,7 @@ module GIRepository
       @pointer.not_nil!.as(LibGIRepository::RepositoryClass*)
     end
 
-    def to_unsafe_repositoryclass
+    def to_unsafe_girepository_repositoryclass
       @pointer.not_nil!.as(LibGIRepository::RepositoryClass*)
     end
 

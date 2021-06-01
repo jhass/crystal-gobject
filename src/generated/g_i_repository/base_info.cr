@@ -16,7 +16,7 @@ module GIRepository
       @pointer.not_nil!.as(LibGIRepository::BaseInfo*)
     end
 
-    def to_unsafe_baseinfo
+    def to_unsafe_girepository_baseinfo
       @pointer.not_nil!.as(LibGIRepository::BaseInfo*)
     end
 

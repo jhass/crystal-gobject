@@ -12,7 +12,7 @@ module GIRepository
       @pointer.not_nil!.as(LibGIRepository::Typelib*)
     end
 
-    def to_unsafe_typelib
+    def to_unsafe_girepository_typelib
       @pointer.not_nil!.as(LibGIRepository::Typelib*)
     end
 

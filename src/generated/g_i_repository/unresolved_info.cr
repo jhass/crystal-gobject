@@ -12,7 +12,7 @@ module GIRepository
       @pointer.not_nil!.as(LibGIRepository::UnresolvedInfo*)
     end
 
-    def to_unsafe_unresolvedinfo
+    def to_unsafe_girepository_unresolvedinfo
       @pointer.not_nil!.as(LibGIRepository::UnresolvedInfo*)
     end
   end
