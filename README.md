@@ -26,6 +26,12 @@ available.
 sudo apt install libgirepository1.0-dev
 ```
 
+### Fedora
+
+```
+sudo dnf install gtk3-devel gobject-introspection-devel
+```
+
 ## Usage
 
 Include in your shard.yml:
