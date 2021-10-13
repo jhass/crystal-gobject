@@ -26,6 +26,12 @@ available.
 sudo apt install libgirepository1.0-dev
 ```
 
+### Fedora
+
+```
+sudo dnf install gobject-introspection-devel
+```
+
 ## Usage
 
 Include in your shard.yml:
@@ -82,6 +88,10 @@ On Debian you can install it with:
 sudo apt install libgtk-3-dev
 ```
 
+On Fedora:
+```
+sudo dnf install gtk3-devel
+```
 
 ## I'm on Linux and I'm getting random crashes (segmentation faults)
 
