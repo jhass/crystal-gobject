@@ -115,12 +115,9 @@ module GIRepository
 
         collection_args.each do |arg|
           if arg.nilable?
-            line def_if(arg.name) { |b|
-              b.line b.assign "__#{arg.name}", arg.for_wrapper_pass(builder, libname)
-              b.line b.assign "n_#{arg.name}", b.call("size", receiver: "__#{arg.name}_ary")
-            }.else { |b|
-              b.line b.assign "n_#{arg.name}", b.literal(0)
-            }
+            line assign "__#{arg.name}", arg.for_wrapper_pass(builder, libname)
+            size = call("size", receiver: "__#{arg.name}_ary")
+            line assign "n_#{arg.name}", ternary("__#{arg.name}_ary", size, literal(0))
           else
             line assign "__#{arg.name}", arg.for_wrapper_pass(builder, libname)
             line assign "n_#{arg.name}", call("size", receiver: "__#{arg.name}_ary")
